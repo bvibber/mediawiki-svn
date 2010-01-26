@@ -8704,10 +8704,13 @@ evt: {
 			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
 		}
 		// reset the height of the TOC
-		context.modules.toc.$toc.height(
-			context.$ui.find( '.wikiEditor-ui-left' ).height() - 
-			context.$ui.find( '.tab-toc' ).outerHeight()
-		);
+		if ( !context.modules.toc.$toc.data( 'collapsed' ) ){
+			context.modules.toc.$toc.height(
+				context.$ui.find( '.wikiEditor-ui-left' ).height() - 
+				context.$ui.find( '.tab-toc' ).outerHeight()
+			);
+		}
+
 		// store the width of the view for comparison on next resize
 		context.modules.toc.$toc.data( 'previousWidth', context.$wikitext.width() );
 	},

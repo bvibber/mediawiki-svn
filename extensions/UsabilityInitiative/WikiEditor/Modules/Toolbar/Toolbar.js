@@ -1475,6 +1475,7 @@ mw.ready( function() {
 		id: 'wikieditor-toolbar-table-dialog',
 		// FIXME: Localize 'x'?
 		html: '\
+			<div class="wikieditor-toolbar-dialog-wrapper">\
 			<fieldset><div class="wikieditor-toolbar-table-form">\
 				<div class="wikieditor-toolbar-field-wrapper">\
 					<input type="checkbox" id="wikieditor-toolbar-table-dimensions-header" checked />\
@@ -1529,7 +1530,7 @@ mw.ready( function() {
 						</tr>\
 					</table>\
 				</div>\
-			</div>',
+			</div></div>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
@@ -1581,7 +1582,7 @@ mw.ready( function() {
 		},
 		dialog: {
 			resizable: false,
-			width: 500,
+			width: 590,
 			buttons: {
 				'wikieditor-toolbar-tool-table-insert': function() {
 					var rowsVal = $j( '#wikieditor-toolbar-table-dimensions-rows' ).val();
