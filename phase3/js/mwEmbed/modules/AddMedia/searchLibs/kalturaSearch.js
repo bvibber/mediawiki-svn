@@ -8,27 +8,74 @@ var kalturaFilters = function ( options ) {
 
 kalturaFilters.prototype = {
 		
+		filterList: {},
+		
+		filterChangeCallBack: function() {},
+		
+		resetRequired: false,
+		
 		init: function( options ) {
-			var mediaTypes = {
-					video: 'Videos',
-					image: 'Images'
-			};
 
-			var providers = {
-					wiki_commons: 'Wikipedia Commons',
-					archive_org: 'The Internet Archive',
-					metavid: 'Metavid',
-					flickr: 'Flickr'
-			};
-			
-			this.filterList = {
-					media: { title: 'Media', options: mediaTypes },
-					providers: { title: 'Providers', options: providers }
-			};
+			this.resetFilters();
 			
 			return this;
 		},
 		
+		resetFilters: function() {
+			
+			this.filterList = {};
+			
+			this.buildFilter('media', 'Media', {
+				movie: 'Videos',
+				image: 'Images'
+			});
+
+			this.buildFilter('providers', 'Providers', {
+				wiki_commons: 'Wikipedia Commons',
+				archive_org: 'The Internet Archive',
+				metavid: 'Metavid',
+				flickr: 'Flickr'
+			});
+			
+		},
+		
+		/**
+		 * Returns an array of selected/deselected option keys
+		 * 
+		 * @param {String} ID of the requested filter (e.g. media, providers)
+		 * @param {Boolean} if set, this will return deselected values instead of
+		 * 					selected values.
+		 */
+		getFilterValues: function( filterID, deselected ) {
+			
+			result = new Array();
+			
+			optionsList = this.filterList[ filterID ].options;
+			
+			for ( option in optionsList ) {
+				// Run a XOR to produce correct inclusion/exclusion in all scenarios.
+				if ( optionsList[ option ].selected? !deselected : deselected ) {
+					result.push( option );
+				}
+			}
+			
+			return result;
+		},
+		
+		buildFilter: function( filterID, filterTitle, filterOptions ) {
+			var options = {};
+			for ( option in filterOptions ) {
+				options[ option ] = {};
+				options[ option ].text = filterOptions[ option ];
+				options[ option ].selected = true;
+			}
+			
+			var filterEntry = {};
+			filterEntry.title = filterTitle;
+			filterEntry.options = options;
+			
+			this.filterList[ filterID ] = filterEntry;
+		},
 
 		/**
 		 * Create an HTML representation of the available search filters and append 
@@ -51,6 +98,22 @@ kalturaFilters.prototype = {
 						  this.filterList[ filter ].options ));
 			}
 			
+			$selectAll = $j( '<div />' ).text('Select All').addClass('rsd_clickable')
+				.attr( {
+					id: 'rsd_select_all'
+				} )
+				.click( function() {
+					$j('input[type=checkbox]', $filtersContainer).attr('checked',true);
+					// TODO: avoid code duplication (with individual click event).
+					
+					_this.resetFilters();
+					// Request a paging reset
+					_this.resetRequired = true;
+					_this.filterChangeCallBack();
+				});
+			
+			$filtersContainer.append($selectAll);
+			
 			return $filtersContainer;
 		},
 		
@@ -64,6 +127,8 @@ kalturaFilters.prototype = {
 		 */
 		
 		getFilterBox: function( id, title, filterOptions ) {
+			_this = this;
+			
 			$box = $j( '<div />' ).addClass( 'ui-filter-box' ).attr({
 				'id': id
 			});
@@ -71,16 +136,24 @@ kalturaFilters.prototype = {
 			$title = $j( '<div />' ).addClass( 'ui-filter-title' ).text( title );
 			$box.append( $title );
 			
-			for (filterID in filterOptions) {
-				$option = $j( '<div />' ).addClass( 'ui-filter-option' ).text( filterOptions[ filterID ] );
+			for (optionID in filterOptions) {
+				$option = $j( '<div />' ).addClass( 'ui-filter-option' ).text( filterOptions[ optionID ].text );
 				
 				$checkbox = $j( '<input />' )
 					.attr( {
 						type: 'checkbox',
-						name: id + '_' + title + '_' + filterID,
-						value: filterID,
-						checked: true
-					} );
+						name: id + '_' + title + '_' + optionID,
+						value: optionID,
+						checked: filterOptions[ optionID ].selected
+					} )
+					.click( function (ID) {
+						return function() {
+							filterOptions[ ID ].selected = !(filterOptions[ ID ].selected);
+							// Request a paging reset
+							_this.resetRequired = true;
+							_this.filterChangeCallBack();
+						};
+					}(optionID) );
 				
 				$option.prepend( $checkbox );	
 				$box.append( $option );
@@ -129,11 +202,30 @@ kalturaSearch.prototype = {
 	getProviderResults: function( search_query, callback ) {
 		var _this = this;
 		
-		// setup the flickr request: 
+		// Check if the filter requires a paging reset.
+		if ( this.filters.resetRequired ) {
+			this.provider.offset = 0;
+			this.filters.resetRequired = false;
+		}
+		
+		// setup the request: 
 		var request = {
 			's': search_query,
 			'page': this.provider.offset/this.provider.limit + 1
+		};
+		
+		// Add optional parameters
+		media = this.filters.getFilterValues( 'media', false );
+		providers = this.filters.getFilterValues( 'providers', true );
+		
+		if ( media.length > 0 ) {
+			request[ 'media' ] = media.join( ',' );
 		}
+		
+		if ( providers.length > 0 ) {
+			request[ 'disable' ] = providers.join( ',' );
+		}
+		
 		mw.log( "Kaltura::getProviderResults query: " + request['s'] + " page: " + request['page']);
 		$j.getJSON( this.provider.api_url + '?callback=?', request, function( data ) {
 			_this.addResults( data );
@@ -154,6 +246,9 @@ kalturaSearch.prototype = {
 			
 			// Display option for more results as long as results are coming in
 			this.more_results = ( data.length == this.limit )
+			
+			_this.resultsObj = {};
+			this.num_results = 0;
 			
 			for ( var resource_id in data ) {				
 				var result = data[ resource_id ];					

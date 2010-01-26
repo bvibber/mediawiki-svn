@@ -105,6 +105,12 @@ div.floatleft, table.floatleft {
 	padding-left: 10px;
 }
 
+.rsd_clickable {
+	color: blue;
+	margin-top: 12px;
+	text-decoration: underline;
+}
+
 .rsd_control_container{	
 	margin: 10px 0;
 	width: 100%;
