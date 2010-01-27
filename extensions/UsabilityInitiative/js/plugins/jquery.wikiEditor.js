@@ -554,13 +554,12 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var start = options.start, end = options.end;
 				if ( !sc || !ec ) {
-					var offsets = context.fn.getOffsets();
-					var startContainer = offsets[start].node, startOffset = offsets[start].offset;
-					var endContainer = offsets[end].node, endOffset = offsets[end].offset;
-					sc = offsets[start].node;
-					ec = offsets[end].node;
-					start = offsets[start].offset;
-					end = offsets[end].offset;
+					var s = context.fn.getOffset( start );
+					var e = context.fn.getOffset( end );
+					sc = s.node;
+					ec = e.node;
+					start = s.offset;
+					end = e.offset;
 				}
 				if ( !sc || !ec ) {
 					// The requested offset isn't in the offsets array
@@ -673,11 +672,12 @@ if ( typeof context == 'undefined' ) {
 					return $( [] );
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
-				var offsets = context.fn.getOffsets();
-				e = offsets[seekPos] ? offsets[seekPos].node : null;
-				offset = offsets[seekPos] ? offsets[seekPos].offset : null;
-				if ( !e )
+				var offset = context.fn.getOffset( seekPos );
+				e = offset ? offset.node : null;
+				offset = offset ? offset.offset : null;
+				if ( !e ) {
 					return $( [] );
+				}
 			}
 			if ( e.nodeName != '#text' ) {
 				// The selection is not in a textnode, but between two non-text nodes
@@ -738,7 +738,9 @@ if ( typeof context == 'undefined' ) {
 					p = p ? p.nextSibling : null;
 					do {
 						// Filter nodes with the wikiEditor-noinclude class
-						while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+						// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+						// $() is slow in a tight loop
+						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
 							p = p.nextSibling;
 						}
 						if ( p && p.firstChild ) {
@@ -758,7 +760,9 @@ if ( typeof context == 'undefined' ) {
 			var inP = node.nodeName == "P";
 			do {
 				// Filter nodes with the wikiEditor-noinclude class
-				while ( node && $( node ).hasClass( 'wikiEditor-noinclude' ) ) {
+				// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+				// $() is slow in a tight loop
+				while ( node && ( ' ' + node.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
 					node = node.nextSibling;
 				}
 				if ( node && node.firstChild ) {
@@ -771,11 +775,30 @@ if ( typeof context == 'undefined' ) {
 			} while ( node && node.firstChild );
 			return new Traverser( node, depth, inP );
 		},
-		'getOffsets': function() {
+		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
 				context.fn.refreshOffsets();
 			}
-			return context.offsets;
+			if ( offset in context.offsets ) {
+				return context.offsets[offset];
+			}
+			// Our offset is not pre-cached. Find the highest offset below it and interpolate
+			var lowerBound = 0;
+			for ( var o in context.offsets ) {
+				if ( o > offset ) {
+					break;
+				}
+				lowerBound = o;
+			}
+			var base = context.offsets[lowerBound];
+			return context.offsets[offset] = {
+				'node': base.node,
+				'offset': base.offset + offset - o,
+				'length': base.length,
+				'depth': base.depth,
+				'lastTextNode': lastTextNode,
+				'lastTextNodeDepth': lastTextNodeDepth
+			};
 		},
 		'purgeOffsets': function() {
 			context.offsets = null;
@@ -792,16 +815,14 @@ if ( typeof context == 'undefined' ) {
 				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
 				var nextT = t.next();
 				var leavingP = t.inP && nextT && !nextT.inP;
-				for ( var p = pos; p < nextPos; p++ ) {
-					context.offsets[p] = {
-						'node': t.node,
-						'offset': p - pos,
-						'length': nextPos - pos + ( leavingP ? 1 : 0 ),
-						'depth': t.depth,
-						'lastTextNode': lastTextNode,
-						'lastTextNodeDepth': lastTextNodeDepth
-					};
-				}
+				context.offsets[pos] = {
+					'node': t.node,
+					'offset': 0,
+					'length': nextPos - pos + ( leavingP ? 1 : 0 ),
+					'depth': t.depth,
+					'lastTextNode': lastTextNode,
+					'lastTextNodeDepth': lastTextNodeDepth
+				};
 				if ( leavingP ) {
 					// <p>Foo</p> looks like "Foo\n", make it quack like it too
 					// Basically we're faking the \n character much like we're treating <br>s

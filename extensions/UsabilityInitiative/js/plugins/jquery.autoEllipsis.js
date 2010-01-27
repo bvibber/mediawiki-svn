@@ -3,24 +3,40 @@
  */
 ( function( $ ) {
 
+// Cache ellipsed substrings for every string-width combination
+var cache = { };
+
 $.fn.autoEllipsis = function( options ) {
+	options = $.extend( {
+		'position': 'center',
+		'tooltip': false,
+		'restoreText': false
+	}, options );
 	$(this).each( function() {
-		options = $.extend( {
-			'position': 'center',
-			'tooltip': false,
-			'restoreText': false
-		}, options );
+		var $this = $(this);
 		if ( options.restoreText ) {
-			if ( ! $( this ).data( 'autoEllipsis.originalText' ) ) {
-				$( this ).data( 'autoEllipsis.originalText', $( this ).text() );
+			if ( ! $this.data( 'autoEllipsis.originalText' ) ) {
+				$this.data( 'autoEllipsis.originalText', $this.text() );
 			} else {
-				$( this ).text( $( this ).data( 'autoEllipsis.originalText' ) );
+				$this.text( $this.data( 'autoEllipsis.originalText' ) );
 			}
 		}
-		var text = $(this).text();
-		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
-		$(this).empty().append( $text );
-		if ( $text.width() > $(this).width() ) {
+		var text = $this.text();
+		var w = $this.width();
+		var $text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
+		$this.empty().append( $text );
+		
+		// Try cache
+		if ( !( text in cache ) ) {
+			cache[text] = {};
+		}
+		if ( w in cache[text] ) {
+			$text.text( cache[text][w] );
+			return;
+		}
+		
+		$text.text( text );
+		if ( $text.width() > w ) {
 			switch ( options.position ) {
 				case 'right':
 					// Use binary search-like technique for efficiency
@@ -28,7 +44,7 @@ $.fn.autoEllipsis = function( options ) {
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
 						$text.text( text.substr( 0, m ) + '...' );
-						if ( $text.width() > $(this).width() ) {
+						if ( $text.width() > w ) {
 							// Text is too long
 							r = m - 1;
 						} else {
@@ -41,7 +57,7 @@ $.fn.autoEllipsis = function( options ) {
 					// TODO: Use binary search like for 'right'
 					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
 					var side = 1; // Begin with making the end shorter
-					while ( $text.outerWidth() > ( $(this).width() ) && i[0] > 0 ) {
+					while ( $text.outerWidth() > w  && i[0] > 0 ) {
 						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
 						// Alternate between trimming the end and begining
 						if ( side == 0 ) {
@@ -58,7 +74,7 @@ $.fn.autoEllipsis = function( options ) {
 				case 'left':
 					// TODO: Use binary search like for 'right'
 					var r = 0;
-					while ( $text.outerWidth() > $(this).width() && r < text.length ) {
+					while ( $text.outerWidth() > w && r < text.length ) {
 						$text.text( '...' + text.substr( r ) );
 						r++;
 					}
@@ -67,6 +83,7 @@ $.fn.autoEllipsis = function( options ) {
 			if ( options.tooltip )
 				$text.attr( 'title', text );
 		}
+		cache[text][w] = $text.text();
 	} );
 };
 

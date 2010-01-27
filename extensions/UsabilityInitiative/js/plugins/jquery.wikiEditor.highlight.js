@@ -76,6 +76,7 @@ fn: {
 	},
 	/**
 	 * Strips division of HTML
+	 * FIXME: Isn't this done by context.fn.htmlToText() already?
 	 * 
 	 * @param division
 	 */
@@ -104,8 +105,8 @@ fn: {
 		var tokenArray = context.modules.highlight.tokenArray = [];
 		// We need to look over some text and find interesting areas, then return the positions of those areas as tokens
 		var text = context.fn.getContents();
-		for ( module in $.wikiEditor.modules ) {
-			if ( 'exp' in $.wikiEditor.modules[module] ) {
+		for ( module in context.modules ) {
+			if ( module in $.wikiEditor.modules && 'exp' in $.wikiEditor.modules[module] ) {
 			   for ( var i = 0; i < $.wikiEditor.modules[module].exp.length; i++ ) {
 					var regex = $.wikiEditor.modules[module].exp[i].regex;
 					var label = $.wikiEditor.modules[module].exp[i].label;
@@ -151,55 +152,48 @@ fn: {
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
-		var offsets = context.fn.getOffsets();
 		for ( var i = 0; i < markers.length; i++ ) {
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
 			var start = markers[i].start;
-			if ( !( start in offsets ) ) {
-				// This shouldn't happen
-				continue;
-			}
-			var startNode = offsets[start].node;
-			var startDepth = offsets[start].depth;
+			var s = context.fn.getOffset( start );
+			var startNode = s.node;
+			var startDepth = s.depth;
 			// The next marker starts somewhere in this textNode or at this BR
-			if ( offsets[start].offset > 0 ) {
+			if ( s.offset > 0 ) {
 				// t.node must be a textnode at this point because
 				// only textnodes can have offset > 0
 				
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( offsets[start].offset );
+				startNode = startNode.splitText( s.offset );
 			}
 			// Don't wrap leading BRs, produces undesirable results
 			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
 				start++;
-				startNode = offsets[start].node;
-				startDepth = offsets[start].depth;
+				startNode = s.node;
+				startDepth = s.depth;
 			}
 			
 			var end = markers[i].end;
-			if ( !( end in offsets ) ) {
-				// This shouldn't happen
-				continue;
-			}
-			var endNode = offsets[end].node;
-			var endDepth = offsets[end].depth;
-			if ( offsets[end].offset < offsets[end].length - 1 ) {
+			var e = context.fn.getOffset( end );
+			var endNode = e.node;
+			var endDepth = e.depth;
+			if ( e.offset < e.length - 1 ) {
 				// t.node must be a textnode at this point because
 				// .length is 1 for BRs and offset can't be < 0
 				
 				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 				// node.
 				// endNode.nodeValue.length - ( newPos - markers[i].end )
-				endNode.splitText( offsets[end].offset + 1 );
+				endNode.splitText( e.offset + 1 );
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
-				endNode = offsets[end].lastTextNode;
-				endDepth = offsets[end].lastTextNodeDepth;
+				endNode = e.lastTextNode;
+				endDepth = e.lastTextNodeDepth;
 			}
 			
 			// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
