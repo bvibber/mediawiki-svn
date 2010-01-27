@@ -1126,7 +1126,9 @@ class Parser
 			if ( ( $numbold % 2 == 1 ) && ( $numitalics % 2 == 1 ) )
 			{
 
-				# This algorithm moves the literal quote at the 
+				# This algorithm takes as literal ' the first from six 
+				# quotes, since <b></b>/</b><b> wouldn't be too useful,
+				# else it moves the literal quote at the 
 				# right of a single word, at the right of a 
 				# multiletter word or at the right of a space.
 				# Otherwise, it does nothing.
@@ -1138,6 +1140,7 @@ class Parser
 				# texty quotes to &#39; which shouldn't matter.
 
 				$quoteBalancerReplacements = array( 
+												"/''''''(?!')/"=>"&#39;'''''", 
 												"/(?<= [^ ])'''(?!')/"=>"&#39;''", 
 												"/(?<=[^ '])'''(?!')/"=>"&#39;''", 
 												"/(^|(?<=[^'])) '''(?!')/"=>" &#39;''");

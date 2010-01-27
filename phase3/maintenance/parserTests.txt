@@ -7611,15 +7611,21 @@ Six quotes
 
 ''Italic'''BoldItalic''''''Normal'''''
 
+''Italic'''BoldItalic''''''Normal
+
 '''''BoldItalic''''''MoreBoldItalic''
 
 ''''''Normal
+
+'''''Frabnaggilywort''''''s pegged revision.
 !!result
 <p><i>Italic'</i><b>Bold</b>
-</p><p><b>Bold<i>BoldItalic'</i></b>Normal
+</p><p><b>Bold<i>BoldItalic&#39;</i></b>Normal
 </p><p><i>Italic<b>BoldItalic'</b></i>Normal
+</p><p><i>Italic<b>BoldItalic&#39;</b></i>Normal
 </p><p><i><b>BoldItalic</b><b>MoreBoldItalic</b></i>
 </p><p>Normal
+</p><p><i><b>Frabnaggilywort&#39;</b></i>s pegged revision.
 </p>
 !!end
 
