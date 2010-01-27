@@ -369,7 +369,7 @@ if ( typeof context == 'undefined' ) {
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
 					.replace( /\<p[^\>]*\>/gi, "\n" ) // IE uses </p><p> for user-inserted line breaks
 					.replace( /\<\/p[^\>]*\>/gi, "" )
-					.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </p><p> for user-inserted line breaks
+					.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </div><div> for user-inserted line breaks
 					.replace( /\<\/div[^\>]*\>/gi, "" )
 				+ '</pre>' );
 			// Get rid of the noincludes when getting text
