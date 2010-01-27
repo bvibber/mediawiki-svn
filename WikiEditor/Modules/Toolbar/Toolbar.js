@@ -1124,6 +1124,7 @@ $j(document).ready( function() {
 		},
 		dialog: {
 			width: 500,
+			dialogClass: 'wikiEditor-toolbar-dialog',
 			buttons: {
 				'wikieditor-toolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
@@ -1401,6 +1402,7 @@ $j(document).ready( function() {
 		},
 		dialog: {
 			resizable: false,
+			dialogClass: 'wikiEditor-toolbar-dialog',
 			width: 590,
 			buttons: {
 				'wikieditor-toolbar-tool-table-insert': function() {
@@ -1633,6 +1635,7 @@ $j(document).ready( function() {
 		},
 		dialog: {
 			width: 500,
+			dialogClass: 'wikiEditor-toolbar-dialog',
 			buttons: {
 				'wikieditor-toolbar-tool-replace-button-findnext': function( e ) {
 					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );
