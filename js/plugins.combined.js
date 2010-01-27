@@ -6849,8 +6849,6 @@ if ( typeof context == 'undefined' ) {
 			if ( !selText ) {
 				selText = options.peri;
 				selectAfter = true;
-			} else if ( options.splitlines ) {
-				selTextArr = selText.split( /\n/ );
 			} else if ( options.replace ) {
 				selText = options.peri;
 			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
@@ -6859,6 +6857,10 @@ if ( typeof context == 'undefined' ) {
 				selText = selText.substring( 0, selText.length - 1 );
 				post += ' ';
 			}
+			if ( options.splitlines ) {
+				selTextArr = selText.split( /\n/ );
+			}
+
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
@@ -6928,7 +6930,9 @@ if ( typeof context == 'undefined' ) {
 				if ( options.splitlines ) {
 					for( var i = 0; i < selTextArr.length; i++ ) {
 						insertText = insertText + pre + selTextArr[i] + post;
-						if( i != selTextArr.length - 1 ) insertText += "\n"; 
+						if( i != selTextArr.length - 1 ) {
+							insertText += "\n"; 
+						}
 					}
 				} else {
 					insertText = pre + selText + post;
@@ -6972,10 +6976,10 @@ if ( typeof context == 'undefined' ) {
 				if ( !sc || !ec ) {
 					var s = context.fn.getOffset( start );
 					var e = context.fn.getOffset( end );
-					sc = s.node;
-					ec = e.node;
-					start = s.offset;
-					end = e.offset;
+					sc = s ? s.node : null;
+					ec = e ? e.node : null;
+					start = s ? s.offset : null;
+					end = e ? e.offset : null;
 				}
 				if ( !sc || !ec ) {
 					// The requested offset isn't in the offsets array
@@ -7199,12 +7203,16 @@ if ( typeof context == 'undefined' ) {
 				return context.offsets[offset];
 			}
 			// Our offset is not pre-cached. Find the highest offset below it and interpolate
-			var lowerBound = 0;
+			var lowerBound = -1;
 			for ( var o in context.offsets ) {
 				if ( o > offset ) {
 					break;
 				}
 				lowerBound = o;
+			}
+			if ( !( lowerBound in context.offsets ) ) {
+				// Weird edge case: either offset is too large or the document is empty
+				return null;
 			}
 			var base = context.offsets[lowerBound];
 			return context.offsets[offset] = {
@@ -7212,8 +7220,8 @@ if ( typeof context == 'undefined' ) {
 				'offset': base.offset + offset - o,
 				'length': base.length,
 				'depth': base.depth,
-				'lastTextNode': lastTextNode,
-				'lastTextNodeDepth': lastTextNodeDepth
+				'lastTextNode': base.lastTextNode,
+				'lastTextNodeDepth': base.lastTextNodeDepth
 			};
 		},
 		'purgeOffsets': function() {
@@ -7711,6 +7719,10 @@ fn: {
 			// if a marker starts or ends halfway one.
 			var start = markers[i].start;
 			var s = context.fn.getOffset( start );
+			if ( !s ) {
+				// This shouldn't happen
+				continue;
+			}
 			var startNode = s.node;
 			var startDepth = s.depth;
 			// The next marker starts somewhere in this textNode or at this BR
@@ -7732,6 +7744,10 @@ fn: {
 			
 			var end = markers[i].end;
 			var e = context.fn.getOffset( end );
+			if ( !e ) {
+				// This shouldn't happen
+				continue;
+			}
 			var endNode = e.node;
 			var endDepth = e.depth;
 			if ( e.offset < e.length - 1 ) {
