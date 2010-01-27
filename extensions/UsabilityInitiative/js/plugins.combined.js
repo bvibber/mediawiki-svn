@@ -6793,7 +6793,7 @@ if ( typeof context == 'undefined' ) {
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
 					.replace( /\<p[^\>]*\>/gi, "\n" ) // IE uses </p><p> for user-inserted line breaks
 					.replace( /\<\/p[^\>]*\>/gi, "" )
-					.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </p><p> for user-inserted line breaks
+					.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </div><div> for user-inserted line breaks
 					.replace( /\<\/div[^\>]*\>/gi, "" )
 				+ '</pre>' );
 			// Get rid of the noincludes when getting text
@@ -8822,6 +8822,7 @@ evt: {
 		context.modules.toc.$toc.data( 'previousWidth', context.$wikitext.width() );
 	},
 	mark: function( context, event ) {
+		var hash = '';
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
 		var outline = context.data.outline = [];
@@ -8854,14 +8855,20 @@ evt: {
 						ca1.previousSibling : null;
 				}
 			} );
+			hash += tokenArray[i].match[2] + '\n';
 			outline.push ( {
 				'text': tokenArray[i].match[2],
 				'level': tokenArray[i].match[1].length,
 				'index': h
 			} );
 		}
-		$.wikiEditor.modules.toc.fn.build( context );
-		$.wikiEditor.modules.toc.fn.update( context );
+		// Only update the TOC if it's been changed - we do this by comparing a hash of the headings this time to last
+		if ( typeof context.modules.toc.lastHash == 'undefined' || context.modules.toc.lastHash !== hash ) {
+			$.wikiEditor.modules.toc.fn.build( context );
+			$.wikiEditor.modules.toc.fn.update( context );
+			// Remember the changed version
+			context.modules.toc.lastHash = hash;
+		}
 	}
 },
 exp: [
@@ -9237,7 +9244,9 @@ fn: {
 						if( ui.size.width <= parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
 						} else {
-							context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+							context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+								{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+							);
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
 						}
@@ -9301,7 +9310,9 @@ fn: {
 				buildResizeControls();
 				buildCollapseControls();
 			}
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+			);
 		}
 	}
 }
