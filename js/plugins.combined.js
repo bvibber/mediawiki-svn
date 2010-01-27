@@ -7220,7 +7220,7 @@ if ( typeof context == 'undefined' ) {
 			var base = context.offsets[lowerBound];
 			return context.offsets[offset] = {
 				'node': base.node,
-				'offset': base.offset + offset - o,
+				'offset': base.offset + offset - lowerBound,
 				'length': base.length,
 				'depth': base.depth,
 				'lastTextNode': base.lastTextNode,
@@ -7347,7 +7347,13 @@ if ( typeof context == 'undefined' ) {
 			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
 			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
 			// TODO: Refactor this into a textToHtml() function
-			var html = context.$textarea.val();
+			// Because we're gonna insert instances of <br>, &nbsp; and <span class="wikiEditor-tab"></span>,
+			// we have to escape existing instances first. This'll cause them to be double-escaped, which we
+			// fix later on
+			var html = context.$textarea.val()
+				.replace( /&nbsp;/g, '&amp;nbsp;' )
+				.replace( /\<br\>/g, '&lt;br&gt;' )
+				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
 			if ( $.browser.msie ) {
 				// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
@@ -7363,10 +7369,14 @@ if ( typeof context == 'undefined' ) {
 			}
 			// Use a dummy div to escape all entities
 			// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
+			// We also need to unescape the doubly-escaped things mentioned above
 			html = $( '<div />' ).text( html.replace( /\r?\n/g, '<br>' ) ).html()
 				.replace( /&amp;nbsp;/g, '&nbsp;' )
 				.replace( /&lt;br&gt;/g, '<br>' )
-				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' );
+				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
+				.replace( /&amp;amp;nbsp;/g, '&amp;nbsp;' )
+				.replace( /&amp;lt;br&amp;gt;/g, '&lt;br&gt;' )
+				.replace( /&amp;lt;span class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			context.$content.html( html );
 			
 			// Reflect direction of parent frame into child
