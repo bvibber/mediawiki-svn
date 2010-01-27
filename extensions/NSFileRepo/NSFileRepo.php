@@ -247,6 +247,8 @@ function NSFileRepoNSCheck($UploadForm) {
 // If Extension:Lockdown has been activated (recommend), check individual namespace protection
 
 function NSFileRepolockdownUserCan($title, $user, $action, &$result) {
+	global $wgWhitelistRead;
+	if (in_array($title->getPrefixedText(), $wgWhitelistRead)) return true;
 	if (function_exists('lockdownUserCan')){
 		if($title->getNamespace() == NS_FILE) {
 			$ntitle = Title::newFromText($title->mDbkeyform);
