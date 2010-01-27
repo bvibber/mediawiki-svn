@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for extension Post Comment.
+ * Internationalisation file for extension PNG Handler.
  *
  * @addtogroup Extensions
 */
