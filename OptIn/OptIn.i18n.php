@@ -107,7 +107,7 @@ New-and-improved icons make it clearer what action each tool performs. Expandabl
 The help section provides quick access to a reference for common uses of wiki-markup.
 <div style=\"clear:both;\"></div>
 == How to get involved ==
-To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
+To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
 
 Thanks and we look forward to hearing from you!",
 );
@@ -228,7 +228,7 @@ Om meer oor die projek te wete te kom, of om betrokke te raak, kan u die [http:/
 Daar sal u inligting aantref oor skenkings, navorsing gedoen, die ontwerp en ontwikkeling en vrystellings.
 Vir vrae of terugkoppeling, kan u die [http://usability.wikimedia.org/wiki/Talk:Prototype beskrekingsblad van die prototipe] besoek.
 Om spesifieke punte aan die orde te stel, kan u die bybehorende besprekingsblaaie gebruik.
-As u sagtewarefoute aantref, meld dit aan op [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai se besprekingsblad] of gebruik [https://bugzilla.wikimedia.org Bugzilla].
+As u sagtewarefoute aantref, meld dit aan op [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco se besprekingsblad] of gebruik [https://bugzilla.wikimedia.org Bugzilla].
 
 Baie dankie, ons sien daarna uit om u mening te hoor!',
 );
@@ -333,7 +333,7 @@ $messages['ar'] = array(
 الأيقونات الجديدة ستجعل تحرير المقالات أسهل وأكثر وضوحا، بحيث يوضح لك النظام الجديد وظيفة هذه الأيقونات. كما تجعل المقاطع القابلة للتمديد عملية البحث عن الأداة أو الأيقونة أسهل، مع جعل الأدوات التي لا تستخدم كثيراً تظهر بضغطة زر واحدة. بالإضافة إلى ذلك، زود شريط الأدوات بقسم للمساعدة السريعة لتوضيح وظائف الأيقونات والشروحات المبسطة لاستخدام رموز الويكي.
 
 == كيف يمكنك المشاركة؟ ==
-لمعرفة المزيد حول المشروع أو للمشاركة فيه، بإمكانك زيارة صفحة [http://usability.wikimedia.org Usability Initiative]. هناك ستجد معلومات حول منحنا، وأبحاثنا، وتصاميمنا، وتطويراتنا، وإصداراتنا. لكي تطرح الأسئلة أو لكي تترك انطباعك العام، بإمكانك استخدام صفحة المناقشة [http://usability.wikimedia.org/wiki/Talk:Prototype هذه]. بإمكانك طرح الموضوعات الأخرى هناك أيضا. إذا رأيت أية مشكلة في النظام الجديد، بإمكانك ترك الملاحظات في [http://usability.wikimedia.org/wiki/Talk:Releases/Acai صفحة نقاش مشروع Acai] أو من خلال [https://bugzilla.wikimedia.org Bugzilla].
+لمعرفة المزيد حول المشروع أو للمشاركة فيه، بإمكانك زيارة صفحة [http://usability.wikimedia.org Usability Initiative]. هناك ستجد معلومات حول منحنا، وأبحاثنا، وتصاميمنا، وتطويراتنا، وإصداراتنا. لكي تطرح الأسئلة أو لكي تترك انطباعك العام، بإمكانك استخدام صفحة المناقشة [http://usability.wikimedia.org/wiki/Talk:Prototype هذه]. بإمكانك طرح الموضوعات الأخرى هناك أيضا. إذا رأيت أية مشكلة في النظام الجديد، بإمكانك ترك الملاحظات في [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco صفحة نقاش مشروع Babaco] أو من خلال [https://bugzilla.wikimedia.org Bugzilla].
 
 شكراً ونتمنى سماع رأيك!
 </div>',
@@ -441,7 +441,7 @@ $messages['arz'] = array(
 الأيقونات الجديده ستجعل تحرير المقالات أسهل وأكثر وضوحا، بحيث يوضح لك النظام الجديد وظيفه هذه الأيقونات. كما تجعل المقاطع القابله للتمديد عمليه البحث عن الأداه أو الأيقونه أسهل، مع جعل الأدوات التى لا تستخدم كثيراً تظهر بضغطه زر واحده. بالإضافه إلى ذلك، زود شريط الأدوات بقسم للمساعده السريعه لتوضيح وظائف الأيقونات والشروحات المبسطه لاستخدام رموز الويكى.
 
 == كيف يمكنك المشاركة؟ ==
-لمعرفه المزيد حول المشروع أو للمشاركه فيه، بإمكانك زياره صفحه [http://usability.wikimedia.org Usability Initiative]. هناك ستجد معلومات حول منحنا، وأبحاثنا، وتصاميمنا، وتطويراتنا، وإصداراتنا. لكى تطرح الأسئله أو لكى تترك انطباعك العام، بإمكانك استخدام صفحه المناقشه [http://usability.wikimedia.org/wiki/Talk:Prototype هذه]. بإمكانك طرح الموضوعات الأخرى هناك أيضا. إذا رأيت أيه مشكله فى النظام الجديد، بإمكانك ترك الملاحظات فى [http://usability.wikimedia.org/wiki/Talk:Releases/Acai صفحه نقاش مشروع Acai] أو من خلال [https://bugzilla.wikimedia.org Bugzilla].
+لمعرفه المزيد حول المشروع أو للمشاركه فيه، بإمكانك زياره صفحه [http://usability.wikimedia.org Usability Initiative]. هناك ستجد معلومات حول منحنا، وأبحاثنا، وتصاميمنا، وتطويراتنا، وإصداراتنا. لكى تطرح الأسئله أو لكى تترك انطباعك العام، بإمكانك استخدام صفحه المناقشه [http://usability.wikimedia.org/wiki/Talk:Prototype هذه]. بإمكانك طرح الموضوعات الأخرى هناك أيضا. إذا رأيت أيه مشكله فى النظام الجديد، بإمكانك ترك الملاحظات فى [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco صفحه نقاش مشروع Babaco] أو من خلال [https://bugzilla.wikimedia.org Bugzilla].
 
 شكراً ونتمنى سماع رأيك!
 </div>',
@@ -525,7 +525,7 @@ $messages['be-tarask'] = array(
 Новыя і палепшаныя значкі дазваляюць лягчэй зразумець якія дзеяньні выконвае кожная прылада. Адчыняемыя сэктары зьмяньшаюць тлум, захоўваючы рэдка выкарыстоўваемыя прылады для кліку мышкай. Дапаможны падзел забясьпечвае хуткі доступ да прыкладаў па найбольш выкарыстоўваемым тыпам вікі-метак.
 <div style="clear:both;"></div>
 == Як далучыцца ==
-Каб даведацца болей пра праект, ці ці прыняць у ім удзел, калі ласка наведайце [http://usability.wikimedia.org Вікі-сайт ініцыятывы Usability].  Там Вы знойдзіце інфармацыю пра нашыя гранты, дасьледаваньні, дызайн + распрацоўкі і рэлізы.  Каб задаць пытаньні ці заставіць водгук, калі ласка, карыстайцеся нашай [http://usability.wikimedia.org/wiki/Talk:Prototype старонкай абмеркаваньня прататыпу].  Для рашэньня неадкладных пытаньняў, калі ласка, карыстайцеся адпаведныя старонкі абмеркаваньня.  Калі Вы знайшлі памылку, калі ласка, застаўце свой камэнтар на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai старонцы абмеркаваньня Acai] ці праз выкарыстаньне [https://bugzilla.wikimedia.org Bugzilla].
+Каб даведацца болей пра праект, ці ці прыняць у ім удзел, калі ласка наведайце [http://usability.wikimedia.org Вікі-сайт ініцыятывы Usability].  Там Вы знойдзіце інфармацыю пра нашыя гранты, дасьледаваньні, дызайн + распрацоўкі і рэлізы.  Каб задаць пытаньні ці заставіць водгук, калі ласка, карыстайцеся нашай [http://usability.wikimedia.org/wiki/Talk:Prototype старонкай абмеркаваньня прататыпу].  Для рашэньня неадкладных пытаньняў, калі ласка, карыстайцеся адпаведныя старонкі абмеркаваньня.  Калі Вы знайшлі памылку, калі ласка, застаўце свой камэнтар на [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco старонцы абмеркаваньня Babaco] ці праз выкарыстаньне [https://bugzilla.wikimedia.org Bugzilla].
 
 Дзякуй, мы чакаем Вашых водгукаў!',
 );
@@ -612,7 +612,7 @@ $messages['bg'] = array(
 Там ще намерите информация за дарението, с което работим, изследванията, дизайните и разработките ни, както и готовите резултати. 
 * За въпроси или обратна връзка, използвайте нашата [http://usability.wikimedia.org/wiki/Talk:Prototype работна дискусионна страница].
 * За да коментирате конкретни въпроси по страниците, използвайте прилежащите беседи. 
-* Ако откриете бъгове, моля, пишете на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai беседата на Releases/Acai] или в [https://bugzilla.wikimedia.org Бъгзила]. 
+* Ако откриете бъгове, моля, пишете на [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco беседата на Releases/Babaco] или в [https://bugzilla.wikimedia.org Бъгзила]. 
 
 Благодарим ви и очакваме вашите отзиви!',
 );
@@ -812,7 +812,7 @@ Novi sistem navigacije čini jednostavnije da se vidi gdje ste i šta radite, ka
 Nove i poboljšane ikone prikazuju akcije koje svaki alat izvrši dosta pregledijim. Proširive sekcije smanjuju traku dok čuvaju ne mnogo korištene alate sakrivene, ali dostupne u jednom kliku. Sekcija pomoći omogućuje brzi pristup referencama za zajedničku upotrebu wiki jezika.
 <div style="clear:both;"></div>
 == Kako se uključiti ==
-Da biste naučili više o projektu, posjetite [http://usability.wikimedia.org wiki Inicijative upotrebljivosti]. Tamo ćete naći informacije o našem istraživanju, dizajnu, razvoju i izdanjima. Da biste pitali ili ostavili opći fidbek, molimo koristite našu [http://usability.wikimedia.org/wiki/Talk:Prototype probnu stranicu za razgovor]. Da biste komentirali određenu temu, molimo koristite povezanu stranicu za razgovor. Ako nađete grešku, molimo ostavite komentar na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai stranici za razgovor izdanja] ili putem [https://bugzilla.wikimedia.org Bugzille].
+Da biste naučili više o projektu, posjetite [http://usability.wikimedia.org wiki Inicijative upotrebljivosti]. Tamo ćete naći informacije o našem istraživanju, dizajnu, razvoju i izdanjima. Da biste pitali ili ostavili opći fidbek, molimo koristite našu [http://usability.wikimedia.org/wiki/Talk:Prototype probnu stranicu za razgovor]. Da biste komentirali određenu temu, molimo koristite povezanu stranicu za razgovor. Ako nađete grešku, molimo ostavite komentar na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco stranici za razgovor izdanja] ili putem [https://bugzilla.wikimedia.org Bugzille].
 
 Hvala i nadamo se da ćete nam se javiti!',
 );
@@ -896,7 +896,7 @@ La secció d'ajuda dóna un ràpid accés a una guia dels usos més comuns del m
 <div style=\"clear:both;\"></div>
 
 == Com podeu col·laborar ==
-Per a saber més o col·laborar amb el projecte, visiteu [http://usability.wikimedia.org la wiki de la ''Usability Initiative'']. Allà trobareu informació sobre el nostre projecte, recerca, disseny i desenvolupament i llançaments .  Per fer preguntes o deixar comentaris generals, per favor, usau la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype Pàgina de discussió del prototipus].  Per demanar temes concrets, per favor, usau les pàgines de discussió associades. Si trobau errors en el programari, deixau els vostres comentaris a [http://usability.wikimedia.org/wiki/Talk:Releases/Acai la pàgina de discussió del llançament Acai] o usau [https://bugzilla.wikimedia.org Bugzilla].
+Per a saber més o col·laborar amb el projecte, visiteu [http://usability.wikimedia.org la wiki de la ''Usability Initiative'']. Allà trobareu informació sobre el nostre projecte, recerca, disseny i desenvolupament i llançaments .  Per fer preguntes o deixar comentaris generals, per favor, usau la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype Pàgina de discussió del prototipus].  Per demanar temes concrets, per favor, usau les pàgines de discussió associades. Si trobau errors en el programari, deixau els vostres comentaris a [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco la pàgina de discussió del llançament Babaco] o usau [https://bugzilla.wikimedia.org Bugzilla].
 
 Moltes gràcies!",
 );
@@ -1000,7 +1000,7 @@ Nové a vylepšené ikonky zřetelněji označují, co který nástroj dělá. D
 Část s nápovědou poskytuje rychlý přístup k přehledu základního použití wikikódu.
 <div style="clear:both;"></div>
 == Jak se zapojit ==
-Pokud se chcete o projektu dozvědět více nebo se zapojit, navštivte [http://usability.wikimedia.org wiki Iniciativy použitelnosti]. Najdete tam informace o našem grantu, výzkumu, návrhu a vývoji i vydaných verzích. Pokud se chcete na něco zeptat nebo nám něco sdělit, použijte naši [http://usability.wikimedia.org/wiki/Talk:Prototype diskusi k prototypu]. Připomínky ke konkrétním tématům můžete psát na příslušné diskusní stránky. Pokud najdete nějakou chybu, můžete ji oznámit v [http://usability.wikimedia.org/wiki/Talk:Releases/Acai diskusi k vydání verze Acai] nebo pomocí [https://bugzilla.wikimedia.org Bugzilly].
+Pokud se chcete o projektu dozvědět více nebo se zapojit, navštivte [http://usability.wikimedia.org wiki Iniciativy použitelnosti]. Najdete tam informace o našem grantu, výzkumu, návrhu a vývoji i vydaných verzích. Pokud se chcete na něco zeptat nebo nám něco sdělit, použijte naši [http://usability.wikimedia.org/wiki/Talk:Prototype diskusi k prototypu]. Připomínky ke konkrétním tématům můžete psát na příslušné diskusní stránky. Pokud najdete nějakou chybu, můžete ji oznámit v [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusi k vydání verze Babaco] nebo pomocí [https://bugzilla.wikimedia.org Bugzilly].
 
 Děkujeme a budeme se těšit na vaše názory!',
 );
@@ -1075,7 +1075,7 @@ Gosodwyd eiconauNew-and-improved icons make it clearer what action each tool per
 The help section provides quick access to a reference for common uses of wiki-markup.
 <div style=\"clear:both;\"></div>
 == How to get involved ==
-To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
+To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
 
 Thanks and we look forward to hearing from you!",
 );
@@ -1158,7 +1158,7 @@ Hjælpeafsnittet giver hurtig adgang til en reference over almindeligt brugte wi
 <div style="clear:both;"></div>
 
 == Hvordan du kan deltage ==
-For at få mere at vide om projektet eller for at deltage, kan du besøge [http://usability.wikimedia.org wikien for initiativet for brugervenlighed]. Der finder du information om vores bevillinger, forskning, design & udvikling og udgaver. Til at stille spørgsmål eller komme med generelle kommentarer kan du bruge vores [http://usability.wikimedia.org/wiki/Talk:Prototype diskusionsside for prototypen]. For at tage specifikke emner op brug venligst de respektive diskussionssider. Hvis du finder fejl, bedes du venligst kommentere dette på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiudgavens diskussionsside] eller [https://bugzilla.wikimedia.org Bugzilla].
+For at få mere at vide om projektet eller for at deltage, kan du besøge [http://usability.wikimedia.org wikien for initiativet for brugervenlighed]. Der finder du information om vores bevillinger, forskning, design & udvikling og udgaver. Til at stille spørgsmål eller komme med generelle kommentarer kan du bruge vores [http://usability.wikimedia.org/wiki/Talk:Prototype diskusionsside for prototypen]. For at tage specifikke emner op brug venligst de respektive diskussionssider. Hvis du finder fejl, bedes du venligst kommentere dette på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babacoudgavens diskussionsside] eller [https://bugzilla.wikimedia.org Bugzilla].
 
 Tak, vi ser frem til at høre fra dig!',
 );
@@ -1246,7 +1246,7 @@ Der Hilfeabschnitt erlaubt den schnellen Zugriff auf häufig verwendete Wiki-Syn
 <div style="clear:both;"></div>
 
 == Wie kann ich mich daran beteiligen? ==
-Wenn du mehr über das Projekt erfahren willst oder dich selbst daran beteiligen möchtest, besuche hierzu das [http://usability.wikimedia.org Wiki der Benutzerfreundlichkeitsinitiative]. Dort findest du neben Informationen zu unserer Spende und den Studien, die im Rahmen des Projektes durchgeführt werden, auch Details zum Design der Beta, ihrer Entwicklung und zu neuen Versionen. Für Fragen oder allgemeine Rückmeldungen steht die [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionsseite des Prototyps] zur Verfügung. Für spezielle Themen eignen sich die entsprechenden dazugehörigen Diskussionsseiten. Solltest du Fehler („Bugs“) entdecken, hinterlasse bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Acai einen entsprechenden Hinweis oder melde die Fehler über [https://bugzilla.wikimedia.org Bugzilla].
+Wenn du mehr über das Projekt erfahren willst oder dich selbst daran beteiligen möchtest, besuche hierzu das [http://usability.wikimedia.org Wiki der Benutzerfreundlichkeitsinitiative]. Dort findest du neben Informationen zu unserer Spende und den Studien, die im Rahmen des Projektes durchgeführt werden, auch Details zum Design der Beta, ihrer Entwicklung und zu neuen Versionen. Für Fragen oder allgemeine Rückmeldungen steht die [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionsseite des Prototyps] zur Verfügung. Für spezielle Themen eignen sich die entsprechenden dazugehörigen Diskussionsseiten. Solltest du Fehler („Bugs“) entdecken, hinterlasse bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Babaco einen entsprechenden Hinweis oder melde die Fehler über [https://bugzilla.wikimedia.org Bugzilla].
 
 Vielen Dank, wir freuen uns auf dein Feedback!',
 );
@@ -1297,7 +1297,7 @@ Der Hilfeabschnitt erlaubt den schnellen Zugriff auf häufig verwendete Wiki-Syn
 <div style="clear:both;"></div>
 
 == Wie kann man sich daran beteiligen? ==
-Wenn Sie mehr über das Projekt erfahren wollen oder sich selbst daran beteiligen möchten, besuchen Sie hierzu das [http://usability.wikimedia.org Wiki der Benutzerfreundlichkeitsinitiative]. Dort finden Sie neben Informationen zu unserer Spende und den Studien, die im Rahmen des Projektes durchgeführt werden, auch Details zum Design der Beta, ihrer Entwicklung und zu neuen Versionen. Für Fragen oder allgemeine Rückmeldungen steht die [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionsseite des Prototyps] zur Verfügung. Für spezielle Themen eignen sich die entsprechenden dazugehörigen Diskussionsseiten. Sollten Sie Fehler („Bugs“) entdecken, hinterlassen Sie bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Acai einen entsprechenden Hinweis oder melden Sie die Fehler über [https://bugzilla.wikimedia.org Bugzilla].
+Wenn Sie mehr über das Projekt erfahren wollen oder sich selbst daran beteiligen möchten, besuchen Sie hierzu das [http://usability.wikimedia.org Wiki der Benutzerfreundlichkeitsinitiative]. Dort finden Sie neben Informationen zu unserer Spende und den Studien, die im Rahmen des Projektes durchgeführt werden, auch Details zum Design der Beta, ihrer Entwicklung und zu neuen Versionen. Für Fragen oder allgemeine Rückmeldungen steht die [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionsseite des Prototyps] zur Verfügung. Für spezielle Themen eignen sich die entsprechenden dazugehörigen Diskussionsseiten. Sollten Sie Fehler („Bugs“) entdecken, hinterlassen Sie bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Babaco einen entsprechenden Hinweis oder melden Sie die Fehler über [https://bugzilla.wikimedia.org Bugzilla].
 
 Vielen Dank, wir freuen uns auf Ihr Feedback!',
 );
@@ -1462,7 +1462,7 @@ Nowe a pólěpšone symbole lěpjej rozjasnjuju, kótaru akciju kuždy rěd wuwj
 Wótrězk pomocy bitujo malsny pśistup na referencu wó powšyknem wužywanju wikijoweje syntaksy.
 <div style="clear:both;"></div>
 == Kak móžoš se wobźěliś ==
-Aby wěcej wó projekśe zgónił, abo wó tom, kak móžoš se wobźěliś, wóglědaj pšosym k [http://usability.wikimedia.org wikijeju iniciatiwy wužywajobnosći]. Tam namakajoš informacije wó našej koncesiji, slěźenju, designje + wuwiśu a nowych wersijach. Za pšašanja abo powšykne powěsći, wužyj naš [http://usability.wikimedia.org/wiki/Talk:Prototype diskusijny bok prototypa]. Aby wósebne temy wobjadnał, wužyj pšosym zwězane diskusijne boki. Jolic namakajoš programowe zmólki, zawóstaj pšosym swóje komentary na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai diskusijnem boku wersije Acai] abo wužyj [https://bugzilla.wikimedia.org Bugzilla].
+Aby wěcej wó projekśe zgónił, abo wó tom, kak móžoš se wobźěliś, wóglědaj pšosym k [http://usability.wikimedia.org wikijeju iniciatiwy wužywajobnosći]. Tam namakajoš informacije wó našej koncesiji, slěźenju, designje + wuwiśu a nowych wersijach. Za pšašanja abo powšykne powěsći, wužyj naš [http://usability.wikimedia.org/wiki/Talk:Prototype diskusijny bok prototypa]. Aby wósebne temy wobjadnał, wužyj pšosym zwězane diskusijne boki. Jolic namakajoš programowe zmólki, zawóstaj pšosym swóje komentary na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusijnem boku wersije Babaco] abo wužyj [https://bugzilla.wikimedia.org Bugzilla].
 
 Źěkujomy se a by se wjaselili wót tebje słyšaś.',
 );
@@ -1578,7 +1578,7 @@ $messages['el'] = array(
 Ο τομέας βοήθειας παρέχει γρήγορη πρόσβαση σε μια αναφορά κοινών χρήσεων της μορφοποίησης wiki.
 <div style="clear:both;"></div>
 == Πως να συμμετάσχετε==
-Για να μάθετε περισσότερα σχετικά με το εγχείρημα ή για να συμμετάσχετε, παρακαλούμε επισκεφθείτε το [http://usability.wikimedia.org wiki της Πρωτοβουλίας Χρηστικότητας].  Εκεί θα βρείτε πληροφορίες για την χορηγία, την έρευνα, τον σχεδιασμό και ανάπτυξη, και τις εκδόσεις.  Για να ρωτήσετε κάτι ή να σχολιάσετε, παρακαλούμε χρησιμοποιήστε την [http://usability.wikimedia.org/wiki/Talk:Prototype πρωτότυπη σελίδα συζήτησής] μας.  Για την αντιμετώπιση ιδιαίτερων θεμάτων, παρακαλούμε χρησιμοποιήστε τις σχετικές σελίδες συζήτησης.  Αν βρείτε σφάλματα, παρακαλούμε αφήστε τα σχόλιά σας στη [http://usability.wikimedia.org/wiki/Talk:Releases/Acai σελίδα συζήτησης της έκδοσης Acai] ή χρησιμοποιώντας το [https://bugzilla.wikimedia.org Bugzilla].
+Για να μάθετε περισσότερα σχετικά με το εγχείρημα ή για να συμμετάσχετε, παρακαλούμε επισκεφθείτε το [http://usability.wikimedia.org wiki της Πρωτοβουλίας Χρηστικότητας].  Εκεί θα βρείτε πληροφορίες για την χορηγία, την έρευνα, τον σχεδιασμό και ανάπτυξη, και τις εκδόσεις.  Για να ρωτήσετε κάτι ή να σχολιάσετε, παρακαλούμε χρησιμοποιήστε την [http://usability.wikimedia.org/wiki/Talk:Prototype πρωτότυπη σελίδα συζήτησής] μας.  Για την αντιμετώπιση ιδιαίτερων θεμάτων, παρακαλούμε χρησιμοποιήστε τις σχετικές σελίδες συζήτησης.  Αν βρείτε σφάλματα, παρακαλούμε αφήστε τα σχόλιά σας στη [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco σελίδα συζήτησης της έκδοσης Babaco] ή χρησιμοποιώντας το [https://bugzilla.wikimedia.org Bugzilla].
 
 Ευχαριστούμε και αναμένουμε την ανταπόκρισή σας!',
 );
@@ -1661,7 +1661,7 @@ Novaj kaj pli bonaj ikonoj klarigas la funkciojn de ĉiu ilo. Etendeblaj sekcioj
 La help-sekcio donas rapidan atingon al referenco por oftaj uzoj de vikia marklingvo.
 <div style="clear:both;"></div>
 == Kiel helpi ==
-Lerni plu pri la projekto aŭ helpi, bonvolu viziti la [http://usability.wikimedia.org vikio de la Iniciato pri Uzebleco]. Tie vi trovos informon pri nia subvencio, esplorado, dezegno & disvolvado, kaj eldonado. Demandi aŭ ĝenerale komenti, bonvolu uzi nian [http://usability.wikimedia.org/wiki/Talk:Prototype prototipa diskuto-paĝo]. Trakti specifajn temojn, bonvolu uzi la temajn diskuto-paĝojn. Se vi trovas cimojn, bonvolu komenti ĉe [http://usability.wikimedia.org/wiki/Talk:Releases/Acai eldona diskuto-paĝo de Acai] aŭ uzi [https://bugzilla.wikimedia.org Bugzilla].
+Lerni plu pri la projekto aŭ helpi, bonvolu viziti la [http://usability.wikimedia.org vikio de la Iniciato pri Uzebleco]. Tie vi trovos informon pri nia subvencio, esplorado, dezegno & disvolvado, kaj eldonado. Demandi aŭ ĝenerale komenti, bonvolu uzi nian [http://usability.wikimedia.org/wiki/Talk:Prototype prototipa diskuto-paĝo]. Trakti specifajn temojn, bonvolu uzi la temajn diskuto-paĝojn. Se vi trovas cimojn, bonvolu komenti ĉe [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco eldona diskuto-paĝo de Babaco] aŭ uzi [https://bugzilla.wikimedia.org Bugzilla].
 
 Dankegon, kaj ni antaŭĝojas viajn komentojn!',
 );
@@ -1749,7 +1749,7 @@ Nuevos y mejores iconos clarifican la acción de cada herramienta. Secciones exp
 La sección de ayuda proporciona acceso rápido a una referencia para usos comunes del lenguaje wiki.
 <div style="clear:both;"></div>
 == Cómo involucrarse ==
-Para aprender más acerca del proyecto o involucrarse, por favor visite la [http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrará información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación en general, por favor utilice nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión del prototipo].  Para plantear temas particulares, por favor use las páginas de discusión específicas.  Si encuentra errores, por favor deje sus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discusión de la versión Acai] o usando [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender más acerca del proyecto o involucrarse, por favor visite la [http://usability.wikimedia.org Iniciativa de usabilidad de wiki].  Allí encontrará información acerca de nuestra subvención, investigación, diseño + desarrollo, y versiones.  Para preguntar o dejar retroalimentación en general, por favor utilice nuestra [http://usability.wikimedia.org/wiki/Talk:Prototype página de discusión del prototipo].  Para plantear temas particulares, por favor use las páginas de discusión específicas.  Si encuentra errores, por favor deje sus comentarios en la [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco página de discusión de la versión Babaco] o usando [https://bugzilla.wikimedia.org Bugzilla].
 
 ¡Gracias, y esperamos saber pronto de usted!',
 );
@@ -1832,7 +1832,7 @@ Abiosa annab kiire ülevaate viki vormistuskeele tarvitatavamatest kasutusviisid
 <div style="clear:both;"></div>
 
 == Kuidas kaasa teha ==
-Lisateave projekti ja kaasategemise kohta on [http://usability.wikimedia.org kasutushõlpsuse algatuse vikis]. Sealt leiad teavet meie rahalise toetamise, uurimustöö, kujunduse, arendustöö ja väljalasete kohta. Küsimuste esitamiseks ja üldise tagasiside andmiseks kasuta palun meie [http://usability.wikimedia.org/wiki/Talk:Prototype katsetuste arutelulehekülge]. Isevärki teemade jaoks kasuta vastavaid arutelulehekülgi. Kui leiad vigu, jäta oma tähelepanekud [http://usability.wikimedia.org/wiki/Talk:Releases/Acai väljalaske aruteluleheküljele] või kasuta [https://bugzilla.wikimedia.org Bugzillat].
+Lisateave projekti ja kaasategemise kohta on [http://usability.wikimedia.org kasutushõlpsuse algatuse vikis]. Sealt leiad teavet meie rahalise toetamise, uurimustöö, kujunduse, arendustöö ja väljalasete kohta. Küsimuste esitamiseks ja üldise tagasiside andmiseks kasuta palun meie [http://usability.wikimedia.org/wiki/Talk:Prototype katsetuste arutelulehekülge]. Isevärki teemade jaoks kasuta vastavaid arutelulehekülgi. Kui leiad vigu, jäta oma tähelepanekud [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco väljalaske aruteluleheküljele] või kasuta [https://bugzilla.wikimedia.org Bugzillat].
 
 Aitäh, jääme su ettepanekuid ja tagasisidet ootama!',
 );
@@ -1908,7 +1908,7 @@ Ikono berria eta hobetuek erabili behar duzun tresna argiago erakusten dute. Gai
 Laguntza atalak tresna hauen erabilera amankomunetarako erreferentzia azkar batera eramango zaitu .
 <div style="clear:both;"></div>
 == Gehiago jakiteko ==
-Proiektuari buruz gehiago jakiteko edo parte hartzeko, joan zaitez [http://usability.wikimedia.org Erabilgarritasun Iniziatibaren wikira].  Orri horretan gure beka, ikerketa, diseinu + garapena, eta argitaratutako berriak ikusiko dituzu.  Galderak egiteko edo zure feedback orokorra uzteko, joan zaitez gure [http://usability.wikimedia.org/wiki/Talk:Prototype prototype eztabaida orrira]. Gai zehatzak helbideratzeko, erabili atxikitutako eztabaida orria.  Akatsik aurkitzen baduzu, utzi zure iruzkina [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release eztabaida orrian] edo [https://bugzilla.wikimedia.org Bugzilla] erabiliz.
+Proiektuari buruz gehiago jakiteko edo parte hartzeko, joan zaitez [http://usability.wikimedia.org Erabilgarritasun Iniziatibaren wikira].  Orri horretan gure beka, ikerketa, diseinu + garapena, eta argitaratutako berriak ikusiko dituzu.  Galderak egiteko edo zure feedback orokorra uzteko, joan zaitez gure [http://usability.wikimedia.org/wiki/Talk:Prototype prototype eztabaida orrira]. Gai zehatzak helbideratzeko, erabili atxikitutako eztabaida orria.  Akatsik aurkitzen baduzu, utzi zure iruzkina [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco release eztabaida orrian] edo [https://bugzilla.wikimedia.org Bugzilla] erabiliz.
 
 Milesker eta zure berri izateko irrikan gaude!',
 );
@@ -2013,7 +2013,7 @@ Uusista ja parannetuista kuvakkeista näkee helpommin, mitä mikäkin työkalu t
 Ohje-osiosta näkyy esimerkit wikimerkinnän yleiseen käyttöön nopeasti.
 <div style="clear:both;"></div>
 == Kuinka tulla mukaan ==
-Kuullaksesi lisää hankkeesta tai tullaksesi mukaan, käy [http://usability.wikimedia.org käytettävyyshankkeen wikissä].  Sieltä voit löytää tietoa koskien lahjoitusta, tutkimusta, suunnittelua, kehitystä ja julkaisuja.  Kysymyksiä tai yleistä palautetta voi jättää [http://usability.wikimedia.org/wiki/Talk:Prototype prototyypin keskustelusivulle].  Kohdistaaksesi viestit tiettyihin aiheisiin, käytä niihin liittyviä keskustelusivuja. Jos löysit ohjelmistovirheitä, jätä viestisi [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai-julkaisun keskustelusivulle] tai [https://bugzilla.wikimedia.org Bugzillaan].
+Kuullaksesi lisää hankkeesta tai tullaksesi mukaan, käy [http://usability.wikimedia.org käytettävyyshankkeen wikissä].  Sieltä voit löytää tietoa koskien lahjoitusta, tutkimusta, suunnittelua, kehitystä ja julkaisuja.  Kysymyksiä tai yleistä palautetta voi jättää [http://usability.wikimedia.org/wiki/Talk:Prototype prototyypin keskustelusivulle].  Kohdistaaksesi viestit tiettyihin aiheisiin, käytä niihin liittyviä keskustelusivuja. Jos löysit ohjelmistovirheitä, jätä viestisi [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco-julkaisun keskustelusivulle] tai [https://bugzilla.wikimedia.org Bugzillaan].
 
 Kiitos ja odotamme kuulumisiasi.',
 );
@@ -2101,7 +2101,7 @@ La section d’aide fournit un accès rapide à la documentation sur l’utilisa
 <div style="clear:both;"></div>
 
 == Comment s’impliquer ==
-Pour en savoir davantage à propos du projet ou pour s’y impliquer, visitez [http://usability.wikimedia.org le wiki de l’initiative d’utilisabilité]. Vous y trouverez des informations sur notre subvention, la recherche, la conception et le développement. Pour poser des questions ou pour laisser des commentaires, merci d’utiliser notre [http://usability.wikimedia.org/wiki/Talk:Prototype page de discussion sur le prototype]. Pour aborder des sujets particuliers, utilisez les pages de discussion associées. Si vous trouvez des bogues, merci de laisser un message sur [http://usability.wikimedia.org/wiki/Talk:Releases/Acai la page de discussion de la version Açai] ou via [https://bugzilla.wikimedia.org Bugzilla].
+Pour en savoir davantage à propos du projet ou pour s’y impliquer, visitez [http://usability.wikimedia.org le wiki de l’initiative d’utilisabilité]. Vous y trouverez des informations sur notre subvention, la recherche, la conception et le développement. Pour poser des questions ou pour laisser des commentaires, merci d’utiliser notre [http://usability.wikimedia.org/wiki/Talk:Prototype page de discussion sur le prototype]. Pour aborder des sujets particuliers, utilisez les pages de discussion associées. Si vous trouvez des bogues, merci de laisser un message sur [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco la page de discussion de la version Babaco] ou via [https://bugzilla.wikimedia.org Bugzilla].
 
 Merci, nous nous réjouissons de votre intérêt !',
 );
@@ -2259,7 +2259,7 @@ As novas e melloradas iconas fan máis clara a identificación da acción que re
 A sección de axuda proporciona un acceso rápido a unha referencia cos usos comúns do formato wiki.
 <div style="clear:both;"></div>
 == Como involucrarse ==
-Para coñecer máis sobre o proxecto ou involucrarse nel existe o [http://usability.wikimedia.org wiki da Iniciativa de usabilidade], onde se atopa a información sobre as nosas subvencións, investigacións, deseño e desenvolvemento e lanzamentos. Para facer preguntas ou valoracións xerais existe a nosa [http://usability.wikimedia.org/wiki/Talk:Prototype páxina de conversa do prototipo], así como outras páxinas de conversa asociadas a asuntos particulares. En caso de se atopar algún erro hai á disposición a [http://usability.wikimedia.org/wiki/Talk:Releases/Acai páxina de discusión da versión Acai] ou mesmo [https://bugzilla.wikimedia.org Bugzilla].
+Para coñecer máis sobre o proxecto ou involucrarse nel existe o [http://usability.wikimedia.org wiki da Iniciativa de usabilidade], onde se atopa a información sobre as nosas subvencións, investigacións, deseño e desenvolvemento e lanzamentos. Para facer preguntas ou valoracións xerais existe a nosa [http://usability.wikimedia.org/wiki/Talk:Prototype páxina de conversa do prototipo], así como outras páxinas de conversa asociadas a asuntos particulares. En caso de se atopar algún erro hai á disposición a [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco páxina de discusión da versión Babaco] ou mesmo [https://bugzilla.wikimedia.org Bugzilla].
 
 Grazas, e agardamos calquera opinión que nos axude a mellorar!',
 );
@@ -2359,7 +2359,7 @@ D Hilf-Sektion stellt e schnölle zuegang z Verfiegig zuen ere Quälle vu gängi
 <div style="clear:both;"></div>
 
 == Wie chan i mitmache? ==
-Go meh iber s Projäkt erfahre oder sälber mitmache, git s im [http://usability.wikimedia.org Wiki vu dr Benutzerfrejdligkeitsinitiative] meh Informatione, zem Byspel iber unseri Spänd, Forschig, Design un Entwicklig un au iber neji Versione. Fir Froge oder allgmeini Ruckmäldige stoht d [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionssyte vum Prototyp] z Verfiegig. Fir speziälli Theme het s di derzuegherige Diskussionssyte. Wänn Du Fähler („Bugs“) findsch, gib bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Acai e Hiiwys druf oder mäld d Fähler iber [https://bugzilla.wikimedia.org Bugzilla].
+Go meh iber s Projäkt erfahre oder sälber mitmache, git s im [http://usability.wikimedia.org Wiki vu dr Benutzerfrejdligkeitsinitiative] meh Informatione, zem Byspel iber unseri Spänd, Forschig, Design un Entwicklig un au iber neji Versione. Fir Froge oder allgmeini Ruckmäldige stoht d [http://usability.wikimedia.org/wiki/Talk:Prototype Diskussionssyte vum Prototyp] z Verfiegig. Fir speziälli Theme het s di derzuegherige Diskussionssyte. Wänn Du Fähler („Bugs“) findsch, gib bitte unter http://usability.wikimedia.org/wiki/Talk:Releases/Babaco e Hiiwys druf oder mäld d Fähler iber [https://bugzilla.wikimedia.org Bugzilla].
 
 Dankschen vilmol, mir freien is uf Dyy Ruckmäldig!',
 );
@@ -2453,7 +2453,7 @@ $messages['he'] = array(
 חלק העזרה מאפשר גישה מהירה לתיעוד רוב השימושים הנפוצים של תחביר ויקי.
 <div style="clear:both;"></div>
 == איך להצטרף ==
-כדי ללמוד עוד על המיזם או כדי להצטרף אליו, אנא בקרו ב[http://usability.wikimedia.org אתר הוויקי של יוזמת השימושיות]. שם תוכלו למצוא את כל המידע על המענק, המחקר, העיצוב והפיתוח, ושחרורי הגרסאות שלנו. כדי לשאול שאלות או להשאיר משוב כללי, אנא השתמשו ב[http://usability.wikimedia.org/wiki/Talk:Prototype דף השיחה על אב הטיפוס] שלנו. כדי לדון בנושאים מסוימים, אנא השתמשו בדפי השיחה המתאימים. אם אתם מוצאים באגים, אנא השאירו את הערותיכם ב[http://usability.wikimedia.org/wiki/Talk:Releases/Acai דף השיחה של הגרסה Acai] או ב[https://bugzilla.wikimedia.org באגזילה].
+כדי ללמוד עוד על המיזם או כדי להצטרף אליו, אנא בקרו ב[http://usability.wikimedia.org אתר הוויקי של יוזמת השימושיות]. שם תוכלו למצוא את כל המידע על המענק, המחקר, העיצוב והפיתוח, ושחרורי הגרסאות שלנו. כדי לשאול שאלות או להשאיר משוב כללי, אנא השתמשו ב[http://usability.wikimedia.org/wiki/Talk:Prototype דף השיחה על אב הטיפוס] שלנו. כדי לדון בנושאים מסוימים, אנא השתמשו בדפי השיחה המתאימים. אם אתם מוצאים באגים, אנא השאירו את הערותיכם ב[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco דף השיחה של הגרסה Babaco] או ב[https://bugzilla.wikimedia.org באגזילה].
 
 תודה, ואנו מקווים לשמוע מכם!',
 );
@@ -2546,7 +2546,7 @@ Nove i unaprijeđene ikonice jasnije ukazuju na to koju radnju vrši svaki alat.
 Odjeljak pomoći pruža brz pristup napomenama za opću uporabu wiki sintakse.
 <div style="clear:both;"></div>
 == Kako se uključiti==
-Kako biste saznali više o projektu ili se uključili, molimo posjetite [http://usability.wikimedia.org wiki Inicijative za uporabljivost]. Tamo ćete pronaći više informacija o našim potporama, istraživanjima, dizajnu + razvoju, te izdanjima. Za postavljanje pitanja ili ostavljanje općih povratnih informacija, molimo rabite našu [http://usability.wikimedia.org/wiki/Talk:Prototype stranicu za razgovor o prototipovima].  Za komentar o posebnoj temi, molimo rabite stranicu za razgovor iste.  Ukoliko ste pronašli greške (\'\'bug\'\'), molimo ostavite svoje komentare na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai stranici za razgovor o Acai izdanju] ili na [https://bugzilla.wikimedia.org Bugzilli].
+Kako biste saznali više o projektu ili se uključili, molimo posjetite [http://usability.wikimedia.org wiki Inicijative za uporabljivost]. Tamo ćete pronaći više informacija o našim potporama, istraživanjima, dizajnu + razvoju, te izdanjima. Za postavljanje pitanja ili ostavljanje općih povratnih informacija, molimo rabite našu [http://usability.wikimedia.org/wiki/Talk:Prototype stranicu za razgovor o prototipovima].  Za komentar o posebnoj temi, molimo rabite stranicu za razgovor iste.  Ukoliko ste pronašli greške (\'\'bug\'\'), molimo ostavite svoje komentare na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco stranici za razgovor o Babaco izdanju] ili na [https://bugzilla.wikimedia.org Bugzilli].
 
 Hvala Vam i nadamo se Vašim povratnim informacijama!',
 );
@@ -2626,7 +2626,7 @@ Nowe a polěpšene symbole lěpje znazornjuja, kotru akciju kóždy nastroj čin
 Wotrězk pomocy skići spěšny přistup na referencu za powšitkowne wužiwanje wikijoweje syntaksy.
 <div style="clear:both;"></div>
 == Kak móžeš so wobdźělić? ==
-Zo by wjace wo projekće zhonił, abo wo tym, kak móžeš so wobdźělić, wopytaj prošu [http://usability.wikimedia.org wiki iniciatiwy wužiwajomnosće]. Tam namakaš informacije wo našej koncesiji, slědźenju, designu + wuwiću a nowych wersijach. Za prašenja abo powšitkowne powěsćach, wužij prošu [http://usability.wikimedia.org/wiki/Talk:Prototype diskusijnu stronu prototypa]. Zo by wosebite temy wobjednał, wužij prošu zwjazane diskusijne strony. Jeli programowe zmylki namakaš, zawostaj prošu swoje komentary na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai diskusijnej stronje wersije Acai] abo wužij [https://bugzilla.wikimedia.org Bugzilla].
+Zo by wjace wo projekće zhonił, abo wo tym, kak móžeš so wobdźělić, wopytaj prošu [http://usability.wikimedia.org wiki iniciatiwy wužiwajomnosće]. Tam namakaš informacije wo našej koncesiji, slědźenju, designu + wuwiću a nowych wersijach. Za prašenja abo powšitkowne powěsćach, wužij prošu [http://usability.wikimedia.org/wiki/Talk:Prototype diskusijnu stronu prototypa]. Zo by wosebite temy wobjednał, wužij prošu zwjazane diskusijne strony. Jeli programowe zmylki namakaš, zawostaj prošu swoje komentary na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusijnej stronje wersije Babaco] abo wužij [https://bugzilla.wikimedia.org Bugzilla].
 
 Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
 );
@@ -2711,7 +2711,7 @@ Az új ikonok sokkal jobban reprezentálják, hogy melyik gomb mire való. A kin
 A Segítség részben a wiki-jelölőnyelv leggyakrabban használt elemeinek leírását találhatod meg.
 <div style="clear:both;"></div>
 == Hogyan vehetsz részt? ==
-Ha többet szeretnél tudni a projektről, vagy be szeretnél kapcsolódni, látogasd meg a [http://usability.wikimedia.org Usability Initiative wikiét].  Itt információkat találsz az indulásunkról, kutatásról, tervezésről és fejlesztéstől, valamint a kiadásainkról.  Kérdéseidet vagy visszajelzéseidet a [http://usability.wikimedia.org/wiki/Talk:Prototype prototípus megbeszélési lapján] várjuk.  Konkrét probléma orvosolásához keresd fel a megfelelő vitalapot.  Ha hibával találkoznál, hagyj üzenetet az [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai kiadás vitalapján] vagy a [https://bugzilla.wikimedia.org Bugzillán].
+Ha többet szeretnél tudni a projektről, vagy be szeretnél kapcsolódni, látogasd meg a [http://usability.wikimedia.org Usability Initiative wikiét].  Itt információkat találsz az indulásunkról, kutatásról, tervezésről és fejlesztéstől, valamint a kiadásainkról.  Kérdéseidet vagy visszajelzéseidet a [http://usability.wikimedia.org/wiki/Talk:Prototype prototípus megbeszélési lapján] várjuk.  Konkrét probléma orvosolásához keresd fel a megfelelő vitalapot.  Ha hibával találkoznál, hagyj üzenetet az [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco kiadás vitalapján] vagy a [https://bugzilla.wikimedia.org Bugzillán].
 
 Köszönjük, és várjuk a visszajelzésedet!',
 );
@@ -2806,7 +2806,7 @@ Le icones nove e melior clarifica le action que cata instrumento exeque. Le sect
 Le section de adjuta forni accesso rapide a un referentia pro usos commun del marcation wiki.
 <div style="clear:both;"></div>
 == Como participar ==
-Pro ulterior informationes super le projecto o pro participar, visita le [http://usability.wikimedia.org wiki del Initiativa de Usabilitate]. Ibi tu trovara informationes super nostre subvention, recerca, conception + disveloppamento, e edition de versiones. Pro poner questiones o lassar commentarios general, usa nostre [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion super le prototypo]. Pro discuter subjectos particular, usa le paginas de discussion dedicate a istes. Si tu trova defectos, lassa tu commentos in le [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina de discussion super editiones de Acai] o invia los a [https://bugzilla.wikimedia.org Bugzilla].
+Pro ulterior informationes super le projecto o pro participar, visita le [http://usability.wikimedia.org wiki del Initiativa de Usabilitate]. Ibi tu trovara informationes super nostre subvention, recerca, conception + disveloppamento, e edition de versiones. Pro poner questiones o lassar commentarios general, usa nostre [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion super le prototypo]. Pro discuter subjectos particular, usa le paginas de discussion dedicate a istes. Si tu trova defectos, lassa tu commentos in le [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pagina de discussion super editiones de Babaco] o invia los a [https://bugzilla.wikimedia.org Bugzilla].
 
 Gratias, e nos spera audir de te!',
 );
@@ -2891,7 +2891,7 @@ Bagian "Bantuan" memberikan penjelasan untuk markah wiki yang sering digunakan.
 Bagian yang membantu memberikan akses cepat ke referensi untuk penggunaan umum markah wiki .
 <div style="clear:both;"></div>
 == Bagaimana Anda dapat terlibat ==
-Untuk mempelajari lebih lanjut tentang proyek ini atau terlibat di dalamnya, silakan kunjungi [http://usability.wikimedia.org Wiki Inisiatif Kebergunaan]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis terbaru. Untuk mengajukan pertanyaan atau meninggalkan umpan balik, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype halaman pembicaraan] prototipe kami. Untuk membahas tentang subyek tertentu, silakan gunakan halaman diskusi yang terkait. Jika Anda menemukan bug, silakan tinggalkan komentar pada [http://usability.wikimedia.org/wiki/Talk:Releases/Acai halaman pembicaraan rilis Acai] atau lewat [https://bugzilla.wikimedia.org Bugzilla].
+Untuk mempelajari lebih lanjut tentang proyek ini atau terlibat di dalamnya, silakan kunjungi [http://usability.wikimedia.org Wiki Inisiatif Kebergunaan]. Di sana Anda akan menemukan informasi tentang hibah, penelitian, desain + pengembangan, dan rilis terbaru. Untuk mengajukan pertanyaan atau meninggalkan umpan balik, silakan gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype halaman pembicaraan] prototipe kami. Untuk membahas tentang subyek tertentu, silakan gunakan halaman diskusi yang terkait. Jika Anda menemukan bug, silakan tinggalkan komentar pada [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco halaman pembicaraan rilis Babaco] atau lewat [https://bugzilla.wikimedia.org Bugzilla].
 
 Terima kasih dan kami menunggu pendapat Anda!',
 );
@@ -2999,7 +2999,7 @@ Il nuovo sistema di navigazione rende più semplice vedere dove ti trovi e cosa 
 Le icone nuove e migliorate rendono più chiare le azioni che ciascuno strumento esegue. Le sezioni espandibili riducono l\'ingombro mantenendo gli strumenti usati di rado a un clic di distanza. La sezione di aiuto fornisce un rapido accesso a un riferimento per gli usi comuni della sintassi wiki.
 <div style="clear:both;"></div>
 == Come aiutare ==
-Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussione delle versioni di Acai] o usa [https://bugzilla.wikimedia.org Bugzilla]. Oppure, [http://it.wikipedia.org/wiki/Progetto:Coordinamento/Usabilit%C3%A0 qui] puoi fare segnalazioni o dare pareri di ogni genere in italiano. 
+Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pagina di discussione delle versioni di Babaco] o usa [https://bugzilla.wikimedia.org Bugzilla]. Oppure, [http://it.wikipedia.org/wiki/Progetto:Coordinamento/Usabilit%C3%A0 qui] puoi fare segnalazioni o dare pareri di ogni genere in italiano. 
 
 Grazie; non vediamo l\'ora di sentirti.',
 );
@@ -3080,7 +3080,7 @@ $messages['ja'] = array(
 新しく改良されたアイコンにより、各ツールの機能をより明確に表現できるようになりました。編集ツールバーの各部分について表示・非表示を切り替えられるようにすることで、ツールバーのデザインを簡潔に保ちつつ、散発的に使用される機能にもすぐアクセスできるようにしました。ツールバーにヘルプを組み込むことで、一般的なウィキ・マークアップの説明を素早く参照できるようにしました。
 <div style="clear:both;"></div>
 == 参加するには ==
-このプロジェクトについてより詳しいことが知りたい、あるいは参加したい場合は、[http://usability.wikimedia.org Usability Initiative のウィキ]を訪れてみてください。我々の助成、研究、設計・開発、およびリリースについての情報が得られます。質問をしたり全般的なフィードバックを伝えたい場合は、[http://usability.wikimedia.org/wiki/Talk:Prototype プロトタイプ議論ページ]を使ってください。特定の問題を解決したい場合は、該当する議論ページを使ってください。バグを発見した場合は、[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai リリース議論ページ]か [https://bugzilla.wikimedia.org Bugzilla]を使ってコメントを伝えてください。
+このプロジェクトについてより詳しいことが知りたい、あるいは参加したい場合は、[http://usability.wikimedia.org Usability Initiative のウィキ]を訪れてみてください。我々の助成、研究、設計・開発、およびリリースについての情報が得られます。質問をしたり全般的なフィードバックを伝えたい場合は、[http://usability.wikimedia.org/wiki/Talk:Prototype プロトタイプ議論ページ]を使ってください。特定の問題を解決したい場合は、該当する議論ページを使ってください。バグを発見した場合は、[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco リリース議論ページ]か [https://bugzilla.wikimedia.org Bugzilla]を使ってコメントを伝えてください。
 
 あなたからの意見を楽しみに待っています。',
 );
@@ -3163,7 +3163,7 @@ $messages['ka'] = array(
 დახმარების სექცია სწრაფად მიგითითებთ ვიკი-მარკაპის გამოყენების დეტალებზე.
 <div style="clear:both;"></div>
 == მონაწილეობის მიღება ==
-პროექტზე მეტი ინფორმაციის ან მასში მონაწილეობის მისაღებად, გთხოვთ ეწვიოთ [http://usability.wikimedia.org გამოყენებადობის ინიციატივის ვიკის].  აქ თქვენ იპოვით ინფორმაციას ჩვენს გრანტზე, კვლევაზე, დიზაინსა და დამუშავებაზე. შეკითხვებისთვის ან ზოგადი მოსაზრებებისთვის, გთხოვთ გამოიყენოთ ჩვენი [http://usability.wikimedia.org/wiki/Talk:Prototype განხილვის გვერდის პროტოტიპი].  კონკრეტული თემების განხილვისთვის, გთხოვთ გამოიყენოთ მათთან დაკავშირებული განხილვის გვერდები. თუ პროგრამაში შეცდომებს იპოვით, გთხოვთ კომენტარი დატოვოთ [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai რელიზის განხილვის გვერზე] ან [https://bugzilla.wikimedia.org ბაგზილას] გამოყენებით.
+პროექტზე მეტი ინფორმაციის ან მასში მონაწილეობის მისაღებად, გთხოვთ ეწვიოთ [http://usability.wikimedia.org გამოყენებადობის ინიციატივის ვიკის].  აქ თქვენ იპოვით ინფორმაციას ჩვენს გრანტზე, კვლევაზე, დიზაინსა და დამუშავებაზე. შეკითხვებისთვის ან ზოგადი მოსაზრებებისთვის, გთხოვთ გამოიყენოთ ჩვენი [http://usability.wikimedia.org/wiki/Talk:Prototype განხილვის გვერდის პროტოტიპი].  კონკრეტული თემების განხილვისთვის, გთხოვთ გამოიყენოთ მათთან დაკავშირებული განხილვის გვერდები. თუ პროგრამაში შეცდომებს იპოვით, გთხოვთ კომენტარი დატოვოთ [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco რელიზის განხილვის გვერზე] ან [https://bugzilla.wikimedia.org ბაგზილას] გამოყენებით.
 
 გმადლობთ და ველით თქვენს გამოხმაურებებს!',
 );
@@ -3244,7 +3244,7 @@ $messages['km'] = array(
 កូនរូបតំណាងថ្មីៗនិងកែលំអហើយ​ធ្វើអោយលោកអ្នកកាន់តែងាយស្រួលដឹងពីមុខងាររបស់ឧបករណ៍នីមួយៗ។ ផ្នែកពង្រីកបន្ថែម​ឆ្លាស់ការបើកបិទឧបករណ៍ដែលមិនសូវប្រើដើម្បីកាត់បន្ថយភាពរញ៉េរញ៉ៃ។ ផ្នែកជំនួយ​អាចអោយលោកអ្នកចូលទៅមើល​របៀបប្រើប្រាស់របស់ឧបករណ៍នានាបានកាន់តែរហ័សជាងមុន។
 <div style="clear:both;"></div>
 == របៀបចូលរួម ==
-ដើម្បីយល់ដឹងបន្ថែមឬចូលរួមក្នុគំរោងនេះ សូមចូលទៅកាន់[http://usability.wikimedia.org Usability Initiative\'s wiki]។ លោកអ្នកអាចរកឃើញព័ត៌មានអំពី សម្បទាន ការស្រាវជ្រាវ ការឌីហ្សាញ + ការអភិវឌ្ឍន៍ និងការចេញផ្សាយរបស់យើងខ្ញុំ។ ដើម្បីសួរសំណួរឬផ្ដល់មតិយោបល់ផ្សេងៗ សូមប្រើប្រាស់[http://usability.wikimedia.org/wiki/Talk:Prototype ទំព័រពិភាក្សាបឋម]របស់យើងខ្ញុំ។ សំរាប់សំណួរអំពីប្រធានបទពិសេសៗ សូមប្រើប្រាស់ទំព័រពិភាក្សា​ដែលទាក់ទិន។ ប្រសិនបើលោកអ្នកជួបប្រទះbug សូមដាក់វិចាររបស់អ្នកនៅ [http://usability.wikimedia.org/wiki/Talk:Releases/Acai ទំព័រពិភាក្សា Acai] ឬដោយប្រើ[https://bugzilla.wikimedia.org Bugzilla]។
+ដើម្បីយល់ដឹងបន្ថែមឬចូលរួមក្នុគំរោងនេះ សូមចូលទៅកាន់[http://usability.wikimedia.org Usability Initiative\'s wiki]។ លោកអ្នកអាចរកឃើញព័ត៌មានអំពី សម្បទាន ការស្រាវជ្រាវ ការឌីហ្សាញ + ការអភិវឌ្ឍន៍ និងការចេញផ្សាយរបស់យើងខ្ញុំ។ ដើម្បីសួរសំណួរឬផ្ដល់មតិយោបល់ផ្សេងៗ សូមប្រើប្រាស់[http://usability.wikimedia.org/wiki/Talk:Prototype ទំព័រពិភាក្សាបឋម]របស់យើងខ្ញុំ។ សំរាប់សំណួរអំពីប្រធានបទពិសេសៗ សូមប្រើប្រាស់ទំព័រពិភាក្សា​ដែលទាក់ទិន។ ប្រសិនបើលោកអ្នកជួបប្រទះbug សូមដាក់វិចាររបស់អ្នកនៅ [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco ទំព័រពិភាក្សា Babaco] ឬដោយប្រើ[https://bugzilla.wikimedia.org Bugzilla]។
 
 យើងខ្ញុំនឹងទន្ទឹមរង់ចាំមតិយោបល់ពីលោកអ្នក។ សូមអរគុណ។',
 );
@@ -3337,7 +3337,7 @@ $messages['ko'] = array(
 == 참여하기 ==
 
 위키미디어 사용성 향상 프로젝트에 참여하려면 [http://usability.wikimedia.org 프로젝트 위키](영어)에 방문해주세요. 프로젝트에서 만든 연구 결과, 디자인, 개발 제품 등을 볼 수 있습니다. 일반적인 질문이나 조언이 있다면 [http://usability.wikimedia.org/wiki/Talk:Prototype 스킨 토론란](영어)를 이용해주시면 됩니다. 특정 주제에 대해서는 해당 토론란을 이용해주세요.
-버그를 발견했다면  [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai 토론란](영어)나 [https://bugzilla.wikimedia.org Bugzilla](영어)에 해당 사실을 알려주시면 됩니다.
+버그를 발견했다면  [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco 토론란](영어)나 [https://bugzilla.wikimedia.org Bugzilla](영어)에 해당 사실을 알려주시면 됩니다.
 
 우리는 당신의 의견에 귀기울일 것입니다. 감사합니다.',
 );
@@ -3449,7 +3449,7 @@ Neu un bäßer Mini-Beldsche maache kloorer, wat e Wärkzüsch deiht. Verjrüü�
 <div style="clear:both;"></div>
 
 == Wi mer metmaache kann ==
-Öm mieh do drövver ze liehre, wat uns Projäk deiht, un wi mer doh beidraare kann, jangk op et [http://usability.wikimedia.org Wiki <i lang="en">Usability Initiative</i> ier Wiki]. Doh fengkß De Aanjabe üvver uns Finanze, Fochschung, Jeschtalldung un Äntwecklung, un Veröffentleschunge. Öm Froore loßzewääde odder alljemein Röckmäldunge affzejävve, jangk övver uns [http://usability.wikimedia.org/wiki/Talk:Prototype Prottotüpe-Klaafsigg]. Öm beschtemmpte Saache aanzeschpäsche, nämm de zopaß Klaafsigge. Wann de Fähler fengks, schrief Ding Beobachtunge op de [http://usability.wikimedia.org/wiki/Talk:Releases/Acai <i lang="pt-BR">Acai</i> Klaafsigg] udder nämm dr [https://bugzilla.wikimedia.org <i lang="en">Bugzilla</i>] doför.
+Öm mieh do drövver ze liehre, wat uns Projäk deiht, un wi mer doh beidraare kann, jangk op et [http://usability.wikimedia.org Wiki <i lang="en">Usability Initiative</i> ier Wiki]. Doh fengkß De Aanjabe üvver uns Finanze, Fochschung, Jeschtalldung un Äntwecklung, un Veröffentleschunge. Öm Froore loßzewääde odder alljemein Röckmäldunge affzejävve, jangk övver uns [http://usability.wikimedia.org/wiki/Talk:Prototype Prottotüpe-Klaafsigg]. Öm beschtemmpte Saache aanzeschpäsche, nämm de zopaß Klaafsigge. Wann de Fähler fengks, schrief Ding Beobachtunge op de [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco <i>Babaco</i> Klaafsigg] udder nämm dr [https://bugzilla.wikimedia.org <i lang="en">Bugzilla</i>] doför.
 
 Mer freue uns, vun Üsch ze hüüre!',
 );
@@ -3553,7 +3553,7 @@ Den Abschnitt mat der Hëllef erlaabt e séieren Zougrëff mat déi am dackste b
 <div style="clear:both;"></div>
 
 == Wéi Dir matmaache kënnt ==
-Fir méi iwwer dëse Projet gewuer ze ginn oder fir matzemaachen, gitt w.e.g. op d\'[http://usability.wikimedia.org Benotzerfrëndlechkeets-Initiative Wiki]. Do fannt Dir Informatiounen iwwer eise Financement, eis Recherche, eisen Design, eis Entwécklung an déi verschidde Versiounen. Fir Froen ze stellen oder en allgemenge Feedback ze hannerloossen benotzt w.e.g. eis [http://usability.wikimedia.org/wiki/Talk:Prototype Prototyp-Diskussiouns-Säit].  Fir méi prezies Sujeten ze diskutéieren benotzt w.e.g. déi jeweileg Diskussiounssäiten. Wann Dir Feeler fannt da mellt eis déi w.e.g. op der [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai release Diskussiounssäit] oder andeem Dir [https://bugzilla.wikimedia.org Bugzilla] benotzt.
+Fir méi iwwer dëse Projet gewuer ze ginn oder fir matzemaachen, gitt w.e.g. op d\'[http://usability.wikimedia.org Benotzerfrëndlechkeets-Initiative Wiki]. Do fannt Dir Informatiounen iwwer eise Financement, eis Recherche, eisen Design, eis Entwécklung an déi verschidde Versiounen. Fir Froen ze stellen oder en allgemenge Feedback ze hannerloossen benotzt w.e.g. eis [http://usability.wikimedia.org/wiki/Talk:Prototype Prototyp-Diskussiouns-Säit].  Fir méi prezies Sujeten ze diskutéieren benotzt w.e.g. déi jeweileg Diskussiounssäiten. Wann Dir Feeler fannt da mellt eis déi w.e.g. op der [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco release Diskussiounssäit] oder andeem Dir [https://bugzilla.wikimedia.org Bugzilla] benotzt.
 
 Merci a mir freën eis fir vun Iech ze héieren!',
 );
@@ -3732,7 +3732,7 @@ $messages['mk'] = array(
 Менито за помош ви дава брз пристап кон објасненија за вообичаената употреба на вики-ознаките (кодот).
 <div style="clear:both;"></div>
 == Како да се приклучите ==
-За да дознаете повеќе за проектот или пак да се вклучите, посетете го [http://usability.wikimedia.org Викито на Иницијативата за употребливост].  Таму ќе најдете информации за нашата дотација, истражување, дизајн + развој и изданија.  Ако сакате да поставувате прашања или да искажете општо мислење, обратете ни се на нашата [http://usability.wikimedia.org/wiki/Talk:Prototype прототип-страница за разговор].  За дискусија по некоја конкретна тема, користете ги посебните страници за разговор наведени таму.  Ако најдете бубачки, тогаш оставете коментар на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai страница за разговор на Acai] или пак употребете ја [https://bugzilla.wikimedia.org Bugzilla].
+За да дознаете повеќе за проектот или пак да се вклучите, посетете го [http://usability.wikimedia.org Викито на Иницијативата за употребливост].  Таму ќе најдете информации за нашата дотација, истражување, дизајн + развој и изданија.  Ако сакате да поставувате прашања или да искажете општо мислење, обратете ни се на нашата [http://usability.wikimedia.org/wiki/Talk:Prototype прототип-страница за разговор].  За дискусија по некоја конкретна тема, користете ги посебните страници за разговор наведени таму.  Ако најдете бубачки, тогаш оставете коментар на [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco страница за разговор на Babaco] или пак употребете ја [https://bugzilla.wikimedia.org Bugzilla].
 
 Ви благодариме и ги очекуваме вашите мислења!',
 );
@@ -3836,7 +3836,7 @@ $messages['ml'] = array(
 പുതിയ മെച്ചപ്പെടുത്തിയ ഐകോണുകൾ, ഓരോ ഉപകരണവും ചെയ്യുന്നതെന്താണെന്നു വ്യക്തമായി വെളിപ്പെടുത്തുന്നു. വികസിപ്പിക്കാവുന്ന ഭാഗങ്ങൾ തുടർച്ചയായി ഉപയോഗിക്കാത്തവ മറച്ചു വെയ്ക്കുന്നു, അതേ സമയം വീണ്ടും വീണ്ടും ഉപയോഗിക്കുന്നവ ഒരൊറ്റ ക്ലിക്കിൽ തന്നെ ലഭ്യവുമാണ്.
 <div style="clear:both;"></div>
 == എപ്രകാരം പങ്കെടുക്കാം ==
-പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Acai അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലെങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
+പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലെങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
 
 താങ്കളുടെ അഭിപ്രായം അറിയാൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു! നന്ദി.',
 );
@@ -3927,7 +3927,7 @@ Arca-arca yang baharu dan diperbaiki menjadikan tindakan yang akan dilakukan bag
 Bahagian bantuan membekalkan capaian pantas kepada rujukan bagi penanda wiki yang sering digunakan.
 <div style="clear:both;"></div>
 == Cara untuk menyertai ==
-Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran, kajian, rekaan + pembangunan, dan keluaran-keluaran kami. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi persoalan suatu subjek khusus, sila gunakan laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Acai laman perbincangan keluaran Acai] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
+Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran, kajian, rekaan + pembangunan, dan keluaran-keluaran kami. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi persoalan suatu subjek khusus, sila gunakan laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco laman perbincangan keluaran Babaco] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
 
 Terima kasih, kami berharap untuk mendengar daripada anda!',
 );
@@ -4009,7 +4009,7 @@ Is-sezzjoni tal-għajnuna tipprovdi aċċess istantanju għal referenza tas-sint
 <div style=\"clear:both;\"></div>
 
 == Kif tgħin ==
-Biex titgħallem iktar fuq dan il-proġett jew tagħti l-għajnuna tiegħek, żur l-[http://usability.wikimedia.org wiki tal-Inizzjattiva ta' Użu]. Hemmhekk, inti tista' ssib informazzjoni fuq is-sovvenzjoni tagħna, it-tfittxija, id-disinn u l-iżvilupp, u verżjonijiet ġodda. Biex tistaqsi mistoqsijiet jew tħalli r-rispons tiegħek, uża l-[http://usability.wikimedia.org/wiki/Talk:Prototype paġna ta' diskussjoni fuq il-prototipi].  Biex tindirizza suġġetti partikulari, jekk jogħġbok uża l-paġni ta' diskussjoni assoċjati. Jekk issib xi żbalji, ħalli l-kummenti tiegħek fuq il-[http://usability.wikimedia.org/wiki/Talk:Releases/Acai paġna ta' diskussjoni tal-verżjonijiet Acai] jew agħmel użu minn [https://bugzilla.wikimedia.org Bugzilla].
+Biex titgħallem iktar fuq dan il-proġett jew tagħti l-għajnuna tiegħek, żur l-[http://usability.wikimedia.org wiki tal-Inizzjattiva ta' Użu]. Hemmhekk, inti tista' ssib informazzjoni fuq is-sovvenzjoni tagħna, it-tfittxija, id-disinn u l-iżvilupp, u verżjonijiet ġodda. Biex tistaqsi mistoqsijiet jew tħalli r-rispons tiegħek, uża l-[http://usability.wikimedia.org/wiki/Talk:Prototype paġna ta' diskussjoni fuq il-prototipi].  Biex tindirizza suġġetti partikulari, jekk jogħġbok uża l-paġni ta' diskussjoni assoċjati. Jekk issib xi żbalji, ħalli l-kummenti tiegħek fuq il-[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco paġna ta' diskussjoni tal-verżjonijiet Babaco] jew agħmel użu minn [https://bugzilla.wikimedia.org Bugzilla].
 
 Grazzi u nisperaw li nisimgħu mingħandek!",
 );
@@ -4102,7 +4102,7 @@ De hulpfunctie biejt vlogge toegang tot uutleg over veelgebruken functies van de
 == Ho kan-k meedoon ==
 Um meer over 't prejek te weten te koemen, of um mee te doon, ku-j naor de [http://usability.wikimedia.org wiki van 't Bruukbaorheidsinitiatief] gaon. Daor vie-j infermasie over schenking, 't onderzeuk, ontwarp en ontwikkeling en de uutkomsten. Veur vragen of opmarkingen, ku-j de [http://usability.wikimedia.org/wiki/Talk:Prototype overlegpagina over 't prototype] gebruken.
 Um bepaolde punten an de orde te stellen, ku-j de biebeheurende overlegpagina's gebruken.
-A-j fouten in de pregrammetuur vienen, maak dan gebruuk van de [http://usability.wikimedia.org/wiki/Talk:Releases/Acai overlegpagina veur Açai] of gebruuk [https://bugzilla.wikimedia.org Bugzilla].
+A-j fouten in de pregrammetuur vienen, maak dan gebruuk van de [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco overlegpagina veur Babaco] of gebruuk [https://bugzilla.wikimedia.org Bugzilla].
 
 Bedank en we zien uut naor joew mening!",
 );
@@ -4195,7 +4195,7 @@ Om meer over het project te weten te komen, of om mee te doen, kunt u naar de [h
 Daar treft u informatie aan over schenking, het onderzoek, ontwerp en ontwikkeling en de uitkomsten.
 Voor vragen of terugkoppeling, kunt u de [http://usability.wikimedia.org/wiki/Talk:Prototype overlegpagina over het prototype] gebruiken.
 Om specifieke punten aan de orde te stellen, kunt u de bijbehorende overlegpagina\'s gebruiken.
-Als u softwarefouten aantreft, maak dan gebruik van de [http://usability.wikimedia.org/wiki/Talk:Releases/Acai overlegpagina voor Acai] of gebruik[https://bugzilla.wikimedia.org Bugzilla].
+Als u softwarefouten aantreft, maak dan gebruik van de [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco overlegpagina voor Babaco] of gebruik[https://bugzilla.wikimedia.org Bugzilla].
 
 Dank u wel en we zien uit naar uw mening!',
 );
@@ -4263,7 +4263,7 @@ Nye og betra ikon gjer det klårare kva handlingar kvart einskilde verkty utfør
 Hjelpeseksjonen gjev kjappt tilgjenge til informasjon om vanleg nytting av wikisyntaks. 
 <div style="clear:both;"></div>
 == Koss verta involvert ==
-For å læra meir om prosjektet eller for å verta  involvert, sjå [http://usability.wikimedia.org wikien til brukarvenlegheitsinitativet]. Der vil du finna informasjon om stipendiatet vårt, forskinga, designet og utviklinga vår og utgjevingar. For å koma med spørsmål eller gje generell tilbakemelding, nytt  [http://usability.wikimedia.org/wiki/Talk:Prototype diskusjonssida til prototypen]. For å ta opp spesielle emne, sjå dei assosierte diskusjonssidene. Om du finn programfeil, gje oss gjerne ein lyd på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai diskusjonssida til utgjevinga av Acai] eller nytt [https://bugzilla.wikimedia.org Bugzilla].
+For å læra meir om prosjektet eller for å verta  involvert, sjå [http://usability.wikimedia.org wikien til brukarvenlegheitsinitativet]. Der vil du finna informasjon om stipendiatet vårt, forskinga, designet og utviklinga vår og utgjevingar. For å koma med spørsmål eller gje generell tilbakemelding, nytt  [http://usability.wikimedia.org/wiki/Talk:Prototype diskusjonssida til prototypen]. For å ta opp spesielle emne, sjå dei assosierte diskusjonssidene. Om du finn programfeil, gje oss gjerne ein lyd på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusjonssida til utgjevinga av Babaco] eller nytt [https://bugzilla.wikimedia.org Bugzilla].
 
 Me takkar og ser fram til å høyra frå deg.',
 );
@@ -4350,7 +4350,7 @@ Seksjonen for hjelp gir rask tilgang til forklaringer på vanlig bruk av kodene 
 <div style="clear:both;"></div>
 
 == Hvordan du kan engasjere deg ==
-For å få mer informasjon om prosjektet eller for å engasjere deg, vennligst besøk [http://usability.wikimedia.org wikien for Wikipedias initiativ for brukervennlighet]. Der finner du mer informasjon om ovårt stipendiat, forskning, design, utvikling og kommende utgaver. For å stille spørsmål eller komme med generelle kommentarer, bruk vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskusjonsside for prototypen]. For å ta opp spesifikke emner, bruk de respektive diskusjonssidene. Dersom du finner feil/bugger så kan du kommentere dette på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiutgavens diskusjonsside] eller [https://bugzilla.wikimedia.org Bugzilla].
+For å få mer informasjon om prosjektet eller for å engasjere deg, vennligst besøk [http://usability.wikimedia.org wikien for Wikipedias initiativ for brukervennlighet]. Der finner du mer informasjon om ovårt stipendiat, forskning, design, utvikling og kommende utgaver. For å stille spørsmål eller komme med generelle kommentarer, bruk vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskusjonsside for prototypen]. For å ta opp spesifikke emner, bruk de respektive diskusjonssidene. Dersom du finner feil/bugger så kan du kommentere dette på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babacoutgavens diskusjonsside] eller [https://bugzilla.wikimedia.org Bugzilla].
 
 Takk for din interesse og vi ser fram til å høre fra deg!',
 );
@@ -4434,7 +4434,7 @@ La seccion d'ajuda provesís un accès rapid a la documentacion sus l'utilizacio
 <div style=\"clear:both;\"></div>
 
 == Cossí s’implicar ==
-Per ne saber mai a propos del projècte o per s’i implicar, visitatz [http://usability.wikimedia.org lo wiki de l’iniciativa d’utilizabilitat]. I trobaretz d'informacions sus nòstra subvencion, la recèrca, la concepcion e lo desvolopament. Per pausar de questions o per daissar de comentaris, mercés d’utilizar nòstra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion sul prototipe]. Per abordar de subjèctes particulars, utilizatz las paginas de discussion associadas. Si vous trouvez des bogues, merci de laisser un message sur [http://usability.wikimedia.org/wiki/Talk:Releases/Acai la pagina de discussion de la version Açai] o via [https://bugzilla.wikimedia.org Bugzilla].
+Per ne saber mai a propos del projècte o per s’i implicar, visitatz [http://usability.wikimedia.org lo wiki de l’iniciativa d’utilizabilitat]. I trobaretz d'informacions sus nòstra subvencion, la recèrca, la concepcion e lo desvolopament. Per pausar de questions o per daissar de comentaris, mercés d’utilizar nòstra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion sul prototipe]. Per abordar de subjèctes particulars, utilizatz las paginas de discussion associadas. Si vous trouvez des bogues, merci de laisser un message sur [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco la pagina de discussion de la version Babaco] o via [https://bugzilla.wikimedia.org Bugzilla].
 
 Mercés, nos regaudissèm de vòstre interès !",
 );
@@ -4553,7 +4553,7 @@ Narzędzie pomocy  umożliwia szybki dostęp do pomocy kontekstowej dla często 
 <div style="clear:both;"></div>
 
 == Jak możesz pomóc? ==
-Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, w badaniach, projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai stronie dyskusji wersji Acai] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
+Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, w badaniach, projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco stronie dyskusji wersji Babaco] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
 
 Dziękujemy i czekamy na Twoje komentarze!',
 );
@@ -4636,7 +4636,7 @@ Plance neuve e ameliorà a rendo pì ciàir che assion a fa minca utiss. Session
 La session d'agiut a smon n'acess lest a la documentassion për j'usagi comun dle tichëtte wiki.
 <div style=\"clear:both;\"></div>
 == Coma amplichesse ==
-Për savèije ëd pì an sël proget o për amplichesse, për piasì ch'a vìsita l'[http://usability.wikimedia.org Inissiativa për n'usagi pì belfé dla wiki].  Ambelelà a trovrà d'anformassion ansima a nòstri borse, arserca, progetassion + dësvlup e version.  Për fé 'd domande o dé opinion generaj, për piasì ch'a deuvra nòstra [http://usability.wikimedia.org/wiki/Talk:Prototype pàgina ëd discussion dël protòtip].  Për traté dij soget particolar, për piasì ch'a deuvra le pàgine ëd discussion assossià. S'a treuva dij bigat, për piasì ch'a lassa sò coment an sla [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pàgina ëd discussion dla version Acai] o a travers [https://bugzilla.wikimedia.org Bugzilla].
+Për savèije ëd pì an sël proget o për amplichesse, për piasì ch'a vìsita l'[http://usability.wikimedia.org Inissiativa për n'usagi pì belfé dla wiki].  Ambelelà a trovrà d'anformassion ansima a nòstri borse, arserca, progetassion + dësvlup e version.  Për fé 'd domande o dé opinion generaj, për piasì ch'a deuvra nòstra [http://usability.wikimedia.org/wiki/Talk:Prototype pàgina ëd discussion dël protòtip].  Për traté dij soget particolar, për piasì ch'a deuvra le pàgine ëd discussion assossià. S'a treuva dij bigat, për piasì ch'a lassa sò coment an sla [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pàgina ëd discussion dla version Babaco] o a travers [https://bugzilla.wikimedia.org Bugzilla].
 
 Mersì e speroma d'arsent-se tòst!",
 );
@@ -4737,7 +4737,7 @@ O novo sistema de navegação torna mais fácil ver onde está e o que está a f
 A secção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
 <div style="clear:both;"></div>
 == Como participar ==
-Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá encontrará informações sobre os nossos fundos, pesquisa,  desenho + desenvolvimento e lançamento de versões. Para esclarecer dúvidas ou sugestões, por favor use a nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, use uma das páginas de discussão associadas. Caso encontre defeitos no \'\'software\'\', por favor reporte-os na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão Acai] ou através do [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender mais ou participar do projecto, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá encontrará informações sobre os nossos fundos, pesquisa,  desenho + desenvolvimento e lançamento de versões. Para esclarecer dúvidas ou sugestões, por favor use a nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão]. Para assuntos específicos, use uma das páginas de discussão associadas. Caso encontre defeitos no \'\'software\'\', por favor reporte-os na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco página de discussão Babaco] ou através do [https://bugzilla.wikimedia.org Bugzilla].
 
 Obrigado e estamos ansiosos por receber os seus comentários!',
 );
@@ -4820,7 +4820,7 @@ O novo sistema de navegação torna mais fácil ver onde você está e o que voc
 A seção de ajuda fornece acesso rápido a uma referência para usos comuns de código wiki.
 <div style="clear:both;"></div>
 == Como se envolver ==
-Para aprender mais sobre o projeto ou se envolver, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informação sobre nossa doação, pesquisa, concepção e desenvolvimento, e lançamentos. Para perguntar ou deixar comentários em geral, por favor use nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão do protótipo]. Para tratar de assuntos particulares, por favor use as páginas de discussão associadas. Se você encontrar problemas, por favor deixe seus comentários na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai página de discussão do Acai] ou use o [https://bugzilla.wikimedia.org Bugzilla].
+Para aprender mais sobre o projeto ou se envolver, por favor visite a [http://usability.wikimedia.org wiki da Iniciativa de Usabilidade]. Lá você encontrará informação sobre nossa doação, pesquisa, concepção e desenvolvimento, e lançamentos. Para perguntar ou deixar comentários em geral, por favor use nossa [http://usability.wikimedia.org/wiki/Talk:Prototype página de discussão do protótipo]. Para tratar de assuntos particulares, por favor use as páginas de discussão associadas. Se você encontrar problemas, por favor deixe seus comentários na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco página de discussão do Babaco] ou use o [https://bugzilla.wikimedia.org Bugzilla].
 
 Obrigado e nós estamos ansiosos para saber o que você tem a dizer!',
 );
@@ -4995,7 +4995,7 @@ Icone nuève e migliorate accussì sò cchiù chiare le operaziune ca ogne une d
 <div style=\"clear:both;\"></div>
 
 == Cumme essere coinvolte ==
-Pe 'mbarà de cchiù sus a 'u proggette o essere coinvolte, pe piacere vè vide l'[http://usability.wikimedia.org Iniziative de Ausabbeletà de Uicchi]. Addà tu iacchie 'mbormaziune sus a le autorizzazziune, le ricerche, le pruggette e le sviluppe e le rilasce. Pe fà domande o lassà opiniune generale, pe piacere ause 'u [http://usability.wikimedia.org/wiki/Talk:Prototype Prototepe d'a pàgene de le 'ngazzaminde] nuèstre. Pe indirizzà particolare suggette, pe piacere ause 'a pàgene de le 'ngazzaminde associate. Ce tu iacchie errore, pe piacere lasse 'u commende tue sus a [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pàgene de le 'ngazzaminde de le rilasce Acai] o ausanne [https://bugzilla.wikimedia.org Bugzilla].
+Pe 'mbarà de cchiù sus a 'u proggette o essere coinvolte, pe piacere vè vide l'[http://usability.wikimedia.org Iniziative de Ausabbeletà de Uicchi]. Addà tu iacchie 'mbormaziune sus a le autorizzazziune, le ricerche, le pruggette e le sviluppe e le rilasce. Pe fà domande o lassà opiniune generale, pe piacere ause 'u [http://usability.wikimedia.org/wiki/Talk:Prototype Prototepe d'a pàgene de le 'ngazzaminde] nuèstre. Pe indirizzà particolare suggette, pe piacere ause 'a pàgene de le 'ngazzaminde associate. Ce tu iacchie errore, pe piacere lasse 'u commende tue sus a [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pàgene de le 'ngazzaminde de le rilasce Babaco] o ausanne [https://bugzilla.wikimedia.org Bugzilla].
 
 Grazie e nuje aspettame de sendirte preste!",
 );
@@ -5099,7 +5099,7 @@ $messages['ru'] = array(
 <div style="clear:both;"></div>
 == Как подключиться ==
 
-Чтобы узнать больше о проекте, а также принять в нём участие — посетите, пожалуйста, [http://usability.wikimedia.org вики-сайт Инициативы юзабилити]. Там вы найдёте информацию о наших грантах, научных исследованиях, проектировании, релизах. Чтобы задать вопрос или оставить общий отзыв, воспользуйтесь нашей [http://usability.wikimedia.org/wiki/Talk:Prototype страницей обсуждения прототипа]. Для решения конкретных вопросов, пожалуйста, используйте соответствующие страницы обсуждения. Если вы нашли ошибку, оставьте, пожалуйста, свои замечания на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai странице обсуждения выпуска Acai] или с помощью [https://bugzilla.wikimedia.org Bugzilla].
+Чтобы узнать больше о проекте, а также принять в нём участие — посетите, пожалуйста, [http://usability.wikimedia.org вики-сайт Инициативы юзабилити]. Там вы найдёте информацию о наших грантах, научных исследованиях, проектировании, релизах. Чтобы задать вопрос или оставить общий отзыв, воспользуйтесь нашей [http://usability.wikimedia.org/wiki/Talk:Prototype страницей обсуждения прототипа]. Для решения конкретных вопросов, пожалуйста, используйте соответствующие страницы обсуждения. Если вы нашли ошибку, оставьте, пожалуйста, свои замечания на [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco странице обсуждения выпуска Babaco] или с помощью [https://bugzilla.wikimedia.org Bugzilla].
 
 Благодарим за внимание и ждём ваших отзывов!',
 );
@@ -5181,7 +5181,7 @@ Beta-ны боруобалаары гынаҕын дуо?',
 <div style="clear:both;"></div>
 == Хайдах кыттабыный ==
 
-Бу бырайыак туһунан сиһилии билиэххитин баҕарар буоллаххытына бу [http://usability.wikimedia.org биики-саайка] киириҥ. Онно биһиги грааннарбыт, чинчийиилэрбит, бырайыактарбыт уонна бырагырааммаларбыт барылларын туһунан ааҕыаххыт. Тугу эрэ ыйытаары гыннаххытына эбэтэр бородууксуйабыт туһунан тугу эрэ этиэххитин баҕардаххытына [http://usability.wikimedia.org/wiki/Talk:Prototype ырытыы сирэйигэр] киириҥ. Чопчу боппуруостары аналлаах ырытар сирэйдэргэ быһаарсыҥ. Туох эмит алҕаһы булбут буоллаххытына бука диэн   [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai тахсыытын ырытыытыгар суруйуҥ] эбэтэр [https://bugzilla.wikimedia.org Bugzilla] көмөтүнэн биллэриҥ.
+Бу бырайыак туһунан сиһилии билиэххитин баҕарар буоллаххытына бу [http://usability.wikimedia.org биики-саайка] киириҥ. Онно биһиги грааннарбыт, чинчийиилэрбит, бырайыактарбыт уонна бырагырааммаларбыт барылларын туһунан ааҕыаххыт. Тугу эрэ ыйытаары гыннаххытына эбэтэр бородууксуйабыт туһунан тугу эрэ этиэххитин баҕардаххытына [http://usability.wikimedia.org/wiki/Talk:Prototype ырытыы сирэйигэр] киириҥ. Чопчу боппуруостары аналлаах ырытар сирэйдэргэ быһаарсыҥ. Туох эмит алҕаһы булбут буоллаххытына бука диэн   [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco тахсыытын ырытыытыгар суруйуҥ] эбэтэр [https://bugzilla.wikimedia.org Bugzilla] көмөтүнэн биллэриҥ.
 
 Махтанабыт, суруккутун кэтэһэбит!',
 );
@@ -5300,7 +5300,7 @@ Rozbaliteľné časti skrývajú zriedka používané nástroje, pričom sú st�
 <div style="clear:both;"></div>
 
 == Ako sa zapojiť ==
-Ak sa chcete dozvedieť viac o projekte alebo sa zapojiť, navštívte prosím [http://usability.wikimedia.org wiki Iniciatívy použiteľnosti]. Nájdete na nej informácie o našom grante, výskume, dizajne a vývoji a vydaniach. Ak sa chcete pýtať otázky alebo napísať všeobecné komentáre, prosím, použite našu [http://usability.wikimedia.org/wiki/Talk:Prototype diskusnú stránku prototypu]. Ak sa týkajú konkrétnych problémov, komentujte na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai diskusnej stránke vydania Acai] alebo pomocou [https://bugzilla.wikimedia.org Bugzilla].
+Ak sa chcete dozvedieť viac o projekte alebo sa zapojiť, navštívte prosím [http://usability.wikimedia.org wiki Iniciatívy použiteľnosti]. Nájdete na nej informácie o našom grante, výskume, dizajne a vývoji a vydaniach. Ak sa chcete pýtať otázky alebo napísať všeobecné komentáre, prosím, použite našu [http://usability.wikimedia.org/wiki/Talk:Prototype diskusnú stránku prototypu]. Ak sa týkajú konkrétnych problémov, komentujte na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusnej stránke vydania Babaco] alebo pomocou [https://bugzilla.wikimedia.org Bugzilla].
 
 Ďakujeme a tešíme sa na vašu odozvu!',
 );
@@ -5382,7 +5382,7 @@ Z novimi izboljšanimi ikonami je vsakomur takoj jasno, katero dejanje izvede do
 Razdelek Pomoč ponuja hiter dostop do preprostih do referenc uporabe posameznega wiki-oblikovanja.
 <div style="clear:both;"></div>
 == Želim sodelovati ==
-Če želite izvedeti več o projektu ali pri njem sodelovati, prosimo obiščite [http://usability.wikimedia.org stran Wikipedijine Pobude za uporabnost].  Tu boste našli informacije o naših podelitvah, raziskavah, oblikovanju in razvoju ter izdajah. Splošna vprašanja lahko zastavite na [http://usability.wikimedia.org/wiki/Talk:Prototype pogovorni strani o prototipu]. Tu lahko pustite tudi povratno informacijo. Za obravnavo specifičnih zadev, prosimo uporabite primerne, s temo povezane, pogovorne strani. Če ste odkrili programske napake, nam pustite vaše komentarje na [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pogovorni strani Acai] oz. poročajte o hrošču prek [https://bugzilla.wikimedia.org Bugzille].
+Če želite izvedeti več o projektu ali pri njem sodelovati, prosimo obiščite [http://usability.wikimedia.org stran Wikipedijine Pobude za uporabnost].  Tu boste našli informacije o naših podelitvah, raziskavah, oblikovanju in razvoju ter izdajah. Splošna vprašanja lahko zastavite na [http://usability.wikimedia.org/wiki/Talk:Prototype pogovorni strani o prototipu]. Tu lahko pustite tudi povratno informacijo. Za obravnavo specifičnih zadev, prosimo uporabite primerne, s temo povezane, pogovorne strani. Če ste odkrili programske napake, nam pustite vaše komentarje na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pogovorni strani Babaco] oz. poročajte o hrošču prek [https://bugzilla.wikimedia.org Bugzille].
 
 Hvala, veselimo se vaših mnenj!',
 );
@@ -5615,7 +5615,7 @@ Hjälpavsnittet ger snabbt förklaringar till vanliga koder i wikitext.
 <div style="clear:both;"></div>
 
 == Hur du kan engagera dig ==
-För att få mer information om projektet eller för att engagera dig, besök [http://usability.wikimedia.org wikin för användbarhetsinitiativet]. Där finns mer information om vårt stipendium, forskning, design, utveckling och kommande utgåvor. För att ställa frågor eller lämna allmänna kommentarer, använd vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskussionssida för prototypen]. För att ta upp specifika ämnen, använd motsvarande diskussionssida. Om du hittar buggar så är vi tacksamma om du kommenterar det på [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acaiutgåvans diskussionssida] eller på [https://bugzilla.wikimedia.org Bugzilla].
+För att få mer information om projektet eller för att engagera dig, besök [http://usability.wikimedia.org wikin för användbarhetsinitiativet]. Där finns mer information om vårt stipendium, forskning, design, utveckling och kommande utgåvor. För att ställa frågor eller lämna allmänna kommentarer, använd vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskussionssida för prototypen]. För att ta upp specifika ämnen, använd motsvarande diskussionssida. Om du hittar buggar så är vi tacksamma om du kommenterar det på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babacoutgåvans diskussionssida] eller på [https://bugzilla.wikimedia.org Bugzilla].
 
 Tack så mycket, vi ser fram emot att höra av dig!',
 );
@@ -5695,7 +5695,7 @@ $messages['te'] = array(
 సహాయ విభాగం వికీ-మార్కప్ యొక్క సామాన్య వాడుకల గురించి తక్షణ సమాచారాన్ని అందజేస్తుంది.
 <div style="clear:both;"></div>
 ==ఎలా పాల్గొనాలి==
-ఈ ప్రాజెక్టు గురించి మరింత సమాచారం తెలుసుకొనేందుకు, లేదా పాల్గొనేందుకు, [http://usability.wikimedia.org ఉపయోగశీలత చేపట్టు వికీ]ని సందర్శించండి. అక్కడ మా గ్ర్రాంటు, పరిశోధన, రూపకల్పన, అభివృద్ధి, మరియు విడుదలల గురించి తెలుసుకోవచ్చు. ప్రశ్నలడటానికైనా లేదా మీ అభిప్రాయాలు తెలియజేయాలన్నా [http://usability.wikimedia.org/wiki/Talk:Prototype మా ప్రోటోటైప్ చర్చాపేజీ]ని వాడండి. మీకు తప్పులు కనిపిస్తే, [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai విడుదలపై చర్చా పేజీ] లేదా [https://bugzilla.wikimedia.org బగ్‌జిల్లా]లో తెలియజేయండి.
+ఈ ప్రాజెక్టు గురించి మరింత సమాచారం తెలుసుకొనేందుకు, లేదా పాల్గొనేందుకు, [http://usability.wikimedia.org ఉపయోగశీలత చేపట్టు వికీ]ని సందర్శించండి. అక్కడ మా గ్ర్రాంటు, పరిశోధన, రూపకల్పన, అభివృద్ధి, మరియు విడుదలల గురించి తెలుసుకోవచ్చు. ప్రశ్నలడటానికైనా లేదా మీ అభిప్రాయాలు తెలియజేయాలన్నా [http://usability.wikimedia.org/wiki/Talk:Prototype మా ప్రోటోటైప్ చర్చాపేజీ]ని వాడండి. మీకు తప్పులు కనిపిస్తే, [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco విడుదలపై చర్చా పేజీ] లేదా [https://bugzilla.wikimedia.org బగ్‌జిల్లా]లో తెలియజేయండి.
 
 ధన్యవాదాలు, మీ అమూల్యమైన సలహాల కోసం మేము ఎదురుచూస్తుంటాము.',
 );
@@ -5915,7 +5915,7 @@ Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referans
 <div style="clear:both;"></div>
 
 == Nasıl dahil olunur ==
-Proje hakkında daha fazla bilgi edinmek ya da dahil olmak için lütfen [http://usability.wikimedia.org Kullanılabilirlik Girşimi\'nin vikisini] ziyaret edin. Orada, araştırmamız, tasarım + geliştirmemiz, ve yayınlarımız hakkında bilgi bulabilirsiniz. Soru sormak veya genel geridönüt bırakmak için, lütfen [http://usability.wikimedia.org/wiki/Talk:Prototype prototip tartışma sayfamızı] kullanın. Belirli konulardan bahsetmek için, lütfen ilgili tartışma sayfalarını kullanın. Eğer hata bulursanız, lütfen yorumlarınızı [http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai sürüm tartışma sayfasına] bırakın ya da [https://bugzilla.wikimedia.org Bugzilla]\'yı kullanın.
+Proje hakkında daha fazla bilgi edinmek ya da dahil olmak için lütfen [http://usability.wikimedia.org Kullanılabilirlik Girşimi\'nin vikisini] ziyaret edin. Orada, araştırmamız, tasarım + geliştirmemiz, ve yayınlarımız hakkında bilgi bulabilirsiniz. Soru sormak veya genel geridönüt bırakmak için, lütfen [http://usability.wikimedia.org/wiki/Talk:Prototype prototip tartışma sayfamızı] kullanın. Belirli konulardan bahsetmek için, lütfen ilgili tartışma sayfalarını kullanın. Eğer hata bulursanız, lütfen yorumlarınızı [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco sürüm tartışma sayfasına] bırakın ya da [https://bugzilla.wikimedia.org Bugzilla]\'yı kullanın.
 
 Teşekkürler, sizden haber bekliyoruz!',
 );
@@ -6012,7 +6012,7 @@ $messages['uk'] = array(
 Нові й поліпшені значки краще пасують до відповідних інструментів. Розділи, що згортаються, зменшують безлад, зберігаючи при цьому рідко вживані засоби на відстані клацання миші. Довідковий розділ забезпечує швидкий доступ до прикладів по найвживаніших типах вікі-розмітки.
 <div style="clear:both;"></div>
 == Як приєднатися ==
-Щоб дізнатися більше про проект, а також взяти в ньому участь - відвідайте, будь ласка, [http://usability.wikimedia.org вікі-сайт Ініціативи Ефективності]. Там ви знайдете інформацію про наші гранти, наукові дослідження, проектування, релізи. Щоб поставити питання або залишити відгук, скористайтеся нашою [http://usability.wikimedia.org/wiki/Talk:Prototype сторінкою обговорення прототипу]. Для вирішення конкретних питань, будь ласка, використовуйте відповідні сторінки обговорення. Якщо ви знайшли помилку, залиште, будь ласка, свої зауваження на [http://usability.wikimedia.org/wiki/Talk:Releases/Acai сторінці обговорення релізу Acai] або з допомогою [https://bugzilla.wikimedia.org Bugzilla].
+Щоб дізнатися більше про проект, а також взяти в ньому участь - відвідайте, будь ласка, [http://usability.wikimedia.org вікі-сайт Ініціативи Ефективності]. Там ви знайдете інформацію про наші гранти, наукові дослідження, проектування, релізи. Щоб поставити питання або залишити відгук, скористайтеся нашою [http://usability.wikimedia.org/wiki/Talk:Prototype сторінкою обговорення прототипу]. Для вирішення конкретних питань, будь ласка, використовуйте відповідні сторінки обговорення. Якщо ви знайшли помилку, залиште, будь ласка, свої зауваження на [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco сторінці обговорення релізу Babaco] або з допомогою [https://bugzilla.wikimedia.org Bugzilla].
 
 Дякуємо і чекаємо на ваші відгуки!!',
 );
@@ -6082,7 +6082,7 @@ El sistema novo de navigassion el rende pi senplice védar in do che te sì e co
 Le icone nove e fate mejo le rende pi ciare le azioni che ogni strumento el fa. Le sezioni espandibili le riduse l\'ingonbro tegnendo i strumenti doparà de manco a un clic de distansa. La sezion de aiuto la fornisse un rapido acesso a un riferimento per i usi comuni de la sintassi wiki.
 <div style="clear:both;"></div>
 == Come jutarne ==
-Par savérghene piessè sul progeto o jutarne, visita el [http://usability.wikimedia.org sito del Progeto Usabilità]. Lì te catarè informassion su la nostra sovenzion, riserca, progetassion e svilupo e version nove. Par far domande o lassar un comento generale, ghe xe la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion sui prototipi]. Par ciacolar de argomenti specifici, ghe xe le pagine de discussion relative. Se te cati dei erori, lassa un comento in te la [http://usability.wikimedia.org/wiki/Talk:Releases/Acai pagina di discussion de le version de Acai] o dòpara [https://bugzilla.wikimedia.org Bugzilla].
+Par savérghene piessè sul progeto o jutarne, visita el [http://usability.wikimedia.org sito del Progeto Usabilità]. Lì te catarè informassion su la nostra sovenzion, riserca, progetassion e svilupo e version nove. Par far domande o lassar un comento generale, ghe xe la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina de discussion sui prototipi]. Par ciacolar de argomenti specifici, ghe xe le pagine de discussion relative. Se te cati dei erori, lassa un comento in te la [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pagina di discussion de le version de Babaco] o dòpara [https://bugzilla.wikimedia.org Bugzilla].
 
 Grassie e sperémo che ne riva presto qualche to messagio!',
 );
@@ -6180,7 +6180,7 @@ Các biểu tượng mới và được cải tiến để làm rõ hơn các ch
 Đề mục trợ giúp giúp truy cập nhanh vào hướng dẫn sử dụng mã wiki.
 <div style="clear:both;"></div>
 == Cách tham gia ==
-Để tìm hiểu thêm về dự án hoặc tham gia vào dự án, xin mời thăm [http://usability.wikimedia.org/wiki/?uselang=vi wiki của Sáng kiến Khả dụng]. Tại đó bạn sẽ tìm thấy những thông tin về số tiền được cấp, nghiên cứu, thiết kế + phát triển, và các bản phát hành. Để đặt câu hỏi hoặc để lại hồi đáp, xin hãy sử dụng [http://usability.wikimedia.org/wiki/Talk:Prototype?uselang=vi trang thảo luận mô hình của chúng tôi]. Để bàn về các chủ đề cụ thể, hãy sử dụng các trang thảo luận đi kèm. Nếu bạn nhận thấy có lỗi phần mềm, xin để lại lời nhắn tại [http://usability.wikimedia.org/wiki/Talk:Releases/Acai?uselang=vi trang thảo luận của phiên bản Acai] hoặc sử dụng [https://bugzilla.wikimedia.org Bugzilla].
+Để tìm hiểu thêm về dự án hoặc tham gia vào dự án, xin mời thăm [http://usability.wikimedia.org/wiki/?uselang=vi wiki của Sáng kiến Khả dụng]. Tại đó bạn sẽ tìm thấy những thông tin về số tiền được cấp, nghiên cứu, thiết kế + phát triển, và các bản phát hành. Để đặt câu hỏi hoặc để lại hồi đáp, xin hãy sử dụng [http://usability.wikimedia.org/wiki/Talk:Prototype?uselang=vi trang thảo luận mô hình của chúng tôi]. Để bàn về các chủ đề cụ thể, hãy sử dụng các trang thảo luận đi kèm. Nếu bạn nhận thấy có lỗi phần mềm, xin để lại lời nhắn tại [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco?uselang=vi trang thảo luận của phiên bản Babaco] hoặc sử dụng [https://bugzilla.wikimedia.org Bugzilla].
 
 Cảm ơn và mong hồi âm từ bạn!',
 );
@@ -6312,7 +6312,7 @@ $messages['yue'] = array(
 嗰度你就會搵到我哋嘅准許、研究、設計開發，同埋發佈。
 去問問題或者畀一般反饋，請用我哋嘅[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁]。
 去解決特定嘅標題，請用有關嘅討論版。
-如果你搵到臭蟲，請響[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
+如果你搵到臭蟲，請響[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
 
 多謝，我哋會等待你嘅意見！',
 );
@@ -6395,7 +6395,7 @@ $messages['zh-hans'] = array(
 新近改善的图标让您更加清楚每个工具的实际用途。可扩展的小节减少了混乱：不常用的工具被隐藏了起来，只需单击就可展开。新的帮助小节则提供了常用wiki语法的快速参考途径。
 <div style="clear:both;"></div>
 == 怎样加入 ==
-要了解关于本项目的更多信息或加入我们的工作，请访问[http://usability.wikimedia.org Usability Initiative wiki]。在哪里您能找到关于我们的许可、研究、设计开发以及发布的相关信息。您可以在我们的[http://usability.wikimedia.org/wiki/Talk:Prototype 原型讨论页]提出问题或给出普通的反馈。如要讨论特定的主题，则请使用相关的讨论页。如果您发现了软件错误，请在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai发布讨论版]留言或使用[https://bugzilla.wikimedia.org Bugzilla]提交。
+要了解关于本项目的更多信息或加入我们的工作，请访问[http://usability.wikimedia.org Usability Initiative wiki]。在哪里您能找到关于我们的许可、研究、设计开发以及发布的相关信息。您可以在我们的[http://usability.wikimedia.org/wiki/Talk:Prototype 原型讨论页]提出问题或给出普通的反馈。如要讨论特定的主题，则请使用相关的讨论页。如果您发现了软件错误，请在[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco发布讨论版]留言或使用[https://bugzilla.wikimedia.org Bugzilla]提交。
 
 感谢您的参与，我们期待您的意见！',
 );
@@ -6481,7 +6481,7 @@ $messages['zh-hant'] = array(
 <div style="clear:both;"></div>
 == 怎樣加入 ==
 要知更多有關專案或者加入，請參閱[http://usability.wikimedia.org Usability Initiative wiki]。在那裏您能找到關於我們的許可、研究、設計開發以及發布的相關資訊。去問問題或者給予一般反饋，請用我們的[http://usability.wikimedia.org/wiki/Talk:Prototype 模型討論頁面]。
-去解決特定的主題，請用有關的討論頁面。如果您找到軟件錯誤，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Acai Acai發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
+去解決特定的主題，請用有關的討論頁面。如果您找到軟件錯誤，請在[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco發佈討論版]留言或者去用[https://bugzilla.wikimedia.org Bugzilla]。
 
 感謝您的參與，我們期待您的反饋！',
 );
