@@ -383,6 +383,7 @@ class Skin extends Linker {
 		$vars = array(
 			'skin' => $skinName,
 			'stylepath' => $wgStylePath,
+			'wgUrlProtocols' => wfUrlProtocols(),
 			'wgArticlePath' => $wgArticlePath,
 			'wgScriptPath' => $wgScriptPath,
 			'wgScriptExtension' => $wgScriptExtension,

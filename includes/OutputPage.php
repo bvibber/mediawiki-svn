@@ -50,6 +50,11 @@ class OutputPage {
 	 */
 	var $styles = array();
 
+	/**
+	 * Whether to load jQuery core.
+	 */
+	protected $mJQueryDone = false;
+
 	private $mIndexPolicy = 'index';
 	private $mFollowPolicy = 'follow';
 
@@ -2196,4 +2201,30 @@ class OutputPage {
 		}
 		$this->addHTML( $this->parse( $s, /*linestart*/true, /*uilang*/true ) );
 	}
+
+	/**
+	 * Include jQuery core. Use this to avoid loading it multiple times
+	 * before we get a usable script loader. 
+	 *
+	 * @param array $modules List of jQuery modules which should be loaded
+	 *
+	 * Returns the list of modules which were not loaded.
+	 */
+	public function includeJQuery( $modules = array() ) {
+		global $wgScriptPath, $wgStyleVersion, $wgJsMimeType;
+
+		$supportedModules = array( /** TODO: add things here */ );
+		$unsupported = array_diff( $modules, $supportedModules );
+
+		$params = array(
+			'type' => $wgJsMimeType,
+			'src' => "$wgScriptPath/skins/common/jquery.min.js?$wgStyleVersion",
+		);
+		if ( !$this->mJQueryDone ) {
+			$this->mJQueryDone = true;
+			$this->mScripts = Html::element( 'script', $params ) . "\n" . $this->mScripts;
+		}
+		return $unsupported;
+	}
+
 }

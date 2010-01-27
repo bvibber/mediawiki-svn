@@ -1049,3 +1049,8 @@ function removeHandler( element, remove, handler ) {
 //note: all skins should call runOnloadHook() at the end of html output,
 //      so the below should be redundant. It's there just in case.
 hookEvent("load", runOnloadHook);
+
+// For future use.
+mw = {};
+
+
