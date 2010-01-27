@@ -2183,20 +2183,21 @@ $messages['ksh'] = array(
 
 /** Cornish (Kernowek)
  * @author Kernoweger
+ * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'voctrain_try_again_' => 'hwila arta?',
-	'voctrain_I_don_t_know_what_to_do_with_action_' => "Na wonn peth gul gans '%action'.",
+	'voctrain_try_again_' => 'assaya arta?',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ny worav vy pyth gwul gans '%action'.",
 	'voctrain_continue' => 'pesya',
-	'voctrain_hello_place' => 'dedh da %place',
+	'voctrain_hello_place' => 'dydh da %place',
 	'voctrain_bye' => 'agas gweles',
-	'voctrain_Number_of_questions' => 'Niver a govennadow',
+	'voctrain_Number_of_questions' => 'Niver a govynnow',
 	'voctrain_Languages' => 'Yethow',
-	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(re, cor rag an Kernowek, eng rag an Sowsnek).',
-	'voctrain_Questions' => 'Govennadow',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(r.e., cor rag Kernowek, eng rag Sowsnek).',
+	'voctrain_Questions' => 'Govynnow',
 	'voctrain_Word' => 'Ger',
-	'voctrain_Question' => 'Govenn',
-	'voctrain_The_word_to_translate' => 'An ger dhe vos treylyas',
+	'voctrain_Question' => 'Govyn',
+	'voctrain_The_word_to_translate' => 'An ger dhe treylya',
 	'voctrain_logout' => 'digelmi',
 	'voctrain_User_name' => 'Hanow-usyer',
 	'voctrain_Password' => 'Ger-tremena',

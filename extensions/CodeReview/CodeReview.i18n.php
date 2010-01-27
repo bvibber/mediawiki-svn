@@ -2252,6 +2252,7 @@ $messages['es'] = array(
 	'code' => 'Revisión de código',
 	'code-rev-title' => 'r$1 - Revisión de Código',
 	'code-comments' => 'Comentarios',
+	'code-references' => 'Revisiones de seguimiento',
 	'code-change-status' => "cambiado el '''status''' de r$1",
 	'code-change-tags' => "cambiadas las '''etiquetas''' de r$1",
 	'code-change-removed' => 'quitados:',
@@ -2267,6 +2268,7 @@ $messages['es'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
+	'code-tests' => 'Casos de prueba',
 	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes. Cuentas de wiki locales se muestran entre paréntesis.',
 	'code-author-haslink' => 'Este autor está enlazado con el usuario $1',
 	'code-author-orphan' => 'Este autor no está enlazado con ningún usuario de la wiki',
@@ -2278,6 +2280,7 @@ $messages['es'] = array(
 	'code-author-link' => '¿enlazar?',
 	'code-author-unlink' => '¿desenlazar?',
 	'code-author-unlinksuccess' => 'El autor $1 ha sido desenlazado',
+	'code-browsing-path' => "Navegando por las revisiones en '''$1'''",
 	'code-field-id' => 'Revisión',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentarista',
@@ -2311,6 +2314,7 @@ $messages['es'] = array(
 	'code-rev-inline-preview' => 'Previsualización:',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
+	'code-rev-diff-too-large' => 'El diff es demasiado grande para ser mostrado.',
 	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'nuevo',
 	'code-status-fixme' => 'arréglame',
@@ -2334,6 +2338,10 @@ $messages['es'] = array(
 	'code-release-badrange' => 'Rango es demasiado largo!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL: $2|prueba culminada|pruebas culminadas}} con éxito',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|prueba realizada|pruebas realizadas}} con éxito, $3 {{PLURAL:$4|prueba fallida|pruebas fallidas}}:',
+	'codereview-tests-running' => 'Casos de prueba en ejecución...',
+	'codereview-tests-aborted' => 'Ejecución de prueba abortada.',
 	'codereview-email-subj' => '[$1] [r$2]: Añadido nuevo comentario',
 	'codereview-email-body' => 'El usuario «$1» envió un comentario en r$3.
 
@@ -2342,6 +2350,22 @@ URL completa: $2
 Comentario:
 
 $4',
+	'codereview-email-subj2' => '[$1] [r$2]: Cambios de seguimiento',
+	'codereview-email-body2' => 'El usuario "$1" ha hecho de modificaciones de seguimiento a r$2.
+
+URL completa : $3
+
+Resumen de las confirmaciones:
+
+$4',
+	'codereview-email-subj3' => '[$1] [r$2] : la prueba automática ha detectado una regresión',
+	'codereview-email-body3' => 'La prueba automática ha mostrado una regresión debido a los cambios realizados en r$1.
+
+URL completa: $2
+
+Resumen de confirmación:
+
+$3',
 	'repoadmin' => 'Administración de repositorio',
 	'repoadmin-new-legend' => 'Crear nuevo repositorio',
 	'repoadmin-new-label' => 'Nombre de repositorio:',
@@ -8933,6 +8957,7 @@ $messages['vec'] = array(
 	'code-rev-inline-preview' => 'Anteprima:',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
+	'code-rev-diff-too-large' => 'Sto diff el xe massa grando par mostrarlo.',
 	'code-rev-purge-link' => 'netar',
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'da justar',

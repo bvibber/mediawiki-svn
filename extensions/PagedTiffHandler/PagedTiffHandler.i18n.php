@@ -96,6 +96,34 @@ $messages['de'] = array(
 	'tiff-file-info-size' => '(Seite $5, $1 × $2 Pixel, Dateigröße: $3, MIME-Typ: $4)',
 );
 
+/** French (Français)
+ * @author Jagwar
+ */
+$messages['fr'] = array(
+	'tiff_size_error' => 'La taille de fichier indiqué ne correspond pas à la taille réelle du fichier.',
+	'tiff_script_detected' => 'Le fichier téléchargé contient des scripts.',
+	'tiff_bad_file' => 'Le fichier téléchargé contient des erreurs.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'tiff-desc' => 'Manipulador para ver ficheiros TIFF no modo de imaxe',
+	'tiff_no_metadata' => 'Non se puideron obter os metadatos do TIFF',
+	'tiff_page_error' => 'O número da páxina non está no rango',
+	'tiff_too_many_embed_files' => 'A imaxe contén moitos ficheiros incorporados.',
+	'tiff_sourcefile_too_large' => 'A resolución do ficheiro de orixe é moi grande. Non se xerará ningunha miniatura.',
+	'tiff_file_too_large' => 'O ficheiro cargado é moi grande e foi rexeitado.',
+	'tiff_out_of_service' => 'O ficheiro cargado non se puido procesar. ImageMagick non está dispoñible.',
+	'tiff_too_much_meta' => 'Os metadatos empregan moito espazo.',
+	'tiff_error_cached' => 'O ficheiro só se pode renderizar despois do intervalo da caché.',
+	'tiff_size_error' => 'O tamaño do ficheiro do que se informou non se corresponde co tamaño real do ficheiro.',
+	'tiff_script_detected' => 'O ficheiro cargado contén escrituras.',
+	'tiff_bad_file' => 'O ficheiro cargado contén erros.',
+	'tiff-file-info-size' => '(páxina $5, $1 × $2 píxeles, tamaño do ficheiro: $3, tipo MIME: $4)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -111,6 +139,8 @@ $messages['ia'] = array(
 	'tiff_error_cached' => 'Iste file pote solmente esser re-rendite post le expiration de su copia in cache.',
 	'tiff_size_error' => 'Le grandor reportate del file non corresponde al grandor real del file.',
 	'tiff_script_detected' => 'Le file incargate contine scripts.',
+	'tiff_bad_file' => 'Le file incargate contine errores.',
+	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixel, grandor del file: $3, typo MIME: $4)',
 );
 
 /** Macedonian (Македонски)
@@ -145,6 +175,10 @@ $messages['pms'] = array(
 	'tiff_out_of_service' => "Ël file carià a peul pa esse prossessà. ImageMagick a l'é pa disponìbil.",
 	'tiff_too_much_meta' => 'Ij Metadat a dòvro tròp spassi.',
 	'tiff_error_cached' => "Sto file-sì a peul mach esse rerendù d'apress ëd l'antërval ëd cache.",
+	'tiff_size_error' => "La dimension arportà dël file a l'é pa istessa a la dimension atual dël file.",
+	'tiff_script_detected' => 'Ël file carià a conten dë script.',
+	'tiff_bad_file' => "Ël file carià a conten d'eror.",
+	'tiff-file-info-size' => '(pàgina $5, $1 x $2 pixel, dimension dël file: $3, sòrt MIME: $4)',
 );
 
 /** Russian (Русский)

@@ -606,17 +606,16 @@ $messages['ia'] = array(
 	'importfreeimages' => 'Importar imagines libere',
 	'importfreeimages-desc' => 'Forni un modo de [[Special:ImportFreeImages|importar photos propriemente licentiate]] ab [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Iste pagina permitte cercar photos propriemente licentiate in Flickr e importar los in tu wiki.',
-	'importfreeimages_noapikey' => 'Tu non ha configurate tu clave API de Flickr.
-Pro facer isto, per favor obtene un clave API ab [http://www.flickr.com/services/api/misc.api_keys.html iste pagina] e defini $wgFlickrAPIKey  in ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Nulle photo corresponde a tu criterios de recerca '$1'. Per favor reproba.",
-	'importfreeimages_invalidurl' => 'Le adresse URL "$1" non corresponde a un imagine de Flickr valide.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importar isto',
 	'importfreeimages_next' => '$1 {{PLURAL:$1|sequente|sequentes}}',
-	'importfreeimages_filefromflickr' => '$1 per le usator <b>[$2]</b> ab Flickr. Adresse URL original',
-	'importfreeimages_promptuserforfilename' => 'Per favor entra le nomine del file de destination:',
-	'importfreeimages_returntoform' => "O clicca <a href='$1'>hic</a> pro retornar al resultatos del recerca",
-	'importfreeimages_nophpflickr' => 'Tu non ha installate phpFlickr, per favor configura $wgIFphpFlickr in tu LocalSettings.php.',
+	'importfreeimages_size_square' => 'Quadrate',
+	'importfreeimages_size_thumbnail' => 'Miniatura',
+	'importfreeimages_size_small' => 'Parve',
+	'importfreeimages_size_medium' => 'Medie',
+	'importfreeimages_size_large' => 'Grande',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Indonesian (Bahasa Indonesia)

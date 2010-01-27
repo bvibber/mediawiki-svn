@@ -322,7 +322,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'categoryonupload-label' => 'Class:',
+	'categoryonupload-label' => 'Klass:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

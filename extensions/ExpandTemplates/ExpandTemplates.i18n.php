@@ -1414,7 +1414,7 @@ $messages['nn'] = array(
 Ho utvider òg alle funksjonar som 
 <nowiki>{{</nowiki>#if:…}}, og variablar som
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash; bortimot alt som står i dobbelte klammeparentesar.
-Dette gjer han ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
+Dette gjer ho ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
 	'expand_templates_title' => 'Konteksttittel, for {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Inntekst:',
 	'expand_templates_output' => 'Resultat',

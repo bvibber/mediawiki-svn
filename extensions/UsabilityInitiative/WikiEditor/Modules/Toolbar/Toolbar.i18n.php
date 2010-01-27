@@ -4154,6 +4154,7 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Inorbez
  * @author Kobazulo
  * @author Theklan
  */
@@ -4192,7 +4193,7 @@ $messages['eu'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Adibidea.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Erreferentzia',
 	'wikieditor-toolbar-tool-reference-example' => 'Txertatu testu oina hemen',
-	'wikieditor-toolbar-tool-signature' => 'SInadura data eta orduarekin',
+	'wikieditor-toolbar-tool-signature' => 'Sinadura data eta orduarekin',
 	'wikieditor-toolbar-section-advanced' => 'Aurreratua',
 	'wikieditor-toolbar-tool-heading' => 'Izenburua',
 	'wikieditor-toolbar-tool-heading-1' => '1. Maila',
@@ -7993,9 +7994,10 @@ $messages['ksh'] = array(
 
 /** Cornish (Kernowek)
  * @author Kernoweger
+ * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'wikieditor-toolbar-tool-link-cancel' => 'Hedhy',
+	'wikieditor-toolbar-tool-link-cancel' => 'Hedhi',
 	'wikieditor-toolbar-help-page-discussion' => 'Dadhelva',
 );
 

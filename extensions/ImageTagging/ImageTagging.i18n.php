@@ -547,6 +547,7 @@ $messages['es'] = array(
 	'imagetagging-imghistory' => 'Historial',
 	'imagetagging-images' => 'imágenes',
 	'imagetagging-inthisimage' => 'En esta imagen : $1',
+	'imagetagging-logentry' => 'Se eliminó la etiqueta de la página [[$1]] por $2',
 	'imagetagging-log-tagged' => 'La imagen [[$1|$2]] fue etiquetada hacia la página [[$3]] por $4',
 	'imagetagging-new' => '<sup><span style="color:red">Nuevo!</span></sup>',
 	'imagetagging-removetag' => 'remover etiqueta',
@@ -567,6 +568,8 @@ Por favor, espere hasta que se complete la acción que se está ejecutando.',
 	'imagetagging-imagetag-seemoreimages' => 'Ver más imágenes de "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Imágenes de "$1"',
 	'imagetagging-taggedimages-displaying' => 'Mostrando $1 - $2 de $3 imágenes de "$4"',
+	'tag-logpagename' => 'Registro de etiquetado',
+	'tag-logpagetext' => 'Este es un registro de todas las adiciones y eliminaciones de etiquetas de imágenes.',
 );
 
 /** Estonian (Eesti)

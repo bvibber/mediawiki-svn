@@ -7248,7 +7248,7 @@ $messages['kw'] = array(
 	'ow_exporttsv_languages' => 'Yethow:',
 	'ow_save' => 'Gwitha',
 	'ow_history' => 'Istori',
-	'ow_transaction_no_action' => 'Na gul veth',
+	'ow_transaction_no_action' => 'Na gwul vyth',
 	'ow_dm_OK' => 'Sur',
 );
 

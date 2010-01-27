@@ -198,9 +198,15 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'cooperationstatistics' => 'Estadísticas de cooperación',
+	'cooperationstatistics-desc' => 'Muestra las [[Special:CooperationStatistics|estadísticas de cooperación del espacio de nombres principal]].',
+	'cooperationstatistics-text' => "Mostrar las estadísticas de cooperación del espacio de nombres principal.
+De revisores  [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]].<br />
+Ver también las [[Special:MostRevisors|'''páginas con más revisores''']] y las [[Special:MostRevisions|páginas con más revisiones]].",
 	'cooperationstatistics-tablearticle' => 'Contador de páginas',
 	'cooperationstatistics-tablevalue' => 'Número de editores',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|tiene|tienen}} $1 {{PLURAL:$1|editor|editores}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|tiene|tienen}} $1 {{PLURAL:$1|editor|o menos editores}}',
 	'cooperationstatistics-legendmore' => 'o más editores.',
 );
 

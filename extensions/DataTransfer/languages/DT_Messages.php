@@ -1091,7 +1091,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'dt_viewxml_categories' => 'Classys',
+	'dt_viewxml_categories' => 'Klassys',
 	'dt_xml_page' => 'Folen',
 );
 

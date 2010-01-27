@@ -425,6 +425,7 @@ Después de elegir todas las páginas que desee volver a cargar, haga click en e
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Conexión falló, reconectando en 10 segundos...',
 	'refreshspecial-page-result' => 'obtener $1 {{PLURAL:$1|fila|filas}} en',
+	'refreshspecial-total-display' => '¡No hay ningún formulario asociado a los registros "$1"!',
 	'right-refreshspecial' => 'Refrescar páginas especiales',
 );
 

@@ -250,11 +250,16 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'externalpages' => 'Páginas externas',
+	'externalpages-desc' => 'Recupera y muestra páginas de sitios remotos de la Fundación Wikimedia',
+	'externalpages-bad-year' => 'Año especificado incorrecto',
 	'externalpages-bad-language' => 'Idioma especificado mal',
 	'externalpages-bad-project' => 'Proyecto especificado mal',
 	'externalpages-no-project' => 'No se ha especificado un proyecto',
+	'externalpages-bad-page' => 'Página especificada incorrecta',
 	'externalpages-no-page' => 'No se ha especificado una página',
 	'externalpages-error-generic' => 'Se ha encontrado un error',
+	'externalpages-bad-url' => 'No se pudo recuperar la dirección URL',
+	'externalpages-bad-url-data' => 'No se pudo recuperar el contenido de la página',
 );
 
 /** Estonian (Eesti)

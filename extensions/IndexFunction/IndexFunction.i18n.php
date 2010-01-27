@@ -340,6 +340,12 @@ Por favor, elimina "$1" del <nowiki>{{#index:}}</nowiki> en{{PLURAL:$3|la págin
 	'index-expand-detail' => 'Mostrar páginas indexadas bajo este título',
 	'index-hide-detail' => 'Esconder el listado de páginas',
 	'index-no-results' => 'La búsqueda no ha devuelto resultados',
+	'index-search-explain' => 'Esta página utiliza una búsueda por prefijos.
+
+Escribe los primeros caracteres y haga click en "enviar" para buscar títulos de páginas y entradas de índice que comiencen por la cadena de búsqueda',
+	'index-details-explain' => 'Las entradas con flechas son entradas de índice.
+
+Haz clic sobre la flecha para mostrar todas las  páginas indizadas bajo ese título.',
 );
 
 /** Basque (Euskara)

@@ -670,10 +670,12 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'pollresults' => 'Resultados de las encuestas en esta página',
 	'qp_result_NA' => 'No respondido',
 	'qp_result_error' => 'Error de sintaxis',
 	'qp_vote_button' => 'Vota',
 	'qp_vote_again_button' => 'Cambia tu voto',
+	'qp_polls_list' => 'Lista todas las encuestas',
 	'qp_users_list' => 'Hacer una lista de todos los usuarios',
 	'qp_browse_to_poll' => 'Navegar a $1',
 	'qp_browse_to_user' => 'Navegar a $1',
@@ -691,6 +693,8 @@ $messages['es'] = array(
 	'qp_header_line_qpul' => '$1 [ Página "$2" Votación "$3" ]',
 	'qp_export_to_xls' => 'Exportar estadísticas a formato XLS',
 	'qp_func_no_such_poll' => 'No hay votación ($1)',
+	'qp_error_no_such_poll' => 'No existe tal encuesta ($1).
+Asegúrate de que la encuesta está declarada y guardada, y no olvides usar el carácter delimitador de dirección #',
 	'qp_error_invalid_question_type' => 'Tipo de pregunta inválido: $1',
 	'qp_error_type_in_stats_mode' => 'El tipo de pregunta no puede definirse en modo de visualización estadística: $1',
 	'qp_error_too_many_spans' => 'Muchas clases de categorías para las subcategorías definidas',
@@ -1399,6 +1403,13 @@ $messages['lb'] = array(
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'qp_export_to_xls' => 'Avoaka rakitra XLS ny statistika',
 );
 
 /** Macedonian (Македонски)

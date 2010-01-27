@@ -46,6 +46,12 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'invite-logentry' => 'het $1 uitgenodig om die funksie <i>$2</i> te gebruik.',
+	'invitations-feature-notallowed' => 'U het nie toegang om <i>$1</i> te gebruik nie.',
+	'invitations-inviteform-title' => "Nooi 'n gebruiker om $1 te gebruik",
+	'invitations-inviteform-username' => 'Gebruiker om uit te nooi',
+	'invitations-inviteform-submit' => 'Nooi uit',
+	'invitations-error-baduser' => 'Dit lyk nie of die gebruiker wat u verskaf het bestaan nie.',
+	'invitations-error-alreadyinvited' => 'Die gebruiker wat u verskaf het het reeds toegang tot hierdie funksie!',
 );
 
 /** Arabic (العربية)

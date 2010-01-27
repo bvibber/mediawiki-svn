@@ -3667,7 +3667,7 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
  */
 $messages['kw'] = array(
 	'deletequeue-list-search' => 'Hwila',
-	'deletequeue-list-anyqueue' => '(vedh)',
+	'deletequeue-list-anyqueue' => '(vyth)',
 	'deletequeue-case-page' => 'Folen:',
 );
 
