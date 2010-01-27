@@ -157,6 +157,10 @@ fn: {
 			// if a marker starts or ends halfway one.
 			var start = markers[i].start;
 			var s = context.fn.getOffset( start );
+			if ( !s ) {
+				// This shouldn't happen
+				continue;
+			}
 			var startNode = s.node;
 			var startDepth = s.depth;
 			// The next marker starts somewhere in this textNode or at this BR
@@ -178,6 +182,10 @@ fn: {
 			
 			var end = markers[i].end;
 			var e = context.fn.getOffset( end );
+			if ( !e ) {
+				// This shouldn't happen
+				continue;
+			}
 			var endNode = e.node;
 			var endDepth = e.depth;
 			if ( e.offset < e.length - 1 ) {
