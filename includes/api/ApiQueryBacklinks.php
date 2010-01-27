@@ -118,7 +118,8 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			$this->addWhere("{$this->bl_from}>={$this->contID}");
 		if($this->params['filterredir'] == 'redirects')
 			$this->addWhereFld('page_is_redirect', 1);
-		if($this->params['filterredir'] == 'nonredirects')
+		if($this->params['filterredir'] == 'nonredirects' && !$this->redirect)
+			// bug 22245 - Check for !redirect, as filtering nonredirects, when getting what links to them is contradictory
 			$this->addWhereFld('page_is_redirect', 0);
 		$this->addOption('LIMIT', $this->params['limit'] + 1);
 		$this->addOption('ORDER BY', $this->bl_from);
@@ -413,15 +414,16 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 			'title' => 'Title to search.',
 			'continue' => 'When more results are available, use this to continue.',
 			'namespace' => 'The namespace to enumerate.',
-			'filterredir' => 'How to filter for redirects'
 		);
 		if($this->getModuleName() != 'embeddedin')
 			return array_merge($retval, array(
 				'redirect' => 'If linking page is a redirect, find all pages that link to that redirect as well. Maximum limit is halved.',
+				'filterredir' => "How to filter for redirects. If set to nonredirects when {$this->bl_code}redirect is enabled, this is only applied to the second level",
 				'limit' => "How many total pages to return. If {$this->bl_code}redirect is enabled, limit applies to each level separately (which means you may get up to 2 * limit results)."
 			));
 		return array_merge($retval, array(
-			'limit' => "How many total pages to return."
+			'filterredir' => 'How to filter for redirects',
+			'limit' => 'How many total pages to return.'
 		));
 	}
 
