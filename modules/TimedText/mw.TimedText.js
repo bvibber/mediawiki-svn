@@ -34,21 +34,21 @@ mw.addMessages( {
 	"mwe-key-language": "$1, $2",
 	
 	"mwe-textcat-cc" : "Captions",
-    "mwe-textcat-sub" : "Subtitles",
-    "mwe-textcat-tad" : "Audio description",
-    "mwe-textcat-ktv" : "Karaoke",
-    "mwe-textcat-tik" : "Ticker text",
-    "mwe-textcat-ar" : "Active regions",
-    "mwe-textcat-nb" : "Annotation",
-    "mwe-textcat-meta" : "Timed metadata",
-    "mwe-textcat-trx" : "Transcript",
-    "mwe-textcat-lrc" : "Lyrics",
-    "mwe-textcat-lin" : "Linguistic markup",
-    "mwe-textcat-cue" : "Cue points"
+	"mwe-textcat-sub" : "Subtitles",
+	"mwe-textcat-tad" : "Audio description",
+	"mwe-textcat-ktv" : "Karaoke",
+	"mwe-textcat-tik" : "Ticker text",
+	"mwe-textcat-ar" : "Active regions",
+	"mwe-textcat-nb" : "Annotation",
+	"mwe-textcat-meta" : "Timed metadata",
+	"mwe-textcat-trx" : "Transcript",
+	"mwe-textcat-lrc" : "Lyrics",
+	"mwe-textcat-lin" : "Linguistic markup",
+	"mwe-textcat-cue" : "Cue points"
 } );
 
 // Bind to mw (for uncluttered global namespace) 
-( function( $ ) {				
+( function( $ ) {
 	
 	/** 
 	 * Timed Text Object
@@ -68,7 +68,7 @@ mw.addMessages( {
 			// Layout for basic "timedText" type can be 'ontop', 'off', 'below'
 			'layout' : 'ontop',
 			
-			//Set the default local ( should be grabbed from the browser )			
+			//Set the default local ( should be grabbed from the browser )
 			'userLanugage' : 'en',
 			
 			//Set the default category of timedText to display ( un-categorized timed-text is by default "SUB"  )
@@ -95,7 +95,7 @@ mw.addMessages( {
 		/**
 		* Text Source(s) Setup Flag
 		*/
-		textSourceSetupFlag: null,		
+		textSourceSetupFlag: null,
 		
 		/*
 		 * Hard coded to "commons" right now .. but we will want to support per-asset provider id's
@@ -108,26 +108,26 @@ mw.addMessages( {
 		*/
 		validCategoriesKeys: [
 			"CC",
-	        "SUB",
-	        "TAD",
-	        "KTV",
-	        "TIK",
-	        "AR",
-	        "NB",
-	        "META",
-	        "TRX",
-	        "LRC",
-	        "LIN",
-	        "CUE"
+			"SUB",
+			"TAD",
+			"KTV",
+			"TIK",
+			"AR",
+			"NB",
+			"META",
+			"TRX",
+			"LRC",
+			"LIN",
+			"CUE"
 		],
 		
 		/**
 		 * Timed text extension to mime map
 		 */
 		timedTextExtMime: {
-		    'srt': 'text/x-srt',
-		    'mw-srt': 'text/mw-srt',
-		    'cmml': 'text/cmml'
+			'srt': 'text/x-srt',
+			'mw-srt': 'text/mw-srt',
+			'cmml': 'text/cmml'
 		},
 			
 		/**
@@ -144,7 +144,7 @@ mw.addMessages( {
 			this.enabledSources = [];
 			this.prevText = '';
 			this.textSources = [];
-			this.textSourceSetupFlag = false;						
+			this.textSourceSetupFlag = false;
 			
 			//Set default langauge via wgUserLanguage if set
 			if( typeof wgUserLanguage != 'undefined'){
@@ -157,7 +157,7 @@ mw.addMessages( {
 				this.config = preferenceConfig;
 			}
 			
-			//Set up embedPlayer hooks:			
+			// Set up embedPlayer hooks:			
 			embedPlayer.addHook( 'monitor', function(){
 				_this.monitor();
 			} )
@@ -165,7 +165,7 @@ mw.addMessages( {
 			embedPlayer.addHook( 'play', function(){
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
-			} );					
+			} );
 		},
 		
 		/**
@@ -180,10 +180,10 @@ mw.addMessages( {
 				if( callback ){
 					callback();
 				}
-				return ;		
+				return ;
 			}
 			// Load textSources
-			_this.loadTextSources( function(){			
+			_this.loadTextSources( function(){
 				
 				// Enable a default source and issue a request to "load it"
 				_this.autoSelectSource();
@@ -196,11 +196,11 @@ mw.addMessages( {
 				if( callback )
 					callback();
 			} );
-		},		
+		},
 		
 		/**
 		* Binds the timed text menu 
-		* 	and updates its content from "getMainMenu"
+		* and updates its content from "getMainMenu"
 		*
 		* @param {Object} target to display the menu
 		* @param {Boolean} autoShow If the menu should be displayed 
@@ -215,34 +215,34 @@ mw.addMessages( {
 			// We already have a loader in embedPlayer so the delay of
 			// setupTextSources is already taken into account
 			_this.setupTextSources( function(){
-				// NOTE: Button target should be an option or config						
+				// NOTE: Button target should be an option or config
 				$menuButton.unbind().menu( {
 					'content'	: _this.getMainMenu(),
 					'crumbDefaultText' : ' ',
 					'targetMenuContainer' : _this.menuTarget,
 					'autoShow' : autoShow,
-					'backLinkText' : gM( 'mwe-back-btn' )							
-				} );				
-			});								 
-		},					
+					'backLinkText' : gM( 'mwe-back-btn' )
+				} );
+			});
+		},
 		
 		/**
-		* Monitor video time and update timed text filed[s]  		
+		* Monitor video time and update timed text filed[s]
 		*/ 
 		monitor: function( ){
 			//mw.log(" timed Text monitor: " + this.enabledSources.length );
 			embedPlayer = this.embedPlayer;
 			// Setup local reference to currentTime: 
-			var currentTime = embedPlayer.currentTime;					
+			var currentTime = embedPlayer.currentTime;
 			
 			// Get the text per category
 			var textCategories = [ ];
 						
 			for( var i = 0; i <  this.enabledSources.length ; i++ ) {
 				var source =  this.enabledSources[ i ];
-				this.updateSourceDisplay( source, currentTime );			
+				this.updateSourceDisplay( source, currentTime );
 			}
-		},			
+		},
 		
 		/**
 		 * Load all the available text sources from the inline embed
@@ -263,30 +263,30 @@ mw.addMessages( {
 			
 			//If there are no inline sources check timedTextProviders & apiTitleKey
 			if( !this.embedPlayer.apiTitleKey ){
-				//no other sources just issue the callback: 						
+				//no other sources just issue the callback:
 				callback();
 				return ;
 			}
 			
 			// Try to get sources from text provider:
 			var provider_id = ( this.embedPlayer.apiProvider ) ?  this.embedPlayer.apiProvider : 'local'; 
-			var api_url = mw.getApiProviderURL( provider_id );		
-			var assetKey = 	this.embedPlayer.apiTitleKey;			
+			var api_url = mw.getApiProviderURL( provider_id );
+			var assetKey = 	this.embedPlayer.apiTitleKey;
 			if( !api_url || !assetKey ){
 				mw.log("Error: loading source without apiProvider or apiTitleKey");
 				return ;
-			}			
+			}
 			//For now only support mediaWikiText provider library
 			this.textProvider = new mw.MediaWikiTextProvider( {
-				'provider_id' : provider_id,						
+				'provider_id' : provider_id,
 				'api_url': api_url,
 				'embedPlayer': this.embedPlayer
 			} );
 					
 			// Load the textProvider sources
 			this.textProvider.loadSources( assetKey,  function( textSources ){
-				for( var i in textSources ){					
-					var textSource = textSources[ i ];					
+				for( var i in textSources ){
+					var textSource = textSources[ i ];
 					// Try to insert the itext source: 
 					var textElm = document.createElement( 'itext' );
 					$j( textElm ).attr( {
@@ -301,8 +301,8 @@ mw.addMessages( {
 					var embedSource = _this.embedPlayer.mediaElement.tryAddSource( textElm );	
 					// Get a "textSource" object:
 					var source = new TextSource( embedSource, _this.textProvider);
-					_this.textSources.push( source );				
-				}								
+					_this.textSources.push( source );
+				}
 				// All sources loaded run callback: 
 				callback();
 			} );		
@@ -329,23 +329,23 @@ mw.addMessages( {
 		* NOTE: presently this selects a "single" source. 
 		* In the future we could support multiple "enabled sources" 
 		*/
-		autoSelectSource: function(){	
+		autoSelectSource: function(){
 			this.enabledSources = [];
 									
-			// Check if any source matches our "local"		
+			// Check if any source matches our "local"
 			for( var i in this.textSources ){
 				var source = this.textSources[ i ];		
 				if( this.config.userLanugage  &&
-					this.config.userLanugage == source.lang.toLowerCase() ){	
-					// Check for category if avaliable  
+					this.config.userLanugage == source.lang.toLowerCase() ){
+					// Check for category if available  
 					this.enabledSources.push( source );
-					return ;			
+					return ;
 				} 
 			}
-			// If no userLang, source try enabling english:
+			// If no userLang, source try enabling English:
 			if( this.enabledSources.length == 0 ){
 				for( var i in this.textSources ){
-					var source = this.textSources[ i ];					
+					var source = this.textSources[ i ];
 					if( source.lang.toLowerCase() == 'en' ){
 						this.enabledSources.push( source );
 						return ;
@@ -355,7 +355,7 @@ mw.addMessages( {
 			// If still no source try the first source we get; 
 			if( this.enabledSources.length == 0 ){
 				for( var i in this.textSources ){
-					var source = this.textSources[ i ];										
+					var source = this.textSources[ i ];
 					this.enabledSources.push( source );
 					return ;
 				}	
@@ -366,11 +366,11 @@ mw.addMessages( {
 		* Issue a request to load all enabled Sources
 		*  Should be called anytime enabled Source list is updatd
 		*/
-		loadEnabledSources: function(){			
+		loadEnabledSources: function(){
 			for(var i in this.enabledSources ){
 				var enabledSource = this.enabledSources[ i ];
 				if( ! enabledSource.loaded )
-					enabledSource.load();								
+					enabledSource.load();
 			}
 		},			
 		
@@ -379,7 +379,7 @@ mw.addMessages( {
 		* 
 		* @param {Element} item Item selected
 		*/
-		selectMenuItem: function( item ){			
+		selectMenuItem: function( item ){
 			mw.log("selectMenuItem: " + $j( item ).find('a').attr('class') );
 		},	
 		
@@ -422,7 +422,7 @@ mw.addMessages( {
 		*
 		* Assumes text sources have been setup: (  _this.setupTextSources() )
 		* 
-		* calls a few sub-functions:		
+		* calls a few sub-functions:
 		* Basic menu layout:
 		*		Chose Language
 		*			All Subtiles here ( if we have categories list them ) 

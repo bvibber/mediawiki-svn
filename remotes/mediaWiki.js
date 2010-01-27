@@ -36,15 +36,15 @@ addOnloadHook( function() {
 if( !ranRewrites){
 	var ranRewrites = 'none';
 }
-function doPageSpecificRewrite() {	
+function doPageSpecificRewrite() {
 	if( ranRewrites != 'none')
 		return ;	
 	ranRewrites = 'done';	
 	
 	// Add media wizard
-	if ( wgAction == 'edit' || wgAction == 'submit' ) {				
+	if ( wgAction == 'edit' || wgAction == 'submit' ) {
 		loadMwEmbed( [ 
-			'mw.RemoteSearchDriver', 
+			'mw.RemoteSearchDriver',
 			'$j.fn.textSelection', 
 			'$j.ui', 
 			'$j.ui.sortable' 
@@ -54,12 +54,12 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Timed text display:
-	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {		
+	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {
 		if( wgAction == 'view' ){
 			var orgBody = mwSetPageToLoading();
 			//load the "player" ( includes call to  loadMwEmbed )
 			mwLoadPlayer(function(){
-				// Now load MediaWiki TimedText Remote: 			
+				// Now load MediaWiki TimedText Remote:
 				mw.load( 'RemoteMwTimedText',function(){
 					//Setup the remote configuration
 					var myRemote = new RemoteMwTimedText( {
@@ -71,13 +71,13 @@ function doPageSpecificRewrite() {
 					// Update the UI
 					myRemote.updateUI();
 				} );
-			} );		
-		}			
+			} );
+		}
 	}
 	
 	// Remote Sequencer
 	if( wgPageName.indexOf( "Sequence" ) === 0 ){	
-		console.log( 'spl: ' + typeof mwSetPageToLoading );	
+		console.log( 'spl: ' + typeof mwSetPageToLoading );
 		// If on a view page set content to "loading" 
 		mwSetPageToLoading();
 		// Loading with loadMwEmbed not so big a deal since "sequencer is huge
@@ -91,7 +91,7 @@ function doPageSpecificRewrite() {
 							'target': '#bodyContent'
 						});	
 						// Update the UI
-						myRemote.updateUI();	
+						myRemote.updateUI();
 				} );
 			} );
 		} );	
@@ -99,7 +99,7 @@ function doPageSpecificRewrite() {
 	
 	
 	// Firefogg integration
-	if ( wgPageName == "Special:Upload" ) {			
+	if ( wgPageName == "Special:Upload" ) {
 		loadMwEmbed([ 
 				'mw.BaseUploadInterface', 
 				'mw.Firefogg', 
@@ -125,7 +125,7 @@ function doPageSpecificRewrite() {
 	var vidIdList = [];
 	var divs = document.getElementsByTagName( 'div' );
 	for ( var i = 0; i < divs.length; i++ ) {
-		if ( divs[i].id && divs[i].id.substring( 0, 11 ) == 'ogg_player_' ) {			
+		if ( divs[i].id && divs[i].id.substring( 0, 11 ) == 'ogg_player_' ) {
 			vidIdList.push( divs[i].getAttribute( "id" ) );
 		}
 	}	
@@ -162,7 +162,7 @@ function mwLoadPlayer( callback ){
 	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
 	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/EmbedPlayer.css?' + mwGetReqArgs() );
 			
-	var jsSetVideo = [ 		
+	var jsSetVideo = [
 		'mw.EmbedPlayer', 
 		'$j.ui', 
 		'ctrlBuilder', 
@@ -173,7 +173,7 @@ function mwLoadPlayer( callback ){
 		'mw.TimedText' 
 	];		
 	// Quick sniff use java if IE and native if firefox 
-	// ( other browsers will run detect and get on-demand ) 	
+	// ( other browsers will run detect and get on-demand )
 	if (navigator.userAgent.indexOf("MSIE") != -1)
 		jsSetVideo.push( 'javaEmbed' );
 		
@@ -192,11 +192,11 @@ function mwLoadPlayer( callback ){
 function rewrite_for_OggHandler( vidIdList ) {
 	function procVidId( vidId ) {		
 		// Don't process empty vids
-		if ( !vidId )		
+		if ( !vidId )
 			return ;
-					
 		
-		tag_type = 'video';	
+		
+		tag_type = 'video';
 				
 		// Check type:
 		var pwidth = $j( '#' + vidId ).width();
@@ -206,8 +206,8 @@ function rewrite_for_OggHandler( vidIdList ) {
 			poster_attr = '';		
 			pheight = 0;
 		}else{
-			var poster_attr = 'poster = "' + $pimg.attr( 'src' ) + '" ';			
-			var pheight = $pimg.attr( 'height' );				
+			var poster_attr = 'poster = "' + $pimg.attr( 'src' ) + '" ';
+			var pheight = $pimg.attr( 'height' );
 		}
 		
 		// Parsed values:
@@ -260,13 +260,13 @@ function rewrite_for_OggHandler( vidIdList ) {
 				'</video>';
 			}
 			// Set the video tag inner html and update the height
-			$j( '#' + vidId ).after( html_out ).remove();				
+			$j( '#' + vidId ).after( html_out ).remove();
 
-			// Do the actual rewrite 			
+			// Do the actual rewrite 
 			//mw.log("rewrite: "+ vidId );	
 			$j( '#mwe_' + vidId ).embedPlayer();
 			//issue an async request to rewrite the next clip
-			if ( vidIdList.length != 0 ) {					
+			if ( vidIdList.length != 0 ) {
 				setTimeout( function() {
 					procVidId( vidIdList.pop() )
 				}, 1 );
@@ -274,7 +274,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 
 		}		
 	};
-	// Process current top item in vidIdList	
+	// Process current top item in vidIdList
 	procVidId( vidIdList.pop() );
 }
 
@@ -355,7 +355,7 @@ function loadMwEmbed( classSet, callback ) {
 			}
 			
 			// Add the remaining arguments
-			rurl += '&' + mwGetReqArgs();													
+			rurl += '&' + mwGetReqArgs();
 			importScriptURI( rurl );
 		} else { 
 			// Ignore classSet (will be loaded onDemand )
@@ -374,9 +374,9 @@ function waitMwEmbedReady( callback ) {
 		setTimeout( function() {
 			waitMwEmbedReady( callback );
 		}, 10 );
-	} else {				
+	} else {
 		// Make sure mwEmbed is "setup" by using the addOnLoadHook: 
-		mw.ready( function(){			
+		mw.ready( function(){
 			callback();
 			
 			// All enabled pages should check if we have the gadget already installed 
@@ -389,14 +389,14 @@ function waitMwEmbedReady( callback ) {
  * checks if the gadget is installed 
  * run after mwEmbed setup so $j and mw interface is available: 
  */
-function mwCheckForGadget(){	
+function mwCheckForGadget(){
 	mw.log('mwCheckForGadget');
 	scripts = document.getElementsByTagName( 'script' );
 	// Check for document paramater withJS and ignore found gadget
 	if( typeof getParamValue == 'undefined' ){
 		return false;
 	}
-	var withJS = getParamValue("withJS"); 	
+	var withJS = getParamValue("withJS"); 
 	
 	for( var i = 0 ; i < scripts.length ; i ++){
 		if (
@@ -437,7 +437,7 @@ function mwCheckForGadget(){
 				.attr( 'id', 'gadget-form-loader' )
 				.loadingSpinner() 
 			)
-			.remove();							
+			.remove();
 			// Load gadgets form:
 			mwSubmitgadgetPref( 'mwEmbed' );
 		} );
@@ -463,15 +463,15 @@ function mwSubmitgadgetPref( gadget_id ){
 			mw.log( gaget_id + ' is already enabled' );
 			return false;
 		}
-								
-		// add mwEmbed to the formData 			
+		
+		// add mwEmbed to the formData 
 		form.data.push( {
 			'name' : 'wpgadgets[]',
 			'value' : gadget_id
 		} );
 				
 		// Submit the prefrences
-		$j.post( form.url, form.data, function( pageHTML ){								
+		$j.post( form.url, form.data, function( pageHTML ){
 			var form = mwGetFormFromPage ( pageHTML );
 			if(!form){
 				return false;
@@ -486,11 +486,11 @@ function mwSubmitgadgetPref( gadget_id ){
 }
 function mwGetFormFromPage( pageHTML ){
 	var form = {};
-	$j( pageHTML ).find('form').each( function( ){		
-		form.url = $j( this ).attr('action');				
+	$j( pageHTML ).find('form').each( function( ){
+		form.url = $j( this ).attr('action');
 		if( form.url.indexOf( 'Special:Preferences') !== -1 ){
-			form.data =  $j( this ).serializeArray();		
-			// break out of loop	
+			form.data =  $j( this ).serializeArray();
+			// break out of loop
 			return false;
 		}
 	});
@@ -500,7 +500,7 @@ function mwGetFormFromPage( pageHTML ){
 	return false;
 }
 function mwCheckFormDatagadget( formData, gadget_id ){
-	for(var i =0; i < formData.length ; i ++ ){								
+	for(var i =0; i < formData.length ; i ++ ){
 		if( formData[i].name == 'wpgadgets[]' ){
 			if( formData[i].value == gadget_id ){
 				return true;

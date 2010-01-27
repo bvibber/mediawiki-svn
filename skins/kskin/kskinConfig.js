@@ -118,36 +118,53 @@ var kskinConfig = {
 		var _this = this;		
 		
 		// Set up control bar pointer
-		var $playerTarget = embedPlayer.$interface;
+		this.$playerTarget = embedPlayer.$interface;
+		// Set the menu target: 
+		_this.$kmenu = _this.$playerTarget.find( '.k-menu' );
 		 		
-   		// Options menu display:			
-   		$playerTarget.find( '.k-options' )
-   		.unbind()
-   		.click( function() {     					 	
-			if ( $playerTarget.find( '.k-menu' ).length == 0 ) {							
-	   			// Stop the player if it does not support overlays:
-				if ( !embedPlayer.supports['overlays'] ){				
+		// Options menu display:			
+		this.$playerTarget.find( '.k-options' )
+		.unbind()
+		.click( function() {     					 	
+			if ( _this.$playerTarget.find( '.k-menu' ).length == 0 ) {
+				// Stop the player if it does not support overlays:
+				if ( !embedPlayer.supports['overlays'] ){
 					embedPlayer.stop();
 				}
-				// Add the menu binding        				
+				// Add the menu binding
 				_this.addMeunBinding();
 			}
-	   		// Set up the text and menu:       			 					
-			var $ktxt = $j( this );
-			var $kmenu = $playerTarget.find( '.k-menu' );
-			if ( $kmenu.is( ':visible' ) ) {
-				$kmenu.fadeOut( "fast", function() {
-					$ktxt.find( 'span' ).html ( gM( 'mwe-menu_btn' ) );
-				} );
-				$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
+			_this.$kmenu = _this.$playerTarget.find( '.k-menu' );
+			if ( _this.$kmenu.is( ':visible' ) ) {
+				_this.closeMenuOverlay( $j( this ) );
 			} else {
-				$kmenu.fadeIn( "fast", function() {
-					$ktxt.find( 'span' ).html ( gM( 'mwe-close_btn' ) );
-				} );
-				$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
+				_this.showMenuOverlay( $j( this ) );
 			}
-		} );				
+		} );
 		
+	},
+	
+	/**
+	* Close the menu overlay
+	*/
+	closeMenuOverlay: function( ){
+		var $optionsMenu = this.$playerTarget.find( '.k-options' );
+		this.$kmenu.fadeOut( "fast", function() {
+			$optionsMenu.find( 'span' )
+				.text ( gM( 'mwe-menu_btn' ) );
+		} );
+		this.$playerTarget.find( '.play-btn-large' ).fadeIn( 'fast' );
+	},
+	/**
+	* Show the menu overlay
+	*/
+	showMenuOverlay: function( $ktxt ){
+		var $optionsMenu = this.$playerTarget.find( '.k-options' );
+		this.$kmenu.fadeIn( "fast", function() {
+			$optionsMenu.find( 'span' )
+				.text ( gM( 'mwe-close_btn' ) );
+		} );
+		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 	},
 	
 	/**
@@ -172,27 +189,27 @@ var kskinConfig = {
 		
 		
 		// By default its hidden:
-  		$playerTarget.find( '.k-menu' ).hide();
-  			
-  		// Add menu-items bindings:  
-  		for ( i = 0; i < _this.menu_items.length ; i++ ) {
-	        $playerTarget.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {	        	
-	        	var mk = $j( this ).attr( 'rel' );
-	        	// hide menu items	        	
-	        	$targetItem = $playerTarget.find( '.menu-' + mk );	
-				// call the function showMenuItem
-				_this.showMenuItem(	mk );        									        	
-	        	// Hide the others 
-	        	$playerTarget.find( '.menu-screen' ).hide();
-	        	
-	        	// Show the target menu item:
-	        	$targetItem.fadeIn( "fast" );
-	        	 
-				// Don't follow the # link								
-	            return false;
+		$playerTarget.find( '.k-menu' ).hide();
+			
+		// Add menu-items bindings:  
+		for ( i = 0; i < _this.menu_items.length ; i++ ) {
+			$playerTarget.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {
+				var mk = $j( this ).attr( 'rel' );
+				// hide menu items	        	
+				$targetItem = $playerTarget.find( '.menu-' + mk );	
+					// call the function showMenuItem
+					_this.showMenuItem(	mk );
+				// Hide the others 
+				$playerTarget.find( '.menu-screen' ).hide();
+				
+				// Show the target menu item:
+				$targetItem.fadeIn( "fast" );
+				 
+				// Don't follow the # link
+				return false;
 			} );
-  		}
-	}, 
+		}
+	},
 	
 	/**
 	* Shows a selected menu_item
@@ -217,7 +234,7 @@ var kskinConfig = {
 	*/
 	showKalturaEdit: function(){
 		
-	},	
+	},
 	
 	/**
 	* Show the credit screen (presently specific to kaltura skin )
@@ -233,7 +250,7 @@ var kskinConfig = {
 			.text( gM( 'mwe-credits' ) ),
 			$j('<div />')
 			.addClass( "credits_box ui-corner-all" )
-			.loadingSpinner()										
+			.loadingSpinner()
 		);
 
 		if( mw.getConfig( 'k_attribution' ) == true ){
