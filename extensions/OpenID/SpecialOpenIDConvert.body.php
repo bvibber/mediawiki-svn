@@ -226,6 +226,11 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 			// This means the authentication succeeded.
 			$openid_url = $response->identity_url;
 
+			if (!$this->canLogin($openid_url)) {
+				$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
+				return;
+			}
+
 			if ( !isset( $openid_url ) ) {
 				wfDebug( "OpenID: aborting in openid converter because the openid_url was missing\n" );
 				$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );

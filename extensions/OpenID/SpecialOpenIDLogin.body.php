@@ -418,13 +418,19 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		case Auth_OpenID_SUCCESS:
 			// This means the authentication succeeded.
 			wfSuppressWarnings();
-			$openid = $response->getDisplayIdentifier();
+			$openid = $response->identity_url;
+				
+			if (!$this->canLogin($openid)) {
+				$wgOut->showErrorPage('openidpermission', 'openidpermissiontext');
+				return;
+			}
+
 			$sreg_resp = Auth_OpenID_SRegResponse::fromSuccessResponse( $response );
 			$sreg = $sreg_resp->contents();
 			wfRestoreWarnings();
 
 			if ( is_null( $openid ) ) {
-				wfDebug( "OpenID: aborting in auth success because display identifier is missing\n" );
+				wfDebug( "OpenID: aborting in auth success because identity URL is missing\n" );
 				$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
 				return;
 			}
