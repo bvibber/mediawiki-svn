@@ -146,7 +146,7 @@ class UsabilityInitiativeHooks {
 				$src = "$wgScriptPath{$script['src']}";
 			} else {
 				// Path is relative to $wgExtensionAssetsPath
-				$src = "$wgExtensionAssetsPath/UsabilityInitiative/{$script['src']}";
+				$src = "$wgExtensionAssetsPath/UsabilityInitiative_alpha/{$script['src']}";
 			}
 			$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
 			$out->addScriptFile( $src, $version );
@@ -176,7 +176,7 @@ class UsabilityInitiativeHooks {
 					'rel' => 'stylesheet',
 					'type' => 'text/css',
 					'href' => $wgExtensionAssetsPath .
-							"/UsabilityInitiative/" .
+							"/UsabilityInitiative_alpha/" .
 								"{$style['src']}?{$style['version']}",
 				)
 			);
