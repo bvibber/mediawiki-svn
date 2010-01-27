@@ -106,9 +106,8 @@ $.wikiEditor = {
 		return $.wikiEditor.supported = true;
 	},
 	/**
-	 * Provides a way to extract messages from objects. Wraps the gM function from js2stopgap.js, which will be changing
-	 * in the very near future, so let's keep and eye on this. It's also possible that this function will just be moved
-	 * to the global mw object all together.
+	 * Provides a way to extract messages from objects. Wraps the mw.usability.getMsg() function, which
+	 * may eventually become a wrapper for some kind of core MW functionality.
 	 * 
 	 * @param object Object to extract messages from
 	 * @param property String of name of property which contains the message. This should be the base name of the
@@ -131,9 +130,9 @@ $.wikiEditor = {
 		} else if ( property + 'Msg' in object ) {
 			if ( typeof object[property + 'Msg' ] == 'object' ) {
 				// [ messageKey, arg1, arg2, ... ]
-				return gM.apply( this, object[property + 'Msg' ] );
+				return mw.usability.getMsg.apply( mw.usability, object[property + 'Msg' ] );
 			} else {
-				return gM( object[property + 'Msg'] );
+				return mw.usability.getMsg( object[property + 'Msg'] );
 			}
 		} else {
 			return '';

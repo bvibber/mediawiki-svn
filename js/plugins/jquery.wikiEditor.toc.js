@@ -428,7 +428,7 @@ fn: {
 					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
 				} )
 				.find( 'a' )
-				.text( gM( 'wikieditor-toc-hide' ) );
+				.text( mw.usability.getMsg( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
@@ -437,7 +437,7 @@ fn: {
 				} )
 				.hide()
 				.find( 'a' )
-				.text( gM( 'wikieditor-toc-show' ) );
+				.text( mw.usability.getMsg( 'wikieditor-toc-show' ) );
 			$collapseControl.insertBefore( context.modules.toc.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}

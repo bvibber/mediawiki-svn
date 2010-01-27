@@ -231,7 +231,8 @@ fn: {
 				var parts = { 'pre' : '', 'peri' : '', 'post' : '' };
 				for ( part in parts ) {
 					if ( part + 'Msg' in action.options ) {
-						parts[part] = gM( action.options[part + 'Msg'], ( action.options[part] || null ) );
+						parts[part] = mw.usability.getMsg( 
+							action.options[part + 'Msg'], ( action.options[part] || null ) );
 					} else {
 						parts[part] = ( action.options[part] || '' )
 					}

@@ -6,7 +6,7 @@
 		};
 		
 		// Clicktrack the left sidebar links
-		$(document).ready( function() {
+		addOnloadHook( function() {
 			$( '#p-logo a, #p-navigation a, #p-tb a' ).click( function() {
 				var id = 'leftnav-' + skin + '-' +
 					( $(this).attr( 'id' ) || $(this).parent().attr( 'id' ) );

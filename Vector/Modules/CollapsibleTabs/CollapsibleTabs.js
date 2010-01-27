@@ -1,4 +1,4 @@
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check if CollapsibleTabs is enabled
 	if ( !wgVectorEnabledModules.collapsibletabs ) {
 		return true;

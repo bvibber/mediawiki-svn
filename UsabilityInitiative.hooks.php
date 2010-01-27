@@ -51,6 +51,8 @@ class UsabilityInitiativeHooks {
 		// Core functionality of extension
 		'base_sets' => array(
 			'raw' => array(
+				// Common UsabilityInitiative funtions
+				array( 'src' => 'js/usability.js', 'version' => 1 ),
 
 				// These scripts can be pulled from core once the js2 is merged
 				array( 'src' => 'js/js2stopgap/ui.core.js', 'version' => 1 ),
@@ -70,20 +72,20 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 26 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 71 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 72 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 23 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 44 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 10 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 73 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 45 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 11 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 74 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 10 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 16 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 1 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 183 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 184 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 183 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 184 ),
 			),
 		),
 	);
@@ -162,7 +164,7 @@ class UsabilityInitiativeHooks {
 				Xml::tags(
 					'script',
 					array( 'type' => $wgJsMimeType ),
-					'mw.addMessages({' . implode( ',', self::$messages ) . '});'
+					'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
 				)
 			);
 		}
@@ -210,7 +212,7 @@ class UsabilityInitiativeHooks {
 
 	/**
 	 * Adds internationalized message definitions to the document for access
-	 * via javascript using the gM() function
+	 * via javascript using the mw.usability.getMsg() function
 	 * @param array $messages Key names of messages to load
 	 */
 	public static function addMessages( $messages ) {

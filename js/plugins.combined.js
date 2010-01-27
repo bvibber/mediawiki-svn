@@ -1,3 +1,48 @@
+/**
+ * Common version-independent functions
+ */
+
+if ( typeof mw == 'undefined' ) {
+	mw = {};
+}
+
+mw.usability = {
+	messages: {}
+}
+
+/**
+ * This may eventually load something instead of just calling the callback.
+ */
+mw.usability.load = function( deps, callback ) {
+	callback();
+};
+
+/**
+ * Add messages to a local message table
+ */
+mw.usability.addMessages = function( messages ) {
+	for ( var key in messages ) {
+		this.messages[key] = messages[key];
+	}
+};
+
+/**
+ * Get a message
+ */
+mw.usability.getMsg = function( key, args ) {
+	if ( !( key in this.messages ) ) {
+		return '[' + key + ']';
+	}
+	var msg = this.messages[key];
+	if ( typeof args == 'object' || typeof args == 'array' ) {
+		for ( var argKey in args ) {
+			msg = msg.replace( '\$' + (parseInt( argKey ) + 1), args[argKey] );
+		}
+	} else if ( typeof args == 'string' || typeof args == 'number' ) {
+		msg = msg.replace( '$1', args );
+	}
+	return msg;
+};
 /*
  * jQuery UI 1.7.1
  *
@@ -6485,9 +6530,8 @@ $.wikiEditor = {
 		return $.wikiEditor.supported = true;
 	},
 	/**
-	 * Provides a way to extract messages from objects. Wraps the gM function from js2stopgap.js, which will be changing
-	 * in the very near future, so let's keep and eye on this. It's also possible that this function will just be moved
-	 * to the global mw object all together.
+	 * Provides a way to extract messages from objects. Wraps the mw.usability.getMsg() function, which
+	 * may eventually become a wrapper for some kind of core MW functionality.
 	 * 
 	 * @param object Object to extract messages from
 	 * @param property String of name of property which contains the message. This should be the base name of the
@@ -6510,9 +6554,9 @@ $.wikiEditor = {
 		} else if ( property + 'Msg' in object ) {
 			if ( typeof object[property + 'Msg' ] == 'object' ) {
 				// [ messageKey, arg1, arg2, ... ]
-				return gM.apply( this, object[property + 'Msg' ] );
+				return mw.usability.getMsg.apply( mw.usability, object[property + 'Msg' ] );
 			} else {
-				return gM( object[property + 'Msg'] );
+				return mw.usability.getMsg( object[property + 'Msg'] );
 			}
 		} else {
 			return '';
@@ -7402,7 +7446,7 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mw.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+		mw.usability.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
 			for ( module in $.wikiEditor.modules.dialogs.modules ) {
 				var module = $.wikiEditor.modules.dialogs.modules[module];
 				// Only create the dialog if it doesn't exist yet
@@ -7415,10 +7459,10 @@ fn: {
 					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
 					// Transform messages in keys
 					// Stupid JS won't let us do stuff like
-					// foo = { gM ('bar'): baz }
+					// foo = { mw.usability.getMsg ('bar'): baz }
 					configuration.newButtons = {};
 					for ( msg in configuration.buttons )
-						configuration.newButtons[gM( msg )] = configuration.buttons[msg];
+						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
 					configuration.buttons = configuration.newButtons;
 					// Create the dialog <div>
 					var dialogDiv = $( '<div /> ' )
@@ -7507,7 +7551,8 @@ quickDialog: function( body, settings ) {
 		.dialog( 'open' );
 }
 
-}; } ) ( jQuery );/* Highlight module for wikiEditor */
+}; } ) ( jQuery );
+/* Highlight module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
@@ -7923,7 +7968,7 @@ fn: {
 			}
 		} );
 		
-		var loadingMsg = gM( 'wikieditor-preview-loading' );
+		var loadingMsg = mw.usability.getMsg( 'wikieditor-preview-loading' );
 		context.modules.preview.$preview
 			.add( context.$changesTab )
 			.append( $( '<div />' )
@@ -7950,7 +7995,8 @@ fn: {
 	}
 }
 
-}; } )( jQuery );/* Publish module for wikiEditor */
+}; } )( jQuery );
+/* Publish module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.publish = {
 
 /**
@@ -7994,7 +8040,7 @@ fn: {
 						</div>',
 					init: function() {
 						$(this).find( '[rel]' ).each( function() {
-							$(this).text( gM( $(this).attr( 'rel' ) ) );
+							$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
 						});
 						$(this).find( '.wikiEditor-dialog-copywarn' )
 							.html( $( '#editpage-copywarn' ).html() );
@@ -8057,7 +8103,8 @@ fn: {
 	}
 }
 
-}; } )( jQuery );/* TemplateEditor module for wikiEditor */
+}; } )( jQuery );
+/* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 
 /**
@@ -9102,7 +9149,7 @@ fn: {
 					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
 				} )
 				.find( 'a' )
-				.text( gM( 'wikieditor-toc-hide' ) );
+				.text( mw.usability.getMsg( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
@@ -9111,7 +9158,7 @@ fn: {
 				} )
 				.hide()
 				.find( 'a' )
-				.text( gM( 'wikieditor-toc-show' ) );
+				.text( mw.usability.getMsg( 'wikieditor-toc-show' ) );
 			$collapseControl.insertBefore( context.modules.toc.$toc );
 			context.$ui.find( '.wikiEditor-ui-left .wikiEditor-ui-top' ).append( $expandControl );
 		}
@@ -9476,7 +9523,8 @@ fn: {
 				var parts = { 'pre' : '', 'peri' : '', 'post' : '' };
 				for ( part in parts ) {
 					if ( part + 'Msg' in action.options ) {
-						parts[part] = gM( action.options[part + 'Msg'], ( action.options[part] || null ) );
+						parts[part] = mw.usability.getMsg( 
+							action.options[part + 'Msg'], ( action.options[part] || null ) );
 					} else {
 						parts[part] = ( action.options[part] || '' )
 					}

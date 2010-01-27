@@ -12,18 +12,18 @@ class WikiEditorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 4 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 6 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 36 ),
-			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 3 ),
+			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 5 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 37 ),
+			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 4 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 38 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 39 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 38 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 39 ),
 		),
 	);
 	static $messages = array(

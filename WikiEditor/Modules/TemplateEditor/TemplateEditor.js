@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Template Editor module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for templateEditor
 	if ( !wgWikiEditorEnabledModules.templateEditor ) {
 		return true;

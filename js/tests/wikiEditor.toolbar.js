@@ -189,7 +189,7 @@ var wikiEditorTests = {
 		'post': 6
 	}
 };
-mw.ready( function() {
+$j(document).ready( function() {
 	var button = $j( '<button>Run wikiEditor Tests!</button>' )
 		.css( {
 			'position': 'fixed',

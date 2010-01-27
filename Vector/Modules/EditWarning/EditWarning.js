@@ -1,6 +1,6 @@
 /* JavaScript for EditWarning extension */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check if EditWarning is enabled and if we need it
 	if ( !wgVectorEnabledModules.editwarning || $j( '#wpTextbox1' ).size() == 0 ) {
 		return true;
@@ -31,7 +31,7 @@ mw.ready( function() {
 			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
 		) {
 			// Return our message
-			return gM( 'vector-editwarning-warning' );
+			return mw.usability.getMsg( 'vector-editwarning-warning' );
 		}
 	}
 	// Add form submission handler

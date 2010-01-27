@@ -43,7 +43,7 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mw.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+		mw.usability.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
 			for ( module in $.wikiEditor.modules.dialogs.modules ) {
 				var module = $.wikiEditor.modules.dialogs.modules[module];
 				// Only create the dialog if it doesn't exist yet
@@ -56,10 +56,10 @@ fn: {
 					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
 					// Transform messages in keys
 					// Stupid JS won't let us do stuff like
-					// foo = { gM ('bar'): baz }
+					// foo = { mw.usability.getMsg ('bar'): baz }
 					configuration.newButtons = {};
 					for ( msg in configuration.buttons )
-						configuration.newButtons[gM( msg )] = configuration.buttons[msg];
+						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
 					configuration.buttons = configuration.newButtons;
 					// Create the dialog <div>
 					var dialogDiv = $( '<div /> ' )

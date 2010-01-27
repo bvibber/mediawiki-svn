@@ -28,7 +28,7 @@
 $wgOptInAlwaysShowPersonalLink = false;
 $wgOptInNeverShowPersonalLink = false;
 
-$wgOptInStyleVersion = 10;
+$wgOptInStyleVersion = 11;
 
 // Preferences to set when users opt in
 // array( prefname => value )
