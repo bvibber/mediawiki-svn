@@ -86,8 +86,8 @@ div.suggestions {
 .ui-dialog-content input[type="checkbox"] {
 	margin-left: 0;
 }
-.ui-dialog .ui-dialog-titlebar-close {
-	right: 0.9em !important;
+body.ltr .ui-dialog .ui-dialog-titlebar-close {
+	right: 0.9em;
 }
 .wikieditor-toolbar-field-wrapper {
 	padding: 0 0 25px 0;
@@ -105,10 +105,20 @@ div.suggestions {
 	padding: 0;
 	float: left;
 }
+body.rtl #wikieditor-toolbar-table-dialog fieldset {
+	float: right;
+}
 #wikieditor-toolbar-table-dialog .wikieditor-toolbar-table-preview-wrapper {
 	width: 330px;
 	padding: 0;
 	float: right;
+}
+body.rtl #wikieditor-toolbar-table-dialog .wikieditor-toolbar-table-preview-wrapper {
+	float: left;
+}
+body.rtl .ui-widget .wikieditor-toolbar-table-preview-wrapper table {
+	margin-left: 1em;
+	margin-right: 0;
 }
 .wikieditor-toolbar-table-preview-content * {
 	cursor: default;
@@ -128,6 +138,11 @@ div.suggestions {
 	margin-right: 20px;
 	vertical-align: bottom;
 }
+body.rtl .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wrapper {
+	float: right;
+	margin-right: 0px;
+	margin-left: 20px;
+}
 .ui-dialog .ui-dialog-content {
 	padding: 30px 20px 0 !important;
 }
@@ -139,10 +154,10 @@ div.suggestions {
 /* RTL Changes */
 body.rtl .ui-dialog .ui-dialog-buttonpane button {
 	float: left;
-	margin: 0.5em 0.4 0.5em 0em !important;
+	margin: 0.5em 0.4em 0.5em 0 !important;
 }
 body.rtl .ui-dialog .ui-dialog-titlebar-close {
-	left: 0.75em;
+	left: 0.9em;
 	right: auto;
 }
 body.rtl .ui-dialog .ui-dialog-title {
