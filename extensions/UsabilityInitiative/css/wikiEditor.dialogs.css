@@ -1,37 +1,31 @@
 /* wikiEditor dialogs module */
 
-.ui-widget table {
+.wikiEditor-toolbar-dialog table {
 	margin-top: 0.75em;
 }
-.ui-widget table td {
+.wikiEditor-toolbar-dialog table td {
 	padding: 0.5em;
 	height: 3em;
 	overflow: visible;
 }
-
-
-
 /* Put suggestions (default z-index 99) on top of dialogs (z-index 1002) */
 div.suggestions {
 	z-index: 1099;
 }
-
-.ui-dialog .ui-dialog-titlebar-close:hover {
+.wikiEditor-toolbar-dialog .ui-dialog-titlebar-close:hover {
 	text-decoration: none;
 }
-.ui-dialog-content .status-invalid input {
+.wikiEditor-toolbar-dialog .ui-dialog-content .status-invalid input {
 	border: 2px solid red;
 	padding: 2px 1px;
 }
-
-
-.ui-dialog .ui-dialog-titlebar {
+.wikiEditor-toolbar-dialog .ui-dialog-titlebar {
 	padding: 0.9em 1.4em 0.6em !important;
 }
-.ui-widget table td {
+.wikiEditor-toolbar-dialog table td {
 	padding: 0 !important;
 }
-.ui-dialog .ui-dialog-buttonpane button {
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane button {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	padding: 0.2em 0.6em 0.15em !important;
@@ -39,54 +33,55 @@ div.suggestions {
 	border: 1px solid #a6a6a6 !important;
 	background: #f2f2f2 url( ../images/wikiEditor/dialogs/button_off.png ) repeat-x scroll 50% 100% !important;
 }
-.ui-dialog .ui-dialog-buttonpane button:hover {
-	background: #ebf2f9 url( ../images/wikiEditor/dialogs/button_over.png ) repeat-x scroll 50% 100% !important;
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane button:hover {
+	border-color: #6e7273;
+	background: #e1e1e1 url( ../images/wikiEditor/dialogs/button_over.png ) repeat-x scroll 50% 100% !important;
 }
-.ui-dialog .ui-dialog-buttonpane button:active,
-.ui-dialog .ui-dialog-buttonpane button:focus {
-	
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane button:active,
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane button:focus {
+	border-color: #707271;
 	background: #bfbfbf url( ../images/wikiEditor/dialogs/button_down.png ) repeat-x scroll 50% 100% !important;
 }
-.ui-dialog .ui-dialog-buttonpane button.disabled {
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane button.disabled {
 	color: #7f7f7f;
 	border-color: #cccccc;
 	background: #f2f2f2 url( ../images/wikiEditor/dialogs/button_disabled.png ) repeat-x scroll 50% 100% !important;	
 }
 /* Disables the annoying dashed border Firefox puts on active buttons */
-.ui-dialog .ui-dialog-buttonpane button::-moz-focus-inner { 
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane button::-moz-focus-inner { 
 	border: 0; 
 }
-.ui-widget-header {
+.wikiEditor-toolbar-dialog .ui-widget-header {
 	background: #f0f0f0 url( ../images/wikiEditor/dialogs/titlebar_fade.png ) repeat-x scroll 50% 100% !important;
 }
 /* FIXME: Should just update the icon sprite if we're keeping this X */
-.ui-icon-closethick {
+.wikiEditor-toolbar-dialog .ui-icon-closethick {
 	background: url( ../images/wikiEditor/dialogs/close_x.png ) no-repeat 50% 50% !important;
 }
-.ui-dialog .ui-dialog-buttonpane {
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane {
 	margin-top: 0 !important;
 	padding:0.3em 1.4em 0.5em 1.4em !important;
 }
 
-.ui-dialog-content fieldset{ 
+.wikiEditor-toolbar-dialog .ui-dialog-content fieldset{ 
 	border: none !important;
 	margin: 0 !important;
 	padding: 0 !important;
 }
-.ui-widget-header {
+.wikiEditor-toolbar-dialog .ui-widget-header {
 	border-bottom:1px solid #6bc8f3 !important;
 }
-.ui-dialog-content input[type=text] {
+.wikiEditor-toolbar-dialog .ui-dialog-content input[type=text] {
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-khtml-box-sizing: border-box;
 }
-.ui-dialog-content input[type="radio"], 
-.ui-dialog-content input[type="checkbox"] {
+.wikiEditor-toolbar-dialog .ui-dialog-content input[type="radio"], 
+.wikiEditor-toolbar-dialog .ui-dialog-content input[type="checkbox"] {
 	margin-left: 0;
 }
-body.ltr .ui-dialog .ui-dialog-titlebar-close {
+body.ltr .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
 	right: 0.9em;
 }
 .wikieditor-toolbar-field-wrapper {
@@ -116,21 +111,21 @@ body.rtl #wikieditor-toolbar-table-dialog fieldset {
 body.rtl #wikieditor-toolbar-table-dialog .wikieditor-toolbar-table-preview-wrapper {
 	float: left;
 }
-body.rtl .ui-widget .wikieditor-toolbar-table-preview-wrapper table {
+body.rtl .wikiEditor-toolbar-dialog .wikieditor-toolbar-table-preview-wrapper table {
 	margin-left: 1em;
 	margin-right: 0;
 }
 .wikieditor-toolbar-table-preview-content * {
 	cursor: default;
 }
-.ui-widget .wikieditor-toolbar-table-preview-wrapper table {
+.wikiEditor-toolbar-dialog .wikieditor-toolbar-table-preview-wrapper table {
 	width: 100% !important;
 }
-.ui-widget .wikieditor-toolbar-table-preview-content table td {
+.wikiEditor-toolbar-dialog .wikieditor-toolbar-table-preview-content table td {
 	padding: 10px 4px !important;
 	height: auto !important;
 }
-.ui-widget .wikieditor-toolbar-table-preview-content table th {
+.wikiEditor-toolbar-dialog .wikieditor-toolbar-table-preview-content table th {
 	padding: 7px 3px !important;
 }
 .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wrapper {
@@ -143,7 +138,7 @@ body.rtl .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wr
 	margin-right: 0px;
 	margin-left: 20px;
 }
-.ui-dialog .ui-dialog-content {
+.wikiEditor-toolbar-dialog .ui-dialog-content {
 	padding: 30px 20px 0 !important;
 }
 .wikieditor-toolbar-dialog-wrapper {
@@ -152,15 +147,15 @@ body.rtl .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wr
 /* REPLACE Dialog */
 
 /* RTL Changes */
-body.rtl .ui-dialog .ui-dialog-buttonpane button {
+body.rtl .wikiEditor-toolbar-dialog .ui-dialog-buttonpane button {
 	float: left;
 	margin: 0.5em 0.4em 0.5em 0 !important;
 }
-body.rtl .ui-dialog .ui-dialog-titlebar-close {
+body.rtl .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
 	left: 0.9em;
 	right: auto;
 }
-body.rtl .ui-dialog .ui-dialog-title {
+body.rtl .wikiEditor-toolbar-dialog .ui-dialog-title {
 	float:right;
 }
 /* Self Clearing Floats */
