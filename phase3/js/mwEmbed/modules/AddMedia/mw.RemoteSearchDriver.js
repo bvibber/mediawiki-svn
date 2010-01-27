@@ -43,7 +43,7 @@ mw.addMessages( {
 	"mwe-watch_this_page" : "Watch this page",
 	"mwe-do_import_resource" : "Import resource",
 	"mwe-update_preview" : "Update resource page preview",
-	"mwe-cancel_import" : "Cancel import",
+	"mwe-return-search-results" : "Return to search results",
 	"mwe-importing_asset" : "Importing asset",
 	"mwe-preview_insert_resource" : "Preview insert of resource: $1",
 	"mwe-checking-resource" : "Checking for resource",
@@ -2044,14 +2044,14 @@ mw.RemoteSearchDriver.prototype = {
 		// Update the interface
 		$j( _this.target_container ).append( 
 			_this.getResourceImportInterface( resource , description ) 
-		);												
+		);
 			
 		var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';
 		$j( buttonPaneSelector ).html (
 			// Add the buttons to the bottom:
 			$j.btnHtml( gM( 'mwe-do_import_resource' ), 'rsd_import_doimport', 'check' ) + 
 			' ' +
-			$j.btnHtml( gM( 'mwe-cancel_import' ), 'rsd_import_acancel', 'close' ) + ' '
+			$j.btnHtml( gM( 'mwe-return-search-results' ), 'rsd_import_acancel', 'close' ) + ' '
 		);
 
 		// Update video tag (if a video)

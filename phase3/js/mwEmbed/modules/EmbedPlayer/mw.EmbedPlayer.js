@@ -1951,7 +1951,7 @@ mw.EmbedPlayer.prototype = {
 	showThumbnail: function() {
 		var _this = this;
 		mw.log( 'f:showThumbnail' + this.thumbnail_disp );
-		this.closeDisplayedHTML();
+		this.ctrlBuilder.closeMenuOverlay();
 		$j( '#' + this.id ).html( this.getThumbnailHTML() );
 		this.paused = true;
 		this.thumbnail_disp = true;
@@ -2160,10 +2160,22 @@ mw.EmbedPlayer.prototype = {
 			if ( this.thumbnail_disp ) {
 				mw.log( 'set to thumb:' + src );
 				this.thumbnail_updating = true;
-				$j( '#dc_' + this.id ).append( '<img src="' + src + '" ' +
-					'style="display:none;position:absolute;zindex:2;top:0px;left:0px;" ' +
-					'width="' + this.width + '" height="' + this.height + '" ' +
-					'id = "new_img_thumb_' + this.id + '" />' );
+				$j( '#dc_' + this.id ).append( 
+					$j('<img />')
+					.attr({
+						'src' : src,
+						'id' : 'new_img_thumb_' + this.id,
+						'width' : this.width,
+						'height': this.height
+					})
+					.css( {
+						'display' : 'none',
+						'position' : 'absolute',
+						'zindex' : 2,
+						'top' : '0px',
+						'left' : '0px'
+					})
+				);
 				// mw.log('appended: new_img_thumb_');		
 				$j( '#new_img_thumb_' + this.id ).fadeIn( "slow", function() {
 						// once faded in remove org and rename new:
@@ -2387,12 +2399,15 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* @param {String} html_code code for the selection list.
 	*/
-	displayOverlay: function( html_code ) {			
-		if ( !this.supports['overlays'] )
+	displayOverlay: function( html_code ) {
+		var _this = this;
+		
+		if ( !this.supports['overlays'] ){
 			this.stop();
+		}
 		
 		
-		// put select list on-top
+		// Put select list on-top
 		// make sure the parent is relatively positioned:
 		$j( '#' + this.id ).css( 'position', 'relative' );		
 	  
@@ -2402,32 +2417,40 @@ mw.EmbedPlayer.prototype = {
 			fade_in = false;
 			$j( '#blackbg_' + this.id ).remove();
 		}
-		// Fade in a black bg div ontop of everything
-		var div_code = '<div id="blackbg_' + this.id + '" class="videoComplete" ' +
-			 'style="height:' + this.ctrlBuilder.getOverlayHeight() + 'px;width:' + this.ctrlBuilder.getOverlayWidth() + 'px;">' +
-			 	'<span style="float:right;margin-right:10px">' +
-				'<a href="#" style="color:white;" onClick="$j(\'#' + this.id + '\').get(0).closeDisplayedHTML();return false;">close</a>' +
-			'</span>' +
-			  '<div class="videoOptionsComplete">' +					
-			  '</div>'+
-			 '</div>';		
-		this.$interface.prepend( div_code );
+		$closeButton = $j('<span />')
+			.text( gM('mwe-close_btn') )
+			.css({
+					'float' : 'right',
+					'color' : '#FFF',
+					'cursor' : 'pointer',
+					'background' : '#111',
+					'margin-right': '10px',
+					'text-decoration' : 'underline'
+				})
+			.click(function(){
+				_this.ctrlBuilder.closeMenuOverlay();
+			})
+			
+		
+		$overlayMenu = $j('<div />')
+			.attr({
+					'id' : 'blackbg_' + this.id
+			})
+			.addClass( 'videoComplete' )
+			.css({
+				'height' : this.ctrlBuilder.getOverlayHeight(),
+				'width' :  this.ctrlBuilder.getOverlayWidth()
+			})
+			.append(
+				$closeButton,
+				$j('<div />')
+					.addClass('videoOptionsComplete')
+			)
+		this.$interface.prepend( $overlayMenu );
 		if ( fade_in )
 			$j( '#blackbg_' + this.id ).fadeIn( "slow" );
 		else
 			$j( '#blackbg_' + this.id ).show();
-		return false; // onclick action return false
-	},
-	
-	/** 
-	* Close the custom HTML displayed using displayOverlay and restores the
-	* regular mwEmbed display.
-	*/
-	closeDisplayedHTML: function() {
-		var _this = this;		 		 		
-		$j( '#blackbg_' + this.id ).fadeOut( "slow", function() {
-			$j( '#blackbg_' + _this.id ).remove();			
-		} );
 		return false; // onclick action return false
 	},
 	
@@ -2487,7 +2510,7 @@ mw.EmbedPlayer.prototype = {
 				var default_player_id = iparts[1];
 				mw.log( 'source id: ' +  source_id + ' player id: ' + default_player_id );
 
-				_this.closeDisplayedHTML();
+				_this.ctrlBuilder.closeMenuOverlay();
 				_this.mediaElement.selectSource( source_id );
 
 				mw.EmbedTypes.players.setPlayerPreference( default_player_id,
@@ -2561,12 +2584,14 @@ mw.EmbedPlayer.prototype = {
 	* Starts the "monitor" 
 	*/
 	play: function() {
-		var _this = this;		
+		var _this = this;
+		//Hide any overlay:
+		this.ctrlBuilder.closeMenuOverlay();
 		// check if thumbnail is being displayed and embed html
 		if ( this.thumbnail_disp ) {
 			if ( !this.selected_player ) {
 				mw.log( 'no selected_player' );
-				// this.innerHTML = this.getPluginMissingHTML();				
+				// this.innerHTML = this.getPluginMissingHTML();
 				$j( '#' + this.id ).html( this.getPluginMissingHTML() );
 			} else {
 				this.doEmbedPlayer();
@@ -3117,11 +3142,11 @@ mediaPlayers.prototype =
 	addPlayer: function( player ) {
 		for ( var i = 0; i < this.players.length; i++ ) {
 			if ( this.players[i].id == player.id ) {
-				// Player already found				
+				// Player already found
 				return ;
 			}
 		}
-		// Add the player: 				
+		// Add the player:
 		this.players.push( player );
 	},
 	

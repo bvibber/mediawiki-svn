@@ -314,7 +314,14 @@ ctrlBuilder.prototype = {
 		if ( this.addSkinControlBindings && typeof( this.addSkinControlBindings ) == 'function' )
 			this.addSkinControlBindings();
 	},
-	
+	closeMenuOverlay: function(){
+		var _this = this;	
+		var $overlay = $j( '#blackbg_' + this.embedPlayer.id );
+		$overlay.fadeOut( "slow", function() {
+			$overlay.remove();
+		} );
+		return false; // onclick action return false
+	},
 	/**
 	* check if a warning should be issued to non-native playback systems 
 	*
@@ -477,7 +484,7 @@ ctrlBuilder.prototype = {
 		'options_menu': {
 			'w':0,
 			'o':function( ctrlObj ) {
-				var o = '<div id="mv_vid_options_' + ctrlObj.id + '" class="videoOptions">' +
+				var o = '<div id="mv_vid_options_' + ctrlObj.embedPlayer.id + '" class="videoOptions">' +
 				'<div class="videoOptionsTop"></div>' +
 				'<div class="videoOptionsBox">' +
 				'<div class="block">' +

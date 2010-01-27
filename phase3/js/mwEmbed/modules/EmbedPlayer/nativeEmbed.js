@@ -388,13 +388,12 @@ var nativeEmbed = {
 	*/
 	onloadedmetadata: function() {
 		this.getPlayerElement();
-		mw.log( 'f:onloadedmetadata metadata ready Update duration:' + this.playerElement.duration + ' old dur: ' + this.getDuration() );
-		// update duration if not set (for now trust the getDuration more than this.playerElement.duration		
+		mw.log( 'f:onloadedmetadata metadata ready Update duration:' + this.playerElement.duration + ' old dur: ' + this.getDuration() );		
 		if ( ! isNaN( this.playerElement.duration ) ) {
 			this.duration = this.playerElement.duration;
 		}
 		
-		//Fire "onLoaded" flags if set		
+		//Fire "onLoaded" flags if set
 		if( typeof this.onLoadedCallback == 'function' ){
 			this.onLoadedCallback();
 		}
