@@ -7315,7 +7315,7 @@ if ( typeof context == 'undefined' ) {
 		.attr( {
 			'frameBorder': 0,
 			'border': 0,
-			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
+			'src': wgScriptPath + '/extensions/UsabilityInitiative_alpha/js/plugins/jquery.wikiEditor.html?' +
 				'instance=' + context.instance + '&ts=' + ( new Date() ).getTime(),
 			'id': 'wikiEditor-iframe-' + context.instance
 		} )
