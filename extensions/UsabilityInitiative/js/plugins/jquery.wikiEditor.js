@@ -938,6 +938,13 @@ if ( typeof context == 'undefined' ) {
 		context.$textarea.attr( 'disabled', false );
 		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
 	} );
+	/* FIXME: This was taken from EditWarning.js - maybe we could do a jquery plugin for this? */
+	// Attach our own handler for onbeforeunload which respects the current one
+	context.fallbackWindowOnBeforeUnload = window.onbeforeunload;
+	window.onbeforeunload = function() {
+		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
+		return context.fallbackWindowOnBeforeUnload ? context.fallbackWindowOnBeforeUnload() : null;
+	}
 }
 
 /* API Execution */
