@@ -22,11 +22,11 @@ PLUGINS := \
 	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
 	js/plugins/jquery.collapsibleTabs.js\
-	js/js2stopgap/jquery.cookie.js\
+	js/plugins/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
 	js/plugins/jquery.namespaceSelect.js\
 	js/plugins/jquery.suggestions.js\
-	js/js2stopgap/jquery.textSelection.js\
+	js/plugins/jquery.textSelection.js\
 	js/plugins/jquery.wikiEditor.js\
 	js/plugins/jquery.wikiEditor.dialogs.js\
 	js/plugins/jquery.wikiEditor.highlight.js\

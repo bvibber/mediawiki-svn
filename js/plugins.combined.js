@@ -6387,13 +6387,6 @@ scrollToCaretPosition: function( options ) {
  * 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'toolbar', { ... config ... } );
  * 
  */
- 
-mw.addMessages({
-	"wikieditor" : "Advanced wikitext editing interface",
-	"wikieditor-desc" : "Provides an extendable wikitext editing interface and many feature-providing modules",
-	"wikieditor-wikitext-tab" : "Wikitext"
-});
- 
 ( function( $ ) {
 
 /**

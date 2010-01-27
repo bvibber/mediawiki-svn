@@ -49,9 +49,6 @@ require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
 // Add Autoload Classes
 $wgAutoloadClasses['WikiEditorHooks'] = dirname( __FILE__ ) . '/WikiEditor.hooks.php';
 
-// Add javascript loader
-$wgExtensionJavascriptLoader[] = "UsabilityInitiative/WikiEditor/loader.js";
-
 // Add Internationalized Messages
 $wgExtensionMessagesFiles['WikiEditor'] = dirname( __FILE__ ) . '/WikiEditor.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorHighlight'] = dirname( __FILE__ ) . '/Modules/Highlight/Highlight.i18n.php';
