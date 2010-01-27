@@ -922,7 +922,8 @@ if ( typeof context == 'undefined' ) {
 			context.$content = $( context.$iframe[0].contentWindow.document.body );
 			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
 			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
-			var html = context.$textarea.val().replace( /\</g, '&lt;' ).replace( /\>/g, '&gt;' );
+			// TODO: Refactor this into a textToHtml() function
+			var html = context.$textarea.val();
 			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
 			if ( $.browser.msie ) {
 				// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
@@ -936,7 +937,14 @@ if ( typeof context == 'undefined' ) {
 				}
 				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
 			}
-			context.$content.html( html.replace( /\r?\n/g, '<br />' ) );
+			// Use a dummy div to escape all entities
+			// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
+			html = $( '<div />' ).text( html.replace( /\r?\n/g, '<br>' ) ).html()
+				.replace( /&amp;nbsp;/g, '&nbsp;' )
+				.replace( /&lt;br&gt;/g, '<br>' )
+				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' );
+			context.$content.html( html );
+			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
 				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
