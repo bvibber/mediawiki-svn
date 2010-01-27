@@ -12,6 +12,7 @@ CSS := \
 	css/wikiEditor.preview.css
 
 PLUGINS := \
+	js/usability.js\
 	js/js2stopgap/ui.core.js\
 	js/js2stopgap/ui.datepicker.js\
 	js/js2stopgap/ui.dialog.js\

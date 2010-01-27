@@ -121,7 +121,7 @@ fn: {
 			}
 		} );
 		
-		var loadingMsg = gM( 'wikieditor-preview-loading' );
+		var loadingMsg = mw.usability.getMsg( 'wikieditor-preview-loading' );
 		context.modules.preview.$preview
 			.add( context.$changesTab )
 			.append( $( '<div />' )

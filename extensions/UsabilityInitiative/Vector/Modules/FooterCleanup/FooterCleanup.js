@@ -1,7 +1,7 @@
 /* Prototype code to demonstrate proposed edit page footer cleanups */
 /* First draft and will be changing greatly */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	if( !wgVectorEnabledModules.footercleanup ) {
 		return true;
 	}

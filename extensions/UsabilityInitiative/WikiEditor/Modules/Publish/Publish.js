@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Publish module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for publish
 	if ( !wgWikiEditorEnabledModules.publish ) {
 		return true;

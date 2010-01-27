@@ -1,7 +1,7 @@
 /* Prototype code to show collapsing left nav options */
 /* First draft and will be changing greatly */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	if( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}

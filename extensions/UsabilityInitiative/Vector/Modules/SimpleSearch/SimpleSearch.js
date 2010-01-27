@@ -7,7 +7,7 @@ if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autolo
 	os_autoload_forms = [];
 }
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
 		return true;
@@ -16,7 +16,7 @@ mw.ready( function() {
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
 			$j( '<label />' )
-				.text( gM( 'vector-simplesearch-search' ) )
+				.text( mw.usability.getMsg( 'vector-simplesearch-search' ) )
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
@@ -95,7 +95,7 @@ mw.ready( function() {
 						$j(this).show();
 						$label = $j( '<div />' )
 							.addClass( 'special-label' )
-							.text( gM( 'vector-simplesearch-containing' ) )
+							.text( mw.usability.getMsg( 'vector-simplesearch-containing' ) )
 							.appendTo( $j(this) );
 						$query = $j( '<div />' )
 							.addClass( 'special-query' )

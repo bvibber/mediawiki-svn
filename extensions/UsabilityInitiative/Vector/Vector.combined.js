@@ -1,7 +1,7 @@
 /* Prototype code to show collapsing left nav options */
 /* First draft and will be changing greatly */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	if( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
@@ -35,7 +35,7 @@ mw.ready( function() {
 		return false;
 	} );
 } );
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check if CollapsibleTabs is enabled
 	if ( !wgVectorEnabledModules.collapsibletabs ) {
 		return true;
@@ -119,7 +119,7 @@ mw.ready( function() {
 } );
 /* JavaScript for EditWarning extension */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check if EditWarning is enabled and if we need it
 	if ( !wgVectorEnabledModules.editwarning || $j( '#wpTextbox1' ).size() == 0 ) {
 		return true;
@@ -150,7 +150,7 @@ mw.ready( function() {
 			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
 		) {
 			// Return our message
-			return gM( 'vector-editwarning-warning' );
+			return mw.usability.getMsg( 'vector-editwarning-warning' );
 		}
 	}
 	// Add form submission handler
@@ -164,7 +164,7 @@ var fallbackWindowOnBeforeUnload = null;
 /* Prototype code to demonstrate proposed edit page footer cleanups */
 /* First draft and will be changing greatly */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	if( !wgVectorEnabledModules.footercleanup ) {
 		return true;
 	}
@@ -241,7 +241,7 @@ if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autolo
 	os_autoload_forms = [];
 }
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Only use this function in conjuction with the Vector skin
 	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
 		return true;
@@ -250,7 +250,7 @@ mw.ready( function() {
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
 			$j( '<label />' )
-				.text( gM( 'vector-simplesearch-search' ) )
+				.text( mw.usability.getMsg( 'vector-simplesearch-search' ) )
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
@@ -329,7 +329,7 @@ mw.ready( function() {
 						$j(this).show();
 						$label = $j( '<div />' )
 							.addClass( 'special-label' )
-							.text( gM( 'vector-simplesearch-containing' ) )
+							.text( mw.usability.getMsg( 'vector-simplesearch-containing' ) )
 							.appendTo( $j(this) );
 						$query = $j( '<div />' )
 							.addClass( 'special-query' )

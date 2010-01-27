@@ -42,7 +42,7 @@ fn: {
 						</div>',
 					init: function() {
 						$(this).find( '[rel]' ).each( function() {
-							$(this).text( gM( $(this).attr( 'rel' ) ) );
+							$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
 						});
 						$(this).find( '.wikiEditor-dialog-copywarn' )
 							.html( $( '#editpage-copywarn' ).html() );

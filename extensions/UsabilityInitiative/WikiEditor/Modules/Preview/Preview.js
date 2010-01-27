@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Preview module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for preview
 	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;

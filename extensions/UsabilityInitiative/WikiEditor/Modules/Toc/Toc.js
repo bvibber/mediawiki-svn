@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Toc module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for toolbar
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toc && wgWikiEditorPreferences.toc.enable ) ) {
 		return true;

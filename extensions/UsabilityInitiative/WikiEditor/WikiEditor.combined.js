@@ -1,6 +1,6 @@
 /* JavaScript for WikiEditor Highlight module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for highlight
 	if ( !wgWikiEditorEnabledModules.highlight ) {
 		return true;
@@ -12,7 +12,7 @@ mw.ready( function() {
 });
 /* JavaScript for WikiEditor Preview module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for preview
 	if ( !wgWikiEditorEnabledModules.preview ) {
 		return true;
@@ -24,7 +24,7 @@ mw.ready( function() {
 });
 /* JavaScript for WikiEditor Publish module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for publish
 	if ( !wgWikiEditorEnabledModules.publish ) {
 		return true;
@@ -36,7 +36,7 @@ mw.ready( function() {
 });
 /* JavaScript for WikiEditor Toc module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for toolbar
 	if ( !wgWikiEditorPreferences || !( wgWikiEditorPreferences.toc && wgWikiEditorPreferences.toc.enable ) ) {
 		return true;
@@ -49,7 +49,7 @@ mw.ready( function() {
 });
 /* JavaScript for WikiEditor Toolbar module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for toolbar
 	if ( !wgWikiEditorEnabledModules.toolbar ) {
 		return true;
@@ -1009,17 +1009,18 @@ mw.ready( function() {
 				);
 			}
 			// Set labels of tabs based on rel values
+			var u = mw.usability;
 			$j(this).find( '[rel]' ).each( function() {
-				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+				$j(this).text( u.getMsg( $j(this).attr( 'rel' ) ) );
 			});
 			// Setup the tooltips in the textboxes
 			$j( '#wikieditor-toolbar-link-int-target' )
-				.data( 'tooltip', gM( 'wikieditor-toolbar-tool-link-int-target-tooltip' ) );
+				.data( 'tooltip', u.getMsg( 'wikieditor-toolbar-tool-link-int-target-tooltip' ) );
 			$j( '#wikieditor-toolbar-link-int-text' )
-				.data( 'tooltip', gM( 'wikieditor-toolbar-tool-link-int-text-tooltip' ) );
+				.data( 'tooltip', u.getMsg( 'wikieditor-toolbar-tool-link-int-text-tooltip' ) );
 			$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' )
 				.each( function() {
-					var tooltip = gM( $j( this ).attr( 'id' ) + '-tooltip' );
+					var tooltip = u.getMsg( $j( this ).attr( 'id' ) + '-tooltip' );
 					if ( $j( this ).val() == '' )
 						$j( this )
 							.val( $j( this ).data( 'tooltip' ) )
@@ -1068,11 +1069,11 @@ mw.ready( function() {
 			});
 			// Add images to the page existence widget, which will be shown mutually exclusively to communicate if the
 			// page exists, does not exist or the title is invalid (like if it contains a | character)
-			var existsMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-exists' );
-			var notexistsMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-notexists' );
-			var invalidMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-invalid' );
-			var externalMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-external' );
-			var loadingMsg = gM( 'wikieditor-toolbar-tool-link-int-target-status-loading' );
+			var existsMsg = u.getMsg( 'wikieditor-toolbar-tool-link-int-target-status-exists' );
+			var notexistsMsg = u.getMsg( 'wikieditor-toolbar-tool-link-int-target-status-notexists' );
+			var invalidMsg = u.getMsg( 'wikieditor-toolbar-tool-link-int-target-status-invalid' );
+			var externalMsg = u.getMsg( 'wikieditor-toolbar-tool-link-int-target-status-external' );
+			var loadingMsg = u.getMsg( 'wikieditor-toolbar-tool-link-int-target-status-loading' );
 			$j( '#wikieditor-toolbar-link-int-target-status' )
 				.append( $j( '<div />' )
 					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-exists' )
@@ -1188,8 +1189,9 @@ mw.ready( function() {
 					var whitespace = $j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace' );
 					var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
 					var text = $j( '#wikieditor-toolbar-link-int-text' ).val();
+					var u = mw.usability;
 					if ( target == '' ) {
-						alert( gM( 'wikieditor-toolbar-tool-link-empty' ) );
+						alert( u.getMsg( 'wikieditor-toolbar-tool-link-empty' ) );
 						return;
 					}
 					if ( $j.trim( text ) == '' ) {
@@ -1201,7 +1203,7 @@ mw.ready( function() {
 						// FIXME: Exactly how fragile is this?
 						if ( $j( '#wikieditor-toolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
 							// Refuse to add links to invalid titles
-							alert( gM( 'wikieditor-toolbar-tool-link-int-invalid' ) );
+							alert( u.getMsg( 'wikieditor-toolbar-tool-link-int-invalid' ) );
 							return;
 						}
 						
@@ -1219,18 +1221,18 @@ mw.ready( function() {
 						if ( match && !$j(this).data( 'ignoreLooksInternal' ) ) {
 							var buttons = { };
 							var that = this;
-							buttons[ gM( 'wikieditor-toolbar-tool-link-lookslikeinternal-int' ) ] = function() {
+							buttons[ u.getMsg( 'wikieditor-toolbar-tool-link-lookslikeinternal-int' ) ] = function() {
 								$j( '#wikieditor-toolbar-link-int-target' ).val( match[1] ).change();
 								$j(this).dialog( 'close' );
 							};
-							buttons[ gM( 'wikieditor-toolbar-tool-link-lookslikeinternal-ext' ) ] = function() {
+							buttons[ u.getMsg( 'wikieditor-toolbar-tool-link-lookslikeinternal-ext' ) ] = function() {
 								$j(that).data( 'ignoreLooksInternal', true );
 								$j(that).closest( '.ui-dialog' ).find( 'button:first' ).click();
 								$j(that).data( 'ignoreLooksInternal', false );
 								$j(this).dialog( 'close' );
 							};
 							$j.wikiEditor.modules.dialogs.quickDialog(
-								gM( 'wikieditor-toolbar-tool-link-lookslikeinternal', match[1] ),
+								u.getMsg( 'wikieditor-toolbar-tool-link-lookslikeinternal', match[1] ),
 								{ buttons: buttons }
 							);
 							return;
@@ -1399,7 +1401,7 @@ mw.ready( function() {
 			</div></div>',
 		init: function() {
 			$j(this).find( '[rel]' ).each( function() {
-				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+				$j(this).text( mw.usability.getMsg( $j(this).attr( 'rel' ) ) );
 			});
 			$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
 			$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
@@ -1456,20 +1458,21 @@ mw.ready( function() {
 					var rows = parseInt( rowsVal, 10 );
 					var cols = parseInt( colsVal, 10 );
 					var header = Math.min( 1, $j( '#wikieditor-toolbar-table-dimensions-header:checked' ).size() );
+					var u = mw.usability;
 					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
-						alert( gM( 'wikieditor-toolbar-tool-table-invalidnumber' ) );
+						alert( u.getMsg( 'wikieditor-toolbar-tool-table-invalidnumber' ) );
 						return;
 					}
 					if ( rows + header == 0 || cols == 0 ) {
-						alert( gM( 'wikieditor-toolbar-tool-table-zero' ) );
+						alert( u.getMsg( 'wikieditor-toolbar-tool-table-zero' ) );
 						return;
 					}
 					if ( rows * cols > 1000 ) {
-						alert( gM( 'wikieditor-toolbar-tool-table-toomany', 1000 ) );
+						alert( u.getMsg( 'wikieditor-toolbar-tool-table-toomany', 1000 ) );
 						return;
 					}
-					var headerText = gM( 'wikieditor-toolbar-tool-table-example-header' );
-					var normalText = gM( 'wikieditor-toolbar-tool-table-example' );
+					var headerText = u.getMsg( 'wikieditor-toolbar-tool-table-example-header' );
+					var normalText = u.getMsg( 'wikieditor-toolbar-tool-table-example' );
 					var table = "";
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
@@ -1575,8 +1578,9 @@ mw.ready( function() {
 				</div>\
 			</fieldset>',
 		init: function() {
+			var u = mw.usability;
 			$j(this).find( '[rel]' ).each( function() {
-				$j(this).text( gM( $j(this).attr( 'rel' ) ) );
+				$j(this).text( u.getMsg( $j(this).attr( 'rel' ) ) );
 			});
 			
 			// TODO: Find a cleaner way to share this function
@@ -1604,7 +1608,7 @@ mw.ready( function() {
 					var regex = new RegExp( searchStr, flags );
 				} catch( e ) {
 					$j( '#wikieditor-toolbar-replace-invalidregex' )
-						.text( gM( 'wikieditor-toolbar-tool-replace-invalidregex',
+						.text( u.getMsg( 'wikieditor-toolbar-tool-replace-invalidregex',
 							e.message ) )
 						.show();
 					return;
@@ -1653,7 +1657,7 @@ mw.ready( function() {
 						offset = newEnd;
 					}
 					$j( '#wikieditor-toolbar-replace-success' )
-						.text( gM( 'wikieditor-toolbar-tool-replace-success', match.length ) )
+						.text( u.getMsg( 'wikieditor-toolbar-tool-replace-success', match.length ) )
 						.show();
 					$j(this).data( 'offset', 0 );
 				} else {
@@ -1745,7 +1749,7 @@ mw.ready( function() {
 
 /* JavaScript for WikiEditor Template Editor module */
 
-mw.ready( function() {
+$j(document).ready( function() {
 	// Check preferences for templateEditor
 	if ( !wgWikiEditorEnabledModules.templateEditor ) {
 		return true;
