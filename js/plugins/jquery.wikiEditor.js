@@ -450,7 +450,8 @@ if ( typeof context == 'undefined' ) {
 					}
 					// TODO: Will this still work with syntax highlighting?
 					// When the selection ends at the end of a line, it'll have endContainer == body
-					if ( range.endContainer != body ) {
+					// and endOffset != 0
+					if ( range.endContainer != body || range.endOffset == 0 ) {
 						post += "\n";
 					}
 				}

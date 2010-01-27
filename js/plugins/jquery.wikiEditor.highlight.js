@@ -174,8 +174,9 @@ fn: {
 				startNode = startNode.splitText( s.offset );
 			}
 			// Don't wrap leading BRs, produces undesirable results
-			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
+			while ( startNode.nodeName == 'BR' ) {
 				start++;
+				s = context.fn.getOffset( start );
 				startNode = s.node;
 				startDepth = s.depth;
 			}
