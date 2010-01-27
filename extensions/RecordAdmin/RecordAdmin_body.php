@@ -1005,7 +1005,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * If a record was created by a public form, make last 5 digits of ID available via a tag
 	 */
-	function expandTag( $text, $argv, &$parser ) {
+	function expandTag( $text, $argv, $parser ) {
 		$parser->mOutput->mCacheTime = -1;
 		return $this->guid ? substr( $this->guid, -5 ) : '';
 	}

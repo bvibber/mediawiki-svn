@@ -73,7 +73,7 @@ function wfNewsFeedTag( $templatetext, $argv, &$parser ) {
     return $html;
 }
 
-function wfNewsFeedLinkTag( $linktext, $argv, &$parser ) {
+function wfNewsFeedLinkTag( $linktext, $argv, $parser ) {
     return NewsRenderer::renderFeedLink($linktext, $argv, $parser);
 }
 
