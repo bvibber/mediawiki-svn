@@ -53,135 +53,43 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 
 				// These scripts can be pulled from core once the js2 is merged
-				// NOTE:: a lot of the logic of hooks.php could be
-				// simplified into loader.js
-				array(
-					'src' => 'js/js2stopgap/ui.core.js',
-					'class' => 'j.ui',
-					'version' => 1,
-				),
-				array(
-					'src' => 'js/js2stopgap/ui.datepicker.js',
-					'class' => 'j.fn.datePicker',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/js2stopgap/ui.dialog.js',
-					'class' => 'j.ui.dialog',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/js2stopgap/ui.draggable.js',
-					'class' => 'j.ui.draggable',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/js2stopgap/ui.resizable.js',
-					'class' => 'j.ui.resizable',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/js2stopgap/ui.tabs.js',
-					'class' => 'j.ui.tabs',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/js2stopgap/jquery.cookie.js',
-					'class' => 'j.cookie',
-					'version' => 3
-				),
-				array(
-					'src' => 'js/js2stopgap/jquery.textSelection.js',
-					'class' => 'j.fn.textSelection',
-					'version' => 25
-				),
+				array( 'src' => 'js/js2stopgap/ui.core.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.datepicker.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.dialog.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.draggable.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.resizable.js', 'version' => 1 ),
+				array( 'src' => 'js/js2stopgap/ui.tabs.js', 'version' => 1 ),
 
 				// Core functionality of extension scripts
-				array(
-					'src' => 'js/plugins/jquery.async.js',
-					'class' => 'j.whileAsync',
-					'version' => 3
-				),
-				array(
-					'src' => 'js/plugins/jquery.autoEllipsis.js',
-					'class' => 'j.fn.autoEllipsis',
-					'version' => 7
-				),
-				array(
-					'src' => 'js/plugins/jquery.browser.js',
-					'class' => 'j.browserTest',
-					'version' => 3
-				),
-				array(
-					'src' => 'js/plugins/jquery.collapsibleTabs.js',
-					'class' => 'j.fn.collapsibleTabs',
-					'version' => 5
-				),
-				array(
-					'src' => 'js/plugins/jquery.delayedBind.js',
-					'class' => 'j.fn.delayedBind',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/plugins/jquery.namespaceSelect.js',
-					'class' => 'j.fn.namespaceSelector',
-					'version' => 1
-				),
-				array(
-					'src' => 'js/plugins/jquery.suggestions.js',
-					'class' => 'j.suggestions',
-					'version' => 7
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.js',
-					'class' => 'j.wikiEditor',
-					'version' => 70
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.highlight.js',
-					'class' => 'j.wikiEditor.modules.highlight',
-					'version' => 23
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.toolbar.js',
-					'class' => 'j.wikiEditor.modules.toolbar',
-					'version' => 44
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.dialogs.js',
-					'class' => 'j.wikiEditor.modules.dialogs',
-					'version' => 10
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.toc.js',
-					'class' => 'j.wikiEditor.modules.toc',
-					'version' => 73
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.preview.js',
-					'class' => 'j.wikiEditor.modules.preview',
-					'version' => 9
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js',
-					'class' => 'j.wikiEditor.modules.templateEditor',
-					'version' => 16
-				),
-				array(
-					'src' => 'js/plugins/jquery.wikiEditor.publish.js',
-					'class' => 'j.wikiEditor.modules.publish',
-					'version' => 1 ),
+				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 7 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 3 ),
+				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 5 ),
+				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
+				array( 'src' => 'js/plugins/jquery.namespaceSelect.js', 'version' => 1 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 7 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 26 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 71 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 23 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 44 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 10 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 73 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 16 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 181 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 183 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 181 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 183 ),
 			),
 		),
 	);
 
 	/* Static Functions */
+
 	public static function initialize() {
 		self::$doOutput = true;
 	}
@@ -193,8 +101,8 @@ class UsabilityInitiativeHooks {
 	public static function addResources( $out ) {
 		global $wgExtensionAssetsPath, $wgJsMimeType;
 		global $wgUsabilityInitiativeResourceMode;
-		global $wgEditToolbarRunTests, $wgVersion;
-		global $wgStyleVersion, $wgEnableScriptLoader;
+		global $wgEnableJS2system, $wgEditToolbarRunTests;
+		global $wgStyleVersion;
 
 		wfRunHooks( 'UsabilityInitiativeLoadModules' );
 
@@ -212,9 +120,9 @@ class UsabilityInitiativeHooks {
 			self::$scriptFiles['modules'][$mode],
 			self::$scripts
 		);
-		// Provide backward support for mediaWiki less than 1.17
-		// by including "no_js2" js.
-		if ( !version_compare( floatval( $wgVersion ), '1.17', '>=') ) {
+		// Provide enough support to make things work, even when js2 is not
+		// in use (eventually it will be standard, but right now it's not)
+		if ( !$wgEnableJS2system ) {
 			$out->includeJQuery();
 		}
 		// Include base-set of styles
@@ -229,45 +137,34 @@ class UsabilityInitiativeHooks {
 		}
 		// Loops over each script
 		foreach ( self::$scripts as $script ) {
-			if ( !version_compare( floatval( $wgVersion ), '1.17', '>=') ) {
-				// Add javascript to document
-				if ( $script['src']{0} == '/' ) {
-					// Path is relative to $wgScriptPath
-					global $wgScriptPath;
-					$src = "$wgScriptPath{$script['src']}";
-				} else {
-					// Path is relative to $wgExtensionAssetsPath
-					$src = "$wgExtensionAssetsPath/UsabilityInitiative/{$script['src']}";
-				}
-				$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
-				$out->addScriptFile( $src, $version );
-				continue ;
-			}
-			// else add by class:
-			if( isset( $script['class'] ) ){
-				$out->addScriptClass( $script['class'] );
-			}
-		}
-
-		// Transforms messages into javascript object members
-		// ( only not handled automatically )
-		if ( version_compare( $wgVersion, '1.17', '<' ) ) {
-			foreach ( self::$messages as $i => $message ) {
-				$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
-				$escapedMessageKey = Xml::escapeJsString( $message );
-				self::$messages[$i] =
-					"'{$escapedMessageKey}':'{$escapedMessageValue}'";
-			}
 			// Add javascript to document
-			if ( count( self::$messages ) > 0 ) {
-				$out->addScript(
-					Xml::tags(
-						'script',
-						array( 'type' => $wgJsMimeType ),
-						'mw.addMessages({' . implode( ',', self::$messages ) . '});'
-					)
-				);
+			if ( $script['src']{0} == '/' ) {
+				// Path is relative to $wgScriptPath
+				global $wgScriptPath;
+				$src = "$wgScriptPath{$script['src']}";
+			} else {
+				// Path is relative to $wgExtensionAssetsPath
+				$src = "$wgExtensionAssetsPath/UsabilityInitiative/{$script['src']}";
 			}
+			$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
+			$out->addScriptFile( $src, $version );
+		}
+		// Transforms messages into javascript object members
+		foreach ( self::$messages as $i => $message ) {
+			$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
+			$escapedMessageKey = Xml::escapeJsString( $message );
+			self::$messages[$i] =
+				"'{$escapedMessageKey}':'{$escapedMessageValue}'";
+		}
+		// Add javascript to document
+		if ( count( self::$messages ) > 0 ) {
+			$out->addScript(
+				Xml::tags(
+					'script',
+					array( 'type' => $wgJsMimeType ),
+					'mw.addMessages({' . implode( ',', self::$messages ) . '});'
+				)
+			);
 		}
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
