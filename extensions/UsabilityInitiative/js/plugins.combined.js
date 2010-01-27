@@ -6874,7 +6874,8 @@ if ( typeof context == 'undefined' ) {
 					}
 					// TODO: Will this still work with syntax highlighting?
 					// When the selection ends at the end of a line, it'll have endContainer == body
-					if ( range.endContainer != body ) {
+					// and endOffset != 0
+					if ( range.endContainer != body || range.endOffset == 0 ) {
 						post += "\n";
 					}
 				}
@@ -7736,8 +7737,9 @@ fn: {
 				startNode = startNode.splitText( s.offset );
 			}
 			// Don't wrap leading BRs, produces undesirable results
-			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
+			while ( startNode.nodeName == 'BR' ) {
 				start++;
+				s = context.fn.getOffset( start );
 				startNode = s.node;
 				startDepth = s.depth;
 			}
