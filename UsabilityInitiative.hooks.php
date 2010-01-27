@@ -105,7 +105,7 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/plugins/jquery.autoEllipsis.js',
 					'class' => 'j.fn.autoEllipsis',
-					'version' => 6
+					'version' => 7
 				),
 				array(
 					'src' => 'js/plugins/jquery.browser.js',
@@ -135,12 +135,12 @@ class UsabilityInitiativeHooks {
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.js',
 					'class' => 'j.wikiEditor',
-					'version' => 69
+					'version' => 70
 				),
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.highlight.js',
 					'class' => 'j.wikiEditor.modules.highlight',
-					'version' => 22
+					'version' => 23
 				),
 				array(
 					'src' => 'js/plugins/jquery.wikiEditor.toolbar.js',
@@ -173,10 +173,10 @@ class UsabilityInitiativeHooks {
 					'version' => 1 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 180 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 181 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 180 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 181 ),
 			),
 		),
 	);

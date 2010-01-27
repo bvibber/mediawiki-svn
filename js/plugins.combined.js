@@ -5130,24 +5130,40 @@ $.fn.eachAsync = function(opts)
  */
 ( function( $ ) {
 
+// Cache ellipsed substrings for every string-width combination
+var cache = { };
+
 $.fn.autoEllipsis = function( options ) {
+	options = $.extend( {
+		'position': 'center',
+		'tooltip': false,
+		'restoreText': false
+	}, options );
 	$(this).each( function() {
-		options = $.extend( {
-			'position': 'center',
-			'tooltip': false,
-			'restoreText': false
-		}, options );
+		var $this = $(this);
 		if ( options.restoreText ) {
-			if ( ! $( this ).data( 'autoEllipsis.originalText' ) ) {
-				$( this ).data( 'autoEllipsis.originalText', $( this ).text() );
+			if ( ! $this.data( 'autoEllipsis.originalText' ) ) {
+				$this.data( 'autoEllipsis.originalText', $this.text() );
 			} else {
-				$( this ).text( $( this ).data( 'autoEllipsis.originalText' ) );
+				$this.text( $this.data( 'autoEllipsis.originalText' ) );
 			}
 		}
-		var text = $(this).text();
-		var $text = $( '<span />' ).text( text ).css( 'whiteSpace', 'nowrap' );
-		$(this).empty().append( $text );
-		if ( $text.width() > $(this).width() ) {
+		var text = $this.text();
+		var w = $this.width();
+		var $text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
+		$this.empty().append( $text );
+		
+		// Try cache
+		if ( !( text in cache ) ) {
+			cache[text] = {};
+		}
+		if ( w in cache[text] ) {
+			$text.text( cache[text][w] );
+			return;
+		}
+		
+		$text.text( text );
+		if ( $text.width() > w ) {
 			switch ( options.position ) {
 				case 'right':
 					// Use binary search-like technique for efficiency
@@ -5155,7 +5171,7 @@ $.fn.autoEllipsis = function( options ) {
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
 						$text.text( text.substr( 0, m ) + '...' );
-						if ( $text.width() > $(this).width() ) {
+						if ( $text.width() > w ) {
 							// Text is too long
 							r = m - 1;
 						} else {
@@ -5168,7 +5184,7 @@ $.fn.autoEllipsis = function( options ) {
 					// TODO: Use binary search like for 'right'
 					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
 					var side = 1; // Begin with making the end shorter
-					while ( $text.outerWidth() > ( $(this).width() ) && i[0] > 0 ) {
+					while ( $text.outerWidth() > w  && i[0] > 0 ) {
 						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
 						// Alternate between trimming the end and begining
 						if ( side == 0 ) {
@@ -5185,7 +5201,7 @@ $.fn.autoEllipsis = function( options ) {
 				case 'left':
 					// TODO: Use binary search like for 'right'
 					var r = 0;
-					while ( $text.outerWidth() > $(this).width() && r < text.length ) {
+					while ( $text.outerWidth() > w && r < text.length ) {
 						$text.text( '...' + text.substr( r ) );
 						r++;
 					}
@@ -5194,6 +5210,7 @@ $.fn.autoEllipsis = function( options ) {
 			if ( options.tooltip )
 				$text.attr( 'title', text );
 		}
+		cache[text][w] = $text.text();
 	} );
 };
 
@@ -6916,13 +6933,12 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var start = options.start, end = options.end;
 				if ( !sc || !ec ) {
-					var offsets = context.fn.getOffsets();
-					var startContainer = offsets[start].node, startOffset = offsets[start].offset;
-					var endContainer = offsets[end].node, endOffset = offsets[end].offset;
-					sc = offsets[start].node;
-					ec = offsets[end].node;
-					start = offsets[start].offset;
-					end = offsets[end].offset;
+					var s = context.fn.getOffset( start );
+					var e = context.fn.getOffset( end );
+					sc = s.node;
+					ec = e.node;
+					start = s.offset;
+					end = e.offset;
 				}
 				if ( !sc || !ec ) {
 					// The requested offset isn't in the offsets array
@@ -7035,11 +7051,12 @@ if ( typeof context == 'undefined' ) {
 					return $( [] );
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
-				var offsets = context.fn.getOffsets();
-				e = offsets[seekPos] ? offsets[seekPos].node : null;
-				offset = offsets[seekPos] ? offsets[seekPos].offset : null;
-				if ( !e )
+				var offset = context.fn.getOffset( seekPos );
+				e = offset ? offset.node : null;
+				offset = offset ? offset.offset : null;
+				if ( !e ) {
 					return $( [] );
+				}
 			}
 			if ( e.nodeName != '#text' ) {
 				// The selection is not in a textnode, but between two non-text nodes
@@ -7100,7 +7117,9 @@ if ( typeof context == 'undefined' ) {
 					p = p ? p.nextSibling : null;
 					do {
 						// Filter nodes with the wikiEditor-noinclude class
-						while ( p && $( p ).hasClass( 'wikiEditor-noinclude' ) ) {
+						// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+						// $() is slow in a tight loop
+						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
 							p = p.nextSibling;
 						}
 						if ( p && p.firstChild ) {
@@ -7120,7 +7139,9 @@ if ( typeof context == 'undefined' ) {
 			var inP = node.nodeName == "P";
 			do {
 				// Filter nodes with the wikiEditor-noinclude class
-				while ( node && $( node ).hasClass( 'wikiEditor-noinclude' ) ) {
+				// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+				// $() is slow in a tight loop
+				while ( node && ( ' ' + node.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
 					node = node.nextSibling;
 				}
 				if ( node && node.firstChild ) {
@@ -7133,11 +7154,30 @@ if ( typeof context == 'undefined' ) {
 			} while ( node && node.firstChild );
 			return new Traverser( node, depth, inP );
 		},
-		'getOffsets': function() {
+		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
 				context.fn.refreshOffsets();
 			}
-			return context.offsets;
+			if ( offset in context.offsets ) {
+				return context.offsets[offset];
+			}
+			// Our offset is not pre-cached. Find the highest offset below it and interpolate
+			var lowerBound = 0;
+			for ( var o in context.offsets ) {
+				if ( o > offset ) {
+					break;
+				}
+				lowerBound = o;
+			}
+			var base = context.offsets[lowerBound];
+			return context.offsets[offset] = {
+				'node': base.node,
+				'offset': base.offset + offset - o,
+				'length': base.length,
+				'depth': base.depth,
+				'lastTextNode': lastTextNode,
+				'lastTextNodeDepth': lastTextNodeDepth
+			};
 		},
 		'purgeOffsets': function() {
 			context.offsets = null;
@@ -7154,16 +7194,14 @@ if ( typeof context == 'undefined' ) {
 				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
 				var nextT = t.next();
 				var leavingP = t.inP && nextT && !nextT.inP;
-				for ( var p = pos; p < nextPos; p++ ) {
-					context.offsets[p] = {
-						'node': t.node,
-						'offset': p - pos,
-						'length': nextPos - pos + ( leavingP ? 1 : 0 ),
-						'depth': t.depth,
-						'lastTextNode': lastTextNode,
-						'lastTextNodeDepth': lastTextNodeDepth
-					};
-				}
+				context.offsets[pos] = {
+					'node': t.node,
+					'offset': 0,
+					'length': nextPos - pos + ( leavingP ? 1 : 0 ),
+					'depth': t.depth,
+					'lastTextNode': lastTextNode,
+					'lastTextNodeDepth': lastTextNodeDepth
+				};
 				if ( leavingP ) {
 					// <p>Foo</p> looks like "Foo\n", make it quack like it too
 					// Basically we're faking the \n character much like we're treating <br>s
@@ -7554,6 +7592,7 @@ fn: {
 	},
 	/**
 	 * Strips division of HTML
+	 * FIXME: Isn't this done by context.fn.htmlToText() already?
 	 * 
 	 * @param division
 	 */
@@ -7582,8 +7621,8 @@ fn: {
 		var tokenArray = context.modules.highlight.tokenArray = [];
 		// We need to look over some text and find interesting areas, then return the positions of those areas as tokens
 		var text = context.fn.getContents();
-		for ( module in $.wikiEditor.modules ) {
-			if ( 'exp' in $.wikiEditor.modules[module] ) {
+		for ( module in context.modules ) {
+			if ( module in $.wikiEditor.modules && 'exp' in $.wikiEditor.modules[module] ) {
 			   for ( var i = 0; i < $.wikiEditor.modules[module].exp.length; i++ ) {
 					var regex = $.wikiEditor.modules[module].exp[i].regex;
 					var label = $.wikiEditor.modules[module].exp[i].label;
@@ -7629,55 +7668,48 @@ fn: {
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
-		var offsets = context.fn.getOffsets();
 		for ( var i = 0; i < markers.length; i++ ) {
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
 			var start = markers[i].start;
-			if ( !( start in offsets ) ) {
-				// This shouldn't happen
-				continue;
-			}
-			var startNode = offsets[start].node;
-			var startDepth = offsets[start].depth;
+			var s = context.fn.getOffset( start );
+			var startNode = s.node;
+			var startDepth = s.depth;
 			// The next marker starts somewhere in this textNode or at this BR
-			if ( offsets[start].offset > 0 ) {
+			if ( s.offset > 0 ) {
 				// t.node must be a textnode at this point because
 				// only textnodes can have offset > 0
 				
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( offsets[start].offset );
+				startNode = startNode.splitText( s.offset );
 			}
 			// Don't wrap leading BRs, produces undesirable results
 			while ( startNode.nodeName == 'BR' && start + 1 in offsets ) {
 				start++;
-				startNode = offsets[start].node;
-				startDepth = offsets[start].depth;
+				startNode = s.node;
+				startDepth = s.depth;
 			}
 			
 			var end = markers[i].end;
-			if ( !( end in offsets ) ) {
-				// This shouldn't happen
-				continue;
-			}
-			var endNode = offsets[end].node;
-			var endDepth = offsets[end].depth;
-			if ( offsets[end].offset < offsets[end].length - 1 ) {
+			var e = context.fn.getOffset( end );
+			var endNode = e.node;
+			var endDepth = e.depth;
+			if ( e.offset < e.length - 1 ) {
 				// t.node must be a textnode at this point because
 				// .length is 1 for BRs and offset can't be < 0
 				
 				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 				// node.
 				// endNode.nodeValue.length - ( newPos - markers[i].end )
-				endNode.splitText( offsets[end].offset + 1 );
+				endNode.splitText( e.offset + 1 );
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
-				endNode = offsets[end].lastTextNode;
-				endDepth = offsets[end].lastTextNodeDepth;
+				endNode = e.lastTextNode;
+				endDepth = e.lastTextNodeDepth;
 			}
 			
 			// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
