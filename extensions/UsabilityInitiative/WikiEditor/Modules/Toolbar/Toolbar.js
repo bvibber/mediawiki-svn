@@ -880,26 +880,27 @@ $j(document).ready( function() {
 				}
 				return s.match( arguments.callee.regex );
 			}
+			// Updates the status indicator above the target link
+			function updateWidget( status ) {
+				$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
+				$j( '#wikieditor-toolbar-link-int-target' ).parent()
+					.removeClass( 'status-invalid status-external status-notexists status-exists status-loading' );
+				if ( status ) {
+					$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
+					$j( '#wikieditor-toolbar-link-int-target' ).parent().addClass( 'status-' + status );
+				}
+				if ( status == 'invalid' ) {
+					$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
+						.attr( 'disabled', true )
+						.addClass( 'disabled' );
+				} else { 
+					$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
+						.removeAttr('disabled')
+						.removeClass('disabled');
+				}
+			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
 			function updateExistence() {
-				function updateWidget( status ) {
-					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
-					$j( '#wikieditor-toolbar-link-int-target' ).parent()
-						.removeClass( 'status-invalid status-external status-notexists status-exists status-loading' );
-					if ( status ) {
-						$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
-						$j( '#wikieditor-toolbar-link-int-target' ).parent().addClass( 'status-' + status );
-					}
-					if ( status == 'invalid' ) {
-						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
-							.attr( 'disabled', true )
-							.addClass( 'disabled' );
-					} else { 
-						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
-							.removeAttr('disabled')
-							.removeClass('disabled');
-					}
-				}
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
 				if ( request ) {
@@ -959,6 +960,12 @@ $j(document).ready( function() {
 					} )
 				);
 			}
+			$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).click( function() {
+				if( $j( '#wikieditor-toolbar-link-type-ext' ).is( ':checked' ) )
+					updateWidget( 'external' );
+				if( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) )
+					updateExistence();
+			});
 			// Set labels of tabs based on rel values
 			var u = mw.usability;
 			$j(this).find( '[rel]' ).each( function() {
