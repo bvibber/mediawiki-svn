@@ -24,12 +24,6 @@ class LastUserLogin extends SpecialPage {
 			return;
 		}
  
-		# Show a message if the database is in read-only mode
-		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
- 
 		# If the user doesn't have the required 'lastlogin' permission, display an error
 		if ( !$wgUser->isAllowed( 'lastlogin' ) ) {
 			$wgOut->permissionRequired( 'lastlogin' );
