@@ -6791,7 +6791,7 @@ if ( typeof context == 'undefined' ) {
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
 				+ '</pre>' );
-			// Get rid of the noincludes when getting text
+			// TODO: Optimize this, maybe by converting <br>->\n when not at the beginning or end
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
 			// Convert tabs, <p>s and <br>s back
 			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
@@ -7140,9 +7140,20 @@ if ( typeof context == 'undefined' ) {
 				}
 				e = newE || e;
 			}
-			while ( e ) {
-				if ( $( e ).is( selector ) && !strict )
-					return $( e );
+			
+			// We'd normally use if( $( e ).is( selector ) in the while loop, but running the jQuery
+			// constructor thousands of times is very inefficient
+			// Instead, tag all occurrences of selector
+			if ( selector != '*' ) {
+				var occurrences = context.$content.find( selector );
+				occurrences.addClass( 'wikiEditor-beforeSelection-tagged' );
+			}
+			var retval = null;
+			while ( e && !retval ) {
+				if ( !strict && ( selector == '*' || ( ' ' + e.className + ' ' )
+						.indexOf( ' wikiEditor-beforeSelection-tagged ' ) != -1 ) ) {
+					retval = $( e );
+				}
 				var next = e.previousSibling;
 				while ( next && next.lastChild ) {
 					next = next.lastChild;
@@ -7150,7 +7161,9 @@ if ( typeof context == 'undefined' ) {
 				e = next || e.parentNode;
 				strict = false;
 			}
-			return $( [] );
+			if ( selector != '*' )
+				occurrences.removeClass( 'wikiEditor-beforeSelection-tagged' );
+			return retval || $( [] );
 		},
 		/**
 		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
