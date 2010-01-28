@@ -6800,7 +6800,19 @@ if ( typeof context == 'undefined' ) {
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
 				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
-					$( this ).text( "\n" + $( this ).text() );
+					var text = "\n" + $( this ).text();
+					// If this <p> is preceded by some text, add a \n at the beginning, and if
+					// it's followed by a textnode, add a \n at the end
+					// We need the traverser because there can be other weird stuff in between
+					// TODO: We need a reverse traverser, write this
+					var t = new context.fn.rawTraverser( this.lastChild, -10, this ).next();
+					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+						t = t.next();
+					}
+					if ( t && !t.inP && t.node.nodeName != 'P' ) {
+						text += "\n";
+					}
+					$( this ).text( text );
 				}
 			} );
 			return $pre.text();
@@ -7166,8 +7178,52 @@ if ( typeof context == 'undefined' ) {
 			return retval || $( [] );
 		},
 		/**
+		 * Object used by traverser(). Don't use this unless you know what you're doing
+		 */
+		'rawTraverser': function( node, depth, inP ) {
+			this.node = node;
+			this.depth = depth;
+			this.inP = inP;
+			this.next = function() {
+				var p = this.node;
+				var nextDepth = this.depth;
+				var nextInP = this.inP;
+				while ( p && !p.nextSibling ) {
+					p = p.parentNode;
+					nextDepth--;
+					if ( nextDepth == 0 ) {
+						// We're back at the start node
+						p = null;
+					}
+					if ( p && p.nodeName == "P" ) {
+						nextInP = null;
+					}
+				}
+				p = p ? p.nextSibling : null;
+				if ( p && p.nodeName == "P" ) {
+					nextInP = p;
+				}
+				do {
+					// Filter nodes with the wikiEditor-noinclude class
+					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+					// $() is slow in a tight loop
+					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+						p = p.nextSibling;
+					}
+					if ( p && p.firstChild ) {
+						p = p.firstChild;
+						nextDepth++;
+						if ( p.nodeName == "P" ) {
+							nextInP = p;
+						}
+					}
+				} while ( p && p.firstChild );
+				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP ) : null;
+			};
+		},
+		/**
 		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
-		 * inside an element with the wikiEditor-noinclude class.
+		 * inside an element with the wikiEditor-noinclude class. This basically wraps rawTraverser
 		 *
 		 * Usage:
 		 * var t = context.fn.traverser( context.$content );
@@ -7177,48 +7233,10 @@ if ( typeof context == 'undefined' ) {
 		 * // Trying to advance past the end will set t.node to null
 		 */
 		'traverser': function( start ) {
-			function Traverser( node, depth, inP ) {
-				this.node = node;
-				this.depth = depth;
-				this.inP = inP;
-				this.next = function() {
-					var p = this.node;
-					var nextDepth = this.depth;
-					var nextInP = this.inP;
-					while ( p && !p.nextSibling ) {
-						if ( p.nodeName == "P" ) {
-							nextInP = false;
-						}
-						p = p.parentNode;
-						nextDepth--;
-						if ( nextDepth == 0 ) {
-							// We're back at the start node
-							p = null;
-						}
-					}
-					p = p ? p.nextSibling : null;
-					do {
-						// Filter nodes with the wikiEditor-noinclude class
-						// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
-						// $() is slow in a tight loop
-						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
-							p = p.nextSibling;
-						}
-						if ( p && p.firstChild ) {
-							p = p.firstChild;
-							nextDepth++;
-							if ( p.nodeName == "P" ) {
-								nextInP = true;
-							}
-						}
-					} while ( p && p.firstChild );
-					return p ? new Traverser( p, nextDepth, nextInP ) : null;
-				};
-			}
 			// Find the leftmost leaf node in the tree
 			var node = start.jquery ? start.get( 0 ) : start;
 			var depth = 0;
-			var inP = node.nodeName == "P";
+			var inP = node.nodeName == "P" ? node : null;
 			do {
 				// Filter nodes with the wikiEditor-noinclude class
 				// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
@@ -7230,11 +7248,11 @@ if ( typeof context == 'undefined' ) {
 					node = node.firstChild;
 					depth++;
 					if ( node.nodeName == "P" ) {
-						inP = true;
+						inP = node;
 					}
 				}
 			} while ( node && node.firstChild );
-			return new Traverser( node, depth, inP );
+			return new context.fn.rawTraverser( node, depth, inP );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
@@ -7273,13 +7291,13 @@ if ( typeof context == 'undefined' ) {
 			var t = context.fn.traverser( context.$content );
 			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
 			while ( t ) {
-				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.next();
 					continue;
 				}
 				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
 				var nextT = t.next();
-				var leavingP = t.inP && nextT && !nextT.inP;
+				var leavingP = t.node.nodeName != 'P' && t.inP && nextT && ( !nextT.inP || nextT.inP != t.inP );
 				context.offsets[pos] = {
 					'node': t.node,
 					'offset': 0,
@@ -7784,22 +7802,26 @@ fn: {
 			}
 			var startNode = s.node;
 			var startDepth = s.depth;
-			// The next marker starts somewhere in this textNode or at this BR
-			if ( s.offset > 0 ) {
-				// t.node must be a textnode at this point because
-				// only textnodes can have offset > 0
-				
-				// Split off the prefix
-				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node
-				startNode = startNode.splitText( s.offset );
-			}
+
 			// Don't wrap leading BRs, produces undesirable results
-			while ( startNode.nodeName == 'BR' ) {
+			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
+			// .length to fake the newline caused by startNode being in a P. In this case, prevent
+			// the textnode splitting below from making startNode an empty textnode, IE barfs on that
+			while ( startNode.nodeName == 'BR' || s.offset == startNode.nodeValue.length ) {
 				start++;
 				s = context.fn.getOffset( start );
 				startNode = s.node;
 				startDepth = s.depth;
+			}
+
+			// The next marker starts somewhere in this textNode or at this BR
+			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
+				// Split off the prefix
+				// This leaves the prefix in the current node and puts
+				// the rest in a new node which is our start node					
+				startNode = startNode.splitText( s.offset );
+				// This also invalidates cached offset objects
+				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
 			
 			var end = markers[i].end;
@@ -7810,14 +7832,13 @@ fn: {
 			}
 			var endNode = e.node;
 			var endDepth = e.depth;
-			if ( e.offset < e.length - 1 ) {
-				// t.node must be a textnode at this point because
-				// .length is 1 for BRs and offset can't be < 0
-				
+			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
 				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 				// node.
 				// endNode.nodeValue.length - ( newPos - markers[i].end )
 				endNode.splitText( e.offset + 1 );
+				// This also invalidates cached offset objects
+				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
@@ -7857,13 +7878,19 @@ fn: {
 				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 			}
-			if ( ca1 && ca2 && ca1.parentNode && ca2.nextSibling ) {
+			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
 					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
 					// properties
 					var newNode = ca1.ownerDocument.createElement( 'div' );
 					var commonAncestor = ca1.parentNode;
+					// Special case: can't put block elements in a <p>
+					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
+						commonAncestor = commonAncestor.parentNode;
+						ca1 = ca1.parentNode;
+						ca2 = ca2.parentNode;
+					}
 					var nextNode = ca2.nextSibling;
 					if ( markers[i].anchor == 'wrap' ) {
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode

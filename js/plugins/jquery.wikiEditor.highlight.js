@@ -163,22 +163,26 @@ fn: {
 			}
 			var startNode = s.node;
 			var startDepth = s.depth;
-			// The next marker starts somewhere in this textNode or at this BR
-			if ( s.offset > 0 ) {
-				// t.node must be a textnode at this point because
-				// only textnodes can have offset > 0
-				
-				// Split off the prefix
-				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node
-				startNode = startNode.splitText( s.offset );
-			}
+
 			// Don't wrap leading BRs, produces undesirable results
-			while ( startNode.nodeName == 'BR' ) {
+			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
+			// .length to fake the newline caused by startNode being in a P. In this case, prevent
+			// the textnode splitting below from making startNode an empty textnode, IE barfs on that
+			while ( startNode.nodeName == 'BR' || s.offset == startNode.nodeValue.length ) {
 				start++;
 				s = context.fn.getOffset( start );
 				startNode = s.node;
 				startDepth = s.depth;
+			}
+
+			// The next marker starts somewhere in this textNode or at this BR
+			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
+				// Split off the prefix
+				// This leaves the prefix in the current node and puts
+				// the rest in a new node which is our start node					
+				startNode = startNode.splitText( s.offset );
+				// This also invalidates cached offset objects
+				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
 			
 			var end = markers[i].end;
@@ -189,14 +193,13 @@ fn: {
 			}
 			var endNode = e.node;
 			var endDepth = e.depth;
-			if ( e.offset < e.length - 1 ) {
-				// t.node must be a textnode at this point because
-				// .length is 1 for BRs and offset can't be < 0
-				
+			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
 				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 				// node.
 				// endNode.nodeValue.length - ( newPos - markers[i].end )
 				endNode.splitText( e.offset + 1 );
+				// This also invalidates cached offset objects
+				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
@@ -236,13 +239,19 @@ fn: {
 				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 			}
-			if ( ca1 && ca2 && ca1.parentNode && ca2.nextSibling ) {
+			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
 					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
 					// properties
 					var newNode = ca1.ownerDocument.createElement( 'div' );
 					var commonAncestor = ca1.parentNode;
+					// Special case: can't put block elements in a <p>
+					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
+						commonAncestor = commonAncestor.parentNode;
+						ca1 = ca1.parentNode;
+						ca2 = ca2.parentNode;
+					}
 					var nextNode = ca2.nextSibling;
 					if ( markers[i].anchor == 'wrap' ) {
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
