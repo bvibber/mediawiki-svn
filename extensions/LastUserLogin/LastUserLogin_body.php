@@ -69,7 +69,7 @@ class LastUserLogin extends SpecialPage {
 
 			$out = '<table width="100%" cellpadding="3" ' . $style . '><tr>';
 
-			$title = Title::makeTitle( NS_SPECIAL, 'LastUserLogin' );
+			$title = $this->getTitle();
 
 			foreach ( $fields as $key => $value ) {
 				$out .= '<th ' . $style . '><a href="' . $title->escapeLocalURL( array("order_by"=>$key, "order_type"=>$ordertype) ) . '">' . wfMsg( $value ) . '</a></th>';
@@ -98,7 +98,6 @@ class LastUserLogin extends SpecialPage {
 				}
 				$out .= '</tr>';
 			}
-			$dbr->freeResult($res);
 		}
  
 		$out .= '</table>';
