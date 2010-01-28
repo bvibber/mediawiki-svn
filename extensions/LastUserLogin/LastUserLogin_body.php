@@ -15,7 +15,7 @@ class LastUserLogin extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgLang;
+		global $wgUser, $wgOut, $wgLang, $wgRequest;
 		wfLoadExtensionMessages( 'LastUserLogin' );
  
 		# If user is blocked, s/he doesn't need to access this page
@@ -43,68 +43,66 @@ class LastUserLogin extends SpecialPage {
 			'user_email' => 'lastuserlogin_useremail',
 			'user_touched' => 'lastuserlogin_lastlogin'
 		);
+
  
-		// Get order by and check it
-		if ( isset( $_REQUEST['order_by'] ) ) {
-			if ( isset( $fields[$_REQUEST['order_by']] ) ) {
-				$orderby = $_REQUEST['order_by'];
-			} else {
-				$orderby = 'user_name';
-			}
-		} else {
+		# Get order by and check it
+		$orderby = $wgRequest->getVal('order_by', 'user_name');
+
+		# Only field names are acceptable
+		if ( !isset( $fields[ $orderby ] ) ) {				
 			$orderby = 'user_name';
 		}
- 
-		// Get order type and check it
-		if ( isset( $_REQUEST['order_type'] ) ) {
-			if ( $_REQUEST['order_type'] == 'DESC' ) {
-				$ordertype = $_REQUEST['order_type'];
-			} else {
-				$ordertype = 'ASC';
-			}
-		} else {
+
+
+		# Get order type and check it
+		$ordertype = $wgRequest->getVal('order_type', 'ASC');
+
+		# $ordertype must be ASC or DESC
+		if ( $ordertype != 'DESC' ) {
 			$ordertype = 'ASC';
 		}
- 
-		$query = "SELECT user_name, user_real_name, user_email, user_touched FROM " . $dbr->tableName( 'user' ) . " ORDER BY " . $orderby . " " . $ordertype;
-		$ordertype = $ordertype == 'ASC' ? 'DESC' : 'ASC';
- 
-		if ( $result = $dbr->doQuery( $query ) ) {
+ 		/* This will get ALL users. Should be paginated. */
+
+		$result = $dbr->select( 'user', array_keys($fields) , '', __METHOD__, array( 'ORDER BY' => $orderby  . " " . $ordertype ) );
+		if ( $result !== false ) {
+			$ordertype = ($ordertype == 'ASC') ? 'DESC' : 'ASC'; # Invert the order
+
 			$out = '<table width="100%" cellpadding="3" ' . $style . '><tr>';
- 
+
+			$title = Title::makeTitle( NS_SPECIAL, 'LastUserLogin' );
+
 			foreach ( $fields as $key => $value ) {
-				$out .= '<th ' . $style . '><a href="?order_by=' . $key . '&order_type=' . $ordertype . '">' . wfMsg( $value ) . '</a></th>';
+				$out .= '<th ' . $style . '><a href="' . $title->escapeLocalURL( array("order_by"=>$key, "order_type"=>$ordertype) ) . '">' . wfMsg( $value ) . '</a></th>';
 			}
- 
 			$out .= "<th $style>" . wfMsg( 'lastuserlogin_daysago' ) . "</th>";
+
 			$out .= '</tr>';
  
 			while ( $row = $dbr->fetchRow( $result ) ) {
 				$out .= '<tr>';
-					foreach ( $fields as $key => $value ) {
- 
-						if ( $key == 'user_touched' ) {
-							$style = 'style="border:1px solid #000"';
-							$out .= "<td $style>" . $wgLang->timeanddate( wfTimestamp( TS_MW, $row[$key] ), true ) .
-									'</td><td style="border: 1px solid #000; text-align:right;">' .
-									$wgLang->formatNum( round( ( mktime() - wfTimestamp( TS_UNIX, $row[$key] ) ) / 3600 / 24, 2 ), 2 ) . "</td>";
+				foreach ( $fields as $key => $value ) {
+ 					if ( $key == 'user_touched' ) {
+						$style = 'style="border:1px solid #000"';
+						$out .= "<td $style>" . $wgLang->timeanddate( wfTimestamp( TS_MW, $row[$key] ), true ) .
+								'</td><td style="border: 1px solid #000; text-align:right;">' .
+								$wgLang->formatNum( round( ( mktime() - wfTimestamp( TS_UNIX, $row[$key] ) ) / 3600 / 24, 2 ), 2 ) . "</td>";
+					} else {
+						if ( $key == 'user_name' ) {
+							$userPage = Title::makeTitle( NS_USER, $row[$key] );
+							$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
+							$out .= '<td ' . $style . '>' . $name . '</a></td>';
 						} else {
-							if ( $key == 'user_name' ) {
-								$userPage = Title::makeTitle( NS_USER, htmlspecialchars( $row[$key] ) );
-								$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
-								$out .= '<td ' . $style . '>' . $name . '</a></td>';
-							} else {
-								$out .= '<td ' . $style . '>' . htmlspecialchars( $row[$key] ) . '&nbsp;</td>';
-							}
+							$out .= '<td ' . $style . '>' . htmlspecialchars( $row[$key] ) . '&nbsp;</td>';
 						}
 					}
+				}
 				$out .= '</tr>';
 			}
+			$dbr->freeResult($res);
 		}
  
-	$out .= '</table>';
-	$wgOut->addHTML( $out );
- 
+		$out .= '</table>';
+		$wgOut->addHTML( $out );
+
 	}
 }
-
