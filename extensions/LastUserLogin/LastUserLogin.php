@@ -43,13 +43,16 @@ $wgExtensionCredits['specialpage'][] = array(
  
 // New user right
 $wgAvailableRights[] = 'lastlogin';
- 
+$wgGroupPermissions['sysop']['lastlogin'] = true;
+
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['LastUserLogin'] = $dir . 'LastUserLogin_body.php';
 $wgExtensionMessagesFiles['LastUserLogin'] = $dir . 'LastUserLogin.i18n.php';
+$wgExtensionAliasesFiles['LastUserLogin'] = $dir . 'LastUserLogin.alias.php';
 $wgSpecialPages['LastUserLogin'] = 'LastUserLogin';
- 
+$wgSpecialPageGroups['LastUserLogin'] = 'users';
+
 // Function that updates the database when a user logs in
 $wgExtensionFunctions[] = 'wfUpdateUserTouched';
  
