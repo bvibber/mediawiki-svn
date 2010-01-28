@@ -137,7 +137,6 @@ form#editform {
 	position: relative;
 	clear: both;
 	width: 100%;
-	line-height: 1em;
 	background-color: #f3f3f3;
 	border: solid silver 1px;
 }
@@ -221,6 +220,10 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-right {
 }
 .wikiEditor-ui-tabs div.current a:hover {
 	text-decoration: none;
+}
+
+.wikiEditor-view-wikitext {
+	line-height: 1em;
 }
 /* wikiEditor dialogs module */
 
