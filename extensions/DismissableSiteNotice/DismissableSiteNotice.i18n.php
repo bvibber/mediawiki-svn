@@ -899,9 +899,12 @@ $messages['uk'] = array(
 	'sitenotice-desc' => 'Дозволяє користувачам приховувати повідомлення сайту',
 );
 
-/** Urdu (اردو) */
+/** Urdu (اردو)
+ * @author محبوب عالم
+ */
 $messages['ur'] = array(
 	'sitenotice_close' => 'ترک',
+	'sitenotice-desc' => 'صارفین کو اطلاع نامہ بند کرنے دیتا ہے',
 );
 
 /** Vèneto (Vèneto)

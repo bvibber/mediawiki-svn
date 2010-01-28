@@ -908,6 +908,23 @@ Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",
 	'spamdifftool_submit_buttom' => 'Späicheren',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'spamdifftool' => "Fikojakojana ny lisitra maintin'ny spam",
+	'spamdifftool-desc' => "Manome fomba tsotra anampiana ny fampidirana ao amin'ny lisitra maintin'ny spam avy amin'ny fampitahana.",
+	'spamdifftool_cantedit' => "Azafady - Tsy manana alalana manova ny lisitra maintin'ny spam ianao.",
+	'spamdifftool_summary' => "Nampiana tami'nny lisitra maintin'ny spam",
+	'spamdifftool_spam_link_text' => "ampiana amin'ny spam",
+	'spamdifftool_option_domain' => "rehetra avy amin'io sehatra io",
+	'spamdifftool_option_subdomain' => "rehetra avy amin'io zana-tsehatra io",
+	'spamdifftool_option_directory' => 'io zanan-tsehatra io sy io fametrahan-drakitra io',
+	'spamdifftool_option_none' => 'tsy misy',
+	'spamdifftool_block' => 'Hanakana :',
+	'spamdifftool_submit_buttom' => 'Alefa',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

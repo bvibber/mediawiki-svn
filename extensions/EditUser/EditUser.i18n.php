@@ -1310,6 +1310,20 @@ $messages['tt-cyrl'] = array(
 	'right-edituser' => 'Башка катнашучылар көйләүләрен төзәтү',
 );
 
+/** Urdu (اردو)
+ * @author محبوب عالم
+ */
+$messages['ur'] = array(
+	'edituser' => 'صارف کی تدوین',
+	'edituser-logout' => 'صارف کو خارجِ نوشتہ کریں',
+	'edituser-username' => 'نام',
+	'edituser-dosearch' => 'تلاش',
+	'edituser-nouser' => 'متعین کیا گیا صارف موجود نہیں',
+	'edituser-exempt' => 'متعین کئے گئے صارف کی تدوین نہیں ہوسکتی',
+	'right-edituser' => 'دوسرے صارفین کی ترجیحات کی تدوین',
+	'right-edituser-exempt' => 'دوسرے صارفِ ہٰذا کی ترجیحات تدوین نہیں کرسکتے',
+);
+
 /** Veps (Vepsan kel')
  * @author Triple-ADHD-AS
  * @author Игорь Бродский

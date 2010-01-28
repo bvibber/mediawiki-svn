@@ -1283,7 +1283,7 @@ Kérlek várj türelemmel.',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'youtubeauthsub' => 'Cargar un video in YouTube',
+	'youtubeauthsub' => 'Incargar video YouTube',
 	'youtubeauthsub-desc' => 'Permitte al usatores de [[Special:YouTubeAuthSub|cargar videos]] directemente in YouTube',
 	'youtubeauthsub_info' => 'Pro cargar un video in YouTube pro includer lo in un pagina, completa le sequente informationes:',
 	'youtubeauthsub_title' => 'Titulo',
@@ -1800,6 +1800,9 @@ $messages['mg'] = array(
 	'youtubeauthsub_category' => 'Sokajy',
 	'youtubeauthsub_submit' => 'Alefa',
 	'youtubeauthsub_clickhere' => "Tsindrio eto ra tia hiditra anatin'ny Youtube",
+	'youtubeauthsub_jserror_nokeywords' => 'Mampidira teny iray na maro.',
+	'youtubeauthsub_jserror_notitle' => "Mampidira lohateny ho an'ilay video.",
+	'youtubeauthsub_jserror_nodesc' => "Mampidira ambangovangony ho an'ilay video.",
 );
 
 /** Macedonian (Македонски)

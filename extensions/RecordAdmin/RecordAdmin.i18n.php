@@ -851,7 +851,7 @@ $messages['gsw'] = array(
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Kei $1',
+	'recordadmin-notset' => 'Kei „$1“',
 );
 
 /** Hawaiian (Hawai`i)

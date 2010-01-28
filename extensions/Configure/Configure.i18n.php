@@ -9533,6 +9533,7 @@ $messages['uk'] = array(
 	'configure-select-wiki-submit' => 'Вибрати',
 	'configure-throttle-action-edit' => 'Змінити',
 	'configure-condition-operator-xor' => 'Виключне АБО',
+	'configure-farmer-settings' => '[[Special:Configure|Конфігурувати цю вікі]].',
 );
 
 /** Vèneto (Vèneto)

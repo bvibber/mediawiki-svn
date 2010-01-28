@@ -46,6 +46,8 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'lookupuser' => 'Kyk gebruikersinliging op',
+	'lookupuser-intro' => "Sleutel 'n gebruikersnaam in om die gebruiker se voorkeure te sien.",
 	'lookupuser-nonexistent' => 'Fout: Gebruiker bestaan nie',
 	'lookupuser-id' => 'Gebruiker-ID: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-posadres: [[Special:EmailUser/$2|$1]]',

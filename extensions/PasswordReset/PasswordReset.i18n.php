@@ -1622,6 +1622,26 @@ $messages['ug-latn'] = array(
 	'passwordreset-username' => 'Ishletkuchi ismi:',
 );
 
+/** Urdu (اردو)
+ * @author محبوب عالم
+ */
+$messages['ur'] = array(
+	'passwordreset' => 'پارلفظ کی بازتعینی',
+	'passwordreset-invalidusername' => 'اسم صارف غلط ہے',
+	'passwordreset-emptyusername' => 'اسمِ صارف خالی ہے',
+	'passwordreset-nopassmatch' => 'پارالفاظ ایک دوسرے سے مطابقت نہیں رکھتے',
+	'passwordreset-username' => 'اسمِ صارف:',
+	'passwordreset-newpass' => 'نیا پارلفظ:',
+	'passwordreset-confirmpass' => 'پارلفظ کی تصدیق:',
+	'passwordreset-submit' => 'پارلفظ تبدیل کرو',
+	'passwordreset-success' => 'شناخت $1 کیلئے پارلفظ تبدیل ہوگیا',
+	'passwordreset-disableuser' => 'کھاتۂ صارف ناکارہ بنائیں؟',
+	'passwordreset-disablesuccess' => 'شناخت $1 کیلئے کھاتۂ صارف ناکارہ بنادیا گیا',
+	'passwordreset-accountdisabled' => 'کھاتہ ناکارہ بنادیا گیا',
+	'disabledusers' => 'ناکارہ صارفین',
+	'disabledusers-summary' => 'یہ اُن صارفین کی فہرست ہے جو پارلفظ بازتعینی کے ذریعے ناکارہ بنائے گئے ہیں.',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

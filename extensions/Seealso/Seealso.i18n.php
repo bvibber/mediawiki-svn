@@ -617,6 +617,13 @@ $messages['tr'] = array(
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> etiketini kullanan yerelleştirilmiş 'Ayrıca bakınız' başlıkları",
 );
 
+/** Urdu (اردو)
+ * @author محبوب عالم
+ */
+$messages['ur'] = array(
+	'seealso' => 'نیز دیکھئے',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

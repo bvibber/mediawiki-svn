@@ -162,6 +162,27 @@ $messages['mk'] = array(
 	'tiff-file-info-size' => '(страница $5, $1 × $2 пиксели, големина на податотеката: $3, MIME-тип: $4)',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'tiff-desc' => 'Uitbreiding voor het bekijken van TIFF-bestanden in beeldmodus',
+	'tiff_no_metadata' => 'De metadata van het TIFF-bestand kan niet uitgelezen worden',
+	'tiff_page_error' => 'Het paginanummer ligt niet binnen het bereik',
+	'tiff_too_many_embed_files' => 'De afbeelding bevat te veel ingesloten bestanden.',
+	'tiff_sourcefile_too_large' => 'De resolutie van het bronbestand is te groot.
+Er kan geen miniatuur worden aangemaakt.',
+	'tiff_file_too_large' => 'Het geüploade bestand is te groot en kan niet verwerkt worden.',
+	'tiff_out_of_service' => 'Het geüploade bestand kan niet worden verwerkt.
+ImageMagick is niet beschikbaar.',
+	'tiff_too_much_meta' => 'De metadata gebruikt te veel ruimte.',
+	'tiff_error_cached' => 'Dit bestand kan alleen worden verwerkt na de cachinginterval.',
+	'tiff_size_error' => 'De gerapporteerde bestandsgrootte komt niet overeen met de werkelijke bestandsgrootte.',
+	'tiff_script_detected' => 'Het geüploade bestand bevat scripts.',
+	'tiff_bad_file' => 'Het geüploade bestand bevat fouten.',
+	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixels, bestandsgrootte: $3, MIME-type: $4)',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

@@ -978,6 +978,7 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidtimezone' => 'Zeitzone',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 du kannst einen aus der untenstehenden Liste auswählen.',
+	'openidchoosenick' => 'Dein Spitzname ($1)',
 	'openidchoosefull' => 'Dein vollständiger Name ($1)',
 	'openidchooseurl' => 'Ein Name aus deiner OpenID ($1)',
 	'openidchooseauto' => 'Ein automatisch erzeugter Name ($1)',
