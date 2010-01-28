@@ -6793,8 +6793,8 @@ if ( typeof context == 'undefined' ) {
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
 					.replace( /\<p[^\>]*\>/gi, "\n" ) // IE uses </p><p> for user-inserted line breaks
 					.replace( /\<\/p[^\>]*\>/gi, "" )
-					.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </div><div> for user-inserted line breaks
-					.replace( /\<\/div[^\>]*\>/gi, "" )
+					//.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </div><div> for user-inserted line breaks
+					//.replace( /\<\/div[^\>]*\>/gi, "" )
 				+ '</pre>' );
 			// Get rid of the noincludes when getting text
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
@@ -7076,7 +7076,7 @@ if ( typeof context == 'undefined' ) {
 					// Start at the selection's start and traverse the DOM backwards
 					// This is done by traversing an element's children first, then the element itself, then its parent
 					e = selection.getRangeAt( 0 ).startContainer;
-					offset = selection.startOffset;
+					offset = selection.getRangeAt( 0 ).startOffset;
 				} else {
 					return $( [] );
 				}
