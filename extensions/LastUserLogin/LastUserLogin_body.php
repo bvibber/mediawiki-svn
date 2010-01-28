@@ -25,8 +25,8 @@ class LastUserLogin extends SpecialPage {
 		}
  
 		# If the user doesn't have the required 'lastlogin' permission, display an error
-		if ( !$wgUser->isAllowed( 'lastlogin' ) ) {
-			$wgOut->permissionRequired( 'lastlogin' );
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
 			return;
 		}
  
@@ -85,7 +85,7 @@ class LastUserLogin extends SpecialPage {
 						$style = 'style="border:1px solid #000"';
 						$out .= "<td $style>" . $wgLang->timeanddate( wfTimestamp( TS_MW, $row[$key] ), true ) .
 								'</td><td style="border: 1px solid #000; text-align:right;">' .
-								$wgLang->formatNum( round( ( mktime() - wfTimestamp( TS_UNIX, $row[$key] ) ) / 3600 / 24, 2 ), 2 ) . "</td>";
+								$wgLang->formatNum( round( ( time() - wfTimestamp( TS_UNIX, $row[$key] ) ) / 3600 / 24, 2 ), 2 ) . "</td>";
 					} else {
 						if ( $key == 'user_name' ) {
 							$userPage = Title::makeTitle( NS_USER, $row[$key] );
