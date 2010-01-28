@@ -1184,13 +1184,16 @@ $j(document).ready( function() {
 			buttons: {
 				'wikieditor-toolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
+						// FIXME: Should this escape [[ too? Seems to work without that
 						return s.replace( /(]{2,})/g, '<nowiki>$1</nowiki>' );
 					}
 					function escapeExternalTarget( s ) {
 						return s.replace( / /g, '%20' )
+							.replace( /\[/g, '%5B' )
 							.replace( /]/g, '%5D' );
 					}
 					function escapeExternalText( s ) {
+						// FIXME: Should this escape [ too? Seems to work without that
 						return s.replace( /(]+)/g, '<nowiki>$1</nowiki>' );
 					}
 					var insertText = '';
