@@ -10,6 +10,8 @@
  * @url http://www.mediawiki.org/wiki/Manual:Extension:NSFileRepo
  * @licence GNU General Public Licence 2.0 or later
  *
+ * Version 1.3 - Allows namespace protected files to be whitelisted
+ *
  * Version 1.2 - Fixes reupload error and adds lockdown security to archives, deleted, thumbs
  *
  * This extension extends and is dependent on extension Lockdown - see http://www.mediawiki.org/wiki/Extension:Lockdown
@@ -33,7 +35,7 @@ $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
-	'version' => '1.2',
+	'version' => '1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
 	'description' => 'Provide namespace-based access restriction features to uploaded files/images',
 	'descriptionmsg' => 'nsfilerepo-desc'
