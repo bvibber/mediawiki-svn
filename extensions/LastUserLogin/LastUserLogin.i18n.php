@@ -15,11 +15,13 @@ $messages = array();
  */
 $messages['en'] = array(
 	'lastuserlogin' => 'Last user login',
+	'lastuserlogin-desc' => 'Displays the last time a user logged in',
 	'lastuserlogin_userid' => 'Username',
 	'lastuserlogin_username' => 'Real name',
 	'lastuserlogin_useremail' => 'User email',
 	'lastuserlogin_lastlogin' => 'Last login',
 	'lastuserlogin_daysago' => 'Days ago',
+	'right-lastlogin' => 'View the last time a user logged in',
 );
  
 /** German (Deutsch) */
