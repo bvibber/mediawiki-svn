@@ -36,7 +36,6 @@ class LastUserLogin extends SpecialPage {
 		$wgOut->setPageTitle( wfMsg( 'lastuserlogin' ) );
  
 		$dbr = wfGetDB( DB_SLAVE );
-		$style = 'style="border:1px solid #000;text-align:left;"';
 		$fields = array(
 			'user_name' => 'lastuserlogin_userid',
 			'user_real_name' => 'lastuserlogin_username',
@@ -67,14 +66,14 @@ class LastUserLogin extends SpecialPage {
 		if ( $result !== false ) {
 			$ordertype = ($ordertype == 'ASC') ? 'DESC' : 'ASC'; # Invert the order
 
-			$out = '<table width="100%" cellpadding="3" ' . $style . '><tr>';
+			$out = '<table class="wikitable mw-lastuserlogin-table"><tr>';
 
 			$title = $this->getTitle();
 
 			foreach ( $fields as $key => $value ) {
-				$out .= '<th ' . $style . '><a href="' . $title->escapeLocalURL( array("order_by"=>$key, "order_type"=>$ordertype) ) . '">' . wfMsg( $value ) . '</a></th>';
+				$out .= '<th><a href="' . $title->escapeLocalURL( array("order_by"=>$key, "order_type"=>$ordertype) ) . '">' . wfMsg( $value ) . '</a></th>';
 			}
-			$out .= "<th $style>" . wfMsg( 'lastuserlogin_daysago' ) . "</th>";
+			$out .= "<th>" . wfMsg( 'lastuserlogin_daysago' ) . "</th>";
 
 			$out .= '</tr>';
  
@@ -82,17 +81,16 @@ class LastUserLogin extends SpecialPage {
 				$out .= '<tr>';
 				foreach ( $fields as $key => $value ) {
  					if ( $key == 'user_touched' ) {
-						$style = 'style="border:1px solid #000"';
-						$out .= "<td $style>" . $wgLang->timeanddate( wfTimestamp( TS_MW, $row[$key] ), true ) .
-								'</td><td style="border: 1px solid #000; text-align:right;">' .
+						$out .= "<td>" . $wgLang->timeanddate( wfTimestamp( TS_MW, $row[$key] ), true ) .
+								'</td><td style="text-align:right;">' .
 								$wgLang->formatNum( round( ( time() - wfTimestamp( TS_UNIX, $row[$key] ) ) / 3600 / 24, 2 ), 2 ) . "</td>";
 					} else {
 						if ( $key == 'user_name' ) {
 							$userPage = Title::makeTitle( NS_USER, $row[$key] );
 							$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
-							$out .= '<td ' . $style . '>' . $name . '</a></td>';
+							$out .= '<td>' . $name . '</a></td>';
 						} else {
-							$out .= '<td ' . $style . '>' . htmlspecialchars( $row[$key] ) . '&nbsp;</td>';
+							$out .= '<td>' . htmlspecialchars( $row[$key] ) . '&nbsp;</td>';
 						}
 					}
 				}
