@@ -447,17 +447,38 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 				if ( options.ownline ) {
+					// We need to figure out if the cursor is at the start or end of a line
+					var atStart = false, atEnd = false;
 					var body = context.$content.get( 0 );
-					// TODO: This'll probably break with syntax highlighting
-					// When the selection starts at the beginning of a line, it'll have either
-					// startOffset == 0 or startContainer == body
-					if ( range.startOffset != 0 && range.startContainer != body ) {
+					console.log(range);
+					if ( range.startOffset == 0 ) {
+						// Start of a line
+						// FIXME: Not necessarily the case with syntax highlighting or
+						// template collapsing
+						atStart = true;
+					} else if ( range.startContainer == body ) {
+						// Look up the node just before the start of the selection
+						// If it's a <BR>, we're at the start of a line that starts with a
+						// block element; if not, we're at the end of a line
+						var n = body.firstChild;
+						for ( var i = 0; i < range.startOffset - 1 && n; i++ ) {
+							n = n.nextSibling;
+						}
+						if ( n && n.nodeName == 'BR' ) {
+							atStart = true;
+						} else {
+							atEnd = true;
+						}
+					} else if ( range.startContainer.nodeName == '#text' &&
+							range.startOffset == range.startContainer.nodeValue.length ) {
+						// Apparently this happens when splitting text nodes
+						atEnd = true;
+					}
+					
+					if ( !atStart ) {
 						pre  = "\n" + options.pre;
 					}
-					// TODO: Will this still work with syntax highlighting?
-					// When the selection ends at the end of a line, it'll have endContainer == body
-					// and endOffset != 0
-					if ( range.endContainer != body || range.endOffset == 0 ) {
+					if ( !atEnd ) {
 						post += "\n";
 					}
 				}
