@@ -7,12 +7,12 @@
 |type2       =
 |hook1       = userCan
 |hook2       = ImgAuthBeforeStream
-|username    = [[User:Jpond|Jack D. Pond]]
-|author      = <!-- add only if different from user name -->
+|username    = Jpond
+|author      = Jack D. Pond
 |description = implements per-namespace group permissions for image and file rights protection
 |image       =
-|version     = 1.1
-|update      = 2009-09-4
+|version     = 1.3
+|update      = 2010-1-27
 |mediawiki   = 1.13, 1.14, 1.15, 1.16
 |license     = GNU General Public Licence 2.0
 |download    = {{WikimediaDownload|NSFileRepo}}
@@ -75,6 +75,23 @@ This extension was made possible by the introduction of Repository Classes by Ti
 * The first version of this (Rel 0.0) was released 2009-07-11.  The following activities are underway to make this extension easier to install and use, including:
 ** Modifying and updating the standard version of img_auth.php to include localization and a hook necessary for this extension.  Will hopefully be approved for version 1.16
 ** Discussing ways to allow modification of wfStripIllegalFilenameChars so that future patching will not be needed.
+
+== Release Notes ==
+
+=== NSFileRepo 1.3 ===
+
+* Allow files with namespace protection (e.g. File:ns:yourfile.txt) to be whitelisted using standard [[Manual:$wgWhitelistRead | $wgWhitelistRead]] in localsettings.
+
+=== NSFileRepo 1.2 ===
+
+* Fixed bug with reuploads and versioning
+* Added protection to archived files and thumbs
+* Known bug - deleted files are removed from protected Namespace and can be accessed - working on fix, but for now, recommend do not delete files.
+
+=== NSFileRepo 1.1 ===
+
+* First fully tested version, works with MW 1.13.1, 1.14.1, 1.15.1 with patches
+* Works with 1.16.0 (trunk) without patches.
 
 ==Download instructions==
 
