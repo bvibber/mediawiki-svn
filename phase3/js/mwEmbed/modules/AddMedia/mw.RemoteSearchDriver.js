@@ -419,7 +419,7 @@ mw.RemoteSearchDriver.prototype = {
 		for ( var cp_id in this.content_providers ) {
 			this.content_providers[ cp_id ].id = cp_id;
 		}
-		// Merge in the options		
+		// Merge in the options
 		$j.extend( _this, default_remote_search_options, options );
 
 		// Quick fix for cases where {object} ['all'] is used instead of {string} 'all' for enabled_providers:
@@ -764,7 +764,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Build cancel button 
 		var cancelButton = {};
 		cancelButton[ gM( 'mwe-cancel' ) ] = function() {
-			_this.onCancelClipEdit();
+			_this.onCancelResourceEdit();
 		}
 		
 		$j( _this.target_container ).dialog( {
@@ -777,7 +777,7 @@ mw.RemoteSearchDriver.prototype = {
 			close: function() {
 				// if we are 'editing' a item close that
 				// @@todo maybe prompt the user?
-				_this.onCancelClipEdit();
+				_this.onCancelResourceEdit();
 				$j( this ).parents( '.ui-dialog' ).fadeOut( 'slow' );
 			}
 		} );		
@@ -796,19 +796,19 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'initDialog' );
 		var _this = this;
 		mw.log( 'f::initDialog' );
+		
+		var $mainContainer = $j( this.target_container );
 
-		var mainContainer = $j( this.target_container );
-
-		var controlContainer = this.createControlContainer();
-
-		mainContainer.append( controlContainer );
+		var $controlContainer = this.createControlContainer();
+		
+		$mainContainer.append( $controlContainer );
 			
 		this.$resultsContainer = $j('<div />').attr({
 				id: "rsd_results_container"
 			});
 		
-		mainContainer.append( this.$filtersContainer );
-		mainContainer.append( this.$resultsContainer );
+		$mainContainer.append( this.$filtersContainer );
+		$mainContainer.append( this.$resultsContainer );
 		
 		// Run the default search:
 		if ( this.getDefaultQuery() )
@@ -843,7 +843,7 @@ mw.RemoteSearchDriver.prototype = {
 			} );
 			
 		// Setup base cancel button binding
-		this.onCancelClipEdit();
+		this.onCancelResourceEdit();
 	},
 
 	/**
@@ -852,13 +852,16 @@ mw.RemoteSearchDriver.prototype = {
 	 */
 	createControlContainer: function() {
 		var _this = this;
-		
-		var $controlContainer = $j( '<div />' ).addClass( "rsd_control_container" );
+		var $controlContainer = $j( '<div />' )
+			.addClass( "rsd_control_container" );
+
 		var $searchForm = $j( '<form />' ).attr({
 			id : "rsd_form", 
 			action : "javascript:return false"
 		});
-		var $providerSelection = $j( '<ul />' ).addClass( "ui-provider-selection" );
+
+		var $providerSelection = $j( '<ul />' )
+			.addClass( "ui-provider-selection" );
 		
 		var $searchButton = $j.button({
 			icon_id: 'search', 
@@ -869,16 +872,18 @@ mw.RemoteSearchDriver.prototype = {
 				_this.updateResults( _this.current_provider, true );
 				return false;
 			});
-		var $searchBox = $j( '<input />' ).addClass( 'ui-widget-content ui-corner-all' ).attr({
-			type: "text",
-			tabindex: 1,
-			value: this.getDefaultQuery(),
-			maxlength: 512,
-			id: "rsd_q",
-			name: "rsd_q",
-			size: 20,
-			autocomplete: "off"
-		})
+		var $searchBox = $j( '<input />' )
+			.addClass( 'ui-corner-all' )
+			.attr({
+				type: "text",
+				tabindex: 1,
+				value: this.getDefaultQuery(),
+				maxlength: 512,
+				id: "rsd_q",
+				name: "rsd_q",
+				size: 20,
+				autocomplete: "off"
+			})
 		// Prevent searching for empty input.
 		.keyup(function () {
 			if ( $searchBox.val().length == 0 ) {
@@ -916,13 +921,12 @@ mw.RemoteSearchDriver.prototype = {
 				var $listItem = $j( '<li />' );
 				$listItem.append( $anchor );
 				$providerSelection.append( $listItem );
-				return false;
 			}
 		}
 		
 		$searchForm.append( $providerSelection );
 		$searchForm.append( $searchBox );
-		$searchForm.append( $searchButton );		
+		$searchForm.append( $searchButton );
 		// Add optional upload buttons.
 		if ( this.content_providers['upload'].enabled) {
 			$uploadButton = $j.button( { icon_id: 'disk', text: gM( 'mwe-upload_tab' ) })
@@ -1070,7 +1074,7 @@ mw.RemoteSearchDriver.prototype = {
 					' matches: ' +  $j( '#rsd_q' ).val() + ' no search needed');
 				
 				// Show search results directly
-				this.showResults();					
+				this.showResults();
 			}
 		}
 			
@@ -1739,9 +1743,9 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Do cancel edit callbacks and interface updates. 
 	*/
-	onCancelClipEdit: function() {
+	onCancelResourceEdit: function() {
 		var _this = this;
-		mw.log( 'onCancelClipEdit' );
+		mw.log( 'onCancelResourceEdit' );
 		var b_target = _this.target_container + '~ .ui-dialog-buttonpane';
 		$j( '#rsd_resource_edit' ).remove();
 		
@@ -1785,7 +1789,7 @@ mw.RemoteSearchDriver.prototype = {
 			};
 		}
 		actions['cancel'] = function() {
-			_this.onCancelClipEdit()
+			_this.onCancelResourceEdit()
 		}
 		return actions;
 	},
@@ -2091,8 +2095,12 @@ mw.RemoteSearchDriver.prototype = {
 			.click( function() {
 				mw.log( "do import asset:" + _this.import_url_mode );
 				// check import mode:
-				if ( _this.import_url_mode == 'api' ) {
-					_this.doApiImport( resource, callback );
+				if ( _this.import_url_mode == 'api' ) {				
+					_this.doApiImport( resource, function(){
+						$j( '#rsd_resource_import' ).remove();
+						_this.clipEdit.updateInsertControlActions();
+						callback 
+					});
 				} else {
 					mw.log( "Error: import mode is not form or API (can not copy asset)" );
 				}
@@ -2328,7 +2336,7 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		var request = {
 			'action': 'query',
-			'titles': fileName,
+			'titles': 'File:' + fileName.replace( /^(File:|Image:)/ , '' ),
 			'prop': 'imageinfo',
 			'iiprop': 'url',
 			'iiurlwidth': '400'
@@ -2348,7 +2356,7 @@ mw.RemoteSearchDriver.prototype = {
 						}
 					}
 					// else page is found:
-					mw.log( fileName + "  found" );					
+					mw.log( fileName + "  found" );
 					callback( data.query.pages[i] );
 				}
 			}
@@ -2642,7 +2650,7 @@ mw.RemoteSearchDriver.prototype = {
 	closeAll: function() {
 		var _this = this;
 		mw.log( "close all:: "  + _this.target_container );
-		_this.onCancelClipEdit();
+		_this.onCancelResourceEdit();
 		
 		$j( _this.target_container ).dialog( 'close' );
 		// Give a chance for the events to complete

@@ -105,7 +105,7 @@ mw.ClipEdit.prototype = {
 			}
 		}
 		// Display control based on profile
-		this.showControlEdit();		
+		this.showControlEdit();
 	},
 	
 	/**
@@ -113,7 +113,7 @@ mw.ClipEdit.prototype = {
 	* 
 	* Clip edit profile is either "sequence" or "clip" 
 	*/
-	showControlEdit:function(){
+	showControlEdit: function(){
 		mw.log( 'showControlEdit' );
 		if ( this.profile == 'sequence' ) {
 			this.showEditTypesMenu();

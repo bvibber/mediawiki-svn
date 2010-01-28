@@ -13,7 +13,7 @@ class OutputPage {
 	var $mSubtitle = '', $mRedirect = '', $mStatusCode;
 	var $mLastModified = '', $mETag = false;
 	var $mCategoryLinks = array(), $mCategories = array(), $mLanguageLinks = array();
-
+	var $mJQueryDone = false;
 	var $mScriptLoaderClassList = array();
 
 	//Flag if we have initialised javascript Classes
@@ -177,10 +177,12 @@ class OutputPage {
 	 *
 	 * this includes the conditional sitejs
 	 */
-	function addCoreScripts2Top(){
+	function includeJQuery(){
 		global $wgEnableScriptLoader, $wgJSAutoloadClasses, $wgScriptPath;
 		global $wgUser, $wgJsMimeType, $wgExtensionJavascriptLoader;
-
+		if( $this->mJQueryDone )
+			return ;
+		$this->mJQueryDone = true;
 		// @todo We should deprecate wikibits in favor of some mwEmbed pieces and jQuery
 		$coreClasses = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
 
@@ -189,7 +191,7 @@ class OutputPage {
 		$this->mScripts = '';
 
 		if( $wgEnableScriptLoader ){
-			//directly add script_loader call for addCoreScripts2Top
+			//directly add script_loader call for includeJQuery
 			$this->mScripts = $this->getScriptLoaderJs( $coreClasses );
 		} else {
 			$so = '';
@@ -203,7 +205,7 @@ class OutputPage {
 				);
 			}
 		}
-		//Now re-append any scripts that got added prior to the addCoreScripts2Top call
+		//Now re-append any scripts that got added prior to the includeJQuery call
 		$this->mScripts = $this->mScripts . $postScripts;
 	}
 
@@ -1225,7 +1227,7 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 
 		// Add our core scripts to output
-		$this->addCoreScripts2Top();
+		$this->includeJQuery();
 
 		if ( $wgUseAjax ) {
 			$this->addScriptFile( 'ajax.js' );
