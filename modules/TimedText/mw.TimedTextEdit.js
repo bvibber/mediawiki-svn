@@ -74,7 +74,7 @@ mw.TimedTextEdit.prototype = {
 	 * Setup the dialog layout: s
 	 */
 	initDialog: function(){
-		var _this =this;		
+		var _this =this;
 		_this.createTabs();
 	},
 	
@@ -99,8 +99,8 @@ mw.TimedTextEdit.prototype = {
 						,
 						$j('<span>')
 						.text( gM('mwe-stage-' + edit_stage_id) ) 
-					)		
-				)		
+					)
+				)
 			);
 			// Append the menu item content container
 			$tabContainer.append( 
@@ -109,7 +109,7 @@ mw.TimedTextEdit.prototype = {
 				.css({
 					'height': $j( window ).height() - 270,
 					'position': 'relative'
-				})			
+				})
 			);
 		}		
 		//debugger
@@ -122,7 +122,7 @@ mw.TimedTextEdit.prototype = {
 		}
 		
 		//Add tabs interface
-		$j('#TimedTextEdit-tabs').tabs( {			
+		$j('#TimedTextEdit-tabs').tabs( {
 			select: function( event, ui ) {
 				_this.selectTab( $j( ui.tab ).attr( 'href' ).replace('#','') );
 			}
@@ -130,7 +130,7 @@ mw.TimedTextEdit.prototype = {
 		
 	},
 	selectTab: function( tab_id ){
-		mw.log('sel: ' + tab_id);		
+		mw.log('sel: ' + tab_id);
 	},
 	
 	/**
@@ -144,14 +144,14 @@ mw.TimedTextEdit.prototype = {
 			this[ edit_stage_id + 'Interface']( $target );
 		}else{
 			$target.append( ' interface under development' ); 
-		}		
+		}
 	},
 	/**
 	* Builds out and binds the upload interface to a given target
 	* @param {Object} $target jQuery target for the upload interface
 	*/
 	uploadInterface: function( $target ){
-		var _this = this;		
+		var _this = this;
 		// Check if user has XHR file upload support & we are on the target wiki
 		
 		$target.append(
@@ -173,7 +173,7 @@ mw.TimedTextEdit.prototype = {
 				//The text preview
 				$j('<h3>')
 					.text( gM( 'mwe-upload-text-preview' ) ),
-				$j('<textarea id="timed-text-file-preview"></textarea>')										
+				$j('<textarea id="timed-text-file-preview"></textarea>')
 			)			
 		)
 		
@@ -187,12 +187,12 @@ mw.TimedTextEdit.prototype = {
 		// Add Select file:
 		$target.append(
 			$j('<div>').css({
-		  		'width':'300px',
-		  		'float': 'left'
+				'width':'300px',
+				'float': 'left'
 			}).append(
 				'<input type="file" id="timed-text-file-upload"></input><br />'
 			) 
-		)			
+		)
 		
 		
 		$target.append( 
@@ -204,14 +204,14 @@ mw.TimedTextEdit.prototype = {
 						$buttonTarget.find('.btnText').text( 
 							unescape( mw.languages[ langKey ] )
 						);
-					}						
+					}
 				}),
 			// Get a jQuery button object with language menu:
 			$j.button( {
 				'style': { 'float' : 'left' },
 				'class': 'language-select-btn',
 				'text': gM('mwe-select-language'),
-				'icon_id': 'triangle-1-e'			
+				'icon_id': 'triangle-1-e'
 			} ).attr('id', 'language-select')
 			.unbind()
 			.buttonHover()
@@ -247,17 +247,17 @@ mw.TimedTextEdit.prototype = {
 		} );
 		
 		
-		//Add upload input bindings: 		
+		//Add upload input bindings:
 		$j( '#timed-text-file-upload' ).change( function( ev ) {
-			if ( $j(this).val() ) {				
+			if ( $j(this).val() ) {
 							
-				// Update the preview text area:						
+				// Update the preview text area:
 				var file = $j( '#timed-text-file-upload' ).get(0).files[0];
 				if( file.fileSize > 1048576 ){
 					$j( '#timed-text-file-preview' ).text( 'Error the file you selected is too lage');
 					return ;	
 				}
-				var srtData = file.getAsBinary();		
+				var srtData = file.getAsBinary();
 				srtData = srtData.replace( '\r\n', '\n' );
 				$j( '#timed-text-file-preview' ).text( srtData );
 				
@@ -281,7 +281,7 @@ mw.TimedTextEdit.prototype = {
 			$j.button( {
 				'style': { 'float' : 'left' },
 				'text': gM('mwe-upload-text'),
-				'icon_id': 'disk'			
+				'icon_id': 'disk'
 			} )
 			.unbind()
 			.buttonHover()
@@ -306,17 +306,17 @@ mw.TimedTextEdit.prototype = {
 		targetTitleKey = 'TimedText:' + targetTitleKey + '.' + $j('#timed-text-langKey-input').val() + '.srt';				
 		
 		// Get a token
-		mw.getToken( targetTitleKey, function( token ){			
+		mw.getToken( targetTitleKey, function( token ){
 			mw.log("got token: " + token);
 			var request = {
 				'action' : 'edit',
 				'title' : targetTitleKey,
 				'text' : $j('#timed-text-file-preview').val(),
 				'token': token
-			};							
+			};
 			mw.getJSON( request, function( data ){
 				//Close the loader dialog:
-				mw.closeLoaderDialog();		
+				mw.closeLoaderDialog();
 						
 				if( data.edit && data.edit.result == 'Success' ){
 					var buttons = { };
@@ -326,7 +326,7 @@ mw.TimedTextEdit.prototype = {
 					}
 					buttons[ gM( "mwe-upload-text-done-uploading" ) ] = function(){
 						window.location.reload();
-					}			
+					}
 					//Edit success
 					mw.addDialog( 
 						gM( "mwe-upload-text-done"), 
@@ -357,8 +357,8 @@ mw.TimedTextEdit.prototype = {
 	 */
 	getLanguageList: function(){
 		var _this = this;
-		var $langMenu = $j( '<ul>' );		
-		// Loop through all supported languages: 			
+		var $langMenu = $j( '<ul>' );
+		// Loop through all supported languages: 
 		for ( var langKey in mw.languages ) {
 			var language = mw.languages [ langKey ];
 			var source_icon = 'radio-on';
@@ -386,7 +386,7 @@ mw.TimedTextEdit.prototype = {
 				$j('#timed-text-langKey-input').val( langKey );
 				// Update the menu item:
 				$j( '#language-select' ).val( unescape( mw.languages[ langKey ] ) )
-		} ); 	
+		} );
 	},
 	/**
 	 * Creates the interface dialog container
@@ -402,7 +402,7 @@ mw.TimedTextEdit.prototype = {
 					'id' : 'timedTextEdit_target',
 					'title' : gM( 'mew-timedtext-editor' ) 
 				})	
-				.addClass('TimedTextEdit')			
+				.addClass('TimedTextEdit')
 		);
 		
 		// Build cancel button 
@@ -422,7 +422,7 @@ mw.TimedTextEdit.prototype = {
 				// if we are 'editing' we should confirm they want to exist:
 				$j( this ).parents( '.ui-dialog' ).fadeOut( 'slow' );
 			}
-		} );		
+		} );
 		
 		$j( _this.target_container ).dialogFitWindow();
 		
@@ -436,7 +436,7 @@ mw.TimedTextEdit.prototype = {
 	onCancelClipEdit: function(){
 		var _this = this;
 		// cancel edit
-		//debugger;	
+		//debugger;
 		$j( _this.target_container ).dialog( 'close' );
 	}
 }

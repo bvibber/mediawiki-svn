@@ -3663,3 +3663,8 @@ jQuery.each([ "Height", "Width" ], function(i, name){
 	};
 });
 })();
+
+/**
+ * Add a suitable MW-specific alias
+ */
+$j = jQuery.noConflict();

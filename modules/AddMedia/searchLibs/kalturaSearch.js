@@ -208,10 +208,10 @@ kalturaSearch.prototype = {
 			this.filters.resetRequired = false;
 		}
 		
-		// setup the request: 
+		// Setup the request: 
 		var request = {
-			's': search_query,
-			'page': this.provider.offset/this.provider.limit + 1
+			's' :  search_query,
+			'page' :  this.provider.offset/this.provider.limit + 1
 		};
 		
 		// Add optional parameters
