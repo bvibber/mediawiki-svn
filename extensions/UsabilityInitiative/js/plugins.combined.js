@@ -6789,16 +6789,20 @@ if ( typeof context == 'undefined' ) {
 			var $pre = $( '<pre>' +
 				html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
-					.replace( /\<br[^\>]*\>/gi, "\n" )
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					.replace( /\<p[^\>]*\>/gi, "\n" ) // IE uses </p><p> for user-inserted line breaks
-					.replace( /\<\/p[^\>]*\>/gi, "" )
-					//.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </div><div> for user-inserted line breaks
-					//.replace( /\<\/div[^\>]*\>/gi, "" )
 				+ '</pre>' );
 			// Get rid of the noincludes when getting text
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
+			// Convert tabs, <p>s and <br>s back
 			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
+			$pre.find( 'br' ).each( function() { $( this ).replaceWith( "\n" ); } );
+			// Converting <p>s is wrong if there's nothing before them, so check that
+			// .find( '* + p' ) isn't good enough because textnodes aren't considered
+			$pre.find( 'p' ).each( function() {
+				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
+					$( this ).text( "\n" + $( this ).text() );
+				}
+			} );
 			return $pre.text();
 		},
 		
