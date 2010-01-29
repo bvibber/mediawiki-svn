@@ -64,7 +64,7 @@ function lockoutUserLoadAfterLoadFromSession( $user ) {
 
 function lockoutAbortLogin( $user, $pw, &$result ) {
         if ( $user->isBlocked() ) {
-                $result = LoginForm::CREATE_BLOCKED; // TODO: a better code, triggering a better message.
+        	$result = LoginForm::USER_BLOCKED;
                 return false;
         }
 
