@@ -46,7 +46,7 @@ var default_form_options = {
 		}
 		
 		// Get an edit Token for "uploading"
-		mw.getToken( 'File:MyRandomFileTokenCheck.jpg', options.api_target, function( eToken ) {
+		mw.getToken( options.api_target, 'File:MyRandomFileTokenCheck.jpg', function( eToken ) {
 			if ( !eToken || eToken == '+\\' ) {
 				$( _this.selector ).html( gM( 'mwe-error_not_loggedin' ) );
 				return false;

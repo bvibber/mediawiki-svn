@@ -22,9 +22,9 @@ var mwApiProxyDefaultConfig = {
 
 // User white_list should also be checked and configured at runtime.
 mw.ready( function() {
-	
-	// Build our configuration from the default and mwApiProxyConfig vars
-	mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
-	$j.apiProxy( 'server', mwApiProxyConfig );
-	
+	mw.load( 'ApiProxy', function(){
+		// Build our configuration from the default and mwApiProxyConfig vars
+		mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
+		$j.apiProxy( 'server', mwApiProxyConfig );
+	});
 } );

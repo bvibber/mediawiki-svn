@@ -2397,7 +2397,7 @@ mw.RemoteSearchDriver.prototype = {
 					}
 				} );
 				// Get the edit token
-				_this.getEditToken( function( token ) {
+				mw.getToken( _this.upload_api_target, function( token ) {
 					uploader.editToken = token;
 
 					// Close the loader now that we are ready to present the progress dialog::
@@ -2410,29 +2410,6 @@ mw.RemoteSearchDriver.prototype = {
 				} );
 			}
 		);
-	},
-	
-	/**
-	* get an edit Token
-	* depends on upload_api_target being initialized
-	* 
-	* @param {Function} callback Function to be called once the token is available  
-	*/
-	getEditToken: function( callback ) {
-		var _this = this;
-		if ( _this.upload_api_target != 'proxy' ) {
-			// (if not a proxy) first try to get the token from the page:
-			var editToken = $j( "input[name='wpEditToken']" ).val();
-			if ( editToken ) {
-				callback( editToken );
-				return;
-			}
-		}
-		// @@todo try to load over ajax if( _this.local_wiki_api_url ) is set
-		// ( for cases where inserting from a normal page view (that did not have wpEditToken)
-		mw.getToken( _this.upload_api_target, function( token ) {
-			callback( token );
-		} );
 	},
 	
 	/**

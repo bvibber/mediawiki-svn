@@ -94,7 +94,8 @@ mw.TimedTextEdit.prototype = {
 					$j('<a>')
 					.attr( 'href', '#tab-' + edit_stage_id )
 					.append(
-						$j('<span style="float:left;">')
+						$j('<span />')
+						.css( "float","left" )
 						.addClass( 'ui-icon ui-icon-' + editStage.icon )
 						,
 						$j('<span>')
@@ -155,12 +156,16 @@ mw.TimedTextEdit.prototype = {
 		// Check if user has XHR file upload support & we are on the target wiki
 		
 		$target.append(
-			$j('<div class="leftcolumn">')
+			$j('<div />')
+			.addClass( "leftcolumn" )
 			.append('<h4>')
 			.text( gM('mwe-upload-text') ),
-			$j('<div class="rightcolumn">')
+			$j('<div />')
+			.addClass( 'rightcolumn' )
 			.append(
-				$j('<span id="timed-text-rightcolum-desc">').append( 
+				$j( '<span />' )
+				.attr('id', "timed-text-rightcolum-desc")
+				.append( 
 					$j('<h4>')
 						.text( gM('mwe-upload-text-desc-title') ),
 					$j('<i>').text ( gM( 'mwe-upload-text-desc-help' ) ),
@@ -190,14 +195,25 @@ mw.TimedTextEdit.prototype = {
 				'width':'300px',
 				'float': 'left'
 			}).append(
-				'<input type="file" id="timed-text-file-upload"></input><br />'
+				$j('<input />')
+				.attr( {
+					'type': "file",
+					'id' : "timed-text-file-upload"
+				}),
+				$j('<br />')
 			) 
 		)
 		
 		
 		$target.append( 
 			//Get a little helper input filed to update the language
-			$j('<input id="timed-text-langKey-input" type="text" maxlength="10" size="3">')
+			$j('<input />')
+				.attr( {
+					'id' : "timed-text-langKey-input",
+					'type' : "text",
+					'maxlength' : "10",
+					'size' :"3"
+				} )
 				.change(function(){
 					var langKey = $j(this).val();
 					if( mw.languages[ langKey ] ){
@@ -277,7 +293,10 @@ mw.TimedTextEdit.prototype = {
 		
 		//Add an upload button: 
 		$target.append( 
-			$j('<div style="clear: both"></div><br /><br />'),
+			$j('<div />')
+			.css('clear', 'both'),
+			$j('<br />'),
+			$j('<br />'),
 			$j.button( {
 				'style': { 'float' : 'left' },
 				'text': gM('mwe-upload-text'),
