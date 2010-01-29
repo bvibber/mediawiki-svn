@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r84';
+var mwRemoteVersion = 'r85';
 var mwUseScriptLoader = true;
 
 //Log the mwRemote version ( will determin what version of js we get )
@@ -380,36 +380,35 @@ function waitMwEmbedReady( callback ) {
 			callback();
 			
 			// All enabled pages should check if we have the gadget already installed 
-			// if not offer a convenient drop down 
+			// if not offer a convenient button
 			mwCheckForGadget();
 		})
 	}
 }
 /**
- * checks if the gadget is installed 
+ * Check if the gadget is installed 
  * run after mwEmbed setup so $j and mw interface is available: 
  */
 function mwCheckForGadget(){
 	mw.log('mwCheckForGadget');
 	scripts = document.getElementsByTagName( 'script' );
+	
 	// Check for document paramater withJS and ignore found gadget
 	if( typeof getParamValue == 'undefined' ){
 		return false;
 	}
-	var withJS = getParamValue("withJS"); 
-	
+		
 	for( var i = 0 ; i < scripts.length ; i ++){
 		if (
 			scripts[i].src 
-			&& scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1
-			&& !withJS 
+			&& scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1 
 		){
 			mw.log('gadget already installed: ' + scripts[i].src);
-			//gadget found / enabled
-			return true;
+			// Gadget found / enabled
+			return false;
 		}		
 	}
-	// No gadget found load jQuery if we don't have it
+	// No gadget found add enable button: 
 	mw.log('gadget not installed, show install menu');	
 	var $gadgetBtn = $j.button({
 			'text' : gM( 'mwe-enable-gadget' ),
@@ -460,7 +459,7 @@ function mwSubmitgadgetPref( gadget_id ){
 			return false;
 		}
 		if( mwCheckFormDatagadget( form.data, gadget_id ) ){
-			mw.log( gaget_id + ' is already enabled' );
+			mw.log( gadget_id + ' is already enabled' );
 			return false;
 		}
 		
