@@ -1048,9 +1048,13 @@ if ( typeof context == 'undefined' ) {
 			// Use a dummy div to escape all entities
 			// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
 			// We also need to unescape the doubly-escaped things mentioned above
-			html = $( '<div />' ).text( html.replace( /\r?\n/g, '<br>' ) ).html()
+			html = $( '<div />' ).text( '<p>' + html.replace( /\r?\n/g, '</p><p>' ) + '</p>' ).html()
 				.replace( /&amp;nbsp;/g, '&nbsp;' )
-				.replace( /&lt;br&gt;/g, '<br>' )
+				// Allow p tags to survive encoding
+				.replace( /&lt;p&gt;/g, '<p>' )
+				.replace( /&lt;\/p&gt;/g, '</p>' )
+				// Empty p tags should just be br tags
+				.replace( /<p><\/p>/g, '<br>' )
 				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
 				.replace( /&amp;amp;nbsp;/g, '&amp;nbsp;' )
 				.replace( /&amp;lt;br&amp;gt;/g, '&lt;br&gt;' )
