@@ -6788,15 +6788,18 @@ if ( typeof context == 'undefined' ) {
 			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
 			// We also do the easy cases for <p> and <br> conversion here, complicated cases are handled
 			// later
-			var $pre = $( '<pre>' +
-				html
+			html = html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					// Don't convert <br>s at the very start or end to prevent newline collapsing
-					.replace( /(?!^)\<br[^\>]*\>(?!$)/gi, "\n" ) // Easy case for <br> conversion
+					.replace( /\<br[^\>]*\>/gi, "\n" ) // Easy case for <br> conversion
 					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
-					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" )
-				+ '</pre>' );
+					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" );
+			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
+			// won't leave everything alone
+			var leading = html.match( /^\s*/ )[0];
+			var trailing = html.match( /\s*$/ )[0];
+			html = html.substr( leading.length, html.length - leading.length - trailing.length );
+			var $pre = $( '<pre>' + html + '</pre>' );
 			// TODO: Optimize this, maybe by converting <br>->\n when not at the beginning or end
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
 			// Convert tabs, <p>s and <br>s back
@@ -6833,13 +6836,15 @@ if ( typeof context == 'undefined' ) {
 					$( this ).text( text );
 				}
 			} );
-			// IE aggressively collapses whitespace in .text() after having done DOM manipulation,
-			// but for some crazy reason this does work
+			var retval;
 			if ( $.browser.msie ) {
-				return $( '<pre>' + $pre.html() + '</pre>' ).text().replace( /\r/g, '\n' );
+				// IE aggressively collapses whitespace in .text() after having done DOM manipulation,
+				// but for some crazy reason this does work. Also convert \r back to \n
+				retval = $( '<pre>' + $pre.html() + '</pre>' ).text().replace( /\r/g, '\n' );
 			} else {
-				return $pre.text();
+				retval = $pre.text();
 			}
+			return leading + retval + trailing;
 		},
 		
 		/*
