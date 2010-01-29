@@ -1360,19 +1360,18 @@ var mwDefaultConf = {
 	
 	/**
 	* mediaWiki JSON a wrapper for jQuery getJSON:
-	* $j.getJSON( url, [data], [callback] )
 	* 
 	* The mediaWiki version lets you skip the url part 
 	* mw.getJSON( [url], data, callback ); 
 	* 
-	* Lets you assume a few things:
+	* Lets you assume:
 	* 	url is optional 
 	* 		( If the first argument is not a string we assume a local mediaWiki api request )
 	*   callback parameter is not needed we setup the callback automatically
 	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
 	* 	automatically issues request over "POST" if action={postActions}
-	*	~soon~ will setup apiProxy where needed.
+	*	automatically will setup apiProxy where needed.
 	*
 	* @param {Mixed} url or data request
 	* @param {Mixed} data or callback
@@ -1396,8 +1395,7 @@ var mwDefaultConf = {
 		callback = ( typeof arg2 == 'function') ? arg2 : false;
 		if( ! callback && ( typeof arg3 == 'function') ){
 			callback = arg3;	
-		}
-		
+		}		
 				
 		// Make sure we got a url:
 		if( !url ){ 
@@ -1406,26 +1404,44 @@ var mwDefaultConf = {
 		}		
 		
 		// Add default action if unset:
-		if( !data['action'] )
+		if( !data['action'] ){
 			data['action'] = 'query';
+		}
 		
 		// Add default format if not set:
-		if( !data['format'] ) 
+		if( !data['format'] ){ 
 			data['format'] = 'json';
-		
-		mw.log("run getJSON: " + mw.replaceUrlParams(url, data ) );
-		
-		// Check if we need to setup proxy or do the request as a "post"
-		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
-			if( ! mw.isLocalDomain( url ) ){
-				mw.log( "Error:: Do setup proxy here" );
-				return ;
-			}else{
-				$j.post( url, data, callback, 'json');
-				return ;
-			}
 		}
-		//If cross domain setup a callback: 
+		
+		mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );		
+		// Check if the request requires a "post" (that does not work with callbacks cross domain) 
+		if( mw.checkRequestPost( data )  ){
+			// Check if we need to setup a proxy
+			if( ! mw.isLocalDomain( url ) ){
+				// Load the proxy and issue the request
+				mw.load( 'ApiProxy', function(){		
+					var parsedUrl = mw.parseUri( url );		
+					var server_frame = parsedUrl.protocol + '://' + parsedUrl.authority + '/w/index.php/MediaWiki:ApiProxy';					
+					$j.apiProxy(
+						'client', 
+						{
+							// NOTE:: we need to setup a special page rather than the rewrite hack I use bellow:   
+							// The rewrite hack is very slow cuz it loads the whole mediaWiki interface & skin 
+							'server_frame' : server_frame,
+							'client_frame_path'	: mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html',
+						},
+						function(){
+							mw.proxy.doRequest( data, callback )
+						}
+					)
+				});				
+			}else{
+				// Do the request an ajax post 
+				$j.post( url, data, callback, 'json');				
+			}
+			return ;
+		}
+		// If cross domain setup a callback: 
 		if( ! mw.isLocalDomain( url ) ){				 
 			if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
 				// jQuery specific: ( second ? is replaced with the callback ) 
@@ -1434,7 +1450,27 @@ var mwDefaultConf = {
 		}
 		// Pass off the jQuery getJSON request:
 		$j.getJSON( url, data, callback );			
-	}		
+	}
+	
+	/**
+	* Checks if a mw request data requires a proxy or not
+	* @param {Object} 
+	* @return {Boolean}
+	*	true if the request requires a proxy
+	* 	false if the request does not
+	*/		
+	mw.checkRequestPost = function ( data ){
+		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
+			return true;
+		}
+		if( data['prop'] == 'info' && data['intoken'] ){
+			return true;			
+		}
+		if( data['meta'] = 'userinfo' ){
+			return true;
+		}
+		return false;
+	}
 	
 	/**
 	* Metavid specific roe request helper function
@@ -1477,28 +1513,19 @@ var mwDefaultConf = {
 	/**
 	 * Simple api helper to grab an edit token
 	 *
-	 * @param {String} [title] The wiki page title you want to edit
-	 * @param {String} [api_url] The target API URL
+	 * @param {String} [api_url] Optional target API URL (uses default local api if unset) 
+	 * @param {String} title The wiki page title you want to edit	 
 	 * @param {callback} callback Function to pass the token to
 	 */
-	mw.getToken = function( title, api_url, callback ) {
-		if( typeof api_url == 'function' )
-			callback = api_url;	
-		if( typeof title == 'function')
+	mw.getToken = function( api_url, title, callback ) {
+		// Make the api_url be optional: 
+		if( typeof title == 'function' ){
 			callback = title;
+			title = api_url;
+			api_url = mw.getLocalApiUrl();	
+		}		
 		
-		mw.log( 'mw:getToken' );
-		
-		// If no title is provided get a token for the user page: 
-		if ( typeof title != 'string' ) {
-			if( typeof wgUserName != 'undefined' && wgUserName ){
-				title = 'User:' + wgUserName;
-			}else{
-				// Try maintalk page:	
-				title = 'Talk:Main_Page';
-			}
-		}
-				
+		mw.log( 'mw:getToken' );		
 		
 		var request = {			
 			'prop': 'info',
@@ -1547,7 +1574,7 @@ var mwDefaultConf = {
 	* @param {Mixed} buttons A button object for the dialog 
 	*					Can be 'ok' for oky button.
 	*/
-	mw.addDialog = function ( title, msg_txt, buttons ) {
+	mw.addDialog = function ( title, msg_html, buttons ) {
 		$j( '#mwe_tmp_loader' ).remove();
 		// Append the style free loader ontop: 
 		$j( 'body' ).append( 
@@ -1557,7 +1584,7 @@ var mwDefaultConf = {
 				'title' : title
 			})
 			.css('display', 'none')
-			.text( msg_text )
+			.html( msg_html )
 		);
 		// Special buttons == ok gives empty give a single "oky" -> "close"
 		if ( buttons == 'ok' ) {
@@ -2644,14 +2671,8 @@ function mwDojQueryBindings() {
 				'right':'0px',
 				'bottom':'0px'
 			} );
-		}			
-	
-		$.mwProxy = function( apiConf ) {
-			mw.load( ['mw.apiProxy'],
-			function() {
-				mw.apiProxy( apiConf );
-			} );
-		}
+		}	
+		
 	} )( jQuery );
 }
 

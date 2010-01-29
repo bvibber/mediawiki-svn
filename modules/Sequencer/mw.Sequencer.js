@@ -537,19 +537,13 @@ mw.Sequencer.prototype = {
 		this.sequenceEditToken = $j( 'input[wpEditToken]' ).val();
 
 		if ( typeof this.sequenceEditToken == 'undefined' && this.getLocalApiUrl() != null ) {
-			mw.getToken( _this.plObj.mTitle, _this.getLocalApiUrl(),
-				function( token ) {
+			mw.getToken( _this.getLocalApiUrl(), _this.plObj.mTitle, function( token ) {
 					if ( token ) {
 						_this.sequenceEditToken = token;
 						_this.updateSeqSaveButtons();
 					}
-				}
-			);
-			get_mw_token( _this.plObj.mTalk, _this.getLocalApiUrl(),
-				function( token ) {
-					_this.clipboardEditToken = token;
-				}
-			);
+			} );
+			
 			// also grab permissions for sending clipboard commands to the server
 
 			// (calling the sequencer inline) try and get edit token via api call:

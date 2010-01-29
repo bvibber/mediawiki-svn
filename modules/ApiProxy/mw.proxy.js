@@ -1,4 +1,4 @@
-/*
+/**
 * 
 * Api proxy system
 *
@@ -55,19 +55,21 @@ mw.addMessages( {
  * @param {Object} proxyConfig Proxy configuration
  * @param {Function} callback The function called once proxy request is done
  */
-$.apiProxy = function( mode, proxyConfig, callback ) {
-	mw.log( 'do apiProxy setup' );				
-	// do the proxy setup or 
-	if ( mode == 'client' ) {
-		// just do the setup (no callbcak for client setup) 
-		mw.proxy.client( proxyConfig );
-		if ( callback )
-			callback();
-	} else if ( mode == 'server' ) {
-		// Do the request with the callback
-		mw.proxy.server( proxyConfig , callback );
+( function( $ ) {
+	$.apiProxy = function( mode, proxyConfig, callback ) {
+		mw.log( 'do apiProxy setup' );				
+		// do the proxy setup or 
+		if ( mode == 'client' ) {
+			// just do the setup (no callbcak for client setup) 
+			mw.proxy.client( proxyConfig );
+			if ( callback )
+				callback();
+		} else if ( mode == 'server' ) {
+			// Do the request with the callback
+			mw.proxy.server( proxyConfig , callback );
+		}
 	}
-}
+} )( jQuery );
 
 ( function( $ ) {
 
@@ -91,9 +93,8 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		if ( proxyConfig.client_frame_path ) {
 			$.proxy.client_frame_path = proxyConfig.client_frame_path;
 		} else {
-			// Set to default via mediaWiki vars: 
-			
-			$.proxy.client_frame_path =  wgServer + wgScriptPath + '/js/mwEmbed/libMwApi/NestedCallbackIframe.html';
+			// Set to default via mediaWiki vars: 			
+			$.proxy.client_frame_path =  wgServer + wgScriptPath + '/js/mwEmbed/modules/ApiProxy/NestedCallbackIframe.html';
 		}
 				
 		if ( mw.isLocalDomain( $.proxy.server_frame ) ) {
@@ -190,14 +191,14 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 	
 	/**
 	 * The nested iframe action that passes its result back up to the top frame instance 
-	 * 	 
+	 * 
 	 * Entry point for hashResult from nested iframe
 	 *
 	 * @param {Object} hashResult Value to be sent to parent frame	 
 	 */
 	$.proxy.nested = function( hashResult ) {
 		// Close the loader if present: 
-		$j.closeLoaderDialog();
+		mw.closeLoaderDialog();
 		mw.log( '$.proxy.nested callback :: ' + unescape( hashResult ) );
 		frameProxyOk = true;
 		
@@ -216,7 +217,6 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		// Pass the result object to the callback:
 		$.proxy.callback( resultObject );
 	}
-	
 	
 				
 	
@@ -250,12 +250,13 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 	/**
 	* Outputs the result object to the client domain
 	*
-	* @param {String} nestName Name of iframe
+	* @param {clientFrame} clientFrame Client frame name 
+	* @param {String} nestName Name of iframe	
 	* @param {resultObj} the result to pass back to the client domain
 	*/ 
 	function outputResultsFrame( clientFrame,  nestName, resultObj ) {
 		$j( '#nested_push' ).remove();
-		// Setup the nested iframe proxy that points back to top domain:			
+		// Setup the nested iframe proxy that points back to top domain:
 		$j( 'body' ).append( 
 			$j('<iframe>').attr({
 				'id' 	: nestName,
@@ -308,7 +309,14 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 		
 		/**
 		*	HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
-		*/ 
+		*/		
+		// Check master blacklist
+		for ( var i in proxyConfig.master_blacklist ) {
+			if ( clientDomain == proxyConfig.master_blacklist ) {
+				mw.log( 'domain: ' + clientDomain + ' is blacklisted ( no request )' );
+				return false;
+			}
+		}		 
 		// Check the master whitelist:
 		for ( var i in proxyConfig.master_whitelist ) {
 			if ( clientDomain ==  proxyConfig.master_whitelist[ i ] ) {
@@ -316,14 +324,7 @@ $.apiProxy = function( mode, proxyConfig, callback ) {
 				return doApiRequest( clientRequest );
 			}
 		}
-		
-		// Check master blacklist
-		for ( var i in proxyConfig.master_blacklist ) {
-			if ( clientDomain == proxyConfig.master_blacklist ) {
-				mw.log( 'domain: ' + clientDomain + ' is blacklisted ( no request )' );
-				return false;
-			}
-		}
+			
 		// FIXME Add in user based approval :: 
 				
 		// offer the user the ability to "approve" requested domain save to

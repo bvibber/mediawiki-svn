@@ -907,7 +907,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		}
 
 		// No edit token. Fetch it asynchronously and then do the upload.
-		mw.getToken( 'File:'+ _this.formData['filename'], _this.api_url, function( editToken ) {
+		mw.getToken( _this.api_url, 'File:'+ _this.formData['filename'], function( editToken ) {
 			if( !editToken || editToken == '+\\' ) {
 				_this.updateProgressWin( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
 				return false;

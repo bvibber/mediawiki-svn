@@ -9,23 +9,14 @@
 //HARD coded local test: 
 var remote_wiki_host = 'http://test.wikipedia.org';
 var remote_script_path = '/w';
+var remote_api_url = remote_wiki_host + remote_script_path + '/api.php';
 
 mw.ready( function(){
-	$j('#hostName').text( remote_wiki_host );
-	//run the api-proxy setup:
-	$j.apiProxy(
-		'client', 
-		{
-			'server_frame': remote_wiki_host +  remote_script_path + '/index.php/MediaWiki:ApiProxy',
-			'client_frame_path'	: mw.getMwEmbedPath() + 'libMwApi/NestedCallbackIframe.html',
-		},
-		function(){
-			//callback function here: 
-			$j('#setupDone').show('slow');
-			$j('#doHello').click( doHello ); 	
-			$j('#doAppend').click(doAppend);	
-		}
-	);				
+	$j('#hostName').text( remote_wiki_host );		
+	//callback function here: 
+	$j('#setupDone').show('slow');
+	$j('#doHello').click( doHello ); 	
+	$j('#doAppend').click( doAppend );	
 });
 function doHello(){
 	mw.log('to a hello user');
@@ -42,8 +33,7 @@ function getUserName( callback ){
 		'meta':'userinfo'
 	}
 	// Do proxy request 
-	mw.proxy.doRequest( rObj,
-		function( data ){		
+	mw.getJSON( remote_api_url, rObj, function( data ){		
 			//now we get the data back for that domain
 			if( !data.query || !data.query.userinfo ){
 				mw.log("Error no query.userinfo ");
@@ -58,10 +48,10 @@ function getUserName( callback ){
 function doAppend(){
 	$j('#appendTarget').html( mw.loading_spinner() );
 	//get user name
-	getUserName(function(userName){
+	getUserName( function(userName){
 		var eTitle = 'User_talk:' + userName;
-		//get a edit token
-		mw.getToken( eTitle, 'proxy', function( token ){
+		// Get a edit token		
+		mw.getToken( remote_api_url, eTitle, function( token ) {
 			mw.log("got token: " + token) ;
 			var request = {
 				'action':'edit',
@@ -70,7 +60,7 @@ function doAppend(){
 				'appendtext': "\n\n==== Hello from Api proxy At: " + Date() + " ====",
 				'token': token
 			}
-			mw.getJSON('proxy', request, function( result ){
+			mw.getJSON( remote_api_url, request, function( result ){
 				if(result.edit && result.edit.newrevid){				
 					$j('#appendTarget').html( "success: " + JSON.stringify ( result) );
 					url = remote_wiki_host +  remote_script_path + '/index.php/';
