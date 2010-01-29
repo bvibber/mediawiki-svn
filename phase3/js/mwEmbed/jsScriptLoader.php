@@ -460,7 +460,7 @@ class jsScriptLoader {
 			$urid = htmlspecialchars( $_GET['urid'] );
 		}else{
 			// If no urid is set use special "cache" version.
-			// (this requires that the cache is removed for updates to take effect.)
+			// (this requires that the cache files be removed for updates to take effect.)
 			$urid = 'cache';
 		}
 

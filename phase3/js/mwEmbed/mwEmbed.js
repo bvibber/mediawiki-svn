@@ -28,7 +28,7 @@ if ( !window['mw'] ) {
 /*
 * Set the mwEmbedVersion ( not set by stopgap )
 */
-var MW_EMBED_VERSION = '1.1';
+var MW_EMBED_VERSION = '1.1a';
 
 /**
 * Default global config values. Configuration values are set via mw.setConfig
@@ -201,7 +201,6 @@ var mwDefaultConf = {
 	
 	/**
 	* Save a user configuration var to a cookie & local global variable
-	* Loads the cookie plugin if not already loaded
 	*
 	* @param {String} name Name of user configuration value
 	* @return 
@@ -260,63 +259,58 @@ var mwDefaultConf = {
 	 * $1, $2 and does relevant msgkey transformation returning
 	 * the user msg.
 	 *
-	 * @param {String} key The msg key as set by mw.addMessages
+	 * @param {String} msgKey The msg key as set by mw.addMessages
 	 * @param {Array} args  An array of replacement strings
 	 * @return string
 	 */
-	mw.getMsg = function( key , args ) {
+	mw.getMsg = function( msgKey , args ) {
 	
 		// Check for missing message key
-		if ( ! messageCache[ key ] )
-			return '&lt;' + key + '&gt;';
+		if ( ! messageCache[ msgKey ] )
+			return '&lt;' + msgKey + '&gt;';
 
 		// swap in the arg values
-		var ms =  mw.lang.gMsgSwap( key, args );				
+		var ms =  mw.lang.msgReplaceArgs( messageCache[ msgKey ], args );				
 		
-		// a quick check to see if we need to send the msg via the 'parser'
+		// a quick check to see if we need to send the msg to the 'parser'
 		// (we can add more detailed check once we support more wiki syntax)
 		if ( ms.indexOf( '{{' ) === -1 && ms.indexOf( '[' ) === -1 ) {
 			return ms;
 		}
 				
-		// send the msg key through the parser
+		// Send the msg key through the parser
 		var pObj = mw.parser( ms );
 		// return the transformed msg
 		return pObj.getHTML();
 	}
 	
 	/**
-	* gMsgSwap
+	* Swap in an array of values for $1, $2, $n for a given msg key 
 	*
-	* @param string key The msg key as set by mw.addMessages
+	* @param string msgKey The msg key to lookup
 	* @param [mixed] args  An array or string to be replaced
 	* @return string
 	*/
-	mw.lang.gMsgSwap = function( key , args ) {
-		if ( ! messageCache[ key ] )
-			return '&lt;' + key + '&gt;';// Missing key placeholder
-		// get the message string:
-		var ms = messageCache[ key ];
-		
+	mw.lang.msgReplaceArgs = function( message , args ) {		
 		// replace values
 		if ( typeof args == 'object' || typeof args == 'array' ) {
 			for ( var v in args ) {
 				// Message test replace arguments start at 1 instead of zero:
 				var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );
-				ms = ms.replace( rep, args[v] );
+				message = message.replace( rep, args[v] );
 			}
 		} else if ( typeof args == 'string' || typeof args == 'number' ) {
-			ms = ms.replace( /\$1/g, args );
+			message = message.replace( /\$1/g, args );
 		}
-		return ms;
+		return message;
 	}
 
 	/**
-	* gMsgNoTrans
+	* Get msg content without transformation
 	*
 	* @returns string The msg key without transforming it
 	*/
-	mw.lang.gMsgNoTrans = function( key ) {
+	mw.lang.msgNoTrans = function( key ) {
 		if ( messageCache[ key ] )
 			return messageCache[ key ]
 
@@ -508,7 +502,10 @@ var mwDefaultConf = {
 		size = Math.round( size * p ) / p;
 		return gM( msg , size );
 	};
-	
+	/**
+	 * Format a number
+	 * @param {Number} num Number to be formated
+	 */
 	mw.lang.formatNumber = function( num ) {
 		/*
 		*	addSeparatorsNF
@@ -560,7 +557,7 @@ var mwDefaultConf = {
 			//	 (we are already running white-space issues ie php parse strips whitespace differently)
 			// or at least expose something similar to: http://www.mediawiki.org/wiki/Extension:Page_Object_Model
 
-			// ... but I am having fun with recursion so here it is...
+			// ... but here is a quick hack that solves my current problem: 
 			function rdpp ( txt , cn ) {
 				var node = { };
 				// inspect each char
@@ -589,7 +586,7 @@ var mwDefaultConf = {
 				return node;
 			}
 			/**
-			 * parse template text as template name and named params
+			 * Parse template text as template name and named params
 			 * @param {String} ts Template String to be parsed 
 			 */
 			function parseTmplTxt( ts ) {
@@ -631,6 +628,9 @@ var mwDefaultConf = {
 				}		
 				return tObj;
 			}
+			/*
+			 * Get the Magic text from a template node
+			 */
 			function getMagicTxtFromTempNode( node ) {
 				node.tObj = parseTmplTxt ( node.t );
 				// do magic swap if template key found in pMagicSet
@@ -645,7 +645,7 @@ var mwDefaultConf = {
 			/**
 			 * recurse_magic_swap
 			 *
-			 * go last child first swap upward: (could probably be integrated above somehow)
+			 * Go last child first swap upward: (could probably be integrated above somehow)
 			 */
 			var pNode = null;
 			function recurse_magic_swap( node ) {
@@ -691,7 +691,7 @@ var mwDefaultConf = {
 		 * templates
 		 * 
 		 * Get a requested template from the wikitext (if available)
-		 *  
+		 * @param templateName
 		 */
 		templates: function( tname ) {
 			this.parse();
@@ -843,7 +843,7 @@ var mwDefaultConf = {
 	
 	
 	/**
-	* The loader prototype:
+	* Top level loader prototype:
 	*/
 	mw.loader = {
 		/*
@@ -1439,7 +1439,8 @@ var mwDefaultConf = {
 	/**
 	* Metavid specific roe request helper function
 	* 
-	* NOTE: depreciated, will be removed once updates are pushed out to metavid.org 
+	* NOTE: depreciated, will be removed once standard callback is
+	*  pushed out to metavid.org 
 	*  
 	* @param roe_url to be updated 
 	*/
@@ -1549,9 +1550,15 @@ var mwDefaultConf = {
 	mw.addDialog = function ( title, msg_txt, buttons ) {
 		$j( '#mwe_tmp_loader' ).remove();
 		// Append the style free loader ontop: 
-		$j( 'body' ).append( '<div id="mwe_tmp_loader" style="display:none" title="' + title + '" >' +
-				msg_txt +
-		'</div>' );
+		$j( 'body' ).append( 
+			$j('<div />') 
+			.attr( {
+				'id' : "mwe_tmp_loader",
+				'title' : title
+			})
+			.css('display', 'none')
+			.text( msg_text )
+		);
 		// Special buttons == ok gives empty give a single "oky" -> "close"
 		if ( buttons == 'ok' ) {
 			buttons = { };
@@ -1559,8 +1566,8 @@ var mwDefaultConf = {
 				$j( '#mwe_tmp_loader' ).close();
 			}
 		}
-		// turn the loader into a real dialog loader: 
-		mw.load( [
+		// Load the dialog classes
+		mw.load([
 			[
 				'$j.ui'
 			],
@@ -1711,7 +1718,7 @@ var mwDefaultConf = {
 	/**
 	* Get a loading spinner html
 	* NOTE: this is depreciated use jQuery binding "loadingSpinner" instead 
-	
+	*
 	* @param {String} [Optional] style Style string to apply to the spinner 
 	*/
 	mw.loading_spinner = function( style ) {

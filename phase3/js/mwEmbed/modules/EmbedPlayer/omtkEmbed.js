@@ -32,7 +32,7 @@ var omtkEmbed = {
 	* Get the embed object html
 	*/
 	getEmbedObj:function() {
-		var player_path = mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/omtk-fx/omtkp.swf';
+		var player_path = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/omtk-fx/omtkp.swf';
 		// player_path = 'omtkp.swf';
 		mw.log( "player path: " + player_path );
 		return  '<object id="' + this.pid + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1">' +

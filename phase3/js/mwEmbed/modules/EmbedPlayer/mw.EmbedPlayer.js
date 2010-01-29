@@ -2391,7 +2391,7 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/** 
-	* Generic function to display custom HTML inside the mwEmbed element.
+	* Generic function to display custom HTML inside the mwEmbedPlayer
 	* Should call the closeDisplayedHTML function to close the
 	* display of the custom HTML and restore the regular player display.
 	*		
@@ -2461,8 +2461,11 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* @param {Object} $target jQuery target to output to
 	*/
-	showPlayerSelect: function( $target ) {	
-		mw.log('showPlayerSelect');
+	showPlayerSelect: function( $target ) {		
+		mw.log('showPlayerSelect');		
+		if( ! $target ){
+			$target = this.$interface.find( '.videoOptionsComplete' )
+		}	
 		// Get id (in case where we have a parent container)
 		var _this = this;
 		var o = '';
@@ -2522,7 +2525,7 @@ mw.EmbedPlayer.prototype = {
 				// Don't follow the empty # link:
 				return false;
 			} );
-		} );
+		} );		
 	},
 	
 	/**
