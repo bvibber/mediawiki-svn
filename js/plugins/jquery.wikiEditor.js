@@ -368,9 +368,10 @@ if ( typeof context == 'undefined' ) {
 				html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
 					// Don't convert <br>s at the very start or end to prevent newline collapsing
 					.replace( /(?!^)\<br[^\>]*\>(?!$)/gi, "\n" ) // Easy case for <br> conversion
+					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
+					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" )
 				+ '</pre>' );
 			// TODO: Optimize this, maybe by converting <br>->\n when not at the beginning or end
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
@@ -401,12 +402,18 @@ if ( typeof context == 'undefined' ) {
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.next();
 					}
-					if ( t && !t.inP && t.node.nodeName != 'P' ) {
+					if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue[0] != '\n'
+							&& t.node.nodeValue[0] != '\r' ) {
 						text += "\n";
 					}
 					$( this ).text( text );
 				}
 			} );
+			// IE aggressively collapses whitespace in .text() after having done DOM manipulation,
+			// but for some crazy reason this does work
+			if ( $.browser.msie ) {
+				$pre = $( '<pre>' + $pre.html() + '</pre>' );
+			}
 			return $pre.text();
 		},
 		
