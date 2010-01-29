@@ -25,17 +25,18 @@ var kplayerEmbed = {
 		setTimeout(function(){
 			_this.postEmbedJS();
 		}, 50);
+		var embed_code = this.getEmbedObj();	
 		mw.log( "return embed html: " + embed_code );
-		return this.getEmbedObj();	
+		return embed_code;
 	},
 	
 	/**
 	* Get the plugin embed html
 	*/
 	getEmbedObj:function() {	
-		var player_path = mw.getMwEmbedPath() + 'libEmbedPlayer/binPlayers/kaltura-player';
+		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
 		return '<object width="' + this.width + '" height="' + this.height + '" '+ 
-			 'data="' + player_path + '/wrapper.swf" allowfullscreen="true" '+ 
+			 'data="' + playerPath + '/wrapper.swf" allowfullscreen="true" '+ 
 			 'allownetworking="all" allowscriptaccess="always" '+
 			 'type="application/x-shockwave-flash" '+ 
 			 'id="' + this.pid + '" name="' + this.pid + '">'+
@@ -45,7 +46,7 @@ var kplayerEmbed = {
 			  	'<param value="#000000" name="bgcolor"/>'+
 			  	'<param value="wrapper.swf" name="movie"/>'+
 			  	'<param value="' + 
-			  		'kdpUrl=' + player_path + '/kdp.swf' +
+			  		'kdpUrl=' + playerPath + '/kdp.swf' +
 			  		'&ks=dummy&partner_id=0&subp_id=0' +
 			  		'&uid=0&emptyF=onKdpEmpty&readyF=onKdpReady' +
 			  		'" ' + 

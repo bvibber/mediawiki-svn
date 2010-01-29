@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r85';
+var mwRemoteVersion = 'r86';
 var mwUseScriptLoader = true;
 
 //Log the mwRemote version ( will determin what version of js we get )
@@ -24,7 +24,7 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	
 	// Only do rewrites if mwEmbed / js2 is "off"
-	if ( typeof mwEmbed_VERSION == 'undefined' ) {		
+	if ( typeof MW_EMBED_VERSION == 'undefined' ) {		
 		doPageSpecificRewrite();
 	}
 } );
@@ -426,7 +426,7 @@ function mwCheckForGadget(){
 						'$1', 'Special:UserLogin?returnto=' + wgPageName ) )
 					)
 				.remove();
-				return ;
+				return false;
 			}
 			
 			// Else Add loader
@@ -439,6 +439,9 @@ function mwCheckForGadget(){
 			.remove();
 			// Load gadgets form:
 			mwSubmitgadgetPref( 'mwEmbed' );
+			
+			// return false to not follow link
+			return false;
 		} );
 	
 	// Add the $gadgetBtn before the first heading: 
