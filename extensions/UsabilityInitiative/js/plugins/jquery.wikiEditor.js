@@ -362,10 +362,15 @@ if ( typeof context == 'undefined' ) {
 		'htmlToText': function( html ) {
 			// We use this elaborate trickery for cross-browser compatibility
 			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
+			// We also do the easy cases for <p> and <br> conversion here, complicated cases are handled
+			// later
 			var $pre = $( '<pre>' +
 				html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
+					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
+					// Don't convert <br>s at the very start or end to prevent newline collapsing
+					.replace( /(?!^)\<br[^\>]*\>(?!$)/gi, "\n" ) // Easy case for <br> conversion
 				+ '</pre>' );
 			// TODO: Optimize this, maybe by converting <br>->\n when not at the beginning or end
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
