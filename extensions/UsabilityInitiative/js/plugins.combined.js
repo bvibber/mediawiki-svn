@@ -6800,12 +6800,23 @@ if ( typeof context == 'undefined' ) {
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
 				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
-					var text = "\n" + $( this ).text();
+					var text =  $( this ).text();
 					// If this <p> is preceded by some text, add a \n at the beginning, and if
 					// it's followed by a textnode, add a \n at the end
 					// We need the traverser because there can be other weird stuff in between
-					// TODO: We need a reverse traverser, write this
-					var t = new context.fn.rawTraverser( this.lastChild, -10, this ).next();
+					
+					// Check for preceding text
+					// FIXME: Add an option to disable depth checking, -10 is a hack
+					var t = new context.fn.rawTraverser( this.firstChild, -10, this ).prev();
+					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+						t = t.prev();
+					}
+					if ( t ) {
+						text = "\n" + text;
+					}
+					
+					// Check for following text
+					t = new context.fn.rawTraverser( this.lastChild, -10, this ).next();
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.next();
 					}
