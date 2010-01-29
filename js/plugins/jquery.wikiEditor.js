@@ -795,6 +795,42 @@ if ( typeof context == 'undefined' ) {
 				} while ( p && p.firstChild );
 				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP ) : null;
 			};
+			this.prev = function() {
+				var p = this.node;
+				var prevDepth = this.depth;
+				var prevInP = this.inP;
+				while ( p && !p.previousSibling ) {
+					p = p.parentNode;
+					prevDepth--;
+					if ( prevDepth == 0 ) {
+						// We're back at the start node
+						p = null;
+					}
+					if ( p && p.nodeName == "P" ) {
+						prevInP = null;
+					}
+				}
+				p = p ? p.previousSibling : null;
+				if ( p && p.nodeName == "P" ) {
+					prevInP = p;
+				}
+				do {
+					// Filter nodes with the wikiEditor-noinclude class
+					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+					// $() is slow in a tight loop
+					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+						p = p.previousSibling;
+					}
+					if ( p && p.lastChild ) {
+						p = p.lastChild;
+						prevDepth++;
+						if ( p.nodeName == "P" ) {
+							prevInP = p;
+						}
+					}
+				} while ( p && p.lastChild );
+				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP ) : null;
+			};
 		},
 		/**
 		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
