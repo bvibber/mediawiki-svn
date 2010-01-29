@@ -402,8 +402,8 @@ if ( typeof context == 'undefined' ) {
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.next();
 					}
-					if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue[0] != '\n'
-							&& t.node.nodeValue[0] != '\r' ) {
+					if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue.charAt( 0 ) != '\n'
+							&& t.node.nodeValue.charAt( 0 ) != '\r' ) {
 						text += "\n";
 					}
 					$( this ).text( text );
@@ -412,9 +412,10 @@ if ( typeof context == 'undefined' ) {
 			// IE aggressively collapses whitespace in .text() after having done DOM manipulation,
 			// but for some crazy reason this does work
 			if ( $.browser.msie ) {
-				$pre = $( '<pre>' + $pre.html() + '</pre>' );
+				return $( '<pre>' + $pre.html() + '</pre>' ).text().replace( /\r/g, '\n' );
+			} else {
+				return $pre.text();
 			}
-			return $pre.text();
 		},
 		
 		/*
