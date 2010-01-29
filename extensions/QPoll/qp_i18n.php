@@ -478,6 +478,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'qp_result_error' => 'Sintaksna greška',
+	'qp_source_link' => 'Izvor',
 	'qp_stats_link' => 'Statistika',
 	'qp_users_link' => 'Korisnici',
 );

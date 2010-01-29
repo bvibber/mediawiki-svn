@@ -121,17 +121,16 @@ $messages['be-tarask'] = array(
 	'importfreeimages' => 'Імпарт вольных выяваў',
 	'importfreeimages-desc' => 'Дазваляе [[Special:ImportFreeImages|імпартаваць фатаграфіі, якія ліцэнзаваныя належным чынам]] з [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Гэтая старонка дазваляе Вам шукаць адпаведным чынам ліцэнзаваныя фатаграфіі з flickr і імпартаваць іх у {{GRAMMAR:вінавальны|{{SITENAME}}}}.',
-	'importfreeimages_noapikey' => 'Вы не сканфігуравалі Ваш ключ Flickr API.
-Каб зрабіць гэта, калі ласка, атрымайце ключ API [http://www.flickr.com/services/api/misc.api_keys.html тут] і ўстанавіце $wgFlickrAPIKey  у ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Ня знойдзена фатаграфіяў па Вашаму крытэру пошуку '$1', калі ласка, паспрабуйце яшчэ раз.",
-	'importfreeimages_invalidurl' => 'URL-адрас «$1» не зьяўляецца слушнай выявай Flickr.',
 	'importfreeimages_owner' => 'Аўтар',
 	'importfreeimages_importthis' => 'імпартаваць гэта',
 	'importfreeimages_next' => 'Наступныя $1',
-	'importfreeimages_filefromflickr' => '$1 карыстальніка Flickr <b>[$2]</b>. Арыгінальны URL-адрас',
-	'importfreeimages_promptuserforfilename' => 'Калі ласка, увядзіце назву мэтавага файла:',
-	'importfreeimages_returntoform' => "Ці націсьніце <a href='$1'>тут</a>, каб вярнуцца да вынікаў Вашага пошуку",
-	'importfreeimages_nophpflickr' => 'Вы не ўсталявалі phpFlickr, калі ласка, устанавіце $wgIFphpFlickr ў Вашым LocalSettings.php.',
+	'importfreeimages_size_square' => 'Квадрат',
+	'importfreeimages_size_thumbnail' => 'Мініятура',
+	'importfreeimages_size_small' => 'Маленькі',
+	'importfreeimages_size_medium' => 'Сярэдні',
+	'importfreeimages_size_large' => 'Вялікі',
+	'importfreeimages_size_original' => 'Арыгінальны',
 );
 
 /** Bulgarian (Български)
@@ -421,23 +420,23 @@ Tehdäksesi niin, hanki API-avain [http://www.flickr.com/services/api/misc.api_k
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'importfreeimages' => 'Importer des Images Libres',
 	'importfreeimages-desc' => 'Fournit un moyen d’importer des photographies sous licence appropriée depuis flickr.',
 	'importfreeimages_description' => 'Cette page vous permet de rechercher des images sous licences appropriées depuis flickr et de les importer dans votre wiki.',
-	'importfreeimages_noapikey' => 'Vous n’avez pas configuré votre Clef API Flickr.
-Pour ce faire, vous êtes prié{{GENDER:||e|(e)}} d’obtenir une clef API à partir de [http://www.flickr.com/services/api/misc.api_keys.html ce lien] et de configurer $wgFlickrAPIKey  dans ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Aucune photo n’a été trouvée à partir de vos critères de recherches  '$1', veuillez essayer à nouveau.",
-	'importfreeimages_invalidurl' => "L'adresse « $1 » n’est pas une image Flickr correcte.",
 	'importfreeimages_owner' => 'Auteur',
 	'importfreeimages_importthis' => 'l’importer',
 	'importfreeimages_next' => ' $1 suivants',
-	'importfreeimages_filefromflickr' => '$1 par l’utilisateur <b>[$2]</b> depuis flickr. URL d’origine',
-	'importfreeimages_promptuserforfilename' => 'Veuillez indiquer le nom du fichier de destination :',
-	'importfreeimages_returntoform' => "ou, cliquez <a href='$1'>ici</a> pour revenir à votre liste de résultats.",
-	'importfreeimages_nophpflickr' => 'Vous n’avez pas installé phpFlickr, configurer $wgIFphpFlickr dans votre LocalSettings.php.',
+	'importfreeimages_size_square' => 'Carré',
+	'importfreeimages_size_thumbnail' => 'Miniature',
+	'importfreeimages_size_small' => 'Petit',
+	'importfreeimages_size_medium' => 'Moyen',
+	'importfreeimages_size_large' => 'Grand',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -491,16 +490,16 @@ $messages['gsw'] = array(
 	'importfreeimages' => 'Freji Bilder importiere',
 	'importfreeimages-desc' => 'Macht  dr [[Special:ImportFreeImages|Import vu freje Bilder]] vu [http://www.flickr.com Flickr] megli',
 	'importfreeimages_description' => 'Die Syte erlaubt Dir, in Flickr no Bilder unter ere freje Lizänz z sueche un die derno in Dyy Wiki z importiere.',
-	'importfreeimages_noapikey' => 'Du hesch no kei Flickr-API-Schlissel konfiguriert. Bitte stell [http://www.flickr.com/services/api/misc.api_keys.html do] ne Aatrag und setz e derno in $wgFlickrAPIKey in ImportFreeImages.php yy.',
 	'importfreeimages_nophotosfound' => 'S sin keini Foto mit dr Suechkriterie „$1“ gfunde wore.',
-	'importfreeimages_invalidurl' => 'D URL „$1“ isch kei giltig Flickr-Bild.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importiere',
 	'importfreeimages_next' => 'Negschti $1',
-	'importfreeimages_filefromflickr' => '$1 vu Benutzer <b>[$2]</b> vu flickr. Original URL',
-	'importfreeimages_promptuserforfilename' => 'Bitte gib e Ziil-Dateiname yy:',
-	'importfreeimages_returntoform' => "Oder druck <a href='$1'>do</a> go uf d Syte mit dr Suechergebniss zruggzchu.",
-	'importfreeimages_nophpflickr' => 'Du hesch phpFlickr nit inschtalliert, bitte setz $wgIFphpFlickr in Dyni LocalSettings.php.',
+	'importfreeimages_size_square' => 'Quadrat',
+	'importfreeimages_size_thumbnail' => 'Vorschaubild',
+	'importfreeimages_size_small' => 'Chlei',
+	'importfreeimages_size_medium' => 'Mittel',
+	'importfreeimages_size_large' => 'Groß',
+	'importfreeimages_size_original' => 'Orginal',
 );
 
 /** Manx (Gaelg)

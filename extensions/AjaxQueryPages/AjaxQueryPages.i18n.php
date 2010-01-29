@@ -82,6 +82,13 @@ $messages['ca'] = array(
 	'ajax-qp-desc' => 'Afegeix AJAX a les pàgines de cerca com a [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Capiznon (Capiceño)
+ * @author Oxyzen
+ */
+$messages['cps'] = array(
+	'ajax-qp-desc' => 'Magdugang sang pila ka mga AJAX sa mga pahina sang pagpamangkot nga pareho sang [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -333,15 +333,17 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hans'] = array(
-	'wikieditor-template-editor-preference' => '启用维基模板的表单式编辑',
+	'wikieditor-template-editor-preference' => '启用wiki模板的表单式编辑',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Liangent
  */
 $messages['zh-hant'] = array(
-	'wikieditor-template-editor-preference' => '啟用維基模板的表單式編輯',
+	'wikieditor-template-editor-preference' => '啟用wiki模板的表單式編輯',
 );
 
