@@ -462,7 +462,6 @@ if ( typeof context == 'undefined' ) {
 					// We need to figure out if the cursor is at the start or end of a line
 					var atStart = false, atEnd = false;
 					var body = context.$content.get( 0 );
-					console.log(range);
 					if ( range.startOffset == 0 ) {
 						// Start of a line
 						// FIXME: Not necessarily the case with syntax highlighting or
