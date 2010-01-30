@@ -1,4 +1,4 @@
-mw.addOnloadHook( mv_pre_setup_search);
+mw.ready( mv_pre_setup_search);
 var mvSearchSetupFlag =false;
 var maxFilters = 8;
 var mv_search_action='';

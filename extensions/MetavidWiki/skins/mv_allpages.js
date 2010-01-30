@@ -14,7 +14,7 @@ if(typeof wgScriptPath=='undefined')
 	var wgScriptPath = '/w';		
 
 var gMvd={};
-mw.addOnloadHook(function(){
+mw.ready(function(){
 	mw.log("mv embed done loading now setup 'all page'");		
 	//make sure we have jQuery and any base required libs:	 	
 	mw.log('allpage_ did jquery check'); 		

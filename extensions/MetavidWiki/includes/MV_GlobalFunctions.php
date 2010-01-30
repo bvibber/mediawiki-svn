@@ -302,7 +302,7 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 */
 function mvfAutoAllPageHeader() {
 	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle;
-	global $mvgJSDebug, $wgEnableScriptLoader, $wgRequest, $wgEnableJS2system;
+	global $mvgJSDebug, $wgEnableScriptLoader, $wgRequest;
 
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;
@@ -313,10 +313,9 @@ function mvfAutoAllPageHeader() {
 		//@@todo should read form svn version file info
 		$unique_req_param = MV_VERSION;
 	}
-	if( $wgEnableJS2system ){
-		$wgOut->addScriptClass( "mv_allpages" );
-		$wgOut->addScriptClass( "mv_search" );
-	}
+
+	$wgOut->addScriptClass( "mv_allpages" );
+	$wgOut->addScriptClass( "mv_search" );
 
 
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';

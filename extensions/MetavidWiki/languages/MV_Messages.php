@@ -14,7 +14,7 @@ $messages['en'] = array(
 
 	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
 
-	# javascript mappings have moved to /js2/mwEmbed/languages (so mwEmbed is more self contained) 
+	# javascript mappings have moved to /js/mwEmbed/languages (so mwEmbed is more self contained)
 
 	# normal php based msg keys:
 	'metavid' => 'MetaVid page',
@@ -5480,7 +5480,7 @@ De Aansich för der nommaale Metmaacher es op dä Sigg: $1',
 	'mv_file_with_same_desc' => 'Fähler: Mer han ald en Dahteshtrohm-Dattei met dämsellve Beschrievungsschlössel: <i>$1</i>',
 	'mv_updated_stream_files' => 'Dahtesaz övver Dahteshtrohm-Datteije op der neuste Shtand jebraat',
 	'mv_removed_file_stream' => 'Dahteshtrohm-Dattei „$1“ fottjeschmeße',
-	'mv_missing_stream_text' => 'Dä jewönschte 
+	'mv_missing_stream_text' => 'Dä jewönschte
 stream
 <b>$1</b> es nit ze han.<br />
 Looer ens op dä <a href="$2">Leß met de
@@ -5563,7 +5563,7 @@ Enfommazjuhne als Aanmerkunge dobei don, die nit jekallt sin.',
 	'mv_mvd_linkback' => 'Deil ussem Daateshtrohm $1<br />
 Jangk op di Aansech als Dahteshtrohm: $2',
 	'mvBadMVDtitle' => 'de Zoot fählt, der Dahteshtrohm fählt, udder et Fomaat vun de Zick eß Jedreße',
-	'mvMVDFormat' => "De MVD Tittelle sullte esu opjebout sin: 
+	'mvMVDFormat' => "De MVD Tittelle sullte esu opjebout sin:
 <code>mvd:''Zoot'':''Dahteshtrohm_Name''/''Aanfangs_Zick''/''Engk_Zick''</code>",
 	'mv_play' => 'Afshpelle',
 	'mv_edit' => 'Ändere',

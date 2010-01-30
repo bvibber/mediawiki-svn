@@ -49,7 +49,7 @@ gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel ot
 
 //@@todo context sensitive init scripts
 //init the interface on page load
-mw.addOnloadHook( function(){
+mw.ready( function(){
 	mw.log( 'f:mv_load_interface_libs');
 	mw.log( 'load stream js');
 	//load some additional plugins/components:
