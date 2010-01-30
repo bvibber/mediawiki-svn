@@ -195,7 +195,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'wikieditor-template-editor-preference' => "D'Änner vu Wiki-Schablounen op der Basis vu Formulairen aschalten",
+	'wikieditor-template-editor-preference' => "D'Ännere vu Wiki-Schablounen op der Basis vu Formulairen aschalten",
 );
 
 /** Macedonian (Македонски)
