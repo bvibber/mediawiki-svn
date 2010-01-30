@@ -183,6 +183,13 @@ $messages['lb'] = array(
 	'autoincrement-desc' => 'Eng Variabel <nowiki>{{AUTOINCREMENT}}</nowiki>  déi sech op all Opruf nach eng Kéier derbäisetzt',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'autoincrement-desc' => 'Ova <nowiki>{{AUTOINCREMENT}}</nowiki> miampy isaky ny fiantsoana',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -279,6 +286,13 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'autoincrement-desc' => 'Zakačka (hook) koja dodalje samouvećavajuću promenljivu <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'autoincrement-desc' => 'En variabelkrok som lägger till den automatiskt ökande variabeln <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Telugu (తెలుగు)

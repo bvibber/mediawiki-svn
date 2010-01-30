@@ -1746,8 +1746,10 @@ $messages['lb'] = array(
 	'regexblock-page-title' => 'Spär vun engem Numm mat engem regulärem Ausdrock',
 	'regexblockstats' => 'Regex Spärstatistiken',
 	'regexblock-page-title-1' => 'Adress spären andem regulär Ausdréck (Regex) benotzt ginn',
+	'regexblock-reason-ip' => "Dës IP-Adress ass wéinst Vandalismus oder anerem Schiedlechem Verhalen vun Iech oder engem Aneren dee mat Iech déi selwëscht IP-Adress deelt fir d'Änner vu Säite gespaart. Wann Dir mengt dëst fir e Feeler, da [[$1|kontaktéiert eis]] w.e.g.",
 	'regexblock-reason-name' => 'Dëse Benotzernumm ass wéinst Vandalismus oder aus ähnlechen Ursaache gespaart an däerf keng Ännerunge maachen. 
 Wann Dir iwwerzeecht sidd datt et sech ëm ee Feeler handelt, [[$1|kontaktéiert eis w.e.g.]]',
+	'regexblock-reason-regex' => 'Dëse Benotzernumm ass wéint Vandalismus oder anerem schiedleche Verhale vun engem Benotzer mat engem ähnleche Benotzernumm gespaart fir Ännerungen a Säiten ze maachen. Wielt w.e.g. en anere Benotzernumm oder [[$1|kontaktéiert eis]] wéinst deem Problem.',
 	'regexblock-form-username' => 'IP-Adress oder Benotzer:',
 	'regexblock-form-reason' => 'Grond:',
 	'regexblock-form-account-block' => 'Uleeë vun neie Benotzerkonte spären',

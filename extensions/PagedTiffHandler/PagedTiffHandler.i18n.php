@@ -194,6 +194,18 @@ $messages['ia'] = array(
 	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixel, grandor del file: $3, typo MIME: $4)',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tiff_file_too_large' => 'Den eropgeluedene Fichier ass ze grouss a gouf net akzeptéiert.',
+	'tiff_too_much_meta' => "D'Metadate benotzen zevill Späicherplaz.",
+	'tiff_size_error' => "Déi berechent Gréisst vum Fichier ass net d'selwëscht wéi déi wierklech Gréisst vum Fichier.",
+	'tiff_script_detected' => 'Am eropgeluedene Fichier si Skripten dran.',
+	'tiff_bad_file' => 'Am eropgeluedene Fichier si Feeler.',
+	'tiff-file-info-size' => '(Säit $5, $1 × $2 Pixel, Gréisst vum Fichier: $3, MIME-Typ: $4)',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

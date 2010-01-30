@@ -339,6 +339,13 @@ $messages['lv'] = array(
 	'ajax-qp-desc' => 'Pievienot nedaudz AJAX vaicājumu lapās, tādos kā [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'ajax-qp-desc' => "Manampy script AJAX amin'ny pejy fangatahana toy ny [[Special:Shortpages|{{int:shortpages}}]]",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

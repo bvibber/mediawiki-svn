@@ -207,6 +207,13 @@ $messages['ru'] = array(
 	'groupssidebar-desc' => 'Это расширение позволяет администраторам сайта включать элементы боковой панели для определённых групп участников',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'groupssidebar-desc' => 'Detta programtillägg möjliggör för sajtadministratörer att inkludera element till sidokolumnen för specifika användargrupper',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

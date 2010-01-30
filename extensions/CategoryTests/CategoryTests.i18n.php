@@ -232,6 +232,13 @@ $messages['lb'] = array(
 	'categorytests-desc' => 'Fonctioune fir Teste vu Kategorien',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'categorytests-desc' => "Asa ho an'ny fanandramana ny sokajy",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

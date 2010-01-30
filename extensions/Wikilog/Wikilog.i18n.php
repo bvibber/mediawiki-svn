@@ -5281,6 +5281,7 @@ $messages['te'] = array(
 	'wikilog-anonymous-mark' => '(అజ్ఞాత)',
 	'wikilog-pager-newer-n' => '← కొత్తవి $1',
 	'wikilog-pager-older-n' => 'పాతవి $1 →',
+	'wikilog-pager-newest' => '←← కొత్తవి',
 	'wikilog-pager-prev' => '← గత',
 	'wikilog-pager-next' => 'తర్వాతి →',
 	'wikilog-pager-first' => '←← మొదటి',

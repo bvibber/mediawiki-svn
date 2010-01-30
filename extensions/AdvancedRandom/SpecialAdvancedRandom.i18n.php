@@ -389,6 +389,13 @@ $messages['lt'] = array(
 Gali būti naudojamas kaip [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] norint gauti atsitiktinį pavyzdinio straipsnio aptarimą, ar kaip [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] norint gauti atsitiktinį GFDL failą',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'advancedrandom' => "Antsipirihan'ny kisendra",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -266,6 +266,13 @@ $messages['sk'] = array(
 	'filepagemasking-desc' => 'Prepisuje „.xxx“ na „_xxx“ v odkazoch na popisných stránkach súborov',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'filepagemasking-desc' => 'Skriver om ".xxx" till "_xxx" i länkar till filbeskrivningssidor',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

@@ -5594,6 +5594,7 @@ $messages['ml'] = array(
 	'code-rev-message' => 'അഭിപ്രായം:',
 	'code-rev-repo' => 'റെപ്പോസിറ്ററി:',
 	'code-rev-rev' => 'നാൾപ്പതിപ്പ്:',
+	'code-rev-rev-viewvc' => 'വ്യൂ വി.സി.യിൽ',
 	'code-rev-paths' => 'മാറ്റം വരുത്തിയ പഥങ്ങൾ:',
 	'code-rev-modified-a' => 'കൂട്ടിച്ചേർത്തു',
 	'code-rev-modified-r' => 'പകരം വെച്ചു',

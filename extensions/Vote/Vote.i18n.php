@@ -862,7 +862,7 @@ $messages['ia'] = array(
 penguin|Le Pinguin
 sphinx|Sphinx',
 	'vote-submit' => 'Votar',
-	'vote-registered' => 'To voto ha essite registrate.',
+	'vote-registered' => 'Tu voto ha essite registrate.',
 	'vote-view-results' => 'Vider resultatos',
 	'vote-results' => 'Resultatos del votation',
 	'vote-results-choice' => 'Selection',

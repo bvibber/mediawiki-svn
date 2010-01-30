@@ -38,6 +38,16 @@ $messages['af'] = array(
 	'right-lastlogin' => "Wys laaste keer wat 'n gebruiker aangeteken het",
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'lastuserlogin_userid' => 'Anv implijer',
+	'lastuserlogin_username' => 'Anv gwir',
+	'lastuserlogin_useremail' => 'Postel an implijer',
+	'lastuserlogin_daysago' => 'Deiz zo',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'lastuserlogin' => 'Letzte Anmeldungen',
@@ -48,10 +58,18 @@ $messages['de'] = array(
 	'lastuserlogin_daysago' => 'Tage',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author IAlex
+ */
 $messages['fr'] = array(
+	'lastuserlogin' => 'Dernière connexion des utilisateurs',
+	'lastuserlogin-desc' => "Affiche la dernière fois qu'un utilisateur s'est connecté",
 	'lastuserlogin_userid' => 'Nom d’utilisateur',
 	'lastuserlogin_username' => 'Nom réel',
+	'lastuserlogin_useremail' => "Adresse de courriel de l'utilisateur",
+	'lastuserlogin_lastlogin' => 'Dernière connexion',
+	'lastuserlogin_daysago' => 'Jours dans le passé',
+	'right-lastlogin' => "Voir la dernière fois qu'un utilisateur s'est connecté",
 );
 
 /** Galician (Galego)
@@ -92,10 +110,26 @@ $messages['ja'] = array(
 	'lastuserlogin_daysago' => '経過日数',
 );
 
-/** Latin (Latina) */
+/** Latin (Latina)
+ * @author UV
+ */
 $messages['la'] = array(
 	'lastuserlogin_userid' => 'Nomen usoris',
-	'lastuserlogin_username' => 'Nomen tuum verum',
+	'lastuserlogin_username' => 'Nomen verum',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'lastuserlogin' => 'Lescht Alogge vu Benotzer',
+	'lastuserlogin-desc' => 'Weist déi lescht Kéier wou e Benotzer sech ageloggt hat',
+	'lastuserlogin_userid' => 'Benotzernumm',
+	'lastuserlogin_username' => 'Richtegen Numm',
+	'lastuserlogin_useremail' => 'Benotzer E-Mail',
+	'lastuserlogin_lastlogin' => 'Lescht Aloggen',
+	'lastuserlogin_daysago' => 'Deeg virdrun',
+	'right-lastlogin' => 'Déi leschte Kéier weise wou e Benotzer sech ageloggt hat',
 );
 
 /** Lithuanian (Lietuvių) */
@@ -106,6 +140,20 @@ $messages['lt'] = array(
 	'lastuserlogin_useremail' => 'Naudotojo el. paštas',
 	'lastuserlogin_lastlogin' => 'Paskutinis prisijungimas',
 	'lastuserlogin_daysago' => 'Dienų prieš',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'lastuserlogin' => 'Последна најава на корисникот',
+	'lastuserlogin-desc' => 'Го прикажува последниот пат кога се најавил корисникот',
+	'lastuserlogin_userid' => 'Корисничко име',
+	'lastuserlogin_username' => 'Вистинско име',
+	'lastuserlogin_useremail' => 'Корисничка е-пошта',
+	'lastuserlogin_lastlogin' => 'Последна најава',
+	'lastuserlogin_daysago' => 'Пред (денови)',
+	'right-lastlogin' => 'Проверка кога последен пат се најавил корисникот',
 );
 
 /** Dutch (Nederlands)
@@ -132,6 +180,21 @@ $messages['pl'] = array(
 	'lastuserlogin_daysago' => 'dni temu',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'lastuserlogin' => 'Ùltima intrada ant ël sistema.',
+	'lastuserlogin-desc' => "A visualisa l'ùltima vira che n'utent a l'é intrà ant ël sistema",
+	'lastuserlogin_userid' => 'Nòm utent',
+	'lastuserlogin_username' => 'Nòm ver',
+	'lastuserlogin_useremail' => "Adrëssa ëd pòsta eletrònica dl'utent",
+	'lastuserlogin_lastlogin' => 'Ùltima intrada ant ël sistema',
+	'lastuserlogin_daysago' => 'Di fa',
+	'right-lastlogin' => "Vëdde l'ùltima vira che n'utent a l'é intrà ant ël sistema",
+);
+
 /** Russian (Русский) */
 $messages['ru'] = array(
 	'lastuserlogin' => 'Недавние посещения пользователей',
@@ -140,5 +203,19 @@ $messages['ru'] = array(
 	'lastuserlogin_useremail' => 'Электронная почта',
 	'lastuserlogin_lastlogin' => 'Недавнее посещение',
 	'lastuserlogin_daysago' => 'Дней назад',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'lastuserlogin' => 'వాడుకరి చివరి ప్రవేశం',
+	'lastuserlogin-desc' => 'ఒక వాడుకరి చివరిసారి ప్రవేశించిన సమయాన్ని చూపిస్తుంది',
+	'lastuserlogin_userid' => 'వాడుకరిపేరు',
+	'lastuserlogin_username' => 'అసలు పేరు',
+	'lastuserlogin_useremail' => 'వాడుకరి ఈమెయిలు',
+	'lastuserlogin_lastlogin' => 'చివరి ప్రవేశం',
+	'lastuserlogin_daysago' => 'రోజుల క్రితం',
+	'right-lastlogin' => 'వాడుకర్లు చివరిసారి ప్రవేశించిన సమయాన్ని చూడగలగడం',
 );
 

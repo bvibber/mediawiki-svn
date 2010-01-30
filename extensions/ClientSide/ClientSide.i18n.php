@@ -216,6 +216,13 @@ $messages['ksh'] = array(
 	'clientside-desc' => 'Jitt uns Fungxjohne för Kood udder Daate en Fomaate for der Aanwender ze maache, zem Beijshpell als <i lang="en">HTML</i>, <i lang="en">CSS</i>, un JavaSkrepp.',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'clientside-desc' => "Manome asa mamorona kaody anatin'ny karazan-drakitra clien hoatry ny HTML, ny CSS sy JavaScript",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

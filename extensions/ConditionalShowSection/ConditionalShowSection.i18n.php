@@ -274,6 +274,13 @@ $messages['sr-el'] = array(
 	'conditionalshowsection-desc' => 'Dodaje cshow tag za uslovno prikazivanje i skrivanje odeljaka viki-teksta.',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'conditionalshowsection-desc' => 'Lägger till cschow-taggen att villkorat visa/dölja en sektion med wikitext',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

@@ -416,6 +416,13 @@ $messages['ksh'] = array(
 	'abcdownload' => 'Eronger lahde:',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'abcdownload' => 'Daxistin:',
+);
+
 /** Cornish (Kernowek)
  * @author Kernoweger
  * @author Kw-Moon
