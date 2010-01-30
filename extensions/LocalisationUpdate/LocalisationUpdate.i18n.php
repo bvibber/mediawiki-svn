@@ -125,7 +125,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
-	'localisationupdate-desc' => 'Mantener los mensajes localizados tan actualizados como sean posibles',
+	'localisationupdate-desc' => 'Mantiene los mensajes localizados tan actualizados como sea posible',
 );
 
 /** Estonian (Eesti)
