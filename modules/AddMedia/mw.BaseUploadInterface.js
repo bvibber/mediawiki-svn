@@ -179,7 +179,6 @@ mw.BaseUploadInterface.prototype = {
 
 			// FIXME: move this to configuration and avoid this API request
 			mw.getJSON( _this.api_url, { 'action' : 'paraminfo', 'modules' : 'upload' }, function( data ) {
-					debugger; 
 					if ( typeof data.paraminfo == 'undefined'
 						|| typeof data.paraminfo.modules == 'undefined' )
 					{
@@ -250,7 +249,11 @@ mw.BaseUploadInterface.prototype = {
 		var $form = $j( this.form_selector );		
 
 		// Set the form action
-		$form.attr('action', _this.api_url);
+		try{
+			$form.attr('action', _this.api_url);
+		}catch(e){
+			mw.log("IE for some reason error's out when you change the action")
+		}
 
 		// Add API action
 		if ( $form.find( "[name='action']" ).length == 0 ){
@@ -304,32 +307,35 @@ mw.BaseUploadInterface.prototype = {
 		$j( '#upProgressDialog' ).html(		
 			mw.loading_spinner()
 		);		
-		
+
 		// Add the iframe
 		_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
-		$j( "body" ).append( '<iframe src="javascript:false;" id="' + _this.iframeId + '" ' +
-			'name="' + _this.iframeId + '" style="display:none;" ></iframe>' );
+		$j( "body" ).append( 
+			$j('<iframe />')
+			.attr({
+				'src':'javascript:false;',
+				'id':_this.iframeId,
+				'name':  _this.iframeId
+			}) 
+			.css('display', 'none')
+		);
+
 
 		// Set the form target to the iframe
 		$form.attr( 'target', _this.iframeId );
+		
 
 		// Set up the completion callback
 		$j( '#' + _this.iframeId ).load( function() {
 			_this.processIframeResult( $j( this ).get( 0 ) );
-		});
-
-		// Set the action to the API URL:
-		$form.attr( 'action', _this.api_url );
-
-		mw.log( 'Do iframe form submit of: ' +  $form.attr( 'target' )  + ' to: ' + $form.attr('action') );
-		mw.log( ' destName:' + $form.find( "[name='filename']" ).val() );
-		mw.log( ' content:' + $form.find( "[name='comment']" ).val() );
-
+		});			
+		
 		// Do post override
 		_this.form_post_override = true;
 				
 		// Reset the done with action flag
 		_this.action_done = false;	
+		mw.log("about to submit form:");
 		$form.submit();
 	},
 
@@ -978,17 +984,26 @@ mw.BaseUploadInterface.prototype = {
 		// Add the wpDestFile-warning row
 		if ( $j( '#wpDestFile-warning' ).length == 0 ) {
 			$j( '#mw-htmlform-options tr:last' )
-				.after( '<tr><td></td><td id="wpDestFile-warning"></td></tr>' );
+				.after( 
+				$j('<tr />' )
+				.append( '<td />' )
+				.append( '<td />' )
+					.attr('id', 'wpDestFile-warning')
+				);
 		}
-
+		mw.log( 'past dest');
 		// Remove any existing warning
 		$j( opt.warn_target ).empty();
-
+		mw.log( 'past remove warn:: ' +  _this.selector);
 		// Show the AJAX spinner
-		$j( _this.selector )
-			.append( '<img id="mw-spinner-wpDestFile" ' +
-				'src ="' + stylepath + '/common/images/spinner.gif" />' );
-				
+		$j( _this.selector ).after( 
+			$j('<img />')
+			.attr({
+				'id' : "mw-spinner-wpDestFile",
+				'src' : stylepath + '/common/images/spinner.gif' 
+			})
+		);		
+		mw.log("added spiner");	
 		var request =  {			
 			'titles': 'File:' + $j( _this.selector ).val(),
 			'prop':  'imageinfo',
