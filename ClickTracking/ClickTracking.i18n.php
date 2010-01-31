@@ -539,6 +539,7 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
 	'ct-event-name' => 'Ekintzaren izena',
@@ -553,6 +554,7 @@ $messages['eu'] = array(
 	'ct-intermediate' => 'Maila ertainekoa',
 	'ct-expert' => 'Aditua',
 	'ct-anon-users' => 'Lankide anonimoak',
+	'ct-user-contribs' => 'Lankidearen ekarpen guztiak',
 	'ct-and' => 'eta',
 	'ct-update-table' => 'Taula eguneratu',
 );
