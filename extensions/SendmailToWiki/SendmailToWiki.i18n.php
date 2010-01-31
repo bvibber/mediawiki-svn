@@ -373,7 +373,9 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'sendmailtowiki-desc' => 'Wki-Inhalt mat der zougewisener dynamescher E-Mailadress schécken',
 	'prefs-sendmailtowiki' => 'Den Inhalt per E-Mail verschécken',
+	'sendmailtowiki-inemail' => 'Zougewisen E-Mailadress:',
 	'sendmailtowiki-inpin' => 'PIN:',
 	'sendmailtowiki-err-pinlength' => 'De PIN muss genee 5 Zifferen hunn.',
 	'sendmailtowiki-err-invalidaccount' => "Net valabele Kont. Kuckt w.e.g. d'E-Mailadress no op déi Dir Äre Mail schécke wëllt.",

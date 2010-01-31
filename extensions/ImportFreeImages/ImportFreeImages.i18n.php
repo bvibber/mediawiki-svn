@@ -404,17 +404,15 @@ $messages['fi'] = array(
 	'importfreeimages' => 'Tuo vapaita kuvia',
 	'importfreeimages-desc' => 'Mahdollistaa [[Special:ImportFreeImages|sopivasti lisensoitujen valokuvien tuonnin]] [http://www.flickr.com Flickristä].',
 	'importfreeimages_description' => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia Flickrista ja tuomaan niitä wikiisi.',
-	'importfreeimages_noapikey' => 'Et ole asettanut Flickr API -avaintasi.
-Tehdäksesi niin, hanki API-avain [http://www.flickr.com/services/api/misc.api_keys.html täältä] ja aseta $wgFlickrAPIKey  ImportFreeImages.php-tiedostossa.',
 	'importfreeimages_nophotosfound' => "Mikään kuva ei täsmää hakukriteeriisi '$1'. Yritä uudelleen.",
-	'importfreeimages_invalidurl' => 'URL "$1" ei ole kelvollinen Flickr-kuva.',
 	'importfreeimages_owner' => 'Tekijä',
 	'importfreeimages_importthis' => 'tuo tämä',
 	'importfreeimages_next' => 'Seuraavat $1',
-	'importfreeimages_filefromflickr' => '$1 käyttäjän <b>[$2]</b> toimesta Flickristä. Alkuperäinen URL',
-	'importfreeimages_promptuserforfilename' => 'Ole hyvä ja anna kohdenimi:',
-	'importfreeimages_returntoform' => "Tai napsauta <a href='$1'>tästä</a> palataksesi hakusi tuloksiin",
-	'importfreeimages_nophpflickr' => 'Et ole asentanut phpFlickriä. Aseta muuttujalle $wgIFphpFlickr arvo tiedostossa LocalSettings.php.',
+	'importfreeimages_size_thumbnail' => 'Pienoiskuva',
+	'importfreeimages_size_small' => 'Pieni',
+	'importfreeimages_size_medium' => 'Keskikokoinen',
+	'importfreeimages_size_large' => 'Suuri',
+	'importfreeimages_size_original' => 'Alkuperäinen',
 );
 
 /** French (Français)

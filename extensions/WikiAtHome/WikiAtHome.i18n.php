@@ -485,6 +485,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author ZaDiak
+ * @author Περίεργος
  */
 $messages['el'] = array(
 	'wah-short-audio' => '$1 αρχείο ήχου, $2',
@@ -499,6 +500,7 @@ $messages['el'] = array(
 	'wah-menu-stats' => 'Στατιστικά',
 	'wah-menu-pref' => 'Προτιμήσεις',
 	'wah-lookingforjob' => 'Αναζήτηση νέας εργασίας ...',
+	'wah-downloading' => 'Η μεταφόρτωση του αρχείου <i>$1</i> ολοκληρώθηκε',
 	'wah-uploadfail' => 'Η φόρτωση απέτυχε',
 );
 

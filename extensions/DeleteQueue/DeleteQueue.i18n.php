@@ -4638,6 +4638,16 @@ $messages['pl'] = array(
 	'deletequeue-case-expiry' => 'Wygaśnięcie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'deletequeue-desc' => 'A crea un [[Special:DeleteQueue|sistem basà su coa për gestì scanselament]]',
+	'deletequeue-action-queued' => 'Scanselament',
+	'deletequeue-action' => 'Sugeriss scanselament',
+	'deletequeue-action-title' => 'Sugeriss scanselament ëd "$1"',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

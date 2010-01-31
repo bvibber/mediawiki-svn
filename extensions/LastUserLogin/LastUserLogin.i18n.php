@@ -58,6 +58,23 @@ $messages['de'] = array(
 	'lastuserlogin_daysago' => 'Tage',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'lastuserlogin_userid' => 'Lankide izena',
+	'lastuserlogin_username' => 'Benetako izena',
+	'lastuserlogin_useremail' => 'Lankide eposta',
+	'lastuserlogin_lastlogin' => 'Azken Saio-hasiera',
+);
+
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'lastuserlogin_username' => 'Oikea nimi',
+);
+
 /** French (Français)
  * @author IAlex
  */

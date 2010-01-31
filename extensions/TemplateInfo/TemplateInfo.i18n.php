@@ -83,6 +83,14 @@ $messages['dsb'] = array(
 	'templateinfo-header' => 'XML-definicija za toś tu pśedłogu jo:',
 );
 
+/** Greek (Ελληνικά)
+ * @author Περίεργος
+ */
+$messages['el'] = array(
+	'templateinfo-desc' => 'Υποστηρίζει πρότυπα που καθορίζουν τη δομή των δεδομένων τους μέσω της σήμανσης XML',
+	'templateinfo-header' => 'Ο προσδιορισμός XML για αυτό το πρότυπο είναι:',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */
