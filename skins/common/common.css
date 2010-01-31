@@ -95,8 +95,9 @@ div.floatleft, table.floatleft {
 	z-index:3;
 }
 #rsd_filters_container {
-	float:left;
-	width:150px;
+	float: left;
+	width: 150px;
+	overflow: auto;
 }
 
 .ui-filter-title {
@@ -193,6 +194,10 @@ div.floatleft, table.floatleft {
 }
 .rsd_result_enumeration {
 	margin: 0 1em;
+}
+.rsd_results_body {
+	height: 100%;
+	width: 100%;
 }
 #rsd_results_header {
 	margin: 4px;
