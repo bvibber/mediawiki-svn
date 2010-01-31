@@ -22,6 +22,8 @@ $wgAutoloadClasses['SacredTextLookup'] = $dir . 'SacredText.lookup.php';
 
 // the following are the parameters that can be set in LocalSettings.php
 $wgSacredUseBibleTag = true;
+
+// There needs to be a database table to hold this information, in order to make it more manageable.
 $wgSacredChapterAlias = array();
 $wgSacredChapterAlias["Christian Bible"] = array();
 $wgSacredChapterAlias["Christian Bible"]["1Chronicles"]="1 Chronicles";
@@ -113,7 +115,8 @@ $wgSacredChapterAlias["Christian Bible"]["Zep"]="Zephaniah";
 
 $wgHooks['ParserFirstCallInit'][] = 'efSacredTextParserInit';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'updateSacredTextDB';
- 
+
+// Create the hooks for quoting sacred texts 
 function efSacredTextParserInit( &$parser ) {
 	global $wgSacredUseBibleTag;
 	$parser->setHook( 'sacredtext', array('SacredTextLookup','hookSacredText') );
@@ -125,11 +128,28 @@ function efSacredTextParserInit( &$parser ) {
 
 function updateSacredTextDB() {
 	global $wgExtNewTables;
+
+	// create the database structure
 	$wgExtNewTables[] = array(
 		'sacredtext_verses',
 		dirname( __FILE__ ) . '/SacredText.verses.sql' );
-	$wgExtNewTables[] = array(
-		'sacredtext_verses_kjv_entire',
-		dirname( __FILE__ ) . '/data/bible_kjv_entire.sql' );
+
+	// the code below checks if there are any SQL scripts for adding
+	//  the content of religious scripts to the database
+	$dir = dirname( __FILE__ ) . '/data/';
+
+    $h = opendir( $dir );
+    while( $file = readdir( $h ) )
+    {
+        if( strcmp($file,'.')==0 || strcmp($file,'..')==0 ) continue; 
+        if(!is_file($dir.$file)) continue;
+        if(!preg_match('/^(.*)\.sql$/', $file, $matches)) continue;  
+
+        $wgExtNewTables[] = array(
+            $matches[1],
+            $dir.$file);
+    }
+    closedir( $h );
+
 	return true;
 }
