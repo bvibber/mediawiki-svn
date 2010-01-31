@@ -1230,16 +1230,48 @@ mw.RemoteSearchDriver.prototype = {
 		}
 	},
 	
+	/**
+	 * Callback for performing a search, given to providers for provider-activated
+	 * searches e.g. filter state changes. This is probably also the future way to 
+	 * implement "pushing" results.
+	 * 
+	 * The returned callback accepts two arguements. 
+	 * 
+	 * The first, mandatory, is the
+	 * provider object. This should be curried with the current provider object 
+	 * before handing over. (i.e. this.curry(this.getProviderCallback(), provider).
+	 * 
+	 * The second, optional, is the current results list to be replaced by a spinner.
+	 */
 	getProviderCallback: function() {
 		
 		var _this = this;
-		return function ( provider ) {
+
+		return function ( provider, $location ) {
 			
 			var d = new Date();
 			var searchTime = d.getMilliseconds();
 	
+			// If we are given a result location, we hide them.
+			if ($location) {
+				$location.html( mw.loading_spinner("float: left") );
+			}
+			
+			var d = new Date();
+			var context = _this.storeContext( d.getTime() );
+			_this.currentRequest = context();
+			mw.log( "ProviderCallBack Generated " + context() )
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , 
 					function( resultStatus ) {
+						
+						mw.log( "ProviderCallBack Received  " + context() );
+						if( _this.currentRequest != context() ) {
+					        // do not update the results this.currentRequest 
+							// does not match the interface request state.
+					        return false;
+					    }
+					    
+						//else update search results		
 						_this.showResults();
 					});
 			
@@ -1247,6 +1279,22 @@ mw.RemoteSearchDriver.prototype = {
 			setTimeout( function() {
 			}, 20 * 1000 );
 		};
+	},
+	
+	/**
+	 * Persists an object via closure to enable later context checking.
+	 * This can be used e.g. when sending multiple getJSON requests and
+	 * wanting to act only on the last request sent.
+	 * 
+	 * @param {Object} Object to store in context.
+	 * 
+	 * @return {function} A callback to retrieve the context.
+	 */
+	storeContext: function( contextObject ) {
+		var context = contextObject;
+		return function() { 
+			return context;
+		}
 	},
 	
 	/**
@@ -1327,7 +1375,21 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		var o = '';
 		var provider = this.content_providers[ this.current_provider ];
-			
+		
+		// Result page structure:
+		//
+		// resultContainer
+		//   header
+		//   resultBody
+		//     filter form
+		//       filters...
+		//     resultList
+		//       results...
+		//   footer
+		
+		var $resultsContainer;
+		var $resultsBody = $j( '<div />' ).addClass( 'rsd_results_body' );
+		var $resultsList = $j( '<div />' ).addClass( 'rsd_results_list' );
 		
 		// The "upload" tab has special results output target rather than top level
 		// resutls container.
@@ -1344,15 +1406,12 @@ mw.RemoteSearchDriver.prototype = {
 			// Enable search filters, if the provider supports them.
 			if ( provider.sObj.filters && !(provider.disable_filters) ) {
 				provider.sObj.filters.filterChangeCallBack = 
-					this.curry( this.getProviderCallback(), provider );
-				$resultsContainer.append( provider.sObj.filters.getHTML().attr ({
+					this.curry( this.getProviderCallback(), provider, $resultsList );
+				$resultsBody.append( provider.sObj.filters.getHTML().attr ({
 					id: 'rsd_filters_container'
 				}));
 			}
 		}
-		
-		// Empty the existing results:
-		// $j( tabSelector ).empty();
 		
 		var numResults = 0;
 
@@ -1363,8 +1422,12 @@ mw.RemoteSearchDriver.prototype = {
 				numResults++;
 			} );
 			// Put in the tab output (plus clear the output)
-			$resultsContainer.append( o + '<div style="clear:both"/>' );
+			$resultsList.append( o + '<div style="clear: both" />' );
 		}
+		
+		$resultsBody.append( $resultsList );
+		$resultsContainer.append( $resultsBody );
+		
 		// @@TODO should abstract footer and header ~outside~ of search results 
 		// to have less leakgege with upload tab
 		if ( this.current_provider != 'upload' ) {
