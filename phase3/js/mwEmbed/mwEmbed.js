@@ -1459,14 +1459,14 @@ var mwDefaultConf = {
 	*	true if the request requires a proxy
 	* 	false if the request does not
 	*/		
-	mw.checkRequestPost = function ( data ){
+	mw.checkRequestPost = function ( data ){		
 		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
 			return true;
 		}
 		if( data['prop'] == 'info' && data['intoken'] ){
 			return true;			
 		}
-		if( data['meta'] = 'userinfo' ){
+		if( data['meta'] == 'userinfo' ){
 			return true;
 		}
 		return false;
