@@ -105,7 +105,7 @@ kalturaFilters.prototype = {
 				.click( function() {
 					$j('input[type=checkbox]', $filtersContainer).attr('checked',true);
 					// TODO: avoid code duplication (with individual click event).
-					
+
 					_this.resetFilters();
 					// Request a paging reset
 					_this.resetRequired = true;
@@ -215,8 +215,8 @@ kalturaSearch.prototype = {
 		};
 		
 		// Add optional parameters
-		media = this.filters.getFilterValues( 'media', false );
-		providers = this.filters.getFilterValues( 'providers', true );
+		var media = this.filters.getFilterValues( 'media', false );
+		var providers = this.filters.getFilterValues( 'providers', true );
 		
 		if ( media.length > 0 ) {
 			request[ 'media' ] = media.join( ',' );
