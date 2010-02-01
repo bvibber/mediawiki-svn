@@ -165,6 +165,8 @@ fn: {
 		context.modules.highlight.markersStr = markersStr;
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
+		// Store visited markers here so we know which markers should be removed
+		var visited = [];
 		for ( var i = 0; i < markers.length; i++ ) {
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
@@ -291,23 +293,32 @@ fn: {
 					}
 					
 					$( newNode ).data( 'marker', markers[i] )
-						.addClass( 'wikiEditor-highlight wikiEditor-highlight-tmp' );
+						.addClass( 'wikiEditor-highlight' );
+					visited[i] = newNode;
 					
 					// Allow the module adding this marker to manipulate it
 					markers[i].afterWrap( newNode, markers[i] );
 				} else {
-					// Temporarily add a class for bookkeeping purposes
-					$( anchor )
-						.addClass( 'wikiEditor-highlight-tmp' )
-						.data( 'marker', markers[i] );
+					visited[i] = anchor;
+					// Update the marker object
+					$( anchor ).data( 'marker', markers[i] );
 					markers[i].onSkip( anchor );
 				}
 			}
 		}
 		
 		// Remove markers that were previously inserted but weren't passed to this function
-		// TODO: Find a better way to do this that involves less DOM manipulation
-		context.$content.find( 'div.wikiEditor-highlight:not(.wikiEditor-highlight-tmp)' ).each( function() {
+		// This function works because visited[] contains the visited elements in order and find() and each()
+		// preserve order
+		var j = 0;
+		context.$content.find( 'div.wikiEditor-highlight' ).each( function() {
+			if ( visited[j] == this ) {
+				// This marker is legit, leave it in
+				j++;
+				return true;
+			}
+			
+			// Remove this marker
 			if ( $(this).data( 'marker' ) && typeof $(this).data( 'marker' ).unwrap == 'function' )
 				$(this).data( 'marker' ).unwrap( this );
 			if ( $(this).children().size() > 0 ) {
@@ -316,8 +327,6 @@ fn: {
 				$(this).replaceWith( $(this).html() );
 			}
 		});
-		// Remove temporary class
-		context.$content.find( 'div.wikiEditor-highlight-tmp' ).removeClass( 'wikiEditor-highlight-tmp' );
 	}
 }
 
