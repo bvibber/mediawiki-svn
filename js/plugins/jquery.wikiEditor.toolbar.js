@@ -109,7 +109,7 @@ api : {
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
 								.click( function() {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
-									$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
+										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
 									return false;
 								} )
 						);
@@ -205,7 +205,7 @@ fn: {
 	doAction : function( context, action, source ) {
 		// Verify that this has been called from a source that's within the toolbar
 		// 'trackAction' defined in click tracking
-		if ($.trackAction != undefined && source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
+		if ( $.trackAction != undefined && source.closest( '.wikiEditor-ui-toolbar' ).size() ) {
 			// Build a unique id for this action by tracking the parent rel attributes up to the toolbar level
 			var rels = [];
 			var step = source;
@@ -223,7 +223,7 @@ fn: {
 			}
 			rels.reverse();
 			var id = rels.join( '.' );
-			$.trackAction(id);
+			$.trackAction( id );
 		}
 		switch ( action.type ) {
 			case 'replace':
@@ -249,6 +249,7 @@ fn: {
 					'encapsulateSelection',
 					$.extend( {}, action.options, parts, { 'replace': action.type == 'replace' } )
 				);
+				context.$iframe[0].contentWindow.focus();
 				break;
 			case 'callback':
 				if ( typeof action.execute == 'function' ) {
