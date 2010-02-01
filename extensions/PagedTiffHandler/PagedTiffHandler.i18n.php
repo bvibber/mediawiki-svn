@@ -246,6 +246,16 @@ ImageMagick is niet beschikbaar.',
 	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixels, bestandsgrootte: $3, MIME-type: $4)',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'tiff_too_much_meta' => 'Metadata bruker for mye plass.',
+	'tiff_size_error' => 'Den rapporterte filstørrelsen samsvarer ikke med den faktiske filstørrelsen.',
+	'tiff_script_detected' => 'Den opplastede filen inneholder skript.',
+	'tiff_bad_file' => 'Den opplastede filen inneholder feil.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

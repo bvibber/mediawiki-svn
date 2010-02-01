@@ -1394,6 +1394,7 @@ $messages['lb'] = array(
 	'qp_export_to_xls' => "Exportéiert d'Statistiken am XLS-Format",
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|Benotzer huet|Benotzer hun}} op d'Froe geäntwert",
 	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
+	'qp_func_missing_question_id' => "Gitt w.e.g. d'Id vun enger Fro un déi et gëtt (ugefaang mat 1) fir d'Ëmfro $1",
 	'qp_error_no_stats' => 'Et gëtt keng statistesch Donnéeën, well bis elo (Adress=$1) kee fir dës Ëmfro gestëmmt huet.',
 	'qp_error_question_not_implemented' => 'Froe vun esou engem Typ sinn net implementéiert: $1',
 	'qp_error_invalid_question_type' => 'Net-valabelen Typ vu Fro: $1',

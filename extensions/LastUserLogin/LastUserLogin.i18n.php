@@ -38,6 +38,21 @@ $messages['af'] = array(
 	'right-lastlogin' => "Wys laaste keer wat 'n gebruiker aangeteken het",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'lastuserlogin' => 'Апошні ўваход удзельніка ў сыстэму',
+	'lastuserlogin-desc' => 'Паказвае час апошняга ўваходу ўдзельніка ў сыстэму',
+	'lastuserlogin_userid' => 'Імя ўдзельніка',
+	'lastuserlogin_username' => 'Сапраўднае імя',
+	'lastuserlogin_useremail' => 'Электронная пошта ўдзельніка',
+	'lastuserlogin_lastlogin' => 'Апошні ўваход у сыстэму',
+	'lastuserlogin_daysago' => 'Дзён таму',
+	'right-lastlogin' => 'прагляд часу апошняга ўваходу ўдзельніка ў сыстэму',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -185,6 +200,20 @@ $messages['nl'] = array(
 	'lastuserlogin_lastlogin' => 'Laatste aanmelding',
 	'lastuserlogin_daysago' => 'Aantal dagen geleden',
 	'right-lastlogin' => 'Bekijken wanneer een gebruiker voor de laatste keer heeft aangemeld',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'lastuserlogin' => 'Siste brukerinnlogging',
+	'lastuserlogin-desc' => 'Viser den siste gangen en bruker logget inn',
+	'lastuserlogin_userid' => 'Brukernavn',
+	'lastuserlogin_username' => 'Virkelig navn',
+	'lastuserlogin_useremail' => 'Bruker-e-post',
+	'lastuserlogin_lastlogin' => 'Siste innlogging',
+	'lastuserlogin_daysago' => 'Dager siden',
+	'right-lastlogin' => 'Se den siste gangen en bruker logget inn',
 );
 
 /** Polish (Polski) */

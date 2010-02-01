@@ -4639,13 +4639,18 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'deletequeue-desc' => 'A crea un [[Special:DeleteQueue|sistem basà su coa për gestì scanselament]]',
-	'deletequeue-action-queued' => 'Scanselament',
-	'deletequeue-action' => 'Sugeriss scanselament',
-	'deletequeue-action-title' => 'Sugeriss scanselament ëd "$1"',
+	'deletequeue-desc' => 'A crea un [[Special:DeleteQueue|sistema ëd coe për gestì jë scancelament]]',
+	'deletequeue-action-queued' => 'Scancelassion',
+	'deletequeue-action' => 'Sugerì la scancelassion',
+	'deletequeue-action-title' => 'Sugerì la scancelassion ëd "$1"',
+	'deletequeue-action-text' => "Sta wiki-sì a l'ha un sert nùmer ëd process për scanselé pàgine:
+*S'it chërde che sta pàgina-sì aj garantissa, it peule [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} sugerila për ''scanselassion lesta''].
+*Se sta pàgina-sì a garantiss pa na scanselassion lesta, ma la ''scanselassion a sarà pa discutìbil'', it dovrìe [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propon-e scanselassion pa discutibla].
+*Se la scanselassion dë sta pàgina-sì a l'é ''bel fé ch'a sia contestà'', it dovrìe [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} deurbe na discussion].",
 );
 
 /** Pashto (پښتو)
