@@ -44,8 +44,8 @@ class CodeRevisionAuthorView extends CodeRevisionListView {
 		parent::execute();
 	}
 	
-	function getSpecializedWhereClause($dbr) {
-		return ' AND cr_author = ' . $dbr->addQuotes($this->mAuthor);
+	function getSpecializedWhereClause( $dbr ) {
+		return ' AND cr_author = ' . $dbr->addQuotes( $this->mAuthor );
 	}
 
 }

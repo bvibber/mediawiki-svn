@@ -28,16 +28,15 @@ class CodeRevisionListView extends CodeView {
 			$this->doBatchChange();
 			return;
 		}
-		
+
 		$this->showForm();
 		
 		//get the total count across all pages
-		$dbr =& wfGetDB(DB_SLAVE);
-		$revCountRes = $this->getRevCountQuery($dbr);
+		$dbr =& wfGetDB( DB_SLAVE );
+		$revCountRes = $this->getRevCountQuery( $dbr );
 		$revCount = 0;		 
-		if ($dbr->numRows($revCountRes) > 0){
-			$row = $dbr->fetchObject($revCountRes);			
-			$revCount = $row->rev_count;
+		if ( $revCountRes !== false ) {		
+			$revCount = $revCountRes->rev_count;
 		}
 		
 		$pager = $this->getPager();
@@ -51,7 +50,7 @@ class CodeRevisionListView extends CodeView {
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() .
 			'</td><td style="padding-left: 2em;">' . 
-			'&nbsp;Total number of results: <span style="font-weight: bold;">' . $revCount . '</span>' . 
+			'&nbsp;' . wfMsgHtml( 'code-rev-total' ) . '<span style="font-weight: bold;">' . $revCount . '</span>' . 
 			'</td></tr></table>' .  
 			Xml::openElement( 'form',
 				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
@@ -161,29 +160,28 @@ class CodeRevisionListView extends CodeView {
 		return new SvnRevTablePager( $this );
 	}
 	
-	function getRevCountQuery($dbr) {
-		$sql = 'SELECT COUNT(cr_id) AS rev_count' . 
-				' FROM '  . $dbr->tableName('code_rev') . ' ';
+	function getRevCountQuery( $dbr ) {
+		$tables = array(  $dbr->tableName( 'code_rev' ) );
+		$selectFields = array( 'COUNT( cr_id ) AS rev_count' );
 		// count if code_rev where path matches
 		if ( $this->mPath ) {
-			$sql .= ' WHERE cr_id in' .
-						' (SELECT cp_rev_id from code_paths' .
-						' WHERE' .
+			$whereCond = 'cr_id IN' .
+						' ( SELECT cp_rev_id FROM '. $dbr->tableName( 'code_paths' ) . ' WHERE' .
 						' cp_repo_id = ' . $this->mRepo->getId(). ' AND' .
-						' cp_path LIKE ' . $dbr->addQuotes( $this->mPath . '%') . ' AND' .
+						' cp_path LIKE ' . $dbr->addQuotes( $this->mPath . '%' ) . ' AND' .
 						// performance
-						' cp_rev_id > ' . ($this->mRepo->getLastStoredRev() - 20000) . 
-						$this->getSpecializedWhereClause($dbr) .
-						')';
+						' cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 ) . 
+						$this->getSpecializedWhereClause( $dbr ) .
+						' )';
 		// No path; count of code_rev
 		} else {
-			$sql .= ' WHERE cr_repo_id = ' . $this->mRepo->getId() .
-					$this->getSpecializedWhereClause($dbr);
+			$whereCond = 'cr_repo_id = ' . $this->mRepo->getId() .
+					$this->getSpecializedWhereClause( $dbr );
 		}
-		return $dbr->query($sql);
+		return $dbr->selectRow ($tables, $selectFields, $whereCond);
 	}
 	
-	function getSpecializedWhereClause($dbr) {
+	function getSpecializedWhereClause( $dbr ) {
 		return '';
 	}
 	

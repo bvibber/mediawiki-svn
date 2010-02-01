@@ -77,6 +77,7 @@ $messages['en'] = array(
 	'code-rev-diff-link' => 'diff',
 	'code-rev-diff-too-large' => 'The diff is too large to display.',
 	'code-rev-purge-link' => 'purge',
+	'code-rev-total' => 'Total number of results: ',
 	'code-status-new' => 'new',
 	'code-status-fixme' => 'fixme',
 	'code-status-reverted' => 'reverted',
