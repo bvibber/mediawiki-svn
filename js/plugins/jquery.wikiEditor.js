@@ -199,7 +199,13 @@ if ( typeof context == 'undefined' ) {
 		// Unique numeric ID of this instance used both for looking up and differentiating instances of wikiEditor
 		'instance': $.wikiEditor.instances.push( $(this) ) - 1,
 		// Array mapping elements in the textarea to character offsets
-		'offsets': null
+		'offsets': null,
+		// Cache for context.fn.htmlToText()
+		'htmlToTextMap': {},
+		// The previous HTML of the iframe, stored to detect whether something really changed.
+		'oldHTML': null,
+		// Same for delayedChange()
+		'oldDelayedHTML': null
 	};
 	
 	/*
@@ -262,12 +268,23 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'change': function( event ) {
 			event.data.scope = 'division';
-			context.fn.purgeOffsets();
+			var newHTML = context.$content.html();
+			if ( context.oldHTML != newHTML ) {
+				context.fn.purgeOffsets();
+				context.oldHTML = newHTML;
+				event.data.scope = 'realchange';
+			}
 			return true;
 		},
 		'delayedChange': function( event ) {
-			// Redirect - since we want the same functionality
-			return context.evt.change( event );
+			event.data.scope = 'division';
+			var newHTML = context.$content.html();
+			if ( context.oldDelayedHTML != newHTML ) {
+				context.fn.purgeOffsets();
+				context.oldDelayedHTML = newHTML;
+				event.data.scope = 'realchange';
+			}
+			return true;
 		}
 	};
 	
@@ -360,14 +377,19 @@ if ( typeof context == 'undefined' ) {
 				.appendTo( context.$ui );
 		},
 		'htmlToText': function( html ) {
+			// This function is slow for large inputs, so aggressively cache input/output pairs
+			if ( html in context.htmlToTextMap ) {
+				return context.htmlToTextMap[html];
+			}
+			var origHTML = html;
+			
 			// We use this elaborate trickery for cross-browser compatibility
 			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
-			// We also do the easy cases for <p> and <br> conversion here, complicated cases are handled
-			// later
+			// We also do <br> and easy cases for <p> conversion here, complicated cases are handled later
 			html = html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					.replace( /\<br[^\>]*\>/gi, "\n" ) // Easy case for <br> conversion
+					.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
 					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
 					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" );
 			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
@@ -376,12 +398,11 @@ if ( typeof context == 'undefined' ) {
 			var trailing = html.match( /\s*$/ )[0];
 			html = html.substr( leading.length, html.length - leading.length - trailing.length );
 			var $pre = $( '<pre>' + html + '</pre>' );
-			// TODO: Optimize this, maybe by converting <br>->\n when not at the beginning or end
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
 			// Convert tabs, <p>s and <br>s back
 			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
 			$pre.find( 'br' ).each( function() { $( this ).replaceWith( "\n" ); } );
-			// Converting <p>s is wrong if there's nothing before them, so check that
+			// Converting <p>s is wrong if there's nothing before them, so check that.
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
 				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
@@ -420,7 +441,7 @@ if ( typeof context == 'undefined' ) {
 			} else {
 				retval = $pre.text();
 			}
-			return leading + retval + trailing;
+			return context.htmlToTextMap[origHTML] = leading + retval + trailing;
 		},
 		
 		/*
@@ -699,14 +720,14 @@ if ( typeof context == 'undefined' ) {
 		 */
 		
 		/**
-		 * Get the first element before the selection matching a certain selector.
-		 * @param selector Selector to match. Defaults to '*'
+		 * Get the first element before the selection that's in a certain class
+		 * @param class Class to match. Defaults to '', meaning any class
 		 * @param strict If true, the element the selection starts in cannot match (default: false)
 		 * @return jQuery object
 		 */
-		'beforeSelection': function( selector, strict ) {
-			if ( typeof selector == 'undefined' ) {
-				selector = '*';
+		'beforeSelection': function( class, strict ) {
+			if ( typeof class == 'undefined' ) {
+				class = '';
 			}
 			var e, offset;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
@@ -757,18 +778,12 @@ if ( typeof context == 'undefined' ) {
 				e = newE || e;
 			}
 			
-			// We'd normally use if( $( e ).is( selector ) in the while loop, but running the jQuery
+			// We'd normally use if( $( e ).hasClass( class ) in the while loop, but running the jQuery
 			// constructor thousands of times is very inefficient
-			// Instead, tag all occurrences of selector
-			if ( selector != '*' ) {
-				var occurrences = context.$content.find( selector );
-				occurrences.addClass( 'wikiEditor-beforeSelection-tagged' );
-			}
-			var retval = null;
-			while ( e && !retval ) {
-				if ( !strict && ( selector == '*' || ( ' ' + e.className + ' ' )
-						.indexOf( ' wikiEditor-beforeSelection-tagged ' ) != -1 ) ) {
-					retval = $( e );
+			var classStr = ' ' + class + ' ';
+			while ( e ) {
+				if ( !strict && ( !class || ( ' ' + e.className + ' ' ).indexOf( classStr ) != -1 ) ) {
+					return $( e );
 				}
 				var next = e.previousSibling;
 				while ( next && next.lastChild ) {
@@ -777,9 +792,7 @@ if ( typeof context == 'undefined' ) {
 				e = next || e.parentNode;
 				strict = false;
 			}
-			if ( selector != '*' )
-				occurrences.removeClass( 'wikiEditor-beforeSelection-tagged' );
-			return retval || $( [] );
+			return $( [] );
 		},
 		/**
 		 * Object used by traverser(). Don't use this unless you know what you're doing
@@ -1078,6 +1091,7 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;lt;br&amp;gt;/g, '&lt;br&gt;' )
 				.replace( /&amp;lt;span class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			context.$content.html( html );
+			context.oldHTML = html;
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
