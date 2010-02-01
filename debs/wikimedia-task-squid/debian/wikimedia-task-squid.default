@@ -5,6 +5,6 @@ SQUIDCONF=/etc/squid/squid.conf
 PART_TYPE=82
 
 # File system options for mkfs and mount
-FS=reiserfs
-FS_MOUNT_OPTIONS=noatime,nolog
-FS_OPTIONS="-q --journal-size 0"
+FS=xfs
+FS_MOUNT_OPTIONS=noatime
+FS_OPTIONS=""

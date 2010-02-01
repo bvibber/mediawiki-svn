@@ -1,3 +1,9 @@
+wikimedia-task-squid (0.03) hardy; urgency=low
+
+  * Move from reiserfs to xfs
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 01 Feb 2010 15:02:19 +0000
+
 wikimedia-task-squid (0.02) edgy; urgency=low
 
   * Depend on squid-frontend and reiserfsprogs
