@@ -6513,7 +6513,7 @@ $.wikiEditor = {
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
 		var browser = $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
-		for ( condition in browser ) {
+		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
 			if ( typeof val == 'string' ) {
@@ -6542,7 +6542,7 @@ $.wikiEditor = {
 	'autoMsg': function( object, property ) {
 		// Accept array of possible properties, of which the first one found will be used
 		if ( typeof property == 'object' ) {
-			for ( i in property ) {
+			for ( var i in property ) {
 				if ( property[i] in object || property[i] + 'Msg' in object ) {
 					property = property[i];
 					break;
@@ -6653,12 +6653,12 @@ if ( typeof context == 'undefined' ) {
 			} else if ( typeof data == 'object' ) {
 				modules = data;
 			}
-			for ( module in modules ) {
+			for ( var module in modules ) {
 				// Check for the existance of an available module with a matching name and a create function
 				if ( typeof module == 'string' && module in $.wikiEditor.modules ) {
 					// Extend the context's core API with this module's own API calls
 					if ( 'api' in $.wikiEditor.modules[module] ) {
-						for ( call in $.wikiEditor.modules[module].api ) {
+						for ( var call in $.wikiEditor.modules[module].api ) {
 							// Modules may not overwrite existing API functions - first come, first serve
 							if ( !( call in context.api ) ) {
 								context.api[call] = $.wikiEditor.modules[module].api[call];
@@ -6734,7 +6734,7 @@ if ( typeof context == 'undefined' ) {
 				}
 			}
 			// Pass the event around to all modules activated on this context
-			for ( module in context.modules ) {
+			for ( var module in context.modules ) {
 				if (
 					module in $.wikiEditor.modules &&
 					'evt' in $.wikiEditor.modules[module] &&
@@ -6824,7 +6824,7 @@ if ( typeof context == 'undefined' ) {
 			var $pre = $( '<pre>' + html + '</pre>' );
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
 			// Convert tabs, <p>s and <br>s back
-			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
+			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ); } );
 			$pre.find( 'br' ).each( function() { $( this ).replaceWith( "\n" ); } );
 			// Converting <p>s is wrong if there's nothing before them, so check that.
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
@@ -6969,9 +6969,11 @@ if ( typeof context == 'undefined' ) {
 				}
 				var insertText = "";
 				if ( options.splitlines ) {
-					for( var i = 0; i < selTextArr.length; i++ ) {
-						insertText = insertText + pre + selTextArr[i] + post;
-						if( i != selTextArr.length - 1 ) insertText += "\n"; 
+					for( var j = 0; j < selTextArr.length; j++ ) {
+						insertText = insertText + pre + selTextArr[j] + post;
+						if( j != selTextArr.length - 1 ) {
+							insertText += "\n";
+						}
 					}
 				} else {
 					insertText = pre + selText + post;
@@ -7017,9 +7019,9 @@ if ( typeof context == 'undefined' ) {
 				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this function
 				var insertText = "";
 				if ( options.splitlines ) {
-					for( var i = 0; i < selTextArr.length; i++ ) {
-						insertText = insertText + pre + selTextArr[i] + post;
-						if( i != selTextArr.length - 1 ) {
+					for( var j = 0; j < selTextArr.length; j++ ) {
+						insertText = insertText + pre + selTextArr[j] + post;
+						if( j != selTextArr.length - 1 ) {
 							insertText += "\n"; 
 						}
 					}
@@ -7145,13 +7147,13 @@ if ( typeof context == 'undefined' ) {
 		
 		/**
 		 * Get the first element before the selection that's in a certain class
-		 * @param class Class to match. Defaults to '', meaning any class
+		 * @param classname Class to match. Defaults to '', meaning any class
 		 * @param strict If true, the element the selection starts in cannot match (default: false)
 		 * @return jQuery object
 		 */
-		'beforeSelection': function( class, strict ) {
-			if ( typeof class == 'undefined' ) {
-				class = '';
+		'beforeSelection': function( classname, strict ) {
+			if ( typeof classname == 'undefined' ) {
+				classname = '';
 			}
 			var e, offset;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
@@ -7177,7 +7179,7 @@ if ( typeof context == 'undefined' ) {
 				// not in the iframe
 				try {
 					range2.setEndPoint( 'EndToStart', range );
-				} catch ( e ) {
+				} catch ( ex ) {
 					return $( [] );
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
@@ -7204,9 +7206,9 @@ if ( typeof context == 'undefined' ) {
 			
 			// We'd normally use if( $( e ).hasClass( class ) in the while loop, but running the jQuery
 			// constructor thousands of times is very inefficient
-			var classStr = ' ' + class + ' ';
+			var classStr = ' ' + classname + ' ';
 			while ( e ) {
-				if ( !strict && ( !class || ( ' ' + e.className + ' ' ).indexOf( classStr ) != -1 ) ) {
+				if ( !strict && ( !classname || ( ' ' + e.className + ' ' ).indexOf( classStr ) != -1 ) ) {
 					return $( e );
 				}
 				var next = e.previousSibling;
@@ -7444,7 +7446,7 @@ if ( typeof context == 'undefined' ) {
 	// Setup the intial view
 	context.view = 'wikitext';
 	// Trigger the "resize" event anytime the window is resized
-	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ) } );
+	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ); } );
 	// Create an iframe in place of the text area
 	context.$iframe = $( '<iframe></iframe>' )
 		.attr( {
@@ -7548,19 +7550,19 @@ if ( typeof context == 'undefined' ) {
 	window.onbeforeunload = function() {
 		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
 		return context.fallbackWindowOnBeforeUnload ? context.fallbackWindowOnBeforeUnload() : null;
-	}
+	};
 }
 
 /* API Execution */
 
 // Since javascript gives arguments as an object, we need to convert them so they can be used more easily
-arguments = $.makeArray( arguments );
+var args = $.makeArray( arguments );
 // There would need to be some arguments if the API is being called
-if ( arguments.length > 0 ) {
+if ( args.length > 0 ) {
 	// Handle API calls
-	var call = arguments.shift();
+	var call = args.shift();
 	if ( call in context.api ) {
-		context.api[call]( context, typeof arguments[0] == 'undefined' ? {} : arguments[0] );
+		context.api[call]( context, typeof args[0] == 'undefined' ? {} : args[0] );
 	}
 }
 
