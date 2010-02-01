@@ -34,7 +34,7 @@ evt: {
 		 * 			;	Definition
 		 * 			:	Definition
 		 */
-		if ( event.data.scope == 'division' ) {
+		if ( event.data.scope == 'realchange' ) {
 			$.wikiEditor.modules.highlight.fn.scan( context, "" );
 			$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
 		}
@@ -55,7 +55,7 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		// hook $.wikiEditor.modules.highlight.evt.change to context.evt.change
+		context.modules.highlight.markersStr = '';
 	},
 	/**
 	 * Divides text into divisions
@@ -144,12 +144,25 @@ fn: {
 	 * @param tokens
 	 */
 	// FIXME: What do division and tokens do?
+	// TODO: Document the scan() and mark() APIs somewhere
 	mark: function( context, division, tokens ) {
 		// Reset markers
 		var markers = context.modules.highlight.markers = [];
 		// Get all markers
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
+		
+		// Serialize the markers array to a string and compare it with the one stored in the previous run
+		// If they're equal, there's no markers to change
+		var markersStr = '';
+		for ( var i = 0; i < markers.length; i++ ) {
+			markersStr += markers[i].start + ',' + markers[i].end + ',' + markers[i].type + ',';
+		}
+		if ( context.modules.highlight.markersStr == markersStr ) {
+			// No change, bail out
+			return;
+		}
+		context.modules.highlight.markersStr = markersStr;
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
 		for ( var i = 0; i < markers.length; i++ ) {
@@ -293,6 +306,7 @@ fn: {
 		}
 		
 		// Remove markers that were previously inserted but weren't passed to this function
+		// TODO: Find a better way to do this that involves less DOM manipulation
 		context.$content.find( 'div.wikiEditor-highlight:not(.wikiEditor-highlight-tmp)' ).each( function() {
 			if ( $(this).data( 'marker' ) && typeof $(this).data( 'marker' ).unwrap == 'function' )
 				$(this).data( 'marker' ).unwrap( this );
