@@ -76,6 +76,3 @@ do
 	mount $aufsdir
 	chown $PROXY_UID:$PROXY_GID $aufsdir
 done
-
-# Run Squid to create the AUFS directories
-squid -z
