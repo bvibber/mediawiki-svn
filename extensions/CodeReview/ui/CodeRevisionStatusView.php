@@ -9,6 +9,10 @@ class CodeRevisionStatusView extends CodeRevisionListView {
 	function getPager() {
 		return new SvnRevStatusTablePager( $this, $this->mStatus );
 	}
+	
+	function getSpecializedWhereClause($dbr) {
+		return ' AND cr_status = ' . $dbr->addQuotes($this->mStatus);
+	}
 }
 
 class SvnRevStatusTablePager extends SvnRevTablePager {

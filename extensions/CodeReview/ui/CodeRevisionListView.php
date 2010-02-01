@@ -28,8 +28,18 @@ class CodeRevisionListView extends CodeView {
 			$this->doBatchChange();
 			return;
 		}
-
+		
 		$this->showForm();
+		
+		//get the total count across all pages
+		$dbr =& wfGetDB(DB_SLAVE);
+		$revCountRes = $this->getRevCountQuery($dbr);
+		$revCount = 0;		 
+		if ($dbr->numRows($revCountRes) > 0){
+			$row = $dbr->fetchObject($revCountRes);			
+			$revCount = $row->rev_count;
+		}
+		
 		$pager = $this->getPager();
 
 		// Build batch change interface as needed
@@ -37,11 +47,15 @@ class CodeRevisionListView extends CodeView {
 			$wgUser->isAllowed( 'codereview-add-tag' );
 
 		$wgOut->addHTML(
+			'<table><tr><td>' .
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() .
+			'</td><td style="padding-left: 2em;">' . 
+			'&nbsp;Total number of results: <span style="font-weight: bold;">' . $revCount . '</span>' . 
+			'</td></tr></table>' .  
 			Xml::openElement( 'form',
 				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
-			) .
+			) . 
 			$pager->getBody() .
 			$pager->getNavigationBar() .
 			( $this->batchForm ? $this->buildBatchInterface( $pager ) : "" ) .
@@ -146,6 +160,33 @@ class CodeRevisionListView extends CodeView {
 	function getPager() {
 		return new SvnRevTablePager( $this );
 	}
+	
+	function getRevCountQuery($dbr) {
+		$sql = 'SELECT COUNT(cr_id) AS rev_count' . 
+				' FROM '  . $dbr->tableName('code_rev') . ' ';
+		// count if code_rev where path matches
+		if ( $this->mPath ) {
+			$sql .= ' WHERE cr_id in' .
+						' (SELECT cp_rev_id from code_paths' .
+						' WHERE' .
+						' cp_repo_id = ' . $this->mRepo->getId(). ' AND' .
+						' cp_path LIKE ' . $dbr->addQuotes( $this->mPath . '%') . ' AND' .
+						// performance
+						' cp_rev_id > ' . ($this->mRepo->getLastStoredRev() - 20000) . 
+						$this->getSpecializedWhereClause($dbr) .
+						')';
+		// No path; count of code_rev
+		} else {
+			$sql .= ' WHERE cr_repo_id = ' . $this->mRepo->getId() .
+					$this->getSpecializedWhereClause($dbr);
+		}
+		return $dbr->query($sql);
+	}
+	
+	function getSpecializedWhereClause($dbr) {
+		return '';
+	}
+	
 }
 
 // Pager for CodeRevisionListView
@@ -225,11 +266,13 @@ class SvnRevTablePager extends SvnTablePager {
 		}
 		return $fields;
 	}
-
+	
 	function formatValue( $name, $value ) { } // unused
 
 	function formatRevValue( $name, $value, $row ) {
 		global $wgUser, $wgLang;
+		$pathQuery = (empty($this->mView->mPath)) ? array() : array('path' => $this->mView->mPath);
+
 		switch( $name ) {
 		case 'selectforchange':
 			$sort = $this->getDefaultSort();
@@ -245,10 +288,12 @@ class SvnRevTablePager extends SvnTablePager {
 		case 'cr_status':
 			return $this->mView->mSkin->link(
 				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/status/' . $value ),
-				htmlspecialchars( $this->mView->statusDesc( $value ) )
+				htmlspecialchars( $this->mView->statusDesc( $value ) ),
+				array(),
+				$pathQuery
 			);
 		case 'cr_author':
-			return $this->mView->authorLink( $value );
+			return $this->mView->authorLink( $value, $pathQuery );
 		case 'cr_message':
 			return $this->mView->messageFragment( $value );
 		case 'cr_timestamp':

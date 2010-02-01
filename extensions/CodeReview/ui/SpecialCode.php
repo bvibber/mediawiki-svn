@@ -20,13 +20,13 @@ class SpecialCode extends SpecialPage {
 		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
 		# Remove stray slashes
 		$subpage = preg_replace( '/\/$/', '', $subpage );
-
 		if ( $subpage == '' ) {
 			$view = new CodeRepoListView();
 		} else {
 			$params = explode( '/', $subpage );
 			switch( count( $params ) ) {
 			case 1:
+				echo "WHY ARE WE HERE ";
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
@@ -119,7 +119,7 @@ abstract class CodeView {
 		return $wgRequest->wasPosted()
 			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) )
 			&& $wgUser->isAllowed( $permission );
-	}
+	}	
 
 	abstract function execute();
 
@@ -131,10 +131,10 @@ abstract class CodeView {
 		return $this->mRepo->authorWikiUser( $author );
 	}
 
-	function authorLink( $author ) {
+	function authorLink( $author, $extraParams=array() ) {
 		$repo = $this->mRepo->getName();
-		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
-		return $this->mSkin->link( $special, htmlspecialchars( $author ) );
+		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );			
+		return $this->mSkin->link( $special, htmlspecialchars( $author ), array(),  $extraParams);
 	}
 
 	function statusDesc( $status ) {
