@@ -97,14 +97,16 @@ evt: {
 				},
 				onSkip: function( node ) {
 					var marker = $( node ).data( 'marker' );
-					$( node )
-						.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) )
-						.addClass( 'wikiEditor-toc-section-' + marker.index )
-						.data( 'section', marker.index );
+					if ( $( node ).data( 'section' ) != marker.index ) {
+						$( node )
+							.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) )
+							.addClass( 'wikiEditor-toc-section-' + marker.index )
+							.data( 'section', marker.index );
+					}
 				},
 				getAnchor: function( ca1, ca2 ) {
-					return $( ca1.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
-						ca1.previousSibling : null;
+					return $( ca1.parentNode.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
+						ca1.parentNode.previousSibling : null;
 				}
 			} );
 			hash += tokenArray[i].match[2] + '\n';
