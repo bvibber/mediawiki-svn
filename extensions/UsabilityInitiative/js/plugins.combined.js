@@ -9312,17 +9312,18 @@ fn: {
 		function buildList( structure ) {
 			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var wrapper = context.$content.find( '.wikiEditor-toc-section-' + structure[i].index );
-				if ( wrapper.size() == 0 )
-					wrapper = context.$content;
 				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
-					.data( 'wrapper', wrapper )
+					.data( 'index', structure[i].index )
 					.click( function( event ) {
-						context.fn.scrollToTop( $( this ).data( 'wrapper' ), true );
+						var wrapper = context.$content.find(
+							'.wikiEditor-toc-section-' + $( this ).data( 'index' ) );
+						if ( wrapper.size() == 0 )
+							wrapper = context.$content;
+						context.fn.scrollToTop( wrapper, true );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
-							'startContainer': $(this).data( 'wrapper' )
+							'startContainer': wrapper
 						} );
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
