@@ -1,3 +1,9 @@
+wikimedia-base (0.25) hardy; urgency=low
+
+  * Only add sysctl settings to /etc/sysctl.conf pre-karmic; rely on puppet
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 01 Feb 2010 19:57:26 +0000
+
 wikimedia-base (0.24) hardy; urgency=low
 
   * Disable "quiet splash" default kernel boot options in grub2
