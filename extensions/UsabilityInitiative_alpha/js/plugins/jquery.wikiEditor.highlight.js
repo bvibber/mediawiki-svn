@@ -34,7 +34,7 @@ evt: {
 		 * 			;	Definition
 		 * 			:	Definition
 		 */
-		if ( event.data.scope == 'division' ) {
+		if ( event.data.scope == 'realchange' ) {
 			$.wikiEditor.modules.highlight.fn.scan( context, "" );
 			$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
 		}
@@ -55,7 +55,7 @@ fn: {
 	 * @param config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		// hook $.wikiEditor.modules.highlight.evt.change to context.evt.change
+		context.modules.highlight.markersStr = '';
 	},
 	/**
 	 * Divides text into divisions
@@ -144,6 +144,7 @@ fn: {
 	 * @param tokens
 	 */
 	// FIXME: What do division and tokens do?
+	// TODO: Document the scan() and mark() APIs somewhere
 	mark: function( context, division, tokens ) {
 		// Reset markers
 		var markers = context.modules.highlight.markers = [];
@@ -151,7 +152,21 @@ fn: {
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
+		// Serialize the markers array to a string and compare it with the one stored in the previous run
+		// If they're equal, there's no markers to change
+		var markersStr = '';
+		for ( var i = 0; i < markers.length; i++ ) {
+			markersStr += markers[i].start + ',' + markers[i].end + ',' + markers[i].type + ',';
+		}
+		if ( context.modules.highlight.markersStr == markersStr ) {
+			// No change, bail out
+			return;
+		}
+		context.modules.highlight.markersStr = markersStr;
+		
 		// Traverse the iframe DOM, inserting markers where they're needed.
+		// Store visited markers here so we know which markers should be removed
+		var visited = [];
 		for ( var i = 0; i < markers.length; i++ ) {
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
@@ -163,22 +178,26 @@ fn: {
 			}
 			var startNode = s.node;
 			var startDepth = s.depth;
-			// The next marker starts somewhere in this textNode or at this BR
-			if ( s.offset > 0 ) {
-				// t.node must be a textnode at this point because
-				// only textnodes can have offset > 0
-				
-				// Split off the prefix
-				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node
-				startNode = startNode.splitText( s.offset );
-			}
+
 			// Don't wrap leading BRs, produces undesirable results
-			while ( startNode.nodeName == 'BR' ) {
+			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
+			// .length to fake the newline caused by startNode being in a P. In this case, prevent
+			// the textnode splitting below from making startNode an empty textnode, IE barfs on that
+			while ( startNode.nodeName == 'BR' || s.offset == startNode.nodeValue.length ) {
 				start++;
 				s = context.fn.getOffset( start );
 				startNode = s.node;
 				startDepth = s.depth;
+			}
+
+			// The next marker starts somewhere in this textNode or at this BR
+			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
+				// Split off the prefix
+				// This leaves the prefix in the current node and puts
+				// the rest in a new node which is our start node					
+				startNode = startNode.splitText( s.offset );
+				// This also invalidates cached offset objects
+				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
 			
 			var end = markers[i].end;
@@ -189,14 +208,13 @@ fn: {
 			}
 			var endNode = e.node;
 			var endDepth = e.depth;
-			if ( e.offset < e.length - 1 ) {
-				// t.node must be a textnode at this point because
-				// .length is 1 for BRs and offset can't be < 0
-				
+			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
 				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
 				// node.
 				// endNode.nodeValue.length - ( newPos - markers[i].end )
 				endNode.splitText( e.offset + 1 );
+				// This also invalidates cached offset objects
+				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
@@ -236,13 +254,19 @@ fn: {
 				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
 				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
 			}
-			if ( ca1 && ca2 && ca1.parentNode && ca2.nextSibling ) {
+			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
 					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
 					// properties
 					var newNode = ca1.ownerDocument.createElement( 'div' );
 					var commonAncestor = ca1.parentNode;
+					// Special case: can't put block elements in a <p>
+					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
+						commonAncestor = commonAncestor.parentNode;
+						ca1 = ca1.parentNode;
+						ca2 = ca2.parentNode;
+					}
 					var nextNode = ca2.nextSibling;
 					if ( markers[i].anchor == 'wrap' ) {
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
@@ -269,22 +293,32 @@ fn: {
 					}
 					
 					$( newNode ).data( 'marker', markers[i] )
-						.addClass( 'wikiEditor-highlight wikiEditor-highlight-tmp' );
+						.addClass( 'wikiEditor-highlight' );
+					visited[i] = newNode;
 					
 					// Allow the module adding this marker to manipulate it
 					markers[i].afterWrap( newNode, markers[i] );
 				} else {
-					// Temporarily add a class for bookkeeping purposes
-					$( anchor )
-						.addClass( 'wikiEditor-highlight-tmp' )
-						.data( 'marker', markers[i] );
+					visited[i] = anchor;
+					// Update the marker object
+					$( anchor ).data( 'marker', markers[i] );
 					markers[i].onSkip( anchor );
 				}
 			}
 		}
 		
 		// Remove markers that were previously inserted but weren't passed to this function
-		context.$content.find( 'div.wikiEditor-highlight:not(.wikiEditor-highlight-tmp)' ).each( function() {
+		// This function works because visited[] contains the visited elements in order and find() and each()
+		// preserve order
+		var j = 0;
+		context.$content.find( 'div.wikiEditor-highlight' ).each( function() {
+			if ( visited[j] == this ) {
+				// This marker is legit, leave it in
+				j++;
+				return true;
+			}
+			
+			// Remove this marker
 			if ( $(this).data( 'marker' ) && typeof $(this).data( 'marker' ).unwrap == 'function' )
 				$(this).data( 'marker' ).unwrap( this );
 			if ( $(this).children().size() > 0 ) {
@@ -293,8 +327,6 @@ fn: {
 				$(this).replaceWith( $(this).html() );
 			}
 		});
-		// Remove temporary class
-		context.$content.find( 'div.wikiEditor-highlight-tmp' ).removeClass( 'wikiEditor-highlight-tmp' );
 	}
 }
 

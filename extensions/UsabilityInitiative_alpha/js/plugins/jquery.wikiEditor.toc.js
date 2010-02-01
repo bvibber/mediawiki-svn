@@ -73,6 +73,7 @@ evt: {
 		context.modules.toc.$toc.data( 'previousWidth', context.$wikitext.width() );
 	},
 	mark: function( context, event ) {
+		var hash = '';
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
 		var outline = context.data.outline = [];
@@ -86,6 +87,7 @@ evt: {
 				index: h,
 				start: tokenArray[i].tokenStart,
 				end: tokenArray[i].offset,
+				type: 'toc',
 				anchor: 'before',
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
@@ -95,24 +97,32 @@ evt: {
 				},
 				onSkip: function( node ) {
 					var marker = $( node ).data( 'marker' );
-					$( node )
-						.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) )
-						.addClass( 'wikiEditor-toc-section-' + marker.index )
-						.data( 'section', marker.index );
+					if ( $( node ).data( 'section' ) != marker.index ) {
+						$( node )
+							.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) )
+							.addClass( 'wikiEditor-toc-section-' + marker.index )
+							.data( 'section', marker.index );
+					}
 				},
 				getAnchor: function( ca1, ca2 ) {
-					return $( ca1.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
-						ca1.previousSibling : null;
+					return $( ca1.parentNode.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
+						ca1.parentNode.previousSibling : null;
 				}
 			} );
+			hash += tokenArray[i].match[2] + '\n';
 			outline.push ( {
 				'text': tokenArray[i].match[2],
 				'level': tokenArray[i].match[1].length,
 				'index': h
 			} );
 		}
-		$.wikiEditor.modules.toc.fn.build( context );
-		$.wikiEditor.modules.toc.fn.update( context );
+		// Only update the TOC if it's been changed - we do this by comparing a hash of the headings this time to last
+		if ( typeof context.modules.toc.lastHash == 'undefined' || context.modules.toc.lastHash !== hash ) {
+			$.wikiEditor.modules.toc.fn.build( context );
+			$.wikiEditor.modules.toc.fn.update( context );
+			// Remember the changed version
+			context.modules.toc.lastHash = hash;
+		}
 	}
 },
 exp: [
@@ -249,7 +259,7 @@ fn: {
 	update: function( context ) {
 		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		
-		var div = context.fn.beforeSelection( 'div.wikiEditor-toc-header' );
+		var div = context.fn.beforeSelection( 'wikiEditor-toc-header' );
 		var section = div.data( 'section' ) || 0;
 		if ( context.data.outline.length > 0 ) {
 			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );
@@ -383,17 +393,18 @@ fn: {
 		function buildList( structure ) {
 			var list = $( '<ul />' );
 			for ( i in structure ) {
-				var wrapper = context.$content.find( '.wikiEditor-toc-section-' + structure[i].index );
-				if ( wrapper.size() == 0 )
-					wrapper = context.$content;
 				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
-					.data( 'wrapper', wrapper )
+					.data( 'index', structure[i].index )
 					.click( function( event ) {
-						context.fn.scrollToTop( $( this ).data( 'wrapper' ), true );
+						var wrapper = context.$content.find(
+							'.wikiEditor-toc-section-' + $( this ).data( 'index' ) );
+						if ( wrapper.size() == 0 )
+							wrapper = context.$content;
+						context.fn.scrollToTop( wrapper, true );
 						context.$textarea.textSelection( 'setSelection', {
 							'start': 0,
-							'startContainer': $(this).data( 'wrapper' )
+							'startContainer': wrapper
 						} );
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
@@ -488,7 +499,9 @@ fn: {
 						if( ui.size.width <= parseFloat( $.wikiEditor.modules.toc.cfg.minimumWidth ) ) {
 							context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
 						} else {
-							context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+							context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+								{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+							);
 							context.modules.toc.$toc.data( 'openWidth', ui.size.width );
 							$.cookie( 'wikiEditor-' + context.instance + '-toc-width', ui.size.width );
 						}
@@ -552,7 +565,9 @@ fn: {
 				buildResizeControls();
 				buildCollapseControls();
 			}
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+			);
 		}
 	}
 }

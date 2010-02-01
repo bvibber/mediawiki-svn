@@ -880,26 +880,27 @@ $j(document).ready( function() {
 				}
 				return s.match( arguments.callee.regex );
 			}
+			// Updates the status indicator above the target link
+			function updateWidget( status ) {
+				$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
+				$j( '#wikieditor-toolbar-link-int-target' ).parent()
+					.removeClass( 'status-invalid status-external status-notexists status-exists status-loading' );
+				if ( status ) {
+					$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
+					$j( '#wikieditor-toolbar-link-int-target' ).parent().addClass( 'status-' + status );
+				}
+				if ( status == 'invalid' ) {
+					$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
+						.attr( 'disabled', true )
+						.addClass( 'disabled' );
+				} else { 
+					$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
+						.removeAttr('disabled')
+						.removeClass('disabled');
+				}
+			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
 			function updateExistence() {
-				function updateWidget( status ) {
-					$j( '#wikieditor-toolbar-link-int-target-status' ).children().hide();
-					$j( '#wikieditor-toolbar-link-int-target' ).parent()
-						.removeClass( 'status-invalid status-external status-notexists status-exists status-loading' );
-					if ( status ) {
-						$j( '#wikieditor-toolbar-link-int-target-status-' + status ).show();
-						$j( '#wikieditor-toolbar-link-int-target' ).parent().addClass( 'status-' + status );
-					}
-					if ( status == 'invalid' ) {
-						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
-							.attr( 'disabled', true )
-							.addClass( 'disabled' );
-					} else { 
-						$j( '.ui-dialog:visible .ui-dialog-buttonpane button:first' )
-							.removeAttr('disabled')
-							.removeClass('disabled');
-					}
-				}
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
 				if ( request ) {
@@ -959,6 +960,12 @@ $j(document).ready( function() {
 					} )
 				);
 			}
+			$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).click( function() {
+				if( $j( '#wikieditor-toolbar-link-type-ext' ).is( ':checked' ) )
+					updateWidget( 'external' );
+				if( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) )
+					updateExistence();
+			});
 			// Set labels of tabs based on rel values
 			var u = mw.usability;
 			$j(this).find( '[rel]' ).each( function() {
@@ -1124,16 +1131,20 @@ $j(document).ready( function() {
 		},
 		dialog: {
 			width: 500,
+			dialogClass: 'wikiEditor-toolbar-dialog',
 			buttons: {
 				'wikieditor-toolbar-tool-link-insert': function() {
 					function escapeInternalText( s ) {
+						// FIXME: Should this escape [[ too? Seems to work without that
 						return s.replace( /(]{2,})/g, '<nowiki>$1</nowiki>' );
 					}
 					function escapeExternalTarget( s ) {
 						return s.replace( / /g, '%20' )
+							.replace( /\[/g, '%5B' )
 							.replace( /]/g, '%5D' );
 					}
 					function escapeExternalText( s ) {
+						// FIXME: Should this escape [ too? Seems to work without that
 						return s.replace( /(]+)/g, '<nowiki>$1</nowiki>' );
 					}
 					var insertText = '';
@@ -1401,6 +1412,7 @@ $j(document).ready( function() {
 		},
 		dialog: {
 			resizable: false,
+			dialogClass: 'wikiEditor-toolbar-dialog',
 			width: 590,
 			buttons: {
 				'wikieditor-toolbar-tool-table-insert': function() {
@@ -1633,6 +1645,7 @@ $j(document).ready( function() {
 		},
 		dialog: {
 			width: 500,
+			dialogClass: 'wikiEditor-toolbar-dialog',
 			buttons: {
 				'wikieditor-toolbar-tool-replace-button-findnext': function( e ) {
 					$j(this).closest( '.ui-dialog' ).data( 'dialogaction', e.target );

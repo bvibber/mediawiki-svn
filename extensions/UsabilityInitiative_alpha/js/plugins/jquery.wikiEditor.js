@@ -89,7 +89,7 @@ $.wikiEditor = {
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
 		var browser = $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
-		for ( condition in browser ) {
+		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
 			if ( typeof val == 'string' ) {
@@ -118,7 +118,7 @@ $.wikiEditor = {
 	'autoMsg': function( object, property ) {
 		// Accept array of possible properties, of which the first one found will be used
 		if ( typeof property == 'object' ) {
-			for ( i in property ) {
+			for ( var i in property ) {
 				if ( property[i] in object || property[i] + 'Msg' in object ) {
 					property = property[i];
 					break;
@@ -199,7 +199,13 @@ if ( typeof context == 'undefined' ) {
 		// Unique numeric ID of this instance used both for looking up and differentiating instances of wikiEditor
 		'instance': $.wikiEditor.instances.push( $(this) ) - 1,
 		// Array mapping elements in the textarea to character offsets
-		'offsets': null
+		'offsets': null,
+		// Cache for context.fn.htmlToText()
+		'htmlToTextMap': {},
+		// The previous HTML of the iframe, stored to detect whether something really changed.
+		'oldHTML': null,
+		// Same for delayedChange()
+		'oldDelayedHTML': null
 	};
 	
 	/*
@@ -223,12 +229,12 @@ if ( typeof context == 'undefined' ) {
 			} else if ( typeof data == 'object' ) {
 				modules = data;
 			}
-			for ( module in modules ) {
+			for ( var module in modules ) {
 				// Check for the existance of an available module with a matching name and a create function
 				if ( typeof module == 'string' && module in $.wikiEditor.modules ) {
 					// Extend the context's core API with this module's own API calls
 					if ( 'api' in $.wikiEditor.modules[module] ) {
-						for ( call in $.wikiEditor.modules[module].api ) {
+						for ( var call in $.wikiEditor.modules[module].api ) {
 							// Modules may not overwrite existing API functions - first come, first serve
 							if ( !( call in context.api ) ) {
 								context.api[call] = $.wikiEditor.modules[module].api[call];
@@ -262,12 +268,23 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'change': function( event ) {
 			event.data.scope = 'division';
-			context.fn.purgeOffsets();
+			var newHTML = context.$content.html();
+			if ( context.oldHTML != newHTML ) {
+				context.fn.purgeOffsets();
+				context.oldHTML = newHTML;
+				event.data.scope = 'realchange';
+			}
 			return true;
 		},
 		'delayedChange': function( event ) {
-			// Redirect - since we want the same functionality
-			return context.evt.change( event );
+			event.data.scope = 'division';
+			var newHTML = context.$content.html();
+			if ( context.oldDelayedHTML != newHTML ) {
+				context.fn.purgeOffsets();
+				context.oldDelayedHTML = newHTML;
+				event.data.scope = 'realchange';
+			}
+			return true;
 		}
 	};
 	
@@ -293,7 +310,7 @@ if ( typeof context == 'undefined' ) {
 				}
 			}
 			// Pass the event around to all modules activated on this context
-			for ( module in context.modules ) {
+			for ( var module in context.modules ) {
 				if (
 					module in $.wikiEditor.modules &&
 					'evt' in $.wikiEditor.modules[module] &&
@@ -360,22 +377,71 @@ if ( typeof context == 'undefined' ) {
 				.appendTo( context.$ui );
 		},
 		'htmlToText': function( html ) {
+			// This function is slow for large inputs, so aggressively cache input/output pairs
+			if ( html in context.htmlToTextMap ) {
+				return context.htmlToTextMap[html];
+			}
+			var origHTML = html;
+			
 			// We use this elaborate trickery for cross-browser compatibility
 			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
-			var $pre = $( '<pre>' +
-				html
+			// We also do <br> and easy cases for <p> conversion here, complicated cases are handled later
+			html = html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
-					.replace( /\<br[^\>]*\>/gi, "\n" )
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					.replace( /\<p[^\>]*\>/gi, "\n" ) // IE uses </p><p> for user-inserted line breaks
-					.replace( /\<\/p[^\>]*\>/gi, "" )
-					.replace( /\<div[^\>]*\>/gi, "\n" ) // Webkit uses </div><div> for user-inserted line breaks
-					.replace( /\<\/div[^\>]*\>/gi, "" )
-				+ '</pre>' );
-			// Get rid of the noincludes when getting text
+					.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
+					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
+					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" );
+			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
+			// won't leave everything alone
+			var leading = html.match( /^\s*/ )[0];
+			var trailing = html.match( /\s*$/ )[0];
+			html = html.substr( leading.length, html.length - leading.length - trailing.length );
+			var $pre = $( '<pre>' + html + '</pre>' );
 			$pre.find( '.wikiEditor-noinclude' ).each( function() { $( this ).remove(); } );
-			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ) } );
-			return $pre.text();
+			// Convert tabs, <p>s and <br>s back
+			$pre.find( '.wikiEditor-tab' ).each( function() { $( this ).text( "\t" ); } );
+			$pre.find( 'br' ).each( function() { $( this ).replaceWith( "\n" ); } );
+			// Converting <p>s is wrong if there's nothing before them, so check that.
+			// .find( '* + p' ) isn't good enough because textnodes aren't considered
+			$pre.find( 'p' ).each( function() {
+				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
+					var text =  $( this ).text();
+					// If this <p> is preceded by some text, add a \n at the beginning, and if
+					// it's followed by a textnode, add a \n at the end
+					// We need the traverser because there can be other weird stuff in between
+					
+					// Check for preceding text
+					// FIXME: Add an option to disable depth checking, -10 is a hack
+					var t = new context.fn.rawTraverser( this.firstChild, -10, this ).prev();
+					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+						t = t.prev();
+					}
+					if ( t ) {
+						text = "\n" + text;
+					}
+					
+					// Check for following text
+					t = new context.fn.rawTraverser( this.lastChild, -10, this ).next();
+					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+						t = t.next();
+					}
+					if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue.charAt( 0 ) != '\n'
+							&& t.node.nodeValue.charAt( 0 ) != '\r' ) {
+						text += "\n";
+					}
+					$( this ).text( text );
+				}
+			} );
+			var retval;
+			if ( $.browser.msie ) {
+				// IE aggressively collapses whitespace in .text() after having done DOM manipulation,
+				// but for some crazy reason this does work. Also convert \r back to \n
+				retval = $( '<pre>' + $pre.html() + '</pre>' ).text().replace( /\r/g, '\n' );
+			} else {
+				retval = $pre.text();
+			}
+			return context.htmlToTextMap[origHTML] = leading + retval + trailing;
 		},
 		
 		/*
@@ -400,6 +466,17 @@ if ( typeof context == 'undefined' ) {
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				retval = context.$iframe[0].contentWindow.getSelection();
+				if ( $.browser.opera ) {
+					// Opera strips newlines in getSelection(), so we need something more sophisticated
+					if ( retval.rangeCount > 0 ) {
+						retval = context.fn.htmlToText( $( '<pre />' )
+								.append( retval.getRangeAt( 0 ).cloneContents() )
+								.html()
+						);
+					} else {
+						retval = '';
+					}
+				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
 				// IE
 				retval = context.$iframe[0].contentWindow.document.selection.createRange();
@@ -443,25 +520,47 @@ if ( typeof context == 'undefined' ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
 				if ( options.ownline ) {
+					// We need to figure out if the cursor is at the start or end of a line
+					var atStart = false, atEnd = false;
 					var body = context.$content.get( 0 );
-					// TODO: This'll probably break with syntax highlighting
-					// When the selection starts at the beginning of a line, it'll have either
-					// startOffset == 0 or startContainer == body
-					if ( range.startOffset != 0 && range.startContainer != body ) {
+					if ( range.startOffset == 0 ) {
+						// Start of a line
+						// FIXME: Not necessarily the case with syntax highlighting or
+						// template collapsing
+						atStart = true;
+					} else if ( range.startContainer == body ) {
+						// Look up the node just before the start of the selection
+						// If it's a <BR>, we're at the start of a line that starts with a
+						// block element; if not, we're at the end of a line
+						var n = body.firstChild;
+						for ( var i = 0; i < range.startOffset - 1 && n; i++ ) {
+							n = n.nextSibling;
+						}
+						if ( n && n.nodeName == 'BR' ) {
+							atStart = true;
+						} else {
+							atEnd = true;
+						}
+					} else if ( range.startContainer.nodeName == '#text' &&
+							range.startOffset == range.startContainer.nodeValue.length ) {
+						// Apparently this happens when splitting text nodes
+						atEnd = true;
+					}
+					
+					if ( !atStart ) {
 						pre  = "\n" + options.pre;
 					}
-					// TODO: Will this still work with syntax highlighting?
-					// When the selection ends at the end of a line, it'll have endContainer == body
-					// and endOffset != 0
-					if ( range.endContainer != body || range.endOffset == 0 ) {
+					if ( !atEnd ) {
 						post += "\n";
 					}
 				}
 				var insertText = "";
 				if ( options.splitlines ) {
-					for( var i = 0; i < selTextArr.length; i++ ) {
-						insertText = insertText + pre + selTextArr[i] + post;
-						if( i != selTextArr.length - 1 ) insertText += "\n"; 
+					for( var j = 0; j < selTextArr.length; j++ ) {
+						insertText = insertText + pre + selTextArr[j] + post;
+						if( j != selTextArr.length - 1 ) {
+							insertText += "\n";
+						}
 					}
 				} else {
 					insertText = pre + selText + post;
@@ -507,9 +606,9 @@ if ( typeof context == 'undefined' ) {
 				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this function
 				var insertText = "";
 				if ( options.splitlines ) {
-					for( var i = 0; i < selTextArr.length; i++ ) {
-						insertText = insertText + pre + selTextArr[i] + post;
-						if( i != selTextArr.length - 1 ) {
+					for( var j = 0; j < selTextArr.length; j++ ) {
+						insertText = insertText + pre + selTextArr[j] + post;
+						if( j != selTextArr.length - 1 ) {
 							insertText += "\n"; 
 						}
 					}
@@ -634,14 +733,14 @@ if ( typeof context == 'undefined' ) {
 		 */
 		
 		/**
-		 * Get the first element before the selection matching a certain selector.
-		 * @param selector Selector to match. Defaults to '*'
+		 * Get the first element before the selection that's in a certain class
+		 * @param classname Class to match. Defaults to '', meaning any class
 		 * @param strict If true, the element the selection starts in cannot match (default: false)
 		 * @return jQuery object
 		 */
-		'beforeSelection': function( selector, strict ) {
-			if ( typeof selector == 'undefined' ) {
-				selector = '*';
+		'beforeSelection': function( classname, strict ) {
+			if ( typeof classname == 'undefined' ) {
+				classname = '';
 			}
 			var e, offset;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
@@ -652,7 +751,7 @@ if ( typeof context == 'undefined' ) {
 					// Start at the selection's start and traverse the DOM backwards
 					// This is done by traversing an element's children first, then the element itself, then its parent
 					e = selection.getRangeAt( 0 ).startContainer;
-					offset = selection.startOffset;
+					offset = selection.getRangeAt( 0 ).startOffset;
 				} else {
 					return $( [] );
 				}
@@ -667,7 +766,7 @@ if ( typeof context == 'undefined' ) {
 				// not in the iframe
 				try {
 					range2.setEndPoint( 'EndToStart', range );
-				} catch ( e ) {
+				} catch ( ex ) {
 					return $( [] );
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
@@ -691,9 +790,14 @@ if ( typeof context == 'undefined' ) {
 				}
 				e = newE || e;
 			}
+			
+			// We'd normally use if( $( e ).hasClass( class ) in the while loop, but running the jQuery
+			// constructor thousands of times is very inefficient
+			var classStr = ' ' + classname + ' ';
 			while ( e ) {
-				if ( $( e ).is( selector ) && !strict )
+				if ( !strict && ( !classname || ( ' ' + e.className + ' ' ).indexOf( classStr ) != -1 ) ) {
 					return $( e );
+				}
 				var next = e.previousSibling;
 				while ( next && next.lastChild ) {
 					next = next.lastChild;
@@ -704,8 +808,88 @@ if ( typeof context == 'undefined' ) {
 			return $( [] );
 		},
 		/**
+		 * Object used by traverser(). Don't use this unless you know what you're doing
+		 */
+		'rawTraverser': function( node, depth, inP ) {
+			this.node = node;
+			this.depth = depth;
+			this.inP = inP;
+			this.next = function() {
+				var p = this.node;
+				var nextDepth = this.depth;
+				var nextInP = this.inP;
+				while ( p && !p.nextSibling ) {
+					p = p.parentNode;
+					nextDepth--;
+					if ( nextDepth == 0 ) {
+						// We're back at the start node
+						p = null;
+					}
+					if ( p && p.nodeName == "P" ) {
+						nextInP = null;
+					}
+				}
+				p = p ? p.nextSibling : null;
+				if ( p && p.nodeName == "P" ) {
+					nextInP = p;
+				}
+				do {
+					// Filter nodes with the wikiEditor-noinclude class
+					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+					// $() is slow in a tight loop
+					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+						p = p.nextSibling;
+					}
+					if ( p && p.firstChild ) {
+						p = p.firstChild;
+						nextDepth++;
+						if ( p.nodeName == "P" ) {
+							nextInP = p;
+						}
+					}
+				} while ( p && p.firstChild );
+				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP ) : null;
+			};
+			this.prev = function() {
+				var p = this.node;
+				var prevDepth = this.depth;
+				var prevInP = this.inP;
+				while ( p && !p.previousSibling ) {
+					p = p.parentNode;
+					prevDepth--;
+					if ( prevDepth == 0 ) {
+						// We're back at the start node
+						p = null;
+					}
+					if ( p && p.nodeName == "P" ) {
+						prevInP = null;
+					}
+				}
+				p = p ? p.previousSibling : null;
+				if ( p && p.nodeName == "P" ) {
+					prevInP = p;
+				}
+				do {
+					// Filter nodes with the wikiEditor-noinclude class
+					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
+					// $() is slow in a tight loop
+					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+						p = p.previousSibling;
+					}
+					if ( p && p.lastChild ) {
+						p = p.lastChild;
+						prevDepth++;
+						if ( p.nodeName == "P" ) {
+							prevInP = p;
+						}
+					}
+				} while ( p && p.lastChild );
+				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP ) : null;
+			};
+		},
+		/**
 		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
-		 * inside an element with the wikiEditor-noinclude class.
+		 * inside an element with the wikiEditor-noinclude class. This basically wraps rawTraverser
 		 *
 		 * Usage:
 		 * var t = context.fn.traverser( context.$content );
@@ -715,48 +899,10 @@ if ( typeof context == 'undefined' ) {
 		 * // Trying to advance past the end will set t.node to null
 		 */
 		'traverser': function( start ) {
-			function Traverser( node, depth, inP ) {
-				this.node = node;
-				this.depth = depth;
-				this.inP = inP;
-				this.next = function() {
-					var p = this.node;
-					var nextDepth = this.depth;
-					var nextInP = this.inP;
-					while ( p && !p.nextSibling ) {
-						if ( p.nodeName == "P" ) {
-							nextInP = false;
-						}
-						p = p.parentNode;
-						nextDepth--;
-						if ( nextDepth == 0 ) {
-							// We're back at the start node
-							p = null;
-						}
-					}
-					p = p ? p.nextSibling : null;
-					do {
-						// Filter nodes with the wikiEditor-noinclude class
-						// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
-						// $() is slow in a tight loop
-						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
-							p = p.nextSibling;
-						}
-						if ( p && p.firstChild ) {
-							p = p.firstChild;
-							nextDepth++;
-							if ( p.nodeName == "P" ) {
-								nextInP = true;
-							}
-						}
-					} while ( p && p.firstChild );
-					return p ? new Traverser( p, nextDepth, nextInP ) : null;
-				};
-			}
 			// Find the leftmost leaf node in the tree
 			var node = start.jquery ? start.get( 0 ) : start;
 			var depth = 0;
-			var inP = node.nodeName == "P";
+			var inP = node.nodeName == "P" ? node : null;
 			do {
 				// Filter nodes with the wikiEditor-noinclude class
 				// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
@@ -768,11 +914,11 @@ if ( typeof context == 'undefined' ) {
 					node = node.firstChild;
 					depth++;
 					if ( node.nodeName == "P" ) {
-						inP = true;
+						inP = node;
 					}
 				}
 			} while ( node && node.firstChild );
-			return new Traverser( node, depth, inP );
+			return new context.fn.rawTraverser( node, depth, inP );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
@@ -796,7 +942,7 @@ if ( typeof context == 'undefined' ) {
 			var base = context.offsets[lowerBound];
 			return context.offsets[offset] = {
 				'node': base.node,
-				'offset': base.offset + offset - o,
+				'offset': base.offset + offset - lowerBound,
 				'length': base.length,
 				'depth': base.depth,
 				'lastTextNode': base.lastTextNode,
@@ -811,13 +957,13 @@ if ( typeof context == 'undefined' ) {
 			var t = context.fn.traverser( context.$content );
 			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
 			while ( t ) {
-				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
+				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.next();
 					continue;
 				}
 				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
 				var nextT = t.next();
-				var leavingP = t.inP && nextT && !nextT.inP;
+				var leavingP = t.node.nodeName != 'P' && t.inP && nextT && ( !nextT.inP || nextT.inP != t.inP );
 				context.offsets[pos] = {
 					'node': t.node,
 					'offset': 0,
@@ -887,7 +1033,7 @@ if ( typeof context == 'undefined' ) {
 	// Setup the intial view
 	context.view = 'wikitext';
 	// Trigger the "resize" event anytime the window is resized
-	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ) } );
+	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ); } );
 	// Create an iframe in place of the text area
 	context.$iframe = $( '<iframe></iframe>' )
 		.attr( {
@@ -923,7 +1069,13 @@ if ( typeof context == 'undefined' ) {
 			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
 			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
 			// TODO: Refactor this into a textToHtml() function
-			var html = context.$textarea.val();
+			// Because we're gonna insert instances of <br>, &nbsp; and <span class="wikiEditor-tab"></span>,
+			// we have to escape existing instances first. This'll cause them to be double-escaped, which we
+			// fix later on
+			var html = context.$textarea.val()
+				.replace( /&nbsp;/g, '&amp;nbsp;' )
+				.replace( /\<br\>/g, '&lt;br&gt;' )
+				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
 			if ( $.browser.msie ) {
 				// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
@@ -939,11 +1091,20 @@ if ( typeof context == 'undefined' ) {
 			}
 			// Use a dummy div to escape all entities
 			// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
-			html = $( '<div />' ).text( html.replace( /\r?\n/g, '<br>' ) ).html()
+			// We also need to unescape the doubly-escaped things mentioned above
+			html = $( '<div />' ).text( '<p>' + html.replace( /\r?\n/g, '</p><p>' ) + '</p>' ).html()
 				.replace( /&amp;nbsp;/g, '&nbsp;' )
-				.replace( /&lt;br&gt;/g, '<br>' )
-				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' );
+				// Allow p tags to survive encoding
+				.replace( /&lt;p&gt;/g, '<p>' )
+				.replace( /&lt;\/p&gt;/g, '</p>' )
+				// Empty p tags should just be br tags
+				.replace( /<p><\/p>/g, '<br>' )
+				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
+				.replace( /&amp;amp;nbsp;/g, '&amp;nbsp;' )
+				.replace( /&amp;lt;br&amp;gt;/g, '&lt;br&gt;' )
+				.replace( /&amp;lt;span class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			context.$content.html( html );
+			context.oldHTML = html;
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
@@ -976,19 +1137,19 @@ if ( typeof context == 'undefined' ) {
 	window.onbeforeunload = function() {
 		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
 		return context.fallbackWindowOnBeforeUnload ? context.fallbackWindowOnBeforeUnload() : null;
-	}
+	};
 }
 
 /* API Execution */
 
 // Since javascript gives arguments as an object, we need to convert them so they can be used more easily
-arguments = $.makeArray( arguments );
+var args = $.makeArray( arguments );
 // There would need to be some arguments if the API is being called
-if ( arguments.length > 0 ) {
+if ( args.length > 0 ) {
 	// Handle API calls
-	var call = arguments.shift();
+	var call = args.shift();
 	if ( call in context.api ) {
-		context.api[call]( context, typeof arguments[0] == 'undefined' ? {} : arguments[0] );
+		context.api[call]( context, typeof args[0] == 'undefined' ? {} : args[0] );
 	}
 }
 
