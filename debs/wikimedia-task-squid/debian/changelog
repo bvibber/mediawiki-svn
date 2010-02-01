@@ -1,3 +1,9 @@
+wikimedia-task-squid (0.06) karmic; urgency=low
+
+  * Force overwrite of existing XFS file systems (-f mkfs.xfs option)
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 01 Feb 2010 22:44:11 +0000
+
 wikimedia-task-squid (0.05) karmic; urgency=low
 
   * Add 'nodiratime' to the aufs mount options
