@@ -26,7 +26,6 @@ class SpecialCode extends SpecialPage {
 			$params = explode( '/', $subpage );
 			switch( count( $params ) ) {
 			case 1:
-				echo "WHY ARE WE HERE ";
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
