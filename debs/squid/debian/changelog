@@ -1,8 +1,17 @@
-squid (2.7.6-1wm2) hardy; urgency=low
+squid (2.7.7-1wm1) karmic; urgency=low
 
+  [ Tim Starling ]
   * Added error-en.html 
 
- -- Tim Starling <tstarling@wikimedia.org>  Sun, 31 Jan 2010 13:11:13 +1100
+  [ Mark Bergsma ]
+  * Upgrade to upstream version 2.7.7
+  * Increase maximum FDs to 131072, default at 65535
+  * Build for karmic:
+    - Replace libdb4.4-dev build dependency by libdb4.7-dev
+    - Drop tcmalloc linking, as it's uninstallable in karmic
+  * Add LSB information to init scripts
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 01 Feb 2010 13:14:56 +0000
 
 squid (2.7.6-1wm1) hardy; urgency=low
 

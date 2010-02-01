@@ -5,6 +5,16 @@
 # Version:	@(#)squid.rc  2.20  01-Oct-2001  miquels@cistron.nl
 #
 
+### BEGIN INIT INFO
+# Provides:          squid-frontend
+# Required-Start:    $all
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start's the frontend Squid daemon
+# Description:       Controls the frontend Squid daemon
+### END INIT INFO
+
 NAME=squid-frontend
 DAEMON=/usr/sbin/squid-frontend
 LIB=/usr/lib/squid

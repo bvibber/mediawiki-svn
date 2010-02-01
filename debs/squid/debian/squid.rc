@@ -5,6 +5,17 @@
 # Version:	@(#)squid.rc  2.20  01-Oct-2001  miquels@cistron.nl
 #
 
+### BEGIN INIT INFO
+# Provides:          squid
+# Required-Start:    $all
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start's the backend Squid daemon
+# Description:       Controls the backend Squid daemon
+#		     	Action 'clean' wipes the disk cache
+### END INIT INFO
+
 NAME=squid
 DAEMON=/usr/sbin/squid
 LIB=/usr/lib/squid
