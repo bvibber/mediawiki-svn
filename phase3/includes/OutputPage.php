@@ -183,7 +183,8 @@ class OutputPage {
 		if( $this->mJQueryDone )
 			return ;
 		$this->mJQueryDone = true;
-		// @todo We should deprecate wikibits in favor of some mwEmbed pieces and jQuery
+
+		// Set core Classes
 		$coreClasses = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
 
 		//make sure scripts are on top:
@@ -280,7 +281,7 @@ class OutputPage {
 	 */
 	function getURIDparam( $classAry = array() ) {
 		global $wgDebugJavaScript, $wgStyleVersion, $IP, $wgScriptModifiedFileCheck;
-		global $wgLang,  $wgScriptModifiedMsgCheck;
+		global $wgLang, $wgUser, $wgScriptModifiedMsgCheck;
 
 		//Always the language key param to keep urls distinct per language
 		$uriParam = 'uselang=' . $wgLang->getCode();
@@ -292,18 +293,24 @@ class OutputPage {
 			if( gettype( $classAry) == 'string'  ){
 				$classAry = array( $classAry );
 			}
-			$ftime =  $frev = 0;
+			$ftime =  $currentTitleRev = 0;
 			foreach( $classAry as $class ) {
 				// Add the latest revision ID if the class set includes a WT (wiki title)
 				if( substr($class, 0, 3) == 'WT:'){
-					$title_str = substr($class, 3);
-					$t = Title::newFromText( $title_str );
-					if( $t && $t->exists() ) {
-						if( $t->getLatestRevID() > $frev  )
-							$frev = $t->getLatestRevID();
+					$titleString = substr($class, 3);
+
+					//Check for special case of generated js
+					if( $titleString[0] == '-' ){
+						$currentTitleRev = self::getLatestTitleRev( $currentTitleRev, 'MediaWiki:Common.js' );
+						// Also check MediaWiki:{skinName}.js
+						$sk = $wgUser->getSkin();
+						$currentTitleRev = self::getLatestTitleRev( $currentTitleRev,
+							'MediaWiki:' . ucfirst( $sk->getSkinName() ) . '.js' );
+					} else {
+						$currentTitleRev = self::getLatestTitleRev( $currentTitleRev, $titleString );
 					}
 				}else{
-					//check for file modified time:
+					// Check for file modified time:
 					if( $wgScriptModifiedFileCheck ) {
 						$jsPath =  jsScriptLoader::getJsPathFromClass( $class );
 						if( $jsPath ) {
@@ -314,18 +321,18 @@ class OutputPage {
 					}
 				}
 			}
-			//build the actual unique request id:
+			// uild the actual unique request id:
 			$uriParam .= "&urid={$wgStyleVersion}";
 
 			// Add the file modification time if set
 			if( $ftime != 0 )
 				$uriParam .= "_" . $ftime;
 
-			//add the wiki rev id if set
-			if( $frev != 0 )
-				$uriParam.= "_" . $frev;
+			// Add the wiki rev id if set
+			if( $currentTitleRev != 0 )
+				$uriParam.= "_" . $currentTitleRev;
 
-			//add the latest msg rev id if $wgScriptModifiedMsgCheck is enabled:
+			// Add the latest msg rev id if $wgScriptModifiedMsgCheck is enabled:
 			if( $wgScriptModifiedMsgCheck ){
 				$dbr = wfGetDB( DB_SLAVE );
 				// Grab the latest mediaWiki msg rev id:
@@ -343,10 +350,25 @@ class OutputPage {
 						$uriParam.= '_' . $rc->rc_id;
 					}
 				}
-				//@@todo we could otherwise use the the SVN version if not already covered by $wgStyleVersion above
 			}
 			return $uriParam;
 		}
+	}
+	/**
+	 * Get the latest title revision from a title
+	 * update the tRev if larger than the current
+	 * @param {Number} $currentTitleRev Current latest revision
+	 * @param {String} $titleString String of title to check
+	 * @return {Number} Latest revision number
+	 */
+	public static function getLatestTitleRev( $titleRev, $titleString ){
+		$t = Title::newFromText( $titleString );
+		if( $t && $t->exists() ) {
+			if( $t->getLatestRevID() > $titleRev  ){
+				return $t->getLatestRevID();
+			}
+		}
+		return $titleRev;
 	}
 	/**
 	 * Given a script path, get the JS class name, or false if no such path is registered.
