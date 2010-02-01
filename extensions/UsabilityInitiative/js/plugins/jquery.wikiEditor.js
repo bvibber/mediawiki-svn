@@ -466,6 +466,17 @@ if ( typeof context == 'undefined' ) {
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				retval = context.$iframe[0].contentWindow.getSelection();
+				if ( $.browser.opera ) {
+					// Opera strips newlines in getSelection(), so we need something more sophisticated
+					if ( retval.rangeCount > 0 ) {
+						retval = context.fn.htmlToText( $( '<pre />' )
+								.append( retval.getRangeAt( 0 ).cloneContents() )
+								.html()
+						);
+					} else {
+						retval = '';
+					}
+				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
 				// IE
 				retval = context.$iframe[0].contentWindow.document.selection.createRange();
