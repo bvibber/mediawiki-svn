@@ -161,28 +161,27 @@ class CodeRevisionListView extends CodeView {
 	}
 	
 	function getRevCountQuery( $dbr ) {
-		$tables = array(  $dbr->tableName( 'code_rev' ) );
-		$selectFields = array( 'COUNT( cr_id ) AS rev_count' );
+		$tables = array( $dbr->tableName( 'code_rev' ) );
+		$selectFields = array( 'COUNT( DISTINCT cr_id ) AS rev_count' );
 		// count if code_rev where path matches
 		if ( $this->mPath ) {
-			$whereCond = 'cr_id IN' .
-						' ( SELECT cp_rev_id FROM '. $dbr->tableName( 'code_paths' ) . ' WHERE' .
-						' cp_repo_id = ' . $this->mRepo->getId(). ' AND' .
-						' cp_path LIKE ' . $dbr->addQuotes( $this->mPath . '%' ) . ' AND' .
-						// performance
-						' cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 ) . 
-						$this->getSpecializedWhereClause( $dbr ) .
-						' )';
+			$tables[] = $dbr->tableName( 'code_paths' );
+			$whereCond = array('cr_repo_id' => $this->mRepo->getId(),
+							'cr_id = cp_rev_id', 
+							' cp_path LIKE ' . $dbr->addQuotes( $this->mPath . '%' ),
+							// performance
+							' cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 )
+						);
 		// No path; count of code_rev
 		} else {
-			$whereCond = 'cr_repo_id = ' . $this->mRepo->getId() .
-					$this->getSpecializedWhereClause( $dbr );
+			$whereCond = array('cr_repo_id' => $this->mRepo->getId());
 		}
-		return $dbr->selectRow ($tables, $selectFields, $whereCond);
+		$whereCond += $this->getSpecializedWhereClause( $dbr );
+		return $dbr->selectRow( $tables, $selectFields, $whereCond );
 	}
 	
 	function getSpecializedWhereClause( $dbr ) {
-		return '';
+		return array();
 	}
 	
 }

@@ -11,7 +11,7 @@ class CodeRevisionStatusView extends CodeRevisionListView {
 	}
 	
 	function getSpecializedWhereClause( $dbr ) {
-		return ' AND cr_status = ' . $dbr->addQuotes( $this->mStatus );
+		return array( 'cr_status' => $this->mStatus );
 	}
 }
 

@@ -45,7 +45,7 @@ class CodeRevisionAuthorView extends CodeRevisionListView {
 	}
 	
 	function getSpecializedWhereClause( $dbr ) {
-		return ' AND cr_author = ' . $dbr->addQuotes( $this->mAuthor );
+		return array( 'cr_author' => $this->mAuthor );
 	}
 
 }
