@@ -38,7 +38,7 @@ class AdvancedSearchCategoryIntersector
 	static function update($pageid, $categories)
 	{
 		global $wgContLang;
-		$ctext = $wgContLang->stripForSearch(implode(' ', $categories));
+		$ctext = $wgContLang->normalizeForSearch(implode(' ', $categories));
 		$ctext = self::getSearchEngine()->normalizeText($ctext);
 		$dbw = wfGetDb(DB_MASTER);
 		$dbw->replace('categorysearch', 'cs_page',

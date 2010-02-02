@@ -21,7 +21,7 @@ class MWSearchUpdater {
 	 */
 	function updatePage( $dbname, $title, $text ) {
 		global $wgContLang;
-		$text = $wgContLang->stripForSearch( $text, false );
+		$text = $wgContLang->normalizeForSearch( $text );
 		return MWSearchUpdater::sendRPC( 'searchupdater.updatePage',
 			array( $dbname, $title, $text ) );
 	}

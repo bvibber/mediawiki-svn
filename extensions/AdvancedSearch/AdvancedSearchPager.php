@@ -402,7 +402,7 @@ class AdvancedSearchPager
 				else
 				{
 					global $wgContLang;
-					$s = $wgContLang->stripForSearch($b);
+					$s = $wgContLang->normalizeForSearch($b);
 					$s = $searchEngine->normalizeText($s);
 					$s = $this->mDb->strencode($s);
 					# If $s contains spaces or ( ) :, quote it
