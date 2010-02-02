@@ -60,7 +60,7 @@ function efMessageCommonsPreload( $title, &$message ) {
 	$text = null;
 	
 	$msgNames[] = $msgName = $title;
-	if( strpos( $msgName, '/' ) !== false ) {
+	if( strpos( $msgName, '/' ) === false ) {
 		$msgNames[] = sprintf( '%s/%s', $msgName, $wgLang->getCode() );
 		$msgNames[] = sprintf( '%s/%s', $msgName, $wgContLang->getCode() );
 	}
