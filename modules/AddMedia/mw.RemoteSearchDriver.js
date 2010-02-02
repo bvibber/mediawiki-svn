@@ -503,15 +503,27 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	 * Get license icon html
 	 * @param license_key  the license key (ie "by-sa" or "by-nc-sa" etc)
+	 * 
+	 * @return {jQuery element} A div containing the license icons.
 	 */
 	getLicenseIconHtml: function( licenseObj ) {
-		// mw.log('output images: '+ imgs);
-		return '<div class="rsd_license" title="' + licenseObj.title + '" >' +
-			'<a target="_new" href="' + licenseObj.lurl + '" ' +
-			'title="' + licenseObj.title + '">' +
-			licenseObj.img_html +
-			'</a>' +
-			'</div>';
+		
+		var $licenseLink = $j( '<a />' )
+			.attr( {
+				target: '_new',
+				href: licenseObj.lurl,
+				title: licenseObj.title
+			} )
+			.append( licenseObj.img_html );
+		
+		$licenseBox = $j( '<div />' )
+			.addClass( 'rsd_license' )
+			.attr( {
+				title: licenseObj.title
+			} )
+			.append( $licenseLink );
+
+		return $licenseBox;
 	},
 
 	/**
@@ -1373,7 +1385,7 @@ mw.RemoteSearchDriver.prototype = {
 	showResults: function() {
 		mw.log( 'f:showResults::' + this.current_provider );
 		var _this = this;
-		var o = '';
+		
 		var provider = this.content_providers[ this.current_provider ];
 		
 		// Result page structure:
@@ -1418,11 +1430,11 @@ mw.RemoteSearchDriver.prototype = {
 		// Output all the results for the current current_provider
 		if ( typeof provider['sObj'] != 'undefined' ) {
 			$j.each( provider.sObj.resultsObj, function( resIndex, resource ) {
-				o += _this.getResultHtml( provider, resIndex, resource );
+				$resultsList.append( _this.getResultHtml( provider, resIndex, resource ) );
 				numResults++;
 			} );
 			// Put in the tab output (plus clear the output)
-			$resultsList.append( o + '<div style="clear: both" />' );
+			$resultsList.append( '<div style="clear: both" />' );
 		}
 		
 		$resultsBody.append( $resultsList );
@@ -1476,70 +1488,95 @@ mw.RemoteSearchDriver.prototype = {
 	* Get result html for box layout (see getResultHtml for params) 
 	*/
 	getResultHtmlBox: function( provider, resIndex, resource ) {
-		var o = '';	
-		o += '<div id="mv_result_' + resIndex + '" ' + 
-				'class="mv_clip_box_result" ' + 
-				'style="' + 
-				'width:' + this.thumb_width + 'px;' + 
-				'height:' + ( this.thumb_width - 20 ) + 'px;' + 
-				'position:relative;">';
+		
+		var $resultBox = $j( '<div />' )
+			.addClass( 'mv_clip_box_result rsd_box_result' )
+			.attr( {
+				id: 'mv_result_' + resIndex
+			} )
+			.width( this.thumb_width )
+			.height( this.thumb_width - 20 );
 		
 		// Check for missing poster types for audio
-		if ( resource.mime == 'audio/ogg' && !resource.poster ) {
+		if ( (resource.mime == 'audio/ogg' || resource.mime == 'application/ogg') 
+			&& !resource.poster ) {
 			resource.poster = mw.getConfig( 'images_path' ) + 'sound_music_icon-80.png';
 		}
+
+		var $resultThumb = $j( '<img />' )
+			.addClass( 'rsd_res_item' )
+			.attr( {
+				id: 'res_' + provider.id + '__' + resIndex,
+				title: resource.title,
+				src: provider.sObj.getImageTransform( resource, { 'width': this.thumb_width } )
+			} )
+			.width( this.thumb_width );
 		
-		// Get a thumb with proper resolution transform if possible:
-		var thumbUrl = provider.sObj.getImageTransform( resource, 
-			{ 'width' : this.thumb_width } );
+		$resultBox.append( $resultThumb );
 		
-		o += '<img title="' + resource.title  + '" ' +
-			'class="rsd_res_item" id="res_' + provider.id + '__' + resIndex + '" ' +
-			'style="width:' + this.thumb_width + 'px;" ' + 
-			'src="' + thumbUrl + '">';
-			
-		// Add a linkback to resource page in upper right:
 		if ( resource.link ) {
-			o += '<div class="' + 
-					'rsd_linkback ui-corner-all ui-state-default ui-widget-content" >' +
-				'<a target="_new" title="' + gM( 'mwe-resource_description_page' ) +
-				'" href="' + resource.link + '">' + gM( 'mwe-link' ) + '</a>' +
-				'</div>';
-		}
-
-		// Add file type icon if known
+			var $resultPageLink = $j( '<div />' )
+				.addClass( 'rsd_linkback ui-corner-all ui-state-default ui-widget-content' )
+				.append( $j( '<a />' )
+					     	.attr( {
+					     		target: '_new',
+					     		title: gM( 'mwe-resource_description_page' ),
+					     		href: resource.link
+					     	} )
+					     	.append( gM( 'mwe-link' )));
+			
+			$resultBox.append( $resultPageLink );
+		}		
+		
 		if ( resource.mime ) {
-			o += this.getTypeIcon( resource.mime );
+			$resultBox.append( this.getTypeIcon( resource.mime ) );
 		}
-
+		
 		// Add license icons if present
-		if ( resource.license )
-			o += this.getLicenseIconHtml( resource.license );
-
-		o += '</div>';
-		return o;
+		if ( resource.license ) {
+			$resultBox.append( this.getLicenseIconHtml( resource.license ) );
+		}
+		
+		$resultBox.append( '<div style="clear: both" />' );
+		
+		return $resultBox;
 	},
 	
 	/**
 	* Get result html for list layout (see getResultHtml for params) 	
 	*/
 	getResultHtmlList:function( provider, resIndex, resource ) {
-		var o = '';
-		o += '<div id="mv_result_' + resIndex + '" class="mv_clip_list_result" style="width:90%">';
-		o += '<img ' + 
-				'title="' + resource.title + '" ' + 
-				'class="rsd_res_item" id="res_' + provider.id + '__' + resIndex + '" ' + 
-				'style="float:left;width:' + this.thumb_width + 'px;" ' +
-				'src="' + provider.sObj.getImageTransform( resource, { 'width': this.thumb_width } ) + '">';
+		
+		var $resultBox = $j( '<div />' )
+			.addClass( 'mv_clip_list_result' )
+			.attr( {
+				id: 'mv_result_' + resIndex
+			} )
+			.width( '90%' );
+		
+		if ( resource.description ) {
+			$resultBox.text( resource.description );
+		}
+		
+		var $resultThumb = $j( '<img />' )
+			.addClass( 'rsd_res_item rsd_list_item' )
+			.attr( {
+				id: 'res_' + provider.id + '__' + resIndex,
+				title: resource.title,
+				src: provider.sObj.getImageTransform( resource, { 'width': this.thumb_width } )
+			} )
+			.width( this.thumb_width );
+		
+		$resultBox.prepend( $resultThumb );
 				
 		// Add license icons if present
-		if ( resource.license )
-			o += this.getLicenseIconHtml( resource.license );
+		if ( resource.license ) {
+			$resultBox.append( this.getLicenseIconHtml( resource.license ) );
+		}
+		
+		$resultBox.append( '<div style="clear: both" />' );
 
-		o += resource.desc ;
-		o += '<div style="clear:both" />';
-		o += '</div>';	
-		return o;
+		return $resultBox;
 	},
 	
 	/**
