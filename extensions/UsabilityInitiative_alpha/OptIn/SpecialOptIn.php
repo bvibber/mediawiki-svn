@@ -57,7 +57,7 @@ class SpecialOptIn extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'OptIn' );
-		wfLoadExtensionMessages( 'OptIn' );
+		wfLoadExtensionMessages( 'OptIn_alpha' );
 	}
 
 	public function execute( $par ) {

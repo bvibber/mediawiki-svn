@@ -9,7 +9,7 @@
 class SpecialPrefStats extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PrefStats' );
-		wfLoadExtensionMessages( 'PrefStats' );
+		wfLoadExtensionMessages( 'PrefStats_alpha' );
 	}
 
 	function execute( $par ) {

@@ -84,9 +84,9 @@ $wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
 $wgSpecialPageGroups['PrefStats'] = 'wiki';
 
 // Adds Internationalized Messages
-$wgExtensionMessagesFiles['PrefStats'] =
+$wgExtensionMessagesFiles['PrefStats_alpha'] =
 	dirname( __FILE__ ) . '/PrefStats.i18n.php';
-$wgExtensionAliasesFiles['PrefStats'] =
+$wgExtensionAliasesFiles['PrefStats_alpha'] =
 	dirname( __FILE__ ) . '/PrefStats.alias.php';
 
 // Registers Hooks

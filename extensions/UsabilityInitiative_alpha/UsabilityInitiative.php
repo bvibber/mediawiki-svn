@@ -40,7 +40,7 @@ $wgAutoloadClasses['UsabilityInitiativeHooks'] =
 	dirname( __FILE__ ) . "/UsabilityInitiative.hooks.php";
 
 // Adds Internationalized Messages
-$wgExtensionMessagesFiles['UsabilityInitiative'] =
+$wgExtensionMessagesFiles['UsabilityInitiative_alpha'] =
 	dirname( __FILE__ ) . "/UsabilityInitiative.i18n.php";
 
 // Registers Hooks

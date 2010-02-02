@@ -65,5 +65,5 @@ $wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
 $wgGroupPermissions['sysop']['clicktrack'] = true;
 
 // Adds Internationalized Messages
-$wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
-$wgExtensionAliasesFiles['ClickTracking'] = $dir . 'ClickTracking.alias.php';
+$wgExtensionMessagesFiles['ClickTracking_alpha'] = $dir . 'ClickTracking.i18n.php';
+$wgExtensionAliasesFiles['ClickTracking_alpha'] = $dir . 'ClickTracking.alias.php';
