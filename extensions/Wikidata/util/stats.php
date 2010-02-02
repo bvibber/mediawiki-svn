@@ -67,11 +67,13 @@ $width = 500;
 $limit = 500;
 $max = 0;
 $total = 0 ;
+$nblang = 0 ;
 while ( $row = mysql_fetch_array( $result, MYSQL_NUM ) ) {
   if ( $max < $row[1] )$max = $row[1];
   $wi = ceil( ( ( $row[1] / $max ) * $width ) );
   $per = ceil( ( ( $row[1] / $max ) * 100 ) );
   $total += $row[1] ;
+	$nblang++ ;
   if ( $row[1] > $limit ) {
     $tableLang .= "<tr><td >" . $lang[$row[0]] . '</td><td align="right">' . $row[1] . "</td><td width=30></td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
   } else {
@@ -87,7 +89,7 @@ echo "<center>
 ";
 
 echo "<p>\n";
-echo "Total <b>$defined_meanings</b> DefinedMeanings in database, linking together <b>$total</b> Expressions. Broken down per language:\n";
+echo "Total <b>$defined_meanings</b> DefinedMeanings in database, linking together <b>$total</b> Expressions in <b>$nblang</b> languages:\n";
 echo "</p>\n";
 echo "<hr>\n";
 
