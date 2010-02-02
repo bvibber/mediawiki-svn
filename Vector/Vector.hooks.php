@@ -1,4 +1,4 @@
-<?php
+o<?php
 /**
  * Hooks for Usability Initiative Vector extension
  *
@@ -19,10 +19,10 @@ class VectorHooks {
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 7 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 19 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 20 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 19 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 20 ),
 		),
 	);
 	static $modules = array(
