@@ -149,10 +149,21 @@ $messages['az'] = array(
  * @author Man77
  */
 $messages['bar'] = array(
+	'passwordreset' => 'Passwoat zrucksetzn',
+	'passwordreset-desc' => "[[Special:PasswordReset|Zrucksetzn vu am Benutza-Passwoat]] – s'''passwordreset''-Recht wiad braucht",
+	'passwordreset-invalidusername' => 'Ungüitiga Benutzanãm',
+	'passwordreset-emptyusername' => 'Laara Benutzanãm',
+	'passwordreset-nopassmatch' => 'Passwöata passn ned zsãmm',
+	'passwordreset-badtoken' => 'Ungüitiga „Edit Token“',
 	'passwordreset-username' => 'Benutzanãm:',
 	'passwordreset-newpass' => 'Neichs Passwoat:',
 	'passwordreset-confirmpass' => 'Passwoat bestäting:',
 	'passwordreset-submit' => 'Passwoat zrucksetzn',
+	'passwordreset-success' => "s'Passwoat fia'd Benutza-ID $1 is zruckgsetzt woan",
+	'passwordreset-disableuser' => 'Benutzakonto deaktivian?',
+	'passwordreset-disablesuccess' => "s'Benutzakonto mid da Benutza-ID $1 is deaktiviad woan.",
+	'passwordreset-accountdisabled' => 'Benutzakonto is deaktiviad',
+	'disabledusers' => 'Deaktiviade Benutzakontn',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

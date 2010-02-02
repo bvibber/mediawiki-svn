@@ -66,6 +66,14 @@ $messages['ar'] = array(
 	'cooperationstatistics-legendmore' => 'أو أكثر من المحررين.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Man77
+ */
+$messages['bar'] = array(
+	'cooperationstatistics-tablearticle' => 'Seitnãnzåih',
+	'cooperationstatistics-articles' => '$1 Seitn',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -207,6 +215,7 @@ Ver también las [[Special:MostRevisors|'''páginas con más revisores''']] y la
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|página|páginas}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|tiene|tienen}} $1 {{PLURAL:$1|editor|editores}}',
 	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|tiene|tienen}} $1 {{PLURAL:$1|editor|o menos editores}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|tiene|tienen}} $1 o más editores',
 	'cooperationstatistics-legendmore' => 'o más editores.',
 );
 

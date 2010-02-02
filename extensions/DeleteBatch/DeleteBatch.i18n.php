@@ -362,10 +362,12 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
  * @author Crazymadlover
  * @author Imre
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'deletebatch-caption' => 'Lista de páginas:',
 	'deletebatch-link-back' => 'Regresar a la página especial',
+	'deletebatch-as' => 'Ejecutar el script como:',
 	'deletebatch-both-modes' => 'Por favor escoger ya sea una página específica o una lista dada de páginas.',
 	'deletebatch-or' => '<b>o</b>',
 	'deletebatch-delete' => 'Borrar',

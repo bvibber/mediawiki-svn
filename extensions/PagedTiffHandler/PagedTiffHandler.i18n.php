@@ -117,6 +117,20 @@ $messages['de'] = array(
 	'tiff-file-info-size' => '(Seite $5, $1 × $2 Pixel, Dateigröße: $3, MIME-Typ: $4)',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'tiff_no_metadata' => 'No se pudo obtener los metadatos de TIFF',
+	'tiff_page_error' => 'Número de página fuera de rango',
+	'tiff_too_many_embed_files' => 'La imagen contiene demasiados archivos incrustados.',
+	'tiff_file_too_large' => 'El archivo subido es muy grande y ha sido rechazado.',
+	'tiff_out_of_service' => 'El archivo subido no pudo ser procesado. ImageMagick no está disponible.',
+	'tiff_too_much_meta' => 'Los metadatos utilizan demasiado espacio.',
+	'tiff_size_error' => 'El tamaño del archivo reportado no coincide con el tamaño real del archivo.',
+	'tiff_script_detected' => 'El archivo cargado contiene scripts.',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Jagwar

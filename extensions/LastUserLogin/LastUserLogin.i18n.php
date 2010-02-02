@@ -73,6 +73,19 @@ $messages['de'] = array(
 	'lastuserlogin_daysago' => 'Tage',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'lastuserlogin' => 'Último acceso de usuario',
+	'lastuserlogin_userid' => 'Nombre de usuario',
+	'lastuserlogin_username' => 'Nombre real',
+	'lastuserlogin_useremail' => 'Correo electrónico del usuario',
+	'lastuserlogin_lastlogin' => 'Último acceso',
+	'lastuserlogin_daysago' => 'Días atrás',
+	'right-lastlogin' => 'Ver la última vez que un usuario se conectó',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -116,6 +129,20 @@ $messages['gl'] = array(
 	'lastuserlogin_lastlogin' => 'Último acceso',
 	'lastuserlogin_daysago' => 'Días atrás',
 	'right-lastlogin' => 'Ver a última vez que un usuario se conectou',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'lastuserlogin' => 'Letschti Aamäldig vum Bentutzer',
+	'lastuserlogin-desc' => 'Zeigt d Zyt aa, wu ne Benutzer sich s letscht Mol aagmäldet gha het',
+	'lastuserlogin_userid' => 'Benutzername',
+	'lastuserlogin_username' => 'Echte Name',
+	'lastuserlogin_useremail' => 'E-Mail',
+	'lastuserlogin_lastlogin' => 'Letschti Aamäldig',
+	'lastuserlogin_daysago' => 'Täg',
+	'right-lastlogin' => 'D Zyt aaluege, wu ne Benutzer sich s letscht Mol aagmäldet gha het',
 );
 
 /** Interlingua (Interlingua)
@@ -241,14 +268,18 @@ $messages['pms'] = array(
 	'right-lastlogin' => "Vëdde l'ùltima vira che n'utent a l'é intrà ant ël sistema",
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
 $messages['ru'] = array(
 	'lastuserlogin' => 'Недавние посещения пользователей',
+	'lastuserlogin-desc' => 'Показывает время последнего входа участника',
 	'lastuserlogin_userid' => 'Имя пользователя',
 	'lastuserlogin_username' => 'Настоящее имя',
 	'lastuserlogin_useremail' => 'Электронная почта',
 	'lastuserlogin_lastlogin' => 'Недавнее посещение',
 	'lastuserlogin_daysago' => 'Дней назад',
+	'right-lastlogin' => 'просмотр времени последнего входа участника',
 );
 
 /** Telugu (తెలుగు)
@@ -263,5 +294,19 @@ $messages['te'] = array(
 	'lastuserlogin_lastlogin' => 'చివరి ప్రవేశం',
 	'lastuserlogin_daysago' => 'రోజుల క్రితం',
 	'right-lastlogin' => 'వాడుకర్లు చివరిసారి ప్రవేశించిన సమయాన్ని చూడగలగడం',
+);
+
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'lastuserlogin' => 'Останній вхід користувача у систему',
+	'lastuserlogin-desc' => 'Показує час останнього входу користувача у систему',
+	'lastuserlogin_userid' => "Ім'я користувача",
+	'lastuserlogin_username' => "Справжнє ім'я",
+	'lastuserlogin_useremail' => 'Електронна пошта користувача',
+	'lastuserlogin_lastlogin' => 'Останній вхід в систему',
+	'lastuserlogin_daysago' => 'Днів тому',
+	'right-lastlogin' => 'Перегляд часу останнього входу користувача у систему',
 );
 

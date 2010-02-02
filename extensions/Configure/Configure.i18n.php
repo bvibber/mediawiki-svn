@@ -5668,6 +5668,8 @@ $messages['lb'] = array(
 	'configure-db-error' => "D'Datebank an däer, no Ären Informatiounen d'Konfiguratioun ($1) dra soll sinn, gëtt et net.
 Leet se w.e.g. un a féiert configure.sql doran aus oder verbessert hiren Numm.",
 	'configure-db-table-error' => "D'Datebank déi dir uginn hutt huet net déi gebrauchten Tabellen. Benotzt w.e.g. configure.sql an dëser Datebank.",
+	'configure-directory-not-writable' => "An de Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, kann näischt geschriwwe ginn.
+Ännert dat w.e.g. esou datt e mat PHP dra schreiwe kann fir dës Erweiderung ze benotzen.",
 	'configure-edit-old' => "'''Passt op''': Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun (sou wéi den $1).",
 	'configure-error' => "D'Configuration konnt net gespäichert ginn",
 	'configure-js-add' => 'Eng nei Entrée derbäisetzen',

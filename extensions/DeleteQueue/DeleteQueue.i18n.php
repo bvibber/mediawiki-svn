@@ -1546,6 +1546,7 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
  * @author Imre
  * @author Remember the dot
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistema de listas para organizar los borrados]]',
@@ -1684,8 +1685,10 @@ Puedes [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registrar tu propio apoyo, u
 	'deletequeue-list-header-votes' => 'Apoyos y objeciones',
 	'deletequeue-list-header-expiry' => 'Expirar',
 	'deletequeue-list-header-discusspage' => 'Página de discusión',
+	'deletequeue-case-intro' => 'Esta página lista información sobre un caso específico de borrado.',
 	'deletequeue-list-header-reason' => 'Razón para borrado',
 	'deletequeue-case-votes' => 'Apoyos/objeciones:',
+	'deletequeue-case-title' => 'Detalles del caso de borrado',
 	'deletequeue-case-details' => 'Detalles básicos',
 	'deletequeue-case-page' => 'Página:',
 	'deletequeue-case-reason' => 'Razón:',
@@ -4647,10 +4650,94 @@ $messages['pms'] = array(
 	'deletequeue-action-queued' => 'Scancelassion',
 	'deletequeue-action' => 'Sugerì la scancelassion',
 	'deletequeue-action-title' => 'Sugerì la scancelassion ëd "$1"',
-	'deletequeue-action-text' => "Sta wiki-sì a l'ha un sert nùmer ëd process për scanselé pàgine:
-*S'it chërde che sta pàgina-sì aj garantissa, it peule [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} sugerila për ''scanselassion lesta''].
-*Se sta pàgina-sì a garantiss pa na scanselassion lesta, ma la ''scanselassion a sarà pa discutìbil'', it dovrìe [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propon-e scanselassion pa discutibla].
-*Se la scanselassion dë sta pàgina-sì a l'é ''bel fé ch'a sia contestà'', it dovrìe [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} deurbe na discussion].",
+	'deletequeue-action-text' => "Sta wiki-sì a l'ha un sert nùmer ëd process për scancelé dle pàgine:
+*S'a chërd che sta pàgina-sì a-j garantissa, a peul [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} sugerila për la ''scancelassion lesta''].
+*Se sta pàgina-sì a garantiss pa na scancelassion lesta, ma la ''scancelassion a sarà pa discutìbil'', chiel a dovrìa [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} propon-e na scancelassion pa discutìbil].
+*Se la scancelassion dë sta pàgina-sì a l'é ''bel fé ch'a sia contestà'', a dovrìa [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} deurbe na discussion].",
+	'deletequeue-action-text-queued' => "A peul visualisé le pàgine sì-dapress për cost cas dë scancelassion:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Visualisé j'aprovassion e j'obiession al moment],
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Apreuvé o contesté la scancelassion dë sta pàgina].",
+	'deletequeue-permissions-noedit' => 'A deuv podèj modifiché na pàgina për podèj modifiché sò stat dë scancelassion.',
+	'deletequeue-generic-reasons' => "* Rason genérica
+** Vandalism
+** Rumenta
+** Manutension
+** Fòra d'ij but dël proget",
+	'deletequeue-nom-alreadyqueued' => "Sta pàgina-sì a l'é già ant na coa dë scancelassion.",
+	'deletequeue-speedy-title' => 'Marché "$1" për na scancelassion lesta',
+	'deletequeue-speedy-text' => "A peul dovré sto formolari-sì për marché la pàgina '''$1''' për na scancelassion lesta.
+
+N'aministrator a revisionërà st'arcesta-sì, e, s'a fussa bin fondà, a scancelërà la pàgina.
+A deuv selessioné na rason për la scancelassion da la lista a ridò sì-dapress, e gionté tuta àutra anformassion rilevanta.",
+	'deletequeue-prod-title' => 'Propon-e la scancelassion ëd "$1"',
+	'deletequeue-prod-text' => "A peul dovré sto formolari-sì për propon-e che \"'''\$1'''\" a sia scancelà.
+
+Se, apress sinch di, gnun a l'ha contestà la scancelassion dë sta pàgina-sì, a sarà scancelà da n'aministrator apress na revision final.",
+	'deletequeue-delnom-reason' => 'Rason për la segnalassion:',
+	'deletequeue-delnom-otherreason' => 'Àutra rason',
+	'deletequeue-delnom-extra' => 'Anformassion suplementar:',
+	'deletequeue-delnom-submit' => 'Spediss la segnalassion',
+	'deletequeue-log-nominate' => "segnalà [[$1]] për la scancelassion ant la coa '$2'.",
+	'deletequeue-log-rmspeedy' => 'arfudà dë scancelé an pressa [[$1]].',
+	'deletequeue-log-requeue' => "tramudà [[$1]] a na coa dë scancelassion diferenta: da '$2' a '$3'.",
+	'deletequeue-log-dequeue' => "gavà [[$1]] da la coa dë scancelassion '$2'.",
+	'right-speedy-nominate' => 'Signala dle pàgine për na scancelassion lesta',
+	'right-speedy-review' => 'Revisioné le signalassion dë scancelassion lesta',
+	'right-prod-nominate' => 'Propon-e la scancelassion ëd pàgine',
+	'right-prod-review' => 'Revisioné le propòste dë scancelassion nen contestàbil',
+	'right-deletediscuss-nominate' => 'Ancaminé le discussion an sla scancelassion',
+	'right-deletediscuss-review' => 'Saré le discussion an sla scancelassion',
+	'right-deletequeue-vote' => 'Aprové o critiché le scancelassion',
+	'deletequeue-queue-speedy' => 'Scancelassion lesta',
+	'deletequeue-queue-prod' => 'Scancelassion proponùa',
+	'deletequeue-queue-deletediscuss' => 'Discussion an sla scancelassion',
+	'deletequeue-page-speedy' => "Sta pàgina-sì a l'é stàita signalà për na scancelassion lesta.
+La rason dàita për la scancelassion a l'é ''$1''.",
+	'deletequeue-page-prod' => "A l'é proponusse che sta pàgina-sì a sia scancelà.
+La rason dàita a l'era ''$1''.
+Se sta propòsta a l'é pa contestà nen pì an là che ij ''$2'', sta pàgina-sì a sarà scancelà.
+A peul contesté la scancelassion dë sta pàgina-sì an [{{fullurl:{{FULLPAGENAME}}|action=delvote}} criticand la scancelassion].",
+	'deletequeue-page-deletediscuss' => "Sta pàgina-sì a l'é stàita proponùa për la scancelassion, e cola propòsta a l'é stàita contestà.
+La rason dàita a l'era ''$1''.
+Na discussion a l'é an cors su [[$5]], e a finirà ai ''$2''.",
+	'deletequeue-notqueued' => "La pàgina ch'it l'has selessionà al moment a l'é pa signalà për la scancelassion",
+	'deletequeue-review-action' => 'Assion da fé:',
+	'deletequeue-review-delete' => 'Scancelé la pàgina.',
+	'deletequeue-review-change' => 'Scancelé costa pàgina, ma con na rason diferenta.',
+	'deletequeue-review-requeue' => 'Tramuda sta pàgina-sì a la coa sota:',
+	'deletequeue-review-dequeue' => 'Fé gnun-e assion, e gavé la pàgina da la coa dje scancelassion.',
+	'deletequeue-review-reason' => 'Coment:',
+	'deletequeue-review-newreason' => 'Neuva rason:',
+	'deletequeue-review-newextra' => 'Anformassion suplementar:',
+	'deletequeue-review-submit' => 'Salvé la Revision',
+	'deletequeue-review-original' => 'Rason për la segnalassion',
+	'deletequeue-actiondisabled-involved' => "L'assion sì-dapress a l'é disabilità përchè chiel a l'ha partissipà a cost cas dë scancelassion ant le part ëd $1:",
+	'deletequeue-actiondisabled-notexpired' => "L'assion si-dapress a l'é disabilità përchè la signalassion dë scancelassion a l'é pa ancor passà:",
+	'deletequeue-review-badaction' => "A l'ha spessificà n'assion nen bon-a",
+	'deletequeue-review-actiondenied' => "A l'has spessificà n'assion che a l'é disabilità për sta pàgina-sì",
+	'deletequeue-review-objections' => "'''Atension''': La scancelassion dë sta pàgina-sì a l'ha dj'[{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} obiession].
+Për piasì ch'as sicura d'avèj considerà coste obiession prima dë scancelé la pàgina.",
+	'deletequeue-reviewspeedy-tab' => 'Revisioné la scancelassion lesta',
+	'deletequeue-reviewspeedy-title' => 'Revisioné la signalassion për la scancelassion lesta ëd "$1"',
+	'deletequeue-reviewspeedy-text' => "A peul dovré cost formolari-sì për revisioné la signalassion ëd \"'''\$1'''\" për la scancelassion lesta.
+Për piasì, ch'as sicura che sta pàgina-sì a peussa esse scancelà an pressa d'acòrdi con ij deuit.",
+	'deletequeue-reviewprod-tab' => 'Revisioné la scancelassion proponùa',
+	'deletequeue-reviewprod-title' => 'Revisioné la scancelassion proponùa ëd "$1"',
+	'deletequeue-reviewprod-text' => "A peul dovré cost formolari-sì për revisioné la propòsta pa contestà për la scancelassion ëd \"'''\$1'''\".",
+	'deletequeue-reviewdeletediscuss-tab' => 'Revisioné la scancelassion',
+	'deletequeue-reviewdeletediscuss-title' => 'Revisioné la discussion an sla scancelassion ëd "$1"',
+	'deletequeue-reviewdeletediscuss-text' => "A peul dovré sto formolari-sì për revisioné la discussion an sla scancelassion ëd \"'''\$1'''\".
+
+Na [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] d'aprovassion e d'obiession a costa scancelassion a l'é disponìbil, e la discussion midema as peul trovesse a [[\$2]].
+Për piasì, ch'as sicura ëd pijé na decision d'acòrdi con l'arzultà dla discussion.",
+	'deletequeue-review-success' => "A l'ha revisionà da bin la scancelassion ëd costa pàgina",
+	'deletequeue-review-success-title' => 'Revision completa',
+	'deletequeue-deletediscuss-discussionpage' => "Costa a l'é la pàgina ëd discussion për la scancelassion ëd [[$1]].
+A-i é al moment $2 {{PLURAL:$2|utent|utent}} ch'a apògio la scancelassion, e $3  {{PLURAL:$2|utent|utent}} ch'a crìtico la scancelassion.
+Chiel a peul [{{fullurl:$1|action=delvote}} apogé o critiché] la scancelassion, o  [{{fullurl:$1|action=delviewvotes}} visualisé tute j'aprovassion e le crìtiche].",
+	'deletequeue-discusscreate-summary' => 'Creé na discussion për la scancelassion ëd [[$1]].',
+	'deletequeue-discusscreate-text' => 'Scancelassion proponùa për la rason sì-sota: $2',
+	'deletequeue-role-nominator' => 'anandiator original ëd la scancelassion',
 );
 
 /** Pashto (پښتو)
@@ -6075,7 +6162,10 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'deletequeue-review-newreason' => 'Нова причина:',
+	'deletequeue-review-original' => 'Причина номінації',
 	'deletequeue-vote-submit' => 'Відправити',
+	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-case-reason' => 'Причина:',
 );
 

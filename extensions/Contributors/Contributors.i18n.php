@@ -1042,7 +1042,7 @@ $messages['nl'] = array(
 	'contributors-subtitle' => 'Belangrijkste bijdragers aan $1',
 	'contributors-others-long' => 'Er {{PLURAL:$1|is 1 andere bijdrager|zijn $1 andere bijdragers}} aan deze pagina.',
 	'contributors-others' => 'en $1 {{PLURAL:$1|andere|anderen}}',
-	'contributors-badtitle' => 'Onjuiste titel.',
+	'contributors-badtitle' => 'Ongeldige paginanaam.',
 	'contributors-nosuchpage' => 'De pagina $1 bestaat niet.',
 );
 

@@ -909,6 +909,18 @@ $messages['ug-arab'] = array(
 	'ajaxlogin-create' => 'ھېساباتتىن بىرنى قۇر',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'ajaxLogin2' => 'Ви впевнені?
+Ви можете втратити ваші зміни на цій сторінці, якщо ви залишите цю сторінку зараз.',
+	'ajaxlogin-create' => 'Створити обліковий запис',
+	'al-nosuchuser' => 'Не існує користувача з ім\'ям "$1".
+Імена користувачів чутливі до регістру.
+Перевірте правильність написання.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  * @author Vajotwo

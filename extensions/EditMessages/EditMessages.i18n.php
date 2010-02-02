@@ -330,6 +330,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author David0811
  * @author Jatrobat
+ * @author Translationista
  */
 $messages['es'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|edición basada en web]] de un gran número de archivos Messages*.php',
@@ -339,10 +340,12 @@ $messages['es'] = array(
 	'editmsg-show-list' => 'Mostrando valores para el nombre de mensaje "$1"',
 	'editmsg-get-patch' => 'Generar parche',
 	'editmsg-new-search' => 'Nueva búsqueda',
+	'editmsg-warning-parse3' => '* Fin de cadena de valor no encontrado: $1',
 	'editmsg-warning-file' => '* Errores de lectura de archivo fueron encontrados para los siguientes {{PLURAL:$2|lenguaje|lenguajes}}: $1',
 	'editmsg-warning-mismatch' => '* El texto original no tuvo el valor esperado para los siguientes {{PLURAL:$2|lenguaje|lenguajes}}: $1',
 	'editmsg-apply-patch' => 'Aplicar parche',
 	'editmsg-no-patch' => 'Incapaz de ejecutar comando "parche"',
+	'editmsg-patch-failed' => 'El parche ha fallado con el status de salida $1',
 	'editmsg-patch-success' => 'Parchado exitosamente.',
 );
 

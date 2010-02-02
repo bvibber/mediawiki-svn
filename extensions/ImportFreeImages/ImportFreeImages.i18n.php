@@ -109,8 +109,13 @@ $messages['bar'] = array(
 	'importfreeimages' => 'Importian vu freie Büidln',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importian',
-	'importfreeimages_promptuserforfilename' => 'Gib bittschee an Zieldateinãmen ei:',
-	'importfreeimages_returntoform' => "Oda klick <a href='$1'>då hea</a>, damid'st auf'd Seitn mid de Suachergebnisse zruck kimmst.",
+	'importfreeimages_next' => "d'nextn $1",
+	'importfreeimages_size_square' => 'Quadrat',
+	'importfreeimages_size_thumbnail' => 'Voaschaubüidl',
+	'importfreeimages_size_small' => 'kloa',
+	'importfreeimages_size_medium' => 'mittl',
+	'importfreeimages_size_large' => 'groß',
+	'importfreeimages_size_original' => 'original',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -338,22 +343,22 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Drini
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
 	'importfreeimages' => 'Importar imágenes libres',
 	'importfreeimages-desc' => 'Provee una manera de [[Special:ImportFreeImages|importar adecuadamente fotografías licenciadas]] de [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Esta página le permite buscar correctamente fotografías licensiadas de flickr e importarlas dentro de su wiki.',
-	'importfreeimages_noapikey' => 'No has configurado tu Clave API Flickr
-Para hacerlo, por favor obtén una [http://www.flickr.com/services/api/misc.api_keys.html clave API] y configura $wgFlickrAPIKey  en ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Ninguna fotografía fue encontrada para sus criterios de búsqueda '$1', por favor intente nuevamente",
-	'importfreeimages_invalidurl' => 'El URL "$1" no es una imagen Flickr válida.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'Importe esto',
 	'importfreeimages_next' => 'Próximo $1',
-	'importfreeimages_filefromflickr' => '$1 por usuario <b>[$2]</b> de flickr. URL original',
-	'importfreeimages_promptuserforfilename' => 'Por favor ingresar un nombre de archivo de destino',
-	'importfreeimages_returntoform' => "O, haga click <a href='$1'>aquí</a> para retornar a sus resultados de búsqueda",
-	'importfreeimages_nophpflickr' => 'Ud. no tiene instalado phpFlickr: por favor configure $wgIFphpFlickr en su archivo LocalSettings.php.',
+	'importfreeimages_size_square' => 'Cuadrado',
+	'importfreeimages_size_thumbnail' => 'Miniatura',
+	'importfreeimages_size_small' => 'Pequeño',
+	'importfreeimages_size_medium' => 'Mediano',
+	'importfreeimages_size_large' => 'Grande',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Estonian (Eesti)
@@ -1073,16 +1078,16 @@ $messages['pt-br'] = array(
 	'importfreeimages' => 'Importar imagens livres',
 	'importfreeimages-desc' => 'Provê uma forma de [[Special:ImportFreeImages|importar fotografias devidamente licenciadas]] do [http://www.flickr.com flickr].',
 	'importfreeimages_description' => 'Esta página permite-lhe procurar fotografias devidamente licenciadas no flickr e importá-las para o seu wiki.',
-	'importfreeimages_noapikey' => 'Você não configurou a sua chave de API Flickr. Para fazê-lo, por favor obtenha uma chave de API [http://www.flickr.com/services/api/misc.api_keys.html aqui] e atribua-a a $wgFlickrAPIKey  em ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",
-	'importfreeimages_invalidurl' => 'A URL "$1" não é uma imagem válida do Flickr.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importar isto',
 	'importfreeimages_next' => 'Próximas $1',
-	'importfreeimages_filefromflickr' => '$1 pelo usuário <b>[$2]</b> do flickr. URL original',
-	'importfreeimages_promptuserforfilename' => 'Por favor, introduza um nome de arquivo destino:',
-	'importfreeimages_returntoform' => "Ou clique <a href='$1'>aqui</a> para voltar aos resultados da sua pesquisa",
-	'importfreeimages_nophpflickr' => 'Você não tem o phpFlickr instalado, por favor defina $wgIFphpFlickr em seu LocalSettings.php.',
+	'importfreeimages_size_square' => 'Quadrado',
+	'importfreeimages_size_thumbnail' => 'Miniatura',
+	'importfreeimages_size_small' => 'Pequeno',
+	'importfreeimages_size_medium' => 'Médio',
+	'importfreeimages_size_large' => 'Grande',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Romanian (Română)
@@ -1317,22 +1322,22 @@ Bunu yapmak için, [http://www.flickr.com/services/api/misc.api_keys.html burada
 /** Ukrainian (Українська)
  * @author AS
  * @author Aleksandrit
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'importfreeimages' => 'Імпорт вільних зображень',
 	'importfreeimages-desc' => 'Дозволяє [[Special:ImportFreeImages|імпортувати ліцензовані належним чином фотографії]] з [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Ця сторінка дозволяє вам шукати фотографії з Flickr, ліцензовані належним чином, та імпортувати їх до вікі.',
-	'importfreeimages_noapikey' => 'Ви не налаштували ваш Flickr API-ключ.
-Щоб це зробити, отримайте API-ключ [http://www.flickr.com/services/api/misc.api_keys.html тут] і встановіть $wgFlickrAPIKey  в ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Не знайдено фотографій за умовою «$1», спробуйте ще раз.',
-	'importfreeimages_invalidurl' => "URL «$1» не є правильним ім'ям зображення з Flickr.",
 	'importfreeimages_owner' => 'Автор',
 	'importfreeimages_importthis' => 'імпортувати це',
 	'importfreeimages_next' => 'Наступні $1',
-	'importfreeimages_filefromflickr' => '$1 авторства <b>[$2]</b> з Flickr. Оригінальний URL',
-	'importfreeimages_promptuserforfilename' => "Будь-ласка, введіть нове ім'я файлу:",
-	'importfreeimages_returntoform' => "Або натисніть <a href='$1'>тут</a>, щоб повернутися до ваших результатів пошуку.",
-	'importfreeimages_nophpflickr' => 'У вас не встановлено phpFlickr, встановіть $wgIFphpFlickr у вашому LocalSettings.php.',
+	'importfreeimages_size_square' => 'Квадрат',
+	'importfreeimages_size_thumbnail' => 'Мініатюра',
+	'importfreeimages_size_small' => 'Маленький',
+	'importfreeimages_size_medium' => 'Середній',
+	'importfreeimages_size_large' => 'Великий',
+	'importfreeimages_size_original' => 'Оригінальний',
 );
 
 /** Vèneto (Vèneto)

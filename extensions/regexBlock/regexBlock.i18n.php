@@ -3034,6 +3034,7 @@ $messages['ug-latn'] = array(
 $messages['uk'] = array(
 	'regexblock-form-username' => "IP-адреса або ім'я користувача:",
 	'regexblock-form-reason' => 'Причина:',
+	'regexblock-form-expiry' => 'Закінчення:',
 );
 
 /** Veps (Vepsan kel')

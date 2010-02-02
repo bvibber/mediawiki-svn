@@ -490,8 +490,10 @@ $messages['eo'] = array(
  * @author Imre
  * @author Peter17
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
+	'dt-desc' => 'Permite importar y exportar datos contenidos en llamadas de plantilla',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor seleccionar entre las siguientes categorías y nombres de espacio para ver en formato XML.',
 	'dt_viewxml_categories' => 'Categorías',

@@ -592,7 +592,7 @@ $messages['es'] = array(
 	'recordadmin-updatesuccess' => '$1 actualizado',
 	'recordadmin-updateerror' => 'Un error ocurrió durante la actualización',
 	'recordadmin-buttonsave' => 'Guardar',
-	'recordadmin-noform' => 'Permite la creación de encuestas',
+	'recordadmin-noform' => '¡No hay ningún formulario asociado a los registros "$1"!',
 	'recordadmin-createlink' => 'crear uno',
 	'recordadmin-newcreated' => 'Nuevo $1 creado desde un formulario público',
 	'recordadmin-summary-typecreated' => 'Nuevo $1 creado',
@@ -605,8 +605,9 @@ $messages['es'] = array(
 	'recordadmin-editwithform' => 'Editar este formulario',
 	'recordadmin-typeinfo' => 'Registro de $1',
 	'right-recordadmin' => 'Encontrar y editar páginas de registro',
-	'recordadmin-export-csv' => '$1 {{PLURAL:$1|página actualizada|páginas actualizadas}} de un total de $2 {{PLURAL:$2|fila|filas}} en $3 (la duración total de la ejecución del script es de $4)',
+	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'No existe ningún "$1"',
 );
 
 /** Estonian (Eesti)

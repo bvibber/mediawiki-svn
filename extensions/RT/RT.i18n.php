@@ -202,7 +202,7 @@ $messages['el'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'rt-desc' => '$1 {{PLURAL:$1|usuario respondió|usuarios respondieron}} a las preguntas',
+	'rt-desc' => 'Interfaz bonita para el RT (Request Tracker)',
 	'rt-inactive' => 'La extensión RT no está activa',
 	'rt-badquery' => 'La extensión RT encontró un error cuando se comunicaba con la base de datos RT',
 	'rt-badlimit' => "LIMITE inválido (l) arg: debe ser un número.

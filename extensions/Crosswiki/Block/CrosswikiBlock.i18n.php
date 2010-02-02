@@ -1815,7 +1815,7 @@ $messages['nl'] = array(
 	'crosswikiblock-header' => 'Deze pagina laat toe om gebruikers te blokkeren op een andere wiki.
 Gelieve te controleren of u de juiste rechten hebt op deze wiki en of uw acties het beleid volgt.',
 	'crosswikiblock-target' => 'IP-adres of gebruikersnaam en bestemmingswiki:',
-	'crosswikiblock-expiry' => 'Duur:',
+	'crosswikiblock-expiry' => 'Vervalt:',
 	'crosswikiblock-reason' => 'Reden:',
 	'crosswikiblock-submit' => 'Deze gebruiker blokkeren',
 	'crosswikiblock-anononly' => 'Alleen anonieme gebruikers blokkeren',
@@ -2767,7 +2767,10 @@ Geri dön:
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'crosswikiblock-desc' => 'Дозволяє блокувати користувачів в інших вікі за допомогою [[Special:Crosswikiblock|спеціальної сторінки]]',
+	'crosswikiblock-expiry' => 'Закінчення:',
 	'crosswikiblock-reason' => 'Причина:',
+	'crosswikiblock-submit' => 'Заблокувати цього користувача',
 	'crosswikiunblock-reason' => 'Причина:',
 );
 
