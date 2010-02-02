@@ -1034,7 +1034,7 @@ mw.RemoteSearchDriver.prototype = {
 					// Redraw ( with added result if new )
 					_this.showResults();										
 					// Pull up resource editor:
-					_this.showResourceEditor( resource, $j( '#res_this_wiki__' + resource.id ).get( 0 ) );
+					_this.showResourceEditor( resource );
 				} );
 				// Return false to close progress window:
 				return false;
@@ -1572,7 +1572,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Resource click action: (bring up the resource editor)
 		$j( '.rsd_res_item' ).unbind().click( function() {		
 			var resource = _this.getResourceFromId( $j( this ).attr( "id" ) );
-			_this.showResourceEditor( resource, this );
+			_this.showResourceEditor( resource );
 			return false;
 		} );
 	},
@@ -1682,12 +1682,11 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Show the resource editor
 	* @param {Object} resource Resource to be edited
-	* @param {Object} rsdElement Element Image to be swaped with "edit" version of resource
 	*/ 
-	showResourceEditor: function( resource, rsdElement ) {
+	showResourceEditor: function( resource ) {
 		mw.log( 'f:showResourceEditor:' + resource.title );
 		var _this = this;
-
+		
 		// Remove any existing resource edit interface
 		_this.removeResourceEditor();
 
@@ -1703,42 +1702,20 @@ mw.RemoteSearchDriver.prototype = {
 		
 		mw.log( 'did append to: ' + _this.target_container );
 			
-		// Try and keep aspect ratio for the thumbnail that we clicked:
-		var imageRatio = null;
-		try {			
-			imageRatio = $j( rsdElement ).get(0).height / $j( rsdElement ).get(0).width;
-		} catch( e ) {
-			mw.log( 'Error: browser could not read height or width attribute' ) ;
-		}
-		if ( !imageRatio ) {
-			var imageRatio = 1; // set ratio to 1 if tRatio did not work.
-		}
-		
-		$j( rsdElement )
-		.clone()
-		.attr( { id : 'rsd_edit_img' } )
-		.appendTo( '#clip_edit_disp' )
-		.css( {
-			'position':'absolute',
-			'top': '5px',
-			'left': '5px',
-			'cursor': 'default',
-			'opacity': 1,
-			'width': maxWidth + 'px',
-			'height': parseInt( imageRatio * maxWidth )  + 'px'
-		} );
-	
-		
-		mw.log( 'Set from ' +  imageRatio + ' to init thumbimage to ' + 
-			maxWidth + ' x ' + parseInt( imageRatio * maxWidth ) );
-		
 		if ( mediaType == 'image' ) {
 			_this.loadHighQualityImage( 
 				resource, 
 				{ 'width': maxWidth }, 
 				'rsd_edit_img', 
-				function() {
+				function( img_src ) {
 					$j( '.loading_spinner' ).remove();
+					$j( '<img />' )
+						.attr( {
+							id: 'rsd_edit_img',
+							src: img_src
+						} )
+						.appendTo( '#clip_edit_disp' );
+					
 				}
 			);
 		}
@@ -1790,13 +1767,12 @@ mw.RemoteSearchDriver.prototype = {
 					'height': imObj.height + 'px' 
 				});
 			}
-			// Don't swap it in until its loaded:
+			// Don't swap it in until its loaded
 			var img = new Image();
-			// Load the image image:
+			// Load the image
 			$j( img ).load( function () {
-					 $j( '#' + target_img_id ).attr( 'src', resource.edit_url );
-					 // Let the caller know we are done and what size we ended up with:
-					 callback();
+					 // Update changes using the callback
+					 callback( resource.edit_url );
 				} ).error( function () {
 					mw.log( "Error with:  " +  resource.edit_url );
 				} ).attr( 'src', resource.edit_url );
