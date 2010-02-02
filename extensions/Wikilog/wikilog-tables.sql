@@ -1,5 +1,4 @@
 -- Tables used by the MediaWiki Wikilog extension.
--- Juliano F. Ravasi, 2008
 --
 -- You should not have to create these tables manually unless you are doing
 -- a manual installation. In normal conditions, maintenance/update.php should
@@ -156,6 +155,8 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/wikilog_comments (
 
   PRIMARY KEY (wlc_id),
   INDEX wlc_post_thread (wlc_post, wlc_thread),
+  INDEX wlc_timestamp (wlc_timestamp),
+  INDEX wlc_updated (wlc_updated),
   INDEX wlc_comment_page (wlc_comment_page)
 
 ) /*$wgDBTableOptions*/;
