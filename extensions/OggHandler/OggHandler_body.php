@@ -195,36 +195,21 @@ class OggHandler extends MediaHandler {
 		// Set up the default targetUrl:
 		$targetFileUrl = $file->getURL();
 
+		// Check for $wgEnabledDerivatives
+		if ( isset( $wgEnabledDerivatives ) &&
+			 is_array( $wgEnabledDerivatives ) &&
+			 count( $wgEnabledDerivatives ) != 0
+		){
+			// Get the derivative via embed width
+			//( will return $file->getURL() if no derivative is found )
+			$targetFileUrl = OggTranscode::getWidthDerivativeURL( $file, $width);
+		}
 
 		// Add temporal request parameter if $wgEnableTemporalOggUrls is on:
 		if( $wgEnableTemporalOggUrls && isset( $params['start'] ) ){
 			$targetFileUrl .= '?t=' . seconds2npt( $this->parseTimeString( $params['start'], $length ) );
 			if(isset( $params[ 'end' ] ) && $params['end'] )
 				$targetFileUrl.='/'. seconds2npt( $this->parseTimeString( $params['end'], $length) );
-		}
-
-		// Check if $wgEnabledDerivatives is "set" and we have a target derivative set:
-		// (presently set by the wikiAtHome extension)
-		if (isset( $wgEnabledDerivatives ) && is_array( $wgEnabledDerivatives ) &&  count( $wgEnabledDerivatives ) != 0){
-			//get the encode key:
-			$encodeKey = WikiAtHome::getTargetDerivative( $width, $file );
-			if( $encodeKey == 'notransform'){
-				$targetFileUrl = $file->getURL() ;
-			}else{
-				//get our job pointer
-				$wjm = WahJobManager::newFromFile( $file , $encodeKey );
-
-				$derivativeUrl = $file->getThumbUrl( $wjm->getEncodeKey() . '.ogg');
-				$derivativePath = $file->getThumbPath( $wjm->getEncodeKey() );
-
-				// Check that we have the requested theora derivative
-				if( is_file ( "{$derivativePath}.ogg" )){
-					$targetFileUrl = $derivativeUrl;
-				}else{
-					// Output in queue text (send the dstUrl if available )
-					return new MediaQueueTransformOutput($file, $dstUrl, $width, $height, $wjm->getDonePerc() );
-				}
-			}
 		}
 
 
