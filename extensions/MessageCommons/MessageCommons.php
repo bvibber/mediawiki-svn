@@ -61,8 +61,8 @@ function efMessageCommonsPreload( $title, &$message ) {
 	
 	$msgNames[] = $msgName = $title;
 	if( strpos( $msgName, '/' ) === false ) {
-		$msgNames[] = sprintf( '%s/%s', $msgName, $wgLang->getCode() );
 		$msgNames[] = sprintf( '%s/%s', $msgName, $wgContLang->getCode() );
+		$msgNames[] = sprintf( '%s/%s', $msgName, $wgLang->getCode() );
 	}
 	$msgNames = array_reverse(array_unique($msgNames));
 	
