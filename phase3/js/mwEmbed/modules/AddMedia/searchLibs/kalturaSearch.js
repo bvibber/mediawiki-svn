@@ -259,7 +259,7 @@ kalturaSearch.prototype = {
 				result[ 'link' ] = result[ 'item_details_page' ];
 				
 				var fileExtension = _this.getMimeExtension( result[ 'mime' ] );
-				result[ 'titleKey' ] =  result[ 'title' ] + '.' + fileExtension;
+				result[ 'titleKey' ] =  result[ 'titleKey' ] || ( result[ 'title' ] + '.' + fileExtension );
 				
 				this.num_results++;
 				_this.resultsObj[ resource_id ] = result;
