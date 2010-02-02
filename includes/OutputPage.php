@@ -126,7 +126,7 @@ class OutputPage {
 		global $wgStylePath, $wgScript, $wgUser;
 		global $wgEnableScriptLoader, $wgScriptPath;
 
-		if( substr( $file, 0, 1 ) == '/' ) {
+		if( substr( $file, 0, 1 ) == '/' || substr( $file, 0, 7 ) == 'http://' ) {
 			$path = $file;
 		} else {
 			$path = "{$wgStylePath}/common/{$file}";
