@@ -138,7 +138,7 @@ $j(document).ready( function() {
 			fallbackResult = fallbackWindowOnBeforeUnload();
 		}
 		// Check if their onbeforeunload hook returned something
-		if ( fallbackResult !== null ) {
+		if ( fallbackResult !== undefined ) {
 			// Exit here, returning their message
 			return fallbackResult;
 		}
