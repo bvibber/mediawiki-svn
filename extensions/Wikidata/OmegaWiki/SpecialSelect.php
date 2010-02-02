@@ -60,6 +60,7 @@ function getSelectOptions() {
 	$options_res = $dbr->query( $sql );
 
 	$optionsString = '';
+	$optionsArray = array() ;
 	while ( $options_row = $dbr->fetchObject( $options_res ) ) {
 		/* Use a simpler query if the user's language is English. */
 		if ( $lang_code == 'en' || !( $lang_id = getLanguageIdForCode( $lang_code ) ) ) {
@@ -95,9 +96,14 @@ function getSelectOptions() {
 
 		$spelling_res = $dbr->query( $sql );
 		$spelling_row = $dbr->fetchObject( $spelling_res );
-		if ( $optionsString != '' )
-			$optionsString .= "\n";
-		$optionsString .= $options_row->option_id . ';' . $spelling_row->spelling;
+
+		$optionsArray[$options_row->option_id] = $spelling_row->spelling ;
+	}
+
+	asort( $optionsArray ) ;
+	foreach ($optionsArray as $option_id => $spelling ) {
+		if ( $optionsString != '' ) $optionsString .= "\n";
+		$optionsString .= $option_id . ';' . $spelling ;
 	}
 
 	return $optionsString;
