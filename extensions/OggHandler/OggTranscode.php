@@ -17,8 +17,8 @@ class OggTranscode {
 	* and want to re-generate the video you should also update the
 	* key constant.
 	*/
-	const ENC_WEB_2MBS = '256_200kbs';
-	const ENC_WEB_4MBS = '380_400kbs';
+	const ENC_WEB_2MBS = '200_200kbs';
+	const ENC_WEB_4MBS = '360_400kbs';
 	const ENC_WEB_6MBS = '480_600kbs';
 	const ENC_HQ_VBR = '720_VBR';
 
@@ -47,7 +47,7 @@ class OggTranscode {
 		),
    OggTranscode::ENC_WEB_4MBS =>
 		array(
-			'maxSize'			=> '320',
+			'maxSize'			=> '360',
 			'videoBitrate'		=> '368',
 			'audioBitrate'		=> '48',
 			'noUpscaling'		=> 'true',
@@ -68,7 +68,7 @@ class OggTranscode {
 	OggTranscode::ENC_HQ_VBR =>
 		 array(
 			'maxSize'			=> '720',
-			'videoQuality'		=> 6,
+			'videoQuality'		=> 7,
 			'audioQuality'		=> 3,
 			'noUpscaling'		=> 'true'
 		)
