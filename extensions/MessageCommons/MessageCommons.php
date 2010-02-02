@@ -44,7 +44,7 @@ function efMessageCommonsSetup() {
 		} elseif( !isset($wgSharedDB) ) {
 			$egMessageCommonsDatabase = $wgSharedDB;
 			if( isset($wgSharedPrefix) ) {
-				$egMessageCommonsPrefix   = $wgSharedPrefix;
+				$egMessageCommonsPrefix = $wgSharedPrefix;
 			}
 		}
 	}
@@ -64,7 +64,7 @@ function efMessageCommonsPreload( $title, &$message ) {
 		$msgNames[] = sprintf( '%s/%s', $msgName, $wgLang->getCode() );
 		$msgNames[] = sprintf( '%s/%s', $msgName, $wgContLang->getCode() );
 	}
-	$msgNames = array_unique($msgNames);
+	$msgNames = array_reverse(array_unique($msgNames));
 	
 	foreach( $msgNames as $msgName ) {
 		$text = efMessageCommonsGetMsg( $msgName );
