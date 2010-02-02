@@ -486,7 +486,7 @@ if ( typeof context == 'undefined' ) {
 				// to get a reliable answer. IE7 does get this right though
 				// Run this fix for all IE versions anyway, it doesn't hurt
 				retval = context.fn.htmlToText( retval.htmlText );
-			} else if ( retval.toString ) {
+			} else if ( typeof retval.toString != 'undefined' ) {
 				retval = retval.toString();
 			}
 			return retval;
@@ -1136,7 +1136,9 @@ if ( typeof context == 'undefined' ) {
 	context.fallbackWindowOnBeforeUnload = window.onbeforeunload;
 	window.onbeforeunload = function() {
 		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
-		return context.fallbackWindowOnBeforeUnload ? context.fallbackWindowOnBeforeUnload() : null;
+		if ( context.fallbackWindowOnBeforeUnload ) {
+			return context.fallbackWindowOnBeforeUnload();
+		}
 	};
 }
 
