@@ -211,7 +211,7 @@ if ( typeof context == 'undefined' ) {
 		// Stack of states in { html: [string] } form
 		'history': [],
 		// Current history state position - this is number of steps backwards, so it's always -1 or less
-		'historyPosition': -1,
+		'historyPosition': -1
 	};
 	
 	/*
@@ -276,7 +276,7 @@ if ( typeof context == 'undefined' ) {
 			switch ( event.which ) {
 				case 90: // z
 					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
-						// HistoryPosition is a negetive number between -1 and -context.history.length, in other words
+						// HistoryPosition is a negative number between -1 and -context.history.length, in other words
 						// it's the number of steps backwards from the latest state.
 						if ( event.shiftKey ) {
 							// Redo
@@ -288,6 +288,7 @@ if ( typeof context == 'undefined' ) {
 						// Only act if we are switching to a valid state
 						if ( context.history.length + context.historyPosition >= 0 && context.historyPosition < 0 ) {
 							// Change state
+							// FIXME: Destroys event handlers, will be a problem with template folding
 							context.$content.html(
 								context.history[context.history.length + context.historyPosition].html
 							);
@@ -296,7 +297,7 @@ if ( typeof context == 'undefined' ) {
 							context.historyPosition =
 								Math.max( -context.history.length, Math.min( context.historyPosition, -1 ) );
 						}
-						// Prevent the browser from getting in there and doing it's stuff
+						// Prevent the browser from jumping in and doing its stuff
 						return false;
 					}
 					break;
