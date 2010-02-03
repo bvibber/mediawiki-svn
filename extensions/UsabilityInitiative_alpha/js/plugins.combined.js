@@ -6417,9 +6417,18 @@ scrollToCaretPosition: function( options ) {
 	}
 	var context = $(this).data( 'wikiEditor-context' );
 	var hasIframe = context !== undefined && context.$iframe !== undefined;
-	// iframe functions have not been implemented yet, this is a temp hack
-	//var hasIframe = false;
-	return ( hasIframe ? context.fn : fn )[command].call( this, options );
+	
+	// IE selection restore voodoo
+	var needSave = false;
+	if ( hasIframe && context.savedSelection !== null ) {
+		context.fn.restoreSelection();
+		needSave = true;
+	}
+	retval = ( hasIframe ? context.fn : fn )[command].call( this, options );
+	if ( hasIframe && needSave ) {
+		context.fn.saveSelection();
+	}
+	return retval;
 };
 
 } )( jQuery );/**
@@ -6629,7 +6638,9 @@ if ( typeof context == 'undefined' ) {
 		// The previous HTML of the iframe, stored to detect whether something really changed.
 		'oldHTML': null,
 		// Same for delayedChange()
-		'oldDelayedHTML': null
+		'oldDelayedHTML': null,
+		// Saved selection state for IE
+		'savedSelection': null
 	};
 	
 	/*
@@ -6910,7 +6921,7 @@ if ( typeof context == 'undefined' ) {
 				// to get a reliable answer. IE7 does get this right though
 				// Run this fix for all IE versions anyway, it doesn't hurt
 				retval = context.fn.htmlToText( retval.htmlText );
-			} else if ( retval.toString ) {
+			} else if ( typeof retval.toString != 'undefined' ) {
 				retval = retval.toString();
 			}
 			return retval;
@@ -7415,6 +7426,22 @@ if ( typeof context == 'undefined' ) {
 				}
 				t = nextT;
 			}
+		},
+		'saveSelection': function() {
+			if ( !$.browser.msie ) {
+				// Only IE needs this
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection = context.$iframe[0].contentWindow.document.selection.createRange();
+		},
+		'restoreSelection': function() {
+			if ( !$.browser.msie || context.savedSelection === null ) {
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection.select();
+			context.savedSelection = null;
 		}
 	};
 	
@@ -7560,7 +7587,9 @@ if ( typeof context == 'undefined' ) {
 	context.fallbackWindowOnBeforeUnload = window.onbeforeunload;
 	window.onbeforeunload = function() {
 		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
-		return context.fallbackWindowOnBeforeUnload ? context.fallbackWindowOnBeforeUnload() : null;
+		if ( context.fallbackWindowOnBeforeUnload ) {
+			return context.fallbackWindowOnBeforeUnload();
+		}
 	};
 }
 
@@ -7660,6 +7689,9 @@ fn: {
 									$.wikiEditor.modules.dialogs.fn.resize );
 							});
 					}
+					dialogDiv.bind( 'dialogclose', function() {
+						context.fn.restoreSelection();
+					} );
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
 					var maxTI = 0;
@@ -8421,43 +8453,53 @@ fn: {
 				return;
 			}
 			// Build a model for this
-			
 			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
+			
+			//check if model is collapsible
 			if ( !model.isCollapsible() ) {
 				return;
 			}
+			
 			var $template = $( this )
 				.wrap( '<div class="wikiEditor-template"></div>' )
 				.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
-				.html( 
-					// Wrap the start and end of the wikitext in spans so we can bind events to them
-					$( this ).html()
-						.replace( /\{\{/, '<span class="wikiEditor-template-start">{{</span><span class="wikiEditor-template-inner-text">' )
-						.replace( /\}\}$/, '</span><span class="wikiEditor-template-end">}}</span>' ) ) //grab the *last* {{
-				.css( 'visibility', 'hidden' )
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
-			$( '<span />' )
-				.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
-				.text( model.getName() )
-				.mousedown( noEdit )
-				.prependTo( $template );
-			$template.find( '.wikiEditor-template-end, .wikiEditor-template-start' ).mousedown( toggleWikiText );
-			var $options = $( '<ul />' )
-				.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
-				.append( $( '<li />' )
-					.addClass( 'wikiEditor-template-action-wikiText' )
-					.append( $( '<img />' ).attr( 'src',
-						$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
-					.mousedown( toggleWikiText ) )
-				.insertAfter( $template.find( '.wikiEditor-template-name' ) );
-			$options.append( 
-					$( '<li />' )
-					.addClass( 'wikiEditor-template-action-form' )
-					.append( $( '<span>F</span>' ) )
-					.mousedown( function(){createDialog($template); return false;}   ));
 			
+			$( '<span />' )
+			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
+			.text( model.getName() )
+			.mousedown( function(){createDialog( $template );} ) //have to pass template so model stays in sync
+			.prependTo( $template );
+			
+			
+			var $options = $( '<ul />' )
+			.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
+			.append( $( '<li />' )
+				.addClass( 'wikiEditor-template-action-wikiText' )
+				.append( $( '<img />' ).attr( 'src',
+					$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
+				.mousedown( toggleWikiTextEditor ) )
+			.insertAfter( $template.find( '.wikiEditor-template-name' ) );
+			
+			function toggleWikiTextEditor(){
+				var $template = $( this ).closest( '.wikiEditor-template' );
+				$template
+					.toggleClass( 'wikiEditor-template-expanded' )
+					.toggleClass( 'wikiEditor-template-collapsed' );
+				var $wikitext = $template.children('.wikiEditor-template-text');
+				$wikitext.toggleClass('wikiEditor-nodisplay');
+				
+				//if we just collapsed this
+				if( $template.hasClass('wikiEditor-template-collapsed') ) {
+					var model = new $.wikiEditor.modules.templateEditor.fn.model( $template.children( '.wikiEditor-template-text' ).text() );
+					$template.data( 'model' , model );
+					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
+				}
+				
+				return false;
+			};
 		
 			// Expand
 			function expandTemplate( $displayDiv ) {
@@ -8498,6 +8540,7 @@ fn: {
 			
 			function createDialog( $templateDiv ){
 				var templateModel = $templateDiv.data('model');
+				console.log(templateModel.getText());
 				var $dialog = $("<div></div>");
 				var $title = $("<div>" + templateModel.getName() + "</div>").addClass('wikiEditor-template-dialog-title');
 				var $table = $("<table></table>")
@@ -8530,7 +8573,10 @@ fn: {
 					
 				}).text("OK").appendTo($dialog);
 				$dialog.dialog(); //opens dialog
+				return false;
 			};
+			
+			
 			
 			
 			function toggleWikiText( ) {
@@ -8558,9 +8604,11 @@ fn: {
 				}
 				return false;
 			}
-			function noEdit() {
-				return false;
-			}
+			
+		function noEdit() {
+			return false;
+		}
+		
 		});
 		
 	},
@@ -9786,6 +9834,7 @@ fn: {
 				}
 				break;
 			case 'dialog':
+				context.fn.saveSelection();
 				context.$textarea.wikiEditor( 'openDialog', action.module );
 				break;
 			default: break;

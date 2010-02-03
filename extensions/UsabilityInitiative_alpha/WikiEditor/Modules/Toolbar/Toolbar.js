@@ -845,8 +845,8 @@ $j(document).ready( function() {
 		html: '\
 			<fieldset>\
 				<div class="wikieditor-toolbar-field-wrapper">\
-					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target"></label>\
-					<div id="wikieditor-toolbar-link-int-target-status" style="display: inline; float:right;"></div>\
+					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target" style="float:left;"></label>\
+					<div id="wikieditor-toolbar-link-int-target-status" style="float:right;"></div>\
 					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
 				</div>\
 				<div class="wikieditor-toolbar-field-wrapper">\
@@ -1069,7 +1069,7 @@ $j(document).ready( function() {
 				.children().hide();
 			
 			$j( '#wikieditor-toolbar-link-int-target' )
-				.bind( 'keypress paste cut', function() {
+				.bind( 'keyup paste cut', function() {
 					// Cancel the running timer if applicable
 					if ( typeof $j(this).data( 'timerID' ) != 'undefined' ) {
 						clearTimeout( $j(this).data( 'timerID' ) );
@@ -1702,7 +1702,6 @@ $j(document).ready( function() {
 			close: function() {
 				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
 						.unbind( 'keypress.srdialog' );
-				$j(this).data( 'context' ).$iframe[0].contentWindow.focus();
 				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}

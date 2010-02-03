@@ -77,6 +77,9 @@ fn: {
 									$.wikiEditor.modules.dialogs.fn.resize );
 							});
 					}
+					dialogDiv.bind( 'dialogclose', function() {
+						context.fn.restoreSelection();
+					} );
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
 					var maxTI = 0;

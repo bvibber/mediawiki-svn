@@ -205,7 +205,9 @@ if ( typeof context == 'undefined' ) {
 		// The previous HTML of the iframe, stored to detect whether something really changed.
 		'oldHTML': null,
 		// Same for delayedChange()
-		'oldDelayedHTML': null
+		'oldDelayedHTML': null,
+		// Saved selection state for IE
+		'savedSelection': null
 	};
 	
 	/*
@@ -486,7 +488,7 @@ if ( typeof context == 'undefined' ) {
 				// to get a reliable answer. IE7 does get this right though
 				// Run this fix for all IE versions anyway, it doesn't hurt
 				retval = context.fn.htmlToText( retval.htmlText );
-			} else if ( retval.toString ) {
+			} else if ( typeof retval.toString != 'undefined' ) {
 				retval = retval.toString();
 			}
 			return retval;
@@ -991,6 +993,22 @@ if ( typeof context == 'undefined' ) {
 				}
 				t = nextT;
 			}
+		},
+		'saveSelection': function() {
+			if ( !$.browser.msie ) {
+				// Only IE needs this
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection = context.$iframe[0].contentWindow.document.selection.createRange();
+		},
+		'restoreSelection': function() {
+			if ( !$.browser.msie || context.savedSelection === null ) {
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection.select();
+			context.savedSelection = null;
 		}
 	};
 	
@@ -1136,7 +1154,9 @@ if ( typeof context == 'undefined' ) {
 	context.fallbackWindowOnBeforeUnload = window.onbeforeunload;
 	window.onbeforeunload = function() {
 		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
-		return context.fallbackWindowOnBeforeUnload ? context.fallbackWindowOnBeforeUnload() : null;
+		if ( context.fallbackWindowOnBeforeUnload ) {
+			return context.fallbackWindowOnBeforeUnload();
+		}
 	};
 }
 
