@@ -138,6 +138,9 @@ fn: {
 					$template.data( 'model' , model );
 					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
 				}
+				else{ //we just expanded this
+					$wikitext.text($template.data('model').getText());
+				}
 				
 				return false;
 			};
