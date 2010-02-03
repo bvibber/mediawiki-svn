@@ -894,19 +894,20 @@ $j(document).ready( function() {
 		html: '\
 			<fieldset>\
 				<div class="wikieditor-toolbar-field-wrapper">\
-					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target" style="float:left;"></label>\
-					<div id="wikieditor-toolbar-link-int-target-status" style="float:right;"></div>\
-					<input type="text" id="wikieditor-toolbar-link-int-target" style="width: 100%;" />\
+					<label for="wikieditor-toolbar-link-int-target" rel="wikieditor-toolbar-tool-link-int-target" id="wikieditor-toolbar-tool-link-int-target-label"></label>\
+					<div id="wikieditor-toolbar-link-int-target-status"></div>\
+					<input type="text" id="wikieditor-toolbar-link-int-target" />\
 				</div>\
 				<div class="wikieditor-toolbar-field-wrapper">\
 					<label for="wikieditor-toolbar-link-int-text" rel="wikieditor-toolbar-tool-link-int-text"></label>\
-					<input type="text" id="wikieditor-toolbar-link-int-text" style="width: 100%;" />\
+					<input type="text" id="wikieditor-toolbar-link-int-text" />\
 				</div>\
 				<div class="wikieditor-toolbar-field-wrapper">\
-					<div style="float: left; margin-right: 2em;">\
+					<div class="wikieditor-toolbar-floated-field-wrapper">\
 						<input type="radio" id="wikieditor-toolbar-link-type-int" name="wikieditor-toolbar-link-type" selected />\
 						<label for="wikieditor-toolbar-link-type-int" rel="wikieditor-toolbar-tool-link-int"></label>\
-					</div><div style="float: left;">\
+					</div>\
+					<div class="wikieditor-toolbar-floated-field-wrapper">\
 						<input type="radio" id="wikieditor-toolbar-link-type-ext" name="wikieditor-toolbar-link-type" />\
 						<label for="wikieditor-toolbar-link-type-ext" rel="wikieditor-toolbar-tool-link-ext"></label>\
 					</div>\
@@ -1286,6 +1287,8 @@ $j(document).ready( function() {
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.textSelection( 'getSelection' );
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
+				// Hide any status indicators that may be visible
+				$j( '#wikieditor-toolbar-link-int-target-status > div:visible').hide();
 				$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var target, text, type;

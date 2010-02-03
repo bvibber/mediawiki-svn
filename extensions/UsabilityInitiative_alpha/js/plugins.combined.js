@@ -6640,7 +6640,11 @@ if ( typeof context == 'undefined' ) {
 		// Same for delayedChange()
 		'oldDelayedHTML': null,
 		// Saved selection state for IE
-		'savedSelection': null
+		'savedSelection': null,
+		// Stack of states in { html: [string] } form
+		'history': [],
+		// Current history state position - this is number of steps backwards, so it's always -1 or less
+		'historyPosition': -1
 	};
 	
 	/*
@@ -6701,6 +6705,38 @@ if ( typeof context == 'undefined' ) {
 		 * function is to both classify the scope of changes as 'division' or 'character' and to prevent further
 		 * processing of events which did not actually change the content of the iframe.
 		 */
+		'keydown': function( event ) {
+			switch ( event.which ) {
+				case 90: // z
+					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
+						// HistoryPosition is a negative number between -1 and -context.history.length, in other words
+						// it's the number of steps backwards from the latest state.
+						if ( event.shiftKey ) {
+							// Redo
+							context.historyPosition++;
+						} else {
+							// Undo
+							context.historyPosition--;
+						}
+						// Only act if we are switching to a valid state
+						if ( context.history.length + context.historyPosition >= 0 && context.historyPosition < 0 ) {
+							// Change state
+							// FIXME: Destroys event handlers, will be a problem with template folding
+							context.$content.html(
+								context.history[context.history.length + context.historyPosition].html
+							);
+						} else {
+							// Normalize the historyPosition
+							context.historyPosition =
+								Math.max( -context.history.length, Math.min( context.historyPosition, -1 ) );
+						}
+						// Prevent the browser from jumping in and doing its stuff
+						return false;
+					}
+					break;
+			}
+			return true;
+		},
 		'change': function( event ) {
 			event.data.scope = 'division';
 			var newHTML = context.$content.html();
@@ -6708,6 +6744,13 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
+				context.historyPosition = -1;
+			}
+			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
+			switch ( event.which ) {
+				case 8: // backspace
+					// do something here...
+					break;
 			}
 			return true;
 		},
@@ -6718,6 +6761,13 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
+				// Save in the history
+				//console.log( 'save-state' );
+				context.history.push( { 'html': newHTML } );
+				// Keep the history under control
+				while ( context.history.length > 10 ) {
+					context.history.shift();
+				}
 			}
 			return true;
 		}
@@ -6754,6 +6804,7 @@ if ( typeof context == 'undefined' ) {
 					$.wikiEditor.modules[module].evt[name]( context, event );
 				}
 			}
+			return true;
 		},
 		/**
 		 * Adds a button to the UI
@@ -6840,15 +6891,13 @@ if ( typeof context == 'undefined' ) {
 			// Converting <p>s is wrong if there's nothing before them, so check that.
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
-				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
 					var text =  $( this ).text();
 					// If this <p> is preceded by some text, add a \n at the beginning, and if
 					// it's followed by a textnode, add a \n at the end
 					// We need the traverser because there can be other weird stuff in between
 					
 					// Check for preceding text
-					// FIXME: Add an option to disable depth checking, -10 is a hack
-					var t = new context.fn.rawTraverser( this.firstChild, -10, this ).prev();
+					var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.prev();
 					}
@@ -6857,7 +6906,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					
 					// Check for following text
-					t = new context.fn.rawTraverser( this.lastChild, -10, this ).next();
+					t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.next();
 					}
@@ -6866,7 +6915,6 @@ if ( typeof context == 'undefined' ) {
 						text += "\n";
 					}
 					$( this ).text( text );
-				}
 			} );
 			var retval;
 			if ( $.browser.msie ) {
@@ -6890,7 +6938,22 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
 		 */
 		'getContents': function() {
-			return context.fn.htmlToText( context.$content.html() );
+			// For <p></p>, .html() returns <p>&nbsp;</p> in IE
+			// This seems to convince IE while not affecting display
+			var html;
+			if ( $.browser.msie ) {
+				// Don't manipulate the iframe DOM itself, causes cursor jumping issues
+				var $c = $( context.$content.get( 0 ).cloneNode( true ) );
+				$c.find( 'p' ).each( function() {
+					if ( $(this).html() == '' ) {
+						$(this).replaceWith( '<p></p>' );
+					}
+				} );
+				html = $c.html();
+			} else {
+				html = context.$content.html();
+			}
+			return context.fn.htmlToText( html );
 		},
 		/**
 		 * Gets the currently selected text in the content
@@ -7119,15 +7182,38 @@ if ( typeof context == 'undefined' ) {
 				if ( sc ) {
 					range.moveToElementText( sc );
 				}
-				range.moveStart( 'character', options.start );
+				range.collapse();
+				range.moveEnd( 'character', options.start );
+				
 				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
 				if ( ec ) {
 					range2.moveToElementText( ec );
 				}
 				range2.collapse();
 				range2.moveEnd( 'character', options.end );
-				range.setEndPoint( 'EndToEnd', range2 );
-				range.select();
+				
+				// IE does newline emulation for <p>s: <p>foo</p><p>bar</p> becomes foo\nbar just fine
+				// but <p>foo</p><br><br><p>bar</p> becomes foo\n\n\n\nbar , one \n too many
+				// Correct for this
+				var matches, counted = 0;
+				// while ( matches = range.htmlText.match( regex ) && matches.length <= counted ) doesn't work
+				// because the assignment side effect hasn't happened yet when the second term is evaluated
+				while ( matches = range.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
+					if ( matches.length <= counted )
+						break;
+					range.moveEnd( 'character', matches.length );
+					counted += matches.length;
+				}
+				range2.moveEnd( 'character', counted );
+				while ( matches = range2.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
+					if ( matches.length <= counted )
+						break;
+					range2.moveEnd( 'character', matches.length );
+					counted += matches.length;
+				}
+
+				range2.setEndPoint( 'StartToEnd', range );
+				range2.select();
 			}
 			return context.$textarea;
 		},
@@ -7245,10 +7331,11 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Object used by traverser(). Don't use this unless you know what you're doing
 		 */
-		'rawTraverser': function( node, depth, inP ) {
+		'rawTraverser': function( node, depth, inP, ancestor ) {
 			this.node = node;
 			this.depth = depth;
 			this.inP = inP;
+			this.ancestor = ancestor;
 			this.next = function() {
 				var p = this.node;
 				var nextDepth = this.depth;
@@ -7256,8 +7343,8 @@ if ( typeof context == 'undefined' ) {
 				while ( p && !p.nextSibling ) {
 					p = p.parentNode;
 					nextDepth--;
-					if ( nextDepth == 0 ) {
-						// We're back at the start node
+					if ( p == ancestor ) {
+						// We're back at the ancestor, stop here
 						p = null;
 					}
 					if ( p && p.nodeName == "P" ) {
@@ -7283,7 +7370,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.firstChild );
-				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP ) : null;
+				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor ) : null;
 			};
 			this.prev = function() {
 				var p = this.node;
@@ -7292,8 +7379,8 @@ if ( typeof context == 'undefined' ) {
 				while ( p && !p.previousSibling ) {
 					p = p.parentNode;
 					prevDepth--;
-					if ( prevDepth == 0 ) {
-						// We're back at the start node
+					if ( p == ancestor ) {
+						// We're back at the ancestor, stop here
 						p = null;
 					}
 					if ( p && p.nodeName == "P" ) {
@@ -7319,7 +7406,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.lastChild );
-				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP ) : null;
+				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor ) : null;
 			};
 		},
 		/**
@@ -7353,7 +7440,7 @@ if ( typeof context == 'undefined' ) {
 					}
 				}
 			} while ( node && node.firstChild );
-			return new context.fn.rawTraverser( node, depth, inP );
+			return new context.fn.rawTraverser( node, depth, inP, node );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
@@ -7556,6 +7643,8 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;lt;span class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			context.$content.html( html );
 			context.oldHTML = html;
+			// FIXME: This needs to be merged somehow with the oldHTML thing
+			context.history.push( { 'html': html } );
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
@@ -7569,8 +7658,11 @@ if ( typeof context == 'undefined' ) {
 			context.fn.trigger( 'ready' );
 			// Setup event handling on the iframe
 			$( context.$iframe[0].contentWindow.document )
+				.bind( 'keydown', function( event ) {
+					return context.fn.trigger( 'keydown', event );
+				} )
 				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
-					context.fn.trigger( 'change', event );
+					return context.fn.trigger( 'change', event );
 				} )
 				.delayedBind( 250, 'keyup mouseup paste cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'delayedChange', event );

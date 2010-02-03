@@ -314,6 +314,10 @@ body.ltr .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
 .wikieditor-toolbar-field-wrapper {
 	padding: 0 0 25px 0;
 }
+.wikieditor-toolbar-floated-field-wrapper {
+	float: left;
+	margin-right: 2em;
+}
 .wikieditor-toolbar-dialog-hint {
 	color: #999999;
 }
@@ -373,6 +377,17 @@ body.rtl .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wr
 }
 /* REPLACE Dialog */
 
+/* Insert Link Dialog */
+#wikieditor-toolbar-link-int-target-status {
+	float: right;
+}
+#wikieditor-toolbar-link-int-target,
+#wikieditor-toolbar-link-int-text {
+	width: 100%;
+}
+#wikieditor-toolbar-tool-link-int-target-label {
+	float: left;
+}
 /* RTL Changes */
 body.rtl .wikiEditor-toolbar-dialog .ui-dialog-buttonpane button {
 	float: left;
@@ -384,6 +399,17 @@ body.rtl .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
 }
 body.rtl .wikiEditor-toolbar-dialog .ui-dialog-title {
 	float:right;
+}
+body.rtl #wikieditor-toolbar-link-int-target-status {
+	float: left;
+}
+body.rtl #wikieditor-toolbar-tool-link-int-target-label {
+	float: right;
+}
+body.rtl .wikieditor-toolbar-floated-field-wrapper {
+	float: right;
+	margin-right: 0;
+	margin-left: 2em;
 }
 /* Self Clearing Floats */
 .wikieditor-toolbar-table-dimension-fields:after,

@@ -857,6 +857,19 @@ $messages['id'] = array(
 	'ct-update-table' => 'Pemutahiran tabel',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ct-total-header' => 'Ntiyé ole níle',
+	'ct-start-date' => 'Ubochi mmbido (YYYYMMDD)',
+	'ct-end-date' => 'Ubochi o na kushi (YYYYMMDD)',
+	'ct-beginner' => 'Onye mbídó',
+	'ct-intermediate' => 'Nke ditu mmá',
+	'ct-expert' => 'Dioka',
+	'ct-and' => 'na',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
