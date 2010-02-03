@@ -6417,9 +6417,18 @@ scrollToCaretPosition: function( options ) {
 	}
 	var context = $(this).data( 'wikiEditor-context' );
 	var hasIframe = context !== undefined && context.$iframe !== undefined;
-	// iframe functions have not been implemented yet, this is a temp hack
-	//var hasIframe = false;
-	return ( hasIframe ? context.fn : fn )[command].call( this, options );
+	
+	// IE selection restore voodoo
+	var needSave = false;
+	if ( hasIframe && context.savedSelection !== null ) {
+		context.fn.restoreSelection();
+		needSave = true;
+	}
+	retval = ( hasIframe ? context.fn : fn )[command].call( this, options );
+	if ( hasIframe && needSave ) {
+		context.fn.saveSelection();
+	}
+	return retval;
 };
 
 } )( jQuery );/**
@@ -6629,7 +6638,9 @@ if ( typeof context == 'undefined' ) {
 		// The previous HTML of the iframe, stored to detect whether something really changed.
 		'oldHTML': null,
 		// Same for delayedChange()
-		'oldDelayedHTML': null
+		'oldDelayedHTML': null,
+		// Saved selection state for IE
+		'savedSelection': null
 	};
 	
 	/*
@@ -7415,6 +7426,22 @@ if ( typeof context == 'undefined' ) {
 				}
 				t = nextT;
 			}
+		},
+		'saveSelection': function() {
+			if ( !$.browser.msie ) {
+				// Only IE needs this
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection = context.$iframe[0].contentWindow.document.selection.createRange();
+		},
+		'restoreSelection': function() {
+			if ( !$.browser.msie || context.savedSelection === null ) {
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection.select();
+			context.savedSelection = null;
 		}
 	};
 	
@@ -7662,6 +7689,9 @@ fn: {
 									$.wikiEditor.modules.dialogs.fn.resize );
 							});
 					}
+					dialogDiv.bind( 'dialogclose', function() {
+						context.fn.restoreSelection();
+					} );
 					// Add tabindexes to dialog form elements
 					// Find the highest tabindex in use
 					var maxTI = 0;
@@ -9804,6 +9834,7 @@ fn: {
 				}
 				break;
 			case 'dialog':
+				context.fn.saveSelection();
 				context.$textarea.wikiEditor( 'openDialog', action.module );
 				break;
 			default: break;

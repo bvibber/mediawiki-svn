@@ -205,7 +205,9 @@ if ( typeof context == 'undefined' ) {
 		// The previous HTML of the iframe, stored to detect whether something really changed.
 		'oldHTML': null,
 		// Same for delayedChange()
-		'oldDelayedHTML': null
+		'oldDelayedHTML': null,
+		// Saved selection state for IE
+		'savedSelection': null
 	};
 	
 	/*
@@ -991,6 +993,22 @@ if ( typeof context == 'undefined' ) {
 				}
 				t = nextT;
 			}
+		},
+		'saveSelection': function() {
+			if ( !$.browser.msie ) {
+				// Only IE needs this
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection = context.$iframe[0].contentWindow.document.selection.createRange();
+		},
+		'restoreSelection': function() {
+			if ( !$.browser.msie || context.savedSelection === null ) {
+				return;
+			}
+			context.$iframe[0].contentWindow.focus();
+			context.savedSelection.select();
+			context.savedSelection = null;
 		}
 	};
 	

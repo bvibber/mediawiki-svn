@@ -1702,7 +1702,6 @@ $j(document).ready( function() {
 			close: function() {
 				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
 						.unbind( 'keypress.srdialog' );
-				$j(this).data( 'context' ).$iframe[0].contentWindow.focus();
 				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}
