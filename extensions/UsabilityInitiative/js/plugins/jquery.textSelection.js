@@ -368,9 +368,18 @@ scrollToCaretPosition: function( options ) {
 	}
 	var context = $(this).data( 'wikiEditor-context' );
 	var hasIframe = context !== undefined && context.$iframe !== undefined;
-	// iframe functions have not been implemented yet, this is a temp hack
-	//var hasIframe = false;
-	return ( hasIframe ? context.fn : fn )[command].call( this, options );
+	
+	// IE selection restore voodoo
+	var needSave = false;
+	if ( hasIframe && context.savedSelection !== null ) {
+		context.fn.restoreSelection();
+		needSave = true;
+	}
+	retval = ( hasIframe ? context.fn : fn )[command].call( this, options );
+	if ( hasIframe && needSave ) {
+		context.fn.saveSelection();
+	}
+	return retval;
 };
 
 } )( jQuery );

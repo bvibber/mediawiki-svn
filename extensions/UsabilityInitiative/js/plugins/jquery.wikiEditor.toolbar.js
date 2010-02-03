@@ -257,6 +257,7 @@ fn: {
 				}
 				break;
 			case 'dialog':
+				context.fn.saveSelection();
 				context.$textarea.wikiEditor( 'openDialog', action.module );
 				break;
 			default: break;
