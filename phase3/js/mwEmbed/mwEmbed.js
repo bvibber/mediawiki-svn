@@ -1428,7 +1428,7 @@ var mwDefaultConf = {
 							// NOTE:: we need to setup a special page rather than the rewrite hack I use bellow:   
 							// The rewrite hack is very slow cuz it loads the whole mediaWiki interface & skin 
 							'server_frame' : server_frame,
-							'client_frame_path'	: mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html',
+							'client_frame_path'	: mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html'
 						},
 						function(){
 							mw.proxy.doRequest( data, callback )

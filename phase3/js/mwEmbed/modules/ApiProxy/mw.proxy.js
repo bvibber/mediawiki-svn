@@ -132,14 +132,14 @@ mw.addMessages( {
 				 
 		// add an onLoad hook: 
 		$j( '#frame_proxy' ).get( 0 ).onload = function() {
-			// add a 5 second timeout for setting up the nested child callback (after page load) 
+			// add a 8 second timeout for setting up the nested child callback (after page load) 
 			setTimeout( function() {
 				if ( !frameProxyOk ) {
 					// we timmed out no api proxy (should make sure the user is "logged in")
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					$.proxy.proxyNotReadyDialog();
 				}
-			}, 5000 );
+			}, 8000 );
 		}
 	}
 	var lastApiReq = { };
