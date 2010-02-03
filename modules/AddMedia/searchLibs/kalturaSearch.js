@@ -81,7 +81,7 @@ kalturaFilters.prototype = {
 		 * Create an HTML representation of the available search filters and append 
 		 * them to the given element.
 		 * 
-		 *  @param {jQuery element} The base element to which HTML items should be
+		 *  @return {jQuery element} The base element to which HTML items should be
 		 *  appended.
 		 */
 		
@@ -123,6 +123,8 @@ kalturaFilters.prototype = {
 		 * @id {string} unique id for this filter box an residing elements
 		 * @title {string} title of the filter box
 		 * @options {array} array of strings describing the options in the filter box
+		 *
+		 * @return {jQuery element} The filter box
 		 * 
 		 */
 		
@@ -282,6 +284,7 @@ kalturaSearch.prototype = {
 			searchLib.getImageObj( resource, size, callback );
 		});				
 	},
+	
 	/*
 	* Get extra resource info via a library specific callback 
 	* NOTE: this info should be included in the original kaltura search results
@@ -292,6 +295,7 @@ kalturaSearch.prototype = {
 			searchLib.addResourceInfoCallback( resource, callback );
 		});				
 	},
+	
 	/**
 	* Get and load provider via id 
 	* @param {String} provider_id The id of the content provider

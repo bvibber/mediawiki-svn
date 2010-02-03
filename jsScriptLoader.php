@@ -180,7 +180,7 @@ class jsScriptLoader {
 		if( !is_file( $wgJavaPath ) || ! is_file( $wgClosureCompilerPath ) ){
 			return false;
 		}
-		// Update the requestKey with a random value if no provided
+		// Update the requestKey with a random value if not provided
 		// requestKey is used for the temporary file
 		// ( There are problems with using standard output and Closure compile )
 		if( $requestKey == '')
