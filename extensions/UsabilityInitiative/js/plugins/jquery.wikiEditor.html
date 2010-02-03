@@ -40,14 +40,28 @@
 		}
 		/* A collapsed template */
 		.wikiEditor-template-name {
-			background-color:#DDEEFF;
-			border:1px outset #DDEEFF;
+			background-color:#e8e8e8;
 			color:#333333;
-			padding:0 0 0 0.25em;
+			font-family: Helvetica, sans-serif;
+			font-size: 12px;
+			padding-left:4px;
+			padding-right: 4px;
+			padding-top: 2px;
 			display: inline;
-			margin:0 0.25em;
 			text-decoration:none;
 		}
+			
+		.wikiEditor-template-expanded .wikiEditor-template-name {
+			border-color:#D9D9D9 #D9D9D9 -moz-use-text-color;
+			border-style:solid solid none;
+			border-width:1px 1px medium;
+		}
+		
+		.wikiEditor-template-collapsed .wikiEditor-template-name {
+			border:1px solid #d9d9d9;
+		}
+		
+		
 		ul.wikiEditor-template-modes,
 		ul.wikiEditor-template-modes li {
 			display: inline;
@@ -72,8 +86,12 @@
 		.wikiEditor-template-expanded {
 			display: inline;
 		}
+
 		.wikiEditor-template-text{
-			border: solid 1px blue;
+			background: #f3f3f3;
+			margin-top: -3px;
+			border: solid 1px #d9d9d9;
+			padding-left: 4px;
 		}
 		.wikiEditor-template-end, .wikiEditor-template-start{
 			color: blue;
