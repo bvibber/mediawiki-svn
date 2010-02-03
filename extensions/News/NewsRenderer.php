@@ -110,7 +110,6 @@ class NewsRenderer {
 			$this->templateoptions->setEditSection( false );
 			$this->templateoptions->setNumberHeadings( false );
 			$this->templateoptions->setRemoveComments( true );
-			$this->templateoptions->setUseTeX( false );
 			$this->templateoptions->setUseDynamicDates( false );
 			$this->templateoptions->setInterwikiMagic( true ); //strip interlanguage-links
 			$this->templateoptions->setAllowSpecialInclusion( false );
