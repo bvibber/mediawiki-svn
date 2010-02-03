@@ -6643,9 +6643,8 @@ if ( typeof context == 'undefined' ) {
 		'savedSelection': null,
 		// Stack of states in { html: [string] } form
 		'history': [],
+		// Current history state position - this is number of steps backwards, so it's always -1 or less
 		'historyPosition': -1,
-		// Key states
-		'keys': { 'control': false }
 	};
 	
 	/*
@@ -6708,19 +6707,29 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'keydown': function( event ) {
 			switch ( event.which ) {
-				case 17: // ctrl
-				case 224: // command
-					context.keys.control = true;
-					break;
 				case 90: // z
-					if ( context.keys.control && context.history.length ) {
-						context.historyPosition = Math.min( context.historyPosition - 1, -1 );
-						if ( context.history.length + context.historyPosition >= 0 ) {
+					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
+						// HistoryPosition is a negetive number between -1 and -context.history.length, in other words
+						// it's the number of steps backwards from the latest state.
+						if ( event.shiftKey ) {
+							// Redo
+							context.historyPosition++;
+						} else {
 							// Undo
+							context.historyPosition--;
+						}
+						// Only act if we are switching to a valid state
+						if ( context.history.length + context.historyPosition >= 0 && context.historyPosition < 0 ) {
+							// Change state
 							context.$content.html(
 								context.history[context.history.length + context.historyPosition].html
 							);
+						} else {
+							// Normalize the historyPosition
+							context.historyPosition =
+								Math.max( -context.history.length, Math.min( context.historyPosition, -1 ) );
 						}
+						// Prevent the browser from getting in there and doing it's stuff
 						return false;
 					}
 					break;
@@ -6736,13 +6745,12 @@ if ( typeof context == 'undefined' ) {
 				event.data.scope = 'realchange';
 				context.historyPosition = -1;
 			}
+			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
 			switch ( event.which ) {
-				case 17: // ctrl
-				case 224: // command
-					context.keys.control = false;
+				case 8: // backspace
+					// do something here...
 					break;
 			}
-			// FIXME: Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
 			return true;
 		},
 		'delayedChange': function( event ) {
