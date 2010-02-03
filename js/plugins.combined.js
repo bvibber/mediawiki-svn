@@ -6891,15 +6891,13 @@ if ( typeof context == 'undefined' ) {
 			// Converting <p>s is wrong if there's nothing before them, so check that.
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
-				if ( this.previousSibling || this.parentNode != $pre.get( 0 ) ) {
 					var text =  $( this ).text();
 					// If this <p> is preceded by some text, add a \n at the beginning, and if
 					// it's followed by a textnode, add a \n at the end
 					// We need the traverser because there can be other weird stuff in between
 					
 					// Check for preceding text
-					// FIXME: Add an option to disable depth checking, -10 is a hack
-					var t = new context.fn.rawTraverser( this.firstChild, -10, this ).prev();
+					var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.prev();
 					}
@@ -6908,7 +6906,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					
 					// Check for following text
-					t = new context.fn.rawTraverser( this.lastChild, -10, this ).next();
+					t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
 					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 						t = t.next();
 					}
@@ -6917,7 +6915,6 @@ if ( typeof context == 'undefined' ) {
 						text += "\n";
 					}
 					$( this ).text( text );
-				}
 			} );
 			var retval;
 			if ( $.browser.msie ) {
@@ -6941,7 +6938,22 @@ if ( typeof context == 'undefined' ) {
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
 		 */
 		'getContents': function() {
-			return context.fn.htmlToText( context.$content.html() );
+			// For <p></p>, .html() returns <p>&nbsp;</p> in IE
+			// This seems to convince IE while not affecting display
+			var html;
+			if ( $.browser.msie ) {
+				// Don't manipulate the iframe DOM itself, causes cursor jumping issues
+				var $c = $( context.$content.get( 0 ).cloneNode( true ) );
+				$c.find( 'p' ).each( function() {
+					if ( $(this).html() == '' ) {
+						$(this).replaceWith( '<p></p>' );
+					}
+				} );
+				html = $c.html();
+			} else {
+				html = context.$content.html();
+			}
+			return context.fn.htmlToText( html );
 		},
 		/**
 		 * Gets the currently selected text in the content
@@ -7170,15 +7182,38 @@ if ( typeof context == 'undefined' ) {
 				if ( sc ) {
 					range.moveToElementText( sc );
 				}
-				range.moveStart( 'character', options.start );
+				range.collapse();
+				range.moveEnd( 'character', options.start );
+				
 				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
 				if ( ec ) {
 					range2.moveToElementText( ec );
 				}
 				range2.collapse();
 				range2.moveEnd( 'character', options.end );
-				range.setEndPoint( 'EndToEnd', range2 );
-				range.select();
+				
+				// IE does newline emulation for <p>s: <p>foo</p><p>bar</p> becomes foo\nbar just fine
+				// but <p>foo</p><br><br><p>bar</p> becomes foo\n\n\n\nbar , one \n too many
+				// Correct for this
+				var matches, counted = 0;
+				// while ( matches = range.htmlText.match( regex ) && matches.length <= counted ) doesn't work
+				// because the assignment side effect hasn't happened yet when the second term is evaluated
+				while ( matches = range.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
+					if ( matches.length <= counted )
+						break;
+					range.moveEnd( 'character', matches.length );
+					counted += matches.length;
+				}
+				range2.moveEnd( 'character', counted );
+				while ( matches = range2.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
+					if ( matches.length <= counted )
+						break;
+					range2.moveEnd( 'character', matches.length );
+					counted += matches.length;
+				}
+
+				range2.setEndPoint( 'StartToEnd', range );
+				range2.select();
 			}
 			return context.$textarea;
 		},
@@ -7296,10 +7331,11 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Object used by traverser(). Don't use this unless you know what you're doing
 		 */
-		'rawTraverser': function( node, depth, inP ) {
+		'rawTraverser': function( node, depth, inP, ancestor ) {
 			this.node = node;
 			this.depth = depth;
 			this.inP = inP;
+			this.ancestor = ancestor;
 			this.next = function() {
 				var p = this.node;
 				var nextDepth = this.depth;
@@ -7307,8 +7343,8 @@ if ( typeof context == 'undefined' ) {
 				while ( p && !p.nextSibling ) {
 					p = p.parentNode;
 					nextDepth--;
-					if ( nextDepth == 0 ) {
-						// We're back at the start node
+					if ( p == ancestor ) {
+						// We're back at the ancestor, stop here
 						p = null;
 					}
 					if ( p && p.nodeName == "P" ) {
@@ -7334,7 +7370,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.firstChild );
-				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP ) : null;
+				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor ) : null;
 			};
 			this.prev = function() {
 				var p = this.node;
@@ -7343,8 +7379,8 @@ if ( typeof context == 'undefined' ) {
 				while ( p && !p.previousSibling ) {
 					p = p.parentNode;
 					prevDepth--;
-					if ( prevDepth == 0 ) {
-						// We're back at the start node
+					if ( p == ancestor ) {
+						// We're back at the ancestor, stop here
 						p = null;
 					}
 					if ( p && p.nodeName == "P" ) {
@@ -7370,7 +7406,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.lastChild );
-				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP ) : null;
+				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor ) : null;
 			};
 		},
 		/**
@@ -7404,7 +7440,7 @@ if ( typeof context == 'undefined' ) {
 					}
 				}
 			} while ( node && node.firstChild );
-			return new context.fn.rawTraverser( node, depth, inP );
+			return new context.fn.rawTraverser( node, depth, inP, node );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
