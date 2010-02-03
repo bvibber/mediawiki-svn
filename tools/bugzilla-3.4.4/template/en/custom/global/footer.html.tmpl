@@ -1,0 +1,126 @@
+[% PROCESS global/variables.none.tmpl %]
+				<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="head" class="noprint">
+			<!-- /search -->
+			<div id="p-search">
+				<h5><label for="searchInput">Search</label></h5>
+				<form id="searchform" action="buglist.cgi" method="get"
+				 onsubmit="if (this.quicksearch.value == '')
+				 { alert('Please enter one or more search terms first.');
+				 return false; } return true;">
+					<input type='hidden' name="title" value="Special:Search"/>
+					<div id="simpleSearch">
+						<input id="searchInput" name="quicksearch" type="text" title="Search Bugzilla" value="" />
+						<button id="searchButton" type='submit' name='button' title="Search Bugzilla for this text">&nbsp;</button>
+					</div>
+				</form>
+			</div>
+			<!-- /search -->
+			<!-- personal -->
+			<div id="p-personal" class="">
+				<h5>Personal tools</h5>
+				<ul >
+					[% IF user.login %]
+						[% IF user.authorizer.can_logout %]
+							<li class="user-link">
+							[% IF sudoer %]
+        							[%+ sudoer.login FILTER html %] (<b>impersonating
+        							[%+ user.login FILTER html %]</b>
+        							<a href="relogin.cgi?action=end-sudo">end session</a>)
+      							[% ELSE %]
+								<a href="userprefs.cgi" title="Preferences">[%+ user.login FILTER html %]</a>
+							[% END %]
+							</li>
+        						<li><a href="index.cgi?logout=1" title="Log out">Log&nbsp;out</a></li>
+      						[% ELSE %]
+        						<li>Logged&nbsp;in&nbsp;as$nbsp;[%+ user.login FILTER html %]</li>
+      						[% END %]
+					[% ELSE %]
+						[% IF Param('createemailregexp')
+							&& user.authorizer.user_can_create_account %]
+							<li id="new_account_container[% qs_suffix FILTER html %]">
+								<a href="createaccount.cgi">New&nbsp;Account</a>
+							</li>
+                				[% END %]
+						[%# Only display one login form when we're on a LOGIN_REQUIRED page. That
+						  # way, we're guaranteed that the user will use the form that has
+						  # hidden_fields in it (the center form) instead of this one. Also, it's
+						  # less confusing to have one form (as opposed to  three) when you're
+						  # required to log in.
+						#%]
+						[% IF user.authorizer.can_login && !Bugzilla.page_requires_login %]
+							[% PROCESS "account/auth/login-small.html.tmpl" %]
+						[% END %]
+
+					[% END %]
+				</ul>
+			</div>
+			<!-- /personal -->
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="panel" class="noprint">
+				<!-- logo -->
+				<div id="p-logo"><a style="background-image: url(skins/custom/images/bugzilla-logo.png);" href="./"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				<!-- navigation -->
+				<div class="portal">
+					<h5>Navigation</h5>
+					<div class="body">
+						<ul>
+							[% PROCESS "global/nav-links.html.tmpl" %]	
+						</ul>
+					</div>
+				</div>
+				<!-- /navigation -->
+				<!-- interaction -->
+				[% IF user.showmybugslink OR user.queries.size
+					OR user.queries_subscribed.size
+				%]
+				<div class="portal">
+					<h5>Saved Searches</h5>
+					<div class="body">
+						<ul>
+							[% PROCESS "global/search-links.html.tmpl" %]
+						</ul>
+					</div>
+				</div>
+				[% END %]				
+				<!-- /interaction -->
+				<!-- toolbox -->
+				<div class="portal">
+					<h5>Links</h5>
+					<div class="body">
+						<ul>
+							[% PROCESS "global/user-links.html.tmpl" %]
+						</ul>
+					</div>
+				</div>
+				<!-- /toolbox -->
+			</div>
+		<!-- /panel -->		
+
+		<!-- footer -->
+		<div id="footer" >
+			<ul id="footer-info">
+				<li>Bugzilla version [%+ constants.BUGZILLA_VERSION %]</li>
+			</ul>
+
+			<ul id="footer-places">
+				<li><a href="http://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+				<li><a href="http://www.mediawiki.org/wiki/Project:About" title="Project:About">About MediaWiki.org</a></li>
+				<li><a href="http://www.mediawiki.org/wiki/Project:General_disclaimer" title="Project:General disclaimer">Disclaimers</a></li>
+			</ul>
+			<ul id="footer-icons" class="noprint">
+				<li id="footer-icon-poweredby"><a href="http://www.bugzilla.org/"><img src="skins/custom/images/bugzilla-badge.png" height="31" width="88" alt="Powered by Bugzilla" /></a></li>
+			</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+	</body>
+</html>

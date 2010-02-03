@@ -1,0 +1,31 @@
+
+[%# Saved searches %]
+
+				[% IF user.showmybugslink %]
+					[% filtered_username = user.login FILTER url_quote %]
+					<li><a href="[% Param('mybugstemplate').replace('%userid%', filtered_username) %]">My [% terms.Bugs %]</a></li>
+				[% END %]
+
+				[% FOREACH q = user.queries %]
+					[% IF q.link_in_footer %]
+						<li>
+							<a href="buglist.cgi?cmdtype=runnamed&amp;namedcmd=[% q.name FILTER url_quote %]">[% q.name FILTER html %]</a>
+						</li>
+					[% END %]
+				[% END %]
+				[% FOREACH q = user.queries_subscribed %]
+					[% IF new_line %]
+						<br>
+						[% new_line = 0 %]
+					[% END %]
+					<li>
+						<a href="buglist.cgi?cmdtype=dorem&amp;remaction=run&amp;namedcmd=
+							[% q.name FILTER url_quote %]&amp;sharer_id=
+							[% q.user.id FILTER url_quote %]"
+							class="shared"
+							title="Shared by [% q.user.identity FILTER html %]"
+							>[% q.name FILTER html FILTER no_break %]
+						</a>
+					</li>
+				[% END %]
+
