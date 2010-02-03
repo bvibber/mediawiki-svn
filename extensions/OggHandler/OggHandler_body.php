@@ -452,21 +452,30 @@ class OggHandler extends MediaHandler {
 
 	function setHeaders( $out ) {
 		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath,
-				$wgPlayerStatsCollection, $wgVideoTagOut;
+				$wgEnablePlayTracking, $wgPlayTrackingRate,  $wgVideoTagOut;
 
 		if( $wgVideoTagOut ){
-			// We could add "video" tag javascript here if want. specifically:
+			// We could add "video" tag javascript
+			// If we wanted to block on mwEmbed player js, instead of loading the js onDomReady
 
-			// <script type="text/javascript" src="js/mwEmbed/jsScriptLoader.php?class=window.jQuery,mwEmbed,$j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText&debug=true"></script>
-			//<link rel="stylesheet" href="js/mwEmbed/skins/styles.css" type="text/css" media="screen" />
+			// embedPlayer classes include: $j.ui,mw.EmbedPlayer,nativeEmbed,ctrlBuilder,mvpcfConfig,kskinConfig,$j.fn.menu,$j.cookie,$j.ui.slider,mw.TimedText
 			//<link rel="stylesheet" href="js/mwEmbed/skins/kskin/playerSkin.css" type="text/css" media="screen" />
 
-			// The above is loaded on-dom-ready for faster dom readyness.
-			// but that has the disadvantage of video player interfaces not being "instantly" ready
-			// on page load. So its a trade off.
-
-			// Loading dynamically also lets us avoid unnecessary code
+			// Loading dynamically lets us avoid unnecessary code
 			// ie firefox does not need "JSON.js" and IE ~maybe~ needs cortado embed etc.
+
+			if( $wgEnablePlayTracking ) {
+				$encPlayTracking = Xml::encodeJsVar( $wgPlayTrackingRate );
+				// Should replace with a standard way to send configuration to mw core js
+				$out->addHeadItem( 'OggHandler', <<<EOT
+<script type="text/javascript">
+mw.setConfig('playTracking', 'true');
+mw.setConfig('playTrackingRate', $encPlayTracking );
+</script>
+EOT
+);
+			}
+
 		}else{
 			if ( $out->hasHeadItem( 'OggHandler' ) ) {
 				return;
@@ -491,12 +500,26 @@ class OggHandler extends MediaHandler {
 			$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
 			$encExtPathUrl = Xml::encodeJsVar( $scriptPath );
 
+
+			$playTrackingJs = '';
+			//Check for play tracking and output vars
+			if( $wgEnablePlayTracking ) {
+				$encPlayTracking = Xml::encodeJsVar( $wgPlayTrackingRate );
+				$playTrackingJs = <<<EOT
+wgOggPlayer.playTracking = true;
+wgOggPlayer.playTrackingRate = $encPlayTracking
+EOT
+;
+			}
+
+
 			$out->addHeadItem( 'OggHandler', <<<EOT
 <script type="text/javascript" src="$scriptPath/OggPlayer.js?$wgOggScriptVersion"></script>
 <script type="text/javascript">
 wgOggPlayer.msg = $jsMsgs;
 wgOggPlayer.cortadoUrl = $encCortadoUrl;
 wgOggPlayer.extPathUrl = $encExtPathUrl;
+$playTrackingJs;
 </script>
 <style type="text/css">
 .ogg-player-options {

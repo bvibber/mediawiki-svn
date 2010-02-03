@@ -7,7 +7,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $oggDir = dirname(__FILE__);
 $wgAutoloadClasses['OggHandler'] = "$oggDir/OggHandler_body.php";
-$wgAutoloadClasses['OggTranscode'] = "$oggDir/OggTranscode.php";
 
 $wgMediaHandlers['application/ogg'] = 'OggHandler';
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
@@ -36,7 +35,8 @@ $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
 // Setup a hook for iframe=true (will strip the interface and only output the player)
 $wgHooks['ArticleFromTitle'][] = 'OggHandler::iframeOutputHook';
 
-// Add the oggTranscode schema
+// OggTranscode setup
+$wgAutoloadClasses['OggTranscode'] = "$oggDir/OggTranscode/OggTranscode.php";
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'OggTranscode::schema';
 
 $wgExtensionCredits['media'][] = array(
@@ -53,9 +53,6 @@ $wgExtensionCredits['media'][] = array(
 // Set the supported ogg codecs:
 $wgOggVideoTypes = array( 'Theora' );
 $wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
-
-// if wgPlayerStats collection is enabled or not
-$wgPlayerStatsCollection = false;
 
 // Output Video tag for player ( video tag is then rewritten to compatible player via mwEmbed )
 $wgVideoTagOut = false;
@@ -89,6 +86,7 @@ $wgFFmpegLocation = '/usr/bin/ffmpeg';
 $wgEnableTemporalOggUrls = false;
 
 // Enabled derivatives array
+// If set to false no derivatives will be used
 //
 // Only derivatives with less width than the
 // source asset size will be created
@@ -106,6 +104,13 @@ $wgEnabledDerivatives = array(
 	OggTranscode::ENC_HQ_VBR
 );
 
+// If play requests should be tracked.
+$wgEnablePlayTracking = false;
+
+// One out of how many requests should be tracked:
+$wgPlayTrackingRate = 10;
+
+
 // Filename or URL path to the Cortado Java player applet.
 //
 // If no path is included, the path to this extension's
@@ -122,8 +127,24 @@ $wgCortadoJarFile = "cortado-ovt-stripped-0.5.1.jar";
 
 /******************* CONFIGURATION ENDS HERE **********************/
 
-// NOTE: normally configuration based code would go into extension setup
-// so config could follow the oggHandler include but we need add the namespace early.
+// NOTE: normally configuration based code would go into extension setup function
+// This config setups hooks and autoloaders that should happen at
+// initial config time
+
+// Alternatively we could have top level php files that include the
+// following pieces of code, but that would distribute configuration
+
+// Enable play tracking
+if( $wgEnablePlayTracking ){
+	// Add the Api Play Tracking setup
+	$wgAutoloadClasses['ApiPlayTracking'] = "$oggDir/ApiPlayTracking/ApiPlayTracking.php";
+	$wgHooks['LoadExtensionSchemaUpdates'][] =  'ApiPlayTracking::schema';
+
+	//Add the api entry point:
+	$wgAPIModules['playtracking'] = 'ApiPlayTracking';
+}
+
+// Enable timed text
 if( $wgEnableTimedText ){
 	/**
 	 * Handle Adding of "timedText" NameSpace

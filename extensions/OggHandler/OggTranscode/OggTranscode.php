@@ -30,7 +30,6 @@ class OggTranscode {
 	*
 	* http://firefogg.org/dev/index.html
 	*/
-
 	public static $derivativeSettings = array(
 	OggTranscode::ENC_WEB_2MBS =>
 		array(
@@ -116,7 +115,8 @@ class OggTranscode {
 		'license'		=> "--license",
 		'contact'		=> "--contact"
 	);
-	/*
+
+	/**
 	* Setup the OggTranscode tables
 	*/
 	public static function schema() {
