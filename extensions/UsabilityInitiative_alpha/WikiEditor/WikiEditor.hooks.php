@@ -103,7 +103,7 @@ class WikiEditorHooks {
 			),
 		),
 		'toc' => array(
-			'i18n' => 'WikiEditorToc_alpha',
+			'i18n' => 'WikiEditorToc',
 			'preferences' => array(
 				'enable' => array(
 					// Ideally this key would be 'wikieditor-toc'
@@ -126,7 +126,7 @@ class WikiEditorHooks {
 			),
 		),
 		'toolbar' => array(
-			'i18n' => 'WikiEditorToolbar_alpha',
+			'i18n' => 'WikiEditorToolbar',
 			'preferences' => array(
 				'enable' => array(
 					// Ideally this key would be 'wikieditor-toolbar'
