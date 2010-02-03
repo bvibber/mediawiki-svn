@@ -1,4 +1,4 @@
-o<?php
+<?php
 /**
  * Hooks for Usability Initiative Vector extension
  *
