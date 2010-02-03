@@ -1237,6 +1237,8 @@ $j(document).ready( function() {
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' ).$textarea.textSelection( 'getSelection' );
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
+				// Hide any status indicators that may be visible
+				$j( '#wikieditor-toolbar-link-int-target-status > div:visible').hide();
 				$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var target, text, type;
