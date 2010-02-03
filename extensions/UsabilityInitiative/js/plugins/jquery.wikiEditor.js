@@ -207,7 +207,12 @@ if ( typeof context == 'undefined' ) {
 		// Same for delayedChange()
 		'oldDelayedHTML': null,
 		// Saved selection state for IE
-		'savedSelection': null
+		'savedSelection': null,
+		// Stack of states in { html: [string] } form
+		'history': [],
+		'historyPosition': -1,
+		// Key states
+		'keys': { 'control': false }
 	};
 	
 	/*
@@ -268,6 +273,27 @@ if ( typeof context == 'undefined' ) {
 		 * function is to both classify the scope of changes as 'division' or 'character' and to prevent further
 		 * processing of events which did not actually change the content of the iframe.
 		 */
+		'keydown': function( event ) {
+			switch ( event.which ) {
+				case 17: // ctrl
+				case 224: // command
+					context.keys.control = true;
+					break;
+				case 90: // z
+					if ( context.keys.control && context.history.length ) {
+						context.historyPosition = Math.min( context.historyPosition - 1, -1 );
+						if ( context.history.length + context.historyPosition >= 0 ) {
+							// Undo
+							context.$content.html(
+								context.history[context.history.length + context.historyPosition].html
+							);
+						}
+						return false;
+					}
+					break;
+			}
+			return true;
+		},
 		'change': function( event ) {
 			event.data.scope = 'division';
 			var newHTML = context.$content.html();
@@ -275,7 +301,15 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
+				context.historyPosition = -1;
 			}
+			switch ( event.which ) {
+				case 17: // ctrl
+				case 224: // command
+					context.keys.control = false;
+					break;
+			}
+			// FIXME: Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
 			return true;
 		},
 		'delayedChange': function( event ) {
@@ -285,6 +319,13 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
+				// Save in the history
+				//console.log( 'save-state' );
+				context.history.push( { 'html': newHTML } );
+				// Keep the history under control
+				while ( context.history.length > 10 ) {
+					context.history.shift();
+				}
 			}
 			return true;
 		}
@@ -321,6 +362,7 @@ if ( typeof context == 'undefined' ) {
 					$.wikiEditor.modules[module].evt[name]( context, event );
 				}
 			}
+			return true;
 		},
 		/**
 		 * Adds a button to the UI
@@ -1123,6 +1165,8 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;lt;span class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
 			context.$content.html( html );
 			context.oldHTML = html;
+			// FIXME: This needs to be merged somehow with the oldHTML thing
+			context.history.push( { 'html': html } );
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
@@ -1136,8 +1180,11 @@ if ( typeof context == 'undefined' ) {
 			context.fn.trigger( 'ready' );
 			// Setup event handling on the iframe
 			$( context.$iframe[0].contentWindow.document )
+				.bind( 'keydown', function( event ) {
+					return context.fn.trigger( 'keydown', event );
+				} )
 				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
-					context.fn.trigger( 'change', event );
+					return context.fn.trigger( 'change', event );
 				} )
 				.delayedBind( 250, 'keyup mouseup paste cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'delayedChange', event );
