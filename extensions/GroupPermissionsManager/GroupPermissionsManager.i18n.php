@@ -1931,6 +1931,7 @@ $messages['lb'] = array(
 	'grouppermissions-true' => 'Wouer',
 	'grouppermissions-false' => 'Falsch',
 	'grouppermissions-never' => 'Nie',
+	'grouppermissions-nooldrev' => 'Et ass e Feeler opgetruede beim Versuch fir den aktuelle Konfiguratiouns-Fichier ofzespäicheren. Et gouf keen Archiv ugeluecht',
 	'grouppermissions-sort-read' => 'Liesen',
 	'grouppermissions-sort-edit' => 'Ännerung',
 	'grouppermissions-sort-manage' => 'Gestioun',

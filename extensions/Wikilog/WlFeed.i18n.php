@@ -240,6 +240,13 @@ $messages['si'] = array(
 	'wlfeed-desc' => 'වර්ධිත සංග්‍රහ ප්‍රවේණි පංති',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'wlfeed-desc' => 'Utökade feed-skapningsklasser',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

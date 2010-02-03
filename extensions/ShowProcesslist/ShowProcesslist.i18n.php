@@ -489,6 +489,18 @@ $messages['id'] = array(
 	'showprocesslist-info' => 'Info',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'showprocesslist-id' => 'Id',
+	'showprocesslist-user' => 'Onye ne ké',
+	'showprocesslist-host' => 'Onye ji ímé a rü',
+	'showprocesslist-time' => 'Ogẹ',
+	'showprocesslist-state' => 'Otụolé',
+	'showprocesslist-info' => 'Ómárí',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

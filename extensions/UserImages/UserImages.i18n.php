@@ -446,10 +446,11 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'userimages-desc' => 'Генерира галерии на подигнати слики од корисникот со <code><nowiki><userimage /></nowiki></code>',
+	'userimages-desc' => 'Создава галерии на подигнати слики од корисникот со <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Слики подигнати од $1',
 	'userimages-noname' => 'Погрешно корисничко име или воопшто не е наведено.',
 	'userimages-noimages' => '$1 нема подигнато слики.',

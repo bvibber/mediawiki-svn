@@ -900,6 +900,17 @@ Anda dapat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} mengujinya].',
 Hal ini tidak dapat dilakukan dua kali.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'createsigndoc-bday' => 'Ogẹ òmúmú:',
+	'createsigndoc-optional' => 'I cho, ka I chogị',
+	'createsigndoc-create' => 'Ké',
+	'createsigndoc-error-generic' => 'Nsogbu: $1',
+	'createsigndoc-error-pagenoexist' => 'Nsogbu: Ihü [[$1]] a digì.',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'createsigndoc-pagename' => 'Síða:',

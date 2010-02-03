@@ -422,6 +422,7 @@ Después de elegir todas las páginas que desee volver a cargar, haga click en e
 	'refreshspecial-none-selected' => 'No has seleccionado ninguna pagina especial. Revertiendo a la selección por defecto.',
 	'refreshspecial-db-error' => 'Fracasado: error en base de datos',
 	'refreshspecial-no-page' => 'No tal página especial',
+	'refreshspecial-slave-lagged' => 'Retraso del servidor esclavo, esperando...',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Conexión falló, reconectando en 10 segundos...',
 	'refreshspecial-page-result' => 'obtener $1 {{PLURAL:$1|fila|filas}} en',

@@ -1698,6 +1698,7 @@ $messages['oc'] = array(
 	'readerfeedback-tier-poor' => 'Marrida',
 	'tooltip-ca-ratinghist' => "Apreciacions dels lectors d'aquesta pagina",
 	'specialpages-group-feedback' => 'Opinion del lector',
+	'readerfeedback-tt-review' => 'Sometre la revision',
 );
 
 /** Polish (Polski)

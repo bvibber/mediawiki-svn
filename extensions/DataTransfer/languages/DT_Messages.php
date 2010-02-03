@@ -515,6 +515,7 @@ $messages['es'] = array(
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',
 	'importcsv' => 'Importar CSV',
+	'dt_importcsv_badheader' => 'Error : el título de columna $1, "$2", tiene que ser "$3", "$4" o de la forma \'nombre_de_plantilla[nombre_del_campo]\'',
 	'right-datatransferimport' => 'Importar datos',
 );
 

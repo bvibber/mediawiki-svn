@@ -163,6 +163,14 @@ $messages['id'] = array(
 	'templateinfo-header' => 'Definisi XML untuk templat ini adalah:',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'templateinfo-desc' => 'Në nyé ike maka mkpurụ ihü, në nyé úchè maka ázú omárí ha nke shi édé XML',
+	'templateinfo-header' => 'Úchè XML maka mkpurụ ihü nka bu:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

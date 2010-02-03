@@ -934,6 +934,16 @@ Memungkinkan mendistribusikan pekerjaan video transcoding untuk klien yang mengg
 	'wah-api-error' => 'Ada kesalahan pada API. Silakan coba lagi nanti.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wah-menu-jobs' => 'Orü',
+	'wah-lookingforjob' => 'Nètú orü ...',
+	'wah-doing-job' => 'Orü: <i>$1</i> na: <i>$2</i>',
+	'wah-uploadfail' => 'Itinyé elu á dálá',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author 青子守歌
@@ -1191,6 +1201,7 @@ $messages['no'] = array(
 	'wah-doing-job' => 'Oppgave: <i>$1</i> på: <i>$2</i>',
 	'wah-downloading' => 'Nedlasting av filen er <i>$1%</i> ferdig',
 	'wah-encoding' => 'Koding av filen er <i>$1%</i> ferdig',
+	'wah-encoding-fail' => 'Koding mislyktes. Oppdater denne siden eller prøv igjen senere.',
 	'wah-uploading' => 'Opplasting av filen <i>$1</i> er ferdig',
 	'wah-uploadfail' => 'Opplastingen feilet',
 	'wah-doneuploading' => 'Opplasting ferdig. Takk for bidraget ditt.',

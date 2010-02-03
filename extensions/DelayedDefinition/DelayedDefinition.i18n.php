@@ -97,8 +97,11 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
+	'delaydef-desc' => 'Añade &lt;definir&gt; y &lt;mostrar&gt; para permitir la recolocación del código',
+	'delaydef-error-missing-def' => 'Error: no se ha encontrado la definición necesaria para &lt;nombre de muestra="$1"&gt;.',
 	'delaydef-error-no-name' => 'Error: Nombre de parámetro no especificado.',
 	'delaydef-error-redef' => 'Error: Redefinición intentada de $1.',
 );

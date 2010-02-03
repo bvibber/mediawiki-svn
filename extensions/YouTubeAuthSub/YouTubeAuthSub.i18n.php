@@ -1355,6 +1355,23 @@ Silakan menunggu.',
 	'youtubeauthsub_jserror_nodesc' => 'Silakan masukkan keterangan untuk video tersebut.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'youtubeauthsub_title' => 'Ishi edemede',
+	'youtubeauthsub_keywords' => 'Mkpurụ edemede ngodi',
+	'youtubeauthsub_submit' => 'Nyechá',
+	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
+	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',
+	'youtubeauthsub_uploadbutton' => 'Tinyéelú',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Le enyónyó-na-jé nka]',
+	'youtubeauthsub_uploading' => 'Enyónyó-na-jé gi na nyiri elú.
+Biko nweré nkásị obi.',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1821,7 +1838,7 @@ $messages['mk'] = array(
 	'youtubeauthsub_category' => 'Категорија',
 	'youtubeauthsub_submit' => 'Најавување',
 	'youtubeauthsub_clickhere' => 'Кликни тука за најавување на YouTube',
-	'youtubeauthsub_tokenerror' => 'Грешка при генерирање на авторизациски токен, обидете се повторно.',
+	'youtubeauthsub_tokenerror' => 'Грешка при создавањето на потврдниот жетон. Обидете се повторно.',
 	'youtubeauthsub_success' => "Честитаме!
 Вашиот видео запис е подигнат.
 <a href='http://www.youtube.com/watch?v=$1'>Погледнете го вашиот видео запис</a>.

@@ -3208,6 +3208,29 @@ Komentar tersebut hanya akan muncul setelah ditinjau oleh seorang moderator.',
 	'wikilog-doc-import-comment' => 'Dokumentasi Wikilog terimpor',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikilog-new-item-go' => 'Ké',
+	'wikilog-item-name' => 'Áhạ edemede:',
+	'wikilog-authors' => 'Onye déré',
+	'wikilog-title' => 'Ishi edemede',
+	'wikilog-actions' => 'Mmèmé',
+	'wikilog-view-summary' => 'Mmẹkotá',
+	'wikilog-anonymous-mark' => '(onye amágị)',
+	'wikilog-pager-older-n' => 'nke dítú ichíé $1 →',
+	'wikilog-pager-newest' => '←← nke ohúrù',
+	'wikilog-pager-oldest' => 'nke ichíé →→',
+	'wikilog-pager-last' => 'nke lara azu →→',
+	'wikilog-no-comments' => 'okwu a nogị',
+	'wikilog-summary-uncategorized' => 'E tibọ ya na ébé o gi nọr',
+	'wikilog-form-name' => 'Áhạ:',
+	'wikilog-edit-lc' => 'rüwa',
+	'wikilog-page-lc' => 'ihü',
+	'wikilog-history-lc' => 'akíkó mbu',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

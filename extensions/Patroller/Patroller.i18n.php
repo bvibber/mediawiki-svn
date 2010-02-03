@@ -856,6 +856,13 @@ $messages['id'] = array(
 	'right-patroller' => 'Melakukan patroli atas halaman-halaman',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'group-patroller-member' => 'onye na léfuru ihe anyà',
+);
+
 /** Icelandic (Íslenska)
  * @author Jóna Þórunn
  */

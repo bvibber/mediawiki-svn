@@ -78,6 +78,7 @@ $messages['de'] = array(
  */
 $messages['es'] = array(
 	'lastuserlogin' => 'Último acceso de usuario',
+	'lastuserlogin-desc' => 'Muestra la última vez que se conectó un usuario',
 	'lastuserlogin_userid' => 'Nombre de usuario',
 	'lastuserlogin_username' => 'Nombre real',
 	'lastuserlogin_useremail' => 'Correo electrónico del usuario',

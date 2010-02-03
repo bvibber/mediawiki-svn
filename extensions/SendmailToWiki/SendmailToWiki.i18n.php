@@ -335,6 +335,13 @@ $messages['id'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Karena kesalahpahaman, hanya pesan teks asli yang diterima.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

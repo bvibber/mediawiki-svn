@@ -3463,6 +3463,7 @@ $messages['oc'] = array(
 	'fundraiserstats-tab-contributions' => 'Nombre de contribucions',
 	'fundraiserstats-tab-averages' => 'Mejanas (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
+	'fundraiserstats-tab-ytd' => 'Annada en cors (dolars US)',
 	'specialpages-group-contribution' => 'Contribucions / Levada de fonses',
 );
 

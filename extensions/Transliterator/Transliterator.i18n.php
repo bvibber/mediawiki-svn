@@ -368,6 +368,7 @@ $messages['oc'] = array(
 	'transliterator-error-syntax' => 'Sintaxi incorrècta <code>$1</code> dins [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mai de $1 {{PLURAL:$1|règla|règlas}} dins [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "La règla <code>$1</code> a mai de $3 {{PLURAL:$3|caractèr|caractèrs}} sus l'esquèrra dins [[MediaWiki:$2]]",
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] deu aver al mens $1 caractèrs.',
 );
 
 /** Polish (Polski)

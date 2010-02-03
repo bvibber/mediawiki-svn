@@ -247,6 +247,13 @@ $messages['sk'] = array(
 	'nsfilerepo-desc' => 'Poskytuje nahraným súborom možnosti menných priestorov',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'nsfilerepo-desc' => 'Ge namnrymdbaserade funktioner till uppladdade filer',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

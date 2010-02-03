@@ -220,6 +220,13 @@ $messages['id'] = array(
 	'googleadsense-desc' => 'Tambahkan [http://www.google.com/adsense Google AdSense] ke kotak samping',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'googleadsense-desc' => 'Ne tí [http://www.google.com/adsense ÚchèAd Google] na igbe nor ákụkụ',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

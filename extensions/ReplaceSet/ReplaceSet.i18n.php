@@ -347,12 +347,14 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Fluff
  */
 $messages['sv'] = array(
 	'replaceset-desc' => 'Lägger till parsefunktionen <nowiki>{{#replaceset}}</nowiki> som används för att ersätta sektioner av text med formaterad data',
 	'replaceset-error-calllimit' => 'Begränsningen i antal anrop till funktionen ReplaceSet har uppnåtts.',
 	'replaceset-error-regexnoend' => 'Det reguljära uttrycket "$1" saknar en avslutande avgränsare \'$2\'',
+	'replaceset-error-regexbadmodifier' => "Regex-modifiern '$1' är inte giltig.",
 );
 
 /** Turkish (Türkçe)

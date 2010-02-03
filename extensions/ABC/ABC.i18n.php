@@ -345,6 +345,14 @@ $messages['id'] = array(
 	'abcdownload' => 'Unduh:',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'abcdesc' => 'Tinyékwa <tt>&lt;abc&gt;</tt> ede nyazoro I kwaria égwú ABC',
+	'abcdownload' => 'Danwèré ya:',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

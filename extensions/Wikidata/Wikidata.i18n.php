@@ -6025,6 +6025,23 @@ Tidak ada penyalinan yang dilakukan.',
 	'right-addlanguage' => 'Tambah dan rubah setelan bahasa',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'langman_title' => 'Ihe na dose asụsụ',
+	'langman_langname' => 'Áhạ asụsụ:',
+	'langman_iso639-3' => 'ISO 639-3 édé:',
+	'langman_iso639-2' => 'ISO 639-2 édé:',
+	'langman_field_optional' => '(ichóró)',
+	'langman_addlang' => 'Tinyé asụsụ',
+	'importlangnames_title' => 'Tinyé shi ébéozor áhạ asụsụ',
+	'ow_Time' => 'Ogẹ',
+	'ow_TranslatedTextAttributeValue' => 'Mkpurụ edemede',
+	'ow_Link' => 'Jikodo',
+	'ow_LinkAttributeValues' => 'Jikodo',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
