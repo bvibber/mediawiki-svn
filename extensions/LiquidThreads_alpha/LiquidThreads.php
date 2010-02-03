@@ -187,12 +187,6 @@ $wgGroupPermissions['user']['lqt-merge'] = true;
 $wgAvailableRights[] = 'lqt-split';
 $wgAvailableRights[] = 'lqt-merge';
 
-/* Number of days a thread needs to have existed to be considered for summarizing and archival */
-$wgLqtThreadArchiveStartDays = 14;
-
-/* Number of days a thread needs to be inactive to be considered for summarizing and archival */
-$wgLqtThreadArchiveInactiveDays = 5;
-
 /* Allows activation of LiquidThreads on individual pages */
 $wgLqtPages = array();
 
@@ -215,3 +209,6 @@ $wgLiquidThreadsMigrate = false;
 
 /** The default number of threads per page */
 $wgLiquidThreadsDefaultPageLimit = 20;
+
+/** Whether or not to allow users to activate/deactivate LiquidThreads per-page */
+$wgLiquidThreadsAllowUserControl = true;
