@@ -1031,21 +1031,28 @@ $j(document).ready( function() {
 					var tooltip = u.getMsg( $j( this ).attr( 'id' ) + '-tooltip' );
 					if ( $j( this ).val() == '' )
 						$j( this )
-							.val( $j( this ).data( 'tooltip' ) )
-							.addClass( 'wikieditor-toolbar-dialog-hint' );
+							.addClass( 'wikieditor-toolbar-dialog-hint' )
+							.val( $j( this ).data( 'tooltip' ) );
 				} )
 				.focus( function() {
-					$j( this ).removeClass( 'wikieditor-toolbar-dialog-hint' );
-					if( $j( this ).val() == $j( this ).data( 'tooltip' ) )
-						$j( this ).val( '' );
-				})
-				.bind( 'blur change', function() {
-					if ( $j( this ).val() == '' )
+					if( $j( this ).val() == $j( this ).data( 'tooltip' ) ) {
 						$j( this )
-							.val( $j( this ).data( 'tooltip' ) )
-							.addClass( 'wikieditor-toolbar-dialog-hint' );
-					else
-						$j( this ).removeClass( 'wikieditor-toolbar-dialog-hint' );
+							.val( '' )
+							.removeClass( 'wikieditor-toolbar-dialog-hint' );
+					}
+				})
+				.bind( 'change', function() {
+					if ( $j( this ).val() != $j( this ).data( 'tooltip' ) ) {
+						$j( this )
+							.removeClass( 'wikieditor-toolbar-dialog-hint' );
+					}
+				})
+				.bind( 'blur', function() {
+					if ( $j( this ).val() == '' ) {
+						$j( this )
+							.addClass( 'wikieditor-toolbar-dialog-hint' )
+							.val( $j( this ).data( 'tooltip' ) );
+					}
 				});
 			
 			// Automatically copy the value of the internal link page title field to the link text field unless the user
@@ -1062,9 +1069,17 @@ $j(document).ready( function() {
 						$j( '#wikieditor-toolbar-link-type-int' ).attr( 'checked', 'checked' );
 
 					if ( $j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched' ) )
-						$j( '#wikieditor-toolbar-link-int-text' )
-							.val( $j( '#wikieditor-toolbar-link-int-target' ).val() )
-							.change();
+						if ( $j( '#wikieditor-toolbar-link-int-target' ).val() == 
+							$j( '#wikieditor-toolbar-link-int-target' ).data( 'tooltip' ) ) {
+								$j( '#wikieditor-toolbar-link-int-text' )
+									.addClass( 'wikieditor-toolbar-dialog-hint' )
+									.val( $j( '#wikieditor-toolbar-link-int-text' ).data( 'tooltip' ) )
+									.change();
+							} else {
+								$j( '#wikieditor-toolbar-link-int-text' )
+									.val( $j( '#wikieditor-toolbar-link-int-target' ).val() )
+									.change();
+							}
 				}, 0 );
 			});
 			$j( '#wikieditor-toolbar-link-int-text' ).bind( 'change keydown paste cut', function() {
@@ -1193,6 +1208,11 @@ $j(document).ready( function() {
 					var whitespace = $j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace' );
 					var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
 					var text = $j( '#wikieditor-toolbar-link-int-text' ).val();
+					// check if the tooltips were passed as target or text
+					if ( target == $j( '#wikieditor-toolbar-link-int-target' ).data( 'tooltip' ) )
+						target = "";
+					if ( text == $j( '#wikieditor-toolbar-link-int-text' ).data( 'tooltip' ) )
+						text = "";
 					var u = mw.usability;
 					if ( target == '' ) {
 						alert( u.getMsg( 'wikieditor-toolbar-tool-link-empty' ) );
