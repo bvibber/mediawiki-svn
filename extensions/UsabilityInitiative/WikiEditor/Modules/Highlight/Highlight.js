@@ -2,7 +2,7 @@
 
 $j(document).ready( function() {
 	// Check preferences for highlight
-	if ( !wgWikiEditorEnabledModules.highlight ) {
+	if ( !wgWikiEditorEnabledModules.toc ) {
 		return true;
 	}
 	// Add the highlight module
