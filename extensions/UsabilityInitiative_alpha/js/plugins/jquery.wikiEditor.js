@@ -311,7 +311,6 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
-				context.historyPosition = -1;
 			}
 			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
 			switch ( event.which ) {
@@ -330,6 +329,10 @@ if ( typeof context == 'undefined' ) {
 				event.data.scope = 'realchange';
 				// Save in the history
 				//console.log( 'save-state' );
+				// Only reset the historyPosition and begin moving forward if this change is not the result of undo
+				if ( newHTML !== context.history[context.history.length + context.historyPosition].html ) {
+					context.historyPosition = -1;
+				}
 				context.history.push( { 'html': newHTML } );
 				// Keep the history under control
 				while ( context.history.length > 10 ) {
@@ -440,11 +443,17 @@ if ( typeof context == 'undefined' ) {
 			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
 			// We also do <br> and easy cases for <p> conversion here, complicated cases are handled later
 			html = html
-					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
-					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
-					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
-					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" );
+				.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
+				.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
+				.replace( /\<br[^\>]*\>\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
+			// Firefox ends up with one too many empty paragraphs, so this reduced consective strings of them by 1
+			if ( $.browser.firefox ) {
+				html = html.replace( /\<p[^\>]*\>\<\/p\>(\<p[^\>]*\>\<\/p\>)*/gi, '$1' );
+			}
+			html = html
+				.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
+				.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
+				.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
 			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
 			// won't leave everything alone
 			var leading = html.match( /^\s*/ )[0];
@@ -824,13 +833,13 @@ if ( typeof context == 'undefined' ) {
 		 * Get the first element before the selection that's in a certain class
 		 * @param classname Class to match. Defaults to '', meaning any class
 		 * @param strict If true, the element the selection starts in cannot match (default: false)
-		 * @return jQuery object
+		 * @return jQuery object or null if unknown
 		 */
 		'beforeSelection': function( classname, strict ) {
 			if ( typeof classname == 'undefined' ) {
 				classname = '';
 			}
-			var e, offset;
+			var e = null, offset = null;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
@@ -841,9 +850,17 @@ if ( typeof context == 'undefined' ) {
 					e = selection.getRangeAt( 0 ).startContainer;
 					offset = selection.getRangeAt( 0 ).startOffset;
 				} else {
-					return $( [] );
+					return null;
 				}
-			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				
+				// When the cursor is on an empty line, Opera gives us a bogus range object with
+				// startContainer=endContainer=body and startOffset=endOffset=1
+				var body = context.$iframe[0].contentWindow.document.body;
+				if ( $.browser.opera && e == body && offset == 1 ) {
+					return null;
+				}
+			}
+			if ( !e && context.$iframe[0].contentWindow.document.selection ) {
 				// IE
 				// Because there's nothing like range.startContainer in IE, we need to do a DOM traversal
 				// to find the element the start of the selection is in
@@ -855,14 +872,14 @@ if ( typeof context == 'undefined' ) {
 				try {
 					range2.setEndPoint( 'EndToStart', range );
 				} catch ( ex ) {
-					return $( [] );
+					return null;
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
 				var offset = context.fn.getOffset( seekPos );
 				e = offset ? offset.node : null;
 				offset = offset ? offset.offset : null;
 				if ( !e ) {
-					return $( [] );
+					return null;
 				}
 			}
 			if ( e.nodeName != '#text' ) {

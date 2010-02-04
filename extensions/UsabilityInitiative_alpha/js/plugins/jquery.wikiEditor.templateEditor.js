@@ -138,6 +138,9 @@ fn: {
 					$template.data( 'model' , model );
 					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
 				}
+				else{ //we just expanded this
+					$wikitext.text($template.data('model').getText());
+				}
 				
 				return false;
 			};
@@ -180,8 +183,10 @@ fn: {
 			
 			
 			function createDialog( $templateDiv ){
-				var templateModel = $templateDiv.data('model');
-				console.log(templateModel.getText());
+				var $wikitext = $templateDiv.children('.wikiEditor-template-text');
+				//TODO: check if template model has been changed
+				var templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $wikitext.text() );
+				$templateDiv.data('model', templateModel);
 				var $dialog = $("<div></div>");
 				var $title = $("<div>" + templateModel.getName() + "</div>").addClass('wikiEditor-template-dialog-title');
 				var $table = $("<table></table>")
@@ -210,6 +215,9 @@ fn: {
 					$('.wikiEditor-template-dialog-value input').each( function(){
 						templateModel.setValue( $(this).data('name'), $(this).val() );
 					});
+					//keep text consistent
+					$wikitext.text( templateModel.getText() );
+					
 					$dialog.dialog('close');
 					
 				}).text("OK").appendTo($dialog);

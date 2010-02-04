@@ -257,9 +257,13 @@ fn: {
 	 * @param {Object} context
 	 */
 	update: function( context ) {
-		$.wikiEditor.modules.toc.fn.unhighlight( context );
-		
 		var div = context.fn.beforeSelection( 'wikiEditor-toc-header' );
+		if ( div === null ) {
+			// beforeSelection couldn't figure it out, keep the old highlight state
+			return;
+		}
+		
+		$.wikiEditor.modules.toc.fn.unhighlight( context );
 		var section = div.data( 'section' ) || 0;
 		if ( context.data.outline.length > 0 ) {
 			var sectionLink = context.modules.toc.$toc.find( 'div.section-' + section );

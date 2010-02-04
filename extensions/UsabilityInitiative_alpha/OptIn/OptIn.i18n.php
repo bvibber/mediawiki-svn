@@ -3591,6 +3591,16 @@ $messages['lmo'] = array(
 	'optin-title-justoptedout' => 'Mersì per avè pruaa la Beta',
 	'optin-intro' => "'L pruget d'üsabilità de Wikipedia l'è adree a laurà fort per mejurà la Wikipedia.
 A vöret pruvà la nostra beta?",
+	'optin-success-in' => 'Te see adree a pruvà la Beta.
+Te pö piantà lì quand te vör fasend \'click\' sura al ligamm "{{int:optin-leave}}" in coo a la pagina.',
+	'optin-accept-short' => 'Pröva!',
+	'optin-accept-long' => 'Pröva la Beta',
+	'optin-accept-long-anon' => 'Vegn denter e pröva la Beta',
+	'optin-deny-short' => 'No, mersì',
+	'optin-deny-long' => 'Va indree a la pagina de prima',
+	'optin-submit-out' => 'Va föra da Beta',
+	'optin-survey-yes' => 'Sì',
+	'optin-survey-no' => 'Nò',
 );
 
 /** Lithuanian (Lietuvių)
