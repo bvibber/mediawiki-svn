@@ -833,13 +833,13 @@ if ( typeof context == 'undefined' ) {
 		 * Get the first element before the selection that's in a certain class
 		 * @param classname Class to match. Defaults to '', meaning any class
 		 * @param strict If true, the element the selection starts in cannot match (default: false)
-		 * @return jQuery object
+		 * @return jQuery object or null if unknown
 		 */
 		'beforeSelection': function( classname, strict ) {
 			if ( typeof classname == 'undefined' ) {
 				classname = '';
 			}
-			var e, offset;
+			var e = null, offset = null;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
@@ -850,9 +850,17 @@ if ( typeof context == 'undefined' ) {
 					e = selection.getRangeAt( 0 ).startContainer;
 					offset = selection.getRangeAt( 0 ).startOffset;
 				} else {
-					return $( [] );
+					return null;
 				}
-			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				
+				// When the cursor is on an empty line, Opera gives us a bogus range object with
+				// startContainer=endContainer=body and startOffset=endOffset=1
+				var body = context.$iframe[0].contentWindow.document.body;
+				if ( $.browser.opera && e == body && offset == 1 ) {
+					return null;
+				}
+			}
+			if ( !e && context.$iframe[0].contentWindow.document.selection ) {
 				// IE
 				// Because there's nothing like range.startContainer in IE, we need to do a DOM traversal
 				// to find the element the start of the selection is in
@@ -864,14 +872,14 @@ if ( typeof context == 'undefined' ) {
 				try {
 					range2.setEndPoint( 'EndToStart', range );
 				} catch ( ex ) {
-					return $( [] );
+					return null;
 				}
 				var seekPos = context.fn.htmlToText( range2.htmlText ).length;
 				var offset = context.fn.getOffset( seekPos );
 				e = offset ? offset.node : null;
 				offset = offset ? offset.offset : null;
 				if ( !e ) {
-					return $( [] );
+					return null;
 				}
 			}
 			if ( e.nodeName != '#text' ) {
