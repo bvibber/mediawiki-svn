@@ -342,7 +342,7 @@ class SvnRevTablePager extends SvnTablePager {
 			return Xml::openElement( 'div', array( 'title' => (string)$value ) ) .
 					$this->mView->mSkin->link(
 					SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/path' ),
-					$wgLang->truncate( (string)$value, 30 ),
+					$wgLang->truncate( (string)$value, 50 ),
 					array( 'title' => (string)$value ),
 					array( 'path' => (string)$value ) ) . "</div>";
 		}
