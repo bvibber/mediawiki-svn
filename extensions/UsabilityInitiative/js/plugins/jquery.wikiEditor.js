@@ -273,6 +273,7 @@ if ( typeof context == 'undefined' ) {
 		 * processing of events which did not actually change the content of the iframe.
 		 */
 		'keydown': function( event ) {
+			/*
 			switch ( event.which ) {
 				case 90: // z
 					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
@@ -302,6 +303,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					break;
 			}
+			*/
 			return true;
 		},
 		'change': function( event ) {
