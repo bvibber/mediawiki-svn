@@ -6876,16 +6876,17 @@ if ( typeof context == 'undefined' ) {
 			// IE does overzealous whitespace collapsing for $( '<pre />' ).html( html );
 			// We also do <br> and easy cases for <p> conversion here, complicated cases are handled later
 			html = html
-					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
-					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
-					.replace( /\<br[^\>]*\>\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
-					.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
-					.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
-					.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
-			// TODO: Why do we do this? Trevor knows, please explain here
+				.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
+				.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
+				.replace( /\<br[^\>]*\>\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
+			// Firefox ends up with one too many empty paragraphs, so this reduced consective strings of them by 1
 			if ( $.browser.firefox ) {
 				html = html.replace( /\<p[^\>]*\>\<\/p\>(\<p[^\>]*\>\<\/p\>)*/gi, '$1' );
 			}
+			html = html
+				.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
+				.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
+				.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
 			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
 			// won't leave everything alone
 			var leading = html.match( /^\s*/ )[0];
