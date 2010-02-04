@@ -158,8 +158,8 @@ mw.addMessages( {
 		}
 		var pUri =  mw.parseUri( $.proxy.server_frame );
 		
-		// FIXME we should have a Hosted iframe once we deploy mwEmbed on the servers.
-		// A hosted iframe would be much faster since than a normal page view 
+		// FIXME we should have a Hosted page once we deploy mwEmbed on the servers.
+		// A hosted page would be much faster since than a normal page view rewrite 
 		
 		var login_url = pUri.protocol + '://' + pUri.host;
 		login_url += pUri.path.replace( 'MediaWiki:ApiProxy', 'Special:UserLogin' );
@@ -326,17 +326,11 @@ mw.addMessages( {
 		}
 			
 		// FIXME Add in user based approval :: 
-				
-		// offer the user the ability to "approve" requested domain save to
-		// their user/ apiProxyDomainList.js page
 		
-		// FIXME grab the users whitelist for our current domain				
-		/*var local_api = wgScriptPath + '/index' + wgScriptExtension + '?title=' +
-				'User:' + wgUserName + '/apiProxyDomainList.js' +
-				'&action=raw&smaxage=0&gen=js';
-		$j.get( local_api, function( data ){
-			debugger;
-		});*/				
+		// FIXME grab the users whitelist for our current domain		
+		
+		// FIXME offer the user the ability to "approve" requested domain save to
+		// their user/ apiProxyDomainList.js page ( or better some user-prefrence setup )						
 				
 	}
 	

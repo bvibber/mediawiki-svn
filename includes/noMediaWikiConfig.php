@@ -1,6 +1,10 @@
 <?php
+/**
+ * No mediaWikiConfig sets variables for using the script-loader and mwEmbed modules
+ * without a complete mediaWiki install.
+ */
 
-//Optional set the path for google Closure Compiler ( for improved minification )
+// Optional set the path for google Closure Compiler ( for improved minification )
 $wgClosureCompilerPath = false;
 $wgJavaPath = false;
 
@@ -82,6 +86,19 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 
 	return @mkdir( $dir, $mode, true );  // PHP5 <3
 }
+
+/**
+ * Copied from mediaWIki GlobalFunctions.php wfMsgGetKey
+ *
+ * Fetch a message string value, but don't replace any keys yet.
+ * @param $key String
+ * @param $useDB Bool
+ * @param $langCode String: Code of the language to get the message for, or
+ *                  behaves as a content language switch if it is a boolean.
+ * @param $transform Boolean: whether to parse magic words, etc.
+ * @return string
+ * @private
+ */
 function wfMsgGetKey( $msgKey, $na, $langKey=false ) {
     global $messages, $mwLanguageCode;
     if(!$langKey){
@@ -93,8 +110,11 @@ function wfMsgGetKey( $msgKey, $na, $langKey=false ) {
         return '&lt;' . $msgKey . '&gt;';
     }
 }
-/* mediaWiki abstracts the json functions with fallbacks
-* here we just map directly to the call */
+
+/**
+ * mediaWiki abstracts the json functions with fallbacks
+ * here we just map directly to the call
+ */
 class FormatJson{
 	public static function encode($value, $isHtml=false){
 		return json_encode($value);

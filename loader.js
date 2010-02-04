@@ -16,7 +16,7 @@
 * Modules must define a loader.js file in the root
 *  of the module folder. 
 * 
-* The loader file should be short and only include:
+* A loader file should only include:
 *  Class paths of the module classes
 *  Sytle sheets of the module
 *  Loader function(s) that load module classes 
@@ -47,27 +47,30 @@ mw.setConfig( 'enabledModules', mwEnabledModuleList );
 // Set the loaderContext for the classFiles paths call:  
 mw.setConfig('loaderContext', '' );
 
+/**
+ * Core set of mwEmbed classes:
+ */
 mw.addClassFilePaths( {
-	"mwEmbed"			: "mwEmbed.js",
-	"window.jQuery"		: "jquery/jquery-1.3.2.js",
+	"mwEmbed"				: "mwEmbed.js",
+	"window.jQuery"			: "jquery/jquery-1.3.2.js",
 	
-	"ctrlBuilder"	: "skins/ctrlBuilder.js",
-	"kskinConfig"	: "skins/kskin/kskinConfig.js",
-	"mvpcfConfig"	: "skins/mvpcf/mvpcfConfig.js",
+	"ctrlBuilder"			: "skins/ctrlBuilder.js",
+	"kskinConfig"			: "skins/kskin/kskinConfig.js",
+	"mvpcfConfig"			: "skins/mvpcf/mvpcfConfig.js",
 	
-	"$j.fn.pngFix"		: "jquery/plugins/jquery.pngFix.js",
-	"$j.fn.autocomplete": "jquery/plugins/jquery.autocomplete.js",
-	"$j.fn.hoverIntent"	: "jquery/plugins/jquery.hoverIntent.js",
-	"$j.fn.datePicker"	: "jquery/plugins/jquery.datePicker.js",
-	"$j.ui"				: "jquery/jquery.ui/ui/ui.core.js",	
+	"$j.fn.pngFix"			: "jquery/plugins/jquery.pngFix.js",
+	"$j.fn.autocomplete"	: "jquery/plugins/jquery.autocomplete.js",
+	"$j.fn.hoverIntent"		: "jquery/plugins/jquery.hoverIntent.js",
+	"$j.fn.datePicker"		: "jquery/plugins/jquery.datePicker.js",
+	"$j.ui"					: "jquery/jquery.ui/ui/ui.core.js",	
 	
-	"mw.testLang"	:  "tests/testLang.js",		
+	"mw.testLang"			:  "tests/testLang.js",		
 
-	"$j.cookie"			: "jquery/plugins/jquery.cookie.js",
-	"$j.contextMenu"	: "jquery/plugins/jquery.contextMenu.js",
-	"$j.fn.suggestions"	: "jquery/plugins/jquery.suggestions.js",
-	"$j.fn.textSelection" : "jquery/plugins/jquery.textSelection.js",
-	"$j.browserTest"	: "jquery/plugins/jquery.browserTest.js",
+	"$j.cookie"				: "jquery/plugins/jquery.cookie.js",
+	"$j.contextMenu"		: "jquery/plugins/jquery.contextMenu.js",
+	"$j.fn.suggestions"		: "jquery/plugins/jquery.suggestions.js",
+	"$j.fn.textSelection" 	: "jquery/plugins/jquery.textSelection.js",
+	"$j.browserTest"		: "jquery/plugins/jquery.browserTest.js",
 
 	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
 	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",

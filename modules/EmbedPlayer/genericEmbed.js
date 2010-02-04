@@ -11,8 +11,10 @@ var genericEmbed = {
 		'time_display':false,
 		'volume_control':false
 	},
+	
 	// Instance name: 
 	instanceOf:'genericEmbed',
+	
 	/*
 	* Generic embed html
 	*

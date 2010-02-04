@@ -1,39 +1,50 @@
 <?php
+/**
+ * The javascript class loader handles loading lists of available
+ * javascript classes into php from their defined locations in javascript.
+ */
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 1 );
 
 class jsClassLoader {
+	// The list of mwEmbed modules that are enabled
 	private static $moduleList = array();
+
+	// Stores the contents of the combined loader.js files
 	private static $combinedLoadersJs = '';
+
+	// Reg Exp that supports extracting classes from loaders
 	private static $classReplaceExp = '/mw\.addClassFilePaths\s*\(\s*{(.*)}\s*\)\s*\;/siU';
 
-	private static $loadClassFlag = false;
+	// Flag to specify if the javascript class paths have been loaded.
+	private static $classesLoaded = false;
+
+	// The current directory context. Used in loading javascript modules outside of the mwEmbed folder
 	private static $directoryContext = '';
+
 	/**
 	 * Get the javascript class paths from javascript files
-	 *
-	 * Note:: if it is ~too costly~ to parse js we could cache in DB per file modified time
 	 */
 	public static function loadClassPaths(){
 		global $wgMwEmbedDirectory, $wgExtensionJavascriptLoader,
 			$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP;
 
-		// Only run "once"
-		if( self::$loadClassFlag )
+		// Only run once
+		if( self::$classesLoaded )
 			return false;
-		self::$loadClassFlag = true;
+		self::$classesLoaded = true;
 
 		// Load classes from mediaWiki $wgJSAutoloadLocalClasses var:
 		$wgJSAutoloadClasses = array_merge( $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses );
 
-		// Load classes from  mwEmbed.js
+		// Load javascript classes from mwEmbed.js
 		if ( !is_file( $wgMwEmbedDirectory . 'mwEmbed.js' ) ) {
 			// throw error no mwEmbed found
 			throw new MWException( "mwEmbed.js missing check \$wgMwEmbedDirectory path\n" );
 			return false;
 		}
-		// Read the mwEmbed loader file:
 
+		// Read the mwEmbed loader file:
 		$fileContent = file_get_contents( $wgMwEmbedDirectory . 'loader.js' );
 
 		// Get class paths from mwEmbed.js
@@ -63,6 +74,7 @@ class jsClassLoader {
 			self::proccessLoaderPath( $IP . '/extensions/' .  $loaderPath );
 		}
 	}
+
 	/**
 	 * Process a loader path, passes off to proccessLoaderContent
 	 *
@@ -73,6 +85,7 @@ class jsClassLoader {
 		$fileContent = file_get_contents( $path );
 		self::proccessLoaderContent( $fileContent );
 	}
+
 	/**
 	 * Process loader content
 	 *
@@ -90,6 +103,7 @@ class jsClassLoader {
 			$fileContent
 		);
 	}
+
 	/**
 	 * Get the combined loader javascript
 	 *
@@ -99,6 +113,11 @@ class jsClassLoader {
 		self::loadClassPaths();
 		return self::$combinedLoadersJs;
 	}
+
+	/**
+	 * Build the list of modules from the mwEnabledModuleList replace callback
+	 * @param String $jsvar Coma delimited list of modules
+	 */
 	private static function preg_buildModuleList( $jsvar ){
 		global $wgMwEmbedDirectory;
 		if(! isset( $jsvar[1] )){
@@ -113,8 +132,10 @@ class jsClassLoader {
 				array_push( self::$moduleList, $moduleName );
 			}
 		}
+		// Enabled modules is not reused.
 		return '';
 	}
+
 	/**
 	 * Adds javascript autoloader class names and paths
 	 * to $wgJSAutoloadClasses global

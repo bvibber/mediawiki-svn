@@ -61,8 +61,7 @@ var nativeEmbed = {
 		var eb = '<video ' +
 					'id="' + this.pid + '" ' +
 					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
-					'width="' + this.width + '" height="' + this.height + '" ' +
-					'autobuffer="true" ' +
+					'width="' + this.width + '" height="' + this.height + '" ' +					
 					'autoplay="true" ' + 
 					'src="' + this.getSrc() + '" >' +				
 				 '</video>';

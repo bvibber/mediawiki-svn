@@ -3,7 +3,7 @@
  * For details see: http://www.mediawiki.org/wiki/MwEmbed
  *
  * All MediaWiki code is released under the GPL2.
- * For more information visit http://metavid.org/wiki/Code
+ * also see: http://svn.wikimedia.org/viewvc/mediawiki/trunk/phase3/COPYING?view=markup
  *
  * @author Michael Dale ( mdale at wikimedia.org )
  * @author and many others, see svn log for details
@@ -11,7 +11,7 @@
  * mwEmbed uses the following libraries: 
  *
  * jQuery: 
- * http://jquery.com/ 
+ * http://jquery.com/ & jquery.ui
  *
  * mw.parseUri:
  * http://stevenlevithan.com/demo/parseuri/js/
@@ -1370,7 +1370,8 @@ var mwDefaultConf = {
 	*   callback parameter is not needed we setup the callback automatically
 	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
-	* 	automatically issues request over "POST" if action={postActions}
+	* 	automatically issues request over "POST" 
+	* 		( If the api specifices the action must be done over a post request )
 	*	automatically will setup apiProxy where needed.
 	*
 	* @param {Mixed} url or data request
@@ -1453,10 +1454,10 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* Checks if a mw request data requires a proxy or not
+	* Checks if a mw request data requires a post request or not
 	* @param {Object} 
 	* @return {Boolean}
-	*	true if the request requires a proxy
+	*	true if the request requires a post request
 	* 	false if the request does not
 	*/		
 	mw.checkRequestPost = function ( data ){		

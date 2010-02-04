@@ -11,12 +11,16 @@ $wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/cache';
 
 // Check if we are being invoked in a MediaWiki context or stand alone usage:
 if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){
+
 	// Load noMediaWiki helper for quick cache result
 	$myScriptLoader = new jsScriptLoader();
+
 	if( $myScriptLoader->outputFromCache() )
 		exit();
+
 	//Else load up all the config and do normal stand alone ScriptLoader process:
 	require_once( realpath( dirname( __FILE__ ) ) . '/includes/noMediaWikiConfig.php' );
+
 	$myScriptLoader->doScriptLoader();
 }
 
@@ -156,8 +160,8 @@ class jsScriptLoader {
 	/**
 	 * Get Minified js
 	 *
-	 * Takes the $js_string input
-	 *  and
+	 * @param {String} $js_string Javascript string to be minified
+	 * @param {String} $requestKey Unique key for minification
 	 * @return  minified javascript value
 	 */
 	static function getMinifiedJs( & $js_string, $requestKey='' ){
@@ -176,6 +180,11 @@ class jsScriptLoader {
 		// Do the minification using php JSMin
 		return JSMin::minify( $js_string );
 	}
+	/**
+	 * Optional function to use the google closer compiler to minify js
+	 * @param {String} $js_string Javascript string to be minified
+	 * @param {String} $requestKey request key used for temporary name in closure compile
+	 */
 	static function getClosureMinifiedJs( & $js_string, $requestKey=''){
 		if( !is_file( $wgJavaPath ) || ! is_file( $wgClosureCompilerPath ) ){
 			return false;
@@ -214,7 +223,7 @@ class jsScriptLoader {
 		return false;
 	}
 	/**
-	 * Gets Script Text
+	 * Get the javascript text content from a given classKey
 	 *
 	 * @param {String} $classKey Class Key to grab text for
 	 * @param {String} [$file_name] Optional file path to get js text
@@ -268,21 +277,12 @@ class jsScriptLoader {
 		}else{
 			// Dealing with files
 
-			// Check that the filename ends with .js and does not include ../ traversing
-			if ( substr( $file_name, -3 ) != '.js' ) {
-				$this->errorMsg .= "\nError file name must end with .js: " . htmlspecialchars( $file_name ) . " \n ";
-				return false;
-			}
-			if ( strpos( $file_name, '../' ) !== false ) {
-				$this->errorMsg .= "\nError file name must not traverse paths: " . htmlspecialchars( $file_name ) . " \n ";
-				return false;
-			}
-
 			if ( trim( $file_name ) != '' ) {
-				if ( $this->debug )
-				$jsout .= "\n/**\n* File: " . htmlspecialchars( $file_name ) . "\n*/\n";
+				if ( $this->debug ){
+					$jsout .= "\n/**\n* File: " . htmlspecialchars( $file_name ) . "\n*/\n";
+				}
 
-				$jsFileStr = $this->doGetJsFile( $file_name ) . "\n";
+				$jsFileStr = $this->getFileContents( $file_name ) . "\n";
 				if( $jsFileStr ){
 					return $jsout . $jsFileStr;
 				}else{
@@ -354,7 +354,8 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Post process request uses globals, configuration and mediaWiki to test wiki-titles and files exist etc.
+	 * Post process request uses globals, configuration to
+	 * validate classes and generate request key
 	 */
 	function postProcRequestVars(){
 		global $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses,
@@ -444,8 +445,10 @@ class jsScriptLoader {
 		}
 	}
 	/**
-	 * Pre-process request variables ~without configuration~ or any utility functions
-	 *  This is to quickly get a requestKey that we can check against the cache
+	 * Pre-process request variables ~without configuration~ or any utility functions.
+	 *
+	 *  This is to quickly get a requestKey that we can check against the cache,
+	 *  request key validation is done in postProcRequestVars
 	 */
 	function preProcRequestVars() {
 		$requestKey = '';
@@ -553,8 +556,20 @@ class jsScriptLoader {
 	 * @param {String} $filePath File to get
 	 * @return {String} of the file contents
 	 */
-	function doGetJsFile( $filePath ) {
+	function getFileContents( $filePath ) {
 		global $IP;
+
+		// Check that the filename ends with .js
+		if ( substr( $filePath, -3 ) != '.js' ) {
+			$this->errorMsg .= "\nError file name must end with .js: " . htmlspecialchars( $filePath ) . " \n ";
+			return false;
+		}
+
+		// Check the file does not include ../ traversing
+		if ( strpos( $filePath, '../' ) !== false ) {
+			$this->errorMsg .= "\nError file name must not traverse paths: " . htmlspecialchars( $filePath ) . " \n ";
+			return false;
+		}
 
 		// Load the file
 		wfSuppressWarnings();
@@ -580,9 +595,11 @@ class jsScriptLoader {
 	 */
 	function doProcessJs( $str ){
 		global $wgEnableScriptLocalization;
+
 		// Strip out js_log debug lines (if not in debug mode)
-		if( !$this->debug )
+		if( !$this->debug ){
 			 $str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
+		}
 
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
@@ -593,7 +610,7 @@ class jsScriptLoader {
 				return substr($str, 0, $inx['s']-1) . $translated . substr($str, $inx['e']+1);
 			}
 		}
-		//return the js str unmodified if we did not transform with the localisation.
+		// Return the js str unmodified if we did not transform with the localisation.
 		return $str;
 	}
 
@@ -641,6 +658,7 @@ class jsScriptLoader {
 			}
 		}
 	}
+
 	/**
 	 * Generates an in-line addMessege call for page output.
 	 * For use with OutputPage when the script-loader is disabled.
@@ -658,6 +676,7 @@ class jsScriptLoader {
 			return '';
 		}
 	}
+
 	/**
 	 * Get the set of message associated with a given javascript class
 	 *
