@@ -388,6 +388,27 @@ body.rtl .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wr
 #wikieditor-toolbar-tool-link-int-target-label {
 	float: left;
 }
+#wikieditor-toolbar-link-int-target-status-exists,
+#wikieditor-toolbar-link-int-target-status-notexists,
+#wikieditor-toolbar-link-int-target-status-invalid,
+#wikieditor-toolbar-link-int-target-status-external {
+	padding-left: 30px;
+	background-position: 0 50%;
+	background-repeat: no-repeat;
+}
+#wikieditor-toolbar-link-int-target-status-exists {
+	background-image: url( ../images/wikiEditor/dialogs/insert-link-exists.png );
+}
+#wikieditor-toolbar-link-int-target-status-notexists {
+	background-image: url( ../images/wikiEditor/dialogs/insert-link-notexists.png );
+}
+#wikieditor-toolbar-link-int-target-status-invalid {
+	background-image: url( ../images/wikiEditor/dialogs/insert-link-invalid.png );
+}
+#wikieditor-toolbar-link-int-target-status-external {
+	background-image: url( ../images/wikiEditor/dialogs/insert-link-external.png );
+}
+
 /* RTL Changes */
 body.rtl .wikiEditor-toolbar-dialog .ui-dialog-buttonpane button {
 	float: left;
@@ -410,6 +431,17 @@ body.rtl .wikieditor-toolbar-floated-field-wrapper {
 	float: right;
 	margin-right: 0;
 	margin-left: 2em;
+}
+body.rtl #wikieditor-toolbar-link-int-target-status-exists,
+body.rtl #wikieditor-toolbar-link-int-target-status-notexists,
+body.rtl #wikieditor-toolbar-link-int-target-status-invalid,
+body.rtl #wikieditor-toolbar-link-int-target-status-external {
+	padding-left: 0;
+	padding-right: 30px;
+	background-position: 100% 50%;
+}
+body.rtl #wikieditor-toolbar-link-int-target-status-external {
+	background-image: url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png );
 }
 /* Self Clearing Floats */
 .wikieditor-toolbar-table-dimension-fields:after,
