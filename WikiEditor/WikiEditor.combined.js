@@ -1032,26 +1032,30 @@ $j(document).ready( function() {
 					if ( $j( this ).val() == '' )
 						$j( this )
 							.addClass( 'wikieditor-toolbar-dialog-hint' )
-							.val( $j( this ).data( 'tooltip' ) );
+							.val( $j( this ).data( 'tooltip' ) )
+							.data( 'tooltip-mode', true );
 				} )
 				.focus( function() {
 					if( $j( this ).val() == $j( this ).data( 'tooltip' ) ) {
 						$j( this )
 							.val( '' )
-							.removeClass( 'wikieditor-toolbar-dialog-hint' );
+							.removeClass( 'wikieditor-toolbar-dialog-hint' )
+							.data( 'tooltip-mode', false );
 					}
 				})
 				.bind( 'change', function() {
 					if ( $j( this ).val() != $j( this ).data( 'tooltip' ) ) {
 						$j( this )
-							.removeClass( 'wikieditor-toolbar-dialog-hint' );
+							.removeClass( 'wikieditor-toolbar-dialog-hint' )
+							.data( 'tooltip-mode', false );
 					}
 				})
 				.bind( 'blur', function() {
 					if ( $j( this ).val() == '' ) {
 						$j( this )
 							.addClass( 'wikieditor-toolbar-dialog-hint' )
-							.val( $j( this ).data( 'tooltip' ) );
+							.val( $j( this ).data( 'tooltip' ) )
+							.data( 'tooltip-mode', true );
 					}
 				});
 			
@@ -1209,9 +1213,9 @@ $j(document).ready( function() {
 					var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
 					var text = $j( '#wikieditor-toolbar-link-int-text' ).val();
 					// check if the tooltips were passed as target or text
-					if ( target == $j( '#wikieditor-toolbar-link-int-target' ).data( 'tooltip' ) )
+					if ( $j( '#wikieditor-toolbar-link-int-target' ).data( 'tooltip-mode' ) )
 						target = "";
-					if ( text == $j( '#wikieditor-toolbar-link-int-text' ).data( 'tooltip' ) )
+					if ( $j( '#wikieditor-toolbar-link-int-text' ).data( 'tooltip-mode' ) )
 						text = "";
 					var u = mw.usability;
 					if ( target == '' ) {
