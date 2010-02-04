@@ -113,6 +113,17 @@ $messages['eu'] = array(
 	'delaydef-error-no-name' => 'Errorea: Ez da parametrorik zehaztu.',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'delaydef-desc' => 'Lisää elementit &lt;define&gt; ja &lt;display&gt;, jotka mahdollistavat koodin siirron toiseen paikkaan.',
+	'delaydef-error-missing-def' => 'Virhe: Tarvittua määrittelyä elementille &lt;display name="$1"&gt; ei löytynyt.',
+	'delaydef-error-no-name' => 'Virhe: Nimiparametria ei ole annettu.',
+	'delaydef-error-redef' => 'Virhe: Yritettiin määritellä $1 uudelleen.',
+);
+
 /** French (Français)
  * @author IAlex
  */

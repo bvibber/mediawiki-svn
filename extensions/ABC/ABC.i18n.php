@@ -350,7 +350,7 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'abcdesc' => 'Tinyékwa <tt>&lt;abc&gt;</tt> ede nyazoro I kwaria égwú ABC',
-	'abcdownload' => 'Danwèré ya:',
+	'abcdownload' => 'Danwèré:',
 );
 
 /** Italian (Italiano)

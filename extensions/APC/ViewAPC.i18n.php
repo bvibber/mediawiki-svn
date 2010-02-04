@@ -2932,6 +2932,19 @@ Versi lebih baru $2 tersedia di http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''Simpanan aplikasi dikosongkan.'''''",
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'viewapc-display-value' => 'Onuogụgụ',
+	'viewapc-display-info' => 'Áhà',
+	'viewapc-ls-submit' => 'Gá!',
+	'viewapc-ls-sort-size' => 'Ivụ',
+	'viewapc-ls-sort-name' => 'Áhà',
+	'viewapc-ls-sort-timeout' => 'Ogẹ afüolé',
+	'viewapc-ls-limit-none' => 'Nke níle',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

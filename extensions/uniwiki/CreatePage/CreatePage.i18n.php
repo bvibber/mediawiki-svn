@@ -502,6 +502,15 @@ Apakah Anda ingin menyunting halaman tersebut?',
 	'createpage-badtitle' => '"$1" tidak dapat digunakan sebagai judul halaman',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'createpage' => 'Ké ihü',
+	'createpage_submitbutton' => 'Nye fwuör',
+	'createpage_tryagain' => 'Mba. M chorí ké ihü ohúrù nwere áhà di iche.',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

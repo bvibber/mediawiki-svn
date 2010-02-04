@@ -93,6 +93,13 @@ $messages['es'] = array(
 	'ipauth-desc' => 'Inicio de sesión automático para direcciones IP fijas',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'ipauth-desc' => 'Automaattinen kirjautuminen kiinteistä IP-osoitteista',
+);
+
 /** French (Français)
  * @author Peter17
  */

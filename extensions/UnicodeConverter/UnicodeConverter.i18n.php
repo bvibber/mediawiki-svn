@@ -658,9 +658,13 @@ $messages['ru'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
+	'unicodeconverter' => 'යුනිකේත පරිවර්තකය',
 	'unicodeconverter-ok' => 'හරි',
+	'unicodeconverter-oldtext' => 'මුල් පෙළ:',
+	'unicodeconverter-newtext' => 'පරිවර්ත්‍ය පෙළ:',
 );
 
 /** Slovak (Slovenčina)

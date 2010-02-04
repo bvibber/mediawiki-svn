@@ -1436,6 +1436,26 @@ $messages['sah'] = array(
 	'ct-update-table' => 'Таабылы саҥардыы',
 );
 
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'ct-start-date' => 'ඇරඹුම් දිනය (YYYYMMDD)',
+	'ct-end-date' => 'අවසන් දිනය (YYYYMMDD)',
+	'ct-increment-by' => 'එක් එක් දත්ත ලක්ෂ්‍යය නිරූපණය කරන දින සංඛ්‍යාව',
+	'ct-change-graph' => 'ප්‍රස්තාරය වෙනස් කරන්න',
+	'ct-beginner' => 'නවකයා',
+	'ct-intermediate' => 'අතරමැදි',
+	'ct-expert' => 'ප්‍රවීණයා',
+	'ct-date-range' => 'දත්ත පරාසය',
+	'ct-editing' => 'වත්මන සංස්කරණය කෙරෙමින්:',
+	'ct-anon-users' => 'නිර්නාමික පරිශීලකයන්',
+	'ct-user-contribs' => 'මුළු පරිශීලක දායකත්වයන්',
+	'ct-user-span' => 'කාලපරාසය තුලදී පරිහීලක දායකත්වයන්',
+	'ct-and' => 'සහ',
+	'ct-update-table' => 'වගුව යාවත්කාල කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

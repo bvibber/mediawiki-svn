@@ -4721,6 +4721,7 @@ $messages['vec'] = array(
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totàl de sta setimana|Totali setimanali de le ultime $1 setimane}}',
 	'contribstats-payment-type' => 'Tipo de pagamento',
 	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => 'Visite par tipo de pagamento',
 	'contribstats-clicks' => 'Nùmaro de click',
 	'contribstats-donations' => 'Donassioni',
 	'contribstats-conversion' => 'Tasso de conversion (%)',
@@ -4732,6 +4733,7 @@ $messages['vec'] = array(
 	'contribstats-paypal-donations' => 'Donassion PayPal',
 	'contribstats-credit-card' => 'Carta de credito',
 	'contribstats-fraud-note' => 'Ghe xe alcune donassion fraudolente.',
+	'contribstats-unaudited' => 'Ghe xe dei totali mia verificà.',
 	'fundraiserstatistics' => 'Statìsteghe de la racolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Zorno $1 de $2',
@@ -4744,6 +4746,7 @@ $messages['vec'] = array(
 	'fundraiserstats-tab-contributions' => 'Nùmaro de contributi',
 	'fundraiserstats-tab-averages' => 'Medie (dolari mericani)',
 	'fundraiserstats-tab-maximums' => 'Massimi (dolari mericani)',
+	'fundraiserstats-tab-ytd' => 'Ano in corso (Dòlari USA)',
 	'specialpages-group-contribution' => 'Contributi/Racolta fondi',
 );
 

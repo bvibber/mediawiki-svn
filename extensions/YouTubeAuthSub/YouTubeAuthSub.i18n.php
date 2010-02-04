@@ -1361,7 +1361,7 @@ Silakan menunggu.',
 $messages['ig'] = array(
 	'youtubeauthsub_title' => 'Ishi edemede',
 	'youtubeauthsub_keywords' => 'Mkpurụ edemede ngodi',
-	'youtubeauthsub_submit' => 'Nyechá',
+	'youtubeauthsub_submit' => 'Nye fwuör',
 	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',
 	'youtubeauthsub_uploadbutton' => 'Tinyéelú',
@@ -2629,6 +2629,7 @@ $messages['sh'] = array(
 /** Sinhala (සිංහල)
  * @author Asiri wiki
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
 	'youtubeauthsub' => 'YouTube වීඩියෝව උඩුගතකරන්න',
@@ -2657,7 +2658,7 @@ $messages['si'] = array(
 ‍[මෙම වීඩියෝව http://www.youtube.com/watch?v=$1 ] මෙතැනින් නැරඹීය හැකිය.',
 	'youtubeauthsub_summary' => 'YouTube වීඩියෝව උඩුගත වෙමින් පවතී',
 	'youtubeauthsub_uploading' => 'ඔබගේ වීඩියෝව උඩුගත වෙමින් පවතී,මඳක් ඉවසන්න.',
-	'youtubeauthsub_viewpage' => 'නො එසේ නම් ඔබගේ වීඩියෝව ඔබට [[$1|මෙතැනින්]] නැරඹිය හැක',
+	'youtubeauthsub_viewpage' => 'විකල්ප ලෙසින්, ඔබට [[$1|ඔබගේ වීඩියෝව නැරඹුම]] කල හැක.',
 	'youtubeauthsub_jserror_nokeywords' => 'කරුණාකර 1 හෝ ඊට වඩා මූලපද ගනනක් ඇතුලත් කරන්න.',
 	'youtubeauthsub_jserror_notitle' => 'කරුණාකර විඩියාව සඳහා සිරසක් සපයන්න.',
 	'youtubeauthsub_jserror_nodesc' => 'කරුණාකර විඩියෝව සඳහා විස්තරයක් සපයන්න.',

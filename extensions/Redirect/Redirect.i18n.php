@@ -99,6 +99,13 @@ $messages['fa'] = array(
 	'redirect-desc' => 'دادن اجازه پیکربندی سادهٔ تغییرمسیرها روی [[MediaWiki:Redirect-addnewaccount|ایجاد حساب‌ کاربری]] و [[MediaWiki:Redirect-userlogoutcomplete|خروج]]',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'redirect-desc' => 'Mahdollistaa helpon ohjauksien kokoonpanon [[MediaWiki:Redirect-addnewaccount|tilin luonnin]] ja [[MediaWiki:Redirect-userlogoutcomplete|uloskirjautumisen]] yhteydessä.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author IAlex

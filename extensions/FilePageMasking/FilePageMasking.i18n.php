@@ -81,6 +81,13 @@ $messages['es'] = array(
 	'filepagemasking-desc' => 'Reescribe ".xxx" en "_xxx" en enlaces de página de descripción de archivo',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'filepagemasking-desc' => 'Kirjoittaa tekstin ".xxx" uudelleen muotoon "_xxx" tiedostokuvaussivulinkeissä',
+);
+
 /** French (Français)
  * @author Jean-Frédéric
  * @author Quentinv57

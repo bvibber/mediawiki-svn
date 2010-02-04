@@ -1497,6 +1497,7 @@ $messages['eu'] = array(
  * @author Crt
  * @author Mobe
  * @author Nike
+ * @author Olli
  * @author Silvonen
  * @author Str4nd
  * @author Varusmies
@@ -1535,6 +1536,7 @@ Ota yhteyttä [[Special:ListUsers/sysop|ylläpitäjään]].',
 	'openidemail' => 'Sähköpostiosoite',
 	'openidlanguage' => 'Kieli',
 	'openidtimezone' => 'Aikavyöhyke',
+	'openidchooselegend' => 'Käyttäjätunnuksen valinta',
 	'openidchooseinstructions' => 'Kaikki käyttäjät tarvitsevat nimimerkin.
 Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidchoosefull' => 'Koko nimesi ($1)',

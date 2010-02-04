@@ -145,6 +145,7 @@ $messages['avk'] = array(
 $messages['bar'] = array(
 	'countedits' => 'Beitrågszähla',
 	'countedits-desc' => '[[Special:CountEdits|Spezialseitn]], de Benutzabeiträg zöihd und a Top-10-Listn eastöid',
+	'countedits-warning' => 'Hinweis: A Buach soi ma ned umbedingt nåch seim Umschlåg, an Autorn ned umbedingt nåch da Zåih vu seine Beiträg beuateun.',
 	'countedits-username' => 'Benutzanãm:',
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => "An Benutza mi'm Nãm $1 gibt's ned.",

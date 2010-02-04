@@ -479,6 +479,15 @@ $messages['id'] = array(
 	'profiling-no-data' => 'Tidak ditemukan data yang cocok.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'profiling-ok' => 'Odinma',
+	'profiling-data-count' => 'Güó',
+	'profiling-data-time' => 'Ogẹ (nke níle)',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

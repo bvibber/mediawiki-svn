@@ -99,6 +99,14 @@ $messages['es'] = array(
 	'templateinfo-header' => 'La definición XML para esta plantilla es:',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'templateinfo-desc' => 'Tukee mallineiden tietorakenteiden määrittelyä XML-merkkauskielen kautta.',
+	'templateinfo-header' => 'XML-määritelmä tälle mallineelle on:',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

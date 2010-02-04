@@ -5021,10 +5021,12 @@ $messages['ru'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
 	'wikilog-desc' => 'බ්ලොග් විශේෂාංග එකතු කිරීම,විකි-බ්ලොග් මුහුම නිර්මාණය',
 	'wikilog-auto' => 'ස්වයං විකි ලඝු සටහන',
+	'wikilog-help' => '{{ns:Help}}:විකිලඝුව',
 	'right-wl-postcomment' => 'විකි ලඝු  ලිපිවලට විචාර තැපැල් කරන්න.',
 	'right-wl-moderation' => 'විකි ලඝු ලිපි විචාරවල මධ්‍යස්ථතාව',
 	'wikilog-specialwikilog-title' => 'විකි ලඝු සටහන්',

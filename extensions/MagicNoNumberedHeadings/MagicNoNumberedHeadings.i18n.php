@@ -104,6 +104,13 @@ $messages['eu'] = array(
 	'magicnonumberedheadings-desc' => '"<nowiki>__NONUMBEREDHEADINGS__</nowiki>" hitz magikoa gehitzen du',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'magicnonumberedheadings-desc' => 'Lisää taikasanan <nowiki>__NONUMBEREDHEADINGS__</nowiki>.',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

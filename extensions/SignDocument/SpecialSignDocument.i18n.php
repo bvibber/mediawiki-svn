@@ -2181,6 +2181,17 @@ $1',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'sign-realname' => 'Áhà:',
+	'sign-city' => 'Ama Ukwu:',
+	'sign-phone' => 'Onuogụgụ nkpo gi:',
+	'sign-bday' => 'Áfó olé:',
+	'sign-viewfield-realname' => 'Áhà',
+	'sign-viewfield-city' => 'Ama ukwu',
+	'sign-viewfield-age' => 'Áfọ olé',
+	'sign-closed' => 'mmechịrị',
+	'sign-viewfield-stricken' => 'Kùrù',
+	'sign-detail-uniquequery-run' => 'Gbá ncho',
+	'sign-review-comment' => 'Okwu-nokwu',
 	'sign-uniquequery-similarname' => 'Áhá yituru nká',
 );
 

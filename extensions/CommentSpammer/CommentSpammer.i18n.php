@@ -205,12 +205,20 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
  * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'commentspammer-save-blocked' => 'IP-osoitteesi epäillään olevan kommenttispämmeri, joten sivua ei ole tallennettu.
 [[Special:UserLogin|Kirjaudu sisään tai luo käyttäjätunnus]], jos haluat välttää tämän.',
+	'commentspammer-desc' => 'Hylkää muokkaukset epäillyltä DNS-mustalistan kommenttiroskapostittajilta.',
+	'commentspammer-log-msg' => 'Muokkaaja: [[Special:Contributions/$1|$1]], kohde: [[:$2]].',
+	'commentspammer-log-msg-info' => 'Lähetti roskapostia viimeksi $1 {{PLURAL:$1|päivä|päivää}} sitten, uhkataso on $2, ja rikkomuskoodi on $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 Katso lisätietoja] tai [[Special:Blockip/$4|estä]].',
+	'cspammerlogpagetext' => 'Tietue muokkauksista, jotka on sallittu tai evätty sen perusteella onko lähde tunnettu kommenttiroskapostittaja.',
+	'cspammer-log-page' => 'Kommenttiroskapostittajaloki',
 );
 
 /** French (Français)

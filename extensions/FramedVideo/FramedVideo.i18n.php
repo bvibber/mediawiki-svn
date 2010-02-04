@@ -291,10 +291,25 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  */
 $messages['fi'] = array(
+	'framedvideo_errors' => 'Tapahtui useita virheitä!',
+	'framedvideo_error' => 'Tapahtui virhe!',
+	'framedvideo_error_unknown_type' => 'Tuntematon  videopalvelutunnus ("$1"): tarkista "tyyppi"-parametri.',
+	'framedvideo_error_no_id_given' => 'Parametri "id" puuttuu.',
+	'framedvideo_error_height_required' => 'Videotyyppi "$1" vaatii "height"-parametrin.',
+	'framedvideo_error_height_required_not_only_width' => 'Videotyyppi "$1" vaatii "height"-parametrin, ei vain "width"-parametrin.',
+	'framedvideo_error_width_too_big' => 'Parametrille "width" annettu arvo on liian iso.',
+	'framedvideo_error_height_too_big' => 'Parametrille "height" annettu arvo on liian iso.',
+	'framedvideo_error_no_integer' => 'Annettu arvo "$1" ei ole positiivinen luku.',
+	'framedvideo_error_limit' => 'Korkein sallittu arvo on $1.',
+	'framedvideo_error_full_size_not_allowed' => 'Arvo "full" parametrille "size" ei ole sallittu videopalvelutunnukselle "$1".',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Lisätietoja syntaksista]].',
+	'framedvideo_error_height_and_width_required' => 'Videotyyppi "$1" vaatii parametrit "height" ja "width2" tai "width".',
+	'framedvideo-desc' => 'Mahdollistaa videoiden upottamisen eri verkkosivuilta käyttäen elementtiä <tt><nowiki><video></nowiki></tt>.',
 );
 
 /** French (Français)

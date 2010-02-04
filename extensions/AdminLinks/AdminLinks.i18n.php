@@ -637,6 +637,13 @@ $messages['id'] = array(
 	'right-adminlinks' => 'Lihat pranala ke [[Special:AdminLinks|Pranala admin]]',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'adminlinks_general' => 'Nke níle',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Marco 27

@@ -555,12 +555,15 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'dt-desc' => 'Mahdollistaa tuoda ja viedä dataa, joka on mallinekutsuissa.',
 	'viewxml' => 'Näytä XML',
+	'dt_viewxml_docu' => 'Valitse yksi seuraavista luokista ja nimiavaruuksista tarkasteltavaksi XML-muodossa.',
 	'dt_viewxml_categories' => 'Luokat',
 	'dt_viewxml_namespaces' => 'Nimiavaruudet',
 	'dt_viewxml_simplifiedformat' => 'Yksinkertaistettu muoto',
@@ -574,10 +577,13 @@ $messages['fi'] = array(
 	'dt_xml_id' => 'Tunnus',
 	'dt_xml_freetext' => 'Vapaa teksti',
 	'importxml' => 'XML-tuonti',
+	'dt_import_selectfile' => 'Valitse $1-tiedosto tuotavaksi:',
 	'dt_import_encodingtype' => 'Merkistötyyppi',
 	'dt_import_editsummary' => '$1-tuonti',
 	'dt_import_importing' => 'Tuodaan...',
+	'dt_import_success' => '$1 {{PLURAL:$1|sivu|sivua}} luodaan $2-tiedostosta.',
 	'importcsv' => 'CSV-tuonti',
+	'dt_importcsv_badheader' => "Virhe: sarake $1 otsake, '$2', on oltava joko '$3', '$4' tai muotoa 'mallinne_nimi[kenttä_nimi]'",
 	'right-datatransferimport' => 'Tuoda tiedot',
 );
 

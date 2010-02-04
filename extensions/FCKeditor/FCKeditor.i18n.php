@@ -382,12 +382,14 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Jack Phoenix <jack@countervandalism.net>
  */
 $messages['fi'] = array(
 	'fckeditor-desc' => 'Mahdollistaa muokkaamisen WYSIWYG-tyylillä käyttäen FCKeditoria.',
 	'textrichditor' => 'Rikas editori',
+	'prefs-fckeditor' => 'Rich-editori',
 	'tog-riched_disable' => 'Ota rikas editori pois käytöstä',
 	'tog-riched_disable_ns_main' => 'Ota rikas editori pois käytöstä päänimiavaruudessa',
 	'tog-riched_disable_ns_talk' => 'Ota rikas editori pois käytöstä nimiavaruudessa "{{ns:talk}}"',

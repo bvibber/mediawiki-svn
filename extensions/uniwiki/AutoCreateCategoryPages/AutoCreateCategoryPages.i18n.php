@@ -483,11 +483,13 @@ $messages['ru'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
 	'autocreatecategorypages-desc' => 'ගිලිහුණු ප්‍රවර්ග පිටු සුරැකීමේදී ස්වයංක්‍රීයව නිර්මාණය කිරීම',
 	'autocreatecategorypages-stub' => 'මෙය ප්‍රවර්ග පිටුවකි.
 එය "$1"ප්‍රවර්ගයේ සියලුම පිටු මෙන්ම පවතින්නේනම් "$1" ප්‍රවර්ගයේ සියලුම උප ප්‍රවර්ගයන්ද ලැයිස්තු ගත කරයි.',
+	'autocreatecategorypages-editor' => 'ස්වයංක්‍රීය ප්‍රවර්ග තැනුම',
 );
 
 /** Slovak (Slovenčina)

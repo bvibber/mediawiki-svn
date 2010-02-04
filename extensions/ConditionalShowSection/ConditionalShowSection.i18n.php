@@ -99,6 +99,13 @@ $messages['es'] = array(
 	'conditionalshowsection-desc' => 'Agregando la etiqueta cshow para mostrar/ocultar condicionalmente una sección de wikitexto',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'conditionalshowsection-desc' => 'Lisätään cshow-tunniste ehdolliseen näytä/piilota wikitext-lohkoon',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  */

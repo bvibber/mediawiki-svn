@@ -366,6 +366,13 @@ $messages['sah'] = array(
 	'tspoll-id-error' => 'ID ыйыллыбатах!',
 );
 
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'tspoll-id-error' => 'අනන්‍යතාංකයක් සපයා නොමැත!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

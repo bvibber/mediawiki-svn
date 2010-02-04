@@ -219,10 +219,17 @@ Intentaste: '''$1'''",
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Nike
  */
 $messages['fi'] = array(
 	'rt-desc' => 'Hieno käyttöliittymä RT-ohjelmistolle',
+	'rt-inactive' => 'RT-laajennus ei ole aktiivinen',
+	'rt-badquery' => 'RT-laajennus havaitsi virheen viestinnässä RT-tietokantaan',
+	'rt-badlimit' => "Virheellinen LIMIT (l)-argumentti: sen on oltava luku.
+Yritit: '''$1'''",
+	'rt-badowner' => "Virheellinen owner (o)-argumentti: sen on oltava kelvollinen käyttäjänimi.
+Yritit: '''$1'''",
 );
 
 /** French (Français)

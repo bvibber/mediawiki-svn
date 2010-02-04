@@ -98,10 +98,19 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
  * @author Silvonen
  */
 $messages['fi'] = array(
+	'lastuserlogin' => 'Viimeisin käyttäjän kirjautuminen',
+	'lastuserlogin-desc' => 'Näyttää viimeisimmän kerran, jolloin käyttäjä oli kirjautuneena.',
+	'lastuserlogin_userid' => 'Käyttäjätunnus',
 	'lastuserlogin_username' => 'Oikea nimi',
+	'lastuserlogin_useremail' => 'Käyttäjän sähköposti',
+	'lastuserlogin_lastlogin' => 'Viimeksi kirjautunut',
+	'lastuserlogin_daysago' => 'päivää sitten',
+	'right-lastlogin' => 'Nähdä viimeisin kerta, kun käyttäjä oli kirjautuneena',
 );
 
 /** French (Français)

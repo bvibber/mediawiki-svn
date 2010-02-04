@@ -279,6 +279,13 @@ $messages['id'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'mwsearch-desc' => 'MWChöwá jikodo',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

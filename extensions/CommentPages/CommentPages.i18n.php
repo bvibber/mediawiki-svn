@@ -193,6 +193,15 @@ $messages['fa'] = array(
 	'nstab-comments' => 'تفسیر',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'commentpages-desc' => 'Kommenttisivut päänimiavaruudelle.',
+	'nstab-comments' => 'Kommentti',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

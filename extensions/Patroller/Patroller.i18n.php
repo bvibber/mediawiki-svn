@@ -1056,6 +1056,14 @@ $messages['lb'] = array(
 	'right-patroller' => 'Sàiten iwwerkucken',
 );
 
+/** Lumbaart (Lumbaart)
+ * @author Dakrismeno
+ */
+$messages['lmo'] = array(
+	'patrol-resume' => 'Fà click chì-inscì-chì per tacà ancamò.',
+	'group-patroller' => 'Gent de rónda',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

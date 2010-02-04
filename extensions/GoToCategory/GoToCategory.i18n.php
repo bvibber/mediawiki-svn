@@ -99,6 +99,13 @@ $messages['es'] = array(
 	'gotocategory-desc' => 'Compruebas los términos de búsqueda en el espacio de nombres «Categoría:» para la función «Ir a la página»',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'gotocategory-desc' => 'Tarkistaa hakutermit luokkanimiavaruudessa "Siirry sivulle"-toiminnallisuutta varten',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

@@ -379,16 +379,24 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
  * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'editmessages-desc' => 'Mahdollistaa lukuisien Messages*.php-tiedostojen [[Special:EditMessages|web-pohjaisen muokkaamisen]].',
 	'editmessages' => 'Muokkaa viestejä',
 	'editmsg-target' => 'Kohdeviesti',
 	'editmsg-search' => 'Etsi',
 	'editmsg-show-list' => 'Viestin $1 sisällöt',
 	'editmsg-get-patch' => 'Luo polku',
 	'editmsg-new-search' => 'Uusi haku',
+	'editmsg-warning-parse1' => '* Säännöllisen lausekkeen viestinimi ei täsmännyt: $1',
+	'editmsg-warning-parse2' => '* Odotettiin lainausmerkkiä nuolen jälkeen: $1',
+	'editmsg-warning-parse3' => '* Arvomerkkijonon loppua ei löytynyt: $1',
+	'editmsg-warning-file' => '* Tiedoston lukuvirheitä esiintyy {{PLURAL:$2|seuraavassa kielessä|seuraavissa kielissä}}: $1',
+	'editmsg-warning-mismatch' => '* Alkuperäisellä tekstillä ei ole odotettua arvoa {{PLURAL:$2|seuraavassa kielessä|seuraavissa kielissä}}: $1',
 	'editmsg-apply-patch' => 'Toteuta korjaus',
 	'editmsg-no-patch' => 'Komennon <tt>patch</tt> suorittaminen epäonnistui',
 	'editmsg-patch-failed' => 'Muutosten sisäänajaminen epäonnistui paluuarvolla $1',

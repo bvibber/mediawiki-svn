@@ -1339,6 +1339,13 @@ $wgCustomToolbarMessages['id'] = array(
 	'ct_user_sample' => 'Nama pengguna',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$wgCustomToolbarMessages['ig'] = array(
+	'ct_submit' => 'Gá!',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos

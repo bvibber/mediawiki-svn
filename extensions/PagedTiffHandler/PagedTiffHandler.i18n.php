@@ -131,6 +131,19 @@ $messages['es'] = array(
 	'tiff_script_detected' => 'El archivo cargado contiene scripts.',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'tiff_no_metadata' => 'Metatietojen hakeminen TIFF-tiedostosta epäonnistui',
+	'tiff_too_many_embed_files' => 'Kuvassa on liian monta upotettua tiedostoa.',
+	'tiff_file_too_large' => 'Palvelimelle kopioitu tiedosto on liian suuri ja torjuttiin.',
+	'tiff_out_of_service' => 'Palvelimelle kopioitua tiedostoa ei voitu käsitellä. ImageMagick ei ollut käytettävissä.',
+	'tiff_too_much_meta' => 'Metatiedot käyttää liikaa tilaa.',
+	'tiff_script_detected' => 'Palvelimelle kopioitu tiedosto sisältää skriptejä.',
+	'tiff_bad_file' => 'Palvelimelle kopioitu tiedosto sisältää virheitä.',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Jagwar

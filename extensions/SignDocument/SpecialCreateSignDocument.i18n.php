@@ -904,7 +904,11 @@ Hal ini tidak dapat dilakukan dua kali.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'createsigndoc-pagename' => 'Ihü:',
+	'createsigndoc-phone' => 'Onuogụgụ nkpo go:',
 	'createsigndoc-bday' => 'Ogẹ òmúmú:',
+	'createsigndoc-introtext' => 'Ndubata:',
+	'createsigndoc-hidden' => 'Zonariri',
 	'createsigndoc-optional' => 'I cho, ka I chogị',
 	'createsigndoc-create' => 'Ké',
 	'createsigndoc-error-generic' => 'Nsogbu: $1',

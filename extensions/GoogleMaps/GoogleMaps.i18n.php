@@ -2656,6 +2656,21 @@ $wgGoogleMapsMessages['id'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$wgGoogleMapsMessages['ig'] = array(
+	'gm-balloon-title' => 'Ishi:',
+	'gm-tab' => 'Ntabi',
+	'gm-large' => 'Ukwu',
+	'gm-medium' => 'Di ntạ di ukwu',
+	'gm-small' => 'Ntakịrị',
+	'gm-yes' => 'Eeh',
+	'gm-no' => 'Mba',
+	'gm-search' => 'Chöwá',
+	'gm-save-path' => 'Donyéré',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

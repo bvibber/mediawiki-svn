@@ -524,8 +524,10 @@ $messages['ru'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
+	'authors-desc' => 'දායක‍යන් ලැයිස්තුවක් පිටු වෙත අමුනනු ලැබේ',
 	'authors_authors' => 'ලේඛකයින්',
 	'authors_anonymous' => 'නිර්නාමික',
 );

@@ -107,6 +107,13 @@ $messages['eu'] = array(
 	'jskit-desc' => 'js-kit tresnak sartzen ditu wiki orrian',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'jskit-desc' => 'Yhdistää JS-kit-työkalut wikisivulle.',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -575,6 +575,14 @@ Jika ada masalah, lihat <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => 'Teks berikut ini BELUM disimpan ke halaman <big>[[$1]]</big> karena halaman tersebut sudah ada.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'call' => 'Kpo',
+	'call-save-success' => 'Mkpurụ édé á a donyérélé ime ihü <big>[[$1]]</big>',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

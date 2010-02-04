@@ -102,6 +102,13 @@ $messages['eu'] = array(
 	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> etiketa erabiliz fitxategietako HTML zatiak lerroen artean sartzea baimentzen du',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'htmlets-desc' => 'Mahdollistaa HTML-koodinpalasen lisäämisen tiedostosta käyttäen elementtiä <tt><nowiki><htmlet></nowiki></tt>.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

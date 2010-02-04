@@ -531,6 +531,13 @@ Operator situs ini tidak bertanggung jawab atas isi komentar-komentar tersebut.'
 	'talkhere-collapse' => 'sembunyikan editor',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'talkhere-talkpage' => 'ihü okwu',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

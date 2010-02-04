@@ -722,6 +722,19 @@ Tambahkan, menggunakan alat pada menu bar.',
 	'gep-nocategories' => 'Silakan pilih setidaknya satu kategori sebelum menyimpan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'gep-emailfailure' => 'Ndo, ihe I choro I me ametaghị.',
+	'gep-categories' => 'Ébéanọr',
+	'gep-addcategorybutton' => 'Tinyé',
+	'gep-suggestcategorybutton' => 'Nye fwuör',
+	'gep-sections' => 'Nkeji',
+	'gep-addsection' => 'Tinyé nkeji',
+	'gep-addsectionbutton' => 'Tinyé',
+);
+
 /** Italian (Italiano)
  * @author Melos
  */

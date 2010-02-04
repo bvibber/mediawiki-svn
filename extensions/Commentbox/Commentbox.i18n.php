@@ -433,6 +433,13 @@ Anda memiliki komentar di halaman ini? Tambahkan di sini atau <span class="plain
 	'commentbox-error-empty-comment' => 'Komentar kosong tidak diperbolehkan!',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'commentbox-name' => 'Áhà:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

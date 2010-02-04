@@ -208,6 +208,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'seealso' => 'Katso myös',
+	'seealso-desc' => '"Katso myös"-otsakkeita eri kielillä käyttäen elementtiä <code><nowiki><seealso></nowiki></code>.',
 );
 
 /** French (Français)

@@ -453,6 +453,15 @@ $messages['id'] = array(
 	'layouts_tagline' => "Halaman ini ditambahkan oleh \"layout\" '''\$1'''.",
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'layouts_title' => 'Ké ihü',
+	'layouts_continue' => 'Gawákwa',
+	'layouts_unknown' => 'Nke amaghị',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

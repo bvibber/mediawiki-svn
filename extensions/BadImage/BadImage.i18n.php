@@ -1074,6 +1074,27 @@ $messages['id'] = array(
 	'right-badimages' => 'Mutakhirkan daftar gambar buruk',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'badimages' => 'Ndetu nhunuuche di njọ',
+	'badimages-add-btn' => 'Tinyé',
+	'badimages-added' => '$1 banyèrè ndetu.',
+	'badimages-name' => 'Áhà:',
+	'badimages-not-added' => 'Enweghíkí tinyé nhunuuche',
+	'badimages-not-removed' => 'Enweghíkí puzie nhunuuche',
+	'badimages-reason' => 'Màkà gíní:',
+	'badimages-remove' => '(wéfù)',
+	'badimages-remove-btn' => 'Wéfù',
+	'badimages-removed' => '$1 a püwola ndetu.',
+	'badimages-subheading' => 'Ihe di',
+	'badimages-log-name' => 'Ndetu nhunuuche di njọ',
+	'badimages-log-add' => 'tinyé [[$1]] na ndetu nhunuuche di njọ',
+	'badimages-page' => '{{ns:ínyeáká}}:Ndetu nhunuuche di njọ',
+	'right-badimages' => 'Kuwaria ndetu nhunuuche di njọ',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

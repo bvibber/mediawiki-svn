@@ -9547,6 +9547,14 @@ $messages['id'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Porta pemrofil UDP',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'configure-setting-wgSitename' => 'Áhà ama',
+	'configure-setting-wgExtraLanguageNames-value' => 'Áhà',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

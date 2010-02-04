@@ -225,12 +225,17 @@ $messages['et'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'newschannel' => 'Uutiskanava',
+	'newschannel-desc' => 'Toteuttaa uutiskanavan dynaamisena [[Special:NewsChannel|toimintosivuna]].',
 	'newschannel_format' => 'Muoto',
 	'newschannel_limit' => 'Rajoitus',
+	'newschannel_include_category' => 'Lisäluokka:',
+	'newschannel_exclude_category' => 'Poissulkeva luokka:',
 	'newschannel_submit_button' => 'Luo syöte',
 );
 
@@ -365,6 +370,15 @@ $messages['id'] = array(
 	'newschannel_include_category' => 'Kategori tambahan:',
 	'newschannel_exclude_category' => 'Jangan masukkan kategori:',
 	'newschannel_submit_button' => 'Buat sindikasi',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'newschannel' => 'Nkushi Akíkó Uwà',
+	'newschannel_limit' => 'Érúrú:',
+	'newschannel_submit_button' => 'Ké ntá',
 );
 
 /** Italian (Italiano)

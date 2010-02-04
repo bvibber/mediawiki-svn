@@ -381,6 +381,14 @@ Anda tidak dapat membuat halaman ini, namun Anda dapat [{{fullurl:{{FULLPAGENAME
 <createbox>break=no</createbox>",
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'createbox-desc' => 'Ntiyéntiyé di mkpà maka éké ihü',
+	'createbox-create' => 'Ké',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
