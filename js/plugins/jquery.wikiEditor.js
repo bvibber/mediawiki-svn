@@ -311,7 +311,6 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
-				context.historyPosition = -1;
 			}
 			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
 			switch ( event.which ) {
@@ -330,6 +329,10 @@ if ( typeof context == 'undefined' ) {
 				event.data.scope = 'realchange';
 				// Save in the history
 				//console.log( 'save-state' );
+				// Only reset the historyPosition and begin moving forward if this change is not the result of undo
+				if ( newHTML !== context.history[context.history.length + context.historyPosition].html ) {
+					context.historyPosition = -1;
+				}
 				context.history.push( { 'html': newHTML } );
 				// Keep the history under control
 				while ( context.history.length > 10 ) {

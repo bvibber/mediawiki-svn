@@ -6744,7 +6744,6 @@ if ( typeof context == 'undefined' ) {
 				context.fn.purgeOffsets();
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
-				context.historyPosition = -1;
 			}
 			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
 			switch ( event.which ) {
@@ -6763,6 +6762,10 @@ if ( typeof context == 'undefined' ) {
 				event.data.scope = 'realchange';
 				// Save in the history
 				//console.log( 'save-state' );
+				// Only reset the historyPosition and begin moving forward if this change is not the result of undo
+				if ( newHTML !== context.history[context.history.length + context.historyPosition].html ) {
+					context.historyPosition = -1;
+				}
 				context.history.push( { 'html': newHTML } );
 				// Keep the history under control
 				while ( context.history.length > 10 ) {
@@ -6875,9 +6878,11 @@ if ( typeof context == 'undefined' ) {
 			html = html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
+					.replace( /\<br[^\>]*\>\s*\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
+					.replace( /\<p[^\>]*\>\s*\<\/p\>/gi, '' ) // Collapse empty <p>
+					.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
 					.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
-					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
-					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" );
+					.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
 			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
 			// won't leave everything alone
 			var leading = html.match( /^\s*/ )[0];
@@ -8588,6 +8593,9 @@ fn: {
 					var model = new $.wikiEditor.modules.templateEditor.fn.model( $template.children( '.wikiEditor-template-text' ).text() );
 					$template.data( 'model' , model );
 					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
+				}
+				else{ //we just expanded this
+					$wikitext.text($template.data('model').getText());
 				}
 				
 				return false;
