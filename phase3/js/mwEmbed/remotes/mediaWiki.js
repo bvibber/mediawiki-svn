@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r88';
+var mwRemoteVersion = 'r89';
 var mwUseScriptLoader = true;
 
 //Log the mwRemote version ( will determine what version of js we get )
@@ -23,23 +23,19 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	
-	// Only do rewrites if mwEmbed / js2 is "off"
-	if ( typeof MW_EMBED_VERSION == 'undefined' ) {		
-		doPageSpecificRewrite();
-	}
+	doPageSpecificRewrite();
 } );
+
 
 /**
 * Page specific rewrites for mediaWiki
-*/
-// Deal with multiple doPageSpecificRewrite 
-if( !ranRewrites){
-	var ranRewrites = 'none';
-}
+*/ 
 function doPageSpecificRewrite() {
-	if( ranRewrites != 'none')
-		return ;	
-	ranRewrites = 'done';	
+	// Deal with multiple doPageSpecificRewrite
+	if( typeof window.ranRewrites != 'undefined'){
+		return ;
+	}
+	window.ranRewrites = 'done';		
 	
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {
@@ -305,8 +301,8 @@ function getRemoteEmbedPath() {
 */ 
 function mwGetReqArgs() {
 	var rurl = '';
-	if ( mwReqParam['debug'] )
-		rurl += 'debug=true&';
+	//if ( mwReqParam['debug'] )
+	//	rurl += 'debug=true&';
 
 	if ( mwReqParam['uselang'] )
 		rurl += 'uselang=' + mwReqParam['uselang'] + '&';
