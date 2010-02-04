@@ -442,9 +442,11 @@ if ( typeof context == 'undefined' ) {
 			html = html
 					.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 					.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
+					.replace( /\<br[^\>]*\>\s*\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
+					.replace( /\<p[^\>]*\>\s*\<\/p\>/gi, '' ) // Collapse empty <p>
+					.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
 					.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
-					.replace( /\<\/p\>\<p\>/gi, "\n" ) // Easy case for <p> conversion
-					.replace( /\<\/p\>(\n*)\<p\>/gi, "$1\n" );
+					.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
 			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
 			// won't leave everything alone
 			var leading = html.match( /^\s*/ )[0];
