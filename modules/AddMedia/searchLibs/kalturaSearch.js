@@ -2,6 +2,13 @@
  * Kaltura aggregated search:  
  */
 
+mw.addMessages( { 
+	'rsd-media-filter-title': 'Media',
+	'rsd-media-filter-videos': 'Videos',
+	'rsd-media-filter-images': 'Images',
+	'rsd-provider-filter-title': 'Providers'
+} );
+
 var kalturaFilters = function ( options ) {
 	return this.init( options );
 }
@@ -25,16 +32,18 @@ kalturaFilters.prototype = {
 			
 			this.filterList = {};
 			
-			this.buildFilter('media', 'Media', {
-				movie: 'Videos',
-				image: 'Images'
+			this.buildFilter('media', 
+					gM( 'rsd-media-filter-title' ), {
+				movie: gM ( 'rsd-media-filter-videos' ),
+				image: gM ( 'rsd-media-filter-images' )
 			});
 
-			this.buildFilter('providers', 'Providers', {
-				wiki_commons: 'Wikipedia Commons',
-				archive_org: 'The Internet Archive',
-				metavid: 'Metavid',
-				flickr: 'Flickr'
+			this.buildFilter('providers', 
+					gM( 'rsd-provider-filter-title' ), {
+				wiki_commons: gM( 'rsd-wiki_commons-title'),
+				archive_org: gM( 'rsd-archive_org-title' ),
+				metavid: gM( 'rsd-metavid-title' ),
+				flickr: gM( 'rsd-flickr-title' )
 			});
 			
 		},
@@ -262,6 +271,10 @@ kalturaSearch.prototype = {
 				
 				var fileExtension = _this.getMimeExtension( result[ 'mime' ] );
 				result[ 'titleKey' ] =  result[ 'titleKey' ] || ( result[ 'title' ] + '.' + fileExtension );
+				
+				if ( result.license_url ) {
+					result[ 'license' ] = this.rsd.getLicenseFromUrl( result.license_url );
+				}
 				
 				this.num_results++;
 				_this.resultsObj[ resource_id ] = result;
