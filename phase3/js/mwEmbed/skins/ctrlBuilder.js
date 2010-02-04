@@ -179,7 +179,7 @@ ctrlBuilder.prototype = {
 					if ( $j( '#gnp_' + embedPlayer.id ).length == 0 ) {
 						var toppos = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 25 : 10;
 						$j( this ).append( '<div id="gnp_' + embedPlayer.id + '" class="ui-state-highlight ui-corner-all" ' +
-							'style="position:absolute;display:none;background:#FFF;top:' + toppos + 'px;left:10px;right:10px;">' +
+							'style="position:absolute;display:none;background:#FFF;color:#111;top:' + toppos + 'px;left:10px;right:10px;">' +
 							gM( 'mwe-for_best_experience' ) +
 						'<br><input id="ffwarn_' + embedPlayer.id + '" type=\"checkbox\">' +
 							gM( 'mwe-do_not_warn_again' ) +

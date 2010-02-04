@@ -2421,12 +2421,15 @@ mw.RemoteSearchDriver.prototype = {
 		mw.getJSON( this.local_wiki_api_url, request, function( data ) {
 			if ( data.query.pages ) {
 				for ( var i in data.query.pages ) {
+					if( i == '-1' ){
+						callback( false );
+						return ;
+					}
 					for ( var j in data.query.pages[i] ) {
 						if ( j == 'missing' 
 							&& data.query.pages[i].imagerepository != 'shared'
 							&& data.query.pages[i].imagerepository != 'commons' ) 
-						{
-							mw.log( fileName + " not found" );
+						{							
 							callback( false );
 							return;
 						}

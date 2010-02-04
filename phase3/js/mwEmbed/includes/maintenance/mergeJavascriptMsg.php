@@ -12,7 +12,7 @@ if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 	exit();
 }
 define( 'MEDIAWIKI', true );
-// get the scriptLoader globals:
+// Get the scriptLoader globals:
 require_once( '../../jsScriptLoader.php' );
 
 $mwSTART_MSG_KEY = '$messages[\'en\'] = array(';
@@ -33,7 +33,7 @@ Usage:
 die();
 }
 
-// get options (like override JS or override PHP)
+// Get options ( like override JS or override PHP )
 if ( in_array($argv[1], array('--help', '-help', '-h', '-?')) ) {
 	print_help();
 }
@@ -96,14 +96,16 @@ foreach ( $objects as $fname => $object ) {
 		$jsFileText = file_get_contents( $fname );
 		$mwPos = strpos( $fname, 'mwEmbed' ) + 7;
 		$curFileName = substr( $fname, $mwPos );
-		if ( preg_match( '/mw\.addMessages\s*\(\s*{(.*)}\s*\)\s*/siU',	// @@todo fix: will break down if someone does }) in their msg text
-		$jsFileText,
-		$matches ) ) {
+		// @@todo fix: will break down if someone does }) in their msg text
+		if ( preg_match( '/mw\.addMessages\s*\(\s*{(.*)}\s*\)\s*/siU',
+			$jsFileText,
+			$matches ) )
+		{
 			$msgSet .= doJsonMerge( $matches[1] );
 		}
 	}
 }
-// rebuild and output to single php file if mergeToPHP is on
+// Rebuild and output to single php file if mergeToPHP is on
 if ( $mergeToPhp ) {
 	if ( file_put_contents( $mwLangFilePath, trim( $preFile ) . "\n\t" . trim( $msgSet ) . "\n" . ltrim( $postFile ) ) ) {
 		if( $showInfo )
@@ -111,7 +113,10 @@ if ( $mergeToPhp ) {
 		exit();
 	}
 }
-
+/**
+ * Merges json messages into php file.
+ * @param string $json_txt Json text to be merged
+ */
 function doJsonMerge( $json_txt ) {
 	global $curFileName, $fname, $messages, $mergeToJS, $jsFileText, $showInfo;
 
@@ -126,7 +131,7 @@ function doJsonMerge( $json_txt ) {
 	if ( count( $jmsg ) != 0 ) {
 
 		foreach ( $jmsg as $k => $v ) {
-			// check if the existing value is changed and merge and merge ->right
+			// Check if the existing value is changed and merge and merge ->right
 			if ( isset( $messages['en'][$k] ) ) {
 				if ( $messages['en'][$k] != $v ) {
 					$doReplaceFlag = true;
@@ -140,7 +145,7 @@ function doJsonMerge( $json_txt ) {
 			} ;
 			$outPhp .= "\t'{$k}' => '" . str_replace( '\'', '\\\'', $v ) . "',\n";
 		}
-		// merge the jsLanguage array back in and wrap the output
+		// Merge the jsLanguage array back in and wrap the output
 		if ( $mergeToJS && $doReplaceFlag ) {
 			$json = json_encode( $jsMsgAry );
 			$json_txt = jsonReadable( $json );
@@ -151,8 +156,6 @@ function doJsonMerge( $json_txt ) {
 						"mw.addMessages(" . $json_txt . ")",
 						$jsFileText );
 
-			// print substr($str, 0, 600);
-
 			if ( file_put_contents( $fname, $str ) ) {
 				if( $showInfo )
 					print "\nupdated $curFileName from php\n\n";
@@ -160,7 +163,7 @@ function doJsonMerge( $json_txt ) {
 				die( "Could not write to: " . $fname );
 			}
 		}
-		// return phpOut for building msgSet in outer function
+		// Return phpOut for building msgSet in outer function
 		return $outPhp;
 
 	} else {
@@ -169,7 +172,11 @@ function doJsonMerge( $json_txt ) {
 		return '';
 	}
 }
-
+/**
+ * Formats a json string
+ *
+ * @param string $json Json string to be formated
+ */
 function jsonReadable( $json ) {
 	$tabcount = 0;
 	$result = '';
