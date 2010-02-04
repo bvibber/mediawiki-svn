@@ -24,7 +24,7 @@ ini_set( 'include_path',
 	ini_get( 'include_path' ) );
 
 // Bump this when updating OggPlayer.js to help update caches
-$wgOggScriptVersion = '10';
+$wgOggScriptVersion = '11';
 
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgExtensionMessagesFiles['OggHandlerMagic'] = "$oggDir/OggHandler.i18n.magic.php";
@@ -105,7 +105,7 @@ $wgEnabledDerivatives = array(
 );
 
 // If play requests should be tracked.
-$wgEnablePlayTracking = false;
+$wgEnablePlayTracking = true;
 
 // One out of how many requests should be tracked:
 $wgPlayTrackingRate = 10;
@@ -132,7 +132,7 @@ $wgCortadoJarFile = "cortado-ovt-stripped-0.5.1.jar";
 // initial config time
 
 // Alternatively we could have top level php files that include the
-// following pieces of code, but that would distribute configuration
+// following pieces of code.
 
 // Enable play tracking
 if( $wgEnablePlayTracking ){
@@ -141,7 +141,7 @@ if( $wgEnablePlayTracking ){
 	$wgHooks['LoadExtensionSchemaUpdates'][] =  'ApiPlayTracking::schema';
 
 	//Add the api entry point:
-	$wgAPIModules['playtracking'] = 'ApiPlayTracking';
+	$wgAPIModules[  'playtracking' ] = 'ApiPlayTracking';
 }
 
 // Enable timed text

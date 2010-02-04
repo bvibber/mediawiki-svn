@@ -15,14 +15,28 @@ class ApiPlayTracking extends ApiBase {
 	 * @see includes/api/ApiBase#execute()
 	 */
 	public function execute() {
-		global $wgEnablePlayTracking;
+		global $wgEnablePlayTracking, $wgSecretKey, $wgUser, $wgPlayTrackingRate;
 		if( ! $wgEnablePlayTracking ){
 			$this->dieUsageMsg( array( 'unknownerror', 'Play tracking is not enabled' ) );
 		}
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 
-		// insert into the play_tracking table
+		// Salt the user id with $wgSecretKey to get a unique key per user
+		$clientId = md5( $wgUser->getName() . $wgSecretKey );
+
+		// Insert into the play_tracking table
+		$dbw = & wfGetDB( DB_WRITE );
+		$dbw->insert(
+			'play_tracking',
+			array(
+				'track_filename' => $params[ 'filename' ],
+				'track_client_id' => $clientId,
+				'track_clientplayer' => $params[ 'client' ],
+				'track_rate' => $wgPlayTrackingRate
+			),
+			__METHOD__
+		);
 	}
 
 	/**
