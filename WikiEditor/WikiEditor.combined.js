@@ -1085,26 +1085,18 @@ $j(document).ready( function() {
 			$j( '#wikieditor-toolbar-link-int-target-status' )
 				.append( $j( '<div />' )
 					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-exists' )
-					.append( $j( '<img />' ).attr( 'src',
-						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-exists.png' ) )
 					.append( existsMsg )
 				)
 				.append( $j( '<div />' )
 					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-notexists' )
-					.append( $j( '<img />' ).attr( 'src',
-						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-notexists.png' ) )
 					.append( notexistsMsg )
 				)
 				.append( $j( '<div />' )
 					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-invalid' )
-					.append( $j( '<img />' ).attr( 'src',
-						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-invalid.png' ) )
 					.append( invalidMsg )
 				)
 				.append( $j( '<div />' )
 					.attr( 'id', 'wikieditor-toolbar-link-int-target-status-external' )
-					.append( $j( '<img />' ).attr( 'src',
-						$j.wikiEditor.imgPath + 'dialogs/' + 'insert-link-external.png' ) )
 					.append( externalMsg )
 				)
 				.append( $j( '<div />' )
