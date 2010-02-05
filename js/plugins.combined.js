@@ -6879,11 +6879,6 @@ if ( typeof context == 'undefined' ) {
 				.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 				.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
 				.replace( /\<br[^\>]*\>\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
-			// Firefox ends up with one too many empty paragraphs, so this reduced consective strings of them by 1
-			if ( $.browser.firefox ) {
-				html = html.replace( /\<p[^\>]*\>\<\/p\>(\<p[^\>]*\>\<\/p\>)*/gi, '$1' );
-			}
-			html = html
 				.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
 				.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
 				.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
