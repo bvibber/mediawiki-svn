@@ -17,13 +17,17 @@
 * 	 	once done moves file into place.
 *
 */
-require_once(  dirname(__FILE__) . '/../../maintenance/Maintenance.php' );
+require_once(  dirname(__FILE__) . '/../../../maintenance/Maintenance.php' );
 
 class OggTranscodeCron extends Maintenance {
 
 	// The max number of threads ( can also be set when called via the command line )
 	private $maxThreads = 2;
 
+	/**
+	 * @constructor
+	 *
+	 */
 	public function __construct() {
 		global $wgUseNormalUser;
 		parent::__construct();

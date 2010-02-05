@@ -1,7 +1,11 @@
 <?php
 
 /*
- * OggTranscode provides keys and encode settings
+ * OggTranscode provides:
+ *  encode keys
+ *  encode settings
+ *  db schema
+ *  and getWidthDerivativeURL function to grab url for a derivative
  */
 
 
