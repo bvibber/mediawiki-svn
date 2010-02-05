@@ -1009,7 +1009,7 @@ var mwDefaultConf = {
 		* Groups the loadSet into a single sequential array
 		* 
 		* Groups the scriptRequest where possible: 
-		* 	Modules include "loader code" so they are seperated
+		* 	Modules include "loader code" so they are separated
 		* 	into pre-condition code to be run for subsequent requests
 		*
 		* @param {Object} loadSet Loadset to return grouped
@@ -2250,7 +2250,7 @@ var mwDefaultConf = {
 		re = new RegExp("\\n","g");
 		text = text.replace(re,"\\n");
 		return escapeQuotesHTML(text);
-	}
+	};
 	
 	/**
 	 * Escape an HTML text string
@@ -2268,7 +2268,7 @@ var mwDefaultConf = {
 		re = new RegExp('>',"g");
 		text = text.replace(re,"&gt;");
 		return text;
-	}
+	};
 	
 	/**
 	* Takes in a string returns an xml dom object 
