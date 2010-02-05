@@ -17,8 +17,8 @@ class SeleniumUploadTiffTest extends SeleniumTestCase
 {
     public function uploadFile($filename)
     {
-        global $wgUITestsWikiUrl;
-        $this->open($wgUITestsWikiUrl.'/index.php?title=Special:Upload');
+        global $wgSeleniumTestsWikiUrl;
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Special:Upload');
         $this->type("wpUploadFile", dirname(__FILE__)."\\testImages\\".$filename);
         $this->check("wpIgnoreWarning");
         $this->click("wpUpload");
@@ -90,8 +90,8 @@ class SeleniumDeleteTiffTest extends SeleniumTestCase
     }
     public function runTest()
     {
-        global $wgUITestsWikiUrl;
-        $this->open($wgUITestsWikiUrl.'/index.php?title=Image:'.ucfirst($this->filename).'&action=delete');
+        global $wgSeleniumTestsWikiUrl;
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Image:'.ucfirst($this->filename).'&action=delete');
         $this->type("wpReason", "Remove test file");
         $this->click("mw-filedelete-submit");
         $this->waitForPageToLoad(10000);
@@ -108,18 +108,18 @@ class SeleniumEmbedTiffTest extends SeleniumTestCase //PHPUnit_Extensions_Seleni
 
     public function tearDown()
     {
-        global $wgUITestsWikiUrl;
+        global $wgSeleniumTestsWikiUrl;
         parent::tearDown();
         //Clear EmbedTiffTest page for future tests
-        $this->open($wgUITestsWikiUrl.'/index.php?title=EmbedTiffTest&action=edit');
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=EmbedTiffTest&action=edit');
         $this->type("wpTextbox1", "");
         $this->click("wpSave");
     }
 
     public function preparePage($text)
     {
-        global $wgUITestsWikiUrl;
-        $this->open($wgUITestsWikiUrl.'/index.php?title=EmbedTiffTest&action=edit');
+        global $wgSeleniumTestsWikiUrl;
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=EmbedTiffTest&action=edit');
         $this->type("wpTextbox1", $text);
         $this->click("wpSave");
         $this->waitForPageToLoad(10000);
@@ -133,16 +133,16 @@ class SeleniumTiffPageTest extends SeleniumTestCase
     {
         parent::tearDown();
         //Clear EmbedTiffTest page for future tests
-        $this->open($wgUITestsWikiUrl.'/index.php?title=Image:'.$this->image.'&action=edit');
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Image:'.$this->image.'&action=edit');
         $this->type("wpTextbox1", "");
         $this->click("wpSave");
     }
 
    public function prepareImagePage($image, $text)
     {
-        global $wgUITestsWikiUrl;
+        global $wgSeleniumTestsWikiUrl;
         $this->image = $image;
-        $this->open($wgUITestsWikiUrl.'/index.php?title=Image:'.$image.'&action=edit');
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Image:'.$image.'&action=edit');
         $this->type("wpTextbox1", $text);
         $this->click("wpSave");
         $this->waitForPageToLoad(10000);
@@ -158,8 +158,8 @@ class SeleniumDisplayInCategoryTest extends SeleniumTiffPageTest
     {
         $this->prepareImagePage("Multipage.tiff","[[Category:Wiki]]\n");
         
-        global $wgUITestsWikiUrl;
-        $this->open($wgUITestsWikiUrl.'/index.php?title=Category:Wiki');
+        global $wgSeleniumTestsWikiUrl;
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Category:Wiki');
 
         //Ergebnis chekcen
         $source = $this->getAttribute("//div[@class='gallerybox']//a[@class='image']//img@src");
@@ -177,8 +177,8 @@ class SeleniumDisplayInGalleryTest extends SeleniumEmbedTiffTest
     {
         $this->preparePage("<gallery>\nImage:Multipage.tiff\n</gallery>\n");
 
-        //global $wgUITestsWikiUrl;
-        //$this->open($wgUITestsWikiUrl.'/index.php?title=GalleryTest');
+        //global $wgSeleniumTestsWikiUrl;
+        //$this->open($wgSeleniumTestsWikiUrl.'/index.php?title=GalleryTest');
 
         //Ergebnis chekcen
         //$source = $this->getAttribute("//div[@class='gallerybox']//a[@title='Multipage.tiff']//img@src");
