@@ -116,7 +116,7 @@ mw.Firefogg = function( options ) {
 	return this.init( options );
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
-	min_firefogg_version: '0.9.9.5',
+	min_firefogg_version: '1.1.0',
 	default_encoder_settings: { // NOTE: allow the server to set these
 		'maxSize'        : '400',
         'videoBitrate'   : '544',
@@ -1150,14 +1150,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		}
 		mw.log( 'firefogg:cancel' )
 		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
-			// FIXME: sillyness ( upstream firefogg cancel fix needed ) 
-			if ( navigator.oscpu && navigator.oscpu.search( 'Win' ) >= 0 ) {
-				alert( 'sorry we do not yet support cancel on windows' );
-			} else {
-				this.action_done = true;
-				this.fogg.cancel();				
-				$j( dialogElement ).empty().dialog( 'close' );
-			}
+			this.action_done = true;
+			this.fogg.cancel();				
+			$j( dialogElement ).empty().dialog( 'close' );
 		}
 		// Don't follow the # link:
 		return false;
