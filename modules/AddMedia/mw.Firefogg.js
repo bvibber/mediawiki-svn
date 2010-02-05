@@ -898,7 +898,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				function /* onDone */ () {
 					mw.log( 'done with encoding do POST upload:' + _this.form.action );
 										
-					var uploadRequest = _this.getUploadApiRequest();					
+					var uploadRequest = _this.getUploadApiRequest();							
 					_this.fogg.post( _this.api_url, 'file', JSON.stringify( uploadRequest ) );
 						
 					_this.doUploadStatus();
@@ -980,7 +980,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		mw.log( 'do fogg upload/encode call: ' + _this.api_url + ' :: ' + JSON.stringify( uploadRequest ) );
 		mw.log( 'foggEncode: ' + JSON.stringify( encoderSettings ) );
 		_this.fogg.upload( JSON.stringify( encoderSettings ), _this.api_url, 
-			JSON.stringify( aReq ) );
+			JSON.stringify( uploadRequest ) );
 
 		// Start polling the upload status
 		_this.doUploadStatus();
@@ -1089,7 +1089,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 					_this.renderPreview();
 				}
 			}
-			mw.log("update progress: " + _this.fogg.progress() + ' state: ' + _this.fogg.state );
+			//mw.log("update progress: " + _this.fogg.progress() + ' state: ' + _this.fogg.state );
 			// Update the progress bar
 			_this.updateProgress( _this.fogg.progress() );
 
