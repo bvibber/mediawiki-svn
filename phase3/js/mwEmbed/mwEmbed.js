@@ -287,7 +287,10 @@ var mwDefaultConf = {
 	mw.lang.msgReplaceArgs = function( message , args ) {		
 		// replace values
 		if ( typeof args == 'object' || typeof args == 'array' ) {
-			for ( var v in args ) {
+			for ( var v =0; v < args.length; v++ ) {
+				if( typeof args[v] == 'undefined' ){
+					continue;
+				}
 				// Message test replace arguments start at 1 instead of zero:
 				var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );
 								

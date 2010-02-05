@@ -14,12 +14,12 @@ var javaEmbed = {
 	
 	// Supported feature set of the cortado applet: 		
 	supports: {
-		'play_head':true,
-		'pause':true,
-		'stop':true,
-		'fullscreen':false,
-		'time_display':true,
-		'volume_control':false
+		'play_head' : true,
+		'pause' : true,
+		'stop' : true,
+		'fullscreen' : false,
+		'time_display' : true,
+		'volume_control' : false
 	},
 	
 	/**
@@ -116,11 +116,11 @@ var javaEmbed = {
 				   this.currentTime = this.playerElement.getPlayPosition();
 				   if ( this.playerElement.getPlayPosition() < 0 ) {
 				   		mw.log( 'pp:' + this.playerElement.getPlayPosition() );
-						// probably reached clip end					
+						// Probably reached clip end					
 						this.onClipDone();
 				   }
 				} catch ( e ) {
-				   mw.log( 'could not get time from jPlayer: ' + e );
+				   mw.log( 'could not get time from jPlayer: ' );
 				}
 			}
 		}
@@ -219,7 +219,7 @@ var javaEmbed = {
 	pause:function() {
 		this.getPlayerElement();
 		this.parent_pause();
-		if ( this.playerElement )
+		if ( this.playerElement && this.playerElement.doPause )
 			this.playerElement.doPause();
 	}
 };

@@ -100,7 +100,7 @@ mw.addModuleLoader( 'AddMedia.firefogg', function( callback ){
 mw.addModuleLoader( 'AddMedia.FirefoggGUI', function( callback ){
 	
 	//Clone the array: 
-	var request = mwBaseFirefoggReq.slice( 0 ) ;	
+	var request = mwBaseFirefoggReq.slice( 0 ) ;
 	//Add firefogg gui classes to a new "request" var: 
 	request.push( [
 		'mw.FirefoggGUI',

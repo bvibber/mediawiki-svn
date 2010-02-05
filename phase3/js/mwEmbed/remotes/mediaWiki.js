@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r91';
+var mwRemoteVersion = 'r92';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
@@ -35,7 +35,7 @@ function doPageSpecificRewrite() {
 	if( typeof window.ranRewrites != 'undefined'){
 		return ;
 	}
-	window.ranRewrites = 'done';		
+	window.ranRewrites = 'done';
 	
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {
@@ -221,7 +221,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		src = re.exec( rewriteHTML )[2];
 
 		var apiTitleKey = src.split( '/' );
-		apiTitleKey = unescape( apiTitleKey[ apiTitleKey.length - 1 ] );			
+		apiTitleKey = unescape( apiTitleKey[ apiTitleKey.length - 1 ] );
 
 		var re = new RegExp( /length(&quot;:?\s*)*([^,]*)/ );
 		var dv = re.exec( rewriteHTML )[2];
