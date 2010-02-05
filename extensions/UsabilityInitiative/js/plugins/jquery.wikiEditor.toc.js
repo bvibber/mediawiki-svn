@@ -11,6 +11,8 @@ cfg: {
 	minimumWidth: '70px',
 	// Minimum width of the wikiText area
 	textMinimumWidth: '450px',
+	// The style property to be used for positioning the flexible module in regular mode
+	flexProperty: 'marginRight',
 	// Boolean var indicating text direction
 	rtl: false
 },
@@ -143,7 +145,7 @@ fn: {
 			return;
 		}
 		$.wikiEditor.modules.toc.cfg.rtl = config.rtl;
-		
+		$.wikiEditor.modules.toc.cfg.flexProperty = config.rtl ? 'marginLeft' : 'marginRight';
 		var height = context.$ui.find( '.wikiEditor-ui-left' ).height();
 		context.modules.toc.$toc = $( '<div />' )
 			.addClass( 'wikiEditor-ui-toc' )
@@ -165,9 +167,9 @@ fn: {
 			context.$ui.find( '.wikiEditor-ui-right' )
 			.css( 'width', fixedWidth + 'px' );
 			context.$ui.find( '.wikiEditor-ui-left' )
-				.css( 'marginRight', ( -1 * fixedWidth ) + 'px' )
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, ( -1 * fixedWidth ) + 'px' )
 				.children()
-				.css( 'marginRight', fixedWidth + 'px' );
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, fixedWidth + 'px' );
 		} else if( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
 			context.$ui.find( '.wikiEditor-ui-left' )
 				.css( 'width', fixedWidth );
@@ -189,11 +191,12 @@ fn: {
 			width = $.wikiEditor.modules.toc.cfg.textMinimumWidth;
 			// set our styles for goofy mode
 			context.$ui.find( '.wikiEditor-ui-left' )
-				.css( { 'marginRight': '', 'position': 'absolute', 'float': 'none',
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, '')
+				.css( { 'position': 'absolute', 'float': 'none',
 					'left': $.wikiEditor.modules.toc.cfg.rtl ? 'auto': 0, 
 					'right' : $.wikiEditor.modules.toc.cfg.rtl ? 0 : 'auto' } )
 				.children()
-				.css( 'marginRight', '' );
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, '' );
 			context.$ui.find( '.wikiEditor-ui-right' )
 				.css( { 'width': 'auto', 'position': 'absolute', 'float': 'none',
 				'right': $.wikiEditor.modules.toc.cfg.rtl ? 'auto': 0, 
@@ -212,7 +215,8 @@ fn: {
 			context.$wikitext
 				.css( { 'position': '', 'height': '' } );
 			context.$ui.find( '.wikiEditor-ui-right' )
-				.css( { 'marginRight': '', 'position': '', 'left': '', 'right': '', 'float': '', 'top': '', 'height': '' } );
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, '' )
+				.css( { 'position': '', 'left': '', 'right': '', 'float': '', 'top': '', 'height': '' } );
 			context.$ui.find( '.wikiEditor-ui-left' )
 				.css( { 'width': '', 'position': '', 'left': '', 'float': '', 'right': '' } );
 		}
@@ -227,9 +231,9 @@ fn: {
 			}
 			context.$ui.find( '.wikiEditor-ui-right' ).hide();
 			context.$ui.find( '.wikiEditor-ui-left' )
-				.css( 'marginRight', '' )
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, '' )
 				.children()
-				.css( 'marginRight', '' );
+				.css( $.wikiEditor.modules.toc.cfg.flexProperty, '' );
 		}
 		context.modules.toc.$toc.data( 'positionMode', 'disabled' );
 	},
@@ -296,13 +300,16 @@ fn: {
 		}
 		var pT = $this.parent().position().top - 1;
 		context.modules.toc.$toc.data( 'collapsed', true );
+		var leftParam = {}, leftChildParam = {};
+		leftParam[ $.wikiEditor.modules.toc.cfg.flexProperty ] = '-1px';
+		leftChildParam[ $.wikiEditor.modules.toc.cfg.flexProperty ] = '1px';
 		context.$ui.find( '.wikiEditor-ui-left' )
-			.animate( { 'marginRight': '-1px' }, 'fast', function() {
-				$( this ).css( 'marginRight', 0 );
+			.animate( leftParam, 'fast', function() {
+				$( this ).css( $.wikiEditor.modules.toc.cfg.flexProperty, 0 );
 			} )
 			.children()
-			.animate( { 'marginRight': '1px' }, 'fast',  function() { 
-				$( this ).css( 'marginRight', 0 ); 
+			.animate( leftChildParam, 'fast',  function() { 
+				$( this ).css( $.wikiEditor.modules.toc.cfg.flexProperty, 0 ); 
 			} );
 		context.$ui.find( '.wikiEditor-ui-right' )
 			.css( { 
@@ -339,10 +346,13 @@ fn: {
 		// check if we've got enough room to open to our stored width
 		if ( availableSpace < openWidth ) openWidth = availableSpace;
 		context.$ui.find( '.wikiEditor-ui-toc-expandControl' ).hide();
+		var leftParam = {}, leftChildParam = {};
+		leftParam[ $.wikiEditor.modules.toc.cfg.flexProperty ] = parseFloat( openWidth ) * -1;
+		leftChildParam[ $.wikiEditor.modules.toc.cfg.flexProperty ] = openWidth;
 		context.$ui.find( '.wikiEditor-ui-left' )
-			.animate( { 'marginRight': ( parseFloat( openWidth ) * -1 ) }, 'fast' )
+			.animate( leftParam, 'fast' )
 			.children()
-			.animate( { 'marginRight': openWidth }, 'fast' );
+			.animate( leftChildParam, 'fast' );
 		context.$ui.find( '.wikiEditor-ui-right' )
 			.show()
 			.css( 'marginTop', '1px' )
@@ -492,8 +502,9 @@ fn: {
 						// for some odd reason, ui.size.width seems a step ahead of what the *actual* width of
 						// the resizable is
 						$( this ).css( { 'width': ui.size.width, 'top': 'auto', 'height': 'auto' } )
-							.data( 'wikiEditor-ui-left' ).css( 'marginRight', ( -1 * ui.size.width ) )
-							.children().css( 'marginRight', ui.size.width );
+							.data( 'wikiEditor-ui-left' )
+								.css( $.wikiEditor.modules.toc.cfg.flexProperty, ( -1 * ui.size.width ) )
+							.children().css( $.wikiEditor.modules.toc.cfg.flexProperty, ui.size.width );
 						// Let the UI know things have moved around
 						context.fn.trigger( 'resize' );
 					},
