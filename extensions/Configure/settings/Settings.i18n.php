@@ -10955,6 +10955,7 @@ $messages['lb'] = array(
 	'configure-setting-wgImplicitGroups' => 'Gruppen déi net op [[Special:ListUsers]] an ähnleche Lëschte gewise ginn',
 	'configure-setting-wgPasswordAttemptThrottle' => "Drossel fir de Versuch d'Passwuert anzeginn",
 	'configure-setting-wgPasswordSalt' => 'Passwuert verschlësselt (salt)',
+	'configure-setting-wgReadOnly' => 'Erlaabt keng Ännerungen a weist dëst als Grond',
 	'configure-setting-wgReadOnlyFile' => 'Fichier mat dem Grond vun der Spär vun der Datebank',
 	'configure-setting-wgRestrictionTypes' => 'Aktiounen déi limitéiert kënne ginn',
 	'configure-setting-wgWhitelistRead' => 'Säiten déi en anonyme Benotzer gesi kann',

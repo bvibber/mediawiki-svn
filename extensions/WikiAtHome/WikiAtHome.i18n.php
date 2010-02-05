@@ -1176,6 +1176,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'wah-desc' => 'Aktiverer distribusjon av videoomkodingsjobber til klienter gjennom Firefogg',
 	'wah-user-desc' => 'Wiki@Home tillater samfunnsmedlemmer å donere bort ubrukt prosessortid for å hjelpe til med ressurskrevende oppgaver',
 	'wah-short-audio' => '$1-lydfil, $2',
 	'wah-short-video' => '$1-videofil, $2',
@@ -1186,6 +1187,7 @@ $messages['no'] = array(
 	'wah-long-general' => '(mediafil, lengde $2, $3)',
 	'wah-long-error' => '(ffmpeg kunne ikke lese denne filen: $1)',
 	'wah-transcode-working' => 'Denne videoen blir bearbeidet, vennligst prøv igjen senere',
+	'wah-transcode-helpout' => 'Du kan hjelpe til med å omkode denne videoen ved å besøke [[Special:WikiAtHome|Wiki@Home]].',
 	'wah-transcode-fail' => 'Kunne ikke konvertere denne filen.',
 	'wah-javascript-off' => 'Du må aktivere JavaScript for å delta i Wiki@Home',
 	'wah-loading' => 'laster grensesnittet for Wiki@Home ...',

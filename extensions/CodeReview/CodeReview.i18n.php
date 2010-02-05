@@ -1363,6 +1363,7 @@ $messages['cs'] = array(
 	'code-rev-diff-link' => 'rozdíl',
 	'code-rev-diff-too-large' => 'Tento rozdíl je příliš velký, než aby mohl být zobrazen.',
 	'code-rev-purge-link' => 'obnovit',
+	'code-rev-total' => 'Celkový počet výsledků:',
 	'code-status-new' => 'nová',
 	'code-status-fixme' => 'opravit',
 	'code-status-reverted' => 'revertováno',
@@ -6697,7 +6698,7 @@ $messages['pms'] = array(
 	'code-old-status' => 'Stat vej',
 	'code-new-status' => 'Stat neuv',
 	'code-prop-changes' => 'Registr dë stat e dij tag',
-	'code-desc' => '[[Special:Code|Utis ëd revision dël còdes]] with [[Special:RepoAdmin|Apògg ëd subvërsion]]',
+	'code-desc' => '[[Special:Code|Utiss ëd revision dël còdes]] with [[Special:RepoAdmin|Apògg ëd subvërsion]]',
 	'code-no-repo' => 'Pa gnun repository configurà!',
 	'code-load-diff' => 'Carié diff...',
 	'code-notes' => 'coment ressent',
@@ -6781,6 +6782,47 @@ $messages['pms'] = array(
 	'codereview-tests-running' => 'Ij cas preuva a viro ...',
 	'codereview-tests-aborted' => 'Vir dij test falì.',
 	'codereview-email-subj' => '[$1] [r$2]: Pa gnun coment giontà',
+	'codereview-email-body' => 'L\'utent "$1" a l\'ha spedì un coment su r$3.
+
+Url complet: $2
+
+Coment:
+
+$4',
+	'codereview-email-subj2' => '[$1] [r$2]: Cambe suplementar',
+	'codereview-email-body2' => 'L\'utent "$1" a l\'ha fàit cambe suplementar a r$2.
+
+URL completa: $3
+
+Somari dël coment:
+
+$4',
+	'codereview-email-subj3' => "[$1] [r$2]: Preuva automàtica a l'ha trovà na regression",
+	'codereview-email-body3' => "Preuva automàtica a l'ha arvelà na regression dovùa ai cambe an r$1.
+
+URL completa: $2
+
+Somari dël commit:
+
+$3",
+	'repoadmin' => 'Aministrassion dël repository',
+	'repoadmin-new-legend' => 'Crea un neuv repository',
+	'repoadmin-new-label' => 'Nòm dël repository:',
+	'repoadmin-new-button' => 'Crea',
+	'repoadmin-edit-legend' => 'Modìfiche ëd repository "$1"',
+	'repoadmin-edit-path' => 'Përcors dë',
+	'repoadmin-edit-bug' => 'Përcors ëd Bugzilla:',
+	'repoadmin-edit-view' => 'Përcors ëd ViewVC:',
+	'repoadmin-edit-button' => 'Va bin',
+	'repoadmin-edit-sucess' => 'Ël repository "[[Special:Code/$1|$1]]" a l\'é stàit modifià da bin.',
+	'right-repoadmin' => 'Gestiss repository dël còdes',
+	'right-codereview-use' => 'Usagi ëd Special:Code',
+	'right-codereview-add-tag' => 'Gionta neuv tag a revision',
+	'right-codereview-remove-tag' => 'Gava tag da revision',
+	'right-codereview-post-comment' => 'Gionta coment a revision',
+	'right-codereview-set-status' => 'Cangia stat ëd revision',
+	'right-codereview-link-user' => 'Colega autor a utent wiki',
+	'specialpages-group-developer' => 'Utiss dë svilup',
 );
 
 /** Pontic (Ποντιακά)

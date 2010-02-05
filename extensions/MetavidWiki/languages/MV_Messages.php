@@ -6958,6 +6958,7 @@ Vennligst rapporter dette til [[{{MediaWiki:Grouppage-sysop}}|sideoperatøren]].
 	'mv_path_type_url_anx' => 'full medie-URL',
 	'mv_path_type_wiki_title' => 'medietittel på wiki',
 	'mv_path_type_url_file' => 'Full internettadresse for media ved bruk av lokalt søk',
+	'mv_path_type_mp4_stream' => 'MP4-strømtjener',
 	'mv_path_type_label' => 'stitype',
 	'mv_base_offset_label' => 'grunnforskyvning',
 	'mv_duration_label' => 'Varighet',

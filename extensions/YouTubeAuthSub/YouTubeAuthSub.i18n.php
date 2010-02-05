@@ -1653,12 +1653,28 @@ $messages['ko'] = array(
 
 /** Karachay-Balkar (Къарачай-Малкъар)
  * @author Iltever
+ * @author Къарачайлы
  */
 $messages['krc'] = array(
 	'youtubeauthsub' => 'YouTube видеону джюкле',
+	'youtubeauthsub-desc' => 'Къошулгъанлагъа [[Special:YouTubeAuthSub|видео джюклерге]] мадар береди',
+	'youtubeauthsub_info' => 'YouTube сайтха видеону джюклер ючюн эмда аны бетге салыр ючюн, бу билгилени толтуругъуз:',
 	'youtubeauthsub_title' => 'Башлыкъ',
 	'youtubeauthsub_description' => 'Ачыкълау',
+	'youtubeauthsub_password' => 'YouTube пароль',
+	'youtubeauthsub_username' => 'YouTube-ха къошулуучуну аты',
+	'youtubeauthsub_keywords' => 'Ачхыч сёзле',
 	'youtubeauthsub_category' => 'Категория',
+	'youtubeauthsub_submit' => 'Джибер',
+	'youtubeauthsub_clickhere' => 'YouTube-ха кирир ючюн былайгъа бас',
+	'youtubeauthsub_tokenerror' => 'Авторизацияны токенин къурауда халат, бетни джангыртыб кёрюгюз.',
+	'youtubeauthsub_success' => "Алгъышлайбыз!
+Видеогъуз джюкленди.
+<a href='http://www.youtube.com/watch?v=$1'>Видеогузгъа къарагъыз</a>.
+YouTube, видеогъузну ишлетир ючюн бир кесек заман алыргъа боллукъду, ол себебден бусагъатда ачалмазгъа болурсуз.
+
+Викиге видеогъузну салыр ючюн, бу кодну бетге салыкъыз:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_uploadhere' => 'Видеогъуз былайдан джюкленсин:',
 	'youtubeauthsub_uploadbutton' => 'Джюкле',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
