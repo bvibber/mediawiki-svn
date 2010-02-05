@@ -229,23 +229,30 @@ baseRemoteSearch.prototype = {
 		
 		options.style = '';
 		if( options.height ){
-			options.style += 'height:' + options.height + 'px;';
+			options.style += 'height:' + parseInt( options.height ) + 'px;';
 		}
 		if( options.width ){
-			options.style += 'width:' + options.width + 'px;';							
+			options.style += 'width:' + parseInt( options.width ) + 'px;';							
 		}
 		if ( resource.mime.indexOf( 'image' ) != -1 )
 			outHtml = this.getImageEmbedHTML( resource, options );
 			
 		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' || resource.mime == 'audio/ogg' ) {
 			// Setup the attribute html 
-			// NOTE: Can't use jQuery builder for video element, ( non html5 don't work consistently ) 
+			// NOTE: Can't use jQuery builder for video element, ( does not work consistently ) 
 			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-			ahtml+=	'src="' + resource.src + '" ' +
-					'class="' + mw.getConfig( 'skinName' ) + '" ' + 
+			ahtml+=	'src="' +  mw.escapeQuotesHTML( resource.src ) + '" ' +
+					//'class="' + mw.getConfig( 'skinName' ) + '" ' +
+					// mannualy set kskin (while mw.setConfig is not avaliable on all pages )
+					'class="kskin" '+   					
 					'style="' + options.style + '" ' +
-					'poster="' +  resource.poster + '" '+
-					'type="' + resource.mime + '" ';
+					'poster="' +   mw.escapeQuotesHTML( resource.poster ) + '" '+
+					'type="' +  mw.escapeQuotesHTML( resource.mime ) + '" ';
+					
+			// Add the api title key if avaliable:
+			if( resource.titleKey ){
+				'apiTitleKey="' +  mw.escapeQuotesHTML( resource.titleKey ) + '" ';
+			}			
 			
 			if (  resource.mime == 'application/ogg' || resource.mime == 'video/ogg'  ) {
 				outHtml = '<video ' + ahtml + '></video>';
@@ -266,20 +273,45 @@ baseRemoteSearch.prototype = {
 		mw.log( "ERROR:: no embed code for mime type: " + resource.mime );	
 		return 'Error missing embed code for: ' + escape( resource.mime );
 	},
+	
+	/**
+	 * Wrap output html with resource description links
+	 * @param {Object} resource Resource object
+	 * @param {Object} options Resource description options
+	 * @param {String} outHtml Html to be wrapped. 
+	 */
 	wrapHtmlDesc: function( resource, options, outHtml ) {
 		var stripedTitle =  resource.title.replace( /File:|Image:|.jpg|.png|.ogg|.ogv|.oga|.svg/ig, '');
 		
-		var titleLink = '<a href="' + resource.link + '" title="' + stripedTitle + '">' +
-							 stripedTitle + '</a>';
-		var cpTitle = gM('rsd-' + this.provider.id + '-title');
-		var remoteProviderLink = '<a href="' + this.provider.homepage + '" '+
-									'title="' + cpTitle + '">' +
-									cpTitle + '</a>'; 									
-		return '<div class="mw-imported-resource" '+ 
-				'style="width:' + options.width + 'px;">' +
-					outHtml +
-					gM( 'mwe-import-description',  [titleLink, remoteProviderLink]) + 
-		 		'</div>';
+		var $titleLink = $j( '<a />' )
+		.attr({
+			'title' : stripedTitle,
+			'href' : resource.link
+		})
+		.text( stripedTitle )
+		
+		var providerTitle = gM('rsd-' + this.provider.id + '-title');
+		
+		$providerLink = $j( '<a />')
+		.attr({			
+			'href' : this.provider.homepage,
+			'title' : providerTitle
+		})
+		.text( providerTitle )
+		 									
+		$importResourceDiv = $j('<div />')
+		.addClass ( "mw-imported-resource" )
+		.css({
+			'width':parseInt( options.width ) + 'px'
+		})
+		.html(
+			outHtml
+		)
+		.append(
+			gM( 'mwe-import-description',  [$titleLink, $providerLink]) 
+		)
+		// return the $importResourceDiv html:
+		return $j('<div />').append( $importResourceDiv ).html();
 	},
 	/**
 	* Get the embed html specifically for an image type resource Object.
@@ -289,18 +321,35 @@ baseRemoteSearch.prototype = {
 	*/
 	getImageEmbedHTML:function( resource, options ) {
 		// if crop is null do base output: 
-		var imgHtml = '<img ';
-		imgHtml += ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-		imgHtml += ' src="' + resource.edit_url  + '" '+
-					'style="' + options.style + '" />';
-		if ( resource.crop == null )
-			return imgHtml;
-		// Else do crop output:	
-		return '<div style="width:' + resource.crop.w + 'px;height: ' + resource.crop.h + 'px;overflow:hidden;position:relative">' +
-					'<div style="position:relative;top:-' + resource.crop.y + 'px;left:-' + resource.crop.x + 'px">' +
-						imgHtml +
-					'</div>' +
-				'</div>';
+		var $img = $j('<img />')
+		.attr({
+			'src' : resource.edit_url,
+			'style' : options.style 
+		});		
+		if( options['id'] ){
+			$img.attr( 'id', options['id'] );
+		}
+		if ( resource.crop == null ){
+			return  $img.html();
+		}
+		// Else do crop output:
+		$cropHtml = $j('<div />')
+			.css({
+				'width' : resource.crop.w,
+				'height' : resource.crop.h,
+				'overflow' : 'hidden',				
+				'position' : 'relative'				
+			})
+			.append(
+				$j('<div />')
+				.css({
+					'position' : 'relative',
+					'top' : '-' + resource.crop.y,
+					'left': '-' + resource.crop.x,					
+				})
+				.append( $img )
+			)
+		return $j('<div />').append( $cropHtml ).html();
 	},
 	
 	/**

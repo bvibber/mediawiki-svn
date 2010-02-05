@@ -46,6 +46,7 @@ mw.addMessages( {
 	"mwe-return-search-results" : "Return to search results",
 	"mwe-importing_asset" : "Importing asset",
 	"mwe-preview_insert_resource" : "Preview insert of resource: $1",
+	"mwe-do-more-modification" : "Do More Modification",
 	"mwe-checking-resource" : "Checking for resource",
 	"mwe-resource-needs-import" : "Resource $1 needs to be imported to $2",
 	"mwe-ftype-svg" : "SVG vector file",
@@ -749,13 +750,15 @@ mw.RemoteSearchDriver.prototype = {
 	createDialogContainer: function() {
 		mw.log( "createDialogContainer" );
 		var _this = this;
+		
+		_this.target_container = '#rsd_modal_target';
+		
 		// add the parent target_container if not provided or missing
 		if ( _this.target_container && $j( _this.target_container ).length != 0 ) {
-			mw.log(  'dialog already exists' );
-			return;
+			//remove old dialog
+			$j( _this.target_container ).remove();
 		}
-
-		_this.target_container = '#rsd_modal_target';
+		
 		$j( 'body' ).append(
 			$j('<div>')
 				.attr({
@@ -1930,7 +1933,7 @@ mw.RemoteSearchDriver.prototype = {
 				}
 				var embedHtml = resource.pSobj.getEmbedHTML( resource, 
 					{ 
-						'id' : 'embed_vid' 
+						'id' : 'embed_vid'						
 					} 
 				);				
 				mw.log( 'append html: ' + embedHtml );
@@ -2475,6 +2478,7 @@ mw.RemoteSearchDriver.prototype = {
 						return callback();
 					}
 				} );
+				
 				// Get the edit token
 				mw.getToken( _this.upload_api_target, function( token ) {
 					uploader.editToken = token;
@@ -2542,9 +2546,11 @@ mw.RemoteSearchDriver.prototype = {
 				} );
 				
 			// Update cancel button
-			$j( buttonPaneSelector )
-				.append( '<a href="#" class="preview_close">Do More Modification</a>' )
-				.children( '.preview_close' )
+			$j( buttonPaneSelector ).append( 
+				$j('<a />')
+				.attr('href', "#")
+				.addClass( "preview_close" )
+				.text( gM('mwe-do-more-modification' ) )
 				.click( function() {
 					$j( '#rsd_preview_display' ).remove();
 					// Restore title:
@@ -2552,7 +2558,8 @@ mw.RemoteSearchDriver.prototype = {
 					// Restore buttons (from the clipEdit object::)
 					_this.clipEdit.updateInsertControlActions();
 					return false;
-				} );
+				})
+			);
 
 			// Get the preview wikitext
 			var embed_code = _this.getEmbedCode( resource );

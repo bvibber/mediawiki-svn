@@ -33,14 +33,23 @@ mw.addMessages({
 });
 
 var default_bui_options = {
-	'api_url': null,
-	'parent_uploader': null,
-	'form': null,
-	'done_upload_cb': null,
-	'form_selector': null,
+	// Target api to upload to
+	'api_url' : null,
+	
+	// The selected form
+	'form' : null,
+	
+	// Callback for once the upload is done
+	'done_upload_cb' : null,
+	
+	// A selector for the form target
+	'form_selector' : null,
 
 	// Default upload mode is 'api'
-	'upload_mode': 'api'
+	'upload_mode' : 'api',
+	
+	// Callback for modifing form data on submit  
+	'onsubmit_cb' : null
 
 }
 mw.BaseUploadInterface = function( options ) {
@@ -48,13 +57,28 @@ mw.BaseUploadInterface = function( options ) {
 }
 
 mw.BaseUploadInterface.prototype = {
-	parent_uploader: false,
-	formData: {}, // The form data to be submitted
+	
+	// The form data to be submitted	
+	formData: {}, 
+	
+	// Upload warning session key, for continued uploads 
 	warnings_sessionkey: null,
+	
+	// If chunks uploading is supported
 	chunks_supported: true,
+	
+	// If the existing form should be used to post to the api
+	// Since file selection can't be "moved" we have to use the exising
+	// form and just submit it to a diffrent target  
 	form_post_override: false,
+	
+	// http copy by url mode flag
 	http_copy_upload : null,
+	
+	// If the upload action is done
 	action_done: false,
+	
+	// Edit token for upload
 	editToken: false,
 
 	// The DOM node for the upload form
@@ -62,6 +86,7 @@ mw.BaseUploadInterface.prototype = {
 
 	/**
 	 * Object initialisation
+	 * @param {Object} options BaseUpload options see default_bui_options
 	 */
 	init: function( options ) {
 		if ( !options )
@@ -90,7 +115,7 @@ mw.BaseUploadInterface.prototype = {
 		if ( typeof( this.orig_onsubmit ) == 'undefined' && this.form.onsubmit ) {
 			this.orig_onsubmit = this.form.onsubmit;
 		}
-	
+		
 		// Set up the submit action:
 		$j( this.form ).submit( function() {	
 			mw.log( "FORM SUBMIT::" );
@@ -116,8 +141,13 @@ mw.BaseUploadInterface.prototype = {
 				return false;
 			}
 		}
+		// Call the onsubmit_cb option if set:
+		if( this.onsubmit_cb && typeof this.onsubmit_cb == 'function' ){
+			this.onsubmit_cb();
+		}
+		
 		// Remap the upload form to the "api" form:
-		this.remapFormToApi();
+		this.remapFormToApi();			
 		
 		// Check for post action override
 		if ( this.form_post_override ) {
@@ -780,6 +810,11 @@ mw.BaseUploadInterface.prototype = {
 	/**
 	 * Process the result of an action=upload API request. Display the result
 	 * to the user.
+	 * 
+	 * @param {Object} apiRes Api result object
+	 * @return {Boolean}
+	 * 	false if api error
+	 *  true if success & interface has been updated
 	 */
 	processApiResult: function( apiRes ) {
 		var _this = this;

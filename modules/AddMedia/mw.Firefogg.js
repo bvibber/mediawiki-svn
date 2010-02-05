@@ -1076,6 +1076,13 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 						var apiResult = null;
 					}
 				}
+				//Check for scuccess:
+				if( apiResult && _this.isApiSuccess( apiResult ) ){
+					if( _this.processApiResult ( apiResult ) ){
+						return true;
+					}
+				}
+				
 				if ( apiResult && !_this.isApiSuccess( apiResult ) ) {
 					// Show the error and stop the upload
 					_this.showApiError( apiResult );
@@ -1104,7 +1111,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				mw.log( 'Error:firefogg upload error: ' + _this.fogg.state );
 				return ;
 			}
-			 
+			// Chunk upload mode:
 			if ( apiResult && apiResult.resultUrl ) {
 				var buttons = {};
 				buttons[ gM( 'mwe-go-to-resource' ) ] =  function() {

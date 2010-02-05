@@ -16,6 +16,7 @@ RemoteMwSequencer = function( options ){
 RemoteMwSequencer.prototype = {
 	/**
 	* @constructor
+	* @param {Object} options RemoteMwSequencer options
 	*/
 	init: function( options ) {
 		this.action = ( options.action )? options.action : this.action;
