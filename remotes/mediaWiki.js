@@ -7,7 +7,7 @@ var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = 'r90';
 var mwUseScriptLoader = true;
 
-//Log the mwRemote version ( will determine what version of js we get )
+// Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
 	window.console.log( 'mwEmbed:remote:' + mwRemoteVersion );
 }
@@ -301,8 +301,8 @@ function getRemoteEmbedPath() {
 */ 
 function mwGetReqArgs() {
 	var rurl = '';
-	//if ( mwReqParam['debug'] )
-	//	rurl += 'debug=true&';
+	if ( mwReqParam['debug'] )
+		rurl += 'debug=true&';
 
 	if ( mwReqParam['uselang'] )
 		rurl += 'uselang=' + mwReqParam['uselang'] + '&';

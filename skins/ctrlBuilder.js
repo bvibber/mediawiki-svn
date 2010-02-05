@@ -178,25 +178,41 @@ ctrlBuilder.prototype = {
 				function() {
 					if ( $j( '#gnp_' + embedPlayer.id ).length == 0 ) {
 						var toppos = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 25 : 10;
-						$j( this ).append( '<div id="gnp_' + embedPlayer.id + '" class="ui-state-highlight ui-corner-all" ' +
-							'style="position:absolute;display:none;background:#FFF;color:#111;top:' + toppos + 'px;left:10px;right:10px;">' +
-							gM( 'mwe-for_best_experience' ) +
-						'<br><input id="ffwarn_' + embedPlayer.id + '" type=\"checkbox\">' +
-							gM( 'mwe-do_not_warn_again' ) +
-						'</div>' );
-						$j( '#ffwarn_' + embedPlayer.id ).click( function() {
-							if ( $j( this ).is( ':checked' ) ) {
-								// Set up a cookie for 7 days:
-								$j.cookie( 'show_player_warning', false, { expires: 7 } );
-								// Set the current instance
-								mw.setConfig( 'show_player_warning', false );
-								$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
-							} else {
-								mw.setConfig( 'show_player_warning', true );
-								$j.cookie( 'show_player_warning', true );
-							}
-
-						} );
+						$j( this ).append( 
+							$j('<div />')
+							.attr({
+								'id': "gnp_" + embedPlayer.id,								
+							})
+							.addClass('ui-state-highlight ui-corner-all')
+							.css({
+								'position':'absolute',
+								'display':'none',
+								'background':'#FFF',
+								'color':'#111',
+								'top' : toppos + 'px',
+								'left' : '10px',
+								'right' : '10px'
+							})
+							.html( gM( 'mwe-for_best_experience' ) ),							 
+							$j('<br />'),
+							$j('<input />')
+							.attr({
+								'id' : 'ffwarn_' + embedPlayer.id,
+							})
+							.text( gM( 'mwe-do_not_warn_again' ) )
+							.click( function() {
+								if ( $j( this ).is( ':checked' ) ) {
+									// Set up a cookie for 7 days:
+									$j.cookie( 'show_player_warning', false, { expires: 7 } );
+									// Set the current instance
+									mw.setConfig( 'show_player_warning', false );
+									$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
+								} else {
+									mw.setConfig( 'show_player_warning', true );
+									$j.cookie( 'show_player_warning', true );
+								}
+							} )
+						);
 					}
 					// Only show the warning if cookie and config are true
 					if ( mw.getConfig( 'show_player_warning' ) === true  )

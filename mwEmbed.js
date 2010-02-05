@@ -91,14 +91,7 @@ var mwDefaultConf = {
 	mw.valid_skins = [ 'mvpcf', 'kskin' ];
 	
 	// The version of mwEmbed
-	mw.version = '1.1';
-	
-	/**
-	* Some global containers flags 
-	*/	
-	mw.skin_list = new Array();
-	mw.init_done = false;
-	mw.cb_count = 0;		
+	mw.version = '1.1';	
 
 	/**
 	* Configuration System: 
@@ -109,7 +102,7 @@ var mwDefaultConf = {
 	// Local scope configuration var:
 	var mwConfig = { };
 	
-	// Stores global callbacks
+	// Stores global callbacks for script-loader loading
 	var mwLoadDoneCB = { };
 	
 	//Local scope mwUserConfig var. Stores user configuration 
