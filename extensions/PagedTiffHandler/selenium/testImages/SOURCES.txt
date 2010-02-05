@@ -12,7 +12,8 @@ Venice.jpg
 
 ----------
 
-caspian.tif taken from libtiff test images. Obviously they are under no license. you can obtain the
+caspian.tif
+pc260001.tif taken from libtiff test images. Obviously they are under no license. you can obtain the
             whole set of test images from http://www.libtiff.org/images.html
 			
 ----------
