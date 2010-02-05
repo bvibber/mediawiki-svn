@@ -20,7 +20,7 @@ var mwUploadHelper = {
 					'api_url': wgServer + wgScriptPath + '/api.php',
 					'form_rewrite': true,
 					// MediaWiki API supports chunk uploads: 
-					'enable_chunks' : true, 
+					'enable_chunks' : false, 
 					'form_selector': mwUploadFormSelector,
 					'new_source_cb': function( orgFilename, oggName ) {
 						$j( '#wpDestFile' ).val( oggName );

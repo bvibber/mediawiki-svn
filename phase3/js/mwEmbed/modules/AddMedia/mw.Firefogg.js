@@ -442,11 +442,21 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		
 		// Add the preview button and canvas
 		$j( '#upProgressDialog' ).append(
-			'<div style="clear:both;height:3em"/>' +
-			buttonHtml +
-			'<div style="padding:10px;">' +
-				'<canvas style="margin:auto;" id="fogg_preview_canvas" />' +
-			'</div>'
+			$j('<div />')
+			.css({
+				"clear" : 'both',
+				'height' : '3em'
+			}),
+			buttonHtml,
+			$j('<div />')
+			.css({
+				"padding" : '10px'
+			})
+			.append(
+				$j( '<canvas />' )
+				.css('margin', 'auto' )
+				.attr( 'id', 'fogg_preview_canvas')
+			)
 		);
 
 		// Set the initial state
@@ -494,13 +504,19 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		var _this = this;
 		// Set up the hidden video to pull frames from
 		if( $j( '#fogg_preview_vid' ).length == 0 )
-			$j( 'body' ).append( '<video id="fogg_preview_vid" style="display:none"></video>' );
+			$j( 'body' ).append( 
+				$j('<video />')
+				.attr( 'id', "fogg_preview_vid")
+				.css( "display", 'none' )
+			);
 		var v = $j( '#fogg_preview_vid' ).get( 0 );
 
 		function seekToEnd() {
 			var v = $j( '#fogg_preview_vid' ).get( 0 );
-			// TODO: document arbitrary 0.4s constant
-			v.currentTime = v.duration - 0.4;
+			if( v ){
+				// Seek to near the end of the clip ( arbitrary -.4 seconds from end )
+				v.currentTime = v.duration - 0.4;
+			}
 		}
 		function renderFrame() {
 			var v = $j( '#fogg_preview_vid' ).get( 0 );
@@ -773,6 +789,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 
 			mw.log( 'base setupAutoEncoder::' + this.getSourceFileInfo().contentType  +
 				' passthrough:' + settings['passthrough'] );
+				
 			this.current_encoder_settings = settings;
 		}
 		return this.current_encoder_settings;
@@ -791,7 +808,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	},
 
 	isOggFormat: function() {
-		var contentType = this.getSourceFileInfo().contentType;
+		var contentType = this.getSourceFileInfo().contentType;		
 		return ( contentType.indexOf("video/ogg") != -1 
 			|| contentType.indexOf("application/ogg") != -1 );
 	},
@@ -824,7 +841,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		// If Firefogg is disabled or doing an copyByUrl upload, just invoke the parent method
 		if( !this.getFirefogg() || this.isCopyUpload() ) {
 			_this.pe_doUpload();
-			return;
+			return ;
 		}
 		// Get the input form data into an array
 		mw.log( 'get this.formData ::' );
@@ -839,9 +856,36 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 					this.formData[ data[i]['name'] ] = data[i]['value'];
 				}
 			}
-		}	
+		}		
 		
-		
+			// Get the edit token from formData if it's not set already
+		if ( !_this.editToken && _this.formData['token'] ) {
+			_this.editToken = _this.formData['token'];
+		}
+
+		if( _this.editToken ) {
+			mw.log( 'we already have an edit token: ' + _this.editToken );
+			_this.doUploadWithFormData();
+			return;
+		}
+
+		// No edit token. Fetch it asynchronously and then do the upload.
+		mw.getToken( _this.api_url, 'File:'+ _this.formData['filename'], function( editToken ) {
+			if( !editToken || editToken == '+\\' ) {
+				_this.updateProgressWin( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
+				return false;
+			}
+			_this.editToken = editToken;
+			_this.doUploadWithFormData();
+		} );
+				
+	},
+	
+	/** 
+	 * Internal function called once the token and form data is avaliable
+	 */
+	doUploadWithFormData: function(){
+		var _this = this;
 		// We can do a chunk upload
 		if(  _this.upload_mode == 'post'  && _this.enable_chunks ){
 			_this.doChunkUpload();
@@ -853,16 +897,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				},
 				function /* onDone */ () {
 					mw.log( 'done with encoding do POST upload:' + _this.form.action );
-					// ignore warnings & set source type
-					//_this.formData[ 'wpIgnoreWarning' ]='true';
-					_this.formData['wpSourceType'] = 'upload';
-					_this.formData['action'] = 'submit';
-					
-					// wpUploadFile is set by firefogg
-					delete _this.formData['file'];
-
-					_this.fogg.post( _this.editForm.action, 'wpUploadFile', 
-						JSON.stringify( _this.formData ) );
+										
+					var uploadRequest = _this.getUploadApiRequest();					
+					_this.fogg.post( _this.api_url, 'file', JSON.stringify( uploadRequest ) );
+						
 					_this.doUploadStatus();
 				}
 			);
@@ -894,55 +932,52 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				_this.formData['filename'] = fileName.replace( extreg, '.ogg' );
 			}
 		}
-
-		// Get the edit token from formData if it's not set already
-		if ( !_this.editToken && _this.formData['token'] ) {
-			_this.editToken = _this.formData['token'];
-		}
-
-		if( _this.editToken ) {
-			mw.log( 'we already have an edit token: ' + _this.editToken );
-			_this.doChunkUploadWithFormData();
-			return;
-		}
-
-		// No edit token. Fetch it asynchronously and then do the upload.
-		mw.getToken( _this.api_url, 'File:'+ _this.formData['filename'], function( editToken ) {
-			if( !editToken || editToken == '+\\' ) {
-				_this.updateProgressWin( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
-				return false;
-			}
-			_this.editToken = editToken;
-			_this.doChunkUploadWithFormData();
-		} );
+		_this.doChunkUploadWithFormData();
 	},
-
+	
 	/**
-	 * Internal function called from doChunkUpload() when the edit token is available
+	 * Get the uplaod api request object from _this.formData
+	 * 
+	 * @param {Object} options Options 
+	 */
+	getUploadApiRequest: function( options ){
+		var _this = this;
+		var request = {
+			'action': 'upload',
+			'format': 'json',
+			'filename': _this.formData['filename'],
+			'comment': _this.formData['comment'],			
+		};
+		if( options && options.enable_chunks == true ){
+			request[ 'enablechunks' ] = 'true';
+		}
+
+		if ( _this.editToken ){
+			request['token'] = this.editToken;
+		}
+
+		if ( _this.formData['watch'] ){
+			request['watch'] = _this.formData['watch'];
+		}
+
+		if ( _this.formData['ignorewarnings'] ){
+			request['ignorewarnings'] = _this.formData['ignorewarnings'];
+		}
+		
+		return request;
+	},
+	
+	/**
+	 * Internal function called from doChunkUpload() when form data is available
 	 */
 	doChunkUploadWithFormData: function() {
 		var _this = this;
 		mw.log( "firefogg::doChunkUploadWithFormData: "  + _this.editToken );
-		// Build the API URL
-		var aReq = {
-			'action': 'upload',
-			'format': 'json',
-			'filename': _this.formData['filename'],
-			'comment': _this.formData['comment'],
-			'enablechunks': 'true'
-		};
-
-		if ( _this.editToken )
-			aReq['token'] = this.editToken;
-
-		if ( _this.formData['watch'] )
-			aReq['watch'] = _this.formData['watch'];
-
-		if ( _this.formData['ignorewarnings'] )
-			aReq['ignorewarnings'] = _this.formData['ignorewarnings'];
+		// get the upload api request; 
+		var uploadRequest = this.getUploadApiRequest( { 'enable_chunks' : true } );
 
 		var encoderSettings = this.getEncoderSettings();
-		mw.log( 'do fogg upload/encode call: ' + _this.api_url + ' :: ' + JSON.stringify( aReq ) );
+		mw.log( 'do fogg upload/encode call: ' + _this.api_url + ' :: ' + JSON.stringify( uploadRequest ) );
 		mw.log( 'foggEncode: ' + JSON.stringify( encoderSettings ) );
 		_this.fogg.upload( JSON.stringify( encoderSettings ), _this.api_url, 
 			JSON.stringify( aReq ) );
@@ -959,11 +994,18 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	 *
 	 * Asynchronous, returns immediately.
 	 */
-	doEncode : function( progressCallback, doneCallback ) {
+	doEncode: function( progressCallback, doneCallback ) {
 		var _this = this;
 		_this.action_done = false;
 		_this.displayProgressOverlay();
+		
 		var encoderSettings = this.getEncoderSettings();
+		
+		// Check if encoderSettings passthrough is on ( then skip the encode )		
+		if( encoderSettings['passthrough'] == true){
+			doneCallback();
+		}
+		
 		mw.log( 'doEncode: with: ' +  JSON.stringify( encoderSettings ) );
 		_this.fogg.encode( JSON.stringify( encoderSettings ) );
 
@@ -981,7 +1023,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 			// Update progress
 			progressCallback( _this.fogg.progress() );
 
-			//loop to get new status if still encoding
+			// Loop to get new status if still encoding
 			if ( _this.fogg.state == 'encoding' ) {
 				setTimeout( encodingStatus, 500 );
 			} else if ( _this.fogg.state == 'encoding done' ) {
@@ -1047,21 +1089,22 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 					_this.renderPreview();
 				}
 			}
-
+			mw.log("update progress: " + _this.fogg.progress() + ' state: ' + _this.fogg.state );
 			// Update the progress bar
 			_this.updateProgress( _this.fogg.progress() );
 
 			// If we're still uploading or encoding, continue to poll the status
 			if ( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading' ) {
 				setTimeout( uploadStatus, 100 );
-				return;
+				return true;
 			}
 
 			// Upload done?
 			if ( -1 == $j.inArray( _this.fogg.state, [ 'upload done', 'done', 'encoding done' ] ) ) {
 				mw.log( 'Error:firefogg upload error: ' + _this.fogg.state );
-				return;
+				return ;
 			}
+			 
 			if ( apiResult && apiResult.resultUrl ) {
 				var buttons = {};
 				buttons[ gM( 'mwe-go-to-resource' ) ] =  function() {
@@ -1092,8 +1135,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 
 	/**
 	 * This is the cancel button handler, referenced by getCancelButton() in the parent.
+	 * @param {Element} dialogElement Dialog element that was "canceled"  
 	 */
-	onCancel: function( dlElm ) {
+	onCancel: function( dialogElement ) {
 		if ( !this.have_firefogg ) {
 			return this.pe_cancel_action();
 		}
@@ -1104,8 +1148,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				alert( 'sorry we do not yet support cancel on windows' );
 			} else {
 				this.action_done = true;
-				this.fogg.cancel();
-				$j( dlElm ).empty().dialog( 'close' );
+				this.fogg.cancel();				
+				$j( dialogElement ).empty().dialog( 'close' );
 			}
 		}
 		// Don't follow the # link:

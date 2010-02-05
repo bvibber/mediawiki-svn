@@ -147,7 +147,7 @@ var default_form_options = {
 						'form_rewrite': true,
 											
 						// MediaWiki API supports chunk uploads: 
-						'enable_chunks' : true,
+						'enable_chunks' : false,
 											
 						'form_selector' : '#suf_upload',
 						'new_source_cb' : function( orgFilename, oggName ) {

@@ -104,7 +104,7 @@ mw.BaseUploadInterface.prototype = {
 	},
 
 	/**
-	 * onsubmit handler for the upload form
+	 * onSubmit handler for the upload form
 	 */
 	onSubmit: function() {
 		var _this = this;
@@ -257,12 +257,26 @@ mw.BaseUploadInterface.prototype = {
 
 		// Add API action
 		if ( $form.find( "[name='action']" ).length == 0 ){
-			$form.append( '<input type="hidden" name="action" value="upload">' );
+			$form.append( 
+				$j('<input />')
+				.attr({ 
+					'type': "hidden",
+					'name' : "action", 
+					'value' : "upload"
+				})
+			)
 		}
 
 		// Add JSON response format
 		if ( $form.find( "[name='format']" ).length == 0 ){
-			$form.append( '<input type="hidden" name="format" value="jsonfm">' );
+			$form.append( 
+				$j( '<input />' )
+				.attr({
+					'type' : "hidden",
+					'name' : "format",
+					'value' : "jsonfm"
+				})
+			) 
 		}
 
 		// Map a new hidden form
@@ -910,7 +924,7 @@ mw.BaseUploadInterface.prototype = {
 			beforeclose: function( event, ui ) {
 				// If the upload is not complete, ask the user if they want to cancel
 				if ( event.button == 0 && _this.action_done === false ) {
-					_this.onCancel();
+					_this.onCancel( this );
 					return false;
 				} else {
 					// Complete already, allow close
@@ -955,13 +969,13 @@ mw.BaseUploadInterface.prototype = {
 	/**
 	 * UI cancel button handler.
 	 * Show a dialog box asking the user whether they want to cancel an upload.
-	 * FIXME: doesn't work at all.
+	 * @param Element dialogElement Dialog element to be canceled 
 	 */
-	onCancel: function( dlElm ) {
+	onCancel: function( dialogElement ) {
 		//confirm:
 		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
 			// NOTE: (cancel the encode / upload)
-			$j( dlElm ).dialog( 'close' );
+			$j( dialogElement ).dialog( 'close' );
 		}
 	}
 };
