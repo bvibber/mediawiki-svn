@@ -175,15 +175,16 @@ ctrlBuilder.prototype = {
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.doNativeWarningCheck() ) {
 			$j( '#dc_' + embedPlayer.id ).hover(
-				function() {
+				function() {					
 					if ( $j( '#gnp_' + embedPlayer.id ).length == 0 ) {
 						var toppos = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 25 : 10;
+						
 						$j( this ).append( 
 							$j('<div />')
 							.attr({
-								'id': "gnp_" + embedPlayer.id,								
+								'id': "gnp_" + embedPlayer.id								
 							})
-							.addClass('ui-state-highlight ui-corner-all')
+							.addClass( 'ui-state-highlight ui-corner-all' )
 							.css({
 								'position':'absolute',
 								'display':'none',
@@ -193,13 +194,22 @@ ctrlBuilder.prototype = {
 								'left' : '10px',
 								'right' : '10px'
 							})
-							.html( gM( 'mwe-for_best_experience' ) ),							 
-							$j('<br />'),
-							$j('<input />')
+							.html( gM( 'mwe-for_best_experience' ) )
+						);
+						$target_warning = $j( '#gnp_' + embedPlayer.id );			
+											
+						$target_warning.append( 					 
+							$j('<br />')
+						);
+							
+						
+						$target_warning.append( 
+							$j( '<input />' )
 							.attr({
 								'id' : 'ffwarn_' + embedPlayer.id,
-							})
-							.text( gM( 'mwe-do_not_warn_again' ) )
+								'type' : "checkbox",
+								'name' : 'ffwarn_' + embedPlayer.id
+							})							
 							.click( function() {
 								if ( $j( this ).is( ':checked' ) ) {
 									// Set up a cookie for 7 days:
@@ -211,12 +221,18 @@ ctrlBuilder.prototype = {
 									mw.setConfig( 'show_player_warning', true );
 									$j.cookie( 'show_player_warning', true );
 								}
-							} )
+							} )							
 						);
-					}
+						$target_warning.append( 
+							$j('<span />')
+							.text( gM( 'mwe-do_not_warn_again' ) )
+						)
+					}				
+																
 					// Only show the warning if cookie and config are true
-					if ( mw.getConfig( 'show_player_warning' ) === true  )
+					if ( mw.getConfig( 'show_player_warning' ) === true  ){
 						$j( '#gnp_' + embedPlayer.id ).fadeIn( 'slow' );
+					}
 				},
 				function() {
 					$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );

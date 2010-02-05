@@ -45,6 +45,7 @@ mw.addMessages( {
 	"mwe-credits" : "Credits",
 	"mwe-clip_linkback" : "Clip source page",
 	"mwe-chose_player" : "Choose video player",
+	"mwe-no-player" : "No player available for $1", 
 	"mwe-share_this_video" : "Share this video",
 	"mwe-video_credits" : "Video credits",
 	"mwe-menu_btn" : "Menu",
@@ -2247,7 +2248,7 @@ mw.EmbedPlayer.prototype = {
 			.css({
 				'position' : 'relative',
 				'width' : this.getPlayerWidth() + 'px',
-				'height' : this.getPlayerHeight() + 'px',
+				'height' : this.getPlayerHeight() + 'px'
 			})
 			.attr({
 				'id' : 'img_thumb_' + this.id,
@@ -2533,42 +2534,58 @@ mw.EmbedPlayer.prototype = {
 		}	
 		// Get id (in case where we have a parent container)
 		var _this = this;
-		var o = '';
-		o += '<h2>' + gM( 'mwe-chose_player' ) + '</h2>';
+		
+		$target
+		.empty()
+		.append( 
+			$j( '<h2 />' )
+			.text( gM( 'mwe-chose_player' )  )
+		);
+		 		
 		var _this = this;
 		$j.each( this.mediaElement.getPlayableSources(), function( source_id, source ) {
 			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );
 
 			var is_selected = ( source == _this.mediaElement.selected_source );			
 			
-			o += '<h2>' + source.getTitle() + '</h2>';
+			$target.append( 
+				$j( '<h2 />' )
+				.text( source.getTitle() )
+			);
 			
 			if ( playable ) {
-				o += '<ul>';
+				$playerList = $j('<ul />');
 				// output the player select code:
 				var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
 
-				for ( var i = 0; i < supporting_players.length ; i++ ) {
+				for ( var i = 0; i < supporting_players.length ; i++ ) {				
+					var $playerLink = $j( '<a />')
+						.attr({
+							'href' : '#',
+							'rel' : 'sel_source',
+							'id' : 'sc_' + source_id + '_' + supporting_players[i].id 
+						})
+						.text( supporting_players[i].getName() );
+					
 					if ( _this.selected_player.id == supporting_players[i].id && is_selected ) {
-						o += '<li>' +
-								'<a href="#" class="active" rel="sel_source" id="sc_' + source_id + '_' + supporting_players[i].id + '">' +
-									supporting_players[i].getName() +
-								'</a>' +
-							'</li>';
-					} else {
-		                o += '<li>' +
-							'<a href="#" rel="sel_source" id="sc_' + source_id + '_' + supporting_players[i].id + '">' +
-								supporting_players[i].getName() +
-							'</a>' +
-						'</li>';
+						$playerLink						
+						.addClass('active' );												
 					}
+					$playerList.append(
+						$j( '<li />' ).append(
+							$playerLink
+						)
+					);
 				}
-				o += '</ul>';
+				
+				// Append the player list: 
+				$target.append( $playerList );
+				
 			} else {
-				o += source.getTitle() + ' - no player available';
+				// No player avaliable: 
+				$target.append( gM( 'mwe-no-player',  source.getTitle() ) ) 
 			}
-		} );		
-		$target.html( o );
+		} );
 
 		// Set up the click bindings:
 		$target.find( "[rel='sel_source']" ).each( function() {
@@ -2621,7 +2638,7 @@ mw.EmbedPlayer.prototype = {
 		$target.append( 
 			$j('<div />')
 			.css({
-				"color":"white",
+				"color":"white"
 			})
 		);
 		var $mediaList = $j( '<ul />' );
@@ -2631,7 +2648,7 @@ mw.EmbedPlayer.prototype = {
 				var $dl_line = $j( '<li />').append(
 					$j('<a />').
 					css({
-						"color" : "white",						
+						"color" : "white"						
 					})
 					.attr( 'href', source.getSrc())
 					.text(  source.getTitle() )
@@ -2710,6 +2727,11 @@ mw.EmbedPlayer.prototype = {
 		 	_this.pause();
 	   	 } )
 	   	 .attr( 'title', gM( 'mwe-pause_clip' ) );
+	   	 
+	   	 // Do play tracking if enabled
+	   	 if( mw.getConfig( 'playTracking' ) ){
+	   	 	this.doPlayTracking(); 
+	   	 }
 	   	 
 	   	 //Run play hook: 
 	   	 this.runHook( 'play' );   
@@ -2799,7 +2821,7 @@ mw.EmbedPlayer.prototype = {
 	* Base Embed mute
 	* 
 	* Handles interface updates for toggling mute.
-	*  Plug-in / player interface must handle updateing the actual media player
+	*  Plug-in / player interface must handle the actual media player update
 	*/
 	toggleMute:function() {		
 		if ( this.muted ) {
@@ -2816,6 +2838,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Abstract Update volumen Method must be overided by plug-in / player interface
+	* @param {float} prec Percet of full volume
 	*/
 	updateVolumen:function( perc ) {
 		mw.log( 'update volume not supported with current playback type' );
@@ -2876,6 +2899,23 @@ mw.EmbedPlayer.prototype = {
 		return this.thumbnail_disp;
 	},
 	
+	/**
+	* Checks if we are monitoring play requests 
+	* presently this function is mediaWiki api specific. 
+	*/ 
+	doPlayTracking: function(){		
+		var playTrackingRate = mw.getConfig( 'playTrackingRate' );
+		// Math.floor ( Math.random() * playTrackingRate ) == 0		
+		if( true ){			
+			mw.getJSON( {
+				'action' : 'playtracking',
+				'filename' : this.apiTitleKey,
+				'client' : this.selected_player.library + ' && ' + navigator.userAgent   
+			}, function( data ){
+				mw.log( 'done logging play request' );
+			} );
+		}
+	},
 
 	/**
 	* Monitor playback and update interface components.
