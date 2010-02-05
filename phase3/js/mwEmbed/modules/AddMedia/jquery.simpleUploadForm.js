@@ -142,9 +142,6 @@ var default_form_options = {
 					$j( "#wpUploadFile" ).firefogg( {
 						// An api url (we won't submit directly to action of the form)
 						'api_url' : options.api_target,
-						
-						// If we should do a form rewrite
-						'form_rewrite': true,
 											
 						// MediaWiki API supports chunk uploads: 
 						'enable_chunks' : false,
@@ -155,10 +152,31 @@ var default_form_options = {
 								warn_target: "#wpDestFile-warning"
 							} );
 						},
+						'onsubmit_cb' : function( ){
+							// Update with basic info template:							
+							// TODO: it would be nice to have a template generator class
+							var desc = $j('#wpUploadDescription').val();
+							
+							// Update the template if the user does not already have template code:
+							if( desc.indexOf('{{Information') == -1){
+								$j('#wpUploadDescription').val( 
+'== {{int:filedesc}} ==' + "\n" +
+'{{Information' + "\n" +
+'|Description={{en|' + desc + "\n}}\n" +
+'|Author=[[User:' + wgUserName + '|' + wgUserName + ']]' + "\n" +
+'|Source=' + "\n" +
+'|Date=' + "\n" +
+'|Permission=' + "\n" +
+'|other_versions=' + "\n" + 
+'}}' + "\n" +
+'{{self|cc-by-sa-3.0}}' + "\n"
+								);
+							}
+						},
 						'done_upload_cb' : options.ondone_callback
 					} );
 				});
 			}
-		} );
+		} );		
 	}
 } )( jQuery );

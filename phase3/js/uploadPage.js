@@ -18,7 +18,6 @@ var mwUploadHelper = {
 				$j( '#wpUploadFile' ).firefogg( {
 					// An API URL (we won't submit directly to action of the form)
 					'api_url': wgServer + wgScriptPath + '/api.php',
-					'form_rewrite': true,
 					// MediaWiki API supports chunk uploads: 
 					'enable_chunks' : false, 
 					'form_selector': mwUploadFormSelector,

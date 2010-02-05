@@ -387,6 +387,13 @@ function waitMwEmbedReady( callback ) {
  */
 function mwCheckForGadget(){
 	mw.log('mwCheckForGadget');
+	
+	if( $j('#mwe-gadget-button').length != 0){
+		//Gadget button already in dom
+		return false;
+	}
+	
+	
 	scripts = document.getElementsByTagName( 'script' );
 	
 	// Check for document paramater withJS and ignore found gadget
@@ -404,6 +411,7 @@ function mwCheckForGadget(){
 			return false;
 		}		
 	}
+	
 	// No gadget found add enable button: 
 	mw.log('gadget not installed, show install menu');	
 	var $gadgetBtn = $j.button({
@@ -439,10 +447,11 @@ function mwCheckForGadget(){
 			// return false to not follow link
 			return false;
 		} );
-	
+		
 	// Add the $gadgetBtn before the first heading: 
 	$j('#firstHeading').before(
 		$j('<div />')
+		.attr('id','mwe-gadget-button')
 		.css({
 			'margin': '10px'
 		}).html(	

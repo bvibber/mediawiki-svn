@@ -111,7 +111,7 @@ var mwDefaultConf = {
 	for( var i in mwDefaultConf ){
 		if( typeof mwConfig[ i ] == 'undefined' )
 			mwConfig[ i ] = mwDefaultConf[ i ];
-	}
+	}		
 	
 	/**
 	* Setter for configuration values
@@ -253,7 +253,7 @@ var mwDefaultConf = {
 	 * the user msg.
 	 *
 	 * @param {String} msgKey The msg key as set by mw.addMessages
-	 * @param {Array} args  An array of replacement strings
+	 * @param {Array} args  An array of replacement strings or jQuery objects
 	 * @return string
 	 */
 	mw.getMsg = function( msgKey , args ) {
@@ -281,7 +281,7 @@ var mwDefaultConf = {
 	* Swap in an array of values for $1, $2, $n for a given msg key 
 	*
 	* @param string msgKey The msg key to lookup
-	* @param [mixed] args  An array or string to be replaced
+	* @param [mixed] args  An array of string or jquery objects to be swaped in
 	* @return string
 	*/
 	mw.lang.msgReplaceArgs = function( message , args ) {		
@@ -290,7 +290,14 @@ var mwDefaultConf = {
 			for ( var v in args ) {
 				// Message test replace arguments start at 1 instead of zero:
 				var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );
-				message = message.replace( rep, args[v] );
+								
+				// Check if we got passed in a jQuery object:
+				if( typeof args[v]['html'] == 'function' ){
+					message = message.replace( rep, $j('<div />').append( args[v] ).html() );
+				}else{
+					// Assume args[v] string
+					message = message.replace( rep, args[v] );
+				}				
 			}
 		} else if ( typeof args == 'string' || typeof args == 'number' ) {
 			message = message.replace( /\$1/g, args );
@@ -380,7 +387,7 @@ var mwDefaultConf = {
 						break;
 					}
 				}
-				// check all the matches (taking into consideration "or" order)
+				// Check all the matches (taking into consideration "or" order)
 				for ( var i in cRule ) {
 					if ( ! cmatch[i] )
 						return false;
@@ -774,7 +781,8 @@ var mwDefaultConf = {
 		return new parseObj( wikiText, options ) ;	
 	}
 	
-	var pMagicSet = { };	
+	var pMagicSet = { };
+		
 	/**
 	 * addTemplateTransform to the parser 
 	 *
@@ -1198,7 +1206,7 @@ var mwDefaultConf = {
 	 	},
 	 	
 	 	/**
-	 	* get a class path forom a className 
+	 	* Get a class path forom a className 
 	 	* if no class found return false
 	 	*/
 	 	getClassPath: function( className ){
@@ -1467,27 +1475,6 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* Metavid specific roe request helper function
-	* 
-	* NOTE: depreciated, will be removed once standard callback is
-	*  pushed out to metavid.org 
-	*  
-	* @param roe_url to be updated 
-	*/
-	mw.getMvJsonUrl = function( roe_url , callback){		
-		if ( mw.isLocalDomain( roe_url ) ){
-			$j.get( roe_url, callback );	 
-		} else {			
-			roe_url = mw.replaceUrlParams(roe_url, {
-					'feed_format':'json_roe',
-					'cb':'?',
-					'cb_inx': '1'
-			})
-			$j.getJSON( roe_url, callback );
-		}
-	}
-	
-	/**
 	* Check if the url is a request for the local domain
 	*  relative paths are "local" domain
 	* @param {String} url Url for local domain
@@ -1562,7 +1549,7 @@ var mwDefaultConf = {
 	}*/
 	
 	/**
-	* Add a dialog window:
+	* Add a (temporary) dialog window:
 	* @param {String} title Title string for the dialog
 	* @param {String} msg_txt String to be inserted in msg box
 	* @param {Mixed} buttons A button object for the dialog 
@@ -1606,6 +1593,10 @@ var mwDefaultConf = {
 			} );
 		} );
 	}
+	
+	/**
+	 * Close the loader dialog created with addLoaderDialog
+	 */
 	mw.closeLoaderDialog = function() {
 		mw.load( [
 			[
@@ -1645,7 +1636,7 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* Waits for a object to be defined and the calls callback
+	* Wait for a object to be defined and the call the callback
 	*
 	* @param {Object} objectName Name of object to be defined
 	* @param {Function} callback Function to call once object is defined
@@ -1949,7 +1940,7 @@ var mwDefaultConf = {
 	var mwEmbedPath = null;
 				
 	/**
-	* Gets the path to the mwEmbed folder
+	* Get the path to the mwEmbed folder
 	*/
 	mw.getMwEmbedPath = function() {
 		if ( mwEmbedPath )
@@ -2247,9 +2238,43 @@ var mwDefaultConf = {
 		}
 	};	
 	
+	/**
+	 * Escape quotes in a text string
+	 * @param {String} text String to be escaped
+	 * @return {string} 
+	 * 	escaped text string  
+	 */
+	mw.escapeQuotes = function( text ) {
+		var re = new RegExp("'","g");
+		text = text.replace(re,"\\'");
+		re = new RegExp("\\n","g");
+		text = text.replace(re,"\\n");
+		return escapeQuotesHTML(text);
+	}
+	
+	/**
+	 * Escape an HTML text string
+	 * @param {String} text String to be escaped
+	 * @return {string} 
+	 * 	escaped text html string  
+	 */
+	mw.escapeQuotesHTML = function( text ) {
+		var re = new RegExp('&',"g");
+		text = text.replace(re,"&amp;");
+		re = new RegExp('"',"g");
+		text = text.replace(re,"&quot;");
+		re = new RegExp('<',"g");
+		text = text.replace(re,"&lt;");
+		re = new RegExp('>',"g");
+		text = text.replace(re,"&gt;");
+		return text;
+	}
 	
 	/**
 	* Takes in a string returns an xml dom object 
+	* 
+	* NOTE: this should be depreciated in favor of jquery xml parsing
+	* $j( xml_string )
 	*
 	* @param {String} str String of XML content to be parsed
 	* @return 
@@ -2283,10 +2308,10 @@ var mwDefaultConf = {
 	}
 
 
-/**
-* mwEmbed Setup functions. 
-* jQuery is not necessarily available 
-*/
+	/**
+	* mwEmbed Setup functions. 
+	* jQuery is not necessarily available 
+	*/
 	
 	/**
 	* Check the current DOM for any tags in "rewritePlayerTags"
@@ -2565,7 +2590,7 @@ mwCheckBody();
  *  Setup after jQuery is available ). 
  */
 function mwDojQueryBindings() {
-	mw.log( 'mv_jqueryBindings' );
+	mw.log( 'mw_jqueryBindings' );
 	( function( $ ) {
 	
 		/**
@@ -2593,7 +2618,10 @@ function mwDojQueryBindings() {
 			}
 		}							
 
-		// Shortcut to a themed button
+		/**
+		 *  Shortcut to a themed button
+		 *  Should be depreciated for $.button bellow
+		 */
 		$.btnHtml = function( msg, className, iconId, opt ) {
 			if ( !opt )
 				opt = { };
@@ -2605,6 +2633,7 @@ function mwDojQueryBindings() {
 				className + '"><span class="ui-icon ui-icon-' + iconId + '" ></span>' +
 				'<span class="btnText">' + msg + '</span></a>';
 		}
+		
 		// Shortcut to jQuery button ( should replace all btnHtml with button )
 		var mw_default_button_options = {
 			// The class name for the button link
@@ -2648,15 +2677,16 @@ function mwDojQueryBindings() {
 		}
 		
 		/**
-		* Resize the dialog to fit the window
+		* Resize a dialog to fit the window
+		* @param {Object} options horizontal and vertical space ( default 50 )
 		*/
-		$.fn.dialogFitWindow = function( opt ) {
+		$.fn.dialogFitWindow = function( options ) {
 			var opt_default = { 'hspace':50, 'vspace':50 };
-			if ( !opt )
-				var opt = { };
-			opt = $j.extend( opt_default, opt );
-			$j( this.selector ).dialog( 'option', 'width', $j( window ).width() - opt.hspace );
-			$j( this.selector ).dialog( 'option', 'height', $j( window ).height() - opt.vspace );
+			if ( !options )
+				var options = { };
+			options = $j.extend( opt_default, options );
+			$j( this.selector ).dialog( 'option', 'width', $j( window ).width() - options.hspace );
+			$j( this.selector ).dialog( 'option', 'height', $j( window ).height() - options.vspace );
 			$j( this.selector ).dialog( 'option', 'position', 'center' );
 				// update the child position: (some of this should be pushed up-stream via dialog config options
 			$j( this.selector + '~ .ui-dialog-buttonpane' ).css( {

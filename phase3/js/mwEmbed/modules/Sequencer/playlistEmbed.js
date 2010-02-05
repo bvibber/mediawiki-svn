@@ -48,7 +48,7 @@ var playlistEmbed = {
 	*/
 	getThumbnailHTML: function(){
 		return 'thumb html';
-	}
+	},
 	/**
 	 * Seeks to the requested time and issues a callback when ready / displayed
 	 * (should be overwritten by client that supports frame serving)

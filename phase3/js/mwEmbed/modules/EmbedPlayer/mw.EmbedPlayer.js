@@ -1363,7 +1363,7 @@ mw.EmbedPlayer.prototype = {
 		if ( this.roe && this.mediaElement.getPlayableSources().length == 0 ) {
 			mw.log( 'checkPlayerSources: loading external data' );
 			this.loading_external_data = true;					 	
-			mw.getMvJsonUrl( this.roe, function( data ){				
+			this.getMvJsonUrl( this.roe, function( data ){				
 				// Continue					   
 				_this.mediaElement.addROE( data );
 				mw.log( 'added_roe::' + _this.mediaElement.sources.length );
@@ -1377,8 +1377,27 @@ mw.EmbedPlayer.prototype = {
 			_this.checkForTimedText();
 		}
 	},
-	
-	
+
+	/**
+	* Metavid specific roe request helper function
+	* 
+	* NOTE: depreciated, will be removed once standard callback is
+	*  pushed out to metavid.org 
+	*  
+	* @param roe_url to be updated 
+	*/
+	getMvJsonUrl : function( roe_url , callback){		
+		if ( mw.isLocalDomain( roe_url ) ){
+			$j.get( roe_url, callback );	 
+		} else {			
+			roe_url = mw.replaceUrlParams(roe_url, {
+					'feed_format':'json_roe',
+					'cb':'?',
+					'cb_inx': '1'
+			})
+			$j.getJSON( roe_url, callback );
+		}
+	},
 	
 	/**
 	* Check if we should load the timedText interface or not.
@@ -1777,7 +1796,7 @@ mw.EmbedPlayer.prototype = {
 		)
 		// now load roe if run the showNextPrevLinks
 		if ( this.roe && this.mediaElement.addedROEData == false ) {
-			mw.getMvJsonUrl( this.roe, function( data ){
+			this.getMvJsonUrl( this.roe, function( data ){
 				_this.mediaElement.addROE( data );
 				_this.getNextPrevLinks();
 			} );
@@ -1836,7 +1855,7 @@ mw.EmbedPlayer.prototype = {
 			mw.log( 'anno data found in cache: ' + request_key );
 			this.showNextPrevLinks();
 		} else {
-			mw.getMvJsonUrl( new_anno_track_url, function( cmml_data ) {
+			this.getMvJsonUrl( new_anno_track_url, function( cmml_data ) {
 				mw.log( 'raw response: ' + cmml_data );
 				// init cmmlData
 				if ( !_this.cmmlData )
@@ -2210,16 +2229,38 @@ mw.EmbedPlayer.prototype = {
 		this.thumbnail = this.mediaElement.getThumbnailURL();
 
 		// put it all in the div container dc_id
-		thumb_html += '<div id="dc_' + this.id + '" style="position:absolute;' +
-			' overflow:hidden; top:0px; left:0px; width:' + this.getPlayerWidth() + 'px; height:' + this.getPlayerHeight() + 'px; z-index:0;">' +
-			'<img width="' + this.getPlayerWidth() + '" height="' + this.getPlayerHeight() + '" style="position:relative;width:' + this.getPlayerWidth() + ';height:' + this.getPlayerHeight() + '"' +
-			' id="img_thumb_' + this.id + '" src="' + this.thumbnail + '">';
-		
-		if ( this.play_button == true && this.controls == true )
-			  thumb_html += this.ctrlBuilder.getComponent( 'play-btn-large' );
-			  
-		   thumb_html += '</div>';
-		return thumb_html;
+		$thumb = $j('<div />')
+		.attr({
+			'id' : 'dc_' + this.id			
+		})
+		.css({
+			'position' : 'absolute',
+			'overflow' : 'hidden',
+			'top' : '0px',
+			'left': '0px',
+			'width' : this.getPlayerWidth() + 'px',
+			'height' : this.getPlayerHeight() + 'px',
+			'z-index' : '0'			
+		})
+		.append(
+			$j( '<img />' )
+			.css({
+				'position' : 'relative',
+				'width' : this.getPlayerWidth() + 'px',
+				'height' : this.getPlayerHeight() + 'px',
+			})
+			.attr({
+				'id' : 'img_thumb_' + this.id,
+				'src' : this.thumbnail 
+			})
+		);
+				
+		if ( this.play_button == true && this.controls == true ){
+			$thumb.append(
+				this.ctrlBuilder.getComponent( 'play-btn-large' )
+			);
+		}			  		  
+		return $thumb;
 	},	
 	
 	/**
@@ -2240,20 +2281,20 @@ mw.EmbedPlayer.prototype = {
 					'src=&quot;' + mw.getMwEmbedPath() + 'mwEmbed.js&quot;&gt;&lt;/script&gt' +
 					'&lt;video ';
 		if ( this.roe ) {
-			embed_code_html += 'roe=&quot;' + escape( this.roe ) + '&quot; ';
+			embed_code_html += 'roe=&quot;' + mw.escapeQuotesHTML( this.roe ) + '&quot; ';
 		} else {
 			embed_code_html += 'src=&quot;' + this.src + '&quot; ' +
-				'poster=&quot;' + escape( embed_thumb_url ) + '&quot; ';
+				'poster=&quot;' + mw.escapeQuotesHTML( embed_thumb_url ) + '&quot; ';
 		}
 		
 		// Add in the wikiTitle key if provided 
 		// (in the future we should just include the titleKey on remote embeds 
 		// and query a roe like xml/json representaiton thing from mediawiki)
 		if ( this.apiTitleKey ) {
-			embed_code_html += 'apiTitleKey=&quot;' + escape( this.apiTitleKey ) + '&quot;';
+			embed_code_html += 'apiTitleKey=&quot;' + mw.escapeQuotesHTML( this.apiTitleKey ) + '&quot;';
 		}
 		if ( this.apiProvider ) {
-			embed_code_html += 'apiProvider=&quot;' + escape( this.apiProvider ) + '&quot;';
+			embed_code_html += 'apiProvider=&quot;' + mw.escapeQuotesHTML( this.apiProvider ) + '&quot;';
 		}
 		
 		// close the video tag
@@ -2282,7 +2323,7 @@ mw.EmbedPlayer.prototype = {
 		if ( ! this.linkback && this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
 			this.displayOverlay( gM( 'mwe-loading_txt' ) );
-			mw.getMvJsonUrl( this.roe, function( data ) {
+			this.getMvJsonUrl( this.roe, function( data ) {
 				_this.mediaElement.addROE( data );
 				_this.doLinkBack();
 			} );
@@ -2298,45 +2339,69 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Show the "share" msg 
+	* Show the "share" msg
+	* 
+	* TODO share should be enabled via <embed> tag usage to be compatible
+	* with sites that enable sharing flash embeds
+	*  
+	* @param {Object} $target Target jQuery object to set share html
 	*/
 	showShare:function( $target ) {
-		var	embed_code = this.getEmbeddingHTML();
-		var o = '';
+		var	embed_code = this.getEmbeddingHTML();		
 		var _this = this;
-        // @todo: hook events to two a's for swapping in and out code for link vs. embed;
-        //       hook events for changing active class of li based on a.
-        var o = '';             			
-		o += '<h2>' + gM( 'mwe-share_this_video' ) + '</h2>' +
-			'<ul>' +
-				'<li><a href="#" class="active">' + gM( 'mwe-embed_site_or_blog' ) + '</a></li>';
-				if ( this.linkback ){
-					o += '<li><a href="#" id="k-share-link">' + this.linkback + '</a></li>';
+
+		$shareList = $j( '<ul />' );
+		
+        $shareList
+        .append(
+			$j('<li />')
+	        .append(
+	        	$j('<a />')
+	        	.attr('href', '#')
+	        	.addClass( 'active' )
+	        	.text(
+	        		gM( 'mwe-embed_site_or_blog' )
+	        	)
+	        )
+	     )	
+        
+        $target.append(
+        	$j( '<h2 />' )
+        	.text( gM( 'mwe-share_this_video' ) )      	
+        	.append(
+        		$shareList
+        	)
+        );
+        
+      	$target.append(
+      		$j('<div />')
+      		.addClass( 'source_wrap' )
+      		.html(
+      			$j( '<textarea />' )
+      			.html( embed_code )
+      			.click( function() {
+					$j( this ).select();
+				})
+      		),
+      		
+      		$j('<button />')
+      		.addClass( 'ui-state-default ui-corner-all copycode' )
+      		.text( gM( 'mwe-copy-code' ) )
+      		.click(function() {
+				$target.find( 'textarea' ).focus().select();
+				// Copy the text if supported:
+				if ( document.selection ) {
+					CopiedTxt = document.selection.createRange();
+					CopiedTxt.execCommand( "Copy" );
 				}
-		o +='</ul>' +
-			'<div class="source_wrap">'+
-				'<textarea>' + embed_code + '</textarea>'+
-			'</div>' +
-			'<button class="ui-state-default ui-corner-all copycode">' + gM( 'mwe-copy-code' ) + '</button>' +
-			'<div class="ui-state-highlight ui-corner-all">' + 
-				gM( 'mwe-read_before_embed' ) + 
-			'</div>';
-		$target.html( o );
-		$cpBtn = $j( '#' + this.id + ' .copycode' );
-		$cpTxt = $j( '#' + this.id + ' .source_wrap textarea' );
-		
-		$cpTxt.click( function() {
-			$j( this ).get( 0 ).select();
-		} );
-		
-		// add copy binding: 
-		$cpBtn.click( function() {
-			$cpTxt.focus().get( 0 ).select();
-			if ( document.selection ) {
-				CopiedTxt = document.selection.createRange();
-				CopiedTxt.execCommand( "Copy" );
-			}
-		} );
+			} ),
+			
+			$j('<div />')
+			.addClass( "ui-state-highlight ui-corner-all" )
+			.html(
+				gM( 'mwe-read_before_embed' ) 
+			)					
+		);
 	},
 	
 	/**
@@ -2459,7 +2524,7 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* NOTE: this should be switched over to jQuery style DOM construction
 	* 
-	* @param {Object} $target jQuery target to output to
+	* @param {Object} $target jQuery target for output
 	*/
 	showPlayerSelect: function( $target ) {		
 		mw.log('showPlayerSelect');		
@@ -2529,50 +2594,77 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Shows the download interface
+	* loads sources and calls showDownloadWithSources
 	* @param {Object} $target jQuery target to output to
 	*/
 	showDownload:function( $target ) {
 		var _this = this;
-		// Load the roe if available (to populate out download options:
-		function getShowVideoDownload() {
-				var out = '<div style="color:white">';
-			var dl_list = '';
-			var dl_txt_list = '';
-			$j.each( _this.mediaElement.getSources(), function( index, source ) {
-				if(  source.getSrc() ){
-					var dl_line = '<li>' + '<a style="color:white" href="' + source.getSrc() + '"> '
-						+ source.getTitle() + '</a> ' + '</li>' + "\n";
-					if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
-						out += dl_line;
-					} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
-						dl_txt_list += dl_line;
-					} else {
-						dl_list += dl_line;
-					}
-				}
-			} );
-			
-			if ( dl_list != '' )
-				out += '<h2>' + gM( 'mwe-download_full' ) + '</h2><ul>' + dl_list + '</ul>';
-			if ( dl_txt_list != '' )
-				out += '<h2>' +gM( 'mwe-download_text' ) + '</h2><ul>' + dl_txt_list + '</ul>';
-			out += '</div>';
-			return out;
-		}
+		// Load the roe if available (to populate out download options:		
 		// mw.log('f:showDownload '+ this.roe + ' ' + this.mediaElement.addedROEData);
 		if ( this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
 			$target.html( gM( 'loading_txt' ) );
-			mw.getMvJsonUrl( this.roe, function( data ) {
+			this.getMvJsonUrl( this.roe, function( data ) {
 			   _this.mediaElement.addROE( data );
-			   $target.html( getShowVideoDownload() );
+			   _this.showDownloadWithSources( $target );
 			} );
 		} else {
-			$target.html( getShowVideoDownload() );
+			_this.showDownloadWithSources( $target );
 		}
 	},
-	
+	/**
+	* Shows the download interface with sources loaded
+	* @param {Object} $target jQuery target to output to
+	*/
+	showDownloadWithSources : function( $target ) {
+		var _this = this;
+		$target.append( 
+			$j('<div />')
+			.css({
+				"color":"white",
+			})
+		);
+		var $mediaList = $j( '<ul />' );
+		var $textList =  $j( '<ul />' );
+		$j.each( _this.mediaElement.getSources(), function( index, source ) {
+			if(  source.getSrc() ){
+				var $dl_line = $j( '<li />').append(
+					$j('<a />').
+					css({
+						"color" : "white",						
+					})
+					.attr( 'href', source.getSrc())
+					.text(  source.getTitle() )
+				);					
+				//Add link to time segment:
+				if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
+					$target.append( $dl_line );
+				} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
+					// Add link to text list
+					$textList.append( $dl_line );
+				} else {
+					// Add link to media list
+					$mediaList.append( $dl_line );
+				}
+				
+			}
+		} );
+		if( $mediaList.find('li').length != 0 ){
+			$target.append(
+				$j('<h2 />')
+				.text( gM( 'mwe-download_full' ) ),
+				$mediaList
+			)
+		}
+		
+		if( $textList.find('li').length != 0 ){
+			$target.append(
+				$j('<h2 />')
+				.text( gM( 'mwe-download_text' ) ),
+				$textList
+			)
+		}		
+	},
 	/**
 	*  Base Embed Controls
 	*/

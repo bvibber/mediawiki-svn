@@ -297,20 +297,29 @@ mw.PlayList.prototype = {
 		// mw.log("return dur: " + this.pl_duration);
 		return this.pl_duration;
 	},
-	getTimeRange:function() {
+	getTimeRange: function() {
 		// playlist does not really support time request atm 
 		return '0:0:0/' +  mw.seconds2npt( this.getDuration() );
 	},
-	getDataSource:function() {
+	getDataSource: function() {
 		mw.log( "f:getDataSource " + this.src );
 		// determine the type / first is it m3u or xml?	 
 		var pl_parent = this;
 		this.src = mw.absoluteUrl( this.src );
-		if ( this.src != null ) {
-			mw.getMvJsonUrl( this.src, function( data ) {
-				pl_parent.data = data;
-				pl_parent.getSourceType();
-			} );
+			if ( this.src != null ) {
+				if ( mw.isLocalDomain( roe_url ) ){
+				$j.get( roe_url, callback );	 
+			} else {			
+				roe_url = mw.replaceUrlParams(roe_url, {
+						'feed_format':'json_roe',
+						'cb':'?',
+						'cb_inx': '1'
+				})
+				$j.getJSON( roe_url, function( data ) {
+					pl_parent.data = data;
+					pl_parent.getSourceType();
+				});
+			}		
 		}
 	},
 	getSrc: function(){
