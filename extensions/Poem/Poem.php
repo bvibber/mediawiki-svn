@@ -35,7 +35,7 @@ function wfPoemExtension( &$parser ) {
 	return true;
 }
 
-function PoemExtension( $in, $param=array(), $parser=null ) {
+function PoemExtension( $in, $param=array(), $parser=null, $frame=false ) {
 
 	/* using newlines in the text will cause the parser to add <p> tags,
  	 * which may not be desired in some cases
@@ -49,7 +49,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
 			array( "", "", "$tag\n", "str_replace(' ','&nbsp;','\\1')" ),
 			$in );
-			$text = $parser->recursiveTagParse( $text );
+			$text = $parser->recursiveTagParse( $text, $frame );
 	} else {
 		$text = preg_replace(
 			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
