@@ -43,7 +43,7 @@ class Selenium extends Testing_Selenium
         $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Special:Userlogin');
         $this->type("wpName1", $wgSeleniumTestsWikiUser);
         $this->type("wpPassword1", $wgSeleniumTestsWikiPassword);
-        $this->click("//input[@id='wpLoginattempt']");
+        $this->click("//input[@id='wpLoginAttempt']");
         $value = $this->doCommand('assertTitle', array('Anmeldung erfolgreich*'));
     }
 
