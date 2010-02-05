@@ -45,7 +45,7 @@ $.wikiEditor = {
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
 			'opera': [['>=', 9.6]],
 			// This should be checked again, but the usage of Safari 3.0 and lower is so small it's not a priority
-			'safari': [['>=', 3.1]]
+			'safari': [['>=', 4]]
 		},
 		// Right-to-left languages
 		'rtl': {
@@ -58,7 +58,7 @@ $.wikiEditor = {
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
 			'opera': [['>=', 9.6]],
 			// This should be checked again, but the usage of Safari 3.0 and lower is so small it's not a priority
-			'safari': [['>=', 3.1]]
+			'safari': [['>=', 4]]
 		}
 	},
 	/**
