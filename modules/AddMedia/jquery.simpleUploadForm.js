@@ -153,7 +153,7 @@ var default_form_options = {
 							} );
 						},
 						'onsubmit_cb' : function( ){
-							// Update with basic info template:							
+							// Update with basic info template:	
 							// TODO: it would be nice to have a template generator class
 							var desc = $j('#wpUploadDescription').val();
 							

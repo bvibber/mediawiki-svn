@@ -105,7 +105,7 @@ var default_firefogg_options = {
 				
 		if ( myFogg ) {
 			myFogg.doRewrite( );
-			var selectorElement = $j( options.selector ).get( 0 );			
+			var selectorElement = $j( options.selector ).get( 0 );
 			selectorElement[ 'firefogg' ] = myFogg;		
 		}
 	}
@@ -435,7 +435,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		// Set the initial button html: 
 		var buttonHtml = '';
 		if( _this.show_preview == true ){
-			buttonHtml = $j.btnHtml( gM( 'fogg-hidepreview' ), 'fogg_preview', 'triangle-1-s' ); 			
+			buttonHtml = $j.btnHtml( gM( 'fogg-hidepreview' ), 'fogg_preview', 'triangle-1-s' );
 		} else {
 			buttonHtml = $j.btnHtml( gM( 'fogg-preview' ), 'fogg_preview', 'triangle-1-e' );
 		}
@@ -808,7 +808,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	},
 
 	isOggFormat: function() {
-		var contentType = this.getSourceFileInfo().contentType;		
+		var contentType = this.getSourceFileInfo().contentType;
 		return ( contentType.indexOf("video/ogg") != -1 
 			|| contentType.indexOf("application/ogg") != -1 );
 	},
@@ -889,7 +889,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		// We can do a chunk upload
 		if(  _this.upload_mode == 'post'  && _this.enable_chunks ){
 			_this.doChunkUpload();
-		} else if ( _this.upload_mode == 'post' ) {		
+		} else if ( _this.upload_mode == 'post' ) {
 			// Encode and then do a post upload
 			_this.doEncode(
 				function /* onProgress */ ( progress ) {
@@ -898,7 +898,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				function /* onDone */ () {
 					mw.log( 'done with encoding do POST upload:' + _this.form.action );
 										
-					var uploadRequest = _this.getUploadApiRequest();							
+					var uploadRequest = _this.getUploadApiRequest();
 					_this.fogg.post( _this.api_url, 'file', JSON.stringify( uploadRequest ) );
 						
 					_this.doUploadStatus();
@@ -927,7 +927,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 			if ( dotPos != -1 ) {
 				ext = fileName.substring( dotPos ).toLowerCase();
 			}
-			if ( $j.inArray( ext.substr( 1 ), _this.ogg_extensions ) == -1  ) {			
+			if ( $j.inArray( ext.substr( 1 ), _this.ogg_extensions ) == -1  ) {
 				var extreg = new RegExp( ext + '$', 'i' );
 				_this.formData['filename'] = fileName.replace( extreg, '.ogg' );
 			}
@@ -946,7 +946,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 			'action': 'upload',
 			'format': 'json',
 			'filename': _this.formData['filename'],
-			'comment': _this.formData['comment'],			
+			'comment': _this.formData['comment']
 		};
 		if( options && options.enable_chunks == true ){
 			request[ 'enablechunks' ] = 'true';

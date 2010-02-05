@@ -58,7 +58,7 @@ mw.BaseUploadInterface = function( options ) {
 
 mw.BaseUploadInterface.prototype = {
 	
-	// The form data to be submitted	
+	// The form data to be submitted
 	formData: {}, 
 	
 	// Upload warning session key, for continued uploads 
@@ -147,17 +147,17 @@ mw.BaseUploadInterface.prototype = {
 		}
 		
 		// Remap the upload form to the "api" form:
-		this.remapFormToApi();			
+		this.remapFormToApi();
 		
 		// Check for post action override
 		if ( this.form_post_override ) {
 			mw.log( 'form_post_override is true, do ordinary form submit' );
 			return true;
-		}		 
+		}
 	
-				
+	
 		// Put into a try catch so we are sure to return false:
-		try {						
+		try {
 			// Display a progress dialog
 			_this.displayProgressOverlay();
 
@@ -818,7 +818,7 @@ mw.BaseUploadInterface.prototype = {
 	 */
 	processApiResult: function( apiRes ) {
 		var _this = this;
-		mw.log( 'processApiResult::' );		
+		mw.log( 'processApiResult::' );
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
 			_this.showApiError( apiRes );
@@ -1053,7 +1053,7 @@ mw.BaseUploadInterface.prototype = {
 			})
 		);		
 		mw.log("added spiner");	
-		var request =  {			
+		var request =  {
 			'titles': 'File:' + $j( _this.selector ).val(),
 			'prop':  'imageinfo',
 			'iiprop': 'url|mime|size',
