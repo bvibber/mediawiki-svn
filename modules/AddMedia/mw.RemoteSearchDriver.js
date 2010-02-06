@@ -1614,7 +1614,9 @@ mw.RemoteSearchDriver.prototype = {
 			var resource = _this.getResourceFromId( $j( this ).attr( "id" ) );
 			_this.showResourceEditor( resource );
 			return false;
-		} );
+		} )
+		// Add a "bind" class
+		.addClass( 'rsd_res_item_bind' ) ;
 	},
 	
 	/**

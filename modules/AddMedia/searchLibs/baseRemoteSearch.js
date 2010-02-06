@@ -214,7 +214,7 @@ baseRemoteSearch.prototype = {
 	getEmbedHTML: function( resource , options ) {
 		if ( !options )
 			options = { };			
-		
+				
 		// Set up the output var with the default values: 
 		if(! options.width )
 			options.width = resource.width;
@@ -234,8 +234,10 @@ baseRemoteSearch.prototype = {
 		if( options.width ){
 			options.style += 'width:' + parseInt( options.width ) + 'px;';							
 		}
-		if ( resource.mime.indexOf( 'image' ) != -1 )
+				
+		if ( resource.mime.indexOf( 'image/' ) != -1 ){						
 			outHtml = this.getImageEmbedHTML( resource, options );
+		}
 			
 		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' || resource.mime == 'audio/ogg' ) {
 			// Setup the attribute html 
@@ -264,10 +266,11 @@ baseRemoteSearch.prototype = {
 		}
 		
 		// Return the output. Wrap with a description div if insert_description is on.		
-		if( outHtml != '')
+		if( outHtml != ''){
 			return ( options['insert_description'] ) ?
 				this.wrapHtmlDesc(resource, options, outHtml) :
 				outHtml;
+		}
 			
 		// No output give error: 
 		mw.log( "ERROR:: no embed code for mime type: " + resource.mime );	
@@ -330,7 +333,7 @@ baseRemoteSearch.prototype = {
 			$img.attr( 'id', options['id'] );
 		}
 		if ( resource.crop == null ){
-			return  $img.html();
+			return  $j('<div />').append( $img ).html();
 		}
 		// Else do crop output:
 		$cropHtml = $j('<div />')

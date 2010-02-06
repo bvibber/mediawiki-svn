@@ -249,34 +249,34 @@ img.layout_selector {
 
 
 /* edit buttons: */
-.mv_edit_button{	
+.mw_edit_button{	
 	width:22px;
 	height:22px;
 	float:left;
 }
-#mv_layout_left_img{
+#mw_layout_left_img{
 	width:50px;
 	height:33px;
 	background-image: url('images/image_layout_left.png');
 	float:left;
 }
-#mv_layout_right_img{
+#mw_layout_right_img{
 	width:50px;
 	height:33px;
 	background-image: url('images/image_layout_right.png');
 	float:left;
 }
 
-.mv_crop_button_base{
+.mw_crop_button_base{
 	background-image: url('images/stock-tool-button-crop.png');
 }
-.mv_crop_button_selected{
+.mw_crop_button_selected{
 	background-image: url('images/stock-tool-button-crop_over.png');	
 }
-.mv_scale_button_base{
+.mw_scale_button_base{
 	background-image: url('images/stock-tool-button-scale.png');
 }
-.mv_scale_button_selected{
+.mw_scale_button_selected{
 	background-image: url('images/stock-tool-button-scale_over.png');
 }
 .loading_spinner{
