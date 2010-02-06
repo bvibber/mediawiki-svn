@@ -43,7 +43,13 @@ $wgMaxUploadSize = 1073741824;
 $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'PagedTiffHandler',
-	'author' => '[http://www.hallowelt.biz HalloWelt! Medienwerkstatt GmbH], Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser for Wikimedia Deutschland',
+	'author' => array(
+		'[http://www.hallowelt.biz HalloWelt! Medienwerkstatt GmbH]',
+		'Sebastian Ulbricht',
+		'Daniel Lynge',
+		'Marc Reymann',
+		'Markus Glaser for Wikimedia Deutschland'
+	),
 	'description' => 'Handler for viewing paged TIFF files in image mode',
 	'descriptionmsg' => 'tiff-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PagedTiffHandler',
