@@ -6478,7 +6478,7 @@ $.wikiEditor = {
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
 			'opera': [['>=', 9.6]],
 			// This should be checked again, but the usage of Safari 3.0 and lower is so small it's not a priority
-			'safari': [['>=', 3.1]]
+			'safari': [['>=', 4]]
 		},
 		// Right-to-left languages
 		'rtl': {
@@ -6491,7 +6491,7 @@ $.wikiEditor = {
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
 			'opera': [['>=', 9.6]],
 			// This should be checked again, but the usage of Safari 3.0 and lower is so small it's not a priority
-			'safari': [['>=', 3.1]]
+			'safari': [['>=', 4]]
 		}
 	},
 	/**
@@ -6881,11 +6881,6 @@ if ( typeof context == 'undefined' ) {
 				.replace( /\r?\n/g, "" ) // IE7 inserts newlines before block elements
 				.replace( /&nbsp;/g, " " ) // We inserted these to prevent IE from collapsing spaces
 				.replace( /\<br[^\>]*\>\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
-			// Firefox ends up with one too many empty paragraphs, so this reduced consective strings of them by 1
-			if ( $.browser.firefox ) {
-				html = html.replace( /\<p[^\>]*\>\<\/p\>(\<p[^\>]*\>\<\/p\>)*/gi, '$1' );
-			}
-			html = html
 				.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
 				.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
 				.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
