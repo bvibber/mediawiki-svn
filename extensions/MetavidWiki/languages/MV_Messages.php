@@ -1427,9 +1427,11 @@ $messages['br'] = array(
 	'mv_search_not' => "n'eo ket",
 	'mv_search_stream_name' => 'Anv ar froudad',
 	'mv_stream_name' => 'anv ar froudad roadennoù',
+	'mv_date_range' => 'emled an deiziad',
 	'mv_date_last_week' => 'Sizhunvezh ziwezhañ',
 	'mv_category_results' => "Disoc'hoù ar rummad",
 	'mv_people_results' => "Disoc'hoù an dud",
+	'mv_bill_results' => "Disoc'hoù ar fakturennoù",
 	'mv_intrest_group_results' => 'Strolladoù interest',
 	'mv_most_recent' => 'An neveshañ',
 	'mv_most_viewed' => 'Gwelet ar muiañ',
@@ -1441,8 +1443,10 @@ $messages['br'] = array(
 	'mv_view_in_stream_interface' => 'Gwelet en etrefas ar froudad',
 	'mv_view_wiki_page' => 'Gwelet ar bajenn wiki',
 	'mv_resource_not_found' => 'Al loaz "$1" n\'eo ket bet kavet',
+	'mv_media_search' => 'Klask media',
 	'mv_editor_options' => 'Dibarzhioù an aozer',
 	'mv_editor_mode' => 'Mod an aozer',
+	'mv_transitions' => 'Ardreuzad',
 	'mv_save_sequence' => 'Enrollañ ar sekañs',
 	'mv_sequence_page_desc' => 'Enrollañ ar sekañs red',
 	'mv_sequence_add' => 'Ouzhpennañ klipoù',
@@ -1466,6 +1470,9 @@ $messages['br'] = array(
 	'mv_stream_tool_heading' => 'Binvioù evit ar gwazhioù',
 	'mv_tool_missing' => "N'ez eus ket eus an ostilh a vez ezhomm",
 	'mv_prev_speech' => 'prezegenn gent : $1',
+	'mv_next_speech' => 'Kaoz da-heul : $1',
+	'mv_prev_bill' => 'Fakturenn en a-raok : $1',
+	'mv_next_bill' => 'Fakturenn da-heul : $1',
 	'mv_prev_cat' => 'Rummad kent : $1',
 	'mv_next_cat' => 'Rummad da-heul : $1',
 	'mv_search_stream' => 'Klask ar wazh',
@@ -2440,8 +2447,11 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'metavid' => 'Página MetaVid',
+	'mv_missing_stream' => 'Flujo faltante: $1',
 	'specialpages-group-mv_group' => 'Páginas especiales MetaVidWiki',
+	'mv_ogg_low_quality' => 'Elemento transmisible Web - Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Calidad alta - Ogg Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Elemento transmisible web - Video Flash',
 	'mv_archive_org_link' => 'Vincula a originales Archive.org MPEG-2',
 	'mv_error_stream_missing' => '<span class="error">Error: No hay video asociado con este stream.</span><br />
 Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del sitio]].',
@@ -6378,6 +6388,8 @@ $mvMVDTypeDefaultDisp हा $mvMVDTypeAllAvailable चा सबसेट अ�
  */
 $messages['ms'] = array(
 	'mv_existing_categories' => '{{PLURAL:$1|kategori|kategori}}:',
+	'mv_search_date_range' => 'Julat tarikh',
+	'mv_date_range' => 'julat tarikh',
 );
 
 /** Maltese (Malti)

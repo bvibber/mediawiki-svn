@@ -159,6 +159,7 @@ $messages['es'] = array(
 	'tablemod-error-headcount' => 'Esta etiqueta sólo admite tablas con encabezados de columna individuales al organizar.',
 	'tablemod-error-invalidsort' => 'Parámetros de organización inválidos.',
 	'tablemod-error-invalidaction' => 'Acción no válida.',
+	'tablemod-error-missingid' => 'Falta el atributo ident en la etiqueta.',
 );
 
 /** Basque (Euskara)

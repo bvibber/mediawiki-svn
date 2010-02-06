@@ -97,8 +97,10 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
+	'poolcounter-desc' => 'Cliente MediaWiki para demonio del contador de encuestas poolcounter.py',
 	'poolcounter-connection-error' => 'Error conectando al servidor contador de encuestas: $1',
 	'poolcounter-read-error' => 'Error leyendo del servidor contador de encuestas',
 	'poolcounter-write-error' => 'Error escribiendo al servidor contador de encuestas',

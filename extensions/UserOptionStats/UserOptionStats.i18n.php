@@ -88,6 +88,13 @@ $messages['be-tarask'] = array(
 	'uos-title' => 'Разьмеркаваньне значэньняў ўстановак удзельнікаў $1',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'uos-warn' => 'PHPlot не е инсталиран!',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

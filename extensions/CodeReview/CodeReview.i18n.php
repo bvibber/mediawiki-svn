@@ -4865,6 +4865,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Ilovesabbath
  * @author Klutzy
  * @author Kwj2772
@@ -4875,8 +4876,8 @@ $messages['ko'] = array(
 	'code-rev-title' => 'r$1 - 코드 검토',
 	'code-comments' => '의견',
 	'code-references' => '추적 수정',
-	'code-change-status' => "제 $1판의 '''상태'''를 변경",
-	'code-change-tags' => "제 $1판의 '''태그'''를 변경",
+	'code-change-status' => "제$1판의 '''상태'''를 변경",
+	'code-change-tags' => "제$1판의 '''태그'''를 변경",
 	'code-change-removed' => '제거:',
 	'code-change-added' => '추가:',
 	'code-old-status' => '변경 전 상태',

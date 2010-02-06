@@ -1666,7 +1666,7 @@ $messages['krc'] = array(
 	'youtubeauthsub_keywords' => 'Ачхыч сёзле',
 	'youtubeauthsub_category' => 'Категория',
 	'youtubeauthsub_submit' => 'Джибер',
-	'youtubeauthsub_clickhere' => 'YouTube-ха кирир ючюн былайгъа бас',
+	'youtubeauthsub_clickhere' => 'YouTube сайтха кирир ючюн былайгъа бас',
 	'youtubeauthsub_tokenerror' => 'Авторизацияны токенин къурауда халат, бетни джангыртыб кёрюгюз.',
 	'youtubeauthsub_success' => "Алгъышлайбыз!
 Видеогъуз джюкленди.
@@ -3464,6 +3464,18 @@ $messages['yi'] = array(
 	'youtubeauthsub_uploadhere' => 'לאָדט אַרויף אייער ווידעא פֿון דאַנעט:',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
 	'youtubeauthsub_summary' => 'אַרויפֿלאָדן יוטוב ווידעא',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'youtubeauthsub_title' => 'Àkọlé',
+	'youtubeauthsub_description' => 'Ìjúwe',
+	'youtubeauthsub_password' => 'Ọ̀rọ̀ìpamọ́ Youtube',
+	'youtubeauthsub_username' => 'Orúkọ oníṣe Youtube',
+	'youtubeauthsub_category' => 'Ẹ̀ka',
+	'youtubeauthsub_uploadbutton' => 'Ìrùsókè',
 );
 
 /** Zhuang (Vahcuengh)

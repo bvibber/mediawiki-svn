@@ -124,11 +124,14 @@ $messages['es'] = array(
 	'tiff_no_metadata' => 'No se pudo obtener los metadatos de TIFF',
 	'tiff_page_error' => 'Número de página fuera de rango',
 	'tiff_too_many_embed_files' => 'La imagen contiene demasiados archivos incrustados.',
+	'tiff_sourcefile_too_large' => 'La resolución del archivo fuente es muy grande. No se generará miniaturas.',
 	'tiff_file_too_large' => 'El archivo subido es muy grande y ha sido rechazado.',
 	'tiff_out_of_service' => 'El archivo subido no pudo ser procesado. ImageMagick no está disponible.',
 	'tiff_too_much_meta' => 'Los metadatos utilizan demasiado espacio.',
 	'tiff_size_error' => 'El tamaño del archivo reportado no coincide con el tamaño real del archivo.',
 	'tiff_script_detected' => 'El archivo cargado contiene scripts.',
+	'tiff_bad_file' => 'El archivo cargado contiene errores.',
+	'tiff-file-info-size' => '(Página $5, $1 × $2 píxeles, tamaño de archivo: $3, tipo de MIME: $4)',
 );
 
 /** Finnish (Suomi)

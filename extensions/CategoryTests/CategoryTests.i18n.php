@@ -414,6 +414,13 @@ $messages['vi'] = array(
 	'categorytests-desc' => 'Hàm để đo thử thể loại',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'categorytests-desc' => 'Àwọn iṣẹ́ fún ìdánwò ẹ̀ka',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Franklsf95
  */

@@ -170,11 +170,15 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Translationista
  */
 $messages['es'] = array(
+	'multiboilerplate-desc' => 'Permite que, al editar las páginas, una repetición pueda ser seleccionada de un cuadro desplegable situado encima del formulario de edición',
 	'multiboilerplate-legend' => 'Seleccionar plantilla',
 	'multiboilerplate-submit' => 'Cargar',
 	'boilerplates' => 'Plantillas disponibles',
+	'multiboilerplate-special-define-in-localsettings' => 'Las repeticiones están definidas en ConfiguraciónLocal.',
+	'multiboilerplate-special-define-in-interface' => 'Las repeticiones se definen en el [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Estonian (Eesti)

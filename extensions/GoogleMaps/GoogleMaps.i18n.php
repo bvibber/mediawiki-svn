@@ -2661,14 +2661,22 @@ $wgGoogleMapsMessages['id'] = array(
  */
 $wgGoogleMapsMessages['ig'] = array(
 	'gm-balloon-title' => 'Ishi:',
+	'gm-remove' => 'wefu',
 	'gm-tab' => 'Ntabi',
+	'gm-searching' => 'ö na cha...',
+	'gm-width' => 'Ásá',
+	'gm-height' => 'Ógólógó',
+	'gm-zoom-control' => 'Otú Uzọr',
 	'gm-large' => 'Ukwu',
 	'gm-medium' => 'Di ntạ di ukwu',
 	'gm-small' => 'Ntakịrị',
+	'gm-no-zoom-control' => 'Odigi',
 	'gm-yes' => 'Eeh',
 	'gm-no' => 'Mba',
 	'gm-search' => 'Chöwá',
 	'gm-save-path' => 'Donyéré',
+	'gm-back' => 'azú',
+	'gm-moon' => 'Önwa',
 );
 
 /** Ido (Ido)

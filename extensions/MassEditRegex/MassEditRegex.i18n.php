@@ -413,6 +413,7 @@ $messages['es'] = array(
 	'masseditregex-listtype-pagenames' => 'Nombres de página (edita estas páginas)',
 	'masseditregex-listtype-pagename-prefixes' => 'Prefijos de nombre de página (edita páginas con nombres que comienzan con este texto)',
 	'masseditregex-listtype-categories' => 'Nombres de categorías (editar cada página incluida en estas categorías; se ignora la selección del espacio de nombre)',
+	'masseditregex-listtype-backlinks' => 'Vínculos de retorno (edita páginas de se vinculen a éstas)',
 	'masseditregex-namespace-intro' => 'Todas estas páginas están en este espacio de nombre:',
 	'masseditregex-exprnomatch' => 'La expresión $1 no coincidió con ninguna página.',
 	'masseditregex-badregex' => 'Expresión regular inválida:',
