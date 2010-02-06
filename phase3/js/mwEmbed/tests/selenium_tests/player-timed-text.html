@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="" />
+<title>player-timed-text</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">player-timed-text</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>js/mwEmbed/tests/Player_Timed_Text.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//span[@class=&quot;ui-icon ui-icon-comment&quot;]</td>
+	<td>9000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[3]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//li[@role=&quot;menuitem&quot;]</td>
+	<td>9000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Chose text</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=en, English</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@class='itext itext_SUB']</td>
+	<td>9000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//span[@class='ui-icon ui-icon-play']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//td[1]/div/div[3]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>var value = selenium.getText(&quot;//div[@class='itext itext_SUB']&quot;); value == 'When I say user autonomy, what I\'m talking about';</td>
+	<td>20000</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

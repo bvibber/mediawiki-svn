@@ -2350,7 +2350,7 @@ mw.EmbedPlayer.prototype = {
 	showShare:function( $target ) {
 		var	embed_code = this.getEmbeddingHTML();		
 		var _this = this;
-
+		$target.empty();
 		$shareList = $j( '<ul />' );
 		
         $shareList
