@@ -160,6 +160,7 @@ $messages['en'] = array(
 	'mwe-credits' => 'Credits',
 	'mwe-clip_linkback' => 'Clip source page',
 	'mwe-chose_player' => 'Choose video player',
+	'mwe-no-player' => 'No player available for $1',
 	'mwe-share_this_video' => 'Share this video',
 	'mwe-video_credits' => 'Video credits',
 	'mwe-menu_btn' => 'Menu',
@@ -291,6 +292,14 @@ $messages['en'] = array(
 	'mwe-stream_title' => '$1 $2 to $3',
 
 	/*
+	 * js file: /modules/AddMedia/searchLibs/kalturaSearch.js
+	 */
+	'rsd-media-filter-title' => 'Media',
+	'rsd-media-filter-videos' => 'Videos',
+	'rsd-media-filter-images' => 'Images',
+	'rsd-provider-filter-title' => 'Providers',
+
+	/*
 	 * js file: /modules/AddMedia/searchLibs/baseRemoteSearch.js
 	 */
 	'mwe-imported_from' => '$1 imported from [$2 $3]. See the original [$4 resource page] for more information.',
@@ -351,6 +360,7 @@ $messages['en'] = array(
 	'mwe-return-search-results' => 'Return to search results',
 	'mwe-importing_asset' => 'Importing asset',
 	'mwe-preview_insert_resource' => 'Preview insert of resource: $1',
+	'mwe-do-more-modification' => 'Do More Modification',
 	'mwe-checking-resource' => 'Checking for resource',
 	'mwe-resource-needs-import' => 'Resource $1 needs to be imported to $2',
 	'mwe-ftype-svg' => 'SVG vector file',
