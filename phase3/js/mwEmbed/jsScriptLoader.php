@@ -736,7 +736,7 @@ class jsScriptLoader {
 			return "\n/*
 * Could not parse JSON language messages in this file,
 * Please check that mw.addMessages call contains valid JSON (not javascript)
-*/\n\n" . $json_str; //include the original fallback msg string
+*/\n\n{" . $json_str . "\n}"; //include the original fallback msg string
 		}
 	}
 }

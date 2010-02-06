@@ -390,22 +390,33 @@ mw.BaseUploadInterface.prototype = {
 		mw.log( 'mvBaseUploadInterface.doApiCopyUpload' );
 		mw.log( 'doHttpUpload (no form submit) ' );
 		
-		//Special case of upload.js commons hack: 
-		var comment_value = $j( '#wpUploadDescription' ).val();
-		if(  comment_value == '' ){
-			comment_value = $j( "[name='wpUploadDescription']").val();
-		}
-		
 		var httpUpConf = {
 			'url'       : $j( '#wpUploadFileURL' ).val(),
 			'filename'  : $j( '#wpDestFile' ).val(),
-			'comment'   : comment_value,
+			'comment'   : this.getUploadDescription(),
 			'watch'     : ( $j( '#wpWatchthis' ).is( ':checked' ) ) ? 'true' : 'false',
 			'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'
 		}
 		//check for editToken
 		this.editToken = $j( "#wpEditToken" ).val();
 		this.doHttpUpload( httpUpConf );
+	},
+	
+	/**
+	* Get the upload description, append the licence if avaliable
+	*
+	* NOTE: wpUploadDescription should be a configuration option. 
+	*
+	* @return {String} 
+	* 	value of wpUploadDescription 
+	*/
+	getUploadDescription: function(){
+		//Special case of upload.js commons hack: 
+		var comment_value = $j( '#wpUploadDescription' ).val();
+		if(  comment_value == '' ){
+			comment_value = $j( "[name='wpUploadDescription']").val();
+		}
+		//check for licence tag: 
 	},
 
 	/**

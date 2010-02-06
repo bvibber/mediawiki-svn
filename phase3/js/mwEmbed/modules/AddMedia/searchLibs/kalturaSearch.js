@@ -3,10 +3,10 @@
  */
 
 mw.addMessages( { 
-	'rsd-media-filter-title': 'Media',
-	'rsd-media-filter-videos': 'Videos',
-	'rsd-media-filter-images': 'Images',
-	'rsd-provider-filter-title': 'Providers'
+	"rsd-media-filter-title": "Media",
+	"rsd-media-filter-videos": "Videos",
+	"rsd-media-filter-images": "Images",
+	"rsd-provider-filter-title": "Providers"
 } );
 
 var kalturaFilters = function ( options ) {
