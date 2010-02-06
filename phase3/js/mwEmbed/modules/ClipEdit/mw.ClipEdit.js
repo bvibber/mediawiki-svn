@@ -29,7 +29,9 @@ mw.addMessages( {
 	"mwe-inline-description" : "Caption",
 	"mwe-edit-video-tools" : "Edit video tools:",
 	"mwe-duration" : "Duration:",
-	"mwe-layout" : "Layout"
+	"mwe-layout" : "Layout",
+	"mwe-layout_right" : "Right side image layout",
+	"mwe-layout_left" : "Left side image layout"
 } );
 
 /**
@@ -552,8 +554,7 @@ mw.ClipEdit.prototype = {
 			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
 			mw.log( 'in slider len: ' + $target.find( '.inOutSlider' ).length );
 			 
-			$target.find( '.inOutSlider' ).slider( 'value', 10 );
-			debugger;
+			$target.find( '.inOutSlider' ).slider( 'value', 10 );			
 			$target.find( '.inOutSlider' ).slider( 'option', 'values', [s_sec, e_sec] );
 			var values = $target.find( '.inOutSlider' ).slider( 'option', 'values' );
 			mw.log( 'values (after update):' + values );
@@ -714,71 +715,152 @@ mw.ClipEdit.prototype = {
 		switch( tool_type ) {
 			case 'layout':
 				
-				$target.append(	'' +
-					'<span style="float:left;">' + gM( 'mwe-layout' ) +'</span>' +
-					'<input type="radio" name="mv_layout" id="mv_layout_left" style="float:left"></input>'+
-					'<div id="mv_layout_left_img" title="' + gM( 'mwe-layout_left' ) + '"></div>' +
-					'<input type="radio" name="mv_layout" id="mv_layout_right" style="float:left"></input>'+
-					'<div id="mv_layout_right_img" title="' + gM( 'mwe-layout_left' ) + '"></div>' +
-					'<hr style="clear:both" /><br/>'
+				$target.append(
+					$j( '<span />' )
+					.css({
+						"float" : "left"
+					})
+					.text( gM( 'mwe-layout' ) ),
+					
+					// Left layout
+					$j('<input />')
+					.attr({
+						"type" : "radio",
+						"name" : "mw_layout",
+						"id" : "mw_layout_left"						
+					})
+					.css({
+						'float' : 'left'
+					}),					
+					$j( '<div /> ')
+					.attr({
+						'id' : 'mw_layout_left_img',
+						'title':  gM( 'mwe-layout_left' )
+					}),
+					
+					// Right Layout
+					$j('<input />')
+					.attr({
+						"type" : "radio",
+						"name" : "mw_layout",
+						"id" : "mw_layout_right"						
+					})
+					.css({
+						'float' : 'left'
+					}),					
+					$j( '<div /> ')
+					.attr({
+						'id' : 'mw_layout_right_img',
+						'title':  gM( 'mwe-layout_right' )
+					}),
+
+					$j('<hr />')
+					.css({
+						"clear" : "both"
+					})
 				);
 				
 				// Make sure the default is reflected:
-				if ( ! _this.resource.layout )
+				if ( ! _this.resource.layout ){
 					_this.resource.layout = 'right';
-				$j( '#mv_layout_' + _this.resource.layout )[0].checked = true;
+				}
+				
+				$j( '#mw_layout_' + _this.resource.layout )[0].checked = true;
 		
 				// Left radio click
-				$j( '#mv_layout_left,#mv_layout_left_img' ).click( function() {
-					$j( '#mv_layout_right' )[0].checked = false;
-					$j( '#mv_layout_left' )[0].checked = true;
+				$j( '#mw_layout_left,#mw_layout_left_img' ).click( function() {
+					$j( '#mw_layout_right' )[0].checked = false;
+					$j( '#mw_layout_left' )[0].checked = true;
 					_this.resource.layout = 'left';
 				} );
 				
 				// Right radio click
-				$j( '#mv_layout_right,#mv_layout_right_img' ).click( function() {
-					$j( '#mv_layout_left' )[0].checked = false;
-					$j( '#mv_layout_right' )[0].checked = true;
+				$j( '#mw_layout_right,#mw_layout_right_img' ).click( function() {
+					$j( '#mw_layout_left' )[0].checked = false;
+					$j( '#mw_layout_right' )[0].checked = true;
 					_this.resource.layout = 'right';
 				} );
 			break;
 			case 'crop':
-				$target.append(	'' +
-					'<div class="mv_edit_button mv_crop_button_base" id="mv_crop_button" alt="crop" title="' + gM( 'mwe-crop' ) + '"/>' +
-						'<a href="#" class="mv_crop_msg">' + gM( 'mwe-crop' ) + '</a> ' +
-						'<span style="display:none" class="mv_crop_msg_load">' + gM( 'mwe-loading_txt' ) + '</span> ' +
-						'<a href="#" style="display:none" class="mv_apply_crop">' + gM( 'mwe-apply_crop' ) + '</a> ' +
-						'<a href="#" style="display:none" class="mv_reset_crop">' + gM( 'mwe-reset_crop' ) + '</a> ' +
-					'<hr style="clear:both"/><br>'
+				$target.append(	
+					$j( '<div /> ')
+					.addClass( 'mw_edit_button mw_crop_button_base' )
+					.attr({
+						'id' : 'mw_crop_button',
+						'alt' : 'crop',
+						'title' : gM( 'mwe-crop' )
+					}),
+					
+					$j( '<a />')
+					.attr({
+						'href': '#',							
+					})
+					.addClass( 'mw_crop_msg' )
+					.text(  gM( 'mwe-crop' ) ),
+					
+					$j( '<span />' )					
+					.addClass( 'mw_crop_msg_load')
+					.text(  gM( 'mwe-loading_txt' )  )
+					.hide(),
+					
+					$j( '<a />' )
+					.attr({
+						'href': '#'
+					})
+					.css({
+						'display': 'inline'
+					})
+					.addClass( 'mw_apply_crop' )
+					.text( gM( 'mwe-apply_crop' ) )
+					.hide(),
+					
+					// some space between apply and rest
+					$j('<span />')
+					.css('display','inline')
+					.text(' '),
+					
+					$j( '<a />' )
+					.attr( 'href','#' )
+					.css({
+						'display': 'inline'
+					})
+					.addClass( 'mw_reset_crop' )
+					.text( gM( 'mwe-reset_crop' ) )
+					.hide(),
+					
+					$j( '<hr />' )
+					.css('clear', 'both'),
+					
+					$j( '<br />' )
+												
 				);
 				// Add binding: 
-				$j( '#mv_crop_button,.mv_crop_msg,.mv_apply_crop' ).click( function() {
+				$j( '#mw_crop_button,.mw_crop_msg,.mw_apply_crop' ).click( function() {
 					mw.log( 'click:mv_crop_button: base width: ' + _this.resource.width + ' bh: ' + _this.resource.height );
-					if ( $j( '#mv_crop_button' ).hasClass( 'mv_crop_button_selected' ) ) {
+					if ( $j( '#mw_crop_button' ).hasClass( 'mw_crop_button_selected' ) ) {
 						_this.applyCrop();
 					} else {
 						mw.log( 'click:turn on' );
 						_this.doCropInterface();
 					}
 				} );
-				$j( '.mv_reset_crop' ).click( function() {
-					$j( '.mv_apply_crop,.mv_reset_crop' ).hide();
-					$j( '.mv_crop_msg' ).show();
-					$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_selected' ).addClass( 'mv_crop_button_base' ).attr( 'title', gM( 'mwe-crop' ) );
+				$j( '.mw_reset_crop' ).click( function() {
+					$j( '.mw_apply_crop,.mw_reset_crop' ).hide();
+					$j( '.mw_crop_msg' ).show();
+					$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_selected' ).addClass( 'mw_crop_button_base' ).attr( 'title', gM( 'mwe-crop' ) );
 					_this.resource.crop = null;
 					$j( '#' + _this.target_clip_display ).empty().html(
-						'<img src="' + _this.resource.edit_url + '" id="rsd_edit_img">'
+						$j('<img />')
+						.attr({
+							'src' : _this.resource.edit_url,
+							'id' : 'rsd_edit_img'
+						}) 
 					);
 				} );
 			break;
-			/* Stubs for scale: 
+			/* TODO support setting the image "scale": 
 			case 'scale':
 				
-				 '<div class="mv_edit_button mv_scale_button_base" id="mv_scale_button" alt="crop" title="'+gM('mwe-scale')+'"></div>'+
-						'<a href="#" class="mv_scale_msg">' + gM('mwe-scale') + '</a><br>'+
-						'<a href="#" style="display:none" class="mv_apply_scale">' + gM('mwe-apply_scale') + '</a> '+
-						'<a href="#" style="display:none" class="mv_reset_scale">' + gM('mwe-reset_scale') + '</a><br> '+
-						
 			break;
 			*/
 		}
@@ -793,7 +875,10 @@ mw.ClipEdit.prototype = {
 		mw.log( 'tool target len: ' + $tool_target.length );
 		// By default apply Crop tool
 		if ( _this.enabled_tools == 'all' || _this.enabled_tools.length > 0 ) {
-			$tool_target.html( '<h3>' + gM( 'mwe-edit-tools' ) + '</h3>' );
+			$tool_target.html( 
+				$j( '<h3 />' )
+				.text( gM( 'mwe-edit-tools' ) ) 
+			);
 			for ( var i in _this.toolset ) {
 				var toolid = _this.toolset[i];
 				if ( $j.inArray( toolid, _this.enabled_tools ) != -1 || _this.enabled_tools == 'all' )
@@ -813,30 +898,40 @@ mw.ClipEdit.prototype = {
 	*/
 	applyCrop:function() {
 		var _this = this;
-		$j( '.mv_apply_crop' ).hide();
-		$j( '.mv_crop_msg' ).show();
+		$j( '.mw_apply_crop' ).hide();
+		$j( '.mw_crop_msg' ).show();
 		
 		// Update the crop button: 
-		$j( '#mv_crop_button' )
-			.removeClass( 'mv_crop_button_selected' )
-			.addClass( 'mv_crop_button_base' )
+		$j( '#mw_crop_button' )
+			.removeClass( 'mw_crop_button_selected' )
+			.addClass( 'mw_crop_button_base' )
 			.attr( 'title', gM( 'mwe-crop' ) );	
 				
 		if ( _this.resource.crop ) {
 			// Empty out and display cropped:
 			$j( '#' + _this.target_clip_display )
 				.empty()
-				.html(
-					'<div id="mv_cropcotainer" style="overflow:hidden;position:absolute;' +
-						'width:' + _this.resource.crop.w + 'px;' +
-						'height:' + _this.resource.crop.h + 'px;">' +
-					'<div id="mv_crop_img" style="position:absolute;' +
-						'top:-' + _this.resource.crop.y + 'px;' +
-						'left:-' + _this.resource.crop.x + 'px;">' +
-					'<img src="' + _this.resource.edit_url  + '">' +
-					'</div>' +
-					'</div>'
-				);
+				.append(
+					$j('<div />')
+					.css({
+						'overflow' : 'hidden',
+						'position' : 'absolute',
+						'width' :  parseInt( _this.resource.crop.w ) + 'px',
+						'height' : parseInt( _this.resource.crop.h ) + 'px'
+					})
+					.append(
+						$j( '<div />' )	
+						.css({
+							'position' : 'absolute',
+							'top' : '-' + parseInt( _this.resource.crop.y ) + 'px',
+							'left' : '-' + parseInt( _this.resource.crop.x ) + 'px'
+						})
+						.append(
+							$j('<img />')
+							.attr( 'src', _this.resource.edit_url )
+						)
+					)
+				)
 		}
 		return true;
 	},
@@ -866,8 +961,8 @@ mw.ClipEdit.prototype = {
 	*/
 	doCropInterface:function() {
 		var _this = this;
-		$j( '.mv_crop_msg' ).hide();
-		$j( '.mv_crop_msg_load' ).show();		
+		$j( '.mw_crop_msg' ).hide();
+		$j( '.mw_crop_msg_load' ).show();		
 		// load the jcrop library if needed:
 		mw.load( [
 			'$j.Jcrop'
@@ -881,9 +976,9 @@ mw.ClipEdit.prototype = {
 	*/
 	bindCrop: function(){
 		var _this = this;
-		$j( '.mv_crop_msg_load' ).hide();
-		$j( '.mv_reset_crop,.mv_apply_crop' ).show();
-		$j( '#mv_crop_button' ).removeClass( 'mv_crop_button_base' ).addClass( 'mv_crop_button_selected' ).attr( 'title', gM( 'mwe-crop_done' ) );
+		$j( '.mw_crop_msg_load' ).hide();
+		$j( '.mw_reset_crop,.mw_apply_crop' ).show();
+		$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_base' ).addClass( 'mw_crop_button_selected' ).attr( 'title', gM( 'mwe-crop_done' ) );
 		$j( '#' + _this.target_clip_display + ' img' ).Jcrop( {
 			 onSelect: function( c ) {
 				 mw.log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );

@@ -1,6 +1,6 @@
 /*
  * This file exposes some of the functionality of mwEmbed to wikis
- * that do not yet have js2 enabled
+ * that do not yet have mwEmbed enabled
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
@@ -342,7 +342,7 @@ function loadMwEmbed( classSet, callback ) {
 			// Add Core mwEmbed lib: 
 			rurl += coma + 'mwEmbed';
 								
-			// Add scriptLoader requested classSet
+			// Add requested classSet to scriptLoader request
 			for( var i=0; i < classSet.length; i++ ){
 				var cName =  classSet[i];
 				if( !mwCheckObjectPath( cName ) ){
