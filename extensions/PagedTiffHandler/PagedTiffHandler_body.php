@@ -26,7 +26,6 @@ class PagedTiffHandler extends ImageHandler {
      * Sets $wgShowEXIF to true when file is a tiff file.
      * This does not influence other ImageHandlers, which are possibly dependent on read-exif-data.
      */
-    function __construct() { $this->PagedTiffHandler(); }
     function PagedTiffHandler() {
         global $wgShowEXIF;
         $wgShowEXIF = true;
