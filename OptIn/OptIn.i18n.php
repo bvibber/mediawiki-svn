@@ -5230,6 +5230,7 @@ $messages['si'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'නව ටැබ හා වින්‍යාස සැලැස්ම මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-other' => 'වෙනත් හේතුවක්:',
+	'optin-survey-answer-changes-other' => 'වෙනත්:',
 );
 
 /** Slovak (Slovenčina)
