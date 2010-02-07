@@ -52,6 +52,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		$fld_revid = isset( $prop['revid'] );
 		$fld_user = isset( $prop['user'] );
 		$fld_comment = isset( $prop['comment'] );
+		$fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$fld_minor = isset( $prop['minor'] );
 		$fld_len = isset( $prop['len'] );
 		$fld_content = isset( $prop['content'] );
@@ -73,7 +74,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$mode = 'user';
 		
 		if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) )
-				$this->dieUsage( 'user and excludeuser cannot be used together', 'badparams' );
+			$this->dieUsage( 'user and excludeuser cannot be used together', 'badparams' );
 
 		$this->addTables( 'archive' );
 		$this->addWhere( 'ar_deleted = 0' );
@@ -82,14 +83,13 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$this->addFields( 'ar_rev_id' );
 		if ( $fld_user )
 			$this->addFields( 'ar_user_text' );
-		if ( $fld_comment )
+		if ( $fld_comment || $fld_parsedcomment )
 			$this->addFields( 'ar_comment' );
 		if ( $fld_minor )
 			$this->addFields( 'ar_minor_edit' );
 		if ( $fld_len )
 			$this->addFields( 'ar_len' );
-		if ( $fld_content )
-		{
+		if ( $fld_content ) {
 			$this->addTables( 'text' );
 			$this->addFields( array( 'ar_text', 'ar_text_id', 'old_text', 'old_flags' ) );
 			$this->addWhere( 'ar_text_id = old_id' );
@@ -116,14 +116,11 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$token = $wgUser->editToken();
 
 		// We need a custom WHERE clause that matches all titles.
-		if ( $mode == 'revs' )
-		{
+		if ( $mode == 'revs' ) {
 			$lb = new LinkBatch( $titles );
 			$where = $lb->constructSet( 'ar', $db );
 			$this->addWhere( $where );
-		}
-		elseif ( $mode == 'all' )
-		{
+		} elseif ( $mode == 'all' ) {
 			$this->addWhereFld( 'ar_namespace', $params['namespace'] );
 			if ( !is_null( $params['from'] ) )
 			{
@@ -157,18 +154,14 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 		$this->addOption( 'LIMIT', $limit + 1 );
 		$this->addOption( 'USE INDEX', array( 'archive' => ( $mode == 'user' ? 'usertext_timestamp' : 'name_title_timestamp' ) ) );
-		if ( $mode == 'all' )
-		{
+		if ( $mode == 'all' ) {
 			if ( $params['unique'] )
 			{
 				$this->addOption( 'GROUP BY', 'ar_title' );
 				$this->addOption( 'ORDER BY', 'ar_title' );
-			}
-			else
+			} else
 				$this->addOption( 'ORDER BY', 'ar_title, ar_timestamp' );
-		}
-		else
-		{
+		} else {
 			if ( $mode == 'revs' )
 			{
 				// Sort by ns and title in the same order as timestamp for efficiency
@@ -183,8 +176,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		$newPageID = 0;
 		while ( $row = $db->fetchObject( $res ) )
 		{
-			if ( ++$count > $limit )
-			{
+			if ( ++$count > $limit ) {
 				// We've had enough
 				if ( $mode == 'all' || $mode == 'revs' )
 					$this->setContinueEnumParameter( 'continue', intval( $row->ar_namespace ) . '|' .
@@ -202,34 +194,36 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				$rev['user'] = $row->ar_user_text;
 			if ( $fld_comment )
 				$rev['comment'] = $row->ar_comment;
-			if ( $fld_minor && $row->ar_minor_edit == 1)
-					$rev['minor'] = '';
+
+			$title = Title::makeTitle( $row->ar_namespace, $row->ar_title );
+
+			if ( $fld_parsedcomment ) {
+				global $wgUser;
+				$rev['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->ar_comment, $title );
+			}
+			if ( $fld_minor && $row->ar_minor_edit == 1 )
+				$rev['minor'] = '';
 			if ( $fld_len )
 				$rev['len'] = $row->ar_len;
 			if ( $fld_content )
 				ApiResult::setContent( $rev, Revision::getRevisionText( $row ) );
 
-			if ( !isset( $pageMap[$row->ar_namespace][$row->ar_title] ) )
-			{
+			if ( !isset( $pageMap[$row->ar_namespace][$row->ar_title] ) ) {
 				$pageID = $newPageID++;
 				$pageMap[$row->ar_namespace][$row->ar_title] = $pageID;
-				$t = Title::makeTitle( $row->ar_namespace, $row->ar_title );
 				$a['revisions'] = array( $rev );
 				$result->setIndexedTagName( $a['revisions'], 'rev' );
-				ApiQueryBase::addTitleInfo( $a, $t );
+				ApiQueryBase::addTitleInfo( $a, $title );
 				if ( $fld_token )
 					$a['token'] = $token;
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), $pageID, $a );
-			}
-			else
-			{
+			} else {
 				$pageID = $pageMap[$row->ar_namespace][$row->ar_title];
 				$fit = $result->addValue(
 					array( 'query', $this->getModuleName(), $pageID, 'revisions' ),
 					null, $rev );
 			}
-			if ( !$fit )
-			{
+			if ( !$fit ) {
 				if ( $mode == 'all' || $mode == 'revs' )
 					$this->setContinueEnumParameter( 'continue', intval( $row->ar_namespace ) . '|' .
 						$this->keyToTitle( $row->ar_title ) . '|' . $row->ar_timestamp );
@@ -283,6 +277,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 					'revid',
 					'user',
 					'comment',
+					'parsedcomment',
 					'minor',
 					'len',
 					'content',

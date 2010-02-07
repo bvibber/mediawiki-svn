@@ -793,7 +793,7 @@ $wgUseMemCached     = false;
 $wgMemCachedDebug   = false; ///< Will be set to false in Setup.php, if the server isn't working
 $wgMemCachedServers = array( '127.0.0.1:11000' );
 $wgMemCachedPersistent = false;
-$wgMemCachedTimeout = 100000; //Server connection timeout in microseconds
+$wgMemCachedTimeout = 100000; //Data timeout in microseconds
 /**@}*/
 
 /**
@@ -951,12 +951,12 @@ $wgHtml5Version = null;
  * Enabled RDFa attributes for use in wikitext.
  * NOTE: Interaction with HTML5 is somewhat underspecified.
  */
-$wgAllowRdfaAttributes = true;
+$wgAllowRdfaAttributes = false;
 
 /**
  * Enabled HTML5 microdata attributes for use in wikitext, if $wgHtml5 is also true.
  */
-$wgAllowMicrodataAttributes = true;
+$wgAllowMicrodataAttributes = false;
 
 /**
  * Should we try to make our HTML output well-formed XML?  If set to false,
@@ -1222,6 +1222,16 @@ $wgDebugLogGroups       = array();
 $wgShowDebug            = false;
 
 /**
+ * Prefix debug messages with relative timestamp. Very-poor man's profiler.
+ */
+$wgDebugTimestamps = false;
+
+/**
+ * Print HTTP headers for every request in the debug information.
+ */
+$wgDebugPrintHttpHeaders = true;
+
+/**
  * Show the contents of $wgHooks in Special:Version
  */
 $wgSpecialVersionShowHooks =  false;
@@ -1333,6 +1343,15 @@ $wgBlockCIDRLimit = array(
 	'IPv4' => 16, # Blocks larger than a /16 (64k addresses) will not be allowed
 	'IPv6' => 64, # 2^64 = ~1.8x10^19 addresses
 );
+
+/**
+ * If true, blocked users will not be allowed to login. When using this with
+ * a public wiki, the effect of logging out blocked users may actually be
+ * avers: unless the user's address is also blocked (e.g. auto-block),
+ * logging the user out will again allow reading and editing, just as for
+ * anonymous visitors.
+ */
+$wgBlockDisablesLogin = false; #
 
 # Pages anonymous user may see as an array, e.g.:
 # array ( "Main Page", "Wikipedia:Help");
@@ -1667,7 +1686,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '264';
+$wgStyleVersion = '265';
 
 
 # Server-side caching:
@@ -1814,11 +1833,6 @@ $wgSquidServers = array();
  * list of trusted proxies, etc.
  */
 $wgSquidServersNoPurge = array();
-
-/**
- * Default character limit for squid purge responses
- */
-$wgSquidResponseLimit = 250;
 
 /** Maximum number of titles to purge in any one client operation */
 $wgMaxSquidPurgeTitles = 400;
@@ -1992,8 +2006,6 @@ $wgUDPProfilerPort = '3811';
 $wgDebugProfiling = false;
 /** Output debug message on every wfProfileIn/wfProfileOut */
 $wgDebugFunctionEntry = 0;
-/** Lots of debugging output from SquidUpdate.php */
-$wgDebugSquid = false;
 
 /*
  * Destination for wfIncrStats() data...
@@ -4132,12 +4144,11 @@ $wgEdititis = false;
 $wgUniversalEditButton = true;
 
 /**
- * Allow id's that don't conform to HTML4 backward compatibility requirements.
- * This is purely experimental, has multiple known flaws, and will likely be
- * renamed and reconcepted based on HTML5 in the future, so should not be used
- * except for testing.
+ * Should we allow a broader set of characters in id attributes, per HTML5?  If
+ * not, use only HTML 4-compatible IDs.  This option is for testing -- when the
+ * functionality is ready, it will be on by default with no option.
  */
-$wgEnforceHtmlIds = true;
+$wgExperimentalHtmlIds = false;
 
 /**
  * Search form behavior
@@ -4321,10 +4332,3 @@ $wgUploadMaintenance = false;
  */
 $wgOldChangeTagsIndex = false;
 
-/**
- * Set of loader.js files to setup dynamic loading of javascript libraries using mwEmbed
- *
- * Extensions can add mwEmbed modules via adding paths to their loader.js to
- * $wgExtensionJavascriptLoader[] = path/to/loader.js
- */
-$wgExtensionJavascriptLoader = array();

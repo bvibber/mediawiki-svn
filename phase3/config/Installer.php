@@ -644,7 +644,7 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->DBpgschema  = importPost( "DBpgschema",  "mediawiki" );
 
 	## SQLite specific
-	$conf->SQLiteDataDir = importPost( "SQLiteDataDir", '../data' );
+	$conf->SQLiteDataDir = importPost( "SQLiteDataDir", "$IP/../data" );
 
 	## MSSQL specific
 	// We need a second field so it doesn't overwrite the MySQL one
@@ -1665,8 +1665,7 @@ if( count( $errs ) ) {
 	?></div>
 	<div class="config-desc">
 		<p>SQLite stores table data into files in the
-		filesystem.  By default the path is the "data"
-		directory in your document root.</p>
+		filesystem.</p>
 
 		<p>This directory must exist and be writable by the web server.</p>
 	</div>
@@ -1737,7 +1736,7 @@ window.onload = toggleDBarea( <?php echo Xml::encodeJsVar( $conf->DBtype ); ?>,
 function writeSuccessMessage() {
  $script = defined('MW_INSTALL_PHP5_EXT') ? 'index.php5' : 'index.php';
 	if ( wfIniGetBool( 'safe_mode' ) && !ini_get( 'open_basedir' ) ) {
-		echo <<<EOT
+		echo <<<HTML
 <div class="success-box">
 <p>Installation successful!</p>
 <p>To complete the installation, please do the following:
@@ -1752,9 +1751,9 @@ remotely. LocalSettings.php is currently owned by the user your webserver is run
 which means that anyone on the same server can read your database password! Downloading
 it and uploading it again will hopefully change the ownership to a user ID specific to you.</p>
 </div>
-EOT;
+HTML;
 	} else {
-		echo <<<EOT
+		echo <<<HTML
 <div class="success-box">
 <p>
 <span class="success-message">Installation successful!</span>
@@ -1763,7 +1762,7 @@ Move the <tt>config/LocalSettings.php</tt> file to the parent directory, then fo
 <p>You should change file permissions for <tt>LocalSettings.php</tt> as required to
 prevent other users on the server reading passwords and altering configuration data.</p>
 </div>
-EOT;
+HTML;
 	}
 }
 

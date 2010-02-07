@@ -354,9 +354,7 @@ class User {
 			$validate = 'valid';
 		}
 		$name = self::getCanonicalName( $name, $validate );
-		if ( WikiError::isError( $name ) ) {
-			return $name;
-		} elseif ( $name === false ) {
+		if ( $name === false ) {
 			return false;
 		} else {
 			# Create unloaded user object
@@ -701,7 +699,7 @@ class User {
 		# with title normalisation, but then it's too late to
 		# check elsewhere
 		if( strpos( $name, '#' ) !== false )
-			return new WikiError( 'usernamehasherror' );
+			return false;
 
 		# Clean up name according to title rules
 		$t = ( $validate === 'valid' ) ?
@@ -901,6 +899,13 @@ class User {
 		$this->mId = $sId;
 		if ( !$this->loadFromId() ) {
 			# Not a valid ID, loadFromId has switched the object to anon for us
+			return false;
+		}
+
+		global $wgBlockDisablesLogin;
+		if( $wgBlockDisablesLogin && $this->isBlocked() ) {
+			# User blocked and we've disabled blocked user logins
+			$this->loadDefaults();
 			return false;
 		}
 
@@ -1147,6 +1152,8 @@ class User {
 		if ( $this->mBlock->load( $ip , $this->mId ) ) {
 			wfDebug( __METHOD__ . ": Found block.\n" );
 			$this->mBlockedby = $this->mBlock->mBy;
+			if( $this->mBlockedby == "0" )
+				$this->mBlockedby = $this->mBlock->mByName;
 			$this->mBlockreason = $this->mBlock->mReason;
 			$this->mHideName = $this->mBlock->mHideName;
 			$this->mAllowUsertalk = $this->mBlock->mAllowUsertalk;
@@ -3050,8 +3057,8 @@ class User {
 	 * @return \bool True if allowed
 	 */
 	function canSendEmail() {
-		global $wgEnableEmail, $wgEnableUserEmail, $wgUser;
-		if( !$wgEnableEmail || !$wgEnableUserEmail || !$wgUser->isAllowed( 'sendemail' ) ) {
+		global $wgEnableEmail, $wgEnableUserEmail;
+		if( !$wgEnableEmail || !$wgEnableUserEmail || !$this->isAllowed( 'sendemail' ) ) {
 			return false;
 		}
 		$canSend = $this->isEmailConfirmed();

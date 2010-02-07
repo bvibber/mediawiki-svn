@@ -17,6 +17,7 @@
  * @author Veeven
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @author לערי ריינהארט
+ * @author రాకేశ్వర
  * @author వైజాసత్య
  */
 
@@ -333,7 +334,7 @@ $messages = array(
 'history_short'     => 'చరిత్ర',
 'updatedmarker'     => 'నేను కిందటిసారి వచ్చిన తరువాత జరిగిన మార్పులు',
 'info_short'        => 'సమాచారం',
-'printableversion'  => 'ముద్రణా సంచిక',
+'printableversion'  => 'ముద్రించదగ సంచిక',
 'permalink'         => 'శాశ్వత లింకు',
 'print'             => 'ముద్రించు',
 'edit'              => 'మార్చు',
@@ -580,6 +581,7 @@ $2',
 అక్షరక్రమం సరిచూసుకోండి, లేదా [[Special:UserLogin/signup|కొత్త ఖాతా సృష్టించుకోండి]].',
 'nosuchusershort'            => '"<nowiki>$1</nowiki>" అనే పేరుతో సభ్యులు లేరు. పేరు సరి చూసుకోండి.',
 'nouserspecified'            => 'సభ్యనామాన్ని తప్పనిసరిగా ఎంచుకోవాలి.',
+'login-userblocked'          => 'ఈ వాడుకరిని నిరోధించారు. ప్రవేశానికి అనుమతి లేదు.',
 'wrongpassword'              => 'ఈ సంకేతపదం సరైనది కాదు. దయచేసి మళ్లీ ప్రయత్నించండి.',
 'wrongpasswordempty'         => 'ఖాళీ సంకేతపదం ఇచ్చారు. మళ్ళీ ప్రయత్నించండి.',
 'passwordtooshort'           => 'మీ సంకేతపదం కనీసం {{PLURAL:$1|1 అక్షరం|$1 అక్షరాల}} పొడవు ఉండాలి.',
@@ -1473,7 +1475,6 @@ $1",
 'php-uploaddisabledtext'      => 'PHPలో ఫైలు ఎక్కింపులు అచేతనమై ఉన్నాయి.
 దయచేసి file_uploads అమరికని చూడండి.',
 'uploadscripted'              => 'ఈ ఫైల్లో HTML కోడు గానీ స్క్రిప్టు కోడు గానీ ఉంది. వెబ్ బ్రౌజరు దాన్ని పొరపాటుగా అనువదించే అవకాశం ఉంది.',
-'uploadcorrupt'               => 'ఫైలు చెడిపోయింది లేదా దాని పేరులోని పొడగింపు తప్పు. ఒకసారి సరిచూసి మళ్ళీ ప్రయత్నించండి.',
 'uploadvirus'                 => 'ఈ ఫైలులో వైరస్‌ ఉంది! వివరాలు: $1',
 'upload-source'               => 'మూల ఫైలు',
 'sourcefilename'              => 'మూలం ఫైలుపేరు:',
@@ -1521,7 +1522,7 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization చూడండి.',
 # HTTP errors
 'http-invalid-url'    => 'తప్పుడు URL: $1',
 'http-invalid-scheme' => '"$1" ప్రణాళికలో ఉన్న URLలకు తోడ్పాటులేదు',
-'http-request-error'  => 'అభ్యర్థనని పంపడంలో పొరపాటు:',
+'http-request-error'  => 'తెలియని పొరపాటు వల్ల HTTP అభ్యర్థన విఫలమైంది.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL కు వెళ్ళలేకపోయాం',

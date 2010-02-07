@@ -49,10 +49,11 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 	}
 
 	private $fld_ids = false, $fld_title = false, $fld_patrol = false, $fld_flags = false,
-			$fld_timestamp = false, $fld_user = false, $fld_comment = false, $fld_sizes = false;
+			$fld_timestamp = false, $fld_user = false, $fld_comment = false, $fld_parsedcomment = false, $fld_sizes = false,
+			$fld_notificationtimestamp = false;
 
 	private function run( $resultPageSet = null ) {
-		global $wgUser, $wgDBtype;
+		global $wgUser;
 
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
 
@@ -82,23 +83,28 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_flags = isset( $prop['flags'] );
 			$this->fld_user = isset( $prop['user'] );
 			$this->fld_comment = isset( $prop['comment'] );
+			$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 			$this->fld_timestamp = isset( $prop['timestamp'] );
 			$this->fld_sizes = isset( $prop['sizes'] );
 			$this->fld_patrol = isset( $prop['patrol'] );
+			$this->fld_notificationtimestamp = isset( $prop['notificationtimestamp'] );
 
 			if ( $this->fld_patrol ) {
 				if ( !$user->useRCPatrol() && !$user->useNPPatrol() )
 					$this->dieUsage( 'patrol property is not available', 'patrol' );
 			}
 		}
+	
+		$this->addFields( array (
+			'rc_namespace',
+			'rc_title',
+			'rc_timestamp'
+		) );
 
 		if ( is_null( $resultPageSet ) ) {
 			$this->addFields( array (
 				'rc_cur_id',
-				'rc_this_oldid',
-				'rc_namespace',
-				'rc_title',
-				'rc_timestamp'
+				'rc_this_oldid'
 			) );
 
 			$this->addFieldsIf( 'rc_new', $this->fld_flags );
@@ -106,25 +112,15 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->addFieldsIf( 'rc_bot', $this->fld_flags );
 			$this->addFieldsIf( 'rc_user', $this->fld_user );
 			$this->addFieldsIf( 'rc_user_text', $this->fld_user );
-			$this->addFieldsIf( 'rc_comment', $this->fld_comment );
+			$this->addFieldsIf( 'rc_comment', $this->fld_comment || $this->fld_parsedcomment );
 			$this->addFieldsIf( 'rc_patrolled', $this->fld_patrol );
 			$this->addFieldsIf( 'rc_old_len', $this->fld_sizes );
 			$this->addFieldsIf( 'rc_new_len', $this->fld_sizes );
-		}
-		elseif ( $params['allrev'] ) {
-			$this->addFields( array (
-				'rc_this_oldid',
-				'rc_namespace',
-				'rc_title',
-				'rc_timestamp'
-			) );
+			$this->addFieldsIf( 'wl_notificationtimestamp', $this->fld_notificationtimestamp );
+		} elseif ( $params['allrev'] ) {
+			$this->addFields( 'rc_this_oldid' );
 		} else {
-			$this->addFields( array (
-				'rc_cur_id',
-				'rc_namespace',
-				'rc_title',
-				'rc_timestamp'
-			) );
+			$this->addFields( 'rc_cur_id' );
 		}
 
 		$this->addTables( array (
@@ -158,9 +154,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$this->dieUsage( "Incorrect parameter - mutually exclusive values may not be supplied", 'show' );
 			}
 			
-			// Check permissions.  FIXME: should this check $user instead of
-			// $wgUser?
-			global $wgUser;
+			// Check permissions.  FIXME: should this check $user instead of $wgUser?
 			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
 				$this->dieUsage( "You need the patrol right to request the patrolled flag", 'permissiondenied' );
 
@@ -182,9 +176,10 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		if ( !is_null( $params['excludeuser'] ) )
 			$this->addWhere( 'rc_user_text != ' . $this->getDB()->addQuotes( $params['excludeuser'] ) );
 
-
+		$db = $this->getDB();
+			
 		// This is an index optimization for mysql, as done in the Special:Watchlist page
-		$this->addWhereIf( "rc_timestamp > ''", !isset ( $params['start'] ) && !isset ( $params['end'] ) && $wgDBtype == 'mysql' );
+		$this->addWhereIf( "rc_timestamp > ''", !isset ( $params['start'] ) && !isset ( $params['end'] ) && $db->getType() == 'mysql' );
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
@@ -192,7 +187,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		$count = 0;
 		$res = $this->select( __METHOD__ );
 
-		$db = $this->getDB();
 		while ( $row = $db->fetchObject( $res ) ) {
 			if ( ++ $count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
@@ -239,8 +233,10 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$vals['revid'] = intval( $row->rc_this_oldid );
 		}
 
+		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+
 		if ( $this->fld_title )
-			ApiQueryBase :: addTitleInfo( $vals, Title :: makeTitle( $row->rc_namespace, $row->rc_title ) );
+			ApiQueryBase::addTitleInfo( $vals, $title );
 
 		if ( $this->fld_user ) {
 			$vals['user'] = $row->rc_user_text;
@@ -267,9 +263,17 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$vals['oldlen'] = intval( $row->rc_old_len );
 			$vals['newlen'] = intval( $row->rc_new_len );
 		}
+		
+		if ( $this->fld_notificationtimestamp )
+			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null ) ? '' : wfTimestamp( TS_ISO_8601, $row->wl_notificationtimestamp );
 
 		if ( $this->fld_comment && isset( $row->rc_comment ) )
 			$vals['comment'] = $row->rc_comment;
+			
+		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
+			global $wgUser;
+			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
+		}
 
 		return $vals;
 	}
@@ -316,9 +320,11 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 					'flags',
 					'user',
 					'comment',
+					'parsedcomment',
 					'timestamp',
 					'patrol',
 					'sizes',
+					'notificationtimestamp'
 				)
 			),
 			'show' => array (

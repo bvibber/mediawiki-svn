@@ -1686,15 +1686,26 @@ class Language {
 	function hasWordBreaks() {
 		return true;
 	}
+	
+	/**
+	 * Some languages such as Chinese require word segmentation,
+	 * Specify such segmentation when overridden in derived class.
+	 * 
+	 * @param $string String
+	 * @return String
+	 */
+	function wordSegmentation( $string ) {
+		return $string;
+	}
 
 	/**
-	 * Some languages have special punctuation to strip out.
+	 * Some languages have special punctuation need to be normalized.
 	 * Make such changes here.
 	 *
 	 * @param $string String
 	 * @return String
 	 */
-	function stripForSearch( $string, $doStrip = true ) {
+	function normalizeForSearch( $string ) {
 		return $string;
 	}
 
@@ -1708,7 +1719,7 @@ class Language {
 		return $string;
 	}
 
-	protected static function wordSegmentation( $string, $pattern ) {
+	protected static function insertSpace( $string, $pattern ) {
 		$string = preg_replace( $pattern, " $1 ", $string );
 		$string = preg_replace( '/ +/', ' ', $string );
 		return $string;
@@ -2153,6 +2164,7 @@ class Language {
 		if ( strlen( $string ) <= abs( $length ) ) {
 			return $string;
 		}
+		$stringOriginal = $string;
 		if( $length > 0 ) {
 			$string = substr( $string, 0, $length );
 			$char = ord( $string[strlen( $string ) - 1] );
@@ -2166,7 +2178,13 @@ class Language {
 				# We chopped in the middle of a character; remove it
 				$string = $m[1];
 			}
-			return $string . $ellipsis;
+			# Do not truncate if the ellipsis actually make the string longer. Bug 22181
+			if ( strlen( $string ) + strlen( $ellipsis ) < strlen( $stringOriginal ) ) {
+				return $string . $ellipsis;
+			} else {
+				return $stringOriginal;
+			}
+
 		} else {
 			$string = substr( $string, $length );
 			$char = ord( $string[0] );
@@ -2174,7 +2192,12 @@ class Language {
 				# We chopped in the middle of a character; remove the whole thing
 				$string = preg_replace( '/^[\x80-\xbf]+/', '', $string );
 			}
-			return $ellipsis . $string;
+			# Do not truncate if the ellipsis actually make the string longer. Bug 22181
+			if ( strlen( $string ) + strlen( $ellipsis ) < strlen( $stringOriginal ) ) {
+				return $ellipsis . $string;
+			} else {
+				return $stringOriginal;
+			}
 		}
 	}
 

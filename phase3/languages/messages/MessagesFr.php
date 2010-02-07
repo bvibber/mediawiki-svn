@@ -777,6 +777,7 @@ Les noms d’utilisateurs sont sensibles à la casse.
 Vérifiez l’orthographe, ou [[Special:UserLogin/signup|créez un nouveau compte]].',
 'nosuchusershort'            => 'Il n’y a pas de contributeur avec le nom « <nowiki>$1</nowiki> ». Veuillez vérifier l’orthographe.',
 'nouserspecified'            => 'Vous devez saisir un nom d’utilisateur.',
+'login-userblocked'          => 'Cet utilisateur est bloqué. Connexion non autorisée.',
 'wrongpassword'              => 'Le mot de passe est incorrect. Veuillez essayer à nouveau.',
 'wrongpasswordempty'         => 'Vous n’avez pas entré de mot de passe. Veuillez essayer à nouveau.',
 'passwordtooshort'           => 'Votre mot de passe doit contenir au moins $1 caractère{{PLURAL:$1||s}}.',
@@ -1407,25 +1408,26 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'prefs-diffs'                   => 'Différences',
 
 # User rights
-'userrights'                  => 'Gestion des droits des utilisateurs',
-'userrights-lookup-user'      => 'Gestion des groupes d’utilisateurs',
-'userrights-user-editname'    => 'Entrez un nom d’utilisateur :',
-'editusergroup'               => 'Modification des groupes d’utilisateurs',
-'editinguser'                 => "Modification des droits de l’utilisateur '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Modifier les groupes de l’utilisateur',
-'saveusergroups'              => 'Sauvegarder les groupes d’utilisateurs',
-'userrights-groupsmember'     => 'Membre de :',
-'userrights-groups-help'      => 'Vous pouvez modifier les groupes auxquels appartient cet utilisateur.
+'userrights'                   => 'Gestion des droits des utilisateurs',
+'userrights-lookup-user'       => 'Gestion des groupes d’utilisateurs',
+'userrights-user-editname'     => 'Entrez un nom d’utilisateur :',
+'editusergroup'                => 'Modification des groupes d’utilisateurs',
+'editinguser'                  => "Modification des droits de l’utilisateur '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Modifier les groupes de l’utilisateur',
+'saveusergroups'               => 'Sauvegarder les groupes d’utilisateurs',
+'userrights-groupsmember'      => 'Membre de :',
+'userrights-groupsmember-auto' => 'Membre implicite de :',
+'userrights-groups-help'       => 'Vous pouvez modifier les groupes auxquels appartient cet utilisateur.
 * Une case cochée signifie que l’utilisateur se trouve dans ce groupe.
 * Une case non cochée signifie qu’il ne s’y trouve pas.
 * Un astérisque (*) indique que vous ne pouvez pas retirer ce groupe une fois que vous l’avez ajouté.',
-'userrights-reason'           => 'Raison du changement :',
-'userrights-no-interwiki'     => 'Vous n’avez pas la permission de modifier des droits d’utilisateurs sur d’autres wikis.',
-'userrights-nodatabase'       => 'La base de donnée « $1 » n’existe pas ou n’est pas locale.',
-'userrights-nologin'          => 'Vous devez vous [[Special:UserLogin|connecter]] avec un compte d’administrateur pour modifier des droits d’utilisateur.',
-'userrights-notallowed'       => 'Votre compte n’a pas la permission de modifier des droits d’utilisateur.',
-'userrights-changeable-col'   => 'Les groupes que vous pouvez modifier',
-'userrights-unchangeable-col' => 'Les groupes que vous ne pouvez pas modifier',
+'userrights-reason'            => 'Raison du changement :',
+'userrights-no-interwiki'      => 'Vous n’avez pas la permission de modifier des droits d’utilisateurs sur d’autres wikis.',
+'userrights-nodatabase'        => 'La base de donnée « $1 » n’existe pas ou n’est pas locale.',
+'userrights-nologin'           => 'Vous devez vous [[Special:UserLogin|connecter]] avec un compte d’administrateur pour modifier des droits d’utilisateur.',
+'userrights-notallowed'        => 'Votre compte n’a pas la permission de modifier des droits d’utilisateur.',
+'userrights-changeable-col'    => 'Les groupes que vous pouvez modifier',
+'userrights-unchangeable-col'  => 'Les groupes que vous ne pouvez pas modifier',
 
 # Groups
 'group'               => 'Groupe :',
@@ -1684,8 +1686,6 @@ Si vous voulez toujours téléverser votre fichier, veuillez revenir en arrière
 'uploaddisabledtext'          => 'Le téléversement de fichiers est désactivé sur ce wiki.',
 'php-uploaddisabledtext'      => 'Le téléversement de fichiers a été désactivé dans PHP. Vérifiez l’option de configuration file_uploads.',
 'uploadscripted'              => 'Ce fichier contient du code HTML ou un script qui pourrait être interprété de façon incorrecte par un navigateur web.',
-'uploadcorrupt'               => 'Ce fichier est corrompu, a une taille nulle ou possède une extension invalide.
-Veuillez vérifier le fichier avant de le téléverser à nouveau.',
 'uploadvirus'                 => 'Ce fichier contient un virus ! Pour plus de détails, consultez : $1',
 'upload-source'               => 'Fichier source',
 'sourcefilename'              => 'Nom du fichier source :',
@@ -1748,9 +1748,13 @@ Pour une sécurité optimale, img_auth.php est désactivé.',
 'img-auth-noread'       => 'L’utilisateur n’a pas le droit en lecture sur « $1 ».',
 
 # HTTP errors
-'http-invalid-url'    => 'URL incorrecte : $1',
-'http-invalid-scheme' => 'Les URLs avec le schéma « $1 » ne sont pas supportées',
-'http-request-error'  => "Erreur lors de l'envoi de la requête :",
+'http-invalid-url'      => 'URL incorrecte : $1',
+'http-invalid-scheme'   => 'Les URLs avec le schéma « $1 » ne sont pas supportées',
+'http-request-error'    => "Erreur inconnue lors de l'envoi de la requête.",
+'http-read-error'       => 'Erreur de lecture HTTP.',
+'http-timed-out'        => 'La requête HTTP a expiré.',
+'http-curl-error'       => "Erreur lors de la récupération de l'URL : $1",
+'http-host-unreachable' => "Impossible d'atteindre l'URL",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL injoignable',

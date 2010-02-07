@@ -34,6 +34,7 @@ class LoginForm {
 	const ABORTED = 8;
 	const CREATE_BLOCKED = 9;
 	const THROTTLED = 10;
+	const USER_BLOCKED = 11;
 
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
@@ -264,11 +265,6 @@ class LoginForm {
 		# Now create a dummy user ($u) and check if it is valid
 		$name = trim( $this->mName );
 		$u = User::newFromName( $name, 'creatable' );
-		if ( WikiError::isError( $u ) ) {
-			$this->mainLoginForm( wfMsg( $u->getMessage() ) );
-			return false;
-		}
-
 		if ( !is_object( $u ) ) {
 			$this->mainLoginForm( wfMsg( 'noname' ) );
 			return false;
@@ -464,6 +460,7 @@ class LoginForm {
 			return $abort;
 		}
 
+		global $wgBlockDisablesLogin;
 		if (!$u->checkPassword( $this->mPassword )) {
 			if( $u->checkTemporaryPassword( $this->mPassword ) ) {
 				// The e-mailed temporary password should not be used for actu-
@@ -494,6 +491,9 @@ class LoginForm {
 			} else {
 				$retval = ($this->mPassword  == '') ? self::EMPTY_PASS : self::WRONG_PASS;
 			}
+		} elseif ( $wgBlockDisablesLogin && $u->isBlocked() ) {
+			// If we've enabled it, make it so that a blocked user cannot login
+			$retval = self::USER_BLOCKED;
 		} else {
 			$wgAuth->updateUser( $u );
 			$wgUser = $u;
@@ -621,6 +621,10 @@ class LoginForm {
 				break;
 			case self::THROTTLED:
 				$this->mainLoginForm( wfMsg( 'login-throttled' ) );
+				break;
+			case self::USER_BLOCKED:
+				$this->mainLoginForm( wfMsgExt( 'login-userblocked',
+					array( 'parsemag', 'escape' ), $this->mName ) );
 				break;
 			default:
 				throw new MWException( "Unhandled case value" );

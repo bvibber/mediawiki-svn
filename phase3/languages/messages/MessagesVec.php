@@ -578,6 +578,7 @@ I nomi utenti i distingue tra majuscole e minuscole.
 Verifica che el nome inserìo el sia giusto o [[Special:UserLogin/signup|crea na utensa nova]].',
 'nosuchusershort'            => 'No xè registrà nissun utente de nome "<nowiki>$1</nowiki>". Verifica el nome inserìo.',
 'nouserspecified'            => 'Bisogna specificar un nome utente.',
+'login-userblocked'          => "Sto utente el xe blocà. No xe parmessa l'autenticassion.",
 'wrongpassword'              => "La password che te ghe messo no l'è mia giusta.<br /><br />Riproa, par piaser.",
 'wrongpasswordempty'         => 'La password inseria la xè voda. Ripróa da novo.',
 'passwordtooshort'           => 'La password la gà da èssar longa almanco {{PLURAL:$1|$1 caràtere|$1 caràteri}}.',
@@ -1202,25 +1203,26 @@ In più te pol anca farte contatar da altri tramite la to pagina personale o la 
 'prefs-diffs'                   => 'Difarense',
 
 # User rights
-'userrights'                  => 'Gestion dei parmessi relativi ai utenti',
-'userrights-lookup-user'      => 'Gestion de i gruppi utente',
-'userrights-user-editname'    => 'Inserir el nome utente:',
-'editusergroup'               => 'Modifica grupi utente',
-'editinguser'                 => "Modifica dei diriti assegnà a l'utente '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Modifica grupi utente',
-'saveusergroups'              => 'Salva grupi utente',
-'userrights-groupsmember'     => 'Apartien ai grupi:',
-'userrights-groups-help'      => "Se pol modificar i grupi a cui l'utente l'è assegnà.
+'userrights'                   => 'Gestion dei parmessi relativi ai utenti',
+'userrights-lookup-user'       => 'Gestion de i gruppi utente',
+'userrights-user-editname'     => 'Inserir el nome utente:',
+'editusergroup'                => 'Modifica grupi utente',
+'editinguser'                  => "Modifica dei diriti assegnà a l'utente '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Modifica grupi utente',
+'saveusergroups'               => 'Salva grupi utente',
+'userrights-groupsmember'      => 'Apartien ai grupi:',
+'userrights-groupsmember-auto' => 'Menbro implìcito de:',
+'userrights-groups-help'       => "Se pol modificar i grupi a cui l'utente l'è assegnà.
 * Na casela de spunta selezionà la indica l'apartenenza de l'utente al grupo.
 * Na casela de spunta deselezionà la indica la so mancata apartenenza al grupo.
 * N'asterisco (*) l'indica che no te pol cavar un utente da un grupo na olta che te l'è zontà, o viceversa.",
-'userrights-reason'           => 'Motivassion:',
-'userrights-no-interwiki'     => 'No te ghè i parmessi necessari par modificar i diriti dei utenti su altri siti.',
-'userrights-nodatabase'       => "El database $1 no l'esiste mìa o no l'è un database local.",
-'userrights-nologin'          => "Par assegnarghe diriti ai utenti te ghè da [[Special:UserLogin|efetuar l'acesso]] come aministrador.",
-'userrights-notallowed'       => 'No te ghè i parmessi necessari par assegnarghe diriti ai utenti.',
-'userrights-changeable-col'   => 'Grupi che te pol canbiar',
-'userrights-unchangeable-col' => 'Grupi che no te pol canbiar',
+'userrights-reason'            => 'Motivassion:',
+'userrights-no-interwiki'      => 'No te ghè i parmessi necessari par modificar i diriti dei utenti su altri siti.',
+'userrights-nodatabase'        => "El database $1 no l'esiste mìa o no l'è un database local.",
+'userrights-nologin'           => "Par assegnarghe diriti ai utenti te ghè da [[Special:UserLogin|efetuar l'acesso]] come aministrador.",
+'userrights-notallowed'        => 'No te ghè i parmessi necessari par assegnarghe diriti ai utenti.',
+'userrights-changeable-col'    => 'Grupi che te pol canbiar',
+'userrights-unchangeable-col'  => 'Grupi che no te pol canbiar',
 
 # Groups
 'group'               => 'Grupo:',
@@ -1476,7 +1478,6 @@ Se te vol cargar el file istesso, par piaser torna indrio e canbia el nome che t
 'uploaddisabledtext'          => "El caricamento dei file no'l xe mìa ativo.",
 'php-uploaddisabledtext'      => 'El caricamento de file tramite PHP el xe disabilità. Contròla la configurassion de file_uploads.',
 'uploadscripted'              => 'Sto file contegne codexe HTML o de script, che podaria essere interpretà eroneamente da un browser web.',
-'uploadcorrupt'               => 'El file el xe coróto o el gà na estension mìa giusta. Controla el file e dopo próa de novo a cargarlo.',
 'uploadvirus'                 => 'Sto file contegne un virus! Detagli: $1',
 'upload-source'               => 'File de origine',
 'sourcefilename'              => 'Nome del file de origine:',
@@ -1525,7 +1526,13 @@ Par na major sicuressa, img_auth.php el xe disabilità.',
 'img-auth-noread'       => 'L\'utente no\'l gà mia dirito de lèzar "$1".',
 
 # HTTP errors
-'http-invalid-url' => 'URL mia valido: $1',
+'http-invalid-url'      => 'URL mia valido: $1',
+'http-invalid-scheme'   => 'Le URL col schema "$1" no le xe suportà',
+'http-request-error'    => 'Richiesta HTTP falìa par via de un eror sconossùo.',
+'http-read-error'       => 'Eror de letura HTTP.',
+'http-timed-out'        => 'Richiesta HTTP scadùa.',
+'http-curl-error'       => "Eror nel recupero de l'URL: $1",
+'http-host-unreachable' => 'URL mìa ragiungibile',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL mìa ragiungibile',
@@ -1922,7 +1929,7 @@ Le future modìfeghe a sta pagina e a la relativa pagina de discussion le sarà 
 'enotif_lastvisited'           => 'Varda $1 par tute le modifiche da la to ultima visita.',
 'enotif_lastdiff'              => 'Varda $1 par visualizar la modifica.',
 'enotif_anon_editor'           => 'utente anonimo $1',
-'enotif_body'                  => 'Caro $WATCHINGUSERNAME,
+'enotif_body'                  => 'Caro/a $WATCHINGUSERNAME,
 
 ła pàxena $PAGETITLE de {{SITENAME}} la xè stà $CHANGEDORCREATED el $PAGEEDITDATE da $PAGEEDITOR, varda $PAGETITLE_URL par ła version atuałe.
 
@@ -1942,6 +1949,9 @@ Te podi anca reinpostar l\'avixo de notifica par tuti i osservati speciałi de �
 --
 Par canbiar łe inpostassion de i to osservati speciałi, visita
 {{fullurl:Special:Watchlist/edit}}
+
+Par cavar la pagina da i to osservati speciałi, visita
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
 
 Par riscontri e ulteriore assistensa:
 {{fullurl:{{MediaWiki:Helppage}}}}',

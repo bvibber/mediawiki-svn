@@ -42,7 +42,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 	}
 
 	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, $fld_size = false,
-			$fld_comment = false, $fld_user = false, $fld_content = false, $fld_tags = false;
+			$fld_comment = false, $fld_parsedcomment = false, $fld_user = false, $fld_content = false, $fld_tags = false;
 
 	protected function getTokenFunctions() {
 		// tokenname => function
@@ -137,9 +137,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_flags = isset ( $prop['flags'] );
 		$this->fld_timestamp = isset ( $prop['timestamp'] );
 		$this->fld_comment = isset ( $prop['comment'] );
+		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$this->fld_size = isset ( $prop['size'] );
 		$this->fld_user = isset ( $prop['user'] );
 		$this->token = $params['token'];
+
+		// Possible indexes used
+		$index = array();
 
 		if ( !is_null( $this->token ) || $pageCount > 0 ) {
 			$this->addFields( Revision::selectPageFields() );
@@ -156,6 +160,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->addTables( 'change_tag' );
 			$this->addJoinConds( array( 'change_tag' => array( 'INNER JOIN', array( 'rev_id=ct_rev_id' ) ) ) );
 			$this->addWhereFld( 'ct_tag' , $params['tag'] );
+			global $wgOldChangeTagsIndex;
+			$index['change_tag'] = $wgOldChangeTagsIndex ?  'ct_tag' : 'change_tag_tag_id';
 		}
 		
 		if ( isset( $prop['content'] ) || !is_null( $this->difftotext ) ) {
@@ -294,6 +300,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			ApiBase :: dieDebug( __METHOD__, 'param validation?' );
 
 		$this->addOption( 'LIMIT', $limit + 1 );
+		$this->addOption( 'USE INDEX', $index );
 
 		$data = array ();
 		$count = 0;
@@ -359,13 +366,21 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$vals['size'] = intval( $revision->getSize() );
 		}
 
-		if ( $this->fld_comment ) {
+		if ( $this->fld_comment || $this->fld_parsedcomment ) {
 			if ( $revision->isDeleted( Revision::DELETED_COMMENT ) ) {
 				$vals['commenthidden'] = '';
 			} else {
 				$comment = $revision->getComment();
 				if ( strval( $comment ) !== '' )
-					$vals['comment'] = $comment;
+				{
+					if ( $this->fld_comment )
+						$vals['comment'] = $comment;
+					
+					if ( $this->fld_parsedcomment ) {
+						global $wgUser;
+						$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $comment, $title );
+					}
+				}
 			}
 		}
 
@@ -461,6 +476,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 					'user',
 					'size',
 					'comment',
+					'parsedcomment',
 					'content',
 					'tags'
 				)
@@ -513,17 +529,17 @@ class ApiQueryRevisions extends ApiQueryBase {
 	public function getParamDescription() {
 		return array (
 			'prop' => 'Which properties to get for each revision.',
-			'limit' => 'limit how many revisions will be returned (enum)',
-			'startid' => 'from which revision id to start enumeration (enum)',
-			'endid' => 'stop revision enumeration on this revid (enum)',
-			'start' => 'from which revision timestamp to start enumeration (enum)',
-			'end' => 'enumerate up to this timestamp (enum)',
-			'dir' => 'direction of enumeration - towards "newer" or "older" revisions (enum)',
-			'user' => 'only include revisions made by user',
-			'excludeuser' => 'exclude revisions made by user',
-			'expandtemplates' => 'expand templates in revision content',
-			'generatexml' => 'generate XML parse tree for revision content',
-			'section' => 'only retrieve the content of this section',
+			'limit' => 'Limit how many revisions will be returned (enum)',
+			'startid' => 'From which revision id to start enumeration (enum)',
+			'endid' => 'Stop revision enumeration on this revid (enum)',
+			'start' => 'From which revision timestamp to start enumeration (enum)',
+			'end' => 'Enumerate up to this timestamp (enum)',
+			'dir' => 'Direction of enumeration - towards "newer" or "older" revisions (enum)',
+			'user' => 'Only include revisions made by user',
+			'excludeuser' => 'Exclude revisions made by user',
+			'expandtemplates' => 'Expand templates in revision content',
+			'generatexml' => 'Generate XML parse tree for revision content',
+			'section' => 'Only retrieve the content of this section',
 			'token' => 'Which tokens to obtain for each revision',
 			'continue' => 'When more results are available, use this to continue',
 			'diffto' => array( 'Revision ID to diff each revision to.',
@@ -541,7 +557,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			' 1) Get data about a set of pages (last revision), by setting titles or pageids parameter.',
 			' 2) Get revisions for one given page, by using titles/pageids with start/end/limit params.',
 			' 3) Get data about a set of revisions by setting their IDs with revids parameter.',
-			'All parameters marked as (enum) may only be used with a single page (//2).'
+			'All parameters marked as (enum) may only be used with a single page (#2).'
 		);
 	}
 

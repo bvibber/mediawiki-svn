@@ -65,14 +65,15 @@ class UserrightsPage extends SpecialPage {
 			return;
 		}
 
+		$available = $this->changeableGroups();
+
 		if ( !$this->mTarget ) {
 			/*
 			 * If the user specified no target, and they can only
 			 * edit their own groups, automatically set them as the
 			 * target.
 			 */
-			$available = $this->changeableGroups();
-			if ( empty( $available['add'] ) && empty( $available['remove'] ) )
+			if ( !count( $available['add'] ) && !count( $available['remove'] ) )
 				$this->mTarget = $wgUser->getName();
 		}
 
@@ -100,7 +101,8 @@ class UserrightsPage extends SpecialPage {
 		$this->setHeaders();
 
 		// show the general form
-		$this->switchForm();
+		if ( count( $available['add'] ) || count( $available['remove'] ) )
+			$this->switchForm();
 
 		if( $wgRequest->wasPosted() ) {
 			// save settings
@@ -401,10 +403,21 @@ class UserrightsPage extends SpecialPage {
 		foreach( $groups as $group )
 			$list[] = self::buildGroupLink( $group );
 
+		$autolist = array();
+		if ( $user instanceof User ) {
+			foreach( Autopromote::getAutopromoteGroups( $user ) as $group ) {
+				$autolist[] = self::buildGroupLink( $group );
+			}
+		}
+
 		$grouplist = '';
 		if( count( $list ) > 0 ) {
 			$grouplist = wfMsgHtml( 'userrights-groupsmember' );
-			$grouplist = '<p>' . $grouplist  . ' ' . $wgLang->listToText( $list ) . '</p>';
+			$grouplist = '<p>' . $grouplist  . ' ' . $wgLang->listToText( $list ) . "</p>\n";
+		}
+		if( count( $autolist ) > 0 ) {
+			$autogrouplistintro = wfMsgHtml( 'userrights-groupsmember-auto' );
+			$grouplist .= '<p>' . $autogrouplistintro  . ' ' . $wgLang->listToText( $autolist ) . "</p>\n";
 		}
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalURL(), 'name' => 'editGroup', 'id' => 'mw-userrights-form2' ) ) .

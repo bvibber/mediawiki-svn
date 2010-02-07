@@ -41,7 +41,7 @@ class ApiQueryContributions extends ApiQueryBase {
 
 	private $params, $username;
 	private $fld_ids = false, $fld_title = false, $fld_timestamp = false,
-			$fld_comment = false, $fld_flags = false,
+			$fld_comment = false, $fld_parsedcomment = false, $fld_flags = false,
 			$fld_patrolled = false, $fld_tags = false;
 
 	public function execute() {
@@ -52,6 +52,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->fld_ids = isset( $prop['ids'] );
 		$this->fld_title = isset( $prop['title'] );
 		$this->fld_comment = isset( $prop['comment'] );
+		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$this->fld_size = isset( $prop['size'] );
 		$this->fld_flags = isset( $prop['flags'] );
 		$this->fld_timestamp = isset( $prop['timestamp'] );
@@ -192,7 +193,7 @@ class ApiQueryContributions extends ApiQueryBase {
 			$this->addWhereIf( 'rc_patrolled != 0', isset( $show['patrolled'] ) );
 		}
 		$this->addOption( 'LIMIT', $this->params['limit'] + 1 );
-		$index['revision'] = 'usertext_timestamp';
+		$index = array( 'revision' => 'usertext_timestamp' );
 
 		// Mandatory fields: timestamp allows request continuation
 		// ns+title checks if the user has access rights for this page
@@ -237,12 +238,11 @@ class ApiQueryContributions extends ApiQueryBase {
 		}
 
 		$this->addTables( $tables );
-		$this->addOption( 'USE INDEX', $index );
 		$this->addFieldsIf( 'rev_page', $this->fld_ids );
 		$this->addFieldsIf( 'rev_id', $this->fld_ids || $this->fld_flags );
 		$this->addFieldsIf( 'page_latest', $this->fld_flags );
 		// $this->addFieldsIf('rev_text_id', $this->fld_ids); // Should this field be exposed?
-		$this->addFieldsIf( 'rev_comment', $this->fld_comment );
+		$this->addFieldsIf( 'rev_comment', $this->fld_comment || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'rev_len', $this->fld_size );
 		$this->addFieldsIf( 'rev_minor_edit', $this->fld_flags );
 		$this->addFieldsIf( 'rev_parent_id', $this->fld_flags );
@@ -255,11 +255,15 @@ class ApiQueryContributions extends ApiQueryBase {
 			$this->addFields( 'ts_tags' );
 		}
 		
-		if ( !is_null( $this->params['tag'] ) ) {
+		if ( isset( $this->params['tag'] ) ) {
 			$this->addTables( 'change_tag' );
 			$this->addJoinConds( array( 'change_tag' => array( 'INNER JOIN', array( 'rev_id=ct_rev_id' ) ) ) );
 			$this->addWhereFld( 'ct_tag', $this->params['tag'] );
+			global $wgOldChangeTagsIndex;
+			$index['change_tag'] = $wgOldChangeTagsIndex ?  'ct_tag' : 'change_tag_tag_id';
 		}
+		
+		$this->addOption( 'USE INDEX', $index );
 	}
 
 	/**
@@ -278,9 +282,10 @@ class ApiQueryContributions extends ApiQueryBase {
 			// $vals['textid'] = intval($row->rev_text_id);	// todo: Should this field be exposed?
 		}
 
+		$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+
 		if ( $this->fld_title )
-			ApiQueryBase :: addTitleInfo( $vals,
-				Title :: makeTitle( $row->page_namespace, $row->page_title ) );
+			ApiQueryBase::addTitleInfo( $vals, $title );
 
 		if ( $this->fld_timestamp )
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
@@ -294,11 +299,18 @@ class ApiQueryContributions extends ApiQueryBase {
 				$vals['top'] = '';
 		}
 
-		if ( $this->fld_comment && isset( $row->rev_comment ) ) {
+		if ( ( $this->fld_comment || $this->fld_parsedcomment ) && isset( $row->rev_comment ) ) {
 			if ( $row->rev_deleted & Revision::DELETED_COMMENT )
 				$vals['commenthidden'] = '';
-			else
-				$vals['comment'] = $row->rev_comment;
+			else {
+				if ( $this->fld_comment )
+					$vals['comment'] = $row->rev_comment;
+				
+				if ( $this->fld_parsedcomment ) {
+					global $wgUser;
+					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rev_comment, $title );
+				}
+			}
 		}
 
 		if ( $this->fld_patrolled && $row->rc_patrolled )
@@ -365,6 +377,7 @@ class ApiQueryContributions extends ApiQueryBase {
 					'title',
 					'timestamp',
 					'comment',
+					'parsedcomment',
 					'size',
 					'flags',
 					'patrolled',
@@ -380,6 +393,7 @@ class ApiQueryContributions extends ApiQueryBase {
 					'!patrolled',
 				)
 			),
+			'tag' => null,
 		);
 	}
 
@@ -396,6 +410,7 @@ class ApiQueryContributions extends ApiQueryBase {
 			'prop' => 'Include additional pieces of information',
 			'show' => array( 'Show only items that meet this criteria, e.g. non minor edits only: show=!minor',
 					'NOTE: if show=patrolled or show=!patrolled is set, revisions older than $wgRCMaxAge won\'t be shown', ),
+			'tag' => 'Only list revisions tagged with this tag',
 		);
 	}
 

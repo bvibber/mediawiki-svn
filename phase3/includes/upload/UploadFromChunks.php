@@ -19,11 +19,6 @@ class UploadFromChunks extends UploadBase {
 	const CHUNK = 2;
 	const DONE = 3;
 
-	// STYLE NOTE: Coding guidelines says the 'm' prefix for object
-	// member variables is discouraged in new code but "stay
-	// consistent within a class". UploadFromChunks is new, but extends
-	// UploadBase which has the 'm' prefix.	 I'm eschewing the prefix for
-	// member variables of this class.
 	protected $chunkMode; // INIT, CHUNK, DONE
 	protected $sessionKey;
 	protected $comment;
@@ -43,7 +38,8 @@ class UploadFromChunks extends UploadBase {
 	}
 
 	public function initialize( $done, $filename, $sessionKey, $path,
-			$fileSize, $sessionData ) {
+		$fileSize, $sessionData )
+	{
 		$this->initFromSessionKey( $sessionKey, $sessionData );
 
 		if ( !$this->sessionKey && !$done ) {
@@ -57,8 +53,8 @@ class UploadFromChunks extends UploadBase {
 		}
 
 		if ( $this->chunkMode == self::CHUNK || $this->chunkMode == self::DONE ) {
-                  $this->mTempPath = $path;
-                  $this->fileSize += $fileSize;
+			$this->mTempPath = $path;
+			$this->fileSize += $fileSize;
 		}
 	}
 
@@ -92,14 +88,17 @@ class UploadFromChunks extends UploadBase {
 	 * @returns void
 	 */
 	protected function initFromSessionKey( $sessionKey, $sessionData ) {
-		if ( !$sessionKey || empty( $sessionKey ) ) {
-			$this->status = Status::newFromFatal( 'Missing session data.' );
+		// testing against null because we don't want to cause obscure
+		// bugs when $sessionKey is full of "0"
+		if ( $sessionKey !== null ) {
+			$this->status = Status::newFromFatal( 'import-token-mismatch' );
 			return;
 		}
 		$this->sessionKey = $sessionKey;
 
 		if ( isset( $sessionData[$this->sessionKey]['version'] )
-				&& $sessionData[$this->sessionKey]['version'] == self::SESSION_VERSION ) {
+			&& $sessionData[$this->sessionKey]['version'] == self::SESSION_VERSION )
+		{
 			$this->comment = $sessionData[$this->sessionKey]['comment'];
 			$this->pageText = $sessionData[$this->sessionKey]['pageText'];
 			$this->watch = $sessionData[$this->sessionKey]['watch'];
@@ -118,7 +117,7 @@ class UploadFromChunks extends UploadBase {
 	 * @see UploadBase::performUpload
 	 */
 	public function performUpload( $comment, $pageText, $watch, $user ) {
-		wfDebug( "\n\n\performUpload(chunked): sum:" . $comment . ' c: ' . $pageText . ' w:' . $watch );
+		wfDebug( "\n\n\performUpload(chunked): comment:" . $comment . ' pageText: ' . $pageText . ' watch:' . $watch );
 		global $wgUser, $wgOut;
 
 		if ( $this->chunkMode == self::INIT ) {
@@ -150,13 +149,13 @@ class UploadFromChunks extends UploadBase {
 			);
 			$wgOut->disable();
 		} else if ( $this->chunkMode == self::DONE ) {
-			if ( $comment == '' )
+			if ( !$comment )
 				$comment = $this->comment;
 
-			if ( $pageText == '' )
+			if ( !$pageText )
 				$pageText = $this->pageText;
 
-			if ( $watch == '' )
+			if ( !$watch )
 				$watch = $this->watch;
 
 			$status = parent::performUpload( $comment, $pageText, $watch, $user );
@@ -206,15 +205,34 @@ class UploadFromChunks extends UploadBase {
 				$_SESSION['wsUploadData'][$this->sessionKey]['repoPath'] = $this->repoPath;
 			}
 			return $status;
-		} else {
-			if ( $this->getRealPath( $this->repoPath ) ) {
-				$this->status = $this->appendToUploadFile( $this->repoPath, $this->mTempPath );
-			} else {
-				$this->status = Status::newFatal( 'filenotfound', $this->repoPath );
-			}
-
-			if ( $this->fileSize >  $wgMaxUploadSize )
-				$this->status = Status::newFatal( 'largefileserver' );
 		}
+		if ( $this->getRealPath( $this->repoPath ) ) {
+			$this->status = $this->appendToUploadFile( $this->repoPath, $this->mTempPath );
+		} else {
+			$this->status = Status::newFatal( 'filenotfound', $this->repoPath );
+		}
+		if ( $this->fileSize >	$wgMaxUploadSize )
+			$this->status = Status::newFatal( 'largefileserver' );
+	}
+
+	public function verifyUpload() {
+		if ( $this->chunkMode != self::DONE ) {
+			return Status::newGood();
+		}
+		return parent::verifyUpload();
+	}
+
+	public function checkWarnings() {
+		if ( $this->chunkMode != self::DONE ) {
+			return null;
+		}
+		return parent::checkWarnings();
+	}
+
+	public function getImageInfo( $result ) {
+		if ( $this->chunkMode != self::DONE ) {
+			return null;
+		}
+		return parent::getImageInfo( $result );
 	}
 }

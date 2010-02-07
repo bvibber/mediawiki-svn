@@ -5,6 +5,8 @@ import tarfile, zipfile
 import os, re, shutil, sys, platform
 
 pyversion = platform.python_version()
+islinux = platform.system().lower() == 'linux' or False
+
 if pyversion[:3] in ['2.5', '2.6', '2.7']:
     import urllib as urllib_request
     import codecs
@@ -30,9 +32,15 @@ def GetFileFromURL( url, dest ):
     if os.path.isfile(dest):
         print( 'File %s up to date.' % dest )
         return
-    print( 'Downloading from [%s] ...' % url )
-    urllib_request.urlretrieve( url, dest )
-    print( 'Download complete.\n' )
+    global islinux
+    if islinux:
+        # we use wget instead urlretrieve under Linux, 
+        # because wget will display details like download progress
+        os.system('wget %s' % url)
+    else:
+        print( 'Downloading from [%s] ...' % url )
+        urllib_request.urlretrieve( url, dest )
+        print( 'Download complete.\n' )
     return
 
 def GetFileFromUnihan( path ):
@@ -247,14 +255,14 @@ def CustomRules( dest ):
     return ret
 
 def GetPHPArray( table ):
-    lines = ['\'%s\' => \'%s\',' % (f, t) for (f, t) in table]
+    lines = ['\'%s\' => \'%s\',' % (f, t) for (f, t) in table if f and t]
     #lines = ['"%s"=>"%s",' % (f, t) for (f, t) in table]
     return '\n'.join(lines)
 
 def RemoveSameChar( src_table ):
     dst_table = {}
     for f, t in src_table.items():
-        if not f == t:
+        if f != t:
             dst_table[f] = t
     return dst_table
 

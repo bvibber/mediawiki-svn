@@ -224,7 +224,7 @@ $messages = array(
 'create'            => 'Къура',
 'editthispage'      => 'Бу бетни тюзет',
 'create-this-page'  => 'Бу бетни къура',
-'delete'            => 'Къурут',
+'delete'            => 'Кетер',
 'deletethispage'    => 'Бу бетни кетер',
 'undelete_short'    => '$1 {{PLURAL:$1|тюзетиуню}} къайтар',
 'protect'           => 'Джакъла',
@@ -456,6 +456,7 @@ $2',
 Атны тюз джазылгъанына къарагъыз неда [[Special:UserLogin/signup|джангы аккоунт къурагъаз]].',
 'nosuchusershort'            => '<nowiki>$1</nowiki> аты бла къшулуучу джокъду. Атны тюз джазылгъанына къарагъыз.',
 'nouserspecified'            => 'Сиз къошулуучу атыгъызны джазаргъа керексиз.',
+'login-userblocked'          => 'Бу къошулуучу блокга салыннганды. Кирирге мадары джокъду.',
 'wrongpassword'              => 'Сиз джазгъан пароль терсди. Джангыдан кёрюгюз.',
 'wrongpasswordempty'         => 'Пароль джазылмай къалгъанды. Джангыдан кёрюгюз.',
 'passwordtooshort'           => '$1 {{PLURAL:$1|символдан}} аз болмазгъа керекди пароль.',
@@ -1370,7 +1371,6 @@ $1 {{PLURAL:$1|символдан|символладан}} кеб болургъ
 'php-uploaddisabledtext'      => 'PHP-да файл джюклеу амал джукъланыбды.
 file_uploads джарашдырыулагъа бир къарагъыз.',
 'uploadscripted'              => 'Бу файл, браузер бла халатлы таныргъа боллукъ, HTML-код неда скрипт джюрютеди.',
-'uploadcorrupt'               => 'Бу файл не бузукъду неда кенгертиую терсди. Файлны контроль этиб, джангыдан джюклеб кёргюгюз.',
 'uploadvirus'                 => 'Файл вируслуду! $1 къара.',
 'upload-source'               => 'Къайнакъ файл',
 'sourcefilename'              => 'Къайнакъ аты файлны:',
@@ -1436,7 +1436,7 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization бетге къара.'
 # HTTP errors
 'http-invalid-url'    => 'Терс URL: $1',
 'http-invalid-scheme' => '«$1» схемалы адресле тутулмайла',
-'http-request-error'  => 'Соруу ийгенни халаты:',
+'http-request-error'  => 'Соруу ийгенни халаты.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL-ге джетилелимеди',
@@ -1870,7 +1870,7 @@ $NEWPAGE
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
-'deletepage'             => 'Бетни къурут',
+'deletepage'             => 'Бетни кетер',
 'confirm'                => 'Къабыл эт',
 'excontent'              => 'ичиндеги: $1',
 'excontentauthor'        => "ичиндеги: '$1' ('[[Special:Contributions/$2|$2]] юлюш къошхан джангыз къошулуучу болгъанды)",
@@ -1879,20 +1879,20 @@ $NEWPAGE
 'delete-confirm'         => '"$1" кетер',
 'delete-backlink'        => '← $1',
 'delete-legend'          => 'Кетер',
-'historywarning'         => "'''Эсгериу:''' кетер тургъан бетни $1 {{PLURAL:$1|версиялы|версиялы}} тарихи барды:",
-'confirmdeletetext'      => 'Сиз бетни (неда суратны) бютеу тюрлениу тарихи бла толу къурутууун соргъансыз.
-Алай этерге керти излегенигизни эм  [[{{MediaWiki:Policy-url}}къурутуу политика]] бёлюмде ачыкъланнган джорукъла бла этгенигизни, бегитигиз.',
+'historywarning'         => "'''Эсгериу:''' кетериле тургъан бетни $1 {{PLURAL:$1|версиялы|версиялы}} тарихи барды:",
+'confirmdeletetext'      => 'Сиз бетни (неда суратны) бютеу тюрлениу тарихи бла толу кетерирге соргъансыз.
+Алай этерге керти излегенигизни эм  [[{{MediaWiki:Policy-url}}кетериу политика]] бёлюмде ачыкъланнган джорукъла бла этгенигизни, бегитигиз.',
 'actioncomplete'         => 'Этим толтурулду',
 'actionfailed'           => 'Этим джетишимсиз болду',
-'deletedtext'            => '«<nowiki>$1</nowiki>» къурутулуннган бетди.
-Ахыр къурутууланы списогун кёрюр ючюн $2 къарагъыз.',
+'deletedtext'            => '«<nowiki>$1</nowiki>» кетерилген бетди.
+Ахыр кетерилгенлени списогун кёрюр ючюн $2 къарагъыз.',
 'deletedarticle'         => '«[[$1]]» кетерилди',
 'suppressedarticle'      => '"[[$1]]" джашырылды',
 'dellogpage'             => 'Кетерилгенлени журналы',
 'dellogpagetext'         => 'Тюбюндеги список ахыр кетериулени журналыды.',
 'deletionlog'            => 'кетериулени журналы',
 'reverted'               => 'Алгъынгы версиясына къайтарылгъанды',
-'deletecomment'          => 'Къурутулууну чуруму:',
+'deletecomment'          => 'Кетериуню чуруму:',
 'deleteotherreason'      => 'башха чурум / дагъыда:',
 'deletereasonotherlist'  => 'Башха чурум',
 'deletereason-dropdown'  => '* Кетериуню баш чурумлары
@@ -2411,7 +2411,7 @@ MediaWiki локализациясына юлюш къошаргъа излей 
 'tooltip-ca-history'              => 'Бетни алгъын версиялары',
 'tooltip-ca-protect'              => 'Бу бетни джакъла',
 'tooltip-ca-unprotect'            => 'Джакълауну кетер бу бетден',
-'tooltip-ca-delete'               => 'Бу бетни къурут',
+'tooltip-ca-delete'               => 'Бу бетни кетер',
 'tooltip-ca-undelete'             => 'Бетни кетериуню аллындагъа халына къайтар',
 'tooltip-ca-move'                 => 'Бу бетни атын тюрлендириу',
 'tooltip-ca-watch'                => 'Бу бетни сынчыкълау списогугъузгъа къошугъуз',

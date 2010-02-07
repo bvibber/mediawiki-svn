@@ -80,12 +80,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   similarly to the category namespace.
 * $wgEnableSorbs renamed to $wgDnsBlacklistUrls ($wgEnableSorbs kept for
   backward compatibility)
-* $wgUploadNavigationUrl now also affects images inline images that do not 
-  exist. In that case the URL will get (?|&)wpDestFile=<filename> appended to 
+* $wgUploadNavigationUrl now also affects images inline images that do not
+  exist. In that case the URL will get (?|&)wpDestFile=<filename> appended to
   it as appropriate.
 * If $wgLocaltimezone is null, use the server's timezone as the default for
   signatures. This was always the behaviour documented in DefaultSettings.php
-  but has not been the actual behaviour for some time: instead, UTC was used 
+  but has not been the actual behaviour for some time: instead, UTC was used
   by default.
 * Added $wgExtensionAssetsPath, to decouple assets serving from $wgScriptPath.
   If not specified it will default to $wgScriptPath/extensions
@@ -94,8 +94,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added $wgAdvertisedFeedTypes to decide what feed types (RSS, Atom, both, or
   neither) MediaWiki advertises.  Default is array( 'atom' ), so RSS is no
   longer advertised by default (but it still works).
-* Added $wgMemCachedTimeout to configure connection timeouts for communicating
-  with a memcached server
+* Added $wgMemCachedTimeout, controls how long to wait for data from the
+  memcached servers.
+* New configuration variables $wgDebugTimestamps and $wgDebugPrintHttpHeaders
+  for controlling debug output.
+* New $wgBlockDisablesLogin when set to true disallows blocked users from
+  logging in.
 
 === New features in 1.16 ===
 
@@ -295,8 +299,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 19791) Add URL of file source as comment to thumbs (for ImageMagick)
 * (bug 21946) Sorted wikitables do not properly handle minus signs
 * (bug 18885) Red links for media files do not support shared repositories
-* Added $wgFixArabicUnicode, to convert deprecated presentation forms in 
-  Arabic text to their modern equivalents, and $wgFixMalayalamUnicode, to 
+* Added $wgFixArabicUnicode, to convert deprecated presentation forms in
+  Arabic text to their modern equivalents, and $wgFixMalayalamUnicode, to
   convert ZWJ-based chillu sequences in Malayalam text to their Unicode 5.1
   equivalents.
 * (bug 22051) Returing false in SpecialContributionsBeforeMainOutput hook now
@@ -310,6 +314,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   restrict/expand it.
 * (bug 21936) When a revision has been patrolled, there's now a link back to the
   article
+* (bug 22315) SpecialRecentChangesQuery hook now pass $query_options and checks
+  the return value
+* Separate unit test suites under t/ and tests/ were merged and moved to
+  maintenance/tests/.
 
 === Bug fixes in 1.16 ===
 
@@ -663,7 +671,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 19391) Fix caching for Recent ChangesFeed.
 * (bug 21455) Fixed "Watch this page" checkbox appearing on some special pages
   even to non-logged in users
-* (bug 21551) Make Squid reponse limit configurable
+* (bug 21551) Rewrote the Squid purge HTTP client to provide a more robust and
+  general implementation of HTTP, allowing it to purge non-Squid caches such as
+  Varnish.
 * Fixed corruption of long UDP debug log messages by using socket_sendto()
   instead of fsockopen() with fwrite().
 * (bug 16884) Fixed feed links in sidebar not complying with URL parameters
@@ -676,10 +686,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   only displayed to the users that have "editinterface" right
 * (bug 21740) Attempting to protect a page that doesn't exist (salting) returns
   "unknown error"
-* (bug 18762) both redirects and links get fixed one after another if 
+* (bug 18762) both redirects and links get fixed one after another if
   redirects-only switch is not present
 * (bug 20159) thumbnails rerendered if older that $wgThumbnailEpoch
-* Fixed a bug which in some situations causes the job queue to grow forever, 
+* Fixed a bug which in some situations causes the job queue to grow forever,
   due to an infinite loop of job requeues.
 * (bug 21523) File that can have multiple pages (djvu, pdf, ...) no longer have
   the page selector when they have only one page
@@ -718,12 +728,25 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 19226) First line renders differently on many UI messages.
 * (bug 21303) Comments are no longer stripped from MediaWiki:Common.js and
   skin-specific JS pages
-* (bug 5061) Use the more precise thumbcaption thumbimage and thumbinner classes 
+* (bug 5061) Use the more precise thumbcaption thumbimage and thumbinner classes
   for image divs.
-* (bug 22096) IE50Fixes.css and IE55Fixes.css have been dropped from the Monobook 
+* (bug 22096) IE50Fixes.css and IE55Fixes.css have been dropped from the Monobook
   and Chick skins
 * Fixed bug involving unclosed "-{" markup in the language converter
 * (bug 21870) No longer include Google logo from an external server on wiki error.
+* (bug 22181) Do not truncate if the ellipsis actually make the string longer
+* (bug 16039) Text disappearing after a bad image
+* (bug 18784) Internal links like [[File:Foo|caption]] should read 'caption',
+  not 'File:Foo' when Foo is not an image
+* (bug 21518) Special:UserRights no longer displays the user name box for users
+  that can only change their rights
+* (bug 21593) Special:UserRights now lists automatic groups membership
+* (bug 22364) Setting $wgUseExternalEditor to false no longer hides the reupload
+  link from file pages
+* Fix bug introduced in MediaWiki 1.12: The author field in
+  $wgExtensionCredits is no longer sorted with sort() but rather used
+  as it appears in extensions as was the case before r30117 where it
+  was unintentionally sorted along with other fields.
 
 == API changes in 1.16 ==
 
@@ -794,8 +817,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 21441) meta=userinfo&uiprop=options no longer returns default options
   for logged-in users under certain circumstances
 * (bug 21945) Add chomp control in YAML
-* Expand the thumburl to an absolute url to make it consistent with url and 
-  descriptionurl 
+* Expand the thumburl to an absolute url to make it consistent with url and
+  descriptionurl
 * (bug 20233) ApiLogin::execute() doesn't handle LoginForm :: RESET_PASS
 * (bug 22061) API: add prop=headitems to action=parse
 * (bug 22240) API: include time in siteinfo
@@ -803,6 +826,18 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 22245) blfilterredirect=nonredirects in blredirect mode wrongly filtering
 * (bug 22248) Output extension URLs in meta=siteinfo&siprop=extensions
 * Support key-params arrays in 'descriptionmsg' in meta=siteinfo&siprop=extensions
+* (bug 21922) YAML output should quote asterisk when used as key
+* (bug 22297) safesubst: to allow substitution without breaking transclusion
+* (bug 18758) API read of watchlist's wl_notificationtimestamp
+* (bug 20809) Expose EditFormPreloadText via the API
+* (bug 18427) Comment (edit summary) parser option for API
+* (bug 5210)  preload parser should parse <noinclude> (as well as <includeonly>)
+* (bug 8785)  Pipe trick should work with colon functions 
+* (bug 4099)  Pipe trick doesn't work when emptiness is only provided by empty template parameter 
+* (bug 845)   [[#foo|]], [[/bar|]] should be equivalent to [[#foo|foo]], [[/bar|bar]] (new use of "pipe trick")
+* (bug 21660) Support full-width commas for pipe trick
+* (bug 7264)  Magic word to give Page Title as if pipe-trick performed on it {{pipetrick:}}
+* (bug 20339) Allow using the pipe trick in log reasons
 
 === Languages updated in 1.16 ===
 
@@ -821,6 +856,7 @@ changes to languages because of MediaZilla reports.
 * Lower Silesian (sli) (new)
 * Picard (pcd) (new)
 * Uyghur (Arabic script) (ug-arab) (new)
+* Upper Franconian (vmf) (new)
 * Votic (vot) (new)
 * Eastern Yiddish (ydd) (removed)
 * Iriga Bicolano (bto) (removed)
@@ -850,11 +886,7 @@ changes to languages because of MediaZilla reports.
 
 == Compatibility ==
 
-MediaWiki 1.16 requires PHP 5 (5.2 recommended). PHP 4 is no longer supported.
-
-PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
-http://bugs.php.net/bug.php?id=34879
-Upgrade affected systems to PHP 5.1 or higher.
+MediaWiki 1.16 requires PHP 5.1 (5.2 recommended). PHP 4 is no longer supported.
 
 MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
 At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.

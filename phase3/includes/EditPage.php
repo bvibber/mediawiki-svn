@@ -227,22 +227,13 @@ class EditPage {
 	 * @return string The contents of the page.
 	 */
 	protected function getPreloadedText( $preload ) {
+		global $wgParser, $wgUser;
 		if ( !empty( $this->mPreloadText ) ) {
 			return $this->mPreloadText;
-		} elseif ( $preload === '' ) {
-			return '';
 		} else {
 			$preloadTitle = Title::newFromText( $preload );
 			if ( isset( $preloadTitle ) && $preloadTitle->userCanRead() ) {
-				$rev = Revision::newFromTitle( $preloadTitle );
-				if ( is_object( $rev ) ) {
-					$text = $rev->getText();
-					// TODO FIXME: AAAAAAAAAAA, this shouldn't be implementing
-					// its own mini-parser! -ævar
-					$text = preg_replace( '~</?includeonly>~', '', $text );
-					return $text;
-				} else
-					return '';
+				return $wgParser->getTransclusionText( $preloadTitle, ParserOptions::newFromUser( $wgUser ) );
 			}
 		}
 	}
@@ -1344,6 +1335,8 @@ HTML
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
 		$wgOut->addHTML( Xml::hidden( 'wpAutoSummary', $autosumm ) );
 
+		$wgOut->addHTML( Xml::hidden( 'oldid', $this->mArticle->getOldID() ) );
+
 		if ( $this->section == 'new' ) {
 			$this->showSummaryInput( true, $this->summary );
 			$wgOut->addHTML( $this->getSummaryPreview( true, $this->summary ) );
@@ -1549,7 +1542,7 @@ HTML
 		$inputAttrs = ( is_array($inputAttrs) ? $inputAttrs : array() ) + array(
 			'id' => 'wpSummary',
 			'maxlength' => '200',
-			'tabindex' => '1',
+			'tabindex' => '2',
 			'size' => 60,
 			'spellcheck' => 'true',
 		);
@@ -2445,11 +2438,12 @@ INPUTS
 
 	public function getCancelLink() {
 		global $wgUser, $wgTitle;
+
 		$cancelParams = array();
-		if ( !$this->isConflict && isset( $this->mArticle ) &&
-			isset( $this->mArticle->mRevision ) &&
-			!$this->mArticle->mRevision->isCurrent() )
-				$cancelParams['oldid'] = $this->mArticle->mRevision->getId();
+		if ( !$this->isConflict && $this->mArticle->getOldID() > 0 ) {
+			$cancelParams['oldid'] = $this->mArticle->getOldID();
+		}
+
 		return $wgUser->getSkin()->link(
 			$wgTitle,
 			wfMsgExt( 'cancel', array( 'parseinline' ) ),

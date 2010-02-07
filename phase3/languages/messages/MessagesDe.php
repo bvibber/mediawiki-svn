@@ -779,6 +779,7 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 Überprüfe die Schreibweise (Groß-/Kleinschreibung beachten) oder [[Special:UserLogin/signup|melde dich als neuer Benutzer an]].',
 'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfe die Schreibweise.',
 'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
+'login-userblocked'          => 'Dieser Benutzer ist gesperrt. Anmeldung nicht erlaubt.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuche es erneut.',
 'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuche es erneut.',
 'passwordtooshort'           => 'Passwörter müssen mindestens {{PLURAL:$1|1 Zeichen|$1 Zeichen}} lang sein.',
@@ -1176,7 +1177,7 @@ Bitte prüfe die Logbücher.',
 ** Urheberrechtsverletzung
 ** Unangebrachte persönliche Informationen',
 'revdelete-otherreason'       => 'Andere/zusätzliche Begründung:',
-'revdelete-reasonotherlist'   => 'Andere Begründung',
+'revdelete-reasonotherlist'   => 'Anderer Grund',
 'revdelete-edit-reasonlist'   => 'Löschgründe bearbeiten',
 'revdelete-offender'          => 'Autor der Version:',
 
@@ -1680,7 +1681,6 @@ Wenn du diese Datei trotzdem hochladen möchtest, gehe bitte zurück und ändere
 'php-uploaddisabledtext'      => 'Das Hochladen von Dateien wurde in PHP deaktiviert.
 Bitte überprüfe die <code>file_uploads</code>-Einstellung.',
 'uploadscripted'              => 'Diese Datei enthält HTML- oder Scriptcode, der irrtümlich von einem Webbrowser ausgeführt werden könnte.',
-'uploadcorrupt'               => 'Die Datei ist beschädigt oder hat eine falsche Datei-Erweiterung. Bitte überprüfe die Datei und wiederhole den Hochlade-Vorgang.',
 'uploadvirus'                 => 'Diese Datei enthält einen Virus! Details: $1',
 'upload-source'               => 'Quelldatei',
 'sourcefilename'              => 'Quelldatei:',
@@ -1746,7 +1746,7 @@ Aus Sicherheitsgründen ist img_auth.php deaktiviert.',
 # HTTP errors
 'http-invalid-url'    => 'Ungültige URL: $1',
 'http-invalid-scheme' => 'URLs mit dem Schema „$1“ werden nicht unterstützt',
-'http-request-error'  => 'Fehler beim Senden der Anfrage:',
+'http-request-error'  => 'Fehler beim Senden der Anfrage.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL ist nicht erreichbar',
@@ -2384,7 +2384,7 @@ Bitte gib den Grund für die Sperre an.',
 'ipadressorusername'              => 'IP-Adresse oder Benutzername:',
 'ipbexpiry'                       => 'Sperrdauer:',
 'ipbreason'                       => 'Grund:',
-'ipbreasonotherlist'              => 'Andere Begründung',
+'ipbreasonotherlist'              => 'Anderer Grund',
 'ipbreason-dropdown'              => '* Allgemeine Sperrgründe
 ** Einfügen falscher Informationen
 ** Leeren von Seiten

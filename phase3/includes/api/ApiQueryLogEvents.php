@@ -42,16 +42,18 @@ class ApiQueryLogEvents extends ApiQueryBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$db = $this->getDB();
-
-		$prop = $params['prop'];
-		$this->fld_ids = in_array( 'ids', $prop );
-		$this->fld_title = in_array( 'title', $prop );
-		$this->fld_type = in_array( 'type', $prop );
-		$this->fld_user = in_array( 'user', $prop );
-		$this->fld_timestamp = in_array( 'timestamp', $prop );
-		$this->fld_comment = in_array( 'comment', $prop );
-		$this->fld_details = in_array( 'details', $prop );
-		$this->fld_tags = in_array( 'tags', $prop );
+		
+		$prop = array_flip( $params['prop'] );
+		
+		$this->fld_ids = isset( $prop['ids'] );
+		$this->fld_title = isset( $prop['title'] );
+		$this->fld_type = isset( $prop['type'] );
+		$this->fld_user = isset( $prop['user'] );
+		$this->fld_timestamp = isset( $prop['timestamp'] );
+		$this->fld_comment = isset( $prop['comment'] );
+		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
+		$this->fld_details = isset( $prop['details'] );
+		$this->fld_tags = isset( $prop['tags'] );
 
 		list( $tbl_logging, $tbl_page, $tbl_user ) = $db->tableNamesN( 'logging', 'page', 'user' );
 
@@ -68,7 +70,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			'page' => array( 'LEFT JOIN',
 				array(	'log_namespace=page_namespace',
 					'log_title=page_title' ) ) ) );
-		$index = 'times'; // default, may change
+		$index = array( 'logging' => 'times' ); // default, may change
 
 		$this->addFields( array (
 			'log_type',
@@ -83,7 +85,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$this->addFieldsIf( 'user_name', $this->fld_user );
 		$this->addFieldsIf( 'log_namespace', $this->fld_title );
 		$this->addFieldsIf( 'log_title', $this->fld_title );
-		$this->addFieldsIf( 'log_comment', $this->fld_comment );
+		$this->addFieldsIf( 'log_comment', $this->fld_comment || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'log_params', $this->fld_details );
 		
 		if ( $this->fld_tags ) {
@@ -96,11 +98,13 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			$this->addTables( 'change_tag' );
 			$this->addJoinConds( array( 'change_tag' => array( 'INNER JOIN', array( 'log_id=ct_log_id' ) ) ) );
 			$this->addWhereFld( 'ct_tag', $params['tag'] );
+			global $wgOldChangeTagsIndex;
+			$index['change_tag'] = $wgOldChangeTagsIndex ?  'ct_tag' : 'change_tag_tag_id';
 		}
 		
 		if ( !is_null( $params['type'] ) ) {
 			$this->addWhereFld( 'log_type', $params['type'] );
-			$index = 'type_time';
+			$index['logging'] = 'type_time';
 		}
 		
 		$this->addWhereRange( 'log_timestamp', $params['dir'], $params['start'], $params['end'] );
@@ -114,7 +118,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			if ( !$userid )
 				$this->dieUsage( "User name $user not found", 'param_user' );
 			$this->addWhereFld( 'log_user', $userid );
-			$index = 'user_time';
+			$index['logging'] = 'user_time';
 		}
 
 		$title = $params['title'];
@@ -126,10 +130,10 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			$this->addWhereFld( 'log_title', $titleObj->getDBkey() );
 
 			// Use the title index in preference to the user index if there is a conflict
-			$index = is_null( $user ) ? 'page_time' : array( 'page_time', 'user_time' );
+			$index['logging'] = is_null( $user ) ? 'page_time' : array( 'page_time', 'user_time' );
 		}
 
-		$this->addOption( 'USE INDEX', array( 'logging' => $index ) );
+		$this->addOption( 'USE INDEX', $index );
 
 		// Paranoia: avoid brute force searches (bug 17342)
 		if ( !is_null( $title ) ) {
@@ -216,12 +220,13 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			$vals['pageid'] = intval( $row->page_id );
 		}
 
+		$title = Title::makeTitle( $row->log_namespace, $row->log_title );
+
 		if ( $this->fld_title ) {
 			if ( LogEventsList::isDeleted( $row, LogPage::DELETED_ACTION ) ) {
 				$vals['actionhidden'] = '';
 			} else {
-				$title = Title :: makeTitle( $row->log_namespace, $row->log_title );
-				ApiQueryBase :: addTitleInfo( $vals, $title );
+				ApiQueryBase::addTitleInfo( $vals, $title );
 			}
 		}
 
@@ -252,11 +257,18 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		if ( $this->fld_timestamp ) {
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->log_timestamp );
 		}
-		if ( $this->fld_comment && isset( $row->log_comment ) ) {
+		
+		if ( ( $this->fld_comment || $this->fld_parsedcomment ) && isset( $row->log_comment ) ) {
 			if ( LogEventsList::isDeleted( $row, LogPage::DELETED_COMMENT ) ) {
 				$vals['commenthidden'] = '';
 			} else {
-				$vals['comment'] = $row->log_comment;
+				if ( $this->fld_comment )
+					$vals['comment'] = $row->log_comment;
+				
+				if ( $this->fld_parsedcomment ) {
+					global $wgUser;
+					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->log_comment, $title );
+				}
 			}
 		}
 
@@ -287,6 +299,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 					'user',
 					'timestamp',
 					'comment',
+					'parsedcomment',
 					'details',
 					'tags'
 				)

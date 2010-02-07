@@ -446,6 +446,7 @@ No te sce scurdanne de cangià le [[Special:Preferences|{{SITENAME}} preferenze 
 'nav-login-createaccount'    => 'Tràse / Reggistrete',
 'loginprompt'                => "Tu a tenè le cookies abilitate pe tràse jndr'à {{SITENAME}}.",
 'userlogin'                  => 'Tràse / Reggistrete',
+'userloginnocreate'          => 'Tràse',
 'logout'                     => 'Isse',
 'userlogout'                 => 'Isse',
 'notloggedin'                => 'Non ge sì colleghete',
@@ -478,6 +479,7 @@ Vide bbuene a cumme l'è scritte, o [[Special:UserLogin/signup|ccreje n'utende n
 'nosuchusershort'            => 'Non ge ste nisciune utende cu \'u nome "<nowiki>$1</nowiki>".
 Condrolle accume l\'è scritte.',
 'nouserspecified'            => "A scrivere pe forze 'u nome de l'utende.",
+'login-userblocked'          => 'Stu utende jè bloccate. Non ge puè trasè.',
 'wrongpassword'              => "E mise 'na passuor sbagliete.
 Prueve n'otra vote.",
 'wrongpasswordempty'         => "'A passuord 'nzerite jè vianghe.
@@ -619,8 +621,9 @@ Pe piacere mitte tutte le dettaglie ca ponne essere utile pe le richieste tue.",
 'whitelistedittext'                => 'Tu ha $1 pàggene da cangià.',
 'confirmedittext'                  => "Tu a confermà l'indirizze e-mail tue apprime de cangià le pàggene.
 Pe piacere mitte e validesce l'indirizze e-mail tue ausanne le [[Special:Preferences|preferenze de l'utende]].",
-'nosuchsectiontitle'               => 'Non ge stonne seziune',
-'nosuchsectiontext'                => "Tu stè prueve a cangià 'na sezione ca non g'esiste.",
+'nosuchsectiontitle'               => "Non ge pozze acchià 'a sezione",
+'nosuchsectiontext'                => "Tu stè prueve a cangià 'na sezione ca non g'esiste.
+Pò essere ca ha state spustate o scangellate quanne tu ste vedive 'a pàgene.",
 'loginreqtitle'                    => "T'a collegà pe forze",
 'loginreqlink'                     => 'trase',
 'loginreqpagetext'                 => 'Tu a $1 pe vedè otre pàggene.',
@@ -707,10 +710,13 @@ Non ge puè reggistrà sta pàggene.",
 Tu puè fa 'na bella cose, tagghie e 'nzicche le cangiaminde jndr'à 'nu file de teste sus a 'u combiuter tue e pò cchiù tarde le reggistre sus 'a Uicchi.
 
 L'amministratore ca ha bloccate 'u database ha scritte stu mutive: $1",
-'protectedpagewarning'             => "'''ATTENZIO': Sta pàgene ha state blocchete e allore sulamende le utinde cu le privilegge de ''sysop'' ponne cangiarle.'''",
-'semiprotectedpagewarning'         => "'''Fà attenzione:''' Sta pàgene ha state blocchete accussì sulamende l'utinde reggistrete ponne fà cangiaminde.",
+'protectedpagewarning'             => "'''ATTENZIO': Sta pàgene ha state bloccate e allore sulamende le utinde cu le privilegge de ''sysop'' ponne cangiarle.'''
+L'urteme archivie de le trasute ha state previste aqquà sotte pe referimende:",
+'semiprotectedpagewarning'         => "'''Fà attenzione:''' Sta pàgene ha state bloccate accussì sulamende l'utinde reggistrete ponne fà cangiaminde.
+L'urteme archivije de le trasute ha state previste aqquà sotte pe referimende:",
 'cascadeprotectedwarning'          => "'''FA ATTENZIO':''' Sta pàgene ha state blocchete accussì sulamende l'utinde ca tènene le deritte de amministratore a ponne cangià, purcè inglude {{PLURAL:$1|pàgene|pàggrnr}} prutette a cascate:",
-'titleprotectedwarning'            => "'''ATTENZIONE: Sta pàgene ha state blocchete accussì sulamende [[Special:ListGroupRights|specifice diritte]] a ponne ccrejà.'''",
+'titleprotectedwarning'            => "'''ATTENZIONE: Sta pàgene ha state bloccate accussì sulamende [[Special:ListGroupRights|specifice diritte]] a ponne ccrejà.'''
+L'urteme archivije de le trasute jè provviste sotte pe referimende:",
 'templatesused'                    => "{{PLURAL:$1|Template|Template}} ausate sus 'a sta pàgene:",
 'templatesusedpreview'             => "{{PLURAL:$1|Template|Template}} ausate jndr'à sta andeprime:",
 'templatesusedsection'             => "{{PLURAL:$1|Template|Template}} ausate jndr'à sta sezione:",
@@ -754,6 +760,7 @@ Ste argumende onne state luete.",
 'post-expand-template-argument-category'  => 'Pàggene ca condenene template cu quacche argomende zumbete',
 'parser-template-loop-warning'            => "Amme acchiete 'nu cicle de template: [[$1]]",
 'parser-template-recursion-depth-warning' => "Ha state supranete 'u limite di ricorsione de le template ($1)",
+'language-converter-depth-warning'        => "'U convertitore de lènghe ha subranate 'u limite de profonnetà ($1)",
 
 # "Undo" feature
 'undo-success' => "'U cangiamende pò essere annullate.
@@ -820,6 +827,7 @@ Cumme a 'n'amministratore tu a puè vedè angore; stonne cchiù 'mbormaziune jnd
 Cumme a 'n'amministratore tu puè vedè; puè acchijà cchiù 'mbormaziune sus a [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} l'archivije de le soppressiune].",
 'rev-deleted-no-diff'         => "Tu non ge piè vedè sta differenze purcè une de le revisiune ha state '''scangellate'''.
 Pò essere ca jacchie quacche dettaglie jndr'à l'[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} archiviè de le scangellaminde].",
+'rev-suppressed-no-diff'      => "Tu non ge puè vedè sta differenze purcé une de le revisiune ha state '''scangellate'''.",
 'rev-deleted-unhide-diff'     => "Une de le revisiune de sta differenza ha state '''scangellate'''.
 Pò essere ca iacchije quacche dettaglie jndr'à l'[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} archiviè de le scangellaminde]..
 Cumme a 'n'amministratore tu puè angore [$1 vedè sta differenze] ce tu proprie si inderessate.",
@@ -1142,6 +1150,7 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'userrights-editusergroup'       => "Cange le gruppe d'utinde",
 'saveusergroups'                 => "Reggistre le gruppe d'utinde",
 'userrights-groupsmember'        => 'Membre de:',
+'userrights-groupsmember-auto'   => 'Membre imblicite de:',
 'userrights-groups-help'         => "Tu puè alterà le gruppe addò de st'utende jè iscritte:
 * 'Na spunde de verifiche significhe ca l'utende stè jndr'à stu gruppe.
 * 'A spunda de verifica luate significhe ca l'utende non ge stè jndr'à stu gruppe.
@@ -1419,8 +1428,6 @@ Avissa verificà 'a storie d'a scangellazzione d'u file apprime de condinuà a c
 'php-uploaddisabledtext'      => "Le carecaminde de file sonde disabilitate in PHP.<br />
 Pe piacere verifiche le 'mbostaziune d'u ''file_uploads''.",
 'uploadscripted'              => "Stu file condene HTML o codece de script ca ponne essere inderpretete jndr'à 'nu mode sbagliete da le browser.",
-'uploadcorrupt'               => "'U file face schife o tène 'n'estenziona incorrette.
-Pe piacere condrolle 'u file e carechele 'n'otra vote.",
 'uploadvirus'                 => "Alanga toje, 'u file condiene 'nu virus! Dettaglie: $1",
 'upload-source'               => 'File sorgende',
 'sourcefilename'              => "Nome d'u fail d'origgine:",
@@ -1469,6 +1476,15 @@ Sulamende le file ponne trasè.',
 Sta Uicchi jè configurate cumme a 'na Uicchi pubbleche.
 Pe 'na securezze a uerre proprie, img_auth.php jè disabbilitate.",
 'img-auth-noread'       => 'L\'utende non ge tène l\'accesse pe leggere "$1".',
+
+# HTTP errors
+'http-invalid-url'      => 'URL invalide: $1',
+'http-invalid-scheme'   => 'Le URL cu le "$1" scheme non ge sonde supportate.',
+'http-request-error'    => "Richieste HTTP fallite pe 'n'errore scanusciute.",
+'http-read-error'       => "Errore jndr'à letture de l' HTTP",
+'http-timed-out'        => 'Richieste HTTP fore timbe.',
+'http-curl-error'       => "Errore analizzanne l'URL: $1",
+'http-host-unreachable' => "Non ge riesche a raggiungere l'URL",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => "Non ge riesche a raggiungere l'URL",
@@ -1879,7 +1895,7 @@ Le cangiaminde future a sta pàgene e 'a pàgene de le 'ngazzaminde associete le
 'enotif_body'                  => 'Care $WATCHINGUSERNAME,
 
 
-\'A pàgene $PAGETITLE de {{SITENAME}} ha state $CHANGEDORCREATED \'u $PAGEEDITDATE da $PAGEEDITOR, vide $PAGETITLE_URL pa versina corrende.
+\'A pàgene $PAGETITLE de {{SITENAME}} ha state $CHANGEDORCREATED \'u $PAGEEDITDATE da $PAGEEDITOR, vide $PAGETITLE_URL pa versiona corrende.
 
 $NEWPAGE
 
@@ -1897,6 +1913,9 @@ Tu puè pure azzerà \'a spunde de le notifiche pe tutte le pàggene condrollete
 --
 Pe cangià le \'mbostaziune d\'a liste de le pàggene condrollete tue, vè vide
 {{fullurl:{{#special:Watchlist}}/edit}}
+
+Pe scangellà \'a pàgene da \'a liste de le pàggene condrollate, vè vide
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
 
 Segnalaziune e otre assistenze:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2230,6 +2249,7 @@ Pò essere ca ha state già sbloccate.",
 'ipb_blocked_as_range'            => "Errore: l'IP $1 non g'à state bloccate direttamende e non ge pò essere sbloccate.
 Jidde ha state bloccate cumme parte de l'indervalle $2, ca pò essere sbloccate.",
 'ip_range_invalid'                => "L'indervalle de l'IP non g'è valide.",
+'ip_range_toolarge'               => 'Le indervalle de le blocche cchiù larie de /$1 non ge sonde permesse.',
 'blockme'                         => 'Bloccheme',
 'proxyblocker'                    => 'Bloccaore de proxy',
 'proxyblocker-disabled'           => "'A funzione ha state disabbilitete.",
@@ -2341,8 +2361,10 @@ non ge se pò movere 'na pàgene sus a sè stesse.",
 'imageinvalidfilename'         => "'U nome d'u file de destinazzione jè invalide",
 'fix-double-redirects'         => "Aggiorne ogne redirezionamende ca apponde a 'u titele origginale",
 'move-leave-redirect'          => "Lasse 'nu ridirezionamende rréte",
-'protectedpagemovewarning'     => "'''Attenziò:''' Sta pàgene ha state bloccate accussì sulamende l'utinde cu le deritte d'amministratore 'a ponne spustà.",
-'semiprotectedpagemovewarning' => "'''Vide Bbuène:''' Sta pàgene ha state blocchete accussì sulamende l'utinde reggistrate 'a ponne spustà.",
+'protectedpagemovewarning'     => "'''Attenziò:''' Sta pàgene ha state bloccate accussì sulamende l'utinde cu le deritte d'amministratore 'a ponne spustà.
+L'urteme archivije de le trasute ha state mise aqquà sotte pe referimende:",
+'semiprotectedpagemovewarning' => "'''Vide Bbuène:''' Sta pàgene ha state blocchete accussì sulamende l'utinde reggistrate 'a ponne spustà.
+L'urteme archivije de le trasute ha state mise aqquà sotte pe referimende:",
 'move-over-sharedrepo'         => "== 'U file esiste ==
 [[:$1]] esiste sus a 'n'archivie condivise. Spustanne 'u file sus a stu titele tu vè sovrascrive 'u file condivise.",
 'file-exists-sharedrepo'       => "'U nome d'u file ca è scacchiate jè già ausate sus a 'n'archivie condivise.
@@ -2573,7 +2595,7 @@ pe piacere vide math/README pe configurà.',
 'markaspatrolleddiff'                 => 'Signe cumme condrollate',
 'markaspatrolledtext'                 => 'Signe sta pàgene cumme condrollate',
 'markedaspatrolled'                   => 'Signate cumme condrollate',
-'markedaspatrolledtext'               => "'A revisiona scacchiate ha state signate cumme condrollate.",
+'markedaspatrolledtext'               => "'A revisiona scacchiate de [[:$1]] ha state signate cumme condrollate.",
 'rcpatroldisabled'                    => "Condrolle de l'Urteme Cangiaminde disabbilitate",
 'rcpatroldisabledtext'                => "'A funzione Condrolle de l'Urteme Cangiaminde mò ète disabbilitate.",
 'markedaspatrollederror'              => 'Non ge se pò signà cumme condrollate',

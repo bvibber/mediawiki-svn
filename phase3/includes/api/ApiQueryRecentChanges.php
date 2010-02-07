@@ -40,7 +40,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		parent :: __construct( $query, $moduleName, 'rc' );
 	}
 
-	private $fld_comment = false, $fld_user = false, $fld_flags = false,
+	private $fld_comment = false, $fld_parsedcomment = false, $fld_user = false, $fld_flags = false,
 			$fld_timestamp = false, $fld_title = false, $fld_ids = false,
 			$fld_sizes = false;
 	/**
@@ -87,6 +87,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	 */
 	public function initProperties( $prop ) {
 		$this->fld_comment = isset ( $prop['comment'] );
+		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$this->fld_user = isset ( $prop['user'] );
 		$this->fld_flags = isset ( $prop['flags'] );
 		$this->fld_timestamp = isset ( $prop['timestamp'] );
@@ -113,7 +114,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		 */
 		$db = $this->getDB();
 		$this->addTables( 'recentchanges' );
-		$index = 'rc_timestamp'; // May change
+		$index = array( 'recentchanges' => 'rc_timestamp' ); // May change
 		$this->addWhereRange( 'rc_timestamp', $params['dir'], $params['start'], $params['end'] );
 		$this->addWhereFld( 'rc_namespace', $params['namespace'] );
 		$this->addWhereFld( 'rc_deleted', 0 );
@@ -160,7 +161,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		if ( !is_null( $params['user'] ) )
 		{
 			$this->addWhereFld( 'rc_user_text', $params['user'] );
-			$index = 'rc_user_text';
+			$index['recentchanges'] = 'rc_user_text';
 		}
 		
 		if ( !is_null( $params['excludeuser'] ) )
@@ -195,7 +196,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addFieldsIf( 'rc_id', $this->fld_ids );
 			$this->addFieldsIf( 'rc_this_oldid', $this->fld_ids );
 			$this->addFieldsIf( 'rc_last_oldid', $this->fld_ids );
-			$this->addFieldsIf( 'rc_comment', $this->fld_comment );
+			$this->addFieldsIf( 'rc_comment', $this->fld_comment || $this->fld_parsedcomment );
 			$this->addFieldsIf( 'rc_user', $this->fld_user );
 			$this->addFieldsIf( 'rc_user_text', $this->fld_user );
 			$this->addFieldsIf( 'rc_minor', $this->fld_flags );
@@ -226,10 +227,13 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addTables( 'change_tag' );
 			$this->addJoinConds( array( 'change_tag' => array( 'INNER JOIN', array( 'rc_id=ct_rc_id' ) ) ) );
 			$this->addWhereFld( 'ct_tag' , $params['tag'] );
+			global $wgOldChangeTagsIndex;
+			$index['change_tag'] = $wgOldChangeTagsIndex ?  'ct_tag' : 'change_tag_tag_id';
 		}
+		
 		$this->token = $params['token'];
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'USE INDEX', array( 'recentchanges' => $index ) );
+		$this->addOption( 'USE INDEX', $index );
 
 		$count = 0;
 		/* Perform the actual query. */
@@ -349,8 +353,12 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $row->rc_timestamp );
 
 		/* Add edit summary / log summary. */
-		if ( $this->fld_comment && isset( $row->rc_comment ) ) {
+		if ( $this->fld_comment && isset( $row->rc_comment ) )
 			$vals['comment'] = $row->rc_comment;
+		
+		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
+			global $wgUser;
+			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 
 		if ( $this->fld_redirect )
@@ -446,6 +454,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				ApiBase :: PARAM_TYPE => array (
 					'user',
 					'comment',
+					'parsedcomment',
 					'flags',
 					'timestamp',
 					'title',
