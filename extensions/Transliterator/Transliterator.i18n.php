@@ -184,12 +184,13 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
 	'transliterator-error-ambiguous' => 'Sääntö <code>$1</code> ei ole yksiselitteinen sivulla [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Virheellinen syntaksi <code>$1</code> sivulla [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Enemmän kuin $1 {{PLURAL:$1|sääntö|sääntöä}} sivulla [[MediaWiki:$2]]',
-	'transliterator-error-rulesize' => 'Säännöllä <code>$1</code> on enemmän kuin $3 {{PLURAL:$3|merkki|merkkiä}} vasemmalla sivulla [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Säännöllä <code>$1</code> on enemmän kuin $3 {{PLURAL:$3|merkki|merkkiä}} jäljellä sivulla [[MediaWiki:$2]]',
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] on oltava pituudeltaan vähintään $1 {{PLURAL:$1|merkki|merkkiä}}.',
 );
 
@@ -379,7 +380,7 @@ $messages['oc'] = array(
 	'transliterator-error-syntax' => 'Sintaxi incorrècta <code>$1</code> dins [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mai de $1 {{PLURAL:$1|règla|règlas}} dins [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "La règla <code>$1</code> a mai de $3 {{PLURAL:$3|caractèr|caractèrs}} sus l'esquèrra dins [[MediaWiki:$2]]",
-	'transliterator-error-prefix' => '[[MediaWiki:$2]] deu aver al mens $1 caractèrs.',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] deu aver al mens $1 {{PLURAL:$1|caractèr|caractèrs}}.',
 );
 
 /** Polish (Polski)

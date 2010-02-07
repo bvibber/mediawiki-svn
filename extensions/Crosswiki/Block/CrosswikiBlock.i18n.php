@@ -326,6 +326,7 @@ $messages['bg'] = array(
 * [[Special:CrosswikiBlock|Формуляра за блокиране]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Блокиране и отблокиране на потребители в други уикита',
 );
 
 /** Breton (Brezhoneg)

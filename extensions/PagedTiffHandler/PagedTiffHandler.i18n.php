@@ -86,9 +86,12 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Y-M D
  */
 $messages['br'] = array(
+	'tiff-desc' => 'Maveg evit gwelet ar restroù TIFF e mod skeudenn',
 	'tiff_no_metadata' => "Ne c'haller ket tapout metaroadennoù eus TIFF",
+	'tiff_page_error' => "N'emañ ket niverenn ar bajenn er skeuliad",
 	'tiff_too_many_embed_files' => 'Re a restroù enklozet zo er skeudenn.',
 	'tiff_file_too_large' => 'Re vras eo ar restr karget ha distaolet eo bet.',
 	'tiff_too_much_meta' => "Ar metaroadennoù a implij re a lec'h.",
@@ -136,13 +139,14 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
 	'tiff_no_metadata' => 'Metatietojen hakeminen TIFF-tiedostosta epäonnistui',
 	'tiff_too_many_embed_files' => 'Kuvassa on liian monta upotettua tiedostoa.',
 	'tiff_file_too_large' => 'Palvelimelle kopioitu tiedosto on liian suuri ja torjuttiin.',
 	'tiff_out_of_service' => 'Palvelimelle kopioitua tiedostoa ei voitu käsitellä. ImageMagick ei ollut käytettävissä.',
-	'tiff_too_much_meta' => 'Metatiedot käyttää liikaa tilaa.',
+	'tiff_too_much_meta' => 'Metatiedot vievät liikaa tilaa.',
 	'tiff_script_detected' => 'Palvelimelle kopioitu tiedosto sisältää skriptejä.',
 	'tiff_bad_file' => 'Palvelimelle kopioitu tiedosto sisältää virheitä.',
 );

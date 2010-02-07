@@ -57,10 +57,13 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'lastuserlogin' => 'Kevreadenn ziwezhañ an implijerien',
 	'lastuserlogin_userid' => 'Anv implijer',
 	'lastuserlogin_username' => 'Anv gwir',
 	'lastuserlogin_useremail' => 'Postel an implijer',
+	'lastuserlogin_lastlogin' => 'Kevreadenn ziwezhañ',
 	'lastuserlogin_daysago' => 'Deiz zo',
+	'right-lastlogin' => "Gwelet peur e oa ar wech ziwezhañ ma 'z eo en em luget un implijer",
 );
 
 /** German (Deutsch) */

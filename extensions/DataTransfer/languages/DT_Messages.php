@@ -249,6 +249,8 @@ $messages['bg'] = array(
 	'dt_xml_freetext' => 'Свободен текст',
 	'importxml' => 'Внасяне на XML',
 	'dt_import_importing' => 'Внасяне...',
+	'importcsv' => 'Внасяне на CSV',
+	'right-datatransferimport' => 'Внасяне на данни',
 );
 
 /** Breton (Brezhoneg)

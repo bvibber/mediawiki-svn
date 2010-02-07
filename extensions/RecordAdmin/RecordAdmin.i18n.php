@@ -1547,6 +1547,9 @@ $messages['oc'] = array(
 	'recordadmin-editwithform' => 'Modificar amb un formulari',
 	'recordadmin-typeinfo' => 'enregistrament $1',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Pas cap de « $1 »',
 );
 
 /** Ossetic (Иронау)

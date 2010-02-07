@@ -223,9 +223,13 @@ $messages['br'] = array(
 	'passwordreset-newpass' => 'Ger-tremen nevez :',
 	'passwordreset-confirmpass' => 'Kadarnaat ar ger-tremen :',
 	'passwordreset-submit' => 'Adderaouekaat ar ger-tremen',
+	'passwordreset-success' => 'Adlakaet eo bet da zero ar ger-tremen evit ID an implijer : $1.',
 	'passwordreset-disableuser' => 'Diweredekaat ar gont implijer ?',
+	'passwordreset-disablesuccess' => 'Diweredekaet eo bet ar gont implijer evit ID an implijer : $1',
 	'passwordreset-accountdisabled' => 'Diweredekaet eo bet ar gont',
 	'disabledusers' => 'Implijerien diweredekaet',
+	'disabledusers-summary' => 'Ur roll eus an implijerien bet diweredekaet dre PasswordReset eo.',
+	'right-passwordreset' => 'Adderaouekaat ger tremen un implijer ([[Special:PasswordReset|pajenn ispisial]])',
 );
 
 /** Bosnian (Bosanski)

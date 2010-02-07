@@ -106,7 +106,7 @@ $messages['eu'] = array(
  * @author Crt
  */
 $messages['fi'] = array(
-	'htmlets-desc' => 'Mahdollistaa HTML-koodinpalasen lisäämisen tiedostosta käyttäen elementtiä <tt><nowiki><htmlet></nowiki></tt>.',
+	'htmlets-desc' => 'Mahdollistaa HTML-katkelmien lisäämisen tiedostosta käyttäen elementtiä <tt><nowiki><htmlet></nowiki></tt>.',
 );
 
 /** French (Français)

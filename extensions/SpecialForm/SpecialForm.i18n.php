@@ -1319,6 +1319,16 @@ $messages['ru'] = array(
 	'formsaveerrortext' => 'При сохранении страницы «$1» возникла неизвестная ошибка.',
 );
 
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ */
+$messages['si'] = array(
+	'formarticleexists' => 'පිටුව පවතියි',
+	'formarticleexiststext' => '[[$1]] පිටුව දැනටමත් පවතියි.',
+	'formbadpagename' => 'නොමනා පිටු නාමය',
+	'formbadrecaptcha' => 'reCaptcha වෙනුවෙන් සාවද්‍යය අගයන් සැපයුමකි. යළි උත්සාහ කරන්න.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
