@@ -58,9 +58,10 @@ class jsScriptLoader {
 		// Setup file cache object
 		$this->sFileCache = new simpleFileCache( $this->requestKey );
 		if ( $this->sFileCache->isFileCached() ) {
-			// Just output headers so we can use PHP's @readfile::
+			// Output headers
 			$this->outputJsHeaders();
-			$this->sFileCache->loadFromFileCache();
+			// Output cached file
+			$this->sFileCache->outputFile();
 			return true;
 		}
 		return false;
@@ -111,7 +112,10 @@ class jsScriptLoader {
 
 			// If the core mwEmbed class entry point include all the loader js
 			if( $classKey == 'mwEmbed' ){
+				// Output the loaders:
 				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
+				// Output the current language class js
+				$this->jsout .= jsClassLoader::getLanguageJs( $this->langCode );
 			}
 		}
 
@@ -146,12 +150,12 @@ class jsScriptLoader {
 		}
 	}
 	/**
-	 * Get the onDone javascript callback for a given class list
+	 * Get the loadDone javascript callback for a given class list
 	 *
 	 * Enables a done loading callback for browsers like safari
 	 * that don't consistently support the <script>.onload call
 	 *
-	 * @return String
+	 * @return String javascript to tell mwEmbed that the requested class set is loaded
 	 */
 	static private function getOnDoneCallback( ){
 		return 'if(mw && mw.loadDone){mw.loadDone(\'' .
@@ -184,6 +188,7 @@ class jsScriptLoader {
 	 * Optional function to use the google closer compiler to minify js
 	 * @param {String} $js_string Javascript string to be minified
 	 * @param {String} $requestKey request key used for temporary name in closure compile
+	 * @return minified js, or false if minification failed.
 	 */
 	static function getClosureMinifiedJs( & $js_string, $requestKey=''){
 		if( !is_file( $wgJavaPath ) || ! is_file( $wgClosureCompilerPath ) ){
@@ -797,9 +802,9 @@ class simpleFileCache {
 	}
 
 	/**
-	 * Loads and outputs the file from file cache
+	 * Loads and outputs the file from the file cache
 	 */
-	public function loadFromFileCache() {
+	public function outputFile() {
 		if ( jsScriptLoader::clientAcceptsGzip() && substr( $this->filename, -3 ) == '.gz'  ) {
 			header( 'Content-Encoding: gzip' );
 			readfile( $this->filename );

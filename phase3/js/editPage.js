@@ -1,4 +1,4 @@
-/*
+/**
  * JS2-style replacement for MediaWiki edit.js
  * (right now it just supports the toolbar)
  */
@@ -73,7 +73,7 @@ mw.ready( function() {
 				mw.log( 'Failed to bind via build section bind via target:' );
 				$j( ".tool[rel='file']" ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );
 				mw.load( 'AddMedia.addMediaWizard', function(){
-					if( $j( ".tool[rel='file']" ).length != 0 ){
+					if( $j( ".tool[rel='file']" ).size() != 0 ){
 						$j( ".tool[rel='file']" ).unbind().addMediaWizard( amwConf );
 					}
 				});
