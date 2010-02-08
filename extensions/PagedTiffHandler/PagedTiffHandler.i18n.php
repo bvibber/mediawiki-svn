@@ -232,7 +232,9 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'tiff_page_error' => "D'Nummer vun der Säit ass net am Beräich",
 	'tiff_file_too_large' => 'Den eropgeluedene Fichier ass ze grouss a gouf net akzeptéiert.',
+	'tiff_out_of_service' => 'Den eropgeluedene Fichier konnt net verschafft ginn. ImageMagick ass net disponibel.',
 	'tiff_too_much_meta' => "D'Metadate benotzen zevill Späicherplaz.",
 	'tiff_size_error' => "Déi berechent Gréisst vum Fichier ass net d'selwëscht wéi déi wierklech Gréisst vum Fichier.",
 	'tiff_script_detected' => 'Am eropgeluedene Fichier si Skripten dran.',

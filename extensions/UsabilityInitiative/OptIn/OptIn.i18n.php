@@ -1017,6 +1017,7 @@ $messages['cu'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'optin' => "Ymuno â'r Cynllun Defnyddioldeb",
 	'optin-desc' => "Yn gadael i ddefnyddwyr arbrofi gyda'r fersiwn Beta, sy'n cynnwys gwelliannau diweddaraf y Cynllun Defnyddioldeb.",
 	'optin-title-optedout' => 'Rhowch gynnig ar Beta',
 	'optin-title-optedin' => 'Gadael Beta',
@@ -1047,6 +1048,7 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-survey-question-whyoptout' => "Pam ydych chi'n gadael Beta? (Dewiswch pob rheswm perthnasol.)",
 	'optin-survey-answer-whyoptout-hard' => "Roedd yn rhy annodd i'w ddefnyddio.",
 	'optin-survey-answer-whyoptout-didntwork' => "Doedd e ddim yn gweithio'n iawn.",
+	'optin-survey-answer-whyoptout-notpredictable' => "Roedd yn gweithredu'n fympwyol.",
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Doeddwn i ddim yn hoffi golwg Beta.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => "Doeddwn i ddim yn hoffi'r tabiau a'r gosodiad newydd.",
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => "Doeddwn i ddim yn hoffi'r bar offer newydd.",
@@ -1062,6 +1064,7 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-survey-answer-changes-nav' => "Gwneud yr offer llywio ar y wefan yn haws i'w defnyddio.",
 	'optin-survey-answer-changes-edittools' => "Cynyddu a gwella'r offer golygu.",
 	'optin-survey-answer-changes-upload' => 'Gwella uwchlwytho ffeiliau lluniau ag ati.',
+	'optin-survey-answer-changes-predictability' => 'Gwneud iddo weithredu yn y modd mwyaf dibynadwy posib.',
 	'optin-survey-answer-changes-custom' => "Ehangu'r nifer o ddewisiadau y gall defnyddiwr eu gosod fel ag a myn.",
 	'optin-improvements' => "== Beth sydd wedi ei wella? ==
 [[File:UsabilityNavigation.png|left|link=|Llun o'r tabiau llywio newydd]]

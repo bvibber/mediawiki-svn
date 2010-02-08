@@ -364,6 +364,13 @@ $messages['sv'] = array(
 	'randomimage-desc' => 'Ger en tillfällig mediafil genom att använda <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Telugu (తెలుగు)
+ * @author రాకేశ్వర
+ */
+$messages['te'] = array(
+	'randomimage-desc' => 'యాదృచ్ఛిక మాధ్యమాంశము తెచ్చే పరికరాన్ని <tt>&lt;randomimage /&gt;</tt>తో అందిస్తుంది.',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

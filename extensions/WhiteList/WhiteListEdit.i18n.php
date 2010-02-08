@@ -162,17 +162,25 @@ $messages['lzz'] = array(
  */
 $messages['af'] = array(
 	'mywhitelistpages' => 'My bladsye',
+	'whitelisttablemodify' => 'Wysig',
 	'whitelisttablemodifyall' => 'Alle',
 	'whitelisttablemodifynone' => 'Geen',
 	'whitelisttableexpires' => 'Verval op',
 	'whitelisttableedit' => 'Wysig',
+	'whitelisttableview' => 'Wys',
 	'whitelisttablenewdate' => 'Nuwe datum:',
 	'whitelisttablechangedate' => 'Wysig vervaldatum',
 	'whitelisttableremove' => 'Skrap',
 	'whitelistnewtabledate' => 'Vervaldatum:',
 	'whitelistnewtableprocess' => 'Verwerk',
 	'whitelistnewtablereview' => 'Kontroleer',
+	'whitelistrequest' => 'Versoek om toegang tot meer bladsye',
+	'whitelistrequestconf' => 'Die versoek vir nuwe bladsye is aan $1 gestuur',
 	'whitelistnever' => 'nooit',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|resultaat|resultate}}',
+	'group-restricted' => 'Beperk gebruikers',
+	'group-manager' => 'Bestuurders',
+	'group-manager-member' => 'Bestuurder',
 );
 
 /** Amharic (አማርኛ)
