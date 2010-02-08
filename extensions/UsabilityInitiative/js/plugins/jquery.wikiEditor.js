@@ -304,16 +304,21 @@ if ( typeof context == 'undefined' ) {
 					// Intercept all tab events to provide consisten behavior across browsers
 					// Webkit browsers insert tab characters by default into the iframe rather than changing input focus
 					case 9: 
-						var $tabindexList = $j( '[tabindex]:visible' ).sort( function( a, b ) {
-							return a.tabIndex > b.tabIndex ? 1 : -1; 
-						} );
-						for( var i=0; i < $tabindexList.length; i++ ) {
-							if( $tabindexList.eq( i ).is( '#' + context.$iframe.attr( 'id' ) ) ) {
-								$tabindexList.get( i + 1 ).focus();
-								break;
+						// if any modifier keys are pressed, allow the browser to do it's thing
+						if ( event.ctrlKey || event.altKey || event.shiftKey ) { 
+							return true;
+						} else {
+							var $tabindexList = $j( '[tabindex]:visible' ).sort( function( a, b ) {
+								return a.tabIndex > b.tabIndex ? 1 : -1; 
+							} );
+							for( var i=0; i < $tabindexList.length; i++ ) {
+								if( $tabindexList.eq( i ).attr('id') == context.$iframe.attr( 'id' ) ) {
+									$tabindexList.get( i + 1 ).focus();
+									break;
+								}
 							}
+							return false;
 						}
-						return false;
 					break;
 			}
 			return true;
