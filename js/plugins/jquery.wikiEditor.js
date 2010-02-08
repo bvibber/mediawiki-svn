@@ -301,6 +301,16 @@ if ( typeof context == 'undefined' ) {
 						return false;
 					}
 					break;
+					case 9: 
+						var $tabindexList = $j( '[tabindex]:visible' ).sort( function( a, b ) {
+							return a.tabIndex > b.tabIndex ? 1 : -1; 
+						} );
+						while( ! $tabindexList.eq( 0 ).is( '#' + context.$iframe.attr( 'id' ) ) ) {
+							$tabindexList = $tabindexList.slice( 1 );
+						}
+						$tabindexList.get( 1 ).focus();
+						return false;
+					break;
 			}
 			return true;
 		},
