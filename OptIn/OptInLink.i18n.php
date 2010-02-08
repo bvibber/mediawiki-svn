@@ -186,6 +186,7 @@ $messages['cy'] = array(
 	'tooltip-pt-optin-try' => 'Rhoi cynnig ar y nodweddion newydd',
 	'optin-leave' => 'Gadael Beta',
 	'tooltip-pt-optin-leave' => "Gadael llonydd i'r nodweddion newydd",
+	'optin-feedback' => 'Adborth Beta',
 	'tooltip-pt-optin-feedback' => "Cynnig adborth ynghylch eich profiad o ddefnyddio'r nodweddion newydd",
 );
 
