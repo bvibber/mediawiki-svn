@@ -7641,11 +7641,11 @@ if ( typeof context == 'undefined' ) {
 			// TODO: Refactor this into a textToHtml() function
 			var html = context.$textarea.val()
 				// We're gonna use &esc; as an escape sequence
-				.replace( /&esc;/g, '&esc;&esc;' )
+				.replace( /&esc;/g, '&esc;esc;' )
 				// Escape existing uses of <p>, </p>, &nbsp; and <span class="wikiEditor-tab"></span>
 				.replace( /\<p\>/g, '&esc;&lt;p&gt;' )
 				.replace (/\<\/p\>/g, '&esc;&lt;/p&gt;' )
-				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&esc;&lt;span class="wikiEditor-tab"&gt;&lt;/span&gt;' )
+				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&esc;&lt;span&nbsp;class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' )
 				.replace( /&nbsp;/g, '&esc;&amp;nbsp;' );
 			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
 			// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
@@ -7674,8 +7674,8 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
 				.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
 				.replace( /&amp;esc;&amp;lt;\/p&amp;gt;/g, '&lt;/p&gt;' )
-				.replace( /&amp;esc;&amp;lt;span class="wikiEditor-tab"&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
-				.replace( /&amp;esc;&amp;esc;/g, '&amp;esc;' );
+				.replace( /&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
+				.replace( /&amp;esc;esc;/g, '&amp;esc;' );
 			context.$content.html( html );
 			context.oldHTML = html;
 			// FIXME: This needs to be merged somehow with the oldHTML thing
