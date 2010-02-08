@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.42) hardy; urgency=low
+
+  * In sync-common, exclude .svn/lock files, which are usually mode 000
+
+ -- Tim Starling <tstarling@wikimedia.org>  Mon, 08 Feb 2010 11:30:56 +1100
+
 wikimedia-task-appserver (1.41) hardy; urgency=low
 
   * Add cron job for cleaning up /tmp

@@ -23,5 +23,5 @@ rm -rf /var/tmp/texvc
 
 # rsync common
 echo -n Copying to `hostname -s`...
-rsync -a --delete 10.0.5.8::common/ /usr/local/apache/common-local
+rsync -a --delete '--exclude=**/.svn/lock' 10.0.5.8::common/ /usr/local/apache/common-local
 echo Done.

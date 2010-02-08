@@ -16,17 +16,17 @@ echo "Building package..."
 cd $package
 prebuild_date=`TZ=UTC0 date +'%Y-%m-%d %H:%M:%SZ'`
 sleep 1
-dpkg-buildpackage -rfakeroot
+dpkg-buildpackage -rfakeroot -aamd64
 
 echo
 echo "Uploading files..."
 cd ..
-tar -v -N"$prebuild_date" -c $package''_* | ssh -A root@khaldun.wikimedia.org "
+tar -v -N"$prebuild_date" -c $package''_* | ssh -A root@apt.wikimedia.org "
 	test -e /srv/wikimedia/pool/main/$package || mkdir /srv/wikimedia/pool/main/$package
 	tar -C /srv/wikimedia/pool/main/$package -x && \
 	echo && \
 	echo Updating the repository && \
-	/root/update-repository 2>/dev/null && \
+	update-repository 2>/dev/null && \
 	echo Success || \
 	echo update-repository failed
 	"
