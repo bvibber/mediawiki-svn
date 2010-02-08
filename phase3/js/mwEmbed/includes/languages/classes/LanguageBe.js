@@ -19,7 +19,7 @@
 		//        http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
 		forms =  mw.lang.preConvertPlural( forms, 3 );
 
-		if (count > 10 && floor((count % 100) / 10) == 1) {
+		if (count > 10 && Math.floor((count % 100) / 10) == 1) {
 			return forms[2];
 		} else {
 			switch (count % 10) {
