@@ -12,6 +12,7 @@ import de.brightbyte.db.DatabaseDataSet;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.QueryDataSet;
 import de.brightbyte.db.RelationTable;
+import de.brightbyte.db.TemporaryTableDataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -105,15 +106,49 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			return v;
 		}
 
-		public DataSet<WikiWordConceptFeatures> getNeighbourhoodFeatures(int concept) throws PersistenceException {
-			String sql = "SELECT X.concept as concept, X.feature as feature, X.normal_value as value ";
-			sql += " FROM " + featureTable.getSQLName() + " as X ";
-			sql += " JOIN "+featureTable.getSQLName()+" as N ON N.feature = C.id ";
-			sql += " JOIN "+featureTable.getSQLName()+" as F ON F.feature = N.concept ";
+		public DataSet<WikiWordConceptFeatures> getNeighbourhoodFeatures(final int concept) throws PersistenceException {
+			/*
+			String sql = "SELECT C.id as concept, C.name as name, X.feature as feature, X.normal_weight as value ";
+			sql += " FROM " + featureTable.getSQLName() + " as X force key (PRIMARY) ";
+			sql += " JOIN "+featureTable.getSQLName()+" as N force key (PRIMARY) ON N.feature = X.concept ";
+			sql += " JOIN "+featureTable.getSQLName()+" as F force key (feature) ON F.feature = N.concept ";
+			sql += " JOIN "+conceptTable.getSQLName()+" as C force key (PRIMARY) ON C.id = X.concept ";
 			sql += " WHERE F.concept = "+concept;
-			sql += " ORDER BY C.id";
+			sql += " ORDER BY X.concept";
 			
 			return new QueryDataSet<WikiWordConceptFeatures>(database, getConceptFeaturesFactory(), "getNeighbourhoodFeatures", sql, false);
+			*/
+			return new TemporaryTableDataSet<WikiWordConceptFeatures>(database, getConceptFeaturesFactory()) {
+			
+				@Override
+				public Cursor<WikiWordConceptFeatures> cursor() throws PersistenceException {
+					try {
+						String n = database.createTemporaryTable("id integer not null, name varchar(255) default null, primary key (id)");
+						String sql = "INSERT IGNORE INTO "+n+" (id) ";
+						sql += " SELECT N.feature as id ";
+						sql += " FROM "+featureTable.getSQLName()+" AS F ";
+						sql += " JOIN "+featureTable.getSQLName()+" AS N ON F.feature = N.concept ";
+						sql += " WHERE F.concept = "+concept;
+						
+						database.executeUpdate("getNeighbourhoodFeatures#neighbours", sql);
+						
+						sql = "UPDATE "+n+" as N ";
+						sql+= " JOIN "+conceptTable.getSQLName()+" AS C ON C.id = N.id ";
+						sql+= " SET N.name = C.name ";
+							
+						database.executeUpdate("getNeighbourhoodFeatures#names", sql);
+
+						sql = "SELECT N.id as concept, N.name as name, X.feature as feature, X.normal_weight as value ";
+						sql+= " FROM "+n+" AS N ";
+						sql+= " JOIN "+featureTable.getSQLName()+" as X ON X.concept = N.id ";
+							
+						ResultSet rs = database.executeQuery("getNeighbourhoodFeatures#features", sql);
+						return new TemporaryTableDataSet.Cursor<WikiWordConceptFeatures>(rs, factory, database, new String[] { n }, database.getLogOutput() );
+					} catch (SQLException e) {
+						throw new PersistenceException(e);
+					}
+				}
+			};
 		}
 
 		private DatabaseDataSet.Factory<WikiWordConceptFeatures> getConceptFeaturesFactory() {
