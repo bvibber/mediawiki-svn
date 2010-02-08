@@ -75,6 +75,19 @@ var mwDefaultConf = {
 	//If we are in debug mode ( results in fresh debugg javascript includes )
 	'debug' : false,
 	
+	// Valid language codes ( has a file in /includes/languages/classes/Language{code}.js )
+	'languageCodeList': ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
+		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',
+		'hr', 'hsb', 'hy', 'ksh', 'ln', 'lt', 'lv', 'mg', 'mk', 'mo', 'mt',
+		'nso', 'pl', 'pt_br', 'ro', 'ru', 'se', 'sh', 'sk', 'sl', 'sma',
+		'sr_ec', 'sr_el', 'sr', 'ti', 'tl', 'uk', 'wa'
+	],
+	
+	// Default user language is "en" Can be overwiteen by: 
+	// 	"uselang" url param 
+	// 	wgUserLang global  
+	'userLanguage' : 'en',
+	
 	// Set the default providers ( you can add more provider via {provider_id}_apiurl = $api_url	  
 	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
 };
@@ -232,19 +245,7 @@ var mwDefaultConf = {
 			messageCache[ i ] = msgSet[i];
 		}
 	}
-
-	/**
-	* loadRS function
-	* Loads a ruleset by given template key ie PLURAL : { //ruleSetObj }
-	*
-	* @param json ruleSet The ruleset object ( extends  gRuleSet )
-	*/
-	mw.lang.loadRS = function( ruleSet ) {
-		for ( var i in ruleSet ) {
-			gRuleSet[ i ] = ruleSet[ i ];
-		}
-	}
-
+	
 	/**
 	 * Returns a transformed msg string
 	 *
@@ -260,15 +261,12 @@ var mwDefaultConf = {
 	
 		// Check for missing message key
 		if ( ! messageCache[ msgKey ] )
-			return '&lt;' + msgKey + '&gt;';
-
-		// swap in the arg values
-		var ms =  mw.lang.msgReplaceArgs( messageCache[ msgKey ], args );				
-		
-		// a quick check to see if we need to send the msg to the 'parser'
-		// (we can add more detailed check once we support more wiki syntax)
-		if ( ms.indexOf( '{{' ) === -1 && ms.indexOf( '[' ) === -1 ) {
-			return ms;
+			return '&lt;' + msgKey + '&gt;';		
+			
+		var ms =  mw.lang.msgReplaceArgs( messageCache[ msgKey ], args );
+		// A quick check to see if we need to send the msg to the 'parser'
+		if ( ms.indexOf( '{{' ) === -1 && ms.indexOf( '[' ) === -1 ) {									
+			return ms;	
 		}
 				
 		// Send the msg key through the parser
@@ -287,22 +285,32 @@ var mwDefaultConf = {
 	mw.lang.msgReplaceArgs = function( message , args ) {		
 		// replace values
 		if ( typeof args == 'object' || typeof args == 'array' ) {
-			for ( var v =0; v < args.length; v++ ) {
+			for ( var v =0; v < args.length; v++ ) {				
 				if( typeof args[v] == 'undefined' ){
 					continue;
+				}				
+				var replaceValue =  args[ v ];
+				// Convert number if applicable
+				if( parseInt( replaceValue ) == replaceValue ){
+					replaceValue = mw.lang.convertNumber( replaceValue );
 				}
+				
 				// Message test replace arguments start at 1 instead of zero:
 				var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );
 								
 				// Check if we got passed in a jQuery object:
 				if( typeof args[v]['html'] == 'function' ){
-					message = message.replace( rep, $j('<div />').append( args[v] ).html() );
+					message = message.replace( rep, $j('<div />').append( replaceValue ).html() );
 				}else{
-					// Assume args[v] string
-					message = message.replace( rep, args[v] );
+					// Assume replaceValue string
+					message = message.replace( rep, replaceValue );
 				}				
 			}
 		} else if ( typeof args == 'string' || typeof args == 'number' ) {
+			// Convert number if applicable
+			if( parseInt( args ) ==  args ){
+				args = mw.lang.convertNumber( args );
+			}
 			message = message.replace( /\$1/g, args );
 		}
 		return message;
@@ -338,98 +346,100 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* Process the PLURAL special language template key:
+	* Process the PLURAL template substitution 
+	* @param {Object} template Template object 
+	* 
+	* 	{{Template:argument|params}}
+	* 
+	* 	Template object should include:
+	* 	[arg] The argument sent to the template  
+	* 	[params] The template parameters  
 	*/
 	mw.lang.procPLURAL = function( tObj ) {
-		// setup shortcuts
-		// (gRuleSet is loaded from script-loader to contains local ruleset)
-		var rs = gRuleSet['PLURAL'];
-
-		/*
-		 * Plural matchRuleTest
-		 */
-		function matchRuleTest( cRule, val ) {
-			mw.log("matchRuleTest:: " + typeof cRule + ' ' + cRule + ' == ' + val );
-			function checkValue( compare, val ) {
-				if ( typeof compare == 'string' ) {
-					range = compare.split( '-' );
-					if ( range.length >= 1 ) {
-						if ( val >= range[0] &&  val <= range[1] )
-							return true;
-					}
-				}
-				// else do a direct compare
-				if ( compare == val ) {
-					return true;
-				}
-				return false;
+		// Setup shortcuts
+		// ( gRuleSet is loaded from script-loader to contains local ruleset )
+		var rs = gRuleSet[ 'PLURAL' ];
+		if( tObj.arg && tObj.param && mw.lang.convertPlural){
+			// Check if we have forms to replace
+			if ( tObj.param.length == 0 ) { 
+				return ''; 
 			}
-			// check for simple cRule type:
-			if ( typeof cRule == 'number' ) {
-				return ( parseInt( val ) == parseInt( cRule ) );
-			} else if ( typeof cRule == 'object' ) {
-				var cmatch = { };
-				// if a list we need to match all for rule match
-				for ( var i in  cRule ) {
-					var cr = cRule[i];
-					// set cr type
-					var crType =  '';
-					for ( var j in cr ) {
-						if ( j == 'mod' )
-							crType = 'mod'
-					}
-					switch( crType ) {
-						case 'mod':
-							if ( cr ['is'] ) {
-								if ( checkValue( val % cr['mod'], cr ['is'] ) )
-									cmatch[i] = true;
-							} else if ( cr['not'] ) {
-								if ( ! checkValue( val % cr['mod'], cr ['not'] ) )
-									cmatch[i] = true;
-							}
-						break;
-					}
-				}
-				// Check all the matches (taking into consideration "or" order)
-				for ( var i in cRule ) {
-					if ( ! cmatch[i] )
-						return false;
-				}
-				return true;
-
-			}
+			// Restore the count ( if it got converted earlier )
+			var count = mw.lang.convertNumber( tObj.arg, true );
+			
+			// Do convertPlural call 
+			return mw.lang.convertPlural( count, tObj.param );
 		}
-		/**
-		 * Maps a given rule Index to template params:
-		 *
-		 * if index is out of range return last param
-		 * @param {Object} tObj Template Object
-		 * @param {Object} ruleInx Index of rule to be applied
-		 */
-		function getTempParamFromRuleInx( tObj, ruleInx ) {
-			// mw.log('getTempParamFromRuleInx: ruleInx: ' + ruleInx + ' tempParamLength ' + tObj.param.length );
-			if ( ruleInx	>= tObj.param.length )
-				return  tObj.param[  tObj.param.length - 1 ];
-			// else return the requested index:
-			return tObj.param[ ruleInx ];
+		// Could not proccess plural return first form or nothing
+		if( tObj.param[0] ){
+			return tObj.param[0];
+		}
+		return '';		
+	};
+	
+	/**
+	 * Checks that convertPlural was given an array and pads it to requested
+	 * amound of forms by copying the last one.
+	 *
+	 * @param {Array} forms Forms given to convertPlural
+	 * @param {Integer} count How many forms should there be at least
+	 * @return {Array} Padded array of forms or an exception if not an array
+	 */
+	mw.lang.preConvertPlural = function( forms, count ) {
+		while ( forms.length < count ) {
+			forms.push( forms[ forms.length-1 ] );
+		}
+		return forms;
+	};
+	
+	/**
+	 * Init the digitTransformTable ( populated by language classes where applicable ) 
+	 */
+	mw.lang.digitTransformTable = null;
+	
+	/** 
+	 * Convert a number using the digitTransformTable 
+	 * @param Number number to be converted
+	 * @param Bollean latin if we should return the latin type 0-10
+	 */
+	mw.lang.convertNumber = function( number, latin ) {
+		if( !mw.lang.digitTransformTable )
+			return number;
+		
+		// Set the target Transform table: 
+		var transformTable = mw.lang.digitTransformTable;
+		
+		// Check if the "restore" to latin number flag is set: 
+		if( latin ){			
+			if( parseInt( number ) == number )	
+				return number;
+			var tmp = [];
+			for( var i in transformTable ){
+				tmp[ transformTable[i] ] = i;
+			}
+			transformTable = tmp;
 		}
 		
-		var rCount = 0
-		// run the actual rule lookup:
-		for ( var ruleInx in rs ) {
-			cRule = rs[ruleInx];
-			if ( matchRuleTest( cRule, tObj.arg ) ) {
-				mw.log("matched rule: " + ruleInx );
-				return getTempParamFromRuleInx( tObj, rCount );
+		var numberString =  '' + number;
+		var convertedNumber = '';
+		for( var i =0; i < numberString.length; i++){
+			if( transformTable[ numberString[i] ] ){
+				convertedNumber += transformTable[ numberString[i] ];
+			}else{
+				convertedNumber += numberString[i];
 			}
-			rCount ++;
 		}
-		mw.log('no match found for: ' + tObj.arg + ' using last/other : ' +  tObj.param [ tObj.param.length -1 ] );
-		//debugger;
-		// return the last /"other" template param
-		return tObj.param [ tObj.param.length - 1 ];
+		return ( latin )? parseInt( convertedNumber) : convertedNumber;
 	}
-
+	
+	/**
+	 * Checks if a language key is valid ( is part of languageCodeList )
+	 * @param {String} langKey Language key to be checked
+	 */
+	mw.isValidLang = function( langKey ){
+		return ( $j.inArray(langKey,  mw.getConfig( 'languageCodeList') ) == -1 )
+	}
+	
 	/**
 	 * getRemoteMsg loads remote msg strings
 	 *
@@ -551,16 +561,11 @@ var mwDefaultConf = {
 			// invalidate the output (will force a re-parse )
 			this.pOut = '';
 		},
+		/**
+		 * Quickly recursive / parse out templates:
+		 * This parser only really only tested against msg templates see tests/testLang.html
+		 */
 		parse : function() {
-			/*
-			 * quickly recursive / parse out templates:
-			 */
-
-			// ~ probably a better algorithm out there / should mirror php parser flow ~
-			//	 (we are already running white-space issues ie php parse strips whitespace differently)
-			// or at least expose something similar to: http://www.mediawiki.org/wiki/Extension:Page_Object_Model
-
-			// ... but here is a quick hack that solves my current problem: 
 			function rdpp ( txt , cn ) {
 				var node = { };
 				// inspect each char
@@ -683,12 +688,7 @@ var mwDefaultConf = {
 			
 			// do the recursive magic swap text:
 			this.pOut = recurse_magic_swap( this.pNode );
-		},	
-				
-		/**
-		 * parsed template api ~loosely based off of ~POM~
-		 * http://www.mediawiki.org/wiki/Extension:Page_Object_Model
-		 */
+		},
 		
 		/**
 		 * templates
@@ -2347,6 +2347,17 @@ var mwDefaultConf = {
 		
 		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
 		
+		// Set the User language
+		if( typeof wgUserLanguage != 'undefined' && mw.isValidLang( wgUserLanguage) ){				
+			mw.setConfig( 'userLanguage', wgUserLanguage )
+		}else{
+			// Grab it from the included url
+			var langKey = mw.parseUri( mw.getMwEmbedSrc() ).queryKey['uselang'];
+			if ( langKey && mw.isValidLang( langKey ) ) {	
+				mw.setConfig( 'userLanguage', langKey);
+			}
+		}
+		
 		// Make sure we have all the module loaders
 		mw.moduleLoaderCheck( function(){			
 			// Make sure we have jQuery: 
@@ -2396,10 +2407,10 @@ var mwDefaultConf = {
 	}
 	
 	/**
-	* Check for module loaders
-	*  loads module loaders.
+	* Check for module loaders, and localization
 	* 
-	* Note if using a scriptLoader all the loaders are included automatically. 
+	* Note if using a scriptLoader all the loaders and localization converters 
+	*  are included automatically. 
 	*/
 	mw.moduleLoaderCheck = function( callback ){
 		mw.log( 'doLoaderCheck::' );
@@ -2409,13 +2420,24 @@ var mwDefaultConf = {
 			return ;
 		}
 		// Add the Core loader to the request
-		mw.load( 'loader.js', function(){			
+		mw.load( 'loader.js', function(){		
+				
 			// Load all the "loaders" of the enabled modules:
 			var loaderRequest = [];			
 			var enabledModules = mw.getConfig( 'enabledModules' );		
 			for(var i=0; i < enabledModules.length; i++ ){
 				loaderRequest.push( 'modules/' + enabledModules[ i ] + '/loader.js' );
-			};			 
+			};	
+			
+			// Add the language ( if set )
+			if( mw.getConfig( 'userLanguage' ) ){
+				var langCode = mw.getConfig( 'userLanguage' );
+				// Upper case the first letter:
+				langCode = langCode.substr(0,1).toUpperCase() + langCode.substr(1,langCode.length);
+				loaderRequest.push( 'includes/languages/classes/Language' +
+					langCode + '.js' );
+			}
+								 
 			mw.setConfig('loaderContext', '' );
 			mw.load( loaderRequest, function(){
 				callback();
@@ -2526,7 +2548,8 @@ mw.addMessages( {
 	"mwe-cancel" : "Cancel",
 	"mwe-enable-gadget" : "Enable mwEmbed gadget for all pages",
 	"mwe-enable-gadget-done" : "mwEmbed gadget has been enabled",
-	"mwe-must-login-gadget" : "To enable gadget you must <a target=\"_new\" href=\"$1\">login</a>"
+	"mwe-must-login-gadget" : "To enable gadget you must <a target=\"_new\" href=\"$1\">login</a>",
+	"mwe-test-plural" : "I ran {{PLURAL:$1|$1 test|$1 tests}}"
 } );
 
 

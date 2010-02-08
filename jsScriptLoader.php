@@ -723,8 +723,6 @@ class jsScriptLoader {
 		// Do the language lookup
 		if ( $jmsg ) {
 
-			// See if any msgKey has the PLURAL template tag
-			//package in PLURAL mapping
 			self::updateMsgKeys( $jmsg, $this->langCode );
 
 			// Return the updated JSON with Msgs:

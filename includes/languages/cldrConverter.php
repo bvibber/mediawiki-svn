@@ -1,5 +1,6 @@
 <?php
 /*
+ *
  * cldr format tries to build a structured representation of
  * http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
  *
@@ -77,7 +78,7 @@ class cldrConverter {
 					//n is 0 OR n is not 1 AND n mod 100 in 1..19
 					'few' => array(
 								'or'=> array(
-									array( 'is' => 0),								
+									array( 'is' => 0),
 									array(
 										array( 'not' => 1),
 										//and
