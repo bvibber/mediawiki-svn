@@ -103,7 +103,19 @@ class jsClassLoader {
 			$fileContent
 		);
 	}
-
+	/**
+	 * Get the language file javascript
+	 * @param String $languageJs The language file javascript
+	 */
+	public static function getLanguageJs( $langKey = 'en' ){
+		global $wgMwEmbedDirectory;
+		$path =  $wgMwEmbedDirectory . 'includes/languages/classes/Language' . ucfirst( $langKey ) . '.js';
+		if( is_file( $path ) ){
+			$languageJs = file_get_contents( $path );
+			return $languageJs;
+		}
+		return '';
+	}
 	/**
 	 * Get the combined loader javascript
 	 *

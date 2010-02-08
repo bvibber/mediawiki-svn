@@ -17,7 +17,7 @@ define( 'MWEMBED_STANDALONE', true );
 
 $IP = realpath( dirname( __FILE__ ) . '/../' );
 
-// $wgMwEmbedDirectory becomes the root $IP
+// $wgMwEmbedDirectory becomes the root file system:
 $wgMwEmbedDirectory = '';
 
 $wgUseFileCache = true;

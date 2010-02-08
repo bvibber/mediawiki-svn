@@ -76,6 +76,7 @@ var mwDefaultConf = {
 	'debug' : false,
 	
 	// Valid language codes ( has a file in /includes/languages/classes/Language{code}.js )
+	// TODO: mirror the mw language "fallback" system
 	'languageCodeList': ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
 		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',
 		'hr', 'hsb', 'hy', 'ksh', 'ln', 'lt', 'lv', 'mg', 'mk', 'mo', 'mt',
@@ -83,7 +84,7 @@ var mwDefaultConf = {
 		'sr_ec', 'sr_el', 'sr', 'ti', 'tl', 'uk', 'wa'
 	],
 	
-	// Default user language is "en" Can be overwiteen by: 
+	// Default user language is "en" Can be overwritten by: 
 	// 	"uselang" url param 
 	// 	wgUserLang global  
 	'userLanguage' : 'en',
@@ -364,7 +365,7 @@ var mwDefaultConf = {
 			if ( tObj.param.length == 0 ) { 
 				return ''; 
 			}
-			// Restore the count ( if it got converted earlier )
+			// Restore the count into a Number ( if it got converted earlier )
 			var count = mw.lang.convertNumber( tObj.arg, true );
 			
 			// Do convertPlural call 
@@ -400,9 +401,9 @@ var mwDefaultConf = {
 	/** 
 	 * Convert a number using the digitTransformTable 
 	 * @param Number number to be converted
-	 * @param Bollean latin if we should return the latin type 0-10
+	 * @param Bollean typeInt if we should return a number of type int 
 	 */
-	mw.lang.convertNumber = function( number, latin ) {
+	mw.lang.convertNumber = function( number, typeInt ) {
 		if( !mw.lang.digitTransformTable )
 			return number;
 		
@@ -410,7 +411,7 @@ var mwDefaultConf = {
 		var transformTable = mw.lang.digitTransformTable;
 		
 		// Check if the "restore" to latin number flag is set: 
-		if( latin ){			
+		if( typeInt ){			
 			if( parseInt( number ) == number )	
 				return number;
 			var tmp = [];
@@ -429,7 +430,7 @@ var mwDefaultConf = {
 				convertedNumber += numberString[i];
 			}
 		}
-		return ( latin )? parseInt( convertedNumber) : convertedNumber;
+		return ( typeInt )? parseInt( convertedNumber) : convertedNumber;
 	}
 	
 	/**
