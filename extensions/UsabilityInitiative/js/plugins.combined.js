@@ -6734,14 +6734,18 @@ if ( typeof context == 'undefined' ) {
 						return false;
 					}
 					break;
+					// Intercept all tab events to provide consisten behavior across browsers
+					// Webkit browsers insert tab characters by default into the iframe rather than changing input focus
 					case 9: 
 						var $tabindexList = $j( '[tabindex]:visible' ).sort( function( a, b ) {
 							return a.tabIndex > b.tabIndex ? 1 : -1; 
 						} );
-						while( ! $tabindexList.eq( 0 ).is( '#' + context.$iframe.attr( 'id' ) ) ) {
-							$tabindexList = $tabindexList.slice( 1 );
+						for( var i=0; i < $tabindexList.length; i++ ) {
+							if( $tabindexList.eq( i ).is( '#' + context.$iframe.attr( 'id' ) ) ) {
+								$tabindexList.get( i + 1 ).focus();
+								break;
+							}
 						}
-						$tabindexList.get( 1 ).focus();
 						return false;
 					break;
 			}
