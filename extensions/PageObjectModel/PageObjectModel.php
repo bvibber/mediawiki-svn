@@ -104,6 +104,14 @@ class ApiPOMSetTemplateParameter extends ApiBase {
 		);
 	}
 
+	public function mustBePosted() {
+		return true;
+	}
+
+	public function isWriteMode() {
+		return true;
+	}
+	
 	protected function getDescription() {
 		return 'Call to set template parameter value using Page Object Model (http://www.mediawiki.org/Extension:Page_Object_Model)';
 	}

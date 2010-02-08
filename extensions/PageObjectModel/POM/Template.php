@@ -1,6 +1,6 @@
 <?php
 #
-# Template class repersents templates
+# Template class represents templates
 #
 require_once('Util.php');
 require_once('TemplateParameter.php');
@@ -20,8 +20,20 @@ class POMTemplate extends POMElement
 
 		# Split by pipe
 		$parts = explode('|', $text);
+		
+		# Check if this is a function call in the form #name:
+		$first_part = array_shift($parts);
+		if (strpos(trim($first_part), "#")==0)
+			if (strpos($first_part, ":")!==False) {
+				$splitted = explode(':', $first_part, 2);
+				if (count($splitted) == 2) {
+					$first_part = $splitted[0];
+					array_unshift($parts, $splitted[1]);
+				}
+				
+			}
 
-		$this->title_triple = new POMUtilTrimTriple(array_shift($parts));
+		$this->title_triple = new POMUtilTrimTriple($first_part);
 		
 		foreach ($parts as $part)
 		{
@@ -32,6 +44,27 @@ class POMTemplate extends POMElement
 	public function getTitle()
 	{
 		return $this->title_triple->trimmed;
+	}
+	
+	public function getParametersCount() {
+		return count($this->parameters);
+	}
+	
+	public function getParameterName($number) {
+		if ($number < 0) return "";
+		if ($number > count($this->parameters)-1) return "";
+		$parameter = $this->parameters[$number];
+		if (is_a($parameter, 'POMTemplateNamedParameter'))
+			return $parameter->getName();
+		else
+			return "";		
+	}
+	
+	public function getParameterByNumber($number) {
+		if ($number < 0) return "";
+		if ($number > count($this->parameters)-1) return "";
+		$parameter = $this->parameters[$number];
+		return $parameter->getValue();
 	}
 
 	public function getParameter($name)
@@ -135,7 +168,8 @@ class POMTemplate extends POMElement
 
 		for ($i = 0; $i < count($this->parameters); $i++)
 		{
-			$text .= '|';
+			// if a function, then the first sep is a :, otherwise |
+			$text .= (($i==0) && (substr($this->getTitle(),0,1)=='#')) ? ':' : '|';
 			#echo "\n[$i]: ".var_export($this->parameters)."\n\n-----------------------------------\n";
 			$text .= $this->parameters[$i]->toString();
 		}

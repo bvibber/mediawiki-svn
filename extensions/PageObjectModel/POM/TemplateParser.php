@@ -1,6 +1,6 @@
 <?php
 #
-# Template class repersents templates
+# Template class represents templates
 #
 
 define("MAX_TEMPLATE_NESTING_LEVEL", 50);

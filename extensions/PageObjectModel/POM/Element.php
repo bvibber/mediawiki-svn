@@ -1,6 +1,6 @@
 <?php
 #
-# Element is an abstract class repersents every part distinguished within the page
+# Element is an abstract class that represents any part distinguished within the page.
 # All real elements must be a subclass of this class
 #
 

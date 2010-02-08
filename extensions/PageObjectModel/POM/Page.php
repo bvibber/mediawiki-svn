@@ -5,11 +5,11 @@
 
 class POMPage extends POMElement
 {
-	var $c = array(); # collections array - parsers can elements to it
+	var $c = array(); # collections array - parsers can add elements to it
 
 	var $templates; # shortcut to $c['templates'], set up if POMTemplateParser was used
 
-	public function POMPage($text, $parsers = array('POMTemplateParser'))
+	public function POMPage($text, $parsers = array('POMCommentParser', 'POMTemplateParser'))
 	{
 		$this->addChild(new POMTextNode($text));
 
