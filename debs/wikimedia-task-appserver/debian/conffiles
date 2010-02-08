@@ -2,3 +2,4 @@
 /etc/php5/apache2/php.ini
 /etc/sudoers
 /etc/apache2/envvars
+/etc/cron.hourly/mw-cleanup-tmp

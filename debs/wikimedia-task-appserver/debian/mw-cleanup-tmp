@@ -1,0 +1,8 @@
+#!/bin/bash
+
+/usr/bin/find /tmp -mmin +60 -a \( \
+	-name EasyTimeline.txt.\* -o \
+	-name \*.png -o \
+	-name php\* \) \
+	-delete
+

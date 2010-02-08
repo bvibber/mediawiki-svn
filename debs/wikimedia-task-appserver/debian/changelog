@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.41) hardy; urgency=low
+
+  * Add cron job for cleaning up /tmp
+
+ -- Tim Starling <tstarling@wikimedia.org>  Mon, 08 Feb 2010 11:09:14 +1100
+
 wikimedia-task-appserver (1.40) hardy; urgency=low
 
   * Add dependency on the newly backported package php5-geoip

@@ -53,6 +53,7 @@ install: build
 	install -m 0644 php.ini $(DESTDIR)/etc/php5/apache2
 	install -m 0644 php.ini $(DESTDIR)/usr/share/php5/php.ini-dist
 	install -m 0400 sudoers $(DESTDIR)/etc/
+	install -m 0755 mw-cleanup-tmp $(DESTDIR)/etc/cron.hourly/
 
 	# Install sync/check scripts
 	install -d -m 0755 $(DESTDIR)/usr/bin

@@ -11,3 +11,6 @@ fi
 
 # For Ubuntu 8.04+
 APACHE_HTTPD="$HTTPD"
+
+# Don't crash when NFS goes down
+cd /
