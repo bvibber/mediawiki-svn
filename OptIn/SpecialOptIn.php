@@ -25,11 +25,11 @@ class SpecialOptIn extends SpecialPage {
 			return false;
 
 		foreach ( $wgOptInPrefs as $pref => $value ) {
-			if ( $user->getOption( $pref ) != $value ) {
-				return false;
+			if ( $pref != 'skin' && $user->getOption( $pref ) == $value ) {
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	public static function checkToken() {
