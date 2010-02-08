@@ -7634,25 +7634,26 @@ if ( typeof context == 'undefined' ) {
 			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
 			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
 			// TODO: Refactor this into a textToHtml() function
-			// Because we're gonna insert instances of <br>, &nbsp; and <span class="wikiEditor-tab"></span>,
-			// we have to escape existing instances first. This'll cause them to be double-escaped, which we
-			// fix later on
 			var html = context.$textarea.val()
-				.replace( /&nbsp;/g, '&amp;nbsp;' )
-				.replace( /\<br\>/g, '&lt;br&gt;' )
-				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
+				// We're gonna use &esc; as an escape sequence
+				.replace( /&esc;/g, '&esc;&esc;' )
+				// Escape existing uses of <p>, </p>, &nbsp; and <span class="wikiEditor-tab"></span>
+				.replace( /\<p\>/g, '&esc;&lt;p&gt;' )
+				.replace (/\<\/p\>/g, '&esc;&lt;/p&gt;' )
+				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&esc;&lt;span class="wikiEditor-tab"&gt;&lt;/span&gt;' )
+				.replace( /&nbsp;/g, '&esc;&amp;nbsp;' );
 			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
+			// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
 			if ( $.browser.msie ) {
-				// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
+				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
 				if ( $.browser.versionNumber <= 7 ) {
 					// Replace all spaces matching &nbsp; - IE <= 7 needs this because of its overzealous
-					// whitespace collapsing;
+					// whitespace collapsing
 					html = html.replace( / /g, "&nbsp;" );
 				} else {
 					// IE8 is happy if we just convert the first leading space to &nbsp;
 					html = html.replace( /(^|\n) /g, "$1&nbsp;" );
 				}
-				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
 			}
 			// Use a dummy div to escape all entities
 			// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
@@ -7664,10 +7665,12 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&lt;\/p&gt;/g, '</p>' )
 				// Empty p tags should just be br tags
 				.replace( /<p><\/p>/g, '<br>' )
-				.replace( /&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
-				.replace( /&amp;amp;nbsp;/g, '&amp;nbsp;' )
-				.replace( /&amp;lt;br&amp;gt;/g, '&lt;br&gt;' )
-				.replace( /&amp;lt;span class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' );
+				// Unescape &esc; stuff
+				.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
+				.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
+				.replace( /&amp;esc;&amp;lt;\/p&amp;gt;/g, '&lt;/p&gt;' )
+				.replace( /&amp;esc;&amp;lt;span class="wikiEditor-tab"&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
+				.replace( /&amp;esc;&amp;esc;/g, '&amp;esc;' );
 			context.$content.html( html );
 			context.oldHTML = html;
 			// FIXME: This needs to be merged somehow with the oldHTML thing
