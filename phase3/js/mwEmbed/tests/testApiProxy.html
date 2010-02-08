@@ -23,7 +23,7 @@ function doHello(){
 	$j('#helloTarget').html( mw.loading_spinner() );
 	//first get the user name:
 	getUserName(function( user_name ){	
-		$j('#helloTarget').hide().text( user_name  ).fadeIn('slow');
+		$j('#helloTarget').addClass('UserNameFound').hide().text( user_name  ).fadeIn('slow');
 	});
 	return false;
 }

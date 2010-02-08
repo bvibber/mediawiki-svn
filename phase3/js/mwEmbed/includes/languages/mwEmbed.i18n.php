@@ -467,12 +467,6 @@ $messages['en'] = array(
 	'mwe-credit-title' => 'Title: $1',
 	'mwe-kaltura-platform-title' => 'Kaltura open source video platform',
 
-	/*
-	 * js file: /tests/testLang.js
-	 */
-	'undelete_short' => 'Undelete {{PLURAL:$1|one edit|$1 edits}}',
-	'category-subcat-count' => '{{PLURAL:$2|This category has only the following subcategory.|This category has the following {{PLURAL:$1|subcategory|$1 subcategories}}, out of $2 total.}}',
-	'mwe-upload-multi' => 'Upload {{PLURAL:$1|file|files}}',
 );
 
 /** Message documentation (Message documentation)
