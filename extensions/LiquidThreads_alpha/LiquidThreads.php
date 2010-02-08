@@ -51,7 +51,7 @@ $wgHooks['SkinTemplateTabs'][] = 'LqtDispatch::onSkinTemplateTabs';
 $wgHooks['SkinTemplateNavigation'][] = 'LqtDispatch::onSkinTemplateNavigation';
 
 // Customisation of recentchanges
-//$wgHooks['OldChangesListRecentChangesLine'][] = 'LqtHooks::customizeOldChangesList';
+$wgHooks['OldChangesListRecentChangesLine'][] = 'LqtHooks::customizeOldChangesList';
 
 // Notification (watchlist, newtalk)
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'LqtHooks::setNewtalkHTML';
@@ -122,6 +122,7 @@ $wgAutoloadClasses['SynchroniseThreadArticleDataJob'] = "$dir/classes/Synchronis
 $wgAutoloadClasses['ThreadHistoryPager'] = "$dir/classes/ThreadHistoryPager.php";
 $wgAutoloadClasses['TalkpageHistoryView'] = "$dir/pages/TalkpageHistoryView.php";
 $wgAutoloadClasses['LqtHotTopicsController'] = "$dir/classes/HotTopics.php";
+$wgAutoloadClasses['LqtLogFormatter'] = "$dir/classes/LogFormatter.php";
 
 // View classes
 $wgAutoloadClasses['TalkpageView'] = $dir . 'pages/TalkpageView.php';
@@ -158,7 +159,10 @@ if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 $wgLogTypes[] = 'liquidthreads';
 $wgLogNames['liquidthreads']          = 'lqt-log-name';
 $wgLogHeaders['liquidthreads']        = 'lqt-log-header';
-$wgLogActionsHandlers['liquidthreads/move'] = 'lqtFormatMoveLogEntry';
+
+foreach( array( 'move', 'split', 'merge', 'subjectedit', 'resort' ) as $action ) {
+	$wgLogActionsHandlers["liquidthreads/$action"] = 'LqtLogFormatter::formatLogEntry';
+}
 
 // Preferences
 $wgDefaultUserOptions['lqtnotifytalk'] = false;
@@ -212,3 +216,7 @@ $wgLiquidThreadsDefaultPageLimit = 20;
 
 /** Whether or not to allow users to activate/deactivate LiquidThreads per-page */
 $wgLiquidThreadsAllowUserControl = true;
+
+/** Whether or not to allow users to activate/deactivate LiquidThreads in specific namespaces.
+	NULL means either all or none, depending on the above. */
+$wgLiquidThreadsAllowUserControlNamespaces = null;

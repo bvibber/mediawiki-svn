@@ -96,7 +96,7 @@ class LqtView {
 	}
 
 	static function permalink( $thread, $text = null, $method = null, $operand = null,
-								$sk = null, $attribs = array(), $uquery = array() ) {
+					$sk = null, $attribs = array(), $uquery = array() ) {
 		if ( is_null( $sk ) ) {
 			global $wgUser;
 			$sk = $wgUser->getSkin();
@@ -133,6 +133,10 @@ class LqtView {
 
 	static function linkInContext( $thread, $contextType = 'page', $text = null ) {
 		list( $title, $query ) = self::linkInContextData( $thread, $contextType );
+		
+		if ( is_null($text) ) {
+			$text = Threads::stripHTML( $thread->formattedSubject() );
+		}
 
 		global $wgUser;
 		$sk = $wgUser->getSkin();
@@ -1142,7 +1146,7 @@ class LqtView {
 
 			$id = 'lqt-header-' . $thread->id();
 
-			$html = $this->output->parseInline( $thread->subject() );
+			$html = $thread->formattedSubject();
 			$html = Xml::tags( 'span', array( 'class' => 'mw-headline' ), $html );
 			$html .= Xml::hidden( 'raw-header', $thread->subject() );
 			$html = Xml::tags( 'h' . $this->headerLevel,
@@ -1180,6 +1184,13 @@ class LqtView {
 
 		$article = new Article( $thread->title() );
 		$target = Title::newFromRedirect( $article->getContent() );
+		
+		if (!$target) {
+			throw new MWException( "Thread ".$thread->id().' purports to be moved, '.
+				'but no redirect found in text of '.
+				$thread->title()->getPrefixedText().'. Dying.' );
+		}
+		
 		$t_thread = Threads::withRoot( new Article( $target ) );
 
 		// Grab data about the new post.
@@ -1775,5 +1786,23 @@ class LqtView {
 
 	function show() {
 		return true; // No-op
+	}
+	
+	// Copy-and-modify of Linker::formatComment
+	static function formatSubject( $s ) {
+		wfProfileIn( __METHOD__ );
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+
+		# Sanitize text a bit:
+		$s = str_replace( "\n", " ", $s );
+		# Allow HTML entities
+		$s = Sanitizer::escapeHtmlAllowEntities( $s );
+
+		# Render links:
+		$s = $sk->formatLinksInComment( $s, null, false );
+
+		wfProfileOut( __METHOD__ );
+		return $s;
 	}
 }
