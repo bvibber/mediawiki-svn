@@ -455,8 +455,7 @@ mw.TimedTextEdit.prototype = {
 	
 	onCancelClipEdit: function(){
 		var _this = this;
-		// cancel edit
-		//debugger;
+		// Cancel edit
 		$j( _this.target_container ).dialog( 'close' );
 	}
-}
+};

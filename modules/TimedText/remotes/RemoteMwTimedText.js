@@ -186,4 +186,4 @@ RemoteMwTimedText.prototype = {
 				'height': page.imageinfo[0].height,
 			};	
 	}
-}
+};
