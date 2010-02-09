@@ -80,8 +80,13 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			if($skip && $message === $params['from'])
 				$skip = false;
 			if(!$skip) {
+
 				$a = array( 'name' => $message );
-				$msg = wfMsgGetKey( $message, true, false, false );
+				if( isset( $params['arg'] ) && count( $params['arg'] ) != 0 ){
+					$msg = wfMsg( $message, $params['arg'] );
+				}else{
+					$msg = wfMsgGetKey( $message, true, false, false );
+				}
 				if ( wfEmptyMsg( $message, $msg ) )
 					$a['missing'] = '';
 				else {
@@ -118,6 +123,9 @@ class ApiQueryAllmessages extends ApiQueryBase {
 					'default'
 				)
 			),
+			'arg' => array(
+				ApiBase :: PARAM_ISMULTI => true
+			),
 			'filter' => array(),
 			'lang' => null,
 			'from' => null,
@@ -128,6 +136,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		return array (
 			'messages' => 'Which messages to output. "*" means all messages',
 			'prop' => 'Which properties to get',
+			'arg' => 'Arguments to be substituted into msg',
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
