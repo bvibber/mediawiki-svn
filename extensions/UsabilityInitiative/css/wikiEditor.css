@@ -112,3 +112,26 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-right {
 .wikiEditor-view-wikitext {
 	line-height: 1em;
 }
+.wikiEditor-ui-loading {
+	background: #f3f3f3;
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	border: 1px solid silver;
+	margin: -1px;
+	opacity: 0.9;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+}
+.wikiEditor-ui-loading span {
+	display: block;
+	height: 24px;
+	width: 24px;
+	background: url( ../images/wikiEditor/toolbar/loading.gif ) 0 0 no-repeat;
+	text-indent: -9999px;
+	margin: 0 auto;
+}
