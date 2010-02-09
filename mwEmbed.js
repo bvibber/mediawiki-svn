@@ -2376,10 +2376,10 @@ var mwDefaultConf = {
 				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 				
 				// Only load jquery ui theme sheet if ui-widget does not exist.
-				// NOTE: this rule test sucks cuz it does not work cross domain 
-				if( ! mw.styleRuleExists( 'ui-widget' ) ){				
+				// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
+				//if( ! mw.styleRuleExists( 'ui-widget' ) ){				
 					mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-				}
+				//}
 				
 				mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' ); 
 	
