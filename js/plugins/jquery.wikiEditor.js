@@ -1174,7 +1174,12 @@ if ( typeof context == 'undefined' ) {
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) )
+		.after( 
+			$( '<div></div>' )
+				.addClass( 'wikiEditor-ui-loading' )
+				.append( $( '<span>Loading</span>' )
+					.css( 'marginTop', context.$textarea.height() / 2 ) ) );
 	// Get references to some of the newly created containers
 	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
 	context.$wikitext = context.$textarea.parent().parent().parent().parent();
@@ -1288,6 +1293,10 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe.show();
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
+			//remove our temporary loading
+			$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {
+				$( this ).remove();
+			} );
 			// Setup event handling on the iframe
 			$( context.$iframe[0].contentWindow.document )
 				.bind( 'keydown', function( event ) {

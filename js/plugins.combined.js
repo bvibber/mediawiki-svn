@@ -6737,7 +6737,7 @@ if ( typeof context == 'undefined' ) {
 					break;
 					// Intercept all tab events to provide consisten behavior across browsers
 					// Webkit browsers insert tab characters by default into the iframe rather than changing input focus
-					case 9: 
+				case 9: //tab
 						// if any modifier keys are pressed, allow the browser to do it's thing
 						if ( event.ctrlKey || event.altKey || event.shiftKey ) { 
 							return true;
@@ -6754,6 +6754,12 @@ if ( typeof context == 'undefined' ) {
 							return false;
 						}
 					break;
+				 case 86: //v
+					 if ( event.ctrlKey ){
+						 //paste, intercepted for IE
+						 context.evt.paste( event );
+					 }
+					 break;
 			}
 			return true;
 		},
@@ -7601,7 +7607,12 @@ if ( typeof context == 'undefined' ) {
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
 		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) )
+		.after( 
+			$( '<div></div>' )
+				.addClass( 'wikiEditor-ui-loading' )
+				.append( $( '<span>Loading</span>' )
+					.css( 'marginTop', context.$textarea.height() / 2 ) ) );
 	// Get references to some of the newly created containers
 	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
 	context.$wikitext = context.$textarea.parent().parent().parent().parent();
@@ -7715,6 +7726,10 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe.show();
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
+			//remove our temporary loading
+			$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {
+				$( this ).remove();
+			} );
 			// Setup event handling on the iframe
 			$( context.$iframe[0].contentWindow.document )
 				.bind( 'keydown', function( event ) {
@@ -7723,10 +7738,10 @@ if ( typeof context == 'undefined' ) {
 				.bind( 'paste', function( event ) {
 					return context.fn.trigger( 'paste', event );
 				} )
-				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
+				.bind( 'keyup paste mouseup cut encapsulateSelection', function( event ) {
 					return context.fn.trigger( 'change', event );
 				} )
-				.delayedBind( 250, 'keyup mouseup paste cut encapsulateSelection', function( event ) {
+				.delayedBind( 250, 'keyup paste mouseup cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'delayedChange', event );
 				} );
 		} );
