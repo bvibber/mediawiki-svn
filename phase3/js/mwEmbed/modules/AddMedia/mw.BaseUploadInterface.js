@@ -354,8 +354,16 @@ mw.BaseUploadInterface.prototype = {
 
 		// Add the iframe
 		_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
+		//IE only works if you "create element with the name" (not jquery style
+		var iframe;
+		try {
+		  iframe = document.createElement( '<iframe name="' + _this.iframeId + '">' );
+		} catch (ex) {
+		  iframe = document.createElement('iframe');
+		}		
+		
 		$j( "body" ).append( 
-			$j('<iframe />')
+			$j( iframe )
 			.attr({
 				'src':'javascript:false;',
 				'id':_this.iframeId,
@@ -366,8 +374,7 @@ mw.BaseUploadInterface.prototype = {
 
 
 		// Set the form target to the iframe
-		$form.attr( 'target', _this.iframeId );
-		
+		$form.attr( 'target', _this.iframeId );		
 
 		// Set up the completion callback
 		$j( '#' + _this.iframeId ).load( function() {
@@ -378,8 +385,7 @@ mw.BaseUploadInterface.prototype = {
 		_this.form_post_override = true;
 				
 		// Reset the done with action flag
-		_this.action_done = false;	
-		mw.log("about to submit form:");
+		_this.action_done = false;			
 		$form.submit();
 	},
 
