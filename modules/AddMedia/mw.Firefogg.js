@@ -302,7 +302,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				return;
 			}
 
-			// Otherwise show the "install Firefogg" message			
+			// Otherwise show the "install Firefogg" message
 			var upMsg = ( _this.form_type == 'upload' ) ? gM( 'fogg-for_improved_uploads' ) : '';
 			var firefoggUrl = _this.getFirefoggInstallUrl();
 			if( firefoggUrl ){
@@ -826,13 +826,15 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 
 	/**
 	 * Do an upload, with the mode given by this.upload_mode
+	 * XXX should probably be dispatched from baseUploadInterface doUpload instead
 	 */
 	doUpload: function() {
 		var _this = this;
 		mw.log( "firefogg: doUpload:: " + 
 			( this.getFirefogg() ? 'on' : 'off' ) + 
 			' up mode:' + _this.upload_mode );
-					
+	
+ 		_this.uploadBeginTime = (new Date()).getTime();
 		// If Firefogg is disabled or doing an copyByUrl upload, just invoke the parent method
 		if( !this.getFirefogg() || this.isCopyUpload() ) {
 			_this.pe_doUpload();

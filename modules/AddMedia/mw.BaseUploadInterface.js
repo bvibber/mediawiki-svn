@@ -11,6 +11,7 @@ mw.addMessages({
 	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-upload-transcoded-status" : "Transcoded",
+	"mwe-uploaded-time-remaining" : "Time remaining: $1",
 	"mwe-uploaded-status" : "Uploaded",
 	"mwe-upload-stats-fileprogress" : "$1 of $2",
 	"mwe-upload_completed" : "Your upload is complete",
@@ -83,6 +84,11 @@ mw.BaseUploadInterface.prototype = {
 
 	// The DOM node for the upload form
 	form: false,
+
+	// The following are really state of the upload, not the interface.
+	// we are currently only managing one, so this is okay... for now.
+	uploadBeginTime: null,
+
 
 	/**
 	 * Object initialisation
@@ -248,6 +254,7 @@ mw.BaseUploadInterface.prototype = {
 	 */
 	doUpload: function() {		
 		// Note "api" should be called "http_copy_upload" and /post/ should be "form_upload"
+ 		this.uploadBeginTime = (new Date()).getTime();
 		if ( this.upload_mode == 'api' ) {
 			this.doApiCopyUpload();
 		} else if ( this.upload_mode == 'post' ) {
@@ -947,11 +954,23 @@ mw.BaseUploadInterface.prototype = {
 
 	/**
 	 * Update the progress bar to a given completion fraction (between 0 and 1)
+         * XXX This progress bar is used for encoding AND for upload... may need to fix that
 	 */
 	updateProgress: function( fraction ) {
-		//mw.log('update progress: ' + fraction);
+		var _this = this;
+		
 		$j( '#up-progressbar' ).progressbar( 'value', parseInt( fraction * 100 ) );
 		$j( '#up-pstatus' ).html( parseInt( fraction * 100 ) + '% - ' );
+
+		if (_this.uploadBeginTime) {	
+			var elapsedMilliseconds = ( new Date() ).getTime() - _this.uploadBeginTime;
+			if (fraction > 0.0 && elapsedMilliseconds > 0) { // or some other minimums for good data
+				var fractionPerMillisecond = fraction / elapsedMilliseconds;
+				var remainingSeconds = parseInt( ( ( 1.0 - fraction ) / fractionPerMillisecond ) / 1000 ); 
+				$j( '#up-etr' ).html( gM( 'mwe-uploaded-time-remaining', mw.seconds2npt(remainingSeconds) ) );
+			}
+		}
+	
 	},
 
 	/**
@@ -986,14 +1005,15 @@ mw.BaseUploadInterface.prototype = {
 			buttons: _this.getCancelButton()
 		} );
 		mw.log( 'upProgressDialog::dialog done' );
-		
+
 		$j( '#upProgressDialog' ).html(
 			'<div id="up-pbar-container" style="width:90%;height:15px;" >' +
 			'<div id="up-progressbar" style="height:15px;"></div>' +
 				'<div id="up-status-container">' +
 					'<span id="up-pstatus">0% - </span> ' +
 					'<span id="up-status-state">' + gM( 'mwe-uploaded-status' ) + '</span> ' +
-				'</div>'+
+				'</div>' +
+				'<div id="up-etr">' + gM( 'mwe-uploaded-time-remaining', '' ) + '</div>' +
 			'</div>'
 		);
 		// Open the empty progress window
@@ -1030,6 +1050,7 @@ mw.BaseUploadInterface.prototype = {
 			$j( dialogElement ).dialog( 'close' );
 		}
 	}
+
 };
 
 // jQuery plugins
