@@ -273,6 +273,7 @@ if ( typeof context == 'undefined' ) {
 		 * processing of events which did not actually change the content of the iframe.
 		 */
 		'keydown': function( event ) {
+
 			switch ( event.which ) {
 				case 90: // z
 					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
@@ -358,6 +359,27 @@ if ( typeof context == 'undefined' ) {
 					context.history.shift();
 				}
 			}
+			return true;
+		},
+		'paste': function( event ) {
+			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
+			setTimeout( function() {
+				var $selection = context.$content.find( ':not(.wikiEditor)' );
+				while ( $selection.length  && $selection.length > 0){
+					var $currentElement = $selection.eq( 0 );
+					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
+						$currentElement = $currentElement.parent();
+					}
+					if($currentElement.is("br")){
+						$currentElement.addClass('wikiEditor');
+					}
+					else{
+						$("<p></p>").text( $currentElement.text() ).addClass( 'wikiEditor' ).insertAfter( $currentElement );
+						$currentElement.remove();
+					}
+					$selection = context.$content.find( ':not(.wikiEditor)' );
+				}				
+			}, 100 ); 
 			return true;
 		}
 	};
@@ -1262,6 +1284,9 @@ if ( typeof context == 'undefined' ) {
 			$( context.$iframe[0].contentWindow.document )
 				.bind( 'keydown', function( event ) {
 					return context.fn.trigger( 'keydown', event );
+				} )
+				.bind( 'paste', function( event ){ 
+					return context.fn.trigger( 'paste', event );
 				} )
 				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
 					return context.fn.trigger( 'change', event );
