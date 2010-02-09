@@ -1,12 +1,18 @@
 <?php
 /** To get this working you must
 * - set a valid path to PEAR
-* - Upload the image Caspian.tif without PagedTiffHandler being active
+* - check upload size in php.ini: Multipage.tiff needs at least 3M
+* - Upload the image caspian.tif without PagedTiffHandler being active
 * - Upload multipage.tiff when PagedTiffHandler is active
 */
 
-require_once( dirname(__FILE__) . '/../../../maintenance/commandLine.inc' );
-ini_set( 'include_path', get_include_path() . PATH_SEPARATOR . /*$_SERVER['PHP_PEAR_INSTALL_DIR']*/ 'C:\php\pear' );
+try {
+	require_once( dirname(__FILE__) . '/../../../maintenance/commandLine.inc' );
+}
+catch(Exception $e) {
+	require_once( dirname(__FILE__) . '/../../../phase3/maintenance/commandLine.inc' );
+}
+// ini_set( 'include_path', get_include_path() . PATH_SEPARATOR . /*$_SERVER['PHP_PEAR_INSTALL_DIR']*/ 'C:\php\pear' );
 // requires PHPUnit 3.4
 require_once 'PHPUnit/Framework.php';
 
@@ -15,6 +21,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 
 	private $handler;
 	private $image;
+	private $preCheckError;
 
 	function setUp()
 	{
@@ -32,7 +39,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		}
 		if (!file_exists(dirname(__FILE__) . '/testImages/multipage.tiff'))
 		{
-			echo "testImages/Multitest_2.tif cannot be found.\n";
+			echo "testImages/Multipage.tif cannot be found.\n";
 			$this->preCheckError = true;
 		}
 		if (!file_exists( dirname(__FILE__) . '/testImages'))
