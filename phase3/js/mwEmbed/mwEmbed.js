@@ -380,7 +380,7 @@ var mwDefaultConf = {
 	
 	/**
 	 * Checks that convertPlural was given an array and pads it to requested
-	 * amound of forms by copying the last one.
+	 * amount of forms by copying the last one.
 	 *
 	 * @param {Array} forms Forms given to convertPlural
 	 * @param {Integer} count How many forms should there be at least
@@ -436,9 +436,16 @@ var mwDefaultConf = {
 	/**
 	 * Checks if a language key is valid ( is part of languageCodeList )
 	 * @param {String} langKey Language key to be checked
+	 * @return true if valid language, false if not
 	 */
 	mw.isValidLang = function( langKey ){
-		return ( $j.inArray(langKey,  mw.getConfig( 'languageCodeList') ) == -1 )
+		var langList = mw.getConfig( 'languageCodeList');
+		for(var i =0; i < langList.length; i++){
+			if( langList[i] == langKey ){
+				return true;
+			} 
+		}		
+		return false;
 	}
 	
 	/**
