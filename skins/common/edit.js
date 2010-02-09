@@ -47,11 +47,14 @@ function mwSetupToolbar() {
 	var textbox = document.getElementById('wpTextbox1');
 	if (!textbox) { return false; }
 
-	// Don't generate buttons for browsers which don't fully
-	// support it.
-	if (!(document.selection && document.selection.createRange)
-		&& textbox.selectionStart === null) {
-		return false;
+	// Only check for selection capability if the textarea is visible - errors will occur otherwise - just because
+	// the textarea is not visible, doesn't mean we shouldn't build out the toolbar though - it might have been replaced
+	// with some other kind of control
+	if ( textbox.style.display != 'none' ) {
+		if ( !( document.selection && document.selection.createRange )
+			&& textbox.selectionStart === null ) {
+			return false;
+		}
 	}
 
 	for (var i = 0; i < mwEditButtons.length; i++) {
@@ -66,6 +69,12 @@ function mwSetupToolbar() {
 // apply tagOpen/tagClose to selection in textarea,
 // use sampleText instead of selection if there is none
 function insertTags(tagOpen, tagClose, sampleText) {
+	if ( typeof $j != 'undefined' && typeof $j.fn.textSelection != 'undefined' ) {
+		$j( '#wpTextbox1' ).textSelection(
+			'encapsulateSelection', { 'pre': tagOpen, 'peri': sampleText, 'post': tagClose }
+		);
+		return;
+	}
 	var txtarea;
 	if (document.editform) {
 		txtarea = currentFocused;
