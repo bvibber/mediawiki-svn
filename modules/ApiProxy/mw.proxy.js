@@ -330,7 +330,7 @@ mw.addMessages( {
 		// FIXME grab the users whitelist for our current domain		
 		
 		// FIXME offer the user the ability to "approve" requested domain save to
-		// their user/ apiProxyDomainList.js page ( or better some user-prefrence setup )						
+		// their user preference setup )						
 				
 	}
 	
