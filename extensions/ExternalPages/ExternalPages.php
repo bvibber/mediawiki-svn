@@ -11,13 +11,47 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 3.0 or later
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo <<<EOT
-To install the ExternalPages extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/ExternalPages/SpecialExternalPages.php" );
-EOT;
-	exit( 1 );
-}
+/** Configuration */
+
+/**
+ * Expiry time for the server-side source cache and the squid cache, in seconds
+ */
+$wgExternalPagesCacheExpiry = 600;
+
+/**
+ * Allowed page configuration.
+ * This should be a map of local subpage name to a remote page info structure.
+ * Valid keys in the remote page structure are:
+ *    site:  A site as specified in $wgExternalPagesSites
+ *    title: The full page title, as you would use in an internal link
+ *
+ * For example:
+ *
+ *   $wgExternalPages = array(
+ *      'news' => array( 
+ *          'site' => 'wmf',
+ *          'title' => 'Current events'
+ *      )
+ *   );
+ *
+ * Then this page becomes accessible via [[Special:ExternalPages/news]].
+ */
+$wgExternalPages = array();
+
+/**
+ * Site configuration
+ * Allowed keys are:
+ *   scriptUrl: the URL of index.php
+ *
+ * Example:
+ *
+ *     $wgExternalPagesSites = array(
+ *         'wmf' => array( 'scriptUrl' => 'http://wikimediafoundation.org/w/index.php' )
+ *     );
+ */
+$wgExternalPagesSites = array();
+
+/** Registration */
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
@@ -36,15 +70,3 @@ $wgExtensionAliasesFiles['ExternalPages'] = $dir . 'ExternalPages.alias.php';
 $wgAutoloadClasses['ExternalPages'] = $dir . 'ExternalPages_body.php';
 
 $wgSpecialPages['ExternalPages'] = 'ExternalPages';
-$wgSpecialPageGroups['ExternalPages'] = 'users';
-$wgHooks['LanguageGetSpecialPageAliases'][] = 'externalPagesLocalizedPageName';
-
-function externalPagesLocalizedPageName( &$specialPageArray, $code ) {
-	wfLoadExtensionMessages( 'ExternalPages' );
-	$text = wfMsg( 'externalpages' );
-
-	# Convert from title in text form to DBKey and put it into the alias array:
-	$title = Title::newFromText( $text );
-	$specialPageArray['ExternalPages'][] = $title->getDBKey();
-	return true;
-}
