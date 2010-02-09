@@ -702,13 +702,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				_this.updateProgress( progress );
 			},
 			function /* onDone */ () {
-				mw.log( "done with encoding (no upload) " );
-				// Set status to 100% for one second
-				// FIXME: this is either a hack or a waste of time, not sure which
-				_this.updateProgress( 1 );
-				setTimeout( function() {
-					_this.onLocalEncodeDone();
-				});
+				mw.log( "done with encoding (no upload) " );				
+				_this.onLocalEncodeDone();
 			}
 		);
 	},
@@ -895,10 +890,11 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 				function /* onProgress */ ( progress ) {
 					_this.updateProgress( progress );
 				},
-				function /* onDone */ () {
-					mw.log( 'done with encoding do POST upload:' + _this.form.action );
-										
+				function /* onDone */ () {															
 					var uploadRequest = _this.getUploadApiRequest();
+					
+					mw.log( 'done with encoding do POST upload:' + JSON.stringify( uploadRequest ) );
+					
 					_this.fogg.post( _this.api_url, 'file', JSON.stringify( uploadRequest ) );
 						
 					_this.doUploadStatus();
@@ -996,23 +992,25 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	 */
 	doEncode: function( progressCallback, doneCallback ) {
 		var _this = this;
-		_this.action_done = false;
-		_this.displayProgressOverlay();
+		_this.action_done = false;	
 		
 		var encoderSettings = this.getEncoderSettings();
 		
-		// Check if encoderSettings passthrough is on ( then skip the encode )		
+		// Check if encoderSettings passthrough is on ( then skip the encode )				
 		if( encoderSettings['passthrough'] == true){
 			doneCallback();
+			return ; 
 		}
+		// Display progress
+		_this.displayProgressOverlay();
 		
 		mw.log( 'doEncode: with: ' +  JSON.stringify( encoderSettings ) );
 		_this.fogg.encode( JSON.stringify( encoderSettings ) );
 
-		//show transcode status:
+		// Show transcode status:
 		$j( '#up-status-state' ).html( gM( 'mwe-upload-transcoded-status' ) );
 
-		//setup a local function for timed callback:
+		// Setup a local function for timed callback:
 		var encodingStatus = function() {
 			var status = _this.fogg.status();
 

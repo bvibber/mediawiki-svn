@@ -149,7 +149,7 @@ mw.BaseUploadInterface.prototype = {
 		// Remap the upload form to the "api" form:
 		this.remapFormToApi();
 		
-		// Check for post action override
+		// Check for post action override	
 		if ( this.form_post_override ) {
 			mw.log( 'form_post_override is true, do ordinary form submit' );
 			return true;
