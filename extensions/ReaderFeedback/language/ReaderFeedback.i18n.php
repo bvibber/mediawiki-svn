@@ -1742,6 +1742,7 @@ $messages['pl'] = array(
 	'readerfeedback-tier-poor' => 'słaba',
 	'tooltip-ca-ratinghist' => 'Oceny czytelników tej strony',
 	'specialpages-group-feedback' => 'Opinia czytelnika',
+	'readerfeedback-tt-review' => 'Prześlij wynik sprawdzenia',
 );
 
 /** Piedmontese (Piemontèis)

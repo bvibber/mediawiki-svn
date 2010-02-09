@@ -413,11 +413,12 @@ $messages['lo'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'categoryintersection' => 'Пресек на категории',
-	'categoryintersection-desc' => 'Одржување на табела со хеш вредности за [[Special:CategoryIntersection|пресек на категории]] во страница',
+	'categoryintersection-desc' => 'Одржување на табела со тарабни вредности за [[Special:CategoryIntersection|пресек на категории]] во страница',
 	'categoryintersection-doit' => 'Листа на страници во сите овие категории',
 	'categoryintersection-maxcategories' => 'Максимално дозволен број на категории чиј пресек се бара е $1.',
 	'categoryintersection-results' => 'Пребарувањето врати $1 {{PLURAL:$1|резултат|резултати}}.',

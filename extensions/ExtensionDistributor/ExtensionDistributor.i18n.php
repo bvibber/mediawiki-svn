@@ -80,6 +80,7 @@ $messages['af'] = array(
 	'extdist-current-version' => 'Ontwikkelingsweergawe (trunc)',
 	'extdist-submit-version' => 'Gaan voort',
 	'extdist-tar-error' => 'TAR stuur die volgende kode terug $1:',
+	'extdist-want-more' => "Laai nog 'n uitbreiding af",
 );
 
 /** Arabic (العربية)

@@ -1112,6 +1112,8 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'indexfunc-desc' => 'Функція парсера для створення автоматичних перенаправлень і сторінок неоднозначностей',
+	'indexfunc-badtitle' => 'Неприпустима назва: "$1"',
+	'indexfunc-index-exists' => 'Сторінка "$1" вже існує',
 );
 
 /** Veps (Vepsan kel')
