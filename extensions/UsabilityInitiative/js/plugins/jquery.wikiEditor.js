@@ -365,21 +365,23 @@ if ( typeof context == 'undefined' ) {
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			setTimeout( function() {
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
-				while ( $selection.length  && $selection.length > 0){
+				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					if($currentElement.is("br")){
-						$currentElement.addClass('wikiEditor');
-					}
-					else{
-						$("<p></p>").text( $currentElement.text() ).addClass( 'wikiEditor' ).insertAfter( $currentElement );
+					if ( $currentElement.is( 'br' ) ) {
+						$currentElement.addClass( 'wikiEditor' );
+					} else {
+						$( '<p></p>' )
+							.text( $currentElement.text() )
+							.addClass( 'wikiEditor' )
+							.insertAfter( $currentElement );
 						$currentElement.remove();
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
-				}				
-			}, 100 ); 
+				}
+			}, 100 );
 			return true;
 		}
 	};
@@ -503,30 +505,30 @@ if ( typeof context == 'undefined' ) {
 			// Converting <p>s is wrong if there's nothing before them, so check that.
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
-					var text =  $( this ).text();
-					// If this <p> is preceded by some text, add a \n at the beginning, and if
-					// it's followed by a textnode, add a \n at the end
-					// We need the traverser because there can be other weird stuff in between
-					
-					// Check for preceding text
-					var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
-					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
-						t = t.prev();
-					}
-					if ( t ) {
-						text = "\n" + text;
-					}
-					
-					// Check for following text
-					t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
-					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
-						t = t.next();
-					}
-					if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue.charAt( 0 ) != '\n'
-							&& t.node.nodeValue.charAt( 0 ) != '\r' ) {
-						text += "\n";
-					}
-					$( this ).text( text );
+				var text =  $( this ).text();
+				// If this <p> is preceded by some text, add a \n at the beginning, and if
+				// it's followed by a textnode, add a \n at the end
+				// We need the traverser because there can be other weird stuff in between
+				
+				// Check for preceding text
+				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
+				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+					t = t.prev();
+				}
+				if ( t ) {
+					text = "\n" + text;
+				}
+				
+				// Check for following text
+				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
+				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+					t = t.next();
+				}
+				if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue.charAt( 0 ) != '\n'
+						&& t.node.nodeValue.charAt( 0 ) != '\r' ) {
+					text += "\n";
+				}
+				$( this ).text( text );
 			} );
 			var retval;
 			if ( $.browser.msie ) {
@@ -1285,7 +1287,7 @@ if ( typeof context == 'undefined' ) {
 				.bind( 'keydown', function( event ) {
 					return context.fn.trigger( 'keydown', event );
 				} )
-				.bind( 'paste', function( event ){ 
+				.bind( 'paste', function( event ) {
 					return context.fn.trigger( 'paste', event );
 				} )
 				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
