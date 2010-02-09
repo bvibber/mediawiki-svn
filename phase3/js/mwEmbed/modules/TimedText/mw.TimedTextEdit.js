@@ -426,9 +426,10 @@ mw.TimedTextEdit.prototype = {
 		
 		// Build cancel button 
 		var cancelButton = {};
-		cancelButton[ gM( 'mwe-cancel' ) ] = function() {
+		var cancelText = gM( 'mwe-cancel' );
+		cancelButton[ cancelText ] = function() {
 			_this.onCancelClipEdit();
-		}
+		};
 		
 		$j( _this.target_container ).dialog( {
 			bgiframe: true,
