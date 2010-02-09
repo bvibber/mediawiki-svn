@@ -1170,16 +1170,16 @@ if ( typeof context == 'undefined' ) {
 	
 	// Encapsulate the textarea with some containers for layout
 	context.$textarea
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) )
 		.after( 
 			$( '<div></div>' )
 				.addClass( 'wikiEditor-ui-loading' )
 				.append( $( '<span>Loading</span>' )
-					.css( 'marginTop', context.$textarea.height() / 2 ) ) );
+					.css( 'marginTop', context.$textarea.height() / 2 ) ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
+		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
 	// Get references to some of the newly created containers
 	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
 	context.$wikitext = context.$textarea.parent().parent().parent().parent();
