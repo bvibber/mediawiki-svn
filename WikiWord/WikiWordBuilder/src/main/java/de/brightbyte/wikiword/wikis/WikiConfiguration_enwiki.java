@@ -151,7 +151,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "Geobox"));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|men|women|births|deaths)$", 0));
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT)$", 0));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT|Infobox.*_(person|[aA]rtist|creator|writer|musician|biography|clergy|scientist))$", 0));
 		
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Given_names"));
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Surnames"));

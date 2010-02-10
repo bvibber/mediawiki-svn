@@ -41,32 +41,43 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		Pattern defaultSplitPattern = Pattern.compile("[,;/]\\s+|<br\\s*/?>");
 
-		propertyExtractors.add( new TemplateParameterExtractor(new ExactNameMatcher("Infobox_Artist"),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_[Aa]rtist|Infobox_comics_creator", 0, true),
 				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birthname", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birthdate", "person-birth-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birthplace", "person-birth-place").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("location", "person-birth-place").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("deathdate", "person-death-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("yod", "person-death-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("deathplace", "person-death-place").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("yod", "person-death-place").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("field", "artist-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
 				new DefaultTemplateParameterPropertySpec("movement", "artist-group").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
 				new DefaultTemplateParameterPropertySpec("training", "artist-training").setStripMarkup(true),
-				new DefaultTemplateParameterPropertySpec("award", "artist-award").setStripMarkup(true).setSplitPattern(defaultSplitPattern)
+				new DefaultTemplateParameterPropertySpec("award", "artist-award").setStripMarkup(true).setSplitPattern(defaultSplitPattern),
+				new DefaultTemplateParameterPropertySpec("location", "person-nationality").setStripMarkup(true)
 			) );
 
-		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_(((Medical|Military)_)?[Pp]erson|Actor|Astronaut|Criminal|Engineer|Musical_artist|Philosopher|Pope|ReligiousBio|Scientist)", 0, true),
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("Infobox_(((Medical|Military)_)?[Pp]erson|Actor|Astronaut|Criminal|Engineer|Musical_artist|Philosopher|Pope|ReligiousBio|Scientist|.*_creator|.*_artist)", 0, true),
 				new DefaultTemplateParameterPropertySpec("name", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("other_names", "person-name").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("birth_name", "person-name").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("birthname", "person-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birth_date", "person-birth-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("yob", "person-birth-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("birth_place", "person-birth-place").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("birthplace", "person-birth-place").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("death_date", "person-death-date").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("yod", "person-death-date").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("death_place", "person-death-place").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("deathplace", "person-death-place").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("occupation", "person-occupation").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("known_for", "person-known-for").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("notable works", "person-known-for").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("nationality", "person-nationality").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("residence", "person-nationality").setStripMarkup(true),
+				new DefaultTemplateParameterPropertySpec("location", "person-nationality").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("citizenship", "person-nationality").setStripMarkup(true)
 			) );
 		
