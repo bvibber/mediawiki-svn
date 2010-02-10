@@ -47,7 +47,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			global $wgLang;
 			$wgLang = Language::factory($params['lang']);
 		}
-		
+
 		$prop = array_flip( (array)$params['prop'] );
 
 		//Determine which messages should we print
@@ -83,7 +83,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 
 				$a = array( 'name' => $message );
 				if( isset( $params['arg'] ) && count( $params['arg'] ) != 0 ){
-					$msg = wfMsg( $message, $params['arg'] );
+					$msg = wfMsgExt( $message, array( 'parsemag' ), $params['arg'] );
 				}else{
 					$msg = wfMsgGetKey( $message, true, false, false );
 				}

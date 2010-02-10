@@ -77,7 +77,7 @@ class ApiUpload extends ApiBase {
 			/**
 			 * Internal http mode
 			 */
-			
+
 			$sd = & $_SESSION['wsDownload'][ $this->mParams['internalhttpsession'] ];
 
 			$this->mUpload = new UploadFromFile();
@@ -118,7 +118,7 @@ class ApiUpload extends ApiBase {
 			// Check the session key
 			if( !isset( $_SESSION['wsUploadData'][$this->mParams['sessionkey']] ) )
 					return $this->dieUsageMsg( array( 'invalid-session-key' ) );
-			
+
 			$this->mUpload = new UploadFromStash();
 			$this->mUpload->initialize( $this->mParams['filename'],
 					$_SESSION['wsUploadData'][$this->mParams['sessionkey']] );
@@ -139,15 +139,15 @@ class ApiUpload extends ApiBase {
 					$request->getFileSize( 'file' )
 				);
 			} elseif ( isset( $this->mParams['url'] ) ) {
-				//make sure upload by url is enabled: 
+				//make sure upload by url is enabled:
 				if( !$wgAllowCopyUploads )
 					$this->dieUsageMsg( array( 'uploaddisabled' ) );
-				
+
 				//make sure the current user can upload
 				if(! $wgUser->isAllowed('upload_by_url') )
 					$this->dieUsageMsg( array( 'badaccess-groups' ) );
-					
-				
+
+
 				$this->mUpload = new UploadFromUrl();
 				$this->mUpload->initialize( $this->mParams['filename'],
 						$this->mParams['url'], $this->mParams['asyncdownload'] );
@@ -170,7 +170,7 @@ class ApiUpload extends ApiBase {
 					$sd['mParams'] = $this->mParams;
 
 					return $this->getResult()->addValue( null, $this->getModuleName(),
-									array( 'upload_session_key' => $upload_session_key ) 
+									array( 'upload_session_key' => $upload_session_key )
 					);
 				}
 			}
@@ -294,7 +294,7 @@ class ApiUpload extends ApiBase {
 		// Use comment as initial page text by default
 		if (is_null($this->mParams['text']))
 			$this->mParams['text'] = $this->mParams['comment'];
-		
+
 		// No errors, no warnings: do the upload
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['text'], $this->mParams['watch'], $wgUser );

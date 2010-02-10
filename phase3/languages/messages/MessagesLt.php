@@ -381,7 +381,7 @@ $messages = array(
 'create-this-page'  => 'Sukurti šį puslapį',
 'delete'            => 'Trinti',
 'deletethispage'    => 'Ištrinti šį puslapį',
-'undelete_short'    => 'Atstatyti $1 {{PLURAL:$1:redagavimą|redagavimus|redagavimų}}',
+'undelete_short'    => 'Atstatyti $1 {{PLURAL:$1|redagavimą|redagavimus|redagavimų}}',
 'protect'           => 'Užrakinti',
 'protect_change'    => 'keisti',
 'protectthispage'   => 'Rakinti šį puslapį',
@@ -608,7 +608,7 @@ Prašome pasirinkti kitą vardą.',
 'noname'                     => 'Jūs nesate nurodęs teisingo naudotojo vardo.',
 'loginsuccesstitle'          => 'Sėkmingai prisijungėte',
 'loginsuccess'               => "'''Dabar jūs prisijungęs prie {{SITENAME}} kaip „$1“.'''",
-'nosuchuser'                 => 'Nėra jokio naudotojo, turinčio vardą „$1“. 
+'nosuchuser'                 => 'Nėra jokio naudotojo, turinčio vardą „$1“.
 Naudotojų varduose skiriamos didžiosios ir mažosios raidės.
 Patikrinkite rašybą, arba [[Special:UserLogin/signup|sukurkite naują paskyrą]].',
 'nosuchusershort'            => 'Nėra jokio naudotojo, pavadinto „<nowiki>$1</nowiki>“. Patikrinkite rašybą.',
@@ -1484,7 +1484,7 @@ Prašome pasirinkti kitą vardą.",
 'fileexists-thumbnail-yes'    => "Failas turbūt yra sumažinto dydžio failas ''(miniatiūra)''. [[$1|thumb]]
 Prašome peržiūrėti failą '''<tt>[[:$1]]</tt>'''.
 Jeigu tai yra toks pats pradinio dydžio paveikslėlis, tai įkelti papildomos miniatūros nereikia.",
-'file-thumbnail-no'           => "Failo pavadinimas prasideda  '''<tt>$1</tt>'''. 
+'file-thumbnail-no'           => "Failo pavadinimas prasideda  '''<tt>$1</tt>'''.
 Atrodo, kad yra sumažinto dydžio paveikslėlis ''(miniatiūra)''.
 Jei jūs turite šį paveisklėlį pilna raiška, įkelkite šitą, priešingu atveju prašome pakeisti failo pavadinimą.",
 'fileexists-forbidden'        => 'Failas tokiu pačiu vardu jau egzistuoja ir negali būti perrašytas;

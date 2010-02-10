@@ -49,22 +49,22 @@ if ( !function_exists( 'mb_substr' ) ) {
 			$split = mb_substr_split_unicode( $str, intval( $start ) );
 			$str = substr( $str, $split );
 		}
-		
+
 		if( $count !== 'end' ) {
 			$split = mb_substr_split_unicode( $str, intval( $count ) );
 			$str = substr( $str, 0, $split );
 		}
-		
+
 		return $str;
 	}
-	
+
 	function mb_substr_split_unicode( $str, $splitPos ) {
 		if( $splitPos == 0 ) {
 			return 0;
 		}
-		
+
 		$byteLen = strlen( $str );
-		
+
 		if( $splitPos > 0 ) {
 			if( $splitPos > 256 ) {
 				// Optimize large string offsets by skipping ahead N bytes.
@@ -78,7 +78,7 @@ if ( !function_exists( 'mb_substr' ) ) {
 				$charPos = 0;
 				$bytePos = 0;
 			}
-			
+
 			while( $charPos++ < $splitPos ) {
 				++$bytePos;
 				// Move past any tail bytes
@@ -96,7 +96,7 @@ if ( !function_exists( 'mb_substr' ) ) {
 					--$bytePos;
 			}
 		}
-		
+
 		return $bytePos;
 	}
 }
@@ -164,12 +164,12 @@ if( !function_exists( 'mb_strrpos' ) ) {
 		$ar = array();
 		preg_match_all( '/'.$needle.'/u', $haystack, $ar, PREG_OFFSET_CAPTURE, $offset );
 
-		if( isset( $ar[0] ) && count( $ar[0] ) > 0 && 
+		if( isset( $ar[0] ) && count( $ar[0] ) > 0 &&
 		    isset( $ar[0][count($ar[0])-1][1] ) ) {
 			return $ar[0][count($ar[0])-1][1];
 		} else {
 			return false;
-		} 
+		}
 	}
 }
 
@@ -401,8 +401,8 @@ function wfLogDBError( $text ) {
 
 /**
  * Log to a file without getting "file size exceeded" signals.
- * 
- * Can also log to TCP or UDP with the syntax udp://host:port/prefix. This will 
+ *
+ * Can also log to TCP or UDP with the syntax udp://host:port/prefix. This will
  * send lines to the specified port, prefixed by the specified prefix and a space.
  */
 function wfErrorLog( $text, $file ) {
@@ -533,13 +533,13 @@ function wfGetLangObj( $langcode = false ){
 	if( $langcode instanceof Language )
 		# Great, we already have the object!
 		return $langcode;
-		
+
 	global $wgContLang;
 	if( $langcode === $wgContLang->getCode() || $langcode === true )
 		# $langcode is the language code of the wikis content language object.
 		# or it is a boolean and value is true
 		return $wgContLang;
-	
+
 	global $wgLang;
 	if( $langcode === $wgLang->getCode() || $langcode === false )
 		# $langcode is the language code of user language object.
@@ -547,6 +547,7 @@ function wfGetLangObj( $langcode = false ){
 		return $wgLang;
 
 	$validCodes = array_keys( Language::getLanguageNames() );
+
 	if( in_array( $langcode, $validCodes ) )
 		# $langcode corresponds to a valid language.
 		return Language::factory( $langcode );
@@ -698,7 +699,7 @@ function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 	global $wgContLang, $wgMessageCache;
 
 	wfRunHooks('NormalizeMessageKey', array(&$key, &$useDB, &$langCode, &$transform));
-	
+
 	# If $wgMessageCache isn't initialised yet, try to return something sensible.
 	if( is_object( $wgMessageCache ) ) {
 		$message = $wgMessageCache->get( $key, $useDB, $langCode );
@@ -707,6 +708,8 @@ function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 		}
 	} else {
 		$lang = wfGetLangObj( $langCode );
+
+		print_r($lang);
 
 		# MessageCache::get() does this already, Language::getMessage() doesn't
 		# ISSUE: Should we try to handle "message/lang" here too?
@@ -1074,7 +1077,7 @@ function wfShowingResults( $offset, $limit ) {
  */
 function wfShowingResultsNum( $offset, $limit, $num ) {
 	global $wgLang;
-	return wfMsgExt( 'showingresultsnum', array( 'parseinline' ), $wgLang->formatNum( $limit ), 
+	return wfMsgExt( 'showingresultsnum', array( 'parseinline' ), $wgLang->formatNum( $limit ),
 		$wgLang->formatNum( $offset+1 ), $wgLang->formatNum( $num ) );
 }
 
@@ -1114,7 +1117,7 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 			$q .= '&'.$query;
 		}
 		$plink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" title=\"{$pTitle}\" class=\"mw-prevlink\">{$prev}</a>";
-	} else { 
+	} else {
 		$plink = $prev;
 	}
 	# Make 'next' link
@@ -1129,7 +1132,7 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 		$nlink = '<a href="' . $title->escapeLocalUrl( $q ) . "\" title=\"{$nTitle}\" class=\"mw-nextlink\">{$next}</a>";
 	}
 	# Make links to set number of items per page
-	$nums = $wgLang->pipeList( array( 
+	$nums = $wgLang->pipeList( array(
 		wfNumLink( $offset, 20, $title, $query ),
 		wfNumLink( $offset, 50, $title, $query ),
 		wfNumLink( $offset, 100, $title, $query ),
@@ -1148,9 +1151,9 @@ function wfViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
  */
 function wfNumLink( $offset, $limit, $title, $query = '' ) {
 	global $wgLang;
-	if( $query == '' ) { 
+	if( $query == '' ) {
 		$q = '';
-	} else { 
+	} else {
 		$q = $query.'&';
 	}
 	$q .= "limit={$limit}&offset={$offset}";
@@ -1392,7 +1395,7 @@ function wfPurgeSquidServers ($urlArr) {
  * Windows doesn't recognise single-quotes in the shell, but the escapeshellarg()
  * function puts single quotes in regardless of OS.
  *
- * Also fixes the locale problems on Linux in PHP 5.2.6+ (bug backported to 
+ * Also fixes the locale problems on Linux in PHP 5.2.6+ (bug backported to
  * earlier distro releases of PHP)
  */
 function wfEscapeShellArg( ) {
@@ -1511,7 +1514,7 @@ function wfDiff( $before, $after, $params = '-u' ) {
 	if ($before == $after) {
 		return '';
 	}
-	
+
 	global $wgDiff;
 
 	# This check may also protect against code injection in
@@ -1530,14 +1533,14 @@ function wfDiff( $before, $after, $params = '-u' ) {
 
 	fwrite( $oldtextFile, $before ); fclose( $oldtextFile );
 	fwrite( $newtextFile, $after ); fclose( $newtextFile );
-	
+
 	// Get the diff of the two files
 	$cmd = "$wgDiff " . $params . ' ' .wfEscapeShellArg( $oldtextName, $newtextName );
-	
+
 	$h = popen( $cmd, 'r' );
-	
+
 	$diff = '';
-	
+
 	do {
 		$data = fread( $h, 8192 );
 		if ( strlen( $data ) == 0 ) {
@@ -1545,12 +1548,12 @@ function wfDiff( $before, $after, $params = '-u' ) {
 		}
 		$diff .= $data;
 	} while ( true );
-	
+
 	// Clean up
 	pclose( $h );
 	unlink( $oldtextName );
 	unlink( $newtextName );
-	
+
 	// Kill the --- and +++ lines. They're not useful.
 	$diff_lines = explode( "\n", $diff );
 	if (strpos( $diff_lines[0], '---' ) === 0) {
@@ -1559,9 +1562,9 @@ function wfDiff( $before, $after, $params = '-u' ) {
 	if (strpos( $diff_lines[1], '+++' ) === 0) {
 		unset($diff_lines[1]);
 	}
-	
+
 	$diff = implode( "\n", $diff_lines );
-	
+
 	return $diff;
 }
 
@@ -2111,7 +2114,7 @@ function wfTempDir() {
 
 /**
  * Make directory, and make all parent directories if they don't exist
- * 
+ *
  * @param $dir String: full path to directory to create
  * @param $mode Integer: chmod value to use, default is $wgDirectoryMode
  * @param $caller String: optional caller param for debugging.
@@ -2241,7 +2244,7 @@ function wfSpecialList( $page, $details ) {
  */
 function wfUrlProtocols() {
 	global $wgUrlProtocols;
-	
+
 	// This function is called a lot, cache its return value
 	// TODO: Cache this in memcached instead?
 	static $retval = null;
@@ -2259,7 +2262,7 @@ function wfUrlProtocols() {
 	} else {
 		$retval = $wgUrlProtocols;
 	}
-	
+
 	return $retval;
 }
 
@@ -2339,8 +2342,8 @@ function wfShellExec( $cmd, &$retval=null ) {
 				$cmd = escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
 			}
 		}
-	} elseif ( php_uname( 's' ) == 'Windows NT' && 
-		version_compare( PHP_VERSION, '5.3.0', '<' ) ) 
+	} elseif ( php_uname( 's' ) == 'Windows NT' &&
+		version_compare( PHP_VERSION, '5.3.0', '<' ) )
 	{
 		# This is a hack to work around PHP's flawed invocation of cmd.exe
 		# http://news.php.net/php.internals/21796
@@ -2554,14 +2557,14 @@ function wfArrayMerge( $array1/* ... */ ) {
 /**
  * Merge arrays in the style of getUserPermissionsErrors, with duplicate removal
  * e.g.
- *	wfMergeErrorArrays( 
- *		array( array( 'x' ) ), 
- *		array( array( 'x', '2' ) ), 
- *		array( array( 'x' ) ), 
+ *	wfMergeErrorArrays(
+ *		array( array( 'x' ) ),
+ *		array( array( 'x', '2' ) ),
+ *		array( array( 'x' ) ),
  *		array( array( 'y') )
  *	);
  * returns:
- * 		array( 
+ * 		array(
  *   		array( 'x', '2' ),
  *   		array( 'x' ),
  *   		array( 'y' )
@@ -2832,7 +2835,7 @@ function wfHttpOnlySafe() {
  * Initialise php session
  */
 function wfSetupSession() {
-	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain, 
+	global $wgSessionsInMemcached, $wgCookiePath, $wgCookieDomain,
 			$wgCookieSecure, $wgCookieHttpOnly, $wgSessionHandler;
 	if( $wgSessionsInMemcached ) {
 		require_once( 'MemcachedSessions.php' );
@@ -3001,7 +3004,7 @@ function &wfGetLBFactory() {
  *
  *     ignoreRedirect: If true, do not follow file redirects
  *
- *     private:        If true, return restricted (deleted) files if the current 
+ *     private:        If true, return restricted (deleted) files if the current
  *                     user is allowed to view them. Otherwise, such files will not
  *                     be found.
  *
@@ -3227,14 +3230,14 @@ function wfOut( $s ) {
 }
 
 /**
- * Count down from $n to zero on the terminal, with a one-second pause 
+ * Count down from $n to zero on the terminal, with a one-second pause
  * between showing each number. For use in command-line scripts.
  */
 function wfCountDown( $n ) {
 	for ( $i = $n; $i >= 0; $i-- ) {
 		if ( $i != $n ) {
 			echo str_repeat( "\x08", strlen( $i + 1 ) );
-		} 
+		}
 		echo $i;
 		flush();
 		if ( $i ) {
@@ -3275,15 +3278,15 @@ function wfArrayInsertAfter( $array, $insert, $after ) {
 	// Find the offset of the element to insert after.
 	$keys = array_keys($array);
 	$offsetByKey = array_flip( $keys );
-	
+
 	$offset = $offsetByKey[$after];
-	
+
 	// Insert at the specified offset
 	$before = array_slice( $array, 0, $offset + 1, true );
 	$after = array_slice( $array, $offset + 1, count($array)-$offset, true );
-	
+
 	$output = $before + $insert + $after;
-	
+
 	return $output;
 }
 
@@ -3294,10 +3297,10 @@ function wfObjectToArray( $object, $recursive = true ) {
 		if ( is_object($value) && $recursive ) {
 			$value = wfObjectToArray( $value );
 		}
-		
+
 		$array[$key] = $value;
 	}
-	
+
 	return $array;
 }
 
@@ -3305,7 +3308,7 @@ function wfObjectToArray( $object, $recursive = true ) {
  * Set PHP's memory limit to the larger of php.ini or $wgMemoryLimit;
  * @return Integer value memory was set to.
  */
- 
+
 function wfMemoryLimit () {
 	global $wgMemoryLimit;
 	$memlimit = wfShorthandToInteger( ini_get( "memory_limit" ) );
