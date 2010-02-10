@@ -387,7 +387,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
-			}, 100 );
+			}, 0 );
 			return true;
 		}
 	};
