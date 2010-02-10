@@ -16,5 +16,5 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'storyboard-name' => 'Storyboard',
-	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface.',
+	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
 );
