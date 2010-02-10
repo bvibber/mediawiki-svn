@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalization file for the Storyboard extension.
  *
@@ -16,6 +15,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'storyboard_name' => 'Storyboard',
-	'storyboard_desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface.',
+	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface.',
 );

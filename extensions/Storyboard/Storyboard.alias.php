@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Aliases for the special pages of the Storyboard extension.
  *
