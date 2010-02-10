@@ -6,19 +6,6 @@ To install this extension, add the following to the end of your LocalSettings.ph
 
     require( "$IP/extensions/OggHandler/OggHandler.php" );
 
-oggThumb
-------
-
-We use oggvideotools for creating still images of videos, you will need a copy on your 
-server. 
-
-Set the oggThumb binary location with:
-
-    $wgOggThumbLocation = '/path/to/oggThumb';
-
-Download oggThumb from: http://dev.streamnik.de/oggvideotools.html
-
-
 FFmpeg
 ------
 
@@ -47,18 +34,6 @@ Set the FFmpeg binary location with:
     $wgFFmpegLocation = '/path/to/ffmpeg';
 
 after the require line in LocalSettings.php. 
-
-ffmpeg2theora
-------
-
-We use ffmpeg2theora for extract metadata from videos, you will need a copy on your 
-server.
-
-Set the ffmpeg2theora binary location with:
-
-    $wgffmpeg2theoraPath = '/path/to/ffmpeg2theora';
-
-Download ffmpeg2theora from: http://v2v.cc/~j/ffmpeg2theora/
 
 Cortado
 -------

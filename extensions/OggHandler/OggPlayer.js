@@ -84,32 +84,6 @@ var wgOggPlayer = {
 			}
 		}
 
-		// Do player tracking if enabled
-		if( this.playTracking ){
-					
-			if( Math.floor( Math.random()* wgOggPlayer.playTrackingRate ) == 0 ){
-				
-				var url = wgScript.replace( 'index.php', 'api.php');
-				var filename = params.linkUrl.replace(/.*File\:/, '');
-				var playerList = '';
-				var coma = '';
-				for(var i = 0 ; i < this.clientSupports.length ; i ++ ){
-					playerList+= i;
-					coma = ',';
-				}
-				url+= '?action=playtracking&filename=' + escape( filename );
-				url+= '&client=' +  escape( player + '|' + playerList + '|' + navigator.userAgent );
-				url+= '&format=json&callback=wgOggPlayer.playTrackingDone';
-								
-				// Issue the request by including the script ( far fewer lines than robust ajax call )
-				// (jQuery included by default would let us do clean jQuery.get calls ) 
-				var s = document.createElement('script');
-				s.setAttribute('src',url);
-				s.setAttribute('type','text/javascript');
-				document.getElementsByTagName('head')[0].appendChild(s);				
-			}
-		}
-
 		elt.innerHTML = '';
 		switch ( player ) {
 			case 'videoElement':
@@ -160,9 +134,6 @@ var wgOggPlayer = {
 			elt.appendChild( div );
 		}
 	},
-	'playTrackingDone' : function( data ){
-		// play tracking done
-	},	
 	'debug': function( s ) {
 		//alert(s);
 	},
