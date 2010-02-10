@@ -16,3 +16,4 @@ $aliases = array();
 $aliases['en'] = array(
 	'StoryReview' => array( 'StoryReview' ),
 );
+

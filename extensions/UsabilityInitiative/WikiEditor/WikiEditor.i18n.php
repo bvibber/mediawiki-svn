@@ -167,6 +167,7 @@ $messages['eo'] = array(
 	'wikieditor' => 'Progresa redaktilo por vikiteksto',
 	'wikieditor-desc' => 'Ebligas redaktan interfacon por etendebla vikiteksto kaj multaj utilaj moduloj',
 	'wikieditor-wikitext-tab' => 'Vikiteksto',
+	'wikieditor-loading' => 'Ŝarĝante',
 );
 
 /** Spanish (Español)
@@ -275,6 +276,7 @@ $messages['ia'] = array(
 	'wikieditor' => 'Interfacie avantiate de modification de wikitexto',
 	'wikieditor-desc' => 'Forni un interfacie de modification de wikitexto extensibile con multe modulos a functiones additional',
 	'wikieditor-wikitext-tab' => 'Wikitexto',
+	'wikieditor-loading' => 'Carga…',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -327,6 +329,7 @@ $messages['mk'] = array(
 	'wikieditor' => 'Интерфејс за напредно уредување со викитекст',
 	'wikieditor-desc' => 'Дава проширлив интерфејс за уредување со викитекст и многу модули за разни други алатки',
 	'wikieditor-wikitext-tab' => 'ВикиТекст',
+	'wikieditor-loading' => 'Вчитувам',
 );
 
 /** Malayalam (മലയാളം)
@@ -336,6 +339,7 @@ $messages['ml'] = array(
 	'wikieditor' => 'വിക്കിഎഴുത്തുകൾ തിരുത്തുവാനുള്ള നൂതന ദൃശ്യമണ്ഡലം',
 	'wikieditor-desc' => 'വികസിപ്പിക്കാവുന്ന വിധത്തിലുള്ള വിക്കിഎഴുത്ത് തിരുത്തൽ ദൃശ്യമണ്ഡലവും മറ്റ് സവിശേഷ ഘടകങ്ങളും നൽകുന്നു',
 	'wikieditor-wikitext-tab' => 'വിക്കിഎഴുത്ത്',
+	'wikieditor-loading' => 'ശേഖരിക്കുന്നു',
 );
 
 /** Dutch (Nederlands)
@@ -345,6 +349,7 @@ $messages['nl'] = array(
 	'wikieditor' => 'Uitgebreide tekstverwerker voor wikitekst',
 	'wikieditor-desc' => 'Voegt een uitbreidbare tekstverwerker voor wikitekst toe en modules met extra mogelijkheden',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Bezig met laden',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -506,6 +511,7 @@ $messages['tr'] = array(
 	'wikieditor' => 'Gelişmiş viki metni düzenleme arayüzü',
 	'wikieditor-desc' => 'Genişletilebilir bir viki metni düzenleme arayüzü ve birçok özellik sağlayan modüller sağlar',
 	'wikieditor-wikitext-tab' => 'Vikimetin',
+	'wikieditor-loading' => 'Yükleniyor',
 );
 
 /** Ukrainian (Українська)

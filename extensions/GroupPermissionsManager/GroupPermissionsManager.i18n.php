@@ -807,6 +807,7 @@ $messages['es'] = array(
 	'grouppermissions-desc3' => 'Permite adaptar las acciones de contenido (pestañas)',
 	'grouppermissions-desc4' => 'Permite la adición de objetos adicionales a la Caja de Herramientas',
 	'grouppermissions-desc-nsm' => 'Gestionar nombres de espacio a través de una página especial',
+	'grouppermissions-header' => 'Puedes utilizar esta página para cambiar los permisos subyacentes de los distintos  grupos de usuario.',
 	'grouppermissions-search' => 'Grupo:',
 	'grouppermissions-dologin' => 'Entrar',
 	'grouppermissions-dosearch' => 'Ir',
@@ -834,7 +835,9 @@ $messages['es'] = array(
 	'grouppermissions-log-change' => 'Permisos cambiados para grupo "$2"',
 	'grouppermissions-log-delete' => 'borrado grupo "$2"',
 	'grouppermissions-log-name' => 'Registro de permisos de grupo',
+	'grouppermissions-log-header' => 'Esta página rastrea los cambios realizados a los permisos subyacentes de los grupos de usuario.',
 	'grouppermissions-needjs' => 'Advertencia: JavaScript está deshabilitado en tu navegador. Algunas características pueden no funcionar!',
+	'grouppermissions-sp-header' => 'Puedes utilizar esta página para gestionar la forma en que se organizan y añaden nuevos permisos. Coloca el puntero sobre un permiso para leer su descripción.',
 	'grouppermissions-sp-sort' => 'Ordenar permisos',
 	'grouppermissions-sp-save' => 'Guardar',
 	'grouppermissions-sp-success' => 'Permisos han sido exitosamente ordenados',
@@ -848,6 +851,7 @@ $messages['es'] = array(
 	'right-grouppermissions' => 'Administrar permisos de grupo',
 	'right-viewsource' => 'Ver fuente wiki de páginas protegidas',
 	'right-raw' => 'Ver páginas en crudo',
+	'right-render' => 'Ver páginas procesadas sin navegación',
 	'right-info' => 'Ver información de página',
 	'right-credits' => 'Ver créditos de página',
 	'right-history' => 'Ver historiales de página',
@@ -856,6 +860,7 @@ $messages['es'] = array(
 	'right-recentchanges' => 'Ver cambios recientes',
 	'right-edittalk' => 'Editar páginas de discusión',
 	'right-edit-new' => 'Editar páginas (las cuales no sean páginas de discusión)',
+	'right-readold' => 'Ver el contenido de revisiones previas y diffs',
 );
 
 /** Basque (Euskara)

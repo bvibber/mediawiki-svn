@@ -268,10 +268,13 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'framedvideo_errors' => 'Múltiples errores han ocurrido!',
 	'framedvideo_error' => 'Un error ha ocurrido!',
+	'framedvideo_error_unknown_type' => 'Id de servicio de video desconocido ("$1"): Marca el parámetro "tipo".',
+	'framedvideo_error_no_id_given' => 'Parámetro "id" faltante.',
 	'framedvideo_error_height_required' => 'Tipo de video "$1" requiere parámetro "height".',
 	'framedvideo_error_height_required_not_only_width' => 'Tipo de video "$1" requiere parámetro "height", no solamente parámetro "width".',
 	'framedvideo_error_width_too_big' => 'Valor dado de parámetro "width" es demasiado grande.',
@@ -280,7 +283,9 @@ $messages['es'] = array(
 	'framedvideo_error_limit' => 'El valor permitido más alto es $1.',
 	'framedvideo_error_full_size_not_allowed' => 'Valor "full" para parámetro "size" no permitido para servicio de video id "$1".',
 	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Más información acerca de sintaxis]].',
 	'framedvideo_error_height_and_width_required' => 'Tipo de video "$1" requiere parámetros "height" y "width2" o "width".',
+	'framedvideo-desc' => 'Permite incrustar videos de varios sitios web mediante la etiqueta <tt><nowiki><video></nowiki></tt>',
 );
 
 /** Basque (Euskara)

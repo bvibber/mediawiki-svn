@@ -177,6 +177,7 @@ $messages['es'] = array(
 	'multiboilerplate-legend' => 'Seleccionar plantilla',
 	'multiboilerplate-submit' => 'Cargar',
 	'boilerplates' => 'Plantillas disponibles',
+	'multiboilerplate-special-pagetext' => 'Estas plantillas pueden ser precargadas en la creación de páginas. (<span class=plainlinks>[{{fullurl:Esta página no existe|action=edit}} demo]</span>)',
 	'multiboilerplate-special-define-in-localsettings' => 'Las repeticiones están definidas en ConfiguraciónLocal.',
 	'multiboilerplate-special-define-in-interface' => 'Las repeticiones se definen en el [[MediaWiki:Multiboilerplate]].',
 );

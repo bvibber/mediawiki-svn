@@ -428,6 +428,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'imstatus-desc' => 'Añade etiquetas para mostrar varios estados de mensajería instantánea en línea (AIM, Google Talk, ICQ, MSN / Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Sintaxis',
 	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Ejemplo',
@@ -439,12 +440,16 @@ $messages['es'] = array(
 	'imstatus_action' => 'acción cuando el botón está presionado',
 	'imstatus_details_saa' => 'Para más detalles acerca de todos los estilos y acciones, vea $1.',
 	'imstatus_your_name' => 'tu $1 nombre',
+	'imstatus_aim_presence' => '$1 muestra tu status con un vínculo que ejecutará AIM para enviarte un mensaje instantáneo, siempre que el usuario lo haya instalado.',
+	'imstatus_aim_api' => '$1 muestra tu estado con un vínculo que ejecutará un <b>navegador</b>, una versión JavaScript de AIM para enviarte un mensaje instantáneo.',
 	'imstatus_gtalk_code' => 'tu código de discusión google',
 	'imstatus_gtalk_get_code' => 'tu código de discusión google: obtenlo en $1.',
 	'imstatus_gtalk_height' => 'altura de la tabla, en pixeles.',
 	'imstatus_gtalk_width' => 'ancho de la tabla, en pixeles.',
 	'imstatus_icq_id' => 'Tu ICQ ID',
 	'imstatus_icq_style' => 'un número del 0 al 26 (sí, hay 27 estilos disponibles).',
+	'imstatus_live_code' => 'tu ID de Live Messenger',
+	'imstatus_live_get_code' => 'tu ID de Live Messenger: <strong>esta no es tu dirección de correo electrónico</strong>; debes generar uno <a href="$1">en tus opciones del Live Messenger</a>.El ID que debes proporcionar son los números y letras entre "$2" y "$3".',
 	'imstatus_skype_nbstyle' => 'Observación: Si elige un estilo que sea también una acción, la acción elegida previamente será invalidada por la acción concordante con el estilo que elija.',
 	'imstatus_xfire_size' => 'el tamaño del botón, de $1 (mayor) a $2 (menor).',
 	'imstatus_yahoo_style' => 'el estilo del botón, de $1 (mayor) a $2 (menor), $3 y $4 son para correo de voz.',

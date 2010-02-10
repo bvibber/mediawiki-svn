@@ -111,6 +111,8 @@ $messages['el'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'replaceset-desc' => 'Añade una función parser <nowiki>{{#replaceset}}</nowiki> utilizada para reemplazar secciones de texto con información formateada',
+	'replaceset-error-calllimit' => "Se ha alcanzado el límite de las llamadas a la función ''ReplaceSet''.",
 	'replaceset-error-regexnoend' => 'Al patrón de expresión regular "$1" le falta el delimitador final \'$2\'',
 	'replaceset-error-regexbadmodifier' => "El modificador de expresión regular '$1' es inválido.",
 );

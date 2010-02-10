@@ -8826,6 +8826,7 @@ $messages['tr'] = array(
 	'code-rev-diff-link' => 'fark',
 	'code-rev-diff-too-large' => 'Fark görüntülenemeyecek kadar büyük.',
 	'code-rev-purge-link' => 'temizle',
+	'code-rev-total' => 'Toplam sonuç sayısı:',
 	'code-status-new' => 'yeni',
 	'code-status-fixme' => 'benidüzelt',
 	'code-status-reverted' => 'eski haline döndürüldü',

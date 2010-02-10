@@ -124,6 +124,7 @@ $messages['de'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'tiff-desc' => 'Controlador para ver archivos TIFF en modo de imagen',
 	'tiff_no_metadata' => 'No se pudo obtener los metadatos de TIFF',
 	'tiff_page_error' => 'Número de página fuera de rango',
 	'tiff_too_many_embed_files' => 'La imagen contiene demasiados archivos incrustados.',
@@ -131,6 +132,7 @@ $messages['es'] = array(
 	'tiff_file_too_large' => 'El archivo subido es muy grande y ha sido rechazado.',
 	'tiff_out_of_service' => 'El archivo subido no pudo ser procesado. ImageMagick no está disponible.',
 	'tiff_too_much_meta' => 'Los metadatos utilizan demasiado espacio.',
+	'tiff_error_cached' => 'Este archivo sólo puede ser reprocesado tras el intervalo de cacheo.',
 	'tiff_size_error' => 'El tamaño del archivo reportado no coincide con el tamaño real del archivo.',
 	'tiff_script_detected' => 'El archivo cargado contiene scripts.',
 	'tiff_bad_file' => 'El archivo cargado contiene errores.',

@@ -365,7 +365,14 @@ Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "
  * @author Translationista
  */
 $messages['es'] = array(
+	'deletebatch' => 'Eliminar lote de páginas',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Eliminar un lote de páginas]]',
+	'deletebatch-help' => 'Eliminar un lote de páginas.
+Puedes realizar un solo borrado o eliminar páginas listadas en un archivo.
+Elige el usuario que se mostrará en los registros de borrado.
+Los archivos subidos deben contener el nombre de la página y el motivo opcional, separados por un caracter "|" en cada línea.',
 	'deletebatch-caption' => 'Lista de páginas:',
+	'deletebatch-title' => 'Eliminar lote',
 	'deletebatch-link-back' => 'Regresar a la página especial',
 	'deletebatch-as' => 'Ejecutar el script como:',
 	'deletebatch-both-modes' => 'Por favor escoger ya sea una página específica o una lista dada de páginas.',
@@ -381,6 +388,7 @@ $messages['es'] = array(
 	'deletebatch-select-script' => 'Borrar el script de la página',
 	'deletebatch-select-yourself' => 'usted',
 	'deletebatch-no-page' => 'Por favor especifique al menos una página a borrar O escoja un archivo conteniendo una lista de páginas.',
+	'right-deletebatch' => 'Borrar páginas en lote',
 );
 
 /** Estonian (Eesti)
