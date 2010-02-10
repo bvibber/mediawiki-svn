@@ -7757,11 +7757,11 @@ if ( typeof context == 'undefined' ) {
 			// We also need to unescape the doubly-escaped things mentioned above
 			html = $( '<div />' ).text( '<p>' + html.replace( /\r?\n/g, '</p><p>' ) + '</p>' ).html()
 				.replace( /&amp;nbsp;/g, '&nbsp;' )
-				// Allow p tags to survive encoding
+				// Allow <p> tags to survive encoding
 				.replace( /&lt;p&gt;/g, '<p>' )
 				.replace( /&lt;\/p&gt;/g, '</p>' )
-				// Empty p tags should just be br tags
-				.replace( /<p><\/p>/g, '<br>' )
+				// Empty <p> tags need <br> tags in them 
+				.replace( /<p><\/p>/g, '<p><br></p>' )
 				// Unescape &esc; stuff
 				.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
 				.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
