@@ -310,7 +310,7 @@ if ( typeof context == 'undefined' ) {
 							return true;
 						} else {
 							var $tabindexList = $j( '[tabindex]:visible' ).sort( function( a, b ) {
-								return a.tabIndex > b.tabIndex ? 1 : -1; 
+								return a.tabIndex - b.tabIndex;
 							} );
 							for( var i=0; i < $tabindexList.length; i++ ) {
 								if( $tabindexList.eq( i ).attr('id') == context.$iframe.attr( 'id' ) ) {
