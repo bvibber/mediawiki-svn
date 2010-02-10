@@ -7608,11 +7608,12 @@ if ( typeof context == 'undefined' ) {
 				.addClass( 'wikiEditor-ui-loading' )
 				.append( $( '<span>Loading</span>' )
 					.css( 'marginTop', context.$textarea.height() / 2 ) ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+		.add( '.wikiEditor-ui-loading' )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
 	// Get references to some of the newly created containers
 	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
 	context.$wikitext = context.$textarea.parent().parent().parent().parent();
