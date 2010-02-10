@@ -1162,13 +1162,13 @@ if ( typeof context == 'undefined' ) {
 			var t = context.fn.traverser( context.$content );
 			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
 			while ( t ) {
-				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
 					t = t.next();
 					continue;
 				}
 				var nextPos = t.node.nodeName == '#text' ? pos + t.node.nodeValue.length : pos + 1;
 				var nextT = t.next();
-				var leavingP = t.node.nodeName != 'P' && t.inP && nextT && ( !nextT.inP || nextT.inP != t.inP );
+				var leavingP = t.node.nodeName == '#text' && t.inP && nextT && ( !nextT.inP || nextT.inP != t.inP );
 				context.offsets[pos] = {
 					'node': t.node,
 					'offset': 0,
