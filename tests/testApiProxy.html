@@ -32,7 +32,7 @@ function getUserName( callback ){
 		'action':'query',
 		'meta':'userinfo'
 	}
-	// Do proxy request 
+	// Do request ( will automatically invoke proxy because its a proxy action and remote url )  
 	mw.getJSON( remote_api_url, rObj, function( data ){		
 			//now we get the data back for that domain
 			if( !data.query || !data.query.userinfo ){

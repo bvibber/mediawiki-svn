@@ -1,13 +1,13 @@
 /* apiProxy Loader */
 
 mw.addClassFilePaths( {
-	"mw.proxy"		: "modules/ApiProxy/mw.proxy.js",
+	"mw.ApiProxy"	: "modules/ApiProxy/mw.ApiProxy.js",
 	"JSON"			: "modules/ApiProxy/json2.js"
 } );
 
 mw.addModuleLoader( 'ApiProxy', function( callback ){
 	mw.load( [
-		'mw.proxy',
+		'mw.ApiProxy',
 		'JSON'
 	], function() {
 		callback( 'ApiProxy' );
