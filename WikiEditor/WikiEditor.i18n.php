@@ -15,6 +15,7 @@ $messages['en'] = array(
 	'wikieditor' => 'Advanced wikitext editing interface',
 	'wikieditor-desc' => 'Provides an extendable wikitext editing interface and many feature-providing modules',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Loading',
 );
 
 /** Message documentation (Message documentation)
@@ -26,6 +27,7 @@ $messages['qqq'] = array(
 
 I guess that 'feature-providing modules' means the same as 'modules providing features'.",
 	'wikieditor-wikitext-tab' => 'Caption of the tab containing the edit box',
+	'wikieditor-loading' => 'Explanatory text for the temporary cover placed over the wikiediort while it\'s being assembled',
 );
 
 /** Afrikaans (Afrikaans)
