@@ -397,7 +397,7 @@ function mwCheckForGadget(){
 	scripts = document.getElementsByTagName( 'script' );
 	
 	// Check for document paramater withJS and ignore found gadget
-	if( typeof getParamValue == 'undefined' ){
+	if( typeof getParamValue == 'undefined' && typeof getURLParamValue == 'undefined'){
 		return false;
 	}
 		
