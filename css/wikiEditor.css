@@ -123,9 +123,6 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-right {
 	width: 100%;
 	border: 1px solid silver;
 	margin: -1px;
-	opacity: 0.9;
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-	filter: alpha(opacity=90);
 }
 .wikiEditor-ui-loading span {
 	display: block;
