@@ -60,7 +60,7 @@ mw.addMessages( {
 	"rsd-wiki_commons": "Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)",
 
 	"rsd-kaltura-title" : "All Sources",
-	"rsd-kaltura" : "Kaltura agragated search for free-licenced media across multiple search providers",
+	"rsd-kaltura" : "Kaltura agragated search for free-licensed media across multiple search providers",
 
 	"rsd-this_wiki-title" : "This wiki",
 	"rsd-this_wiki-desc" : "The local wiki install",
@@ -101,7 +101,7 @@ var default_remote_search_options = {
 	*/	
 	'import_url_mode': 'api',
 	
-	// Target title used for previews of wiki page usally: wgPageName
+	// Target title used for previews of wiki page usually: wgPageName
 	'target_title': null,
 
 	// Edit tools (can be an array of tools or keyword 'all')
@@ -129,7 +129,13 @@ var default_remote_search_options = {
 	'upload_api_proxy_frame': null,  
 
 	// Enabled providers can be keyword 'all' or an array of enabled content provider keys
-	'enabled_providers': 'all', 
+	'enabled_providers': 'all', 	
+	
+	// Enalbed license types can any set of 
+	// 'pd' (public domain), 'by' ( attribution ) , 'sa' (share alike ),
+	// 'nd' ( no derivatives ) 
+	// 'nc' ( non-comercial ), 'all' ( all found licenses are "ok")	 
+	'enabled_licenses' : ['pd', 'by', 'sa' ], 
 	
 	// Set a default provider 
 	'default_provider': null,
@@ -562,11 +568,31 @@ mw.RemoteSearchDriver.prototype = {
 	 * @param license_url the url of the license
 	 */
 	getLicenseFromUrl: function( license_url ) {
-		// Check for some pre-defined url types:
+		// Get the license key: 
+		var licenseKey = this.getLicenseKeyFromUrl( license_url );
+		if( licenseKey ){
+			// Return the license object: 
+			return this.getLicenseFromKey( licenseKey , license_url );
+		}
+		// Could not find it return mwe-unknown_license
+		return {
+			'title': gM( 'mwe-unknown_license' ),
+			'img_html': '<span>' + gM( 'mwe-unknown_license' ) + '</span>',
+			'lurl': license_url
+		};
+	},
+	
+	/**
+	* Get a license key from a url string
+	* @parma {String} license_url License url to get key from
+	* @return mixed license key or false if not found.
+	*/
+	getLicenseKeyFromUrl: function( license_url ){
+		// Check for some pre-defined us gov url:
 		if ( license_url == 'http://www.usa.gov/copyright.shtml' ||
-			license_url == 'http://creativecommons.org/licenses/publicdomain' )
-			return this.getLicenseFromKey( 'pd' , license_url );
-		
+			license_url == 'http://creativecommons.org/licenses/publicdomain' ){
+			return 'pd';
+		}		
 		// First do a direct lookup check:
 		for ( var j = 0; j < this.licenses.cc.licenses.length; j++ ) {
 			var jLicense = this.licenses.cc.licenses[ j ];
@@ -578,17 +604,29 @@ mw.RemoteSearchDriver.prototype = {
 			}
 			// Check the license_url for a given key
 			if ( mw.parseUri( license_url ).path.indexOf( '/' + keyCheck + '/' ) != -1 ) {
-				return this.getLicenseFromKey( jLicense , license_url );
+				return jLicense;
 			}
 		}
-		// Could not find it return mwe-unknown_license
-		return {
-			'title': gM( 'mwe-unknown_license' ),
-			'img_html': '<span>' + gM( 'mwe-unknown_license' ) + '</span>',
-			'lurl': license_url
-		};
+		return false;
 	},
-
+	
+	/**
+	* Check if the license is compatible with this.enabled_licenses
+	* @retrun true if license is compatible and false if not 
+	*/
+	checkCompatibleLicense: function( license_url ) {
+		var licenseKey = this.getLicenseKeyFromUrl( license_url );		
+		if( ! licenseKey )
+			return false;		
+		var licenseSet = licenseKey.split( '-' );
+		for ( var i = 0; i < licenseSet.length; i++ ) {			
+			if( $j.inArray( licenseSet[i], this.enabled_licenses ) == -1){
+				return false;
+			}
+		}
+		return true;
+	},
+	
 	/**
 	* Get mime type icon from a provided mime type
 	* @param str mime type of the requested file
@@ -1250,7 +1288,7 @@ mw.RemoteSearchDriver.prototype = {
 	 * searches e.g. filter state changes. This is probably also the future way to 
 	 * implement "pushing" results.
 	 * 
-	 * The returned callback accepts two arguements. 
+	 * The returned callback accepts two arguments. 
 	 * 
 	 * The first, mandatory, is the
 	 * provider object. This should be curried with the current provider object 
@@ -1263,7 +1301,6 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 
 		return function ( provider, $location ) {
-			
 			var d = new Date();
 			var searchTime = d.getMilliseconds();
 	
@@ -1444,7 +1481,7 @@ mw.RemoteSearchDriver.prototype = {
 		$resultsContainer.append( $resultsBody );
 		
 		// @@TODO should abstract footer and header ~outside~ of search results 
-		// to have less leakgege with upload tab
+		// to have less leakage with upload tab
 		if ( this.current_provider != 'upload' ) {
 			$resultsContainer.append( _this.createResultsFooter() );
 		}

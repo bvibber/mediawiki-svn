@@ -14,13 +14,19 @@ var kalturaFilters = function ( options ) {
 }
 
 kalturaFilters.prototype = {
-		
+		// List of filters
 		filterList: {},
 		
+		// A callback function to be called once filter changes are updated
 		filterChangeCallBack: function() {},
 		
+		// Flag to reset the filter set
 		resetRequired: false,
 		
+		/**
+		* Constructor
+		* @param Object options Set of options for the search
+		*/
 		init: function( options ) {
 
 			this.resetFilters();
@@ -263,6 +269,12 @@ kalturaSearch.prototype = {
 			
 			for ( var resource_id in data ) {
 				var result = data[ resource_id ];
+				
+				// Skip the resource if the license is not compatible 		
+				if( result.license_url  && ! _this.rsd.checkCompatibleLicense( resource.licenseurl ) ){
+					continue;
+				}
+		
 				
 				// Update mappings: 					
 				result[ 'poster' ] = result[ 'thumbnail' ];

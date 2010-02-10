@@ -71,12 +71,19 @@ archiveOrgSearch.prototype = {
 			// Set result info: 
 			this.num_results = data.response.numFound;
 		
-			for ( var resource_id in data.response.docs ) {
+			for ( var resource_id in data.response.docs ) {							
 				var resource = data.response.docs[resource_id];
+				
+				// Skip the resource if the license is not compatible 		
+				// ( archive.org does not let us filter the license on search )
+				if( ! _this.rsd.checkCompatibleLicense( resource.licenseurl ) ){
+					continue;
+				}
+				
 				var resource = {
 					// @@todo we should add .ogv or oga if video or audio:
 					'titleKey'	 :  resource.identifier + '.ogv',
-					'id':  resource.identifier,
+					'id' 		 :  resource.identifier,
 					'link'		 : _this.detailsUrl + resource.identifier,
 					'title'		 : resource.title,
 					'poster'	 : _this.downloadUrl + resource.identifier + '/format=thumbnail',
@@ -87,10 +94,10 @@ archiveOrgSearch.prototype = {
 					'src'		 : _this.downloadUrl + resource.identifier + '/format=Ogg+video',
 					'mime'		 : 'application/ogg',
 					// Set the license: (rsd is a pointer to the parent remoteSearchDriver )		 
-					'license'	 : this.rsd.getLicenseFromUrl( resource.licenseurl ),
+					'license'	 : _this.rsd.getLicenseFromUrl( resource.licenseurl ),
 					'pSobj'		 :_this
 					
-				};
+				};							
 				this.resultsObj[ resource_id ] = resource;
 			}
 		}
