@@ -7656,14 +7656,15 @@ if ( typeof context == 'undefined' ) {
 	 * as a response to the "resize" event.
 	 */
 	
+	// Assemble a temporary div to place over the wikiEditor while it's being constructed
+	var $loader = $( '<div></div>' )
+		.addClass( 'wikiEditor-ui-loading' )
+		.append( $( '<span>' + mw.usability.getMsg( 'wikieditor-loading' ) + '</span>' )
+			.css( 'marginTop', context.$textarea.height() / 2 ) );
 	// Encapsulate the textarea with some containers for layout
 	context.$textarea
-		.after( 
-			$( '<div></div>' )
-				.addClass( 'wikiEditor-ui-loading' )
-				.append( $( '<span>Loading</span>' )
-					.css( 'marginTop', context.$textarea.height() / 2 ) ) )
-		.add( '.wikiEditor-ui-loading' )
+		.after( $loader )
+		.add( $loader )
 		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
 		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
 		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )

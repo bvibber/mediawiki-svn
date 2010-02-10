@@ -28,6 +28,7 @@ class WikiEditorHooks {
 	);
 	static $messages = array(
 		'wikieditor-wikitext-tab',
+		'wikieditor-loading',
 	);
 	static $modules = array(
 		'global' => array(
