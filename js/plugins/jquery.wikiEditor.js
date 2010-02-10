@@ -1262,6 +1262,26 @@ if ( typeof context == 'undefined' ) {
 	context.view = 'wikitext';
 	// Trigger the "resize" event anytime the window is resized
 	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ); } );
+	// Create a dummy iframe for copy/paste filtering
+	context.$bucket = $( '<iframe></iframe>' )
+		.attr( {
+			'frameBorder': 0,
+			'border': 0,
+			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
+				'instance=' + context.instance + '&ts=' + ( new Date() ).getTime() + '&is=bucket',
+			'id': 'wikiEditor-bucket-' + context.instance
+		} )
+		.css( {
+			'height': '1px',
+			'width': '1px',
+			'position': 'absolute'
+		} )
+		.insertAfter( context.$textarea )
+		.load( function() {
+			// Allthough IE will do this twice (designMode will dump the body and reload), we aren't binding anything,
+			// so it's ok - if that changes, see the technique used in the $iframe load
+			context.$iframe[0].contentWindow.document.designMode = 'on';
+		} );
 	// Create an iframe in place of the text area
 	context.$iframe = $( '<iframe></iframe>' )
 		.attr( {
@@ -1269,7 +1289,7 @@ if ( typeof context == 'undefined' ) {
 			'border': 0,
 			'tabindex': 1,
 			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
-				'instance=' + context.instance + '&ts=' + ( new Date() ).getTime(),
+				'instance=' + context.instance + '&ts=' + ( new Date() ).getTime() + '&is=content',
 			'id': 'wikiEditor-iframe-' + context.instance
 		} )
 		.css( {
