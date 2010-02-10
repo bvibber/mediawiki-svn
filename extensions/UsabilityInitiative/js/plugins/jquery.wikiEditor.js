@@ -453,6 +453,10 @@ if ( typeof context == 'undefined' ) {
 					.addClass( context.view == options.name ? 'current' : null )
 					.append( $( '<a></a>' )
 						.attr( 'href', '#' )
+						.mousedown( function() {
+							// No dragging!
+							return false;
+						} )
 						.click( function( event ) {
 							context.$ui.find( '.wikiEditor-ui-view' ).hide();
 							context.$ui.find( '.' + $(this).parent().attr( 'rel' ) ).show();
