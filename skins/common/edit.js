@@ -69,7 +69,8 @@ function mwSetupToolbar() {
 // apply tagOpen/tagClose to selection in textarea,
 // use sampleText instead of selection if there is none
 function insertTags(tagOpen, tagClose, sampleText) {
-	if ( typeof $j != 'undefined' && typeof $j.fn.textSelection != 'undefined' ) {
+	if ( typeof $j != 'undefined' && typeof $j.fn.textSelection != 'undefined' &&
+			( currentFocused.nodeName.toLowerCase() == 'iframe' || currentFocused.id == 'wpTextbox1' ) ) {
 		$j( '#wpTextbox1' ).textSelection(
 			'encapsulateSelection', { 'pre': tagOpen, 'peri': sampleText, 'post': tagClose }
 		);
@@ -174,6 +175,15 @@ hookEvent( 'load', function() {
 		currentFocused = document.editform.wpTextbox1;
 		document.editform.wpTextbox1.onfocus = function() { currentFocused = document.editform.wpTextbox1; };
 		document.editform.wpSummary.onfocus = function() { currentFocused = document.editform.wpSummary; };
+		// HACK: Usability compat
+		if ( typeof $j != 'undefined' ) {
+			var iframe = $j( '.wikiEditor-ui-text iframe' );
+			if ( iframe.length > 0 ) {
+				$j( iframe.get( 0 ).contentWindow.document )
+					.add( iframe.get( 0 ).contentWindow.document.body ) // for IE
+					.focus( function() { currentFocused = iframe.get( 0 ); } );
+			}
+		}
 	}
 } );
 
