@@ -410,6 +410,10 @@ fn: {
 				var div = $( '<div />' )
 					.addClass( 'section-' + structure[i].index )
 					.data( 'index', structure[i].index )
+					.mousedown( function() {
+						// No dragging!
+						return false;
+					} )
 					.click( function( event ) {
 						var wrapper = context.$content.find(
 							'.wikiEditor-toc-section-' + $( this ).data( 'index' ) );
@@ -449,6 +453,10 @@ fn: {
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
+				.mousedown( function() {
+					// No dragging!
+					return false;
+				} )
 				.bind( 'click.wikiEditor-toc', function() {
 					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
 				} )
@@ -457,6 +465,10 @@ fn: {
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
+				.mousedown( function() {
+					// No dragging!
+					return false;
+				} )
 				.bind( 'click.wikiEditor-toc', function() {
 					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
 				} )
