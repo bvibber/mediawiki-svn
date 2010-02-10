@@ -10,8 +10,9 @@
  
 mw.setConfig( 'pre-append-log', 'Proxy:');
  
-if ( !mwApiProxyConfig )
+if ( !mwApiProxyConfig ){
 	var mwApiProxyConfig = { };
+}
 
 // The default mwApiProxyConfig config 
 // (presently hard coded but should read from user and site config)  
@@ -25,6 +26,6 @@ mw.ready( function() {
 	mw.load( 'ApiProxy', function(){
 		// Build our configuration from the default and mwApiProxyConfig vars
 		mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
-		$j.apiProxy( 'server', mwApiProxyConfig );
+		mw.ApiProxy.server( mwApiProxyConfig );
 	});
 } );

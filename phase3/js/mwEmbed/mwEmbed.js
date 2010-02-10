@@ -72,11 +72,11 @@ var mwDefaultConf = {
 		'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser',
 		'import', 'userrights' ],
 	
-	//If we are in debug mode ( results in fresh debugg javascript includes )
+	//If we are in debug mode ( results in fresh debug javascript includes )
 	'debug' : false,
 	
 	// Valid language codes ( has a file in /includes/languages/classes/Language{code}.js )
-	// TODO: mirror the mw language "fallback" system
+	// TODO: mirror the mediaWiki language "fallback" system
 	'languageCodeList': ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
 		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',
 		'hr', 'hsb', 'hy', 'ksh', 'ln', 'lt', 'lv', 'mg', 'mk', 'mo', 'mt',
@@ -1438,21 +1438,8 @@ var mwDefaultConf = {
 			// Check if we need to setup a proxy
 			if( ! mw.isLocalDomain( url ) ){
 				// Load the proxy and issue the request
-				mw.load( 'ApiProxy', function(){		
-					var parsedUrl = mw.parseUri( url );		
-					var server_frame = parsedUrl.protocol + '://' + parsedUrl.authority + '/w/index.php/MediaWiki:ApiProxy';					
-					$j.apiProxy(
-						'client', 
-						{
-							// NOTE:: we need to setup a special page rather than the rewrite hack I use bellow:   
-							// The rewrite hack is very slow cuz it loads the whole mediaWiki interface & skin 
-							'server_frame' : server_frame,
-							'client_frame_path'	: mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html'
-						},
-						function(){
-							mw.proxy.doRequest( data, callback )
-						}
-					)
+				mw.load( 'ApiProxy', function(){							
+					mw.ApiProxy.doRequest( url, data, callback );				
 				});				
 			}else{
 				// Do the request an ajax post 

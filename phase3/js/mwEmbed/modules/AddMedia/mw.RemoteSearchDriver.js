@@ -2408,38 +2408,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Get any extra categories or helpful links
 		description += resource.pSobj.getExtraResourceDescWiki( resource );
 		return description;
-	},
-	
-	/**
-	* Sets up the proxy for the remote inserts
-	* 
-	* @param {Function} callbcak Function to call once proxy is setup. 
-	*/
-	setupProxy: function( callback ) {
-		var _this = this;
-
-		if ( _this.proxySetupDone ) {
-			if ( callback )
-				callback();
-			return;
-		}
-		// setup the the proxy via  $j.apiProxy loader:
-		if ( !_this.upload_api_proxy_frame ) {
-			mw.log( "Error:: remote api but no proxy frame target" );
-			return false;
-		} else {
-			$j.apiProxy(
-				'client',
-				{
-					'server_frame': _this.upload_api_proxy_frame
-				}, function() {
-					_this.proxySetupDone = true
-					if ( callback )
-						callback();
-				}
-			);
-		}
-	},
+	},	
 	
 	/**
 	* Check the local wiki for a given fileName 
