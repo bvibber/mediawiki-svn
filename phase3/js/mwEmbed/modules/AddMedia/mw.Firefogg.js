@@ -1001,7 +1001,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 		// Check if encoderSettings passthrough is on ( then skip the encode )				
 		if( encoderSettings['passthrough'] == true){			
 			// Firefogg requires an encode request to setup a the file to be uploaded.
-			_this.fogg.encode( { 'passthrough' : true } );
+			_this.fogg.encode( JSON.stringify( { 'passthrough' : true } ) );
 			doneCallback();
 			return ; 
 		}
