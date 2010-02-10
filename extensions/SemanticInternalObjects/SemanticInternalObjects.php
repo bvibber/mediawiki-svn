@@ -9,7 +9,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'SIO_VERSION', '0.2' );
+define( 'SIO_VERSION', '0.3' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name'	=> 'Semantic Internal Objects',
