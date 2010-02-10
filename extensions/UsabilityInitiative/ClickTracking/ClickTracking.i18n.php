@@ -1111,7 +1111,16 @@ $messages['ms'] = array(
 	'clicktracking-desc' => 'Pengesanan klik, bertujuan untuk mengesan peristiwa-peristiwa yang tidak menyebabkan penyegaran semula sebuah laman.',
 	'ct-title' => 'Klik pengguna teragregat',
 	'ct-event-name' => 'Nama peristiwa',
+	'ct-expert-header' => 'Klik "pakar"',
+	'ct-intermediate-header' => 'Klik "pertengahan"',
+	'ct-beginner-header' => 'Klik "pemula"',
 	'ct-total-header' => 'Jumlah klik',
+	'ct-change-graph' => 'Tukar graf',
+	'ct-beginner' => 'Pemula',
+	'ct-intermediate' => 'Pertengahan',
+	'ct-expert' => 'Pakar',
+	'ct-date-range' => 'Julat tarikh',
+	'ct-editing' => 'Sedang menyunting:',
 	'ct-anon-users' => 'Pengguna tanpa nama',
 );
 

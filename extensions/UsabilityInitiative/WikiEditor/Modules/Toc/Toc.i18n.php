@@ -135,8 +135,8 @@ $messages['cy'] = array(
  */
 $messages['de'] = array(
 	'wikieditor-toc-preference' => 'Inhaltsverzeichnis im Bearbeiten-Fenster aktivieren',
-	'wikieditor-toc-show' => 'Inhalte anzeigen',
-	'wikieditor-toc-hide' => 'Inhalte verbergen',
+	'wikieditor-toc-show' => 'Inhaltsverzeichnis einblenden',
+	'wikieditor-toc-hide' => 'Inhaltsverzeichnis ausblenden',
 );
 
 /** Zazaki (Zazaki)

@@ -225,7 +225,26 @@ body.rtl .wikiEditor-ui .wikiEditor-ui-right {
 .wikiEditor-view-wikitext {
 	line-height: 1em;
 }
-/* wikiEditor dialogs module */
+.wikiEditor-ui-loading {
+	background: #f3f3f3;
+	z-index: 10;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	border: 1px solid silver;
+	margin: -1px;
+}
+.wikiEditor-ui-loading span {
+	display: block;
+	height: 24px;
+	width: 24px;
+	background: url( ../images/wikiEditor/toolbar/loading.gif ) 0 0 no-repeat;
+	text-indent: -9999px;
+	margin: 0 auto;
+}/* wikiEditor dialogs module */
 
 .wikiEditor-toolbar-dialog table {
 	margin-top: 0.75em;
@@ -921,7 +940,7 @@ body.rtl .wikiEditor-ui-toolbar .group .tool-select .menu {
 	white-space: nowrap;
 }
 .wikiEditor-ui-toolbar .group .tool-select .options .option:hover {
-	background-color: #f3f3f3;
+	background-color: #E0EEf7;
 }
 .wikiEditor-ui-toolbar .group .tool-select .options .option[rel=heading-2] {
 	font-size: 150%;

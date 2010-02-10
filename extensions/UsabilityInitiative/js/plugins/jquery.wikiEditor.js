@@ -305,7 +305,7 @@ if ( typeof context == 'undefined' ) {
 				*/
 					// Intercept all tab events to provide consisten behavior across browsers
 					// Webkit browsers insert tab characters by default into the iframe rather than changing input focus
-					case 9: 
+				case 9: //tab
 						// if any modifier keys are pressed, allow the browser to do it's thing
 						if ( event.ctrlKey || event.altKey || event.shiftKey ) { 
 							return true;
@@ -322,8 +322,15 @@ if ( typeof context == 'undefined' ) {
 							return false;
 						}
 					break;
+				 case 86: //v
+					 if ( event.ctrlKey ){
+						 //paste, intercepted for IE
+						 context.evt.paste( event );
+					 }
+					 break;
 			}
 			return true;
+
 		},
 		'change': function( event ) {
 			event.data.scope = 'division';
@@ -360,6 +367,29 @@ if ( typeof context == 'undefined' ) {
 					context.history.shift();
 				}
 			}
+			return true;
+		},
+		'paste': function( event ) {
+			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
+			setTimeout( function() {
+				var $selection = context.$content.find( ':not(.wikiEditor)' );
+				while ( $selection.length && $selection.length > 0 ) {
+					var $currentElement = $selection.eq( 0 );
+					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
+						$currentElement = $currentElement.parent();
+					}
+					if ( $currentElement.is( 'br' ) ) {
+						$currentElement.addClass( 'wikiEditor' );
+					} else {
+						$( '<p></p>' )
+							.text( $currentElement.text() )
+							.addClass( 'wikiEditor' )
+							.insertAfter( $currentElement );
+						$currentElement.remove();
+					}
+					$selection = context.$content.find( ':not(.wikiEditor)' );
+				}
+			}, 0 );
 			return true;
 		}
 	};
@@ -425,6 +455,10 @@ if ( typeof context == 'undefined' ) {
 					.addClass( context.view == options.name ? 'current' : null )
 					.append( $( '<a></a>' )
 						.attr( 'href', '#' )
+						.mousedown( function() {
+							// No dragging!
+							return false;
+						} )
 						.click( function( event ) {
 							context.$ui.find( '.wikiEditor-ui-view' ).hide();
 							context.$ui.find( '.' + $(this).parent().attr( 'rel' ) ).show();
@@ -483,30 +517,30 @@ if ( typeof context == 'undefined' ) {
 			// Converting <p>s is wrong if there's nothing before them, so check that.
 			// .find( '* + p' ) isn't good enough because textnodes aren't considered
 			$pre.find( 'p' ).each( function() {
-					var text =  $( this ).text();
-					// If this <p> is preceded by some text, add a \n at the beginning, and if
-					// it's followed by a textnode, add a \n at the end
-					// We need the traverser because there can be other weird stuff in between
-					
-					// Check for preceding text
-					var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
-					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
-						t = t.prev();
-					}
-					if ( t ) {
-						text = "\n" + text;
-					}
-					
-					// Check for following text
-					t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
-					while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
-						t = t.next();
-					}
-					if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue.charAt( 0 ) != '\n'
-							&& t.node.nodeValue.charAt( 0 ) != '\r' ) {
-						text += "\n";
-					}
-					$( this ).text( text );
+				var text =  $( this ).text();
+				// If this <p> is preceded by some text, add a \n at the beginning, and if
+				// it's followed by a textnode, add a \n at the end
+				// We need the traverser because there can be other weird stuff in between
+				
+				// Check for preceding text
+				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
+				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+					t = t.prev();
+				}
+				if ( t ) {
+					text = "\n" + text;
+				}
+				
+				// Check for following text
+				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
+				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
+					t = t.next();
+				}
+				if ( t && !t.inP && t.node.nodeName == '#text' && t.node.nodeValue.charAt( 0 ) != '\n'
+						&& t.node.nodeValue.charAt( 0 ) != '\r' ) {
+					text += "\n";
+				}
+				$( this ).text( text );
 			} );
 			var retval;
 			if ( $.browser.msie ) {
@@ -590,6 +624,7 @@ if ( typeof context == 'undefined' ) {
 			var selText = $(this).textSelection( 'getSelection' );
 			var selTextArr;
 			var selectAfter = false;
+			var setSelectionTo = null;
 			var pre = options.pre, post = options.post;
 			if ( !selText ) {
 				selText = options.peri;
@@ -659,15 +694,56 @@ if ( typeof context == 'undefined' ) {
 				range.extractContents();
 				// Insert the contents one line at a time - insertNode() inserts at the beginning, so this has to happen
 				// in reverse order
-				var lastNode;
+				// Track the first and last inserted node, and if we need to also track where the text we need to select
+				// afterwards starts and ends
+				var firstNode = null, lastNode = null;
+				var selSC = null, selEC = null, selSO = null, selEO = null, offset = 0;
 				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
-					range.insertNode( context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] ) );
+					firstNode = context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] );
+					range.insertNode( firstNode );
+					lastNode = lastNode || firstNode;
+					var newOffset = offset + insertLines[i].length;
+					if ( !selSC && pre.length < newOffset ) {
+						selSC = firstNode;
+						selSO = pre.length - offset;
+					}
+					if ( selSC && insertText.length - post.length < newOffset ) {
+						selEC = firstNode;
+						selEO = insertText.length - pre.length - offset;
+					}
+					offset = newOffset;
 					if ( i > 0 ) {
-						lastNode = range.insertNode( context.$iframe[0].contentWindow.document.createElement( 'br' ) );
+						firstNode = context.$iframe[0].contentWindow.document.createElement( 'br' );
+						range.insertNode( firstNode );
+						newOffset = offset + 1;
+						if ( !selSC && pre.length < newOffset ) {
+							selSC = firstNode;
+							selSO = pre.length - offset;
+						}
+						if ( selSC && insertText.length - post.length < newOffset ) {
+							selEC = firstNode;
+							selEO = insertText.length - pre.length - offset;
+						}
+						offset = newOffset;
 					}
 				}
-				if ( lastNode ) {
-					context.fn.scrollToTop( lastNode );
+				if ( firstNode ) {
+					context.fn.scrollToTop( $( firstNode.parentNode ) );
+				}
+				if ( selectAfter ) {
+					setSelectionTo = {
+						startContainer: selSC,
+						endContainer: selEC,
+						start: selSO,
+						end: selEO
+					};
+				} else if  ( lastNode ) {
+					setSelectionTo = {
+						startContainer: lastNode,
+						endContainer: lastNode,
+						start: lastNode.nodeValue.length,
+						end: lastNode.nodeValue.length
+					};
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
@@ -711,6 +787,15 @@ if ( typeof context == 'undefined' ) {
 						.replace( />/g, '&gt;' )
 						.replace( /\r?\n/g, '<br />' )
 				);
+				if ( selectAfter ) {
+					range.moveStart( 'character', -post.length - selText.length );
+					range.moveEnd( 'character', -post.length );
+					range.select();
+				}
+			}
+			
+			if ( setSelectionTo ) {
+				context.fn.setSelection( setSelectionTo );
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			$( context.$iframe[0].contentWindow.document ).trigger(
@@ -1140,13 +1225,20 @@ if ( typeof context == 'undefined' ) {
 	 * as a response to the "resize" event.
 	 */
 	
+	// Assemble a temporary div to place over the wikiEditor while it's being constructed
+	var $loader = $( '<div></div>' )
+		.addClass( 'wikiEditor-ui-loading' )
+		.append( $( '<span>' + mw.usability.getMsg( 'wikieditor-loading' ) + '</span>' )
+			.css( 'marginTop', context.$textarea.height() / 2 ) );
 	// Encapsulate the textarea with some containers for layout
 	context.$textarea
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
-		.wrap( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
+		.after( $loader )
+		.add( $loader )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-view wikiEditor-ui-view-wikitext' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-left' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-bottom' ) )
+		.wrapAll( $( '<div></div>' ).addClass( 'wikiEditor-ui-text' ) );
 	// Get references to some of the newly created containers
 	context.$ui = context.$textarea.parent().parent().parent().parent().parent();
 	context.$wikitext = context.$textarea.parent().parent().parent().parent();
@@ -1234,11 +1326,11 @@ if ( typeof context == 'undefined' ) {
 			// We also need to unescape the doubly-escaped things mentioned above
 			html = $( '<div />' ).text( '<p>' + html.replace( /\r?\n/g, '</p><p>' ) + '</p>' ).html()
 				.replace( /&amp;nbsp;/g, '&nbsp;' )
-				// Allow p tags to survive encoding
+				// Allow <p> tags to survive encoding
 				.replace( /&lt;p&gt;/g, '<p>' )
 				.replace( /&lt;\/p&gt;/g, '</p>' )
-				// Empty p tags should just be br tags
-				.replace( /<p><\/p>/g, '<br>' )
+				// Empty <p> tags need <br> tags in them 
+				.replace( /<p><\/p>/g, '<p><br></p>' )
 				// Unescape &esc; stuff
 				.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
 				.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
@@ -1260,15 +1352,22 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe.show();
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
+			//remove our temporary loading
+			$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {
+				$( this ).remove();
+			} );
 			// Setup event handling on the iframe
 			$( context.$iframe[0].contentWindow.document )
 				.bind( 'keydown', function( event ) {
 					return context.fn.trigger( 'keydown', event );
 				} )
-				.bind( 'keyup mouseup paste cut encapsulateSelection', function( event ) {
+				.bind( 'paste', function( event ) {
+					return context.fn.trigger( 'paste', event );
+				} )
+				.bind( 'keyup paste mouseup cut encapsulateSelection', function( event ) {
 					return context.fn.trigger( 'change', event );
 				} )
-				.delayedBind( 250, 'keyup mouseup paste cut encapsulateSelection', function( event ) {
+				.delayedBind( 250, 'keyup paste mouseup cut encapsulateSelection', function( event ) {
 					context.fn.trigger( 'delayedChange', event );
 				} );
 		} );

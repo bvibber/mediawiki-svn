@@ -307,6 +307,10 @@ fn: {
 					$button
 						.data( 'action', tool.action )
 						.data( 'context', context )
+						.mousedown( function() {
+							// No dragging!
+							return false;
+						} )
 						.click( function() {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).data( 'context' ), $(this).data( 'action' ), $(this)
@@ -326,6 +330,10 @@ fn: {
 							$( '<a />' )
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
+								.mousedown( function() {
+									// No dragging!
+									return false;
+								} )
 								.click( function() {
 									$.wikiEditor.modules.toolbar.fn.doAction(
 										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
@@ -350,6 +358,10 @@ fn: {
 							.text( label )
 							.data( 'options', $options )
 							.attr( 'href', '#' )
+							.mousedown( function() {
+								// No dragging!
+								return false;
+							} )
 							.click( function() {
 								$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
 								return false;
@@ -367,23 +379,27 @@ fn: {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.bind( 'mousedown', function() {
+			.mousedown( function() {
+				// No dragging!
+				return false;
+			} )
+			.click( function( event ) {
 				$(this).parent().parent().find( '.page' ).hide();
 				$(this).parent().parent().find( '.page-' + $(this).attr( 'rel' ) ).show();
 				$(this).siblings().removeClass( 'current' );
 				$(this).addClass( 'current' );
 				var section = $(this).parent().parent().attr( 'rel' );
-				
-				//click tracking
-				if($.trackAction != undefined){
-					$.trackAction(section + '.' + $(this).attr('rel'));
-				}
-				
 				$.cookie(
 					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
 					$(this).attr( 'rel' )
 				);
-			} );
+				// Click tracking
+				if($.trackAction != undefined){
+					$.trackAction(section + '.' + $(this).attr('rel'));
+				}
+				// No dragging!
+				return false;
+			} )
 	},
 	buildPage : function( context, id, page ) {
 		var $page = $( '<div />' ).attr( {
@@ -423,6 +439,10 @@ fn: {
 					$characters
 						.html( html )
 						.children()
+						.mousedown( function() {
+							// No dragging!
+							return false;
+						} )
 						.click( function() {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).parent().data( 'context' ),
@@ -490,10 +510,14 @@ fn: {
 					.attr( 'href', '#' )
 					.text( $.wikiEditor.autoMsg( section, 'label' ) )
 					.data( 'context', context )
-					.bind( 'mouseup', function( e ) {
+					.mouseup( function( e ) {
 						$(this).blur();
 					} )
-					.bind( 'click', function( e ) {
+					.mousedown( function() {
+						// No dragging!
+						return false;
+					} )
+					.click( function( e ) {
 						var $sections = $(this).data( 'context' ).$ui.find( '.sections' );
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
