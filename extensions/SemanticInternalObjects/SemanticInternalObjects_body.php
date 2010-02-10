@@ -57,19 +57,29 @@ class SIOSQLStore extends SMWSQLStore2 {
 		$io_id = $this->makeSMWPageID( $internal_object->getName(), $namespace, '' );
 		$up_rels2 = array();
 		$up_atts2 = array();
+		$up_text2 = array();
 		// set all the properties pointing from this internal object
 		foreach ( $internal_object->property_value_pairs as $property_value_pair ) {
 			list( $property, $value ) = $property_value_pair;
-			$mode = SMWSQLStore2::getStorageMode( $property->getPropertyTypeID() );
-			switch ( $mode ) {
-			case SMW_SQL2_RELS2:
+			// handling changed in SMW 1.5
+			if (method_exists('SMWSQLStore2', 'findPropertyTableID')) {
+				$tableid = SMWSQLStore2::findPropertyTableID( $property );
+				$is_relation = ($tableid == 'smw_rels2');
+				$is_attribute = ($tableid == 'smw_atts2');
+				$is_text = ($tableid == 'smw_text2');
+			} else {
+				$mode = SMWSQLStore2::getStorageMode( $property->getPropertyTypeID() );
+				$is_relation = ($mode == SMW_SQL2_RELS2);
+				$is_attribute = ($mode == SMW_SQL2_ATTS2);
+				$is_text = ($mode == SMW_SQL2_TEXT2);
+			}
+			if ($is_relation) {
 				$up_rels2[] = array(
 					's_id' => $io_id,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'o_id' => $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki() )
 				);
-				break;
-			case SMW_SQL2_ATTS2:
+			} elseif ($is_attribute) {
 				$keys = $value->getDBkeys();
 				$up_atts2[] = array(
 					's_id' => $io_id,
@@ -78,10 +88,16 @@ class SIOSQLStore extends SMWSQLStore2 {
 					'value_xsd' => $keys[0],
 					'value_num' => $value->getNumericValue()
 				);
-				break;
+			} elseif ($is_text) {
+				$keys = $value->getDBkeys();	 
+				$up_text2[] = array(	 
+					's_id' => $io_id,	 
+					'p_id' => $this->makeSMWPropertyID($property),	 
+					'value_blob' => $keys[0]
+				);
 			}
 		}
-		return array( $up_rels2, $up_atts2 );
+		return array( $up_rels2, $up_atts2, $up_text2 );
 	}
 }
 
@@ -136,10 +152,12 @@ class SIOHandler {
 
 		$all_rels2_inserts = array();
 		$all_atts2_inserts = array();
+		$all_text2_inserts = array();
 		foreach (self::$internal_objects as $internal_object) {
-			list($up_rels2, $up_atts2) = $sio_sql_store->getStorageSQL($page_name, $namespace, $internal_object);
+			list($up_rels2, $up_atts2, $up_text2) = $sio_sql_store->getStorageSQL($page_name, $namespace, $internal_object);
 			$all_rels2_inserts = array_merge($all_rels2_inserts, $up_rels2);
 			$all_atts2_inserts = array_merge($all_atts2_inserts, $up_atts2);
+			$all_text2_inserts = array_merge($all_text2_inserts, $up_text2);
 		}
 
 		// now save everything to the database
@@ -149,6 +167,7 @@ class SIOHandler {
 			$ids_string = '(' . implode (', ', $ids_for_deletion) . ')';
 			$db->delete('smw_rels2', array("(s_id IN $ids_string) OR (o_id IN $ids_string)"), 'SIO::deleteRels2Data');
 			$db->delete('smw_atts2', array("s_id IN $ids_string"), 'SIO::deleteAtts2Data');
+			$db->delete('smw_text2', array("s_id IN $ids_string"), 'SIO::deleteText2Data');
 		}
 
 		if (count($all_rels2_inserts) > 0) {
@@ -156,6 +175,9 @@ class SIOHandler {
 		}
 		if (count($all_atts2_inserts) > 0) {
 			$db->insert( 'smw_atts2', $all_atts2_inserts, 'SIO::updateAtts2Data');
+		}
+		if (count($all_text2_inserts) > 0) {
+			$db->insert( 'smw_text2', $all_text2_inserts, 'SIO::updateText2Data');
 		}
 		$db->commit('SIO::updatePageData');
 		self::$internal_objects = array();
