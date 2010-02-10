@@ -383,11 +383,12 @@ class jsScriptLoader {
 		// Get the language code (if not provided use the "default" language
 		if ( isset( $_GET['uselang'] ) && $_GET['uselang'] != '' ) {
 			// Strip any non alphaNumeric or dash characters from the language code:
-			$this->langCode = preg_replace( "/[^A-Za-z\-]/", '', $_GET['uselang']);
+			$this->langCode = preg_replace( "/[^A-Za-z\-_]/", '', $_GET['uselang']);
 		}else{
 			//set English as default
 			$this->langCode = 'en';
 		}
+
 		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );
 
 		$reqClassList = false;
@@ -516,6 +517,7 @@ class jsScriptLoader {
 
 		return $requestKey;
 	}
+
 	/**
 	 * Check for the commons language hack.
  	 * ( someone had the bright idea to use language keys as message
@@ -713,7 +715,9 @@ class jsScriptLoader {
 
 		// Get the msg keys for the a json array
 		foreach ( $jmsg as $msgKey => $na ) {
-			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $langCode, false );
+			// Language codes use dash instead of underscore internally
+			$msgLangCode = str_replace('_', '-', $langCode );
+			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $msgLangCode, false );
 		}
 	}
 

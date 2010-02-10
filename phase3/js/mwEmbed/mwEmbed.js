@@ -291,6 +291,7 @@ var mwDefaultConf = {
 					continue;
 				}				
 				var replaceValue =  args[ v ];
+				
 				// Convert number if applicable
 				if( parseInt( replaceValue ) == replaceValue ){
 					replaceValue = mw.lang.convertNumber( replaceValue );
@@ -356,10 +357,11 @@ var mwDefaultConf = {
 	* 	[arg] The argument sent to the template  
 	* 	[params] The template parameters  
 	*/
-	mw.lang.procPLURAL = function( tObj ) {
+	mw.lang.procPLURAL = function( tObj ) {		
 		// Setup shortcuts
 		// ( gRuleSet is loaded from script-loader to contains local ruleset )
 		var rs = gRuleSet[ 'PLURAL' ];
+		
 		if( tObj.arg && tObj.param && mw.lang.convertPlural){
 			// Check if we have forms to replace
 			if ( tObj.param.length == 0 ) { 
@@ -368,8 +370,9 @@ var mwDefaultConf = {
 			// Restore the count into a Number ( if it got converted earlier )
 			var count = mw.lang.convertNumber( tObj.arg, true );
 			
-			// Do convertPlural call 
-			return mw.lang.convertPlural( count, tObj.param );
+			// Do convertPlural call 					
+			return mw.lang.convertPlural( parseInt( count ), tObj.param );
+			
 		}
 		// Could not proccess plural return first form or nothing
 		if( tObj.param[0] ){
@@ -386,10 +389,10 @@ var mwDefaultConf = {
 	 * @param {Integer} count How many forms should there be at least
 	 * @return {Array} Padded array of forms or an exception if not an array
 	 */
-	mw.lang.preConvertPlural = function( forms, count ) {
+	mw.lang.preConvertPlural = function( forms, count ) {		
 		while ( forms.length < count ) {
 			forms.push( forms[ forms.length-1 ] );
-		}
+		}		
 		return forms;
 	};
 	
@@ -416,7 +419,7 @@ var mwDefaultConf = {
 				return number;
 			var tmp = [];
 			for( var i in transformTable ){
-				tmp[ transformTable[i] ] = i;
+				tmp[ transformTable[ i ] ] = i;
 			}
 			transformTable = tmp;
 		}
@@ -576,7 +579,7 @@ var mwDefaultConf = {
 		parse : function() {
 			function rdpp ( txt , cn ) {
 				var node = { };
-				// inspect each char
+				// Inspect each char
 				for ( var a = 0; a < txt.length; a++ ) {
 					if ( txt[a] == '{' && txt[a + 1] == '{' ) {
 						a = a + 2;
@@ -586,7 +589,7 @@ var mwDefaultConf = {
 
 						node['c'].push( rdpp( txt.substr( a ), true ) );
 					} else if ( txt[a] == '}' && txt[a + 1] == '}' ) {
-						a = a + 2;
+						a++;
 						if ( !node['p'] ) {
 							return node;
 						}
@@ -607,12 +610,13 @@ var mwDefaultConf = {
 			 */
 			function parseTmplTxt( ts ) {
 				var tObj = { };
+								
 				// Get template name:
 				tname = ts.split( '\|' ).shift() ;
 				tname = tname.split( '\{' ).shift() ;
 				tname = tname.replace( /^\s+|\s+$/g, "" ); //trim
 
-				// check for arguments:
+				// Check for arguments:
 				if ( tname.split( ':' ).length == 1 ) {
 					tObj["name"] = tname;
 				} else {
@@ -644,12 +648,13 @@ var mwDefaultConf = {
 				}		
 				return tObj;
 			}
-			/*
+			
+			/**
 			 * Get the Magic text from a template node
 			 */
 			function getMagicTxtFromTempNode( node ) {
 				node.tObj = parseTmplTxt ( node.t );
-				// do magic swap if template key found in pMagicSet
+				// Do magic swap if template key found in pMagicSet
 				if ( node.tObj.name in pMagicSet ) {
 					var nt = pMagicSet[ node.tObj.name ]( node.tObj );
 					return nt;
@@ -658,10 +663,11 @@ var mwDefaultConf = {
 					return node.t;
 				}
 			}
+			
 			/**
 			 * recurse_magic_swap
 			 *
-			 * Go last child first swap upward: (could probably be integrated above somehow)
+			 * Go last child first swap upward: 
 			 */
 			var pNode = null;
 			function recurse_magic_swap( node ) {

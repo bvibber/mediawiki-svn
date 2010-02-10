@@ -13,15 +13,17 @@
 mw.lang.convertPlural = function( count, forms ) {
 	
 	forms = mw.lang.preConvertPlural( forms, 3 );
-
+	
 	switch ( count ) {
-		case 1:
+		case 1:			
 			return forms[0];
+		break;
 		case 2:
 		case 3:
-		case 4:
+		case 4:			
 			return forms[1];
-		default:
+		break;
+		default:			
 			return forms[2];
 	}
 }

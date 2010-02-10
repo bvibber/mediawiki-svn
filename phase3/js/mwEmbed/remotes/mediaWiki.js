@@ -103,7 +103,7 @@ function doPageSpecificRewrite() {
 				'$j.ui.progressbar', 
 				'$j.ui.dialog', 
 				'$j.ui.draggable' 
-			], function() {
+			], function() {				
 				mw.load( mwEmbedHostPath + '/uploadPage.js?' + mwGetReqArgs() );
 			} 
 		);

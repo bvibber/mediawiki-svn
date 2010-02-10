@@ -10,10 +10,8 @@ td{
 <script type="text/javascript" >
 var scriptLoaderURID = 't17';
 //for just setting one or two to test at a time for debug
-var langKeyDebug = [ 'ar'  ]; //pl
-//var langKeyDebug = [ 'az', 'da', 'pt', 'fr', 'lv', 'en'];
-//var langKeyDebug = ['en','az', 'da', 'pt', 'fr', 'lv', 'ga','hr','cy','mk','mt','pl','sl'];
-//var langKeyDebug = mw.getConfig( 'languageCodeList' );
+//var langKeyDebug = [ 'lt'  ]; //pl
+var langKeyDebug = mw.getConfig( 'languageCodeList' );
 
 mw.ready( function(){
 	//do mauall script loaders calls to test multiple languages:
@@ -81,22 +79,28 @@ mw.ready( function(){
 									$j('#score_card').html('Running Tests <span id="perc_done">0</sapn>% done');	
 									var msgparam = (typeof numVal== 'object')? numVal.join( '|' ) : numVal;
 									var request = {
-										'action' : 'parse',
-										'uselang' : langKey,
-										'text' : '{{int:' + mKey + '|' + msgparam + '}}'
+										'action' : 'query',
+										'meta' : 'allmessages',
+										'ammessages' : mKey,
+										'amlang' : langKey,
+										'amarg' : msgparam
 									};		
-									mw.getJSON('../../../api.php', request, function( data ) {							
-										var t = '#'+ tkey ; 								
-										if(data.parse && data.parse.text && data.parse.text['*']){
-											$j(t).html( data.parse.text['*'] );										
+									mw.getJSON('../../../api.php', request, function( data ) {		
+										var t =	'#'+ tkey;				
+										var $target = $j( t ) ; 								
+										if( data.query && data.query.allmessages && data.query.allmessages[0]){
+											var msgText = data.query.allmessages && data.query.allmessages[0]['*'];
+											if( msgText == '' ) 
+												msgText = ' %missing% ';
+											$target.html( msgText );										
 											var js_txt = $j.trim( $j(t + '_js').text().replace('\n', '') );
-											var php_txt = $j.trim( $j(t + ' p').text())
-											//just get the part in the <p> to compare with js version
+											var php_txt = $j.trim( msgText );											
+											// Just get the part in the <p> to compare with js version
 											if( js_txt != php_txt ){															
-												$j(t).css('color', 'red');
+												$target.css('color', 'red');
 												failTest++;
 											}else{
-												$j(t).css('color', 'green');
+												$target.css('color', 'green');
 												passTest++;
 											}
 											var perc = ( failTest + passTest ) / testCount
@@ -108,11 +112,11 @@ mw.ready( function(){
 													'Passed: <span style="color:green">' + passTest + '</span> Failed:' + failHtlm );
 													
 												//done with this lang... call outer function if we have lang keys left to proccess:
-												if(langSet.length!=0)
+												if( langSet.length !=0 )
 													doProcLangKey( langSet.pop() );		
 											}			
 										}else{
-											$t.html(' error ');
+											$target.html(' error ').css('color', 'red');
 										}
 									});
 								};
