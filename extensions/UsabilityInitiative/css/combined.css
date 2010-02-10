@@ -940,7 +940,7 @@ body.rtl .wikiEditor-ui-toolbar .group .tool-select .menu {
 	white-space: nowrap;
 }
 .wikiEditor-ui-toolbar .group .tool-select .options .option:hover {
-	background-color: #f3f3f3;
+	background-color: #E0EEf7;
 }
 .wikiEditor-ui-toolbar .group .tool-select .options .option[rel=heading-2] {
 	font-size: 150%;
