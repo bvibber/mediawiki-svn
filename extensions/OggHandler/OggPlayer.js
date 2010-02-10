@@ -186,11 +186,8 @@ var wgOggPlayer = {
 		if ( this.safari ) {
 			// Detect https://bugs.webkit.org/show_bug.cgi?id=25575
 			var match = /AppleWebKit\/([0-9]+)/.exec( navigator.userAgent );
-			if ( match ) {
-				var major = parseInt( match[1] );
-				if ( major < 531 ) {
-					this.safariControlsBug = true;
-				}
+			if ( match && parseInt( match[1] ) < 531 ) {
+				this.safariControlsBug = true;
 			}
 		}
 
