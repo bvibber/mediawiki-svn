@@ -7760,6 +7760,8 @@ if ( typeof context == 'undefined' ) {
 				// Allow <p> tags to survive encoding
 				.replace( /&lt;p&gt;/g, '<p>' )
 				.replace( /&lt;\/p&gt;/g, '</p>' )
+				// And <span class="wikiEditor-tab"></span> too
+				.replace( /&lt;span( |&nbsp;)class=("|&quot;)wikiEditor-tab("|&quot;)&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
 				// Empty <p> tags need <br> tags in them 
 				.replace( /<p><\/p>/g, '<p><br></p>' )
 				// Unescape &esc; stuff
