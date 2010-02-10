@@ -6820,7 +6820,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
-			}, 100 );
+			}, 0 );
 			return true;
 		}
 	};
@@ -7055,6 +7055,7 @@ if ( typeof context == 'undefined' ) {
 			var selText = $(this).textSelection( 'getSelection' );
 			var selTextArr;
 			var selectAfter = false;
+			var setSelectionTo = null;
 			var pre = options.pre, post = options.post;
 			if ( !selText ) {
 				selText = options.peri;
@@ -7124,15 +7125,56 @@ if ( typeof context == 'undefined' ) {
 				range.extractContents();
 				// Insert the contents one line at a time - insertNode() inserts at the beginning, so this has to happen
 				// in reverse order
-				var lastNode;
+				// Track the first and last inserted node, and if we need to also track where the text we need to select
+				// afterwards starts and ends
+				var firstNode = null, lastNode = null;
+				var selSC = null, selEC = null, selSO = null, selEO = null, offset = 0;
 				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
-					range.insertNode( context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] ) );
+					firstNode = context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] );
+					range.insertNode( firstNode );
+					lastNode = lastNode || firstNode;
+					var newOffset = offset + insertLines[i].length;
+					if ( !selSC && pre.length < newOffset ) {
+						selSC = firstNode;
+						selSO = pre.length - offset;
+					}
+					if ( selSC && insertText.length - post.length < newOffset ) {
+						selEC = firstNode;
+						selEO = insertText.length - pre.length - offset;
+					}
+					offset = newOffset;
 					if ( i > 0 ) {
-						lastNode = range.insertNode( context.$iframe[0].contentWindow.document.createElement( 'br' ) );
+						firstNode = context.$iframe[0].contentWindow.document.createElement( 'br' );
+						range.insertNode( firstNode );
+						newOffset = offset + 1;
+						if ( !selSC && pre.length < newOffset ) {
+							selSC = firstNode;
+							selSO = pre.length - offset;
+						}
+						if ( selSC && insertText.length - post.length < newOffset ) {
+							selEC = firstNode;
+							selEO = insertText.length - pre.length - offset;
+						}
+						offset = newOffset;
 					}
 				}
-				if ( lastNode ) {
-					context.fn.scrollToTop( lastNode );
+				if ( firstNode ) {
+					context.fn.scrollToTop( $( firstNode.parentNode ) );
+				}
+				if ( selectAfter ) {
+					setSelectionTo = {
+						startContainer: selSC,
+						endContainer: selEC,
+						start: selSO,
+						end: selEO
+					};
+				} else if  ( lastNode ) {
+					setSelectionTo = {
+						startContainer: lastNode,
+						endContainer: lastNode,
+						start: lastNode.nodeValue.length,
+						end: lastNode.nodeValue.length
+					};
 				}
 			} else if ( context.$iframe[0].contentWindow.document.selection ) {
 				// IE
@@ -7176,6 +7218,15 @@ if ( typeof context == 'undefined' ) {
 						.replace( />/g, '&gt;' )
 						.replace( /\r?\n/g, '<br />' )
 				);
+				if ( selectAfter ) {
+					range.moveStart( 'character', -post.length - selText.length );
+					range.moveEnd( 'character', -post.length );
+					range.select();
+				}
+			}
+			
+			if ( setSelectionTo ) {
+				context.fn.setSelection( setSelectionTo );
 			}
 			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
 			$( context.$iframe[0].contentWindow.document ).trigger(
