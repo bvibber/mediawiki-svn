@@ -78,7 +78,7 @@ $.wikiEditor = {
 	 * "open-web" way to go.
 	 */
 	'isSupported': function( module ) {
-		var map = module && typeof $.wikiEditor.modules[module].browsers ?
+		var map = module && typeof $.wikiEditor.modules[module].browsers !== 'undefined' ?
 				$.wikiEditor.modules[module].browsers :
 				$.wikiEditor.browsers;
 		// Check for and make use of a cached return value
