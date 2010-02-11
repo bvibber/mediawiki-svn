@@ -796,7 +796,7 @@ mw.UploadHandler.prototype = {
 		// Check if we are done
 		if ( data.upload['apiUploadResult'] ) {
 			//update status to 100%
-			_this.updateProgress( 1 );
+			_this.interface.updateProgress( 1 );
 			//see if we need JSON
 			mw.load( [
 				'JSON'
@@ -818,7 +818,7 @@ mw.UploadHandler.prototype = {
 			//we have content length we can show percentage done:
 			var fraction = data.upload['loaded'] / data.upload['content_length'];
 			//update the status:
-			_this.updateProgress( fraction );
+			_this.interface.updateProgress( fraction );
 			//special case update the file progress where we have data size:
 			$j( '#up-status-container' ).html(
 				gM( 'mwe-upload-stats-fileprogress',
@@ -829,7 +829,7 @@ mw.UploadHandler.prototype = {
 				)
 			);
 		} else if( data.upload['loaded'] ) {
-			_this.updateProgress( 1 );
+			_this.interface.updateProgress( 1 );
 			mw.log( 'just have loaded (no cotent length: ' + data.upload['loaded'] );
 			//for lack of content-length requests:
 			$j( '#up-status-container' ).html(
