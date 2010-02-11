@@ -370,6 +370,12 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 			$wiki = array();
 			$wiki['url'] = $url;
 			$wiki['code'] = str_replace( '_', '-', $lang ) . ( $site != 'wiki' ? $site : '' );
+			
+			if( $matrix->isPrivate( $lang . $site ) ) 
+				$wiki['private'] = '';
+			if( $matrix->isFishbowl( $lang . $site ) )
+				$wiki['fishbowl'] = '';
+			
 			$specials[] = $wiki;
 		}
 
