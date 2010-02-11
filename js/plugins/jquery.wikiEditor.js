@@ -297,24 +297,31 @@ if ( typeof context == 'undefined' ) {
 					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
 						// HistoryPosition is a negative number between -1 and -context.history.length, in other words
 						// it's the number of steps backwards from the latest state.
+						var newPosition;
 						if ( event.shiftKey ) {
 							// Redo
-							context.historyPosition++;
+							newPosition = context.historyPosition + 1;
 						} else {
 							// Undo
-							context.historyPosition--;
+							newPosition = context.historyPosition - 1;
 						}
 						// Only act if we are switching to a valid state
-						if ( context.history.length + context.historyPosition >= 0 && context.historyPosition < 0 ) {
+						if ( newPosition >= ( context.history.length * -1 ) && newPosition < 0 ) {
+							// Make sure we run the history storing code before we make this change
+							context.evt.delayedChange( event );
+							context.historyPosition = newPosition;
 							// Change state
 							// FIXME: Destroys event handlers, will be a problem with template folding
 							context.$content.html(
 								context.history[context.history.length + context.historyPosition].html
 							);
-						} else {
-							// Normalize the historyPosition
-							context.historyPosition =
-								Math.max( -context.history.length, Math.min( context.historyPosition, -1 ) );
+							context.fn.purgeOffsets();
+							if( context.history[context.history.length + context.historyPosition ].sel ) {
+								context.fn.setSelection( { 
+									start: context.history[context.history.length + context.historyPosition ].sel[0],
+									end: context.history[context.history.length + context.historyPosition ].sel[1] }
+								);
+							}
 						}
 						// Prevent the browser from jumping in and doing its stuff
 						return false;
@@ -367,21 +374,30 @@ if ( typeof context == 'undefined' ) {
 		'delayedChange': function( event ) {
 			event.data.scope = 'division';
 			var newHTML = context.$content.html();
-			if ( context.oldDelayedHTML != newHTML ) {
+			var newSel = context.fn.getCaretPosition();
+			// Was text changed? Was it because of a REDO or UNDO action? 
+			if ( context.history.length == 0 || (context.oldDelayedHTML != newHTML 
+				&& newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
 				context.fn.purgeOffsets();
 				context.oldDelayedHTML = newHTML;
+				context.oldDelayedSel = newSel;
 				event.data.scope = 'realchange';
-				// Save in the history
-				//console.log( 'save-state' );
-				// Only reset the historyPosition and begin moving forward if this change is not the result of undo
-				if ( newHTML !== context.history[context.history.length + context.historyPosition].html ) {
+				// Do we need to trim extras from our history? 
+				// FIXME: this should really be happing on change, not on the delay
+				if ( context.historyPosition < -1 ) {
+					//clear out the extras
+					context.history.splice( context.history.length + context.historyPosition );
 					context.historyPosition = -1;
 				}
-				context.history.push( { 'html': newHTML } );
-				// Keep the history under control
+				context.history.push( { 'html': newHTML, 'sel': newSel } );
+				// If the histroy has grown longer than 10 items, remove the earliest one
 				while ( context.history.length > 10 ) {
 					context.history.shift();
 				}
+			} else if ( context.oldDelayedSel != newSel && context.historyPosition == -1 ) {
+				// If only the selection was changed, and we're not between undos, update it
+				context.oldDelayedSel = newSel;
+				context.history[context.history.length + context.historyPosition].sel = newSel;
 			}
 			return true;
 		},
@@ -1485,8 +1501,6 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;esc;esc;/g, '&amp;esc;' );
 			context.$content.html( html );
 			context.oldHTML = html;
-			// FIXME: This needs to be merged somehow with the oldHTML thing
-			context.history.push( { 'html': html } );
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
