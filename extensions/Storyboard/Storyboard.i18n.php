@@ -19,11 +19,20 @@ $messages['en'] = array(
 	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'storyboard-name' => 'Taboleiro de historias',
+	'storyboard-desc' => 'Proporciona unha páxina de chegada para os doantes, unha páxina desde a que se poden enviar historias e unha interface para moderar o seu envío',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
 $messages['gsw'] = array(
 	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => 'Stellt e Ziilsyte z Verfiegig fir Spänder, wu Gschichte chenne yygee wäre un e Benutzeroberflechi fir d Moderation vu Gschichte',
 );
 
 /** Interlingua (Interlingua)
@@ -55,6 +64,14 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'storyboard-name' => 'Storyboard',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'storyboard-name' => 'Disegn ëd la senegiadura',
+	'storyboard-desc' => "A dà na pàgina d'ateragi për ij donador, na pàgina andoa le stòrie a peulo esse butà, e n'antërfacia ëd moderassion dle stòrie",
 );
 
 /** Russian (Русский)

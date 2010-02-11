@@ -112,6 +112,7 @@ $messages['bs'] = array(
 	'transliterator-error-syntax' => 'Nevaljana sintaksa <code>$1</code> u [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Ima više od $1 {{PLURAL:$1|pravila|pravila}} u [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Pravilo <code>$1</code> ima više od $3 {{PLURAL:$3|znaka|znaka|znakova}} na lijevoj strani u [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] mora imati najmanje $1 {{PLURAL:$1|znak|znaka|znakova}}.',
 );
 
 /** Catalan (Català)

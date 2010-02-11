@@ -279,6 +279,13 @@ $messages['id'] = array(
 	'templatelink_newtitle' => '$1 (ditransklusikan)',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'templatelink' => 'Jikodo mkpurụ ihü',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

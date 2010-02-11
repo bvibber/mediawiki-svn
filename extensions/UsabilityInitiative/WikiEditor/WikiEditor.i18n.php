@@ -113,6 +113,7 @@ $messages['cs'] = array(
 	'wikieditor' => 'Vylepšené rozhraní pro editaci wikitextu',
 	'wikieditor-desc' => 'Poskytuje rozšiřitelné editační rozhraní a mnoho modulů s novými funkcemi',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Načítá se',
 );
 
 /** Welsh (Cymraeg)
@@ -212,6 +213,7 @@ $messages['fr'] = array(
 	'wikieditor' => 'Interface avancée de modification de wikitexte',
 	'wikieditor-desc' => 'Fournit un interface de modification de wikitexte extensible et plusieurs fonctionnalités.',
 	'wikieditor-wikitext-tab' => 'WikiTexte',
+	'wikieditor-loading' => 'Chargement',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -230,6 +232,7 @@ $messages['gl'] = array(
 	'wikieditor' => 'Interface avanzada de edición de texto wiki',
 	'wikieditor-desc' => 'Proporciona unha interface extensible de edición de texto wiki e moitas funcionalidades de módulos',
 	'wikieditor-wikitext-tab' => 'Texto wiki',
+	'wikieditor-loading' => 'Cargando',
 );
 
 /** Swiss German (Alemannisch)
@@ -239,6 +242,7 @@ $messages['gsw'] = array(
 	'wikieditor' => 'Oberflechi fir s fortgschritte Wikitext-Bearbeite',
 	'wikieditor-desc' => 'Stellt e uusklappbari Wikitext-Bearbeitigsoberflechi z Verfiegig un vili Modul mit extra Megligkeite',
 	'wikieditor-wikitext-tab' => 'WikiText',
+	'wikieditor-loading' => 'Am Lade',
 );
 
 /** Hebrew (עברית)
@@ -442,6 +446,7 @@ $messages['ru'] = array(
 	'wikieditor' => 'Расширенный интерфейс редактирования викитекста',
 	'wikieditor-desc' => 'Обеспечивает расширяемый интерфейс редактирования викитекста и многие функции, предоставляемые модулями',
 	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Загрузка',
 );
 
 /** Yakut (Саха тыла)

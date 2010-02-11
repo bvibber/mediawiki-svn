@@ -3562,10 +3562,14 @@ $messages['te'] = array(
 	'voctrain_logout' => 'నిష్క్రమించండి',
 	'voctrain_User_name' => 'వాడుకరి పేరు',
 	'voctrain_Password' => 'సంకేతపదం',
+	'voctrain_Login' => 'ప్రవేశించు',
+	'voctrain_Create_new_user' => 'కొత్త వాడుకరిని సృష్టించు',
 	'voctrain_Switch_language' => 'భాషని మార్చండి',
 	'voctrain_Language' => 'భాష',
+	'voctrain_Log_in' => 'ప్రవేశించండి',
 	'voctrain_Definitions' => 'నిర్వచనాలు',
 	'voctrain_Translation' => 'అనువాదం',
+	'voctrain_other' => 'ఇతర',
 );
 
 /** Tetum (Tetun)

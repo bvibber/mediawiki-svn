@@ -337,14 +337,17 @@ $4',
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'todo' => 'Llista de feines per fer',
+	'todo-desc' => 'Extensió de [[Special:Todo|llista de tasques]] personal i experimental',
 	'todo-tab' => 'per fer',
 	'todo-new-queue' => 'nou',
 	'todo-item-list' => 'Els teus ítems',
+	'todo-no-item' => 'No hi ha ítems a la llista de tasques.',
 	'todo-add-queue' => 'Afegeix a la coa...',
 	'todo-move-queue' => 'Mou a la coa...',
 	'todo-list-change' => 'Canvia',

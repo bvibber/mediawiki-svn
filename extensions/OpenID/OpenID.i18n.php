@@ -287,7 +287,7 @@ $messages['an'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'openid-desc' => 'سجل الدخول للويكي [http://openid.net/ بهوية مفتوحة]، وسجل الدخول لمواقع ويب أخرى تعرف الهوية المفتوحة بحساب مستخدم ويكي',
+	'openid-desc' => 'سجل الدخول للويكي [http://openid.net/ بهوية مفتوحة]، وسجل الدخول لمواقع الوب الأخرى التي تعترف بالهوية المفتوحة بحساب مستخدم ويكي',
 	'openidlogin' => 'تسجيل الدخول بالهوية المفتوحة',
 	'openidserver' => 'خادم الهوية المفتوحة',
 	'openidxrds' => 'ملف ياديس',
@@ -301,10 +301,10 @@ $messages['ar'] = array(
 	'openidpermissiontext' => 'الهوية المفتوحة التي وفرتها غير مسموح لها بتسجيل الدخول إلى هذا الخادم.',
 	'openidcancel' => 'التأكيد تم إلغاؤه',
 	'openidcanceltext' => 'التحقق من مسار الهوية المفتوحة تم إلغاؤه.',
-	'openidfailure' => 'التأكيد فشل',
+	'openidfailure' => 'فشل التحقق',
 	'openidfailuretext' => 'التحقق من مسار الهوية المفتوحة فشل. رسالة خطأ: "$1"',
-	'openidsuccess' => 'التأكيد نجح',
-	'openidsuccesstext' => 'التحقق من مسار الهوية المفتوحة نجح.',
+	'openidsuccess' => 'نحج التحقق',
+	'openidsuccesstext' => 'نجح التحقق من مسار الهوية المفتوحة.',
 	'openidusernameprefix' => 'مستخدم الهوية المفتوحة',
 	'openidserverlogininstructions' => 'أدخل كلمة سرك بالأسفل لتسجيل الدخول إلى $3 كمستخدم $2 (صفحة مستخدم $1).',
 	'openidtrustinstructions' => 'تأكد مما إذا كنت ترغب في مشاركة البيانات مع $1.',
@@ -318,15 +318,18 @@ $messages['ar'] = array(
 	'openidemail' => 'عنوان البريد الإلكتروني',
 	'openidlanguage' => 'اللغة',
 	'openidtimezone' => 'المنطقة الزمنية',
+	'openidchooselegend' => 'اختيار اسم المستخدم',
 	'openidchooseinstructions' => 'كل المستخدمين يحتاجون إلى لقب؛
 يمكنك أن تختار واحدا من الخيارات بالأسفل.',
+	'openidchoosenick' => 'اسمك المستعار ($1)',
 	'openidchoosefull' => 'اسمك الكامل ($1)',
 	'openidchooseurl' => 'اسم مختار من هويتك المفتوحة ($1)',
 	'openidchooseauto' => 'اسم مولد تلقائيا ($1)',
 	'openidchoosemanual' => 'اسم من اختيارك:',
 	'openidchooseexisting' => 'حساب موجود في هذا الويكي',
+	'openidchooseusername' => 'اسم المستخدم:',
 	'openidchoosepassword' => 'كلمة السر:',
-	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكي تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
+	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب مستخدمك لتستخدم مسار هوية مفتوحة أو لاضافة المزيد من مسارات هويات مفتوحة.',
 	'openidconvertoraddmoreids' => 'حوّل إلى OpenID أو أضف عنوان OpenID آخر',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',
 	'openidconvertsuccesstext' => 'أنت حولت بنجاح هويتك المفتوحة إلى $1.',
@@ -339,38 +342,42 @@ $messages['ar'] = array(
 	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
 	'openidautosubmit' => 'هذه الصفحة تحتوي على استمارة ينبغي أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
 لو لا، جرب زر "Continue".',
-	'openidclientonlytext' => 'أنت لا يمكنك استخدام الحسابات من هذا الويكي كهوية مفتوحة على موقع آخر.',
+	'openidclientonlytext' => 'لا يمكنك استخدام حسابات هذه الويكي كهوية مفتوحة على موقع آخر.',
 	'openidloginlabel' => 'مسار الهوية المفتوحة',
-	'openidlogininstructions' => '{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الويب.
-الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع ويب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
-(انظر [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
+	'openidlogininstructions' => '{{SITENAME}} تدعم معيار [http://openid.net/ الهوية المفتوحة] للدخول الفردي بين مواقع الوب.
+الهوية المفتوحة تسمح لك بتسجيل الدخول إلى مواقع وب عديدة مختلفة بدون استخدام كلمة سر مختلفة لكل موقع.
+(راجع [http://en.wikipedia.org/wiki/OpenID مقالة الهوية المفتوحة في يويكيبيديا] لمزيد من المعلومات.)
 
-لو أنك لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة السر الخاصة بك كالمعتاد.
+إذا كان لديك بالفعل حساب في {{SITENAME}}، يمكنك [[Special:UserLogin|تسجيل الدخول]] باسم مستخدمك وكلمة سرك كالمعتاد.
 لاستخدام الهوية المفتوحة في المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك إلى الهوية المفتوحة]] بعد تسجيل دخولك بشكل عادي.
 
-يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers موفري الهوية المفتوحة العلنيين]، وربما يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
+يوجد العديد من [http://wiki.openid.net/Public_OpenID_providers مزودي الهوية المفتوحة]، وقد يكون لديك حسابك بهوية مفتوحة على خدمة أخرى.',
 	'openidupdateuserinfo' => 'تحديث معلوماتي الشخصية:',
-	'openiddelete' => 'احذف OpenID',
+	'openiddelete' => 'احذف الهوية المفتوحة',
 	'openiddelete-text' => 'بالضغط على زر "{{int:openiddelete-button}}"، ستزيل الهوية المفتوحة OpenID $1 من حسابك.
 لن تتمكن بعد الآن من الدخول بهذه الهوية المفتوحة.',
 	'openiddelete-button' => 'أكّد',
-	'openiddelete-sucess' => 'أزيل OpenID بنجاح من حسابك.',
-	'openiddelete-error' => 'صودف خطأ أثناء إزالة OpenID من حسابك.',
+	'openiddeleteerrornopassword' => 'لا يمكنك إزالة كل هوياتك المفتوحة لعدم وجود كلمة سر لحسابك.
+لن تتمكن من الولوج بدون هوية مفتوحة.',
+	'openiddeleteerroropenidonly' => 'لا يمكنك إزالة كل هوياتك المفتوحة لأنه يسمح لك بالدخول عبر هوية مفتوحة فقط.
+لن تتمكن من الولوج بدون هوية مفتوحة.',
+	'openiddelete-sucess' => 'أزيلت الهوية المفتوحة بنجاح من حسابك.',
+	'openiddelete-error' => 'صودف خطأ أثناء إزالة الهوية المفتوحة من حسابك.',
 	'prefs-openid' => 'هوية مفتوحة',
-	'openid-prefstext' => 'تفضيلات [http://openid.net/ OpenID]',
+	'openid-prefstext' => 'تفضيلات [http://openid.net/ الهوية المفتوحة]',
 	'openid-pref-hide' => 'أخفِ مسار هويتك المفتوحة من صفحتك الشخصية، إذا سجلت الدخول بالهوية المفتوحة.',
 	'openid-pref-update-userinfo-on-login' => 'حدث المعلومات التالية من شخصية الهوية المفتوحة كل مرة أسجل الدخول:',
-	'openid-urls-desc' => 'OpenIDs المربوطة بحسابك:',
+	'openid-urls-desc' => 'الهويات المفتوحة المربوطة بحسابك:',
 	'openid-urls-url' => 'مسار',
 	'openid-urls-action' => 'إجراء',
 	'openid-urls-delete' => 'احذف',
-	'openid-add-url' => 'أضف OpenID جديدة',
+	'openid-add-url' => 'أضف هوية مفتوحة جديدة',
 	'openidsigninorcreateaccount' => 'سجل الدخول أو أنشئ حسابا جديدا',
 	'openid-provider-label-openid' => 'أدخل مسار هويتك المفتوحة',
-	'openid-provider-label-google' => 'سجل الدخول باستخدام حساب جوجل الخاص بك',
-	'openid-provider-label-yahoo' => 'سجل الدخول باستخدام حساب ياهو الخاص بك',
+	'openid-provider-label-google' => 'سجل الدخول باستخدام حسابك في جوجل',
+	'openid-provider-label-yahoo' => 'سجل الدخول باستخدام حسابك في ياهو',
 	'openid-provider-label-aol' => 'أدخل اسم شاشة AOL الخاص بك',
-	'openid-provider-label-other-username' => 'أدخل اسم مستخدم $1 الخاص بك',
+	'openid-provider-label-other-username' => 'أدخل اسم مستخدمك في $1',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
