@@ -82,9 +82,9 @@ var wikiEditorTests = {
 					'layout': 'table',
 					'label': 'Colors',
 					'headings': [
-						{ content: 'Name' },
-						{ content: 'Temperature' },
-						{ content: 'Swatch' }
+						{ text: 'Name' },
+						{ text: 'Temperature' },
+						{ text: 'Swatch' }
 					]
 				}
 			}
@@ -99,23 +99,23 @@ var wikiEditorTests = {
 		'data': {
 			'section': 'info',
 			'page': 'colors',
-			'rows': [
-   				{
-					'name': { content: 'Red' },
-					'temp': { content: 'Warm' },
-					'swatch': { content: '<div style="width:10px;height:10px;background-color:red;">' }
-				},
-				{
-					'name': { content: 'Blue' },
-					'temp': { content: 'Cold' },
-					'swatch': { content: '<div style="width:10px;height:10px;background-color:blue;">' }
-				},
-				{
-					'name': { content: 'Silver' },
-					'temp': { content: 'Neutral' },
-					'swatch': { content: '<div style="width:10px;height:10px;background-color:silver;">' }
-				}
-			]
+				'rows': [
+					{
+						'name': { text: 'Red' },
+						'temp': { text: 'Warm' },
+						'swatch': { html: '<div style="width:10px;height:10px;background-color:red;">' }
+					},
+					{
+						'name': { text: 'Blue' },
+						'temp': { text: 'Cold' },
+						'swatch': { html: '<div style="width:10px;height:10px;background-color:blue;">' }
+					},
+					{
+						'name': { text: 'Silver' },
+						'temp': { text: 'Neutral' },
+						'swatch': { html: '<div style="width:10px;height:10px;background-color:silver;">' }
+					}
+				]
 		},
 		'test': '*[rel=info].section *[rel=colors].page tr td',
 		'pre': 0,
