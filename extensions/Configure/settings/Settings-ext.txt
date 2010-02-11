@@ -553,6 +553,8 @@ url = http://www.mediawiki.org/wiki/Extension:ImportUsers
 Inputbox
 url = http://www.mediawiki.org/wiki/Extension:Inputbox
 
+InspectCache
+
 intersection
 file = DynamicPageList.php
 settings[] = wgDLPminCategories: int, wgDLPmaxCategories: int
