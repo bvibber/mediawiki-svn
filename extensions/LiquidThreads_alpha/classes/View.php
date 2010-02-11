@@ -539,17 +539,6 @@ class LqtView {
 		$this->output->setArticleFlag( false );
 
 		if ( $e->didSave ) {
-			// Move the thread and replies if subject changed.
-			if ( $edit_type == 'editExisting' && $subject &&
-					$subject != $thread->subject() ) {
-				$thread->setSubject( $subject );
-				$thread->commitRevision( Threads::CHANGE_EDITED_SUBJECT,
-							$thread, $e->summary );
-
-				// Disabled page-moving for now.
-				// $this->renameThread( $thread, $subject, $e->summary );
-			}
-
 			$bump = $this->request->getBool( 'wpBumpThread' );
 
 			$thread = self::postEditUpdates(
@@ -614,13 +603,23 @@ class LqtView {
 			$type = strlen( trim( $new_text ) )
 					? Threads::CHANGE_EDITED_ROOT
 					: Threads::CHANGE_ROOT_BLANKED;
-
+					
 			if ( $signature && !$noSignature ) {
 				$thread->setSignature( $signature );
 			}
 
 			// Add the history entry.
 			$thread->commitRevision( $type, $thread, $edit_summary, $bump );
+			
+			// Update subject if applicable.
+			if ( $subject && $subject != $thread->subject() ) {
+				$thread->setSubject( $subject );
+				$thread->commitRevision( Threads::CHANGE_EDITED_SUBJECT,
+							$thread, $e->summary );
+
+				// Disabled page-moving for now.
+				// $this->renameThread( $thread, $subject, $e->summary );
+			}
 		} else {
 			$thread = Thread::create(
 				$edit_page, $article, null,
@@ -895,7 +894,13 @@ class LqtView {
 
 		$basePath = "$wgScriptPath/extensions/$wgLiquidThreadsExtensionName";
 
-		$wgOut->addScriptFile( "$basePath/jquery/js2.combined.js" );
+		if ( method_exists( $wgOut, 'includeJQuery' ) ) {
+			$wgOut->includeJQuery();
+			$wgOut->addScriptFile( "$basePath/jquery/plugins.js" );
+		} else {
+			$wgOut->addScriptFile( "$basePath/jquery/js2.combined.js" );
+		}
+		
 		$wgOut->addExtensionStyle( "$basePath/jquery/jquery-ui-1.7.2.css" );
 
 		$wgOut->addScriptFile( "$basePath/jquery/jquery.autogrow.js" );
@@ -1230,7 +1235,7 @@ class LqtView {
 		if ( !$target ) {
 			throw new MWException( "Thread " . $thread->id() . ' purports to be moved, ' .
 				'but no redirect found in text of ' .
-				$thread->title()->getPrefixedText() . '. Dying.' );
+				$thread->root()->getTitle()->getPrefixedText() . '. Dying.' );
 		}
 
 		$t_thread = Threads::withRoot( new Article( $target ) );
