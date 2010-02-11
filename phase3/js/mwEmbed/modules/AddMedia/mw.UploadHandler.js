@@ -7,8 +7,7 @@
  * This base upload class is optionally extended by Firefogg
  *
  */
-mw.addMessages({
-	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",
+mw.addMessages({	
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-upload-transcoded-status" : "Transcoded",
 	"mwe-uploaded-time-remaining" : "Time remaining: $1",
@@ -52,16 +51,16 @@ var default_bui_options = {
 	// Callback for modifing form data on submit  
 	'onsubmit_cb' : null,
 	
-	// The interface type sent to mw.interfaceDispatch factory
+	// The interface type sent to mw.interface factory
 	// can be 'dialog', 'iframe', 'inline' 
 	'interface_type' : 'dialog'
 
 }
-mw.BaseUploadHandler = function( options ) {
+mw.UploadHandler = function( options ) {
 	return this.init( options );
 }
 
-mw.BaseUploadHandler.prototype = {
+mw.UploadHandler.prototype = {
 	
 	// The form data to be submitted
 	formData: {}, 
@@ -73,8 +72,8 @@ mw.BaseUploadHandler.prototype = {
 	chunks_supported: true,
 	
 	// If the existing form should be used to post to the api
-	// Since file selection can't be "moved" we have to use the exising
-	// form and just submit it to a diffrent target  
+	// Since file selection can't be "moved" we have to use the existing
+	// form and just submit it to a difrent target  
 	form_post_override: false,
 	
 	// http copy by url mode flag
@@ -95,14 +94,16 @@ mw.BaseUploadHandler.prototype = {
 
 	
 	/**
-	 * Object initialisation
+	 * Object initialization
 	 * @param {Object} options BaseUpload options see default_bui_options
 	 */
 	init: function( options ) {
 		if ( !options )
 			options = {};
-		$j.extend( this, default_bui_options, options );		
-		this.interfaceDispatch = mw.InterfaceDispatch.factory( this.interface_type );
+		$j.extend( this, default_bui_options, options );
+				
+		// Setup the interfaceDispatch handler
+		this.interface = mw.UploadInterface.factory( this.interface_type );
 		
 		mw.log( "init mvBaseUploadHandler:: " + this.api_url );
 	},
@@ -171,7 +172,7 @@ mw.BaseUploadHandler.prototype = {
 		// Put into a try catch so we are sure to return false:
 		try {
 			// Startup interface dispatch dialog
-			this.interfaceDispatch.setup();		
+			this.interface.setup( {'title': gM('mwe-upload-in-progress') } );		
 			//this.displayProgressOverlay
 						
 
@@ -334,6 +335,218 @@ mw.BaseUploadHandler.prototype = {
 		
 		//mw.log( 'comment: ' + $form.find( "[name='comment']" ).val() );
 	},
+		
+	/**
+	 * Given the result of an action=upload API request, display the error message
+	 * to the user.
+	 * 
+	 * @param {Object} apiRes The result object
+	 */
+	showApiError: function( apiRes ) {
+		var _this = this;
+		if ( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ) {
+			// Generate the error button
+			
+			var buttons = {};
+			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
+				_this.form_post_override = false;
+				$j( this ).dialog( 'close' );
+			};
+
+			// Check a few places for the error code
+			var error_code = 0;
+			var errorReplaceArg = '';
+			if ( apiRes.error && apiRes.error.code ) {
+				error_code = apiRes.error.code;
+			} else if ( apiRes.upload.code ) {
+				if ( typeof apiRes.upload.code == 'object' ) {
+					if ( apiRes.upload.code[0] ) {
+						error_code = apiRes.upload.code[0];
+					}
+					if ( apiRes.upload.code['status'] ) {
+						error_code = apiRes.upload.code['status'];
+						if ( apiRes.upload.code['filtered'] )
+							errorReplaceArg = apiRes.upload.code['filtered'];
+					}
+				} else {
+					apiRes.upload.code;
+				}
+			}
+
+			var error_msg = '';
+			if ( typeof apiRes.error == 'string' )
+				error_msg = apiRes.error;
+
+			// There are many possible error messages here, so we don't load all
+			// message text in advance, instead we use mw.getRemoteMsg() for some.
+			//
+			// This code is similar to the error handling code formerly in
+			// SpecialUpload::processUpload()
+			var error_msg_key = {
+				'2' : 'largefileserver',
+				'3' : 'emptyfile',
+				'4' : 'minlength1',
+				'5' : 'illegalfilename'
+			};
+
+			// NOTE:: handle these error types
+			var error_onlykey = {
+				'1': 'BEFORE_PROCESSING',
+				'6': 'PROTECTED_PAGE',
+				'7': 'OVERWRITE_EXISTING_FILE',
+				'8': 'FILETYPE_MISSING',
+				'9': 'FILETYPE_BADTYPE',
+				'10': 'VERIFICATION_ERROR',
+				'11': 'UPLOAD_VERIFICATION_ERROR',
+				'12': 'UPLOAD_WARNING',
+				'13': 'INTERNAL_ERROR',
+				'14': 'MIN_LENGTH_PARTNAME'
+			}
+
+			if ( !error_code || error_code == 'unknown-error' ) {
+				if ( typeof JSON != 'undefined' ) {
+					mw.log( 'Error: apiRes: ' + JSON.stringify( apiRes ) );
+				}
+				if ( apiRes.upload.error == 'internal-error' ) {
+					// Do a remote message load
+					errorKey = apiRes.upload.details[0];
+					mw.getRemoteMsg( errorKey, function() {
+						_this.interface.setPrompt( gM( 'mwe-uploaderror' ), gM( errorKey ), buttons );
+
+					});
+					return false;
+				}
+
+				_this.interface.setPrompt(
+						gM('mwe-uploaderror'),
+						gM('mwe-unknown-error') + '<br>' + error_msg,
+						buttons );
+				return false;
+			}
+
+			if ( apiRes.error && apiRes.error.info ) {
+				_this.interface.setPrompt( gM( 'mwe-uploaderror' ), apiRes.error.info, buttons );
+				return false;
+			}
+
+			if ( typeof error_code == 'number'
+				&& typeof error_msg_key[error_code] == 'undefined' )
+			{
+				if ( apiRes.upload.code.finalExt ) {
+					_this.interface.setPrompt(
+						gM( 'mwe-uploaderror' ),
+						gM( 'mwe-wgfogg_warning_bad_extension', apiRes.upload.code.finalExt ),
+						buttons );
+				} else {
+					_this.interface.setPrompt(
+						gM( 'mwe-uploaderror' ),
+						gM( 'mwe-unknown-error' ) + ' : ' + error_code,
+						buttons );
+				}
+				return false;
+			}
+
+			mw.log( 'get key: ' + error_msg_key[ error_code ] )
+			mw.getRemoteMsg( error_msg_key[ error_code ], function() {
+				_this.interface.setPrompt(
+					gM( 'mwe-uploaderror' ),
+					gM( error_msg_key[ error_code ], errorReplaceArg ),
+					buttons );
+			});
+			mw.log( "api.error" );
+			return false;
+		}
+
+		// Check upload.error
+		if ( apiRes.upload && apiRes.upload.error ) {
+			mw.log( ' apiRes.upload.error: ' +  apiRes.upload.error );
+			_this.interface.setPrompt(
+				gM( 'mwe-uploaderror' ),
+				gM( 'mwe-unknown-error' ) + '<br>',
+				buttons );
+			return false;
+		}
+
+		// Check for warnings:
+		if ( apiRes.upload && apiRes.upload.warnings ) {
+			var wmsg = '<ul>';
+			for ( var wtype in apiRes.upload.warnings ) {
+				var winfo = apiRes.upload.warnings[wtype]
+				wmsg += '<li>';
+				switch ( wtype ) {
+					case 'duplicate':
+					case 'exists':
+						if ( winfo[1] && winfo[1].title && winfo[1].title.mTextform ) {
+							wmsg += gM( 'mwe-file-exists-duplicate' ) + ' ' +
+								'<b>' + winfo[1].title.mTextform + '</b>';
+						} else {
+							//misc error (weird that winfo[1] not present
+							wmsg += gM( 'mwe-upload-misc-error' ) + ' ' + wtype;
+						}
+						break;
+					case 'file-thumbnail-no':
+						wmsg += gM( 'mwe-file-thumbnail-no', winfo );
+						break;
+					default:
+						wmsg += gM( 'mwe-upload-misc-error' ) + ' ' + wtype;
+						break;
+				}
+				wmsg += '</li>';
+			}
+			wmsg += '</ul>';
+			if ( apiRes.upload.sessionkey )
+				_this.warnings_sessionkey = apiRes.upload.sessionkey;
+
+			// Create the "ignore warning" button
+			var buttons = {};
+			buttons[ gM( 'mwe-ignorewarning' ) ] = function() {
+				//check if we have a stashed key:
+				if ( _this.warnings_sessionkey ) {
+					//set to "loading"
+					$j( '#upProgressDialog' ).html( mw.loading_spinner() );
+					//setup request:
+					var request = {
+						'action': 'upload',
+						'sessionkey': _this.warnings_sessionkey,
+						'ignorewarnings': 1,
+						'filename': $j( '#wpDestFile' ).val(),
+						'token' :  _this.editToken,
+						'comment' :  $j( '#wpUploadDescription' ).val()
+					};
+					//run the upload from stash request
+					mw.getJSON(_this.api_url, request, function( data ) {
+							_this.processApiResult( data );
+					} );
+				} else {
+					mw.log( 'No session key re-sending upload' )
+					//do a stashed upload
+					$j( '#wpIgnoreWarning' ).attr( 'checked', true );
+					$j( _this.editForm ).submit();
+				}
+			};
+			// Create the "return to form" button
+			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
+				$j( this ).dialog( 'close' );
+				_this.form_post_override = false;
+			}
+			// Show warning
+			_this.interface.setPrompt(
+				gM( 'mwe-uploadwarning' ),
+				$j('<div />')
+				.append(
+					$j( '<h3 />' )
+					.text( gM( 'mwe-uploadwarning' ) ),
+					
+					$j('<span />')
+					.html( wmsg )
+				),
+				buttons );
+			return false;
+		}
+		// No error!
+		return true;
+	},
+	
 
 	/**
 	 * Returns true if the current form has copy upload selected, false otherwise.
@@ -362,7 +575,7 @@ mw.BaseUploadHandler.prototype = {
 
 		// TODO check for sendAsBinary to support Firefox/HTML5 progress on upload
 		
-		this.interfaceDispatch.setLoading();
+		this.interface.setLoading();
 
 		// Add the iframe
 		_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
@@ -477,12 +690,12 @@ mw.BaseUploadHandler.prototype = {
 	doHttpUpload: function( params ) {
 		var _this = this;
 		// Get a clean setup of the interface dispatch 
-		this.interfaceDispatch.setup();	
+		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );	
 		
 		//_this.displayProgressOverlay();
 
 		// Set the interface dispatch to loading ( in case we don't get an update for some time )
-		this.interfaceDispatch.setLoading();		
+		this.interface.setLoading();		
 
 		// Set up the request
 		var request = {
@@ -520,7 +733,7 @@ mw.BaseUploadHandler.prototype = {
 		var _this = this;
 
 		// Set up intterface dispatch to display for status updates:
-		this.interfaceDispatch.setup();			
+		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );			
 		//this.displayProgressOverlay();
 		
 		this.upload_status_request = {
@@ -649,7 +862,7 @@ mw.BaseUploadHandler.prototype = {
 				
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
-			_this.interfaceDispatch.showApiError( apiRes );
+			_this.interface.showApiError( apiRes );
 			return false;
 		}
 		if ( apiRes.upload && apiRes.upload.upload_session_key ) {
@@ -667,9 +880,10 @@ mw.BaseUploadHandler.prototype = {
 			// Call the completion callback if available.
 			if ( _this.done_upload_cb && typeof _this.done_upload_cb == 'function' ) {
 				mw.log( "call done_upload_cb" );
+				
 				// This overrides our normal completion handling so we close the
 				// dialog immediately.
-				$j( '#upProgressDialog' ).dialog( 'destroy' ).remove();
+				_this.interface.close();
 				_this.done_upload_cb( apiRes.upload );
 				return false;
 			}
@@ -685,7 +899,7 @@ mw.BaseUploadHandler.prototype = {
 				window.location = url;
 			};
 			_this.action_done = true;
-			_this.updateProgressWin(
+			_this.interface.setPrompt(
 					gM( 'mwe-successfulupload' ),
 					gM( 'mwe-upload_done', url),
 					buttons );
@@ -713,28 +927,7 @@ mw.BaseUploadHandler.prototype = {
 			mw.log( "mvBaseUploadHandler.getForm(): no form_selector" );
 			return false;
 		}
-	},
-
-	/**
-	 * Update the progress bar to a given completion fraction (between 0 and 1)
-         * XXX This progress bar is used for encoding AND for upload... may need to fix that
-	 */
-	updateProgress: function( fraction ) {
-		var _this = this;
-		
-		$j( '#up-progressbar' ).progressbar( 'value', parseInt( fraction * 100 ) );
-		$j( '#up-pstatus' ).html( parseInt( fraction * 100 ) + '% - ' );
-
-		if (_this.uploadBeginTime) {	
-			var elapsedMilliseconds = ( new Date() ).getTime() - _this.uploadBeginTime;
-			if (fraction > 0.0 && elapsedMilliseconds > 0) { // or some other minimums for good data
-				var fractionPerMillisecond = fraction / elapsedMilliseconds;
-				var remainingSeconds = parseInt( ( ( 1.0 - fraction ) / fractionPerMillisecond ) / 1000 ); 
-				$j( '#up-etr' ).html( gM( 'mwe-uploaded-time-remaining', mw.seconds2npt(remainingSeconds) ) );
-			}
-		}
-	
-	}
+	}	
 
 };
 

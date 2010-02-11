@@ -14,12 +14,12 @@
 		"$j.fn.dragDropFile"	: "modules/AddMedia/jquery.dragDropFile.js",	
 		"$j.fn.simpleUploadForm": "modules/AddMedia/jquery.simpleUploadForm.js",
 		
-		"mw.BaseUploadHandler": "modules/AddMedia/mw.BaseUploadHandler.js",
+		"mw.UploadHandler"		: "modules/AddMedia/mw.UploadHandler.js",
+		"mw.UploadInterface"	: "modules/AddMedia/mw.UploadInterface.js",
 		"mw.Firefogg"			: "modules/AddMedia/mw.Firefogg.js",
 		"mw.FirefoggGUI"		: "modules/AddMedia/mw.FirefoggGUI.js",
 		"mw.FirefoggRender"		: "modules/libSequencer/mw.FirefoggRender.js",
-		"mw.RemoteSearchDriver"	: "modules/AddMedia/mw.RemoteSearchDriver.js",	
-		"mw.InterfaceDispatch"	: "modules/AddMedia/mw.InterfaceDispatch.js",	
+		"mw.RemoteSearchDriver"	: "modules/AddMedia/mw.RemoteSearchDriver.js",			
 		
 		"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js",
 		"mediaWikiSearch"		: "modules/AddMedia/searchLibs/mediaWikiSearch.js",
@@ -60,8 +60,8 @@
 	//Set a variable for the base upload interface for easy inclution
 	var baseUploadlibs = [
 		[
-			'mw.BaseUploadHandler',
-			'mw.InterfaceDispatch',
+			'mw.UploadHandler',
+			'mw.UploadInterface',
 			'$j.ui'
 		],
 		[
@@ -118,7 +118,8 @@
 	
 	mw.addModuleLoader( 'AddMedia.firefoggRender', function( callback ){
 		mw.load( [
-			'mw.BaseUploadHandler',
+			'mw.UploadHandler',
+			'mw.UploadInterface',
 			'mw.Firefogg',
 			'mw.FirefoggRender'
 		], function() {

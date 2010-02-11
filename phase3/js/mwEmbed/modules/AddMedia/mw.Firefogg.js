@@ -3,7 +3,8 @@
  */
 
 mw.addMessages({
-	"fogg-select_file" : "Select file",
+	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",
+	"fogg-select_file" : "Select file",	
 	"fogg-select_new_file" : "Select new file",
 	"fogg-select_url" : "Select URL",
 	"fogg-save_local_file" : "Save Ogg",
@@ -154,12 +155,12 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 		// Inherit from mw.BaseUploadHandler (unless we're in only_firefogg mode)
 		if ( !this.only_firefogg ) {
-			var myBUI = new mw.BaseUploadHandler( options );
+			var myBUI = new mw.UploadHandler( options );
 
-			// Prefix conflicting members with pe_
+			// Prefix conflicting members with parent_
 			for ( var i in myBUI ) {
 				if ( this[i] ) {
-					this['pe_'+ i] = myBUI[i];
+					this['parent_'+ i] = myBUI[i];
 				} else {
 					this[i] =  myBUI[i];
 				}
@@ -365,7 +366,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		var _this = this;		
 		// Set up the parent if we are in upload mode
 		if ( this.form_type == 'upload' ) {
-			this.pe_setupForm();
+			this.parent_setupForm();
 		}
 		
 		// If Firefogg is not available, just show a "please install" message
@@ -410,20 +411,6 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// Create controls for local transcoding
 		this.createControls();
 		this.bindControls();
-	},
-
-	/**
-	 * Display an upload progress overlay. Overrides the function in mw.BaseUploadHandler.
-	 */
-	displayProgressOverlay: function() {
-		this.pe_displayProgressOverlay();		
-		// If we are uploading video (not in passthrough mode), show preview button
-		if( this.getFirefogg() 
-			&& !this.isCopyUpload() 
-			&& !this.getEncoderSettings()['passthrough']  ) 
-		{
-			this.createPreviewControls();
-		}
 	},
 
 	/**
@@ -565,7 +552,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 */
 	getForm: function() {	
 		if ( this.form_selector ) {
-			return this.pe_getForm();
+			return this.parent_getForm();
 		} else {
 			// No configured form selector
 			// Use the first form descendant of the current container
@@ -687,7 +674,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			mw.log( 'doLocalEncodeAndSave: no Firefogg object!' );
 			return false;
 		}
-
+		
 		// Set up the target location
 		// Firefogg shows the "save as" dialog box, and sets the path chosen as 
 		// the destination for a later encode() call.
@@ -699,7 +686,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// We have a source file, now do the encode		
 		this.doEncode(
 			function /* onProgress */ ( progress ) {
-				_this.updateProgress( progress );
+				_this.interface.updateProgress( progress );
 			},
 			function /* onDone */ () {
 				mw.log( "done with encoding (no upload) " );				
@@ -713,7 +700,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 */
 	onLocalEncodeDone: function() {
 		var _this = this;
-		_this.updateProgressWin( gM( 'fogg-encoding-done' ),
+		_this.interface.setPrompt( gM( 'fogg-encoding-done' ),
 			gM( 'fogg-encoding-done' ) + '<br>' +
 			//show the video at full resolution upto 720px wide
 			'<video controls="true" style="margin:auto" id="fogg_final_vid" src="' +
@@ -816,7 +803,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			' mode:' + this.form_type );
 		// Return the parent's title if we don't have Firefogg turned on
 		if ( !this.getFirefogg() || !this.firefogg_form_action ) {
-			return this.pe_getProgressTitle();
+			return this.parent_getProgressTitle();
 		} else if ( this.form_type == 'local' ) {
 			return gM( 'fogg-transcoding' );
 		} else {
@@ -837,9 +824,18 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
  		_this.uploadBeginTime = (new Date()).getTime();
 		// If Firefogg is disabled or doing an copyByUrl upload, just invoke the parent method
 		if( !this.getFirefogg() || this.isCopyUpload() ) {
-			_this.pe_doUpload();
+			_this.parent_doUpload();
 			return ;
 		}
+		
+		// Setup the firefogg dialog (if not passthrough )
+		_this.interface.setup( { 'title' : gM( 'mwe-upload-transcode-in-progress' ) } );
+		// add the preview controls if transcoding:  
+		if ( !_this.getEncoderSettings()['passthrough'] ) {
+			_this.createPreviewControls();
+		}
+		
+		
 		// Get the input form data into an array
 		mw.log( 'get this.formData ::' );
 		var data = $j( this.form ).serializeArray();
@@ -869,7 +865,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// No edit token. Fetch it asynchronously and then do the upload.
 		mw.getToken( _this.api_url, 'File:'+ _this.formData['filename'], function( editToken ) {
 			if( !editToken || editToken == '+\\' ) {
-				_this.updateProgressWin( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
+				_this.interface.setPrompt( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
 				return false;
 			}
 			_this.editToken = editToken;
@@ -1004,9 +1000,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			_this.fogg.encode( JSON.stringify( { 'passthrough' : true } ) );
 			doneCallback();
 			return ; 
-		}
-		// Display progress
-		_this.displayProgressOverlay();
+		}		
 		
 		mw.log( 'doEncode: with: ' +  JSON.stringify( encoderSettings ) );
 		_this.fogg.encode( JSON.stringify( encoderSettings ) );
@@ -1101,9 +1095,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					_this.renderPreview();
 				}
 			}
-			//mw.log("update progress: " + _this.fogg.progress() + ' state: ' + _this.fogg.state );
-			// Update the progress bar
-			_this.updateProgress( _this.fogg.progress() );
+	
+			// If not an error, Update the progress bar
+			_this.interface.updateProgress( _this.fogg.progress() );
 
 			// If we're still uploading or encoding, continue to poll the status
 			if ( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading' ) {
@@ -1130,7 +1124,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					showMessage = _this.done_upload_cb( _this.formData );
 				}
 				if ( showMessage ) {
-					_this.updateProgressWin( gM( 'mwe-successfulupload' ), 
+					_this.interface.setPrompt( gM( 'mwe-successfulupload' ), 
 						gM( 'mwe-upload_done', apiResult.resultUrl ), buttons );
 				} else {
 					this.action_done = true;
@@ -1151,7 +1145,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 */
 	onCancel: function( dialogElement ) {
 		if ( !this.have_firefogg ) {
-			return this.pe_cancel_action();
+			return this.parent_cancel_action();
 		}
 		mw.log( 'firefogg:cancel' )
 		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
