@@ -6510,18 +6510,21 @@ $.wikiEditor = {
 	 * is essentially to blacklist rather than whitelist are debateable, but at this point we've decided it's the more
 	 * "open-web" way to go.
 	 */
-	'isSupported': function() {
+	'isSupported': function( module ) {
+		var map = module && typeof $.wikiEditor.modules[module].browsers ?
+				$.wikiEditor.modules[module].browsers :
+				$.wikiEditor.browsers;
 		// Check for and make use of a cached return value
 		if ( typeof $.wikiEditor.supported != 'undefined' ) {
 			return $.wikiEditor.supported;
 		}
 		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
+		if ( !( $.browser.name in map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
 			// Assume good faith :) 
 			return $.wikiEditor.supported = true;
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
+		var browser = map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
 		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
@@ -6802,6 +6805,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		'paste': function( event ) {
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
+			context.$content.addClass( 'pasting' );
 			setTimeout( function() {
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
@@ -6820,6 +6824,10 @@ if ( typeof context == 'undefined' ) {
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
+				// Remove newlines from everything
+				context.$content.html( context.$content.html().replace( /\n/g, '' ) );
+				context.$content.removeClass( 'pasting' );
 			}, 0 );
 			return true;
 		}
@@ -8704,7 +8712,25 @@ fn: {
 }; } )( jQuery );
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
-
+/**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 10]],
+		'safari': [['>=', 4]]
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 10]],
+		'safari': [['>=', 4]]
+	}
+},
 /**
  * Event handlers
  */

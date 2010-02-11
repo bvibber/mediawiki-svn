@@ -1,6 +1,24 @@
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
-
+/**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 10]],
+		'safari': [['>=', 4]]
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 10]],
+		'safari': [['>=', 4]]
+	}
+},
 /**
  * Event handlers
  */
