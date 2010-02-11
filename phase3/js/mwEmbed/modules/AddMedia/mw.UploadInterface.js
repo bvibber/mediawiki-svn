@@ -20,10 +20,13 @@
 mw.UploadInterface = { 
 	factory : function( interfaceType ){
 		switch( interfaceType ){
+			case 'iframe':
+				return new mw.iframeInterface();
+			break;
 			case 'dialog':
 			default:				
 				return new mw.DialogInterface( );	
-			break;
+			break;			
 		}
 	}
 };
@@ -220,4 +223,15 @@ mw.DialogInterface.prototype = {
 		return cancelBtn;
 	}	
 }
+
+/**
+ * Iframe Interface ( sends updates to an iframe for remoteing upload progress events )
+ */
+mw.iframeInterface = function( ) {
+	return this;
+}
+mw.iframeInterface.prototype = {
+
+};
+
 

@@ -917,13 +917,10 @@ class UploadForm extends HTMLForm {
 		// For <charinsert> support; not provided by js2 yet
 		$wgOut->addScriptFile( 'edit.js' );
 
-		if ( $wgEnableFirefogg ) {
-			// JS2 upload scripts
-			$wgOut->addScriptClass( 'uploadPage' );
-		} else {
-			// Legacy upload javascript
-			$wgOut->addScriptFile( 'upload.js' );
-		}
+
+		// JS2 upload scripts
+		$wgOut->addScriptClass( 'uploadPage' );
+
 	}
 
 	/**

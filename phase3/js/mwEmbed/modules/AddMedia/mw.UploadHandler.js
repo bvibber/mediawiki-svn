@@ -55,7 +55,29 @@ var default_bui_options = {
 	// can be 'dialog', 'iframe', 'inline' 
 	'interface_type' : 'dialog'
 
-}
+};
+
+/**
+* Setup upload jQuery binding
+*/
+( function( $ ){ 
+	$.fn.uploadHandler = function( options ) {
+		if ( !options ){
+			options = { };
+		}
+	
+		// Add the selector
+		options[ 'form_selector' ] = this.selector;
+				
+		// Setup the firefogg Firefogg: 
+		var myUpload = new mw.UploadHandler( options );
+				
+		if ( myUpload ) {
+			myUpload.setupForm( );
+		}
+	}
+} )( jQuery );
+
 mw.UploadHandler = function( options ) {
 	return this.init( options );
 }
@@ -101,11 +123,15 @@ mw.UploadHandler.prototype = {
 		if ( !options )
 			options = {};
 		$j.extend( this, default_bui_options, options );
-				
-		// Setup the interfaceDispatch handler
-		this.interface = mw.UploadInterface.factory( this.interface_type );
 		
-		mw.log( "init mvBaseUploadHandler:: " + this.api_url );
+		// Set a api_url if unset
+		if( !this.api_url ){
+			this.api_url = mw.getLocalApiUrl();
+		}		
+		// Setup the UploadInterface handler
+		this.interface = mw.UploadInterface.factory( this.interface_type );		
+		
+		mw.log( "init mvUploadHandler:: " + this.api_url + ' interface: ' + this.interface );
 	},
 
 	/**
@@ -167,12 +193,12 @@ mw.UploadHandler.prototype = {
 			mw.log( 'form_post_override is true, do ordinary form submit' );
 			return true;
 		}
-	
+		mw.log(" wtf::" + this.interface );
 	
 		// Put into a try catch so we are sure to return false:
 		try {
 			// Startup interface dispatch dialog
-			this.interface.setup( {'title': gM('mwe-upload-in-progress') } );		
+			_this.interface.setup( {'title': gM('mwe-upload-in-progress') } );		
 			//this.displayProgressOverlay
 						
 
@@ -185,7 +211,7 @@ mw.UploadHandler.prototype = {
 				_this.doUpload();
 			} );
 		} catch( e ) {
-			mw.log( '::error in interfaceDispatch or doUpload ' + e );
+			mw.log( '::error in this.interface or doUpload ' + e );
 		}
 
 		// Don't submit the form we will do the post in ajax
@@ -862,7 +888,7 @@ mw.UploadHandler.prototype = {
 				
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
-			_this.interface.showApiError( apiRes );
+			_this.showApiError( apiRes );
 			return false;
 		}
 		if ( apiRes.upload && apiRes.upload.upload_session_key ) {

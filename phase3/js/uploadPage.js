@@ -9,9 +9,9 @@ var mwUploadHelper = {
 	init: function() {
 		var _this = this;
 		// If wgEnableFirefogg is not boolean false, set to true
-		if ( typeof wgEnableFirefogg == 'undefined' )
+		if ( typeof wgEnableFirefogg == 'undefined' ){
 			wgEnableFirefogg = true;
-
+		}		
 		if ( wgEnableFirefogg ) {
 			mw.load( 'AddMedia.firefogg', function(){
 				// Set up the upload handler to Firefogg. Should work with the HTTP uploads too.
@@ -20,6 +20,9 @@ var mwUploadHelper = {
 					'api_url': wgServer + wgScriptPath + '/api.php',
 					// MediaWiki API supports chunk uploads: 
 					'enable_chunks' : true, 
+					
+					'interface_type' : 'dialog',
+					
 					'form_selector': mwUploadFormSelector,
 					'new_source_cb': function( orgFilename, oggName ) {
 						$j( '#wpDestFile' ).val( oggName );
@@ -32,12 +35,9 @@ var mwUploadHelper = {
 		} else {			
 			// Add basic upload profile support ( http status monitoring, progress box for
 			// browsers that support it, etc.)
-			if ( $j( '#wpUploadFileURL' ).length != 0 ) {
-				$j( '#wpUploadFileURL' ).baseUploadInterface( {
-					'api_url': wgServer + wgScriptPath + '/api.php',
-					'edit_form_selector': mwUploadFormSelector
-				} );
-			}
+			mw.load( 'AddMedia.UploadHandler', function(){						
+				$j( mwUploadFormSelector ).uploadHandler( );			
+			});
 		}
 
 		if ( wgAjaxUploadDestCheck ) {
