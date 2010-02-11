@@ -1,4 +1,4 @@
-/*
+/**
 * mwProxy js2 page system.
 *
 * Invokes the apiProxy system 
@@ -19,11 +19,16 @@ if ( !mwApiProxyConfig ){
 var mwApiProxyDefaultConfig = {
 	'master_whitelist' 	: [ 'en.wikipedia.org', 'localhost', '127.1.1.100' ],
 	'master_blacklist'	: []
-};
+}; 
+
 
 // User white_list should also be checked and configured at runtime.
 mw.ready( function() {
 	mw.load( 'ApiProxy', function(){
+	
+		//Clear out the page content ( not needed for iframe proxy ) 
+		$j( 'body' ).html( '' );
+		 
 		// Build our configuration from the default and mwApiProxyConfig vars
 		mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
 		mw.ApiProxy.server( mwApiProxyConfig );

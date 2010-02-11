@@ -50,7 +50,7 @@ mw.ApiProxy = { };
 	// Local scope public vars 
 	//( should probably tie these var defines to the scope of the doRequest call using something like "curry" function ) 
 	
-	// Callback funcion for client requests 
+	// Callback function for client requests 
 	var proxyCallback = null;
 	 
 	// FrameProxy Flag: 	
@@ -119,6 +119,25 @@ mw.ApiProxy = { };
 		proxyCallback( resultObject );
 	}
 	
+	/**
+	* Generates a remote browse file iframe window
+	*	usefull for "uploading" cross domain
+	* 
+	* @param {Function} callback Function to host the 
+	*/
+	$.browseFile = function( options ){
+		if( ! options.target ){
+			mw.log( "Error: no target for file browse" ) ;
+			return false;
+		}
+		if( ! options.apiUrl ){
+			mw.log( "Error: no api url to target" ); 
+		}
+		$j( options.target ).html(
+			
+		);
+	}
+	
 	/** 
 	* Api server proxy entry point: 
 	*
@@ -127,64 +146,16 @@ mw.ApiProxy = { };
 	*
 	*/
 	$.server = function( proxyConfig, callback ) {			
-		/** 
-		* Clear the body of any html 
-		*/
-		$j( 'body' ).html( 'Proxy Setup: ' );
-		
-		var clientRequest = false;
-		
-		// Read the anchor action from the requesting url
-		var hashMsg = unescape( mw.parseUri( document.URL ).anchor );
-		try {
-			var clientRequest = JSON.parse( hashMsg );
-		} catch ( e ) {
-			mw.log( "ProxyServer:: could not parse anchor" );
-		}
-		
-		if ( !clientRequest || !clientRequest.clientFrame ) {
-			mw.log( "Error: no client domain provided " );
-			$j( 'body' ).append( "no client frame provided" ); 
-			return false;
-		}		
-		
-		// Make sure we are logged in 
-		// (its a normal mediaWiki page so all site vars should be defined)		
-		if ( typeof wgUserName != 'undefined' && !wgUserName ) {
-			mw.log( 'Error Not logged in' );
-			return false;
-		}
-		
-		mw.log( "Setup server on: "  + mw.parseUri( document.URL ).host  );
-		mw.log('Client frame: ' + clientRequest.clientFrame );
-				
-		var clientDomain =  mw.parseUri( clientRequest.clientFrame ).host ;
-		
-		/**
-		*	HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
-		*/		
-		// Check master blacklist
-		for ( var i in proxyConfig.master_blacklist ) {
-			if ( clientDomain == proxyConfig.master_blacklist ) {
-				mw.log( 'domain: ' + clientDomain + ' is blacklisted ( no request )' );
-				return false;
-			}
-		}		 
-		// Check the master whitelist:
-		for ( var i in proxyConfig.master_whitelist ) {
-			if ( clientDomain ==  proxyConfig.master_whitelist[ i ] ) {
-				// Do the request: 			
-				return doApiRequest( clientRequest );
-			}
-		}
-			
-		// FIXME Add in user based approval :: 
-		
-		// FIXME grab the users whitelist for our current domain		
-		
-		// FIXME offer the user the ability to "approve" requested domain save to
-		// their user preference setup )						
-				
+		//Validate the server request:
+		if( validateIframeRequest( proxyConfig ) ){
+			// Process request type
+			if( proxyConfig['browserFile'] ){
+				doBrowseFile();
+				return ;
+			}						
+			// Else do a normal api request :   			
+			return doApiRequest();
+		}												
 	}
 	
 	/**
@@ -225,6 +196,7 @@ mw.ApiProxy = { };
 		// We can't update src's so we have to remove and add all the time :(
 		// NOTE: we should support frame msg system 
 		$j( '#frame_proxy' ).remove();
+		// NOTE we can't use jQuery buildout for iframes because IE throws away the "name"
 		$j( 'body' ).append( '<iframe style="display:none" id="frame_proxy" name="frame_proxy" ' +
 				'src="' + getServerFrame() +
 				 '#' + escape( JSON.stringify( hashPack ) ) +
@@ -232,10 +204,11 @@ mw.ApiProxy = { };
 				 
 		// add an onLoad hook: 
 		$j( '#frame_proxy' ).get( 0 ).onload = function() {
-			// Add a 15 second timeout for setting up the nested child callback (after page load)
+		
+			// Add a 10 second timeout for setting up the nested child callback (after page load)
 			
 			// NOTE: once we have a real entry point instead of ( mediaWiki:ApiProxy rewrite) 
-			//this number can be reduced since it won't have to load all the style sheets and
+			// this number can be reduced since it won't have to load all the style sheets and
 			// javascript for a normal page view 
 			
 			setTimeout( function() {
@@ -244,10 +217,82 @@ mw.ApiProxy = { };
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					proxyNotReadyDialog();
 				}
-			}, 15000 );
+			}, 10000 );
 		}
 	}
-
+	
+	/**
+	* Validate an iframe request 
+	* checks the url hash for required paramaters 
+	* checks  master_blacklist 
+	* checks  master_whitelist
+	*/
+	function validateIframeRequest( proxyConfig ){
+		var clientRequest = false;
+		
+		
+		var clientRequest = getClientRequest();
+		
+		if ( !clientRequest || !clientRequest.clientFrame ) {
+			mw.log( "Error: no client domain provided " );
+			$j( 'body' ).append( "no client frame provided" ); 
+			return false;
+		}		
+		
+		// Make sure we are logged in 
+		// (its a normal mediaWiki page so all site vars should be defined)		
+		if ( typeof wgUserName != 'undefined' && !wgUserName ) {
+			mw.log( 'Error Not logged in' );
+			return false;
+		}
+		
+		mw.log( "Setup server on: "  + mw.parseUri( document.URL ).host  );
+		mw.log('Client frame: ' + clientRequest.clientFrame );
+				
+		var clientDomain =  mw.parseUri( clientRequest.clientFrame ).host ;
+		
+		/**
+		*	HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
+		*/		
+		// Check master blacklist
+		for ( var i in proxyConfig.master_blacklist ) {
+			if ( clientDomain == proxyConfig.master_blacklist ) {
+				mw.log( 'domain: ' + clientDomain + ' is blacklisted ( no request )' );
+				return false;
+			}
+		}		 
+		// Check the master whitelist:
+		for ( var i in proxyConfig.master_whitelist ) {
+			if ( clientDomain ==  proxyConfig.master_whitelist[ i ] ) {
+				return true;
+			}
+		}
+		
+		// FIXME Add in user based approval :: 
+		
+		// FIXME offer the user the ability to "approve" requested domain save to
+		// their user preference setup )
+		
+		// FIXME grab the users whitelist for our current domain					
+		
+		// Not a valid request return false
+		return false;
+	}
+	
+	/**
+	* Get the client request from the document hash
+	* @return {Object} the object result of parsing the document anchor msg
+	*/
+	function getClientRequest(){
+		// Read the anchor data package from the requesting url
+		var hashMsg = unescape( mw.parseUri( document.URL ).anchor );
+		try {
+			return JSON.parse( hashMsg );
+		} catch ( e ) {
+			mw.log( "ProxyServer:: could not parse anchor" );
+			return false;
+		}		
+	}
 	
 	/**
 	* Dialog to send the user if a proxy to the remote server could not be created 
@@ -261,7 +306,7 @@ mw.ApiProxy = { };
 		buttons[ gM( 'mwe-cancel' ) ] = function() {
 			mw.closeLoaderDialog();
 		}
-		var pUri =  mw.parseUri( currentApiUrl );
+		var pUri =  mw.parseUri( getServerFrame() );
 		
 		// FIXME we should have a Hosted page once we deploy mwEmbed on the servers.
 		// A hosted page would be much faster since than a normal page view rewrite 
@@ -293,8 +338,9 @@ mw.ApiProxy = { };
 	* Api iFrame request:
 	* @param {Object} requestObj Api request object
 	*/
-	function doApiRequest( clientRequest ) {
-					
+	function doApiRequest( ) {		
+		// Get the client request
+		var clientRequest = getClientRequest();
 		// Make sure its a json format 
 		clientRequest.request[ 'format' ] = 'json';		
 
@@ -306,6 +352,15 @@ mw.ApiProxy = { };
 				outputResultsFrame( clientRequest.clientFrame, 'nested_push', JSON.parse( data ) );
 			}
 		);
+	}
+	
+	/**
+	* setup the browse file proxy.
+	* 
+	* Sets the page content to browser file 
+	*/
+	function doBrowseFile(){
+		
 	}
 	
 	/**
