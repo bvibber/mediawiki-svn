@@ -1,12 +1,13 @@
 <?php
 class RefSearch extends SpecialPage {
+
 	function __construct() {
 		parent::__construct( 'RefSearch','edit',true,false,'default',false );
 		wfLoadExtensionMessages('RefHelper');
 	}
  
 	function execute( $par ) {
-		global $wgRequest, $wgOut;
+		global $wgRequest, $wgOut, $wgScript;
  
 		$this->setHeaders();
  
@@ -18,16 +19,28 @@ class RefSearch extends SpecialPage {
 		$reqfilled = strlen($query);
  
 		# Output
-		$wgOut->addHTML( "<fieldset>\n" );
-	$wgOut->addHTML( "<legend>Search PubMed for References</legend>\n");
-		$wgOut->addHTML( '<form enctype="multipart/form-data" method="post" action="/w/index.php?title=Special:RefSearch&amp;action=submit" id="mw-create-ref-form"><input name="action" value="submit" type="hidden"/><table id="mw-import-table"><tbody>'."\n");
+		$wgOut->addHTML(
+			Xml::fieldset( wfMsg(RefHelper::MSG.'refsearch_legend') ) .
+			Xml::openElement( 'form', array('action'=>$wgScript,'id'=>'mw_search-ref-form') ) .
+			Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+			Xml::hidden( 'action', 'submit' ) .
+			Xml::openElement('table',array('id'=>'mw_search-ref-table')) .
+			Xml::openElement('tbody') );
 
-		$wgOut->addHTML( "<tr>\n");
-		$wgOut->addHTML( "\t<td class='mw-input'><input name='query' size='50' value='$query' type='text' id='inp_articletitle'/></td>\n");
-		$wgOut->addHTML( "<td class=\"mw-submit\"><input value=\"Search\" type=\"submit\"></td>\n");
-		$wgOut->addHTML( "\n");
+		$wgOut->addHTML(
+			Xml::openElement('tr') .
+			Xml::openElement('td', array('class'=>'mw-input')) .
+			Xml::input('query', 50, $query ) .
+			Xml::closeElement('td') .
+			Xml::openElement('td', array('class'=>'mw-submit')) .
+			Xml::element('input',array('value'=>wfMsg(RefHelper::MSG.'search'), 'type'=>'submit') ) .
+			Xml::closeElement('td') .
+			Xml::closeElement('tr') );
 
-		$wgOut->addHTML( '				</tr></tbody></table><input name="editToken" value="014149335353561d3d9dc6e1273e037a+\" type="hidden"></form>'."\n" );
+		$wgOut->addHTML(
+			Xml::closeElement('tbody') .
+			Xml::closeElement('table') .
+			Xml::closeElement('form') );
 
 		if( $action=="submit" || $reqfilled ) {
 			$ch = curl_init("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=$query&tool=mediawiki_refhelper");
@@ -36,7 +49,8 @@ class RefSearch extends SpecialPage {
 			curl_close($ch);
 
 			$num = preg_match_all("|<Id>(\d+)</Id>|", $result, $matches );
-			$wgOut->addHTML("<table>\n");
+			
+			$wgOut->addHTML(Xml::openElement('table'));
 			for( $i = 0; $i < $num; $i++ ) {
 				$pmid = $matches[1][$i];
 				$result = self::query_pmid($pmid);
@@ -46,22 +60,24 @@ class RefSearch extends SpecialPage {
 				$title = $result["title"];
 				$query = $result["query_url"];
 				$year = $result["year"];
-				if( count($result["AU"]) > 1 )	$etal = " et al.";
-				else								$etal = "";
-					
+				if( count($result["AU"]) > 1 ) $etal = " et al.";
+				else $etal = "";
 
-				$wgOut->addHTML("<tr>\n");
-				$wgOut->addHTML("\t<td>\n");
-				$wgOut->addHTML("$author $etal ($year) \"$title\"");
-				$wgOut->addHTML("\t</td>\n");
-				$wgOut->addHTML("\t<td>\n");
-				$wgOut->addHTML( "<form enctype='multipart/form-data' method='post' action='/w/index.php?title=Special:RefHelper&amp;action=submit&amp;pmid=$pmid' id='mw-create-ref-form$i'><input value=\"Create\" type=\"submit\"/></form> <a href='$query'>(debug)</a>");
-				$wgOut->addHTML("\t</td>\n");
-				$wgOut->addHTML("</tr>\n");
+				$wgOut->addHTML(
+					Xml::openElement('tr') .
+					Xml::element('td',null,"$author $etal ($year) \"$title\"") .
+					Xml::openElement('td') .
+					Xml::openElement('form',array('method'=>'get', 'action'=>$wgScript, 'id'=>"mw-create-ref-form$i")) .
+					Xml::hidden( 'title', 'Special:RefHelper' ) .
+					Xml::hidden( 'pmid', $pmid ) .
+					Xml::element('input',array('value'=>wfMsg(RefHelper::MSG.'create'), 'type'=>'submit')) .
+					Xml::closeElement('form') .
+					Xml::closeElement('td') .
+					Xml::closeElement('tr') );
 			}
-			$wgOut->addHTML("</table>\n");
+			$wgOut->addHTML( Xml::closeElement('table') );
 		}
-		$wgOut->addHTML( "</fieldset>\n");
+		$wgOut->addHTML( Xml::closeElement('fieldset') );
 	}
 	static function parse_medline( $text, $field ) {
 		$field = strtoupper($field);
@@ -76,24 +92,26 @@ class RefSearch extends SpecialPage {
 	}
 	static function query_pmid( $pmid ) {
 		$ret = array();
-		$ret["query_url"]	= "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&report=medline&mode=text&id=$pmid&email=jonwilliford@gmail.com&tool=mediawiki_refhelper";
+		$ret["query_url"] = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&report=medline&mode=text&id=$pmid&email=jonwilliford@gmail.com&tool=mediawiki_refhelper";
 		$ch = curl_init( $ret["query_url"] );
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$result = curl_exec($ch);
 		curl_close($ch);
 
-		$ret["title"] 	= array_shift( self::parse_medline( $result, "TI" ));
-		$ret["journal"]	= array_shift( self::parse_medline( $result, "TA" ));
-		$ret["year"] 	= substr( array_shift( self::parse_medline( $result, "DP" )), 0, 4 );
-		$ret["volume"] 	= array_shift( self::parse_medline( $result, "VI" ));
-		$ret["issue"] 	= array_shift( self::parse_medline( $result, "IP" ));
-		$ret["pages"] 	= array_shift( self::parse_medline( $result, "PG" ));
+		$ret["title"]   = array_shift( self::parse_medline( $result, "TI" ));
+		$ret["journal"] = array_shift( self::parse_medline( $result, "TA" ));
+		$ret["year"]    = substr( array_shift( self::parse_medline( $result, "DP" )), 0, 4 );
+		$ret["volume"]  = array_shift( self::parse_medline( $result, "VI" ));
+		$ret["issue"]   = array_shift( self::parse_medline( $result, "IP" ));
+		$ret["pages"]   = array_shift( self::parse_medline( $result, "PG" ));
 
 		$ret["firstlasts"] = self::parse_medline( $result, "FAU" );
 		$ret["AU"] = self::parse_medline( $result, "AU" );
 
 		$ret["authors"] = array();
-		/*if( isset( $ret["firstlasts"] ) )
+
+		/* This wasn't working as I was wanting previously. I want to test more before uncommenting.
+		if( isset( $ret["firstlasts"] ) )
 		{
 			for( $i = 0; $i < count( $ret["firstlasts"] ); $i++ ) {
 	

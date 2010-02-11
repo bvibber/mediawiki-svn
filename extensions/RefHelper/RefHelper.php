@@ -23,8 +23,22 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://neurov.is/on',
 	'description' => 'This extension helps create pages for references.',
 	'descriptionmsg' => 'This extension helps create pages for references.',
-	'version' => '0.0.1',
+	'version' => '0.0.2',
 );
+
+// user configurable parameters
+/** $wfRefHelperCiteTemplate specifies the template that is used to create
+	the citation page (the page in the $wgRefHelperCiteNS namespace). Prefix
+	with subst if you want a substitution performed.
+*/
+$wgRefHelperCiteTemplate = "subst:Template:RefHelperCite";
+/** $wfRefHelperPageTemplate specifies the template that is used to create
+	the normal page (the page in MAIN_NS). */
+$wgRefHelperPageTemplate = "subst:Template:RefHelperPage";
+/**	The name of the namespace used for the citations.  */
+$wgRefHelperCiteNS = "Cite";
+/** The http path to the extension, used to find the javascript file */
+$wgRefHelperExtensionPath = "/w/extensions/RefHelper/";
 
 global $wgHooks;
 

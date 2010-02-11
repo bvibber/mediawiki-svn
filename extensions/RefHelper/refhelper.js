@@ -45,8 +45,7 @@ function autoPopulateRefFields() {
 	var pages_index = match.index;
 	var firstpage = ""+match[1];
 	var lastpage = ""+match[2];
-	if( firstpage.length > lastpage.length )
-	{
+	if( firstpage.length > lastpage.length ) {
 		lastpage = 
 			firstpage.substring(0, firstpage.length-lastpage.length)
 			+ lastpage;
@@ -71,8 +70,7 @@ function setAuthorName( authorNum, second, first ) {
 	var firstElem = document.getElementById("inp_author" + authorNum);
 	var lastElem = document.getElementById("inp_surname" + authorNum);
 
-	if( firstElem.value.length == 0 || lastElem.value.length == 0 )
-	{	
+	if( firstElem.value.length == 0 || lastElem.value.length == 0 ) {	
 		firstElem.value = first;
 		lastElem.value  = second;
 	}
@@ -87,16 +85,14 @@ function updateFirstName( evnt ) {
 	var authorNum = match[1];
 
 	re = /^\s*([^,]+)\s*,\s*([^,]+)\s*$/
-	if( re.test(e.value) )
-	{
+	if( re.test(e.value) ) {
 		match = re.exec(e.value);
 		setAuthorName( authorNum, match[1], match[2] );
 		return;
 	}
 
 	re = /^\s*([a-zA-Z]{2,})[\s]*[,]?[\s]*((?:[\s.]+[A-Z]{1,2})+[.]?)$/
-	if( re.test(e.value) )
-	{
+	if( re.test(e.value) ) {
 		match = re.exec(e.value);
 		setAuthorName( authorNum, match[1], match.slice(2) );
 		return;

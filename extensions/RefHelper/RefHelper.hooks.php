@@ -5,19 +5,24 @@ if (!defined('MEDIAWIKI')) {
 }
 
 class RefHelperHooks {
+	function __construct() {
+		wfLoadExtensionMessages('RefHelper');
+	}
 	function addRefHelperJavascript( $pageObj ) {
 	    global $wgRefHelperExtensionPath;
-	    $pageObj->addScript( "<script src='$wgRefHelperExtensionPath/refhelper.js' type='text/javascript'></script>" );
+	    $pageObj->addScript( 
+			Xml::element('script',array('src'=>"$wgRefHelperExtensionPath/refhelper.js", 'type'=>'text/javascript') ) );
 	    return TRUE;
 	}
 	
 	function addRefHelperLink( $tpl ) {
-	    ?><li id="t-reflink"><?php
-	        ?><a href="/on/Special:RefHelper">Create Reference</a><?php
-	    ?></li><?php
-	    ?><li id="t-reflink"><?php
-	        ?><a href="/on/Special:RefSearch">Create Reference from Search</a><?php
-	    ?></li><?php
+		global $wgScript;
+		echo Xml::openElement('li',array('class'=>'t-reflink')) .
+			Xml::element('a',array('href'=>"$wgScript?title=Special:RefHelper"), wfMsg( RefHelper::MSG . 'toolbox_link_create' ) ) .
+			Xml::closeElement('li');
+		echo Xml::openElement('li',array('class'=>'t-reflink')) .
+			Xml::element('a',array('href'=>"$wgScript?title=Special:RefSearch"), wfMsg( RefHelper::MSG . 'toolbox_link_search' ) ) .
+			Xml::closeElement('li');
 	    return TRUE;
 	}
 }
