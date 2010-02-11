@@ -1733,7 +1733,7 @@ var mwDefaultConf = {
 	
 	/**
 	* Get a loading spinner html
-	* NOTE: this is depreciated use jQuery binding "loadingSpinner" instead 
+	* NOTE: this is depreciated use jQuery binding $j(target).loadingSpinner()" instead 
 	*
 	* @param {String} [Optional] style Style string to apply to the spinner 
 	*/

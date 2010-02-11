@@ -50,14 +50,18 @@ var default_bui_options = {
 	'upload_mode' : 'api',
 	
 	// Callback for modifing form data on submit  
-	'onsubmit_cb' : null
+	'onsubmit_cb' : null,
+	
+	// The interface type sent to mw.interfaceDispatch factory
+	// can be 'dialog', 'iframe', 'inline' 
+	'interface_type' : 'dialog'
 
 }
-mw.BaseUploadInterface = function( options ) {
+mw.BaseUploadHandler = function( options ) {
 	return this.init( options );
 }
 
-mw.BaseUploadInterface.prototype = {
+mw.BaseUploadHandler.prototype = {
 	
 	// The form data to be submitted
 	formData: {}, 
@@ -89,7 +93,7 @@ mw.BaseUploadInterface.prototype = {
 	// we are currently only managing one, so this is okay... for now.
 	uploadBeginTime: null,
 
-
+	
 	/**
 	 * Object initialisation
 	 * @param {Object} options BaseUpload options see default_bui_options
@@ -97,8 +101,10 @@ mw.BaseUploadInterface.prototype = {
 	init: function( options ) {
 		if ( !options )
 			options = {};
-		$j.extend( this, default_bui_options, options );
-		mw.log( "init mvBaseUploadInterface:: " + this.api_url );
+		$j.extend( this, default_bui_options, options );		
+		this.interfaceDispatch = mw.InterfaceDispatch.factory( this.interface_type );
+		
+		mw.log( "init mvBaseUploadHandler:: " + this.api_url );
 	},
 
 	/**
@@ -164,8 +170,10 @@ mw.BaseUploadInterface.prototype = {
 	
 		// Put into a try catch so we are sure to return false:
 		try {
-			// Display a progress dialog
-			_this.displayProgressOverlay();
+			// Startup interface dispatch dialog
+			this.interfaceDispatch.setup();		
+			//this.displayProgressOverlay
+						
 
 			// For some unknown reason we have to drop down the #p-search z-index:
 			$j( '#p-search' ).css( 'z-index', 1 );
@@ -176,7 +184,7 @@ mw.BaseUploadInterface.prototype = {
 				_this.doUpload();
 			} );
 		} catch( e ) {
-			mw.log( '::error in displayProgressOverlay or doUpload' );
+			mw.log( '::error in interfaceDispatch or doUpload ' + e );
 		}
 
 		// Don't submit the form we will do the post in ajax
@@ -347,17 +355,14 @@ mw.BaseUploadInterface.prototype = {
 	doPostUpload: function() {
 		var _this = this;
 		var $form = $j( _this.form );
-		mw.log( 'mvBaseUploadInterface.doPostUpload' );
+		mw.log( 'mvBaseUploadHandler.doPostUpload' );
 		// Issue a normal post request
 		// Get the token from the page
 		_this.editToken = $j( "#wpEditToken" ).val();
 
 		// TODO check for sendAsBinary to support Firefox/HTML5 progress on upload
 		
-		//Update the progress dialog (no bar without XHR request)
-		$j( '#upProgressDialog' ).html(		
-			mw.loading_spinner()
-		);		
+		this.interfaceDispatch.setLoading();
 
 		// Add the iframe
 		_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
@@ -390,9 +395,7 @@ mw.BaseUploadInterface.prototype = {
 		
 		// Do post override
 		_this.form_post_override = true;
-				
-		// Reset the done with action flag
-		_this.action_done = false;			
+						
 		$form.submit();
 	},
 
@@ -400,7 +403,7 @@ mw.BaseUploadInterface.prototype = {
 	 * Do an upload by submitting an API request
 	 */
 	doApiCopyUpload: function() {
-		mw.log( 'mvBaseUploadInterface.doApiCopyUpload' );
+		mw.log( 'mvBaseUploadHandler.doApiCopyUpload' );
 		mw.log( 'doHttpUpload (no form submit) ' );
 		
 		var httpUpConf = {
@@ -473,13 +476,13 @@ mw.BaseUploadInterface.prototype = {
 	 */
 	doHttpUpload: function( params ) {
 		var _this = this;
-		// Display the progress overlay (again)
-		_this.displayProgressOverlay();
+		// Get a clean setup of the interface dispatch 
+		this.interfaceDispatch.setup();	
+		
+		//_this.displayProgressOverlay();
 
-		// Set the HTTP box to "loading", in case we don't get an update for some time
-		$j( '#dlbox-centered' ).html( '<h5>' + _this.getProgressTitle() + '</h5>' +
-			mw.loading_spinner( 'left:40%;top:20%' )
-		);
+		// Set the interface dispatch to loading ( in case we don't get an update for some time )
+		this.interfaceDispatch.setLoading();		
 
 		// Set up the request
 		var request = {
@@ -516,8 +519,10 @@ mw.BaseUploadInterface.prototype = {
 	doAjaxUploadStatus: function() {
 		var _this = this;
 
-		//set up the progress display for status updates:
-		this.displayProgressOverlay();
+		// Set up intterface dispatch to display for status updates:
+		this.interfaceDispatch.setup();			
+		//this.displayProgressOverlay();
+		
 		this.upload_status_request = {
 			'action'     : 'upload',
 			'httpstatus' : 'true',
@@ -627,209 +632,7 @@ mw.BaseUploadInterface.prototype = {
 		}
 		return true;
 	},
-
-	/**
-	 * Given the result of an action=upload API request, display the error message
-	 * to the user.
-	 */
-	showApiError: function( apiRes ) {
-		var _this = this;
-		if ( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ) {
-			// Generate the error button
-			var buttons = {};
-			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
-				_this.form_post_override = false;
-				$j( this ).dialog( 'close' );
-			};
-
-			// NOTE should be refactored to more specialUpload page type error handling
-
-			// Check a few places for the error code
-			var error_code = 0;
-			var errorReplaceArg = '';
-			if ( apiRes.error && apiRes.error.code ) {
-				error_code = apiRes.error.code;
-			} else if ( apiRes.upload.code ) {
-				if ( typeof apiRes.upload.code == 'object' ) {
-					if ( apiRes.upload.code[0] ) {
-						error_code = apiRes.upload.code[0];
-					}
-					if ( apiRes.upload.code['status'] ) {
-						error_code = apiRes.upload.code['status'];
-						if ( apiRes.upload.code['filtered'] )
-							errorReplaceArg = apiRes.upload.code['filtered'];
-					}
-				} else {
-					apiRes.upload.code;
-				}
-			}
-
-			var error_msg = '';
-			if ( typeof apiRes.error == 'string' )
-				error_msg = apiRes.error;
-
-			// There are many possible error messages here, so we don't load all
-			// message text in advance, instead we use mw.getRemoteMsg() for some.
-			//
-			// This code is similar to the error handling code formerly in
-			// SpecialUpload::processUpload()
-			var error_msg_key = {
-				'2' : 'largefileserver',
-				'3' : 'emptyfile',
-				'4' : 'minlength1',
-				'5' : 'illegalfilename'
-			};
-
-			// NOTE:: handle these error types
-			var error_onlykey = {
-				'1': 'BEFORE_PROCESSING',
-				'6': 'PROTECTED_PAGE',
-				'7': 'OVERWRITE_EXISTING_FILE',
-				'8': 'FILETYPE_MISSING',
-				'9': 'FILETYPE_BADTYPE',
-				'10': 'VERIFICATION_ERROR',
-				'11': 'UPLOAD_VERIFICATION_ERROR',
-				'12': 'UPLOAD_WARNING',
-				'13': 'INTERNAL_ERROR',
-				'14': 'MIN_LENGTH_PARTNAME'
-			}
-
-			if ( !error_code || error_code == 'unknown-error' ) {
-				if ( typeof JSON != 'undefined' ) {
-					mw.log( 'Error: apiRes: ' + JSON.stringify( apiRes ) );
-				}
-				if ( apiRes.upload.error == 'internal-error' ) {
-					// Do a remote message load
-					errorKey = apiRes.upload.details[0];
-					mw.getRemoteMsg( errorKey, function() {
-						_this.updateProgressWin( gM( 'mwe-uploaderror' ), gM( errorKey ), buttons );
-
-					});
-					return false;
-				}
-
-				_this.updateProgressWin(
-						gM('mwe-uploaderror'),
-						gM('mwe-unknown-error') + '<br>' + error_msg,
-						buttons );
-				return false;
-			}
-
-			if ( apiRes.error && apiRes.error.info ) {
-				_this.updateProgressWin( gM( 'mwe-uploaderror' ), apiRes.error.info, buttons );
-				return false;
-			}
-
-			if ( typeof error_code == 'number'
-				&& typeof error_msg_key[error_code] == 'undefined' )
-			{
-				if ( apiRes.upload.code.finalExt ) {
-					_this.updateProgressWin(
-						gM( 'mwe-uploaderror' ),
-						gM( 'mwe-wgfogg_warning_bad_extension', apiRes.upload.code.finalExt ),
-						buttons );
-				} else {
-					_this.updateProgressWin(
-						gM( 'mwe-uploaderror' ),
-						gM( 'mwe-unknown-error' ) + ' : ' + error_code,
-						buttons );
-				}
-				return false;
-			}
-
-			mw.log( 'get key: ' + error_msg_key[ error_code ] )
-			mw.getRemoteMsg( error_msg_key[ error_code ], function() {
-				_this.updateProgressWin(
-					gM( 'mwe-uploaderror' ),
-					gM( error_msg_key[ error_code ], errorReplaceArg ),
-					buttons );
-			});
-			mw.log( "api.error" );
-			return false;
-		}
-
-		// Check upload.error
-		if ( apiRes.upload && apiRes.upload.error ) {
-			mw.log( ' apiRes.upload.error: ' +  apiRes.upload.error );
-			_this.updateProgressWin(
-				gM( 'mwe-uploaderror' ),
-				gM( 'mwe-unknown-error' ) + '<br>',
-				buttons );
-			return false;
-		}
-
-		// Check for warnings:
-		if ( apiRes.upload && apiRes.upload.warnings ) {
-			var wmsg = '<ul>';
-			for ( var wtype in apiRes.upload.warnings ) {
-				var winfo = apiRes.upload.warnings[wtype]
-				wmsg += '<li>';
-				switch ( wtype ) {
-					case 'duplicate':
-					case 'exists':
-						if ( winfo[1] && winfo[1].title && winfo[1].title.mTextform ) {
-							wmsg += gM( 'mwe-file-exists-duplicate' ) + ' ' +
-								'<b>' + winfo[1].title.mTextform + '</b>';
-						} else {
-							//misc error (weird that winfo[1] not present
-							wmsg += gM( 'mwe-upload-misc-error' ) + ' ' + wtype;
-						}
-						break;
-					case 'file-thumbnail-no':
-						wmsg += gM( 'mwe-file-thumbnail-no', winfo );
-						break;
-					default:
-						wmsg += gM( 'mwe-upload-misc-error' ) + ' ' + wtype;
-						break;
-				}
-				wmsg += '</li>';
-			}
-			wmsg += '</ul>';
-			if ( apiRes.upload.sessionkey )
-				_this.warnings_sessionkey = apiRes.upload.sessionkey;
-
-			// Create the "ignore warning" button
-			var buttons = {};
-			buttons[ gM( 'mwe-ignorewarning' ) ] = function() {
-				//check if we have a stashed key:
-				if ( _this.warnings_sessionkey ) {
-					//set to "loading"
-					$j( '#upProgressDialog' ).html( mw.loading_spinner() );
-					//setup request:
-					var request = {
-						'action': 'upload',
-						'sessionkey': _this.warnings_sessionkey,
-						'ignorewarnings': 1,
-						'filename': $j( '#wpDestFile' ).val(),
-						'token' :  _this.editToken,
-						'comment' :  $j( '#wpUploadDescription' ).val()
-					};
-					//run the upload from stash request
-					mw.getJSON(_this.api_url, request, function( data ) {
-							_this.processApiResult( data );
-					} );
-				} else {
-					mw.log( 'No session key re-sending upload' )
-					//do a stashed upload
-					$j( '#wpIgnoreWarning' ).attr( 'checked', true );
-					$j( _this.editForm ).submit();
-				}
-			};
-			// Create the "return to form" button
-			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
-				$j( this ).dialog( 'close' );
-				_this.form_post_override = false;
-			}
-			// Show warning
-			_this.updateProgressWin(
-				gM( 'mwe-uploadwarning' ),
-				'<h3>' + gM( 'mwe-uploadwarning' ) + '</h3>' + wmsg + '<p>',
-				buttons );
-			return false;
-		}
-		// No error!
-		return true;
-	},
+	
 
 	/**
 	 * Process the result of an action=upload API request. Display the result
@@ -846,7 +649,7 @@ mw.BaseUploadInterface.prototype = {
 				
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
-			_this.showApiError( apiRes );
+			_this.interfaceDispatch.showApiError( apiRes );
 			return false;
 		}
 		if ( apiRes.upload && apiRes.upload.upload_session_key ) {
@@ -890,37 +693,7 @@ mw.BaseUploadInterface.prototype = {
 			return true;
 		}
 	},
-
-	/**
-	 * Update the progress window to display a given message, with a given
-	 * list of buttons below it.
-	 *
-	 * @param title_txt Plain text
-	 * @param msg HTML
-	 * @param buttons See http://docs.jquery.com/UI/Dialog#option-buttons
-	 */
-	updateProgressWin: function( title_txt, msg, buttons ) {
-		var _this = this;
-
-		if ( !title_txt )
-			title_txt = _this.getProgressTitle();
-
-		if ( !msg )
-			msg = mw.loading_spinner( 'left:40%;top:40px;' );
-
-		if ( !buttons ) {
-			// If no buttons are specified, add a close button
-			buttons = {};
-			buttons[ gM( 'mwe-ok' ) ] =  function() {
-				$j( this ).dialog( 'close' );
-			};
-		}
-
-		$j( '#upProgressDialog' ).dialog( 'option', 'title',  title_txt );
-		$j( '#upProgressDialog' ).html( msg );
-		$j( '#upProgressDialog' ).dialog( 'option', 'buttons', buttons );
-	},
-
+	
 	/**
 	 * Get the default title of the progress window
 	 */
@@ -933,22 +706,11 @@ mw.BaseUploadInterface.prototype = {
 	 * Returns false if it can't be found.
 	 */
 	getForm: function() {
-		
-		/*debugger;
-		var cat = this.form_selector;
-		var forms = document.getElementsByTagName('form');
-		mw.log('got ' + forms.length + ' foms ');
-		for( var i in forms ){
-			var fish = forms[ i ];
-			mw.log( 'fish: ' + fish.id );
-		}
-		var cat = $j( this.form_selector ).get(0);
-		mw.log( 'getForm::' + cat.id );
-		*/
+	
 		if ( this.form_selector && $j( this.form_selector ).length != 0 ) {
 			return $j( this.form_selector ).get( 0 );
 		} else {
-			mw.log( "mvBaseUploadInterface.getForm(): no form_selector" );
+			mw.log( "mvBaseUploadHandler.getForm(): no form_selector" );
 			return false;
 		}
 	},
@@ -972,84 +734,6 @@ mw.BaseUploadInterface.prototype = {
 			}
 		}
 	
-	},
-
-	/**
-	 * Show a dialog box reporting upload progress and status
-	 */
-	displayProgressOverlay: function() {
-		var _this = this;
-		// Remove the old instance if present
-		if( $j( '#upProgressDialog' ).length != 0 ) {
-			$j( '#upProgressDialog' ).dialog( 'destroy' ).remove();
-		}
-		// Add a new one
-		$j( 'body' ).append( '<div id="upProgressDialog" ></div>' );
-
-		$j( '#upProgressDialog' ).dialog( {
-			title: _this.getProgressTitle(),
-			bgiframe: true,
-			modal: true,
-			draggable: true,
-			width: 400,
-			heigh: 200,
-			beforeclose: function( event, ui ) {
-				// If the upload is not complete, ask the user if they want to cancel
-				if ( event.button == 0 && _this.action_done === false ) {
-					_this.onCancel( this );
-					return false;
-				} else {
-					// Complete already, allow close
-					return true;
-				}
-			},
-			buttons: _this.getCancelButton()
-		} );
-		mw.log( 'upProgressDialog::dialog done' );
-
-		$j( '#upProgressDialog' ).html(
-			'<div id="up-pbar-container" style="width:90%;height:15px;" >' +
-			'<div id="up-progressbar" style="height:15px;"></div>' +
-				'<div id="up-status-container">' +
-					'<span id="up-pstatus">0% - </span> ' +
-					'<span id="up-status-state">' + gM( 'mwe-uploaded-status' ) + '</span> ' +
-				'</div>' +
-				'<div id="up-etr">' + gM( 'mwe-uploaded-time-remaining', '' ) + '</div>' +
-			'</div>'
-		);
-		// Open the empty progress window
-		$j( '#upProgressDialog' ).dialog( 'open' );
-
-		// Create progress bar
-		$j( '#up-progressbar' ).progressbar({
-			value: 0
-		});
-	},
-
-	/**
-	* Get a standard cancel button in the jQuery.ui dialog format
-	*/
-	getCancelButton: function() {
-		var _this = this;
-		mw.log( 'f: getCancelButton()' );
-		var cancelBtn = [];
-		cancelBtn[ gM( 'mwe-cancel' ) ] = function() {
-			$j( dlElm ).dialog( 'close' );
-		};
-		return cancelBtn;
-	},
-
-	/**
-	 * UI cancel button handler.
-	 * Show a dialog box asking the user whether they want to cancel an upload.
-	 * @param Element dialogElement Dialog element to be canceled 
-	 */
-	onCancel: function( dialogElement ) {
-		//confirm:
-		if ( confirm( gM( 'mwe-cancel-confim' ) ) ) {
-			// NOTE: (cancel the encode / upload)
-			$j( dialogElement ).dialog( 'close' );
-		}
 	}
 
 };

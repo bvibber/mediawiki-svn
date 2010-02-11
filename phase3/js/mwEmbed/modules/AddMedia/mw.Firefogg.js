@@ -115,7 +115,7 @@ var default_firefogg_options = {
 mw.Firefogg = function( options ) {
 	return this.init( options );
 };
-mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
+mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	min_firefogg_version: '1.1.0',
 	default_encoder_settings: { // NOTE: allow the server to set these
 		'maxSize'        : '400',
@@ -152,9 +152,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 			}
 		}
 
-		// Inherit from mw.BaseUploadInterface (unless we're in only_firefogg mode)
+		// Inherit from mw.BaseUploadHandler (unless we're in only_firefogg mode)
 		if ( !this.only_firefogg ) {
-			var myBUI = new mw.BaseUploadInterface( options );
+			var myBUI = new mw.BaseUploadHandler( options );
 
 			// Prefix conflicting members with pe_
 			for ( var i in myBUI ) {
@@ -413,7 +413,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	},
 
 	/**
-	 * Display an upload progress overlay. Overrides the function in mw.BaseUploadInterface.
+	 * Display an upload progress overlay. Overrides the function in mw.BaseUploadHandler.
 	 */
 	displayProgressOverlay: function() {
 		this.pe_displayProgressOverlay();		
@@ -561,7 +561,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 	/**
 	 * Get the DOMNode of the form element we are rewriting.
 	 * Returns false if it can't be found.
-	 * Overrides mw.BaseUploadInterface.getForm().
+	 * Overrides mw.BaseUploadHandler.getForm().
 	 */
 	getForm: function() {	
 		if ( this.form_selector ) {
@@ -826,7 +826,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 
 	/**
 	 * Do an upload, with the mode given by this.upload_mode
-	 * XXX should probably be dispatched from baseUploadInterface doUpload instead
+	 * XXX should probably be dispatched from BaseUploadHandler doUpload instead
 	 */
 	doUpload: function() {
 		var _this = this;
