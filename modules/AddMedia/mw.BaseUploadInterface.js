@@ -843,6 +843,7 @@ mw.BaseUploadInterface.prototype = {
 	processApiResult: function( apiRes ) {
 		var _this = this;
 		mw.log( 'processApiResult::' );
+				
 		if ( !_this.isApiSuccess( apiRes ) ) {
 			// Error detected, show it to the user
 			_this.showApiError( apiRes );
@@ -856,7 +857,7 @@ mw.BaseUploadInterface.prototype = {
 			return;
 		}
 
-		if ( apiRes.upload.imageinfo && apiRes.upload.imageinfo.descriptionurl ) {
+		if ( apiRes.upload && apiRes.upload.imageinfo && apiRes.upload.imageinfo.descriptionurl ) {
 			var url = apiRes.upload.imageinfo.descriptionurl;
 
 			// Upload complete.

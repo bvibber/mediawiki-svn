@@ -1,4 +1,4 @@
-/*
+/**
  * This file exposes some of the functionality of mwEmbed to wikis
  * that do not yet have mwEmbed enabled
  */
@@ -94,7 +94,7 @@ function doPageSpecificRewrite() {
 	}
 	
 	
-	// Firefogg integration
+	// Upload page integration
 	if ( wgPageName == "Special:Upload" ) {
 		loadMwEmbed([ 
 				'mw.BaseUploadInterface', 
@@ -113,6 +113,15 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
 		loadMwEmbed( [ 'mw.proxy' ], function() {
+			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
+		} );
+	}
+	
+	// Special api browse for file proxy page
+	if ( wgPageName == 'MediaWiki:ApiProxyBrowserFile' ) {
+		var wgEnableIframeApiProxy = true;
+		loadMwEmbed( [ 'mw.proxy' ], function() {
+			mwApiProxyConfig[ 'browserFile' ] = true;
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
@@ -401,12 +410,12 @@ function mwCheckForGadget(){
 		return false;
 	}
 		
-	for( var i = 0 ; i < scripts.length ; i ++){
+	for( var i = 0 ; i < scripts.length ; i++ ){
 		if (
 			scripts[i].src 
 			&& scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1 
 		){
-			mw.log('gadget already installed: ' + scripts[i].src);
+			mw.log( 'gadget already installed: ' + scripts[i].src );
 			// Gadget found / enabled
 			return false;
 		}		
@@ -418,7 +427,7 @@ function mwCheckForGadget(){
 			'text' : gM( 'mwe-enable-gadget' ),
 			'icon_id': 'check'
 		})
-		.css({	
+		.css({
 			'font-size': '90%'
 		})
 		.buttonHover()
@@ -442,7 +451,7 @@ function mwCheckForGadget(){
 			)
 			.remove();
 			// Load gadgets form:
-			mwSubmitgadgetPref( 'mwEmbed' );
+			mwSubmitGadgetPref( 'mwEmbed' );
 			
 			// return false to not follow link
 			return false;
@@ -459,7 +468,7 @@ function mwCheckForGadget(){
 		)
 	);
 }
-function mwSubmitgadgetPref( gadget_id ){
+function mwSubmitGadgetPref( gadget_id ){
 	$j.get( wgArticlePath.replace('$1', 'Special:Preferences'), function( pageHTML ){
 		// get the form	
 		var form = mwGetFormFromPage ( pageHTML );

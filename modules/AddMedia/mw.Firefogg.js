@@ -1062,6 +1062,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 					mw.log( "could not parse uploadstatus / could not get responseText" );
 				}
 			}
+			
 
 			if ( _this.oldResponseText != response_text ) {
 				mw.log( 'new result text:' + response_text + ' state:' + _this.fogg.state );
@@ -1077,8 +1078,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 					} catch( e ) {
 						var apiResult = null;
 					}
-				}
-				//Check for scuccess:
+				}				
+		
+				//Check for success:
 				if( apiResult && _this.isApiSuccess( apiResult ) ){
 					if( _this.processApiResult ( apiResult ) ){
 						return true;
@@ -1092,6 +1094,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadInterface
 					_this.fogg.cancel();
 					return false;
 				}
+
 			}
 			if ( _this.show_preview == true ) {
 				if ( _this.fogg.state == 'encoding' ) {
