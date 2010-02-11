@@ -973,7 +973,8 @@ mw.PlayList.prototype = {
 		
 		var cur_pixle = 0;
 		// set up _this
-
+		//remove any old cl_status 
+		_this.$interface.find( '.play_head' ).find('.cl_status').remove();
 		// mw.log("do play head total dur: "+pl_duration );
 		$j.each( this.default_track.clips, function( i, clip ) {
 			// (use getSoloDuration to not include transitions and such)	 
@@ -996,8 +997,7 @@ mw.PlayList.prototype = {
 			
 			barHtml += '</div>';
 			
-			// background:#DDD +clip.getColor();
-
+			// background:#DDD +clip.getColor();			
 			_this.$interface.find( '.play_head' ).append( barHtml );
 																										
 			// mw.log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);

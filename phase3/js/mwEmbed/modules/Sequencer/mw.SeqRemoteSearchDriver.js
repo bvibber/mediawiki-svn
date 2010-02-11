@@ -16,7 +16,6 @@ mw.SeqRemoteSearchDriver.prototype = {
 		this.pSeq = mySequence;
 		var options = {
 			'target_container'	: '#cliplib_ic',
-			'local_wiki_api_url': mySequence.getLocalApiUrl(),
 			'instance_name'		: mySequence.instance_name + '.mySearch',
 			'default_query'		: this.pSeq.plObj.title
 		}
