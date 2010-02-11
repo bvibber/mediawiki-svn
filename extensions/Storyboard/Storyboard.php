@@ -37,9 +37,23 @@ $wgExtensionMessagesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.i18n.ph
 $wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.php';
 
 // Load and register the StoryReview special page and register it's group.
-$wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'StoryReview_body.php';
+$wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview_body.php';
 $wgSpecialPages['StoryReview'] = 'SpecialStoryReview';
 $wgSpecialPageGroups['StoryReview'] = 'contribution';
+
+// Load the tag extension classes.
+$wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard_body.php';
+$wgAutoloadClasses['TagStorysubmission'] = $egStoryboardDir . 'tags/Storysubmission_body.php';
+
+// Register the tag extensions.
+// Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980.
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efStoryboardStoryboardSetup';
+	$wgHooks['ParserFirstCallInit'][] = 'efStoryboardStorysubmissionSetup';
+} else { // Otherwise do things the old fashioned way.
+	$wgExtensionFunctions[] = 'efStoryboardStoryboardSetup';
+	$wgExtensionFunctions[] = 'efStoryboardStorysubmissionSetup';
+}
 
 /**
  * Initialization function for the Storyboard extension.
@@ -58,4 +72,16 @@ function efStoryboardSetup() {
 		'description' =>  wfMsg( 'storyboard-desc' ),
 		'descriptionmsg' => 'storyboard-desc',
 	);
+}
+
+function efStoryboardStoryboardSetup() {
+	global $wgParser;
+	$wgParser->setHook( 'storyboard', array('TagStoryboard', 'render') );
+    return true;
+}
+
+function efStoryboardStorysubmissionSetup() {
+	global $wgParser;
+	$wgParser->setHook( 'storysubmission', array('TagStorysubmission', 'render') );
+    return true;
 }
