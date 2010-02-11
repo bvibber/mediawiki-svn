@@ -392,8 +392,14 @@ if ( typeof context == 'undefined' ) {
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
-				// Remove newlines from everything
-				context.$content.html( context.$content.html().replace( /\n/g, '' ) );
+				// Remove newlines from all text nodes
+				var t = context.fn.traverser( context.$content );
+				while ( t ) {
+					if ( t.node.nodeName == '#text' && ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
+						 t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, '' );
+					}
+					t = t.next();
+				}
 				context.$content.removeClass( 'pasting' );
 			}, 0 );
 			return true;
