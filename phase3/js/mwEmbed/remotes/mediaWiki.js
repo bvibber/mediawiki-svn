@@ -94,17 +94,21 @@ function doPageSpecificRewrite() {
 	}
 	
 	
-	// Upload page integration
+	// Upload page -> Firefogg / upload API / uploadWizard integration
 	if ( wgPageName == "Special:Upload" ) {
+		var scriptName = 'uploadPage.js';
+		if ( location.search.indexOf('uploadWizard=1') != -1 ) {
+			scriptName = 'uploadWizard.js';
+		}
 		loadMwEmbed([ 
 				'mw.BaseUploadInterface', 
 				'mw.Firefogg', 
 				'$j.ui',
 				'$j.ui.progressbar', 
 				'$j.ui.dialog', 
-				'$j.ui.draggable' 
+				'$j.ui.draggable'
 			], function() {				
-				mw.load( mwEmbedHostPath + '/uploadPage.js?' + mwGetReqArgs() );
+				mw.load( mwEmbedHostPath + '/' + scriptName + '?' + mwGetReqArgs() ); 
 			} 
 		);
 	}
