@@ -7239,7 +7239,124 @@ if ( typeof context == 'undefined' ) {
 		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
 		 */
 		'getCaretPosition': function( options ) {
-			// FIXME: Character-based functions aren't useful for the magic iframe - return character position?
+			var startPos = null, endPos = null;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				var selection = context.$iframe[0].contentWindow.getSelection();
+				if ( selection.rangeCount == 0 ) {
+					// We don't know where the cursor is
+					return [ 0, 0 ];
+				}
+				var sc = selection.getRangeAt( 0 ).startContainer, ec = selection.getRangeAt( 0 ).endContainer;
+				var so = selection.getRangeAt( 0 ).startOffset, eo = selection.getRangeAt( 0 ).endOffset;
+				if ( sc.nodeName == 'BODY' ) {
+					// Grab the node just before the start of the selection
+					var n = body.firstChild;
+					for ( var i = 0; i < so - 1 && n; i++ ) {
+						n = n.nextSibling;
+					}
+					sc = n;
+					so = 0;
+				}
+				if ( ec.nodeName == 'BODY' ) {
+					var n = body.firstChild;
+					for ( var i = 0; i < eo - 1 && n; i++ ) {
+						n = n.nextSibling;
+					}
+					ec = n;
+					eo = 0;
+				}
+				
+				// Make sure sc and ec are leaf nodes
+				while ( sc.firstChild ) {
+					sc = sc.firstChild;
+				}
+				while ( ec.firstChild ) {
+					ec = ec.firstChild;
+				}
+				// Make sure the offsets are regenerated if necessary
+				context.fn.getOffset( 0 );
+				var o;
+				for ( o in context.offsets ) {
+					if ( startPos === null && context.offsets[o].node == sc ) {
+						// For some wicked reason o is a string, even though
+						// we put it in as an integer. Use ~~ to coerce it too an int
+						startPos = ~~o + so - context.offsets[o].offset;
+					}
+					if ( startPos !== null && context.offsets[o].node == ec ) {
+						endPos = ~~o + eo - context.offsets[o].offset;
+						break;
+					}
+				}
+			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				// IE
+				// FIXME: This is mostly copypasted from the textSelection plugin
+				var d = context.$iframe[0].contentWindow.document;
+				var postFinished = false;
+				var periFinished = false;
+				var postFinished = false;
+				var preText, rawPreText, periText;
+				var rawPeriText, postText, rawPostText;
+				// Create range containing text in the selection
+				var periRange = d.selection.createRange().duplicate();
+				// Create range containing text before the selection
+				var preRange = d.body.createTextRange();
+				// Move the end where we need it
+				preRange.setEndPoint( "EndToStart", periRange );
+				// Create range containing text after the selection
+				var postRange = d.body.createTextRange();
+				// Move the start where we need it
+				postRange.setEndPoint( "StartToEnd", periRange );
+				// Load the text values we need to compare
+				preText = rawPreText = preRange.text;
+				periText = rawPeriText = periRange.text;
+				postText = rawPostText = postRange.text;
+				/*
+				 * Check each range for trimmed newlines by shrinking the range by 1
+				 * character and seeing if the text property has changed. If it has
+				 * not changed then we know that IE has trimmed a \r\n from the end.
+				 */
+				do {
+					if ( !postFinished ) {
+						if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
+							postFinished = true;
+						} else {
+							preRange.moveEnd( "character", -1 )
+							if ( preRange.text == preText ) {
+								rawPreText += "\r\n";
+							} else {
+								postFinished = true;
+							}
+						}
+					}
+					if ( !periFinished ) {
+						if ( periRange.compareEndPoints( "StartToEnd", periRange ) == 0 ) {
+							periFinished = true;
+						} else {
+							periRange.moveEnd( "character", -1 )
+							if ( periRange.text == periText ) {
+								rawPeriText += "\r\n";
+							} else {
+								periFinished = true;
+							}
+						}
+					}
+					if ( !postFinished ) {
+						if ( postRange.compareEndPoints("StartToEnd", postRange) == 0 ) {
+							postFinished = true;
+						} else {
+							postRange.moveEnd( "character", -1 )
+							if ( postRange.text == postText ) {
+								rawPostText += "\r\n";
+							} else {
+								postFinished = true;
+							}
+						}
+					}
+				} while ( ( !postFinished || !periFinished || !postFinished ) );
+				startPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+				endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+			}
+			return [ startPos, endPos ];
 		},
 		/**
 		 * Sets the selection of the content
