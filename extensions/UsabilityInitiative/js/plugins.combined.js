@@ -6511,17 +6511,32 @@ $.wikiEditor = {
 	 * "open-web" way to go.
 	 */
 	'isSupported': function( module ) {
-		var map = module && typeof $.wikiEditor.modules[module].browsers !== 'undefined' ?
-				$.wikiEditor.modules[module].browsers :
-				$.wikiEditor.browsers;
-		// Check for and make use of a cached return value
-		if ( typeof $.wikiEditor.supported != 'undefined' ) {
-			return $.wikiEditor.supported;
+		// Check for and make use of cached value and early opportunities to bail
+		if ( module ) {
+			// If the module doesn't exist, it's clearly not supported
+			if ( !( module in $.wikiEditor.modules ) ) {
+				return false;
+			} else if ( typeof $.wikiEditor.modules[module].supported !== 'undefined' ) {
+				// Cache hit
+				return $.wikiEditor.modules[module].supported;
+			}
+		} else if ( typeof $.wikiEditor.modules[module] !== 'undefined' ) {
+			if ( typeof $.wikiEditor.supported !== 'undefined' ) {
+				// Cache hit
+				return $.wikiEditor.supported;
+			}
 		}
+		// Provide quick way to cache support
+		function cacheSupport( value ) {
+			return module ? $.wikiEditor.modules[module].supported = value : $.wikiEditor.supported = value;
+		}
+		// Fallback to the wikiEditor browser map if no special map is provided in the module
+		var map = module && 'browsers' in $.wikiEditor.modules[module] ?
+				$.wikiEditor.modules[module].browsers : $.wikiEditor.browsers;
 		// Check if we have any compatiblity information on-hand for the current browser
 		if ( !( $.browser.name in map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
 			// Assume good faith :) 
-			return $.wikiEditor.supported = true;
+			return cacheSupport( true );
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
 		var browser = map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
@@ -6530,16 +6545,16 @@ $.wikiEditor = {
 			var val = browser[condition][1];
 			if ( typeof val == 'string' ) {
 				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return $.wikiEditor.supported = false;
+					return cacheSupport( false );
 				}
 			} else if ( typeof val == 'number' ) {
 				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return $.wikiEditor.supported = false;
+					return cacheSupport( false );
 				}
 			}
 		}
 		// Return and also cache the return value - this will be checked somewhat often
-		return $.wikiEditor.supported = true;
+		return cacheSupport( true );
 	},
 	/**
 	 * Provides a way to extract messages from objects. Wraps the mw.usability.getMsg() function, which
@@ -6672,8 +6687,8 @@ if ( typeof context == 'undefined' ) {
 				modules = data;
 			}
 			for ( var module in modules ) {
-				// Check for the existance of an available module with a matching name and a create function
-				if ( typeof module == 'string' && module in $.wikiEditor.modules ) {
+				// Check for the existance of an available / supported module with a matching name and a create function
+				if ( typeof module == 'string' && $.wikiEditor.isSupported( module ) ) {
 					// Extend the context's core API with this module's own API calls
 					if ( 'api' in $.wikiEditor.modules[module] ) {
 						for ( var call in $.wikiEditor.modules[module].api ) {
