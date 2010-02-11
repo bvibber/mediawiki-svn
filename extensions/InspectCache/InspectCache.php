@@ -24,4 +24,9 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['InspectCache'] = $dir . 'InspectCache.i18n.php';
 $wgExtensionAliasesFiles['InspectCache'] = $dir . 'InspectCache.alias.php';
 $wgAutoloadClasses['SpecialInspectCache'] = $dir . 'InspectCache_body.php';
+
 $wgSpecialPages['InspectCache'] = 'SpecialInspectCache';
+$wgSpecialPageGroups['InspectCache'] = 'wiki';
+
+$wgAvailableRights[] = 'inspectcache';
+$wgGroupPermissions['sysop']['inspectcache'] = true;

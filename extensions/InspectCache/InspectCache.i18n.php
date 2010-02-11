@@ -10,7 +10,6 @@ $messages = array();
 $messages['en'] = array(
 	'inspectcache'         => 'Inspect cache',
 	'inspectcache-desc'    => 'A simple debugging tool to inspect the contents of the shared cache',
-	'inspectcache-ok'      => 'OK',
 	'inspectcache-general' => 'General cache',
 	'inspectcache-parser'  => 'Parser cache',
 	'inspectcache-message' => 'Message cache',
@@ -18,6 +17,7 @@ $messages['en'] = array(
 	'inspectcache-delete'  => 'Delete',
 	'inspectcache-deleted' => 'Deleted cache',
 	'inspectcache-list'    => 'List',
+	'right-inspectcache'   => 'View and delete cache entries',
 );
 
 /** Message documentation (Message documentation)
