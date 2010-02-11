@@ -183,7 +183,7 @@ mw.Sequencer.prototype = {
 					'mw.SeqRemoteSearchDriver'
 				], function() {
 					 this_seq.mySearch = new mw.SeqRemoteSearchDriver( this_seq );
-					 this_seq.mySearch.createUI();
+					 this_seq.mySearch.showDialog();
 				} );
 			}
 		},
@@ -263,25 +263,9 @@ mw.Sequencer.prototype = {
 		).css( {
 			'min-width':'850px'
 		} );
+	
 
-		/*mw.log('set: '+this.target_sequence_container + ' html to:'+ "\n"+
-			$j(this.target_sequence_container).html()
-		);*/
-		
-		// first check if we got a cloned PL object:
-		// (when the editor is invoked with the plalylist already on the page)
-		/*if( this.plObj != 'null' ){
-			mw.log('found plObj clone');
-			//extend with mvSeqPlayList object:
-			this.plObj = new mvSeqPlayList(this.plObj);
-			mw.log('mvSeqPlayList added: ' + this.plObj.org_control_height );
-			$j('#'+this.video_container_id).get(0).attachNode( this.plObj );
-			this.plObj.getHTML();
-			this.checkReadyPlObj();
-			return ;
-		}*/
-
-		// else check for source based sequence editor (a clean page load of the editor)
+		// Check for source based sequence editor (a clean page load of the editor)
 		if ( this.mv_pl_src != 'null' ) {
 			mw.log( ' pl src:: ' + this.mv_pl_src );
 			var src_attr = ' src="' + this.mv_pl_src + '" ';
@@ -307,7 +291,7 @@ mw.Sequencer.prototype = {
 				$j.btnHtml( gM( 'mwe-edit_cancel' ), 'seq_edit_cancel', 'close' )
 			);
 		} else {
-			$j( this.target_sequence_container + ' .seq_save_cancel' ).html( cancel_button + gM( 'mwe-no_edit_permissions' ) );
+			$j( this.target_sequence_container + ' .seq_save_cancel' ).html(  gM( 'mwe-no_edit_permissions' ) );
 		}
 		// assing bindings
 		$j( this.target_sequence_container + ' .seq_edit_cancel' ).unbind().click( function() {
@@ -383,7 +367,7 @@ mw.Sequencer.prototype = {
 			if ( !dispCall )
 				$j( "#seq_menu" ).tabs( 'select', this.menu_items[item].inx );
 
-			this.menu_items[item].default = 1;
+			this.menu_items[item]['default'] = 1;
 			// do any click_js actions:getInsertControl
 			if ( this.menu_items[item].click_js )
 				this.menu_items[item].click_js( this );
@@ -535,7 +519,12 @@ mw.Sequencer.prototype = {
 		// propagate the edit tokens
 		// if on an edit page just grab from the form:
 		this.sequenceEditToken = $j( 'input[wpEditToken]' ).val();
-
+		
+		// Update the buttons for no Api url (local editor) 
+		if( !this.getLocalApiUrl() ){
+			_this.updateSeqSaveButtons();
+		}
+		
 		if ( typeof this.sequenceEditToken == 'undefined' && this.getLocalApiUrl() != null ) {
 			mw.getToken( _this.getLocalApiUrl(), _this.plObj.mTitle, function( token ) {
 					if ( token ) {
@@ -585,7 +574,7 @@ mw.Sequencer.prototype = {
 		for ( var tab_id in this.menu_items ) {
 			menu_item = this.menu_items[tab_id];
 			menu_item.inx = inx;
-			if ( menu_item.default ) {
+			if ( menu_item['default'] ) {
 				selected_tab = inx;
 				_this.disp_menu_item = tab_id;
 			}

@@ -88,9 +88,6 @@ var default_remote_search_options = {
 
 	// The target button or link that will invoke the search interface
 	'target_invoke_button': null, 
-	
-	// The local wiki api url usually: wgServer + wgScriptPath + '/api.php'
-	'local_wiki_api_url': null,
 
 	/**
 	* import_url_mode
@@ -99,7 +96,13 @@ var default_remote_search_options = {
 	*  autodetect: checks for api support before using the api to insert the media asset
 	*  remote_link: hot-links the media directly into the page as html
 	*/	
-	'import_url_mode': 'api',
+	'import_url_mode': 'api',	
+	
+	// The api target can be "local" or the url or remote api entry point
+	'upload_api_target': 'local', 
+	
+	// Name of the upload target
+	'upload_api_name': null,	
 	
 	// Target title used for previews of wiki page usually: wgPageName
 	'target_title': null,
@@ -117,16 +120,7 @@ var default_remote_search_options = {
 	'default_query': null, 
 
 	// Canonical namespace prefix for images/ files
-	'canonicalFileNS': 'File', 	                 
-
-	// The api target can be "local" or the url or remote api entry point
-	'upload_api_target': 'local', 
-	
-	// Name of the upload target
-	'upload_api_name': null,
-	
-	// Name of the remote proxy page that will host the iframe api callback 
-	'upload_api_proxy_frame': null,  
+	'canonicalFileNS': 'File', 
 
 	// Enabled providers can be keyword 'all' or an array of enabled content provider keys
 	'enabled_providers': 'all', 	
@@ -162,7 +156,7 @@ var default_remote_search_options = {
 	}
 	
 	$.addMediaWizard = function( options ){
-		$.fn.addMediaWizard ( options, function( amwObj ) {
+		$.fn.addMediaWizard ( options, function( amwObj ) {			
 			// do the add-media-wizard display
 			amwObj.createUI();
 		} )
@@ -409,10 +403,7 @@ mw.RemoteSearchDriver.prototype = {
 	displayMode : 'box', // box or list
 
 	// The ClipEdit Object
-	clipEdit: null,
-	
-	// A flag for proxy setup. 
-	proxySetupDone: null,
+	clipEdit: null,		
 	
 	/**
 	* The initialisation function
@@ -475,24 +466,20 @@ mw.RemoteSearchDriver.prototype = {
 			this.content_providers[ 'upload' ].enabled = false;
 		}
 
-		// Set the target to "proxy" if a proxy frame is configured
-		if ( _this.upload_api_proxy_frame )
-			_this.upload_api_target = 'proxy';
 
 		// Set up the local API upload URL
 		if ( _this.upload_api_target == 'local' ) {
-			if ( ! _this.local_wiki_api_url ) {
-				this.$resultsContainer.html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
+			if ( ! mw.getLocalApiUrl() ) {
+				$j( this.target_container ).html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
 				return false;
 			} else {
-				_this.upload_api_target = _this.local_wiki_api_url;
+				_this.upload_api_target = mw.getLocalApiUrl();
 			}
 		}
 		
 		// Set up the "add media wizard" button, which invokes this object
 		if ( !this.target_invoke_button || $j( this.target_invoke_button ).length == 0 ) {
-			mw.log( "RemoteSearchDriver:: no target invocation provided " + 
-				"(will have to run your own createUI() )" );
+			mw.log( "RemoteSearchDriver:: no target invocation provided " );
 		} else {
 			if ( this.target_invoke_button ) {
 				$j( this.target_invoke_button )
@@ -669,12 +656,16 @@ mw.RemoteSearchDriver.prototype = {
 	* Creates the remote search driver User Interface  
 	*/
 	createUI: function() {
-		var _this = this;
-
+		var _this = this;		
 		this.clearTextboxCache();
 		
-		// Setup the parent container:
-		this.createDialogContainer();
+		// Setup the parent container (if not already created) 
+		if( $j( _this.target_container ).length == 0 ){
+			this.createDialogContainer();
+		}else{
+			// Empty out the target
+			$j( _this.target_container ).empty();
+		}
 		
 		// Setup remote search dialog & bindings 
 		this.initDialog();
@@ -699,11 +690,9 @@ mw.RemoteSearchDriver.prototype = {
 		var _this = this;
 		mw.log( "showDialog::" );
 		
-		// Check if dialog target is present: 
-		if( $j( _this.target_container ).length == 0 ){
-			this.createUI();
-			return ;
-		}
+		// Create the UI
+		this.createUI();
+	
 		
 		_this.clearTextboxCache();
 		var query = _this.getDefaultQuery();
@@ -1525,7 +1514,11 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Get result html for box layout (see getResultHtml for params) 
+	* Get result html for box layout 
+	*
+	* @param {Object} provider the content provider for result
+	* @param {Number} resIndex the resource index to build unique ids
+	* @param {Object} resource the resource object 
 	*/
 	getResultHtmlBox: function( provider, resIndex, resource ) {
 		
@@ -1583,7 +1576,11 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Get result html for list layout (see getResultHtml for params) 	
+	* Get result html for list layout
+	*
+	* @param {Object} provider the content provider for result
+	* @param {Number} resIndex the resource index to build unique ids
+	* @param {Object} resource the resource object 
 	*/
 	getResultHtmlList:function( provider, resIndex, resource ) {
 		
@@ -2024,7 +2021,7 @@ mw.RemoteSearchDriver.prototype = {
 			return true;
 		} else {
 			// Check if we can embed the content locally per a domain name check:
-			var localHost = mw.parseUri( this.local_wiki_api_url ).host;
+			var localHost = mw.parseUri( mw.getLocalApiUrl() ).host;
 			if ( provider.local_domains ) {
 				for ( var i = 0; i < provider.local_domains.length; i++ ) {
 					var domain = provider.local_domains[i];
@@ -2429,7 +2426,7 @@ mw.RemoteSearchDriver.prototype = {
 			'iiurlwidth': '400'
 		};
 		// First check the api for imagerepository
-		mw.getJSON( this.local_wiki_api_url, request, function( data ) {
+		mw.getJSON( mw.getLocalApiUrl(), request, function( data ) {
 			if ( data.query.pages ) {
 				for ( var i in data.query.pages ) {
 					if( i == '-1' ){
@@ -2604,39 +2601,7 @@ mw.RemoteSearchDriver.prototype = {
 		} else {
 			return resource.pSobj.getEmbedWikiCode( resource );
 		}
-	},
-	
-	/**
-	* Get the preview text for a given resource
-	* 
-	* builds the wikitext represnetation and 
-	* issues an api call to gennerate a preview
-	* 
-	* @param {Object} resource Resource to get preview text for.
-	*/
-	/*getPreviewText: function( resource ) {
-		var _this = this;
-		var text;
-
-		// Insert at start if textInput cursor has not been set (ie == length)
-		var insertPos = _this.getCaretPos();
-		var originalText = _this.getTextboxValue();
-		var embedCode = _this.getEmbedCode( resource );
-		if ( insertPos !== false && originalText ) {
-			if ( originalText.length == insertPos ) {
-				insertPos = 0;
-			}
-			text = originalText.substring( 0, insertPos ) +
-				embedCode + originalText.substring( insertPos );
-		} else {
-			text = $j( _this.target_textbox ).val() + embedCode;
-		}
-		// check for missing </references>
-		if ( text.indexOf( '<references/>' ) == -1 && text.indexOf( '<ref>' ) != -1 ) {
-			text = text + '<references/>';
-		}
-		return text;
-	},*/
+	},	
 	
 	/**
 	* issues the wikitext parse call 
@@ -2646,7 +2611,7 @@ mw.RemoteSearchDriver.prototype = {
 	* @param {Function} callback Function called with api parser output 
 	*/
 	parse: function( wikitext, title, callback ) {		
-		mw.getJSON( this.local_wiki_api_url, 
+		mw.getJSON( mw.getLocalApiUrl(), 
 			{
 				'action': 'parse',
 				'title' : title,
