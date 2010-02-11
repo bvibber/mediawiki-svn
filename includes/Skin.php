@@ -2091,6 +2091,7 @@ CSS;
 		wfProfileOut( __METHOD__ );
 		return $bar;
 	}
+
 	/**
 	 * Add content from a sidebar system message
 	 * Currently only used for MediaWiki:Sidebar (but may be used by Extensions)
@@ -2162,4 +2163,1025 @@ CSS;
 	public function commonPrintStylesheet() {
 		return true;
 	}
+
+	/**
+	 * Gets new talk page messages for the current user.
+	 * @return MediaWiki message or if no new talk page messages, nothing
+	 */
+	function getNewtalks() {
+		global $wgUser, $wgOut;
+		$newtalks = $wgUser->getNewMessageLinks();
+
+		if( count( $newtalks ) == 1 && $newtalks[0]['wiki'] === wfWikiID() ) {
+			$userTitle = $this->mUser->getUserPage();
+			$userTalkTitle = $userTitle->getTalkPage();
+
+			if( !$userTalkTitle->equals( $this->mTitle ) ) {
+				$newMessagesLink = $this->link(
+					$userTalkTitle,
+					wfMsgHtml( 'newmessageslink' ),
+					array(),
+					array( 'redirect' => 'no' ),
+					array( 'known', 'noclasses' )
+				);
+
+				$newMessagesDiffLink = $this->link(
+					$userTalkTitle,
+					wfMsgHtml( 'newmessagesdifflink' ),
+					array(),
+					array( 'diff' => 'cur' ),
+					array( 'known', 'noclasses' )
+				);
+
+				$ntl = wfMsg(
+					'youhavenewmessages',
+					$newMessagesLink,
+					$newMessagesDiffLink
+				);
+				# Disable Squid cache
+				$wgOut->setSquidMaxage( 0 );
+			}
+		} elseif( count( $newtalks ) ) {
+			// _>" " for BC <= 1.16
+			$sep = str_replace( '_', ' ', wfMsgHtml( 'newtalkseparator' ) );
+			$msgs = array();
+			foreach( $newtalks as $newtalk ) {
+				$msgs[] = Xml::element(
+					'a',
+					array( 'href' => $newtalk['link'] ), $newtalk['wiki']
+				);
+			}
+			$parts = implode( $sep, $msgs );
+			$ntl = wfMsgHtml( 'youhavenewmessagesmulti', $parts );
+			$wgOut->setSquidMaxage( 0 );
+		} else {
+			$ntl = '';
+		}
+		return $ntl;
+	}
+
+	/**
+	 * Build array of common navigation links
+	 * @return array
+	 */
+	function buildNavUrls() {
+		global $wgUseTrackbacks, $wgOut, $wgUser, $wgRequest;
+		global $wgEnableUploads, $wgUploadNavigationUrl;
+
+		wfProfileIn( __METHOD__ );
+
+		$action = $wgRequest->getVal( 'action', 'view' );
+		$title = $this->mTitle->getText();
+
+		$nav_urls = array();
+		$nav_urls['mainpage'] = array( 'href' => self::makeMainPageUrl() );
+		if( $wgUploadNavigationUrl ) {
+			$nav_urls['upload'] = array( 'href' => $wgUploadNavigationUrl );
+		} elseif( $wgEnableUploads && $wgUser->isAllowed( 'upload' ) ) {
+			$nav_urls['upload'] = array( 'href' => self::makeSpecialUrl( 'Upload' ) );
+		} else {
+			$nav_urls['upload'] = false;
+		}
+		$nav_urls['specialpages'] = array( 'href' => self::makeSpecialUrl( 'Specialpages' ) );
+
+		// default permalink to being off, will override it as required below.
+		$nav_urls['permalink'] = false;
+
+		// A print stylesheet is attached to all pages, but nobody ever
+		// figures that out. :)  Add a link...
+		if( $this->mTitle->getNamespace() != NS_SPECIAL && ( $action == 'view' || $action == 'purge' ) ) {
+			if ( !$wgOut->isPrintable() ) {
+				$nav_urls['print'] = array(
+					'text' => wfMsg( 'printableversion' ),
+					'href' => $wgRequest->appendQuery( 'printable=yes' )
+				);
+			}
+
+			// Also add a "permalink" while we're at it
+			if ( $this->mRevisionId ) {
+				$nav_urls['permalink'] = array(
+					'text' => wfMsg( 'permalink' ),
+					'href' => $wgOut->getTitle()->getLocalURL( "oldid=$this->mRevisionId" )
+				);
+			}
+
+			// Copy in case this undocumented, shady hook tries to mess with internals
+			$revid = $this->mRevisionId;
+			wfRunHooks( 'SkinTemplateBuildNavUrlsNav_urlsAfterPermalink', array( $this, &$nav_urls, &$revid, &$revid ) );
+		}
+
+		if( $this->mTitle->getNamespace() != NS_SPECIAL ) {
+			$wlhTitle = SpecialPage::getTitleFor( 'Whatlinkshere', $this->mTitle->getPrefixedDBkey() );
+			$nav_urls['whatlinkshere'] = array(
+				'href' => $wlhTitle->getLocalURL()
+			);
+			if( $this->mTitle->getArticleId() ) {
+				$rclTitle = SpecialPage::getTitleFor( 'Recentchangeslinked', $this->mTitle->getPrefixedDBkey() );
+				$nav_urls['recentchangeslinked'] = array(
+					'href' => $rclTitle->getLocalURL()
+				);
+			} else {
+				$nav_urls['recentchangeslinked'] = false;
+			}
+			if( $wgUseTrackbacks ) {
+				$nav_urls['trackbacklink'] = array(
+					'href' => $wgOut->getTitle()->trackbackURL()
+				);
+			}
+		}
+
+		if(
+			$this->mTitle->getNamespace() == NS_USER ||
+			$this->mTitle->getNamespace() == NS_USER_TALK
+		)
+		{
+			$id = User::idFromName( $title );
+			$ip = User::isIP( $title );
+		} else {
+			$id = 0;
+			$ip = false;
+		}
+
+		if( $id || $ip ) { # both anons and non-anons have contribs list
+			$nav_urls['contributions'] = array(
+				'href' => self::makeSpecialUrlSubpage( 'Contributions', $title )
+			);
+
+			if( $id ) {
+				$logPage = SpecialPage::getTitleFor( 'Log' );
+				$nav_urls['log'] = array(
+					'href' => $logPage->getLocalURL(
+						array(
+							'user' => $title
+						)
+					)
+				);
+			} else {
+				$nav_urls['log'] = false;
+			}
+
+			if ( $wgUser->isAllowed( 'block' ) ) {
+				$nav_urls['blockip'] = array(
+					'href' => self::makeSpecialUrlSubpage( 'Blockip', $title )
+				);
+			} else {
+				$nav_urls['blockip'] = false;
+			}
+		} else {
+			$nav_urls['contributions'] = false;
+			$nav_urls['log'] = false;
+			$nav_urls['blockip'] = false;
+		}
+		$nav_urls['emailuser'] = false;
+		if( $this->showEmailUser( $id ) ) {
+			$nav_urls['emailuser'] = array(
+				'href' => self::makeSpecialUrlSubpage( 'Emailuser', $title )
+			);
+		}
+		wfProfileOut( __METHOD__ );
+		return $nav_urls;
+	}
+
+	/**
+	 * An array of edit links by default used for the tabs
+	 * @return array
+	 */
+	function buildContentActionUrls() {
+		global $wgContLang, $wgLang, $wgOut, $wgUser, $wgRequest, $wgArticle;
+
+		wfProfileIn( __METHOD__ );
+
+		$action = $wgRequest->getVal( 'action', 'view' );
+		$section = $wgRequest->getVal( 'section' );
+		$content_actions = array();
+
+		$prevent_active_tabs = false;
+		wfRunHooks( 'SkinTemplatePreventOtherActiveTabs', array( $this, &$prevent_active_tabs ) );
+
+		if( $this->mTitle->getNamespace() != NS_SPECIAL ) {
+			$subjpage = $this->mTitle->getSubjectPage();
+			$talkpage = $this->mTitle->getTalkPage();
+
+			$nskey = $this->mTitle->getNamespaceKey();
+			$content_actions[$nskey] = $this->tabAction(
+				$subjpage,
+				$nskey,
+				!$this->mTitle->isTalkPage() && !$prevent_active_tabs,
+				'', true
+			);
+
+			$content_actions['talk'] = $this->tabAction(
+				$talkpage,
+				'talk',
+				$this->mTitle->isTalkPage() && !$prevent_active_tabs,
+				'',
+				true
+			);
+
+			wfProfileIn( __METHOD__ . '-edit' );
+			if ( $this->mTitle->quickUserCan( 'edit' ) && ( $this->mTitle->exists() || $this->mTitle->quickUserCan( 'create' ) ) ) {
+				$isTalk = $this->mTitle->isTalkPage();
+				$isTalkClass = $isTalk ? ' istalk' : '';
+				$content_actions['edit'] = array(
+					'class' => ( ( ( $action == 'edit' || $action == 'submit' ) && $section != 'new' ) ? 'selected' : '' ) . $isTalkClass,
+					'text' => $this->mTitle->exists()
+						? wfMsg( 'edit' )
+						: wfMsg( 'create' ),
+					'href' => $this->mTitle->getLocalURL( $this->editUrlOptions() )
+				);
+
+				// adds new section link if page is a current revision of a talk page or
+				if ( ( $wgArticle && $wgArticle->isCurrent() && $isTalk ) || $wgOut->showNewSectionLink() ) {
+					if ( !$wgOut->forceHideNewSectionLink() ) {
+						$content_actions['addsection'] = array(
+							'class' => $section == 'new' ? 'selected' : false,
+							'text' => wfMsg( 'addsection' ),
+							'href' => $this->mTitle->getLocalURL( 'action=edit&section=new' )
+						);
+					}
+				}
+			} elseif ( $this->mTitle->isKnown() ) {
+				$content_actions['viewsource'] = array(
+					'class' => ( $action == 'edit' ) ? 'selected' : false,
+					'text' => wfMsg( 'viewsource' ),
+					'href' => $this->mTitle->getLocalURL( $this->editUrlOptions() )
+				);
+			}
+			wfProfileOut( __METHOD__ . '-edit' );
+
+			wfProfileIn( __METHOD__ . '-live' );
+			if ( $this->mTitle->exists() ) {
+
+				$content_actions['history'] = array(
+					'class' => ( $action == 'history' ) ? 'selected' : false,
+					'text' => wfMsg( 'history_short' ),
+					'href' => $this->mTitle->getLocalURL( 'action=history' ),
+					'rel' => 'archives',
+				);
+
+				if( $wgUser->isAllowed( 'delete' ) ) {
+					$content_actions['delete'] = array(
+						'class' => ( $action == 'delete' ) ? 'selected' : false,
+						'text' => wfMsg( 'delete' ),
+						'href' => $this->mTitle->getLocalURL( 'action=delete' )
+					);
+				}
+				if ( $this->mTitle->quickUserCan( 'move' ) ) {
+					$moveTitle = SpecialPage::getTitleFor( 'Movepage', $this->mTitle->getPrefixedDBkey() );
+					$content_actions['move'] = array(
+						'class' => $this->mTitle->isSpecial( 'Movepage' ) ? 'selected' : false,
+						'text' => wfMsg( 'move' ),
+						'href' => $moveTitle->getLocalURL()
+					);
+				}
+
+				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
+					if( !$this->mTitle->isProtected() ) {
+						$content_actions['protect'] = array(
+							'class' => ( $action == 'protect' ) ? 'selected' : false,
+							'text' => wfMsg( 'protect' ),
+							'href' => $this->mTitle->getLocalURL( 'action=protect' )
+						);
+
+					} else {
+						$content_actions['unprotect'] = array(
+							'class' => ( $action == 'unprotect' ) ? 'selected' : false,
+							'text' => wfMsg( 'unprotect' ),
+							'href' => $this->mTitle->getLocalURL( 'action=unprotect' )
+						);
+					}
+				}
+			} else {
+				// article doesn't exist or is deleted
+				if( $wgUser->isAllowed( 'deletedhistory' ) && $wgUser->isAllowed( 'deletedtext' ) ) {
+					$n = $this->mTitle->isDeleted();
+					if( $n ) {
+						$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
+						$content_actions['undelete'] = array(
+							'class' => false,
+							'text' => wfMsgExt( 'undelete_short', array( 'parsemag' ), $wgLang->formatNum( $n ) ),
+							'href' => $undelTitle->getLocalURL( 'target=' . urlencode( $this->thispage ) )
+							#'href' => self::makeSpecialUrl( "Undelete/$this->thispage" )
+						);
+					}
+				}
+
+				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
+					if( !$this->mTitle->getRestrictions( 'create' ) ) {
+						$content_actions['protect'] = array(
+							'class' => ( $action == 'protect' ) ? 'selected' : false,
+							'text' => wfMsg( 'protect' ),
+							'href' => $this->mTitle->getLocalURL( 'action=protect' )
+						);
+
+					} else {
+						$content_actions['unprotect'] = array(
+							'class' => ( $action == 'unprotect' ) ? 'selected' : false,
+							'text' => wfMsg( 'unprotect' ),
+							'href' => $this->mTitle->getLocalURL( 'action=unprotect' )
+						);
+					}
+				}
+			}
+
+			wfProfileOut( __METHOD__ . '-live' );
+
+			if( $wgUser->isLoggedIn() ) {
+				if( !$this->mTitle->userIsWatching() ) {
+					$content_actions['watch'] = array(
+						'class' => ( $action == 'watch' || $action == 'unwatch' ) ? 'selected' : false,
+						'text' => wfMsg( 'watch' ),
+						'href' => $this->mTitle->getLocalURL( 'action=watch' )
+					);
+				} else {
+					$content_actions['unwatch'] = array(
+						'class' => ( $action == 'unwatch' || $action == 'watch' ) ? 'selected' : false,
+						'text' => wfMsg( 'unwatch' ),
+						'href' => $this->mTitle->getLocalURL( 'action=unwatch' )
+					);
+				}
+			}
+
+
+			wfRunHooks( 'SkinTemplateTabs', array( $this, &$content_actions ) );
+		} else {
+			/* show special page tab */
+
+			$content_actions[$this->mTitle->getNamespaceKey()] = array(
+				'class' => 'selected',
+				'text' => wfMsg( 'nstab-special' ),
+				'href' => $wgRequest->getRequestURL(), // @bug 2457, 2510
+			);
+
+			wfRunHooks( 'SkinTemplateBuildContentActionUrlsAfterSpecialPage', array( $this, &$content_actions ) );
+		}
+
+		/* show links to different language variants */
+		global $wgDisableLangConversion;
+		$variants = $wgContLang->getVariants();
+		if( !$wgDisableLangConversion && sizeof( $variants ) > 1 ) {
+			$preferred = $wgContLang->getPreferredVariant();
+			$vcount = 0;
+			foreach( $variants as $code ) {
+				$varname = $wgContLang->getVariantname( $code );
+				if( $varname == 'disable' ) {
+					continue;
+				}
+				$selected = ( $code == $preferred ) ? 'selected' : false;
+				$content_actions['varlang-' . $vcount] = array(
+					'class' => $selected,
+					'text' => $varname,
+					'href' => $this->mTitle->getLocalURL( '', $code )
+				);
+				$vcount++;
+			}
+		}
+
+		wfRunHooks( 'SkinTemplateContentActions', array( &$content_actions ) );
+
+		wfProfileOut( __METHOD__ );
+		return $content_actions;
+	}
+
+	/**
+	 * Renders the content action tabs (edit, history, move, watch etc.)
+	 * @return HTML
+	 */
+	function renderContentActions() {
+		$s = '';
+		foreach( $this->buildContentActionUrls() as $key => $tab ) {
+			$s .= '<li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
+			if( $tab['class'] ) {
+				$s .= ' class="' . htmlspecialchars( $tab['class'] ) . '"';
+			}
+			$s .= '><a href="' . htmlspecialchars( $tab['href'] ) . '"';
+			# We don't want to give the watch tab an accesskey if the
+			# page is being edited, because that conflicts with the
+			# accesskey on the watch checkbox.  We also don't want to
+			# give the edit tab an accesskey, because that's fairly su-
+			# perfluous and conflicts with an accesskey (Ctrl-E) often
+			# used for editing in Safari.
+			global $wgRequest;
+			$action = $wgRequest->getText( 'action' );
+		 	if(
+				in_array( $action, array( 'edit', 'submit' ) ) &&
+				in_array( $key, array( 'edit', 'watch', 'unwatch' ) ) )
+			{
+				$s .= $this->tooltip( "ca-$key" );
+			} else {
+				$s .= $this->tooltipAndAccesskey( "ca-$key" );
+			}
+			$s .= '>' . htmlspecialchars( $tab['text'] ) . '</a></li>' . "\n";
+		}
+		return $s;
+	}
+
+	/**
+	 * Build array of URLs for personal toolbar
+	 * @return array
+	 */
+	function buildPersonalUrls() {
+		global $wgOut, $wgRequest, $wgUser;
+
+		$title = $wgOut->getTitle();
+		$pageurl = $title->getLocalURL();
+		wfProfileIn( __METHOD__ );
+
+		if ( $wgUser->isLoggedIn() || $this->showIPinHeader() ) {
+			$this->userpageUrlDetails = self::makeUrlDetails( $this->userpage );
+		} else {
+			# This won't be used in the standard skins, but we define it to preserve the interface
+			# To save time, we check for existence
+			$this->userpageUrlDetails = self::makeKnownUrlDetails( $this->userpage );
+		}
+		/* set up the default links for the personal toolbar */
+		$personal_urls = array();
+		$page = $wgRequest->getVal( 'returnto', $this->mTitle->getPrefixedURL() );
+		$query = array();
+		if ( !$wgRequest->wasPosted() ) {
+			$query = $wgRequest->getValues();
+			unset( $query['title'] );
+			unset( $query['returnto'] );
+			unset( $query['returntoquery'] );
+		}
+		$query = $wgRequest->getVal( 'returntoquery', wfUrlencode( wfArrayToCGI( $query ) ) );
+		$returnto = "returnto=$page";
+		if( $query != '' ) {
+			$returnto .= "&returntoquery=$query";
+		}
+		if( $wgUser->isLoggedIn() ) {
+			$personal_urls['userpage'] = array(
+				'text' => $wgUser->getName(),
+				'href' => &$this->userpageUrlDetails['href'],
+				'class' => $this->userpageUrlDetails['exists'] ? false : 'new',
+				'active' => ( $this->userpageUrlDetails['href'] == $pageurl )
+			);
+			$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
+			$personal_urls['mytalk'] = array(
+				'text' => wfMsg( 'mytalk' ),
+				'href' => &$usertalkUrlDetails['href'],
+				'class' => $usertalkUrlDetails['exists'] ? false : 'new',
+				'active' => ( $usertalkUrlDetails['href'] == $pageurl )
+			);
+			$href = self::makeSpecialUrl( 'Preferences' );
+			$personal_urls['preferences'] = array(
+				'text' => wfMsg( 'mypreferences' ),
+				'href' => $href,
+				'active' => ( $href == $pageurl )
+			);
+			$href = self::makeSpecialUrl( 'Watchlist' );
+			$personal_urls['watchlist'] = array(
+				'text' => wfMsg( 'mywatchlist' ),
+				'href' => $href,
+				'active' => ( $href == $pageurl )
+			);
+
+			# We need to do an explicit check for Special:Contributions, as we
+			# have to match both the title, and the target (which could come
+			# from request values or be specified in "sub page" form. The plot
+			# thickens, because $wgTitle is altered for special pages, so doesn't
+			# contain the original alias-with-subpage.
+			$origTitle = Title::newFromText( $wgRequest->getText( 'title' ) );
+			if( $origTitle instanceof Title && $origTitle->getNamespace() == NS_SPECIAL ) {
+				list( $spName, $spPar ) =
+					SpecialPage::resolveAliasWithSubpage( $origTitle->getText() );
+				$active = $spName == 'Contributions'
+					&& ( ( $spPar && $spPar == $wgUser->getName() )
+						|| $wgRequest->getText( 'target' ) == $wgUser->getName() );
+			} else {
+				$active = false;
+			}
+
+			$href = self::makeSpecialUrlSubpage( 'Contributions', $wgUser->getName() );
+			$personal_urls['mycontris'] = array(
+				'text' => wfMsg( 'mycontris' ),
+				'href' => $href,
+				'active' => $active
+			);
+			$personal_urls['logout'] = array(
+				'text' => wfMsg( 'userlogout' ),
+				'href' => self::makeSpecialUrl( 'Userlogout',
+					$title->isSpecial( 'Preferences' ) ? '' : $returnto
+				),
+				'active' => false
+			);
+		} else {
+			global $wgUser;
+			$loginlink = $wgUser->isAllowed( 'createaccount' )
+				? 'nav-login-createaccount'
+				: 'login';
+			if( $this->showIPinHeader() ) {
+				$href = &$this->userpageUrlDetails['href'];
+				$personal_urls['anonuserpage'] = array(
+					'text' => $wgUser->getName(),
+					'href' => $href,
+					'class' => $this->userpageUrlDetails['exists'] ? false : 'new',
+					'active' => ( $pageurl == $href )
+				);
+				$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
+				$href = &$usertalkUrlDetails['href'];
+				$personal_urls['anontalk'] = array(
+					'text' => wfMsg( 'anontalk' ),
+					'href' => $href,
+					'class' => $usertalkUrlDetails['exists'] ? false : 'new',
+					'active' => ( $pageurl == $href )
+				);
+				$personal_urls['anonlogin'] = array(
+					'text' => wfMsg( $loginlink ),
+					'href' => self::makeSpecialUrl( 'Userlogin', $returnto ),
+					'active' => $title->isSpecial( 'Userlogin' )
+				);
+			} else {
+				$personal_urls['login'] = array(
+					'text' => wfMsg( $loginlink ),
+					'href' => self::makeSpecialUrl( 'Userlogin', $returnto ),
+					'active' => $title->isSpecial( 'Userlogin' )
+				);
+			}
+		}
+
+		wfRunHooks( 'PersonalUrls', array( &$personal_urls, &$title ) );
+		wfProfileOut( __METHOD__ );
+		return $personal_urls;
+	}
+
+	/**
+	 * Renders the items in the personal toolbar (links to user page,
+	 * talk page, contributions list, watchlist etc.)
+	 * @return HTML
+	 */
+	function renderPersonalTools() {
+		$s = '';
+		foreach( $this->buildPersonalUrls() as $key => $item ) {
+			$s .= '<li id="' . Sanitizer::escapeId( "pt-$key" ) . '"';
+			if ( $item['active'] ) {
+				$s .= 'class="active"';
+			}
+			$s .= '><a href="' . htmlspecialchars( $item['href'] ) . '"' .
+					$this->tooltipAndAccesskey( 'pt-' . $key );
+			if( !empty( $item['class'] ) ) {
+				$s .= ' class="' . htmlspecialchars( $item['class'] ) . '"';
+			}
+			$s .= '>' . htmlspecialchars( $item['text'] ) . '</a></li>';
+		}
+		return $s;
+	}
+
+	function tabAction( $title, $message, $selected, $query = '', $checkEdit = false ) {
+		$classes = array();
+		if( $selected ) {
+			$classes[] = 'selected';
+		}
+		if( $checkEdit && !$title->isKnown() ) {
+			$classes[] = 'new';
+			$query = 'action=edit&redlink=1';
+		}
+
+		$text = wfMsg( $message );
+		if ( wfEmptyMsg( $message, $text ) ) {
+			global $wgContLang;
+			$text = $wgContLang->getFormattedNsText( MWNamespace::getSubject( $title->getNamespace() ) );
+		}
+
+		$result = array();
+		if( !wfRunHooks( 'SkinTemplateTabAction', array( $this, $title,
+				$message, $selected, $checkEdit, &$classes, &$query, &$text,
+				&$result ) )
+		)
+		{
+			return $result;
+		}
+
+		return array(
+			'class' => implode( ' ', $classes ),
+			'text' => $text,
+			'href' => $title->getLocalURL( $query )
+		);
+	}
+
+	function makeTalkUrlDetails( $name, $urlaction = '' ) {
+		$title = Title::newFromText( $name );
+		if( !is_object( $title ) ) {
+			throw new MWException( __METHOD__ . " given invalid pagename $name" );
+		}
+		$title = $title->getTalkPage();
+		self::checkTitle( $title, $name );
+		return array(
+			'href' => $title->getLocalURL( $urlaction ),
+			'exists' => $title->getArticleID() != 0 ? true : false
+		);
+	}
+
+	/**
+	 * Users can have their language set differently than the
+	 * content of the wiki. For these users, tell the web browser
+	 * that interface elements are in a different language.
+	 * @return array
+	 */
+	function getAttributes() {
+		global $wgLang, $wgContLang;
+
+		$attrs = '';
+		$specialPageAttributes = '';
+		$lang = $wgLang->getCode();
+		$dir  = $wgLang->getDir();
+
+		if ( $lang !== $wgContLang->getCode() || $dir !== $wgContLang->getDir() ) {
+			$attrs = " lang='$lang' xml:lang='$lang' dir='$dir'";
+
+			// The content of SpecialPages should be presented in the
+			// user's language. Content of regular pages should not be touched.
+			if( $this->mTitle->isSpecialPage() ) {
+				$specialPageAttributes = $attrs;
+			}
+		}
+
+		return array( $attrs, $specialPageAttributes );
+	}
+
+	/**
+	 * Builds the array of interlanguage links for getInterlanguageLinksBox().
+	 * @return array
+	 */
+	function fetchInterlanguageLinks() {
+		global $wgHideInterlanguageLinks, $wgOut, $wgContLang;
+
+		# Language links
+		$language_urls = array();
+
+		if ( !$wgHideInterlanguageLinks ) {
+			foreach( $wgOut->getLanguageLinks() as $l ) {
+				$tmp = explode( ':', $l, 2 );
+				$class = 'interwiki-' . $tmp[0];
+				unset( $tmp );
+				$nt = Title::newFromText( $l );
+				if ( $nt ) {
+					$langName = $wgContLang->getLanguageName( $nt->getInterwiki() );
+					$language_urls[] = array(
+						'href' => $nt->getFullURL(),
+						'text' => ( $langName != '' ? $langName : $l ),
+						'class' => $class
+					);
+				}
+			}
+		}
+		return $language_urls;
+	}
+
+	/**
+	 * Renders links (permalink, What links here, etc.) for the toolbox.
+	 * @return HTML
+	 */
+	function renderToolboxLinks() {
+		global $wgOut;
+
+		$navUrls = $this->buildNavUrls();
+		$s = '';
+
+		if( $this->mTitle->getNamespace() != NS_SPECIAL ) {
+			$s .= '<li id="t-whatlinkshere">
+					<a href="' .
+					htmlspecialchars( $navUrls['whatlinkshere']['href'] ) .
+					'"' . $this->tooltipAndAccesskey( 't-whatlinkshere' ) . '>'
+					. wfMsg( 'whatlinkshere' ) .
+				'</a>
+			</li>';
+			if( $navUrls['recentchangeslinked'] ) {
+				$s .= '<li id="t-recentchangeslinked">
+					<a href="' .
+					htmlspecialchars( $navUrls['recentchangeslinked']['href'] ) .
+					'"' . $this->tooltipAndAccesskey( 't-recentchangeslinked' ) . '>'
+					. wfMsg( 'recentchangeslinked-toolbox' ) .
+				'</a>
+			</li>';
+			}
+		}
+
+		if( isset( $navUrls['trackbacklink'] ) && $navUrls['trackbacklink'] ) {
+			$s .= '<li id="t-trackbacklink"><a href="' .
+					htmlspecialchars( $navUrls['trackbacklink']['href'] ) .
+					'"' . $this->tooltipAndAccesskey( 't-trackbacklink' ) . '>'
+					. wfMsg( 'trackbacklink' ) .
+				'</a>
+			</li>';
+		}
+
+		if( $wgOut->isSyndicated() ) {
+			$feeds = array();
+			foreach( $wgOut->getSyndicationLinks() as $format => $link ) {
+				$feeds[$format] = array(
+					'text' => wfMsg( "feed-$format" ),
+					'href' => $link
+				);
+			}
+			if( $feeds ) {
+				$s .= '<li id="feedlinks">';
+				foreach( $feeds as $key => $feed ) {
+					$s .= '<a id="' . Sanitizer::escapeId( "feed-$key" ) .
+						'" href="' . htmlspecialchars( $feed['href'] ) .
+						'" rel="alternate" type="application/' . $key . '+xml"' .
+						' class="feedlink"' . $this->tooltipAndAccesskey( 'feed-' . $key ) . '>' .
+						htmlspecialchars( $feed['text'] ) . '</a>&nbsp;';
+				}
+				$s .= '</li>';
+			}
+		}
+
+		$specials = array(
+			'contributions', 'log', 'blockip',
+			'emailuser', 'upload', 'specialpages'
+		);
+		foreach( $specials as $special ) {
+			if( $navUrls[$special] ) {
+				$s .= '<li id="t-' . $special . '">
+					<a href="' . htmlspecialchars( $navUrls[$special]['href'] ) .
+					'"' . $this->tooltipAndAccesskey( 't-' . $special ) . '>'
+				. wfMsg( $special ) . '</a>
+				</li>';
+			}
+		}
+
+		if( !empty( $navUrls['print']['href'] ) ) {
+			$s .= '<li id="t-print"><a href="' .
+				htmlspecialchars( $navUrls['print']['href'] ) . '" rel="alternate"' .
+				$this->tooltipAndAccesskey( 't-print' ) . '>'
+				. wfMsg( 'printableversion' ) . '</a>
+			</li>';
+		}
+
+		if( !empty( $navUrls['permalink']['href'] ) ) {
+			$s .= '<li id="t-permalink"><a href="' .
+				htmlspecialchars( $navUrls['permalink']['href'] ) . '"' .
+				$this->tooltipAndAccesskey( 't-permalink' ) . '>'
+				. wfMsg( 'permalink' ) . '</a></li>';
+		} elseif ( $navUrls['permalink']['href'] === '' ) {
+			$s .= '<li id="t-ispermalink"' . $this->tooltip( 't-ispermalink' ) . '>'
+				. wfMsg( 'permalink' ) .
+			'</li>';
+		}
+
+		wfRunHooks( 'MonoBookTemplateToolboxEnd', array( $this, &$s ) );
+		wfRunHooks( 'SkinTemplateToolboxEnd', array( $this, &$s ) ); // For backwards compatibility only.
+
+		return $s;
+	}
+
+	/**
+	 * This function renders the toolbox.
+	 * @return HTML
+	 */
+	function toolbox() {
+		$s = '<div class="portlet" id="p-tb">
+		<h5>' . wfMsg( 'toolbox' ) . '</h5>
+		<div class="pBody">
+			<ul>' . $this->renderToolboxLinks() .
+			'</ul>
+		</div>
+	</div>';
+		return $s;
+	}
+
+	/**
+	 * Prints a custom box (a box that is not the search box, toolbox or
+	 * interlanguage links box) for the sidebar.
+	 * @return HTML
+	 */
+	function customBox( $bar, $cont ) {
+		$out = wfMsg( $bar );
+		if ( wfEmptyMsg( $bar, $out ) ) {
+			$header = htmlspecialchars( $bar );
+		} else {
+			$header = htmlspecialchars( $out );
+		}
+		$s = '<div class="generated-sidebar portlet" id="' .
+			Sanitizer::escapeId( "p-$bar" ) . '"' .
+			$this->tooltip( 'p-' . $bar ) . '>
+		<h5>' . $header . '</h5>
+		<div class="pBody">';
+		if ( is_array( $cont ) ) {
+			$s .= '<ul>';
+ 			foreach( $cont as $key => $val ) {
+				$s .= '<li id="' . Sanitizer::escapeId( $val['id'] ) . '"';
+				if ( $val['active'] ) {
+					$s .= ' class="active"';
+				}
+				$s .= '><a href="' . htmlspecialchars( $val['href'] ) . '"' .
+					$this->tooltipAndAccesskey( $val['id'] ) . '>' .
+					htmlspecialchars( $val['text'] ) .
+					'</a>
+				</li>';
+			}
+			$s .= '</ul>';
+		} else {
+			# allow raw HTML block to be defined by extensions
+			$s .= $cont;
+		}
+		$s .= '</div>
+	</div>';
+		return $s;
+	}
+
+	/**
+	 * Gets the search box UI (most of it anyway).
+	 * Actual form is constructed by searchForm().
+	 * @return HTML
+	 */
+	function searchBox() {
+		$s = '<div id="p-search" class="portlet">
+		<h5><label for="searchInput">' . wfMsg( 'search' ) . '</label></h5>
+		<div id="searchBody" class="pBody">'
+			. $this->searchForm() .
+		'</div>
+	</div>';
+		return $s;
+	}
+
+	/**
+	 * Builds the sidebar, along with all the related boxes (search box,
+	 * interlanguage links box and toolbox).
+	 * @return HTML
+	 */
+	function doSidebar() {
+		$s = '';
+		$sidebar = $this->buildSidebar();
+		if ( !isset( $sidebar['SEARCH'] ) ) {
+			$sidebar['SEARCH'] = true;
+		}
+		if ( !isset( $sidebar['TOOLBOX'] ) ) {
+			$sidebar['TOOLBOX'] = true;
+		}
+		if ( !isset( $sidebar['LANGUAGES'] ) ) {
+			$sidebar['LANGUAGES'] = true;
+		}
+		foreach ( $sidebar as $boxName => $cont ) {
+			if ( $boxName == 'SEARCH' ) {
+				$s .= $this->searchBox();
+			} elseif ( $boxName == 'TOOLBOX' ) {
+				$s .= $this->toolbox();
+			} elseif ( $boxName == 'LANGUAGES' ) {
+				$s .= $this->getInterlanguageLinksBox();
+			} else {
+				$s .= $this->customBox( $boxName, $cont );
+			}
+		}
+		wfRunHooks( 'SkinAfterSidebar', array( $this, &$s ) );
+		return $s;
+	}
+
+	/**
+	 * Renders the footer - powered by and copyright icons and other stuff.
+	 * @return HTML
+	 */
+	function footer() {
+		$attribs = $this->getAttributes();
+		$s = "\n" . '<div id="footer"' . $attribs[0] . '>';
+
+		if( $this->getPoweredBy() ) {
+			$s .= "\n" . '<div id="f-poweredbyico">'
+				. $this->getPoweredBy() .
+			'</div>' . "\n";
+		}
+
+		if( $this->getCopyrightIcon() ) {
+			$s .= '<div id="f-copyrightico">'
+				. $this->getCopyrightIcon() .
+			'</div>' . "\n";
+		}
+
+		// Generate additional footer links
+		$s .= '<ul id="f-list">';
+		// Special pages cannot have authors, watchers etc. so don't even try!
+		global $wgRequest;
+		$action = $wgRequest->getVal( 'action', 'view' );
+		if ( $this->mTitle->getNamespace() != NS_SPECIAL && $action !== 'edit' ) {
+			$s .= '<li id="lastmod">' . $this->lastModified() . '</li>
+				<li id="viewcount">' . $this->getViewCount() . '</li>
+				<li id="numberofwatchingusers">' . $this->getNumberOfWatchingUsers() . '</li>
+				<li id="credits">' . $this->getCredits() . '</li>
+				<li id="copyrights">' . $this->getCopyright() . '</li>' . "\n";
+		}
+		$s .= '<li id="privacy">' . $this->privacyLink() . '</li>
+				<li id="about">' . $this->aboutLink() . '</li>
+				<li id="disclaimer">' . $this->disclaimerLink() . '</li>
+			</ul>' . "\n";
+		$s .= '</div>' . "\n";
+		return $s;
+	}
+
+	function getCredits() {
+		global $wgArticle, $wgOut, $wgMaxCredits, $wgRequest, $wgShowCreditsIfMax;
+
+		$s = '';
+		$oldid = $wgRequest->getVal( 'oldid' );
+		$diff = $wgRequest->getVal( 'diff' );
+
+		if (
+			$wgOut->isArticle() && ( !isset( $oldid ) || isset( $diff ) ) &&
+			$wgArticle && 0 != $wgArticle->getID()
+		)
+		{
+			if( $wgMaxCredits != 0 ) {
+				$s = ' ' . Credits::getCredits( $wgArticle, $wgMaxCredits, $wgShowCreditsIfMax );
+			}
+		}
+
+		return $s;
+	}
+
+	/**
+	 * If counters are enabled ($wgDisableCounters is NOT true), gets the
+	 * number of how many times this page has been viewed. Obviously works only
+	 * for existing content pages.
+	 * @return string
+	 */
+	function getViewCount() {
+		global $wgArticle, $wgOut, $wgRequest;
+
+		$s = '';
+		$oldid = $wgRequest->getVal( 'oldid' );
+		$diff = $wgRequest->getVal( 'diff' );
+
+		if (
+			$wgOut->isArticle() && ( !isset( $oldid ) || isset( $diff ) ) &&
+			$wgArticle && 0 != $wgArticle->getID()
+		)
+		{
+			global $wgDisableCounters, $wgLang;
+			if ( !$wgDisableCounters ) {
+				$viewcount = $wgLang->formatNum( $wgArticle->getCount() );
+				if ( $viewcount ) {
+					$s .= wfMsgExt( 'viewcount', array( 'parseinline' ), $viewcount );
+				}
+			}
+		}
+		return $s;
+	}
+
+	function getNumberOfWatchingUsers() {
+		global $wgOut, $wgArticle, $wgRequest;
+		$s = '';
+
+		$oldid = $wgRequest->getVal( 'oldid' );
+		$diff = $wgRequest->getVal( 'diff' );
+
+		if (
+			$wgOut->isArticle() && ( !isset( $oldid ) || isset( $diff ) ) &&
+			$wgArticle && 0 != $wgArticle->getID()
+		)
+		{
+			global $wgPageShowWatchingUsers, $wgLang;
+			if( $wgPageShowWatchingUsers ) {
+				$dbr = wfGetDB( DB_SLAVE );
+				$res = $dbr->select(
+					'watchlist',
+					array( 'COUNT(*) AS n' ),
+					array(
+						'wl_title' => $dbr->strencode( $this->mTitle->getDBkey() ),
+						'wl_namespace' => $this->mTitle->getNamespace()
+					),
+					__METHOD__
+				);
+				$x = $dbr->fetchObject( $res );
+				$numberofwatchingusers = $x->n;
+				if( $numberofwatchingusers > 0 ) {
+					$s .= wfMsgExt( 'number_of_watching_users_pageview', array( 'parseinline' ),
+						$wgLang->formatNum( $numberofwatchingusers ) );
+				}
+			}
+		}
+		return $s;
+	}
+
+	/**
+	 * Gets the interlanguage links box.
+	 * @return HTML
+	 */
+	function getInterlanguageLinksBox() {
+		return '';
+	}
+
+	/**
+	 * Gets content action tabs (edit, move, history, watch...).
+	 * @return HTML
+	 */
+	function getContentActions() {
+		return '';
+	}
+
+	/**
+	 * Builds personal tools (links to own user/talk pages, contribs, etc.)
+	 * @return HTML
+	 */
+	function getPersonalTools() {
+		return '';
+	}
+
+	/**
+	 * Gets the logo portlet.
+	 * @return HTML
+	 */
+	function getLogoPortlet() {
+		return '';
+	}
+
 }

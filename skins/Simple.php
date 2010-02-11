@@ -7,19 +7,34 @@
  * @ingroup Skins
  */
 
-if( !defined( 'MEDIAWIKI' ) )
+if( !defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
+}
 
 /** */
-require_once( dirname(__FILE__) . '/MonoBook.php' );
+require_once( dirname( __FILE__ ) . '/MonoBook.php' );
 
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @ingroup Skins
  */
-class SkinSimple extends SkinTemplate {
-	var $skinname = 'simple', $stylename = 'simple',
-		$template = 'MonoBookTemplate', $useHeadElement = true;
+class SkinSimple extends SkinMonoBook {
+	/**
+	 * We don't want common/wikiprintable.css.
+	 */
+	public function commonPrintStylesheet() {
+		return false;
+	}
+
+	/** @return string path to the skin stylesheet */
+	public function getStylesheet() {
+		return 'simple/main.css';
+	}
+
+	/** @return string skin name */
+	public function getSkinName() {
+		return 'simple';
+	}
 
 	function setupSkinUserCss( OutputPage $out ){
 		$out->addStyle( 'simple/main.css', 'screen' );

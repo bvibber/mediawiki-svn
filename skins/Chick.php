@@ -7,22 +7,41 @@
  * @ingroup Skins
  */
 
-if( !defined( 'MEDIAWIKI' ) )
+if( !defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
+}
 
 /** */
-require_once( dirname(__FILE__) . '/MonoBook.php' );
+require_once( dirname( __FILE__ ) . '/MonoBook.php' );
 
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @ingroup Skins
  */
-class SkinChick extends SkinTemplate {
-	var $skinname = 'chick', $stylename = 'chick',
-	$template = 'MonoBookTemplate', $useHeadElement = true;
+class SkinChick extends SkinMonoBook {
 
-	function setupSkinUserCss( OutputPage $out ){
-		parent::setupSkinUserCss( $out );
+	/**
+	 * We don't want common/wikiprintable.css.
+	 */
+	public function commonPrintStylesheet() {
+		return false;
+	}
+
+	/** @return string path to the skin stylesheet */
+	public function getStylesheet() {
+		return 'chick/main.css';
+	}
+
+	/** @return string skin name */
+	public function getSkinName() {
+		return 'chick';
+	}
+
+	function setupSkinUserCss( OutputPage $out ) {
+		$out->addStyle( 'common/shared.css' );
+		$out->addStyle( 'common/commonPrint.css', 'print' );
+		$out->addStyle( $this->getStylesheet() );
+		$out->addStyle( 'common/common_rtl.css', '', '', 'rtl' );
 		// Append to the default screen common & print styles...
 		$out->addStyle( 'chick/main.css', 'screen,handheld' );
 		$out->addStyle( 'chick/IE60Fixes.css', 'screen,handheld', 'IE 6' );
