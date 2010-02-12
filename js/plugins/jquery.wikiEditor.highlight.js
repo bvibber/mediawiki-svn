@@ -259,7 +259,7 @@ fn: {
 				if ( !anchor ) {
 					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
 					// properties
-					var newNode = ca1.ownerDocument.createElement( 'div' );
+					var newNode = ca1.ownerDocument.createElement( 'span' );
 					var commonAncestor = ca1.parentNode;
 					// Special case: can't put block elements in a <p>
 					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
@@ -311,7 +311,7 @@ fn: {
 		// This function works because visited[] contains the visited elements in order and find() and each()
 		// preserve order
 		var j = 0;
-		context.$content.find( 'div.wikiEditor-highlight' ).each( function() {
+		context.$content.find( '.wikiEditor-highlight' ).each( function() {
 			if ( visited[j] == this ) {
 				// This marker is legit, leave it in
 				j++;
