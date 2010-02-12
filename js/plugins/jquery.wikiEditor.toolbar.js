@@ -249,7 +249,9 @@ fn: {
 					'encapsulateSelection',
 					$.extend( {}, action.options, parts, { 'replace': action.type == 'replace' } )
 				);
-				context.$iframe[0].contentWindow.focus();
+				if ( typeof context.$iframe !== 'undefined' ) {
+					context.$iframe[0].contentWindow.focus();
+				}
 				break;
 			case 'callback':
 				if ( typeof action.execute == 'function' ) {
