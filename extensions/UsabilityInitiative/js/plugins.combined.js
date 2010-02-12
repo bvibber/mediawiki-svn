@@ -9532,7 +9532,7 @@ evt: {
 					}
 				},
 				getAnchor: function( ca1, ca2 ) {
-					return $( ca1.parentNode.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
+					return $( ca1.parentNode.previousSibling ).is( '.wikiEditor-toc-header' ) ?
 						ca1.parentNode.previousSibling : null;
 				}
 			} );
