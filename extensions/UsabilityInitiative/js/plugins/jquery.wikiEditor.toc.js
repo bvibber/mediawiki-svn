@@ -2,6 +2,27 @@
 ( function( $ ) { $.wikiEditor.modules.toc = {
 
 /**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 1000]], // Off for now
+		'firefox': [['>=', 1000]], // Off for now
+		'opera': [['>=', 1000]], // Off for now
+		'safari': [['==', 1000]], // Off for now
+		'chrome': [['==', 1000]] // Off for now
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 1000]], // Off for now
+		'firefox': [['>=', 1000]], // Off for now
+		'opera': [['>=', 1000]], // Off for now
+		'safari': [['==', 1000]], // Off for now
+		'chrome': [['==', 1000]] // Off for now
+	}
+},
+/**
  * Configuration
  */
 cfg: {
