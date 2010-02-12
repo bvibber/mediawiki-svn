@@ -19,6 +19,14 @@ $messages['en'] = array(
 	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'storyboard-name' => 'Дошка гісторыяў',
+	'storyboard-desc' => 'Прадстаўляе старонку для донараў, старонку для іх гісторыяў, і інтэрфэйс яе мадэрацыі',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -67,11 +75,12 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'storyboard-name' => 'Disegn ëd la senegiadura',
-	'storyboard-desc' => "A dà na pàgina d'ateragi për ij donador, na pàgina andoa le stòrie a peulo esse butà, e n'antërfacia ëd moderassion dle stòrie",
+	'storyboard-desc' => "A dà na pàgina d'ariv për ij donator, na pàgina andoa le stòrie a peulo esse butà, e n'antërfacia ëd moderassion dle stòrie",
 );
 
 /** Russian (Русский)

@@ -8990,6 +8990,7 @@ $messages['uk'] = array(
 	'code-rev-diff-link' => 'різн.',
 	'code-rev-diff-too-large' => 'Різниця версій занадто велика для відображення.',
 	'code-rev-purge-link' => 'очистити кеш',
+	'code-rev-total' => 'Загальна кількість результатів:',
 	'code-status-new' => 'нове',
 	'code-status-fixme' => 'виправити',
 	'code-status-reverted' => 'відкинуто',

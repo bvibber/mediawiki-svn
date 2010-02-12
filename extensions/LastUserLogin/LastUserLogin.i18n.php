@@ -310,16 +310,17 @@ $messages['te'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'lastuserlogin' => 'Останній вхід користувача у систему',
-	'lastuserlogin-desc' => 'Показує час останнього входу користувача у систему',
+	'lastuserlogin' => 'Останній вхід користувача до системи',
+	'lastuserlogin-desc' => 'Показує час останнього входу користувача до системи',
 	'lastuserlogin_userid' => "Ім'я користувача",
 	'lastuserlogin_username' => "Справжнє ім'я",
 	'lastuserlogin_useremail' => 'Електронна пошта користувача',
-	'lastuserlogin_lastlogin' => 'Останній вхід в систему',
+	'lastuserlogin_lastlogin' => 'Останній вхід до системи',
 	'lastuserlogin_daysago' => 'Днів тому',
-	'right-lastlogin' => 'Перегляд часу останнього входу користувача у систему',
+	'right-lastlogin' => 'Перегляд часу останнього входу користувача до системи',
 );
 

@@ -553,6 +553,7 @@ $messages['eu'] = array(
 	'ct-beginner' => 'Hasiberria',
 	'ct-intermediate' => 'Maila ertainekoa',
 	'ct-expert' => 'Aditua',
+	'ct-editing' => 'Orain editatzen:',
 	'ct-anon-users' => 'Lankide anonimoak',
 	'ct-user-contribs' => 'Lankidearen ekarpen guztiak',
 	'ct-and' => 'eta',

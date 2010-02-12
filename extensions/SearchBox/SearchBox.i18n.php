@@ -226,8 +226,10 @@ $messages['es'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'searchbox-desc' => 'Bilaketetan inklusioak baimendu',
 	'searchbox-search' => 'Bilatu',
 	'searchbox-go' => 'Joan',
+	'searchbox-namespaces' => 'Izen-tarteak:',
 );
 
 /** Fulah (Fulfulde)

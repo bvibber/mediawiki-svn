@@ -59,11 +59,13 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'wikieditor' => 'Пашыраны інтэрфэйс рэдагаваньня вікі-тэксту',
 	'wikieditor-desc' => 'Дадае пашыраны інтэрфэйс рэдагаваньня вікі-тэксту і шмат модульных магчымасьцяў',
 	'wikieditor-wikitext-tab' => 'Вікі-тэкст',
+	'wikieditor-loading' => 'Загрузка',
 );
 
 /** Bulgarian (Български)
@@ -193,6 +195,7 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitestua',
+	'wikieditor-loading' => 'Kargatzen',
 );
 
 /** Finnish (Suomi)
@@ -401,6 +404,7 @@ $messages['pms'] = array(
 	'wikieditor' => 'Antërfacia ëd modìfica avansà ëd wikitext',
 	'wikieditor-desc' => "A dà n'antërfacia ëd modìfica estendìbil ëd wikitext e motobin ëd modoj ch'a dan ëd fonsionalità",
 	'wikieditor-wikitext-tab' => 'Test Wiki',
+	'wikieditor-loading' => 'Cariament',
 );
 
 /** Portuguese (Português)
@@ -527,6 +531,7 @@ $messages['uk'] = array(
 	'wikieditor' => 'Розширений інтерфейс редагування вікітексту',
 	'wikieditor-desc' => 'Забезпечує розширюваний інтерфейс редагування вікітексту і багато функціональних модулів',
 	'wikieditor-wikitext-tab' => 'Вікітекст',
+	'wikieditor-loading' => 'Завантаження',
 );
 
 /** Vèneto (Vèneto)
@@ -556,12 +561,14 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Fantasticfears
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'wikieditor' => '高级维基文本编辑界面',
 	'wikieditor-desc' => '提供可扩充的维基文本编辑界面及功能组件',
 	'wikieditor-wikitext-tab' => 'Wiki文本',
+	'wikieditor-loading' => '载入中',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

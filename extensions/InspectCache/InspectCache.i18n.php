@@ -113,7 +113,6 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'inspectcache' => 'Праверыць кэш',
 	'inspectcache-desc' => 'Просты інструмэнт для наладкі і праверкі зьместу агульнага кэша',
-	'inspectcache-ok' => 'Добра',
 	'inspectcache-general' => 'Агульны кэш',
 	'inspectcache-parser' => 'Кэш парсэра',
 	'inspectcache-message' => 'Кэш паведамленьняў',
@@ -121,6 +120,7 @@ $messages['be-tarask'] = array(
 	'inspectcache-delete' => 'Выдаліць',
 	'inspectcache-deleted' => 'Кэш выдалены',
 	'inspectcache-list' => 'Сьпіс',
+	'right-inspectcache' => 'прагляд і выдаленьне элемэнтаў кэшу',
 );
 
 /** Bulgarian (Български)
@@ -353,7 +353,6 @@ $messages['fy'] = array(
 $messages['gl'] = array(
 	'inspectcache' => 'Inspeccionar a caché',
 	'inspectcache-desc' => 'Unha ferramanta de depuración sinxela para inspeccionar os contidos da caché compartida',
-	'inspectcache-ok' => 'De acordo',
 	'inspectcache-general' => 'Caché xeral',
 	'inspectcache-parser' => 'Analizador da memoria caché',
 	'inspectcache-message' => 'Caché das mensaxes',
@@ -361,6 +360,7 @@ $messages['gl'] = array(
 	'inspectcache-delete' => 'Eliminar',
 	'inspectcache-deleted' => 'Caché eliminada',
 	'inspectcache-list' => 'Lista',
+	'right-inspectcache' => 'Ver e borrar entradas da caché',
 );
 
 /** Gothic (Gothic)
@@ -506,7 +506,6 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'inspectcache' => 'Inspectar cache',
 	'inspectcache-desc' => 'Un simple instrumento correctional pro inspectar le contento del cache commun',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Cache general',
 	'inspectcache-parser' => 'Cache del analysator syntactic',
 	'inspectcache-message' => 'Cache de messages',
@@ -514,6 +513,7 @@ $messages['ia'] = array(
 	'inspectcache-delete' => 'Deler',
 	'inspectcache-deleted' => 'Cache delite',
 	'inspectcache-list' => 'Listar',
+	'right-inspectcache' => 'Vider e deler entratas del cache',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -918,7 +918,6 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'inspectcache' => 'Просмотр кэша',
 	'inspectcache-desc' => 'Простой инструмент отладки для просмотра содержимого общего кеша',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Общий кеш',
 	'inspectcache-parser' => 'Кеш парсера',
 	'inspectcache-message' => 'Кеш сообщений',
@@ -926,6 +925,7 @@ $messages['ru'] = array(
 	'inspectcache-delete' => 'Удалить',
 	'inspectcache-deleted' => 'Кеш удалён',
 	'inspectcache-list' => 'Все ключи',
+	'right-inspectcache' => 'просмотр и удаление записей кэша',
 );
 
 /** Slovak (Slovenčina)

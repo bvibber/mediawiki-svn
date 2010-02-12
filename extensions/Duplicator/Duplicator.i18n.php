@@ -1747,6 +1747,7 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Shinjiman
+ * @author Vina
  */
 $messages['zh-hans'] = array(
 	'duplicator' => '复制一篇文章',
@@ -1769,6 +1770,7 @@ $messages['zh-hans'] = array(
 	'duplicator-dest-invalid' => '请提供一个正确的目标标题。',
 	'duplicator-dest-exists' => '[[$1]]已经存在。请提供一个未存在的目标标题。',
 	'duplicator-toomanyrevisions' => '[[$1]]有太多 （$2次） 修订，不能够复制。当前的上限有$3次。',
+	'right-duplicate' => '复制文章',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
