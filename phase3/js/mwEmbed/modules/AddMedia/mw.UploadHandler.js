@@ -28,8 +28,9 @@ mw.addMessages({
 	"mwe-ignorewarning" : "Ignore warning and save file anyway",
 	"mwe-file-thumbnail-no" : "The filename begins with <b><tt>$1<\/tt><\/b>",
 	"mwe-go-to-resource" : "Go to resource page",
-	"mwe-upload-misc-error" : "Unknown upload error",
-	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>)."
+	"mwe-upload-misc-error" : "Unknown upload error",	
+	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",
+	"thumbnail-more" : "Enlarge"
 });
 
 var default_bui_options = {
@@ -129,7 +130,7 @@ mw.UploadHandler.prototype = {
 			this.api_url = mw.getLocalApiUrl();
 		}		
 		// Setup the UploadInterface handler
-		this.interface = mw.UploadInterface.factory( this.interface_type );		
+		this.interface = mw.UploadInterface.factory( this.interface_type );
 		
 		mw.log( "init mvUploadHandler:: " + this.api_url + ' interface: ' + this.interface );
 	},
@@ -979,8 +980,8 @@ mw.UploadHandler.prototype = {
 			options.api_url = mw.getLocalApiUrl();
 		}		
 
-		// Add the wpDestFile-warning row
-		if ( $j( '#wpDestFile-warning' ).length == 0 ) {
+		// Add the wpDestFile-warning row ( if in mediaWiki upload page )
+		if ( $j( options.warn_target  ).length == 0 ) {
 			$j( '#mw-htmlform-options tr:last' )
 				.after( 
 				$j('<tr />' )
@@ -995,11 +996,11 @@ mw.UploadHandler.prototype = {
 
 		// Show the AJAX spinner
 		$j( _this.selector ).after( 
-			$j('<img />')
+			$j('<div />')			
 			.attr({
-				'id' : "mw-spinner-wpDestFile",
-				'src' : stylepath + '/common/images/spinner.gif' 
+				'id' : "mw-spinner-wpDestFile",				
 			})
+			.loadingSpinner()
 		);		
 		// Setup the request
 		var request =  {
@@ -1013,7 +1014,7 @@ mw.UploadHandler.prototype = {
 		mw.getJSON( options.api_url, request, function( data ) {
 				// Remove spinner
 				$j( '#mw-spinner-wpDestFile' ).remove();
-
+				
 				if ( !data || !data.query || !data.query.pages ) {
 					// Ignore a null result
 					return;
@@ -1035,7 +1036,7 @@ mw.UploadHandler.prototype = {
 						var ntitle = data.query.pages[ page_id ].title
 					}
 					var img = data.query.pages[ page_id ].imageinfo[0];
-					$j( '#wpDestFile-warning' ).html(
+					$j( options.warn_target  ).html(
 						gM( 'mwe-fileexists', ntitle ) +
 						'<div class="thumb tright">' +
 						'<div ' +
@@ -1057,8 +1058,8 @@ mw.UploadHandler.prototype = {
 						'<div class="magnify">' +
 						'<a title="' + gM('thumbnail-more') + '" class="internal" ' +
 							'href="' + img.descriptionurl +'">' +
-						'<img width="15" height="11" alt="" ' +
-							'src="' + stylepath + "/common/images/magnify-clip.png\" />" +
+						'<img border="0" width="15" height="11" alt="" ' +
+							'src="' + mw.getConfig( 'images_path' ) + 'magnify-clip.png" />' +
 						'</a>' +
 						'</div>' +
 						gM( 'mwe-fileexists-thumb' ) +

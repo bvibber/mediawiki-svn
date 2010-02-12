@@ -24,15 +24,15 @@ var mwApiProxyDefaultConfig = {
 
 // User white_list should also be checked and configured at runtime.
 mw.ready( function() {
+	// Build our configuration from the default and mwApiProxyConfig vars
+	mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
+	mw.setConfig( 'apiProxyConfig',  mwApiProxyConfig);
+	 
 	//Do a setTimeout to 0 to call after other zero delay async events 
 	// ( once everyone is doing buildout withthin mwsetup priror to .ready this won't be needed. ) 
-	mw.load( 'ApiProxy', function(){
-	
+	mw.load( 'ApiProxy', function(){	
 		//Clear out the page content ( not needed for iframe proxy ) 
 		$j( 'body' ).html( '' );
-		 
-		// Build our configuration from the default and mwApiProxyConfig vars
-		mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
-		mw.ApiProxy.server( mwApiProxyConfig );
+		mw.ApiProxy.server();
 	});
 } );

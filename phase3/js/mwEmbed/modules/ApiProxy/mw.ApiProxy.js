@@ -193,41 +193,64 @@ mw.ApiProxy = { };
 		
 		// Setup the proxy callback to display the upload unhide the iframe upload form 
 		proxyCallback = function( iframeData ){
-			//hide the loading spinner
-			$j( options.target ).find('.loading_spinner').fadeOut('fast');
-			mw.log("iframe ready callback");
-			$j( '#' + iFrameName ).fadeIn( 'fast' );
+			//proccess fileBrowse callbacks::
+			
+			// check for basic status "ok"
+			if( iframeData['status'] == 'ok' ){
+				// Hide the loading spinner
+				$j( options.target ).find('.loading_spinner').fadeOut('fast');
+				mw.log("iframe ready callback");
+				$j( '#' + iFrameName ).fadeIn( 'fast' );	
+			}
+			// else check for event 
+			if( iframeData['event'] ){
+				switch( iframeData['event'] ){
+					case 'selectFileCb':
+						if( options.selectFileCb ){
+							options.selectFileCb( iframeData['fileName'] );
+						}
+					break;	
+					default:
+						mw.log(" Error unreconginzed event " + iframeData['event'] );
+				}
+				
+			}
+			
+			
 		}
 		
 	}
 	
 	/** 
 	* Api server proxy entry point: 
-	*
-	* @param {Object} proxyConfig The server side proxy configuration
-	* @param {Function} callbcak Function to call once server is setup
-	*
+	* validates the server frame request
+	* and proccess the request type
 	*/
-	$.server = function( proxyConfig, callback ) {			
+	$.server = function() {		
+		var proxyConfig = mw.getConfig( 'apiProxyConfig' );	
 		// Validate the server request:
-		if( validateIframeRequest( proxyConfig ) ){
-			var clientRequest = getClientRequest();
-			
-			// Inform the client frame that we passed validation
-			outputResultsFrame( clientRequest.clientFrame, 'nested_ok', { 'state':'ok' } );
-			// Process request type
-			if( clientRequest['browseFile'] ){
-				mw.log( "DO BROWSE FILE" );
-				serverBrowseFile( proxyConfig );
-				return ;
-			}						
-			// Else do a normal api request : 
-			return doApiRequest();
-		}												
+		if( !validateIframeRequest( proxyConfig ) ){
+			mw.log( "Not a valid iframe request");
+			return false;
+		}
+		var clientRequest = getClientRequest();
+		
+		// Inform the client frame that we passed validation
+		sendClientMsg( { 'state':'ok' } );
+		
+		// Process request type
+		if( clientRequest['browseFile'] ){
+			mw.log( "DO BROWSE FILE" );
+			serverBrowseFile( proxyConfig );
+			return ;
+		}						
+		// Else do a normal api request : 
+		return doApiRequest();
+											
 	}
 	
 	/**
-	* Local scoped helper functions:  
+	* Local scoped helper functions: (works well with closure compiler ) 
 	*/	
 	
 	/**
@@ -337,12 +360,24 @@ mw.ApiProxy = { };
 		
 		mw.log( "Setup server on: "  + mw.parseUri( document.URL ).host  );
 		mw.log('Client frame: ' + clientRequest.clientFrame );
-				
-		var clientDomain =  mw.parseUri( clientRequest.clientFrame ).host ;
-		
+							
 		/**
-		*	HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
+		* HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
 		*/		
+		return isAllowedClientFrame( clientRequest.clientFrame );
+			
+		
+		// Not a valid request return false
+	}
+	
+	/**
+	 * Check if a domain is allowed.
+	 * @param {Object} clientFrame
+	 */
+	function isAllowedClientFrame( clientFrame ){
+		var clientDomain =  mw.parseUri( clientFrame ).host ;
+		// Get the proxy config
+		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
 		// Check master blacklist
 		for ( var i in proxyConfig.master_blacklist ) {
 			if ( clientDomain == proxyConfig.master_blacklist ) {
@@ -356,16 +391,13 @@ mw.ApiProxy = { };
 				return true;
 			}
 		}
-		
 		// FIXME Add in user based approval :: 
 		
 		// FIXME offer the user the ability to "approve" requested domain save to
 		// their user preference setup )
 		
-		// FIXME grab the users whitelist for our current domain					
-		
-		// Not a valid request return false
-		return false;
+		// FIXME grab the users whitelist for our current domain			
+		return false;		
 	}
 	
 	/**
@@ -437,8 +469,8 @@ mw.ApiProxy = { };
 		$j.post( wgScriptPath + '/api' + wgScriptExtension,
 			clientRequest.request,
 			function( data ) {					
-				// Put it result into nested frame hash string: 
-				outputResultsFrame( clientRequest.clientFrame, 'nested_push', JSON.parse( data ) );
+				// Send the result data to the client 
+				sendClientMsg( JSON.parse( data ) );
 			}
 		);
 	}
@@ -451,7 +483,7 @@ mw.ApiProxy = { };
 	function serverBrowseFile( proxyConfig ){
 		//check for fw ( file width )
 		if( ! proxyConfig.fileWidth ){
-			proxyConfig.fileWidth = 200;
+			proxyConfig.fileWidth = 130;
 		}
 		//Build a form with bindings similar to uploadPage.js ( but only the browse button ) 		
 		$j('body').html(
@@ -478,12 +510,6 @@ mw.ApiProxy = { };
 			)
 		);
 		
-		// Local function to call once frame is ready:
-		function clientFrameReady( status ){
-			var clientRequest = getClientRequest();
-			// Inform the client frame that we passed validation
-			outputResultsFrame( clientRequest.clientFrame, 'browse_file', status );
-		}
 		
 		// load the mw.upload library with iframe interface (similar to uploadPage.js)
 		
@@ -491,53 +517,70 @@ mw.ApiProxy = { };
 		if ( typeof wgEnableFirefogg == 'undefined' ){
 			wgEnableFirefogg = true;
 		}
-				
+			
+		
+		var uploadConfig = {
+			// Set the interface type
+			'interface_type' : 'iframe',
+			
+			// Set the select file callback to update clientFrame
+			'selectFileCb' : function( fileName ){
+				sendClientMsg( {
+					'event': 'selectFileCb',
+					'fileName' : fileName
+				} );
+			}
+		}
+		
 		if( wgEnableFirefogg ){
 			mw.load( 'AddMedia.firefogg', function(){			
-				$j( '#wpUploadFile' ).firefogg( {
-					// Set the interface type
-					'interface_type' : 'iframe'
-				});
+				$j( '#wpUploadFile' ).firefogg( uploadConfig );
 				// Update status 
-				clientFrameReady( { 'firefogg' : 'ok' } );
+				sendClientMsg( {'status':'ok'} );
 			});
 		} else {
 			mw.load( 'AddMedia.UploadHandler', function(){						
-				$j( mwUploadFormSelector ).uploadHandler({
-					// Set the interface type
-					'interface_type' : 'iframe'
-				});
-				clientFrameReady();
+				$j( 'mw-upload-form' ).uploadHandler( uploadConfig );
+				sendClientMsg( {'status':'ok'} );
 			});
-		}
-		
-		
-		
-		
-		
+		}		
 	};
 	
 	/**
 	* Outputs the result object to the client domain
 	*
-	* @param {clientFrame} clientFrame Client frame name 
-	* @param {String} nestName Name of iframe	
-	* @param {resultObj} the result to pass back to the client domain
+	* @param {msgObj} msgObj Msg to send to client domain
 	*/ 
-	function outputResultsFrame( clientFrame,  nestName, resultObj ) {
-		$j( '#nested_push' ).remove();
+	function sendClientMsg( msgObj ) {
+		
+		// Get a local refrence to the client request		
+		var clientFrame = getClientRequest()['clientFrame'];
+		
+		// Double check that the client is an approved domain before outputing the iframe
+		if( ! isAllowedClientFrame ( clientFrame ) ){
+			mw.log( "cant send msg to " + clientFrame );
+			return false;
+		}
+		var nestName = 'NestedFrame_' + $j('iframe').length;
+				
 		// Setup the nested iframe proxy that points back to top domain 
-		// (can use jQuery buildout since we don't need to refrence this frame again)
+		// can't use jquery build out because of IE name attribute bug
 		$j( 'body' ).append( 
-			$j('<iframe>').attr({
-				'id' 	: nestName,
-				'name'	: nestName,
-				'src'	: clientFrame + '#' + escape( JSON.stringify( resultObj ) )
-			})
-			.css({
-				'display': 'none'
-			})
-		); 
+			'<iframe ' +
+				'id="' + nestName + '" ' +
+				'name="' + nestName + '" ' +
+				'src="' + clientFrame + '#' + escape( JSON.stringify( msgObj ) ) + '" ' +
+				'style="display:none" ' +
+			'></iframe>'
+		);
+		 
+		// After the nested frame is done loading schedule its removal
+		$j( '#' + nestName ).get( 0 ).onload = function() {
+			// use a settimeout to give time for client frame to propogate update.
+			setTimeout( function(){
+				$j('#' +  nestName ).remove();
+			}, 10 );
+		}
 	};
 	 		
 } )( window.mw.ApiProxy );

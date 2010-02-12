@@ -28,8 +28,10 @@ var mwUploadHelper = {
 					'interface_type' : 'dialog',
 					
 					'form_selector': mwUploadFormSelector,
-					'new_source_cb': function( orgFilename, oggName ) {
-						$j( '#wpDestFile' ).val( oggName );
+					
+					// Set the select file callback:
+					'selectFileCb': function( fileName ) {
+						$j( '#wpDestFile' ).val( fileName );
 						$j( '#wpDestFile' ).doDestCheck( {
 							'warn_target': '#wpDestFile-warning'
 						} );
