@@ -1,5 +1,7 @@
 // http://www.intridea.com/2007/12/16/faking-onpaste-in-firefox
 
+window.onload = populateRefName;
+
 function populateRefName() {
 	inpYear		= document.getElementById("inp_year");
 	inpRefName = document.getElementById("inp_refname");
