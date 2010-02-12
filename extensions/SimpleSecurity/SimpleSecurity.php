@@ -22,7 +22,7 @@
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
 if ( version_compare( $wgVersion, '1.12.0' ) < 0 ) die( 'Sorry, this extension requires at least MediaWiki version 1.12.0' );
 
-define( 'SIMPLESECURITY_VERSION', '4.3.5, 2009-08-08' );
+define( 'SIMPLESECURITY_VERSION', '4.4.0, 2010-02-13' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';
@@ -50,6 +50,11 @@ $wgSecurityGroupsArticle = false;
 
 # Extra group permissions rules
 $wgPageRestrictions = array();
+
+# Enable this if you use the RecordAdmin extension and want Record template's
+# protection to apply to all instances of that record type
+$wgSecurityProtectRecords = true;
+
 
 # Put SimpleSecurity's setup function before all others
 array_unshift( $wgExtensionFunctions, 'wfSetupSimpleSecurity' );
