@@ -15,17 +15,17 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': [['>=', 7]],
-		'firefox': [['>=', 3]],
-		'opera': [['>=', 9.6]],
+		'msie': [['>=', 1000]], // Off for now
+		'firefox': [['>=', 1000]], // Off for now
+		'opera': [['>=', 1000]], // Off for now
 		'safari': [['==', 1000]], // Off for now
 		'chrome': [['==', 1000]] // Off for now
 	},
 	// Right-to-left languages
 	'rtl': {
-		'msie': [['>=', 8]],
-		'firefox': [['>=', 3]],
-		'opera': [['>=', 9.6]],
+		'msie': [['>=', 1000]], // Off for now
+		'firefox': [['>=', 1000]], // Off for now
+		'opera': [['>=', 1000]], // Off for now
 		'safari': [['==', 1000]], // Off for now
 		'chrome': [['==', 1000]] // Off for now
 	}
