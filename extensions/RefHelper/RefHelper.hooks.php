@@ -5,17 +5,16 @@ if (!defined('MEDIAWIKI')) {
 }
 
 class RefHelperHooks {
-	function __construct() {
+	static function addRefHelperJavascript( $pageObj ) {
 		wfLoadExtensionMessages('RefHelper');
-	}
-	function addRefHelperJavascript( $pageObj ) {
 	    global $wgRefHelperExtensionPath;
 	    $pageObj->addScript( 
 			Xml::element('script',array('src'=>"$wgRefHelperExtensionPath/refhelper.js", 'type'=>'text/javascript') ) );
-	    return TRUE;
+	    return true;
 	}
 	
-	function addRefHelperLink( $tpl ) {
+	static function addRefHelperLink( $tpl ) {
+		wfLoadExtensionMessages('RefHelper');
 		global $wgScript;
 		echo Xml::openElement('li',array('class'=>'t-reflink')) .
 			Xml::element('a',array('href'=>"$wgScript?title=Special:RefHelper"), wfMsg( RefHelper::MSG . 'toolbox_link_create' ) ) .
@@ -23,6 +22,6 @@ class RefHelperHooks {
 		echo Xml::openElement('li',array('class'=>'t-reflink')) .
 			Xml::element('a',array('href'=>"$wgScript?title=Special:RefSearch"), wfMsg( RefHelper::MSG . 'toolbox_link_search' ) ) .
 			Xml::closeElement('li');
-	    return TRUE;
+	    return true;
 	}
 }

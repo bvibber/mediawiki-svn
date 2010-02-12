@@ -25,5 +25,9 @@ $messages['en'] = array(
 	'refhelper-search' => 'Search',
 	'refhelper-toolbox_link_create' => 'Create reference',
 	'refhelper-toolbox_link_search' => 'Create reference from search',
+	'refhelper-newarticle_nocitation' => 'There is currently no citation with this name. ',
+	'refhelper-newarticle_suggestions' => "If there is a matching citation from below, you can create this page by clicking on the corresponding \"Create\" button.\n<h2>Suggestions</h2>\n",
+	'refhelper-newarticle_nosuggestions' => "Unfortunately, I was unable to suggest any references.  You can [[Special:RefHelper|add the reference manually]] or [[Special:RefSearch|search for the citation to add]].\n",
+
 );
 ?>

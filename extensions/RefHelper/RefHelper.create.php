@@ -207,7 +207,7 @@ class RefHelper extends SpecialPage {
 				$newcontent = '{{'."$wgRefHelperCiteTemplate\n$paramtext}}\n";
 
 				$citePage = new Article( $citeTitle );
-				$citePage->doEdit( $newcontent, "Automated page creation." );
+				$citePage->doEdit( $newcontent, wfMsg(self::MSG.'refcreate_autocomment') );
 				$rev_id = $citePage->insertOn( $db );
 
 				$wgOut->addWikiText( wfMsg(self::MSG.'refcreate_success', array("$wgRefHelperCiteNS:$refname") ) );

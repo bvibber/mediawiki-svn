@@ -15,8 +15,6 @@ class RefSearch extends SpecialPage {
 		$action = $wgRequest->getText('action');
 
 		$query = htmlentities($wgRequest->getText('query'));
-		$query = str_replace(" ","+",$query);
-		$reqfilled = strlen($query);
  
 		# Output
 		$wgOut->addHTML(
@@ -42,44 +40,80 @@ class RefSearch extends SpecialPage {
 			Xml::closeElement('table') .
 			Xml::closeElement('form') );
 
+		$reqfilled = strlen($query);
 		if( $action=="submit" || $reqfilled ) {
-			$ch = curl_init("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=$query&tool=mediawiki_refhelper");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			$result = curl_exec($ch);
-			curl_close($ch);
-
-			$num = preg_match_all("|<Id>(\d+)</Id>|", $result, $matches );
-			
-			$wgOut->addHTML(Xml::openElement('table'));
-			for( $i = 0; $i < $num; $i++ ) {
-				$pmid = $matches[1][$i];
-				$result = self::query_pmid($pmid);
-
-				$author = array_shift($result["authors"]);
-				if( isset($author) ) $author = $author[1];
-				$title = $result["title"];
-				$query = $result["query_url"];
-				$year = $result["year"];
-				if( count($result["AU"]) > 1 ) $etal = " et al.";
-				else $etal = "";
-
-				$wgOut->addHTML(
-					Xml::openElement('tr') .
-					Xml::element('td',null,"$author $etal ($year) \"$title\"") .
-					Xml::openElement('td') .
-					Xml::openElement('form',array('method'=>'get', 'action'=>$wgScript, 'id'=>"mw-create-ref-form$i")) .
-					Xml::hidden( 'title', 'Special:RefHelper' ) .
-					Xml::hidden( 'pmid', $pmid ) .
-					Xml::element('input',array('value'=>wfMsg(RefHelper::MSG.'create'), 'type'=>'submit')) .
-					Xml::closeElement('form') .
-					Xml::closeElement('td') .
-					Xml::closeElement('tr') );
-			}
-			$wgOut->addHTML( Xml::closeElement('table') );
+			$wgOut->addHTML( self::perform_search( $query ) );
 		}
 		$wgOut->addHTML( Xml::closeElement('fieldset') );
 	}
-	static function parse_medline( $text, $field ) {
+	static function newArticleHook(&$editpage ) {
+		wfLoadExtensionMessages('RefHelper');
+		global $wgOut, $wgRefHelperCiteNS;
+
+		// don't display if page already exists
+		$title = $editpage->getArticle()->getTitle();
+		if( $title->exists() ) return true;
+		if( $title->getNsText()!==$wgRefHelperCiteNS) return true;
+
+		$editpage->setHeaders();
+
+		$query = $title->getText();
+		$query = preg_replace('/ ((?>19|20)[0-9]{2})$/',' $1[PDAT]',$query);
+		$query = preg_replace('/(?> |^)([^0-9]+) /',' $1[AUTH] ',$query);
+		/*$query = preg_replace('/ ([0-9]{4})$/',' $1[PDAT]',$query);*/
+
+		$wgOut->addWikiMsg( RefHelper::MSG . 'newarticle_nocitation');
+
+		$result = self::perform_search( $query );
+		if( $result ) {
+			$wgOut->addWikiMsg( RefHelper::MSG . 'newarticle_suggestions');
+			$wgOut->addHTML( $result );
+		}
+		else {
+			$wgOut->addWikiMsg( RefHelper::MSG . 'newarticle_nosuggestions');
+		}
+		return false;
+	}
+	static function perform_search( $query ) {
+		global $wgScript;
+		$query = str_replace(" ","+",$query);
+		$ch = curl_init("http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?term=$query&tool=mediawiki_refhelper");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$result = curl_exec($ch);
+		curl_close($ch);
+
+		$num = preg_match_all("|<Id>(\d+)</Id>|", $result, $matches );
+		if( $num === 0 || $num === false ) return false;
+		
+		$ret = Xml::openElement('table');
+		for( $i = 0; $i < $num; $i++ ) {
+			$pmid = $matches[1][$i];
+			$result = self::query_pmid($pmid);
+
+			$author = array_shift($result["authors"]);
+			if( isset($author) ) $author = $author[1];
+			$title = $result["title"];
+			$query = $result["query_url"];
+			$year = $result["year"];
+			if( count($result["AU"]) > 1 ) $etal = " et al.";
+			else $etal = "";
+
+			$ret .= 
+				Xml::openElement('tr') .
+				Xml::element('td',null,"$author $etal ($year) \"$title\"") .
+				Xml::openElement('td') .
+				Xml::openElement('form',array('method'=>'get', 'action'=>$wgScript, 'id'=>"mw-create-ref-form$i")) .
+				Xml::hidden( 'title', 'Special:RefHelper' ) .
+				Xml::hidden( 'pmid', $pmid ) .
+				Xml::element('input',array('value'=>wfMsg(RefHelper::MSG.'create'), 'type'=>'submit')) .
+				Xml::closeElement('form') .
+				Xml::closeElement('td') .
+				Xml::closeElement('tr');
+		}
+		$ret .= Xml::closeElement('table');
+		return $ret;
+	}
+	private static function parse_medline( $text, $field ) {
 		$field = strtoupper($field);
 		$num = preg_match_all("|\n$field\s*- (.*)(?>\n      (.*))*|", $text, $matches, PREG_SET_ORDER );
 		$ret = array();

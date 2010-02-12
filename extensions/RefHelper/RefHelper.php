@@ -44,7 +44,7 @@ global $wgHooks;
 
 $wgHooks['SkinTemplateToolboxEnd'][] = 'RefHelperHooks::addRefHelperLink';
 $wgHooks['BeforePageDisplay'][] = 'RefHelperHooks::addRefHelperJavascript';
-
+$wgHooks['AlternateEdit'][] = 'RefSearch::newArticleHook';
  
  
 $dir = dirname(__FILE__) . '/';
