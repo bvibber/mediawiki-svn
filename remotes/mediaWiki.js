@@ -125,6 +125,7 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == 'MediaWiki:ApiProxyBrowserFile' ) {
 		var wgEnableIframeApiProxy = true;
 		loadMwEmbed( [ 'mw.proxy' ], function() {
+			mwApiProxyConfig = {};
 			mwApiProxyConfig[ 'browserFile' ] = true;
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
