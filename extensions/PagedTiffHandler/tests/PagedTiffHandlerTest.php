@@ -6,13 +6,13 @@
 * - Upload multipage.tiff when PagedTiffHandler is active
 */
 
-try {
-	require_once( dirname(__FILE__) . '/../../../maintenance/commandLine.inc' );
+if ( getenv( 'MW_INSTALL_PATH' ) ) {
+    $IP = getenv( 'MW_INSTALL_PATH' );
+} else {
+    $IP = dirname( __FILE__ ) . '/../../..';
 }
-catch(Exception $e) {
-	require_once( dirname(__FILE__) . '/../../../phase3/maintenance/commandLine.inc' );
-}
-// ini_set( 'include_path', get_include_path() . PATH_SEPARATOR . /*$_SERVER['PHP_PEAR_INSTALL_DIR']*/ 'C:\php\pear' );
+require_once( "$IP/maintenance/commandLine.inc" );
+
 // requires PHPUnit 3.4
 require_once 'PHPUnit/Framework.php';
 
