@@ -1,4 +1,5 @@
-/* Firefogg support.
+/**
+ * Firefogg support.
  * autodetects: new upload api or old http POST.
  */
 
@@ -45,7 +46,7 @@ var default_firefogg_options = {
 	'only_firefogg': false,
 
 	// Callback which is called when the source name changes
-	'new_source_cb': false,
+	'selectFileCb': false,
 
 	// jQuery selector identifying the target control container or form (can't be left null)
 	'selector': '',
@@ -160,7 +161,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			// Prefix conflicting members with parent_
 			for ( var i in myBUI ) {
 				if ( this[i] ) {
-					this['parent_'+ i] = myBUI[i];
+					this[ 'parent_'+ i ] = myBUI[i];
 				} else {
 					this[i] =  myBUI[i];
 				}
@@ -621,8 +622,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			.show();
 
 
-		// Notify callback new_source_cb
-		if ( _this.new_source_cb ) {
+		// Notify callback selectFileCb
+		if ( _this.selectFileCb ) {
 			if ( settings['passthrough'] ) {
 				var fName = _this.fogg.sourceFilename;
 			} else {
@@ -633,7 +634,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					_this.fogg.sourceFilename.lastIndexOf( '.' ) );
 				var fName = oggName + '.' + oggExt;
 			}
-			_this.new_source_cb( _this.fogg.sourceFilename, fName );
+			_this.selectFileCb( fName );
 		}
 	},
 
@@ -1059,7 +1060,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			
 
 			if ( _this.oldResponseText != response_text ) {
-				mw.log( 'new result text:' + response_text + ' state:' + _this.fogg.state );
+				mw.log( 'Fogg: new result text:' + response_text + ' state:' + _this.fogg.state );
 				_this.oldResponseText = response_text;
 				// Parse the response text and check for errors
 				try {
@@ -1072,8 +1073,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					} catch( e ) {
 						var apiResult = null;
 					}
-				}				
-		
+				}
+											
 				//Check for success:
 				if( apiResult && _this.isApiSuccess( apiResult ) ){
 					if( _this.processApiResult ( apiResult ) ){
@@ -1144,7 +1145,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * @param {Element} dialogElement Dialog element that was "canceled"  
 	 */
 	onCancel: function( dialogElement ) {
-		if ( !this.have_firefogg ) {
+		if ( !this.getFirefogg() ) {
 			return this.parent_cancel_action();
 		}
 		mw.log( 'firefogg:cancel' )

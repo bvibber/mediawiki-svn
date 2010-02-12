@@ -147,7 +147,7 @@ var default_form_options = {
 						'enable_chunks' : false,
 											
 						'form_selector' : '#suf_upload',
-						'new_source_cb' : function( orgFilename, oggName ) {
+						'selectFileCb' : function( fileName ) {
 							$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
 								warn_target: "#wpDestFile-warning"
 							} );

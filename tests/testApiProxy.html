@@ -79,27 +79,41 @@ function doAppend(){
 
 function doFileUpload(){
 	$j('#file-upload-container').fadeIn( 'slow' );		
-	$j('#browseTarget').html( mw.loading_spinner() );
+	$j('#browseTarget').loadingSpinner();
+
+	mw.load('AddMedia.firefogg', function(){	
+		mw.load( 'ApiProxy', function(){						
+			var browserFrame = mw.ApiProxy.browseFile( {
+				//Target div to put the iframe browser button:
+				'target' : '#browseTarget',
 	
-	mw.load( 'ApiProxy', function(){						
-		var browserFrame = mw.ApiProxy.browseFile( {
-			'target' : '#browseTarget',
-			'api_url' : remote_api_url,
-			// File Destination Name change callback: 
-			'destinationCB' : function( fname ){
-				// Update our local target:
-				$j('#target-fname').val( fname );
-				// Run a destination file name check on the remote target 			
+				// Api url to upload to
+				'api_url' : remote_api_url,
+	
+				// File Destination Name change callback: 
+				'selectFileCb' : function( fname ){				
+					// Update our local target:
+					$j('#target-fname').val( fname );
+					// Run a destination file name check on the remote target 			
+					$j('#target-fname').doDestCheck( {
+						'api_url' : remote_api_url,
+						'warn_target': '#file-warning'
+					} );				
+				}			
+			} );	
+
+			// Setup doDestCheck on change
+			$j('#target-fname').change(function(){
 				$j('#target-fname').doDestCheck( {
 					'api_url' : remote_api_url,
 					'warn_target': '#file-warning'
-				} );
+				} );	
+			});
 				
-			}			
-		} );		
+		})
 	});
-	
-}
+};
+
 </script>
  
 </head>
