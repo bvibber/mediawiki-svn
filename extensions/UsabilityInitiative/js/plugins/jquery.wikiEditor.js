@@ -81,13 +81,13 @@ $.wikiEditor = {
 		// Check for and make use of cached value and early opportunities to bail
 		if ( module ) {
 			// If the module doesn't exist, it's clearly not supported
-			if ( !( module in $.wikiEditor.modules ) ) {
+			if ( typeof $.wikiEditor.modules[module] == 'undefined' ) {
 				return false;
 			} else if ( typeof $.wikiEditor.modules[module].supported !== 'undefined' ) {
 				// Cache hit
 				return $.wikiEditor.modules[module].supported;
 			}
-		} else if ( typeof $.wikiEditor.modules[module] !== 'undefined' ) {
+		} else {
 			if ( typeof $.wikiEditor.supported !== 'undefined' ) {
 				// Cache hit
 				return $.wikiEditor.supported;
