@@ -39,7 +39,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $par String or null
 	 */
 	function execute( $par ) {
-		global $wgRequest, $wgUser, $wgOut;
+		global $wgRequest, $wgUser, $wgOut, $wgOpenIDConsumerForce;
 
 		wfLoadExtensionMessages( 'OpenID' );
 
@@ -70,6 +70,9 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			if ( !is_null( $openid_url ) && strlen( $openid_url ) > 0 ) {
 				$this->login( $openid_url, $this->getTitle( 'Finish' ) );
+		 	} else if (!is_null ( $wgOpenIDConsumerForce )) {
+		 		// if a forced OpenID provider specified, bypass the form
+		 		$this->login( $wgOpenIDConsumerForce, $this->getTitle( 'Finish' ) );
 			} else {
 				$this->loginForm();
 			}
@@ -167,7 +170,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $sreg Array: options get from OpenID
 	 * @param $messagekey String or null: message name to display at the top
 	 */
-	function chooseNameForm( $openid, $sreg, $messagekey = null ) {
+	function chooseNameForm( $openid, $sreg, $ax, $messagekey = null ) {
 		global $wgOut, $wgOpenIDOnly, $wgAllowRealName;
 
 		if ( $messagekey ) {
@@ -255,14 +258,22 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		# These options won't exist if we can't get them.
-		if ( array_key_exists( 'fullname', $sreg ) && $this->userNameOK( $sreg['fullname'] ) ) {
+		if ( array_key_exists( 'fullname', $sreg ) ) {
+			$fullname = $sreg['fullname'];
+		}
+                       
+		if ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) {
+			$fullname = $ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0];
+		}
+               
+		if ( $fullname && $this->userNameOK( $fullname ) ) {
 			$wgOut->addHTML(
 				Xml::openElement( 'tr' ) .
 				Xml::tags( 'td', array( 'class' => 'mw-label' ),
 					Xml::radio( 'wpNameChoice', 'full', !$def, array( 'id' => 'wpNameChoiceFull' ) )
 				) .
 				Xml::tags( 'td', array( 'class' => 'mw-input' ),
-					Xml::label( wfMsg( 'openidchoosefull', $sreg['fullname'] ), 'wpNameChoiceFull' )
+					Xml::label( wfMsg( 'openidchoosefull', $fullname ), 'wpNameChoiceFull' )
 				) .
 				Xml::closeElement( 'tr' ) . "\n"
 			);
@@ -325,7 +336,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function chooseName() {
 		global $wgRequest, $wgUser, $wgOut;
 
-		list( $openid, $sreg ) = $this->fetchValues();
+		list( $openid, $sreg, $ax ) = $this->fetchValues();
 		if ( is_null( $openid ) ) {
 			wfDebug( "OpenID: aborting in ChooseName because identity_url is missing\n" );
 			$this->clearValues();
@@ -350,26 +361,27 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			);
 
 			if ( !$user ) {
-				$this->chooseNameForm( $openid, $sreg, 'wrongpassword' );
+				$this->chooseNameForm( $openid, $sreg, $ax, 'wrongpassword' );
 				return;
 			}
 
 			$force = array();
 			foreach( array( 'fullname', 'nickname', 'email', 'language' ) as $option ) {
-				if ( $wgRequest->getCheck( 'wpUpdateUserInfo' . $option ) )
+				if ( $wgRequest->getCheck( 'wpUpdateUserInfo' . $option ) ) {
 					$force[] = $option;
+				}
 			}
-			$this->updateUser( $user, $sreg );
+			$this->updateUser( $user, $sreg, $ax );
 		} else {
-			$name = $this->getUserName( $openid, $sreg, $choice, $nameValue );
+			$name = $this->getUserName( $openid, $sreg, $ax, $choice, $nameValue );
 
 			if ( !$name || !$this->userNameOK( $name ) ) {
 				wfDebug( "OpenID: Name not OK: '$name'\n" );
-				$this->chooseNameForm( $openid, $sreg );
+				$this->chooseNameForm( $openid, $sreg, $ax );
 				return;
 			}
 
-			$user = $this->createUser( $openid, $sreg, $name );
+			$user = $this->createUser( $openid, $sreg, $ax, $name );
 		}
 
 		if ( is_null( $user ) ) {
@@ -392,7 +404,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * form
 	 */
 	function finish() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgOpenIDUseEmailAsNickname;
 
 		wfSuppressWarnings();
 		$consumer = $this->getConsumer();
@@ -427,6 +439,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 			$sreg_resp = Auth_OpenID_SRegResponse::fromSuccessResponse( $response );
 			$sreg = $sreg_resp->contents();
+			$ax_resp = Auth_OpenID_AX_FetchResponse::fromSuccessResponse( $response );
+			$ax = $ax_resp->data;
 			wfRestoreWarnings();
 
 			if ( is_null( $openid ) ) {
@@ -438,15 +452,24 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$user = self::getUser( $openid );
 
 			if ( $user instanceof User ) {
-				$this->updateUser( $user, $sreg ); # update from server
+				$this->updateUser( $user, $sreg, $ax ); # update from server
 				$wgUser = $user;
 				$this->displaySuccessLogin( $openid );
 			} else {
-				$this->saveValues( $openid, $sreg );
-				$this->chooseNameForm( $openid, $sreg );
+				// if we are hardcoding nickname, and a valid e-mail address was returned, create a user with this name
+				if ($wgOpenIDUseEmailAsNickname) {
+					$name = $this->getNameFromEmail( $openid, $sreg, $ax );
+					if ($name) {
+						$wgUser = $this->createUser( $openid, $sreg, $ax, $name );
+						$this->displaySuccessLogin( $openid );
+					}
+				} else {
+					$this->saveValues( $openid, $sreg, $ax );
+					$this->chooseNameForm( $openid, $sreg, $ax );
 				return;
 			}
 		}
+	}
 	}
 
 	/**
@@ -456,20 +479,26 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $sreg Array of options get from OpenID
 	 * @param $force forces update regardless of user preferences
 	 */
-	function updateUser( $user, $sreg, $force = false ) {
+	function updateUser( $user, $sreg, $ax, $force = false ) {
 		global $wgAllowRealName, $wgEmailAuthentication;
 
 		// Nick name
 		if ( $this->updateOption( 'nickname', $user, $force ) ) {
-			// FIXME: only update if there's been a change
-			if ( array_key_exists( 'nickname', $sreg ) )
+			if ( array_key_exists( 'nickname', $sreg ) && $sreg['nickname'] != $user->getOption( 'nickname' ) ) {
 				$user->setOption( 'nickname', $sreg['nickname'] );
+			}
 		}
 
 		// E-mail
 		if ( $this->updateOption( 'email', $user, $force ) ) {
+			// first check SREG, then AX; if both, AX takes higher priority
 			if ( array_key_exists( 'email', $sreg ) ) {
 				$email = $sreg['email'];
+			}
+			if ( array_key_exists ( 'http://axschema.org/contact/email', $ax ) ) {
+				$email = $ax['http://axschema.org/contact/email'][0];
+			}
+			if ($email) {
 				// If email changed, then email a confirmation mail
 				if ( $email != $user->getEmail() ) {
 					$user->setEmail( $email );
@@ -486,8 +515,13 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 
 		// Full name
 		if ( $wgAllowRealName && ( $this->updateOption( 'fullname', $user, $force ) ) ) {
-			if ( array_key_exists( 'fullname', $sreg ) )
+			if ( array_key_exists( 'fullname', $sreg ) ) {
 				$user->setRealName( $sreg['fullname'] );
+			}
+
+			if ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) {
+				$user->setRealName($ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0]);
+			}
 		}
 
 		// Language
@@ -514,8 +548,8 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 */
 	private function updateOption( $option, User $user, $force ) {
 		return $force === true || ( is_array( $force ) && in_array( $option, $force ) ) ||
-			$user->getOption( 'openid-update-userinfo-on-login-' . $option ) ||
-			$user->getOption( 'openid-update-userinfo-on-login' ); // Back compat with old option
+			$user->getOption( 'openid-update-on-login-' . $option ) ||
+			$user->getOption( 'openid-update-on-login' ); // Back compat with old option
 	}
 
 	/**
@@ -546,7 +580,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		$wgOut->returnToMain( false, $returnto, $returntoquery );
 	}
 
-	function createUser( $openid, $sreg, $name ) {
+	function createUser( $openid, $sreg, $ax, $name ) {
 		global $wgAuth;
 
 		$user = User::newFromName( $name );
@@ -570,7 +604,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$ssUpdate->doUpdate();
 
 			self::addUserUrl( $user, $openid );
-			$this->updateUser( $user, $sreg, true );
+			$this->updateUser( $user, $sreg, $ax, true );
 			$user->saveSettings();
 			return $user;
 		}
@@ -595,13 +629,22 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	# Methods to get the user name
 	# ----------------------------
 
-	function getUserName( $openid, $sreg, $choice, $nameValue ) {
+	function getUserName( $openid, $sreg, $ax, $choice, $nameValue ) {
 		switch ( $choice ) {
 		 case 'nick':
 		 	return ( ( array_key_exists( 'nickname', $sreg ) ) ? $sreg['nickname'] : null );
 		 	break;
 		 case 'full':
-			return ( ( array_key_exists( 'fullname', $sreg ) ) ? $sreg['fullname'] : null );
+		 	# check the SREG first; only return a value if non-null
+		 	$fullname = ( ( array_key_exists( 'fullname', $sreg ) ) ? $sreg['fullname'] : null );
+		 	if (!is_null($fullname)) {
+			 	return $fullname;
+			}
+
+		 	# try AX
+		 	$fullname = ( ( array_key_exists( 'http://axschema.org/namePerson/first', $ax ) || array_key_exists( 'http://axschema.org/namePerson/last', $ax ) ) ? $ax['http://axschema.org/namePerson/first'][0] . " " . $ax['http://axschema.org/namePerson/last'][0] : null );
+
+		 	return $fullname;
 			break;
 		 case 'url':
 			return $this->toUserName( $openid );
@@ -621,6 +664,25 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			return $this->toUserNameXri( $openid );
 		} else {
 			return $this->toUserNameUrl( $openid );
+		}
+	}
+
+	function getNameFromEmail($openid, $sreg, $ax) {
+
+		# return the part before the @ in the e-mail address;
+		# look at AX, then SREG.
+		if ( array_key_exists ( 'http://axschema.org/contact/email', $ax ) ) {
+			$addr = explode( "@", $ax['http://axschema.org/contact/email'][0] );
+			if ( $addr ) {
+				return $addr[0];
+			}
+		}
+
+		if ( array_key_exists( 'email', $sreg ) ) {
+			$addr = explode( "@", $sreg['email'] );
+			if ( $addr ) {
+				return $addr[0];
+			}
 		}
 	}
 
@@ -722,11 +784,12 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	# Session stuff
 	# -------------
 
-	function saveValues( $response, $sreg ) {
+	function saveValues( $response, $sreg, $ax ) {
 		$this->setupSession();
 
 		$_SESSION['openid_consumer_response'] = $response;
 		$_SESSION['openid_consumer_sreg'] = $sreg;
+		$_SESSION['openid_consumer_ax'] = $ax;
 
 		return true;
 	}
@@ -734,13 +797,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function clearValues() {
 		unset( $_SESSION['openid_consumer_response'] );
 		unset( $_SESSION['openid_consumer_sreg'] );
+		unset( $_SESSION['openid_consumer_ax'] );
 		return true;
 	}
 
 	function fetchValues() {
 		$response = isset( $_SESSION['openid_consumer_response'] ) ? $_SESSION['openid_consumer_response'] : null;
 		$sreg = isset( $_SESSION['openid_consumer_sreg'] ) ? $_SESSION['openid_consumer_sreg'] : null;
-		return array( $response, $sreg );
+		$ax = isset( $_SESSION['openid_consumer_ax'] ) ? $_SESSION['openid_consumer_ax'] : null;
+		return array( $response, $sreg, $ax );
 	}
 
 	function returnTo() {

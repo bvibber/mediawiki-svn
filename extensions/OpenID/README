@@ -234,6 +234,14 @@ LocalSettings.php file. Please read carefully.
   OpenIDs you want to deny access to. This is mostly useful for
   servers that are known to be bad. Example: "#^(http://)?example.com/#".
 
+* $wgOpenIDConsumerForce -- a single provider which will always be used,
+  bypassing the selection dialog and manual entry.  Useful for team wikis
+  using a provider such as Google Apps for Your Domain.
+  
+* $wgOpenIDUseEmailAsNickname -- designed for use with the above, parse 
+  the e-mail address provided by your consumer and use the user component
+  as the MediaWiki username.
+
 * $wgOpenIDServerForceAllowTrust -- an array of regular expressions
   that match trust roots that you want to skip trust checks for when
   the user logs in from those sites. A typical example would be a

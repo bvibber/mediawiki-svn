@@ -92,6 +92,20 @@ $wgOpenIDConsumerAllow = array();
 $wgOpenIDConsumerDeny = array();
 
 /**
+ * Force this server to only allow authentication against one server; 
+ * hides the selection form entirely. 
+ */
+$wgOpenIDConsumerForce = null;
+
+/**
+ * Use the part before the @ in any given e-mail address as the username
+ * if a nickname is not given by the OP.
+ * This works well with $wgOpenIDConsumerForce where all users have a unique
+ * e-mail address at the same domain.
+ */
+$wgOpenIDUseEmailAsNickname = false;
+
+/**
  * Where to store transitory data.
  * Supported types are 'file', 'memcached', 'db'.
  */

@@ -27,6 +27,7 @@
 
 require_once( "Auth/OpenID/Consumer.php" );
 require_once( "Auth/OpenID/SReg.php" );
+require_once( "Auth/OpenID/AX.php" );
 require_once( "Auth/OpenID/FileStore.php" );
 
 class SpecialOpenID extends SpecialPage {
@@ -247,6 +248,24 @@ class SpecialOpenID extends SpecialPage {
 			$auth_request->addExtension( $sreg_request );
 		}
 
+		// Create attribute request object. Depending on your endpoint, you can request many things:
+		// see http://code.google.com/apis/accounts/docs/OpenID.html#Parameters for parameters.
+		// Usage: make($type_uri, $count=1, $required=false, $alias=null)
+		$attribute[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/contact/email', 1, 1, 'email');
+		$attribute[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/first', 1, 1, 'firstname');
+		$attribute[] = Auth_OpenID_AX_AttrInfo::make('http://axschema.org/namePerson/last', 1, 1, 'lastname');
+
+		// Create AX fetch request and add attributes
+		$ax_request = new Auth_OpenID_AX_FetchRequest;
+		
+		foreach($attribute as $attr){
+			$ax_request->add($attr);
+		}
+
+		if ($ax_request) {
+			$auth_request->addExtension($ax_request);
+		}		
+
 		$process_url = $this->scriptUrl( $finish_page );
 
 		if ( $auth_request->shouldSendRedirect() ) {
@@ -281,10 +300,11 @@ class SpecialOpenID extends SpecialPage {
 	function scriptUrl( $par = false ) {
 		global $wgServer, $wgScript;
 
-		if ( !is_object( $par ) )
+		if ( !is_object( $par ) ) {
 			$nt = $this->getTitle( $par );
-		else
+		} else {
 			$nt = $par;
+		}
 
 		if ( !is_null( $nt ) ) {
 			$dbkey = wfUrlencode( $nt->getPrefixedDBkey() );
