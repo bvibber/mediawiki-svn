@@ -14,7 +14,7 @@ class RefHelper extends SpecialPage {
 	private function addTableRow( &$out, $varname, $varval, $label, $size = 50 ) {
 		$out->addHTML( Xml::openElement('tr'));
 		$out->addHTML( Xml::openElement('td',array('class'=>'mw-label')));
-		$out->addHTML( Xml::element('label',array('for'=>$varname),"$label:"));
+		$out->addHTML( Xml::element('label',array('for'=>$varname),"$label"));
 		$out->addHTML( Xml::closeElement('td'));
 		$out->addHTML( Xml::openElement('td'));
 		$out->addHTML( Xml::input($varname,$size,$varval,array('id'=>"inp_$varname")));
@@ -27,7 +27,7 @@ class RefHelper extends SpecialPage {
 	private function add2ColTableRow( &$out, $varname1, $varname2, $varval1, $varval2, $label1, $label2 ) {
 		$out->addHTML( Xml::openElement('tr'));
 		$out->addHTML( Xml::openElement('td',array('class'=>'mw-label')));
-		$out->addHTML( Xml::element('label', array('for'=>$varname1),"$label1:"));
+		$out->addHTML( Xml::element('label', array('for'=>$varname1),"$label1"));
 		$out->addHTML( Xml::closeElement('td'));
 		$out->addHTML( Xml::openElement('td'));
 		$out->addHTML( Xml::input($varname1,15,$varval1,array('id'=>"inp_$varname1",'oninput'=>'updateFirstName(event)')));

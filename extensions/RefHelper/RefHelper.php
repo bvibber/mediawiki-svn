@@ -18,11 +18,12 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'RefHelper',
 	'author' => 'Jonathan Williford',
-	'url' => 'http://neurov.is/on',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RefHelper',
 	'description' => 'This extension helps create pages for references.',
-	'descriptionmsg' => 'This extension helps create pages for references.',
+	'descriptionmsg' => 'refhelper-desc',
 	'version' => '0.0.2',
 );
 
@@ -56,3 +57,6 @@ $wgExtensionMessagesFiles['RefHelper'] = $dir . 'RefHelper.i18n.php';
 $wgExtensionAliasesFiles['RefHelper'] = $dir . 'RefHelper.alias.php';
 $wgSpecialPages['RefHelper'] = 'RefHelper';
 $wgSpecialPages['RefSearch'] = 'RefSearch';
+$wgSpecialPageGroups['RefHelper'] = 'other';
+$wgSpecialPageGroups['RefSearch'] = 'other';
+
