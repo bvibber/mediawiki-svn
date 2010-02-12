@@ -7277,7 +7277,6 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'getCaretPosition': function( options ) {
 			var startPos = null, endPos = null;
-			var d = context.$iframe[0].contentWindow.document;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				var selection = context.$iframe[0].contentWindow.getSelection();
 				if ( selection.rangeCount == 0 ) {
@@ -7288,7 +7287,7 @@ if ( typeof context == 'undefined' ) {
 				var so = selection.getRangeAt( 0 ).startOffset, eo = selection.getRangeAt( 0 ).endOffset;
 				if ( sc.nodeName == 'BODY' ) {
 					// Grab the node just before the start of the selection
-					var n = d.body.firstChild;
+					var n = sc.firstChild;
 					for ( var i = 0; i < so - 1 && n; i++ ) {
 						n = n.nextSibling;
 					}
@@ -7296,7 +7295,7 @@ if ( typeof context == 'undefined' ) {
 					so = 0;
 				}
 				if ( ec.nodeName == 'BODY' ) {
-					var n = d.body.firstChild;
+					var n = ec.firstChild;
 					for ( var i = 0; i < eo - 1 && n; i++ ) {
 						n = n.nextSibling;
 					}
