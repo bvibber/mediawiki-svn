@@ -316,11 +316,11 @@ if ( typeof context == 'undefined' ) {
 								context.history[context.history.length + context.historyPosition].html
 							);
 							context.fn.purgeOffsets();
-							if( context.history[context.history.length + context.historyPosition ].sel ) {
+							if( context.history[context.history.length + context.historyPosition].sel ) {
 								context.fn.setSelection( { 
-									start: context.history[context.history.length + context.historyPosition ].sel[0],
-									end: context.history[context.history.length + context.historyPosition ].sel[1] }
-								);
+									start: context.history[context.history.length + context.historyPosition].sel[0],
+									end: context.history[context.history.length + context.historyPosition].sel[1]
+								} );
 							}
 						}
 						// Prevent the browser from jumping in and doing its stuff
@@ -376,8 +376,8 @@ if ( typeof context == 'undefined' ) {
 			var newHTML = context.$content.html();
 			var newSel = context.fn.getCaretPosition();
 			// Was text changed? Was it because of a REDO or UNDO action? 
-			if ( context.history.length == 0 || (context.oldDelayedHTML != newHTML 
-				&& newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
+			if ( context.history.length == 0 || ( context.oldDelayedHTML != newHTML &&
+					newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
 				context.fn.purgeOffsets();
 				context.oldDelayedHTML = newHTML;
 				context.oldDelayedSel = newSel;
@@ -390,7 +390,7 @@ if ( typeof context == 'undefined' ) {
 					context.historyPosition = -1;
 				}
 				context.history.push( { 'html': newHTML, 'sel': newSel } );
-				// If the histroy has grown longer than 10 items, remove the earliest one
+				// If the history has grown longer than 10 items, remove the earliest one
 				while ( context.history.length > 10 ) {
 					context.history.shift();
 				}
