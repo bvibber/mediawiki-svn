@@ -55,6 +55,13 @@ $wgOpenIDShowUrlOnUserPage = 'user';
 $wgOpenIDServerForceAllowTrust = array();
 
 /**
+ * Implicitly trust the e-mail address sent from the OpenID server, and don't
+ * ask the user to verify it.  This can lead to people with a nasty OpenID 
+ * provider setting up accounts and spamming 
+ */
+$wgOpenIDTrustEmailAddress = false;
+
+/**
  * Where to store transitory data.
  * Supported types are 'file', 'memcached', 'db'.
  */

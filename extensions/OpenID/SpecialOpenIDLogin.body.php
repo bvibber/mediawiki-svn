@@ -480,7 +480,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	 * @param $force forces update regardless of user preferences
 	 */
 	function updateUser( $user, $sreg, $ax, $force = false ) {
-		global $wgAllowRealName, $wgEmailAuthentication;
+		global $wgAllowRealName, $wgEmailAuthentication, $wgOpenIDTrustEmailAddress;
 
 		// Nick name
 		if ( $this->updateOption( 'nickname', $user, $force ) ) {
@@ -502,11 +502,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				// If email changed, then email a confirmation mail
 				if ( $email != $user->getEmail() ) {
 					$user->setEmail( $email );
-					$user->invalidateEmail();
-					if ( $wgEmailAuthentication && $email != '' ) {
-						$result = $user->sendConfirmationMail();
-						if( WikiError::isError( $result ) ) {
-							$wgOut->addWikiMsg( 'mailerror', $result->getMessage() );
+					if ( $wgOpenIDTrustEmailAddress ) {
+						$user->confirmEmail();
+					} else {
+						$user->invalidateEmail();
+						if ( $wgEmailAuthentication && $email != '' ) {
+							$result = $user->sendConfirmationMail();
+							if( WikiError::isError( $result ) ) {
+								$wgOut->addWikiMsg( 'mailerror', $result->getMessage() );
+							}
 						}
 					}
 				}

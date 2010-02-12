@@ -239,8 +239,12 @@ LocalSettings.php file. Please read carefully.
   using a provider such as Google Apps for Your Domain.
   
 * $wgOpenIDUseEmailAsNickname -- designed for use with the above, parse 
-  the e-mail address provided by your consumer and use the user component
+  the e-mail address provided by your provider and use the user component
   as the MediaWiki username.
+
+* $wgOpenIDTrustEmailAddress -- trust the e-mail address sent by the 
+  provider and don't require it to be verified.  If false (the default), 
+  all new users will be required to validate their e-mail address.
 
 * $wgOpenIDServerForceAllowTrust -- an array of regular expressions
   that match trust roots that you want to skip trust checks for when
