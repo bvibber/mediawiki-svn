@@ -77,16 +77,26 @@ function doAppend(){
 	});
 }
 
-
 function doFileUpload(){
+	$j('#file-upload-container').fadeIn( 'slow' );		
 	$j('#browseTarget').html( mw.loading_spinner() );
-	mw.load( 'ApiProxy', function(){							
-		mw.ApiProxy.browseFile( {
+	
+	mw.load( 'ApiProxy', function(){						
+		var browserFrame = mw.ApiProxy.browseFile( {
 			'target' : '#browseTarget',
-			'apiUrl' : remote_api_url
-		},function(){
-			mw.log( 'brwose file cb' );
-		});
+			'api_url' : remote_api_url,
+			// File Destination Name change callback: 
+			'destinationCB' : function( fname ){
+				// Update our local target:
+				$j('#target-fname').val( fname );
+				// Run a destination file name check on the remote target 			
+				$j('#target-fname').doDestCheck( {
+					'api_url' : remote_api_url,
+					'warn_target': '#file-warning'
+				} );
+				
+			}			
+		} );		
 	});
 	
 }
@@ -103,9 +113,24 @@ function doFileUpload(){
 	<br><br><br> <a href="#" id="doAppend">Append Msg to Talk page:</a>
 	<div id="appendTarget"></div>
 	
-	<br><br><br> <a href="#" id="doFileBrowse">Upload a file to remote:</a>
-	<div id="browseTarget"></div>
-	
+	<br><br><a href="#" id="doFileBrowse">Upload a file to remote:</a>
+	<div id="file-upload-container" style="display:none">
+		<div style="background:#FEF;margin:20px;">
+			<h3> Local input </h3>
+			Target file name: <input id="target-fname" type="text" size="15" />
+			<div id="file-warning"></div>
+			<BR>
+			Target desc: <input type="text" size="20" />
+		</div>
+		<div style="background:#CEF;margin:20px;">
+			<h3> Browse File Served From Remote: </h3>
+			<div id="browseTarget"></div>
+		</div>
+		<div style="background:#FEF;margin:20px;">
+			<h3> Local submit </h3>
+			<input type="submit" size="10" value="upload" />
+		</div>
+	</div>
 </div>
 
 </body>

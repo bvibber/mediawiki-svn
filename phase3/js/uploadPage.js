@@ -4,6 +4,7 @@
  */
 
 var mwUploadFormSelector = '#mw-upload-form';
+
 // Set up the upload form bindings once all DOM manipulation is done
 var mwUploadHelper = {
 	init: function() {
@@ -16,11 +17,14 @@ var mwUploadHelper = {
 			mw.load( 'AddMedia.firefogg', function(){
 				// Set up the upload handler to Firefogg. Should work with the HTTP uploads too.
 				$j( '#wpUploadFile' ).firefogg( {
-					// An API URL (we won't submit directly to action of the form)
-					'api_url': wgServer + wgScriptPath + '/api.php',
+					
+					// An API URL (default is getLocalApiUrl but set here for clarity )
+					'api_url': mw.getLocalApiUrl(),
+					
 					// MediaWiki API supports chunk uploads: 
 					'enable_chunks' : true, 
 					
+					// Set the interface type
 					'interface_type' : 'dialog',
 					
 					'form_selector': mwUploadFormSelector,
@@ -69,6 +73,7 @@ var mwUploadHelper = {
 			}
 		} );
 	},
+	
 	/**
 	* Set the upload radio buttons
 	*
@@ -82,8 +87,10 @@ var mwUploadHelper = {
 		$j( '#wpUploadFileURL' ).attr( 'disabled', set );
 		
 	},
+	
 	/**
 	* Fill in a destination file-name based on a source asset name.
+	* @param {Element} targetElm Target element to get destination name from
 	*/
 	doDestinationFill: function( targetElm ) {
 		mw.log( "doDestinationFill" )
@@ -102,6 +109,7 @@ var mwUploadHelper = {
 		} else {
 			fname = path.substring( backslash + 1, 10000 );
 		}
+		
 		// URLs are less likely to have a useful extension. Don't include them in the extension check.
 		if ( wgFileExtensions && $j( targetElm ).attr( 'id' ) != 'wpUploadFileURL' ) {
 			var found = false;
@@ -131,7 +139,6 @@ var mwUploadHelper = {
 		} );
 	}
 }
-
 
 mw.ready( function() {
 	mwUploadHelper.init();

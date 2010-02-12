@@ -370,7 +370,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 		
 		// If Firefogg is not available, just show a "please install" message
-		if ( !_this.getFirefogg() ) {
+		if ( ! _this.getFirefogg() ) {
 			if ( !this.target_please_install ) {
 				$j( this.selector ).after( this.getControlHtml( 'target_please_install' ) );
 				this.target_please_install = this.selector + ' ~ .target_please_install';

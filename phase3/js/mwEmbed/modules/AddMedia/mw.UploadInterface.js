@@ -15,13 +15,13 @@
 */
 
 /**
- * Base UploadInterfaceDispatch object (extened by  
+ * Base UploadInterface object  
  */
 mw.UploadInterface = { 
 	factory : function( interfaceType ){
 		switch( interfaceType ){
 			case 'iframe':
-				return new mw.iframeInterface();
+				return new mw.iframeInterface( );
 			break;
 			case 'dialog':
 			default:				

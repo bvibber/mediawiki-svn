@@ -48,7 +48,7 @@ var default_bui_options = {
 	// Default upload mode is 'api'
 	'upload_mode' : 'api',
 	
-	// Callback for modifing form data on submit  
+	// Callback for modifying form data on submit  
 	'onsubmit_cb' : null,
 	
 	// The interface type sent to mw.interface factory
@@ -95,7 +95,7 @@ mw.UploadHandler.prototype = {
 	
 	// If the existing form should be used to post to the api
 	// Since file selection can't be "moved" we have to use the existing
-	// form and just submit it to a difrent target  
+	// form and just submit it to a different target  
 	form_post_override: false,
 	
 	// http copy by url mode flag
@@ -677,6 +677,8 @@ mw.UploadHandler.prototype = {
 	/**
 	 * Process the result of the form submission, returned to an iframe.
 	 * This is the iframe's onload event.
+	 *
+	 * @param {Element} iframe iframe to extract result from 
 	 */
 	processIframeResult: function( iframe ) {
 		var _this = this;
@@ -703,7 +705,7 @@ mw.UploadHandler.prototype = {
 				response = {};
 			}
 		} else {
-			// response is a xml document
+			// Response is a xml document
 			response = doc;
 		}
 		// Process the API result
@@ -964,13 +966,18 @@ mw.UploadHandler.prototype = {
 	 * Check the upload destination filename for conflicts and show a conflict
 	 * error message if there is one
 	 */
-	$.fn.doDestCheck = function( opt ) {
+	$.fn.doDestCheck = function( options ) {
 		var _this = this;
 		mw.log( 'doDestCheck::' + _this.selector );
 
 		// Set up option defaults
-		if ( !opt.warn_target )
-			opt.warn_target = '#wpDestFile-warning';
+		if ( !options.warn_target ){
+			options.warn_target = '#wpDestFile-warning';
+		}
+		
+		if( ! options.api_url ){
+			options.api_url = mw.getLocalApiUrl();
+		}		
 
 		// Add the wpDestFile-warning row
 		if ( $j( '#wpDestFile-warning' ).length == 0 ) {
@@ -984,8 +991,8 @@ mw.UploadHandler.prototype = {
 		}
 		mw.log( 'past dest');
 		// Remove any existing warning
-		$j( opt.warn_target ).empty();
-		mw.log( 'past remove warn:: ' +  _this.selector);
+		$j( options.warn_target ).empty();
+
 		// Show the AJAX spinner
 		$j( _this.selector ).after( 
 			$j('<img />')
@@ -994,16 +1001,16 @@ mw.UploadHandler.prototype = {
 				'src' : stylepath + '/common/images/spinner.gif' 
 			})
 		);		
-		mw.log("added spiner");	
+		// Setup the request
 		var request =  {
 			'titles': 'File:' + $j( _this.selector ).val(),
 			'prop':  'imageinfo',
 			'iiprop': 'url|mime|size',
 			'iiurlwidth': 150
-		};
+		};		
 				
 		// Do the destination check ( on the local wiki )
-		mw.getJSON( request, function( data ) {
+		mw.getJSON( options.api_url, request, function( data ) {
 				// Remove spinner
 				$j( '#mw-spinner-wpDestFile' ).remove();
 
