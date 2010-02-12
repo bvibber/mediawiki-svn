@@ -403,7 +403,9 @@ if ( typeof context == 'undefined' ) {
 		},
 		'paste': function( event ) {
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
-			context.$content.addClass( 'pasting' );
+			if ( $.layout.name !== 'webkit' ) {
+				context.$content.addClass( 'pasting' );
+			}
 			setTimeout( function() {
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
@@ -411,13 +413,21 @@ if ( typeof context == 'undefined' ) {
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
+					var text = $currentElement.text();
 					if ( $currentElement.is( 'br' ) ) {
 						$currentElement.addClass( 'wikiEditor' );
+					} else if ( $currentElement.is( 'span' ) && text.length == 0 ) {
+						// Markers!
+						$currentElement.remove();
 					} else {
-						$( '<p></p>' )
-							.text( $currentElement.text() )
+						$newElement = $( '<p></p>' )
 							.addClass( 'wikiEditor' )
 							.insertAfter( $currentElement );
+						if ( text.length ) {
+							$newElement.text( text );
+						} else {
+							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
+						}
 						$currentElement.remove();
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
@@ -427,11 +437,13 @@ if ( typeof context == 'undefined' ) {
 				var t = context.fn.traverser( context.$content );
 				while ( t ) {
 					if ( t.node.nodeName == '#text' && ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-						 t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, '' );
+						 t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
 					}
 					t = t.next();
 				}
-				context.$content.removeClass( 'pasting' );
+				if ( $.layout.name !== 'webkit' ) {
+					context.$content.removeClass( 'pasting' );
+				}
 			}, 0 );
 			return true;
 		}
@@ -546,7 +558,10 @@ if ( typeof context == 'undefined' ) {
 				.replace( /\<br[^\>]*\>\<\/p\>/gi, '</p>' ) // Remove trailing <br> from <p>
 				.replace( /\<\/p\>\s*\<p[^\>]*\>/gi, "\n" ) // Easy case for <p> conversion
 				.replace( /\<br[^\>]*\>/gi, "\n" ) // <br> conversion
-				.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" );
+				.replace( /\<\/p\>(\n*)\<p[^\>]*\>/gi, "$1\n" )
+				// Un-nest <p> tags
+				.replace( /\<p[^\>]*\><p[^\>]*\>/gi, '<p>' )
+				.replace( /\<\/p\><\/p\>/gi, '</p>' );
 			// Save leading and trailing whitespace now and restore it later. IE eats it all, and even Firefox
 			// won't leave everything alone
 			var leading = html.match( /^\s*/ )[0];
