@@ -6657,6 +6657,8 @@ if ( typeof context == 'undefined' ) {
 		'oldHTML': null,
 		// Same for delayedChange()
 		'oldDelayedHTML': null,
+		// The previous selection of the iframe, stored to detect whether the selection has changed
+		'oldDelayedSel': null,
 		// Saved selection state for IE
 		'savedSelection': null,
 		// Stack of states in { html: [string] } form
@@ -6741,7 +6743,7 @@ if ( typeof context == 'undefined' ) {
 						// Only act if we are switching to a valid state
 						if ( newPosition >= ( context.history.length * -1 ) && newPosition < 0 ) {
 							// Make sure we run the history storing code before we make this change
-							context.evt.delayedChange( event );
+							context.fn.updateHistory();
 							context.historyPosition = newPosition;
 							// Change state
 							// FIXME: Destroys event handlers, will be a problem with template folding
@@ -6806,32 +6808,7 @@ if ( typeof context == 'undefined' ) {
 		},
 		'delayedChange': function( event ) {
 			event.data.scope = 'division';
-			var newHTML = context.$content.html();
-			var newSel = context.fn.getCaretPosition();
-			// Was text changed? Was it because of a REDO or UNDO action? 
-			if ( context.history.length == 0 || ( context.oldDelayedHTML != newHTML &&
-					newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
-				context.fn.purgeOffsets();
-				context.oldDelayedHTML = newHTML;
-				context.oldDelayedSel = newSel;
-				event.data.scope = 'realchange';
-				// Do we need to trim extras from our history? 
-				// FIXME: this should really be happing on change, not on the delay
-				if ( context.historyPosition < -1 ) {
-					//clear out the extras
-					context.history.splice( context.history.length + context.historyPosition );
-					context.historyPosition = -1;
-				}
-				context.history.push( { 'html': newHTML, 'sel': newSel } );
-				// If the history has grown longer than 10 items, remove the earliest one
-				while ( context.history.length > 10 ) {
-					context.history.shift();
-				}
-			} else if ( context.oldDelayedSel != newSel && context.historyPosition == -1 ) {
-				// If only the selection was changed, and we're not between undos, update it
-				context.oldDelayedSel = newSel;
-				context.history[context.history.length + context.historyPosition].sel = newSel;
-			}
+			context.fn.updateHistory();
 			return true;
 		},
 		'paste': function( event ) {
@@ -7300,6 +7277,7 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'getCaretPosition': function( options ) {
 			var startPos = null, endPos = null;
+			var d = context.$iframe[0].contentWindow.document;
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				var selection = context.$iframe[0].contentWindow.getSelection();
 				if ( selection.rangeCount == 0 ) {
@@ -7310,7 +7288,7 @@ if ( typeof context == 'undefined' ) {
 				var so = selection.getRangeAt( 0 ).startOffset, eo = selection.getRangeAt( 0 ).endOffset;
 				if ( sc.nodeName == 'BODY' ) {
 					// Grab the node just before the start of the selection
-					var n = body.firstChild;
+					var n = d.body.firstChild;
 					for ( var i = 0; i < so - 1 && n; i++ ) {
 						n = n.nextSibling;
 					}
@@ -7318,7 +7296,7 @@ if ( typeof context == 'undefined' ) {
 					so = 0;
 				}
 				if ( ec.nodeName == 'BODY' ) {
-					var n = body.firstChild;
+					var n = d.body.firstChild;
 					for ( var i = 0; i < eo - 1 && n; i++ ) {
 						n = n.nextSibling;
 					}
@@ -7822,6 +7800,33 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe[0].contentWindow.focus();
 			context.savedSelection.select();
 			context.savedSelection = null;
+		},
+		'updateHistory': function() {
+			var newHTML = context.$content.html();
+			var newSel = context.fn.getCaretPosition();
+			// Was text changed? Was it because of a REDO or UNDO action? 
+			if ( context.history.length == 0 || ( context.oldDelayedHTML != newHTML &&
+					newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
+				context.fn.purgeOffsets();
+				context.oldDelayedHTML = newHTML;
+				context.oldDelayedSel = newSel;
+				// Do we need to trim extras from our history? 
+				// FIXME: this should really be happing on change, not on the delay
+				if ( context.historyPosition < -1 ) {
+					//clear out the extras
+					context.history.splice( context.history.length + context.historyPosition );
+					context.historyPosition = -1;
+				}
+				context.history.push( { 'html': newHTML, 'sel': newSel } );
+				// If the history has grown longer than 10 items, remove the earliest one
+				while ( context.history.length > 10 ) {
+					context.history.shift();
+				}
+			} else if ( context.oldDelayedSel != newSel ) {
+				// If only the selection was changed, update it
+				context.oldDelayedSel = newSel;
+				context.history[context.history.length + context.historyPosition].sel = newSel;
+			}
 		}
 	};
 	
