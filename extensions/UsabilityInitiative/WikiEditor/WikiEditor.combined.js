@@ -55,7 +55,7 @@ $j(document).ready( function() {
 		return true;
 	}
 	// Only show content generation dialogs if enabled
-	if ( wgWikiEditorPreferences.toolbar.dialogs ) {
+	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( 'dialogs' ) ) {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
 	// Add the toolbar module
