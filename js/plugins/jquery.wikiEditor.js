@@ -1575,15 +1575,27 @@ if ( typeof context == 'undefined' ) {
 	};
 	};
 }
-// FAT UGLY HACK PART 2: Don't do the iframe when only the toolbar is enabled
-if ( typeof context.$iframe === 'undefined' && ( arguments[0] !== 'addModule' || typeof arguments[1].toolbar === 'undefined' ) ) {
-	context.fn.setupIframe();
-}
 
 /* API Execution */
 
 // Since javascript gives arguments as an object, we need to convert them so they can be used more easily
 var args = $.makeArray( arguments );
+
+// FAT UGLY HACK PART 2: Don't do the iframe when only the toolbar is enabled
+if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' ) {
+	// Check that at least one of the modules being added is indeed supported
+	var supported = false;
+	for ( module in arguments[1] ) {
+		// Let the toolbar slip through
+		if ( $.wikiEditor.isSupported( module ) && module !== 'toolbar' ) {
+			supported = true;
+		}
+	}
+	if ( supported ) {
+		context.fn.setupIframe();
+	}
+}
+
 // There would need to be some arguments if the API is being called
 if ( args.length > 0 ) {
 	// Handle API calls

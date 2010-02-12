@@ -10,6 +10,27 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 ( function( $ ) { $.wikiEditor.modules.dialogs = {
 
 /**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['==', 1000]], // Off for now
+		'chrome': [['==', 1000]] // Off for now
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['==', 1000]], // Off for now
+		'chrome': [['==', 1000]] // Off for now
+	}
+},
+/**
  * API accessible functions
  */
 api: {
