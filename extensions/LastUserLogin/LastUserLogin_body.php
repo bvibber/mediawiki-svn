@@ -1,14 +1,14 @@
 <?php
 
 class LastUserLogin extends SpecialPage {
- 
+
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		parent::__construct( 'LastUserLogin'/*class*/, 'lastlogin'/*restriction*/ );
 	}
- 
+
 	/**
 	 * Show the special page
 	 *
@@ -17,24 +17,22 @@ class LastUserLogin extends SpecialPage {
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang, $wgRequest;
 		wfLoadExtensionMessages( 'LastUserLogin' );
- 
+
 		# If user is blocked, s/he doesn't need to access this page
 		if ( $wgUser->isBlocked() ) {
 			$wgOut->blockedPage();
 			return;
 		}
- 
+
 		# If the user doesn't have the required 'lastlogin' permission, display an error
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
- 
+
 		$this->setHeaders();
 		$skin = $wgUser->getSkin();
- 
-		$wgOut->setPageTitle( wfMsg( 'lastuserlogin' ) );
- 
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$fields = array(
 			'user_name' => 'lastuserlogin_userid',
@@ -43,12 +41,12 @@ class LastUserLogin extends SpecialPage {
 			'user_touched' => 'lastuserlogin_lastlogin'
 		);
 
- 
+
 		# Get order by and check it
 		$orderby = $wgRequest->getVal('order_by', 'user_name');
 
 		# Only field names are acceptable
-		if ( !isset( $fields[ $orderby ] ) ) {				
+		if ( !isset( $fields[ $orderby ] ) ) {
 			$orderby = 'user_name';
 		}
 
@@ -76,11 +74,11 @@ class LastUserLogin extends SpecialPage {
 			$out .= "<th>" . wfMsg( 'lastuserlogin_daysago' ) . "</th>";
 
 			$out .= '</tr>';
- 
+
 			while ( $row = $dbr->fetchRow( $result ) ) {
 				$out .= '<tr>';
 				foreach ( $fields as $key => $value ) {
- 					if ( $key == 'user_touched' ) {
+					if ( $key == 'user_touched' ) {
 						$out .= "<td>" . $wgLang->timeanddate( wfTimestamp( TS_MW, $row[$key] ), true ) .
 								'</td><td style="text-align:right;">' .
 								$wgLang->formatNum( round( ( time() - wfTimestamp( TS_UNIX, $row[$key] ) ) / 3600 / 24, 2 ), 2 ) . "</td>";
@@ -97,7 +95,7 @@ class LastUserLogin extends SpecialPage {
 				$out .= '</tr>';
 			}
 		}
- 
+
 		$out .= '</table>';
 		$wgOut->addHTML( $out );
 
