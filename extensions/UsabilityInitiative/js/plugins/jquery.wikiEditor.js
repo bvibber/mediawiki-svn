@@ -1269,6 +1269,8 @@ if ( typeof context == 'undefined' ) {
 	// Trigger the "resize" event anytime the window is resized
 	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ); } );
 	// Create an iframe in place of the text area
+	// FAT UGLY HACK: Don't do the iframe when only the toolbar is enabled
+	context.fn.setupIframe = function() {
 	context.$iframe = $( '<iframe></iframe>' )
 		.attr( {
 			'frameBorder': 0,
@@ -1394,6 +1396,11 @@ if ( typeof context == 'undefined' ) {
 			return context.fallbackWindowOnBeforeUnload();
 		}
 	};
+	};
+}
+// FAT UGLY HACK PART 2: Don't do the iframe when only the toolbar is enabled
+if ( typeof context.$iframe === 'undefined' && ( arguments[0] !== 'addModule' || typeof arguments[1].toolbar === 'undefined' ) ) {
+	context.fn.setupIframe();
 }
 
 /* API Execution */
