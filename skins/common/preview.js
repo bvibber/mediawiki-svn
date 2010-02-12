@@ -2,15 +2,6 @@
  * Live preview script for MediaWiki
  */
 
-function setupLivePreview() {
-	var livePreviewButton = $j('#wpLivePreview');
-
-	$j('#wpPreview').hide();
-	livePreviewButton.show();
-
-	livePreviewButton.click( doLivePreview );
-}
-
 function doLivePreview( e ) {
 	e.preventDefault();
 	var previewText = $j('#wpTextbox1').val();
@@ -23,10 +14,10 @@ function doLivePreview( e ) {
 		'wpEditToken' : editToken, 'wpEdittime': editTime, 'wpStarttime': startTime, 'title' : wgPageName };
 	
 	// Hide active diff, used templates, old preview if shown
-	$j('#wikiDiff').slideUp();
-	$j('#wikiPreview').slideUp();
-	$j('.templatesUsed').slideUp();
-	$j('.hiddencats').slideUp();
+	var copyElements = ['#wikiPreview', '.templatesUsed', '.hiddencats',
+						'#catlinks'];
+
+	$j.each( copyElements, function(k,v) { $j(v).fadeOut(); } );
 	
 	// Display a loading graphic
 	var loadSpinner = $j('<div class="mw-ajax-loader"/>');
@@ -36,8 +27,6 @@ function doLivePreview( e ) {
 	page.load( wgScript+'?action=submit',
 				postData,
 		function() {
-			var copyElements = ['#wikiPreview', '.templatesUsed', '.hiddencats',
-								'#catlinks'];
 			
 			for( var i=0; i<copyElements.length; ++i) {
 				// For all the specified elements, find the elements in the loaded page
@@ -49,10 +38,15 @@ function doLivePreview( e ) {
 				$j(copyElements[i]).attr( 'class', newClasses );
 			}
 			
-			loadSpinner.remove();
+			$j.each( copyElements, function(k,v) {
+				// Don't belligerently show elements that are supposed to be hidden
+				$j(v).fadeIn( 'fast', function() { $j(this).css('display', ''); } );
+			} );
 			
-			$j('#wikiPreview').slideDown();
+			loadSpinner.remove();
 		} );
 }
 
-js2AddOnloadHook( setupLivePreview );
+$j(document).ready( function() {
+	$j('#wpPreview').click( doLivePreview );
+} );
