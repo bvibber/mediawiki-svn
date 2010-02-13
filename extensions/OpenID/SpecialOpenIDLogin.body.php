@@ -459,17 +459,18 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				// if we are hardcoding nickname, and a valid e-mail address was returned, create a user with this name
 				if ($wgOpenIDUseEmailAsNickname) {
 					$name = $this->getNameFromEmail( $openid, $sreg, $ax );
-					if ($name) {
+					if ( !empty($name) && $this->userNameOk( $name ) ) {
 						$wgUser = $this->createUser( $openid, $sreg, $ax, $name );
 						$this->displaySuccessLogin( $openid );
+						return;
 					}
-				} else {
-					$this->saveValues( $openid, $sreg, $ax );
-					$this->chooseNameForm( $openid, $sreg, $ax );
+				} 
+
+				$this->saveValues( $openid, $sreg, $ax );
+				$this->chooseNameForm( $openid, $sreg, $ax );
 				return;
 			}
 		}
-	}
 	}
 
 	/**
