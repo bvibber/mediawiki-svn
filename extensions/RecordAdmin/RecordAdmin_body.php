@@ -8,6 +8,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $formClass = '';
 	var $formAtts  = '';
 	var $type      = '';
+	var $editable  = false;
 	var $record    = '';
 	var $types     = array();
 	var $values    = array();
@@ -109,7 +110,8 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Override SpecialPage::execute()
 	 */
 	function execute( $param ) {
-		global $wgVersion, $wgOut, $wgRequest, $wgRecordAdminUseNamespaces, $wgLang, $wgRecordAdminCategory;
+		global $wgVersion, $wgOut, $wgRequest, $wgRecordAdminUseNamespaces, $wgLang, $wgRecordAdminCategory, $wgSecurityProtectRecords;
+		if ( !isset( $wgSecurityProtectRecords ) ) $wgSecurityProtectRecords = false;
 		$this->setHeaders();
 		$type     = $wgRequest->getText( 'wpType' ) or $type = $param;
 		$newtype  = $wgRequest->getText( 'wpNewType' );
@@ -118,6 +120,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$title    = $this->title = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$action   = $title->getLocalURL( 'action=submit' );
 		$wpTitle  = trim( $wgRequest->getText( 'wpTitle' ) );
+		$this->template = Title::makeTitle( NS_TEMPLATE, $type );
 
 		if ( $type && $wgRecordAdminUseNamespaces ) {
 			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
@@ -249,72 +252,82 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# A specific record has been selected, render form for updating
 		else {
-			$rtitle = Title::newFromText( $record );
-			$article = new Article( $rtitle );
-			$text = $article->fetchContent();
-			$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-edit', $rtitle->getPrefixedText(), $type ) . " ==\n" );
+			if ( !$wgSecurityProtectRecords || $this->template->userCan( 'read' ) ) {
+				$rtitle = Title::newFromText( $record );
+				$article = new Article( $rtitle );
+				$text = $article->fetchContent();
+				$wgOut->addWikiText( "== " . wfMsg( 'recordadmin-edit', $rtitle->getPrefixedText(), $type ) . " ==\n" );
 
-			# Update article if form posted
-			if ( count( $posted ) && $rtitle->userCan( 'edit', false ) ) {
-				$summary = $wgRequest->getText( 'wpSummary' ) or $summary = wfMsgForContent( 'recordadmin-typeupdated', $type );
-				$minor   = $wgRequest->getText( 'wpMinoredit' ) ? EDIT_MINOR : 0;
-				$watch   = $wgRequest->getText( 'wpWatchthis' );
+				# Update article if form posted
+				if ( count( $posted ) && $rtitle->userCan( 'edit', false ) ) {
+					$summary = $wgRequest->getText( 'wpSummary' ) or $summary = wfMsgForContent( 'recordadmin-typeupdated', $type );
+					$minor   = $wgRequest->getText( 'wpMinoredit' ) ? EDIT_MINOR : 0;
+					$watch   = $wgRequest->getText( 'wpWatchthis' );
 
-				# Get the location and length of the record braces to replace
+					# Get the location and length of the record braces to replace
+					foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+
+					# Attempt to save the article if allowed
+					if ( !$wgSecurityProtectRecords || $this->template->userCan( 'edit' ) ) {
+						$summary = "[[Special:RecordAdmin/$type|" . wfMsgForContent( 'recordadmin' ) . "]]: $summary";
+						$replace = '';
+						foreach ( $posted as $k => $v ) if ( $v ) {
+							if ( $this->types[$k] == 'bool' ) $v = 'yes';
+							$replace .= "| $k = $v\n";
+						}
+						$replace = $replace ? "{{" . "$type\n$replace}}" : "{{" . "$type}}";
+						$text = substr_replace( $text, $replace, $braces['OFFSET'], $braces['LENGTH'] );
+						$success = $article->doEdit( $text, $summary, EDIT_UPDATE|$minor );
+						if ($watch) $article->doWatch();
+					} else $success = false;
+
+					# Redirect to view the record if successfully updated
+					if ( $success ) {
+						$wgOut->disable();
+						wfResetOutputBuffers();
+						header( "Location: " . $rtitle->getFullUrl() );
+					}
+
+					# Stay at edit form and render error if not edited successfully
+					else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-updateerror' ) . "</div>\n" );
+					$wgOut->addHTML( "<br /><br /><br /><br />\n" );
+				}
+
+				# Extract current values from article
+				$braces = false;
 				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+				if ( $braces ) {
+					# Fill in current values
+					$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 
-				# Attempt to save the article
-				$summary = "[[Special:RecordAdmin/$type|" . wfMsgForContent( 'recordadmin' ) . "]]: $summary";
-				$replace = '';
-				foreach ( $posted as $k => $v ) if ( $v ) {
-					if ( $this->types[$k] == 'bool' ) $v = 'yes';
-					$replace .= "| $k = $v\n";
+					# Render the form
+					$wgOut->addHTML( "<form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
+					$wgOut->addHTML( $this->form );
+					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
+					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
+					$wgOut->addHTML( '<br /><hr /><br />'
+						. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&nbsp;"
+						. Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpSummary', 'id' => 'wpSummary', 'maxlength' => '200', 'size' => '60' ) )
+						. "<br />\n"
+						. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpMinoredit', 'value' => '1', 'id' => 'wpMinoredit', 'accesskey' => 'i' ) )
+						. "&nbsp;<label for='wpMinoredit' title='Mark this as a minor edit [i]' accesskey='i'>This is a minor edit</label>&nbsp;"
+						. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpWatchthis', 'value' => '1', 'id' => 'wpWatchthis', 'accesskey' => 'w' ) )
+						. "&nbsp;<label for='wpWatchthis' title='Add this page to your watchlist [w]' accesskey='w'>Watch this page</label>\n"
+						. "<br />\n"
+						. ( ( !$wgSecurityProtectRecords || $this->template->userCan( 'edit' ) )
+							? Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '&nbsp;'
+							: '' )
+						. Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</form>'
+					);
 				}
-				$replace = $replace ? "{{" . "$type\n$replace}}" : "{{" . "$type}}";
-				$text = substr_replace( $text, $replace, $braces['OFFSET'], $braces['LENGTH'] );
-				$success = $article->doEdit( $text, $summary, EDIT_UPDATE|$minor );
-				if ($watch) $article->doWatch();
 
-				# Redirect to view the record if successfully updated
-				if ( $success ) {
-					$wgOut->disable();
-					wfResetOutputBuffers();
-					header( "Location: " . $rtitle->getFullUrl() );
-				}
-
-				# Stay at edit form and render error if not edited successfully
-				else $wgOut->addHTML( "<div class='errorbox'>" . wfMsg( 'recordadmin-updateerror' ) . "</div>\n" );
-				$wgOut->addHTML( "<br /><br /><br /><br />\n" );
+				# No instance of the template found, just display the article content
+				else $wgOut->addWikiText( $text );
 			}
-
-			# Extract current values from article
-			$braces = false;
-			foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
-			if ( $braces ) {
-				# Fill in current values
-				$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
-
-				# Render the form
-				$wgOut->addHTML( "<form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
-				$wgOut->addHTML( $this->form );
-				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
-				$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
-				$wgOut->addHTML( '<br /><hr /><br />'
-					. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&nbsp;"
-					. Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpSummary', 'id' => 'wpSummary', 'maxlength' => '200', 'size' => '60' ) )
-					. "<br />\n"
-					. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpMinoredit', 'value' => '1', 'id' => 'wpMinoredit', 'accesskey' => 'i' ) )
-					. "&nbsp;<label for='wpMinoredit' title='Mark this as a minor edit [i]' accesskey='i'>This is a minor edit</label>&nbsp;"
-					. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpWatchthis', 'value' => '1', 'id' => 'wpWatchthis', 'accesskey' => 'w' ) )
-					. "&nbsp;<label for='wpWatchthis' title='Add this page to your watchlist [w]' accesskey='w'>Watch this page</label>\n"
-					. "<br />\n"
-					. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '&nbsp;'
-					. Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</form>'
-				);
+			
+			else {
+				$wgOut->addWikiText( wfMsg( 'badaccess-read', $record ) );
 			}
-
-			# No instance of the template found, just display the article content
-			else $wgOut->addWikiText( $text );
 		}
 	}
 
