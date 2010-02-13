@@ -5,72 +5,71 @@
  * @author Yaron Koren
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class AdminLinks extends SpecialPage {
-
 	var $skin;
 
 	/**
 	 * Constructor
 	 */
 	function AdminLinks() {
-		SpecialPage::SpecialPage('AdminLinks');
-		wfLoadExtensionMessages('AdminLinks');
-                global $wgUser;
-                $this->skin = $wgUser->getSkin();
+		SpecialPage::SpecialPage( 'AdminLinks' );
+		wfLoadExtensionMessages( 'AdminLinks' );
+		global $wgUser;
+		$this->skin = $wgUser->getSkin();
 	}
 
 	function createInitialTree() {
 		$tree = new ALTree();
 
 		// 'general' section
-		$general_section = new ALSection(wfMsg('adminlinks_general'));
-		$main_row = new ALRow('main');
-		$main_row->addItem(ALItem::newFromSpecialPage('Specialpages'));
-		$main_row->addItem(ALItem::newFromSpecialPage('Allmessages'));
-		$main_row->addItem(ALItem::newFromEditLink('Sidebar', wfMsg('adminlinks_editsidebar')));
-		$main_row->addItem(ALItem::newFromEditLink('Common.css', wfMsg('adminlinks_editcss')));
-		$main_row->addItem(ALItem::newFromEditLink('Mainpage', wfMsg('adminlinks_editmainpagename')));
-		$general_section->addRow($main_row);
-		$tree->addSection($general_section);
+		$general_section = new ALSection( wfMsg( 'adminlinks_general' ) );
+		$main_row = new ALRow( 'main' );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Specialpages' ) );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Allmessages' ) );
+		$main_row->addItem( ALItem::newFromEditLink( 'Sidebar', wfMsg( 'adminlinks_editsidebar' ) ) );
+		$main_row->addItem( ALItem::newFromEditLink( 'Common.css', wfMsg( 'adminlinks_editcss' ) ) );
+		$main_row->addItem( ALItem::newFromEditLink( 'Mainpage', wfMsg( 'adminlinks_editmainpagename' ) ) );
+		$general_section->addRow( $main_row );
+		$tree->addSection( $general_section );
 
 		// 'users' section
-		$users_section = new ALSection(wfMsg('adminlinks_users'));
-		$main_row = new ALRow('main');
-		$main_row->addItem(ALItem::newFromSpecialPage('Listusers'));
-		$ul = SpecialPage::getTitleFor('Userlogin');
-		$al = SpecialPage::getTitleFor('AdminLinks');
-		$main_row->addItem(AlItem::newFromPage($ul, wfMsg('adminlinks_createuser'), "type=signup&returnto=$al"));
-		$main_row->addItem(ALItem::newFromSpecialPage('Userrights'));
-		$users_section->addRow($main_row);
-		$tree->addSection($users_section);
+		$users_section = new ALSection( wfMsg( 'adminlinks_users' ) );
+		$main_row = new ALRow( 'main' );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Listusers' ) );
+		$ul = SpecialPage::getTitleFor( 'Userlogin' );
+		$al = SpecialPage::getTitleFor( 'AdminLinks' );
+		$main_row->addItem( AlItem::newFromPage( $ul, wfMsg( 'adminlinks_createuser' ), "type=signup&returnto=$al" ) );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Userrights' ) );
+		$users_section->addRow( $main_row );
+		$tree->addSection( $users_section );
 
 		// 'browsing and searching' section
-		$browse_search_section = new ALSection(wfMsg('adminlinks_browsesearch'));
-		$main_row = new ALRow('main');
-		$main_row->addItem(ALItem::newFromSpecialPage('Allpages'));
-		$main_row->addItem(ALItem::newFromSpecialPage('Search'));
-		$browse_search_section->addRow($main_row);
-		$tree->addSection($browse_search_section);
+		$browse_search_section = new ALSection( wfMsg( 'adminlinks_browsesearch' ) );
+		$main_row = new ALRow( 'main' );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Allpages' ) );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Search' ) );
+		$browse_search_section->addRow( $main_row );
+		$tree->addSection( $browse_search_section );
 
 		// 'importing and exporting' section
-		$import_export_section = new ALSection(wfMsg('adminlinks_importexport'));
-		$main_row = new ALRow('main');
-		$main_row->addItem(ALItem::newFromSpecialPage('Export'));
-		$main_row->addItem(ALItem::newFromSpecialPage('Import'));
-		$import_export_section->addRow($main_row);
-		$tree->addSection($import_export_section);
+		$import_export_section = new ALSection( wfMsg( 'adminlinks_importexport' ) );
+		$main_row = new ALRow( 'main' );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Export' ) );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Import' ) );
+		$import_export_section->addRow( $main_row );
+		$tree->addSection( $import_export_section );
 
 		return $tree;
 	}
 
-	function execute($query) {
+	function execute( $query ) {
 		$this->setHeaders();
 		$admin_links_tree = $this->createInitialTree();
 		wfRunHooks( 'AdminLinks', array( &$admin_links_tree ) );
 		global $wgOut;
-		$wgOut->addHTML($admin_links_tree->toString());
+		$wgOut->addHTML( $admin_links_tree->toString() );
 	}
 
 	/**
@@ -78,15 +77,15 @@ class AdminLinks extends SpecialPage {
 	 * among the user's "personal URLs" at the top, if they have
 	 * the 'adminlinks' permission
 	 */
-	public static function addURLToUserLinks(&$personal_urls, &$title) {
+	public static function addURLToUserLinks( &$personal_urls, &$title ) {
 		global $wgUser;
 		// if user is a sysop, add link
-		if ($wgUser->isAllowed('adminlinks')) {
-			wfLoadExtensionMessages('AdminLinks');
+		if ( $wgUser->isAllowed( 'adminlinks' ) ) {
+			wfLoadExtensionMessages( 'AdminLinks' );
 			$al = SpecialPage::getTitleFor( 'AdminLinks' );
 			$href = $al->getLocalURL();
 			$admin_links_vals = array(
-				'text' => wfMsg('adminlinks'),
+				'text' => wfMsg( 'adminlinks' ),
 				'href' => $href,
 				'active' => ( $href == $title->getLocalURL() )
 			);
@@ -96,13 +95,13 @@ class AdminLinks extends SpecialPage {
 			// keys and the values of the array, by editing them
 			// separately and then rebuilding the array.
 			// based on the example at http://us2.php.net/manual/en/function.array-splice.php#31234
-			$tab_keys = array_keys($personal_urls);
-			$tab_values = array_values($personal_urls);
-			$prefs_location = array_search('preferences', $tab_keys);
-			array_splice($tab_keys, $prefs_location, 0, 'adminlinks');
-			array_splice($tab_values, $prefs_location, 0, array($admin_links_vals));
+			$tab_keys = array_keys( $personal_urls );
+			$tab_values = array_values( $personal_urls );
+			$prefs_location = array_search( 'preferences', $tab_keys );
+			array_splice( $tab_keys, $prefs_location, 0, 'adminlinks' );
+			array_splice( $tab_values, $prefs_location, 0, array( $admin_links_vals ) );
 			$personal_urls = array();
-			for ($i = 0; $i < count($tab_keys); $i++)
+			for ( $i = 0; $i < count( $tab_keys ); $i++ )
 				$personal_urls[$tab_keys[$i]] = $tab_values[$i];
 
 		}
@@ -121,23 +120,23 @@ class ALTree {
 		$this->sections = array();
 	}
 
-	function getSection($section_header) {
-		foreach ($this->sections as $cur_section) {
-			if ($cur_section->header === $section_header) {
+	function getSection( $section_header ) {
+		foreach ( $this->sections as $cur_section ) {
+			if ( $cur_section->header === $section_header ) {
 				return $cur_section;
 			}
 		}
 		return null;
 	}
 
-	function addSection($section, $next_section_header = null) {
-		if ($next_section_header == null) {
+	function addSection( $section, $next_section_header = null ) {
+		if ( $next_section_header == null ) {
 			$this->sections[] = $section;
 			return;
 		}
-		foreach ($this->sections as $i => $cur_section) {
-			if ($cur_section->header === $next_section_header) {
-				array_splice($this->sections, $i, 0, array($section));
+		foreach ( $this->sections as $i => $cur_section ) {
+			if ( $cur_section->header === $next_section_header ) {
+				array_splice( $this->sections, $i, 0, array( $section ) );
 				return;
 			}
 		}
@@ -146,7 +145,7 @@ class ALTree {
 
 	function toString() {
 		$text = "";
-		foreach ($this->sections as $section) {
+		foreach ( $this->sections as $section ) {
 			$text .= $section->toString();
 		}
 		return $text;
@@ -160,28 +159,28 @@ class ALSection {
 	var $header;
 	var $rows;
 
-	function ALSection($header) {
+	function ALSection( $header ) {
 		$this->header = $header;
 		$this->rows = array();
 	}
 
-	function getRow($row_name) {
-		foreach ($this->rows as $cur_row) {
-			if ($cur_row->name === $row_name) {
+	function getRow( $row_name ) {
+		foreach ( $this->rows as $cur_row ) {
+			if ( $cur_row->name === $row_name ) {
 				return $cur_row;
 			}
 		}
 		return null;
 	}
 
-	function addRow($row, $next_row_name = null) {
-		if ($next_row_name == null) {
+	function addRow( $row, $next_row_name = null ) {
+		if ( $next_row_name == null ) {
 			$this->rows[] = $row;
 			return;
 		}
-		foreach ($this->rows as $i => $cur_row) {
-			if ($cur_row->name === $next_row_name) {
-				array_splice($this->rows, $i, 0, array($row));
+		foreach ( $this->rows as $i => $cur_row ) {
+			if ( $cur_row->name === $next_row_name ) {
+				array_splice( $this->rows, $i, 0, array( $row ) );
 				return;
 			}
 		}
@@ -190,7 +189,7 @@ class ALSection {
 
 	function toString() {
 		$text = '	<h4 class="mw-specialpagesgroup">' . $this->header . "</h4>\n";
-		foreach ($this->rows as $row) {
+		foreach ( $this->rows as $row ) {
 			$text .= $row->toString();
 		}
 		return $text;
@@ -205,19 +204,19 @@ class ALRow {
 	var $name;
 	var $items;
 
-	function ALRow($name) {
+	function ALRow( $name ) {
 		$this->name = $name;
 		$this->items = array();
 	}
 
-	function addItem($item, $next_item_label = null) {
-		if ($next_item_label == null) {
+	function addItem( $item, $next_item_label = null ) {
+		if ( $next_item_label == null ) {
 			$this->items[] = $item;
 			return;
 		}
-		foreach ($this->items as $i => $cur_item) {
-			if ($cur_item->label === $next_item_label) {
-				array_splice($this->items, $i, 0, array($item));
+		foreach ( $this->items as $i => $cur_item ) {
+			if ( $cur_item->label === $next_item_label ) {
+				array_splice( $this->items, $i, 0, array( $item ) );
 				return;
 			}
 		}
@@ -226,8 +225,8 @@ class ALRow {
 
 	function toString() {
 		$text = "	<p>\n";
-		foreach ($this->items as $i => $item) {
-			if ($i > 0)
+		foreach ( $this->items as $i => $item ) {
+			if ( $i > 0 )
 				$text .= " &middot;\n";
 			$text .= '		' . $item->text;
 		}
@@ -244,36 +243,36 @@ class ALItem {
 	var $text;
 	var $label;
 
-	static function newFromPage($page_name, $desc = null, $params = null) {
+	static function newFromPage( $page_name, $desc = null, $params = null ) {
 		$item = new ALItem();
 		$item->label = $desc;
-		if ($params != null) {
+		if ( $params != null ) {
 			global $wgUser;
-			$item->text = $wgUser->getSkin()->makeKnownLinkObj($page_name, $desc, $params);
+			$item->text = $wgUser->getSkin()->makeKnownLinkObj( $page_name, $desc, $params );
 		} else
 			$item->text = "[[$page_name|$desc]]";
 		return $item;
 	}
 
-	static function newFromSpecialPage($page_name) {
+	static function newFromSpecialPage( $page_name ) {
 		$item = new ALItem();
 		$item->label = $page_name;
-		$page = SpecialPage::getPage($page_name);
+		$page = SpecialPage::getPage( $page_name );
 		global $wgUser;
-		$item->text = $wgUser->getSkin()->makeKnownLinkObj($page->getTitle(), $page->getDescription());
+		$item->text = $wgUser->getSkin()->makeKnownLinkObj( $page->getTitle(), $page->getDescription() );
 		return $item;
 	}
 
-	static function newFromEditLink($page_name, $desc) {
+	static function newFromEditLink( $page_name, $desc ) {
 		$item = new ALItem();
 		$item->label = $page_name;
-		$title = Title::makeTitleSafe(NS_MEDIAWIKI, $page_name);
-		$edit_link = $title->getFullURL('action=edit');
+		$title = Title::makeTitleSafe( NS_MEDIAWIKI, $page_name );
+		$edit_link = $title->getFullURL( 'action=edit' );
 		$item->text = "<a href=\"$edit_link\">$desc</a>";
 		return $item;
 	}
 
-	static function newFromExternalLink($url, $label) {
+	static function newFromExternalLink( $url, $label ) {
 		$item = new ALItem();
 		$item->label = $label;
 		$item->text = "<a class=\"external text\" rel=\"nofollow\" href=\"$url\">$label</a>";

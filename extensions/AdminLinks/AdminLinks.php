@@ -5,7 +5,7 @@
  * @author Yaron Koren
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 // credits
 $wgExtensionCredits['specialpage'][] = array(
@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg'  => 'adminlinks-desc',
 );
 
-$wgAdminLinksIP = dirname(__FILE__) . '/';
+$wgAdminLinksIP = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AdminLinks'] = $wgAdminLinksIP . 'AdminLinks.i18n.php';
 $wgSpecialPages['AdminLinks'] = 'AdminLinks';
 $wgHooks['PersonalUrls'][] = 'AdminLinks::addURLToUserLinks';
