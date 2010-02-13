@@ -126,4 +126,3 @@ $aliases['sk'] = array(
 $aliases['tl'] = array(
 	'AdvancedRandom' => array( 'Mas masulong na paghanap ng alin mang pahina' ),
 );
-

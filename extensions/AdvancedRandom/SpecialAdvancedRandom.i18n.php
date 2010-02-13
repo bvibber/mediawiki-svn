@@ -617,7 +617,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'advancedrandom' => 'మొరుగైన యాదృచ్ఛికం',
-	'advancedrandom-desc' => 'చర్చా పేజీలు, లేదా విషయక పేజీలు లాంటి ఏ నేమ్‌స్పేస్ నుంచైనా ఒక యాధృచ్చిక పేజీని చూపించు. 
+	'advancedrandom-desc' => 'చర్చా పేజీలు, లేదా విషయక పేజీలు లాంటి ఏ నేమ్‌స్పేస్ నుంచైనా ఒక యాధృచ్చిక పేజీని చూపించు.
 యాధృచ్చిన విశేష వ్యాసపు చర్చాపేజీని చూడడానికి [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]], యాధృచ్చిక GFDL ఫైల్ చూడడానికి [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] అని వాడవచ్చు',
 );
 

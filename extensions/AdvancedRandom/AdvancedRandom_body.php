@@ -1,5 +1,4 @@
 <?php
-
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 
@@ -41,7 +40,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 		$rand = wfRandom();
 		$dbr =& wfGetDB( DB_SLAVE );
 
-		if ($ft->getNamespace() == NS_TEMPLATE) {
+		if ( $ft->getNamespace() == NS_TEMPLATE ) {
 			$res = $dbr->selectRow(
 				array( 'page', 'templatelinks' ),
 				array( 'page_namespace', 'page_title', 'page_random' ),
@@ -83,7 +82,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 
 		$title =& Title::makeTitle( MWNamespace::getSubject( $namespace ), $res->page_title );
 		if ( is_null( $title ) || $title->getText() == '' )
-			$title = Title::newMainPage();;
+			$title = Title::newMainPage(); ;
 		$this->redirect( $title );
 		wfProfileOut( $fname );
 	}
