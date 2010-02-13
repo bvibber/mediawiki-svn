@@ -29,7 +29,7 @@ class HideRevisionForm extends SpecialPage {
 		$this->mRevisions = (array)$wgRequest->getIntArray( 'revision' );
 
 		// For deleted/archived revisions
-		$this->mTarget = Title::newFromUrl( $wgRequest->getVal( 'target' ) );
+		$this->mTarget = Title::newFromURL( $wgRequest->getVal( 'target' ) );
 		$this->mTimestamps = (array)$wgRequest->getArray( 'timestamp' );
 		if( is_null( $this->mTarget ) ) {
 			// title and timestamps must go together
@@ -388,7 +388,7 @@ class SpecialOversight extends SpecialPage {
 	function showList( $page, $user, $offender ) {
 		global $wgOut, $wgScript, $wgTitle;
 		
-		$title = Title::newFromUrl( $page );
+		$title = Title::newFromURL( $page );
 		$u = User::newFromName( $user );
 		$page = $title ? $page : ''; // blank invalid titles
 

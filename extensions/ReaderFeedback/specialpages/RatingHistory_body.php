@@ -32,7 +32,7 @@ class RatingHistory extends UnlistedSpecialPage
 		$this->doPurge = ('purge' === $wgRequest->getVal( 'action' ) && $wgUser->isAllowed('purge'));
 		# Our target page
 		$this->target = $wgRequest->getText( 'target' );
-		$this->page = Title::newFromUrl( $this->target );
+		$this->page = Title::newFromURL( $this->target );
 		# We need a page...
 		if( is_null($this->page) ) {
 			$wgOut->showErrorPage( 'notargettitle', 'notargettext' );

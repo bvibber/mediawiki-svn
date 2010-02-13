@@ -146,7 +146,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 
 		while ( ( $result = $dbr->fetchRow( $results ) ) !== false ) {
 			# TODO: Should maybe not be using page_title as URL component, but it's currently what we do elsewhere
-			$title = Title::newFromUrl( $result[0] );
+			$title = Title::newFromURL( $result[0] );
 
 			$response = array();
 			$response['path'] = 'webdav.php/' . $result[0];
@@ -223,7 +223,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 
 		while ( ( $result = $dbr->fetchRow( $results ) ) !== false ) {
 			# TODO: Should maybe not be using page_title as URL component, but it's currently what we do elsewhere
-			$title = Title::newFromUrl( $result[0] );
+			$title = Title::newFromURL( $result[0] );
 
 			$response = array();
 			$response['path'] = 'deltav.php/bc/' . $revisionId . '/' . $result[0];
@@ -310,7 +310,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 			$revisionId = array_shift( $this->pathComponents );
 
 			if ( $pathComponent == 'bc' ) {
-				$title = Title::newFromUrl( implode( '/', $this->pathComponents ) );
+				$title = Title::newFromURL( implode( '/', $this->pathComponents ) );
 				if (!isset( $title )) {
 					$title = Title::newMainPage();
 				}
@@ -328,7 +328,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 				$revisionId = $serverOptions['label'];
 			}
 
-			$title = Title::newFromUrl( implode( '/', $this->pathComponents ) );
+			$title = Title::newFromURL( implode( '/', $this->pathComponents ) );
 			if (!isset( $title )) {
 				$title = Title::newMainPage();
 			}
@@ -391,7 +391,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 			return;
 		}
 
-		$title = Title::newFromUrl( implode( '/', $this->pathComponents ) );
+		$title = Title::newFromURL( implode( '/', $this->pathComponents ) );
 		if (!isset( $title )) {
 			$title = Title::newMainPage();
 		}
@@ -426,7 +426,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 			return;
 		}
 
-		$title = Title::newFromUrl( implode( '/', $this->pathComponents ) );
+		$title = Title::newFromURL( implode( '/', $this->pathComponents ) );
 		if (!isset( $title )) {
 			$title = Title::newMainPage();
 		}

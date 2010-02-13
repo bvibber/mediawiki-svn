@@ -108,7 +108,7 @@ function wfSpecialFilelist () {
 			$where = array();
 			$searchpar = '';
 			if ( $params['match'] != '' ) {
-				$nt = Title::newFromUrl( $params['match'] );
+				$nt = Title::newFromURL( $params['match'] );
 				if($nt ) {
 					$m = $this->dbr->strencode( strtolower( $nt->getDBkey() ) );
 					$m = str_replace( '%', "\\%", $m );

@@ -294,7 +294,7 @@ function viewCatNewslist( $input ) {
 	
 	# Add only valid title objects
 	foreach ( $iptitles as $title ) {
-		$addtitle = Title::newFromUrl($title);
+		$addtitle = Title::newFromURL($title);
 		if(get_class($addtitle)=="title") {
 			$dbtitles[] = $addtitle;
 		}

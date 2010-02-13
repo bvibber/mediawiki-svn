@@ -777,7 +777,7 @@ function wfReviewExtensionFunction () {
 			
 			if ( $page_id == 0 ) {
 				if( $par != ''){
-					$title = Title::newFromUrl($par);
+					$title = Title::newFromURL($par);
 					$page_id = $title->getArticleID();
 				}
 				else{

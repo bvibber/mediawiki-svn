@@ -194,7 +194,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 */
 	private function determineTarget( &$request, $override ) {
 		$target = $request->getText( 'target', $override );
-		$this->target = Title::newFromUrl( $target );
+		$this->target = Title::newFromURL( $target );
 	}
 	
 	/**
