@@ -3,7 +3,6 @@
 
 /**
  * Compatability map
- */
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
@@ -22,6 +21,7 @@
 		'chrome': [['==', 1000]] // Off for now
 	}
 },
+ */
 /**
  * Configuration
  */

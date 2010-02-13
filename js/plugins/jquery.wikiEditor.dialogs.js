@@ -11,7 +11,6 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 
 /**
  * Compatability map
- */
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
@@ -30,6 +29,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 		'chrome': [['==', 1000]] // Off for now
 	}
 },
+ */
 /**
  * API accessible functions
  */
