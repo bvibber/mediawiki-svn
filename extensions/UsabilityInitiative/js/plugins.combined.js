@@ -6534,12 +6534,12 @@ $.wikiEditor = {
 		var map = module && 'browsers' in $.wikiEditor.modules[module] ?
 				$.wikiEditor.modules[module].browsers : $.wikiEditor.browsers;
 		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
+		if ( !( $.browser.name in map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
 			// Assume good faith :) 
 			return cacheSupport( true );
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = $.wikiEditor.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
+		var browser = map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
 		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
