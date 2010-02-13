@@ -69,7 +69,7 @@ if ( $append ) {
 
 $f = fopen( $file, $append ? 'a' : 'w' );
 
-$db =& wfGetDB( DB_SLAVE );
+$db = wfGetDB( DB_SLAVE );
 $conds = array( 'rev_page=page_id', 'rev_deleted' => 0, "rev_id > $start" );
 if ( isset( $namespaces ) ) $conds['page_namespace'] = $namespaces;
 if ( isset( $options['usersonly'] ) ) $conds[] = 'rev_user != 0';

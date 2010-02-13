@@ -86,7 +86,7 @@ if ($wgCreateRevisionIndex){
  }
 
 // Create the needed tables, if neccesary.
-$dbr =& wfGetDB( DB_SLAVE );
+$dbr = wfGetDB( DB_SLAVE );
 
 // First check to see what tables have already been created.
 $res = $dbr->query("show tables");

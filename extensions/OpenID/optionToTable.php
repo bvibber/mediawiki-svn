@@ -33,7 +33,7 @@ if ( isset( $wgSharedDB ) ) {
 	$tableName = "`$wgSharedDB`.$tableName";
 }
 
-$dbr =& wfGetDB( DB_SLAVE );
+$dbr = wfGetDB( DB_SLAVE );
 
 $res = $dbr->select( array( 'user' ),
 					array( 'user_name' ),

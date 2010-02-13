@@ -90,7 +90,7 @@ function fetchDefinedMeaningReferenceRecords( $sql, array &$definedMeaningIds, a
 
 	$foundDefinedMeaningIds = array();
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query( $sql );
 
 	while ( $row = $dbr->fetchObject( $queryResult ) ) {
@@ -115,7 +115,7 @@ function fetchDefinedMeaningDefiningExpressions( array &$definedMeaningIds, arra
 
 	$dc = wdGetDataSetContext();
 	
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	# Query building
 	$frontQuery = "SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling" .
@@ -270,7 +270,7 @@ function getExpressionReferenceRecords( $expressionIds ) {
 	$dc = wdGetDataSetContext();
 
 	if ( count( $expressionIds ) > 0 ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		
         # Query building
 		$frontQuery = "SELECT expression_id, language_id, spelling" .
@@ -320,7 +320,7 @@ function getExpressionSpellings( array $expressionIds ) {
 	$dc = wdGetDataSetContext();
 
 	if ( count( $expressionIds ) > 0 ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		
 		# Prepare steady components
 		$frontQuery = "SELECT expression_id, spelling FROM {$dc}_expression WHERE expression_id =";
@@ -361,7 +361,7 @@ function expandExpressionSpellingsInRecordSet( RecordSet $recordSet, array $expr
 function getTextReferences( array $textIds ) {
 	$dc = wdGetDataSetContext();
 	if ( count( $textIds ) > 0 ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		
 		# Query building
 		$frontQuery = "SELECT text_id, text_text" .
@@ -414,7 +414,7 @@ function getExpressionMeaningsRecordSet( $expressionId, $exactMeaning, ViewInfor
 
 	$recordSet = new ArrayRecordSet( $o->expressionMeaningStructure, new Structure( $o->definedMeaningId ) );
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query(
 		"SELECT defined_meaning_id FROM {$dc}_syntrans" .
 		" WHERE expression_id=$expressionId AND identical_meaning=" . $identicalMeaning .
@@ -452,7 +452,7 @@ function getExpressionsRecordSet( $spelling, ViewInformation $viewInformation, $
 
 	$languageRestriction = $viewInformation->filterLanguageId != 0 ? " AND language_id=" . $viewInformation->filterLanguageId : "";
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$sql =
 		"SELECT expression_id, language_id " .
 		" FROM {$dc}_expression" .
@@ -487,7 +487,7 @@ function getExpressionsRecordSet( $spelling, ViewInformation $viewInformation, $
 function getExpressionIdThatHasSynonyms( $spelling, $languageId ) {
 	$dc = wdGetDataSetContext();
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query(
 		"SELECT expression_id, language_id " .
 		" FROM {$dc}_expression" .

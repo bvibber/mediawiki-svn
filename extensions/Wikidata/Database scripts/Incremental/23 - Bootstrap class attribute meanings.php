@@ -64,7 +64,7 @@ echo "dc = $dc\n";
 
 setDefaultDC( $dc );
 
-$dbr =& wfGetDB( DB_MASTER );
+$dbr = wfGetDB( DB_MASTER );
 $timestamp = wfTimestampNow();
 
 $dbr->query( "DROP TABLE `{$dc}_bootstrapped_defined_meanings`;" );

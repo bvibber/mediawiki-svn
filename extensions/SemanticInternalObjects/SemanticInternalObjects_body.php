@@ -44,7 +44,7 @@ class SIOSQLStore extends SMWSQLStore2 {
 		$ids = array();
 
 		$iw = '';
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select( 'smw_ids', array( 'smw_id' ), 'smw_title LIKE ' . $db->addQuotes( $page_name . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
 		while ( $row = $db->fetchObject( $res ) ) {
 			$ids[] = $row->smw_id;
@@ -161,7 +161,7 @@ class SIOHandler {
 		}
 
 		// now save everything to the database
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		$db->begin('SIO::updatePageData');
 		if (count($ids_for_deletion) > 0) {
 			$ids_string = '(' . implode (', ', $ids_for_deletion) . ')';

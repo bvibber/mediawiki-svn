@@ -1,7 +1,7 @@
 <?php
 
 function dropAllIndicesFromTable( $tableName ) {
-	$dbr =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_MASTER );
 	
 	$queryResult = $dbr->query( "SHOW INDEXES FROM " . $tableName );
 	
@@ -28,7 +28,7 @@ function dropAllIndicesFromTable( $tableName ) {
 
 function addIndexes( $tableName, array $indexes ) {
 	if ( count( $indexes ) > 0 ) {
-		$dbr =& wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_MASTER );
 		$indexesSQL = array();
 		
 		foreach ( $indexes as $indexName => $columns )

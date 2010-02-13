@@ -138,7 +138,7 @@ class BadImageManipulator extends SpecialPage {
 	function listExisting() {
 		global $wgOut, $wgUser, $wgLang;
 		wfProfileIn( __METHOD__ );
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		extract( $dbr->tableNames( 'bad_images', 'user' ) );
 		$sql = "SELECT * FROM {$bad_images} LEFT JOIN {$user} ON bil_user = user_id";
 		$res = $dbr->query( $sql, __METHOD__ );

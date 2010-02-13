@@ -128,7 +128,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 		}
 
 		# TODO: Use $wgMemc
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		# TODO: Think harder about pages' hierarchical structure.  The trouble is most filesystems don't support directories which themselves have file content, which is a problem for making pages descendents of other pages.
 		$where = array();
@@ -202,7 +202,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 		}
 
 		# TODO: Use $wgMemc
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		# TODO: Think harder about pages' hierarchical structure.  The trouble is most filesystems don't support directories which themselves have file content, which is a problem for making pages descendents of other pages.
 		$where = array();
@@ -258,7 +258,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 
 	function propfindVcc( &$serverOptions ) {
 		# TODO: Use $wgMemc
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$results = $dbr->query( '
 			SELECT MAX(rev_id)
@@ -501,7 +501,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 		}
 
 		# TODO: Use $wgMemc
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		# TODO: Think harder about pages' hierarchical structure.  The trouble is most filesystems don't support directories which themselves have file content, which is a problem for making pages descendents of other pages.
 		$where = array();
@@ -585,7 +585,7 @@ class WebDavServer extends HTTP_WebDAV_Server {
 		$srcComponents['pathComponents'] = array_slice( $srcComponents['pathComponents'], count( $this->baseUrlComponents['pathComponents'] ) + 1 );
 
 		# TODO: Use $wgMemc
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$entryConditions = array();
 		foreach ( $serverOptions['xpath']->query( '/S:update-report/S:entry' ) as $node ) {

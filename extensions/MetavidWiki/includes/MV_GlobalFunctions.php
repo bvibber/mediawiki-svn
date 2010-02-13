@@ -719,7 +719,7 @@ function mvDoMetavidStreamPage( &$title, &$article ) {
 		global $mvEnableClipViewDigest, $wgRequest;
 		// don't log views without end times (default stream view)
 		if ( $mvEnableClipViewDigest && $mvTitle->end_time != null && $wgRequest->getVal( 'tl' ) != '1' ) {
-			$dbw =& wfGetDB( DB_WRITE );
+			$dbw = wfGetDB( DB_WRITE );
 			$dbw->insert( 'mv_clipview_digest', array(
 					'stream_id'	=> $mvTitle->getStreamId(),
 					'start_time' => $mvTitle->getStartTimeSeconds(),

@@ -217,7 +217,7 @@ function modifyTabs( $skin, $content_actions ) {
 function initializeWikidata() {
 	wfLoadExtensionMessages( 'Wikidata' );
 
-	$dbr =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_MASTER );
 	$dbr->query( 'SET NAMES utf8' );
 
 	global $wgRecordSetLanguage;

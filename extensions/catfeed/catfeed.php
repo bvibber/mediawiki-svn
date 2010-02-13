@@ -86,7 +86,7 @@ function setupCatRSSExtension() {
 			$fname = __CLASS__ . '::' . __FUNCTION__;
 			$this->mMaxTimeStamp = 0;
 			
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$set = implode( ',', array_map(
 				array( &$dbr, 'addQuotes' ),
 				$this->mTitleStrings ) );

@@ -25,7 +25,7 @@ class InteractPage extends QueryPage {
 	function sortDescending() { return false; }
 
 	function getSQL() {
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$page = $db->tableName( 'page' );
 		$revision = $db->tableName( 'revision' );
 

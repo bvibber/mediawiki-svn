@@ -268,7 +268,7 @@ function wfSpecialDatasearch() {
 
 			$o = OmegaWikiAttributes::getInstance();
 
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$recordSet = new ArrayRecordSet( new Structure( $o->definedMeaningId, $this->expressionAttribute, $this->meaningAttribute ), new Structure( $o->definedMeaningId ) );
 
 			while ( $row = $dbr->fetchObject( $queryResult ) ) {
@@ -332,7 +332,7 @@ function wfSpecialDatasearch() {
 		}
 
 		function getExternalIdentifiersSearchResultAsRecordSet( $queryResult ) {
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 
 			$externalIdentifierMatchStructure = new Structure( $this->externalIdentifierAttribute, $this->collectionAttribute, $this->collectionMemberAttribute );
 			$recordSet = new ArrayRecordSet( $externalIdentifierMatchStructure, new Structure( $this->externalIdentifierAttribute ) );

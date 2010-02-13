@@ -182,7 +182,7 @@ class TodoList {
 	 */
 	function TodoList( $user ) {
 		$this->owner = $user->getId();
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$result = $dbr->select( 'todolist', '*', array(
 			'todo_owner' => $this->owner,
@@ -271,7 +271,7 @@ class TodoItem {
 	 * @static
 	 */
 	function loadFromId( $id ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow( 'todolist',
 			'*',
 			array( 'todo_id' => intval( $id ) ),
@@ -291,7 +291,7 @@ class TodoItem {
 	 * @static
 	 */
 	function add( $owner, $summary, $comment, $email ) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'todolist',
 			array(
 				'todo_owner' => $owner->getId(),
@@ -470,7 +470,7 @@ class TodoItem {
 	 * @access private
 	 */
 	function updateRecord( $changes ) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->update( 'todolist',
 			$changes,
 			array( 'todo_id' => $this->id ),

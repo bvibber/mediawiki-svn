@@ -68,7 +68,7 @@ function efCategoryStepper( $out, $text ) {
 	wfLoadExtensionMessages( 'CategoryStepper' );
 
 	// Open a database connection.
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 
 	// If $wgCategoryStepper is not an array then fallback to the MediaWiki
 	// namespace page.

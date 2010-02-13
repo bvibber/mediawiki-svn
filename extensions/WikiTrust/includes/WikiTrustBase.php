@@ -64,7 +64,7 @@ class WikiTrustBase {
     global $wgMemc;
     wfWikiTrustDebug(__FILE__.":".__LINE__
         . ": Handling vote from $user_name_raw $page_title_raw");
-    $dbr =& wfGetDB( DB_SLAVE );
+    $dbr = wfGetDB( DB_SLAVE );
     
     $userName = $dbr->strencode($user_name_raw, $dbr);
     $page_id = $dbr->strencode($page_id_raw, $dbr);
@@ -115,7 +115,7 @@ class WikiTrustBase {
     wfWikiTrustDebug(__FILE__ . ":"
         . __LINE__ . " Inserting vote values: ".print_r($insert_vals, true));
 
-    $dbw =& wfGetDB( DB_MASTER );
+    $dbw = wfGetDB( DB_MASTER );
     if ($dbw->insert( self::util_getDbTable('wikitrust_vote'), $insert_vals)) {
       $dbw->commit();
       self::runEvalEdit(self::TRUST_EVAL_VOTE, $rev_id, $page_id, $userName); 
@@ -208,7 +208,7 @@ class WikiTrustBase {
   static function voteToProcess($rev_id)
   {
     $voteToProcess = false;
-    $dbr =& wfGetDB( DB_SLAVE );
+    $dbr = wfGetDB( DB_SLAVE );
     $res = $dbr->select(self::util_getDbTable('wikitrust_vote'), 'processed',
 			array( 'revision_id' => $rev_id ), 
       array());
@@ -234,7 +234,7 @@ class WikiTrustBase {
 
     $colored_text = "";
 
-    $dbr =& wfGetDB( DB_SLAVE );
+    $dbr = wfGetDB( DB_SLAVE );
 
     global $wgWikiTrustBlobPath;
     wfWikiTrustDebug(__FILE__.":".__LINE__ . ": Looks in the database.");
@@ -652,7 +652,7 @@ if (0) {
     $process = -1;
     $command = "";
     // Get the db.
-    $dbr =& wfGetDB( DB_SLAVE );
+    $dbr = wfGetDB( DB_SLAVE );
 	  
     // Do we use a DB prefix?
     $prefix = ($wgDBprefix)? "-db_prefix " . $dbr->strencode($wgDBprefix): "";
@@ -706,7 +706,7 @@ if (0) {
   {
     global $wgTitle;
 
-    $dbr =& wfGetDB( DB_SLAVE );
+    $dbr = wfGetDB( DB_SLAVE );
 
     if ($rev_id && !$page_id) {
       $rev = Revision::loadFromId($dbr, $rev_id);
@@ -752,7 +752,7 @@ if (0) {
       global $wgTitle;
       $rev_id = 0;
       $page_id = $wgTitle->getArticleID();
-      $dbr =& wfGetDB( DB_SLAVE );
+      $dbr = wfGetDB( DB_SLAVE );
       $res = $dbr->select('page', array('page_latest'), 
                           array('page_id' => $page_id), array());
       if ($res && $dbr->numRows($res) > 0) {

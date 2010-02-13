@@ -25,7 +25,7 @@
 					return false;
 				}
 				
-				$dbr =& wfGetDB( DB_MASTER );
+				$dbr = wfGetDB( DB_MASTER );
 				$dc = wdGetDataSetcontext();
 				$wgOut->setPageTitle( wfMsg( 'ow_importtsv_importing' ) );
 				setlocale( LC_ALL, 'en_US.UTF-8' );

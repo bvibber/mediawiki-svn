@@ -696,7 +696,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 */
 		function add_new_task( $title, $comment, $type, $name ) {
 			global $wgUser;
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$user_id = 0;
 			if ( !is_null($name) ) {
 			  $user_id = $wgUser->idFromName($name);
@@ -916,7 +916,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			
 			$out = '';
 			$fname = 'Tasks::check_mode';
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 
 			switch( $mode ) {
 
@@ -1024,7 +1024,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		function change_task_status( $taskid, $new_status ) { # Checked for HTML and MySQL insertion attacks
 			global $wgUser;
 			$fname = 'Tasks:change_task_status';
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			
 			if( !is_numeric( $new_status ) || !is_numeric( $taskid ) ) {
 				# Paranoia
@@ -1118,7 +1118,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				# Paranoia
 				return null;
 			}
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					/* FROM   */ 'tasks',
 					/* SELECT */ '*',
@@ -1134,7 +1134,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 */
 		function set_new_article_id( &$title ) { # Checked for HTML and MySQL insertion attacks
 			$fname = 'Tasks:set_new_article_id';
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'tasks',
 				array( 'task_page_id' => $title->getArticleID() ), # SET
 				array( 'task_page_title' => $title->getPrefixedDBkey() ), # WHERE
@@ -1152,7 +1152,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			} else {
 				$conds = array( 'task_page_title' => $title->getPrefixedDBkey() );
 			}
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete( 'tasks',
 				$conds,
 				$fname );
@@ -1163,7 +1163,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		*/
 		function rename_tasks_page( $old_title, $new_title ) { # Checked for HTML and MySQL insertion attacks
 			$fname = 'Tasks:rename_tasks_page';
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'tasks',
 				array( 'task_page_title' => $new_title->getPrefixedDBkey() ), # SET
 				array( 'task_page_title' => $old_title->getPrefixedDBkey() ), # WHERE
@@ -1287,7 +1287,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		* Returns the exisiting tasks for a single page
 		*/
 		function get_tasks_for_page( &$title, $force_dbtitle = false ) { # Checked for HTML and MySQL insertion attacks
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$id = $title->getArticleID();
 
 			if( $id == 0 || $force_dbtitle ) {
@@ -1317,7 +1317,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				return null;
 			}
 		
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 
 			$res = $dbr->select(
 					/* FROM   */ 'tasks',
@@ -1344,7 +1344,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$out = '';
 			$mode = trim( $wgRequest->getVal( 'mode' ) );
 			$skin =& $wgUser->getSkin();
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			
 			# Assignments
 			if( $wgUser->isLoggedIn() ) {

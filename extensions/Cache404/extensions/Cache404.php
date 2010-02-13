@@ -561,7 +561,7 @@ if (defined('MEDIAWIKI')) {
 
 		function getAdminIds() {
 			$admins = '';
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$user_rights = $dbr->tableName( 'user_rights' );
 			$userspace = MWNamespace::getUser();
 			$sql = "SELECT ur_user " .

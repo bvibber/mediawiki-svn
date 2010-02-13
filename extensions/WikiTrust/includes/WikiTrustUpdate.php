@@ -11,7 +11,7 @@ class WikiTrustUpdate {
     global $IP;
 		
     require_once($IP . "/extensions/WikiTrust/includes/TrustUpdateScripts.inc");
-    $db =& wfGetDB( DB_MASTER );
+    $db = wfGetDB( DB_MASTER );
     
     // First check to see what tables have already been created.
     $res = $db->query("show tables");

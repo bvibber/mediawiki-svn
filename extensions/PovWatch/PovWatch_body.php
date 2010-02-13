@@ -167,7 +167,7 @@ EOT
 
 		$intro = $this->message( 'subscriber_list_intro' );
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			array( 'povwatch_subscribers', 'user' ),
 			array( 'pws_user', 'user_name' ),
@@ -192,7 +192,7 @@ EOT
 	function showLog() {
 		global $wgUser, $wgLang;
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			array( 'povwatch_log', 'user' ),
 			array( 'pwl_user', 'user_name', 'pwl_namespace', 'pwl_title', 'pwl_timestamp', 'pwl_comment' ),
@@ -274,7 +274,7 @@ EOT
 
 	function isSubscribed( User $user ) {
 		# Use dbw because a check is done shortly after form submission
-		$dbw =& wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_SLAVE );
 		return (bool)$dbw->selectField(
 			'povwatch_subscribers', '1',
 			array( 'pws_user' => $user->getID() ),
@@ -293,7 +293,7 @@ EOT
 			return false;
 		}
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'povwatch_subscribers', array( 'pws_user' => $id ),
 			__METHOD__, array( 'IGNORE' ) );
 		return (bool) $dbw->affectedRows();
@@ -304,7 +304,7 @@ EOT
 		if ( !$id ) {
 			return false;
 		}
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'povwatch_subscribers', array( 'pws_user' => $id ), __METHOD__ );
 		return (bool) $dbw->affectedRows();
 	}
@@ -321,7 +321,7 @@ EOT
 		$dbk = $title->getDBkey();
 
 		# Read from master in case more users have recently been subscribed
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$res = $dbw->select( 'povwatch_subscribers', 'pws_user', false, __METHOD__ );
 		while ( $row = $dbw->fetchObject( $res ) ) {
 			$insertRows[] = array(

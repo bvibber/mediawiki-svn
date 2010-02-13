@@ -333,7 +333,7 @@ function &wdGetDataSets() {
 	static $datasets, $wgGroupPermissions;
 	if ( empty( $datasets ) ) {
 		// Load defs from the DB
-		$dbs =& wfGetDB( DB_SLAVE );
+		$dbs = wfGetDB( DB_SLAVE );
 		$res = $dbs->select( 'wikidata_sets', array( 'set_prefix' ) );
 
 		while ( $row = $dbs->fetchObject( $res ) ) {
@@ -381,7 +381,7 @@ class DataSet {
 
 		$fname = "DataSet::setPrefix";
 
-		$dbs =& wfGetDB( DB_SLAVE );
+		$dbs = wfGetDB( DB_SLAVE );
 		$this->dataSetPrefix = $cp;
 		$sql = "select * from wikidata_sets where set_prefix=" . $dbs->addQuotes( $cp );
 		$res = $dbs->query( $sql );

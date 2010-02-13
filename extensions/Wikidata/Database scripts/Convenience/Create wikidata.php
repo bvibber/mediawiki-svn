@@ -93,7 +93,7 @@ function bootStrappedDefinedMeanings( $dc ) {
 
 	$wgCommandLineMode = true;
 
-	$dbr =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_MASTER );
 	
 	$dbr->query( "DROP TABLE IF EXISTS `{$dc}_bootstrapped_defined_meanings`;" );
 

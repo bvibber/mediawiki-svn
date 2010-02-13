@@ -199,7 +199,7 @@ class SNMDBHelper {
 	public static function getSQLConditions( $requestoptions, $valuecol, $labelcol = NULL ) {
 		$sql_conds = '';
 		if ( $requestoptions !== NULL ) {
-			$db =& wfGetDB( DB_SLAVE ); // TODO: use slave?
+			$db = wfGetDB( DB_SLAVE ); // TODO: use slave?
 			if ( $requestoptions->boundary !== NULL ) { // apply value boundary
 				if ( $requestoptions->ascending ) {
 					if ( $requestoptions->include_boundary ) {
@@ -259,7 +259,7 @@ class SNMDBHelper {
 	public static function getSQLConditionsAsArray( $requestoptions, $valuecol, $labelcol = NULL ) {
 		$sql_conds = array();
 		if ( $requestoptions !== NULL ) {
-			$db =& wfGetDB( DB_SLAVE );
+			$db = wfGetDB( DB_SLAVE );
 			if ( $requestoptions->boundary !== NULL ) { // apply value boundary
 				if ( $requestoptions->ascending ) {
 					if ( $requestoptions->include_boundary ) {

@@ -73,7 +73,7 @@ class ExpressionIdConverter extends DefaultConverter {
 
 		$o = OmegaWikiAttributes::getInstance();
 		
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$expressionId = $record->getAttributeValue( $this->attribute );
 		$queryResult = $dbr->query( "SELECT language_id, spelling from {$dc}_expression WHERE expression_id=$expressionId" .
 									" AND " . getLatestTransactionRestriction( "{$dc}_expression" ) );

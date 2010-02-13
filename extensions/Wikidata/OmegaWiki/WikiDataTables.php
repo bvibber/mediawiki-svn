@@ -788,7 +788,7 @@ function expressionToSQL( $expression ) {
 	if ( is_int( $expression ) )
 		return $expression;
 	else if ( is_string( $expression ) ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->addQuotes( $expression );
 	}
 	else if ( is_object( $expression ) && $expression instanceof DatabaseExpression )

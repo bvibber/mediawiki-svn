@@ -10,7 +10,7 @@
  		global $wgUser;
  		$o = '';
  		$sk = $wgUser->getSkin();
- 		$dbr =& wfGetDB( DB_SLAVE );
+ 		$dbr = wfGetDB( DB_SLAVE );
  		
  		//if in overview mode don't print out the navigator:
  		global $wgRequest;

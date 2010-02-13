@@ -24,7 +24,7 @@
 					return false;
 				}
 				
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				$dc = wdGetDataSetcontext();
 				
 				if ( $wgRequest->getText( 'collection' ) && $wgRequest->getText( 'languages' ) ) {
@@ -233,7 +233,7 @@
 				// wfDebug($langQuery."\n");
 
 				$languages = array();
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				$langResults = $dbr->query( $langQuery );
 				while ( $row = $dbr->fetchRow( $langResults ) ) {
 					$languages[] = $row;

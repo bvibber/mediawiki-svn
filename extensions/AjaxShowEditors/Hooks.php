@@ -27,7 +27,7 @@ function wfAjaxShowEditorsCleanup( $article, $user ) {
 	$articleId = $article->getID();
 	$userId = $user->getName();
 
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$dbw->delete( 'editings',
 		array(
 			'editings_page' => $articleId,

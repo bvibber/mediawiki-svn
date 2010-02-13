@@ -321,7 +321,7 @@ function do_stream_insert( $mode, $stream_name = '' ) {
 }
 function do_annotate_speeches( $stream, $force ) {
 	print "do annotations for $stream->name \n";
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	if ( $force ) {
 		global $botUserName;
 		// get wiki stream id:
@@ -343,7 +343,7 @@ function do_annotate_speeches( $stream, $force ) {
 	// get all mvd's
 	$mvStream = MV_Stream::newStreamByName( $stream->name );
 	if ( $mvStream->doesStreamExist() ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// get all pages in range (up 10k)
 		$mvd_rows =& MV_Index::getMVDInRange( $mvStream->getStreamId(), null, null, 'Ht_en', false, 'Spoken_By', array('LIMIT'=>10000) );
 		if ( count( $mvd_rows ) != 0 ) {
@@ -488,8 +488,8 @@ function do_process_text( $stream, $force ) {
  */
 function do_process_images( $stream, $force = false ) {
 	global $mvLocalImgLoc, $MVStreams, $wgDBname;
-	$dbr =& wfGetDB( DB_SLAVE );
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_SLAVE );
+	$dbw = wfGetDB( DB_MASTER );
 
 	// get all images for the current stream:
 	$sql = "SELECT * FROM `metavid`.`image_archive`
@@ -1249,7 +1249,7 @@ function do_proc_interest( $intrestKey, $intrestName ) {
 	print "\n";
 }
 function do_rm_congress_persons() {
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$result = $dbr->query( " SELECT *
 	FROM `categorylinks`
 	WHERE `cl_to` LIKE 'Congress_Person' " );

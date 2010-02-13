@@ -151,7 +151,7 @@ function wfSpecialSpamDiffTool() {
 			
 	        # Get the last edit not by this guy
 			$current = Revision::newFromTitle( $title );
- 			$dbw =& wfGetDB( DB_MASTER );
+ 			$dbw = wfGetDB( DB_MASTER );
 	        $user = intval( $current->getUser() );
 	        $user_text = $dbw->addQuotes( $current->getUserText() );
 	        $s = $dbw->selectRow( 'revision',

@@ -148,7 +148,7 @@ class PasswordReset extends SpecialPage {
 
 	private function resetPassword( $userID, $newpass, $disableuser ) {
 		global $wgMemc;
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 
 		$user = User::newFromId( $userID );

@@ -229,7 +229,7 @@ class Linker {
 			} else {
 				$threshold = $wgUser->getOption('stubthreshold') ;
 				if ( $threshold > 0 ) {
-					$dbr =& wfGetDB( DB_SLAVE );
+					$dbr = wfGetDB( DB_SLAVE );
 					$s = $dbr->selectRow(
 						array( 'page' ),
 						array( 'page_len',

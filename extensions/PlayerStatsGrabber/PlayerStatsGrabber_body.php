@@ -160,7 +160,7 @@ EOT
 	function do_submit_player_log() {
 		global $wgRequest, $psLogEveryPlayRequestPerUser;
 		// do the insert into the userPlayerStats table:
-		$dbr =& wfGetDB( DB_READ );	
+		$dbr = wfGetDB( DB_READ );	
 		$cs = $wgRequest->getArray( 'cs', array() );
 		// set up insert array:
 		$insAry = array(
@@ -187,7 +187,7 @@ EOT
 								'do_submit_player_log::Select User Hash' );
 		// if the user_hash is not already in the db or if we are logging every request do INSERT		
 		if ( !$insert_id || $psLogEveryPlayRequestPerUser ) {
-			$dbw =& wfGetDB( DB_WRITE );
+			$dbw = wfGetDB( DB_WRITE );
 			$dbw->insert( 'player_stats_log', $insAry, 'mw_push_player_stats::Insert' );
 			$insert_id = $dbw->insertId();
 			$dbw->commit();
@@ -215,7 +215,7 @@ EOT
 		}
 		
 		// print "NO VIDEO: "
-		$dbr =& wfGetDB( DB_READ );
+		$dbr = wfGetDB( DB_READ );
 		$insAry = array(
 	            'user_hash'			=> $wgRequest->getVal( 'uh' ),
 				'embed_key'			=> $wgRequest->getVal( 'embed_key' ),
@@ -244,7 +244,7 @@ EOT
 								'do_submit_survey::Select User Hash' );
 
 		if ( !$user_id || $psAllowMultipleSurveysPerUser ) {
-			$dbw =& wfGetDB( DB_WRITE );
+			$dbw = wfGetDB( DB_WRITE );
 			$dbw->insert( 'player_stats_survey', $insAry, 'do_submit_survey::Insert' );
 			$insert_id = $dbw->insertId();
 			$dbw->commit();

@@ -867,7 +867,7 @@ class WikiOAIRecord extends OAIRecord {
 
 	function renderUpload() {
 		$fname = 'WikiOAIRecord::renderUpload';
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$imageRow = $db->selectRow( 'image',
 			array( 'img_name', 'img_size', 'img_description',
 				'img_user', 'img_user_text', 'img_timestamp' ),

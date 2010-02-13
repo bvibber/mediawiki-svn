@@ -172,7 +172,7 @@ class CrowdAuthenticator extends AuthPlugin {
 		$groups = $this->crowd->searchGroups(array("in0" => $this->token, "in1" => array($restr)));
 		$groups = $groups->out->SOAPGroup;
 
-		$dbw =& wfGetDB(DB_MASTER);
+		$dbw = wfGetDB(DB_MASTER);
 		if ($caOverwriteLocalGroups)
 			$dbw->delete('user_group', array('ug_user' => $user->getId()));
 

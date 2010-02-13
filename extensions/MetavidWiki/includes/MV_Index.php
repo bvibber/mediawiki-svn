@@ -33,7 +33,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 	function countMVDInRange( $stream_id, $start_time = null, $end_time = null, $mvd_type = 'all' ) {
 		global $mvDefaultClipLength;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$cond = array( 'stream_id' => $stream_id );
 		if ( $end_time )
@@ -48,7 +48,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	 */
 	function getMVDInRange( $stream_id, $start_time = null, $end_time = null, $mvd_type = 'all', $getText = false, $smw_properties = '', $options = array() ) {
 		global $mvDefaultClipLength;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// set up select vars:
 		$conds = $vars = array();
 		$from_tables = '';
@@ -104,7 +104,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		return MV_Index::getMVDMeta( $result, $getText, $smw_properties);
 	}
 	function getMVDMeta( &$result, $getText = false, $smw_properties = ''){
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		if ( $dbr->numRows( $result ) == 0 )return array();
 
 		$do_cat_lookup = $do_smw_lookup = false;
@@ -208,7 +208,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 		}
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$from_tables =  $dbr->tableName( 'mv_mvd_index' );
 		$vars = '`mv_page_id` as `id`, `wiki_title`,`mvd_type`,	`stream_id`, `start_time`,`end_time`,`view_count`';
 		$cond = array( 'stream_id' =>   $mvTitle->getStreamId()  ,
@@ -240,7 +240,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 	/*@@todo figure another way to get at this data...this is not a very fast query: */
 	function getMVDTypeInRange( $stream_id, $start_time = null, $end_time = null ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// init vars
 		$from_tables = $vars =	$conds = $options = array();
 
@@ -259,14 +259,14 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$options );	;
 	}
 	function remove_by_stream_id( $stream_id ) {
-		$dbw =& wfGetDB( DB_WRITE );
+		$dbw = wfGetDB( DB_WRITE );
 		$dbw->delete( 'mv_mvd_index', array( 'stream_id' => $stream_id ) );
 	}
 	/*
 	 * removes a single entry by wiki_title name
 	 */
 	function remove_by_wiki_title( $wiki_title ) {
-		$dbw =& wfGetDB( DB_WRITE );
+		$dbw = wfGetDB( DB_WRITE );
 		$dbw->delete( 'mv_mvd_index', array( 'wiki_title' => $wiki_title ) );
 		// print "ran sql:" . $dbw->lastQuery() . "\n";
 		return true;
@@ -288,7 +288,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$do_top_range_query = false;
 
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// organize the queries (group full-text searches and category/attributes)
 		// if the attribute is not a numerical just add it to the fulltext query
 		$ftq_match_asql = $last_person_aon = $ftq_match = $ftq = $snq = $toplq = $toplq_cat = $date_range_join = $date_range_where = $asql = ''; // top query and full text query =''
@@ -694,7 +694,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		$ret_ary[$row->stream_id][] = $new_srange;
 	}
 	function getMVDbyId( $id, $fields = '*' ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'mv_mvd_index', $fields,
 			array( 'mv_page_id' => $id ) );
 		if ( $dbr->numRows( $result ) == 0 ) {
@@ -707,7 +707,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 	}
 	function getMVDbyTitle( $title_key, $fields = '*' ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'mv_mvd_index', $fields,
 			array( 'wiki_title' => $title_key ) );
 		if ( $dbr->numRows( $result ) == 0 ) {
@@ -731,7 +731,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				'end_time' => $mvTitle->getEndTimeSeconds() );
 			// get old page_id
 			$mvd_row = MV_Index::getMVDbyTitle( $old_title );
-			$dbw =& wfGetDB( DB_WRITE );
+			$dbw = wfGetDB( DB_WRITE );
 			$dbw->update( 'mv_mvd_index', $update_ary,
 				array( 'mv_page_id' => $mvd_row->mv_page_id ) );
 			$lq = $dbw->lastQuery();
@@ -763,7 +763,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			'end_time' => $mvTitle->getEndTimeSeconds(),
 		);
 
-		$dbw =& wfGetDB( DB_WRITE );
+		$dbw = wfGetDB( DB_WRITE );
 		if ( count( $mvd_row ) == 0 ) {
 			return $dbw->insert( 'mv_mvd_index' , $insAry );
 		} else {

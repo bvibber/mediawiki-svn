@@ -80,7 +80,7 @@ $wgHooks['ArticleUndelete'      ][] = 'oaiUpdateUndelete';
 $oaiDeleteIds = array();
 
 function oaiUpdatePage( $id, $action ) {
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	#$dbw->immediateBegin();
 	$dbw->replace( 'updates',
 		array( 'up_page' ),

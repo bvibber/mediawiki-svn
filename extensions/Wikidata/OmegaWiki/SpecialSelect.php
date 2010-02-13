@@ -37,7 +37,7 @@ function getSelectOptions() {
 	$attributeObject = $_GET['attribute-object'];
 	$lang_code = $wgUser->getOption( 'language' );
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$sql = 'SELECT language_id' .
 			" FROM {$dc}_syntrans" .
 			" JOIN {$dc}_expression ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .

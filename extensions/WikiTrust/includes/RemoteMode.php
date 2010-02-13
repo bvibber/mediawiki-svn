@@ -97,7 +97,7 @@ class WikiTrust extends WikiTrustBase {
       }
     }
 
-    $dbr =& wfGetDB( DB_SLAVE );
+    $dbr = wfGetDB( DB_SLAVE );
     
     $page_id = $dbr->strencode($page_id_raw, $dbr);
     $rev_id = $dbr->strencode($rev_id_raw, $dbr);

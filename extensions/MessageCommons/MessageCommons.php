@@ -81,7 +81,7 @@ function efMessageCommonsPreload( $title, &$message ) {
 function efMessageCommonsGetMsg( $msg ) {
 	global $egMessageCommonsDatabase, $egMessageCommonsPrefix ;
 	$title = Title::makeTitle(NS_MEDIAWIKI, $msg );
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$row = $dbr->selectRow( array(
 		"`{$egMessageCommonsDatabase}`.`{$egMessageCommonsPrefix}page`",
 		"`{$egMessageCommonsDatabase}`.`{$egMessageCommonsPrefix}revision`",

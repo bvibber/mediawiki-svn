@@ -49,7 +49,7 @@ function getSearchResultAsRecordSet( $queryResult ) {
 		$definedMeaningReferenceType,
 		$wgDefinedMeaning;
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$spellingAttribute = new Attribute( "found-word", "Found word", "short-text" );
 	$languageAttribute = new Attribute( "language", "Language", "language" );
 	

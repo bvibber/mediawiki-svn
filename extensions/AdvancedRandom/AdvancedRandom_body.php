@@ -38,7 +38,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 		}
 
 		$rand = wfRandom();
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $ft->getNamespace() == NS_TEMPLATE ) {
 			$res = $dbr->selectRow(

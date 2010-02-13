@@ -61,7 +61,7 @@ function getSuggestions() {
 
 	$sql = '';
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
 	switch ( $query ) {
 		case 'relation-type':
@@ -258,7 +258,7 @@ function getSQLToSelectPossibleAttributes( $definedMeaningId, $attributesLevel, 
 	global $wgDefaultClassMids, $wgUser;
 
 	$dc = wdGetDataSetContext();
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 
 	$language = $wgUser->getOption( 'language' ) ;
 	$lng = ' ( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' ) ';
@@ -404,7 +404,7 @@ function getFilteredAttributesRestriction( $annotationAttributeId ) {
 function getSQLForClasses( $language ) {
 	$dc = wdGetDataSetContext();
 
-  $dbr =& wfGetDB( DB_SLAVE );
+  $dbr = wfGetDB( DB_SLAVE );
   $lng = '( SELECT language_id FROM language WHERE wikimedia_key = ' . $dbr->addQuotes( $language ) . ' )';
 
   // exp.spelling, txt.text_text
@@ -450,7 +450,7 @@ function getSQLForCollectionOfType( $collectionType, $language = "<ANY>" ) {
         " AND " . getLatestTransactionRestriction( "{$dc}_collection" ) .
         " AND " . getLatestTransactionRestriction( "{$dc}_collection_contents" );
 	if ( $language != "<ANY>" ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$sql .=
 			' AND language_id=( ' .
 				' SELECT language_id' .
@@ -474,7 +474,7 @@ function getSQLForCollection( $language = "<ANY>" ) {
 		" AND " . getLatestTransactionRestriction( "{$dc}_collection" );
 	
 	if ( $language != "<ANY>" ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$sql .=
 			' AND language_id=( ' .
 				' SELECT language_id' .
@@ -508,7 +508,7 @@ function getRelationTypeAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$relationTypeAttribute = new Attribute( "relation-type", wfMsg( 'ow_RelationType' ), "short-text" );
 	$collectionAttribute = new Attribute( "collection", wfMsg( 'ow_Collection' ), "short-text" );
@@ -535,7 +535,7 @@ function getClassAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 	
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	// Setting the two column, with titles
 	$classAttribute = new Attribute( "class", wfMsg( 'ow_Class' ), "short-text" );
 	$definitionAttribute = new Attribute( "definition", wfMsg( 'ow_Definition' ), "short-text" );
@@ -557,7 +557,7 @@ function getDefinedMeaningAttributeAsRecordSet( $queryResult ) {
 	$o = OmegaWikiAttributes::getInstance();
 	global $wgDefinedMeaningAttributes;
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$definedMeaningAttributeAttribute = new Attribute( $wgDefinedMeaningAttributes, wfMsgSc( "DefinedMeaningAttributes" ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $definedMeaningAttributeAttribute ), new Structure( $o->id ) );
@@ -575,7 +575,7 @@ function getTextAttributeAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 	
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$textAttributeAttribute = new Attribute( "text-attribute", wfMsg( 'ow_TextAttributeHeader' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $textAttributeAttribute ), new Structure( $o->id ) );
@@ -593,7 +593,7 @@ function getLinkAttributeAsRecordSet( $queryResult ) {
 	$o = OmegaWikiAttributes::getInstance();
 	global $wgLinkAttribute;
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$linkAttributeAttribute = new Attribute( $wgLinkAttribute, wfMsg( 'ow_LinkAttributeHeader' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $linkAttributeAttribute ), new Structure( $o->id ) );
@@ -611,7 +611,7 @@ function getTranslatedTextAttributeAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 	
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$translatedTextAttributeAttribute = new Attribute( "translated-text-attribute", "Translated text attribute", "short-text" );
 	
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $translatedTextAttributeAttribute ), new Structure( $o->id ) );
@@ -629,7 +629,7 @@ function getOptionAttributeAsRecordSet( $queryResult ) {
 	$o = OmegaWikiAttributes::getInstance();
 	global $wgOptionAttribute;
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$optionAttributeAttribute = new Attribute( $wgOptionAttribute, wfMsg( 'ow_OptionAttributeHeader' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $optionAttributeAttribute ), new Structure( $o->id ) );
@@ -648,7 +648,7 @@ function getDefinedMeaningAsRecordSet( $queryResult ) {
 	$o = OmegaWikiAttributes::getInstance();
 	global $wgDefinedMeaning ;
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$spellingAttribute = new Attribute( "spelling", wfMsg( 'ow_Spelling' ), "short-text" );
 	$languageAttribute = new Attribute( "language", wfMsg( 'ow_Language' ), "language" );
 	
@@ -681,7 +681,7 @@ function getClassAttributeLevelAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 	
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 
 	$classAttributeLevelAttribute = new Attribute( "class-attribute-level", wfMsg( 'ow_ClassAttributeLevel' ), "short-text" );
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $classAttributeLevelAttribute ), new Structure( $o->id ) );
@@ -699,7 +699,7 @@ function getCollectionAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$collectionAttribute = new Attribute( "collection", wfMsg( 'ow_Collection' ), "short-text" );
 	
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $collectionAttribute ), new Structure( $o->id ) );
@@ -717,7 +717,7 @@ function getLanguageAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$languageAttribute = new Attribute( "language", wfMsg( 'ow_Language' ), "short-text" );
 	
 	$recordSet = new ArrayRecordSet( new Structure( $o->id, $languageAttribute ), new Structure( $o->id ) );
@@ -735,7 +735,7 @@ function getTransactionAsRecordSet( $queryResult ) {
 
 	$o = OmegaWikiAttributes::getInstance();
 	
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$userAttribute = new Attribute( "user", wfMsg( 'ow_User' ), "short-text" );
 	$timestampAttribute = new Attribute( "timestamp", wfMsg( 'ow_Time' ), "timestamp" );

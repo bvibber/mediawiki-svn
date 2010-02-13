@@ -210,8 +210,8 @@ class MV_Stream {
 	}
 	// removes the stream and assoc meta data. 
 	function removeStream( $removeMVDs = true ) {
- 		$dbw =& wfGetDB( DB_WRITE );
- 		$dbr =& wfGetDB( DB_SLAVE );
+ 		$dbw = wfGetDB( DB_WRITE );
+ 		$dbr = wfGetDB( DB_SLAVE );
  		if ( $removeMVDs ) {
  			// delete metadata pages: 
  			// @@todo figure out a way to do this quickly/group sql queries.  

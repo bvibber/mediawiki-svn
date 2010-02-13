@@ -135,7 +135,7 @@
 	}
 	function auto_complete_stream_name( $val ) {
 		global $mvDefaultSearchVideoPlaybackRes;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// check against stream name list: 
 		$result = $dbr->select( 'mv_streams', array( 'name', 'duration' ),
 			array( '`name` LIKE \'%' . mysql_escape_string( $val ) . '%\'' ),

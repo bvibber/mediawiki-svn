@@ -382,7 +382,7 @@ function wfSpecialFilelist () {
 		 */
 		function execute( $par = null ) {
 			global $wgOut, $wgRequest, $wgUser;
-			$this->dbr =& wfGetDB( DB_SLAVE );
+			$this->dbr = wfGetDB( DB_SLAVE );
 			$this->sk = $wgUser->getSkin();
 
 			# Setting a bunch of parameters to passed or default values; also some variables which makes them easier to pass to functions

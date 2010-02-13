@@ -11,7 +11,7 @@
 	global $wgCommandLineMode;
 	$wgCommandLineMode = true;
 
-	$dbr =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_MASTER );
 
 
 	$sql = 'select old_id,old_text from text,uw_translated_content where uw_translated_content.text_id=text.old_id';

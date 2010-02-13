@@ -221,7 +221,7 @@ class MV_SpecialExport {
 	function get_roe_xml( ) {
 		global $wgServer;
 		global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey, $mvDefaultVideoHighQualityKey;
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$this->get_row_data();
 		// get the stream stream req
@@ -328,7 +328,7 @@ class MV_SpecialExport {
 	// get all available stream text layers ( inline request CMML (if apropo ))
 	}
 	function get_stream_srt(){
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		header('Content-Type: text/plain');
 
 		// check the request to get trac set:
@@ -367,7 +367,7 @@ class MV_SpecialExport {
 	}
 	/*get stream CMML */
 	function get_stream_cmml( $inline = false, $force_track = null ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// set cmml name space if inline:
 		$ns = ( $inline ) ? 'cmml:':'';
 		$ns = '';

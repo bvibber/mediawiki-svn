@@ -34,7 +34,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		} else {
 			$stream_inx = ( isset( $options['stream_name'] ) ) ? $options['stream_name']:$options['s'];
 			if ( $args[$stream_inx] == 'all' ) {
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				// put all in wiki into stream list
 				print "do all streams\n";
 				$result = $dbr->query( 'SELECT * FROM `mv_streams`' );
@@ -113,7 +113,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		    // }
 
 		    // retrive db rows to find match:
-		   	$dbr =& wfGetDB( DB_SLAVE );
+		   	$dbr = wfGetDB( DB_SLAVE );
 
 		    // $mvd_res = MV_Index::getMVDInRange($stream->id, null, null, $mvd_type='ht_en',false,$smw_properties=array('Spoken_by'), '');
 		    /*while ($row = $dbr->fetchObject($mvd_res)) {
@@ -510,7 +510,7 @@ class MV_BillScraper extends MV_BaseScraper {
 		}
 	}
 	function get_aligned_time_title( &$pData, $preFix = 'Anno_en', $stream ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$mvd_rows = MV_Index::getMVDInRange( $stream->getStreamId(),
 			$pData['wiki_start_time'] - 120, $pData['wiki_end_time'] + 120,
 		$mvd_type = 'Anno_en', $getText = false, $smw_properties = 'Speech_by' );

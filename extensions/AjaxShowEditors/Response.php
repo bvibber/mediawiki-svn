@@ -31,7 +31,7 @@ function wfAjaxShowEditors( $articleId, $username ) {
 
 
 	// When did the user started editing ?
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$userStarted = $dbr->selectField( 'editings',
 		'editings_started',
 		array(
@@ -48,7 +48,7 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	# This is done using a unique index on the database :
 	# `editings_page_started` (`editings_page`,`editings_user`,`editings_started`)
 
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$dbw->replace( 'editings',
 		array( 'editings_page', 'editings_user', 'editings_started' ),
 		array(

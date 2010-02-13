@@ -689,7 +689,7 @@ class MV_SequencePage extends Article {
 		if(!isset($clip['desc']))$clip['desc']='';
 		//for now just lookup all ... @@todo future expose diffrent language tracks
 		if($clip['desc']==''){
-		$dbr =& wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$mvd_rows = MV_Index::getMVDInRange($streamTitle->getStreamId(),
 		$streamTitle->getStartTimeSeconds(),
 		$streamTitle->getEndTimeSeconds());

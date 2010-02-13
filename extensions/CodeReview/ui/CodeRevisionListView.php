@@ -32,7 +32,7 @@ class CodeRevisionListView extends CodeView {
 		$this->showForm();
 		
 		//get the total count across all pages
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$revCountRes = $this->getRevCountQuery( $dbr );
 		$revCount = 0;		 
 		if ( $revCountRes !== false ) {		

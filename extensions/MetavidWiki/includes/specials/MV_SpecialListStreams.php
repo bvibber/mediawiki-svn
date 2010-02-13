@@ -46,7 +46,7 @@ class MV_SpecialQueryStreams extends QueryPage {
 		return '<p>' . wfMsg( 'mv_list_streams_docu' ) . "</p><br />\n";
 	}
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		// $relations = $dbr->tableName( 'smw_relations' );
 		// $NSrel = SMW_NS_RELATION;
 		# QueryPage uses the value from this SQL in an ORDER clause.

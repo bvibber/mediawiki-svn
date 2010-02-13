@@ -181,7 +181,7 @@ function wfReviewExtensionGetUserRatingsForPage ( &$title , &$user , $revision =
 	if ( !$title->exists() ) return $ret ; # No such page
 
 	$fname = 'wfReviewExtensionGetUserRatingsForPage' ;
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$conds = array () ;
 	$conds['val_page'] = $title->getArticleID() ;
 	wfReviewExtensionSetUserCondition ( $user , $conds ) ;
@@ -242,7 +242,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 		return false ;
 
 	$fname = 'wfReviewExtensionReadLastForm' ;
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	# Avoid user/ip tuplet unique index collisions
 	$user_ip = $wgUser->getID() == 0 ? $wgUser->getName() : null ;
 
@@ -454,7 +454,7 @@ function wfReviewExtensionFunction () {
 		function get_reviewed_revisions ( $title ) {
 			$fname = 'get_reviewed_revisions';
 			
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					/* FROM   */ 'validate',
 					/* SELECT */ 'DISTINCT val_revision',
@@ -481,7 +481,7 @@ function wfReviewExtensionFunction () {
 			) ;
 		
 			# Query
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					/* FROM   */ 'validate',
 					/* SELECT */ '*',
@@ -672,7 +672,7 @@ function wfReviewExtensionFunction () {
 		function get_list_of_pages_reviewed_by_user ( $user ) {
 			$conds = array () ;
 			wfReviewExtensionSetUserCondition ( $user , $conds ) ;
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select(
 					/* FROM   */ 'validate',
 					/* SELECT */ 'DISTINCT val_page',

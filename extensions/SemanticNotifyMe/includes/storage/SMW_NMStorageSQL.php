@@ -19,7 +19,7 @@ class NMStorageSQL {
 
 	public function setup( $verbose ) {
 
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 
 		SNMDBHelper::reportProgress( "Setting up NotifyMe database ...\n", $verbose );
 
@@ -69,7 +69,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::addNotifyQuery';
 		wfProfileIn( $fname );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$notify_id = $dbw->nextSequenceValue( 'nmquery_notify_id_seq' );
 		if ( $dbw->insert( 'smw_nm_query', array(
 					'notify_id' => $notify_id,
@@ -90,7 +90,7 @@ class NMStorageSQL {
 	public function removeNotifyQuery( $notify_ids ) {
 		$fname = 'NotifyMe::delNotify';
 		wfProfileIn( $fname );
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		$db->delete( $db->tableName( 'smw_nm_monitor' ), array( 'notify_id' => $notify_ids ), $fname );
 		$db->delete( $db->tableName( 'smw_nm_relations' ), array( 'notify_id' => $notify_ids ), $fname );
 		$db->delete( $db->tableName( 'smw_nm_query' ), array( 'notify_id' => $notify_ids ), $fname );
@@ -101,7 +101,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::addNotifyMonitor';
 		wfProfileIn( $fname );
 
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		$res = $db->insert( 'smw_nm_monitor', $add_monitor, $fname );
 		wfProfileOut( $fname );
 		return $res;
@@ -110,7 +110,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::addNotifyMonitor';
 		wfProfileIn( $fname );
 
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		foreach ( $remove_monitored as $monitor ) {
 			$db->delete( $db->tableName( 'smw_nm_monitor' ), array( 'notify_id' => $monitor['notify_id'], 'page_id' => $monitor['page_id'] ), $fname );
 		}
@@ -130,7 +130,7 @@ class NMStorageSQL {
 			}
 		}
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$relations = array();
 		$new_rel = false;
 		foreach ( $rels as $smw ) {
@@ -238,7 +238,7 @@ class NMStorageSQL {
 	public function disableNotifyState( $notify_id ) {
 		$fname = 'NotifyMe::disableState';
 		wfProfileIn( $fname );
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		$db->delete( $db->tableName( 'smw_nm_monitor' ), array( 'notify_id' => $notify_id ), $fname );
 		$db->delete( $db->tableName( 'smw_nm_relations' ), array( 'notify_id' => $notify_id ), $fname );
 
@@ -250,7 +250,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::updateNotifyState';
 		wfProfileIn( $fname );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'smw_nm_query', array( 'enable' => $state ), array( 'notify_id' => $notify_id ), $fname );
 		wfProfileOut( $fname );
 		return true;
@@ -258,7 +258,7 @@ class NMStorageSQL {
 	public function updateDelegate( $notify_id, $delegate ) {
 		$fname = 'NotifyMe::updateDelegate';
 		wfProfileIn( $fname );
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'smw_nm_query', array( 'delegate' => $delegate ), array( 'notify_id' => $notify_id ), $fname );
 		wfProfileOut( $fname );
 		return true;
@@ -267,7 +267,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::updateNotifyReportAll';
 		wfProfileIn( $fname );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'smw_nm_query', array( 'rep_all' => $rep_all ), array( 'notify_id' => $notify_id ), $fname );
 		wfProfileOut( $fname );
 		return true;
@@ -276,7 +276,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::updateNotifyShowAll';
 		wfProfileIn( $fname );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'smw_nm_query', array( 'show_all' => $show_all ), array( 'notify_id' => $notify_id ), $fname );
 		wfProfileOut( $fname );
 		return true;
@@ -376,7 +376,7 @@ class NMStorageSQL {
 			$cond .= "(smw_id=$i[attr_id] AND type=$i[type]) ";
 		}
 
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$result = array( 0 => array(), 1 => array() );
 		extract( $db->tableNames( 'smw_nm_query', 'smw_nm_relations' ) );
 		$res = $db->query( "SELECT q.notify_id, q.name, q.user_id, q.delegate, q.nm_sql, q.nm_hierarchy, c1.subquery FROM (" .
@@ -413,7 +413,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::getMonitoredQuery';
 		wfProfileIn( $fname );
 
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select( array( $db->tableName( 'smw_nm_monitor' ) . ' m', $db->tableName( 'smw_nm_query' ) . ' q' ),
 		array( 'q.notify_id, q.delegate, q.name, q.user_id, q.nm_sql, q.nm_hierarchy' ),
 			"m.notify_id=q.notify_id AND m.page_id=$page_id", $fname );
@@ -443,7 +443,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::updateNMSql';
 		wfProfileIn( $fname );
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->update( 'smw_nm_query', array( 'nm_sql' => $sql, 'nm_hierarchy' => $tmp_hierarchy ), array( 'notify_id' => $notify_id ), $fname );
 		wfProfileOut( $fname );
 		return true;
@@ -452,7 +452,7 @@ class NMStorageSQL {
 		$fname = 'NotifyMe::getNotifyInMainQuery';
 		wfProfileIn( $fname );
 
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 
 		$tmp_tables = array();
 		if ( $hierarchy != '' ) {
@@ -518,7 +518,7 @@ class NMStorageSQL {
 
 		$result = array( 'monitoring' => array(), 'match' => array() );
 
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 
 		$tmp_tables = array();
 		if ( $hierarchy != '' ) {
@@ -597,13 +597,13 @@ class NMStorageSQL {
 		return $result;
 	}
 	public function getPageTitle( $page_id ) {
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		return $db->selectRow( 'page', 'page_title', array( 'page_id' => $page_id ) );
 	}
 	public function addNotifyRSS( $type, $id, $title, $msg, $link = NULL ) {
 		$fname = 'NotifyMe::addNotifyRSS';
 		wfProfileIn( $fname );
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 
 		$rid = $db->nextSequenceValue( 'nmrss_msg_id_seq' );
 		$values = array( 'msg_id' => $rid,
@@ -628,7 +628,7 @@ class NMStorageSQL {
 	public function getNotifyRSS( $type, $id, $limit ) {
 		$fname = 'NotifyMe::getNotifyRSS';
 		wfProfileIn( $fname );
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		$result = array();
 		if ( $type == "uid" ) {
 			$ids = array( 'user_id' => $id );
@@ -648,7 +648,7 @@ class NMStorageSQL {
 	public function getUnmailedNMMessages() {
 		$fname = 'NotifyMe::getUnmailedNMMessages';
 		wfProfileIn( $fname );
-		$db =& wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_MASTER );
 		$smw_nm_rss = $db->tableName( 'smw_nm_rss' );
 		$result = array();
 		$res = $db->select( $smw_nm_rss,
@@ -668,7 +668,7 @@ class NMStorageSQL {
 	public function getGroupedUsers( $groups ) {
 		$fname = 'NotifyMe::getGroupedUsers';
 		wfProfileIn( $fname );
-		$db =& wfGetDB( DB_SLAVE );
+		$db = wfGetDB( DB_SLAVE );
 		extract( $db->tableNames( 'user_groups', 'user' ) );
 		$result = array();
 		$res = $db->query( "SELECT u.user_name FROM $user u" .

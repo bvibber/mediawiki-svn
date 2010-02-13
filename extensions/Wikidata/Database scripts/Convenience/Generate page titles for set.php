@@ -11,7 +11,7 @@
 	global $wgCommandLineMode;
 	$wgCommandLineMode = true;
 
-	$dbr =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_MASTER );
 	echo( "Inserting page titles for expressions ...\n" );
 	$sql = 'select spelling from ' . $dc . '_expression_ns';
 	$res = $dbr->query( $sql );

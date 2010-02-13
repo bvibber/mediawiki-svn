@@ -40,7 +40,7 @@ class SpecialWatchers extends UnlistedSpecialPage {
 			return;
 		}
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array (
 			'wl_namespace' => $title->getNamespace() ,
 			'wl_title' => $title->getDBkey() ,

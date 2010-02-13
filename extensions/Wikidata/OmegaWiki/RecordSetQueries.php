@@ -102,7 +102,7 @@ function getRecordFromRow( $row, $columnIndex, Structure $structure ) {
 }
 
 function queryRecordSet( $recordSetStructureId, QueryTransactionInformation $transactionInformation, Attribute $keyAttribute, TableColumnsToAttributesMapping $tableColumnsToAttributeMapping, Table $table, array $restrictions, array $orderBy = array(), $count = - 1, $offset = 0 ) {
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	
 	$selectFields =  $tableColumnsToAttributeMapping->getSelectColumns();
 	$attributes = $tableColumnsToAttributeMapping->getAttributes();

@@ -113,7 +113,7 @@ class DefinedMeaningModel {
 
 		$definingExpression = $this->definingExpression;
 		$id = $this->getId();
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$queryResult = $dbr->query( "SELECT defined_meaning_id, expression_id from {$dc}_defined_meaning where defined_meaning_id=" . $this->id . " AND " . getLatestTransactionRestriction( "{$dc}_defined_meaning" ) );
 		$dmRow = $dbr->fetchObject( $queryResult );
 		if ( !$dmRow || !$dmRow->defined_meaning_id ) {

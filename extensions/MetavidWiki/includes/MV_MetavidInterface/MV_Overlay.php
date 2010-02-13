@@ -132,7 +132,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 	function load_transcripts() {
 		// global $mvgIP;
 		// require_once($mvgIP . '/includes/MV_Index.php');
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		global $wgRequest;
 		$mvd_rows = & MV_Index::getMVDInRange( $this->mv_interface->article->mvTitle->getStreamId(),
 							$this->mv_interface->article->mvTitle->getStartTimeSeconds(),
@@ -771,7 +771,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 				$this->get_overlay_context_from_title( $rt );
 
 				// get updated mvd_id:
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				$result = & MV_Index::getMVDbyTitle( $titleKey, 'mv_page_id' );
 				$mvd_id = $result->id;
 				// update title key

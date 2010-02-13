@@ -343,7 +343,7 @@ FROM `mv_streams` ');
 	// get the top few search results this is a ~slow~ query ...
 	// @@todo we should only run it every 2 hours or something..
 	function getTopSearches() {
-		$dbr =& wfGetDB( DB_READ );
+		$dbr = wfGetDB( DB_READ );
 		$o = '';
 		$options = array();
 		/*$result = $dbr->select('mv_search_digest', '`query_key`, COUNT(1) as `hit_count`', "`time` >= '$start_time' ",

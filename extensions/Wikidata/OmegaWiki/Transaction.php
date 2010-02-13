@@ -182,7 +182,7 @@ function startNewTransaction( $userID, $userIP, $comment, $dc = null ) {
 		$dc = wdGetDataSetContext();
 	}
 
-	$dbr =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_MASTER );
 	$timestamp = wfTimestampNow();
 	
 	$dbr->query( "INSERT INTO {$dc}_transactions (user_id, user_ip, timestamp, comment) VALUES (" . $userID . ', ' . $dbr->addQuotes( $userIP ) . ', ' . $timestamp . ', ' . $dbr->addQuotes( $comment ) . ')' );
@@ -198,7 +198,7 @@ function getUpdateTransactionId() {
 
 function getLatestTransactionId() {
 	$dc = wdGetDataSetContext();
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query( "SELECT max(transaction_id) AS transaction_id FROM {$dc}_transactions" );
 
 	if ( $transaction = $dbr->fetchObject( $queryResult ) )
@@ -240,7 +240,7 @@ function getInTransactionRestriction( $table, $transactionId ) {
 
 
 function getUserName( $userId ) {
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$queryResult = $dbr->query( "SELECT user_name FROM user WHERE user_id=$userId" );
 	
 	if ( $user = $dbr->fetchObject( $queryResult ) )
@@ -287,7 +287,7 @@ function getTransactionRecord( $transactionId ) {
 	$result->transactionId = $transactionId;
 	
 	if ( $transactionId > 0 ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$queryResult = $dbr->query( "SELECT user_id, user_ip, timestamp, comment FROM {$dc}_transactions WHERE transaction_id=$transactionId" );
 		
 		if ( $transaction = $dbr->fetchObject( $queryResult ) ) {

@@ -31,7 +31,7 @@ function getLanguageIdForCode( $code ) {
 
 	static $languages = null;
 	if ( is_null( $languages ) ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$id_res = $dbr->query( "select language_id,wikimedia_key from language" );
 		while ( $id_row = $dbr->fetchObject( $id_res ) ) {
 			$languages[$id_row->wikimedia_key] = $id_row->language_id;
@@ -50,7 +50,7 @@ function getLanguageIdForIso639_3( $code ) {
 	static $languages = null;
 	
 	if ( is_null( $languages ) ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->query( "SELECT language_id,iso639_3 FROM language" );
 		while ( $row = $dbr->fetchObject( $result ) ) {
 			$languages[$row->iso639_3] = $row->language_id;
@@ -70,7 +70,7 @@ function getLanguageIso639_3ForId( $id ) {
 	static $languages = null;
 	
 	if ( is_null( $languages ) ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->query( "SELECT language_id,iso639_3 FROM language" );
 		while ( $row = $dbr->fetchObject( $result ) ) {
 			$languages['id' . $row->language_id] = $row->iso639_3;
