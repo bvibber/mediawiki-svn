@@ -3,7 +3,7 @@
  * Internationalisation file for extension AjaxShowEditors.
  *
  * @addtogroup Extensions
-*/
+ */
 
 $messages = array();
 
