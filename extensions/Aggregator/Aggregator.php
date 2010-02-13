@@ -7,7 +7,7 @@ global $wgAggregatorExpiry;
 global $wgExtensionFunctions;
 
 
-// / Don't poll remote feeds more often than every 30 minutes
+// Do not poll remote feeds more often than every 30 minutes
 $wgAggregatorExpiry = 1800;
 
 $wgExtensionFunctions[] = 'wfAggregatorSetup';
