@@ -8,7 +8,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxQueryPages',
 	'author' => 'Ashar Voultoiz',
 	'description' => 'Add some AJAX to QueryPages such as [[Special:Shortpages]]',
-	'descriptionmsg' => 'ajax-qp-desc',
+	'descriptionmsg' => 'ajaxquerypages-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';
