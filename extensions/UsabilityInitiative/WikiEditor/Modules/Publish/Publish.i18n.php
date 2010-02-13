@@ -858,6 +858,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-publish-preference' => 'Kuwezesha kutoa mabadiliko hatua kwa hatua',
 	'wikieditor-publish-button-publish' => 'Toa',
 	'wikieditor-publish-button-cancel' => 'Batilisha',
 	'wikieditor-publish-dialog-title' => 'Kutoa kwenye {{SITENAME}}',

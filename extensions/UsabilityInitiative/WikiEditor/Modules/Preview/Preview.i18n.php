@@ -595,6 +595,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-preview-preference' => 'Kuona hakikisho ya mabadiliko na ukurasa ulivyo sasa kwa pamoja.',
 	'wikieditor-preview-tab' => 'Hakikisho',
 	'wikieditor-preview-changes-tab' => 'Mabadiliko',
 	'wikieditor-preview-loading' => 'Inapakiwa...',

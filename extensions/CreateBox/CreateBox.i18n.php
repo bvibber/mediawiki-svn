@@ -718,7 +718,11 @@ Du kan inte skapa den här sidan, men du kan [{{fullurl:{{FULLPAGENAME}}|action=
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'createbox-desc' => 'Kisanduku ingizo maalum kwa ajili ya kuanzisha ukurasa',
 	'createbox-create' => 'Anzisha kurasa',
+	'createbox-exists' => "Kumradhi, \"'''{{FULLPAGENAME}}'''\" inapatikana tayari.
+
+Huwezi kuanzisha ukurasa, lakini unaweza [{{fullurl:{{FULLPAGENAME}}|action=edit}} kuuhariri] au [{{fullurl:{{FULLPAGENAME}}}} kuusoma], au kuanzisha ukurasa mwingine kwa kutumia sanduku iliyopo chini.",
 );
 
 /** Telugu (తెలుగు)

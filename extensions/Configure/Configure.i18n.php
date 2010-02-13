@@ -7480,6 +7480,20 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Spis rozszerzeń dostępnych na tej wiki]].',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'configure' => 'Configura la wiki',
+	'configure-desc' => "Përmett a utent autorisà ëd [[Special:Configure|configuré]] la wiki via n'antërfacia web",
+	'configure-desc-group' => 'Partìa',
+	'configure-desc-key' => 'Ciav',
+	'configure-desc-ns' => 'Spassi nominal',
+	'configure-desc-val' => 'Valor',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Estension',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

@@ -835,7 +835,7 @@ $messages['gl'] = array(
 	'ratinghistory-3months' => 'últimos 3 meses',
 	'ratinghistory-year' => 'último ano',
 	'ratinghistory-3years' => 'últimos 3 anos',
-	'ratinghistory-ave' => 'Promedio: $1',
+	'ratinghistory-ave' => 'Media: $1',
 	'ratinghistory-chart' => 'Valoración do lector',
 	'ratinghistory-purge' => 'limpar a caché',
 	'ratinghistory-table' => 'Vista xeral das valoracións dos lectores',
@@ -846,8 +846,8 @@ $messages['gl'] = array(
 	'ratinghistory-table-votes' => 'Votos',
 	'ratinghistory-none' => 'Arestora non hai suficientes datos das reaccións dos lectores dispoñibles para as gráficas.',
 	'ratinghistory-ratings' => "'''Lenda:''' '''(1)''' - Pobre; '''(2)''' - Baixa; '''(3)''' - Boa; '''(4)''' - Alta; '''(5)''' - Excelente;",
-	'ratinghistory-legend' => "O '''número de revisións ao día''' <font color=\"red\">''(vermello)''</font>, a '''valoración do promedio diario''' <font color=\"blue\">''(azul)''</font> e a '''valoración do promedio en curso''' <font color=\"green\">''(verde)''</font> están, por data, na gráfica de embaixo.
-A '''valoración do promedio en curso''' é simplemente a valoración de todas as valoracións diarias ''dentro'' do período de tempo de cada día.
+	'ratinghistory-legend' => "O '''número de revisións ao día''' <font color=\"red\">''(vermello)''</font>, a '''valoración da media diario''' <font color=\"blue\">''(azul)''</font> e a '''valoración da media en curso''' <font color=\"green\">''(verde)''</font> están, por data, na gráfica de embaixo.
+A '''valoración da media en curso''' é simplemente a valoración de todas as valoracións diarias ''dentro'' do período de tempo de cada día.
 As valoracións son como segue:
 
 '''(1)''' - Pobre; '''(2)''' - Baixa; '''(3)''' - Boa; '''(4)''' - Alta; '''(5)''' - Excelente;",

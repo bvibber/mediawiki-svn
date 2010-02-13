@@ -135,6 +135,7 @@ $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
 	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Beabeitung sowie weitere funktionelle Module zur Verfügung',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Lade',
 );
 
 /** Zazaki (Zazaki)
@@ -181,6 +182,7 @@ $messages['es'] = array(
 	'wikieditor' => 'FUZZY!!! Interfaz avanzada de edición de Wikitexto',
 	'wikieditor-desc' => 'Provee de una interfaz extensible de edición de wikitexto y varios módulos que ofrecen características',
 	'wikieditor-wikitext-tab' => 'Wikitexto',
+	'wikieditor-loading' => 'Cargando',
 );
 
 /** Estonian (Eesti)
@@ -493,6 +495,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-wikitext-tab' => 'Kodi ya wiki',
+	'wikieditor-loading' => 'Inapakizwa',
 );
 
 /** Telugu (తెలుగు)
@@ -541,6 +544,7 @@ $messages['vec'] = array(
 	'wikieditor' => 'Interfacia avansada de modifica testo wiki',
 	'wikieditor-desc' => 'Fornisse na interfacia avansada de modifica testo wiki e vari moduli funsionali',
 	'wikieditor-wikitext-tab' => 'Testo wiki',
+	'wikieditor-loading' => 'Drio cargar...',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -202,6 +202,13 @@ $messages['frp'] = array(
 	'mwsearch-desc' => 'Modulo d’èxtension por les rechèrches dens MediaWiki.',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

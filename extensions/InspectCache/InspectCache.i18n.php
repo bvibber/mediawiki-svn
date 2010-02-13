@@ -316,12 +316,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'inspectcache' => 'Inspection du cache',
 	'inspectcache-desc' => 'Un simple outil de débogage pour inspecter les éléments dans le cache partagé.',
-	'inspectcache-ok' => 'Lancer',
 	'inspectcache-general' => 'Cache général',
 	'inspectcache-parser' => 'Cache des parseurs',
 	'inspectcache-message' => 'Cache des messages',
@@ -329,6 +329,7 @@ $messages['fr'] = array(
 	'inspectcache-delete' => 'Supprimer',
 	'inspectcache-deleted' => 'Cache supprimé',
 	'inspectcache-list' => 'Liste',
+	'right-inspectcache' => 'Afficher et supprimer les entrées du cache',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -668,7 +669,6 @@ $messages['mhr'] = array(
 $messages['mk'] = array(
 	'inspectcache' => 'Прегледај кеш',
 	'inspectcache-desc' => 'Едноставна алатка за отстранување на грешки која дава увид (преглед) на содржината на заедничкиот кеш',
-	'inspectcache-ok' => 'ОК',
 	'inspectcache-general' => 'Општ кеш',
 	'inspectcache-parser' => 'Парсерски кеш',
 	'inspectcache-message' => 'Кеш од пораки',
@@ -676,6 +676,7 @@ $messages['mk'] = array(
 	'inspectcache-delete' => 'Избриши',
 	'inspectcache-deleted' => 'Избришан кеш',
 	'inspectcache-list' => 'Листа',
+	'right-inspectcache' => 'Преглед и бришење на записи во кешот',
 );
 
 /** Malayalam (മലയാളം)
@@ -732,7 +733,6 @@ $messages['nah'] = array(
 $messages['nl'] = array(
 	'inspectcache' => 'Cache inspecteren',
 	'inspectcache-desc' => 'Een eenvoudig hulpmiddel voor het debuggen van de inhoud van de gedeelde cache',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Algemene cache',
 	'inspectcache-parser' => 'Parsercache',
 	'inspectcache-message' => 'Berichtencache',
@@ -740,6 +740,7 @@ $messages['nl'] = array(
 	'inspectcache-delete' => 'Verwijderen',
 	'inspectcache-deleted' => 'Cache geleegd',
 	'inspectcache-list' => 'Bekijken',
+	'right-inspectcache' => 'Cache-elementen bekijken en verwijderen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

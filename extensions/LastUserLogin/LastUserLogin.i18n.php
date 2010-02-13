@@ -66,6 +66,20 @@ $messages['br'] = array(
 	'right-lastlogin' => "Gwelet peur e oa ar wech ziwezhañ ma 'z eo en em luget un implijer",
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'lastuserlogin' => 'Darrer inici de sessió',
+	'lastuserlogin-desc' => 'Mostra la darrera vegada que un usuari va iniciar la sessió',
+	'lastuserlogin_userid' => "Nom d'usuari",
+	'lastuserlogin_username' => 'Nom real',
+	'lastuserlogin_useremail' => "Correu electrònic de l'usuari",
+	'lastuserlogin_lastlogin' => 'Darrera sessió',
+	'lastuserlogin_daysago' => 'Dies passats',
+	'right-lastlogin' => 'Veure la darrera vegada que un usuari va iniciar sessió',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'lastuserlogin' => 'Letzte Anmeldungen',

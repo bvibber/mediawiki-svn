@@ -511,6 +511,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-toc-preference' => 'Iwezeshwe orodha ya yaliyomo inayoweza kurambazwa',
 	'wikieditor-toc-show' => 'Fichua yaliyomo',
 	'wikieditor-toc-hide' => 'Ficha yaliyomo',
 );

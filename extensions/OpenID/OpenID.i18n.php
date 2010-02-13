@@ -389,6 +389,7 @@ $messages['arc'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  * @author Meno25
  */
@@ -429,7 +430,7 @@ $messages['arz'] = array(
 	'openidchooseurl' => 'اسم مختار من هويتك المفتوحة ($1)',
 	'openidchooseauto' => 'اسم مولد تلقائيا ($1)',
 	'openidchoosemanual' => 'اسم من اختيارك:',
-	'openidchooseexisting' => 'حساب موجود فى هذا الويكي',
+	'openidchooseexisting' => 'حساب موجود فى الويكى دى',
 	'openidchoosepassword' => 'كلمة السر:',
 	'openidconvertinstructions' => 'هذه الاستمارة تتيح لك تغيير حساب المستخدم الخاص بك لكى تستخدم OpenID URL او لاضافة المزيد من OpenID URLs .',
 	'openidconvertsuccess' => 'تم التحول بنجاح إلى الهوية المفتوحة',

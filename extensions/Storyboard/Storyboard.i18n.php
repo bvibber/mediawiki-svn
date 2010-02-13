@@ -27,6 +27,14 @@ $messages['be-tarask'] = array(
 	'storyboard-desc' => 'Прадстаўляе старонку для донараў, старонку для іх гісторыяў, і інтэрфэйс яе мадэрацыі',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => "Offre une page d'atterrissage pour les donateurs où les histoires peuvent être soumises et une interface de modération des histoires",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
