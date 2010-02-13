@@ -18,11 +18,11 @@ class SpecialPurgeCache extends SpecialPage {
 		$this->setHeaders();
 		if ( $wgUser->isAllowed( 'purgecache' ) ) {
 			if ( $wgRequest->getCheck( 'purge' ) && $wgRequest->wasPosted() ) {
-				$dbw =& wfGetDB( DB_MASTER );
-				$dbw->delete( 'objectcache', '*', 'PurgeCache::execute' );
-				$wgOut->addWikiText( wfMsg( 'purgecache-purged' ) );
+				$dbw = wfGetDB( DB_MASTER );
+				$dbw->delete( 'objectcache', '*', __METHOD__ );
+				$wgOut->addWikiMsg( 'purgecache-purged' );
 			} else {
-				$wgOut->addWikiText( wfMsg( 'purgecache-warning' ) );
+				$wgOut->addWikiMsg( 'purgecache-warning' );
 				$wgOut->addHTML( $this->makeForm() );
 			}
 		} else {
