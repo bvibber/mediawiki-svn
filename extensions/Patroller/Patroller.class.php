@@ -41,7 +41,6 @@ class Patroller extends SpecialPage {
 		}
 
 		# Prune old assignments if needed
-		wfSeedRandom();
 		if( 0 == mt_rand( 0, 499 ) )
 			$this->pruneAssignments();
 
