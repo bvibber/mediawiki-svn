@@ -656,6 +656,7 @@ Purge
 url = http://www.mediawiki.org/wiki/Extension:Purge
 
 PurgeCache
+url = http://www.mediawiki.org/wiki/Extension:PurgeCache
 
 Redirect
 url = http://www.mediawiki.org/wiki/Extension:Redirect
@@ -953,6 +954,7 @@ url = http://www.mediawiki.org/wiki/Extension:Vote
 Watchers
 settings[] = wgWatchersLimit: int
 empty[] = wgWatchersLimit: null
+url = http://www.mediawiki.org/wiki/Extension:Watchers
 
 WatchSubpages
 url = http://www.mediawiki.org/wiki/Extension:WatchSubpages
