@@ -3,13 +3,16 @@
 * - set a valid path to PEAR
 * - check upload size in php.ini: Multipage.tiff needs at least 3M
 * - Upload the image caspian.tif without PagedTiffHandler being active
+*   Caution: you need to allow tiff for upload:
+*   $wgFileExtensions[] = 'tiff';
+*   $wgFileExtensions[] = 'tif';
 * - Upload multipage.tiff when PagedTiffHandler is active
 */
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
-    $IP = getenv( 'MW_INSTALL_PATH' );
+	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
-    $IP = dirname( __FILE__ ) . '/../../..';
+	$IP = dirname( __FILE__ ) . '/../../..';
 }
 require_once( "$IP/maintenance/commandLine.inc" );
 
@@ -25,6 +28,9 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 
 	function setUp()
 	{
+		global $wgTitle;
+		$wgTitle = Title::newFromText("PagedTiffHandler_UnitTest");
+		
 		$this->handler = new PagedTiffHandler();
 		$this->image = wfFindFile(Title::newFromText('Image:Multipage.tiff'));
 		if (!$this->image)
