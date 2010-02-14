@@ -554,6 +554,7 @@ Inputbox
 url = http://www.mediawiki.org/wiki/Extension:Inputbox
 
 InspectCache
+url = http://www.mediawiki.org/wiki/Extension:InspectCache
 
 intersection
 file = DynamicPageList.php
