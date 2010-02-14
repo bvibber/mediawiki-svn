@@ -19,7 +19,7 @@ $messages['en'] = array(
 	'watchers_x_or_more' => '$1 or more {{PLURAL:$1|users|users}} have the page [[:$2]] on their watchlist.',
 	'watchers_less_than_x' => 'Fewer than $1 {{PLURAL:$1|users|users}} have the page [[:$2]] on their watchlist.',
 	'watchers-num' => '$1 {{PLURAL:$1|user has|users have}} the page [[:$2]] on {{PLURAL:$1|its|their}} watchlist.',
-	'right-watchers-list' => 'List users watching a specific page on [[Special:Watchers]]',
+	'right-watchers-list' => '[[Special:Watchers|List users watching a specific page]]',
 );
 
 /** Message documentation (Message documentation)
