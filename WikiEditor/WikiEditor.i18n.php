@@ -494,7 +494,8 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
-	'wikieditor-wikitext-tab' => 'Kodi ya wiki',
+	'wikieditor' => 'Kusano ya juu ya kuandika kiwiki',
+	'wikieditor-wikitext-tab' => 'Maandishi ya kiwiki',
 	'wikieditor-loading' => 'Inapakizwa',
 );
 

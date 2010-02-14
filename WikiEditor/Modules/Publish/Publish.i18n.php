@@ -865,7 +865,7 @@ $messages['sw'] = array(
 	'wikieditor-publish-dialog-summary' => 'Muhtasari ya kuhariri (ueleze kifupi mabadiliko ulioyafanya):',
 	'wikieditor-publish-dialog-minor' => 'Badiliko dogo',
 	'wikieditor-publish-dialog-watch' => 'Fuatilia ukurasa huu',
-	'wikieditor-publish-dialog-publish' => 'Toa',
+	'wikieditor-publish-dialog-publish' => 'Tolea',
 	'wikieditor-publish-dialog-goback' => 'Rudi',
 );
 
