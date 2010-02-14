@@ -363,7 +363,9 @@ class WikiEditorHooks {
 					&& $wgUser->getOption( self::$modules[$module]['preferences']['enable']['key'] )
 				) || $module == 'global'
 			) {
-				UsabilityInitiativeHooks::initialize();
+				if ( $module !== 'global' ) {
+					UsabilityInitiativeHooks::initialize();
+				}
 				$enabledModules[$module] = true;
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
