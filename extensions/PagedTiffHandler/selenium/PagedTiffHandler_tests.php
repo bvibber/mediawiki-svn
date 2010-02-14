@@ -1,6 +1,7 @@
 <?php
 /** To get this working you must
 * - set a valid path to PEAR
+* - check upload size in php.ini: Multipage.tiff needs at least 3M
 * - Either upload multipage.tiff when PagedTiffHandler is active or set $wgSeleniumTiffTestUploads = true
 * - set the locale to german
 */
@@ -12,6 +13,29 @@ if (!defined('MEDIAWIKI') || !defined('SELENIUMTEST')) {
 }
 
 $wgSeleniumTiffTestUploads = false;
+$wgSeleniumTiffTestCheckPrerequistes = true;
+
+class SeleniumCheckPrerequisites extends SeleniumTestCase
+{
+    public $name = "Check prerequisites";
+
+    public function runTest()
+    {
+        global $wgSeleniumTestsWikiUrl;
+		// check whether Multipage.tiff is already uploaded
+        $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Image:Multipage.tiff');
+
+        $source = $this->getAttribute("//div[@id='bodyContent']//ul@id");
+        $this->assertEquals($source, 'filetoc');
+		
+		//check for language
+		$this->open($wgSeleniumTestsWikiUrl.'/index.php/Special:Preferences');
+		
+		$source = $this->getAttribute("//select[@id='mw-input-language']/option[@value='de']/@selected");
+        $this->assertEquals($source, 'selected');
+       }
+}
+
 
 class SeleniumUploadTiffTest extends SeleniumTestCase
 {
@@ -195,10 +219,10 @@ class SeleniumEmbedTiffInclusionTest extends SeleniumEmbedTiffTest
 
     public function runTest()
     {
-        $this->preparePage("[[Image:Pc260001.tif]]\n");
+        $this->preparePage("[[Image:Multipage.tiff]]\n");
 
-        $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@height", "480");
-        $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@width", "640");
+        $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@height", "768");
+        $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@width", "1024");
     }
 }
 
@@ -208,7 +232,7 @@ class SeleniumEmbedTiffThumbRatioTest extends SeleniumEmbedTiffTest
 
     public function runTest()
     {
-        $this->preparePage("[[Image:Pc260001.tif|200px]]\n");
+        $this->preparePage("[[Image:Multipage.tiff|200px]]\n");
         //$this->selenium->type("wpTextbox1", "[[Image:Pc260001.tif|thumb]]\n");
 
         $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@height", "150");
@@ -222,7 +246,7 @@ class SeleniumEmbedTiffBoxFitTest extends SeleniumEmbedTiffTest
 
     public function runTest()
     {
-        $this->preparePage("[[Image:Pc260001.tif|200x75px]]\n");
+        $this->preparePage("[[Image:Multipage.tiff|200x75px]]\n");
 
         $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@height", "75");
         $this->assertSeleniumAttributeEquals("//div[@id='bodyContent']//img@width", "100");
@@ -302,6 +326,11 @@ class SeleniumEmbedTiffPageParameterTooHighTest extends SeleniumEmbedTiffTest
 // create test suite
 $wgSeleniumTestSuites['PagedTiffHandler'] = new SeleniumTestSuite('Paged TIFF Images');
 // add tests
+if ($wgSeleniumTiffTestCheckPrerequistes)
+{
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumCheckPrerequisites());
+}
+
 if ($wgSeleniumTiffTestUploads)
 {
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("caspian.tif", 'Die hochgeladene Datei ist fehlerhaft.'));
