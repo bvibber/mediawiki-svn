@@ -11,10 +11,15 @@ class SpecialEval extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgOut, $wgRequest, $wgUseTidy;
+		global $wgUser, $wgOut, $wgRequest, $wgUseTidy;
 		wfLoadExtensionMessages( 'Eval' );
 
 		$this->setHeaders();
+
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
 
 		$code = isset( $par ) ? $par : $wgRequest->getText( 'code' );
 		$escape = $wgRequest->getBool( 'escape' );
