@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Watchers.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -12,10 +13,13 @@ $messages['en'] = array(
 	'watchers-desc' => 'Shows [[Special:Watchers|which users have a page on their watchlist]]',
 	'watchers_link_title' => 'Who watches this page?',
 	'watchers_error_article' => "'''Error:''' Page does not exist.",
-	'watchers_header' => '{{PLURAL:$2|User who is|Users who are}} watching "$1"',
-	'watchers_noone_watches' => 'No one watches this page.',
-	'watchers_x_or_more' => '$1 or more {{PLURAL:$1|users|users}} have this page on their watchlist.',
-	'watchers_less_than_x' => 'Fewer than $1 {{PLURAL:$1|users|users}} have this page on their watchlist.',
+	'watchers-error-invalid-page' => "'''Error:''' \"$1\" is an invald page title.",
+	'watchers_header' => '{{PLURAL:$2|User who is|Users who are}} watching "[[:$1]]"',
+	'watchers_noone_watches' => 'No one watches the page [[:$1]].',
+	'watchers_x_or_more' => '$1 or more {{PLURAL:$1|users|users}} have the page [[:$2]] on their watchlist.',
+	'watchers_less_than_x' => 'Fewer than $1 {{PLURAL:$1|users|users}} have the page [[:$2]] on their watchlist.',
+	'watchers-num' => '$1 {{PLURAL:$1|user has|users have}} the page [[:$2]] on {{PLURAL:$1|its|their}} watchlist.',
+	'right-watchers-list' => 'List users watching a specific page on [[Special:Watchers]]',
 );
 
 /** Message documentation (Message documentation)
