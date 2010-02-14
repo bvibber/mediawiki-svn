@@ -1,7 +1,7 @@
 <?php
 /**
  * MediaWiki Wikilog extension
- * Copyright © 2008, 2009 Juliano F. Ravasi
+ * Copyright © 2008-2010 Juliano F. Ravasi
  * http://www.mediawiki.org/wiki/Extension:Wikilog
  *
  * This program is free software; you can redistribute it and/or modify
@@ -59,36 +59,36 @@ $wgExtensionMessagesFiles['WikilogAlias'] = $dir . 'Wikilog.i18n.alias.php';
  */
 $wgAutoloadClasses += array(
 	// General
-	'WikilogFeed'			=> $dir . 'WikilogFeed.php',
-	'WikilogHooks'			=> $dir . 'WikilogHooks.php',
-	'WikilogItemQuery'		=> $dir . 'WikilogQuery.php',
-	'WikilogLinksUpdate'	=> $dir . 'WikilogLinksUpdate.php',
-	'WikilogUtils'			=> $dir . 'WikilogUtils.php',
-	'SpecialWikilog'		=> $dir . 'SpecialWikilog.php',
+	'WikilogFeed'               => $dir . 'WikilogFeed.php',
+	'WikilogHooks'              => $dir . 'WikilogHooks.php',
+	'WikilogItemQuery'          => $dir . 'WikilogQuery.php',
+	'WikilogLinksUpdate'        => $dir . 'WikilogLinksUpdate.php',
+	'WikilogUtils'              => $dir . 'WikilogUtils.php',
+	'SpecialWikilog'            => $dir . 'SpecialWikilog.php',
 
 	// Objects
-	'WikilogItem'			=> $dir . 'WikilogItem.php',
-	'WikilogComment'		=> $dir . 'WikilogComment.php',
+	'WikilogItem'               => $dir . 'WikilogItem.php',
+	'WikilogComment'            => $dir . 'WikilogComment.php',
 
 	// WikilogParser.php
-	'WikilogParser'			=> $dir . 'WikilogParser.php',
-	'WikilogParserOutput'	=> $dir . 'WikilogParser.php',
-	'WikilogParserCache'	=> $dir . 'WikilogParser.php',
+	'WikilogParser'             => $dir . 'WikilogParser.php',
+	'WikilogParserOutput'       => $dir . 'WikilogParser.php',
+	'WikilogParserCache'        => $dir . 'WikilogParser.php',
 
 	// WikilogPager.php
-	'WikilogPager'			=> $dir . 'WikilogPager.php',
-	'WikilogSummaryPager'	=> $dir . 'WikilogPager.php',
-	'WikilogTemplatePager'	=> $dir . 'WikilogPager.php',
-	'WikilogArchivesPager'	=> $dir . 'WikilogPager.php',
+	'WikilogPager'              => $dir . 'WikilogPager.php',
+	'WikilogSummaryPager'       => $dir . 'WikilogPager.php',
+	'WikilogTemplatePager'      => $dir . 'WikilogPager.php',
+	'WikilogArchivesPager'      => $dir . 'WikilogPager.php',
 
 	// Namespace pages
-	'WikilogMainPage'		=> $dir . 'WikilogMainPage.php',
-	'WikilogItemPage'		=> $dir . 'WikilogItemPage.php',
-	'WikilogCommentsPage'	=> $dir . 'WikilogCommentsPage.php',
+	'WikilogMainPage'           => $dir . 'WikilogMainPage.php',
+	'WikilogItemPage'           => $dir . 'WikilogItemPage.php',
+	'WikilogCommentsPage'       => $dir . 'WikilogCommentsPage.php',
 
 	// Captcha adapter
-	'WlCaptcha'				=> $dir . 'WlCaptchaAdapter.php',
-	'WlCaptchaAdapter'		=> $dir . 'WlCaptchaAdapter.php',
+	'WlCaptcha'                 => $dir . 'WlCaptchaAdapter.php',
+	'WlCaptchaAdapter'          => $dir . 'WlCaptchaAdapter.php',
 );
 
 /*

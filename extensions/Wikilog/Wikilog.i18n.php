@@ -88,6 +88,7 @@ In order to publish articles and enable other wikilog features, it has to be cre
 	'wikilog-entry-header' => '',
 	'wikilog-entry-footer' => '— $7 • $9, $8 • $10',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|talk]])',
+	'wikilog-simple-signature' => '$1 ($2)',
 
 	# Edit page
 	'wikilog-edit-fieldset-legend' => 'Wikilog options:',
@@ -96,11 +97,13 @@ In order to publish articles and enable other wikilog features, it has to be cre
 Uncheck this box to keep the article as a draft.',
 
 	# Comments
-	'wikilog-comment-by-user' => 'Comment by $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comment by $3 (anonymous)',
+	'wikilog-comment-header' => '',
+	'wikilog-comment-footer' => '— $2 • $5 $6',
+	'wikilog-comment-permalink' => '$1 at $2',
+	'wikilog-comment-note-edited' => 'last edited on $1 at $2',
+	'wikilog-comment-anonsig' => '$3 (anonymous)',
 	'wikilog-comment-pending' => 'This comment is awaiting approval.',
 	'wikilog-comment-deleted' => 'This comment was deleted.',
-	'wikilog-comment-edited' => 'This comment was last edited on $3 at $4 ($2).',
 	'wikilog-comment-autosumm' => 'New comment by $1: $2',
 	'wikilog-reply-to-comment' => 'Post a reply to this comment',
 	'wikilog-comment-page' => "Go to this comment's page",
@@ -278,19 +281,29 @@ Parameters:
 * $3 is a URL formatted link to the article
 * $4 is the article title (optional)",
 	'wikilog-entry-footer' => 'Has the same parameters of {{msg-mw|wikilog-summary-footer}}.',
-	'wikilog-comment-by-user' => 'Parameters:
+	'wikilog-simple-signature' => 'Parameters:
 * $1 is a link to the commenting user page
-* $2 is a link to the commenting user talk page
-* $3 is the plain text user name of the commenting user for use with GENDER (optional)',
-	'wikilog-comment-by-anon' => 'Parameters:
+* $2 is a link to the commenting user talk page, with {{msg-mw|talkpagelinktext}} as link text',
+	'wikilog-comment-footer' => 'Parameters:
+* $1 is the name of the author of the comment (optional)
+* $2 is the name of the author or the comment formatted with {{msg-mw|wikilog-simple-signature|notext=1}}
+* $3 is the comment date
+* $4 is the comment time
+* $5 is a permalink for the comment, formatted with {{msg-mw|wikilog-comment-permalink}}
+* $6 are some optional notes about the comment, formatted inside {{msg-mw|parentheses}}',
+	'wikilog-comment-permalink' => 'A permanent link to the comment.
+Parameters:
+* $1 is the comment date
+* $2 is the comment time',
+	'wikilog-comment-note-edited' => 'The last time the comment was edited.
+Parameters:
+* $1 is the last modification date
+* $2 is the last modification time',
+	'wikilog-comment-anonsig' => 'Signature used for anonymous users which post comments to articles.
+Parameters:
 * $1 is a link to the commenting user page (unused, it is an IP address)
 * $2 is a link to the commenting user talk page (unused)
 * $3 is the pseudonym used by the anonymous commenter (genderless)',
-	'wikilog-comment-edited' => 'Parameters:
-* $1 is a timestamp
-* $2 is a history link
-* $3 is a date
-* $4 is a time',
 	'wikilog-comment-autosumm' => 'Parameters:
 * $1 is a user name
 * $2 is a summary',
@@ -409,8 +422,6 @@ $messages['af'] = array(
 	'wikilog-no-comments' => 'geen kommentaar',
 	'wikilog-has-comments' => '{{PLURAL:$1|een opmerking|$1 opmerkings}}',
 	'wikilog-summary-more' => '[[$3|→ lees verder...]]',
-	'wikilog-comment-by-user' => 'Kommentaar deur $1 ($2)',
-	'wikilog-comment-by-anon' => 'Kommentaar deur $3 (anoniem)',
 	'wikilog-comment-edit' => 'Wysig die kommentaar',
 	'wikilog-comment-delete' => 'Skrap hierdie kommentaar',
 	'wikilog-comment-history' => 'Wys kommentaar se geskiedenis',
@@ -518,11 +529,8 @@ $messages['ar'] = array(
 	'wikilog-edit-signpub' => 'وقع وانشر هذه المقالة',
 	'wikilog-edit-signpub-tooltip' => 'يسبب هذه المقالة أن يتم توقيعها ونشرها في سجلها للويكي عند حفظها.
 لا تعلم على هذا الصندوق لإبقاء المقالة كمسودة.',
-	'wikilog-comment-by-user' => 'التعليق بواسطة $1 ($2)',
-	'wikilog-comment-by-anon' => 'التعليق بواسطة $3 (مجهول)',
 	'wikilog-comment-pending' => 'هذا التعليق بانتظار الموافقة.',
 	'wikilog-comment-deleted' => 'هذا التعليق تم حذفه.',
-	'wikilog-comment-edited' => 'هذا التعليق تم تعديله آخر مرة في $3 الساعة $4 ($2).',
 	'wikilog-comment-autosumm' => 'تعليق جديد بواسطة $1: $2',
 	'wikilog-reply-to-comment' => 'اكتب ردا لهذا التعليق',
 	'wikilog-comment-page' => 'اذهب إلى صفحة هذا التعليق',
@@ -650,11 +658,8 @@ $messages['arz'] = array(
 	'wikilog-edit-signpub' => 'وقع وانشر هذه المقالة',
 	'wikilog-edit-signpub-tooltip' => 'يسبب هذه المقاله أن يتم توقيعها ونشرها فى سجلها للويكى عند حفظها.
 لا تعلم على هذا الصندوق لإبقاء المقاله كمسوده.',
-	'wikilog-comment-by-user' => 'التعليق بواسطه $1 ($2)',
-	'wikilog-comment-by-anon' => 'التعليق بواسطه $3 (مجهول)',
 	'wikilog-comment-pending' => 'هذا التعليق بانتظار الموافقه.',
 	'wikilog-comment-deleted' => 'هذا التعليق تم حذفه.',
-	'wikilog-comment-edited' => 'هذا التعليق تم تعديله آخر مره فى $3 الساعه $4 ($2).',
 	'wikilog-comment-autosumm' => 'تعليق جديد بواسطه $1: $2',
 	'wikilog-reply-to-comment' => 'اكتب ردا لهذا التعليق',
 	'wikilog-comment-page' => 'اذهب إلى صفحه هذا التعليق',
@@ -783,11 +788,8 @@ $messages['be-tarask'] = array(
 	'wikilog-edit-signpub' => 'Падпісаць і апублікаваць гэты артыкул',
 	'wikilog-edit-signpub-tooltip' => 'Вядзе да таго, што гэты артыкул падпісваецца і апублікоўваецца ў гэтым вікіблёгу пад час захаваньня.
 Прыбярыце гэтую пазнаку, каб пакінуць артыкул у стане чарнавіка.',
-	'wikilog-comment-by-user' => 'Камэнтар $1 ($2)',
-	'wikilog-comment-by-anon' => 'Камэнтар $3 (ананімна)',
 	'wikilog-comment-pending' => 'Гэты камэнтар чакае зацьверджаньня.',
 	'wikilog-comment-deleted' => 'Гэты камэнтар быў выдалены.',
-	'wikilog-comment-edited' => 'Гэты камэнтар апошні раз рэдагаваўся $3 у $4 ($2).',
 	'wikilog-comment-autosumm' => 'Новы камэнтар $1: $2',
 	'wikilog-reply-to-comment' => 'Адказаць на гэты камэнтар',
 	'wikilog-comment-page' => 'Перайсьці на старонку гэтага камэнтара',
@@ -915,11 +917,8 @@ $messages['bg'] = array(
 	'wikilog-edit-signpub' => 'Подпис и публикуване на статията',
 	'wikilog-edit-signpub-tooltip' => 'Със съхраняване на редакцията статията ще бъде подписана и публикувана в уикиблога.  
 Махнете отметката от тази кутийка, за да запазите статията като чернова.',
-	'wikilog-comment-by-user' => 'Коментар от $1 ($2)',
-	'wikilog-comment-by-anon' => 'Коментар от $3 (анонимен)',
 	'wikilog-comment-pending' => 'Коментарът очаква одобрение.',
 	'wikilog-comment-deleted' => 'Коментарът беше изтрит.',
-	'wikilog-comment-edited' => 'Коментарът беше за последно редактиран на $3 в $4 ($2).',
 	'wikilog-comment-autosumm' => 'Нов коментар от $1: $2',
 	'wikilog-reply-to-comment' => 'Оставяне на отговор към този коментар',
 	'wikilog-comment-page' => 'Към страницата на коментара',
@@ -1055,11 +1054,8 @@ $messages['br'] = array(
 	'wikilog-edit-signpub' => 'Sinañ hag embann ar pennad-mañ',
 	'wikilog-edit-signpub-tooltip' => "Ober a ra d'ar pennad bezañ sinet hag embannet en e wikilog pa vez enrollet.
 Diaskit ar voest-mañ evit ma chomo ar pennad ur brouilhed.",
-	'wikilog-comment-by-user' => 'Addispleg gant $1 ($2)',
-	'wikilog-comment-by-anon' => 'Addispleg gant $3 (dizanv)',
 	'wikilog-comment-pending' => "Emañ an addispleg-mañ o c'hortoz bezañ aprouet.",
 	'wikilog-comment-deleted' => 'Dilamet e oa bet an addispleg-mañ.',
-	'wikilog-comment-edited' => "Ar gemenadenn-mañ a zo bet kemmet evit ar wech ziwezhañ d'an $3 da $4 ($2).",
 	'wikilog-comment-autosumm' => 'Addispleg nevez gant $1 : $2',
 	'wikilog-reply-to-comment' => "Postañ ur respont d'an addispleg-mañ",
 	'wikilog-comment-page' => 'Mont da bajenn an addispleg-mañ',
@@ -1291,11 +1287,8 @@ Pokud chcete publikovat články a používat další funkce wikilogu, musíte j
 	'wikilog-edit-signpub' => 'Podepsat a publikovat tento článek',
 	'wikilog-edit-signpub-tooltip' => 'Podepíše tento článek a po uložení ho publikuje v jeho wikilogu.
 Zrušte zaskrtnutí tohoto políčka, pokud ho chcete ponechat jako návrh.',
-	'wikilog-comment-by-user' => 'Komentář uživatele $1 ($2)',
-	'wikilog-comment-by-anon' => 'Komentář uživatele $3 (anonym)',
 	'wikilog-comment-pending' => 'Tento komentář čeká na schválení.',
 	'wikilog-comment-deleted' => 'Tento komentář byl smazán.',
-	'wikilog-comment-edited' => 'Tento komentář byl naposledy upraven $3 v $4 ($2).',
 	'wikilog-comment-autosumm' => 'Nový komentář uživatele $1: „$2“',
 	'wikilog-reply-to-comment' => 'Odeslat odpověď na tento komentář',
 	'wikilog-comment-page' => 'Přejít na stránku tohoto komentáře',
@@ -1435,11 +1428,8 @@ Um Artikel zu veröffentlichen und andere Wikilog-Funktionen freizuschalten muss
 	'wikilog-edit-signpub' => 'Diesen Artikel unterschreiben und veröffentlichen',
 	'wikilog-edit-signpub-tooltip' => 'Signiert und veröffentlicht den Artikel in seinem Wikilog beim Speichern.
 Haken entfernen, um den Artikel als Entwurf zu speichern.',
-	'wikilog-comment-by-user' => 'Kommentar von $1 ($2)',
-	'wikilog-comment-by-anon' => 'Kommentar von $3 (anonym)',
 	'wikilog-comment-pending' => 'Dieser Kommentar muss noch zugelassen werden.',
 	'wikilog-comment-deleted' => 'Dieser Kommentar wurde gelöscht.',
-	'wikilog-comment-edited' => 'Dieser Kommentar wurde zuletzt am $3 um $4 bearbeitet ($2).',
 	'wikilog-comment-autosumm' => 'Neuer Kommentar von $1: $2',
 	'wikilog-reply-to-comment' => 'Poste eine Antwort auf diesen Kommentar',
 	'wikilog-comment-page' => 'Zur Seite dieses Kommentars wechseln',
@@ -1583,11 +1573,8 @@ Aby se nastawki wózjawili a druge wikilogowe funkcije zmóžnili, musy se wón 
 	'wikilog-edit-signpub' => 'Toś ten pśinosk pódpisaś a wózjawiś',
 	'wikilog-edit-signpub-tooltip' => 'Zawinujo, až toś ten pśinosk pódpišo a wózjawijo w swójom wikilogu, gaž se składujo.
 Wótpóraj markěrowanje toś togo kašćika, aby se pśinosk wobchował ako nacerjenje.',
-	'wikilog-comment-by-user' => 'Komentar wót $1 ($2)',
-	'wikilog-comment-by-anon' => 'Komentar wót $3 (anonymny)',
 	'wikilog-comment-pending' => 'Toś ten komentar caka na pśizwólenje.',
 	'wikilog-comment-deleted' => 'Toś ten komentar jo se wulašował.',
-	'wikilog-comment-edited' => 'Toś ten komentar jo se wobźěłał $3 $4 ($2).',
 	'wikilog-comment-autosumm' => 'Nowy komentar wót $1: $2',
 	'wikilog-reply-to-comment' => 'Wótegrono k toś tomu komentaroju pósłaś',
 	'wikilog-comment-page' => 'K bokoju toś togo komentara',
@@ -1699,7 +1686,6 @@ $messages['el'] = array(
 	'wikilog-summary-categories' => 'Αρχειοποιημένο κάτω από $2',
 	'wikilog-summary-more' => '[[$3|→ συνέχεια ανάγνωσης...]]',
 	'wikilog-edit-fieldset-legend' => 'Επιλογές Βικιαρχείου:',
-	'wikilog-comment-by-user' => 'Σχόλιο από $1 ($2)',
 	'wikilog-comment-deleted' => 'Αυτό το σχόλιο διαγράφηκε.',
 	'wikilog-comment-edit' => 'Επεξεργασία αυτού του σχολίου',
 	'wikilog-comment-delete' => 'Διαγραφή αυτού του σχολίου',
@@ -1785,8 +1771,6 @@ $messages['eo'] = array(
 	'wikilog-has-comments' => '{{PLURAL:$1|unu komento|$1 komentoj}}',
 	'wikilog-summary-uncategorized' => 'Nekategoriiga',
 	'wikilog-edit-fieldset-legend' => 'Vikiblog-agordoj',
-	'wikilog-comment-by-user' => 'Komento de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Komento de $3 (anonimulo)',
 	'wikilog-comment-pending' => 'Ĉi tiu komento atendas aprobadon.',
 	'wikilog-comment-deleted' => 'Ĉi tiu komento estis forigita.',
 	'wikilog-comment-autosumm' => 'Nova komento de $1: $2',
@@ -1906,11 +1890,8 @@ Para poder publicar artículos y habilitar otras características de wikilog, es
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-edit-signpub-tooltip' => 'Hace que el artículo se firme y publique en este wikilog una vez salvado.
 Desmarcar esta casilla para mantener este artículo como borrador.',
-	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está en espera por ser aprobado',
 	'wikilog-comment-deleted' => 'Este comentario ha sido borrado.',
-	'wikilog-comment-edited' => 'La última edición de este comentario se realizó el $3 a las $4 ($2).',
 	'wikilog-comment-autosumm' => 'Nuevo comentario de $1: $2',
 	'wikilog-reply-to-comment' => 'Publicar una respuesta a este comentario',
 	'wikilog-comment-page' => 'Ir a la página de este comentario',
@@ -2131,11 +2112,8 @@ Julkaistaksesi artikkeleita ja ottaaksesi muut wikilogin ominaisuudet käyttöö
 	'wikilog-edit-signpub' => 'Allekirjoita ja julkaise tämä artikkeli',
 	'wikilog-edit-signpub-tooltip' => 'Aiheuttaa tämän artikkelin allekirjoituksen ja julkaisemisen wikilogiinsa tallennettaessa.
 Poista tämän laatikon valinta pitääksesi artikkelin luonnoksena.',
-	'wikilog-comment-by-user' => 'Kommentin jätti $1 ($2)',
-	'wikilog-comment-by-anon' => 'Kommentin jätti $3 (nimetön)',
 	'wikilog-comment-pending' => 'Tämä kommentti odottaa hyväksyntää.',
 	'wikilog-comment-deleted' => 'Tämä kommentti oli poistettu.',
-	'wikilog-comment-edited' => 'Tätä kommenttia muokattiin viimeksi $3 kello $4 ($2).',
 	'wikilog-comment-autosumm' => 'Uusi kommentti käyttäjältä $1: $2',
 	'wikilog-reply-to-comment' => 'Vastaa tähän kommenttiin',
 	'wikilog-comment-page' => 'Siirry tälle kommenttisivulle',
@@ -2266,11 +2244,8 @@ Il doit d'abord être créé afin de pouvoir publier des articles et utiliser le
 	'wikilog-edit-signpub' => 'Signer et publier cet article',
 	'wikilog-edit-signpub-tooltip' => "Fait que l'article est signé et publié dans son wikilog lors de la sauvegarde.
 Décochez cette case pour que l'article reste à l'état de brouillon.",
-	'wikilog-comment-by-user' => 'Commentaire de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Commentaire de $3 (anonyme)',
 	'wikilog-comment-pending' => "Ce commentaire est en attente d'une approbation.",
 	'wikilog-comment-deleted' => 'Ce commentaire a été supprimé.',
-	'wikilog-comment-edited' => 'Ce commentaire a été dernièrement modifié le $3 à $4 ($2).',
 	'wikilog-comment-autosumm' => 'Nouveau commentaare de $1 : $2',
 	'wikilog-reply-to-comment' => 'Poster une réponse à ce commentaire',
 	'wikilog-comment-page' => 'Aller à la page de ce commentaire',
@@ -2399,11 +2374,8 @@ Tense que crear primeiro para publicar artigos e activar outras características
 	'wikilog-edit-signpub' => 'Asinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Fai que o artigo sexa asinado e publicado no seu wikilog ao gardalo.
 Desmarque esta caixa para considerar o artigo un borrador.',
-	'wikilog-comment-by-user' => 'Comentario de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comentario de $3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está á espera de aprobación.',
 	'wikilog-comment-deleted' => 'Este comentario foi borrado.',
-	'wikilog-comment-edited' => 'Este comentario foi editado por última vez o $3 ás $4 ($2).',
 	'wikilog-comment-autosumm' => 'Novo comentario de $1: $2',
 	'wikilog-reply-to-comment' => 'Publicar unha resposta a este comentario',
 	'wikilog-comment-page' => 'Ir á páxina deste comentario',
@@ -2551,11 +2523,8 @@ Go Artikel vereffentlige oder andri Wikilog-Funktione meglig mache, muess es zer
 	'wikilog-edit-signpub' => 'Die Artikel unterzeichne un publiziere',
 	'wikilog-edit-signpub-tooltip' => 'Sorgt derfir, ass dää Artikel bim Spychere unterzeichnet un publiziert wird im Wikilog.
 Schalt des Chäschtli uus, wänn Du dr Artikel as Entwurf witt bhalte.',
-	'wikilog-comment-by-user' => 'Kommentar vu $1 ($2)',
-	'wikilog-comment-by-anon' => 'Kommentar vu $3 (anonym)',
 	'wikilog-comment-pending' => 'Dää Kommentar muess no zuegloo wäre.',
 	'wikilog-comment-deleted' => 'Dää Kommentar isch glescht wore.',
-	'wikilog-comment-edited' => 'Dää Kommentar isch s letscht Mol am $3 am $4 bearbeitet wore ($2).',
 	'wikilog-comment-autosumm' => 'Neje Kommentar vu $1: $2',
 	'wikilog-reply-to-comment' => 'E Antwort uf dää Kommentar poschte',
 	'wikilog-comment-page' => 'Zue däre Kommentarsyte goh',
@@ -2653,11 +2622,8 @@ $messages['he'] = array(
 	'wikilog-summary-uncategorized' => 'ללא קטגוריה',
 	'wikilog-summary-more' => '[[$3|→ להמשך הקריאה...]]',
 	'wikilog-edit-signpub' => 'חתמו ופרסמו ערך זה',
-	'wikilog-comment-by-user' => 'הערה על ידי $1 ($2)',
-	'wikilog-comment-by-anon' => 'הערה על ידי $3 (אנונימי)',
 	'wikilog-comment-pending' => 'הערה זו ממתינה לאישור.',
 	'wikilog-comment-deleted' => 'הערה זו נמחקה.',
-	'wikilog-comment-edited' => 'הערה זו נערכה לאחרונה בתאריך $3 בשעה $4 ($2).',
 	'wikilog-comment-autosumm' => 'הערה חדשה על ידי $1: $2',
 	'wikilog-reply-to-comment' => 'פרסום תגובה לתגובה זו',
 	'wikilog-comment-page' => 'מעבר לדף ההערה',
@@ -2767,11 +2733,8 @@ Zo bychu so nastawki wozjewili a druhe wikilogowe funkcije zmóžnili, dyrbi so 
 	'wikilog-edit-signpub' => 'Tutón přinošk podpisać a wozjewić',
 	'wikilog-edit-signpub-tooltip' => 'Zawinuje, zo so tutón přinošk w swojim wikilogu podpisuje a wozjewja, hdyž so składuje.
 Wotstroń markěrowanje z kašćika, zo by so přinošk jako naćisk wobchował.',
-	'wikilog-comment-by-user' => 'Komentar wot $1 ($2)',
-	'wikilog-comment-by-anon' => 'Komentar wot $3 (anonymny)',
 	'wikilog-comment-pending' => 'Tutón komentar na schwalenje čaka.',
 	'wikilog-comment-deleted' => 'Tutón komentar bu zničeny.',
-	'wikilog-comment-edited' => 'Tutón komentar je so $3 $4 wobdźěłał ($2).',
 	'wikilog-comment-autosumm' => 'Nowy komentar wot $1: $2',
 	'wikilog-reply-to-comment' => 'Wotmołwu na tutón komentar pósłać',
 	'wikilog-comment-page' => 'Ke komentarowej stronje',
@@ -2893,11 +2856,8 @@ $messages['hu'] = array(
 	'wikilog-edit-signpub' => 'Dokumentum aláírása és közzététele',
 	'wikilog-edit-signpub-tooltip' => 'Hatására ez a szócikk alá lesz írva és közzé lesz téve a wikinaplójában mentéskor.
 Vedd ki a pipát a doboz elől, ha vázlatként szeretnéd elmenteni a cikket.',
-	'wikilog-comment-by-user' => '$1 hozzászólása ($2)',
-	'wikilog-comment-by-anon' => '$3 hozzászólása (névtelen)',
 	'wikilog-comment-pending' => 'Ez a hozzászólás elfogadásra vár.',
 	'wikilog-comment-deleted' => 'Ez a hozzászólás törölve lett.',
-	'wikilog-comment-edited' => 'Ez a hozzászólás $3 $4-kor volt szerkesztve legutoljára ($2).',
 	'wikilog-comment-autosumm' => '$1 új hozzászólást írt: $2',
 	'wikilog-reply-to-comment' => 'Válasz írása ehhez a hozzászóláshoz',
 	'wikilog-comment-page' => 'Ugrás a hozzászólás lapjára',
@@ -3025,11 +2985,8 @@ A fin de publicar articulos e activar altere functiones wikilog, illo debe primo
 	'wikilog-edit-signpub' => 'Signar e publicar iste articulo',
 	'wikilog-edit-signpub-tooltip' => 'Face que iste articulo es signate e publicate in iste wikilog al momento que illo es salveguardate.
 Dismarca iste quadrato pro retener le articulo como version provisori.',
-	'wikilog-comment-by-user' => 'Commento per $1 ($2)',
-	'wikilog-comment-by-anon' => 'Commento per $3 (anonyme)',
 	'wikilog-comment-pending' => 'Iste commento attende approbation.',
 	'wikilog-comment-deleted' => 'Iste commento ha essite delite.',
-	'wikilog-comment-edited' => 'Iste commento esseva modificate pro le ultime vice le $3 a $4 ($2).',
 	'wikilog-comment-autosumm' => 'Nove commento per $1: $2',
 	'wikilog-reply-to-comment' => 'Publicar un responsa a iste commento',
 	'wikilog-comment-page' => 'Visitar le pagina de iste commento',
@@ -3157,11 +3114,8 @@ Untuk menerbitkan artikel dan mengaktifkan fitur wikilog lain, halaman ini harus
 	'wikilog-edit-signpub' => 'Tanda tangani dan terbitkan artikel ini',
 	'wikilog-edit-signpub-tooltip' => 'Menyebabkan artikel ini ditandatangani dan diterbitkan di wikilognya sewaktu disimpan.
 Hapus centang di kotak ini untuk tetap menandai artikel ini sebagai draf.',
-	'wikilog-comment-by-user' => 'Komentar oleh $1 ($2)',
-	'wikilog-comment-by-anon' => 'Komentar oleh $3 (anonim)',
 	'wikilog-comment-pending' => 'Komentar ini menunggu persetujuan.',
 	'wikilog-comment-deleted' => 'Komentar ini telah dihapus.',
-	'wikilog-comment-edited' => 'Komentar ini terakhir disunting pada $3 pukul $4 ($2).',
 	'wikilog-comment-autosumm' => 'Komentar baru oleh $1: $2',
 	'wikilog-reply-to-comment' => 'Kirimkan balasan untuk komentar ini',
 	'wikilog-comment-page' => 'Tuju ke halaman komentar ini',
@@ -3312,11 +3266,8 @@ $messages['ja'] = array(
 	'wikilog-edit-fieldset-legend' => 'ウィキログのオプション:',
 	'wikilog-edit-signpub' => 'この記事に署名し公開する',
 	'wikilog-edit-signpub-tooltip' => '保存時にこの記事が署名され、そのウィキログに公開されます。この記事を下書きのままにするのなら、このボックスをチェックしないでください。',
-	'wikilog-comment-by-user' => '$1 ($2) によるコメント',
-	'wikilog-comment-by-anon' => '$3 (匿名) によるコメント',
 	'wikilog-comment-pending' => 'このコメントは承認待ちです。',
 	'wikilog-comment-deleted' => 'このコメントは削除されました。',
-	'wikilog-comment-edited' => 'このコメントが最後に編集されたのは $3 $4 です ($2)。',
 	'wikilog-comment-autosumm' => '$1 による新規コメント: $2',
 	'wikilog-reply-to-comment' => 'このコメントへの返信を投稿',
 	'wikilog-comment-page' => 'このコメントのページへ移動',
@@ -3464,11 +3415,8 @@ Heh dat Wikilog jidd-et noch nit.
 	'wikilog-edit-signpub' => 'Donn heh dä Atikel ongerschriive un öffentlesch maache',
 	'wikilog-edit-signpub-tooltip' => 'Sorresch doför, dat heh dä Atikel ongerschrevve weedt, un öffentlesch jemaat weedt.
 Donn heh keij Höhksche maache, öm en als ene Äntworf faßhallde.',
-	'wikilog-comment-by-user' => 'Aanmärkung vum $1 ($2)',
-	'wikilog-comment-by-anon' => 'Aanmärkung vun däm namelose Metmaacher $3',
 	'wikilog-comment-pending' => 'Heh di Aamärkung es noch nit zohjelohße.',
 	'wikilog-comment-deleted' => 'He di Aanmärkung es fottjeschmeße woode.',
-	'wikilog-comment-edited' => 'Heh di Aanmärkung es et läz aam $3 öm $4 Uhr jeändert woode ($2)',
 	'wikilog-comment-autosumm' => 'En neuje Aanmärkung {{GENDER:$1|vum|vum|vun däm Metmaacher|vun dä|vum}} $1: „$2“',
 	'wikilog-reply-to-comment' => 'Donn en Antwoot op heh di Aanmärkung jävve',
 	'wikilog-comment-page' => 'Jangk op dä Aanmärkung ier Sigg',
@@ -3579,10 +3527,7 @@ $messages['lb'] = array(
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussioun]])',
 	'wikilog-edit-fieldset-legend' => 'Optioune vu Wikilog:',
 	'wikilog-edit-signpub' => 'Dësen Artikel ënnerschreiwen a publizéieren',
-	'wikilog-comment-by-user' => 'Bemierkung vum $1 ($2)',
-	'wikilog-comment-by-anon' => 'Bemierkung vum $3 (anonym)',
 	'wikilog-comment-deleted' => 'Dës Bemierkung gouf geläscht.',
-	'wikilog-comment-edited' => "Dës Beierkung gouf den $3 ëm $4 Auer fir d'lescht geännert ($2)",
 	'wikilog-comment-autosumm' => 'Nei Bemierkung vum $1: $2',
 	'wikilog-reply-to-comment' => 'Eng Änwert zu dëser Bemierkung schécken',
 	'wikilog-comment-page' => "Op d'Säit vun dëser Bemierkung goen",
@@ -3702,11 +3647,8 @@ $messages['mk'] = array(
 	'wikilog-edit-signpub' => 'Потпиши и објави ја статијава.',
 	'wikilog-edit-signpub-tooltip' => 'Предизвикува потпишување и објавување на овој викидневник при негово зачувување.
 Отштиклирајте го ова кутивче за да ја оставите статијата како работна верзија.',
-	'wikilog-comment-by-user' => 'Коментар од $1 ($2)',
-	'wikilog-comment-by-anon' => 'Коментар од $3 (анонимно)',
 	'wikilog-comment-pending' => 'Овој коментар чека одобрување.',
 	'wikilog-comment-deleted' => 'Овој коментар е избришан.',
-	'wikilog-comment-edited' => 'Овој коментар е последен пат изменет на $3 во $4 ($2).',
 	'wikilog-comment-autosumm' => 'Нов коментар од $1: $2',
 	'wikilog-reply-to-comment' => 'Одговори на коментаров',
 	'wikilog-comment-page' => 'Оди на страницата на овој коментар',
@@ -3887,11 +3829,8 @@ Om artikelen te publiceren en andere wikilogmogelijkheden in te schakelen, moet 
 	'wikilog-edit-signpub' => 'Dit artikel ondertekenen en publiceren',
 	'wikilog-edit-signpub-tooltip' => 'Zorgt ervoor dat dit artikel wordt ondertekend en gepubliceerd in de wikilog.
 Schakel dit vaktje uit om het artikel de status concept te laten houden.',
-	'wikilog-comment-by-user' => 'Reactie van $1 ($2)',
-	'wikilog-comment-by-anon' => 'Reactie van $3 (anoniem)',
 	'wikilog-comment-pending' => 'Deze reactie wacht op moderatie.',
 	'wikilog-comment-deleted' => 'Deze reactie is verwijderd.',
-	'wikilog-comment-edited' => 'Deze reactie is voor het laatst bewerkt op $3 om $4 ($2).',
 	'wikilog-comment-autosumm' => 'Nieuwe reactie van $1: $2',
 	'wikilog-reply-to-comment' => 'Reactie plaatsen op deze reactie',
 	'wikilog-comment-page' => 'Naar de pagina van deze reactie gaan',
@@ -3989,7 +3928,6 @@ $messages['nn'] = array(
 	'wikilog-no-comments' => 'ingen kommentarar',
 	'wikilog-summary-more' => '[[$3|→ hald fram med å lesa...]]',
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
-	'wikilog-comment-by-user' => 'Kommentarar av $1 ($2)',
 	'wikilog-comment-pending' => 'Denne kommentaren ventar på godkjenning.',
 	'wikilog-comment-deleted' => 'Denne kommentaren er sletta.',
 	'wikilog-comment-autosumm' => 'Ny kommentar av $1: $2',
@@ -4086,11 +4024,8 @@ For å publisere artikler og tillate andre wikiloggegenskaper må denne opprette
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
 	'wikilog-edit-signpub-tooltip' => 'Lagring fører til at denne artikkelen blir signert og publisert i sin wikilogg.
 Hak vekk denne boksen dersom du vil beholde artikkelen som et utkast.',
-	'wikilog-comment-by-user' => 'Kommentar av $1 ($2)',
-	'wikilog-comment-by-anon' => 'Kommentar av $3 (anonym)',
 	'wikilog-comment-pending' => 'Denne kommentaren venter på godkjenning.',
 	'wikilog-comment-deleted' => 'Denne kommentaren ble slettet.',
-	'wikilog-comment-edited' => 'Denne kommentaren ble sist endret den $3, kl $4 ($2).',
 	'wikilog-comment-autosumm' => 'Ny kommentar fra $1: $2',
 	'wikilog-reply-to-comment' => 'Skriv et svar til denne kommentaren',
 	'wikilog-comment-page' => 'Gå til denne kommentarens side',
@@ -4218,11 +4153,8 @@ D\'en primièr, deu èsser creat per poder publicar d\'articles e utilizar las a
 	'wikilog-edit-signpub' => 'Signar e publicar aqueste article',
 	'wikilog-edit-signpub-tooltip' => "Fa que l'article es signat e publicat dins son wikilog al moment del salvament.
 Desmarcatz aquesta casa per que l'article demòre a l'estat de borrolhon.",
-	'wikilog-comment-by-user' => 'Comentari de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comentari de $3 (anonim)',
 	'wikilog-comment-pending' => "Aqueste comentari es en espèra d'una aprovacion.",
 	'wikilog-comment-deleted' => 'Aqueste comentari es estat suprimit.',
-	'wikilog-comment-edited' => 'Aqueste comentari es estat darrièrament modificat lo $3 a $4 ($2).',
 	'wikilog-comment-autosumm' => 'Comentari novèl de $1 : $2',
 	'wikilog-reply-to-comment' => 'Postar una responsa a aqueste comentari',
 	'wikilog-comment-page' => "Anar a la pagina d'aqueste comentari",
@@ -4292,7 +4224,6 @@ $messages['pdc'] = array(
 	'wikilog-authors' => 'Schreiwer',
 	'wikilog-comments' => 'Anmaerrickinge',
 	'wikilog-has-comments' => '{{PLURAL:$1|een Anmaerricking|$1 Anmaerrickinge}}',
-	'wikilog-comment-by-user' => 'Anmaerricking  vun $1 ($2)',
 	'wikilog-title-comments' => 'Anmaerrickinge - $1',
 	'wikilog-form-category' => 'Abdeeling:',
 	'wikilog-form-name' => 'Naame:',
@@ -4378,11 +4309,8 @@ Për publiché d'artìcoj and permëtte d'àutre fonsionalità wikilog, a venta 
 	'wikilog-edit-signpub' => "Sot-signa e pùblica s'artìcol",
 	'wikilog-edit-signpub-tooltip' => "A fa an manera che l'artìcol a sia sot-signà e publicà an sò wikilog cand salvà.
 Desselession-a costa casela për manten-e l'artìcol an në stat dë sbòss.",
-	'wikilog-comment-by-user' => 'Coment da $1 ($2)',
-	'wikilog-comment-by-anon' => 'Coment da $3 (anònim)',
 	'wikilog-comment-pending' => "Cost coment a speta d'esse aprovà.",
 	'wikilog-comment-deleted' => "Cost coment a l'é stàit ëscancelà.",
-	'wikilog-comment-edited' => "Cost coment a l'é stàit modificà l'ùltima vira ai $3 a $4 ($2).",
 	'wikilog-comment-autosumm' => 'Coment neuv da $1: $2',
 	'wikilog-reply-to-comment' => 'Gionté na réplica a cost coment',
 	'wikilog-comment-page' => 'Andé a la pàgina ëd cost coment',
@@ -4543,11 +4471,8 @@ Para publicar artigos e activar outras funcionalidade do wikilog, tem que criá-
 	'wikilog-edit-signpub' => 'Assinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Causa que este artigo seja assinado e publicado no respectivo wikilog quando for gravado.
 Desmarque a caixa para manter o artigo em rascunho.',
-	'wikilog-comment-by-user' => 'Comentário de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comentário de $3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentário está a aguardar aprovação.',
 	'wikilog-comment-deleted' => 'Este comentário foi apagado.',
-	'wikilog-comment-edited' => 'Este comentário foi editado pela última vez a $3 às $4 ($2).',
 	'wikilog-comment-autosumm' => 'Novo comentário de $1: $2',
 	'wikilog-reply-to-comment' => 'Responder a este comentário',
 	'wikilog-comment-page' => 'Ir para a página deste comentário',
@@ -4639,11 +4564,8 @@ $messages['pt-br'] = array(
 	'wikilog-has-comments' => '{{PLURAL:$1|um comentário|$1 comentários}}',
 	'wikilog-summary-more' => '[[$3|→ continuar lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
-	'wikilog-comment-by-user' => 'Comentário de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Comentário por $3 (anônimo)',
 	'wikilog-comment-pending' => 'Este comentário está aguardando aprovação.',
 	'wikilog-comment-deleted' => 'Este comentário foi apagado.',
-	'wikilog-comment-edited' => 'Este comentário foi editado pela última vez em $3 às $4 ($2).',
 	'wikilog-comment-autosumm' => 'Novo comentário de $1: $2',
 	'wikilog-reply-to-comment' => 'Postar uma resposta a esse comentário',
 	'wikilog-comment-page' => 'Ir para a página deste comentário',
@@ -4834,11 +4756,8 @@ In ordene a pubblecà artichele e abbiletà otre funzionalità de UicchiArchivij
 	'wikilog-edit-signpub' => "Firme e pubbleche st'artichele",
 	'wikilog-edit-signpub-tooltip' => "Le cause ca st'artichele ha state firmate e publecate sus a 'u sue UicchiArchivije quanne ha stata reggistrate.
 Live 'a spunde da stu sckatele pe mandenè l'artichele cumme bozze.",
-	'wikilog-comment-by-user' => 'Commende de $1 ($2)',
-	'wikilog-comment-by-anon' => 'Commende de $3 (anonime)',
 	'wikilog-comment-pending' => 'Stu commende jè in attese de approvazione.',
 	'wikilog-comment-deleted' => 'Stu commende ha state scagellate.',
-	'wikilog-comment-edited' => "Stu commende ha state cangiate l'urtema vote 'u $3 a le $4 ($2).",
 	'wikilog-comment-autosumm' => 'Commende nuève de $1: $2',
 	'wikilog-reply-to-comment' => "Manne 'na resposte a 'u commende",
 	'wikilog-comment-page' => "Veje 'a pàgene de stu commende",
@@ -4968,11 +4887,8 @@ $messages['ru'] = array(
 	'wikilog-edit-signpub' => 'Подписать и опубликовать эту статью',
 	'wikilog-edit-signpub-tooltip' => 'Вызывает подписывание и опубликование статьи в викилоге при сохранении.
 Снимите этот флажок, чтобы оставить статью в качестве черновика.',
-	'wikilog-comment-by-user' => 'Комментарии от $1 ($2)',
-	'wikilog-comment-by-anon' => 'Комментарий от $3 (анонимно)',
 	'wikilog-comment-pending' => 'Этот комментарий ожидает утверждения.',
 	'wikilog-comment-deleted' => 'Этот комментарий был удалён.',
-	'wikilog-comment-edited' => 'Этот комментарий был последний раз изменён $3 в $4 ($2).',
 	'wikilog-comment-autosumm' => 'Новый комментарий от $1: $2',
 	'wikilog-reply-to-comment' => 'Ответить на этот комментарий',
 	'wikilog-comment-page' => 'Перейти на страницу этого комментария',
@@ -5095,11 +5011,8 @@ $messages['si'] = array(
 	'wikilog-edit-signpub' => 'අත්සන් කර මෙම ලිපිය ප්‍රකාශනය කරන්න',
 	'wikilog-edit-signpub-tooltip' => 'සුරකින විට මෙම ලිපිය එහි විකි ලඝූ සටහනෙහි අත්සන් කරනු ලැබීමට හා ප්‍රකාශනය කරනු ලැබීමට හේතුවේ.
 ලිපිය කෙටුම්පතක් ලෙස තැබීමට මෙම කොටුව නිලකුණු කරන්න.',
-	'wikilog-comment-by-user' => 'විචාරය $1 ($2)  විසිනි',
-	'wikilog-comment-by-anon' => 'විචාරය $3 (නිර්නාමික) විසිනි',
 	'wikilog-comment-pending' => 'මෙම විචාරය අනුමැතිය බලාපොරොත්තුවෙන් පසුවේ.',
 	'wikilog-comment-deleted' => 'මෙම විචාරය මකා දමන ලදී.',
-	'wikilog-comment-edited' => 'මෙම විචාරය අවසන් වරට සංස්කරණය කරන ලද්දේ $3 $4 ($2) .',
 	'wikilog-comment-autosumm' => '$1: $2 විසින් නව විචාරයක්.',
 	'wikilog-reply-to-comment' => 'මෙම විචාරයට පිළිතුරක් තැපැල් කරන්න.',
 	'wikilog-comment-page' => 'මෙම විචාරයේ පිටුවට යන්න.',
@@ -5230,11 +5143,8 @@ För att publicera artiklar och aktivera andra wikilogegenskaper måste den för
 	'wikilog-edit-signpub' => 'Signera och publicera denna artikel',
 	'wikilog-edit-signpub-tooltip' => 'Gör att artiklar blir signerade och publicerade i sin wikilog när de sparas.
 Avmarkera denna box för att lämna artiklar som utkast.',
-	'wikilog-comment-by-user' => 'Kommentar av $1 ($2)',
-	'wikilog-comment-by-anon' => 'Kommentar av $3 (anonym)',
 	'wikilog-comment-pending' => 'Denna kommentar väntar på godkännande.',
 	'wikilog-comment-deleted' => 'Denna kommentar har raderats.',
-	'wikilog-comment-edited' => 'Denna kommentar redigerades senast $3 kl. $4 ($2).',
 	'wikilog-comment-autosumm' => 'Ny kommentar av $1: $2',
 	'wikilog-reply-to-comment' => 'Skriv ett svar till denna kommentar',
 	'wikilog-comment-page' => 'Gå till denna kommentars sida',
@@ -5334,8 +5244,6 @@ $messages['te'] = array(
 	'wikilog-summary-more' => '[[$3|→ చదవడం కొనసాగించండి...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|చర్చ]])',
 	'wikilog-edit-fieldset-legend' => 'వికీచిట్టా ఎంపికలు:',
-	'wikilog-comment-by-user' => '$1 ($2) వ్రాసిన వ్యాఖ్య',
-	'wikilog-comment-by-anon' => '$3 (అజ్ఞాత) యొక్క వ్యాఖ్య',
 	'wikilog-comment-pending' => 'ఈ వ్యాఖ్య అనుమతి కోసం వేచియున్నది.',
 	'wikilog-comment-deleted' => 'ఈ వ్యాఖ్యని తొలగించారు.',
 	'wikilog-comment-autosumm' => '$1 యొక్క కొత్త వ్యాఖ్య: $2',
@@ -5503,11 +5411,8 @@ Madde yayımlamak ve diğer vikikayıt özelliklerini etkinleştirmek için, ilk
 	'wikilog-edit-signpub' => 'Bu maddeyi imzala ve yayınla',
 	'wikilog-edit-signpub-tooltip' => 'Kaydedildiğinde bu maddenin imzalanmasını ve vikikaydında yayımlanmasını sağlar.  
 Bu maddeyi taslak olarak tutmak için bu kutunun seçimini kaldırın.',
-	'wikilog-comment-by-user' => '$1 ($2) tarafından yapılmış yorum',
-	'wikilog-comment-by-anon' => '$3 (anonim) tarafından yapılmış yorum',
 	'wikilog-comment-pending' => 'Bu yorum onay beklemektedir.',
 	'wikilog-comment-deleted' => 'Bu yorum silindi.',
-	'wikilog-comment-edited' => 'Bu yorum en son $3 $4 tarihinde değiştirildi ($2).',
 	'wikilog-comment-autosumm' => '$1 tarafından yapılan yeni yorum: $2',
 	'wikilog-reply-to-comment' => 'Bu yorumu yanıtla.',
 	'wikilog-comment-page' => 'Bu yorumun sayfasına git.',
@@ -5611,8 +5516,6 @@ $messages['uk'] = array(
 	'wikilog-summary-more' => '[[$3|→ продовжити читання…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|обговорення]])',
 	'wikilog-edit-signpub' => 'Підписати та опублікувати цю статтю',
-	'wikilog-comment-by-user' => 'Коментарі від $1 ($2)',
-	'wikilog-comment-by-anon' => 'Коментар від $3 (анонімно)',
 	'wikilog-comment-pending' => 'Цей коментар чекає на розгляд.',
 	'wikilog-comment-deleted' => 'Цей коментар був вилучений.',
 	'wikilog-comment-autosumm' => 'Новий коментар від $1: $2',

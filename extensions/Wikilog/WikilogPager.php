@@ -1,7 +1,7 @@
 <?php
 /**
  * MediaWiki Wikilog extension
- * Copyright © 2008, 2009 Juliano F. Ravasi
+ * Copyright © 2008-2010 Juliano F. Ravasi
  * http://www.mediawiki.org/wiki/Extension:Wikilog
  *
  * This program is free software; you can redistribute it and/or modify
@@ -140,7 +140,7 @@ class WikilogSummaryPager
 			$pagingLinks = $this->getPagingLinks( $linkTexts );
 			$limitLinks = $this->getLimitLinks();
 
-			$limits = implode( ' | ', $limitLinks );
+			$limits = $wgLang->pipeList( $limitLinks );
 			$classes = implode( ' ', array( 'wl-navbar', $class ) );
 
 			$this->mNavigationBar[$class] = wfMsgExt( 'wikilog-navigation-bar',
@@ -446,7 +446,7 @@ class WikilogArchivesPager
 			$pagingLinks = $this->getPagingLinks( $linkTexts );
 			$limitLinks = $this->getLimitLinks();
 
-			$limits = implode( ' | ', $limitLinks );
+			$limits = $wgLang->pipeList( $limitLinks );
 			$classes = implode( ' ', array( 'wl-navbar', $class ) );
 
 			$this->mNavigationBar[$class] = wfMsgExt( 'wikilog-navigation-bar',

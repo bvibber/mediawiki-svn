@@ -1,7 +1,7 @@
 <?php
 /**
  * MediaWiki Wikilog extension
- * Copyright © 2008, 2009 Juliano F. Ravasi
+ * Copyright © 2008-2010 Juliano F. Ravasi
  * http://www.mediawiki.org/wiki/Extension:Wikilog
  *
  * This program is free software; you can redistribute it and/or modify
@@ -40,14 +40,14 @@ if ( !defined( 'MEDIAWIKI' ) )
  * comments.
  *
  * @note This class was designed to integrate with Wikilog, and won't work
- * for the rest of the wiki. If you wan't a similar interface for the other
+ * for the rest of the wiki. If you want a similar interface for the other
  * talk pages, you may want to check LiquidThreads or some other extension.
  */
 class WikilogCommentsPage
 	extends Article
 	implements WikilogCustomAction
 {
-	protected $mSkin;				///< Skin used for rendering the page.
+	protected $mSkin;				///< Skin used while rendering the page.
 	protected $mFormOptions;		///< Post comment form fields.
 	protected $mUserCanPost;		///< User is allowed to post.
 	protected $mUserCanModerate;	///< User is allowed to moderate.
@@ -104,56 +104,52 @@ class WikilogCommentsPage
 	public function view() {
 		global $wgRequest, $wgOut;
 
-		# If diffing, don't show comments.
-		if ( $wgRequest->getVal( 'diff' ) )
+		if ( $wgRequest->getVal( 'diff' ) ) {
+			# Ignore comments if diffing.
 			return parent::view();
-
-		# Normal page view, show talk page contents followed by comments.
-		if ( $this->mItem ) {
-			$this->viewHeader();
 		}
 
-		# Display talk page contents.
-		parent::view();
-
-		# Retrieve comments from database and display them.
-		if ( $this->mItem ) {
-			$this->viewComments();
+		if ( !$this->mItem ) {
+			# There is no wikilog article associated with this discussion
+			# page. Act as a normal talk page in this case, leaving
+			# everything to the parent class.
+			return parent::view();
 		}
 
-		# Set a more human-friendly title to the comments page.
-		# NOTE (MW1.16+): Must come after parent::view().
-		if ( !$this->mSingleComment ) {
+		if ( $this->mSingleComment ) {
+			# Single comment view, show comment followed by its replies.
+			$params = $this->getCommentMsgParams( $this->mSingleComment );
+
+			# Display the comment header and other status messages.
+			$wgOut->addHtml( $this->formatCommentHeader( $this->mSingleComment, $params ) );
+
+			# Display talk page contents.
+			parent::view();
+
+			# Display the comment footer.
+			$wgOut->addHtml( $this->formatCommentFooter( $this->mSingleComment, $params ) );
+		} else {
+			# Normal page view, show talk page contents followed by comments.
+			parent::view();
+
+			# Set a more human-friendly title to the comments page.
+			# NOTE (MW1.16+): Must come after parent::view().
 			# Note: Sorry for the three-level cascade of wfMsg()'s...
 			$fullPageTitle = wfMsg( 'wikilog-title-item-full',
-					$this->mItem->mName,
-					$this->mItem->mParentTitle->getPrefixedText()
+				$this->mItem->mName,
+				$this->mItem->mParentTitle->getPrefixedText()
 			);
 			$fullPageTitle = wfMsg( 'wikilog-title-comments', $fullPageTitle );
 			$wgOut->setPageTitle( wfMsg( 'wikilog-title-comments', $this->mItem->mName ) );
 			$wgOut->setHTMLTitle( wfMsg( 'pagetitle', $fullPageTitle ) );
 		}
-	}
 
-	/**
-	 * Wikilog comments page header.
-	 */
-	protected function viewHeader() {
-		global $wgOut, $wgUser;
-
-		if ( $this->mSingleComment ) {
-			# When viewing a single comment, add comment metadata.
-			$meta = $this->formatCommentMetadata( $this->mSingleComment );
-			$wgOut->addHtml( Xml::tags(
-				'div', array( 'class' => 'wl-comment-meta' ), $meta
-			) );
-		}
-
-		# Add a backlink to the original article. Specially important in
-		# single comment pages.
-		$skin = $wgUser->getSkin();
-		$link = $skin->link( $this->mItem->mTitle, $this->mItem->mName );
+		# Add a backlink to the original article.
+		$link = $this->mSkin->link( $this->mItem->mTitle, $this->mItem->mName );
 		$wgOut->setSubtitle( wfMsg( 'wikilog-backlink', $link ) );
+
+		# Retrieve comments (or replies) from database and display them.
+		$this->viewComments();
 	}
 
 	/**
@@ -296,10 +292,12 @@ class WikilogCommentsPage
 				array_pop( $stack ); $top--;
 			}
 
-			$html .= Xml::openElement( 'div', array( 'class' => 'wl-thread' ) ) .
-				$this->formatComment( $comment );
+			$doReply = $comment->mID == $replyTo && $this->mUserCanPost;
 
-			if ( $comment->mID == $replyTo && $this->mUserCanPost ) {
+			$html .= Xml::openElement( 'div', array( 'class' => 'wl-thread' ) ) .
+				$this->formatComment( $comment, $doReply );
+
+			if ( $doReply ) {
 				$html .= Xml::wrapClass( $this->getPostCommentForm( $comment->mID ),
 					'wl-thread', 'div' );
 			}
@@ -319,14 +317,15 @@ class WikilogCommentsPage
 	 * Formats a single post in HTML.
 	 *
 	 * @param $comment Comment to be formatted.
+	 * @param $highlight Whether the comment should be highlighted.
 	 * @return Generated HTML.
 	 */
-	protected function formatComment( $comment ) {
+	protected function formatComment( $comment, $highlight = false ) {
 		global $wgUser, $wgOut;
 
 		$hidden = WikilogComment::$statusMap[ $comment->mStatus ];
 
-		/* div class */
+		# div class.
 		$divclass = array( 'wl-comment' );
 		if ( !$comment->isVisible() ) {
 			$divclass[] = "wl-comment-{$hidden}";
@@ -340,81 +339,183 @@ class WikilogCommentsPage
 			$divclass[] = 'wl-comment-by-anon';
 		}
 
-		/* body */
-		if ( !$comment->isVisible() && !$this->mUserCanModerate ) {
-			/* placeholder */
-			$status = wfMsg( "wikilog-comment-{$hidden}" );
-			$html = Xml::tags( 'div', array( 'class' => 'wl-comment-placeholder' ),
-				$status );
-		} else {
-			$meta = $this->formatCommentMetadata( $comment );
-			$text = $wgOut->parse( $comment->getText() );  // TODO: Optimize this.
-			$html =
-				Xml::tags( 'div', array( 'class' => 'wl-comment-meta' ), $meta ) .
-				Xml::tags( 'div', array( 'class' => 'wl-comment-text' ), $text );
+		# If user is has moderator privileges and the comment is pending
+		# approval, highlight it.
+		if ( $this->mUserCanModerate && $comment->mStatus == WikilogComment::S_PENDING ) {
+			$highlight = true;
 		}
 
-		/* enclose everything in a div */
+		if ( !$comment->isVisible() && !$this->mUserCanModerate ) {
+			# Placeholder.
+			$status = wfMsg( "wikilog-comment-{$hidden}" );
+			$html = WikilogUtils::wrapDiv( 'wl-comment-placeholder', $status );
+		} else {
+			# The comment.
+			$params = $this->getCommentMsgParams( $comment );
+			$html = $this->formatCommentHeader( $comment, $params );
+
+			$text = $wgOut->parse( $comment->getText() );  // TODO: Optimize this.
+			$html .= WikilogUtils::wrapDiv( 'wl-comment-text', $text );
+
+			$html .= $this->formatCommentFooter( $comment, $params );
+			$html .= $this->getCommentToolLinks( $comment );
+		}
+
+		# Enclose everything in a div.
+		if ( $highlight ) {
+			$divclass[] = 'wl-comment-highlight';
+		}
 		return Xml::tags( 'div', array(
 			'class' => implode( ' ', $divclass ),
 			'id' => ( $comment->mID ? "c{$comment->mID}" : 'cpreview' )
 		), $html );
 	}
 
-	protected function formatCommentMetadata( $comment ) {
-		global $wgLang;
+	/**
+	 * Format and return the header of a comment. This processes the
+	 * 'wikilog-comment-header' system message with the given parameters,
+	 * possibly adds some status messages (for pending or deleted posts),
+	 * and returns the result.
+	 *
+	 * @param $comment Comment.
+	 * @param $params Message parameters, from getCommentMsgParams().
+	 * @return HTML-formatted comment header.
+	 */
+	protected function formatCommentHeader( $comment, $params ) {
+		$status = "";
+		if ( !$comment->isVisible() ) {
+			# If comment is not visible to non-moderators, make note of it.
+			$hidden = WikilogComment::$statusMap[ $comment->mStatus ];
+			$status = WikilogUtils::wrapDiv( 'wl-comment-status', wfMsg( "wikilog-comment-{$hidden}" ) );
+		}
+
+		$header = wfMsgExt( 'wikilog-comment-header', array( 'content', 'parsemag', 'replaceafter' ), $params );
+		if ( $header ) {
+			$header = WikilogUtils::wrapDiv( 'wl-comment-header', $header );
+		}
+
+		return $status . $header;
+	}
+
+	/**
+	 * Format and return the footer of a comment. This processes the
+	 * 'wikilog-comment-footer' system message with the given parameters
+	 * and returns the result.
+	 *
+	 * @param $comment Comment.
+	 * @param $params Message parameters, from getCommentMsgParams().
+	 * @return HTML-formatted comment footer.
+	 */
+	protected function formatCommentFooter( $comment, $params ) {
+		$footer = wfMsgExt( 'wikilog-comment-footer', array( 'content', 'parsemag', 'replaceafter' ), $params );
+		if ( $footer ) {
+			return WikilogUtils::wrapDiv( 'wl-comment-footer', $footer );
+		} else {
+			return "";
+		}
+	}
+
+	/**
+	 * Returns an array with common header and footer system message
+	 * parameters that are used in 'wikilog-comment-header' and
+	 * 'wikilog-comment-footer'.
+	 *
+	 * Note: *Content* language should be used for everything but final
+	 * strings (like tooltips). These messages are intended to be customized
+	 * by the wiki admin, and we don't want to require changing it for the
+	 * 300+ languages suported by MediaWiki.
+	 *
+	 * Parameters should be HTML-formated. They are substituded using
+	 * 'replaceafter' parameter to wfMsgExt().
+	 *
+	 * @param $comment Comment.
+	 * @return Array with message parameters.
+	 */
+	protected function getCommentMsgParams( $comment ) {
+		global $wgContLang;
 
 		if ( $comment->mUserID ) {
-			$by = wfMsgExt( 'wikilog-comment-by-user',
-				array( 'parseinline', 'replaceafter' ),
-				'<span class="wl-comment-author">' . $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ) . '</span>',
+			$authorPlain = htmlspecialchars( $comment->mUserText );
+			$authorFmt = wfMsgExt( 'wikilog-simple-signature',
+				array( 'content', 'parseinline', 'replaceafter' ),
+				Xml::wrapClass( $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ), 'wl-comment-author' ),
 				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText ),
 				$comment->mUserText
 			);
 		} else {
-			$by = wfMsgExt( 'wikilog-comment-by-anon',
-				array( 'parseinline', 'replaceafter' ),
-				'<span class="wl-comment-author">' . $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ) . '</span>',
+			$authorPlain = htmlspecialchars( $comment->mAnonName );
+			$authorFmt = wfMsgExt( 'wikilog-comment-anonsig',
+				array( 'content', 'parseinline', 'replaceafter' ),
+				Xml::wrapClass( $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ), 'wl-comment-author' ),
 				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText ),
 				htmlspecialchars( $comment->mAnonName )
 			);
 		}
 
-		$link = $this->getCommentPermalink( $comment );
-		$tools = $this->getCommentToolLinks( $comment );
-		$ts = $wgLang->timeanddate( $comment->mTimestamp, true );
-		$meta = "{$link} {$by} &#8226; {$ts} &#8226; <small>{$tools}</small>";
+		$date = $wgContLang->date( $comment->mTimestamp );
+		$time = $wgContLang->time( $comment->mTimestamp );
+		$permalink = $this->getCommentPermalink( $comment, $date, $time );
 
-		if ( !$comment->isVisible() ) {
-			$hidden = WikilogComment::$statusMap[ $comment->mStatus ];
-			$status = wfMsg( "wikilog-comment-{$hidden}" );
-			$meta .= "<div class=\"wl-comment-status\">{$status}</div>";
+		$extra = array();
+		if ( $comment->mID && $comment->mCommentTitle &&
+				$comment->mCommentTitle->exists() )
+		{
+			if ( $comment->mUpdated != $comment->mTimestamp ) {
+				# Comment was edited.
+				$extra[] = $this->mSkin->link( $comment->mCommentTitle,
+					wfMsgForContent( 'wikilog-comment-note-edited',
+						$wgContLang->date( $comment->mUpdated, true ),
+						$wgContLang->time( $comment->mUpdated, true )
+					),
+					array( 'title' => wfMsg( 'wikilog-comment-history' ) ),
+					array( 'action' => 'history' ), 'known'
+				);
+			}
 		}
-		if ( $comment->mUpdated != $comment->mTimestamp ) {
-			$updated = wfMsg(
-				'wikilog-comment-edited',
-				$wgLang->timeanddate( $comment->mUpdated, true ),
-				$this->getCommentHistoryLink( $comment ),
-				$wgLang->date( $comment->mUpdated, true ),
-				$wgLang->time( $comment->mUpdated, true )
-			);
-			$meta .= "<div class=\"wl-comment-edited\">{$updated}</div>";
+		if ( $extra ) {
+			$extra = wfMsgForContent( 'parentheses', $wgContLang->pipeList( $extra ) );
+		} else {
+			$extra = "";
 		}
 
-		return $meta;
+		return array(
+			/* $1  */ $authorPlain,
+			/* $2  */ $authorFmt,
+			/* $3  */ $date,
+			/* $4  */ $time,
+			/* $5  */ $permalink,
+			/* $6  */ $extra
+		);
 	}
 
-	protected function getCommentPermalink( $comment ) {
+	/**
+	 * Return a permanent link to the comment.
+	 *
+	 * @param $comment Comment.
+	 * @param $date Comment date.
+	 * @param $time Comment time.
+	 * @return HTML fragment.
+	 */
+	protected function getCommentPermalink( $comment, $date, $time ) {
 		if ( $comment->mID ) {
 			$title = clone $this->getTitle();
 			$title->setFragment( "#c{$comment->mID}" );
-			return $this->mSkin->link( $title, '#',
-				array( 'title' => wfMsg( 'permalink' ) ) );
+			return $this->mSkin->link( $title,
+				wfMsg( 'wikilog-comment-permalink', $date, $time ),
+				array( 'title' => wfMsg( 'permalink' ) )
+			);
 		} else {
-			return '#';
+			return wfMsg( 'wikilog-comment-permalink', $date, $time );
 		}
 	}
 
+	/**
+	 * Return an HTML fragment with various links (tools) that act upon
+	 * the comment, like reply, accept, reject, edit, etc.
+	 *
+	 * @param $comment Comment.
+	 * @return HTML fragment containing the links.
+	 */
 	protected function getCommentToolLinks( $comment ) {
 		global $wgUser;
 		$tools = array();
@@ -422,30 +523,18 @@ class WikilogCommentsPage
 		if ( $comment->mID && $comment->mCommentTitle &&
 				$comment->mCommentTitle->exists() ) {
 			if ( $this->mUserCanPost && $comment->isVisible() ) {
-				$tools[] = $this->getCommentReplyLink( $comment );
+				$title = clone $this->getTitle();
+				$title->setFragment( "#c{$comment->mID}" );
+				$tools['reply'] = $this->mSkin->link( $title,
+					wfMsg( 'wikilog-reply-lc' ),
+					array( 'title' => wfMsg( 'wikilog-reply-to-comment' ) ),
+					array( 'wlParent' => $comment->mID ),
+					'known'
+				);
 			}
-			if ( $this->mUserCanModerate ) {
-				$tools[] = $this->mSkin->link( $comment->mCommentTitle,
-					wfMsg( 'wikilog-page-lc' ),
-					array( 'title' => wfMsg( 'wikilog-comment-page' ) ),
-					array( ), 'known' );
-			}
-			if ( $comment->mCommentTitle->quickUserCan( 'edit' ) ) {
-				$tools[] = $this->mSkin->link( $comment->mCommentTitle,
-					wfMsg( 'wikilog-edit-lc' ),
-					array( 'title' => wfMsg( 'wikilog-comment-edit' ) ),
-					array( 'action' => 'edit' ), 'known' );
-			}
-			if ( $comment->mCommentTitle->quickUserCan( 'delete' ) ) {
-				$tools[] = $this->mSkin->link( $comment->mCommentTitle,
-					wfMsg( 'wikilog-delete-lc' ),
-					array( 'title' => wfMsg( 'wikilog-comment-delete' ) ),
-					array( 'action' => 'delete' ), 'known' );
-			}
-
 			if ( $this->mUserCanModerate && $comment->mStatus == WikilogComment::S_PENDING ) {
 				$token = $wgUser->editToken();
-				$tools[] = $this->mSkin->link( $comment->mCommentTitle,
+				$tools['approve'] = $this->mSkin->link( $comment->mCommentTitle,
 					wfMsg( 'wikilog-approve-lc' ),
 					array( 'title' => wfMsg( 'wikilog-comment-approve' ) ),
 					array(
@@ -453,8 +542,9 @@ class WikilogCommentsPage
 						'wlActionCommentApprove' => 'approve',
 						'wpEditToken' => $token
 					),
-					'known' );
-				$tools[] = $this->mSkin->link( $comment->mCommentTitle,
+					'known'
+				);
+				$tools['reject'] = $this->mSkin->link( $comment->mCommentTitle,
 					wfMsg( 'wikilog-reject-lc' ),
 					array( 'title' => wfMsg( 'wikilog-comment-reject' ) ),
 					array(
@@ -462,31 +552,44 @@ class WikilogCommentsPage
 						'wlActionCommentApprove' => 'reject',
 						'wpEditToken' => $token
 					),
-					'known' );
+					'known'
+				);
+			}
+			if ( $this->mUserCanModerate ) {
+				$tools['page'] = $this->mSkin->link( $comment->mCommentTitle,
+					wfMsg( 'wikilog-page-lc' ),
+					array( 'title' => wfMsg( 'wikilog-comment-page' ) ),
+					array(),
+					'known'
+				);
+			}
+			if ( $comment->mCommentTitle->quickUserCan( 'edit' ) ) {
+				$tools['edit'] = $this->mSkin->link( $comment->mCommentTitle,
+					wfMsg( 'wikilog-edit-lc' ),
+					array( 'title' => wfMsg( 'wikilog-comment-edit' ) ),
+					array( 'action' => 'edit' ),
+					'known'
+				);
+			}
+			if ( $comment->mCommentTitle->quickUserCan( 'delete' ) ) {
+				$tools['delete'] = $this->mSkin->link( $comment->mCommentTitle,
+					wfMsg( 'wikilog-delete-lc' ),
+					array( 'title' => wfMsg( 'wikilog-comment-delete' ) ),
+					array( 'action' => 'delete' ),
+					'known'
+				);
 			}
 		}
 
 		if ( !empty( $tools ) ) {
-			$tools = implode( wfMsg( 'comma-separator' ), $tools );
-			return wfMsg( 'wikilog-brackets', $tools );
+			$html = '';
+			foreach ( $tools as $cls => $tool ) {
+				$html .= Xml::tags( 'li', array( 'class' => "wl-comment-action-{$cls}" ), $tool );
+			}
+			return Xml::tags( 'ul', array( 'class' => 'wl-comment-tools' ), $html );
 		} else {
 			return '';
 		}
-	}
-
-	protected function getCommentReplyLink( $comment ) {
-		$title = clone $this->getTitle();
-		$title->setFragment( "#c{$comment->mID}" );
-		return $this->mSkin->link( $title, wfMsg( 'wikilog-reply-lc' ),
-			array( 'title' => wfMsg( 'wikilog-reply-to-comment' ) ),
-			array( 'wlParent' => $comment->mID ) );
-	}
-
-	protected function getCommentHistoryLink( $comment ) {
-		return $this->mSkin->link( $comment->mCommentTitle,
-			wfMsg( 'wikilog-history-lc' ),
-			array( 'title' => wfMsg( 'wikilog-comment-history' ) ),
-			array( 'action' => 'history' ), 'known' );
 	}
 
 	/**

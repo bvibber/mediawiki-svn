@@ -1,50 +1,21 @@
 /*
  * Wikilog extension styles.
- * Copyright © 2008, 2009 Juliano F. Ravasi
+ * Copyright © 2008-2010 Juliano F. Ravasi
  * http://www.mediawiki.org/wiki/Extension:Wikilog
  *
  * Lincensed under the GNU General Public License version 2.
  */
 
-div.wl-summary-header {
+/* articles listed in the pagers (summary, template, archives) */
+
+div.wl-summary-header,
+div.wl-summary-footer {
 	font-size: 90%;
 	font-style: italic;
 }
 
 div.wl-summary-footer {
-	font-size: 90%;
-	font-style: italic;
 	padding: 0 3em;
-}
-
-div.wl-entry-header {
-	font-style: italic;
-}
-
-div.wl-entry-footer {
-	font-style: italic;
-	padding: 3pt 3em;
-}
-
-div.wl-description {
-	border: 1px solid #CCCCCC;
-	background-color: #EEEEEE;
-	color: #000000;
-	padding: 0.25em;
-}
-
-div.wl-description div.wl-title {
-	font-size: 110%;
-	font-weight: bold;
-}
-
-div.wl-description div.wl-subtitle p {
-	line-height: inherit;
-	margin: 0;
-}
-
-tr.wl-draft {
-	font-style: italic;
 }
 
 div.wl-draft {
@@ -52,6 +23,10 @@ div.wl-draft {
 	background-color: #FFFFEE;
 	color: #999999;
 	padding: 0.25em 0.75em;
+}
+
+tr.wl-draft {
+	font-style: italic;
 }
 
 .wl-navbar {
@@ -63,51 +38,95 @@ div.wl-draft {
 	padding: 0.25em 0.75em;
 }
 
-div.wl-thread {
+.TablePager_col_wlp_num_comments {
+	text-align: center;
 }
 
-div.wl-thread div.wl-thread {
-	padding-left: 2.0em;
+/* article page header and footer */
+
+div.wl-entry-header {
+	font-style: italic;
 }
+
+div.wl-entry-footer {
+	font-style: italic;
+	padding: 3pt 3em;
+}
+
+/* comments */
+
+.ltr div.wl-thread { border-left: 1px solid transparent; }
+.rtl div.wl-thread { border-right: 1px solid transparent; }
+
+.ltr div.wl-thread:hover { border-left-color: #999999; }
+.rtl div.wl-thread:hover { border-right-color: #999999; }
+
+.ltr div.wl-thread div.wl-thread { margin-left: 2.0em; }
+.rtl div.wl-thread div.wl-thread { margin-right: 2.0em; }
 
 div.wl-comment {
-	margin: 0.25em 0;
-	padding: 0.5em 0;
+	padding: 0.5em;
+	position: relative; /* used by .wl-comment-tools, below */
 }
 
-div.wl-comment-meta {
-	background-color: #EEEEEE;
-	border-top: 1px solid #CCCCCC;
-	border-bottom: 1px solid #CCCCCC;
-	color: black;
-	margin: 0 0;
-	padding: 0 0.75em;
-}
-
-div.wl-comment-pending .wl-comment-meta {
+div.wl-comment-highlight {
 	background-color: #FFFFCC;
+	color: black;
 }
 
-div.wl-comment-meta .wl-comment-status {
-/* 	font-style: italic; */
+div.wl-comment:hover {
+	background-color: #EEEEEE;
+	color: black;
+}
+
+div.wl-comment-status {
+	background-color: #EEEEEE;
+	border: 1px solid #CCCCCC;
+	color: black;
 	font-weight: bold;
-	margin: 0;
-	padding: 0 1em;
-}
-
-div.wl-comment-meta .wl-comment-edited {
-/* 	font-style: italic; */
-	margin: 0;
-	padding: 0 1em;
-}
-
-div.wl-comment-text {
 	padding: 0.25em 0.75em;
+}
+
+div.wl-comment-header,
+div.wl-comment-footer {
+	font-size: 90%;
+}
+
+.wl-comment-tools {
+	display: none;
+	position: absolute; /* relative to .wl-comment */
+	bottom: 0;
+}
+
+.ltr .wl-comment-tools { left: auto; right: 0; }
+.rtl .wl-comment-tools { left: 0; right: auto; }
+
+.wl-comment-tools a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.wl-comment-tools li {
+	display: inline;
+	padding: 1pt 3pt;
+	font-weight: bold;
+	color: #999999;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+.wl-comment-tools li:hover {
+	background-color: #999999;
+	color: #EEEEEE;
+}
+
+div.wl-comment:hover .wl-comment-tools,
+div.wl-comment-highlight .wl-comment-tools {
+	display: block;
 }
 
 div.wl-comment-pending .wl-comment-text,
 div.wl-comment-deleted .wl-comment-text {
-	background-color: #FFFFFF;
 	color: #999999;
 }
 
@@ -124,17 +143,43 @@ div.wl-comment-placeholder {
 	text-align: center;
 }
 
-div.wl-comment-error-box {
-	background-color: #FFEEEE;
-	border: 1px solid #FFCCCC;
-	color: #990000;
-	font-weight: bold;
-	padding: 0.5em;
-	text-align: center;
+.wl-comment-tools li.wl-comment-action-reply,
+.wl-comment-tools li.wl-comment-action-approve {
+	color: #009900;
 }
 
-.TablePager_col_wlp_num_comments {
-	text-align: center;
+.wl-comment-tools li.wl-comment-action-reply:hover,
+.wl-comment-tools li.wl-comment-action-approve:hover {
+	background-color: #009900;
+	color: #EEEEEE;
+}
+
+.wl-comment-tools li.wl-comment-action-reject {
+	color: #990000;
+}
+
+.wl-comment-tools li.wl-comment-action-reject:hover {
+	background-color: #990000;
+	color: #EEEEEE;
+}
+
+/* wikilog tab */
+
+div.wl-description {
+	border: 1px solid #CCCCCC;
+	background-color: #EEEEEE;
+	color: black;
+	padding: 0.25em;
+}
+
+div.wl-description div.wl-title {
+	font-size: 110%;
+	font-weight: bold;
+}
+
+div.wl-description div.wl-subtitle p {
+	line-height: inherit;
+	margin: 0;
 }
 
 /* kate: indent-mode normal; space-indent off; tab-width 4; */
