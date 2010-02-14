@@ -71,6 +71,7 @@ class XMLRC {
 	$prop['redirect'] = true;
 	$prop['patrolled'] = true;
 	$prop['loginfo'] = true;
+	$prop['tags'] = true;
 
 	$this->query->initProperties( $prop );
 
