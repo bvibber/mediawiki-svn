@@ -27,6 +27,13 @@ $messages['be-tarask'] = array(
 	'storyboard-desc' => 'Прадстаўляе старонку для донараў, старонку для іх гісторыяў, і інтэрфэйс яе мадэрацыі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'storyboard-name' => 'Storyboard',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -155,7 +155,7 @@ Possible answer to Usability feedback questions {{msg|Optin-survey-question-used
  * @author Bombola
  */
 $messages['lzz'] = array(
-	'optin-deny-short' => 'Var didi mardi',
+	'optin-deny-short' => 'Var, didi mardi',
 	'optin-survey-yes' => 'Ho',
 	'optin-survey-no' => 'Var',
 );
@@ -2641,7 +2641,7 @@ Dźakujemy so a bychmy so wjeselili wot tebje słyšeć!',
  * @author Hunyadym
  */
 $messages['hu'] = array(
-	'optin' => 'Csatlakozás az Usability Initiative-hez',
+	'optin' => 'Kipróbálom az új felületet',
 	'optin-desc' => 'Lehetővé teszi a szerkesztőknek a béta verzió kipróbálását, a használhatóság fejlesztése kezdeményezés legfrissebb fejlesztéseivel',
 	'optin-title-optedout' => 'A béta kipróbálása',
 	'optin-title-optedin' => 'Kilépés a bétából',
@@ -5209,10 +5209,14 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Jiro Ono
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
 	'optin-title-optedout' => 'බීටා අනුවාදය අත්හදා බලන්න',
+	'optin-title-optedin' => 'බීටා අනුවාදය වෙතින් ඉවත් වන්න',
+	'optin-title-justoptedin' => 'බීටා අනුවාදය ට පිලිගනිමු',
+	'optin-title-justoptedout' => 'බීටා අනුවාදය අත්හදා බැලීම ගැන තුති',
 	'optin-accept-short' => 'උත්සාහ කර බලමු!',
 	'optin-accept-long' => 'බීටා අනුවාදය අත්හදා බලන්න',
 	'optin-accept-long-anon' => 'ප්‍රවිෂ්ට වී බීටා අනුවාදය අත්හදා බලන්න',
@@ -5632,6 +5636,18 @@ Hjälpavsnittet ger snabbt förklaringar till vanliga koder i wikitext.
 För att få mer information om projektet eller för att engagera dig, besök [http://usability.wikimedia.org wikin för användbarhetsinitiativet]. Där finns mer information om vårt stipendium, forskning, design, utveckling och kommande utgåvor. För att ställa frågor eller lämna allmänna kommentarer, använd vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskussionssida för prototypen]. För att ta upp specifika ämnen, använd motsvarande diskussionssida. Om du hittar buggar så är vi tacksamma om du kommenterar det på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babacoutgåvans diskussionssida] eller på [https://bugzilla.wikimedia.org Bugzilla].
 
 Tack så mycket, vi ser fram emot att höra av dig!',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'optin-title-optedout' => 'Jaribu Beta',
+	'optin-title-optedin' => 'Utoke kwa Beta',
+	'optin-title-justoptedin' => 'Karibu Beta',
+	'optin-title-justoptedout' => 'Asante kwa kujaribu kutumia bidhaa pepe ya Beta',
+	'optin-accept-long' => 'Ujaribu kutumia Beta',
+	'optin-submit-out' => 'Utoke Beta',
 );
 
 /** Telugu (తెలుగు)

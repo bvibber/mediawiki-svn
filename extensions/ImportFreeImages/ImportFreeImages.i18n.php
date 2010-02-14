@@ -63,17 +63,16 @@ $messages['ar'] = array(
 	'importfreeimages' => 'استيراد صور حرة',
 	'importfreeimages-desc' => 'يوفر طريقة [[Special:ImportFreeImages|لاستيراد صور مرخصة بشكل سليم]] من [http://www.flickr.com فليكر]',
 	'importfreeimages_description' => 'هذه الصفحة تسمح لك بالبحث في الصور المرخصة جيدا من فليكر واستيرادها إلى الويكي الخاص بك.',
-	'importfreeimages_noapikey' => 'لم تقم بضبط مفتاح API فليكر الخاص بك.
-لفعل هذا، من فضلك احصل على مفتاح API من  [http://www.flickr.com/services/api/misc.api_keys.html هنا] واضبط $wgFlickrAPIKey  في ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "لا صور تم العثور عليها لمدخلة البحث الخاصة بك '$1'، من فضلك حاول مرة ثانية.",
-	'importfreeimages_invalidurl' => 'المسار "$1" ليس صورة فليكر صحيحة.',
 	'importfreeimages_owner' => 'المؤلف',
 	'importfreeimages_importthis' => 'استورد هذا',
 	'importfreeimages_next' => '$1 التالي',
-	'importfreeimages_filefromflickr' => '$1 بواسطة المستخدم <b>[$2]</b> من فليكر. المسار الأصلي',
-	'importfreeimages_promptuserforfilename' => 'من فضلك أدخل اسما لتخزين الملف به:',
-	'importfreeimages_returntoform' => "أو، اضغط <a href='$1'>هنا</a> للعودة إلى نتائج بحثك",
-	'importfreeimages_nophpflickr' => 'لم تثبّت phpFlickr، من فضلك اضبط $wgIFphpFlickr في LocalSettings.php.',
+	'importfreeimages_size_square' => 'مربع',
+	'importfreeimages_size_thumbnail' => 'مصغر',
+	'importfreeimages_size_small' => 'صغير',
+	'importfreeimages_size_medium' => 'متوسط',
+	'importfreeimages_size_large' => 'كبير',
+	'importfreeimages_size_original' => 'الأصل',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

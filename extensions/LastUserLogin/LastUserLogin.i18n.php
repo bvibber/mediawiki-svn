@@ -38,6 +38,15 @@ $messages['af'] = array(
 	'right-lastlogin' => "Wys laaste keer wat 'n gebruiker aangeteken het",
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'lastuserlogin_userid' => 'الاسم المستخدم',
+	'lastuserlogin_username' => 'الاسم الحقيقي',
+	'lastuserlogin_useremail' => 'بريد المستخدم الإلكتروني',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

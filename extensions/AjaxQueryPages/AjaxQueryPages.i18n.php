@@ -199,7 +199,7 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'ajaxquerypages-desc' => 'Engadir algún AJAX a QueryPages tales como [[Special:Shortpages|{{int:shortpages}}]]',
+	'ajaxquerypages-desc' => 'Engadir algún AJAX ás páxinas de consultas tales como [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

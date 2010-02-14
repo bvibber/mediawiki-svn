@@ -455,34 +455,35 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Dferg
+ * @author Manuelt15
  * @author Sanbec
  * @author Titoxd
  * @author Translationista
  */
 $messages['es'] = array(
-	'patrol' => 'Revisión de ediciones',
-	'patrol-desc' => 'Interface de patrullaje mejorado con comparticion de carga de trabajo',
+	'patrol' => 'Verificación de ediciones',
+	'patrol-desc' => 'Interfaz de verificación mejorada con compartición de carga de trabajo',
 	'patrol-endorse' => 'Aprobar',
 	'patrol-revert' => 'Revertir',
 	'patrol-revert-reason' => 'Motivo:',
 	'patrol-skip' => 'Omitir',
 	'patrol-reverting' => 'Revirtiendo: $1',
-	'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
-	'patrol-endorsed-ok' => 'La edición fue marcada como revisada.',
-	'patrol-endorsed-failed' => 'La edición no se pudo marcar como revisada.',
+	'patrol-nonefound' => 'No hay ediciones disponibles para verificar.',
+	'patrol-endorsed-ok' => 'La edición fue marcada como verificada.',
+	'patrol-endorsed-failed' => 'La edición no se pudo marcar como verificada.',
 	'patrol-reverted-ok' => 'La edición fue revertida.',
 	'patrol-reverted-failed' => 'La edición no pudo ser revertida.',
 	'patrol-skipped-ok' => 'Ignorando la edición.',
-	'patrol-reasons' => '*Vandalismo simple
+	'patrol-reasons' => '* Vandalismo simple
 * Prueba de usuario novato
 * Ver la página de discusión',
-	'patrol-another' => 'Mostrar otra edición (si disponible).',
-	'patrol-stopped' => 'Has optado no marcar otra edición como revisada. $1',
+	'patrol-another' => 'Mostrar otra edición (si está disponible).',
+	'patrol-stopped' => 'Has optado no marcar otra edición como verificada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
-	'group-patroller' => 'Patrulleros',
-	'group-patroller-member' => 'patrulleros',
-	'grouppage-patroller' => '{{ns:project}}:Patrullero',
-	'right-patroller' => 'Patrullar páginas',
+	'group-patroller' => 'Verificadores',
+	'group-patroller-member' => 'verificador',
+	'grouppage-patroller' => '{{ns:project}}:Verificador',
+	'right-patroller' => 'Verificar páginas',
 );
 
 /** Estonian (Eesti)

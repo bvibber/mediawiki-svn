@@ -387,7 +387,6 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'inspectcache' => 'Cache aaluege',
 	'inspectcache-desc' => 'E eifach Diagnoswärchzyyg fir Inhalt vum teilte Zwischespycher',
-	'inspectcache-ok' => 'Isch guet',
 	'inspectcache-general' => 'Allgmeine Cache',
 	'inspectcache-parser' => 'Parser-Cache',
 	'inspectcache-message' => 'Nochrichte-Cache',
@@ -395,6 +394,7 @@ $messages['gsw'] = array(
 	'inspectcache-delete' => 'Lesche',
 	'inspectcache-deleted' => 'Gleschte Cache',
 	'inspectcache-list' => 'Lischt',
+	'right-inspectcache' => 'D Yytreg im Zwischespycher bschaue un lesche',
 );
 
 /** Manx (Gaelg)

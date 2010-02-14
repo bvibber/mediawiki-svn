@@ -373,12 +373,12 @@ Part of a list of actions, use lowercase if applicable.
  */
 $messages['lzz'] = array(
 	'wikilog-view-archives' => 'Arkivepe',
-	'wikilog-comment-delete' => 'Am yorumi dokosi',
+	'wikilog-comment-delete' => 'Am yorumi jili',
 	'wikilog-form-category' => "K'at'egori:",
 	'wikilog-form-name' => 'Coxo:',
 	'wikilog-form-date' => 'Tarixi:',
 	'wikilog-reply-lc' => "Cevabi Doç'ari",
-	'wikilog-delete-lc' => 'dokosi',
+	'wikilog-delete-lc' => 'jili',
 	'wikilog-page-lc' => 'Sayfe',
 );
 
@@ -2244,6 +2244,9 @@ Il doit d'abord être créé afin de pouvoir publier des articles et utiliser le
 	'wikilog-edit-signpub' => 'Signer et publier cet article',
 	'wikilog-edit-signpub-tooltip' => "Fait que l'article est signé et publié dans son wikilog lors de la sauvegarde.
 Décochez cette case pour que l'article reste à l'état de brouillon.",
+	'wikilog-comment-permalink' => '$1 à $2',
+	'wikilog-comment-note-edited' => 'dernière modification le $1 à $2',
+	'wikilog-comment-anonsig' => '$3 (anonyme)',
 	'wikilog-comment-pending' => "Ce commentaire est en attente d'une approbation.",
 	'wikilog-comment-deleted' => 'Ce commentaire a été supprimé.',
 	'wikilog-comment-autosumm' => 'Nouveau commentaare de $1 : $2',
@@ -2374,6 +2377,9 @@ Tense que crear primeiro para publicar artigos e activar outras características
 	'wikilog-edit-signpub' => 'Asinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Fai que o artigo sexa asinado e publicado no seu wikilog ao gardalo.
 Desmarque esta caixa para considerar o artigo un borrador.',
+	'wikilog-comment-permalink' => '$1 ás $2',
+	'wikilog-comment-note-edited' => 'última edición o $1 ás $2',
+	'wikilog-comment-anonsig' => '$3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está á espera de aprobación.',
 	'wikilog-comment-deleted' => 'Este comentario foi borrado.',
 	'wikilog-comment-autosumm' => 'Novo comentario de $1: $2',
@@ -2523,6 +2529,9 @@ Go Artikel vereffentlige oder andri Wikilog-Funktione meglig mache, muess es zer
 	'wikilog-edit-signpub' => 'Die Artikel unterzeichne un publiziere',
 	'wikilog-edit-signpub-tooltip' => 'Sorgt derfir, ass dää Artikel bim Spychere unterzeichnet un publiziert wird im Wikilog.
 Schalt des Chäschtli uus, wänn Du dr Artikel as Entwurf witt bhalte.',
+	'wikilog-comment-permalink' => '$1 am $2',
+	'wikilog-comment-note-edited' => 's letscht Mol bearbeitet am $1 am $2',
+	'wikilog-comment-anonsig' => '$3 (anonym)',
 	'wikilog-comment-pending' => 'Dää Kommentar muess no zuegloo wäre.',
 	'wikilog-comment-deleted' => 'Dää Kommentar isch glescht wore.',
 	'wikilog-comment-autosumm' => 'Neje Kommentar vu $1: $2',
@@ -2985,6 +2994,9 @@ A fin de publicar articulos e activar altere functiones wikilog, illo debe primo
 	'wikilog-edit-signpub' => 'Signar e publicar iste articulo',
 	'wikilog-edit-signpub-tooltip' => 'Face que iste articulo es signate e publicate in iste wikilog al momento que illo es salveguardate.
 Dismarca iste quadrato pro retener le articulo como version provisori.',
+	'wikilog-comment-permalink' => 'le $1 a $2',
+	'wikilog-comment-note-edited' => 'ultime modification le $1 a $2',
+	'wikilog-comment-anonsig' => '$3 (anonyme)',
 	'wikilog-comment-pending' => 'Iste commento attende approbation.',
 	'wikilog-comment-deleted' => 'Iste commento ha essite delite.',
 	'wikilog-comment-autosumm' => 'Nove commento per $1: $2',
@@ -3829,6 +3841,9 @@ Om artikelen te publiceren en andere wikilogmogelijkheden in te schakelen, moet 
 	'wikilog-edit-signpub' => 'Dit artikel ondertekenen en publiceren',
 	'wikilog-edit-signpub-tooltip' => 'Zorgt ervoor dat dit artikel wordt ondertekend en gepubliceerd in de wikilog.
 Schakel dit vaktje uit om het artikel de status concept te laten houden.',
+	'wikilog-comment-permalink' => '$1 om $2',
+	'wikilog-comment-note-edited' => 'Laatst gewijzigd op $1 om $2',
+	'wikilog-comment-anonsig' => '$3 (anoniem)',
 	'wikilog-comment-pending' => 'Deze reactie wacht op moderatie.',
 	'wikilog-comment-deleted' => 'Deze reactie is verwijderd.',
 	'wikilog-comment-autosumm' => 'Nieuwe reactie van $1: $2',
@@ -4887,6 +4902,9 @@ $messages['ru'] = array(
 	'wikilog-edit-signpub' => 'Подписать и опубликовать эту статью',
 	'wikilog-edit-signpub-tooltip' => 'Вызывает подписывание и опубликование статьи в викилоге при сохранении.
 Снимите этот флажок, чтобы оставить статью в качестве черновика.',
+	'wikilog-comment-permalink' => '$1 в $2',
+	'wikilog-comment-note-edited' => 'последняя правка $1 в $2',
+	'wikilog-comment-anonsig' => '$3 (анонимно)',
 	'wikilog-comment-pending' => 'Этот комментарий ожидает утверждения.',
 	'wikilog-comment-deleted' => 'Этот комментарий был удалён.',
 	'wikilog-comment-autosumm' => 'Новый комментарий от $1: $2',
@@ -4953,6 +4971,7 @@ $messages['ru'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author Jiro Ono
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
@@ -5011,6 +5030,7 @@ $messages['si'] = array(
 	'wikilog-edit-signpub' => 'අත්සන් කර මෙම ලිපිය ප්‍රකාශනය කරන්න',
 	'wikilog-edit-signpub-tooltip' => 'සුරකින විට මෙම ලිපිය එහි විකි ලඝූ සටහනෙහි අත්සන් කරනු ලැබීමට හා ප්‍රකාශනය කරනු ලැබීමට හේතුවේ.
 ලිපිය කෙටුම්පතක් ලෙස තැබීමට මෙම කොටුව නිලකුණු කරන්න.',
+	'wikilog-comment-anonsig' => '$3 (නිර්නාමික)',
 	'wikilog-comment-pending' => 'මෙම විචාරය අනුමැතිය බලාපොරොත්තුවෙන් පසුවේ.',
 	'wikilog-comment-deleted' => 'මෙම විචාරය මකා දමන ලදී.',
 	'wikilog-comment-autosumm' => '$1: $2 විසින් නව විචාරයක්.',

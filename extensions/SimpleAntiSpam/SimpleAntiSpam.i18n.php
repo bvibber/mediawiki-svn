@@ -682,12 +682,13 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Skalman
  */
 $messages['sv'] = array(
 	'simpleantispam' => 'Din redigering utlöste anti-spam mekanismen',
 	'simpleantispam-label' => "Anti-spam koll.
 Fyll '''INTE''' i det här!",
-	'simpleantispam-desc' => 'Lägger till en enkel spam/robot koll till formulär',
+	'simpleantispam-desc' => 'Lägger till en enkel spam-/robot-koll till formulär',
 );
 
 /** Turkmen (Türkmençe)

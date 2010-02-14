@@ -162,6 +162,7 @@ $messages['ar'] = array(
 	'readerfeedback-tier-poor' => 'فقير',
 	'tooltip-ca-ratinghist' => 'تقييمات القراء لهذه الصفحة',
 	'specialpages-group-feedback' => 'رأي المشاهد',
+	'readerfeedback-tt-review' => 'أرسل مراجعة',
 );
 
 /** Aramaic (ܐܪܡܝܐ)

@@ -40,6 +40,35 @@ $messages['en'] = array(
 You can [[Special:RefHelper|add the reference manually]] or [[Special:RefSearch|search for the citation to add]].',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'refhelper' => 'Дапаможнік па зноскам',
+	'refsearch' => 'Пошук па зносках',
+	'refhelper-desc' => 'Дапамагае ствараць старонкі для зносак',
+	'refhelper-refsearch' => 'Пошук па зносках',
+	'refhelper-refcreate_legend' => 'Стварыць новую зноску',
+	'refhelper-refsearch_legend' => 'Пошук зносак у PubMed',
+	'refhelper-refcreate_another' => 'Стварыць іншую зноску',
+	'refhelper-refcreate_autocomment' => 'Аўтаматычнае стварэньне старонак.',
+	'refhelper-refcreate_success' => 'Старонка [[$1]] не існавала і была створаная.',
+	'refhelper-refcreate_failure' => 'Старонка [[$1]] ужо існуе!',
+	'refhelper-label_workspace' => 'Працоўная прастора (для капіяваньня і ўстаўкі):',
+	'refhelper-label_authorforename' => 'Імя аўтара $1:',
+	'refhelper-label_authorsurname' => 'Фамілія:',
+	'refhelper-title' => 'Назва:',
+	'refhelper-journal' => 'Журнал:',
+	'refhelper-volume' => 'Том:',
+	'refhelper-pages' => 'Старонкі:',
+	'refhelper-year' => 'Год:',
+	'refhelper-refname' => 'Назва зноскі:',
+	'refhelper-category' => 'Катэгорыя $1:',
+	'refhelper-create' => 'Стварыць',
+	'refhelper-search' => 'Шукаць',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -171,6 +200,42 @@ $messages['gl'] = array(
 Pode [[Special:RefHelper|engadir a referencia manualmente]] ou [[Special:RefSearch|procurar unha cita para engadila]].',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'refhelper' => 'Quällehilf',
+	'refsearch' => 'Quälle sueche',
+	'refhelper-desc' => 'Hilft bim Aalege vu Syte fir Quälle',
+	'refhelper-refsearch' => 'Quälle sueche',
+	'refhelper-refcreate_legend' => 'Neji Quälle aalege',
+	'refhelper-refsearch_legend' => 'In PubMed no Quälle sueche',
+	'refhelper-refcreate_another' => 'No ne Quälle aalege',
+	'refhelper-refcreate_autocomment' => 'Syte automatisch aagleit.',
+	'refhelper-refcreate_success' => 'D Syte [[$1]] het s nonig gee un isch jetz aagleit wore.',
+	'refhelper-refcreate_failure' => 'D Syte [[$1]] git s scho!',
+	'refhelper-label_workspace' => 'Arbetsplatz (zum kopiere un yyfiege):',
+	'refhelper-label_authorforename' => 'Vorname vum Autor $1:',
+	'refhelper-label_authorsurname' => 'Nochname:',
+	'refhelper-title' => 'Titel:',
+	'refhelper-journal' => 'Zytschrift:',
+	'refhelper-volume' => 'Band:',
+	'refhelper-pages' => 'Syte:',
+	'refhelper-year' => 'Johr:',
+	'refhelper-refname' => 'Quällename:',
+	'refhelper-category' => 'Kategorii $1:',
+	'refhelper-create' => 'Aalege',
+	'refhelper-search' => 'Sueche',
+	'refhelper-toolbox_link_create' => 'Quälle aalege',
+	'refhelper-toolbox_link_search' => 'Quälle aalege us dr Suechergebnis',
+	'refhelper-newarticle_nocitation' => 'S git kei Zitat mit däm Name.',
+	'refhelper-newarticle_suggestions' => 'Wänn s e Träffer het bi dr Zitat, chasch die Syte aalege, indäm Du uf dr zuegherig Chnopf „Aalege“ drucksch.
+
+<h2>Vorschleg</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Leider chaan i kei Quälle vorschlaa.
+Du chasch [[Special:RefHelper|die Quälle vu Hand zuefiege]] oder [[Special:RefSearch|noch eme Zitat suech, wu Du chasch zuefiege]].',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -216,7 +281,10 @@ $messages['lb'] = array(
 	'refhelper-desc' => 'Hellëft Säite fir Referenzen unzeleeën',
 	'refhelper-refsearch' => 'Referenz sichen',
 	'refhelper-refcreate_legend' => 'Nei Referenz uleeën',
+	'refhelper-refsearch_legend' => 'A PubMed no Referenze sichen',
 	'refhelper-refcreate_another' => 'Eng aner Referenz uleeën',
+	'refhelper-refcreate_autocomment' => 'Säit gouf automatesch ugeluecht.',
+	'refhelper-refcreate_success' => "D'Säit [[$1]] gouf et net a si gouf ugeluecht.",
 	'refhelper-refcreate_failure' => "D'Säit [[$1]] gëtt et schonn!",
 	'refhelper-label_authorforename' => 'Dem Auteur $1 säi Virnumm:',
 	'refhelper-label_authorsurname' => 'Familjennumm:',
@@ -229,6 +297,7 @@ $messages['lb'] = array(
 	'refhelper-create' => 'Uleeën',
 	'refhelper-search' => 'Sichen',
 	'refhelper-toolbox_link_create' => 'Referenz uleeën',
+	'refhelper-toolbox_link_search' => 'Referenz op der Basis vun der Sich uleeën',
 	'refhelper-newarticle_nocitation' => 'Et gëtt elo keng Citatioun mat deem Numm.',
 );
 

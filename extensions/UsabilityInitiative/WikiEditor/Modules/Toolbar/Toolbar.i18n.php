@@ -12852,6 +12852,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-toolbar' => 'Mwambaa zana wa kuhariri',
+	'wikieditor-toolbar-desc' => 'Mwambaa zana wa kuhariri uliozidishwa',
 	'wikieditor-toolbar-preference' => 'Tumia mwambaa zana wa kuhariri uliozidishwa',
 	'wikieditor-toolbar-dialogs-preference' => 'Kuwezesha visanduku vya zana za kuingiza viungo, jedwali na mengineyo',
 	'wikieditor-toolbar-loading' => 'Inapakizwa...',

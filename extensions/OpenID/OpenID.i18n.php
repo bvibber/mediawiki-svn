@@ -948,6 +948,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Church of emacs
+ * @author DaSch
  * @author Leithian
  * @author Tbleher
  * @author Umherirrender
@@ -992,6 +993,7 @@ du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchooseauto' => 'Ein automatisch erzeugter Name ($1)',
 	'openidchoosemanual' => 'Ein Name deiner Wahl:',
 	'openidchooseexisting' => 'Ein existierendes Benutzerkonto in diesem Wiki',
+	'openidchooseusername' => 'Benutzername:',
 	'openidchoosepassword' => 'Passwort:',
 	'openidconvertinstructions' => 'Mit diesem Formular kannst du dein Benutzerkonto zur Benutzung einer OpenID-URL freigeben oder eine weitere OpenID-URL hinzufügen',
 	'openidconvertoraddmoreids' => 'Zu OpenID konvertieren oder eine andere OpenID-URL hinzufügen',
@@ -1020,6 +1022,8 @@ Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast 
 	'openiddelete-text' => 'Wenn du auf den Button „{{int:openiddelete-button}}“ klickst, löschst du die OpenID $1 von deinem Benutzerkonto.
 Du wirst dich nicht mehr mit dieser OpenID anmelden können.',
 	'openiddelete-button' => 'Bestätigen',
+	'openiddeleteerrornopassword' => 'Du kannst nicht alle deine OpenIDs löschen, da du kein Passwort gesetzt hast.
+Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von deinem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von deinem Benutzerkonto ist ein Fehler aufgetreten.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-Einstellungen',

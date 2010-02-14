@@ -961,6 +961,16 @@ $messages['sv'] = array(
 	'tooltip-pt-optin-feedback' => 'Ge feedback om hur du upplever de nya funktionerna',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'optin-try' => 'Jaribu Beta',
+	'tooltip-pt-optin-try' => 'Jaribu kutumia mtindo na zana mpya',
+	'optin-leave' => 'Utoke Beta',
+	'tooltip-pt-optin-leave' => 'Uache kutumia mtindo na zana mpya',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Ravichandra

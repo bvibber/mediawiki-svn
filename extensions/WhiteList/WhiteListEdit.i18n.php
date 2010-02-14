@@ -153,7 +153,7 @@ $messages['niu'] = array(
  */
 $messages['lzz'] = array(
 	'mywhitelistpages' => 'Çkimi sayfape',
-	'whitelisttableremove' => 'Dokosi',
+	'whitelisttableremove' => 'Jili',
 );
 
 /** Afrikaans (Afrikaans)
