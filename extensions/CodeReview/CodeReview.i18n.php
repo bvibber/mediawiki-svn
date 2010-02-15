@@ -25,6 +25,7 @@ $messages['en'] = array(
 	'code-load-diff' => 'Loading diff…',
 	'code-notes' => 'recent comments',
 	'code-statuschanges' => 'status changes',
+	'code-mycommits' => 'my commits',
 	'code-authors' => 'authors',
 	'code-status' => 'states',
 	'code-tags' => 'tags',

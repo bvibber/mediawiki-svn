@@ -20,9 +20,15 @@ abstract class CodeCommentLinker {
 		return $text;
 	}
 	
-	// truncate() for valid HTML with self-contained tags only
-	// Note: tries to fix broken HTML with MWTidy
-	// @TODO: cleanup and move to language.php
+	/*
+	 * Truncate a valid HTML string with self-contained tags only
+	 * Note: tries to fix broken HTML with MWTidy
+	 * @TODO: cleanup and move to language.php
+	 * @param string $text
+	 * @param int $maxLen, (greater than zero)
+	 * @param string $ellipsis
+	 * @returns string
+	 */
 	function truncateHtml( $text, $maxLen, $ellipsis = '...' ) {
 		global $wgLang;
 		if( strlen($text) <= $maxLen ) {

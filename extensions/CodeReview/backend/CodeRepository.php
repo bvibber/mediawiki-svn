@@ -3,6 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class CodeRepository {
 	static $userLinks = array();
+	static $authorLinks = array();
 
 	public static function newFromName( $name ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -371,17 +372,38 @@ class CodeRepository {
 			'ca_user_text',
 			array(
 				'ca_repo_id' => $this->getId(),
-				'ca_author' => $author,
+				'ca_author'  => $author,
 			),
 			__METHOD__
 		);
 		$user = null;
-		if ( $wikiUser )
+		if ( $wikiUser !== false )
 			$user = User::newFromName( $wikiUser );
 		if ( $user instanceof User )
 			$res = $user;
 		else
 			$res = false;
 		return self::$userLinks[$author] = $res;
+	}
+	
+	/*
+	 * returns an author name if $name wikiuser has an author associated,
+	 * or false
+	 */
+	public function wikiUserAuthor( $name ) {
+		if ( isset( self::$authorLinks[$name] ) )
+			return self::$authorLinks[$name];
+	
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->selectField(
+			'code_authors',
+			'ca_author',
+			array(
+				'ca_repo_id'   => $this->getId(),
+				'ca_user_text' => $name,
+			),
+			__METHOD__
+		);
+		return self::$authorLinks[$name] = $res;
 	}
 }

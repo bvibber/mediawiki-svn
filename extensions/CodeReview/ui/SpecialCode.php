@@ -97,7 +97,9 @@ class SpecialCode extends SpecialPage {
 		// Add subtitle for easy navigation
 		global $wgOut;
 		if ( $view instanceof CodeView && ( $repo = $view->getRepo() ) ) {
-			$wgOut->setSubtitle( wfMsgExt( 'codereview-subtitle', 'parse', CodeRepoListView::getNavItem( $repo->getName() ) ) );
+			$wgOut->setSubtitle(
+				wfMsgExt( 'codereview-subtitle', 'parse', CodeRepoListView::getNavItem( $repo ) )
+			);
 		}
 	}
 }
