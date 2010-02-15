@@ -131,7 +131,7 @@ $j(document).ready( function() {
 	// Attach our own handler for onbeforeunload which respects the current one
 	fallbackWindowOnBeforeUnload = window.onbeforeunload;
 	window.onbeforeunload = function() {
-		var fallbackResult = null;
+		var fallbackResult = undefined;
 		// Check if someone already set on onbeforunload hook
 		if ( fallbackWindowOnBeforeUnload ) {
 			// Get the result of their onbeforeunload hook
