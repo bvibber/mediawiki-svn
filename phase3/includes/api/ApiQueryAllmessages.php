@@ -81,17 +81,20 @@ class ApiQueryAllmessages extends ApiQueryBase {
 				$skip = false;
 			if(!$skip) {
 				$a = array( 'name' => $message );
+				$args = null;
 				if( isset( $params['args'] ) && count( $params['args'] ) != 0 ){
-					// Check if the parser is enabled:
-					if( $params[ 'enableparser' ] ){
-						$msg = wfMsgExt( $message, array( 'parsemag' ), $params['args'] );
-					} else {
-						$msgString = wfMsgGetKey( $message, true, false, false );
-						$msg = wfMsgReplaceArgs( $msgString, $params['args'] );
-					}
+					$args = $params['args'];
+				}
+				// Check if the parser is enabled:
+				if( $params[ 'enableparser' ] ){
+					$msg = wfMsgExt( $message, array( 'parsemag' ), $args );
+				} else if ( $args ) {
+					$msgString = wfMsgGetKey( $message, true, false, false );
+					$msg = wfMsgReplaceArgs( $msgString, $params['args'] );
 				}else{
 					$msg = wfMsgGetKey( $message, true, false, false );
 				}
+
 				if ( wfEmptyMsg( $message, $msg ) )
 					$a['missing'] = '';
 				else {
