@@ -206,10 +206,10 @@ class CodeRevisionView extends CodeView {
 		$path = preg_replace( '/ \([^\)]+\)$/', '', $path );
 		$viewvc = $this->mRepo->getViewVcBase();
 		$diff = '';
+		$safePath = wfUrlEncode( $path );
 		if ( $viewvc ) {
 			$rev = $this->mRev->getId();
 			$prev = $rev - 1;
-			$safePath = wfUrlEncode( $path );
 			if ( $action !== 'D' ) {
 				$link = $this->mSkin->makeExternalLink(
 					"$viewvc$safePath?view=markup&pathrev=$rev",
@@ -227,7 +227,7 @@ class CodeRevisionView extends CodeView {
 		} else {
 			$link = $safePath;
 		}
-		return "<li>$link ($desc)$diff</li>\n";
+		return "<li><b>$link</b> ($desc)$diff</li>\n";
 	}
 
 	protected function tagForm() {
