@@ -19,6 +19,8 @@ abstract class SubversionAdaptor {
 		$this->mRepo = $repo;
 	}
 
+	abstract function canConnect();
+
 	abstract function getFile( $path, $rev = null );
 
 	abstract function getDiff( $path, $rev1, $rev2 );
@@ -54,6 +56,12 @@ abstract class SubversionAdaptor {
  * Using the SVN PECL extension...
  */
 class SubversionPecl extends SubversionAdaptor {
+
+	function canConnect() {
+		// TODO!
+		return true;
+	}
+
 	function getFile( $path, $rev = null ) {
 		return svn_cat( $this->mRepo . $path, $rev );
 	}
@@ -94,6 +102,22 @@ class SubversionPecl extends SubversionAdaptor {
  * Using the thingy-bobber
  */
 class SubversionShell extends SubversionAdaptor {
+
+	function canConnect() {
+		$command = sprintf(
+			"svn info %s %s",
+			$this->getExtraArgs(),
+			wfEscapeShellArg( $this->mRepo ) );
+
+		$Result = wfShellExec( $command );
+		if ( $Result == "" )
+			return false;
+		elseif ( strpos( $Result, "No repository found" ) !== false )
+			return false;
+		else
+			return true;
+	}
+
 	function getFile( $path, $rev = null ) {
 		if ( $rev )
 			$path .= "@$rev";
@@ -280,6 +304,11 @@ class SubversionProxy extends SubversionAdaptor {
 		parent::__construct( $repo );
 		$this->mProxy = $proxy;
 		$this->mTimeout = $timeout;
+	}
+
+	function canConnect() {
+		// TODO!
+		return true;
 	}
 
 	function getFile( $path, $rev = null ) {

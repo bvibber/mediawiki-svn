@@ -31,6 +31,10 @@ if ( $start > ( $lastStoredRev + 1 ) ) {
 }
 
 echo "Syncing repo {$args[0]} from r$start to HEAD...\n";
+
+if ( !$svn->canConnect() )
+	die( "Unable to connect to repository.\n" );
+
 while ( true ) {
 	$log = $svn->getLog( '', $start, $start + $chunkSize - 1 );
 	if ( empty( $log ) ) {
