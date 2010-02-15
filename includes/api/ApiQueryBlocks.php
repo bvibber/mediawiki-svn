@@ -63,27 +63,29 @@ class ApiQueryBlocks extends ApiQueryBase {
 		$titles = $pageSet->getTitles();
 		$data = array();
 
-		$this->addTables('ipblocks');
-		if($fld_id)
-			$this->addFields('ipb_id');
-		if($fld_user)
-			$this->addFields(array('ipb_address', 'ipb_user', 'ipb_auto'));
-		if($fld_by)
+		$this->addTables( 'ipblocks' );
+		$this->addFields( 'ipb_auto' );
+
+		if ( $fld_id )
+			$this->addFields( 'ipb_id' );
+		if ( $fld_user )
+			$this->addFields( array( 'ipb_address', 'ipb_user' ) );
+		if ( $fld_by )
 		{
 			$this->addTables('user');
 			$this->addFields(array('ipb_by', 'user_name'));
 			$this->addWhere('user_id = ipb_by');
 		}
-		if($fld_timestamp)
-			$this->addFields('ipb_timestamp');
-		if($fld_expiry)
-			$this->addFields('ipb_expiry');
-		if($fld_reason)
-			$this->addFields('ipb_reason');
-		if($fld_range)
-			$this->addFields(array('ipb_range_start', 'ipb_range_end'));
-		if($fld_flags)
-			$this->addFields(array('ipb_auto', 'ipb_anon_only', 'ipb_create_account', 'ipb_enable_autoblock', 'ipb_block_email', 'ipb_deleted', 'ipb_allow_usertalk'));
+		if ( $fld_timestamp )
+			$this->addFields( 'ipb_timestamp' );
+		if ( $fld_expiry )
+			$this->addFields( 'ipb_expiry' );
+		if ( $fld_reason )
+			$this->addFields( 'ipb_reason' );
+		if ( $fld_range )
+			$this->addFields( array( 'ipb_range_start', 'ipb_range_end' ) );
+		if ( $fld_flags )
+			$this->addFields( array( 'ipb_anon_only', 'ipb_create_account', 'ipb_enable_autoblock', 'ipb_block_email', 'ipb_deleted', 'ipb_allow_usertalk' ) );
 
 		$this->addOption('LIMIT', $params['limit'] + 1);
 		$this->addWhereRange('ipb_timestamp', $params['dir'], $params['start'], $params['end']);
