@@ -80,10 +80,15 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			if($skip && $message === $params['from'])
 				$skip = false;
 			if(!$skip) {
-
 				$a = array( 'name' => $message );
-				if( isset( $params['arg'] ) && count( $params['arg'] ) != 0 ){
-					$msg = wfMsgExt( $message, array( 'parsemag' ), $params['arg'] );
+				if( isset( $params['args'] ) && count( $params['args'] ) != 0 ){
+					// Check if the parser is enabled:
+					if( $params[ 'enableparser' ] ){
+						$msg = wfMsgExt( $message, array( 'parsemag' ), $params['args'] );
+					} else {
+						$msgString = wfMsgGetKey( $message, true, false, false );
+						$msg = wfMsgReplaceArgs( $msgString, $params['args'] );
+					}
 				}else{
 					$msg = wfMsgGetKey( $message, true, false, false );
 				}
@@ -123,7 +128,8 @@ class ApiQueryAllmessages extends ApiQueryBase {
 					'default'
 				)
 			),
-			'arg' => array(
+			'enableparser' => false,
+			'args' => array(
 				ApiBase :: PARAM_ISMULTI => true
 			),
 			'filter' => array(),
@@ -136,7 +142,10 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		return array (
 			'messages' => 'Which messages to output. "*" means all messages',
 			'prop' => 'Which properties to get',
-			'arg' => 'Arguments to be substituted into msg',
+			'enableparser' => 'Set to enable parser, will parses the wikitext of message \n' .
+							  'Will substitute magic words, handle templates etc.',
+			'args' => 'Arguments to be substituted into message. \n' .
+					  'Will replace $1, $2 with values. ( values are \'|\' separated )',
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
