@@ -22,10 +22,9 @@ class SpecialStoryReview extends IncludableSpecialPage {
 
 	public function execute( $language ) {
 		global $wgUser;
-		if ($wgUser->isAllowed('storyreview') && !$wgUser->isBlocked()) {
+		if ( $wgUser->isAllowed( 'storyreview' ) && !$wgUser->isBlocked() ) {
 			$this->addOutput();
-		}
-		else {
+		} else {
 			global $wgOut;
 			$wgOut->permissionRequired( 'storyreview' );
 		}
@@ -33,6 +32,6 @@ class SpecialStoryReview extends IncludableSpecialPage {
 	
 	private function addOutput() {
 		global $wgOut;
-		$wgOut->includeJQuery();		
+		$wgOut->includeJQuery();
 	}
 }
