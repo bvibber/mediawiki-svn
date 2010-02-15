@@ -21,6 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.1',
 	'description' => 'Special page used to wipe the OBJECTCACHE table',
 	'descriptionmsg' => 'purgecache-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:PurgeCache',
 );
 
 $dir = dirname( __FILE__ ) . '/';
