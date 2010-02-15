@@ -374,3 +374,86 @@ class WikilogUtils
 		return array( 'date' => $date, 'user' => $user );
 	}
 }
+
+/**
+ * Generates a more user-friendly navigation bar for use in article and
+ * comment pagers (shared between WikilogPager and WikilogCommentPager).
+ */
+class WikilogNavbar
+{
+	static $pagingLabels = array(
+		'prev'  => "‹ $1",
+		'next'  => "$1 ›",
+		'first' => "« $1",
+		'last'  => "$1 »"
+	);
+	static $linkTextMsgs = array(
+		'pages' => array(
+			'prev' => 'prevn',
+			'next' => 'nextn',
+			'first' => 'page_first',
+			'last' => 'page_last'
+		),
+		'chrono-fwd' => array(
+			'prev' => 'pager-older-n',
+			'next' => 'pager-newer-n',
+			'first' => 'histfirst',
+			'last' => 'histlast'
+		),
+		'chrono-rev' => array(
+			'prev' => 'pager-newer-n',
+			'next' => 'pager-older-n',
+			'first' => 'histlast',
+			'last' => 'histfirst'
+		),
+	);
+
+	protected $mPager, $mType;
+
+	/**
+	 * Constructor.
+	 * @param $pager IndexPager  Pager object.
+	 * @param $type string  Type of navigation bar to generate:
+	 *   * 'pages': For normal pages, with 'first', 'last', 'previous', 'next';
+	 *   * 'chrono-fwd': For chronological events, in forward order (later
+	 *        pages contain newer events);
+	 *   * 'chrono-rev': For chronological events, in reverse order (later
+	 *        pages contain older events).
+	 */
+	function __construct( IndexPager $pager, $type = 'pages' ) {
+		$this->mPager = $pager;
+		$this->mType = $type;
+	}
+
+	/**
+	 * Format and return the navigation bar.
+	 * @param $limit integer  Number of itens being displayed.
+	 * @return string  HTML-formatted navigation bar.
+	 */
+	public function getNavigationBar( $limit ) {
+		global $wgLang;
+
+		$limit = $wgLang->formatNum( $limit );
+		$opts = array( 'parsemag', 'escapenoentities' );
+		$linkTexts = $disabledTexts = array();
+		foreach ( self::$linkTextMsgs[$this->mType] as $type => $msg ) {
+			$label = wfMsgExt( $msg, $opts, $limit );
+			$linkTexts[$type] = wfMsgReplaceArgs( self::$pagingLabels[$type], array( $label ) );
+			$disabledTexts[$type] = Xml::wrapClass( $linkTexts[$type], 'disabled' );
+		}
+
+		$pagingLinks = $this->mPager->getPagingLinks( $linkTexts, $disabledTexts );
+// 		$limitLinks = $this->mPager->getLimitLinks(); // XXX: Not used yet.
+		$ellipsis = wfMsg( 'ellipsis' );
+		$html = "{$pagingLinks['first']} {$pagingLinks['prev']} {$ellipsis} {$pagingLinks['next']} {$pagingLinks['last']}";
+		$html = WikilogUtils::wrapDiv( 'wl-pagination', $html );
+		return Xml::tags( 'div',
+			array(
+				'class' => 'wl-navbar',
+				'dir' => $wgLang->getDir()
+			),
+			$html
+		);
+	}
+
+}

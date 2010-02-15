@@ -38,6 +38,42 @@ tr.wl-draft {
 	padding: 0.25em 0.75em;
 }
 
+.wl-pagination {
+	text-align: center;
+}
+
+.wl-pagination a,
+.wl-pagination span.current,
+.wl-pagination span.disabled {
+	margin: 0 1pt;
+	padding: 1pt 3pt;
+	font-weight: bold;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.wl-pagination a {
+/* 	border: 1px solid #CCCCCC; */
+	color: #0066CC;
+}
+
+.wl-pagination a:hover, .wl-pagination a:active {
+/* 	border: 1px solid #000; */
+	background-color: #0066CC;
+	color: #EEEEEE;
+}
+
+.wl-pagination span.disabled {
+	color: #CCCCCC;
+}
+
+.wl-pagination span.current {
+	font-weight: bolder;
+	background-color: #CCCCCC;
+	color: black;
+}
+
 .TablePager_col_wlp_num_comments {
 	text-align: center;
 }
