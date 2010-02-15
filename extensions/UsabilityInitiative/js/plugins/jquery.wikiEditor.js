@@ -375,6 +375,11 @@ if ( typeof context == 'undefined' ) {
 		},
 		'delayedChange': function( event ) {
 			event.data.scope = 'division';
+			var newHTML = context.$content.html();
+			if ( context.oldDelayedHTML != newHTML ) {
+				context.oldDelayedHTML = newHTML;
+				event.data.scope = 'realchange';
+			}
 			context.fn.updateHistory();
 			return true;
 		},
@@ -1525,7 +1530,6 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
 				.replace( /&amp;esc;esc;/g, '&amp;esc;' );
 			context.$content.html( html );
-			context.oldHTML = html;
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
@@ -1537,6 +1541,8 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe.show();
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
+			// Only save HTML now: ready handlers may have modified it
+			context.oldHTML = context.oldDelayedHTML = context.$content.html();
 			//remove our temporary loading
 			/* Disaling our loading div for now
 			$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {

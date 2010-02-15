@@ -6808,6 +6808,11 @@ if ( typeof context == 'undefined' ) {
 		},
 		'delayedChange': function( event ) {
 			event.data.scope = 'division';
+			var newHTML = context.$content.html();
+			if ( context.oldDelayedHTML != newHTML ) {
+				context.oldDelayedHTML = newHTML;
+				event.data.scope = 'realchange';
+			}
 			context.fn.updateHistory();
 			return true;
 		},
@@ -7958,7 +7963,6 @@ if ( typeof context == 'undefined' ) {
 				.replace( /&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
 				.replace( /&amp;esc;esc;/g, '&amp;esc;' );
 			context.$content.html( html );
-			context.oldHTML = html;
 			
 			// Reflect direction of parent frame into child
 			if ( $( 'body' ).is( '.rtl' ) ) {
@@ -7970,6 +7974,8 @@ if ( typeof context == 'undefined' ) {
 			context.$iframe.show();
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
+			// Only save HTML now: ready handlers may have modified it
+			context.oldHTML = context.oldDelayedHTML = context.$content.html();
 			//remove our temporary loading
 			/* Disaling our loading div for now
 			$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {
@@ -8413,10 +8419,22 @@ fn: {
 			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node					
+				// the rest in a new node which is our start node
 				startNode = startNode.splitText( s.offset );
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+			}
+			// Because we can't put block elements in <p>s, we'll have to split the <p> as well
+			// if afterWrap() needs us to
+			if ( markers[i].splitPs && startNode.parentNode.nodeName == 'P' ) {
+				// Create a new <p> left of startNode, and append startNode's left siblings to it
+				var startP = startNode.ownerDocument.createElement( 'p' );
+				while ( startNode.parentNode.firstChild != startNode ) {
+					startP.appendChild( startNode.parentNode.firstChild );
+				}
+				if ( startP.firstChild ) {
+					startNode.parentNode.insertBefore( startP, startNode );
+				}
 			}
 			
 			var end = markers[i].end;
@@ -8428,12 +8446,24 @@ fn: {
 			var endNode = e.node;
 			var endDepth = e.depth;
 			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
-				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
-				// node.
-				// endNode.nodeValue.length - ( newPos - markers[i].end )
-				endNode.splitText( e.offset + 1 );
+				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
+				endNode.splitText( e.offset );
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+			}
+			// Split <p>s if needed, see above
+			if ( markers[i].splitPs && endNode.parentNode.nodeName == 'P' && endNode.parentNode.parentNode ) {
+				// Move textnodes preceding endNode out of the wrapping <p>
+				var endP = endNode.parentNode;
+				while ( endP.firstChild != endNode ) {
+					endP.parentNode.insertBefore( endP.firstChild, endP );
+				}
+				// Move endNode itself out as well
+				endP.parentNode.insertBefore( endNode, endP );
+				if ( !endP.firstChild ) {
+					// endP is empty, remove it
+					endP.parentNode.removeChild( endP );
+				}
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
@@ -8480,12 +8510,7 @@ fn: {
 					// properties
 					var newNode = ca1.ownerDocument.createElement( 'span' );
 					var commonAncestor = ca1.parentNode;
-					// Special case: can't put block elements in a <p>
-					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
-						commonAncestor = commonAncestor.parentNode;
-						ca1 = ca1.parentNode;
-						ca2 = ca2.parentNode;
-					}
+					
 					var nextNode = ca2.nextSibling;
 					if ( markers[i].anchor == 'wrap' ) {
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
@@ -8865,24 +8890,29 @@ evt: {
 					}
 				}//while finding template ending
 				if ( endIndex != -1 ) {
+					// Create a model for the template
+					var model = new $.wikiEditor.modules.templateEditor.fn.model(
+					        context.fn.getContents().substring( tokenArray[beginIndex].offset,
+							tokenArray[endIndex].offset
+						)
+					);
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
 						type: 'template',
 						anchor: 'wrap',
+						splitPs: model.isCollapsible(),
 						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
 						beforeUnwrap: function( node ) {
 							$( node ).data( 'display' ).remove();
 						},
-						onSkip: function() { },
-      						getAnchor: function( ca1, ca2 ) {
+						onSkip: function() { }, // TODO update template info
+						getAnchor: function( ca1, ca2 ) {
 							// FIXME: Relies on the current <span> structure that is likely to die
-							return $( ca1.parentNode ).is( 'div.wikiEditor-template-text' ) &&
-									$( ca1.parentNode.previousSibling )
-										.is( 'ul.wikiEditor-template-modes' ) &&
-									ca1.parentNode.nextSibling == null ?
+							return $( ca1.parentNode ).is( 'span.wikiEditor-template-text' ) ?
 								ca1.parentNode : null;
-						}
+						},
+						model: model
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
@@ -8919,15 +8949,15 @@ fn: {
 	},
 	stylize: function( wrappedTemplate ) {
 		$( wrappedTemplate ).each( function() {
-			if ( typeof $(this).data( 'model' ) != 'undefined' ) {
+			if ( typeof $(this).data( 'setupDone' ) != 'undefined' ) {
 				// We have a model, so all this init stuff has already happened
 				return;
 			}
-			// Build a model for this
-			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
+			var model = $(this).data( 'marker' ).model;
 			
 			//check if model is collapsible
 			if ( !model.isCollapsible() ) {
+				$(this).addClass( 'wikiEditor-template-text' );
 				return;
 			}
 			
@@ -8953,6 +8983,8 @@ fn: {
 					$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
 				.mousedown( toggleWikiTextEditor ) )
 			.insertAfter( $template.find( '.wikiEditor-template-name' ) );
+			
+			$(this).data( 'setupDone', true );
 			
 			function toggleWikiTextEditor(){
 				var $template = $( this ).closest( '.wikiEditor-template' );
@@ -9582,6 +9614,7 @@ evt: {
 				end: tokenArray[i].offset,
 				type: 'toc',
 				anchor: 'before',
+				splitPs: false,
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
 					$( node ).addClass( 'wikiEditor-toc-header' )

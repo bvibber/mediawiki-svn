@@ -53,24 +53,29 @@ evt: {
 					}
 				}//while finding template ending
 				if ( endIndex != -1 ) {
+					// Create a model for the template
+					var model = new $.wikiEditor.modules.templateEditor.fn.model(
+					        context.fn.getContents().substring( tokenArray[beginIndex].offset,
+							tokenArray[endIndex].offset
+						)
+					);
 					markers.push( {
 						start: tokenArray[beginIndex].offset,
 						end: tokenArray[endIndex].offset,
 						type: 'template',
 						anchor: 'wrap',
+						splitPs: model.isCollapsible(),
 						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
 						beforeUnwrap: function( node ) {
 							$( node ).data( 'display' ).remove();
 						},
-						onSkip: function() { },
-      						getAnchor: function( ca1, ca2 ) {
+						onSkip: function() { }, // TODO update template info
+						getAnchor: function( ca1, ca2 ) {
 							// FIXME: Relies on the current <span> structure that is likely to die
-							return $( ca1.parentNode ).is( 'div.wikiEditor-template-text' ) &&
-									$( ca1.parentNode.previousSibling )
-										.is( 'ul.wikiEditor-template-modes' ) &&
-									ca1.parentNode.nextSibling == null ?
+							return $( ca1.parentNode ).is( 'span.wikiEditor-template-text' ) ?
 								ca1.parentNode : null;
-						}
+						},
+						model: model
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
@@ -107,15 +112,15 @@ fn: {
 	},
 	stylize: function( wrappedTemplate ) {
 		$( wrappedTemplate ).each( function() {
-			if ( typeof $(this).data( 'model' ) != 'undefined' ) {
+			if ( typeof $(this).data( 'setupDone' ) != 'undefined' ) {
 				// We have a model, so all this init stuff has already happened
 				return;
 			}
-			// Build a model for this
-			var model = new $.wikiEditor.modules.templateEditor.fn.model( $( this ).text() );
+			var model = $(this).data( 'marker' ).model;
 			
 			//check if model is collapsible
 			if ( !model.isCollapsible() ) {
+				$(this).addClass( 'wikiEditor-template-text' );
 				return;
 			}
 			
@@ -141,6 +146,8 @@ fn: {
 					$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
 				.mousedown( toggleWikiTextEditor ) )
 			.insertAfter( $template.find( '.wikiEditor-template-name' ) );
+			
+			$(this).data( 'setupDone', true );
 			
 			function toggleWikiTextEditor(){
 				var $template = $( this ).closest( '.wikiEditor-template' );
