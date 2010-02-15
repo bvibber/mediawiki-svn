@@ -97,6 +97,8 @@ function efStoryboardSchemaUpdate() {
 		'storyboard',
 		$egStoryboardDir . 'Storyboard.sql'
 	);
+	
+	return true;
 }
 
 function efStoryboardStoryboardSetup() {
