@@ -388,23 +388,33 @@ class WikilogNavbar
 		'last'  => "$1 »"
 	);
 	static $linkTextMsgs = array(
+		# pages style:  « first  ‹ previous 20  ...  next 20 ›  last »
 		'pages' => array(
 			'prev' => 'prevn',
 			'next' => 'nextn',
-			'first' => 'page_first',
-			'last' => 'page_last'
+			'first' => 'wikilog-pager-first',
+			'last' => 'wikilog-pager-last'
 		),
+		# pages-sim style:  « first  ‹ previous  ...  next ›  last »
+		'pages-sim' => array(
+			'prev' => 'wikilog-pager-prev',
+			'next' => 'wikilog-pager-next',
+			'first' => 'wikilog-pager-first',
+			'last' => 'wikilog-pager-last'
+		),
+		# chrono-fwd style:  « oldest  ‹ older 20  ...  newer 20 ›  newest »
 		'chrono-fwd' => array(
 			'prev' => 'pager-older-n',
 			'next' => 'pager-newer-n',
-			'first' => 'histfirst',
-			'last' => 'histlast'
+			'first' => 'wikilog-pager-oldest',
+			'last' => 'wikilog-pager-newest'
 		),
+		# chrono-rev style:  « newest  ‹ newer 20  ...  older 20 ›  oldest »
 		'chrono-rev' => array(
 			'prev' => 'pager-newer-n',
 			'next' => 'pager-older-n',
-			'first' => 'histlast',
-			'last' => 'histfirst'
+			'first' => 'wikilog-pager-newest',
+			'last' => 'wikilog-pager-oldest'
 		),
 	);
 
