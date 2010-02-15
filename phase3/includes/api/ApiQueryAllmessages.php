@@ -90,7 +90,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 					$msg = wfMsgExt( $message, array( 'parsemag' ), $args );
 				} else if ( $args ) {
 					$msgString = wfMsgGetKey( $message, true, false, false );
-					$msg = wfMsgReplaceArgs( $msgString, $params['args'] );
+					$msg = wfMsgReplaceArgs( $msgString, $args );
 				}else{
 					$msg = wfMsgGetKey( $message, true, false, false );
 				}
@@ -145,10 +145,9 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		return array (
 			'messages' => 'Which messages to output. "*" means all messages',
 			'prop' => 'Which properties to get',
-			'enableparser' => 'Set to enable parser, will parses the wikitext of message \n' .
-							  'Will substitute magic words, handle templates etc.',
-			'args' => 'Arguments to be substituted into message. \n' .
-					  'Will replace $1, $2 with values. ( values are \'|\' separated )',
+			'enableparser' => array('Set to enable parser, will parses the wikitext of message',
+							  'Will substitute magic words, handle templates etc'),
+			'args' => 'Arguments to be substituted into message',
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
