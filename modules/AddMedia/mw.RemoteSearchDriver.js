@@ -79,7 +79,7 @@ mw.addMessages( {
 /**
 * default_remote_search_options
 * 
-* Options for initialising the remote search driver
+* Options for initializing the remote search driver
 */
 var default_remote_search_options = {
 
@@ -157,9 +157,9 @@ var default_remote_search_options = {
 	
 	$.addMediaWizard = function( options ){
 		$.fn.addMediaWizard ( options, function( amwObj ) {			
-			// do the add-media-wizard display
+			// Do the add-media-wizard display
 			amwObj.createUI();
-		} )
+		} );
 	}
 	
 } )( jQuery );
@@ -658,9 +658,10 @@ mw.RemoteSearchDriver.prototype = {
 	createUI: function() {
 		var _this = this;		
 		this.clearTextboxCache();
-		
+
 		// Setup the parent container (if not already created) 
-		if( $j( _this.target_container ).length == 0 ){
+		mw.log(" looking for: " + _this.target_container);
+		if( !_this.target_container || $j( _this.target_container ).length == 0 ){
 			this.createDialogContainer();
 		}else{
 			// Empty out the target
@@ -835,10 +836,8 @@ mw.RemoteSearchDriver.prototype = {
 	* Sets up the initial html interface
 	*/ 
 	initDialog: function() {
-		mw.log( 'initDialog' );
-		var _this = this;
 		mw.log( 'f::initDialog' );
-		
+		var _this = this;				
 		var $mainContainer = $j( this.target_container );
 
 		var $controlContainer = this.createControlContainer();

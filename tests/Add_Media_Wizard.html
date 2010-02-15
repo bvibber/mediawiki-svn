@@ -11,23 +11,24 @@
 			border:medium none;
 		}
 	</style>
- 	<!--
+
  	<script type="text/javascript" src="../mwEmbed.js?debug=true"></script>
- 	--> 
- 	
+
+ 	<!-- 	
  	<script type="text/javascript" src="../jsScriptLoader.php?uselang=en&class=window.jQuery,mwEmbed,mw.RemoteSearchDriver,$j.ui,$j.ui.resizable,$j.ui.draggable,$j.ui.dialog,$j.ui.tabs,$j.ui.sortable,$j.cookie,baseRemoteSearch&urid=1257728132531&debug=true"></script>
+ 	-->
  	
  	<script type="text/javascript">
  	mw.ready( function(){
- 		mw.load( 'AddMedia.addMediaWizard', function(){
- 		
+ 		mw.load( 'AddMedia.addMediaWizard', function(){ 			
  			$j('#add_media_link').addMediaWizard( {
 				'profile' : 'html_edit',			
 				'target_textbox' : '#wpTextbox1',
 				'target_render_area' : '#inline_append',			
 				'import_url_mode' : 'remote_link',	
 				'remote_insert_description' : true,
-				//note selections in the textbox will take over the default query
+				
+				// Note selections in the textbox will take over the default query
 				'default_query' : 'fish',	
 				
 				//we only enabled commons
