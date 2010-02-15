@@ -440,7 +440,10 @@ sub Send {
     foreach (@watchers) {
         my $watcher_id = login_to_id($_);
         next unless $watcher_id;
-        $recipients{$watcher_id}->{+REL_GLOBAL_WATCHER} = BIT_DIRECT;
+        #$recipients{$watcher_id}->{+REL_GLOBAL_WATCHER} = BIT_DIRECT;
+        # Hack! Pretend global watchers are CCs so we can use their prefs
+        # to for instance ignore CC-only mails.
+        $recipients{$watcher_id}->{+REL_CC} = BIT_DIRECT;
     }
 
     # We now have a complete set of all the users, and their relationships to
