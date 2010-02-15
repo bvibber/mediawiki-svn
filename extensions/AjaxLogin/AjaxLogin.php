@@ -52,17 +52,17 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'efAddAjaxLoginVariables';
  * @return true
  */
 function AjaxLoginJS( OutputPage $out ) {
-	global $wgEnableAjaxLogin, $wgScriptPath, $wgTitle;
+	global $wgEnableAjaxLogin, $wgScriptPath;
 
 	# Don't load anything if AjaxLogin isn't enabled or if we're on login page
-	if ( !isset( $wgEnableAjaxLogin ) || $wgTitle->isSpecial( 'Userlogin' ) ) {
+	if ( !isset( $wgEnableAjaxLogin ) || $out->getTitle()->isSpecial( 'Userlogin' ) ) {
 		return true;
 	}
 
 	// Our custom CSS
 	$out->addExtensionStyle( $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.css' );
 	// jQuery and JQModal scripts
-	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jquery-1.3.2.js' );
+	$out->includeJQuery();
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/jqModal.js' );
 	$out->addScriptFile( $wgScriptPath . '/extensions/AjaxLogin/AjaxLogin.js' );
 
@@ -81,7 +81,6 @@ function efAddAjaxLoginVariables( $vars ) {
 
 	$vars['wgEnableAjaxLogin'] = ( is_array( $wgEnableAjaxLogin ) ) ? in_array( $vars['skin'], $wgEnableAjaxLogin ) : false;
 	if ( $vars['wgIsArticle'] == false && $vars['wgEnableAjaxLogin'] ) {
-		wfLoadExtensionMessages( 'AjaxLogin' );
 		$vars['ajaxLogin1'] = wfMsg( 'ajaxLogin1' );
 		$vars['ajaxLogin2'] = wfMsg( 'ajaxLogin2' );
 	}
@@ -130,7 +129,6 @@ function GetAjaxLoginForm( &$data ) {
 			$wgOut->addHTML( "\t\t\t" . '<br /><input type="submit" name="wpMailmypassword" id="wpMailmypassword" tabindex="106" value="' . wfMsg( 'mailmypassword' ) . '" />' . "\n\t\t\t" );
 		}
 		// Originally this used core message 'nologinlink' but it wouldn't work too well for Finnish, so I changed it. --Jack Phoenix
-		wfLoadExtensionMessages( 'AjaxLogin' );
 		$wgOut->addHTML(
 			'<br /><a id="wpAjaxRegister" tabindex="107" href="' . htmlspecialchars( $link ) . '">' . wfMsg( 'ajaxlogin-create' ) . '</a>
 		</form>

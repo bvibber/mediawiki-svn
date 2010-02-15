@@ -63,7 +63,6 @@ class ApiAjaxLogin extends ApiBase {
 					break;
 				case LoginForm::NOT_EXISTS:
 					$result['result'] = 'NotExists';
-					wfLoadExtensionMessages( 'AjaxLogin' );
 					$result['text'] = wfMsg( 'al-nosuchuser', htmlspecialchars( $Name ) );
 					break;
 				case LoginForm::WRONG_PASS:
@@ -107,7 +106,6 @@ class ApiAjaxLogin extends ApiBase {
 					$result['text'] = wfMsg( 'noname' );
 				} elseif ( 0 == $u->getID() ) {
 					$result['result'] = 'nosuchuser';
-					wfLoadExtensionMessages( 'AjaxLogin' );
 					$result['text'] = wfMsg( 'al-nosuchuser', $u->getName() );
 				} elseif ( $u->isPasswordReminderThrottled() ) {
 					global $wgPasswordReminderResendTime;
