@@ -267,11 +267,11 @@ kalturaSearch.prototype = {
 			_this.resultsObj = {};
 			this.num_results = 0;
 			
-			for ( var resource_id in data ) {
-				var result = data[ resource_id ];
+			for ( var result_id in data ) {
+				var result = data[ result_id ];
 				
 				// Skip the resource if the license is not compatible 		
-				if( result.license_url  && ! _this.rsd.checkCompatibleLicense( resource.licenseurl ) ){
+				if( result.license_url  && ! _this.rsd.checkCompatibleLicense( result.license_url ) ){
 					continue;
 				}
 		
@@ -289,7 +289,7 @@ kalturaSearch.prototype = {
 				}
 				
 				this.num_results++;
-				_this.resultsObj[ resource_id ] = result;
+				_this.resultsObj[ result_id ] = result;
 				
 			}
 		}
