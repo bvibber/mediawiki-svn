@@ -265,6 +265,15 @@ $messages['frp'] = array(
 	'wikieditor-preview-loading' => 'Chargement...',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'wikieditor-preview-tab' => 'Anteprime',
+	'wikieditor-preview-changes-tab' => 'Cambiaments',
+	'wikieditor-preview-loading' => 'Daûr a cjamâ…',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

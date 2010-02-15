@@ -151,15 +151,6 @@ Possible answer to Usability feedback questions {{msg|Optin-survey-question-used
 	'optin-improvements' => 'A few paragraphs of wikitext describing the improvements made in Beta. The referenced images have been uploaded to Commons',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'optin-deny-short' => 'Var, didi mardi',
-	'optin-survey-yes' => 'Ho',
-	'optin-survey-no' => 'Var',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -2177,6 +2168,15 @@ Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos a
 	'optin-survey-answer-changes-other' => 'Ôtro :',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'optin-title-optedout' => 'Prove Beta',
+	'optin-survey-yes' => 'Sì',
+	'optin-survey-no' => 'No',
+);
+
 /** Irish (Gaeilge)
  * @author Kwekubo
  */
@@ -2750,10 +2750,10 @@ Vole tu probar Beta?',
 Nos vole saper lo que tu pensa de nostre nove interfacie, dunque nos appreciarea si tu completa le questionario optional ci infra.',
 	'optin-feedback-back' => 'Si tu non vole completar le questionario, tu pote retornar a $1.',
 	'optin-success-in' => 'Tu ha ora comenciate a probar Beta.
-Tu pote disactivar lo a omne tempore con le ligamine "{{int:optin-leave}}" in alto a derecta del schermo.',
+Tu pote disactivar lo a omne tempore con le ligamine "{{int:optin-leave}}" in alto del schermo.',
 	'optin-leave-cancel' => 'Si tu vole continuar a usar Beta, tu pote retornar a $1',
-	'optin-success-out' => 'Tu ha con successo quitate Beta.
-Tu pote reactivar lo a omne tempore con le ligamine "{{int:optin-try}}" in alto a derecta del schermo.',
+	'optin-success-out' => 'Tu ha quitate Beta con successo.
+Tu pote reactivar lo a omne tempore con le ligamine "{{int:optin-try}}" in alto del schermo.',
 	'optin-success-feedback' => 'Gratias pro dar nos tu opinion!',
 	'optin-accept-short' => 'In avante!',
 	'optin-accept-long' => 'Probar Beta',
@@ -3666,6 +3666,15 @@ $messages['lv'] = array(
 	'optin-title-feedback' => 'Atsauksmes par Beta',
 	'optin-accept-long' => 'Izmēģināt Beta',
 	'optin-submit-out' => 'Pamest Beta',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'optin-deny-short' => 'Var, didi mardi',
+	'optin-survey-yes' => 'Ho',
+	'optin-survey-no' => 'Var',
 );
 
 /** Macedonian (Македонски)

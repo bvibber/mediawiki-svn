@@ -372,11 +372,13 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'wikieditor' => 'Avansert grensesnitt for redigering av wikitekst',
 	'wikieditor-desc' => 'Gir et utvidbart tekstredigeringsgrensesnitt og mange utvidelsesmoduler',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Laster',
 );
 
 /** Occitan (Occitan)
