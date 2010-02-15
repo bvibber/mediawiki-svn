@@ -55,7 +55,8 @@ class ApiOpenSearch extends ApiBase {
 		else {
 			// Open search results may be stored for a very long
 			// time
-			$this->getMain()->setCacheMaxAge(1200);
+			$this->getMain()->setCacheMaxAge( $wgSearchSuggestCacheExpiry );
+			$this->getMain()->setCacheControl( array( 'must-revalidate' => false ) );
 
 			$srchres = PrefixSearch::titleSearch( $search, $limit,
 				$namespaces );
