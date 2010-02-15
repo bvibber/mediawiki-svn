@@ -37,17 +37,25 @@ class SpecialRecordAdmin extends SpecialPage {
 		$wgParser->setFunctionHook( $wgRecordAdminTableMagic, array( $this, 'expandTableMagic' ) );
 		$wgParser->setFunctionHook( $wgRecordAdminDataMagic,  array( $this, 'expandDataMagic'  ) );
 
-		# Check if posting a public creation form
-		$title = Title::newFromText( $wgRequest->getText( 'title' ) );
-		if ( is_object( $title ) && $title->getNamespace() != NS_SPECIAL && $wgRequest->getText( 'wpType' ) && $wgRequest->getText( 'wpCreate' ) )
-			$this->createRecord();
-
 		# A minimal hook so we know if the page has been rendered or not
 		# (so that record tables don't execute when run from the job-queue - looking for a better way to do this)
 		$wgHooks['BeforePageDisplay'][] = $this;
 
-		# Add some hooks if the current title is a record
+		# Get the current title accounting for redirect
+		$title = Title::newFromText( $wgRequest->getText( 'title' ) );
+		if ( is_object( $title ) && $title->isRedirect() ) {
+			$article = new Article( $title );
+			$content = $article->getContent();
+			if ( preg_match( '/\[\[(.+?)\]\]/', $content, $m ) ) $title = Title::newFromText( $m[1] );
+		}
+
 		if ( is_object( $title ) ) {
+
+			# Check if posting a public creation form
+			if ( $title->getNamespace() != NS_SPECIAL && $wgRequest->getText( 'wpType' ) && $wgRequest->getText( 'wpCreate' ) )
+				$this->createRecord();
+
+			# Add some hooks if the current title is a record
 			$uses = '';
 			$id   = $title->getArticleID();
 			$dbr  = &wfGetDB( DB_SLAVE );
