@@ -112,6 +112,7 @@ evt: {
 				end: tokenArray[i].offset,
 				type: 'toc',
 				anchor: 'before',
+				splitPs: false,
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
 					$( node ).addClass( 'wikiEditor-toc-header' )

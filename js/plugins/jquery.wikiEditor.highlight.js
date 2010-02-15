@@ -194,10 +194,22 @@ fn: {
 			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node					
+				// the rest in a new node which is our start node
 				startNode = startNode.splitText( s.offset );
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+			}
+			// Because we can't put block elements in <p>s, we'll have to split the <p> as well
+			// if afterWrap() needs us to
+			if ( markers[i].splitPs && startNode.parentNode.nodeName == 'P' ) {
+				// Create a new <p> left of startNode, and append startNode's left siblings to it
+				var startP = startNode.ownerDocument.createElement( 'p' );
+				while ( startNode.parentNode.firstChild != startNode ) {
+					startP.appendChild( startNode.parentNode.firstChild );
+				}
+				if ( startP.firstChild ) {
+					startNode.parentNode.insertBefore( startP, startNode );
+				}
 			}
 			
 			var end = markers[i].end;
@@ -209,12 +221,24 @@ fn: {
 			var endNode = e.node;
 			var endDepth = e.depth;
 			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
-				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
-				// node.
-				// endNode.nodeValue.length - ( newPos - markers[i].end )
-				endNode.splitText( e.offset + 1 );
+				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
+				endNode.splitText( e.offset );
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+			}
+			// Split <p>s if needed, see above
+			if ( markers[i].splitPs && endNode.parentNode.nodeName == 'P' && endNode.parentNode.parentNode ) {
+				// Move textnodes preceding endNode out of the wrapping <p>
+				var endP = endNode.parentNode;
+				while ( endP.firstChild != endNode ) {
+					endP.parentNode.insertBefore( endP.firstChild, endP );
+				}
+				// Move endNode itself out as well
+				endP.parentNode.insertBefore( endNode, endP );
+				if ( !endP.firstChild ) {
+					// endP is empty, remove it
+					endP.parentNode.removeChild( endP );
+				}
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
@@ -261,12 +285,7 @@ fn: {
 					// properties
 					var newNode = ca1.ownerDocument.createElement( 'span' );
 					var commonAncestor = ca1.parentNode;
-					// Special case: can't put block elements in a <p>
-					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
-						commonAncestor = commonAncestor.parentNode;
-						ca1 = ca1.parentNode;
-						ca2 = ca2.parentNode;
-					}
+					
 					var nextNode = ca2.nextSibling;
 					if ( markers[i].anchor == 'wrap' ) {
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
