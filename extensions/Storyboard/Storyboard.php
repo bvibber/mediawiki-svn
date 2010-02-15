@@ -55,6 +55,22 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgExtensionFunctions[] = 'efStoryboardStorysubmissionSetup';
 }
 
+// Hook for db updates.
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
+
+/**
+ * The 'storyboard' permission key can be given out to users
+ * to enable them to review, edit, publish, and hide stories.
+ *
+ * By default, only sysops will be able to do this.
+ */
+$wgGroupPermissions['*'            ]['storyboard'] = false;
+$wgGroupPermissions['user'         ]['storyboard'] = false;
+$wgGroupPermissions['autoconfirmed']['storyboard'] = false;
+$wgGroupPermissions['bot'          ]['storyboard'] = false;
+$wgGroupPermissions['sysop'        ]['storyboard'] = true;
+$wgAvailableRights[] = 'storyboard';
+
 /**
  * Initialization function for the Storyboard extension.
  */
@@ -71,6 +87,15 @@ function efStoryboardSetup() {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Storyboard',
 		'description' =>  wfMsg( 'storyboard-desc' ),
 		'descriptionmsg' => 'storyboard-desc',
+	);
+}
+
+function efStoryboardSchemaUpdate() {
+	global $wgExtNewTables, $egStoryboardDir;
+	
+	$wgExtNewTables[] = array(
+		'storyboard',
+		$egStoryboardDir . 'Storyboard.sql'
 	);
 }
 

@@ -22,5 +22,6 @@ class SpecialStoryReview extends IncludableSpecialPage {
 
 	function execute( $language ) {
 		global $wgOut;
+		$wgOut->includeJQuery();
 	}
 }
