@@ -312,11 +312,12 @@ class ApiMain extends ApiBase {
 			if ( is_bool( $value ) ) {
 				if ( $value ) {
 					$ccHeader .= $separator . $name;
+					$separator = ', ';
 				}
 			} else {
 				$ccHeader .= $separator . "$name=$value";
+				$separator = ', ';
 			}
-			$separator = ', ';
 		}
 			
 		header( "Cache-Control: $ccHeader" );
