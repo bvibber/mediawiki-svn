@@ -177,7 +177,7 @@ class WebExtension {
 	 * @return String: XHTML
 	 */
 	public function getHtml() {
-		if ( !$this->isInstalled() )
+		if ( !$this->isUsable() )
 			return '';
 		$ret = '<fieldset><legend>' . htmlspecialchars( $this->mName ) . '</legend>';
 		if ( count( $errors = $this->checkSettingsDependencies() ) ) {
@@ -287,25 +287,25 @@ class WebExtension {
 	 * should be activated
 	 */
 	public function getCheckName() {
- 		if( $this->useVariable() )
- 			return 'wp'.$this->mExtVar;
- 		else
- 			return 'wpUse'.str_replace( ' ', '_', $this->mName );
+		if( $this->useVariable() )
+			return 'wp'.$this->mExtVar;
+		else
+			return 'wpUse'.str_replace( ' ', '_', $this->mName );
 	}
 
-  	/**
- 	 * Whether this extension
- 	 */
- 	public function useVariable(){
- 		return !is_null( $this->mExtVar );
- 	}
+	/**
+	 * Whether this extension
+	 */
+	public function useVariable(){
+		return !is_null( $this->mExtVar );
+	}
 
- 	/**
- 	 * Get the variable for this extension
- 	 */
- 	public function getVariable(){
- 		return $this->mExtVar;
- 	}
+	/**
+	 * Get the variable for this extension
+	 */
+	public function getVariable(){
+		return $this->mExtVar;
+	}
 
 	public function setTempActivated( $val = null ) {
 		return wfSetVar( $this->mTempActivated, $val );
@@ -320,11 +320,11 @@ class WebExtension {
 		if( $this->mTempActivated !== null ) {
 			return $this->mTempActivated;
 		} else if( $this->useVariable() ) {
- 			return isset( $GLOBALS[$this->getVariable()] ) && $GLOBALS[$this->getVariable()];
- 		} else {
- 			global $wgConf;
- 			return in_array( $this->getFile(), $wgConf->getIncludedFiles() );
- 		}
+			return isset( $GLOBALS[$this->getVariable()] ) && $GLOBALS[$this->getVariable()];
+		} else {
+			global $wgConf;
+			return in_array( $this->getFile(), $wgConf->getIncludedFiles() );
+		}
 	}
 
 	/**
@@ -333,13 +333,33 @@ class WebExtension {
 	 * @return Boolean
 	 */
 	public function isInstalled() {
- 		if( $this->useVariable() ) {
- 			return true;
+		if( $this->useVariable() ) {
+			return true;
 		}
- 		global $wgConfigureOnlyUseVarForExt;
- 		if( $wgConfigureOnlyUseVarForExt ) {
- 			return false;
+		global $wgConfigureOnlyUseVarForExt;
+		if( $wgConfigureOnlyUseVarForExt ) {
+			return false;
 		}
 		return file_exists( $this->getFile() );
+	}
+
+	/**
+	 * Is this extension disabled?
+	 *
+	 * @return Boolean
+	 */
+	public function isDisabled() {
+		global $wgConfigureDisabledExtensions;
+
+		return in_array( $this->mName, $wgConfigureDisabledExtensions );
+	}
+
+	/**
+	 * Can this extension be enabled?
+	 *
+	 * @return Boolean
+	 */
+	public function isUsable() {
+		return $this->isInstalled() && !$this->isDisabled();
 	}
 }

@@ -109,7 +109,7 @@ class ApiConfigure extends ApiBase {
 				$conf = ConfigurationSettings::singleton( CONF_SETTINGS_EXT );
 				$ret = array();
 				foreach ( $conf->getAllExtensionsObjects() as $ext ) {
-					if( !$ext->isInstalled() ) continue; // must exist
+					if( !$ext->isUsable() ) continue; // must exist
 					$extArr = array();
 					$extArr['name'] = $ext->getName();
 					if ( $ext->isActivated() )

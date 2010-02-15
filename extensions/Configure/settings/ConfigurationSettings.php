@@ -124,7 +124,7 @@ class ConfigurationSettings {
 			if( is_null( $extArr ) ) {
 				$extArr = array();
 				foreach( $this->getAllExtensionsObjects() as $ext ) {
-					if( !$ext->isInstalled() )
+					if( !$ext->isUsable() )
 						continue;
  					$extSettings = $ext->getSettings();
  					if( $ext->useVariable() )

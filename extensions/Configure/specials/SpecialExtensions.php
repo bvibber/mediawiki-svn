@@ -92,7 +92,7 @@ class SpecialExtensions extends ConfigurationPage {
  			return array();
 		$arr = array();
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
-			if( !$ext->isInstalled() )
+			if( !$ext->isUsable() )
 				continue; // must exist
 			if ( $ext->useVariable() )
  				continue;
@@ -127,8 +127,8 @@ class SpecialExtensions extends ConfigurationPage {
 		$ret = '';
 		$globalDone = false;
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $wikiExt ) {
-			if( !$wikiExt->isInstalled() )
-				continue; // must exist
+			if( !$wikiExt->isUsable() )
+				continue; // must exist and be enabled
 
 			$wikiExt->setPageObj( $this );
 
