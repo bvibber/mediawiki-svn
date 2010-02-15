@@ -29,14 +29,6 @@ $messages['qqq'] = array(
 	'right-whatismyip' => '{{doc-right|whatismyip}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'whatismyip' => 'Çkimi IP mu ren',
-	'whatismyip-out' => 'Skani IP adresi:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -471,6 +463,16 @@ $messages['lt'] = array(
 	'whatismyip-desc' => 'Rodo esamą naudotojo [[Special:WhatIsMyIP|IP adresą]]',
 	'whatismyip-out' => 'Jūsų IP adresas:',
 	'right-whatismyip' => 'Žiūrėti [[Special:WhatIsMyIP|savo IP adresą]]',
+);
+
+/** Lazuri (Lazuri)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'whatismyip' => 'Çkimi IP mu ren',
+	'whatismyip-desc' => "K'oçişi a3'ineri [[Special:WhatIsMyIP|IP adresi-muşi]] o3'iraps",
+	'whatismyip-out' => 'Skani IP adresi:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|Ti-muşi IP adresi]] o3’iraps',
 );
 
 /** Malagasy (Malagasy)

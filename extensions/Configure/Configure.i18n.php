@@ -9866,6 +9866,7 @@ $messages['yi'] = array(
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
 	'configure-view' => 'זען',
+	'configure-throttle-action-edit' => 'רעדאַקטירן',
 	'configure-throttle-action-rollback' => 'צוריקדרייען',
 );
 

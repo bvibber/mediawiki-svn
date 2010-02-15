@@ -62,13 +62,24 @@ $messages['niu'] = array(
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'passwordreset' => 'Wagwoord herstel',
+	'passwordreset-desc' => "Voeg 'n [[Special:PasswordReset|spesiale bladsy]] by om wagwoorde van gebruikers te herstel - benodig 'passwordreset' regte",
 	'passwordreset-invalidusername' => 'Ongeldige gebruiker',
 	'passwordreset-emptyusername' => 'Gebruiker nie gespesifiseerd nie',
 	'passwordreset-nopassmatch' => 'Die wagwoorde kom nie ooreen nie',
+	'passwordreset-badtoken' => 'Ongeldige wysigingsteken ("edit token")',
 	'passwordreset-username' => 'Gebruiker:',
 	'passwordreset-newpass' => 'Nuwe wagwoord:',
 	'passwordreset-confirmpass' => 'Bevestig wagwoord:',
 	'passwordreset-submit' => 'Herstel wagwoord',
+	'passwordreset-success' => 'Wagwoord vir gebruikersnommer $1 is herstel',
+	'passwordreset-disableuser' => 'Gebruiker deaktiveer?',
+	'passwordreset-disableuserexplain' => "(stel na 'n ongeldige wagwoord-hash - gebruiker kan nie inteken nie)",
+	'passwordreset-disablesuccess' => 'Gebruiker is gedeaktiveer (gebruikersnommer $1)',
+	'passwordreset-accountdisabled' => 'Gebruiker is gedeaktiveer',
+	'disabledusers' => 'Gedeaktiveerde gebruikers',
+	'disabledusers-summary' => "Dit is 'n lys van gebruikers wat met PasswordReset gedeaktiveer is.",
+	'right-passwordreset' => "Herstel 'n gebruiker se wagwoord ([[Special:PasswordReset|spesiale bladsy]])",
 );
 
 /** Aragonese (Aragonés)
@@ -1100,6 +1111,7 @@ $messages['nah'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Naudefj
  * @author SPQRobin
  * @author Siebrand
  */
@@ -1114,13 +1126,13 @@ $messages['nl'] = array(
 	'passwordreset-newpass' => 'Nieuw wachtwoord:',
 	'passwordreset-confirmpass' => 'Bevestig wachtwoord:',
 	'passwordreset-submit' => 'Wachtwoord opnieuw instellen',
-	'passwordreset-success' => 'Wachtwoord voor gebruikersummer $1 is opnieuw ingesteld',
+	'passwordreset-success' => 'Wachtwoord voor gebruikersnummer $1 is opnieuw ingesteld',
 	'passwordreset-disableuser' => 'Gebruiker deactiveren?',
 	'passwordreset-disableuserexplain' => '(stelt een onjuiste wachtwoordhash in - gebruiker kan niet aanmelden)',
 	'passwordreset-disablesuccess' => 'Gebruiker is gedeactiveerd (gebruikersnummer $1)',
 	'passwordreset-accountdisabled' => 'Gebruiker is gedeactiveerd',
 	'disabledusers' => 'Gedeactiveerde gebruikers',
-	'disabledusers-summary' => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
+	'disabledusers-summary' => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset.',
 	'right-passwordreset' => 'Wachtwoord van een gebruiker opnieuw instellen ([[Special:PasswordReset|speciale pagina]])',
 );
 

@@ -20,6 +20,15 @@ $messages['en'] = array(
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'storyboard-name' => 'Storiebord',
+	'storyboard-desc' => "Bied 'n landingsbladsy vir skenkers, 'n bladsy waar verhale ingestuur kan word en 'n koppelvlak om stories te beheer",
+	'right-storyreview' => 'Hersien, wysig, publiseer en verberg stories',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -33,6 +42,13 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'storyboard-name' => 'Storyboard',
+);
+
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'right-storyreview' => 'Katselmoi, muokkaa, julkaise ja piilota tarinoita',
 );
 
 /** French (Français)
@@ -65,6 +81,13 @@ $messages['gsw'] = array(
 $messages['ia'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provide un pagina de arrivata pro donatores, un pagina ubi historias pote esser submittite, e un interfacie pro moderation de historias.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'storyboard-name' => 'Storyboard',
 );
 
 /** Macedonian (Македонски)

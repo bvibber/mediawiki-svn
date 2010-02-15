@@ -384,6 +384,14 @@ $messages['frp'] = array(
 	'tooltip-pt-optin-feedback' => 'Balyéd voutron avis sur l’usâjo de les novèles fonccionalitâts.',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'optin-try' => 'Prove Beta',
+	'tooltip-pt-optin-feedback' => 'Mande opinions e ideis su la tô esperience cu lis gnovis funzions',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -104,13 +104,6 @@ $messages['qqq'] = array(
 * $1 is the file name of the file that is being uploaded',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'wah-menu-jobs' => 'Dulyape',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -1072,6 +1065,13 @@ $messages['lb'] = array(
 	'wah-api-error' => 'Et gouf e Feeler mat dem API. Probéiert w.e.g. méi spéit nach eng Kéier.',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'wah-menu-jobs' => 'Dulyape',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1591,6 +1591,7 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author Chaduvari
  * @author Veeven
  */
 $messages['te'] = array(
@@ -1601,8 +1602,11 @@ $messages['te'] = array(
 	'wah-long-video' => '($1 దృశ్యక ఫైలు, నిడివి $2, $4×$5 పిక్సెళ్ళు, $3)',
 	'wah-long-general' => '(మాధ్యమ ఫైలు, నిడివి $2, $3)',
 	'wah-javascript-off' => 'Wiki@Homeలో పాల్గొనడానికి మీకు జావాస్క్రిప్టుని చేతనం చేసి ఉండాలి',
+	'wah-menu-jobs' => 'పనులు',
 	'wah-menu-stats' => 'గణాంకాలు',
 	'wah-menu-pref' => 'అభిరుచులు',
+	'wah-lookingforjob' => 'పనుల కోసం చూస్తున్నాం ...',
+	'wah-start-on-visit' => 'నేనీ సైటుకు ఎప్పుడొచ్చినా Wiki@Home వద్ద మొదలుపెట్టు.',
 	'wah-notoken-login' => 'మీరు ప్రవేశించి ఉన్నారా? లేకపోతే, ముందు ప్రవేశించండి.',
 	'wah-downloading' => '<i>$1%</i> ఫైలు దింపుకోలు పూర్తయింది',
 	'wah-uploading' => '<i>$1</i> ఫైలు ఎక్కింపు పూర్తయ్యింది',

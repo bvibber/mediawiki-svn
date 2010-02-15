@@ -25,13 +25,6 @@ $messages['qqq'] = array(
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'catboxattop-categories' => "K'at'egorepe",
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -268,7 +261,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'catboxattop-desc' => 'Adde un quadro con categorias in alto a derecta del paginas',
+	'catboxattop-desc' => 'Adde un quadro con categorias in alto a dextra del paginas',
 	'catboxattop-categories' => 'Categorias',
 );
 
@@ -325,6 +318,13 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'catboxattop-desc' => "Setzt eng Kescht mat de Kategorien uewe riets op d'Säiten derbäi",
 	'catboxattop-categories' => 'Kategorien',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'catboxattop-categories' => "K'at'egorepe",
 );
 
 /** Macedonian (Македонски)

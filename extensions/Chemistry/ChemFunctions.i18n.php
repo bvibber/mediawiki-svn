@@ -355,10 +355,15 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'chemicalsources' => 'Kemialliset lähteet',
+	'chemFunctions_ListPage' => 'Kemialliset lähteet',
 	'chemFunctions_CAS' => 'CAS-numero',
+	'chemFunctions_ATCCode' => 'ATC-koodi',
+	'chemFunctions_ECNumber' => 'EC-numero',
 	'chemFunctions_Formula' => 'Kaava',
 	'chemFunctions_Name' => 'IUPAC-nimi',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Syötevirhe!',

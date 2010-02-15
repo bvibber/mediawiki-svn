@@ -5087,6 +5087,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
@@ -5165,6 +5166,8 @@ $messages['fi'] = array(
 	'configure-setting-wgHTTPProxy' => 'Käytettävä HTTP-välityspalvelin',
 	'configure-setting-wgVersion' => 'MediaWikin versio',
 	'configure-setting-wgAllowSpecialInclusion' => 'Salli toimintosivujen sisällytys',
+	'configure-setting-wgLogHeaders' => 'Lokikuvaukset',
+	'configure-setting-wgLogNames' => 'Lokinimet',
 	'configure-setting-wgLogRestrictions-key' => 'Lokityyppi',
 	'configure-setting-wgLogTypes' => 'Lokityypit',
 	'configure-setting-wgSortSpecialPages' => 'Järjestä toimintosivut sivulla [[Special:SpecialPages]]',
@@ -11140,7 +11143,7 @@ $messages['mhr'] = array(
 $messages['mk'] = array(
 	'configure-setting-wgSitename' => 'Име на веб-страницата',
 	'configure-setting-wgActionPaths' => 'URL-адреси по дејства',
-	'configure-setting-wgActionPaths-key' => 'Акција',
+	'configure-setting-wgActionPaths-key' => 'Дејство',
 	'configure-setting-wgActionPaths-value' => 'URL шаблон',
 	'configure-setting-wgAllDBsAreLocalhost' => 'Молчешкум префрлај ги сите поврзувања со базата на податоци кон локалниот домаќин',
 	'configure-setting-wgCheckDBSchema' => 'Проверувај дали е подновена базата на податоци при секој преглед на страницата (не се користи)',

@@ -40,6 +40,42 @@ $messages['en'] = array(
 You can [[Special:RefHelper|add the reference manually]] or [[Special:RefSearch|search for the citation to add]].',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'refhelper' => 'Hulp met verwysings',
+	'refsearch' => 'Verwysings soek',
+	'refhelper-desc' => 'Ondersteun die skep van bladsye vir verwysings',
+	'refhelper-refsearch' => 'Verwysings soek',
+	'refhelper-refcreate_legend' => "Skep 'n nuwe verwysing",
+	'refhelper-refsearch_legend' => 'Soek in PubMed vir verwysings',
+	'refhelper-refcreate_another' => "Skep nog 'n verwysing",
+	'refhelper-refcreate_autocomment' => 'Bladsye outomaties geskep.',
+	'refhelper-refcreate_success' => 'Die bladsy [[$1]] bestaan nog nie en is geskep.',
+	'refhelper-refcreate_failure' => 'Die bladsy [[$1]] bestaan al reeds!',
+	'refhelper-label_workspace' => 'Werkruimte (vir kopieer en plak):',
+	'refhelper-label_authorforename' => 'Voornaam van outeur $1:',
+	'refhelper-label_authorsurname' => 'Van:',
+	'refhelper-title' => 'Titel:',
+	'refhelper-journal' => 'Joernaal:',
+	'refhelper-volume' => 'Volume:',
+	'refhelper-pages' => 'Bladsye:',
+	'refhelper-year' => 'Jaar:',
+	'refhelper-refname' => 'Verwysingsnaam:',
+	'refhelper-category' => 'Kategorie $1:',
+	'refhelper-create' => 'Skep',
+	'refhelper-search' => 'Soek',
+	'refhelper-toolbox_link_create' => 'Skep verwysing',
+	'refhelper-toolbox_link_search' => 'Skep verwysing vanuit soektog',
+	'refhelper-newarticle_nocitation' => 'Daar is tans geen aanhalings met hierdie naam nie.',
+	'refhelper-newarticle_suggestions' => 'As \'n citaat hieronder van toepassing is, kan u hierdie bladsy skep deur op die bybehorende "Skep"-knop te kliek.
+
+<h2>Voorstelle</h2>',
+	'refhelper-newarticle_nosuggestions' => "Dit was ongelukkig nie moontlik om voorstelle vir verwysings te lewer nie.
+U kan die [[Special:RefHelper|verwysing handmatig byvoeg]] of [[Special:RefSearch|na 'n citaat soek om by te voeg]].",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -67,6 +103,14 @@ $messages['be-tarask'] = array(
 	'refhelper-category' => 'Катэгорыя $1:',
 	'refhelper-create' => 'Стварыць',
 	'refhelper-search' => 'Шукаць',
+	'refhelper-toolbox_link_create' => 'Стварыць зноску',
+	'refhelper-toolbox_link_search' => 'Стварыць зноску праз пошук',
+	'refhelper-newarticle_nocitation' => 'У цяперашні момант часу няма спасылак з такой назвай.',
+	'refhelper-newarticle_suggestions' => 'Калі існуе спасылка ў сьпісе пададзеным ніжэй, Вы можаце стварыць гэтую старонку націснуўшы адпаведную кнопку «Стварыць».
+
+<h2>Прапановы</h2>',
+	'refhelper-newarticle_nosuggestions' => 'На жаль, немагчыма прапанаваць ніякіх спасылак.
+Вы можаце [[Special:RefHelper|дадаць зноску ўручную]] альбо [[Special:RefSearch|пашукаць спасылкі для даданьня]].',
 );
 
 /** Breton (Brezhoneg)
@@ -98,6 +142,11 @@ $messages['br'] = array(
 	'refhelper-toolbox_link_create' => 'Krouiñ an dave',
 	'refhelper-toolbox_link_search' => "Krouiñ an dave adalek ar c'hlask",
 	'refhelper-newarticle_nocitation' => "N'eus arroudenn ebet liammet gant an anv-mañ.",
+	'refhelper-newarticle_suggestions' => "Ma 'z eus un arroudenn o klotañ amañ a-is, tu 'zo deoc'h krouiñ ar bajenn-mañ en ur klikañ war ar bouton \"Krouiñ\".
+
+<h2>Kinnigoù</h2>",
+	'refhelper-newarticle_nosuggestions' => "Alas, ne oan ket gouest da ginnig dave ebet.
+Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
 );
 
 /** Spanish (Español)
@@ -125,6 +174,32 @@ $messages['es'] = array(
 	'refhelper-toolbox_link_create' => 'Crear referencia',
 	'refhelper-toolbox_link_search' => 'Crear referencia a partir de búsqueda',
 	'refhelper-newarticle_nocitation' => 'Actualmente no hay citas con este nombre.',
+);
+
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'refhelper' => 'Viiteopastaja',
+	'refsearch' => 'Viitehaku',
+	'refhelper-desc' => 'Auttaa luomaan sivuja viitteitä varten',
+	'refhelper-refsearch' => 'Viitehaku',
+	'refhelper-refcreate_legend' => 'Luo uusi viite',
+	'refhelper-refcreate_another' => 'Luo toinen viite',
+	'refhelper-refcreate_autocomment' => 'Automatisoitu sivun luominen.',
+	'refhelper-refcreate_success' => 'Sivu [[$1]] ei ole olemassa ja se on luotu.',
+	'refhelper-refcreate_failure' => 'Sivu [[$1]] on jo olemassa!',
+	'refhelper-label_workspace' => 'Työtila (kopioi- ja liitä-alue):',
+	'refhelper-label_authorforename' => 'Tekijän $1 etunimi:',
+	'refhelper-label_authorsurname' => 'Sukunimi:',
+	'refhelper-title' => 'Otsikko:',
+	'refhelper-year' => 'Vuosi:',
+	'refhelper-refname' => 'Viitenimi:',
+	'refhelper-category' => 'Luokka $1:',
+	'refhelper-create' => 'Luo',
+	'refhelper-search' => 'Haku',
+	'refhelper-toolbox_link_create' => 'Luo viite',
+	'refhelper-toolbox_link_search' => 'Luo viite etsinnästä',
 );
 
 /** French (Français)
@@ -378,6 +453,35 @@ U kunt de [[Special:RefHelper|referentie handmatig toevoegen]] of [[Special:RefS
  */
 $messages['no'] = array(
 	'refhelper' => 'Referansehjelper',
+	'refsearch' => 'Referansesøk',
+	'refhelper-desc' => 'Hjelper til med å opprette sider for referanser',
+	'refhelper-refsearch' => 'Referansesøk',
+	'refhelper-refcreate_legend' => 'Opprett ny referanse',
+	'refhelper-refsearch_legend' => 'Søk i PubMed for referanser',
+	'refhelper-refcreate_another' => 'Opprett enda en referanse',
+	'refhelper-refcreate_autocomment' => 'Automatisert sideopprettelse.',
+	'refhelper-refcreate_success' => 'Siden [[$1]] finnes ikke og har blitt opprettet.',
+	'refhelper-refcreate_failure' => 'Siden [[$1]] finnes allerede!',
+	'refhelper-label_workspace' => 'Arbeidsområde (kopier og lim inn-område):',
+	'refhelper-label_authorforename' => "Forfatter $1's første navn:",
+	'refhelper-label_authorsurname' => 'Etternavn:',
+	'refhelper-title' => 'Tittel:',
+	'refhelper-journal' => 'Tidsskrift:',
+	'refhelper-volume' => 'Volum:',
+	'refhelper-pages' => 'Sider:',
+	'refhelper-year' => 'År:',
+	'refhelper-refname' => 'Referansenavn:',
+	'refhelper-category' => 'Kategori $1:',
+	'refhelper-create' => 'Opprett',
+	'refhelper-search' => 'Søk',
+	'refhelper-toolbox_link_create' => 'Opprett referanse',
+	'refhelper-toolbox_link_search' => 'Opprett referanse fra søk',
+	'refhelper-newarticle_nocitation' => 'Det er foreløpig ingen siteringer med dette navnet.',
+	'refhelper-newarticle_suggestions' => 'Det er ingen samsvarende siteringer fra forslagene under. Du kan opprette denne siden ved å klikke på den tilhørende «Opprett»-knappen.
+
+<h2>Forslag</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Dessverre kunne jeg ikke foreslå noen referanser.
+Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
 );
 
 /** Piedmontese (Piemontèis)

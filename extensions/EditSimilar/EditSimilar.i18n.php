@@ -418,8 +418,8 @@ $messages['lb'] = array(
 	'editsimilar-desc' => "Ermontert Benotzer fir ähnlech Säiten z'änneren nodeem se eng Säit gespäichert hunn.",
 	'editsimilar-thanks' => 'Merci fir är Kontributioun. 
 Kuckt déi {{PLURAL:$2|Säit|Säiten}} déi a Verbindung mat däer stinn w.e.g. och no: $1',
-	'editsimilar-thanks-notsimilar' => 'Merci fir är Kontributioun.
-Dës {{PLURAL:$2|Säit kéint|Säite kéinten}} och vun ärer Hellëf profitéieren: $1',
+	'editsimilar-thanks-notsimilar' => 'Merci fir Är Kontributioun.
+Dës {{PLURAL:$2|Säit kéint|Säite kéinten}} och vun Ärer Hëllef profitéieren: $1',
 	'editsimilar-thankyou' => 'Merci fir är Kontributioun, $1!',
 	'editsimilar-link-disable' => "D'Astellungen aginn",
 	'tog-edit-similar' => 'Virschloe vun ähnleche Säiten aschalten',

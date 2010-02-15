@@ -86,6 +86,13 @@ $messages['es'] = array(
 	'semanticgallery-desc' => 'Añade una galería de formatos de salida a las consultas SMW en línea',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'semanticgallery-desc' => 'Lisää galleriatulostemuodon SMW-sisäisiin kyselyihin',
+);
+
 /** French (Français)
  * @author Grondin
  */

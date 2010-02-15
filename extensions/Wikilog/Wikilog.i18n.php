@@ -357,20 +357,6 @@ Part of a list of actions, use lowercase if applicable.
 	'wikilog-doc-import-comment' => 'This is an automatic edit summary for pages imported into the wiki.',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'wikilog-view-archives' => 'Arkivepe',
-	'wikilog-comment-delete' => 'Am yorumi jili',
-	'wikilog-form-category' => "K'at'egori:",
-	'wikilog-form-name' => 'Coxo:',
-	'wikilog-form-date' => 'Tarixi:',
-	'wikilog-reply-lc' => "Cevabi Doç'ari",
-	'wikilog-delete-lc' => 'jili',
-	'wikilog-page-lc' => 'Sayfe',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -769,6 +755,9 @@ $messages['be-tarask'] = array(
 	'wikilog-edit-signpub' => 'Падпісаць і апублікаваць гэты артыкул',
 	'wikilog-edit-signpub-tooltip' => 'Вядзе да таго, што гэты артыкул падпісваецца і апублікоўваецца ў гэтым вікіблёгу пад час захаваньня.
 Прыбярыце гэтую пазнаку, каб пакінуць артыкул у стане чарнавіка.',
+	'wikilog-comment-permalink' => '$1 у $2',
+	'wikilog-comment-note-edited' => 'апошняе рэдагаваньне $1 у $2',
+	'wikilog-comment-anonsig' => '$3 (ананім)',
 	'wikilog-comment-pending' => 'Гэты камэнтар чакае зацьверджаньня.',
 	'wikilog-comment-deleted' => 'Гэты камэнтар быў выдалены.',
 	'wikilog-comment-autosumm' => 'Новы камэнтар $1: $2',
@@ -880,7 +869,7 @@ $messages['bg'] = array(
 	'wikilog-draft-title-mark' => '(чернова)',
 	'wikilog-anonymous-mark' => '(анонимен)',
 	'wikilog-pager-newest' => 'най-новите',
-	'wikilog-pager-oldest' => 'най-старите ',
+	'wikilog-pager-oldest' => 'най-старите',
 	'wikilog-pager-prev' => 'предишни',
 	'wikilog-pager-next' => 'следващи',
 	'wikilog-pager-first' => 'първи',
@@ -992,6 +981,12 @@ $messages['br'] = array(
 	'wikilog-log-cmt-rejdel' => "en deus nac'het ur gemenadenn a-berzh [[Special:Contributions/$1|$1]] war wikilog",
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Oberoù wikilog',
+	'wikilog-missing-wikilog' => 'Ar bajenn [[{{int:wikilog-help}}|wikilog]] evit [[{{FULLPAGENAME}}]] eo.
+
+N\'eus ket eus ar wikilog-mañ evit poent.
+Ret eo e vefe krouet da gentañ evit ma vefe posubl embann pennadoù hag implijout arc\'hweladurioù all ar wikilog.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Krouiñ ar wikilog-mañ].</span>',
 	'wikilog-information' => 'Titouroù war wikilog',
 	'wikilog-post-count-published' => 'Bez ez eus {{PLURAL:$1|ur pennad|$1 pennad}} war ar wikilog-mañ.',
 	'wikilog-post-count-drafts' => 'Bez ez eus {{PLURAL:$1|ur pennad (brouilhoñs) nann-embannet |$1 pennad (brouilhoñs) nann-embannet}}',
@@ -1031,6 +1026,9 @@ $messages['br'] = array(
 	'wikilog-edit-signpub' => 'Sinañ hag embann ar pennad-mañ',
 	'wikilog-edit-signpub-tooltip' => "Ober a ra d'ar pennad bezañ sinet hag embannet en e wikilog pa vez enrollet.
 Diaskit ar voest-mañ evit ma chomo ar pennad ur brouilhed.",
+	'wikilog-comment-permalink' => "$1 d'an $2",
+	'wikilog-comment-note-edited' => "kemm ziwezhañ d'an $1 da $2",
+	'wikilog-comment-anonsig' => '$3 (dizanv)',
 	'wikilog-comment-pending' => "Emañ an addispleg-mañ o c'hortoz bezañ aprouet.",
 	'wikilog-comment-deleted' => 'Dilamet e oa bet an addispleg-mañ.',
 	'wikilog-comment-autosumm' => 'Addispleg nevez gant $1 : $2',
@@ -1054,6 +1052,8 @@ Diaskit ar voest-mañ evit ma chomo ar pennad ur brouilhed.",
 	'wikilog-invalid-file' => 'Restr direizh : $1.',
 	'wikilog-file-not-found' => "Restr n'eus ket anezhi : $1.",
 	'wikilog-not-an-image' => "Ar restr n'eo ket ur skeudenn : $1.",
+	'wikilog-out-of-context' => "Kemennadenn : implijet e vez balizennoù wikilog e-maez o c'henarroud.
+Rankout a rafent bezañ implijet e pennadoù an esaouenn anv Wikilog hepken.",
 	'wikilog-too-many-authors' => 'Diwallit : Re a oberourien a zo er post wikilog-mañ',
 	'wikilog-too-many-tags' => 'Diwallit : Re a balizennoù a zo er post wikilog-mañ',
 	'wikilog-comment-is-empty' => 'Goullo eo an addispleg postet.',
@@ -1061,6 +1061,11 @@ Diaskit ar voest-mañ evit ma chomo ar pennad ur brouilhed.",
 	'wikilog-comment-invalid-name' => 'Direizh eo an anv pourchaset.',
 	'wikilog-no-such-article' => "N'eus ket eus ar pennad wikilog goulennet.",
 	'wikilog-reading-draft' => "Ar pennad-mañ eus wikilog a zo ur brouilhoñs, n'eo ket bet embannet evit c'hoazh.",
+	'wikilog-posting-anonymously' => "N'oc'h ket luget evit poent ;
+embannet e vo hoc'h evezhiadenn en un doare dianv, anavezet gant ho chomlec'h lugañ da Internet.
+Rankout a rafec'h lakaat ul lesanv a-us a-benn anavezout hoc'h evezhiadenn, pe $1 evit ma vefe deroet en un doare reizh.",
+	'wikilog-anonymous-moderated' => "Ur wech ma vo postet hoc'h evezhiadenn ganeoc'h, ne vo ket posubl e lenn kerkent.
+Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",
 	'wikilog-post-comment' => 'Postañ un addispleg nevez',
 	'wikilog-post-reply' => 'Embann ur respont nevez',
 	'wikilog-form-legend' => 'Klask postoù wikilog',
@@ -2002,6 +2007,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Silvonen
  * @author Str4nd
@@ -2067,6 +2073,7 @@ Julkaistaksesi artikkeleita ja ottaaksesi muut wikilogin ominaisuudet käyttöö
 	'wikilog-edit-signpub' => 'Allekirjoita ja julkaise tämä artikkeli',
 	'wikilog-edit-signpub-tooltip' => 'Aiheuttaa tämän artikkelin allekirjoituksen ja julkaisemisen wikilogiinsa tallennettaessa.
 Poista tämän laatikon valinta pitääksesi artikkelin luonnoksena.',
+	'wikilog-comment-anonsig' => '$3 (anonyymi)',
 	'wikilog-comment-pending' => 'Tämä kommentti odottaa hyväksyntää.',
 	'wikilog-comment-deleted' => 'Tämä kommentti oli poistettu.',
 	'wikilog-comment-autosumm' => 'Uusi kommentti käyttäjältä $1: $2',
@@ -3517,6 +3524,20 @@ $messages['lb'] = array(
 	'wikilog-doc-import-comment' => 'Importéiert Wikilog-Dokumentatioun',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'wikilog-view-archives' => 'Arkivepe',
+	'wikilog-comment-delete' => 'Am yorumi jili',
+	'wikilog-form-category' => "K'at'egori:",
+	'wikilog-form-name' => 'Coxo:',
+	'wikilog-form-date' => 'Tarixi:',
+	'wikilog-reply-lc' => "Cevabi Doç'ari",
+	'wikilog-delete-lc' => 'jili',
+	'wikilog-page-lc' => 'Sayfe',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -3589,6 +3610,9 @@ $messages['mk'] = array(
 	'wikilog-edit-signpub' => 'Потпиши и објави ја статијава.',
 	'wikilog-edit-signpub-tooltip' => 'Предизвикува потпишување и објавување на овој викидневник при негово зачувување.
 Отштиклирајте го ова кутивче за да ја оставите статијата како работна верзија.',
+	'wikilog-comment-permalink' => '$1 во $2',
+	'wikilog-comment-note-edited' => 'последно уредување на $1 во $2',
+	'wikilog-comment-anonsig' => '$3 (анонимно)',
 	'wikilog-comment-pending' => 'Овој коментар чека одобрување.',
 	'wikilog-comment-deleted' => 'Овој коментар е избришан.',
 	'wikilog-comment-autosumm' => 'Нов коментар од $1: $2',
@@ -3963,6 +3987,9 @@ For å publisere artikler og tillate andre wikiloggegenskaper må denne opprette
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
 	'wikilog-edit-signpub-tooltip' => 'Lagring fører til at denne artikkelen blir signert og publisert i sin wikilogg.
 Hak vekk denne boksen dersom du vil beholde artikkelen som et utkast.',
+	'wikilog-comment-permalink' => '$1, $2',
+	'wikilog-comment-note-edited' => 'Sist endret $1, $2',
+	'wikilog-comment-anonsig' => '$3 (anonym)',
 	'wikilog-comment-pending' => 'Denne kommentaren venter på godkjenning.',
 	'wikilog-comment-deleted' => 'Denne kommentaren ble slettet.',
 	'wikilog-comment-autosumm' => 'Ny kommentar fra $1: $2',
@@ -4924,7 +4951,7 @@ $messages['si'] = array(
 	'wikilog-pager-prev' => 'කලින්',
 	'wikilog-pager-next' => 'මී ළඟට',
 	'wikilog-pager-first' => 'ප්‍රථම',
-	'wikilog-pager-last' => 'අවසාන ',
+	'wikilog-pager-last' => 'අවසාන',
 	'wikilog-pager-empty' => '(අයිතම නොමැත)',
 	'wikilog-no-comments' => 'විචාර නොමැත',
 	'wikilog-has-comments' => '{{PLURAL:$1|එක විචාරයක්|$1 විචාර}}',

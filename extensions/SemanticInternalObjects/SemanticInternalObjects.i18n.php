@@ -83,6 +83,13 @@ $messages['es'] = array(
 	'semanticinternalobjects-desc' => 'Configuración de objetos internos en Semantic MediaWiki',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'semanticinternalobjects-desc' => 'Sisäisten objektien asetukset semanttisessa MediaWikissä',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

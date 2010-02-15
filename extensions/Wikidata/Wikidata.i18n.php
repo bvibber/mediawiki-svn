@@ -381,21 +381,6 @@ $messages['niu'] = array(
 	'ow_history' => 'Liu onoono atu ki tua',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'langman_langname' => 'Nenaşi Coxo:',
-	'langman_iso639-3' => "ISO 639-3 K'odi:",
-	'langman_iso639-2' => "ISO 639-2 K'odi:",
-	'langman_wikimedia' => "Vik'imedyaş K'odi:",
-	'datasearch_language' => 'Nena:',
-	'ow_exporttsv_languages' => 'Nenape:',
-	'ow_dm_OK' => 'HO',
-	'ow_Language' => 'Nena',
-	'ow_Time' => 'Ora',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -3769,6 +3754,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Mobe
@@ -3922,6 +3908,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'ow_SourceIdentifier' => 'Lähdetunnus',
 	'ow_Text' => 'Teksti',
 	'ow_TextAttribute' => 'Ominaisuus',
+	'ow_TextAttributeHeader' => 'Tekstiattribuutti',
 	'ow_TextAttributeValues' => 'Pelkkä teksti',
 	'ow_Time' => 'Aika',
 	'ow_TranslatedTextAttribute' => 'Ominaisuus',
@@ -7594,6 +7581,21 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'langman_langname' => 'Nenaşi Coxo:',
+	'langman_iso639-3' => "ISO 639-3 K'odi:",
+	'langman_iso639-2' => "ISO 639-2 K'odi:",
+	'langman_wikimedia' => "Vik'imedyaş K'odi:",
+	'datasearch_language' => 'Nena:',
+	'ow_exporttsv_languages' => 'Nenape:',
+	'ow_dm_OK' => 'HO',
+	'ow_Language' => 'Nena',
+	'ow_Time' => 'Ora',
 );
 
 /** Maithili (मैथिली)

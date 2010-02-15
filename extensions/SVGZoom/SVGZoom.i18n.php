@@ -72,6 +72,13 @@ $messages['es'] = array(
 	'svgzoom-desc' => 'Añade capacidades de recorrido y acercamiento-alejamiento a MediaWiki al ver archivos SVG',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'svgzoom-desc' => 'Lisää vierityksen ja loitonnus/lähennysominaisuudet MediaWikiin katsottaessa SVG-tiedostoja',
+);
+
 /** French (Français)
  * @author IAlex
  */

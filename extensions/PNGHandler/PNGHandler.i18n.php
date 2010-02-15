@@ -229,7 +229,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'pnghandler-desc' => 'PNGen redimensionéiere mat Hellëf vu pngds',
+	'pnghandler-desc' => 'PNGen redimensionéiere mat Hëllef vu pngds',
 );
 
 /** Macedonian (Македонски)

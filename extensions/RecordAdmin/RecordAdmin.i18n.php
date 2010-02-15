@@ -2147,6 +2147,7 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'recordadmin-buttonsearch' => 'זוכן',
 	'recordadmin-buttonsave' => 'אויפֿהיטן',
+	'recordadmin-editlink' => 'ענדערן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

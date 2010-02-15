@@ -940,7 +940,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'imagemap_desc' => 'Erlaabt et Biller ze benotzen déi een uklicke ka mat Hellëf vum Tag <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_desc' => 'Erlaabt et Biller ze benotzen déi een uklicke ka mat Hëllef vum Tag <tt><nowiki><imagemap></nowiki></tt>.',
 	'imagemap_no_image' => 'Feeler: Dir musst an der éischter Linn e Bild uginn',
 	'imagemap_invalid_image' => "Feeler: d'Bild ass ongëltig oder net do",
 	'imagemap_bad_image' => "Feeler: D'Bild steet op der Lëscht vun den onerwënschte Biller",

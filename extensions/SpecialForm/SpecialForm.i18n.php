@@ -454,6 +454,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Jack Phoenix
@@ -469,6 +470,7 @@ $messages['fi'] = array(
 	'formpattern' => '$1-lomake',
 	'formtitlepattern' => 'Lisää uusi $1',
 	'formsave' => 'Tallenna',
+	'formindexmismatch-title' => 'Nimimalli- ja mallinnetäsmäämättömyys',
 	'formindexmismatch' => 'Tällä lomakkeella on yhteensopimattomat nimi- ja mallinekaavat alkaen riviltä $1.',
 	'formarticleexists' => 'Sivu on jo olemassa',
 	'formarticleexiststext' => 'Sivu [[$1]] on jo olemassa.',

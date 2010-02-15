@@ -410,7 +410,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'pageby-desc' => "Weist d'Auteuren op enger Wikisäit mat Hellëf vum Tag <code><nowiki><pageby></nowiki></code>",
+	'pageby-desc' => "Weist d'Auteuren op enger Wikisäit mat Hëllef vum Tag <code><nowiki><pageby></nowiki></code>",
 	'pageby-first' => 'Säit ugefaang vum $1, $2',
 	'pageby-last' => 'Lescht <a href="$3">Ännerung</a> vum $1, $2',
 	'pageby-contributors' => 'Kontributioune vum:',

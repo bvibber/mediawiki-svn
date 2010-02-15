@@ -204,6 +204,13 @@ $messages['frp'] = array(
 	'externalpages-no-page' => 'Gins de pâge spècefiâ',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'externalpages' => 'Pagjinis esternis',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

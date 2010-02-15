@@ -341,17 +341,6 @@ www.example.org is not a real website, but it has been reserved to use in softwa
 	'wikieditor-toolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'wikieditor-toolbar-tool-small' => "Ç'ut'a",
-	'wikieditor-toolbar-tool-gallery' => "Suret'iş Galeri",
-	'wikieditor-toolbar-characters-page-latin' => "Lat'ini",
-	'wikieditor-toolbar-characters-page-greek' => 'Xorumi',
-	'wikieditor-toolbar-characters-page-arabic' => 'Arabuli',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author Omnipaedista
@@ -4983,6 +4972,23 @@ $messages['frp'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Tèxto normal<dl><dd>Tèxto endentâ<dl><dd>Tèxto endentâ</dd></dl></dd></dl>',
 );
 
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'wikieditor-toolbar-loading' => 'Daûr a cjamâ…',
+	'wikieditor-toolbar-tool-bold' => 'Gruessut',
+	'wikieditor-toolbar-tool-bold-example' => 'Test in gruessut',
+	'wikieditor-toolbar-tool-italic' => 'Corsîf',
+	'wikieditor-toolbar-tool-italic-example' => 'Test in corsîf',
+	'wikieditor-toolbar-tool-ilink' => 'Leam interni',
+	'wikieditor-toolbar-tool-ilink-example' => 'Titul dal leam',
+	'wikieditor-toolbar-tool-link' => 'Leam',
+	'wikieditor-toolbar-tool-table-preview' => 'Anteprime',
+	'wikieditor-toolbar-characters-page-symbols' => 'Simbols',
+	'wikieditor-toolbar-section-help' => 'Jutori',
+);
+
 /** Western Frisian (Frysk)
  * @author SK-luuut
  */
@@ -8584,6 +8590,17 @@ $messages['lv'] = array(
 	'wikieditor-toolbar-help-content-indent-description' => 'Atkāpe',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Teksts bez atkāpes<br />:Teksts ar atkāpi<br />::Teksts ar atkāpi',
 	'wikieditor-toolbar-help-content-indent-result' => 'Teksts bez atkāpes<dl><dd>Teksts ar atkāpi<dl><dd>Teksts ar atkāpi</dd></dl></dd></dl>',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'wikieditor-toolbar-tool-small' => "Ç'ut'a",
+	'wikieditor-toolbar-tool-gallery' => "Suret'iş Galeri",
+	'wikieditor-toolbar-characters-page-latin' => "Lat'ini",
+	'wikieditor-toolbar-characters-page-greek' => 'Xorumi',
+	'wikieditor-toolbar-characters-page-arabic' => 'Arabuli',
 );
 
 /** Macedonian (Македонски)

@@ -121,6 +121,7 @@ $messages['eu'] = array(
 	'lastuserlogin_username' => 'Benetako izena',
 	'lastuserlogin_useremail' => 'Lankide eposta',
 	'lastuserlogin_lastlogin' => 'Azken Saio-hasiera',
+	'lastuserlogin_daysago' => 'duela egun',
 );
 
 /** Finnish (Suomi)
