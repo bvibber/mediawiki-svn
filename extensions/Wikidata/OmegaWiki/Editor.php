@@ -209,7 +209,7 @@ interface Editor {
 	public function save( IdStack $idPath, $value );
 
 	public function getUpdateValue( IdStack $idPath );
-	public function getAddValue( IdStack $idPath );
+	public function getAddValues( IdStack $idPath );
 
 	public function getEditors();
 	public function getAttributeEditorMap();
@@ -316,7 +316,7 @@ abstract class Viewer extends DefaultEditor {
 		return null;
 	}
 
-	public function getAddValue( IdStack $idPath ) {
+	public function getAddValues( IdStack $idPath ) {
 		return null;
 	}
 
@@ -344,27 +344,41 @@ abstract class RecordSetEditor extends DefaultEditor {
 		$this->controller = $controller;
 	}
 
-	public function getAddValue( IdStack $idPath ) {
+	public function getAddValues( IdStack $idPath ) {
 		$addStructure = $this->getAddStructure();
 
 		if ( count( $addStructure->getAttributes() ) > 0 ) {
-			$relation = new ArrayRecordSet( $addStructure, $addStructure );  // TODO Determine real key
-			$values = array();
+			$relations = array();
 
-			foreach ( $this->getEditors() as $editor )
+			$value_array_array = array(array());
+
+			foreach ( $this->getEditors() as $editor ) {
 				if ( $attribute = $editor->getAddAttribute() ) {
 					$idPath->pushAttribute( $attribute );
-					$values[] = $editor->getAddValue( $idPath );
+
+					$addValues = $editor->getAddValues( $idPath );
+					$i = 0;
+					foreach ( $addValues as $value ) {
+						$value_array_array[$i][] = $value ;
+						$i++;
+					}
+
 					$idPath->popAttribute();
 				}
+			}
 
-			$relation->addRecord( $values );
+			foreach ( $value_array_array as $value_array ) {
+				$relation = new ArrayRecordSet( $addStructure, $addStructure ) ;  // TODO Determine real key
+				$relation->addRecord( $value_array );
+				$relations[] = $relation ;
+			}
 
-			return $relation;
+			return $relations ;
 		}
 		else
 			return null;
 	}
+
 
 	protected function saveRecord( IdStack $idPath, Record $record ) {
 		foreach ( $this->getEditors() as $editor ) {
@@ -452,16 +466,25 @@ abstract class RecordSetEditor extends DefaultEditor {
 	}
 
 	public function getAddRecord( IdStack $idPath, Structure $structure, $editors ) {
-		$result = new ArrayRecord( $structure );
+		$results = array();
 
 		foreach ( $editors as $editor )
 			if ( $attribute = $editor->getAddAttribute() ) {
 				$idPath->pushAttribute( $attribute );
-				$result->setAttributeValue( $attribute, $editor->getAddValue( $idPath ) );
+				$addValues = $editor->getAddValues( $idPath );
+				$i = 0 ;
+				foreach ( $addValues as $value ) {
+					if ( ! $results[$i] ) {
+						$results[$i] = new ArrayRecord( $structure );
+					}
+					$results[$i]->setAttributeValue( $attribute, $value );
+					$i++ ;
+				}
+
 				$idPath->popAttribute();
 			}
 
-		return $result;
+		return $results;
 	}
 
 	public function getUpdateRecord( IdStack $idPath, Structure $structure, $editors ) {
@@ -484,8 +507,12 @@ abstract class RecordSetEditor extends DefaultEditor {
 
 			if ( count( $addStructure->getAttributes() ) > 0 ) {
 				$addEditors = $this->getAddEditors(); // array of editors
-				$record = $this->getAddRecord( $idPath, $addStructure, $addEditors ); // array of records
-				$this->controller->add( $idPath, $record );
+
+				$records = array();
+				$records = $this->getAddRecord( $idPath, $addStructure, $addEditors );
+				foreach ( $records as $record ) {
+					$this->controller->add( $idPath, $record );
+				}
 			}
 		}
 
@@ -779,7 +806,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		
 		# + is add new Fo o(but grep this file for Add.png for more)
 		if ( $allowRemove ) {
-			$result .= '<td class="add"><img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc( "AddHint" ) . '" alt="Add"/></td>' . EOL;
+			$result .= '<td class="add"><img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc( "AddHint" ) . '" alt="Add" onclick="addEmptyRow(this.parentNode.parentNode.id);"/></td>' . EOL;
 		}
 
 		$result .= $this->getStructureAsAddCells( $idPath, $this );
@@ -829,17 +856,25 @@ abstract class RecordEditor extends DefaultEditor {
 		return $result;
 	}
 
-	public function getAddValue( IdStack $idPath ) {
-		$result = new ArrayRecord( $this->getAddStructure() );
+	public function getAddValues( IdStack $idPath ) {
+		$results = array();
 
 		foreach ( $this->getEditors() as $editor )
 			if ( $attribute = $editor->getAddAttribute() ) {
 				$idPath->pushAttribute( $attribute );
-				$result->setAttributeValue( $attribute, $editor->getAddValue( $idPath ) );
+				$addValues = array();
+				$addValues = $editor->getAddValues( $idPath );
+				$i = 0 ;
+				foreach ( $addValues as $value ) {
+					if ( ! $results[$i] ) {
+						$results[$i] = new ArrayRecord( $this->getAddStructure() );
+					}
+					$results[$i]->setAttributeValue( $attribute, $value );
+					$i++ ;
+				}
 				$idPath->popAttribute();
 			}
-
-		return $result;
+		return $results ;
 	}
 
 	public function getUpdateAttribute() {
@@ -947,8 +982,18 @@ abstract class ScalarEditor extends DefaultEditor {
 		return $this->getInputValue( "update-" . $idPath->getId() );
 	}
 
-	public function getAddValue( IdStack $idPath ) {
-		return $this->getInputValue( "add-" . $idPath->getId() );
+	// tries to get multiple "add" values e.g. adding multiple translations at once
+	// the "X-" corresponds to what is in suggest.js, function recursiveChangeId
+	public function getAddValues( IdStack $idPath ) {
+		$addValues = array();
+		$prefix = "add-" ;
+
+		while ( ( $value = $this->getInputValue( $prefix . $idPath->getId() ) ) != '' ) {
+			$addValues[] = $value ;
+			$prefix = $prefix . "X-" ;
+		}
+
+		return $addValues ;
 	}
 
 	public function view( IdStack $idPath, $value ) {
@@ -1751,8 +1796,8 @@ class WrappingEditor implements Editor {
 		return $this->wrappedEditor->getUpdateValue( $idPath );
 	}
 	
-	public function getAddValue( IdStack $idPath ) {
-		return $this->wrappedEditor->getAddValue( $idPath );
+	public function getAddValues( IdStack $idPath ) {
+		return $this->wrappedEditor->getAddValues( $idPath );
 	}
 
 	public function getEditors() {
@@ -1906,7 +1951,7 @@ class RecordSetListEditor extends RecordSetEditor {
 				
 				# For which class is this add?
 				$result .= '<li>' .
-							'<h' . $this->headerLevel . '><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $class ) . '" onclick="toggle(this, event);">' . $this->getExpansionPrefix( $idPath->getClass(), $idPath->getId() ) . ' <img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add"/>' . $this->captionEditor->add( $idPath ) . '</span></h' . $this->headerLevel . '>' . EOL;
+							'<h' . $this->headerLevel . '><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $class ) . '" onclick="toggle(this, event);">' . $this->getExpansionPrefix( $idPath->getClass(), $idPath->getId() ) . ' <img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add" onclick="addEmptyRow(this.parentNode.parentNode.id);"/>' . $this->captionEditor->add( $idPath ) . '</span></h' . $this->headerLevel . '>' . EOL;
 				$idPath->popAttribute();
 	
 				$idPath->pushAttribute( $valueAttribute );
@@ -2255,8 +2300,13 @@ class RecordSetFirstRecordEditor extends RecordSetEditor {
 			$this->recordEditor->save( $idPath, $record );
 			$idPath->popKey();
 		}
-		else
-			$this->controller->add( $idPath, $this->recordEditor->getAddValue( $idPath ) );
+		else {
+			$addValues = array() ;
+			$addValues = $this->recordEditor->getAddValues( $idPath ) ;
+			foreach ( $addValues as $addValue ) {
+				$this->controller->add( $idPath, $addValue );
+			}
+		}
 	}
 
 	public function setRecordEditor( Editor $recordEditor ) {
