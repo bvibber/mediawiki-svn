@@ -17,6 +17,7 @@ $messages['en'] = array(
 	// General
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
+	'right-storyboard' => 'Review, edit, publish, and hide stories',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
