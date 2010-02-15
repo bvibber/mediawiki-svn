@@ -14,14 +14,25 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class SpecialStoryReview extends IncludableSpecialPage {
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( 'StoryReview' );
 
 		wfLoadExtensionMessages( 'Storyboard' );
 	}
 
-	function execute( $language ) {
+	public function execute( $language ) {
+		global $wgUser;
+		if ($wgUser->isAllowed('storyreview') && !$wgUser->isBlocked()) {
+			$this->addOutput();
+		}
+		else {
+			global $wgOut;
+			$wgOut->permissionRequired( 'storyreview' );
+		}
+	}
+	
+	private function addOutput() {
 		global $wgOut;
-		$wgOut->includeJQuery();
+		$wgOut->includeJQuery();		
 	}
 }

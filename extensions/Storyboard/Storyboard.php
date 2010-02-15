@@ -64,12 +64,8 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
  *
  * By default, only sysops will be able to do this.
  */
-$wgGroupPermissions['*'            ]['storyboard'] = false;
-$wgGroupPermissions['user'         ]['storyboard'] = false;
-$wgGroupPermissions['autoconfirmed']['storyboard'] = false;
-$wgGroupPermissions['bot'          ]['storyboard'] = false;
-$wgGroupPermissions['sysop'        ]['storyboard'] = true;
-$wgAvailableRights[] = 'storyboard';
+$wgAvailableRights[] = 'storyreview';
+$wgGroupPermissions['sysop'        ]['storyreview'] = true;
 
 /**
  * Initialization function for the Storyboard extension.
