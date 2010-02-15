@@ -642,10 +642,14 @@ abstract class ApiBase {
 	protected function parseMultiValue($valueName, $value, $allowMultiple, $allowedValues) {
 		if( trim($value) === "" && $allowMultiple)
 			return array();
-		$sizeLimit = $this->mMainModule->canApiHighLimits() ? self::LIMIT_SML2 : self::LIMIT_SML1;
-		$valuesList = explode('|', $value, $sizeLimit + 1);
-		if( self::truncateArray($valuesList, $sizeLimit) ) {
-			$this->setWarning("Too many values supplied for parameter '$valueName': the limit is $sizeLimit");
+
+		// This is a bit awkward, but we want to avoid calling canApiHighLimits() because it unstubs $wgUser
+		$valuesList = explode( '|', $value, self::LIMIT_SML2 + 1 );
+		$sizeLimit = count( $valuesList ) > self::LIMIT_SML1 && $this->mMainModule->canApiHighLimits() ?
+			self::LIMIT_SML2 : self::LIMIT_SML1;
+
+		if ( self::truncateArray( $valuesList, $sizeLimit ) ) {
+			$this->setWarning( "Too many values supplied for parameter '$valueName': the limit is $sizeLimit" );
 		}
 		if (!$allowMultiple && count($valuesList) != 1) {
 			$possibleValues = is_array($allowedValues) ? "of '" . implode("', '", $allowedValues) . "'" : '';
