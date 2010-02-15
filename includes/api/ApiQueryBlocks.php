@@ -94,6 +94,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 			foreach((array)$params['users'] as $u)
 				$this->prepareUsername($u);
 			$this->addWhereFld('ipb_address', $this->usernames);
+			$this->addWhereFld( 'ipb_auto', 0 );
 		}
 		if(isset($params['ip']))
 		{
@@ -112,7 +113,8 @@ class ApiQueryBlocks extends ApiQueryBase {
 			$this->addWhere(array(
 				"ipb_range_start LIKE '$prefix%'",
 				"ipb_range_start <= '$lower'",
-				"ipb_range_end >= '$upper'"
+				"ipb_range_end >= '$upper'",
+				'ipb_auto' => 0
 			));
 		}
 		if(!$wgUser->isAllowed('hideuser'))
@@ -146,7 +148,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 				$block['expiry'] = Block::decodeExpiry($row->ipb_expiry, TS_ISO_8601);
 			if($fld_reason)
 				$block['reason'] = $row->ipb_reason;
-			if($fld_range)
+			if ( $fld_range && !$row->ipb_auto )
 			{
 				$block['rangestart'] = IP::hexToQuad($row->ipb_range_start);
 				$block['rangeend'] = IP::hexToQuad($row->ipb_range_end);
