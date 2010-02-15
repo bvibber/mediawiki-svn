@@ -34,7 +34,7 @@ abstract class CodeCommentLinker {
 		if( strlen($text) <= $maxLen ) {
 			return $text; // string short enough even *with* HTML
 		}
-		$text = MWTidy::tidy( $text ); // fix tags
+		$text = parser::tidy( $text ); // fix tags
 		$displayLen = 0;
 		$doTruncate = true; // truncated string plus '...' shorter than original?
 		$tagType = 0; // 0-open, 1-close
