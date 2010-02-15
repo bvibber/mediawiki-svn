@@ -183,11 +183,6 @@ The comment will only appear after it is reviewed by a moderator.',
 	'wikilog-summary' => '',			# Special page summary
 	'wikilog-backlink' => '← $1',
 	'wikilog-brackets' => '[$1]',
-	'wikilog-navigation-bar' => '<div class="$6 visualClear">
-<div style="float:left">$1 • $2</div>
-<div style="float:right">$3 • $4</div>
-&nbsp;
-</div>',
 );
 
 /** Message documentation (Message documentation)

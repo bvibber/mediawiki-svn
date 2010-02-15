@@ -60,7 +60,6 @@ class WikilogMainPage
 	 */
 	public function view() {
 		global $wgRequest, $wgOut, $wgMimeType;
-		global $wgWikilogNavTop, $wgWikilogNavBottom;
 
 		$query = new WikilogItemQuery( $this->mTitle );
 		$query->setPubStatus( $wgRequest->getVal( 'show' ) );
@@ -98,8 +97,7 @@ class WikilogMainPage
 
 		# Display list of wikilog posts.
 		$body = $pager->getBody();
-		if ( $wgWikilogNavTop ) $body = $pager->getNavigationBar( 'wl-navbar-top' ) . $body;
-		if ( $wgWikilogNavBottom ) $body = $body . $pager->getNavigationBar( 'wl-navbar-bottom' );
+		$body .= $pager->getNavigationBar();
 		$wgOut->addHTML( Xml::openElement( 'div', array( 'class' => 'wl-wrapper' ) ) );
 		$wgOut->addHTML( $body );
 		$wgOut->addHTML( Xml::closeElement( 'div' ) );

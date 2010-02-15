@@ -34,7 +34,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 interface WikilogPager
 {
 	function including( $x = null );
-	function getNavigationBar( $class = 'wl-navbar-any' );
+	function getNavigationBar();
 }
 
 /**
@@ -126,34 +126,12 @@ class WikilogSummaryPager
 		return '<div class="wl-empty">' . wfMsgExt( 'wikilog-pager-empty', array( 'parsemag' ) ) . "</div>";
 	}
 
-	function getNavigationBar( $class = 'wl-navbar-any' ) {
-		if ( !isset( $this->mNavigationBar[$class] ) ) {
-			global $wgLang;
-
-			$nicenumber = $wgLang->formatNum( $this->mLimit );
-			$linkTexts = array(
-				'prev'	=> wfMsgExt( 'wikilog-pager-newer-n', array( 'parsemag' ), $nicenumber ),
-				'next'	=> wfMsgExt( 'wikilog-pager-older-n', array( 'parsemag' ), $nicenumber ),
-				'first'	=> wfMsgHtml( 'wikilog-pager-newest' ),
-				'last'	=> wfMsgHtml( 'wikilog-pager-oldest' )
-			);
-			$pagingLinks = $this->getPagingLinks( $linkTexts );
-			$limitLinks = $this->getLimitLinks();
-
-			$limits = $wgLang->pipeList( $limitLinks );
-			$classes = implode( ' ', array( 'wl-navbar', $class ) );
-
-			$this->mNavigationBar[$class] = wfMsgExt( 'wikilog-navigation-bar',
-				array( 'parsemag' ),
-				/* $1 */ $pagingLinks['first'],
-				/* $2 */ $pagingLinks['prev'],
-				/* $3 */ $pagingLinks['next'],
-				/* $4 */ $pagingLinks['last'],
-				/* $5 */ $limits,
-				/* $6 */ $classes
-			);
+	function getNavigationBar() {
+		if ( !isset( $this->mNavigationBar ) ) {
+			$navbar = new WikilogNavbar( $this, 'chrono-rev' );
+			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );
 		}
-		return $this->mNavigationBar[$class];
+		return $this->mNavigationBar;
 	}
 
 	function formatRow( $row ) {
@@ -432,32 +410,10 @@ class WikilogArchivesPager
 		return in_array( $field, $sortableFields );
 	}
 
-	function getNavigationBar( $class = 'wl-navbar-any' ) {
-		if ( !isset( $this->mNavigationBar[$class] ) ) {
-			global $wgLang;
-
-			$nicenumber = $wgLang->formatNum( $this->mLimit );
-			$linkTexts = array(
-				'prev'	=> wfMsgHtml( 'wikilog-pager-prev' ),
-				'next'	=> wfMsgHtml( 'wikilog-pager-next' ),
-				'first'	=> wfMsgHtml( 'wikilog-pager-first' ),
-				'last'	=> wfMsgHtml( 'wikilog-pager-last' )
-			);
-			$pagingLinks = $this->getPagingLinks( $linkTexts );
-			$limitLinks = $this->getLimitLinks();
-
-			$limits = $wgLang->pipeList( $limitLinks );
-			$classes = implode( ' ', array( 'wl-navbar', $class ) );
-
-			$this->mNavigationBar[$class] = wfMsgExt( 'wikilog-navigation-bar',
-				array( 'parsemag' ),
-				/* $1 */ $pagingLinks['first'],
-				/* $2 */ $pagingLinks['prev'],
-				/* $3 */ $pagingLinks['next'],
-				/* $4 */ $pagingLinks['last'],
-				/* $5 */ $limits,
-				/* $6 */ $classes
-			);
+	function getNavigationBar() {
+		if ( !isset( $this->mNavigationBar ) ) {
+			$navbar = new WikilogNavbar( $this, 'pages' );
+			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );
 		}
 		return $this->mNavigationBar[$class];
 	}

@@ -129,7 +129,6 @@ class SpecialWikilog
 	 */
 	public function webOutput( FormOptions $opts ) {
 		global $wgRequest, $wgOut, $wgMimeType, $wgTitle, $wgParser;
-		global $wgWikilogNavTop, $wgWikilogNavBottom;
 
 		# Set page title, html title, nofollow, noindex, etc...
 		$this->setHeaders();
@@ -179,10 +178,7 @@ class SpecialWikilog
 			$body .= $pager->getBody();
 
 			# Add navigation bars.
-			if ( $wgWikilogNavTop )
-				$body = $pager->getNavigationBar( 'wl-navbar-top' ) . $body;
-			if ( $wgWikilogNavBottom )
-				$body = $body . $pager->getNavigationBar( 'wl-navbar-bottom' );
+			$body .= $pager->getNavigationBar();
 		}
 
 		# Output.

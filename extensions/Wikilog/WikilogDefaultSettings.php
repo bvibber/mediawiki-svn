@@ -84,12 +84,6 @@ $wgWikilogNumArticles = 20;
  */
 $wgWikilogExtSummaries = false;
 
-/**
- * Navigation bars to show in listing pages.
- */
-$wgWikilogNavTop = false;
-$wgWikilogNavBottom = true;
-
 /* *** Editing *** */
 
 /**
