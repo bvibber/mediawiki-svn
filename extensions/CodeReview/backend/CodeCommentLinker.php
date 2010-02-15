@@ -21,11 +21,12 @@ abstract class CodeCommentLinker {
 	}
 	
 	/*
-	 * Truncate a valid HTML string with self-contained tags only
+	 * Truncate a valid HTML string with self-contained tags only.
+	 * Intended for styled/linked text (tags like <span> and <a>).
 	 * Note: tries to fix broken HTML with MWTidy
 	 * @TODO: cleanup and move to language.php
 	 * @param string $text
-	 * @param int $maxLen, (greater than zero)
+	 * @param int $maxLen
 	 * @param string $ellipsis
 	 * @returns string
 	 */
@@ -33,9 +34,11 @@ abstract class CodeCommentLinker {
 		global $wgLang;
 		if( strlen($text) <= $maxLen ) {
 			return $text; // string short enough even *with* HTML
+		} elseif ( $maxLen <= 0 ) {
+			return ''; // no text shown, nothing to format
 		}
 		$text = parser::tidy( $text ); // fix tags
-		$displayLen = 0;
+		$displayLen = 0; // innerHTML legth so far
 		$doTruncate = true; // truncated string plus '...' shorter than original?
 		$tagType = 0; // 0-open, 1-close
 		$bracketState = 0; // 1-tag start, 2-tag name, 3-tag params, 0-neither
