@@ -321,9 +321,9 @@ class WikilogComment
 		$comment->mCommentPage  = $row->wlc_comment_page;
 
 		# This information may not be available for deleted comments.
-		if ( $row->page_title && $row->page_latest ) {
-			$comment->mCommentTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$comment->mCommentRev = $row->page_latest;
+		if ( $row->wlc_page_title && $row->wlc_page_latest ) {
+			$comment->mCommentTitle = Title::makeTitle( $row->wlc_page_namespace, $row->wlc_page_title );
+			$comment->mCommentRev = $row->wlc_page_latest;
 		}
 		return $comment;
 	}
@@ -478,10 +478,10 @@ class WikilogComment
 	 *   used in database queries.
 	 */
 	private static function selectInfo( $dbr ) {
-		extract( $dbr->tableNames( 'wikilog_comments', 'page' ) );
+		list( $wlc, $page ) = $dbr->tableNamesN( 'wikilog_comments', 'page' );
 		return array(
 			'tables' =>
-				"{$wikilog_comments} " .
+				"{$wlc} " .
 				"LEFT JOIN {$page} ON (page_id = wlc_comment_page)",
 			'fields' => array(
 				'wlc_id',
@@ -495,9 +495,9 @@ class WikilogComment
 				'wlc_timestamp',
 				'wlc_updated',
 				'wlc_comment_page',
-				'page_namespace',
-				'page_title',
-				'page_latest'
+				'page_namespace AS wlc_page_namespace',
+				'page_title AS wlc_page_title',
+				'page_latest AS wlc_page_latest'
 			)
 		);
 	}

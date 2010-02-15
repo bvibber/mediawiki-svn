@@ -233,8 +233,8 @@ class WikilogItem
 		$comments = array();
 		foreach ( $result as $row ) {
 			$comment = WikilogComment::newFromRow( $this, $row );
-			if ( $row->page_latest ) {
-				$rev = Revision::newFromId( $row->page_latest );
+			if ( $comment->mCommentRev ) {
+				$rev = Revision::newFromId( $row->mCommentRev );
 				$comment->setText( $rev->getText() );
 			}
 			$comments[] = $comment;
