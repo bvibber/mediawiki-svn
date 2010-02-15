@@ -415,7 +415,7 @@ class WikilogArchivesPager
 			$navbar = new WikilogNavbar( $this, 'pages' );
 			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );
 		}
-		return $this->mNavigationBar[$class];
+		return $this->mNavigationBar;
 	}
 
 	function formatRow( $row ) {
