@@ -26,7 +26,7 @@ abstract class CodeCommentLinker {
 	 * Note: tries to fix broken HTML with MWTidy
 	 * @TODO: cleanup and move to language.php
 	 * @param string $text
-	 * @param int $maxLen
+	 * @param int $maxLen (zero/positive)
 	 * @param string $ellipsis
 	 * @returns string
 	 */
@@ -96,6 +96,9 @@ abstract class CodeCommentLinker {
 					break;
 				}
 			}
+		}
+		if( $displayLen == 0 ) {
+			return ''; // no text shown, nothing to format
 		}
 		self::onEndBracket( $tag, $lastCh, $tagType, $openTags ); // for bad HTML
 		while ( count( $openTags ) > 0 ) {
