@@ -389,6 +389,10 @@ if ( typeof context == 'undefined' ) {
 				context.$content.addClass( 'pasting' );
 			}
 			setTimeout( function() {
+				// Unwrap the span found in webkit copies
+				context.$content.find( 'span.Apple-style-span' ).each( function() {
+					$( this.childNodes ).insertBefore( this );
+				} ).remove();
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
