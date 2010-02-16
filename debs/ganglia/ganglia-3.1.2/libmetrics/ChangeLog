@@ -1,0 +1,872 @@
+2009-01-28 23:04  bnicholes
+
+	* [r1964]
+	  Tagging 3.1.2 (SVN r1963)
+
+2009-01-13 09:25  carenas
+
+	* [r1945]
+	  build: changelog generation fixes
+	  
+	  Update svn2cl tool to correct portability issues, as well to be
+	  able to manage branched development.
+	  
+	  Avoid "vote" messages in the generated ChangeLog which are
+	  unrelated to code history as well to updates to STATUS which are
+	  needed due to coding policies.
+
+2009-01-05 11:59  carenas
+
+	* [r1939]
+	  libmetrics: linux: avoid bogus boottime values from overflows of
+	  /proc/stat
+	  
+	  double the BUFFSIZE used to slurp data from "/proc/stat" as
+	  suggested as a temporary solution in BUG169.
+	  
+	  reported and patch provided in BUG209 by Dave Love, full solution
+	  committed to trunk in r1776 but kept from the maintenance
+	  branches for compatibility reasons.
+
+2009-01-05 11:14  carenas
+
+	* [r1937]
+	  libmetrics: linux: avoid overflow from reading dynamic frequency
+	  the static array used to buffer the value of SCALING_MAX_FREQ is
+	  only 32 bytes long so use the right buffer size in slurpfile to
+	  avoid overflowing it if the contents of the slurped file exceed
+	  that.
+	  
+	  commit slightly modified from trunk's r1768 to avoid conflicts or
+	  incompatible changes.
+
+2008-08-14 04:06  carenas
+
+	* [r1677]
+	  documentation: libmetrics update for 3.x and cleanup for
+	  ChangeLogs
+	  
+	  svn merge -c 1590
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-14 04:03  carenas
+
+	* [r1676]
+	  build: generate usable ChangeLogs
+	  
+	  svn merge -c 1575 trunk svn merge -c 1576 trunk svn merge -c 1589
+	  trunk svn merge -c 1591 trunk svn merge -c 1592 trunk
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-13 16:17  carenas
+
+	* [r1671]
+	  libmetrics: boottime is an integer not a float
+	  
+	  svn merge -c 1512 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-13 16:14  carenas
+
+	* [r1670]
+	  libmetrics: mtu is always positive so use unsigned instead for
+	  interface
+	  
+	  svn merge -c 1511 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-13 11:27  carenas
+
+	* [r1668]
+	  libmetrics: hardcode MTU size to 1500 bytes if SIOCGIFMTU
+	  undefined
+	  
+	  fix compiling libmetrics in Tru64 (AKA OSF/1) that doesn't have
+	  SIOCGIFMTU defined as reported in BUG75, reported to work with
+	  Tru64 version 5.1b by FURUSAWA Kazumi
+	  
+	  svn merge -c 1572 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-13 11:22  carenas
+
+	* [r1667]
+	  libmetrics: osf: build fixes
+	  
+	  proposed in BUG74 with patches from Steve Feehan and Alejandro
+	  Feijoo
+	  
+	  svn merge -c 1570 trunk svn merge -c 1571 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-13 10:40  carenas
+
+	* [r1663]
+	  libmetrics: code cleanup for enabling -Wall by default if using
+	  gcc
+	  
+	  svn merge -c 1254 trunk svn merge -c 1260 trunk svn merge -c 1261
+	  trunk svn merge -c 1264 trunk svn merge -c 1304 trunk svn merge
+	  -c 1305 trunk svn merge -c 1317 trunk svn merge -c 1473 trunk svn
+	  merge -c 1598 trunk svn merge -c 1613 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-10 02:07  carenas
+
+	* [r1641]
+	  build: solaris support for Sun Studio
+	  
+	  svn merge -c 1417 trunk svn merge -c 1418 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-08-09 22:56  carenas
+
+	* [r1638]
+	  build: remove bogus svn:executable from package
+	  
+	  svn merge -c 1481 trunk svn merge -c 1483 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-06-18 18:21  carenas
+
+	* [r1425]
+	  build: aix static build support
+	  
+	  Fixes building in AIX >= 5.1 maintenance level 2 using
+	  --enable-static-build by forcing AIX's ld to export all symbols
+	  from gmond. It also includes a couple of small portability issues
+	  in libganglia and libmetrics.
+	  
+	  Compiled and tested by Ulf Lange in AIX 5.3
+	  
+	  svn merge -r1411:1414 trunk svn merge -c1421 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-06-12 05:18  carenas
+
+	* [r1406]
+	  build: force using config.{guess,sub} from automake
+	  
+	  refactor the logic used to do a bootstrap so that it will always
+	  use the config.guess and config.sub scripts from automake (copied
+	  at bootstrap time), overriding possible obsoleted files from
+	  libtool that could be pulled otherwise.
+	  
+	  simplify the logic by removing the use of autoreconf and reformat
+	  the scripts to remove obsolete logic and extra spaces.
+	  
+	  svn merge -r1399:1403 trunk
+	  
+	  Reviewed-by: Bernard Li <bernard@vanhpc.org>
+
+2008-05-30 08:59  carenas
+
+	* [r1368]
+	  build: aix and darwin static build fixes
+
+2008-05-30 08:54  carenas
+
+	* [r1367]
+	  build: solaris support
+	  
+	  use pre C99 headers to cover for Solaris<=8 as well as updated
+	  POSIX thread support for post C99 environments like Solaris 10
+	  
+	  svn merge -c 1315 trunk svn merge -c 1316 trunk svn merge -c 1319
+	  trunk svn merge -c 1329 trunk
+	  
+	  Reviewed-by: Brad Nicholes <BNICHOLES@novell.com>
+
+2008-04-23 18:08  carenas
+
+	* [r1294]
+	  libmetrics: freebsd: avoid unitialized values and invalid casts
+	  for cpu_speed
+	  
+	  svn merge -c1293 trunk
+	  
+	  Reviewed-by: Jesse Becker <hawson@gmail.com>
+
+2008-04-16 18:12  bnicholes
+
+	* [r1250]
+	  Rename to conform with 3.0 branch naming
+
+2008-04-15 22:52  bnicholes
+
+	* [r1246]
+	  Ganglia 3.1.x stable branch. This branch should be used for all
+	  future 3.1.x official releases
+
+2008-04-14 04:33  carenas
+
+	* [r1240] configure.in:
+	  build: enable support for ISO C99 if available
+
+2008-04-13 08:49  carenas
+
+	* [r1235] cygwin/metrics.c, dragonfly/metrics.c, freebsd/metrics.c,
+	  linux/metrics.c, netbsd/metrics.c, openbsd/metrics.c,
+	  solaris/metrics.c:
+	  libmetrics: tab cleanup
+
+2008-04-09 04:40  carenas
+
+	* [r1222] bootstrap:
+	  build: create build directory for libtoolize when not usin
+	  autoreconf
+
+2008-04-02 06:47  carenas
+
+	* [r1198] build:
+	  build: remove empty autotools utility directories
+
+2008-04-02 06:16  carenas
+
+	* [r1196] tests/Makefile.am:
+	  libmetrics: use a generic settings instead of target specific
+
+2008-04-02 05:28  carenas
+
+	* [r1194] tests/test-metrics.c:
+	  libmetrics: test use unsigned identifier for unsigned types
+
+2008-04-01 07:14  carenas
+
+	* [r1183] hpux/metrics.c:
+	  libmetrics: HPUX: avoid long sign overflow
+
+2008-04-01 07:03  carenas
+
+	* [r1182] tests/Makefile.am:
+	  libmetrics: include path to libganglia headers
+
+2008-04-01 01:58  carenas
+
+	* [r1177] cygwin/metrics.c, libmetrics.h, solaris/metrics.c:
+	  libmetrics: use gm_msg to fix ganglia public headers build
+	  problems
+
+2008-03-31 22:00  bnicholes
+
+	* [r1171] get_ifi_info.c:
+	  Remove apr from the public headers except for gm_metric.h since
+	  metric modules depend directly on apr. This should break all of
+	  the dependancies that gmetad, gstat and gmetric have on apr
+	  directly. Apr should now only be directly referenced by gmond and
+	  libganglia.
+
+2008-03-31 06:58  carenas
+
+	* [r1167] cygwin/metrics.c, get_ifi_info.c:
+	  libganglia: rename error message interfaces to error_msg
+	  
+	  error.h conflicts with a system header in Linux and masquerades
+	  the dependency to libganglia and the API used
+
+2008-03-31 06:21  carenas
+
+	* [r1165] hpux/metrics.c:
+	  libmetrics: hpux: dead code
+
+2008-03-31 04:18  carenas
+
+	* [r1163] hpux/metrics.c:
+	  libmetrics: hpux: missing definition for get_min_mtu
+
+2008-03-31 01:24  carenas
+
+	* [r1162] linux/metrics.c:
+	  libmetrics: include interface.h for declaration of function
+	  'get_min_mtu'
+
+2008-03-31 00:33  carenas
+
+	* [r1161] irix/metrics.c, linux/metrics.c, solaris/metrics.c:
+	  libmetrics: remove obsolete standalone tests
+
+2008-03-29 06:23  bnicholes
+
+	* [r1153] libmetrics.h:
+	  Fix libmetrics so that it doesn't try to include any of the APR
+	  headers.
+
+2008-03-29 00:45  carenas
+
+	* [r1151] darwin/Makefile.am, netbsd/Makefile.am,
+	  openbsd/Makefile.am:
+	  libmetrics: remove bogus use of top_builddir to locate libganglia
+
+2008-03-28 16:40  bnicholes
+
+	* [r1146] Makefile.am, aix/Makefile.am, cygwin/Makefile.am,
+	  cygwin/metrics.c, darwin/Makefile.am, dragonfly/Makefile.am,
+	  freebsd/Makefile.am, hpux/Makefile.am, irix/Makefile.am,
+	  libmetrics.h, linux/Makefile.am, netbsd/Makefile.am,
+	  openbsd/Makefile.am, osf/Makefile.am, solaris/Makefile.am,
+	  solaris/metrics.c:
+	  rearrange the header files to support building metric module
+	  outside of the ganglia tree. This provides public headers and
+	  libraries for building modules and ganglia utilities
+
+2008-03-26 07:26  carenas
+
+	* [r1126] netbsd/metrics.c:
+	  libmetrics: NetBSD: missing libc definitions for string/memory
+	  functions
+	  
+	  showing warnings for mismatches/intrinsics for str[n]cpy, memcpy,
+	  strlen, strchr and bzero in NetBSD 4.0
+
+2008-03-25 18:51  carenas
+
+	* [r1119] aix/metrics.c:
+	  libmetrics: AIX: os_name metric by Michael Perzl
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:49  carenas
+
+	* [r1118] aix/metrics.c:
+	  libmetrics: AIX: boottime metric by Michael Perzl
+	  
+	  merges fixes into one single function
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:32  carenas
+
+	* [r1117] aix/metrics.c:
+	  libmetrics: AIX: cpu_num metric by Michael Perzl
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:30  carenas
+
+	* [r1116] aix/metrics.c:
+	  libmetrics: AIX: machine_type metric by Michael Perzl
+	  
+	  using "unknown" in case of failure to avoid overflow and for
+	  consistency with other platforms
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:28  carenas
+
+	* [r1115] aix/metrics.c:
+	  libmetrics: AIX: cpu speed metric by Michael Perzl
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:26  carenas
+
+	* [r1114] aix/metrics.c:
+	  libmetrics: AIX: load metrics by Michael Perzl
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:25  carenas
+
+	* [r1113] aix/metrics.c:
+	  libmetrics: AIX: memory metrics by Michael Perzl
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-25 18:08  carenas
+
+	* [r1112] aix/metrics.c:
+	  libmetrics: AIX: disk metrics by Michael Perzl
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-03-19 00:41  carenas
+
+	* [r1080] stamp-h1:
+	  build: remove autotools generated files
+	  
+	  reported as being deleted at bootstrap time by Bernard
+
+2008-03-18 09:44  knobi1
+
+	* [r1078] linux/metrics.c:
+	  MKN: Sanitize networking metrics for 3.1.x. Add some FIXME
+	  comments.
+
+2008-03-17 09:19  carenas
+
+	* [r1071] openbsd/metrics.c:
+	  libmetrics: openbsd: clean dead code and add missing header
+	  
+	  fixes :
+	  
+	  metrics.c: In function `machine_type_func': metrics.c:220:
+	  warning: implicit declaration of function `strncpy' metrics.c: In
+	  function `cpu_state': metrics.c:282: warning: implicit
+	  declaration of function `bzero' metrics.c: In function
+	  `checkvfsname': metrics.c:801: warning: implicit declaration of
+	  function `strcmp' metrics.c: In function `makevfslist':
+	  metrics.c:831: warning: implicit declaration of function `strchr'
+	  metrics.c: In function `makenetvfslist': metrics.c:871: warning:
+	  implicit declaration of function `strlen' metrics.c:883: warning:
+	  implicit declaration of function `strcpy' metrics.c:848: warning:
+	  unused variable `ptr' metrics.c: At top level: metrics.c:75:
+	  warning: `use_vm_swap_info' defined but not used metrics.c:76:
+	  warning: `mibswap' defined but not used metrics.c:77: warning:
+	  `mibswap_size' defined but not used
+
+2008-03-17 07:20  carenas
+
+	* [r1069] bootstrap:
+	  build: recreate ltmain.sh and other libtool generated files
+	  
+	  fixes bootstrap failures since 1065 in platforms that are not
+	  using autoreconf yet. reported by Jesse Becker as a failure in
+	  OpenBSD 4.1
+
+2008-03-16 07:27  carenas
+
+	* [r1067] tests/Makefile.am:
+	  libmetrics: build tests only when make check was invoked
+
+2008-03-16 02:10  carenas
+
+	* [r1066] INSTALL, build/ltmain.sh, build/mkinstalldirs:
+	  build: remove all remaining autotools generated files
+
+2008-03-07 10:02  carenas
+
+	* [r1049] libmetrics.h:
+	  libmetrics: remove duplicaded config.h include and cleanup
+
+2008-03-07 08:30  carenas
+
+	* [r1046] cygwin/metrics.c:
+	  libmetrics: cygwin report swap metrics might be buggy based on
+	  BUG171
+
+2008-03-07 08:23  carenas
+
+	* [r1045] aix/metrics.c:
+	  libmetrics: report disk statistics in GB
+	  
+	  reported by David Wong in BUG179
+
+2008-03-07 07:56  carenas
+
+	* [r1043] configure.in, freebsd/metrics.c, libmetrics.h,
+	  netbsd/metrics.c, solaris/metrics.c:
+	  libmetrics: misc
+
+2008-03-07 07:49  carenas
+
+	* [r1042] cygwin/Makefile.am, cygwin/metrics.c:
+	  libmetrics: cygwin proc metrics
+
+2008-03-05 13:06  carenas
+
+	* [r1038] cygwin/metrics.c:
+	  libmetrics: cygwin: broken build because of typo
+
+2008-03-05 12:56  carenas
+
+	* [r1037] cygwin/metrics.c:
+	  libmetrics: cygwin: there are no load metrics
+
+2008-03-05 12:46  carenas
+
+	* [r1036] cygwin/metrics.c:
+	  libmetrics: cygwin: remove bogus cpu metrics
+
+2008-03-05 12:38  carenas
+
+	* [r1035] cygwin/metrics.c:
+	  libmetrics: cygwin: update jiffies to match /proc/stat format
+
+2008-03-05 12:29  carenas
+
+	* [r1034] cygwin/metrics.c:
+	  libmetrics: cygwin: style fixes and error checking for uname
+
+2008-03-05 12:04  carenas
+
+	* [r1033] cygwin/metrics.c:
+	  libmetrics: cygwin: os name metric
+
+2008-03-05 11:46  carenas
+
+	* [r1032] cygwin/metrics.c:
+	  libmetrics: cygwin: release version metric implementation
+
+2008-03-04 11:57  knobi1
+
+	* [r1029] linux/metrics.c:
+	  MKN: Sanitize the skipping of loX and bondX interfaces. Bugzilla
+	  #180
+
+2008-03-04 09:06  carenas
+
+	* [r1028] tests/Makefile.am:
+	  libmetrics: link static test_metrics
+
+2008-03-04 05:54  carenas
+
+	* [r1027] aix/Makefile.am, dragonfly/Makefile.am,
+	  freebsd/Makefile.am, hpux/Makefile.am, irix/Makefile.am,
+	  osf/Makefile.am:
+	  libmetrics: remove unneeded broken extra include for "lib"
+
+2008-02-29 09:14  carenas
+
+	* [r1013] linux/Makefile.am:
+	  libmetrics: linux: remove obsoleted include path
+
+2008-02-29 09:00  carenas
+
+	* [r1012] cygwin/Makefile.am:
+	  libmetrics: cygwin: remove obsoleted include path
+
+2008-02-29 08:53  carenas
+
+	* [r1011] solaris/Makefile.am:
+	  libmetrics: solaris add relative include path for main lib to fix
+	  build
+	  
+	  debug_msg.h can be found as part of the main libganglia directory
+	  after it was removed from libmetrics in r838
+
+2008-02-29 05:15  carenas
+
+	* [r1010] aix/metrics.c, cygwin/metrics.c, darwin/metrics.c,
+	  dragonfly/metrics.c, freebsd/metrics.c, hpux/metrics.c,
+	  irix/metrics.c, linux/metrics.c, netbsd/metrics.c,
+	  openbsd/metrics.c, osf/metrics.c, solaris/metrics.c,
+	  tests/test-metrics.c:
+	  libmetrics: int to float conversion for memory metrics
+	  
+	  rumours are this will prevent the overflow of the summary memory
+	  cluster graph in very large clusters (the PetaByte bug)
+
+2008-02-29 02:11  carenas
+
+	* [r1009] hpux/metrics.c:
+	  libmetrics: rely on test framework
+
+2008-02-28 21:40  knobi1
+
+	* [r1008] linux/metrics.c:
+	  MKN: Check in some code to handle bogus counter overflows in
+	  network metrics MKN: Fine for 64-bit, but needs discussion for
+	  32-bit
+
+2008-02-25 06:28  carenas
+
+	* [r1002] cygwin/metrics.c, dragonfly/metrics.c, irix/metrics.c,
+	  openbsd/metrics.c:
+	  libmetrics: janitorial cleanup of copy and paste mistakes
+
+2008-02-24 07:47  carenas
+
+	* [r999] Makefile.am:
+	  libmetrics: use relative path to find core library
+
+2008-02-24 07:21  carenas
+
+	* [r998] Makefile.am:
+	  libmetrics: include headers from core library
+	  
+	  otherwise get_ifi_info.c won't be able to build as there is no
+	  error.h in its include path since r992
+
+2008-02-24 04:12  carenas
+
+	* [r995] Makefile.am, configure.in, dragonfly,
+	  dragonfly/Makefile.am, dragonfly/metrics.c:
+	  libmetrics: DragonFlyBSD: initial support
+	  
+	  based on the pkg_src patches and with minimal changes to make it
+	  compile and run the checks in 1.10.1.
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2008-02-24 00:31  carenas
+
+	* [r994] build/config.guess, build/config.sub, build/depcomp,
+	  build/install-sh, build/missing:
+	  libmetrics: remove obsolete automake files
+	  
+	  required to add support to new architectures that need a newer
+	  config.* script like DragonFlyBSD.
+
+2008-02-23 09:36  knobi1
+
+	* [r992] Makefile.am, error.c, error.h:
+	  MKN: Remove files that are duplicated in "lib".
+
+2008-02-22 07:49  carenas
+
+	* [r991] tests/test-metrics.c:
+	  test: all native metrics enabled
+
+2008-02-19 17:25  knobi1
+
+	* [r986] linux/metrics.c:
+	  MKN: Move to getimeofday timestamp for slurpfile
+
+2008-02-19 16:09  knobi1
+
+	* [r985] linux/metrics.c:
+	  MKN: Consolidate metrics gathering for networking functions
+
+2008-02-19 12:15  knobi1
+
+	* [r984] tests/test-metrics.c:
+	  MKN: Revert sense of #ifdef CYGWIN MKN: Fix small syntax error
+
+2008-02-18 03:55  carenas
+
+	* [r983] cygwin/metrics.c, tests/test-metrics.c:
+	  libmetrics: cygwin: basic disk metrics and cygwin specific test
+	  cases
+
+2008-02-15 11:59  carenas
+
+	* [r977] cygwin/metrics.c:
+	  libmetrics: cygwin: eliminate dead code with an incompatible
+	  license
+
+2008-02-15 11:46  carenas
+
+	* [r976] cygwin/metrics.c:
+	  libmetrics: cygwin: rely in test framework
+
+2008-02-15 11:19  carenas
+
+	* [r975] cygwin/metrics.c, netbsd/metrics.c, openbsd/metrics.c:
+	  libmetrics: remove dead code with references to strdup
+
+2008-02-15 11:17  carenas
+
+	* [r974] configure.in:
+	  libmetrics: add strndup autocheck as required by linux metrics
+
+2008-02-14 19:50  bnicholes
+
+	* [r971] linux/metrics.c:
+	  fix memory leak. free the devname string if it already exists in
+	  the hash table
+	  
+	  Submitted by: Martin Knoblauch
+
+2008-02-05 00:21  bnicholes
+
+	* [r933] linux/metrics.c:
+	  fix memory leak. free the devname string if it already exists in
+	  the hash table
+
+2007-12-31 22:05  carenas
+
+	* [r918] cygwin/metrics.c:
+	  libmetrics: cygwin memory metrics using native windows calls
+	  
+	  Signed-off-by: Carlo Marcelo Arenas Belon
+	  <carenas@sajinet.com.pe>
+
+2007-12-17 02:14  carenas
+
+	* [r910] freebsd/metrics.c:
+	  libmetrics: FreeBSD: use vm.vmtotal for process count instead of
+	  kern.proc.all
+	  
+	  fixes BUG150 and BUG151 where MAC or BSD security levels were
+	  being used to restrict process listings and gmond was running as
+	  an unprivileged user.
+
+2007-12-17 01:36  carenas
+
+	* [r909] freebsd/metrics.c:
+	  libmetrics: freebsd overflow for cpu speed metric (BUG160)
+
+2007-11-29 23:57  bnicholes
+
+	* [r893] interface.c:
+	  Add modgstatus.conf to the list of .conf files that need to be
+	  manipulated at configure time.
+
+2007-11-27 10:10  carenas
+
+	* [r884] freebsd/metrics.c:
+	  libmetrics: FreeBSD: fix for bug 159 reported by Emil Sit
+	  
+	  from patch provided by Clement Laforet to use unsigned long for
+	  hw.physmem
+
+2007-11-07 16:18  carenas
+
+	* [r860] linux/metrics.c:
+	  fix patch from BUG114 so that using
+	  /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq is
+	  conditional to avoid spurious error
+
+2007-09-21 00:53  bnicholes
+
+	* [r839] Makefile.am:
+	  Add the ability to pass directives from the gmond.conf file to
+	  specific python modules. This add a configuration section called
+	  pymodule to the module section. Directives can be passed as a
+	  single string or multiple name/value pairs.
+
+2007-09-19 23:31  bnicholes
+
+	* [r838] debug_msg.c, debug_msg.h:
+	  Remove the duplicate version of the debug_msg() function. This
+	  function is available from the libganglia DSO.
+
+2007-09-19 23:29  bnicholes
+
+	* [r837] Makefile.am:
+	  Use a common version of the debug_msg API for all utilities. This
+	  version is available from the libganglia library. Also move the
+	  setting of the debug_level closer to the start of execution
+	  within GMOND so that debug message can be printed before the
+	  daemonization check.
+
+2007-09-02 22:17  carenas
+
+	* [r827] cygwin/metrics.c:
+	  revert to POSIX's ftime and add missing definitions for utility
+	  functions err_msg, debug_msg and get_min_mtu
+
+2007-09-02 21:32  carenas
+
+	* [r826] cygwin/metrics.c:
+	  remove obsolete/incomplete use of _ftime and replace with
+	  _ftime_s
+
+2007-09-02 21:16  carenas
+
+	* [r825] cygwin/metrics.c:
+	  protect assignment to prevent it to be used as truth value in
+	  conditional
+
+2007-09-02 21:07  carenas
+
+	* [r824] cygwin/metrics.c:
+	  report machine_type from windows system info
+
+2007-09-02 18:39  carenas
+
+	* [r823] cygwin/metrics.c:
+	  get the CPU count from windows system info
+
+2007-07-12 00:48  bernardli
+
+	* [r806] bootstrap:
+	  When bootstrap is run, Makefile is not yet created so `make
+	  distclean` would fail
+
+2007-03-09 00:18  iancunningham
+
+	* [r741] linux/metrics.c:
+	  Bugzilla Bug 114: use
+	  /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq if it
+	  exists to determine cpu_speed.
+	  
+	  This solution is the same as the patch suggested for the bug.
+	  Since cpu_speed is being tracked in an rrd, we could use
+	  scaling_cur_freq to track the actual speed of each processor.
+	  That would require seperate metrics per cpu which hasn't been
+	  implemented.
+
+2007-03-02 13:37  massie
+
+	* [r740] linux/Makefile.am, linux/fsusage.c, linux/fsusage.h,
+	  linux/metrics.c:
+	  Bugzilla Bug 130: submitted by bnicholes@novell.com (Brad
+	  Nicholes)
+	  
+	  Since fsusage.c(.h) is licensed under the GPL, this create a
+	  licensing conflict between the BSD license and the GPL on linux.
+	  By removing this file from the build, it eliminates the licensing
+	  conflict.
+
+2007-01-02 11:36  carenas
+
+	* [r710] openbsd/metrics.c:
+	  hardcode failure value to OpenBSD as this is an OpenBSD specific
+	  file anyway
+
+2006-12-27 09:48  carenas
+
+	* [r697] Makefile.am, configure.in, openbsd, openbsd/Makefile.am,
+	  openbsd/metrics.c:
+	  Add OpenBSD support to libmetrics and the needed glue for ganglia
+	  to use it
+
+2006-12-24 10:14  carenas
+
+	* [r695] solaris/metrics.c:
+	  Add disk usage metrics. Fixes bug 124
+
+2006-12-24 04:46  carenas
+
+	* [r694] get_ifi_info.c:
+	  prevent sign expansion problems with 64bit platforms that define
+	  the ioctl request parameter as long (*BSD)
+
+2006-12-21 13:11  carenas
+
+	* [r693] netbsd/metrics.c:
+	  * compile with NetBSD > 3 which removed statfs and replaced it
+	  with a binary incompatible statvfs * update union type for
+	  cpu_speed to use uint32 to match the current ABI
+
+2006-12-19 15:25  efocht
+
+	* [r692] linux/metrics.c:
+	  Skipping devices mounted as read-only from part_max_used test. RO
+	  devices like ISO images appear to be 100% full, which actually is
+	  irrelevant for the fill state of RW partitions.
+
+2006-09-04 18:40  knobi1
+
+	* [r683] cygwin/Makefile.am, linux/Makefile.am, tests/Makefile.am:
+	  MKN: Adjust Makefiles after move of "libmetrics"
+
+2006-09-04 18:27  knobi1
+
+	* [r682] AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, NEWS,
+	  README, acinclude.m4, aix, aix/Makefile.am, aix/metrics.c,
+	  autoscan.log, bootstrap, build, build/config.guess,
+	  build/config.sub, build/depcomp, build/install-sh,
+	  build/ltmain.sh, build/missing, build/mkinstalldirs,
+	  configure.in, cygwin, cygwin/Makefile.am, cygwin/metrics.c,
+	  darwin, darwin/Makefile.am, darwin/metrics.c, debug_msg.c,
+	  debug_msg.h, error.c, error.h, freebsd, freebsd/Makefile.am,
+	  freebsd/metrics.c, get_ifi_info.c, hpux, hpux/Makefile.am,
+	  hpux/metrics.c, interface.c, interface.h, irix, irix/Makefile.am,
+	  irix/metrics.c, libmetrics.c, libmetrics.h, linux,
+	  linux/Makefile.am, linux/fsusage.c, linux/fsusage.h,
+	  linux/metrics.c, netbsd, netbsd/Makefile.am, netbsd/metrics.c,
+	  osf, osf/Makefile.am, osf/metrics.c, solaris,
+	  solaris/Makefile.am, solaris/metrics.c, stamp-h1, tests,
+	  tests/Makefile.am, tests/test-metrics.c, unpifi.h:
+	  MKN: Move "libmetrics" one level up in directory hierarchy.
+

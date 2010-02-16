@@ -1,0 +1,502 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Ganglia Monitoring Daemon v3.1.2 Configuration</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:feedback@suse.de" />
+</head>
+
+<body style="background-color: white">
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="block" style="background-color: #cccccc" valign="middle">
+<big><strong><span class="block">&nbsp;Ganglia Monitoring Daemon v3.1.2 Configuration</span></strong></big>
+</td></tr>
+</table>
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#sections_and_attributes">SECTIONS AND ATTRIBUTES</a></li>
+	<ul>
+
+		<li><a href="#cluster">cluster</a></li>
+		<li><a href="#host">host</a></li>
+		<li><a href="#globals">globals</a></li>
+		<li><a href="#udp_send_channel">udp_send_channel</a></li>
+		<li><a href="#udp_recv_channel">udp_recv_channel</a></li>
+		<li><a href="#tcp_accept_channel">tcp_accept_channel</a></li>
+		<li><a href="#collection_group">collection_group</a></li>
+		<li><a href="#modules">Modules</a></li>
+		<li><a href="#include">Include</a></li>
+	</ul>
+
+	<li><a href="#access_control">ACCESS CONTROL</a></li>
+	<li><a href="#example">EXAMPLE</a></li>
+	<li><a href="#notes">NOTES</a></li>
+	<li><a href="#copyright">COPYRIGHT</a></li>
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<hr />
+<h1><a name="name">NAME</a></h1>
+<p><strong>gmond.conf</strong> - configuration file for ganglia monitoring
+daemon (gmond)</p>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The gmond.conf file is used to configure the ganglia
+monitoring daemon (gmond) which is part of the <strong>Ganglia
+Distributed Monitoring System</strong>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="sections_and_attributes">SECTIONS AND ATTRIBUTES</a></h1>
+<p>All sections and attributes are case-insensitive.  For example,
+<strong>name</strong> or <strong>NAME</strong> or <strong>Name</strong> or <strong>NaMe</strong> are all equivalent.</p>
+<p>Some sections can be included in the configuration file multiple
+times and some sections are singular.  For example, you can
+have only one <strong>cluster</strong> section to define the attributes of
+the cluster being monitored; however, you can have multiple
+<strong>udp_recv_channel</strong> sections to allow gmond to receive message
+on multiple UDP channels.</p>
+<p>
+</p>
+<h2><a name="cluster">cluster</a></h2>
+<p>There should only be one <strong>cluster</strong> section defined.  This
+section controls how gmond reports the attributes of the
+cluster that it is part of.</p>
+<p>The <strong>cluster</strong> section has four attributes: <strong>name</strong>,
+<strong>owner</strong>, <strong>latlong</strong> and <strong>url</strong>.</p>
+<p>For example,</p>
+<pre>
+  cluster {
+    name = &quot;Millennium Cluster&quot;
+    owner = &quot;UC Berkeley CS Dept.&quot;
+    latlong = &quot;N37.37 W122.23&quot;
+    url = &quot;<a href="http://www.millennium.berkeley.edu/&quot">http://www.millennium.berkeley.edu/&quot</a>;
+  }</pre>
+<p>The <strong>name</strong> attributes specifies the name of the cluster of 
+machines.  The <strong>owner</strong> tag specifies the administrators of 
+the cluster.  The pair <strong>name</strong>/<strong>owner</strong> should be unique
+to all clusters in the world.</p>
+<p>The <strong>latlong</strong> attribute is the latitude and longitude GPS 
+coordinates of this cluster on earth.  Specified to 1 mile 
+accuracy with two decimal places per axis in decimal.</p>
+<p>The <strong>url</strong> for more information on the <strong>cluster</strong>. 
+Intended to give purpose, owner, administration, and account details 
+for this cluster.</p>
+<p>There directives directly control the XML output of gmond.  For
+example, the cluster configuration example above would translate
+into the following XML.</p>
+<pre>
+  &lt;CLUSTER NAME=&quot;Millennium Cluster&quot; OWNER=&quot;UC Berkeley CS Dept.&quot;
+           LATLONG=&quot;N37.37 W122.23&quot; URL=&quot;<a href="http://www.millennium.berkeley.edu/">http://www.millennium.berkeley.edu/</a>&quot;&gt;
+  ...
+  &lt;/CLUSTER&gt;</pre>
+<p>
+</p>
+<h2><a name="host">host</a></h2>
+<p>The <strong>host</strong> section provides information about the host running this
+instance of <strong>gmond</strong>. Currently only the <strong>location</strong> string attribute is
+supported. Example:</p>
+<pre>
+ host {
+   location = &quot;1,2,3&quot;
+ }</pre>
+<p>The numbers represent Rack, Rank and Plane respectively.</p>
+<p>
+</p>
+<h2><a name="globals">globals</a></h2>
+<p>The <strong>globals</strong> section controls general characteristics of gmond
+such as whether is should daemonize, what user it should run as,
+whether is should send/receive date and such.  The <strong>globals</strong>
+section has the following attributes: <strong>daemonize</strong>, <strong>setuid</strong>, <strong>user</strong>,
+<strong>debug_level</strong>, <strong>mute</strong>, <strong>deaf</strong>, <strong>allow_extra_data</strong>, <strong>host_dmax</strong>,
+<strong>cleanup_threshold</strong>, <strong>gexec</strong>, <strong>send_metadata_interval</strong>
+and <strong>module_dir</strong>.</p>
+<p>For example,</p>
+<pre>
+  globals {
+    daemonize = true
+    setuid = true
+    user = nobody
+    host_dmax = 3600
+  }</pre>
+<p>The <strong>daemonize</strong> attribute is a boolean.  When true, <strong>gmond</strong> will 
+daemonize.  When false, <strong>gmond</strong> will run in the foreground.</p>
+<p>The <strong>setuid</strong> attribute is a boolean.  When true, <strong>gmond</strong> will
+set its effective UID to the uid of the user specified by the <strong>user</strong>
+attribute.  When false, <strong>gmond</strong> will not change its effective user.</p>
+<p>The <strong>debug_level</strong> is an integer value.  When set to zero (0), <strong>gmond</strong>
+will run normally.  A <strong>debug_level</strong> greater than zero will result in
+<strong>gmond</strong> running in the foreground and outputting debugging information.
+The higher the <strong>debug_level</strong> the more verbose the output.</p>
+<p>The <strong>mute</strong> attribute is a boolean.  When true, <strong>gmond</strong> will not 
+send data regardless of any other configuration directives.</p>
+<p>The <strong>deaf</strong> attribute is a boolean.  When true, <strong>gmond</strong> will not 
+receive data regardless of any other configuration directives.</p>
+<p>The <strong>allow_extra_data</strong> attribute is a boolean.  When false, <strong>gmond</strong> will
+not send out the EXTRA_ELEMENT and EXTRA_DATA parts of the XML.  This might
+be useful if you are using your own frontend to the metric data and will
+like to save some bandwith.</p>
+<p>The <strong>host_dmax</strong> value is an integer with units in seconds.  When set 
+to zero (0), <strong>gmond</strong> will never delete a host from its list even when 
+a remote host has stopped reporting.  If <strong>host_dmax</strong> is set to a
+positive number then <strong>gmond</strong> will flush a host after it has not heard
+from it for <strong>host_dmax</strong> seconds.  By the way, dmax means ``delete max''.</p>
+<p>The <strong>cleanup_threshold</strong> is the minimum amount of time before gmond
+will cleanup any hosts or metrics where <strong>tn</strong> &gt; <strong>dmax</strong> a.k.a. expired
+data.</p>
+<p>The <strong>gexec</strong> boolean allows you to specify whether gmond will announce
+the hosts availability to run gexec jobs.  <strong>Note</strong>: this requires
+that <strong>gexecd</strong> is running on the host and the proper keys have been
+installed.</p>
+<p>The <strong>send_metadata_interval</strong> establishes an interval in which gmond
+will send or resend the metadata packets that describe each enabled 
+metric. This directive by default is set to 0 which means that gmond will
+only send the metadata packets at startup and upon request from other 
+gmond nodes running remotely. If a new machine running gmond is added
+to a cluster, it needs to announce itself and inform all other nodes of the
+metrics that it currently supports. In multicast mode, this isn't a problem
+because any node can request the metadata of all other nodes in the cluster.
+However in unicast mode, a resend interval must be established. The interval
+value is the minimum number of seconds between resends.</p>
+<p>The <strong>module_dir</strong> is an optional parameter indicating the directory where
+the DSO modules are to be located.  If absent, the value to use is set at
+configure time with the --with-moduledir option which will default if omitted
+to the a subdirectory named ``ganglia'' in the directory where libganglia will
+be installed.</p>
+<p>For example, in a 32-bit Intel compatible Linux host that is usually:</p>
+<pre>
+  /usr/lib/ganglia</pre>
+<p>
+</p>
+<h2><a name="udp_send_channel">udp_send_channel</a></h2>
+<p>You can define as many <strong>udp_send_channel</strong> sections as you like within
+the limitations of memory and file descriptors.  If <strong>gmond</strong> is configured
+as <strong>mute</strong> this section will be ignored.</p>
+<p>The <strong>udp_send_channel</strong> has a total of five attributes: <strong>mcast_join</strong>,
+<strong>mcast_if</strong>, <strong>host</strong>, <strong>port</strong> and <strong>ttl</strong>.</p>
+<p>For example, the 2.5.x version gmond would send on the following single channel
+by default...</p>
+<pre>
+  udp_send_channel {
+    mcast_join = 239.2.11.71
+    port       = 8649
+  }</pre>
+<p>The <strong>mcast_join</strong> and <strong>mcast_if</strong> attributes are optional.  When specified
+<strong>gmond</strong> will create the UDP socket and join the <strong>mcast_join</strong> multicast group
+and send data out the interface specified by <strong>mcast_if</strong>.</p>
+<p>If only a <strong>host</strong> and <strong>port</strong> are specified then <strong>gmond</strong> will send unicast UDP
+messages to the hosts specified.  You could specify multiple unicast hosts
+for redundancy as <strong>gmond</strong> will send UDP messages to all UDP channels.</p>
+<p>For example...</p>
+<pre>
+  udp_send_channel {
+    host = host.foo.com
+    port = 2389
+  }
+  udp_send_channel {
+    host = 192.168.3.4
+    port = 2344
+  }</pre>
+<p>would configure gmond to send messages to two hosts.  The <strong>host</strong> specification
+can be an IPv4/IPv6 address or a resolvable hostname.</p>
+<p>
+</p>
+<h2><a name="udp_recv_channel">udp_recv_channel</a></h2>
+<p>You can specify as many <strong>udp_recv_channel</strong> sections as you like within the 
+limits of memory and file descriptors.  If <strong>gmond</strong> is configured <strong>deaf</strong>
+this attribute will be ignored.</p>
+<p>The <strong>udp_recv_channel</strong> section has following attributes:
+<strong>mcast_join</strong>, <strong>bind</strong>, <strong>port</strong>, <strong>mcast_if</strong>, <strong>family</strong>.  The 
+<strong>udp_recv_channel</strong> can also have an <strong>acl</strong> definition (see
+ACCESS CONTROL LISTS below).</p>
+<p>For example, the 2.5.x gmond ran with a single udp receive channel...</p>
+<pre>
+  udp_recv_channel {
+    mcast_join = 239.2.11.71
+    bind       = 239.2.11.71
+    port       = 8649
+  }</pre>
+<p>The <strong>mcast_join</strong> and <strong>mcast_if</strong> should only be used if you want to 
+have this UDP channel receive multicast packets the multicast
+group <strong>mcast_join</strong> on interface <strong>mcast_if</strong>.  If you do not specify
+multicast attributes then <strong>gmond</strong> will simply create a UDP server
+on the specified <strong>port</strong>.</p>
+<p>You can use the <strong>bind</strong> attribute to bind to a particular local address.</p>
+<p>The family address is set to <strong>inet4</strong> by default.  If you want to bind
+the port to an <strong>inet6</strong> port, you need to specify that in the family
+attribute.  Ganglia will not allow IPV6=&gt;IPV4 mapping (for portability
+and security reasons).  If you want to listen on both <strong>inet4</strong> and
+<strong>inet6</strong> for a particular port, explicitly state it with the following:</p>
+<pre>
+  udp_recv_channel {
+    port = 8666
+    family = inet4
+  }
+  udp_recv_channel {
+    port = 8666
+    family = inet6
+  }</pre>
+<p>If you specify a bind address, the family of that address takes precedence.
+f your IPv6 stack doesn't support IPV6_V6ONLY, a warning will be issued
+but gmond will continue working (this should rarely happen).</p>
+<p>Multicast Note: for multicast, specifying a <strong>bind</strong> address with the same
+value used for <strong>mcast_join</strong> will prevent unicast UDP messages to the same
+<strong>port</strong> from being processed.</p>
+<p>
+</p>
+<h2><a name="tcp_accept_channel">tcp_accept_channel</a></h2>
+<p>You can specify as many <strong>tcp_accept_channel</strong> sections as you like
+within the limitations of memory and file descriptors.  If <strong>gmond</strong>
+is configured to be <strong>mute</strong>, then these sections are ignored.</p>
+<p>The <strong>tcp_accept_channel</strong> has the following attributes: <strong>bind</strong>, <strong>port</strong>, 
+<strong>interface</strong>, <strong>family</strong> and <strong>timeout</strong>.  A <strong>tcp_accept_channel</strong> may also have
+an <strong>acl</strong> section specified (see ACCESS CONTROL LISTS below).</p>
+<p>For example, 2.5.x gmond would accept connections on a single TCP
+channel.</p>
+<pre>
+  tcp_accept_channel {
+    port = 8649
+  }</pre>
+<p>The <strong>bind</strong> address is optional and allows you to specify which 
+local address <strong>gmond</strong> will bind to for this channel.</p>
+<p>The <strong>port</strong> is an integer than specifies which port to answer 
+requests for data.</p>
+<p>The <strong>family</strong> address is set to <strong>inet4</strong> by default.  If you want to bind
+the port to an <strong>inet6</strong> port, you need to specify that in the family
+attribute.  Ganglia will not allow IPV6=&gt;IPV4 mapping (for portability
+and security reasons).  If you want to listen on both <strong>inet4</strong> and
+<strong>inet6</strong> for a particular port, explicitly state it with the following:</p>
+<pre>
+  tcp_accept_channel {
+    port = 8666
+    family = inet4
+  }
+  tcp_accept_channel {
+    port = 8666
+    family = inet6
+  }</pre>
+<p>If you specify a bind address, the family of that address takes precedence.
+If your IPv6 stack doesn't support IPV6_V6ONLY, a warning will be issued
+but gmond will continue working (this should rarely happen).</p>
+<p>The <strong>timeout</strong> attribute allows you to specify how many microseconds to block
+before closing a connection to a client.  The default is set to 1 second
+(1000000 usecs).  If you have a very slow connection you may need to increase
+this value.</p>
+<p>The <strong>interface</strong> is not implemented at this time (use <strong>bind</strong>).</p>
+<p>
+</p>
+<h2><a name="collection_group">collection_group</a></h2>
+<p>You can specify as many <strong>collection_group</strong> section as you like
+within the limitations of memory.  A <strong>collection_group</strong> has
+the following attributes: <strong>collect_once</strong>, <strong>collect_every</strong>
+and <strong>time_threshold</strong>.  A <strong>collection_group</strong> must also contain one
+or more <strong>metric</strong> sections.</p>
+<p>The <strong>metric</strong> section has the following attributes: <strong>name</strong>,
+<strong>value_threshold</strong> and <strong>title</strong>.  For a list of available metric 
+names, run the following command:</p>
+<pre>
+  % gmond -m</pre>
+<p>Here is an example of a collection group for a static metric...</p>
+<pre>
+  collection_group {
+    collect_once   = yes
+    time_threshold = 1800
+    metric {
+     name = &quot;cpu_num&quot;
+     title = &quot;Number of CPUs&quot;
+    }
+  }</pre>
+<p>This <strong>collection_group</strong> entry would cause gmond to collect the 
+<strong>cpu_num</strong> metric once at startup (since the number of CPUs will not 
+change between reboots).  The metric <strong>cpu_num</strong> would be send
+every 1/2 hour (1800 seconds).  The default value for the <strong>time_threshold</strong>
+is 3600 seconds if no <strong>time_threshold</strong> is specified.</p>
+<p>The <strong>time_threshold</strong> is the maximum amount of time that can pass before
+gmond sends all <strong>metric</strong>s specified in the <strong>collection_group</strong> to all
+configured <strong>udp_send_channel</strong>s.  A <strong>metric</strong> may be sent before this
+<strong>time_threshold</strong> is met if during collection the value surpasses the
+<strong>value_threshold</strong> (explained below).</p>
+<p>Here is an example of a collection group for a volatile metric...</p>
+<pre>
+  collection_group {
+    collect_every = 60
+    time_threshold = 300
+    metric {
+      name = &quot;cpu_user&quot;
+      value_threshold = 5.0
+      title = &quot;CPU User&quot;
+    }
+    metric {
+      name = &quot;cpu_idle&quot;
+      value_threshold = 10.0
+      title = &quot;CPU Idle&quot;
+    }
+  }</pre>
+<p>This collection group would collect the <strong>cpu_user</strong> and <strong>cpu_idle</strong> metrics
+every 60 seconds (specified in <strong>collect_every</strong>).  If <strong>cpu_user</strong> varies by
+5.0% or <strong>cpu_idle</strong> varies by 10.0%, then the entire <strong>collection_group</strong>
+is sent.  If no <strong>value_threshold</strong> is triggered within <strong>time_threshold</strong>
+seconds (in this case 300), the entire <strong>collection_group</strong> is sent.</p>
+<p>Each time the metric value is collected the new value is compared with
+the old value collected.  If the difference between the last value and
+the current value is greater than the <strong>value_threshold</strong>, the entire
+collection group is send to the <strong>udp_send_channel</strong>s defined.</p>
+<p>It's important to note that all metrics in a collection group are sent
+even when only a single <strong>value_threshold</strong> is surpassed.</p>
+<p>In addition a user friendly title can be substituted for the metric name
+by including a <strong>title</strong> within the <strong>metric</strong> section.</p>
+<p>
+</p>
+<h2><a name="modules">Modules</a></h2>
+<p>A <strong>modules</strong> section contains the parameters that are necessary to load a
+metric module. A metric module is a dynamically loadable module that 
+extends the available metrics that gmond is able to collect. Each <strong>modules</strong>
+section contains at least one <strong>module</strong> section.  Within a <strong>module</strong> section
+are the directives <strong>name</strong>, <strong>language</strong>, <strong>enabled</strong>, <strong>path</strong> and <strong>params</strong>.  
+The module <strong>name</strong> is the name of the module as determined by the module 
+structure if the module was developed in C/C++.  Alternatively, the 
+<strong>name</strong> can be the name of the source file if the module has been 
+implemented in a interpreted language such as python.  A <strong>language</strong> 
+designation must be specified as a string value for each module.  The 
+<strong>language</strong> directive must correspond to the source code language in 
+which the module was implemented (ex. language = ``python'').  If a 
+<strong>language</strong> directive does not exist for the module, the assumed 
+language will be ``C/C++''. The <strong>enabled</strong> directive allows a metric module
+to be easily enabled or disabled through the configuration file. If the
+<strong>enabled</strong> directive is not included in the module configuration, the 
+enabled state will default to ``yes''. One thing to note is that if a 
+module has been disabled yet the metric which that module implements 
+is still listed as part of a collection group, gmond will produce a 
+warning message.  However gmond will continue to function normally 
+by simply ignoring the metric. The <strong>path</strong> is the path from which 
+gmond is expected to load the  module (C/C++ compiled dynamically 
+loadable module only).  The <strong>params</strong> directive can be used to pass 
+a single string parameter directly to the module initialization 
+function (C/C++ module only). Multiple parameters can be passed to 
+the module's initialization function by including one or more 
+<strong>param</strong> sections. Each <strong>param</strong> section must be named and contain 
+a <strong>value</strong> directive. Once a module has been loaded, the additional 
+metrics can be discovered by invoking <strong>gmond -m</strong>.</p>
+<pre>
+   modules {
+     module {
+       name = &quot;example_module&quot;
+       enabled = yes
+       path = &quot;modexample.so&quot;
+       params = &quot;An extra raw parameter&quot;
+       param RandomMax {
+         value = 75
+       }
+       param ConstantValue {
+         value = 25
+       }
+     }
+   }</pre>
+<p>
+</p>
+<h2><a name="include">Include</a></h2>
+<p>This directive allows the user to include additional configuration files
+rather than having to add all gmond configuration directives to the
+gmond.conf file.  The following example includes any file with the extension
+of .conf contained in the directory conf.d as if the contents of the included 
+configuration files were part of the original gmond.conf file. This allows 
+the user to modularize their configuration file.  One usage example might 
+be to load individual metric modules by including module specific .conf files.</p>
+<p>include ('/etc/ganglia/conf.d/*.conf')</p>
+<p>
+</p>
+<hr />
+<h1><a name="access_control">ACCESS CONTROL</a></h1>
+<p>The <strong>udp_recv_channel</strong> and <strong>tcp_accept_channel</strong> directives
+can contain an Access Control List (ACL).  This ACL allows you to specify
+exactly which hosts gmond process data from.</p>
+<p>An example of an <strong>acl</strong> entry looks like</p>
+<pre>
+  acl {
+    default = &quot;deny&quot;
+    access {
+      ip = 192.168.0.4
+      mask = 32
+      action = &quot;allow&quot;
+    }
+  }</pre>
+<p>This ACL will by default reject all traffic that is not specifically from
+host 192.168.0.4 (the mask size for an IPv4 address is 32, the mask size
+for an IPv6 address is 128 to represent a single host).</p>
+<p>Here is another example</p>
+<pre>
+  acl {
+    default = &quot;allow&quot;
+    access {
+      ip = 192.168.0.0
+      mask = 24
+      action = &quot;deny&quot;
+    }
+    access {
+      ip = ::ff:1.2.3.0
+      mask = 120
+      action = &quot;deny&quot;
+    }
+  }</pre>
+<p>This ACL will by default allow all traffic unless it comes from the 
+two subnets specified with action = ``deny''.</p>
+<p>
+</p>
+<hr />
+<h1><a name="example">EXAMPLE</a></h1>
+<p>The default behavior for a 2.5.x gmond would be specified as...</p>
+<pre>
+  udp_recv_channel {
+    mcast_join = 239.2.11.71
+    bind       = 239.2.11.71
+    port       = 8649
+  }
+  udp_send_channel {
+    mcast_join = 239.2.11.71
+    port       = 8649
+  }
+  tcp_accept_channel {
+    port       = 8649
+  }</pre>
+<p>To see the complete default configuration for gmond simply run:</p>
+<pre>
+  % gmond -t</pre>
+<p>gmond will print out its default behavior in a configuration file
+and then exit.  Capturing this output to a file can serve as
+a useful starting point for creating your own custom configuration.</p>
+<pre>
+  % gmond -t &gt; custom.conf</pre>
+<p>edit <strong>custom.conf</strong> to taste and then</p>
+<pre>
+  % gmond -c ./custom.conf</pre>
+<p>
+</p>
+<hr />
+<h1><a name="notes">NOTES</a></h1>
+<p>The ganglia web site is at <a href="http://ganglia.info/.">http://ganglia.info/.</a></p>
+<p>
+</p>
+<hr />
+<h1><a name="copyright">COPYRIGHT</a></h1>
+<p>Copyright (c) 2005 The University of California, Berkeley</p>
+<table border="0" width="100%" cellspacing="0" cellpadding="3">
+<tr><td class="block" style="background-color: #cccccc" valign="middle">
+<big><strong><span class="block">&nbsp;Ganglia Monitoring Daemon v3.1.2 Configuration</span></strong></big>
+</td></tr>
+</table>
+
+</body>
+
+</html>
