@@ -25,15 +25,25 @@ table.bz_buglist td {
 tr.bz_bugitem:hover {
     background-color: #f0f0f0;
 }
+/* Must go first because of issue with BugZilla wrongly assuming case sensitivity in CSS classes */
+.bz_normal {
+  color:#BB7700;
+}
+/* Otherwise, in order of severity */
 .bz_enhancement {
   color:#106581;
 }
+.bz_trivial {
+  color:#009966;
+}
 .bz_minor {
-  color:#d35200;
+  color:#669900;
 }
 .bz_major {
-  color:#d30000;
+  color:#D30000;
 }
-.bz_trivial {
-  color:#00AA33;
+.bz_critical {
+  color:#CC0000;
+  font-weight:bold;
 }
+
