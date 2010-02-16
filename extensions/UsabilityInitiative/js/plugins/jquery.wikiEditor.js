@@ -231,7 +231,9 @@ if ( typeof context == 'undefined' ) {
 		// Stack of states in { html: [string] } form
 		'history': [],
 		// Current history state position - this is number of steps backwards, so it's always -1 or less
-		'historyPosition': -1
+		'historyPosition': -1,
+		/// The previous historyPosition, stored to detect if change events were due to an undo or redo action
+		'oldDelayedHistoryPosition': -1
 	};
 	
 	/*
@@ -310,7 +312,8 @@ if ( typeof context == 'undefined' ) {
 						// Only act if we are switching to a valid state
 						if ( newPosition >= ( context.history.length * -1 ) && newPosition < 0 ) {
 							// Make sure we run the history storing code before we make this change
-							context.fn.updateHistory();
+							context.evt.delayedChange( event );
+							context.oldDelayedHistoryPosition = context.historyPosition;
 							context.historyPosition = newPosition;
 							// Change state
 							// FIXME: Destroys event handlers, will be a problem with template folding
@@ -1387,8 +1390,7 @@ if ( typeof context == 'undefined' ) {
 			var newHTML = context.$content.html();
 			var newSel = context.fn.getCaretPosition();
 			// Was text changed? Was it because of a REDO or UNDO action? 
-			if ( context.history.length == 0 || ( htmlChange &&
-					newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
+			if ( context.history.length == 0 || ( htmlChange && context.oldDelayedHistoryPosition == context.historyPosition ) ) {
 				context.fn.purgeOffsets();
 				context.oldDelayedHTML = newHTML;
 				context.oldDelayedSel = newSel;
@@ -1396,7 +1398,7 @@ if ( typeof context == 'undefined' ) {
 				// FIXME: this should really be happing on change, not on the delay
 				if ( context.historyPosition < -1 ) {
 					//clear out the extras
-					context.history.splice( context.history.length + context.historyPosition );
+					context.history.splice( context.history.length + context.historyPosition + 1 );
 					context.historyPosition = -1;
 				}
 				context.history.push( { 'html': newHTML, 'sel': newSel } );
@@ -1409,6 +1411,8 @@ if ( typeof context == 'undefined' ) {
 				context.oldDelayedSel = newSel;
 				context.history[context.history.length + context.historyPosition].sel = newSel;
 			}
+			// synch our old delayed history position until the next undo/redo action
+			context.oldDelayedHistoryPosition = context.historyPosition;
 		}
 	};
 	
