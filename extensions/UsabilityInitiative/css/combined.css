@@ -341,7 +341,8 @@ body.ltr .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
 .wikieditor-toolbar-dialog-hint {
 	color: #999999;
 }
-.ui-widget-content {
+.wikiEditor-toolbar-dialog,
+.wikiEditor-toolbar-dialog .ui-widget-content {
 	border: none !important;
 }
 /* Table Dialog */
