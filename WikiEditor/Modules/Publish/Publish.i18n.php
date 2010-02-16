@@ -816,8 +816,11 @@ $messages['sah'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'wikieditor-publish-preference' => 'පියවරෙන්-පියවර ප්‍රකාශනය කළ හැකියි',
 	'wikieditor-publish-button-publish' => 'ප්‍රකාශයට පත්කරන්න',
 	'wikieditor-publish-button-cancel' => 'අත් හරින්න',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} ට ප්‍රකාශනය කරන්න',
+	'wikieditor-publish-dialog-summary' => 'සාරාංශය සංස්කරණය කරන්න (ඔබ සිදු කළ වෙනස්කම් කෙටියෙන් විස්තර කරන්න):',
 	'wikieditor-publish-dialog-minor' => 'සුළු සංස්කරණය',
 	'wikieditor-publish-dialog-watch' => 'මෙම පිටුව මුර කරන්න',
 	'wikieditor-publish-dialog-publish' => 'ප්‍රකාශයට පත්කරන්න',

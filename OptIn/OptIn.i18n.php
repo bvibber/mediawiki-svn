@@ -5218,6 +5218,7 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Calcey
  * @author Jiro Ono
  * @author චතුනි අලහප්පෙරුම
  */
@@ -5226,6 +5227,8 @@ $messages['si'] = array(
 	'optin-title-optedin' => 'බීටා අනුවාදය වෙතින් ඉවත් වන්න',
 	'optin-title-justoptedin' => 'බීටා අනුවාදය ට පිලිගනිමු',
 	'optin-title-justoptedout' => 'බීටා අනුවාදය අත්හදා බැලීම ගැන තුති',
+	'optin-title-feedback' => 'බීටා ප්‍රතිචාරය',
+	'optin-success-feedback' => 'ඔබේ ප්‍රතිචාරයට ස්තුතියි!',
 	'optin-accept-short' => 'උත්සාහ කර බලමු!',
 	'optin-accept-long' => 'බීටා අනුවාදය අත්හදා බලන්න',
 	'optin-accept-long-anon' => 'ප්‍රවිෂ්ට වී බීටා අනුවාදය අත්හදා බලන්න',
@@ -5246,6 +5249,18 @@ $messages['si'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'නව ටැබ හා වින්‍යාස සැලැස්ම මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-other' => 'වෙනත් හේතුවක්:',
+	'optin-survey-question-techfail' => 'ඔබ බීටා භාවිතා කිරීමේදී යම් තාක්ෂණික ඇනහිටීමක් අත්දුටුවාද ?',
+	'optin-survey-question-techfail-ifyes' => 'ඔව් නම්,කරුණාකර පැහැදිලි හෝ විස්තර කරන්න:',
+	'optin-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
+	'optin-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',
+	'optin-survey-question-os' => 'ඔබ භාවිතා කරනු ලබන්නේ කුමන මෙහෙයුම් පද්ධතිය ද?',
+	'optin-survey-answer-os-other' => 'අනෙක් මෙහෙයුම් පද්ධතිය:',
+	'optin-survey-question-res' => 'ඔබගේ තිරයේ විභේදනය කුමක් ද?',
+	'optin-survey-question-changes' => 'අනාගතයේදී බීටාහි ඔබ දකින්නට කැමති කුමන වෙනස්කම් ( කරුණාකර ඉල්ලුම් කරන සියල්ල තෝරන්න) ද ?',
+	'optin-survey-answer-changes-nav' => 'අඩවියේ සමස්ත සංචාලනය භාවිතා කිරීමට වඩා පහසු කරවන්න.',
+	'optin-survey-answer-changes-edittools' => 'සංස්කරණ මෙවලම් වැඩිකිරීම හා උසස් කිරීම සිදු කරන්න.',
+	'optin-survey-answer-changes-upload' => 'අන්තර්ගතය හා මාධ්‍ය උඩුගත කිරීම් දියුණු කරන්න.',
+	'optin-survey-answer-changes-richtext' => 'සංස්කරණ මෙවලම් සරු-පෙළ සංස්කාරකයන්ට සමානවන ලෙස සංවර්ධනය කරන්න.',
 	'optin-survey-answer-changes-other' => 'වෙනත්:',
 );
 

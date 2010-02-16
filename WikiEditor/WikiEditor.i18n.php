@@ -418,6 +418,7 @@ $messages['pt'] = array(
 	'wikieditor' => 'Interface avançada de edição de wikitexto',
 	'wikieditor-desc' => 'Fornece uma interface extensível de edição de wikitexto e vários módulos funcionais',
 	'wikieditor-wikitext-tab' => 'Texto Wiki',
+	'wikieditor-loading' => 'A carregar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -471,7 +472,9 @@ $messages['sah'] = array(
  */
 $messages['si'] = array(
 	'wikieditor' => 'දියුණු කළ විකි පෙළ සංස්කරණය කිරීමේ අතුරු මුහුණත',
+	'wikieditor-desc' => 'විස්තීරණය කළ හැකි විකිපෙළ සංස්කරණය කිරීමේ අතුරු මුහුණතක් හා බොහෝ විශේෂාංග-ලබාදෙන මොඩියුල සපයයි',
 	'wikieditor-wikitext-tab' => 'විකි පෙළ',
+	'wikieditor-loading' => 'ප්‍රවේශනය වෙමින් පවතී',
 );
 
 /** Slovak (Slovenčina)

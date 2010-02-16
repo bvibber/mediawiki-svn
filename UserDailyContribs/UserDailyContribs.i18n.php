@@ -319,6 +319,13 @@ $messages['sah'] = array(
 	'userdailycontribs-desc' => 'Баттааһыны кэтиири кэҥэтэр кыттааччылар суруйууларын күнүнэн наардааһын',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'userdailycontribs-desc' => 'ක්ලික් හඹායෑමේ දිඟුව සඳහා දිනපතා පරිශීලක දායකත්වයන්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

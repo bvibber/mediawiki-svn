@@ -761,6 +761,7 @@ $messages['arc'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -781,7 +782,7 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'إدراج وصلة',
 	'wikieditor-toolbar-tool-link-int' => 'لصفحه ويكي',
 	'wikieditor-toolbar-tool-link-int-target' => 'عنوان الصفحة:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'عنوان الصفحة أو المسار',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'عنوان الصفحه او الURL',
 	'wikieditor-toolbar-tool-link-int-text' => 'نص الوصلة:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'أدخل النص الذى ينبغى إظهاره',
 	'wikieditor-toolbar-tool-link-ext' => 'لصفحه وب خارجية',
@@ -4799,7 +4800,7 @@ $messages['frp'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Entrebetar un lim',
 	'wikieditor-toolbar-tool-link-int' => 'De vers una pâge vouiqui',
 	'wikieditor-toolbar-tool-link-int-target' => 'Titro de la pâge ou ben URL :',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Buchiéd lo titro de la pâge',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Titro de la pâge ou ben URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Tèxto du lim :',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Buchiéd lo tèxto que devrêt étre montrâ',
 	'wikieditor-toolbar-tool-link-ext' => 'De vers una pâge vouèbe de defôr',

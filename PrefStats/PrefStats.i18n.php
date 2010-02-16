@@ -57,17 +57,6 @@ $messages['qqq'] = array(
 	'prefstats-factor-default' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'prefstats-factor-hour' => "saat'i",
-	'prefstats-factor-day' => 'ndğa',
-	'prefstats-factor-week' => 'doloni',
-	'prefstats-factor-twoweeks' => 'jur doloni',
-	'prefstats-factor-fourweeks' => 'xut doloni',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -1381,6 +1370,17 @@ $messages['lt'] = array(
 Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'prefstats-factor-hour' => "saat'i",
+	'prefstats-factor-day' => 'ndğa',
+	'prefstats-factor-week' => 'doloni',
+	'prefstats-factor-twoweeks' => 'jur doloni',
+	'prefstats-factor-fourweeks' => 'xut doloni',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1904,6 +1904,7 @@ $messages['scn'] = array(
  */
 $messages['si'] = array(
 	'prefstats' => 'වරණීය සංඛ්‍යාන දත්ත',
+	'prefstats-title' => 'වරණිය සංඛ්‍යායනය',
 	'prefstats-xaxis' => 'කාල සීමාව (පැය)',
 	'prefstats-factors' => ' $1: කට නැරඹුම්',
 	'prefstats-factor-hour' => 'පැය',
@@ -1912,6 +1913,7 @@ $messages['si'] = array(
 	'prefstats-factor-week' => 'සතිය',
 	'prefstats-factor-twoweeks' => 'සති දෙක',
 	'prefstats-factor-fourweeks' => 'සති හතර',
+	'prefstats-factor-default' => 'යළි පෙර නිමි පරිමාණයට',
 );
 
 /** Slovak (Slovenčina)

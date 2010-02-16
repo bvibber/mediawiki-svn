@@ -289,6 +289,13 @@ $messages['sah'] = array(
 	'wikieditor-template-editor-preference' => 'Халыыптары форма көмөтүнэн уларытары холбоо',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikieditor-template-editor-preference' => 'විකි අච්චුවල පෝරම-මූලික සංස්කරණය සක්‍රීය කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
