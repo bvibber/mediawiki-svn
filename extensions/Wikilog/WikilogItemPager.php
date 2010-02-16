@@ -31,10 +31,10 @@ if ( !defined( 'MEDIAWIKI' ) )
 /**
  * Common wikilog pager interface.
  */
-interface WikilogPager
+interface WikilogItemPager
+	extends Pager
 {
 	function including( $x = null );
-	function getNavigationBar();
 }
 
 /**
@@ -51,7 +51,7 @@ interface WikilogPager
  */
 class WikilogSummaryPager
 	extends ReverseChronologicalPager
-	implements WikilogPager
+	implements WikilogItemPager
 {
 	# Override default limits.
 	public $mLimitsShown = array( 5, 10, 20, 50 );
@@ -368,7 +368,7 @@ class WikilogTemplatePager
  */
 class WikilogArchivesPager
 	extends TablePager
-	implements WikilogPager
+	implements WikilogItemPager
 {
 	# Local variables.
 	protected $mQuery = null;			///< Wikilog item query data

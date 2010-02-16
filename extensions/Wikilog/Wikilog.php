@@ -74,11 +74,11 @@ $wgAutoloadClasses += array(
 	'WikilogParserOutput'       => $dir . 'WikilogParser.php',
 	'WikilogParserCache'        => $dir . 'WikilogParser.php',
 
-	// WikilogPager.php
-	'WikilogPager'              => $dir . 'WikilogPager.php',
-	'WikilogSummaryPager'       => $dir . 'WikilogPager.php',
-	'WikilogTemplatePager'      => $dir . 'WikilogPager.php',
-	'WikilogArchivesPager'      => $dir . 'WikilogPager.php',
+	// WikilogItemPager.php
+	'WikilogItemPager'          => $dir . 'WikilogItemPager.php',
+	'WikilogSummaryPager'       => $dir . 'WikilogItemPager.php',
+	'WikilogTemplatePager'      => $dir . 'WikilogItemPager.php',
+	'WikilogArchivesPager'      => $dir . 'WikilogItemPager.php',
 
 	// WikilogFeed.php
 	'WikilogFeed'               => $dir . 'WikilogFeed.php',

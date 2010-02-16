@@ -377,7 +377,7 @@ class WikilogUtils
 
 /**
  * Generates a more user-friendly navigation bar for use in article and
- * comment pagers (shared between WikilogPager and WikilogCommentPager).
+ * comment pagers (shared between WikilogItemPager and WikilogCommentPager).
  */
 class WikilogNavbar
 {
