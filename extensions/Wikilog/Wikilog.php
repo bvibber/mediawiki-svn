@@ -68,6 +68,7 @@ $wgAutoloadClasses += array(
 	// Objects
 	'WikilogItem'               => $dir . 'WikilogItem.php',
 	'WikilogComment'            => $dir . 'WikilogComment.php',
+	'WikilogCommentFormatter'   => $dir . 'WikilogComment.php',
 
 	// WikilogParser.php
 	'WikilogParser'             => $dir . 'WikilogParser.php',
@@ -79,6 +80,11 @@ $wgAutoloadClasses += array(
 	'WikilogSummaryPager'       => $dir . 'WikilogItemPager.php',
 	'WikilogTemplatePager'      => $dir . 'WikilogItemPager.php',
 	'WikilogArchivesPager'      => $dir . 'WikilogItemPager.php',
+
+	// WikilogCommentPager.php
+	'WikilogCommentPager'       => $dir . 'WikilogCommentPager.php',
+	'WikilogCommentListPager'   => $dir . 'WikilogCommentPager.php',
+	'WikilogCommentThreadPager' => $dir . 'WikilogCommentPager.php',
 
 	// WikilogFeed.php
 	'WikilogFeed'               => $dir . 'WikilogFeed.php',

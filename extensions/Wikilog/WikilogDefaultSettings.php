@@ -55,7 +55,7 @@ $wgWikilogStylePath = false;
  * Wikilog style version, incremented when $wgWikilogStylePath/wikilog.css
  * is changed.
  */
-$wgWikilogStyleVersion = 5;
+$wgWikilogStyleVersion = 6;
 
 /* *** Presentation options *** */
 
@@ -83,6 +83,12 @@ $wgWikilogExpensiveLimit = $wgFeedLimit;
  * Special:Wikilog.
  */
 $wgWikilogNumArticles = 20;
+
+/**
+ * Default number of comments to list in wikilog comment pages.
+ * @since Wikilog v1.1.0.
+ */
+$wgWikilogNumComments = 50;
 
 /**
  * Allow listing of categories and tags for each article in the wikilog

@@ -220,6 +220,7 @@ class WikilogItem
 
 	/**
 	 * Returns an array with all published comments.
+	 * @deprecated Doesn't scale well, use query and pager objects instead.
 	 */
 	public function getComments( $thread = null ) {
 		$dbr = wfGetDB( DB_SLAVE );

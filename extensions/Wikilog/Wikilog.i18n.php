@@ -98,10 +98,12 @@ Uncheck this box to keep the article as a draft.',
 	'wikilog-comment-header' => '',
 	'wikilog-comment-footer' => '— $2 • $5 $6',
 	'wikilog-comment-permalink' => '$1 at $2',
+	'wikilog-comment-note-item' => 'posted to $1',
 	'wikilog-comment-note-edited' => 'last edited on $1 at $2',
 	'wikilog-comment-anonsig' => '$3 (anonymous)',
 	'wikilog-comment-pending' => 'This comment is awaiting approval.',
 	'wikilog-comment-deleted' => 'This comment was deleted.',
+	'wikilog-comment-omitted-x' => 'Comment omitted (#$1).',
 	'wikilog-comment-autosumm' => 'New comment by $1: $2',
 	'wikilog-reply-to-comment' => 'Post a reply to this comment',
 	'wikilog-comment-page' => "Go to this comment's page",
@@ -284,6 +286,9 @@ Parameters:
 Parameters:
 * $1 is the comment date
 * $2 is the comment time',
+	'wikilog-comment-note-item' => 'The title of the article that the comment was posted to.
+Parameters:
+* $1 is an article title.',
 	'wikilog-comment-note-edited' => 'The last time the comment was edited.
 Parameters:
 * $1 is the last modification date
