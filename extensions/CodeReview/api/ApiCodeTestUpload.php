@@ -111,8 +111,8 @@ class ApiCodeTestUpload extends ApiBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to upload test results' ),
-			array( 'code' => 'invalidrepo', 'info' => 'Invalid repo ``repo''' ),
-			array( 'code' => 'invalidsuite', 'info' => 'Invalid test suite ``suite''' ),
+			array( 'code' => 'invalidrepo', 'info' => "Invalid repo ``repo''" ),
+			array( 'code' => 'invalidsuite', 'info' => "Invalid test suite ``suite''" ),
 			array( 'code' => 'invalidresults', 'info' => 'Invalid test result data' ),
 			array( 'invalidhmac', 'hmac' ),
 			array( 'missingparam', 'repo' ),
