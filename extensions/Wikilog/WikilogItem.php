@@ -309,8 +309,16 @@ class WikilogItem
 	 * @return Database row, or false.
 	 */
 	private static function loadFromConds( $dbr, $conds ) {
-		extract( self::selectInfo( $dbr ) );	// $tables, $fields
-		$row = $dbr->selectRow( $tables, $fields, $conds, __METHOD__, array( ) );
+		$tables = self::selectTables( $dbr );
+		$fields = self::selectFields();
+		$row = $dbr->selectRow(
+			$tables['tables'],
+			$fields,
+			$conds,
+			__METHOD__,
+			array(),
+			$tables['join_conds']
+		);
 		return $row;
 	}
 
@@ -326,34 +334,44 @@ class WikilogItem
 	}
 
 	/**
-	 * Returns the tables and fields used for database queries for wikilog
-	 * article objects.
-	 * @param $dbr Database connection object.
-	 * @return Array(2) with the description of the tables and fields to be
-	 *   used in database queries.
+	 * Return the list of database tables required to create a new instance
+	 * of WikilogItem.
 	 */
-	private static function selectInfo( $dbr ) {
-		extract( $dbr->tableNames( 'wikilog_posts', 'page' ) );
+	public static function selectTables( $dbr = null ) {
+		if ( !$dbr ) $dbr = wfGetDB( DB_SLAVE );
+		$page = $dbr->tableName( 'page' );
 		return array(
-			'tables' =>
-				"{$wikilog_posts} " .
-				"LEFT JOIN {$page} AS w ON (w.page_id = wlp_parent) " .
-				"LEFT JOIN {$page} AS p ON (p.page_id = wlp_page) ",
-			'fields' => array(
-				'wlp_page',
-				'wlp_parent',
-				'w.page_namespace AS wlw_namespace',
-				'w.page_title AS wlw_title',
-				'p.page_namespace AS page_namespace',
-				'p.page_title AS page_title',
-				'wlp_title',
-				'wlp_publish',
-				'wlp_pubdate',
-				'wlp_updated',
-				'wlp_authors',
-				'wlp_tags',
-				'wlp_num_comments'
+			'tables' => array(
+				'wikilog_posts',
+				"{$page} AS w",
+				"{$page} AS p"
+			),
+			'join_conds' => array(
+				"{$page} AS w" => array( 'LEFT JOIN', 'w.page_id = wlp_parent' ),
+				"{$page} AS p" => array( 'LEFT JOIN', 'p.page_id = wlp_page' )
 			)
+		);
+	}
+
+	/**
+	 * Return the list of post fields required to create a new instance of
+	 * WikilogItem.
+	 */
+	public static function selectFields() {
+		return array(
+			'wlp_page',
+			'wlp_parent',
+			'w.page_namespace AS wlw_namespace',
+			'w.page_title AS wlw_title',
+			'p.page_namespace AS page_namespace',
+			'p.page_title AS page_title',
+			'wlp_title',
+			'wlp_publish',
+			'wlp_pubdate',
+			'wlp_updated',
+			'wlp_authors',
+			'wlp_tags',
+			'wlp_num_comments'
 		);
 	}
 }

@@ -387,13 +387,15 @@ class WikilogComment
 	 * @return Database row, or false.
 	 */
 	private static function loadFromConds( $dbr, $conds ) {
-		extract( self::selectInfo( $dbr ) );	// $tables, $fields
+		$tables = self::selectTables( $dbr );
+		$fields = self::selectFields();
 		$row = $dbr->selectRow(
-			$tables,
+			$tables['tables'],
 			$fields,
 			$conds,
 			__METHOD__,
-			array( )
+			array(),
+			$tables['join_conds']
 		);
 		return $row;
 	}
@@ -428,13 +430,15 @@ class WikilogComment
 	 * @return Database query result object.
 	 */
 	private static function fetchFromConds( $dbr, $conds, $options = array() ) {
-		extract( self::selectInfo( $dbr ) );	// $tables, $fields
+		$tables = self::selectTables( $dbr );
+		$fields = self::selectFields();
 		$result = $dbr->select(
-			$tables,
+			$tables['tables'],
 			$fields,
 			$conds,
 			__METHOD__,
-			$options
+			$options,
+			$tables['join_conds']
 		);
 		return $result;
 	}
@@ -471,34 +475,43 @@ class WikilogComment
 	}
 
 	/**
-	 * Returns the tables and fields used for database queries for comment
-	 * objects.
-	 * @param $dbr Database connection object.
-	 * @return Array(2) with the description of the tables and fields to be
-	 *   used in database queries.
+	 * Return the list of database tables required to create a new instance
+	 * of WikilogComment.
 	 */
-	private static function selectInfo( $dbr ) {
-		list( $wlc, $page ) = $dbr->tableNamesN( 'wikilog_comments', 'page' );
+	public static function selectTables( $dbr = null ) {
+		if ( !$dbr ) $dbr = wfGetDB( DB_SLAVE );
+		$page = $dbr->tableName( 'page' );
 		return array(
-			'tables' =>
-				"{$wlc} " .
-				"LEFT JOIN {$page} ON (page_id = wlc_comment_page)",
-			'fields' => array(
-				'wlc_id',
-				'wlc_parent',
-				'wlc_thread',
-				'wlc_post',
-				'wlc_user',
-				'wlc_user_text',
-				'wlc_anon_name',
-				'wlc_status',
-				'wlc_timestamp',
-				'wlc_updated',
-				'wlc_comment_page',
-				'page_namespace AS wlc_page_namespace',
-				'page_title AS wlc_page_title',
-				'page_latest AS wlc_page_latest'
+			'tables' => array(
+				'wikilog_comments',
+				"{$page} AS c"
+			),
+			'join_conds' => array(
+				"{$page} AS c" => array( 'LEFT JOIN', 'c.page_id = wlc_comment_page' )
 			)
+		);
+	}
+
+	/**
+	 * Return the list of post fields required to create a new instance of
+	 * WikilogComment.
+	 */
+	public static function selectFields() {
+		return array(
+			'wlc_id',
+			'wlc_parent',
+			'wlc_thread',
+			'wlc_post',
+			'wlc_user',
+			'wlc_user_text',
+			'wlc_anon_name',
+			'wlc_status',
+			'wlc_timestamp',
+			'wlc_updated',
+			'wlc_comment_page',
+			'c.page_namespace AS wlc_page_namespace',
+			'c.page_title AS wlc_page_title',
+			'c.page_latest AS wlc_page_latest'
 		);
 	}
 }
