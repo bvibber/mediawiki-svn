@@ -303,7 +303,7 @@ class ApiWikiAtHome extends ApiBase {
 	}
 	
 	public function getTokenSalt() {
-		return null;
+		return '';
 	}
 
 	protected function getExamples() {
