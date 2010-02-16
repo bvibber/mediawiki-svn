@@ -380,7 +380,7 @@ if ( typeof context == 'undefined' ) {
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
 			}
-			context.fn.updateHistory();
+			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
 		},
 		'paste': function( event ) {
@@ -1372,11 +1372,17 @@ if ( typeof context == 'undefined' ) {
 			context.savedSelection.select();
 			context.savedSelection = null;
 		},
-		'updateHistory': function() {
+		/**
+		 * Update the history queue
+		 *
+		 * @param htmlChange pass true or false to inidicate if there was a text change that should potentially
+		 * 	be given a new history state. 
+		 */
+		'updateHistory': function( htmlChange ) {
 			var newHTML = context.$content.html();
 			var newSel = context.fn.getCaretPosition();
 			// Was text changed? Was it because of a REDO or UNDO action? 
-			if ( context.history.length == 0 || ( context.oldDelayedHTML != newHTML &&
+			if ( context.history.length == 0 || ( htmlChange &&
 					newHTML != context.history[context.history.length + context.historyPosition].html ) ) {
 				context.fn.purgeOffsets();
 				context.oldDelayedHTML = newHTML;
