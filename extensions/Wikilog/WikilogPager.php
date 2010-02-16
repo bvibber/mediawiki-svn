@@ -127,6 +127,11 @@ class WikilogSummaryPager
 	}
 
 	function getNavigationBar() {
+		# NOTE (Mw1.15- COMPAT): IndexPager::isNavigationBarShown introduced
+		# in Mw1.16. Remove this guard in Wl1.1.
+		if ( method_exists( $this, 'isNavigationBarShown' ) ) {
+			if ( !$this->isNavigationBarShown() ) return '';
+		}
 		if ( !isset( $this->mNavigationBar ) ) {
 			$navbar = new WikilogNavbar( $this, 'chrono-rev' );
 			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );
@@ -411,6 +416,11 @@ class WikilogArchivesPager
 	}
 
 	function getNavigationBar() {
+		# NOTE (Mw1.15- COMPAT): IndexPager::isNavigationBarShown introduced
+		# in Mw1.16. Remove this guard in Wl1.1.
+		if ( method_exists( $this, 'isNavigationBarShown' ) ) {
+			if ( !$this->isNavigationBarShown() ) return '';
+		}
 		if ( !isset( $this->mNavigationBar ) ) {
 			$navbar = new WikilogNavbar( $this, 'pages' );
 			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );
