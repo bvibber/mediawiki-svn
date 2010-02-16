@@ -390,9 +390,10 @@ if ( typeof context == 'undefined' ) {
 			}
 			setTimeout( function() {
 				// Unwrap the span found in webkit copies
+				context.$content.find( 'link, style, meta' ).remove(); //MS Word
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$( this.childNodes ).insertBefore( this );
-				} ).remove();
+				} ).remove(); //Apple Richtext
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
