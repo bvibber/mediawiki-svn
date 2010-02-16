@@ -191,7 +191,7 @@ class SpecialWikilog
 		# Add feed links.
 		$wgOut->setSyndicated();
 		if ( isset( $qarr['show'] ) ) {
-			$altquery = wfArrayToCGI( array_intersect_key( $qarr, WikilogFeed::$paramWhitelist ) );
+			$altquery = wfArrayToCGI( array_intersect_key( $qarr, WikilogItemFeed::$paramWhitelist ) );
 			$wgOut->setFeedAppendQuery( $altquery );
 		}
 
@@ -218,7 +218,7 @@ class SpecialWikilog
 	public function feedOutput( $format, FormOptions $opts ) {
 		global $wgTitle;
 
-		$feed = new WikilogFeed( $wgTitle, $format, self::getQuery( $opts ),
+		$feed = new WikilogItemFeed( $wgTitle, $format, self::getQuery( $opts ),
 			$opts['limit'] );
 		return $feed->execute();
 	}

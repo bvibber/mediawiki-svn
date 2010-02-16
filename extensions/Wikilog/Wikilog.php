@@ -59,7 +59,6 @@ $wgExtensionMessagesFiles['WikilogAlias'] = $dir . 'Wikilog.i18n.alias.php';
  */
 $wgAutoloadClasses += array(
 	// General
-	'WikilogFeed'               => $dir . 'WikilogFeed.php',
 	'WikilogHooks'              => $dir . 'WikilogHooks.php',
 	'WikilogLinksUpdate'        => $dir . 'WikilogLinksUpdate.php',
 	'WikilogUtils'              => $dir . 'WikilogUtils.php',
@@ -80,6 +79,10 @@ $wgAutoloadClasses += array(
 	'WikilogSummaryPager'       => $dir . 'WikilogPager.php',
 	'WikilogTemplatePager'      => $dir . 'WikilogPager.php',
 	'WikilogArchivesPager'      => $dir . 'WikilogPager.php',
+
+	// WikilogFeed.php
+	'WikilogFeed'               => $dir . 'WikilogFeed.php',
+	'WikilogItemFeed'           => $dir . 'WikilogFeed.php',
 
 	// WikilogQuery.php
 	'WikilogQuery'              => $dir . 'WikilogQuery.php',

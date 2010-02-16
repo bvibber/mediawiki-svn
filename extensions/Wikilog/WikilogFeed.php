@@ -29,47 +29,34 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 /**
- * Syndication feed driver. Creates feeds from a list of wikilog articles,
- * given a format and a query object.
+ * Syndication feed driver base class.
+ * Loosely based on Pager/IndexPager classes.
  */
-class WikilogFeed
+abstract class WikilogFeed
 {
-	/**
-	 * Feed title (i.e., not Wikilog title). For Special:Wikilog,
-	 * 'wikilog-specialwikilog-title' system message should be used.
-	 */
+	/// Feed title object, used for identification and self URL.
 	protected $mTitle;
 
-	/**
-	 * Feed format, either 'atom' or 'rss'.
-	 * @warning Insecure string, from query string. Shouldn't be displayed. 
-	 */
+	/// Feed format, either 'atom' or 'rss'.
 	protected $mFormat;
 
-	/**
-	 * Wikilog query object. Contains the options that drives the database
-	 * queries.
-	 */
+	/// Wikilog query object. Contains the options that drives the database
+	/// queries.
 	protected $mQuery;
 
-	/**
-	 * Number of feed items to output.
-	 */
+	/// Number of feed items to output.
 	protected $mLimit;
 
-	/**
-	 * Either if this is a site feed (Special:Wikilog) or not.
-	 */
-	protected $mSiteFeed;
-
-	/**
-	 * Database object.
-	 */
+	/// Database object.
 	protected $mDb;
 
-	/**
-	 * Copyright notice.
-	 */
+	/// The index to use for ordering.
+	protected $mIndexField;
+
+	/// Result object for the query.
+	protected $mResult;
+
+	/// Copyright notice.
 	protected $mCopyright;
 
 	/**
@@ -82,23 +69,21 @@ class WikilogFeed
 	/**
 	 * WikilogFeed constructor.
 	 *
-	 * @param $title Feed title and URL.
-	 * @param $format Feed format ('atom' or 'rss').
-	 * @param $query WikilogItemQuery options.
-	 * @param $limit Number of items to generate.
+	 * @param $title Title  Feed title and URL.
+	 * @param $format string  Feed format ('atom' or 'rss').
+	 * @param $query WikilogQuery  Query options.
+	 * @param $limit integer  Number of items to generate.
 	 */
-	public function __construct( $title, $format, WikilogItemQuery $query,
-			$limit = false )
+	public function __construct( Title $title, $format, WikilogQuery $query, $limit )
 	{
-		global $wgWikilogNumArticles, $wgUser;
+		global $wgUser;
 
 		$this->mTitle = $title;
 		$this->mFormat = $format;
 		$this->mQuery = $query;
-		$this->mLimit = $limit ? $limit : $wgWikilogNumArticles;
-		$this->mSiteFeed = $this->mQuery->getWikilogTitle() === null;
-
+		$this->mLimit = $limit;
 		$this->mDb = wfGetDB( DB_SLAVE );
+		$this->mIndexField = $this->getIndexField();
 
 		# Retrieve copyright notice.
 		$skin = $wgUser->getSkin();
@@ -117,11 +102,9 @@ class WikilogFeed
 		if ( !$this->checkFeedOutput() )
 			return;
 
-		$feed = $this->mSiteFeed
-			? $this->getSiteFeedObject()
-			: $this->getWikilogFeedObject( $this->mQuery->getWikilogTitle() );
+		$feed = $this->getFeedObject();
 
-		if ( $feed === false ) {
+		if ( !$feed ) {
 			wfHttpError( 404, "Not found",
 				"There is no such wikilog feed available from this site." );
 			return;
@@ -142,20 +125,20 @@ class WikilogFeed
 			$cached = $this->loadFromCache( $feed->getUpdated(), $timekey, $feedkey );
 
 			if ( is_string( $cached ) ) {
-				wfDebug( "Wikilog: Outputting cached feed\n" );
+				wfDebug( __METHOD__ . ": Outputting cached feed\n" );
 				$feed->httpHeaders();
 				echo $cached;
 			} else {
-				wfDebug( "Wikilog: rendering new feed and caching it\n" );
+				wfDebug( __METHOD__ . ": rendering new feed and caching it\n" );
 				ob_start();
-				$this->feed( $feed );
+				$this->printFeed( $feed );
 				$cached = ob_get_contents();
 				ob_end_flush();
 				$this->saveToCache( $cached, $timekey, $feedkey );
 			}
 		} else {
 			# This feed is not cacheable.
-			$this->feed( $feed );
+			$this->printFeed( $feed );
 		}
 	}
 
@@ -164,7 +147,7 @@ class WikilogFeed
 	 * feed document.
 	 * @param $feed Prepared syndication feed object.
 	 */
-	public function feed( $feed ) {
+	public function printFeed( $feed ) {
 		global $wgOut, $wgFavicon;
 
 		$feed->outHeader();
@@ -172,13 +155,13 @@ class WikilogFeed
 		$this->doQuery();
 		$numRows = min( $this->mResult->numRows(), $this->mLimit );
 
-		wfDebug( "Wikilog: Feed query returned $numRows results.\n" );
+		wfDebug( __METHOD__ . ": Feed query returned $numRows results.\n" );
 
 		if ( $numRows ) {
 			$this->mResult->rewind();
 			for ( $i = 0; $i < $numRows; $i++ ) {
 				$row = $this->mResult->fetchObject();
-				$feed->outEntry( $this->feedEntry( $row ) );
+				$feed->outEntry( $this->formatFeedEntry( $row ) );
 			}
 		}
 
@@ -186,11 +169,324 @@ class WikilogFeed
 	}
 
 	/**
+	 * Performs the database query that returns the syndication feed entries
+	 * and store the result wrapper in $this->mResult.
+	 */
+	public function doQuery() {
+		$fname = __METHOD__ . ' (' . get_class( $this ) . ')';
+		wfProfileIn( $fname );
+
+		$this->mResult = $this->reallyDoQuery( $this->mLimit );
+
+		wfProfileOut( $fname );
+	}
+
+	/**
+	 * Performs the database query and return the result wrapper.
+	 * @param $limit Maximum number of entries to return.
+	 * @return ResultWrapper  The database query ResultWrapper object.
+	 */
+	public function reallyDoQuery( $limit ) {
+		$fname = __METHOD__ . ' (' . get_class( $this ) . ')';
+		$info = $this->getQueryInfo();
+		$tables = $info['tables'];
+		$fields = $info['fields'];
+		$conds = isset( $info['conds'] ) ? $info['conds'] : array();
+		$options = isset( $info['options'] ) ? $info['options'] : array();
+		$join_conds = isset( $info['join_conds'] ) ? $info['join_conds'] : array();
+		$options['ORDER BY'] = $this->mIndexField . ' DESC';
+		$options['LIMIT'] = intval( $limit );
+		$res = $this->mDb->select( $tables, $fields, $conds, $fname, $options, $join_conds );
+		return new ResultWrapper( $this->mDb, $res );
+	}
+
+	/**
+	 * Returns the query information.
+	 */
+	public function getQueryInfo() {
+		return $this->mQuery->getQueryInfo( $this->mDb );
+	}
+
+	/**
+	 * Save feed output to cache.
+	 *
+	 * @param $feed Feed output.
+	 * @param $timekey Object cache key for the cached feed timestamp.
+	 * @param $feedkey Object cache key for the cached feed output.
+	 */
+	public function saveToCache( $feed, $timekey, $feedkey ) {
+		global $messageMemc;
+		$messageMemc->set( $feedkey, $feed );
+		$messageMemc->set( $timekey, wfTimestamp( TS_MW ), 24 * 3600 );
+	}
+
+	/**
+	 * Load feed output from cache.
+	 *
+	 * @param $tsData Timestamp of the last change of the local data.
+	 * @param $timekey Object cache key for the cached feed timestamp.
+	 * @param $feedkey Object cache key for the cached feed output.
+	 * @return The cached feed output if cache is good, false otherwise.
+	 */
+	public function loadFromCache( $tsData, $timekey, $feedkey ) {
+		global $messageMemc, $wgFeedCacheTimeout;
+		$tsCache = $messageMemc->get( $timekey );
+
+		if ( ( $wgFeedCacheTimeout > 0 ) && $tsCache ) {
+			$age = time() - wfTimestamp( TS_UNIX, $tsCache );
+
+			# XXX: Minimum feed cache age check disabled. This code is
+			# shadowed from ChangesFeed::loadFromCache(), but Vitaliy Filippov
+			# noticed that this causes the old cached feed to output with the
+			# updated last-modified timestamp, breaking cache behavior.
+			# For now, it is disabled, since this is just a performance
+			# optimization.
+			/* if ( $age < $wgFeedCacheTimeout ) {
+				wfDebug( "Wikilog: loading feed from cache -- " .
+					"too young: age ($age) < timeout ($wgFeedCacheTimeout) " .
+					"($feedkey; $tsCache; $tsData)\n" );
+				return $messageMemc->get( $feedkey );
+			} else */ if ( $tsCache >= $tsData ) {
+				wfDebug( __METHOD__ . ": loading feed from cache -- " .
+					"not modified: cache ($tsCache) >= data ($tsData)" .
+					"($feedkey)\n" );
+				return $messageMemc->get( $feedkey );
+			} else {
+				wfDebug( __METHOD__ . ": cached feed timestamp check failed -- " .
+					"cache ($tsCache) < data ($tsData)\n" );
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * This function should be overridden to return the index that will be
+	 * used to perform the query.
+	 */
+	abstract public function getIndexField();
+
+	/**
+	 * This function should be overridden to return a WlSyndicationFeed
+	 * object representing the top-level feed object.
+	 */
+	abstract public function getFeedObject();
+
+	/**
+	 * This function should be overriden to format a database result row
+	 * into a WlSyndicationEntry object.
+	 */
+	abstract public function formatFeedEntry( $row );
+
+	/**
+	 * Returns the keys for the timestamp and feed output in the object
+	 * cache.
+	 */
+	abstract public function getCacheKeys();
+
+	/**
+	 * Shadowed from FeedUtils::checkFeedOutput(). The difference is that
+	 * this version checks against $wgWikilogFeedClasses instead of
+	 * $wgFeedClasses.
+	 */
+	protected function checkFeedOutput() {
+		global $wgOut, $wgFeed, $wgWikilogFeedClasses;
+		if ( !$wgFeed ) {
+			$wgOut->addWikiMsg( 'feed-unavailable' );
+			return false;
+		}
+		if ( !isset( $wgWikilogFeedClasses[$this->mFormat] ) ) {
+			wfHttpError( 500, "Internal Server Error", "Unsupported feed type." );
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Find and add categories for the given feed or entry.
+	 */
+	protected function addCategories( WlSyndicationBase $obj, $pageid ) {
+		$scheme = SpecialPage::getTitleFor( 'Categories' )->getFullUrl();
+		$res = $this->mDb->select(
+			array( 'categorylinks', 'page', 'page_props' ),
+			array( 'page_title' ),
+			array( /* conds */
+				'cl_from' => $pageid,
+				'page_title IS NOT NULL',
+				'pp_value IS NULL'
+			), __METHOD__,
+			array( /* options */ ),
+			array( /* joins */
+				'page' => array( 'LEFT JOIN', array(
+					'page_namespace' => NS_CATEGORY,
+					'page_title = cl_to'
+				) ),
+				'page_props' => array( 'LEFT JOIN', array(
+					'pp_propname' => 'hiddencat',
+					'pp_page = page_id'
+				) )
+			)
+		);
+		foreach ( $res as $row ) {
+			$term = $row->page_title;
+			$label = preg_replace( '/(?:.*\/)?(.+?)(?:\s*\(.*\))?/', '$1', $term );
+			$label = str_replace( '_', ' ', $label );
+			$obj->addCategory( $term, $scheme, $label );
+		}
+	}
+}
+
+/**
+ * Syndication item feed generator. Creates feeds from a list of wikilog
+ * articles, given a format and a query object.
+ */
+class WikilogItemFeed
+	extends WikilogFeed
+{
+	/// Whether this is a site feed (Special:Wikilog) or not.
+	protected $mSiteFeed;
+
+	/**
+	 * WikilogItemFeed constructor.
+	 *
+	 * @param $title Title  Feed title and URL.
+	 * @param $format string  Feed format ('atom' or 'rss').
+	 * @param $query WikilogItemQuery  Query options.
+	 * @param $limit integer  Number of items to generate.
+	 */
+	public function __construct( Title $title, $format, WikilogItemQuery $query,
+			$limit = false )
+	{
+		global $wgWikilogNumArticles;
+
+		if ( !$limit ) $limit = $wgWikilogNumArticles;
+		parent::__construct( $title, $format, $query, $limit );
+		$this->mSiteFeed = $this->mQuery->getWikilogTitle() === null;
+		
+	}
+
+	public function getIndexField() {
+		return 'wlp_pubdate';
+	}
+
+	public function doQuery() {
+		$this->mQuery->setOption( 'last-comment-timestamp' );
+		return parent::doQuery();
+	}
+
+	public function getFeedObject() {
+		if ( $this->mSiteFeed ) {
+			return $this->getSiteFeedObject();
+		} else {
+			return $this->getWikilogFeedObject( $this->mQuery->getWikilogTitle() );
+		}
+	}
+
+	/**
+	 * Generates and populates a WlSyndicationFeed object for the site.
+	 *
+	 * @return Feed object.
+	 */
+	protected function getSiteFeedObject() {
+		global $wgContLanguageCode, $wgWikilogFeedClasses, $wgFavicon, $wgLogo;
+		$title = wfMsgForContent( 'wikilog-specialwikilog-title' );
+		$subtitle = wfMsgExt( 'wikilog-feed-description', array( 'parse', 'content' ) );
+
+		$updated = $this->mDb->selectField( 'wikilog_wikilogs',
+			'MAX(wlw_updated)', false, __METHOD__ );
+		if ( !$updated ) $updated = wfTimestampNow();
+
+		$feed = new $wgWikilogFeedClasses[$this->mFormat](
+			$this->mTitle->getFullUrl(),
+			wfMsgForContent( 'wikilog-feed-title', $title, $wgContLanguageCode ),
+			$updated,
+			$this->mTitle->getFullUrl()
+		);
+		$feed->setSubtitle( new WlTextConstruct( 'html', $subtitle ) );
+		$feed->setLogo( wfExpandUrl( $wgLogo ) );
+		if ( $wgFavicon !== false ) {
+			$feed->setIcon( wfExpandUrl( $wgFavicon ) );
+		}
+		if ( $this->mCopyright ) {
+			$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
+		}
+		return $feed;
+	}
+
+	/**
+	 * Generates and populates a WlSyndicationFeed object for the given
+	 * wikilog. Caches objects whenever possible.
+	 *
+	 * @param $wikilogTitle Title object for the wikilog.
+	 * @return Feed object, or NULL if wikilog doesn't exist.
+	 */
+	protected function getWikilogFeedObject( $wikilogTitle, $forsource = false ) {
+		static $wikilogCache = array();
+		global $wgContLanguageCode, $wgWikilogFeedClasses;
+		global $wgWikilogFeedCategories;
+
+		$title = $wikilogTitle->getPrefixedText();
+		if ( !isset( $wikilogCache[$title] ) ) {
+			$row = $this->mDb->selectRow( 'wikilog_wikilogs',
+				array(
+					'wlw_page', 'wlw_subtitle',
+					'wlw_icon', 'wlw_logo', 'wlw_authors',
+					'wlw_updated'
+				),
+				array( 'wlw_page' => $wikilogTitle->getArticleId() ),
+				__METHOD__
+			);
+			if ( $row !== false ) {
+				$self = $forsource
+					 ? $wikilogTitle->getFullUrl( "feed={$this->mFormat}" )
+					 : null;
+				$feed = new $wgWikilogFeedClasses[$this->mFormat](
+					$wikilogTitle->getFullUrl(),
+					wfMsgForContent( 'wikilog-feed-title', $title, $wgContLanguageCode ),
+					$row->wlw_updated, $wikilogTitle->getFullUrl(), $self
+				);
+				if ( $row->wlw_subtitle ) {
+					$st = @ unserialize( $row->wlw_subtitle );
+					if ( is_array( $st ) ) {
+						$feed->setSubtitle( new WlTextConstruct( $st[0], $st[1] ) );
+					} else if ( is_string( $st ) ) {
+						$feed->setSubtitle( $st );
+					}
+				}
+				if ( $row->wlw_icon ) {
+					$t = Title::makeTitle( NS_IMAGE, $row->wlw_icon );
+					$feed->setIcon( wfFindFile( $t ) );
+				}
+				if ( $row->wlw_logo ) {
+					$t = Title::makeTitle( NS_IMAGE, $row->wlw_logo );
+					$feed->setLogo( wfFindFile( $t ) );
+				}
+				if ( $wgWikilogFeedCategories ) {
+					$this->addCategories( $feed, $row->wlw_page );
+				}
+				if ( $row->wlw_authors ) {
+					$authors = unserialize( $row->wlw_authors );
+					foreach ( $authors as $user => $userid ) {
+						$usertitle = Title::makeTitle( NS_USER, $user );
+						$feed->addAuthor( $user, $usertitle->getFullUrl() );
+					}
+				}
+				if ( $this->mCopyright ) {
+					$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
+				}
+			} else {
+				$feed = false;
+			}
+			$wikilogCache[$title] =& $feed;
+		}
+		return $wikilogCache[$title];
+	}
+
+	/**
 	 * Generates and returns a single feed entry.
 	 * @param $row The wikilog article database entry.
 	 * @return A new WlSyndicationEntry object.
 	 */
-	function feedEntry( $row ) {
+	public function formatFeedEntry( $row ) {
 		global $wgMimeType;
 		global $wgWikilogFeedSummary, $wgWikilogFeedContent;
 		global $wgWikilogFeedCategories, $wgWikilogFeedRelated;
@@ -274,196 +570,9 @@ class WikilogFeed
 	}
 
 	/**
-	 * Performs the database query that returns the syndication feed entries
-	 * and store the result wrapper in $this->mResult.
-	 */
-	function doQuery() {
-		$this->mIndexField = 'wlp_pubdate';
-		$this->mResult = $this->reallyDoQuery( $this->mLimit );
-	}
-
-	/**
-	 * Performs the database query and return the result wrapper.
-	 * @param $limit Maximum number of entries to return.
-	 * @return The database query ResultWrapper object.
-	 */
-	function reallyDoQuery( $limit ) {
-		$fname = __METHOD__ . ' (' . get_class( $this ) . ')';
-		$info = $this->getQueryInfo();
-		$tables = $info['tables'];
-		$fields = $info['fields'];
-		$conds = $info['conds'];
-		$options = $info['options'];
-		$joins = $info['join_conds'];
-		$options['ORDER BY'] = $this->mIndexField . ' DESC';
-		$options['LIMIT'] = intval( $limit );
-		$res = $this->mDb->select( $tables, $fields, $conds, $fname, $options, $joins );
-		return new ResultWrapper( $this->mDb, $res );
-	}
-
-	/**
-	 * Returns the query information.
-	 */
-	function getQueryInfo() {
-		return $this->mQuery->getQueryInfo( $this->mDb, 'last-comment-timestamp' );
-	}
-
-	/**
-	 * Generates and populates a WlSyndicationFeed object for the site.
-	 *
-	 * @return Feed object.
-	 */
-	public function getSiteFeedObject() {
-		global $wgContLanguageCode, $wgWikilogFeedClasses, $wgFavicon, $wgLogo;
-		$title = wfMsgForContent( 'wikilog-specialwikilog-title' );
-		$subtitle = wfMsgExt( 'wikilog-feed-description', array( 'parse', 'content' ) );
-
-		$updated = $this->mDb->selectField( 'wikilog_wikilogs',
-			'MAX(wlw_updated)', false, __METHOD__ );
-		if ( !$updated ) $updated = wfTimestampNow();
-
-		$feed = new $wgWikilogFeedClasses[$this->mFormat](
-			$this->mTitle->getFullUrl(),
-			wfMsgForContent( 'wikilog-feed-title', $title, $wgContLanguageCode ),
-			$updated,
-			$this->mTitle->getFullUrl()
-		);
-		$feed->setSubtitle( new WlTextConstruct( 'html', $subtitle ) );
-		$feed->setLogo( wfExpandUrl( $wgLogo ) );
-		if ( $wgFavicon !== false ) {
-			$feed->setIcon( wfExpandUrl( $wgFavicon ) );
-		}
-		if ( $this->mCopyright ) {
-			$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
-		}
-		return $feed;
-	}
-
-	/**
-	 * Generates and populates a WlSyndicationFeed object for the given
-	 * wikilog. Caches objects whenever possible.
-	 *
-	 * @param $wikilogTitle Title object for the wikilog.
-	 * @return Feed object, or NULL if wikilog doesn't exist.
-	 */
-	public function getWikilogFeedObject( $wikilogTitle, $forsource = false ) {
-		static $wikilogCache = array();
-		global $wgContLanguageCode, $wgWikilogFeedClasses;
-		global $wgWikilogFeedCategories;
-
-		$title = $wikilogTitle->getPrefixedText();
-		if ( !isset( $wikilogCache[$title] ) ) {
-			$row = $this->mDb->selectRow( 'wikilog_wikilogs',
-				array(
-					'wlw_page', 'wlw_subtitle',
-					'wlw_icon', 'wlw_logo', 'wlw_authors',
-					'wlw_updated'
-				),
-				array( 'wlw_page' => $wikilogTitle->getArticleId() ),
-				__METHOD__
-			);
-			if ( $row !== false ) {
-				$self = $forsource
-					 ? $wikilogTitle->getFullUrl( "feed={$this->mFormat}" )
-					 : null;
-				$feed = new $wgWikilogFeedClasses[$this->mFormat](
-					$wikilogTitle->getFullUrl(),
-					wfMsgForContent( 'wikilog-feed-title', $title, $wgContLanguageCode ),
-					$row->wlw_updated, $wikilogTitle->getFullUrl(), $self
-				);
-				if ( $row->wlw_subtitle ) {
-					$st = @ unserialize( $row->wlw_subtitle );
-					if ( is_array( $st ) ) {
-						$feed->setSubtitle( new WlTextConstruct( $st[0], $st[1] ) );
-					} else if ( is_string( $st ) ) {
-						$feed->setSubtitle( $st );
-					}
-				}
-				if ( $row->wlw_icon ) {
-					$t = Title::makeTitle( NS_IMAGE, $row->wlw_icon );
-					$feed->setIcon( wfFindFile( $t ) );
-				}
-				if ( $row->wlw_logo ) {
-					$t = Title::makeTitle( NS_IMAGE, $row->wlw_logo );
-					$feed->setLogo( wfFindFile( $t ) );
-				}
-				if ( $wgWikilogFeedCategories ) {
-					$this->addCategories( $feed, $row->wlw_page );
-				}
-				if ( $row->wlw_authors ) {
-					$authors = unserialize( $row->wlw_authors );
-					foreach ( $authors as $user => $userid ) {
-						$usertitle = Title::makeTitle( NS_USER, $user );
-						$feed->addAuthor( $user, $usertitle->getFullUrl() );
-					}
-				}
-				if ( $this->mCopyright ) {
-					$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
-				}
-			} else {
-				$feed = false;
-			}
-			$wikilogCache[$title] =& $feed;
-		}
-		return $wikilogCache[$title];
-	}
-
-	/**
-	 * Save feed output to cache.
-	 *
-	 * @param $feed Feed output.
-	 * @param $timekey Object cache key for the cached feed timestamp.
-	 * @param $feedkey Object cache key for the cached feed output.
-	 */
-	public function saveToCache( $feed, $timekey, $feedkey ) {
-		global $messageMemc;
-		$messageMemc->set( $feedkey, $feed );
-		$messageMemc->set( $timekey, wfTimestamp( TS_MW ), 24 * 3600 );
-	}
-
-	/**
-	 * Load feed output from cache.
-	 *
-	 * @param $tsData Timestamp of the last change of the local data.
-	 * @param $timekey Object cache key for the cached feed timestamp.
-	 * @param $feedkey Object cache key for the cached feed output.
-	 * @return The cached feed output if cache is good, false otherwise.
-	 */
-	public function loadFromCache( $tsData, $timekey, $feedkey ) {
-		global $messageMemc, $wgFeedCacheTimeout;
-		$tsCache = $messageMemc->get( $timekey );
-
-		if ( ( $wgFeedCacheTimeout > 0 ) && $tsCache ) {
-			$age = time() - wfTimestamp( TS_UNIX, $tsCache );
-
-			# XXX: Minimum feed cache age check disabled. This code is
-			# shadowed from ChangesFeed::loadFromCache(), but Vitaliy Filippov
-			# noticed that this causes the old cached feed to output with the
-			# updated last-modified timestamp, breaking cache behavior.
-			# For now, it is disabled, since this is just a performance
-			# optimization.
-			/* if ( $age < $wgFeedCacheTimeout ) {
-				wfDebug( "Wikilog: loading feed from cache -- " .
-					"too young: age ($age) < timeout ($wgFeedCacheTimeout) " .
-					"($feedkey; $tsCache; $tsData)\n" );
-				return $messageMemc->get( $feedkey );
-			} else */ if ( $tsCache >= $tsData ) {
-				wfDebug( "Wikilog: loading feed from cache -- " .
-					"not modified: cache ($tsCache) >= data ($tsData)" .
-					"($feedkey)\n" );
-				return $messageMemc->get( $feedkey );
-			} else {
-				wfDebug( "Wikilog: cached feed timestamp check failed -- " .
-					"cache ($tsCache) < data ($tsData)\n" );
-			}
-		}
-		return false;
-	}
-
-	/**
 	 * Returns the keys for the timestamp and feed output in the object cache.
 	 */
-	function getCacheKeys() {
+	public function getCacheKeys() {
 		$title = $this->mQuery->getWikilogTitle();
 		$id = $title ? 'id:' . $title->getArticleId() : 'site';
 		$ft = 'show:' . $this->mQuery->getPubStatus() .
@@ -472,57 +581,6 @@ class WikilogFeed
 			wfMemcKey( 'wikilog', $this->mFormat, $id, 'timestamp' ),
 			wfMemcKey( 'wikilog', $this->mFormat, $id, $ft )
 		);
-	}
-
-	/**
-	 * Shadowed from FeedUtils::checkFeedOutput(). The difference is that
-	 * this version checks against $wgWikilogFeedClasses instead of
-	 * $wgFeedClasses.
-	 */
-	public function checkFeedOutput() {
-		global $wgOut, $wgFeed, $wgWikilogFeedClasses;
-		if ( !$wgFeed ) {
-			$wgOut->addWikiMsg( 'feed-unavailable' );
-			return false;
-		}
-		if ( !isset( $wgWikilogFeedClasses[$this->mFormat] ) ) {
-			wfHttpError( 500, "Internal Server Error", "Unsupported feed type." );
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Find and add categories for the given feed or entry.
-	 */
-	private function addCategories( WlSyndicationBase $obj, $pageid ) {
-		$scheme = SpecialPage::getTitleFor( 'Categories' )->getFullUrl();
-		$res = $this->mDb->select(
-			array( 'categorylinks', 'page', 'page_props' ),
-			array( 'page_title' ),
-			array( /* conds */
-				'cl_from' => $pageid,
-				'page_title IS NOT NULL',
-				'pp_value IS NULL'
-			), __METHOD__,
-			array( /* options */ ),
-			array( /* joins */
-				'page' => array( 'LEFT JOIN', array(
-					'page_namespace' => NS_CATEGORY,
-					'page_title = cl_to'
-				) ),
-				'page_props' => array( 'LEFT JOIN', array(
-					'pp_propname' => 'hiddencat',
-					'pp_page = page_id'
-				) )
-			)
-		);
-		foreach ( $res as $row ) {
-			$term = $row->page_title;
-			$label = preg_replace( '/(?:.*\/)?(.+?)(?:\s*\(.*\))?/', '$1', $term );
-			$label = str_replace( '_', ' ', $label );
-			$obj->addCategory( $term, $scheme, $label );
-		}
 	}
 
 	/**

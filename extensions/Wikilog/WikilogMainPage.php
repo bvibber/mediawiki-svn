@@ -67,7 +67,7 @@ class WikilogMainPage
 		# RSS or Atom feed requested. Ignore all other options.
 		if ( ( $feedFormat = $wgRequest->getVal( 'feed' ) ) ) {
 			global $wgWikilogNumArticles;
-			$feed = new WikilogFeed( $this->mTitle, $feedFormat, $query,
+			$feed = new WikilogItemFeed( $this->mTitle, $feedFormat, $query,
 				$wgRequest->getInt( 'limit', $wgWikilogNumArticles ) );
 			return $feed->execute();
 		}
@@ -108,7 +108,7 @@ class WikilogMainPage
 		# Add feed links.
 		$wgOut->setSyndicated();
 		if ( isset( $qarr['show'] ) ) {
-			$altquery = wfArrayToCGI( array_intersect_key( $qarr, WikilogFeed::$paramWhitelist ) );
+			$altquery = wfArrayToCGI( array_intersect_key( $qarr, WikilogItemFeed::$paramWhitelist ) );
 			$wgOut->setFeedAppendQuery( $altquery );
 		}
 
