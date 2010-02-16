@@ -112,7 +112,7 @@ class ParseTree {
 		wfProfileIn( __METHOD__ );
 
 		$text = "~BOF" . $text;
-		$root = new ParseRule("Root", '/^/', '/^\Z/');
+		$root = new ParseRule("root", '/^/', '/^\Z/');
 		$retTree = $root->parse($text, $parseList);
 
 		wfProfileOut( __METHOD__ );
@@ -123,29 +123,26 @@ class ParseTree {
 	function printTree() {
 		$retString = "";
 
-		if ($this->mName == "Literal" || $this->mName == "BugHHP21") {
+		if ($this->mName == "hhp21") {
 			$retString = htmlspecialchars($this->mMatches[0]);
-		} elseif ($this->mName == "Comment") {
-			$retString = "<comment>" . htmlspecialchars($this->mMatches[0]) . "</comment>";
-		} elseif ($this->mName == "CommentLine") {
+		} elseif ($this->mName == "commentline") {
 			$retString = htmlspecialchars($this->mMatches[1]) . "<comment>" . htmlspecialchars($this->mMatches[2]) . "</comment>";
-		} elseif ($this->mName == "IncludeOnly" || $this->mName == "NoInclude" || $this->mName == "OnlyInclude") {
-			$retString = "<ignore>" . htmlspecialchars($this->mMatches[0]) . "</ignore>";
-		} elseif ($this->mName == "XmlClosed") {
-			$retString = "<ext><name>" . htmlspecialchars($this->mMatches[1]) .
-				"</name><attr>" . htmlspecialchars($this->mMatches[2]) . "</attr></ext>";
-		} elseif ($this->mName == "XmlOpened") {
-			$closeTag = "";
-			if ($this->mMatches[4] != "") {
-				$closeTag = "<close>" . htmlspecialchars($this->mMatches[4]) . "</close>";
-			}
-			$retString = "<ext><name>" . htmlspecialchars($this->mMatches[1]) . "</name><attr>" . htmlspecialchars($this->mMatches[2]) .
-				"</attr><inner>" . htmlspecialchars($this->mMatches[3]) . "</inner>" . $closeTag . "</ext>";
-		} elseif ($this->mName == "BeginFile") {
+		} elseif ($this->mName == "bof") {
 			if (isset($this->mMatches[1])) {
 				$retString = "<ignore>" . htmlspecialchars($this->mMatches[1]) . "</ignore>";
 			}
-		} elseif (($this->mName == "Template" || $this->mName == "TplArg") && isset($this->mMatches[1])) {
+		} elseif ($this->mName == "comment" || $this->mName == "ignore") {
+			$retString = "<" . $this->mName . ">" . htmlspecialchars($this->mMatches[0]) . "</" . $this->mName . ">";
+		} elseif ($this->mName == "ext") {
+			$retString = "<name>" . htmlspecialchars($this->mMatches[1]) . "</name><attr>" . htmlspecialchars($this->mMatches[2]) . "</attr>";
+			if (isset($this->mMatches[3])) {
+				$retString .= "<inner>" . htmlspecialchars($this->mMatches[3]) . "</inner>";
+			}
+			if (isset($this->mMatches[4])) {
+				$retString .= "<close>" . htmlspecialchars($this->mMatches[4]) . "</close>";
+			}
+			$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
+		} elseif (($this->mName == "template" || $this->mName == "tplarg") && isset($this->mMatches[1])) {
 			$inTitle = true;
 			$foundEquals = false;
 			$currentItem = "";
@@ -173,11 +170,7 @@ class ParseTree {
 					$currentItem .= htmlspecialchars($crrnt);
 				}
 			}
-			if ($this->mName == "Template") {
-				$retString = "<template>" . $retString . "</template>";
-			} else {
-				$retString = "<tplarg>" . $retString . "</tplarg>";
-			}
+			$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
 		} else {
 			foreach ($this->mChildren as $crrnt) {
 				if ($crrnt instanceof ParseTree) {
@@ -186,18 +179,16 @@ class ParseTree {
 					$retString .= htmlspecialchars($crrnt);
 				}
 			}
-			if ($this->mName == "Root") {
-				$retString = "<root>" . $retString . "</root>";
-			} elseif ($this->mName == "TplArg") {
+			if ($this->mName == "root") {
+				$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
+			} elseif ($this->mName == "tplarg" || $this->mName == "template") {
 				$retString = htmlspecialchars($this->mMatches[0]) . $retString;
-			} elseif ($this->mName == "Template") {
-				$retString = "{{" . $retString;
-			} elseif ($this->mName == "Link") {
+			} elseif ($this->mName == "link") {
 				$retString = htmlspecialchars($this->mMatches[0]) . $retString;
  				if (isset($this->mMatches[1])) {
 					$retString .= htmlspecialchars($this->mMatches[1]);
 				}
-			} elseif ($this->mName == "Heading") {
+			} elseif ($this->mName == "h") {
 				$retString = htmlspecialchars($this->mMatches[2]) . $retString;
 				if (isset($this->mMatches[3])) {
 					$retString = "<h>" . $retString . htmlspecialchars($this->mMatches[3]) . "</h>";
