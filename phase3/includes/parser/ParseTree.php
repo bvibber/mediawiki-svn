@@ -120,7 +120,7 @@ class ParseTree {
 	}
 
 	//this function will definitely need to be seperated into data and engine layers
-	function printTree(&$headingInd = 1) {
+	function printTree() {
 		$retString = "";
 
 		if ($this->mName == "Literal" || $this->mName == "BugHHP21") {
@@ -145,30 +145,28 @@ class ParseTree {
 			if (isset($this->mMatches[1])) {
 				$retString = "<ignore>" . htmlspecialchars($this->mMatches[1]) . "</ignore>";
 			}
-		} elseif (($this->mName == "Template" && isset($this->mMatches[2])) || ($this->mName == "TplArg" && isset($this->mMatches[1]))) {
+		} elseif (($this->mName == "Template" || $this->mName == "TplArg") && isset($this->mMatches[1])) {
 			$inTitle = true;
 			$foundEquals = false;
 			$currentItem = "";
-			$partInd = 1;
 			$this->mChildren[] = '|';
 			foreach ($this->mChildren as $crrnt) {
 				if ($crrnt instanceof ParseTree) {
-					$currentItem .= $crrnt->printTree($headingInd);
+					$currentItem .= $crrnt->printTree();
 				} elseif ($crrnt == '|') {
 					if ($inTitle) {
 						$retString .= "<title>" . $currentItem . "</title>";
 						$inTitle = false;
 					} else {
 						if (! $foundEquals) {
-							$retString .= "<part><name index=\"" . $partInd . "\" />";
-							$partInd ++;
+							$retString .= "<part>";
 						}
 						$retString .= "<value>" . $currentItem . "</value></part>";
 						$foundEquals = false;
 					}
 					$currentItem = "";
 				} elseif ($crrnt == '=' && ! $inTitle && ! $foundEquals) {
-					$retString .= "<part><name>" . $currentItem . "</name>=";
+					$retString .= "<part><name>" . $currentItem . "</name>";
 					$foundEquals = true;
 					$currentItem = "";
 				} else {
@@ -176,21 +174,14 @@ class ParseTree {
 				}
 			}
 			if ($this->mName == "Template") {
-				$templateAttr = "";
-				if ($this->mMatches[1] != "") {
-					$templateAttr = " lineStart=\"1\"";
-				}
-				$retString = "<template" . $templateAttr . ">" . $retString . "</template>";
-				if ($this->mMatches[1] == "\n") {
-					$retString = $this->mMatches[1] . $retString;
-				}
+				$retString = "<template>" . $retString . "</template>";
 			} else {
 				$retString = "<tplarg>" . $retString . "</tplarg>";
 			}
 		} else {
 			foreach ($this->mChildren as $crrnt) {
 				if ($crrnt instanceof ParseTree) {
-					$retString .= $crrnt->printTree($headingInd);
+					$retString .= $crrnt->printTree();
 				} else {
 					$retString .= htmlspecialchars($crrnt);
 				}
@@ -201,9 +192,6 @@ class ParseTree {
 				$retString = htmlspecialchars($this->mMatches[0]) . $retString;
 			} elseif ($this->mName == "Template") {
 				$retString = "{{" . $retString;
-				if ($this->mMatches[1] == "\n") {
-					$retString = $this->mMatches[1] . $retString;
-				}
 			} elseif ($this->mName == "Link") {
 				$retString = htmlspecialchars($this->mMatches[0]) . $retString;
  				if (isset($this->mMatches[1])) {
@@ -212,13 +200,11 @@ class ParseTree {
 			} elseif ($this->mName == "Heading") {
 				$retString = htmlspecialchars($this->mMatches[2]) . $retString;
 				if (isset($this->mMatches[3])) {
-					$retString = "<h level=\"" . strlen($this->mMatches[2]) . "\" i=\"" . $headingInd . "\">" .
-						$retString . htmlspecialchars($this->mMatches[3]) . "</h>";
+					$retString = "<h>" . $retString . htmlspecialchars($this->mMatches[3]) . "</h>";
 				}
 				if ($this->mMatches[1] == "\n") {
 					$retString = "\n" . $retString;
 				}
-				$headingInd ++;
 			}
 		}
 

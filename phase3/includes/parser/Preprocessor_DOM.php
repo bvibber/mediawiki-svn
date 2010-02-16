@@ -57,6 +57,7 @@ class Preprocessor_DOM implements Preprocessor {
 	 * change in the DOM tree for a given text, must be passed through the section identifier
 	 * in the section edit link and thus back to extractSections().
 	 *
+	 * Temporarily removed the cache because the parser now parses straight to DOM
 	 * The output of this function is currently only cached in process memory, but a persistent
 	 * cache may be implemented at a later date which takes further advantage of these strict
 	 * dependency requirements.
@@ -65,37 +66,36 @@ class Preprocessor_DOM implements Preprocessor {
 	 */
 	function preprocessToObj( $text, $flags = 0 ) {
 		wfProfileIn( __METHOD__ );
-		global $wgMemc, $wgPreprocessorCacheThreshold;
 		
-		$xml = false;
-		$cacheable = strlen( $text ) > $wgPreprocessorCacheThreshold;
-		if ( $cacheable ) {
-			wfProfileIn( __METHOD__.'-cacheable' );
+		// To XML
+		$xmlishRegex = implode('|', $this->parser->getStripList());
+		$bugHHP21 = new ParseRule("BugHHP21", '/^\n(?==[^=])/s');
+		$rules = array(
+			new ParseRule("Template", '/^{{(?!{[^{])/s', '/^}}/s', '}|=', $bugHHP21),
+			new ParseRule("TplArg", '/^{{{/s', '/^}}}/s', '}|=', $bugHHP21),
+			new ParseRule("Link", '/^\[\[/s', '/^]]/s', '\]'),
+			new ParseRule("Heading", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?(?:-->|\Z))*(?=\n|$)/s', '='),
+			new ParseRule("CommentLine", '/^(\n *)((?:<!--.*?(?:-->|$)(?: *\n)?)+)/s'),
+			new ParseRule("Comment", '/^<!--.*?(?:-->|$)/s'),
+			new ParseRule("OnlyInclude", '/^<\/?onlyinclude>/s'),
+			new ParseRule("NoInclude", '/^<\/?noinclude>/s'),
+			new ParseRule("IncludeOnly", '/^<includeonly>.*?(?:<\/includeonly>|$)/s'),
+			new ParseRule("XmlClosed", '/^<(' . $xmlishRegex . ')([^>]*)\/>/si'),
+			new ParseRule("XmlOpened", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>|$)/si'),
+			new ParseRule("BeginFile", '/^~BOF/s'));
 
-			$cacheKey = wfMemcKey( 'preprocess-xml', md5($text), $flags );
-			$cacheValue = $wgMemc->get( $cacheKey );
-			if ( $cacheValue ) {
-				$version = substr( $cacheValue, 0, 8 );
-				if ( intval( $version ) == self::CACHE_VERSION ) {
-					$xml = substr( $cacheValue, 8 );
-					// From the cache
-					wfDebugLog( "Preprocessor", "Loaded preprocessor XML from memcached (key $cacheKey)" );
-				}
-			}
+		if ($flags & Parser::PTD_FOR_INCLUSION) {
+			$rules[6] = new ParseRule("OnlyInclude", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
+			$rules[7] = new ParseRule("NoInclude", '/^<noinclude>.*?(?:<\/noinclude>|$)/s');
+			$rules[8] = new ParseRule("IncludeOnly", '/^<\/?includeonly>/s');
+			$rules[11] = new ParseRule("BeginFile", '/^~BOF(.*?<onlyinclude>)?/s');
 		}
-		if ( $xml === false ) {
-			if ( $cacheable ) {
-				wfProfileIn( __METHOD__.'-cache-miss' );
-				$xml = $this->preprocessToXml( $text, $flags );
-				$cacheValue = sprintf( "%08d", self::CACHE_VERSION ) . $xml;
-				$wgMemc->set( $cacheKey, $cacheValue, 86400 );
-				wfProfileOut( __METHOD__.'-cache-miss' );
-				wfDebugLog( "Preprocessor", "Saved preprocessor XML to memcached (key $cacheKey)" );
-			} else {
-				$xml = $this->preprocessToXml( $text, $flags );
-			}
 
-		}
+		$parseList = new ParseList($rules, '{\[<\n');
+		$parseTree = ParseTree::createParseTree($text, $parseList);
+		$xml = $parseTree->printTree();
+
+		// To DOM
 		wfProfileIn( __METHOD__.'-loadXML' );
 		$dom = new DOMDocument;
 		wfSuppressWarnings();
@@ -109,51 +109,44 @@ class Preprocessor_DOM implements Preprocessor {
 				throw new MWException( __METHOD__.' generated invalid XML' );
 			}
 		}
+		$this->transformDOM($dom);
+
+		// To Obj
 		$obj = new PPNode_DOM( $dom->documentElement );
-		wfProfileOut( __METHOD__.'-loadXML' );
-		if ( $cacheable ) {
-			wfProfileOut( __METHOD__.'-cacheable' );
-		}
+
 		wfProfileOut( __METHOD__ );
 		return $obj;
 	}
-	
-	/**
-	 * Preprocessor that reads in wiki text and returns xml.
-	 * This is the data layer of the new wikitext parser.  
-	 */
-	function preprocessToXml( $text, $flags = 0 ) {
-		wfProfileIn( __METHOD__ );
 
-		$xmlishRegex = implode('|', $this->parser->getStripList());
-		$bugHHP21 = new ParseRule("BugHHP21", '/^\n(?==[^=])/s');
-		$rules = array(
-			new ParseRule("Template", '/^((?:\n|~BOF)?){{(?!{[^{])/s', '/^}}/s', '}|=', $bugHHP21),
-			new ParseRule("TplArg", '/^{{{/s', '/^}}}/s', '}|=', $bugHHP21),
-			new ParseRule("Link", '/^\[\[/s', '/^]]/s', '\]'),
-			new ParseRule("Heading", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?(?:-->|\Z))*(?=\n|\Z)/s', '='),
-			new ParseRule("CommentLine", '/^(\n *)((?:<!--.*?(?:-->|\Z)(?: *\n)?)+)/s'),
-			new ParseRule("Comment", '/^<!--.*?(?:-->|\Z)/s'),
-			new ParseRule("OnlyInclude", '/^<\/?onlyinclude>/s'),
-			new ParseRule("NoInclude", '/^<\/?noinclude>/s'),
-			new ParseRule("IncludeOnly", '/^<includeonly>.*?(?:<\/includeonly>|\Z)/s'),
-			new ParseRule("XmlClosed", '/^<(' . $xmlishRegex . ')([^>]*)\/>/si'),
-			new ParseRule("XmlOpened", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>|\Z)/si'),
-			new ParseRule("BeginFile", '/^~BOF/s'));
-
-		if ($flags & Parser::PTD_FOR_INCLUSION) {
-			$rules[6] = new ParseRule("OnlyInclude", '/^<\/onlyinclude>.*?(?:<onlyinclude>|\Z)/s');
-			$rules[7] = new ParseRule("NoInclude", '/^<noinclude>.*?(?:<\/noinclude>|\Z)/s');
-			$rules[8] = new ParseRule("IncludeOnly", '/^<\/?includeonly>/s');
-			$rules[11] = new ParseRule("BeginFile", '/^~BOF(.*?<onlyinclude>)?/s');
+	// Temporary function to add needed redundant info to the parse tree after parsing.
+	private function transformDOM(&$node, &$headingInd = 1) {
+		if ($node->hasChildNodes()) {
+			if ($node->nodeName == "h") {
+				$node->setAttribute("level", strspn($node->firstChild->wholeText, "=", 0, 6 ));
+				$node->setAttribute("i", $headingInd);
+				$headingInd ++;
+			} elseif ($node->nodeName == "template" && $node->previousSibling instanceof DOMText) {
+				$preText = $node->previousSibling->wholeText;
+				if ($preText[strlen($preText) - 1] == "\n") {
+					$node->setAttribute("lineStart", 1);
+				}
+			}
+			$partInd = 1;
+			foreach ($node->childNodes as $crrnt) {
+				$this->transformDOM($crrnt, $headingInd);
+				if ($crrnt->nodeName == "part") {
+					if ($crrnt->firstChild->nodeName != "name") {
+						$newNode = $node->ownerDocument->createElement("name");
+						$newNode->setAttribute("index", $partInd);
+						$partInd ++;
+						$crrnt->insertBefore($newNode, $crrnt->firstChild);
+					} else {
+						$newNode = $node->ownerDocument->createTextNode("=");
+						$crrnt->insertBefore($newNode, $crrnt->lastChild);
+					}
+				}
+			}
 		}
-
-		$parseList = new ParseList($rules, '{\[<\n');
-		$parseTree = ParseTree::createParseTree($text, $parseList);
-		$xml = $parseTree->printTree();
-
-		wfProfileOut( __METHOD__ );
-		return $xml;
 	}
 }
 
@@ -389,11 +382,11 @@ class PPFrame_DOM implements PPFrame {
 					# Heading
 					$s = $this->expand( $contextNode->childNodes, $flags );
 
-                    # Insert a heading marker only for <h> children of <root>
-                    # This is to stop extractSections from going over multiple tree levels
-                    if ( $contextNode->parentNode->nodeName == 'root'
-                      && $this->parser->ot['html'] )
-                    {
+					# Insert a heading marker only for <h> children of <root>
+					# This is to stop extractSections from going over multiple tree levels
+					if ( $contextNode->parentNode->nodeName == 'root'
+					  && $this->parser->ot['html'] )
+					{
 						# Insert heading index marker
 						$headingIndex = $contextNode->getAttribute( 'i' );
 						$titleText = $this->title->getPrefixedDBkey();
