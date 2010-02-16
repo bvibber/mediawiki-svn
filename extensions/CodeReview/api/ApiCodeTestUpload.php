@@ -108,7 +108,7 @@ class ApiCodeTestUpload extends ApiBase {
 		);
 	}
 	
-	public function getParamDescription() {
+	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to upload test results' ),
 			array( 'code' => 'invalidrepo', 'info' => 'Invalid repo ``repo''' ),

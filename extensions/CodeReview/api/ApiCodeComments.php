@@ -126,7 +126,7 @@ class ApiCodeComments extends ApiQueryBase {
 		return 'List comments on revisions in CodeReview';
 	}
 	
-	public function getParamDescription() {
+	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'repo' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view code comments' ),
