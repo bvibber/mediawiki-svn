@@ -7987,6 +7987,8 @@ if ( typeof context == 'undefined' ) {
 			context.$textarea.attr( 'disabled', true );
 			context.$textarea.hide();
 			context.$iframe.show();
+			// Trigger the dealyedChange event to ensure the initial state is stored as our first history state
+			context.fn.trigger( 'delayedChange' );
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
 			// Only save HTML now: ready handlers may have modified it
