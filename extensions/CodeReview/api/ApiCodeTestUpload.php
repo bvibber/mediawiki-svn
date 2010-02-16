@@ -107,6 +107,22 @@ class ApiCodeTestUpload extends ApiBase {
 			'results' => 'JSON-encoded map of test names to success results, for status "complete"',
 		);
 	}
+	
+	public function getParamDescription() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to upload test results' ),
+			array( 'code' => 'invalidrepo', 'info' => 'Invalid repo ``repo''' ),
+			array( 'code' => 'invalidsuite', 'info' => 'Invalid test suite ``suite''' ),
+			array( 'code' => 'invalidresults', 'info' => 'Invalid test result data' ),
+			array( 'invalidhmac', 'hmac' ),
+			array( 'missingparam', 'repo' ),
+			array( 'missingparam', 'suite' ),
+			array( 'missingparam', 'rev' ),
+			array( 'missingparam', 'status' ),
+			array( 'missingparam', 'hmac' ),
+			array( 'missingparam', 'results' ),
+		) );
+	}
 
 	public function getDescription() {
 		return array(

@@ -69,6 +69,16 @@ class ApiCodeDiff extends ApiBase {
 		return array(
 			'Fetch formatted diff from CodeReview\'s backing revision control system.' );
 	}
+	
+	public function getParamDescription() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view code diffs' ),
+			array( 'code' => 'invalidrepo', 'info' => 'Invalid repo ``repo''' ),
+			array( 'code' => 'nosuchrev', 'info' => 'There is no revision with ID \'rev\'' ),
+			array( 'missingparam', 'repo' ),
+			array( 'missingparam', 'rev' ),
+		) );
+	}
 
 	public function getExamples() {
 		return array(
