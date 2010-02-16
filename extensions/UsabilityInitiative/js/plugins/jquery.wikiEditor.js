@@ -747,26 +747,26 @@ if ( typeof context == 'undefined' ) {
 					range.insertNode( firstNode );
 					lastNode = lastNode || firstNode;
 					var newOffset = offset + insertLines[i].length;
-					if ( !selSC && pre.length < newOffset ) {
-						selSC = firstNode;
-						selSO = pre.length - offset;
-					}
-					if ( selSC && insertText.length - post.length < newOffset ) {
+					if ( !selEC && post.length <= newOffset ) {
 						selEC = firstNode;
-						selEO = insertText.length - pre.length - offset;
+						selEO = selEC.nodeValue.length - ( post.length - offset );
+					}
+					if ( selEC && !selSC && pre.length >= insertText.length - newOffset ) {
+						selSC = firstNode;
+						selSO = pre.length - ( insertText.length - newOffset );
 					}
 					offset = newOffset;
 					if ( i > 0 ) {
 						firstNode = context.$iframe[0].contentWindow.document.createElement( 'br' );
 						range.insertNode( firstNode );
 						newOffset = offset + 1;
-						if ( !selSC && pre.length < newOffset ) {
-							selSC = firstNode;
-							selSO = pre.length - offset;
-						}
-						if ( selSC && insertText.length - post.length < newOffset ) {
+						if ( !selEC && post.length <= newOffset ) {
 							selEC = firstNode;
-							selEO = insertText.length - pre.length - offset;
+							selEO = 1 - ( post.length - offset );
+						}
+						if ( selEC && !selSC && pre.length >= insertText.length - newOffset ) {
+							selSC = firstNode;
+							selSO = pre.length - ( insertText.length - newOffset );
 						}
 						offset = newOffset;
 					}
