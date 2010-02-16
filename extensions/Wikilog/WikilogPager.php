@@ -76,19 +76,19 @@ class WikilogSummaryPager
 
 		# Fix our limits, Pager's defaults are too high.
 		global $wgUser, $wgWikilogNumArticles;
-		$this->mDefaultLimit = intval( $wgUser->getOption( 'searchlimit' ) );
+		$this->mDefaultLimit = $wgWikilogNumArticles;
 
 		if ( $limit ) {
 			$this->mLimit = $limit;
 		} else {
 			list( $this->mLimit, /* $offset */ ) =
-				$this->mRequest->getLimitOffset( $wgWikilogNumArticles, 'searchlimit' );
+				$this->mRequest->getLimitOffset( $wgWikilogNumArticles, '' );
 		}
 
 		# This is too expensive, limit listing.
-		global $wgWikilogSummaryLimit;
-		if ( $this->mLimit > $wgWikilogSummaryLimit )
-			$this->mLimit = $wgWikilogSummaryLimit;
+		global $wgWikilogExpensiveLimit;
+		if ( $this->mLimit > $wgWikilogExpensiveLimit )
+			$this->mLimit = $wgWikilogExpensiveLimit;
 
 		# We will need a clean parser if not including.
 		global $wgParser;

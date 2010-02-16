@@ -60,9 +60,23 @@ $wgWikilogStyleVersion = 5;
 /* *** Presentation options *** */
 
 /**
- * Maximum number of items in wikilog front page.
+ * Maximum number of articles to display in wikilog front pages, or comments
+ * in article discussion pages.
+ *
+ * Each article and comment is stored as a wiki page and, in order to
+ * display them, they may need to be parsed (if they are not cached) which
+ * is a little expensive. So, the number of articles or comments to show
+ * per page is limited by this variable, which has the same purpose of
+ * $wgFeedLimit and thus inherits its value by default.
+ *
+ * A good value is 50. More than this not only impacts performance, it
+ * allows long pages of articles or comments that has little value over
+ * smaller pages.
+ *
+ * @note This variable replaced the older $wgWikilogSummaryLimit.
+ * @since Wikilog v1.1.0.
  */
-$wgWikilogSummaryLimit = $wgFeedLimit;
+$wgWikilogExpensiveLimit = $wgFeedLimit;
 
 /**
  * Default number of articles to list in the wikilog front page and in

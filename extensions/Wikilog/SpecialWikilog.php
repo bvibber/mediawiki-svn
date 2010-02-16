@@ -96,7 +96,7 @@ class SpecialWikilog
 	 * Prepare special page parameters for a web request.
 	 */
 	public function webSetup( $parameters ) {
-		global $wgRequest, $wgWikilogSummaryLimit;
+		global $wgRequest, $wgWikilogExpensiveLimit;
 
 		$opts = $this->getDefaultOptions();
 		$opts->fetchValuesFromRequest( $wgRequest );
@@ -104,7 +104,7 @@ class SpecialWikilog
 		# Collect inline parameters, they have precedence over query params.
 		$this->parseInlineParams( $parameters, $opts );
 
-		$opts->validateIntBounds( 'limit', 0, $wgWikilogSummaryLimit );
+		$opts->validateIntBounds( 'limit', 0, $wgWikilogExpensiveLimit );
 		return $opts;
 	}
 
@@ -115,11 +115,11 @@ class SpecialWikilog
 	 * are recognized. Other parameters are ignored.
 	 */
 	public function feedSetup() {
-		global $wgRequest, $wgFeedLimit, $wgWikilogSummaryLimit;
+		global $wgRequest, $wgFeedLimit;
 
 		$opts = $this->getDefaultOptions();
 		$opts->fetchValuesFromRequest( $wgRequest, array( 'show', 'limit' ) );
-		$opts->validateIntBounds( 'limit', 0, min( $wgFeedLimit, $wgWikilogSummaryLimit ) );
+		$opts->validateIntBounds( 'limit', 0, $wgFeedLimit );
 		return $opts;
 	}
 
