@@ -283,9 +283,10 @@ $messages['de'] = array(
 	'watchers_link_title' => 'Wer beobachtet diese Seite?',
 	'watchers_error_article' => "'''Fehler:''' Seite existiert nicht.",
 	'watchers_header' => '{{PLURAL:$2|Benutzer, der „[[:$1]]“ beobachtet|Benutzer, die „[[:$1]]“ beobachten}}',
-	'watchers_noone_watches' => 'Es gibt keine Benutzer, die diese Seite beobachten.',
-	'watchers_x_or_more' => '$1 oder mehr {{PLURAL:$1|Benutzer|Benutzer}} beobachten diese Seite.',
+	'watchers_noone_watches' => 'Kein Benutzer beobachtet die Seite [[:$1]].',
+	'watchers_x_or_more' => '$1 oder mehr {{PLURAL:$1|Benutzer|Benutzer}} beobachten die Seite [[:$2]].',
 	'watchers_less_than_x' => 'Weniger als {{PLURAL:$1|$1 Benutzer|$1 Benutzer}} beobachten diese Seite.',
+	'watchers-num' => '$1 ((PLURAL:$1|Benutzer hat|Benutzer haben)) die Seite [[:$2]] auf ((PLURAL:$1|seiner|ihrer)) Beobachtungsliste.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -698,6 +699,8 @@ $messages['no'] = array(
 	'watchers_noone_watches' => 'Ingen overvåker denne siden.',
 	'watchers_x_or_more' => '$1 eller flere {{PLURAL:$1|personer|personer}} overvåker denne siden.',
 	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|personer|personer}} overvåker denne siden.',
+	'watchers-num' => '$1 {{PLURAL:$1|bruker|brukere}} har siden [[:$2]] på sin overvåkningsliste.',
+	'right-watchers-list' => '[[Special:Watchers|Liste over brukere som overvåker en bestemt side]]',
 );
 
 /** Occitan (Occitan)
@@ -747,6 +750,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -754,7 +758,7 @@ $messages['pms'] = array(
 	'watchers-desc' => "A mosta  [[Special:Watchers|vàire utent a l'han na pàgina ch'as ten-o sot euj]]",
 	'watchers_link_title' => "Chi a ten d'euj sta pàgina-sì?",
 	'watchers_error_article' => "'''Eror:''' La pàgina a esist pa.",
-	'watchers-error-invalid-page' => "'''Eror:''' \"\$1\" a l'é un tìtol pàgina pa bon.",
+	'watchers-error-invalid-page' => "'''Eror:''' \"\$1\" a l'é un ëd tìtol pàgina nen bon.",
 	'watchers_header' => "{{PLURAL:$2|Utent ch'a ten|Utent ch'a ten-o}} d'euj ''[[:$1]]''.",
 	'watchers_noone_watches' => "Pa gnun ch'a ten-a d'euj sta pàgina-sì.",
 	'watchers_x_or_more' => "$1 o pì {{PLURAL:$1|utent|utent}} a ten-o d'euj sta pàgina-sì.",

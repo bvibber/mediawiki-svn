@@ -55,11 +55,35 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
+ * @author Naudefj
  */
 $messages['af'] = array(
+	'duplicator' => "Dupliseer 'n bladsy",
+	'duplicator-desc' => 'Skep onafhanklike [[Special:Duplicate|kopieë van bladsye]] met volle geskiedenis van wysigings',
+	'duplicator-toolbox' => 'Dupliseer hierdie bladsy',
+	'duplicator-header' => 'Hierdie bladsy maak dit moontlik om \'n bladsy volledig te kopieer, waardeur onafhanklike kopieë met volledige geskiedenis ontstaan.
+Dit is handig vir "forks", ensovoorts.',
 	'duplicator-options' => 'Opsies',
 	'duplicator-source' => 'Bron:',
 	'duplicator-dest' => 'Bestemming:',
+	'duplicator-dotalk' => 'Dupliseer besprekingsblad (indien van toepassing)',
+	'duplicator-submit' => 'Dupliseer',
+	'duplicator-summary' => 'Gekopieer vanaf [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] is na [[$2]] gekopieer.'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|weergawe|weergawes}} is gekopieer.',
+	'duplicator-success-talkcopied' => 'Die besprekingsblad is ook gekopieer.',
+	'duplicator-success-talknotcopied' => 'Die besprekingsblad kon nie gekopieer word nie.',
+	'duplicator-failed' => "Die bladsy kon nie gekopieer word nie.
+'n Onbekende fout het voorgekom.",
+	'duplicator-source-invalid' => "Verskaf asseblief 'n geldige bronbladsy.",
+	'duplicator-source-notexist' => "[[$1]] bestaan nie.
+Verskaf asseblief 'n bladsy wat bestaan.",
+	'duplicator-dest-invalid' => "Verskaf asseblief 'n geldige bestemmingsbladsy.",
+	'duplicator-dest-exists' => "[[$1]] bestaan reeds.
+Verskaf asseblief 'n bestemmingbladsy wat nie bestaan nie.",
+	'duplicator-toomanyrevisions' => '[[$1]] het $2 weergawes en kan nie gekopieer word nie.
+Die huidige limiet is $3.',
+	'right-duplicate' => 'Dupliseer bladsye',
 );
 
 /** Amharic (አማርኛ)

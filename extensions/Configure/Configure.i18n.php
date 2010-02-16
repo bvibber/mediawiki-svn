@@ -7481,11 +7481,12 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'configure' => 'Configura la wiki',
-	'configure-desc' => "Përmett a utent autorisà ëd [[Special:Configure|configuré]] la wiki via n'antërfacia web",
+	'configure-desc' => "Përmëtte a j'utent autorisà ëd [[Special:Configure|configuré]] la wiki via n'antërfacia dl'aragnà",
 	'configure-desc-group' => 'Partìa',
 	'configure-desc-key' => 'Ciav',
 	'configure-desc-ns' => 'Spassi nominal',

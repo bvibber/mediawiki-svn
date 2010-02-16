@@ -361,9 +361,11 @@ $messages['lb'] = array(
 	'refhelper-refcreate_autocomment' => 'Säit gouf automatesch ugeluecht.',
 	'refhelper-refcreate_success' => "D'Säit [[$1]] gouf et net a si gouf ugeluecht.",
 	'refhelper-refcreate_failure' => "D'Säit [[$1]] gëtt et schonn!",
+	'refhelper-label_workspace' => 'Aarbechtsplaz (Zone fir ze kopéieren an ze peschen)',
 	'refhelper-label_authorforename' => 'Dem Auteur $1 säi Virnumm:',
 	'refhelper-label_authorsurname' => 'Familjennumm:',
 	'refhelper-title' => 'Titel:',
+	'refhelper-journal' => 'Zeitung:',
 	'refhelper-volume' => 'Band:',
 	'refhelper-pages' => 'Säiten:',
 	'refhelper-year' => 'Joer:',
@@ -485,6 +487,7 @@ Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSea
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -494,11 +497,11 @@ $messages['pms'] = array(
 	'refhelper-refsearch' => "Arserca d'arferiment",
 	'refhelper-refcreate_legend' => 'Crea arferiment neuv',
 	'refhelper-refsearch_legend' => 'Serca arferiment an PubMed',
-	'refhelper-refcreate_another' => 'Crea àutr arferiment',
+	'refhelper-refcreate_another' => "Creé n'àutr arferiment",
 	'refhelper-refcreate_autocomment' => 'Creassion automàtica ëd pàgina.',
-	'refhelper-refcreate_success' => "La pàgina [[$1]] a esist pa e a l'é stàita creà.",
+	'refhelper-refcreate_success' => "La pàgina [[$1]] a esistìa pa e a l'é stàita creà.",
 	'refhelper-refcreate_failure' => 'La pàgina [[$1]] a esist già!',
-	'refhelper-label_workspace' => 'Spassi ëd travaj (aira ëd taja e ancòla):',
+	'refhelper-label_workspace' => 'Spassi ëd travaj (zòna ëd taja e ancòla):',
 	'refhelper-label_authorforename' => "Nòm ëd l'autor $1:",
 	'refhelper-label_authorsurname' => 'Cognòm:',
 	'refhelper-title' => 'Tìtol:',
@@ -506,18 +509,18 @@ $messages['pms'] = array(
 	'refhelper-volume' => 'Volum:',
 	'refhelper-pages' => 'Pàgine:',
 	'refhelper-year' => 'Ann:',
-	'refhelper-refname' => 'Nòm arferiment:',
+	'refhelper-refname' => "Nòm ëd l'arferiment:",
 	'refhelper-category' => 'Categorìa $1:',
 	'refhelper-create' => 'Crea',
 	'refhelper-search' => 'Serca',
-	'refhelper-toolbox_link_create' => 'Crea arferiment',
-	'refhelper-toolbox_link_search' => "Crea arferiment da l'arserca",
+	'refhelper-toolbox_link_create' => "Creé l'arferiment",
+	'refhelper-toolbox_link_search' => "Creé l'arferiment a parte da l'arserca",
 	'refhelper-newarticle_nocitation' => 'A-i é al moment pa gnun-e sitassion con sto nòm-sì.',
-	'refhelper-newarticle_suggestions' => 'S\'a-i é na sitassion istessa da sota, it peule creé sta pàgina-sì an sgnacand dzora ël boton corespondent ""Crea".
+	'refhelper-newarticle_suggestions' => 'S\'a-i é na sitassion corëspondenta sì-sota, a peul creé costa pàgina an sgnacand dzora ël boton corespondent "Creé".
 
 <h2>Sugeriment</h2>',
-	'refhelper-newarticle_nosuggestions' => "Për maleur, i son pa bon a sugerì minca arferiment.
-It peule [[Special:RefHelper|gionté l'arferiment a man]] o [[Special:RefSearch|serché la sitassion da gionté]].",
+	'refhelper-newarticle_nosuggestions' => "Belavans, i son pa stàit bon a sugerì dj'arferiment.
+A peul [[Special:RefHelper|gionté l'arferiment a man]] o [[Special:RefSearch|sërché la sitassion da gionté]].",
 );
 
 /** Russian (Русский)

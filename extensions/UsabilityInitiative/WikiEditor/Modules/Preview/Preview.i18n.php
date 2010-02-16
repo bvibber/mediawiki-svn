@@ -575,6 +575,7 @@ $messages['sah'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'wikieditor-preview-preference' => 'දෙපසින්වූ පූර්ව දර්ශනය සක්‍රීය කරයි',
 	'wikieditor-preview-tab' => 'පෙර දසුන',
 	'wikieditor-preview-changes-tab' => 'වෙනස් කිරීම්',
 	'wikieditor-preview-loading' => 'ප්‍රවේශනය වෙමින් පවතී...',

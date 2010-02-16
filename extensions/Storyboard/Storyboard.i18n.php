@@ -35,6 +35,7 @@ $messages['af'] = array(
 $messages['be-tarask'] = array(
 	'storyboard-name' => 'Дошка гісторыяў',
 	'storyboard-desc' => 'Прадстаўляе старонку для донараў, старонку для іх гісторыяў, і інтэрфэйс яе мадэрацыі',
+	'right-storyreview' => 'рэцэнзаваньне, рэдагаваньне, публікацыя і хаваньне гісторыяў',
 );
 
 /** Breton (Brezhoneg)
@@ -57,6 +58,7 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => "Offre une page d'atterrissage pour les donateurs où les histoires peuvent être soumises et une interface de modération des histoires",
+	'right-storyreview' => 'Relire, modifier, publier, et masquer les histoires',
 );
 
 /** Galician (Galego)
@@ -65,6 +67,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'storyboard-name' => 'Taboleiro de historias',
 	'storyboard-desc' => 'Proporciona unha páxina de chegada para os doantes, unha páxina desde a que se poden enviar historias e unha interface para moderar o seu envío',
+	'right-storyreview' => 'Revisar, editar, publicar e agochar historias',
 );
 
 /** Swiss German (Alemannisch)
@@ -81,6 +84,7 @@ $messages['gsw'] = array(
 $messages['ia'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provide un pagina de arrivata pro donatores, un pagina ubi historias pote esser submittite, e un interfacie pro moderation de historias.',
+	'right-storyreview' => 'Revider, modificar, publicar e celar historias',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -96,6 +100,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'storyboard-name' => 'Раскажувачница',
 	'storyboard-desc' => 'Ги носи дарителите на страница кадешто да испратат своја приказна. Содржи и интерфејс за модерирање на приказните',
+	'right-storyreview' => 'Прегледување, уредување, објавување и сокривање на приказни',
 );
 
 /** Dutch (Nederlands)
@@ -104,6 +109,7 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Biedt een startpagina voor donateurs, een pagina waar verhalen ingezonden kunnen worden en een beheersinterface',
+	'right-storyreview' => 'Verhalen controleren, bewerken, publiceren en verbergen',
 );
 
 /** Occitan (Occitan)

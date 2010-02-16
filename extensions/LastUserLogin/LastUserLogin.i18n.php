@@ -348,3 +348,17 @@ $messages['uk'] = array(
 	'right-lastlogin' => 'Перегляд часу останнього входу користувача до системи',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'lastuserlogin' => '最后一次用户登录',
+	'lastuserlogin-desc' => '显示用户最后一次登录的时间',
+	'lastuserlogin_userid' => '用户名',
+	'lastuserlogin_username' => '真实姓名',
+	'lastuserlogin_useremail' => '用户电子邮件',
+	'lastuserlogin_lastlogin' => '最后一次登录',
+	'lastuserlogin_daysago' => '天之前',
+	'right-lastlogin' => '查看用户最后一次登录时间',
+);
+

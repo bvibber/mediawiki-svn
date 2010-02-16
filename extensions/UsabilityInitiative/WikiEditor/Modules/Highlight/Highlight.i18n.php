@@ -302,6 +302,13 @@ $messages['sah'] = array(
 	'wikieditor-highlight-preference' => 'Эрэдээксийэлииргэ синтаксииһын сырдатыыны холбоо',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikieditor-highlight-preference' => 'සංස්කරණය කිරීමේදී වාග් රීති උද්දීපනය කිරීම සක්‍රීය කරයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

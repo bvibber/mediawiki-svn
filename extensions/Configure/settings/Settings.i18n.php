@@ -1871,6 +1871,7 @@ $messages['arc'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  * @author Meno25
  * @author Ouda
@@ -2176,7 +2177,7 @@ $messages['arz'] = array(
 	'configure-setting-wgSearchForwardUrl' => 'توجيه طلبات البحث',
 	'configure-setting-wgSearchEverythingOnlyLoggedIn' => 'اجعل تفضيل "searcheverything" مفعلا فقط للمستخدمين المسجلين',
 	'configure-setting-wgSearchHighlightBoundaries' => 'تعبير منتظم لمطابقه حدود الكلمات',
-	'configure-setting-wgCountTotalSearchHits' => 'دع محرك البحث يعد مطابقات البحث الكاملة للتقديم في Special:Search',
+	'configure-setting-wgCountTotalSearchHits' => 'خلّى مَكَنة التدوير تعدّ مجموع التدويرات اللى اتلقتها علشان تتقدّم فى Special:Search',
 	'configure-setting-wgUseTwoButtonsSearchForm' => 'سلوك نموذج البحث فى الشريط الجانبي',
 	'configure-setting-wgCountCategorizedImagesAsUsed' => 'فى [[Special:UnusedImages]]، اعتبر الصفحات مستخدمه إذا وُضعت فى تصنيف',
 	'configure-setting-wgDisableCounters' => 'عطل عدادات رؤيه الصفحة',
@@ -2273,16 +2274,14 @@ $messages['arz'] = array(
 	'configure-setting-wgLocalInterwiki' => 'بادئه إنترويكى محلية',
 	'configure-setting-wgRedirectSources' => "تعبير منتظم لتحديد المسارات التس ستعرض كوصلات 'تم التحويل من'",
 	'configure-setting-wgBlockOpenProxies' => 'اختبار بروكسى مفتوح عند التعديل',
-	'configure-setting-wgEnableDnsBlacklist' => 'استخدم قوائم DNS السوداء للتحقق من البروكسيات المفتوحة',
+	'configure-setting-wgEnableDnsBlacklist' => 'استعمل الـ DNS blacklists علشان تشوف لو فيه پروكسيهات مفتوحه',
 	'configure-setting-wgProxyList' => 'عنوان آى بى ممنوع',
 	'configure-setting-wgProxyMemcExpiry' => 'انتهاء كاش البروكسي',
 	'configure-setting-wgProxyPorts' => 'المنافذ التى نريد فحصها لبروكسي',
 	'configure-setting-wgProxyScriptPath' => 'السكريبت المستخدم للفحص عن البروكسيات',
 	'configure-setting-wgProxyWhitelist' => 'القائمه البيضاء للبروكسي',
 	'configure-setting-wgSecretKey' => 'مفتاح سري',
-	'configure-setting-wgDnsBlacklistUrls' => 'قائمة مسارات قوائم DNS السوداء للاستخدام
-
-لستة بالدى إن إس  اللى بتستخدمها يو ار ال  اللى فى البلاك لست',
+	'configure-setting-wgDnsBlacklistUrls' => 'ليستة الDNS blacklists URL علشان تستعملها',
 	'configure-setting-wgUsePrivateIPs' => 'ما إذا كانت عناوين الأيبى الخاصه القادمه من خادم بروكسى ينبغى قبولها لتحديد عنوان الأيبى لمستخدم',
 	'configure-setting-wgSQLiteDataDir' => 'دليل بيانات SQLite',
 	'configure-setting-wgDBmwschema' => 'ملف بوستجري',

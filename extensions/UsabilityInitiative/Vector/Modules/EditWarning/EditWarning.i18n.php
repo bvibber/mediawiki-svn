@@ -561,6 +561,15 @@ $messages['sah'] = array(
 	'vector-editwarning-preference' => 'Эрэдээксийэлиир сирэйтэн уларытыыларбын бигэргэппэккэ тахсаары гыннахпына сэрэтээр',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'vector-editwarning-warning' => 'මෙම පිටුවෙන් නික්ම යාම ඔබ සිදු කළ වෙනස්කම් නැතිවී යෑමට හේතු විය හැක.
+ඔබ ප්‍රවිෂ්ට වී ඇත්නම්,ඔබගේ වරණයන්වල  "{{int:prefs-editing}}" කොටසේ ඇති මෙම අනතුරු ඇඟවීම අක්‍රීය කළ හැක.',
+	'vector-editwarning-preference' => 'මා සංස්කරණ පිටුවක් සුරකිනු නොලැබූ වෙනස්කිරීම් සමඟ අතහැර යන විට අවවාද කරන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -25,6 +25,54 @@ $messages['af'] = array(
 	'right-editalluserpages' => 'Wysig gebruikersbladsye',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'userpageeditprotection-desc' => 'Абмяжоўвае рэдагаваньне старонак удзельнікаў самім удзельнікам і асобнымі рэдактарамі',
+	'right-editalluserpages' => 'рэдагаваньне старонак удзельнікаў',
+);
+
+/** German (Deutsch)
+ * @author The Evil IP address
+ */
+$messages['de'] = array(
+	'userpageeditprotection-desc' => 'Begrenzt das Bearbeiten von Benutzerseiten auf den Besitzer und berechtigte Benutzer',
+	'right-editalluserpages' => 'Benutzerseiten bearbeiten',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'userpageeditprotection-desc' => 'Restreint les modifications des pages utilisateur à son propriétaire et aux utilisateurs autorisés',
+	'right-editalluserpages' => 'Modifier les pages utilisateur',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'userpageeditprotection-desc' => 'Restrinxe a edición nas páxinas de usuario ao propio usuario e aos editores con permisos',
+	'right-editalluserpages' => 'Editar páxinas de usuario',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'userpageeditprotection-desc' => 'Bschränkt d Bearbeitig vun ere Benutzersyte uf dr Benutzer sälber un anderi, wu s Rächt derzue hän',
+	'right-editalluserpages' => 'Benutzersyte bearbeite',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'userpageeditprotection-desc' => 'Limita le modification de paginas de usator al usator e a redactores autorisate',
+	'right-editalluserpages' => 'Modificar paginas de usator',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -33,10 +81,19 @@ $messages['lb'] = array(
 	'right-editalluserpages' => 'Benotzersäiten änneren',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'userpageeditprotection-desc' => 'Наметнува корисничките страници да можат да ги уредуваат само самите корисници и повластени уредници',
+	'right-editalluserpages' => 'уреди кориснички страници',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'userpageeditprotection-desc' => "Beperkt het bewerken van gebruikerspagina's tot de gebruiker zelf en gebruikers met rechten",
 	'right-editalluserpages' => "Gebruikerspagina's bewerken",
 );
 
@@ -44,6 +101,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'userpageeditprotection-desc' => 'Begrenser redigering av brukersidene til brukeren og tillatte bidragsytere',
 	'right-editalluserpages' => 'Rediger brukersider',
 );
 

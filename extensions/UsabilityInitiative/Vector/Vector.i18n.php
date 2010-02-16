@@ -352,6 +352,14 @@ $messages['sah'] = array(
 	'vector-desc' => 'Вектор диэн тиэмэ туттар интерфейсын тупсарыы',
 );
 
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'vector' => 'දෛශික සඳහා UI දියුණු කිරීම්',
+	'vector-desc' => 'දෛශික පෘෂ්ඨයේ පරිශීලක අතුරු මුහුණත් මූලිකාංග මත දියුණු කරයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
