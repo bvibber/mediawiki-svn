@@ -7396,7 +7396,7 @@ if ( typeof context == 'undefined' ) {
 					}
 				} while ( ( !postFinished || !periFinished || !postFinished ) );
 				startPos = rawPreText.replace( /\r\n/g, "\n" ).length;
-				endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+				endPos = startPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
 			}
 			return [ startPos, endPos ];
 		},
