@@ -19,16 +19,9 @@ class ApiWikiAtHome extends ApiBase {
 	}
 
 	public function execute(){
-		global $wgUser, $wgRequest;
 		$this->getMain()->isWriteMode();
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
-
-		// do token checks:
-		if( is_null( $this->mParams['token'] ) )
-			$this->dieUsageMsg( array( 'missingparam', 'token' ) );
-		if( !$wgUser->matchEditToken( $this->mParams['token'] ) )
-			$this->dieUsageMsg( array( 'sessionfailure' ) );
 
 		//do actions:
 		if( $this->mParams['getnewjob'] ){
@@ -273,7 +266,7 @@ class ApiWikiAtHome extends ApiBase {
 
 
 			}
-	}
+		}
 
 		//return success
 
@@ -307,6 +300,10 @@ class ApiWikiAtHome extends ApiBase {
 			' On subquent queries you can use "jobset" to request a job on data you already have downloaded',
 			'Note that the HTTP POST must be done as a file upload (i.e. using multipart/form-data)'
 		);
+	}
+	
+	public function getTokenSalt() {
+		return null;
 	}
 
 	protected function getExamples() {
