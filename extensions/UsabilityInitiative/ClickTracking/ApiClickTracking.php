@@ -82,6 +82,13 @@ class ApiClickTracking extends ApiBase {
 			'Track user clicks on JavaScript items.'
 		);
 	}
+	
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'missingparam', 'eventid' ),
+			array( 'missingparam', 'token' ),
+		) );
+	}
 
 	public function getAllowedParams() {
 		return array(
