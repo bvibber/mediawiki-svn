@@ -18,6 +18,10 @@ $magicWords['br'] = array(
 	'todo'   => array( '0', 'daober', 'todo' ),
 );
 
+$magicWords['es'] = array(
+	'todo'   => array( '0', 'porhacer', 'todo' ),
+);
+
 $magicWords['mg'] = array(
 	'todo'   => array( '0', 'atao', 'todo' ),
 );

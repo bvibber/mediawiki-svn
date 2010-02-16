@@ -18,6 +18,10 @@ $magicWords['de'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['es'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__ENCABEZADOSNOENUMERADOS__', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['ksh'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__ÖVERSCHRIFTENITNUMMERIERE__', '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
 );
@@ -42,6 +46,14 @@ $magicWords['ru'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__БЕЗНОМЕРОВЗАГОЛОВКОВ__', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['sv'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__INTENUMRERADERUBRIKER__', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['tr'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__NUMARALIBAŞLIKYOK__', '__NONUMBEREDHEADINGS__' ),
+);
+
+$magicWords['uk'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__БЕЗНОМЕРІВЗАГОЛОВКІВ__', '__БЕЗНОМЕРОВЗАГОЛОВКОВ__', '__NONUMBEREDHEADINGS__' ),
 );

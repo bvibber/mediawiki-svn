@@ -22,6 +22,10 @@ $magicWords['br'] = array(
 	'interlanguage'   => array( '0', 'etreyezh', 'interlanguage' ),
 );
 
+$magicWords['es'] = array(
+	'interlanguage'   => array( '0', 'interidioma', 'interlanguage' ),
+);
+
 $magicWords['ml'] = array(
 	'interlanguage'   => array( '0', 'അന്തർഭാഷ', 'interlanguage' ),
 );
@@ -36,4 +40,8 @@ $magicWords['nl'] = array(
 
 $magicWords['ru'] = array(
 	'interlanguage'   => array( '0', 'межязык', 'interlanguage' ),
+);
+
+$magicWords['uk'] = array(
+	'interlanguage'   => array( '0', 'міжмова', 'межязык', 'interlanguage' ),
 );

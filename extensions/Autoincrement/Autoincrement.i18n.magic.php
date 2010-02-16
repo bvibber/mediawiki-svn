@@ -14,6 +14,10 @@ $magicWords['arz'] = array(
 	'autoincrement'   => array( '0', 'زيادة_تلقائية', 'AUTOINCREMENT' ),
 );
 
+$magicWords['es'] = array(
+	'autoincrement'   => array( '0', 'AUTOINCREMENTO', 'AUTOINCREMENTAR', 'AUTOINCREMENT' ),
+);
+
 $magicWords['mr'] = array(
 	'autoincrement'   => array( '0', 'स्वयंवाढ', 'AUTOINCREMENT' ),
 );
@@ -28,4 +32,8 @@ $magicWords['nl'] = array(
 
 $magicWords['ru'] = array(
 	'autoincrement'   => array( '0', 'АВТОИНКРЕМЕНТ', 'AUTOINCREMENT' ),
+);
+
+$magicWords['sv'] = array(
+	'autoincrement'   => array( '0', 'ÖKAAUTOMATISKT', 'AUTOINCREMENT' ),
 );

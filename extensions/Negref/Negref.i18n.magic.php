@@ -13,3 +13,7 @@ $magicWords['ar'] = array(
 $magicWords['arz'] = array(
 	'negref'   => array( '0', 'نيجريف', 'negref' ),
 );
+
+$magicWords['es'] = array(
+	'negref'   => array( '0', 'refneg', 'negref' ),
+);

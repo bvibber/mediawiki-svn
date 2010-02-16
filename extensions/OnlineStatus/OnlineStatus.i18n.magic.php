@@ -42,3 +42,7 @@ $magicWords['ru'] = array(
 	'onlinestatus_word_raw'   => array( '1', 'СТАТУСВСЕТИСЫР', 'RAWONLINESTATUS' ),
 	'anyuseronlinestatus'     => array( '0', 'любойучастникстатусвсети', 'anyuseronlinestatus' ),
 );
+
+$magicWords['sv'] = array(
+	'onlinestatus_word_raw'   => array( '1', 'RÅONLINESTATUS', 'RAWONLINESTATUS' ),
+);

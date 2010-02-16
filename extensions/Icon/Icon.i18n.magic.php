@@ -26,6 +26,10 @@ $magicWords['bs'] = array(
 	'icon'   => array( '0', 'ikona', 'icon' ),
 );
 
+$magicWords['es'] = array(
+	'icon'   => array( '0', 'icono', 'icon' ),
+);
+
 $magicWords['et'] = array(
 	'icon'   => array( '0', 'ikoon', 'icon' ),
 );
@@ -46,10 +50,22 @@ $magicWords['nl'] = array(
 	'icon'   => array( '0', 'icoon', 'icon' ),
 );
 
+$magicWords['no'] = array(
+	'icon'   => array( '0', 'ikon', 'icon' ),
+);
+
 $magicWords['ru'] = array(
 	'icon'   => array( '0', 'значок', 'icon' ),
 );
 
+$magicWords['sv'] = array(
+	'icon'   => array( '0', 'ikon', 'icon' ),
+);
+
 $magicWords['tr'] = array(
 	'icon'   => array( '0', 'simge', 'ikon', 'icon' ),
+);
+
+$magicWords['uk'] = array(
+	'icon'   => array( '0', 'значок', 'icon' ),
 );

@@ -48,8 +48,26 @@ $magicWords['arz'] = array(
 	'wlk-logo'       => array( '0', 'شعار', 'logo' ),
 	'wlk-subtitle'   => array( '0', 'عنوان_فرعي', 'subtitle' ),
 	'wlk-summary'    => array( '1', 'ملخص', 'summary' ),
-	'wlk-hidden'     => array( '0', 'مخفى', 'hidden' ),
+	'wlk-hidden'     => array( '0', 'مخفى', 'مخفي', 'hidden' ),
 	'wlk-more'       => array( '0', 'مزيد', 'more' ),
+);
+
+$magicWords['es'] = array(
+	'wl-settings'    => array( '0', 'configuracion-wl', 'configuración-wl', 'wl-settings' ),
+	'wl-publish'     => array( '0', 'publicar-wl', 'wl-publish' ),
+	'wl-author'      => array( '0', 'autor-wl', 'wl-author' ),
+	'wl-tags'        => array( '0', 'etiquetas-wl', 'wl-tags' ),
+	'wl-info'        => array( '0', 'informacion-wl', 'información-wl', 'wl-info' ),
+	'wlk-subtitle'   => array( '0', 'subtitulo', 'subtítulo', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'resumen', 'summary' ),
+	'wlk-hidden'     => array( '0', 'escondido', 'hidden' ),
+	'wlk-more'       => array( '0', 'más', 'mas', 'more' ),
+);
+
+$magicWords['ja'] = array(
+	'wlk-logo'       => array( '0', 'ロゴ', 'logo' ),
+	'wlk-subtitle'   => array( '0', 'サブタイトル', '副タイトル', 'subtitle' ),
+	'wlk-summary'    => array( '1', '要約', 'summary' ),
 );
 
 $magicWords['mg'] = array(
@@ -74,10 +92,21 @@ $magicWords['nl'] = array(
 	'wlk-more'       => array( '0', 'meer', 'more' ),
 );
 
-/**
- * Portuguese.
- * @author Juliano F. Ravasi
- */
+$magicWords['no'] = array(
+	'wlk-subtitle'   => array( '0', 'undertekst', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'sammendrag', 'summary' ),
+	'wlk-hidden'     => array( '0', 'gjemt', 'hidden' ),
+	'wlk-more'       => array( '0', 'mer', 'more' ),
+);
+
+$magicWords['ps'] = array(
+	'wlk-logo'       => array( '0', 'نښه', 'logo' ),
+	'wlk-subtitle'   => array( '0', 'لمنليک', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'لنډيز', 'summary' ),
+	'wlk-hidden'     => array( '0', 'پټ', 'hidden' ),
+	'wlk-more'       => array( '0', 'نور', 'more' ),
+);
+
 $magicWords['pt'] = array(
 	'wl-settings'    => array( '0', 'wl-configs', 'wl-settings' ),
 	'wl-publish'     => array( '0', 'wl-publicar', 'wl-publish' ),
@@ -89,10 +118,6 @@ $magicWords['pt'] = array(
 	'wlk-more'       => array( '0', 'mais', 'more' ),
 );
 
-/**
- * Brazilian Portuguese.
- * @author Juliano F. Ravasi
- */
 $magicWords['pt-br'] = array(
 	'wl-settings'    => array( '0', 'wl-configs', 'wl-settings' ),
 	'wl-publish'     => array( '0', 'wl-publicar', 'wl-publish' ),

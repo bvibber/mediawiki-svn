@@ -80,8 +80,8 @@ $magicWords['arz'] = array(
 	'asec'     => array( '0', 'أسيك', 'أركسيك', 'asec', 'arcsec' ),
 	'sin'      => array( '0', 'جا', 'sin' ),
 	'asin'     => array( '0', 'أسين', 'أركسين', 'asin', 'arcsin' ),
-	'sinh'     => array( '0', 'شاين', 'sinh' ),
-	'asinh'    => array( '0', 'أشاين', 'أركشاين', 'asinh', 'arcsinh' ),
+	'sinh'     => array( '0', 'شاين', 'شين', 'sinh' ),
+	'asinh'    => array( '0', 'أشاين', 'أركشاين', 'أشين', 'أركشين', 'asinh', 'arcsinh' ),
 	'csc'      => array( '0', 'كوسيك', 'csc' ),
 	'acsc'     => array( '0', 'أكوسيك', 'أرككوسيك', 'acsc', 'arccsc' ),
 );
@@ -128,4 +128,9 @@ $magicWords['ru'] = array(
 	'atan'     => array( '0', 'arctg', 'atan', 'arctan' ),
 	'cot'      => array( '0', 'ctg', 'cot' ),
 	'acot'     => array( '0', 'arcctg', 'acot', 'arccot' ),
+);
+
+$magicWords['sv'] = array(
+	'const'    => array( '0', 'konstant', 'const' ),
+	'mean'     => array( '0', 'medel', 'mean' ),
 );

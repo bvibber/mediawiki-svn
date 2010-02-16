@@ -25,6 +25,10 @@ $magicWords['br'] = array(
 	'transliterate'   => array( '0', 'treuzlizherennañ', 'transliterate' ),
 );
 
+$magicWords['es'] = array(
+	'transliterate'   => array( '0', 'transliterar', 'transliterate' ),
+);
+
 $magicWords['ml'] = array(
 	'transliterate'   => array( '0', 'ലിപിമാറ്റംചെയ്യുക', 'ലിപ്യന്തരണം', 'ലിപിമാറ്റം', 'transliterate' ),
 );

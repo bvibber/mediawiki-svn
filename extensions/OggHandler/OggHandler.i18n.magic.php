@@ -24,16 +24,15 @@ $magicWords['ar'] = array(
 	'ogg_thumbtime'   => array( '0', 'وقت_التصغير=$1', 'thumbtime=$1' ),
 );
 
-$magicWords['arc'] = array(
-);
-
 $magicWords['arz'] = array(
 	'ogg_noplayer'    => array( '0', 'لابرنامج', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'لاأيقونة', 'noicon' ),
 	'ogg_thumbtime'   => array( '0', 'وقت_التصغير=$1', 'thumbtime=$1' ),
 );
 
-$magicWords['ko'] = array(
+$magicWords['es'] = array(
+	'ogg_noplayer'    => array( '0', 'noreproductor', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'noicono', 'noicon' ),
 );
 
 $magicWords['ml'] = array(
@@ -61,4 +60,8 @@ $magicWords['nl'] = array(
 $magicWords['ru'] = array(
 	'ogg_noplayer'    => array( '0', 'нетпроигрывателя', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'нетзначка', 'noicon' ),
+);
+
+$magicWords['sv'] = array(
+	'ogg_thumbtime'   => array( '0', 'minatyrtid=$1', 'thumbtime=$1' ),
 );
