@@ -6471,27 +6471,25 @@ $.wikiEditor = {
 		'ltr': {
 			// The toolbar layout is broken in IE6
 			'msie': [['>=', 7]],
-			// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
-			'firefox': [
-				['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
-			],
+			// Layout issues in FF < 2
+			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
 			'opera': [['>=', 9.6]],
-			// This should be checked again, but the usage of Safari 3.0 and lower is so small it's not a priority
-			'safari': [['>=', 4]]
+			// jQuery minimums
+			'safari': [['>=', 3]],
+			'chrome': [['>=', 3]]
 		},
 		// Right-to-left languages
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
 			'msie': [['>=', 8]],
-			// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
-			'firefox': [
-				['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
-			],
+			// Layout issues in FF < 2
+			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
 			'opera': [['>=', 9.6]],
-			// This should be checked again, but the usage of Safari 3.0 and lower is so small it's not a priority
-			'safari': [['>=', 4]]
+			// jQuery minimums
+			'safari': [['>=', 3]],
+			'chrome': [['>=', 3]]
 		}
 	},
 	/**
@@ -6555,6 +6553,19 @@ $.wikiEditor = {
 		}
 		// Return and also cache the return value - this will be checked somewhat often
 		return cacheSupport( true );
+	},
+	/**
+	 * Checks if a module has a specific requirement
+	 */
+	'isRequired': function( module, req ) {
+		if ( typeof $.wikiEditor.modules[module]['req'] !== 'undefined' ) {
+			for ( req in $.wikiEditor.modules[module]['req'] ) {
+				if ( $.wikiEditor.modules[module]['req'][req] == 'iframe' ) {
+					return true;
+				}
+			}
+		}
+		return false;
 	},
 	/**
 	 * Provides a way to extract messages from objects. Wraps the mw.usability.getMsg() function, which
@@ -7038,501 +7049,6 @@ if ( typeof context == 'undefined' ) {
 			}
 			return context.htmlToTextMap[origHTML] = leading + retval + trailing;
 		},
-		
-		/*
-		 * FIXME: This section needs attention! It doesn't really make sense given it's supposed to keep compatibility
-		 * with the textSelection plugin, which works on character-based manipulations as opposed to the node-based
-		 * manipulations we use for the iframe. It's debatable whether compatibility with this plugin is even being done
-		 * well, or for that matter should be done at all.
-		 */
-		
-		/**
-		 * Gets the complete contents of the iframe (in plain text, not HTML)
-		 */
-		'getContents': function() {
-			// For <p></p>, .html() returns <p>&nbsp;</p> in IE
-			// This seems to convince IE while not affecting display
-			var html;
-			if ( $.browser.msie ) {
-				// Don't manipulate the iframe DOM itself, causes cursor jumping issues
-				var $c = $( context.$content.get( 0 ).cloneNode( true ) );
-				$c.find( 'p' ).each( function() {
-					if ( $(this).html() == '' ) {
-						$(this).replaceWith( '<p></p>' );
-					}
-				} );
-				html = $c.html();
-			} else {
-				html = context.$content.html();
-			}
-			return context.fn.htmlToText( html );
-		},
-		/**
-		 * Gets the currently selected text in the content
-		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 */
-		'getSelection': function() {
-			var retval;
-			if ( context.$iframe[0].contentWindow.getSelection ) {
-				// Firefox and Opera
-				retval = context.$iframe[0].contentWindow.getSelection();
-				if ( $.browser.opera ) {
-					// Opera strips newlines in getSelection(), so we need something more sophisticated
-					if ( retval.rangeCount > 0 ) {
-						retval = context.fn.htmlToText( $( '<pre />' )
-								.append( retval.getRangeAt( 0 ).cloneContents() )
-								.html()
-						);
-					} else {
-						retval = '';
-					}
-				}
-			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
-				// IE
-				retval = context.$iframe[0].contentWindow.document.selection.createRange();
-			}
-			if ( typeof retval.text != 'undefined' ) {
-				// In IE8, retval.text is stripped of newlines, so we need to process retval.htmlText
-				// to get a reliable answer. IE7 does get this right though
-				// Run this fix for all IE versions anyway, it doesn't hurt
-				retval = context.fn.htmlToText( retval.htmlText );
-			} else if ( typeof retval.toString != 'undefined' ) {
-				retval = retval.toString();
-			}
-			return retval;
-		},
-		/**
-		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
-		 * selection is empty.
-		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 */
-		'encapsulateSelection': function( options ) {
-			var selText = $(this).textSelection( 'getSelection' );
-			var selTextArr;
-			var selectAfter = false;
-			var setSelectionTo = null;
-			var pre = options.pre, post = options.post;
-			if ( !selText ) {
-				selText = options.peri;
-				selectAfter = true;
-			} else if ( options.replace ) {
-				selText = options.peri;
-			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
-				// Exclude ending space char
-				// FIXME: Why?
-				selText = selText.substring( 0, selText.length - 1 );
-				post += ' ';
-			}
-			if ( options.splitlines ) {
-				selTextArr = selText.split( /\n/ );
-			}
-
-			if ( context.$iframe[0].contentWindow.getSelection ) {
-				// Firefox and Opera
-				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
-				if ( options.ownline ) {
-					// We need to figure out if the cursor is at the start or end of a line
-					var atStart = false, atEnd = false;
-					var body = context.$content.get( 0 );
-					if ( range.startOffset == 0 ) {
-						// Start of a line
-						// FIXME: Not necessarily the case with syntax highlighting or
-						// template collapsing
-						atStart = true;
-					} else if ( range.startContainer == body ) {
-						// Look up the node just before the start of the selection
-						// If it's a <BR>, we're at the start of a line that starts with a
-						// block element; if not, we're at the end of a line
-						var n = body.firstChild;
-						for ( var i = 0; i < range.startOffset - 1 && n; i++ ) {
-							n = n.nextSibling;
-						}
-						if ( n && n.nodeName == 'BR' ) {
-							atStart = true;
-						} else {
-							atEnd = true;
-						}
-					} else if ( range.startContainer.nodeName == '#text' &&
-							range.startOffset == range.startContainer.nodeValue.length ) {
-						// Apparently this happens when splitting text nodes
-						atEnd = true;
-					}
-					
-					if ( !atStart ) {
-						pre  = "\n" + options.pre;
-					}
-					if ( !atEnd ) {
-						post += "\n";
-					}
-				}
-				var insertText = "";
-				if ( options.splitlines ) {
-					for( var j = 0; j < selTextArr.length; j++ ) {
-						insertText = insertText + pre + selTextArr[j] + post;
-						if( j != selTextArr.length - 1 ) {
-							insertText += "\n";
-						}
-					}
-				} else {
-					insertText = pre + selText + post;
-				}
-				var insertLines = insertText.split( "\n" );
-				range.extractContents();
-				// Insert the contents one line at a time - insertNode() inserts at the beginning, so this has to happen
-				// in reverse order
-				// Track the first and last inserted node, and if we need to also track where the text we need to select
-				// afterwards starts and ends
-				var firstNode = null, lastNode = null;
-				var selSC = null, selEC = null, selSO = null, selEO = null, offset = 0;
-				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
-					firstNode = context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] );
-					range.insertNode( firstNode );
-					lastNode = lastNode || firstNode;
-					var newOffset = offset + insertLines[i].length;
-					if ( !selEC && post.length <= newOffset ) {
-						selEC = firstNode;
-						selEO = selEC.nodeValue.length - ( post.length - offset );
-					}
-					if ( selEC && !selSC && pre.length >= insertText.length - newOffset ) {
-						selSC = firstNode;
-						selSO = pre.length - ( insertText.length - newOffset );
-					}
-					offset = newOffset;
-					if ( i > 0 ) {
-						firstNode = context.$iframe[0].contentWindow.document.createElement( 'br' );
-						range.insertNode( firstNode );
-						newOffset = offset + 1;
-						if ( !selEC && post.length <= newOffset ) {
-							selEC = firstNode;
-							selEO = 1 - ( post.length - offset );
-						}
-						if ( selEC && !selSC && pre.length >= insertText.length - newOffset ) {
-							selSC = firstNode;
-							selSO = pre.length - ( insertText.length - newOffset );
-						}
-						offset = newOffset;
-					}
-				}
-				if ( firstNode ) {
-					context.fn.scrollToTop( $( firstNode.parentNode ) );
-				}
-				if ( selectAfter ) {
-					setSelectionTo = {
-						startContainer: selSC,
-						endContainer: selEC,
-						start: selSO,
-						end: selEO
-					};
-				} else if  ( lastNode ) {
-					setSelectionTo = {
-						startContainer: lastNode,
-						endContainer: lastNode,
-						start: lastNode.nodeValue.length,
-						end: lastNode.nodeValue.length
-					};
-				}
-			} else if ( context.$iframe[0].contentWindow.document.selection ) {
-				// IE
-				context.$iframe[0].contentWindow.focus();
-				var range = context.$iframe[0].contentWindow.document.selection.createRange();
-				if ( options.ownline && range.moveStart ) {
-					// Check if we're at the start of a line
-					// If not, prepend a newline
-					var range2 = context.$iframe[0].contentWindow.document.selection.createRange();
-					range2.collapse();
-					range2.moveStart( 'character', -1 );
-					// FIXME: Which check is correct?
-					if ( range2.text != "\r" && range2.text != "\n" && range2.text != "" ) {
-						pre = "\n" + pre;
-					}
-					
-					// Check if we're at the end of a line
-					// If not, append a newline
-					var range3 = context.$iframe[0].contentWindow.document.selection.createRange();
-					range3.collapse( false );
-					range3.moveEnd( 'character', 1 );
-					if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
-						post += "\n";
-					}
-				}
-				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this function
-				var insertText = "";
-				if ( options.splitlines ) {
-					for( var j = 0; j < selTextArr.length; j++ ) {
-						insertText = insertText + pre + selTextArr[j] + post;
-						if( j != selTextArr.length - 1 ) {
-							insertText += "\n"; 
-						}
-					}
-				} else {
-					insertText = pre + selText + post;
-				}
-				// TODO: Maybe find a more elegant way of doing this like the Firefox code above?
-				range.pasteHTML( insertText
-						.replace( /\</g, '&lt;' )
-						.replace( />/g, '&gt;' )
-						.replace( /\r?\n/g, '<br />' )
-				);
-				if ( selectAfter ) {
-					range.moveStart( 'character', -post.length - selText.length );
-					range.moveEnd( 'character', -post.length );
-					range.select();
-				}
-			}
-			
-			if ( setSelectionTo ) {
-				context.fn.setSelection( setSelectionTo );
-			}
-			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
-			$( context.$iframe[0].contentWindow.document ).trigger(
-				'encapsulateSelection', [ pre, options.peri, post, options.ownline, options.replace ]
-			);
-			return context.$textarea;
-		},
-		/**
-		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
-		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 */
-		'getCaretPosition': function( options ) {
-			var startPos = null, endPos = null;
-			if ( context.$iframe[0].contentWindow.getSelection ) {
-				var selection = context.$iframe[0].contentWindow.getSelection();
-				if ( selection.rangeCount == 0 ) {
-					// We don't know where the cursor is
-					return [ 0, 0 ];
-				}
-				var sc = selection.getRangeAt( 0 ).startContainer, ec = selection.getRangeAt( 0 ).endContainer;
-				var so = selection.getRangeAt( 0 ).startOffset, eo = selection.getRangeAt( 0 ).endOffset;
-				if ( sc.nodeName == 'BODY' ) {
-					// Grab the node just before the start of the selection
-					var n = sc.firstChild;
-					for ( var i = 0; i < so - 1 && n; i++ ) {
-						n = n.nextSibling;
-					}
-					sc = n;
-					so = 0;
-				}
-				if ( ec.nodeName == 'BODY' ) {
-					var n = ec.firstChild;
-					for ( var i = 0; i < eo - 1 && n; i++ ) {
-						n = n.nextSibling;
-					}
-					ec = n;
-					eo = 0;
-				}
-				
-				// Make sure sc and ec are leaf nodes
-				while ( sc.firstChild ) {
-					sc = sc.firstChild;
-				}
-				while ( ec.firstChild ) {
-					ec = ec.firstChild;
-				}
-				// Make sure the offsets are regenerated if necessary
-				context.fn.getOffset( 0 );
-				var o;
-				for ( o in context.offsets ) {
-					if ( startPos === null && context.offsets[o].node == sc ) {
-						// For some wicked reason o is a string, even though
-						// we put it in as an integer. Use ~~ to coerce it too an int
-						startPos = ~~o + so - context.offsets[o].offset;
-					}
-					if ( startPos !== null && context.offsets[o].node == ec ) {
-						endPos = ~~o + eo - context.offsets[o].offset;
-						break;
-					}
-				}
-			} else if ( context.$iframe[0].contentWindow.document.selection ) {
-				// IE
-				// FIXME: This is mostly copypasted from the textSelection plugin
-				var d = context.$iframe[0].contentWindow.document;
-				var postFinished = false;
-				var periFinished = false;
-				var postFinished = false;
-				var preText, rawPreText, periText;
-				var rawPeriText, postText, rawPostText;
-				// Create range containing text in the selection
-				var periRange = d.selection.createRange().duplicate();
-				// Create range containing text before the selection
-				var preRange = d.body.createTextRange();
-				// Move the end where we need it
-				preRange.setEndPoint( "EndToStart", periRange );
-				// Create range containing text after the selection
-				var postRange = d.body.createTextRange();
-				// Move the start where we need it
-				postRange.setEndPoint( "StartToEnd", periRange );
-				// Load the text values we need to compare
-				preText = rawPreText = preRange.text;
-				periText = rawPeriText = periRange.text;
-				postText = rawPostText = postRange.text;
-				/*
-				 * Check each range for trimmed newlines by shrinking the range by 1
-				 * character and seeing if the text property has changed. If it has
-				 * not changed then we know that IE has trimmed a \r\n from the end.
-				 */
-				do {
-					if ( !postFinished ) {
-						if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
-							postFinished = true;
-						} else {
-							preRange.moveEnd( "character", -1 )
-							if ( preRange.text == preText ) {
-								rawPreText += "\r\n";
-							} else {
-								postFinished = true;
-							}
-						}
-					}
-					if ( !periFinished ) {
-						if ( periRange.compareEndPoints( "StartToEnd", periRange ) == 0 ) {
-							periFinished = true;
-						} else {
-							periRange.moveEnd( "character", -1 )
-							if ( periRange.text == periText ) {
-								rawPeriText += "\r\n";
-							} else {
-								periFinished = true;
-							}
-						}
-					}
-					if ( !postFinished ) {
-						if ( postRange.compareEndPoints("StartToEnd", postRange) == 0 ) {
-							postFinished = true;
-						} else {
-							postRange.moveEnd( "character", -1 )
-							if ( postRange.text == postText ) {
-								rawPostText += "\r\n";
-							} else {
-								postFinished = true;
-							}
-						}
-					}
-				} while ( ( !postFinished || !periFinished || !postFinished ) );
-				startPos = rawPreText.replace( /\r\n/g, "\n" ).length;
-				endPos = startPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
-			}
-			return [ startPos, endPos ];
-		},
-		/**
-		 * Sets the selection of the content
-		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 *
-		 * @param start Character offset of selection start
-		 * @param end Character offset of selection end
-		 * @param startContainer Element in iframe to start selection in. If not set, start is a character offset
-		 * @param endContainer Element in iframe to end selection in. If not set, end is a character offset
-		 */
-		'setSelection': function( options ) {
-			var sc = options.startContainer, ec = options.endContainer;
-			sc = sc && sc.jquery ? sc[0] : sc;
-			ec = ec && ec.jquery ? ec[0] : ec;
-			if ( context.$iframe[0].contentWindow.getSelection ) {
-				// Firefox and Opera
-				var start = options.start, end = options.end;
-				if ( !sc || !ec ) {
-					var s = context.fn.getOffset( start );
-					var e = context.fn.getOffset( end );
-					sc = s ? s.node : null;
-					ec = e ? e.node : null;
-					start = s ? s.offset : null;
-					end = e ? e.offset : null;
-				}
-				if ( !sc || !ec ) {
-					// The requested offset isn't in the offsets array
-					// Give up
-					return context.$textarea;
-				}
-				
-				var sel = context.$iframe[0].contentWindow.getSelection();
-				while ( sc.firstChild && sc.nodeName != '#text' ) {
-					sc = sc.firstChild;
-				}
-				while ( ec.firstChild && ec.nodeName != '#text' ) {
-					ec = ec.firstChild;
-				}
-				var range = context.$iframe[0].contentWindow.document.createRange();
-				range.setStart( sc, start );
-				range.setEnd( ec, end );
-				sel.removeAllRanges();
-				sel.addRange( range );
-				context.$iframe[0].contentWindow.focus();
-			} else if ( context.$iframe[0].contentWindow.document.body.createTextRange ) {
-				// IE
-				var range = context.$iframe[0].contentWindow.document.body.createTextRange();
-				if ( sc ) {
-					range.moveToElementText( sc );
-				}
-				range.collapse();
-				range.moveEnd( 'character', options.start );
-				
-				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
-				if ( ec ) {
-					range2.moveToElementText( ec );
-				}
-				range2.collapse();
-				range2.moveEnd( 'character', options.end );
-				
-				// IE does newline emulation for <p>s: <p>foo</p><p>bar</p> becomes foo\nbar just fine
-				// but <p>foo</p><br><br><p>bar</p> becomes foo\n\n\n\nbar , one \n too many
-				// Correct for this
-				var matches, counted = 0;
-				// while ( matches = range.htmlText.match( regex ) && matches.length <= counted ) doesn't work
-				// because the assignment side effect hasn't happened yet when the second term is evaluated
-				while ( matches = range.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
-					if ( matches.length <= counted )
-						break;
-					range.moveEnd( 'character', matches.length );
-					counted += matches.length;
-				}
-				range2.moveEnd( 'character', counted );
-				while ( matches = range2.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
-					if ( matches.length <= counted )
-						break;
-					range2.moveEnd( 'character', matches.length );
-					counted += matches.length;
-				}
-
-				range2.setEndPoint( 'StartToEnd', range );
-				range2.select();
-			}
-			return context.$textarea;
-		},
-		/**
-		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
-		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 */
-		'scrollToCaretPosition': function( options ) {
-			// FIXME: context.$textarea.trigger( 'scrollToPosition' ) ?
-		},
-		/**
-		 * Scroll an element to the top of the iframe
-		 * DO NOT CALL THESE DIRECTLY, use .textSelection( 'functionname', options ) instead
-		 *
-		 * @param $element jQuery object containing an element in the iframe
-		 * @param force If true, scroll the element even if it's already visible
-		 */
-		'scrollToTop': function( $element, force ) {
-			var html = context.$content.closest( 'html' ),
-				body = context.$content.closest( 'body' ),
-				parentHtml = $( 'html' ),
-				parentBody = $( 'body' );
-			var y = $element.offset().top;
-			if ( !$.browser.msie && ! $element.is( 'body' ) ) {
-				y = parentHtml.scrollTop() > 0 ? y + html.scrollTop() - parentHtml.scrollTop() : y;
-				y = parentBody.scrollTop() > 0 ? y + body.scrollTop() - parentBody.scrollTop() : y;
-			}
-			var topBound = html.scrollTop() > body.scrollTop() ? html.scrollTop() : body.scrollTop(),
-				bottomBound = topBound + context.$iframe.height();
-			if ( force || y < topBound || y > bottomBound ) {
-					html.scrollTop( y );
-					body.scrollTop( y );
-				}
-			$element.trigger( 'scrollToTop' );
-		},
-		/*
-		 * End of wonky textSelection "compatible" section that needs attention.
-		 */
-		
 		/**
 		 * Get the first element before the selection that's in a certain class
 		 * @param classname Class to match. Defaults to '', meaning any class
@@ -7850,6 +7366,624 @@ if ( typeof context == 'undefined' ) {
 			}
 			// synch our old delayed history position until the next undo/redo action
 			context.oldDelayedHistoryPosition = context.historyPosition;
+		},
+		/**
+		 * Sets up the iframe in place of the textarea to allow more advanced operations
+		 */
+		'setupIframe': function() {
+			context.$iframe = $( '<iframe></iframe>' )
+				.attr( {
+					'frameBorder': 0,
+					'border': 0,
+					'tabindex': 1,
+					'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
+						'instance=' + context.instance + '&ts=' + ( new Date() ).getTime() + '&is=content',
+					'id': 'wikiEditor-iframe-' + context.instance
+				} )
+				.css( {
+					'backgroundColor': 'white',
+					'width': '100%',
+					'height': context.$textarea.height(),
+					'display': 'none',
+					'overflow-y': 'scroll',
+					'overflow-x': 'hidden'
+				} )
+				.insertAfter( context.$textarea )
+				.load( function() {
+					// Internet Explorer will reload the iframe once we turn on design mode, so we need to only turn it on
+					// during the first run, and then bail
+					if ( !this.isSecondRun ) {
+						// Turn the document's design mode on
+						context.$iframe[0].contentWindow.document.designMode = 'on';
+						// Let the rest of this function happen next time around
+						if ( $.browser.msie ) {
+							this.isSecondRun = true;
+							return;
+						}
+					}
+					// Get a reference to the content area of the iframe
+					context.$content = $( context.$iframe[0].contentWindow.document.body );
+					// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
+					// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
+					// TODO: Refactor this into a textToHtml() function
+					var html = context.$textarea.val()
+						// We're gonna use &esc; as an escape sequence
+						.replace( /&esc;/g, '&esc;esc;' )
+						// Escape existing uses of <p>, </p>, &nbsp; and <span class="wikiEditor-tab"></span>
+						.replace( /\<p\>/g, '&esc;&lt;p&gt;' )
+						.replace (/\<\/p\>/g, '&esc;&lt;/p&gt;' )
+						.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&esc;&lt;span&nbsp;class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' )
+						.replace( /&nbsp;/g, '&esc;&amp;nbsp;' );
+					// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
+					// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
+					if ( $.browser.msie ) {
+						html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
+						if ( $.browser.versionNumber <= 7 ) {
+							// Replace all spaces matching &nbsp; - IE <= 7 needs this because of its overzealous
+							// whitespace collapsing
+							html = html.replace( / /g, "&nbsp;" );
+						} else {
+							// IE8 is happy if we just convert the first leading space to &nbsp;
+							html = html.replace( /(^|\n) /g, "$1&nbsp;" );
+						}
+					}
+					// Use a dummy div to escape all entities
+					// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
+					// We also need to unescape the doubly-escaped things mentioned above
+					html = $( '<div />' ).text( '<p>' + html.replace( /\r?\n/g, '</p><p>' ) + '</p>' ).html()
+						.replace( /&amp;nbsp;/g, '&nbsp;' )
+						// Allow <p> tags to survive encoding
+						.replace( /&lt;p&gt;/g, '<p>' )
+						.replace( /&lt;\/p&gt;/g, '</p>' )
+						// And <span class="wikiEditor-tab"></span> too
+						.replace( /&lt;span( |&nbsp;)class=("|&quot;)wikiEditor-tab("|&quot;)&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
+						// Empty <p> tags need <br> tags in them 
+						.replace( /<p><\/p>/g, '<p><br></p>' )
+						// Unescape &esc; stuff
+						.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
+						.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
+						.replace( /&amp;esc;&amp;lt;\/p&amp;gt;/g, '&lt;/p&gt;' )
+						.replace( /&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
+						.replace( /&amp;esc;esc;/g, '&amp;esc;' );
+					context.$content.html( html );
+					
+					// Reflect direction of parent frame into child
+					if ( $( 'body' ).is( '.rtl' ) ) {
+						context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
+					}
+					// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
+					context.$textarea.attr( 'disabled', true );
+					context.$textarea.hide();
+					context.$iframe.show();
+					// Let modules know we're ready to start working with the content
+					context.fn.trigger( 'ready' );
+					// Only save HTML now: ready handlers may have modified it
+					context.oldHTML = context.oldDelayedHTML = context.$content.html();
+					//remove our temporary loading
+					/* Disaling our loading div for now
+					$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {
+						$( this ).remove();
+					} );
+					*/
+					// Setup event handling on the iframe
+					$( context.$iframe[0].contentWindow.document )
+						.bind( 'keydown', function( event ) {
+							return context.fn.trigger( 'keydown', event );
+						} )
+						.bind( 'paste', function( event ) {
+							return context.fn.trigger( 'paste', event );
+						} )
+						.bind( 'keyup paste mouseup cut encapsulateSelection', function( event ) {
+							return context.fn.trigger( 'change', event );
+						} )
+						.delayedBind( 250, 'keyup paste mouseup cut encapsulateSelection', function( event ) {
+							context.fn.trigger( 'delayedChange', event );
+						} );
+				} );
+			// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
+			// copied over to the textarea
+			context.$textarea.closest( 'form' ).submit( function() {
+				context.$textarea.attr( 'disabled', false );
+				context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
+			} );
+			/* FIXME: This was taken from EditWarning.js - maybe we could do a jquery plugin for this? */
+			// Attach our own handler for onbeforeunload which respects the current one
+			context.fallbackWindowOnBeforeUnload = window.onbeforeunload;
+			window.onbeforeunload = function() {
+				context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
+				if ( context.fallbackWindowOnBeforeUnload ) {
+					return context.fallbackWindowOnBeforeUnload();
+				}
+			};
+		},
+		
+		/*
+		 * Compatibility with the $.textSelection jQuery plug-in. When the iframe is in use, these functions provide
+		 * equivilant functionality to the otherwise textarea-based functionality.
+		 */
+		
+		/**
+		 * Gets the complete contents of the iframe (in plain text, not HTML)
+		 */
+		'getContents': function() {
+			// For <p></p>, .html() returns <p>&nbsp;</p> in IE
+			// This seems to convince IE while not affecting display
+			var html;
+			if ( $.browser.msie ) {
+				// Don't manipulate the iframe DOM itself, causes cursor jumping issues
+				var $c = $( context.$content.get( 0 ).cloneNode( true ) );
+				$c.find( 'p' ).each( function() {
+					if ( $(this).html() == '' ) {
+						$(this).replaceWith( '<p></p>' );
+					}
+				} );
+				html = $c.html();
+			} else {
+				html = context.$content.html();
+			}
+			return context.fn.htmlToText( html );
+		},
+		/**
+		 * Gets the currently selected text in the content
+		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+		 */
+		'getSelection': function() {
+			var retval;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
+				retval = context.$iframe[0].contentWindow.getSelection();
+				if ( $.browser.opera ) {
+					// Opera strips newlines in getSelection(), so we need something more sophisticated
+					if ( retval.rangeCount > 0 ) {
+						retval = context.fn.htmlToText( $( '<pre />' )
+								.append( retval.getRangeAt( 0 ).cloneContents() )
+								.html()
+						);
+					} else {
+						retval = '';
+					}
+				}
+			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
+				// IE
+				retval = context.$iframe[0].contentWindow.document.selection.createRange();
+			}
+			if ( typeof retval.text != 'undefined' ) {
+				// In IE8, retval.text is stripped of newlines, so we need to process retval.htmlText
+				// to get a reliable answer. IE7 does get this right though
+				// Run this fix for all IE versions anyway, it doesn't hurt
+				retval = context.fn.htmlToText( retval.htmlText );
+			} else if ( typeof retval.toString != 'undefined' ) {
+				retval = retval.toString();
+			}
+			return retval;
+		},
+		/**
+		 * Inserts text at the begining and end of a text selection, optionally inserting text at the caret when
+		 * selection is empty.
+		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+		 */
+		'encapsulateSelection': function( options ) {
+			var selText = $(this).textSelection( 'getSelection' );
+			var selTextArr;
+			var selectAfter = false;
+			var setSelectionTo = null;
+			var pre = options.pre, post = options.post;
+			if ( !selText ) {
+				selText = options.peri;
+				selectAfter = true;
+			} else if ( options.replace ) {
+				selText = options.peri;
+			} else if ( selText.charAt( selText.length - 1 ) == ' ' ) {
+				// Exclude ending space char
+				// FIXME: Why?
+				selText = selText.substring( 0, selText.length - 1 );
+				post += ' ';
+			}
+			if ( options.splitlines ) {
+				selTextArr = selText.split( /\n/ );
+			}
+
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
+				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+				if ( options.ownline ) {
+					// We need to figure out if the cursor is at the start or end of a line
+					var atStart = false, atEnd = false;
+					var body = context.$content.get( 0 );
+					if ( range.startOffset == 0 ) {
+						// Start of a line
+						// FIXME: Not necessarily the case with syntax highlighting or
+						// template collapsing
+						atStart = true;
+					} else if ( range.startContainer == body ) {
+						// Look up the node just before the start of the selection
+						// If it's a <BR>, we're at the start of a line that starts with a
+						// block element; if not, we're at the end of a line
+						var n = body.firstChild;
+						for ( var i = 0; i < range.startOffset - 1 && n; i++ ) {
+							n = n.nextSibling;
+						}
+						if ( n && n.nodeName == 'BR' ) {
+							atStart = true;
+						} else {
+							atEnd = true;
+						}
+					} else if ( range.startContainer.nodeName == '#text' &&
+							range.startOffset == range.startContainer.nodeValue.length ) {
+						// Apparently this happens when splitting text nodes
+						atEnd = true;
+					}
+					
+					if ( !atStart ) {
+						pre  = "\n" + options.pre;
+					}
+					if ( !atEnd ) {
+						post += "\n";
+					}
+				}
+				var insertText = "";
+				if ( options.splitlines ) {
+					for( var j = 0; j < selTextArr.length; j++ ) {
+						insertText = insertText + pre + selTextArr[j] + post;
+						if( j != selTextArr.length - 1 ) {
+							insertText += "\n";
+						}
+					}
+				} else {
+					insertText = pre + selText + post;
+				}
+				var insertLines = insertText.split( "\n" );
+				range.extractContents();
+				// Insert the contents one line at a time - insertNode() inserts at the beginning, so this has to happen
+				// in reverse order
+				// Track the first and last inserted node, and if we need to also track where the text we need to select
+				// afterwards starts and ends
+				var firstNode = null, lastNode = null;
+				var selSC = null, selEC = null, selSO = null, selEO = null, offset = 0;
+				for ( var i = insertLines.length - 1; i >= 0; i-- ) {
+					firstNode = context.$iframe[0].contentWindow.document.createTextNode( insertLines[i] );
+					range.insertNode( firstNode );
+					lastNode = lastNode || firstNode;
+					var newOffset = offset + insertLines[i].length;
+					if ( !selEC && post.length <= newOffset ) {
+						selEC = firstNode;
+						selEO = selEC.nodeValue.length - ( post.length - offset );
+					}
+					if ( selEC && !selSC && pre.length >= insertText.length - newOffset ) {
+						selSC = firstNode;
+						selSO = pre.length - ( insertText.length - newOffset );
+					}
+					offset = newOffset;
+					if ( i > 0 ) {
+						firstNode = context.$iframe[0].contentWindow.document.createElement( 'br' );
+						range.insertNode( firstNode );
+						newOffset = offset + 1;
+						if ( !selEC && post.length <= newOffset ) {
+							selEC = firstNode;
+							selEO = 1 - ( post.length - offset );
+						}
+						if ( selEC && !selSC && pre.length >= insertText.length - newOffset ) {
+							selSC = firstNode;
+							selSO = pre.length - ( insertText.length - newOffset );
+						}
+						offset = newOffset;
+					}
+				}
+				if ( firstNode ) {
+					context.fn.scrollToTop( $( firstNode.parentNode ) );
+				}
+				if ( selectAfter ) {
+					setSelectionTo = {
+						startContainer: selSC,
+						endContainer: selEC,
+						start: selSO,
+						end: selEO
+					};
+				} else if  ( lastNode ) {
+					setSelectionTo = {
+						startContainer: lastNode,
+						endContainer: lastNode,
+						start: lastNode.nodeValue.length,
+						end: lastNode.nodeValue.length
+					};
+				}
+			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				// IE
+				context.$iframe[0].contentWindow.focus();
+				var range = context.$iframe[0].contentWindow.document.selection.createRange();
+				if ( options.ownline && range.moveStart ) {
+					// Check if we're at the start of a line
+					// If not, prepend a newline
+					var range2 = context.$iframe[0].contentWindow.document.selection.createRange();
+					range2.collapse();
+					range2.moveStart( 'character', -1 );
+					// FIXME: Which check is correct?
+					if ( range2.text != "\r" && range2.text != "\n" && range2.text != "" ) {
+						pre = "\n" + pre;
+					}
+					
+					// Check if we're at the end of a line
+					// If not, append a newline
+					var range3 = context.$iframe[0].contentWindow.document.selection.createRange();
+					range3.collapse( false );
+					range3.moveEnd( 'character', 1 );
+					if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
+						post += "\n";
+					}
+				}
+				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this function
+				var insertText = "";
+				if ( options.splitlines ) {
+					for( var j = 0; j < selTextArr.length; j++ ) {
+						insertText = insertText + pre + selTextArr[j] + post;
+						if( j != selTextArr.length - 1 ) {
+							insertText += "\n"; 
+						}
+					}
+				} else {
+					insertText = pre + selText + post;
+				}
+				// TODO: Maybe find a more elegant way of doing this like the Firefox code above?
+				range.pasteHTML( insertText
+						.replace( /\</g, '&lt;' )
+						.replace( />/g, '&gt;' )
+						.replace( /\r?\n/g, '<br />' )
+				);
+				if ( selectAfter ) {
+					range.moveStart( 'character', -post.length - selText.length );
+					range.moveEnd( 'character', -post.length );
+					range.select();
+				}
+			}
+			
+			if ( setSelectionTo ) {
+				context.fn.setSelection( setSelectionTo );
+			}
+			// Trigger the encapsulateSelection event (this might need to get named something else/done differently)
+			$( context.$iframe[0].contentWindow.document ).trigger(
+				'encapsulateSelection', [ pre, options.peri, post, options.ownline, options.replace ]
+			);
+			return context.$textarea;
+		},
+		/**
+		 * Gets the position (in resolution of bytes not nessecarily characters) in a textarea
+		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+		 */
+		'getCaretPosition': function( options ) {
+			var startPos = null, endPos = null;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				var selection = context.$iframe[0].contentWindow.getSelection();
+				if ( selection.rangeCount == 0 ) {
+					// We don't know where the cursor is
+					return [ 0, 0 ];
+				}
+				var sc = selection.getRangeAt( 0 ).startContainer, ec = selection.getRangeAt( 0 ).endContainer;
+				var so = selection.getRangeAt( 0 ).startOffset, eo = selection.getRangeAt( 0 ).endOffset;
+				if ( sc.nodeName == 'BODY' ) {
+					// Grab the node just before the start of the selection
+					var n = sc.firstChild;
+					for ( var i = 0; i < so - 1 && n; i++ ) {
+						n = n.nextSibling;
+					}
+					sc = n;
+					so = 0;
+				}
+				if ( ec.nodeName == 'BODY' ) {
+					var n = ec.firstChild;
+					for ( var i = 0; i < eo - 1 && n; i++ ) {
+						n = n.nextSibling;
+					}
+					ec = n;
+					eo = 0;
+				}
+				
+				// Make sure sc and ec are leaf nodes
+				while ( sc.firstChild ) {
+					sc = sc.firstChild;
+				}
+				while ( ec.firstChild ) {
+					ec = ec.firstChild;
+				}
+				// Make sure the offsets are regenerated if necessary
+				context.fn.getOffset( 0 );
+				var o;
+				for ( o in context.offsets ) {
+					if ( startPos === null && context.offsets[o].node == sc ) {
+						// For some wicked reason o is a string, even though
+						// we put it in as an integer. Use ~~ to coerce it too an int
+						startPos = ~~o + so - context.offsets[o].offset;
+					}
+					if ( startPos !== null && context.offsets[o].node == ec ) {
+						endPos = ~~o + eo - context.offsets[o].offset;
+						break;
+					}
+				}
+			} else if ( context.$iframe[0].contentWindow.document.selection ) {
+				// IE
+				// FIXME: This is mostly copypasted from the textSelection plugin
+				var d = context.$iframe[0].contentWindow.document;
+				var postFinished = false;
+				var periFinished = false;
+				var postFinished = false;
+				var preText, rawPreText, periText;
+				var rawPeriText, postText, rawPostText;
+				// Create range containing text in the selection
+				var periRange = d.selection.createRange().duplicate();
+				// Create range containing text before the selection
+				var preRange = d.body.createTextRange();
+				// Move the end where we need it
+				preRange.setEndPoint( "EndToStart", periRange );
+				// Create range containing text after the selection
+				var postRange = d.body.createTextRange();
+				// Move the start where we need it
+				postRange.setEndPoint( "StartToEnd", periRange );
+				// Load the text values we need to compare
+				preText = rawPreText = preRange.text;
+				periText = rawPeriText = periRange.text;
+				postText = rawPostText = postRange.text;
+				/*
+				 * Check each range for trimmed newlines by shrinking the range by 1
+				 * character and seeing if the text property has changed. If it has
+				 * not changed then we know that IE has trimmed a \r\n from the end.
+				 */
+				do {
+					if ( !postFinished ) {
+						if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
+							postFinished = true;
+						} else {
+							preRange.moveEnd( "character", -1 )
+							if ( preRange.text == preText ) {
+								rawPreText += "\r\n";
+							} else {
+								postFinished = true;
+							}
+						}
+					}
+					if ( !periFinished ) {
+						if ( periRange.compareEndPoints( "StartToEnd", periRange ) == 0 ) {
+							periFinished = true;
+						} else {
+							periRange.moveEnd( "character", -1 )
+							if ( periRange.text == periText ) {
+								rawPeriText += "\r\n";
+							} else {
+								periFinished = true;
+							}
+						}
+					}
+					if ( !postFinished ) {
+						if ( postRange.compareEndPoints("StartToEnd", postRange) == 0 ) {
+							postFinished = true;
+						} else {
+							postRange.moveEnd( "character", -1 )
+							if ( postRange.text == postText ) {
+								rawPostText += "\r\n";
+							} else {
+								postFinished = true;
+							}
+						}
+					}
+				} while ( ( !postFinished || !periFinished || !postFinished ) );
+				startPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+				endPos = startPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+			}
+			return [ startPos, endPos ];
+		},
+		/**
+		 * Sets the selection of the content
+		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+		 *
+		 * @param start Character offset of selection start
+		 * @param end Character offset of selection end
+		 * @param startContainer Element in iframe to start selection in. If not set, start is a character offset
+		 * @param endContainer Element in iframe to end selection in. If not set, end is a character offset
+		 */
+		'setSelection': function( options ) {
+			var sc = options.startContainer, ec = options.endContainer;
+			sc = sc && sc.jquery ? sc[0] : sc;
+			ec = ec && ec.jquery ? ec[0] : ec;
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
+				var start = options.start, end = options.end;
+				if ( !sc || !ec ) {
+					var s = context.fn.getOffset( start );
+					var e = context.fn.getOffset( end );
+					sc = s ? s.node : null;
+					ec = e ? e.node : null;
+					start = s ? s.offset : null;
+					end = e ? e.offset : null;
+				}
+				if ( !sc || !ec ) {
+					// The requested offset isn't in the offsets array
+					// Give up
+					return context.$textarea;
+				}
+				
+				var sel = context.$iframe[0].contentWindow.getSelection();
+				while ( sc.firstChild && sc.nodeName != '#text' ) {
+					sc = sc.firstChild;
+				}
+				while ( ec.firstChild && ec.nodeName != '#text' ) {
+					ec = ec.firstChild;
+				}
+				var range = context.$iframe[0].contentWindow.document.createRange();
+				range.setStart( sc, start );
+				range.setEnd( ec, end );
+				sel.removeAllRanges();
+				sel.addRange( range );
+				context.$iframe[0].contentWindow.focus();
+			} else if ( context.$iframe[0].contentWindow.document.body.createTextRange ) {
+				// IE
+				var range = context.$iframe[0].contentWindow.document.body.createTextRange();
+				if ( sc ) {
+					range.moveToElementText( sc );
+				}
+				range.collapse();
+				range.moveEnd( 'character', options.start );
+				
+				var range2 = context.$iframe[0].contentWindow.document.body.createTextRange();
+				if ( ec ) {
+					range2.moveToElementText( ec );
+				}
+				range2.collapse();
+				range2.moveEnd( 'character', options.end );
+				
+				// IE does newline emulation for <p>s: <p>foo</p><p>bar</p> becomes foo\nbar just fine
+				// but <p>foo</p><br><br><p>bar</p> becomes foo\n\n\n\nbar , one \n too many
+				// Correct for this
+				var matches, counted = 0;
+				// while ( matches = range.htmlText.match( regex ) && matches.length <= counted ) doesn't work
+				// because the assignment side effect hasn't happened yet when the second term is evaluated
+				while ( matches = range.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
+					if ( matches.length <= counted )
+						break;
+					range.moveEnd( 'character', matches.length );
+					counted += matches.length;
+				}
+				range2.moveEnd( 'character', counted );
+				while ( matches = range2.htmlText.match( /\<\/p\>(\<br[^\>]*\>)+\<p\>/gi ) ) {
+					if ( matches.length <= counted )
+						break;
+					range2.moveEnd( 'character', matches.length );
+					counted += matches.length;
+				}
+
+				range2.setEndPoint( 'StartToEnd', range );
+				range2.select();
+			}
+			return context.$textarea;
+		},
+		/**
+		 * Scroll a textarea to the current cursor position. You can set the cursor position with setSelection()
+		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+		 */
+		'scrollToCaretPosition': function( options ) {
+			// FIXME: context.$textarea.trigger( 'scrollToPosition' ) ?
+		},
+		/**
+		 * Scroll an element to the top of the iframe
+		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
+		 *
+		 * @param $element jQuery object containing an element in the iframe
+		 * @param force If true, scroll the element even if it's already visible
+		 */
+		'scrollToTop': function( $element, force ) {
+			var html = context.$content.closest( 'html' ),
+				body = context.$content.closest( 'body' ),
+				parentHtml = $( 'html' ),
+				parentBody = $( 'body' );
+			var y = $element.offset().top;
+			if ( !$.browser.msie && ! $element.is( 'body' ) ) {
+				y = parentHtml.scrollTop() > 0 ? y + html.scrollTop() - parentHtml.scrollTop() : y;
+				y = parentBody.scrollTop() > 0 ? y + body.scrollTop() - parentBody.scrollTop() : y;
+			}
+			var topBound = html.scrollTop() > body.scrollTop() ? html.scrollTop() : body.scrollTop(),
+				bottomBound = topBound + context.$iframe.height();
+			if ( force || y < topBound || y > bottomBound ) {
+					html.scrollTop( y );
+					body.scrollTop( y );
+				}
+			$element.trigger( 'scrollToTop' );
 		}
 	};
 	
@@ -7904,134 +8038,6 @@ if ( typeof context == 'undefined' ) {
 	context.view = 'wikitext';
 	// Trigger the "resize" event anytime the window is resized
 	$( window ).resize( function( event ) { context.fn.trigger( 'resize', event ); } );
-	// Create an iframe in place of the text area
-	// FAT UGLY HACK: Don't do the iframe when only the toolbar is enabled
-	context.fn.setupIframe = function() {
-	context.$iframe = $( '<iframe></iframe>' )
-		.attr( {
-			'frameBorder': 0,
-			'border': 0,
-			'tabindex': 1,
-			'src': wgScriptPath + '/extensions/UsabilityInitiative/js/plugins/jquery.wikiEditor.html?' +
-				'instance=' + context.instance + '&ts=' + ( new Date() ).getTime() + '&is=content',
-			'id': 'wikiEditor-iframe-' + context.instance
-		} )
-		.css( {
-			'backgroundColor': 'white',
-			'width': '100%',
-			'height': context.$textarea.height(),
-			'display': 'none',
-			'overflow-y': 'scroll',
-			'overflow-x': 'hidden'
-		} )
-		.insertAfter( context.$textarea )
-		.load( function() {
-			// Internet Explorer will reload the iframe once we turn on design mode, so we need to only turn it on
-			// during the first run, and then bail
-			if ( !this.isSecondRun ) {
-				// Turn the document's design mode on
-				context.$iframe[0].contentWindow.document.designMode = 'on';
-				// Let the rest of this function happen next time around
-				if ( $.browser.msie ) {
-					this.isSecondRun = true;
-					return;
-				}
-			}
-			// Get a reference to the content area of the iframe
-			context.$content = $( context.$iframe[0].contentWindow.document.body );
-			// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
-			// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
-			// TODO: Refactor this into a textToHtml() function
-			var html = context.$textarea.val()
-				// We're gonna use &esc; as an escape sequence
-				.replace( /&esc;/g, '&esc;esc;' )
-				// Escape existing uses of <p>, </p>, &nbsp; and <span class="wikiEditor-tab"></span>
-				.replace( /\<p\>/g, '&esc;&lt;p&gt;' )
-				.replace (/\<\/p\>/g, '&esc;&lt;/p&gt;' )
-				.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&esc;&lt;span&nbsp;class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' )
-				.replace( /&nbsp;/g, '&esc;&amp;nbsp;' );
-			// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
-			// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
-			if ( $.browser.msie ) {
-				html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
-				if ( $.browser.versionNumber <= 7 ) {
-					// Replace all spaces matching &nbsp; - IE <= 7 needs this because of its overzealous
-					// whitespace collapsing
-					html = html.replace( / /g, "&nbsp;" );
-				} else {
-					// IE8 is happy if we just convert the first leading space to &nbsp;
-					html = html.replace( /(^|\n) /g, "$1&nbsp;" );
-				}
-			}
-			// Use a dummy div to escape all entities
-			// This'll also escape <br>, <span> and &nbsp; , so we unescape those after
-			// We also need to unescape the doubly-escaped things mentioned above
-			html = $( '<div />' ).text( '<p>' + html.replace( /\r?\n/g, '</p><p>' ) + '</p>' ).html()
-				.replace( /&amp;nbsp;/g, '&nbsp;' )
-				// Allow <p> tags to survive encoding
-				.replace( /&lt;p&gt;/g, '<p>' )
-				.replace( /&lt;\/p&gt;/g, '</p>' )
-				// And <span class="wikiEditor-tab"></span> too
-				.replace( /&lt;span( |&nbsp;)class=("|&quot;)wikiEditor-tab("|&quot;)&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
-				// Empty <p> tags need <br> tags in them 
-				.replace( /<p><\/p>/g, '<p><br></p>' )
-				// Unescape &esc; stuff
-				.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
-				.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
-				.replace( /&amp;esc;&amp;lt;\/p&amp;gt;/g, '&lt;/p&gt;' )
-				.replace( /&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
-				.replace( /&amp;esc;esc;/g, '&amp;esc;' );
-			context.$content.html( html );
-			
-			// Reflect direction of parent frame into child
-			if ( $( 'body' ).is( '.rtl' ) ) {
-				context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
-			}
-			// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
-			context.$textarea.attr( 'disabled', true );
-			context.$textarea.hide();
-			context.$iframe.show();
-			// Let modules know we're ready to start working with the content
-			context.fn.trigger( 'ready' );
-			// Only save HTML now: ready handlers may have modified it
-			context.oldHTML = context.oldDelayedHTML = context.$content.html();
-			//remove our temporary loading
-			/* Disaling our loading div for now
-			$( '.wikiEditor-ui-loading' ).fadeOut( 'fast', function() {
-				$( this ).remove();
-			} );
-			*/
-			// Setup event handling on the iframe
-			$( context.$iframe[0].contentWindow.document )
-				.bind( 'keydown', function( event ) {
-					return context.fn.trigger( 'keydown', event );
-				} )
-				.bind( 'paste', function( event ) {
-					return context.fn.trigger( 'paste', event );
-				} )
-				.bind( 'keyup paste mouseup cut encapsulateSelection', function( event ) {
-					return context.fn.trigger( 'change', event );
-				} )
-				.delayedBind( 250, 'keyup paste mouseup cut encapsulateSelection', function( event ) {
-					context.fn.trigger( 'delayedChange', event );
-				} );
-		} );
-	// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
-	// copied over to the textarea
-	context.$textarea.closest( 'form' ).submit( function() {
-		context.$textarea.attr( 'disabled', false );
-		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
-	} );
-	/* FIXME: This was taken from EditWarning.js - maybe we could do a jquery plugin for this? */
-	// Attach our own handler for onbeforeunload which respects the current one
-	context.fallbackWindowOnBeforeUnload = window.onbeforeunload;
-	window.onbeforeunload = function() {
-		context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
-		if ( context.fallbackWindowOnBeforeUnload ) {
-			return context.fallbackWindowOnBeforeUnload();
-		}
-	};
-	};
 }
 
 /* API Execution */
@@ -8039,18 +8045,14 @@ if ( typeof context == 'undefined' ) {
 // Since javascript gives arguments as an object, we need to convert them so they can be used more easily
 var args = $.makeArray( arguments );
 
-// FAT UGLY HACK PART 2: Don't do the iframe when only the toolbar is enabled
-if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' ) {
-	// Check that at least one of the modules being added is indeed supported
-	var supported = false;
+// Dynamically setup the Iframe when needed when adding modules
+if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' && typeof arguments[1] == 'object' ) {
 	for ( module in arguments[1] ) {
-		// Let the toolbar slip through
-		if ( $.wikiEditor.isSupported( module ) && module !== 'toolbar' ) {
-			supported = true;
+		// Only allow modules which are supported (and thus actually being turned on) affect this decision
+		if ( $.wikiEditor.isSupported( module ) && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+			context.fn.setupIframe();
+			break;
 		}
-	}
-	if ( supported ) {
-		context.fn.setupIframe();
 	}
 }
 
@@ -8099,6 +8101,10 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 		'chrome': [['>=', 4]]
 	}
 },
+/**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
 /**
  * API accessible functions
  */
@@ -8245,6 +8251,10 @@ quickDialog: function( body, settings ) {
 /* Highlight module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
+/**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
 /**
  * Configuration
  */
@@ -8599,6 +8609,25 @@ fn: {
 ( function( $ ) { $.wikiEditor.modules.preview = {
 
 /**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	}
+},
+/**
  * Internally used functions
  */
 fn: {
@@ -8750,6 +8779,25 @@ fn: {
 ( function( $ ) { $.wikiEditor.modules.publish = {
 
 /**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	}
+},
+/**
  * Internally used functions
  */
 fn: {
@@ -8875,6 +8923,10 @@ fn: {
 		'safari': [['>=', 4]]
 	}
 },
+/**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
 /**
  * Event handlers
  */
@@ -9543,6 +9595,10 @@ fn: {
 		'chrome': [['>=', 4]]
 	}
 },
+/**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
 /**
  * Configuration
  */

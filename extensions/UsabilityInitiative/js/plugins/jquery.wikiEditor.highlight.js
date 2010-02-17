@@ -2,6 +2,10 @@
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
+/**
  * Configuration
  */
 cfg: {

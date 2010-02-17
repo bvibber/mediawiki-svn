@@ -23,6 +23,10 @@
 	}
 },
 /**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
+/**
  * Configuration
  */
 cfg: {
