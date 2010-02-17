@@ -12,7 +12,9 @@ class WWWikis extends WWUtils {
     var $wikidbs = array();
 
     function getWikiTableName($lang, $table) {
-	global $wwWikitableNamePattern;
+	global $wwWikitableNamePattern, $wwCommonsTablePrefix;
+
+	if ( $lang == "commons" && $wwCommonsTablePrefix ) return "$wwCommonsTablePrefix$table";
 
 	if ($wwWikitableNamePattern) {
 	    return str_replace(array('{lang}', '{name}'), array($lang, $table), $wwWikitableNamePattern);

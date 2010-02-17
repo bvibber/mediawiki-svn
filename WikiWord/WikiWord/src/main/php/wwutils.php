@@ -45,6 +45,17 @@ class WWUtils {
 	return '"' . mysql_real_escape_string($s) . '"';
     }
 
+    function quoteSet($a) {
+	$s = "";
+
+	foreach ($a as $x) {
+	    if ($s) $s.= ", ";
+	    $s .= $this->quote($x);
+	}
+
+	return '(' . $s . ')';
+    }
+
     function close() {
 	if ($this->db) mysql_close($this->db);
 	$this->db = NULL;

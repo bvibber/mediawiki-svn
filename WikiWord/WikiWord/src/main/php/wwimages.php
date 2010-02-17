@@ -50,6 +50,10 @@ class ImageCollection {
 	}
     }
 
+    function addImageUsage($image, $wiki, $usage = "page", $weight = 1) {
+	$this->addImage($image, $key, $usage, $weight);
+    }
+
     function addTags($image, $tags, $prefix = "") {
 	global $wwTagScores;
 
@@ -59,10 +63,12 @@ class ImageCollection {
 		    $tag = $prefix.$weight;
 
 		    if (isset($wwTagScores[$tag])) $weight = $wwTagScores[$tag];
-		    else continue;
+		    else $weight = 0;
 		} else {
 		    $tag = $prefix.$tag;
 		}
+
+		if (!$weight) continue; 
 
 		$this->images[$image]['score'] += $weight;
 		$this->images[$image]['tags'][] = $tag;
@@ -81,20 +87,19 @@ class WWImages extends WWWikis {
     }
 
     function queryImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
-
 	if ($lang == "commons") $commonsOnly = false;
 
 	$imagelinks_table = $this->getWikiTableName($lang, "imagelinks");
 	$page_table = $this->getWikiTableName($lang, "page");
 	$image_table = $this->getWikiTableName($lang, "image");
+	$commons_image_table = $this->getWikiTableName("commons", "image");
 
 	$sql = "/* queryImagesOnPage(" . $this->quote($lang) . ", " . (int)$ns . ", " . $this->quote($title) . ", " . (int)$commonsOnly . ") */ ";
 
 	$sql .= " SELECT I.il_to as name FROM $imagelinks_table as I ";
 	$sql .= " JOIN $page_table as P on P.page_id = I.il_from ";
 	if ($commonsOnly) $sql .= " LEFT JOIN $image_table as R on R.img_name = I.il_to ";
-	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}image as C on C.img_name = I.il_to ";
+	if ($commonsOnly) $sql .= " JOIN $commons_image_table as C on C.img_name = I.il_to ";
 	
 	$sql .= " WHERE P.page_namespace = " . (int)$ns;
 	$sql .= " AND P.page_title = " . $this->quote($title);
@@ -113,13 +118,12 @@ class WWImages extends WWWikis {
     }
 
     function queryImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
-
 	if ($lang == "commons") $commonsOnly = false;
 
 	$imagelinks_table = $this->getWikiTableName($lang, "imagelinks");
 	$page_table = $this->getWikiTableName($lang, "page");
 	$image_table = $this->getWikiTableName($lang, "image");
+	$commons_image_table = $this->getWikiTableName("commons", "image");
 	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
 
 	$sql = "/* queryImagesOnPageTemplates(" . $this->quote($lang) . ", " . (int)$ns . ", " . $this->quote($title) . ", " . (int)$commonsOnly . ") */ ";
@@ -129,7 +133,7 @@ class WWImages extends WWWikis {
 	$sql .= " JOIN $templatelinks_table as T on T.tl_namespace = TP.page_namespace AND T.tl_title = TP.page_title ";
 	$sql .= " JOIN $page_table as P on P.page_id = T.tl_from ";
 	if ($commonsOnly) $sql .= " LEFT JOIN $image_table as R on R.img_name = I.il_to ";
-	if ($commonsOnly) $sql .= " JOIN {$wwCommonsTablePrefix}image as C on C.img_name = I.il_to ";
+	if ($commonsOnly) $sql .= " JOIN $commons_image_table as C on C.img_name = I.il_to ";
 
 	$sql .= " WHERE P.page_namespace = " . (int)$ns;
 	$sql .= " AND P.page_title = " . $this->quote($title);
@@ -146,7 +150,6 @@ class WWImages extends WWWikis {
     }
 
     function queryImagesInCategory($lang, $title) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
 	$categorylinks_table = $this->getWikiTableName($lang, "categorylinks");
 	$page_table = $this->getWikiTableName($lang, "page");
 
@@ -168,8 +171,29 @@ class WWImages extends WWWikis {
 	return $list;
     }
 
+    function queryTagsForImage($lang, $image, $tagTable) {
+	$page_table = $this->getWikiTableName($lang, "page");
+	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
+
+	$sql = "/* queryTagsForImage(" . $this->quote($lang) . ", " . $this->quote($image) . ") */ ";
+
+	$sql .= " SELECT concat(type, ':', tag) as tag, ";
+ 	$sql .= " 2 as score "; #TODO: scores for license, problem, restriction
+ 	$sql .= " FROM $tagTable as T ";
+	$sql .= " WHERE T.image = " . $this->quote($image);
+	$sql .= " AND T.type = 'assessment' "; #FIXME: cover license, problem, restriction
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getTagsForImage($lang, $image, $tagTable) {
+	$rs = $this->queryTagsForImage($lang, $image, $tagTable);
+	$list = WWUtils::slurpAssoc($rs, "tag", "score");
+	mysql_free_result($rs);
+	return $list;
+    }
+
     function queryTemplatesOnImagePage($lang, $image) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
 	$page_table = $this->getWikiTableName($lang, "page");
 	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
 
@@ -192,7 +216,6 @@ class WWImages extends WWWikis {
     }
 
     function queryCategoriesOfImagePage($lang, $image) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwCommonsTablePrefix;
 	$page_table = $this->getWikiTableName($lang, "page");
 	$categorylinks_table = $this->getWikiTableName($lang, "categorylinks");
 
@@ -215,7 +238,7 @@ class WWImages extends WWWikis {
     }
 
     function getTemplateScores($templates, $values = NULL) {
-	global $wwWikiServerName;
+	global $wwTemplateScores;
 	if ($values === NULL) $values = $wwTemplateScores;
 
 	if (!$values) return 0;
@@ -236,29 +259,114 @@ class WWImages extends WWWikis {
 	return $img;
     }
 
-    function getImagesAbout($id, $max = 0) {
-	global $wwFakeCommonsConcepts, $wwFakeCommonsPlural, $wwLanguages;
+    function queryImagesOnPagesGlobally( $concepts ) {
+	global $wwLanguages;
 
-	$concepts = $this->thesaurus->getPagesForConcept($id);
+	$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
 
-	if ($wwFakeCommonsConcepts && isset($concepts['en'])) {
-	    $concepts['commons'] = @$concepts['en'];
-	}
+	$wikis = array();
+	$pages = array();
 
-	$images = new ImageCollection();
-	
-	foreach ($concepts as $lang => $pages) {
-	    if ($lang == "commons") continue;
+	foreach ($concepts as $lang => $rc) {
 	    if (!isset($wwLanguages[$lang])) continue;
 
-	    foreach ($pages as $page) {
-		//FIXME: detect namespace prefix?!
-		$img = $this->getRelevantImagesOnPage($lang, 0, $page, true); 
-		$images->addImages($img, $lang . ":" . $page, "article", 1);
+	    $wiki = $lang . "wiki";
+	    if (!in_array($wiki, $wikis)) $wikis[] = $wiki;
+
+	    foreach ($rc as $r) {
+		$p = "gil_wiki = " . $this->quote($wiki) . " AND gil_page_namespace_id = 0 AND gil_page = " . $this->quote($r);
 	    }
 	}
 
-	if ($max && $images->size()>$max) {
+	if (!$pages || !$wikis) return false;
+
+	$sql = " /* queryImagesOnPagesGlobally() */ ";
+	$sql .= " SELECT distinct gil_to as image FROM $globalimagelinks_table ";
+	$sql .= " WHERE wiki in " . $this->quoteSet( $wikis );
+	$sql .= " AND gil_page_namespace_id = 0 ";
+	$sql .= " AND ( ( " . implode(" ) OR ( ", $pages) . " ) ) ";
+	
+	return $this->queryWiki("commons", $sql);
+    }
+
+    function getImagesOnPagesGlobally( $concepts ) {
+	$rs = $this->queryImagesOnPagesGlobally($concepts);
+	if (!$rs) return false;
+
+	$list = WWUtils::slurpList($rs, "image");
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function queryGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+	$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
+
+	$sql = " /* queryGlobalUsageCounts() */ ";
+	$sql .= " SELECT gil_to as image, gil_wiki as wiki, count(*) as usage FROM $globalimagelinks_table ";
+	$sql .= " WHERE gil_page_namespace_id = 0 ";
+	$sql .= " AND gil_to IN " . $this->quoteSet( $images );
+
+	if ( $wikis ) {
+	    if ( is_array( $wikis ) ) $sql .= " AND gil_wiki IN " . $this->quoteSet( $wikis );
+	    else if ( is_array( $wikis ) ) $sql .= " AND gil_wiki REGEX " . $this->quote( '^' . $wikis . '$' );
+
+	    #TODO: could also limit to to x or min size n using toolserver.wiki !
+	}
+
+	$sql .= " GROUP BY gil_to, gil_wiki ";
+	$sql .= " ORDER BY gil_to, gil_wiki ";
+	
+	return $this->queryWiki("commons", $sql);
+    }
+
+    function getGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+	$rs = $this->queryGlobalUsageCounts($images, $wikis);
+	if (!$rs) return false;
+
+	if (is_string($rs)) $rs = $this->query($rs);
+
+	$imageUsage = array();
+	$current = NULL;
+	$stats = array();
+	while ($row = mysql_fetch_assoc($rs)) {
+	    $image = $row["image"];
+	    $wiki = $row["wiki"];
+	    $usage = $row["usage"];
+
+	    if ( is_null($current) ) $current = $image;
+	    else if ($current != $image) {
+		$imageUsage[$current] = $stats;
+		$stats = array();
+		$current = $image;
+	    }
+
+	    $stats[$wiki] = $usage;
+	}
+
+	if ($current) $imageUsage[$current] = $stats;
+
+	return $imageUsage;
+    }
+
+    function getImagesAbout($id, $max = 0) {
+	global $wwLanguages, $wwFrequentImageThreshold; //FIXME: put config into member vars!
+
+	$concepts = $this->thesaurus->getPagesForConcept($id);
+
+	$images = new ImageCollection();
+
+	$globalImageList = $this->getImagesOnPagesGlobally($concepts); //use wikis for $wwLanguages only
+	//TODO: sanity limit on number of images. $max * 5 ?
+	$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, ".*wiki"); //use all wikipedias
+
+	foreach ($globalImageUsage as $image => $usage) {
+	    foreach ($usage as $wiki => $c) {
+		if ( $c >= $wwFrequentImageThreshold ) continue;
+		$images->addImageUsage($image, $wiki.":*", "article", 1);
+	    }
+	}
+
+	if ($max && $images->size()>$max) { //short-cirquit, if we already reached the max
 	    $this->addImageTags($images);
 	    return $images->listImages($max);
 	}
@@ -267,27 +375,11 @@ class WWImages extends WWWikis {
 	    $pages = $concepts['commons'];
 
 	    foreach ($pages as $page) {
-		if ( $wwFakeCommonsConcepts || !preg_match('/^Category:(.*)$/', $page) ) {
-		    $img = $this->getRelevantImagesOnPage("commons", 0, $page, false); 
-		    $images->addImages($img, "commons:" . $page, "gallery", 0.8);
-		}
-
-		if ($max && $images->size()>$max) {
-		    $this->addImageTags($images);
-		    return $images->listImages($max);
-		}
-
-		if ( $wwFakeCommonsConcepts || preg_match('/^Category:(.*)$/', $page, $m) ) {
+		if ( preg_match('/^Category:(.*)$/', $page, $m) ) {
 		    if ( @$m[1] ) $page = $m[1]; //hack
 		    $img = $this->getImagesInCategory("commons", $page); 
 
 		    if ($img) $images->addImages($img, "commons:category:" . $page, "category", 0.5);
-		    else if ($wwFakeCommonsConcepts && $wwFakeCommonsPlural && !preg_match('/s$/', $page)) {
-			$cname = $page."s";
-
-			$img = $this->getImagesInCategory("commons", $cname); 
-			$images->addImages($img, "commons:category:" . $cname, "category(pl)", 0.5);
-		    }
 		}
 	    }
 	}
@@ -297,14 +389,21 @@ class WWImages extends WWWikis {
     }
 
     function addImageTags($images) {
+	global $wwTagsTable;
+
 	foreach ($images->images as $image) {
 		$image = $image['name'];
 
-		$tags = $this->getTemplatesOnImagePage('commons', $image);
-		$images->addTags($image, $tags, "Template:");
-
-		$cats = $this->getCategoriesOfImagePage('commons', $image);
-		$images->addTags($image, $cats, "Category:");
+		if ( $wwTagsTable ) {
+			$tags = $this->getTagsForImage('commons', $image, $wwTagsTable);
+			if ($tags) $images->addTags($image, $tags, "");
+		} else {
+			$tmps = $this->getTemplatesOnImagePage('commons', $image);
+			if ($tmps) $images->addTags($image, $tmps, "Template:");
+			
+			$cats = $this->getCategoriesOfImagePage('commons', $image);
+			if ($cats) $images->addTags($image, $cats, "Category:");
+		}
 	}
     }
 
