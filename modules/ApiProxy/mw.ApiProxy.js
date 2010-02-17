@@ -8,9 +8,10 @@
 * and a central blacklisting of domains controlled by the site 
 *  
 * if the browser supports it we should pass msgs with postMessage  API
-* http://ejohn.org/blog/cross-window-messaging/
+* http://ejohn.org/blog/cross-window-messaging/ 
 *
-* NOTE: it would be nice if this supported multiple proxy targets (ie to a bright widgets future) 
+* NOTE: refactor efforts will include separating out "core" proxy functions and
+* having a separate class for "server" and "client" api usage  
 *
 */
 
@@ -22,8 +23,6 @@ mw.addMessages( {
 	"mwe-please-login" : "You are not <a target=\"_new\" href=\"$1\">logged in<\/a> on $2 or mwEmbed has not been enabled. Resolve the issue, and then retry the request.",
 	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."
 } );
-
-
 
 
 /**
@@ -76,6 +75,7 @@ mw.ApiProxy = { };
 	* @param {Function} callback Function called once the request is complete 
 	*/
 	$.doRequest = function( apiUrl, requestQuery, callback ) {			
+		
 		// Reset local vars:
 		proxyCallback = false;
 		frameProxyOk = false;
@@ -87,10 +87,16 @@ mw.ApiProxy = { };
 		}
 		
 		mw.log( "doRequest:: " + JSON.stringify( requestQuery ) );
+		
+        // Set local scope current request
+        // ( presently the api proxy only support sequential requests
+        // for multiple simultaneous requests we will need to do some minor refactoring ) 
 		currentApiReq = requestQuery;
 		currentApiUrl = apiUrl;
+		
 		// Setup the callback:
 		proxyCallback = callback;
+		
 		// Do the proxy req:
 		doFrameProxy( requestQuery );
 	}
@@ -105,6 +111,7 @@ mw.ApiProxy = { };
 	$.nested = function( hashResult ) {
 		// Close the loader if present: 
 		mw.closeLoaderDialog();
+		
 		mw.log( '$.proxy.nested callback :: ' + unescape( hashResult ) );
 		frameProxyOk = true;
 		
@@ -193,7 +200,7 @@ mw.ApiProxy = { };
 		
 		// Setup the proxy callback to display the upload unhide the iframe upload form 
 		proxyCallback = function( iframeData ){
-			//proccess fileBrowse callbacks::
+			// proccess fileBrowse callbacks::
 			
 			// check for basic status "ok"
 			if( iframeData['status'] == 'ok' ){
@@ -212,13 +219,9 @@ mw.ApiProxy = { };
 					break;	
 					default:
 						mw.log(" Error unreconginzed event " + iframeData['event'] );
-				}
-				
-			}
-			
-			
-		}
-		
+				}				
+			}						
+		}		
 	}
 	
 	/** 
@@ -238,15 +241,7 @@ mw.ApiProxy = { };
 		// Inform the client frame that we passed validation
 		sendClientMsg( { 'state':'ok' } );
 		
-		// Process request type
-		if( clientRequest['browseFile'] ){
-			mw.log( "DO BROWSE FILE" );
-			serverBrowseFile( proxyConfig );
-			return ;
-		}						
-		// Else do a normal api request : 
-		return doApiRequest();
-											
+		return serverHandleRequest();											
 	}
 	
 	/**
@@ -325,7 +320,7 @@ mw.ApiProxy = { };
 			
 			setTimeout( function() {
 				if ( !frameProxyOk ) {
-					// we timmed out no api proxy (should make sure the user is "logged in")
+					// We timmed out no api proxy (should make sure the user is "logged in")
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					proxyNotReadyDialog();
 				}
@@ -335,7 +330,7 @@ mw.ApiProxy = { };
 	
 	/**
 	* Validate an iframe request 
-	* checks the url hash for required paramaters 
+	* checks the url hash for required parameters 
 	* checks  master_blacklist 
 	* checks  master_whitelist
 	*/
@@ -365,8 +360,7 @@ mw.ApiProxy = { };
 		* HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
 		*/		
 		return isAllowedClientFrame( clientRequest.clientFrame );
-			
-		
+					
 		// Not a valid request return false
 	}
 	
@@ -430,7 +424,8 @@ mw.ApiProxy = { };
 		var pUri =  mw.parseUri( getServerFrame() );
 		
 		// FIXME we should have a Hosted page once we deploy mwEmbed on the servers.
-		// A hosted page would be much faster since than a normal page view rewrite 
+		// A hosted page would be much faster since it would not have to load all the 
+		// normal page view assets prior to being rewrite for api proxy usage.  
 		
 		var login_url = pUri.protocol + '://' + pUri.host;
 		login_url += pUri.path.replace( 'MediaWiki:ApiProxy', 'Special:UserLogin' );
@@ -454,18 +449,31 @@ mw.ApiProxy = { };
 	* Handles the server side proxy of requests 
 	* it adds child frames pointing to the parent "blank" frames
 	*/
-	 	 
+	
+	/**
+	* serverHandleRequest handle a given request from the client 
+	* maps the request to serverBrowseFile or serverApiRequest
+	*/
+	function serverHandleRequest(){ 	
+		var clientRequest = getClientRequest();
+		// Process request type
+		if( clientRequest['browseFile'] ){
+			serverBrowseFile();
+			return true;
+		}						
+		// Else do a normal api request : 
+		return serverApiRequest();
+	}
  	/**
 	* Api iFrame request:
-	* @param {Object} requestObj Api request object
 	*/
-	function doApiRequest( ) {		
+	function serverApiRequest( ) {		
 		// Get the client request
 		var clientRequest = getClientRequest();
 		// Make sure its a json format 
 		clientRequest.request[ 'format' ] = 'json';		
 
-		// Process the API request. We don't use mw.apiReq since we need to "post" 
+		// Process the API request. We don't use mw.getJSON since we need to "post"
 		$j.post( wgScriptPath + '/api' + wgScriptExtension,
 			clientRequest.request,
 			function( data ) {					
@@ -480,7 +488,9 @@ mw.ApiProxy = { };
 	* 
 	* Sets the page content to browser file 
 	*/
-	function serverBrowseFile( proxyConfig ){
+	function serverBrowseFile( ){
+		// Get the proxy config
+		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
 		//check for fw ( file width )
 		if( ! proxyConfig.fileWidth ){
 			proxyConfig.fileWidth = 130;
@@ -576,7 +586,7 @@ mw.ApiProxy = { };
 		 
 		// After the nested frame is done loading schedule its removal
 		$j( '#' + nestName ).get( 0 ).onload = function() {
-			// use a settimeout to give time for client frame to propogate update.
+			// Use a settimeout to give time for client frame to propagate update.
 			setTimeout( function(){
 				$j('#' +  nestName ).remove();
 			}, 10 );
