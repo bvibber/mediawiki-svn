@@ -312,7 +312,7 @@ if ( typeof context == 'undefined' ) {
 						// Only act if we are switching to a valid state
 						if ( newPosition >= ( context.history.length * -1 ) && newPosition < 0 ) {
 							// Make sure we run the history storing code before we make this change
-							context.evt.delayedChange( event );
+							context.fn.updateHistory( context.oldDelayedHTML != context.$content.html() );
 							context.oldDelayedHistoryPosition = context.historyPosition;
 							context.historyPosition = newPosition;
 							// Change state
@@ -435,6 +435,11 @@ if ( typeof context == 'undefined' ) {
 					context.$content.removeClass( 'pasting' );
 				}
 			}, 0 );
+			return true;
+		},
+		'ready': function( event ) {
+			// Initialize our history queue
+			context.history.push( { 'html': context.$content.html(), 'sel':  context.fn.getCaretPosition() } );
 			return true;
 		}
 	};
@@ -1392,7 +1397,6 @@ if ( typeof context == 'undefined' ) {
 			// Was text changed? Was it because of a REDO or UNDO action? 
 			if ( context.history.length == 0 || ( htmlChange && context.oldDelayedHistoryPosition == context.historyPosition ) ) {
 				context.fn.purgeOffsets();
-				context.oldDelayedHTML = newHTML;
 				context.oldDelayedSel = newSel;
 				// Do we need to trim extras from our history? 
 				// FIXME: this should really be happing on change, not on the delay
@@ -1554,8 +1558,6 @@ if ( typeof context == 'undefined' ) {
 			context.$textarea.attr( 'disabled', true );
 			context.$textarea.hide();
 			context.$iframe.show();
-			// Trigger the dealyedChange event to ensure the initial state is stored as our first history state
-			context.fn.trigger( 'delayedChange' );
 			// Let modules know we're ready to start working with the content
 			context.fn.trigger( 'ready' );
 			// Only save HTML now: ready handlers may have modified it
