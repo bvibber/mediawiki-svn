@@ -46,6 +46,8 @@ class WWUtils {
     }
 
     function quoteSet($a) {
+	if (!$a) throw new Exception("empty set literal not supported by mysql");
+
 	$s = "";
 
 	foreach ($a as $x) {

@@ -257,6 +257,8 @@ class WWImages extends WWWikis {
     function queryImagesOnPagesGlobally( $concepts ) {
 	global $wwLanguages;
 
+	if (!$concepts) return false;
+
 	$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
 
 	$wikis = array();
@@ -285,6 +287,8 @@ class WWImages extends WWWikis {
     }
 
     function getImagesOnPagesGlobally( $concepts ) {
+	if (!$concepts) return array();
+
 	$rs = $this->queryImagesOnPagesGlobally($concepts);
 	if (!$rs) return false;
 
@@ -294,10 +298,12 @@ class WWImages extends WWWikis {
     }
 
     function queryGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+	if (!$images) return false;
+
 	$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
 
 	$sql = " /* queryGlobalUsageCounts() */ ";
-	$sql .= " SELECT gil_to as image, gil_wiki as wiki, count(*) as usage FROM $globalimagelinks_table ";
+	$sql .= " SELECT gil_to as image, gil_wiki as wiki, count(*) as linkcount FROM $globalimagelinks_table ";
 	$sql .= " WHERE gil_page_namespace_id = 0 ";
 	$sql .= " AND gil_to IN " . $this->quoteSet( $images );
 
@@ -315,6 +321,8 @@ class WWImages extends WWWikis {
     }
 
     function getGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+	if (!$images) return array();
+
 	$rs = $this->queryGlobalUsageCounts($images, $wikis);
 	if (!$rs) return false;
 
@@ -326,7 +334,7 @@ class WWImages extends WWWikis {
 	while ($row = mysql_fetch_assoc($rs)) {
 	    $image = $row["image"];
 	    $wiki = $row["wiki"];
-	    $usage = $row["usage"];
+	    $linkcount = $row["linkcount"];
 
 	    if ( is_null($current) ) $current = $image;
 	    else if ($current != $image) {
@@ -335,7 +343,7 @@ class WWImages extends WWWikis {
 		$current = $image;
 	    }
 
-	    $stats[$wiki] = $usage;
+	    $stats[$wiki] = $linkcount;
 	}
 
 	if ($current) $imageUsage[$current] = $stats;
