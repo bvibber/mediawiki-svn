@@ -50,7 +50,7 @@ class CodeRevisionListView extends CodeView {
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() .
 			'</td><td style="padding-left: 2em;">' . 
-			'&nbsp;' . wfMsgHtml( 'code-rev-total' ) . '<span style="font-weight: bold;">' . $revCount . '</span>' . 
+			'&nbsp;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' . 
 			'</td></tr></table>' .  
 			Xml::openElement( 'form',
 				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
@@ -164,7 +164,7 @@ class CodeRevisionListView extends CodeView {
 		$tables = array( 'code_rev' );
 		$selectFields = array( 'COUNT( DISTINCT cr_id ) AS rev_count' );
 		// count if code_rev where path matches
-		if ( $this->mPath ) {
+		if ( strlen($this->mPath) ) {
 			$tables[] = 'code_paths';
 			$whereCond = array('cr_repo_id' => $this->mRepo->getId(),
 							'cr_id = cp_rev_id', 
@@ -268,7 +268,7 @@ class SvnRevTablePager extends SvnTablePager {
 
 	function formatRevValue( $name, $value, $row ) {
 		global $wgUser, $wgLang;
-		$pathQuery = (empty($this->mView->mPath)) ? array() : array('path' => $this->mView->mPath);
+		$pathQuery = ( strlen($this->mView->mPath) ) ? array('path' => $this->mView->mPath) : array();
 
 		switch( $name ) {
 		case 'selectforchange':
