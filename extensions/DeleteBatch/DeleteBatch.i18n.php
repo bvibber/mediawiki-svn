@@ -479,7 +479,7 @@ $messages['gl'] = array(
 	'deletebatch-help' => 'Borrar un conxunto de páxinas. Pode levar a cabo un borrado único ou borrar as páxinas listadas nun ficheiro.
 Escolla o usuario que será amosado nos rexistros de borrado.
 O ficheiro cargado debería conter o nome da páxina e unha razón opcional separados por un carácter de barra vertical ("|") en cada liña.',
-	'deletebatch-caption' => 'Lista da páxina:',
+	'deletebatch-caption' => 'Lista de páxinas:',
 	'deletebatch-title' => 'Borrar un conxunto',
 	'deletebatch-link-back' => 'Voltar á páxina especial',
 	'deletebatch-as' => 'Executar a escritura como:',

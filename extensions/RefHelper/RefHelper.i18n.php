@@ -376,6 +376,8 @@ $messages['lb'] = array(
 	'refhelper-toolbox_link_create' => 'Referenz uleeën',
 	'refhelper-toolbox_link_search' => 'Referenz op der Basis vun der Sich uleeën',
 	'refhelper-newarticle_nocitation' => 'Et gëtt elo keng Citatioun mat deem Numm.',
+	'refhelper-newarticle_nosuggestions' => "Onglécklerweis, konnt keng Referenz virgeschlo ginn.
+Dir kënnt [[Special:RefHelper|d'Referenz manuell derbäisetzen]] oder [[Special:RefSearch|no der Citatioun déi derbäi gesat soll ginn derbäisetzen]].",
 );
 
 /** Macedonian (Македонски)

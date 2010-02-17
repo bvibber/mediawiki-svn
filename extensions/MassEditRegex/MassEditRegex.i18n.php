@@ -235,16 +235,20 @@ $messages['br'] = array(
 	'masseditregex-err-nopages' => "Rankout a reoc'h menegiñ ur bajenn da gemm d'an nebeutañ.",
 	'masseditregex-before' => 'A-raok',
 	'masseditregex-after' => 'Goude',
+	'masseditregex-max-preview-diffs' => "Bevennet eo ar rakweladenn d'{{PLURAL:$1|an disoc'h kentañ|ar $1 disoc'h kentañ}}.",
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|kemm|kemmoù}}',
 	'masseditregex-page-not-exists' => "N'eus ket eus $1",
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pennad|pennadoù}} embannet',
+	'masseditregex-view-full-summary' => "Gwelet diverrañ klok ar c'hemmoù",
 	'masseditregex-hint-headmatch' => 'Klotadenn',
 	'masseditregex-hint-headreplace' => "Erlec'hiañ",
 	'masseditregex-hint-headeffect' => 'Efed',
 	'masseditregex-listtype-intro' => 'Setu ur roll eus :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
+	'masseditregex-namespace-intro' => 'Emañ an holl bajennoù-mañ en esaouenn anv :',
 	'masseditregex-badregex' => "N'eo ket mat ar regex :",
 	'masseditregex-editfailed' => 'Fazi e-pad an embann :',
+	'masseditregex-tooltip-execute' => "Arloañ ar c'hemmoù-se da bep pajenn",
 );
 
 /** Bosnian (Bosanski)

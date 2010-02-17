@@ -67,6 +67,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'lastuserlogin' => 'Kevreadenn ziwezhañ an implijerien',
+	'lastuserlogin-desc' => "Diskouez a ra ar wech ziwezhañ m'en deus kevreet un implijer",
 	'lastuserlogin_userid' => 'Anv implijer',
 	'lastuserlogin_username' => 'Anv gwir',
 	'lastuserlogin_useremail' => 'Postel an implijer',

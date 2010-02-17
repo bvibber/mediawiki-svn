@@ -33,6 +33,13 @@ $messages['be-tarask'] = array(
 	'right-editalluserpages' => 'рэдагаваньне старонак удзельнікаў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'right-editalluserpages' => 'Kemmañ ar pajennoù implijer',
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */
@@ -103,6 +110,14 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'userpageeditprotection-desc' => 'Begrenser redigering av brukersidene til brukeren og tillatte bidragsytere',
 	'right-editalluserpages' => 'Rediger brukersider',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'userpageeditprotection-desc' => "A lìmita ël modifiché le pàgine utent a l'utent e editor con përmess",
+	'right-editalluserpages' => 'Modifiché pàgine utent',
 );
 
 /** Russian (Русский)

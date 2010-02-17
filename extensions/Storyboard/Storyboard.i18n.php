@@ -43,6 +43,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'storyboard-name' => 'Storyboard',
+	'right-storyreview' => 'Adlenn, kemmañ, embann, ha kuzhat an istorioù',
 );
 
 /** Finnish (Suomi)
@@ -76,6 +77,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Stellt e Ziilsyte z Verfiegig fir Spänder, wu Gschichte chenne yygee wäre un e Benutzeroberflechi fir d Moderation vu Gschichte',
+	'right-storyreview' => 'Gschichte priefe, bearbeite un uusblände',
 );
 
 /** Interlingua (Interlingua)
