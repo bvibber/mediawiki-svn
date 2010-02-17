@@ -223,6 +223,7 @@ class WikilogItem
 	 * @deprecated Doesn't scale well, use query and pager objects instead.
 	 */
 	public function getComments( $thread = null ) {
+		wfDeprecated( __METHOD__ );
 		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $thread ) {

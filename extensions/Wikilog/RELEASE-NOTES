@@ -2,30 +2,61 @@
 
 == Current development version ==
 
+=== General notes ===
+
+Database schema changed since 1.0.x, a database update is required.
+You should backup your data and run maintenance/update.php to upgrade.
+
+MediaWiki requirement raised to 1.15.0 and later. MediaWiki 1.14 and earlier
+are no longer supported in this release, stick with Wikilog 1.0.x if this is
+your case.
+
 === New configuration options ===
 
 * $wgWikilogExtSummaries: use of categories and tags parameters in summary
   entry header and footer messages.
+* $wgWikilogExpensiveLimit: configures how many items to show on pages that
+  includes other pages (expensive requests that may demand article parsing).
+  Replaces $wgWikilogSummaryLimit.
+* $wgWikilogNumComments: default number of comments to show at once on
+  discussion pages.
 
 === New features ===
 
 * Messages wikilog-item-brief-header/footer, wikilog-item-header/footer and
-  others replaced by wikilog-summary-header/footer, wikilog-entry-header/footer
-  and others, with better support for plural and gender inflection, separate
-  date and time, and also support to category and tag lists.
+  others replaced by wikilog-summary-header/footer, wikilog-entry-header/
+  footer and others, with better support for plural and gender inflection,
+  separate date and time, and also support to category and tag lists.
 * (wl:issue 2) Improved article summary extraction. Now a "--more--" marker
   alone in a line breaks the summary (above) from the rest of the article
   (below). The <summary> tag has precedence over this new marker. If neither
   is found, the first section is used.
+* Improved customization of article comments pages. Now, comment headers and
+  footers are can be configured through messages wikilog-comment-header/
+  footer and others.
+* More user-friendly navigation bars. Currently, they only have first,
+  last, previous and next links. Support for other MediaWiki features, like
+  items-per-page will come later.
+* Discussion pages are now paged, i.e., only a maximum number of comments
+  (default 50) are shown at once, with paging links to visit other pages of
+  comments.
+* Comment syndication feeds are now available. Currently, there is one feed
+  per wikilog article, that lists comments made to that article. In the
+  future, feeds per thread, per wikilog and global may be provided.
 
 === Bug fixes ===
 
 * (mw:bug 21657) Message wikilog-item-brief-header/footer replaced by
   wikilog-summary-header/footer and others, with proper PLURAL support.
 * (wl:issue 1) Improve header/footer item messages.
-* Disabled minimum feed cache age check ($wgFeedCacheTimeout) in WikilogFeed,
-  since this causes the wrong Last-modified header to be output. Waiting for a
-  fix for the same problem found in ChangesFeed. Noted by Vitaliy Filippov.
+* (wl:issue 5) Usability improvement in wikilog actions tab.
+* Disabled minimum feed cache age check ($wgFeedCacheTimeout) in
+  WikilogFeed, since this causes the wrong Last-modified header to be
+  output. Waiting for a fix for the same problem found in ChangesFeed.
+  Noted by Vitaliy Filippov.
+* Don't croak in Wikilog::getWikilogInfo() if $title is NULL. Patch by
+  Vitaliy Filippov.
+
 
 == Wikilog 1.0.1 ==
 
