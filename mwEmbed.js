@@ -2677,16 +2677,23 @@ function mwDojQueryBindings() {
 		}
 		$.button = function( options ) {
 			var options = $j.extend( mw_default_button_options, options);
-			return $j('<a>')
-					.css( options.css )
-					.attr( 'href', '#' )
-					.addClass( 'ui-state-default ui-corner-all ui-icon_link' )
-					.addClass( options['class'] )
-					.append(
-						$j('<span>').addClass( 'ui-icon ui-icon-' + options.icon_id ),
-						$j('<span>').addClass( 'btnText' )
-							.text( options.text )
-					)
+			
+			// Button: 
+			var $btn = $j('<a />')
+				.css( options.css )
+				.attr('href', '#')
+				.addClass( 'ui-state-default ui-corner-all ui-icon_link' );
+								
+			if( options['class'] ){
+				$btn.addClass( options['class'] )
+			}	
+							
+			$btn.append(
+				$j('<span>').addClass( 'ui-icon ui-icon-' + options.icon_id ),
+				$j('<span>').addClass( 'btnText' )
+					.text( options.text )
+			);
+			return $btn;
 				
 		}
 		

@@ -413,6 +413,7 @@ mw.RemoteSearchDriver.prototype = {
 	init: function( options ) {
 		var _this = this;
 		mw.log( 'remoteSearchDriver:init' );
+		
 		// Add in a local "id" reference to each provider
 		for ( var cp_id in this.content_providers ) {
 			this.content_providers[ cp_id ].id = cp_id;

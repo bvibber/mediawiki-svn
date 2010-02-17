@@ -159,11 +159,10 @@ mw.UploadHandler.prototype = {
 		// Set up the submit action:
 		$j( this.form ).submit( function() {	
 			mw.log( "FORM SUBMIT::" );
-			var data = $j( this ).serializeArray();
+			/*var data = $j( this ).serializeArray();
 			for ( var i = 0; i < data.length; i++ ) {
 				mw.log( $j( data[i] ).attr('name') + ' : ' + $j(data[i]).val() );
-			}		
-		
+			}*/
 			return _this.onSubmit();
 		} );
 	},
@@ -809,18 +808,18 @@ mw.UploadHandler.prototype = {
 					apiResult = JSON.parse( data.upload['apiUploadResult'] ) ;
 				} catch ( e ) {
 					//could not parse api result
-					mw.log( 'errro: could not parse apiUploadResult' )
+					mw.log( 'errro: could not parse apiUploadResult:' + e );
 				}
 				_this.processApiResult( apiResult );
 			});
 			return ;
 		}
 
-		// else update status:
+		// Else update status:
 		if ( data.upload['content_length'] && data.upload['loaded'] ) {
-			//we have content length we can show percentage done:
+			// We have content length we can show percentage done:
 			var fraction = data.upload['loaded'] / data.upload['content_length'];
-			//update the status:
+			// Update the status:
 			_this.interface.updateProgress( fraction );
 			//special case update the file progress where we have data size:
 			$j( '#up-status-container' ).html(

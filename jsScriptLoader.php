@@ -191,6 +191,9 @@ class jsScriptLoader {
 	 * @return minified js, or false if minification failed.
 	 */
 	static function getClosureMinifiedJs( & $js_string, $requestKey=''){
+		global $wgClosureCompilerPath, $wgJavaPath, $wgClosureCompilerLevel;
+
+		// Check the paths
 		if( !is_file( $wgJavaPath ) || ! is_file( $wgClosureCompilerPath ) ){
 			return false;
 		}

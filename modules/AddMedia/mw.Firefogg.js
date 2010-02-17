@@ -807,6 +807,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			return this.parent_getProgressTitle();
 		} else if ( this.form_type == 'local' ) {
 			return gM( 'fogg-transcoding' );
+		} else if ( _this.getEncoderSettings()['passthrough'] ) {
+			return gM( 'mwe-upload-in-progress' );
 		} else {
 			return gM( 'mwe-upload-transcode-in-progress' );
 		}
@@ -831,7 +833,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		
 		// Setup the firefogg dialog (if not passthrough )
 		_this.interface.setup( { 'title' : gM( 'mwe-upload-transcode-in-progress' ) } );
-		// add the preview controls if transcoding:  
+		
+		// Add the preview controls if transcoding:  
 		if ( !_this.getEncoderSettings()['passthrough'] ) {
 			_this.createPreviewControls();
 		}
@@ -852,7 +855,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			}
 		}		
 		
-			// Get the edit token from formData if it's not set already
+		// Get the edit token from formData if it's not set already
 		if ( !_this.editToken && _this.formData['token'] ) {
 			_this.editToken = _this.formData['token'];
 		}
@@ -887,12 +890,12 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			// Encode and then do a post upload
 			_this.doEncode(
 				function /* onProgress */ ( progress ) {
-					_this.updateProgress( progress );
+					_this.interface.updateProgress( progress );
 				},
 				function /* onDone */ () {															
 					var uploadRequest = _this.getUploadApiRequest();
 					
-					mw.log( 'done with encoding do POST upload:' + JSON.stringify( uploadRequest ) );
+					mw.log( 'Do POST upload to:' +_this.api_url + ' with data:\n' + JSON.stringify( uploadRequest ) );
 					
 					_this.fogg.post( _this.api_url, 'file', JSON.stringify( uploadRequest ) );
 						
@@ -1054,12 +1057,12 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					var pstatus = JSON.parse( _this.fogg.uploadstatus() );
 					response_text = pstatus["responseText"];
 				} catch( e ) {
-					mw.log( "could not parse uploadstatus / could not get responseText" );
+					mw.log( "could not parse uploadstatus / could not get responseText: " + e );
 				}
 			}
 			
-
-			if ( _this.oldResponseText != response_text ) {
+			// Check response is not null and old response does not match current 
+			if ( typeof response_text != 'undefined' && _this.oldResponseText != response_text ) {
 				mw.log( 'Fogg: new result text:' + response_text + ' state:' + _this.fogg.state );
 				_this.oldResponseText = response_text;
 				// Parse the response text and check for errors
@@ -1077,7 +1080,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 											
 				//Check for success:
 				if( apiResult && _this.isApiSuccess( apiResult ) ){
-					if( _this.processApiResult ( apiResult ) ){
+					if( _this.processApiResult ( apiResult ) ) {
 						return true;
 					}
 				}
@@ -1091,12 +1094,12 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				}
 
 			}
-			if ( _this.show_preview == true ) {
-				if ( _this.fogg.state == 'encoding' ) {
-					_this.renderPreview();
-				}
+			// Show the video preview if encoding and show_preview is enabled. 
+			if ( _this.show_preview == true && _this.fogg.state == 'encoding') {
+				_this.renderPreview();
 			}
-	
+			
+			//mw.log( 'Update fogg progress: ' +  _this.fogg.progress() );
 			// If not an error, Update the progress bar
 			_this.interface.updateProgress( _this.fogg.progress() );
 
