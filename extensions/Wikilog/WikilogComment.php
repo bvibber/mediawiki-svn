@@ -608,8 +608,13 @@ class WikilogCommentFormatter
 			$params = $this->getCommentMsgParams( $comment );
 			$html = $this->formatCommentHeader( $comment, $params );
 
-			$text = $wgOut->parse( $comment->getText() );  // TODO: Optimize this.
-			$html .= WikilogUtils::wrapDiv( 'wl-comment-text', $text );
+			if ( $comment->mCommentRev ) {
+				list( $article, $parserOutput ) = WikilogUtils::parsedArticle( $comment->mCommentTitle );
+				$text = $parserOutput->getText();
+				if ( $text ) {
+					$html .= WikilogUtils::wrapDiv( 'wl-comment-text', $text );
+				}
+			}
 
 			$html .= $this->formatCommentFooter( $comment, $params );
 			$html .= $this->getCommentToolLinks( $comment );

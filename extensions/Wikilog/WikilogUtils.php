@@ -41,6 +41,23 @@ class WikilogUtils
 	 * @param $title Article title object.
 	 * @param $feed Whether the result should be part of a feed.
 	 * @return Two-element array containing the article and its parser output.
+	 *
+	 * @note Mw1.16+ provides Article::getParserOptions() and
+	 *   Article::getParserOutput(), that could be used here in the future.
+	 *   The problem is that getParserOutput() uses ParserCache exclusively,
+	 *   which means that only ParserOptions control the key used to store
+	 *   the output in the cache and there is no hook yet in
+	 *   ParserCache::getKey() to set these extra bits (and the
+	 *   'PageRenderingCache' hook is not useful here, it is in the wrong
+	 *   place without access to the parser options). This is certainly
+	 *   something that should be fixed in the future.  FIXME
+	 *
+	 * @note This function makes a clone of the parser if
+	 *   $wgWikilogCloneParser is set, but cloning the parser is not
+	 *   officially supported. The problem here is that we need a different
+	 *   parser that we could mess up without interfering with normal page
+	 *   rendering, and we can't create a new instance because of too many
+	 *   broken extensions around. Check self::parserSanityCheck().
 	 */
 	public static function parsedArticle( Title $title, $feed = false ) {
 		global $wgWikilogCloneParser;
@@ -52,14 +69,27 @@ class WikilogUtils
 		$article = new Article( $title );
 
 		# First try the parser cache.
-		if ( $wgEnableParserCache ) {
+		$useParserCache = $wgEnableParserCache &&
+			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
+			$article->exists();
+
+		# Parser options.
+		$parserOpt = ParserOptions::newFromUser( $wgUser );
+		$parserOpt->setTidy( true );
+		if ( $feed ) {
+			$parserOpt->setEditSection( false );
+		} else {
+			$parserOpt->enableLimitReport();
+		}
+
+		if ( $useParserCache ) {
 			# Select parser cache according to the $feed flag.
 			$parserCache = $feed
 				? WikilogParserCache::singleton()
 				: ParserCache::singleton();
 
 			# Look for the parsed article output in the parser cache.
-			$parserOutput = $parserCache->get( $article, $wgUser );
+			$parserOutput = $parserCache->get( $article, $parserOpt );
 
 			# On success, return the object retrieved from the cache.
 			if ( $parserOutput ) {
@@ -67,17 +97,10 @@ class WikilogUtils
 			}
 		}
 
-		# Parser options.
-		$parserOpt = ParserOptions::newFromUser( $wgUser );
-		$parserOpt->setTidy( true );
-
 		# Enable some feed-specific behavior.
 		if ( $feed ) {
 			$saveFeedParse = WikilogParser::enableFeedParsing();
 			$saveExpUrls = WikilogParser::expandLocalUrls();
-			$parserOpt->setEditSection( false );
-		} else {
-			$parserOpt->enableLimitReport();
 		}
 
 		# Get a parser instance, if not already cached.
@@ -99,8 +122,8 @@ class WikilogUtils
 		$parserOutput = $parser->parse( $arttext, $title, $parserOpt );
 
 		# Save in parser cache.
-		if ( $wgEnableParserCache && $parserOutput->getCacheTime() != -1 ) {
-			$parserCache->save( $parserOutput, $article, $wgUser );
+		if ( $useParserCache && $parserOutput->getCacheTime() != -1 ) {
+			$parserCache->save( $parserOutput, $article, $parserOpt );
 		}
 
 		# Restore default behavior.
