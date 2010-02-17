@@ -52,7 +52,7 @@ mw.setConfig('loaderContext', '' );
  */
 mw.addClassFilePaths( {
 	"mwEmbed"				: "mwEmbed.js",
-	"window.jQuery"			: "jquery/jquery-1.3.2.js",
+	"window.jQuery"			: "jquery/jquery-1.4.1.js",
 	
 	"ctrlBuilder"			: "skins/ctrlBuilder.js",
 	"kskinConfig"			: "skins/kskin/kskinConfig.js",

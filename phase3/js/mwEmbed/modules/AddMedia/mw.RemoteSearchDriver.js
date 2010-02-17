@@ -644,11 +644,10 @@ mw.RemoteSearchDriver.prototype = {
 			return '';
 		}
 
-		return '<div ' + 
-			'class="rsd_file_type ui-corner-all ui-state-default ui-widget-content" ' + 
-			'title="' + gM( 'mwe-ftype-' + type ) + '">' +
-			type  +
-			'</div>';
+		return $j( '<div />' )
+			.addClass( 'rsd_file_type ui-corner-all ui-state-default ui-widget-content' )
+			.attr( 'title',   gM( 'mwe-ftype-' + type ) )
+			.text( type );
 	},
 	
 	/**
@@ -833,12 +832,13 @@ mw.RemoteSearchDriver.prototype = {
 		} );
 	},
 
-	/*
+	/**
 	* Sets up the initial html interface
 	*/ 
 	initDialog: function() {
 		mw.log( 'f::initDialog' );
-		var _this = this;				
+		var _this = this;			
+				
 		var $mainContainer = $j( this.target_container );
 
 		var $controlContainer = this.createControlContainer();
@@ -846,8 +846,8 @@ mw.RemoteSearchDriver.prototype = {
 		$mainContainer.append( $controlContainer );
 			
 		this.$resultsContainer = $j('<div />').attr({
-				id: "rsd_results_container"
-			});
+			id: "rsd_results_container"
+		});
 		
 		$mainContainer.append( this.$filtersContainer );
 		$mainContainer.append( this.$resultsContainer );
@@ -875,6 +875,7 @@ mw.RemoteSearchDriver.prototype = {
 				}
 				return false;
 			} );
+			
 		// Set form bindings
 		$j( '#rsd_form' )
 			.unbind()
@@ -907,13 +908,14 @@ mw.RemoteSearchDriver.prototype = {
 		
 		var $searchButton = $j.button({
 			icon_id: 'search', 
-				text: gM( 'mwe-media_search' ) })
-			.addClass( 'rsd_search_button' )
-			.buttonHover()
-			.click(function (){
-				_this.updateResults( _this.current_provider, true );
-				return false;
-			});
+			text: gM( 'mwe-media_search' ) })
+				.addClass( 'rsd_search_button' )
+				.buttonHover()
+				.click(function (){
+					_this.updateResults( _this.current_provider, true );
+					return false;
+				});
+			
 		var $searchBox = $j( '<input />' )
 			.addClass( 'ui-corner-all' )
 			.attr({

@@ -30,7 +30,11 @@ mw.addMessages({
 	"mwe-go-to-resource" : "Go to resource page",
 	"mwe-upload-misc-error" : "Unknown upload error",	
 	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",
-	"thumbnail-more" : "Enlarge"
+	"thumbnail-more" : "Enlarge",
+	
+	"license-header" : "Licensing",
+	"filedesc" : "Summary",
+	"filesource" : "Source:"
 });
 
 var default_bui_options = {
@@ -54,7 +58,10 @@ var default_bui_options = {
 	
 	// The interface type sent to mw.interface factory
 	// can be 'dialog', 'iframe', 'inline' 
-	'interface_type' : 'dialog'
+	'interface_type' : 'dialog',
+	
+	// Equivalent to $wgUseCopyrightUpload in php ( should be set via configuration )
+	'useCopyrightUpload' : true
 
 };
 
@@ -179,11 +186,12 @@ mw.UploadHandler.prototype = {
 				//error in orig submit return false;
 				return false;
 			}
-		}
+		}		
+		
 		// Call the onsubmit_cb option if set:
 		if( this.onsubmit_cb && typeof this.onsubmit_cb == 'function' ){
 			this.onsubmit_cb();
-		}
+		}				
 		
 		// Remap the upload form to the "api" form:
 		this.remapFormToApi();
@@ -192,17 +200,14 @@ mw.UploadHandler.prototype = {
 		if ( this.form_post_override ) {
 			mw.log( 'form_post_override is true, do ordinary form submit' );
 			return true;
-		}
-		mw.log(" wtf::" + this.interface );
+		}		
 	
 		// Put into a try catch so we are sure to return false:
 		try {
 			// Startup interface dispatch dialog
-			_this.interface.setup( {'title': gM('mwe-upload-in-progress') } );		
-			//this.displayProgressOverlay
+			_this.interface.setup( {'title': gM('mwe-upload-in-progress') } );			
 						
-
-			// For some unknown reason we have to drop down the #p-search z-index:
+			// Drop down the #p-search z-index so its not ontop
 			$j( '#p-search' ).css( 'z-index', 1 );
 
 			var _this = this;
@@ -526,7 +531,7 @@ mw.UploadHandler.prototype = {
 			// Create the "ignore warning" button
 			var buttons = {};
 			buttons[ gM( 'mwe-ignorewarning' ) ] = function() {
-				//check if we have a stashed key:
+				// Check if we have a stashed key:
 				if ( _this.warnings_sessionkey ) {
 					//set to "loading"
 					$j( '#upProgressDialog' ).html( mw.loading_spinner() );
@@ -537,7 +542,7 @@ mw.UploadHandler.prototype = {
 						'ignorewarnings': 1,
 						'filename': $j( '#wpDestFile' ).val(),
 						'token' :  _this.editToken,
-						'comment' :  $j( '#wpUploadDescription' ).val()
+						'comment' : _this.getUploadDescription()
 					};
 					//run the upload from stash request
 					mw.getJSON(_this.api_url, request, function( data ) {
@@ -658,7 +663,7 @@ mw.UploadHandler.prototype = {
 	},
 	
 	/**
-	* Get the upload description, append the licence if avaliable
+	* Get the upload description, append the license if available
 	*
 	* NOTE: wpUploadDescription should be a configuration option. 
 	*
@@ -671,7 +676,40 @@ mw.UploadHandler.prototype = {
 		if(  comment_value == '' ){
 			comment_value = $j( "[name='wpUploadDescription']").val();
 		}
-		//check for licence tag: 
+				
+		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
+		if ( this.useCopyrightUpload ) {
+			var license = ( $j("[name='wpLicense']").length ) ? $j("[name='wpLicense']").val() : '';
+			var copyStatus = ( $j("[name='wpUploadCopyStatus']" ).length ) ? $j("[name='wpUploadCopyStatus']" ).val() : '';
+			var source =  ( $j("[name='wpSource']").length ) ? $j("[name='wpSource']").val() : '';
+			
+			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
+			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
+		}
+							
+		return comment_value;		
+	},
+	
+	/**
+	* Get the comment text ( port of getInitialPageText from SpecialUpload.php
+	* We only copy part of the check where useCopyrightUpload is enabled as
+	* to not conflict with other js rewrites. 
+	*   
+	* @param {String} comment Comment string
+	* @param {String} license License key 
+	* @param {String} copyStatus the copyright status field
+	* @param {String} source The source filed			
+	*/
+	getCommentText: function( comment, license, copyStatus, source ){					
+		var licensetxt = '';
+		if ( license != '' ) {
+			licensetxt = '== ' + gM( 'license-header' ) + " ==\n" + '{{' + license + '}}' + "\n";
+		}
+		pageText = '== ' + wfMsgForContent ( 'filedesc' ) + " ==\n" + comment + "\n" +
+		  '== ' + wfMsgForContent ( 'filestatus' ) + " ==\n" + copyStatus + "\n" +
+		  licensetxt +
+		  '== ' + wfMsgForContent ( 'filesource' ) . " ==\n" . source ;		
+		return pageText;
 	},
 
 	/**
@@ -718,9 +756,7 @@ mw.UploadHandler.prototype = {
 	doHttpUpload: function( params ) {
 		var _this = this;
 		// Get a clean setup of the interface dispatch 
-		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );	
-		
-		//_this.displayProgressOverlay();
+		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );					
 
 		// Set the interface dispatch to loading ( in case we don't get an update for some time )
 		this.interface.setLoading();		
@@ -760,15 +796,15 @@ mw.UploadHandler.prototype = {
 	doAjaxUploadStatus: function() {
 		var _this = this;
 
-		// Set up intterface dispatch to display for status updates:
-		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );			
-		//this.displayProgressOverlay();
+		// Set up interface dispatch to display for status updates:
+		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );					
 		
 		this.upload_status_request = {
 			'action'     : 'upload',
 			'httpstatus' : 'true',
 			'sessionkey' : _this.upload_session_key
 		};
+		
 		// Add token if present
 		if ( this.editToken )
 			this.upload_status_request['token'] = this.editToken;
@@ -965,6 +1001,10 @@ mw.UploadHandler.prototype = {
 	/**
 	 * Check the upload destination filename for conflicts and show a conflict
 	 * error message if there is one
+	 * @selector (jquery selector) The target destination name to check for conflits  
+	 * @param {Object} options Options that define: 
+	 * 		warn_target target for display of warning
+	 * 		api_url Api url to check for destination
 	 */
 	$.fn.doDestCheck = function( options ) {
 		var _this = this;
