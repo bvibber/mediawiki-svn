@@ -3,25 +3,25 @@
 
 /**
  * Compatability map
+ */
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': [['>=', 1000]], // Off for now
-		'firefox': [['>=', 1000]], // Off for now
-		'opera': [['>=', 1000]], // Off for now
-		'safari': [['==', 1000]], // Off for now
-		'chrome': [['==', 1000]] // Off for now
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]],
+		'chrome': [['>=', 4]]
 	},
 	// Right-to-left languages
 	'rtl': {
-		'msie': [['>=', 1000]], // Off for now
-		'firefox': [['>=', 1000]], // Off for now
-		'opera': [['>=', 1000]], // Off for now
-		'safari': [['==', 1000]], // Off for now
-		'chrome': [['==', 1000]] // Off for now
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]],
+		'chrome': [['>=', 4]]
 	}
 },
- */
 /**
  * Configuration
  */
