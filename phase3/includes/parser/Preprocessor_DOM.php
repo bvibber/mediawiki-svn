@@ -69,12 +69,12 @@ class Preprocessor_DOM implements Preprocessor {
 		
 		// To XML
 		$xmlishRegex = implode('|', $this->parser->getStripList());
-		$bugHHP21 = new ParseRule("hhp21", '/^\n(?==[^=])/s');
 		$rules = array(
-			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', '}|=', $bugHHP21),
-			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', '}|=', $bugHHP21),
-			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', '\]'),
-			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?(?:-->|\Z))*(?=\n|$)/s', '='),
+			"Root" => new ParseRule("root", '/^/', '/^\Z/', '', "MainList"),
+			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', '}|=', "HHP21List"),
+			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', '}|=', "HHP21List"),
+			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', '\]', "MainList"),
+			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?(?:-->|\Z))*(?=\n|$)/s', '=', "MainList"),
 			"CommentLine" => new ParseRule("commentline", '/^(\n *)((?:<!--.*?(?:-->|$)(?: *\n)?)+)/s'),
 			"Comment" => new ParseRule("comment", '/^<!--.*?(?:-->|$)/s'),
 			"OnlyInclude" => new ParseRule("ignore", '/^<\/?onlyinclude>/s'),
@@ -82,7 +82,10 @@ class Preprocessor_DOM implements Preprocessor {
 			"IncludeOnly" => new ParseRule("ignore", '/^<includeonly>.*?(?:<\/includeonly>|$)/s'),
 			"XmlClosed" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')([^>]*)\/>/si'),
 			"XmlOpened" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>|$)/si'),
-			"BeginFile" => new ParseRule("bof", '/^~BOF/s'));
+			"BeginFile" => new ParseRule("bof", '/^~BOF/s'),
+			"BugHHP21" => new ParseRule("hhp21", '/^\n(?==[^=])/s'),
+			"MainList" => new ParseList(array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile"), '{\[<\n'),
+			"HHP21List" => new ParseList(array("BugHHP21", "MainList")));
 		if ($flags & Parser::PTD_FOR_INCLUSION) {
 			$rules["OnlyInclude"] = new ParseRule("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
 			$rules["NoInclude"] = new ParseRule("ignore", '/^<noinclude>.*?(?:<\/noinclude>|$)/s');
@@ -90,8 +93,7 @@ class Preprocessor_DOM implements Preprocessor {
 			$rules["BeginFile"] = new ParseRule("bof", '/^~BOF(.*?<onlyinclude>)?/s');
 		}
 
-		$parseList = new ParseList($rules, '{\[<\n');
-		$parseTree = ParseTree::createParseTree($text, $parseList);
+		$parseTree = ParseTree::createParseTree($text, $rules);
 		$xml = $parseTree->printTree();
 
 		// To DOM

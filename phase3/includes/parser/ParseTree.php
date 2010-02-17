@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Interface for Parse Object each with a specialized task while parsing
+ * @ingroup Parser
+ */
+interface ParseObject {
+	// Does the parse task specific to each parse object
+	function parse(&$text, &$rules, $stopChars = '');
+}
+
+/**
  * A rule specifying how to parse the text.  
  * If the text matches mBeginTag then a ParseTree object is created with the appropriate info.
  * mName - The name to give the resultant ParseTree object
@@ -10,7 +19,7 @@
  * mChildRule - an extra rule to consider when collecting children, it is only used for situations covered by the HHP21 parser test
  * @ingroup Parser
  */
-class ParseRule {
+class ParseRule implements ParseObject {
 	private $mName, $mBeginTag, $mEndTag, $mStopChars, $mChildRule;
 
 	function __construct($name, $beginTag, $endTag = NULL, $stopChars = '', $childRule = NULL) {
@@ -21,36 +30,32 @@ class ParseRule {
 		$this->mChildRule = $childRule;
 	}
 
-	function parse(&$text, $parseList) {
-		$retTree = NULL;
-
-		if (preg_match($this->mBeginTag, $text, $matches)) {
-			$text = substr($text, strlen($matches[0]));
-			$children = array();
-			if ($this->mEndTag != NULL) {
-				$endTag = $this->mEndTag;
+	function parse(&$text, &$rules, $stopChars = '') {
+		if (! preg_match($this->mBeginTag, $text, $matches)) {
+			return NULL;
+		}
+		$text = substr($text, strlen($matches[0]));
+		$children = array();
+		if ($this->mChildRule != NULL) {
+			$endTag = $this->mEndTag;
+			if ($endTag != NULL) {
 				foreach ($matches as $i => $crrnt) {
 					$endTag = str_replace('~' . $i, $crrnt, $endTag);
 				}
-				while ($text != "" && ($endTag == NULL || ! preg_match($endTag, $text, $endMatches))) {
-					if ($this->mChildRule != NULL) {
-						$child = $this->mChildRule->parse($text, $parseList);
-						if ($child != NULL) {
-							$children[] = $child;
-						}
-					}
-					$moreChildren = $parseList->parse($text, $this->mStopChars);
-					$children = array_merge($children, $moreChildren);
-				}
-				if ($text != "") {
-					$text = substr($text, strlen($endMatches[0]));
-					$matches = array_merge($matches, $endMatches);
-				}
 			}
-			$retTree = new ParseTree($this->mName, $matches, $children);
+			while ($text != "" && ($endTag == NULL || ! preg_match($endTag, $text, $endMatches))) {
+				$child = $rules[$this->mChildRule]->parse($text, $rules, $this->mStopChars);
+				if ($child == NULL) {
+					break;
+				}
+				$children[] = $child;
+			}
+			if ($text != "") {
+				$text = substr($text, strlen($endMatches[0]));
+				$matches = array_merge($matches, $endMatches);
+			}
 		}
-
-		return $retTree;
+		return new ParseTree($this->mName, $matches, $children);
 	}
 }
 
@@ -60,34 +65,25 @@ class ParseRule {
  * mStopChars - the characters used to find markup
  * @ingroup Parser
  */
-class ParseList {
+class ParseList implements ParseObject {
 	private $mList, $mStopChars;
 
-	function __construct($list, $stopChars) {
+	function __construct($list, $stopChars = '') {
 		$this->mList = $list;
 		$this->mStopChars = $stopChars;
 	}
 
-	function parse(&$text, $stopChars) {
-		$children = array();
-
+	function parse(&$text, &$rules, $stopChars = '') {
 		foreach ($this->mList as $crrnt) {
-			$child = $crrnt->parse($text, $this);
+			$child = $rules[$crrnt]->parse($text, $rules, $stopChars);
 			if ($child != NULL) {
-				$children[] = $child;
-				break;
+				return $child;
 			}
 		}
-		if ($child == NULL) {
-			$children[] = $text[0];
-			$text = substr($text, 1);
-		}
-		if (preg_match('/^[^' . $this->mStopChars . $stopChars . ']+/s', $text, $matches)) {
-			$children[] = $matches[0];
-			$text = substr($text, strlen($matches[0]));
-		}
-
-		return $children;
+		$stopChars .= $this->mStopChars;
+		preg_match('/^[' . $stopChars . ']|[^' . $stopChars . ']*/s', $text, $matches);
+		$text = substr($text, strlen($matches[0]));
+		return $matches[0];
 	}
 }
 
@@ -108,12 +104,11 @@ class ParseTree {
 		$this->mChildren = $children;
 	}
 
-	static function createParseTree($text, $parseList) {
+	static function createParseTree($text, $rules) {
 		wfProfileIn( __METHOD__ );
 
 		$text = "~BOF" . $text;
-		$root = new ParseRule("root", '/^/', '/^\Z/');
-		$retTree = $root->parse($text, $parseList);
+		$retTree = $rules["Root"]->parse($text, $rules);
 
 		wfProfileOut( __METHOD__ );
 		return $retTree;
