@@ -5228,6 +5228,11 @@ $messages['si'] = array(
 	'optin-title-justoptedin' => 'බීටා අනුවාදය ට පිලිගනිමු',
 	'optin-title-justoptedout' => 'බීටා අනුවාදය අත්හදා බැලීම ගැන තුති',
 	'optin-title-feedback' => 'බීටා ප්‍රතිචාරය',
+	'optin-feedback-intro' => 'බීටා අනුවාදය අත්හදා බැලීම පිළිබඳ ස්තූතියි. 
+අපගේ නව අතුරු-මුහුණත පිළිබඳ ඔබ සිතන දේ දැනගැනීමට අප සතුටු වන අතර, පහත වෛකල්පික සමීක්ෂණය පුරවා දමන්නේ නම් කෘතඥ වෙමු.',
+	'optin-feedback-back' => 'ඔබට සමීක්ෂණය පිරවීමට අවශ්‍ය නොවේ නම්,ඔබට නැවත $1 වෙත යා හැක.',
+	'optin-success-in' => 'ඔබ දැන් බීටා අත්හදා බලමින් සිටියි.
+ඔබට පිටුවේ ඉහළ ඇති "{{int:optin-leave}}" සබැඳිය ක්ලික් කිරීමෙන් ඕනෑම මොහොතක ආපසු හැරී යා හැක.',
 	'optin-success-feedback' => 'ඔබේ ප්‍රතිචාරයට ස්තුතියි!',
 	'optin-accept-short' => 'උත්සාහ කර බලමු!',
 	'optin-accept-long' => 'බීටා අනුවාදය අත්හදා බලන්න',
@@ -5249,8 +5254,13 @@ $messages['si'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'නව ටැබ හා වින්‍යාස සැලැස්ම මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-other' => 'වෙනත් හේතුවක්:',
+	'optin-survey-question-explain' => 'කරුණාකර ඔබගේ ඉහත පිළිතුර විස්තර හෝ පැහැදිලි කිරීම කරන්න:',
 	'optin-survey-question-techfail' => 'ඔබ බීටා භාවිතා කිරීමේදී යම් තාක්ෂණික ඇනහිටීමක් අත්දුටුවාද ?',
 	'optin-survey-question-techfail-ifyes' => 'ඔව් නම්,කරුණාකර පැහැදිලි හෝ විස්තර කරන්න:',
+	'optin-survey-question-usedtoolbar' => 'පිටුවක් සංස්කරණය කිරීමට ඔබ විස්තීරණය කළ හැකි නව මෙවලම් තීරුව භාවිතා කර තිබේද ?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ඔව් නම්,ඔබ එය ගැන කැමැත්තක් දක්වන්නේ කුමකට ද? ඔබ එය ගැන අකමැත්තක් දක්වන්නේ කුමකට ද?',
+	'optin-survey-question-usedtoolbar-ifno' => 'නැත නම්,නොවන්නේ ඇයි ? අනාගතයේදී හෝ ? කරුණාකර පැහැදිලි කරන්න.',
+	'optin-survey-question-feedback' => 'කරුණාකර ඔබට අප සඳහා ඇති තවත් විචාර,සැලකිලි හෝ සිතුවිලි අප වෙත දන්වන්න - සියලුම ප්‍රතිපෝෂණ ප්‍රයෝජනවත් වේ:',
 	'optin-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
 	'optin-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',
 	'optin-survey-question-os' => 'ඔබ භාවිතා කරනු ලබන්නේ කුමන මෙහෙයුම් පද්ධතිය ද?',
@@ -5261,6 +5271,7 @@ $messages['si'] = array(
 	'optin-survey-answer-changes-edittools' => 'සංස්කරණ මෙවලම් වැඩිකිරීම හා උසස් කිරීම සිදු කරන්න.',
 	'optin-survey-answer-changes-upload' => 'අන්තර්ගතය හා මාධ්‍ය උඩුගත කිරීම් දියුණු කරන්න.',
 	'optin-survey-answer-changes-richtext' => 'සංස්කරණ මෙවලම් සරු-පෙළ සංස්කාරකයන්ට සමානවන ලෙස සංවර්ධනය කරන්න.',
+	'optin-survey-answer-changes-lookfeel' => 'මෙම අඩවියේ "බලන්න හා විඳින්න" යාවත්කාලීන කරන්න.',
 	'optin-survey-answer-changes-other' => 'වෙනත්:',
 );
 
