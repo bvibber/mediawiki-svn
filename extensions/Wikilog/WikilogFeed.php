@@ -598,3 +598,220 @@ class WikilogItemFeed
 		}
 	}
 }
+
+/**
+ * Syndication feed generator for wikilog comments.
+ */
+class WikilogCommentFeed
+	extends WikilogFeed
+{
+	/**
+	 * If displaying comments for a single article.
+	 */
+	protected $mSingleItem = false;
+
+	/**
+	 * WikilogCommentFeed constructor.
+	 *
+	 * @param $title Title  Feed title and URL.
+	 * @param $format string  Feed format ('atom' or 'rss').
+	 * @param $query WikilogCommentQuery  Query parameters.
+	 * @param $limit integer  Number of items to generate.
+	 */
+	public function __construct( Title $title, $format,
+			WikilogCommentQuery $query, $limit = false )
+	{
+		global $wgWikilogNumComments;
+
+		if ( !$limit ) $limit = $wgWikilogNumComments;
+		parent::__construct( $title, $format, $query, $limit );
+	}
+
+	public function getIndexField() {
+		return 'wlc_timestamp';
+	}
+
+	public function getFeedObject() {
+		if ( ( $item = $this->mQuery->getItem() ) ) {
+			return $this->getItemFeedObject( $item );
+		} else {
+			return $this->getSiteFeedObject();
+		}
+	}
+
+	/**
+	 * Generates and populates a WlSyndicationFeed object for the site.
+	 *
+	 * @return WlSyndicationFeed object.
+	 */
+	public function getSiteFeedObject() {
+		global $wgContLanguageCode, $wgWikilogFeedClasses, $wgFavicon, $wgLogo;
+
+		$title = wfMsgForContent( 'wikilog-feed-title',
+			wfMsgForContent( 'wikilog-specialwikilogcomments-title' ),
+			$wgContLanguageCode
+		);
+		$subtitle = wfMsgExt( 'wikilog-comment-feed-description', array( 'parse', 'content' ) );
+
+		$updated = $this->mDb->selectField( 'wikilog_comments',
+			'MAX(wlc_updated)', false, __METHOD__
+		);
+		if ( !$updated ) $updated = wfTimestampNow();
+
+		$url = $this->mTitle->getFullUrl();
+
+		$feed = new $wgWikilogFeedClasses[$this->mFormat](
+			$url, $title, $updated, $url
+		);
+		$feed->setSubtitle( new WlTextConstruct( 'html', $subtitle ) );
+		if ( $wgFavicon !== false ) {
+			$feed->setIcon( wfExpandUrl( $wgFavicon ) );
+		}
+		if ( $this->mCopyright ) {
+			$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
+		}
+		return $feed;
+	}
+
+	/**
+	 * Generates and populates a WlSyndicationFeed object for the given
+	 * wikilog article.
+	 *
+	 * @param $item WikilogItem  Wikilog article that owns this feed.
+	 * @return WlSyndicationFeed object, or NULL if not possible.
+	 */
+	public function getItemFeedObject( WikilogItem $item ) {
+		global $wgContLanguageCode, $wgWikilogFeedClasses, $wgFavicon;
+
+		$title = wfMsgForContent( 'wikilog-feed-title',
+			wfMsgForContent( 'wikilog-title-comments', $item->mName ),
+			$wgContLanguageCode
+		);
+		$subtitle = wfMsgExt( 'wikilog-comment-feed-description', array( 'parse', 'content' ) );
+		$updated = $this->mDb->selectField( 'wikilog_comments',
+			'MAX(wlc_updated)', array( 'wlc_post' => $item->mID ), __METHOD__
+		);
+		if ( !$updated ) $updated = wfTimestampNow();
+
+		$url = $this->mTitle->getFullUrl();
+
+		$feed = new $wgWikilogFeedClasses[$this->mFormat](
+			$url, $title, $updated, $url
+		);
+		$feed->setSubtitle( new WlTextConstruct( 'html', $subtitle ) );
+		if ( $wgFavicon !== false ) {
+			$feed->setIcon( wfExpandUrl( $wgFavicon ) );
+		}
+		if ( $this->mCopyright ) {
+			$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
+		}
+		return $feed;
+	}
+
+	/**
+	 * Generates and returns a single feed entry.
+	 * @param $row The wikilog comment database entry.
+	 * @return A new WlSyndicationEntry object.
+	 */
+	function formatFeedEntry( $row ) {
+		global $wgMimeType;
+
+		# Create comment object.
+		$item = $this->mSingleItem ? $this->mSingleItem : WikilogItem::newFromRow( $row );
+		$comment = WikilogComment::newFromRow( $item, $row );
+
+		# Prepare some strings.
+		if ( $comment->mUserID ) {
+			$usertext = $comment->mUserText;
+		} else {
+			$usertext = wfMsgForContent( 'wikilog-comment-anonsig',
+				$comment->mUserText, ''/*talk*/, $comment->mAnonName
+			);
+		}
+		if ( $this->mSingleItem ) {
+			$title = wfMsgForContent( 'wikilog-comment-feed-title1',
+				$comment->mID, $usertext
+			);
+		} else {
+			$title = wfMsgForContent( 'wikilog-comment-feed-title2',
+				$comment->mID, $usertext, $comment->mItem->mName
+			);
+		}
+
+		# Create new syndication entry.
+		$entry = new WlSyndicationEntry(
+			self::makeEntryId( $comment ),
+			$title,
+			$comment->mUpdated,
+			$comment->getCommentArticleTitle()->getFullUrl()
+		);
+
+		# Comment text.
+		if ( $comment->mCommentRev ) {
+			list( $article, $parserOutput ) = WikilogUtils::parsedArticle( $comment->mCommentTitle, true );
+			$content = Sanitizer::removeHTMLcomments( $parserOutput->getText() );
+			if ( $content ) {
+				$entry->setContent( new WlTextConstruct( 'html', $content ) );
+			}
+		}
+
+		# Author.
+		$usertitle = Title::makeTitle( NS_USER, $comment->mUserText );
+		$useruri = $usertitle->exists() ? $usertitle->getFullUrl() : null;
+		$entry->addAuthor( $usertext, $useruri );
+
+		# Timestamp
+		$entry->setPublished( $comment->mTimestamp );
+
+		return $entry;
+	}
+
+	/**
+	 * Performs the database query that returns the syndication feed entries
+	 * and store the result wrapper in $this->mResult.
+	 */
+	function doQuery() {
+		# If displaying comments for a single item, save the item.
+		# Otherwise, set query option to return items along with their
+		# comments.
+		if ( ( $item = $this->mQuery->getItem() ) ) {
+			$this->mSingleItem = $item;
+		} else {
+			$this->mQuery->setOption( 'include-item' );
+		}
+		return parent::doQuery();
+	}
+
+	/**
+	 * Returns the keys for the timestamp and feed output in the object cache.
+	 */
+	function getCacheKeys() {
+		if ( ( $item = $this->mQuery->getItem() ) ) {
+			$title = $item->mTitle;
+		} else {
+			$title = null;
+		}
+		$id = $title ? 'id:' . $title->getArticleId() : 'site';
+		$ft = 'show:' . $this->mQuery->getModStatus() .
+			':limit:' . $this->mLimit;
+		return array(
+			wfMemcKey( 'wikilog', $this->mFormat, $id, 'timestamp' ),
+			wfMemcKey( 'wikilog', $this->mFormat, $id, $ft )
+		);
+	}
+
+	/**
+	 * Creates an unique ID for a feed entry. Tries to use $wgTaggingEntity
+	 * if possible in order to create an RFC 4151 tag, otherwise, we use the
+	 * page URL.
+	 */
+	public static function makeEntryId( WikilogComment $comment ) {
+		global $wgTaggingEntity;
+		if ( $wgTaggingEntity ) {
+			$qstr = wfArrayToCGI( array( 'wk' => wfWikiID(), 'id' => $comment->getID() ) );
+			return "tag:{$wgTaggingEntity}:/MediaWiki/Wikilog/comment?{$qstr}";
+		} else {
+			return $comment->getCommentArticleTitle()->getFullUrl();
+		}
+	}
+}

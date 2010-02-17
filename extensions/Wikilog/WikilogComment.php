@@ -703,8 +703,7 @@ class WikilogCommentFormatter
 			);
 		} else {
 			$authorPlain = htmlspecialchars( $comment->mAnonName );
-			$authorFmt = wfMsgExt( 'wikilog-comment-anonsig',
-				array( 'content', 'parseinline', 'replaceafter' ),
+			$authorFmt = wfMsgForContent( 'wikilog-comment-anonsig',
 				Xml::wrapClass( $this->mSkin->userLink( $comment->mUserID, $comment->mUserText ), 'wl-comment-author' ),
 				$this->mSkin->userTalkLink( $comment->mUserID, $comment->mUserText ),
 				htmlspecialchars( $comment->mAnonName )

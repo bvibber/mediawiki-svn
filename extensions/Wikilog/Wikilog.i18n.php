@@ -118,6 +118,9 @@ Uncheck this box to keep the article as a draft.',
 	# Atom and RSS feeds
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]', # $1 = title, $2 = content language
 	'wikilog-feed-description' => 'Read the most recent posts in this feed.',
+	'wikilog-comment-feed-title1' => 'Comment by $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Comment by $2 to $3 (#$1)',
+	'wikilog-comment-feed-description' => 'Read the most recent comments in this feed.',
 
 	# Item and comments page titles
 	'wikilog-title-item-full' => '$1 - $2', # $1 = article title, $2 wikilog title
@@ -310,6 +313,13 @@ Parameters:
 * $2 is the wikilog title',
 	'wikilog-title-comments' => 'Parameters:
 * $1 is a page title',
+	'wikilog-comment-feed-title1' => 'Parameters:
+* $1 is a comment number (to make unique titles for different comments)
+* $2 is the commenter name',
+	'wikilog-comment-feed-title2' => 'Parameters:
+* $1 is a comment number (to make unique titles for different comments)
+* $2 is the commenter name
+* $3 is the title of the article the comment was posted to',
 	'wikilog-error-msg' => 'Parameters:
 * $1 is an error message',
 	'wikilog-invalid-param' => 'Parameters:

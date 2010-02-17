@@ -120,6 +120,18 @@ class WikilogCommentsPage
 			return parent::view();
 		}
 
+		# Create our query object.
+		$query = new WikilogCommentQuery( $this->mItem );
+
+		if ( ( $feedFormat = $wgRequest->getVal( 'feed' ) ) ) {
+			# RSS or Atom feed requested. Ignore all other options.
+			global $wgWikilogNumComments;
+			$query->setModStatus( WikilogCommentQuery::MS_ACCEPTED );
+			$feed = new WikilogCommentFeed( $this->mTitle, $feedFormat, $query,
+				$wgRequest->getInt( 'limit', $wgWikilogNumComments ) );
+			return $feed->execute();
+		}
+
 		if ( $this->mSingleComment ) {
 			# Single comment view, show comment followed by its replies.
 			$params = $this->mFormatter->getCommentMsgParams( $this->mSingleComment );
@@ -153,20 +165,21 @@ class WikilogCommentsPage
 		$wgOut->setSubtitle( wfMsg( 'wikilog-backlink', $link ) );
 
 		# Retrieve comments (or replies) from database and display them.
-		$this->viewComments();
+		$this->viewComments( $query );
+
+		# Add feed links.
+		$wgOut->setSyndicated();
 	}
 
 	/**
 	 * Wikilog comments view. Retrieve comments from database and display
 	 * them in threads.
 	 */
-	protected function viewComments() {
+	protected function viewComments( WikilogCommentQuery $query ) {
 		global $wgOut, $wgRequest;
 
 		# Prepare query and pager objects.
 		$replyTo = $wgRequest->getInt( 'wlParent' );
-		$query = new WikilogCommentQuery();
-		$query->setItem( $this->mItem );
 		$pager = new WikilogCommentThreadPager( $query, $this->mFormatter );
 
 		# Different behavior when displaying a single comment.

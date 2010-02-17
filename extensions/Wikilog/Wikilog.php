@@ -89,6 +89,7 @@ $wgAutoloadClasses += array(
 	// WikilogFeed.php
 	'WikilogFeed'               => $dir . 'WikilogFeed.php',
 	'WikilogItemFeed'           => $dir . 'WikilogFeed.php',
+	'WikilogCommentFeed'        => $dir . 'WikilogFeed.php',
 
 	// WikilogQuery.php
 	'WikilogQuery'              => $dir . 'WikilogQuery.php',
