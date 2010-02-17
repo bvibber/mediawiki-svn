@@ -68,8 +68,6 @@ class ImageCollection {
 		    $tag = $prefix.$tag;
 		}
 
-		if (!$weight) continue; 
-
 		$this->images[$image]['score'] += $weight;
 		$this->images[$image]['tags'][] = $tag;
 	    }
@@ -171,24 +169,21 @@ class WWImages extends WWWikis {
 	return $list;
     }
 
-    function queryTagsForImage($lang, $image, $tagTable) {
-	$page_table = $this->getWikiTableName($lang, "page");
-	$templatelinks_table = $this->getWikiTableName($lang, "templatelinks");
+    function queryTagsForImages($lang, $images, $tagTable) {
 
-	$sql = "/* queryTagsForImage(" . $this->quote($lang) . ", " . $this->quote($image) . ") */ ";
+	$sql = "/* queryTagsForImages(" . $this->quote($lang) . ", " . $this->quoteSet($images) . ") */ ";
 
-	$sql .= " SELECT concat(type, ':', tag) as tag, ";
- 	$sql .= " 2 as score "; #TODO: scores for license, problem, restriction
+	$sql .= " SELECT image, group_concat( concat(type, ':', tag) separator '|') as tags ";
  	$sql .= " FROM $tagTable as T ";
-	$sql .= " WHERE T.image = " . $this->quote($image);
-	$sql .= " AND T.type = 'assessment' "; #FIXME: cover license, problem, restriction
+	$sql .= " WHERE T.image IN " . $this->quoteSet($images);
+ 	$sql .= " GROUP BY image ";
 
 	return $this->queryWiki($lang, $sql);
     }
 
-    function getTagsForImage($lang, $image, $tagTable) {
-	$rs = $this->queryTagsForImage($lang, $image, $tagTable);
-	$list = WWUtils::slurpAssoc($rs, "tag", "score");
+    function getTagsForImages($lang, $images, $tagTable) {
+	$rs = $this->queryTagsForImage($lang, $images, $tagTable);
+	$list = WWUtils::slurpAssoc($rs, "image", "tags");
 	mysql_free_result($rs);
 	return $list;
     }
@@ -391,13 +386,24 @@ class WWImages extends WWWikis {
     function addImageTags($images) {
 	global $wwTagsTable;
 
-	foreach ($images->images as $image) {
-		$image = $image['name'];
 
-		if ( $wwTagsTable ) {
-			$tags = $this->getTagsForImage('commons', $image, $wwTagsTable);
-			if ($tags) $images->addTags($image, $tags, "");
-		} else {
+	if ( $wwTagsTable ) {
+		$img = array();
+		foreach ($images->images as $image) {
+			$img[] = $image['name'];
+		}
+
+		$tagMap = $this->getTagsForImages('commons', $images, $wwTagsTable);
+		foreach ($tagMap as $image => $tags) {
+			if ($tags) {
+				if (is_string($tags)) preg_split('/\s*[|;]\s*/', $tags);
+				$images->addTags($image, $tags, "");
+			}
+		}
+	} else {
+		foreach ($images->images as $image) {
+			$image = $image['name'];
+
 			$tmps = $this->getTemplatesOnImagePage('commons', $image);
 			if ($tmps) $images->addTags($image, $tmps, "Template:");
 			

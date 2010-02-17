@@ -86,12 +86,20 @@ class WWUtils {
 
 	$list = array();
 	while ($row = mysql_fetch_assoc($rs)) {
-	    $v = $row[$field];
+	    if (is_array($field)) {
+		$value = array();
+		foreach ($field as $f) {
+		    $value[$f] = $row[$f];
+		}
+	    } else {
+		$value = $row[$field];
+	    }
+
 	    if ($key) {
 		$k = $row[$key];
-		$list[$k] = $v;
+		$list[$k] = $value;
 	    } else {
-		$list[] = $v;
+		$list[] = $value;
 	    }
 	}
 
@@ -120,7 +128,16 @@ class WWUtils {
 	$list = array();
 	while ($row = mysql_fetch_assoc($rs)) {
 	    $key = $row[$keyField];
-	    $value = $row[$valueField];
+
+	    if (is_array($valueField)) {
+		$value = array();
+		foreach ($valueField as $f) {
+		    $value[$f] = $row[$f];
+		}
+	    } else {
+		$value = $row[$valueField];
+	    }
+
 	    $list[$key] = $value;
 	}
 
