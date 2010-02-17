@@ -285,13 +285,13 @@ fn: {
 			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
-					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
-					// properties
-					var newNode = ca1.ownerDocument.createElement( 'span' );
 					var commonAncestor = ca1.parentNode;
-					
-					var nextNode = ca2.nextSibling;
 					if ( markers[i].anchor == 'wrap' ) {
+						// We have to store things like .parentNode and .nextSibling because
+						// appendChild() changes these properties
+						var newNode = ca1.ownerDocument.createElement( 'span' );
+						
+						var nextNode = ca2.nextSibling;
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
 						var n = ca1;
 						while ( n != nextNode ) {
@@ -305,28 +305,23 @@ fn: {
 						} else {
 							commonAncestor.appendChild( newNode );
 						}
-					} else if ( markers[i].anchor == 'before' ) {
-						commonAncestor.insertBefore( newNode, ca1 );
-					} else if ( markers[i].anchor == 'after' ) {
-						if ( nextNode ) {
-							commonAncestor.insertBefore( newNode, nextNode );
-						} else {
-							commonAncestor.appendChild( newNode );
-						}
+						
+						anchor = newNode;						
+					} else if ( markers[i].anchor == 'tag' ) {
+						anchor = commonAncestor;
 					}
-					
-					$( newNode ).data( 'marker', markers[i] )
+					$( anchor ).data( 'marker', markers[i] )
 						.addClass( 'wikiEditor-highlight' );
-					visited[i] = newNode;
 					
 					// Allow the module adding this marker to manipulate it
-					markers[i].afterWrap( newNode, markers[i] );
+					markers[i].afterWrap( anchor, markers[i] );
+
 				} else {
-					visited[i] = anchor;
 					// Update the marker object
 					$( anchor ).data( 'marker', markers[i] );
 					markers[i].onSkip( anchor );
 				}
+				visited[i] = anchor;
 			}
 		}
 		
