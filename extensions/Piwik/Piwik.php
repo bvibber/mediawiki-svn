@@ -32,7 +32,7 @@ $wgPiwikCustomJS = "";
 $wgPiwikUsePageTitle = false;
 $wgPiwikActionName = "";
 
-function efPiwikHookText( &$skin, &$text = '' ) {
+function efPiwikHookText( $skin, &$text = '' ) {
 	$text .= efAddPiwik();
 	return true;
 }
