@@ -163,7 +163,9 @@ fn: {
 				
 				//if we just collapsed this
 				if( $template.hasClass('wikiEditor-template-collapsed') ) {
-					var model = new $.wikiEditor.modules.templateEditor.fn.model( $template.children( '.wikiEditor-template-text' ).text() );
+					var model = new $.wikiEditor.modules.templateEditor.fn.model(
+						$template.children( '.wikiEditor-template-text' ).text()
+					);
 					$template.data( 'model' , model );
 					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
 				}
@@ -217,7 +219,8 @@ fn: {
 				var templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $wikitext.text() );
 				$templateDiv.data('model', templateModel);
 				var $dialog = $("<div></div>");
-				var $title = $("<div>" + templateModel.getName() + "</div>").addClass('wikiEditor-template-dialog-title');
+				var $title =
+					$("<div>" + templateModel.getName() + "</div>").addClass('wikiEditor-template-dialog-title');
 				var $table = $("<table></table>")
 						  .addClass('wikiEditor-template-dialog-table')
 						  .appendTo($dialog);
@@ -267,7 +270,9 @@ fn: {
 				
 				//if we just collapsed this
 				if( $template.hasClass('wikiEditor-template-collapsed') ) {
-					var model = new $.wikiEditor.modules.templateEditor.fn.model( $template.children( '.wikiEditor-template-text' ).text() );
+					var model = new $.wikiEditor.modules.templateEditor.fn.model(
+						$template.children( '.wikiEditor-template-text' ).text()
+					);
 					$template.data( 'model' , model );
 					$template.children( '.wikiEditor-template-name' ).text( model.getName() );
 				}
@@ -476,7 +481,8 @@ fn: {
 				ranges[i].begin += adjustment;
 				if( typeof ranges[i].adjust != 'undefined' ) {
 					adjustment += ranges[i].adjust();
-					//note, adjust should be a function that has the information necessary to calculate the length of this 'segment'
+					// NOTE: adjust should be a function that has the information necessary to calculate the length of
+					// this 'segment'
 					delete ranges[i].adjust;
 				}
 				ranges[i].end += adjustment;
