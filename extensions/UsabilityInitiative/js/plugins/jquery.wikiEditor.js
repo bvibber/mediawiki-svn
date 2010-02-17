@@ -124,10 +124,10 @@ $.wikiEditor = {
 	/**
 	 * Checks if a module has a specific requirement
 	 */
-	'isRequired': function( module, req ) {
+	'isRequired': function( module, reqirement ) {
 		if ( typeof $.wikiEditor.modules[module]['req'] !== 'undefined' ) {
 			for ( req in $.wikiEditor.modules[module]['req'] ) {
-				if ( $.wikiEditor.modules[module]['req'][req] == 'iframe' ) {
+				if ( $.wikiEditor.modules[module]['req'][req] == reqirement ) {
 					return true;
 				}
 			}
