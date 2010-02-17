@@ -115,7 +115,7 @@ evt: {
 				start: tokenArray[i].tokenStart,
 				end: tokenArray[i].offset,
 				type: 'toc',
-				anchor: 'before',
+				anchor: 'tag',
 				splitPs: false,
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
@@ -133,8 +133,8 @@ evt: {
 					}
 				},
 				getAnchor: function( ca1, ca2 ) {
-					return $( ca1.parentNode.previousSibling ).is( '.wikiEditor-toc-header' ) ?
-						ca1.parentNode.previousSibling : null;
+					return $( ca1.parentNode ).is( '.wikiEditor-toc-header' ) ?
+						ca1.parentNode : null;
 				}
 			} );
 			hash += tokenArray[i].match[2] + '\n';
