@@ -195,8 +195,9 @@ settings[] = wgCentralAuthDryRun: bool, wgCentralAuthCookies: bool
 settings[] = wgCentralAuthCookieDomain: text, wgCentralAuthCookiePrefix: text
 settings[] = wgCentralAuthAutoLoginWikis: array, wgCentralAuthLoginIcon: text
 settings[] = wgCentralAuthCreateOnView: bool, wgCentralAuthUDPAddress: text,
-settings[] = wgCentralAuthNew2UDPPrefix: text
-array[] = wgCentralAuthAutoLoginWikis: assoc
+settings[] = wgCentralAuthNew2UDPPrefix: text, wgCentralAuthLockedCanEdit: array
+settings[] = wgCentralAuthWikisPerSuppressJob: int
+array[] = wgCentralAuthAutoLoginWikis: assoc, wgCentralAuthLockedCanEdit: simple
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CentralAuth
 
@@ -273,7 +274,8 @@ settings[] = wgSubversionProxy: text, wgSubversionProxyTimeout: int
 settings[] = wgSubversionUser: text, wgSubversionPassword: text
 settings[] = wgCodeReviewImportBatchSize: int, wgWikiSVN: text
 settings[] = wgCodeReviewSharedSecret: text, wgSubversionOptions: text
-empty[] = wgCodeReviewSharedSecret: false
+settings[] = wgCodeReviewCommentWatcher: text, wgCodeReviewMaxDiffSize: int
+empty[] = wgCodeReviewSharedSecret: false, wgCodeReviewCommentWatcher: false
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CodeReview
 
@@ -452,7 +454,13 @@ url = http://www.mediawiki.org/wiki/Extension:ExpandTemplates
 ExternalData
 settings[] = edgStringReplacements: array, edgCacheExpireTime: int
 settings[] = edgCacheTable: text, edgAllowSSL: bool
+settings[] = edgDBName: array, edgDBUser: array
+settings[] = edgDBPass: array, edgDBServer: array
+settings[] = edgDBServerType: array
 array[] = edgStringReplacements: assoc
+settings[] = edgDBName: assoc, edgDBUser: assoc
+settings[] = edgDBPass: assoc, edgDBServer: assoc
+settings[] = edgDBServerType: assoc
 empty[] = edgCacheTable: null
 url = http://www.mediawiki.org/wiki/Extension:External_Data
 
@@ -476,6 +484,7 @@ settings[] = wgFlaggedRevsComments: bool
 settings[] = wgFlaggedRevsAutoReview: bool
 settings[] = wgFlaggedRevsAutoReviewNew: bool
 settings[] = wgUseCurrentTemplates: bool
+settings[] = wgFlaggedRevsHandleIncludes: { 0: Current, 1: Freeze, 2: Stable }
 settings[] = wgUseCurrentImages: bool
 settings[] = wgFlaggedRevTags: array
 settings[] = wgFlagRestrictions: array
@@ -558,8 +567,7 @@ url = http://www.mediawiki.org/wiki/Extension:InspectCache
 
 intersection
 file = DynamicPageList.php
-settings[] = wgDLPminCategories: int, wgDLPmaxCategories: int
-settings[] = wgDLPMinResultCount: int, wgDLPMaxResultCount: int
+settings[] = wgDLPmaxCategories: int, wgDLPMaxResultCount: int
 settings[] = wgDLPAllowUnlimitedResults: bool, wgDLPAllowUnlimitedCategories: bool
 url = http://www.mediawiki.org/wiki/Extension:Intersection
 
@@ -590,11 +598,8 @@ file = SpecialNuke.php
 url = http://www.mediawiki.org/wiki/Extension:Nuke
 
 OggHandler
-settings[] = wgPlayerStatsCollection: bool, wgFFmpegLocation: text
-settings[] = wgEnableTemporalOggUrls: bool, wgCortadoJarFile: text
-settings[] = wgJs2VideoTagOut: bool, wgEnableIframeEmbed: bool,
+settings[] = wgFFmpegLocation: text, wgCortadoJarFile: text
 settings[] = wgOggAudioTypes: array, wgOggVideoTypes: array
-settings[] = wgOggThumbLocation: text, wgffmpeg2theoraPath: text
 array[] = wgOggAudioTypes: simple, wgOggVideoTypes: simple
 url = http://www.mediawiki.org/wiki/Extension:OggHandler
 
@@ -607,15 +612,16 @@ file = OpenID.setup.php
 settings[] = wgHideOpenIDLoginLink: bool, wgOpenIDLoginLogoUrl: text
 settings[] = wgOpenIDShowUrlOnUserPage: { always: Always, user: User choice, never: Never }
 settings[] = wgOpenIDServerForceAllowTrust: array, wgOpenIDServerStoreType: text
-settings[] = wgOpenIDServerStorePath: text, wgTrustRoot: text
-settings[] = wgOpenIDConsumerDenyByDefault: bool, wgOpenIDConsumerAllow: array
-settings[] = wgOpenIDConsumerDeny: array, wgOpenIDConsumerStoreType: text
-settings[] = wgOpenIDConsumerStorePath: text, wgOpenIDCookieExpiration: int
-settings[] = wgOpenIDOnly: bool, wgOpenIDClientOnly: bool
-settings[] = wgOpenIDShowProviderIcons: bool
+settings[] = wgOpenIDTrustEmailAddress: bool, wgOpenIDServerStorePath: text
+settings[] = wgTrustRoot: text, wgOpenIDConsumerDenyByDefault: bool
+settings[] = wgOpenIDConsumerAllow: array, wgOpenIDConsumerDeny: array
+settings[] = wgOpenIDConsumerForce: text, wgOpenIDUseEmailAsNickname: bool,
+settings[] = wgOpenIDConsumerStoreType: text, wgOpenIDConsumerStorePath: text
+settings[] = wgOpenIDCookieExpiration: int, wgOpenIDOnly: bool
+settings[] = wgOpenIDClientOnly: bool, wgOpenIDShowProviderIcons: bool
 array[] = wgOpenIDServerForceAllowTrust: simple, wgOpenIDConsumerAllow: simple
 array[] = wgOpenIDConsumerDeny: simple
-empty[] = wgTrustRoot: null
+empty[] = wgTrustRoot: null, wgOpenIDConsumerForce: null
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:OpenID
 
@@ -699,6 +705,7 @@ settings[] = sfgListSeparator: text
 settings[] = sfgYUIBase: text
 settings[] = sfgUseFormEditPage: bool
 settings[] = sfg24HourTime: bool
+settings[] = sfgCacheFormDefinitions: bool
 extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Forms
 
@@ -834,14 +841,16 @@ settings[] = wgTranslateEC: array, wgTranslateCC: array, wgTranslateTasks: array
 settings[] = wgTranslatePHPlot: text, wgTranslatePHPlotFont: text
 settings[] = wgTranslateYamlLibrary: text
 settings[] = wgTranslateGroupRoot: text, wgTranslateGroupFiles: array
-settings[] = wgTranslateTM: array
+settings[] = wgGoogleApiKey: text, wgTranslateTM: array
+settings[] = wgTranslateApertium: text
 array[] = wgTranslateLanguageFallbacks: assoc, wgTranslateBlacklist: array
 array[] = wgTranslateMessageNamespaces: ns-simple, wgTranslateAuthorBlacklist: array
 array[] = wgTranslateAC: assoc, wgTranslateGroupStructure: array
 array[] = wgTranslateEC: simple, wgTranslateCC: assoc
 array[] = wgTranslateTasks: assoc, wgTranslateGroupFiles: simple
 array[] = wgTranslateTM: assoc
-empty[] = wgTranslateTM: false
+empty[] = wgTranslateTM: false, wgGoogleApiKey: false
+empty[] = wgTranslateApertium: false
 url = http://www.mediawiki.org/wiki/Extension:Translate
 
 Uniwiki - Authors

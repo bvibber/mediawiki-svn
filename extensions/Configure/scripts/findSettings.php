@@ -60,6 +60,7 @@ class FindSettings extends Maintenance {
 				'wgExtCategoryTests',
 				'wgCategoryTreeUseCategoryTable', 'wgCategoryTreeVersion',
 				'wgCategoryWatch',
+				'wgCentralAuthStyleVersion',
 				'wgCheckUserStyleVersion',
 				'wgCaptcha', 'wgConfirmEditIP',
 				'wgCitationCache', 'wgCitationCounter', 'wgCitationRunning',
