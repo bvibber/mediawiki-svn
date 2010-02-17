@@ -170,6 +170,7 @@ class WWImages extends WWWikis {
     }
 
     function queryTagsForImages($lang, $images, $tagTable) {
+	if (!$images) return false;
 
 	$sql = "/* queryTagsForImages(" . $this->quote($lang) . ", " . $this->quoteSet($images) . ") */ ";
 
@@ -182,7 +183,9 @@ class WWImages extends WWWikis {
     }
 
     function getTagsForImages($lang, $images, $tagTable) {
-	$rs = $this->queryTagsForImage($lang, $images, $tagTable);
+	if (!$images) return array();
+
+	$rs = $this->queryTagsForImages($lang, $images, $tagTable);
 	$list = WWUtils::slurpAssoc($rs, "image", "tags");
 	mysql_free_result($rs);
 	return $list;
@@ -401,10 +404,10 @@ class WWImages extends WWWikis {
 			$img[] = $image['name'];
 		}
 
-		$tagMap = $this->getTagsForImages('commons', $images, $wwTagsTable);
+		$tagMap = $this->getTagsForImages('commons', $img, $wwTagsTable);
 		foreach ($tagMap as $image => $tags) {
 			if ($tags) {
-				if (is_string($tags)) preg_split('/\s*[|;]\s*/', $tags);
+				if (is_string($tags)) $tags = preg_split('/\s*[|;]\s*/', $tags);
 				$images->addTags($image, $tags, "");
 			}
 		}

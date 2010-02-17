@@ -42,6 +42,9 @@ class WWUtils {
     }
 
     function quote($s) {
+	if (is_array($s)) throw new Exception("can't quote arrays, use quoteSet() instead.");
+	if (is_null($s)) return "NULL";
+
 	return '"' . mysql_real_escape_string($s) . '"';
     }
 
