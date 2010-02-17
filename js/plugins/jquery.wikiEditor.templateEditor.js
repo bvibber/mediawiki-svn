@@ -20,6 +20,10 @@
 	}
 },
 /**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
+/**
  * Event handlers
  */
 evt: {

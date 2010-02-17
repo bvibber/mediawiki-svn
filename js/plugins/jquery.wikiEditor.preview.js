@@ -2,6 +2,25 @@
 ( function( $ ) { $.wikiEditor.modules.preview = {
 
 /**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	}
+},
+/**
  * Internally used functions
  */
 fn: {

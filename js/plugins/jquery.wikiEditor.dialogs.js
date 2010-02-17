@@ -31,6 +31,10 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 	}
 },
 /**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
+/**
  * API accessible functions
  */
 api: {
