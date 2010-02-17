@@ -13,152 +13,139 @@ $aliases['en'] = array(
 	'Call' => array( 'Call' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
 $aliases['ar'] = array(
-	'Call' => array( 'استدعاء' ),
+	'Call'   => array( 'استدعاء' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
 $aliases['arz'] = array(
-	'Call' => array( 'استدعاء' ),
+	'Call'   => array( 'استدعاء' ),
 );
 
-/** Breton (Brezhoneg) */
 $aliases['br'] = array(
-	'Call' => array( 'Pellgomz' ),
+	'Call'   => array( 'Pellgomz' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'Call' => array( 'Poziv' ),
+	'Call'   => array( 'Poziv' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'Call' => array( 'Aufruf' ),
+	'Call'   => array( 'Aufruf' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'Call' => array( 'Zawołanje' ),
+	'Call'   => array( 'Zawołanje' ),
 );
 
-/** Greek (Ελληνικά) */
 $aliases['el'] = array(
-	'Call' => array( 'Κλήση' ),
+	'Call'   => array( 'Κλήση' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
+	'Call'   => array( 'Appeler', 'Appels', 'Appel' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'Call' => array( 'Apelar', 'Apèl', 'Apèls' ),
+	'Call'   => array( 'Apelar', 'Apèl', 'Apèls' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'Call' => array( 'Chamada' ),
+	'Call'   => array( 'Chamada' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'Call' => array( 'Lyt aa' ),
+	'Call'   => array( 'Lyt aa' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'Call' => array( 'Zawołanje' ),
+	'Call'   => array( 'Zawołanje' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'Call' => array( 'Hívás' ),
+	'Call'   => array( 'Hívás' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Call' => array( 'Appello' ),
+	'Call'   => array( 'Appello' ),
 );
 
-/** Japanese (日本語) */
+$aliases['id'] = array(
+	'Call'   => array( 'Panggil' ),
+);
+
 $aliases['ja'] = array(
-	'Call' => array( 'ページ呼び出し', 'ページの呼び出し' ),
+	'Call'   => array( 'ページ呼び出し', 'ページの呼び出し' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+$aliases['km'] = array(
+	'Call'   => array( 'ហៅ' ),
+);
+
 $aliases['ksh'] = array(
-	'Call' => array( 'Oproof' ),
+	'Call'   => array( 'Oproof' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Call' => array( 'Opruff' ),
+	'Call'   => array( 'Opruff' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Call' => array( 'Повик' ),
+	'Call'   => array( 'Повик' ),
 );
 
-/** Marathi (मराठी) */
+$aliases['ml'] = array(
+	'Call'   => array( 'വിളിക്കുക' ),
+);
+
 $aliases['mr'] = array(
-	'Call' => array( 'कॉल' ),
+	'Call'   => array( 'कॉल' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'Call' => array( 'Anroepen' ),
+	'Call'   => array( 'Anroepen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Call' => array( 'Aanroepen' ),
+	'Call'   => array( 'Aanroepen' ),
 );
 
-/** Occitan (Occitan) */
+$aliases['no'] = array(
+	'Call'   => array( 'Kall' ),
+);
+
 $aliases['oc'] = array(
-	'Call' => array( 'Ampèl', 'Ampèls', 'Apelar' ),
+	'Call'   => array( 'Ampèl', 'Ampèls', 'Apelar' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'Call' => array( 'आमन्त्र्' ),
+	'Call'   => array( 'आमन्त्र्' ),
 );
 
-/** Sinhala (සිංහල) */
 $aliases['si'] = array(
-	'Call' => array( 'ඇමතුම' ),
+	'Call'   => array( 'ඇමතුම' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'Call' => array( 'Volanie' ),
+	'Call'   => array( 'Volanie' ),
 );
 
-/** Albanian (Shqip) */
 $aliases['sq'] = array(
-	'Call' => array( 'Thirr' ),
+	'Call'   => array( 'Thirr' ),
 );
 
-/** Sundanese (Basa Sunda) */
 $aliases['su'] = array(
-	'Call' => array( 'Gero' ),
+	'Call'   => array( 'Gero' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'Call' => array( 'Tawagin' ),
+	'Call'   => array( 'Tawagin' ),
 );
 
-/** Veps (Vepsan kel') */
+$aliases['tr'] = array(
+	'Call'   => array( 'Çağrı' ),
+);
+
 $aliases['vep'] = array(
-	'Call' => array( 'SätaPagin' ),
+	'Call'   => array( 'SätaPagin' ),
 );
 

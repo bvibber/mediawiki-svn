@@ -12,43 +12,67 @@ $aliases['en'] = array(
 	'PrefStats' => array( 'PrefStats' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'PrefStats' => array( 'إحصاءات التفضيلات' ),
+	'PrefStats'   => array( 'إحصاءات_التفضيلات' ),
 );
 
-/** Hebrew (עברית) */
+$aliases['arz'] = array(
+	'PrefStats'   => array( 'إحصاءات_التفضيلات' ),
+);
+
+$aliases['bg'] = array(
+	'PrefStats'   => array( 'Статистики за настройките' ),
+);
+
+$aliases['et'] = array(
+	'PrefStats'   => array( 'Eelistuste_arvandmed' ),
+);
+
 $aliases['he'] = array(
-	'PrefStats' => array( 'סטטיסטיקת_העדפות' ),
+	'PrefStats'   => array( 'סטטיסטיקת_העדפות' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
+$aliases['ia'] = array(
+	'PrefStats'   => array( 'Statisticas de preferentias' ),
+);
+
 $aliases['id'] = array(
-	'PrefStats' => array( 'Statistik preferensi', 'StatistikPreferensi' ),
+	'PrefStats'   => array( 'Statistik preferensi', 'StatistikPreferensi' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'PrefStats' => array( '設定統計' ),
+	'PrefStats'   => array( '設定統計' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'PrefStats' => array( 'StatistikeFörEnstellunge', 'StatistikeFörEnshtellunge', 'EnstellungStatistike', 'EnstellungStatistik' ),
+	'PrefStats'   => array( 'StatistikeFörEnstellunge', 'StatistikeFörEnshtellunge', 'EnstellungStatistike', 'EnstellungStatistik' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'PrefStats' => array( 'Statistike vun den Astellungen' ),
+	'PrefStats'   => array( 'Statistike vun den Astellungen' ),
 );
 
-/** Dutch (Nederlands) */
+$aliases['mr'] = array(
+	'PrefStats'   => array( 'प्राथम्यसांख्यिकी' ),
+);
+
+$aliases['nds-nl'] = array(
+	'PrefStats'   => array( 'Veurkeurenstaotestieken' ),
+);
+
 $aliases['nl'] = array(
-	'PrefStats' => array( 'Voorkeurenstatistieken' ),
+	'PrefStats'   => array( 'Voorkeurenstatistieken' ),
 );
 
-/** Slovak (Slovenčina) */
+$aliases['no'] = array(
+	'PrefStats'   => array( 'Innstillingsstatistikk' ),
+);
+
+$aliases['pt'] = array(
+	'PrefStats'   => array( 'Estatísticas de preferências' ),
+);
+
 $aliases['sk'] = array(
-	'PrefStats' => array( 'ŠtatistikyNastavení' ),
+	'PrefStats'   => array( 'ŠtatistikyNastavení' ),
 );
 

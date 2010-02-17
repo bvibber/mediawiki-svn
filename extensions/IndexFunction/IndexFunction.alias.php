@@ -13,13 +13,79 @@ $aliases['en'] = array(
 	'Index' => array( 'Index' ),
 );
 
-/** Japanese (日本語) */
-$aliases['ja'] = array(
-	'Index' => array( '索引' ),
+$aliases['af'] = array(
+	'Index'   => array( 'Indeks' ),
 );
 
-/** Cornish (Kernewek) */
+$aliases['ar'] = array(
+	'Index'   => array( 'فهرس' ),
+);
+
+$aliases['arc'] = array(
+	'Index'   => array( 'ܡܚܘܝܢܐ' ),
+);
+
+$aliases['arz'] = array(
+	'Index'   => array( 'فهرس' ),
+);
+
+$aliases['br'] = array(
+	'Index'   => array( 'Meneger' ),
+);
+
+$aliases['bs'] = array(
+	'Index'   => array( 'Indeks' ),
+);
+
+$aliases['frp'] = array(
+	'Index'   => array( 'Endèxe' ),
+);
+
+$aliases['ia'] = array(
+	'Index'   => array( 'Indice' ),
+);
+
+$aliases['id'] = array(
+	'Index'   => array( 'Indeks' ),
+);
+
+$aliases['ja'] = array(
+	'Index'   => array( '索引' ),
+);
+
 $aliases['kw'] = array(
-	'Index' => array( 'Menegva' ),
+	'Index'   => array( 'Menegva' ),
+);
+
+$aliases['mk'] = array(
+	'Index'   => array( 'Индекс' ),
+);
+
+$aliases['ml'] = array(
+	'Index'   => array( 'സൂചിക' ),
+);
+
+$aliases['mr'] = array(
+	'Index'   => array( 'सूची' ),
+);
+
+$aliases['no'] = array(
+	'Index'   => array( 'Indeks' ),
+);
+
+$aliases['pl'] = array(
+	'Index'   => array( 'Indeks' ),
+);
+
+$aliases['pt'] = array(
+	'Index'   => array( 'Índice' ),
+);
+
+$aliases['sl'] = array(
+	'Index'   => array( 'Kazalo' ),
+);
+
+$aliases['tr'] = array(
+	'Index'   => array( 'Dizin', 'Endeks' ),
 );
 

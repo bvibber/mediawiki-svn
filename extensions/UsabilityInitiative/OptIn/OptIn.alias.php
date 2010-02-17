@@ -10,38 +10,71 @@ $aliases['en'] = array(
 	'OptIn' => array( 'UsabilityInitiativeOptIn' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'OptIn' => array( 'اشتراك مبادرة الاستخدام' ),
+	'OptIn'   => array( 'اشتراك_مبادرة_الاستخدام' ),
 );
 
-/** Hebrew (עברית) */
+$aliases['arz'] = array(
+	'OptIn'   => array( 'اشتراك_مبادرة_الاستخدام' ),
+);
+
 $aliases['he'] = array(
-	'OptIn' => array( 'הרשמה_ליוזמת_השימושיות' ),
+	'OptIn'   => array( 'הרשמה_ליוזמת_השימושיות' ),
 );
 
-/** Japanese (日本語) */
+$aliases['ia'] = array(
+	'OptIn'   => array( 'Activar initiativa de usabilitate' ),
+);
+
+$aliases['id'] = array(
+	'OptIn'   => array( 'Ikut inisiatif kebergunaan', 'IkutInisiatifKebergunaan' ),
+);
+
+$aliases['it'] = array(
+	'OptIn'   => array( 'AdesioneProgettoUsabilità' ),
+);
+
 $aliases['ja'] = array(
-	'OptIn' => array( 'ユーザビリティー改善参加' ),
+	'OptIn'   => array( 'ユーザビリティー改善参加' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'OptIn' => array( 'Benotzerfrëndlechkeetsinitiative matmaachen' ),
+	'OptIn'   => array( 'Benotzerfrëndlechkeetsinitiative matmaachen' ),
 );
 
-/** Dutch (Nederlands) */
+$aliases['mr'] = array(
+	'OptIn'   => array( 'उपयोगक्षमतापुढाकारनिवडा' ),
+);
+
+$aliases['nds-nl'] = array(
+	'OptIn'   => array( 'Bruukbaorheidsinititiatief_anzetten' ),
+);
+
 $aliases['nl'] = array(
-	'OptIn' => array( 'BruikbaarheidsinitiatiefOptin' ),
+	'OptIn'   => array( 'BruikbaarheidsinitiatiefOptin' ),
 );
 
-/** Polish (Polski) */
+$aliases['no'] = array(
+	'OptIn'   => array( 'Deltagelse i brukervennlighetsprosjektet' ),
+);
+
 $aliases['pl'] = array(
-	'OptIn' => array( 'Włączenie Inicjatywy Użyteczności' ),
+	'OptIn'   => array( 'Włączenie Inicjatywy Użyteczności' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'OptIn' => array( 'PrihlásenieDoIniciatívyPoužiteľnosti' ),
+	'OptIn'   => array( 'PrihlásenieDoIniciatívyPoužiteľnosti' ),
+);
+
+$aliases['tr'] = array(
+	'OptIn'   => array( 'KullanılabilirlikGirişimiOnayı' ),
+);
+
+$aliases['zh-hans'] = array(
+	'OptIn'   => array( '试用测试版' ),
+);
+
+$aliases['zh-hant'] = array(
+	'OptIn'   => array( '試用測試版' ),
 );
 

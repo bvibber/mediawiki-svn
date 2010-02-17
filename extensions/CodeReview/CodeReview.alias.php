@@ -15,176 +15,172 @@ $aliases['en'] = array(
 	'RepoAdmin' => array( 'RepoAdmin' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
 $aliases['ar'] = array(
-	'Code' => array( 'كود', 'مراجعة_الكود' ),
-	'RepoAdmin' => array( 'إدارة_المستودع' ),
+	'Code'        => array( 'كود', 'مراجعة_الكود' ),
+	'RepoAdmin'   => array( 'إدارة_المستودع' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
 $aliases['arz'] = array(
-	'Code' => array( 'كود', 'مراجعة_الكود' ),
-	'RepoAdmin' => array( 'إدارة_المستودع' ),
+	'Code'        => array( 'كود', 'مراجعة_الكود' ),
+	'RepoAdmin'   => array( 'إدارة_المستودع' ),
 );
 
-/** Breton (Brezhoneg) */
 $aliases['br'] = array(
-	'Code' => array( 'Kod' ),
+	'Code'        => array( 'Kod' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'Code' => array( 'Kod', 'PregledKoda' ),
-	'RepoAdmin' => array( 'RepoAdministracija' ),
+	'Code'        => array( 'Kod', 'PregledKoda' ),
+	'RepoAdmin'   => array( 'RepoAdministracija' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'Code' => array( 'Quelltext' ),
+	'Code'        => array( 'Quelltext' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'Code' => array( 'Žrědłowy tekst' ),
+	'Code'        => array( 'Žrědłowy tekst' ),
 );
 
-/** Basque (Euskara) */
 $aliases['eu'] = array(
-	'Code' => array( 'Kodea' ),
+	'Code'        => array( 'Kodea' ),
 );
 
-/** Galician (Galego) */
+$aliases['fa'] = array(
+	'Code'        => array( 'کد' ),
+	'RepoAdmin'   => array( 'مدیر_مخزن' ),
+);
+
 $aliases['gl'] = array(
-	'Code' => array( 'Código' ),
+	'Code'        => array( 'Código' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'Code' => array( 'Quälltäxt' ),
+	'Code'        => array( 'Quälltäxt' ),
 );
 
-/** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
-	'Code' => array( 'સંજ્ઞા', 'સંજ્ઞાપરીક્ષણ' ),
+	'Code'        => array( 'સંજ્ઞા', 'સંજ્ઞાપરીક્ષણ' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'Code' => array( 'Kod' ),
-	'RepoAdmin' => array( 'Admin_repozitorija' ),
+	'Code'        => array( 'Kod' ),
+	'RepoAdmin'   => array( 'Admin_repozitorija' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'Code' => array( 'Žórłowy tekst' ),
+	'Code'        => array( 'Žórłowy tekst' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'Code' => array( 'Kód' ),
+	'Code'        => array( 'Kód' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Code' => array( 'Codice', 'Recension de codice' ),
-	'RepoAdmin' => array( 'Admin repo' ),
+	'Code'        => array( 'Codice', 'Recension de codice' ),
+	'RepoAdmin'   => array( 'Admin deposito' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Code' => array( 'Kode', 'Tinjauan kode', 'TinjauanKode' ),
+	'Code'        => array( 'Kode', 'Tinjauan kode', 'TinjauanKode' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Code' => array( 'コード', 'コードレビュー' ),
-	'RepoAdmin' => array( 'リポジトリ管理' ),
+	'Code'        => array( 'コード', 'コードレビュー' ),
+	'RepoAdmin'   => array( 'リポジトリ管理' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'Code' => array( 'កូដ' ),
+	'Code'        => array( 'កូដ' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'Code' => array( '코드검토' ),
-	'RepoAdmin' => array( '저장소관리' ),
+	'Code'        => array( '코드검토' ),
+	'RepoAdmin'   => array( '저장소관리' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'Code' => array( 'Quelltäx' ),
-	'RepoAdmin' => array( 'Repositorijum Verwallde', 'Repusitorijum Verwallde' ),
+	'Code'        => array( 'Quelltäx' ),
+	'RepoAdmin'   => array( 'Repositorijum Verwallde', 'Repusitorijum Verwallde' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Code' => array( 'Quelltext' ),
+	'Code'        => array( 'Quelltext' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Code' => array( 'ПрограмскиКод', 'Код', 'ПрегледНаКод' ),
+	'Code'        => array( 'ПрограмскиКод', 'Код', 'ПрегледНаКод' ),
 );
 
-/** Maltese (Malti) */
+$aliases['ml'] = array(
+	'Code'        => array( 'മൂലരൂപം', 'മൂലരൂപസംശോധനം' ),
+	'RepoAdmin'   => array( 'റെപ്പോകാര്യനിർവാഹകൻ' ),
+);
+
+$aliases['mr'] = array(
+	'RepoAdmin'   => array( 'रेपोप्रचालक' ),
+);
+
 $aliases['mt'] = array(
-	'Code' => array( 'Kodiċi' ),
+	'Code'        => array( 'Kodiċi' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Code' => array( 'Codecontrole' ),
-	'RepoAdmin' => array( 'Repobeheer' ),
+	'Code'        => array( 'Codecontrole' ),
+	'RepoAdmin'   => array( 'Repobeheer' ),
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $aliases['nn'] = array(
-	'Code' => array( 'Kode' ),
+	'Code'        => array( 'Kode' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Code' => array( 'Kode' ),
+	'Code'        => array( 'Kode' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'Code' => array( 'Kod' ),
-	'RepoAdmin' => array( 'Administrowanie repozytorium' ),
+	'Code'        => array( 'Kod' ),
+	'RepoAdmin'   => array( 'Administrowanie repozytorium' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'Code' => array( 'संकूटसङ्केतावलोकन' ),
-	'RepoAdmin' => array( 'रेपोप्रचालक' ),
+	'Code'        => array( 'संकूटसङ्केतावलोकन' ),
+	'RepoAdmin'   => array( 'रेपोप्रचालक' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'Code' => array( 'Kód', 'KontrolaKódu' ),
-	'RepoAdmin' => array( 'SprávcaÚložiska' ),
+	'Code'        => array( 'Kód', 'KontrolaKódu' ),
+	'RepoAdmin'   => array( 'SprávcaÚložiska' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'Code' => array( 'Kodi', 'Onyesha kodi' ),
-	'RepoAdmin' => array( 'TaarifuMkabidhi' ),
+	'Code'        => array( 'Kodi', 'Onyesha kodi' ),
+	'RepoAdmin'   => array( 'TaarifuMkabidhi' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'Code' => array( 'Kodigo', 'Pagsusuri ng kodigo' ),
-	'RepoAdmin' => array( 'Tagapangasiwa ng repositoryo' ),
+	'Code'        => array( 'Kodigo', 'Pagsusuri ng kodigo' ),
+	'RepoAdmin'   => array( 'Tagapangasiwa ng repositoryo' ),
 );
 
-/** Veps (Vepsan kel') */
+$aliases['tr'] = array(
+	'Code'        => array( 'Kod' ),
+	'RepoAdmin'   => array( 'RepoHizmetli' ),
+);
+
+$aliases['vec'] = array(
+	'Code'        => array( 'Còdese' ),
+);
+
 $aliases['vep'] = array(
-	'Code' => array( 'Kod' ),
+	'Code'        => array( 'Kod' ),
+);
+
+$aliases['zh-hans'] = array(
+	'Code'        => array( '代码' ),
+);
+
+$aliases['zh-hant'] = array(
+	'Code'        => array( '代碼' ),
 );
 

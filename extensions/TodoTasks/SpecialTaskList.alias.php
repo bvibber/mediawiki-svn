@@ -11,144 +11,141 @@ $aliases['en'] = array(
 	'TaskListByProject' => array( 'TaskListByProject' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
+$aliases['af'] = array(
+	'TaskList'            => array( 'TaakLys' ),
+	'TaskListByProject'   => array( 'TaakLysPerProjek' ),
+);
+
 $aliases['ar'] = array(
-	'TaskList' => array( 'قائمة_المهام' ),
-	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),
+	'TaskList'            => array( 'قائمة_المهام' ),
+	'TaskListByProject'   => array( 'قائمة_المهام_حسب_المشروع' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
 $aliases['arz'] = array(
-	'TaskList' => array( 'قائمة_المهام' ),
-	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),
+	'TaskList'            => array( 'قائمة_المهام' ),
+	'TaskListByProject'   => array( 'قائمة_المهام_حسب_المشروع' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'TaskList' => array( 'Aufgabenliste' ),
-	'TaskListByProject' => array( 'Aufgabenliste pro Projekt' ),
+	'TaskList'            => array( 'Aufgabenliste' ),
+	'TaskListByProject'   => array( 'Aufgabenliste pro Projekt' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'TaskList' => array( 'Lisćina nadawkow' ),
-	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
+	'TaskList'            => array( 'Lisćina nadawkow' ),
+	'TaskListByProject'   => array( 'Lisćina nadawkow na projekt' ),
 );
 
-/** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'TaskList' => array( 'Tehtävälista' ),
-	'TaskListByProject' => array( 'Projektin tehtävälista' ),
+	'TaskList'            => array( 'Tehtävälista' ),
+	'TaskListByProject'   => array( 'Projektin tehtävälista' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'TaskList' => array( 'Liste des tâches', 'ListeTâches' ),
-	'TaskListByProject' => array( 'Liste des tâches par projet', 'ListeTâchesParProjet' ),
+	'TaskList'            => array( 'Liste des tâches', 'ListeTâches' ),
+	'TaskListByProject'   => array( 'Liste des tâches par projet', 'ListeTâchesParProjet' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'TaskList' => array( 'Lista de tâches', 'ListaDeTâches' ),
-	'TaskListByProject' => array( 'Lista de tâches per projèt', 'ListaDeTâchesPerProjèt' ),
+	'TaskList'            => array( 'Lista de travâlys', 'ListaDeTravâlys' ),
+	'TaskListByProject'   => array( 'Lista de travâlys per projèt', 'ListaDeTravâlysPerProjèt' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'TaskList' => array( 'Ufgabelischt' ),
-	'TaskListByProject' => array( 'Ufgabelischt pro Projäkt' ),
+	'TaskList'            => array( 'Ufgabelischt' ),
+	'TaskListByProject'   => array( 'Ufgabelischt pro Projäkt' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'TaskList' => array( 'Lisćina nadawkow' ),
-	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
+	'TaskList'            => array( 'Lisćina nadawkow' ),
+	'TaskListByProject'   => array( 'Lisćina nadawkow na projekt' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'TaskList' => array( 'Lista de cargas' ),
-	'TaskListByProject' => array( 'Lista de cargas per projecto' ),
+	'TaskList'            => array( 'Lista de cargas' ),
+	'TaskListByProject'   => array( 'Lista de cargas per projecto' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'TaskList' => array( 'Daftar tugas', 'DaftarTugas' ),
-	'TaskListByProject' => array( 'Daftar tugas menurut proyek', 'DaftarTugasMenurutProyek' ),
+	'TaskList'            => array( 'Daftar tugas', 'DaftarTugas' ),
+	'TaskListByProject'   => array( 'Daftar tugas menurut proyek', 'DaftarTugasMenurutProyek' ),
 );
 
-/** Japanese (日本語) */
+$aliases['it'] = array(
+	'TaskList'            => array( 'ElencoCompiti' ),
+	'TaskListByProject'   => array( 'ElencoCompitiPerProgetto' ),
+);
+
 $aliases['ja'] = array(
-	'TaskList' => array( '課題リスト', 'タスクリスト' ),
-	'TaskListByProject' => array( 'プロジェクト別課題リスト', 'プロジェクトのタスクリスト' ),
+	'TaskList'            => array( '課題リスト', 'タスクリスト' ),
+	'TaskListByProject'   => array( 'プロジェクト別課題リスト', 'プロジェクトのタスクリスト' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'TaskList' => array( 'បញ្ជីភារកិច្ច' ),
+	'TaskList'            => array( 'បញ្ជីភារកិច្ច' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+$aliases['ko'] = array(
+	'TaskList'            => array( '작업 목록' ),
+);
+
 $aliases['ksh'] = array(
-	'TaskList' => array( 'Aufjabeless', 'Aufjabeleß' ),
-	'TaskListByProject' => array( 'Aufjabeless pro Projäk', 'Aufjabeleß pro Projäk' ),
+	'TaskList'            => array( 'Aufjabeless', 'Aufjabeleß' ),
+	'TaskListByProject'   => array( 'Aufjabeless pro Projäk', 'Aufjabeleß pro Projäk' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'TaskList' => array( 'Lëscht vun den Aufgaben' ),
-	'TaskListByProject' => array( 'Lëscht vun den Aufgaben pro Projet' ),
+	'TaskList'            => array( 'Lëscht vun den Aufgaben' ),
+	'TaskListByProject'   => array( 'Lëscht vun den Aufgabe pro Projet' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'TaskList' => array( 'ЛистаНаЗадачи' ),
-	'TaskListByProject' => array( 'ЛистаНаЗадачиПоПроекти' ),
+	'TaskList'            => array( 'ЛистаНаЗадачи' ),
+	'TaskListByProject'   => array( 'ЛистаНаЗадачиПоПроект' ),
 );
 
-/** Marathi (मराठी) */
+$aliases['ml'] = array(
+	'TaskList'            => array( 'ചെയ്യേണ്ടവ' ),
+	'TaskListByProject'   => array( 'പദ്ധതിയുടെക്രമത്തിൽചെയ്യേണ്ടവ' ),
+);
+
 $aliases['mr'] = array(
-	'TaskList' => array( 'कार्यसुची' ),
-	'TaskListByProject' => array( 'प्रकल्पान्वयेकार्यसुची' ),
+	'TaskList'            => array( 'कार्यसुची' ),
+	'TaskListByProject'   => array( 'प्रकल्पान्वयेकार्यसुची' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'TaskList' => array( 'Takenlieste' ),
-	'TaskListByProject' => array( 'Takenlieste_per_prejek' ),
+	'TaskList'            => array( 'Takenlieste' ),
+	'TaskListByProject'   => array( 'Takenlieste_per_prejek' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'TaskList' => array( 'Takenlijst' ),
-	'TaskListByProject' => array( 'TakenlijstPerProject' ),
+	'TaskList'            => array( 'Takenlijst' ),
+	'TaskListByProject'   => array( 'TakenlijstPerProject' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'TaskList' => array( 'Oppgaveliste' ),
-	'TaskListByProject' => array( 'Oppgaveliste per prosjekt' ),
+	'TaskList'            => array( 'Oppgaveliste' ),
+	'TaskListByProject'   => array( 'Oppgaveliste per prosjekt' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'TaskList' => array( 'कार्यसूची' ),
-	'TaskListByProject' => array( 'प्रकल्पकार्यसूची' ),
+	'TaskList'            => array( 'कार्यसूची' ),
+	'TaskListByProject'   => array( 'प्रकल्पकार्यसूची' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'TaskList' => array( 'ZoznamÚloh' ),
-	'TaskListByProject' => array( 'ZoznamÚlohPodľaProjektu' ),
+	'TaskList'            => array( 'ZoznamÚloh' ),
+	'TaskListByProject'   => array( 'ZoznamÚlohPodľaProjektu' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'TaskList' => array( 'Talaan ng gawain' ),
-	'TaskListByProject' => array( 'Talaan ng gawain ayon sa proyekto' ),
+	'TaskList'            => array( 'Talaan ng gawain' ),
+	'TaskListByProject'   => array( 'Talaan ng gawain ayon sa proyekto' ),
+);
+
+$aliases['tr'] = array(
+	'TaskList'            => array( 'GörevListesi' ),
+	'TaskListByProject'   => array( 'ProjeyeGöreGörevListesi' ),
 );
 

@@ -14,13 +14,19 @@ $aliases['en'] = array(
 	'Plotters' => array( 'Plotters' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'Plotters' => array( 'طابعات' ),
+	'Plotters'   => array( 'طابعات' ),
 );
 
-/** Japanese (日本語) */
+$aliases['arz'] = array(
+	'Plotters'   => array( 'طابعات' ),
+);
+
 $aliases['ja'] = array(
-	'Plotters' => array( 'プロッター' ),
+	'Plotters'   => array( 'プロッター' ),
+);
+
+$aliases['mk'] = array(
+	'Plotters'   => array( 'Цртачи' ),
 );
 

@@ -13,13 +13,67 @@ $aliases['en'] = array(
 	'WebChat' => array( 'WebChat' ),
 );
 
-/** Japanese (日本語) */
-$aliases['ja'] = array(
-	'WebChat' => array( 'ウェブチャット' ),
+$aliases['ar'] = array(
+	'WebChat'   => array( 'دردشة_الويب' ),
 );
 
-/** Dutch (Nederlands) */
+$aliases['arz'] = array(
+	'WebChat'   => array( 'دردشة_الويب' ),
+);
+
+$aliases['et'] = array(
+	'WebChat'   => array( 'Jututuba' ),
+);
+
+$aliases['ia'] = array(
+	'WebChat'   => array( 'Chat web' ),
+);
+
+$aliases['id'] = array(
+	'WebChat'   => array( 'Obrolan web', 'ObrolanWeb' ),
+);
+
+$aliases['ja'] = array(
+	'WebChat'   => array( 'ウェブチャット' ),
+);
+
+$aliases['ko'] = array(
+	'WebChat'   => array( '웹 채팅' ),
+);
+
+$aliases['lb'] = array(
+	'WebChat'   => array( 'Web-Chat' ),
+);
+
+$aliases['ml'] = array(
+	'WebChat'   => array( 'വെബ് ചാറ്റ്' ),
+);
+
+$aliases['mr'] = array(
+	'WebChat'   => array( 'वेबगप्पा' ),
+);
+
+$aliases['nds-nl'] = array(
+	'WebChat'   => array( 'Draodpraot' ),
+);
+
 $aliases['nl'] = array(
-	'WebChat' => array( 'Webchat' ),
+	'WebChat'   => array( 'Webchat' ),
+);
+
+$aliases['no'] = array(
+	'WebChat'   => array( 'Chat' ),
+);
+
+$aliases['pt'] = array(
+	'WebChat'   => array( 'Conversação' ),
+);
+
+$aliases['sl'] = array(
+	'WebChat'   => array( 'SpletnaKlepetalnica' ),
+);
+
+$aliases['tr'] = array(
+	'WebChat'   => array( 'WebSohbet' ),
 );
 

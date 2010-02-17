@@ -15,151 +15,127 @@ $aliases['en'] = array(
 	'DeleteBatch' => array( 'DeleteBatch' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
 $aliases['ar'] = array(
-	'DeleteBatch' => array( 'حذف_الباتش' ),
+	'DeleteBatch'   => array( 'حذف_الباتش' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
 $aliases['arz'] = array(
-	'DeleteBatch' => array( 'حذف_الباتش' ),
+	'DeleteBatch'   => array( 'حذف_الباتش' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'DeleteBatch' => array( 'BrisanjeBatch' ),
+	'DeleteBatch'   => array( 'BrisanjeBatch' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'DeleteBatch' => array( 'Stapel löschen' ),
+	'DeleteBatch'   => array( 'Stapel löschen' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'DeleteBatch' => array( 'Skład lašowaś' ),
+	'DeleteBatch'   => array( 'Skład lašowaś' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'DeleteBatch' => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),
+	'DeleteBatch'   => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'DeleteBatch' => array( 'Suprèssion en sèria', 'SuprèssionEnSèria' ),
+	'DeleteBatch'   => array( 'Suprèssion en sèria', 'SuprèssionEnSèria' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'DeleteBatch' => array( 'Borrar o conxunto' ),
+	'DeleteBatch'   => array( 'Borrar o conxunto' ),
 );
 
-/** Hebrew (עברית)
- * @author Rotem Liss
- */
 $aliases['he'] = array(
-	'DeleteBatch' => array( 'מחיקת_קבוצה' ),
+	'DeleteBatch'   => array( 'מחיקת_קבוצה' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'DeleteBatch' => array( 'Skupno_brisanje' ),
+	'DeleteBatch'   => array( 'Skupno_brisanje' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'DeleteBatch' => array( 'Stapl wušmórnyć' ),
+	'DeleteBatch'   => array( 'Stapl wušmórnyć' ),
 );
 
-/** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'DeleteBatch' => array( 'SiprimeLo' ),
+	'DeleteBatch'   => array( 'SiprimeLo' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'DeleteBatch' => array( 'Tömeges törlés' ),
+	'DeleteBatch'   => array( 'Tömeges törlés' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'DeleteBatch' => array( 'Deler in massa' ),
+	'DeleteBatch'   => array( 'Deler in lot' ),
 );
 
-/** Japanese (日本語) */
+$aliases['id'] = array(
+	'DeleteBatch'   => array( 'Hapus sekaligus', 'HapusSekaligus' ),
+);
+
 $aliases['ja'] = array(
-	'DeleteBatch' => array( '一括削除' ),
+	'DeleteBatch'   => array( '一括削除' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'DeleteBatch' => array( 'SiggePöngelFottschmiiße' ),
+	'DeleteBatch'   => array( 'SiggePöngelFottschmiiße' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'DeleteBatch' => array( 'Läsch-Batch' ),
+	'DeleteBatch'   => array( 'Läsch-Batch' ),
 );
 
-/** Marathi (मराठी) */
+$aliases['mk'] = array(
+	'DeleteBatch'   => array( 'ИзбришиГрупиранаПодатотека' ),
+);
+
 $aliases['mr'] = array(
-	'DeleteBatch' => array( 'बॅचवगळा' ),
+	'DeleteBatch'   => array( 'बॅचवगळा' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'DeleteBatch' => array( 'Paginareeks_vortdoon' ),
+	'DeleteBatch'   => array( 'Paginareeks_vortdoon' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'DeleteBatch' => array( 'PaginareeksVerwijderen' ),
+	'DeleteBatch'   => array( 'PaginareeksVerwijderen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
- * @author Jon Harald Søby
- */
 $aliases['no'] = array(
-	'DeleteBatch' => array( 'Slett en serie sider' ),
+	'DeleteBatch'   => array( 'Slett en serie sider' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'DeleteBatch' => array( 'Supression en seria', 'SupressionEnSeria' ),
+	'DeleteBatch'   => array( 'Supression en seria', 'SupressionEnSeria' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'DeleteBatch' => array( 'Apagar em massa' ),
+	'DeleteBatch'   => array( 'Apagar em massa' ),
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'DeleteBatch' => array( 'Apagar em massa' ),
+	'DeleteBatch'   => array( 'Apagar em massa' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'DeleteBatch' => array( 'गणपरित्याग' ),
+	'DeleteBatch'   => array( 'गणपरित्याग' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'DeleteBatch' => array( 'DávkovéMazanie' ),
+	'DeleteBatch'   => array( 'DávkovéMazanie' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'DeleteBatch' => array( 'FutaFungu' ),
+	'DeleteBatch'   => array( 'FutaFungu' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'DeleteBatch' => array( 'Burahin ang bungkos' ),
+	'DeleteBatch'   => array( 'Burahin ang bungkos' ),
+);
+
+$aliases['tr'] = array(
+	'DeleteBatch'   => array( 'TopluSil' ),
 );
 

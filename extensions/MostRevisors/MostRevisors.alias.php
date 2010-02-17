@@ -13,23 +13,47 @@ $aliases['en'] = array(
 	'MostRevisors' => array( 'MostRevisors' ),
 );
 
-/** Japanese (日本語) */
+$aliases['ar'] = array(
+	'MostRevisors'   => array( 'أكثر_المراجعين' ),
+);
+
+$aliases['arz'] = array(
+	'MostRevisors'   => array( 'أكثر_المراجعين' ),
+);
+
+$aliases['ia'] = array(
+	'MostRevisors'   => array( 'Le plus revisores' ),
+);
+
 $aliases['ja'] = array(
-	'MostRevisors' => array( '最も編集者の多いページ' ),
+	'MostRevisors'   => array( '最も編集者の多いページ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'MostRevisors' => array( 'MiehßteSchriiver' ),
+	'MostRevisors'   => array( 'MiehßteSchriiver' ),
 );
 
-/** Dutch (Nederlands) */
+$aliases['mk'] = array(
+	'MostRevisors'   => array( 'НајвеќеПрегледувачи' ),
+);
+
+$aliases['nds-nl'] = array(
+	'MostRevisors'   => array( 'Meeste_bewarkers' ),
+);
+
 $aliases['nl'] = array(
-	'MostRevisors' => array( 'MeesteBewerkers' ),
+	'MostRevisors'   => array( 'MeesteBewerkers' ),
 );
 
-/** Slovak (Slovenčina) */
+$aliases['no'] = array(
+	'MostRevisors'   => array( 'Flest bidragsytere' ),
+);
+
 $aliases['sk'] = array(
-	'MostRevisors' => array( 'NajviacKontrolórov' ),
+	'MostRevisors'   => array( 'NajviacKontrolórov' ),
+);
+
+$aliases['tr'] = array(
+	'MostRevisors'   => array( 'EnÇokİncelenilen' ),
 );
 

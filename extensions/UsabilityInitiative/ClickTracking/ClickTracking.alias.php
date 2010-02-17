@@ -12,3 +12,47 @@ $aliases['en'] = array(
 	'ClickTracking' => array( 'ClickTracking' ),
 );
 
+$aliases['ar'] = array(
+	'ClickTracking'   => array( 'تتبع_الضغط' ),
+);
+
+$aliases['arz'] = array(
+	'ClickTracking'   => array( 'تتبع_الضغطات' ),
+);
+
+$aliases['fa'] = array(
+	'ClickTracking'   => array( 'تعقیب_کلیک' ),
+);
+
+$aliases['ia'] = array(
+	'ClickTracking'   => array( 'Traciamento de clic' ),
+);
+
+$aliases['id'] = array(
+	'ClickTracking'   => array( 'Pelacakan klik', 'PelacakanKlik' ),
+);
+
+$aliases['ja'] = array(
+	'ClickTracking'   => array( 'クリック追跡' ),
+);
+
+$aliases['lb'] = array(
+	'ClickTracking'   => array( 'Opzeechne vun de Klicken' ),
+);
+
+$aliases['mr'] = array(
+	'ClickTracking'   => array( 'मागोवाटिचकवा' ),
+);
+
+$aliases['nl'] = array(
+	'ClickTracking'   => array( 'Klikvolgen' ),
+);
+
+$aliases['no'] = array(
+	'ClickTracking'   => array( 'Klikksporing' ),
+);
+
+$aliases['tr'] = array(
+	'ClickTracking'   => array( 'TıklamaTakibi' ),
+);
+

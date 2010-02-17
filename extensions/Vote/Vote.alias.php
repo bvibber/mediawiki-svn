@@ -10,232 +10,215 @@ $aliases['en'] = array(
 	'Vote' => array( 'Vote' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
+$aliases['af'] = array(
+	'Vote'   => array( 'Stem' ),
+);
+
 $aliases['ar'] = array(
-	'Vote' => array( 'تصويت' ),
+	'Vote'   => array( 'تصويت' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
 $aliases['arz'] = array(
-	'Vote' => array( 'تصويت' ),
+	'Vote'   => array( 'تصويت' ),
 );
 
-/** Assamese (অসমীয়া) */
 $aliases['as'] = array(
-	'Vote' => array( 'ভোট' ),
+	'Vote'   => array( 'ভোট' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'Vote' => array( 'Glasaj' ),
+	'Vote'   => array( 'Glasaj' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'Vote' => array( 'Abstimmen' ),
+	'Vote'   => array( 'Abstimmen' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'Vote' => array( 'Wótgłosowaś' ),
+	'Vote'   => array( 'Wótgłosowaś' ),
 );
 
-/** Divehi (ދިވެހިބަސް) */
 $aliases['dv'] = array(
-	'Vote' => array( 'ވޯޓް' ),
+	'Vote'   => array( 'ވޯޓް' ),
 );
 
-/** Greek (Ελληνικά) */
 $aliases['el'] = array(
-	'Vote' => array( 'Ψηφοφορία' ),
+	'Vote'   => array( 'Ψηφοφορία' ),
 );
 
-/** Spanish (Español) */
 $aliases['es'] = array(
-	'Vote' => array( 'Votar' ),
+	'Vote'   => array( 'Votar' ),
 );
 
-/** Persian (فارسی) */
 $aliases['fa'] = array(
-	'Vote' => array( 'رای_دادن' ),
+	'Vote'   => array( 'رای_دادن' ),
 );
 
-/** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'Vote' => array( 'Äänestys' ),
+	'Vote'   => array( 'Äänestys' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'Vote' => array( 'Voter' ),
+	'Vote'   => array( 'Voter' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'Vote' => array( 'Votar' ),
+	'Vote'   => array( 'Votar' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'Vote' => array( 'Votar' ),
+	'Vote'   => array( 'Votar' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'Vote' => array( 'Abstimme' ),
+	'Vote'   => array( 'Abstimme' ),
 );
 
-/** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
-	'Vote' => array( 'મત' ),
+	'Vote'   => array( 'મત' ),
 );
 
-/** Hawaiian (Hawai`i) */
 $aliases['haw'] = array(
-	'Vote' => array( 'Koho' ),
+	'Vote'   => array( 'Koho' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'Vote' => array( 'Wothłosować' ),
+	'Vote'   => array( 'Wothłosować' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'Vote' => array( 'Szavazás' ),
+	'Vote'   => array( 'Szavazás' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Vote' => array( 'Votar', 'Voto' ),
+	'Vote'   => array( 'Votar', 'Voto' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Vote' => array( 'Voting', 'Beri suara', 'BeriSuara' ),
+	'Vote'   => array( 'Voting', 'Beri suara', 'BeriSuara' ),
 );
 
-/** Japanese (日本語) */
+$aliases['it'] = array(
+	'Vote'   => array( 'Vota' ),
+);
+
 $aliases['ja'] = array(
-	'Vote' => array( '投票' ),
+	'Vote'   => array( '投票' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'Vote' => array( 'បោះឆ្នោត' ),
+	'Vote'   => array( 'បោះឆ្នោត' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+$aliases['ko'] = array(
+	'Vote'   => array( '투표' ),
+);
+
 $aliases['ksh'] = array(
-	'Vote' => array( 'Afstemme', 'Avstemme' ),
+	'Vote'   => array( 'Afstemme', 'Avstemme' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Vote' => array( 'Ofstëmmen' ),
+	'Vote'   => array( 'Ofstëmmen' ),
 );
 
-/** Lithuanian (Lietuvių) */
 $aliases['lt'] = array(
-	'Vote' => array( 'Balsuoti' ),
+	'Vote'   => array( 'Balsuoti' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Vote' => array( 'Гласање' ),
+	'Vote'   => array( 'Гласање' ),
 );
 
-/** Marathi (मराठी) */
+$aliases['ml'] = array(
+	'Vote'   => array( 'വോട്ട്' ),
+);
+
 $aliases['mr'] = array(
-	'Vote' => array( 'मत' ),
+	'Vote'   => array( 'मत' ),
 );
 
-/** Maltese (Malti) */
 $aliases['mt'] = array(
-	'Vote' => array( 'Vot' ),
+	'Vote'   => array( 'Vot' ),
 );
 
-/** Mirandese (Mirandés) */
 $aliases['mwl'] = array(
-	'Vote' => array( 'Botar' ),
+	'Vote'   => array( 'Botar' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Vote' => array( 'Stemmen' ),
+	'Vote'   => array( 'Stemmen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Vote' => array( 'Avstemning' ),
+	'Vote'   => array( 'Avstemning' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'Vote' => array( 'Votar' ),
+	'Vote'   => array( 'Votar' ),
 );
 
-/** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'Vote' => array( 'رايه ورکول' ),
+	'Vote'   => array( 'رايه ورکول' ),
 );
 
-/** Romanian (Română) */
+$aliases['pt'] = array(
+	'Vote'   => array( 'Votar' ),
+);
+
 $aliases['ro'] = array(
-	'Vote' => array( 'Votează' ),
+	'Vote'   => array( 'Votează' ),
 );
 
-/** Tarandíne (Tarandíne) */
-$aliases['roa-tara'] = array(
-	'Vote' => array( 'Vote' ),
-);
-
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'Vote' => array( 'मत' ),
+	'Vote'   => array( 'मत' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'Vote' => array( 'Hlasovať' ),
+	'Vote'   => array( 'Hlasovať' ),
 );
 
-/** Albanian (Shqip) */
 $aliases['sq'] = array(
-	'Vote' => array( 'Voto' ),
+	'Vote'   => array( 'Voto' ),
 );
 
-/** Sundanese (Basa Sunda) */
 $aliases['su'] = array(
-	'Vote' => array( 'Milih' ),
+	'Vote'   => array( 'Milih' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'Vote' => array( 'Rösta' ),
+	'Vote'   => array( 'Rösta' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'Vote' => array( 'PigaKura' ),
+	'Vote'   => array( 'PigaKura' ),
 );
 
-/** Thai (ไทย) */
+$aliases['te'] = array(
+	'Vote'   => array( 'వోటు' ),
+);
+
 $aliases['th'] = array(
-	'Vote' => array( 'โหวต' ),
+	'Vote'   => array( 'โหวต' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'Vote' => array( 'Bumoto' ),
+	'Vote'   => array( 'Bumoto' ),
 );
 
-/** Vèneto (Vèneto) */
+$aliases['tr'] = array(
+	'Vote'   => array( 'Oyla', 'OyVer', 'OyKullan' ),
+);
+
 $aliases['vec'] = array(
-	'Vote' => array( 'Vota' ),
+	'Vote'   => array( 'Vota' ),
+);
+
+$aliases['zh-hans'] = array(
+	'Vote'   => array( '投票' ),
+);
+
+$aliases['zh-hant'] = array(
+	'Vote'   => array( '投票' ),
 );
 

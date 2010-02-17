@@ -13,107 +13,107 @@ $aliases['en'] = array(
 	'Player' => array( 'Player' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
 $aliases['ar'] = array(
-	'Player' => array( 'لاعب' ),
+	'Player'   => array( 'لاعب' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
 $aliases['arz'] = array(
-	'Player' => array( 'لاعب' ),
+	'Player'   => array( 'لاعب' ),
 );
 
-/** Breton (Brezhoneg) */
 $aliases['br'] = array(
-	'Player' => array( "C'hoarier" ),
+	'Player'   => array( 'C\'hoarier' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'Player' => array( 'Igrac' ),
+	'Player'   => array( 'Igrac' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'Player' => array( 'Wótegrawak' ),
+	'Player'   => array( 'Wótegrawak' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'Player' => array( 'Lecteur' ),
+	'Player'   => array( 'Lecteur' ),
 );
 
-/** Galician (Galego) */
+$aliases['frp'] = array(
+	'Player'   => array( 'Liésor' ),
+);
+
 $aliases['gl'] = array(
-	'Player' => array( 'Xogador' ),
+	'Player'   => array( 'Xogador' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'Player' => array( 'Igrač' ),
+	'Player'   => array( 'Igrač' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'Player' => array( 'Wothrawak' ),
+	'Player'   => array( 'Wothrawak' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Player' => array( 'Reproductor' ),
+	'Player'   => array( 'Reproductor' ),
 );
 
-/** Japanese (日本語) */
+$aliases['id'] = array(
+	'Player'   => array( 'Pemutar' ),
+);
+
 $aliases['ja'] = array(
-	'Player' => array( 'プレーヤー', 'プレイヤー' ),
+	'Player'   => array( 'プレーヤー', 'プレイヤー', 'プレーヤ', 'プレイヤ' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
+$aliases['ko'] = array(
+	'Player'   => array( '재생기' ),
+);
+
+$aliases['ml'] = array(
+	'Player'   => array( 'പ്ലേയർ' ),
+);
+
+$aliases['mr'] = array(
+	'Player'   => array( 'खेळाडू' ),
+);
+
 $aliases['nds-nl'] = array(
-	'Player' => array( 'Mediaspeuler' ),
+	'Player'   => array( 'Mediaspeuler' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Player' => array( 'Mediaspeler' ),
+	'Player'   => array( 'Mediaspeler' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Player' => array( 'Medieavspiller' ),
+	'Player'   => array( 'Medieavspiller' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'Player' => array( 'Lector' ),
+	'Player'   => array( 'Lector' ),
 );
 
-/** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'Player' => array( 'غږونکی' ),
+	'Player'   => array( 'غږونکی' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'Player' => array( 'खेळाडू' ),
+	'Player'   => array( 'खेळाडू' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'Player' => array( 'Hráč' ),
+	'Player'   => array( 'Hráč' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'Player' => array( 'Spelare' ),
+	'Player'   => array( 'Spelare' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'Player' => array( 'Manlalaro' ),
+	'Player'   => array( 'Manlalaro' ),
+);
+
+$aliases['tr'] = array(
+	'Player'   => array( 'Oyuncu' ),
 );
 

@@ -13,28 +13,71 @@ $aliases['en'] = array(
 	'CooperationStatistics' => array( 'CooperationStatistics' ),
 );
 
-/** Japanese (日本語) */
+$aliases['ar'] = array(
+	'CooperationStatistics'   => array( 'إحصاءات_الشركة' ),
+);
+
+$aliases['arz'] = array(
+	'CooperationStatistics'   => array( 'إحصاءات_التعاون' ),
+);
+
+$aliases['ia'] = array(
+	'CooperationStatistics'   => array( 'Statisticas de cooperation' ),
+);
+
+$aliases['id'] = array(
+	'CooperationStatistics'   => array( 'Statistik kerja sama', 'StatistikKerjaSama' ),
+);
+
 $aliases['ja'] = array(
-	'CooperationStatistics' => array( '協力状況' ),
+	'CooperationStatistics'   => array( '協力状況' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+$aliases['km'] = array(
+	'CooperationStatistics'   => array( 'ស្ថិតិនៃសហប្រតិបត្តិការ' ),
+);
+
 $aliases['ksh'] = array(
-	'CooperationStatistics' => array( 'StatistikeVumZosammeWerke' ),
+	'CooperationStatistics'   => array( 'StatistikeVumZosammeWerke' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'CooperationStatistics' => array( 'Statistike vun der Zesummenaarbecht' ),
+	'CooperationStatistics'   => array( 'Statistike vun der Zesummenaarbecht' ),
 );
 
-/** Dutch (Nederlands) */
+$aliases['mk'] = array(
+	'CooperationStatistics'   => array( 'СтатистикиЗаСоработка' ),
+);
+
+$aliases['ml'] = array(
+	'CooperationStatistics'   => array( 'സഹകരണസ്ഥിതിവിവരം' ),
+);
+
+$aliases['mr'] = array(
+	'CooperationStatistics'   => array( 'सहकार्यसांख्यिकी' ),
+);
+
+$aliases['nds-nl'] = array(
+	'CooperationStatistics'   => array( 'Samenwarkingsstaotestieken' ),
+);
+
 $aliases['nl'] = array(
-	'CooperationStatistics' => array( 'Samenwerkingsstatistieken' ),
+	'CooperationStatistics'   => array( 'Samenwerkingsstatistieken' ),
 );
 
-/** Slovak (Slovenčina) */
+$aliases['no'] = array(
+	'CooperationStatistics'   => array( 'Samarbeidsstatistikk' ),
+);
+
+$aliases['pt'] = array(
+	'CooperationStatistics'   => array( 'Estatísticas de cooperação' ),
+);
+
 $aliases['sk'] = array(
-	'CooperationStatistics' => array( 'ŠtatistikaSpolupráce' ),
+	'CooperationStatistics'   => array( 'ŠtatistikaSpolupráce' ),
+);
+
+$aliases['tr'] = array(
+	'CooperationStatistics'   => array( 'İşbirliğiİstatistikleri' ),
 );
 
