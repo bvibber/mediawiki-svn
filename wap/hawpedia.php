@@ -202,6 +202,10 @@ function export_wikipedia($searchTerm)
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
+	// WP otherwise says: "Please provide a User-Agent header"
+	curl_setopt($ch, CURLOPT_USERAGENT, "hawpedia");
+	
 	$curlResultString = curl_exec($ch);
 	if (!is_string($curlResultString))
 		hawpedia_error(hawtra("Wikipedia currently not available")); // exits internally
