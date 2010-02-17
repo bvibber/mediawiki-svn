@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r96';
+var mwRemoteVersion = 'r97';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
@@ -101,7 +101,8 @@ function doPageSpecificRewrite() {
 			scriptName = 'uploadWizard.js';
 		}
 		loadMwEmbed([ 
-				'mw.BaseUploadInterface', 
+				'mw.UploadHandler',
+				'mw.UploadInterface',
 				'mw.Firefogg', 
 				'$j.ui',
 				'$j.ui.progressbar', 

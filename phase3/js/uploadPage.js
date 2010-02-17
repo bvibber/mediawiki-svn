@@ -22,7 +22,7 @@ var mwUploadHelper = {
 					'api_url': mw.getLocalApiUrl(),
 					
 					// MediaWiki API supports chunk uploads: 
-					'enable_chunks' : true, 
+					'enable_chunks' : false, 
 					
 					// Set the interface type
 					'interface_type' : 'dialog',

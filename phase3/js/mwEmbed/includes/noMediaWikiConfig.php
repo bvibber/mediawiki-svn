@@ -4,9 +4,10 @@
  * without a complete mediaWiki install.
  */
 
-// Optional set the path for google Closure Compiler ( for improved minification )
+// Google Closure Compiler ( for improved minification )
 $wgClosureCompilerPath = false;
 $wgJavaPath = false;
+$wgClosureCompilerLevel = 'SIMPLE_OPTIMIZATIONS';
 
 // Give us true for MediaWiki
 define( 'MEDIAWIKI', true );
