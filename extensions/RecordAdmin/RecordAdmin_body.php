@@ -207,13 +207,7 @@ class SpecialRecordAdmin extends SpecialPage {
 						# Attempt to create the article
 						$article = new Article( $t );
 						$summary = "[[Special:RecordAdmin/$type|" . wfMsgForContent( 'recordadmin' ) . "]]: " . wfMsg( 'recordadmin-summary-typecreated', $type );
-						$text = '';
-						foreach ( $posted as $k => $v ) if ( $v ) {
-							if ( $this->types[$k] == 'bool' ) $v = 'yes';
-							$text .= "| $k = $v\n";
-						}
-						$text = $text ? "{{" . "$type\n$text}}" : "{{" . "$type}}";
-						$success = $article->doEdit( $text, $summary, EDIT_NEW );
+						$success = $article->doEdit( $this->valuesToText( $type, $posted ), $summary, EDIT_NEW );
 
 						# Redirect to view the record if successfully updated
 						if ( $success ) {
@@ -278,13 +272,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					# Attempt to save the article if allowed
 					if ( !$wgSecurityProtectRecords || $this->template->userCan( 'edit' ) ) {
 						$summary = "[[Special:RecordAdmin/$type|" . wfMsgForContent( 'recordadmin' ) . "]]: $summary";
-						$replace = '';
-						foreach ( $posted as $k => $v ) if ( $v ) {
-							if ( $this->types[$k] == 'bool' ) $v = 'yes';
-							$replace .= "| $k = $v\n";
-						}
-						$replace = $replace ? "{{" . "$type\n$replace}}" : "{{" . "$type}}";
-						$text = substr_replace( $text, $replace, $braces['OFFSET'], $braces['LENGTH'] );
+						$text = substr_replace( $text, $this->valuesToText( $type, $posted, $text ), $braces['OFFSET'], $braces['LENGTH'] );
 						$success = $article->doEdit( $text, $summary, EDIT_UPDATE|$minor );
 						if ($watch) $article->doWatch();
 					} else $success = false;
@@ -305,6 +293,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$braces = false;
 				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
 				if ( $braces ) {
+
 					# Fill in current values
 					$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 
@@ -842,6 +831,32 @@ class SpecialRecordAdmin extends SpecialPage {
 	}
 
 	/**
+	 * Return template syntax from passed array of values
+	 * - use $current to pass existing text to preserve any values not present in the array
+	 * - if $current is not set, then only values defined in the form are used
+	 */
+	function valuesToText( $type, $values, $current = false ) {
+		
+		# If there are current values, preserve any that aren't in the passed array
+		if ( $current ) {
+			foreach ( $this->valuesFromText( $current ) as $k => $v ) {
+				if ( !isset( $values[$k] ) ) $values[$k] = $v;
+			}
+		}
+		
+		# Build the text from the array
+		$text = '';
+		foreach ( $values as $k => $v ) if ( $v && ($current || isset( $this->types[$k] ) ) ) {
+			$v = trim( $v );
+			if ( $this->types[$k] == 'bool' ) $v = 'yes';
+			$text .= " | $k = $v\n";
+		}
+		$text = $text ? "{{" . "$type\n$text}}" : "{{" . "$type}}";
+
+		return $text;
+	}
+
+	/**
 	 * A callback for processing public forms
 	 */
 	function createRecord() {
@@ -864,13 +879,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( is_object( $title ) && !$title->exists() ) {
 			$article = new Article( $title );
 			$summary = wfMsg( 'recordadmin-newcreated' );
-			$text = '';
-			foreach ( $_POST as $k => $v ) if ( $v && isset( $this->types[$k] ) ) {
-				if ( $this->types[$k] == 'bool' ) $v = 'yes';
-				$text .= "| $k = $v\n";
-			}
-			$text = $text ? "{{" . "$type\n$text}}" : "{{" . "$type}}";
-			$success = $article->doEdit( $text, $summary, EDIT_NEW );
+			$success = $article->doEdit( $this->valuesToText( $type, $_POST ), $summary, EDIT_NEW );
 		}
 	}
 
