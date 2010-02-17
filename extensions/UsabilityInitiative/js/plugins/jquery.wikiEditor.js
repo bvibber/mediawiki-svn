@@ -437,8 +437,10 @@ if ( typeof context == 'undefined' ) {
 				// Remove newlines from all text nodes
 				var t = context.fn.traverser( context.$content );
 				while ( t ) {
-					if ( t.node.nodeName == '#text' && ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-						 t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
+					if ( t.node.nodeName == '#text' ) {
+						if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
+							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
+						}
 					}
 					t = t.next();
 				}
@@ -911,7 +913,10 @@ if ( typeof context == 'undefined' ) {
 			var newHTML = context.$content.html();
 			var newSel = context.fn.getCaretPosition();
 			// Was text changed? Was it because of a REDO or UNDO action? 
-			if ( context.history.length == 0 || ( htmlChange && context.oldDelayedHistoryPosition == context.historyPosition ) ) {
+			if (
+				context.history.length == 0 ||
+				( htmlChange && context.oldDelayedHistoryPosition == context.historyPosition )
+			) {
 				context.fn.purgeOffsets();
 				context.oldDelayedSel = newSel;
 				// Do we need to trim extras from our history? 
@@ -957,8 +962,8 @@ if ( typeof context == 'undefined' ) {
 				} )
 				.insertAfter( context.$textarea )
 				.load( function() {
-					// Internet Explorer will reload the iframe once we turn on design mode, so we need to only turn it on
-					// during the first run, and then bail
+					// Internet Explorer will reload the iframe once we turn on design mode, so we need to only turn it
+					// on during the first run, and then bail
 					if ( !this.isSecondRun ) {
 						// Turn the document's design mode on
 						context.$iframe[0].contentWindow.document.designMode = 'on';
@@ -970,19 +975,23 @@ if ( typeof context == 'undefined' ) {
 					}
 					// Get a reference to the content area of the iframe
 					context.$content = $( context.$iframe[0].contentWindow.document.body );
-					// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip out the
-					// whitespace charcters, specifically "\n" - so we must manually encode the text and append it
+					// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip
+					// out the whitespace charcters, specifically "\n" - so we must manually encode text and append it
 					// TODO: Refactor this into a textToHtml() function
 					var html = context.$textarea.val()
 						// We're gonna use &esc; as an escape sequence
 						.replace( /&esc;/g, '&esc;esc;' )
 						// Escape existing uses of <p>, </p>, &nbsp; and <span class="wikiEditor-tab"></span>
 						.replace( /\<p\>/g, '&esc;&lt;p&gt;' )
-						.replace (/\<\/p\>/g, '&esc;&lt;/p&gt;' )
-						.replace( /\<span class="wikiEditor-tab"\>\<\/span\>/g, '&esc;&lt;span&nbsp;class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;' )
+						.replace( /\<\/p\>/g, '&esc;&lt;/p&gt;' )
+						.replace(
+							/\<span class="wikiEditor-tab"\>\<\/span\>/g,
+							'&esc;&lt;span&nbsp;class=&quot;wikiEditor-tab&quot;&gt;&lt;/span&gt;'
+						)
 						.replace( /&nbsp;/g, '&esc;&amp;nbsp;' );
-					// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse leading spaces
-					// Browser sniffing is not ideal, but executing this code on a non-broken browser doesn't cause harm
+					// We must do some extra processing on IE to avoid dirty diffs, specifically IE will collapse
+					// leading spaces - browser sniffing is not ideal, but executing this code on a non-broken browser
+					// doesn't cause harm
 					if ( $.browser.msie ) {
 						html = html.replace( /\t/g, '<span class="wikiEditor-tab"></span>' );
 						if ( $.browser.versionNumber <= 7 ) {
@@ -1003,14 +1012,20 @@ if ( typeof context == 'undefined' ) {
 						.replace( /&lt;p&gt;/g, '<p>' )
 						.replace( /&lt;\/p&gt;/g, '</p>' )
 						// And <span class="wikiEditor-tab"></span> too
-						.replace( /&lt;span( |&nbsp;)class=("|&quot;)wikiEditor-tab("|&quot;)&gt;&lt;\/span&gt;/g, '<span class="wikiEditor-tab"></span>' )
+						.replace(
+							/&lt;span( |&nbsp;)class=("|&quot;)wikiEditor-tab("|&quot;)&gt;&lt;\/span&gt;/g,
+							'<span class="wikiEditor-tab"></span>'
+						)
 						// Empty <p> tags need <br> tags in them 
 						.replace( /<p><\/p>/g, '<p><br></p>' )
 						// Unescape &esc; stuff
 						.replace( /&amp;esc;&amp;amp;nbsp;/g, '&amp;nbsp;' )
 						.replace( /&amp;esc;&amp;lt;p&amp;gt;/g, '&lt;p&gt;' )
 						.replace( /&amp;esc;&amp;lt;\/p&amp;gt;/g, '&lt;/p&gt;' )
-						.replace( /&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g, '&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;' )
+						.replace(
+							/&amp;esc;&amp;lt;span&amp;nbsp;class=&amp;quot;wikiEditor-tab&amp;quot;&amp;gt;&amp;lt;\/span&amp;gt;/g,
+							'&lt;span class="wikiEditor-tab"&gt;&lt;\/span&gt;'
+						)
 						.replace( /&amp;esc;esc;/g, '&amp;esc;' );
 					context.$content.html( html );
 					
@@ -1018,7 +1033,7 @@ if ( typeof context == 'undefined' ) {
 					if ( $( 'body' ).is( '.rtl' ) ) {
 						context.$content.addClass( 'rtl' ).attr( 'dir', 'rtl' );
 					}
-					// Activate the iframe, encoding the content of the textarea and copying it to the content of the iframe
+					// Activate the iframe, encoding the content of the textarea and copying it to the content of iframe
 					context.$textarea.attr( 'disabled', true );
 					context.$textarea.hide();
 					context.$iframe.show();
@@ -1047,8 +1062,8 @@ if ( typeof context == 'undefined' ) {
 							context.fn.trigger( 'delayedChange', event );
 						} );
 				} );
-			// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets decoded and
-			// copied over to the textarea
+			// Attach a submit handler to the form so that when the form is submitted the content of the iframe gets
+			// decoded and copied over to the textarea
 			context.$textarea.closest( 'form' ).submit( function() {
 				context.$textarea.attr( 'disabled', false );
 				context.$textarea.val( context.$textarea.textSelection( 'getContents' ) );
@@ -1278,7 +1293,8 @@ if ( typeof context == 'undefined' ) {
 						post += "\n";
 					}
 				}
-				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this function
+				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this
+				// function
 				var insertText = "";
 				if ( options.splitlines ) {
 					for( var j = 0; j < selTextArr.length; j++ ) {

@@ -86,7 +86,9 @@ evt: {
 			$.wikiEditor.modules.toc.fn.switchLayout( context );
 		}
 		if ( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+			);
 		}
 		// reset the height of the TOC
 		if ( !context.modules.toc.$toc.data( 'collapsed' ) ){
@@ -270,7 +272,9 @@ fn: {
 		} else {
 			context.$ui.find( '.wikiEditor-ui-right' ).show();
 			$.wikiEditor.modules.toc.fn.redraw( context, $.wikiEditor.modules.toc.cfg.minimumWidth );
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+			);
 		}
 	},
 	unhighlight: function( context ) {
