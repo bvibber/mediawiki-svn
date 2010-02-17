@@ -41,7 +41,7 @@ mw.addMessages( {
  */
 mw.ApiProxy = { };
 	
-// Proxy scoped functions: 
+// ApiProxy scoped functions: 
 ( function( $ ) {
 	
 
@@ -181,7 +181,8 @@ mw.ApiProxy = { };
 						'#' + escape( JSON.stringify( hashPack ) ) + '">' + 				
 				'</iframe>' 
 		);
-		// add a loading spinner
+		
+		// Add a loading spinner
 		$j( options.target ).append( 
 			$j('<div />').loadingSpinner()
 		);

@@ -2679,10 +2679,13 @@ function mwDojQueryBindings() {
 			var options = $j.extend( mw_default_button_options, options);
 			
 			// Button: 
-			var $btn = $j('<a />')
-				.css( options.css )
+			var $btn = $j('<a />')			
 				.attr('href', '#')
 				.addClass( 'ui-state-default ui-corner-all ui-icon_link' );
+			// Add css if set: 
+			if( options.css ){
+				$btn.css( options.css )
+			}
 								
 			if( options['class'] ){
 				$btn.addClass( options['class'] )
