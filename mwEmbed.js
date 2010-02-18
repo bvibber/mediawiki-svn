@@ -2392,9 +2392,8 @@ var mwDefaultConf = {
 			// Run all the setup function hooks
 			// Once complete we can run .ready queued functions  
 			function runSetupFunctions(){
-				mw.log("runSetupFunctions::" + 	mwSetupFunctions.length );
 				if( mwSetupFunctions.length ){
-					mwSetupFunctions.pop( function() {
+					mwSetupFunctions.pop()( function() {
 						runSetupFunctions();
 					} );
 				}else{
