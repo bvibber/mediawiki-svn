@@ -1390,65 +1390,73 @@ if ( typeof context == 'undefined' ) {
 				var postFinished = false;
 				var preText, rawPreText, periText;
 				var rawPeriText, postText, rawPostText;
-				// Create range containing text in the selection
-				var periRange = d.selection.createRange().duplicate();
-				// Create range containing text before the selection
-				var preRange = d.body.createTextRange();
-				// Move the end where we need it
-				preRange.setEndPoint( "EndToStart", periRange );
-				// Create range containing text after the selection
-				var postRange = d.body.createTextRange();
-				// Move the start where we need it
-				postRange.setEndPoint( "StartToEnd", periRange );
-				// Load the text values we need to compare
-				preText = rawPreText = preRange.text;
-				periText = rawPeriText = periRange.text;
-				postText = rawPostText = postRange.text;
-				/*
-				 * Check each range for trimmed newlines by shrinking the range by 1
-				 * character and seeing if the text property has changed. If it has
-				 * not changed then we know that IE has trimmed a \r\n from the end.
-				 */
-				do {
-					if ( !postFinished ) {
-						if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
-							postFinished = true;
-						} else {
-							preRange.moveEnd( "character", -1 )
-							if ( preRange.text == preText ) {
-								rawPreText += "\r\n";
-							} else {
+				// Depending on the document state, and if the cursor has ever been manually placed within the document
+				// the following call such as setEndPoint can result in nasty errors. These cases are always cases
+				// in which the start and end points can safely be assumed to be 0, so we will just try our best to do
+				// the full process but fall back to 0.
+				try {
+					// Create range containing text in the selection
+					var periRange = d.selection.createRange().duplicate();
+					// Create range containing text before the selection
+					var preRange = d.body.createTextRange();
+					// Move the end where we need it
+					preRange.setEndPoint( "EndToStart", periRange );
+					// Create range containing text after the selection
+					var postRange = d.body.createTextRange();
+					// Move the start where we need it
+					postRange.setEndPoint( "StartToEnd", periRange );
+					// Load the text values we need to compare
+					preText = rawPreText = preRange.text;
+					periText = rawPeriText = periRange.text;
+					postText = rawPostText = postRange.text;
+					/*
+					 * Check each range for trimmed newlines by shrinking the range by 1
+					 * character and seeing if the text property has changed. If it has
+					 * not changed then we know that IE has trimmed a \r\n from the end.
+					 */
+					do {
+						if ( !postFinished ) {
+							if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
 								postFinished = true;
+							} else {
+								preRange.moveEnd( "character", -1 )
+								if ( preRange.text == preText ) {
+									rawPreText += "\r\n";
+								} else {
+									postFinished = true;
+								}
 							}
 						}
-					}
-					if ( !periFinished ) {
-						if ( periRange.compareEndPoints( "StartToEnd", periRange ) == 0 ) {
-							periFinished = true;
-						} else {
-							periRange.moveEnd( "character", -1 )
-							if ( periRange.text == periText ) {
-								rawPeriText += "\r\n";
-							} else {
+						if ( !periFinished ) {
+							if ( periRange.compareEndPoints( "StartToEnd", periRange ) == 0 ) {
 								periFinished = true;
-							}
-						}
-					}
-					if ( !postFinished ) {
-						if ( postRange.compareEndPoints("StartToEnd", postRange) == 0 ) {
-							postFinished = true;
-						} else {
-							postRange.moveEnd( "character", -1 )
-							if ( postRange.text == postText ) {
-								rawPostText += "\r\n";
 							} else {
-								postFinished = true;
+								periRange.moveEnd( "character", -1 )
+								if ( periRange.text == periText ) {
+									rawPeriText += "\r\n";
+								} else {
+									periFinished = true;
+								}
 							}
 						}
-					}
-				} while ( ( !postFinished || !periFinished || !postFinished ) );
-				startPos = rawPreText.replace( /\r\n/g, "\n" ).length;
-				endPos = startPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+						if ( !postFinished ) {
+							if ( postRange.compareEndPoints("StartToEnd", postRange) == 0 ) {
+								postFinished = true;
+							} else {
+								postRange.moveEnd( "character", -1 )
+								if ( postRange.text == postText ) {
+									rawPostText += "\r\n";
+								} else {
+									postFinished = true;
+								}
+							}
+						}
+					} while ( ( !postFinished || !periFinished || !postFinished ) );
+					startPos = rawPreText.replace( /\r\n/g, "\n" ).length;
+					endPos = startPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
+				} catch( e ) {
+					startPos = endPos = 0;
+				}
 			}
 			return [ startPos, endPos ];
 		},
