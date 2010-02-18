@@ -1807,7 +1807,6 @@ var mwDefaultConf = {
 	* Wrapper for jQuery getScript, 
 	* Uses the scriptLoader if enabled
 	* 
-	* If jQuery is not ready load it.
 	*
 	* @param {String} scriptRequest The requested path or classNames for the scriptLoader
 	* @param {Function} callback Function to call once script is loaded   
@@ -1817,13 +1816,15 @@ var mwDefaultConf = {
 		// Set the base url based scriptLoader availability & type of scriptRequest
 		// ( presently script loader only handles "classes" not relative urls: 
 		var slpath = mw.getScriptLoaderPath();
-		// Check if its a relative path name, ( ie does not start with "/" and does not include :// 
-		var isRelativePath = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
-		if( slpath &&  isRelativePath ) {
+		
+		// Check if its a class name, ( ie does not start with "/" and does not include :// 
+		var isClassName = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
+		
+		if( slpath &&  isClassName ) {
 			url = slpath + '?class=' + scriptRequest;				
 		}else{
 			// Add the mwEmbed path if a relative path request
-			url = ( isRelativePath )? mw.getMwEmbedPath() : '';
+			url = ( isClassName ) ? mw.getMwEmbedPath() : '';
 			url+= scriptRequest; 
 		}
 	
@@ -1835,7 +1836,7 @@ var mwDefaultConf = {
 		mw.log( 'mw.getScript: ' + url );
 		// If jQuery is available and debug is off load the scirpt via jQuery 
 		//( will use XHR if on same domain ) 
-		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {
+		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {		
 			$j.getScript( url, function(){
 				if( callback )
 					callback( scriptRequest );
@@ -2126,7 +2127,6 @@ var mwDefaultConf = {
 		
 		// If we're in debug mode, get a fresh unique request key and pass on "debug" param
 		if ( mw.parseUri( mwEmbedSrc ).queryKey['debug'] == 'true' ) {		
-
 			mw.setConfig( 'debug', true );			
 			var d = new Date();
 			req_param += 'urid=' + d.getTime() + '&debug=true';			
