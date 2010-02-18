@@ -480,10 +480,16 @@ class WikilogNavbar
 		$ellipsis = wfMsg( 'ellipsis' );
 		$html = "{$pagingLinks['first']} {$pagingLinks['prev']} {$ellipsis} {$pagingLinks['next']} {$pagingLinks['last']}";
 		$html = WikilogUtils::wrapDiv( 'wl-pagination', $html );
+
+		# NOTE (Mw1.15- COMPAT): Language::getDir() introduced in Mw1.16.
+		# Use Language::isRTL() as a fallback.
+		$dir = method_exists( $wgLang, 'getDir' ) ? $wgLang->getDir() :
+			( $wgLang->isRTL() ? 'rtl' : 'ltr' );
+
 		return Xml::tags( 'div',
 			array(
 				'class' => 'wl-navbar',
-				'dir' => $wgLang->getDir()
+				'dir' => $dir
 			),
 			$html
 		);
