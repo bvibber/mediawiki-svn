@@ -74,8 +74,8 @@ $messages['ar'] = array(
 	'watchers_link_title' => 'من يراقب هذه الصفحة؟',
 	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
 	'watchers_header' => '{{PLURAL:$2||المستخدم الذي يراقب|المستخدمان اللذان يراقبان|المستخدمون الذين يراقبون}} "[[:$1]]"',
-	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
-	'watchers_x_or_more' => '{{PLURAL:$1|لا مستخدمون|مستخدم واحد أو أكثر لديه|مستخدمان أو أكثر لديهما|$1 مستخدمون أو أكثر لديهم|$1 مستخدمًا أو أكثر لديهم|$1 مستخدم أو أكثر لديهم}} هذه الصفحة في قائمة {{PLURAL:$1|مراقبتهم|مراقبته|مراقبتهما|مراقبتهم}}.',
+	'watchers_noone_watches' => 'لا أحد يراقب الصفحة [[:$1]].',
+	'watchers_x_or_more' => '{{PLURAL:$1|لا مستخدمون|مستخدم واحد أو أكثر لديه|مستخدمان أو أكثر لديهما|$1 مستخدمون أو أكثر لديهم|$1 مستخدمًا أو أكثر لديهم|$1 مستخدم أو أكثر لديهم}} صفحة [[:$2]] في قائمة {{PLURAL:$1|مراقبتهم|مراقبته|مراقبتهما|مراقبتهم}}.',
 	'watchers_less_than_x' => 'أقل من $1 {{PLURAL:$1|مستخدم|مستخدم}} لديهم هذه الصفحة في قائمة مراقبتهم.',
 );
 
@@ -593,10 +593,13 @@ $messages['lb'] = array(
 	'watchers-desc' => 'Weist [[Special:Watchers|watfir eng Benotzer eng Säit iwwerwaachen]]',
 	'watchers_link_title' => 'Wien iwwerwaacht dës Säit?',
 	'watchers_error_article' => '<b>Feeler:</b> Dës Säit gëtt et net.',
+	'watchers-error-invalid-page' => "'''Feeler:''' ''$1'' ass kee valabele Säitentitel ,",
 	'watchers_header' => '{{PLURAL:$2|Benotzer den|Benotzer déi}} "[[:$1]]" iwwerwaachen',
 	'watchers_noone_watches' => 'Keen iwwerwaacht dës Säit.',
 	'watchers_x_or_more' => '$1 oder méi {{PLURAL:$1|Benotzer|Benotzer}} iwwerwaachen dës Säit.',
 	'watchers_less_than_x' => 'Manner wéi $1 {{PLURAL:$1|Benotzer iwwerwaacht|Benotzer iwwerwaachen}} dës Säit.',
+	'watchers-num' => "$1 Benotzer  {{PLURAL:$1|huet|hunn}} d'Säit [[:$2]] op hirer Iwwerwaachungslëscht.",
+	'right-watchers-list' => '[[Special:Watchers|Lëscht vun de Benotzer déi eng spezifesch Säit iwwerwaachen]]',
 );
 
 /** Macedonian (Македонски)

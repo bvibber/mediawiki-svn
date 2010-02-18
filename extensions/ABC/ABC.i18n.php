@@ -149,7 +149,7 @@ $messages['de'] = array(
  * @author Mirzali
  */
 $messages['diq'] = array(
-	'abc-desc' => 'Semedê şekldaena ABC-muziki etiketê <tt>&lt;abc&gt;</tt>y ilawe keno',
+	'abc-desc' => 'Semedê şekıldaena ABC-muziki etiketê <tt>&lt;abc&gt;</tt>y ilawe keno',
 	'abcdownload' => 'Bar ke:',
 );
 

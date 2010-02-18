@@ -62,6 +62,13 @@ $messages['arz'] = array(
 	'interwikilist-prefix' => 'بادئة الإنترويكى:',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Рустам Нурыев
+ */
+$messages['ba'] = array(
+	'interwikilist' => 'Интервики исемлеге',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

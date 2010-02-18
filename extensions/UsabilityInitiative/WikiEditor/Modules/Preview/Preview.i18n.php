@@ -60,13 +60,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor-preview-preference' => 'مكّن المعاينه جنبًا لجنب',
-	'wikieditor-preview-tab' => 'عاين',
+	'wikieditor-preview-tab' => 'پروڤه',
 	'wikieditor-preview-changes-tab' => 'تغييرات',
-	'wikieditor-preview-loading' => 'يحمّل...',
+	'wikieditor-preview-loading' => 'بيلوّد...',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

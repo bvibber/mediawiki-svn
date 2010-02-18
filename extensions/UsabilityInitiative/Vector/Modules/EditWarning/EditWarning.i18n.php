@@ -34,12 +34,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
-	'vector-editwarning-warning' => 'قد تتسبب مغادره هذه الصفحه بخسارتك لأى تغييرات قمت بها.
-يمكنك تعطيل هذا التحذير إذا كنت والجلًا فى قسم "{{int:prefs-editing}}" فى تفضيلاتك.',
-	'vector-editwarning-preference' => 'حذّرنى عندما أغادر تحرير صفحه ذات تغييرات غير محفوظة',
+	'vector-editwarning-warning' => 'لو سيبت الصفحه دى ممكن يخلّيك تضيّع اى تغييرات عملتها.
+لو انت مسجّل دخولك, ممكن تعطّل التحذير ده من الجزء بتاع "{{int:prefs-editing}}" فى تفضيلاتك.',
+	'vector-editwarning-preference' => 'حذّرنى لما اسيب صفحة تعديل فيها تغييرات مش متسييڤه',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

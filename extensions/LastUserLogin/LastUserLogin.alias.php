@@ -13,15 +13,18 @@ $aliases['en'] = array(
 	'LastUserLogin' => array( 'LastUserLogin' ),
 );
 
+/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'LastUserLogin'   => array( 'Ultime session de usator' ),
+	'LastUserLogin' => array( 'Ultime session de usator' ),
 );
 
+/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'LastUserLogin'   => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
+	'LastUserLogin' => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'LastUserLogin'   => array( 'Siste brukerinnlogging' ),
+	'LastUserLogin' => array( 'Siste brukerinnlogging' ),
 );
 

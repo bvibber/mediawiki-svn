@@ -113,11 +113,12 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'userpageeditprotection-desc' => "A lìmita ël modifiché le pàgine utent a l'utent e editor con përmess",
-	'right-editalluserpages' => 'Modifiché pàgine utent',
+	'userpageeditprotection-desc' => "A lìmita ël modifiché le pàgine utent a l'utent e a j'editor con përmess",
+	'right-editalluserpages' => 'Modifiché le pàgine utent',
 );
 
 /** Russian (Русский)

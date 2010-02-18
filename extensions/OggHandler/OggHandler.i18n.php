@@ -1064,6 +1064,7 @@ $messages['fur'] = array(
 	'ogg-long-video' => '(File video Ogg $1, durade $2, dimensions $4×$5 pixels, $3)',
 	'ogg-long-multiplexed' => '(File audio/video multiplexed Ogg $1, lungjece $2, dimensions $4×$5 pixels, in dut $3)',
 	'ogg-long-general' => '(File multimediâl Ogg, durade $2, $3)',
+	'ogg-long-error' => '(File ogg no valit: $1)',
 	'ogg-play' => 'Riprodûs',
 	'ogg-pause' => 'Pause',
 	'ogg-stop' => 'Ferme',
@@ -1071,6 +1072,9 @@ $messages['fur'] = array(
 	'ogg-play-sound' => 'Riprodûs il file audio',
 	'ogg-no-player' => 'Nus displâs ma il to sisteme nol à riprodutôrs software supuartâts.
 Par plasê <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discjame un riprodutôr</a>.',
+	'ogg-no-xiphqt' => 'Al samee che no tu vedis il component XiphQT par QuickTime.
+QuickTime nol pues riprodusi i files Ogg cence di chest component.
+Par plasê <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">discjame XiphQT</a> o sielç un altri letôr.',
 	'ogg-player-videoElement' => 'Supuart sgarfadôr natîf',
 	'ogg-player-oggPlugin' => 'Plugin sgarfadôr',
 	'ogg-player-thumbnail' => 'Dome figure fisse',

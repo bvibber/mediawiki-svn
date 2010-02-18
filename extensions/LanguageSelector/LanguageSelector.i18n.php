@@ -79,6 +79,15 @@ $messages['ast'] = array(
 	'languageselector-setlang' => 'establecer',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Рустам Нурыев
+ */
+$messages['ba'] = array(
+	'languageselector' => 'Тышҡы күренештә ҡулланылған тел:',
+	'languageselector-desc' => 'Һәр биткә йәки ҡулланыусыға телде һайларға',
+	'languageselector-setlang' => 'Билдәләргә',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

@@ -7493,6 +7493,10 @@ $messages['pms'] = array(
 	'configure-desc-val' => 'Valor',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Estension',
+	'configure-viewconfig-default-diff' => "Modìfiché da j'ampostassion dë stàndard",
+	'configure-ext-ext-dependencies' => "'''Atension:''' sta estension-sì a l'ha damanca che {{PLURAL:$2|l'estension|j'estension}} sì-sota a sio ativà: $1.",
+	'configure-ext-ext-dependency-err' => "'''Eror:''' l'estension $1 a veul che l'estension $2 a sia ativà.",
+	'configure-ext-doc' => 'Varda documentassion an linia',
 );
 
 /** Pashto (پښتو)

@@ -6728,6 +6728,7 @@ $messages['pms'] = array(
 	'code-load-diff' => 'Cariament dif...',
 	'code-notes' => 'coment recent',
 	'code-statuschanges' => 'cangiament dë statù',
+	'code-mycommits' => 'mie publicassion',
 	'code-authors' => 'autor',
 	'code-status' => 'stat',
 	'code-tags' => 'tichëtte',
