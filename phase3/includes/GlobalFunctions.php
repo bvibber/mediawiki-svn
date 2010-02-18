@@ -708,9 +708,6 @@ function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 		}
 	} else {
 		$lang = wfGetLangObj( $langCode );
-
-		print_r($lang);
-
 		# MessageCache::get() does this already, Language::getMessage() doesn't
 		# ISSUE: Should we try to handle "message/lang" here too?
 		$key = str_replace( ' ' , '_' , $wgContLang->lcfirst( $key ) );
