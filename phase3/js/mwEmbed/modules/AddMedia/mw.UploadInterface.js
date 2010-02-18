@@ -195,7 +195,7 @@ mw.DialogInterface.prototype = {
 			// If no buttons are specified, add a close button
 			buttons = {};
 			buttons[ gM( 'mwe-ok' ) ] =  function() {
-				$j( this ).dialog( 'close' );
+				$j( this ).dialog( 'close' ).remove();
 			};
 		}
 		$j( '#upProgressDialog' ).dialog( 'option', 'title',  title_txt );

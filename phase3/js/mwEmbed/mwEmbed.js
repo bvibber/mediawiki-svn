@@ -1995,7 +1995,7 @@ var mwDefaultConf = {
 	* 	Url of the scriptLodaer
 	*	false if the scriptLoader is not used
 	*/
-	mw.getScriptLoaderPath = function(){		
+	mw.getScriptLoaderPath = function( ) {		
 		var src = mw.getMwEmbedSrc();
 		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1  ||
 			src.indexOf( 'jsScriptLoader.php' ) !== -1 )
@@ -2228,7 +2228,7 @@ var mwDefaultConf = {
 	* @param {String} src path or url
 	* @return {String} absolute url
 	*/
-	mw.absoluteUrl = function( src, contextUrl ){
+	mw.absoluteUrl = function( src, contextUrl ) {
 		var parsedSrc =  mw.parseUri( src );		
 		// Source is already absolute return:
 		if( parsedSrc.protocol != '')
@@ -2293,7 +2293,7 @@ var mwDefaultConf = {
 	*	false If XML could not be parsed 
 	*
 	*/
-	mw.parseXML = function ( str ){
+	mw.parseXML = function ( str ) {
 		if ( $j.browser.msie ) {
 			// Attempt to parse as XML for IE
 			var xmldata = new ActiveXObject( "Microsoft.XMLDOM" );
@@ -2317,8 +2317,10 @@ var mwDefaultConf = {
 		}		
 		return xmldata;
 	}
+	
 	// Array of setup functions
 	var mwSetupFunctions = [];
+	
 	/**
 	* Add a function to be run durring setup ( prior to mw.ready) 
 	* this is usefull for building out interfaces that 
@@ -2341,7 +2343,8 @@ var mwDefaultConf = {
 	mw.setupMwEmbed = function ( ) {			
 		// Only run the setup once: 
 		if( mwSetupFlag )
-			return ;			  
+			return ;			
+			  
 		mwSetupFlag = true;
 		
 		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
@@ -2389,9 +2392,9 @@ var mwDefaultConf = {
 			// Run all the setup function hooks
 			// Once complete we can run .ready queued functions  
 			function runSetupFunctions(){
+				mw.log("runSetupFunctions::" + 	mwSetupFunctions.length );
 				if( mwSetupFunctions.length ){
-					var func = mwSetupFunctions.pop();
-					func( function(){
+					mwSetupFunctions.pop( function() {
 						runSetupFunctions();
 					} );
 				}else{
@@ -2430,7 +2433,7 @@ var mwDefaultConf = {
 			if( mw.getConfig( 'userLanguage' ) ){
 				var langCode = mw.getConfig( 'userLanguage' );
 				// Upper case the first letter:
-				langCode = langCode.substr(0,1).toUpperCase() + langCode.substr(1,langCode.length);
+				langCode = langCode.substr(0,1).toUpperCase() + langCode.substr( 1, langCode.length );
 				loaderRequest.push( 'includes/languages/classes/Language' +
 					langCode + '.js' );
 			}
@@ -2457,9 +2460,9 @@ var mwDefaultConf = {
 	*	false if the rule does not exist
 	* @type {Boolean}
 	*/
-	mw.styleRuleExists = function ( styleRule ){
+	mw.styleRuleExists = function ( styleRule ) {
 		// Set up the skin paths configuration		
-		for( var i=0 ; i < document.styleSheets.length ; i++ ){
+		for( var i=0 ; i < document.styleSheets.length ; i++ ) {
 			var rules = null;			
 			try{
 				if ( document.styleSheets[i].cssRules )
@@ -2468,7 +2471,7 @@ var mwDefaultConf = {
 					rules = document.styleSheets[i].rules
 				for(var j=0 ; j < rules.length ; j++ ){
 					var rule = rules[j].selectorText;											
-					if( rule && rule.indexOf( styleRule ) != -1 ){
+					if( rule && rule.indexOf( styleRule ) != -1 ) {
 						return true;
 					}		
 				}
@@ -2495,11 +2498,10 @@ var mwDefaultConf = {
 	* @param {Function} callback Function to be called at dom ready
 	*/
 	mw.addDOMReadyHook = function( callback ) {
-		mw.log( 'addDOMReadyHook::' );
+		//mw.log( 'addDOMReadyHook::' );
 		if ( ! mwDomReadyFlag ) {
 			mwOnDOMReadyFunctions.push( callback );
-		} else {
-			mw.log( "Possible Error: calling addDOMReadyHook after dom ready" );
+		} else {	
 			callback ( );
 		}
 	}
@@ -2517,16 +2519,16 @@ var mwDefaultConf = {
 			
 		// Make sure we have all the module loader.js files included 
 		// ( where we are not using the script-loader )
-		mw.moduleLoaderCheck( function(){
+		mw.moduleLoaderCheck( function( ) {
 						
 			// Run dom ready hooks: 
-			while( mwOnDOMReadyFunctions.length ){
+			while( mwOnDOMReadyFunctions.length ) {
 				mwOnDOMReadyFunctions.pop()();
 			}
 						
 			
 			// Check for the force setup flag:
-			if ( mw.getConfig( 'runSetupMwEmbed' ) ){
+			if ( mw.getConfig( 'runSetupMwEmbed' ) ) {
 				mw.setupMwEmbed();
 				return ;
 			}				
@@ -2543,16 +2545,17 @@ var mwDefaultConf = {
 	 *  Setup after jQuery is available ). 
 	 */
 	mw.dojQueryBindings = function() {
-		mw.log( 'mw_jqueryBindings' );
+		mw.log( 'mw.dojQueryBindings' );
 		( function( $ ) {
 		
 			/**
 			* Set a given selector html to the loading spinner:
 			*/
-			$.fn.loadingSpinner = function() {
+			$.fn.loadingSpinner = function( ) {
 				if ( this ) {
 					$j( this ).html(
-						$j( '<div class="loading_spinner">' )  
+						$j( '<div />' )
+						.addClass( "loading_spinner" )  
 					 );
 				}			
 				return this;
@@ -2665,8 +2668,6 @@ var mwDefaultConf = {
 } )( window.mw );
 
 
-
-
 // Load in js2 stopgap global msgs into proper location: 
 if ( typeof gMsg != 'undefined' ) {
 	mw.addMessages( gMsg )
@@ -2700,8 +2701,6 @@ mw.addMessages( {
 } );
 
 
-
-
 /**
 * Set DOM-ready call 
 * Does not use jQuery( document ).ready( ) because 
@@ -2711,7 +2710,7 @@ mw.addMessages( {
 function domReadyCheck() {
   mw.domReady();
 }
-(function(i) {
+( function( i ) {
   var u = navigator.userAgent.toLowerCase();
   var ie = /*@cc_on!@*/false;
   if (/webkit/.test(u)) {
@@ -2728,9 +2727,9 @@ function domReadyCheck() {
              (/opera/.test(u))) {
     // opera/moz
     document.addEventListener("DOMContentLoaded",i,false);
-  } else if (ie) {
+  } else if ( ie ) {
     // IE
-    (function (){ 
+    (function ( ) { 
       var tempNode = document.createElement('document:ready'); 
       try {
         tempNode.doScroll('left'); 
@@ -2743,14 +2742,14 @@ function domReadyCheck() {
   } else {
     window.onload = i;
   }
-})(domReadyCheck);
+})( domReadyCheck );
 // As a backup check if "body" is not null ( for dynamic inserts )
 // ( mw.domReady ignores multiple ready calls )
-var mwCheckBody = function(){
+var mwCheckBody = function( ) {
 	if( document.getElementsByTagName('body')[0] ){
 		 mw.domReady();
 	}else{
-		setTimeout( function(){
+		setTimeout( function( ) {
 			mwCheckBody();
 		}, 25);
 	}

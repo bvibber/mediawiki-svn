@@ -190,14 +190,8 @@ $messages['en'] = array(
 	'mwe-video-audio' => 'Ogg audio',
 
 	/*
-	 * js file: /modules/AddMedia/loader.js
+	 * js file: /modules/AddMedia/mw.UploadHandler.js
 	 */
-	'mwe-loading-add-media-wiz' => 'Loading add media wizard',
-
-	/*
-	 * js file: /modules/AddMedia/mw.BaseUploadInterface.js
-	 */
-	'mwe-upload-transcode-in-progress' => 'Transcode and upload in progress (do not close this window)',
 	'mwe-upload-in-progress' => 'Upload in progress (do not close this window)',
 	'mwe-upload-transcoded-status' => 'Transcoded',
 	'mwe-uploaded-time-remaining' => 'Time remaining: $1',
@@ -220,10 +214,20 @@ $messages['en'] = array(
 	'mwe-go-to-resource' => 'Go to resource page',
 	'mwe-upload-misc-error' => 'Unknown upload error',
 	'mwe-wgfogg_warning_bad_extension' => 'You have selected a file with an unsuported extension (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">more information</a>).',
+	'thumbnail-more' => 'Enlarge',
+	'license-header' => 'Licensing',
+	'filedesc' => 'Summary',
+	'filesource' => 'Source:',
+
+	/*
+	 * js file: /modules/AddMedia/loader.js
+	 */
+	'mwe-loading-add-media-wiz' => 'Loading add media wizard',
 
 	/*
 	 * js file: /modules/AddMedia/mw.FirefoggGUI.js
 	 */
+	'fogg-save_local_file' => 'Save Ogg',
 	'fogg-help-sticky' => 'Help (click to stick)',
 	'fogg-cg-preset' => 'Preset: <strong>$1</strong>',
 	'fogg-cg-quality' => 'Basic quality and resolution control',
@@ -310,7 +314,6 @@ $messages['en'] = array(
 	 * js file: /modules/AddMedia/jquery.simpleUploadForm.js
 	 */
 	'mwe-select_file' => 'Select file',
-	'mwe-more_license_options' => 'For more license options, view the <a href="$1">normal upload page</a>',
 	'mwe-select_ownwork' => 'I am uploading entirely my own work, and licensing it under:',
 	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
 	'mwe-upload' => 'Upload file',
@@ -345,7 +348,8 @@ $messages['en'] = array(
 	'mwe-cc_sa_title' => 'Share Alike',
 	'mwe-cc_pd_title' => 'Public Domain',
 	'mwe-unknown_license' => 'Unknown license',
-	'mwe-no_import_by_url' => 'This user or wiki <b>cannot</b> import assets from remote URLs.<p>Do you need to login?</p><p>Is upload_by_url permission set for you?<br />Does the wiki have <a href="http://www.mediawiki.org/wiki/Manual:$wgAllowCopyUploads">$wgAllowCopyUploads</a> enabled?</p>',
+	'mwe-no-import-by-url' => 'This user or wiki <b>cannot</b> import assets from remote URLs.<p>Do you need to login?</p><p>Is upload_by_url permission set for you?<br />Does the wiki have $1 enabled?</p>',
+	'mwe-no-import-by-url-linktext' => '$wgAllowCopyUploads',
 	'mwe-results_from' => 'Results from <a href="$1" target="_new" >$2</a>',
 	'mwe-missing_desc_see_source' => 'This asset is missing a description. Please see the [$1 original source] and help describe it.',
 	'rsd_config_error' => 'Add media wizard configuration error: $1',
@@ -373,7 +377,7 @@ $messages['en'] = array(
 	'rsd-wiki_commons-title' => 'Wikimedia Commons',
 	'rsd-wiki_commons' => 'Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)',
 	'rsd-kaltura-title' => 'All Sources',
-	'rsd-kaltura' => 'Kaltura agragated search for free-licenced media across multiple search providers',
+	'rsd-kaltura' => 'Kaltura agragated search for free-licensed media across multiple search providers',
 	'rsd-this_wiki-title' => 'This wiki',
 	'rsd-this_wiki-desc' => 'The local wiki install',
 	'rsd-archive_org-title' => 'Archive.org',
@@ -387,17 +391,19 @@ $messages['en'] = array(
 	/*
 	 * js file: /modules/AddMedia/mw.Firefogg.js
 	 */
+	'mwe-upload-transcode-in-progress' => 'Transcode and upload in progress (do not close this window)',
+	'fogg-transcoding' => 'Encoding video to ogg',
 	'fogg-select_file' => 'Select file',
 	'fogg-select_new_file' => 'Select new file',
 	'fogg-select_url' => 'Select URL',
-	'fogg-save_local_file' => 'Save Ogg',
 	'fogg-check_for_firefogg' => 'Checking for Firefogg...',
 	'fogg-installed' => 'Firefogg is installed',
 	'fogg-for_improved_uploads' => 'For improved uploads:',
-	'fogg-please_install' => '<a href="$1">Install Firefogg</a>. More <a href="http://commons.wikimedia.org/wiki/Commons:Firefogg">about Firefogg</a>.',
+	'fogg-please-install' => '$1. More $2',
+	'fogg-please-install-install-linktext' => 'Install firefogg',
+	'fogg-please-install-about-linktext' => 'about firefogg',
 	'fogg-use_latest_firefox' => 'Please first install <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (or later). <i>Then revisit this page to install the <b>Firefogg</b> extension.</i>',
-	'fogg-passthrough_mode' => 'Your selected file is already Ogg or not a video file',
-	'fogg-transcoding' => 'Encoding video to Ogg...',
+	'fogg-passthrough_mode' => 'Your selected file is already ogg or not a video file',
 	'fogg-encoding-done' => 'Encoding complete',
 	'fogg-badtoken' => 'Token is not valid',
 	'fogg-preview' => 'Preview video',
@@ -442,7 +448,7 @@ $messages['en'] = array(
 	'mwe-layout_left' => 'Left side image layout',
 
 	/*
-	 * js file: /modules/ApiProxy/mw.proxy.js
+	 * js file: /modules/ApiProxy/mw.ApiProxy.js
 	 */
 	'mwe-setting-up-proxy' => 'Setting up proxy...',
 	'mwe-re-try' => 'Retry API request',

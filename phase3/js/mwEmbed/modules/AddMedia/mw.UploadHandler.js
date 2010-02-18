@@ -705,10 +705,10 @@ mw.UploadHandler.prototype = {
 		if ( license != '' ) {
 			licensetxt = '== ' + gM( 'license-header' ) + " ==\n" + '{{' + license + '}}' + "\n";
 		}
-		pageText = '== ' + wfMsgForContent ( 'filedesc' ) + " ==\n" + comment + "\n" +
-		  '== ' + wfMsgForContent ( 'filestatus' ) + " ==\n" + copyStatus + "\n" +
+		pageText = '== ' + gM( 'filedesc' ) + " ==\n" + comment + "\n" +
+		  '== ' + gM( 'filestatus' ) + " ==\n" + copyStatus + "\n" +
 		  licensetxt +
-		  '== ' + wfMsgForContent ( 'filesource' ) . " ==\n" . source ;		
+		  '== ' + gM( 'filesource' ) + " ==\n" . source ;		
 		return pageText;
 	},
 
