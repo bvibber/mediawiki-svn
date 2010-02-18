@@ -75,6 +75,7 @@ class FindSettings extends Maintenance {
 				'wgGoogleAdSenseCssLocation',
 				'wgOggScriptVersion', 'wgEnableJS2system',
 				'wgPFHookStub',
+				'wgQPollFunctionsHook', 'cell', 'celltag',
 				'sdgIP', 'sdgScriptPath', 'sdgNamespaceIndex',
 				'sfgIP', 'sfgScriptPath', 'sfgNamespaceIndex',
 				'smwgIP', 'smwgScriptPath', 'smwgNamespaceIndex', 'smwgRAPPath', 'smwgSMWBetaCompatible',
@@ -86,11 +87,14 @@ class FindSettings extends Maintenance {
 				'wgSpecialRefactorVersion',
 				'wgUniwikiFormatChangesObject',
 				'wgGenericEditPageClass', 'wgSwitchMode',
+				'egValidatorDir',
 				'wgWatchersAddCache',
 				'wgWikiArticleFeedsParser', 'wgWikiFeedPresent',
+				'wgWikilogStylePath',
 			);
 			$ignoreObsolete = array(
 				'wgCommentSpammerLog',
+				'qp_enable_showresults',
 			);
 			foreach ( $exts as $ext ) {
 				if( !$ext->isInstalled() ) continue; // must exist

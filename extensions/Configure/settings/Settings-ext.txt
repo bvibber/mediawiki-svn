@@ -552,6 +552,11 @@ url = http://www.mediawiki.org/wiki/Extension:GoToCategory
 GroupPortal
 url = http://www.mediawiki.org/wiki/Extension:GroupPortal
 
+GroupsSidebar
+settings[] = wgGroupsSidebar: array
+array[] = wgGroupsSidebar: assoc
+url = http://www.mediawiki.org/wiki/Extension:GroupsSidebar
+
 ImageMap
 url = http://www.mediawiki.org/wiki/Extension:ImageMap
 
@@ -663,6 +668,11 @@ url = http://www.mediawiki.org/wiki/Extension:Purge
 
 PurgeCache
 url = http://www.mediawiki.org/wiki/Extension:PurgeCache
+
+QPoll
+file = qp_user.php
+settings[] = qp_enable_showresults: int
+url = http://www.mediawiki.org/wiki/Extension:QPoll
 
 Redirect
 url = http://www.mediawiki.org/wiki/Extension:Redirect
@@ -780,6 +790,9 @@ array[] = srfgFormats: simple
 extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats
 
+SendmailToWiki
+url = http://www.mediawiki.org/wiki/Extension:SendmailToWiki
+
 SkinPerNamespace
 settings[] = wgSkinPerNamespace: array
 settings[] = wgSkinPerSpecialPage: array
@@ -806,6 +819,9 @@ url = http://www.mediawiki.org/wiki/Extension:Stale_Pages
 SyntaxHighlight_GeSHi
 settings[] = wgSyntaxHighlightDefaultLang: text
 url = http://www.mediawiki.org/wiki/Extension:SyntaxHighlight_GeSHi
+
+TemplateInfo
+url = http://www.mediawiki.org/wiki/Extension:TemplateInfo
 
 Timeline
 dir = timeline
@@ -957,6 +973,9 @@ UserOptionStats
 UserRightsNotification
 url = http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification
 
+Validator
+url = http://www.mediawiki.org/wiki/Extension:Validator
+
 Vote
 url = http://www.mediawiki.org/wiki/Extension:Vote
 
@@ -996,6 +1015,32 @@ array[] = wgEnabledDerivatives: simple, wgJobTypeConfig: array
 schema = true
 extensions-dependencies[] = OggHandler
 url = http://www.mediawiki.org/wiki/Extension:WikiAtHome
+
+Wikilog
+settings[] = wgTaggingEntity: text
+settings[] = wgWikilogStylePath: text
+settings[] = wgWikilogExpensiveLimit: int
+settings[] = wgWikilogNumArticles: int
+settings[] = wgWikilogNumComments: int
+settings[] = wgWikilogExtSummaries: bool
+settings[] = wgWikilogSignAndPublishDefault: bool
+settings[] = wgWikilogMaxAuthors: int
+settings[] = wgWikilogEnableTags: bool
+settings[] = wgWikilogMaxTags: int
+settings[] = wgWikilogEnableComments: bool
+settings[] = wgWikilogMaxCommentSize: int
+settings[] = wgWikilogModerateAnonymous: bool
+settings[] = wgWikilogFeedClasses: array
+settings[] = wgWikilogFeedSummary: bool
+settings[] = wgWikilogFeedContent: bool
+settings[] = wgWikilogFeedCategories: bool
+settings[] = wgWikilogFeedRelated: bool
+settings[] = wgWikilogNamespaces: array
+settings[] = wgWikilogCloneParser: bool
+array[] = wgWikilogFeedClasses: assoc
+array[] = wgWikilogNamespaces: ns-simple
+empty[] = wgTaggingEntity: false
+empty[] = wgWikilogStylePath: false
 
 WikimediaIncubator
 settings[] = wmincPref: text
