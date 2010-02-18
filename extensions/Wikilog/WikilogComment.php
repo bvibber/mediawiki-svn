@@ -608,12 +608,15 @@ class WikilogCommentFormatter
 			$params = $this->getCommentMsgParams( $comment );
 			$html = $this->formatCommentHeader( $comment, $params );
 
-			if ( $comment->mCommentRev ) {
+			if ( $comment->mID && $comment->mCommentRev ) {
 				list( $article, $parserOutput ) = WikilogUtils::parsedArticle( $comment->mCommentTitle );
 				$text = $parserOutput->getText();
-				if ( $text ) {
-					$html .= WikilogUtils::wrapDiv( 'wl-comment-text', $text );
-				}
+			} else {
+				$text = $comment->getText();
+			}
+
+			if ( $text ) {
+				$html .= WikilogUtils::wrapDiv( 'wl-comment-text', $text );
 			}
 
 			$html .= $this->formatCommentFooter( $comment, $params );
