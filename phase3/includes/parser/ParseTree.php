@@ -6,7 +6,7 @@
  */
 interface ParseObject {
 	// Does the parse task specific to each parse object
-	function parse(&$text, &$rules, $stopChars = '');
+	function parse(&$text, &$rules);
 }
 
 /**
@@ -15,46 +15,41 @@ interface ParseObject {
  * mName - The name to give the resultant ParseTree object
  * mBeginTag - the regular expression used to determine if this is the rule that should be used
  * mEndTag - If ParseTrees of this type are to have children, mEndTag specifies when all of the children are collected
- * mStopChars - extra characters that indicate markup
  * mChildRule - an extra rule to consider when collecting children, it is only used for situations covered by the HHP21 parser test
  * @ingroup Parser
  */
 class ParseRule implements ParseObject {
-	private $mName, $mBeginTag, $mEndTag, $mStopChars, $mChildRule;
+	private $mName, $mBeginTag, $mEndTag, $mChildRule;
 
-	function __construct($name, $beginTag, $endTag = NULL, $stopChars = '', $childRule = NULL) {
+	function __construct($name, $beginTag, $endTag = NULL, $childRule = NULL) {
 		$this->mName = $name;
 		$this->mBeginTag = $beginTag;
 		$this->mEndTag = $endTag;
-		$this->mStopChars = $stopChars;
 		$this->mChildRule = $childRule;
 	}
 
-	function parse(&$text, &$rules, $stopChars = '') {
+	function parse(&$text, &$rules) {
 		if (! preg_match($this->mBeginTag, $text, $matches)) {
 			return NULL;
 		}
-		$text = substr($text, strlen($matches[0]));
+		$newText = substr($text, strlen($matches[0]));
 		$children = array();
-		if ($this->mChildRule != NULL) {
+		if ($this->mChildRule != NULL && $this->mEndTag != NULL) {
 			$endTag = $this->mEndTag;
-			if ($endTag != NULL) {
-				foreach ($matches as $i => $crrnt) {
-					$endTag = str_replace('~' . $i, $crrnt, $endTag);
-				}
+			foreach ($matches as $i => $crrnt) {
+				$endTag = str_replace('~' . $i, $crrnt, $endTag);
 			}
-			while ($text != "" && ($endTag == NULL || ! preg_match($endTag, $text, $endMatches))) {
-				$child = $rules[$this->mChildRule]->parse($text, $rules, $this->mStopChars);
+			while (! preg_match($endTag, $newText, $endMatches)) {
+				$child = $rules[$this->mChildRule]->parse($newText, $rules);
 				if ($child == NULL) {
-					break;
+					return NULL;
 				}
 				$children[] = $child;
 			}
-			if ($text != "") {
-				$text = substr($text, strlen($endMatches[0]));
-				$matches = array_merge($matches, $endMatches);
-			}
+			$newText = substr($newText, strlen($endMatches[0]));
+			$matches = array_merge($matches, $endMatches);
 		}
+		$text = $newText;
 		return new ParseTree($this->mName, $matches, $children);
 	}
 }
@@ -62,28 +57,23 @@ class ParseRule implements ParseObject {
 /**
  * Contains a list of rules to cycle through when creating a parse tree
  * mList - The list of rules
- * mStopChars - the characters used to find markup
  * @ingroup Parser
  */
 class ParseList implements ParseObject {
-	private $mList, $mStopChars;
+	private $mList;
 
-	function __construct($list, $stopChars = '') {
+	function __construct($list) {
 		$this->mList = $list;
-		$this->mStopChars = $stopChars;
 	}
 
-	function parse(&$text, &$rules, $stopChars = '') {
+	function parse(&$text, &$rules) {
 		foreach ($this->mList as $crrnt) {
-			$child = $rules[$crrnt]->parse($text, $rules, $stopChars);
+			$child = $rules[$crrnt]->parse($text, $rules);
 			if ($child != NULL) {
 				return $child;
 			}
 		}
-		$stopChars .= $this->mStopChars;
-		preg_match('/^[' . $stopChars . ']|[^' . $stopChars . ']*/s', $text, $matches);
-		$text = substr($text, strlen($matches[0]));
-		return $matches[0];
+		return NULL;
 	}
 }
 
@@ -104,6 +94,10 @@ class ParseTree {
 		$this->mChildren = $children;
 	}
 
+	function getName() {
+		return $this->mName;
+	}
+
 	static function createParseTree($text, $rules) {
 		wfProfileIn( __METHOD__ );
 
@@ -118,10 +112,10 @@ class ParseTree {
 	function printTree() {
 		$retString = "";
 
-		if ($this->mName == "hhp21") {
+		if ($this->mName == "text") {
 			$retString = htmlspecialchars($this->mMatches[0]);
 		} elseif ($this->mName == "commentline") {
-			$retString = htmlspecialchars($this->mMatches[1]) . "<comment>" . htmlspecialchars($this->mMatches[2]) . "</comment>";
+			$retString = "\n<comment>" . htmlspecialchars($this->mMatches[1]) . "</comment>";
 		} elseif ($this->mName == "bof") {
 			if (isset($this->mMatches[1])) {
 				$retString = "<ignore>" . htmlspecialchars($this->mMatches[1]) . "</ignore>";
@@ -141,26 +135,32 @@ class ParseTree {
 			$inTitle = true;
 			$foundEquals = false;
 			$currentItem = "";
-			$this->mChildren[] = '|';
+			$this->mChildren[] = new ParseTree("pipe", NULL, NULL);
 			foreach ($this->mChildren as $crrnt) {
 				if ($crrnt instanceof ParseTree) {
-					$currentItem .= $crrnt->printTree();
-				} elseif ($crrnt == '|') {
-					if ($inTitle) {
-						$retString .= "<title>" . $currentItem . "</title>";
-						$inTitle = false;
-					} else {
-						if (! $foundEquals) {
-							$retString .= "<part>";
+					if ($crrnt->getName() == "pipe") {
+						if ($inTitle) {
+							$retString .= "<title>" . $currentItem . "</title>";
+							$inTitle = false;
+						} else {
+							if (! $foundEquals) {
+								$retString .= "<part>";
+							}
+							$retString .= "<value>" . $currentItem . "</value></part>";
+							$foundEquals = false;
 						}
-						$retString .= "<value>" . $currentItem . "</value></part>";
-						$foundEquals = false;
+						$currentItem = "";
+					} elseif ($crrnt->getName() == "equals") {
+						if (! $inTitle && ! $foundEquals) {
+							$retString .= "<part><name>" . $currentItem . "</name>";
+							$foundEquals = true;
+							$currentItem = "";
+						} else {
+							$currentItem .= "=";
+						}
+					} else {
+						$currentItem .= $crrnt->printTree();
 					}
-					$currentItem = "";
-				} elseif ($crrnt == '=' && ! $inTitle && ! $foundEquals) {
-					$retString .= "<part><name>" . $currentItem . "</name>";
-					$foundEquals = true;
-					$currentItem = "";
 				} else {
 					$currentItem .= htmlspecialchars($crrnt);
 				}
@@ -176,8 +176,6 @@ class ParseTree {
 			}
 			if ($this->mName == "root") {
 				$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
-			} elseif ($this->mName == "tplarg" || $this->mName == "template") {
-				$retString = htmlspecialchars($this->mMatches[0]) . $retString;
 			} elseif ($this->mName == "link") {
 				$retString = htmlspecialchars($this->mMatches[0]) . $retString;
  				if (isset($this->mMatches[1])) {

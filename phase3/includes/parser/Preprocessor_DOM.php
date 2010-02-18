@@ -70,25 +70,27 @@ class Preprocessor_DOM implements Preprocessor {
 		// To XML
 		$xmlishRegex = implode('|', $this->parser->getStripList());
 		$rules = array(
-			"Root" => new ParseRule("root", '/^/', '/^\Z/', '', "MainList"),
-			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', '}|=', "HHP21List"),
-			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', '}|=', "HHP21List"),
-			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', '\]', "MainList"),
-			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?(?:-->|\Z))*(?=\n|$)/s', '=', "MainList"),
-			"CommentLine" => new ParseRule("commentline", '/^(\n *)((?:<!--.*?(?:-->|$)(?: *\n)?)+)/s'),
+			"Root" => new ParseRule("root", '/^/', '/^$/', "MainList"),
+			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', "TemplateList"),
+			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', "TemplateList"),
+			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', "MainList"),
+			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?-->)*(?=\n|$)/s', "MainList"),
+			"CommentLine" => new ParseRule("commentline", '/^\n((?:<!--.*?-->\n)+)/s'),
 			"Comment" => new ParseRule("comment", '/^<!--.*?(?:-->|$)/s'),
 			"OnlyInclude" => new ParseRule("ignore", '/^<\/?onlyinclude>/s'),
 			"NoInclude" => new ParseRule("ignore", '/^<\/?noinclude>/s'),
-			"IncludeOnly" => new ParseRule("ignore", '/^<includeonly>.*?(?:<\/includeonly>|$)/s'),
+			"IncludeOnly" => new ParseRule("ignore", '/^<includeonly>.*?<\/includeonly>/s'),
 			"XmlClosed" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')([^>]*)\/>/si'),
-			"XmlOpened" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>|$)/si'),
+			"XmlOpened" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>)/si'),
 			"BeginFile" => new ParseRule("bof", '/^~BOF/s'),
-			"BugHHP21" => new ParseRule("hhp21", '/^\n(?==[^=])/s'),
-			"MainList" => new ParseList(array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile"), '{\[<\n'),
-			"HHP21List" => new ParseList(array("BugHHP21", "MainList")));
+			"MainText" => new ParseRule("text", '/^.[^{}\[\]<\n|=]*/s'),
+			"TplPipe" => new ParseRule("pipe", '/^\|/s'),
+			"TplEquals" => new ParseRule("equals", '/^=/s'),
+			"MainList" => new ParseList(array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile", "MainText")),
+			"TemplateList" => new ParseList(array("TplPipe", "TplEquals", "MainList")));
 		if ($flags & Parser::PTD_FOR_INCLUSION) {
 			$rules["OnlyInclude"] = new ParseRule("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
-			$rules["NoInclude"] = new ParseRule("ignore", '/^<noinclude>.*?(?:<\/noinclude>|$)/s');
+			$rules["NoInclude"] = new ParseRule("ignore", '/^<noinclude>.*?<\/noinclude>/s');
 			$rules["IncludeOnly"] = new ParseRule("ignore", '/^<\/?includeonly>/s');
 			$rules["BeginFile"] = new ParseRule("bof", '/^~BOF(.*?<onlyinclude>)?/s');
 		}

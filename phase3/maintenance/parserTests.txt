@@ -7265,26 +7265,14 @@ Morwen/13: Unclosed link followed by heading
 !! end
 
 !! test
-HHP2.1: Heuristics for headings in preprocessor parenthetical structures
+HHP3.1: Heuristics for headings in preprocessor parenthetical structures
 !! input
 {{foo|
 =heading=
 !! result
 <p>{{foo|
 </p>
-<h1> <span class="mw-headline" id="heading">heading</span></h1>
-
-!! end
-
-!! test
-HHP2.2: Heuristics for headings in preprocessor parenthetical structures
-!! input
-{{foo|
-==heading==
-!! result
-<p>{{foo|
-</p>
-<h2><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: heading">edit</a>]</span> <span class="mw-headline" id="heading">heading</span></h2>
+<h1><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: heading">edit</a>]</span> <span class="mw-headline" id="heading">heading</span></h1>
 
 !! end
 
