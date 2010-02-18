@@ -8,12 +8,6 @@
 * 
 */
 
-// Default video size ( if no size provided )
-mw.setConfig( 'video_size', '400x300' );
-	
-// If the k-skin video player should attribute kaltura
-mw.setConfig( 'k_attribution', true );
-
 // The global player list per page
 mw.playerList = new Array();
 

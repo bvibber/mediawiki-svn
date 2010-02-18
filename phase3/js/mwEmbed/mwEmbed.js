@@ -46,8 +46,9 @@ var mwDefaultConf = {
 	* If jQuery / mwEmbed should be loaded.
 	*
 	* This flag is automatically set to true if: 
-	*  any script calls mw.ready ( callback_function )
+	*  Any script calls mw.ready ( callback_function )
 	*  Page DOM includes any tags set in config.rewritePlayerTags at onDomReady 
+	*  ( embedPlayer module )
 	*
 	* This flag increases page performance on pages that do not use mwEmbed 
 	* and don't already load jQuery 
@@ -58,11 +59,7 @@ var mwDefaultConf = {
 	* NOTE: Future architecture will probably do away with this flag and refactor it into 
 	* a smaller "remotePageMwEmbed.js" script similar to ../remoteMwEmbed.js
 	*/ 
-	'runSetupMwEmbed' : false,
-	
-	// What tags will be re-written to video player by default
-	// Set to empty string or null to avoid automatic tag rewrites 
-	'rewritePlayerTags': 'video,audio,playlist',
+	'runSetupMwEmbed' : false,	
 
 	// The mediaWiki path of mvEmbed  
 	'mediaWiki_mwEmbedPath' : 'js/mwEmbed/',
@@ -1627,8 +1624,10 @@ var mwDefaultConf = {
 	mw.isset = function( objectPath ) {
 		if ( !objectPath )
 			return false;
+			
 		var pathSet = objectPath.split( '.' );
 		var cur_path = '';
+				
 		for ( var p = 0; p < pathSet.length; p++ ) {
 			cur_path = ( cur_path == '' ) ? cur_path + pathSet[p] : cur_path + '.' + pathSet[p];
 			eval( 'var ptest = typeof ( ' + cur_path + ' ); ' );
@@ -1649,7 +1648,8 @@ var mwDefaultConf = {
 	*/
 	var waitTime = 1200; // About 30 seconds 
 	mw.waitForObject = function( objectName, callback, _callNumber){	
-		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);				
+		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);		
+				
 		// Increment callNumber: 
 		if( !_callNumber ){ 
 			_callNumber = 1;
@@ -1662,6 +1662,7 @@ var mwDefaultConf = {
 			callback( false ); 
 			return ;
 		}
+		
 		// If the object is defined ( or we are done loading from a callback )
 		if ( mw.isset( objectName ) || mwLoadDoneCB[ objectName ] == 'done' ){			
 			callback( objectName )
@@ -1683,13 +1684,17 @@ var mwDefaultConf = {
 			// Non empty string: 
 			return false;
 		}
+		
 		// If an array check length:
 		if( Object.prototype.toString.call( object ) === "[object Array]"
 			&& object.length == 0 ){
 			return true;
 		}
+		
 		// Else check as an object: 
 		for( var i in object ){ return false; }
+		
+		// Else object is empty:
 		return true;
 	}
 	
@@ -1743,8 +1748,8 @@ var mwDefaultConf = {
 	}
 	
 	
-	//Setup the local mwOnLoadFuncitons array: 
-	var mwOnLoadFuncitons = new Array();
+	//Setup the local mwOnLoadFunctions array: 
+	var mwOnLoadFunctions = [];
 	
 	//mw Ready flag ( set once mwEmbed is ready ) 
 	var mwReadyFlag = false;
@@ -1764,7 +1769,7 @@ var mwDefaultConf = {
 		if( mwReadyFlag === false ){
 		
 			// Add the callbcak to the onLoad function stack
-			mwOnLoadFuncitons.push ( callback );
+			mwOnLoadFunctions.push ( callback );
 						
 			// Set the mwSetup flag. So that onLoad functions can 
 			// be called once mwEmbed interfaces are setup.
@@ -1773,7 +1778,7 @@ var mwDefaultConf = {
 				mw.setConfig( 'runSetupMwEmbed', true );
 			}else{
 				mw.log( 'run setup directly' );
-				//DOM is already ready run setup directly ( will run mwOnLoadFuncitons on finish )
+				//DOM is already ready run setup directly ( will run mwOnLoadFunctions on finish )
 				mw.setupMwEmbed(); 
 			} 			
 			
@@ -1786,15 +1791,17 @@ var mwDefaultConf = {
 	/**
 	* Runs all the queued functions
 	*/ 
-	mw.runLoadHooks = function ( ){		
+	mw.runReadyHooks = function ( ){		
 		// Run all the queued functions: 
-		while( mwOnLoadFuncitons.length )
-			mwOnLoadFuncitons.pop()();
+		while( mwOnLoadFunctions.length ){
+			mwOnLoadFunctions.pop()();
+		}
 		
 		// Sets mwReadyFlag to true so that future addOnLoadHook calls 
 		//  know to call the callback directly
 		mwReadyFlag = true;
 	}
+	
 	
 	/**
 	* Wrapper for jQuery getScript, 
@@ -2310,29 +2317,20 @@ var mwDefaultConf = {
 		}		
 		return xmldata;
 	}
-
-
+	// Array of setup functions
+	var mwSetupFunctions = [];
 	/**
-	* mwEmbed Setup functions. 
-	* jQuery is not necessarily available 
+	* Add a function to be run durring setup ( prior to mw.ready) 
+	* this is usefull for building out interfaces that 
+	* should be ready before mw.ready is called. 
+	*
+	* @param {callback} Function Callback function must
+	* 	 accept a ready function callback to be called once 
+	* 	 setup is done    
 	*/
-	
-	/**
-	* Check the current DOM for any tags in "rewritePlayerTags"
-	* 
-	* NOTE: this function and setup can run prior to jQuery being ready
-	*/
-	mw.documentHasPlayerTags = function(){
-		var rewriteTags = mw.getConfig( 'rewritePlayerTags' );			
-		if( rewriteTags ){
-			var jtags = rewriteTags.split( ',' );
-			for ( var i = 0; i < jtags.length; i++ ) {	
-				if( document.getElementsByTagName( jtags[i] )[0] )
-					return true;
-			};
-		}
-		return false;
-	}	
+	mw.addSetupHook = function( callback ) {
+		mwSetupFunctions.push ( callback ) ;
+	};
 	
 	/**
 	* One time "setup" for mwEmbed 
@@ -2358,54 +2356,52 @@ var mwDefaultConf = {
 				mw.setConfig( 'userLanguage', langKey);
 			}
 		}
-		
-		// Make sure we have all the module loaders
-		mw.moduleLoaderCheck( function(){			
-			// Make sure we have jQuery: 
-			mw.load( 'window.jQuery', function(){							
-				if ( !window['$j'] ) {
-					window['$j'] = jQuery.noConflict();
-				}										
-				mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 				
-				// Only load jquery ui theme sheet if ui-widget does not exist.
-				// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
-				//if( ! mw.styleRuleExists( 'ui-widget' ) ){				
-					mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-				//}
-				
-				mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' ); 
-	
-				// Get Core skin/style sheets are always available:			
-				mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/common/common.css' );
-	
-				// Set up AJAX to not send dynamic URLs for loading scripts
-				$j.ajaxSetup( {
-					cache: true
-				} );
-				
-				// Update the magic keywords 		
-				mw.lang.magicSetup();
-				
-				// Set up mvEmbed utility jQuery bindings
-				mwDojQueryBindings();						
-				
-				// Check DOM for tag-rewrites  
-				if( mw.documentHasPlayerTags() ){
-					// Load the embedPlayer module ( then run queued hooks )
-					mw.load( 'EmbedPlayer', function ( ) {
-						// Rewrite the rewritePlayerTags with the 
-						$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer()
-						// Run mw hooks:
-						mw.runLoadHooks();
+		// Make sure we have jQuery: 
+		mw.load( 'window.jQuery', function(){							
+			if ( !window['$j'] ) {
+				window['$j'] = jQuery.noConflict();
+			}										
+			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
+			
+			// Only load jquery ui theme sheet if ui-widget does not exist.
+			// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
+			//if( ! mw.styleRuleExists( 'ui-widget' ) ){				
+				mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			//}
+			
+			mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' ); 
+
+			// Get Core skin/style sheets are always available:			
+			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/common/common.css' );
+
+			// Set up AJAX to not send dynamic URLs for loading scripts
+			$j.ajaxSetup( {
+				cache: true
+			} );
+			
+			// Update the magic keywords 		
+			mw.lang.magicSetup();
+			
+			// Set up mvEmbed utility jQuery bindings
+			mw.dojQueryBindings();						
+			
+			// Run all the setup function hooks
+			// Once complete we can run .ready queued functions  
+			function runSetupFunctions(){
+				if( mwSetupFunctions.length ){
+					var func = mwSetupFunctions.pop();
+					func( function(){
+						runSetupFunctions();
 					} );
-				} else {		
-					// Set ready state and run the callback
-					mw.runLoadHooks();
+				}else{
+					mw.runReadyHooks();
 				}
-			});
-		} ); 			
-	}
+			}
+			runSetupFunctions();
+						
+		});		
+	};
 	
 	/**
 	* Check for module loaders, and localization
@@ -2484,38 +2480,188 @@ var mwDefaultConf = {
 	}
 	
 	// Flag to register the domReady has been called
-	var mwDomReadyFlag = false;	
+	var mwDomReadyFlag = false;
 	
+	// Functions to run on DOM ready	
+	var mwOnDOMReadyFunctions = [];
+	
+	/**
+	* Dom ready hooks are for module loaders that want to conditionally
+	* set setup hooks. 
+	*
+	* This enables modules to build out interfaces asynchronously 
+	* to be "ready" at mw.ready call time.  
+	*
+	* @param {Function} callback Function to be called at dom ready
+	*/
+	mw.addDOMReadyHook = function( callback ) {
+		mw.log( 'addDOMReadyHook::' );
+		if ( ! mwDomReadyFlag ) {
+			mwOnDOMReadyFunctions.push( callback );
+		} else {
+			mw.log( "Possible Error: calling addDOMReadyHook after dom ready" );
+			callback ( );
+		}
+	}
+
 	/**
  	* This will get called when the DOM is ready 
  	* Will check configuration and issue a mw.setupMwEmbed call if needed
 	*/
 	mw.domReady = function ( ) {
 		if( mwDomReadyFlag )
-			return ;
+			return ;			
 		mw.log( 'run:domReady' );
 		// Set the onDomReady Flag
-		mwDomReadyFlag = true;
-		
-		// Check for the force setup flag:
-		if ( mw.getConfig( 'runSetupMwEmbed' ) ){
-			mw.setupMwEmbed();
-			return ;
-		}
-		
-		// Check for rewrite tags: 		
-		if ( mw.documentHasPlayerTags() ) {
-			mw.setupMwEmbed();
-			return ;
-		}		
-		
-		// Check for queued functions that use mw interfaces: 
-		if ( mwOnLoadFuncitons.length ){
-			mw.setupMwEmbed();
-			return ;
-		}	
+		mwDomReadyFlag = true;	
+			
+		// Make sure we have all the module loader.js files included 
+		// ( where we are not using the script-loader )
+		mw.moduleLoaderCheck( function(){
+						
+			// Run dom ready hooks: 
+			while( mwOnDOMReadyFunctions.length ){
+				mwOnDOMReadyFunctions.pop()();
+			}
+						
+			
+			// Check for the force setup flag:
+			if ( mw.getConfig( 'runSetupMwEmbed' ) ){
+				mw.setupMwEmbed();
+				return ;
+			}				
+			
+			// Check for queued functions that use mw interfaces: 
+			if ( mwOnLoadFunctions.length ){
+				mw.setupMwEmbed();
+				return ;
+			}	
+		});
 	}	
-
+	/**
+	 * Utility jQuery bindings
+	 *  Setup after jQuery is available ). 
+	 */
+	mw.dojQueryBindings = function() {
+		mw.log( 'mw_jqueryBindings' );
+		( function( $ ) {
+		
+			/**
+			* Set a given selector html to the loading spinner:
+			*/
+			$.fn.loadingSpinner = function() {
+				if ( this ) {
+					$j( this ).html(
+						$j( '<div class="loading_spinner">' )  
+					 );
+				}			
+				return this;
+			}
+			
+			/**
+			* dragDrop file loader 
+			*/
+			$.fn.dragFileUpload = function ( conf ) {
+				if ( this.selector ) {
+					var _this = this;
+					// load the dragger and "setup"
+					mw.load( ['$j.fn.dragDropFile'], function() {
+						$j( _this.selector ).dragDropFile();
+					} );
+				}
+			}							
+	
+			/**
+			 *  Shortcut to a themed button
+			 *  Should be depreciated for $.button bellow
+			 */
+			$.btnHtml = function( msg, className, iconId, opt ) {
+				if ( !opt )
+					opt = { };
+				var href = ( opt.href ) ? opt.href : '#';
+				var target_attr = ( opt.target ) ? ' target="' + opt.target + '" ' : '';
+				var style_attr = ( opt.style ) ? ' style="' + opt.style + '" ' : '';
+				return '<a href="' + href + '" ' + target_attr + style_attr +
+					' class="ui-state-default ui-corner-all ui-icon_link ' +
+					className + '"><span class="ui-icon ui-icon-' + iconId + '" ></span>' +
+					'<span class="btnText">' + msg + '</span></a>';
+			}
+			
+			// Shortcut to jQuery button ( should replace all btnHtml with button )
+			var mw_default_button_options = {
+				// The class name for the button link
+				'class':'',
+				
+				// The style properties for the button link
+				'style': { },
+				
+				// The text of the button link
+				'text': '',
+				
+				// The icon id that precceeds the button link:
+				'icon_id': 'carat-1-n' 
+			}
+			$.button = function( options ) {
+				var options = $j.extend( mw_default_button_options, options);
+				
+				// Button: 
+				var $btn = $j('<a />')			
+					.attr('href', '#')
+					.addClass( 'ui-state-default ui-corner-all ui-icon_link' );
+				// Add css if set: 
+				if( options.css ){
+					$btn.css( options.css )
+				}
+									
+				if( options['class'] ){
+					$btn.addClass( options['class'] )
+				}	
+								
+				$btn.append(
+					$j('<span>').addClass( 'ui-icon ui-icon-' + options.icon_id ),
+					$j('<span>').addClass( 'btnText' )
+						.text( options.text )
+				);
+				return $btn;
+					
+			}
+			
+			// Shortcut to bind hover state
+			$.fn.buttonHover = function() {
+				$j( this ).hover(
+					function() {
+						$j( this ).addClass( 'ui-state-hover' );
+					},
+					function() {
+						$j( this ).removeClass( 'ui-state-hover' );
+					}
+				)
+				return this;
+			}
+			
+			/**
+			* Resize a dialog to fit the window
+			* @param {Object} options horizontal and vertical space ( default 50 )
+			*/
+			$.fn.dialogFitWindow = function( options ) {
+				var opt_default = { 'hspace':50, 'vspace':50 };
+				if ( !options )
+					var options = { };
+				options = $j.extend( opt_default, options );
+				$j( this.selector ).dialog( 'option', 'width', $j( window ).width() - options.hspace );
+				$j( this.selector ).dialog( 'option', 'height', $j( window ).height() - options.vspace );
+				$j( this.selector ).dialog( 'option', 'position', 'center' );
+					// update the child position: (some of this should be pushed up-stream via dialog config options
+				$j( this.selector + '~ .ui-dialog-buttonpane' ).css( {
+					'position':'absolute',
+					'left':'0px',
+					'right':'0px',
+					'bottom':'0px'
+				} );
+			}	
+			
+		} )( jQuery );
+	}
 } )( window.mw );
 
 
@@ -2611,129 +2757,4 @@ var mwCheckBody = function(){
 } 
 mwCheckBody();
 
-
-/**
- * Utility jQuery bindings
- *  Setup after jQuery is available ). 
- */
-function mwDojQueryBindings() {
-	mw.log( 'mw_jqueryBindings' );
-	( function( $ ) {
-	
-		/**
-		* Set a given selector html to the loading spinner:
-		*/
-		$.fn.loadingSpinner = function() {
-			if ( this ) {
-				$j( this ).html(
-					$j( '<div class="loading_spinner">' )  
-				 );
-			}			
-			return this;
-		}
-		
-		/**
-		* dragDrop file loader 
-		*/
-		$.fn.dragFileUpload = function ( conf ) {
-			if ( this.selector ) {
-				var _this = this;
-				// load the dragger and "setup"
-				mw.load( ['$j.fn.dragDropFile'], function() {
-					$j( _this.selector ).dragDropFile();
-				} );
-			}
-		}							
-
-		/**
-		 *  Shortcut to a themed button
-		 *  Should be depreciated for $.button bellow
-		 */
-		$.btnHtml = function( msg, className, iconId, opt ) {
-			if ( !opt )
-				opt = { };
-			var href = ( opt.href ) ? opt.href : '#';
-			var target_attr = ( opt.target ) ? ' target="' + opt.target + '" ' : '';
-			var style_attr = ( opt.style ) ? ' style="' + opt.style + '" ' : '';
-			return '<a href="' + href + '" ' + target_attr + style_attr +
-				' class="ui-state-default ui-corner-all ui-icon_link ' +
-				className + '"><span class="ui-icon ui-icon-' + iconId + '" ></span>' +
-				'<span class="btnText">' + msg + '</span></a>';
-		}
-		
-		// Shortcut to jQuery button ( should replace all btnHtml with button )
-		var mw_default_button_options = {
-			// The class name for the button link
-			'class':'',
-			
-			// The style properties for the button link
-			'style': { },
-			
-			// The text of the button link
-			'text': '',
-			
-			// The icon id that precceeds the button link:
-			'icon_id': 'carat-1-n' 
-		}
-		$.button = function( options ) {
-			var options = $j.extend( mw_default_button_options, options);
-			
-			// Button: 
-			var $btn = $j('<a />')			
-				.attr('href', '#')
-				.addClass( 'ui-state-default ui-corner-all ui-icon_link' );
-			// Add css if set: 
-			if( options.css ){
-				$btn.css( options.css )
-			}
-								
-			if( options['class'] ){
-				$btn.addClass( options['class'] )
-			}	
-							
-			$btn.append(
-				$j('<span>').addClass( 'ui-icon ui-icon-' + options.icon_id ),
-				$j('<span>').addClass( 'btnText' )
-					.text( options.text )
-			);
-			return $btn;
-				
-		}
-		
-		// Shortcut to bind hover state
-		$.fn.buttonHover = function() {
-			$j( this ).hover(
-				function() {
-					$j( this ).addClass( 'ui-state-hover' );
-				},
-				function() {
-					$j( this ).removeClass( 'ui-state-hover' );
-				}
-			)
-			return this;
-		}
-		
-		/**
-		* Resize a dialog to fit the window
-		* @param {Object} options horizontal and vertical space ( default 50 )
-		*/
-		$.fn.dialogFitWindow = function( options ) {
-			var opt_default = { 'hspace':50, 'vspace':50 };
-			if ( !options )
-				var options = { };
-			options = $j.extend( opt_default, options );
-			$j( this.selector ).dialog( 'option', 'width', $j( window ).width() - options.hspace );
-			$j( this.selector ).dialog( 'option', 'height', $j( window ).height() - options.vspace );
-			$j( this.selector ).dialog( 'option', 'position', 'center' );
-				// update the child position: (some of this should be pushed up-stream via dialog config options
-			$j( this.selector + '~ .ui-dialog-buttonpane' ).css( {
-				'position':'absolute',
-				'left':'0px',
-				'right':'0px',
-				'bottom':'0px'
-			} );
-		}	
-		
-	} )( jQuery );
-}
 

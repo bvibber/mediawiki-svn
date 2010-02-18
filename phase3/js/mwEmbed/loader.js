@@ -17,9 +17,11 @@
 *  of the module folder. 
 * 
 * A loader file should only include:
-*  Class paths of the module classes
-*  Sytle sheets of the module
-*  Loader function(s) that load module classes 
+*  * Class paths of the module classes
+*  * Style sheets of the module
+*  * Loader function(s) that load module classes
+*  * Any code you want run on all pages like checking the DOM 
+*  		for a tag that invokes your loader.  
 *
 * When using the scriptLoader the enabledModules loader code
 *  is transcluded into base mwEmbed class include.  
