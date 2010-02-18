@@ -329,6 +329,7 @@ $messages['lb'] = array(
 	'wikieditor' => "Erweiderten Interface fir d'Änner vu Wikitext",
 	'wikieditor-desc' => "Liwwert en erweiderbaren Interface fir d'Ännere vu Wikitext a vill Module mat Fonctiounen",
 	'wikieditor-wikitext-tab' => 'WikiText',
+	'wikieditor-loading' => 'Lueden',
 );
 
 /** Macedonian (Македонски)

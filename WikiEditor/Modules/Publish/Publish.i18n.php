@@ -85,16 +85,17 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor-publish-preference' => 'فعل النشر خطوه بخطوة',
 	'wikieditor-publish-button-publish' => 'انشر',
-	'wikieditor-publish-button-cancel' => 'ألغِ',
+	'wikieditor-publish-button-cancel' => 'كانسل',
 	'wikieditor-publish-dialog-title' => 'انشر فى {{SITENAME}}',
-	'wikieditor-publish-dialog-summary' => 'ملخص التعديل (اشرح باختصار التغييرات التى قمت بها):',
-	'wikieditor-publish-dialog-minor' => 'تعديل طفيف',
-	'wikieditor-publish-dialog-watch' => 'راقب هذه الصفحة',
+	'wikieditor-publish-dialog-summary' => 'ملخص التعديل (اشرح بإختصار التغييرات اللى عملتها):',
+	'wikieditor-publish-dialog-minor' => 'تعديل صغير',
+	'wikieditor-publish-dialog-watch' => 'راقب الصفحه دى',
 	'wikieditor-publish-dialog-publish' => 'انشر',
 	'wikieditor-publish-dialog-goback' => 'ارجع',
 );

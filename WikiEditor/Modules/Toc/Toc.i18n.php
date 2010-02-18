@@ -47,12 +47,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
-	'wikieditor-toc-show' => 'أظهر المحتويات',
-	'wikieditor-toc-hide' => 'أخفِ المحتويات',
+	'wikieditor-toc-show' => 'بيّن المحتويات',
+	'wikieditor-toc-hide' => 'خبّى المحتويات',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
