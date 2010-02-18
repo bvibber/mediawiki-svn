@@ -5,17 +5,19 @@
 
 mw.addMessages({
 	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",
+	
+	"fogg-transcoding" : "Encoding video to ogg",	
 	"fogg-select_file" : "Select file",	
 	"fogg-select_new_file" : "Select new file",
 	"fogg-select_url" : "Select URL",
-	"fogg-save_local_file" : "Save Ogg",
 	"fogg-check_for_firefogg" : "Checking for Firefogg...",
 	"fogg-installed" : "Firefogg is installed",
 	"fogg-for_improved_uploads" : "For improved uploads:",
-	"fogg-please_install" : "<a href=\"$1\">Install Firefogg<\/a>. More <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg\">about Firefogg<\/a>.",
+	"fogg-please-install" : "$1. More $2",
+	"fogg-please-install-install-linktext" : "Install firefogg",
+	"fogg-please-install-about-linktext" : "about firefogg",
 	"fogg-use_latest_firefox" : "Please first install <a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=firefogg\">Firefox 3.5<\/a> (or later). <i>Then revisit this page to install the <b>Firefogg<\/b> extension.<\/i>",
-	"fogg-passthrough_mode" : "Your selected file is already Ogg or not a video file",
-	"fogg-transcoding" : "Encoding video to Ogg...",
+	"fogg-passthrough_mode" : "Your selected file is already ogg or not a video file",	
 	"fogg-encoding-done" : "Encoding complete",
 	"fogg-badtoken" : "Token is not valid",
 	"fogg-preview" : "Preview video",
@@ -307,9 +309,22 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			// Otherwise show the "install Firefogg" message
 			var upMsg = ( _this.form_type == 'upload' ) ? gM( 'fogg-for_improved_uploads' ) : '';
 			var firefoggUrl = _this.getFirefoggInstallUrl();
-			if( firefoggUrl ){
+			if( firefoggUrl ){			
 				$j( _this.target_please_install )
-					.html( upMsg + gM( 'fogg-please_install', firefoggUrl ) )
+					.html( upMsg + 
+						gM( 'fogg-please-install', [					
+							// Install link
+							$j('<a />')
+							.text( gM( "fogg-please-install-install-linktext" ) )
+							.attr('href', firefoggUrl ),
+							
+							// About link
+							$j('<a />')
+							.text( gM( "fogg-please-install-about-linktext" ) )
+							.attr( 'href', 'http://commons.wikimedia.org/wiki/Commons:Firefogg' ) 
+							
+						])					
+					)
 					.css( 'padding', '10px' )
 					.show();
 			}
@@ -675,6 +690,13 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			mw.log( 'doLocalEncodeAndSave: no Firefogg object!' );
 			return false;
 		}
+		// Setup the interface progress indicator:
+		_this.interface.setup( { 'title' : gM( 'fogg-transcoding' ) } );
+		
+		// Add the preview controls if transcoding:  
+		if ( !_this.getEncoderSettings()['passthrough'] ) {
+			_this.createPreviewControls();
+		}
 		
 		// Set up the target location
 		// Firefogg shows the "save as" dialog box, and sets the path chosen as 
@@ -704,10 +726,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		_this.interface.setPrompt( gM( 'fogg-encoding-done' ),
 			gM( 'fogg-encoding-done' ) + '<br>' +
 			//show the video at full resolution upto 720px wide
-			'<video controls="true" style="margin:auto" id="fogg_final_vid" src="' +
-				_this.fogg.previewUrl + '"></video>'
+			'<video controls="true" style="margin:auto" id="fogg_final_vid" '+ 
+			'src="' +_this.fogg.previewUrl + '"></video>'
 		);
-		//load the video and set a callback:
+		//Load the video and set a callback:
 		var v = $j( '#fogg_final_vid' ).get( 0 );
 		function resizeVid() {
 			var v = $j( '#fogg_final_vid' ).get(0);
@@ -1011,6 +1033,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 		// Show transcode status:
 		$j( '#up-status-state' ).html( gM( 'mwe-upload-transcoded-status' ) );
+		
 
 		// Setup a local function for timed callback:
 		var encodingStatus = function() {

@@ -66,8 +66,7 @@ mw.documentHasPlayerTags = function(){
 
 // Add a dom ready check for player tags
 mw.addDOMReadyHook( function(){
-
-	if( mw.documentHasPlayerTags ){		
+	if( mw.documentHasPlayerTags() ) {
 		// Add the setup hook since we have player tags
 		mw.addSetupHook( function( callback ){
 			// Load the embedPlayer module ( then run queued hooks )

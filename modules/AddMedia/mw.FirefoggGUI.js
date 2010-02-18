@@ -3,6 +3,7 @@
  */
 
 mw.addMessages({
+	"fogg-save_local_file" : "Save Ogg",
 	"fogg-help-sticky" : "Help (click to stick)",
 	"fogg-cg-preset" : "Preset: <strong>$1<\/strong>",
 	"fogg-cg-quality" : "Basic quality and resolution control",
@@ -298,7 +299,7 @@ mw.FirefoggGUI.prototype = {
 	},
 
 	/**
-	 * Initialise this object
+	 * Initialize this object
 	 */
 	init: function( options ) {	
 		
@@ -323,7 +324,7 @@ mw.FirefoggGUI.prototype = {
 
 	setupForm: function() {				
 		//empty out the selector: 
-		$j(this.selector).empty();
+		$j( this.selector ).empty();
 		this.createControls();
 		this.bindControls();
 	},
@@ -515,6 +516,7 @@ mw.FirefoggGUI.prototype = {
 	 * Show a dialog box asking the user to select a source URL.
 	 * FIXME: half-written, doesn't work at all. 
 	 */
+	/*
 	selectSourceUrl: function() {
 		// FIXME: i18n
 		var url = prompt( "Please enter the source media url you would like " + 
@@ -534,6 +536,7 @@ mw.FirefoggGUI.prototype = {
 			.val( url )
 			.removeAttr( 'readonly' );
 	},
+	*/
 
 	bindControls: function() {
 		var _this = this;
@@ -900,7 +903,8 @@ mw.FirefoggGUI.prototype = {
 			}
 			setValues( k, val, maxVal );
 		}
-		// video stream settings
+		
+		// Video stream settings
 		for ( var i in fileInfo.video[0] ) {
 			var val = fileInfo.video[0][i];
 			var k = false;
@@ -914,7 +918,8 @@ mw.FirefoggGUI.prototype = {
 			}
 			setValues( k, val, maxVal );
 		}
-		// audio stream settings, assumes for now there is only one stream
+		
+		// Audio stream settings, assumes for now there is only one stream
 		for ( var i in fileInfo.audio[0] ) {
 			var val = fileInfo.audio[0][i];
 			var k = false;
