@@ -30,7 +30,8 @@ mw.addMessages( {
 	"mwe-cc_sa_title" : "Share Alike",
 	"mwe-cc_pd_title" : "Public Domain",
 	"mwe-unknown_license" : "Unknown license",
-	"mwe-no_import_by_url" : "This user or wiki <b>cannot<\/b> import assets from remote URLs.<p>Do you need to login?<\/p><p>Is upload_by_url permission set for you?<br \/>Does the wiki have <a href=\"http:\/\/www.mediawiki.org\/wiki\/Manual:$wgAllowCopyUploads\">$wgAllowCopyUploads<\/a> enabled?<\/p>",
+	"mwe-no-import-by-url" : "This user or wiki <b>cannot<\/b> import assets from remote URLs.<p>Do you need to login?<\/p><p>Is upload_by_url permission set for you?<br \/>Does the wiki have $1 enabled?<\/p>",
+	"mwe-no-import-by-url-linktext" : "$wgAllowCopyUploads",
 	"mwe-results_from" : "Results from <a href=\"$1\" target=\"_new\" >$2<\/a>",
 	"mwe-missing_desc_see_source" : "This asset is missing a description. Please see the [$1 original source] and help describe it.",
 	"rsd_config_error" : "Add media wizard configuration error: $1",
@@ -232,7 +233,7 @@ mw.RemoteSearchDriver.prototype = {
 		*
 		* 	@check_shared :  if we should check for shared repository asset
 		*
-		 */
+	 	*/
 		 
 		/*
 		* Local wiki search
@@ -267,7 +268,9 @@ mw.RemoteSearchDriver.prototype = {
 			'api_url': 'http://commons.wikimedia.org/w/api.php',
 			'lib': 'mediaWiki',
 			'tab_img': true,
-			'resource_prefix': 'WC_', // prefix on imported resources (not applicable if the repository is local)
+			
+			// Prefix on imported resources (not applicable if the repository is local)
+			'resource_prefix': 'WC_', 
 
 			// Commons can be enabled as a remote repo do check shared 
 			'check_shared': true,
@@ -1256,12 +1259,19 @@ mw.RemoteSearchDriver.prototype = {
 			return false;
 		} else if ( !this.isProviderLocal( provider ) && this.import_url_mode == 'none' ) {
 			if (  this.current_provider == 'combined' ) {
-				// combined results are harder to error handle just ignore that repo
+				// Combined results are harder to error handle just ignore that repo
 				provider.sObj.loading = false;
 			} else {
-				this.$resultsContainer.html( 
-					gM( 'mwe-no_import_by_url' ) 
-				)
+				this.$resultsContainer.html (
+					gM( 'mwe-no-import-by-url', 
+						$j('<a />')
+						.attr({
+							'href' : 'http:\/\/www.mediawiki.org\/wiki\/Manual:$wgAllowCopyUploads',
+							'title' : gM( 'mwe-no-import-by-url-linktext' )
+						})
+						.text( gM( 'mwe-no-import-by-url-linktext' ) )
+					)
+				);
 			}
 			return false;
 		}

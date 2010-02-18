@@ -17,7 +17,18 @@ mw.setConfig( 'textInterface', 'auto' );
 // NOTE: Each player instance can also specify a provider  
 mw.setConfig( 'timedTextProvider', 'commons' );
 
-// Add class file paths ( From ROOT )
+// What tags will be re-written to video player by default
+// Set to empty string or null to avoid automatic tag rewrites 
+mw.setConfig( 'rewritePlayerTags', 'video,audio,playlist' );
+
+// Default video size ( if no size provided )
+mw.setConfig( 'video_size', '400x300' );
+	
+// If the k-skin video player should attribute kaltura
+mw.setConfig( 'k_attribution', true );
+
+
+// Add class file paths 
 mw.addClassFilePaths( {
 	"mw.EmbedPlayer"	: "modules/EmbedPlayer/mw.EmbedPlayer.js",
 	"flowplayerEmbed"	: "modules/EmbedPlayer/flowplayerEmbed.js",
@@ -28,7 +39,6 @@ mw.addClassFilePaths( {
 	"nativeEmbed"		: "modules/EmbedPlayer/nativeEmbed.js",
 	"quicktimeEmbed"	: "modules/EmbedPlayer/quicktimeEmbed.js",
 	"vlcEmbed"			: "modules/EmbedPlayer/vlcEmbed.js"
-
 } );
 
 // Add style sheet dependencies ( From ROOT )
@@ -36,6 +46,45 @@ mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/EmbedPlayer.css",
 	"mvpcfConfig" : "skins/mvpcf/EmbedPlayer.css"	
 } );
+ 
+/**
+* Check the current DOM for any tags in "rewritePlayerTags"
+* 
+* NOTE: this function can be part of setup can run prior to jQuery being ready
+*/
+mw.documentHasPlayerTags = function(){
+	var rewriteTags = mw.getConfig( 'rewritePlayerTags' );			
+	if( rewriteTags ){
+		var jtags = rewriteTags.split( ',' );
+		for ( var i = 0; i < jtags.length; i++ ) {	
+			if( document.getElementsByTagName( jtags[i] )[0] )
+				return true;
+		};
+	}
+	return false;
+}	
+
+// Add a dom ready check for player tags
+mw.addDOMReadyHook( function(){
+
+	if( mw.documentHasPlayerTags ){		
+		// Add the setup hook since we have player tags
+		mw.addSetupHook( function( callback ){
+			// Load the embedPlayer module ( then run queued hooks )
+			mw.load( 'EmbedPlayer', function ( ) {
+				// Rewrite the rewritePlayerTags with the 
+				$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();				
+				// Run the setup callback now that we have setup all the players
+				callback();
+			})
+		});
+	
+		// Tell mwEmbed to run setup
+		mw.setConfig( 'runSetupMwEmbed', true );			
+	}
+});
+
+
 
 // Add the module loader function:
 mw.addModuleLoader( 'EmbedPlayer', function( callback ){
@@ -54,6 +103,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 			'JSON'
 		],
 		[
+			'$j.fn.menu',
 			'$j.ui.slider'
 		]
 	];
@@ -61,10 +111,12 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	var addTimedTextReqFlag = false;
 	
 	// Merge in the timed text libs 
-	if( mw.getConfig( 'textInterface' ) == 'always' )		
+	if( mw.getConfig( 'textInterface' ) == 'always' ){		
 		addTimedTextReqFlag = true;	
+	}
 		
-		
+	// Get the class of all embed video elements 
+	// to add the skin to the load request
 	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function(){
 		var playerElement = this;		
 		var cName = $j( playerElement ).attr( 'class' );
@@ -78,6 +130,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 		//Also add the text library to request set if any video element has text sources:
 		if(!addTimedTextReqFlag){
 			if( $j( playerElement ).find( 'itext' ).length != 0 ){
+				// Has an itext child include timed text request
 				addTimedTextReqFlag = true;
 			}else{			
 				$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
@@ -94,10 +147,10 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	
 	// Add timed text items if flag set.  	
 	if( addTimedTextReqFlag ){
-		dependencyRequest[0].push( '$j.fn.menu', 'mw.TimedText' )
+		dependencyRequest[0].push( 'mw.TimedText' )
 	}
 	
-	// Add PNG fix if needed:
+	// Add PNG fix code needed:
 	if ( $j.browser.msie || $j.browser.version < 7 ){
 		dependencyRequest[0].push( '$j.fn.pngFix' );
 	}
