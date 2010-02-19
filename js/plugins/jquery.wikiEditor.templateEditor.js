@@ -71,7 +71,8 @@ evt: {
 						splitPs: model.isCollapsible(),
 						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
 						beforeUnwrap: function( node ) {
-							$( node ).data( 'display' ).remove();
+							// FIXME: $( node ).data( 'display' ) doesn't exist any more
+							//$( node ).data( 'display' ).remove();
 						},
 						onSkip: function() { }, // TODO update template info
 						getAnchor: function( ca1, ca2 ) {
