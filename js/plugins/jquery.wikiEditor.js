@@ -405,6 +405,11 @@ if ( typeof context == 'undefined' ) {
 			setTimeout( function() {
 				// Unwrap the span found in webkit copies
 				context.$content.find( 'link, style, meta' ).remove(); //MS Word
+				context.$content.find('p:not(.wikiEditor) p:not(.wikiEditor)') //MS Word+webkit
+								.each( function(){
+										var outerParent = $(this).parent();
+										outerParent.replaceWith( outerParent.childNodes() );
+								});
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$( this.childNodes ).insertBefore( this );
 				} ).remove(); //Apple Richtext
