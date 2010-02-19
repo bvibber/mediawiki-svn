@@ -90,7 +90,7 @@ class FindSettings extends Maintenance {
 				'egValidatorDir',
 				'wgWatchersAddCache',
 				'wgWikiArticleFeedsParser', 'wgWikiFeedPresent',
-				'wgWikilogStylePath',
+				'wgWikilogStyleVersion',
 			);
 			$ignoreObsolete = array(
 				'wgCommentSpammerLog',
