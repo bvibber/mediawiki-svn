@@ -6739,7 +6739,6 @@ if ( typeof context == 'undefined' ) {
 		 * processing of events which did not actually change the content of the iframe.
 		 */
 		'keydown': function( event ) {
-
 			switch ( event.which ) {
 				case 90: // z
 					if ( ( event.ctrlKey || event.metaKey ) && context.history.length ) {
@@ -6775,6 +6774,32 @@ if ( typeof context == 'undefined' ) {
 						// Prevent the browser from jumping in and doing its stuff
 						return false;
 					}
+					break;
+				case 89: //y
+					// ctrl + y handler for IE
+					if ( ( event.ctrlKey || event.metaKey ) && context.history.length && $.browser.msie ) {
+						newPosition = context.historyPosition + 1;
+						// Only act if we are switching to a valid state
+						if ( newPosition >= ( context.history.length * -1 ) && newPosition < 0 ) {
+							// Make sure we run the history storing code before we make this change
+							context.fn.updateHistory( context.oldDelayedHTML != context.$content.html() );
+							context.oldDelayedHistoryPosition = context.historyPosition;
+							context.historyPosition = newPosition;
+							// Change state
+							// FIXME: Destroys event handlers, will be a problem with template folding
+							context.$content.html(
+								context.history[context.history.length + context.historyPosition].html
+							);
+							context.fn.purgeOffsets();
+							if( context.history[context.history.length + context.historyPosition].sel ) {
+								context.fn.setSelection( { 
+									start: context.history[context.history.length + context.historyPosition].sel[0],
+									end: context.history[context.history.length + context.historyPosition].sel[1]
+								} );
+							}
+						}
+					}
+					return false;
 					break;
 					// Intercept all tab events to provide consisten behavior across browsers
 					// Webkit browsers insert tab characters by default into the iframe rather than changing input focus
@@ -6838,6 +6863,11 @@ if ( typeof context == 'undefined' ) {
 			setTimeout( function() {
 				// Unwrap the span found in webkit copies
 				context.$content.find( 'link, style, meta' ).remove(); //MS Word
+				context.$content.find('p:not(.wikiEditor) p:not(.wikiEditor)') //MS Word+webkit
+								.each( function(){
+										var outerParent = $(this).parent();
+										outerParent.replaceWith( outerParent.childNodes() );
+								});
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$( this.childNodes ).insertBefore( this );
 				} ).remove(); //Apple Richtext
