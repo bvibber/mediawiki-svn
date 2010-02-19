@@ -28,67 +28,7 @@ if ( !window['mw'] ) {
 /*
 * Set the mwEmbedVersion ( not set by stopgap )
 */
-var MW_EMBED_VERSION = '1.1a';
-
-/**
-* Default global config values. Configuration values are set via mw.setConfig
-* Configuration values should generally be set prior to dom-ready 
-*/  	
-var mwDefaultConf = {
-
-	// Default skin name
-	'skinName' : 'mvpcf',
-	
-	// Default jquery ui skin name
-	'jQueryUISkin' : 'redmond',	
-	
-	/**
-	* If jQuery / mwEmbed should be loaded.
-	*
-	* This flag is automatically set to true if: 
-	*  Any script calls mw.ready ( callback_function )
-	*  Page DOM includes any tags set in config.rewritePlayerTags at onDomReady 
-	*  ( embedPlayer module )
-	*
-	* This flag increases page performance on pages that do not use mwEmbed 
-	* and don't already load jQuery 
-	*
-	* For example when including the mwEmbed.js in your blog template 
-	* mwEmbed will only load extra js on blog posts that include the video tag.
-	*
-	* NOTE: Future architecture will probably do away with this flag and refactor it into 
-	* a smaller "remotePageMwEmbed.js" script similar to ../remoteMwEmbed.js
-	*/ 
-	'runSetupMwEmbed' : false,	
-
-	// The mediaWiki path of mvEmbed  
-	'mediaWiki_mwEmbedPath' : 'js/mwEmbed/',
-	
-	// Api actions that must be submitted in a POST, and need an api proxy for cross domain calls
-	'apiPostActions': [ 'login', 'purge', 'rollback', 'delete', 'undelete',
-		'protect', 'block', 'unblock', 'move', 'edit', 'upload', 'emailuser',
-		'import', 'userrights' ],
-	
-	//If we are in debug mode ( results in fresh debug javascript includes )
-	'debug' : false,
-	
-	// Valid language codes ( has a file in /includes/languages/classes/Language{code}.js )
-	// TODO: mirror the mediaWiki language "fallback" system
-	'languageCodeList': ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
-		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',
-		'hr', 'hsb', 'hy', 'ksh', 'ln', 'lt', 'lv', 'mg', 'mk', 'mo', 'mt',
-		'nso', 'pl', 'pt_br', 'ro', 'ru', 'se', 'sh', 'sk', 'sl', 'sma',
-		'sr_ec', 'sr_el', 'sr', 'ti', 'tl', 'uk', 'wa'
-	],
-	
-	// Default user language is "en" Can be overwritten by: 
-	// 	"uselang" url param 
-	// 	wgUserLang global  
-	'userLanguage' : 'en',
-	
-	// Set the default providers ( you can add more provider via {provider_id}_apiurl = $api_url	  
-	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
-};
+var MW_EMBED_VERSION = '1.1d';
 
 /**
 * The global mw object:
@@ -102,7 +42,7 @@ var mwDefaultConf = {
 	mw.valid_skins = [ 'mvpcf', 'kskin' ];
 	
 	// The version of mwEmbed
-	mw.version = '1.1';	
+	mw.version = MW_EMBED_VERSION	
 
 	/**
 	* Configuration System: 
@@ -119,20 +59,43 @@ var mwDefaultConf = {
 	//Local scope mwUserConfig var. Stores user configuration 
 	var mwUserConfig = { };
 	
-	for( var i in mwDefaultConf ){
-		if( typeof mwConfig[ i ] == 'undefined' )
-			mwConfig[ i ] = mwDefaultConf[ i ];
-	}		
-	
 	/**
 	* Setter for configuration values
 	*
-	* @param {String} name Name of configuration value
+	* @param [Mixed] name Name of configuration value
+	*	{Object} Will iderate through each key and call setConfig
+	* 	{String} Will set configuration by string name to value
 	* @param {String} value Value of configuration name 
 	*/
-	mw.setConfig = function ( name, value ){
+	mw.setConfig = function ( name, value ) {
+		if( typeof name == 'object' ){
+			for( var i in name ){
+				mw.setConfig( i, name[ i ] );
+			}
+		}
 		mwConfig[ name ] = value;
 	}	
+	
+	/**
+	* Set a default config value 
+	* Will only update configuration if no value is present
+	* @param [Mixed] name 
+	*	{Object} Will iderate through each key and call setDefaultConfig
+	* 	{String} Will set configuration by string name to value
+	* @param [Mixed] value Set configuration name to value
+	*/
+	mw.setDefaultConfig = function( name, value ) {	
+		if( typeof name == 'object' ){
+			for( var i in name ){
+				mw.setDefaultConfig( i, name[ i ] ); 
+			}
+			return ;
+		}	
+		// Name is a string update the config directly	
+		if( ! mwConfig[ name ] ){
+			mwConfig[ name ] = value;
+		}
+	}
 	
 	/**
 	* Getter for configuration values
@@ -277,11 +240,11 @@ var mwDefaultConf = {
 	* Swap in an array of values for $1, $2, $n for a given msg key 
 	*
 	* @param string msgKey The msg key to lookup
-	* @param [mixed] args  An array of string or jquery objects to be swaped in
+	* @param [mixed] args  An array of string or jquery objects to be swapped in
 	* @return string
 	*/
 	mw.lang.msgReplaceArgs = function( message , args ) {		
-		// replace values
+		// Replace Values
 		if ( typeof args == 'object' || typeof args == 'array' ) {
 			for ( var v =0; v < args.length; v++ ) {				
 				if( typeof args[v] == 'undefined' ){
@@ -523,9 +486,11 @@ var mwDefaultConf = {
 		size = Math.round( size * p ) / p;
 		return gM( msg , size );
 	};
+	
 	/**
 	 * Format a number
 	 * @param {Number} num Number to be formated
+	 * NOTE: add il8n support to includes/lanuages/class/Language{langCode}.js
 	 */
 	mw.lang.formatNumber = function( num ) {
 		/*
@@ -569,9 +534,10 @@ var mwDefaultConf = {
 			// invalidate the output (will force a re-parse )
 			this.pOut = '';
 		},
+		
 		/**
 		 * Quickly recursive / parse out templates:
-		 * This parser only really only tested against msg templates see tests/testLang.html
+		 * This parser is only tested against msg templates see tests/testLang.html
 		 */
 		parse : function() {
 			function rdpp ( txt , cn ) {
@@ -594,7 +560,7 @@ var mwDefaultConf = {
 					}
 					if ( !node['t'] )
 						node['t'] = '';
-					// don't put closures into output:
+					// Don't put }} closures into output:
 					if ( txt[a] &&  txt[a] != '}' )
 							node['t'] += txt[a];
 							
@@ -692,12 +658,14 @@ var mwDefaultConf = {
 					return getMagicTxtFromTempNode( node );
 				}
 			}
-			// parse out the template node structure:
+			
+			// Parse out the template node structure:
 			this.pNode = rdpp ( this.wikiText );
-			// strip out the parent from the root	
+			
+			// Strip out the parent from the root	
 			this.pNode['p'] = null;
 			
-			// do the recursive magic swap text:
+			// Do the recursive magic swap text:
 			this.pOut = recurse_magic_swap( this.pNode );
 		},
 		
@@ -835,7 +803,7 @@ var mwDefaultConf = {
 		}
 		
 		/**
-		* Runs all the hooks by a given name with refrence to the host object
+		* Runs all the hooks by a given name with reference to the host object
 		*
 		* Should be called by the host object at named execution points 
 		* 
@@ -935,7 +903,7 @@ var mwDefaultConf = {
 				typeof ( this.moduleLoaders[ loadRequest ] ) == 'function' 
 			){
 				mw.log("mw.load: loadModule:" + loadRequest );
-				//Run the module with the parent callback 
+				// Run the module with the parent callback 
 				this.moduleLoaders[ loadRequest ]( callback );	
 				return ;
 			}
@@ -995,8 +963,9 @@ var mwDefaultConf = {
 					loadStates[ loadName ] = 0;					
 				}		
 			}	
+			
 			// We are infact loading many:
-			mw.log("mw.load: LoadMany:: 	" + loadSet );
+			mw.log("mw.load: LoadMany:: " + loadSet );
 						
 			// Issue the load request check check loadStates to see if we are "done"
 			for( var loadName in loadStates ){				
@@ -1280,7 +1249,7 @@ var mwDefaultConf = {
 			callback( requestName )
 		}
 		// Add it to the function queue
-		if( ! mwLoadDoneCB[ requestName ] ){
+		if( ! mwLoadDoneCB[ requestName ] || mwLoadDoneCB[ requestName ].length ){
 			mwLoadDoneCB[ requestName ] = [];
 		}
 		mwLoadDoneCB[ requestName ].push( callback );
@@ -1332,11 +1301,11 @@ var mwDefaultConf = {
 	
 	/**
 	* 
-	* Shortcut to latest revision text of a given title
+	* Shortcut to latest revision text for a given title
 	* 
 	* Assumes "follow redirects" 
 	* 
-	* $j.getTitleText( [url], title, callback )
+	* $j.getTitleText( [apiUrl], title, callback )
 	*  
 	* @param {String} url or title key
 	* @parma {Mixed} title or callback function
@@ -1970,7 +1939,7 @@ var mwDefaultConf = {
 		// Check for scriptLoader include of mwEmbed: 
 		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1 ) {
 			// Script loader is in the root of MediaWiki, Include the default mwEmbed extension path:
-			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + mw.getConfig( 'mediaWiki_mwEmbedPath' );						
+			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + mw.getConfig( 'mediaWikiEmbedPath' );						
 		}
 		
 		// Script-loader has jsScriptLoader name when local:
@@ -2415,12 +2384,15 @@ var mwDefaultConf = {
 		mw.log( 'doLoaderCheck::' );
 		// Check if we are using scriptloader ( handles loader include automatically ) 
 		if( mw.getScriptLoaderPath() ){
-			callback();	
+			// Do a async call to callback in cases where DOM is ready before we get to 
+			// loader config code in the same file. 
+			setTimeout(function(){
+				callback();				
+			}, 1000);
 			return ;
 		}
 		// Add the Core loader to the request
-		mw.load( 'loader.js', function(){		
-				
+		mw.load( 'loader.js', function(){					
 			// Load all the "loaders" of the enabled modules:
 			var loaderRequest = [];			
 			var enabledModules = mw.getConfig( 'enabledModules' );		
@@ -2439,6 +2411,9 @@ var mwDefaultConf = {
 								 
 			mw.setConfig('loaderContext', '' );
 			mw.load( loaderRequest, function(){
+				mw.log( 'Done moduleLoaderCheck request' );
+				// Set the mwModuleLoaderCheckFlag flag to true
+				mwModuleLoaderCheckFlag = true;
 				callback();
 			} );
 		} );				
@@ -2484,7 +2459,10 @@ var mwDefaultConf = {
 	// Flag to register the domReady has been called
 	var mwDomReadyFlag = false;
 	
-	// Functions to run on DOM ready	
+	// Flag to register if the domreadyHooks have been called
+	var mwModuleLoaderCheckFlag = false;
+	
+	// Functions to run on DOM ready
 	var mwOnDOMReadyFunctions = [];
 	
 	/**
@@ -2496,12 +2474,13 @@ var mwDefaultConf = {
 	*
 	* @param {Function} callback Function to be called at dom ready
 	*/
-	mw.addDOMReadyHook = function( callback ) {
-		//mw.log( 'addDOMReadyHook::' );
-		if ( ! mwDomReadyFlag ) {
-			mwOnDOMReadyFunctions.push( callback );
-		} else {	
+	mw.addDOMReadyHook = function( callback ) {	
+		if ( mwModuleLoaderCheckFlag ) {
+			mw.log( "Possible Error: calling mw.addDOMReadyHook after moduleLoader check" );		
 			callback ( );
+		} else {							
+			// Add the dom ready check to the function queue: 
+			mwOnDOMReadyFunctions.push( callback );
 		}
 	}
 
@@ -2510,22 +2489,22 @@ var mwDefaultConf = {
  	* Will check configuration and issue a mw.setupMwEmbed call if needed
 	*/
 	mw.domReady = function ( ) {
-		if( mwDomReadyFlag )
-			return ;			
-		mw.log( 'run:domReady' );
+		if( mwDomReadyFlag ){
+			return ;		
+		}	
+		mw.log( 'run:domReady:: ' + document.getElementsByTagName('video').length );
 		// Set the onDomReady Flag
 		mwDomReadyFlag = true;	
 			
 		// Make sure we have all the module loader.js files included 
 		// ( where we are not using the script-loader )
-		mw.moduleLoaderCheck( function( ) {
-						
+		mw.moduleLoaderCheck( function( ) {	
+				
 			// Run dom ready hooks: 
 			while( mwOnDOMReadyFunctions.length ) {
 				mwOnDOMReadyFunctions.pop()();
 			}
-						
-			
+												
 			// Check for the force setup flag:
 			if ( mw.getConfig( 'runSetupMwEmbed' ) ) {
 				mw.setupMwEmbed();
@@ -2742,10 +2721,11 @@ function domReadyCheck() {
     window.onload = i;
   }
 })( domReadyCheck );
+
 // As a backup check if "body" is not null ( for dynamic inserts )
 // ( mw.domReady ignores multiple ready calls )
 var mwCheckBody = function( ) {
-	if( document.getElementsByTagName('body')[0] ){
+	if( document.getElementsByTagName( 'body' )[0] ){
 		 mw.domReady();
 	}else{
 		setTimeout( function( ) {
@@ -2753,6 +2733,10 @@ var mwCheckBody = function( ) {
 		}, 25);
 	}
 } 
-mwCheckBody();
-
+// Call with substatial timeout of 250ms
+// ( This is just fallback method for 
+//  dynamic inserts of mwEmbed ( rare ) )
+setTimeout( function( ) {
+	mwCheckBody();
+}, 250);
 

@@ -27,46 +27,43 @@ var nativeEmbed = {
 	
 	// Native player supported feature set
 	supports: {
-		'play_head':true,
-		'pause':true,
-		'fullscreen':false,
-		'time_display':true,
-		'volume_control':true,
+		'playHead' : true,
+		'pause' : true,
+		'fullscreen' : false,
+		'timeDisplay' : true,
+		'volumeControl' : true,
 		
-		'overlays':true,
-		'playlist_swap_loader':true // if the object supports playlist functions		
+		'overlays' : true,
+		// if the object supports playlist functions
+		'playlist_swap_loader' : true 		
 	},	
 	
 	/**
 	* Return the embed code
 	*/
-	getEmbedHTML : function () {
+	doEmbedHTML : function () {
 		var _this = this;
-		var embed_code =  this.getEmbedObj();
-		mw.log( "embed code: " + embed_code )
+		
+		mw.log( "native play url:" + this.getSrc() + ' startOffset: ' + this.start_ntp + ' end: ' + this.end_ntp );
+		
+		$j( this ).html(
+			$j( '<video />' )
+			.attr( {
+				'id' : this.pid,
+				'autoplay' : "true",
+				'src' : this.getSrc()
+			} )
+			.css( {
+				'width' : this.width,
+				'height' : this.height
+			} )
+		)		
+		mw.log( "Embed code: " + $j( this ).html() )
+		
 		setTimeout( function(){
 			_this.postEmbedJS();
-		}, 150 );
-		return embed_code;
+		}, 150 );		
 	},
-	
-	/**
-	* Get the native embed  code
-	*/
-	getEmbedObj: function() {
-		// We want to let mwEmbed handle the controls so notice the absence of control attribute
-		// controls=false results in controls being displayed: 
-		// http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html		
-		mw.log( "native play url:" + this.getSrc() + ' startOffset: ' + this.start_ntp + ' end: ' + this.end_ntp );
-		var eb = '<video ' +
-					'id="' + this.pid + '" ' +
-					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
-					'width="' + this.width + '" height="' + this.height + '" ' +					
-					'autoplay="true" ' + 
-					'src="' + this.getSrc() + '" >' +				
-				 '</video>';
-		return eb;
-	},	
 	
 	/**
 	* Post element javascript, binds event listeners and starts monitor 

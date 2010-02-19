@@ -8,9 +8,6 @@
 * 
 */
 
-// The global player list per page
-mw.playerList = new Array();
-
 mw.addMessages( {
 	"mwe-loading_plugin" : "loading plugin ...",
 	"mwe-select_playback" : "Set playback preference",
@@ -42,6 +39,7 @@ mw.addMessages( {
 	"mwe-no-player" : "No player available for $1", 
 	"mwe-share_this_video" : "Share this video",
 	"mwe-video_credits" : "Video credits",
+	"mwe-kaltura-platform-title" : "Kaltura open source video platform",
 	"mwe-menu_btn" : "Menu",
 	"mwe-close_btn" : "Close",
 	"mwe-ogg-player-vlc-player" : "VLC player",
@@ -171,7 +169,7 @@ var default_video_attributes = {
  * The base source attribute checks
  * also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
  */
-var default_source_attributes = new Array(
+var default_source_attributes = [
 	// source id
 	'id',
 	
@@ -210,15 +208,12 @@ var default_source_attributes = new Array(
 	// titleKey ( used for api lookups )  
 	'titleKey',
 	
-	// The provider type ( for what type of api querie to make )
+	// The provider type ( for what type of api query to make )
 	'provider_type',
 													
 	// The api url for the provider
 	'provider_url'  
-);
-
-// Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
-mw.setConfig( 'show_player_warning', true );
+];
 
 /**
 * Adds jQuery binding for embedPlayer  
@@ -397,7 +392,8 @@ EmbedPlayerManager.prototype = {
 			switch( element.tagName.toLowerCase() ) {
 				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
-					mw.load( 'mw.PlayList', function() {						
+					mw.load( 'mw.PlayList', function() {
+					
 						// Create playlist player interface
 						var playlistPlayer = new mw.PlayList( element, attributes );
 						
@@ -427,7 +423,7 @@ EmbedPlayerManager.prototype = {
 					}
 									
 					if( waitForMeta ){
-						mw.log(" WaitForMeta ( video missing height, width or duration )");
+						mw.log(" WaitForMeta ( video missing height, width or duration )" );
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
 						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
@@ -460,15 +456,9 @@ EmbedPlayerManager.prototype = {
 				swapPlayerElement[ method ] = playerInterface[ method ];
 			}
 		}
-				  
+		
 		// Remove the targetElement
 		$j( targetElement ).replaceWith( swapPlayerElement );
-			
-		// Now Swap out the video element for the embed_video obj:	  
-		//$j( targetElement )
-		// Put the swapPlayerElement after the targetElement
-		//.after( swapPlayerElement );
-		//$j( targetElement ).remove();
 		
 		// Set swapPlayerElement has height / width set and set to loading:		
 		$j( swapPlayerElement ).css( {			
@@ -1578,8 +1568,8 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* Get the plugin embed html ( should be implemented by embed player interface )
 	*/
-	getEmbedHTML : function() {
-		return 'Error: function getEmbedHTML should be implemented by embed player interface ';
+	doEmbedHTML : function() {
+		return 'Error: function doEmbedHTML should be implemented by embed player interface ';
 	},
 	
 	/**
@@ -1628,8 +1618,8 @@ mw.EmbedPlayer.prototype = {
 		
 		// Make sure the player is		
 		mw.log( 'performing embed for ' + _this.id );
-		// mw.log('should embed:' + embed_code);
-		$j( '#' + _this.id ).html( _this.getEmbedHTML() );
+		// mw.log('should embed:' + embed_code);		
+		_this.doEmbedHTML() 		
 	},
 	/**
 	* Searches for related clips from titleKey
@@ -1711,7 +1701,7 @@ mw.EmbedPlayer.prototype = {
 	onClipDone:function() {
 		mw.log( 'base:onClipDone' );
 		
-		// stop the clip (load the thumbnail etc) 
+		// Stop the clip (load the thumbnail etc) 
 		this.stop();
 		this.seek_time_sec = 0;
 		this.updatePlayHead( 0 );
@@ -1723,21 +1713,22 @@ mw.EmbedPlayer.prototype = {
 		this.thumbnail_disp = true;
 								
 		// make sure we are not in preview mode( no end clip actions in preview mode) 
-		if ( this.preview_mode )
+		if ( this.preview_mode ){
 			return ;
-					
-		//if k-attribution and k-skin show the "credits" screen: 
-		if( mw.getConfig( 'k_attribution' ) && this.ctrlBuilder.showCredits ){
-			// Call a "credit" menu display:
-			this.$interface.find( '.k-options' ).click();
+		}
+		
+		// Call the ctrlBuilder end event::
+		
+		//if kalturaAttribution and k-skin show the "credits" screen: 
+		if( this.ctrlBuilder.showCredits ){			
 			this.ctrlBuilder.showCredits();
 			return ;
 		}
-			
+		// Related videos: 
 		$j( '#img_thumb_' + this.id ).css( 'zindex', 1 );
 		this.$interface.find( '.play-btn-large' ).hide();
 
-		// add black background
+		// Add black background
 		$j( '#dc_' + this.id ).append( '<div id="black_back_' + this.id + '" ' +
 					'style="z-index:-2;position:absolute;background:#000;' +
 					'top:0px;left:0px;width:' + parseInt( this.width ) + 'px;' +
@@ -2009,7 +2000,7 @@ mw.EmbedPlayer.prototype = {
 				})
 			)
 		}				
-		//Set up local jQuery refrence to "interface_wrap" 
+		//Set up local jQuery object reference to "interface_wrap" 
 		this.$interface = $j(this).parent('.interface_wrap');
 		
 		// Update Thumbnail for the "player" 
@@ -2337,7 +2328,7 @@ mw.EmbedPlayer.prototype = {
 	* Show the "share" msg
 	* 
 	* TODO share should be enabled via <embed> tag usage to be compatible
-	* with sites that enable sharing flash embeds
+	* with sites social networking sites that allow <embed> tags but not js
 	*  
 	* @param {Object} $target Target jQuery object to set share html
 	*/
@@ -2605,7 +2596,7 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* loads sources and calls showDownloadWithSources
+	* Loads sources and calls showDownloadWithSources
 	* @param {Object} $target jQuery target to output to
 	*/
 	showDownload:function( $target ) {
@@ -2623,13 +2614,14 @@ mw.EmbedPlayer.prototype = {
 			_this.showDownloadWithSources( $target );
 		}
 	},
+	
 	/**
 	* Shows the download interface with sources loaded
 	* @param {Object} $target jQuery target to output to
 	*/
 	showDownloadWithSources : function( $target ) {
 		var _this = this;
-		$target.append( 
+		$target.empty().append( 
 			$j('<div />')
 			.css({
 				"color":"white"

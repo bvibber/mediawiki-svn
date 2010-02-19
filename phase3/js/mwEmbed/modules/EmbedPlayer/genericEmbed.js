@@ -4,12 +4,12 @@
 var genericEmbed = {
 	// List of supported features of the generic plugin
 	 supports: {	 	
-		'play_head':false,
+		'playHead':false,
 		'pause':false,
 		'stop':true,
 		'fullscreen':false,
-		'time_display':false,
-		'volume_control':false
+		'timeDisplay':false,
+		'volumeControl':false
 	},
 	
 	// Instance name: 
@@ -21,9 +21,11 @@ var genericEmbed = {
 	* @return {String}
 	* 	embed code for genneric ogg plugin 
 	*/
-	getEmbedHTML:function() {
-		return '<object type="application/ogg" ' +
+	doEmbedHTML: function() {
+		$j( this ).html( 
+			'<object type="application/ogg" ' +
 			'width="' + this.width + '" height="' + this.height + '" ' +
-			'data="' + this.getSrc( this.seek_time_sec ) + '"></object>';
+			'data="' + this.getSrc( this.seek_time_sec ) + '"></object>'
+		);
 	}
 };

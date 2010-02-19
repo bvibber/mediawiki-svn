@@ -1,31 +1,35 @@
 /**
-* libEmbedPlayer loader
-* 
+* EmbedPlayer loader
 */
 
 /**
-* Default player module configuration: 
-*/
-	
-//If the Timed Text interface should be displayed: 
-// 'always' Displays link and call to contribute always
-// 'auto' Looks for child timed text elements or "apiTitleKey" & load interface
-// 'off' Does not display the timed text interface
-mw.setConfig( 'textInterface', 'auto' ); 
-	
-// Timed Text provider presently just "commons",
-// NOTE: Each player instance can also specify a provider  
-mw.setConfig( 'timedTextProvider', 'commons' );
+* Default player module configuration 
+*/	
 
-// What tags will be re-written to video player by default
-// Set to empty string or null to avoid automatic tag rewrites 
-mw.setConfig( 'rewritePlayerTags', 'video,audio,playlist' );
-
-// Default video size ( if no size provided )
-mw.setConfig( 'video_size', '400x300' );
+mw.setDefaultConfig( {
+	// If the Timed Text interface should be displayed: 
+	// 'always' Displays link and call to contribute always
+	// 'auto' Looks for child timed text elements or "apiTitleKey" & load interface
+	// 'off' Does not display the timed text interface	
+	"textInterface" : "auto",
 	
-// If the k-skin video player should attribute kaltura
-mw.setConfig( 'k_attribution', true );
+	// Timed Text provider presently just "commons",
+	// NOTE: Each player instance can also specify a provider  
+	"timedTextProvider" : "commons",
+	
+	// What tags will be re-written to video player by default
+	// Set to empty string or null to avoid automatic video tag rewrites to embedPlayer 	
+	"rewritePlayerTags" : "video,audio,playlist",
+
+	// Default video size ( if no size provided )	
+	"video_size" : "400x300",
+
+	// If the video player should attribute kaltura	
+	 "kalturaAttribution" : true,
+	 
+	 // Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
+	'show_player_warning' : true 
+} );
 
 
 // Add class file paths 
@@ -41,6 +45,7 @@ mw.addClassFilePaths( {
 	"vlcEmbed"			: "modules/EmbedPlayer/vlcEmbed.js"
 } );
 
+
 // Add style sheet dependencies ( From ROOT )
 mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/EmbedPlayer.css",
@@ -53,18 +58,24 @@ mw.addClassStyleSheets( {
 * NOTE: this function can be part of setup can run prior to jQuery being ready
 */
 mw.documentHasPlayerTags = function(){
-	var rewriteTags = mw.getConfig( 'rewritePlayerTags' );			
+	var rewriteTags = mw.getConfig( 'rewritePlayerTags' );				
 	if( rewriteTags ){
 		var jtags = rewriteTags.split( ',' );
-		for ( var i = 0; i < jtags.length; i++ ) {	
-			if( document.getElementsByTagName( jtags[i] )[0] )
+		for ( var i = 0; i < jtags.length; i++ ) { 
+			if( document.getElementsByTagName( jtags[i] )[0] ){				
 				return true;
-		};
+			}
+		}
 	}
 	return false;
 }	
 
-// Add a dom ready check for player tags
+/**
+* Add a DOM ready check for player tags 
+
+* We use mw.addDOMReadyHook instead of mw.ready so that
+* player interfaces are ready once mw.ready is called. 
+*/
 mw.addDOMReadyHook( function(){
 	if( mw.documentHasPlayerTags() ) {
 		// Add the setup hook since we have player tags
@@ -79,13 +90,14 @@ mw.addDOMReadyHook( function(){
 		});
 	
 		// Tell mwEmbed to run setup
-		mw.setConfig( 'runSetupMwEmbed', true );			
+		mw.setConfig( 'runSetupMwEmbed', true );
+		mw.log(" run setup is: " + mw.getConfig( 'runSetupMwEmbed' ) );
 	}
 });
 
-
-
-// Add the module loader function:
+/**
+* Add the module loader function:
+*/
 mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	var _this = this;	
 	
@@ -99,6 +111,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 			'mw.EmbedPlayer',
 			'ctrlBuilder',
 			'$j.cookie',
+			// Add JSON lib if browsers does not define "JSON" natively 			
 			'JSON'
 		],
 		[
@@ -107,8 +120,11 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 		]
 	];
 	
-	var addTimedTextReqFlag = false;
+	 
 	
+		
+	var addTimedTextReqFlag = false;
+		
 	// Merge in the timed text libs 
 	if( mw.getConfig( 'textInterface' ) == 'always' ){		
 		addTimedTextReqFlag = true;	
@@ -168,7 +184,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {
-		//Setup userConfig 
+		// Setup userConfig 
 		mw.setupUserConfig( function(){
 			// Remove no video html elements:
 			$j( '.videonojs' ).remove();

@@ -18,24 +18,13 @@ var kplayerEmbed = {
 	},
 	
 	/*
-	* Get the Embed html by wraping the embed code in the embed container:
+	* Write the Embed html to the target 
 	*/
-	getEmbedHTML : function () {
+	doEmbedHTML : function () {
 		var _this = this;
-		setTimeout(function(){
-			_this.postEmbedJS();
-		}, 50);
-		var embed_code = this.getEmbedObj();	
-		mw.log( "return embed html: " + embed_code );
-		return embed_code;
-	},
-	
-	/**
-	* Get the plugin embed html
-	*/
-	getEmbedObj:function() {	
 		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
-		return '<object width="' + this.width + '" height="' + this.height + '" '+ 
+		$j( this ).html(
+		 	'<object width="' + this.width + '" height="' + this.height + '" '+ 
 			 'data="' + playerPath + '/wrapper.swf" allowfullscreen="true" '+ 
 			 'allownetworking="all" allowscriptaccess="always" '+
 			 'type="application/x-shockwave-flash" '+ 
@@ -52,11 +41,15 @@ var kplayerEmbed = {
 			  		'" ' + 
 			  		'name="flashVars"/>'+
 			  '<param value="opaque" name="wmode"/>'+
-			 '</object>';		
-	},
+			 '</object>'
+		)
+		setTimeout(function(){
+			_this.postEmbedJS();
+		}, 50);
+	},	
 	
 	/**
-	* javascript run post player embeding
+	* javascript run post player embedding
 	*/
 	postEmbedJS:function() {
 		var _this = this;
@@ -84,6 +77,7 @@ var kplayerEmbed = {
 			// Start the monitor
 			this.monitor();
 		}else{
+			// Keep trying to get the html: 
 			//mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
 			setTimeout( function(){
 				_this.postEmbedJS();
