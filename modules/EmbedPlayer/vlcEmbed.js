@@ -10,12 +10,12 @@ var vlcEmbed = {
 	
 	//What the vlc player / plug-in supports: 
 	supports : { 
-		'play_head':true,
+		'playHead':true,
 		'pause':true,
 		'stop':true,
 		'fullscreen':true,
-		'time_display':true,
-		'volume_control':true,
+		'timeDisplay':true,
+		'volumeControl':true,
 		
 		'playlist_driver':true, // if the object supports playlist functions
 		'overlay':false
@@ -30,41 +30,43 @@ var vlcEmbed = {
 	/**
 	* Get embed HTML
 	*/
-	getEmbedHTML: function() {
-		var _this = this;
+	doEmbedHTML: function() {
+		var _this = this;				
+		/*$j( this ).html(
+			'<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" ' +
+				'codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0" ' +
+				'id="' + this.pid + '" events="True" height="' + this.height + '" width="' + this.width + '"' +
+				'>' +
+					'<param name="MRL" value="">' +
+					'<param name="ShowDisplay" value="True">' +
+					'<param name="AutoLoop" value="False">' +
+					'<param name="AutoPlay" value="False">' +
+					'<param name="Volume" value="50">' +
+					'<param name="StartTime" value="0">' +
+					'<embed pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" ' +
+						'progid="VideoLAN.VLCPlugin.2" name="' + this.pid + '" ' +
+						'height="' + this.height + '" width="' + this.width + '" ' +
+						// set the style too 'just to be sure'
+						'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
+					'>' +
+			'</object>'
+		)*/
+		$j( this ).html(
+			'<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" '+
+			    'width="' + this.width +'" ' +
+			    'height="' + this.height + '" ' +
+			    'id="' + this.pid + '"> ' + 
+			'</embed>'
+		);
+				
+		
 		// give VLC 150ms to initialize before we start playback 
 		// @@todo should be able to do this as an ready event
 		this.waitForVlcCount = 0;
 		setTimeout( function(){
 			_this.postEmbedJS();
 		}, 150 );
-		return this.getEmbedObj();
-	},
-	
-	/**
-	* Function to get embed object code
-	*/
-	getEmbedObj:function() {
-		var embed_code = '<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" ' +
-			'codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0" ' +
-			'id="' + this.pid + '" events="True" height="' + this.height + '" width="' + this.width + '"' +
-			'>' +
-				'<param name="MRL" value="">' +
-				'<param name="ShowDisplay" value="True">' +
-				'<param name="AutoLoop" value="False">' +
-				'<param name="AutoPlay" value="False">' +
-				'<param name="Volume" value="50">' +
-				'<param name="StartTime" value="0">' +
-				'<embed pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" ' +
-					'progid="VideoLAN.VLCPlugin.2" name="' + this.pid + '" ' +
-					'height="' + this.height + '" width="' + this.width + '" ' +
-					// set the style too 'just to be sure'
-					'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
-				'>' +
-			'</object>';
-		mw.log( 'embed with: ' + embed_code );
-		return embed_code;
-	},
+	},	
 	
 	/**
 	* Javascript to run post vlc embedding
@@ -74,12 +76,15 @@ var vlcEmbed = {
 		var _this = this;
 		// load a pointer to the vlc into the object (this.playerElement)
 		this.getPlayerElement();		
-		if ( this.playerElement.log ) {
+		if ( this.playerElement &&  this.playerElement.playlist) {
 			// manipulate the dom object to make sure vlc has the correct size: 
 			this.playerElement.style.width = this.width;
 			this.playerElement.style.height = this.height;
 			this.playerElement.playlist.items.clear();
+			
+			// VLC likes absolute urls: 
 			var src = mw.absoluteUrl( this.getSrc() ) ;
+			
 			// @@todo if client supports seeking no need to send seek_offset to URI
 			mw.log( 'vlc play::' + src );
 			var itemId = this.playerElement.playlist.add( src );
@@ -93,7 +98,7 @@ var vlcEmbed = {
 				_this.monitor();
 			}, 100 );
 		} else {
-			mw.log( 'postEmbedJS:vlc not ready' );
+			mw.log( 'postEmbedJS: vlc not ready' );
 			this.waitForVlcCount++;
 			if ( this.waitForVlcCount < 10 ) {
 				setTimeout( function(){
@@ -299,7 +304,7 @@ var vlcEmbed = {
 	
 	/**
 	* Update the player volume
-	* @pram {Float} percent Percet of total volume
+	* @pram {Float} percent Percent of total volume
 	*/ 
 	updateVolumen:function( percent ) {
 		if ( this.getPlayerElement() )
@@ -330,10 +335,7 @@ var vlcEmbed = {
 	* Get the embed vlc object
 	*/ 
 	getPlayerElement : function() {
-		this.playerElement = $j('#' + this.pid ).get(0);
-		if( this.playerElement ) 
-			return true;
-		else
-			return false;
+		this.playerElement = $j( '#' + this.pid ).get(0);
+		return this.playerElement;		
 	}
 };

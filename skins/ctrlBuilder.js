@@ -31,10 +31,17 @@ ctrlBuilder.prototype = {
 	// Default control bar height is 33
 	height: 33,		
 	
-	// Default supported components is merged with embedPlayerect supported types
+	// Default supported components is merged with embedPlayer set of supported types
 	supportedComponets: {
-	  'options':true,
-	  'borders':true
+	
+		// All playback types support options	  
+		'options':true,
+			  
+		// All playback types support kalturaAttribution 
+		// to enable or disable use mw.setConfig( 'kalturaAttribution', [true|false] ) 
+		'kalturaAttribution' : true,
+		
+		'playButtonLarge' : true
 	},
 	/**
 	* Initialization Object for the control builder
@@ -69,7 +76,7 @@ ctrlBuilder.prototype = {
 		var _this = this;
 
 		// Remove any old controls: 
-		embedPlayer.$interface.find('.control-bar').remove();
+		embedPlayer.$interface.find( '.control-bar' ).remove();
 			
 		// Add some space to control_wrap for the control bar:
 		embedPlayer.$interface.css( {
@@ -103,6 +110,7 @@ ctrlBuilder.prototype = {
 		
 		// Make pointer to the embedPlayer
 		this.embedPlayer = embedPlayer;
+		
 		var _this = this;
 		this.supportedComponets = $j.extend(this.supportedComponets, embedPlayer.supports);
 		
@@ -113,19 +121,28 @@ ctrlBuilder.prototype = {
 			
 		// Append options to body (if not already there)
 		if ( this.external_options && $j( '#mv_vid_options_' + this.id ).length == 0 ){
-			$j( 'body' ).append( this.components[ 'options_menu' ].o( this ) );
+			$j( 'body' ).append( this.getComponent( 'optionsMenu' ) );
 		}
+		
+		
 		
 		// Build component output: 
 		for ( var component_id in this.components ) {
+		
+			// Special case with playhead skip if we have > 30px of space for it
+			if ( component_id == 'playHead' && this.available_width < 30 ){
+				continue;
+			}
+			
+			// Special case of kalturaAttribution skip if set in configuration
+			if( component_id == 'kalturaAttribution' && mw.getConfig( 'kalturaAttribution' ) == false ){				
+				continue;
+			}
+			  
 			// Make sure the given components is supported:
 			if ( this.supportedComponets[ component_id ] ) {
-				if ( this.available_width > this.components[ component_id ].w ) {
-					// Special case with playhead don't add unless we have 30px
-					if ( component_id == 'play_head' && this.available_width < 30 ){
-						continue;
-					}
-					// Append the component			
+				if ( this.available_width > this.components[ component_id ].w ) {											
+					// Append the component
 					$controlBar.append( 
 						_this.getComponent( component_id ) 
 					);
@@ -511,24 +528,24 @@ ctrlBuilder.prototype = {
 		/**
 		* The large play button in center of the player
 		*/
-		'play-btn-large': {
+		'playButtonLarge': {
 			'w' : 130,
 			'h' : 96,
-			'o' : function( ctrlObj ) {
-				// Get dynamic position for big play button
+			'o' : function( ctrlObj ) {				
 				return $j( '<div/>' )
-						.attr( {
-							'title'	: gM( 'mwe-play_clip' ),
-							'class'	: "ui-state-default play-btn-large"
-						} )
-						.css( {
-							'left' 	: ( ( ctrlObj.embedPlayer.getPlayerWidth() - this.w ) / 2 ),
-							'top'	: ( ( ctrlObj.embedPlayer.getPlayerHeight() - this.h ) / 2 )
-						} )
-						// Add play hook:
-						.buttonHover().click( function() {
-							 ctrlObj.embedPlayer.play();
-						} );
+					.attr( {
+						'title'	: gM( 'mwe-play_clip' ),
+						'class'	: "ui-state-default play-btn-large"
+					} )
+					// Get dynamic position for big play button
+					.css( {
+						'left' 	: ( ( ctrlObj.embedPlayer.getPlayerWidth() - this.w ) / 2 ),
+						'top'	: ( ( ctrlObj.embedPlayer.getPlayerHeight() - this.h ) / 2 )
+					} )
+					// Add play hook:
+					.buttonHover().click( function() {
+						 ctrlObj.embedPlayer.play();
+					} );
 			}			
 		},
 		
@@ -536,7 +553,7 @@ ctrlBuilder.prototype = {
 		* The options for the player, includes player selection, 
 		* download, and share options
 		*/
-		'options_menu': {
+		'optionsMenu': {
 			'w' : 0,
 			'o' :  function( ctrlObj ) {
 				var o = '<div id="mv_vid_options_' + ctrlObj.embedPlayer.id + '" class="videoOptions">' +
@@ -563,6 +580,24 @@ ctrlBuilder.prototype = {
 		},
 		
 		/**
+		* The kaltura attribution button
+		*/
+		'kalturaAttribution' : {
+			'w' : 28,
+			'o' : function( ctrlObj ){			
+				return $j( '<div />' )
+						.attr( 'title',  gM( 'mwe-kaltura-platform-title' ) )						
+						.addClass( 'ui-state-default ui-corner-all ui-icon_link rButton k-attribution' )
+						.append( 
+							$j('<span />')
+							.addClass( 'ui-icon k-attribution' )
+						)
+						.click( function( ) { 
+							window.location = 'http://kaltura.com';
+						} );
+			}
+		},
+		/**
 		* The options button, invokes display of the options menu
 		*/
 		'options': {
@@ -574,7 +609,7 @@ ctrlBuilder.prototype = {
 						.append( 
 							$j('<span />')
 							.addClass( 'ui-icon ui-icon-wrench' )
-						)
+						)					
 			}
 		},
 		
@@ -630,7 +665,7 @@ ctrlBuilder.prototype = {
 		/** 
 		* The volume control interface html
 		*/
-		'volume_control': {
+		'volumeControl': {
 			'w' : 28,
 			'o' : function( ctrlObj ) {
 				$volumeOut = $j( '<div />' );
@@ -673,9 +708,9 @@ ctrlBuilder.prototype = {
 		/*
 		* The time display area
 		*/
-		'time_display': {
-			'w':90,
-			'o':function( ctrlObj ) {
+		'timeDisplay': {
+			'w' : 90,
+			'o' : function( ctrlObj ) {
 				return $j( '<div />' )
 						.addClass( "ui-widget time-disp" )
 						.append( 
@@ -685,9 +720,9 @@ ctrlBuilder.prototype = {
 			}
 		},
 		/*
-		* The playhead html
+		* The playhead component
 		*/
-		'play_head': {
+		'playHead': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
 				return $j( '<div />' )

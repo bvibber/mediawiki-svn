@@ -11,11 +11,11 @@ var htmlEmbed = {
 
 	// List of supported features
 	supports: {
-		'play_head':true,
+		'playHead':true,
 		'pause':true,
 		'fullscreen':false,
-		'time_display':true,
-		'volume_control':true,
+		'timeDisplay':true,
+		'volumeControl':true,
 
 		'overlays':true,
 		
@@ -199,8 +199,8 @@ var htmlEmbed = {
 	/**
 	* Get the "embed" html for the html player
 	*/
-	getEmbedHTML:function() {
-		mw.log( 'f:html:getEmbedHTML: ' + this.id );
+	doEmbedHTML: function() {
+		mw.log( 'f:html:doEmbedHTML: ' + this.id );
 		// set up the css for our parent div:		 
 		$j( this ).css( {
 			'width':this.pc.pp.width,
@@ -239,14 +239,6 @@ var htmlEmbed = {
 	*/
 	showThumbnail:function() {
 		mw.log( 'htmlEmbed:showThumbnail()' );
-		this.getEmbedHTML();
-	},
-	
-	/** 
-	* Display the "embed" html right away 
-	*/
-	getHTML:function() {
-		mw.log( 'htmlEmbed::getHTML() ' + this.id );
 		this.getEmbedHTML();
 	},
 	

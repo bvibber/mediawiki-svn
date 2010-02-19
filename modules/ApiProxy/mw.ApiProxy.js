@@ -462,9 +462,10 @@ mw.ApiProxy = { };
 			serverBrowseFile();
 			return true;
 		}						
-		// Else do a normal api request : 
+		// Else do an api request : 
 		return serverApiRequest();
 	}
+	
  	/**
 	* Api iFrame request:
 	*/

@@ -11,41 +11,34 @@ var omtkEmbed = {
 	
 	// Supported player features  
 	supports: {
-		'pause':true,
-		'time_display':true
+		'pause' : true,
+		'timeDisplay' : true
 	},
 	
 	/**
 	* Wrap the embed code
 	*/
-	getEmbedHTML : function () {
+	doEmbedHTML : function () {
 	 	var _this = this;
-		var embed_code =  this.getEmbedObj();
-		// Need omtk to fire an onReady event.
+	 	var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/omtk-fx/omtkp.swf';
+		$j( this ).html(
+			'<object id="' + this.pid + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1">' +
+				'<param name="movie" value="' + playerPath + '" />' + "\n" +
+				'<!--[if !IE]>-->' + "\n" +
+					'<object id="' + this.pid + '_ie" type="application/x-shockwave-flash" data="' + playerPath + '" width="1" height="1">' + "\n" +
+				'<!--<![endif]-->' + "\n" +
+					  '<p>Error with Display of Flash Plugin</p>' + "\n" +
+				'<!--[if !IE]>-->' + "\n" +
+					'</object>' + "\n" +
+				'<!--<![endif]-->' + "\n" +
+			  '</object>'
+		)
+		// omtk  needs to fire an onReady event.
 		setTimeout( function(){
 			_this.postEmbedJS();
 		}, 2000 );
 		return embed_code;
-	},
-	
-	/**
-	* Get the embed object html
-	*/
-	getEmbedObj:function() {
-		var player_path = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/omtk-fx/omtkp.swf';
-		// player_path = 'omtkp.swf';
-		mw.log( "player path: " + player_path );
-		return  '<object id="' + this.pid + '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1">' +
-					'<param name="movie" value="' + player_path + '" />' + "\n" +
-					'<!--[if !IE]>-->' + "\n" +
-						'<object id="' + this.pid + '_ie" type="application/x-shockwave-flash" data="' + player_path + '" width="1" height="1">' + "\n" +
-					'<!--<![endif]-->' + "\n" +
-						  '<p>Error with Display of Flash Plugin</p>' + "\n" +
-					'<!--[if !IE]>-->' + "\n" +
-						'</object>' + "\n" +
-					'<!--<![endif]-->' + "\n" +
-				  '</object>';
-	},
+	},	
 	
 	/**
 	* Run post embed javascript

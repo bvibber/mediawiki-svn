@@ -1209,7 +1209,6 @@ mw.addMessages( {
 			var request = {};
 			var _this = this;
 			this.getSourcePages( assetKey, function( sourcePages ){
-				mw.log(' got sub pages... ');
 				if( ! sourcePages.query.allpages ){
 					//Check if a shared asset
 					mw.log( 'no subtitle pages found');
