@@ -68,7 +68,8 @@ evt: {
 						end: tokenArray[endIndex].offset,
 						type: 'template',
 						anchor: 'wrap',
-						splitPs: model.isCollapsible(),
+						//splitPs: model.isCollapsible(),
+						splitPs: false,
 						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
 						beforeUnwrap: function( node ) {
 							// FIXME: $( node ).data( 'display' ) doesn't exist any more
@@ -130,7 +131,7 @@ fn: {
 			}
 			
 			var $template = $( this )
-				.wrap( '<div class="wikiEditor-template"></div>' )
+				.wrap( '<span class="wikiEditor-template"></span>' )
 				.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 				.parent()
 				.addClass( 'wikiEditor-template-collapsed' )
@@ -139,10 +140,11 @@ fn: {
 			$( '<span />' )
 			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
 			.text( model.getName() )
-			.mousedown( function(){createDialog( $template );} ) //have to pass template so model stays in sync
+			.mousedown(toggleWikiTextEditor)
+			//.mousedown( function(){createDialog( $template );} ) //have to pass template so model stays in sync
 			.prependTo( $template );
 			
-			
+			/*
 			var $options = $( '<ul />' )
 			.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
 			.append( $( '<li />' )
@@ -151,7 +153,7 @@ fn: {
 					$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
 				.mousedown( toggleWikiTextEditor ) )
 			.insertAfter( $template.find( '.wikiEditor-template-name' ) );
-			
+			*/
 			$(this).data( 'setupDone', true );
 			
 			function toggleWikiTextEditor(){
@@ -670,7 +672,6 @@ fn: {
 		this.params = params;
 		this.paramsByName = paramsByName;
 		this.templateNameIndex = templateNameIndex;
-	} // model
-}
-
+	} //model
+} 
 }; } )( jQuery );
