@@ -55,7 +55,9 @@ class WWUtils {
 
 	foreach ($a as $x) {
 	    if ($s) $s.= ", ";
-	    $s .= $this->quote($x);
+
+	    if (is_string($x)) $s .= $this->quote($x);
+	    else $s .= $x;
 	}
 
 	return '(' . $s . ')';

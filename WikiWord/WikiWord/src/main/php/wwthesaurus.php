@@ -1,6 +1,65 @@
 <?php
 require_once(dirname(__FILE__)."/wwutils.php");
 
+	/** Unknown type, SHOULD not occurr in final data. MAY be used for
+	 * resources that are referenced but where not available for analysis,
+	 * or have not yet been analyzed. 
+	 **/
+	define('WW_RC_TYPE_UNKNOWN', 0);
+	
+	/**
+	 * A "real" page, describing a concept.
+	 */
+	define('WW_RC_TYPE_ARTICLE', 10);
+	
+	/**
+	 * This page is a supplemental part of an article, typically a transcluded
+	 * subpage or simmilar.   
+	 */
+	define('WW_RC_TYPE_SUPPLEMENT', 15);
+	
+	
+	/**
+	 * A page solely defining a redirect/alias for another page
+	 */
+	define('WW_RC_TYPE_REDIRECT', 20);
+
+	/**
+	 * A disambuguation page, listing different meanings for the page title, 
+	 * each linking to a article page.
+	 */
+	define('WW_RC_TYPE_DISAMBIG', 30);
+	
+	/**
+	 * A page that contains a list of concepts that share some common property or quality,
+	 * usually each linking to a page describing that concept.
+	 */
+	define('WW_RC_TYPE_LIST', 40);
+	
+	/**
+	 * A category page.
+	 */
+	define('WW_RC_TYPE_CATEGORY', 50);
+	
+	/**
+	 * This page does not contain relevant information for WikiWord
+	 */
+	define('WW_RC_TYPE_OTHER', 99);
+	
+	/**
+	 * A page that is broken in some way, or was marked as bad or disputed. Such pages
+	 * SHOULD generally be treated as if theys didn't exist.
+	 */
+	define('WW_RC_TYPE_BAD', 100);
+	
+	/**
+	 * A resource that is not a page by itself, but merely a section of a page. Sections
+	 * SHOULD always be part of a page of type ARTICLE, and are expected to descibe
+	 * a narrower concept than the "parent" page.
+	 */
+	define('WW_RC_TYPE_SECTION', 200);
+
+
 class WWThesaurus extends WWUTils {
 
     function queryConceptsForTerm($lang, $term, $limit = 100) {
@@ -235,7 +294,30 @@ class WWThesaurus extends WWUTils {
 		      . " JOIN {$wwTablePrefix}_{$ll}_about as A ON A.resource = R.id "
 		      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($ll) . "\" AND A.concept = O.local_concept "
 		      . " WHERE O.global_concept = " . (int)$id
+		      . " WHERE R.type IN ( " . WW_RC_TYPE_ARTICLE . ", " . WW_RC_TYPE_CATEGORY . " ) "
 		      . " LIMIT " . (int)$limit;
+
+		$pages = $this->getList($sql, "name");
+		if ( $pages === false || $pages === null ) return false;
+		if ( !$pages ) continue;
+
+		$result[$ll] = $pages;
+	}
+
+	return $result;
+    }
+
+    function getNamesForConcept( $id, $lang = null ) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
+
+	if ( !$lang ) $lang = array_keys( $wwLanguages );
+	if ( !is_array($lang) ) $lang = preg_split('![\\s,;|/:]\\s*!', $lang);
+	$result = array();
+	
+	foreach ($lang as $ll) {
+		$sql = "SELECT O.local_name FROM {$wwTablePrefix}_{$ll}_resource as O ";
+		$sql .= " WHERE O.global_concept = " . (int)$id;
+		$sql .= " AND O.lang = " . (int)$ll;
 
 		$pages = $this->getList($sql, "name");
 		if ( $pages === false || $pages === null ) return false;
