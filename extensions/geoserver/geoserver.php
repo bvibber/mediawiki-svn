@@ -20,7 +20,7 @@ $wgExtensionFunctions[] = "wfGeoserverExtension";
  */
 function wfGeoServerExtension () {
         global $wgParser, $wgHooks ;
-	$wgParser->setHook ( 'geo' , 'parseGeo' ) ;
+        $wgParser->setTransparentTagHook ( 'geo' , 'parseGeo' ) ;
 #        $wgHooks['ArticleSaveComplete'][] = 'articleDeleteGeo';
         $wgHooks['ArticleDelete'][] = 'articleDeleteGeo';
         $wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'articleSaveGeo';
@@ -36,11 +36,8 @@ require_once( dirname(__FILE__) . '/SpecialWikimaps.php' );
  *
  *  Return markup, but also a pointer to Map sources
  */
-function parseGeo ( $text, $params, &$parser, &$frame ) {
+function parseGeo ( $text, $params, &$parser ) {
 	global $action, $GeoserverParameters, $wgWikiMapsJS;
-
-	$text = $parser->recursiveTagParse( $text, $frame );
-
 	$latpat= '(-?[0-9.]*) *(([0-9.]+) *([0-9.]+)?)? *([NS])';
 	$lonpat= '(-?[0-9.]*) *(([0-9.]+) *([0-9.]+)?)? *([EW])';
 	$featcodepat = '(([AHLPRSTUV])\.([A-Z.]*))?';
