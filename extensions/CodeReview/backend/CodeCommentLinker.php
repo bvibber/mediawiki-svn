@@ -37,7 +37,7 @@ abstract class CodeCommentLinker {
 		} elseif ( $maxLen <= 0 ) {
 			return ''; // no text shown, nothing to format
 		}
-		$text = parser::tidy( $text ); // fix tags
+		$text = MWTidy::tidy( $text ); // fix tags
 		$displayLen = 0; // innerHTML legth so far
 		$doTruncate = true; // truncated string plus '...' shorter than original?
 		$tagType = 0; // 0-open, 1-close
