@@ -70,11 +70,10 @@ class Preprocessor_DOM implements Preprocessor {
 		// To XML
 		$xmlishRegex = implode('|', $this->parser->getStripList());
 		$rules = array(
-			"Root" => new ParseRule("root", '/^/', '/^$/', "MainList"),
-			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', "TemplateList"),
-			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', "TemplateList"),
-			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', "MainList"),
-			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?: *<!--.*?-->)*(?=\n|$)/s', "MainList"),
+			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', "TemplateQuant"),
+			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', "TemplateQuant"),
+			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', "MainQuant"),
+			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?=(?: *<!--.*?-->)*(?:\n|$))/s', "MainQuant"),
 			"CommentLine" => new ParseRule("commentline", '/^\n((?:<!--.*?-->\n)+)/s'),
 			"Comment" => new ParseRule("comment", '/^<!--.*?(?:-->|$)/s'),
 			"OnlyInclude" => new ParseRule("ignore", '/^<\/?onlyinclude>/s'),
@@ -86,6 +85,9 @@ class Preprocessor_DOM implements Preprocessor {
 			"MainText" => new ParseRule("text", '/^.[^{}\[\]<\n|=]*/s'),
 			"TplPipe" => new ParseRule("pipe", '/^\|/s'),
 			"TplEquals" => new ParseRule("equals", '/^=/s'),
+			"Root" => new ParseQuant("root", "MainList", '/^$/'),
+			"MainQuant" => new ParseQuant("mainquant", "MainList"),
+			"TemplateQuant" => new ParseQuant("templatequant", "TemplateList"),
 			"MainList" => new ParseList(array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile", "MainText")),
 			"TemplateList" => new ParseList(array("TplPipe", "TplEquals", "MainList")));
 		if ($flags & Parser::PTD_FOR_INCLUSION) {
