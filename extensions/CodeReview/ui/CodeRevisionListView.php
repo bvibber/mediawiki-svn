@@ -12,6 +12,7 @@ class CodeRevisionListView extends CodeView {
 			$this->mPath = "/{$this->mPath}"; // make sure this is a valid path
 		}
 		$this->mAuthor = null;
+		$this->mAppliedFilter = null;
 	}
 
 	function execute() {
@@ -149,11 +150,24 @@ class CodeRevisionListView extends CodeView {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
 			"<fieldset><legend>" . wfMsgHtml( 'code-pathsearch-legend' ) . "</legend>" .
-				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
+				'<table width="100%"><tr><td>' .
 				Xml::inputlabel( wfMsg( "code-pathsearch-path" ), 'path', 'path', 55, $this->mPath ) .
-				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
-			"</fieldset>" . Xml::closeElement( 'form' )
+				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . 
+				'</td>'
 		);
+		if ( strlen( $this->mAppliedFilter) ) {
+			$wgOut->addHTML(
+				'<td>' .  
+				Xml::label(wfMsg( 'code-pathsearch-filter' ), 'revFilter' ) . '<strong>' .
+				Xml::span( $this->mAppliedFilter, '') . '</strong>&nbsp;' .
+				Xml::submitButton( wfMsg( 'code-revfilter-clear' ) ) . 
+				'</td>' .
+				Xml::hidden( 'title', SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ) )
+			);
+		} else {
+			$wgOut->addHTML( Xml::hidden( 'title', $special->getPrefixedDBKey() ) );
+		}
+		$wgOut->addHTML( "</tr></table></fieldset>" . Xml::closeElement( 'form' ) );
 	}
 
 	function getPager() {
