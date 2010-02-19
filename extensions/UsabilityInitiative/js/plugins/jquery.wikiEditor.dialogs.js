@@ -17,7 +17,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 	'ltr': {
 		'msie': [['>=', 7]],
 		'firefox': [['>=', 3]],
-		'opera': [['>=', 9.6]],
+		'opera': [['>=', 10]],
 		'safari': [['>=', 4]],
 		'chrome': [['>=', 4]]
 	},
@@ -25,7 +25,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 	'rtl': {
 		'msie': [['>=', 8]],
 		'firefox': [['>=', 3]],
-		'opera': [['>=', 9.6]],
+		'opera': [['>=', 10]],
 		'safari': [['>=', 4]],
 		'chrome': [['>=', 4]]
 	}
