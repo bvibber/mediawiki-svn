@@ -11,15 +11,12 @@ api : {
 		for ( type in data ) {
 			switch ( type ) {
 				case 'sections':
-					var $sections = context.modules.toolbar.$toolbar
-					.find( 'div.sections' );
-					var $tabs = context.modules.toolbar.$toolbar
-					.find( 'div.tabs' );
+					var $sections = context.modules.toolbar.$toolbar.find( 'div.sections' );
+					var $tabs = context.modules.toolbar.$toolbar.find( 'div.tabs' );
 					for ( section in data[type] ) {
 						if ( section == 'main' ) {
 							// Section
-							context.modules.toolbar.$toolbar
-							.prepend(
+							context.modules.toolbar.$toolbar.prepend(
 								$.wikiEditor.modules.toolbar.fn.buildSection(
 									context, section, data[type][section]
 								)
@@ -45,33 +42,39 @@ api : {
 					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					var $section = context.modules.toolbar.$toolbar
-					.find( 'div[rel=' + data.section + '].section' );
+					var $section = context.modules.toolbar.$toolbar.find( 'div[rel=' + data.section + '].section' );
 					for ( group in data[type] ) {
 						// Group
-						$section
-						.append( $.wikiEditor.modules.toolbar.fn.buildGroup( context, group, data[type][group] ) );
+						$section.append(
+							$.wikiEditor.modules.toolbar.fn.buildGroup( context, group, data[type][group] )
+						);
 					}
 					break;
 				case 'tools':
 					if ( ! ( 'section' in data && 'group' in data ) ) {
 						continue;
 					}
-					var $group = context.modules.toolbar.$toolbar
-					.find( 'div[rel=' + data.section + '].section ' + 'div[rel=' + data.group + '].group' );
+					var $group = context.modules.toolbar.$toolbar.find(
+						'div[rel=' + data.section + '].section ' + 'div[rel=' + data.group + '].group'
+					);
 					for ( tool in data[type] ) {
 						// Tool
 						$group.append( $.wikiEditor.modules.toolbar.fn.buildTool( context, tool,data[type][tool] ) );
+					}
+					if ( $group.children().length ) {
+						$group.show();
 					}
 					break;
 				case 'pages':
 					if ( ! ( 'section' in data ) ) {
 						continue;
 					}
-					var $pages = context.modules.toolbar.$toolbar
-					.find( 'div[rel=' + data.section + '].section .pages' );
-					var $index = context.modules.toolbar.$toolbar
-					.find( 'div[rel=' + data.section + '].section .index' );
+					var $pages = context.modules.toolbar.$toolbar.find(
+						'div[rel=' + data.section + '].section .pages'
+					);
+					var $index = context.modules.toolbar.$toolbar.find(
+						'div[rel=' + data.section + '].section .index'
+					);
 					for ( page in data[type] ) {
 						// Page
 						$pages.append( $.wikiEditor.modules.toolbar.fn.buildPage( context, page, data[type][page] ) );
@@ -120,15 +123,17 @@ api : {
 		}
 	},
 	removeFromToolbar : function( context, data ) {
-		js_log("f:removeFromToolbar");
 		if ( typeof data.section == 'string' ) {
 			// Section
 			var tab = 'div.tabs span[rel=' + data.section + '].tab';
 			var target = 'div[rel=' + data.section + '].section';
+			var group = null;
 			if ( typeof data.group == 'string' ) {
 				// Toolbar group
 				target += ' div[rel=' + data.group + '].group';
 				if ( typeof data.tool == 'string' ) {
+					// Save for later checking if empty
+					group = target;
 					// Tool
 					target += ' div[rel=' + data.tool + '].tool';
 				}
@@ -156,8 +161,14 @@ api : {
 				// Just a section, remove the tab too!
 				context.modules.toolbar.$toolbar.find( tab ).remove();
 			}
-			js_log('target is: ' + target);
 			context.modules.toolbar.$toolbar.find( target ).remove();
+			// Hide empty groups
+			if ( group ) {
+				$group = context.modules.toolbar.$toolbar.find( group );
+				if ( $group.children().length == 0 ) {
+					$group.hide();
+				}
+			}
 		}
 	}
 },
@@ -271,7 +282,6 @@ fn: {
 		if ( label ) {
 			$group.append( '<div class="label">' + label + '</div>' )
 		}
-
 		var empty = true;
 		if ( 'tools' in group ) {
 			for ( tool in group.tools ) {
@@ -282,7 +292,10 @@ fn: {
 				}
 			}
 		}
-		return empty ? null : $group;
+		if ( empty ) {
+			$group.hide();
+		}
+		return $group;
 	},
 	buildTool : function( context, id, tool ) {
 		if ( 'filters' in tool ) {
