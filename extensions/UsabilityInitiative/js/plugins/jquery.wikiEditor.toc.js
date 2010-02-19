@@ -125,6 +125,10 @@ evt: {
 						.addClass( 'wikiEditor-toc-section-' + marker.index )
 						.data( 'section', marker.index );
 				},
+				beforeUnwrap: function( node ) {
+					$( node ).removeClass( 'wikiEditor-toc-header' )
+						.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) );
+				},
 				onSkip: function( node ) {
 					var marker = $( node ).data( 'marker' );
 					if ( $( node ).data( 'section' ) != marker.index ) {

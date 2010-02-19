@@ -8474,7 +8474,7 @@ fn: {
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
 		// Store visited markers here so we know which markers should be removed
-		var visited = [];
+		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
@@ -8610,7 +8610,7 @@ fn: {
 							commonAncestor.appendChild( newNode );
 						}
 						
-						anchor = newNode;						
+						anchor = newNode;
 					} else if ( markers[i].anchor == 'tag' ) {
 						anchor = commonAncestor;
 					}
@@ -8625,7 +8625,7 @@ fn: {
 					$( anchor ).data( 'marker', markers[i] );
 					markers[i].onSkip( anchor );
 				}
-				visited[i] = anchor;
+				visited[v++] = anchor;
 			}
 		}
 		
@@ -8641,12 +8641,19 @@ fn: {
 			}
 			
 			// Remove this marker
-			if ( $(this).data( 'marker' ) && typeof $(this).data( 'marker' ).unwrap == 'function' )
-				$(this).data( 'marker' ).unwrap( this );
-			if ( $(this).children().size() > 0 ) {
-				$(this).replaceWith( $(this).children() );
+			var marker = $(this).data( 'marker' );
+			if ( marker && typeof marker.beforeUnwrap == 'function' )
+				marker.beforeUnwrap( this );
+			if ( ( marker && marker.anchor == 'tag' ) || $(this).is( 'p' ) ) {
+				// Remove all classes
+				$(this).removeAttr( 'class' );
 			} else {
-				$(this).replaceWith( $(this).html() );
+				// Assume anchor == 'wrap'
+				if ( $(this).children().size() > 0 ) {
+					$(this).replaceWith( $(this).children() );
+				} else {
+					$(this).replaceWith( $(this).html() );
+				}
 			}
 		});
 	}
@@ -9024,7 +9031,8 @@ evt: {
 						splitPs: model.isCollapsible(),
 						afterWrap: $.wikiEditor.modules.templateEditor.fn.stylize,
 						beforeUnwrap: function( node ) {
-							$( node ).data( 'display' ).remove();
+							// FIXME: $( node ).data( 'display' ) doesn't exist any more
+							//$( node ).data( 'display' ).remove();
 						},
 						onSkip: function() { }, // TODO update template info
 						getAnchor: function( ca1, ca2 ) {
@@ -9752,6 +9760,10 @@ evt: {
 					$( node ).addClass( 'wikiEditor-toc-header' )
 						.addClass( 'wikiEditor-toc-section-' + marker.index )
 						.data( 'section', marker.index );
+				},
+				beforeUnwrap: function( node ) {
+					$( node ).removeClass( 'wikiEditor-toc-header' )
+						.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) );
 				},
 				onSkip: function( node ) {
 					var marker = $( node ).data( 'marker' );
