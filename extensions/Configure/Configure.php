@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.15.11',
+	'version' => '0.15.12',
 );
 
 # Configuration part
@@ -81,7 +81,9 @@ $wgConfigureExtDir = "$IP/extensions/";
  * Each value of this array should be an array with the following keys:
  * - name: name of the extension (required)
  * - dir: dir name of the extension, if different than extension's name
- * - file: main file name, if different that name.php
+ * - file: main file name, if different than name.php
+ * - settings-file: file containing settings definitions, if different than
+ *   the main file
  * - settings: array of settings mapping setting's name to its type
  * - array: array type for settings
  * - empty: array of overrides for settings values when they match empty()

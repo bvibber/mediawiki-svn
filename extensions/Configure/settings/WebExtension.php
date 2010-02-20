@@ -19,6 +19,7 @@ class WebExtension {
 	protected $mInputCallback = null;
 	protected $mDir;
 	protected $mFile;
+	protected $mSettingsFile;
 	protected $mDoc;
 	protected $mExtVar = null;
 	protected $mObj = null;
@@ -37,6 +38,7 @@ class WebExtension {
 		$this->mDbChange = isset( $conf['schema'] ) && $conf['schema'];
 		$this->mDir = isset( $conf['dir'] ) ? $conf['dir'] : $conf['name'];
 		$this->mFile = isset( $conf['file'] ) ? $conf['file'] : $conf['name'] . '.php';
+		$this->mSettingsFile = isset( $conf['settings-file'] ) ? $conf['settings-file'] : null;
 		$this->mArrays = isset( $conf['array'] ) ? $conf['array'] : array();
 		$this->mEmptyValues = isset( $conf['empty'] ) ? $conf['empty'] : array();
 		$this->mViewRestricted = isset( $conf['view-restricted'] ) ? $conf['view-restricted'] : array();
@@ -158,6 +160,18 @@ class WebExtension {
 	public function getFile() {
 		global $wgConfigureExtDir;
 		return $wgConfigureExtDir . $this->mDir . '/' . $this->mFile;
+	}
+
+	/**
+	 * Get the file that contains settings definitions
+	 *
+	 * @return String
+	 */
+	public function getSettingsFile() {
+		global $wgConfigureExtDir;
+
+		$file = $this->mSettingsFile !== null ? $this->mSettingsFile : $this->mFile;
+		return $wgConfigureExtDir . $this->mDir . '/' . $file;
 	}
 
 	/**

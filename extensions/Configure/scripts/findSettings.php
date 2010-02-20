@@ -98,7 +98,7 @@ class FindSettings extends Maintenance {
 			);
 			foreach ( $exts as $ext ) {
 				if( !$ext->isInstalled() ) continue; // must exist
-				$file = file_get_contents( $ext->getFile() );
+				$file = file_get_contents( $ext->getSettingsFile() );
 				$name = $ext->getName();
 				$m = array();
 				preg_match_all( '/\$((wg|eg|edg|sdg|sfg|smwg|srfg|abc|ce[^n]|ub|whoiswatching|wminc)[A-Za-z0-9_]+)\s*\=/', $file, $m );

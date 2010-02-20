@@ -1017,6 +1017,7 @@ extensions-dependencies[] = OggHandler
 url = http://www.mediawiki.org/wiki/Extension:WikiAtHome
 
 Wikilog
+settings-file = WikilogDefaultSettings.php
 settings[] = wgTaggingEntity: text
 settings[] = wgWikilogStylePath: text
 settings[] = wgWikilogExpensiveLimit: int
