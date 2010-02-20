@@ -80,7 +80,7 @@ function wfMetadataEditExtractFromArticle( $editPage ) {
 		throw new MWException( '$wgMetadataWhitelist is not set to a valid page title.' );
 	}
 	$wl_article = new Article ( $wl_title );
-	$wl = array();//explode ( "\n" , $wl_article->getContent() );
+	$wl = explode ( "\n" , $wl_article->getContent() );
 	foreach ( $wl AS $x ) {
 		$isentry = false;
 		$x = trim ( $x );
