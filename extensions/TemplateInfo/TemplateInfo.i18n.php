@@ -42,6 +42,14 @@ $messages['ar'] = array(
 	'templateinfo-header' => 'تعريف XML لهذا القالب هو:',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'templateinfo-desc' => 'بيدعم القوالب اللى بتعرف هيكل بياناتها من خلال علامات XML',
+	'templateinfo-header' => 'تعريف XML للقالب ده هو:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

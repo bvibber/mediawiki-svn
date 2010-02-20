@@ -7497,6 +7497,7 @@ $messages['pms'] = array(
 	'configure-ext-ext-dependencies' => "'''Atension:''' sta estension-sì a l'ha damanca che {{PLURAL:$2|l'estension|j'estension}} sì-sota a sio ativà: $1.",
 	'configure-ext-ext-dependency-err' => "'''Eror:''' l'estension $1 a veul che l'estension $2 a sia ativà.",
 	'configure-ext-doc' => 'Varda documentassion an linia',
+	'configure-ext-schemachange' => "'''Atension:''' sta estension-sì a ciama n'agiornament dël databese për travajé da bin!",
 );
 
 /** Pashto (پښتو)

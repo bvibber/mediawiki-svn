@@ -109,21 +109,22 @@ $messages['arc'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'countedits' => 'عد التعديلات',
 	'countedits-desc' => '[[Special:CountEdits|صفحة خاصة]] تعد تعديلات المستخدم وتوفر قائمة لأعلى عشر مساهمين',
-	'countedits-warning' => "'''تحذير:''' لا تحكم على كتاب من غلافه.
-لا تحكم على المساهمين بواسطة عدد تعديلاتهم.",
-	'countedits-username' => 'اسم المستخدم:',
+	'countedits-warning' => "'''تحذير:''' ملتحكمش على كتاب من غلافه.
+ ملتحكمش  على اليوزرات من عدد تعديلاتهم.",
+	'countedits-username' => 'اسم اليوزر:',
 	'countedits-ok' => 'موافق',
-	'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',
+	'countedits-nosuchuser' => 'مافيش يوزر اسمه $1.',
 	'countedits-resultheader' => 'النتائج ل $1',
 	'countedits-resulttext' => '$1 عنده$2 {{PLURAL:$2|تعديل|تعديل}}',
-	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
-	'countedits-nocontribs' => 'لا يوجد مساهمون فى هذه الويكى.',
+	'countedits-mostactive' => 'أكتر اليوزرات  نشاط',
+	'countedits-nocontribs' => 'مافيش مساهمين فى  الويكى دى.',
 );
 
 /** Kotava (Kotava)

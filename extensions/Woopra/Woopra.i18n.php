@@ -239,6 +239,13 @@ $messages['ko'] = array(
 	'woopra-desc' => '[http://www.woopra.com/ Woopra 웹 사이트 트래킹 프로그램]을 미디어위키에서 작동하도록 하는 기능',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'woopra-desc' => '[http://www.woopra.com/ Woopra Live Tracking Software]-ге MediaWiki инсталляциягъыз бла ишлерге къояды.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

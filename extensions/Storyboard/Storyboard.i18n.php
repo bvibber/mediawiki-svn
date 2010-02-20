@@ -94,6 +94,8 @@ $messages['ia'] = array(
  */
 $messages['lb'] = array(
 	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => 'Stellt eng Entréessäit fir Donateuren zur Verfügung, eng Säit wou Anekdoten presentéiert kënne ginn, an e Moderatiouns-Interface fir Anekdoten',
+	'right-storyreview' => 'Anekdoten nokucken, änneren, publizéieren a verstoppen',
 );
 
 /** Macedonian (Македонски)
@@ -128,6 +130,7 @@ $messages['oc'] = array(
 $messages['pms'] = array(
 	'storyboard-name' => 'Disegn ëd la senegiadura',
 	'storyboard-desc' => "A dà na pàgina d'ariv për ij donator, na pàgina andoa le stòrie a peulo esse butà, e n'antërfacia ëd moderassion dle stòrie",
+	'right-storyreview' => 'Lese torna, modifiché, publiché e stërmé le stòrie',
 );
 
 /** Russian (Русский)

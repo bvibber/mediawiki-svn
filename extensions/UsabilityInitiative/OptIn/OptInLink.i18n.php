@@ -971,11 +971,12 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
 	'optin-try' => 'Jaribu Beta',
 	'tooltip-pt-optin-try' => 'Jaribu kutumia mtindo na zana mpya',
-	'optin-leave' => 'Utoke Beta',
+	'optin-leave' => 'Ondoka Beta',
 	'tooltip-pt-optin-leave' => 'Uache kutumia mtindo na zana mpya',
 );
 

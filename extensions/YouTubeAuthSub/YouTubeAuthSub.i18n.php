@@ -59,13 +59,6 @@ $messages['qqq'] = array(
 	'youtubeauthsub_submit' => '{{Identical|Submit}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'youtubeauthsub_category' => "K'at'egori",
-);
-
 /** Latgaļu (Latgaļu)
  * @author Dark Eagle
  */
@@ -1675,11 +1668,19 @@ YouTube, видеогъузну ишлетир ючюн бир кесек зам
 
 Викиге видеогъузну салыр ючюн, бу кодну бетге салыкъыз:
 <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Видеону джюклер ючюн, Сизге эм алгъа YouTube-ха киригре/регистрацияны ётерге керекди.',
 	'youtubeauthsub_uploadhere' => 'Видеогъуз былайдан джюкленсин:',
 	'youtubeauthsub_uploadbutton' => 'Джюкле',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Бу видеогъа къараргъа]',
+	'youtubeauthsub_summary' => 'YouTube видеону джюклеу',
+	'youtubeauthsub_uploading' => 'Сизни видеогъуз джюклене турады.
+Бир кесек сакълагъыз.',
+	'youtubeauthsub_viewpage' => 'Дагъыда, [[$1|видеогъузгъа къараргъа]] боллукъсуз.',
+	'youtubeauthsub_jserror_nokeywords' => 'Бир неда талай ачхыч сёзлени джазыгъыз.',
+	'youtubeauthsub_jserror_notitle' => 'Видеону атын джазыгъыз.',
+	'youtubeauthsub_jserror_nodesc' => 'Видеону ачыкълауун джазыгъыз.',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -1817,6 +1818,13 @@ $messages['li'] = array(
 $messages['lt'] = array(
 	'youtubeauthsub' => 'Įkelti YouTube video',
 	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'youtubeauthsub_category' => "K'at'egori",
 );
 
 /** Malagasy (Malagasy)

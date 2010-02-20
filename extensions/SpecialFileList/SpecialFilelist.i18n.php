@@ -63,9 +63,9 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'filelist' => 'قائمة الملف',
+	'filelist' => 'لستة الملف',
 	'filelist-desc' => '[[Special:Filelist|صفحة خاصة]] لعرض الملفات المتحملة',
-	'filelist-show-list' => 'عرض القائمة',
+	'filelist-show-list' => 'عرض اللستة',
 	'filelist-show-gallery' => 'عرض المعرض',
 	'filelist-image-desc' => 'وصف',
 );

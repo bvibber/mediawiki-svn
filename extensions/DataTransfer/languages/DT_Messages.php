@@ -181,6 +181,7 @@ $messages['arn'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -191,12 +192,15 @@ $messages['arz'] = array(
 	'dt_viewxml_namespaces' => 'نطاقات',
 	'dt_viewxml_simplifiedformat' => 'صيغة مبسطة',
 	'dt_xml_namespace' => 'نطاق',
+	'dt_xml_pages' => 'صفحات',
 	'dt_xml_page' => 'صفحة',
+	'dt_xml_template' => 'قالب',
 	'dt_xml_field' => 'حقل',
 	'dt_xml_name' => 'اسم',
 	'dt_xml_title' => 'عنوان',
 	'dt_xml_id' => 'رقم',
 	'dt_xml_freetext' => 'نص حر',
+	'dt_import_editsummary' => 'استيراد $1',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

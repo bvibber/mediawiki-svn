@@ -42,13 +42,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'templatelink' => 'وصلة قالب',
-	'templatelink_desc' => 'هذا الامتداد يمكن أن يعرض قالبا كصفحة جديدة',
-	'templatelink_empty' => 'يجب عليك توفير محدد.',
-	'templatelink_newtitle' => '$1 (مضمنة)',
+	'templatelink_desc' => ' الامتداد ده ممكن يعرض قالب على إنه صفحه جديده',
+	'templatelink_empty' => 'لازم تحدد .',
+	'templatelink_newtitle' => '$1 (متضمنة)',
 );
 
 /** Kotava (Kotava)

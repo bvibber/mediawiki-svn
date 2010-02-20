@@ -561,3 +561,12 @@ $messages['ru'] = array(
 Вы можете [[Special:RefHelper|добавить сноску вручную]] или [[Special:RefSearch|произвести поиск ссылок]].',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'refhelper-pages' => 'పేజీలు:',
+	'refhelper-year' => 'సంవత్సరం:',
+	'refhelper-search' => 'వెతుకు',
+);
+

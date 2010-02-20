@@ -392,6 +392,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Translationista
  */
 $messages['es'] = array(
@@ -416,7 +417,8 @@ $messages['es'] = array(
 	'masseditregex-hint-headeffect' => 'Efecto',
 	'masseditregex-hint-toappend' => 'Añade texto al final de la página. Excelente para añadir páginas a categorías',
 	'masseditregex-hint-remove' => 'Eliminar algún texto de todas las páginas del listado',
-	'masseditregex-hint-removecat' => 'Eliminar todas las categorías de una página (nota la exclusión de los corchetes en el wikicode.) Los valores de reposición no deben excluirse.',
+	'masseditregex-hint-removecat' => 'Eliminar todas las categorías de una página (nota la exclusión de los corchetes en el código wiki.) 
+Los valores de reposición no deben excluirse.',
 	'masseditregex-listtype-intro' => 'Esta es una lista de:',
 	'masseditregex-listtype-pagenames' => 'Nombres de página (edita estas páginas)',
 	'masseditregex-listtype-pagename-prefixes' => 'Prefijos de nombre de página (edita páginas con nombres que comienzan con este texto)',

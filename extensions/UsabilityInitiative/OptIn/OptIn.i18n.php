@@ -5675,14 +5675,15 @@ Tack så mycket, vi ser fram emot att höra av dig!',
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
 	'optin-title-optedout' => 'Jaribu Beta',
-	'optin-title-optedin' => 'Utoke kwa Beta',
+	'optin-title-optedin' => 'Ondoka Beta',
 	'optin-title-justoptedin' => 'Karibu Beta',
 	'optin-title-justoptedout' => 'Asante kwa kujaribu kutumia bidhaa pepe ya Beta',
 	'optin-accept-long' => 'Ujaribu kutumia Beta',
-	'optin-submit-out' => 'Utoke Beta',
+	'optin-submit-out' => 'Ondoka Beta',
 );
 
 /** Telugu (తెలుగు)
