@@ -23,8 +23,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 define( 'Storyboard_VERSION', '0' );
 
+// TODO: try to get out the hardcoded path.
 $egStoryboardScriptPath = $wgScriptPath . '/extensions/Storyboard';
 $egStoryboardDir = dirname( __FILE__ ) . '/';
+$egStoryboardStyleVersion = $wgStyleVersion . '-' . Storyboard_VERSION;
 
 // Include the settings file.
 require_once( $egStoryboardDir . 'Storyboard_Settings.php' );
@@ -37,13 +39,13 @@ $wgExtensionMessagesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.i18n.ph
 $wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.php';
 
 // Load and register the StoryReview special page and register it's group.
-$wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview_body.php';
+$wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview/StoryReview_body.php';
 $wgSpecialPages['StoryReview'] = 'SpecialStoryReview';
 $wgSpecialPageGroups['StoryReview'] = 'contribution';
 
 // Load the tag extension classes.
-$wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard_body.php';
-$wgAutoloadClasses['TagStorysubmission'] = $egStoryboardDir . 'tags/Storysubmission_body.php';
+$wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard/Storyboard_body.php';
+$wgAutoloadClasses['TagStorysubmission'] = $egStoryboardDir . 'tags/Storysubmission/Storysubmission_body.php';
 
 // Register the tag extensions.
 // Avoid unstubbing $wgParser on setHook() too early on modern (1.12+) MW versions, as per r35980.
