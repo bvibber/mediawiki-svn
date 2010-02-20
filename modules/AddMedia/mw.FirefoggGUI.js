@@ -321,10 +321,20 @@ mw.FirefoggGUI.prototype = {
 		}
 		return this;
 	},
-
+	
+	/**
+	* Setup the form 
+	*/
 	setupForm: function() {				
 		//empty out the selector: 
 		$j( this.selector ).empty();
+		// Check for firefogg: 				
+		if ( ! this.getFirefogg() ) {		
+			// Show install firefogg msg
+			this.showInstallFirefog();
+			$j('.target_please_install').css( { 'width': 400, 'margin':'auto' } );
+			return;
+		}
 		this.createControls();
 		this.bindControls();
 	},
@@ -372,7 +382,7 @@ mw.FirefoggGUI.prototype = {
 	},
 
 	// Custom advanced target rewrites
-	getControlHtml: function( target ) {			
+	getControlHtml: function( target ) {
 		switch ( target ) {
 			case 'target_btn_select_file':
 			case 'target_btn_select_new_file':

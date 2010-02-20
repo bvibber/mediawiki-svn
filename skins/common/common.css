@@ -468,3 +468,13 @@ ul.ui-provider-selection li a {
 .interface_wrap{
 	position:relative;
 }
+
+.kaltura-icon {
+	background-image:url('images/kaltura_logo_sm_transparent.png') !important;
+	background-repeat:no-repeat;
+	display: block;
+	height: 12px;
+	width: 12px;
+	margin-top: -6px !important;
+	margin-left: 3px !important;	
+}

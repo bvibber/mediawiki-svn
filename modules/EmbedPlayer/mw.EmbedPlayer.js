@@ -362,7 +362,7 @@ EmbedPlayerManager.prototype = {
 		}
 		
 		// Firefox gives 300x150 css values OR -1 if video has not loaded metadata yet:
-		//  We check that and delay swaping in the player interface		 		
+		//  We check that and delay swapping in the player interface		 		
 		var waitForMeta = ( 
 			( 
 			  ( 
@@ -388,7 +388,7 @@ EmbedPlayerManager.prototype = {
 		) ? true : false;
 				
 		// Load any skins we need then swap in the interface
-		mw.load( skinClassRequest, function(){										
+		mw.load( skinClassRequest, function(){													
 			switch( element.tagName.toLowerCase() ) {
 				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
@@ -418,7 +418,7 @@ EmbedPlayerManager.prototype = {
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
 						_this.swapEmbedPlayerElement( element, playerInterface );	
-						// Issue the checkPlayerSources call to the new player interface:					
+						// Issue the checkPlayerSources call to the new player interface:											
 						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();						
 					}
 									
@@ -1214,8 +1214,9 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		// Set the default skin if unset: 
-		if ( !this.skinName )
+		if ( !this.skinName ){
 			this.skinName = mw.getConfig( 'skinName' );
+		}
 			
 		
 		// Make sure startOffset is cast as an float:		   
@@ -1356,10 +1357,10 @@ mw.EmbedPlayer.prototype = {
 				mw.log( 'set loading_external_data=false' );
 				_this.loading_external_data = false;
 				
-				_this.checkForTimedText();
+				_this.checkForTimedText();							
 			} );
 		}else{
-			_this.checkForTimedText();
+			_this.checkForTimedText();				
 		}
 	},
 
@@ -1407,6 +1408,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	checkForTimedText: function( ){
 		var _this = this;
+		mw.log( 'checkForTimedText: ' + this.id );
 		// Check for timedText support
 		if( this.isTimedTextSupported() ){			
 			mw.load( 'TimedText', function(){
@@ -1427,6 +1429,7 @@ mw.EmbedPlayer.prototype = {
 	* Sets load error if no source is playable 
 	*/	
 	setupSourcePlayer: function(){
+		mw.log("setupSourcePlayer: " + this.id );
 		// Autoseletct the media source
 		this.mediaElement.autoSelectSource();	
 		// Auto select player based on default order
@@ -1472,7 +1475,7 @@ mw.EmbedPlayer.prototype = {
 	* @param {Function} callback Function to be called once playback-system has been inherited
 	*/
 	inheritEmbedPlayer: function( callback ) {
-		mw.log( "inheritEmbedPlayer:duration is: " +  this.getDuration() );		
+		mw.log( "inheritEmbedPlayer:duration is: " +  this.getDuration()  + ' p: ' + this.id);		
 		
 		// Clear out any non-base embedObj methods:
 		if ( this.instanceOf ) {
@@ -1493,7 +1496,7 @@ mw.EmbedPlayer.prototype = {
 		// Load the selected player
 		this.selected_player.load( function() {		
 			// Get the selected player Interface
-			eval( ' var playerInterface =' +  _this.selected_player.library + 'Embed;' );
+			var playerInterface = window[ _this.selected_player.library + 'Embed' ];
 			
 			for ( var method in playerInterface ) {  
 				if ( _this[method] && !_this['parent_' + method] ){
@@ -2243,7 +2246,7 @@ mw.EmbedPlayer.prototype = {
 				
 		if ( this.play_button == true && this.controls == true ){
 			$thumb.append(
-				this.ctrlBuilder.getComponent( 'play-btn-large' )
+				this.ctrlBuilder.getComponent( 'playButtonLarge' )
 			);
 		}			  		  
 		return $thumb;

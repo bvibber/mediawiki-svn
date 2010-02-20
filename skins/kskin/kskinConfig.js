@@ -24,7 +24,7 @@ var kskinConfig = {
 		'playerSelect',
 		'download',
 		'share',
-		'credits',
+		'credits'
 	],
 	
 	// Extends base components with kskin specific options:
@@ -79,7 +79,7 @@ var kskinConfig = {
 					.addClass( 'k-menu ui-widget-content' )
 					.css( {
 						'width' :  ctrlObj.getOverlayWidth(),
-						'height' :  ctrlObj.getOverlayHeight(),
+						'height' :  ctrlObj.getOverlayHeight()
 					} );
 					
 				// Setup menu offset ( if player height <  getOverlayHeight )
@@ -268,14 +268,6 @@ var kskinConfig = {
 				embedPlayer.$interface.find( '.menu-' + menu_item )
 			);
 		}
-	},	
-	
-	/**
-	* Show the "edit with kaltura" screen (  specific to kaltura skin )
-	* NOTE: stub function
-	*/
-	showKalturaEdit: function(){
-		
 	},
 	
 	/**

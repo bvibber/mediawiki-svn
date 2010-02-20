@@ -1,5 +1,5 @@
 /*
-* vlc embed based on: http://people.videolan.org/~damienf/plugin-0.8.6.html
+* VLC embed based on: http://people.videolan.org/~damienf/plugin-0.8.6.html
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html
 *  assume version > 0.8.5.1
 */
@@ -21,7 +21,7 @@ var vlcEmbed = {
 		'overlay':false
 	},
 	
-	// The previus state of the player instance
+	// The previous state of the player instance
 	prevState : 0,
 	
 	// Counter for waiting for vlc embed to be ready
@@ -32,7 +32,7 @@ var vlcEmbed = {
 	*/
 	doEmbedHTML: function() {
 		var _this = this;				
-		/*$j( this ).html(
+		$j( this ).html(
 			'<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" ' +
 				'codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0" ' +
 				'id="' + this.pid + '" events="True" height="' + this.height + '" width="' + this.width + '"' +
@@ -50,14 +50,14 @@ var vlcEmbed = {
 						'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
 					'>' +
 			'</object>'
-		)*/
-		$j( this ).html(
+		)
+		/*$j( this ).html(
 			'<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" '+
 			    'width="' + this.width +'" ' +
 			    'height="' + this.height + '" ' +
 			    'id="' + this.pid + '"> ' + 
 			'</embed>'
-		);
+		);*/
 				
 		
 		// give VLC 150ms to initialize before we start playback 
