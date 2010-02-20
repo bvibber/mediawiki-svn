@@ -15,7 +15,6 @@ $messages['en'] = array(
 	 * js file: /skins/kskin/kskinConfig.js
 	 */
 	'mwe-credit-title' => 'Title: $1',
-	'mwe-kaltura-platform-title' => 'Kaltura open source video platform',
 
 	/*
 	 * js file: /modules/Sequencer/mw.TimedEffectsEdit.js
@@ -163,6 +162,7 @@ $messages['en'] = array(
 	'mwe-no-player' => 'No player available for $1',
 	'mwe-share_this_video' => 'Share this video',
 	'mwe-video_credits' => 'Video credits',
+	'mwe-kaltura-platform-title' => 'Kaltura open source video platform',
 	'mwe-menu_btn' => 'Menu',
 	'mwe-close_btn' => 'Close',
 	'mwe-ogg-player-vlc-player' => 'VLC player',
@@ -397,7 +397,8 @@ $messages['en'] = array(
 	'fogg-select_new_file' => 'Select new file',
 	'fogg-select_url' => 'Select URL',
 	'fogg-check_for_firefogg' => 'Checking for Firefogg...',
-	'fogg-installed' => 'Firefogg is installed',
+	'fogg-installed' => 'Firefogg is installed,',
+	'fogg-not-installed' => 'Firefogg is not installed',
 	'fogg-for_improved_uploads' => 'For improved uploads:',
 	'fogg-please-install' => '$1. More $2',
 	'fogg-please-install-install-linktext' => 'Install firefogg',
@@ -408,6 +409,7 @@ $messages['en'] = array(
 	'fogg-badtoken' => 'Token is not valid',
 	'fogg-preview' => 'Preview video',
 	'fogg-hidepreview' => 'Hide preview',
+	'fogg-warning-firebug' => '<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page.',
 
 	/*
 	 * js file: /modules/AddMedia/jquery.dragDropFile.js

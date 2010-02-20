@@ -142,21 +142,22 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
 			}
 		}
-		//Also add the text library to request set if any video element has text sources:
-		if(!addTimedTextReqFlag){
+		// If add timed text flag not already set check for itext, and sources
+		if( !addTimedTextReqFlag ){
 			if( $j( playerElement ).find( 'itext' ).length != 0 ){
 				// Has an itext child include timed text request
 				addTimedTextReqFlag = true;
-			}else{			
-				$j( playerElement ).find( 'source' ).each(function(na, sourceElement){
-					if( $j( sourceElement ).attr('type') == 'text/xml' && 
-						$j( sourceElement ).attr('codec') == 'roe' 
-					){						
-						// Has a roe src
-						addTimedTextReqFlag = true;
-					}
-				});
+				// break out of the loop
+				return false; 
 			}
+			// Check for ROE pointer or apiTitleKey
+			if ( $j( playerElement ).attr('roe') 
+				|| $j( playerElement ).attr( 'apiTitleKey' ) )
+			{				
+				addTimedTextReqFlag = true;
+				// break out of the loop
+				return false;
+			}			
 		}
 	} );	
 	

@@ -1335,7 +1335,7 @@ mw.addMessages( {
 	$.fn.timedText = function ( action, target  ){
 		if( !target )
 			options = action;
-		if( !options )
+		if( typeof options == 'undefined' )
 			options = {};
 		
 		$j( this.selector ).each(function(){

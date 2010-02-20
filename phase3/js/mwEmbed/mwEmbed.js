@@ -1227,11 +1227,11 @@ var MW_EMBED_VERSION = '1.1d';
 			{
 				break;
 			}
-			var func = mwLoadDoneCB[ requestName ].pop();
+			var func = mwLoadDoneCB[ requestName ].pop();			
 			if( typeof func == 'function' ){
 				func( requestName );
 			}else{
-				mw.log('mwLoadDoneCB: error not a callback function');
+				mw.log('mwLoadDoneCB: Error non callback function on stack');
 			}
 		}
 		// Set the load request name to done
@@ -1248,11 +1248,11 @@ var MW_EMBED_VERSION = '1.1d';
 		if( mwLoadDoneCB[ requestName ] == 'done' ){
 			callback( requestName )
 		}
-		// Add it to the function queue
-		if( ! mwLoadDoneCB[ requestName ] || mwLoadDoneCB[ requestName ].length ){
+		// Setup the function queue if unset
+		if( ! mwLoadDoneCB[ requestName ] ){
 			mwLoadDoneCB[ requestName ] = [];
 		}
-		mwLoadDoneCB[ requestName ].push( callback );
+		mwLoadDoneCB[ requestName ].push( callback );		
 	};
 	
 	/**
@@ -1687,8 +1687,8 @@ var MW_EMBED_VERSION = '1.1d';
 			/**
 			 * Old IE and non-Firebug debug: ( commented out for now ) 
 			 */
-			
 			/*
+
 			var log_elm = document.getElementById('mv_js_log');
 			if(!log_elm){
 				document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML +
@@ -1702,6 +1702,7 @@ var MW_EMBED_VERSION = '1.1d';
 				log_elm.value+=string+"\n";
 			}
 			*/
+			
 		}
 	}
 	
@@ -2518,6 +2519,35 @@ var MW_EMBED_VERSION = '1.1d';
 			}	
 		});
 	}	
+	
+	/**
+	* A version comparison utility function
+	* Handles version of types {Major}.{MinorN}.{Patch}
+	*
+	* Note this just handles version numbers not patch letters.
+	*
+	* @param {String} minVersion Minnium version needed
+	* @param {String} clientVersion Client version to be checked
+		
+	* @return 
+	* 	true if the version is at least of minVersion
+	* 	false if the version is less than minVersion
+	*/
+	mw.versionIsAtLeast = function( minVersion, clientVersion ) {
+		var minVersionParts = minVersion.split('.')
+		var clientVersionParts = clientVersion.split('.');
+		for( var i =0; i <  minVersionParts.length; i++ ) {
+			if( parseInt( clientVersionParts[i] ) > parseInt( minVersionParts[i] ) ){
+				return true;
+			}
+			if( parseInt( clientVersionParts[i] ) < parseInt( minVersionParts[i] ) ){
+				return false;
+			}
+		}
+		// Same version:
+		return true;
+	}
+	 
 	/**
 	 * Utility jQuery bindings
 	 *  Setup after jQuery is available ). 

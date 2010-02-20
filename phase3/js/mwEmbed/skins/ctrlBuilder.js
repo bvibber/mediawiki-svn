@@ -39,9 +39,7 @@ ctrlBuilder.prototype = {
 			  
 		// All playback types support kalturaAttribution 
 		// to enable or disable use mw.setConfig( 'kalturaAttribution', [true|false] ) 
-		'kalturaAttribution' : true,
-		
-		'playButtonLarge' : true
+		'kalturaAttribution' : true
 	},
 	/**
 	* Initialization Object for the control builder
@@ -129,6 +127,11 @@ ctrlBuilder.prototype = {
 		// Build component output: 
 		for ( var component_id in this.components ) {
 		
+			// Check for explit skip (component === false ) 
+			if( this.components[ component_id ] === false  ){
+				continue;
+			}
+			
 			// Special case with playhead skip if we have > 30px of space for it
 			if ( component_id == 'playHead' && this.available_width < 30 ){
 				continue;
@@ -187,16 +190,14 @@ ctrlBuilder.prototype = {
 		
 		// Setup target shortcut to	control-bar
 		$target = embedPlayer.$interface;
-				
-		
 
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.checkNativeWarning( ) ) {
 			_this.doNativeWarning();
 		}
-
-		if ( $j.browser.msie  &&  $j.browser.version <= 6 ) {
-			$j( embedPlayer.id + ' .play-btn-large' ).pngFix();
+		
+		if ( $j.browser.msie  &&  $j.browser.version <= 6 ) {			
+			$j('#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
 		}
 
 
@@ -298,8 +299,9 @@ ctrlBuilder.prototype = {
 		this.doVolumeBinding();
 		
 		// Check if we have any custom skin Bindings to run
-		if ( this.addSkinControlBindings && typeof( this.addSkinControlBindings ) == 'function' )
+		if ( this.addSkinControlBindings && typeof( this.addSkinControlBindings ) == 'function' ){
 			this.addSkinControlBindings();
+		}
 	},
 	closeMenuOverlay: function(){
 		var _this = this;	
@@ -452,7 +454,7 @@ ctrlBuilder.prototype = {
 				},
 				function() {
 					hoverOverDelay = false;
-					setTimeout( function doHideVolume() {
+					setTimeout( function() {
 						if ( !hoverOverDelay ) {
 							$targetvol.fadeOut( 'fast' );
 						}
@@ -587,16 +589,19 @@ ctrlBuilder.prototype = {
 			'o' : function( ctrlObj ){			
 				return $j( '<div />' )
 						.attr( 'title',  gM( 'mwe-kaltura-platform-title' ) )						
-						.addClass( 'ui-state-default ui-corner-all ui-icon_link rButton k-attribution' )
+						.addClass( 'ui-state-default ui-corner-all ui-icon_link rButton' )
 						.append( 
 							$j('<span />')
-							.addClass( 'ui-icon k-attribution' )
+							.addClass( 'ui-icon kaltura-icon' )
 						)
+						.unbind()
+						.buttonHover()
 						.click( function( ) { 
 							window.location = 'http://kaltura.com';
 						} );
 			}
 		},
+		
 		/**
 		* The options button, invokes display of the options menu
 		*/
@@ -668,7 +673,7 @@ ctrlBuilder.prototype = {
 		'volumeControl': {
 			'w' : 28,
 			'o' : function( ctrlObj ) {
-				$volumeOut = $j( '<div />' );
+				$volumeOut = $j( '<span />' );
 				if ( ctrlObj.volume_layout == 'horizontal' ) {
 					$volumeOut.append(  
 						$j( '<div />' )
@@ -687,7 +692,7 @@ ctrlBuilder.prototype = {
 				 );
 						
 				if ( ctrlObj.volume_layout == 'vertical' ) {
-					$volumeOut.append( 	
+					$volumeOut.find('.volume_control').append( 	
 						$j( '<div />' )
 						.css( {
 							'position' : 'absolute',
@@ -701,7 +706,8 @@ ctrlBuilder.prototype = {
 						)
 					);
 				}				
-				return $volumeOut;
+				//Return the inner html 
+				return $volumeOut.html();
 			}
 		},
 		

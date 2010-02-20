@@ -4,14 +4,14 @@
  */
 
 mw.addMessages({
-	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",
-	
+	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",	
 	"fogg-transcoding" : "Encoding video to ogg",	
 	"fogg-select_file" : "Select file",	
 	"fogg-select_new_file" : "Select new file",
 	"fogg-select_url" : "Select URL",
 	"fogg-check_for_firefogg" : "Checking for Firefogg...",
-	"fogg-installed" : "Firefogg is installed",
+	"fogg-installed" : "Firefogg is installed,",
+	"fogg-not-installed" : "Firefogg is not installed",
 	"fogg-for_improved_uploads" : "For improved uploads:",
 	"fogg-please-install" : "$1. More $2",
 	"fogg-please-install-install-linktext" : "Install firefogg",
@@ -21,7 +21,8 @@ mw.addMessages({
 	"fogg-encoding-done" : "Encoding complete",
 	"fogg-badtoken" : "Token is not valid",
 	"fogg-preview" : "Preview video",
-	"fogg-hidepreview" : "Hide preview"
+	"fogg-hidepreview" : "Hide preview",
+	"fogg-warning-firebug" : "<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page." 
 });
 
 var firefogg_install_links = {
@@ -127,12 +128,18 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
         'audioBitrate'   : '96',
         'noUpscaling'    : true
 	},
-	have_firefogg: null, // lazy initialised, use getFirefogg()
-	current_encoder_settings: null, // lazy initialised, use getEncoderSettings()
-	sourceFileInfo: null, // lazy initialised, use getSourceFileInfo()
+	// lazy initialised, use getFirefogg()
+	have_firefogg: null, 
+	
+	// lazy initialised, use getEncoderSettings()
+	current_encoder_settings: null, 
+	
+	// lazy initialised, use getSourceFileInfo()
+	sourceFileInfo: null, 
+	
+	// Valid ogg extensions
 	ogg_extensions: [ 'ogg', 'ogv', 'oga' ],
-	video_extensions: [ 'avi', 'mov', 'mp4', 'mp2', 'mpeg', 'mpeg2', 'mpeg4', 'dv', 'wmv' ],
-
+		
 	passthrough: false,
 	sourceMode: 'file',
 
@@ -168,8 +175,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					this[i] =  myBUI[i];
 				}
 			}
-		}
-
+		}		
 		if ( !this.selector ) {
 			mw.log('firefogg: missing selector ');
 		}
@@ -289,46 +295,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				.click( function() {
 					_this.selectSourceFile();
 				});
-		} else {
-			// Firefogg disabled
-			// FIXME: move this elsewhere. None of this is related to binding.
-
-			// Show the "use latest Firefox" message if necessary
-			if ( !( $j.browser.mozilla && $j.browser.version >= '1.9.1' ) ) {
-				mw.log( 'show use latest::' + _this.target_use_latest_firefox );
-				if ( _this.target_use_latest_firefox ) {
-					if ( _this.form_type == 'upload' )
-						$j( _this.target_use_latest_firefox )
-							.prepend( gM( 'fogg-for_improved_uploads' ) );
-
-					$j( _this.target_use_latest_firefox ).show();
-				}
-				return;
-			}
-
-			// Otherwise show the "install Firefogg" message
-			var upMsg = ( _this.form_type == 'upload' ) ? gM( 'fogg-for_improved_uploads' ) : '';
-			var firefoggUrl = _this.getFirefoggInstallUrl();
-			if( firefoggUrl ){			
-				$j( _this.target_please_install )
-					.html( upMsg + 
-						gM( 'fogg-please-install', [					
-							// Install link
-							$j('<a />')
-							.text( gM( "fogg-please-install-install-linktext" ) )
-							.attr('href', firefoggUrl ),
-							
-							// About link
-							$j('<a />')
-							.text( gM( "fogg-please-install-about-linktext" ) )
-							.attr( 'href', 'http://commons.wikimedia.org/wiki/Commons:Firefogg' ) 
-							
-						])					
-					)
-					.css( 'padding', '10px' )
-					.show();
-			}
-		}
+		}		
+		
 
 		// Set up the click handler for the "save local file" button
 		if( _this.target_btn_save_local_file ){
@@ -337,6 +305,66 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			.click( function() {
 				_this.doLocalEncodeAndSave();
 			} );
+		}
+	},
+	
+	/**
+	* Show the install firefogg msg
+	*/
+	showInstallFirefog: function(){		
+		var _this = this;			
+		
+		var upMsg = ( _this.form_type == 'upload' ) ? 
+			gM( 'fogg-for_improved_uploads' ) + ' ' : gM( 'fogg-not-installed') + ' ';
+		
+		// Show the "use latest Firefox" message if necessary
+		mw.log( 'bv: ' + mw.versionIsAtLeast( '1.9.1', $j.browser.version ) );
+		if ( !( $j.browser.mozilla && mw.versionIsAtLeast( '1.9.1', $j.browser.version ) ) ) {
+			mw.log( 'show use latest::' + _this.target_use_latest_firefox );
+			
+			// Add the use_latest if not present: 
+			if ( !this.target_use_latest_firefox ) {
+				$j( this.selector ).after( this.getControlHtml( 'target_use_latest_firefox' ) );
+				this.target_use_latest_firefox = this.selector + ' ~ .target_use_latest_firefox';
+			}
+			
+			// Add the upload msg if we are "uploading" 
+			if ( _this.form_type == 'upload' ){
+				$j( _this.target_use_latest_firefox )
+				.prepend( upMsg );
+			}
+			
+			$j( _this.target_use_latest_firefox ).show();		
+			return ;
+		}
+		mw.log( 'should show install link');
+
+		// Otherwise show the "install Firefogg" message		
+		var firefoggUrl = _this.getFirefoggInstallUrl();
+		if( firefoggUrl ){
+			
+			// Add the target please install in not present: 
+			if ( !this.target_please_install ) {
+					$j( this.selector ).after( this.getControlHtml( 'target_please_install' ) );
+					this.target_please_install = this.selector + ' ~ .target_please_install';
+			}				
+			// Add the install msg 
+			$j( _this.target_please_install )
+				.html( upMsg + 
+					gM( 'fogg-please-install', [					
+						// Install link
+						$j('<a />')
+						.text( gM( "fogg-please-install-install-linktext" ) )
+						.attr('href', firefoggUrl ),
+						
+						// About link
+						$j('<a />')
+						.text( gM( "fogg-please-install-about-linktext" ) )
+						.attr( 'href', 'http://commons.wikimedia.org/wiki/Commons:Firefogg' ) 						
+					])					
+				)
+				.css( 'padding', '10px' )
+				.show();
 		}
 	},
 
@@ -362,7 +390,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	getFirefogg: function() {
 		if ( this.have_firefogg == null ) {
 			if ( typeof( Firefogg ) != 'undefined' 
-				&& Firefogg().version >= this.min_firefogg_version ) 
+				&& mw.versionIsAtLeast(this.min_firefogg_version,  Firefogg().version ) ) 
 			{
 				this.have_firefogg = true;
 				this.fogg = new Firefogg();
@@ -379,6 +407,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 */
 	setupForm: function() {
 		mw.log( 'firefogg::setupForm::' );
+			
 		var _this = this;		
 		// Set up the parent if we are in upload mode
 		if ( this.form_type == 'upload' ) {
@@ -386,18 +415,26 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 		
 		// If Firefogg is not available, just show a "please install" message
-		if ( ! _this.getFirefogg() ) {
-			if ( !this.target_please_install ) {
-				$j( this.selector ).after( this.getControlHtml( 'target_please_install' ) );
-				this.target_please_install = this.selector + ' ~ .target_please_install';
-			}
-			if ( !this.target_use_latest_firefox ) {
-				$j( this.selector ).after( this.getControlHtml( 'target_use_latest_firefox' ) );
-				this.target_use_latest_firefox = this.selector + ' ~ .target_use_latest_firefox';
-			}
-			// Show download link
-			this.bindControls();
+		if ( ! _this.getFirefogg() ) {		
+			// Show install firefogg msg
+			this.showInstallFirefog();
 			return;
+		}		
+				
+		// If uploading and firefogg is on show warning
+		if ( this.form_type == 'upload' 
+			&&	typeof console != 'undefined' 
+			&& console.firebug ){		
+			$j( this.selector ).after(
+				$j( '<div />' )
+				.addClass( 'ui-state-error ui-corner-all' )
+				.html( gM( 'fogg-warning-firebug' ) )
+				.css({ 
+					'width' : 'auto',
+					'margin' : '5px',
+					'padding' : '5px'
+				})
+			); 
 		}
 
 		// Change the file browser to type text. We can't simply change the attribute so 
