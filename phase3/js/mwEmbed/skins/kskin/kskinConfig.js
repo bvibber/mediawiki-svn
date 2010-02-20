@@ -66,13 +66,7 @@ var kskinConfig = {
 		'optionsMenu': {
 			'w' : 0,
 			'o' : function( ctrlObj ) {
-				var embedPlayer = ctrlObj.embedPlayer;
-				
-							
-				var menuOffset = ( embedPlayer.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) ? 
-					'top:' +  + 'px;'  : '';
-														
-								
+				var embedPlayer = ctrlObj.embedPlayer;				
 				
 				$menuOverlay = $j( '<div />')
 					.attr('id',  'blackbg_' + embedPlayer.id )
@@ -85,6 +79,7 @@ var kskinConfig = {
 				// Setup menu offset ( if player height <  getOverlayHeight )
 				// This displays the menu outside of the player on small embeds	
 				if ( embedPlayer.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) {
+				
 					$menuOverlay.css( 'top', parseInt( embedPlayer.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px' );
 					
 					// Special common overflow hack for thumbnail display of player 								
@@ -130,7 +125,8 @@ var kskinConfig = {
 				// Add the menuScreens to the menuOverlay
 				$menuOverlay.append( $menuScreens );
 				
-				return $menuOverlay;				
+				return $menuOverlay;	
+				
 			}
 		}
 	},
