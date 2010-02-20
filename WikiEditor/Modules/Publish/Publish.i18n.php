@@ -860,6 +860,7 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
 	'wikieditor-publish-preference' => 'Kuwezesha kutoa mabadiliko hatua kwa hatua',
@@ -869,7 +870,7 @@ $messages['sw'] = array(
 	'wikieditor-publish-dialog-summary' => 'Muhtasari ya kuhariri (ueleze kifupi mabadiliko ulioyafanya):',
 	'wikieditor-publish-dialog-minor' => 'Badiliko dogo',
 	'wikieditor-publish-dialog-watch' => 'Fuatilia ukurasa huu',
-	'wikieditor-publish-dialog-publish' => 'Tolea',
+	'wikieditor-publish-dialog-publish' => 'Chapisha',
 	'wikieditor-publish-dialog-goback' => 'Rudi',
 );
 
