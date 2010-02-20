@@ -41,13 +41,15 @@ abstract class CodeCommentLinker {
 		$displayLen = 0; // innerHTML legth so far
 		$doTruncate = true; // truncated string plus '...' shorter than original?
 		$tagType = 0; // 0-open, 1-close
-		$bracketState = 0; // 1-tag start, 2-tag name, 3-tag params, 0-neither
+		$bracketState = 0; // 1-tag start, 2-tag name, 0-neither
 		$entityState = 0; // 0-not entity, 1-entity
-		$tag = $ret = $ch = $lastCh = '';
+		$tag = $ret = $ch = '';
 		$openTags = array();
-		for( $pos = 0; $pos < strlen($text); $pos++ ) {
-			$lastCh = $ch;
+		$textLen = strlen($text);
+		for( $pos = 0; $pos < $textLen; ++$pos ) {
 			$ch = $text[$pos];
+			$lastCh = $pos ? $text[$pos-1] : '';
+			$ret .= $ch; // add to result string
 			if ( $ch == '<' ) {
 				self::onEndBracket( $tag, $tagType, $lastCh, $openTags ); // for bad HTML
 				$entityState = 0; // for bad HTML
@@ -58,9 +60,9 @@ abstract class CodeCommentLinker {
 				$bracketState = 0; // out of brackets
 			} elseif ( $bracketState == 1 ) {
 				if ( $ch == '/' ) {
-					$tagType = 1; // close tag
+					$tagType = 1; // close tag (e.g. "</span>")
 				} else {
-					$tagType = 0; // open tag
+					$tagType = 0; // open tag (e.g. "<span>")
 					$tag .= $ch;
 				}
 				$bracketState = 2; // building tag name
@@ -68,28 +70,35 @@ abstract class CodeCommentLinker {
 				if ( $ch != ' ' ) {
 					$tag .= $ch;
 				} else {
-					$bracketState = 3; // name found (e.g. "<a href=...")
+					// Name found (e.g. "<a href=..."), add on tag attributes...
+					$pos += self::skipAndAppend( $ret, $text, "<>", $pos + 1 );
 				}
 			} elseif ( $bracketState == 0 ) {
 				if ( $entityState ) {
 					if ( $ch == ';' ) {
 						$entityState = 0;
-						$displayLen++; // entity is one char
+						$displayLen++; // entity is one displayed char
 					}
-				} elseif ( $ch == '&' ) {
-					$entityState = 1; // entity found, (e.g. "&nbsp;")
 				} else {
-					$displayLen++; // not in brackets
+					if ( $ch == '&' ) {
+						$entityState = 1; // entity found, (e.g. "&nbsp;")
+					} else {
+						$displayLen++; // this char is displayed
+						// Add on the other display text after this...
+						$skipped = self::skipAndAppend(
+							$ret, $text, "<>&", $pos + 1, $maxLen - $displayLen );
+						$displayLen += $skipped;
+						$pos += $skipped;
+					}
 				}
 			}
-			$ret .= $ch;
 			if( !$doTruncate ) continue;
 			# Truncate if not in the middle of a bracket/entity...
 			if ( $bracketState == 0 && $entityState == 0 && $displayLen >= $maxLen ) {
-				$left = substr( $text, $pos + 1 ); // remaining string
-				$left = StringUtils::delimiterReplace( '<', '>', '', $left ); // rm tags
-				$left = StringUtils::delimiterReplace( '&', ';', '', $left ); // rm entities
-				$doTruncate = ( strlen($left) > strlen($ellipsis) );
+				$remaining = substr( $text, $pos + 1 ); // remaining string
+				$remaining = StringUtils::delimiterReplace( '<', '>', '', $remaining ); // rm tags
+				$remaining = StringUtils::delimiterReplace( '&', ';', '', $remaining ); // rm entities
+				$doTruncate = ( strlen($remaining) > strlen($ellipsis) );
 				if ( $doTruncate ) {
 					# Hack: go one char over so truncate() will handle multi-byte chars
 					$ret = $wgLang->truncate( $ret . 'x', strlen($ret), '' ) . $ellipsis;
@@ -100,14 +109,26 @@ abstract class CodeCommentLinker {
 		if( $displayLen == 0 ) {
 			return ''; // no text shown, nothing to format
 		}
-		self::onEndBracket( $tag, $lastCh, $tagType, $openTags ); // for bad HTML
+		self::onEndBracket( $tag, $text[$textLen-1], $tagType, $openTags ); // for bad HTML
 		while ( count( $openTags ) > 0 ) {
-			$ret .= '</' . array_pop($openTags) . '>'; // close open tags
+			$ret .= '</' . array_pop( $openTags ) . '>'; // close open tags
 		}
 		return $ret;
 	}
 	
-	protected function onEndBracket( &$tag, $tagType, $lastCh, &$openTags ) {
+	// like strcspn() but adds the skipped chars to $ret
+	private function skipAndAppend( &$ret, $text, $search, $start, $len = NULL ) {
+		$skipCount = 0;
+		if( $start < strlen($text) ) {
+			$skipCount = strcspn( $text, $search, $start, $len );
+			$ret .= substr( $text, $start, $skipCount );
+		}
+		return $skipCount;
+	}
+	
+	// (a) push or pop $tag from $openTags as needed
+	// (b) clear $tag value
+	private function onEndBracket( &$tag, $tagType, $lastCh, &$openTags ) {
 		$tag = ltrim( $tag );
 		if( $tag != '' ) {
 			if( $tagType == 0 && $lastCh != '/' ) {
