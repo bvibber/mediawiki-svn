@@ -74,11 +74,11 @@ $wgExtensionMessagesFiles['ErrorHandler'] = dirname( __FILE__ ) . '/ErrorHandler
 /**
  * Custom error handler
  *
- * @param integer $errType type of error
- * @param string $errMsg error message
- * @param string $errFile file where the error occured
- * @param integer $errLine line where the error occured
- * @param array $errVars hmm?
+ * @param $errType Integer: type of error
+ * @param $errMsg String: error message
+ * @param $errFile String: file where the error occured
+ * @param $errLine Integer: line where the error occured
+ * @param $errVars Array: hmm?
  */
 function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 	global $wgErrorHandlerErrors,        $wgErrorHandlerOutputDone,
@@ -239,8 +239,8 @@ function efErrorHandlerGetMessage(){
 
 /**
  * Get an error string from an array
- * @param $arr array
- * @param $forceText bool
+ * @param $arr Array
+ * @param $forceText Boolean
  */
 function efErrorGetText( $arr, $forceText = false ){
 	global $wgCommandLineMode;
