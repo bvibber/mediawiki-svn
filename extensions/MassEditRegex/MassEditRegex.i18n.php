@@ -863,6 +863,7 @@ $messages['lb'] = array(
 	'masseditregex-hint-remove' => 'Text vun alle Säiten op der Lëscht erofhuelen',
 	'masseditregex-listtype-intro' => 'Dëst ass eng Lëscht vun:',
 	'masseditregex-listtype-pagenames' => 'Numm vun de Säiten (dës Säiten änneren)',
+	'masseditregex-namespace-intro' => 'All dës Säite sinn an dësem Nummraum:',
 	'masseditregex-editfailed' => 'Feeler beim änneren:',
 	'masseditregex-tooltip-execute' => 'Dës Ännerungen op all Säit uwenden',
 );

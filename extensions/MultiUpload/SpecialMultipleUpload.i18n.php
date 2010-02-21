@@ -767,17 +767,17 @@ $messages['ia'] = array(
 	'multipleupload-saveallfiles' => 'Immagazinar tote le files',
 	'multipleupload-addresswarnings' => 'Per favor remedia omne advertimentos ante de recargar files.',
 	'multipleupload-page' => '{{ns:project}}:Politica pro le deletion de files',
-	'multipleupload-text' => "Carga plure files hic.
+	'multipleupload-text' => "Incarga multiple files hic.
 
-Clicca 'Navigar' e selige cata file que tu vole cargar.
-Tu pote cargar inter 1 e $1 files al mesme tempore.
+Clicca 'Navigar' e selige cata file que tu vole incargar.
+Tu pote incargar inter 1 e $1 files insimul.
 
 Tu pote entrar optionalmente un '''Nomine de file de destination''' e fornir un '''Summario''' que describe tu file.
 
 Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multipleupload-page}}|politica pro le deletion de files]].",
 	'multiupload-fileuploaded' => 'File cargate.',
 	'multiupload-toolbox' => 'Cargar plure files',
-	'multiupload-no-files' => 'Per favor selige al minus un file a cargar',
+	'multiupload-no-files' => 'Per favor selige al minus un file a incargar',
 	'multiupload-blank' => 'Nulle file seligite',
 );
 

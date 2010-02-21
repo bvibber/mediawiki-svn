@@ -125,6 +125,18 @@ $messages['bs'] = array(
 	'right-userrights-global' => 'Upravljanje pravima globalnih korisnika',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'globaluserrights' => "Gestió global de drets d'usuari",
+	'gur-desc' => "Administració senzilla dels [[Special:GlobalUserRights|drets globals d'usuari]]",
+	'gur-rightslog-name' => 'Registre de drets globals',
+	'gur-rightslog-header' => "Aquest és un registre dels canvis de permisos d'usuari globals.",
+	'gur-rightslog-entry' => "s'han canviat els grups globals de $1 des de $2 a $3",
+	'right-userrights-global' => "Gestiona els permisos globals d'usuari",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

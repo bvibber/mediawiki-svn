@@ -469,6 +469,16 @@ Nama pengguna bersifat sensitif terhadap kapitalisasi.
 Periksa ejaan anda.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ajaxlogin-create' => 'Ké buwa',
+	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
+Orúnotu né lékwa I dé na ukwu na ntà.
+Lé otu I dètùrù ihe.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

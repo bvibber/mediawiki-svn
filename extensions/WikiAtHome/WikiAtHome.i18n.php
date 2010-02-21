@@ -1057,6 +1057,7 @@ $messages['lb'] = array(
 	'wah-lookingforjob' => 'No enger Aarbecht sichen ...',
 	'wah-start-on-visit' => 'Wiki@Home all Kéiers beim Opmaache vun dëser Säit demarréieren.',
 	'wah-jobs-while-away' => "Aufgaben nëmmen ausféieren, wann ech op d'mannst 20 Minutte keng Browseraktivitéit hat.",
+	'wah-notoken-login' => "Sidd Dir ageloggt? Wann net, da loggt Iech w.e.g. fir d'éischt an.",
 	'wah-downloading' => "D'Erofluede vum Fichier <i>$1%</i> ass fäerdeg",
 	'wah-encoding-fail' => 'Encodage huet net geklappt. Luet dës Säit frësch oder probéiert méi spéit nach eng Kéier.',
 	'wah-uploading' => 'De Fichier <i>$1</i> gouf komplett eropgelueden',

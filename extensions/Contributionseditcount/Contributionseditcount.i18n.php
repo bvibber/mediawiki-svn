@@ -534,6 +534,14 @@ $messages['sah'] = array(
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 );
 
+/** Sinhala (සිංහල)
+ * @author Jiro Ono
+ */
+$messages['si'] = array(
+	'contributionseditcount' => 'මෙම පරිශීලකයා {{PLURAL:$1|එක් සංස්කරණයක්|සංස්කරණයන් $1 ක්}} සිදු කර ඇත.',
+	'contributionseditcount-desc' => '[[Special:Contributions|පරිශීලක දායකත්ව පිටුව]] තුල සංස්කරණ සංඛ්‍යාව ගෙන හැර දක්වයි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

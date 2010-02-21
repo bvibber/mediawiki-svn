@@ -852,7 +852,7 @@ Nem történt frissítés.",
 $messages['ia'] = array(
 	'importusers' => 'Importar usatores',
 	'importusers-desc' => '[[Special:ImportUsers|Importa usatores]] in bloco ab un file CSV; codification: UTF-8',
-	'importusers-uploadfile' => 'Cargar file',
+	'importusers-uploadfile' => 'Incargar file',
 	'importusers-form-caption' => 'File CSV de entrata (UTF-8)',
 	'importusers-form-file' => 'Formato del file de usatores (CSV):',
 	'importusers-form-replace-present' => 'Reimplaciar le usatores existente',

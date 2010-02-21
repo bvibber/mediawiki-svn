@@ -1344,6 +1344,13 @@ Měly by být používány pouze v článcích ve jmenném prostoru Wikilog.',
 	'wikilog-doc-import-comment' => 'Importovaná Wikilog dokumentace',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikilog-invalid-author' => 'творьца и́мѧ блаꙁнѫ дрьжитъ : $1',
+);
+
 /** Danish (Dansk)
  * @author MGA73
  */
@@ -3512,12 +3519,16 @@ $messages['lb'] = array(
 	'wikilog-pager-empty' => '(keng Objeten)',
 	'wikilog-no-comments' => 'Keng Bemierkungen',
 	'wikilog-has-comments' => '{{PLURAL:$1|eng Bemierkung|$1 Bemierkungen}}',
+	'wikilog-summary-footer' => 'Geschéckt vum $1 op [[$1|$2]] den $8 ëm $9, $10.',
 	'wikilog-summary-uncategorized' => 'A kenger Kategorie',
 	'wikilog-summary-categories' => 'Klasséiert ënnert $2',
 	'wikilog-summary-more' => '[[$3|→ weiderliesen ...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussioun]])',
 	'wikilog-edit-fieldset-legend' => 'Optioune vu Wikilog:',
 	'wikilog-edit-signpub' => 'Dësen Artikel ënnerschreiwen a publizéieren',
+	'wikilog-comment-permalink' => '$1 ëm $2',
+	'wikilog-comment-note-edited' => "fir d'lescht geännert den $1 ëm $2",
+	'wikilog-comment-anonsig' => '$3 (anonym)',
 	'wikilog-comment-deleted' => 'Dës Bemierkung gouf geläscht.',
 	'wikilog-comment-autosumm' => 'Nei Bemierkung vum $1: $2',
 	'wikilog-reply-to-comment' => 'Eng Änwert zu dëser Bemierkung schécken',
@@ -3528,6 +3539,7 @@ $messages['lb'] = array(
 	'wikilog-comment-approve' => 'Dës Bemierkung approuvéieren (gëtt direkt gemaach)',
 	'wikilog-newtalk-text' => '<!-- eidel Säit déi vu Wikilog ugeluecht gouf-->',
 	'wikilog-newtalk-summary' => 'automatesch ugeluecht vu Wikilog',
+	'wikilog-comment-feed-title1' => 'Bemierkung vum $2 (#$1)',
 	'wikilog-title-comments' => 'Bemierkungen - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',
 	'wikilog-error-title' => 'Wikilog-Feeler',
@@ -3541,6 +3553,7 @@ $messages['lb'] = array(
 	'wikilog-comment-too-long' => "D'Bemierkung déi geschéckt gouf ass ze laang.",
 	'wikilog-comment-invalid-name' => 'Den Numm deen dir uginn hutt ass net valabel.',
 	'wikilog-no-such-article' => 'Den ugefrote Wikilog-Artikel gëtt et net.',
+	'wikilog-post-comment' => 'Eng nei Bemierkung schécken',
 	'wikilog-post-reply' => 'Eng nei Äntwert schécken',
 	'wikilog-form-wikilog' => 'Wikilog:',
 	'wikilog-form-category' => 'Kategorie:',
@@ -3855,6 +3868,9 @@ Schakel dit vaktje uit om het artikel de status concept te laten houden.',
 	'wikilog-newtalk-text' => '<!-- lege pagina; aangemaakt door Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisch aangemaakt door Wikilog',
 	'wikilog-feed-description' => 'De meest recente bijdragen in deze feed bekijken.',
+	'wikilog-comment-feed-title1' => 'Reactie van $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Reactie van $2 bij $3 (#$1)',
+	'wikilog-comment-feed-description' => 'De meeste recente reacties voor deze feed lezen.',
 	'wikilog-title-comments' => 'Reacties - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',
 	'wikilog-error-title' => 'Foutmelding Wikilog',

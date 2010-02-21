@@ -1627,6 +1627,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'expandtemplates' => 'Template spannute',
+	'expand_templates_title' => 'Titele condestuale, pe {{PAGENAME}} ecc.:',
 	'expand_templates_input' => 'Teste de input:',
 	'expand_templates_output' => 'Resultete',
 	'expand_templates_xml_output' => 'XML de output',

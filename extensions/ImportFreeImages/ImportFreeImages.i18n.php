@@ -772,17 +772,16 @@ $messages['lb'] = array(
 	'importfreeimages' => 'Fräi Biller importéieren',
 	'importfreeimages-desc' => "Erméiglecht et fir [[Special:ImportFreeImages|ordentlich lizenzéiert Fotoen]] vu [http://www.flickr.com flickr] z'importéieren",
 	'importfreeimages_description' => "Dës Säit erlaabt iech et fir no uerdentlech lizenzéierte Biller vu flickr ze sichen an dës an är Wiki z'importéieren.",
-	'importfreeimages_noapikey' => 'Dir hutt Äre Flickr API Schlëssel net agestallt.
-Fir dëst ze maachen, Frot w.e.g. en API Schlëssel [http://www.flickr.com/services/api/misc.api_keys.html hei] a setzt $wgFlickrAPIKey  an ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Et goufe keng Photoen no ärer Sich '$1' fonnt, versicht et w.e.g. nach eng Kéier.",
-	'importfreeimages_invalidurl' => 'D\'URL "$1" ass kee gëltegt Flickr-Bild.',
 	'importfreeimages_owner' => 'Auteur:',
 	'importfreeimages_importthis' => 'importéieren',
 	'importfreeimages_next' => 'Nächst $1',
-	'importfreeimages_filefromflickr' => '$1 vum Benotzer <b>[$2]</b> vun flickr. Original URL',
-	'importfreeimages_promptuserforfilename' => 'Gitt w.e.g een Numm fir den neie Fichier un:',
-	'importfreeimages_returntoform' => "oder, klickt <a href='$1'>heihinn</a> fir op d'Resultat vun ärer Sich zréckzegoen",
-	'importfreeimages_nophpflickr' => 'Dir hutt phpFlickr net installéiert, stellt w.e.g. $wgIFphpFlickr an Äre <tt>LocalSettings.php</tt> an.',
+	'importfreeimages_size_square' => 'Quadrat',
+	'importfreeimages_size_thumbnail' => 'Miniaturbild',
+	'importfreeimages_size_small' => 'Kleng',
+	'importfreeimages_size_medium' => 'Mëttel',
+	'importfreeimages_size_large' => 'Grouss',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)
