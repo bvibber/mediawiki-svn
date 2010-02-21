@@ -30,7 +30,7 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function execute() {
-		global $wgOut, $wgUser, $wgLang;
+		global $wgOut, $wgLang;
 		if ( !$this->mRepo ) {
 			$view = new CodeRepoListView();
 			$view->execute();
@@ -291,7 +291,6 @@ class CodeRevisionView extends CodeView {
 
 	/** Parameters are the tags to be added/removed sent with the request */
 	static function addTagForm( $addTags, $removeTags ) {
-		global $wgUser;
 		return '<div><table><tr><td>' .
 			Xml::inputLabel( wfMsg( 'code-rev-tag-add' ), 'wpTag', 'wpTag', 20,
 				self::listTags( $addTags ) ) . '</td><td>&nbsp;</td><td>' .
@@ -300,7 +299,6 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function formatTag( $tag ) {
-		global $wgUser;
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
@@ -611,7 +609,6 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function commentReplyLink( $id ) {
-		global $wgUser;
 		if ( !$this->canPostComments() ) return '';
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();

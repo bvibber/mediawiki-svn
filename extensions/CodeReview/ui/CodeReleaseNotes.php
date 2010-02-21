@@ -39,7 +39,7 @@ class CodeReleaseNotes extends CodeView {
 	}
 
 	protected function showForm() {
-		global $wgOut, $wgScript, $wgUser;
+		global $wgOut, $wgScript;
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/releasenotes' );
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .

@@ -281,7 +281,7 @@ class SvnRevTablePager extends SvnTablePager {
 	function formatValue( $name, $value ) { } // unused
 
 	function formatRevValue( $name, $value, $row ) {
-		global $wgUser, $wgLang;
+		global $wgLang;
 		$pathQuery = ( strlen($this->mView->mPath) ) ? array('path' => $this->mView->mPath) : array();
 
 		switch( $name ) {
