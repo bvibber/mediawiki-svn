@@ -4,9 +4,15 @@
  * Interface for Parse Object each with a specialized task while parsing
  * @ingroup Parser
  */
-interface ParseObject {
+abstract class ParseObject {
+	protected $mName;
+
+	function __construct($name) {
+		$this->mName = $name;
+	}
+
 	// Does the parse task specific to each parse object
-	function parse(&$text, &$rules, $endTag = NULL);
+	abstract function parse(&$text, &$rules, $endTag = NULL);
 }
 
 /**
@@ -18,36 +24,35 @@ interface ParseObject {
  * mChildRule - What Parse rule to use to gather children for this element
  * @ingroup Parser
  */
-class ParseRule implements ParseObject {
-	private $mName, $mBeginTag, $mEndTag, $mChildRule;
+class ParseRule extends ParseObject {
+	private $mBeginTag, $mChildRule, $mEndTag;
 
-	function __construct($name, $beginTag, $endTag = NULL, $childRule = NULL) {
-		$this->mName = $name;
+	function __construct($name, $beginTag, $childRule = NULL, $endTag = NULL) {
+		parent::__construct($name);
 		$this->mBeginTag = $beginTag;
-		$this->mEndTag = $endTag;
 		$this->mChildRule = $childRule;
+		$this->mEndTag = $endTag;
 	}
 
 	function parse(&$text, &$rules, $endTag = NULL) {
 		if (! preg_match($this->mBeginTag, $text, $matches)) {
 			return NULL;
 		}
-		$newText = substr($text, strlen($matches[0]));
-		$children = NULL;
+		$text = substr($text, strlen($matches[0]));
+		$child = NULL;
 		if ($this->mChildRule != NULL) {
-			$endTag = $this->mEndTag;
-			if ($endTag != NULL) {
+			if ($this->mEndTag != NULL) {
+				$endTag = $this->mEndTag;
 				foreach ($matches as $i => $crrnt) {
 					$endTag = str_replace('~' . $i, $crrnt, $endTag);
 				}
 			}
-			$children = $rules[$this->mChildRule]->parse($newText, $rules, $endTag);
-			if ($children == NULL) {
+			$child = $rules[$this->mChildRule]->parse($text, $rules, $endTag);
+			if ($child == NULL) {
 				return NULL;
 			}
 		}
-		$text = $newText;
-		return new ParseTree($this->mName, $matches, $children);
+		return new ParseTree($this->mName, $matches, array($child));
 	}
 }
 
@@ -61,11 +66,11 @@ class ParseRule implements ParseObject {
  * mMaxChildren - Maximum amount of children for this rule, 0 means unlimited
  * @ingroup Parser
  */
-class ParseQuant implements ParseObject {
-	private $mName, $mChildRule, $mEndTag, $mMinChildren, $mMaxChildren;
+class ParseQuant extends ParseObject {
+	private $mChildRule, $mEndTag, $mMinChildren, $mMaxChildren;
 
 	function __construct($name, $childRule, $endTag = NULL, $minChildren = 0, $maxChildren = 0) {
-		$this->mName = $name;
+		parent::__construct($name);
 		$this->mChildRule = $childRule;
 		$this->mEndTag = $endTag;
 		$this->mMinChildren = $minChildren;
@@ -73,17 +78,21 @@ class ParseQuant implements ParseObject {
 	}
 
 	function parse(&$text, &$rules, $endTag = NULL) {
+		$endRegEx = $this->mEndTag;
+		if ($this->mEndTag != NULL && $endTag != NULL) {
+			$endRegEx = str_replace('~r', $endTag, $this->mEndTag);
+		}
 		$children = array();
-		for ($i = 0; $i < $minChildren || (($this->mEndTag == NULL || ! preg_match($this->mEndTag, $text, $matches)) &&
-			($endTag == NULL || ! preg_match($endTag, $text, $matches)) && ($maxChildren <= 0 || $i < $maxChildren)); $i ++) {
+		for ($i = 0; $i < $this->mMinChildren || (($endRegEx == NULL || ! preg_match($endRegEx, $text, $matches)) && 
+			($this->mMaxChildren <= 0 || $i < $this->mMaxChildren)); $i ++) {
 			$child = $rules[$this->mChildRule]->parse($text, $rules, $endTag);
 			if ($child == NULL) {
 				return NULL;
 			}
 			$children[] = $child;
 		}
-		if ($endTag != NULL) {
-			if (!isset($matches[0])) {
+		if ($this->mEndTag != NULL) {
+			if (! isset($matches[0])) {
 				return NULL;
 			}
 			$text = substr($text, strlen($matches[0]));
@@ -97,21 +106,51 @@ class ParseQuant implements ParseObject {
  * mList - The list of rules
  * @ingroup Parser
  */
-class ParseList implements ParseObject {
+class ParseList extends ParseObject {
 	private $mList;
 
-	function __construct($list) {
+	function __construct($name, $list) {
+		parent::__construct($name);
 		$this->mList = $list;
 	}
 
 	function parse(&$text, &$rules, $endTag = NULL) {
 		foreach ($this->mList as $crrnt) {
-			$child = $rules[$crrnt]->parse($text, $rules, $endTag);
+			$newText = $text;
+			$child = $rules[$crrnt]->parse($newText, $rules, $endTag);
 			if ($child != NULL) {
-				return $child;
+				$text = $newText;
+				return new ParseTree($this->mName, NULL, array($child));
 			}
 		}
 		return NULL;
+	}
+}
+
+/**
+ * Contains a sequence of rules all of which must pass
+ * mName - The name to give the resultant ParseTree object
+ * mList - The sequence of rules
+ * @ingroup Parser
+ */
+class ParseSeq extends ParseObject {
+	private $mList;
+
+	function __construct($name, $list) {
+		parent::__construct($name);
+		$this->mList = $list;
+	}
+
+	function parse(&$text, &$rules, $endTag = NULL) {
+		$children = array();
+		foreach ($this->mList as $crrnt) {
+			$child = $rules[$crrnt]->parse($text, $rules, $endTag);
+			if ($child == NULL) {
+				return NULL;
+			}
+			$children[] = $child;
+		}
+		return new ParseTree($this->mName, NULL, $children);
 	}
 }
 
@@ -170,50 +209,18 @@ class ParseTree {
 			}
 			$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
 		} elseif ($this->mName == "link") {
-			$retString = htmlspecialchars($this->mMatches[0]) . $this->mChildren->printTree() . "]]";
+			$retString = htmlspecialchars($this->mMatches[0]) . $this->mChildren[0]->printTree() . "]]";
 		} elseif ($this->mName == "h") {
-			$retString = "<h>" . htmlspecialchars($this->mMatches[2]) . $this->mChildren->printTree() . 
+			$retString = "<h>" . htmlspecialchars($this->mMatches[2]) . $this->mChildren[0]->printTree() . 
 				htmlspecialchars($this->mMatches[2]) . "</h>";
 			if ($this->mMatches[1] == "\n") {
 				$retString = "\n" . $retString;
-			}
-		} elseif ($this->mName == "template" || $this->mName == "tplarg") {
-			$retString = "<" . $this->mName . ">" . $this->mChildren->printTree() . "</" . $this->mName . ">";
-		} elseif ($this->mName == "templatequant") {
-			$inTitle = true;
-			$foundEquals = false;
-			$currentItem = "";
-			$this->mChildren[] = new ParseTree("pipe", NULL, NULL);
-			foreach ($this->mChildren as $crrnt) {
-				if ($crrnt->getName() == "pipe") {
-					if ($inTitle) {
-						$retString .= "<title>" . $currentItem . "</title>";
-						$inTitle = false;
-					} else {
-						if (! $foundEquals) {
-							$retString .= "<part>";
-						}
-						$retString .= "<value>" . $currentItem . "</value></part>";
-						$foundEquals = false;
-					}
-					$currentItem = "";
-				} elseif ($crrnt->getName() == "equals") {
-					if (! $inTitle && ! $foundEquals) {
-						$retString .= "<part><name>" . $currentItem . "</name>";
-						$foundEquals = true;
-						$currentItem = "";
-					} else {
-						$currentItem .= "=";
-					}
-				} else {
-					$currentItem .= $crrnt->printTree();
-				}
 			}
 		} else {
 			foreach ($this->mChildren as $crrnt) {
 				$retString .= $crrnt->printTree();
 			}
-			if ($this->mName == "root") {
+			if ($this->mName != "unnamed") {
 				$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
 			}
 		}

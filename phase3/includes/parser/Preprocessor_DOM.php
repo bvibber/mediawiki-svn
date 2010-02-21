@@ -70,10 +70,11 @@ class Preprocessor_DOM implements Preprocessor {
 		// To XML
 		$xmlishRegex = implode('|', $this->parser->getStripList());
 		$rules = array(
-			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', '/^}}/s', "TemplateQuant"),
-			"TplArg" => new ParseRule("tplarg", '/^{{{/s', '/^}}}/s', "TemplateQuant"),
-			"Link" => new ParseRule("link", '/^\[\[/s', '/^]]/s', "MainQuant"),
-			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', '/^~2(?=(?: *<!--.*?-->)*(?:\n|$))/s', "MainQuant"),
+			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', "TemplateSeq", '}}'),
+			"TplArg" => new ParseRule("tplarg", '/^{{{/s', "TemplateSeq", '}}}'),
+			"TplPart" => new ParseRule("part", '/^\|/s', "TplPartList"),
+			"Link" => new ParseRule("link", '/^\[\[/s', "MainQuant", ']]'),
+			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', "HeadingQuant", '~2'),
 			"CommentLine" => new ParseRule("commentline", '/^\n((?:<!--.*?-->\n)+)/s'),
 			"Comment" => new ParseRule("comment", '/^<!--.*?(?:-->|$)/s'),
 			"OnlyInclude" => new ParseRule("ignore", '/^<\/?onlyinclude>/s'),
@@ -83,13 +84,18 @@ class Preprocessor_DOM implements Preprocessor {
 			"XmlOpened" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>)/si'),
 			"BeginFile" => new ParseRule("bof", '/^~BOF/s'),
 			"MainText" => new ParseRule("text", '/^.[^{}\[\]<\n|=]*/s'),
-			"TplPipe" => new ParseRule("pipe", '/^\|/s'),
-			"TplEquals" => new ParseRule("equals", '/^=/s'),
 			"Root" => new ParseQuant("root", "MainList", '/^$/'),
-			"MainQuant" => new ParseQuant("mainquant", "MainList"),
-			"TemplateQuant" => new ParseQuant("templatequant", "TemplateList"),
-			"MainList" => new ParseList(array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile", "MainText")),
-			"TemplateList" => new ParseList(array("TplPipe", "TplEquals", "MainList")));
+			"MainQuant" => new ParseQuant("unnamed", "MainList", '/^~r/s'),
+			"HeadingQuant" => new ParseQuant("unnamed", "MainList", '/^~r(?=(?: *<!--.*?-->)*(?:\n|$))/s'),
+			"TplTitle" => new ParseQuant("title", "MainList", '/^(?=~r|\|)/s'),
+			"TplPartQuant" => new ParseQuant("unnamed", "TplPart", '/^~r/s'),
+			"TplTest" => new ParseQuant("unnamed", "MainList", '/^(?=~r|\||=(?!~r|\|))/s'),
+			"TplName" => new ParseQuant("name", "TplTest", '/^=/s', 0, 1),
+			"TplValue" => new ParseQuant("value", "MainList", '/^(?=~r|\|)/s'),
+			"MainList" => new ParseList("unnamed", array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile", "MainText")),
+			"TplPartList" => new ParseList("unnamed", array("TplPartSeq", "TplValue")),
+			"TemplateSeq" => new ParseSeq("unnamed", array("TplTitle", "TplPartQuant")),
+			"TplPartSeq" => new ParseSeq("unnamed", array("TplName", "TplValue")));
 		if ($flags & Parser::PTD_FOR_INCLUSION) {
 			$rules["OnlyInclude"] = new ParseRule("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
 			$rules["NoInclude"] = new ParseRule("ignore", '/^<noinclude>.*?<\/noinclude>/s');
