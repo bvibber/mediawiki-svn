@@ -3037,33 +3037,36 @@ CSS;
 		$s = "\n" . '<div id="footer"' . $attribs[0] . '>';
 
 		if( $this->getPoweredBy() ) {
-			$s .= "\n" . '<div id="f-poweredbyico">'
+			$s .= "\n\t" . '<div id="f-poweredbyico">'
 				. $this->getPoweredBy() .
 			'</div>' . "\n";
 		}
 
 		if( $this->getCopyrightIcon() ) {
-			$s .= '<div id="f-copyrightico">'
+			$s .= "\t" . '<div id="f-copyrightico">'
 				. $this->getCopyrightIcon() .
 			'</div>' . "\n";
 		}
 
+		// Allow extensions to add more icons
+		wfRunHooks( 'SkinFooterIcons', array( $this, &$s ) );
+
 		// Generate additional footer links
-		$s .= '<ul id="f-list">';
+		$s .= "\t" . '<ul id="f-list">' . "\n";
 		// Special pages cannot have authors, watchers etc. so don't even try!
 		global $wgRequest;
 		$action = $wgRequest->getVal( 'action', 'view' );
 		if ( $this->mTitle->getNamespace() != NS_SPECIAL && $action !== 'edit' ) {
-			$s .= '<li id="lastmod">' . $this->lastModified() . '</li>
-				<li id="viewcount">' . $this->getViewCount() . '</li>
-				<li id="numberofwatchingusers">' . $this->getNumberOfWatchingUsers() . '</li>
-				<li id="credits">' . $this->getCredits() . '</li>
-				<li id="copyrights">' . $this->getCopyright() . '</li>' . "\n";
+			$s .= "\t\t" . '<li id="lastmod">' . $this->lastModified() . '</li>
+			<li id="viewcount">' . $this->getViewCount() . '</li>
+			<li id="numberofwatchingusers">' . $this->getNumberOfWatchingUsers() . '</li>
+			<li id="credits">' . $this->getCredits() . '</li>
+			<li id="copyrights">' . $this->getCopyright() . '</li>' . "\n";
 		}
-		$s .= '<li id="privacy">' . $this->privacyLink() . '</li>
-				<li id="about">' . $this->aboutLink() . '</li>
-				<li id="disclaimer">' . $this->disclaimerLink() . '</li>
-			</ul>' . "\n";
+		$s .= "\t\t" . '<li id="privacy">' . $this->privacyLink() . '</li>
+		<li id="about">' . $this->aboutLink() . '</li>
+		<li id="disclaimer">' . $this->disclaimerLink() . '</li>
+	</ul>' . "\n";
 		$s .= '</div>' . "\n";
 		return $s;
 	}
