@@ -30,66 +30,71 @@ if( !defined( 'MEDIAWIKI' ) ) {
 #    Extension initialization
 #----------------------------------------------------------------------------
  
-$wgTagContent = array();
-$TagContentVersion = '0.1';
+$TagContentVersion = '0.2';
 $wgExtensionCredits['parserhook'][] = array(
 	'name'=>'TagContent',
 	'version'=>$TagContentVersion,
 	'author'=>'John Erling Blad',
 	'url'=>'http://www.mediawiki.org/wiki/Extension:TagContent',
 	'description' => 'Translate from tags to parser functions'
-    );
+);
  
-$dir = dirname(__FILE__) . '/';
-$wgExtensionFunctions[] = 'wfTagContentSetup';
-$wgExtensionMessagesFiles['TagContent'] = $dir . 'TagContent.i18n.php';
+$wgExtensionFunctions[] = 'efTagContentSetup';
+$wgExtensionMessagesFiles['TagContent'] = dirname(__FILE__) . '/TagContent.i18n.php';
 
-$wgTagContentDefine = array(
+$egTagContentDefine = array(
 );
 
-$wgTagContentBlacklist = array(
+$egTagContentBlacklist = array(
 
 	// mediawiki
-	'noinclude' => true,	'includeonly' => true,	'onlyinclude' => true,	'gallery' => true,
+	'noinclude' => true,    'includeonly' => true,  'onlyinclude' => true,  'gallery' => true,
 
 	// html tags
-	'address' => true,	'applet' => true,	'area' => true,		'a' => true,
-	'base' => true,		'basefont' => true,	'big' => true,		'blockquote' => true,
-	'body' => true,		'br' => true,		'b' => true,		'caption' => true,
-	'center' => true,	'cite' => true,		'code' => true,		'dd' => true,
-	'dfn' => true,		'dir' => true,		'div' => true,		'dl' => true,
-	'dt' => true,		'em' => true,		'font' => true,		'form' => true,
-	'h1' => true,		'h2' => true,		'h3' => true,		'h4' => true,
-	'h5' => true,		'h6' => true,		'head' => true,		'hr' => true,
-	'html' => true,		'img' => true,		'input' => true,	'isindex' => true,
-	'i' => true,		'kbd' => true,		'link' => true,		'li' => true,
-	'map' => true,		'menu' => true,		'meta' => true,		'ol' => true,
-	'option' => true,	'param' => true,	'pre' => true,		'p' => true,
-	'samp' => true,		'script' => true,	'select' => true,	'small' => true,
-	'strike' => true,	'strong' => true,	'style' => true,	'sub' => true,
-	'sup' => true,		'table' => true,	'td' => true,		'textarea' => true,
-	'th' => true,		'title' => true,	'tr' => true,		'tt' => true,
-	'ul' => true,		'u' => true,		'var' => true,
+	'address' => true,      'applet' => true,       'area' => true,         'a' => true,
+	'base' => true,         'basefont' => true,     'big' => true,          'blockquote' => true,
+	'body' => true,         'br' => true,           'b' => true,            'caption' => true,
+	'center' => true,       'cite' => true,         'code' => true,         'dd' => true,
+	'dfn' => true,          'dir' => true,          'div' => true,          'dl' => true,
+	'dt' => true,           'em' => true,           'font' => true,         'form' => true,
+	'h1' => true,           'h2' => true,           'h3' => true,           'h4' => true,
+	'h5' => true,           'h6' => true,           'head' => true,         'hr' => true,
+	'html' => true,         'img' => true,          'input' => true,        'isindex' => true,
+	'i' => true,            'kbd' => true,          'link' => true,         'li' => true,
+	'map' => true,          'menu' => true,         'meta' => true,         'ol' => true,
+	'option' => true,       'param' => true,        'pre' => true,          'p' => true,
+	'samp' => true,         'script' => true,       'select' => true,       'small' => true,
+	'strike' => true,       'strong' => true,       'style' => true,        'sub' => true,
+	'sup' => true,          'table' => true,        'td' => true,           'textarea' => true,
+	'th' => true,           'title' => true,        'tr' => true,           'tt' => true,
+	'ul' => true,           'u' => true,            'var' => true,
 
 );
 
 class TagContent {
-	private $mParms = null;			# hash
-	private $mTemplate = null;		# string
-	private static $mDefinitions = null;	# Title
-	private $mTag = null;			# string
-	private $mChangeable = false;		# bolean
-	private $mTitle = null;			# Title
+	private $mParms = null;                 # hash
+	private $mTemplate = null;              # string
+	private static $mDefinitions = null;    # Title
+	private $mTag = null;                   # string
+	private $mChangeable = false;           # boolean
+	private $mTitle = null;                 # Title
 
-	// contructor
+	/**
+	* Contructor for the TagContent class
+	* @param $tag Name of the new tag, that is the 
+	* @param $template Optional name of the template to use during rendering
+	* @param $params Optional default parameters
+	* @param $changable
+	*/
 	public function TagContent( $tag, $template=null, &$params=null, $changeable=false ) {
 		if ($params) {
 			$h = array();
 			$p = explode('|', htmlspecialchars($params));
 			$n = 1;
 			foreach ($p as $item) {
-				if (false === strrpos($item, '='))
+				if (false === strrpos($item, '=')) {
 					$item = $n++ . '=' . $item;
+				}
 				list($k, $v) = explode('=', $item, 2);
 				$h[trim($k)] = $v;
 			}
@@ -100,17 +105,27 @@ class TagContent {
 		$this->mChangeable = $changeable;
 	}
 
-	// accessor
+	/**
+	* Accessor function for changeable
+	* @param $val If set the new value for the changable attribute
+	* @return The existing or new value if it is set
+	*/
 	public function changeable ( $val ) {
-		if (isset($val))
+		if (isset($val)) {
 			$this->mChangeable = $val;
+		}
 		return $this->mChangeable;
 	}
 
-	// our own reimplementation of addLink
+	/**
+	* Local reimplementation of addLink
+	* @param $parser Reference to the parser instance
+	* @param $title Title of the additional link
+	*/
 	private function addLink( &$parser, &$title ) {
-		if (!$title)
+		if (!$title) {
 			throw new Exception( 'none' );
+		}
 		$lc = LinkCache::singleton();
 		$pdbk = $title->getPrefixedDBkey();
 		if ( 0 != ( $id = $lc->getGoodLinkID( $pdbk ) ) ) {
@@ -123,16 +138,24 @@ class TagContent {
 		else {
 			$id = $title->getArticleID();
 			$parser->mOutput->addLink( $title, $id );
-			if (!$id)
+			if (!$id) {
 				throw new Exception( $title->getPrefixedText() );
+			}
 		}
 	}
 
-	// callback function for inserting our own rendering
+	/**
+	* Callback function for inserting our own rendering
+	* @param $text Content for the tag call
+	* @param $params Parameters for the tag call
+	* @param $parser Reference to the parser instance
+	* @return Replaced content wrapped in a recursive call
+	*/
 	public function onRender ( $text, $params, &$parser ) {
 		if ($this->mChangeable) {
-			if (!$this->mDefinitions)
+			if (!$this->mDefinitions) {
 				$this->mDefinitions = Title::newFromText("Mediawiki:tags-definition");
+			}
 			try {
 				$this->addLink($parser, $this->mDefinitions);
 			}
@@ -140,8 +163,9 @@ class TagContent {
 				return $parser->recursiveTagParse( wfMsg( 'tags-definitions-unknown', $e->getMessage() ) );
 			}
 		}
-		if (!$this->mTitle)
+		if (!$this->mTitle) {
 			$this->mTitle = Title::newFromText($this->mTemplate);
+		}
 		try {
 			$this->addLink($parser, $this->mTitle);
 		}
@@ -150,25 +174,31 @@ class TagContent {
 		}
 		$cont = array($this->mTemplate, $text);
 		foreach ($this->mParms as $k => $v) {
-			if (isset($params[$k]))
+			if (isset($params[$k])) {
 				$cont[] = "$k=$params[$k]";
-			else
+			}
+			else {
 				$cont[] = "$k=$v";
+			}
 		}
 		foreach ($params as $k => $v) {
-			if (!isset($this->mParms[$k]))
+			if (!isset($this->mParms[$k])) {
 				$cont[] = "$k=$v";
+			}
 		}
 		$output = '{{' . implode('|', $cont) . '}}';
 		return $parser->recursiveTagParse($output);
 	}
 }
 
-// build necessary structures
-function wfTagContentSetup () {
-	global $wgParser, $wgTagContentBlacklist, $wgTagContentDefine;
+/**
+* Setup function for the extension
+@return True is returned unconditionally
+*/
+function efTagContentSetup () {
+	global $wgParser, $egTagContentBlacklist, $egTagContentDefine;
 	wfLoadExtensionMessages('TagContent');
-	foreach ($wgTagContentDefine as $k => $a) {
+	foreach ($egTagContentDefine as $k => $a) {
 		$template = $a[0];
 		$tag = strtolower($k);
 		$c = new TagContent($tag, $template, $a[1], false);
@@ -181,7 +211,7 @@ function wfTagContentSetup () {
 			$a = explode('|', $line, 3);
 			$template = trim($a[1]);
 			$tag = strtolower(trim($a[0]));
-			if ( !$wgTagContentBlacklist[$tag] && !isset($wgTagContentDefine[$tag])) {
+			if ( !$egTagContentBlacklist[$tag] && !isset($egTagContentDefine[$tag])) {
 				$c = new TagContent($tag, $template, $a[2], true);
 				$wgParser->setHook( $tag, array( $c, 'onRender' ));
 			}
