@@ -104,16 +104,15 @@ class NewUserMessage {
 				// so replacing $wgUser here.
 				$parkedUser = $wgUser;
 				$wgUser = $editor;
-
-				LqtView::postEditUpdates(
-					'new',
-					null, // $edit_applies_to
-					$threadArticle,
-					$article,
-					$threadSubject,
-					$editSummary,
-					null, // $thread,
-					$threadBody
+				
+				LqtView::newPostMetadataUpdates(
+					array(
+						'talkpage' => $article,
+						'text' => $threadBody,
+						'summary' => $editSummary,
+						'root' => $threadArticle,
+						'subject' => $threadSubject,
+					)
 				);
 
 				// Set $wgUser back to the newly created user
