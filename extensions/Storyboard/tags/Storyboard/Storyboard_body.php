@@ -26,7 +26,6 @@ class TagStoryboard {
 <script type="$wgJsMimeType">var storyboardPath = '$egStoryboardScriptPath';</script>
 <div id="storyboard"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
-	jQuery(document).ready(function(){ jQuery("p").click(function(){ jQuery(this).hide(); }); });	
 	var storyboard = new Storyboard();
 	storyboard.loadAjax();
 /*]]>*/ </script>

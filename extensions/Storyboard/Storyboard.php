@@ -23,6 +23,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 define( 'Storyboard_VERSION', '0' );
 
+define( 'Storyboard_TABLE', 'storyboard' );
+
 // TODO: try to get out the hardcoded path.
 $egStoryboardScriptPath = $wgScriptPath . '/extensions/Storyboard';
 $egStoryboardDir = dirname( __FILE__ ) . '/';
@@ -81,7 +83,7 @@ function efStoryboardSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg( 'storyboard-name' ),
 		'version' => Storyboard_VERSION,
-		'author' => array( '[http://bn2vs.com Jeroen De Dauw]' ),
+		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Storyboard',
 		'description' =>  wfMsg( 'storyboard-desc' ),
 		'descriptionmsg' => 'storyboard-desc',

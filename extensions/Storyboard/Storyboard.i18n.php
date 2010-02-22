@@ -21,6 +21,7 @@ $messages['en'] = array(
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
 
 	// Story review
+	'storyboard-storyreview' => 'Story review',	
 	'storyboard-publish' => 'Publish',
 	'storyboard-reviewed' => 'Reviewed',
 	'storyboard-unreviewed' => 'Unreviewed',
