@@ -63,7 +63,7 @@ var vlcEmbed = {
 		// give VLC 150ms to initialize before we start playback 
 		// @@todo should be able to do this as an ready event
 		this.waitForVlcCount = 0;
-		setTimeout( function(){
+		setTimeout( function() {
 			_this.postEmbedJS();
 		}, 150 );
 	},	
@@ -94,14 +94,14 @@ var vlcEmbed = {
 			} else {
 				mw.log( "error:cannot play at the moment !" );
 			}		
-			setTimeout( function(){
+			setTimeout( function() {
 				_this.monitor();
 			}, 100 );
 		} else {
 			mw.log( 'postEmbedJS: vlc not ready' );
 			this.waitForVlcCount++;
 			if ( this.waitForVlcCount < 10 ) {
-				setTimeout( function(){
+				setTimeout( function() {
 					_this.postEmbedJS();
 				}, 100 );
 			} else {
@@ -209,7 +209,7 @@ var vlcEmbed = {
 				   // current media is now playing
 				   this.onPlay();
 				}
-				else if ( this.playerElement.input.state == 4 ){
+				else if ( this.playerElement.input.state == 4 ) {
 					// current media is now paused
 					this.onPause();
 				}

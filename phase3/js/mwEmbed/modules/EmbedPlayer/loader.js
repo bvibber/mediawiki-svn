@@ -57,12 +57,12 @@ mw.addClassStyleSheets( {
 * 
 * NOTE: this function can be part of setup can run prior to jQuery being ready
 */
-mw.documentHasPlayerTags = function(){
+mw.documentHasPlayerTags = function() {
 	var rewriteTags = mw.getConfig( 'rewritePlayerTags' );				
-	if( rewriteTags ){
+	if( rewriteTags ) {
 		var jtags = rewriteTags.split( ',' );
 		for ( var i = 0; i < jtags.length; i++ ) { 
-			if( document.getElementsByTagName( jtags[i] )[0] ){				
+			if( document.getElementsByTagName( jtags[i] )[0] ) {				
 				return true;
 			}
 		}
@@ -76,10 +76,10 @@ mw.documentHasPlayerTags = function(){
 * We use mw.addDOMReadyHook instead of mw.ready so that
 * player interfaces are ready once mw.ready is called. 
 */
-mw.addDOMReadyHook( function(){
+mw.addDOMReadyHook( function() {
 	if( mw.documentHasPlayerTags() ) {
 		// Add the setup hook since we have player tags
-		mw.addSetupHook( function( callback ){
+		mw.addSetupHook( function( callback ) {
 			// Load the embedPlayer module ( then run queued hooks )
 			mw.load( 'EmbedPlayer', function ( ) {
 				// Rewrite the rewritePlayerTags with the 
@@ -98,7 +98,7 @@ mw.addDOMReadyHook( function(){
 /**
 * Add the module loader function:
 */
-mw.addModuleLoader( 'EmbedPlayer', function( callback ){
+mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	var _this = this;	
 	
 	// Set module specific class videonojs to loading:
@@ -126,25 +126,25 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	var addTimedTextReqFlag = false;
 		
 	// Merge in the timed text libs 
-	if( mw.getConfig( 'textInterface' ) == 'always' ){		
+	if( mw.getConfig( 'textInterface' ) == 'always' ) {		
 		addTimedTextReqFlag = true;	
 	}
 		
 	// Get the class of all embed video elements 
 	// to add the skin to the load request
-	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function(){
+	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function() {
 		var playerElement = this;		
 		var cName = $j( playerElement ).attr( 'class' );
-		for( var n=0; n < mw.valid_skins.length ; n++ ){
+		for( var n=0; n < mw.valid_skins.length ; n++ ) {
 			// Get any other skins that we need to load 
 			// That way skin js can be part of the single script-loader request: 
-			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1){
+			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1) {
 				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
 			}
 		}
 		// If add timed text flag not already set check for itext, and sources
-		if( !addTimedTextReqFlag ){
-			if( $j( playerElement ).find( 'itext' ).length != 0 ){
+		if( !addTimedTextReqFlag ) {
+			if( $j( playerElement ).find( 'itext' ).length != 0 ) {
 				// Has an itext child include timed text request
 				addTimedTextReqFlag = true;
 				// break out of the loop
@@ -162,23 +162,23 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	} );	
 	
 	// Add timed text items if flag set.  	
-	if( addTimedTextReqFlag ){
+	if( addTimedTextReqFlag ) {
 		dependencyRequest[0].push( 'mw.TimedText' )
 	}
 	
 	// Add PNG fix code needed:
-	if ( $j.browser.msie || $j.browser.version < 7 ){
+	if ( $j.browser.msie || $j.browser.version < 7 ) {
 		dependencyRequest[0].push( '$j.fn.pngFix' );
 	}
 	
 	// Do short detection, to avoid extra player library request in ~most~ cases. 
 	//( If browser is firefox include native, if browser is IE include java ) 
-	if( $j.browser.msie ){
+	if( $j.browser.msie ) {
 		dependencyRequest[0].push( 'javaEmbed' )
 	}
 	
 	// Safari gets slower load since we have to detect ogg support 
-	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  ){
+	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  ) {
 		dependencyRequest[0].push( 'nativeEmbed' )
 	}
 	
@@ -186,7 +186,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ){
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {
 		// Setup userConfig 
-		mw.setupUserConfig( function(){
+		mw.setupUserConfig( function() {
 			// Remove no video html elements:
 			$j( '.videonojs' ).remove();
 			

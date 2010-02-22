@@ -478,3 +478,9 @@ ul.ui-provider-selection li a {
 	margin-top: -6px !important;
 	margin-left: 3px !important;	
 }
+mw-buffer{
+	width:0px;
+	height:100%;
+	z-index:1;
+	top:0px;
+}

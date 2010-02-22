@@ -79,7 +79,7 @@ var htmlEmbed = {
 	*
 	* @param {Float} perc Pecentage to seek into the virtual player
 	*/
-	doSeek:function( perc ){
+	doSeek:function( perc ) {
 		this.pauseTime = perc * this.getDuration();
 		this.play();
 	},
@@ -90,7 +90,7 @@ var htmlEmbed = {
 	* @param {Float} perc Pecentage to seek into the virtual player
 	* @param {Function} callback Function called once time has been updated
 	*/
-	setCurrentTime:function( perc, callback ){
+	setCurrentTime:function( perc, callback ) {
 		this.pauseTime = perc * this.getDuration();
 		if( callback )
 			callback();
@@ -246,10 +246,10 @@ var htmlEmbed = {
 	* Get the media duration
 	*/
 	getDuration:function() {
-		if( !this.duration ){
-		 	if( this.pc.dur ){
+		if( !this.duration ) {
+		 	if( this.pc.dur ) {
 				this.duration = this.pc.dur;
-			}else if( pcHtmlEmbedDefaults.dur ){
+			}else if( pcHtmlEmbedDefaults.dur ) {
 				this.duration = pcHtmlEmbedDefaults.dur ;
 			} 
 		}  

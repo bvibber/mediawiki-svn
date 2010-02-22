@@ -34,7 +34,7 @@ var omtkEmbed = {
 			  '</object>'
 		)
 		// omtk  needs to fire an onReady event.
-		setTimeout( function(){
+		setTimeout( function() {
 			_this.postEmbedJS();
 		}, 2000 );
 		return embed_code;

@@ -5,7 +5,7 @@ mw.addClassFilePaths( {
 	"JSON"			: "modules/ApiProxy/json2.js"
 } );
 
-mw.addModuleLoader( 'ApiProxy', function( callback ){
+mw.addModuleLoader( 'ApiProxy', function( callback ) {
 	mw.load( [
 		'mw.ApiProxy',
 		'JSON'

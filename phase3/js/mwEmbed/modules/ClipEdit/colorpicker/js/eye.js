@@ -4,14 +4,14 @@
  * Author: Stefan Petre www.eyecon.ro
  * 
  */
-(function($){
+(function($) {
 	var EYE = window.EYE = function() {
 		var _registered = {
 			init: []
 		};
 		return {
 			init: function() {
-				$.each(_registered.init, function(nr, fn){
+				$.each(_registered.init, function(nr, fn) {
 					fn.call();
 				});
 			},

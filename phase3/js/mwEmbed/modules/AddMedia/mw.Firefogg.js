@@ -97,7 +97,7 @@ var default_firefogg_options = {
 /**
 * Setup firefogg jquery binding
 */
-( function( $ ){ 
+( function( $ ) { 
 	$.fn.firefogg = function( options ) {
 		if ( !options )
 			options = { };
@@ -121,20 +121,25 @@ mw.Firefogg = function( options ) {
 	return this.init( options );
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
+	// Minnium version of firefogg allowed
 	min_firefogg_version: '1.1.0',
-	default_encoder_settings: { // NOTE: allow the server to set these
+	
+	// The default encoder seetings 
+	// NOTE: should be mw.getConfig based 
+	default_encoder_settings: { 
 		'maxSize'        : '400',
         'videoBitrate'   : '544',
         'audioBitrate'   : '96',
         'noUpscaling'    : true
 	},
-	// lazy initialised, use getFirefogg()
+	
+	// Lazy initialised, use getFirefogg()
 	have_firefogg: null, 
 	
-	// lazy initialised, use getEncoderSettings()
+	// Lazy initialised, use getEncoderSettings()
 	current_encoder_settings: null, 
 	
-	// lazy initialised, use getSourceFileInfo()
+	// Lazy initialised, use getSourceFileInfo()
 	sourceFileInfo: null, 
 	
 	// Valid ogg extensions
@@ -299,7 +304,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		
 
 		// Set up the click handler for the "save local file" button
-		if( _this.target_btn_save_local_file ){
+		if( _this.target_btn_save_local_file ) {
 			$j( _this.target_btn_save_local_file )
 			.unbind()
 			.click( function() {
@@ -311,7 +316,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	/**
 	* Show the install firefogg msg
 	*/
-	showInstallFirefog: function(){		
+	showInstallFirefog: function() {		
 		var _this = this;			
 		
 		var upMsg = ( _this.form_type == 'upload' ) ? 
@@ -329,7 +334,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			}
 			
 			// Add the upload msg if we are "uploading" 
-			if ( _this.form_type == 'upload' ){
+			if ( _this.form_type == 'upload' ) {
 				$j( _this.target_use_latest_firefox )
 				.prepend( upMsg );
 			}
@@ -341,7 +346,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 		// Otherwise show the "install Firefogg" message		
 		var firefoggUrl = _this.getFirefoggInstallUrl();
-		if( firefoggUrl ){
+		if( firefoggUrl ) {
 			
 			// Add the target please install in not present: 
 			if ( !this.target_please_install ) {
@@ -424,7 +429,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// If uploading and firefogg is on show warning
 		if ( this.form_type == 'upload' 
 			&&	typeof console != 'undefined' 
-			&& console.firebug ){		
+			&& console.firebug ) {		
 			$j( this.selector ).after(
 				$j( '<div />' )
 				.addClass( 'ui-state-error ui-corner-all' )
@@ -474,7 +479,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		
 		// Set the initial button html: 
 		var buttonHtml = '';
-		if( _this.show_preview == true ){
+		if( _this.show_preview == true ) {
 			buttonHtml = $j.btnHtml( gM( 'fogg-hidepreview' ), 'fogg_preview', 'triangle-1-s' );
 		} else {
 			buttonHtml = $j.btnHtml( gM( 'fogg-preview' ), 'fogg_preview', 'triangle-1-e' );
@@ -553,7 +558,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 		function seekToEnd() {
 			var v = $j( '#fogg_preview_vid' ).get( 0 );
-			if( v ){
+			if( v ) {
 				// Seek to near the end of the clip ( arbitrary -.4 seconds from end )
 				v.currentTime = v.duration - 0.4;
 			}
@@ -904,9 +909,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		var data = $j( this.form ).serializeArray();
 		this.formData = {};
 		for ( var i = 0; i < data.length; i++ ) {
-			if ( data[i]['name'] ){
+			if ( data[i]['name'] ) {
 				// Special case of upload.js commons hack:  
-				if( data[i]['name'] == 'wpUploadDescription' ){
+				if( data[i]['name'] == 'wpUploadDescription' ) {
 					this.formData[ 'comment' ] =  data[i]['value'];
 				}else{
 					this.formData[ data[i]['name'] ] = data[i]['value'];
@@ -940,10 +945,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	/** 
 	 * Internal function called once the token and form data is avaliable
 	 */
-	doUploadWithFormData: function(){
+	doUploadWithFormData: function() {
 		var _this = this;
 		// We can do a chunk upload
-		if(  _this.upload_mode == 'post'  && _this.enable_chunks ){
+		if(  _this.upload_mode == 'post'  && _this.enable_chunks ) {
 			_this.doChunkUpload();
 		} else if ( _this.upload_mode == 'post' ) {
 			// Encode and then do a post upload
@@ -997,7 +1002,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * 
 	 * @param {Object} options Options 
 	 */
-	getUploadApiRequest: function( options ){
+	getUploadApiRequest: function( options ) {
 		var _this = this;
 		var request = {
 			'action': 'upload',
@@ -1005,19 +1010,19 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			'filename': _this.formData['filename'],
 			'comment': _this.formData['comment']
 		};
-		if( options && options.enable_chunks == true ){
+		if( options && options.enable_chunks == true ) {
 			request[ 'enablechunks' ] = 'true';
 		}
 
-		if ( _this.editToken ){
+		if ( _this.editToken ) {
 			request['token'] = this.editToken;
 		}
 
-		if ( _this.formData['watch'] ){
+		if ( _this.formData['watch'] ) {
 			request['watch'] = _this.formData['watch'];
 		}
 
-		if ( _this.formData['ignorewarnings'] ){
+		if ( _this.formData['ignorewarnings'] ) {
 			request['ignorewarnings'] = _this.formData['ignorewarnings'];
 		}
 		
@@ -1058,7 +1063,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		var encoderSettings = this.getEncoderSettings();
 		
 		// Check if encoderSettings passthrough is on ( then skip the encode )				
-		if( encoderSettings['passthrough'] == true){			
+		if( encoderSettings['passthrough'] == true) {			
 			// Firefogg requires an encode request to setup a the file to be uploaded.
 			_this.fogg.encode( JSON.stringify( { 'passthrough' : true } ) );
 			doneCallback();
@@ -1139,7 +1144,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				}
 											
 				//Check for success:
-				if( apiResult && _this.isApiSuccess( apiResult ) ){
+				if( apiResult && _this.isApiSuccess( apiResult ) ) {
 					if( _this.processApiResult ( apiResult ) ) {
 						return true;
 					}

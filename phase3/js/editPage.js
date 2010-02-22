@@ -42,7 +42,7 @@ mw.ready( function() {
 		                	mw.log( 'Added via wikiEditor bind' );
 		                	// Display a loader ( since its triggered onClick )  
 							mw.addLoaderDialog( gM( 'mwe-loading-add-media-wiz' ) );		
-		                	mw.load( 'AddMedia.addMediaWizard', function(){
+		                	mw.load( 'AddMedia.addMediaWizard', function() {
 		                		mw.closeLoaderDialog();
 		                		$j.addMediaWizard( amwConf );
 		                	});
@@ -61,7 +61,7 @@ mw.ready( function() {
 				mw.getConfig( 'images_path' ) + 'Button_add_media.png">' );			
 			
 			$j( '#btn-add-media-wiz' ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );			
-			mw.load( 'AddMedia.addMediaWizard', function(){				
+			mw.load( 'AddMedia.addMediaWizard', function() {				
 				$j( '#btn-add-media-wiz' ).addMediaWizard(
 					amwConf
 				);
@@ -71,9 +71,12 @@ mw.ready( function() {
 			// Make sure the wikieditor got binded: 
 			if ( !didWikiEditorBind ) {
 				mw.log( 'Failed to bind via build section bind via target:' );
-				$j( ".tool[rel='file']" ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );
-				mw.load( 'AddMedia.addMediaWizard', function(){
-					if( $j( ".tool[rel='file']" ).size() != 0 ){
+				
+				$j( ".tool[rel='file']" )
+				.attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );
+				
+				mw.load( 'AddMedia.addMediaWizard', function() {
+					if( $j( ".tool[rel='file']" ).size() != 0 ) {
 						$j( ".tool[rel='file']" ).unbind().addMediaWizard( amwConf );
 					}
 				});

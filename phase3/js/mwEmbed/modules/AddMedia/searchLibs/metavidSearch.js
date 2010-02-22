@@ -49,7 +49,7 @@ metavidSearch.prototype = {
 		$j.getJSON( url + '&cb=?&cb_inx=1', request, function( data ) {	
 			mw.log( 'mvSearch: got data response::' );
 			var xmldata = ( data && data['pay_load'] ) ? mw.parseXML( data['pay_load'] ) : false;
-			if( !xmldata ){
+			if( !xmldata ) {
 				// XML Error or No results: 
 				_this.resultsObj = {};
 				_this.loading = 0;

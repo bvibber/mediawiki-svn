@@ -181,7 +181,7 @@ mw.PlayList.prototype = {
 						}
 		this.cur_clip.embed.showShare( embed_code );
 	},
-	isTimedTextSupported: function(){
+	isTimedTextSupported: function() {
 		return false;
 	},
 	checkForTextSource: function() {
@@ -196,7 +196,7 @@ mw.PlayList.prototype = {
 		// import methods from the plObj to this
 		for ( var method in plObj ) {
 			// js parent preservation for local overwritten methods
-			if ( this[method] && !this[ 'parent_' + method ] ){
+			if ( this[method] && !this[ 'parent_' + method ] ) {
 				this[ 'parent_' + method ] = this[ method ];
 			}
 			this[method] = plObj[method];			
@@ -262,7 +262,7 @@ mw.PlayList.prototype = {
 			this.doWhenClipLoadDone();
 		} else {
 			mw.log( "only " + _this.clip_ready_count + " clips done, scheduling callback:" );
-			setTimeout( function(){
+			setTimeout( function() {
 				_this.doWhenParseDone()
 			}, 100 );
 		}
@@ -306,7 +306,7 @@ mw.PlayList.prototype = {
 		// determine the type / first is it m3u or xml?	 
 		var _this = this;
 		this.src = mw.absoluteUrl( this.src );
-		if ( mw.isLocalDomain(  this.src ) ){
+		if ( mw.isLocalDomain(  this.src ) ) {
 			$j.get( this.src,  function( data ) {
 				_this.data = data;
 				_this.getSourceType();
@@ -323,7 +323,7 @@ mw.PlayList.prototype = {
 			});
 		}		
 	},
-	getSrc: function(){
+	getSrc: function() {
 		return this.src;
 	},
 	getSourceType:function() {
@@ -431,7 +431,7 @@ mw.PlayList.prototype = {
 		var _this = this;
 		
 		//Check for playlist player sources: 
-		this.checkPlayerSources(function(){
+		this.checkPlayerSources(function() {
 			_this.buildPlayerUI();
 		});		
 	},
@@ -439,11 +439,11 @@ mw.PlayList.prototype = {
 	/**
 	* Build out the player interface ( assumes checkPlayerSources has been run )
 	*/
-	buildPlayerUI: function(){
+	buildPlayerUI: function() {
 		var _this = this;
 		mw.log('pl:buildPlayer');
 		// Make sure we have interface_wrap
-		if( $j( this ).parent('.interface_wrap').length == 0 ){
+		if( $j( this ).parent('.interface_wrap').length == 0 ) {
 			// Select "player"				
 			$j( this )
 			// Add interface control class:		
@@ -639,7 +639,7 @@ mw.PlayList.prototype = {
 	 * this won't work so well with time range loading for smil (need to work on that)   
 	 */
 	loadFutureClips:function() {
-		/*if( this.cur_clip.embed.bufferedPercent == 1){
+		/*if( this.cur_clip.embed.bufferedPercent == 1) {
 			//set the buffer to the currentTime - duration 
 			var curBuffredTime = this.cur_clip.getDuration() - this.cur_clip.embed.currentTime;		
 			
@@ -647,20 +647,20 @@ mw.PlayList.prototype = {
 				curBuffredTime = 0;
 				
 			mw.log( "curBuffredTime:: " + curBuffredTime );			
-			if( curBuffredTime <  this.playlist_buffer_time ){
+			if( curBuffredTime <  this.playlist_buffer_time ) {
 				mw.log(" we only have " + curBuffredTime + ' buffed but we need: ' +  this.playlist_buffer_time);
 						
-				for(var inx = this.cur_clip.order + 1; inx < this.default_track.clips.length; inx++ ){					
+				for(var inx = this.cur_clip.order + 1; inx < this.default_track.clips.length; inx++ ) {					
 					var cClip = this.default_track.getClip( inx );					
 				
 					//check if the clip is already loaded (add its duration)  
-					if( cClip.embed.bufferedPercent == 1){
+					if( cClip.embed.bufferedPercent == 1) {
 						curBuffredTime += cClip.embed.getDuration();
 					}								
 					//check if we still have to load a resource:		
-					if( curBuffredTime < this.playlist_buffer_time ){
+					if( curBuffredTime < this.playlist_buffer_time ) {
 						//issue the load request				
-						if( cClip.embed.networkState==0 ){
+						if( cClip.embed.networkState==0 ) {
 							cClip.embed.load();
 						}
 						break; //check back next time
@@ -715,9 +715,9 @@ mw.PlayList.prototype = {
 		this.cur_clip = new_clip;
 		$j( '#clipDesc_' + this.cur_clip.id ).show();		
 		// Update the playhead:
-		if( this.controls ){
+		if( this.controls ) {
 			// Check if we have into_perc 
-			if( into_perc ){
+			if( into_perc ) {
 				var clip_time =  this.cur_clip.dur_offset + ( into_perc * this.cur_clip.getDuration() );
 			}else{
 				var clip_time =  this.cur_clip.dur_offset;
@@ -835,7 +835,7 @@ mw.PlayList.prototype = {
 		
 		this.updateUIPauseState();
 	},
-	updateUIPauseState:function(){
+	updateUIPauseState:function() {
 		var _this = this;
 		// Copied from embedPlayer.pause ( in the refactor this is not needed )
 		// update the ctrl "paused state"				
@@ -915,7 +915,7 @@ mw.PlayList.prototype = {
 	*
 	* @returns the relative offsets of the current clip (given the playlist time) 
  	*/
-	updateClipByTime: function(){
+	updateClipByTime: function() {
 		var _this = this;
 		var prevClip = null;
 		//set the current percent done: 
@@ -954,7 +954,7 @@ mw.PlayList.prototype = {
 	updateBufferStatus: function() {
 		// Update the buffer status for all current clip
 		/*mw.log(' update: '+ this.cur_clip.embed.id + ' to '  + (this.cur_clip.embed.bufferedPercent * 100) );		
-		if( this.cur_clip.embed && this.cur_clip.embed.bufferedPercent ){
+		if( this.cur_clip.embed && this.cur_clip.embed.bufferedPercent ) {
 			$j('#cl_status_' + this.cur_clip.embed.id ).find('.mw_buffer').css({
 				'width': ( this.cur_clip.embed.bufferedPercent * 100) + '%'
 			})
@@ -974,7 +974,7 @@ mw.PlayList.prototype = {
 		var cur_pixle = 0;
 		// set up _this
 		//remove any old cl_status 
-		_this.$interface.find( '.play_head' ).find('.cl_status').remove();
+		_this.$interface.find( '.play_head' ).find( '.cl_status' ).remove();
 		// mw.log("do play head total dur: "+pl_duration );
 		$j.each( this.default_track.clips, function( i, clip ) {
 			// (use getSoloDuration to not include transitions and such)	 
@@ -993,7 +993,8 @@ mw.PlayList.prototype = {
 			barHtml += 'filter:alpha(opacity=40);' +
 					'-moz-opacity:.40;">';
 			
-			barHtml += _this.ctrlBuilder.getBufferHtml();
+			barHtml += '<div class="ui-slider-range ui-slider-range-min ui-widget-header ' + 
+						'ui-state-highlight ui-corner-all mw_buffer" />';
 			
 			barHtml += '</div>';
 			
@@ -1046,14 +1047,14 @@ mw.PlayList.prototype = {
 		else
 			this.default_track.clips[ clip_inx ][ trans_type ].run_transition();
 	},
-	getPlayerWidth: function(){
+	getPlayerWidth: function() {
 		var player = $j( this ).get( 0 );
 		if ( typeof player != 'undefined' && player['offsetWidth'] )
 			return player.offsetWidth;
 		else
 			return parseInt( this.width );
 	},
-	getPlayerHeight: function(){
+	getPlayerHeight: function() {
 		var player = $j( this ).get( 0 );
 		if ( typeof player != 'undefined' && player['offsetHeight'] )
 			return player.offsetHeight;
@@ -1114,7 +1115,7 @@ mvClip.prototype = {
 		// if in sequence mode hide controls / embed links		 
 		//			init_pl_embed.play_button=false;
 		// init_pl_embed.controls=true;	
-		// if(this.pp.sequencer=='true'){		
+		// if(this.pp.sequencer=='true') {		
 		init_pl_embed.linkback = null;
 		
 		if( this.durationHint )
@@ -1144,11 +1145,11 @@ mvClip.prototype = {
 			this.pp.refresh();
 			/*var base_src = this.src.substr(0,this.src.indexOf('?'));
 			mw.log("delta:"+ delta);
-			if(side=='start'){
+			if(side=='start') {
 				//since we adjust start invert the delta: 
 				var startOffset =parseInt(this.embed.startOffset/1000)+parseInt(delta*-1);
 				this.src = base_src +'?t='+ mw.seconds2npt(startOffset) +'/'+ this.embed.end_ntp;							
-			}else if(side=='end'){
+			}else if(side=='end') {
 				//put back into seconds for adjustment: 
 				var end_offset = parseInt(this.embed.startOffset/1000) + parseInt(this.embed.duration/1000) + parseInt(delta);
 				this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ mw.seconds2npt(end_offset);
@@ -1174,7 +1175,7 @@ mvClip.prototype = {
 	},
 	// output the detail view:
 	// @@todo
-	/*getDetail:function(){
+	/*getDetail:function() {
 		//mw.log('get detail:' + this.pp.title);
 		var th=Math.round( this.layout.clip_desc * this.pp.height );	
 		var tw=Math.round( th * this.layout.clip_aspect );		
@@ -1191,7 +1192,7 @@ mvClip.prototype = {
 		$j(this.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});
 		
 		//mw.log('append child to:#clipDesc_'+this.id);
-		if($j('#clipDesc_'+this.id).get(0)){
+		if($j('#clipDesc_'+this.id).get(0)) {
 			$j('#clipDesc_'+this.id).get(0).appendChild(this.embed);
 			
 			$j('#clipDesc_'+this.id).append(''+
@@ -1511,7 +1512,7 @@ mw.PlayList.prototype.monitor = function() {
 	// status updates are handled by children clips ... playlist mostly manages smil actions
 	this.doSmilActions();
 	
-	setTimeout( function(){
+	setTimeout( function() {
 		_this.monitor();
 	}, 250);
 }
@@ -1551,7 +1552,7 @@ mw.PlayList.prototype.doSmilActions = function( callback ) {
 * @param {string} tid the transition type [transIn|transOut]
 * @param {function} callback the callback function passed onto doUPdate
 */
-mw.PlayList.prototype.procTranType = function( tid, callback){	
+mw.PlayList.prototype.procTranType = function( tid, callback) {	
 	// Setup local clip pointer:
 	var _clip = this.cur_clip;	
 	
@@ -1570,12 +1571,12 @@ mw.PlayList.prototype.procTranType = function( tid, callback){
 		tObj.animation_state = 0;
 		tObj.run_transition();
 		/*if ( this.userSlide || this.paused ) {
-			if ( tid == 'transIn' ){
+			if ( tid == 'transIn' ) {
 				mvTransLib.doUpdate( tObj, 
 					( _clip.embed.currentTime / tObj.dur ), 
 					callback );	
 			}		
-			if ( tid == 'transOut' ){
+			if ( tid == 'transOut' ) {
 				mvTransLib.doUpdate( tObj, 
 					( ( _clip.embed.currentTime - ( _clip.dur - tObj.dur ) ) / tObj.dur ), 
 					callback );
@@ -1831,7 +1832,7 @@ transitionObj.prototype = {
 		
 		// }else{
 			// relay on currentTime update grabs (every 250ms or so) (ie for images)
-		//	if(this.prev_curtime!=this.pClip.embed.currentTime){	
+		//	if(this.prev_curtime!=this.pClip.embed.currentTime) {	
 		//		this.prev_curtime =	this.pClip.embed.currentTime;
 		//		this.interValCount=0;
 		//	}
@@ -1845,11 +1846,11 @@ transitionObj.prototype = {
 			this.animation_state = 1;
 		}
 	
-		if( this.transAttrType=='transIn' ){
+		if( this.transAttrType=='transIn' ) {
 			var percentage = ( this.pClip.embed.currentTime / this.dur ) ;
 		}
 				
-		if( this.transAttrType=='transOut' ){
+		if( this.transAttrType=='transOut' ) {
 			var percentage = ( this.pClip.embed.currentTime - 
 								(this.pClip.dur - this.dur) 
 							 ) 
@@ -1867,8 +1868,8 @@ transitionObj.prototype = {
 		}
 								
 		// run the animation ( animation_state == 1 && not "paused")
-		if( !this.pClip.pp.paused ){		
-			setTimeout( function(){
+		if( !this.pClip.pp.paused ) {		
+			setTimeout( function() {
 				_this.run_transition();
 			}, MV_ANIMATION_CB_RATE);
 		}

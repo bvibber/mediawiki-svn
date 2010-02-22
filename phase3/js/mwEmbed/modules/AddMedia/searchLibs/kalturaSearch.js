@@ -271,7 +271,7 @@ kalturaSearch.prototype = {
 				var result = data[ result_id ];
 				
 				// Skip the resource if the license is not compatible 		
-				if( result.license_url  && ! _this.rsd.checkCompatibleLicense( result.license_url ) ){
+				if( result.license_url  && ! _this.rsd.checkCompatibleLicense( result.license_url ) ) {
 					continue;
 				}
 		
@@ -305,7 +305,7 @@ kalturaSearch.prototype = {
 	*/ 
 	getImageObj: function( resource, size, callback ) {
 		var _this = this;		
-		this.getSerachLib( resource.content_provider_id, function( searchLib ){
+		this.getSerachLib( resource.content_provider_id, function( searchLib ) {
 			searchLib.getImageObj( resource, size, callback );
 		});				
 	},
@@ -314,9 +314,9 @@ kalturaSearch.prototype = {
 	* Get extra resource info via a library specific callback 
 	* NOTE: this info should be included in the original kaltura search results
 	*/
-	addResourceInfoCallback: function( resource, callback ){
+	addResourceInfoCallback: function( resource, callback ) {
 		mw.log('Kaltura: addResourceInfoCallback');
-		this.getSerachLib( resource.content_provider_id, function( searchLib ){
+		this.getSerachLib( resource.content_provider_id, function( searchLib ) {
 			searchLib.addResourceInfoCallback( resource, callback );
 		});				
 	},
@@ -327,16 +327,16 @@ kalturaSearch.prototype = {
 	* @param {Function} callback Function to call once provider search lib is loaded 
 	*	callback is passed the search object
 	*/ 
-	getSerachLib: function( provider_id, callback ){
+	getSerachLib: function( provider_id, callback ) {
 		var _this = this;
 		// Check if we already have the library loaded: 
-		if( this.searchLibs[ provider_id ] ){
+		if( this.searchLibs[ provider_id ] ) {
 			callback (  this.searchLibs[ provider_id ] );
 			return ;
 		}	
 		// Else load the provider lib:
 		var provider = this.rsd.content_providers [ provider_id ];
-		mw.load( provider.lib + 'Search', function(){
+		mw.load( provider.lib + 'Search', function() {
 			//Set up the search lib options
 			var options = {			
 				'provider': provider,

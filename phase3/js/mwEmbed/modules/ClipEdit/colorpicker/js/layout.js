@@ -1,4 +1,4 @@
-(function($){
+(function($) {
 	var initLayout = function() {
 		var hash = window.location.hash.replace('#', '');
 		var currentTab = $('ul.navigationTabs a')
@@ -31,7 +31,7 @@
 				$(this).ColorPickerSetColor(this.value);
 			}
 		})
-		.bind('keyup', function(){
+		.bind('keyup', function() {
 			$(this).ColorPickerSetColor(this.value);
 		});
 		$('#colorSelector').ColorPicker({

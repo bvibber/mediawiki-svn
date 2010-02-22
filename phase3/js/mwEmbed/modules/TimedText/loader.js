@@ -16,14 +16,14 @@ mw.addClassStyleSheets( {
 });
 
 // TimedText module
-mw.addModuleLoader( 'TimedText', function( callback ){
-	mw.load( [ '$j.fn.menu', 'mw.TimedText' ], function(){
+mw.addModuleLoader( 'TimedText', function( callback ) {
+	mw.load( [ '$j.fn.menu', 'mw.TimedText' ], function() {
 		callback( 'TimedText' );
 	} );
 });
 
 // TimedText editor: 
-mw.addModuleLoader( 'TimedText.Edit', function( callback ){
+mw.addModuleLoader( 'TimedText.Edit', function( callback ) {
 	mw.load([ 
 		[
 			'$j.ui',
@@ -35,7 +35,7 @@ mw.addModuleLoader( 'TimedText.Edit', function( callback ){
 			'$j.ui.dialog',
 			'$j.ui.tabs'
 		]
-	], function( ){
+	], function( ) {
 		callback( 'TimedText.Edit' );
 	});
 });

@@ -115,7 +115,7 @@ mw.ClipEdit.prototype = {
 	* 
 	* Clip edit profile is either "sequence" or "clip" 
 	*/
-	showControlEdit: function(){
+	showControlEdit: function() {
 		mw.log( 'showControlEdit' );
 		if ( this.profile == 'sequence' ) {
 			this.showEditTypesMenu();
@@ -139,7 +139,7 @@ mw.ClipEdit.prototype = {
 	/**
 	* Get the mediatype for the current resource
 	*/
-	getMediaType: function (){
+	getMediaType: function () {
 		if( this.media_type )
 			return this.media_type;
 		// If media type was not supplied detect for resource if possible:
@@ -761,7 +761,7 @@ mw.ClipEdit.prototype = {
 				);
 				
 				// Make sure the default is reflected:
-				if ( ! _this.resource.layout ){
+				if ( ! _this.resource.layout ) {
 					_this.resource.layout = 'right';
 				}
 				
@@ -974,7 +974,7 @@ mw.ClipEdit.prototype = {
 	/**
 	* Bind the Crop once the library $j.Jcrop is ready: 
 	*/
-	bindCrop: function(){
+	bindCrop: function() {
 		var _this = this;
 		$j( '.mw_crop_msg_load' ).hide();
 		$j( '.mw_reset_crop,.mw_apply_crop' ).show();

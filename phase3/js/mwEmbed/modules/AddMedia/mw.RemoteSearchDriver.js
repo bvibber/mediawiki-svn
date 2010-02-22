@@ -126,10 +126,10 @@ var default_remote_search_options = {
 	// Enabled providers can be keyword 'all' or an array of enabled content provider keys
 	'enabled_providers': 'all', 	
 	
-	// Enalbed license types can any set of 
+	// Enabled license types can any set of 
 	// 'pd' (public domain), 'by' ( attribution ) , 'sa' (share alike ),
 	// 'nd' ( no derivatives ) 
-	// 'nc' ( non-comercial ), 'all' ( all found licenses are "ok")	 
+	// 'nc' ( non-commercial ), 'all' ( all found licenses are "ok")	 
 	'enabled_licenses' : ['pd', 'by', 'sa' ], 
 	
 	// Set a default provider 
@@ -156,7 +156,7 @@ var default_remote_search_options = {
 		}
 	}
 	
-	$.addMediaWizard = function( options ){
+	$.addMediaWizard = function( options ) {
 		$.fn.addMediaWizard ( options, function( amwObj ) {			
 			// Do the add-media-wizard display
 			amwObj.createUI();
@@ -429,7 +429,7 @@ mw.RemoteSearchDriver.prototype = {
 			_this.enabled_providers = 'all';
 
 		// Set the current_provider from default_provider
-		if( this.default_provider && this.content_providers[ this.default_provider ] ){
+		if( this.default_provider && this.content_providers[ this.default_provider ] ) {
 			this.current_provider = this.default_provider;
 		}
 
@@ -561,7 +561,7 @@ mw.RemoteSearchDriver.prototype = {
 	getLicenseFromUrl: function( license_url ) {
 		// Get the license key: 
 		var licenseKey = this.getLicenseKeyFromUrl( license_url );
-		if( licenseKey ){
+		if( licenseKey ) {
 			// Return the license object: 
 			return this.getLicenseFromKey( licenseKey , license_url );
 		}
@@ -578,10 +578,10 @@ mw.RemoteSearchDriver.prototype = {
 	* @parma {String} license_url License url to get key from
 	* @return mixed license key or false if not found.
 	*/
-	getLicenseKeyFromUrl: function( license_url ){
+	getLicenseKeyFromUrl: function( license_url ) {
 		// Check for some pre-defined us gov url:
 		if ( license_url == 'http://www.usa.gov/copyright.shtml' ||
-			license_url == 'http://creativecommons.org/licenses/publicdomain' ){
+			license_url == 'http://creativecommons.org/licenses/publicdomain' ) {
 			return 'pd';
 		}		
 		// First do a direct lookup check:
@@ -611,7 +611,7 @@ mw.RemoteSearchDriver.prototype = {
 			return false;		
 		var licenseSet = licenseKey.split( '-' );
 		for ( var i = 0; i < licenseSet.length; i++ ) {			
-			if( $j.inArray( licenseSet[i], this.enabled_licenses ) == -1){
+			if( $j.inArray( licenseSet[i], this.enabled_licenses ) == -1) {
 				return false;
 			}
 		}
@@ -664,7 +664,7 @@ mw.RemoteSearchDriver.prototype = {
 
 		// Setup the parent container (if not already created) 
 		mw.log(" looking for: " + _this.target_container);
-		if( !_this.target_container || $j( _this.target_container ).length == 0 ){
+		if( !_this.target_container || $j( _this.target_container ).length == 0 ) {
 			this.createDialogContainer();
 		}else{
 			// Empty out the target
@@ -914,7 +914,7 @@ mw.RemoteSearchDriver.prototype = {
 			text: gM( 'mwe-media_search' ) })
 				.addClass( 'rsd_search_button' )
 				.buttonHover()
-				.click(function (){
+				.click(function () {
 					_this.updateResults( _this.current_provider, true );
 					return false;
 				});
@@ -978,7 +978,7 @@ mw.RemoteSearchDriver.prototype = {
 		if ( this.content_providers['upload'].enabled) {
 			$uploadButton = $j.button( { icon_id: 'disk', text: gM( 'mwe-upload_tab' ) })
 				.addClass("rsd_upload_button")
-				.click(function(){
+				.click(function() {
 					_this.current_provider = 'upload';
 					_this.updateUploadResults( );
 					return false;
@@ -1502,7 +1502,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	 * Show failure 
 	 */
-	showFailure : function( resultStatus ){
+	showFailure : function( resultStatus ) {
 		//only one type of resultStatus right now: 
 		if( resultStatus == 'timeout' )
 			$j( '#tab-' + this.current_provider ).text(
@@ -1748,8 +1748,8 @@ mw.RemoteSearchDriver.prototype = {
 	*/
 	getMediaType: function( resource ) {		
 		var types = [ 'image', 'audio', 'video'];
-		for( var i=0; i < types.length ; i++ ){
-			if ( resource.mime.indexOf( types[i] ) !== -1){
+		for( var i=0; i < types.length ; i++ ) {
+			if ( resource.mime.indexOf( types[i] ) !== -1) {
 				return types[i];
 			}
 		}
@@ -1993,7 +1993,7 @@ mw.RemoteSearchDriver.prototype = {
 					
 					// Add extra space at the top if the embed player is less than 90px high
 					// bug 22189				
-					if( $j('#embed_vid').get(0).getPlayerHeight() < 90 ){
+					if( $j('#embed_vid').get(0).getPlayerHeight() < 90 ) {
 						$j( '#clip_edit_disp' ).prepend( 
 							$j( '<span />' )
 							.css({
@@ -2186,7 +2186,7 @@ mw.RemoteSearchDriver.prototype = {
 		);
 
 		// Update video tag (if a video)
-		if ( resource.mime.indexOf( 'video/' ) !== -1 ){
+		if ( resource.mime.indexOf( 'video/' ) !== -1 ) {
 			var target_rewrite_id = $j( _this.target_container ).attr( 'id' ) + '_rsd_pv_vid';
 			$j('#' + target_rewrite_id ).embedPlayer();
 		}
@@ -2223,7 +2223,7 @@ mw.RemoteSearchDriver.prototype = {
 				mw.log( "do import asset:" + _this.import_url_mode );
 				// check import mode:
 				if ( _this.import_url_mode == 'api' ) {				
-					_this.doApiImport( resource, function(){
+					_this.doApiImport( resource, function() {
 						$j( '#rsd_resource_import' ).remove();
 						_this.clipEdit.updateInsertControlActions();
 						callback 
@@ -2249,7 +2249,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Get the resource Import interface 
 	*/
-	getResourceImportInterface: function( resource, description ){
+	getResourceImportInterface: function( resource, description ) {
 		var _this = this;
 		var $rsdResourceImport = $j('<div />')
 			.attr( 'id', 'rsd_resource_import' )
@@ -2386,7 +2386,7 @@ mw.RemoteSearchDriver.prototype = {
 	* Get Template Description wikitext
 	* @pram {Object} resource Resource source for description
 	*/
-	getTemplateDescription: function( resource ){
+	getTemplateDescription: function( resource ) {
 		// setup the resource description from resource description:
 		// FIXME: i18n, namespace
 		var description = '{{Information ' + "\n";
@@ -2441,7 +2441,7 @@ mw.RemoteSearchDriver.prototype = {
 		mw.getJSON( mw.getLocalApiUrl(), request, function( data ) {
 			if ( data.query.pages ) {
 				for ( var i in data.query.pages ) {
-					if( i == '-1' ){
+					if( i == '-1' ) {
 						callback( false );
 						return ;
 					}
@@ -2521,7 +2521,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 			// If status is missing show import UI
 			if ( status === 'missing' ) {
-				_this.showImportUI( resource, function(){
+				_this.showImportUI( resource, function() {
 					// Once the image is imported re-issue the showPreview request: 
 					_this.showPreview( resource );
 				} );
@@ -2588,8 +2588,8 @@ mw.RemoteSearchDriver.prototype = {
 				_this.target_title,
 				function( phtml ) {
 					$j( '#rsd_preview_display' ).html( phtml );
-					if( mw.documentHasPlayerTags() ){
-						mw.load( 'EmbedPlayer', function(){							
+					if( mw.documentHasPlayerTags() ) {
+						mw.load( 'EmbedPlayer', function() {							
 							// Update the display of video tag items (if any) 
 							$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();
 						});
@@ -2665,7 +2665,7 @@ mw.RemoteSearchDriver.prototype = {
 	*
 	* @param {Object} resource Resource to be inserted into the output targets
 	*/
-	insertResourceToOutput: function( resource ){
+	insertResourceToOutput: function( resource ) {
 		var _this = this;		
 		var embed_code = _this.getEmbedCode( resource );
 		$j( _this.target_textbox ).textSelection( 'encapsulateSelection', { 'post' : embed_code } );

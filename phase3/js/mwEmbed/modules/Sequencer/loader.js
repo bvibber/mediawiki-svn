@@ -18,12 +18,12 @@ mw.addModuleLoader( 'FirefoggRender', function( callback) {
 		'mw.Firefogg', 
 		'mw.FirefoggRender',
 		'mw.BaseUploadInterface'
-	], function(){
+	], function() {
 		callback( 'FirefoggRender' );
 	});
 });
 
-mw.addModuleLoader( 'Sequencer', function( callback ){
+mw.addModuleLoader( 'Sequencer', function( callback ) {
 	//Get sequencer style sheet	
 	mw.getStyleSheet( mw.getMwEmbedPath() + 'modules/Sequencer/css/mv_sequence.css' );
 	// Make sure we have the required mwEmbed libs:			

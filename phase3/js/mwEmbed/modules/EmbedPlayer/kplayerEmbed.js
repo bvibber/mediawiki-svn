@@ -43,7 +43,7 @@ var kplayerEmbed = {
 			  '<param value="opaque" name="wmode"/>'+
 			 '</object>'
 		)
-		setTimeout(function(){
+		setTimeout(function() {
 			_this.postEmbedJS();
 		}, 50);
 	},	
@@ -55,7 +55,7 @@ var kplayerEmbed = {
 		var _this = this;
 		this.getPlayerElement();	
 		//alert( 	this.playerElement );
-		if( this.playerElement && this.playerElement.insertMedia){
+		if( this.playerElement && this.playerElement.insertMedia) {
 			// Add KDP listeners
 			
 			//this.playerElement.addJsListener("doPlay","kdpDoOnPlay");
@@ -79,7 +79,7 @@ var kplayerEmbed = {
 		}else{
 			// Keep trying to get the html: 
 			//mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
-			setTimeout( function(){
+			setTimeout( function() {
 				_this.postEmbedJS();
 			}, 25);
 		}		
@@ -93,9 +93,9 @@ var kplayerEmbed = {
 	* @param {String} flash binding name
 	* @param {String} function callback name
 	*/
-	bindPlayerFunction:function( bName, fName ){
+	bindPlayerFunction:function( bName, fName ) {
 		var cbid = fName + '_cb_' + this.id.replace(' ', '_');
-		eval( 'window[ \'' + cbid +'\' ] = function(){$j(\'#' + this.id + '\').get(0).'+ fName +'();}' );
+		eval( 'window[ \'' + cbid +'\' ] = function() {$j(\'#' + this.id + '\').get(0).'+ fName +'();}' );
 		this.playerElement.addJsListener( bName , cbid);
 	},
 	
@@ -103,7 +103,7 @@ var kplayerEmbed = {
 	* on Pause callback from the kaltura flash player
 	*  calls parent_pause to update the interface
 	*/
-	onPause:function(){		
+	onPause:function() {		
 		this.parent_pause();
 	},
 	
@@ -129,13 +129,13 @@ var kplayerEmbed = {
 	/**
 	* Issues a seek to the playerElement	
 	*/ 
-	doSeek:function( prec ){
+	doSeek:function( prec ) {
 		var _this = this;
-		if( this.playerElement ){
+		if( this.playerElement ) {
 			var seek_time = prec * this.getDuration(); 
 			this.playerElement.dispatchKdpEvent('doSeek',  seek_time);
 			// Kdp is missing seek done callback
-			setTimeout(function(){
+			setTimeout(function() {
 				_this.seeking= false;
 			},500);
 		}
@@ -154,7 +154,7 @@ var kplayerEmbed = {
 	* Monitors playback updating the current Time
 	*/
 	monitor:function() {	
-		if( this.playerElement && this.playerElement.getMediaSeekTime ){
+		if( this.playerElement && this.playerElement.getMediaSeekTime ) {
 			this.currentTime = this.playerElement.getMediaSeekTime();
 		}
 		this.parent_monitor();

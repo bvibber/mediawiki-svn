@@ -60,7 +60,7 @@ var nativeEmbed = {
 		)		
 		mw.log( "Embed code: " + $j( this ).html() )
 		
-		setTimeout( function(){
+		setTimeout( function() {
 			_this.postEmbedJS();
 		}, 150 );		
 	},
@@ -78,12 +78,12 @@ var nativeEmbed = {
 			var vid = $j( this.playerElement ).get(0);
 			
 			// Bind events to local js methods:			
-			vid.addEventListener( 'canplaythrough',  function(){ _this.canplaythrough }, true);			 
-			vid.addEventListener( 'loadedmetadata', function(){ _this.onloadedmetadata() }, true);
-			vid.addEventListener( 'progress', function( e ){  _this.onprogress( e )  }, true);
-			vid.addEventListener( 'ended', function(){  _this.onended() }, true);		
-			vid.addEventListener( 'seeking', function(){ _this.onseeking() }, true);
-			vid.addEventListener( 'seeked', function(){ _this.onseeked() }, true);			
+			vid.addEventListener( 'canplaythrough',  function() { _this.canplaythrough }, true);			 
+			vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
+			vid.addEventListener( 'progress', function( e ) {  _this.onprogress( e )  }, true);
+			vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
+			vid.addEventListener( 'seeking', function() { _this.onseeking() }, true);
+			vid.addEventListener( 'seeked', function() { _this.onseeked() }, true);			
 		
 			// Check for load flag
 			if ( this.onlyLoadFlag ) {
@@ -92,7 +92,7 @@ var nativeEmbed = {
 				// Issue play request				
 				this.playerElement.play();
 			}
-			setTimeout( function(){
+			setTimeout( function() {
 				_this.monitor();
 			}, 100 );
 			
@@ -103,7 +103,7 @@ var nativeEmbed = {
 			if (	this.grab_count == 20 ) {
 				mw.log( 'Could not get vid object after 20 tries re-run: getEmbedObj() ?' ) ;
 			} else {
-				setTimeout( function(){
+				setTimeout( function() {
 					_this.postEmbedJS();
 				}, 200 );
 			}
@@ -202,7 +202,7 @@ var nativeEmbed = {
 	* @param {Float} position Position in seconds
 	* @param {Function} callback Function to call once seeking completes
 	*/
-	doSeekedCallback : function( position, callback ){
+	doSeekedCallback : function( position, callback ) {
 		var _this = this;			
 		this.getPlayerElement();		
 		var once = function( event ) {			
@@ -390,7 +390,7 @@ var nativeEmbed = {
 		}
 		
 		//Fire "onLoaded" flags if set
-		if( typeof this.onLoadedCallback == 'function' ){
+		if( typeof this.onLoadedCallback == 'function' ) {
 			this.onLoadedCallback();
 		}
 	},
