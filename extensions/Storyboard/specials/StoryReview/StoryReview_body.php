@@ -22,7 +22,7 @@ class SpecialStoryReview extends IncludableSpecialPage {
 	}
 
 	public function execute( $language ) {
-		wfProfileIn('StoryReview-special-page');
+		wfProfileIn( 'StoryReview-special-page' );
 		
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'storyreview' ) && !$wgUser->isBlocked() ) {
@@ -34,13 +34,13 @@ class SpecialStoryReview extends IncludableSpecialPage {
 			$wgOut->permissionRequired( 'storyreview' );
 		}
 		
-		wfProfileOut('StoryReview-special-page');
+		wfProfileOut( 'StoryReview-special-page' );
 	}
 
 	private function addOutput() {
 		global $wgOut;
 		
-		$wgOut->setPageTitle(wfMsg('storyboard-storyreview'));
+		$wgOut->setPageTitle( wfMsg( 'storyboard-storyreview' ) );
 		
 		$wgOut->includeJQuery();
 		
@@ -57,7 +57,7 @@ class SpecialStoryReview extends IncludableSpecialPage {
 				'story_text',
 				'story_is_published'			
 			),
-			'story_is_hidden = 0'
+			array( 'story_is_hidden' => 0 )
 		);
 		
 		// Arrays to hold the html segments for both the unreviewed and reviewed stories.
@@ -65,28 +65,28 @@ class SpecialStoryReview extends IncludableSpecialPage {
 		$reviewed = array();
 		
 		// Loop through all stories, get their html segments, and store in the appropriate array.
-		while ($story = $dbr->fetchObject($stories)) {
-			if ($story->story_is_published) {
-				$reviewed = array_merge($reviewed, $this->getStorySegments($story));
+		while ( $story = $dbr->fetchObject( $stories ) ) {
+			if ( $story->story_is_published ) {
+				$reviewed = array_merge( $reviewed, $this->getStorySegments( $story ) );
 			}
 			else {
-				$unreviewed = array_merge($unreviewed, $this->getStorySegments($story));
+				$unreviewed = array_merge( $unreviewed, $this->getStorySegments( $story ) );
 			}
 		}
 		
 		// Create the page layout, and add the stories.
 		$htmlSegments = array();
-		$htmlSegments[] = '<h2>' . wfMsg('storyboard-unreviewed') . '</h2>';
+		$htmlSegments[] = '<h2>' . wfMsg( 'storyboard-unreviewed' ) . '</h2>';
 		$htmlSegments[] = '<table width="100%">';
-		$htmlSegments = array_merge($htmlSegments, $unreviewed);
+		$htmlSegments = array_merge( $htmlSegments, $unreviewed );
 		$htmlSegments[] = '</table>';
-		$htmlSegments[] = '<h2>' . wfMsg('storyboard-reviewed') . '</h2>';
+		$htmlSegments[] = '<h2>' . wfMsg( 'storyboard-reviewed' ) . '</h2>';
 		$htmlSegments[] = '<table width="100%">';
-		$htmlSegments = array_merge($htmlSegments, $reviewed);
+		$htmlSegments = array_merge( $htmlSegments, $reviewed );
 		$htmlSegments[] = '</table>';			
 
 		// Join all the html segments and add the resulting string to the page.
-		$wgOut->addHTML(implode('', $htmlSegments));
+		$wgOut->addHTML( implode( '', $htmlSegments ) );
 	}
 	
 	/**
@@ -97,21 +97,21 @@ class SpecialStoryReview extends IncludableSpecialPage {
 	 * @param $story
 	 * @return array
 	 */
-	private function getStorySegments($story) {
+	private function getStorySegments( $story ) {
 		$segments = array();
 		$segments[] = '<tr><td><table width="100%" border="1"><tr><td rowspan="2" width="200px">';
 		$segments[] = '<img src="http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png">'; // TODO: get cropped image here
 		$segments[] = '</td><td><b>';
-		$segments[] = htmlspecialchars($story->story_title);
+		$segments[] = htmlspecialchars( $story->story_title );
 		$segments[] = '</b><br />';
-		$segments[] = htmlspecialchars($story->story_text);
+		$segments[] = htmlspecialchars( $story->story_text );
 		$segments[] = '</td></tr><tr><td align="center" height="35">';
 		$segments[] = '<button type="button">'; // TODO: figure out how to best update db info (page submit with form or onclick with ajax call?)
-		$segments[] = wfMsg('storyboard-publish');
+		$segments[] = wfMsg( 'storyboard-publish' );
 		$segments[] = '</button> &nbsp;&nbsp;&nbsp; <button type="button">';
-		$segments[] = wfMsg('edit');
+		$segments[] = wfMsg( 'edit' );
 		$segments[] = '</button> &nbsp;&nbsp;&nbsp; <button type="button">';
-		$segments[] = wfMsg('hide');
+		$segments[] = wfMsg( 'hide' );
 		$segments[] = '</button></td></tr></table></td></tr>';	
 		return $segments;
 	}
