@@ -18,9 +18,9 @@ class TagStoryboard {
 	public static function render( $input, $args, $parser, $frame ) {
 		global $wgOut, $wgJsMimeType, $egStoryboardScriptPath;
 		
-		$wgOut->addStyle($egStoryboardScriptPath . '/tags/Storyboard/Storyboard.css');		
+		$wgOut->addStyle($egStoryboardScriptPath . '/tags/Storyboard/storyboard.css');		
 		$wgOut->includeJQuery();
-		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/Storyboard.js');
+		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/storyboard.js');
 
 		$output = <<<END
 <script type="$wgJsMimeType">var storyboardPath = '$egStoryboardScriptPath';</script>
