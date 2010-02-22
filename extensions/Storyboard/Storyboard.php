@@ -65,7 +65,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => Storyboard_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Storyboard',
-	'description' =>  wfMsg( 'storyboard-desc' ),
+	'description' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
 	'descriptionmsg' => 'storyboard-desc',
 );
 
