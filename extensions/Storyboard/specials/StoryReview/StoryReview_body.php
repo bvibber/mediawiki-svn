@@ -22,7 +22,7 @@ class SpecialStoryReview extends IncludableSpecialPage {
 	}
 
 	public function execute( $language ) {
-		wfProfileIn('StoryReview special page');
+		wfProfileIn('StoryReview-special-page');
 		
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'storyreview' ) && !$wgUser->isBlocked() ) {
@@ -34,7 +34,7 @@ class SpecialStoryReview extends IncludableSpecialPage {
 			$wgOut->permissionRequired( 'storyreview' );
 		}
 		
-		wfProfileOut('StoryReview special page');
+		wfProfileOut('StoryReview-special-page');
 	}
 
 	private function addOutput() {
@@ -102,9 +102,9 @@ class SpecialStoryReview extends IncludableSpecialPage {
 		$segments[] = '<tr><td><table width="100%" border="1"><tr><td rowspan="2" width="200px">';
 		$segments[] = '<img src="http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png">'; // TODO: get cropped image here
 		$segments[] = '</td><td><b>';
-		$segments[] = $story->story_title;
+		$segments[] = htmlspecialchars($story->story_title);
 		$segments[] = '</b><br />';
-		$segments[] = $story->story_text;
+		$segments[] = htmlspecialchars($story->story_text);
 		$segments[] = '</td></tr><tr><td align="center" height="35">';
 		$segments[] = '<button type="button">'; // TODO: figure out how to best update db info (page submit with form or onclick with ajax call?)
 		$segments[] = wfMsg('storyboard-publish');
