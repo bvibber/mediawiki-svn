@@ -9078,6 +9078,7 @@ fn: {
 			var $templateName = $( '<span />' )
 				.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
 				.text( model.getName() )
+				.mousedown( toggleWikiTextEditor )
 				.prependTo( $template );
 			
 			var $templateExpand = $( '<span />' )
