@@ -95,7 +95,7 @@ function efStoryboardSchemaUpdate() {
 	
 	$wgExtNewTables[] = array(
 		'storyboard',
-		$egStoryboardDir . 'Storyboard.sql'
+		$egStoryboardDir . 'storyboard.sql'
 	);
 	
 	return true;
