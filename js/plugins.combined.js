@@ -9075,13 +9075,24 @@ fn: {
 				.addClass( 'wikiEditor-template-collapsed' )
 				.data( 'model', model );
 			
-			$( '<span />' )
-			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
-			.text( model.getName() )
-			.mousedown(toggleWikiTextEditor)
-			//.mousedown( function(){createDialog( $template );} ) //have to pass template so model stays in sync
-			.prependTo( $template );
+			var $templateName = $( '<span />' )
+				.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
+				.text( model.getName() )
+				.prependTo( $template );
 			
+			var $templateExpand = $( '<span />' )
+				.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
+				.append( '<img src="' + $.wikiEditor.imgPath + '/templateEditor/expand.png" width="12" height="16" />' )
+				.append( '<img src="' + $.wikiEditor.imgPath + '/templateEditor/collapse.png" width="12" height="16" style="display:none;" />' )
+				.mousedown( toggleWikiTextEditor )
+				.prependTo( $template );
+			
+			var $templateDialog = $( '<span />' )
+				.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
+				.append( '<img src="'+$.wikiEditor.imgPath+'/templateEditor/dialog-collapsed.png" width="22" height="16" />' )
+				.append( '<img src="'+$.wikiEditor.imgPath+'/templateEditor/dialog-expanded.png" width="22" height="16" style="display:none;" />' )
+				.mousedown( function() { createDialog( $template ); return false; } )
+				.insertAfter( $templateName );
 			/*
 			var $options = $( '<ul />' )
 			.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
@@ -9098,7 +9109,11 @@ fn: {
 				var $template = $( this ).closest( '.wikiEditor-template' );
 				$template
 					.toggleClass( 'wikiEditor-template-expanded' )
-					.toggleClass( 'wikiEditor-template-collapsed' );
+					.toggleClass( 'wikiEditor-template-collapsed' )
+					.find( 'img' )
+					.each( function() { 
+						$( this ).toggle(); 
+					} );
 				var $wikitext = $template.children('.wikiEditor-template-text');
 				$wikitext.toggleClass('wikiEditor-nodisplay');
 				
