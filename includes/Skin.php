@@ -3057,11 +3057,19 @@ CSS;
 		global $wgRequest;
 		$action = $wgRequest->getVal( 'action', 'view' );
 		if ( $this->mTitle->getNamespace() != NS_SPECIAL && $action !== 'edit' ) {
-			$s .= "\t\t" . '<li id="lastmod">' . $this->lastModified() . '</li>
-			<li id="viewcount">' . $this->getViewCount() . '</li>
-			<li id="numberofwatchingusers">' . $this->getNumberOfWatchingUsers() . '</li>
-			<li id="credits">' . $this->getCredits() . '</li>
-			<li id="copyrights">' . $this->getCopyright() . '</li>' . "\n";
+			$s .= "\t\t" . '<li id="lastmod">' . $this->lastModified() . '</li>';
+			if ( $this->getViewCount() ) {
+				$s .= "\t\t" . '<li id="viewcount">' . $this->getViewCount() . '</li>' . "\n";
+			}
+			if ( $this->getNumberOfWatchingUsers() ) {
+				$s .= "\t\t" . '<li id="numberofwatchingusers">' . $this->getNumberOfWatchingUsers() . '</li>' . "\n";
+			}
+			if ( $this->getCredits() ) {
+				$s .= "\t\t" . '<li id="credits">' . $this->getCredits() . '</li>' . "\n";
+			}
+			if ( $this->getCopyright() ) {
+				$s .= "\t\t" . '<li id="copyrights">' . $this->getCopyright() . '</li>' . "\n";
+			}
 		}
 		$s .= "\t\t" . '<li id="privacy">' . $this->privacyLink() . '</li>
 		<li id="about">' . $this->aboutLink() . '</li>
