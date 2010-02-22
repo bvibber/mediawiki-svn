@@ -70,37 +70,49 @@ class Preprocessor_DOM implements Preprocessor {
 		// To XML
 		$xmlishRegex = implode('|', $this->parser->getStripList());
 		$rules = array(
-			"Template" => new ParseRule("template", '/^{{(?!{[^{])/s', "TemplateSeq", '}}'),
-			"TplArg" => new ParseRule("tplarg", '/^{{{/s', "TemplateSeq", '}}}'),
-			"TplPart" => new ParseRule("part", '/^\|/s', "TplPartList"),
-			"Link" => new ParseRule("link", '/^\[\[/s', "MainQuant", ']]'),
-			"Heading" => new ParseRule("h", '/^(\n|~BOF)(={1,6})/s', "HeadingQuant", '~2'),
-			"CommentLine" => new ParseRule("commentline", '/^\n((?:<!--.*?-->\n)+)/s'),
-			"Comment" => new ParseRule("comment", '/^<!--.*?(?:-->|$)/s'),
-			"OnlyInclude" => new ParseRule("ignore", '/^<\/?onlyinclude>/s'),
-			"NoInclude" => new ParseRule("ignore", '/^<\/?noinclude>/s'),
-			"IncludeOnly" => new ParseRule("ignore", '/^<includeonly>.*?<\/includeonly>/s'),
-			"XmlClosed" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')([^>]*)\/>/si'),
-			"XmlOpened" => new ParseRule("ext", '/^<(' . $xmlishRegex . ')(.*?)>(.*?)(<\/\1>)/si'),
-			"BeginFile" => new ParseRule("bof", '/^~BOF/s'),
-			"MainText" => new ParseRule("text", '/^.[^{}\[\]<\n|=]*/s'),
-			"Root" => new ParseQuant("root", "MainList", '/^$/'),
-			"MainQuant" => new ParseQuant("unnamed", "MainList", '/^~r/s'),
-			"HeadingQuant" => new ParseQuant("unnamed", "MainList", '/^~r(?=(?: *<!--.*?-->)*(?:\n|$))/s'),
-			"TplTitle" => new ParseQuant("title", "MainList", '/^(?=~r|\|)/s'),
+			"Template" => new ParsePattern("template", '/^{{(?!{[^{])/s', "TemplateSeq", '}}'),
+			"TplArg" => new ParsePattern("tplarg", '/^{{{/s', "TemplateSeq", '}}}'),
+			"TplPart" => new ParsePattern("part", '/^\|/s', "TplPartList"),
+			"Link" => new ParsePattern("link", '/^\[\[/s', "MainQuant", ']]'),
+			"Heading" => new ParsePattern("h", '/^(\n|~BOF)(={1,6})/s', "HeadingQuant", '~2'),
+			"XmlExt" => new ParsePattern("ext", '/^<(?=(' . $xmlishRegex . '))/si', "XmlExtSeq", '~1'),
+			"CommentLine" => new ParsePattern("commentline", '/^\n((?:<!--.*?-->\n)+)/s'),
+			"Comment" => new ParsePattern("comment", '/^<!--.*?(?:-->|$)/s'),
+			"OnlyInclude" => new ParsePattern("ignore", '/^<\/?onlyinclude>/s'),
+			"NoInclude" => new ParsePattern("ignore", '/^<\/?noinclude>/s'),
+			"IncludeOnly" => new ParsePattern("ignore", '/^<includeonly>.*?<\/includeonly>/s'),
+			"BeginFile" => new ParsePattern("bof", '/^~BOF/s'),
+			"MainText" => new ParsePattern("text", '/^.[^{}\[\]<\n|=]*/s'),
+			"XmlName" => new ParsePattern("name", '/^.*?(?= |\/>|>)/s'),
+			"XmlAttr" => new ParsePattern("attr", '/^.*?(?=\/>|>)/s'),
+			"XmlClosed" => new ParsePattern("unUsed", '/^\/>/si'),
+			"XmlOpened" => new ParsePattern("unUsed", '/^>/si'),
+			"XmlInner" => new ParsePattern("inner", '/^.*?(?=<\/~r>|$)/si'),
+			"XmlCloseTag" => new ParsePattern("close", '/^<\/~r>/si'),
+			"Root" => new ParseQuant("root", "MainChoice", '/^$/'),
+			"MainQuant" => new ParseQuant("unnamed", "MainChoice", '/^~r/s'),
+			"HeadingQuant" => new ParseQuant("unnamed", "MainChoice", '/^~r(?=(?: *<!--.*?-->)*(?:\n|$))/s'),
+			"TplTitle" => new ParseQuant("title", "MainChoice", '/^(?=~r|\|)/s'),
 			"TplPartQuant" => new ParseQuant("unnamed", "TplPart", '/^~r/s'),
-			"TplTest" => new ParseQuant("unnamed", "MainList", '/^(?=~r|\||=(?!~r|\|))/s'),
+			"TplTest" => new ParseQuant("unnamed", "MainChoice", '/^(?=~r|\||=(?!~r|\|))/s'),
 			"TplName" => new ParseQuant("name", "TplTest", '/^=/s', 0, 1),
-			"TplValue" => new ParseQuant("value", "MainList", '/^(?=~r|\|)/s'),
-			"MainList" => new ParseList("unnamed", array("Template", "TplArg", "Link", "Heading", "CommentLine", "Comment",  					"OnlyInclude", "NoInclude", "IncludeOnly", "XmlClosed", "XmlOpened", "BeginFile", "MainText")),
-			"TplPartList" => new ParseList("unnamed", array("TplPartSeq", "TplValue")),
+			"TplValue" => new ParseQuant("value", "MainChoice", '/^(?=~r|\|)/s'),
+			"XmlCloseQuant" => new ParseQuant("unnamed", "XmlCloseTag", NULL, 0, 1),
+			"MainChoice" => new ParseChoice("unnamed", array("CurlyChoice", "XmlChoice", 
+				"Heading", "CommentLine", "Link", "BeginFile", "MainText")),
+			"CurlyChoice" => new ParseChoice("unnamed", array("Template", "TplArg"), "{"),
+			"XmlChoice" => new ParseChoice("unnamed", array("Comment", "OnlyInclude", "NoInclude", "IncludeOnly", "XmlExt"), "<"),
+			"TplPartList" => new ParseChoice("unnamed", array("TplPartSeq", "TplValue")),
+			"XmlClose" => new ParseChoice("unnamed", array("XmlClosed", "XmlOpenedSeq")),
 			"TemplateSeq" => new ParseSeq("unnamed", array("TplTitle", "TplPartQuant")),
-			"TplPartSeq" => new ParseSeq("unnamed", array("TplName", "TplValue")));
+			"TplPartSeq" => new ParseSeq("unnamed", array("TplName", "TplValue")),
+			"XmlExtSeq" => new ParseSeq("unnamed", array("XmlName", "XmlAttr", "XmlClose")),
+			"XmlOpenedSeq" => new ParseSeq("unnamed", array("XmlOpened", "XmlInner", "XmlCloseQuant")));
 		if ($flags & Parser::PTD_FOR_INCLUSION) {
-			$rules["OnlyInclude"] = new ParseRule("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
-			$rules["NoInclude"] = new ParseRule("ignore", '/^<noinclude>.*?<\/noinclude>/s');
-			$rules["IncludeOnly"] = new ParseRule("ignore", '/^<\/?includeonly>/s');
-			$rules["BeginFile"] = new ParseRule("bof", '/^~BOF(.*?<onlyinclude>)?/s');
+			$rules["OnlyInclude"] = new ParsePattern("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
+			$rules["NoInclude"] = new ParsePattern("ignore", '/^<noinclude>.*?<\/noinclude>/s');
+			$rules["IncludeOnly"] = new ParsePattern("ignore", '/^<\/?includeonly>/s');
+			$rules["BeginFile"] = new ParsePattern("bof", '/^~BOF(.*?<onlyinclude>)?/s');
 		}
 
 		$parseTree = ParseTree::createParseTree($text, $rules);

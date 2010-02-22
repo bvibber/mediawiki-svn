@@ -12,7 +12,7 @@ abstract class ParseObject {
 	}
 
 	// Does the parse task specific to each parse object
-	abstract function parse(&$text, &$rules, $endTag = NULL);
+	abstract function parse(&$text, &$rules, $replaceStr = NULL);
 }
 
 /**
@@ -20,39 +20,44 @@ abstract class ParseObject {
  * If the text matches mBeginTag then a ParseTree object is created with the appropriate info.
  * mName - The name to give the resultant ParseTree object
  * mBeginTag - the regular expression used to determine if this is the rule that should be used
- * mEndTag - If ParseTrees of this type are to have children, mEndTag specifies when all of the children are collected
+ * mReplaceStr - Collected patterns that should be passed to children
  * mChildRule - What Parse rule to use to gather children for this element
  * @ingroup Parser
  */
-class ParseRule extends ParseObject {
-	private $mBeginTag, $mChildRule, $mEndTag;
+class ParsePattern extends ParseObject {
+	private $mBeginTag, $mChildRule, $mReplaceStr;
 
-	function __construct($name, $beginTag, $childRule = NULL, $endTag = NULL) {
+	function __construct($name, $beginTag, $childRule = NULL, $replaceStr = NULL) {
 		parent::__construct($name);
 		$this->mBeginTag = $beginTag;
 		$this->mChildRule = $childRule;
-		$this->mEndTag = $endTag;
+		$this->mReplaceStr = $replaceStr;
 	}
 
-	function parse(&$text, &$rules, $endTag = NULL) {
-		if (! preg_match($this->mBeginTag, $text, $matches)) {
+	function parse(&$text, &$rules, $replaceStr = NULL) {
+		$beginTag = $this->mBeginTag;
+		if ($replaceStr != NULL) {
+			$beginTag = str_replace('~r', $replaceStr, $beginTag);
+		}
+		if (! preg_match($beginTag, $text, $matches)) {
 			return NULL;
 		}
 		$text = substr($text, strlen($matches[0]));
-		$child = NULL;
+		$children = NULL;
 		if ($this->mChildRule != NULL) {
-			if ($this->mEndTag != NULL) {
-				$endTag = $this->mEndTag;
+			if ($this->mReplaceStr != NULL) {
+				$replaceStr = $this->mReplaceStr;
 				foreach ($matches as $i => $crrnt) {
-					$endTag = str_replace('~' . $i, $crrnt, $endTag);
+					$replaceStr = str_replace('~' . $i, $crrnt, $replaceStr);
 				}
 			}
-			$child = $rules[$this->mChildRule]->parse($text, $rules, $endTag);
+			$child = $rules[$this->mChildRule]->parse($text, $rules, $replaceStr);
 			if ($child == NULL) {
 				return NULL;
 			}
+			$children = array($child);
 		}
-		return new ParseTree($this->mName, $matches, array($child));
+		return new ParseTree($this->mName, $matches, $children);
 	}
 }
 
@@ -77,27 +82,30 @@ class ParseQuant extends ParseObject {
 		$this->mMaxChildren = $maxChildren;
 	}
 
-	function parse(&$text, &$rules, $endTag = NULL) {
-		$endRegEx = $this->mEndTag;
-		if ($this->mEndTag != NULL && $endTag != NULL) {
-			$endRegEx = str_replace('~r', $endTag, $this->mEndTag);
+	function parse(&$text, &$rules, $replaceStr = NULL) {
+		$endTag = $this->mEndTag;
+		if ($endTag != NULL && $replaceStr != NULL) {
+			$endTag = str_replace('~r', $replaceStr, $endTag);
 		}
 		$children = array();
-		for ($i = 0; $i < $this->mMinChildren || (($endRegEx == NULL || ! preg_match($endRegEx, $text, $matches)) && 
+		for ($i = 0; $i < $this->mMinChildren || (($endTag == NULL || ! preg_match($endTag, $text, $matches)) && 
 			($this->mMaxChildren <= 0 || $i < $this->mMaxChildren)); $i ++) {
-			$child = $rules[$this->mChildRule]->parse($text, $rules, $endTag);
+			$child = $rules[$this->mChildRule]->parse($text, $rules, $replaceStr);
 			if ($child == NULL) {
-				return NULL;
+				if ($endTag != NULL || $i < $this->mMinChildren)  {
+					return NULL;
+				}
+				break;
 			}
 			$children[] = $child;
 		}
-		if ($this->mEndTag != NULL) {
+		if ($endTag != NULL) {
 			if (! isset($matches[0])) {
 				return NULL;
 			}
 			$text = substr($text, strlen($matches[0]));
 		}
-		return new ParseTree($this->mName, $matches, $children);
+		return new ParseTree($this->mName, NULL, $children);
 	}
 }
 
@@ -106,18 +114,22 @@ class ParseQuant extends ParseObject {
  * mList - The list of rules
  * @ingroup Parser
  */
-class ParseList extends ParseObject {
-	private $mList;
+class ParseChoice extends ParseObject {
+	private $mList, $matchChar;
 
-	function __construct($name, $list) {
+	function __construct($name, $list, $matchChar = null) {
 		parent::__construct($name);
 		$this->mList = $list;
+		$this->mMatchChar = $matchChar;
 	}
 
-	function parse(&$text, &$rules, $endTag = NULL) {
+	function parse(&$text, &$rules, $replaceStr = NULL) {
+		if ($this->mMatchChar != NULL && $text[0] != $this->mMatchChar) {
+			return NULL;
+		}
 		foreach ($this->mList as $crrnt) {
 			$newText = $text;
-			$child = $rules[$crrnt]->parse($newText, $rules, $endTag);
+			$child = $rules[$crrnt]->parse($newText, $rules, $replaceStr);
 			if ($child != NULL) {
 				$text = $newText;
 				return new ParseTree($this->mName, NULL, array($child));
@@ -141,10 +153,10 @@ class ParseSeq extends ParseObject {
 		$this->mList = $list;
 	}
 
-	function parse(&$text, &$rules, $endTag = NULL) {
+	function parse(&$text, &$rules, $replaceStr = NULL) {
 		$children = array();
 		foreach ($this->mList as $crrnt) {
-			$child = $rules[$crrnt]->parse($text, $rules, $endTag);
+			$child = $rules[$crrnt]->parse($text, $rules, $replaceStr);
 			if ($child == NULL) {
 				return NULL;
 			}
@@ -157,7 +169,7 @@ class ParseSeq extends ParseObject {
 /**
  * The parse tree of the data.
  * printTree translates the parse tree to xml, eventually this should be seperated into a data and engine layer.
- * mName - Indicates what ParseRule was used to create this node
+ * mName - Indicates what ParseObject was used to create this node
  * mMatches - The text groups that were collected by the regular expressions used when creating this rule
  * mChildren - The child ParseTree nodes in this tree
  * @ingroup Parser
@@ -197,17 +209,6 @@ class ParseTree {
 			if (isset($this->mMatches[1])) {
 				$retString = "<ignore>" . htmlspecialchars($this->mMatches[1]) . "</ignore>";
 			}
-		} elseif ($this->mName == "comment" || $this->mName == "ignore") {
-			$retString = "<" . $this->mName . ">" . htmlspecialchars($this->mMatches[0]) . "</" . $this->mName . ">";
-		} elseif ($this->mName == "ext") {
-			$retString = "<name>" . htmlspecialchars($this->mMatches[1]) . "</name><attr>" . htmlspecialchars($this->mMatches[2]) . "</attr>";
-			if (isset($this->mMatches[3])) {
-				$retString .= "<inner>" . htmlspecialchars($this->mMatches[3]) . "</inner>";
-			}
-			if (isset($this->mMatches[4])) {
-				$retString .= "<close>" . htmlspecialchars($this->mMatches[4]) . "</close>";
-			}
-			$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
 		} elseif ($this->mName == "link") {
 			$retString = htmlspecialchars($this->mMatches[0]) . $this->mChildren[0]->printTree() . "]]";
 		} elseif ($this->mName == "h") {
@@ -216,9 +217,13 @@ class ParseTree {
 			if ($this->mMatches[1] == "\n") {
 				$retString = "\n" . $retString;
 			}
-		} else {
-			foreach ($this->mChildren as $crrnt) {
-				$retString .= $crrnt->printTree();
+		} elseif ($this->mName != "unUsed") {
+			if ($this->mChildren != NULL) {
+				foreach ($this->mChildren as $crrnt) {
+					$retString .= $crrnt->printTree();
+				}
+			} else {
+				$retString = htmlspecialchars($this->mMatches[0]);
 			}
 			if ($this->mName != "unnamed") {
 				$retString = "<" . $this->mName . ">" . $retString . "</" . $this->mName . ">";
