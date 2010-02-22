@@ -18,8 +18,11 @@ class TagStorysubmission {
 	// http://www.mediawiki.org/wiki/Manual:Forms
 	// http://www.mediawiki.org/wiki/Manual:Hooks/UnknownAction
 	public static function render( $input, $args, $parser, $frame ) {
-		return <<<END
 
+		return <<<END
+<form name="storysubmission" action="" method="get">
+
+</form>
 END;
 	}
 	

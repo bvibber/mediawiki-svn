@@ -4,6 +4,7 @@
  *
  * @file StoryReview_body.php
  * @ingroup Storyboard
+ * @ingroup SpecialPage
  *
  * @author Jeroen De Dauw
  */
@@ -21,6 +22,8 @@ class SpecialStoryReview extends IncludableSpecialPage {
 	}
 
 	public function execute( $language ) {
+		wfProfileIn('StoryReview special page');
+		
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'storyreview' ) && !$wgUser->isBlocked() ) {
 			// If the user has the storyreview permission and is not blocked, show the regular output.
@@ -30,8 +33,10 @@ class SpecialStoryReview extends IncludableSpecialPage {
 			global $wgOut;
 			$wgOut->permissionRequired( 'storyreview' );
 		}
+		
+		wfProfileOut('StoryReview special page');
 	}
-	
+
 	private function addOutput() {
 		global $wgOut;
 		
