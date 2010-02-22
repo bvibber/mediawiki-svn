@@ -219,111 +219,142 @@ class WWThesaurus extends WWUTils {
 	return $names;
     }
 
-    /////////////////////////////////////////////////////////
-    function getConcept( $id, $lang = null, $limit = 100 ) {
-	global $wwTablePrefix, $wwThesaurusDataset;
+    function splitPages( $s ) {
+	$pp = explode("|", $s);
 
-	if ($lang) $sql = "SELECT C.*, O.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-		      . " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O " 
-		      . " ON C.id = O.global_concept " . " AND O.lang = \"".mysql_real_escape_string($lang)."\""
-		      . " WHERE C.id = ".(int)$id ;
-	else $sql = "SELECT C.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-		. " WHERE C.id = ".(int)$id;
+	$pages = array();
+	foreach ($pp as $p) {
+	    ($t, $n) = explode(":", $p, 2);
+	    $pages[$n] = (int)$t;
+	}
+
+	return $pages;
+    }
+
+    function splitConcepts( $s ) {
+	$ss = explode("|", $s);
+
+	$concepts = array();
+	foreach ($ss as $p) {
+	    ($id, $n) = explode(":", $p, 2);
+	    $id = (int)$id;
+	    $concepts[$id] = $n;
+	}
+
+	return $concepts;
+    }
+
+    /////////////////////////////////////////////////////////
+    function getConceptInfo( $id, $lang = null, $fields = null ) {
+	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
+
+	if ( $fields && is_array($fields)) $fields = implode(", ", $fields);
+	if ( !$fields ) $fields = "*";
+
+	#TODO: scores, concept-type, ...
+
+	$sql = "SELECT $fields FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info "
+	    . " WHERE C.id = ".(int)$id;
+
+	if ($lang) {
+	    if ( is_array($lang) ) $sql .= " AND lang IN " . $this->quoteSet($lang);
+	    else $sql .= " AND lang = " . $this->quote($lang);
+	}
 
 	$r = $this->getRows($sql);
 
-	if ( !$r ) return false;
-	else return $r[0];
+	$rs = $this->query($sql);
+	if (!$rs) return false;
+
+	$concept = array();
+	$concept["id"] = $id;
+	$concept["languages"] = array();
+
+	while ($row = mysql_fetch_assoc($rs)) {
+	    $lang = $row["lang"];
+	    $concept["languages"][] = $lang;
+
+	    #TODO: scores, concept-type, ...
+
+	    if (@$row["name"] !== null) $concept["name"][$lang] = $row["name"];
+	    if (@$row["definition"] !== null) $concept["definition"][$lang] = $row["definition"];
+	    if (@$row["pages"] !== null) $concept["pages"][$lang] = $this->splitPages($row["pages"]);
+
+	    if (@$row["broader"] !== null) $concept["broader"][$lang] = $this->splitConcepts($row["broader"]);
+	    if (@$row["narrower"] !== null) $concept["narrower"][$lang] = $this->splitConcepts($row["narrower"]);
+	    if (@$row["similar"] !== null) $concept["similar"][$lang] = $this->splitConcepts($row["similar"]);
+	    if (@$row["related"] !== null) $concept["related"][$lang] = $this->splitConcepts($row["related"]);
+
+	    if (isset($concept["broader"][$lang])) $concept["broader"]["*"] += array_keys($concept["broader"][$lang]);
+	    if (isset($concept["narrower"][$lang])) $concept["narrower"]["*"] += array_keys($concept["narrower"][$lang]);
+	    if (isset($concept["similar"][$lang])) $concept["similar"]["*"] += array_keys($concept["similar"][$lang]);
+	    if (isset($concept["related"][$lang])) $concept["related"]["*"] += array_keys($concept["related"][$lang]);
+	}
+
+	if (isset($concept["broader"]["*"])) $concept["broader"]["*"] = array_unique($concept["broader"]["*"]);
+	if (isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array_unique($concept["narrower"]["*"]);
+	if (isset($concept["similar"]["*"])) $concept["similar"]["*"] = array_unique($concept["similar"]["*"]);
+	if (isset($concept["broader"]["*"])) $concept["related"]["*"] = array_unique($concept["related"]["*"]);
+
+	mysql_free_result($rs);
+
+	return $concept;
+    }
+
+    function getConcept( $id, $lang = null, $limit = 100 ) {
+	return $this->getConceptInfo($id, $lang);
     }
 
     function getRelatedForConcept( $id, $lang = null, $limit = 100 ) {
-	global $wwTablePrefix, $wwThesaurusDataset;
-
-	$sql = "SELECT " . ($lang ? " C.*, O.* " : " C.* " ) . " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_relation as R ON R.concept2 = C.id ";
-
-	if ( $lang ) $sql .= " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND C.id = O.global_concept ";
-
-	$sql .= " WHERE R.concept1 = ".(int)$id
-	      . " AND ( R.bilink > 0 OR R.langref > 0 OR R.langmatch > 0 )"
-	      . " GROUP BY C.id "
-	      . " LIMIT " . (int)$limit;
-
-	return $this->getRows($sql);
+	$concept = $this->getConceptInfo($id, $lang, "lang, related");
+	if (!$concept) return false;
+	else if ($lang) return $concept["related"][$lang];
+	else return $concept["related"];
     }
 
     function getBroaderForConcept( $id, $lang = null, $limit = 100 ) {
-	global $wwTablePrefix, $wwThesaurusDataset;
-
-	$sql = "SELECT " . ($lang ? " C.*, O.* " : " C.* " ) . " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.broad = C.id ";
-
-	if ( $lang ) $sql .= " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND C.id = O.global_concept ";
-
-	$sql .= " WHERE R.narrow = ".(int)$id
-	      . " GROUP BY C.id "
-	      . " LIMIT " . (int)$limit;
-
-	return $this->getRows($sql);
+	$concept = $this->getConceptInfo($id, $lang, "lang, broader");
+	if (!$concept) return false;
+	else if ($lang) return $concept["broader"][$lang];
+	else return $concept["broader"];
     }
 
     function getNarrowerForConcept( $id, $lang = null, $limit = 100 ) {
-	global $wwTablePrefix, $wwThesaurusDataset;
-
-	$sql = "SELECT " . ($lang ? " C.*, O.* " : " C.* " ) . "  FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept as C "
-	      . " JOIN  {$wwTablePrefix}_{$wwThesaurusDataset}_broader as R ON R.narrow = C.id ";
-
-	if ( $lang ) $sql .= " LEFT JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND C.id = O.global_concept ";
-
-	$sql .= " WHERE R.broad = ".(int)$id
-	      . " GROUP BY C.id "
-	      . " LIMIT " . (int)$limit;
-
-	return $this->getRows($sql);
+	$concept = $this->getConceptInfo($id, $lang, "lang, narrower");
+	if (!$concept) return false;
+	else if ($lang) return $concept["narrower"][$lang];
+	else return $concept["narrower"];
     }
 
     function getPagesForConcept( $id, $lang = null, $limit = 100 ) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
+	if (!$lang) return false;
 
-	if ( !$lang ) $lang = array_keys( $wwLanguages );
-	if ( !is_array($lang) ) $lang = preg_split('![\\s,;|/:]\\s*!', $lang);
+	$concept = $this->getConceptInfo($id, $lang, "lang, pages");
+	if (!$concept) return false;
+	else if ($lang) return array_keys( $concept["pages"][$lang] );
+    }
+
+    function getNamesForConcept( $id, $lang = null ) {
+	$concept = $this->getConceptInfo($id, $lang, "lang, name");
+	if (!$concept) return false;
+
 	$result = array();
-	
-	foreach ($lang as $ll) {
-		$sql = "SELECT R.name FROM {$wwTablePrefix}_{$ll}_resource as R "
-		      . " JOIN {$wwTablePrefix}_{$ll}_about as A ON A.resource = R.id "
-		      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($ll) . "\" AND A.concept = O.local_concept "
-		      . " WHERE O.global_concept = " . (int)$id
-		      . " WHERE R.type IN ( " . WW_RC_TYPE_ARTICLE . ", " . WW_RC_TYPE_CATEGORY . " ) "
-		      . " LIMIT " . (int)$limit;
-
-		$pages = $this->getList($sql, "name");
-		if ( $pages === false || $pages === null ) return false;
-		if ( !$pages ) continue;
-
-		$result[$ll] = $pages;
+	foreach ($concept["languages"] as $ll) {
+		if (@$concept["name@$ll"]) 
+			$result[$ll] = $concept["name@$ll"];
 	}
 
 	return $result;
     }
 
-    function getNamesForConcept( $id, $lang = null ) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
+    function getDefinitionForConcept( $id, $lang = null, $limit = 100 ) {
+	$concept = $this->getConceptInfo($id, $lang, "lang, definition");
+	if (!$concept) return false;
 
-	if ( !$lang ) $lang = array_keys( $wwLanguages );
-	if ( !is_array($lang) ) $lang = preg_split('![\\s,;|/:]\\s*!', $lang);
 	$result = array();
-	
-	foreach ($lang as $ll) {
-		$sql = "SELECT O.local_name FROM {$wwTablePrefix}_{$ll}_resource as O ";
-		$sql .= " WHERE O.global_concept = " . (int)$id;
-		$sql .= " AND O.lang = " . (int)$ll;
-
-		$pages = $this->getList($sql, "name");
-		if ( $pages === false || $pages === null ) return false;
-		if ( !$pages ) continue;
-
-		$result[$ll] = $pages;
+	foreach ($concept["languages"] as $ll) {
+		if (@$concept["definition@$ll"]) 
+			$result[$ll] = $concept["definition@$ll"];
 	}
 
 	return $result;
@@ -348,29 +379,6 @@ class WWThesaurus extends WWUTils {
 	    if ( !$terms ) continue;
 
 	    $result[$ll] = $terms;
-	}
-
-	return $result;
-    }
-
-    function getDefinitionForConcept( $id, $lang = null, $limit = 100 ) {
-	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
-
-	if ( !$lang ) $lang = array_keys( $wwLanguages );
-	if ( !is_array($lang) ) $lang = preg_split('![\\s,;|/:]\\s*!', $lang);
-	$result = array();
-
-	foreach ($lang as $ll) {
-	    $sql = "SELECT D.definition FROM {$wwTablePrefix}_{$ll}_definition as D"
-		  . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($ll) . "\" AND D.concept = O.local_concept "
-		  . " WHERE O.global_concept = " . (int)$id
-		  . " LIMIT " . (int)$limit;
-
-	    $definitions = $this->getList($sql, "definition");
-	    if ( $definitions === false || $definitions === null ) return false;
-	    if ( !$definitions ) continue;
-
-	    $result[$ll] = $definitions[0];
 	}
 
 	return $result;
