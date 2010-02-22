@@ -72,7 +72,7 @@ mw.FirefoggRender.prototype = {
 			$j.extend(this.renderOptions, default_render_options,  options['render_options']);
 		
 		// If no height width provided use target DOM width/height
-		if( !this.renderOptions.width && !this.renderOptions.height ){
+		if( !this.renderOptions.width && !this.renderOptions.height ) {
 			this.renderOptions.width = $j(this.player_target).width();
 			this.renderOptions.height = $j(this.player_target).height();
 		}		
@@ -131,7 +131,7 @@ mw.FirefoggRender.prototype = {
 		// add audio if we had any:
 							
 		// issue a load request on the player:
-		this.player.load(function(){
+		this.player.load(function() {
 			$j( this.target_timeStatus ).val( "player ready" );
 			//now issue the save video as call
 			_this.fogg.saveVideoAs();		
@@ -142,7 +142,7 @@ mw.FirefoggRender.prototype = {
 	/**
 	* Do the next frame in the render target
 	*/
-	doNextFrame: function(){
+	doNextFrame: function() {
 		var _this = this;
 		// internal function to handle updates:						
 		$j( _this.target_timeStatus ).val( " on " + ( Math.round( _this.render_time * 10 ) / 10 ) + " of " +
@@ -186,7 +186,7 @@ mw.FirefoggRender.prototype = {
 		var rstatus = _this.fogg.renderstatus()
 	    $j( _this.target_timeStatus ).val( rstatus );
 	    if ( rstatus != 'done' && rstatus != 'rendering failed' ) {
-	        setTimeout( function(){
+	        setTimeout( function() {
 	        	_this.updateStatus();
 	        }, 100 );
 	    } else {

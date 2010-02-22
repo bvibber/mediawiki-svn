@@ -164,7 +164,7 @@ var PixasticEditor = (function () {
 		var undoRatio = canvasWidth / canvasHeight;
 
 		for (var i=undoImages.length-1;i>=0;i--) {
-			(function(){
+			(function() {
 				var canvas = document.createElement("canvas");
 				$j(canvas)
 					.addClass("undo-canvas-small")
@@ -199,8 +199,8 @@ var PixasticEditor = (function () {
 				$link = $j("<a href='#'></a>", doc)
 					.addClass("undo-link")
 					.appendTo($listCtr)
-					.mouseover(function(){ $j(this).addClass("hover") })
-					.mouseout(function(){ $j(this).removeClass("hover") });
+					.mouseover(function() { $j(this).addClass("hover") })
+					.mouseout(function() { $j(this).removeClass("hover") });
 				$j(canvas).appendTo($link);
 
 				var displayShowing;
@@ -389,8 +389,8 @@ var PixasticEditor = (function () {
 				.click(function() {
 					enableTab(tab.id);
 				})
-				.mouseover(function(){ $j(this).addClass("hover") })
-				.mouseout(function(){ $j(this).removeClass("hover") });
+				.mouseover(function() { $j(this).addClass("hover") })
+				.mouseout(function() { $j(this).removeClass("hover") });
 	
 			$j("#main-bar", doc).append($tabElement);
 
@@ -479,7 +479,7 @@ var PixasticEditor = (function () {
 					for (var k=0;k<action.controls.length;k++) {
 						var control = action.controls[k];
 						if (typeof control.defaultValue != "function") {
-							(function(){
+							(function() {
 							var defVal = control.defaultValue;
 							control.defaultValue = function() {
 								return defVal;
@@ -707,14 +707,14 @@ var PixasticEditor = (function () {
 			height : "100%",
 			zIndex : "11"
 		});
-		$frame.load(function(){
+		$frame.load(function() {
 			doc = $frame.get(0).contentDocument;
 
 			buildEditor();
 			callback();
 			$frame.show();
 			hideLoadingScreen();
-			setTimeout(function(){
+			setTimeout(function() {
 				updateDisplayCanvas();
 			},10);
 		});
@@ -827,8 +827,8 @@ var PixasticEditor = (function () {
 				.css("left", "-9999px")
 				.css("top", "-9999px")
 				.appendTo("body")
-				.load(function(){onload(this);})
-				.error(function(){
+				.load(function() {onload(this);})
+				.error(function() {
 					throw new Error("Could not load temporary copy image. Is provided image valid?");
 					unload();
 				})

@@ -32,7 +32,7 @@ var playlistEmbed = {
 	/**
 	* put the embed player into the container
 	*/
-	doEmbedPlayer: function(){
+	doEmbedPlayer: function() {
 		var _this = this;
 		// Set "loading" here:
 		$j(this).text( 	gM( 'mwe-loading_plugin' )	);
@@ -46,7 +46,7 @@ var playlistEmbed = {
 	/**
 	* Get the thumbnail html
 	*/
-	getThumbnailHTML: function(){
+	getThumbnailHTML: function() {
 		return 'thumb html';
 	},
 	/**
@@ -60,7 +60,7 @@ var playlistEmbed = {
 	/**
 	* Get all the "clips" in a given range from currentTime
 	*/
-	getClipsInRange: function( range ){
+	getClipsInRange: function( range ) {
 		
 	}
 }

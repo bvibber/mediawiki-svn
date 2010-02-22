@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Simple nested iframe callback page</title>
 <script type="text/javascript">
-window.onload = function (){
+window.onload = function () {
 	//call the nested callback in top most frame:
 	top.mw.ApiProxy.nested( window.location.href.split("#")[1] || false );		
 }

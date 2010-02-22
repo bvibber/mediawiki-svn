@@ -11,7 +11,7 @@ var kskinConfig = {
 	playerClass: 'k-player',
 	
 	// Display time string length
-	long_time_disp: false,
+	longTimeDisp: false,
 	
 	// Options are handled internally
 	external_options: false,
@@ -19,13 +19,11 @@ var kskinConfig = {
 	// Volume control layout is horizontal
 	volume_layout: 'horizontal',
 	
-	// Menu items for the kskin: 
-	menu_items:[
-		'playerSelect',
-		'download',
-		'share',
-		'credits'
-	],
+	// Skin "kskin" is specific for wikimedia we have an
+	// api Title key so the "credits" menu item can be showed.  
+	supportedMenuItems: {
+		'credits': true
+	},
 	
 	// Extends base components with kskin specific options:
 	components: {		
@@ -89,17 +87,17 @@ var kskinConfig = {
 					.addClass( 'k-menu-bar' );
 					
 				// Output menu item containers: 
-				for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
-					var mk = ctrlObj.menu_items[i];
+				for ( i = 0; i < ctrlObj.optionMenuItems.length; i++ ) {
+					var menuItem = ctrlObj.optionMenuItems[ i ];
 					$menuBar.append( 
 						$j( '<li />') 
 						// Add the menu item class:
-						.addClass( 'k-' + mk + '-btn' )
-						.attr( 'rel', mk )
+						.addClass( 'k-' + menuItem + '-btn' )
+						.attr( 'rel', menuItem )
 						.append(
 							$j( '<a />' )
 							.attr( {  
-								'title' : gM( 'mwe-' + mk ),
+								'title' : gM( 'mwe-' + menuItem ),
 								'href' : '#'
 							})
 						)							
@@ -115,10 +113,10 @@ var kskinConfig = {
 						'width' : (  ctrlObj.getOverlayWidth() - 75 ), 
 						'height' : ( ctrlObj.getOverlayHeight() - ctrlObj.getControlBarHeight() )
 					})
-				for ( i = 0; i < ctrlObj.menu_items.length; i++ ) {
+				for ( i = 0; i < ctrlObj.optionMenuItems.length; i++ ) {
 					$menuScreens.append( 
 						$j( '<div />' )
-						.addClass( 'menu-screen menu-' + ctrlObj.menu_items[i] )
+						.addClass( 'menu-screen menu-' + ctrlObj.optionMenuItems[i] )
 					);							
 				}
 				
@@ -229,8 +227,8 @@ var kskinConfig = {
 		$playerTarget.find( '.k-menu' ).hide();
 			
 		// Add menu-items bindings:  
-		for ( i = 0; i < _this.menu_items.length ; i++ ) {
-			$playerTarget.find( '.k-' +  _this.menu_items[i] + '-btn' ).click( function() {
+		for ( i = 0; i < _this.optionMenuItems.length ; i++ ) {
+			$playerTarget.find( '.k-' +  _this.optionMenuItems[ i ] + '-btn' ).click( function( ) {
 				var mk = $j( this ).attr( 'rel' );
 				// hide menu items	        	
 				$targetItem = $playerTarget.find( '.menu-' + mk );	
@@ -246,25 +244,7 @@ var kskinConfig = {
 				return false;
 			} );
 		}
-	},
-	
-	/**
-	* Shows a selected menu_item
-	* 
-	* @param {String} menu_itme Menu item key to display
-	*/
-	showMenuItem:function( menu_item ) {	
-		var embedPlayer = this.embedPlayer;
-		//handle special k-skin specific display; 
-		if( menu_item == 'credits'){
-			this.showCredits(); 
-		}else{
-			// Call the base embedPlayer "show{Item}"
-			this.embedPlayer['show' + menu_item.charAt( 0 ).toUpperCase() + menu_item.substring( 1 )](
-				embedPlayer.$interface.find( '.menu-' + menu_item )
-			);
-		}
-	},
+	},		
 	
 	/**
 	* Show the credit screen (presently specific to kaltura skin )
@@ -290,7 +270,7 @@ var kskinConfig = {
 				.attr({
 					'title': gM('mwe-kaltura-platform-title')
 				})
-				.click( function(){
+				.click( function( ) {
 					window.location = 'http://kaltura.com';
 				})
 			);
@@ -321,7 +301,7 @@ var kskinConfig = {
 		// Get the image info
 		var request = { 
 			'prop' : 'imageinfo',
-			'titles': fileTitle,
+			'titles' : fileTitle,
 			'iiprop' : 'url'		
 		};
 		var articleUrl = '';
@@ -332,12 +312,12 @@ var kskinConfig = {
 					// Check properites for "missing" 
 					if( imageProps.imageinfo && imageProps.imageinfo[0] && imageProps.imageinfo[0].descriptionurl ){					
 						// Found page 
-						$target.find('.credits_box').html(
+						$target.find( '.credits_box' ).html(
 							_this.doCreditLine( imageProps.imageinfo[0].descriptionurl )
 						);				
 					}else{
 						// missing page  descriptionurl
-						$target.find('.credits_box').text(
+						$target.find( '.credits_box' ).text(
 							'Error: title key: ' + embedPlayer.apiTitleKey + ' not found' 
 						);						
 					}

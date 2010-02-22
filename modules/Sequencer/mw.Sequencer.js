@@ -58,7 +58,7 @@ mw.addMessages( {
 /*
 * Setup the sequencer jQuery binding:
 */
-( function( $ ){
+( function( $ ) {
 	$.fn.sequencer = function( options, callback ) {
 		// Debugger
 		options['target_sequence_container'] = this.selector;
@@ -279,7 +279,7 @@ mw.Sequencer.prototype = {
 		
 		$j('#' + this.plObj_id ).embedPlayer();
 		
-		setTimeout( function(){
+		setTimeout( function() {
 			_this.checkReadyPlObj()
 		}, 25 );
 	},
@@ -481,8 +481,8 @@ mw.Sequencer.prototype = {
 		// & from seq obj to sequencer
 		this.plObj.pSeq = this;
 
-		if ( this.plObj ){
-			if ( ! this.plObj.loading ){
+		if ( this.plObj ) {
+			if ( ! this.plObj.loading ) {
 				this.plReadyInit();
 				return ;
 			}
@@ -494,7 +494,7 @@ mw.Sequencer.prototype = {
 				mw.log( 'error playlist never ready' );
 			} else {
 				this.plReadyTimeout++;
-				setTimeout( function(){
+				setTimeout( function() {
 					_this.checkReadyPlObj();
 				}, 25 );
 			}
@@ -521,7 +521,7 @@ mw.Sequencer.prototype = {
 		this.sequenceEditToken = $j( 'input[wpEditToken]' ).val();
 		
 		// Update the buttons for no Api url (local editor) 
-		if( !this.getLocalApiUrl() ){
+		if( !this.getLocalApiUrl() ) {
 			_this.updateSeqSaveButtons();
 		}
 		
@@ -542,9 +542,9 @@ mw.Sequencer.prototype = {
 			$j.ajax({
 				type: "GET",
 				url: token_url + _this.plObj.mTitle,
-				success:function(data){
+				success:function(data) {
 					var pageElm = data.getElementsByTagName('page')[0];
-					if( $j(pageElm).attr('edittoken') ){
+					if( $j(pageElm).attr('edittoken') ) {
 						_this.sequenceEditToken = $j(pageElm).attr('edittoken');
 					}
 
@@ -554,9 +554,9 @@ mw.Sequencer.prototype = {
 			/*$j.ajax({
 				type:"GET",
 				url: token_url + _this.plObj.mTalk,
-				success:function(data){
+				success:function(data) {
 					var pageElm = data.getElementsByTagName('page')[0];
-					if( $j(pageElm).attr('edittoken') ){
+					if( $j(pageElm).attr('edittoken') ) {
 						_this.clipboardEditToken = $j(pageElm).attr('edittoken');
 					}
 				}
@@ -1490,7 +1490,7 @@ mw.Sequencer.prototype = {
 			clip_desc += '<br>end time: ' + new_end;
 			// also shift all the other clips (after the current)
 			// mw.log("track_inx: " + track_inx + ' clip inx:'+clip_inx);
-			// $j('#container_track_'+track_inx+' > .mv_clip_drag :gt('+clip_inx+')').each(function(){
+			// $j('#container_track_'+track_inx+' > .mv_clip_drag :gt('+clip_inx+')').each(function() {
 			$j( '#container_track_' + track_inx + ' > :gt(' + clip_inx + ')' ).each( function() {
 				var move_id_parts = this.id.split( '_' );
 				var move_clip = _this.plObj.tracks[move_id_parts[1]].clips[move_id_parts[3]];
@@ -1543,7 +1543,7 @@ mw.Sequencer.prototype = {
 			var out='';
 			//output time-desc every 50pixles and jump links every 10 pixles
 			var n=0;
-			for(i=0;i<pixle_length;i+=10){
+			for(i=0;i<pixle_length;i+=10) {
 				out+='<div onclick="'+this.instance_name+'.jt('+i*this.timeline_scale+');"' +
 						' style="z-index:2;position:absolute;left:'+i+'px;width:10px;height:20px;top:0px;"></div>';
 				if(n==0)

@@ -137,7 +137,7 @@ var default_form_options = {
 
 			// Set up the binding per the config
 			if ( options.enable_fogg ) {
-				mw.load( 'AddMedia.firefogg', function(){
+				mw.load( 'AddMedia.firefogg', function() {
 					$j( "#wpUploadFile" ).firefogg( {
 						// An api url (we won't submit directly to action of the form)
 						'api_url' : options.api_target,
@@ -151,13 +151,13 @@ var default_form_options = {
 								warn_target: "#wpDestFile-warning"
 							} );
 						},
-						'onsubmit_cb' : function( ){
+						'onsubmit_cb' : function( ) {
 							// Update with basic info template:	
 							// TODO: it would be nice to have a template generator class
 							var desc = $j('#wpUploadDescription').val();
 							
 							// Update the template if the user does not already have template code:
-							if( desc.indexOf('{{Information') == -1){
+							if( desc.indexOf('{{Information') == -1) {
 								$j('#wpUploadDescription').val( 
 '== {{int:filedesc}} ==' + "\n" +
 '{{Information' + "\n" +

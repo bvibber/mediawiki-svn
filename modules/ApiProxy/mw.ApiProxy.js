@@ -124,7 +124,7 @@ mw.ApiProxy = { };
 		
 		// Special callback to frameProxyOk flag 
 		// (only used to quickly test the proxy connection)   
-		if ( resultObject.state == 'ok' ){
+		if ( resultObject.state == 'ok' ) {
 			return ;
 		}
 		
@@ -138,30 +138,30 @@ mw.ApiProxy = { };
 	* 
 	* @param {Function} callback Function to host the 
 	*/
-	$.browseFile = function( options ){
+	$.browseFile = function( options ) {
 	
 		// Set frame proxy ok state flag: 
 		frameProxyOk = false;
 		
-		if( ! options ){
+		if( ! options ) {
 			options = {};
 		}
 			
-		if( ! options.target ){
+		if( ! options.target ) {
 			mw.log( "Error: no target for file browse iframe" ) ;
 			return false;
 		}
-		if( ! options.api_url ){
+		if( ! options.api_url ) {
 			mw.log( "Error: no api url to target" );
 			return false; 
 		}
 		//update the current apiUrl:
 		currentApiUrl = options.api_url;
 		
-		if( ! options.width ){
+		if( ! options.width ) {
 			options.width = 270;		
 		}
-		if( ! options.height ){
+		if( ! options.height ) {
 			options.height = 27;
 		}
 		var iFrameName = ( options.iframeName ) ? options.iframeName : 'fileBrowse_' + $j('iframe').length;		
@@ -200,21 +200,21 @@ mw.ApiProxy = { };
 		};
 		
 		// Setup the proxy callback to display the upload unhide the iframe upload form 
-		proxyCallback = function( iframeData ){
+		proxyCallback = function( iframeData ) {
 			// proccess fileBrowse callbacks::
 			
 			// check for basic status "ok"
-			if( iframeData['status'] == 'ok' ){
+			if( iframeData['status'] == 'ok' ) {
 				// Hide the loading spinner
 				$j( options.target ).find('.loading_spinner').fadeOut('fast');
 				mw.log("iframe ready callback");
 				$j( '#' + iFrameName ).fadeIn( 'fast' );	
 			}
 			// else check for event 
-			if( iframeData['event'] ){
-				switch( iframeData['event'] ){
+			if( iframeData['event'] ) {
+				switch( iframeData['event'] ) {
 					case 'selectFileCb':
-						if( options.selectFileCb ){
+						if( options.selectFileCb ) {
 							options.selectFileCb( iframeData['fileName'] );
 						}
 					break;	
@@ -233,7 +233,7 @@ mw.ApiProxy = { };
 	$.server = function() {		
 		var proxyConfig = mw.getConfig( 'apiProxyConfig' );	
 		// Validate the server request:
-		if( !validateIframeRequest( proxyConfig ) ){
+		if( !validateIframeRequest( proxyConfig ) ) {
 			mw.log( "Not a valid iframe request");
 			return false;
 		}
@@ -252,7 +252,7 @@ mw.ApiProxy = { };
 	/**
 	* Get the client frame path ( within mwEmbed )
 	*/
-	function getClientFrame(){
+	function getClientFrame() {
 		return mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html';
 	}
 	
@@ -265,9 +265,9 @@ mw.ApiProxy = { };
 	* ( there is no cost if they do already have the gadget on ) 
 	*/
 	var gadgetWithJS = 'withJS=MediaWiki:Gadget-mwEmbed.js';
-	function getServerFrame( apiUrl ){
+	function getServerFrame( apiUrl ) {
 		// Set to local scope currentApiUrl if unset by argument
-		if( !apiUrl){
+		if( !apiUrl) {
 			apiUrl = currentApiUrl;
 		}
 		var  parsedUrl = mw.parseUri( apiUrl );
@@ -276,9 +276,9 @@ mw.ApiProxy = { };
 	/**
 	* Same as getServerFrame but for browse file interface
 	*/
-	function getServerBrowseFileFrame( apiUrl ){
+	function getServerBrowseFileFrame( apiUrl ) {
 		// Set to local scope currentApiUrl if unset by argument
-		if( !apiUrl){
+		if( !apiUrl) {
 			apiUrl = currentApiUrl;
 		}
 		var  parsedUrl = mw.parseUri( apiUrl );
@@ -335,7 +335,7 @@ mw.ApiProxy = { };
 	* checks  master_blacklist 
 	* checks  master_whitelist
 	*/
-	function validateIframeRequest( proxyConfig ){
+	function validateIframeRequest( proxyConfig ) {
 		var clientRequest = false;
 		
 		
@@ -369,7 +369,7 @@ mw.ApiProxy = { };
 	 * Check if a domain is allowed.
 	 * @param {Object} clientFrame
 	 */
-	function isAllowedClientFrame( clientFrame ){
+	function isAllowedClientFrame( clientFrame ) {
 		var clientDomain =  mw.parseUri( clientFrame ).host ;
 		// Get the proxy config
 		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
@@ -399,7 +399,7 @@ mw.ApiProxy = { };
 	* Get the client request from the document hash
 	* @return {Object} the object result of parsing the document anchor msg
 	*/
-	function getClientRequest(){
+	function getClientRequest() {
 		// Read the anchor data package from the requesting url
 		var hashMsg = unescape( mw.parseUri( document.URL ).anchor );
 		try {
@@ -455,10 +455,10 @@ mw.ApiProxy = { };
 	* serverHandleRequest handle a given request from the client 
 	* maps the request to serverBrowseFile or serverApiRequest
 	*/
-	function serverHandleRequest(){ 	
+	function serverHandleRequest() { 	
 		var clientRequest = getClientRequest();
 		// Process request type
-		if( clientRequest['browseFile'] ){
+		if( clientRequest['browseFile'] ) {
 			serverBrowseFile();
 			return true;
 		}						
@@ -490,11 +490,11 @@ mw.ApiProxy = { };
 	* 
 	* Sets the page content to browser file 
 	*/
-	function serverBrowseFile( ){
+	function serverBrowseFile( ) {
 		// Get the proxy config
 		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
 		//check for fw ( file width )
-		if( ! proxyConfig.fileWidth ){
+		if( ! proxyConfig.fileWidth ) {
 			proxyConfig.fileWidth = 130;
 		}
 		//Build a form with bindings similar to uploadPage.js ( but only the browse button ) 		
@@ -526,7 +526,7 @@ mw.ApiProxy = { };
 		// load the mw.upload library with iframe interface (similar to uploadPage.js)
 		
 		// If wgEnableFirefogg is not boolean false, set to true
-		if ( typeof wgEnableFirefogg == 'undefined' ){
+		if ( typeof wgEnableFirefogg == 'undefined' ) {
 			wgEnableFirefogg = true;
 		}
 			
@@ -536,7 +536,7 @@ mw.ApiProxy = { };
 			'interface_type' : 'iframe',
 			
 			// Set the select file callback to update clientFrame
-			'selectFileCb' : function( fileName ){
+			'selectFileCb' : function( fileName ) {
 				sendClientMsg( {
 					'event': 'selectFileCb',
 					'fileName' : fileName
@@ -544,14 +544,14 @@ mw.ApiProxy = { };
 			}
 		}
 		
-		if( wgEnableFirefogg ){
-			mw.load( 'AddMedia.firefogg', function(){			
+		if( wgEnableFirefogg ) {
+			mw.load( 'AddMedia.firefogg', function() {			
 				$j( '#wpUploadFile' ).firefogg( uploadConfig );
 				// Update status 
 				sendClientMsg( {'status':'ok'} );
 			});
 		} else {
-			mw.load( 'AddMedia.UploadHandler', function(){						
+			mw.load( 'AddMedia.UploadHandler', function() {						
 				$j( 'mw-upload-form' ).uploadHandler( uploadConfig );
 				sendClientMsg( {'status':'ok'} );
 			});
@@ -569,7 +569,7 @@ mw.ApiProxy = { };
 		var clientFrame = getClientRequest()['clientFrame'];
 		
 		// Double check that the client is an approved domain before outputing the iframe
-		if( ! isAllowedClientFrame ( clientFrame ) ){
+		if( ! isAllowedClientFrame ( clientFrame ) ) {
 			mw.log( "cant send msg to " + clientFrame );
 			return false;
 		}
@@ -589,7 +589,7 @@ mw.ApiProxy = { };
 		// After the nested frame is done loading schedule its removal
 		$j( '#' + nestName ).get( 0 ).onload = function() {
 			// Use a settimeout to give time for client frame to propagate update.
-			setTimeout( function(){
+			setTimeout( function() {
 				$j('#' +  nestName ).remove();
 			}, 10 );
 		}

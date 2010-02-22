@@ -76,7 +76,7 @@ archiveOrgSearch.prototype = {
 				
 				// Skip the resource if the license is not compatible 		
 				// ( archive.org does not let us filter the license on search )
-				if( ! _this.rsd.checkCompatibleLicense( resource.licenseurl ) ){
+				if( ! _this.rsd.checkCompatibleLicense( resource.licenseurl ) ) {
 					continue;
 				}
 				
@@ -138,14 +138,14 @@ archiveOrgSearch.prototype = {
 		var attributes = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
 		
 		// Add height width if we have it:
-		if( resource.width ){
+		if( resource.width ) {
 			attributes += ' width="'+ parseInt( resource.width ) + '"';
 		}
-		if( resource.height ){
+		if( resource.height ) {
 			attributes += ' height="' +  parseInt( resource.height ) + '"';
 		}
 		// Add the src
-		if( !resource.src ){
+		if( !resource.src ) {
 			mw.log("Error: resource missing src"); 
 		}else{
 			attributes += ' src="' + resource.src + '"';
@@ -160,7 +160,7 @@ archiveOrgSearch.prototype = {
 		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' ) {
 			return '<video poster="' + resource.poster + '" ' + attributes + 
 					' type="video/ogg"></video>';
-		}else if( resource.mime == 'audio/ogg' ){
+		}else if( resource.mime == 'audio/ogg' ) {
 			return '<audio ' + attributes + ' type="audio/ogg" ></audio>';
 		}
 	}

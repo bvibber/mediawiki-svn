@@ -87,7 +87,7 @@ baseRemoteSearch.prototype = {
 	/**
 	* getProviderResults abstract method
 	*/
-	getProviderResults: function( searchQuery , calback){
+	getProviderResults: function( searchQuery , calback) {
 		mw.log( 'Error: getProviderResults not set by provider' );
 		callback( 'error-provider' );  
 	},
@@ -158,7 +158,7 @@ baseRemoteSearch.prototype = {
 	* @param {XML Node} the xml result node
 	* @param {attr} the name attribute we are maping to the resource object 
 	*/
-	mapAttributeToResource: function( resource, item, attr ){		
+	mapAttributeToResource: function( resource, item, attr ) {		
 		var selector = rsd_default_rss_item_mapping[ attr ].split( '@' );
 		var flag_multiple = (  selector[0].substr( 0, 1 ) == '.' ) ? true : false;
 		if ( flag_multiple ) {
@@ -228,14 +228,14 @@ baseRemoteSearch.prototype = {
 		}		
 		
 		options.style = '';
-		if( options.height ){
+		if( options.height ) {
 			options.style += 'height:' + parseInt( options.height ) + 'px;';
 		}
-		if( options.width ){
+		if( options.width ) {
 			options.style += 'width:' + parseInt( options.width ) + 'px;';							
 		}
 				
-		if ( resource.mime.indexOf( 'image/' ) != -1 ){						
+		if ( resource.mime.indexOf( 'image/' ) != -1 ) {						
 			outHtml = this.getImageEmbedHTML( resource, options );
 		}
 			
@@ -252,7 +252,7 @@ baseRemoteSearch.prototype = {
 					'type="' +  mw.escapeQuotesHTML( resource.mime ) + '" ';
 					
 			// Add the api title key if avaliable:
-			if( resource.titleKey ){
+			if( resource.titleKey ) {
 				'apiTitleKey="' +  mw.escapeQuotesHTML( resource.titleKey ) + '" ';
 			}			
 			
@@ -266,7 +266,7 @@ baseRemoteSearch.prototype = {
 		}
 		
 		// Return the output. Wrap with a description div if insert_description is on.		
-		if( outHtml != ''){
+		if( outHtml != '') {
 			return ( options['insert_description'] ) ?
 				this.wrapHtmlDesc(resource, options, outHtml) :
 				outHtml;
@@ -329,10 +329,10 @@ baseRemoteSearch.prototype = {
 			'src' : resource.edit_url,
 			'style' : options.style 
 		});		
-		if( options['id'] ){
+		if( options['id'] ) {
 			$img.attr( 'id', options['id'] );
 		}
-		if ( resource.crop == null ){
+		if ( resource.crop == null ) {
 			return  $j('<div />').append( $img ).html();
 		}
 		// Else do crop output:
@@ -490,7 +490,7 @@ baseRemoteSearch.prototype = {
 	* @parma {Object} resource Resource to update title on.
 	*/
 	updateTargetResourceTitle:function( resource ) {
-		if( resource.titleKey ){
+		if( resource.titleKey ) {
 			resource.target_resource_title = resource.titleKey.replace( /^(File:|Image:)/ , '' ).replace(':', '');
 			resource.target_resource_title = this.provider.resource_prefix + resource.target_resource_title;
 		}
@@ -499,7 +499,7 @@ baseRemoteSearch.prototype = {
 	/**
 	* Utily to convert from mime type to extension 
 	*/
-	getMimeExtension: function( mime ){
+	getMimeExtension: function( mime ) {
 		if( mime == 'video/ogg' || mime == 'application/ogg' )
 			return 'ogv';
 		if( mime == 'audio/ogg' )

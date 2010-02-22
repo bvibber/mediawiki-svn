@@ -261,7 +261,7 @@ mediaWikiSearch.prototype = {
 				
 				
 				this.num_results++;
-				// for(var i in this.resultsObj[page_id]){
+				// for(var i in this.resultsObj[page_id]) {
 				//	mw.log('added: '+ i +' '+ this.resultsObj[page_id][i]);
 				// }
 			}
@@ -310,7 +310,7 @@ mediaWikiSearch.prototype = {
 		mw.getJSON( this.provider.api_url, request, function( data ) {			
 			var imObj = { };
 			for ( var page_id in  data.query.pages ) {
-				if( page_id == -1 ){
+				if( page_id == -1 ) {
 					mw.log( 'Error: missing page for title: ' + resource.titleKey )
 					continue;
 				}

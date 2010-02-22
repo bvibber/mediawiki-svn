@@ -134,7 +134,7 @@ mw.addMessages( {
 		 * @constructor
 		 * @param {Object} embedPlayer Host player for timedText interfaces  
 		 */
-		init: function( embedPlayer, options ){
+		init: function( embedPlayer, options ) {
 			var _this = this;
 			mw.log("TimedText: init() ")
 			this.embedPlayer = embedPlayer;	
@@ -147,7 +147,7 @@ mw.addMessages( {
 			this.textSourceSetupFlag = false;
 			
 			//Set default langauge via wgUserLanguage if set
-			if( typeof wgUserLanguage != 'undefined'){
+			if( typeof wgUserLanguage != 'undefined') {
 				this.config.userLanugage = wgUserLanguage;
 			}
 			
@@ -158,11 +158,11 @@ mw.addMessages( {
 			}
 			
 			// Set up embedPlayer hooks:			
-			embedPlayer.addHook( 'monitor', function(){
+			embedPlayer.addHook( 'monitor', function() {
 				_this.monitor();
 			} )
 							
-			embedPlayer.addHook( 'play', function(){
+			embedPlayer.addHook( 'play', function() {
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
 			} );
@@ -174,16 +174,16 @@ mw.addMessages( {
 		* 	auto-selects a source based on the user language
 		* @param {Function} callback Function to be called once text sources are setup. 
 		*/
-		setupTextSources: function( callback ){
+		setupTextSources: function( callback ) {
 			var _this = this;
-			if( this.textSourceSetupFlag ){
-				if( callback ){
+			if( this.textSourceSetupFlag ) {
+				if( callback ) {
 					callback();
 				}
 				return ;
 			}
 			// Load textSources
-			_this.loadTextSources( function(){
+			_this.loadTextSources( function() {
 				
 				// Enable a default source and issue a request to "load it"
 				_this.autoSelectSource();
@@ -205,7 +205,7 @@ mw.addMessages( {
 		* @param {Object} target to display the menu
 		* @param {Boolean} autoShow If the menu should be displayed 
 		*/
-		bindMenu: function( target , autoShow){
+		bindMenu: function( target , autoShow) {
 			var _this = this;
 			mw.log( "TimedText:bindMenu:" + target );
 			_this.menuTarget = target;
@@ -214,7 +214,7 @@ mw.addMessages( {
 			// Else bind and show the menu 
 			// We already have a loader in embedPlayer so the delay of
 			// setupTextSources is already taken into account
-			_this.setupTextSources( function(){
+			_this.setupTextSources( function() {
 				// NOTE: Button target should be an option or config
 				$menuButton.unbind().menu( {
 					'content'	: _this.getMainMenu(),
@@ -229,7 +229,7 @@ mw.addMessages( {
 		/**
 		* Monitor video time and update timed text filed[s]
 		*/ 
-		monitor: function( ){
+		monitor: function( ) {
 			//mw.log(" timed Text monitor: " + this.enabledSources.length );
 			embedPlayer = this.embedPlayer;
 			// Setup local reference to currentTime: 
@@ -249,20 +249,20 @@ mw.addMessages( {
 		 * 	or from a timedTextProviders
 		 * @param {Function} callback Function to call once text sources are loaded
 		 */
-		loadTextSources: function( callback ){
+		loadTextSources: function( callback ) {
 			var _this = this;
 			this.textSources = [ ];
 			// Get local reference to all timed text sources: ( text/xml, text/x-srt etc )
 			var inlineSources = this.embedPlayer.mediaElement.getSources( 'text' );
 			// Add all the sources to textSources
-			for( var i = 0 ; i < inlineSources.length ; i++ ){
+			for( var i = 0 ; i < inlineSources.length ; i++ ) {
 				// make a new textSource:
 				var source = new TextSource( inlineSources[i] );
 				this.textSources.push( source );
 			}			
 			
 			//If there are no inline sources check timedTextProviders & apiTitleKey
-			if( !this.embedPlayer.apiTitleKey ){
+			if( !this.embedPlayer.apiTitleKey ) {
 				//no other sources just issue the callback:
 				callback();
 				return ;
@@ -272,7 +272,7 @@ mw.addMessages( {
 			var provider_id = ( this.embedPlayer.apiProvider ) ?  this.embedPlayer.apiProvider : 'local'; 
 			var api_url = mw.getApiProviderURL( provider_id );
 			var assetKey = 	this.embedPlayer.apiTitleKey;
-			if( !api_url || !assetKey ){
+			if( !api_url || !assetKey ) {
 				mw.log("Error: loading source without apiProvider or apiTitleKey");
 				return ;
 			}
@@ -284,8 +284,8 @@ mw.addMessages( {
 			} );
 					
 			// Load the textProvider sources
-			this.textProvider.loadSources( assetKey,  function( textSources ){
-				for( var i in textSources ){
+			this.textProvider.loadSources( assetKey,  function( textSources ) {
+				for( var i in textSources ) {
 					var textSource = textSources[ i ];
 					// Try to insert the itext source: 
 					var textElm = document.createElement( 'itext' );
@@ -315,9 +315,9 @@ mw.addMessages( {
 		* 	Playback method overlays support ( have to put subtitles bellow video )
 		* 	 
 		*/
-		getLayoutMode: function(){
+		getLayoutMode: function() {
 		 	// Re-map "ontop" to "below" if player does not support 
-		 	if( this.config.layout == 'ontop' && !this.embedPlayer.supports['overlays']  ){
+		 	if( this.config.layout == 'ontop' && !this.embedPlayer.supports['overlays']  ) {
 		 		this.config.layout = 'below';
 		 	}	
 		 	return this.config.layout;	
@@ -329,32 +329,32 @@ mw.addMessages( {
 		* NOTE: presently this selects a "single" source. 
 		* In the future we could support multiple "enabled sources" 
 		*/
-		autoSelectSource: function(){
+		autoSelectSource: function() {
 			this.enabledSources = [];
 									
 			// Check if any source matches our "local"
-			for( var i in this.textSources ){
+			for( var i in this.textSources ) {
 				var source = this.textSources[ i ];		
 				if( this.config.userLanugage  &&
-					this.config.userLanugage == source.lang.toLowerCase() ){
+					this.config.userLanugage == source.lang.toLowerCase() ) {
 					// Check for category if available  
 					this.enabledSources.push( source );
 					return ;
 				} 
 			}
 			// If no userLang, source try enabling English:
-			if( this.enabledSources.length == 0 ){
-				for( var i in this.textSources ){
+			if( this.enabledSources.length == 0 ) {
+				for( var i in this.textSources ) {
 					var source = this.textSources[ i ];
-					if( source.lang.toLowerCase() == 'en' ){
+					if( source.lang.toLowerCase() == 'en' ) {
 						this.enabledSources.push( source );
 						return ;
 					}
 				}	
 			}
 			// If still no source try the first source we get; 
-			if( this.enabledSources.length == 0 ){
-				for( var i in this.textSources ){
+			if( this.enabledSources.length == 0 ) {
+				for( var i in this.textSources ) {
 					var source = this.textSources[ i ];
 					this.enabledSources.push( source );
 					return ;
@@ -366,8 +366,8 @@ mw.addMessages( {
 		* Issue a request to load all enabled Sources
 		*  Should be called anytime enabled Source list is updatd
 		*/
-		loadEnabledSources: function(){
-			for(var i in this.enabledSources ){
+		loadEnabledSources: function() {
+			for(var i in this.enabledSources ) {
 				var enabledSource = this.enabledSources[ i ];
 				if( ! enabledSource.loaded )
 					enabledSource.load();
@@ -379,7 +379,7 @@ mw.addMessages( {
 		* 
 		* @param {Element} item Item selected
 		*/
-		selectMenuItem: function( item ){
+		selectMenuItem: function( item ) {
 			mw.log("selectMenuItem: " + $j( item ).find('a').attr('class') );
 		},	
 		
@@ -390,14 +390,14 @@ mw.addMessages( {
 		* 	false if source is off
 		* @type {Boolean}
 		*/		
-		isSourceEnabled: function( source ){
-			for(var i in this.enabledSources ){
+		isSourceEnabled: function( source ) {
+			for(var i in this.enabledSources ) {
 				var enabledSource = this.enabledSources[i];
-				if( source.id ){
+				if( source.id ) {
 					if( source.id == enabledSource.id )
 						return true;
 				}
-				if( source.lang ){
+				if( source.lang ) {
 					if( source.lang == enabledSource.lang )
 						return true;
 				}
@@ -407,8 +407,8 @@ mw.addMessages( {
 		/*
 		* Get a source object by language, returns "false" if not found
 		*/
-		getSourceByLanguage: function ( langKey ){
-			for(var i in this.textSources){
+		getSourceByLanguage: function ( langKey ) {
+			for(var i in this.textSources) {
 				var source = this.textSources[ i ];
 				if( source.lang == langKey )
 					return source;
@@ -434,25 +434,25 @@ mw.addMessages( {
 		*			[ All videos ]
 		*		[ Chapters ] seek to chapter
 		*/
-		getMainMenu: function(){
+		getMainMenu: function() {
 			var _this = this;
 		
 			
 			// Build the source list menu item:	
 			$menu = $j( '<ul>' );
 			// Chouse text menu item ( if there are sources)
-			if( _this.textSources.length != 0 ){
+			if( _this.textSources.length != 0 ) {
 				$menu.append( 
-					_this.getLi( gM( 'mwe-chose-text'), 'comment' ).append(
+					$j.getLineItem( gM( 'mwe-chose-text'), 'comment' ).append(
 						_this.getLanguageMenu()
 					),
 						// Layout Menu option
-					_this.getLi( gM( 'mwe-layout' ), 'image' ).append(
+					$j.getLineItem( gM( 'mwe-layout' ), 'image' ).append(
 						_this.getLayoutMenu()
 					)
 					
 					// Search Menu option
-					//_this.getLi( gM('mwe-search'),  'search')
+					//$j.getLineItem( gM('mwe-search'),  'search')
 				);
 			}
 			// Put in the "Make Transcript" link
@@ -469,13 +469,13 @@ mw.addMessages( {
 		 * 
 		 * @param {String} mode Mode or page to display ( to differentiate between edit vs new transcript) 
 		 */		
-		showTimedTextEditUI: function( mode ){
+		showTimedTextEditUI: function( mode ) {
 			var _this = this;
 			// Show a loader:
 			mw.addLoaderDialog( gM( 'mwe-loading-text-edit' ));
 			// Load the timedText edit interface
-			mw.load( 'TimedText.Edit', function(){
-				if( ! _this.editText ){
+			mw.load( 'TimedText.Edit', function() {
+				if( ! _this.editText ) {
 					_this.editText = new mw.TimedTextEdit( _this );
 				}
 				// Close the loader:
@@ -494,9 +494,9 @@ mw.addMessages( {
 		/**
 		 * Get the add text menu item: 
 		 */		
-		getLiAddText: function(){
+		getLiAddText: function() {
 			var _this = this;
-			return _this.getLi( gM( 'mwe-add-timed-text'), 'script', function(){
+			return $j.getLineItem( gM( 'mwe-add-timed-text'), 'script', function() {
 				_this.showTimedTextEditUI( 'add' );
 			} )
 		},
@@ -505,61 +505,38 @@ mw.addMessages( {
 		* Get line item (li) from source object
 		* @param {Object} source Source to get menu line item from
 		*/
-		getLiSource: function( source ){
+		getLiSource: function( source ) {
 			var _this = this;
 			//See if the source is currently "on"
 			var source_icon = ( this.isSourceEnabled( source ) )? 'bullet' : 'radio-on'; 
 			
-			if( source.title ){
-				return this.getLi( source.title, source_icon, function(){
+			if( source.title ) {
+				return $j.getLineItem( source.title, source_icon, function() {
 					mw.log(" call selectTextSource");
 					_this.selectTextSource( source ); 
 				});
 			}
 			
-			if( source.lang ){
+			if( source.lang ) {
 				var langKey = source.lang.toLowerCase();
 				_this.getLanguageName ( langKey );
-				return this.getLi( 
+				return $j.getLineItem( 
 					gM('mwe-key-language', [langKey,	unescape( mw.languages[ source.lang ] )	] ), 
 					source_icon,
-					function(){
+					function() {
 						mw.log(" call selectTextSource");
 						_this.selectTextSource( source ); 
 					} 
 				);
 			}
-		},
-		
-		/**
-		* Get line item ( li ) from text string
-		* @param {String} string Text to display for the menu item
-		* @param {String} icon jQuery UI icon key displayed to the left of the menu item
-		* @param {Function} callback Function called once the line item is selected
-		*/
-		getLi: function( string, icon , callback){			
-			var $li = $j( '<li>' ).append(		
-				$j('<a>')
-					.attr('href', '#')
-					.click( callback )			
-			)
-			if( icon ){
-				$li.find( 'a' ).append(	
-					$j('<span style="float:left;"></span>')
-						.addClass( 'ui-icon ui-icon-' + icon ) 
-				)		
-			}		
-			$li.find( 'a' ).append( $j('<span>').text( string ) );
-			//mw.log(' li html: ' + $j('<div>').append( $li ).html() );
-			return $li;
-		},
+		},			
 		
 		/**
 	 	 * Get lagnuage name from language key
 	 	 * @param {String} lang_key Language key
 	 	 */
-	 	getLanguageName: function( lang_key ){
-	 		if( mw.languages[ lang_key ]){
+	 	getLanguageName: function( lang_key ) {
+	 		if( mw.languages[ lang_key ]) {
 	 			return mw.languages[ lang_key ];
 	 		}
 	 		return false
@@ -570,7 +547,7 @@ mw.addMessages( {
 		* @return {Object} 
 		* 	The jquery menu dom object
 		*/		
-		getLayoutMenu: function(){
+		getLayoutMenu: function() {
 			var _this = this;
 			var layoutOptions = [ ];
 			
@@ -583,13 +560,13 @@ mw.addMessages( {
 			layoutOptions.push( 'off' );
 									
 			$ul = $j('<ul>');
-			$j.each( layoutOptions, function( na, layoutMode ){
+			$j.each( layoutOptions, function( na, layoutMode ) {
 				var icon = ( _this.config.layout == layoutMode ) ? 'bullet' : 'radio-on';
 				$ul.append( 
-					_this.getLi( 
+					$j.getLineItem( 
 						gM( 'mwe-layout-' + layoutMode), 
 						icon,
-						function(){
+						function() {
 							_this.selectLayout( layoutMode );
 						} ) 
 					)
@@ -601,9 +578,9 @@ mw.addMessages( {
 		* Select a new layout
 		* @param {Object} layoutMode The selected layout mode
 		*/
-		selectLayout: function( layoutMode ){
+		selectLayout: function( layoutMode ) {
 			var _this = this;
-			if( layoutMode != _this.config.layout ){
+			if( layoutMode != _this.config.layout ) {
 				// Update the config and redraw layout
 				_this.config.layout = layoutMode;
 				
@@ -618,7 +595,7 @@ mw.addMessages( {
 		/**
 		* Updates the timed text layout ( should be called when  config.layout changes )
 		*/
-		updateLayout: function(){
+		updateLayout: function() {
 			var $playerTarget =  this.embedPlayer.$interface;	
 			$playerTarget.find('.itext').remove();
 			this.refreshDisplay();
@@ -629,7 +606,7 @@ mw.addMessages( {
 		*
 		* @param {Object} source Source object selected
 		*/
-		selectTextSource: function( source ){
+		selectTextSource: function( source ) {
 			var _this = this;
 			mw.log(" select source: " + source.lang );			
 			
@@ -652,7 +629,7 @@ mw.addMessages( {
 				$playerTarget.find('.itext').text( gM('mwe-loading-text') );
 			}
 			// Load the text:
-			source.load( function(){
+			source.load( function() {
 				// Refresh the interface: 
 				_this.refreshDisplay();
 			})
@@ -661,11 +638,11 @@ mw.addMessages( {
 		/**
 		* Refresh the display, updates the timedText layout, menu, and text display 
 		*/
-		refreshDisplay: function(){
+		refreshDisplay: function() {
 			// Empty out previous text to force an interface update: 
 			this.prevText = [];
 			// Refresh the Menu (if it has a target to refresh) 
-			if( this.menuTarget ){
+			if( this.menuTarget ) {
 				this.bindMenu(  this.menuTarget, false )
 			}
 			// Issues a "monitor" command to update the timed text for the new layout
@@ -676,7 +653,7 @@ mw.addMessages( {
 		* Builds the language source list menu
 		* checks all text sources for category and language key attribute
 		*/
-		getLanguageMenu: function(){
+		getLanguageMenu: function() {
 			var _this = this;
 
 			// See if we have categories to worry about:
@@ -686,10 +663,10 @@ mw.addMessages( {
 			var sourcesWithoutCategory = [ ];
 			for( var i in this.textSources ) {
 				var source = this.textSources[ i ];
-				if( source.category ){
+				if( source.category ) {
 					var catKey = source.category ;
 					// Init Category menu item if it does not already exist: 
-					if( !catSourceList[ catKey ] ){
+					if( !catSourceList[ catKey ] ) {
 						// Set up catList pointer: 
 						catSourceList[ catKey ] = [ ]
 					}
@@ -703,24 +680,24 @@ mw.addMessages( {
 			}
 			var $langMenu = $j('<ul>');
 			// Check if we have multiple categories ( if not just list them under the parent menu item)
-			if( catSourceList.length > 1 ){
-				for(var catKey in catSourceList){
+			if( catSourceList.length > 1 ) {
+				for(var catKey in catSourceList) {
 					$catChildren = $j('<ul>');
-					for(var i in catSourceList[ catKey ]){
+					for(var i in catSourceList[ catKey ]) {
 						$catChildren.append(
 							catSourceList[ catKey ][i]
 						) 
 					}
 					// Append a cat menu item for each category list
 					$langMenu.append(
-						_this.getLi( gM( 'mwe-textcat-' + catKey.toLowerCase() ) ).append(
+						$j.getLineItem( gM( 'mwe-textcat-' + catKey.toLowerCase() ) ).append(
 							$catChildren
 						)
 					);
 				}
 			} else {
-				for(var catKey in catSourceList){
-					for(var i in catSourceList[ catKey ]){
+				for(var catKey in catSourceList) {
+					for(var i in catSourceList[ catKey ]) {
 						$langMenu.append(
 							catSourceList[ catKey ][i]
 						) 
@@ -728,7 +705,7 @@ mw.addMessages( {
 				}
 			}		
 			
-			for(var i in sourcesWithoutCategory){
+			for(var i in sourcesWithoutCategory) {
 				$langMenu.append( sourcesWithoutCategory[i] )
 			}
 			
@@ -744,7 +721,7 @@ mw.addMessages( {
 		 * Updates a source display in the interface for a given time
 		 * @param {Object} source Source to update
 		 */
-		updateSourceDisplay: function ( source, time ){
+		updateSourceDisplay: function ( source, time ) {
 			// Get the source text for the requested time: 
 			var text = source.getTimedText( time );
 			
@@ -757,7 +734,7 @@ mw.addMessages( {
 			var $playerTarget =  this.embedPlayer.$interface;
 			var $textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );
 			// If we are missing the target add it: 
-			if( $textTarget.length == 0){
+			if( $textTarget.length == 0) {
 				this.addItextDiv( source.category )
 				// Re-grab the textTarget:
 				$textTarget = $playerTarget.find( '.itext_' + source.category + ' span' );
@@ -765,11 +742,11 @@ mw.addMessages( {
 			
 			
 			// If text is "false" fade out the subtitle: 
-			if( text === false ){
+			if( text === false ) {
 				$textTarget.fadeOut('fast');
 			}else{
 				// Fade in the target if not visible
-				if( ! $textTarget.is(':visible') ){
+				if( ! $textTarget.is(':visible') ) {
 					$textTarget.fadeIn('fast');
 				}					
 				// Update text ( use "html" instead of "text" so that parsers can swap in html for formating
@@ -784,7 +761,7 @@ mw.addMessages( {
 		/**
 		 * Add an itext div to the embedPlayer
 		 */
-		addItextDiv: function( category ){
+		addItextDiv: function( category ) {
 			mw.log(" addItextDiv: " +  category )
 			// Get the relative positioned player class from the ctrlBuilder:
 			var $playerTarget =  this.embedPlayer.$interface;
@@ -794,7 +771,7 @@ mw.addMessages( {
 			
 			// Setup the display text div: 
 			var layoutMode = this.getLayoutMode();
-			if( layoutMode == 'ontop' ){
+			if( layoutMode == 'ontop' ) {
 				$playerTarget.append(
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
 						.css( {
@@ -816,7 +793,7 @@ mw.addMessages( {
 				this.embedPlayer.$interface.animate({
 					'height': this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height
 				})	
-			}else if ( layoutMode == 'below'){
+			}else if ( layoutMode == 'below') {
 				// Append before controls: 
 				$playerTarget.find( '.control-bar' ).before(
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
@@ -852,7 +829,7 @@ mw.addMessages( {
 	 * @param {Object} source Source object to extend
 	 * @param {Object} {Optional} textProvider The text provider interface ( to load source from api ) 
 	 */
-	TextSource = function( source , textProvider){
+	TextSource = function( source , textProvider) {
 		return this.init( source, textProvider );
 	}
 	TextSource.prototype = {
@@ -872,16 +849,16 @@ mw.addMessages( {
 		 * @constructor Inherits mediaSource from embedPlayer
 		 * @param {source} Base source element
 		 */
-		init: function( source , textProvider){
-			for( var i in source){
+		init: function( source , textProvider) {
+			for( var i in source) {
 				this[i] = source[i];	
 			}			
 			// Set default category to subtitle if unset: 
-			if( ! this.category ){
+			if( ! this.category ) {
 				this.category = 'SUB';
 			}
 			//Set the textProvider if provided
-			if( textProvider ){
+			if( textProvider ) {
 				this.textProvider = textProvider;
 			}
 		},
@@ -890,17 +867,17 @@ mw.addMessages( {
 		 * Function to load and parse the source text
 		 * @param {Function} callback Function called once text source is loaded
 		 */
-		load: function( callback ){
+		load: function( callback ) {
 			var _this = this;
 						
 			//check if its already loaded:
-			if( _this.loaded ){
-				if( callback ){ 
+			if( _this.loaded ) {
+				if( callback ) { 
 					callback();
 				}
 			}
 			// Set parser handler: 
-			switch( this.getMIMEType() ){
+			switch( this.getMIMEType() ) {
 				//Special mediaWiki srt format ( support wiki-text in srt's )
 				case 'text/mw-srt':
 					var handler = parseMwSrt;
@@ -915,23 +892,23 @@ mw.addMessages( {
 					var hanlder = null;
 				break;
 			}
-			if( !handler ){
+			if( !handler ) {
 				mw.log("Error: no handler for type: " + this.getMIMEType() );
 				return ;
 			}
 			// Try to load src via src attr:
-			if( this.getSrc() ){
+			if( this.getSrc() ) {
 				// Issue the direct load request ( if we can ) 
-				if ( !mw.isLocalDomain( this.getSrc() ) ){
+				if ( !mw.isLocalDomain( this.getSrc() ) ) {
 					mw.log("Error: cant load crossDomain src:" + this.getSrc()   )
 					return ;
 				}
-				$j.get( this.getSrc(), function( data ){
+				$j.get( this.getSrc(), function( data ) {
 					// Parse and load captions:
 					_this.captions = handler( data );
 					// Update the loaded state:
 					_this.loaded = true;
-					if( callback ){ 
+					if( callback ) { 
 						callback();
 					}
 				}, 'text' );
@@ -939,12 +916,12 @@ mw.addMessages( {
 			}			
 			
 			// Try to load src via textProvider:
-			if( this.textProvider && this.titleKey ){
-				this.textProvider.loadTitleKey( this.titleKey, function( data ){
-					if( data ){
+			if( this.textProvider && this.titleKey ) {
+				this.textProvider.loadTitleKey( this.titleKey, function( data ) {
+					if( data ) {
 						_this.captions = handler( data );
 					}
-					if( callback ){ 
+					if( callback ) { 
 						callback();
 					}
 					return ;
@@ -957,21 +934,21 @@ mw.addMessages( {
 		*
 		* @param {String} time Time in seconds
 		*/				
-		getTimedText: function ( time ){
+		getTimedText: function ( time ) {
 			var prevCaption =  this.captions[ this.prevIndex ];
 			
 			// Setup the startIndex: 
-			if( prevCaption && time >= prevCaption.start ){
+			if( prevCaption && time >= prevCaption.start ) {
 				var startIndex = this.prevIndex;
 			}else{
 				//If a backwards seek start searching at the start: 
 				var startIndex = 0;
 			}			 			
 			// Start looking for the text via time, return first match: 
-			for( var i = startIndex ; i < this.captions.length; i ++ ){
+			for( var i = startIndex ; i < this.captions.length; i ++ ) {
 				caption = this.captions[ i ];
 				if( time >= caption.start  && 
-					time <= caption.end ){
+					time <= caption.end ) {
 					this.prevIndex = i;
 					return caption.content;
 				}
@@ -984,12 +961,12 @@ mw.addMessages( {
 	 * parse mediaWiki html srt 
 	 * @param {Object} data XML data string to be parsed
 	 */
-	function parseMwSrt( data ){
+	function parseMwSrt( data ) {
 		var captions = [ ];
 		var curentCap = [];
 		var parseNextAsTime = false;		
 		// Optimize: we could use javascript strings functions instead of jQuery XML parsing:  		
-		$j( '<div>' + data + '</div>' ).find('p').each( function(){					
+		$j( '<div>' + data + '</div>' ).find('p').each( function() {					
 			currentPtext = $j(this).html();
 			//mw.log( 'pText: ' + currentPtext );
 			
@@ -1012,7 +989,7 @@ mw.addMessages( {
 				return 'next';
 			} 
 			// Else check for multi-line match:
-			if( parseInt( currentPtext ) ==  currentPtext ){
+			if( parseInt( currentPtext ) ==  currentPtext ) {
 				if( curentCap.length != 0) {
 					captions.push( curentCap );
 				}
@@ -1037,12 +1014,12 @@ mw.addMessages( {
 				return 'next';
 			}
 			//Else content for the curentCap
-			if( currentPtext != '<br>' ){
+			if( currentPtext != '<br>' ) {
 				curentCap['content'] +=  currentPtext;
 			}
 		});
 		//Push last subtitle: 
-		if( curentCap.length != 0){
+		if( curentCap.length != 0) {
 			captions.push( curentCap );
 		}
 		return captions;
@@ -1107,7 +1084,7 @@ mw.addMessages( {
 	 * CMML parser handle
 	 * @param {Mixed} data String or XML tree of CMML data to be parsed
 	 */
-	function parseCMML( data ){
+	function parseCMML( data ) {
 		var captions = [ ];
 		$j( data ).find( 'clip' ).each( function( inx, clip ) {			
 			var content, start, end;
@@ -1140,11 +1117,11 @@ mw.addMessages( {
 	 * 
 	
 	// Will add a base class once we are serving more than just mediaWiki "commons"  
-	mw.BaseTextProvider = function(){
+	mw.BaseTextProvider = function() {
 		return this.init(); 
 	}
 	mw.BaseTextProvider.prototype = {
-		init: function(){
+		init: function() {
 			
 		}
 	} 
@@ -1157,7 +1134,7 @@ mw.addMessages( {
 		'embedPlayer'
 	];
 		
-	mw.MediaWikiTextProvider = function( options ){
+	mw.MediaWikiTextProvider = function( options ) {
 		this.init( options )
 	}	
 	mw.MediaWikiTextProvider.prototype = {
@@ -1172,8 +1149,8 @@ mw.addMessages( {
 		* @constructor
 		* @param {Object} options Set of options for the provider
 		*/
-		init: function( options ){
-			for(var i in default_textProvider_attr){
+		init: function( options ) {
+			for(var i in default_textProvider_attr) {
 				var attr =  default_textProvider_attr[ i ];
 				if( options[ attr ] )
 					this[ attr ] = options[ attr ];
@@ -1185,12 +1162,12 @@ mw.addMessages( {
 		 * Loads a single text source by titleKey
 		 * @param {titleKey}  
 		 */
-		loadTitleKey: function( titleKey, callback ){
+		loadTitleKey: function( titleKey, callback ) {
 			var request = {
 				'action': 'parse',
 				'page': titleKey
 			};
-			mw.getJSON( this.api_url, request, function( data ){
+			mw.getJSON( this.api_url, request, function( data ) {
 				if ( data && data.parse && data.parse.text['*'] ) {
 					callback(  data.parse.text['*']  );
 					return;
@@ -1205,11 +1182,11 @@ mw.addMessages( {
 		 *
 		 * @param {String} assetKey  For mediaWiki the assetKey is the "wiki title"
 		 */
-		loadSources: function( assetKey, callback ){
+		loadSources: function( assetKey, callback ) {
 			var request = {};
 			var _this = this;
-			this.getSourcePages( assetKey, function( sourcePages ){
-				if( ! sourcePages.query.allpages ){
+			this.getSourcePages( assetKey, function( sourcePages ) {
+				if( ! sourcePages.query.allpages ) {
 					//Check if a shared asset
 					mw.log( 'no subtitle pages found');
 					callback();
@@ -1225,7 +1202,7 @@ mw.addMessages( {
 		 * @param {String} titleKey Title to get subtitles for
 		 * @param {Function} callback Function to call once NS subs are grabbed 
 		 */ 
-		getSourcePages: function( titleKey, callback ){
+		getSourcePages: function( titleKey, callback ) {
 			var _this = this;
 			var request = {
 				'list' : 'allpages',
@@ -1268,7 +1245,7 @@ mw.addMessages( {
 				
 				//NOTE: we hard code the mw-srt type
 				// ( This is because mediaWiki srt files can have wiki-text and parsed as such )
-				if( extension == 'srt' ){ 
+				if( extension == 'srt' ) { 
 					extension = 'mw-srt';
 				}
 				
@@ -1288,7 +1265,7 @@ mw.addMessages( {
 	 	/**
 	 	 * Return the namespace (if not encoded on the page return default 102 )
 	 	 */
-	 	getTimedTextNS: function(){
+	 	getTimedTextNS: function() {
 	 		if( this.timed_text_NS )
 	 			return this.timed_text_NS;
 			if ( typeof wgNamespaceIds != 'undefined' && wgNamespaceIds['timedtext'] ) {
@@ -1303,15 +1280,15 @@ mw.addMessages( {
 	 	/**
 	 	 * Get the Canonical timed text namespace text 
 	 	 */
-	 	getCanonicalTimedTextNS: function(){
+	 	getCanonicalTimedTextNS: function() {
 	 		return 'TimedText';
 	 	},	 	
 	 	
 	 	/**
 	 	 * Check if the language is supported
 	 	 */
-	 	isSuportedLang: function( lang_key ){
-	 		if( mw.languages[ lang_key ]){
+	 	isSuportedLang: function( lang_key ) {
+	 		if( mw.languages[ lang_key ]) {
 	 			return true;
 	 		}
 	 		return false;
@@ -1332,17 +1309,17 @@ mw.addMessages( {
 	* 
 	* @param {Object} options Options for the timed text menu 
 	*/
-	$.fn.timedText = function ( action, target  ){
+	$.fn.timedText = function ( action, target  ) {
 		if( !target )
 			options = action;
 		if( typeof options == 'undefined' )
 			options = {};
 		
-		$j( this.selector ).each(function(){
+		$j( this.selector ).each(function() {
 			var embedPlayer = $j(this).get(0);
 			
 			// Setup timed text for the given player: 
-			if( ! embedPlayer.timedText ){
+			if( ! embedPlayer.timedText ) {
 				embedPlayer.timedText = new mw.TimedText( embedPlayer, options);
 			}
 			

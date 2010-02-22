@@ -175,7 +175,7 @@ EYE.extend({
 	{
 		func(nodeEl);
 		nodeEl = nodeEl.firstChild;
-		while(nodeEl){
+		while(nodeEl) {
 			EYE.traverseDOM(nodeEl, func);
 			nodeEl = nodeEl.nextSibling;
 		}

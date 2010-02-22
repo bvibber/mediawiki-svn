@@ -10,7 +10,7 @@ mw.addMessages( {
 	"mwe-sequence-create-one" : "start a sequence"
 });
 
-RemoteMwSequencer = function( options ){
+RemoteMwSequencer = function( options ) {
 	return this.init( options ); 
 };
 RemoteMwSequencer.prototype = {
@@ -24,9 +24,9 @@ RemoteMwSequencer.prototype = {
 		this.target = ( options.target )? options.target : this.target;
 	},
 	
-	updateUI: function(){		
+	updateUI: function() {		
 		// Check page type 
-		if( this.action == 'view' ){	
+		if( this.action == 'view' ) {	
 			this.showViewUI();
 		}	
 	},
@@ -34,8 +34,8 @@ RemoteMwSequencer.prototype = {
 	* Check page for sequence
 	* if not present give link to "create" one. 
 	*/
-	showViewUI: function(){
-		if( wgArticleId == 0 ){
+	showViewUI: function() {
+		if( wgArticleId == 0 ) {
 			$startLink = $j('<div>').append( 
 				$j('<a>')
 					.text( gM('mwe-sequence-create-one') )
@@ -44,9 +44,9 @@ RemoteMwSequencer.prototype = {
 			$j( this.target ).html(
 				gM("mwe-no-sequence-create", [this.title, $startLink.html() ])
 			);
-			$j('#mwe-sequence-create').click(function(){
+			$j('#mwe-sequence-create').click(function() {
 				$j('body').append( '<div id="seqcontainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;" />' );
-				mw.load( 'Sequencer', function(){
+				mw.load( 'Sequencer', function() {
 	 				$j('#seqcontainer').sequencer({
 		 				'amw_conf':{
 						 'enabled_providers':['wiki_commons']

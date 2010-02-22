@@ -11,7 +11,7 @@ mw.addMessages( {
 	"mwe-language-no-subtitles-for-clip": "No $1 subtitles where found for clip: $2"
 });
 
-RemoteMwTimedText = function( options ){
+RemoteMwTimedText = function( options ) {
 	return this.init( options );
 } 
 mw_default_remote_text_options = [
@@ -23,36 +23,36 @@ mw_default_remote_text_options = [
 RemoteMwTimedText.prototype = {
 	
 	init: function( options ) {
-		for(var i in mw_default_remote_text_options){
+		for(var i in mw_default_remote_text_options) {
 			var opt = mw_default_remote_text_options[i]
-			if( options[ opt ] ){
+			if( options[ opt ] ) {
 				this[ opt ] = options[ opt ];
 			}
 		}
 	},
-	updateUI: function(){
+	updateUI: function() {
 		// Check page type 
-		if( this.action == 'view' ){	
+		if( this.action == 'view' ) {	
 			this.showViewUI();
 		}else{
 			//restore 
 		}	
 	},
-	showViewUI: function(){
+	showViewUI: function() {
 		var _this = this;
 		var fileTitleKey = this.title.split('.');
 		this.extension = fileTitleKey.pop();
 		this.langKey = fileTitleKey.pop();
 		this.fileTitleKey = fileTitleKey.join('.');			
 		
-		this.getTitleResource( this.fileTitleKey,  function( resource ){
+		this.getTitleResource( this.fileTitleKey,  function( resource ) {
 			_this.embedViewUI( resource );		
 		});
 	},
-	embedViewUI: function( resource ){
+	embedViewUI: function( resource ) {
 		var _this = this;
 		// Load the player module: 
-		mw.load( 'EmbedPlayer', function(){
+		mw.load( 'EmbedPlayer', function() {
 			// Add the embed code: ( jquery wrapping of "video" fails )
 			$j( _this.target ).append(
 				$j( '<div class="videoLoading">').html(
@@ -73,9 +73,9 @@ RemoteMwTimedText.prototype = {
 	/*
 	* embeds a player with the current language key pre selected
 	*/
-	embedPlayerLang: function(){
+	embedPlayerLang: function() {
 		var _this = this;
-		if( wgArticlePath ){
+		if( wgArticlePath ) {
 			var $fileLink = $j('<div>').append(
 				$j('<a>').attr({
 					'href' : wgArticlePath.replace( '$1', 'File:' + _this.fileTitleKey)
@@ -85,7 +85,7 @@ RemoteMwTimedText.prototype = {
 		}
 	
 		// Rewrite the player (any video tags on the page) 
-		$j('#timed-text-player-embed').embedPlayer( function(){
+		$j('#timed-text-player-embed').embedPlayer( function() {
 			//Select the timed text for the page: 
 			
 			//remove the loader
@@ -94,7 +94,7 @@ RemoteMwTimedText.prototype = {
 			var player = $j('#timed-text-player-embed').get(0);
 			
 		
-			if( !player.timedText ){
+			if( !player.timedText ) {
 				mw.log("Error: no timedText method on embedPlayer" );
 				return ;
 			}
@@ -102,11 +102,11 @@ RemoteMwTimedText.prototype = {
 			player.timedText.config.userLanugage = this.langKey;
 			
 			// Make sure the timed text sources are loaded: 
-			player.timedText.setupTextSources( function(){
+			player.timedText.setupTextSources( function() {
 				
 				var source = player.timedText.getSourceByLanguage( _this.langKey );
 				var pageMsgKey = 'mwe-language-subtitles-for-clip';
-				if( ! source ){
+				if( ! source ) {
 					pageMsgKey = "mwe-language-no-subtitles-for-clip"
 				}
 				// Add the page msg to the top 
@@ -117,7 +117,7 @@ RemoteMwTimedText.prototype = {
 						)
 				);							
 				// Select the language if possible: 
-				if( source ){						
+				if( source ) {						
 					player.timedText.selectTextSource( source );
 				}					
 				// Un-hide the player  
@@ -131,7 +131,7 @@ RemoteMwTimedText.prototype = {
 	* @param {String} fileTitle Title of media asset to embed
 	* @param {Function} {Optional} callback Function to call once asset is embedded
 	*/ 
-	getTitleResource: function( fileTitle, callback ){
+	getTitleResource: function( fileTitle, callback ) {
 		var _this = this;
 		// Get all the embed details: 
 		var request = {
@@ -144,7 +144,7 @@ RemoteMwTimedText.prototype = {
 		// (only works for commons right now) 
 		mw.getJSON( request, function( data ) {
 			// Check for "page not found" 
-			if( data.query.pages['-1'] ){
+			if( data.query.pages['-1'] ) {
 				//restore content: 
 				$j(_this.target).html( _this.orgBody );
 				return ;
@@ -176,7 +176,7 @@ RemoteMwTimedText.prototype = {
 	/**
 	* Get the embed code from response resource and sends it a callback
 	*/
-	getResource: function( page ){
+	getResource: function( page ) {
 		return {					
 				'apiTitleKey' : page.title.replace(/File:/ig, '' ),
 				'link'		 : page.imageinfo[0].descriptionurl,					

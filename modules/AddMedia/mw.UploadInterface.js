@@ -18,8 +18,8 @@
  * Base UploadInterface object  
  */
 mw.UploadInterface = { 
-	factory : function( interfaceType ){
-		switch( interfaceType ){
+	factory : function( interfaceType ) {
+		switch( interfaceType ) {
 			case 'iframe':
 				return new mw.iframeInterface( );
 			break;
@@ -43,7 +43,7 @@ mw.DialogInterface.prototype = {
 	// we are currently only managing one, so this is okay... for now.
 	uploadBeginTime: null,
 	
-	setup: function( options ){		
+	setup: function( options ) {		
 		var _this = this;
 		
 		// Start the "upload" time
@@ -59,7 +59,7 @@ mw.DialogInterface.prototype = {
 			$j( '<div />')
 			.attr( 'id', "upProgressDialog" )
 		);
-		if( typeof options == 'undefined' || !options.title ){
+		if( typeof options == 'undefined' || !options.title ) {
 			options.title = gM('mwe-upload-in-progress');
 		}
 		$j( '#upProgressDialog' ).dialog( {
@@ -168,7 +168,7 @@ mw.DialogInterface.prototype = {
 	 * Set the dialog to loading
 	 * @param optional loadingText text to set dialog to. 
 	 */
-	setLoading: function( loadingText ){
+	setLoading: function( loadingText ) {
 		this.action_done = false;
 		//Update the progress dialog (no bar without XHR request)
 		$j( '#upProgressDialog' ).loadingSpinner();
@@ -206,7 +206,7 @@ mw.DialogInterface.prototype = {
 	/**
 	 * Set the dialog to "done" 
 	 */
-	close: function(){
+	close: function() {
 		this.action_done = true;
 		$j( '#upProgressDialog' ).dialog( 'destroy' ).remove();
 	},

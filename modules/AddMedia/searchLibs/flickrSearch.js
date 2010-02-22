@@ -97,7 +97,7 @@ flickrSearch.prototype = {
 	*
 	* @param {Object} flickrResource Fliker response resource
 	*/
-	getResourceObject: function( flickrResource ){		
+	getResourceObject: function( flickrResource ) {		
 		var _this = this;		
 		var resource = {
 			'titleKey'	 : flickrResource.title + '.jpg',

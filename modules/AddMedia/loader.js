@@ -36,7 +36,7 @@
 	*/ 
 	
 	//Setup the addMediaWizard module
-	mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ){
+	mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ) {
 		// Load all the required libs:
 		var request = [
 			[	'mw.RemoteSearchDriver',
@@ -75,7 +75,7 @@
 	* Upload interface loader: 
 	*/
 	
-	mw.addModuleLoader( 'AddMedia.UploadHandler', function( callback ){
+	mw.addModuleLoader( 'AddMedia.UploadHandler', function( callback ) {
 		mw.load( baseUploadlibs , function() {
 			callback( 'AddMedia.BaseUploadHandler' );
 		});
@@ -91,7 +91,7 @@
 	var mwBaseFirefoggReq = baseUploadlibs.slice( 0 )
 	mwBaseFirefoggReq[0].push('mw.Firefogg');
 	
-	mw.addModuleLoader( 'AddMedia.firefogg', function( callback ){
+	mw.addModuleLoader( 'AddMedia.firefogg', function( callback ) {
 		
 		//Load firefogg libs
 		mw.load( mwBaseFirefoggReq, function() {
@@ -99,7 +99,7 @@
 		});
 	} );
 	
-	mw.addModuleLoader( 'AddMedia.FirefoggGUI', function( callback ){		
+	mw.addModuleLoader( 'AddMedia.FirefoggGUI', function( callback ) {		
 		// Clone the array: 
 		var request = mwBaseFirefoggReq.slice( 0 ) ;
 		
@@ -117,7 +117,7 @@
 		});
 	} );
 	
-	mw.addModuleLoader( 'AddMedia.firefoggRender', function( callback ){
+	mw.addModuleLoader( 'AddMedia.firefoggRender', function( callback ) {
 		mw.load( [
 			'mw.UploadHandler',
 			'mw.UploadInterface',

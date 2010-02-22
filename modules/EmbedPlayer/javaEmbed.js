@@ -83,7 +83,7 @@ var javaEmbed = {
 	/**
 	* Get the applet location
 	*/
-	getAppletLocation: function(){
+	getAppletLocation: function() {
 		var mediaSrc = this.getSrc()
 		if ( mediaSrc.indexOf( '://' ) != -1 & !mw.isLocalDomain( mediaSrc ) ) {
 			if ( window.cortadoDomainLocations[ mw.parseUri( mediaSrc ).host ] ) {
@@ -200,7 +200,7 @@ var javaEmbed = {
 	play: function() {
 		this.getPlayerElement();
 		this.parent_play();
-		if ( this.playerElement && this.playerElement.play ){
+		if ( this.playerElement && this.playerElement.play ) {
 			this.playerElement.play();
 		}
 	},
@@ -214,7 +214,7 @@ var javaEmbed = {
 		// Update the interface
 		this.parent_pause();
 		// Call the pause function if it exists:		
-		if ( this.playerElement && this.playerElement.pause ){
+		if ( this.playerElement && this.playerElement.pause ) {
 			this.playerElement.pause();
 		}
 	}

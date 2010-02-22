@@ -148,9 +148,6 @@ var default_video_attributes = {
 	// If serving an ogg_chop segment use this to offset the presentation time
 	// ( for some plugins that use ogg page time rather than presentation time ) 
 	"startOffset" : 0, 
-
-	//If we should display the play button
-	"play_button" : true,
 	
 	// Thumbnail (same as poster) 
 	"thumbnail" : null,
@@ -227,7 +224,7 @@ var default_source_attributes = [
 	* @param {Object} attributes Attributes to apply to embed players
 	* @param {Function} callback Function to call once embeding is done
 	*/
-	$.embedPlayers = function( attributes, callback){
+	$.embedPlayers = function( attributes, callback) {
 		$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer( attributes, callback );
 	}
 	
@@ -245,7 +242,7 @@ var default_source_attributes = [
 	* @param [ Optional ] {Function} callback Function to be called once video interfaces are ready
 	*
 	*/
-	$.fn.embedPlayer = function( attributes, callback ){	
+	$.fn.embedPlayer = function( attributes, callback ) {	
 		mw.log('fn:embedPlayer on: ' + this.selector);
 		var player_select = this.selector;
 		//Handle optional include of attributes argument:
@@ -262,16 +259,16 @@ var default_source_attributes = [
 		
 		// IE not working well with jQuery selector on "VIDEO", "AUDIO" etc. 
 		var ie_safe_selector = coma = '';
-		if( $j.browser.msie ){
+		if( $j.browser.msie ) {
 			var selectors = player_select.split(',');		
-			for( var i=0; i < selectors.length; i++){	
+			for( var i=0; i < selectors.length; i++ ) {	
 				if( selectors[i] == 'video' || 
 					selectors[i] == 'playlist' || 
 					selectors[i] == 'audio'
-				){				
-					$j( document.getElementsByTagName( selectors[i] )).each(function(){														
-						mw.playerManager.addElement(this, attributes );
-					});
+				) {				
+					$j( document.getElementsByTagName( selectors[ i ] )).each( function( ) {														
+						mw.playerManager.addElement( this, attributes );
+					} );
 				}else{
 					ie_safe_selector += coma + selectors[i];
 					coma = ',';
@@ -279,9 +276,9 @@ var default_source_attributes = [
 			}			
 			player_select = ie_safe_selector;
 		}
-		if( player_select != ''){
+		if( player_select != '') {
 			// Add each selected element to the player manager:		
-			$j( player_select ).each( function(na, playerElement){			
+			$j( player_select ).each( function(na, playerElement) {			
 				mw.playerManager.addElement( playerElement, attributes);
 			} );	
 		}		
@@ -326,7 +323,7 @@ EmbedPlayerManager.prototype = {
 	/**
 	* get the list of players
 	*/
-	getPlayerList: function( ){
+	getPlayerList: function( ) {
 		return this.playerList;	
 	},
 	
@@ -340,7 +337,9 @@ EmbedPlayerManager.prototype = {
 	* @param {Object} [Optional] attributes Extra attributes to apply to the player interface 
 	*/
 	addElement: function( element,  attributes ) {	
-		var _this = this;					
+		var _this = this;
+		
+		// Assign id if unset					
 		var element_id = $j( element ).attr( "id" );	
 		if ( element_id == '' ) {
 			element_id = 'v' + this.playerList.length;
@@ -352,43 +351,19 @@ EmbedPlayerManager.prototype = {
 		// Add the element id to playerList
 		this.playerList.push( element_id );		
 		
-		// Check for class based player skin ( could have been loaded before in 'EmbedPlayer' loader module ) 			
+		// Check for class based player skin 			
 		var skinClassRequest = [ ];
 		var className = $j( element ).attr( 'class' );
-		for( var n=0; n < mw.valid_skins.length ; n++ ){ 
-			if( className && className.indexOf( mw.valid_skins[ n ] ) !== -1){
+		for( var n=0; n < mw.valid_skins.length ; n++ ) { 
+			if( className && className.indexOf( mw.valid_skins[ n ] ) !== -1) {
 				skinClassRequest.push( mw.valid_skins[n] + 'Config' );
 			}
-		}
-		
-		// Firefox gives 300x150 css values OR -1 if video has not loaded metadata yet:
-		//  We check that and delay swapping in the player interface		 		
-		var waitForMeta = ( 
-			( 
-			  ( 
-			  	$j(element).attr('width') == -1 && 
-			  	$j(element).attr('height') == -1
-			  ) 
-			  ||
-			  // Google Chrome gives 0 width height for unloaded media
-			  ( 
-			  	$j(element).attr('width') == 0 && 
-			  	$j(element).attr('height') == 0
-			  ) 
-			  ||
-			  // Strange firefox default width height ( should wait for "real" metadata )
-			  ( this.height == 150 && this.width == 300 ) 
-			) 						 
-			&&
-			// If media has video/audio "sources" wait for meta: 
-			(
-				$j(element).attr('src') ||
-				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
-			) 
-		) ? true : false;
+		}			
 				
 		// Load any skins we need then swap in the interface
-		mw.load( skinClassRequest, function(){													
+		mw.load( skinClassRequest, function() {	
+			var waitForMeta = _this.waitForMetaCheck( element );
+																		
 			switch( element.tagName.toLowerCase() ) {
 				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
@@ -411,7 +386,7 @@ EmbedPlayerManager.prototype = {
 					var ranPlayerSwapFlag = false;
 					
 					// Local callback to runPlayer swap once element has metadata
-					function runPlayerSwap(){						
+					function runPlayerSwap() {						
 						if( ranPlayerSwapFlag )
 							return ;	
 						mw.log("runPlayerSwap::" + $j( element ).attr('id') );
@@ -422,8 +397,8 @@ EmbedPlayerManager.prototype = {
 						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();						
 					}
 									
-					if( waitForMeta ){
-						mw.log(" WaitForMeta ( video missing height, width or duration )" );
+					if( waitForMeta ) {
+						mw.log(' WaitForMeta ( video missing height (' + $j( element ).attr('height') + '), width (' + $j( element ).attr('width') + ') or duration' );
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
 						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
@@ -434,6 +409,54 @@ EmbedPlayerManager.prototype = {
 				break;				
 		   }
 	   });
+	},
+	
+	/** 
+	* Check for bogus resolutions of the media asset that has not loaded. 
+	* @return 
+	*	true if the resolution is "likely" to be updated 
+	* 		by waiting for metadata
+	* 	false if the resolution has been set via an attribute or is already loaded
+	*/			 
+	waitForMetaCheck: function( element ){
+		var waitForMeta = false;
+		var width = $j( element ).css( 'width' );
+		var height = $j( element ).css( 'height' );
+	
+		// Css video defaults: 
+		if( $j( element ).css( 'width' ) == '300px' 
+			&&  $j( element ).css( 'height' ) == '150px'
+		){
+			waitForMeta = true;
+		}else{
+			// css width height attribute has been set on the element return false
+			return false;
+		}
+		//Firefox ~ sometimes ~ gives -1 for unloaded media
+		if ( $j(element).attr('width') == -1 || $j(element).attr('height') == -1 ){
+			waitForMeta = true;
+		}
+		// Google Chrome / safari gives 0 width height for unloaded media
+		if( $j(element).attr('width') == 0 || $j(element).attr('height') == 0 ){
+			waitForMeta = true;
+		}
+		// Firefox default width height is ~sometimes~ 150 / 300
+		if( this.height == 150 && this.width == 300 ){
+			waitForMeta = true; 
+		}
+		// Make sure we have a src attribute or source child 
+		// ( i.e not a video tag to be dynamically populated or looked up from xml resource description )
+		if( waitForMeta 
+			&& ( 
+				$j(element).attr('src') ||
+				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
+			)
+		){
+			return true;
+		}
+		
+		// Element is not likely to update its resolution: 
+		return false; 
 	},
 	
 	/**
@@ -493,7 +516,7 @@ EmbedPlayerManager.prototype = {
 			}
 		} else {			
 			// Continue checking the playerList
-			setTimeout( function(){
+			setTimeout( function() {
 				_this.waitPlayersReadyCallback();
 			}, 10 );
 		 }
@@ -576,9 +599,9 @@ mediaSource.prototype = {
 			}
 		}
 
-		if ( $j( element ).attr( 'type' ) ){
+		if ( $j( element ).attr( 'type' ) ) {
 			this.mime_type = $j( element ).attr( 'type' );
-		}else if ( $j( element ).attr( 'content-type' ) ){
+		}else if ( $j( element ).attr( 'content-type' ) ) {
 			this.mime_type = $j( element ).attr( 'content-type' );
 		}else{
 			this.mime_type = this.detectType( this.src );
@@ -586,7 +609,7 @@ mediaSource.prototype = {
 		
 			
 		// Check for parent elements ( supplies categories in "itext" )
-		if( $j( element ).parent().attr('category') ){			
+		if( $j( element ).parent().attr('category') ) {			
 			this.category =  $j( element ).parent().attr('category');			
 		}
 						
@@ -615,11 +638,11 @@ mediaSource.prototype = {
 		// if we have time we can use:
 		if ( this.URLTimeEncoding ) {
 			// make sure its a valid start time / end time (else set default) 
-			if ( !mw.npt2seconds( start_npt ) ){
+			if ( !mw.npt2seconds( start_npt ) ) {
 				start_npt = this.start_npt;
 			}
 			
-			if ( !mw.npt2seconds( end_npt ) ){
+			if ( !mw.npt2seconds( end_npt ) ) {
 				end_npt = this.end_npt;
 			}
 										  
@@ -681,7 +704,7 @@ mediaSource.prototype = {
 			return this.title;
 			
 		// Return a Title based on mime type: 
-		switch( this.mime_type ){
+		switch( this.mime_type ) {
 			case 'video/h264' :
 				return gM( 'mwe-video-h264' );
 			break;
@@ -785,7 +808,7 @@ mediaSource.prototype = {
 *	@param {element} video_element <video> element used for initialization.
 *	@constructor
 */
-function mediaElement( element ){
+function mediaElement( element ) {
 	this.init( element );
 };
 
@@ -842,7 +865,7 @@ mediaElement.prototype = {
 			this.thumbnail = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
 		
 		// Process the video_element as a source element:
-		if ( $j( video_element ).attr( "src" ) ){
+		if ( $j( video_element ).attr( "src" ) ) {
 			this.tryAddSource( video_element );
 		}
 		
@@ -889,7 +912,7 @@ mediaElement.prototype = {
 	* @return mediaSource elements.
 	* @type Array
 	*/
-	getSources: function( mime_filter ){
+	getSources: function( mime_filter ) {
 		if ( !mime_filter )
 			return this.sources;
 		// apply mime filter: 
@@ -993,7 +1016,7 @@ mediaElement.prototype = {
 			}
 		}
 		// Select first source		
-		if ( !this.selected_source ){
+		if ( !this.selected_source ) {
 			mw.log( 'set via first source:' + playable_sources[0] );
 			this.selected_source = playable_sources[0];
 			return true;
@@ -1028,7 +1051,7 @@ mediaElement.prototype = {
 	/**
 	* Checks if media is a playable type
 	*/
-	isPlayableType:function( mime_type ){
+	isPlayableType:function( mime_type ) {
 		if ( mw.EmbedTypes.players.defaultPlayer( mime_type ) ) {
 			return true;
 		} else {
@@ -1191,7 +1214,7 @@ mw.EmbedPlayer.prototype = {
 					
 		// Setup the player Interface from supported attributes:
 		for ( var attr in default_video_attributes ) {
-			if ( customAttributes[ attr ] ){
+			if ( customAttributes[ attr ] ) {
 				this[ attr ] = customAttributes[ attr ];
 			} else if ( element.getAttribute( attr ) ) {
 				this[ attr ] = element.getAttribute( attr );
@@ -1214,7 +1237,7 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		// Set the default skin if unset: 
-		if ( !this.skinName ){
+		if ( !this.skinName ) {
 			this.skinName = mw.getConfig( 'skinName' );
 		}
 			
@@ -1250,11 +1273,11 @@ mw.EmbedPlayer.prototype = {
 				
 		// Setup the local "ROE" src pointer if added as media source
 		// also see: http://dev.w3.org/html5/spec/Overview.html#the-source-element
-		$j.each(this.mediaElement.getSources( 'text/xml'), function( inx, source ){	
-			if( source.codecs ){		
+		$j.each(this.mediaElement.getSources( 'text/xml'), function( inx, source ) {	
+			if( source.codecs ) {		
 				var codec_set  = source.codecs.split(',');
-				for( var i = 0; i < codec_set.length; i++ ){
-					if( codec_set[i] == 'roe' ){
+				for( var i = 0; i < codec_set.length; i++ ) {
+					if( codec_set[i] == 'roe' ) {
 						_this.roe = source.src;
 					}
 				}	
@@ -1274,23 +1297,23 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* @param {Element} element Source element to grab size from 
 	*/
-	setPlayerSize:function( element ){				
+	setPlayerSize: function( element ) {				
 		this['height'] = parseInt( $j(element).css( 'height' ).replace( 'px' , '' ) );
 		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );							
 		
-		if( !this['height']  && !this['width'] ){
+		if( !this['height']  && !this['width'] ) {
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
 			this['width'] = parseInt( $j(element).attr( 'width' ) );
 		}			
 		
 		// Use default aspect ration to get height or width ( if rewriting a non-audio player )
-		if(  element.tagName.toLowerCase() != 'audio' ){
-			if( this['height']  &&  !this['width'] && this.videoAspect  ){
+		if(  element.tagName.toLowerCase() != 'audio' ) {
+			if( this['height']  &&  !this['width'] && this.videoAspect  ) {
 				var aspect = this.videoAspect.split( ':' );
 				this['width'] = parseInt( this.height * ( aspect[0] / aspect[1] ) );
 			}
 			
-			if( this['width']  &&  !this['height'] && this.videoAspect  ){
+			if( this['width']  &&  !this['height'] && this.videoAspect  ) {
 				var aspect = this.videoAspect.split( ':' );
 				this['height'] = parseInt( this.width * ( aspect[1] / aspect[0] ) );
 			}				
@@ -1305,11 +1328,11 @@ mw.EmbedPlayer.prototype = {
 				// Check for firefox defaults
 				// Note: ideally firefox would not do random guesses at css values 	
 				( (this.height == 150 || this.height == 64 ) && this.width == 300 )
-			){			
+			) {			
 			var defaultSize = mw.getConfig( 'video_size' ).split( 'x' );
 			this['width'] = defaultSize[0];
 			// Special height default for audio tag ( if not set )  
-			if( element.tagName.toLowerCase() == 'audio' ){
+			if( element.tagName.toLowerCase() == 'audio' ) {
 				this['height'] = 0;
 			}else{
 				this['height'] = defaultSize[1];
@@ -1323,7 +1346,7 @@ mw.EmbedPlayer.prototype = {
 	*
 	* @return {Number} pixle height of the video
 	*/	
-	getPlayerWidth: function(){
+	getPlayerWidth: function() {
 		return parseInt( this.width );
 	},
 	
@@ -1332,7 +1355,7 @@ mw.EmbedPlayer.prototype = {
 	*
 	* @return {Number} pixle height of the video
 	*/
-	getPlayerHeight: function(){		
+	getPlayerHeight: function() {		
 		return parseInt( this.height );
 	},
 	
@@ -1349,7 +1372,7 @@ mw.EmbedPlayer.prototype = {
 		if ( this.roe && this.mediaElement.getPlayableSources().length == 0 ) {
 			mw.log( 'checkPlayerSources: loading external data' );
 			this.loading_external_data = true;					 	
-			this.getMvJsonUrl( this.roe, function( data ){				
+			this.getMvJsonUrl( this.roe, function( data ) {				
 				// Continue					   
 				_this.mediaElement.addROE( data );
 				mw.log( 'added_roe::' + _this.mediaElement.sources.length );
@@ -1372,8 +1395,8 @@ mw.EmbedPlayer.prototype = {
 	*  
 	* @param roe_url to be updated 
 	*/
-	getMvJsonUrl : function( roe_url , callback){		
-		if ( mw.isLocalDomain( roe_url ) ){
+	getMvJsonUrl : function( roe_url , callback) {		
+		if ( mw.isLocalDomain( roe_url ) ) {
 			$j.get( roe_url, callback );	 
 		} else {			
 			roe_url = mw.replaceUrlParams(roe_url, {
@@ -1390,10 +1413,10 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* Note we check for text sources outside of
 	*/
-	isTimedTextSupported: function(){
+	isTimedTextSupported: function() {
 		// Check for timed text sources or api/ roe url		
 		if ( ( this.roe || this.apiTitleKey ||				
-			this.mediaElement.textSourceExists() ) ){			
+			this.mediaElement.textSourceExists() ) ) {			
 			return true;
 		} else {
 			return false;
@@ -1406,12 +1429,12 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* @param {Function} callback Function to call once timed text check is done
 	*/
-	checkForTimedText: function( ){
+	checkForTimedText: function( ) {
 		var _this = this;
 		mw.log( 'checkForTimedText: ' + this.id );
 		// Check for timedText support
-		if( this.isTimedTextSupported() ){			
-			mw.load( 'TimedText', function(){
+		if( this.isTimedTextSupported() ) {			
+			mw.load( 'TimedText', function() {
 				$j( '#' + _this.id ).timedText();
 				_this.setupSourcePlayer();
 			});			
@@ -1428,12 +1451,12 @@ mw.EmbedPlayer.prototype = {
 	*
 	* Sets load error if no source is playable 
 	*/	
-	setupSourcePlayer: function(){
+	setupSourcePlayer: function() {
 		mw.log("setupSourcePlayer: " + this.id );
 		// Autoseletct the media source
 		this.mediaElement.autoSelectSource();	
 		// Auto select player based on default order
-		if ( !this.mediaElement.selected_source ){
+		if ( !this.mediaElement.selected_source ) {
 			// check for parent clip: 
 			if ( typeof this.pc != 'undefined' ) {
 				mw.log( 'no sources, type:' + this.type + ' check for html' );
@@ -1499,7 +1522,7 @@ mw.EmbedPlayer.prototype = {
 			var playerInterface = window[ _this.selected_player.library + 'Embed' ];
 			
 			for ( var method in playerInterface ) {  
-				if ( _this[method] && !_this['parent_' + method] ){
+				if ( _this[method] && !_this['parent_' + method] ) {
 					_this['parent_' + method] = _this[method];
 				}
 				_this[ method ] = playerInterface[method];
@@ -1524,7 +1547,7 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		if ( this.selected_player.id != player.id ) {
 			this.selected_player = player;			
-			this.inheritEmbedPlayer( function(){ 
+			this.inheritEmbedPlayer( function() { 
 				// Update the controls for the new selected player
 				_this.refreshControls();
 			});			
@@ -1536,8 +1559,8 @@ mw.EmbedPlayer.prototype = {
 	*
 	* @return start_npt and end_npt time if present
 	*/	
-	getTimeRange: function(){
-		var end_time = (this.ctrlBuilder.long_time_disp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
+	getTimeRange: function() {
+		var end_time = (this.ctrlBuilder.longTimeDisp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
 		var default_time_range = '0:00:00' + end_time;		
 		if ( !this.mediaElement )
 			return default_time_range;
@@ -1590,7 +1613,7 @@ mw.EmbedPlayer.prototype = {
 			this.updatePlayHead( percent );
 		}
 		// Do play request in 100ms ( give the dom time to swap out the embed player ) 
-		setTimeout( function(){
+		setTimeout( function() {
 			_this.play()
 		}, 100 );
 	},
@@ -1716,14 +1739,14 @@ mw.EmbedPlayer.prototype = {
 		this.thumbnail_disp = true;
 								
 		// make sure we are not in preview mode( no end clip actions in preview mode) 
-		if ( this.preview_mode ){
+		if ( this.preview_mode ) {
 			return ;
 		}
 		
 		// Call the ctrlBuilder end event::
 		
 		//if kalturaAttribution and k-skin show the "credits" screen: 
-		if( this.ctrlBuilder.showCredits ){			
+		if( this.ctrlBuilder.showCredits ) {			
 			this.ctrlBuilder.showCredits();
 			return ;
 		}
@@ -1785,7 +1808,7 @@ mw.EmbedPlayer.prototype = {
 		)
 		// now load roe if run the showNextPrevLinks
 		if ( this.roe && this.mediaElement.addedROEData == false ) {
-			this.getMvJsonUrl( this.roe, function( data ){
+			this.getMvJsonUrl( this.roe, function( data ) {
 				_this.mediaElement.addROE( data );
 				_this.getNextPrevLinks();
 			} );
@@ -1945,7 +1968,7 @@ mw.EmbedPlayer.prototype = {
 			.html( html )
 			//Do bindings:	
 			.children( '.playtimerequest' )
-			.click( function(){
+			.click( function() {
 				_this.stop();
 				_this.updateVideoTimeReq( time_req );
 				_this.play();
@@ -1990,7 +2013,7 @@ mw.EmbedPlayer.prototype = {
 						
 		var _this = this;
 		//make sure we have interface_wrap
-		if( $j( this ).parent('.interface_wrap').length == 0 ){
+		if( $j( this ).parent('.interface_wrap').length == 0 ) {
 			// Select "player"				
 			$j( this )			
 			.wrap( 
@@ -2244,7 +2267,7 @@ mw.EmbedPlayer.prototype = {
 			})
 		);
 				
-		if ( this.play_button == true && this.controls == true ){
+		if ( this.controls == true ) {
 			$thumb.append(
 				this.ctrlBuilder.getComponent( 'playButtonLarge' )
 			);
@@ -2293,19 +2316,6 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Display the options div
-	* NOTE: should move to skins "showShare" , "showTextInterface" etc.
-	*/
-	doOptionsHTML:function() {
-		var pos = this.$interface.find( '.options-btn' ).offset();
-		pos['top'] = pos['top'] + 24;
-		pos['left'] = pos['left'] -124;
-		// mw.log('pos of options button: t:'+pos['top']+' l:'+ pos['left']);
-		$j( '#mv_vid_options_' + this.id ).css( pos ).toggle();
-		return;
-	},
-	
-	/**
 	* Follows a linkback. Loads the ROE xml if no linkback is found 
 	*/
 	doLinkBack: function() {
@@ -2326,72 +2336,7 @@ mw.EmbedPlayer.prototype = {
 			}
 		}
 	},
-	
-	/**
-	* Show the "share" msg
-	* 
-	* TODO share should be enabled via <embed> tag usage to be compatible
-	* with sites social networking sites that allow <embed> tags but not js
-	*  
-	* @param {Object} $target Target jQuery object to set share html
-	*/
-	showShare:function( $target ) {
-		var	embed_code = this.getEmbeddingHTML();		
-		var _this = this;
-		$target.empty();
-		$shareList = $j( '<ul />' );
 		
-        $shareList
-        .append(
-			$j('<li />')
-	        .append(
-	        	$j('<a />')
-	        	.attr('href', '#')
-	        	.addClass( 'active' )
-	        	.text(
-	        		gM( 'mwe-embed_site_or_blog' )
-	        	)
-	        )
-	     )	
-        
-        $target.append(
-        	$j( '<h2 />' )
-        	.text( gM( 'mwe-share_this_video' ) )      	
-        	.append(
-        		$shareList
-        	)
-        );
-        
-      	$target.append(
-      		$j('<div />')
-      		.addClass( 'source_wrap' )
-      		.html(
-      			$j( '<textarea />' )
-      			.html( embed_code )
-      			.click( function() {
-					$j( this ).select();
-				})
-      		),
-      		
-      		$j('<button />')
-      		.addClass( 'ui-state-default ui-corner-all copycode' )
-      		.text( gM( 'mwe-copy-code' ) )
-      		.click(function() {
-				$target.find( 'textarea' ).focus().select();
-				// Copy the text if supported:
-				if ( document.selection ) {
-					CopiedTxt = document.selection.createRange();
-					CopiedTxt.execCommand( "Copy" );
-				}
-			} ),
-			
-			$j('<div />')
-			.addClass( "ui-state-highlight ui-corner-all" )
-			.html(
-				gM( 'mwe-read_before_embed' ) 
-			)					
-		);
-	},
 	
 	/**
 	* Loads the text interface library and show the text interface near the player. 	 
@@ -2428,7 +2373,7 @@ mw.EmbedPlayer.prototype = {
 					} ).hide()
 			);			
 			// Load text interface ( if not already loaded )
-			mw.load( 'TimedText', function(){
+			mw.load( 'TimedText', function() {
 				$j( '#' + _this.id ).timedText( 'showMenu', '#timedTextMenu_' + _this.id );				
 			});		
 		}			
@@ -2443,234 +2388,8 @@ mw.EmbedPlayer.prototype = {
 			this.textInterface.close();
 		}
 	},
-	
-	/** 
-	* Generic function to display custom HTML inside the mwEmbedPlayer
-	* Should call the closeDisplayedHTML function to close the
-	* display of the custom HTML and restore the regular player display.
-	*		
-	* NOTE: this should be moved to the ctrlBuilder 
-	* 
-	* @param {String} html_code code for the selection list.
-	*/
-	displayOverlay: function( html_code ) {
-		var _this = this;
-		
-		if ( !this.supports['overlays'] ){
-			this.stop();
-		}
 		
 		
-		// Put select list on-top
-		// make sure the parent is relatively positioned:
-		$j( '#' + this.id ).css( 'position', 'relative' );		
-	  
-	  
-		var fade_in = true;
-		if ( $j( '#blackbg_' + this.id ).length != 0 ){
-			fade_in = false;
-			$j( '#blackbg_' + this.id ).remove();
-		}
-		$closeButton = $j('<span />')
-			.text( gM('mwe-close_btn') )
-			.css({
-					'float' : 'right',
-					'color' : '#FFF',
-					'cursor' : 'pointer',
-					'background' : '#111',
-					'margin-right': '10px',
-					'text-decoration' : 'underline'
-				})
-			.click(function(){
-				_this.ctrlBuilder.closeMenuOverlay();
-			})
-			
-		
-		$overlayMenu = $j('<div />')
-			.attr({
-					'id' : 'blackbg_' + this.id
-			})
-			.addClass( 'videoComplete' )
-			.css({
-				'height' : this.ctrlBuilder.getOverlayHeight(),
-				'width' :  this.ctrlBuilder.getOverlayWidth()
-			})
-			.append(
-				$closeButton,
-				$j('<div />')
-					.addClass('videoOptionsComplete')
-			)
-		this.$interface.prepend( $overlayMenu );
-		if ( fade_in )
-			$j( '#blackbg_' + this.id ).fadeIn( "slow" );
-		else
-			$j( '#blackbg_' + this.id ).show();
-		return false; // onclick action return false
-	},
-	
-	/**
-	* Shows the Player Select interface
-	* 
-	* NOTE: this should be switched over to jQuery style DOM construction
-	* 
-	* @param {Object} $target jQuery target for output
-	*/
-	showPlayerSelect: function( $target ) {		
-		mw.log('showPlayerSelect');		
-		if( ! $target ){
-			$target = this.$interface.find( '.videoOptionsComplete' )
-		}	
-		// Get id (in case where we have a parent container)
-		var _this = this;
-		
-		$target
-		.empty()
-		.append( 
-			$j( '<h2 />' )
-			.text( gM( 'mwe-chose_player' )  )
-		);
-		 		
-		var _this = this;
-		$j.each( this.mediaElement.getPlayableSources(), function( source_id, source ) {
-			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );
-
-			var is_selected = ( source == _this.mediaElement.selected_source );			
-			
-			$target.append( 
-				$j( '<h2 />' )
-				.text( source.getTitle() )
-			);
-			
-			if ( playable ) {
-				$playerList = $j('<ul />');
-				// output the player select code:
-				var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
-
-				for ( var i = 0; i < supporting_players.length ; i++ ) {				
-					var $playerLink = $j( '<a />')
-						.attr({
-							'href' : '#',
-							'rel' : 'sel_source',
-							'id' : 'sc_' + source_id + '_' + supporting_players[i].id 
-						})
-						.text( supporting_players[i].getName() );
-					
-					if ( _this.selected_player.id == supporting_players[i].id && is_selected ) {
-						$playerLink						
-						.addClass('active' );												
-					}
-					$playerList.append(
-						$j( '<li />' ).append(
-							$playerLink
-						)
-					);
-				}
-				
-				// Append the player list: 
-				$target.append( $playerList );
-				
-			} else {
-				// No player avaliable: 
-				$target.append( gM( 'mwe-no-player',  source.getTitle() ) ) 
-			}
-		} );
-
-		// Set up the click bindings:
-		$target.find( "[rel='sel_source']" ).each( function() {
-			$j( this ).click( function() {
-				var iparts = $j( this ).attr( 'id' ).replace(/sc_/ , '' ).split( '_' );
-				var source_id = iparts[0];
-				var default_player_id = iparts[1];
-				mw.log( 'source id: ' +  source_id + ' player id: ' + default_player_id );
-
-				_this.ctrlBuilder.closeMenuOverlay();
-				_this.mediaElement.selectSource( source_id );
-
-				mw.EmbedTypes.players.setPlayerPreference( default_player_id,
-					 _this.mediaElement.sources[ source_id ].getMIMEType() );
-
-				// Issue a stop
-				_this.stop();				
-
-				// Don't follow the empty # link:
-				return false;
-			} );
-		} );		
-	},
-	
-	/**
-	* Loads sources and calls showDownloadWithSources
-	* @param {Object} $target jQuery target to output to
-	*/
-	showDownload:function( $target ) {
-		var _this = this;
-		// Load the roe if available (to populate out download options:		
-		// mw.log('f:showDownload '+ this.roe + ' ' + this.mediaElement.addedROEData);
-		if ( this.roe && this.mediaElement.addedROEData == false ) {
-			var _this = this;
-			$target.html( gM( 'loading_txt' ) );
-			this.getMvJsonUrl( this.roe, function( data ) {
-			   _this.mediaElement.addROE( data );
-			   _this.showDownloadWithSources( $target );
-			} );
-		} else {
-			_this.showDownloadWithSources( $target );
-		}
-	},
-	
-	/**
-	* Shows the download interface with sources loaded
-	* @param {Object} $target jQuery target to output to
-	*/
-	showDownloadWithSources : function( $target ) {
-		var _this = this;
-		$target.empty().append( 
-			$j('<div />')
-			.css({
-				"color":"white"
-			})
-		);
-		var $mediaList = $j( '<ul />' );
-		var $textList =  $j( '<ul />' );
-		$j.each( _this.mediaElement.getSources(), function( index, source ) {
-			if(  source.getSrc() ){
-				var $dl_line = $j( '<li />').append(
-					$j('<a />').
-					css({
-						"color" : "white"						
-					})
-					.attr( 'href', source.getSrc())
-					.text(  source.getTitle() )
-				);					
-				//Add link to time segment:
-				if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
-					$target.append( $dl_line );
-				} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
-					// Add link to text list
-					$textList.append( $dl_line );
-				} else {
-					// Add link to media list
-					$mediaList.append( $dl_line );
-				}
-				
-			}
-		} );
-		if( $mediaList.find('li').length != 0 ){
-			$target.append(
-				$j('<h2 />')
-				.text( gM( 'mwe-download_full' ) ),
-				$mediaList
-			)
-		}
-		
-		if( $textList.find('li').length != 0 ){
-			$target.append(
-				$j('<h2 />')
-				.text( gM( 'mwe-download_text' ) ),
-				$textList
-			)
-		}		
-	},
 	/**
 	*  Base Embed Controls
 	*/
@@ -2718,7 +2437,7 @@ mw.EmbedPlayer.prototype = {
 	   	 .attr( 'title', gM( 'mwe-pause_clip' ) );
 	   	 
 	   	 // Do play tracking if enabled
-	   	 if( mw.getConfig( 'playTracking' ) ){
+	   	 if( mw.getConfig( 'playTracking' ) ) {
 	   	 	this.doPlayTracking(); 
 	   	 }
 	   	 
@@ -2892,15 +2611,15 @@ mw.EmbedPlayer.prototype = {
 	* Checks if we are monitoring play requests 
 	* presently this function is mediaWiki api specific. 
 	*/ 
-	doPlayTracking: function(){		
+	doPlayTracking: function() {		
 		var playTrackingRate = mw.getConfig( 'playTrackingRate' );
 		// Math.floor ( Math.random() * playTrackingRate ) == 0		
-		if( true ){			
+		if( true ) {			
 			mw.getJSON( {
 				'action' : 'playtracking',
 				'filename' : this.apiTitleKey,
 				'client' : this.selected_player.library + ' && ' + navigator.userAgent   
-			}, function( data ){
+			}, function( data ) {
 				mw.log( 'done logging play request' );
 			} );
 		}
@@ -2918,19 +2637,19 @@ mw.EmbedPlayer.prototype = {
 				if ( parseInt( this.startOffset ) != 0 ) {				
 					// If start offset include that calculation 
 					this.updatePlayHead( ( this.currentTime - this.startOffset ) / this.duration );
-					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + mw.seconds2npt( parseFloat( this.startOffset ) + parseFloat( this.duration ) ) : '';
+					var et = ( this.ctrlBuilder.longTimeDisp ) ? '/' + mw.seconds2npt( parseFloat( this.startOffset ) + parseFloat( this.duration ) ) : '';
 					this.setStatus( mw.seconds2npt( this.currentTime ) + et );
 				} else {					
 					this.updatePlayHead( this.currentTime / this.duration );					
-					// Only include the end time if long_time_disp is enabled:
-					var et = ( this.ctrlBuilder.long_time_disp ) ? '/' + mw.seconds2npt( this.duration ) : '';
+					// Only include the end time if longTimeDisp is enabled:
+					var et = ( this.ctrlBuilder.longTimeDisp ) ? '/' + mw.seconds2npt( this.duration ) : '';
 					this.setStatus( mw.seconds2npt( this.currentTime ) + et );
 				}
 			}
 			// Check if we are "done"
-			var end_presentation_time = ( this.startOffset ) ? ( this.startOffset + this.duration ) : this.duration;
-			if ( this.currentTime > end_presentation_time ) {
-				mw.log( "should run clip done :: " + this.currentTime + ' > ' +  end_presentation_time  );
+			var endPresentationTime = ( this.startOffset ) ? ( this.startOffset + this.duration ) : this.duration;
+			if ( this.currentTime > endPresentationTime ) {
+				mw.log( "should run clip done :: " + this.currentTime + ' > ' +  endPresentationTime  );
 				this.onClipDone();
 			}
 		} else {
@@ -2971,7 +2690,7 @@ mw.EmbedPlayer.prototype = {
 	* Stop the playback monitor
 	*/
 	stopMonitor:function() {
-		if ( this.monitorTimerId != 0 ){
+		if ( this.monitorTimerId != 0 ) {
 			clearInterval( this.monitorTimerId );
 			this.monitorTimerId = 0;
 		}
@@ -3147,7 +2866,7 @@ mediaPlayer.prototype = {
 	*	false if mime type is unsupported
 	*/ 
 	supportsMIMEType: function( type ) {
-		for ( var i = 0; i < this.supported_types.length; i++ ){
+		for ( var i = 0; i < this.supported_types.length; i++ ) {
 			if ( this.supported_types[i] == type )
 				return true;
 		}
@@ -3430,7 +3149,7 @@ mw.EmbedTypes = {
 		 var uniqueMimesOnly = $j.browser.opera || $j.browser.safari;
 		 // Opera will switch off javaEnabled in preferences if java can't be found.
 		 // And it doesn't register an application/x-java-applet mime type like Mozilla does.
-		 if ( javaEnabled ){
+		 if ( javaEnabled ) {
 			 this.players.addPlayer( cortadoPlayer );
 		 }
 		

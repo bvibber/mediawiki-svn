@@ -68,9 +68,9 @@ var default_bui_options = {
 /**
 * Setup upload jQuery binding
 */
-( function( $ ){ 
+( function( $ ) { 
 	$.fn.uploadHandler = function( options ) {
-		if ( !options ){
+		if ( !options ) {
 			options = { };
 		}
 	
@@ -133,7 +133,7 @@ mw.UploadHandler.prototype = {
 		$j.extend( this, default_bui_options, options );
 		
 		// Set a api_url if unset
-		if( !this.api_url ){
+		if( !this.api_url ) {
 			this.api_url = mw.getLocalApiUrl();
 		}		
 		// Setup the UploadInterface handler
@@ -189,7 +189,7 @@ mw.UploadHandler.prototype = {
 		}		
 		
 		// Call the onsubmit_cb option if set:
-		if( this.onsubmit_cb && typeof this.onsubmit_cb == 'function' ){
+		if( this.onsubmit_cb && typeof this.onsubmit_cb == 'function' ) {
 			this.onsubmit_cb();
 		}				
 		
@@ -319,7 +319,7 @@ mw.UploadHandler.prototype = {
 		//
 		mw.log("remapFormToApi:: " + this.api_url + ' form: ' + this.form);
 		
-		if ( !this.api_url ){
+		if ( !this.api_url ) {
 			mw.log( 'Error: no api url target' ); 
 			return false;
 		}
@@ -328,12 +328,12 @@ mw.UploadHandler.prototype = {
 		// Set the form action
 		try{
 			$form.attr('action', _this.api_url);
-		}catch(e){
+		}catch(e) {
 			mw.log("IE for some reason error's out when you change the action")
 		}
 
 		// Add API action
-		if ( $form.find( "[name='action']" ).length == 0 ){
+		if ( $form.find( "[name='action']" ).length == 0 ) {
 			$form.append( 
 				$j('<input />')
 				.attr({ 
@@ -345,7 +345,7 @@ mw.UploadHandler.prototype = {
 		}
 
 		// Add JSON response format
-		if ( $form.find( "[name='format']" ).length == 0 ){
+		if ( $form.find( "[name='format']" ).length == 0 ) {
 			$form.append( 
 				$j( '<input />' )
 				.attr({
@@ -670,13 +670,13 @@ mw.UploadHandler.prototype = {
 	* @return {String} 
 	* 	value of wpUploadDescription 
 	*/
-	getUploadDescription: function(){
+	getUploadDescription: function() {
 		//Special case of upload.js commons hack: 
 		var comment_value = $j( '#wpUploadDescription' ).val();
-		if(  comment_value == '' ){
+		if(  comment_value == '' ) {
 			comment_value = $j( "[name='wpUploadDescription']").val();
 		}
-				
+		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.useCopyrightUpload );
 		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
 		if ( this.useCopyrightUpload ) {
 			var license = ( $j("[name='wpLicense']").length ) ? $j("[name='wpLicense']").val() : '';
@@ -686,8 +686,8 @@ mw.UploadHandler.prototype = {
 			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
 			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
 		}
-							
-		return comment_value;		
+		mw.log( 'getCommentText:: new val:' + comment_value  );
+		return comment_value;
 	},
 	
 	/**
@@ -700,7 +700,7 @@ mw.UploadHandler.prototype = {
 	* @param {String} copyStatus the copyright status field
 	* @param {String} source The source filed			
 	*/
-	getCommentText: function( comment, license, copyStatus, source ){					
+	getCommentText: function( comment, license, copyStatus, source ) {					
 		var licensetxt = '';
 		if ( license != '' ) {
 			licensetxt = '== ' + gM( 'license-header' ) + " ==\n" + '{{' + license + '}}' + "\n";
@@ -1011,11 +1011,11 @@ mw.UploadHandler.prototype = {
 		mw.log( 'doDestCheck::' + _this.selector );
 
 		// Set up option defaults
-		if ( !options.warn_target ){
+		if ( !options.warn_target ) {
 			options.warn_target = '#wpDestFile-warning';
 		}
 		
-		if( ! options.api_url ){
+		if( ! options.api_url ) {
 			options.api_url = mw.getLocalApiUrl();
 		}		
 

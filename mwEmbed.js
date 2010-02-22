@@ -68,8 +68,8 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {String} value Value of configuration name 
 	*/
 	mw.setConfig = function ( name, value ) {
-		if( typeof name == 'object' ){
-			for( var i in name ){
+		if( typeof name == 'object' ) {
+			for( var i in name ) {
 				mw.setConfig( i, name[ i ] );
 			}
 		}
@@ -85,14 +85,14 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param [Mixed] value Set configuration name to value
 	*/
 	mw.setDefaultConfig = function( name, value ) {	
-		if( typeof name == 'object' ){
-			for( var i in name ){
+		if( typeof name == 'object' ) {
+			for( var i in name ) {
 				mw.setDefaultConfig( i, name[ i ] ); 
 			}
 			return ;
 		}	
 		// Name is a string update the config directly	
-		if( ! mwConfig[ name ] ){
+		if( ! mwConfig[ name ] ) {
 			mwConfig[ name ] = value;
 		}
 	}
@@ -104,7 +104,7 @@ var MW_EMBED_VERSION = '1.1d';
 	* @return {Mixed} value of configuration key
 	* 	returns "false" if key not found
 	*/
-	mw.getConfig = function ( name ){
+	mw.getConfig = function ( name ) {
 		if( mwConfig[ name ] )
 			return mwConfig[ name ];
 		return false;
@@ -125,18 +125,18 @@ var MW_EMBED_VERSION = '1.1d';
 	* @parma {Function} callback Function to be called once userPrefrences are loaded 
 	*/
 	var setupUserConfigFlag = false;
-	mw.setupUserConfig = function( callback ){	
-		if( setupUserConfigFlag ){
+	mw.setupUserConfig = function( callback ) {	
+		if( setupUserConfigFlag ) {
 			if( callback ) 
 				callback();
 		}
 		// Do Setup user config: 		
-		mw.load( [ '$j.cookie', 'JSON' ], function(){
-			if( $j.cookie( 'mwUserConfig' ) ){
+		mw.load( [ '$j.cookie', 'JSON' ], function() {
+			if( $j.cookie( 'mwUserConfig' ) ) {
 				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
 			}
 			mw.log( 'mw: ' +  $j.cookie( 'mwUserConfig' ) );
-			for(var i in mwUserConfig ){
+			for(var i in mwUserConfig ) {
 				mw.log( 'i: ' + i + ' ' + mwUserConfig[ i ] ) ;
 			}
 			//debugger;
@@ -154,8 +154,8 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {String} name Name of user configuration value
 	* @param {String} value Value of configuration name 	
 	*/
-	mw.setUserConfig = function ( name, value, cookieOptions ){
-		if( ! setupUserConfigFlag ){ 
+	mw.setUserConfig = function ( name, value, cookieOptions ) {
+		if( ! setupUserConfigFlag ) { 
 			mw.log( "Error: userConfig not setup" );
 			return false; 		
 		}		
@@ -174,7 +174,7 @@ var MW_EMBED_VERSION = '1.1d';
 	*	value of the configuration name
 	* 	false if the configuration name could not be found
 	*/	
-	mw.getUserConfig = function ( name ){
+	mw.getUserConfig = function ( name ) {
 		if( mwUserConfig[ name ] )
 			return mwUserConfig[ name ];
 		return false;
@@ -247,13 +247,13 @@ var MW_EMBED_VERSION = '1.1d';
 		// Replace Values
 		if ( typeof args == 'object' || typeof args == 'array' ) {
 			for ( var v =0; v < args.length; v++ ) {				
-				if( typeof args[v] == 'undefined' ){
+				if( typeof args[v] == 'undefined' ) {
 					continue;
 				}				
 				var replaceValue =  args[ v ];
 				
 				// Convert number if applicable
-				if( parseInt( replaceValue ) == replaceValue ){
+				if( parseInt( replaceValue ) == replaceValue ) {
 					replaceValue = mw.lang.convertNumber( replaceValue );
 				}
 				
@@ -261,7 +261,7 @@ var MW_EMBED_VERSION = '1.1d';
 				var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );
 								
 				// Check if we got passed in a jQuery object:
-				if( typeof args[v]['html'] == 'function' ){
+				if( typeof args[v]['html'] == 'function' ) {
 					message = message.replace( rep, $j('<div />').append( replaceValue ).html() );
 				}else{
 					// Assume replaceValue string
@@ -270,7 +270,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}
 		} else if ( typeof args == 'string' || typeof args == 'number' ) {
 			// Convert number if applicable
-			if( parseInt( args ) ==  args ){
+			if( parseInt( args ) ==  args ) {
 				args = mw.lang.convertNumber( args );
 			}
 			message = message.replace( /\$1/g, args );
@@ -322,7 +322,7 @@ var MW_EMBED_VERSION = '1.1d';
 		// ( gRuleSet is loaded from script-loader to contains local ruleset )
 		var rs = gRuleSet[ 'PLURAL' ];
 		
-		if( tObj.arg && tObj.param && mw.lang.convertPlural){
+		if( tObj.arg && tObj.param && mw.lang.convertPlural) {
 			// Check if we have forms to replace
 			if ( tObj.param.length == 0 ) { 
 				return ''; 
@@ -335,7 +335,7 @@ var MW_EMBED_VERSION = '1.1d';
 			
 		}
 		// Could not proccess plural return first form or nothing
-		if( tObj.param[0] ){
+		if( tObj.param[0] ) {
 			return tObj.param[0];
 		}
 		return '';		
@@ -374,11 +374,11 @@ var MW_EMBED_VERSION = '1.1d';
 		var transformTable = mw.lang.digitTransformTable;
 		
 		// Check if the "restore" to latin number flag is set: 
-		if( typeInt ){			
+		if( typeInt ) {			
 			if( parseInt( number ) == number )	
 				return number;
 			var tmp = [];
-			for( var i in transformTable ){
+			for( var i in transformTable ) {
 				tmp[ transformTable[ i ] ] = i;
 			}
 			transformTable = tmp;
@@ -386,8 +386,8 @@ var MW_EMBED_VERSION = '1.1d';
 		
 		var numberString =  '' + number;
 		var convertedNumber = '';
-		for( var i =0; i < numberString.length; i++){
-			if( transformTable[ numberString[i] ] ){
+		for( var i =0; i < numberString.length; i++) {
+			if( transformTable[ numberString[i] ] ) {
 				convertedNumber += transformTable[ numberString[i] ];
 			}else{
 				convertedNumber += numberString[i];
@@ -401,10 +401,10 @@ var MW_EMBED_VERSION = '1.1d';
 	 * @param {String} langKey Language key to be checked
 	 * @return true if valid language, false if not
 	 */
-	mw.isValidLang = function( langKey ){
+	mw.isValidLang = function( langKey ) {
 		var langList = mw.getConfig( 'languageCodeList');
-		for(var i =0; i < langList.length; i++){
-			if( langList[i] == langKey ){
+		for(var i =0; i < langList.length; i++) {
+			if( langList[i] == langKey ) {
 				return true;
 			} 
 		}		
@@ -421,12 +421,12 @@ var MW_EMBED_VERSION = '1.1d';
 		var ammessages = '';
 		if ( typeof msgSet == 'object' ) {
 			for ( var i in msgSet ) {
-				if( !messageCache[ i ] ){ 
+				if( !messageCache[ i ] ) { 
 					ammessages += msgSet[i] + '|';
 				}
 			}
 		} else if ( typeof msgSet == 'string' ) {
-			if( !messageCache[ i ] ){
+			if( !messageCache[ i ] ) {
 				ammessages += msgSet;
 			}
 		}
@@ -701,24 +701,24 @@ var MW_EMBED_VERSION = '1.1d';
 		* 
 		* NOTE: should be integrated with the parser
 		*/
-		getTemplateVars: function(){
+		getTemplateVars: function() {
 			//mw.log('matching against: ' + wikiText);
 			templateVars = new Array();
 			var tempVars = wikiText.match(/\{\{\{([^\}]*)\}\}\}/gi);
 															
 			// Clean up results:
-			for(var i=0; i < tempVars.length; i++){
+			for(var i=0; i < tempVars.length; i++) {
 				//match 
 				var tvar = tempVars[i].replace('{{{','').replace('}}}','');
 				
 				// Strip anything after a |
-				if(tvar.indexOf('|') != -1){
+				if(tvar.indexOf('|') != -1) {
 					tvar = tvar.substr(0, tvar.indexOf('|'));
 				}
 				
 				// Check for duplicates:
 				var do_add=true;
-				for(var j=0; j < templateVars.length; j++){
+				for(var j=0; j < templateVars.length; j++) {
 					if( templateVars[j] == tvar)
 						do_add=false;
 				}
@@ -758,7 +758,7 @@ var MW_EMBED_VERSION = '1.1d';
 	* @return {Object} parserObj returns a parser object that has methods for getting at
 	* things you would want
 	*/
-	mw.parser = function( wikiText, options){
+	mw.parser = function( wikiText, options) {
 		// return the parserObj
 		return new parseObj( wikiText, options ) ;	
 	}
@@ -784,7 +784,7 @@ var MW_EMBED_VERSION = '1.1d';
 	*
 	* @param {Object} targetObj Interface Object to add hook system to.   
 	*/
-	mw.addHookSystem = function( targetObj ){		
+	mw.addHookSystem = function( targetObj ) {		
 		// Setup the target object hook holder:
 		targetObj[ 'hooks' ] = { };
 		 
@@ -796,7 +796,7 @@ var MW_EMBED_VERSION = '1.1d';
 		* @param {String} hookName Name of hook to be added
 		* @param {Function} hookFunction Function to be called at hook time
 		*/
-		targetObj.addHook = function( hookName, hookFunction ){
+		targetObj.addHook = function( hookName, hookFunction ) {
 			if( ! this.hooks[ hookName ] )
 				this.hooks[ hookName ] = [ ];
 			this.hooks[ hookName ].push( hookFunction )
@@ -812,10 +812,10 @@ var MW_EMBED_VERSION = '1.1d';
 		* 	true interface should continue function execution
 		*	false interface should stop or return from method
 		*/
-		targetObj.runHook = function( hookName ){								
-			if( this.hooks[ hookName ] ){
-				for( var i in this.hooks[ hookName ]){
-					if( typeof( this.hooks[ hookName ][ i ] ) == 'function'){
+		targetObj.runHook = function( hookName ) {								
+			if( this.hooks[ hookName ] ) {
+				for( var i in this.hooks[ hookName ]) {
+					if( typeof( this.hooks[ hookName ][ i ] ) == 'function') {
 						return this.hooks[ hookName ][ i ]( this );
 					}
 				}
@@ -879,17 +879,17 @@ var MW_EMBED_VERSION = '1.1d';
 		*
 		* @param {Function} callback Function called once loading is complete
 		*/				
-		load: function( loadRequest, callback ){
+		load: function( loadRequest, callback ) {
 			// Check for empty loadRequest ( directly return the callback ) 
-			if( mw.isEmpty( loadRequest ) ){
+			if( mw.isEmpty( loadRequest ) ) {
 				mw.log( 'Empty load request: ' + loadRequest );
 				callback( loadRequest );
 				return ;
 			}									
 			
 			// Check if its a multi-part request: 
-			if( typeof loadRequest == 'object' ){
-			 	if( loadRequest.length > 1 ){			 							
+			if( typeof loadRequest == 'object' ) {
+			 	if( loadRequest.length > 1 ) {			 							
 					this.loadMany ( loadRequest,  callback );
 					return ;
 				}else{
@@ -901,7 +901,7 @@ var MW_EMBED_VERSION = '1.1d';
 			// Check for the module name loader function 
 			if( this.moduleLoaders[ loadRequest ] && 
 				typeof ( this.moduleLoaders[ loadRequest ] ) == 'function' 
-			){
+			) {
 				mw.log("mw.load: loadModule:" + loadRequest );
 				// Run the module with the parent callback 
 				this.moduleLoaders[ loadRequest ]( callback );	
@@ -909,7 +909,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}
 			
 			// Check for javascript class 
-			if( this.getClassPath( loadRequest ) ){		
+			if( this.getClassPath( loadRequest ) ) {		
 				mw.log('mw.load: loadClass: ' + loadRequest );
 				this.loadClass( loadRequest, callback );																	
 				return ;
@@ -917,7 +917,7 @@ var MW_EMBED_VERSION = '1.1d';
 			
 			// Try loading as a "file" or via ScriptLoader
 			if( loadRequest ) { 				
-				if( loadRequest.indexOf( '.js' ) == -1 && !mw.getScriptLoaderPath() ){
+				if( loadRequest.indexOf( '.js' ) == -1 && !mw.getScriptLoaderPath() ) {
 					mw.log( 'Error: are you sure ' + loadRequest + ' is a file ( is it missing a class path? ) ' );
 				}				
 				mw.getScript( loadRequest, callback );
@@ -941,16 +941,16 @@ var MW_EMBED_VERSION = '1.1d';
 			var loadStates = { };
 					
 			// Check if we can load via the "script-loader" ( mwEmbed was included via scriptLoader ) 
-			if( mw.getScriptLoaderPath() ){				
+			if( mw.getScriptLoaderPath() ) {				
 				loadStates = this.getGroupLoadState( loadSet );
-				if( mw.isEmpty( loadStates ) ){
+				if( mw.isEmpty( loadStates ) ) {
 					mw.log( 'loadMany:all classes already loaded');
 					callback();
 					return ;
 				}						
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
-				if( typeof loadSet [ 0 ] == 'object' ){		
+				if( typeof loadSet [ 0 ] == 'object' ) {		
 					_this.dependencyChainCallFlag[loadSet] = false;
 					//Load sets of classes ( to preserver order for some browsers )
 					_this.loadDependencyChain( loadSet, callback );
@@ -958,7 +958,7 @@ var MW_EMBED_VERSION = '1.1d';
 				}
 				
 				// Set the initial load state for every item in the loadSet
-				for( var i = 0; i < loadSet.length ; i++ ){							
+				for( var i = 0; i < loadSet.length ; i++ ) {							
 					var loadName = loadSet[ i ];				
 					loadStates[ loadName ] = 0;					
 				}		
@@ -968,19 +968,19 @@ var MW_EMBED_VERSION = '1.1d';
 			mw.log("mw.load: LoadMany:: " + loadSet );
 						
 			// Issue the load request check check loadStates to see if we are "done"
-			for( var loadName in loadStates ){				
+			for( var loadName in loadStates ) {				
 				//mw.log("loadMany: load: " + loadName ); 					
-				this.load( loadName, function ( loadName ){										
+				this.load( loadName, function ( loadName ) {										
 					loadStates[ loadName ] = 1;
 					//mw.log( loadName + ' finished of: ' + JSON.stringify( loadStates ) );
 					//Check if all load request states are set 1					
 					var loadDone = true;
-					for( var j in loadStates ){
+					for( var j in loadStates ) {
 						if( loadStates[ j ] === 0 )
 							loadDone = false;			
 					}					
 					// Run the parent scope callback for "loadMany" 
-					if( loadDone ){						
+					if( loadDone ) {						
 						callback( loadName );						
 					}
 				} );
@@ -999,13 +999,13 @@ var MW_EMBED_VERSION = '1.1d';
 		* @return {Object}
 		*	grouped loadSet
 		*/
-		getGroupLoadState: function( loadSet ){
+		getGroupLoadState: function( loadSet ) {
 			var groupedLoadSet = [];			
 			var loadStates = { };
 			// Merge load set into new groupedLoadSet
-			if( typeof loadSet[0] == 'object' ){
-				for( var i = 0; i < loadSet.length ; i++ ){
-					for( var j = 0; j < loadSet[i].length ; j++ ){
+			if( typeof loadSet[0] == 'object' ) {
+				for( var i = 0; i < loadSet.length ; i++ ) {
+					for( var j = 0; j < loadSet[i].length ; j++ ) {
 						// Make sure we have not already included it:						
 						groupedLoadSet.push( loadSet[i][j] );
 					}
@@ -1022,18 +1022,18 @@ var MW_EMBED_VERSION = '1.1d';
 				var loadName = groupedLoadSet[ i ];	
 				if( this.getClassPath( loadName )  ) {
 					// Only add to group request if not already set: 
-					if ( !mw.isset( loadName ) ){
+					if ( !mw.isset( loadName ) ) {
 						groupClassKey += coma + loadName
 						coma = ',';
 					}
 					// Issue a request for any dependent style sheets ( won't load if already present )
-					if( typeof this.stylePaths[ loadName ] != 'undefined' ){
+					if( typeof this.stylePaths[ loadName ] != 'undefined' ) {
 						mw.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ loadName ] );
 					}
 					
 				}else if( this.moduleLoaders[ loadName ] ) {
 					// Module loaders break up grouped script requests ( add the current groupClassKey )
-					if( groupClassKey != '' ){
+					if( groupClassKey != '' ) {
 						loadStates[ groupClassKey ] = 0;
 						groupClassKey = coma = '';
 					}
@@ -1043,7 +1043,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}				
 			
 			// Add groupClassKey if set: 
-			if( groupClassKey != '' ){
+			if( groupClassKey != '' ) {
 				loadStates [ groupClassKey ] = 0;
 			}
 			
@@ -1059,7 +1059,7 @@ var MW_EMBED_VERSION = '1.1d';
 		*/ 
 		dependencyChainCallFlag: { },
 		
-		loadDependencyChain: function( loadChain, callback ){
+		loadDependencyChain: function( loadChain, callback ) {
 			var _this = this;						
 			// Load with dependency checks
 			var callSet = loadChain.shift();
@@ -1070,7 +1070,7 @@ var MW_EMBED_VERSION = '1.1d';
 					// NOTE: IE is playing tricks with me 
 					//  Need to figure out why this callback gets called twice 
 					//  and remove this flag
-					if( _this.dependencyChainCallFlag[ callSet ] == callback ){
+					if( _this.dependencyChainCallFlag[ callSet ] == callback ) {
 						mw.log("... already called this callback for " + callSet );
 						return ;
 					}
@@ -1087,10 +1087,10 @@ var MW_EMBED_VERSION = '1.1d';
 		* @param {String} className Name of class to load
 		* @param {Function} callback Function to run once class is loaded 
 		*/
-		loadClass: function( className , callback){		
+		loadClass: function( className , callback) {		
 			var _this = this;			
 			// Make sure the class is not already defined:
-			if ( mw.isset( className ) ){
+			if ( mw.isset( className ) ) {
 				mw.log( 'Class ( ' + className + ' ) already defined ' );
 				callback( className );
 				return ; 									
@@ -1100,7 +1100,7 @@ var MW_EMBED_VERSION = '1.1d';
 			var scriptRequest = null;
 			
 			// If the scriptloader is enabled use the className as the scriptRequest: 
-			if( mw.getScriptLoaderPath() ){
+			if( mw.getScriptLoaderPath() ) {
 				// replace $j with j since php strips the $ from the request class			
 				scriptRequest =  className;
 			}else{
@@ -1108,19 +1108,19 @@ var MW_EMBED_VERSION = '1.1d';
 				var baseClassPath = this.getClassPath( className );													
 				// Add the mwEmbed path if not a root path or a full url
 				if( baseClassPath.indexOf( '/' ) !== 0 && 
-					baseClassPath.indexOf('://') === -1 ){
+					baseClassPath.indexOf('://') === -1 ) {
 					scriptRequest = mw.getMwEmbedPath() + baseClassPath;
 				}else{
 					scriptRequest = baseClassPath;
 				}				
-				if( ! scriptRequest ){
+				if( ! scriptRequest ) {
 					mw.log( "Could not get url for class " + className  );						
 					return ;
 				}	
 			}			
 								
 			// Check for any associated style sheets that should be loaded 
-			if( typeof this.stylePaths[ className ] != 'undefined' ){
+			if( typeof this.stylePaths[ className ] != 'undefined' ) {
 				mw.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ className ] );
 			}
 			
@@ -1134,7 +1134,7 @@ var MW_EMBED_VERSION = '1.1d';
 			mw.getScript( scriptRequest, function( scriptRequest ) {
 				// Debug output				
 				if(! mw.isset( className )  
-					&& mwLoadDoneCB[ className ] != 'done' ){
+					&& mwLoadDoneCB[ className ] != 'done' ) {
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
 				}
 				// Call load done (incase the script did not include a loadDone callback ) 
@@ -1149,9 +1149,9 @@ var MW_EMBED_VERSION = '1.1d';
 			* ( not all browsers support onLoad script attribute )
 			* In the case of a "class" we can pull the javascript state until its ready
 			*/
-			if( !mw.getScriptLoaderPath() ){
-				setTimeout( function(){
-					mw.waitForObject( className, function( className ){														
+			if( !mw.getScriptLoaderPath() ) {
+				setTimeout( function() {
+					mw.waitForObject( className, function( className ) {														
 						// Once object is ready run loadDone 
 						mw.loadDone( className );
 					} );
@@ -1166,7 +1166,7 @@ var MW_EMBED_VERSION = '1.1d';
 		* @param {Function} moduleLoader Function that
 		*	loads dependencies for a module
 		*/
-		addModuleLoader: function( name, moduleLoader ){		
+		addModuleLoader: function( name, moduleLoader ) {		
 			this.moduleLoaders [ name ] = moduleLoader;
 		},
 		
@@ -1179,11 +1179,11 @@ var MW_EMBED_VERSION = '1.1d';
 		*  classSet must be strict JSON to allow the 
 		*  php scriptLoader to parse the file paths.  
 	 	*/
-	 	addClassFilePaths: function( classSet ){
+	 	addClassFilePaths: function( classSet ) {
 	 		var prefix = ( mw.getConfig( 'loaderContext' ) )?
 	 			mw.getConfig( 'loaderContext' ): '';
 	 		
-	 		for( var i in classSet ){
+	 		for( var i in classSet ) {
 				this.classPaths[ i ] = prefix + classSet[ i ];
 			}
 	 	},
@@ -1192,7 +1192,7 @@ var MW_EMBED_VERSION = '1.1d';
 	 	* Get a class path forom a className 
 	 	* if no class found return false
 	 	*/
-	 	getClassPath: function( className ){
+	 	getClassPath: function( className ) {
 	 		if( this.classPaths[ className ] )
 	 			return this.classPaths[ className ]
 	 		return false;
@@ -1206,8 +1206,8 @@ var MW_EMBED_VERSION = '1.1d';
 		* 
 		* @param {Object} sheetSet ClassKey : sheet location key value paris
 	 	*/
-	 	addClassStyleSheets: function( sheetSet ){
-	 		for(var i in sheetSet ){
+	 	addClassStyleSheets: function( sheetSet ) {
+	 		for(var i in sheetSet ) {
 	 			this.stylePaths[ i ] = sheetSet[ i ];
 	 		}
 	 	}
@@ -1219,16 +1219,16 @@ var MW_EMBED_VERSION = '1.1d';
 	*/	
 	mw.loadDone =  function( requestName ) {		
 		//mw.log( "LoadDone: " + requestName + ' run callback ');
-		if( !mwLoadDoneCB[ requestName ] ){			
+		if( !mwLoadDoneCB[ requestName ] ) {			
 			return true;
 		}
-		while( mwLoadDoneCB[ requestName ].length ){
+		while( mwLoadDoneCB[ requestName ].length ) {
 			if( typeof mwLoadDoneCB[ requestName ] != 'object' )
 			{
 				break;
 			}
 			var func = mwLoadDoneCB[ requestName ].pop();			
-			if( typeof func == 'function' ){
+			if( typeof func == 'function' ) {
 				func( requestName );
 			}else{
 				mw.log('mwLoadDoneCB: Error non callback function on stack');
@@ -1243,13 +1243,13 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {String} requestName Name of class or request set
 	* @param {Function} callback Function called once requestName is ready
 	*/
-	mw.setLoadDoneCB = function( requestName, callback ){
+	mw.setLoadDoneCB = function( requestName, callback ) {
 		// If the requestName is already done loading just callback
-		if( mwLoadDoneCB[ requestName ] == 'done' ){
+		if( mwLoadDoneCB[ requestName ] == 'done' ) {
 			callback( requestName )
 		}
 		// Setup the function queue if unset
-		if( ! mwLoadDoneCB[ requestName ] ){
+		if( ! mwLoadDoneCB[ requestName ] ) {
 			mwLoadDoneCB[ requestName ] = [];
 		}
 		mwLoadDoneCB[ requestName ].push( callback );		
@@ -1263,7 +1263,7 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	* Load Object entry point: Loads a requested set of javascript 
 	*/	
-	mw.load = function( loadRequest, callback ){
+	mw.load = function( loadRequest, callback ) {
 		return mw.loader.load( loadRequest, callback );
 	}
 	
@@ -1271,7 +1271,7 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	* Add module entry point: Adds a module to the mwLoader object 
 	*/
-	mw.addModuleLoader = function ( name, loaderFunction ){
+	mw.addModuleLoader = function ( name, loaderFunction ) {
 		return mw.loader.addModuleLoader( name, loaderFunction );		
 	}
 	
@@ -1290,7 +1290,7 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	* Add Class Style Sheet entry point:  	 
 	*/
-	mw.addClassStyleSheets = function( sheetSet ){
+	mw.addClassStyleSheets = function( sheetSet ) {
 		return mw.loader.addClassStyleSheets( sheetSet );
 	}
 	
@@ -1315,9 +1315,9 @@ var MW_EMBED_VERSION = '1.1d';
 	* 	{Boolean} false if no page found 
 	* 	{String} text of wiki page	 
 	*/
-	mw.getTitleText = function( apiUrl, title, callback ){
+	mw.getTitleText = function( apiUrl, title, callback ) {
 		// Check if optional apiURL was not included
-		if( !callback ){
+		if( !callback ) {
 			title = apiUrl;
 			callback = title;
 			apiUrl = mw.getLocalApiUrl();
@@ -1329,13 +1329,13 @@ var MW_EMBED_VERSION = '1.1d';
 		    'rvprop' : 'content'
 		};	
 		mw.getJSON( apiUrl , request, function( data ) {			
-			if( !data || !data.query || !data.query.pages ){
+			if( !data || !data.query || !data.query.pages ) {
 				callback( false );	
 			}
 			var pages = data.query.pages;			
-			for(var i in pages){
+			for(var i in pages) {
 				page = pages[ i ];
-				if( page[ 'revisions' ] && page[ 'revisions' ][0]['*'] ){
+				if( page[ 'revisions' ] && page[ 'revisions' ][0]['*'] ) {
 					callback( page[ 'revisions' ][0]['*'] );
 				}
 			}
@@ -1363,7 +1363,7 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {Mixed} callbcak
 	*
 	*/	
-	mw.getJSON = function( arg1, arg2, arg3 ){		
+	mw.getJSON = function( arg1, arg2, arg3 ) {		
 		// Set up the url		
 		var url = false;
 		url = ( typeof arg1 == 'string' ) ? arg1 : mw.getLocalApiUrl();		
@@ -1371,40 +1371,40 @@ var MW_EMBED_VERSION = '1.1d';
 		// Set up the data: 
 		var data = null;
 		data = ( typeof arg1 == 'object' ) ? arg1 : null;
-		if( !data && typeof arg2 == 'object' ){
+		if( !data && typeof arg2 == 'object' ) {
 			data = arg2;
 		} 
 		
 		// Setup the callback
 		var callback = false;
 		callback = ( typeof arg2 == 'function') ? arg2 : false;
-		if( ! callback && ( typeof arg3 == 'function') ){
+		if( ! callback && ( typeof arg3 == 'function') ) {
 			callback = arg3;	
 		}		
 				
 		// Make sure we got a url:
-		if( !url ){ 
+		if( !url ) { 
 			mw.log( 'Error: no api url for api request' );
 			return false;
 		}		
 		
 		// Add default action if unset:
-		if( !data['action'] ){
+		if( !data['action'] ) {
 			data['action'] = 'query';
 		}
 		
 		// Add default format if not set:
-		if( !data['format'] ){ 
+		if( !data['format'] ) { 
 			data['format'] = 'json';
 		}
 		
 		mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );		
 		// Check if the request requires a "post" (that does not work with callbacks cross domain) 
-		if( mw.checkRequestPost( data )  ){
+		if( mw.checkRequestPost( data )  ) {
 			// Check if we need to setup a proxy
-			if( ! mw.isLocalDomain( url ) ){
+			if( ! mw.isLocalDomain( url ) ) {
 				// Load the proxy and issue the request
-				mw.load( 'ApiProxy', function(){							
+				mw.load( 'ApiProxy', function() {							
 					mw.ApiProxy.doRequest( url, data, callback );				
 				});				
 			}else{
@@ -1414,8 +1414,8 @@ var MW_EMBED_VERSION = '1.1d';
 			return ;
 		}
 		// If cross domain setup a callback: 
-		if( ! mw.isLocalDomain( url ) ){				 
-			if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ){
+		if( ! mw.isLocalDomain( url ) ) {				 
+			if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ) {
 				// jQuery specific: ( second ? is replaced with the callback ) 
 				url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
 			}				 
@@ -1431,14 +1431,14 @@ var MW_EMBED_VERSION = '1.1d';
 	*	true if the request requires a post request
 	* 	false if the request does not
 	*/		
-	mw.checkRequestPost = function ( data ){		
-		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ){
+	mw.checkRequestPost = function ( data ) {		
+		if( $j.inArray( data['action'],  mw.getConfig( 'apiPostActions' ) ) != -1 ) {
 			return true;
 		}
-		if( data['prop'] == 'info' && data['intoken'] ){
+		if( data['prop'] == 'info' && data['intoken'] ) {
 			return true;			
 		}
-		if( data['meta'] == 'userinfo' ){
+		if( data['meta'] == 'userinfo' ) {
 			return true;
 		}
 		return false;
@@ -1455,7 +1455,7 @@ var MW_EMBED_VERSION = '1.1d';
 	*/
 	mw.isLocalDomain = function( url ) {
 		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host ||
-			url.indexOf( '://' ) == -1 ){
+			url.indexOf( '://' ) == -1 ) {
 			return true;
 		}
 		return false;
@@ -1470,7 +1470,7 @@ var MW_EMBED_VERSION = '1.1d';
 	 */
 	mw.getToken = function( api_url, title, callback ) {
 		// Make the api_url be optional: 
-		if( typeof title == 'function' ){
+		if( typeof title == 'function' ) {
 			callback = title;
 			title = api_url;
 			api_url = mw.getLocalApiUrl();	
@@ -1514,7 +1514,7 @@ var MW_EMBED_VERSION = '1.1d';
 	/*mw.status = function( status )
 	
 	
-	var Status = function(){
+	var Status = function() {
 		
 	}*/
 	
@@ -1616,27 +1616,27 @@ var MW_EMBED_VERSION = '1.1d';
 	*	number of times waitForObject has been called 
 	*/
 	var waitTime = 1200; // About 30 seconds 
-	mw.waitForObject = function( objectName, callback, _callNumber){	
+	mw.waitForObject = function( objectName, callback, _callNumber) {	
 		//mw.log( 'waitForObject: ' + objectName  + ' cn: ' + _callNumber);		
 				
 		// Increment callNumber: 
-		if( !_callNumber ){ 
+		if( !_callNumber ) { 
 			_callNumber = 1;
 		} else {
 			_callNumber++;
 		}
 		
-		if( _callNumber > waitTime ){
+		if( _callNumber > waitTime ) {
 			mw.log( "Error: waiting for object: " + objectName + ' timeout ' );
 			callback( false ); 
 			return ;
 		}
 		
 		// If the object is defined ( or we are done loading from a callback )
-		if ( mw.isset( objectName ) || mwLoadDoneCB[ objectName ] == 'done' ){			
+		if ( mw.isset( objectName ) || mwLoadDoneCB[ objectName ] == 'done' ) {			
 			callback( objectName )
 		}else{
-			setTimeout( function( ){
+			setTimeout( function( ) {
 				mw.waitForObject( objectName, callback, _callNumber);
 			}, 25);
 		}
@@ -1648,7 +1648,7 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {Object} object Object to be checked
 	*/ 
 	mw.isEmpty = function( object ) {		
-		if( typeof object == 'string' ){ 
+		if( typeof object == 'string' ) { 
 			if( object == '' ) return true;
 			// Non empty string: 
 			return false;
@@ -1656,12 +1656,12 @@ var MW_EMBED_VERSION = '1.1d';
 		
 		// If an array check length:
 		if( Object.prototype.toString.call( object ) === "[object Array]"
-			&& object.length == 0 ){
+			&& object.length == 0 ) {
 			return true;
 		}
 		
 		// Else check as an object: 
-		for( var i in object ){ return false; }
+		for( var i in object ) { return false; }
 		
 		// Else object is empty:
 		return true;
@@ -1690,7 +1690,7 @@ var MW_EMBED_VERSION = '1.1d';
 			/*
 
 			var log_elm = document.getElementById('mv_js_log');
-			if(!log_elm){
+			if(!log_elm) {
 				document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML +
 					'<div style="position:absolute;z-index:500;bottom:0px;left:0px;right:0px;height:200px;">'+
 					'<textarea id="mv_js_log" cols="120" rows="12"></textarea>'+
@@ -1698,7 +1698,7 @@ var MW_EMBED_VERSION = '1.1d';
 	
 				var log_elm = document.getElementById('mv_js_log');
 			}
-			if(log_elm){
+			if(log_elm) {
 				log_elm.value+=string+"\n";
 			}
 			*/
@@ -1735,15 +1735,15 @@ var MW_EMBED_VERSION = '1.1d';
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
-	mw.ready = function( callback ){						
-		if( mwReadyFlag === false ){
+	mw.ready = function( callback ) {						
+		if( mwReadyFlag === false ) {
 		
 			// Add the callbcak to the onLoad function stack
 			mwOnLoadFunctions.push ( callback );
 						
 			// Set the mwSetup flag. So that onLoad functions can 
 			// be called once mwEmbed interfaces are setup.
-			if( !mwDomReadyFlag ){ 
+			if( !mwDomReadyFlag ) { 
 				//mw.log( 'set config flag' );
 				mw.setConfig( 'runSetupMwEmbed', true );
 			}else{
@@ -1761,9 +1761,9 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	* Runs all the queued functions
 	*/ 
-	mw.runReadyHooks = function ( ){		
+	mw.runReadyHooks = function ( ) {		
 		// Run all the queued functions: 
-		while( mwOnLoadFunctions.length ){
+		while( mwOnLoadFunctions.length ) {
 			mwOnLoadFunctions.pop()();
 		}
 		
@@ -1781,7 +1781,7 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {String} scriptRequest The requested path or classNames for the scriptLoader
 	* @param {Function} callback Function to call once script is loaded   
 	*/
-	mw.getScript = function( scriptRequest, callback ){
+	mw.getScript = function( scriptRequest, callback ) {
 	
 		// Set the base url based scriptLoader availability & type of scriptRequest
 		// ( presently script loader only handles "classes" not relative urls: 
@@ -1807,7 +1807,7 @@ var MW_EMBED_VERSION = '1.1d';
 		// If jQuery is available and debug is off load the scirpt via jQuery 
 		//( will use XHR if on same domain ) 
 		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {		
-			$j.getScript( url, function(){
+			$j.getScript( url, function() {
 				if( callback )
 					callback( scriptRequest );
 			}); 
@@ -1825,9 +1825,9 @@ var MW_EMBED_VERSION = '1.1d';
 		script.setAttribute( 'src', url );		
 			
 		// Attach handlers ( if using script loader it issues onDone callback as well )	 		
-		script.onload = script.onreadystatechange = function(){		
+		script.onload = script.onreadystatechange = function() {		
 			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
-				if( callback ){
+				if( callback ) {
 					callback( scriptRequest );
 				}	
 			}
@@ -1838,9 +1838,7 @@ var MW_EMBED_VERSION = '1.1d';
 	}
 	
 	/**
-	* "Get" a style sheet.
-	*
-	* Appends a style sheet to the DOM is called "getStyleSheet" to mirror wraping of jqueries getScript
+	* Get a style sheet and append the style sheet to the DOM
 	*
 	* @param {Mixed}
 	*	{Array} url List of urls to be loaded
@@ -1862,21 +1860,21 @@ var MW_EMBED_VERSION = '1.1d';
 		
 		// Check if style sheet is already included:
 		var foundSheet = false; 
-		$j( 'link' ).each( function(){
+		$j( 'link' ).each( function() {
 			var currentSheet = $j( this) .attr( 'href' );
 			var sheetParts = currentSheet.split('?');		
 			var urlParts = url.split('?');
 			//if the base url's match check the parameters:
-			if( sheetParts[0] == urlParts[0] && sheetParts[1]){
+			if( sheetParts[0] == urlParts[0] && sheetParts[1]) {
 				//mw.log(" sheet compare: " + sheetParts[1].split( '&' ).sort().join('') + ' != ' + urlParts[1].split('&').sort().join(''));
 				//Check if url params match ( sort to do string compare )						
 				if( sheetParts[1].split( '&' ).sort().join('') ==
-						urlParts[1].split('&').sort().join('') ){	 
+						urlParts[1].split('&').sort().join('') ) {	 
 					foundSheet = true;
 				}
 			}
 		} );					
-		if( foundSheet ){
+		if( foundSheet ) {
 			mw.log( 'skiped sheet: ' + url);
 			return ;
 		}
@@ -1898,8 +1896,8 @@ var MW_EMBED_VERSION = '1.1d';
 	* 	local wiki api if no apiProvider is set
 	* 	false if no local wiki api found
 	*/ 
-	mw.getApiProviderURL = function( provider_id ){		
-		if( mw.getConfig( provider_id + '_apiurl') ){
+	mw.getApiProviderURL = function( provider_id ) {		
+		if( mw.getConfig( provider_id + '_apiurl') ) {
 			return mw.getConfig( provider_id + '_apiurl');
 		}
 		return mw.getLocalApiUrl(); 
@@ -1944,12 +1942,12 @@ var MW_EMBED_VERSION = '1.1d';
 		}
 		
 		// Script-loader has jsScriptLoader name when local:
-		if( src.indexOf( 'jsScriptLoader.php' ) !== -1 ){
+		if( src.indexOf( 'jsScriptLoader.php' ) !== -1 ) {
 			mwpath = src.substr( 0, src.indexOf( 'jsScriptLoader.php' ) );			
 		}	
 		
 		// Error out if we could not get the path:
-		if( ! mwpath ){
+		if( ! mwpath ) {
 			mw.log( "Error could not get mwEmbed path " );
 			return ;
 		}
@@ -2069,7 +2067,7 @@ var MW_EMBED_VERSION = '1.1d';
 						&& 
 						src.indexOf( 'mwEmbed' ) !== -1 
 					) 
-				){
+				) {
 					mwEmbedSrc = src;
 					return mwEmbedSrc;
 				}
@@ -2138,7 +2136,7 @@ var MW_EMBED_VERSION = '1.1d';
 		}
 				
 		// Merge new params: 
-		for( var key in newParams ){
+		for( var key in newParams ) {
 			parsedUrl.queryKey[ key ] = newParams[ key ];  
 		}
 				
@@ -2205,14 +2203,14 @@ var MW_EMBED_VERSION = '1.1d';
 			return src;				
 		
 		// Get parent Url location the context URL	
-		if( contextUrl){	
+		if( contextUrl) {	
 			var parsedUrl = mw.parseUri( contextUrl );			
 		} else {
 			var parsedUrl = mw.parseUri( document.URL );
 		}
 		
 		// Check for leading slash: 
-		if( src.indexOf( '/' ) === 0 ){
+		if( src.indexOf( '/' ) === 0 ) {
 			return parsedUrl.protocol + '://' + parsedUrl.authority + src;
 		}else{
 			return parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.directory + src;
@@ -2271,7 +2269,7 @@ var MW_EMBED_VERSION = '1.1d';
 			try{
 				xmldata.loadXML( str );
 				return xmldata;
-			} catch (e){
+			} catch (e) {
 				mw.log( 'XML parse ERROR: ' + e.message );
 				return false;
 			}
@@ -2320,7 +2318,7 @@ var MW_EMBED_VERSION = '1.1d';
 		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
 		
 		// Set the User language
-		if( typeof wgUserLanguage != 'undefined' && mw.isValidLang( wgUserLanguage) ){				
+		if( typeof wgUserLanguage != 'undefined' && mw.isValidLang( wgUserLanguage) ) {				
 			mw.setConfig( 'userLanguage', wgUserLanguage )
 		}else{
 			// Grab it from the included url
@@ -2331,7 +2329,7 @@ var MW_EMBED_VERSION = '1.1d';
 		}
 				
 		// Make sure we have jQuery: 
-		mw.load( 'window.jQuery', function(){							
+		mw.load( 'window.jQuery', function() {							
 			if ( !window['$j'] ) {
 				window['$j'] = jQuery.noConflict();
 			}										
@@ -2339,7 +2337,7 @@ var MW_EMBED_VERSION = '1.1d';
 			
 			// Only load jquery ui theme sheet if ui-widget does not exist.
 			// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
-			//if( ! mw.styleRuleExists( 'ui-widget' ) ){				
+			//if( ! mw.styleRuleExists( 'ui-widget' ) ) {				
 				mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
 			//}
 			
@@ -2361,8 +2359,8 @@ var MW_EMBED_VERSION = '1.1d';
 			
 			// Run all the setup function hooks
 			// Once complete we can run .ready queued functions  
-			function runSetupFunctions(){
-				if( mwSetupFunctions.length ){
+			function runSetupFunctions() {
+				if( mwSetupFunctions.length ) {
 					mwSetupFunctions.pop()( function() {
 						runSetupFunctions();
 					} );
@@ -2381,28 +2379,28 @@ var MW_EMBED_VERSION = '1.1d';
 	* Note if using a scriptLoader all the loaders and localization converters 
 	*  are included automatically. 
 	*/
-	mw.moduleLoaderCheck = function( callback ){
+	mw.moduleLoaderCheck = function( callback ) {
 		mw.log( 'doLoaderCheck::' );
 		// Check if we are using scriptloader ( handles loader include automatically ) 
-		if( mw.getScriptLoaderPath() ){
+		if( mw.getScriptLoaderPath() ) {
 			// Do a async call to callback in cases where DOM is ready before we get to 
 			// loader config code in the same file. 
-			setTimeout(function(){
+			setTimeout(function() {
 				callback();				
 			}, 1000);
 			return ;
 		}
 		// Add the Core loader to the request
-		mw.load( 'loader.js', function(){					
+		mw.load( 'loader.js', function() {					
 			// Load all the "loaders" of the enabled modules:
 			var loaderRequest = [];			
 			var enabledModules = mw.getConfig( 'enabledModules' );		
-			for(var i=0; i < enabledModules.length; i++ ){
+			for(var i=0; i < enabledModules.length; i++ ) {
 				loaderRequest.push( 'modules/' + enabledModules[ i ] + '/loader.js' );
 			};	
 			
 			// Add the language ( if set )
-			if( mw.getConfig( 'userLanguage' ) ){
+			if( mw.getConfig( 'userLanguage' ) ) {
 				var langCode = mw.getConfig( 'userLanguage' );
 				// Upper case the first letter:
 				langCode = langCode.substr(0,1).toUpperCase() + langCode.substr( 1, langCode.length );
@@ -2411,7 +2409,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}
 								 
 			mw.setConfig('loaderContext', '' );
-			mw.load( loaderRequest, function(){
+			mw.load( loaderRequest, function() {
 				mw.log( 'Done moduleLoaderCheck request' );
 				// Set the mwModuleLoaderCheckFlag flag to true
 				mwModuleLoaderCheckFlag = true;
@@ -2444,13 +2442,13 @@ var MW_EMBED_VERSION = '1.1d';
 					rules = document.styleSheets[i].cssRules
 				else if (document.styleSheets[0].rules)
 					rules = document.styleSheets[i].rules
-				for(var j=0 ; j < rules.length ; j++ ){
+				for(var j=0 ; j < rules.length ; j++ ) {
 					var rule = rules[j].selectorText;											
 					if( rule && rule.indexOf( styleRule ) != -1 ) {
 						return true;
 					}		
 				}
-			}catch ( e ){
+			}catch ( e ) {
 				mw.log( 'Error: cant check rule on cross domain style sheet:' + document.styleSheets[i].href );
 			}
 		}
@@ -2490,7 +2488,7 @@ var MW_EMBED_VERSION = '1.1d';
  	* Will check configuration and issue a mw.setupMwEmbed call if needed
 	*/
 	mw.domReady = function ( ) {
-		if( mwDomReadyFlag ){
+		if( mwDomReadyFlag ) {
 			return ;		
 		}	
 		mw.log( 'run:domReady:: ' + document.getElementsByTagName('video').length );
@@ -2513,7 +2511,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}				
 			
 			// Check for queued functions that use mw interfaces: 
-			if ( mwOnLoadFunctions.length ){
+			if ( mwOnLoadFunctions.length ) {
 				mw.setupMwEmbed();
 				return ;
 			}	
@@ -2537,10 +2535,10 @@ var MW_EMBED_VERSION = '1.1d';
 		var minVersionParts = minVersion.split('.')
 		var clientVersionParts = clientVersion.split('.');
 		for( var i =0; i <  minVersionParts.length; i++ ) {
-			if( parseInt( clientVersionParts[i] ) > parseInt( minVersionParts[i] ) ){
+			if( parseInt( clientVersionParts[i] ) > parseInt( minVersionParts[i] ) ) {
 				return true;
 			}
-			if( parseInt( clientVersionParts[i] ) < parseInt( minVersionParts[i] ) ){
+			if( parseInt( clientVersionParts[i] ) < parseInt( minVersionParts[i] ) ) {
 				return false;
 			}
 		}
@@ -2620,11 +2618,11 @@ var MW_EMBED_VERSION = '1.1d';
 					.attr('href', '#')
 					.addClass( 'ui-state-default ui-corner-all ui-icon_link' );
 				// Add css if set: 
-				if( options.css ){
+				if( options.css ) {
 					$btn.css( options.css )
 				}
 									
-				if( options['class'] ){
+				if( options['class'] ) {
 					$btn.addClass( options['class'] )
 				}	
 								
@@ -2723,7 +2721,7 @@ function domReadyCheck() {
   var ie = /*@cc_on!@*/false;
   if (/webkit/.test(u)) {
     // safari
-    timeout = setTimeout(function(){
+    timeout = setTimeout(function() {
 			if ( document.readyState == "loaded" || 
 				document.readyState == "complete" ) {
 				i();
@@ -2734,7 +2732,7 @@ function domReadyCheck() {
   } else if ((/mozilla/.test(u) && !/(compatible)/.test(u)) ||
              (/opera/.test(u))) {
     // opera/moz
-    document.addEventListener("DOMContentLoaded",i,false);
+    document.addEventListener("DOMContentLoaded", i, false);
   } else if ( ie ) {
     // IE
     (function ( ) { 
@@ -2755,7 +2753,7 @@ function domReadyCheck() {
 // As a backup check if "body" is not null ( for dynamic inserts )
 // ( mw.domReady ignores multiple ready calls )
 var mwCheckBody = function( ) {
-	if( document.getElementsByTagName( 'body' )[0] ){
+	if( document.getElementsByTagName( 'body' )[0] ) {
 		 mw.domReady();
 	}else{
 		setTimeout( function( ) {

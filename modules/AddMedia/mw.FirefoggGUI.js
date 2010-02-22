@@ -71,7 +71,7 @@ mw.addMessages({
 /**
 * Setup firefoggGUI jquery binding
 */
-( function( $ ){ 
+( function( $ ) { 
 	$.fn.firefoggGUI = function( options ) {
 		if ( !options )
 			options = { };			

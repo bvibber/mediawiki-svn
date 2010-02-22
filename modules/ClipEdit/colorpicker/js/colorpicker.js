@@ -17,7 +17,7 @@
 			defaults = {
 				eventName: 'click',
 				onShow: function () {},
-				onBeforeShow: function(){},
+				onBeforeShow: function() {},
 				onHide: function () {},
 				onChange: function () {},
 				onSubmit: function () {},
@@ -458,7 +458,7 @@
 				} else {
 					return this;
 				}
-				return this.each(function(){
+				return this.each(function() {
 					if ($(this).data('colorpickerId')) {
 						var cal = $('#' + $(this).data('colorpickerId'));
 						cal.data('colorpicker').color = col;
