@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Interface for Parse Object each with a specialized task while parsing
  * @ingroup Parser
@@ -187,36 +186,19 @@ class ParseTree {
 		return $this->mName;
 	}
 
-	static function createParseTree($text, $rules) {
-		wfProfileIn( __METHOD__ );
-
-		$text = "~BOF" . $text;
-		$retTree = $rules["Root"]->parse($text, $rules);
-
-		wfProfileOut( __METHOD__ );
-		return $retTree;
-	}
-
 	//this function will definitely need to be seperated into data and engine layers
 	function printTree() {
 		$retString = "";
 
 		if ($this->mName == "text") {
 			$retString = htmlspecialchars($this->mMatches[0]);
-		} elseif ($this->mName == "commentline") {
-			$retString = "\n<comment>" . htmlspecialchars($this->mMatches[1]) . "</comment>";
-		} elseif ($this->mName == "bof") {
-			if (isset($this->mMatches[1])) {
-				$retString = "<ignore>" . htmlspecialchars($this->mMatches[1]) . "</ignore>";
-			}
+		} elseif ($this->mName == "newline") {
+			$retString = htmlspecialchars($this->mMatches[0]) . $this->mChildren[0]->printTree();
 		} elseif ($this->mName == "link") {
 			$retString = htmlspecialchars($this->mMatches[0]) . $this->mChildren[0]->printTree() . "]]";
 		} elseif ($this->mName == "h") {
-			$retString = "<h>" . htmlspecialchars($this->mMatches[2]) . $this->mChildren[0]->printTree() . 
-				htmlspecialchars($this->mMatches[2]) . "</h>";
-			if ($this->mMatches[1] == "\n") {
-				$retString = "\n" . $retString;
-			}
+			$retString = "<h>" . htmlspecialchars($this->mMatches[0]) . $this->mChildren[0]->printTree() . 
+				htmlspecialchars($this->mMatches[0]) . "</h>";
 		} elseif ($this->mName != "unUsed") {
 			if ($this->mChildren != NULL) {
 				foreach ($this->mChildren as $crrnt) {

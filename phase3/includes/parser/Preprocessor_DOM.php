@@ -74,14 +74,14 @@ class Preprocessor_DOM implements Preprocessor {
 			"TplArg" => new ParsePattern("tplarg", '/^{{{/s', "TemplateSeq", '}}}'),
 			"TplPart" => new ParsePattern("part", '/^\|/s', "TplPartList"),
 			"Link" => new ParsePattern("link", '/^\[\[/s', "MainQuant", ']]'),
-			"Heading" => new ParsePattern("h", '/^(\n|~BOF)(={1,6})/s', "HeadingQuant", '~2'),
+			"NewLine" => new ParsePattern("newline", '/^\n/s', "NewLineChoice"),
+			"Heading" => new ParsePattern("h", '/^={1,6}/s', "HeadingQuant", '~0'),
+			"CommentLine" => new ParsePattern("commentline", '/^(?:<!--.*?-->\n)+/s'),
 			"XmlExt" => new ParsePattern("ext", '/^<(?=(' . $xmlishRegex . '))/si', "XmlExtSeq", '~1'),
-			"CommentLine" => new ParsePattern("commentline", '/^\n((?:<!--.*?-->\n)+)/s'),
 			"Comment" => new ParsePattern("comment", '/^<!--.*?(?:-->|$)/s'),
 			"OnlyInclude" => new ParsePattern("ignore", '/^<\/?onlyinclude>/s'),
 			"NoInclude" => new ParsePattern("ignore", '/^<\/?noinclude>/s'),
 			"IncludeOnly" => new ParsePattern("ignore", '/^<includeonly>.*?<\/includeonly>/s'),
-			"BeginFile" => new ParsePattern("bof", '/^~BOF/s'),
 			"MainText" => new ParsePattern("text", '/^.[^{}\[\]<\n|=]*/s'),
 			"XmlName" => new ParsePattern("name", '/^.*?(?= |\/>|>)/s'),
 			"XmlAttr" => new ParsePattern("attr", '/^.*?(?=\/>|>)/s'),
@@ -89,7 +89,8 @@ class Preprocessor_DOM implements Preprocessor {
 			"XmlOpened" => new ParsePattern("unUsed", '/^>/si'),
 			"XmlInner" => new ParsePattern("inner", '/^.*?(?=<\/~r>|$)/si'),
 			"XmlCloseTag" => new ParsePattern("close", '/^<\/~r>/si'),
-			"Root" => new ParseQuant("root", "MainChoice", '/^$/'),
+			"StartQuant" => new ParseQuant("unnamed", "MainChoice", '/^$/'),
+			"BOFQuant" => new ParseQuant("unnamed", "NewLineChoice", NULL, 0, 1),
 			"MainQuant" => new ParseQuant("unnamed", "MainChoice", '/^~r/s'),
 			"HeadingQuant" => new ParseQuant("unnamed", "MainChoice", '/^~r(?=(?: *<!--.*?-->)*(?:\n|$))/s'),
 			"TplTitle" => new ParseQuant("title", "MainChoice", '/^(?=~r|\|)/s'),
@@ -98,24 +99,27 @@ class Preprocessor_DOM implements Preprocessor {
 			"TplName" => new ParseQuant("name", "TplTest", '/^=/s', 0, 1),
 			"TplValue" => new ParseQuant("value", "MainChoice", '/^(?=~r|\|)/s'),
 			"XmlCloseQuant" => new ParseQuant("unnamed", "XmlCloseTag", NULL, 0, 1),
-			"MainChoice" => new ParseChoice("unnamed", array("CurlyChoice", "XmlChoice", 
-				"Heading", "CommentLine", "Link", "BeginFile", "MainText")),
+			"MainChoice" => new ParseChoice("unnamed", array("CurlyChoice", "XmlChoice", "NewLine", "Link", "MainText")),
 			"CurlyChoice" => new ParseChoice("unnamed", array("Template", "TplArg"), "{"),
 			"XmlChoice" => new ParseChoice("unnamed", array("Comment", "OnlyInclude", "NoInclude", "IncludeOnly", "XmlExt"), "<"),
+			"NewLineChoice" => new ParseChoice("unnamed", array("Heading", "CommentLine")),
 			"TplPartList" => new ParseChoice("unnamed", array("TplPartSeq", "TplValue")),
 			"XmlClose" => new ParseChoice("unnamed", array("XmlClosed", "XmlOpenedSeq")),
+			"StartSeq" => new ParseSeq("root", array("BOFQuant", "StartQuant")),
 			"TemplateSeq" => new ParseSeq("unnamed", array("TplTitle", "TplPartQuant")),
 			"TplPartSeq" => new ParseSeq("unnamed", array("TplName", "TplValue")),
 			"XmlExtSeq" => new ParseSeq("unnamed", array("XmlName", "XmlAttr", "XmlClose")),
 			"XmlOpenedSeq" => new ParseSeq("unnamed", array("XmlOpened", "XmlInner", "XmlCloseQuant")));
 		if ($flags & Parser::PTD_FOR_INCLUSION) {
+			$rules["BOFQuant"] = new ParseQuant("unnamed", "StartChoice", NULL, 0, 1);
+			$rules["StartChoice"] = new ParseChoice("unnamed", array("OnlyIncludeBOF", "NewLineChoice"));
+			$rules["OnlyIncludeBOF"] = new ParsePattern("ignore", '/^.*?<onlyinclude>/s');
 			$rules["OnlyInclude"] = new ParsePattern("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
 			$rules["NoInclude"] = new ParsePattern("ignore", '/^<noinclude>.*?<\/noinclude>/s');
 			$rules["IncludeOnly"] = new ParsePattern("ignore", '/^<\/?includeonly>/s');
-			$rules["BeginFile"] = new ParsePattern("bof", '/^~BOF(.*?<onlyinclude>)?/s');
 		}
 
-		$parseTree = ParseTree::createParseTree($text, $rules);
+		$parseTree = $rules["StartSeq"]->parse($text, $rules);
 		$xml = $parseTree->printTree();
 
 		// To DOM
