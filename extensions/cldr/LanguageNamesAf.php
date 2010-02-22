@@ -1,0 +1,21 @@
+<?php
+$names = array(
+'af' => 'Afrikaans',
+'de' => 'Duits',
+'en' => 'Engels',
+'es' => 'Spaans',
+'fr' => 'Frans',
+'he' => 'Hebreeus',
+'it' => 'Italiaans',
+'ja' => 'Japannees',
+'nr' => 'Suid-Ndebele',
+'pt' => 'Portugees',
+'ru' => 'Russies',
+'ss' => 'Swazi',
+'st' => 'Suid-Sotho',
+'tk' => 'Turkmeens',
+'ve' => 'Venda',
+'xh' => 'Xhosa',
+'zh' => 'Sjinees',
+'zu' => 'Zoeloe',
+);
