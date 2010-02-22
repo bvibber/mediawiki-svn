@@ -64,8 +64,9 @@ function importRepo( $repoName, $start = null ) {
 
 	echo "Syncing repo $repoName from r$start to HEAD...\n";
 
-	if ( !$svn->canConnect() )
+	if ( !$svn->canConnect() ) {
 		die( "Unable to connect to repository.\n" );
+	}
 
 	while ( true ) {
 		$log = $svn->getLog( '', $start, $start + $chunkSize - 1 );

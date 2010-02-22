@@ -109,13 +109,14 @@ class SubversionShell extends SubversionAdaptor {
 			$this->getExtraArgs(),
 			wfEscapeShellArg( $this->mRepo ) );
 
-		$Result = wfShellExec( $command );
-		if ( $Result == "" )
+		$result = wfShellExec( $command );
+		if ( $result == "" ) {
 			return false;
-		elseif ( strpos( $Result, "No repository found" ) !== false )
+		} elseif ( strpos( $result, "No repository found" ) !== false ) {
 			return false;
-		else
+		} else {
 			return true;
+		}
 	}
 
 	function getFile( $path, $rev = null ) {
