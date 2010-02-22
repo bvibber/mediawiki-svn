@@ -25,7 +25,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedUserRights',
 	'version' => '0.12',
 	'author' => array( "Łukasz 'TOR' Garczewski", 'Charles Melbye' ),
-	'description' => 'Easy global user rights administration',
 	'descriptionmsg' => 'gblrights-desc',
 );
 

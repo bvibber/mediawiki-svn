@@ -31,7 +31,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'NewUserMessage',
 	'version'        => NEWUSERMESSAGE_VERSION,
 	'author'         => array( "[http://www.organicdesign.co.nz/User:Nad Nad]", 'Siebrand Mazeland' ),
-	'description'    => "Add a [[MediaWiki:NewUserMessage|message]] to newly created user's talk pages",
 	'descriptionmsg' => 'newusermessage-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:NewUserMessage',
 );

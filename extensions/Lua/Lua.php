@@ -14,7 +14,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Lua parser extensions',
 	'author'         => 'Fran Rogers',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Lua',
-	'description'    => 'Extends the parser with support for embedded blocks of Lua code',
 	'descriptionmsg' => 'lua_desc',
 );
 

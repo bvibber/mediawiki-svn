@@ -71,15 +71,15 @@ if (!$wgWikiTrustRobots)
 
 global $wgExtensionFunctions, $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array(
-       'name' => 'WikiTrust',
-       'author' => 'Ian Pye, Luca de Alfaro, Bo Adler',
-       'url' => 'http://wikitrust.soe.ucsc.edu',
-       'description' => 'Adds wikitrust tab to visualize article trust and provide origin rev on click.'
-   );
+	'name' => 'WikiTrust',
+	'author' => 'Ian Pye, Luca de Alfaro, Bo Adler',
+	'url' => 'http://wikitrust.soe.ucsc.edu',
+	'description' => 'Adds wikitrust tab to visualize article trust and provide origin rev on click.'
+);
 wfWikiTrustSetup();
 
 
-// Quick debugging functions -- 
+// Quick debugging functions --
 // They add a debugging level and call WikiTrust::Debug.
 function wfWikiTrustDebug($msg){
   WikiTrust::debug($msg, WIKITRUST_DEBUG);
@@ -102,7 +102,7 @@ function wfWikiTrustSetup() {
     // Fixes the command-line options for eval_online_wiki.
     global $wgWikiTrustBlobPath, $wgWikiTrustCmdExtraArgs;
     if ($wgWikiTrustBlobPath) {
-       $wgWikiTrustCmdExtraArgs = $wgWikiTrustCmdExtraArgs . 
+       $wgWikiTrustCmdExtraArgs = $wgWikiTrustCmdExtraArgs .
 	 " -blob_base_path " . $wgWikiTrustBlobPath;
     }
 

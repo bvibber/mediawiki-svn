@@ -16,7 +16,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
 	'version'        => '1.5',
-	'description'    => 'Extended permissions system',
 	'descriptionmsg' => 'grouppermissions-desc2',
 );
 

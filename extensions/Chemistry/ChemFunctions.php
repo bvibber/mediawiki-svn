@@ -17,7 +17,6 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'ChemFunctions',
-	'description'    => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
 	'descriptionmsg' => 'chemicalsource-desc',
 	'author'         => 'Dirk Beetstra',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Chemistry',

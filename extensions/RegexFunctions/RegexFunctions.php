@@ -18,7 +18,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:RegexFunctions',
 	'version'        => '1.4.1',
-	'description'    => 'Regular Expression parser functions',
 	'descriptionmsg' => 'regexfunctions-desc',
 );
 

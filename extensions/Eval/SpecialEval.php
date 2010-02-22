@@ -15,7 +15,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Eval',
 	'author'         => 'Ævar Arnfjörð Bjarmason',
-	'description'    => 'adds [[Special:Eval|an interface]] to the <code>eval()</code> function',
 	'descriptionmsg' => 'eval-desc'
 );
 

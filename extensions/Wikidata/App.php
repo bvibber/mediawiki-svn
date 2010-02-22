@@ -13,7 +13,6 @@ $wgExtensionCredits['other'][] = array(
 		'André Malafaya Baptista'
 	),
 	'url'             => 'http://meta.wikimedia.org/wiki/Wikidata',
-	'description'     => 'Adds wiki-like database for various types of content.',
 	'descriptionmsg'  => 'wikidata-desc',
 );
 

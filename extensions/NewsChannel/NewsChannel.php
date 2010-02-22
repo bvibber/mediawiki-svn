@@ -79,8 +79,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'News Channel',
 	'version'        => '2.1',
 	'author'         => '[mailto:codedriller@gmail.com Iaroslav Vassiliev]',
-	'description'    => 'This MediaWiki extension represents a news channel for wiki project. ' .
-		'The channel is implemented as a dynamic [[Special:NewsChannel|special page]].',
 	'descriptionmsg' => 'newschannel-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:News_Channel',
 );

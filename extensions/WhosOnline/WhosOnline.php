@@ -19,7 +19,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'WhosOnline',
 	'version' => '1.3',
 	'author' => 'Maciej Brencz',
-	'description' => 'Creates list of logged-in & anons currently online',
 	'descriptionmsg' => 'whosonline-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WhosOnline',
 );

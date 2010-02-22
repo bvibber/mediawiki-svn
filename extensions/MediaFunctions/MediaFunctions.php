@@ -15,7 +15,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.2',
 	'author' => 'Rob Church',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MediaFunctions',
-	'description' => 'Parser functions for obtaining information about media files',
 	'descriptionmsg' => 'mediafunctions-desc',
 );
 

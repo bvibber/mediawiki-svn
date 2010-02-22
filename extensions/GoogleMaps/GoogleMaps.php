@@ -189,6 +189,5 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => '[http://www.evanmiller.org/ Evan Miller]',
 	'version'        => GOOGLE_MAPS_EXTENSION_VERSION,
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Google_Maps',
-	'description'    => 'Easily create maps with wiki-fied markers',
 	'descriptionmsg' => 'gm-descs',
 );

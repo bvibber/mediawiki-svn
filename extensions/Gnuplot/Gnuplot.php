@@ -22,7 +22,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Gnuplot',
 	'author'         => 'Christina Pöpper',
-	'description'    => 'Adds the tag <code><nowiki><gnuplot></nowiki></code> to use Gnuplot',
 	'descriptionmsg' => 'gnuplot-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Gnuplot',
 );

@@ -7,10 +7,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['parserhook']['geoserver'] = array(
 	'path' => __FILE__,
-        'name' => 'geoserver',
-        'author' => 'Jens Frank',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:geoserver',
-        'description' => 'Allows geotagging using the <nowiki><geo></nowiki> tag. Saves geodata in a WFS-T server, e.g. geoserver.',
+	'name' => 'geoserver',
+	'author' => 'Jens Frank',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:geoserver',
+	'description' => 'Allows geotagging using the <nowiki><geo></nowiki> tag. Saves geodata in a WFS-T server, e.g. geoserver.',
 );
 
 $wgExtensionFunctions[] = "wfGeoserverExtension";

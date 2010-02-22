@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
   echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
   die();
 }
-                
+
 ## Options:
 # $wgBreadCrumbsDelimiter - set the delimiter
 $wgBreadCrumbsDelimiter = ' &gt; ';
@@ -26,14 +26,13 @@ $wgExtensionMessagesFiles['Breadcrumbs'] = dirname(__FILE__) . '/BreadCrumbs.i18
 
 ## Register extension credits:
 $wgExtensionCredits['parserhook'][] = array(
-  'path'           => __FILE__,
-  'name'           => 'BreadCrumbs',
-  'author'         => 'Manuel Schneider',
-  'url'            => 'http://www.mediawiki.org/wiki/Extension:BreadCrumbs',
-  'description'    => 'Shows a breadcrumb navigation.',
-  'descriptionmsg' => 'breadcrumbs-desc',
+	'path'           => __FILE__,
+	'name'           => 'BreadCrumbs',
+	'author'         => 'Manuel Schneider',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:BreadCrumbs',
+	'descriptionmsg' => 'breadcrumbs-desc',
 );
-                                
+
 ## Set Hook:
 
 ## Showing and updating the breadcrumbs trail

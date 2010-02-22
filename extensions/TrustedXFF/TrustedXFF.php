@@ -21,7 +21,6 @@ $wgTrustedXffFile = $IP . '/cache/trusted-xff.cdb';
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'TrustedXFF',
-	'description'    => 'Handling of trusted proxy addresses (XFF)',
 	'descriptionmsg' => 'trustedxff-desc',
 	'author'         => 'Tim Starling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TrustedXFF',

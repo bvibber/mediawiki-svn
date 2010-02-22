@@ -30,7 +30,6 @@ if(!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'JSKit',
-	'description'    => 'Integrates js-kit tools onto a wiki page',
 	'descriptionmsg' => 'jskit-desc',
 	'version'        => '0.1',
 	'author'         => 'Ryan Schmidt',

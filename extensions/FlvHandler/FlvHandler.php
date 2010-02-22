@@ -22,7 +22,6 @@ $wgExtensionCredits['media'][] = array(
 	'version'      => 'r3',
 	'author'       => 'Adam Nielsen', 
 	'url'          => 'http://www.mediawiki.org/wiki/Extension:FlvHandler',
-	'description'  => 'Allow Flash Video (.flv) files to be used in standard image tags (e.g. <nowiki>[[Image:Movie.flv]]</nowiki>)',
 	'descriptionmsg' => 'flvhandler_desc'
 );
 

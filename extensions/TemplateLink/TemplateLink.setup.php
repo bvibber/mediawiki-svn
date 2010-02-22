@@ -24,7 +24,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.1',
 	'author' =>'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
-	'description' => 'This extension can show a template as a new page',
 	'descriptionmsg' => 'templatelink_desc',
 );
 
@@ -34,7 +33,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.2',
 	'author' =>'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
-	'description' => 'This extension can show a template as a new page'
+	'descriptionmsg' => 'templatelink_desc',
 );
 
 $dir = dirname(__FILE__) . '/';

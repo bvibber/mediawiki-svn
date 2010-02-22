@@ -24,7 +24,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '1.1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:PovWatch',
 	'author'         => 'Tim Starling',
-	'description'    => 'Extension for pushing pages on to the watchlists of other users',
 	'descriptionmsg' => 'povwatch_desc',
 );
 

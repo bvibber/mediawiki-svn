@@ -25,7 +25,6 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'CategoryWatch',
 	'author'         => '[http://www.organicdesign.co.nz/User:Nad User:Nad]',
-	'description'    => 'Extends watchlist functionality to include notification about membership changes of watched categories',
 	'descriptionmsg' => 'categorywatch-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryWatch',
 	'version'        => CATEGORYWATCH_VERSION,

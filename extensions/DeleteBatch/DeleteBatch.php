@@ -19,7 +19,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.3',
 	'author' => 'Bartek Łapiński',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DeleteBatch',
-	'description' => 'Deletes a batch of pages',
 	'descriptionmsg' => 'deletebatch-desc',
 );
 

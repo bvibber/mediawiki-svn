@@ -19,7 +19,6 @@ $wgExtensionCredits['specialpage'][]= array(
 	'version'        => DT_VERSION,
 	'author'         => 'Yaron Koren',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Data_Transfer',
-	'description'    => 'Allows for importing and exporting data contained in template calls',
 	'descriptionmsg' => 'dt-desc',
 );
 

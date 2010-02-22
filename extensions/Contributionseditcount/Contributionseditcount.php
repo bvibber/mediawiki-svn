@@ -16,7 +16,6 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Contributionseditcount',
-	'description' => 'Displays an edit count on Special:Contributions',
 	'descriptionmsg' => 'contributionseditcount-desc',
 	'author' => array( 'Ævar Arnfjörð Bjarmason', 'Chad Horohoe' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Contributionseditcount',

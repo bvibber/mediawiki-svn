@@ -15,7 +15,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Unicode Converter',
 	//'version' => '1.1',
 	'author' => 'Tim Starling',
-	'description' => 'A simple example of a special page module. Given a string in UTF-8, it converts it to HTML entities suitable for an ISO 8859-1 web page',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UnicodeConvertor',
 	'descriptionmsg' => 'unicodeconverter-desc',
 );

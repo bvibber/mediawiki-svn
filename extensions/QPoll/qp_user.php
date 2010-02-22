@@ -57,7 +57,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '0.6.4',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
-	'description' => 'Allows creation of polls',
 	'descriptionmsg' => 'qp_desc',
 );
 $wgExtensionCredits['specialpage'][] = array(
@@ -66,7 +65,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.6.4',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QPoll',
-	'description' => 'QPoll extension [[Special:PollResults]] page for viewing results of the polls',
 	'descriptionmsg' => 'qp_desc-sp',
 );
 

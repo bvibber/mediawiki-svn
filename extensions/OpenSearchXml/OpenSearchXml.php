@@ -23,7 +23,6 @@
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'OpenSearchXml',
-	'description'    => 'OpenSearch XML interface provides for text extracts',
 	'descriptionmsg' => 'opensearchxml-desc',
 	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OpenSearchXml'

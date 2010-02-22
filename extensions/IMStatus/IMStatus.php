@@ -43,7 +43,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.3',
 	'author' => array( 'PatheticCockroach', 'various MediaWiki contributors' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:IM_Status',
-	'description' => 'Adds tags to show various IM online status (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'descriptionmsg' => 'imstatus-desc'
 );
 

@@ -38,7 +38,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'FixedImage',
 	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:FixedImage',
-	'description'    => 'Just include an image',
 	'descriptionmsg' => 'fixedimage-desc',
 );
 $wgExtensionMessagesFiles['FixedImage'] =  dirname(__FILE__) . '/FixedImage.i18n.php';

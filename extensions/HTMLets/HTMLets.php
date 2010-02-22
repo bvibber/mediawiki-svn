@@ -24,7 +24,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'HTMLets', 
 	'author'         => 'Daniel Kinzler', 
 	'url'            => 'http://mediawiki.org/wiki/Extension:HTMLets',
-	'description'    => 'lets you inline HTML snippets from files',
 	'descriptionmsg' => 'htmlets-desc',
 );
 $wgExtensionMessagesFiles['HTMLets'] =  dirname(__FILE__) . '/HTMLets.i18n.php';

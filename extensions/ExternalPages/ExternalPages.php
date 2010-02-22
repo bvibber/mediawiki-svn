@@ -59,7 +59,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.1',
 	'author' => 'Ariel Glenn',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ExternalPages',
-	'description' => 'Retrieve and display page from a remote WMF site',
 	'descriptionmsg' => 'externalpages-desc',
 );
 

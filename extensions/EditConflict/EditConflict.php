@@ -50,7 +50,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.4.2',
 	'author' => 'QuestPC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditConflict',
-	'description' => '[[Special:CurrentEdits]] page where current edits can be monitored',
 	'descriptionmsg' => 'editconflict_desc'
 );
 

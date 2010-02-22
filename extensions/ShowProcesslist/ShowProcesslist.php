@@ -10,7 +10,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'ShowProcesslist',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Show_Process_List',
 	'author'         => 'Brion VIBBER',
-	'description'    => 'Display the output of SHOW FULL PROCESSLIST',
 	'descriptionmsg' => 'showprocesslist-desc',
 );
 

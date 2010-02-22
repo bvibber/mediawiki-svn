@@ -36,7 +36,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Wikilog',
 	'version'        => '1.0.99.1dev',
 	'author'         => 'Juliano F. Ravasi',
-	'description'    => 'Adds blogging features, creating a wiki-blog hybrid.',
 	'descriptionmsg' => 'wikilog-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
 );

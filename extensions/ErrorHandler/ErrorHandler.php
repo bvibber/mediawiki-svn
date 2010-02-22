@@ -13,7 +13,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'ErrorHandler',
 	'author'         => 'Alexandre Emsenhuber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ErrorHandler',
-	'description'    => 'Error handler for MediaWiki',
 	'descriptionmsg' => 'errorhandler-desc',
 );
 

@@ -37,7 +37,6 @@ $wgExtensionCredits['media'][] = array(
 	'author' => 'Jack D. Pond',
 	'version' => '1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
-	'description' => 'Provide namespace-based access restriction features to uploaded files/images',
 	'descriptionmsg' => 'nsfilerepo-desc'
 );
 

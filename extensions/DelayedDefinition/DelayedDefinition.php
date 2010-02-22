@@ -19,7 +19,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'        => '0.5.0',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DelayedDefinition',
 	'author'         => 'Robert Rohde',
-	'description'    => 'Allow for wikicode to be defined separately from where it is displayed',
 	'descriptionmsg' => 'delaydef-desc',
 );
 $dir = dirname( __FILE__ );

@@ -17,7 +17,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => '[http://spiele.j-crew.de Thomas Bleher]',
 	'version'        => '0.2',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Commentbox',
-	'description'    => 'Adds a commentbox to certain pages',
 	'descriptionmsg' => 'commentbox-desc',
 );
 

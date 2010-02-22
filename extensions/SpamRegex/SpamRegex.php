@@ -34,7 +34,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.2.2',
 	'author' => array( 'Bartek Łapiński', 'Alexandre Emsenhuber', 'Jack Phoenix' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SpamRegex',
-	'description' => 'Filters out unwanted phrases in edited pages, based on regular expressions',
 	'descriptionmsg' => 'spamregex-desc',
 );
 

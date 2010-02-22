@@ -14,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Authors',
 	'author'         => array( 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
-	'description'    => 'Appends a list of contributors to articles',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Authors',
 	'descriptionmsg' => 'authors-desc',
 );

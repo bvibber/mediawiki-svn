@@ -21,7 +21,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'MultipleUpload',
 	'author' => 'Travis Derouin',
 	'version' => '1.01',
-	'description' => 'Allows users to upload several files at once.',
 	'descriptionmsg' => 'multipleupload-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );

@@ -19,7 +19,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'FormatEmail',
 	'author' => 'Travis Derouin',
-	'description' => 'Allows custom headers/footers to be added to user to user emails.',
 	'descriptionmsg' => 'email-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FormatEmail',
 );

@@ -21,7 +21,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
 	'version'        => '1.1',
-	'description'    => 'Allows adding additional items to the Toolbox',
 	'descriptionmsg' => 'grouppermissions-desc4',
 );
 

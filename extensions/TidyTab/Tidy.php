@@ -14,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 	'version'        => '1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:TidyTab',
 	'author'         => 'Ævar Arnfjörð Bjarmason',
-	'description'    => 'Adds a tidy or untidy tab (depending on $wgUseTidy) on normal pages allowing for overriding the global HTML tidy setting for a single view',
 	'descriptionmsg' => 'tidy-desc',
 );
 

@@ -64,10 +64,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => "SimpleSecurity",
 	'author'      => "[http://www.organicdesign.co.nz/User:Nad User:Nad]",
-	'description' => "Extends the MediaWiki article protection to allow restricting viewing of article content",
 	'url'         => "http://www.mediawiki.org/wiki/Extension:SimpleSecurity",
 	'version'     => SIMPLESECURITY_VERSION,
-	'descmsg'     => 'security-desc',
+	'descriptionmsg' => 'security-desc',
 
 );
 

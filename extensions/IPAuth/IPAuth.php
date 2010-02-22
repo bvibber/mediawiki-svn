@@ -42,7 +42,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'IPAuth',
 	'author' => 'Daniel Kinzler for Wikimedia Deutschland',
 	'url' => 'http://mediawiki.org/wiki/Extension:IPAuth',
-	'description' => 'Automatic login from fixed IPs',
 	'descriptionmsg' => 'ipauth-desc',
 );
 

@@ -18,7 +18,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'ContributorsAddon',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ContributorsAddon',
 		'author' => 'Tim Laqua',
-		'description' => 'Adds JS onMouseOver popups to "Main Contributors" links',
 		'descriptionmsg' => 'contributorsaddon-desc',
 	);
 

@@ -37,7 +37,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'CharInsert',
 	'author' => 'Brion Vibber',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CharInsert',
-	'description' => 'Allows creation of JavaScript box for inserting non-standard characters',
 	'descriptionmsg' => 'charinsert-desc',
 );
 

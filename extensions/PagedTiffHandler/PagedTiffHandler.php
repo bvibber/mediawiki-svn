@@ -50,7 +50,6 @@ $wgExtensionCredits['media'][] = array(
 		'Marc Reymann',
 		'Markus Glaser for Wikimedia Deutschland'
 	),
-	'description' => 'Handler for viewing paged TIFF files in image mode',
 	'descriptionmsg' => 'tiff-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PagedTiffHandler',
 );

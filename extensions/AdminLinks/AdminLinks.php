@@ -14,7 +14,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.1.2',
 	'author' => 'Yaron Koren',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Admin_Links',
-	'description' => 'A special page that holds helpful links for administrators',
 	'descriptionmsg'  => 'adminlinks-desc',
 );
 

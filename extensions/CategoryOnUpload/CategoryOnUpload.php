@@ -26,7 +26,6 @@ $wgExtensionCredits[ 'other' ][] = array(
 	'url'           => 'http://www.mediawiki.org/wiki/Extension:CategoryOnUpload',
 	'author'        => 'Robert Leverington',
 	'version'       => '1.1.0',
-	'description'   => 'Prompts a user to select a category when uploading a file.',
 	'decriptionmsg' => 'categoryonupload-desc'
 );
 

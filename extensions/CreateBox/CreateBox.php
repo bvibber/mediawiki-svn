@@ -40,7 +40,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author' => 'Ross McClure',
 	'version' => '1.6',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CreateBox',
-	'description' => 'Specialized inputbox for page creation',
 	'descriptionmsg' => 'createbox-desc',
 );
 

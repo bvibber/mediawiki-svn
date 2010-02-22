@@ -13,7 +13,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'author' => 'Jure Kajzer - freakolowsky <jure.kajzer@abakus.si>',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:TableMod',
-	'description' => 'Wiki-table manipulation',
 	'descriptionmsg' => 'tablemod-desc',
 	'version' => '0.1.0',
 );

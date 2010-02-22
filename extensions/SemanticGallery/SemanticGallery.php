@@ -16,7 +16,6 @@ function semanticGallery_Setup()
 		'version'         => '0.3.1',
 		'author'          => array( 'Rowan Rodrik van der Molen' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Gallery',
-		'description'     => 'Adds a gallery output format to SMW inline queries',
 		'descriptionmsg'  => 'semanticgallery-desc',
 	);
 

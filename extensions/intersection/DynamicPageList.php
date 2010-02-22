@@ -43,7 +43,6 @@ $wgHooks['ParserFirstCallInit'][] = 'wfDynamicPageList';
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'DynamicPageList',
-	'description'    => 'outputs a bulleted list of the most recent items residing in a category, or a union of several categories',
 	'descriptionmsg' => 'intersection-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Intersection',
 	'author'         => array( '[http://en.wikinews.org/wiki/User:Amgine Amgine]', '[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson]' ),

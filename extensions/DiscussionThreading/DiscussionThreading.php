@@ -21,7 +21,6 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Jack D. Pond, Daniel Brice',
 	'version' => '1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
-	'description' => 'Add Threading to discussion (talk) pages',
 	'descriptionmsg' => 'discussionthreading-desc',
 );
 

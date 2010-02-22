@@ -61,7 +61,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => array( 'Bartek Łapiński', 'Tomasz Klim', 'Piotr Molski', 'Adrian Wieczorek', 'Alexandre Emsenhuber', 'Jack Phoenix' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RegexBlock',
 	'version' => '1.2.1',
-	'description' => 'Extension used for blocking users names and IP addresses with regular expressions. Contains both the blocking mechanism and a special page to add/manage blocks.',
 	'descriptionmsg' => 'regexblock-desc',
 );
 

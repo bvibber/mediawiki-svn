@@ -22,7 +22,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Minimum Username Length',
 	'version' => '1.1',
 	'author' => 'Rob Church',
-	'description' => 'Enforce a minimum username length',
 	'descriptionmsg' => 'minnamelength-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Minimum_Name_Length',
 );

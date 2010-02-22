@@ -41,7 +41,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => array( 'Tom Maaswinkel', 'Niklas Laxström', 'Roan Kattouw' ),
 	'version'        => '0.3',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LocalisationUpdate',
-	'description'    => 'Keeps the localised messages as up to date as possible',
 	'descriptionmsg' => 'localisationupdate-desc',
 );
 

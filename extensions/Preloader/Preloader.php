@@ -23,7 +23,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Rob Church',
 	'version'        => '1.1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Preloader',
-	'description'    => 'Provides customisable per-namespace boilerplate text for new pages',
 	'descriptionmsg' => 'preloader-desc',
 );
 $wgExtensionMessagesFiles['Preloader'] =  dirname(__FILE__) . '/Preloader.i18n.php';

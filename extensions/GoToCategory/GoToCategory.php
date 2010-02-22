@@ -14,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'GoToCategory',
 	'version'        => '1.0',
 	'author'         => 'Tim Laqua',
-	'description'    => "Checks search terms against the Category: namespace for Go 'jump to page' functionality",
 	'descriptionmsg' => 'gotocategory-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GoToCategory',
 );

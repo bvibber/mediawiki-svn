@@ -45,7 +45,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Oversight',
 	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Oversight',
-	'description'    => 'Hide individual revisions from all users for legal reasons, etc.',
 	'descriptionmsg' => 'hiderevision-desc',
 );
 

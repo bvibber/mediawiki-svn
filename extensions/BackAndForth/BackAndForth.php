@@ -18,7 +18,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Back and Forth',
 	'author' => 'Rob Church',
-	'description' => 'Adds "Next" and "Previous" alphabetic paging links to the top of articles',
 	'descriptionmsg' => 'backforth-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
 );

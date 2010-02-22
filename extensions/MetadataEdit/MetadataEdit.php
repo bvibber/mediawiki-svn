@@ -14,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'MetadataEdit',
 	'author' => array( 'Magnus Manske', 'Alexandre Emsenhuber' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MetadataEdit',
-	'description' => 'Put categories, language links and allowed templates in a separate text box while editing pages',
 	'descriptionmsg' => 'metadataedit-desc',
 	'version' => '0.1',
 );

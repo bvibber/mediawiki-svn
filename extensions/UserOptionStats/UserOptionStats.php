@@ -28,7 +28,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'User Option Statistics',
 	'version'        => '1.0',
 	'author'         => 'Niklas Laxström',
-	'description'    => '[[Special:UserOptionStats|Special page]] for reporting on Mediawiki user option usage',
 	'descriptionmsg' => 'useroptionstats-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:UserOptionStats',
 );

@@ -23,7 +23,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'GetFamily',
 	'version' => '1.0.1',
 	'author' => 'Łukasz Matysiak',
-	'description' => 'Generates a family file for pywikipediabot',
 	'descriptionmsg' => 'getfamily-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:GetFamily'
 );

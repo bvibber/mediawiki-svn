@@ -14,7 +14,6 @@ if(!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Checkpoint',
-	'description'    => 'Allows one to save an edit and continue editing',
 	'descriptionmsg' => 'checkpoint-desc',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Checkpoint',

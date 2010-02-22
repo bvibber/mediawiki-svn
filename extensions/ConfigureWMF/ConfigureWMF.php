@@ -10,7 +10,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Victor Vasiliev',
 	'version'        => '0.1not-for-productional-use',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Configure_(WMF)',
-	'description'    => 'Allows to change configuration of Wikimedia sites',
 	'descriptionmsg' => 'configurewmf-desc',
 );
 

@@ -18,7 +18,6 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'CreatePage',
 	'author'         => array( 'Travis Derouin', 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
-	'description'    => 'Adds a [[Special:CreatePage|special page]] for creating new pages',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page',
 	'descriptionmsg' => 'createpage-desc',
 );

@@ -20,7 +20,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Player',
 	'author' => 'Daniel Kinzler, brightbyte.de',
 	'url' => 'http://mediawiki.org/wiki/Extension:Player',
-	'description' => 'embedded multimedia playback using common browser plugins',
 	'descriptionmsg' => 'player-desc',
 );
 

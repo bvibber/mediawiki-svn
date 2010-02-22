@@ -56,7 +56,6 @@ $wgExtensionCredits['media'][] = array(
 	'name'           => 'Wiki@Home',
 	'author'         => 'Michael Dale',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WikiAtHome',
-	'description'    => 'Enables distributing transcoding & flattening video jobs to clients using firefogg.',
 	'descriptionmsg' => 'wah-desc',
 );
 /******************* CONFIGURATION STARTS HERE **********************/

@@ -20,9 +20,8 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'AjaxLogin',
 	'version' => '2.1.0',
 	'author' => array( 'Inez Korczyński', 'Jack Phoenix' ),
-	'description' => 'Dynamic box which allow users to login and remind password',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxLogin',
-	'descmsg' => 'ajaxlogin-desc',
+	'descriptionmsg' => 'ajaxlogin-desc',
 );
 
 // Array of skins for which AjaxLogin is enabled.

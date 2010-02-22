@@ -7,7 +7,6 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Tab0',
 	'author'         => 'Agbad',
-	'description'    => 'Adds "0" tab, linking to the edit page of the first section of the page',
 	'descriptionmsg' => 'tab0-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tab0',
 );

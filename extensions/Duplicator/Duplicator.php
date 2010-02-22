@@ -14,7 +14,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '1.2',
 	'author' => 'Rob Church',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Duplicator',
-	'description' => 'Create independent copies of articles with full edit histories',
 	'descriptionmsg' => 'duplicator-desc',
 );
 

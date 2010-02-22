@@ -25,7 +25,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'CustomToolbar',
 	'author'         => array( 'Mark Johnston', 'Adam Mckaig', 'Evan Wheeler' ),
 	'version'        => '0.1',
-	'description'    => 'Extension to build an extensible toolbar for MediaWiki',
 	'descriptionmsg' => 'ct-desc',
 );
 

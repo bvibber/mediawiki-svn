@@ -18,12 +18,11 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionFunctions[] = 'wfPostComment';
 
 $wgExtensionCredits['other'][] = array(
-    'path' => __FILE__,
-    'name' => 'PostComment',
-    'author' => 'Travis Derouin, Siebrand Mazeland',
-    'description' => 'Allows users to post comments directly to discussion pages.',
-    'descriptionmsg' => 'postcomment_desc',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:PostComment',
+	'path' => __FILE__,
+	'name' => 'PostComment',
+	'author' => 'Travis Derouin, Siebrand Mazeland',
+	'descriptionmsg' => 'postcomment_desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:PostComment',
 );
 
 $dir = dirname(__FILE__) . '/';

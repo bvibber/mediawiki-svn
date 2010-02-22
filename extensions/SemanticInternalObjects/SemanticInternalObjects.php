@@ -16,7 +16,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'	=> SIO_VERSION,
 	'author'	=> 'Yaron Koren',
 	'url'	=> 'http://www.mediawiki.org/wiki/Extension:Semantic_Internal_Objects',
-	'description'	=>  'Setting of internal objects in Semantic MediaWiki',
 	'descriptionmsg' => 'semanticinternalobjects-desc',
 );
 

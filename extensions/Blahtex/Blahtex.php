@@ -30,7 +30,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Blahtex',
 	'author' => 'David Harvey and Jitse Niesen',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Blahtex',
-	'description' => 'MathML output for &lt;math&gt; tags',
 	'descriptionmsg' => 'math-desc',
 );
 

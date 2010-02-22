@@ -16,7 +16,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
 	'version'        => '1.1',
-	'description'    => 'Allows for the content actions (tabs) to be customized',
 	'descriptionmsg' => 'grouppermissions-desc3',
 );
 

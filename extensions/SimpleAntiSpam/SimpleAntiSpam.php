@@ -13,7 +13,6 @@ if(!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SimpleAntiSpam',
-	'description'    => 'Adds a simple spam/bot check to forms',
 	'descriptionmsg' => 'simpleantispam-desc',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SimpleAntiSpam',

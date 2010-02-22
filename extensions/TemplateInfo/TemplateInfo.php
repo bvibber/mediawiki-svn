@@ -29,7 +29,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'		=> array( 'Yaron Koren', 'Roan Kattouw' ),
 	'version'		=> '0.3',
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:TemplateInfo',
-	'description'		=> 'Supports templates defining their data structure via XML markup.',
 	'descriptionmsg'	=> 'templateinfo-desc',
 );
 

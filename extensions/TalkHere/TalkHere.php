@@ -22,7 +22,6 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '2008-01-19',
 	'author' => 'Daniel Kinzler',
 	'url' => 'http://mediawiki.org/wiki/Extension:TalkHere',
-	'description' => 'Puts the talk page into the article page',
 	'descriptionmsg' => 'talkhere-desc',
 );
 

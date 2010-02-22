@@ -29,7 +29,6 @@ $wgExtensionFunctions[] = 'wfFramedVideo';
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'FramedVideo',
-	'description'    => 'Allows embedding videos from various websites',
 	'descriptionmsg' => 'framedvideo-desc',
 	'author'         => '[http://filop.pl/wiki/U%C5%BCytkownik:Ruiz Ruiz]',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:FramedVideo',

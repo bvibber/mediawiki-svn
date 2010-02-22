@@ -37,7 +37,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ImportFreeImages',
 	'author' => array( 'Travis Derouin', 'Bryan Tong Minh' ),
 	'version' => '2.0',
-	'description' => 'Provides a way of importing properly licensed photos from flickr.',
 	'descriptionmsg' => 'importfreeimages-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ImportFreeImages',
 );

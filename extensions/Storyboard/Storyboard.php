@@ -57,7 +57,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
  * By default, only sysops will be able to do this.
  */
 $wgAvailableRights[] = 'storyreview';
-$wgGroupPermissions['sysop'        ]['storyreview'] = true;
+$wgGroupPermissions['sysop']['storyreview'] = true;
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
@@ -65,23 +65,22 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => Storyboard_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Storyboard',
-	'description' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
 	'descriptionmsg' => 'storyboard-desc',
 );
 
 function efStoryboardSchemaUpdate() {
 	global $wgExtNewTables, $egStoryboardDir;
-	
+
 	$wgExtNewTables[] = array(
 		'storyboard',
 		$egStoryboardDir . 'storyboard.sql'
 	);
-	
+
 	return true;
 }
 
 function efStoryboardParserFirstCallInit( &$parser ) {
 	$parser->setHook( 'storyboard', array('TagStoryboard', 'render') );
 	$parser->setHook( 'storysubmission', array('TagStorysubmission', 'render') );
-    return true;
+	return true;
 }

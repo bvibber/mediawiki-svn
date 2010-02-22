@@ -57,10 +57,9 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'RT',
 	'version'        => '1.9',
 	'author'         => array( 'Greg Sabino Mullane' ),
-	'description'    => 'Fancy interface to RT (Request Tracker)',
 	'descriptionmsg' => 'rt-desc',
 	'url'            => $rt_uri,
-	);
+);
 
 // Pull in the Internationalization file and class
 $wgExtensionMessagesFiles['RT'] =  dirname( __FILE__ ) . '/RT.i18n.php';

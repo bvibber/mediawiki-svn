@@ -16,7 +16,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Configure',
 	'author' => array( 'Alexandre Emsenhuber', 'Andrew Garrett' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
-	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
 	'version' => '0.15.12',
 );

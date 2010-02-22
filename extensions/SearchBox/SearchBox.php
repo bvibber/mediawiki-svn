@@ -30,7 +30,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'SearchBox',
 	'author'         => array( 'Trevor Parscal' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SearchBox',
-	'description'    => 'Allow inclusion of search forms',
 	'descriptionmsg' => 'searchbox-desc',
 );
 

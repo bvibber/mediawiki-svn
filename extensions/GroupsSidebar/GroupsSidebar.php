@@ -9,7 +9,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'GroupsSidebar',
 	'author' => 'Church of emacs',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:GroupsSidebar',
-	'description' => 'Add sidebar element for specific user groups',
 	'descriptionmsg' => 'groupssidebar-desc',
 	'version' => '0.1',
 );

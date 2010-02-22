@@ -39,7 +39,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'MiniPreview',
 	'author' => 'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MiniPreview',
-	'description' => 'MiniPreview displays, next to an image, small previews of other images in the same categories or displayed on the same pages',
 	'descriptionmsg' => 'minipreview-desc',
 );
 

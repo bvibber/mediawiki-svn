@@ -111,7 +111,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'WikiArticleFeeds',
 	'author' => 'Jim Wilson (wilson.jim.r&lt;at&gt;gmail.com)',
 	'url' => 'http://jimbojw.com/wiki/index.php?title=WikiArticleFeeds',
-	'description' => 'Produces feeds generated from MediaWiki articles.',
 	'descriptionmsg' => 'wikiarticlefeeds-desc',
 	'version' => WIKIARTICLEFEEDS_VERSION
 );

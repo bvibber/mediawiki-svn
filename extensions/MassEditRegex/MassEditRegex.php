@@ -20,7 +20,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => 'r4',
 	'author' => 'Adam Nielsen',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MassEditRegex',
-	'description' => 'Use regular expressions to [[Special:MassEditRegex|edit many pages in one operation]]',
 	'descriptionmsg' => 'masseditregex-desc'
 );
 

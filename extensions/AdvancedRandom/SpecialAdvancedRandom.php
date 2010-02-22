@@ -22,12 +22,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'AdvancedRandom',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedRandom',
-	'description' => 'Get a random page from any namespace, the talk or subjectpage ' .
-	                 'of which links to a given page. Can be used like ' .
-			 '[[Special:AdvancedRandom/Template:Featured/Talk]] ' .
-			 'to get a random featured article talk, or like ' .
-			 '[[Special:AdvancedRandom/Template:GFDL/Image]] to ' .
-			 'get a random GFDL file',
 	'descriptionmsg' => 'advancedrandom-desc',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'version' => '0.2',

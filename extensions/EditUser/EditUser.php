@@ -23,7 +23,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'EditUser',
 	'version'        => '1.5.2',
 	'author'         => 'Ryan Schmidt',
-	'description'    => 'Allows privileged users to edit other users\' preferences',
 	'descriptionmsg' => 'edituser-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:EditUser',
 );

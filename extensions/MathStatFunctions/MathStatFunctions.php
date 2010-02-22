@@ -9,7 +9,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'MathStatFunctions',
 	'version' => '1.2',
 	'author' => 'Carl Fürstenberg (AzaToth)',
-	'description' => 'A collection of mathematical and statistical functions',
 	'descriptionmsg' => 'msfunc_desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MathStatFunctions',
 );

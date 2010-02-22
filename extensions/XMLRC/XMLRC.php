@@ -11,7 +11,6 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Daniel Kinzler' ),
 	'name' => 'XMLRC',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:XMLRC',
-	'description' => 'Sends notifications about changes as XML, via UDP, Jabber or other means',
 	'descriptionmsg'=> 'xmlrc-desc',	
 );
 

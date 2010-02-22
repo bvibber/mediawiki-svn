@@ -19,7 +19,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'User Image Gallery',
 	'version' => '1.1',
 	'author' => 'Rob Church',
-	'description' => 'Generate galleries of user-uploaded images with <code><nowiki><userimage /></nowiki></code>',
 	'descriptionmsg' => 'userimages-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:User_Image_Gallery',
 );

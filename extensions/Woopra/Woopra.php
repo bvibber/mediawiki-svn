@@ -23,7 +23,6 @@ $wgExtensionCredits['other'][] = array(
         'author' => array( 'Shane'),
         'version' => '1.0.0',
         'url' => 'http://www.mediawiki.org/wiki/Extension:Woopra',
-        'description' => 'Allows for the [http://www.woopra.com/ Woopra Live Tracking Software] to work for your MediaWiki installation',
 	'descriptionmsg' => 'woopra-desc',
 );
  

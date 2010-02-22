@@ -19,7 +19,6 @@ $wgExtensionCredits['other'][] = array(
 	'author'         => 'Wikia, Inc. (Tristan Harris, Tomasz Klim)',
 	'version'        => '1.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ImageTagging',
-	'description'    => 'Lets a user select regions of an embedded image and associate a page with that region',
 	'descriptionmsg' => 'imagetagging-desc',
 );
 

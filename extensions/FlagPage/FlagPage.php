@@ -8,7 +8,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'FlagPage',
 	'author' => 'Church of emacs',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FlagPage',
-	'description' => 'Flag article with predefined templates',
 	'descriptionmsg' => 'flagarticle-desc',
 	'version' => '0.1.1beta',
 );

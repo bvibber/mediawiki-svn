@@ -27,7 +27,6 @@ $wgExtensionCredits['parserhook']['InlineScripts'] = array(
 	'path'           => __FILE__,
 	'name'           => 'InlineScripts',
 	'author'         => 'Victor Vasiliev',
-	'description'    => 'Provides a build into wikitext scripting language',
 	'descriptionmsg' => 'inlinescriprs-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:InlineScripts',
 );

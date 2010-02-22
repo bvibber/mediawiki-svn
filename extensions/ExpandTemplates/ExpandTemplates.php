@@ -13,7 +13,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'ExpandTemplates',
 	'author'         => 'Tim Starling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:ExpandTemplates',
-	'description'    => 'Expands templates, parser functions and variables to show expanded wikitext and preview rendered page',
 	'descriptionmsg' => 'expandtemplates-desc',
 );
 

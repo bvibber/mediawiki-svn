@@ -16,7 +16,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Seealso',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:See_also',
 	'author'         => 'Magnus Manske',
-	'description'    => 'Localised \'See also\' headings using the tag <nowiki><seealso></nowiki>',
 	'descriptionmsg' => 'seealso-desc',
 );
 

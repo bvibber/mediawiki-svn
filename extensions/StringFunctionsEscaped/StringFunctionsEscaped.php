@@ -55,7 +55,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'            => __FILE__,
 	'name'            => 'StringFunctionsEscaped',
 	'version'         => '1.0.0', // Sept 7, 2009
-	'description'     => 'Allows escaped characters in string functions using c-like syntax',
 	'descriptionmsg'  => 'pfunc_desc',
 	'author'          => array('Jack D. Pond'),
 	'license'         => 'GNU Version 2',

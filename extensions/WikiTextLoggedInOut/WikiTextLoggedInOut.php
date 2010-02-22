@@ -21,7 +21,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'WikiTextLoggedInOut',
 	'version' => '1.1',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
-	'description' => 'Two parser hooks, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt> to show different text depending on the users\' login state',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiTextLoggedInOut',
 	'descriptionmsg' => 'wikitextloggedinout-desc'
 );

@@ -71,7 +71,6 @@ $wgTaskExtensionTasksCachedTitle = '' ;
 $wgExtensionCredits['Tasks'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Tasks',
-	'description'    => 'An extension to manage tasks.',
 	'author'         => 'Magnus Manske',
 	'descriptionmsg' => 'tasks_desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tasks',

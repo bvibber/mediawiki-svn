@@ -19,7 +19,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Purge Cache',
 	'author' => 'Rob Church',
 	'version' => '0.1',
-	'description' => 'Special page used to wipe the OBJECTCACHE table',
 	'descriptionmsg' => 'purgecache-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PurgeCache',
 );

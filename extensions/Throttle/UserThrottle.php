@@ -30,7 +30,6 @@ $wgExtensionCredits['other'][] = array(
 	'version'     => '0.2',
 	'name' => 'Throttle',
 	'author' => 'Brion Vibber',
-	'description' => 'Throttle user creation',
 	'descriptionmsg' => 'acct_creation_global_soft_throttle_hit-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Throttle',
 );

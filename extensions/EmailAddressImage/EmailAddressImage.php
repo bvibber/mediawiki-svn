@@ -16,7 +16,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'EmailAddressImage',
 	'version'        => '1.1',
 	'author'         => 'Maarten van Dantzich',
-	'description'    => 'Adds <tt>&lt;email&gt;</tt> to display an email address as image',
 	'descriptionmsg' => 'emailaddressimage-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:EmailAddressImage',
 );

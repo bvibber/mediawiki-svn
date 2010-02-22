@@ -68,7 +68,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'        => '0.7dev',
 	'author'         => 'Leon Weber & Manuel Schneider',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SelectCategory',
-	'description'    => 'Allows the user to select from existing categories when editing a page',
 	'descriptionmsg' => 'selectcategory-desc',
 );
 

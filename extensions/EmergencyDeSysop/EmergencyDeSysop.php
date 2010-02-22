@@ -13,7 +13,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author'	=> 'SQL',
 	'name'		=> 'EmergencyDeSysop',
 	'url' 		=> 'http://www.mediawiki.org/wiki/Extension:EmergencyDeSysop',
-	'description'	=> 'Allows a Sysop to sacrifice their own bit, in order to desysop another',
 	'descriptionmsg' => 'emergencydesysop-desc',
 );
 

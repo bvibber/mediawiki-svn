@@ -14,7 +14,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Icon',
 	'version'        => '1.6.1',
 	'author'         => 'Tim Laqua',
-	'description'    => 'Allows you to use images as icons and icon links',
 	'descriptionmsg' => 'icon-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Icon',
 );

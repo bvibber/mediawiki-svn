@@ -8,7 +8,6 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Pool Counter Client',
 	'author'         => 'Tim Starling',
-	'description'    => 'MediaWiki client for the pool counter daemon poolcounter.py',
 	'descriptionmsg' => 'poolcounter-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:PoolCounter',
 );

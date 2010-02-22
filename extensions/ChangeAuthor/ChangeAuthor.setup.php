@@ -31,7 +31,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Roan Kattouw',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ChangeAuthor',
 	'version' => '1.1',
-	'description' => "Allows changing a revision's author",
 	'descriptionmsg' => 'changeauthor-desc',
 );
 

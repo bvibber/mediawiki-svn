@@ -13,7 +13,6 @@
 $wgExtensionCredits['other'][] = array(
 	'name'            => 'Minify',
 	'version'         => '0.8.1', // June 26, 2009
-	'description'     => 'Compresses CSS and JS from action=raw',
 	'descriptionmsg'  => 'minify-desc',
 	'author'          => 'Robert Rohde',
 	'url'             => 'http://www.mediawiki.org/wiki/Extension:Minify',

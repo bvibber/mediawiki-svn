@@ -17,7 +17,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'StalkerLog',
 	'version'        => '0.6',
 	'url'            => 'http://mediawiki.org/wiki/Extension:StalkerLog',
-	'description'    => 'Adds an entry to [[Special:Log]] on user login/logout',
 	'author'         => '[mailto:innocentkiller@gmail.com Chad Horohoe]',
 	'descriptionmsg' => 'stalkerlog-desc',
 );

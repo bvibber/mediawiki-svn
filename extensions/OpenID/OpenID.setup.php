@@ -163,7 +163,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'author' => array( 'Evan Prodromou', 'Sergey Chernyshev', 'Alexandre Emsenhuber' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
-	'description' => 'Lets users login to the wiki with an [http://openid.net/ OpenID] and login to other OpenID-aware Web sites with their wiki user account',
 	'descriptiomsg' => 'openid-desc',
 );
 

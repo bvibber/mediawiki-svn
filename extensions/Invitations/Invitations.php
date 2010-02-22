@@ -29,7 +29,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '$Revision$',
 	'name'           => 'Invitations',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Invitations',
-	'description'    => 'Allows management of new features by restricting them to an invitation-based system.',
 	'descriptionmsg' => 'invitations-desc',
 );
 

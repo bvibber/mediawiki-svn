@@ -35,7 +35,6 @@ $wgExtensionCredits['other'][] = array(
 	'version' => MEDIAWIKI_MICROID_VERSION,
 	'author' => 'Evan Prodromou',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MicroID',
-	'description' => 'Adds a [http://www.microid.org/ MicroID] to user pages to confirm account with external services',
 	'descriptionmsg' => 'microid-desc'
 );
 

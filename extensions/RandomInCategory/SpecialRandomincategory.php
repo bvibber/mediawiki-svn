@@ -17,7 +17,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Random in category',
 	'author' => 'VasilievVV',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomInCategory',
-	'description' => 'Special page to get a random page in category',
 	'descriptionmsg' => 'randomincategory-desc',
 );
 

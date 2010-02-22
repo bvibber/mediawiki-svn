@@ -26,7 +26,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Language Selector',
 	'author'         => 'Daniel Kinzler',
 	'url'            => 'http://mediawiki.org/wiki/Extension:LanguageSelector',
-	'description'    => 'language selector on every page, also for visitors',
 	'descriptionmsg' => 'languageselector-desc',
 );
 

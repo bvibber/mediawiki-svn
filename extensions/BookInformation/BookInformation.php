@@ -17,7 +17,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Book Information',
 	'author' => 'Rob Church',
-	'description' => 'Expands [[Special:Booksources]] with information from a web service',
 	'descriptionmsg' => 'bookinfo-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BookInformation',
 );

@@ -12,11 +12,11 @@ $htScriptPath = $wgScriptPath . '/extensions/HeaderTabs';
 
 $wgExtensionFunctions[] = 'htSetupExtension';
 $wgExtensionCredits['parserhook'][] = array(
-        'name' => 'Header Tabs',
-        'description' => 'Adds tabs to the page separating top-level sections. Originally developed for [http://www.ardorado.com Ardorado.com]',
+	'name' => 'Header Tabs',
+	'description' => 'Adds tabs to the page separating top-level sections. Originally developed for [http://www.ardorado.com Ardorado.com]',
 	'version' => '0.6.6',
-        'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev] (for [http://www.semanticcommunities.com Semantic Communities LLC.])',
-        'url' => 'http://www.mediawiki.org/wiki/Extension:Header_Tabs'
+	'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev] (for [http://www.semanticcommunities.com Semantic Communities LLC.])',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Header_Tabs'
 );
 
 $htYUIBase = 'http://yui.yahooapis.com/2.5.1/build/';

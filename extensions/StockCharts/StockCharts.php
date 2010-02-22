@@ -23,7 +23,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'StockCharts',
 	'path' => __FILE__,
 	'author' => 'Brendan Meutzner, Anton Zolotkov, Roger Fong',
-	'description' => 'Adds <nowiki><stockchart ticker="AAPL"/></nowiki> tag for an interactive financial stock chart',
 	'descriptionmsg' => 'stockcharts-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:StockCharts',
 	'version' => '0.2',

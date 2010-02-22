@@ -100,7 +100,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'            => __FILE__,
 	'name'            => 'StringFunctions',
 	'version'         => '2.0.3', // Nov 30, 2008
-	'description'     => 'Enhances parser with string functions',
 	'descriptionmsg'  => 'stringfunctions-desc',
 	'author'          => array('Ross McClure', 'Juraj Simlovic'),
 	'url'             => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',

@@ -31,8 +31,6 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 	'author'          => 'David M. Sledge',
 	'name'            => 'Pipe Escape',
 	'version'         => ExtPipeEsc::VERSION,
-	'description'     => 'Parser function for when you want a pipe character ' .
-			     'to be just a pipe character',
 	'url'             => 'http://www.mediawiki.org/wiki/Extension:Pipe_Escape',
 	'descriptionmsg'  => 'pipeescape-desc',
 );

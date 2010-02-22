@@ -21,7 +21,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Lookup User',
 	'version' => '1.1',
 	'author' => 'Tim Starling',
-	'description' => 'Retrieve information about a user such as email address and ID',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LookupUser',
 	'descriptionmsg' => 'lookupuser-desc',
 );

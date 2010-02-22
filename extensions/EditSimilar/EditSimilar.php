@@ -39,7 +39,6 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.20',
 	'author' => array( 'Bartek Łapiński', 'Łukasz Garczewski' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:EditSimilar',
-	'description' => 'Encourages users to edit a page similar (by categories) to the one they just had edited.',
 	'descriptionmsg' => 'editsimilar-desc',
 );
 

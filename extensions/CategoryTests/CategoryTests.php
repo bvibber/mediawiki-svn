@@ -18,7 +18,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => '1.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryTests',
 	'author' => 'Ryan Schmidt',
-	'description' => 'Functions for category testing',
 	'descriptionmsg' => 'categorytests-desc',
 );
 

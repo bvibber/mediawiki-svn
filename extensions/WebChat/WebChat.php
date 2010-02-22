@@ -21,7 +21,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Invalid entry point.' );
 $wgExtensionCredits[ 'specialpage' ][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WebChat',
-	'description'    => 'Adds a special page used to chat in real time with other wiki users.',
 	'descriptionmsg' => 'webchat-desc',
 	'author'         => array( 'Robert Leverington', 'Marco 27' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:WebChat',

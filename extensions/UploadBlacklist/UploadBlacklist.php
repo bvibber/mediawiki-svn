@@ -15,7 +15,6 @@ if( !function_exists( 'sha1_file' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'UploadBlacklist',
-	'description'    => 'Upload blacklist',
 	'descriptionmsg' => 'uploadblacklist-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:UploadBlacklist',
 );

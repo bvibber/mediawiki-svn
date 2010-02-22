@@ -27,7 +27,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'         => 'Nikola Smolenski',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Interlanguage',
 	'version'        => '1.2',
-	'description'    => 'Grabs interlanguage links from another wiki',
 	'descriptionmsg' => 'interlanguage-desc',
 );
 

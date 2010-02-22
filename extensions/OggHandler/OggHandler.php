@@ -35,7 +35,6 @@ $wgExtensionCredits['media'][] = array(
 	'name'           => 'OggHandler',
 	'author'         => 'Tim Starling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OggHandler',
-	'description'    => 'Handler for Ogg Theora and Vorbis files, with JavaScript player.',
 	'descriptionmsg' => 'ogg-desc',
 );
 

@@ -27,7 +27,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'RandomUsersWithAvatars',
 	'version' => '1.1',
 	'author' => array( 'David Pean', 'Jack Phoenix' ),
-	'description' => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RandomUsersWithAvatars',
 	'descriptionmsg' => 'random-users-avatars-desc',
 );

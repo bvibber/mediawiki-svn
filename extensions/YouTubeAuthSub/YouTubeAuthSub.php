@@ -35,7 +35,6 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'YouTubeAuthSub',
 	'author'         => 'Travis Derouin',
-	'description'    => 'Allows users to upload videos directly to YouTube through the wiki',
 	'descriptionmsg' => 'youtubeauthsub-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:YouTubeAuthSub',
 );

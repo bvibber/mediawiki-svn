@@ -18,7 +18,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author'         => 'Paul Grinberg',
 	'email'          => 'gri6507 at yahoo dot com',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Usage_Statistics',
-	'description'    => 'Show individual user and overall wiki usage statistics',
 	'descriptionmsg' => 'usagestatistics-desc',
 );
 

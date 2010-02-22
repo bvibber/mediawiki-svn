@@ -40,7 +40,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'UploadFromCommons',
 	'author' => 'Bryan Tong Minh',
-	'description' => 'Quickly upload an image from Commons',
 	'descriptionmsg' => 'uploadfromcommons',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UploadFromCommons',
 	'version' => '1.0',

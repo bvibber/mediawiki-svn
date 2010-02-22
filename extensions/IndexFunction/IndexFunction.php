@@ -6,7 +6,6 @@ $wgExtensionCredits['other'][] = array(
 	'author' =>'Alex Zaddach', 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:IndexFunction',  
 	'descriptionmsg' => 'indexfunc-desc',
-	'description' => 'Parser function to create automatic redirects and disambiguation pages'
 );
 
 $dir = dirname(__FILE__) . '/';

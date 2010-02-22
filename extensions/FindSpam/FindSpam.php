@@ -18,7 +18,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'FindSpam',
 	'version' => '1.0',
 	'author' => 'Tim Starling',
-	'description' => 'Adds a special page that allows to find recently added spam.',
 	'descriptionmsg' => 'findspam-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Find_Spam',
 );

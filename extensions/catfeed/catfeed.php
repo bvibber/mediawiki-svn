@@ -31,7 +31,6 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Category Feed',
 	'author' => 'Gabriel Wicke',
-	'description' => 'Uses bits from recentchanges feeds. Create in-page version, especially useful for wikinews',
 	'descriptionmsg' => 'catfeed-desc',
 	'url' => 'http://wikidev.net',
 );

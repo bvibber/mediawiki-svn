@@ -16,7 +16,6 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Ryan Schmidt',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',
 	'version' => '1.2',
-	'description' => 'Allows the author of a page to protect it from other users',
 	'descriptionmsg' => 'authorprotect-desc',
 );
 

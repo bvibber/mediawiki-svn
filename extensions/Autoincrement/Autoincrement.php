@@ -15,8 +15,7 @@ $wgExtensionCredits['variable'][] = array(
 	'path' => __FILE__,
 	'name' => 'Autoincrement',
 	'author' => 'Ævar Arnfjörð Bjarmason',
-	'description' => 'A variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
-	'description-desc' => 'autoincrement-desc',
+	'descriptionmsg' => 'autoincrement-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
 );
 

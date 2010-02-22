@@ -30,7 +30,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'LogEntry',
 	'author'         => 'Trevor Parscal', 
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 
-	'description'    => 'This tag extension provides a form for appending/prepending to log pages',
 	'descriptionmsg' => 'logentry-parserhook-desc',
 );
 

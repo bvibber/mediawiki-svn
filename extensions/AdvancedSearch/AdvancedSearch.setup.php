@@ -29,7 +29,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Roan Kattouw',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AdvancedSearch',
 	'version' => '1.0',
-	'description' => 'Allows for searching in categories',
 	'descriptionmsg' => 'advancedsearch-desc',
 );
 

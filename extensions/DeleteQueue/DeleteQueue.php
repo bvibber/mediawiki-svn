@@ -18,7 +18,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'DeleteQueue',
 	'version'        => '0.1.1',
 	'author'         => 'Andrew Garrett',
-	'description'    => 'Creates a queue-based system for managing deletion.',
 	'descriptionmsg' => 'deletequeue-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DeleteQueue',
 );
