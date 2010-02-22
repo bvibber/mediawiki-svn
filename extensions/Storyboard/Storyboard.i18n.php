@@ -17,7 +17,13 @@ $messages['en'] = array(
 	// General
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
+
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
+
+	// Story review
+	'storyboard-publish' => 'Publish',
+	'storyboard-reviewed' => 'Reviewed',
+	'storyboard-unreviewed' => 'Unreviewed',
 );
 
 /** Afrikaans (Afrikaans)
