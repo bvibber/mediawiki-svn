@@ -17,12 +17,10 @@ class SpecialStoryReview extends IncludableSpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'StoryReview' );
-
-		wfLoadExtensionMessages( 'Storyboard' );
 	}
 
 	public function execute( $language ) {
-		wfProfileIn( 'StoryReview-special-page' );
+		wfProfileIn( __METHOD__ );
 		
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'storyreview' ) && !$wgUser->isBlocked() ) {
@@ -34,7 +32,7 @@ class SpecialStoryReview extends IncludableSpecialPage {
 			$wgOut->permissionRequired( 'storyreview' );
 		}
 		
-		wfProfileOut( 'StoryReview-special-page' );
+		wfProfileOut( __METHOD__ );
 	}
 
 	private function addOutput() {
