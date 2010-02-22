@@ -178,6 +178,7 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
 	'refhelper' => 'Viiteopastaja',
@@ -188,7 +189,7 @@ $messages['fi'] = array(
 	'refhelper-refcreate_another' => 'Luo toinen viite',
 	'refhelper-refcreate_autocomment' => 'Automatisoitu sivun luominen.',
 	'refhelper-refcreate_success' => 'Sivu [[$1]] ei ole olemassa ja se on luotu.',
-	'refhelper-refcreate_failure' => 'Sivu [[$1]] on jo olemassa!',
+	'refhelper-refcreate_failure' => 'Sivu [[$1]] on jo olemassa.',
 	'refhelper-label_workspace' => 'Työtila (kopioi- ja liitä-alue):',
 	'refhelper-label_authorforename' => 'Tekijän $1 etunimi:',
 	'refhelper-label_authorsurname' => 'Sukunimi:',

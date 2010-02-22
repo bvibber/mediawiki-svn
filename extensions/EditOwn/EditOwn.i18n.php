@@ -86,6 +86,13 @@ $messages['ca'] = array(
 	'editown-desc' => 'Els usuaris sense el permís editall només poden editar les pàgines que han creat',
 );
 
+/** Czech (Česky)
+ * @author Mr. Richard Bolla
+ */
+$messages['cs'] = array(
+	'editown-desc' => 'Uživatelé bez práva editall mohou upravovat pouze stránky, které sami vytvořili',
+);
+
 /** Kashubian (Kaszëbsczi)
  * @author Kaszeba
  */

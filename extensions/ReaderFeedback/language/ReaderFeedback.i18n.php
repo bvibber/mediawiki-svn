@@ -1144,6 +1144,7 @@ $messages['hu'] = array(
 	'readerfeedback-tier-poor' => 'Rossz',
 	'tooltip-ca-ratinghist' => 'Olvasói értékelések',
 	'specialpages-group-feedback' => 'Olvasói vélemény',
+	'readerfeedback-tt-review' => 'Értékelés elküldése',
 );
 
 /** Interlingua (Interlingua)

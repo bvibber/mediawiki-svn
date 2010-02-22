@@ -266,6 +266,7 @@ $messages['hu'] = array(
 	'transliterator-error-syntax' => 'Érvénytelen szintaxis a(z) [[MediaWiki:$2]] lapon: <code>$1</code>',
 	'transliterator-error-rulecount' => 'Több mint {{PLURAL:$1|egy|$1}} szabály itt: [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'A(z) <code>$1</code> szabályban több, mint {{PLURAL:$3|egy|$3}} karakter van a bal oldalon, itt: [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => 'A(z) [[MediaWiki:$2]] névnek legalább $1 karakter hosszúnak kell lennie',
 );
 
 /** Interlingua (Interlingua)

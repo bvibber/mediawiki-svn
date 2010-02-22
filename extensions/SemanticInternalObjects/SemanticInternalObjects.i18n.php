@@ -85,9 +85,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
-	'semanticinternalobjects-desc' => 'Sisäisten objektien asetukset semanttisessa MediaWikissä',
+	'semanticinternalobjects-desc' => 'Sisäisten objektien asetukset semanttisessa MediaWikissä.',
 );
 
 /** French (Français)

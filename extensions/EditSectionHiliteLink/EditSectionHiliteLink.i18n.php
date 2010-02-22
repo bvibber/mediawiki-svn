@@ -65,6 +65,13 @@ $messages['ca'] = array(
 	'editsectionhilitelink-desc' => "Ressalta la secció apropiada d'una pàgina quan passeu el ratolí per a sobre l'enllaç per a editar",
 );
 
+/** Czech (Česky)
+ * @author Mr. Richard Bolla
+ */
+$messages['cs'] = array(
+	'editsectionhilitelink-desc' => 'Zvýraznit příslušnou část stránky, pokud podržíte myš nad odkazem „editovat“',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

@@ -55,9 +55,10 @@ $messages['br'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
-	'right-storyreview' => 'Katselmoi, muokkaa, julkaise ja piilota tarinoita',
+	'right-storyreview' => 'Tarkistaa, muokata, julkaista ja piilotaa tarinoita',
 );
 
 /** French (Français)
@@ -94,6 +95,10 @@ $messages['ia'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provide un pagina de arrivata pro donatores, un pagina ubi historias pote esser submittite, e un interfacie pro moderation de historias.',
 	'right-storyreview' => 'Revider, modificar, publicar e celar historias',
+	'storyboard-storyreview' => 'Recension de historias',
+	'storyboard-publish' => 'Publicar',
+	'storyboard-reviewed' => 'Recensite',
+	'storyboard-unreviewed' => 'Non recensite',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -115,12 +120,17 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'storyboard-name' => 'Storyboard',
-	'storyboard-desc' => 'Biedt een startpagina voor donateurs, een pagina waar verhalen ingezonden kunnen worden en een beheersinterface',
-	'right-storyreview' => 'Verhalen controleren, bewerken, publiceren en verbergen',
+	'storyboard-desc' => 'Biedt een aankomstpagina voor donateurs, een pagina waar verhalen ingezonden kunnen worden en een interface voor beoordeling van verhalen',
+	'right-storyreview' => 'Verhalen beoordelen, bewerken, publiceren en verbergen',
+	'storyboard-storyreview' => 'Verhalen beoordelen',
+	'storyboard-publish' => 'Publiceren',
+	'storyboard-reviewed' => 'Beoordeeld',
+	'storyboard-unreviewed' => 'Niet beoordeeld',
 );
 
 /** Occitan (Occitan)

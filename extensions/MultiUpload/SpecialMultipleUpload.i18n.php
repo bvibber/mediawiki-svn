@@ -1472,6 +1472,7 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Verlor
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(

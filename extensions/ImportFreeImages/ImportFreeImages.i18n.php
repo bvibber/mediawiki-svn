@@ -1177,6 +1177,16 @@ $messages['sk'] = array(
 	'importfreeimages_nophpflickr' => 'Nemáte ainštalovaný phpFlickr. Prosím, nastavte $wgIFphpFlickr vo vašom súbore LocalSettings.php.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Verlor
+ */
+$messages['sr-ec'] = array(
+	'importfreeimages_size_small' => 'Мала',
+	'importfreeimages_size_medium' => 'Средња',
+	'importfreeimages_size_large' => 'Велика',
+	'importfreeimages_size_original' => 'Оригинална величина',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
@@ -1372,17 +1382,16 @@ $messages['vi'] = array(
 	'importfreeimages' => 'Nhập khẩu hình tự do',
 	'importfreeimages-desc' => 'Là một cách để [[Special:ImportFreeImages|nhập khẩu những hình ảnh được cấp phép thích hợp]] từ [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Trang này cho phép bạn tìm những hình ảnh được cấp phép thích hợp từ Flickr và truyền chúng vào wiki của bạn.',
-	'importfreeimages_noapikey' => 'Bạn chưa cấu hình Khóa API Flickr của bạn.
-Để làm điều đó, hãy lấy một khóa API từ [http://www.flickr.com/services/api/misc.api_keys.html đây] và thiết lập biến $wgFlickrAPIKey  trong ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Không tìm thấy hình nào phù hợp với tiêu chí tìm kiếm ‘$1’ của bạn, xin hãy thử lại.',
-	'importfreeimages_invalidurl' => 'Địa chỉ URL “$1” không phải hình Flickr hợp lệ.',
 	'importfreeimages_owner' => 'Tác giả',
 	'importfreeimages_importthis' => 'nhập cái này',
 	'importfreeimages_next' => '$1 sau',
-	'importfreeimages_filefromflickr' => '$1 bởi người dùng <b>[$2]</b> của Flickr. Địa chỉ URL gốc',
-	'importfreeimages_promptuserforfilename' => 'Xin hãy nhập vào tên tập tin đích:',
-	'importfreeimages_returntoform' => "Hoặc, nhấn vào <a href='$1'>đây</a> để quay trở lại kết quả tìm kiếm",
-	'importfreeimages_nophpflickr' => 'Bạn chưa cài đặt phpFlickr, xin hãy thiết lập $wgIFphpFlickr trong LocalSettings.php của bạn.',
+	'importfreeimages_size_square' => 'Vuông',
+	'importfreeimages_size_thumbnail' => 'Hình nhỏ',
+	'importfreeimages_size_small' => 'Nhỏ',
+	'importfreeimages_size_medium' => 'Vừa',
+	'importfreeimages_size_large' => 'Lớn',
+	'importfreeimages_size_original' => 'Nguyên bản',
 );
 
 /** Volapük (Volapük)

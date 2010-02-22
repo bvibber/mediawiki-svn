@@ -178,6 +178,13 @@ $messages['nl'] = array(
 	'negref-desc' => 'Biedt een tag om de plaats van de tag <nowiki><ref/></nowiki> te bepalen binnen invoertekst om bepaald gebruik van sjablonen te repareren',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'negref-desc' => 'Gir en merkelapp for å fikse plasseringen av alle <nowiki><ref /></nowiki>-merkelapper inni inn-teksten for å fikse enkelte problemer ved bruk av malene.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

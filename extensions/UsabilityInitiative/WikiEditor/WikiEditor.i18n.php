@@ -276,6 +276,7 @@ $messages['hu'] = array(
 	'wikieditor' => 'Fejlett szerkesztőfelület wikiszöveghez',
 	'wikieditor-desc' => 'Bővíthető szerkesztőfelület wikiszöveghez és több, új funkciókat kínáló modul',
 	'wikieditor-wikitext-tab' => 'Wikiszöveg',
+	'wikieditor-loading' => 'Betöltés…',
 );
 
 /** Interlingua (Interlingua)
@@ -561,6 +562,7 @@ $messages['vi'] = array(
 	'wikieditor' => 'Giao diện sửa đổi văn bản wiki nâng cao',
 	'wikieditor-desc' => 'Cung cấp giao diện sửa đổi văn bản wiki có thể mở rộng, cũng như nhiều tính năng khác',
 	'wikieditor-wikitext-tab' => 'Mã wiki',
+	'wikieditor-loading' => 'Đang tải',
 );
 
 /** Yiddish (ייִדיש)
