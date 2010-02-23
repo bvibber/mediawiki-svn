@@ -4,7 +4,7 @@ or any wiki page using the same syntax as for images.
 
 To install this extension, add the following to the end of your LocalSettings.php:
 
-    require_once( "$IP/extensions/OggHandler/OggHandler.php" );
+    require( "$IP/extensions/OggHandler/OggHandler.php" );
 
 FFmpeg
 ------
