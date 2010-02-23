@@ -6868,7 +6868,7 @@ if ( typeof context == 'undefined' ) {
 					} else if ( $currentElement.is( 'span' ) && text.length == 0 ) {
 						// Markers!
 						$currentElement.remove();
-					} else {
+					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
 						$newElement = $( '<p></p>' )
 							.addClass( 'wikiEditor' )
 							.insertAfter( $currentElement );
@@ -6877,6 +6877,12 @@ if ( typeof context == 'undefined' ) {
 						} else {
 							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
 						}
+						$currentElement.remove();
+					} else {
+						$( '<span></span>' )
+							.addClass( 'wikiEditor' )
+							.text( $currentElement.text() )
+							.insertAfter( $currentElement );
 						$currentElement.remove();
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
