@@ -7,6 +7,7 @@ mw.addMessages( {
 } );
 
 var kskinConfig = {
+
 	// The parent class for all kskin css: 
 	playerClass: 'k-player',
 	
@@ -20,13 +21,13 @@ var kskinConfig = {
 	volume_layout: 'horizontal',
 	
 	// Skin "kskin" is specific for wikimedia we have an
-	// api Title key so the "credits" menu item can be showed.  
+	// api Title key so the "credits" menu item can be showed.
 	supportedMenuItems: {
 		'credits': true
 	},
 	
 	// Extends base components with kskin specific options:
-	components: {		
+	components: {
 		'playButtonLarge' : {
 			'h' : 55
 		},		
@@ -34,12 +35,12 @@ var kskinConfig = {
 			'w':50,
 			'o':function() {
 				return $j( '<div />' )
-						.attr( 'title',  gM( 'mwe-player_options' ) )
-						.addClass( "ui-state-default ui-corner-bl rButton k-options" )
-						.append( 
-							$j( '<span />' )
-							.text(  gM( 'mwe-menu_btn' ) )
-						)
+					.attr( 'title',  gM( 'mwe-player_options' ) )
+					.addClass( "ui-state-default ui-corner-bl rButton k-options" )
+					.append( 
+						$j( '<span />' )
+						.text(  gM( 'mwe-menu_btn' ) )
+					)
 			}
 		},
 		'volumeControl':{
@@ -47,27 +48,29 @@ var kskinConfig = {
 		},		
 		// No kalturaAttribution component for kSkin ( its integrated into the credits screen ) 
 		'kalturaAttribution' : false,
+		
+		// Time display: 
 		'timeDisplay': {
 			'w':45
-		},		
-		/*
+		},	
+			
+		/**
 		* The playhead html
 		*/
-		'playHead': {
+		/*'playHead': {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
-				return $j( '<div />' )
+					$j( '<div />' )
 							.addClass( "play_head" ) 
 							.css( "width",  parseInt( ctrlObj.available_width - 10 ) + 'px' )
 			}
-		},
+		},*/		
 		'optionsMenu': {
 			'w' : 0,
 			'o' : function( ctrlObj ) {
 				var embedPlayer = ctrlObj.embedPlayer;				
 				
-				$menuOverlay = $j( '<div />')
-					.attr('id',  'blackbg_' + embedPlayer.id )
+				$menuOverlay = $j( '<div />')					
 					.addClass( 'k-menu ui-widget-content' )
 					.css( {
 						'width' :  ctrlObj.getOverlayWidth(),
@@ -87,8 +90,7 @@ var kskinConfig = {
 					.addClass( 'k-menu-bar' );
 					
 				// Output menu item containers: 
-				for ( i = 0; i < ctrlObj.optionMenuItems.length; i++ ) {
-					var menuItem = ctrlObj.optionMenuItems[ i ];
+				for ( var menuItem in ctrlObj.supportedMenuItems ) {
 					$menuBar.append( 
 						$j( '<li />') 
 						// Add the menu item class:
@@ -113,10 +115,10 @@ var kskinConfig = {
 						'width' : (  ctrlObj.getOverlayWidth() - 75 ), 
 						'height' : ( ctrlObj.getOverlayHeight() - ctrlObj.getControlBarHeight() )
 					})
-				for ( i = 0; i < ctrlObj.optionMenuItems.length; i++ ) {
+				for ( var menuItem in ctrlObj.supportedMenuItems ) {
 					$menuScreens.append( 
 						$j( '<div />' )
-						.addClass( 'menu-screen menu-' + ctrlObj.optionMenuItems[i] )
+						.addClass( 'menu-screen menu-' + menuItem )
 					);							
 				}
 				
@@ -158,7 +160,7 @@ var kskinConfig = {
 		// Options menu display:			
 		this.$playerTarget.find( '.k-options' )
 		.unbind()
-		.click( function() {     					 	
+		.click( function() {
 			if ( _this.$playerTarget.find( '.k-menu' ).length == 0 ) {
 				
 				// Stop the player if it does not support overlays:
@@ -227,13 +229,18 @@ var kskinConfig = {
 		$playerTarget.find( '.k-menu' ).hide();
 			
 		// Add menu-items bindings:  
-		for ( i = 0; i < _this.optionMenuItems.length ; i++ ) {
-			$playerTarget.find( '.k-' +  _this.optionMenuItems[ i ] + '-btn' ).click( function( ) {
+		for ( var menuItem in _this.supportedMenuItems ) {
+			$playerTarget.find( '.k-' + menuItem + '-btn' ).click( function( ) {
+				
+				// Grab the context from the "clicked" menu item
 				var mk = $j( this ).attr( 'rel' );
-				// hide menu items	        	
+				
+				// hide all menu items	        	
 				$targetItem = $playerTarget.find( '.menu-' + mk );	
-					// call the function showMenuItem
-					_this.showMenuItem(	mk );
+				
+				// call the function showMenuItem
+				_this.showMenuItem(	mk );
+				
 				// Hide the others 
 				$playerTarget.find( '.menu-screen' ).hide();
 				
@@ -244,7 +251,44 @@ var kskinConfig = {
 				return false;
 			} );
 		}
-	},		
+	},
+	
+	/**
+	* Shows a selected menu_item
+	*
+	* NOTE: this should be merged with parent ctrlBuilder optionMenuItems 
+	* binding mode
+	* 
+	* @param {String} menu_itme Menu item key to display
+	*/
+	showMenuItem:function( menuItem ) {	
+		var embedPlayer = this.embedPlayer;
+		//handle special k-skin specific display; 
+		switch( menuItem ){
+			case 'credits':
+				this.showCredits();			
+			break;
+			case 'playerSelect':
+				embedPlayer.$interface.find( '.menu-playerSelect').html(  
+					this.getPlayerSelect()
+				);		
+			break; 
+			case 'download' :
+				embedPlayer.$interface.find( '.menu-download').text( 
+					gM('mwe-loading_txt' ) 
+				);
+				// Call show download with the target to be populated
+				this.showDownload(
+					embedPlayer.$interface.find( '.menu-download') 
+				);
+			break;
+			case 'share':
+				embedPlayer.$interface.find( '.menu-share').html(
+					this.getShare()
+				);
+			break;				
+		}		
+	},
 	
 	/**
 	* Show the credit screen (presently specific to kaltura skin )

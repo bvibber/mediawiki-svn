@@ -18,7 +18,7 @@ require_once( '../../jsScriptLoader.php' );
 $mwSTART_MSG_KEY = '$messages[\'en\'] = array(';
 $mwEND_MSG_KEY = ',
 );';
-$mwLangFilePath = '../languages/mwEmbed.i18n.php';
+$mwLangFilePath = '../../languages/mwEmbed.i18n.php';
 include_once( $mwLangFilePath );
 
 function print_help(){

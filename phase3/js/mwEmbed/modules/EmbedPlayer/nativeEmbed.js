@@ -49,8 +49,7 @@ var nativeEmbed = {
 		$j( this ).html(
 			$j( '<video />' )
 			.attr( {
-				'id' : this.pid,
-				'autoplay' : "true",
+				'id' : this.pid,				
 				'src' : this.getSrc()
 			} )
 			.css( {

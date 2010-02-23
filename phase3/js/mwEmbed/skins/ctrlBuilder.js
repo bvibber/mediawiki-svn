@@ -202,32 +202,7 @@ ctrlBuilder.prototype = {
 		// Do png fix for ie6
 		if ( $j.browser.msie  &&  $j.browser.version <= 6 ) {			
 			$j('#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
-		}								
-			
-		//var $opt = $j( '#mv_vid_options_' + embedPlayer.id );
-		
-		// videoOptions ... @@todo should be merged with something more like kskin.js:
-		/*$opt.find( '.vo_selection' ).click( function() {			
-			embedPlayer.displayOverlay();			
-			embedPlayer.showPlayerSelect( embedPlayer.$interface.find( '.videoOptionsComplete' ) );			
-			$opt.hide();
-			return false;
-		} );
-		
-		$opt.find( '.vo_download' ).click( function() {
-			embedPlayer.displayOverlay();
-			embedPlayer.showDownload(  embedPlayer.$interface.find( '.videoOptionsComplete' ) );
-			$opt.hide();
-			return false;
-		} );
-		
-		$opt.find( '.vo_showcode' ).click( function() {
-			embedPlayer.displayOverlay();
-			embedPlayer.showShare(  embedPlayer.$interface.find( '.videoOptionsComplete' ) );
-			$opt.hide();
-			return false;
-		} );
-		*/
+		}
 		
 		this.doVolumeBinding();
 		
@@ -237,17 +212,6 @@ ctrlBuilder.prototype = {
 		}
 	},
 	
-	/** 
-	* Close a menu overlay 
-	*/
-	closeMenuOverlay: function(){
-		var _this = this;	
-		var $overlay = $j( '#blackbg_' + this.embedPlayer.id );
-		$overlay.fadeOut( "slow", function() {
-			$overlay.remove();
-		} );
-		return false; // onclick action return false
-	},
 	
 	/**
 	* Check if a warning should be issued to non-native playback systems 
@@ -261,9 +225,10 @@ ctrlBuilder.prototype = {
 		}		
 		
 		// If the resolution is too small don't display the warning
-		if( this.embedPlayer.getPlayerHeight() < 199 )
+		if( this.embedPlayer.getPlayerHeight() < 199 ){
 			return false;
-				
+		}
+
 		// See if we have native support for ogg: 
 		var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
 		for ( var i = 0; i < supporting_players.length; i++ ) {
@@ -304,15 +269,15 @@ ctrlBuilder.prototype = {
 					
 					$j( this ).append( 
 						$j('<div />')
-						.attr({
+						.attr( {
 							'id': "gnp_" + embedPlayer.id								
-						})
+						} )
 						.addClass( 'ui-state-highlight ui-corner-all' )
 						.css({
-							'position':'absolute',
-							'display':'none',
-							'background':'#FFF',
-							'color':'#111',
+							'position' : 'absolute',
+							'display' : 'none',
+							'background' : '#FFF',
+							'color' : '#111',
 							'top' : toppos + 'px',
 							'left' : '10px',
 							'right' : '10px'
@@ -456,12 +421,12 @@ ctrlBuilder.prototype = {
 	*/
 	optionMenuItems: {	
 		// Player select menu item
-		'playerSelect': function( ctrlObj ){					
+		'playerSelect': function( ctrlObj ){
 			return $j.getLineItem( 					
 				gM( 'mwe-chose_player' ),
 				'gear',
 				function( ) {
-					ctrObj.displayOverlay(  
+					ctrlObj.displayOverlay(  
 						ctrlObj.getPlayerSelect()
 					);						
 				}
@@ -474,8 +439,11 @@ ctrlBuilder.prototype = {
 				 gM( 'mwe-download' ),
 				'disk',
 				function( ) {
-					ctrObj.displayOverlay( gM('loading' ) );
-					ctrlObj.showDownload( $j( ctrlObj.embedPlayer ).find( '.overlay-content' ) );										
+					ctrlObj.displayOverlay( gM('mwe-loading_txt' ) );
+					// Call show download with the target to be populated
+					ctrlObj.showDownload(
+						ctrlObj.embedPlayer.$interface.find( '.overlay-content' ) 
+					);										
 				}
 			)
 		},		
@@ -486,10 +454,28 @@ ctrlBuilder.prototype = {
 				gM( 'mwe-share' ),
 				'mail-closed',
 				function( ) {
-					ctrlObj.showShare();						
+					ctrlObj.displayOverlay( 
+						ctrlObj.getShare()
+					);						
 				}
 			)
 		}
+	},
+	
+	/** 
+	* Close a menu overlay 
+	*/
+	closeMenuOverlay: function(){
+		var _this = this;	
+		var embedPlayer = this.embedPlayer;
+		var $overlay = embedPlayer.$interface.find( '.overlay-win,.ui-widget-overlay' );
+		
+		$overlay.fadeOut( "slow", function() {
+			$overlay.remove();			
+		} );
+		// Show the big play button: 
+		embedPlayer.$interface.find( '.play-btn-large' ).fadeIn( 'slow' );
+		return false; // onclick action return false
 	},
 	
 	/** 
@@ -505,65 +491,82 @@ ctrlBuilder.prototype = {
 		if ( !this.supportedComponets[ 'overlays' ] ) {
 			embedPlayer.stop();
 		}						  
+		// Hide the big play button: 
+		embedPlayer.$interface.find( '.play-btn-large' ).hide();		
 		
-	  	// Fade in if the overlay is not already displayed: 
-		var fade_in = true;
-		if ( $j( '#blackbg_' + this.id ).length != 0 ) {
-			fade_in = false;
-			$j( '#blackbg_' + this.id ).remove();
+		// Check if overlay window is already present: 
+		if ( embedPlayer.$interface.find( '.overlay-win' ).length != 0 ) {
+			//Update the content			
+			embedPlayer.$interface.find( '.overlay-win' ).html(
+				overlayContent
+			);
+			return ;
 		}
 		
-		$closeButton = $j('<span />')
-			.text( gM('mwe-close_btn') )
-			.css({
-					'float' : 'right',
-					'color' : '#FFF',
-					'cursor' : 'pointer',
-					'background' : '#111',
-					'margin-right': '10px',
-					'text-decoration' : 'underline'
-				})
-			.click(function() {
-				_this.ctrlBuilder.closeMenuOverlay();
-			})
-			
+		// Add an overlay
+		embedPlayer.$interface.append( 
+			$j('<div />')
+			.addClass( 'ui-widget-overlay' )
+			.css( {
+				'height' : this.getOverlayHeight() + 'px'
+			} )
+		);
 		
+		// Setup the close button 
+		$closeButton = $j('<span />')
+		.addClass( 'ui-icon ui-icon-closethick' )
+		.css({
+			'position': 'absolute',
+			'cursor' : 'pointer',
+			'top' : '2px',
+			'right' : '2px'
+		})
+		.buttonHover()
+		.click( function() {
+			_this.closeMenuOverlay();
+		} )					
+					
 		$overlayMenu = $j('<div />')
-			.attr({
-					'id' : 'blackbg_' + this.id
-			})
-			.addClass( 'videoComplete' )
+			.addClass( 'overlay-win ui-state-default ui-widget-header ui-corner-all' )
 			.css({
-				'height' : this.ctrlBuilder.getOverlayHeight(),
-				'width' :  this.ctrlBuilder.getOverlayWidth()
+				'height' : 200,
+				'width' :  250,
+				'position' : 'absolute',
+				'left' : '10px',
+				'top': '10px',
+				'padding' : '4px',
+				'z-index' : 1
 			})
 			.append(
 				$closeButton,
 				$j('<div />')
 					.addClass( 'overlay-content' )					
-					.append( $overlayContent )
+					.append( overlayContent )
 			)
-		this.$interface.prepend( $overlayMenu );
+			
+		// Append the overlay menu to the player interface			
+		embedPlayer.$interface.prepend( $overlayMenu )
+		.find( '.overlay-win' )
+		.fadeIn( "slow" );					
 		
-		if ( fade_in )
-			$j( '#blackbg_' + this.id ).fadeIn( "slow" );
-		else
-			$j( '#blackbg_' + this.id ).show();
 		return false; // onclick action return false
 	},	
+	
 	/**
-	* Show the "share" msg
+	* Get the "share" interface
 	* 
 	* TODO share should be enabled via <embed> tag usage to be compatible
 	* with sites social networking sites that allow <embed> tags but not js
 	*  
 	* @param {Object} $target Target jQuery object to set share html
 	*/
-	showShare:function( $target ) {
+	getShare: function( ) {
 		var embedPlayer = this.embedPlayer;
 		var	embed_code = embedPlayer.getEmbeddingHTML();		
 		var _this = this;
-		$target.empty();
+		
+		var $shareInterface = $j('<div />');
+		
 		$shareList = $j( '<ul />' );
 		
         $shareList
@@ -577,9 +580,9 @@ ctrlBuilder.prototype = {
 	        		gM( 'mwe-embed_site_or_blog' )
 	        	)
 	        )
-	     )	
+	    )
         
-        $target.append(
+       $shareInterface.append(
         	$j( '<h2 />' )
         	.text( gM( 'mwe-share_this_video' ) )      	
         	.append(
@@ -587,8 +590,10 @@ ctrlBuilder.prototype = {
         	)
         );
         
-      	$target.append(
-      		$j('<div />')
+      	$shareInterface.append(
+      		
+			
+      		$j('<span />')
       		.addClass( 'source_wrap' )
       		.html(
       			$j( '<textarea />' )
@@ -598,6 +603,13 @@ ctrlBuilder.prototype = {
 				})
       		),
       		
+      		$j('<br />'),
+      		
+      		$j('<span />')			
+			.html(
+				gM( 'mwe-read_before_embed' ) 
+			),
+				
       		$j('<button />')
       		.addClass( 'ui-state-default ui-corner-all copycode' )
       		.text( gM( 'mwe-copy-code' ) )
@@ -608,22 +620,18 @@ ctrlBuilder.prototype = {
 					CopiedTxt = document.selection.createRange();
 					CopiedTxt.execCommand( "Copy" );
 				}
-			} ),
-			
-			$j('<div />')
-			.addClass( "ui-state-highlight ui-corner-all" )
-			.html(
-				gM( 'mwe-read_before_embed' ) 
-			)					
+			} )			
 		);
+		return $shareInterface;
 	},
+	
 	/**
 	* Shows the Player Select interface
 	* 
 	* @param {Object} $target jQuery target for output
 	*/
 	getPlayerSelect: function( ) {		
-		mw.log('showPlayerSelect');		
+		mw.log('getPlayerSelect');		
 		
 		var embedPlayer = this.embedPlayer;
 						
@@ -665,8 +673,10 @@ ctrlBuilder.prototype = {
 							embedPlayer.ctrlBuilder.closeMenuOverlay();
 							embedPlayer.mediaElement.selectSource( source_id );
 			
-							mw.EmbedTypes.players.setPlayerPreference( default_player_id,
-								 _this.mediaElement.sources[ source_id ].getMIMEType() );
+							mw.EmbedTypes.players.setPlayerPreference( 
+								default_player_id,
+								embedPlayer.mediaElement.sources[ source_id ].getMIMEType() 
+							);
 			
 							// Issue a stop
 							embedPlayer.stop();				
@@ -709,7 +719,7 @@ ctrlBuilder.prototype = {
 		// Load the roe if available (to populate out download options:		
 		// mw.log('f:showDownload '+ this.roe + ' ' + this.mediaElement.addedROEData);
 		if ( embedPlayer.roe && embedPlayer.mediaElement.addedROEData == false ) {
-			$target.html( gM( 'loading_txt' ) );
+			$target.html( gM( 'mwe-loading_txt' ) );
 			embedPlayer.getMvJsonUrl( this.roe, function( data ) {
 			   embedPlayer.mediaElement.addROE( data );
 			   _this.showDownloadWithSources( $target );
@@ -725,22 +735,17 @@ ctrlBuilder.prototype = {
 	*/
 	showDownloadWithSources : function( $target ) {
 		var _this = this;
+		mw.log( 'showDownloadWithSources::' + $target.length );
 		var embedPlayer = this.embedPlayer;
-		$target.empty().append( 
-			$j('<div />')
-			.css({
-				"color":"white"
-			})
-		);
+		// Empty the target:
+		$target.empty();
+		
 		var $mediaList = $j( '<ul />' );
 		var $textList =  $j( '<ul />' );
 		$j.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if(  source.getSrc() ) {
 				var $dl_line = $j( '<li />').append(
-					$j('<a />').
-					css({
-						"color" : "white"						
-					})
+					$j('<a />')					
 					.attr( 'href', source.getSrc())
 					.text(  source.getTitle() )
 				);		
@@ -932,6 +937,11 @@ ctrlBuilder.prototype = {
 							$j( '<span />' )
 							.addClass( "ui-icon ui-icon-play" )
 						)
+						// Play / pause binding
+						.buttonHover()
+						.click( function() {
+							ctrlObj.embedPlayer.play();		
+						});
 			}
 		},
 		
@@ -949,7 +959,8 @@ ctrlBuilder.prototype = {
 							.addClass( "ui-icon ui-icon-comment" )
 						)
 						// Captions binding:
-						.buttonHover().click( function() {			
+						.buttonHover()
+						.click( function() {			
 							ctrlObj.embedPlayer.showTextInterface();
 						} );
 			}
@@ -1021,6 +1032,7 @@ ctrlBuilder.prototype = {
 			'w':0, // special case (takes up remaining space)
 			'o':function( ctrlObj ) {
 				var embedPlayer = ctrlObj.embedPlayer;
+				var _this = this;
 				var $playHead = $j( '<div />' )
 					.addClass ( "play_head" )
 					.css( "width", parseInt( ctrlObj.available_width - 20 ) + 'px' )					

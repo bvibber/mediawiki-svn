@@ -4,8 +4,8 @@
 .k-player {
 	color: #FFF;
 }
-.k-player .ui-widget-content a{
-	color: #BBB;
+.k-player .ui-widget-content {
+	color: #444;
 }
 /* large play button */
 .k-player .play-btn-large {
@@ -230,17 +230,7 @@
 	background-position: -1px -141px;
 }
 
-.k-menu-screens {
-	width: 320px;
-	padding: 13px 10px 15px 15px;
-	float: left;
-}  /* w & h inline via jq */
-.k-menu-screens h2 {
-	padding: 0 0 5px 1px;
-	clear: both;
-	font-size: 12px;
-	color: #666;
-}
+
 
 .k-menu-screens p {
 	margin: 6px 0;
@@ -281,16 +271,12 @@
 	border: none;
 }
 
-.k-menu-screens {
-	width: 320px;
-	padding: 13px 10px 15px 15px;
-	float: left;
-}  /* w & h inline via jq */
+
 .k-menu-screens h2 {
 	padding: 0 0 5px 1px;
 	clear: both;
 	font-size: 12px;
-	color: #666;
+	color: #999;
 }
 
 .k-menu-screens p {
@@ -359,8 +345,7 @@
 }
 
 .k-player .menu-screen {
-	height: 100%;
-	overflow: auto;
+	height: 100%;	
 }
 
 .k-player .menu-screen.menu-share div.ui-state-highlight {
