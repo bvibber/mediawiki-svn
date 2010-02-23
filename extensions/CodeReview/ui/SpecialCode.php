@@ -11,7 +11,7 @@ class SpecialCode extends SpecialPage {
 
 		wfLoadExtensionMessages( 'CodeReview' );
 
-		if( !$this->userCanExecute( $wgUser ) ) {
+		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
@@ -120,7 +120,7 @@ abstract class CodeView {
 		return $wgRequest->wasPosted()
 			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) )
 			&& $wgUser->isAllowed( $permission );
-	}	
+	}
 
 	abstract function execute();
 
@@ -132,10 +132,10 @@ abstract class CodeView {
 		return $this->mRepo->authorWikiUser( $author );
 	}
 
-	function authorLink( $author, $extraParams=array() ) {
+	function authorLink( $author, $extraParams = array() ) {
 		$repo = $this->mRepo->getName();
-		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );			
-		return $this->mSkin->link( $special, htmlspecialchars( $author ), array(),  $extraParams);
+		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
+		return $this->mSkin->link( $special, htmlspecialchars( $author ), array(), $extraParams );
 	}
 
 	function statusDesc( $status ) {

@@ -32,13 +32,9 @@ class CodeRevisionListView extends CodeView {
 
 		$this->showForm();
 		
-		//get the total count across all pages
+		// Get the total count across all pages
 		$dbr = wfGetDB( DB_SLAVE );
-		$revCountRes = $this->getRevCountQuery( $dbr );
-		$revCount = 0;		 
-		if ( $revCountRes !== false ) {		
-			$revCount = $revCountRes->rev_count;
-		}
+		$revCount = $this->getRevCount( $dbr );
 		
 		$pager = $this->getPager();
 
@@ -174,26 +170,39 @@ class CodeRevisionListView extends CodeView {
 		return new SvnRevTablePager( $this );
 	}
 	
-	function getRevCountQuery( $dbr ) {
+	/**
+	 * Get total number of revisions for this revision view
+	 * 
+	 * @return int Number of revisions 
+	 */
+	function getRevCount( $dbr ) {
 		$tables = array( 'code_rev' );
 		$selectFields = array( 'COUNT( DISTINCT cr_id ) AS rev_count' );
-		// count if code_rev where path matches
-		if ( strlen($this->mPath) ) {
+		// Count if code_rev where path matches
+		if ( strlen( $this->mPath ) ) {
 			$tables[] = 'code_paths';
-			$whereCond = array('cr_repo_id' => $this->mRepo->getId(),
+			$whereCond = array(
+							'cr_repo_id' => $this->mRepo->getId(),
 							'cr_id = cp_rev_id', 
 							' cp_path' . $dbr->buildLike( $this->mPath, $dbr->anyString() ),
-							// performance
+							// Performance
 							' cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 )
 						);
 		// No path; count of code_rev
 		} else {
-			$whereCond = array('cr_repo_id' => $this->mRepo->getId());
+			$whereCond = array( 'cr_repo_id' => $this->mRepo->getId() );
 		}
 		$whereCond = array_merge( $whereCond, $this->getSpecializedWhereClause( $dbr ) );
-		return $dbr->selectRow( $tables, $selectFields, $whereCond );
+		$result = $dbr->selectRow( $tables, $selectFields, $whereCond );
+		if ( $result )
+			return $result->rev_count;
+		else
+			return 0;
 	}
 	
+	/**
+	 * @todo Document
+	 */
 	function getSpecializedWhereClause( $dbr ) {
 		return array();
 	}
@@ -282,7 +291,7 @@ class SvnRevTablePager extends SvnTablePager {
 
 	function formatRevValue( $name, $value, $row ) {
 		global $wgLang;
-		$pathQuery = ( strlen($this->mView->mPath) ) ? array('path' => $this->mView->mPath) : array();
+		$pathQuery = ( strlen( $this->mView->mPath ) ) ? array( 'path' => $this->mView->mPath ) : array();
 
 		switch( $name ) {
 		case 'selectforchange':
