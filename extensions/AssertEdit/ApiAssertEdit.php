@@ -4,7 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	require_once( 'ApiBase.php' );
 }
 
-class AssertEditApi extends ApiBase {
+class ApiAssertEdit extends ApiBase {
 	
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
