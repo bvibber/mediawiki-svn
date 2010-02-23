@@ -466,10 +466,8 @@ if ( typeof context == 'undefined' ) {
 						}
 						$currentElement.remove();
 					} else {
-						$( '<span></span>' )
-							.addClass( 'wikiEditor' )
-							.html( html )
-							.insertAfter( $currentElement );
+						$newElement = $( '<span></span>' ).html( html ).insertAfter( $currentElement );
+						$newElement.replaceWith( $newElement[0].childNodes );
 						$currentElement.remove();
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
