@@ -31,8 +31,8 @@ $wgAutoloadClasses['AssertEdit'] = $dir . 'AssertEdit_body.php';
 $wgHooks['AlternateEdit'][] = 'efAssertEditHook';
 $wgHooks['APIEditBeforeSave'][] = 'efAssertApiEditHook';
 
-$wgAutoloadClasses['AssertEditApi'] = $dir . "AssertEditApi.php";
-$wgAPIModules['assertedit'] = 'AssertEditApi';
+$wgAutoloadClasses['ApiAssertEdit'] = $dir . "ApiAssertEdit.php";
+$wgAPIModules['assertedit'] = 'ApiAssertEdit';
 
 function efAssertEditHook( $editpage ) {
 	global $wgOut, $wgRequest;
