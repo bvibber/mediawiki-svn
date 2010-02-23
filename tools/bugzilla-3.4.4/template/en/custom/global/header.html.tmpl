@@ -1,3 +1,15 @@
+[% IF message %]
+  [% PROCESS global/messages.html.tmpl %]
+[% END %]
+
+[% DEFAULT
+  subheader = ""
+  header_addl_info = ""
+  onload = ""
+  style_urls = []
+%]
+
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
