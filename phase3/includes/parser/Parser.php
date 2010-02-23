@@ -254,6 +254,8 @@ class Parser
 			'html' => $ot == self::OT_HTML,
 			'wiki' => $ot == self::OT_WIKI,
 			'pre' => $ot == self::OT_PREPROCESS,
+			'includes' => $ot == self::OT_INCLUDES,
+			'extract' => $ot == self::OT_EXTRACT,
 		);
 	}
 
