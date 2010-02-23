@@ -232,7 +232,7 @@ ctrlBuilder.prototype = {
 		// See if we have native support for ogg: 
 		var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
 		for ( var i = 0; i < supporting_players.length; i++ ) {
-			if ( supporting_players[i].id == 'videoElement' ) {
+			if ( supporting_players[i].id == 'oggNative' ) {
 				return false;
 			}
 		}
@@ -248,8 +248,9 @@ ctrlBuilder.prototype = {
 				}
 			}
 			// No ogg src... no point in download firefox link
-			if ( !foundOgg )
+			if ( !foundOgg ){
 				return false;
+			}
 		}
 		return true;
 	},
