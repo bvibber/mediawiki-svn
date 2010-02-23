@@ -1036,6 +1036,8 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-submit-feedback' => 'Anfoner yr adborth',
 	'optin-survey-yes' => 'Ydw',
 	'optin-survey-no' => 'Nacydw',
+	'optin-survey-intro' => "Diolch ichi am arbrofi gyda Beta.
+Hoffem wybod eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn drwy gwblhau'r holiadur dewisol sy'n dilyn, cyn i chi bwyso'r botwm \"[[#leave|{{int:optin-submit-out}}]]\".",
 	'optin-survey-question-whyoptout' => "Pam ydych chi'n gadael Beta? (Dewiswch pob rheswm perthnasol.)",
 	'optin-survey-answer-whyoptout-hard' => "Roedd yn rhy annodd i'w ddefnyddio.",
 	'optin-survey-answer-whyoptout-didntwork' => "Doedd e ddim yn gweithio'n iawn.",
