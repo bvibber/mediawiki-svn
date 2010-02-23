@@ -4,7 +4,7 @@ set -e
 db="$1"
 collection="$2"
 thesaurus="$3"
-languages="en de fr nl it es pt pl"
+languages="commons en de fr nl it es pt pl"
 
 echo "preparing concept info"
 replace  '{collection}' "$collection" '{thesaurus}' "$thesaurus"  < concept-info.sql | mysql "$db"

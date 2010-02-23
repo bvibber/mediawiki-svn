@@ -273,7 +273,8 @@ class WWImages extends WWWikis {
 	    $wiki = $lang . "wiki";
 	    if (!in_array($wiki, $wikis)) $wikis[] = $wiki;
 
-	    foreach ($rc as $r) {
+	    foreach ($rc as $r => $t) {
+		if ( $t != 10) continue; //use only articles
 		$p = "gil_wiki = " . $this->quote($wiki) . " AND gil_page_namespace_id = 0 AND gil_page = " . $this->quote($r);
 	    }
 	}
@@ -354,14 +355,24 @@ class WWImages extends WWWikis {
 	return $imageUsage;
     }
 
-    function getImagesAbout($id, $max = 0) {
+    function getImagesAbout($concept, $max = 0) {
 	global $wwLanguages, $wwFrequentImageThreshold; //FIXME: put config into member vars!
 
-	$concepts = $this->thesaurus->getPagesForConcept($id);
+	$pages = null;
+	if ( is_array($concept) ) {
+		if (isset($concept['pages']) && $concept['pages']!==null) $pages = $concept['pages'];
+		else if (isset($concept['id']) && $concept['id']!==null) $concept = $concept['id'];
+		else if (isset($concept['concept'])) $concept = $concept['concept'];
+	} 
+
+	if ($pages === null) {
+		$pages = $this->thesaurus->getPagesForConcept($concept);
+		if (!$pages) return false;
+	}
 
 	$images = new ImageCollection();
 
-	$globalImageList = $this->getImagesOnPagesGlobally($concepts); //use wikis for $wwLanguages only
+	$globalImageList = $this->getImagesOnPagesGlobally($pages); //use wikis for $wwLanguages only
 	//TODO: sanity limit on number of images. $max * 5 ?
 	$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, ".*wiki"); //use all wikipedias
 
@@ -377,15 +388,15 @@ class WWImages extends WWWikis {
 	    return $images->listImages($max);
 	}
 
-	if (isset($concepts['commons'])) {
-	    $pages = $concepts['commons'];
+	if (isset($pages['commons'])) {
+	    $cpages = $pages['commons'];
 
-	    foreach ($pages as $page) {
-		if ( preg_match('/^Category:(.*)$/', $page, $m) ) {
-		    if ( @$m[1] ) $page = $m[1]; //hack
-		    $img = $this->getImagesInCategory("commons", $page); 
+	    foreach ($cpages as $cpage => $t) {
+		if ( $t == 50 && preg_match('/^Category:(.*)$/', $cpage, $m) ) {
+		    if ( @$m[1] ) $cpage = $m[1]; //hack
+		    $img = $this->getImagesInCategory("commons", $cpage); 
 
-		    if ($img) $images->addImages($img, "commons:category:" . $page, "category", 0.5);
+		    if ($img) $images->addImages($img, "commons:category:" . $cpage, "category", 0.5);
 		}
 	    }
 	}

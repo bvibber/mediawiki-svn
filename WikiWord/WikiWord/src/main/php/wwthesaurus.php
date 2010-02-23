@@ -62,10 +62,20 @@ require_once(dirname(__FILE__)."/wwutils.php");
 
 class WWThesaurus extends WWUTils {
 
-    function queryConceptsForTerm($lang, $term, $norm = 3, $limit = 100) {
+    function normalizeSearchString( $s, $norm = 1 ) {
+	if ( $norm >= 1 ) $s = mb_strtolower($s, "utf-8");
+	if ( $norm >= 1 ) $s = str_replace("-", "", $s);
+
+	#TODO: 2: whitespace and punctuation
+	#TODO: 3: translit
+
+	return $s;
+    }
+
+    function queryConceptsForTerm($lang, $term, $norm = 1, $limit = 100) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
-	$term = $this->normalize($term, $norm);
+	$term = $this->normalizeSearchString($term, $norm);
 
 	$sql = "SELECT I.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I"
 	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_search_index as S ON I.concept = S.concept and I.lang = S.lang"
@@ -85,7 +95,12 @@ class WWThesaurus extends WWUTils {
 	$rs = $this->queryConceptsForTerm($lang, $term);
 	$list = WWUtils::slurpRows($rs);
 	mysql_free_result($rs);
-	return $this->buildConcepts($rs);
+	return $this->buildConcepts($list);
+    }
+ 
+   function getPagesForConcept( $id, $lang = null ) {
+	$p = $this->getConceptInfo( $id, $lang );
+	return $p['pages'];
     }
 
     /*
@@ -301,6 +316,11 @@ class WWThesaurus extends WWUTils {
 	$concept = array();
 	$concept["languages"] = array();
 
+	$broader = array();
+	$narrower = array();
+	$similar = array();
+	$related = array();
+
 	foreach ($rows as $row) {
 	    if (!isset($concept["id"])) $concept["id"] = (int)$row["concept"];
 
@@ -313,29 +333,30 @@ class WWThesaurus extends WWUTils {
 	    if (@$row["definition"] !== null) $concept["definition"][$lang] = $row["definition"];
 	    if (@$row["pages"] !== null) $concept["pages"][$lang] = $this->splitPages($row["pages"]);
 
-	    if (@$row["broader"] !== null) $concept["broader"][$lang] = $this->splitConcepts($row["broader"]);
-	    if (@$row["narrower"] !== null) $concept["narrower"][$lang] = $this->splitConcepts($row["narrower"]);
-	    if (@$row["similar"] !== null) $concept["similar"][$lang] = $this->splitConcepts($row["similar"]);
-	    if (@$row["related"] !== null) $concept["related"][$lang] = $this->splitConcepts($row["related"]);
-
-	    if (isset($concept["broader"][$lang]) && !isset($concept["broader"]["*"])) $concept["broader"]["*"] = array();
-	    if (isset($concept["narrower"][$lang]) && !isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array();
-	    if (isset($concept["similar"][$lang]) && !isset($concept["similar"]["*"])) $concept["similar"]["*"] = array();
-	    if (isset($concept["related"][$lang]) && !isset($concept["related"]["*"])) $concept["related"]["*"] = array();
-
-	    if (isset($concept["broader"][$lang])) $concept["broader"]["*"] += array_keys($concept["broader"][$lang]);
-	    if (isset($concept["narrower"][$lang])) $concept["narrower"]["*"] += array_keys($concept["narrower"][$lang]);
-	    if (isset($concept["similar"][$lang])) $concept["similar"]["*"] += array_keys($concept["similar"][$lang]);
-	    if (isset($concept["related"][$lang])) $concept["related"]["*"] += array_keys($concept["related"][$lang]);
-	    #FIXME: the above doesn't work as expected. what the fuck?!
+	    if (@$row["broader"] !== null)  $broader[$lang] =  $this->splitConcepts($row["broader"]);
+	    if (@$row["narrower"] !== null) $narrower[$lang] = $this->splitConcepts($row["narrower"]);
+	    if (@$row["similar"] !== null)  $similar[$lang] =  $this->splitConcepts($row["similar"]);
+	    if (@$row["related"] !== null)  $related[$lang] =  $this->splitConcepts($row["related"]);
 	}
 
-	if (isset($concept["broader"]["*"])) $concept["broader"]["*"] = array_unique($concept["broader"]["*"], SORT_NUMERIC);
-	if (isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array_unique($concept["narrower"]["*"], SORT_NUMERIC);
-	if (isset($concept["similar"]["*"])) $concept["similar"]["*"] = array_unique($concept["similar"]["*"], SORT_NUMERIC);
-	if (isset($concept["broader"]["*"])) $concept["related"]["*"] = array_unique($concept["related"]["*"], SORT_NUMERIC);
+	$concept["broader"] =  $this->mogrifyLocalInfo($broader);
+	$concept["narrower"] = $this->mogrifyLocalInfo($narrower);
+	$concept["similar"] =  $this->mogrifyLocalInfo($similar);
+	$concept["related"] =  $this->mogrifyLocalInfo($related);
 
 	return $concept;
+    }
+
+    function mogrifyLocalInfo( $byLanguage ) {
+	$byId = array();
+	
+	foreach ( $byLanguage as $lang => $items ) {
+	    foreach ( $items as $id => $name ) {
+		$byId[$id][$lang] = $name;
+	    }
+	}
+
+	return $byId;
     }
 
     function getConcept( $id, $lang = null, $limit = 100 ) {

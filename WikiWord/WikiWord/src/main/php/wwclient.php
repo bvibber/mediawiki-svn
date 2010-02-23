@@ -28,17 +28,18 @@ class WWClient {
 	return $data;
     }
 
+    function getPagesForConcept( $id, $lang = null ) {
+	$p = $this->getConceptInfo( $id, $lang );
+	return $p['pages'];
+    }
+
+    /*
     function getLocalConcepts($id) { //NOTE: deprecated alias for backward compat
 	return getPagesForConcept($id);
     }
 
     function getConcept( $id, $lang = null ) {
 	$p = $this->getConceptProperties( $id, '', $lang );
-	return $p['pages'];
-    }
-
-    function getPagesForConcept( $id, $lang = null ) {
-	$p = $this->getConceptProperties( $id, 'pages', $lang );
 	return $p['pages'];
     }
 
@@ -80,14 +81,26 @@ class WWClient {
     function getScoresForConcept( $id, $lang = null ) {
 	$p = $this->getConceptProperties( $id, 'scores', $lang );
 	return $p['scores'];
-    }
+    }*/
 
     function getConceptInfo( $id, $lang = null ) {
-	if ( $lang ) return $this->getConceptProperties( $id, "definition,broader,narrower,related", $lang );
-	else return $this->getConceptProperties( $id, "broader,narrower,related" );
+	$param = array(
+		'query' => 'info',
+		'gcid' => $id,
+	);
+
+	if ( $lang ) $param['lang'] = is_array($lang) ? join('|', $lang) : $lang;
+
+	$rs = $this->query( $param );
+
+	if (!isset($rs['id'])) $rs['id'] = $id;
+	if (!isset($rs['lang'])) $rs['lang'] = $lang;
+
+	return $rs;
     }
 
-    function getConceptProperties( $id, $props, $lang = null ) {
+    /*
+    function getConceptProperties( $id, $props, $lang =$props null ) {
 	$param = array(
 		'query' => 'properties',
 		'props' => ( is_array($props) ? join('|', $props) : $props ),
@@ -102,7 +115,7 @@ class WWClient {
 	if (!isset($rs['lang'])) $rs['lang'] = $lang;
 
 	return $rs;
-    }
+    }*/
 
     function getConceptsForTerm( $lang, $term ) {
 	$param = array(
@@ -116,6 +129,7 @@ class WWClient {
 	return $rs['concepts'];
     }
 
+    /*
     function getConceptsForPage( $lang, $page ) {
 	$param = array(
 		'query' => 'concepts',
@@ -127,5 +141,5 @@ class WWClient {
 
 	return $rs['concepts'];
     }
-
+    */
 }

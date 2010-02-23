@@ -25,11 +25,11 @@ function printLocalConceptList($lang, $concepts) {
     <?php
 }
 
-function printConceptImageList($id, $class = "terselist") {
+function printConceptImageList($concept, $class = "terselist") {
     global $utils, $wwThumbSize, $wwMaxPreviewImages;
 
-    if (is_array($id)) $images = $id; #XXX: HACK
-    else $images = $utils->getImagesAbout($id, $wwMaxPreviewImages);
+    if (is_array($concept) && !isset($concept['id']) && isset($concept[0])) $images = $concept; #XXX: HACK
+    else $images = $utils->getImagesAbout($concept, $wwMaxPreviewImages);
 
     ?>
     <ul class="<?php print $class; ?>">
@@ -116,6 +116,8 @@ function printTermLink($lang, $row) {
 
 function normalizeConceptRow($lang, $row) {
     global $wwSelf;
+
+    #FIXME: handle complex concept records!
 
     if (!$row) return $row;
 

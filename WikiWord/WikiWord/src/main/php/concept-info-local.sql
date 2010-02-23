@@ -23,24 +23,27 @@ where I.lang = "{lang}";
 
 -- collect broader concepts
 update {collection}_{thesaurus}_concept_info as I
-join ( select narrow as concept, group_concat(distinct concat(broad, ":", local_concept_name) separator "|") as broader from {collection}_{thesaurus}_broader 
-	join {collection}_{thesaurus}_origin as O on O.global_concept = broad and O.lang = "{lang}"
+join ( select narrow as concept, group_concat(distinct concat(broad, ":", if (local_concept_name is null, "", local_concept_name)) separator "|") as broader 
+from {collection}_{thesaurus}_broader 
+	left join {collection}_{thesaurus}_origin as O on O.global_concept = broad and O.lang = "{lang}"
 	group by narrow ) as X
 on X.concept = I.concept and I.lang = "{lang}"
 set I.broader = X.broader;
 
 -- collect narrower concepts
 update {collection}_{thesaurus}_concept_info as I
-join ( select broad as concept, group_concat(distinct concat(narrow, ":", local_concept_name) separator "|") as narrower from {collection}_{thesaurus}_broader 
-	join {collection}_{thesaurus}_origin as O on O.global_concept = narrow and O.lang = "{lang}"
+join ( select broad as concept, group_concat(distinct concat(narrow, ":", if (local_concept_name is null, "", local_concept_name)) separator "|") as narrower 
+from {collection}_{thesaurus}_broader 
+	left join {collection}_{thesaurus}_origin as O on O.global_concept = narrow and O.lang = "{lang}"
 	group by broad ) as X
 on X.concept = I.concept and I.lang = "{lang}"
 set I.narrower = X.narrower;
 
 -- collect similar concepts
 update {collection}_{thesaurus}_concept_info as I
-join ( select concept1 as concept, group_concat(distinct concat(concept2, ":", local_concept_name) separator "|") as similar from {collection}_{thesaurus}_relation
-	join {collection}_{thesaurus}_origin as O on O.global_concept = concept2 and O.lang = "{lang}"
+join ( select concept1 as concept, group_concat(distinct concat(concept2, ":", if (local_concept_name is null, "", local_concept_name)) separator "|") as similar 
+from {collection}_{thesaurus}_relation
+	left join {collection}_{thesaurus}_origin as O on O.global_concept = concept2 and O.lang = "{lang}"
 	where langmatch >= 1 or langref >= 1
 	group by concept1 ) as X
 on X.concept = I.concept and I.lang = "{lang}"
@@ -48,8 +51,9 @@ set I.similar = X.similar;
 
 -- collect related concepts
 update {collection}_{thesaurus}_concept_info as I
-join ( select concept1 as concept, group_concat(distinct concat(concept2, ":", local_concept_name) separator "|") as related from {collection}_{thesaurus}_relation
-	join {collection}_{thesaurus}_origin as O on O.global_concept = concept2 and O.lang = "{lang}"
+join ( select concept1 as concept, group_concat(distinct concat(concept2, ":", if (local_concept_name is null, "", local_concept_name)) separator "|") as related 
+from {collection}_{thesaurus}_relation
+	left join {collection}_{thesaurus}_origin as O on O.global_concept = concept2 and O.lang = "{lang}"
 	where bilink >= 1
 	group by concept1 ) as X
 on X.concept = I.concept and I.lang = "{lang}"
