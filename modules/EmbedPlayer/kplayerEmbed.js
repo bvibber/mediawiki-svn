@@ -8,13 +8,13 @@ var kplayerEmbed = {
 	
 	// List of supported features: 
 	supports: {
-		'playHead':true,
-		'pause':true,
-		'stop':true,
-		'timeDisplay':true,
-		'volumeControl':true,
-		'overlay':false,
-		'fullscreen':false
+		'playHead' : true,
+		'pause' : true,
+		'stop' : true,
+		'timeDisplay' : true,
+		'volumeControl' : true,
+		'overlay' : true,
+		'fullscreen' : false
 	},
 	
 	/*

@@ -1752,10 +1752,11 @@ mw.EmbedPlayer.prototype = {
 		// Call the ctrlBuilder end event::
 		
 		//if kalturaAttribution and k-skin show the "credits" screen: 
-		if( this.ctrlBuilder.showCredits ) {			
+		if( mw.getConfig( 'kalturaAttribution' ) && this.ctrlBuilder.showCredits ) {			
 			this.ctrlBuilder.showCredits();
 			return ;
 		}
+		
 		// Related videos: 
 		$j( '#img_thumb_' + this.id ).css( 'zindex', 1 );
 		this.$interface.find( '.play-btn-large' ).hide();
@@ -2959,7 +2960,7 @@ mediaPlayers.prototype =
 	default_players : { },
 	
 	/**
-	* Initializartion function defiens the default order for players for
+	* Initializartion function sets the default order for players for
 	* a given mime type
 	*/
 	init : function() {
@@ -2978,8 +2979,7 @@ mediaPlayers.prototype =
 		this.default_players['text/html'] = ['html'];
 		this.default_players['image/jpeg'] = ['html'];
 		this.default_players['image/png'] = ['html'];
-		this.default_players['image/svg'] = ['html'];
-		
+		this.default_players['image/svg'] = ['html'];		
 		
 		
 	},
