@@ -80,11 +80,13 @@ class Parser
 
 	// Allowed values for $this->mOutputType
 	// Parameter to startExternalParse().
-	const OT_HTML = 1;
-	const OT_WIKI = 2;
-	const OT_PREPROCESS = 3;
+	const OT_HTML = 1; // like parse()
+	const OT_WIKI = 2; // like preSaveTransform()
+	const OT_PREPROCESS = 3; // like preprocess()
 	const OT_MSG = 3;
-	const OT_INCLUDES = 4;
+
+	const OT_INCLUDES = 4;  // like getTransclusionText() - actually a NO-OP all features use the preprocessor flags
+	const OT_EXTRACT = 5; // like extractSections() - should behaviour be needed later on, these flags will then work.
 
 	// Marker Suffix needs to be accessible staticly.
 	const MARKER_SUFFIX = "-QINU\x7f";
@@ -4804,11 +4806,10 @@ class Parser
 	 *                for "replace", the whole page with the section replaced.
 	 */
 	private function extractSections( $text, $section, $mode, $newText='' ) {
-		global $wgTitle;
 		$this->clearState();
-		$this->setTitle( $wgTitle ); // not generally used but removes an ugly failure mode
+		$this->setTitle( new FakeTitle ); 
 		$this->mOptions = new ParserOptions;
-		$this->setOutputType( self::OT_WIKI );
+		$this->setOutputType( self::OT_EXTRACT );
 		$outText = '';
 		$frame = $this->getPreprocessor()->newFrame();
 
