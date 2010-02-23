@@ -133,6 +133,17 @@ $messages['cs'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Začít nové vlákno',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'discussionthreading-desc' => 'Ychwanegu trafod ar drywydd i dudalennau sgwrs',
+	'discussionthreading-replysection' => 'ateb',
+	'discussionthreading-replysectionhint' => 'Ateb y cyfraniad hwn',
+	'discussionthreading-threadnewsection' => 'newydd',
+	'discussionthreading-threadnewsectionhint' => 'Dechrau trywydd newydd',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

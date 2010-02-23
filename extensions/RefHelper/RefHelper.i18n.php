@@ -150,6 +150,7 @@ Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Specia
 );
 
 /** Spanish (Español)
+ * @author Peter17
  * @author Translationista
  */
 $messages['es'] = array(
@@ -169,6 +170,7 @@ $messages['es'] = array(
 	'refhelper-pages' => 'Páginas:',
 	'refhelper-year' => 'Año:',
 	'refhelper-refname' => 'Nombre de referencia:',
+	'refhelper-category' => 'Categoría $1:',
 	'refhelper-create' => 'Crear',
 	'refhelper-search' => 'Buscar',
 	'refhelper-toolbox_link_create' => 'Crear referencia',

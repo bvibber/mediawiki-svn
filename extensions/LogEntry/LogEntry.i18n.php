@@ -548,6 +548,8 @@ $messages['tr'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
+	'logentry-append' => 'Ližata',
+	'logentry' => 'AiglehtesenKirjutez',
 	'logentry-invalidpage' => "Vär lehtpol'",
 	'logentry-invalidtoken' => 'Vär token',
 );

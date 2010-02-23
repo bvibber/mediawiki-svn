@@ -1819,6 +1819,7 @@ $messages['eo'] = array(
  * @author Dferg
  * @author Imre
  * @author Locos epraix
+ * @author Peter17
  * @author Translationista
  */
 $messages['es'] = array(
@@ -1881,6 +1882,8 @@ Para poder publicar artículos y habilitar otras características de wikilog, es
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-edit-signpub-tooltip' => 'Hace que el artículo se firme y publique en este wikilog una vez salvado.
 Desmarcar esta casilla para mantener este artículo como borrador.',
+	'wikilog-comment-permalink' => '$1 en $2',
+	'wikilog-comment-anonsig' => '$3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está en espera por ser aprobado',
 	'wikilog-comment-deleted' => 'Este comentario ha sido borrado.',
 	'wikilog-comment-autosumm' => 'Nuevo comentario de $1: $2',

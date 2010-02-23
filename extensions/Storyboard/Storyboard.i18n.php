@@ -38,11 +38,16 @@ $messages['af'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'storyboard-name' => 'Дошка гісторыяў',
 	'storyboard-desc' => 'Прадстаўляе старонку для донараў, старонку для іх гісторыяў, і інтэрфэйс яе мадэрацыі',
 	'right-storyreview' => 'рэцэнзаваньне, рэдагаваньне, публікацыя і хаваньне гісторыяў',
+	'storyboard-storyreview' => 'Рэцэнзаваць гісторыю',
+	'storyboard-publish' => 'Апублікаваць',
+	'storyboard-reviewed' => 'Рэцэнзаваная',
+	'storyboard-unreviewed' => 'Не рэцэнзаваная',
 );
 
 /** Breton (Brezhoneg)
@@ -63,11 +68,16 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => "Offre une page d'atterrissage pour les donateurs où les histoires peuvent être soumises et une interface de modération des histoires",
 	'right-storyreview' => 'Relire, modifier, publier, et masquer les histoires',
+	'storyboard-storyreview' => "Relecture de l'histoire",
+	'storyboard-publish' => 'Publier',
+	'storyboard-reviewed' => 'Révisée',
+	'storyboard-unreviewed' => 'Non-révisée',
 );
 
 /** Galician (Galego)
@@ -77,6 +87,10 @@ $messages['gl'] = array(
 	'storyboard-name' => 'Taboleiro de historias',
 	'storyboard-desc' => 'Proporciona unha páxina de chegada para os doantes, unha páxina desde a que se poden enviar historias e unha interface para moderar o seu envío',
 	'right-storyreview' => 'Revisar, editar, publicar e agochar historias',
+	'storyboard-storyreview' => 'Revisión da historia',
+	'storyboard-publish' => 'Publicar',
+	'storyboard-reviewed' => 'Revisada',
+	'storyboard-unreviewed' => 'Non revisada',
 );
 
 /** Swiss German (Alemannisch)
@@ -86,6 +100,10 @@ $messages['gsw'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Stellt e Ziilsyte z Verfiegig fir Spänder, wu Gschichte chenne yygee wäre un e Benutzeroberflechi fir d Moderation vu Gschichte',
 	'right-storyreview' => 'Gschichte priefe, bearbeite un uusblände',
+	'storyboard-storyreview' => 'Gschicht beurteilde',
+	'storyboard-publish' => 'Vereffetlige',
+	'storyboard-reviewed' => 'Prieft',
+	'storyboard-unreviewed' => 'Nit prieft',
 );
 
 /** Interlingua (Interlingua)
@@ -117,6 +135,10 @@ $messages['mk'] = array(
 	'storyboard-name' => 'Раскажувачница',
 	'storyboard-desc' => 'Ги носи дарителите на страница кадешто да испратат своја приказна. Содржи и интерфејс за модерирање на приказните',
 	'right-storyreview' => 'Прегледување, уредување, објавување и сокривање на приказни',
+	'storyboard-storyreview' => 'Проверка на напис',
+	'storyboard-publish' => 'Објави',
+	'storyboard-reviewed' => 'Проверена',
+	'storyboard-unreviewed' => 'Непроверена',
 );
 
 /** Dutch (Nederlands)
@@ -156,5 +178,10 @@ $messages['pms'] = array(
 $messages['ru'] = array(
 	'storyboard-name' => 'Доска историй',
 	'storyboard-desc' => 'Предоставляет страницу для размещения историй жертвователей, а также интерфейс её модерации',
+	'right-storyreview' => 'проверка, правка, публикация и сокрытие историй',
+	'storyboard-storyreview' => 'Проверка историй',
+	'storyboard-publish' => 'Опубликовать',
+	'storyboard-reviewed' => 'Проверенных',
+	'storyboard-unreviewed' => 'Непроверенных',
 );
 

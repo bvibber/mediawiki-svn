@@ -1895,6 +1895,8 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'patrol-revert-reason' => 'Sü:',
+	'group-patroller' => 'Patrulirujad',
+	'group-patroller-member' => 'patrulirui',
 );
 
 /** Vietnamese (Tiếng Việt)
