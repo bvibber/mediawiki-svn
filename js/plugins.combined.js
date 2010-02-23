@@ -6839,6 +6839,33 @@ if ( typeof context == 'undefined' ) {
 				context.$content.addClass( 'pasting' );
 			}
 			setTimeout( function() {
+				// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
+				// space collapsing issues at element boundries
+				context.$content.find( '*' ).each( function() {
+					if ( $(this).children().length == 0 && this.childNodes.length > 0 ) {
+						$(this).text( $(this).text() );
+					}
+				} );
+				// Remove newlines from all text nodes
+				var t = context.fn.traverser( context.$content );
+				while ( t ) {
+					if ( t.node.nodeName == '#text' ) {
+						// Text nodes that are nothing but blank lines need to be converted to full line breaks
+						if ( t.node.nodeValue === '\n' ) {
+							$( '<p><br></p>' ).insertAfter( $( t.node ) );
+							var oldNode = t.node;
+							t = t.next();
+							$( oldNode ).remove();
+							// We already advanced, so let's finish now
+							continue;
+						}
+						// Text nodes containing new lines just need conversion to spaces
+						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
+							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
+						}
+					}
+					t = t.next();
+				}
 				// Unwrap the span found in webkit copies
 				context.$content.find( 'link, style, meta' ).remove(); //MS Word
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' ) //MS Word+webkit
@@ -6855,25 +6882,18 @@ if ( typeof context == 'undefined' ) {
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
-					// space collapsing issues at element boundries
-					$currentElement.find( '*' ).each( function() {
-						if ( $(this).children().length == 0 && this.childNodes.length > 0 ) {
-							$(this).text( $(this).text() );
-						}
-					} );
-					var text = $currentElement.text();
+					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
 					if ( $currentElement.is( 'br' ) ) {
 						$currentElement.addClass( 'wikiEditor' );
-					} else if ( $currentElement.is( 'span' ) && text.length == 0 ) {
+					} else if ( $currentElement.is( 'span' ) && html.length == 0 ) {
 						// Markers!
 						$currentElement.remove();
 					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
 						$newElement = $( '<p></p>' )
 							.addClass( 'wikiEditor' )
 							.insertAfter( $currentElement );
-						if ( text.length ) {
-							$newElement.text( text );
+						if ( html.length ) {
+							$newElement.html( html );
 						} else {
 							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
 						}
@@ -6881,41 +6901,13 @@ if ( typeof context == 'undefined' ) {
 					} else {
 						$( '<span></span>' )
 							.addClass( 'wikiEditor' )
-							.text( $currentElement.text() )
+							.html( html )
 							.insertAfter( $currentElement );
 						$currentElement.remove();
 					}
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
-				// Remove newlines from all text nodes
-				var t = context.fn.traverser( context.$content );
-				while ( t ) {
-					if ( t.node.nodeName == '#text' ) {
-						// Text nodes that are nothing but blank lines need to be converted to full line breaks
-						if ( t.node.nodeValue === '\n' ) {
-							$( '<p><br></p>' ).insertAfter( $( t.node ) );
-							var oldNode = t.node;
-							t = t.next();
-							$( oldNode ).remove();
-							// We already advanced, so let's finish now
-							continue;
-						}
-						// Text nodes containing only whitespace need to die!
-						else if ( t.node.nodeValue.search( /\S+/ ) == -1 ) {
-							var oldNode = t.node;
-							t = t.next();
-							$( oldNode ).remove();
-							// We already advanced, so let's finish now
-							continue;
-						}
-						// Text nodes containing new lines just need conversion to spaces
-						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
-						}
-					}
-					t = t.next();
-				}
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
 				}
