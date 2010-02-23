@@ -6855,6 +6855,13 @@ if ( typeof context == 'undefined' ) {
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
+					// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
+					// space collapsing issues at element boundries
+					$currentElement.find( '*' ).each( function() {
+						if ( $(this).children() == 0 && this.childNodes.length > 0 ) {
+							$(this).text( $(this).text() );
+						}
+					} );
 					var text = $currentElement.text();
 					if ( $currentElement.is( 'br' ) ) {
 						$currentElement.addClass( 'wikiEditor' );
@@ -6879,7 +6886,25 @@ if ( typeof context == 'undefined' ) {
 				var t = context.fn.traverser( context.$content );
 				while ( t ) {
 					if ( t.node.nodeName == '#text' ) {
-						if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
+						// Text nodes that are nothing but blank lines need to be converted to full line breaks
+						if ( t.node.nodeValue === '\n' ) {
+							$( '<p><br></p>' ).insertAfter( $( t.node ) );
+							var oldNode = t.node;
+							t = t.next();
+							$( oldNode ).remove();
+							// We already advanced, so let's finish now
+							continue;
+						}
+						// Text nodes containing only whitespace need to die!
+						else if ( t.node.nodeValue.search( /\S+/ ) == -1 ) {
+							var oldNode = t.node;
+							t = t.next();
+							$( oldNode ).remove();
+							// We already advanced, so let's finish now
+							continue;
+						}
+						// Text nodes containing new lines just need conversion to spaces
+						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
 							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
 						}
 					}
