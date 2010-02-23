@@ -15,7 +15,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Header Tabs',
 	'description' => 'Adds tabs to the page separating top-level sections. Originally developed for [http://www.ardorado.com Ardorado.com]',
 	'version' => '0.6.6',
-	'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev] (for [http://www.semanticcommunities.com Semantic Communities LLC.])',
+	'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Header_Tabs'
 );
 
