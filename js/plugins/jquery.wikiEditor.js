@@ -425,7 +425,7 @@ if ( typeof context == 'undefined' ) {
 					// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
 					// space collapsing issues at element boundries
 					$currentElement.find( '*' ).each( function() {
-						if ( $(this).children() == 0 && this.childNodes.length > 0 ) {
+						if ( $(this).children().length == 0 && this.childNodes.length > 0 ) {
 							$(this).text( $(this).text() );
 						}
 					} );
