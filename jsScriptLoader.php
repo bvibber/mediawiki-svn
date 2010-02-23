@@ -82,7 +82,7 @@ class jsScriptLoader {
 
 		// Load the ExtensionMessagesFiles
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) .
-			'/includes/languages/mwEmbed.i18n.php';
+			'/languages/mwEmbed.i18n.php';
 
 		// Load the javascript class paths:
 		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
@@ -206,7 +206,7 @@ class jsScriptLoader {
 		// Write the grouped javascript to a temporary file:
 		// ( closure compiler does not support reading from standard in )
 		$td = wfTempDir();
-		$jsFileName = $td . '/' . $requestKey  . '.tmp.js';
+		$jsFileName = $td . '/' . md5( $requestKey )  . '.tmp.js';
 		file_put_contents( $jsFileName,  $js_string );
 		$retval = '';
 		$cmd = $wgJavaPath . ' -jar ' . $wgClosureCompilerPath;

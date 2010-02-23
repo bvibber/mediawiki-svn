@@ -533,7 +533,8 @@ ctrlBuilder.prototype = {
 				'width' :  250,
 				'position' : 'absolute',
 				'left' : '10px',
-				'top': '10px',
+				'top': '15px',
+				'overflow' : 'auto',
 				'padding' : '4px',
 				'z-index' : 1
 			})
@@ -744,9 +745,10 @@ ctrlBuilder.prototype = {
 		var $textList =  $j( '<ul />' );
 		$j.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if(  source.getSrc() ) {
+				mw.log("add src: "  + source.getTitle() );
 				var $dl_line = $j( '<li />').append(
 					$j('<a />')					
-					.attr( 'href', source.getSrc())
+					.attr( 'href', source.getSrc() )
 					.text(  source.getTitle() )
 				);		
 				// Add link to correct "bucket" 

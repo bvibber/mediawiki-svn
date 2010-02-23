@@ -43,7 +43,8 @@ mw.addMessages( {
 	"mwe-menu_btn" : "Menu",
 	"mwe-close_btn" : "Close",
 	"mwe-ogg-player-vlc-player" : "VLC player",
-	"mwe-ogg-player-videoElement" : "Native Ogg video",
+	"mwe-ogg-player-oggNative" : "HTML5 ogg player",
+	"mwe-ogg-player-h264Native" : "HTML5 h.264 player",
 	"mwe-ogg-player-oggPlugin" : "Generic Ogg plugin",
 	"mwe-ogg-player-quicktime-mozilla" : "QuickTime plugin",
 	"mwe-ogg-player-quicktime-activex" : "QuickTime ActiveX",
@@ -659,7 +660,7 @@ mediaSource.prototype = {
 	* Sets the duration and sets the end time if unset 
 	* @param {Float} duration: in seconds
 	*/
-	setDuration:function ( duration ) {
+	setDuration: function ( duration ) {
 		this.duration = duration;
 		if ( !this.end_npt ) {
 			this.end_npt = mw.seconds2npt( this.startOffset + duration );
@@ -670,7 +671,10 @@ mediaSource.prototype = {
 	* MIME type accessor function.
 	* @return {String} the MIME type of the source.
 	*/
-	getMIMEType : function() {
+	getMIMEType: function() {
+		if( this.mime_type )
+			return this.mime_type;
+		this.mime_type = this.detectType( this.src );
 		return this.mime_type;
 	},
 	
@@ -699,12 +703,13 @@ mediaSource.prototype = {
 	*	@return Title of the source.
 	*	@type String
 	*/
-	getTitle : function() {	
-		if( this.title )
+	getTitle : function() {		
+		if( this.title ){
 			return this.title;
+		}
 			
 		// Return a Title based on mime type: 
-		switch( this.mime_type ) {
+		switch( this.getMIMEType() ) {
 			case 'video/h264' :
 				return gM( 'mwe-video-h264' );
 			break;
@@ -773,6 +778,7 @@ mediaSource.prototype = {
 		var end_inx =  ( uri.indexOf( '?' ) != -1 ) ? uri.indexOf( '?' ) : uri.length;
 		var no_param_uri = uri.substr( 0, end_inx );
 		switch( no_param_uri.substr( no_param_uri.lastIndexOf( '.' ), 4 ).toLowerCase() ) {
+			case '.m4v':
 			case '.mp4':
 				return 'video/h264';
 			break;
@@ -2911,7 +2917,9 @@ var omtkPlayer = new mediaPlayer( 'omtkplayer', ['audio/ogg'], 'omtk' );
 var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'java' );
 
 // Native html5 player
-var videoElementPlayer = new mediaPlayer( 'videoElement', ['video/ogg', 'audio/ogg', 'application/ogg'], 'native' );
+var oggNativePlayer = new mediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg'], 'native' );
+
+var h264NativePlayer = new mediaPlayer( 'h264Native', ['video/h264'], 'native' );
 
 // VLC player
 var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
@@ -2960,7 +2968,7 @@ mediaPlayers.prototype =
 		
 		// set up default players order for each library type		
 		this.default_players['video/x-flv'] = ['kplayer', 'vlc'];
-		this.default_players['video/h264'] = ['kplayer', 'vlc'];
+		this.default_players['video/h264'] = ['native', 'kplayer', 'vlc'];
 		
 		this.default_players['video/ogg'] = ['native', 'vlc', 'java', 'generic'];
 		this.default_players['application/ogg'] = ['native', 'vlc', 'java', 'generic'];
@@ -3190,27 +3198,27 @@ mw.EmbedTypes = {
 		// <video> element
 		if ( typeof HTMLVideoElement == 'object' // Firefox, Safari
 				|| typeof HTMLVideoElement == 'function' ) // Opera
-		{
-			// do another test for safari: 
-			if ( $j.browser.safari ) {
-				try {
-					var dummyvid = document.createElement( "video" );
-					if ( dummyvid.canPlayType && dummyvid.canPlayType( "video/ogg;codecs=\"theora,vorbis\"" ) == "probably" )
-					{
-						this.players.addPlayer( videoElementPlayer );
-					} else if ( this.supportedMimeType( 'video/ogg' ) ) {
-						/* older versions of safari do not support canPlayType,
-						   but xiph qt registers mimetype via quicktime plugin */
-						this.players.addPlayer( videoElementPlayer );
-					} else {
-						// NOTE: add some user nagging to install the xiph qt 
-					}
-				} catch ( e ) {
-					mw.log( 'could not run canPlayType in safari' );
+		{					
+			// Test what codecs the native player supports: 
+			try {
+				var dummyvid = document.createElement( "video" );
+				// Test for h264:				
+				if ( dummyvid.canPlayType && dummyvid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ) == "probably" ){
+					this.players.addPlayer( h264NativePlayer );
 				}
-			} else {
-				this.players.addPlayer( videoElementPlayer );
-			}
+				//	 Test for ogg 
+				if ( dummyvid.canPlayType && dummyvid.canPlayType( "video/ogg;codecs=\"theora,vorbis\"" ) == "probably" )
+				{
+					this.players.addPlayer( oggNativePlayer );
+					
+				// older versions of safari do not support canPlayType,
+			   	// but xiph qt registers mimetype via quicktime plugin
+				} else if ( this.supportedMimeType( 'video/ogg' ) ) {									
+					this.players.addPlayer( oggNativePlayer );
+				}
+			} catch ( e ) {
+				mw.log( 'could not run canPlayType ' + e );
+			}		
 		}
 		
 		 // "navigator" plugins
