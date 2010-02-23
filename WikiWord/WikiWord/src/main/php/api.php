@@ -27,7 +27,7 @@ if ( $query ) {
 	    $result['error'] = array('code' => 1010, 'message' => "failed to connect to thesaurus database");
 	} else if ($query == 'concepts') {
 	    $term = @$_REQUEST['term'];
-	    $page = @$_REQUEST['page'];
+	    #$page = @$_REQUEST['page'];
 
 	    if ( $lang === null ) $result['error'] = array('code' => 150, 'message' => "missing parameter lang");
 	    else if ( $term !== null ) {
@@ -35,13 +35,32 @@ if ( $query ) {
 		if ( $result['concepts'] === false || $result['concepts'] === null ) {
 		    $result['error'] = array('code' => 210, 'message' => "failed to retrieve concepts for term $langt:$term");
 		}
-	    } else if ( $page !== null ) {
+	    } /*else if ( $page !== null ) {
 		$result['concepts'] = $thesaurus->getConceptsForPage($lang, $page);
 		if ( $result['concepts'] === false || $result['concepts'] === null ) {
 		    $result['error'] = array('code' => 250, 'message' => "failed to retrieve concepts for page $langt:$page");
 		}
-	    } else {
+	    } */else {
 		$result['error'] = array('code' => 110, 'message' => "missing parameter term");
+	    }
+	} else if ($query == 'concept' || $query == 'info') {
+	    $gcid = @$_REQUEST['gcid'];
+	    if (!$gcid) $gcid = @$_REQUEST['id'];
+
+	    $lang = @$_REQUEST['lang'];
+
+	    if ( $gcid === null ) {
+		$result['error'] = array('code' => 120, 'message' => "missing parameter gcid");
+	    } else {
+		if ($lang) {
+		    $lang = preg_split('![\\s,;|/:]\\s*!', $lang);
+		    if (count($lang) == 1) $lang = $lang[0];
+		}
+
+		$result['concept'] = $thesaurus->getConceptInfo($gcid, $lang);
+		if ( $result['concept'] === false || $result['concept'] === null ) {
+		    $result['error'] = array('code' => 210, 'message' => "concept not found: $gcid");
+		}
 	    }
 	} else if ($query == 'properties') {
 	    $gcid = @$_REQUEST['gcid'];

@@ -231,7 +231,7 @@ class WWThesaurus extends WWUTils {
 
 	$pages = array();
 	foreach ($pp as $p) {
-	    ($t, $n) = explode(":", $p, 2);
+	    list($t, $n) = explode(":", $p, 2);
 	    $pages[$n] = (int)$t;
 	}
 
@@ -243,7 +243,7 @@ class WWThesaurus extends WWUTils {
 
 	$concepts = array();
 	foreach ($ss as $p) {
-	    ($id, $n) = explode(":", $p, 2);
+	    list($id, $n) = explode(":", $p, 2);
 	    $id = (int)$id;
 	    $concepts[$id] = $n;
 	}
@@ -255,13 +255,15 @@ class WWThesaurus extends WWUTils {
     function getConceptInfo( $id, $lang = null, $fields = null ) {
 	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
 
+	#TODO: concept cache!
+
 	if ( $fields && is_array($fields)) $fields = implode(", ", $fields);
 	if ( !$fields ) $fields = "*";
 
 	#TODO: scores, concept-type, ...
 
 	$sql = "SELECT $fields FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info "
-	    . " WHERE C.id = ".(int)$id;
+	    . " WHERE concept = ".(int)$id;
 
 	if ($lang) {
 	    if ( is_array($lang) ) $sql .= " AND lang IN " . $this->quoteSet($lang);
@@ -288,7 +290,7 @@ class WWThesaurus extends WWUTils {
 		$id = null;
 	    }
 
-	    if ($id === null) $id = $row['concept'];
+	    if ($id === null) $id = (int)$row['concept'];
 	    $buff[] = $row;
 	}
 
@@ -300,7 +302,7 @@ class WWThesaurus extends WWUTils {
 	$concept["languages"] = array();
 
 	foreach ($rows as $row) {
-	    if (!isset($concept["id"])) = $row["concept"];
+	    if (!isset($concept["id"])) $concept["id"] = (int)$row["concept"];
 
 	    $lang = $row["lang"];
 	    $concept["languages"][] = $lang;
@@ -316,16 +318,22 @@ class WWThesaurus extends WWUTils {
 	    if (@$row["similar"] !== null) $concept["similar"][$lang] = $this->splitConcepts($row["similar"]);
 	    if (@$row["related"] !== null) $concept["related"][$lang] = $this->splitConcepts($row["related"]);
 
+	    if (isset($concept["broader"][$lang]) && !isset($concept["broader"]["*"])) $concept["broader"]["*"] = array();
+	    if (isset($concept["narrower"][$lang]) && !isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array();
+	    if (isset($concept["similar"][$lang]) && !isset($concept["similar"]["*"])) $concept["similar"]["*"] = array();
+	    if (isset($concept["related"][$lang]) && !isset($concept["related"]["*"])) $concept["related"]["*"] = array();
+
 	    if (isset($concept["broader"][$lang])) $concept["broader"]["*"] += array_keys($concept["broader"][$lang]);
 	    if (isset($concept["narrower"][$lang])) $concept["narrower"]["*"] += array_keys($concept["narrower"][$lang]);
 	    if (isset($concept["similar"][$lang])) $concept["similar"]["*"] += array_keys($concept["similar"][$lang]);
 	    if (isset($concept["related"][$lang])) $concept["related"]["*"] += array_keys($concept["related"][$lang]);
+	    #FIXME: the above doesn't work as expected. what the fuck?!
 	}
 
-	if (isset($concept["broader"]["*"])) $concept["broader"]["*"] = array_unique($concept["broader"]["*"]);
-	if (isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array_unique($concept["narrower"]["*"]);
-	if (isset($concept["similar"]["*"])) $concept["similar"]["*"] = array_unique($concept["similar"]["*"]);
-	if (isset($concept["broader"]["*"])) $concept["related"]["*"] = array_unique($concept["related"]["*"]);
+	if (isset($concept["broader"]["*"])) $concept["broader"]["*"] = array_unique($concept["broader"]["*"], SORT_NUMERIC);
+	if (isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array_unique($concept["narrower"]["*"], SORT_NUMERIC);
+	if (isset($concept["similar"]["*"])) $concept["similar"]["*"] = array_unique($concept["similar"]["*"], SORT_NUMERIC);
+	if (isset($concept["broader"]["*"])) $concept["related"]["*"] = array_unique($concept["related"]["*"], SORT_NUMERIC);
 
 	return $concept;
     }
