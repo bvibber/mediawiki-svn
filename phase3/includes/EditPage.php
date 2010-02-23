@@ -231,11 +231,22 @@ class EditPage {
 		if ( !empty( $this->mPreloadText ) ) {
 			return $this->mPreloadText;
 		} else {
-			$preloadTitle = Title::newFromText( $preload );
-			if ( isset( $preloadTitle ) && $preloadTitle->userCanRead() ) {
-				return $wgParser->getTransclusionText( $preloadTitle, ParserOptions::newFromUser( $wgUser ) );
+			$title = Title::newFromText( $preload );
+			# Check for existence to avoid getting MediaWiki:Noarticletext
+			if ( isset( $title ) && $title->exists() && $title->userCanRead() ) {
+				$article = new Article( $title );
+
+				if ( $article->isRedirect() ) {
+					$title = Title::newFromRedirectRecurse( $article->getContent() );
+					if ( $title->exists() && $title->userCanRead() ) {
+						$article = new Article( $title );
+					}
+				}
+				$parserOptions = ParserOptions::newFromUser( $wgUser );
+				return $wgParser->getPreloadText( $article->getContent(), $title, $parserOptions );
 			}
 		}
+		return "";
 	}
 
 	/**

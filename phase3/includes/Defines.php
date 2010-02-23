@@ -209,8 +209,7 @@ define( 'OT_HTML', 1 );
 define( 'OT_WIKI', 2 );
 define( 'OT_PREPROCESS', 3 );
 define( 'OT_MSG' , 3 );  // b/c alias for OT_PREPROCESS
-define( 'OT_INCLUDES', 4);
-define( 'OT_EXTRACT', 5);
+define( 'OT_PLAIN', 4);
 
 # Flags for Parser::setFunctionHook
 define( 'SFH_NO_HASH', 1 );

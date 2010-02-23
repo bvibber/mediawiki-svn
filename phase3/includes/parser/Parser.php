@@ -26,8 +26,8 @@
  *   Cleans a signature before saving it to preferences
  * extractSections()
  *   Extracts sections from an article for section editing
- * getTransclusionText()
- *   Extracts the text of a template with only <includeonly>, etc., parsed
+ * getPreloadText()
+ *   Removes <noinclude> sections, and <includeonly> tags.
  *
  * Globals used:
  *    objects:   $wgLang, $wgContLang
@@ -84,9 +84,7 @@ class Parser
 	const OT_WIKI = 2; // like preSaveTransform()
 	const OT_PREPROCESS = 3; // like preprocess()
 	const OT_MSG = 3;
-
-	const OT_INCLUDES = 4;  // like getTransclusionText() - actually a NO-OP all features use the preprocessor flags
-	const OT_EXTRACT = 5; // like extractSections() - should behaviour be needed later on, these flags will then work.
+	const OT_PLAIN = 4;  // like extractSections() - portions of the original are returned unchanged.
 
 	// Marker Suffix needs to be accessible staticly.
 	const MARKER_SUFFIX = "-QINU\x7f";
@@ -254,8 +252,7 @@ class Parser
 			'html' => $ot == self::OT_HTML,
 			'wiki' => $ot == self::OT_WIKI,
 			'pre' => $ot == self::OT_PREPROCESS,
-			'includes' => $ot == self::OT_INCLUDES,
-			'extract' => $ot == self::OT_EXTRACT,
+			'plain' => $ot == self::OT_PLAIN,
 		);
 	}
 
@@ -502,23 +499,21 @@ class Parser
 	}
 
 	/**
-	 * Get the wikitext of a page as though it was transcluded.
+	 * Process the wikitext for the ?preload= feature. (bug 5210)
 	 *
-	 * Specifically <includeonly> etc. are parsed, redirects are followed, comments
-	 * are removed, but templates arguments and parser functions are untouched.
-	 *
-	 * This is not called by the parser itself, see braceSubstitution for its transclusion. 
+	 * <noinclude>, <includeonly> etc. are parsed as for template transclusion, 
+	 * comments, templates, arguments, tags hooks and parser functions are untouched.
 	 */
-	public function getTransclusionText( $title, $options ) {
-		// Must initialize first
+	public function getPreloadText( $text, $title, $options ) {
+		// Parser (re)initialisation
 		$this->clearState();
-		$this->setOutputType( self::OT_INCLUDES );
+		$this->setOutputType( self::OT_PLAIN );
 		$this->mOptions = $options;
-		$this->setTitle( new FakeTitle ); 
+		$this->setTitle( $title ); 
 
-		list( $text, $title ) = $this->getTemplateDom( $title );
 		$flags = PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES;
-		return $this->getPreprocessor()->newFrame()->expand( $text, $flags );
+		$dom = $this->preprocessToDom( $text, self::PTD_FOR_INCLUSION );
+		return $this->getPreprocessor()->newFrame()->expand( $dom, $flags );
 	}
 
 	/**
@@ -4808,10 +4803,11 @@ class Parser
 	 *                for "replace", the whole page with the section replaced.
 	 */
 	private function extractSections( $text, $section, $mode, $newText='' ) {
+		global $wgTitle; 
 		$this->clearState();
-		$this->setTitle( new FakeTitle ); 
+		$this->setTitle( $wgTitle ); // just a placeholder.
 		$this->mOptions = new ParserOptions;
-		$this->setOutputType( self::OT_EXTRACT );
+		$this->setOutputType( self::OT_PLAIN );
 		$outText = '';
 		$frame = $this->getPreprocessor()->newFrame();
 
