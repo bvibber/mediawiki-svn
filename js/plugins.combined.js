@@ -6871,7 +6871,7 @@ if ( typeof context == 'undefined' ) {
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' ) //MS Word+webkit
 					.each( function(){
 						var outerParent = $(this).parent();
-						outerParent.replaceWith( outerParent.childNodes() );
+						outerParent.replaceWith( outerParent.childNodes );
 					} );
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$( this.childNodes ).insertBefore( this );
