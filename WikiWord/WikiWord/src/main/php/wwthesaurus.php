@@ -62,17 +62,21 @@ require_once(dirname(__FILE__)."/wwutils.php");
 
 class WWThesaurus extends WWUTils {
 
-    function queryConceptsForTerm($lang, $term, $limit = 100) {
+    function queryConceptsForTerm($lang, $term, $norm = 3, $limit = 100) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
-	$term = trim($term);
+	$term = $this->normalize($term, $norm);
 
-	$sql = "SELECT O.global_concept as id, M.*, O.*, definition FROM {$wwTablePrefix}_{$lang}_meaning as M"
-	      . " LEFT JOIN {$wwTablePrefix}_{$lang}_definition as D ON M.concept = D.concept "
-	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_origin as O ON O.lang = \"" . mysql_real_escape_string($lang) . "\" AND M.concept = O.local_concept "
-	      . " WHERE term_text = \"" . mysql_real_escape_string($term) . "\""
-	      . " ORDER BY freq DESC "
+	$sql = "SELECT I.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I"
+	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_search_index as S ON I.concept = S.concept and I.lang = S.lang"
+	      . " WHERE term = " . $this->quote($term) 
+	      . " AND I.lang = " . $this->quote($lang) 
+	      . " AND S.lang = " . $this->quote($lang) 
+	      . " AND S.norm <= " . (int)$norm
+	      . " ORDER BY S.score DESC "
 	      . " LIMIT " . (int)$limit;
+
+	#FIXME: query-lang vs. output-languages!
 
 	return $this->query($sql);
     }
@@ -81,9 +85,10 @@ class WWThesaurus extends WWUTils {
 	$rs = $this->queryConceptsForTerm($lang, $term);
 	$list = WWUtils::slurpRows($rs);
 	mysql_free_result($rs);
-	return $list;
+	return $this->buildConcepts($rs);
     }
 
+    /*
     function queryConceptsForPage($lang, $page, $limit = 100) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
@@ -115,7 +120,7 @@ class WWThesaurus extends WWUTils {
 
     function getLocalConcepts($id) { //NOTE: deprecated alias for backward compat
 	return getPagesForConcept($id);
-    }
+    } */
 
     /*
     function queryLocalConceptInfo($lang, $id) {
@@ -142,7 +147,7 @@ class WWThesaurus extends WWUTils {
 	return $this->query($sql);
     }*/
 
-    function getConceptInfo( $id, $lang = null ) {
+    /*function getConceptInfo( $id, $lang = null ) {
 	$result = $this->getConcept($id, $lang);
 
 	$result['broader'] = $this->getBroaderForConcept($id);
@@ -155,8 +160,9 @@ class WWThesaurus extends WWUTils {
 	}
 
 	return $result;
-    }
+    }*/
 
+    /*
     function unpickle($s, $lang, $hasId=true, $hasName=true, $hasConf=true) {
 	$ss = explode("\x1E", $s);
 	$items = array();
@@ -218,6 +224,7 @@ class WWThesaurus extends WWUTils {
 
 	return $names;
     }
+    */
 
     function splitPages( $s ) {
 	$pp = explode("|", $s);
@@ -262,15 +269,39 @@ class WWThesaurus extends WWUTils {
 	}
 
 	$r = $this->getRows($sql);
+	if (!$r) return false;
 
-	$rs = $this->query($sql);
-	if (!$rs) return false;
+	return $this->buildConcept($r);
+    }
 
+    function buildConcepts($rows) {
+	$concepts = array();
+	$buff = array();
+	$id = null;
+	foreach($rows as $row) {
+	    if ( $id !== null && $id != $row['concept'] ) {
+		if ($buff) {
+			$concepts[$id] = $this->buildConcept($buff);
+			$buff = array();
+		}
+
+		$id = null;
+	    }
+
+	    if ($id === null) $id = $row['concept'];
+	    $buff[] = $row;
+	}
+
+	return $concepts;
+    }
+
+    function buildConcept($rows) {
 	$concept = array();
-	$concept["id"] = $id;
 	$concept["languages"] = array();
 
-	while ($row = mysql_fetch_assoc($rs)) {
+	foreach ($rows as $row) {
+	    if (!isset($concept["id"])) = $row["concept"];
+
 	    $lang = $row["lang"];
 	    $concept["languages"][] = $lang;
 
@@ -295,8 +326,6 @@ class WWThesaurus extends WWUTils {
 	if (isset($concept["narrower"]["*"])) $concept["narrower"]["*"] = array_unique($concept["narrower"]["*"]);
 	if (isset($concept["similar"]["*"])) $concept["similar"]["*"] = array_unique($concept["similar"]["*"]);
 	if (isset($concept["broader"]["*"])) $concept["related"]["*"] = array_unique($concept["related"]["*"]);
-
-	mysql_free_result($rs);
 
 	return $concept;
     }

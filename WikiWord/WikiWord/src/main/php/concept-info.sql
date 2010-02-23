@@ -13,8 +13,8 @@ create table if not exists {collection}_{thesaurus}_concept_info (
      PRIMARY KEY ( concept, lang )
      ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+truncate {collection}_{thesaurus}_concept_info;
+
 insert into {collection}_{thesaurus}_concept_info ( concept, lang, name ) 
 select global_concept, lang, local_concept_name 
 from {collection}_{thesaurus}_origin;
-
-truncate {collection}_{thesaurus}_concept_info;
