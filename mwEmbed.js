@@ -490,7 +490,7 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	 * Format a number
 	 * @param {Number} num Number to be formated
-	 * NOTE: add il8n support to includes/lanuages/class/Language{langCode}.js
+	 * NOTE: add il8n support to lanuages/class/Language{langCode}.js
 	 */
 	mw.lang.formatNumber = function( num ) {
 		/*
@@ -1301,7 +1301,7 @@ var MW_EMBED_VERSION = '1.1d';
 	
 	/**
 	* 
-	* Shortcut to latest revision text for a given title
+	* Helper function to get revision text for a given title
 	* 
 	* Assumes "follow redirects" 
 	* 
@@ -2285,7 +2285,7 @@ var MW_EMBED_VERSION = '1.1d';
 		}		
 		return xmldata;
 	}
-	
+		
 	// Array of setup functions
 	var mwSetupFunctions = [];
 	
@@ -2338,7 +2338,7 @@ var MW_EMBED_VERSION = '1.1d';
 			// Only load jquery ui theme sheet if ui-widget does not exist.
 			// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
 			//if( ! mw.styleRuleExists( 'ui-widget' ) ) {				
-				mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
+			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
 			//}
 			
 			mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' ); 
@@ -2368,8 +2368,7 @@ var MW_EMBED_VERSION = '1.1d';
 					mw.runReadyHooks();
 				}
 			}
-			runSetupFunctions();
-						
+			runSetupFunctions();	
 		});		
 	};
 	
@@ -2404,7 +2403,7 @@ var MW_EMBED_VERSION = '1.1d';
 				var langCode = mw.getConfig( 'userLanguage' );
 				// Upper case the first letter:
 				langCode = langCode.substr(0,1).toUpperCase() + langCode.substr( 1, langCode.length );
-				loaderRequest.push( 'includes/languages/classes/Language' +
+				loaderRequest.push( 'languages/classes/Language' +
 					langCode + '.js' );
 			}
 								 
@@ -2599,16 +2598,16 @@ var MW_EMBED_VERSION = '1.1d';
 			// Shortcut to jQuery button ( should replace all btnHtml with button )
 			var mw_default_button_options = {
 				// The class name for the button link
-				'class':'',
+				'class' : '',
 				
 				// The style properties for the button link
-				'style': { },
+				'style' : { },
 				
 				// The text of the button link
-				'text': '',
+				'text' : '',
 				
 				// The icon id that precceeds the button link:
-				'icon_id': 'carat-1-n' 
+				'icon_id' : 'carat-1-n' 
 			}
 			$.button = function( options ) {
 				var options = $j.extend( mw_default_button_options, options);
@@ -2627,12 +2626,11 @@ var MW_EMBED_VERSION = '1.1d';
 				}	
 								
 				$btn.append(
-					$j('<span>').addClass( 'ui-icon ui-icon-' + options.icon_id ),
-					$j('<span>').addClass( 'btnText' )
+					$j('<span />').addClass( 'ui-icon ui-icon-' + options.icon_id ),
+					$j('<span />').addClass( 'btnText' )
 						.text( options.text )
 				);
-				return $btn;
-					
+				return $btn;					
 			}
 			
 			// Shortcut to bind hover state
@@ -2709,9 +2707,11 @@ mw.addMessages( {
 
 /**
 * Set DOM-ready call 
+*
 * Does not use jQuery( document ).ready( ) because 
-*  mwEmbed could have been included without jQuery.
-* 
+*  * mwEmbed could have been included without jQuery.
+*  * and jQuery( document ).ready( ) does not work 
+* 	well with dynamic includes
 */
 function domReadyCheck() {
   mw.domReady();

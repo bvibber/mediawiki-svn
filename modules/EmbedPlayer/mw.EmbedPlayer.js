@@ -2229,7 +2229,6 @@ mw.EmbedPlayer.prototype = {
 	
 	/** 
 	* Returns the HTML code for the video when it is in thumbnail mode.
-	* This includes the specified thumbnail as well as buttons for
 	* playing, configuring the player, inline cmml display, HTML linkback,
 	* download, and embed code.
 	*/
@@ -2428,10 +2427,10 @@ mw.EmbedPlayer.prototype = {
 		.removeClass( 'ui-icon-play' )
 		.addClass( 'ui-icon-pause' );
 			
-		this.$interface.find('.play-btn' )
-		.unbind()
+		this.$interface.find( '.play-btn' )
+		.unbind()		
 		.buttonHover()
-		.click( function() {
+		.click( function( ) {
 		 	_this.pause();
 	   	 } )
 	   	 .attr( 'title', gM( 'mwe-pause_clip' ) );
