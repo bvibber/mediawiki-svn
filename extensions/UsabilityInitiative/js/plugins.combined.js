@@ -6834,6 +6834,10 @@ if ( typeof context == 'undefined' ) {
 			return true;
 		},
 		'paste': function( event ) {
+			// Save the cursor position to restore it after all this voodoo
+			var cursorPos = context.fn.getCaretPosition();
+			var oldLength = context.fn.getContents().length;
+			
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -6911,6 +6915,11 @@ if ( typeof context == 'undefined' ) {
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
 				}
+				
+				// Restore cursor position
+				context.fn.purgeOffsets();
+				var restoreTo = cursorPos[0] + context.fn.getContents().length - oldLength;
+				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
 		},
@@ -7947,6 +7956,14 @@ if ( typeof context == 'undefined' ) {
 					ec = e ? e.node : null;
 					start = s ? s.offset : null;
 					end = e ? e.offset : null;
+					// Don't try to set the selection past the end of a node, causes errors
+					// Just put the selection at the end of the node in this case
+					if ( sc.nodeName == '#text' && start >= sc.nodeValue.length ) {
+						start = sc.nodeValue.length - 1;
+					}
+					if ( ec.nodeName == '#text' && end >= ec.nodeValue.length ) {
+						end = ec.nodeValue.length - 1;
+					}
 				}
 				if ( !sc || !ec ) {
 					// The requested offset isn't in the offsets array
@@ -9042,7 +9059,8 @@ evt: {
 							return $( ca1.parentNode ).is( 'span.wikiEditor-template-text' ) ?
 								ca1.parentNode : null;
 						},
-						model: model
+						model: model,
+						context: context
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
@@ -9084,10 +9102,11 @@ fn: {
 				return;
 			}
 			var model = $(this).data( 'marker' ).model;
+			var context = $(this).data( 'marker' ).context;
 			
 			//check if model is collapsible
 			if ( !model.isCollapsible() ) {
-				$(this).addClass( 'wikiEditor-template-text' );
+				//just treat it as normal text for now
 				return;
 			}
 			
@@ -9117,19 +9136,11 @@ fn: {
 				.append( '<img src="'+$.wikiEditor.imgPath+'/templateEditor/dialog-expanded.png" width="22" height="16" style="display:none;" />' )
 				.mousedown( function() { createDialog( $template ); return false; } )
 				.insertAfter( $templateName );
-			/*
-			var $options = $( '<ul />' )
-			.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
-			.append( $( '<li />' )
-				.addClass( 'wikiEditor-template-action-wikiText' )
-				.append( $( '<img />' ).attr( 'src',
-					$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
-				.mousedown( toggleWikiTextEditor ) )
-			.insertAfter( $template.find( '.wikiEditor-template-name' ) );
-			*/
+
 			$(this).data( 'setupDone', true );
 			
 			function toggleWikiTextEditor(){
+				context.fn.refreshOffsets();
 				var $template = $( this ).closest( '.wikiEditor-template' );
 				$template
 					.toggleClass( 'wikiEditor-template-expanded' )
@@ -9469,7 +9480,10 @@ fn: {
 			}
 		};
 		
-		
+		//not collapsing "small" templates
+		if( wikitext.length < 20 ){
+			collapsible = false;
+		}
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
 			collapsible = false; // is a parser function
