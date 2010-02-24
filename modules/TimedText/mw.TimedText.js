@@ -784,8 +784,7 @@ mw.addMessages( {
 			if( layoutMode == 'ontop' ) {
 				$playerTarget.append(
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
-						.css( {
-							"max-width": ( this.embedPlayer.width - 20 ), 
+						.css( {							
 							'position':'absolute',
 							'bottom': ( this.embedPlayer.ctrlBuilder.height + 10 ),
 							'width': '100%',

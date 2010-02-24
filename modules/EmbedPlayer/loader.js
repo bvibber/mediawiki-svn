@@ -28,7 +28,10 @@ mw.setDefaultConfig( {
 	 "kalturaAttribution" : true,
 	 
 	 // Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
-	'show_player_warning' : true 
+	'show_player_warning' : true,
+	
+	// The z-index given to the player interface durring full screen ( arbirrary high z-index )  
+	'fullScreenIndex' : 999998
 } );
 
 
