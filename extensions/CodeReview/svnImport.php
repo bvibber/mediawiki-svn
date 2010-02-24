@@ -12,7 +12,7 @@ class SvnImport extends Maintenance {
 		parent::__construct();
 		$this->mDescription = "Import revisions to Code Review from a Subversion repo";
 		$this->addOption( 'precache', 'Pre-cache diffs for last N revisions, -1 means entire repo', false, true );
-		$this->addArg( 'repo', 'The name of the repo. Use * to import from all defined repos' );
+		$this->addArg( 'repo', 'The name of the repo. Use \'all\' to import from all defined repos' );
 		$this->addArg( 'start', "The revision to begin the import from.  If not specified then\n" .
 						"\t\tit starts from the last repo imported to the wiki.  Ignored if\n" .
 						"\t\t'all' is specified for <repo>", false );
