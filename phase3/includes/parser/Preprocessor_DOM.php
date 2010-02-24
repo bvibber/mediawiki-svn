@@ -57,7 +57,6 @@ class Preprocessor_DOM implements Preprocessor {
 	 * change in the DOM tree for a given text, must be passed through the section identifier
 	 * in the section edit link and thus back to extractSections().
 	 *
-	 * Temporarily removed the cache because the parser now parses straight to DOM
 	 * The output of this function is currently only cached in process memory, but a persistent
 	 * cache may be implemented at a later date which takes further advantage of these strict
 	 * dependency requirements.
@@ -66,90 +65,171 @@ class Preprocessor_DOM implements Preprocessor {
 	 */
 	function preprocessToObj( $text, $flags = 0 ) {
 		wfProfileIn( __METHOD__ );
+		global $wgMemc, $wgPreprocessorCacheThreshold;
 		
-		// To XML
-		$xmlishRegex = implode('|', $this->parser->getStripList());
-		$rules = array(
-			"Template" => new ParsePattern("template", '/^{{(?!{[^{])/s', "TemplateSeq", '}}'),
-			"TplArg" => new ParsePattern("tplarg", '/^{{{/s', "TemplateSeq", '}}}'),
-			"TplPart" => new ParsePattern("part", '/^\|/s', "TplPartList"),
-			"Link" => new ParsePattern("link", '/^\[\[/s', "MainQuant", ']]'),
-			"NewLine" => new ParsePattern("newline", '/^\n/s', "NewLineChoice"),
-			"Heading" => new ParsePattern("h", '/^={1,6}/s', "HeadingQuant", '~0'),
-			"CommentLine" => new ParsePattern("commentline", '/^(?:<!--.*?-->\n)+/s'),
-			"XmlExt" => new ParsePattern("ext", '/^<(?=(' . $xmlishRegex . '))/si', "XmlExtSeq", '~1'),
-			"Comment" => new ParsePattern("comment", '/^<!--.*?(?:-->|$)/s'),
-			"OnlyInclude" => new ParsePattern("ignore", '/^<\/?onlyinclude>/s'),
-			"NoInclude" => new ParsePattern("ignore", '/^<\/?noinclude>/s'),
-			"IncludeOnly" => new ParsePattern("ignore", '/^<includeonly>.*?<\/includeonly>/s'),
-			"MainText" => new ParsePattern("text", '/^.[^{}\[\]<\n|=]*/s'),
-			"XmlName" => new ParsePattern("name", '/^.*?(?= |\/>|>)/s'),
-			"XmlAttr" => new ParsePattern("attr", '/^.*?(?=\/>|>)/s'),
-			"XmlClosed" => new ParsePattern("unUsed", '/^\/>/si'),
-			"XmlOpened" => new ParsePattern("unUsed", '/^>/si'),
-			"XmlInner" => new ParsePattern("inner", '/^.*?(?=<\/~r>|$)/si'),
-			"XmlCloseTag" => new ParsePattern("close", '/^<\/~r>/si'),
-			"StartQuant" => new ParseQuant("unnamed", "MainChoice", '/^$/'),
-			"BOFQuant" => new ParseQuant("unnamed", "NewLineChoice", NULL, 0, 1),
-			"MainQuant" => new ParseQuant("unnamed", "MainChoice", '/^~r/s'),
-			"HeadingQuant" => new ParseQuant("unnamed", "MainChoice", '/^~r(?=(?: *<!--.*?-->)*(?:\n|$))/s'),
-			"TplTitle" => new ParseQuant("title", "MainChoice", '/^(?=~r|\|)/s'),
-			"TplPartQuant" => new ParseQuant("unnamed", "TplPart", '/^~r/s'),
-			"TplTest" => new ParseQuant("unnamed", "MainChoice", '/^(?=~r|\||=(?!~r|\|))/s'),
-			"TplName" => new ParseQuant("name", "TplTest", '/^=/s', 0, 1),
-			"TplValue" => new ParseQuant("value", "MainChoice", '/^(?=~r|\|)/s'),
-			"XmlCloseQuant" => new ParseQuant("unnamed", "XmlCloseTag", NULL, 0, 1),
-			"MainChoice" => new ParseChoice("unnamed", array("CurlyChoice", "XmlChoice", "NewLine", "Link", "MainText")),
-			"CurlyChoice" => new ParseChoice("unnamed", array("Template", "TplArg"), "{"),
-			"XmlChoice" => new ParseChoice("unnamed", array("Comment", "OnlyInclude", "NoInclude", "IncludeOnly", "XmlExt"), "<"),
-			"NewLineChoice" => new ParseChoice("unnamed", array("Heading", "CommentLine")),
-			"TplPartList" => new ParseChoice("unnamed", array("TplPartSeq", "TplValue")),
-			"XmlClose" => new ParseChoice("unnamed", array("XmlClosed", "XmlOpenedSeq")),
-			"StartSeq" => new ParseSeq("root", array("BOFQuant", "StartQuant")),
-			"TemplateSeq" => new ParseSeq("unnamed", array("TplTitle", "TplPartQuant")),
-			"TplPartSeq" => new ParseSeq("unnamed", array("TplName", "TplValue")),
-			"XmlExtSeq" => new ParseSeq("unnamed", array("XmlName", "XmlAttr", "XmlClose")),
-			"XmlOpenedSeq" => new ParseSeq("unnamed", array("XmlOpened", "XmlInner", "XmlCloseQuant")));
-		if ($flags & Parser::PTD_FOR_INCLUSION) {
-			$rules["BOFQuant"] = new ParseQuant("unnamed", "StartChoice", NULL, 0, 1);
-			$rules["StartChoice"] = new ParseChoice("unnamed", array("OnlyIncludeBOF", "NewLineChoice"));
-			$rules["OnlyIncludeBOF"] = new ParsePattern("ignore", '/^.*?<onlyinclude>/s');
-			$rules["OnlyInclude"] = new ParsePattern("ignore", '/^<\/onlyinclude>.*?(?:<onlyinclude>|$)/s');
-			$rules["NoInclude"] = new ParsePattern("ignore", '/^<noinclude>.*?<\/noinclude>/s');
-			$rules["IncludeOnly"] = new ParsePattern("ignore", '/^<\/?includeonly>/s');
-		}
+		$xml = false;
+		$cacheable = strlen( $text ) > $wgPreprocessorCacheThreshold;
+		if ( $cacheable ) {
+			wfProfileIn( __METHOD__.'-cacheable' );
 
-		$parseTree = $rules["StartSeq"]->parse($text, $rules);
-		$xml = $parseTree->printTree();
-
-		// To DOM
-		wfProfileIn( __METHOD__.'-loadXML' );
-		$dom = new DOMDocument;
-		wfSuppressWarnings();
-		$result = $dom->loadXML( $xml );
-		wfRestoreWarnings();
-		if ( !$result ) {
-			// Try running the XML through UtfNormal to get rid of invalid characters
-			$xml = UtfNormal::cleanUp( $xml );
-			$result = $dom->loadXML( $xml );
-			if ( !$result ) {
-				throw new MWException( __METHOD__.' generated invalid XML' );
+			$cacheKey = wfMemcKey( 'preprocess-xml', md5($text), $flags );
+			$cacheValue = $wgMemc->get( $cacheKey );
+			if ( $cacheValue ) {
+				$version = substr( $cacheValue, 0, 8 );
+				if ( intval( $version ) == self::CACHE_VERSION ) {
+					$xml = substr( $cacheValue, 8 );
+					// From the cache
+					wfDebugLog( "Preprocessor", "Loaded preprocessor XML from memcached (key $cacheKey)" );
+				}
 			}
 		}
-		$this->transformDOM($dom);
-
-		// To Obj
+		$dom = false;
+		if ( $xml === false ) {
+			if ( $cacheable ) {
+				wfProfileIn( __METHOD__.'-cache-miss' );
+			}
+			$dom = $this->preprocessToDom( $text, $flags );
+			if ( $cacheable ) {
+				$cacheValue = sprintf( "%08d", self::CACHE_VERSION ) . $dom->saveXML();
+				$wgMemc->set( $cacheKey, $cacheValue, 86400 );
+				wfProfileOut( __METHOD__.'-cache-miss' );
+				wfDebugLog( "Preprocessor", "Saved preprocessor XML to memcached (key $cacheKey)" );
+			}
+		} else {
+			wfProfileIn( __METHOD__.'-loadXML' );
+			$dom = new DOMDocument;
+			wfSuppressWarnings();
+			$result = $dom->loadXML( $xml );
+			wfRestoreWarnings();
+			if ( !$result ) {
+				// Try running the XML through UtfNormal to get rid of invalid characters
+				$xml = UtfNormal::cleanUp( $xml );
+				$result = $dom->loadXML( $xml );
+				if ( !$result ) {
+					throw new MWException( __METHOD__.' generated invalid XML' );
+				}
+			}
+			wfProfileOut( __METHOD__.'-loadXML' );
+		}
 		$obj = new PPNode_DOM( $dom->documentElement );
-
+		if ( $cacheable ) {
+			wfProfileOut( __METHOD__.'-cacheable' );
+		}
 		wfProfileOut( __METHOD__ );
 		return $obj;
+	}
+
+	// Set up parser data for wikitext then feed the given text to the parser
+	private function preprocessToDom(&$text, $flags = 0) {
+		wfProfileIn( __METHOD__ );
+		
+		$xmlishRegex = implode('|', $this->parser->getStripList());
+		$rules = array(
+			"Root" => new ParseAssign("root", "StartSeq"),
+				"StartSeq" => new ParseSeq(array("BOFQuant", "MainQuant"), '$'),
+					"BOFQuant" => new ParseQuant("HeadingChoice", 0, 1),
+			"DefaultPat" => new ParsePattern('/^~r/s'),
+			"SavedPat" => new ParsePattern('/^(~r)/s'),
+			"MainQuant" => new ParseQuant("MainChoice"),
+				"MainChoice"=> new ParseChoice(array("CurlyChoice", "XmlChoice", "NewLineSeq", "LinkSeq", "MainText")),
+					"CurlyChoice" => new ParseChoice(array("Template", "TplArg"), "{"),
+						"Template" => new ParseAssign("template", "TplSeq"),
+							"TplSeq" => new ParseSeq(array("TemplatePat", "TemplateSeq"), '}}'),
+								"TemplatePat" => new ParsePattern('/^{{(?!{[^{])/s'),
+						"TplArg" => new ParseAssign("tplarg", "TplArgSeq"),
+							"TplArgSeq" => new ParseSeq(array("TplArgPat", "TemplateSeq"), '}}}'),
+								"TplArgPat" => new ParsePattern('/^{{{/s'),
+					"XmlChoice" => new ParseChoice(array("Comment", "OnlyInclude", "NoInclude", "IncludeOnly", "XmlExt"), "<"),
+						"Comment" => new ParseAssign("comment", "CommentPat"),
+							"CommentPat" => new ParsePattern('/^(<!--.*?(?:-->|$))/s'),
+						"OnlyInclude" => new ParseAssign("ignore", "OnlyIncludePat"),
+							"OnlyIncludePat" => new ParsePattern('/^(<\/?onlyinclude>)/s'),
+						"NoInclude" => new ParseAssign("ignore", "NoIncludePat"),
+							"NoIncludePat" => new ParsePattern('/^(<\/?noinclude>)/s'),
+						"IncludeOnly" => new ParseAssign("ignore", "IncludeOnlyPat"),
+							"IncludeOnlyPat" => new ParsePattern('/^(<includeonly>.*?<\/includeonly>)/s'),
+						"XmlExt" => new ParseAssign("ext", "XmlExtSeq"),
+							"XmlExtSeq" => new ParseSeq(array("XmlExtPat", "XmlName", "XmlAttr", "XmlClose"), NULL, TRUE),
+								"XmlExtPat" => new ParsePattern('/^<(?=(' . $xmlishRegex . '))/si'),
+								"XmlName" => new ParseAssign("name", "SavedPat"),
+								"XmlAttr" => new ParseAssign("attr", "XmlAttrPat"),
+									"XmlAttrPat" => new ParsePattern('/^(.*?)(?=\/>|>)/s'),
+								"XmlClose" => new ParseChoice(array("XmlClosed", "XmlOpenedSeq")),
+									"XmlClosed" => new ParsePattern('/^\/>/s'),
+									"XmlOpenedSeq" => new ParseSeq(array("XmlOpened", "XmlInner", "XmlCloseQuant")),
+										"XmlOpened" => new ParsePattern('/^>/s'),
+										"XmlInner" => new ParseAssign("inner", "XmlInnerPat"),
+											"XmlInnerPat" => new ParsePattern('/^(.*?)(?=<\/~r>|$)/si'),
+										"XmlCloseQuant" => new ParseQuant("XmlCloseTag", 0, 1),
+											"XmlCloseTag" => new ParseAssign("close", "XmlClosePat"),
+												"XmlClosePat" => new ParsePattern('/^(<\/~r>)/si'),
+					"NewLineSeq" => new ParseSeq(array("NewLine", "NewLineChoice")),
+						"NewLine" => new ParsePattern('/^(\n)/s'),
+						"NewLineChoice" => new ParseChoice(array("HeadingChoice", "CommentLine")),
+							"CommentLine" => new ParseAssign("comment", "CommentLinePat"),
+								"CommentLinePat" => new ParsePattern('/^((?:<!--.*?-->\n)+)/s'),
+					"LinkSeq" => new ParseSeq(array("Link", "MainQuant", "SavedPat"), ']]'),
+						"Link" => new ParsePattern('/^(\[\[)/s'),
+					"MainText" => new ParsePattern('/^(?!~r)(.[^{}\[\]<\n|=]*)/s'),
+			"HeadingChoice" => new ParseChoice(array("Heading6", "Heading5", "Heading4", "Heading3", "Heading2", "Heading1"), "="),
+				"Heading6" => new ParseAssign("h", "Heading6Seq", "level", "6"),
+					"Heading6Seq" => new ParseSeq(array("DefaultPat", "HeadingSeq"), '======'),
+				"Heading5" => new ParseAssign("h", "Heading5Seq", "level", "5"),
+					"Heading5Seq" => new ParseSeq(array("DefaultPat", "HeadingSeq"), '====='),
+				"Heading4" => new ParseAssign("h", "Heading4Seq", "level", "4"),
+					"Heading4Seq" => new ParseSeq(array("DefaultPat", "HeadingSeq"), '===='),
+				"Heading3" => new ParseAssign("h", "Heading3Seq", "level", "3"),
+					"Heading3Seq" => new ParseSeq(array("DefaultPat", "HeadingSeq"), '==='),
+				"Heading2" => new ParseAssign("h", "Heading2Seq", "level", "2"),
+					"Heading2Seq" => new ParseSeq(array("DefaultPat", "HeadingSeq"), '=='),
+				"Heading1" => new ParseAssign("h", "Heading1Seq", "level", "1"),
+					"Heading1Seq" => new ParseSeq(array("DefaultPat", "HeadingSeq"), '='),
+			"HeadingSeq" => new ParseSeq(array("MainQuant", "DefaultPat"), '~r(?=(?: *<!--.*?-->)*(?:\n|$))'),
+			"TemplateSeq" => new ParseSeq(array("TplTitle", "TplPartQuant", "DefaultPat"), '~r|\|'),
+				"TplTitle" => new ParseAssign("title", "MainQuant"),
+				"TplPartQuant" => new ParseQuant("TplPart"),
+					"TplPart" => new ParseAssign("part", "TplPartSeq"),
+						"TplPartSeq" => new ParseSeq(array("TplPipe", "TplPartList")),
+							"TplPipe" => new ParsePattern('/^\|/s'),
+							"TplPartList" => new ParseChoice(array("NamedPartSeq", "TplValue")),
+								"NamedPartSeq" => new ParseSeq(array("TplName", "TplValue")),
+									"TplName" => new ParseAssign("name", "TplNameSeq"),
+										"TplNameSeq" => new ParseSeq(array("MainQuant", "TplEquals"), '~r|\||=(?!~r|\|)'),
+											"TplEquals" => new ParsePattern('/^=/s'),
+			"TplValue" => new ParseAssign("value", "MainQuant"));
+		if ($flags & Parser::PTD_FOR_INCLUSION) {
+			$rules["BOFQuant"] = new ParseQuant("StartChoice", 0, 1);
+			$rules["StartChoice"] = new ParseChoice(array("OnlyIncludeBOF", "HeadingChoice"));
+			$rules["OnlyIncludeBOF"] = new ParseAssign("ignore", "OnlyIncludeBOFPat");
+			$rules["OnlyIncludeBOFPat"] = new ParsePattern('/^(.*?<onlyinclude>)/s');
+			$rules["OnlyIncludePat"] = new ParsePattern('/^(<\/onlyinclude>.*?(?:<onlyinclude>|$))/s');
+			$rules["NoIncludePat"] = new ParsePattern('/^(<noinclude>.*?<\/noinclude>)/s');
+			$rules["IncludeOnlyPat"] = new ParsePattern('/^(<\/?includeonly>)/s');
+		}
+		$parser = new ParseEngine($rules, "Root");
+
+		$dom = $parser->parse($text);
+		$this->transformDOM($dom);
+
+		wfProfileOut( __METHOD__ );
+		return $dom;
 	}
 
 	// Temporary function to add needed redundant info to the parse tree after parsing.
 	private function transformDOM(&$node, &$headingInd = 1) {
 		if ($node->hasChildNodes()) {
 			if ($node->nodeName == "h") {
-				$node->setAttribute("level", strspn($node->firstChild->wholeText, "=", 0, 6 ));
+				$headerTag = str_repeat("=", $node->getAttribute("level"));
+				if ($node->firstChild instanceof DOMText) {
+					$node->firstChild->insertData(0, $headerTag);
+				} else {
+					$node->insertBefore($node->ownerDocument->createTextNode($headerTag), $crrnt->firstChild);
+				}
+				if ($node->lastChild instanceof DOMText) {
+					$node->lastChild->appendData($headerTag);
+				} else {
+					$node->appendChild($node->ownerDocument->createTextNode($headerTag));
+				}
 				$node->setAttribute("i", $headingInd);
 				$headingInd ++;
 			} elseif ($node->nodeName == "template" && $node->previousSibling instanceof DOMText) {
