@@ -61,7 +61,7 @@ $wgGroupPermissions['sysop']['storyreview'] = true;
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
-	'name' => wfMsg( 'storyboard-name' ),
+	'name' => 'Storyboard',
 	'version' => Storyboard_VERSION,
 	'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Storyboard',
