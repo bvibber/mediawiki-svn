@@ -81,7 +81,8 @@ evt: {
 							return $( ca1.parentNode ).is( 'span.wikiEditor-template-text' ) ?
 								ca1.parentNode : null;
 						},
-						model: model
+						model: model,
+						context: context
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
@@ -123,10 +124,11 @@ fn: {
 				return;
 			}
 			var model = $(this).data( 'marker' ).model;
+			var context = $(this).data( 'marker' ).context;
 			
 			//check if model is collapsible
 			if ( !model.isCollapsible() ) {
-				$(this).addClass( 'wikiEditor-template-text' );
+				//just treat it as normal text for now
 				return;
 			}
 			
@@ -156,19 +158,11 @@ fn: {
 				.append( '<img src="'+$.wikiEditor.imgPath+'/templateEditor/dialog-expanded.png" width="22" height="16" style="display:none;" />' )
 				.mousedown( function() { createDialog( $template ); return false; } )
 				.insertAfter( $templateName );
-			/*
-			var $options = $( '<ul />' )
-			.addClass( 'wikiEditor-template-modes wikiEditor-noinclude' )
-			.append( $( '<li />' )
-				.addClass( 'wikiEditor-template-action-wikiText' )
-				.append( $( '<img />' ).attr( 'src',
-					$.wikiEditor.imgPath + 'templateEditor/' + 'wiki-text.png' ) )
-				.mousedown( toggleWikiTextEditor ) )
-			.insertAfter( $template.find( '.wikiEditor-template-name' ) );
-			*/
+
 			$(this).data( 'setupDone', true );
 			
 			function toggleWikiTextEditor(){
+				context.fn.refreshOffsets();
 				var $template = $( this ).closest( '.wikiEditor-template' );
 				$template
 					.toggleClass( 'wikiEditor-template-expanded' )
@@ -508,7 +502,10 @@ fn: {
 			}
 		};
 		
-		
+		//not collapsing "small" templates
+		if( wikitext.length < 20 ){
+			collapsible = false;
+		}
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
 			collapsible = false; // is a parser function
