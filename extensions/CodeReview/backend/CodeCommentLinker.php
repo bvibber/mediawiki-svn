@@ -117,7 +117,7 @@ abstract class CodeCommentLinker {
 	}
 	
 	// like strcspn() but adds the skipped chars to $ret
-	private function skipAndAppend( &$ret, $text, $search, $start, $len = NULL ) {
+	private function skipAndAppend( &$ret, $text, $search, $start, $len = -1 ) {
 		$skipCount = 0;
 		if( $start < strlen($text) ) {
 			$skipCount = strcspn( $text, $search, $start, $len );
