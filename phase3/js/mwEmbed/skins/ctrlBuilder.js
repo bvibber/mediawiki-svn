@@ -49,6 +49,9 @@ ctrlBuilder.prototype = {
 		'share' : true
 	},	
 	
+	// Flag to store the current fullscreen mode
+	fullscreenMode: false,
+	
 	/**
 	* Initialization Object for the control builder
 	*
@@ -144,7 +147,12 @@ ctrlBuilder.prototype = {
 			// Special case with playhead skip if we have > 30px of space for it
 			if ( component_id == 'playHead' && this.available_width < 30 ){
 				continue;
-			}					
+			}			
+			
+			// For now skip "fullscreen" for "audio" assets or where height is 0px
+			if(  component_id == 'fullscreen' && this.embedPlayer.height == 0 ){
+				continue;
+			}		
 			  
 			// Make sure the given components is supported:
 			if ( this.supportedComponets[ component_id ] ) {
@@ -161,27 +169,83 @@ ctrlBuilder.prototype = {
 			}
 		}
 	},
+	/**
+	 * Toggles full screen by calling 
+	 *  doFullScreenPlayer to enable fullscreen mode
+	 *  restoreWindowPlayer to restor window mode
+	 */
+	toggleFullscreen: function(){
+		if( this.fullscreenMode ){
+			this.restoreWindowPlayer();
+			this.fullscreenMode = false;
+		}else{
+			this.doFullScreenPlayer();
+			this.fullscreenMode = true;
+		}
+	},
 	
 	/**
 	* Do full-screen mode 
 	*/ 
-	toggleFullscreen: function(){
+	doFullScreenPlayer: function(){
 		mw.log(" ctrlBuilder :: toggle full-screen ");
+					
+		// Setup pointer to control builder :
+		var _this = this;
+		
+		// Setup loadl refrence to embed player: 
+		var embedPlayer = this.embedPlayer;
+		
+		// Setup a local refrence to the player interface: 
+		var $interface = embedPlayer.$interface;
 		
 		// Add the black overlay: 		
 		$j( '<div />' )
 		.addClass( 'mw-fullscreen-overlay' )
 		// Set some arbitrary high z-index
-		.css('z-index', '999998' ) 
+		.css('z-index', mw.getConfig( 'fullScreenIndex' ) ) 
 		.appendTo('body')
 		.hide()
 		.fadeIn("slow");
 		
-		// Setup target height width based on window
-		if( fullWidth )
+		// Setup target height width based on max window size	
 		var fullWidth = $j(window).width() - 5 ;
-					
-		// Animate video or poster to requested size:
+		var fullHeight =  $j(window).height() -5;
+		
+		// Set target width
+		targetWidth = fullWidth;
+		targetHeight = targetWidth * ( embedPlayer.height / embedPlayer.width  )
+		// Check if it exted the height constrait: 
+		if( targetHeight >  fullHeight ){		
+			targetHeight = fullHeight;				
+			targetWidth = targetHeight * ( embedPlayer.width  / embedPlayer.height  );
+		}		
+		
+		// Change the interface to absolute positioned: 
+		this.windowPositionStyle = $interface.css( 'position' );
+		$interface.css( {
+			'position' : 'absolute',
+			'z-index' : mw.getConfig( 'fullScreenIndex' ) + 1 
+		} );		
+	
+		// Get the base offset: 
+		this.windowOffset = $interface.offset();
+		var topOffset = '0px';
+		var leftOffset = '0px';
+		//Check if we have an offsetParent
+		if( $interface.offsetParent().length ){
+			topOffset = -this.windowOffset.top + 'px';
+			leftOffset = -this.windowOffset.left + 'px';
+		}
+		$interface.animate( {			
+			'top' : topOffset,
+			'left' : leftOffset,
+			'width' : '99%',
+			'height' : '99%',
+			'z-index' : '999999'
+		} )
+		
+		// Set the player height width: 
 		$j( this.embedPlayer ).css( {
 			'position' : 'relative',
 			'z-index' : '999999'
@@ -190,10 +254,9 @@ ctrlBuilder.prototype = {
 		.animate( {
 			'top' : '0px',
 			'left' : '0px',
-			'width' : fullWidth,
-			'height' : fullWidth * ( this.embedPlayer.height / this.embedPlayer.width )			
-		} );
-		
+			'width' : targetWidth,
+			'height' : targetHeight 
+		} )		
 		
 		/*
 		-moz-transform:scale(1.97833) translate(-5px, 4px);
@@ -203,11 +266,48 @@ ctrlBuilder.prototype = {
 		top:0;
 		*/ 
 				
-		// bind display control on mouse-move
+		// bind hide controls when mouse is not active
 		
-		// bind resize clip to reize window
+		// bind resize reize window to resize window
 		
-		// bind escape to restore clip resolution 
+		// bind escape to restore clip resolution
+		$j( window ).keyup( function(event) {
+			// Escape check
+			if( event.keyCode == 27 ){
+				_this.restoreWindowPlayer();
+			}
+		} );
+		 
+	},
+	restoreWindowPlayer: function(){
+		var _this = this;
+		var embedPlayer = this.embedPlayer;
+		if( this.fullscreenMode == false ){
+			return ;	
+		}
+		// Set fullscreen mode to false
+		this.fullscreenMode = false;
+		
+		var $interface = embedPlayer.$interface;
+		$j('.mw-fullscreen-overlay').fadeOut( 'slow' );
+		$interface.animate( {
+			'top' : this.windowOffset.top,
+			'left' : this.windowOffset.left,
+			// height is embedPlayer height + ctrlBuilder height: 
+			'height': embedPlayer.height + _this.height,
+			'width' : embedPlayer.width					
+		},function(){
+			$interface.css( {
+				'position' : _this.windowPositionStyle,
+				'top' : null,
+				'left' : null 
+			} );
+		} );
+		// resize the player: 
+		$j( embedPlayer ).animate( {
+			'width' : embedPlayer.width,
+			'height' : embedPlayer.height
+		})
 	},
 	
 	/**
@@ -654,8 +754,7 @@ ctrlBuilder.prototype = {
         	)
         );
         
-      	$shareInterface.append(
-      		
+      	$shareInterface.append(      		
 			
       		$j('<span />')
       		.addClass( 'source_wrap' )
@@ -866,7 +965,7 @@ ctrlBuilder.prototype = {
 	/**
 	* Get component
 	*
-	* @param {String} component Component key to grab html output
+	* @param {String} component_id Component key to grab html output
 	*/
 	getComponent: function( component_id ) {
 		if ( this.components[ component_id ] ) {
@@ -874,6 +973,20 @@ ctrlBuilder.prototype = {
 		} else {
 			return false;
 		}
+	},
+	
+	/**
+	 * Get a component height
+	 * 
+	 * @param {String} component_id Component key to grab height
+	 */
+	getComponentHeight: function( component_id ) {
+		if ( this.components[ component_id ] 
+			&& this.components[ component_id ].h ) 
+		{
+			return this.components[ component_id ].h
+		}
+		return false;
 	},
 	
 	/**
@@ -894,7 +1007,8 @@ ctrlBuilder.prototype = {
 		'playButtonLarge': {
 			'w' : 130,
 			'h' : 96,
-			'o' : function( ctrlObj ) {				
+			'o' : function( ctrlObj ) {		
+						
 				return $j( '<div/>' )
 					.attr( {
 						'title'	: gM( 'mwe-play_clip' ),
@@ -971,7 +1085,7 @@ ctrlBuilder.prototype = {
 		*/
 		'fullscreen': {
 			'w': 28,
-			'o': function( ctrlObj ) {
+			'o': function( ctrlObj ) {				
 				return $j( '<div />' )
 						.attr( 'title', gM( 'mwe-player_fullscreen' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton fullscreen-btn" )
@@ -1089,7 +1203,7 @@ ctrlBuilder.prototype = {
 		* The time display area
 		*/
 		'timeDisplay': {
-			'w' : 90,
+			'w' : 100,
 			'o' : function( ctrlObj ) {
 				return $j( '<div />' )
 						.addClass( "ui-widget time-disp" )
@@ -1110,7 +1224,11 @@ ctrlBuilder.prototype = {
 				var _this = this;
 				var $playHead = $j( '<div />' )
 					.addClass ( "play_head" )
-					.css( "width", parseInt( ctrlObj.available_width - 20 ) + 'px' )					
+					.css({ 
+						"position" : 'absolute',
+						"left" : '33px',
+						"right" :  ( (embedPlayer.getPlayerWidth() - ctrlObj.available_width) - 33) + 'px' 
+					})					
 					// Playhead binding
 					.slider( {
 						range: "min",

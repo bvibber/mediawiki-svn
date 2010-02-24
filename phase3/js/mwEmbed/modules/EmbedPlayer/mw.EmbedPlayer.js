@@ -2031,8 +2031,8 @@ mw.EmbedPlayer.prototype = {
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
 		var _this = this;
-		//make sure we have interface_wrap
-		if( $j( this ).parent('.interface_wrap').length == 0 ) {
+		// Make sure we have interface_wrap
+		if( $j( this ).parent( '.interface_wrap' ).length == 0 ) {
 			// Select "player"				
 			$j( this )			
 			.wrap( 
@@ -2046,12 +2046,12 @@ mw.EmbedPlayer.prototype = {
 			)
 		}				
 		//Set up local jQuery object reference to "interface_wrap" 
-		this.$interface = $j(this).parent('.interface_wrap');
+		this.$interface = $j(this).parent( '.interface_wrap' );
 		
 		// Update Thumbnail for the "player" 
 		this.updateThumbnailHTML();		
 
-		// Add controls if enabled: 											
+		// Add controls if enabled:							
 		if ( this.controls ) {			
 			mw.log( "embedPlayer:showPlayer::AddControls" );			
 			this.ctrlBuilder.addControls();						
@@ -2270,7 +2270,9 @@ mw.EmbedPlayer.prototype = {
 			})
 		);		
 				
-		if ( this.controls == true ) {
+		if ( this.controls == true 
+			&& this.height > this.ctrlBuilder.getComponentHeight( 'playButtonLarge' ) 
+		) {
 			$j( this ).append(
 				this.ctrlBuilder.getComponent( 'playButtonLarge' )
 			);
@@ -2557,7 +2559,7 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* Abstract fullscreen Method must be overided by plug-in / player interface
 	*/
-	fullscreen:function() {
+	fullscreen: function() {
 		mw.log( 'fullscreen not supported with current playback type' );
 		return ;
 	},

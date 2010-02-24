@@ -53,8 +53,8 @@ var nativeEmbed = {
 				'src' : this.getSrc()
 			} )
 			.css( {
-				'width' : this.width,
-				'height' : this.height
+				'width' : '100%',
+				'height' : '100%'
 			} )
 		)		
 		mw.log( "Embed code: " + $j( this ).html() )
