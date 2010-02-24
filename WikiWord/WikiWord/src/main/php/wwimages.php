@@ -275,7 +275,8 @@ class WWImages extends WWWikis {
 
 	    foreach ($rc as $r => $t) {
 		if ( $t != 10) continue; //use only articles
-		$p = "gil_wiki = " . $this->quote($wiki) . " AND gil_page_namespace_id = 0 AND gil_page = " . $this->quote($r);
+		$p = "gil_wiki = " . $this->quote($wiki) . " AND gil_page_namespace_id = 0 AND gil_page_title = " . $this->quote($r);
+		$pages[] = $p;
 	    }
 	}
 
@@ -283,9 +284,11 @@ class WWImages extends WWWikis {
 
 	$sql = " /* queryImagesOnPagesGlobally() */ ";
 	$sql .= " SELECT distinct gil_to as image FROM $globalimagelinks_table ";
-	$sql .= " WHERE wiki in " . $this->quoteSet( $wikis );
+	$sql .= " WHERE gil_wiki in " . $this->quoteSet( $wikis );
 	$sql .= " AND gil_page_namespace_id = 0 ";
 	$sql .= " AND ( ( " . implode(" ) OR ( ", $pages) . " ) ) ";
+
+	print "(** $sql **)";
 	
 	return $this->queryWiki("commons", $sql);
     }

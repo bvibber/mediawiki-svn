@@ -12,6 +12,10 @@ class WWClient {
 	$url = $this->api . '?format=phps';
 
 	foreach ( $params as $k => $v ) {
+	    if ($v===null) continue;
+	    if ($v===false) $v = "";
+	    if (is_array($v)) $v = implode("|", $v);
+
 	    $url .= '&';
 	    $url .= urlencode( $k );
 	    $url .= '=';
@@ -24,7 +28,7 @@ class WWClient {
 	$data = unserialize($data);
 	if ( !$data ) throw new Exception("failed to unserialize data from $url");
 
-	if ( @$data['error'] ) throw new Exception("API returned error ".$data['error']['code'].": ".$data['error']['message']);
+	if ( @$data['error'] ) throw new Exception("API returned error ".$data['error']['code'].": ".$data['error']['message']."; url: $url");
 	return $data;
     }
 
@@ -39,7 +43,7 @@ class WWClient {
     }
 
     function getConcept( $id, $lang = null ) {
-	$p = $this->getConceptProperties( $id, '', $lang );
+	$p = $this->getConceptProperties( $id, '', $lang );getConceptInfo
 	return $p['pages'];
     }
 
@@ -87,9 +91,8 @@ class WWClient {
 	$param = array(
 		'query' => 'info',
 		'gcid' => $id,
+		'lang' => $lang
 	);
-
-	if ( $lang ) $param['lang'] = is_array($lang) ? join('|', $lang) : $lang;
 
 	$rs = $this->query( $param );
 
@@ -117,10 +120,14 @@ class WWClient {
 	return $rs;
     }*/
 
-    function getConceptsForTerm( $lang, $term ) {
+    function getConceptsForTerm( $qlang, $term, $languages, $norm = 1, $limit = 100 ) {
+	if ( is_array( $languages ) ) $languages = implode('|', $languages);
+
 	$param = array(
 		'query' => 'concepts',
-		'lang' => $lang,
+		'qlang' => $qlang,
+		'lang' => $languages,
+		'norm' => $norm,
 		'term' => $term,
 	);
 

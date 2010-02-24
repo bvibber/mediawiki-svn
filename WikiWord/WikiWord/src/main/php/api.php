@@ -9,11 +9,17 @@ $query = @$_REQUEST['query'];
 
 if ( $query ) {
     $lang = @$_REQUEST['lang'];
+    $qlang = @$_REQUEST['qlang'];
     $format = @$_REQUEST['format'];
     if ( !$format ) $format = 'phps';
 
+    if ($lang) $lang = preg_replace('[^\\w\\d_]', '', $lang);
+    if ($qlang) $qlang = preg_replace('[^\\w\\d_]', '', $qlang);
+
     if ($lang) {
-	$lang = preg_replace('[^\\w\\d_]', '', $lang);
+	$lang = preg_split('![\\s,;|/:]\\s*!', $lang);
+	if ( !$qlang ) $qlang = $lang[0];
+	if (count($lang) == 1) $lang = $lang[0];
     }
 
     $result = array( 'query' => $query );
@@ -27,11 +33,14 @@ if ( $query ) {
 	    $result['error'] = array('code' => 1010, 'message' => "failed to connect to thesaurus database");
 	} else if ($query == 'concepts') {
 	    $term = @$_REQUEST['term'];
+	    $norm = @$_REQUEST['norm'];
+
+	    if ( $norm === null ) $norm = 1;
 	    #$page = @$_REQUEST['page'];
 
-	    if ( $lang === null ) $result['error'] = array('code' => 150, 'message' => "missing parameter lang");
+	    if ( $qlang === null ) $result['error'] = array('code' => 150, 'message' => "missing parameter qlang");
 	    else if ( $term !== null ) {
-		$result['concepts'] = $thesaurus->getConceptsForTerm($lang, $term);
+		$result['concepts'] = $thesaurus->getConceptsForTerm($qlang, $term, $lang, $norm); #TODO: limit!
 		if ( $result['concepts'] === false || $result['concepts'] === null ) {
 		    $result['error'] = array('code' => 210, 'message' => "failed to retrieve concepts for term $langt:$term");
 		}
@@ -47,17 +56,10 @@ if ( $query ) {
 	    $gcid = @$_REQUEST['gcid'];
 	    if (!$gcid) $gcid = @$_REQUEST['id'];
 
-	    $lang = @$_REQUEST['lang'];
-
 	    if ( $gcid === null ) {
 		$result['error'] = array('code' => 120, 'message' => "missing parameter gcid");
 	    } else {
-		if ($lang) {
-		    $lang = preg_split('![\\s,;|/:]\\s*!', $lang);
-		    if (count($lang) == 1) $lang = $lang[0];
-		}
-
-		$result['concept'] = $thesaurus->getConceptInfo($gcid, $lang);
+		$result['concept'] = $thesaurus->getConceptInfo($gcid, $lang); #TODO: limit!
 		if ( $result['concept'] === false || $result['concept'] === null ) {
 		    $result['error'] = array('code' => 210, 'message' => "concept not found: $gcid");
 		}
