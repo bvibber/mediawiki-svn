@@ -77,7 +77,7 @@ class WWThesaurus extends WWUTils {
 
 	$term = $this->normalizeSearchString($term, $norm);
 
-	$sql = "SELECT I.* FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I"
+	$sql = "SELECT I.*, S.score FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I"
 	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_search_index as S ON I.concept = S.concept and I.lang = S.lang"
 	      . " WHERE term = " . $this->quote($term) 
 	      . " AND I.lang = " . $this->quote($lang) 
@@ -303,13 +303,26 @@ class WWThesaurus extends WWUTils {
 		}
 
 		$id = null;
+		$score = null;
 	    }
 
-	    if ($id === null) $id = (int)$row['concept'];
+	    if ($id === null) {
+		$id = (int)$row['concept'];
+	    }
+
 	    $buff[] = $row;
 	}
 
+	usort($concepts, array('WWThesaurus', 'byScore'));
 	return $concepts;
+    }
+
+    function byScore( $a, $b ) {
+	if ( isset($a['score']) && isset($b['score']) ) return $b['score'] - $a['score'];
+	if ( isset($a['conf']) && isset($b['conf']) ) return $b['conf'] - $a['conf'];
+	if ( isset($a['freq']) && isset($b['freq']) ) return $b['freq'] - $a['freq'];
+	if ( isset($a['id']) && isset($b['id']) ) return $a['id'] - $b['id'];
+	return 0;
     }
 
     function buildConcept($rows) {
@@ -322,7 +335,8 @@ class WWThesaurus extends WWUTils {
 	$related = array();
 
 	foreach ($rows as $row) {
-	    if (!isset($concept["id"])) $concept["id"] = (int)$row["concept"];
+	    if (!isset($concept["id"]) && isset($row["id"])) $concept["id"] = (int)$row["concept"];
+	    if (!isset($concept["score"]) && isset($row["score"])) $concept["score"] = (int)$row["score"];
 
 	    $lang = $row["lang"];
 	    $concept["languages"][] = $lang;

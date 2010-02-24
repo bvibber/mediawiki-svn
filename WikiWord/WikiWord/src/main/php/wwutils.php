@@ -151,6 +151,16 @@ class WWUtils {
 	return $list;
     }
 
+    function pickLocal($items, $languages) {
+	if ( is_string($languages) ) $languages = array( $languages, "en", "commons" );
+      
+	foreach ($languages as $lang) {
+	    if (isset($items[$lang])) return $items[$lang];
+	}
+
+	return false;
+    }
+
     static function authFailed($realm) {
 	    header("Status: 401 Unauthorized", true, 401);
 	    header('WWW-Authenticate: Basic realm="'.$realm.'"');

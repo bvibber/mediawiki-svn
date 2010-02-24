@@ -72,7 +72,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		//meaningTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "term_concept", new String[] {"lang", "term_text", "concept"}) );		
 
 		originTable = new RelationTable(this, "origin", getDefaultTableAttributes());
-		originTable.addField( new ReferenceField(this, "global_concept", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
+		originTable.addField( new ReferenceField(this, "global_concept", "INT", null, true, null, "concept", "id", null ) );
 		originTable.addField( new DatabaseField(this, "local_concept", "INT", null, true, null ) );
 		//originTable.addField( new DatabaseField(this, "global_concept_name", getTextType(nameSize), "DEFAULT NULL", false, null ) );
 		originTable.addField( new DatabaseField(this, "local_concept_name", getTextType(255), null, true, null ) );
@@ -80,6 +80,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		originTable.addField( new DatabaseField(this, "lang_bit", "INT", null, true, null ) );
 		originTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "lang_concept", new String[] {"lang", "local_concept"}) );		
 		originTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "lang_name", new String[] {"lang", "local_concept_name"}) );		
+		originTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "lang_name", new String[] {"global_concept", "lang"}) );		
 		addTable(originTable);
 
 		/*
