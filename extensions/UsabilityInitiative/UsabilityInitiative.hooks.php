@@ -65,7 +65,7 @@ class UsabilityInitiativeHooks {
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 7 ),
-				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 4 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 5 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
@@ -82,10 +82,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 285 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 286 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 285 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 286 ),
 			),
 		),
 	);
