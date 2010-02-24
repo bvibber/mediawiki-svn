@@ -47,7 +47,7 @@ jQuery Browser Plugin
 			}
 
 			if (r.name === 'opera' && $.browser.version >= 9.8) {
-				r.version = i.match( /version\/([0-9\.]*)/i )[1] | 10;
+				r.version = i.match( /version\/([0-9\.]*)/i )[1] || 10;
 			}
 			r.versionNumber = parseFloat(r.version, 10) || 0;
 			r.versionX = (r.version !== x) ? (r.version + '').substr(0, 1) : x;
