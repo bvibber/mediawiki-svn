@@ -91,6 +91,15 @@ class SpecialCode extends SpecialPage {
 				$wgOut->returnToMain( null, SpecialPage::getTitleFor( 'Code' ) );
 				return;
 			}
+
+			// If a repository was specified, but it does not exist, redirect to the
+			// repository list with an appropriate message.
+			if ( !$view->mRepo ) {
+				$view = new CodeRepoListView();
+				$wgOut->addHTML( "<p>" 
+								. wfMsg( 'code-repo-not-found',  $params[0] ) 
+								. "</p>" );
+			}
 		}
 		$view->execute();
 
@@ -129,7 +138,9 @@ abstract class CodeView {
 	 *	of false
 	*/
 	function authorWikiUser( $author ) {
-		return $this->mRepo->authorWikiUser( $author );
+		if ( $this->mRepo )
+			return $this->mRepo->authorWikiUser( $author );
+		return false;
 	}
 
 	function authorLink( $author, $extraParams = array() ) {

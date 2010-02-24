@@ -22,6 +22,7 @@ $messages['en'] = array(
 	'code-prop-changes' => 'Status & tagging log',
 	'code-desc' => '[[Special:Code|Code review tool]] with [[Special:RepoAdmin|Subversion support]]',
 	'code-no-repo' => 'No repository configured!',
+	'code-repo-not-found' => 'Repository <b>$1</b> does not exist!',
 	'code-load-diff' => 'Loading diff…',
 	'code-notes' => 'recent comments',
 	'code-statuschanges' => 'status changes',
