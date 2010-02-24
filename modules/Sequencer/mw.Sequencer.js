@@ -1651,9 +1651,8 @@ mw.SeqPlayList.prototype = {
 	// override renderDisplay
 	renderDisplay:function() {
 		mw.log( 'mvSequence:renderDisplay' );
-		// setup layout for title and dc_ clip container
-		$j( this ).html( '<div id="dc_' + this.id + '" style="width:' + this.width + 'px;' +
-				'height:' + ( this.height ) + 'px;position:relative;" />' );
+		// Clear out the render: 
+		$j( this ).html( '' );
 
 		this.setupClipDisplay();
 	}

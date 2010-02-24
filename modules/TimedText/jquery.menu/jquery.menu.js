@@ -45,7 +45,7 @@ $.getLineItem = function( string, icon , callback) {
 $.fn.menu = function( options ) {
 	var caller = this;
 	var options = options;	
-	if( ! caller.m ) { 	
+	if( ! caller.m ) {
 		caller.m = new Menu(caller, options);	
 		allUIMenus.push( caller.m );
 		
@@ -75,8 +75,9 @@ $.fn.menu = function( options ) {
 	}	
 	
 	//Else process the request:   
-	if( options == 'show' )	
+	if( options == 'show' ){
 		caller.m.showMenu();
+	}
 			
 	return this;
 };
@@ -89,10 +90,17 @@ function Menu(caller, options) {
 	 
 	var callerClassList = 'fg-menu-container ui-widget ui-widget-content ui-corner-all'; 
 	if( options.targetMenuContainer ) {		
-		var container = $( options.targetMenuContainer ).addClass( callerClassList ).html( options.content );
+		var container = $( options.targetMenuContainer )
+			.addClass( callerClassList )
+			.html( options.content )	
 	}else{
 		var container = $('<div>').addClass( callerClassList ).html( options.content );
 	}	
+	// some custom css:
+	container.css( { 
+		'left' : '0px', 
+		'z-index': 2
+	} );
 	
 	this.menuOpen = false;
 	this.menuExists = false;
@@ -529,7 +537,7 @@ Menu.prototype.drilldown = function(container, options) {
 		- detectH/V: detect the viewport horizontally / vertically
 		- linkToFront: copy the menu link and place it on top of the menu (visual effect to make it look like it overlaps the object) */
 
-Menu.prototype.setPosition = function(widget, caller, options) {
+Menu.prototype.setPosition = function(widget, caller, options) {	
 	var el = widget;
 	var referrer = caller;
 	var dims = {
@@ -542,7 +550,7 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	var xVal, yVal;
 	
 	var helper = $( '<div class="positionHelper">' );	
-	// Hard code width heigh of button if unset ( crazy IE )
+	// Hard code width height of button if unset ( crazy IE )
 	if(  isNaN( dims.refW ) ||  isNaN( dims.refH ) ) {
 		dims.refH = 16;
 		dims.refW = 23;
@@ -555,10 +563,10 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 		'height': dims.refH 
 	});
 	el.wrap( helper );
-	
+	xVal = yVal = 0;
 	// get X pos
 	switch(options.positionOpts.posX) {
-		case 'left': 	xVal = 0; 
+		case 'left': xVal = 0; 
 			break;				
 		case 'center': xVal = dims.refW / 2;
 			break;				
@@ -568,21 +576,20 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	
 	// get Y pos
 	switch(options.positionOpts.posY) {
-		case 'top': 	yVal = 0;
+		case 'top' :	yVal = 0;
 			break;				
-		case 'center': yVal = dims.refH / 2;
+		case 'center' : yVal = dims.refH / 2;
 			break;				
-		case 'bottom': yVal = dims.refH;
+		case 'bottom' : yVal = dims.refH;
 			break;
-	};
-	
+	};	
 	// add the offsets (zero by default)
 	xVal += options.positionOpts.offsetX;
 	yVal += options.positionOpts.offsetY;
 	
 	// position the object vertically
 	if (options.positionOpts.directionV == 'up') {
-		el.css({ top: 'auto', bottom: yVal });
+		el.css( { top: 'auto', bottom: yVal } );
 		if (options.positionOpts.detectV && !fitVertical(el)) {
 			el.css({ bottom: 'auto', top: yVal });
 		}
@@ -725,4 +732,4 @@ Number.prototype.pxToEm = String.prototype.pxToEm = function(settings) {
 	return result;
 };
 
-} )(jQuery);	
+} )(jQuery);

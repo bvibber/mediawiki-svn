@@ -2768,3 +2768,7 @@ setTimeout( function( ) {
 	mwCheckBody();
 }, 250);
 
+// If window.jQuery is already avaliable set no conflict before setup
+if( window.jQuery ){
+	window['$j'] = jQuery.noConflict();
+}
