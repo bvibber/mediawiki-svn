@@ -179,19 +179,7 @@ var javaEmbed = {
 		} else {
 			this.playerElement = $j( '#' + this.pid ).get( 0 );
 		}
-	},
-	
-	/**
-	* Show the Thumbnail
-	*/
-	showThumbnail:function() {
-		// empty out player html (jquery with java applets does mix) :			
-		var pelm = document.getElementById( 'dc_' + this.id );
-		if ( pelm ) {
-			pelm.innerHTML = '';
-		}
-		this.parent_showThumbnail();
-	},
+	},	
 	
 	/**
 	* Issue the doPlay request to the playerElement

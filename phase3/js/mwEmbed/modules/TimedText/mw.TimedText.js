@@ -210,7 +210,17 @@ mw.addMessages( {
 			mw.log( "TimedText:bindMenu:" + target );
 			_this.menuTarget = target;
 			var $menuButton = this.embedPlayer.$interface.find( '.timed-text' );
-					
+			
+			var positionOpts = null;
+			if( this.embedPlayer.supports[ 'overlays' ] ){
+				var positionOpts = {
+					'directionV' : 'up',								
+					'offsetY' : 32,
+					'directionH' : 'left',
+					'offsetX' : -28
+				};		
+			}
+			
 			// Else bind and show the menu 
 			// We already have a loader in embedPlayer so the delay of
 			// setupTextSources is already taken into account
@@ -219,8 +229,8 @@ mw.addMessages( {
 				$menuButton.unbind().menu( {
 					'content'	: _this.getMainMenu(),
 					'crumbDefaultText' : ' ',
-					'targetMenuContainer' : _this.menuTarget,
 					'autoShow' : autoShow,
+					'positionOpts' : positionOpts,
 					'backLinkText' : gM( 'mwe-back-btn' )
 				} );
 			});

@@ -53,18 +53,7 @@ var kskinConfig = {
 		'timeDisplay': {
 			'w':45
 		},	
-			
-		/**
-		* The playhead html
-		*/
-		/*'playHead': {
-			'w':0, // special case (takes up remaining space)
-			'o':function( ctrlObj ) {
-					$j( '<div />' )
-							.addClass( "play_head" ) 
-							.css( "width",  parseInt( ctrlObj.available_width - 10 ) + 'px' )
-			}
-		},*/		
+		
 		'optionsMenu': {
 			'w' : 0,
 			'o' : function( ctrlObj ) {
@@ -111,15 +100,15 @@ var kskinConfig = {
 				
 				var $menuScreens = $j( '<div />' )
 					.addClass( 'k-menu-screens' )
-					.css({
+					.css( {
 						'width' : (  ctrlObj.getOverlayWidth() - 75 ), 
 						'height' : ( ctrlObj.getOverlayHeight() - ctrlObj.getControlBarHeight() )
-					})
+					} )
 				for ( var menuItem in ctrlObj.supportedMenuItems ) {
-					$menuScreens.append( 
+					$menuScreens.append(
 						$j( '<div />' )
 						.addClass( 'menu-screen menu-' + menuItem )
-					);							
+					);	
 				}
 				
 				// Add the menuScreens to the menuOverlay

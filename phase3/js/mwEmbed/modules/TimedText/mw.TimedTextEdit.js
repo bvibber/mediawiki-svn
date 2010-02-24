@@ -396,7 +396,7 @@ mw.TimedTextEdit.prototype = {
 		return $langMenu;
 	},
 	getLangMenuItem: function( langKey , source_icon) { 
-		return this.parentTimedText.getLi(
+		return $j.getLineItem(
 			langKey + ' - ' + unescape( mw.languages[ langKey ] ),
 			source_icon,
 			function() {

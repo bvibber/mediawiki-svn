@@ -29,7 +29,7 @@ var nativeEmbed = {
 	supports: {
 		'playHead' : true,
 		'pause' : true,
-		'fullscreen' : false,
+		'fullscreen' : true,
 		'timeDisplay' : true,
 		'volumeControl' : true,
 		
@@ -195,6 +195,7 @@ var nativeEmbed = {
 			_this.doSeekedCallback( position, callback );		
 		}
 	},
+	
 	/**
 	* Do the seek request with a callback
 	* 
@@ -279,6 +280,13 @@ var nativeEmbed = {
 		this.getPlayerElement();
 		if ( this.playerElement )
 			this.playerElement.muted = this.muted;
+	},
+	
+	/**
+	* Fullscreen for "video" with control overlays:  
+	*/
+	fullscreen: function(){
+		this.ctrlBuilder.toggleFullscreen();
 	},
 	
 	/**

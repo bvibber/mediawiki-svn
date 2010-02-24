@@ -1697,7 +1697,7 @@ mw.EmbedPlayer.prototype = {
 			};
 			mw.getJSON( mw.commons_api_url, request, function( data ) {
 	            // empty the videos:		            
-	            $j( '#dc_' + _this.id + ' .related_vids ul' ).html( ' ' );
+	            $j( '#' + _this.id + ' .related_vids ul' ).html( ' ' );
 	            				           
 				for ( var j in data.query.pages ) {
 					// Setup poster default: 					
@@ -1719,7 +1719,7 @@ mw.EmbedPlayer.prototype = {
 									' <a title="' + title_str + '" target="_blank" ' +
 										'href="' + descriptionurl + '">' + title_str + '</a>' +
 							'</li>';
-							$j( '#dc_' + _this.id + ' .related_vids ul' ).append( liout ) ;
+							$j( '#' + _this.id + ' .related_vids ul' ).append( liout ) ;
 						}
 					 }
 				};
@@ -1762,21 +1762,24 @@ mw.EmbedPlayer.prototype = {
 		this.$interface.find( '.play-btn-large' ).hide();
 
 		// Add black background
-		$j( '#dc_' + this.id ).append( '<div id="black_back_' + this.id + '" ' +
-					'style="z-index:-2;position:absolute;background:#000;' +
-					'top:0px;left:0px;width:' + parseInt( this.width ) + 'px;' +
-					'height:' + parseInt( this.height ) + 'px;">' +
-				'</div>' );
+		$j( '#' + this.id ).append( '<div id="black_back_' + this.id + '" ' +
+			'style="z-index:-2;position:absolute;background:#000;' +
+			'top:0px;left:0px;width:' + parseInt( this.width ) + 'px;' +
+			'height:' + parseInt( this.height ) + 'px;">' +
+		'</div>' );
 
 		if ( this.apiTitleKey ) {
-			$j( '#dc_' + this.id ).append(
-			'<div class="related_vids" >' +
-			   '<h1>' + gM( 'mwe-related_videos' ) + '</h1>' +
-				'<ul>' +
-				'</ul>' +
-			'</div>' );
+			$j( '#' + this.id ).append(
+				$j( '<div />' )
+				.addClass( 'related_vids' ),
+				
+			   $j('<h2 />' )
+			   .text( gM( 'mwe-related_videos' ) ),
+			   
+			   $j('<ul />') 
+			);
 			$j( '#img_thumb_' + this.id ).fadeOut( "fast" );
-			$j( '#dc_' + _this.id + ' .related_vids ul' ).html( gM( 'mwe-loading_txt' ) );
+			$j( '#' + _this.id + ' .related_vids ul' ).html( gM( 'mwe-loading_txt' ) );
 			this.getRelatedFromTitleKey();
 		} else {
 			this.showNearbyClips();
@@ -1790,13 +1793,20 @@ mw.EmbedPlayer.prototype = {
 	showNearbyClips: function() {
 		var _this = this;
 		// add the liks_info_div black back 
-		$j( '#dc_' + this.id ).append( '<div id="liks_info_' + this.id + '" ' +
-				'style="width:' + parseInt( parseInt( this.width ) / 2 ) + 'px;' +
-				'height:' + parseInt( parseInt( this.height ) ) + 'px;' +
-				'position:absolute;top:10px;overflow:auto' +
-				'width: ' + parseInt( ( ( parseInt( this.width ) / 2 ) -15 ) ) + 'px;' +
-				'left:' + parseInt( ( ( parseInt( this.width ) / 2 ) + 15 ) ) + 'px;">' +
-			'</div>'
+		$j( this ).append( 
+			$j( '<div />' )
+			.attr( {
+				'id' : 'liks_info_' + this.id
+			})
+			.css({
+				'width' : parseInt( parseInt( this.width ) / 2 ) + 'px',
+				'height' : parseInt( parseInt( this.height ) ) + 'px',
+				'position' : 'absolute',
+				'top' : '10px',
+				'overflow' : 'auto',
+				'width' :  parseInt( ( ( parseInt( this.width ) / 2 ) -15 ) ) ,
+				'left' :  parseInt( ( ( parseInt( this.width ) / 2 ) + 15 ) )
+			})
 	   );
 	   // start animation (make thumb small in upper left add in div for "loading"			
 		$j( '#img_thumb_' + this.id ).animate( {
@@ -1990,7 +2000,9 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		mw.log( 'f:showThumbnail' + this.thumbnail_disp );
 		this.ctrlBuilder.closeMenuOverlay();
-		$j( '#' + this.id ).html( this.getThumbnailHTML() );
+		// update the thumbnail html: 
+		this.updateThumbnailHTML();
+		
 		this.paused = true;
 		this.thumbnail_disp = true;
 		// Make sure the ctrlBuilder bindings are up-to-date 
@@ -2037,9 +2049,7 @@ mw.EmbedPlayer.prototype = {
 		this.$interface = $j(this).parent('.interface_wrap');
 		
 		// Update Thumbnail for the "player" 
-		$j( this ).html( 
-			this.getThumbnailHTML()
-		)		
+		this.updateThumbnailHTML();		
 
 		// Add controls if enabled: 											
 		if ( this.controls ) {			
@@ -2110,7 +2120,7 @@ mw.EmbedPlayer.prototype = {
 	*
 	* @param {Object} options Options for rendred timeline thumb 
 	*/ 
-	renderTimelineThumbnail:function( options ) {
+	renderTimelineThumbnail: function( options ) {
 		var my_thumb_src = this.mediaElement.getThumbnailURL();
 		// check if our thumbnail has a time attribute: 
 		if ( my_thumb_src.indexOf( 't=' ) !== -1 ) {
@@ -2134,7 +2144,7 @@ mw.EmbedPlayer.prototype = {
 	* Update Thumb time with npt formated time
 	* @param {String} time NPT formated time to update thumbnail
 	*/	
-	updateThumbTimeNPT:function( time ) {
+	updateThumbTimeNPT: function( time ) {
 		this.updateThumbTime( mw.npt2seconds( time ) - parseInt( this.startOffset ) );
 	},
 	
@@ -2198,7 +2208,7 @@ mw.EmbedPlayer.prototype = {
 			if ( this.thumbnail_disp ) {
 				mw.log( 'set to thumb:' + src );
 				this.thumbnail_updating = true;
-				$j( '#dc_' + this.id ).append( 
+				$j( this ).append( 
 					$j('<img />')
 					.attr({
 						'src' : src,
@@ -2239,46 +2249,32 @@ mw.EmbedPlayer.prototype = {
 	* playing, configuring the player, inline cmml display, HTML linkback,
 	* download, and embed code.
 	*/
-	getThumbnailHTML : function () {
-		mw.log( 'embedPlayer:getThumbnailHTML::' + this.id );
+	updateThumbnailHTML : function () {
+		mw.log( 'embedPlayer:updateThumbnailHTML::' + this.id );
 		var thumb_html = '';
 		var class_atr = '';
 		var style_atr = '';		
 		this.thumbnail = this.mediaElement.getThumbnailURL();
-
+		
 		// put it all in the div container dc_id
-		$thumb = $j('<div />')
-		.attr({
-			'id' : 'dc_' + this.id			
-		})
-		.css({
-			'position' : 'absolute',
-			'overflow' : 'hidden',
-			'top' : '0px',
-			'left': '0px',
-			'width' : this.getPlayerWidth() + 'px',
-			'height' : this.getPlayerHeight() + 'px',
-			'z-index' : '0'			
-		})
-		.append(
+		$j( this ).html(
 			$j( '<img />' )
 			.css({
 				'position' : 'relative',
-				'width' : this.getPlayerWidth() + 'px',
-				'height' : this.getPlayerHeight() + 'px'
+				'width' : '100%',
+				'height' : '100%'
 			})
 			.attr({
 				'id' : 'img_thumb_' + this.id,
 				'src' : this.thumbnail 
 			})
-		);
+		);		
 				
 		if ( this.controls == true ) {
-			$thumb.append(
+			$j( this ).append(
 				this.ctrlBuilder.getComponent( 'playButtonLarge' )
 			);
-		}			  		  
-		return $thumb;
+		}		
 	},	
 	
 	/**
@@ -2351,7 +2347,6 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		mw.log('showTextInterface:');							
 		
-		 
 		var $menu = $j( '#timedTextMenu_' + this.id );			
 		//This may be unnessesary .. we just need to show a spiner somewhere
 		if ( $menu.length != 0 ) {
