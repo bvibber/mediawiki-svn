@@ -60,8 +60,8 @@ class CodeTestSuite {
 				$url = $title->getFullUrl();
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				$user->sendMail(
-					wfMsgExt( 'codereview-email-subj3', $lang, $this->repo->getName(), $revId ),
-					wfMsgExt( 'codereview-email-body3', $lang, $revId, $url, $codeRev->getMessage() )
+					wfMsgExt( 'codereview-email-subj3', $lang, $this->repo->getName(), $codeRev->getIdString() ),
+					wfMsgExt( 'codereview-email-body3', $lang, $codeRev->getIdStringUnique(), $url, $codeRev->getMessage() )
 				);
 			}
 		}

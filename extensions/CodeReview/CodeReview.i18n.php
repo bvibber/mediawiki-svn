@@ -10,11 +10,12 @@ $messages = array();
 
 $messages['en'] = array(
 	'code' => 'Code Review',
-	'code-rev-title' => 'r$1 - Code Review',
+	'code-rev-id' => 'r$1',
+	'code-rev-title' => '$1 - Code Review',
 	'code-comments' => 'Comments',
 	'code-references' => 'Follow-up revisions',
-	'code-change-status' => 'changed the \'\'\'status\'\'\' of r$1',
-	'code-change-tags' => 'changed the \'\'\'tags\'\'\' for r$1',
+	'code-change-status' => 'changed the \'\'\'status\'\'\' of $1',
+	'code-change-tags' => 'changed the \'\'\'tags\'\'\' for $1',
 	'code-change-removed' => 'removed:',
 	'code-change-added' => 'added:',
 	'code-old-status' => 'Old status',
@@ -117,8 +118,8 @@ $messages['en'] = array(
 	'codereview-tests-running' => 'Test cases are running...',
 	'codereview-tests-aborted' => 'Test run aborted.',
 
-	'codereview-email-subj' => '[$1] [r$2]: New comment added',
-	'codereview-email-body' => 'User "$1" posted a comment on r$3.
+	'codereview-email-subj' => '[$1] [$2]: New comment added',
+	'codereview-email-body' => 'User "$1" posted a comment on $3.
 
 Full URL: $2
 
@@ -126,8 +127,8 @@ Comment:
 
 $4',
 
-	'codereview-email-subj2' => '[$1] [r$2]: Follow-up changes',
-	'codereview-email-body2' => 'User "$1" made follow-up changes to r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Follow-up changes',
+	'codereview-email-body2' => 'User "$1" made follow-up changes to $2.
 
 Full URL: $3
 
@@ -135,8 +136,8 @@ Commit summary:
 
 $4',
 
-	'codereview-email-subj3' => '[$1] [r$2]: Automatic testing detected regression',
-	'codereview-email-body3' => 'Automatic testing has revealed a regression due to the changes in r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Automatic testing detected regression',
+	'codereview-email-body3' => 'Automatic testing has revealed a regression due to the changes in $1.
 
 Full URL: $2
 
@@ -249,11 +250,11 @@ $1 = Repository name',
  */
 $messages['af'] = array(
 	'code' => 'Beoordeling van kode',
-	'code-rev-title' => 'r$1 - Programkodebeheer',
+	'code-rev-title' => '$1 - Programkodebeheer',
 	'code-comments' => 'Opmerkings',
 	'code-references' => 'Weergawes met korreksies',
-	'code-change-status' => "het die '''status''' vir weergawe r$1 gewysig",
-	'code-change-tags' => "het die '''etikette''' vir weergawe r$1 gewysig",
+	'code-change-status' => "het die '''status''' vir weergawe $1 gewysig",
+	'code-change-tags' => "het die '''etikette''' vir weergawe $1 gewysig",
 	'code-change-removed' => 'verwyder:',
 	'code-change-added' => 'bygevoeg:',
 	'code-old-status' => 'Ou status',
@@ -355,7 +356,7 @@ $messages['an'] = array(
 	'code-field-text' => 'Nota',
 	'code-rev-date' => 'Calendata:',
 	'code-status-ok' => "D'alcuerdo",
-	'codereview-email-body' => 'L\'usuario "$1" publicó un comentario en r$3
+	'codereview-email-body' => 'L\'usuario "$1" publicó un comentario en $3
 
 URL completo: $2
 
@@ -479,15 +480,15 @@ $messages['ar'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|اختبار ناجح|اختبارات ناجحة}}, $3 {{PLURAL:$4|اختبار فاشل|اختبارات فاشلة}}:',
 	'codereview-tests-running' => 'حالات الاختبار تجرى...',
 	'codereview-tests-aborted' => 'تشغيل الاختبار تم إيقافه.',
-	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
-	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على r$3.
+	'codereview-email-subj' => '[$1] [$2]: تعليق جديد تمت إضافته',
+	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على $3.
 
 المسار الكامل: $2
 
 التعليق:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: تغييرات ملحقة',
+	'codereview-email-subj2' => '[$1] [$2]: تغييرات ملحقة',
 	'codereview-email-body2' => 'المستخدم "$1" قام بتغييرات ملحقة بن$2.
 
 المسار الكامل: $3
@@ -600,8 +601,8 @@ $messages['arz'] = array(
 	'code-release-endrev' => 'آخر مراجعة:',
 	'codereview-subtitle' => 'لـ $1',
 	'codereview-reply-link' => 'رد',
-	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
-	'codereview-email-body' => 'اليوزر "$1" كتب تعليق على r$3.
+	'codereview-email-subj' => '[$1] [$2]: تعليق جديد تمت إضافته',
+	'codereview-email-body' => 'اليوزر "$1" كتب تعليق على $3.
 
 المسار الكامل: $2
 
@@ -679,11 +680,11 @@ $messages['bcc'] = array(
  */
 $messages['be-tarask'] = array(
 	'code' => 'Рэцэнзаваньне коду',
-	'code-rev-title' => 'r$1 - Рэцэнзаваньне коду',
+	'code-rev-title' => '$1 - Рэцэнзаваньне коду',
 	'code-comments' => 'Камэнтары',
 	'code-references' => 'Наступныя вэрсіі',
-	'code-change-status' => "зьменены '''статус''' вэрсіі r$1",
-	'code-change-tags' => "зьмененыя '''тэгі''' вэрсіі r$1",
+	'code-change-status' => "зьменены '''статус''' вэрсіі $1",
+	'code-change-tags' => "зьмененыя '''тэгі''' вэрсіі $1",
 	'code-change-removed' => 'выдалена:',
 	'code-change-added' => 'дададзена:',
 	'code-old-status' => 'Папярэдні статус',
@@ -777,24 +778,24 @@ $messages['be-tarask'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|пасьпяховая праверка|пасьняховыя праверкі|пасьпяховых праверак}}, $3 {{PLURAL:$4|няўдалая праверка|няўдалых праверкі|няўдалых праверак}}:',
 	'codereview-tests-running' => 'Выконваюцца праверкі…',
 	'codereview-tests-aborted' => 'Выкананьне праверкі спыненае.',
-	'codereview-email-subj' => '[$1] [r$2]: Дададзены новы камэнтар',
-	'codereview-email-body' => 'Удзельнік «$1» дадаў камэнтар для r$3.
+	'codereview-email-subj' => '[$1] [$2]: Дададзены новы камэнтар',
+	'codereview-email-body' => 'Удзельнік «$1» дадаў камэнтар для $3.
 
 Поўны URL: $2
 
 Камэнтар:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Наступныя зьмены',
-	'codereview-email-body2' => 'Карыстальнік «$1» зрабіў наступныя зьмены ў r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Наступныя зьмены',
+	'codereview-email-body2' => 'Карыстальнік «$1» зрабіў наступныя зьмены ў $2.
 
 Поўны URL-адрас: $3
 
 Кароткае апісаньне зьменаў:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Аўтаматычнае тэставаньне выявіла рэгрэсію',
-	'codereview-email-body3' => 'Аўтаматычнае тэставаньне выявіла рэгрэсію ў сувязі са зьменамі ў r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Аўтаматычнае тэставаньне выявіла рэгрэсію',
+	'codereview-email-body3' => 'Аўтаматычнае тэставаньне выявіла рэгрэсію ў сувязі са зьменамі ў $1.
 
 Поўны URL-адрас: $2
 
@@ -828,8 +829,8 @@ $3',
  */
 $messages['bg'] = array(
 	'code-comments' => 'Коментари',
-	'code-change-status' => "промени '''състоянието''' на r$1",
-	'code-change-tags' => "промени '''етикетите''' за r$1",
+	'code-change-status' => "промени '''състоянието''' на $1",
+	'code-change-tags' => "промени '''етикетите''' за $1",
 	'code-change-removed' => 'премахнато:',
 	'code-change-added' => 'добавено:',
 	'code-old-status' => 'Старо състояние',
@@ -906,8 +907,8 @@ $messages['bg'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешен тест|успешни теста}}, $3 {{PLURAL:$4|неуспешен|неуспешни}}:',
 	'codereview-tests-running' => 'Тестовете са стартирани...',
 	'codereview-tests-aborted' => 'Стартираният тест беше прекъснат.',
-	'codereview-email-subj' => '[$1] [r$2]: Беше добавен нов коментар',
-	'codereview-email-body' => 'Потребител „$1“ публикува коментар за r$3.
+	'codereview-email-subj' => '[$1] [$2]: Беше добавен нов коментар',
+	'codereview-email-body' => 'Потребител „$1“ публикува коментар за $3.
 
 Пълен адрес: $2
 
@@ -960,10 +961,10 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'code' => "Adweladenn ar c'hod",
-	'code-rev-title' => "r$1 - Adweladenn ar c'hod",
+	'code-rev-title' => "$1 - Adweladenn ar c'hod",
 	'code-comments' => 'Evezhiadennoù',
-	'code-change-status' => "en deus kemmet '''statud''' r$1",
-	'code-change-tags' => "en deus kemmet ar '''balizennoù''' evit r$1",
+	'code-change-status' => "en deus kemmet '''statud''' $1",
+	'code-change-tags' => "en deus kemmet ar '''balizennoù''' evit $1",
 	'code-change-removed' => 'lamet :',
 	'code-change-added' => 'ouzhpennet :',
 	'code-old-status' => 'Statud kozh',
@@ -1045,24 +1046,24 @@ $messages['br'] = array(
 	'codereview-tests-failed2' => "$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}},  $3 {{PLURAL:$4|arnod o deus c'hwitet|arnod o deus c'hwitet}}:",
 	'codereview-tests-running' => 'Ho amprouiñ...',
 	'codereview-tests-aborted' => 'Ehanet eo bet an amprouadenn.',
-	'codereview-email-subj' => '[$1] [r$2] : evezhiadenn nevez bet ouzhpennet',
-	'codereview-email-body' => 'An implijer "$1" en deus embannet un evezhiadenn war r$3.
+	'codereview-email-subj' => '[$1] [$2] : evezhiadenn nevez bet ouzhpennet',
+	'codereview-email-body' => 'An implijer "$1" en deus embannet un evezhiadenn war $3.
 
 URL klok : $2
 
 Evezhiadenn :
 
 $4',
-	'codereview-email-subj2' => "[$1] [r$2] : Heuliadenn ar c'hemm",
-	'codereview-email-body2' => 'An implijer "$1" en deus degaset kemmoù liammet gant r$2.
+	'codereview-email-subj2' => "[$1] [$2] : Heuliadenn ar c'hemm",
+	'codereview-email-body2' => 'An implijer "$1" en deus degaset kemmoù liammet gant $2.
 
 URL klok : $3
 
 Diverañ eus ar c\'hemmoù :
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2] : an arnod emgefre en deus merzhet ur regresadur',
-	'codereview-email-body3' => "An arnod emgefre en deus merzhet ur regresadur en abeg d'ar c'hemmoù bet graet er stumm r$1.
+	'codereview-email-subj3' => '[$1] [$2] : an arnod emgefre en deus merzhet ur regresadur',
+	'codereview-email-body3' => "An arnod emgefre en deus merzhet ur regresadur en abeg d'ar c'hemmoù bet graet er stumm $1.
 
 URL klok : $2
 
@@ -1093,11 +1094,11 @@ $3",
  */
 $messages['bs'] = array(
 	'code' => 'Provjera koda',
-	'code-rev-title' => 'r$1 - Pregled koda',
+	'code-rev-title' => '$1 - Pregled koda',
 	'code-comments' => 'Komentari',
 	'code-references' => 'Naknadne revizije',
-	'code-change-status' => "promijenjeno '''stanje''' r$1",
-	'code-change-tags' => "promijenjeni ''tagovi'' za r$1",
+	'code-change-status' => "promijenjeno '''stanje''' $1",
+	'code-change-tags' => "promijenjeni ''tagovi'' za $1",
 	'code-change-removed' => 'uklonjeno:',
 	'code-change-added' => 'dodano:',
 	'code-old-status' => 'Staro stanje',
@@ -1186,24 +1187,24 @@ $messages['bs'] = array(
 	'codereview-tests-failed2' => '$1 uspješnih {{PLURAL:$2|test|testova}}, $3 neuspješnih {{PLURAL:$4|test|testova}}:',
 	'codereview-tests-running' => 'Test je u toku...',
 	'codereview-tests-aborted' => 'Test je prekinut.',
-	'codereview-email-subj' => '[$1] [r$2]: Dodan novi komentar',
-	'codereview-email-body' => 'Korisnik "$1" je napravio komentar na r$3.
+	'codereview-email-subj' => '[$1] [$2]: Dodan novi komentar',
+	'codereview-email-body' => 'Korisnik "$1" je napravio komentar na $3.
 
 Puni URL: $2
 
 Komentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Slijedeće izmjene',
-	'codereview-email-body2' => 'Korisnik "$1" je izvršio povezane izmjene na r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Slijedeće izmjene',
+	'codereview-email-body2' => 'Korisnik "$1" je izvršio povezane izmjene na $2.
 
 Puni URL: $3
 
 Napravljeni sažetak:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Automatska proba je otkrila regresiju',
-	'codereview-email-body3' => 'Automatska proba je otkrila regresiju zbog izmjena u r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Automatska proba je otkrila regresiju',
+	'codereview-email-body3' => 'Automatska proba je otkrila regresiju zbog izmjena u $1.
 
 Puni URL: $2
 
@@ -1296,8 +1297,8 @@ $messages['ca'] = array(
 	'codereview-batch-submit' => 'Envia',
 	'codereview-subtitle' => 'Per $1',
 	'codereview-reply-link' => 'Contesta',
-	'codereview-email-subj' => '[$1] [r$2]: Nou comentari afegit',
-	'codereview-email-body' => 'L\'usuari "$1" ha fet un comentari a r$3
+	'codereview-email-subj' => '[$1] [$2]: Nou comentari afegit',
+	'codereview-email-body' => 'L\'usuari "$1" ha fet un comentari a $3
 
 URL complet: $2
 
@@ -1320,7 +1321,7 @@ $4',
  */
 $messages['cs'] = array(
 	'code' => 'Kontrola kódu',
-	'code-rev-title' => 'r$1 – Kontrola kódu',
+	'code-rev-title' => '$1 – Kontrola kódu',
 	'code-comments' => 'Komentáře',
 	'code-references' => 'Odkazy na tuto revizi',
 	'code-change-status' => "změnil '''stav''' revize $1",
@@ -1418,24 +1419,24 @@ $messages['cs'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|úspěšný test|úspěšné testy|úspěšných testů}}, $3 {{PLURAL:$4|neúspěšný test|neúspěšné testy|neúspěšných testů}}:',
 	'codereview-tests-running' => 'Testy se právě provádějí…',
 	'codereview-tests-aborted' => 'Provádění testů bylo přerušeno.',
-	'codereview-email-subj' => '[$1] [r$2]: Přidán nový komentář',
-	'codereview-email-body' => 'Uživatel „$1“ přidal komentář k r$3.
+	'codereview-email-subj' => '[$1] [$2]: Přidán nový komentář',
+	'codereview-email-body' => 'Uživatel „$1“ přidal komentář k $3.
 
 Plné URL: $2
 
 Komentář:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Reagující změna',
-	'codereview-email-body2' => 'Uživatel „$1“ svou změnou reagoval na r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Reagující změna',
+	'codereview-email-body2' => 'Uživatel „$1“ svou změnou reagoval na $2.
 
 Úplné URL: $3
 
 Komentář ke změně:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Automatické testování detekovalo regresi',
-	'codereview-email-body3' => 'Automatické testování odhalilo regresi způsobenou změnami v r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Automatické testování detekovalo regresi',
+	'codereview-email-body3' => 'Automatické testování odhalilo regresi způsobenou změnami v $1.
 
 Úplné URL: $2
 
@@ -1467,11 +1468,11 @@ $3',
  */
 $messages['da'] = array(
 	'code' => 'Kodegennemgang',
-	'code-rev-title' => 'r$1 - kodegennemgang',
+	'code-rev-title' => '$1 - kodegennemgang',
 	'code-comments' => 'Kommentarer',
 	'code-references' => 'Opfølgende versioner',
-	'code-change-status' => "ændrede '''status''' for r$1",
-	'code-change-tags' => "ændrede '''tags''' for r$1",
+	'code-change-status' => "ændrede '''status''' for $1",
+	'code-change-tags' => "ændrede '''tags''' for $1",
 	'code-change-removed' => 'fjernet:',
 	'code-change-added' => 'Tilføjet:',
 	'code-old-status' => 'Gammel status',
@@ -1563,7 +1564,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'code' => 'Codeprüfung',
-	'code-rev-title' => 'r$1 – Codeprüfung',
+	'code-rev-title' => '$1 – Codeprüfung',
 	'code-comments' => 'Kommentare',
 	'code-references' => 'Nachfolgende Revisionen',
 	'code-change-status' => "änderte den '''Status''' von Revision $1",
@@ -1657,7 +1658,7 @@ Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|erfolgreicher Test|erfolgreiche Tests}}, $3 {{PLURAL:$4|fehlgeschlagender Test|fehlgeschlagende Tests}}:',
 	'codereview-tests-running' => 'Testfälle sind am laufen …',
 	'codereview-tests-aborted' => 'Testlauf ist abgebrochen.',
-	'codereview-email-subj' => '[$1] [r$2]: Neuer Kommentar hinzugefügt',
+	'codereview-email-subj' => '[$1] [$2]: Neuer Kommentar hinzugefügt',
 	'codereview-email-body' => 'Benutzer „$1“ hat Revision $3 kommentiert:
 
 Vollständige URL: $2
@@ -1665,16 +1666,16 @@ Vollständige URL: $2
 Kommentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Darauffolgende Änderungen',
-	'codereview-email-body2' => 'Benutzer „$1“ machte darauffolgende Änderungen zu r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Darauffolgende Änderungen',
+	'codereview-email-body2' => 'Benutzer „$1“ machte darauffolgende Änderungen zu $2.
 
 Volle URL: $3
 
 Übertragungszusammenfassung:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Die automatische Prüfung entdeckte einen Rückgang',
-	'codereview-email-body3' => 'Die automatische Prüfung entdeckte einen Rückgang aufgrund der Änderungen in r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Die automatische Prüfung entdeckte einen Rückgang',
+	'codereview-email-body3' => 'Die automatische Prüfung entdeckte einen Rückgang aufgrund der Änderungen in $1.
 
 Vollständige URL: $2
 
@@ -1706,11 +1707,11 @@ $3',
  */
 $messages['diq'] = array(
 	'code' => 'Kontrolê kodî',
-	'code-rev-title' => 'r$1 - Kontralê Kodî',
+	'code-rev-title' => '$1 - Kontralê Kodî',
 	'code-comments' => 'Xulasayan',
 	'code-references' => 'reviyanê tekîp keno',
-	'code-change-status' => "'''statuyan''' qe r$1 vurne",
-	'code-change-tags' => "'''etîketan''' qe r$1 vurne",
+	'code-change-status' => "'''statuyan''' qe $1 vurne",
+	'code-change-tags' => "'''etîketan''' qe $1 vurne",
 	'code-change-removed' => 'wedariya:',
 	'code-change-added' => 'de biyo:',
 	'code-old-status' => 'Statuyê kihanî',
@@ -1798,24 +1799,24 @@ $messages['diq'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|testan}} ke biyo, $3 {{PLURAL:$4|test|testan}} nibiyo:',
 	'codereview-tests-running' => 'Test ho hebiyeno...',
 	'codereview-tests-aborted' => 'Test iptel biyo.',
-	'codereview-email-subj' => '[$1] [r$2]: Xulasayê newî de biyo',
-	'codereview-email-body' => 'Karberê "$1"î yew xulasa se r$3 rê nuşt. 
+	'codereview-email-subj' => '[$1] [$2]: Xulasayê newî de biyo',
+	'codereview-email-body' => 'Karberê "$1"î yew xulasa se $3 rê nuşt. 
 
 Full URL: $2
 
 Xulasa:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Vurnayîşan kontrol bike',
-	'codereview-email-body2' => 'Karberê "$1"î,  r$2  vurna. 
+	'codereview-email-subj2' => '[$1] [$2]: Vurnayîşan kontrol bike',
+	'codereview-email-body2' => 'Karberê "$1"î,  $2  vurna. 
 
 Full URL: $3
 
 Xulasa:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Regression otomatik test keno',
-	'codereview-email-body3' => 'Qe vurnayîşê r$1î otomatik test yew regression mucna. 
+	'codereview-email-subj3' => '[$1] [$2]: Regression otomatik test keno',
+	'codereview-email-body3' => 'Qe vurnayîşê $1î otomatik test yew regression mucna. 
 
 Full URL: $2
 
@@ -1847,11 +1848,11 @@ $3',
  */
 $messages['dsb'] = array(
 	'code' => 'Kodowa kontrola',
-	'code-rev-title' => 'r$1 - Pśeglědanje koda',
+	'code-rev-title' => '$1 - Pśeglědanje koda',
 	'code-comments' => 'Komentary',
 	'code-references' => 'Naslědne wersije',
-	'code-change-status' => "jo '''status''' wersije r$1 změnił",
-	'code-change-tags' => "jo '''toflicki''' za wersiju r$1 změnił",
+	'code-change-status' => "jo '''status''' wersije $1 změnił",
+	'code-change-tags' => "jo '''toflicki''' za wersiju $1 změnił",
 	'code-change-removed' => 'wótpórany:',
 	'code-change-added' => 'pśidany:',
 	'code-old-status' => 'Stary status',
@@ -1939,24 +1940,24 @@ $messages['dsb'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|raźony test|raźonej testa|raźone testy|raźonych testow}}, $3 {{PLURAL:$4|njeraźony test|njeraźonej testa|njeraźone testy|njeraźonych testow}}:',
 	'codereview-tests-running' => 'Testowe pady běže...',
 	'codereview-tests-aborted' => 'Testowy běg pśetergnjony.',
-	'codereview-email-subj' => '[$1] [r$2]: Nowy komentar pśidany',
-	'codereview-email-body' => 'Wužywaŕ "$1" jo komentar wó r$3 pósłał.
+	'codereview-email-subj' => '[$1] [$2]: Nowy komentar pśidany',
+	'codereview-email-body' => 'Wužywaŕ "$1" jo komentar wó $3 pósłał.
 
 Dopołny URL: $2
 
 Komentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Naslědne změny',
-	'codereview-email-body2' => 'Wužywaŕ "$1" su naslědne změny k r$2 cynił.
+	'codereview-email-subj2' => '[$1] [$2]: Naslědne změny',
+	'codereview-email-body2' => 'Wužywaŕ "$1" su naslědne změny k $2 cynił.
 
 Dopołny URL: $3
 
 Zespominanje pśenjasenja:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Awtomatiski test jo regresiju nadejšeł.',
-	'codereview-email-body3' => 'Awtomatiski test jo regresiju změnow w r$1 dla nadejšeł.
+	'codereview-email-subj3' => '[$1] [$2]: Awtomatiski test jo regresiju nadejšeł.',
+	'codereview-email-body3' => 'Awtomatiski test jo regresiju změnow w $1 dla nadejšeł.
 
 Dopołny URL: $2
 
@@ -1999,11 +2000,11 @@ $messages['ee'] = array(
  */
 $messages['el'] = array(
 	'code' => 'Επιθεώρηση του κώδικα',
-	'code-rev-title' => 'r$1 - Επιθεώρηση του Κώδικα',
+	'code-rev-title' => '$1 - Επιθεώρηση του Κώδικα',
 	'code-comments' => 'Σχόλια',
 	'code-references' => 'Παρακολούθηση επεξεργασιών',
-	'code-change-status' => "έγινε αλλαγή της '''κατάστασης''' της r$1",
-	'code-change-tags' => "έγινε αλλαγή των '''ετικετών''' για την r$1",
+	'code-change-status' => "έγινε αλλαγή της '''κατάστασης''' της $1",
+	'code-change-tags' => "έγινε αλλαγή των '''ετικετών''' για την $1",
 	'code-change-removed' => 'αφαιρέθηκε:',
 	'code-change-added' => 'προστέθηκε:',
 	'code-old-status' => 'Παλιά κατάσταση',
@@ -2085,24 +2086,24 @@ $messages['el'] = array(
 	'code-release-badrange' => 'Το βεληνεκές είναι πολύ μεγάλο!',
 	'codereview-subtitle' => 'Για το $1',
 	'codereview-reply-link' => 'απάντηση',
-	'codereview-email-subj' => '[$1] [r$2]: Προστέθηκε νέο σχόλιο',
-	'codereview-email-body' => 'Ο χρήστης "$1" απέστειλε κάποιο σχόλιο στο r$3.
+	'codereview-email-subj' => '[$1] [$2]: Προστέθηκε νέο σχόλιο',
+	'codereview-email-body' => 'Ο χρήστης "$1" απέστειλε κάποιο σχόλιο στο $3.
 
 Πλήρης URL: $2
 
 Σχόλιο:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Παρακολούθηση αλλαγών',
-	'codereview-email-body2' => 'Ο Χρήστης "$1" πραγματοποίησε αλλαγές παρακολούθησης στο r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Παρακολούθηση αλλαγών',
+	'codereview-email-body2' => 'Ο Χρήστης "$1" πραγματοποίησε αλλαγές παρακολούθησης στο $2.
 
 Πλήρες URL: $3
 
 Υποβολή περίληψης:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Η αυτόματη δοκιμή εντόπισε παλινδρόμηση',
-	'codereview-email-body3' => 'Η αυτόματη δοκιμή αποκάλυψε μια οπισθοδρόμηση εξαιτίας των αλλαγών στο r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Η αυτόματη δοκιμή εντόπισε παλινδρόμηση',
+	'codereview-email-body3' => 'Η αυτόματη δοκιμή αποκάλυψε μια οπισθοδρόμηση εξαιτίας των αλλαγών στο $1.
 
 Πλήρες URL: $2
 
@@ -2135,11 +2136,11 @@ $3',
  */
 $messages['eo'] = array(
 	'code' => 'Kontrolo de Programkodo',
-	'code-rev-title' => 'r$1 - Koda Kontrolo',
+	'code-rev-title' => '$1 - Koda Kontrolo',
 	'code-comments' => 'Komentoj',
 	'code-references' => 'Farindaj revizioj',
-	'code-change-status' => "ŝanĝis la '''statuson''' de r$1",
-	'code-change-tags' => "ŝanĝis la '''etikedojn''' por r$1",
+	'code-change-status' => "ŝanĝis la '''statuson''' de $1",
+	'code-change-tags' => "ŝanĝis la '''etikedojn''' por $1",
 	'code-change-removed' => 'forigis:',
 	'code-change-added' => 'aldonis:',
 	'code-old-status' => 'Malnova statuso',
@@ -2227,7 +2228,7 @@ $messages['eo'] = array(
 	'codereview-tests-failed2' => '$1 sukcesis {{PLURAL:$2|teston|testojn}}, $3 malsukcesis {{PLURAL:$4|teston|testojn}}:',
 	'codereview-tests-running' => 'Testkazoj funkcias...',
 	'codereview-tests-aborted' => 'Testfunkciigo haltiĝis.',
-	'codereview-email-subj' => '[$1] [r$2]: Nova komento estis aldonita',
+	'codereview-email-subj' => '[$1] [$2]: Nova komento estis aldonita',
 	'codereview-email-body' => 'Uzanto "$1" afiŝis komenton de $3.
 
 Plena URL-o: $2
@@ -2235,16 +2236,16 @@ Plena URL-o: $2
 Komento:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Postatentaj ŝanĝoj',
-	'codereview-email-body2' => 'Uzanto "$1" faris postatentadajn ŝanĝojn al r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Postatentaj ŝanĝoj',
+	'codereview-email-body2' => 'Uzanto "$1" faris postatentadajn ŝanĝojn al $2.
 
 Plena URL: $3
 
 Resumo de ŝanĝoj:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Aŭtomata testado detektis regresion',
-	'codereview-email-body3' => 'Aŭtomata testado malkaŝis regresion pro la ŝanĝoj en r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Aŭtomata testado detektis regresion',
+	'codereview-email-body3' => 'Aŭtomata testado malkaŝis regresion pro la ŝanĝoj en $1.
 
 Plena URL: $2
 
@@ -2283,11 +2284,11 @@ $3',
  */
 $messages['es'] = array(
 	'code' => 'Revisión de código',
-	'code-rev-title' => 'r$1 - Revisión de Código',
+	'code-rev-title' => '$1 - Revisión de Código',
 	'code-comments' => 'Comentarios',
 	'code-references' => 'Revisiones de seguimiento',
-	'code-change-status' => "cambiado el '''status''' de r$1",
-	'code-change-tags' => "cambiadas las '''etiquetas''' de r$1",
+	'code-change-status' => "cambiado el '''status''' de $1",
+	'code-change-tags' => "cambiadas las '''etiquetas''' de $1",
 	'code-change-removed' => 'quitados:',
 	'code-change-added' => 'agregado:',
 	'code-old-status' => 'Antiguo status',
@@ -2375,24 +2376,24 @@ $messages['es'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|prueba realizada|pruebas realizadas}} con éxito, $3 {{PLURAL:$4|prueba fallida|pruebas fallidas}}:',
 	'codereview-tests-running' => 'Casos de prueba en ejecución...',
 	'codereview-tests-aborted' => 'Ejecución de prueba abortada.',
-	'codereview-email-subj' => '[$1] [r$2]: Añadido nuevo comentario',
-	'codereview-email-body' => 'El usuario «$1» envió un comentario en r$3.
+	'codereview-email-subj' => '[$1] [$2]: Añadido nuevo comentario',
+	'codereview-email-body' => 'El usuario «$1» envió un comentario en $3.
 
 URL completa: $2
 
 Comentario:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Cambios de seguimiento',
-	'codereview-email-body2' => 'El usuario "$1" ha hecho de modificaciones de seguimiento a r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Cambios de seguimiento',
+	'codereview-email-body2' => 'El usuario "$1" ha hecho de modificaciones de seguimiento a $2.
 
 URL completa : $3
 
 Resumen de las confirmaciones:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2] : la prueba automática ha detectado una regresión',
-	'codereview-email-body3' => 'La prueba automática ha mostrado una regresión debido a los cambios realizados en r$1.
+	'codereview-email-subj3' => '[$1] [$2] : la prueba automática ha detectado una regresión',
+	'codereview-email-body3' => 'La prueba automática ha mostrado una regresión debido a los cambios realizados en $1.
 
 URL completa: $2
 
@@ -2425,11 +2426,11 @@ $3',
  */
 $messages['et'] = array(
 	'code' => 'Koodiülevaatus',
-	'code-rev-title' => 'r$1 – koodiülevaatus',
+	'code-rev-title' => '$1 – koodiülevaatus',
 	'code-comments' => 'Kommentaarid',
 	'code-references' => 'Järelredaktsioonid',
-	'code-change-status' => "muutis koodi r$1 '''olekut'''",
-	'code-change-tags' => "muutis koodile r$1 lisatud '''märgiseid'''",
+	'code-change-status' => "muutis koodi $1 '''olekut'''",
+	'code-change-tags' => "muutis koodile $1 lisatud '''märgiseid'''",
 	'code-change-removed' => 'eemaldatud:',
 	'code-change-added' => 'lisatud:',
 	'code-old-status' => 'Vana olek',
@@ -2500,16 +2501,16 @@ $messages['et'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|edukas katsetus|edukat katsetust}}, $3 nurjunud {{PLURAL:$4|katsetus|katsetust}}:',
 	'codereview-tests-running' => 'Katsetusi läbitakse...',
 	'codereview-tests-aborted' => 'Katsetuse läbimine katkestatud.',
-	'codereview-email-subj' => '[$1] [r$2]: Lisatud uus kommentaar',
-	'codereview-email-body' => 'Kasutaja $1 kommenteeris koodi r$3.
+	'codereview-email-subj' => '[$1] [$2]: Lisatud uus kommentaar',
+	'codereview-email-body' => 'Kasutaja $1 kommenteeris koodi $3.
 
 Täielik URL: $2
 
 Kommentaar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Järelmuudatused',
-	'codereview-email-body2' => 'Kasutaja $1 tegi koodile r$2 järelmuudatusi.
+	'codereview-email-subj2' => '[$1] [$2]: Järelmuudatused',
+	'codereview-email-body2' => 'Kasutaja $1 tegi koodile $2 järelmuudatusi.
 
 Täielik URL: $3
 
@@ -2543,8 +2544,8 @@ $4',
 $messages['eu'] = array(
 	'code' => 'Kode Berrikuspena',
 	'code-comments' => 'Iruzkinak',
-	'code-change-status' => "r$1-(e)n '''egoera''' aldatu da",
-	'code-change-tags' => "r$1-eko '''etiketak''' aldatu dira",
+	'code-change-status' => "$1-(e)n '''egoera''' aldatu da",
+	'code-change-tags' => "$1-eko '''etiketak''' aldatu dira",
 	'code-change-removed' => 'ezabatua:',
 	'code-change-added' => 'gehitua:',
 	'code-old-status' => 'Egoera zaharra',
@@ -2597,8 +2598,8 @@ $messages['eu'] = array(
 	'code-rev-submit-next' => 'Gorde eta konpondu gabeko hurrengora',
 	'codereview-batch-submit' => 'Bidali',
 	'codereview-reply-link' => 'erantzun',
-	'codereview-email-subj' => '[$1] [r$2]: Iruzkin berria gehitu da',
-	'codereview-email-body' => '"$1" lankideak r$3(e)n iruzkin bat gehitu du.
+	'codereview-email-subj' => '[$1] [$2]: Iruzkin berria gehitu da',
+	'codereview-email-body' => '"$1" lankideak $3(e)n iruzkin bat gehitu du.
 
 Helbide osoa: $2
 
@@ -2697,8 +2698,8 @@ $messages['fa'] = array(
 	'code-rev-submit-next' => 'ذخیره و حرکت به مورد حل نشدهٔ بعدی',
 	'codereview-subtitle' => 'برای $1',
 	'codereview-reply-link' => 'پاسخ',
-	'codereview-email-subj' => '[$1] [r$2]: نظر جدید اضافه شد',
-	'codereview-email-body' => 'کاربر «$1» یک نظر برای r$3 ارسال کرد.
+	'codereview-email-subj' => '[$1] [$2]: نظر جدید اضافه شد',
+	'codereview-email-body' => 'کاربر «$1» یک نظر برای $3 ارسال کرد.
 
 نشانی کامل: $2
 
@@ -2734,7 +2735,7 @@ $4',
  */
 $messages['fi'] = array(
 	'code' => 'Koodintarkistus',
-	'code-rev-title' => 'r$1 – Koodintarkistus',
+	'code-rev-title' => '$1 – Koodintarkistus',
 	'code-comments' => 'Kommentit',
 	'code-references' => 'Myöhemmät versiot',
 	'code-change-status' => "muutti version $1 '''tilaa'''",
@@ -2826,24 +2827,24 @@ $messages['fi'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|onnistunut testi|onnistunutta testiä}}, $3 {{PLURAL:$4|epäonnistunut testi|epäonnistunutta testiä}}:',
 	'codereview-tests-running' => 'Testejä ajetaan…',
 	'codereview-tests-aborted' => 'Testiajo keskeytetty.',
-	'codereview-email-subj' => '[$1] [r$2]: Uusi kommentti lisätty',
-	'codereview-email-body' => 'Käyttäjä $1 jätti kommentin versioon r$3.
+	'codereview-email-subj' => '[$1] [$2]: Uusi kommentti lisätty',
+	'codereview-email-body' => 'Käyttäjä $1 jätti kommentin versioon $3.
 
 Täydellinen osoite: $2
 
 Kommentti:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Myöhemmät muutokset',
-	'codereview-email-body2' => 'Käyttäjä ”$1” teki myöhemmän muutoksen versioon r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Myöhemmät muutokset',
+	'codereview-email-body2' => 'Käyttäjä ”$1” teki myöhemmän muutoksen versioon $2.
 
 Täydellinen URL: $3
 
 Toimituksen yhteenveto:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Automaattinen testaus havaitsi regression',
-	'codereview-email-body3' => 'Automaattinen testaus havaitsi regression version r$1 muutoksen takia.
+	'codereview-email-subj3' => '[$1] [$2]: Automaattinen testaus havaitsi regression',
+	'codereview-email-body3' => 'Automaattinen testaus havaitsi regression version $1 muutoksen takia.
 
 Täydellinen osoite: $2
 
@@ -2883,11 +2884,11 @@ $3',
  */
 $messages['fr'] = array(
 	'code' => 'Révision du code',
-	'code-rev-title' => 'r$1 - Révision du code',
+	'code-rev-title' => '$1 - Révision du code',
 	'code-comments' => 'Commentaires',
 	'code-references' => 'Références vers les révisions',
-	'code-change-status' => "a modifié l’'''état''' de r$1",
-	'code-change-tags' => "a modifié les '''balises''' de r$1",
+	'code-change-status' => "a modifié l’'''état''' de $1",
+	'code-change-tags' => "a modifié les '''balises''' de $1",
 	'code-change-removed' => 'retiré :',
 	'code-change-added' => 'ajouté :',
 	'code-old-status' => 'ancien statut',
@@ -2981,24 +2982,24 @@ $messages['fr'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test réussi|tests réussis}}, $3 {{PLURAL:$4|test échoué|tests échoués}} :',
 	'codereview-tests-running' => 'Tests en cours...',
 	'codereview-tests-aborted' => 'Exécution du test interrompue.',
-	'codereview-email-subj' => '[$1] [r$2] : nouveau commentaire ajouté',
-	'codereview-email-body' => 'L’utilisateur « $1 » a posté un commentaire sur r$3.
+	'codereview-email-subj' => '[$1] [$2] : nouveau commentaire ajouté',
+	'codereview-email-body' => 'L’utilisateur « $1 » a posté un commentaire sur $3.
 
 Lien hypertexte complet : $2
 
 Commentaire :
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2] : suivi de la modification',
-	'codereview-email-body2' => 'L’utilisateur « $1 » a fait des modifications reliées à r$2.
+	'codereview-email-subj2' => '[$1] [$2] : suivi de la modification',
+	'codereview-email-body2' => 'L’utilisateur « $1 » a fait des modifications reliées à $2.
 
 URL complète : $3
 
 Résumé des modifications :
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2] : le test automatique a détecté une régression',
-	'codereview-email-body3' => 'Le test automatique a révélé une régression à cause des changements intervenus dans la version r$1.
+	'codereview-email-subj3' => '[$1] [$2] : le test automatique a détecté une régression',
+	'codereview-email-body3' => 'Le test automatique a révélé une régression à cause des changements intervenus dans la version $1.
 
 URL complète : $2
 
@@ -3030,11 +3031,11 @@ $3',
  */
 $messages['frp'] = array(
 	'code' => 'Rèvision du code',
-	'code-rev-title' => 'r$1 - Rèvision du code',
+	'code-rev-title' => '$1 - Rèvision du code',
 	'code-comments' => 'Comentèros',
 	'code-references' => 'Refèrences de vers les rèvisions',
-	'code-change-status' => "at changiê l’'''ètat''' de r$1",
-	'code-change-tags' => "at changiê les '''balises''' de r$1",
+	'code-change-status' => "at changiê l’'''ètat''' de $1",
+	'code-change-tags' => "at changiê les '''balises''' de $1",
 	'code-change-removed' => 'enlevâ :',
 	'code-change-added' => 'apondu :',
 	'code-old-status' => 'Viely ètat',
@@ -3121,24 +3122,24 @@ $messages['frp'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|èprôva reussia|èprôves reussies}}, $3 {{PLURAL:$4|èprôva pas reussia|èprôves pas reussies}} :',
 	'codereview-tests-running' => 'Èprôves en cors...',
 	'codereview-tests-aborted' => 'Ègzécucion de l’èprôva arrètâ.',
-	'codereview-email-subj' => '[$1] [r$2] : novél comentèro apondu',
-	'codereview-email-body' => 'L’utilisator « $1 » at postâ un comentèro dessus r$3.
+	'codereview-email-subj' => '[$1] [$2] : novél comentèro apondu',
+	'codereview-email-body' => 'L’utilisator « $1 » at postâ un comentèro dessus $3.
 
 Lim hipèrtèxto complèt : $2
 
 Comentèro :
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2] : survelyence du changement',
-	'codereview-email-body2' => 'L’utilisator « $1 » at fêt des changements reliyês a r$2.
+	'codereview-email-subj2' => '[$1] [$2] : survelyence du changement',
+	'codereview-email-body2' => 'L’utilisator « $1 » at fêt des changements reliyês a $2.
 
 Lim hipèrtèxto complèt : $3
 
 Rèsumâ pendent la somission :
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2] : l’èprôva ôtomatica at dècelâ una règrèssion',
-	'codereview-email-body3' => 'L’èprôva ôtomatica at dècelâ una règrèssion a côsa des changements arrevâs dens r$1.
+	'codereview-email-subj3' => '[$1] [$2] : l’èprôva ôtomatica at dècelâ una règrèssion',
+	'codereview-email-body3' => 'L’èprôva ôtomatica at dècelâ una règrèssion a côsa des changements arrevâs dens $1.
 
 Lim hipèrtèxto complèt : $2
 
@@ -3171,7 +3172,7 @@ $3',
 $messages['ga'] = array(
 	'code-field-message' => 'Achoimre tiomnú',
 	'code-rev-message' => 'Nóta tráchta:',
-	'codereview-email-body' => 'Chuir úsáideoir "$1 nóta tráchta ar r$3.
+	'codereview-email-body' => 'Chuir úsáideoir "$1 nóta tráchta ar $3.
 
 Dearbh-URL: $2
 
@@ -3186,11 +3187,11 @@ $4',
  */
 $messages['gl'] = array(
 	'code' => 'Revisión do código',
-	'code-rev-title' => 'r$1 - Revisión do código',
+	'code-rev-title' => '$1 - Revisión do código',
 	'code-comments' => 'Notas da revisión',
 	'code-references' => 'Seguir as revisións',
-	'code-change-status' => "cambiou o '''estado''' da r$1",
-	'code-change-tags' => "cambiou as '''etiquetas''' da r$1",
+	'code-change-status' => "cambiou o '''estado''' da $1",
+	'code-change-tags' => "cambiou as '''etiquetas''' da $1",
 	'code-change-removed' => 'eliminado:',
 	'code-change-added' => 'engadido:',
 	'code-old-status' => 'Estado vello',
@@ -3284,24 +3285,24 @@ $messages['gl'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba errada|probas erradas}}:',
 	'codereview-tests-running' => 'As probas están en curso...',
 	'codereview-tests-aborted' => 'Interrompeuse a execución da proba.',
-	'codereview-email-subj' => '[$1] [r$2]: Engadido un novo comentario',
-	'codereview-email-body' => 'O usuario "$1" deixou un comentario en r$3.
+	'codereview-email-subj' => '[$1] [$2]: Engadido un novo comentario',
+	'codereview-email-body' => 'O usuario "$1" deixou un comentario en $3.
 
 Enderezo URL: $2
 
 Comentario:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: seguimento de cambios',
-	'codereview-email-body2' => 'O usuario "$1" fixo un seguimento dos cambios feitos na r$2.
+	'codereview-email-subj2' => '[$1] [$2]: seguimento de cambios',
+	'codereview-email-body2' => 'O usuario "$1" fixo un seguimento dos cambios feitos na $2.
 
 Enderezo URL completo: $3
 
 Resumo:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: a proba automática detectou unha regresión',
-	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión r$1.
+	'codereview-email-subj3' => '[$1] [$2]: a proba automática detectou unha regresión',
+	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión $1.
 
 Enderezo URL completo: $2
 
@@ -3334,10 +3335,10 @@ $3',
  */
 $messages['grc'] = array(
 	'code' => 'Ἐπιθεωρεῖν τὸν Κώδικα',
-	'code-rev-title' => 'r$1 - Ἐπιθεώρησις κώδικος',
+	'code-rev-title' => '$1 - Ἐπιθεώρησις κώδικος',
 	'code-comments' => 'Σχόλια',
-	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆς ἀναθεωρήσεως r$1",
-	'code-change-tags' => "μεταβλητέα εἰσὶ τὰ '''πρότυπα''' διὰ τὴν ἀναθεώρησιν r$1",
+	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆς ἀναθεωρήσεως $1",
+	'code-change-tags' => "μεταβλητέα εἰσὶ τὰ '''πρότυπα''' διὰ τὴν ἀναθεώρησιν $1",
 	'code-change-removed' => 'προστεθειμένη:',
 	'code-change-added' => 'ἀφῃρημένη:',
 	'code-prop-changes' => 'Καθεστὼς & κατάλογος προσαρτημάτων',
@@ -3404,8 +3405,8 @@ $messages['grc'] = array(
 	'codereview-batch-submit' => 'Ὑποβάλλειν',
 	'codereview-subtitle' => 'Διὰ $1',
 	'codereview-reply-link' => 'ἀποκρίνεσθαι',
-	'codereview-email-subj' => '[$1] [r$2]: Σχόλιον νέον προστεθειμένον',
-	'codereview-email-body' => 'Ὁ χρώμενος "$1" ἀπέσταλκεν σχόλιόν τι τῷ r$3.
+	'codereview-email-subj' => '[$1] [$2]: Σχόλιον νέον προστεθειμένον',
+	'codereview-email-body' => 'Ὁ χρώμενος "$1" ἀπέσταλκεν σχόλιόν τι τῷ $3.
 
 Πλήρης URL: $2
 
@@ -3436,11 +3437,11 @@ $4',
  */
 $messages['gsw'] = array(
 	'code' => 'Codepriefig',
-	'code-rev-title' => 'r$1 – Codepriefig',
+	'code-rev-title' => '$1 – Codepriefig',
 	'code-comments' => 'Kommentar',
 	'code-references' => 'Negschti Versione',
-	'code-change-status' => "het dr '''Status''' vu r$1 gänderet",
-	'code-change-tags' => "het d '''Tag''' vu r$1 gänderet",
+	'code-change-status' => "het dr '''Status''' vu $1 gänderet",
+	'code-change-tags' => "het d '''Tag''' vu $1 gänderet",
 	'code-change-removed' => 'usegnuh:',
 	'code-change-added' => 'zuegfiegt:',
 	'code-old-status' => 'Alte Status',
@@ -3534,24 +3535,24 @@ $messages['gsw'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|erfolgryyche Tescht|erfolgryychi Tescht}}, $3 {{PLURAL:$4|fählgschlage Tescht|fählgschlageni Tescht}}:',
 	'codereview-tests-running' => 'Teschtfäll sin am Laufe ...',
 	'codereview-tests-aborted' => 'Teschtlauf abbroche.',
-	'codereview-email-subj' => '[$1] [r$2]: Neije Kommentar zuegfiegt',
-	'codereview-email-body' => 'Benutzer „$1“ het r$3 kommentiert:
+	'codereview-email-subj' => '[$1] [$2]: Neije Kommentar zuegfiegt',
+	'codereview-email-body' => 'Benutzer „$1“ het $3 kommentiert:
 
 Vollständigi URL: $2
 
 Kommentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Änderige wu derno chemme',
-	'codereview-email-body2' => 'Benutzer „$1“ het zue r$2 Änderige wu derno chemme gmacht.
+	'codereview-email-subj2' => '[$1] [$2]: Änderige wu derno chemme',
+	'codereview-email-body2' => 'Benutzer „$1“ het zue $2 Änderige wu derno chemme gmacht.
 
 Volli URL: $3
 
 Ibertragzämmefassig:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: E automatischi Priefig het e Fähler gfunde, wu schon emol ufträtten isch',
-	'codereview-email-body3' => 'E automatischi Priefig het e Fähler ufdeckt, wu dr Änderigen in r$1 wider ufträtten isch
+	'codereview-email-subj3' => '[$1] [$2]: E automatischi Priefig het e Fähler gfunde, wu schon emol ufträtten isch',
+	'codereview-email-body3' => 'E automatischi Priefig het e Fähler ufdeckt, wu dr Änderigen in $1 wider ufträtten isch
 
 Vollständigi URL: $2
 
@@ -3683,7 +3684,7 @@ $messages['he'] = array(
 	'codereview-tests-running' => 'הבדיקות רצות כעת...',
 	'codereview-tests-aborted' => 'הבדיקות הופסקו.',
 	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
-	'codereview-email-body' => 'המשתמש "$1" פרסם הערה אודות r$3.
+	'codereview-email-body' => 'המשתמש "$1" פרסם הערה אודות $3.
 
 הכתובת המלאה: $2
 
@@ -3743,8 +3744,8 @@ $messages['hif-latn'] = array(
 $messages['hr'] = array(
 	'code' => 'Pregled koda',
 	'code-comments' => 'Komentari',
-	'code-change-status' => "promijenjen '''status''' za reviziju r$1",
-	'code-change-tags' => "promijenjene '''oznake''' za reviziju r$1",
+	'code-change-status' => "promijenjen '''status''' za reviziju $1",
+	'code-change-tags' => "promijenjene '''oznake''' za reviziju $1",
 	'code-change-removed' => 'uklonjeno:',
 	'code-change-added' => 'dodano:',
 	'code-prop-changes' => 'Evidencija statusa i označavanja',
@@ -3819,8 +3820,8 @@ $messages['hr'] = array(
 	'code-release-endrev' => 'Posljednja revizija:',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'odgovori',
-	'codereview-email-subj' => '[$1] [r$2]: Dodan novi komentar',
-	'codereview-email-body' => 'Suradnik "$1" je ostavio komentar za r$3.
+	'codereview-email-subj' => '[$1] [$2]: Dodan novi komentar',
+	'codereview-email-body' => 'Suradnik "$1" je ostavio komentar za $3.
 
 Puni URL: $2
 
@@ -3851,11 +3852,11 @@ $4',
  */
 $messages['hsb'] = array(
 	'code' => 'Kodowa kontrola',
-	'code-rev-title' => 'r$1 - Přepruwowanje koda',
+	'code-rev-title' => '$1 - Přepruwowanje koda',
 	'code-comments' => 'Komentary',
 	'code-references' => 'Naslědne wersije',
-	'code-change-status' => "změni '''status''' wersije r$1",
-	'code-change-tags' => "změni '''taflički''' za wersiju r$1",
+	'code-change-status' => "změni '''status''' wersije $1",
+	'code-change-tags' => "změni '''taflički''' za wersiju $1",
 	'code-change-removed' => 'wotstronjeny:',
 	'code-change-added' => 'přidaty:',
 	'code-old-status' => 'Stary status',
@@ -3943,24 +3944,24 @@ $messages['hsb'] = array(
 	'codereview-tests-failed2' => ' $1 {{PLURAL:$2|poradźeny test|poradźenej testaj|poradźene testy|poradźenych testow}}, $3 {{PLURAL:$4|njeporadźeny test|njeporadźenej testaj|njeporadźene testy|njeporadźenych testow}}:',
 	'codereview-tests-running' => 'Testowe pady běža...',
 	'codereview-tests-aborted' => 'Testowy běh přetorhnjeny.',
-	'codereview-email-subj' => '[$1] [r$2]: Nowy komentar přidaty',
-	'codereview-email-body' => 'Wužiwar "$1" je komentar wo r$3 pósłał.
+	'codereview-email-subj' => '[$1] [$2]: Nowy komentar přidaty',
+	'codereview-email-body' => 'Wužiwar "$1" je komentar wo $3 pósłał.
 
 Dospołny URL: $2
 
 Komentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Naslědne změny',
-	'codereview-email-body2' => 'Wužiwar "$1" je naslědne změny k r$2 činił.
+	'codereview-email-subj2' => '[$1] [$2]: Naslědne změny',
+	'codereview-email-body2' => 'Wužiwar "$1" je naslědne změny k $2 činił.
 
 Dopołny URL: $3
 
 Zjeće přenjesenja:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Awtomatiski test je regresiju wotkrył',
-	'codereview-email-body3' => 'Awtomatiski test je změnow w r$1 dla regresiju wotkrył.
+	'codereview-email-subj3' => '[$1] [$2]: Awtomatiski test je regresiju wotkrył',
+	'codereview-email-body3' => 'Awtomatiski test je změnow w $1 dla regresiju wotkrył.
 
 Dospołny URL: $2
 
@@ -3993,11 +3994,11 @@ $3',
  */
 $messages['hu'] = array(
 	'code' => 'Kódellenőrzés',
-	'code-rev-title' => 'r$1 - Kódellenőrzés',
+	'code-rev-title' => '$1 - Kódellenőrzés',
 	'code-comments' => 'Hozzászólások',
 	'code-references' => 'Kapcsolódó későbbi változatok',
-	'code-change-status' => "megváltoztatta az r$1 változat '''állapotát'''",
-	'code-change-tags' => "megváltoztatta az r$1 változat '''címkéit'''",
+	'code-change-status' => "megváltoztatta az $1 változat '''állapotát'''",
+	'code-change-tags' => "megváltoztatta az $1 változat '''címkéit'''",
 	'code-change-removed' => 'eltávolítva:',
 	'code-change-added' => 'hozzáadva:',
 	'code-old-status' => 'Régi állapot',
@@ -4084,24 +4085,24 @@ $messages['hu'] = array(
 	'codereview-tests-failed2' => '$1 sikeres {{PLURAL:$2|teszt|teszt}}, $3 sikertelen {{PLURAL:$4|teszt|teszt}}:',
 	'codereview-tests-running' => 'A tesztesetek futnak…',
 	'codereview-tests-aborted' => 'Tesztfutás megszakítva.',
-	'codereview-email-subj' => '[$1] [r$2]: Új hozzászólás',
-	'codereview-email-body' => '„$1” új hozzászólást fűzött az r$3 változathoz.
+	'codereview-email-subj' => '[$1] [$2]: Új hozzászólás',
+	'codereview-email-body' => '„$1” új hozzászólást fűzött az $3 változathoz.
 
 Teljes cím: $2
 
 Hozzászólás:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: rákövetkező változtatások',
-	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett az r$2 verzión.
+	'codereview-email-subj2' => '[$1] [$2]: rákövetkező változtatások',
+	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett az $2 verzión.
 
 Teljes URL: $3
 
 Commit összefoglaló:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: az automatikus tesztelés regressziót talált',
-	'codereview-email-body3' => 'Az automatikus tesztelés felfedett egy regressziót, amit az r$1-ben történt változások okoztak.
+	'codereview-email-subj3' => '[$1] [$2]: az automatikus tesztelés regressziót talált',
+	'codereview-email-body3' => 'Az automatikus tesztelés felfedett egy regressziót, amit az $1-ben történt változások okoztak.
 
 Teljes URL: $2
 
@@ -4282,11 +4283,11 @@ $3',
  */
 $messages['id'] = array(
 	'code' => 'Kode Tinjauan',
-	'code-rev-title' => 'r$1 - Kode Tinjauan',
+	'code-rev-title' => '$1 - Kode Tinjauan',
 	'code-comments' => 'Komentar',
 	'code-references' => 'Menindaklanjuti revisi',
-	'code-change-status' => "Ubah '''status''' dari r$1",
-	'code-change-tags' => "Ubah '''penanda''' dari r$1",
+	'code-change-status' => "Ubah '''status''' dari $1",
+	'code-change-tags' => "Ubah '''penanda''' dari $1",
 	'code-change-removed' => 'hapus:',
 	'code-change-added' => 'tambahkan:',
 	'code-old-status' => 'Setatus lama',
@@ -4373,24 +4374,24 @@ $messages['id'] = array(
 	'codereview-tests-failed2' => '$1 berhasil {{PLURAL:$2|tes|tes}}, $3 gagal {{PLURAL:$4|tes|tes}}:',
 	'codereview-tests-running' => 'Kasus pengujian sedang dijalankan...',
 	'codereview-tests-aborted' => 'Pelaksaan pengujian dibatalkan.',
-	'codereview-email-subj' => '[$1] [r$2]: Komenter baru ditambahkan',
-	'codereview-email-body' => 'Pengguna "$1" berkomentar pada r$3.
+	'codereview-email-subj' => '[$1] [$2]: Komenter baru ditambahkan',
+	'codereview-email-body' => 'Pengguna "$1" berkomentar pada $3.
 
 URL lengkap: $2
 
 Komentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]:Menindaklanjuti perubahan',
-	'codereview-email-body2' => 'Pengguna "$1" menindak lanjuti perubahan ke r$2.
+	'codereview-email-subj2' => '[$1] [$2]:Menindaklanjuti perubahan',
+	'codereview-email-body2' => 'Pengguna "$1" menindak lanjuti perubahan ke $2.
 
 URL lengkap: $3
 
 Ringkasan:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Ujicoba langsung terdeteksi pemulihan',
-	'codereview-email-body3' => 'Pengujian otomatis telah mengungkapkan regresi akibat perubahan dalam r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Ujicoba langsung terdeteksi pemulihan',
+	'codereview-email-body3' => 'Pengujian otomatis telah mengungkapkan regresi akibat perubahan dalam $1.
 
 URL lengkap: $2 
 
@@ -4432,7 +4433,7 @@ $messages['io'] = array(
 	'code-rev-message' => 'Komento:',
 	'code-rev-comment-by' => 'Komento per $1',
 	'codereview-batch-submit' => 'Sendez',
-	'codereview-email-subj' => '[$1] [r$2]: Nova komento adjuntita',
+	'codereview-email-subj' => '[$1] [$2]: Nova komento adjuntita',
 );
 
 /** Italian (Italiano)
@@ -4446,10 +4447,10 @@ $messages['io'] = array(
  */
 $messages['it'] = array(
 	'code' => 'Revisione del codice',
-	'code-rev-title' => 'r$1 - Revisione del codice',
+	'code-rev-title' => '$1 - Revisione del codice',
 	'code-comments' => 'Commenti',
-	'code-change-status' => "ha modificato lo '''stato''' di r$1",
-	'code-change-tags' => "ha modificato i '''tag''' di r$1",
+	'code-change-status' => "ha modificato lo '''stato''' di $1",
+	'code-change-tags' => "ha modificato i '''tag''' di $1",
 	'code-change-removed' => 'eliminazioni:',
 	'code-change-added' => 'aggiunte:',
 	'code-old-status' => 'Vecchio stato',
@@ -4524,8 +4525,8 @@ $messages['it'] = array(
 	'code-release-endrev' => 'Revisione finale:',
 	'codereview-subtitle' => 'Per $1',
 	'codereview-reply-link' => 'rispondi',
-	'codereview-email-subj' => '[$1] [r$2]: Aggiunto un commento',
-	'codereview-email-body' => 'L\'utente "$1" ha inviato un commento a r$3.
+	'codereview-email-subj' => '[$1] [$2]: Aggiunto un commento',
+	'codereview-email-body' => 'L\'utente "$1" ha inviato un commento a $3.
 
 URL completo: $2
 
@@ -4565,8 +4566,8 @@ $messages['ja'] = array(
 	'code-rev-title' => '第$1版 - コードレビュー',
 	'code-comments' => 'コメント',
 	'code-references' => '追補版',
-	'code-change-status' => "r$1 の'''状態'''を変更しました",
-	'code-change-tags' => "r$1 の'''タグ'''を変更しました",
+	'code-change-status' => "$1 の'''状態'''を変更しました",
+	'code-change-tags' => "$1 の'''タグ'''を変更しました",
 	'code-change-removed' => '除去:',
 	'code-change-added' => '追加:',
 	'code-old-status' => '古い状態',
@@ -4654,24 +4655,24 @@ $messages['ja'] = array(
 	'codereview-tests-failed2' => '$1件の{{PLURAL:$2|テスト}}が成功し、$3件の{{PLURAL:$4|テスト}}が失敗:',
 	'codereview-tests-running' => 'テストケース実行中…',
 	'codereview-tests-aborted' => 'テスト実行中止。',
-	'codereview-email-subj' => '[$1] [r$2]: 新規コメント追加',
-	'codereview-email-body' => '利用者「$1」が r$3 にコメントをつけました。
+	'codereview-email-subj' => '[$1] [$2]: 新規コメント追加',
+	'codereview-email-body' => '利用者「$1」が $3 にコメントをつけました。
 
 完全なURL: $2
 
 コメント:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: 追補の変更',
-	'codereview-email-body2' => '利用者 $1 が r$2 に追補の変更を加えました。
+	'codereview-email-subj2' => '[$1] [$2]: 追補の変更',
+	'codereview-email-body2' => '利用者 $1 が $2 に追補の変更を加えました。
 
 フルURL: $3
 
 コミットの要約:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: 自動的なテストによってリグレッションが検出されました',
-	'codereview-email-body3' => '自動的なテストによって、r$1 における変更のためにリグレッションが起きたことが明らかになりました。
+	'codereview-email-subj3' => '[$1] [$2]: 自動的なテストによってリグレッションが検出されました',
+	'codereview-email-body3' => '自動的なテストによって、$1 における変更のためにリグレッションが起きたことが明らかになりました。
 
 Full URL: $2
 
@@ -4704,8 +4705,8 @@ $3',
 $messages['jv'] = array(
 	'code' => 'Pamriksan kodhe',
 	'code-comments' => 'Komentar',
-	'code-change-status' => "ngowahi '''status''' saka r$1",
-	'code-change-tags' => "ngowahi '''tag''' saka r$1",
+	'code-change-status' => "ngowahi '''status''' saka $1",
+	'code-change-tags' => "ngowahi '''tag''' saka $1",
 	'code-change-removed' => 'busak:',
 	'code-change-added' => 'ditambahaké:',
 	'code-prop-changes' => "Log pamasangan ''tag'' & status",
@@ -4766,8 +4767,8 @@ $messages['jv'] = array(
 	'code-rev-submit' => 'Simpen owah-owahan',
 	'code-rev-submit-next' => 'Simpen & durung-bèrès sabanjuré',
 	'codereview-reply-link' => 'wales/walesan',
-	'codereview-email-subj' => '[$1] [r$2]: Komentar anyar ditambahaké',
-	'codereview-email-body' => 'Panganggo "$1" awèh komentar ing r$3.
+	'codereview-email-subj' => '[$1] [$2]: Komentar anyar ditambahaké',
+	'codereview-email-body' => 'Panganggo "$1" awèh komentar ing $3.
 
 URL jangkep: $2
 
@@ -4926,7 +4927,7 @@ $messages['kn'] = array(
  */
 $messages['ko'] = array(
 	'code' => '코드 검토',
-	'code-rev-title' => 'r$1 - 코드 검토',
+	'code-rev-title' => '$1 - 코드 검토',
 	'code-comments' => '의견',
 	'code-references' => '추적 수정',
 	'code-change-status' => "제$1판의 '''상태'''를 변경",
@@ -5019,8 +5020,8 @@ $messages['ko'] = array(
 내용:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: 추적된 변경 사항',
-	'codereview-email-body2' => '사용자 "$1"이/가 r$2에 추적변경을 만들었습니다.
+	'codereview-email-subj2' => '[$1] [$2]: 추적된 변경 사항',
+	'codereview-email-body2' => '사용자 "$1"이/가 $2에 추적변경을 만들었습니다.
 
 전체 URL: $3
 
@@ -5143,15 +5144,15 @@ $messages['ksh'] = array(
 	'codereview-tests-failed2' => '{{PLURAL:$2|ein joot jejange Pröfung|$1 joot jejange Prövunge|kein joot jejange Prövung}}, un {{PLURAL:$4|ein scheif jejange Pröfung|$3 dohnävve jejange Prövunge|kein dohnävve jejange Prövung}}',
 	'codereview-tests-running' => 'De Pröfunge sin em Jang',
 	'codereview-tests-aborted' => 'De Pröfunge sen afjebroche woode',
-	'codereview-email-subj' => '[$1] [r$2]: Neue Kommentaa dobei jedonn',
-	'codereview-email-body' => 'Dä Metmaacher „$1“ hät ene Kommentaa för de r$3 loßjeloose.
+	'codereview-email-subj' => '[$1] [$2]: Neue Kommentaa dobei jedonn',
+	'codereview-email-body' => 'Dä Metmaacher „$1“ hät ene Kommentaa för de $3 loßjeloose.
 
 De janze URL es: $2
 
 Dä Kommentaa es:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: De Änderunge donoh',
+	'codereview-email-subj2' => '[$1] [$2]: De Änderunge donoh',
 	'codereview-email-body2' => '{{GENDER:$1|Dä|Et|Dä Metmaacher|Dat|De}} "$1" hät aan de Version $2 noch noch jet jedonn.
 
 Loor op de URL: $3
@@ -5159,7 +5160,7 @@ Loor op de URL: $3
 Singe Kommentaa dozo:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: En automattesche Prööfung hät ene Fähler (widder)jefonge.',
+	'codereview-email-subj3' => '[$1] [$2]: En automattesche Prööfung hät ene Fähler (widder)jefonge.',
 	'codereview-email-body3' => 'Et automattesche Prööfe hät ene Fähler opjedeck,
 dä met dä Version $1 (widder) opjetrodde es.
 
@@ -5194,7 +5195,7 @@ $3',
  */
 $messages['lb'] = array(
 	'code' => 'Code nokucken',
-	'code-rev-title' => 'r$1 - Versioun vum Code',
+	'code-rev-title' => '$1 - Versioun vum Code',
 	'code-comments' => 'Bemierkungen',
 	'code-references' => 'Versiounen déi duerno kommen',
 	'code-change-status' => 'huet de "Statut" vun $1 geännert',
@@ -5285,23 +5286,23 @@ $messages['lb'] = array(
 	'codereview-tests-failed2' => '$1 huet {{PLURAL:$2|Test|Tester}} gepakt, $3 huet {{PLURAL:$4|Test|Tester}} net gepakt:',
 	'codereview-tests-running' => 'Tester sinn am gaang ...',
 	'codereview-tests-aborted' => 'Tester goufen ofgebrach.',
-	'codereview-email-subj' => '[$1] [r$2]: Nei Bemierkung derbäigesat',
-	'codereview-email-body' => 'De Benotzer "$1" huet eng Bemierkung op r$3 hannerlooss.
+	'codereview-email-subj' => '[$1] [$2]: Nei Bemierkung derbäigesat',
+	'codereview-email-body' => 'De Benotzer "$1" huet eng Bemierkung op $3 hannerlooss.
 
 Ganz URL: $2
 
 Bemierkung:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Ännerungen doropshinn',
-	'codereview-email-body2' => 'De Benotzer "$1" huet Ännerungen zu der Versioun r$2 gemaach.
+	'codereview-email-subj2' => '[$1] [$2]: Ännerungen doropshinn',
+	'codereview-email-body2' => 'De Benotzer "$1" huet Ännerungen zu der Versioun $2 gemaach.
 
 Komplett URL: $3
 
 Resumé vun der Ännerung:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Den automateschen Test huet eng Regressioun fonnt',
+	'codereview-email-subj3' => '[$1] [$2]: Den automateschen Test huet eng Regressioun fonnt',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',
 	'repoadmin-edit-view' => 'Pad op ViewVC:',
@@ -5334,11 +5335,11 @@ $messages['lfn'] = array(
  */
 $messages['li'] = array(
 	'code' => 'Kodekontraol',
-	'code-rev-title' => 'r$1 - Koeajehèrzuuch',
+	'code-rev-title' => '$1 - Koeajehèrzuuch',
 	'code-comments' => 'Ópmèrkinger bie beoeardeiling',
 	'code-references' => 'Ópvolghèrzuuch',
-	'code-change-status' => "haet de '''staat''' veur r$1 angerdj",
-	'code-change-tags' => "haet de '''labels''' veur r$1 angerdj",
+	'code-change-status' => "haet de '''staat''' veur $1 angerdj",
+	'code-change-tags' => "haet de '''labels''' veur $1 angerdj",
 	'code-change-removed' => 'gewösj:',
 	'code-change-added' => 'drbie:',
 	'code-prop-changes' => 'Logbook staat èn labels',
@@ -5413,16 +5414,16 @@ $messages['li'] = array(
 	'code-release-endrev' => 'Ènjtóch:',
 	'codereview-subtitle' => 'Veur $1',
 	'codereview-reply-link' => 'antjwäörje',
-	'codereview-email-subj' => '[$1] [r$2]: Nuuj ópmèrking toegevoeg',
-	'codereview-email-body' => 'Gebroeker "$1" haet \'n ópmèrking toegevoeg aan r$3:
+	'codereview-email-subj' => '[$1] [$2]: Nuuj ópmèrking toegevoeg',
+	'codereview-email-body' => 'Gebroeker "$1" haet \'n ópmèrking toegevoeg aan $3:
 
 Vólledige URL: $2
 
 Ópmèrking:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: wieziginge mit correcties',
-	'codereview-email-body2' => 'Gebroeker "$1" haet wiezigingen mit correcties veur r$2 gemaak.
+	'codereview-email-subj2' => '[$1] [$2]: wieziginge mit correcties',
+	'codereview-email-body2' => 'Gebroeker "$1" haet wiezigingen mit correcties veur $2 gemaak.
 
 Volledige URL: $3
 
@@ -5471,11 +5472,11 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'code' => 'Проверка на кодот',
-	'code-rev-title' => 'r$1 - Проверка на кодот',
+	'code-rev-title' => '$1 - Проверка на кодот',
 	'code-comments' => 'Забелешки',
 	'code-references' => 'Понатамошни ревизии',
-	'code-change-status' => "го измени '''статусот''' на r$1",
-	'code-change-tags' => "ги измени '''ознаките''' за r$1",
+	'code-change-status' => "го измени '''статусот''' на $1",
+	'code-change-tags' => "ги измени '''ознаките''' за $1",
 	'code-change-removed' => 'избришано:',
 	'code-change-added' => 'додадено:',
 	'code-old-status' => 'Стар статус',
@@ -5569,24 +5570,24 @@ $messages['mk'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешна проба|успешни проби}}, $3 {{PLURAL:$4|неуспешна проба|неуспешни проби}}:',
 	'codereview-tests-running' => 'Испробувањето на примери е во тек...',
 	'codereview-tests-aborted' => 'Проверката е откажана.',
-	'codereview-email-subj' => '[$1] [r$2]: Додаден е нов коментар',
-	'codereview-email-body' => 'Корисникот „$1“ објави коментар за r$3.
+	'codereview-email-subj' => '[$1] [$2]: Додаден е нов коментар',
+	'codereview-email-body' => 'Корисникот „$1“ објави коментар за $3.
 
 Полна URL-адреса: $2
 
 Коментар:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Подоцнежни измени',
-	'codereview-email-body2' => 'Корисникот „$1“ направи подоцнежни промени на r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Подоцнежни измени',
+	'codereview-email-body2' => 'Корисникот „$1“ направи подоцнежни промени на $2.
 
 Полна URL-адреса: $3
 
 Опис:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Автоматското испробување откри регресија',
-	'codereview-email-body3' => 'Автоматското испробување откри регресија заради промените во r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Автоматското испробување откри регресија',
+	'codereview-email-body3' => 'Автоматското испробување откри регресија заради промените во $1.
 
 Полна URL-адреса: $2
 
@@ -5618,11 +5619,11 @@ $3',
  */
 $messages['ml'] = array(
 	'code' => 'കോഡ് സംശോധനം',
-	'code-rev-title' => 'r$1 - കോഡ് സംശോധനം',
+	'code-rev-title' => '$1 - കോഡ് സംശോധനം',
 	'code-comments' => 'അഭിപ്രായങ്ങൾ',
 	'code-references' => 'പിന്തുടർച്ചയായുണ്ടായിട്ടുള്ള നാൾപ്പതിപ്പുകൾ',
-	'code-change-status' => "r$1-ന്റെ '''സ്ഥിതി''' മാറ്റിയിരിക്കുന്നു",
-	'code-change-tags' => "r$1-ന്റെ '''റ്റാഗുകൾ''' മാറ്റിയിരിക്കുന്നു",
+	'code-change-status' => "$1-ന്റെ '''സ്ഥിതി''' മാറ്റിയിരിക്കുന്നു",
+	'code-change-tags' => "$1-ന്റെ '''റ്റാഗുകൾ''' മാറ്റിയിരിക്കുന്നു",
 	'code-change-removed' => 'നീക്കം ചെയ്തു:',
 	'code-change-added' => 'കൂട്ടിച്ചേർത്തു:',
 	'code-old-status' => 'പഴയ സ്ഥിതി',
@@ -5716,23 +5717,23 @@ $messages['ml'] = array(
 	'codereview-tests-failed2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു, {{PLURAL:$4|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $3 പരാജയപ്പെട്ടിരിക്കുന്നു:',
 	'codereview-tests-running' => 'പരീക്ഷണ ഓട്ടങ്ങൾ തുടരുന്നു...',
 	'codereview-tests-aborted' => 'പരീക്ഷണ ഓട്ടം റദ്ദാക്കിയിരിക്കുന്നു.',
-	'codereview-email-subj' => '[$1] [r$2]: പുതിയ അഭിപ്രായം ചേർത്തിരിക്കുന്നു',
-	'codereview-email-body' => 'r$3-യിൽ "$1" ഒരു അഭിപ്രായം ചേർത്തിരിക്കുന്നു.
+	'codereview-email-subj' => '[$1] [$2]: പുതിയ അഭിപ്രായം ചേർത്തിരിക്കുന്നു',
+	'codereview-email-body' => '$3-യിൽ "$1" ഒരു അഭിപ്രായം ചേർത്തിരിക്കുന്നു.
 
 പൂർണ്ണ യൂ.ആർ.എൽ.: $2
 
 അഭിപ്രായം:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: പിന്തുടർച്ചാ മാറ്റങ്ങൾ',
-	'codereview-email-body2' => 'ഉപയോക്താവ് "$1" r$2 എന്നതിനു പിന്തുടർച്ചാ മാറ്റങ്ങൾ നടത്തിയിരിക്കുന്നു.
+	'codereview-email-subj2' => '[$1] [$2]: പിന്തുടർച്ചാ മാറ്റങ്ങൾ',
+	'codereview-email-body2' => 'ഉപയോക്താവ് "$1" $2 എന്നതിനു പിന്തുടർച്ചാ മാറ്റങ്ങൾ നടത്തിയിരിക്കുന്നു.
 
 പൂർണ്ണ യു.ആർ.എൽ.: $3
 
 ചുരുക്കം അംഗീകരിക്കുക:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: സ്വയമുള്ള പരിശോധനകൾ ശോഷണം കണ്ടെത്തിയിരിക്കുന്നു',
+	'codereview-email-subj3' => '[$1] [$2]: സ്വയമുള്ള പരിശോധനകൾ ശോഷണം കണ്ടെത്തിയിരിക്കുന്നു',
 	'repoadmin' => 'റെപ്പോസിറ്ററി കാര്യനിർവഹണം',
 	'repoadmin-new-legend' => 'പുതിയ റെപ്പോസിറ്ററി സൃഷ്ടിക്കുക',
 	'repoadmin-new-label' => 'റെപ്പോസിറ്ററിയുടെ പേര്:',
@@ -5769,8 +5770,8 @@ $messages['mn'] = array(
 $messages['ms'] = array(
 	'code' => 'Semakan Kod',
 	'code-comments' => 'Ulasan',
-	'code-change-status' => "'''status''' r$1 ditukar",
-	'code-change-tags' => "'''label''' untuk r$1 ditukar",
+	'code-change-status' => "'''status''' $1 ditukar",
+	'code-change-tags' => "'''label''' untuk $1 ditukar",
 	'code-change-removed' => 'membuang:',
 	'code-change-added' => 'menambah:',
 	'code-prop-changes' => 'Log status & label',
@@ -5905,11 +5906,11 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'code' => 'Koodkuntrull',
-	'code-rev-title' => 'r$1 - Kood-Kuntrull',
+	'code-rev-title' => '$1 - Kood-Kuntrull',
 	'code-comments' => 'Kommentarn',
 	'code-references' => 'Nakamen Versionen',
-	'code-change-status' => "hett den '''Status''' för r$1 ännert",
-	'code-change-tags' => "hett de '''Tags''' för r$1 ännert",
+	'code-change-status' => "hett den '''Status''' för $1 ännert",
+	'code-change-tags' => "hett de '''Tags''' för $1 ännert",
 	'code-change-removed' => 'rutnahmen:',
 	'code-change-added' => 'toföögt:',
 	'code-prop-changes' => 'Status- un Tag-Logbook',
@@ -5984,16 +5985,16 @@ $messages['nds'] = array(
 	'code-release-endrev' => 'Enn-Version:',
 	'codereview-subtitle' => 'För $1',
 	'codereview-reply-link' => 'antern',
-	'codereview-email-subj' => '[$1] [r$2]: Ne’en Kommentar toföögt',
-	'codereview-email-body' => 'Bruker „$1“ hett en Kommentarn to r$3 maakt.
+	'codereview-email-subj' => '[$1] [$2]: Ne’en Kommentar toföögt',
+	'codereview-email-body' => 'Bruker „$1“ hett en Kommentarn to $3 maakt.
 
 Vulle URL: $2
 
 Kommentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Nakamen Ännern',
-	'codereview-email-body2' => 'Bruker „$1“ hett na r$2 noch wedder wat ännert.
+	'codereview-email-subj2' => '[$1] [$2]: Nakamen Ännern',
+	'codereview-email-body2' => 'Bruker „$1“ hett na $2 noch wedder wat ännert.
 
 Vull URL: $3
 
@@ -6026,11 +6027,11 @@ $4',
  */
 $messages['nl'] = array(
 	'code' => 'Codecontrole',
-	'code-rev-title' => 'r$1 - Programmacodecontrole',
+	'code-rev-title' => '$1 - Programmacodecontrole',
 	'code-comments' => 'Opmerkingen bij beoordeling',
 	'code-references' => 'Versies met correcties',
-	'code-change-status' => "heeft de '''status''' voor versie r$1 gewijzigd",
-	'code-change-tags' => "heeft de '''labels''' voor versie r$1 gewijzigd",
+	'code-change-status' => "heeft de '''status''' voor versie $1 gewijzigd",
+	'code-change-tags' => "heeft de '''labels''' voor versie $1 gewijzigd",
 	'code-change-removed' => 'verwijderd:',
 	'code-change-added' => 'toegevoegd:',
 	'code-old-status' => 'Oude status',
@@ -6125,24 +6126,24 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'codereview-tests-failed2' => '$1 geslaagde {{PLURAL:$2|test|tests}}, $3 gefaalde {{PLURAL:$4|test|tests}}:',
 	'codereview-tests-running' => 'De tests worden uitgevoerd...',
 	'codereview-tests-aborted' => 'Het testen is afgebroken.',
-	'codereview-email-subj' => '[$1] [r$2]: Nieuwe opmerking toegevoegd',
-	'codereview-email-body' => 'Gebruiker "$1" heeft een opmerking toegevoegd aan r$3:
+	'codereview-email-subj' => '[$1] [$2]: Nieuwe opmerking toegevoegd',
+	'codereview-email-body' => 'Gebruiker "$1" heeft een opmerking toegevoegd aan $3:
 
 Volledige URL: $2
 
 Opmerking:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: wijzigingen met correcties',
-	'codereview-email-body2' => 'Gebruiker "$1" heeft wijzigingen met correcties voor r$2 gemaakt.
+	'codereview-email-subj2' => '[$1] [$2]: wijzigingen met correcties',
+	'codereview-email-body2' => 'Gebruiker "$1" heeft wijzigingen met correcties voor $2 gemaakt.
 
 Volledige URL: $3
 
 Toelichting bij commit:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Regressie ontdekt tijdens automatisch testen',
-	'codereview-email-body3' => 'Tijdens het automatisch testen is gebleken dat er een regressie is ontstaan door de wijzigingen in r$1
+	'codereview-email-subj3' => '[$1] [$2]: Regressie ontdekt tijdens automatisch testen',
+	'codereview-email-body3' => 'Tijdens het automatisch testen is gebleken dat er een regressie is ontstaan door de wijzigingen in $1
 
 Volledige URL: $2
 
@@ -6175,7 +6176,7 @@ $3',
  */
 $messages['nn'] = array(
 	'code' => 'Kodesaumfaring',
-	'code-rev-title' => 'r$1 - kodesaumfaring',
+	'code-rev-title' => '$1 - kodesaumfaring',
 	'code-comments' => 'Kommentarar',
 	'code-references' => 'Oppfylgjande endringar',
 	'code-change-status' => "endra '''stoda''' for versjon $1",
@@ -6258,16 +6259,16 @@ $messages['nn'] = array(
 	'code-release-endrev' => 'Siste revisjon:',
 	'codereview-subtitle' => 'For $1',
 	'codereview-reply-link' => 'svar',
-	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt til',
-	'codereview-email-body' => 'Brukar $1 la inn ein kommentar på r$3
+	'codereview-email-subj' => '[$1] [$2]: Ny kommentar lagt til',
+	'codereview-email-body' => 'Brukar $1 la inn ein kommentar på $3
 
 Fullstendig adressa: $2
 
 Kommentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Påfylgjande endringar',
-	'codereview-email-body2' => 'Brukar "$1" gjorde påfylgjande endringar til r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Påfylgjande endringar',
+	'codereview-email-body2' => 'Brukar "$1" gjorde påfylgjande endringar til $2.
 
 Full URL: $3
 
@@ -6301,11 +6302,11 @@ $4',
  */
 $messages['no'] = array(
 	'code' => 'Kodegjennomgang',
-	'code-rev-title' => 'r$1 - Kodegjennomgang',
+	'code-rev-title' => '$1 - Kodegjennomgang',
 	'code-comments' => 'Kommentarer',
 	'code-references' => 'Oppfølgende versjoner',
-	'code-change-status' => "endret '''statusen''' for r$1",
-	'code-change-tags' => "endret '''taggene''' for r$1",
+	'code-change-status' => "endret '''statusen''' for $1",
+	'code-change-tags' => "endret '''taggene''' for $1",
 	'code-change-removed' => 'fjernet:',
 	'code-change-added' => 'la til:',
 	'code-old-status' => 'Gammel status',
@@ -6398,24 +6399,24 @@ $messages['no'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}, $3 {{PLURAL:$4|test|tester}} feilet',
 	'codereview-tests-running' => 'Testtilfeller kjører...',
 	'codereview-tests-aborted' => 'Testkjøring avbrutt.',
-	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt inn',
-	'codereview-email-body' => 'Bruker $1 la inn en kommentar på r$3
+	'codereview-email-subj' => '[$1] [$2]: Ny kommentar lagt inn',
+	'codereview-email-body' => 'Bruker $1 la inn en kommentar på $3
 
 Fullstendig URL: $2
 
 Kommentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Påfølgende endringer',
-	'codereview-email-body2' => 'Bruker «$1» gjorde oppfølgende endringer til r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Påfølgende endringer',
+	'codereview-email-body2' => 'Bruker «$1» gjorde oppfølgende endringer til $2.
 
 Full nettadresse: $3
 
 Sammendrag:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Automatisk testing oppdaget regresjon',
-	'codereview-email-body3' => 'Automatisk testing har oppdaget regresjon grunnet endringer i r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Automatisk testing oppdaget regresjon',
+	'codereview-email-body3' => 'Automatisk testing har oppdaget regresjon grunnet endringer i $1.
 
 Full nettadresse: $2
 
@@ -6447,11 +6448,11 @@ $3',
  */
 $messages['oc'] = array(
 	'code' => 'Verificacion del còde',
-	'code-rev-title' => 'r$1 - Revision del còde',
+	'code-rev-title' => '$1 - Revision del còde',
 	'code-comments' => 'Nòtas de relectura',
 	'code-references' => 'Referéncias cap a las revisions',
-	'code-change-status' => "a modificat l''''estat''' de r$1",
-	'code-change-tags' => "a modificat las '''balisas''' de r$1",
+	'code-change-status' => "a modificat l''''estat''' de $1",
+	'code-change-tags' => "a modificat las '''balisas''' de $1",
 	'code-change-removed' => 'levat :',
 	'code-change-added' => 'apondut :',
 	'code-old-status' => 'Estatut ancian',
@@ -6539,24 +6540,24 @@ $messages['oc'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|tèst capitat|tèsts capitats}}, $3 {{PLURAL:$4|tèst fracassat|tèsts fracassats}} :',
 	'codereview-tests-running' => 'Tèsts en cors...',
 	'codereview-tests-aborted' => 'Execucion del tèst interrompuda.',
-	'codereview-email-subj' => '[$1] [r$2] : Comentari novèl apondut',
-	'codereview-email-body' => "L'utilizaire « $1 » a mandat un comentari sus r$3.
+	'codereview-email-subj' => '[$1] [$2] : Comentari novèl apondut',
+	'codereview-email-body' => "L'utilizaire « $1 » a mandat un comentari sus $3.
 
 Adreça completa : $2
 
 Comentari :
 
 $4",
-	'codereview-email-subj2' => '[$1] [r$2] : Modificacion seguida',
-	'codereview-email-body2' => 'L’utilizaire « $1 » a fach de modificacions religadas e r$2.
+	'codereview-email-subj2' => '[$1] [$2] : Modificacion seguida',
+	'codereview-email-body2' => 'L’utilizaire « $1 » a fach de modificacions religadas e $2.
 
 URL completa : $3
 
 Resumit de las modificacions :
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2] : lo tèst automatic a detectat una regression',
-	'codereview-email-body3' => 'Lo tèst automatic a revelat una regression a causa dels cambiaments intervenguts dins la version r$1.
+	'codereview-email-subj3' => '[$1] [$2] : lo tèst automatic a detectat una regression',
+	'codereview-email-body3' => 'Lo tèst automatic a revelat una regression a causa dels cambiaments intervenguts dins la version $1.
 
 URL completa : $2
 
@@ -6623,11 +6624,11 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'code' => 'Podgląd kodu',
-	'code-rev-title' => 'r$1 – Podgląd kodu',
+	'code-rev-title' => '$1 – Podgląd kodu',
 	'code-comments' => 'Komentarze',
 	'code-references' => 'Następne wersje',
-	'code-change-status' => "zmieniono '''status''' r$1",
-	'code-change-tags' => "zmieniono '''znaczniki''' r$1",
+	'code-change-status' => "zmieniono '''status''' $1",
+	'code-change-tags' => "zmieniono '''znaczniki''' $1",
 	'code-change-removed' => 'usunięto:',
 	'code-change-added' => 'dodano:',
 	'code-old-status' => 'Poprzedni status',
@@ -6715,16 +6716,16 @@ $messages['pl'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|udany test|udane testy|udanych testów}}, $3 {{PLURAL:$4|nieudany test|nieudane testy|nieudanych testów}}',
 	'codereview-tests-running' => 'Testy są wykonywane...',
 	'codereview-tests-aborted' => 'Przerwano wykonywanie testu.',
-	'codereview-email-subj' => '[$1] [r$2]: Dodano nowy komentarz',
-	'codereview-email-body' => 'Użytkownik „$1” dodał komentarz w r$3.
+	'codereview-email-subj' => '[$1] [$2]: Dodano nowy komentarz',
+	'codereview-email-body' => 'Użytkownik „$1” dodał komentarz w $3.
 
 Pełny URL: $2
 
 Komentarz:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Kolejne zmiany',
-	'codereview-email-body2' => 'Użytkownik „$1” wykonał kolejne zmiany w r$2
+	'codereview-email-subj2' => '[$1] [$2]: Kolejne zmiany',
+	'codereview-email-body2' => 'Użytkownik „$1” wykonał kolejne zmiany w $2
 
 Pełny adres URL: $3
 
@@ -6765,11 +6766,11 @@ $3',
  */
 $messages['pms'] = array(
 	'code' => 'Revision dël còdes',
-	'code-rev-title' => 'r$1 - Revision dël còdes',
+	'code-rev-title' => '$1 - Revision dël còdes',
 	'code-comments' => 'Coment',
 	'code-references' => 'Revision suplementar',
-	'code-change-status' => "cangià lë '''stat'' ëd r$1",
-	'code-change-tags' => "a l'ha cangià le '''tichëtte''' ëd r$1",
+	'code-change-status' => "cangià lë '''stat'' ëd $1",
+	'code-change-tags' => "a l'ha cangià le '''tichëtte''' ëd $1",
 	'code-change-removed' => 'gavà:',
 	'code-change-added' => 'giontà',
 	'code-old-status' => 'Stat vej',
@@ -6859,24 +6860,24 @@ $messages['pms'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|preuva andàita|preuve andàite}} bin, $3 {{PLURAL:$4|preuva falìa|preuve falìe}}:',
 	'codereview-tests-running' => 'Ij cas ëd preuva a son an cors...',
 	'codereview-tests-aborted' => 'Esecussion dle preuve falìa.',
-	'codereview-email-subj' => '[$1] [r$2]: Pa gnun coment giontà',
-	'codereview-email-body' => 'L\'utent "$1" a l\'ha spedì un coment su r$3.
+	'codereview-email-subj' => '[$1] [$2]: Pa gnun coment giontà',
+	'codereview-email-body' => 'L\'utent "$1" a l\'ha spedì un coment su $3.
 
 Adrëssa dl\'aragnà completa: $2
 
 Coment:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Cangiament suplementar',
-	'codereview-email-body2' => 'L\'utent "$1" a l\'ha fàit dij cangiament suplementar a r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Cangiament suplementar',
+	'codereview-email-body2' => 'L\'utent "$1" a l\'ha fàit dij cangiament suplementar a $2.
 
 Adrëssa dl\'aragnà completa: $3
 
 Resumé dël coment:
 
 $4',
-	'codereview-email-subj3' => "[$1] [r$2]: La preuva automàtica a l'ha trovà na regression",
-	'codereview-email-body3' => "La preuva automàtica a l'ha arvelà na regression dovùa ai cangiament an r$1.
+	'codereview-email-subj3' => "[$1] [$2]: La preuva automàtica a l'ha trovà na regression",
+	'codereview-email-body3' => "La preuva automàtica a l'ha arvelà na regression dovùa ai cangiament an $1.
 
 Adrëssa dl'aragnà completa: $2
 
@@ -6942,11 +6943,11 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'code' => 'Revisão de Código',
-	'code-rev-title' => 'r$1 - Revisão de Código',
+	'code-rev-title' => '$1 - Revisão de Código',
 	'code-comments' => 'Comentários',
 	'code-references' => 'Revisões de seguimento',
-	'code-change-status' => "alterou o '''estado''' da revisão r$1",
-	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
+	'code-change-status' => "alterou o '''estado''' da revisão $1",
+	'code-change-tags' => "alterou as '''etiquetas''' da revisão $1",
 	'code-change-removed' => 'removeu:',
 	'code-change-added' => 'adicionou:',
 	'code-old-status' => 'Estado antigo',
@@ -7034,22 +7035,22 @@ $messages['pt'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso, $3 {{PLURAL:$4|teste falhado|testes falhados}}:',
 	'codereview-tests-running' => 'Casos de teste em execução...',
 	'codereview-tests-aborted' => 'Execução de testes abortada.',
-	'codereview-email-subj' => '[$1] [r$2]: Novo comentário adicionado',
-	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em r$3.
+	'codereview-email-subj' => '[$1] [$2]: Novo comentário adicionado',
+	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em $3.
 
 URL completa: $2
 
 Comentário:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Mudanças de seguimento',
-	'codereview-email-body2' => 'Utilizador "$1" fez alterações de seguimento à r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Mudanças de seguimento',
+	'codereview-email-body2' => 'Utilizador "$1" fez alterações de seguimento à $2.
 
 URL completa: $3
 
 Sumário da submissão: $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Testes automáticos detetaram regressão',
-	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Testes automáticos detetaram regressão',
+	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em $1.
 
 URL completa: $2
 
@@ -7082,11 +7083,11 @@ $3',
  */
 $messages['pt-br'] = array(
 	'code' => 'Revisão de Código',
-	'code-rev-title' => 'r$1 - Revisão de Código',
+	'code-rev-title' => '$1 - Revisão de Código',
 	'code-comments' => 'Comentários',
 	'code-references' => 'Revisões seguintes',
-	'code-change-status' => "alterou o '''estado''' da revisão r$1",
-	'code-change-tags' => "alterou as '''etiquetas''' da revisão r$1",
+	'code-change-status' => "alterou o '''estado''' da revisão $1",
+	'code-change-tags' => "alterou as '''etiquetas''' da revisão $1",
 	'code-change-removed' => 'removido:',
 	'code-change-added' => 'adicionado:',
 	'code-old-status' => 'Estado anterior',
@@ -7166,24 +7167,24 @@ $messages['pt-br'] = array(
 	'code-release-endrev' => 'Última rev:',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
-	'codereview-email-subj' => '[$1] [r$2]: Novo comentário adicionado',
-	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em r$3.
+	'codereview-email-subj' => '[$1] [$2]: Novo comentário adicionado',
+	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em $3.
 
 URL completa: $2
 
 Comentário:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Mudanças seguintes',
-	'codereview-email-body2' => 'Utilizador "$1" fez mudanças na revisão r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Mudanças seguintes',
+	'codereview-email-body2' => 'Utilizador "$1" fez mudanças na revisão $2.
 
 URL Completa: $3
 
 Sumário do envio:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Teste automático detectou regressão',
-	'codereview-email-body3' => 'Teste automático revelou uma regressão devido a mudanças na r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Teste automático detectou regressão',
+	'codereview-email-body3' => 'Teste automático revelou uma regressão devido a mudanças na $1.
 
 URL completa: $2
 
@@ -7217,11 +7218,11 @@ $3',
  */
 $messages['ro'] = array(
 	'code' => 'Revizualizare cod',
-	'code-rev-title' => 'r$1 - Revizualizare cod',
+	'code-rev-title' => '$1 - Revizualizare cod',
 	'code-comments' => 'Comentarii',
 	'code-references' => 'Revizii în continuare',
-	'code-change-status' => "schimbat '''statutul''' a r$1",
-	'code-change-tags' => "schimbat '''etichetele''' pentru r$1",
+	'code-change-status' => "schimbat '''statutul''' a $1",
+	'code-change-tags' => "schimbat '''etichetele''' pentru $1",
 	'code-change-removed' => 'şters:',
 	'code-change-added' => 'adăugat:',
 	'code-old-status' => 'Statut vechi',
@@ -7302,7 +7303,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'code' => 'Revisore de Codece',
-	'code-rev-title' => 'r$1 - Revisore de Codece',
+	'code-rev-title' => '$1 - Revisore de Codece',
 	'code-comments' => 'Commende',
 	'code-change-removed' => 'luete:',
 	'code-change-added' => 'aggiunde:',
@@ -7343,7 +7344,7 @@ $messages['roa-tara'] = array(
 	'code-release-badrange' => 'Indervalle troppe larie!',
 	'codereview-subtitle' => 'Pe $1',
 	'codereview-reply-link' => 'respunne',
-	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a r$3.
+	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a $3.
 
 \'A URL comblete je: $2
 
@@ -7364,11 +7365,11 @@ $4',
  */
 $messages['ru'] = array(
 	'code' => 'Проверка кода',
-	'code-rev-title' => 'r$1 — Проверка кода',
+	'code-rev-title' => '$1 — Проверка кода',
 	'code-comments' => 'Комментарии',
 	'code-references' => 'Последующие ревизии',
-	'code-change-status' => "изменил '''состояние''' r$1",
-	'code-change-tags' => "изменил '''метки''' для r$1",
+	'code-change-status' => "изменил '''состояние''' $1",
+	'code-change-tags' => "изменил '''метки''' для $1",
 	'code-change-removed' => 'удалено:',
 	'code-change-added' => 'добавлено:',
 	'code-old-status' => 'Старый статус',
@@ -7462,24 +7463,24 @@ $messages['ru'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешная проверка|успешные проверки|успешных проверок}}, $3 {{PLURAL:$4|неудавшаяся проверка|неудавшиеся проверки|неудавшихся проверок}}:',
 	'codereview-tests-running' => 'Выполнение контрольных примеров…',
 	'codereview-tests-aborted' => 'Выполнение проверки прервано.',
-	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
-	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции r$3.
+	'codereview-email-subj' => '[$1] [$2]: Добавлен новый комментарий',
+	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции $3.
 
 Полный URL: $2
 
 Комментарий:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Последующие изменения',
-	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Последующие изменения',
+	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в $2.
 
 Полный  URL: $3
 
 Описание изменения:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Автоматическая проверка обнаружила регрессию',
-	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Автоматическая проверка обнаружила регрессию',
+	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в $1.
 
 Полный URL: $2
 
@@ -7511,7 +7512,7 @@ $3',
  */
 $messages['sah'] = array(
 	'code' => 'Куоду бэрэбиэркэлээһин',
-	'code-rev-title' => 'r$1 - Куод туругурдуута',
+	'code-rev-title' => '$1 - Куод туругурдуута',
 	'code-comments' => 'Быһаарыылар',
 	'code-references' => 'Кэнники ревизиялар',
 	'code-change-status' => "бу барыл (ревизия) '''туругун''' $1 уларытта",
@@ -7597,16 +7598,16 @@ $messages['sah'] = array(
 	'code-release-endrev' => 'Бүтэһик барыл:',
 	'codereview-subtitle' => 'Манна $1',
 	'codereview-reply-link' => 'хоруй',
-	'codereview-email-subj' => '[$1] [r$2]: Саҥа ырытыы киирбит',
-	'codereview-email-body' => '"$1" кыттааччы бу барылга r$3 саҥа ырытыы суруйбут.
+	'codereview-email-subj' => '[$1] [$2]: Саҥа ырытыы киирбит',
+	'codereview-email-body' => '"$1" кыттааччы бу барылга $3 саҥа ырытыы суруйбут.
 
 Толору URL: $2
 
 Ырытыы:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Ол кэннинээҕи уларыйыылар',
-	'codereview-email-body2' => '"$1" кыттааччы манна уларытыыны киллэрбит r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Ол кэннинээҕи уларыйыылар',
+	'codereview-email-body2' => '"$1" кыттааччы манна уларытыыны киллэрбит $2.
 
 Толору URL-а: $3
 
@@ -7702,8 +7703,8 @@ $messages['scn'] = array(
 	'code-rev-submit' => 'Canci di assignazzioni',
 	'code-rev-submit-next' => 'Assignazzioni & pròssimi nun risurvuti',
 	'codereview-reply-link' => 'Arrispunni',
-	'codereview-email-subj' => '[$1] [r$2]: Cummentu novu jiunchiutu',
-	'codereview-email-body' => 'L\'utilizzaturi "$1" misi nu cummentu supra r$3.
+	'codereview-email-subj' => '[$1] [$2]: Cummentu novu jiunchiutu',
+	'codereview-email-body' => 'L\'utilizzaturi "$1" misi nu cummentu supra $3.
 
 URL cumpleta: $2
 
@@ -7742,11 +7743,11 @@ $messages['sh'] = array(
  */
 $messages['sk'] = array(
 	'code' => 'Kontrola kódu',
-	'code-rev-title' => 'r$1 - Kontrola kódu',
+	'code-rev-title' => '$1 - Kontrola kódu',
 	'code-comments' => 'Komentáre',
 	'code-references' => 'Nadväzujúce revízie',
-	'code-change-status' => "zmenil '''stav''' r$1",
-	'code-change-tags' => "zmenil '''značky''' r$1",
+	'code-change-status' => "zmenil '''stav''' $1",
+	'code-change-tags' => "zmenil '''značky''' $1",
 	'code-change-removed' => 'odstránené:',
 	'code-change-added' => 'pridané:',
 	'code-old-status' => 'Starý stav',
@@ -7834,24 +7835,24 @@ $messages['sk'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|uspel v 1 teste|uspel v $2 testoch}}, $3 {{PLURAL:$4|zlyhal v 1 teste|zlyhal v $4 testoch}}',
 	'codereview-tests-running' => 'Testy prebiehajú...',
 	'codereview-tests-aborted' => 'Testy prerušené.',
-	'codereview-email-subj' => '[$1] [r$2]: Pridaný nový komentár',
-	'codereview-email-body' => 'Používateľ „$1” poslal komentár k r$3.
+	'codereview-email-subj' => '[$1] [$2]: Pridaný nový komentár',
+	'codereview-email-body' => 'Používateľ „$1” poslal komentár k $3.
 
 Plný URL: $2
 
 Komentár:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Nadväzujúce zmeny',
-	'codereview-email-body2' => 'Používateľ „$1“ urobil v r$2 nadväzujúce zmeny.
+	'codereview-email-subj2' => '[$1] [$2]: Nadväzujúce zmeny',
+	'codereview-email-body2' => 'Používateľ „$1“ urobil v $2 nadväzujúce zmeny.
 
 Plný URL: $3
 
 Zhrnutie commitu:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Automatický test zistil regresiu',
-	'codereview-email-body3' => 'Automatický test odhalil regresiu kvôli zmenám vykonaným v r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Automatický test zistil regresiu',
+	'codereview-email-body3' => 'Automatický test odhalil regresiu kvôli zmenám vykonaným v $1.
 
 Plný URL: $2
 
@@ -7949,7 +7950,7 @@ $messages['sr-ec'] = array(
 	'code-release-endrev' => 'Последња ревизија:',
 	'codereview-subtitle' => 'За $1',
 	'codereview-reply-link' => 'одговори',
-	'codereview-email-subj' => '[$1] [r$2]: Нови коментар додат',
+	'codereview-email-subj' => '[$1] [$2]: Нови коментар додат',
 	'repoadmin-new-button' => 'Направи',
 	'repoadmin-edit-bug' => 'Путања до Багзиле:',
 	'repoadmin-edit-button' => 'ОК',
@@ -8031,7 +8032,7 @@ $messages['sr-el'] = array(
 	'code-release-endrev' => 'Poslednja revizija:',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'odgovori',
-	'codereview-email-subj' => '[$1] [r$2]: Novi komentar dodat',
+	'codereview-email-subj' => '[$1] [$2]: Novi komentar dodat',
 	'repoadmin-new-button' => 'Napravi',
 	'repoadmin-edit-bug' => 'Putanja do Bagzile:',
 	'repoadmin-edit-button' => 'OK',
@@ -8113,8 +8114,8 @@ $messages['stq'] = array(
 	'code-rev-submit' => 'Annerengen spiekerje',
 	'code-rev-submit-next' => 'Spiekerje un gung tou n naisten nit-wröigeden',
 	'codereview-reply-link' => 'oantwoudje',
-	'codereview-email-subj' => '[$1] [r$2]: Näien Kommentoar bietouföiged',
-	'codereview-email-body' => 'Benutser <b>$1</b> häd r$3 <a href="$2">kommentierd</a>:
+	'codereview-email-subj' => '[$1] [$2]: Näien Kommentoar bietouföiged',
+	'codereview-email-body' => 'Benutser <b>$1</b> häd $3 <a href="$2">kommentierd</a>:
 
 $4',
 	'repoadmin' => 'Repositoriums-Administration',
@@ -8147,7 +8148,7 @@ $4',
  */
 $messages['sv'] = array(
 	'code' => 'Kodgranskning',
-	'code-rev-title' => 'r$1 - kodgranskning',
+	'code-rev-title' => '$1 - kodgranskning',
 	'code-comments' => 'Kommentarer',
 	'code-references' => 'Uppföljande versioner',
 	'code-change-status' => "ändrade '''statusen''' för version $1",
@@ -8240,24 +8241,24 @@ $messages['sv'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|lyckat test|lyckade tester}}, $3 {{PLURAL:$4|test|tester}} med fel:',
 	'codereview-tests-running' => 'Testfall körs...',
 	'codereview-tests-aborted' => 'Testkörning avbruten',
-	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar tillagd',
-	'codereview-email-body' => 'Användaren "$1" postade en kommenter på r$3
+	'codereview-email-subj' => '[$1] [$2]: Ny kommentar tillagd',
+	'codereview-email-body' => 'Användaren "$1" postade en kommenter på $3
 
 Fullständig URL: $2
 
 Kommentar:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Påföljande ändringar',
-	'codereview-email-body2' => 'Användare "$1" gjorde påföljande ändringar till r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Påföljande ändringar',
+	'codereview-email-body2' => 'Användare "$1" gjorde påföljande ändringar till $2.
 
 Full URL:  $3
 
 Sammanfattning:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Regression upptäcktes vid automatisk testning',
-	'codereview-email-body3' => 'Vid automatisk testning upptäcktes regression på grund av förändringar i r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Regression upptäcktes vid automatisk testning',
+	'codereview-email-body3' => 'Vid automatisk testning upptäcktes regression på grund av förändringar i $1.
 
 Fullständig webbadress: $2
 
@@ -8432,8 +8433,8 @@ $messages['tg-cyrl'] = array(
 	'code-rev-submit' => 'Захираи тағйирот',
 	'code-rev-submit-next' => 'Захира шавад ва баъдии ҳалнашуда',
 	'codereview-reply-link' => 'посух',
-	'codereview-email-subj' => '[$1] [r$2]: Тавзеҳи нав изофа шуд',
-	'codereview-email-body' => 'Корбар "$1" як тавзеҳе дар r$3 фиристод.
+	'codereview-email-subj' => '[$1] [$2]: Тавзеҳи нав изофа шуд',
+	'codereview-email-body' => 'Корбар "$1" як тавзеҳе дар $3 фиристод.
 
 Нишонаи пурра: $2
 
@@ -8523,8 +8524,8 @@ $messages['tg-latn'] = array(
 	'code-rev-submit' => 'Zaxirai taƣjirot',
 	'code-rev-submit-next' => "Zaxira şavad va ba'diji halnaşuda",
 	'codereview-reply-link' => 'posux',
-	'codereview-email-subj' => '[$1] [r$2]: Tavzehi nav izofa şud',
-	'codereview-email-body' => 'Korbar "$1" jak tavzehe dar r$3 firistod.
+	'codereview-email-subj' => '[$1] [$2]: Tavzehi nav izofa şud',
+	'codereview-email-body' => 'Korbar "$1" jak tavzehe dar $3 firistod.
 
 Nişonai purra: $2
 
@@ -8571,11 +8572,11 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'code' => 'Kod Gözden Geçirmesi',
-	'code-rev-title' => 'r$1 - Kod Gözden Geçirmesi',
+	'code-rev-title' => '$1 - Kod Gözden Geçirmesi',
 	'code-comments' => 'Teswirler',
 	'code-references' => 'Wersiýalary yzarla',
-	'code-change-status' => "r$1-ň '''statusyny''' üýtgetdi",
-	'code-change-tags' => "r$1 üçin '''tegleri''' üýtgetdi",
+	'code-change-status' => "$1-ň '''statusyny''' üýtgetdi",
+	'code-change-tags' => "$1 üçin '''tegleri''' üýtgetdi",
 	'code-change-removed' => 'aýyryldy:',
 	'code-change-added' => 'goşuldy:',
 	'code-old-status' => 'Köne status',
@@ -8662,24 +8663,24 @@ $messages['tk'] = array(
 	'codereview-tests-failed2' => '$1 şowly {{PLURAL:$2|synag|synag}}, $3 şowsuz {{PLURAL:$4|synag|synag}}:',
 	'codereview-tests-running' => 'Synag ýagdaýlary işleýär...',
 	'codereview-tests-aborted' => 'Synagyň işlemegi togtadyldy.',
-	'codereview-email-subj' => '[$1] [r$2]: Täze teswir goşuldy',
-	'codereview-email-body' => 'r$3-de ulanyjy "$1" bir teswir iberdi.
+	'codereview-email-subj' => '[$1] [$2]: Täze teswir goşuldy',
+	'codereview-email-body' => '$3-de ulanyjy "$1" bir teswir iberdi.
 
 Doly URL: $2
 
 Teswir:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Yzarlama üýtgeşmeleri',
-	'codereview-email-body2' => 'Ulanyjy "$1" r$2 üçin yzarlama üýtgeşmeleri etdi.
+	'codereview-email-subj2' => '[$1] [$2]: Yzarlama üýtgeşmeleri',
+	'codereview-email-body2' => 'Ulanyjy "$1" $2 üçin yzarlama üýtgeşmeleri etdi.
 
 Doly URL: $3
 
 Tabşyrma düşündirişi:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Awtomatik synag regressiýany ýüze çykardy',
-	'codereview-email-body3' => 'r$1 üçin üýtgeşmeler zerarly awtomatik synag bir regressiýany ýüze çykardy. 
+	'codereview-email-subj3' => '[$1] [$2]: Awtomatik synag regressiýany ýüze çykardy',
+	'codereview-email-body3' => '$1 üçin üýtgeşmeler zerarly awtomatik synag bir regressiýany ýüze çykardy. 
 
 Doly URL: $2
 
@@ -8711,11 +8712,11 @@ $3',
  */
 $messages['tl'] = array(
 	'code' => 'Muling Pagsusuri ng Kodigo',
-	'code-rev-title' => 'r$1 - Pagsusuri ng Kodigo',
+	'code-rev-title' => '$1 - Pagsusuri ng Kodigo',
 	'code-comments' => 'Mga puna',
 	'code-references' => 'Tugaygayan ang mga pagbabago',
-	'code-change-status' => "binago ang '''kalagayan''' ng r$1",
-	'code-change-tags' => "binago ang '''mga tatak''' para sa r$1",
+	'code-change-status' => "binago ang '''kalagayan''' ng $1",
+	'code-change-tags' => "binago ang '''mga tatak''' para sa $1",
 	'code-change-removed' => 'tinanggal:',
 	'code-change-added' => 'idinagdag:',
 	'code-prop-changes' => 'Talaan ng kalagayan at pagtatatak',
@@ -8790,16 +8791,16 @@ $messages['tl'] = array(
 	'code-release-endrev' => 'Huling pagbabago:',
 	'codereview-subtitle' => 'Para kay $1',
 	'codereview-reply-link' => 'tugon',
-	'codereview-email-subj' => '[$1] [r$2]: Nagdagdag ng bagong puna/kumento',
-	'codereview-email-body' => 'Nagtala si tagagamit "$1" ng bagong kumento/puna sa r$3.
+	'codereview-email-subj' => '[$1] [$2]: Nagdagdag ng bagong puna/kumento',
+	'codereview-email-body' => 'Nagtala si tagagamit "$1" ng bagong kumento/puna sa $3.
 
 Buong URL: $2
 
 Kumento:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Pangtugaygay na mga pagbabago',
-	'codereview-email-body2' => 'Gumawa ng pangtugaygay na mga pagbabago si "$1" sa r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Pangtugaygay na mga pagbabago',
+	'codereview-email-body2' => 'Gumawa ng pangtugaygay na mga pagbabago si "$1" sa $2.
 
 Buong URL: $3
 
@@ -8831,11 +8832,11 @@ $4',
  */
 $messages['tr'] = array(
 	'code' => 'Kod Gözden Geçirmesi',
-	'code-rev-title' => 'r$1 - Kod İnceleme',
+	'code-rev-title' => '$1 - Kod İnceleme',
 	'code-comments' => 'Yorumlar',
 	'code-references' => 'Revizyonları takip et',
-	'code-change-status' => "r$1'in '''durumunu''' değiştirdi",
-	'code-change-tags' => "r$1 için '''etiketleri''' değiştirdi",
+	'code-change-status' => "$1'in '''durumunu''' değiştirdi",
+	'code-change-tags' => "$1 için '''etiketleri''' değiştirdi",
 	'code-change-removed' => 'kaldırıldı:',
 	'code-change-added' => 'eklendi:',
 	'code-old-status' => 'Eski durum',
@@ -8928,24 +8929,24 @@ $messages['tr'] = array(
 	'codereview-tests-failed2' => '$1 başarılı {{PLURAL:$2|test|test}}, $3 başarısız {{PLURAL:$4|test|test}}:',
 	'codereview-tests-running' => 'Test durumları çalışıyor...',
 	'codereview-tests-aborted' => 'Test çalıştırması durduruldu.',
-	'codereview-email-subj' => '[$1] [r$2]: Yeni yorum eklendi',
-	'codereview-email-body' => 'r$3\'de "$1" kullanıcısı bir yorum yolladı.
+	'codereview-email-subj' => '[$1] [$2]: Yeni yorum eklendi',
+	'codereview-email-body' => '$3\'de "$1" kullanıcısı bir yorum yolladı.
 
 Tam adres: $2
 
 Yorum:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Takip değişiklikleri',
-	'codereview-email-body2' => '"$1" kullanıcısı r$2 için takip değişiklikleri yaptı.
+	'codereview-email-subj2' => '[$1] [$2]: Takip değişiklikleri',
+	'codereview-email-body2' => '"$1" kullanıcısı $2 için takip değişiklikleri yaptı.
 
 Tam URL: $3
 
 Teslim özeti:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Otomatik test gerileme saptadı',
-	'codereview-email-body3' => 'Otomatik test r$1 revizyonundaki değişikliklerden dolayı bir gerileme ortaya çıkardı.
+	'codereview-email-subj3' => '[$1] [$2]: Otomatik test gerileme saptadı',
+	'codereview-email-body3' => 'Otomatik test $1 revizyonundaki değişikliklerden dolayı bir gerileme ortaya çıkardı.
 
 Tam URL: $2
 
@@ -8997,11 +8998,11 @@ $messages['ug-latn'] = array(
  */
 $messages['uk'] = array(
 	'code' => 'Перевірка коду',
-	'code-rev-title' => 'r$1 – Перегляд версії',
+	'code-rev-title' => '$1 – Перегляд версії',
 	'code-comments' => 'Коментарі',
 	'code-references' => 'Наступні версії',
-	'code-change-status' => "змінив '''статус''' r$1",
-	'code-change-tags' => "змінив '''мітки''' для r$1",
+	'code-change-status' => "змінив '''статус''' $1",
+	'code-change-tags' => "змінив '''мітки''' для $1",
 	'code-change-removed' => 'вилучено:',
 	'code-change-added' => 'додано:',
 	'code-old-status' => 'Попередній статус',
@@ -9090,24 +9091,24 @@ $messages['uk'] = array(
 	'codereview-tests-failed2' => 'Успішно завершено $1 {{PLURAL:$2|тест|тести|тестів}}, $3 {{PLURAL:$4|тест провалився|тести провалились|тестів провалилось}}:',
 	'codereview-tests-running' => 'Тестові запити виконуються ...',
 	'codereview-tests-aborted' => 'Виконання тесту перервано.',
-	'codereview-email-subj' => '[$1] [r$2]: Доданий новий коментар',
-	'codereview-email-body' => 'Користувач «$1» розмістив коментар до редакції r$3.
+	'codereview-email-subj' => '[$1] [$2]: Доданий новий коментар',
+	'codereview-email-body' => 'Користувач «$1» розмістив коментар до редакції $3.
 
 Повний URL: $2
 
 Коментар:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Подальші зміни',
-	'codereview-email-body2' => 'Користувач "$1" вніс подальші зміни до r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Подальші зміни',
+	'codereview-email-body2' => 'Користувач "$1" вніс подальші зміни до $2.
 
 Повне URL: $3
 
 Опис змін:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Автоматичне тестування виявило регресію',
-	'codereview-email-body3' => "Автоматичне тестування виявило регресію у зв'язку зі змінами в r$1.
+	'codereview-email-subj3' => '[$1] [$2]: Автоматичне тестування виявило регресію',
+	'codereview-email-body3' => "Автоматичне тестування виявило регресію у зв'язку зі змінами в $1.
 
 Повне URL: $2
 
@@ -9139,11 +9140,11 @@ $3",
  */
 $messages['vec'] = array(
 	'code' => 'Revision del codice',
-	'code-rev-title' => 'r$1 - Revision del còdese',
+	'code-rev-title' => '$1 - Revision del còdese',
 	'code-comments' => 'Comenti',
 	'code-references' => 'Revision seguenti',
-	'code-change-status' => "ga canbià el '''stato''' de r$1",
-	'code-change-tags' => "ga canbià i '''tag''' de r$1",
+	'code-change-status' => "ga canbià el '''stato''' de $1",
+	'code-change-tags' => "ga canbià i '''tag''' de $1",
 	'code-change-removed' => 'cavà:',
 	'code-change-added' => 'zontà:',
 	'code-old-status' => 'Vecio stato',
@@ -9232,24 +9233,24 @@ $messages['vec'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|test}} andà ben, $3 {{PLURAL:$4|test|test}} mia riussìi:',
 	'codereview-tests-running' => "I casi de test i xe drio 'ndar...",
 	'codereview-tests-aborted' => 'Esecussion del test interota.',
-	'codereview-email-subj' => '[$1] [r$2]: Zontà un comento nóvo',
-	'codereview-email-body' => 'L\'utente "$1" el gà scrito un comento su r$3.
+	'codereview-email-subj' => '[$1] [$2]: Zontà un comento nóvo',
+	'codereview-email-body' => 'L\'utente "$1" el gà scrito un comento su $3.
 
 URL par intiero: $2
 
 Comento:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Canbiamenti seguenti',
-	'codereview-email-body2' => 'L\'utente "$1" el gà fato dele modifiche seguenti a r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Canbiamenti seguenti',
+	'codereview-email-body2' => 'L\'utente "$1" el gà fato dele modifiche seguenti a $2.
 
 URL par intiero: $3
 
 Ojeto de la modifica:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: el test automatico el gà catà na regression',
-	'codereview-email-body3' => 'El test automatico el gà catà na regression dovùa ai canbiamenti de la version r$1.
+	'codereview-email-subj3' => '[$1] [$2]: el test automatico el gà catà na regression',
+	'codereview-email-body3' => 'El test automatico el gà catà na regression dovùa ai canbiamenti de la version $1.
 
 URL conpleto: $2
 
@@ -9321,11 +9322,11 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'code' => 'Duyệt mã',
-	'code-rev-title' => 'r$1 - Duyệt Mã',
+	'code-rev-title' => '$1 - Duyệt Mã',
 	'code-comments' => 'Ghi chú',
 	'code-references' => 'Các phiên bản ngay sau',
-	'code-change-status' => "đã đổi '''trạng thái''' của phiên bản r$1",
-	'code-change-tags' => "đã đổi các '''thẻ''' của phiên bản r$1",
+	'code-change-status' => "đã đổi '''trạng thái''' của phiên bản $1",
+	'code-change-tags' => "đã đổi các '''thẻ''' của phiên bản $1",
 	'code-change-removed' => 'đã dời:',
 	'code-change-added' => 'đã thêm:',
 	'code-old-status' => 'Trạng thái cũ',
@@ -9408,16 +9409,16 @@ $messages['vi'] = array(
 	'code-release-badrange' => 'Dãy lớn quá!',
 	'codereview-subtitle' => 'Dành cho $1',
 	'codereview-reply-link' => 'trả lời',
-	'codereview-email-subj' => '[$1] [r$2]: Tin nhắn mới',
-	'codereview-email-body' => 'Người dùng “$1” đã bình luận về r$3.
+	'codereview-email-subj' => '[$1] [$2]: Tin nhắn mới',
+	'codereview-email-body' => 'Người dùng “$1” đã bình luận về $3.
 
 URL đầy đủ: $2
 
 Tin nhắn:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]: Các thay đổi tiếp theo',
-	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo lên r$2.
+	'codereview-email-subj2' => '[$1] [$2]: Các thay đổi tiếp theo',
+	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo lên $2.
 
 URL đầy đủ: $3
 
@@ -9450,7 +9451,7 @@ $4',
  */
 $messages['vo'] = array(
 	'code-comments' => 'Küpets',
-	'code-change-status' => "evotükon '''stadi''' ela r$1",
+	'code-change-status' => "evotükon '''stadi''' ela $1",
 	'code-change-removed' => 'pemoükon:',
 	'code-change-added' => 'peläükon:',
 	'code-no-repo' => 'No dabinon kipedöp labü paramets pegivülöl!',
@@ -9497,7 +9498,7 @@ $messages['vo'] = array(
 	'code-rev-submit' => 'Dakipön votükamis',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'gesagön',
-	'codereview-email-subj' => '[$1] [r$2]: Küpet nulik peläükon',
+	'codereview-email-subj' => '[$1] [$2]: Küpet nulik peläükon',
 	'repoadmin' => 'Guvam Kipedöpa',
 	'repoadmin-new-legend' => 'Jafön kipedöpi nulik',
 	'repoadmin-new-label' => 'Nem kipedöpa:',
@@ -9534,11 +9535,11 @@ $messages['yi'] = array(
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'code' => '代碼複查',
-	'code-rev-title' => 'r$1 - 代碼複查',
+	'code-rev-title' => '$1 - 代碼複查',
 	'code-comments' => '註解',
 	'code-references' => '後繼修訂',
-	'code-change-status' => "改咗 r$1 嘅'''狀態'''",
-	'code-change-tags' => "改咗 r$1 嘅'''標籤'''",
+	'code-change-status' => "改咗 $1 嘅'''狀態'''",
+	'code-change-tags' => "改咗 $1 嘅'''標籤'''",
 	'code-change-removed' => '拎走咗：',
 	'code-change-added' => '加咗：',
 	'code-old-status' => '舊狀態',
@@ -9617,24 +9618,24 @@ $messages['yue'] = array(
 	'code-release-endrev' => '最後修訂：',
 	'codereview-subtitle' => '$1嘅代碼',
 	'codereview-reply-link' => '回覆',
-	'codereview-email-subj' => '[$1] [r$2]：加咗新註解',
-	'codereview-email-body' => '用戶 "$1" 響 r$3 貼咗一個註解。
+	'codereview-email-subj' => '[$1] [$2]：加咗新註解',
+	'codereview-email-body' => '用戶 "$1" 響 $3 貼咗一個註解。
 
 完整URL：$2
 
 註解：
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]：後繼更改',
-	'codereview-email-body2' => '用戶 "$1" 響 r$2 整咗後繼更改。
+	'codereview-email-subj2' => '[$1] [$2]：後繼更改',
+	'codereview-email-body2' => '用戶 "$1" 響 $2 整咗後繼更改。
 
 完整URL：$3
 
 遞交摘要：
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]：自動測試偵測到表達式問題',
-	'codereview-email-body3' => '自動測試發現到響 r$1 嘅改動之中出咗表達式問題。
+	'codereview-email-subj3' => '[$1] [$2]：自動測試偵測到表達式問題',
+	'codereview-email-body3' => '自動測試發現到響 $1 嘅改動之中出咗表達式問題。
 
 完整URL：$2
 
@@ -9670,11 +9671,11 @@ $3',
  */
 $messages['zh-hans'] = array(
 	'code' => '查看代码',
-	'code-rev-title' => 'r$1 - 代码复核',
+	'code-rev-title' => '$1 - 代码复核',
 	'code-comments' => '评论',
 	'code-references' => '后续修订',
-	'code-change-status' => "改变了r$1的'''状态'''",
-	'code-change-tags' => "改变了r$1的'''标签'''",
+	'code-change-status' => "改变了$1的'''状态'''",
+	'code-change-tags' => "改变了$1的'''标签'''",
 	'code-change-removed' => '移除：',
 	'code-change-added' => '增加：',
 	'code-old-status' => '旧状态',
@@ -9748,24 +9749,24 @@ $messages['zh-hans'] = array(
 	'code-release-startrev' => '开始修订：',
 	'code-release-endrev' => '结束修订：',
 	'codereview-reply-link' => '回复',
-	'codereview-email-subj' => '[$1] [r$2]: 新的评论已添加',
-	'codereview-email-body' => '用户 "$1" 在 r$3 上添加了一条评论。
+	'codereview-email-subj' => '[$1] [$2]: 新的评论已添加',
+	'codereview-email-body' => '用户 "$1" 在 $3 上添加了一条评论。
 
 完成URL地址: $2
 
 评论:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]：后续更改',
-	'codereview-email-body2' => '用户“$1”对r$2作出了后续更改。
+	'codereview-email-subj2' => '[$1] [$2]：后续更改',
+	'codereview-email-body2' => '用户“$1”对$2作出了后续更改。
 
 URL链接：$3
 
 提交摘要：
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]：自动测试发现已知错误',
-	'codereview-email-body3' => '自动测试发现r$1导致了已知的错误。
+	'codereview-email-subj3' => '[$1] [$2]：自动测试发现已知错误',
+	'codereview-email-body3' => '自动测试发现$1导致了已知的错误。
 
 URL链接：$2
 
@@ -9799,11 +9800,11 @@ $3',
  */
 $messages['zh-hant'] = array(
 	'code' => '預覽程式碼',
-	'code-rev-title' => 'r$1 - 代碼複核',
+	'code-rev-title' => '$1 - 代碼複核',
 	'code-comments' => '附註',
 	'code-references' => '後續修訂',
-	'code-change-status' => "改變了r$1的'''狀態'''",
-	'code-change-tags' => "改變了r$1的'''標籤'''",
+	'code-change-status' => "改變了$1的'''狀態'''",
+	'code-change-tags' => "改變了$1的'''標籤'''",
 	'code-change-removed' => '移除：',
 	'code-change-added' => '增加：',
 	'code-old-status' => '舊狀態',
@@ -9877,24 +9878,24 @@ $messages['zh-hant'] = array(
 	'code-release-startrev' => '開始修訂：',
 	'code-release-endrev' => '結束修訂：',
 	'codereview-reply-link' => '回復',
-	'codereview-email-subj' => '[$1] [r$2]: 新的評論已添加',
-	'codereview-email-body' => '用戶 "$1" 在 r$3 上添加了一條評論。
+	'codereview-email-subj' => '[$1] [$2]: 新的評論已添加',
+	'codereview-email-body' => '用戶 "$1" 在 $3 上添加了一條評論。
 
 完成URL地址: $2
 
 評論:
 
 $4',
-	'codereview-email-subj2' => '[$1] [r$2]：後續更改',
-	'codereview-email-body2' => '用戶“$1”對r$2作出了後續更改。
+	'codereview-email-subj2' => '[$1] [$2]：後續更改',
+	'codereview-email-body2' => '用戶“$1”對$2作出了後續更改。
 
 URL鏈接：$3
 
 提交摘要：
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]：自動測試發現已知錯誤',
-	'codereview-email-body3' => '自動測試發現r$1導致了已知的錯誤。
+	'codereview-email-subj3' => '[$1] [$2]：自動測試發現已知錯誤',
+	'codereview-email-body3' => '自動測試發現$1導致了已知的錯誤。
 
 URL鏈接：$2
 

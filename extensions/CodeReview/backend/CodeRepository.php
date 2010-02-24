@@ -171,7 +171,38 @@ class CodeRepository {
 			throw new MWException( 'Failed to load expected revision data' );
 		return CodeRevision::newFromRow( $this, $row );
 	}
-	
+
+	/**
+	 * Returns the supplied revision ID as a string ready for output, including the
+	 * appropriate (localisable) prefix (e.g. "r123" instead of 123).
+	 * May be called statically.
+	 */
+	public function getRevIdString( $id ) {
+		return wfMsg( 'code-rev-id', $id );
+	}
+
+	/**
+	 * Like getRevIdString(), but if more than one repository is defined 
+	 * on the wiki then it includes the repo name as a prefix to the revision ID
+	 * (separated with a period).
+	 * This ensures you get a unique reference, as the revision ID alone can be 
+	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
+	 * defined then this returns the same as getRevIdString() as there 
+	 * is no ambiguity.
+	 * May NOT be called statically.
+	 */
+	public function getRevIdStringUnique( $id ) {
+		$id = wfMsg( 'code-rev-id', $id );
+
+	// If there is more than one repo, use the repo name as well.
+		$repos = CodeRepository::getRepoList();
+		if ( count( $repos ) > 1 ) {
+			$id = $this->getName() . "." . $id;
+		}
+
+		return $id;
+	}
+
 	/**
 	 * Load test suite information
 	 */

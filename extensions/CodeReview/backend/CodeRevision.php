@@ -64,6 +64,33 @@ class CodeRevision {
 		return intval( $this->mId );
 	}
 
+	/**
+	 * Like getId(), but returns the result as a string, including prefix,
+	 * i.e. "r123" instead of 123.
+	 * May be called statically if you pass the $id in.
+	 */
+	public function getIdString( $id = NULL ) {
+		if ( $id === NULL ) {
+			$id = $this->getId();
+		}
+		return $this->mRepo->getRevIdString( $id );
+	}
+
+	/**
+	 * Like getIdString(), but if more than one repository is defined 
+	 * on the wiki then it includes the repo name as a prefix to the revision ID
+	 * (separated with a period).
+	 * This ensures you get a unique reference, as the revision ID alone can be 
+	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
+	 * defined then this returns the same as getIdString() as there is no ambiguity.
+	 */
+	public function getIdStringUnique( $id = NULL ) {
+		if ( $id === NULL ) {
+			$id = $this->getId();
+		}
+		return $this->mRepo->getRevIdStringUnique( $id );
+	}
+
 	public function getRepoId() {
 		return intval( $this->mRepoId );
 	}
@@ -278,8 +305,8 @@ class CodeRevision {
 				// Send message in receiver's language
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				$user->sendMail(
-					wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $row->cr_id ),
-					wfMsgExt( 'codereview-email-body2', $lang, $committer, $row->cr_id, $url, $this->mMessage )
+					wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
+					wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage )
 				);
 			}
 		}
@@ -351,8 +378,8 @@ class CodeRevision {
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				if ( $user->canReceiveEmail() ) {
 					$user->sendMail(
-						wfMsgExt( 'codereview-email-subj', $lang, $this->mRepo->getName(), $this->mId ),
-						wfMsgExt( 'codereview-email-body', $lang, $wgUser->getName(), $url, $this->mId, $text )
+						wfMsgExt( 'codereview-email-subj', $lang, $this->mRepo->getName(), $this->getIdString() ),
+						wfMsgExt( 'codereview-email-body', $lang, $wgUser->getName(), $url, $this->getIdStringUnique(), $text )
 					);
 				}
 			}

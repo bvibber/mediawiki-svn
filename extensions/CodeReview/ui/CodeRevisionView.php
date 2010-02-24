@@ -50,7 +50,7 @@ class CodeRevisionView extends CodeView {
 			return;
 		}
 
-		$wgOut->setPageTitle( wfMsgHtml('code-rev-title',$this->mRev->getId()) );
+		$wgOut->setPageTitle( wfMsgHtml( 'code-rev-title', $this->mRev->getIdStringUnique() ) );
 
 		$repoLink = $this->mSkin->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
@@ -153,11 +153,11 @@ class CodeRevisionView extends CodeView {
 
 		if ( $prev ) {
 			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
-			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, "r$prev",
+			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, $this->mRev->getIdString( $prev ),
 				array(), array('path' => $this->mPath) );
 		}
 
-		$revText = "<b>r$rev</b>";
+		$revText = "<b>" . $this->mRev->getIdString( $rev ) . "</b>";
 		$viewvc = $this->mRepo->getViewVcBase();
 		if ( $viewvc ) {
 			$url = htmlspecialchars( "$viewvc/?view=rev&revision=$rev" );
@@ -168,7 +168,7 @@ class CodeRevisionView extends CodeView {
 
 		if ( $next ) {
 			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
-			$links[] = $this->mSkin->link( $nextTarget, "r$next",
+			$links[] = $this->mSkin->link( $nextTarget, $this->mRev->getIdString( $next ),
 				array(), array('path' => $this->mPath) ) . '&nbsp;&gt;';
 		}
 
@@ -499,7 +499,7 @@ class CodeRevisionView extends CodeView {
 
 	protected function formatChangeInline( $change ) {
 		global $wgLang;
-		$revId = $change->rev->getId();
+		$revId = $change->rev->getIdString();
 		$line = $wgLang->timeanddate( $change->timestamp, true );
 		$line .= '&nbsp;' . $this->mSkin->userLink( $change->user, $change->userText );
 		$line .= $this->mSkin->userToolLinks( $change->user, $change->userText );
@@ -542,7 +542,7 @@ class CodeRevisionView extends CodeView {
 		$css = 'mw-codereview-status-' . htmlspecialchars( $row->cr_status );
 		$date = $wgLang->timeanddate( $row->cr_timestamp, true );
 		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-		$revLink = $this->mSkin->link( $title, "r$rev" );
+		$revLink = $this->mSkin->link( $title, $this->mRev->getIdString( $rev ) );
 		$summary = $this->messageFragment( $row->cr_message );
 		$author = $this->authorLink( $row->cr_author );
 		return "<tr class='$css'><td>$revLink</td><td>$summary</td><td>$author</td><td>$date</td></tr>";
