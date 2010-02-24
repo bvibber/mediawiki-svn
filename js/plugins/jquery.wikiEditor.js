@@ -401,6 +401,10 @@ if ( typeof context == 'undefined' ) {
 			return true;
 		},
 		'paste': function( event ) {
+			// Save the cursor position to restore it after all this voodoo
+			var cursorPos = context.fn.getCaretPosition();
+			var oldLength = context.fn.getContents().length;
+			
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -478,6 +482,11 @@ if ( typeof context == 'undefined' ) {
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
 				}
+				
+				// Restore cursor position
+				context.fn.purgeOffsets();
+				var restoreTo = cursorPos[0] + context.fn.getContents().length - oldLength;
+				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
 		},
@@ -1514,6 +1523,14 @@ if ( typeof context == 'undefined' ) {
 					ec = e ? e.node : null;
 					start = s ? s.offset : null;
 					end = e ? e.offset : null;
+					// Don't try to set the selection past the end of a node, causes errors
+					// Just put the selection at the end of the node in this case
+					if ( sc.nodeName == '#text' && start >= sc.nodeValue.length ) {
+						start = sc.nodeValue.length - 1;
+					}
+					if ( ec.nodeName == '#text' && end >= ec.nodeValue.length ) {
+						end = ec.nodeValue.length - 1;
+					}
 				}
 				if ( !sc || !ec ) {
 					// The requested offset isn't in the offsets array
