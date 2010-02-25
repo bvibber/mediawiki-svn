@@ -995,6 +995,8 @@ ctrlBuilder.prototype = {
 		mw.log('getPlayerSelect');		
 		
 		var embedPlayer = this.embedPlayer;
+		
+		var _this = this;
 						
 		$playerSelect = $j('<div />')
 		.append( 
@@ -1026,8 +1028,7 @@ ctrlBuilder.prototype = {
 						.text( 
 						 	supporting_players[i].getName()
 						)
-						.addClass( 'ui-state-highlight ui-corner-all' );	
-						
+						.addClass( 'ui-state-highlight ui-corner-all' );							
 					} else {
 						// Non active player add link to select: 
 						$playerLine = $j( '<a />')
@@ -1045,6 +1046,12 @@ ctrlBuilder.prototype = {
 								mw.log( 'source id: ' +  source_id + ' player id: ' + default_player_id );
 				
 								embedPlayer.ctrlBuilder.closeMenuOverlay();
+								
+								// Close fullscreen if we are in fullscreen mode
+								if( _this.fullscreenMode ){
+									_this.restoreWindowPlayer()
+								}
+								
 								embedPlayer.mediaElement.selectSource( source_id );
 				
 								mw.EmbedTypes.players.setPlayerPreference( 
@@ -1444,7 +1451,7 @@ ctrlBuilder.prototype = {
 					.css({ 
 						"position" : 'absolute',
 						"left" : '33px',
-						"right" :  ( (embedPlayer.getPlayerWidth() - ctrlObj.available_width) - 33) + 'px' 
+						"right" :  ( ( embedPlayer.getPlayerWidth() - ctrlObj.available_width ) - 33) + 'px' 
 					})					
 					// Playhead binding
 					.slider( {
