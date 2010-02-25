@@ -1036,8 +1036,8 @@ Gallwch arbrofi eto gyda Beta trwy wasgu\'r cyswllt "{{int:optin-try}}" ar frig 
 	'optin-submit-feedback' => 'Anfoner yr adborth',
 	'optin-survey-yes' => 'Ydw',
 	'optin-survey-no' => 'Nacydw',
-	'optin-survey-intro' => "Diolch ichi am arbrofi gyda Beta.
-Hoffem wybod eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn drwy gwblhau'r holiadur dewisol sy'n dilyn, cyn i chi bwyso'r botwm \"[[#leave|{{int:optin-submit-out}}]]\".",
+	'optin-survey-intro' => "Diolch ichi am roi cynnig ar Beta.
+Hoffem gael eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn drwy gwblhau'r holiadur dewisol sy'n dilyn, cyn i chi bwyso'r botwm \"[[#leave|{{int:optin-submit-out}}]]\".",
 	'optin-survey-question-whyoptout' => "Pam ydych chi'n gadael Beta? (Dewiswch pob rheswm perthnasol.)",
 	'optin-survey-answer-whyoptout-hard' => "Roedd yn rhy annodd i'w ddefnyddio.",
 	'optin-survey-answer-whyoptout-didntwork' => "Doedd e ddim yn gweithio'n iawn.",
@@ -1048,7 +1048,7 @@ Hoffem wybod eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn
 	'optin-survey-answer-whyoptout-other' => 'Rheswm arall:',
 	'optin-survey-question-techfail' => 'Ydych chi wedi dioddef unrhyw broblemau technegol wrth ddefnyddio Beta?',
 	'optin-survey-question-usedtoolbar' => "Ydych chi wedi defnyddio'r bar offer ehangadwy i olygu tudalen?",
-	'optin-survey-question-browser' => "Pa borwr gwe ydych chi'n defnyddio?",
+	'optin-survey-question-browser' => "Pa borwr gwe ydych chi'n ei ddefnyddio?",
 	'optin-survey-answer-browser-other' => 'Porwr arall:',
 	'optin-survey-question-os' => "Pa system weithredu ydych chi'n ei defnyddio?",
 	'optin-survey-answer-os-other' => 'System weithredu arall:',
@@ -1057,6 +1057,8 @@ Hoffem wybod eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn
 	'optin-survey-answer-changes-nav' => "Gwneud yr offer llywio ar y wefan yn haws i'w defnyddio.",
 	'optin-survey-answer-changes-edittools' => "Cynyddu a gwella'r offer golygu.",
 	'optin-survey-answer-changes-upload' => 'Gwella uwchlwytho ffeiliau lluniau ag ati.',
+	'optin-survey-answer-changes-richtext' => "Datblygu offer golygu tebyg i'r offer ''rich-text''.",
+	'optin-survey-answer-changes-lookfeel' => 'Diweddaru "naws a steil" y safle.',
 	'optin-survey-answer-changes-predictability' => 'Gwneud iddo weithredu yn y modd mwyaf dibynadwy posib.',
 	'optin-survey-answer-changes-custom' => "Ehangu'r nifer o ddewisiadau y gall defnyddiwr eu gosod fel ag a myn.",
 	'optin-improvements' => "== Beth sydd wedi ei wella? ==
@@ -6277,6 +6279,8 @@ $messages['yi'] = array(
 	'optin-needlogin' => 'איר דארפֿט [$1 אריינלאגירן] צו פרובירן בעטא.',
 	'optin-intro' => 'די וויקיפעדיע ניצלעכקייט איניציאטיוו האט געארבעט שווער צו פארבעסערן די ניצלעכקייט פון וויקיפעדיע.
 אפשר ווילט איר פרובירן אונזער בעטא?',
+	'optin-success-in' => 'אַצינד פרובירט איר אויס בעטא.
+ איר קענט עס פֿאַרלאזן ווען איר ווילט, מען דאַרף נאר אָנקליקן דעם לינק "{{int:optin-leave}}" אויבן.',
 	'optin-success-feedback' => 'א דאַנק פֿאַרן פֿידבעק!',
 	'optin-accept-short' => 'לאמיר טון!',
 	'optin-accept-long' => 'פרובירן בעטא',
@@ -6287,12 +6291,14 @@ $messages['yi'] = array(
 	'optin-submit-feedback' => 'געבן פֿידבעק',
 	'optin-survey-yes' => 'יא',
 	'optin-survey-no' => 'ניין',
+	'optin-survey-answer-whyoptout-hard' => "ס'איז געווען צו שווער צו ניצן.",
 	'optin-survey-answer-whyoptout-other' => 'אַנדער טעם:',
 	'optin-survey-question-browser' => 'וועלכער בלעטערער ניצט איר?',
 	'optin-survey-answer-browser-other' => 'אנדער בלעטערער:',
 	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
 	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
 	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
+	'optin-survey-answer-changes-upload' => 'פֿאַרבעסערן אינהאַלט און מעדיע אַרויפֿלאָדן.',
 	'optin-survey-answer-changes-custom' => 'דערלויבן גרעסערע באַניצער צופאַסונגען.',
 	'optin-survey-answer-changes-other' => 'אנדער:',
 );
