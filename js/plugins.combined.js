@@ -6848,7 +6848,7 @@ if ( typeof context == 'undefined' ) {
 			}
 			setTimeout( function() {
 				// Kill stuff we know we don't want
-				context.$content.find( 'script,style,img,input,select,textarea,br,button' ).remove();
+				context.$content.find( 'script,style,img,input,select,textarea,hr,button' ).remove();
 				// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
 				// space collapsing issues at element boundries
 				context.$content.find( '*' ).each( function() {
