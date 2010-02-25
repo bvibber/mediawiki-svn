@@ -23,6 +23,7 @@ $messages['en'] = array(
 	// Story review
 	'storyboard-storyreview' => 'Story review',	
 	'storyboard-publish' => 'Publish',
+	'storyboard-unpublish' => 'Unpublish',
 	'storyboard-reviewed' => 'Reviewed',
 	'storyboard-unreviewed' => 'Unreviewed',
 );

@@ -18,12 +18,31 @@ class TagStorysubmission {
 	// http://www.mediawiki.org/wiki/Manual:Forms
 	// http://www.mediawiki.org/wiki/Manual:Hooks/UnknownAction
 	public static function render( $input, $args, $parser, $frame ) {
+		wfProfileIn( __METHOD__ );
 
-		return <<<END
-<form name="storysubmission" action="" method="get">
+		global $wgRequest;
+		
+		if ($wgRequest->wasPosted()) {
+			$output = $this->doSubmissionAndGetResult();
+		} else {
+			$output = $this->getFrom();
+		}
+		
+		return $output;
+		
+		wfProfileOut( __METHOD__ );
+	}
+	
+	private function getFrom() {
+		return <<<EOT
+<form name="storysubmission" action="#" method="get">
 
 </form>
-END;
+EOT;
+	}
+	
+	private function doSubmissionAndGetResult() {
+		
 	}
 	
 }

@@ -16,20 +16,19 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class TagStoryboard {
 	
 	public static function render( $input, $args, $parser, $frame ) {
-		global $wgOut, $wgJsMimeType, $egStoryboardScriptPath;
+		global $wgOut, $wgJsMimeType, $egStoryboardScriptPath, $wgScriptPath;
 		
 		$wgOut->addStyle($egStoryboardScriptPath . '/tags/Storyboard/storyboard.css');		
 		$wgOut->includeJQuery();
-		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/storyboard.js');
+		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.min.js');
 
-		$output = <<<END
-<script type="$wgJsMimeType">var storyboardPath = '$egStoryboardScriptPath';</script>
-<div id="storyboard"></div>
+		$output = <<<EOT
+<div class="ajaxscroll" id="storyboard">
 <script type="$wgJsMimeType"> /*<![CDATA[*/
-	var storyboard = new Storyboard();
-	storyboard.loadAjax();
+jQuery(function(){ jQuery('#storyboard').ajaxScroll({ updateBatch: updateStoryboard, batchSize: 5, batchNum: 2 }); });
+function updateStoryboard(obj){ obj.load('$wgScriptPath/api.php?action=stories&offset=' + obj.attr('offset')); }
 /*]]>*/ </script>
-END;
+EOT;
 
 	return array($output, 'noparse' => 'true', 'isHTML' => 'true');
 	}

@@ -1,93 +1,33 @@
 /**
-  * Storyboard tag css.
+  * Storyboard css.
   *
   * @file Storyboard.css
   * @ingroup Storyboard
   *
   * @author Jeroen De Dauw
-  * @author Tha Devil (helpmij.nl)
  */
 
-#storyboard
-{
-	margin-left: 31px;
-	width: 50%;
-	height: 300px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	font-family: Verdana;
-	font-size: 10px;
+.ajaxscroll {
+border: 1px solid #ddd;
 }
-
-#storyboard-results
-{
-	background: url(extensions/Storyboard/images/storyboard-background.png) repeat-y;
+.ajaxscroll .batch {
+	margin: 0;
+	padding: 0;
 }
-
-.storyboard-result
-{
-	padding-bottom: 6px;
-	background: url(extensions/Storyboard/images/storyboard-result-spacer.png) no-repeat bottom;
-}
-
-.storyboard-result .storyboard-header
-{
-	margin: 10px 0px 10px 15px;
-}
-
-.storyboard-result .storyboard-header .storyboard-title
-{
-	font: 16px "Lucida Sans", Verdana;
-	font-weight: bold;
-	width: 100px;
-	height: 21px;
-	overflow: hidden;
-	float: left;
-}
-
-.storyboard-result
-{
-	margin-left: 12px;
-	margin-right: 15px;	
-}
-
-.storyboard-result
-{
-	float: left;
-	width: 146px;
-	height: 112px;
-	margin-left: 3px;
-	margin-right: 3px;
-	margin-top: 10px;
-	overflow: hidden;
+.ajaxscroll .box {
+	display: inline-block;
+	border: 1px solid #eee;
+	width: 99%;
+	height: 150px;
 	text-align: center;
+	margin: 5px !important;
+	margin-bottom: 25px;
 }
-
-.storyboard-result
-{
-	display: none;
+.ajaxscroll .empty .box {
+	border: 1px solid #ddd;
+	background: #FCFCFC url(../../images/storyboard-loader.gif) no-repeat scroll center center;
 }
-
-#storyboard-loading
-{
-	background-image: url(extensions/Storyboard/images/storyboard-loader.gif);
-	width:31px;
-	height:31px;
-	margin:0 auto;
-	margin-top: 10px;
-}
-
-.storyboard-footer
-{
-	height: 40px;
-	padding-top: 20px;
-	margin-left: 15px;
-}
-
-.storyboard-sharing
-{
-	margin-left: 750px;
-	height: 30px;
-	width: 110px;
-	float: left;
+#storyboard {
+	height: 400px;
+	width: 80%;
 }

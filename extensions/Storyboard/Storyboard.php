@@ -46,6 +46,10 @@ $wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.ph
 $wgSpecialPages['StoryReview'] = 'SpecialStoryReview';
 $wgSpecialPageGroups['StoryReview'] = 'contribution';
 
+// API
+$wgAutoloadClasses['ApiStoryboardStoriesFeed'] = "{$egStoryboardDir}api/ApiStoryboardStoriesFeed.php";
+$wgAPIListModules['stories'] = 'ApiStoryboardStoriesFeed';
+
 // Hooks
 $wgHooks['ParserFirstCallInit'][] = 'efStoryboardParserFirstCallInit';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
@@ -80,7 +84,7 @@ function efStoryboardSchemaUpdate() {
 }
 
 function efStoryboardParserFirstCallInit( &$parser ) {
-	$parser->setHook( 'storyboard', array('TagStoryboard', 'render') );
-	$parser->setHook( 'storysubmission', array('TagStorysubmission', 'render') );
+	$parser->setHook( 'storyboard', array( 'TagStoryboard', 'render' ) );
+	$parser->setHook( 'storysubmission', array( 'TagStorysubmission', 'render' ) );
 	return true;
 }

@@ -16,3 +16,12 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
+
+$egStoryboardMaxStoryLen = 1000;
+$egStoryboardMinStoryLen = 10;
+
+$egStoryboardWidth = '80%';
+$egStoryboardHieght = 400;
+
+$egStoryboardBatchSize = 5;
+$egStoryboardBatchAmount = 2;
