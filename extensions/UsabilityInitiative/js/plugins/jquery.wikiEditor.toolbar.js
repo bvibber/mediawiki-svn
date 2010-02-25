@@ -239,15 +239,11 @@ fn: {
 		switch ( action.type ) {
 			case 'replace':
 			case 'encapsulate':
-				var parts = { 'pre' : '', 'peri' : '', 'post' : '' };
-				for ( part in parts ) {
-					if ( part + 'Msg' in action.options ) {
-						parts[part] = mw.usability.getMsg( 
-							action.options[part + 'Msg'], ( action.options[part] || null ) );
-					} else {
-						parts[part] = ( action.options[part] || '' )
-					}
-				}
+				var parts = {
+					'pre' : $.wikiEditor.autoMsg( action.options, 'pre' ),
+					'peri' : $.wikiEditor.autoMsg( action.options, 'peri' ),
+					'post' : $.wikiEditor.autoMsg( action.options, 'post' )
+				};
 				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
 					var selection = context.$textarea.textSelection( 'getSelection' );
 					if ( selection != '' && selection.match( action.options.regex ) ) {
