@@ -69,8 +69,8 @@ class CodeRevision {
 	 * i.e. "r123" instead of 123.
 	 * May be called statically if you pass the $id in.
 	 */
-	public function getIdString( $id = NULL ) {
-		if ( $id === NULL ) {
+	public function getIdString( $id = null ) {
+		if ( $id === null ) {
 			$id = $this->getId();
 		}
 		return $this->mRepo->getRevIdString( $id );
@@ -84,8 +84,8 @@ class CodeRevision {
 	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
 	 * defined then this returns the same as getIdString() as there is no ambiguity.
 	 */
-	public function getIdStringUnique( $id = NULL ) {
-		if ( $id === NULL ) {
+	public function getIdStringUnique( $id = null ) {
+		if ( $id === null ) {
 			$id = $this->getId();
 		}
 		return $this->mRepo->getRevIdStringUnique( $id );
