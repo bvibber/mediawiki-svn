@@ -11,21 +11,24 @@ class SvnImport extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Import revisions to Code Review from a Subversion repo";
-		$this->addOption( 'precache', 'Pre-cache diffs for last N revisions, -1 means entire repo', false, true );
+		$this->addOption( 'precache', 'Pre-cache diffs for last N revisions.  ' .
+						'May be a positive integer, 0 (for none) or \'all\'.  Default is 0', false, true );
 		$this->addArg( 'repo', 'The name of the repo. Use \'all\' to import from all defined repos' );
-		$this->addArg( 'start', "The revision to begin the import from.  If not specified then\n" .
-						"\t\tit starts from the last repo imported to the wiki.  Ignored if\n" .
-						"\t\t'all' is specified for <repo>", false );
+		$this->addArg( 'start', "The revision to begin the import from.  If not specified then " .
+						"it starts from the last repo imported to the wiki.  Ignored if " .
+						"'all' is specified for <repo>", false );
 	}
 
 	public function execute() {
-		$cacheSize = null;
+		$cacheSize = 0;
 		if ( $this->hasOption( 'precache' ) ) {
 			$cacheSize = $this->getOption( 'precache' );
-			if ( is_numeric( $cacheSize ) && $cacheSize >= -1 ) {
-				$cacheSize = intval( $cacheSize );
-			} else {
-				$this->error( "Invalid argument for --precache (must be a positive integer, or -1 for all)", true );
+			if ( $cacheSize != "all" ) {
+				if ( is_numeric( $cacheSize ) && $cacheSize >= 0 ) {
+					$cacheSize = intval( $cacheSize );
+				} else {
+					$this->error( "Invalid argument for --precache (must be a positive integer, 0 or 'all')", true );
+				}
 			}
 		}
 
@@ -40,7 +43,7 @@ class SvnImport extends Maintenance {
 		}
 	}
 
-	private function importRepo( $repoName, $start = null, $cacheSize = null ) {
+	private function importRepo( $repoName, $start = null, $cacheSize = 0 ) {
 		global $wgCodeReviewImportBatchSize;
 
 		$repo = CodeRepository::newFromName( $repoName );
@@ -105,19 +108,20 @@ class SvnImport extends Maintenance {
 			wfWaitForSlaves( 5 );
 		}
 
-		if ( $cacheSize !== null ) {
-			if ( $cacheSize == -1 ) {
-				$this->output( "Pre-caching all uncached diffs..." );
-			} elseif ( $cacheSize == 1 ) {
-				$this->output( "Pre-caching the latest diff..." );
-			} else {
-				$this->output( "Pre-caching the latest $cacheSize diffs..." );
-			}
-
+		if ( $cacheSize != 0 ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$options = array( 'ORDER BY' => 'cr_id DESC' );
-			if ( $cacheSize > 0 )
+
+			if ( $cacheSize == "all" ) {
+				$this->output( "Pre-caching all uncached diffs..." );
+			} else {
+				if ( $cacheSize == 1 ) {
+					$this->output( "Pre-caching the latest diff..." );
+				} else {
+					$this->output( "Pre-caching the latest $cacheSize diffs..." );
+				}
 				$options['LIMIT'] = $cacheSize;
+			}
 
 			$res = $dbw->select( 'code_rev', 'cr_id',
 				array( 'cr_repo_id' => $repo->getId(), 'cr_diff IS NULL OR cr_diff = ""' ),
