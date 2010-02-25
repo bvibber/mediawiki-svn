@@ -39,7 +39,7 @@ $wgExtensionCredits['other'][] = array(
 	);
 
 $wgExtensionFunctions[] = 'DynamicSidebar::setup';
-$wgHooks['SkinBeforeParseSidebar'][] = 'DynamicSidebar::modifySidebar';
+$wgHooks['SkinBuildSidebar'][] = 'DynamicSidebar::modifySidebar';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['DynamicSidebar'] = $dir . 'DynamicSidebar.body.php';

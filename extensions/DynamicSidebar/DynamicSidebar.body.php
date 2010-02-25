@@ -26,27 +26,34 @@ class DynamicSidebar {
 		global $wgDynamicSidebarUseGroups, $wgDynamicSidebarUseUserpages;
 		global $wgDynamicSidebarUseCategories;
 
-		if ( $wgDynamicSidebarUseGroups ) {
-			$sidebar = preg_replace_callback( '/\* GROUP-SIDEBAR/', array( 'self', 'doGroupSidebar' ), $sidebar );
+		if ( $wgDynamicSidebarUseGroups && isset( $sidebar['GROUP-SIDEBAR'] ) ) {
+			// Replace the GROUP-SIDEBAR entry with the group's sidebar
+			$groupSB = array();
+			$skin->addToSidebarPlain( $groupSB, self::doGroupSidebar() );
+			array_splice( $sidebar, array_search( 'GROUP-SIDEBAR', $sidebar ), 1, $groupSB );
 		}
-		if ( $wgDynamicSidebarUseUserpages ) {
-			$sidebar = preg_replace_callback( '/\* USER-SIDEBAR/', array( 'self', 'doUserSidebar' ), $sidebar );
+		if ( $wgDynamicSidebarUseUserpages && isset( $sidebar['USER-SIDEBAR'] ) ) {
+			// Replace the USER-SIDEBAR entry with the user's sidebar
+			$userSB = array();
+			$skin->addToSidebarPlain( $userSB, self::doUserSidebar() );
+			array_splice( $sidebar, array_search( 'USER-SIDEBAR', $sidebar ), 1, $userSB );
 		}
-		if ( $wgDynamicSidebarUseCategories ) {
-			$sidebar = preg_replace_callback( '/\* CATEGORY-SIDEBAR/', array( 'self', 'doCategorySidebar' ), $sidebar );
+		if ( $wgDynamicSidebarUseCategories && isset( $sidebar['CATEGORY-SIDEBAR'] ) ) {
+			$catSB = array();
+			$skin->addToSidebarPlain( $catSB, self::doCategorySidebar() );
+			array_splice( $sidebar, array_search( 'CATEGORY-SIDEBAR', $sidebar ), 1, $catSB );
 		}
 		return true;
 	}
 
 	/**
-	 * Callback function, replaces $matches with the contents of
+	 * Grabs the sidebar for the current user
 	 * User:<username>/Sidebar
 	 *
-	 * @param array $matches unused
 	 * @access private
 	 * @return string
 	 */
-	private static function doUserSidebar( $matches ) {
+	private static function doUserSidebar() {
 		global $wgUser;
 		$username = $wgUser->getName();
 		
@@ -62,11 +69,8 @@ class DynamicSidebar {
 	}
 
 	/**
-	 * Callback function, replaces $matches with the contents of
-	 * MediaWiki:Sidebar/<group>, based on the current logged in user's
-	 * groups.
+	 * Grabs the sidebar for the current user's groups
 	 *
-	 * @param array $matches unused
 	 * @access private
 	 * @return string
 	 */
@@ -97,11 +101,8 @@ class DynamicSidebar {
 	}
 
 	/**
-	 * Callback function, replaces $matches with the contents of
-	 * MediaWiki:Sidebar/<category>, based on the current logged in user's
-	 * userpage categories.
+	 * Grabs the sidebar for the current user's categories
 	 *
-	 * @param array $matches unused
 	 * @access private
 	 * @return string
 	 */
