@@ -25,15 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 // Set defaults
-global $egDynamicSidebarDebug, $egDynamicSidebarUseGroups, $egDynamicSidebarUseUserpages;
-global $egDynamicSidebarUseCategories;
+$wgDynamicSidebarDebug = false;
+$wgDynamicSidebarUseUserpages = true;
+$wgDynamicSidebarUseGroups = true;
+$wgDynamicSidebarUseCategories = true;
 
-$egDynamicSidebarDebug = false;
-$egDynamicSidebarUseUserpages = true;
-$egDynamicSidebarUseGroups = true;
-$egDynamicSidebarUseCategories = true;
-
-global $wgExtensionCredits;
 $wgExtensionCredits['other'][] = array( 
 	'name'	 		=> 'DynamicSidebar',
 	'version'		=> '1.0a',
@@ -41,23 +37,9 @@ $wgExtensionCredits['other'][] = array(
 	'url'			=> 'http://www.mediawiki.org/wiki/Extension:DynamicSidebar',	
 	'description' 		=> "Provides dynamic sidebars based on user pages, groups, and categories.", 
 	);
-	
-$wgExtensionFunctions[] = 'DynamicSidebarSetupExtension';
+
+$wgExtensionFunctions[] = 'DynamicSidebar::setup';
+$wgHooks['SkinBeforeParseSidebar'][] = 'DynamicSidebar::modifySidebar';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['DynamicSidebar'] = $dir . 'DynamicSidebar.body.php';
-
-function DynamicSidebarSetupExtension() {
-	global $wgHooks;
-	global $wgUser, $wgEnableSidebarCache;
-
-	// Don't pollute the sidebar cache for non-loggedin users
-	// Also ensure that loggedin users are getting dynamic content
-	if ( $wgUser->isLoggedIn() ) {
-		$wgEnableSidebarCache = false;
-	}
-
-	$wgHooks['SkinBeforeParseSidebar'][] = 'DynamicSidebar::modifySidebarContent';
-
-	return true;
-}

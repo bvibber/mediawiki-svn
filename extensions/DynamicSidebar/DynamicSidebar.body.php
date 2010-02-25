@@ -1,8 +1,19 @@
 <?php
-
-if (!defined('MEDIAWIKI')) die();
-
 class DynamicSidebar {
+	/**
+	 * Called through $wgExtensionFunctions. Disables sidebar cache if necessary
+	 */
+	public static function setup() {
+		global $wgUser, $wgEnableSidebarCache;
+
+		// Don't pollute the sidebar cache for non-logged-in users
+		// Also ensure that logged-in users are getting dynamic content
+		// FIXME: Only do this for users who should actually get the non-standard sidebar
+		if ( $wgUser->isLoggedIn() ) {
+			$wgEnableSidebarCache = false;
+		}
+		return true;
+	}
 
 	/**
 	 * Called from SkinBeforeParseSidebar hook. Modifies the sidebar
@@ -10,65 +21,44 @@ class DynamicSidebar {
 	 *
 	 * @param Skin $skin
 	 * @param string $sidebar
-	 * @access public
 	 */
-	public function modifySidebarContent( $skin, &$sidebar ) {
-		$dynamicsidebar = new DynamicSidebar();
-		$sidebar = $dynamicsidebar->modifySidebar( $skin, $sidebar );
+	private static function modifySidebar( $skin, &$sidebar ) {
+		global $wgDynamicSidebarUseGroups, $wgDynamicSidebarUseUserpages;
+		global $wgDynamicSidebarUseCategories;
 
+		if ( $wgDynamicSidebarUseGroups ) {
+			$sidebar = preg_replace_callback( '/\* GROUP-SIDEBAR/', array( 'self', 'doGroupSidebar' ), $sidebar );
+		}
+		if ( $wgDynamicSidebarUseUserpages ) {
+			$sidebar = preg_replace_callback( '/\* USER-SIDEBAR/', array( 'self', 'doUserSidebar' ), $sidebar );
+		}
+		if ( $wgDynamicSidebarUseCategories ) {
+			$sidebar = preg_replace_callback( '/\* CATEGORY-SIDEBAR/', array( 'self', 'doCategorySidebar' ), $sidebar );
+		}
 		return true;
-	}
-
-	/**
-	 * Internal function called to modify the sidebar via callbacks.
-	 *
-	 * @param Skin $skin
-	 * @param string $sidebar
-	 * @access private
-	 * @return string
-	 */
-	private function modifySidebar( $skin, $sidebar ) {
-		global $egDynamicSidebarUseGroups, $egDynamicSidebarUseUserpages;
-		global $egDynamicSidebarUseCategories;
-
-		if ( $egDynamicSidebarUseGroups ) {
-			$sidebar = preg_replace_callback( "/\* GROUP-SIDEBAR/", array( &$this, 'doGroupSidebar' ), $sidebar );
-		}
-		if ( $egDynamicSidebarUseUserpages ) {
-			$sidebar = preg_replace_callback( "/\* USER-SIDEBAR/", array( &$this, 'doUserSidebar' ), $sidebar );
-		}
-		if ( $egDynamicSidebarUseCategories ) {
-			$sidebar = preg_replace_callback( "/\* CATEGORY-SIDEBAR/", array( &$this, 'doCategorySidebar' ), $sidebar );
-		}
-
-		return $sidebar;
 	}
 
 	/**
 	 * Callback function, replaces $matches with the contents of
 	 * User:<username>/Sidebar
 	 *
-	 * @param array $matches
+	 * @param array $matches unused
 	 * @access private
 	 * @return string
 	 */
-	private function doUserSidebar( $matches ) {
+	private static function doUserSidebar( $matches ) {
 		global $wgUser;
-		
 		$username = $wgUser->getName();
-
-		$title = Title::makeTitle( NS_USER, $username . '/Sidebar' );
-		$a = new Article( $title );
 		
-		// does '<username>/Sidebar' page exist?
-		if ( ( $a === null ) || ( $a->getID() === 0 ) ) {
+		// does 'User:<username>/Sidebar' page exist?
+		$title = Title::makeTitle( NS_USER, $username . '/Sidebar' );
+		if ( !$title->exists() ) {
 			// Remove this sidebar if not
 			return '';
 		}
 
-		$text = $a->getContent();
-
-		return $text;
+		$a = new Article( $title );
+		return $a->getContent();
 	}
 
 	/**
@@ -76,16 +66,15 @@ class DynamicSidebar {
 	 * MediaWiki:Sidebar/<group>, based on the current logged in user's
 	 * groups.
 	 *
-	 * @param array $matches
+	 * @param array $matches unused
 	 * @access private
 	 * @return string
 	 */
-	private function doGroupSidebar( $matches ) {
+	private static function doGroupSidebar( $matches ) {
 		global $wgUser;
-
+		
 		// Get group membership array.
 		$groups = $wgUser->getEffectiveGroups();
-		
 		// Did we find any groups?
 		if ( count( $groups ) == 0 ) {
 			// Remove this sidebar if not
@@ -93,22 +82,17 @@ class DynamicSidebar {
 		}
 
 		$text = '';
-
 		foreach ( $groups as $group ) {
 			// Form the path to the article:
 			// MediaWiki:Sidebar/<group>
 			$title = Title::makeTitle( NS_MEDIAWIKI, 'Sidebar/' . $group );
-			$a = new Article( $title );
-
-			// Is the corresponding page found?
-			if ( ( $a === null ) || ( $a->getID() === 0 ) ) {
+			if ( !$title->exists() ) {
 				continue;
 			}
-
+			$a = new Article( $title );
 			$text .= $a->getContent() . "\n";
 
 		}
-
 		return $text;
 	}
 
@@ -117,17 +101,15 @@ class DynamicSidebar {
 	 * MediaWiki:Sidebar/<category>, based on the current logged in user's
 	 * userpage categories.
 	 *
-	 * @param array $matches
+	 * @param array $matches unused
 	 * @access private
 	 * @return string
 	 */
-	private function doCategorySidebar( $matches ) {
+	private static function doCategorySidebar( $matches ) {
 		global $wgUser;
 
-		$username = $wgUser->getName();
-		self::printDebug( "User name: $username" );
-		$userpage = Title::makeTitle( NS_USER, $username );
-		$categories = $userpage->getParentCategories();
+		self::printDebug( "User name: {$wgUser->getName()}" );
+		$categories = $wgUser->getUserPage()->getParentCategories();
 
 		// Did we find any categories?
 		if ( count( $categories ) == 0 ) {
@@ -136,11 +118,10 @@ class DynamicSidebar {
 		}
 
 		$text = '';
-
 		// getParentCategories() returns categories in the form:
 		// [ParentCategory] => page
 		// We only care about the parent category
-		foreach ( $categories as $category => $userpage ) {
+		foreach ( $categories as $category => $unused ) {
 			// $category is in form Category:<category>
 			// We need <category>.
 			$category = explode( ":", $category );
@@ -150,16 +131,12 @@ class DynamicSidebar {
 			// Form the path to the article:
 			// MediaWiki:Sidebar/<category>
 			$title = Title::makeTitle( NS_MEDIAWIKI, 'Sidebar/' . $category );
-			$a = new Article( $title );
-
-			// Is the corresponding page found?
-			if ( ( $a === null ) || ( $a->getID() === 0 ) ) {
+			if ( !$title->exists() ) {
 				continue;
 			}
-
+			$a = new Article( $title );
 			$text .= $a->getContent() . "\n";
 		}
-
 		return $text;
 	}
 
@@ -172,9 +149,9 @@ class DynamicSidebar {
 	 * @access private
 	 */
 	private static function printDebug( $debugText, $debugArr = null ) {
-		global $egDynamicSidebarDebug;
+		global $wgDynamicSidebarDebug;
 
-		if ( $egDynamicSidebarDebug ) {
+		if ( $wgDynamicSidebarDebug ) {
 			if ( isset( $debugArr ) ) {
 				$text = $debugText . " " . implode( "::", $debugArr );
 				wfDebugLog( 'dynamic-sidebar', $text, false );
@@ -183,5 +160,4 @@ class DynamicSidebar {
 			}
 		}
 	}
-
 }
