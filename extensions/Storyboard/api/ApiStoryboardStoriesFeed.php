@@ -35,7 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiStoryboardStoriesFeed extends ApiQueryBase {
 	public function __construct( $main, $action ) {
-		parent :: __construct( $main, $action );
+		parent :: __construct( $main, $action, 'st' );
 	}
 
 	/**
@@ -45,8 +45,7 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
-		// Get a slave db object to do read operations against.
-		$dbr = wfGetDB( DB_SLAVE );
+		
 	}
 	
 	/**
@@ -55,17 +54,14 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 	 */
 	public function getAllowedParams() {
 		return array (
-			'offset' => array (
-				ApiBase :: PARAM_DFLT => 0,
-				ApiBase :: PARAM_TYPE => 'integer',
-				ApiBase :: PARAM_MIN => 0,
-			),
-			'size' => array (
-				ApiBase :: PARAM_DFLT => 5,
-				ApiBase :: PARAM_TYPE => 'integer',
+			'limit' => array(
+				ApiBase :: PARAM_DFLT => 10,
+				ApiBase :: PARAM_TYPE => 'limit',
 				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => 100,
-			),				
+				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
+				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
+			),
+			'continue' => null,						
 		);
 	}
 
@@ -94,9 +90,9 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 	 */
 	protected function getExamples() {
 		return array (
-			'api.php?action=stories',
-			'api.php?action=stories&offset=42',
-			'api.php?action=stories&offset=4&size=2',
+			'api.php?action=query&list=stories',
+			'api.php?action=query&list=stories&stcontinue=42',
+			'api.php?action=query&list=stories&stcontinue=4&stlimit=2',
 		);
 	}
 
