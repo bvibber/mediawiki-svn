@@ -1088,11 +1088,13 @@ $j(document).ready( function() {
 				// $j(this).val() is the old value, before the keypress
 				// Defer this until $j(this).val() has been updated
 				setTimeout( function() {
-					if ( isExternalLink( $j( '#wikieditor-toolbar-link-int-target' ).val() ) )
+					if ( isExternalLink( $j( '#wikieditor-toolbar-link-int-target' ).val() ) ) {
 						$j( '#wikieditor-toolbar-link-type-ext' ).attr( 'checked', 'checked' );
-					else
+						updateWidget( 'external' );
+					} else {
 						$j( '#wikieditor-toolbar-link-type-int' ).attr( 'checked', 'checked' );
-
+						updateExistence();
+					}
 					if ( $j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched' ) )
 						if ( $j( '#wikieditor-toolbar-link-int-target' ).val() == 
 							$j( '#wikieditor-toolbar-link-int-target' ).data( 'tooltip' ) ) {
