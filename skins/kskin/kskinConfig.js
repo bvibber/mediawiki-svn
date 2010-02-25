@@ -1,5 +1,5 @@
 /**
-* skin js allows you to override contrlBuilder html/class output
+* Skin js allows you to override contrlBuilder html/class output
 */
 
 mw.addMessages( {
@@ -14,8 +14,8 @@ var kskinConfig = {
 	// Display time string length
 	longTimeDisp: false,
 	
-	// Options are handled internally
-	external_options: false,
+	// Default control bar height
+	height: 20,	
 	
 	// Volume control layout is horizontal
 	volume_layout: 'horizontal',
@@ -43,7 +43,7 @@ var kskinConfig = {
 					)
 			}
 		},
-		'volumeControl':{
+		'volumeControl': {
 			'w':40
 		},		
 		// No kalturaAttribution component for kSkin ( its integrated into the credits screen ) 
@@ -62,15 +62,23 @@ var kskinConfig = {
 				$menuOverlay = $j( '<div />')					
 					.addClass( 'k-menu ui-widget-content' )
 					.css( {
-						'width' :  ctrlObj.getOverlayWidth(),
-						'height' :  ctrlObj.getOverlayHeight()
+						'width' : '100%',
+						'position': 'absolute',	
+						'top' : '0px'				
 					} );
+				
+				if( ctrlObj.checkOverlayControls() ){	
+					// Set to overlayheight - ( control bar height + 2 for borders ) 
+					$menuOverlay.css( 'bottom', ctrlObj.getHeight() + 2  );
+				}else{
+					$menuOverlay.css( 'bottom', 0 );
+				} 
 					
 				// Setup menu offset ( if player height <  getOverlayHeight )
 				// This displays the menu outside of the player on small embeds	
 				if ( embedPlayer.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) {
 				
-					$menuOverlay.css( 'top', parseInt( embedPlayer.getPlayerHeight() + ctrlObj.getControlBarHeight() ) + 'px' );
+					$menuOverlay.css( 'top', parseInt( embedPlayer.getPlayerHeight() + ctrlObj.getHeight() ) + 'px' );
 					
 					// Special common overflow hack for thumbnail display of player 								
 					$j( embedPlayer ).parents( '.thumbinner' ).css( 'overflow', 'visible' );
@@ -101,8 +109,11 @@ var kskinConfig = {
 				var $menuScreens = $j( '<div />' )
 					.addClass( 'k-menu-screens' )
 					.css( {
-						'width' : (  ctrlObj.getOverlayWidth() - 75 ), 
-						'height' : ( ctrlObj.getOverlayHeight() - ctrlObj.getControlBarHeight() )
+						'position' : 'absolute',
+						'top' : '0px',
+						'left' : '0px',
+						'bottom' : '0px',
+						'right' : '45px',						
 					} )
 				for ( var menuItem in ctrlObj.supportedMenuItems ) {
 					$menuScreens.append(
@@ -150,10 +161,9 @@ var kskinConfig = {
 		this.$playerTarget.find( '.k-options' )
 		.unbind()
 		.click( function() {
-			if ( _this.$playerTarget.find( '.k-menu' ).length == 0 ) {
-				
+			if ( _this.$playerTarget.find( '.k-menu' ).length == 0 ) {				
 				// Stop the player if it does not support overlays:
-				if ( !embedPlayer.supports['overlays'] ){
+				if ( !embedPlayer.supports['overlays'] ) {
 					embedPlayer.stop();
 				}
 				

@@ -142,6 +142,10 @@ var default_video_attributes = {
 	// The apiProvider where to lookup the title key
 	"apiProvider" : null,
 	
+	// If the player controls should be overlayed 
+	//( Global default via config overlayControls in module loader.js)  
+	"overlayControls" : mw.getConfig( 'overlayControls' ),
+	
 	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE
 	"roe" : null,
@@ -223,7 +227,7 @@ var default_source_attributes = [
 	* Passes off request to the embedPlayer selector: 
 	* 
 	* @param {Object} attributes Attributes to apply to embed players
-	* @param {Function} callback Function to call once embeding is done
+	* @param {Function} callback Function to call once embedding is done
 	*/
 	$.embedPlayers = function( attributes, callback) {
 		$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer( attributes, callback );
@@ -1494,7 +1498,7 @@ mw.EmbedPlayer.prototype = {
 				var missing_type = this.pc.type;
 														
 			mw.log( 'No player found for given source type ' + missing_type );
-			$j(this).html( this.getPluginMissingHTML( missing_type ) );
+			this.showPluginMissingHTML( missing_type );
 		}
 	},
 	
@@ -1598,6 +1602,20 @@ mw.EmbedPlayer.prototype = {
 	},	
 	
 	/**
+	* Get the player height
+	*/
+	getHeight: function() {
+		return this.height;
+	},
+	
+	/**
+	* Get the player width
+	*/
+	getWidth: function(){
+		return this.width;
+	},
+	
+	/**
 	* Get the plugin embed html ( should be implemented by embed player interface )
 	*/
 	doEmbedHTML : function() {
@@ -1653,8 +1671,10 @@ mw.EmbedPlayer.prototype = {
 		// mw.log('should embed:' + embed_code);		
 		_this.doEmbedHTML() 		
 	},
+	
 	/**
 	* Searches for related clips from titleKey
+	* also configuration specific ( should be in seperate file) 
 	*/
 	getRelatedFromTitleKey: function() {
 		var _this = this;
@@ -1751,7 +1771,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Call the ctrlBuilder end event::
 		
-		//if kalturaAttribution and k-skin show the "credits" screen: 
+		// If kalturaAttribution and k-skin show the "credits" screen: 
 		if( mw.getConfig( 'kalturaAttribution' ) && this.ctrlBuilder.showCredits ) {			
 			this.ctrlBuilder.showCredits();
 			return ;
@@ -2027,7 +2047,8 @@ mw.EmbedPlayer.prototype = {
 	*/
 	showPlayer : function () {	
 		mw.log( 'Show player: ' + this.id );	
-		// set-up the local ctrlBuilder instance: 
+		
+		// Set-up the local ctrlBuilder instance: 
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
 		var _this = this;
@@ -2039,23 +2060,25 @@ mw.EmbedPlayer.prototype = {
 				$j('<div>')
 				.addClass('interface_wrap ' + this.ctrlBuilder.playerClass)
 				.css({				
-					'width': parseInt( this.width ),
-					'height': parseInt( this.height ),
-					'position': 'relative'
+					'width' : parseInt( this.width ),
+					'height' : parseInt( this.height ),
+					'position' : 'relative',
+					'overflow' : 'hidden'
 				})
 			)
-		}				
+		}
+				
 		//Set up local jQuery object reference to "interface_wrap" 
-		this.$interface = $j(this).parent( '.interface_wrap' );
+		this.$interface = $j(this).parent( '.interface_wrap' );				
 		
 		// Update Thumbnail for the "player" 
 		this.updateThumbnailHTML();		
 
-		// Add controls if enabled:							
+		// Add controls if enabled:
 		if ( this.controls ) {			
-			mw.log( "embedPlayer:showPlayer::AddControls" );			
-			this.ctrlBuilder.addControls();						
-		}					
+			mw.log( "embedPlayer:showPlayer::AddControls" );
+			this.ctrlBuilder.addControls();
+		}
 						  
 		
 		if ( this.autoplay ) {
@@ -2066,19 +2089,29 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Get missing plugin html (check for user included code)
-	* @param {String} misssing_type missing type mime
+	* @param {String} [misssingType] missing type mime
 	*/
-	getPluginMissingHTML : function( missing_type ) {
-		// keep the box width hight:
-		var out = '<div style="width:' + this.width + 'px;height:' + this.height + 'px">';
+	showPluginMissingHTML : function( misssingType ) {
+		// Check if we have user defined missing html msg: 		
 		if ( this.user_missing_plugin_html ) {
-		  out += this.user_missing_plugin_html;
+		  $j( this ).html(  this.user_missing_plugin_html );
 		} else {
-		  if ( !missing_type )
-		  	missing_type = '';
-		  out += gM( 'mwe-generic_missing_plugin', missing_type ) + '<br><a title="' + gM( 'mwe-download_clip' ) + '" href="' + this.src + '">' + gM( 'mwe-download_clip' ) + '</a>';
+		  if ( !misssingType ){
+		  	misssingType = '';
+		  }		   		 
+		  $j( this ).html(
+		  	$j('<div />').append(
+		  		gM( 'mwe-generic_missing_plugin', missing_type ),
+		  		$j( '<br />' ),
+		  		$j( '<a />' )
+		  		.attr( {
+		  			'title' : gM( 'mwe-download_clip' ),
+		  			'href' : this.getSrc()
+		  		})
+		  		.text( gM( 'mwe-download_clip' ) )
+		  	)
+		  )
 		}
-		return out + '</div>';
 	},
 	
 	/**
@@ -2260,7 +2293,7 @@ mw.EmbedPlayer.prototype = {
 		$j( this ).html(
 			$j( '<img />' )
 			.css({
-				'position' : 'relative',
+				'position' : 'relative',				
 				'width' : '100%',
 				'height' : '100%'
 			})
@@ -2361,7 +2394,7 @@ mw.EmbedPlayer.prototype = {
 		}else{			
 			var loc = this.$interface.position();
 			//Setup the menu: 
-			var playerHeight = ( parseInt( this.height ) + this.ctrlBuilder.height );
+			var playerHeight = ( parseInt( this.height ) + this.ctrlBuilder.getHeight() );
 			$j('body').append( 
 				$j('<div>')		
 					.addClass('ui-widget ui-widget-content ui-corner-all')			
@@ -2413,9 +2446,8 @@ mw.EmbedPlayer.prototype = {
 		// check if thumbnail is being displayed and embed html
 		if ( this.thumbnail_disp ) {
 			if ( !this.selected_player ) {
-				mw.log( 'no selected_player' );
-				// this.innerHTML = this.getPluginMissingHTML();
-				$j( '#' + this.id ).html( this.getPluginMissingHTML() );
+				mw.log( 'no selected_player' );				
+				this.showPluginMissingHTML();
 			} else {
 				this.doEmbedPlayer();
 				this.paused = false;

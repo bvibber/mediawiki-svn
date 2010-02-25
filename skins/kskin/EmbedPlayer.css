@@ -164,7 +164,6 @@
 	float: left;
 	font-size: 11px;
 	padding: 13px 10px 15px 15px;
-	width: 320px;
 }
 
 .k-player ul.k-menu-bar {
@@ -181,13 +180,11 @@
 .k-player .k-menu {
 	background: none repeat scroll 0 0 #181818;
 	border: medium none;
-	display: none;
-	height: 300px;
+	display: none;	
 	left: 0;
 	opacity: 0.9;
 	position: absolute;
-	top: 0;
-	width: 400px;
+	top: 0;	
 	z-index: 999;
 }
 
@@ -396,7 +393,7 @@
 	bottom:30px;
 	left:15px;
 	position:absolute;
-	right:61px;
+	right:30px;
 	top:48px;		
 }
 .k-player .credits_box a{
@@ -411,7 +408,7 @@
 .k-player .k-attribution{
 	position:absolute;
 	bottom: 15px;
-	right : 62px;
+	right : 30px;
 	background: url("images/kaltura_open_source_video_platform.png");
 	width : 51px;
 	height : 12px;

@@ -13,6 +13,10 @@ mw.setDefaultConfig( {
 	// 'off' Does not display the timed text interface	
 	"textInterface" : "auto",
 	
+	// If the player controls should be overlayed on top of the video ( if supported by playback method)
+	// can be set to false per embed player via overlayControls attribute 
+	'overlayControls' : true,
+	
 	// Timed Text provider presently just "commons",
 	// NOTE: Each player instance can also specify a provider  
 	"timedTextProvider" : "commons",

@@ -17,7 +17,7 @@ mw.addMessages( {
 	"rsd_results_next" : "next",
 	"rsd_results_prev" : "previous",
 	"rsd_no_results" : "No search results for <b>$1<\/b>",
-	"mwe-upload_tab" : "Upload",
+	"mwe-upload_tab" : "Upload file",
 	"rsd_layout" : "Layout:",
 	"rsd_resource_edit" : "Edit resource: $1",
 	"mwe-resource_description_page" : "Resource description page",
