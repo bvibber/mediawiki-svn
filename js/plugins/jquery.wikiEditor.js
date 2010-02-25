@@ -400,6 +400,16 @@ if ( typeof context == 'undefined' ) {
 			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
 		},
+		'cut': function( event ) {
+			setTimeout( function() {
+				context.$content.find( 'br' ).each( function() {
+					if ( $(this).parent().is( 'body' ) ) {
+						$(this).wrap( $( '<p></p>' ) );
+					}
+				} );
+			}, 100 );
+			return true;
+		},
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
@@ -411,7 +421,7 @@ if ( typeof context == 'undefined' ) {
 			}
 			setTimeout( function() {
 				// Kill stuff we know we don't want
-				context.$content.find( 'script,style,img,input,select,textarea,hr,button' ).remove();
+				context.$content.find( 'script,style,img,input,select,textarea,hr,button,link,meta' ).remove();
 				// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
 				// space collapsing issues at element boundries
 				context.$content.find( '*' ).each( function() {
@@ -439,16 +449,16 @@ if ( typeof context == 'undefined' ) {
 					}
 					t = t.next();
 				}
-				// Unwrap the span found in webkit copies
-				context.$content.find( 'link, style, meta' ).remove(); //MS Word
-				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' ) //MS Word+webkit
+				// MS Word + webkit
+				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
 						var outerParent = $(this).parent();
 						outerParent.replaceWith( outerParent.childNodes );
 					} );
+				// Unwrap the span found in webkit copies (Apple Richtext)
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
-					$( this.childNodes ).insertBefore( this );
-				} ).remove(); //Apple Richtext
+					$(this).replaceWith( this.childNodes );
+				} );
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
@@ -1094,6 +1104,9 @@ if ( typeof context == 'undefined' ) {
 						} )
 						.bind( 'paste', function( event ) {
 							return context.fn.trigger( 'paste', event );
+						} )
+						.bind( 'cut', function( event ) {
+							return context.fn.trigger( 'cut', event );
 						} )
 						.bind( 'keyup paste mouseup cut encapsulateSelection', function( event ) {
 							return context.fn.trigger( 'change', event );
