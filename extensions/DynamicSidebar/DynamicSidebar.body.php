@@ -150,15 +150,11 @@ class DynamicSidebar {
 	 * @access private
 	 */
 	private static function printDebug( $debugText, $debugArr = null ) {
-		global $wgDynamicSidebarDebug;
-
-		if ( $wgDynamicSidebarDebug ) {
-			if ( isset( $debugArr ) ) {
-				$text = $debugText . " " . implode( "::", $debugArr );
-				wfDebugLog( 'dynamic-sidebar', $text, false );
-			} else {
-				wfDebugLog( 'dynamic-sidebar', $debugText, false );
-			}
+		if ( isset( $debugArr ) ) {
+			$text = $debugText . " " . implode( "::", $debugArr );
+			wfDebugLog( 'dynamic-sidebar', $text, false );
+		} else {
+			wfDebugLog( 'dynamic-sidebar', $debugText, false );
 		}
 	}
 }

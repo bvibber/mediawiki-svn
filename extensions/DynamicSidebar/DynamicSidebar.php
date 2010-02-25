@@ -25,7 +25,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 // Set defaults
-$wgDynamicSidebarDebug = false;
 $wgDynamicSidebarUseUserpages = true;
 $wgDynamicSidebarUseGroups = true;
 $wgDynamicSidebarUseCategories = true;
