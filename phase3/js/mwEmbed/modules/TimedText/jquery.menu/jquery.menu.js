@@ -96,11 +96,7 @@ function Menu(caller, options) {
 	}else{
 		var container = $('<div>').addClass( callerClassList ).html( options.content );
 	}	
-	// some custom css:
-	container.css( { 
-		'left' : '0px', 
-		'z-index': 2
-	} );
+
 	
 	this.menuOpen = false;
 	this.menuExists = false;
@@ -111,6 +107,7 @@ function Menu(caller, options) {
 		width: 180, // width of menu container, must be set or passed in to calculate widths of child menus
 		maxHeight: 180, // max height of menu (if a drilldown: height does not include breadcrumb)
 		targetMenuContainer: null,
+		zindex: 2,
 		positionOpts: {
 			posX: 'left', 
 			posY: 'bottom',
@@ -139,6 +136,13 @@ function Menu(caller, options) {
 		topLinkText: 'All',
 		nextCrumbLink: 'ui-icon-carat-1-e'	
 	}, options);
+	
+	
+	// Apply some custom css to container
+	container.css( { 
+		'left' : '0px', 
+		'z-index': options.zindex
+	} );
 	
 	var killAllMenus = function() {
 		$.each(allUIMenus, function(i) {
@@ -549,7 +553,8 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	var options = options;
 	var xVal, yVal;
 	
-	var helper = $( '<div class="positionHelper">' );	
+	var helper = $( '<div class="menuPositionHelper">' );	
+	helper.css( 'z-index', options.zindex );
 	// Hard code width height of button if unset ( crazy IE )
 	if(  isNaN( dims.refW ) ||  isNaN( dims.refH ) ) {
 		dims.refH = 16;

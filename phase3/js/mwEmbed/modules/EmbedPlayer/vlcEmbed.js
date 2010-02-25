@@ -35,7 +35,7 @@ var vlcEmbed = {
 		$j( this ).html(
 			'<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" ' +
 				'codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0" ' +
-				'id="' + this.pid + '" events="True" height="' + this.height + '" width="' + this.width + '"' +
+				'id="' + this.pid + '" events="True" height="' + this.getHeight() + '" width="' + this.getWidth() + '"' +
 				'>' +
 					'<param name="MRL" value="">' +
 					'<param name="ShowDisplay" value="True">' +
@@ -45,9 +45,9 @@ var vlcEmbed = {
 					'<param name="StartTime" value="0">' +
 					'<embed pluginspage="http://www.videolan.org" type="application/x-vlc-plugin" ' +
 						'progid="VideoLAN.VLCPlugin.2" name="' + this.pid + '" ' +
-						'height="' + this.height + '" width="' + this.width + '" ' +
+						'height="' + this.getHeight() + '" width="' + this.getWidth() + '" ' +
 						// set the style too 'just to be sure'
-						'style="width:' + this.width + 'px;height:' + this.height + 'px;" ' +
+						'style="width:' + this.getWidth() + 'px;height:' + this.getHeight() + 'px;" ' +
 					'>' +
 			'</object>'
 		)
@@ -78,8 +78,8 @@ var vlcEmbed = {
 		this.getPlayerElement();		
 		if ( this.playerElement &&  this.playerElement.playlist) {
 			// manipulate the dom object to make sure vlc has the correct size: 
-			this.playerElement.style.width = this.width;
-			this.playerElement.style.height = this.height;
+			this.playerElement.style.width = this.getWidth();
+			this.playerElement.style.height = this.getHeight();
 			this.playerElement.playlist.items.clear();
 			
 			// VLC likes absolute urls: 

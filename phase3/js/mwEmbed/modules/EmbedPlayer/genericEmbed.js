@@ -24,7 +24,7 @@ var genericEmbed = {
 	doEmbedHTML: function() {
 		$j( this ).html( 
 			'<object type="application/ogg" ' +
-			'width="' + this.width + '" height="' + this.height + '" ' +
+			'width="' + this.getWidth() + '" height="' + this.getHeight() + '" ' +
 			'data="' + this.getSrc( this.seek_time_sec ) + '"></object>'
 		);
 	}

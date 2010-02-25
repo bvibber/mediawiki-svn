@@ -22,14 +22,11 @@ ctrlBuilder.prototype = {
 	// Long string display of time value
 	longTimeDisp: true,
 	
-	// If the options menu outside of player
-	external_options : true,
-	
 	// Default volume layout is "vertical"
 	volume_layout : 'vertical',
 	
-	// Default control bar height is 33
-	height: 33,		
+	// Default control bar height
+	height: 31,		
 	
 	// Default supported components is merged with embedPlayer set of supported types
 	supportedComponets: {
@@ -51,7 +48,7 @@ ctrlBuilder.prototype = {
 	
 	// Flag to store the current fullscreen mode
 	fullscreenMode: false,
-	
+		
 	/**
 	* Initialization Object for the control builder
 	*
@@ -74,6 +71,14 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
+	* Get the control bar height
+	* @return {Number} control bar height 
+	*/
+	getHeight: function(){
+		return this.height;
+	},
+	
+	/**
 	* Get the controls html
 	* @return {String} html output of controls
 	*/
@@ -86,18 +91,37 @@ ctrlBuilder.prototype = {
 
 		// Remove any old controls: 
 		embedPlayer.$interface.find( '.control-bar' ).remove();
-			
-		// Add some space to control_wrap for the control bar:
-		embedPlayer.$interface.css( {
-			'height' : parseInt( embedPlayer.height ) + parseInt( this.height)
-		} );
-		embedPlayer.$interface.append(
-			$j('<div>')
+		
+		// Setup the controlBar container
+		var $controlBar = $j('<div>')
 			.addClass( 'ui-state-default ui-widget-header ui-helper-clearfix control-bar' )
-			.css('display', 'block')
-		);		
+			.css( 'height', this.height )			
+		
+		// Check for overlay controls: 
+		if( _this.checkOverlayControls() ){
+			$controlBar.css({
+				'position': 'absolute',
+				'bottom' : '0px',
+				'left' : '0px',
+				'right' : '0px'				
+			})
+			.hide()
+			// Make sure the interface is correct height: 
+			embedPlayer.$interface.css( {
+				'height' : parseInt( embedPlayer.height )
+			} );
+		} else {
+			// Add some space to interface for the control bar ( if not overlaying controls )
+			embedPlayer.$interface.css( {
+				'height' : parseInt( embedPlayer.height ) + parseInt( this.height )
+			} );
+			// update the control bar display to "block" 
+			$controlBar.css('display', 'block')			
+		}
+		// add the controls to the interface
+		embedPlayer.$interface.append( $controlBar );
 	
-		//Add the Controls with their bindings
+		// Add the Controls with their bindings
 		this.addControlComponents();
 	
 		// Add hooks once Controls are in DOM
@@ -149,7 +173,7 @@ ctrlBuilder.prototype = {
 				continue;
 			}			
 			
-			// For now skip "fullscreen" for "audio" assets or where height is 0px
+			// Skip "fullscreen" button for assets or where height is 0px ( audio ) 
 			if(  component_id == 'fullscreen' && this.embedPlayer.height == 0 ){
 				continue;
 			}		
@@ -169,18 +193,70 @@ ctrlBuilder.prototype = {
 			}
 		}
 	},
+	
+	/**
+	* Get the fullscreen player css
+	*/	
+	getFullscreenPlayerCss: function(){
+		var embedPlayer = this.embedPlayer;
+		// Setup target height width based on max window size	
+		var fullWidth = $j( window ).width() - 2 ;
+		var fullHeight =  $j( window ).height() ;
+		
+		// Set target width
+		targetWidth = fullWidth;
+		targetHeight = targetWidth * ( embedPlayer.getHeight() / embedPlayer.getWidth()  ) 
+		// Check if it exceeds the height constraint: 
+		if( targetHeight >  fullHeight ){		
+			targetHeight = fullHeight;				
+			targetWidth = targetHeight * ( embedPlayer.getWidth()  / embedPlayer.getHeight()  );
+		}
+		var offsetTop = ( targetHeight < fullHeight )? ( fullHeight- targetHeight ) / 2 : 0;
+		var offsetLeft = ( targetWidth < fullWidth )? ( fullWidth- targetWidth ) / 2 : 0;
+		//mw.log(" targetWidth: " + targetWidth + ' fullwidth: ' + fullWidth + ' :: ' +  ( fullWidth- targetWidth ) / 2 );
+		return {
+			'height': targetHeight,
+			'width' : targetWidth,
+			'top' : offsetTop,
+			'left' : offsetLeft
+		}
+	},
+	
+	/**
+	* Get the fullscreen play button css
+	*/
+	getFullscreenPlayButtonCss: function(){		
+		var pos = this.getFullscreenPlayerCss();
+		return {
+			'left' : ( (  pos.width - this.getComponentWidth( 'playButtonLarge' ) ) / 2 ),
+			'top' : ( ( pos.height - this.getComponentHeight( 'playButtonLarge' ) ) / 2 )
+		}
+	},
+	
+	/**
+	* Get the fullscreen text css
+	*/
+	getFullscreenTextCss: function(){
+		// Some arbitrary scale relative to window size
+		var textSize = ( $j( window ).width() / 8 ) + 20;
+		if( textSize < 95 )  textSize = 95;
+		if( textSize > 250 ) textSize = 250;
+		mw.log(' win size is: ' + $j( window ).width() + ' ts: ' + textSize );
+		return {
+			'font-size' : textSize + '%'
+		}
+	},
+	
 	/**
 	 * Toggles full screen by calling 
 	 *  doFullScreenPlayer to enable fullscreen mode
-	 *  restoreWindowPlayer to restor window mode
+	 *  restoreWindowPlayer to restore window mode
 	 */
 	toggleFullscreen: function(){
 		if( this.fullscreenMode ){
-			this.restoreWindowPlayer();
-			this.fullscreenMode = false;
+			this.restoreWindowPlayer();			
 		}else{
 			this.doFullScreenPlayer();
-			this.fullscreenMode = true;
 		}
 	},
 	
@@ -188,125 +264,174 @@ ctrlBuilder.prototype = {
 	* Do full-screen mode 
 	*/ 
 	doFullScreenPlayer: function(){
-		mw.log(" ctrlBuilder :: toggle full-screen ");
-					
+		mw.log(" ctrlBuilder :: toggle full-screen ");									
 		// Setup pointer to control builder :
 		var _this = this;
 		
-		// Setup loadl refrence to embed player: 
+		// Setup local reference to embed player: 
 		var embedPlayer = this.embedPlayer;
 		
-		// Setup a local refrence to the player interface: 
+		// Setup a local reference to the player interface: 
 		var $interface = embedPlayer.$interface;
 		
-		// Add the black overlay: 		
+		
+		// Check fullscreen state ( if already true do nothing )
+		if( this.fullscreenMode == true ){
+			return ;
+		}			
+		this.fullscreenMode = true;		
+		
+		// Add the fullscreen black overlay:
 		$j( '<div />' )
 		.addClass( 'mw-fullscreen-overlay' )
 		// Set some arbitrary high z-index
-		.css('z-index', mw.getConfig( 'fullScreenIndex' ) ) 
+		.css('z-index', mw.getConfig( 'fullScreenIndex' ) -1) 
 		.appendTo('body')
 		.hide()
 		.fadeIn("slow");
 		
-		// Setup target height width based on max window size	
-		var fullWidth = $j(window).width() - 5 ;
-		var fullHeight =  $j(window).height() -5;
-		
-		// Set target width
-		targetWidth = fullWidth;
-		targetHeight = targetWidth * ( embedPlayer.height / embedPlayer.width  )
-		// Check if it exted the height constrait: 
-		if( targetHeight >  fullHeight ){		
-			targetHeight = fullHeight;				
-			targetWidth = targetHeight * ( embedPlayer.width  / embedPlayer.height  );
-		}		
+		// Set the video player margins to "auto" for centered resize
+		/*$j( embedPlayer ).css( {
+			'margin' : 'auto'
+		} );*/
 		
 		// Change the interface to absolute positioned: 
 		this.windowPositionStyle = $interface.css( 'position' );
+		this.windowZindex = $interface.css( 'z-index' );
+		
 		$interface.css( {
 			'position' : 'absolute',
-			'z-index' : mw.getConfig( 'fullScreenIndex' ) + 1 
-		} );		
-	
+			'z-index' : mw.getConfig( 'fullScreenIndex' )
+		} );
+		
 		// Get the base offset: 
-		this.windowOffset = $interface.offset();
+		this.windowOffset = $interface.offset();		
 		var topOffset = '0px';
 		var leftOffset = '0px';
+				
 		//Check if we have an offsetParent
-		if( $interface.offsetParent().length ){
+		if( $interface.offsetParent().get(0).tagName.toLowerCase() != 'body' ) {
 			topOffset = -this.windowOffset.top + 'px';
 			leftOffset = -this.windowOffset.left + 'px';
 		}
+		// Resize interface container		
 		$interface.animate( {			
 			'top' : topOffset,
 			'left' : leftOffset,
-			'width' : '99%',
-			'height' : '99%',
-			'z-index' : '999999'
+			'width' : '100%',
+			'height' : '100%'			
 		} )
 		
 		// Set the player height width: 
-		$j( this.embedPlayer ).css( {
-			'position' : 'relative',
-			'z-index' : '999999'
-		} )		
+		$j( embedPlayer ).css( {
+			'position' : 'relative'
+		} )
 		// Animate a zoom ( while keeping aspect )
-		.animate( {
-			'top' : '0px',
-			'left' : '0px',
-			'width' : targetWidth,
-			'height' : targetHeight 
-		} )		
+		.animate( _this.getFullscreenPlayerCss() );
 		
-		/*
-		-moz-transform:scale(1.97833) translate(-5px, 4px);
-		-moz-transform-origin:50.0852% 45.6621%;
-		left:0;
-		position:relative;
-		top:0;
-		*/ 
-				
-		// bind hide controls when mouse is not active
+		// Resize the timed text font size per window width	
+		$interface.find( '.itext' ).animate( _this.getFullscreenTextCss() );		
 		
-		// bind resize reize window to resize window
+		// Reposition play-btn-large ( this is unfortunatly not easy to position with 'margin': 'auto'
+		$interface.find('.play-btn-large').animate( _this.getFullscreenPlayButtonCss() )		
 		
-		// bind escape to restore clip resolution
+		// Bind mouse move in interface to hide control bar
+		_this.mouseMovedFlag = false;
+		$interface.mousemove( function(e){
+			_this.mouseMovedFlag = true;			
+		});
+		// Check every 2 seconds reset flag status:
+		function checkMovedMouse(){
+			mw.log("checkMovedMouse::" + _this.mouseMovedFlag  );
+			if( _this.fullscreenMode ){
+				if( _this.mouseMovedFlag ){
+					_this.mouseMovedFlag = false;
+					_this.showControlBar();
+					// once we move the mouse keep displayed for 5 seconds
+					setTimeout(checkMovedMouse, 5000);
+				}else{
+					// Check for mouse movment every 250ms
+					_this.hideControlBar();
+					setTimeout(checkMovedMouse, 250 );
+				}				
+			}
+		};
+		checkMovedMouse();
+	
+		
+		
+		// Bind resize resize window to resize window
+		$j( window ).resize( function() {
+			// Update player size
+			$j( embedPlayer ).css( _this.getFullscreenPlayerCss() );
+			
+			// Update play button pos
+			$interface.find('.play-btn-large').css(  _this.getFullscreenPlayButtonCss() );
+			
+			// Update the timed text size  
+			$interface.find( '.itext' ).css( _this.getFullscreenTextCss() );
+		});
+		
+		// Bind escape to restore clip resolution
 		$j( window ).keyup( function(event) {
 			// Escape check
 			if( event.keyCode == 27 ){
 				_this.restoreWindowPlayer();
 			}
-		} );
-		 
-	},
-	restoreWindowPlayer: function(){
+		} );		
+	},		
+	
+	/**
+	* Restore the window player
+	*/
+	restoreWindowPlayer: function() {		
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
+		
+		// Check fullscreen state
 		if( this.fullscreenMode == false ){
 			return ;	
 		}
 		// Set fullscreen mode to false
 		this.fullscreenMode = false;
 		
-		var $interface = embedPlayer.$interface;
+		var $interface = embedPlayer.$interface;		
+		var interfaceHeight = ( _this.checkOverlayControls() ) 
+			? embedPlayer.getHeight() 
+			: embedPlayer.getHeight() + _this.getHeight();
+		
 		$j('.mw-fullscreen-overlay').fadeOut( 'slow' );
 		$interface.animate( {
 			'top' : this.windowOffset.top,
 			'left' : this.windowOffset.left,
 			// height is embedPlayer height + ctrlBuilder height: 
-			'height': embedPlayer.height + _this.height,
-			'width' : embedPlayer.width					
+			'height': interfaceHeight,
+			'width' : embedPlayer.getWidth()					
 		},function(){
+			// Restore non-absolute layout: 
 			$interface.css( {
 				'position' : _this.windowPositionStyle,
+				'z-index' : _this.windowZindex,
 				'top' : null,
 				'left' : null 
 			} );
 		} );
-		// resize the player: 
+		// Restore the player: 
 		$j( embedPlayer ).animate( {
-			'width' : embedPlayer.width,
-			'height' : embedPlayer.height
+			'top' : '0px',
+			'left' : '0px',
+			'width' : embedPlayer.getWidth(),
+			'height' : embedPlayer.getHeight()
+		})
+		// Restore the play button
+		$interface.find('.play-btn-large').animate( {
+			'left' 	: ( ( embedPlayer.getPlayerWidth() - this.getComponentWidth( 'playButtonLarge' ) ) / 2 ),
+			'top'	: ( ( embedPlayer.getPlayerHeight() -this.getComponentHeight( 'playButtonLarge' ) ) / 2 )
+		} );
+		
+		// Restore text size: 
+		$interface.find('.itext').animate({
+			'font-size' : '100%'
 		})
 	},
 	
@@ -325,13 +450,6 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Get the control bar height: 
-	*/
-	getControlBarHeight: function( ) {
-		return this.height;
-	},
-	
-	/**
 	* addControlHooks
 	* Adds control hooks once controls are in the DOM
 	*/
@@ -341,12 +459,43 @@ ctrlBuilder.prototype = {
 		var _this = this;		
 		
 		// Setup target shortcut to	control-bar
-		$target = embedPlayer.$interface;
-
+		$target = embedPlayer.$interface;			
+		var mouseIn = false;
+		// Add hide show bindings for control overlay (if overlay is enabled ) 
+		if( _this.checkOverlayControls() ) {			
+			// Add a special absolute overlay for hover ( to keep menu displayed 
+			$j( embedPlayer.$interface ).hover(
+				function(){
+					_this.showControlBar()
+					mouseIn = true;
+				},
+				function(){
+					mouseIn = false;
+					// Hide controls ( delay hide if menu is visible )
+					function hideCheck(){					
+						if ( embedPlayer.$interface.find( '.overlay-win' ).length != 0 
+						||  $j('.menuPositionHelper').is(':visible' ) ) {
+							setTimeout( hideCheck, 250 );
+							return ;
+						}	
+						if( _this.checkOverlayControls() && !mouseIn ) {
+							_this.hideControlBar();
+						}
+												
+					}
+					// Don't remove until user is out of player for 1 second
+					setTimeout( hideCheck, 1000 );
+				}
+			);
+		} else {
+			$j( embedPlayer.$interface ).unbind().show();
+		}
+				
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.checkNativeWarning( ) ) {
 			_this.doNativeWarning();
 		}
+			
 		// Do png fix for ie6
 		if ( $j.browser.msie  &&  $j.browser.version <= 6 ) {			
 			$j('#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
@@ -360,6 +509,50 @@ ctrlBuilder.prototype = {
 		}
 	},
 	
+	/**
+	* Hide the control bar. 
+	*/
+	hideControlBar : function(){
+		// Else hide the control bar ( if checkOverlayControls is still true ) 	
+		this.embedPlayer.$interface.find( '.control-bar').fadeOut( 'slow' );		
+		// Move down itext if present
+		$j( '.itext' ).animate( {'bottom' : 10 } );
+	},
+	
+	/**
+	* Show the control bar
+	*/
+	showControlBar : function(){
+		// Show controls
+		this.embedPlayer.$interface.find( '.control-bar').fadeIn( 'slow' );
+		// Move up itext if present
+		$j( '.itext' ).animate( { 'bottom' : this.getHeight() + 10 } );
+	},
+	
+	/**
+	* Checks if the browser supports overlays and the controlsOverlay is 
+	* set to true for the player or via config
+	*/
+	checkOverlayControls: function(){
+		//if the player "supports" overlays: 
+		if( ! this.embedPlayer.supports['overlays'] ){
+			return false;
+		}
+		// If the config is false
+		if( ! mw.getConfig( 'overlayControls' ) ){
+			return false;
+		} 
+		// If disabled via the player
+		if( ! this.embedPlayer.overlayControls ){
+			return false;
+		} 
+		// don't hide controls when content "height" is 0 ( audio tags ) 
+		if( this.embedPlayer.height == 0 ){
+			return false;
+		}
+		// Past alll tests OverlayControls is true: 
+		return true; 
+	},
 	
 	/**
 	* Check if a warning should be issued to non-native playback systems 
@@ -658,7 +851,8 @@ ctrlBuilder.prototype = {
 			$j('<div />')
 			.addClass( 'ui-widget-overlay' )
 			.css( {
-				'height' : this.getOverlayHeight() + 'px'
+				'height' : '100%',
+				'width' : '100%'
 			} )
 		);
 		
@@ -979,12 +1173,27 @@ ctrlBuilder.prototype = {
 	 * Get a component height
 	 * 
 	 * @param {String} component_id Component key to grab height
+	 * @return height or false if not set
 	 */
 	getComponentHeight: function( component_id ) {
 		if ( this.components[ component_id ] 
 			&& this.components[ component_id ].h ) 
 		{
 			return this.components[ component_id ].h
+		}
+		return false;
+	},
+	
+	/**
+	* Get a component width
+	* @param {String} component_id Component key to grab width
+	* @return width or false if not set
+	*/
+	getComponentWidth: function( component_id ){
+		if ( this.components[ component_id ] 
+			&& this.components[ component_id ].w ) 
+		{
+			return this.components[ component_id ].w
 		}
 		return false;
 	},
@@ -1069,7 +1278,8 @@ ctrlBuilder.prototype = {
 						.buttonHover()		
 						// Options binding:
 						.menu( {
-							'content' : ctrlObj.getOptionsMenu(),		
+							'content' : ctrlObj.getOptionsMenu(),
+							'zindex' : mw.getConfig( 'fullScreenIndex' ),		
 							'positionOpts': {
 								'directionV' : 'up',								
 								'offsetY' : 32,
@@ -1093,7 +1303,7 @@ ctrlBuilder.prototype = {
 							$j( '<span />' )
 							.addClass( "ui-icon ui-icon-arrow-4-diag" )
 						)
-							// Fullscreen binding:
+						// Fullscreen binding:
 						.buttonHover().click( function() {
 							ctrlObj.embedPlayer.fullscreen();
 						} );

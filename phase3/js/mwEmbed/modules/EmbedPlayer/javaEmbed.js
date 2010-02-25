@@ -39,7 +39,7 @@ var javaEmbed = {
 		// load directly in the page..
 		// (media must be on the same server or applet must be signed)
 		var appletCode = '' +
-		'<applet id="' + this.pid + '" code="com.fluendo.player.Cortado.class" archive="' + applet_loc + '" width="' + this.width + '" height="' + this.height + '">	' + "\n" +
+		'<applet id="' + this.pid + '" code="com.fluendo.player.Cortado.class" archive="' + applet_loc + '" width="' + this.getWidth() + '" height="' + this.getHeight() + '">	' + "\n" +
 			'<param name="url" value="' + this.getSrc() + '" /> ' + "\n" +
 			'<param name="local" value="false"/>' + "\n" +
 			'<param name="keepaspect" value="true" />' + "\n" +
@@ -55,8 +55,8 @@ var javaEmbed = {
 		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
 		if ( $j.browser.mozilla ) {
 			var iframe = document.createElement( 'iframe' );
-			iframe.setAttribute( 'width', this.width );
-			iframe.setAttribute( 'height', this.height );
+			iframe.setAttribute( 'width', this.getWidth() );
+			iframe.setAttribute( 'height', this.getHeight() );
 			iframe.setAttribute( 'scrolling', 'no' );
 			iframe.setAttribute( 'frameborder', 0 );
 			iframe.setAttribute( 'marginWidth', 0 );

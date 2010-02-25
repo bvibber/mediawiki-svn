@@ -8,11 +8,12 @@ td{
 }
 </style>
 <script type="text/javascript" >
-//for just setting one or two to test at a time for debug
-//var langKeyDebug = [ 'lt'  ]; //pl
-var langKeyDebug = mw.getConfig( 'languageCodeList' );
 
 mw.ready( function(){
+	//for just setting one or two to test at a time for debug
+	//var langTestSet = [ 'lt'  ]; //pl
+	var langTestSet = mw.getConfig( 'languageCodeList' );
+	
 	//do mauall script loaders calls to test multiple languages:
 	function doLangTable( langSet ){		
 		//build table output: 
@@ -34,11 +35,12 @@ mw.ready( function(){
 		* proccess a language key test set
 		*/
 		function doProcLangKey( langKey ){
+			mw.log(" doProcLangKey: " + langKey );
 			// Clear out the old digitTransformTable
 			mw.lang.digitTransformTable = null;
 			//Load the current language js file
 			var langName = 'Language' +	langKey.substr(0,1).toUpperCase() + langKey.substr( 1,langKey.length ); 
-			$j.getScript( '../includes/languages/classes/' + langName + '.js' , function(){
+			$j.getScript( '../languages/classes/' + langName + '.js' , function(){
 				// Get the current language mw.testLang js
 				$j.getScript( '../../../mwScriptLoader.php?class=mw.testLang&debug=true&uselang='+langKey, function(){						
 					var o='';
@@ -133,10 +135,11 @@ mw.ready( function(){
 				});			
 			});
 		}//procc lang key:
+		
 		doProcLangKey( langSet.pop() );
 	}
 	//by default run the "debug" set:
-	doLangTable( langKeyDebug );
+	doLangTable( langTestSet );
 });
 
 </script>

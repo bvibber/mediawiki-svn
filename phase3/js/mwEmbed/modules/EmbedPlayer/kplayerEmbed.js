@@ -24,7 +24,7 @@ var kplayerEmbed = {
 		var _this = this;
 		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
 		$j( this ).html(
-		 	'<object width="' + this.width + '" height="' + this.height + '" '+ 
+		 	'<object width="' + this.getWidth() + '" height="' + this.getHeight() + '" '+ 
 			 'data="' + playerPath + '/wrapper.swf" allowfullscreen="true" '+ 
 			 'allownetworking="all" allowscriptaccess="always" '+
 			 'type="application/x-shockwave-flash" '+ 

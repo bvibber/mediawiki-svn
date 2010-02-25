@@ -215,7 +215,7 @@ mw.addMessages( {
 			if( this.embedPlayer.supports[ 'overlays' ] ){
 				var positionOpts = {
 					'directionV' : 'up',								
-					'offsetY' : 32,
+					'offsetY' : this.embedPlayer.ctrlBuilder.getHeight(),
 					'directionH' : 'left',
 					'offsetX' : -28
 				};		
@@ -228,7 +228,9 @@ mw.addMessages( {
 				// NOTE: Button target should be an option or config
 				$menuButton.unbind().menu( {
 					'content'	: _this.getMainMenu(),
+					'zindex' : mw.getConfig( 'fullScreenIndex' ),
 					'crumbDefaultText' : ' ',
+					'targetMenuContainer' : _this.menuTarget,
 					'autoShow' : autoShow,
 					'positionOpts' : positionOpts,
 					'backLinkText' : gM( 'mwe-back-btn' )
@@ -786,7 +788,7 @@ mw.addMessages( {
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
 						.css( {							
 							'position':'absolute',
-							'bottom': ( this.embedPlayer.ctrlBuilder.height + 10 ),
+							'bottom': ( this.embedPlayer.ctrlBuilder.getHeight() + 10 ),
 							'width': '100%',
 							'display': 'block',
 							'opacity': .8,
@@ -798,33 +800,47 @@ mw.addMessages( {
 							})
 						)
 				);
-				// Resize the interface for layoutMode == 'ontop' 
-				this.embedPlayer.$interface.animate({
-					'height': this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height
-				})	
+				
+				// Resize the interface for layoutMode == 'ontop' ( if not in fullscreen )  
+				// NOTE this shoudl be a call to ctrlBuilder not handled here inline
+				if( ! this.embedPlayer.ctrlBuilder.fullscreenMode ){
+					if( this.embedPlayer.ctrlBuilder.checkOverlayControls() ){
+						var playerHeight = this.embedPlayer.getHeight();
+					} else {
+						var playerHeight = this.embedPlayer.getHeight() + this.embedPlayer.ctrlBuilder.getHeight();
+					}
+					// Restore the player height	
+					this.embedPlayer.$interface.animate({
+						'height': playerHeight
+					});
+				}
 			}else if ( layoutMode == 'below') {
+				// Set the belowBar size to 60 pxiles: 
+				var belowBarHeight = 60; 
 				// Append before controls: 
 				$playerTarget.find( '.control-bar' ).before(
 					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
 						.css({
-							'display': 'block',
-							'width': '100%',
-							'height': '60px',
-							'background-color':'#000',
-							'text-align':'center',
-							'padding-top':'5px'
+							'display' : 'block',
+							'width' : '100%',
+							'height' : belowBarHeight + 'px',
+							'background-color' : '#000',
+							'text-align' : 'center',
+							'padding-top' : '5px'
 						} ).append(
 							$j('<span>').css( {
 								'color':'white'
 							} )
 						) 
 				);		
-				var height = 62 + this.embedPlayer.height + this.embedPlayer.ctrlBuilder.height;
-				mw.log( 'set height:' + height );
-				// Resize the interface for layoutMode == 'below' 
-				this.embedPlayer.$interface.animate({
-					'height': height
-				})
+				// 
+				var height = belowBarHeight + this.embedPlayer.getHeight() + this.embedPlayer.ctrlBuilder.getHeight();				
+				// Resize the interface for layoutMode == 'below' ( if not in full screen)
+				if( ! this.embedPlayer.ctrlBuilder.fullscreenMode ){
+					this.embedPlayer.$interface.animate({
+						'height': height
+					})
+				}
 				mw.log( ' height of ' + this.embedPlayer.id + ' is now: ' + $j( '#' + this.embedPlayer.id ).height() );
 			}
 			mw.log( 'should have been appended: ' + $playerTarget.find('.itext').length );
@@ -895,7 +911,7 @@ mw.addMessages( {
 					var handler = parseSrt;
 				break;
 				case 'text/cmml':
-					var handler = parseCMML; 
+					var handler = parseCMML;
 				break;
 				default: 
 					var hanlder = null;
