@@ -30,18 +30,18 @@ class DynamicSidebar {
 			// Replace the GROUP-SIDEBAR entry with the group's sidebar
 			$groupSB = array();
 			$skin->addToSidebarPlain( $groupSB, self::doGroupSidebar() );
-			array_splice( $sidebar, array_search( 'GROUP-SIDEBAR', $sidebar ), 1, $groupSB );
+			array_splice( $sidebar, array_search( 'GROUP-SIDEBAR', array_keys( $sidebar ), true ), 1, $groupSB );
 		}
 		if ( $wgDynamicSidebarUseUserpages && isset( $sidebar['USER-SIDEBAR'] ) ) {
 			// Replace the USER-SIDEBAR entry with the user's sidebar
 			$userSB = array();
 			$skin->addToSidebarPlain( $userSB, self::doUserSidebar() );
-			array_splice( $sidebar, array_search( 'USER-SIDEBAR', $sidebar ), 1, $userSB );
+			array_splice( $sidebar, array_search( 'USER-SIDEBAR', array_keys( $sidebar ), true ), 1, $userSB );
 		}
 		if ( $wgDynamicSidebarUseCategories && isset( $sidebar['CATEGORY-SIDEBAR'] ) ) {
 			$catSB = array();
 			$skin->addToSidebarPlain( $catSB, self::doCategorySidebar() );
-			array_splice( $sidebar, array_search( 'CATEGORY-SIDEBAR', $sidebar ), 1, $catSB );
+			array_splice( $sidebar, array_search( 'CATEGORY-SIDEBAR', array_keys( $sidebar ), true ), 1, $catSB );
 		}
 		return true;
 	}
