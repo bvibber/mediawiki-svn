@@ -784,23 +784,30 @@ mw.addMessages( {
 			// Setup the display text div: 
 			var layoutMode = this.getLayoutMode();
 			if( layoutMode == 'ontop' ) {
-				$playerTarget.append(
-					$j('<div>').addClass( 'itext' + ' ' + 'itext_' + category )
-						.css( {							
-							'position':'absolute',
-							'bottom': ( this.embedPlayer.ctrlBuilder.getHeight() + 10 ),
-							'width': '100%',
-							'display': 'block',
-							'opacity': .8,
-							'text-align':'center'
-						}).append(
-							$j('<span>').css({
-								'color':'white',
-								'background-color':'#333'
-							})
-						)
-				);
+				var $itext = $j('<div>')
+					.addClass( 'itext' + ' ' + 'itext_' + category )
+					.css( {							
+						'position':'absolute',
+						'bottom': ( this.embedPlayer.ctrlBuilder.getHeight() + 10 ),
+						'width': '100%',
+						'display': 'block',
+						'opacity': .8,
+						'text-align':'center'
+					})
+					.append(
+						$j('<span>').css({
+							'color':'white',
+							'background-color':'#333'
+						})
+					)									
 				
+				// If in fullscreen mode update the text size: 
+				if( this.embedPlayer.ctrlBuilder.fullscreenMode ){
+					$itext.css(
+						this.embedPlayer.ctrlBuilder.getFullscreenTextCss()
+					);					
+				}
+				$playerTarget.append( $itext );
 				// Resize the interface for layoutMode == 'ontop' ( if not in fullscreen )  
 				// NOTE this shoudl be a call to ctrlBuilder not handled here inline
 				if( ! this.embedPlayer.ctrlBuilder.fullscreenMode ){
@@ -833,8 +840,8 @@ mw.addMessages( {
 							} )
 						) 
 				);		
-				// 
-				var height = belowBarHeight + this.embedPlayer.getHeight() + this.embedPlayer.ctrlBuilder.getHeight();				
+				// Add some height for the bar and interface
+				var height = ( belowBarHeight + 8 )  + this.embedPlayer.getHeight() + this.embedPlayer.ctrlBuilder.getHeight();				
 				// Resize the interface for layoutMode == 'below' ( if not in full screen)
 				if( ! this.embedPlayer.ctrlBuilder.fullscreenMode ){
 					this.embedPlayer.$interface.animate({
