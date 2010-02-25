@@ -16,13 +16,13 @@ class DynamicSidebar {
 	}
 
 	/**
-	 * Called from SkinBeforeParseSidebar hook. Modifies the sidebar
+	 * Called from SkinBuildSidebar hook. Modifies the sidebar
 	 * via callbacks.
 	 *
 	 * @param Skin $skin
 	 * @param string $sidebar
 	 */
-	private static function modifySidebar( $skin, &$sidebar ) {
+	public static function modifySidebar( $skin, &$sidebar ) {
 		global $wgDynamicSidebarUseGroups, $wgDynamicSidebarUseUserpages;
 		global $wgDynamicSidebarUseCategories;
 
