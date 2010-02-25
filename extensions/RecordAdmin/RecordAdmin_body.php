@@ -238,7 +238,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 			$wgOut->addHTML(
 				'<table class="recordadmin-create">'
-				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( id => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
+				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'id' => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
 				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. '</td></tr>'
 				. '<tr><td>' . $this->form . '</td></tr>'
