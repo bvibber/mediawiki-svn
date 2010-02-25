@@ -29,15 +29,16 @@ $wgDynamicSidebarUseUserpages = true;
 $wgDynamicSidebarUseGroups = true;
 $wgDynamicSidebarUseCategories = true;
 
-$wgExtensionCredits['other'][] = array( 
-	'name'	 		=> 'DynamicSidebar',
-	'version'		=> '1.0a',
-	'author'		=> 'Ryan Lane',
-	'url'			=> 'http://www.mediawiki.org/wiki/Extension:DynamicSidebar',	
-	'description' 		=> "Provides dynamic sidebars based on user pages, groups, and categories.", 
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'DynamicSidebar',
+	'version' => '1.0a',
+	'author' => 'Ryan Lane',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:DynamicSidebar',
+	'description' => 'Provides dynamic sidebars based on user pages, groups, and categories.',
 	);
 
-$wgExtensionFunctions[] = 'DynamicSidebar::setup';
+$wgExtensionFunctions[] = array( 'DynamicSidebar', 'setup' );
 $wgHooks['SkinBuildSidebar'][] = 'DynamicSidebar::modifySidebar';
 
 $dir = dirname( __FILE__ ) . '/';

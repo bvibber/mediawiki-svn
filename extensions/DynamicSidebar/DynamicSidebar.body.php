@@ -19,8 +19,8 @@ class DynamicSidebar {
 	 * Called from SkinBuildSidebar hook. Modifies the sidebar
 	 * via callbacks.
 	 *
-	 * @param Skin $skin
-	 * @param string $sidebar
+	 * @param $skin Skin
+	 * @param $sidebar String
 	 */
 	public static function modifySidebar( $skin, &$sidebar ) {
 		global $wgDynamicSidebarUseGroups, $wgDynamicSidebarUseUserpages;
