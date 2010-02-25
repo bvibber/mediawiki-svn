@@ -78,7 +78,7 @@ mw.setDefaultConfig ( {
 	//If we are in debug mode ( results in fresh debug javascript includes )
 	'debug' : false,
 	
-	// Valid language codes ( has a file in /includes/languages/classes/Language{code}.js )
+	// Valid language codes ( has a file in /languages/classes/Language{code}.js )
 	// TODO: mirror the mediaWiki language "fallback" system
 	'languageCodeList': ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
 		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',

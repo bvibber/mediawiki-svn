@@ -114,7 +114,7 @@ ctrlBuilder.prototype = {
 		} else {
 			// Add some space to interface for the control bar ( if not overlaying controls )
 			embedPlayer.$interface.css( {
-				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) +2
+				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) + 2
 			} );
 			// update the control bar display to "block" 
 			$controlBar.css('display', 'block')			

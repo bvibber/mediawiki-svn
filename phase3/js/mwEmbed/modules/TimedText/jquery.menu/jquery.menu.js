@@ -173,7 +173,9 @@ function Menu(caller, options) {
 	this.showMenu = function() {
 		mw.log('$j.menu:: show menu' );				
 		killAllMenus();
-		if (!menu.menuExists) { menu.create() };
+		if (!menu.menuExists) { 
+			menu.create() 
+		};		
 		caller
 			.addClass('fg-menu-open')
 			.addClass(options.callerOnState);
@@ -313,8 +315,8 @@ function Menu(caller, options) {
 				},
 				function() { $(this).removeClass(options.linkHoverSecondary); }
 			);
-		};	
-		
+		};
+			
 		menu.setPosition(container, caller, options);
 		menu.menuExists = true;
 	};

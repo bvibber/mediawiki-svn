@@ -53,7 +53,7 @@ var javaEmbed = {
 								
 		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
 		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
-		if ( $j.browser.mozilla ) {
+		/*if ( $j.browser.mozilla ) {
 			var iframe = document.createElement( 'iframe' );
 			iframe.setAttribute( 'width', this.getWidth() );
 			iframe.setAttribute( 'height', this.getHeight() );
@@ -72,9 +72,9 @@ var javaEmbed = {
 			newDoc.write( '<html><body>' + appletCode + '</body></html>' );
 			// spurious error in some versions of FF, no workaround known
 			newDoc.close(); 
-		} else {
+		} else {*/
 			$j( this ).html( appletCode );
-		}	
+		//}	
 		
 		// Start the monitor: 
 		this.monitor();
@@ -174,11 +174,11 @@ var javaEmbed = {
 	* Update the playerElement instance with a pointer to the embed object 
 	*/
 	getPlayerElement:function() {
-		if ( $j.browser.mozilla ) {
-			this.playerElement  = $j('#cframe_' + this.id).contents().find( '#' +  this.pid );							
-		} else {
+		//if ( $j.browser.mozilla ) {
+		//	this.playerElement  = $j('#cframe_' + this.id).contents().find( '#' +  this.pid );							
+		//} else {
 			this.playerElement = $j( '#' + this.pid ).get( 0 );
-		}
+		//}
 	},	
 	
 	/**

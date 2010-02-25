@@ -19,8 +19,7 @@ if ( !mwApiProxyConfig ){
 var mwApiProxyDefaultConfig = {
 	'master_whitelist' 	: [ 'en.wikipedia.org', 'localhost', '127.1.1.100' ],
 	'master_blacklist'	: []
-}; 
-
+};
 
 // User white_list should also be checked and configured at runtime.
 mw.ready( function() {
@@ -28,7 +27,7 @@ mw.ready( function() {
 	mwApiProxyConfig = $j.extend( true, mwApiProxyDefaultConfig,  mwApiProxyConfig );
 	mw.setConfig( 'apiProxyConfig',  mwApiProxyConfig);
 	 
-	//Do a setTimeout to 0 to call after other zero delay async events 
+	// Do a setTimeout to 0 to call after other zero delay async events 
 	// ( once everyone is doing buildout withthin mwsetup priror to .ready this won't be needed. ) 
 	mw.load( 'ApiProxy', function(){	
 		//Clear out the page content ( not needed for iframe proxy ) 
