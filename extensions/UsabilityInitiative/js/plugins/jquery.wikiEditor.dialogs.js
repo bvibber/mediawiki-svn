@@ -10,31 +10,6 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 ( function( $ ) { $.wikiEditor.modules.dialogs = {
 
 /**
- * Compatability map
- */
-'browsers': {
-	// Left-to-right languages
-	'ltr': {
-		'msie': [['>=', 7]],
-		'firefox': [['>=', 3]],
-		'opera': [['>=', 10]],
-		'safari': [['>=', 4]],
-		'chrome': [['>=', 4]]
-	},
-	// Right-to-left languages
-	'rtl': {
-		'msie': [['>=', 8]],
-		'firefox': [['>=', 3]],
-		'opera': [['>=', 10]],
-		'safari': [['>=', 4]],
-		'chrome': [['>=', 4]]
-	}
-},
-/**
- * Core Requirements
- */
-'req': [ 'iframe' ],
-/**
  * API accessible functions
  */
 api: {
@@ -46,7 +21,7 @@ api: {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
 		}
 	},
-	closeDialog: function( context, data ) {
+	closeDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'close' );
 		}
@@ -68,11 +43,17 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mw.usability.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( module in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[module];
-				// Only create the dialog if it doesn't exist yet
-				if ( $( '#' + module.id ).size() == 0 ) {
+		// TODO: Move mw.usability.load() call down to where we're sure we're really gonna build a dialog
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
+				var module = $.wikiEditor.modules.dialogs.modules[mod];
+				// Only create the dialog if it's supported and doesn't exist yet
+				if ( $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+					// If this dialog requires the iframe, set it up
+					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+						context.fn.setupIframe();
+					}
+					
 					var configuration = module.dialog;
 					// Add some stuff to configuration
 					configuration.bgiframe = true;
@@ -120,6 +101,9 @@ fn: {
 						.each( function() {
 							$j(this).attr( 'tabindex', tabIndex++ );
 						});
+					
+					// Let the outside world know we set up this dialog
+					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 				}
 			}
 		});

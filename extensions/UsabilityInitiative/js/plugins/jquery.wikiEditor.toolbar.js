@@ -287,7 +287,9 @@ fn: {
 			for ( tool in group.tools ) {
 				var tool =  $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] );
 				if ( tool ) {
-					empty = false;
+					// Consider a group with only hidden tools empty as well
+					// .is( ':visible' ) always returns false because tool is not attached to the DOM yet
+					empty = empty && tool.css( 'display' ) == 'none';
 					$group.append( tool );
 				}
 			}
@@ -309,7 +311,7 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				$button = $( '<img />' ).attr( {
+				var $button = $( '<img />' ).attr( {
 					'src' : src,
 					'width' : 22,
 					'height' : 22,
@@ -332,12 +334,23 @@ fn: {
 							);
 							return false;
 						} );
+					// If the action is a dialog that hasn't been loaded yet, hide the button
+					// until the dialog is loaded
+					if ( tool.action.type == 'dialog' &&
+							!( tool.action.module in $.wikiEditor.modules.dialogs.modules ) ) {
+						$button.hide();
+						// JavaScript won't propagate the $button variable itself, it needs help
+						context.$textarea.bind( 'wikiEditor-dialogs-loaded-' + tool.action.module,
+							{ button: $button }, function( event ) {
+								event.data.button.show().parent().show();
+						} );
+					}
 				}
 				return $button;
 			case 'select':
 				var $select = $( '<div />' )
 					.attr( { 'rel' : id, 'class' : 'tool tool-select' } );
-				$options = $( '<div />' ).addClass( 'options' );
+				var $options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
 					for ( option in tool.list ) {
 						var optionLabel = $.wikiEditor.autoMsg( tool.list[option], 'label' );

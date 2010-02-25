@@ -6,7 +6,7 @@ $j(document).ready( function() {
 		return true;
 	}
 	// Only show content generation dialogs if enabled
-	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( 'dialogs' ) ) {
+	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( $j.wikiEditor.modules.dialogs ) ) {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
 	// Add the toolbar module
@@ -840,6 +840,27 @@ $j(document).ready( function() {
 },
 'dialogs': {
 	'insert-link': {
+		// For now, apply the old browser and iframe requirements to the link and table dialogs as well
+		// This'll be removed once these dialogs are confirmed stable without the iframe and/or in more browsers
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				'msie': [['>=', 7]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			},
+			// Right-to-left languages
+			'rtl': {
+				'msie': [['>=', 8]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			}
+		},
+		'req': [ 'iframe' ],
 		titleMsg: 'wikieditor-toolbar-tool-link-title',
 		id: 'wikieditor-toolbar-link-dialog',
 		html: '\
@@ -1320,6 +1341,27 @@ $j(document).ready( function() {
 		}
 	},
 	'insert-table': {
+		// For now, apply the old browser and iframe requirements to the link and table dialogs as well
+		// This'll be removed once these dialogs are confirmed stable without the iframe and/or in more browsers
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				'msie': [['>=', 7]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			},
+			// Right-to-left languages
+			'rtl': {
+				'msie': [['>=', 8]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			}
+		},
+		'req': [ 'iframe' ],
 		titleMsg: 'wikieditor-toolbar-tool-table-title',
 		id: 'wikieditor-toolbar-table-dialog',
 		// FIXME: Localize 'x'?
@@ -1532,6 +1574,25 @@ $j(document).ready( function() {
 		}
 	},
 	'search-and-replace': {
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				'msie': [['>=', 7]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			},
+			// Right-to-left languages
+			'rtl': {
+				'msie': [['>=', 8]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			}
+		},
+		'req': [ 'iframe' ],
 		titleMsg: 'wikieditor-toolbar-tool-replace-title',
 		id: 'wikieditor-toolbar-replace-dialog',
 		html: '\

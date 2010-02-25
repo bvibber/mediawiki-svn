@@ -74,60 +74,48 @@ $.wikiEditor = {
 	 * similar to another existing browser that things actually do work as expected. The merrits of this argument, which
 	 * is essentially to blacklist rather than whitelist are debateable, but at this point we've decided it's the more
 	 * "open-web" way to go.
+	 * @param module Module object, defaults to $.wikiEditor
 	 */
 	'isSupported': function( module ) {
-		// Check for and make use of cached value and early opportunities to bail
-		if ( module ) {
-			// If the module doesn't exist, it's clearly not supported
-			if ( typeof $.wikiEditor.modules[module] == 'undefined' ) {
-				return false;
-			} else if ( typeof $.wikiEditor.modules[module].supported !== 'undefined' ) {
-				// Cache hit
-				return $.wikiEditor.modules[module].supported;
-			}
-		} else {
-			if ( typeof $.wikiEditor.supported !== 'undefined' ) {
-				// Cache hit
-				return $.wikiEditor.supported;
-			}
-		}
-		// Provide quick way to cache support
-		function cacheSupport( value ) {
-			return module ? $.wikiEditor.modules[module].supported = value : $.wikiEditor.supported = value;
-		}
 		// Fallback to the wikiEditor browser map if no special map is provided in the module
-		var map = module && 'browsers' in $.wikiEditor.modules[module] ?
-				$.wikiEditor.modules[module].browsers : $.wikiEditor.browsers;
+		var mod = module && 'browsers' in module ? module : $.wikiEditor;
+		// Check for and make use of cached value and early opportunities to bail
+		if ( typeof mod.supported !== 'undefined' ) {
+			// Cache hit
+			return mod.supported;
+		}
 		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
+		if ( !( $.browser.name in mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
 			// Assume good faith :) 
-			return cacheSupport( true );
+			return mod.supported = true;
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
+		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
 		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
 			if ( typeof val == 'string' ) {
 				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return cacheSupport( false );
+					return mod.supported = false;
 				}
 			} else if ( typeof val == 'number' ) {
 				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return cacheSupport( false );
+					return mod.supported = false;
 				}
 			}
 		}
 		// Return and also cache the return value - this will be checked somewhat often
-		return cacheSupport( true );
+		return mod.supported = true;
 	},
 	/**
 	 * Checks if a module has a specific requirement
+	 * @param module Module object
+	 * @param requirement String identifying requirement
 	 */
 	'isRequired': function( module, requirement ) {
-		if ( typeof $.wikiEditor.modules[module]['req'] !== 'undefined' ) {
-			for ( req in $.wikiEditor.modules[module]['req'] ) {
-				if ( $.wikiEditor.modules[module]['req'][req] == requirement ) {
+		if ( typeof module['req'] !== 'undefined' ) {
+			for ( req in module['req'] ) {
+				if ( module['req'][req] == requirement ) {
 					return true;
 				}
 			}
@@ -270,7 +258,7 @@ if ( typeof context == 'undefined' ) {
 			}
 			for ( var module in modules ) {
 				// Check for the existance of an available / supported module with a matching name and a create function
-				if ( typeof module == 'string' && $.wikiEditor.isSupported( module ) ) {
+				if ( typeof module == 'string' && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) ) {
 					// Extend the context's core API with this module's own API calls
 					if ( 'api' in $.wikiEditor.modules[module] ) {
 						for ( var call in $.wikiEditor.modules[module].api ) {
@@ -1701,7 +1689,8 @@ var args = $.makeArray( arguments );
 if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' && typeof arguments[1] == 'object' ) {
 	for ( module in arguments[1] ) {
 		// Only allow modules which are supported (and thus actually being turned on) affect this decision
-		if ( $.wikiEditor.isSupported( module ) && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+		if ( module in $.wikiEditor.modules && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) &&
+				$.wikiEditor.isRequired( $.wikiEditor.modules[module], 'iframe' ) ) {
 			context.fn.setupIframe();
 			break;
 		}

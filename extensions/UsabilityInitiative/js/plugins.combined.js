@@ -6511,60 +6511,48 @@ $.wikiEditor = {
 	 * similar to another existing browser that things actually do work as expected. The merrits of this argument, which
 	 * is essentially to blacklist rather than whitelist are debateable, but at this point we've decided it's the more
 	 * "open-web" way to go.
+	 * @param module Module object, defaults to $.wikiEditor
 	 */
 	'isSupported': function( module ) {
-		// Check for and make use of cached value and early opportunities to bail
-		if ( module ) {
-			// If the module doesn't exist, it's clearly not supported
-			if ( typeof $.wikiEditor.modules[module] == 'undefined' ) {
-				return false;
-			} else if ( typeof $.wikiEditor.modules[module].supported !== 'undefined' ) {
-				// Cache hit
-				return $.wikiEditor.modules[module].supported;
-			}
-		} else {
-			if ( typeof $.wikiEditor.supported !== 'undefined' ) {
-				// Cache hit
-				return $.wikiEditor.supported;
-			}
-		}
-		// Provide quick way to cache support
-		function cacheSupport( value ) {
-			return module ? $.wikiEditor.modules[module].supported = value : $.wikiEditor.supported = value;
-		}
 		// Fallback to the wikiEditor browser map if no special map is provided in the module
-		var map = module && 'browsers' in $.wikiEditor.modules[module] ?
-				$.wikiEditor.modules[module].browsers : $.wikiEditor.browsers;
+		var mod = module && 'browsers' in module ? module : $.wikiEditor;
+		// Check for and make use of cached value and early opportunities to bail
+		if ( typeof mod.supported !== 'undefined' ) {
+			// Cache hit
+			return mod.supported;
+		}
 		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
+		if ( !( $.browser.name in mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
 			// Assume good faith :) 
-			return cacheSupport( true );
+			return mod.supported = true;
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = map[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
+		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
 		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
 			if ( typeof val == 'string' ) {
 				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return cacheSupport( false );
+					return mod.supported = false;
 				}
 			} else if ( typeof val == 'number' ) {
 				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return cacheSupport( false );
+					return mod.supported = false;
 				}
 			}
 		}
 		// Return and also cache the return value - this will be checked somewhat often
-		return cacheSupport( true );
+		return mod.supported = true;
 	},
 	/**
 	 * Checks if a module has a specific requirement
+	 * @param module Module object
+	 * @param requirement String identifying requirement
 	 */
 	'isRequired': function( module, requirement ) {
-		if ( typeof $.wikiEditor.modules[module]['req'] !== 'undefined' ) {
-			for ( req in $.wikiEditor.modules[module]['req'] ) {
-				if ( $.wikiEditor.modules[module]['req'][req] == requirement ) {
+		if ( typeof module['req'] !== 'undefined' ) {
+			for ( req in module['req'] ) {
+				if ( module['req'][req] == requirement ) {
 					return true;
 				}
 			}
@@ -6707,7 +6695,7 @@ if ( typeof context == 'undefined' ) {
 			}
 			for ( var module in modules ) {
 				// Check for the existance of an available / supported module with a matching name and a create function
-				if ( typeof module == 'string' && $.wikiEditor.isSupported( module ) ) {
+				if ( typeof module == 'string' && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) ) {
 					// Extend the context's core API with this module's own API calls
 					if ( 'api' in $.wikiEditor.modules[module] ) {
 						for ( var call in $.wikiEditor.modules[module].api ) {
@@ -8138,7 +8126,8 @@ var args = $.makeArray( arguments );
 if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' && typeof arguments[1] == 'object' ) {
 	for ( module in arguments[1] ) {
 		// Only allow modules which are supported (and thus actually being turned on) affect this decision
-		if ( $.wikiEditor.isSupported( module ) && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+		if ( module in $.wikiEditor.modules && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) &&
+				$.wikiEditor.isRequired( $.wikiEditor.modules[module], 'iframe' ) ) {
 			context.fn.setupIframe();
 			break;
 		}
@@ -8170,31 +8159,6 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 ( function( $ ) { $.wikiEditor.modules.dialogs = {
 
 /**
- * Compatability map
- */
-'browsers': {
-	// Left-to-right languages
-	'ltr': {
-		'msie': [['>=', 7]],
-		'firefox': [['>=', 3]],
-		'opera': [['>=', 10]],
-		'safari': [['>=', 4]],
-		'chrome': [['>=', 4]]
-	},
-	// Right-to-left languages
-	'rtl': {
-		'msie': [['>=', 8]],
-		'firefox': [['>=', 3]],
-		'opera': [['>=', 10]],
-		'safari': [['>=', 4]],
-		'chrome': [['>=', 4]]
-	}
-},
-/**
- * Core Requirements
- */
-'req': [ 'iframe' ],
-/**
  * API accessible functions
  */
 api: {
@@ -8206,7 +8170,7 @@ api: {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
 		}
 	},
-	closeDialog: function( context, data ) {
+	closeDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'close' );
 		}
@@ -8228,11 +8192,17 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mw.usability.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( module in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[module];
-				// Only create the dialog if it doesn't exist yet
-				if ( $( '#' + module.id ).size() == 0 ) {
+		// TODO: Move mw.usability.load() call down to where we're sure we're really gonna build a dialog
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
+				var module = $.wikiEditor.modules.dialogs.modules[mod];
+				// Only create the dialog if it's supported and doesn't exist yet
+				if ( $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+					// If this dialog requires the iframe, set it up
+					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+						context.fn.setupIframe();
+					}
+					
 					var configuration = module.dialog;
 					// Add some stuff to configuration
 					configuration.bgiframe = true;
@@ -8280,6 +8250,9 @@ fn: {
 						.each( function() {
 							$j(this).attr( 'tabindex', tabIndex++ );
 						});
+					
+					// Let the outside world know we set up this dialog
+					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 				}
 			}
 		});
@@ -10619,7 +10592,9 @@ fn: {
 			for ( tool in group.tools ) {
 				var tool =  $.wikiEditor.modules.toolbar.fn.buildTool( context, tool, group.tools[tool] );
 				if ( tool ) {
-					empty = false;
+					// Consider a group with only hidden tools empty as well
+					// .is( ':visible' ) always returns false because tool is not attached to the DOM yet
+					empty = empty && tool.css( 'display' ) == 'none';
 					$group.append( tool );
 				}
 			}
@@ -10641,7 +10616,7 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				$button = $( '<img />' ).attr( {
+				var $button = $( '<img />' ).attr( {
 					'src' : src,
 					'width' : 22,
 					'height' : 22,
@@ -10664,12 +10639,23 @@ fn: {
 							);
 							return false;
 						} );
+					// If the action is a dialog that hasn't been loaded yet, hide the button
+					// until the dialog is loaded
+					if ( tool.action.type == 'dialog' &&
+							!( tool.action.module in $.wikiEditor.modules.dialogs.modules ) ) {
+						$button.hide();
+						// JavaScript won't propagate the $button variable itself, it needs help
+						context.$textarea.bind( 'wikiEditor-dialogs-loaded-' + tool.action.module,
+							{ button: $button }, function( event ) {
+								event.data.button.show().parent().show();
+						} );
+					}
 				}
 				return $button;
 			case 'select':
 				var $select = $( '<div />' )
 					.attr( { 'rel' : id, 'class' : 'tool tool-select' } );
-				$options = $( '<div />' ).addClass( 'options' );
+				var $options = $( '<div />' ).addClass( 'options' );
 				if ( 'list' in tool ) {
 					for ( option in tool.list ) {
 						var optionLabel = $.wikiEditor.autoMsg( tool.list[option], 'label' );
