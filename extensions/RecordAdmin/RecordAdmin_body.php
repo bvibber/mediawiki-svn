@@ -238,11 +238,11 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 			$wgOut->addHTML(
 				'<table class="recordadmin-create">'
-				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
+				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( id => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
 				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. '</td></tr>'
 				. '<tr><td>' . $this->form . '</td></tr>'
-				. '<tr><td>' . Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) . '</td></tr>'
+				. '<tr><td>' . Xml::element( 'input', array( 'type' => 'hidden', 'id' => 'ra-type', 'name' => 'wpType', 'value' => $type ) ) . '</td></tr>'
 				. '<tr><td>'
 				. Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'id' => 'ra-find', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) )
 				. Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'id' => 'ra-create', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) )
