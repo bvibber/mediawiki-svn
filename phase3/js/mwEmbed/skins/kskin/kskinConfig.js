@@ -67,12 +67,9 @@ var kskinConfig = {
 						'top' : '0px'				
 					} );
 				
-				if( ctrlObj.checkOverlayControls() ){	
-					// Set to overlayheight - ( control bar height + 2 for borders ) 
-					$menuOverlay.css( 'bottom', ctrlObj.getHeight() + 2  );
-				}else{
-					$menuOverlay.css( 'bottom', 0 );
-				} 
+		
+				$menuOverlay.css( 'bottom', ctrlObj.getHeight() + 2  );
+	
 					
 				// Setup menu offset ( if player height <  getOverlayHeight )
 				// This displays the menu outside of the player on small embeds	

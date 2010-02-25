@@ -37,6 +37,7 @@ ctrlBuilder.prototype = {
 	
 	// Default supported menu items is merged with skin menu items
 	supportedMenuItems: {
+		// Player Select
 		'playerSelect' : true, 
 		
 		// Download the file menu
@@ -113,7 +114,7 @@ ctrlBuilder.prototype = {
 		} else {
 			// Add some space to interface for the control bar ( if not overlaying controls )
 			embedPlayer.$interface.css( {
-				'height' : parseInt( embedPlayer.height ) + parseInt( this.height )
+				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) +2
 			} );
 			// update the control bar display to "block" 
 			$controlBar.css('display', 'block')			
@@ -158,8 +159,7 @@ ctrlBuilder.prototype = {
 		if( mw.getConfig( 'kalturaAttribution' ) ){							 
 			this.supportedComponets[ 'kalturaAttribution' ] = true;
 		}
-		
-				
+
 		// Output components 
 		for ( var component_id in this.components ) {
 		
@@ -185,7 +185,6 @@ ctrlBuilder.prototype = {
 					$controlBar.append( 
 						_this.getComponent( component_id ) 
 					);
-					
 					this.available_width -= this.components[ component_id ].w;
 				} else {
 					mw.log( 'Not enough space for control component:' + component_id );
@@ -241,7 +240,7 @@ ctrlBuilder.prototype = {
 		var textSize = ( $j( window ).width() / 8 ) + 20;
 		if( textSize < 95 )  textSize = 95;
 		if( textSize > 250 ) textSize = 250;
-		mw.log(' win size is: ' + $j( window ).width() + ' ts: ' + textSize );
+		//mw.log(' win size is: ' + $j( window ).width() + ' ts: ' + textSize );
 		return {
 			'font-size' : textSize + '%'
 		}
@@ -281,7 +280,7 @@ ctrlBuilder.prototype = {
 		}			
 		this.fullscreenMode = true;		
 		
-		// Add the fullscreen black overlay:
+		// Add the css fixed fullscreen black overlay:
 		$j( '<div />' )
 		.addClass( 'mw-fullscreen-overlay' )
 		// Set some arbitrary high z-index
@@ -290,17 +289,14 @@ ctrlBuilder.prototype = {
 		.hide()
 		.fadeIn("slow");
 		
-		// Set the video player margins to "auto" for centered resize
-		/*$j( embedPlayer ).css( {
-			'margin' : 'auto'
-		} );*/
+		
 		
 		// Change the interface to absolute positioned: 
 		this.windowPositionStyle = $interface.css( 'position' );
 		this.windowZindex = $interface.css( 'z-index' );
 		
 		$interface.css( {
-			'position' : 'absolute',
+			'position' : 'fixed',
 			'z-index' : mw.getConfig( 'fullScreenIndex' )
 		} );
 		
@@ -318,8 +314,8 @@ ctrlBuilder.prototype = {
 		$interface.animate( {			
 			'top' : topOffset,
 			'left' : leftOffset,
-			'width' : '100%',
-			'height' : '100%'			
+			'width' : $j( window ).width(),
+			'height' :  $j( window ).height()			
 		} )
 		
 		// Set the player height width: 
@@ -341,16 +337,15 @@ ctrlBuilder.prototype = {
 			_this.mouseMovedFlag = true;			
 		});
 		// Check every 2 seconds reset flag status:
-		function checkMovedMouse(){
-			mw.log("checkMovedMouse::" + _this.mouseMovedFlag  );
+		function checkMovedMouse(){			
 			if( _this.fullscreenMode ){
 				if( _this.mouseMovedFlag ){
 					_this.mouseMovedFlag = false;
 					_this.showControlBar();
-					// once we move the mouse keep displayed for 5 seconds
-					setTimeout(checkMovedMouse, 5000);
+					// Once we move the mouse keep displayed for 4 seconds
+					setTimeout(checkMovedMouse, 4000);
 				}else{
-					// Check for mouse movment every 250ms
+					// Check for mouse movement every 250ms
 					_this.hideControlBar();
 					setTimeout(checkMovedMouse, 250 );
 				}				
@@ -358,10 +353,17 @@ ctrlBuilder.prototype = {
 		};
 		checkMovedMouse();
 	
-		
+		// Bind Scroll position update
 		
 		// Bind resize resize window to resize window
 		$j( window ).resize( function() {
+			// UPdate interface container: 
+			$interface.css( {			
+				'top' : '0px',
+				'left' : '0px',
+				'width' : $j( window ).width(),
+				'height' :  $j( window ).height()			
+			} )
 			// Update player size
 			$j( embedPlayer ).css( _this.getFullscreenPlayerCss() );
 			
@@ -465,8 +467,13 @@ ctrlBuilder.prototype = {
 		if( _this.checkOverlayControls() ) {			
 			// Add a special absolute overlay for hover ( to keep menu displayed 
 			$j( embedPlayer.$interface ).hover(
-				function(){
-					_this.showControlBar()
+				function(){	
+					// Show controls with a set timeout ( avoid fade in fade out on short mouse over )				
+					setTimeout( function() {
+						if( mouseIn ){
+							_this.showControlBar()
+						}
+					}, 250 );
 					mouseIn = true;
 				},
 				function(){

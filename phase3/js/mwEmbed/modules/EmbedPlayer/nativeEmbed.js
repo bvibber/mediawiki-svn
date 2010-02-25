@@ -375,7 +375,7 @@ var nativeEmbed = {
 	* Local method for can play through
 	*  fired when done video can play through without re-buffering
 	*/	
-	oncanplaythrough : function() {
+	oncanplaythrough: function() {
 		mw.log('f:oncanplaythrough');
 		this.getPlayerElement();
 		if ( ! this.paused )
