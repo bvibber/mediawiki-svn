@@ -290,10 +290,14 @@ ImageMagick is niet beschikbaar.',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'tiff_sourcefile_too_large' => 'Oppløsningen til kildefilen er for stor. Miniatyrbilde vil ikke bli opprettet.',
+	'tiff_file_too_large' => 'Den opplastede filen var for stor og ble avvist.',
+	'tiff_out_of_service' => 'Den opplastede filen kunne ikke behandles. ImageMagick er ikke tilgjengelig.',
 	'tiff_too_much_meta' => 'Metadata bruker for mye plass.',
 	'tiff_size_error' => 'Den rapporterte filstørrelsen samsvarer ikke med den faktiske filstørrelsen.',
 	'tiff_script_detected' => 'Den opplastede filen inneholder skript.',
 	'tiff_bad_file' => 'Den opplastede filen inneholder feil.',
+	'tiff-file-info-size' => '(side $5, $1 x $2 piksler, filstørrelse: $3, MIME-type: $4)',
 );
 
 /** Piedmontese (Piemontèis)

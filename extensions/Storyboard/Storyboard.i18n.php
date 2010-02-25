@@ -155,11 +155,24 @@ $messages['nl'] = array(
 	'storyboard-unreviewed' => 'Niet beoordeeld',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'storyboard-publish' => 'Publiser',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => "Ofrís una pagina d'aterrissatge pels donators ont las istòrias pòdon èsser somesas e una interfàcia de moderacion de las istòrias",
+	'right-storyreview' => 'Relegir, modificar, publicar, e amagar las istòrias',
+	'storyboard-storyreview' => "Relectura de l'istòria",
+	'storyboard-publish' => 'Publicar',
+	'storyboard-reviewed' => 'Relegit',
+	'storyboard-unreviewed' => 'Pas revisada',
 );
 
 /** Piedmontese (Piemontèis)
@@ -170,6 +183,10 @@ $messages['pms'] = array(
 	'storyboard-name' => 'Disegn ëd la senegiadura',
 	'storyboard-desc' => "A dà na pàgina d'ariv për ij donator, na pàgina andoa le stòrie a peulo esse butà, e n'antërfacia ëd moderassion dle stòrie",
 	'right-storyreview' => 'Lese torna, modifiché, publiché e stërmé le stòrie',
+	'storyboard-storyreview' => 'Riletura ëd la stòria',
+	'storyboard-publish' => 'Publiché',
+	'storyboard-reviewed' => 'Revisionà',
+	'storyboard-unreviewed' => 'Pa revisionà',
 );
 
 /** Russian (Русский)

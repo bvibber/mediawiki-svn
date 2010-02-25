@@ -59,13 +59,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'filelist' => 'لستة الملف',
+	'filelist' => 'ليستة الفايلات',
 	'filelist-desc' => '[[Special:Filelist|صفحة خاصة]] لعرض الملفات المتحملة',
-	'filelist-show-list' => 'عرض اللستة',
+	'filelist-show-list' => 'بيّن الليسته',
 	'filelist-show-gallery' => 'عرض المعرض',
 	'filelist-image-desc' => 'وصف',
 );

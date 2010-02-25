@@ -49,12 +49,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor' => 'واجعه تعديل نص ويكى متقدمة',
 	'wikieditor-desc' => 'يوفر واجهه تعديل نص ويكى قابله للتمديد والعديد من العناصر الموفره للخصائص',
 	'wikieditor-wikitext-tab' => 'نص ويكي',
+	'wikieditor-loading' => 'بيلوّد',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -208,6 +210,7 @@ $messages['fi'] = array(
 	'wikieditor' => 'Edistynyt wikitext-muokkauskäyttöliittymä',
 	'wikieditor-desc' => 'Tarjoaa laajennettavan wikitext-muokkauskäyttöliittymän ja monia toimintoja tarjoavia laajennuksia.',
 	'wikieditor-wikitext-tab' => 'Wikiteksti',
+	'wikieditor-loading' => 'Ladataan',
 );
 
 /** French (Français)

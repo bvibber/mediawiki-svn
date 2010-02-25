@@ -2896,6 +2896,7 @@ $messages['fr'] = array(
 	'code-prop-changes' => 'Journal des états et du balisage',
 	'code-desc' => '[[Special:Code|Outils de révision du code]] avec le [[Special:RepoAdmin|support de Subversion]]',
 	'code-no-repo' => 'Pas de dépôt configuré !',
+	'code-repo-not-found' => "Le dépôt <b>$1</b> n'existe pas !",
 	'code-load-diff' => 'Chargement du diff en cours...',
 	'code-notes' => 'commentaires récents',
 	'code-statuschanges' => 'modifications de statut',
@@ -3190,8 +3191,8 @@ $messages['gl'] = array(
 	'code-rev-title' => '$1 - Revisión do código',
 	'code-comments' => 'Notas da revisión',
 	'code-references' => 'Seguir as revisións',
-	'code-change-status' => "cambiou o '''estado''' da $1",
-	'code-change-tags' => "cambiou as '''etiquetas''' da $1",
+	'code-change-status' => "cambiou o '''estado''' da versión $1",
+	'code-change-tags' => "cambiou as '''etiquetas''' da versión $1",
 	'code-change-removed' => 'eliminado:',
 	'code-change-added' => 'engadido:',
 	'code-old-status' => 'Estado vello',
@@ -3199,6 +3200,7 @@ $messages['gl'] = array(
 	'code-prop-changes' => 'Estado e rexistro de etiquetas',
 	'code-desc' => '[[Special:Code|Ferramenta de revisión do código]] con [[Special:RepoAdmin|apoio da subversión]]',
 	'code-no-repo' => 'Non hai ningún repositorio configurado!',
+	'code-repo-not-found' => 'O repositorio "<b>$1</b>" non existe!',
 	'code-load-diff' => 'Cargando as diferenzas…',
 	'code-notes' => 'comentarios recentes',
 	'code-statuschanges' => 'cambios de estado',
@@ -3285,8 +3287,8 @@ $messages['gl'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba errada|probas erradas}}:',
 	'codereview-tests-running' => 'As probas están en curso...',
 	'codereview-tests-aborted' => 'Interrompeuse a execución da proba.',
-	'codereview-email-subj' => '[$1] [$2]: Engadido un novo comentario',
-	'codereview-email-body' => 'O usuario "$1" deixou un comentario en $3.
+	'codereview-email-subj' => '[$1] [$2]: engadido un novo comentario',
+	'codereview-email-body' => 'O usuario "$1" deixou un comentario na versión $3.
 
 Enderezo URL: $2
 
@@ -3294,9 +3296,9 @@ Comentario:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: seguimento de cambios',
-	'codereview-email-body2' => 'O usuario "$1" fixo un seguimento dos cambios feitos na $2.
+	'codereview-email-body2' => 'O usuario "$1" fixo un seguimento dos cambios feitos na versión $2.
 
-Enderezo URL completo: $3
+Enderezo URL: $3
 
 Resumo:
 
@@ -3304,9 +3306,9 @@ $4',
 	'codereview-email-subj3' => '[$1] [$2]: a proba automática detectou unha regresión',
 	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión $1.
 
-Enderezo URL completo: $2
+Enderezo URL: $2
 
-Resumo do envío:
+Resumo:
 
 $3',
 	'repoadmin' => 'Administración do repositorio',
@@ -3448,7 +3450,8 @@ $messages['gsw'] = array(
 	'code-new-status' => 'Neje Status',
 	'code-prop-changes' => 'Status- un Tagging-Logbuech',
 	'code-desc' => '[[Special:Code|Codepriefigs-Wärchzyyg]] mit [[Special:RepoAdmin|Subversion-Unterstitzig]]',
-	'code-no-repo' => 'Kei Repositorium konfiguriert.',
+	'code-no-repo' => 'Kei Depot konfiguriert.',
+	'code-repo-not-found' => 'Depot <b>$1</b> git s nit!',
 	'code-load-diff' => 'Diff am Lade…',
 	'code-notes' => 'Priefnotize',
 	'code-statuschanges' => 'Statusänderige',
@@ -3483,7 +3486,7 @@ $messages['gsw'] = array(
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Kommentar:',
-	'code-rev-repo' => 'Repositorium:',
+	'code-rev-repo' => 'Depot:',
 	'code-rev-rev' => 'Revision:',
 	'code-rev-rev-viewvc' => 'uf ViewVC',
 	'code-rev-paths' => 'Gändereti Pfad:',
@@ -3512,7 +3515,7 @@ $messages['gsw'] = array(
 	'code-status-ok' => 'In Ornig',
 	'code-status-verified' => 'nochprieft',
 	'code-status-deferred' => 'zruckgstellt',
-	'code-pathsearch-legend' => 'Suech no Revisione in däm Repositorium per Pfad',
+	'code-pathsearch-legend' => 'Suech no Revisione in däm Depot per Pfad',
 	'code-pathsearch-path' => 'Pfad:',
 	'code-pathsearch-filter' => 'Filter aagwändet:',
 	'code-revfilter-cr_status' => 'Status = $1',
@@ -3559,19 +3562,19 @@ Vollständigi URL: $2
 Zämmefassig vu dr Bearbeitig:
 
 $3',
-	'repoadmin' => 'Adminischtration vum Repositorium',
-	'repoadmin-new-legend' => 'Nej Repositorium aalege',
-	'repoadmin-new-label' => 'Name vum Repositorium:',
+	'repoadmin' => 'Adminischtration vum Depot',
+	'repoadmin-new-legend' => 'Nej Depot aalege',
+	'repoadmin-new-label' => 'Name vum Depot:',
 	'repoadmin-new-button' => 'Aalege',
-	'repoadmin-edit-legend' => 'Änderige am Repositorium „$1“',
+	'repoadmin-edit-legend' => 'Änderige am Depot „$1“',
 	'repoadmin-edit-path' => 'Pfad zum Repositorium:',
 	'repoadmin-edit-bug' => 'Pfad zue Bugzilla:',
 	'repoadmin-edit-view' => 'Pfad zue ViewVC:',
 	'repoadmin-edit-button' => 'In Ornig',
-	'repoadmin-edit-sucess' => 'S Repositorium „[[Special:Code/$1|$1]]“ isch mit Erfolg gänderet wore.',
-	'right-repoadmin' => 'Code-Repositorie verwalte',
+	'repoadmin-edit-sucess' => 'S Depot „[[Special:Code/$1|$1]]“ isch mit Erfolg gänderet wore.',
+	'right-repoadmin' => 'Code-Depots verwalte',
 	'right-codereview-use' => 'Special:Code verwände',
-	'right-codereview-add-tag' => 'Neiji Tag zue Revisione zuefiege',
+	'right-codereview-add-tag' => 'Neiji Markierig zue dr Version zuefiege',
 	'right-codereview-remove-tag' => 'Tag vu Revisione useneh',
 	'right-codereview-post-comment' => 'Kommentar zue Revisione ergänze',
 	'right-codereview-set-status' => 'Revisionsstatus ändere',
@@ -4094,7 +4097,7 @@ Hozzászólás:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: rákövetkező változtatások',
-	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett az $2 verzión.
+	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett a(z) $2 verzión.
 
 Teljes URL: $3
 
@@ -4146,6 +4149,7 @@ $messages['ia'] = array(
 	'code-prop-changes' => 'Registro de stato e de etiquettage',
 	'code-desc' => '[[Special:Code|Instrumento pro revider le codice]] con [[Special:RepoAdmin|supporto de Subversion]]',
 	'code-no-repo' => 'Nulle deposito configurate!',
+	'code-repo-not-found' => 'Le deposito <b>$1</b> non existe!',
 	'code-load-diff' => 'Carga diff…',
 	'code-notes' => 'commentos recente',
 	'code-statuschanges' => 'cambios de stato',
@@ -5209,6 +5213,7 @@ $messages['lb'] = array(
 	'code-load-diff' => 'Lude vun Diff…',
 	'code-notes' => 'rezent Bemierkungen',
 	'code-statuschanges' => 'Ännerunge vum Status',
+	'code-mycommits' => 'meng Publikatiounen',
 	'code-authors' => 'Auteuren',
 	'code-status' => 'Statussen',
 	'code-tags' => 'Tagen',
@@ -5266,6 +5271,7 @@ $messages['lb'] = array(
 	'code-status-verified' => 'nogekuckt',
 	'code-status-deferred' => 'zréckgestallt',
 	'code-pathsearch-path' => 'Pad:',
+	'code-pathsearch-filter' => 'Filter dee bnotzt gouf:',
 	'code-revfilter-cr_status' => 'Statut  = $1',
 	'code-revfilter-cr_author' => 'Auteur = $1',
 	'code-revfilter-clear' => 'Filter eidel maachen',
@@ -7365,11 +7371,11 @@ $4',
  */
 $messages['ru'] = array(
 	'code' => 'Проверка кода',
-	'code-rev-title' => '$1 — Проверка кода',
+	'code-rev-title' => 'r$1 — Проверка кода',
 	'code-comments' => 'Комментарии',
 	'code-references' => 'Последующие ревизии',
-	'code-change-status' => "изменил '''состояние''' $1",
-	'code-change-tags' => "изменил '''метки''' для $1",
+	'code-change-status' => "изменил '''состояние''' r$1",
+	'code-change-tags' => "изменил '''метки''' для r$1",
 	'code-change-removed' => 'удалено:',
 	'code-change-added' => 'добавлено:',
 	'code-old-status' => 'Старый статус',
@@ -7463,24 +7469,24 @@ $messages['ru'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешная проверка|успешные проверки|успешных проверок}}, $3 {{PLURAL:$4|неудавшаяся проверка|неудавшиеся проверки|неудавшихся проверок}}:',
 	'codereview-tests-running' => 'Выполнение контрольных примеров…',
 	'codereview-tests-aborted' => 'Выполнение проверки прервано.',
-	'codereview-email-subj' => '[$1] [$2]: Добавлен новый комментарий',
-	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции $3.
+	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
+	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции r$3.
 
 Полный URL: $2
 
 Комментарий:
 
 $4',
-	'codereview-email-subj2' => '[$1] [$2]: Последующие изменения',
-	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в $2.
+	'codereview-email-subj2' => '[$1] [r$2]: Последующие изменения',
+	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в r$2.
 
 Полный  URL: $3
 
 Описание изменения:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Автоматическая проверка обнаружила регрессию',
-	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в $1.
+	'codereview-email-subj3' => '[$1] [r$2]: Автоматическая проверка обнаружила регрессию',
+	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в r$1.
 
 Полный URL: $2
 
@@ -9322,11 +9328,11 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'code' => 'Duyệt mã',
-	'code-rev-title' => '$1 - Duyệt Mã',
+	'code-rev-title' => 'r$1 - Duyệt Mã',
 	'code-comments' => 'Ghi chú',
 	'code-references' => 'Các phiên bản ngay sau',
-	'code-change-status' => "đã đổi '''trạng thái''' của phiên bản $1",
-	'code-change-tags' => "đã đổi các '''thẻ''' của phiên bản $1",
+	'code-change-status' => "đã đổi '''trạng thái''' của phiên bản r$1",
+	'code-change-tags' => "đã đổi các '''thẻ''' của phiên bản r$1",
 	'code-change-removed' => 'đã dời:',
 	'code-change-added' => 'đã thêm:',
 	'code-old-status' => 'Trạng thái cũ',
@@ -9396,6 +9402,8 @@ $messages['vi'] = array(
 	'code-status-deferred' => 'hoãn',
 	'code-pathsearch-legend' => 'Tìm kiếm các thay đổi trong kho này theo đường dẫn',
 	'code-pathsearch-path' => 'Đường dẫn:',
+	'code-revfilter-cr_status' => 'Trạng thái = $1',
+	'code-revfilter-cr_author' => 'Tác giả = $1',
 	'code-rev-submit' => 'Lưu các thay đổi',
 	'code-rev-submit-next' => 'Lưu và xem thay đổi chưa giải quyết sau',
 	'code-batch-status' => 'Thay đổi trạng thái:',
@@ -9409,16 +9417,16 @@ $messages['vi'] = array(
 	'code-release-badrange' => 'Dãy lớn quá!',
 	'codereview-subtitle' => 'Dành cho $1',
 	'codereview-reply-link' => 'trả lời',
-	'codereview-email-subj' => '[$1] [$2]: Tin nhắn mới',
-	'codereview-email-body' => 'Người dùng “$1” đã bình luận về $3.
+	'codereview-email-subj' => '[$1] [r$2]: Tin nhắn mới',
+	'codereview-email-body' => 'Người dùng “$1” đã bình luận về r$3.
 
 URL đầy đủ: $2
 
 Tin nhắn:
 
 $4',
-	'codereview-email-subj2' => '[$1] [$2]: Các thay đổi tiếp theo',
-	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo lên $2.
+	'codereview-email-subj2' => '[$1] [r$2]: Các thay đổi tiếp theo',
+	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo lên r$2.
 
 URL đầy đủ: $3
 

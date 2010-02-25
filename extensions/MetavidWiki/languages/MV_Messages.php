@@ -6951,6 +6951,7 @@ $messages['no'] = array(
 	'mv_warning_wiki' => '<i>Merk: MetaVid-videotranskripsjoner [[Help:FAQ#How_accurate_is_the_information.3F|kan inneholde unøyaktigheter]], hjelp oss å bygge opp [[Help:Participation#Improving_Archive_Accuracy|et mer perfekt arkiv]]</i>',
 	'mv_ogg_low_quality' => 'Direkteoverført over nettet – Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Høy kvalitet – Ogg Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Nettstrøm - Flash-video',
 	'mv_archive_org_mp4' => 'Archive.org MP4 innkapslet H.264-strøm',
 	'mv_archive_org_link' => 'Lenker til mpeg2-originaler hos Archive.org',
 	'mv_error_stream_missing' => '<span class="error">Feil: Det er ingen videofil assosiert med denne dataflyten.</span><br />

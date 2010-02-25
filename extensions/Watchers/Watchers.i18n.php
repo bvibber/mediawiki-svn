@@ -267,10 +267,13 @@ $messages['cy'] = array(
 	'watchers-desc' => 'Yn dangos rhestr y [[Special:Watchers|gwylwyr sydd yn dilyn hynt rhyw dudalen]]',
 	'watchers_link_title' => "Pwy sy'n dilyn hynt y dudalen hon?",
 	'watchers_error_article' => "'''Gwall:''' Nid yw'r dudalen yn bod.",
+	'watchers-error-invalid-page' => "'''Gwall:''' Nid yw \"\$1\" yn deitl dilys ar dudalen.",
 	'watchers_header' => '{{PLURAL:$2|Defnyddwyr|Defnyddiwr|Defnyddwyr|Defnyddwyr|Defnyddwyr|Defnyddwyr}} sy\'n dilyn hynt "[[:$1]]"',
-	'watchers_noone_watches' => 'Nid oes neb yn dilyn hynt y dudalen hon.',
-	'watchers_x_or_more' => "Mae'r dudalen hon ar restr gwylio o leiaf $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
+	'watchers_noone_watches' => 'Nid oes neb yn dilyn hynt y dudalen [[:$1]].',
+	'watchers_x_or_more' => "Mae'r dudalen [[:$2]] ar restr wylio o leiaf $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
 	'watchers_less_than_x' => "Mae'r dudalen hon ar restr gwylio llai na(g) $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
+	'watchers-num' => "{{PLURAL:$1|Nid oes gan neb o'r defnyddwyr|Mae gan un defnyddiwr|Mae gan $1 ddefnyddiwr|Mae gan $1 defnyddiwr|Mae gan $1 defnyddiwr|Mae gan $1 o ddefnyddwyr}} y dudalen [[:$2]] ar {{PLURAL:$1|eu rhestri gwylio|ei restr wylio|eu rhestri gwylio|eu rhestri gwylio|eu rhestri gwylio|eu rhestri gwylio}}.",
+	'right-watchers-list' => "[[Special:Watchers|Rhestru defnyddwyr sy'n dilyn hynt tudalen benodol]]",
 );
 
 /** German (Deutsch)
@@ -363,6 +366,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Silvonen
  * @author Vililikku
  */
@@ -372,7 +376,7 @@ $messages['fi'] = array(
 	'watchers_link_title' => 'Kuka tarkkailee tätä sivua?',
 	'watchers_error_article' => "'''Virhe:''' Sivua ei ole olemassa.",
 	'watchers_header' => '{{PLURAL:$2|Käyttäjä, joka tarkkailee|Käyttäjät, jotka tarkkailevat}} sivua ”[[:$1]]”',
-	'watchers_noone_watches' => 'Kukaan ei tarkkaile tätä sivua.',
+	'watchers_noone_watches' => 'Kukaan ei tarkkaile sivua [[:$1]].',
 	'watchers_x_or_more' => '$1 tai useampi {{PLURAL:$1|käyttäjä|käyttäjä}} tarkkailee tätä sivua.',
 	'watchers_less_than_x' => 'Vähemmän kuin $1 {{PLURAL:$1|käyttäjä|käyttäjää}} tarkkailee tätä sivua.',
 );

@@ -43,10 +43,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  */
 $messages['arz'] = array(
-	'templateinfo-desc' => 'بيدعم القوالب اللى بتعرف هيكل بياناتها من خلال علامات XML',
+	'templateinfo-desc' => 'بيدعم القوالب اللى بتعرّف هيكل الداتا بتاعتها عن طريق علامات XML',
 	'templateinfo-header' => 'تعريف XML للقالب ده هو:',
 );
 

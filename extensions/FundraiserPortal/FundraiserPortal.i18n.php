@@ -1096,6 +1096,22 @@ $messages['vi'] = array(
 	'fundraiserportal-tourmaline-close' => 'Ẩn phần này từ nay',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'fundraiserportal-desc' => 'לייגט צו א "ביטע בײַשטײַערן" פארטאַל אין דער הייך פון זײַטפאַס',
+	'fundraiserportal-plain-button' => 'שטיצט וויקיפּעדיע!',
+	'fundraiserportal-ruby-button' => 'בײַשטײַערט אצינד',
+	'fundraiserportal-rubytext-button' => 'בײַשטײַערט אצינד',
+	'fundraiserportal-rubytext-message' => 'יעדע נדבה העלפֿט אונז האַלטן וויקיפעדיע פריי פֿאַר אַלעמען.',
+	'fundraiserportal-rubytext-close' => 'באַהאַלטן דאָס פֿון איצט און ווײַטער',
+	'fundraiserportal-sapphire-button' => 'בײַשטײַערט אצינד',
+	'fundraiserportal-tourmaline-button' => 'בײַשטײַערט אצינד',
+	'fundraiserportal-tourmaline-message' => 'יעדע נדבה העלפֿט אונז האַלטן וויקיפעדיע פריי פֿאַר אַלעמען.',
+	'fundraiserportal-tourmaline-close' => 'באַהאַלטן דאָס פֿון איצט און ווײַטער',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

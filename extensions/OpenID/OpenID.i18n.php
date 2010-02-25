@@ -1580,7 +1580,7 @@ Jos sinulla on jo tunnus {{SITENAME}}, voit [[Special:UserLogin|kirjautua sisä�
 Käyttääksesi tulevaisuudessa OpenID:tä, voit [[Special:OpenIDConvert|muuntaa tilisi OpenID:een]] normaalin sisäänkirjautumisen jälkeen.
 
 Tarjolla on monia eri [http://openid.net/get/ OpenID-tarjoajia], ja sinulla saattaa jo olla OpenID:tä tarjoava tunnus toisessa palvelussa.',
-	'openidupdateuserinfo' => 'Päivitä minun henkilökohtaiset tietoni.',
+	'openidupdateuserinfo' => 'Päivitä henkilökohtaiset tietoni:',
 	'openiddelete' => 'Poista OpenID',
 	'openiddelete-text' => 'Napsauttamalla {{int:openiddelete-button}}-paniketta, voit poistaa OpenID:n $1 tunnuksestasi.
 Et voi enää kirjautua sisään tällä OpenID:llä.',
@@ -5421,6 +5421,8 @@ Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp Open
 	'openiddelete-text' => 'Khi bấm nút “{{int:openiddelete-button}}”, bạn sẽ dời OpenID $1 khỏi tài khoản của bạn.
 Bạn sẽ không đăng nhập được dùng OpenID này.',
 	'openiddelete-button' => 'Xác nhận',
+	'openiddeleteerrornopassword' => 'Bạn không có thể xóa tất cả các OpenID của bạn vì tài khoản thiếu mật khẩu. Nếu không có OpenID thì bạn không thể đăng nhập được.',
+	'openiddeleteerroropenidonly' => 'Bạn không có thể xóa tất cả các OpenID của bạn vì bạn chỉ được phép đăng nhập dùng OpenID. Nếu không có OpenID thì bạn không thể đăng nhập được.',
 	'openiddelete-sucess' => 'Đã dời OpenID thành công khỏi tài khoản của bạn.',
 	'openiddelete-error' => 'Đã gặp lỗi khi dời OpenID khỏi tài khoản của bạn.',
 	'openid-prefstext' => 'Tùy chỉnh [http://openid.net/ OpenID]',

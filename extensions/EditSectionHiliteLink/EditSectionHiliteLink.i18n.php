@@ -66,10 +66,11 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Mormegil
  * @author Mr. Richard Bolla
  */
 $messages['cs'] = array(
-	'editsectionhilitelink-desc' => 'Zvýraznit příslušnou část stránky, pokud podržíte myš nad odkazem „editovat“',
+	'editsectionhilitelink-desc' => 'Zvýrazňování příslušné části stránky, pokud podržíte myš nad odkazem „editovat“',
 );
 
 /** Welsh (Cymraeg)

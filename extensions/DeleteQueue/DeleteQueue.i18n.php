@@ -3718,6 +3718,7 @@ $messages['lb'] = array(
 	'deletequeue-review-reason' => 'Bemierkungen:',
 	'deletequeue-review-newreason' => 'Neie Grond:',
 	'deletequeue-review-newextra' => 'Zousätzlech Informatioun:',
+	'deletequeue-review-original' => "Grond fir d'Nominatioun",
 	'deletequeue-reviewspeedy-tab' => 'Séier läschen iwwerpréifen',
 	'deletequeue-reviewdeletediscuss-tab' => 'Läschen iwwerpréifen',
 	'deletequeue-reviewdeletediscuss-title' => 'Diskussioun iwwer d\'Läsche vu(n) "$1" nokucken',

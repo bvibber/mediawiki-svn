@@ -871,6 +871,13 @@ $messages['vep'] = array(
 	'commentbox-first-comment-heading' => '== Kommentarijad ==',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'commentbox-name' => 'Tên:',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

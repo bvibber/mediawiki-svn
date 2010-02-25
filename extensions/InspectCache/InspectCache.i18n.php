@@ -762,11 +762,11 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'inspectcache' => 'Inspiser mellomlagring',
 	'inspectcache-desc' => 'Et enkelt feilsøkingsverktøy for å inspisere innholdet i det delte mellomlageret',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Generell mellomlagring',
 	'inspectcache-parser' => 'Parsermellomlagring',
 	'inspectcache-message' => 'Mellomlagring av meldinger',
@@ -774,6 +774,7 @@ $messages['no'] = array(
 	'inspectcache-delete' => 'Slett',
 	'inspectcache-deleted' => 'Slettet mellomlagring',
 	'inspectcache-list' => 'Liste',
+	'right-inspectcache' => 'Vis og slett hurtiglageroppføringer',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

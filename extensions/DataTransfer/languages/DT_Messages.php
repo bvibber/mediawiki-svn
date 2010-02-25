@@ -181,26 +181,29 @@ $messages['arn'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'dt-desc' => 'يسمح باستيراد وتصدير بيانات محتواة فى استدعاءات قالب',
-	'viewxml' => 'عرض XML',
-	'dt_viewxml_docu' => 'من فضلك اختر من بين التصنيفات والنطاقات التالية للعرض فى صيغة XML.',
-	'dt_viewxml_categories' => 'تصنيفات',
-	'dt_viewxml_namespaces' => 'نطاقات',
-	'dt_viewxml_simplifiedformat' => 'صيغة مبسطة',
-	'dt_xml_namespace' => 'نطاق',
-	'dt_xml_pages' => 'صفحات',
-	'dt_xml_page' => 'صفحة',
+	'dt-desc' => 'بيسمح بـ import و export للداتا اللى جوّا القالب',
+	'viewxml' => 'شوف XML',
+	'dt_viewxml_docu' => 'لو سمحت اختار من التصانيف و اسامى المساحات الجايه علشان العرض فى XML format.',
+	'dt_viewxml_categories' => 'تصانيف',
+	'dt_viewxml_namespaces' => 'مساحات اسامى',
+	'dt_viewxml_simplifiedformat' => 'format متبسطه',
+	'dt_xml_namespace' => 'اسم مساحه',
+	'dt_xml_pages' => 'صفح',
+	'dt_xml_page' => 'صفحه',
 	'dt_xml_template' => 'قالب',
 	'dt_xml_field' => 'حقل',
 	'dt_xml_name' => 'اسم',
 	'dt_xml_title' => 'عنوان',
 	'dt_xml_id' => 'رقم',
 	'dt_xml_freetext' => 'نص حر',
-	'dt_import_editsummary' => 'استيراد $1',
+	'dt_import_selectfile' => 'لو سمحت اختار فايل $1 علشان تعمل import:',
+	'dt_import_editsummary' => 'استوراد $1',
+	'dt_import_success' => '$1 {{PLURAL:$1|صفحه|صفحه}} ح يتعملو من الفايل $2.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

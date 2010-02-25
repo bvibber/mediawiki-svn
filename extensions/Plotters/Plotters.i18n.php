@@ -547,6 +547,7 @@ Vennligst definer et plottnavn som er maksimalt 255 tegn langt.',
 	'plotters-excessively-long-tableclass' => 'Tabellklassen er for lang.
 Vennligst definer en tabellklasse som er maksimalt 255 tegn langt.',
 	'plotters-no-data' => 'Ingen data var tilgjengelig.',
+	'plotters-invalid-renderer' => 'En ugyldig gjengiver ble valgt.',
 );
 
 /** Occitan (Occitan)

@@ -112,6 +112,14 @@ $messages['no'] = array(
 	'right-editalluserpages' => 'Rediger brukersider',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'userpageeditprotection-desc' => "Restrenh las modificacions de las paginas d'utilizaire a son proprietari e als utilizaires autorizats",
+	'right-editalluserpages' => "Modificar las paginas d'utilizaire",
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

@@ -47,15 +47,16 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'categoryintersection' => 'تقاطع تصنيف',
 	'categoryintersection-desc' => 'يصون جدول بقيم الهاش ل[[Special:CategoryIntersection|تقاطعات التصنيف]] فى صفحة',
-	'categoryintersection-doit' => 'اعرض الصفحات فى كل التصنيفات دى',
-	'categoryintersection-maxcategories' => 'اكبر عدد مسموح بيه للتصنيفات المتقاطعة هو $1.',
-	'categoryintersection-results' => 'التدوير $1 {{PLURAL:$1|نتيجة|نتيجة}}.',
+	'categoryintersection-doit' => 'اعرض الصفح فى كل التصانيف دى',
+	'categoryintersection-maxcategories' => 'اكبر عدد مسموح بيه للتصنيفات المتقاطعه هو $1.',
+	'categoryintersection-results' => 'التدوير جاب $1 {{PLURAL:$1|نتيجه|نتيجه}}.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
