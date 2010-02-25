@@ -58,59 +58,75 @@ class SpecialStoryReview extends IncludableSpecialPage {
 			array( 'story_is_hidden' => 0 )
 		);
 		
-		// Arrays to hold the html segments for both the unreviewed and reviewed stories.
-		$unreviewed = array();
-		$reviewed = array();
+		// String to hold the html for both the unreviewed and reviewed stories.
+		$unreviewed = '';
+		$reviewed = '';
 		
-		// Loop through all stories, get their html segments, and store in the appropriate array.
+		// Loop through all stories, get their html, and add it to the appropriate string.
 		while ( $story = $dbr->fetchObject( $stories ) ) {
 			if ( $story->story_is_published ) {
-				$reviewed = array_merge( $reviewed, $this->getStorySegments( $story ) );
+				$reviewed .= $this->getStorySegments( $story, $story->story_is_published  );
 			}
 			else {
-				$unreviewed = array_merge( $unreviewed, $this->getStorySegments( $story ) );
+				$unreviewed .= $this->getStorySegments( $story, $story->story_is_published  );
 			}
 		}
-		
-		// Create the page layout, and add the stories.
-		$htmlSegments = array();
-		$htmlSegments[] = '<h2>' . wfMsg( 'storyboard-unreviewed' ) . '</h2>';
-		$htmlSegments[] = '<table width="100%">';
-		$htmlSegments = array_merge( $htmlSegments, $unreviewed );
-		$htmlSegments[] = '</table>';
-		$htmlSegments[] = '<h2>' . wfMsg( 'storyboard-reviewed' ) . '</h2>';
-		$htmlSegments[] = '<table width="100%">';
-		$htmlSegments = array_merge( $htmlSegments, $reviewed );
-		$htmlSegments[] = '</table>';			
 
-		// Join all the html segments and add the resulting string to the page.
-		$wgOut->addHTML( implode( '', $htmlSegments ) );
+		$unrevMsg = wfMsg( 'storyboard-unreviewed' );
+		$revMsg = wfMsg( 'storyboard-reviewed' );
+		
+		// Output the html for the stories.
+		$wgOut->addHTML(<<<EOT
+		<h2>$unrevMsg</h2>
+		<table width="100%">
+		$unreviewed
+		</table>
+		<h2>$revMsg</h2>
+		<table width="100%">
+		$reviewed
+		</table>		
+EOT
+		);
 	}
 	
 	/**
 	 * Returns the html segments for a single story.
 	 * 
-	 * TODO: add \n's to get cleaner html output
-	 * 
 	 * @param $story
-	 * @return array
+	 * 
+	 * @return string
 	 */
-	private function getStorySegments( $story ) {
-		$segments = array();
-		$segments[] = '<tr><td><table width="100%" border="1"><tr><td rowspan="2" width="200px">';
-		$segments[] = '<img src="http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png">'; // TODO: get cropped image here
-		$segments[] = '</td><td><b>';
-		$segments[] = htmlspecialchars( $story->story_title );
-		$segments[] = '</b><br />';
-		$segments[] = htmlspecialchars( $story->story_text );
-		$segments[] = '</td></tr><tr><td align="center" height="35">';
-		$segments[] = '<button type="button">'; // TODO: figure out how to best update db info (page submit with form or onclick with ajax call?)
-		$segments[] = wfMsg( 'storyboard-publish' );
-		$segments[] = '</button> &nbsp;&nbsp;&nbsp; <button type="button">';
-		$segments[] = wfMsg( 'edit' );
-		$segments[] = '</button> &nbsp;&nbsp;&nbsp; <button type="button">';
-		$segments[] = wfMsg( 'hide' );
-		$segments[] = '</button></td></tr></table></td></tr>';	
-		return $segments;
+	private function getStorySegments( $story, $published ) {
+		$imageSrc = 'http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png'; // TODO: get cropped image here
+		$title = htmlspecialchars( $story->story_title );
+		$text = htmlspecialchars( $story->story_text );
+		$publish = $published ? wfMsg( 'storyboard-unpublish' ) : wfMsg( 'storyboard-publish' );
+		$edit = wfMsg( 'edit' );
+		$hide = wfMsg( 'hide' );
+		
+		return <<<EOT
+		<tr>
+			<td>
+				<table width="100%" border="1">
+					<tr>
+						<td rowspan="2" width="200px">
+							<img src="$imageSrc">
+						</td>
+						<td>
+							<b>$title</b>
+							<br />$text
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="35">
+							<button type="button">$publish</button>&nbsp;&nbsp;&nbsp;
+							<button type="button">$edit</button>&nbsp;&nbsp;&nbsp;
+							<button type="button">$hide</button>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+EOT;
 	}
 }
