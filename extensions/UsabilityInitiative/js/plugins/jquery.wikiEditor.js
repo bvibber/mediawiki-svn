@@ -1188,11 +1188,18 @@ if ( typeof context == 'undefined' ) {
 		'encapsulateSelection': function( options ) {
 			var selText = $(this).textSelection( 'getSelection' );
 			var selTextArr;
+			var collapseToEnd = false;
 			var selectAfter = false;
 			var setSelectionTo = null;
 			var pre = options.pre, post = options.post;
 			if ( !selText ) {
 				selText = options.peri;
+				selectAfter = true;
+			} else if ( $.wikiEditor.autoMsg( options, 'peri' ) == selText.replace( /\s\s*$/, '' ) ) {
+				// Probably a successive button press
+				// strip any extra white space from selText and set variables we'll need for later
+				selText = selText.replace( /\s\s*$/, '' );
+				collapseToEnd = true;
 				selectAfter = true;
 			} else if ( options.replace ) {
 				selText = options.peri;
@@ -1209,6 +1216,13 @@ if ( typeof context == 'undefined' ) {
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+				if ( collapseToEnd ) {
+					// Make sure we're not collapsing ourselves into a BR tag
+					if ( range.endContainer.nodeName == 'BR' ) {
+						range.setEndBefore( range.endContainer );
+					}
+					range.collapse( false );
+				}
 				if ( options.ownline ) {
 					// We need to figure out if the cursor is at the start or end of a line
 					var atStart = false, atEnd = false;
@@ -1236,7 +1250,6 @@ if ( typeof context == 'undefined' ) {
 						// Apparently this happens when splitting text nodes
 						atEnd = true;
 					}
-					
 					if ( !atStart ) {
 						pre  = "\n" + options.pre;
 					}
