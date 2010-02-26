@@ -23,8 +23,8 @@ class SvnImport extends Maintenance {
 		$cacheSize = 0;
 		if ( $this->hasOption( 'precache' ) ) {
 			$cacheSize = $this->getOption( 'precache' );
-			if ( $cacheSize != "all" ) {
-				if ( is_numeric( $cacheSize ) && $cacheSize >= 0 ) {
+			if ( strtolower( $cacheSize ) !== "all" ) {
+				if ( preg_match( '/^\d+$/', $cacheSize ) ) {
 					$cacheSize = intval( $cacheSize );
 				} else {
 					$this->error( "Invalid argument for --precache (must be a positive integer, 0 or 'all')", true );
@@ -108,7 +108,7 @@ class SvnImport extends Maintenance {
 			wfWaitForSlaves( 5 );
 		}
 
-		if ( $cacheSize != 0 ) {
+		if ( $cacheSize !== 0 ) {
 			$dbw = wfGetDB( DB_MASTER );
 			$options = array( 'ORDER BY' => 'cr_id DESC' );
 
