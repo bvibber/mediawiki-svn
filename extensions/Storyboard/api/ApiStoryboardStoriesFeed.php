@@ -45,7 +45,24 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
+		$this->addTables( 'storyboard' );
+		$this->addFields( array(
+			'story_author_name',
+			'story_title',
+			'story_text',
+			'story_created'
+		) );		
+		$this->addWhere( array(
+			'story_is_published' => 1
+		) );
+		$this->addOption( 'LIMIT', $params['limit'] );
+		$this->addOption( 'ORDER BY', 'story_modified' );
 		
+		$stories = $this->select( __METHOD__ );
+		
+		while ( $story = $stories->fetchObject() ) {
+			// TODO: figure out how to output the data so the storyboard can use it
+		}
 	}
 	
 	/**
