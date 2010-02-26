@@ -959,7 +959,7 @@ class Schema {
 					'type'     => self::TYPE_VARBINARY,
 					'length'   => 32,
 					'null'     => false,
-					'defaullt' => 'unknown',
+					'default' => 'unknown',
 				),
 				'description' => array(
 					'type'   => self::TYPE_BLOB,
@@ -987,7 +987,7 @@ class Schema {
 					'type'     => self::TYPE_VARBINARY,
 					'length'   => 32,
 					'null'     => false,
-					'defaullt' => '',
+					'default' => '',
 				),
 			),
 			'indexes' => array(
@@ -1071,7 +1071,7 @@ class Schema {
 					'type'     => self::TYPE_VARBINARY,
 					'length'   => 32,
 					'null'     => false,
-					'defaullt' => 'unknown',
+					'default' => 'unknown',
 				),
 				'description' => array(
 					'type'   => self::TYPE_BLOB,
@@ -1201,7 +1201,7 @@ class Schema {
 				'minor_mime' => array(
 					'type'     => self::TYPE_VARBINARY,
 					'length'   => 32,
-					'defaullt' => 'unknown',
+					'default' => 'unknown',
 				),
 				'description' => array(
 					'type'   => self::TYPE_BLOB,
