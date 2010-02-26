@@ -10,7 +10,7 @@ CREATE TABLE /*$wgDBprefix*/storyboard (
   story_modified     CHAR(14) binary   NOT NULL default '',
   story_created      CHAR(14) binary   NOT NULL default '',
   story_is_published TINYINT           NOT NULL default '0',
-  story_is_hidden    TINYINT           NOT NULL default '0',
-  INDEX story_is_published (story_is_published),
-  INDEX story_modified (story_modified)
+  story_is_hidden    TINYINT           NOT NULL default '0'
 ) /*$wgDBTableOptions*/;
+
+CREATE INDEX story_published_modified ON /*$wgDBprefix*/storyboard (story_is_published, story_is_modified);
