@@ -7632,11 +7632,13 @@ if ( typeof context == 'undefined' ) {
 			if ( !selText ) {
 				selText = options.peri;
 				selectAfter = true;
-			} else if ( $.wikiEditor.autoMsg( options, 'peri' ) == selText.replace( /\s\s*$/, '' ) ) {
+			} else if ( options.peri == selText.replace( /\s+$/, '' ) ) {
 				// Probably a successive button press
-				// strip any extra white space from selText and set variables we'll need for later
-				selText = selText.replace( /\s\s*$/, '' );
+				// strip any extra white space from selText
+				selText = selText.replace( /\s+$/, '' );
+				// set the collapseToEnd flag to ensure our selection is collapsed to the end before any insertion is done
 				collapseToEnd = true;
+				// set selectAfter to true since we know we'll be populating with our default text
 				selectAfter = true;
 			} else if ( options.replace ) {
 				selText = options.peri;
@@ -7653,6 +7655,8 @@ if ( typeof context == 'undefined' ) {
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var range = context.$iframe[0].contentWindow.getSelection().getRangeAt( 0 );
+				// if our test above indicated that this was a sucessive button press, we need to collapse the 
+				// selection to the end to avoid replacing text 
 				if ( collapseToEnd ) {
 					// Make sure we're not collapsing ourselves into a BR tag
 					if ( range.endContainer.nodeName == 'BR' ) {
@@ -7783,6 +7787,11 @@ if ( typeof context == 'undefined' ) {
 					if ( range3.text != "\r" && range3.text != "\n" && range3.text != "" ) {
 						post += "\n";
 					}
+				}
+				// if our test above indicated that this was a sucessive button press, we need to collapse the
+				// selection to the end to avoid replacing text
+				if ( collapseToEnd ) {
+					range.collapse( false );
 				}
 				// TODO: Clean this up. Duplicate code due to the pre-existing browser specific structure of this
 				// function
