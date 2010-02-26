@@ -247,10 +247,9 @@ class MysqlSchema extends SchemaBuilder {
 				$def = rtrim( $def, ', "' ) . '")';
 				break;
 			default:
-				die( var_dump( $fieldType ) );
 				$this->isOk = false;
 		}
-		if( isset( $attribs['binary'] ) && $attribs['binary'] === true ) {
+		if( isset( $attribs['binary'] ) && $attribs['binary'] ) {
 			$def = $def . ' binary';
 		}
 		if( isset( $attribs['null'] ) ) {
