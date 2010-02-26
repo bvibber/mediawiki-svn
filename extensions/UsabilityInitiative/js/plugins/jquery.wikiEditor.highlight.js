@@ -199,7 +199,9 @@ fn: {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( s.offset );
+				startNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
+					s.offset : s.node.nodeValue.length - 1
+				);
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
