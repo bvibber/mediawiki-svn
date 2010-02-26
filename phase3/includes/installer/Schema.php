@@ -63,7 +63,6 @@ class Schema {
 					'length'  => 255,
 					'null'    => false,
 					'binary'  => true,
-					'null'    => false,
 					'default' => '',
 				),
 				'real_name' => array(
@@ -71,7 +70,6 @@ class Schema {
 					'length'  => 255,
 					'null'    => false,
 					'binary'  => true,
-					'null'    => false,
 					'default' => '',
 				),
 				'password' => array(
@@ -1014,7 +1012,6 @@ class Schema {
 					'binary'      => true,
 					'null'        => false,
 					'default'     => '',
-					'primary-key' => true,
 				),
 				'archive_name' => array(
 					'type'        => self::TYPE_VARCHAR,
@@ -1022,7 +1019,6 @@ class Schema {
 					'binary'      => true,
 					'null'        => false,
 					'default'     => '',
-					'primary-key' => true,
 				),
 				'size' => array(
 					'type'    => self::TYPE_INT,
