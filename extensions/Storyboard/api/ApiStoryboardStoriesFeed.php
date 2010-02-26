@@ -56,7 +56,7 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 			'story_is_published' => 1
 		) );
 		$this->addOption( 'LIMIT', $params['limit'] );
-		$this->addOption( 'ORDER BY', 'story_modified' );
+		$this->addOption( 'ORDER BY', 'story_modified DESC' );
 		
 		$stories = $this->select( __METHOD__ );
 		
