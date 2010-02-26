@@ -42,10 +42,13 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Ryan Lane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DynamicSidebar',
 	'description' => 'Provides dynamic sidebars based on user pages, groups, and categories.',
-	);
+	'descriptionmsg' => 'dynamicsidebar-desc',
+);
 
 $wgExtensionFunctions[] = array( 'DynamicSidebar', 'setup' );
 $wgHooks['SkinBuildSidebar'][] = 'DynamicSidebar::modifySidebar';
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['DynamicSidebar'] = $dir . 'DynamicSidebar.body.php';
+$wgExtensionMessagesFiles['DynamicSidebar'] = $dir . 'DynamicSidebar.i18n.php';
+
