@@ -132,6 +132,12 @@ var default_remote_search_options = {
 	// 'nc' ( non-commercial ), 'all' ( all found licenses are "ok")	 
 	'enabled_licenses' : ['pd', 'by', 'sa' ], 
 	
+	// If we should display resource icons
+	'displayResourceInfoIcons' : true,
+	
+	// If we should display the result format button.
+	'displayResultFormatButton': true,
+	
 	// Set a default provider 
 	'default_provider': null,
 	
@@ -1559,7 +1565,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		$resultBox.append( $resultThumb );
 		
-		if ( resource.link ) {
+		if ( resource.link && this.displayResourceInfoIcons ) {
 			var $resultPageLink = $j( '<div />' )
 				.addClass( 'rsd_linkback ui-corner-all ui-state-default ui-widget-content' )
 				.append( $j( '<a />' )
@@ -1573,12 +1579,12 @@ mw.RemoteSearchDriver.prototype = {
 			$resultBox.append( $resultPageLink );
 		}		
 		
-		if ( resource.mime ) {
+		if ( resource.mime && this.displayResourceInfoIcons ) {
 			$resultBox.append( this.getTypeIcon( resource.mime ) );
 		}
 		
 		// Add license icons if present
-		if ( resource.license ) {
+		if ( resource.license && this.displayResourceInfoIcons ) {
 			$resultBox.append( this.getLicenseIconHtml( resource.license ) );
 		}
 		
@@ -1619,7 +1625,7 @@ mw.RemoteSearchDriver.prototype = {
 		$resultBox.prepend( $resultThumb );
 				
 		// Add license icons if present
-		if ( resource.license ) {
+		if ( resource.license  && this.displayResourceInfoIcons ) {
 			$resultBox.append( this.getLicenseIconHtml( resource.license ) );
 		}
 		
@@ -2833,9 +2839,12 @@ mw.RemoteSearchDriver.prototype = {
 			.attr({
 				id: 'rsd_results_header'
 			});
-
-		$header.append( this.createLayoutSelector() )
-		       .append( this.createSearchDescription( cp ) );
+			
+		if( this.displayResultFormatButton ){
+			$header.append( this.createLayoutSelector() )
+		}
+		
+		$header.append( this.createSearchDescription( cp ) );
 		
 		return $header;
 	},

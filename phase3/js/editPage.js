@@ -14,6 +14,13 @@ var defaultAddMediaConfig = {
 		// Note: selections in the textbox will take over the default query
 		'default_query': wgTitle,
 		'target_title': wgPageName,
+		
+		// if the info overlay per asset should be displayed
+		'displayResourceInfoIcons' : false, 
+		
+		// If we should display buttons to switch between "box" and "detailed" view
+		'displayResultFormatButton' : false,
+		
 		// Here we can setup the content provider overrides
 		'enabled_providers': ['wiki_commons'],
 		// The local wiki API URL:

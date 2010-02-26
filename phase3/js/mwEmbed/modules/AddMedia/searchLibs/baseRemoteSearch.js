@@ -291,7 +291,7 @@ baseRemoteSearch.prototype = {
 	 * @param {String} outHtml Html to be wrapped. 
 	 */
 	wrapHtmlDesc: function( resource, options, outHtml ) {
-		var stripedTitle =  resource.title.replace( /File:|Image:|.jpg|.png|.ogg|.ogv|.oga|.svg/ig, '');
+		var stripedTitle =  resource.title.replace( /File:|Image:|.jpg|.png|.gif|.ogg|.ogv|.oga|.svg/ig, '');
 		
 		if( !options ){
 			options = {};

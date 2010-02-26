@@ -64,7 +64,8 @@ var kskinConfig = {
 					.css( {
 						'width' : '100%',
 						'position': 'absolute',	
-						'top' : '0px'				
+						'top' : '0px',
+						'height' : ctrlObj.getOverlayHeight()								
 					} );
 				
 		
