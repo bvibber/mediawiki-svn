@@ -186,7 +186,7 @@ class MysqlSchema extends SchemaBuilder {
 				}
 				$sql .= "{$prefix}{$idx} ON $tblName (";
 				foreach( $idxDef as $col ) {
-					$sql .= "{$prefix}_{$col},";
+					$sql .= "{$prefix}{$col},";
 				}
 				$sql = rtrim( $sql, ',' );
 				$sql .= ");\n";
