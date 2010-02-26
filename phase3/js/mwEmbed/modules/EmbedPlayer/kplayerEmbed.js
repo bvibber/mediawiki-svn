@@ -23,26 +23,33 @@ var kplayerEmbed = {
 	doEmbedHTML : function () {
 		var _this = this;
 		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
+		
+		
 		$j( this ).html(
-		 	'<object width="' + this.getWidth() + '" height="' + this.getHeight() + '" '+ 
-			 'data="' + playerPath + '/wrapper.swf" allowfullscreen="true" '+ 
-			 'allownetworking="all" allowscriptaccess="always" '+
-			 'type="application/x-shockwave-flash" '+ 
-			 'id="' + this.pid + '" name="' + this.pid + '">'+
-				'<param value="always" name="allowScriptAccess"/>'+
-				'<param value="all" name="allowNetworking"/>'+
-			  	'<param value="true" name="allowFullScreen"/>'+
-			  	'<param value="#000000" name="bgcolor"/>'+
-			  	'<param value="wrapper.swf" name="movie"/>'+
-			  	'<param value="' + 
+		 	'<object width="' + this.getWidth() + '" height="' + this.getHeight() + '" ' + 
+			 'data="' + playerPath + '/wrapper.swf" allowfullscreen="true" ' + 
+			 'allownetworking="all" allowscriptaccess="always" ' +
+			 'type="application/x-shockwave-flash" ' +
+			 'flashVars="kdpUrl=' + playerPath + '/kdp.swf' +
+			  		'&ks=dummy&partner_id=0&subp_id=0' +
+			  		'&uid=0&emptyF=onKdpEmpty&readyF=onKdpReady' +
+			  		'" '+
+			 'wmode="opaque" ' + 
+			 'id="' + this.pid + '" name="' + this.pid + '">' +
+				'<param value="always" name="allowScriptAccess"/>' +
+				'<param value="all" name="allowNetworking"/>' +
+			  	'<param value="true" name="allowFullScreen"/>' +
+			  	'<param value="#000000" name="bgcolor"/>' +
+			  	'<param value="wrapper.swf" name="movie"/>' +
+			  	'<param value="' +
 			  		'kdpUrl=' + playerPath + '/kdp.swf' +
 			  		'&ks=dummy&partner_id=0&subp_id=0' +
 			  		'&uid=0&emptyF=onKdpEmpty&readyF=onKdpReady' +
-			  		'" ' + 
-			  		'name="flashVars"/>'+
-			  '<param value="opaque" name="wmode"/>'+
+			  		'" ' +
+			  		'name="flashVars"/>' +
+			  	'<param value="opaque" name="wmode"/>' +
 			 '</object>'
-		)
+		)		
 		setTimeout(function() {
 			_this.postEmbedJS();
 		}, 50);
