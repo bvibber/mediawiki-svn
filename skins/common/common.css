@@ -202,8 +202,7 @@ div.floatleft, table.floatleft {
 .rsd_result_enumeration {
 	margin: 0 1em;
 }
-.rsd_results_body {
-	height: 100%;
+.rsd_results_body {	
 	width: 100%;
 }
 #rsd_results_header {

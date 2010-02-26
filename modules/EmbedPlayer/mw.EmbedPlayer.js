@@ -367,8 +367,7 @@ EmbedPlayerManager.prototype = {
 				
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function() {	
-			var waitForMeta = _this.waitForMetaCheck( element );
-																		
+			var waitForMeta = _this.waitForMetaCheck( element );								
 			switch( element.tagName.toLowerCase() ) {
 				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
@@ -402,7 +401,7 @@ EmbedPlayerManager.prototype = {
 						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();						
 					}
 									
-					if( waitForMeta ) {
+					if( waitForMeta ) {						
 						mw.log(' WaitForMeta ( video missing height (' + $j( element ).attr('height') + '), width (' + $j( element ).attr('width') + ') or duration' );
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
@@ -603,12 +602,16 @@ mediaSource.prototype = {
 				this[ attr ] =  attr_value;
 			}
 		}
-
+		
+		// Set the content type: 
 		if ( $j( element ).attr( 'type' ) ) {
 			this.mime_type = $j( element ).attr( 'type' );
 		}else if ( $j( element ).attr( 'content-type' ) ) {
 			this.mime_type = $j( element ).attr( 'content-type' );
-		}else{
+		}else if( $j( element ).get(0).tagName.toLowerCase() == 'audio' ){
+			// If the element is an "audio" tag set audio format
+			this.mime_type = 'audio/ogg';
+		} else {
 			this.mime_type = this.detectType( this.src );
 		}
 		
@@ -1329,14 +1332,21 @@ mw.EmbedPlayer.prototype = {
 	* 
 	* @param {Element} element Source element to grab size from 
 	*/
-	setPlayerSize: function( element ) {				
-		this['height'] = parseInt( $j(element).css( 'height' ).replace( 'px' , '' ) );
-		this['width'] = parseInt( $j(element).css( 'width' ).replace( 'px' , '' ) );							
+	setPlayerSize: function( element ) {					
+		
+		this['height'] = parseInt( $j(element).css( 'height' ) );
+		this['width'] = parseInt( $j(element).css( 'width' ) );		
 		
 		if( !this['height']  && !this['width'] ) {
 			this['height'] = parseInt( $j(element).attr( 'height' ) );
 			this['width'] = parseInt( $j(element).attr( 'width' ) );
 		}			
+				
+		// Special case for audio 
+		// Firefox sets audio height to "0px" while webkit uses 32px .. force zero:  
+		if(  element.tagName.toLowerCase() == 'audio' && this['height'] == '32') {
+			this['height'] = 0;
+		}		
 		
 		// Use default aspect ration to get height or width ( if rewriting a non-audio player )
 		if(  element.tagName.toLowerCase() != 'audio' ) {
@@ -1683,10 +1693,16 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;				
 		
 		// Set "loading" here:
-		$j( '#' + _this.id ).html( '' +
-			'<div style="color:black;width:' + this.width + 'px;height:' + this.height + 'px;">' +
-				gM( 'mwe-loading_plugin' ) +
-			'</div>'
+		$j( '#' + _this.id ).html( 
+			$j( '<div />' )
+			.css({
+				'color' : 'black',
+				'width' : this.width + 'px',
+				'height' : this.height + 'px'
+			})
+			.text(
+				gM( 'mwe-loading_plugin' ) 
+			)
 		);
 		
 		// Make sure the player is		
@@ -1755,14 +1771,32 @@ mw.EmbedPlayer.prototype = {
 						var title_str = page.title.replace( /File:|.ogv$|.oga$|.ogg$/gi, "" );
 						// only link to other videos: 								
 						if ( descriptionurl.match( /\.ogg$|\.ogv$|\.oga$/gi ) != null) {
-							var liout = '<li>' +
-								'<a href="' + descriptionurl + '" >' +
-									'<img src="' + local_poster + '">' +
-								'</a>' +
-									' <a title="' + title_str + '" target="_blank" ' +
-										'href="' + descriptionurl + '">' + title_str + '</a>' +
-							'</li>';
-							$j( '#' + _this.id + ' .related_vids ul' ).append( liout ) ;
+							// Add the related asset link: 							
+							$j( '#' + _this.id + ' .related_vids ul' ).append( 
+								$j( '<li />')
+								.append(
+									// Image link: 
+									$j( '<a />' )
+									.attr({
+										'href' : descriptionurl
+									})
+									.append( 
+										$j( '<img />' )
+										.attr({
+											'src' : local_poster
+										})
+									),
+									
+									// Title Link: 
+									$j( '<a />' )
+									.attr({
+										'title' : title_str,
+										'target' : "_blank",
+										'href' : descriptionurl
+									})
+									.text( title_str )
+								) 							
+							);
 						}
 					 }
 				};
@@ -1805,11 +1839,21 @@ mw.EmbedPlayer.prototype = {
 		this.$interface.find( '.play-btn-large' ).hide();
 
 		// Add black background
-		$j( '#' + this.id ).append( '<div id="black_back_' + this.id + '" ' +
-			'style="z-index:-2;position:absolute;background:#000;' +
-			'top:0px;left:0px;width:' + parseInt( this.width ) + 'px;' +
-			'height:' + parseInt( this.height ) + 'px;">' +
-		'</div>' );
+		$j( '#' + this.id ).append( 
+			$j( '<div />' )
+			.attr({
+			 	'id' : 'black_back_' + this.id
+			 })
+			 .css({
+			 	'z-index' : -2,
+			 	'position' : 'absolute',
+			 	'background' : '#000',
+			 	'top' : '0px',
+			 	'left' : '0px', 
+			 	'width' : '100%',
+			 	'height' : '100%'
+			 })
+		);
 
 		if ( this.apiTitleKey ) {
 			$j( '#' + this.id ).append(
@@ -2042,7 +2086,10 @@ mw.EmbedPlayer.prototype = {
 	showThumbnail: function() {
 		var _this = this;
 		mw.log( 'f:showThumbnail' + this.thumbnail_disp );
+		
+		// Close Menu Overlay:
 		this.ctrlBuilder.closeMenuOverlay();
+		
 		// update the thumbnail html: 
 		this.updateThumbnailHTML();
 		
@@ -2085,8 +2132,7 @@ mw.EmbedPlayer.prototype = {
 				.css({				
 					'width' : parseInt( this.width ) + 'px',
 					'height' : parseInt( this.height ) + 'px',
-					'position' : 'relative',
-					'overflow' : 'hidden'
+					'position' : 'relative'
 				})
 			)
 		}

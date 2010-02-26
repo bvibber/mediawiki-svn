@@ -161,8 +161,7 @@ ctrlBuilder.prototype = {
 		}
 
 		// Output components 
-		for ( var component_id in this.components ) {
-			mw.log(' on componet: ' + component_id );
+		for ( var component_id in this.components ) {			
 			// Check for (component === false ) and skip  
 			if( this.components[ component_id ] === false  ){
 				continue;
@@ -315,7 +314,8 @@ ctrlBuilder.prototype = {
 			'top' : topOffset,
 			'left' : leftOffset,
 			'width' : $j( window ).width(),
-			'height' :  $j( window ).height()			
+			'height' :  $j( window ).height(),
+			'overlow' : 'hidden'			
 		} )
 		
 		// Set the player height width: 
@@ -409,13 +409,14 @@ ctrlBuilder.prototype = {
 			'top' : this.windowOffset.top,
 			'left' : this.windowOffset.left,
 			// height is embedPlayer height + ctrlBuilder height: 
-			'height': interfaceHeight,
+			'height' : interfaceHeight,
 			'width' : embedPlayer.getWidth()					
 		},function(){
 			// Restore non-absolute layout: 
 			$interface.css( {
 				'position' : _this.windowPositionStyle,
 				'z-index' : _this.windowZindex,
+				'overlow' : 'visible',
 				'top' : null,
 				'left' : null 
 			} );
