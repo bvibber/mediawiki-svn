@@ -25,8 +25,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 // Set defaults
+
+// Allow users to create their own custom sidebars under User:<username>/Sidebar
 $wgDynamicSidebarUseUserpages = true;
+
+// Allow group sidebars under MediaWiki:Sidebar/Group:<group>
 $wgDynamicSidebarUseGroups = true;
+
+// Allow category based sidebars under MediaWiki:Sidebar/Group:<category>
 $wgDynamicSidebarUseCategories = true;
 
 $wgExtensionCredits['other'][] = array(

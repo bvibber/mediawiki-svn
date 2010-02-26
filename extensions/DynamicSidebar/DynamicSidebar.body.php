@@ -26,23 +26,44 @@ class DynamicSidebar {
 		global $wgDynamicSidebarUseGroups, $wgDynamicSidebarUseUserpages;
 		global $wgDynamicSidebarUseCategories;
 
+		$groupSB = array();
+		$userSB = array();
+		$catSB = array();
 		if ( $wgDynamicSidebarUseGroups && isset( $sidebar['GROUP-SIDEBAR'] ) ) {
-			// Replace the GROUP-SIDEBAR entry with the group's sidebar
-			$groupSB = array();
 			$skin->addToSidebarPlain( $groupSB, self::doGroupSidebar() );
-			array_splice( $sidebar, array_search( 'GROUP-SIDEBAR', array_keys( $sidebar ), true ), 1, $groupSB );
 		}
 		if ( $wgDynamicSidebarUseUserpages && isset( $sidebar['USER-SIDEBAR'] ) ) {
-			// Replace the USER-SIDEBAR entry with the user's sidebar
-			$userSB = array();
 			$skin->addToSidebarPlain( $userSB, self::doUserSidebar() );
-			array_splice( $sidebar, array_search( 'USER-SIDEBAR', array_keys( $sidebar ), true ), 1, $userSB );
 		}
 		if ( $wgDynamicSidebarUseCategories && isset( $sidebar['CATEGORY-SIDEBAR'] ) ) {
-			$catSB = array();
 			$skin->addToSidebarPlain( $catSB, self::doCategorySidebar() );
-			array_splice( $sidebar, array_search( 'CATEGORY-SIDEBAR', array_keys( $sidebar ), true ), 1, $catSB );
 		}
+
+		$sidebar_copy = array();
+
+		foreach ( $sidebar as $sidebar_key => $sidebar_item ) {
+			if ( $sidebar_key == 'GROUP-SIDEBAR' ) {
+				// Replace the GROUP-SIDEBAR entry with the group's sidebar
+				foreach ( $groupSB as $groupSBkey => $groupSBvalue ) {
+					$sidebar_copy[$groupSBkey] = $groupSBvalue;
+				}
+			} else if ( $sidebar_key == 'USER-SIDEBAR' ) {
+				// Replace the USER-SIDEBAR entry with the user's sidebar
+				foreach ( $userSB as $userSBkey => $userSBvalue ) {
+					$sidebar_copy[$userSBkey] = $userSBvalue;
+				}
+			} else if ( $sidebar_key == 'CATEGORY-SIDEBAR' ) {
+				// Replace the CATEGORY-SIDEBAR entry with the category's sidebar
+				foreach ( $catSB as $catSBkey => $catSBvalue ) {
+					$sidebar_copy[$catSBkey] = $catSBvalue;
+				}
+			} else {
+				// Add the original array item back
+				$sidebar_copy[$sidebar_key] = $sidebar_item;
+			}
+		}
+
+		$sidebar = $sidebar_copy;
 		return true;
 	}
 
@@ -74,7 +95,7 @@ class DynamicSidebar {
 	 * @access private
 	 * @return string
 	 */
-	private static function doGroupSidebar( $matches ) {
+	private static function doGroupSidebar() {
 		global $wgUser;
 		
 		// Get group membership array.
@@ -89,7 +110,7 @@ class DynamicSidebar {
 		foreach ( $groups as $group ) {
 			// Form the path to the article:
 			// MediaWiki:Sidebar/<group>
-			$title = Title::makeTitle( NS_MEDIAWIKI, 'Sidebar/' . $group );
+			$title = Title::makeTitle( NS_MEDIAWIKI, 'Sidebar/Group:' . $group );
 			if ( !$title->exists() ) {
 				continue;
 			}
@@ -106,7 +127,7 @@ class DynamicSidebar {
 	 * @access private
 	 * @return string
 	 */
-	private static function doCategorySidebar( $matches ) {
+	private static function doCategorySidebar() {
 		global $wgUser;
 
 		self::printDebug( "User name: {$wgUser->getName()}" );
@@ -131,12 +152,14 @@ class DynamicSidebar {
 
 			// Form the path to the article:
 			// MediaWiki:Sidebar/<category>
-			$title = Title::makeTitle( NS_MEDIAWIKI, 'Sidebar/' . $category );
+			$title = Title::makeTitle( NS_MEDIAWIKI, 'Sidebar/Category:' . $category );
 			if ( !$title->exists() ) {
+				self::printDebug( "$category category page doesn't exist." );
 				continue;
 			}
 			$a = new Article( $title );
 			$text .= $a->getContent() . "\n";
+			self::printDebug( "$category text output is: $text" );
 		}
 		return $text;
 	}
