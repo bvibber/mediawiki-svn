@@ -26,15 +26,15 @@ class Schema {
 	/**
 	 * Field types
 	 */
-	const TYPE_INT       = 'int';
-	const TYPE_VARCHAR   = 'varchar';
-	const TYPE_DATETIME  = 'datetime'; // On Postgres this is DATETIME. MySQL we use binary(14)
-	const TYPE_TEXT      = 'text';
-	const TYPE_BLOB      = 'blob';
-	const TYPE_BINARY    = 'binary';
-	const TYPE_VARBINARY = 'varbinary';
-	const TYPE_BOOL      = 'bool';
-	const TYPE_ENUM      = 'enum';
+	const TYPE_INT       = 1;
+	const TYPE_VARCHAR   = 2;
+	const TYPE_DATETIME  = 3; // On Postgres this is DATETIME. MySQL we use binary(14)
+	const TYPE_TEXT      = 4;
+	const TYPE_BLOB      = 5;
+	const TYPE_BINARY    = 6;
+	const TYPE_VARBINARY = 7;
+	const TYPE_BOOL      = 8;
+	const TYPE_ENUM      = 9;
 
 	/**
 	 * The actual database definition itself. A multi-dimensional associative
