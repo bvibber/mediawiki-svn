@@ -165,7 +165,7 @@ wfProfileIn( $fname.'-misc1' );
 wfMemoryLimit();
 
 /**
- * Set up the timezone, suppressing the pseudo-security warning in PHP 5.1+ 
+ * Set up the timezone, suppressing the pseudo-security warning in PHP 5.1+
  * that happens whenever you use a date function without the timezone being
  * explicitly set. Inspired by phpMyAdmin's treatment of the problem.
  */
@@ -351,7 +351,7 @@ wfProfileIn( $fname.'-extensions' );
 # this can't be done in a normal extension type way
 # since the script-loader is an entry point
 #
-$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js/mwEmbed/includes/languages/mwEmbed.i18n.php";
+$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js/mwEmbed/languages/mwEmbed.i18n.php";
 
 # Extension setup functions for extensions other than skins
 # Entries should be added to this variable during the inclusion

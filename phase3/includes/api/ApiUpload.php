@@ -257,6 +257,7 @@ class ApiUpload extends ApiBase {
 			}
 			return $result;
 		}
+
 		if( !$this->mParams['ignorewarnings'] ) {
 			$warnings = $this->mUpload->checkWarnings();
 			if( $warnings ) {
