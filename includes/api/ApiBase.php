@@ -498,6 +498,7 @@ abstract class ApiBase {
 			foreach ( array_keys( $wgCanonicalNamespaceNames ) as $ns ) {
 				if ( $ns > 0 ) {
 					$mValidNamespaces[] = $ns;
+				}
 			}
 		}
 		return $mValidNamespaces;
