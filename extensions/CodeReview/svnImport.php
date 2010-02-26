@@ -60,7 +60,7 @@ class SvnImport extends Maintenance {
 
 		$startTime = microtime( true );
 		$revCount = 0;
-		$start = $start === null ? intval( $start ) : $lastStoredRev + 1;
+		$start = ($start !== null) ? intval( $start ) : $lastStoredRev + 1;
 		if ( $start > ( $lastStoredRev + 1 ) ) {
 			$this->error( "Invalid starting point r{$start}" );
 			return;
@@ -88,7 +88,7 @@ class SvnImport extends Maintenance {
 				$start += $chunkSize;
 			}
 			if ( !is_array( $log ) ) {
-				var_dump( $log );
+				var_dump( $log ); // @TODO: cleanup :)
 				$this->error( 'wtf', true );
 			}
 			foreach ( $log as $data ) {
