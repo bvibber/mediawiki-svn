@@ -117,9 +117,10 @@ ctrlBuilder.prototype = {
 				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) + 2
 			} );
 			// update the control bar display to "block" 
-			$controlBar.css('display', 'block')			
+			$controlBar.css( 'display', 'block' );			
 		}
-		// add the controls to the interface
+		
+		// Add the controls to the interface
 		embedPlayer.$interface.append( $controlBar );
 	
 		// Add the Controls with their bindings
@@ -131,7 +132,7 @@ ctrlBuilder.prototype = {
 	
 	/**
 	* Builds the interface controls
-	* @returns the interface html string
+	* @return the interface html string
 	*/ 
 	addControlComponents: function( ) {
 		var _this = this;			
@@ -162,7 +163,7 @@ ctrlBuilder.prototype = {
 
 		// Output components 
 		for ( var component_id in this.components ) {
-		
+			mw.log(' on componet: ' + component_id );
 			// Check for (component === false ) and skip  
 			if( this.components[ component_id ] === false  ){
 				continue;
@@ -357,21 +358,23 @@ ctrlBuilder.prototype = {
 		
 		// Bind resize resize window to resize window
 		$j( window ).resize( function() {
-			// UPdate interface container: 
-			$interface.css( {			
-				'top' : '0px',
-				'left' : '0px',
-				'width' : $j( window ).width(),
-				'height' :  $j( window ).height()			
-			} )
-			// Update player size
-			$j( embedPlayer ).css( _this.getFullscreenPlayerCss() );
-			
-			// Update play button pos
-			$interface.find('.play-btn-large').css(  _this.getFullscreenPlayButtonCss() );
-			
-			// Update the timed text size  
-			$interface.find( '.itext' ).css( _this.getFullscreenTextCss() );
+			if( _this.fullscreenMode ){
+				// Update interface container: 
+				$interface.css( {			
+					'top' : '0px',
+					'left' : '0px',
+					'width' : $j( window ).width(),
+					'height' :  $j( window ).height()			
+				} )
+				// Update player size
+				$j( embedPlayer ).css( _this.getFullscreenPlayerCss() );
+				
+				// Update play button pos
+				$interface.find('.play-btn-large').css(  _this.getFullscreenPlayButtonCss() );
+				
+				// Update the timed text size  
+				$interface.find( '.itext' ).css( _this.getFullscreenTextCss() );
+			}
 		});
 		
 		// Bind escape to restore clip resolution
@@ -859,7 +862,8 @@ ctrlBuilder.prototype = {
 			.addClass( 'ui-widget-overlay' )
 			.css( {
 				'height' : '100%',
-				'width' : '100%'
+				'width' : '100%',
+				'z-index' : 2
 			} )
 		);
 		
@@ -885,7 +889,7 @@ ctrlBuilder.prototype = {
 			'top': '15px',
 			'overflow' : 'auto',
 			'padding' : '4px',
-			'z-index' : 2
+			'z-index' : 3
 		};	
 		$overlayMenu = $j('<div />')
 			.addClass( 'overlay-win ui-state-default ui-widget-header ui-corner-all' )
@@ -901,7 +905,7 @@ ctrlBuilder.prototype = {
 		var shadowCss = jQuery.extend( true, {}, overlayMenuCss );
 		shadowCss['height' ] = 210;
 		shadowCss['width' ] = 260;
-		shadowCss[ 'z-index' ] = 1;		
+		shadowCss[ 'z-index' ] = 2;		
 		$overlayShadow = $j( '<div />' )
 			.addClass('ui-widget-shadow ui-corner-all')
 			.css( shadowCss );
@@ -1296,7 +1300,7 @@ ctrlBuilder.prototype = {
 							'zindex' : mw.getConfig( 'fullScreenIndex' ),		
 							'positionOpts': {
 								'directionV' : 'up',								
-								'offsetY' : 32,
+								'offsetY' : 30,
 								'directionH' : 'left',
 								'offsetX' : -28
 							}							
@@ -1385,6 +1389,7 @@ ctrlBuilder.prototype = {
 		'volumeControl': {
 			'w' : 28,
 			'o' : function( ctrlObj ) {
+				mw.log(' set up volume out');
 				$volumeOut = $j( '<span />' );
 				if ( ctrlObj.volume_layout == 'horizontal' ) {
 					$volumeOut.append(  
@@ -1392,6 +1397,7 @@ ctrlBuilder.prototype = {
 						.addClass( "ui-slider ui-slider-horizontal rButton volume-slider" )
 					);
 				}
+				mw.log(' add up volume control icon');
 				// Add the volume control icon
 				$volumeOut.append( 	
 				 	$j('<div />')
@@ -1402,22 +1408,23 @@ ctrlBuilder.prototype = {
 				 		.addClass( "ui-icon ui-icon-volume-on" )
 				 	)
 				 );
-						
+				mw.log(' if verticle add container ');		
 				if ( ctrlObj.volume_layout == 'vertical' ) {
 					$volumeOut.find('.volume_control').append( 	
 						$j( '<div />' )
 						.css( {
-							'position' : 'absolute',
-							'display' : 'none',
-							'left' : '0px;'
+							'position' : 'absolute',							
+							'left' : '0px'
 						})
+						.hide()
 						.addClass( "vol_container ui-corner-all" )
 						.append( 
 							$j( '<div />' )
 							.addClass ( "volume-slider" )
 						)
 					);
-				}				
+				}			
+				mw.log('get inner volume html');	
 				//Return the inner html 
 				return $volumeOut.html();
 			}

@@ -672,7 +672,7 @@ mediaSource.prototype = {
 	},
 	
 	/** 
-	* MIME type accessor function.
+	* MIME type accessors function.
 	* @return {String} the MIME type of the source.
 	*/
 	getMIMEType: function() {
@@ -871,19 +871,38 @@ mediaElement.prototype = {
 		}							
 		
 		// Set by default thumb value if not found
-		if( ! this.thumbnail  )
+		if( ! this.thumbnail  ){
 			this.thumbnail = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
+		}
 		
 		// Process the video_element as a source element:
 		if ( $j( video_element ).attr( "src" ) ) {
 			this.tryAddSource( video_element );
 		}
 		
-		// Process all inner <source>, & <itext> elements			
-		$j( video_element ).find( 'source,itext' ).each( function( ) {
-			mw.log( 'pcat: ' + $j(this).parent().attr( 'category' ) + ' tagName:' + $j(this).parent().get(0).tagName );			
-			_this.tryAddSource( this );
-		} );		
+		if( ! $j.browser.msie ){
+			// Most browsers are oky with inner unknown element selectors:
+			$j( video_element ).find( 'source,itext' ).each( function( ) {			
+				_this.tryAddSource( this );
+			} );		 
+		} else {
+			// IE on the other hand is not.
+			
+			// IE apperntly has the source tags floating in DOM space but not 
+			// as child of the unknown video tag element rather as its "sibling" 
+						
+			// Add the video element with an identifiable div
+			
+			// NOTE this fails for multiple video tags in a given div
+			// but if we $j( video_element ).wrap ( $j('<div />' ) ) it fails all together					
+			$j( $j( video_element ).parent().get(0).getElementsByTagName('source') ).each( function(){
+				_this.tryAddSource( this );
+			});
+			
+			$j( $j( video_element ).parent().get(0).getElementsByTagName( 'itext' ) ).each( function(){
+				_this.tryAddSource( this );
+			});
+		}					
 	},
 	
 	/** 
@@ -908,9 +927,11 @@ mediaElement.prototype = {
 	textSourceExists: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
 			mw.log( this.sources[i].mime_type );
-			if ( this.sources[i].mime_type == 'text/cmml' ||
-				this.sources[i].mime_type == 'text/x-srt' )
+			if ( this.sources[i].mime_type == 'text/cmml' 
+				|| this.sources[i].mime_type == 'text/x-srt' ) 
+			{
 					return true;
+			}
 		};
 		return false;
 	},
@@ -923,9 +944,10 @@ mediaElement.prototype = {
 	* @type Array
 	*/
 	getSources: function( mime_filter ) {
-		if ( !mime_filter )
+		if ( !mime_filter ) {
 			return this.sources;
-		// apply mime filter: 
+		}
+		// Apply mime filter: 
 		var source_set = new Array();
 		for ( var i = 0; i < this.sources.length ; i++ ) {
 			if ( this.sources[i].mime_type &&
@@ -1451,8 +1473,7 @@ mw.EmbedPlayer.prototype = {
 			return ;			
 		}
 		_this.setupSourcePlayer();
-	},
-	
+	},	
 	
 	/**
 	* Set up the select source player
@@ -1463,8 +1484,8 @@ mw.EmbedPlayer.prototype = {
 	*/	
 	setupSourcePlayer: function() {
 		mw.log("setupSourcePlayer: " + this.id );
-		// Autoseletct the media source
-		this.mediaElement.autoSelectSource();	
+		// Autoseletct the media source		
+		this.mediaElement.autoSelectSource();
 		// Auto select player based on default order
 		if ( !this.mediaElement.selected_source ) {
 			// check for parent clip: 
@@ -1480,6 +1501,7 @@ mw.EmbedPlayer.prototype = {
 		} else {
 			this.selected_player = mw.EmbedTypes.players.defaultPlayer( this.mediaElement.selected_source.mime_type );
 		}
+		
 		if ( this.selected_player ) {
 			mw.log( "Playback system: " + this.selected_player.library );					
 						
@@ -1487,18 +1509,19 @@ mw.EmbedPlayer.prototype = {
 			this.inheritEmbedPlayer();
 		} else {
 			// No source's playable
-			var missing_type = '';
+			var missingType = '';
 			var or = '';
 			for ( var i = 0; i < this.mediaElement.sources.length; i++ ) {
 				missing_type += or + this.mediaElement.sources[i].mime_type;
 				or = ' or ';
 			}
 			// Get from parent playlist if set: 		
-			if ( this.pc )
-				var missing_type = this.pc.type;
+			if ( this.pc ){
+				missingType = this.pc.type;
+			}
 														
-			mw.log( 'No player found for given source type ' + missing_type );
-			this.showPluginMissingHTML( missing_type );
+			mw.log( 'No player found for given source type ' + missingType );
+			this.showPluginMissingHTML( missingType );
 		}
 	},
 	
@@ -2058,10 +2081,10 @@ mw.EmbedPlayer.prototype = {
 			$j( this )			
 			.wrap( 
 				$j('<div>')
-				.addClass('interface_wrap ' + this.ctrlBuilder.playerClass)
+				.addClass( 'interface_wrap ' + this.ctrlBuilder.playerClass )
 				.css({				
-					'width' : parseInt( this.width ),
-					'height' : parseInt( this.height ),
+					'width' : parseInt( this.width ) + 'px',
+					'height' : parseInt( this.height ) + 'px',
 					'position' : 'relative',
 					'overflow' : 'hidden'
 				})
@@ -2101,7 +2124,7 @@ mw.EmbedPlayer.prototype = {
 		  }		   		 
 		  $j( this ).html(
 		  	$j('<div />').append(
-		  		gM( 'mwe-generic_missing_plugin', missing_type ),
+		  		gM( 'mwe-generic_missing_plugin', misssingType ),
 		  		$j( '<br />' ),
 		  		$j( '<a />' )
 		  		.attr( {
@@ -2844,7 +2867,10 @@ mw.EmbedPlayer.prototype = {
 	* @return src url	
 	*/
 	getSrc: function() {
-	   return this.mediaElement.selected_source.getSrc( this.seek_time_sec );
+		if( this.mediaElement.selected_source ){
+			return this.mediaElement.selected_source.getSrc( this.seek_time_sec );
+		}
+		return false;
 	},
 	
 	/**

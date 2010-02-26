@@ -1820,7 +1820,7 @@ var MW_EMBED_VERSION = '1.1d';
 		* In debug mode inject the script instead of doing an XHR eval
 		*/			
 		// Load and bind manually:  ( copied from jQuery ajax function )
-		var head = document.getElementsByTagName("head")[0];
+		var head = document.getElementsByTagName("head")[ 0 ];
 		var script = document.createElement("script");
 		script.setAttribute( 'src', url );		
 			

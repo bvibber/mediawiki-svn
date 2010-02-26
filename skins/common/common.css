@@ -496,3 +496,8 @@ ul.ui-provider-selection li a {
 	-moz-background-origin: padding; 
 	-moz-background-inline-policy: continuous; 
 }
+
+.fg-menu .ui-icon{
+	position:relative;
+	top:-1px;
+}
