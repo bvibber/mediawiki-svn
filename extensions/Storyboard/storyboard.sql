@@ -13,4 +13,4 @@ CREATE TABLE /*$wgDBprefix*/storyboard (
   story_is_hidden    TINYINT           NOT NULL default '0'
 ) /*$wgDBTableOptions*/;
 
-CREATE INDEX story_published_modified ON /*$wgDBprefix*/storyboard (story_is_published, story_is_modified);
+CREATE INDEX story_published_modified ON /*$wgDBprefix*/storyboard (story_is_published, story_modified);
