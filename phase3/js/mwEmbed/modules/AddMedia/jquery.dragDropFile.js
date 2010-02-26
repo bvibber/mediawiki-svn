@@ -45,10 +45,19 @@ mw.addMessages( {
 
 			$j( '#multiple_file_input' ).remove();
 
-			$j( 'body' ).append( '<div title="' + gM( 'mwe-upload-multi', fileCount ) + '" ' +
-				'style="position:absolute;bottom:5em;top:3em;right:0px;left:0px" ' +
-				'id="multiple_file_input">' +
-				'</div>'
+			$j( 'body' ).append( 
+				$j('<div />')
+				.attr( {
+					'title' : gM( 'mwe-upload-multi', fileCount )
+					'id' : 'multiple_file_input'
+				} )
+				.css({
+					'position' : 'absolute',
+					'bottom' : '5em',
+					'top' : '3em',
+					'right' : '0px',
+					'left' : '0px'
+				})
 			);
 
 
@@ -73,19 +82,41 @@ mw.addMessages( {
 				$j( '#multiple_file_input' ).dialogFitWindow();
 			} );
 			// add the inital table / title:
-			$j( '#multiple_file_input' ).html( '<h3>' + gM( 'mwe-review-upload' ) + '</h3>' +
-				'<table width="100%" border="1" class="table_list" style="border:none;"></table>' );
+			$j( '#multiple_file_input' ).empty().html( 
+				$j('<h3 />')
+				.text( gM( 'mwe-review-upload' ) ),
+				
+				$j( '<table />' )
+				.attr({ 
+					'width' : "100%",
+					'border' : "1",
+					'border' : 'none'
+				})
+				.addClass( 'table_list' )
+			);
+			
 			$j.each( files, function( i, file ) {
 				if ( file.fileSize < 64048576 ) {
 					$j( '#multiple_file_input .table_list' ).append(
-						'<tr>' +
-							'<td width="300" style="padding:5px"><img width="250" src="' + file.getAsDataURL() + '">' + '</td>' +
-							'<td valign="top">' +
+						$j('<tr />').append(
+							$j('<td />').css({
+								'width': '300px',
+								'padding' : '5px'
+							}).append( 
+								$j('<img />').attr( {
+									'width' : '250',
+									'src' :  file.getAsDataURL()
+								} )
+							),
+							
+							$j('<td />')
+							.attr('valign', 'top')
+							.append(
 								'File Name: <input name="file[' + i + '][title]" value="' + file.name + '"><br>' +
-								'File Desc: <textarea style="width:300px;" name="file[' + i + '][desc]"></textarea><br>' +
-							'</td>' +
-						'</tr>'
-					);
+								'File Desc: <textarea style="width:300px;" name="file[' + i + '][desc]"></textarea><br>' 
+							)							
+						)
+					)
 					/*mw.addDialog( "upload this image", '<img width="300" src="' + files[i].getAsDataURL() + '">' +
 						'<br>name: ' + files[i].name + '</br>' +
 						'<br>size: ' + files[i].fileSize + '</br>' +

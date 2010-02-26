@@ -167,7 +167,7 @@ flickrSearch.prototype = {
 	* Get the size key for a requested width
 	*
 	* @param {Object} resource Resource for sizeKey grab
-	* @param {Number} width Requeste width for sizeKey lookup
+	* @param {Number} width Requested width for sizeKey lookup
 	*/
 	getSizeKey:function( resource, width ) {
 		if ( width <= 75 ) {
