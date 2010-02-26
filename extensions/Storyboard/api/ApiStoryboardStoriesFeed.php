@@ -113,12 +113,8 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 		);
 	}
 
-	/**
-	 * TODO
-	 * @see includes/api/ApiBase#getVersion()
-	 */
 	public function getVersion() {
-		return __CLASS__ . ': ';
+		return __CLASS__ . ': $Id$';
 	}	
 	
 }
