@@ -150,14 +150,6 @@ abstract class SchemaBuilder {
 	 * @return String
 	 */
 	abstract protected function defineTable( $name, $definition );
-
-	/**
-	 * Given an abstract field definition, return a DBMS-specific definition.
-	 * All child classes need to implement this
-	 * @param $attribs Array An abstract table definition
-	 * @return String
-	 */
-	abstract protected function getFieldDefinition( $attribs );
 }
 
 class MysqlSchema extends SchemaBuilder {
@@ -196,9 +188,11 @@ class MysqlSchema extends SchemaBuilder {
 	}
 
 	/**
-	 * @see SchemaBuilder::getFieldDefinition()
+	 * Given an abstract field definition, return a MySQL-specific definition.
+	 * @param $attribs Array An abstract table definition
+	 * @return String
 	 */
-	protected function getFieldDefinition( $attribs ) {
+	private function getFieldDefinition( $attribs ) {
 		if( !isset( $attribs['type'] ) ) {
 			$this->isOk = false;
 			throw new Exception( "No type specified for field" );
