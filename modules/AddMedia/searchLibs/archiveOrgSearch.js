@@ -156,12 +156,14 @@ archiveOrgSearch.prototype = {
 		//} else {
 		//var src = resource.src;
 		//}
-		var o ='';
+		var embedHtml ='';
 		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' ) {
-			return '<video poster="' + resource.poster + '" ' + attributes + 
+			embedHtml =  '<video poster="' + resource.poster + '" ' + attributes + 
 					' type="video/ogg"></video>';
 		}else if( resource.mime == 'audio/ogg' ) {
-			return '<audio ' + attributes + ' type="audio/ogg" ></audio>';
+			embedHtml = '<audio ' + attributes + ' type="audio/ogg" ></audio>';
 		}
+		
+		return embedHtml;		
 	}
 }

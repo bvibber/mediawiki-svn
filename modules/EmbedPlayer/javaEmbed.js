@@ -50,9 +50,10 @@ var javaEmbed = {
 			'<param name="duration" value="' + this.duration + '" />' + "\n" +
 			'<param name="bufferSize" value="4096" />' + "\n" +
 		'</applet>';					
-								
+		$j( this ).html( appletCode );
+				
 		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
-		// Doesn't work in MSIE or Safari/Mac or Opera 9.5
+		// NOTE:  This breaks refrence to the applet so disabled for now: 
 		/*if ( $j.browser.mozilla ) {
 			var iframe = document.createElement( 'iframe' );
 			iframe.setAttribute( 'width', this.getWidth() );

@@ -7,7 +7,7 @@ mw.addMessages( {
 	"mwe-import-description" : "$1, imported from $2"
 } );
 
-/*
+/**
 * rsd_default_rss_item_mapping
 * 
 *  @key is name of resource variable
@@ -95,7 +95,7 @@ baseRemoteSearch.prototype = {
 	/**
 	* Clears Results
 	*/
-	clearResults:function() {
+	clearResults: function() {
 		this.resultsObj = { };
 		this.last_query = '';
 	},
@@ -106,7 +106,7 @@ baseRemoteSearch.prototype = {
 	* @param {XML Nodes} data the data to be parsed
 	* @param {String} provider_url the source url (used to generate absolute links)
 	*/
-	addRSSData:function( data , provider_url ) {
+	addRSSData: function( data , provider_url ) {
 		mw.log( 'f:addRSSData' );
 		var _this = this;
 		var http_host = '';
@@ -150,6 +150,7 @@ baseRemoteSearch.prototype = {
 			_this.num_results++;
 		} );
 	},
+	
 	/*
 	* Maps a given attribute to a resource object per mapping defined in 
 	* rsd_default_rss_item_mapping
@@ -245,13 +246,13 @@ baseRemoteSearch.prototype = {
 			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
 			ahtml+=	'src="' +  mw.escapeQuotesHTML( resource.src ) + '" ' +
 					//'class="' + mw.getConfig( 'skinName' ) + '" ' +
-					// mannualy set kskin (while mw.setConfig is not avaliable on all pages )
+					// mannualy set kskin (while mw.setConfig is not available on all pages )
 					'class="kskin" '+   					
 					'style="' + options.style + '" ' +
 					'poster="' +   mw.escapeQuotesHTML( resource.poster ) + '" '+
 					'type="' +  mw.escapeQuotesHTML( resource.mime ) + '" ';
 					
-			// Add the api title key if avaliable:
+			// Add the api title key if available:
 			if( resource.titleKey ) {
 				'apiTitleKey="' +  mw.escapeQuotesHTML( resource.titleKey ) + '" ';
 			}			
@@ -263,18 +264,24 @@ baseRemoteSearch.prototype = {
 			if ( resource.mime == 'audio/ogg' ) {
 				outHtml = '<audio ' + ahtml + '></audio>';
 			}
-		}
-		
-		// Return the output. Wrap with a description div if insert_description is on.		
-		if( outHtml != '') {
-			return ( options['insert_description'] ) ?
-				this.wrapHtmlDesc(resource, options, outHtml) :
-				outHtml;
-		}
+		}	
+		return outHtml;
 			
 		// No output give error: 
 		mw.log( "ERROR:: no embed code for mime type: " + resource.mime );	
 		return 'Error missing embed code for: ' + escape( resource.mime );
+	},
+	
+	/*
+	* Wrap embed html with description div	
+	*/
+	getEmbedWithDescription: function( resource , options  ){
+		// Return the output. 			
+		return this.wrapHtmlDesc( 
+			resource, 
+			options, 
+			this.getEmbedHTML( resource, options ) 
+		);		
 	},
 	
 	/**
@@ -285,6 +292,14 @@ baseRemoteSearch.prototype = {
 	 */
 	wrapHtmlDesc: function( resource, options, outHtml ) {
 		var stripedTitle =  resource.title.replace( /File:|Image:|.jpg|.png|.ogg|.ogv|.oga|.svg/ig, '');
+		
+		if( !options ){
+			options = {};
+		}
+		// NOTE should add "size" to insert control
+		if( !options.width ){
+			options.width = ( resource.width > 600 )? 600 : resource.width;
+		}
 		
 		var $titleLink = $j( '<a />' )
 		.attr({

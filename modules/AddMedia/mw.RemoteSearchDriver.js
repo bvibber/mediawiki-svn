@@ -2094,6 +2094,7 @@ mw.RemoteSearchDriver.prototype = {
 		if ( this.isProviderLocal( provider ) || this.import_url_mode == 'remote_link' ) {
 			// Local repo, jump directly to the callback:
 			myCallback( 'local' );
+			return ;
 		} else {
 			// Check if the file is local ( can be shared repo )
 			if ( provider.check_shared ) {
@@ -2609,7 +2610,7 @@ mw.RemoteSearchDriver.prototype = {
 	*/	
 	getEmbedCode: function( resource ) {
 		if ( this.import_url_mode == 'remote_link' ) {
-			return resource.pSobj.getEmbedHTML( resource, { 'insert_description': true } );
+			return resource.pSobj.getEmbedWithDescription( resource );
 		} else {
 			return resource.pSobj.getEmbedWikiCode( resource );
 		}
@@ -2644,7 +2645,14 @@ mw.RemoteSearchDriver.prototype = {
 	*/	
 	insertResource: function( resource ) {
 		mw.log( 'insertResource: ' + resource.title );
-		var _this = this;				
+		var _this = this;
+
+		// If doing a remote link jump directly to resource output: 
+		if( this.import_url_mode == 'remote_link' ){
+			_this.insertResourceToOutput( resource );
+			return ;
+		}
+		
 		// Double check that the resource is present:
 		this.isFileLocallyAvailable( resource, function( status ) {
 			if ( status === 'missing' ) {
@@ -2656,19 +2664,25 @@ mw.RemoteSearchDriver.prototype = {
 			if ( status === 'local' || status === 'shared' || status === 'imported' ) {
 				_this.insertResourceToOutput( resource );
 			}
-			//NOTE: should hanndle errors or other status states?
+			//NOTE: should handle errors or other status states?
 		} );
 	},
 	
 	/**
-	* Finish up the insertResource request outputing the resource to output targets
+	* Finish up the insertResource request by outputing the resource to output targets
 	*
 	* @param {Object} resource Resource to be inserted into the output targets
 	*/
 	insertResourceToOutput: function( resource ) {
 		var _this = this;		
+		
+		// Get the embed code ( can be html remote refrence or wiki-text depending on import_url_mode )
 		var embed_code = _this.getEmbedCode( resource );
-		$j( _this.target_textbox ).textSelection( 'encapsulateSelection', { 'post' : embed_code } );
+		
+		// If outputing to a text box
+		if( _this.target_textbox ) {			
+			$j( _this.target_textbox ).textSelection( 'encapsulateSelection', { 'post' : embed_code } );
+		}
 		
 		// Update the render area for HTML output of video tag with mwEmbed "player"
 		var embedCode = _this.getEmbedCode( resource );

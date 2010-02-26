@@ -29,8 +29,7 @@ ctrlBuilder.prototype = {
 	height: 31,		
 	
 	// Default supported components is merged with embedPlayer set of supported types
-	supportedComponets: {
-	
+	supportedComponets: {	
 		// All playback types support options	  
 		'options': true			  		
 	},	
@@ -1313,7 +1312,13 @@ ctrlBuilder.prototype = {
 		*/
 		'fullscreen': {
 			'w': 28,
-			'o': function( ctrlObj ) {				
+			'o': function( ctrlObj ) {
+				
+				// Setup "dobuleclick" fullscreen binding to embedPlayer 
+				$j( ctrlObj.embedPlayer ).bind("dblclick", function(){
+					ctrlObj.embedPlayer.fullscreen();
+				});			
+				
 				return $j( '<div />' )
 						.attr( 'title', gM( 'mwe-player_fullscreen' ) )
 						.addClass( "ui-state-default ui-corner-all ui-icon_link rButton fullscreen-btn" )

@@ -59,7 +59,7 @@ metavidSearch.prototype = {
 			// Add the data xml payload with context url:
 			_this.addRSSData( xmldata , url );
 			
-			// Do some metavid specific pos processing on the resource data:
+			// Do some metavid specific pos processing on the resource data:			
 			for ( var i in _this.resultsObj ) {
 				var resource = _this.resultsObj[i];
 				var proe = mw.parseUri( resource['roe_url'] );
@@ -95,7 +95,10 @@ metavidSearch.prototype = {
 	* 
 	* @param {Object} resource Resource to get title key from 
 	*/
-	getTitleKey:function( resource ) {
+	getTitleKey: function( resource ) {	
+		if( resource['titleKey'] ) {
+			return resource['titleKey'];
+		}
 		return resource['stream_name'] + '_part_' + resource['start_time'].replace(/:/g, '.' ) + '_to_' + resource['end_time'].replace(/:/g, '.' ) + '.ogv';
 	},
 	
@@ -195,7 +198,7 @@ metavidSearch.prototype = {
 	* @param {Object} resource Resource to be embed
 	* @param {Object} options Resource  Optiosn for embeind ( like max_width )
 	*/
-	getEmbedHTML:function( resource , options ) {
+	getEmbedHTML: function( resource , options ) {
 	    if ( !options )
 		     options = { };
 		var id_attr = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';

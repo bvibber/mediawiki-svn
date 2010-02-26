@@ -372,7 +372,11 @@ scrollToCaretPosition: function( options ) {
 			break;
 	}
 	var context = $(this).data( 'wikiEditor-context' );
-	var hasIframe = context !== undefined && context.$iframe !== undefined;
+	if( ! context ){
+		var hasIframe = false;
+	} else{
+		var hasIframe = context !== undefined && context.$iframe !== undefined;
+	}
 	// iframe functions have not been implemented yet, this is a temp hack
 	//var hasIframe = false;
 	return ( hasIframe ? context.fn : fn )[command].call( this, options );

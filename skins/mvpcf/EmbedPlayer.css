@@ -146,7 +146,7 @@
 	width:10px;
 	height:15px;
 	margin-left:-5px;
-	margin-top:0px;
+	margin-top: -1px;	
 }
 
 .mv-player .inOutSlider .ui-slider-handle{
@@ -175,6 +175,7 @@
 	float:left;
 	padding:2px 5px;
 }
+
 .mv-player .videoOptionsComplete div.ui-state-highlight a {
 	color:#eee;
 	font-weight:bold;
