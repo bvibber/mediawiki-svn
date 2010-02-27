@@ -412,7 +412,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'minnamelength-error' => 'ستاسو کارن-نوم ډېر لنډ دی. پکاره ده چې کارن-نوم مو لږ تر لږه $1 توري ولري.',
+	'minnamelength-error' => 'ستاسې کارن-نوم ډېر لنډ دی. پکار ده چې کارن-نوم مو لږ تر لږه $1 توري ولري.',
 );
 
 /** Portuguese (Português)

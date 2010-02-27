@@ -542,6 +542,8 @@ $messages['no'] = array(
 	'plotters-missing-arguments' => 'Ingen argument spesifisert.',
 	'plotters-excessively-long-scriptname' => 'Skriptnavnet er for langt.
 Vennligst definer et skript med et navn som er maksimalt 255 tegn langt.',
+	'plotters-excessively-long-preprocessorname' => 'Forprossesornavnet er for langt.
+Definer en forpressesor med et navn som er maks 255 tegn langt.',
 	'plotters-excessively-long-name' => 'Plottnavnet er for langt.
 Vennligst definer et plottnavn som er maksimalt 255 tegn langt.',
 	'plotters-excessively-long-tableclass' => 'Tabellklassen er for lang.

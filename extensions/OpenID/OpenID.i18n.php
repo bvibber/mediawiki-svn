@@ -3996,10 +3996,10 @@ $messages['ps'] = array(
 	'openidemail' => 'برېښليک پته',
 	'openidlanguage' => 'ژبه',
 	'openidtimezone' => 'د وخت سيمه',
-	'openidchooseinstructions' => 'ټولو کارونکيو ته د يوه کورني نوم اړتيا شته؛
-تاسو يو نوم د لاندينيو خوښو نه ځانته ټاکلی شی.',
-	'openidchoosefull' => 'ستاسو بشپړ نوم ($1)',
-	'openidchoosemanual' => 'ستاسو د خوښې يو نوم:',
+	'openidchooseinstructions' => 'ټولو کارنانو ته د يوه کورني نوم اړتيا شته؛
+تاسې يو نوم د لاندينيو خوښنو نه ځانته ټاکلی شی.',
+	'openidchoosefull' => 'ستاسې بشپړ نوم ($1)',
+	'openidchoosemanual' => 'ستاسې د خوښې يو نوم:',
 	'openidchooseusername' => 'کارن-نوم:',
 	'openidchoosepassword' => 'پټنوم:',
 	'openidnousername' => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',

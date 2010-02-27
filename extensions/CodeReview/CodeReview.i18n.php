@@ -692,6 +692,7 @@ $messages['be-tarask'] = array(
 	'code-prop-changes' => 'Журнал зьменаў статусаў і тэгаў',
 	'code-desc' => '[[Special:Code|Інструмэнт рэцэнзаваньня коду]] з [[Special:RepoAdmin|падтрымкай Subversion]]',
 	'code-no-repo' => 'Адсутнічае сканфігураванае сховішча!',
+	'code-repo-not-found' => 'Сховішча <b>$1</b> не існуе!',
 	'code-load-diff' => 'Загрузка розьніцы…',
 	'code-notes' => 'апошнія камэнтары',
 	'code-statuschanges' => 'зьмены статусу',
@@ -4105,7 +4106,7 @@ Commit összefoglaló:
 
 $4',
 	'codereview-email-subj3' => '[$1] [$2]: az automatikus tesztelés regressziót talált',
-	'codereview-email-body3' => 'Az automatikus tesztelés felfedett egy regressziót, amit az $1-ben történt változások okoztak.
+	'codereview-email-body3' => 'Az automatikus tesztelés felfedett egy regressziót, amit a(z) $1-ben történt változások okoztak.
 
 Teljes URL: $2
 
@@ -5490,6 +5491,7 @@ $messages['mk'] = array(
 	'code-prop-changes' => 'Дневник на статуси и ознаки',
 	'code-desc' => '[[Special:Code|Алатка за проверка на кодот]] со [[Special:RepoAdmin|поддршка за Subversion]]',
 	'code-no-repo' => 'Нема наместено складиште!',
+	'code-repo-not-found' => 'Складиштето <b>$1</b> не постои!',
 	'code-load-diff' => 'Вчитувам разлики...',
 	'code-notes' => 'скорешни коментари',
 	'code-statuschanges' => 'измени на статусот',
@@ -5637,6 +5639,7 @@ $messages['ml'] = array(
 	'code-prop-changes' => 'സ്ഥിതിയുടേയും റ്റാഗിങ്ങിന്റേയും രേഖ',
 	'code-desc' => '[[Special:RepoAdmin|സബ്‌‌വേർഷൻ പിന്തുണയോടു]] കൂടിയ [[Special:Code|കോഡ് സംശോധന ഉപകരണം]]',
 	'code-no-repo' => 'റെപ്പോസിറ്ററികളൊന്നും ക്രമീകരിച്ചിട്ടില്ല!',
+	'code-repo-not-found' => '<b>$1</b> എന്ന റെപ്പോസിറ്ററി നിലവിലില്ല!',
 	'code-load-diff' => 'വ്യത്യാസം ശേഖരിക്കുന്നു...',
 	'code-notes' => 'സമീപകാല അഭിപ്രായങ്ങൾ',
 	'code-statuschanges' => 'സ്ഥിതിയിലെ മാറ്റങ്ങൾ',
@@ -6045,6 +6048,7 @@ $messages['nl'] = array(
 	'code-prop-changes' => 'Logboek status en labels',
 	'code-desc' => '[[Special:Code|Hulpprogramma voor codecontrole]] met [[Special:RepoAdmin|ondersteuning voor Subversion]]',
 	'code-no-repo' => 'Er is geen repository ingesteld!',
+	'code-repo-not-found' => 'De repository <b>$1</b> bestaat niet!',
 	'code-load-diff' => 'Bezig met het laden van de veranderingen…',
 	'code-notes' => 'recente opmerkingen',
 	'code-statuschanges' => 'statuswijzigingen',
@@ -6784,6 +6788,7 @@ $messages['pms'] = array(
 	'code-prop-changes' => 'Registr djë stat e dle tichëtte',
 	'code-desc' => '[[Special:Code|Utiss ëd revision dël còdes]] con [[Special:RepoAdmin|manten ëd sot-version]]',
 	'code-no-repo' => 'Gnun depòsit configurà!',
+	'code-repo-not-found' => "L'archivi <b>$1</b> a esist pa!",
 	'code-load-diff' => 'Cariament dif...',
 	'code-notes' => 'coment recent',
 	'code-statuschanges' => 'cangiament dë statù',
@@ -6849,6 +6854,10 @@ $messages['pms'] = array(
 	'code-status-deferred' => 'spostà',
 	'code-pathsearch-legend' => 'Sërché dle revision an sto depòsit-sì për përcors',
 	'code-pathsearch-path' => 'Përcors',
+	'code-pathsearch-filter' => 'Filtr aplicà:',
+	'code-revfilter-cr_status' => 'Stat = $1',
+	'code-revfilter-cr_author' => 'Autor = $1',
+	'code-revfilter-clear' => 'Polida filtr',
 	'code-rev-submit' => 'Salvé ij cangiament',
 	'code-rev-submit-next' => 'Salvé & problema nen arzolvù apress',
 	'code-batch-status' => 'Cangé lë statù:',
@@ -7383,6 +7392,7 @@ $messages['ru'] = array(
 	'code-prop-changes' => 'Журнал статусов и меток',
 	'code-desc' => '[[Special:Code|Инструмент проверки кода]] с [[Special:RepoAdmin|поддержкой Subversion]]',
 	'code-no-repo' => 'Отсутствует настроенное хранилище!',
+	'code-repo-not-found' => 'Хранилища <b>$1</b> не существует!',
 	'code-load-diff' => 'Загрузка сравнения…',
 	'code-notes' => 'последние замечания',
 	'code-statuschanges' => 'изменения статуса',

@@ -1251,7 +1251,7 @@ File pa aproprià a saran scanselà sùbit, varda la [[{{MediaWiki:Multipleuploa
  */
 $messages['ps'] = array(
 	'multipleupload' => 'څو دوتنې پورته کول',
-	'multipleupload-desc' => 'کارونکي په دې توانوي چې [[Special:MultipleUpload|په يو وخت کې ګڼ شمېر دوتنې پورته کړي]]',
+	'multipleupload-desc' => 'کارنان په دې توانوي چې [[Special:MultipleUpload|په يو وخت کې ګڼ شمېر دوتنې پورته کړي]]',
 	'multipleupload-ignoreallwarnings' => "'''ټول ګواښونه''' بابېزه وګڼه او په هر ډول چې وي دوتنې خوندي کړه.",
 	'multipleupload-saveallfiles' => 'ټولې دوتنې خوندي کول',
 	'multipleupload-addresswarnings' => 'لطفاً د هر ډول دوتنو د بياپورته کولو دمخه مل ګواښليکونه وګورۍ',

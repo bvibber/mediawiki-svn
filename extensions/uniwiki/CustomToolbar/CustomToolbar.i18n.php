@@ -76,15 +76,6 @@ $wgCustomToolbarMessages['qqq'] = array(
 	'ct_user_sample' => '{{Identical|Username}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$wgCustomToolbarMessages['lzz'] = array(
-	'ct_bold_sample' => "Mçxu nç'ara",
-	'ct_bold_caption' => 'Mçxu',
-	'ct_submit' => 'İgzali!',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -1670,6 +1661,15 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 	'ct_user_sample' => 'Benotzernumm',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$wgCustomToolbarMessages['lzz'] = array(
+	'ct_bold_sample' => "Mçxu nç'ara",
+	'ct_bold_caption' => 'Mçxu',
+	'ct_submit' => 'İgzali!',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -2064,7 +2064,7 @@ $wgCustomToolbarMessages['ps'] = array(
 	'ct_math_caption' => 'فورمول',
 	'ct_submit' => 'ورځه!',
 	'ct_close' => 'کړکۍ تړل',
-	'ct_user_user' => 'کارونکی',
+	'ct_user_user' => 'کارن',
 	'ct_user_sample' => 'کارن-نوم',
 );
 

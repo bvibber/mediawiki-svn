@@ -416,7 +416,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'usercontactlink-baduser' => 'ناسم کارن-نوم',
-	'usercontactlink-desc' => 'د ^^^کارونکی^^^ ژبرغښت په کارولو سره به په ساده او پرله پسې توګه د کارونکو د نومونو د ورګډولو توان پېدا شي',
+	'usercontactlink-desc' => 'د ^^^ کارن^^^ ژبرغښت په کارولو سره به په ساده او پرله پسې توګه د کارنانو د نومونو د ورګډولو توان پېدا شي',
 );
 
 /** Portuguese (Português)

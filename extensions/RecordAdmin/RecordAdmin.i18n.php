@@ -1669,6 +1669,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'recordadmin-select' => 'ټاکل',
 	'recordadmin-buttonsearch' => 'پلټنه',
 	'recordadmin-buttoncreate' => 'جوړول',
 	'recordadmin-buttonsave' => 'خوندي کول',

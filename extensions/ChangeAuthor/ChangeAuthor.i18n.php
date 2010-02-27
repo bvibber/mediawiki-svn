@@ -1024,7 +1024,7 @@ Simplemente modifica le nomine de usator infra, adde un commento (optional) e cl
 	'changeauthor-nosuchtitle' => 'Non existe un pagina con titulo "$1".',
 	'changeauthor-weirderror' => 'Un error multo estranie ha occurrite.
 Per favor reproba tu requesta.
-Si iste error persiste, le base de datos es probabilemente defecte.',
+Si iste error persiste, le base de datos es probabilemente defectuose.',
 	'changeauthor-invalidform' => 'Per favor usa le formulario providite per le [[Special:ChangeAuthor|pagina special]] e non un formulario personalisate.',
 	'changeauthor-success' => 'Tu requesta ha essite processate con successo.',
 	'changeauthor-logentry' => 'Cambiava le autor del version $2 del pagina $1 de $3 a $4',

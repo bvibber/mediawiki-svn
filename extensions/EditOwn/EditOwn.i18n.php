@@ -351,7 +351,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'editown-desc' => 'هغه کارونکي چې د ټول-سمون د رښتو نه بې برخې دي، يواځې د هغو مخونو سمون کولای شي، کوم چې دوی پخپله جوړ کړي وي',
+	'editown-desc' => 'هغه کارنان چې د ټول-سمول د رښتو نه بې برخې دي، يواځې د هغو مخونو سمون کولای شي، کوم چې دوی پخپله جوړ کړي وي',
 );
 
 /** Portuguese (Português)

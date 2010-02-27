@@ -290,6 +290,8 @@ ImageMagick is niet beschikbaar.',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'tiff-desc' => 'Håndterer for visning av TIFF-filer i bildemodus',
+	'tiff_no_metadata' => 'Kan ikke hente metadata fra TIFF',
 	'tiff_sourcefile_too_large' => 'Oppløsningen til kildefilen er for stor. Miniatyrbilde vil ikke bli opprettet.',
 	'tiff_file_too_large' => 'Den opplastede filen var for stor og ble avvist.',
 	'tiff_out_of_service' => 'Den opplastede filen kunne ikke behandles. ImageMagick er ikke tilgjengelig.',

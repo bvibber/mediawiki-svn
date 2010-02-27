@@ -1118,9 +1118,9 @@ Për gestì j'anvit për na sola caraterìstica, sgnaca an sël sò nòm.",
  */
 $messages['ps'] = array(
 	'invite-logpage' => 'د بلنې يادښت',
-	'invitations-feature-notallowed' => 'تاسو د <i>$1</i> د کارونې لاسرسی نه لری.',
-	'invitations-inviteform-title' => 'يوه کارونکي ته د $1 د کارولو بلنه ورکول',
-	'invitations-inviteform-username' => 'بلل شوی کارونکی',
+	'invitations-feature-notallowed' => 'تاسې د <i>$1</i> د کارونې لاسرسی نه لری.',
+	'invitations-inviteform-title' => 'يوه کارن ته د $1 د کارولو بلنه ورکول',
+	'invitations-inviteform-username' => 'بلل شوی کارن',
 	'invitations-inviteform-submit' => 'بلنه ورکول',
 );
 

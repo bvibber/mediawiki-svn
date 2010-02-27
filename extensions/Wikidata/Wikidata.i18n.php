@@ -9671,7 +9671,7 @@ $messages['ps'] = array(
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
 <li>&action=help  Show helpful help.</li>
 </ul></p>',
-	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
+	'ow_conceptmapping_no_action_specified' => 'د "$1" کړنې ملاتړ نه کېږي.',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
 	'ow_ApproximateMeanings' => 'نژدې ماناګانې',
 	'ow_Class' => 'ټولګی',
@@ -9704,7 +9704,7 @@ $messages['ps'] = array(
 	'ow_meaningsoftitle' => 'د "$1" ماناګانې',
 	'ow_Permission_denied' => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',
-	'ow_copy_help' => 'يوه ورځ به موږ ستاسو سره مرسته وکړو.',
+	'ow_copy_help' => 'Help is not implemented yet.',
 	'ow_create' => 'جوړول',
 );
 

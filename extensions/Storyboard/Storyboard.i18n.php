@@ -77,6 +77,7 @@ $messages['fr'] = array(
 	'right-storyreview' => 'Relire, modifier, publier, et masquer les histoires',
 	'storyboard-storyreview' => "Relecture de l'histoire",
 	'storyboard-publish' => 'Publier',
+	'storyboard-unpublish' => 'Dépublier',
 	'storyboard-reviewed' => 'Révisée',
 	'storyboard-unreviewed' => 'Non-révisée',
 );
@@ -90,6 +91,7 @@ $messages['gl'] = array(
 	'right-storyreview' => 'Revisar, editar, publicar e agochar historias',
 	'storyboard-storyreview' => 'Revisión da historia',
 	'storyboard-publish' => 'Publicar',
+	'storyboard-unpublish' => 'Non publicar',
 	'storyboard-reviewed' => 'Revisada',
 	'storyboard-unreviewed' => 'Non revisada',
 );
@@ -107,6 +109,14 @@ $messages['gsw'] = array(
 	'storyboard-unreviewed' => 'Nit prieft',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'storyboard-publish' => 'Közzététel',
+	'storyboard-unpublish' => 'Közzététel visszavonása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -116,6 +126,7 @@ $messages['ia'] = array(
 	'right-storyreview' => 'Revider, modificar, publicar e celar historias',
 	'storyboard-storyreview' => 'Recension de historias',
 	'storyboard-publish' => 'Publicar',
+	'storyboard-unpublish' => 'Dispublicar',
 	'storyboard-reviewed' => 'Recensite',
 	'storyboard-unreviewed' => 'Non recensite',
 );
@@ -138,6 +149,7 @@ $messages['mk'] = array(
 	'right-storyreview' => 'Прегледување, уредување, објавување и сокривање на приказни',
 	'storyboard-storyreview' => 'Проверка на напис',
 	'storyboard-publish' => 'Објави',
+	'storyboard-unpublish' => 'Тргни',
 	'storyboard-reviewed' => 'Проверена',
 	'storyboard-unreviewed' => 'Непроверена',
 );
@@ -152,6 +164,7 @@ $messages['nl'] = array(
 	'right-storyreview' => 'Verhalen beoordelen, bewerken, publiceren en verbergen',
 	'storyboard-storyreview' => 'Verhalen beoordelen',
 	'storyboard-publish' => 'Publiceren',
+	'storyboard-unpublish' => 'Publicatie terugtrekken',
 	'storyboard-reviewed' => 'Beoordeeld',
 	'storyboard-unreviewed' => 'Niet beoordeeld',
 );
@@ -199,6 +212,7 @@ $messages['ru'] = array(
 	'right-storyreview' => 'проверка, правка, публикация и сокрытие историй',
 	'storyboard-storyreview' => 'Проверка историй',
 	'storyboard-publish' => 'Опубликовать',
+	'storyboard-unpublish' => 'Убрать',
 	'storyboard-reviewed' => 'Проверенных',
 	'storyboard-unreviewed' => 'Непроверенных',
 );

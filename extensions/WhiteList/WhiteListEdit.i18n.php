@@ -148,14 +148,6 @@ $messages['niu'] = array(
 	'whitelisttableedit' => 'Fakahakohako',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'mywhitelistpages' => 'Çkimi sayfape',
-	'whitelisttableremove' => 'Jili',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -2102,6 +2094,14 @@ Dës Säit ass nëmme valabel fir limitéiert Benotzer.",
 	'group-manager-member' => 'Manager',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'mywhitelistpages' => 'Çkimi sayfape',
+	'whitelisttableremove' => 'Jili',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -2706,12 +2706,12 @@ $messages['ps'] = array(
 	'whitelisttablemodifynone' => 'هېڅ',
 	'whitelisttablepage' => 'ويکي مخ',
 	'whitelisttabletype' => 'د لاسرسۍ ډول',
-	'whitelisttableedit' => 'سمون',
+	'whitelisttableedit' => 'سمول',
 	'whitelisttableview' => 'کتل',
 	'whitelisttablenewdate' => 'نوې نېټه:',
 	'whitelisttableremove' => 'غورځول',
 	'whitelistnewtabledate' => 'د پای نېټه:',
-	'whitelistnewtablereview' => 'مخکتنه',
+	'whitelistnewtablereview' => 'مخليدنه',
 	'whitelistrequestconf' => '$1 ته د نوي مخونو غوښتنه ولېږل شوه',
 	'whitelistnever' => 'هېڅکله',
 );

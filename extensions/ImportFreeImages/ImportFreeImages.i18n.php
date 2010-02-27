@@ -1045,6 +1045,7 @@ Për fé sò, për piasì oten na ciav API da [http://www.flickr.com/services/ap
 $messages['ps'] = array(
 	'importfreeimages_owner' => 'ليکوال',
 	'importfreeimages_next' => 'راتلونکي $1',
+	'importfreeimages_size_small' => 'وړوکی',
 );
 
 /** Portuguese (Português)

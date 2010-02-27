@@ -664,8 +664,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'minipreview-files_in_category' => 'په همدې وېشنيزه کې ټولټال $1 دوتنې دي.',
-	'minipreview-files_in_gallery' => 'په همدې نندارتون کې ټولټال $1 دوتنې دي.',
+	'minipreview-files_in_category' => "دا وېشنيزه '''$1''' {{PLURAL:$1|دوتنه لري|دوتنې لري}}.",
+	'minipreview-files_in_gallery' => "دا نندارتون '''$1''' {{PLURAL:$1|دوتنه لري|دوتنې لري}}.",
 	'minipreview-no_category_gallery' => 'هېڅ کومې وېشنيزې يا نندارتونونه نه!',
 );
 

@@ -3520,7 +3520,7 @@ Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa 
  */
 $messages['ps'] = array(
 	'sign-selectdoc' => 'لاسوند:',
-	'sign-error-nosuchdoc' => 'د کوم لاسوند غوښتنه چې تاسو کړې ($1)، هغه نشته.',
+	'sign-error-nosuchdoc' => 'د کوم لاسوند غوښتنه چې تاسې کړې ($1)، هغه نشته.',
 	'sign-realname' => 'نوم:',
 	'sign-address' => 'د کوڅې پته:',
 	'sign-city' => 'ښار:',

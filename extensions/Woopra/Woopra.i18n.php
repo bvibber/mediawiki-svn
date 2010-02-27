@@ -342,7 +342,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'woopra-desc' => 'د [http://www.woopra.com/ ووپرا ژوندی څارګره پوستکالی] آسانتياوې په دې توانوي چې ستاسو په ميډياويکي نصبولو باندې سم کار وکړي',
+	'woopra-desc' => 'د [http://www.woopra.com/ ووپرا ژوندی څارګره پوستکالی] آسانتياوې په دې توانوي چې ستاسې په ميډياويکي نصبولو باندې سم کار وکړي',
 );
 
 /** Portuguese (Português)

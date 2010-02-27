@@ -529,6 +529,17 @@ $messages['pms'] = array(
 A peul [[Special:RefHelper|gionté l'arferiment a man]] o [[Special:RefSearch|sërché la sitassion da gionté]].",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'refhelper-title' => 'سرليک:',
+	'refhelper-pages' => 'مخونه:',
+	'refhelper-year' => 'کال:',
+	'refhelper-create' => 'جوړول',
+	'refhelper-search' => 'پلټل',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

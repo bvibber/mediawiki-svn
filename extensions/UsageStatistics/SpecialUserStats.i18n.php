@@ -77,15 +77,6 @@ Cumulative statistics means that for each interval the number of edits in that i
 	'right-viewsystemstats' => '{{doc-right|viewsystemstats}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'usagestatisticsintervalday' => 'Ndğa',
-	'usagestatisticsintervalweek' => 'Doloni',
-	'usagestatisticsintervalmonth' => 'Tuta',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1386,6 +1377,15 @@ $messages['lb'] = array(
 	'right-viewsystemstats' => '[[Special:UserStats|Wiki Benotzerstatistike]] weisen',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'usagestatisticsintervalday' => 'Ndğa',
+	'usagestatisticsintervalweek' => 'Doloni',
+	'usagestatisticsintervalmonth' => 'Tuta',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest
@@ -1750,8 +1750,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'specialuserstats' => 'د کارونې شمار',
-	'usagestatistics' => 'د کارونې شمار',
+	'specialuserstats' => 'د کارولو شمار',
+	'usagestatistics' => 'د کارولو شمار',
 	'usagestatisticstype' => 'ډول',
 	'usagestatisticsstart' => 'د پيل نېټه:',
 	'usagestatisticsend' => 'د پای نېټه:',

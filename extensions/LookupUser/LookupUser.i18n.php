@@ -1073,7 +1073,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'lookupuser-nonexistent' => 'ستونزه: دا کارونکی نه شته',
+	'lookupuser-nonexistent' => 'ستونزه: دا کارن نه شته',
 	'lookupuser-email' => 'برېښليک: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => 'اصلي نوم: $1',
 	'lookupuser-registration' => 'د نومليکنې نېټه: $1',

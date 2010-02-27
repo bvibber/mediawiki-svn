@@ -1021,7 +1021,7 @@ $messages['pnt'] = array(
  */
 $messages['ps'] = array(
 	'errorhandler-error-warning' => 'ګواښنه',
-	'errorhandler-error-user-warning' => 'د کارونکي ګواښنه',
+	'errorhandler-error-user-warning' => 'د کارن ګواښنه',
 );
 
 /** Portuguese (Português)

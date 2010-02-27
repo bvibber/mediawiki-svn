@@ -781,10 +781,10 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'watchers' => 'کتونکي',
 	'watchers_link_title' => 'څوک همدا مخ ګوري؟',
-	'watchers_error_article' => '<b>ستونزه:</b> همدا مخ شتون نه لري.',
-	'watchers_header' => '{{PLURAL:$2|هغه کارونکی|هغه کارونکي}} چې "[[:$1]]" ګوري',
+	'watchers_error_article' => '<b>ستونزه:</b> دا مخ نه شته.',
+	'watchers_header' => '{{PLURAL:$2|هغه کارن|هغه کارنان}} چې "[[:$1]]" ګوري',
 	'watchers_noone_watches' => 'همدا مخ اوس هېڅوک نه ګوري.',
-	'watchers_x_or_more' => '$1 او يا هم تر دې ډېر {{PLURAL:$1|کارونکي|کارونکي}} همدا مخ په خپل کتنلړليک کې لري.',
+	'watchers_x_or_more' => '$1 او يا هم تر دې ډېر {{PLURAL:$1|کارن|کارنان}} همدا مخ په خپل کتنلړليک کې لري.',
 	'watchers_less_than_x' => 'له $1 لږ {{PLURAL:$1|کارونکي|کارونکي}} همدا مخ په خپل کتنلړليک کې لري.',
 );
 

@@ -679,7 +679,7 @@ Quand it selession-e o deselession-e vàire pàgine, sgnacand la ciav "shift" at
  */
 $messages['ps'] = array(
 	'watchsubpages' => 'وړوکي مخونه کتل',
-	'watchsubpages-addedtowatchlist' => 'دا لانديني مخونه ستاسو په کتنلړليک کې ورګډ شوي.',
+	'watchsubpages-addedtowatchlist' => 'دا لانديني مخونه ستاسې په کتنلړليک کې ورګډ شوي.',
 	'watchsubpages-addtitles' => 'مخونه ورګډول',
 	'watchsubpages-addtitlestowatchlist' => 'کتنلړليک کې مخونه ورګډول',
 	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتنلړليک ته ورګډ شي',

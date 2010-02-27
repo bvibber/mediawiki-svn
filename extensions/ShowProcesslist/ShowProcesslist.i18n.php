@@ -796,7 +796,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'showprocesslist-user' => 'کارونکی',
+	'showprocesslist-user' => 'کارن',
 	'showprocesslist-db' => 'توکبنسټ',
 	'showprocesslist-command' => 'بولۍ',
 	'showprocesslist-time' => 'وخت',

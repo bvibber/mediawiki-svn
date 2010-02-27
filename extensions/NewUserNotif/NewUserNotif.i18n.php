@@ -530,7 +530,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'newusernotifsubj' => 'د $1 لپاره د نوي کارونکي يادونه',
+	'newusernotifsubj' => 'د $1 لپاره د نوي کارن يادونه',
 	'newusernotifbody' => '$1، سلامونه!
 
 د $2 په نوم يو نوی کارن-حساب په $4 نېټه $3 کې جوړ شوی.',

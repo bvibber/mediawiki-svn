@@ -2362,7 +2362,7 @@ $messages['pnt'] = array(
  */
 $messages['ps'] = array(
 	'youtubeauthsub' => 'د يوټيوب ويډيو پورته کول',
-	'youtubeauthsub-desc' => 'کارونکي په دې توانوي چې يوټيوب ته راساً [[Special:YouTubeAuthSub|ويډيوګانې پورته کړي]]',
+	'youtubeauthsub-desc' => 'يو کارن په دې توانوي چې يوټيوب ته راساً [[Special:YouTubeAuthSub|ويډيوګانې ورپورته کړي]]',
 	'youtubeauthsub_title' => 'سرليک',
 	'youtubeauthsub_description' => 'څرګندونه',
 	'youtubeauthsub_password' => 'د يوټيوب پټنوم',
@@ -2371,20 +2371,20 @@ $messages['ps'] = array(
 	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
 	'youtubeauthsub_success' => "مبارک مو شه!
 
-ستاسو ويډيو په برياليتوب سره پورته شوه.
+ستاسې ويډيو په برياليتوب سره پورته شوه.
 <a href='http://www.youtube.com/watch?v=$1'>خپله ويډيو دلته وګورۍ</a>.
-د نوې ويډيو په چمتو کولو کې لږ وخت لږېږي، نو کېدای شي چې ستاسو ويډيو لا تر اوسه نه وي چمتو شوې.
+د نوې ويډيو په چمتو کولو کې لږ وخت لږېږي، نو کېدای شي چې ستاسې ويډيو لا تر اوسه نه وي چمتو شوې.
 
 که چېرته د ويکي په يو مخ باندې خپله ويډيو ورټومبل غواړۍ، نو په هماغه مخ کې دغه لاندينی کوډ ورګډ کړی:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'ددې لپاره چې يوه ويډيو پورته کړی، نو تاسو ته پکار ده چې لومړی په يوټيوب کې ننوځۍ.',
+	'youtubeauthsub_authsubinstructions' => 'ددې لپاره چې يوه ويډيو پورته کړی، نو تاسې ته پکار ده چې لومړی په يوټيوب کې ننوځۍ.',
 	'youtubeauthsub_uploadhere' => 'خپله ويډيو له دې ځاي نه پورته کړی:',
 	'youtubeauthsub_uploadbutton' => 'پورته کول',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 همدا ويډيو وګورۍ]',
 	'youtubeauthsub_summary' => 'د يوټيوب ويډيو ورپورته کول',
-	'youtubeauthsub_uploading' => 'ستاسو ويډيو د پورته کېدلو په حال کې ده.
+	'youtubeauthsub_uploading' => 'ستاسې ويډيو د پورته کېدلو په حال کې ده.
 
 لطفاً لږ صبر وکړی.',
 	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',

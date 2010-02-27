@@ -1281,6 +1281,7 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'duplicator-options' => 'خوښنې',
 	'duplicator-source' => 'سرچينه:',
 );
 

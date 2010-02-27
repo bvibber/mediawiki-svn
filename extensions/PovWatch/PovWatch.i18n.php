@@ -1895,7 +1895,7 @@ Sgnaca ël boton sota për iscrivte.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'povwatch_invalid_title' => 'ستاسو ځانګړی شوی سرليک سم نه وو',
+	'povwatch_invalid_title' => 'ستاسې ځانګړی شوی سرليک سم نه وو',
 	'povwatch_title' => 'سرليک:',
 );
 

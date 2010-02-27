@@ -794,6 +794,7 @@ $messages['fr'] = array(
 	'qp_func_invalid_proposal_id' => 'id proposition=$3 invalide (pas un nombre) pour le sondage $1, question $2',
 	'qp_error_no_such_poll' => "Ce sondage n'existe pas ($1).
 Assurez-vous que le sondage est déclaré et sauvegardé, vérifiez également que vous utilisez le caractère délimiteur d'adresse #",
+	'qp_error_in_question_header' => 'En-tête de question incorrect : $1',
 	'qp_error_id_in_stats_mode' => 'Impossible de déclarer un ID du sondage dans le mode statistique',
 	'qp_error_dependance_in_stats_mode' => 'Impossible de déclarer la chaîne de dépendance du sondage en mode statistique',
 	'qp_error_no_stats' => "Aucune donnée statistique n'est disponible, car personne n'a voté pour ce sondage pour l'instant (address=$1)",
@@ -1547,6 +1548,7 @@ $messages['nl'] = array(
 	'qp_func_invalid_proposal_id' => 'Ongeldig voorstel-ID ($3 - geen getal) voor de peiling $1, vraag $2',
 	'qp_error_no_such_poll' => 'Die peiling bestaat niet ($1).
 Zorg dat de peiling is ingesteld en opgeslagen, en dat het adresscheidingsteken "#" is gebruikt.',
+	'qp_error_in_question_header' => 'Ongeldige kop voor vraag: $1',
 	'qp_error_id_in_stats_mode' => 'Het is niet mogelijk een ID voor de peiling te declareren in de statistische modus',
 	'qp_error_dependance_in_stats_mode' => 'Het is niet mogelijk een afhankelijkheidsketen voor de peiling te declareren in de statistische modus',
 	'qp_error_no_stats' => 'Er zijn geen statistische gegevens beschikbaar omdat er nog geen gebruikers hebben gestemd in deze peiling (adres $1)',

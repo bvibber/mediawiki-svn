@@ -425,7 +425,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'mediafunctions-invalid-title' => '"$1" يو ناسم سرليک دی',
-	'mediafunctions-not-exist' => '"$1" هېڅ شتون نه لري',
+	'mediafunctions-not-exist' => '"$1" نشته',
 );
 
 /** Portuguese (Português)

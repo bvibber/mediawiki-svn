@@ -523,7 +523,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'newusermessage-desc' => 'د يوه نوي جوړ شوي کارن-نوم د خبرواترو مخونو کې يو پيغام ورګډوي',
-	'newuseredit-summary' => 'د يوه نوي کارونکي د خبرواترو مخ کې د [[{{int:newusermessage-template}}|ښه راغلاست پيغام]] ورګډوي',
+	'newuseredit-summary' => 'د يوه نوي کارن د خبرواترو مخ کې د [[{{int:newusermessage-template}}|ښه راغلاست پيغام]] ورګډوي',
 );
 
 /** Portuguese (Português)
