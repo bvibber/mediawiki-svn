@@ -1399,7 +1399,7 @@ var MW_EMBED_VERSION = '1.1d';
 		}
 		
 		mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );		
-		// Check if the request requires a "post" (that does not work with callbacks cross domain) 
+		// Check if the request requires a "post" 
 		if( mw.checkRequestPost( data )  ) {
 			// Check if we need to setup a proxy
 			if( ! mw.isLocalDomain( url ) ) {
@@ -2039,9 +2039,7 @@ var MW_EMBED_VERSION = '1.1d';
 		sec = sec.replace( /,\s?/, '.' );
 		// Return seconds float
 		return parseInt( hour * 3600 ) + parseInt( min * 60 ) + parseFloat( sec );
-	}
-	
-	
+	}	
 	
 	// Local mwEmbedSrc variable ( for cache of mw.getMwEmbedSrc )
 	var mwEmbedSrc = null; 
@@ -2327,7 +2325,7 @@ var MW_EMBED_VERSION = '1.1d';
 				mw.setConfig( 'userLanguage', langKey);
 			}
 		}
-				
+	
 		// Make sure we have jQuery: 
 		mw.load( 'window.jQuery', function() {							
 			if ( !window['$j'] ) {
@@ -2335,7 +2333,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}										
 			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 			
-			// Only load jquery ui theme sheet if ui-widget does not exist.
+			// Ideally only load jquery ui theme sheet if ui-widget does not exist.
 			// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
 			//if( ! mw.styleRuleExists( 'ui-widget' ) ) {				
 			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
@@ -2380,6 +2378,7 @@ var MW_EMBED_VERSION = '1.1d';
 	*/
 	mw.moduleLoaderCheck = function( callback ) {
 		mw.log( 'doLoaderCheck::' );
+		
 		// Check if we are using scriptloader ( handles loader include automatically ) 
 		if( mw.getScriptLoaderPath() ) {
 			// Do a async call to callback in cases where DOM is ready before we get to 
@@ -2389,6 +2388,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}, 1000);
 			return ;
 		}
+		
 		// Add the Core loader to the request
 		mw.load( 'loader.js', function() {					
 			// Load all the "loaders" of the enabled modules:

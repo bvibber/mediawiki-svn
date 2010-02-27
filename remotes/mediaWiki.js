@@ -117,7 +117,7 @@ function doPageSpecificRewrite() {
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
-		loadMwEmbed( [ 'mw.proxy' ], function() {
+		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
@@ -125,7 +125,7 @@ function doPageSpecificRewrite() {
 	// Special api browse for file proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxyBrowserFile' ) {
 		var wgEnableIframeApiProxy = true;
-		loadMwEmbed( [ 'mw.proxy' ], function() {
+		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
 			mwApiProxyConfig = {};
 			mwApiProxyConfig[ 'browserFile' ] = true;
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );

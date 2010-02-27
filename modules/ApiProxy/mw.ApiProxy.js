@@ -236,9 +236,7 @@ mw.ApiProxy = { };
 		if( !validateIframeRequest( proxyConfig ) ) {
 			mw.log( "Not a valid iframe request");
 			return false;
-		}
-		var clientRequest = getClientRequest();
-		
+		}				
 		// Inform the client frame that we passed validation
 		sendClientMsg( { 'state':'ok' } );
 		
@@ -264,7 +262,8 @@ mw.ApiProxy = { };
 	* NOTE: we add the gadget incase the user has not enabled the gadget on the project they want to iframe to. 
 	* ( there is no cost if they do already have the gadget on ) 
 	*/
-	var gadgetWithJS = 'withJS=MediaWiki:Gadget-mwEmbed.js';
+	//var gadgetWithJS = 'withJS=MediaWiki:Gadget-mwEmbed.js';
+	var gadgetWithJS = '';
 	function getServerFrame( apiUrl ) {
 		// Set to local scope currentApiUrl if unset by argument
 		if( !apiUrl) {
@@ -455,9 +454,10 @@ mw.ApiProxy = { };
 	* serverHandleRequest handle a given request from the client 
 	* maps the request to serverBrowseFile or serverApiRequest
 	*/
-	function serverHandleRequest() { 	
+	function serverHandleRequest() {		
 		var clientRequest = getClientRequest();
-		// Process request type
+		mw.log(" handle client request :: " +  	clientRequest );
+		// Process request type:
 		if( clientRequest['browseFile'] ) {
 			serverBrowseFile();
 			return true;
@@ -472,13 +472,20 @@ mw.ApiProxy = { };
 	function serverApiRequest( ) {		
 		// Get the client request
 		var clientRequest = getClientRequest();
+		
 		// Make sure its a json format 
 		clientRequest.request[ 'format' ] = 'json';		
-
+		
+		mw.log(" do post request to: " + wgScriptPath + '/api' + wgScriptExtension );
+		for(var i in clientRequest.request ) {
+			mw.log("req: " + i + " :: " + clientRequest.request[i] );  
+		} 
+		
 		// Process the API request. We don't use mw.getJSON since we need to "post"
 		$j.post( wgScriptPath + '/api' + wgScriptExtension,
 			clientRequest.request,
-			function( data ) {					
+			function( data ) {
+				mw.log(" server api request got data: " + data );	
 				// Send the result data to the client 
 				sendClientMsg( JSON.parse( data ) );
 			}

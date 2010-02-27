@@ -5,7 +5,10 @@
 	color: #FFF;
 }
 .k-player .ui-widget-content {
-	color: #444;
+	color: #999;
+}
+.k-player .ui-widget-content a{
+	color: #999;
 }
 /* large play button */
 .k-player .play-btn-large {
@@ -233,10 +236,6 @@
 	margin: 6px 0;
 }
 
-.k-menu-screens a {;
-	
-}
-
 .k-menu-screens a img {
 	border: none;
 }
@@ -295,10 +294,11 @@
 	margin-bottom: 6px;
 }
 
-.k-menu-screens li a {
+.k-menu-screens li a {	
 	padding-left: 22px;
 	background: url(images/ksprite.png) no-repeat -85px -274px;
 	text-decoration: none;
+	color: #BBB;
 }
 
 .k-menu-screens li a.active,.k-menu-screens li a:hover .active {
@@ -307,10 +307,6 @@
 
 .k-menu-screens li a:hover {
 	background-position: -85px -260px;
-}
-
-.k-menu-screens a {
-	color: #BBBBBB;
 }
 
 .k-menu textarea {
