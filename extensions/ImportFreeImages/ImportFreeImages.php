@@ -56,3 +56,4 @@ $wgSpecialPageGroups['ImportFreeImages'] = 'media';
 // Upload hooks
 $wgHooks['UploadCreateFromRequest'][] = 'UploadFreeImage::onUploadCreateFromRequest';
 $wgHooks['UploadFormSourceDescriptors'][] = 'UploadFreeImage::onUploadFormSourceDescriptors';
+$wgHooks['UploadFormInitDescriptor'][] = 'UploadFreeImage::onUploadFormInitDescriptor';

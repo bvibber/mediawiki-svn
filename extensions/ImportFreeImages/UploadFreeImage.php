@@ -109,4 +109,34 @@ class UploadFreeImage extends UploadFromUrl {
 		return false;
 	}
 	
+	public static function onUploadFormInitDescriptor( &$descriptor ) {
+		global $wgRequest;
+		if ( $wgRequest->getVal( 'wpSourceType' ) != 'IFI' || !$wgRequest->getCheck( 'wpFlickrId' ) )
+			return true;
+		
+		$ifi = new ImportFreeImages();
+		$id = $wgRequest->getVal( 'wpFlickrId', 0 );
+		$info = $ifi->getPhotoInfo( $id );
+		
+		$name_wiki = wfEscapeWikiText( $info['owner']['username'] );
+		if ( $ifi->creditsTemplate ) {
+			$owner_wiki = wfEscapeWikiText( $info['owner']['realname'] );
+			$id_wiki = wfEscapeWikiText( $id );
+			$caption = "{{" . $ifi->creditsTemplate . intval( $info['license'] ) . 
+				"|1=$id_wiki|2=$owner_wiki|3=$name_wiki}}";
+		} else {
+			// TODO: this is totally wrong: The whole message should be configurable, we shouldn't include arbitrary templates
+			// additionally, the license information is not correct (we are not guaranteed to get "CC by 2.0" images only)
+			$caption = wfMsgForContent( 'importfreeimages_filefromflickr', 
+				$info['title'], 
+				"http://www.flickr.com/people/" . urlencode( $info['owner']['username'] ) . ' ' . $name_wiki 
+			) 
+				. " {{CC by 2.0}} ";
+			$caption = trim( $caption );
+		}
+		$descriptor['UploadDescription']['default'] = $caption;
+		
+		return true;
+	}
+	
 }
