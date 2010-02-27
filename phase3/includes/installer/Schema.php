@@ -20,7 +20,7 @@
  * @todo FOLLOWING TABLES NEED WORK:
  *		-searchindex, hitcounter (custom table options)
  *		-externallinks, ipblocks, oldimage, job (indexes)
- *      -trackbacks (REFERENCES)
+ *      -trackbacks, testitem (REFERENCES)
  */
 class Schema {
 	/**
@@ -35,6 +35,9 @@ class Schema {
 	const TYPE_VARBINARY = 7;
 	const TYPE_BOOL      = 8;
 	const TYPE_ENUM      = 9;
+	const TYPE_FLOAT     = 10;
+	const TYPE_REAL      = 11;
+	const TYPE_CHAR      = 12;
 
 	/**
 	 * The actual database definition itself. A multi-dimensional associative
@@ -258,8 +261,9 @@ class Schema {
 					'signed'  => false,
 				),
 				'random' => array(
-					'type' => 'real unsigned',
-					'null' => false,
+					'type'   => self::TYPE_REAL,
+					'signed' => false,
+					'null'   => false,
 				),
 				'touched' => array(
 					'type'    => self::TYPE_DATETIME,
@@ -2171,6 +2175,94 @@ class Schema {
 			'indexes' => array(
 				'lc_lang_key' => array(
 					'lang', 'key'
+				)
+			),
+		),
+	);
+
+	/**
+	 * Extra tables that aren't strictly necessary, mostly use
+	 * by developers
+	 */
+	public static $optionalTables = array(
+		'profiling' => array(
+			'prefix' => 'pf',
+			'fields' => array(
+				'count' => array(
+					'type'    => self::TYPE_INT,
+					'null'    => false,
+					'default' => 0,
+				),
+				'time' => array(
+					'type'    => self::TYPE_FLOAT,
+					'null'    => false,
+					'default' => 0,
+				),
+				'memory' => array(
+					'type'    => self::TYPE_FLOAT,
+					'null'    => false,
+					'default' => 0,
+				),
+				'name' => array(
+					'type'    => self::TYPE_VARCHAR,
+					'length'  => 255,
+					'null'    => false,
+					'default' => '',
+				),
+				'server' => array(
+					'type'    => self::TYPE_VARCHAR,
+					'length'  => 30,
+					'null'    => false,
+					'default' => '',
+				),
+			),
+			'indexes' => array(
+				'pf_name_server' => array(
+					'UNIQUE', 'name', 'server'
+				),
+			),
+		),
+		'testrun' => array(
+			'prefix' => 'tr',
+			'fields' => array(
+				'id' => array(
+					'type'           => self::TYPE_INT,
+					'null'           => false,
+					'auto-increment' => true,
+					'primary-key'    => true,
+				),
+				'date' => array(
+					'type'   => self::TYPE_CHAR,
+					'length' => 14,
+					'binary' => true,
+				),
+				'mw_version' => array(
+					'type' => self::TYPE_BLOB,
+				),
+				'php_version' => array(
+					'type' => self::TYPE_BLOB,
+				),
+				'db_version' => array(
+					'type' => self::TYPE_BLOB,
+				),
+				'uname' => array(
+					'type' => self::TYPE_BLOB,
+				),
+			),
+		),
+		'testitem' => array(
+			'prefix' => 'ti',
+			'fields' => array(
+				'run' => array(
+					'type' => self::TYPE_INT,
+					'null' => false,
+				),
+				'run' => array(
+					'type' => self::TYPE_INT,
+					'null' => false,
+				),
+				'success' => array(
+					'type' => self::TYPE_BOOL,
 				)
 			),
 		),

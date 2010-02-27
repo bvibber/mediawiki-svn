@@ -20,7 +20,7 @@
  * @author Chad Horohoe <chad@anyonecanedit.org>
  * @todo Handle custom table options, eg: MyISAM for searchindex, MAX_ROWS, etc
  * @todo Handle lengths on indexes, eg: el_from, el_to(40)
- * @toto Handle REFERENCES
+ * @toto Handle REFERENCES/ON DELETE CASCADE
  */
 abstract class SchemaBuilder {
 	// Final SQL to be output
@@ -204,12 +204,12 @@ class MysqlSchema extends SchemaBuilder {
 				if( isset( $attribs['length'] ) ) {
 					$def = $attribs['length'] . $def;
 				}
-				if( isset( $attribs['signed'] ) ) {
-					$def .= $attribs['signed'] ? ' signed' : ' unsigned';
-				}
 				break;
 			case Schema::TYPE_VARCHAR:
 				$def = 'varchar(' . $attribs['length'] . ')';
+				break;
+			case Schema::TYPE_CHAR:
+				$def = 'char(' . $attribs['length'] . ')';
 				break;
 			case Schema::TYPE_DATETIME:
 				$def = 'binary(14)';
@@ -239,8 +239,16 @@ class MysqlSchema extends SchemaBuilder {
 				$def = 'ENUM("' . implode( '", "', $attribs['values'] );
 				$def = rtrim( $def, ', "' ) . '")';
 				break;
+			case Schema::TYPE_FLOAT:
+				$def = 'float';
+				break;
+			case Schema::TYPE_REAL:
+				$def = 'real';
 			default:
 				$this->isOk = false;
+		}
+		if( isset( $attribs['signed'] ) ) {
+			$def .= $attribs['signed'] ? ' signed' : ' unsigned';
 		}
 		if( isset( $attribs['binary'] ) && $attribs['binary'] ) {
 			$def = $def . ' binary';
