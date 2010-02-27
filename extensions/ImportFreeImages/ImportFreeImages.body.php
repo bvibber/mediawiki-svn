@@ -94,6 +94,19 @@ class ImportFreeImages {
 	}
 	
 	/**
+	 * Get photo information for an id
+	 * 
+	 * @param $id int id
+	 * @return array
+	 */
+	public function getPhotoInfo( $id ) {
+		$this->suppressStrictWarnings();
+		$result = $this->flickr->photos_getInfo( $id );
+		$this->restoreStrictWarnings();
+		return $result;
+	}
+	
+	/**
 	 * Get author information for an nsid
 	 * 
 	 * @param $owner string NSID
