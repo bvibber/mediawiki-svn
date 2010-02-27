@@ -65,9 +65,12 @@ var kskinConfig = {
 						'width' : '100%',
 						'position': 'absolute',	
 						'top' : '0px',
-						'bottom' : ( ctrlObj.getHeight() + 2 ) + 'px' 					
+						'bottom' : ( ctrlObj.getHeight() + 2 ) + 'px'
 					} );
-					
+				
+				if(  embedPlayer.getPlayerHeight() == '0' ){
+					$menuOverlay.css( "height",  ctrlObj.getOverlayHeight() )
+				}
 				// Setup menu offset ( if player height <  getOverlayHeight )
 				// This displays the menu outside of the player on small embeds	
 				if ( embedPlayer.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) {

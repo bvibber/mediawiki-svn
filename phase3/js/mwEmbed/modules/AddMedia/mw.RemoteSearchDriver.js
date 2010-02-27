@@ -32,7 +32,7 @@ mw.addMessages( {
 	"mwe-unknown_license" : "Unknown license",
 	"mwe-no-import-by-url" : "This user or wiki <b>cannot<\/b> import assets from remote URLs.<p>Do you need to login?<\/p><p>Is upload_by_url permission set for you?<br \/>Does the wiki have $1 enabled?<\/p>",
 	"mwe-no-import-by-url-linktext" : "$wgAllowCopyUploads",
-	"mwe-results_from" : "Results from <a href=\"$1\" target=\"_new\" >$2<\/a>",
+	"mwe-results_from" : "Results from $1",
 	"mwe-missing_desc_see_source" : "This asset is missing a description. Please see the [$1 original source] and help describe it.",
 	"rsd_config_error" : "Add media wizard configuration error: $1",
 	"mwe-your_recent_uploads" : "Your recent uploads to $1",
@@ -141,9 +141,6 @@ var default_remote_search_options = {
 	// Set a default provider 
 	'default_provider': null,
 	
-	// Current provider (used internally) 
-	'current_provider': null,
-	
 	// The timeout for search providers ( in seconds )
 	'search_provider_timeout': 10
 };
@@ -190,13 +187,20 @@ mw.RemoteSearchDriver = function( options ) {
 mw.RemoteSearchDriver.prototype = {
 
 	// Result cleared flag
-	results_cleared: false,
+	'results_cleared': false,
+	
+	// Current provider stores the current provider 
+	'current_provider': null,
+	
+	// Previus provider stores the previous provider for provider switching when calling search
+	// NOTE: can be removed once we clean up "upload" tab abstraction 
+	'previus_provider': null,
 	
 	// Caret position of target text area ( lazy initialized )
-	caretPos: null, 
+	'caretPos': null, 
 	
 	// Text area value ( lazy initialized )
-	textboxValue: null, 
+	'textboxValue': null, 
 
 	/** the default content providers list.
 	 *
@@ -211,7 +215,7 @@ mw.RemoteSearchDriver.prototype = {
 		*
 		*	@enabled: whether the search provider can be selected		
 		*
-		*	@default: default: if the current cp should be displayed (only one should be the default)
+		*	@default: default: if the current provider should be displayed (only one should be the default)
 		*
 		*	@title: the title of the search provider
 		*
@@ -225,7 +229,7 @@ mw.RemoteSearchDriver.prototype = {
 		*		search object ie: 'mediaWiki' = new mediaWikiSearchSearch()
 		*
 		*	@tab_img: the tab image (if set to false use title text)
-		*		if === "true" use standard location skin/images/{cp_id}_tab.png
+		*		if === "true" use standard location skin/images/{provider_id}_tab.png
 		*		if === string use as url for image
 		*
 		*	@linkback_icon default is: /wiki/skins/common/images/magnify-clip.png
@@ -424,8 +428,8 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'remoteSearchDriver:init' );
 		
 		// Add in a local "id" reference to each provider
-		for ( var cp_id in this.content_providers ) {
-			this.content_providers[ cp_id ].id = cp_id;
+		for ( var provider_id in this.content_providers ) {
+			this.content_providers[ provider_id ].id = provider_id;
 		}
 		// Merge in the options
 		$j.extend( _this, default_remote_search_options, options );
@@ -609,6 +613,7 @@ mw.RemoteSearchDriver.prototype = {
 	
 	/**
 	* Check if the license is compatible with this.enabled_licenses
+	* @
 	* @retrun true if license is compatible and false if not 
 	*/
 	checkCompatibleLicense: function( license_url ) {
@@ -862,8 +867,9 @@ mw.RemoteSearchDriver.prototype = {
 		$mainContainer.append( this.$resultsContainer );
 		
 		// Run the default search:
-		if ( this.getDefaultQuery() )
+		if ( this.getDefaultQuery() ){
 			this.updateResults();
+		}
 
 		// Add bindings
 		$j( '#mso_selprovider,#mso_selprovider_close' )
@@ -920,7 +926,7 @@ mw.RemoteSearchDriver.prototype = {
 			text: gM( 'mwe-media_search' ) })
 				.addClass( 'rsd_search_button' )
 				.buttonHover()
-				.click(function () {
+				.click(function () {					
 					_this.updateResults( _this.current_provider, true );
 					return false;
 				});
@@ -985,6 +991,10 @@ mw.RemoteSearchDriver.prototype = {
 			$uploadButton = $j.button( { icon_id: 'disk', text: gM( 'mwe-upload_tab' ) })
 				.addClass("rsd_upload_button")
 				.click(function() {
+					// Update the previus_provider
+					if( _this.current_provider != 'upload' ) {
+						_this.previus_provider = _this.current_provider;
+					}
 					_this.current_provider = 'upload';
 					_this.updateUploadResults( );
 					return false;
@@ -1379,7 +1389,7 @@ mw.RemoteSearchDriver.prototype = {
 			};
 			provider.sObj = new window[ provider.lib + 'Search' ]( options );
 			if ( !provider.sObj ) {
-				mw.log( 'Error: could not find search lib for ' + cp_id );
+				mw.log( 'Error: could not find search lib for ' + provider_id );
 				return false;
 			}
 
@@ -2807,10 +2817,15 @@ mw.RemoteSearchDriver.prototype = {
 	 * 
 	 * @return {jQuery element} A description element for embedding.
 	 */
-	createSearchDescription: function(cp) {
-		
+	createSearchDescription: function( provider ) {		
 		var resultsFromMsg = gM( 'mwe-results_from', 
-			[ cp.homepage, gM( 'rsd-' + this.current_provider + '-title' ) ] );
+			$j('<a />')
+			.attr({
+				'href' : provider.homepage, 
+				'target' : '_new'
+			} )
+			.text( gM( 'rsd-' + this.current_provider + '-title' ) )
+		)
 		
 		var $searchContent = $j( '<span />' ).html(resultsFromMsg);
 		var $searchDescription = $j( '<span />' ).addClass( 'rsd_search_description' )
@@ -2833,7 +2848,7 @@ mw.RemoteSearchDriver.prototype = {
 		if ( !this.content_providers[ this.current_provider ] ) {
 			return;
 		}
-		var cp = this.content_providers[ this.current_provider ];
+		var provider = this.content_providers[ this.current_provider ];
 		
 		var $header = $j( '<div />' )
 			.attr({
@@ -2844,7 +2859,7 @@ mw.RemoteSearchDriver.prototype = {
 			$header.append( this.createLayoutSelector() )
 		}
 		
-		$header.append( this.createSearchDescription( cp ) );
+		$header.append( this.createSearchDescription( provider ) );
 		
 		return $header;
 	},
@@ -2912,8 +2927,9 @@ mw.RemoteSearchDriver.prototype = {
 				.text( prevLinkText )
 				.click( function() {
 					provider.offset -= provider.limit;
-					if ( provider.offset < 0 )
+					if ( provider.offset < 0 ){
 						provider.offset = 0;
+					}
 					_this.updateResults();
 					return false;
 				} );
