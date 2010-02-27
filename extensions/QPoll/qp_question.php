@@ -15,7 +15,7 @@ abstract class qp_AbstractQuestion {
 	var $mSubType = ''; // some questions has a subtype, see $this->parseParameters()
 	var $mCategories = Array();
 	var $mCategorySpans = Array();
-	var $mCommonQuestion; // GET common question of the poll
+	var $mCommonQuestion = ''; // GET common question of the poll
 	var $mProposalText = Array(); // an array of question proposals
 	var $mBeingCorrected = false; // true, when user is posting this question via the poll's form
 	var $alreadyVoted = false; // whether the selected user has already voted this question ?
@@ -521,11 +521,11 @@ class qp_Question extends qp_AbstractQuestion {
 	function parseMainHeader( $header ) {
 		# split common question and question attributes from the header
 		@list( $common_question, $attr_str ) = preg_split( '`\n\|([^\|].*)\s*$`u', $header, -1, PREG_SPLIT_DELIM_CAPTURE );
-		$this->mCommonQuestion = trim( $common_question );
 		if ( !isset( $attr_str ) ) {
 			$this->setState( 'error', wfMsg( 'qp_error_in_question_header', qp_Setup::entities( $header ) ) );
 			return;
 		}
+		$this->mCommonQuestion = trim( $common_question );
 		$type = $this->parseAttributes( $attr_str );
 		# set question type property
 		# select the question type and subtype corresponding to the header 'type' attribute
