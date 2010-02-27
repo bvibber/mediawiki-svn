@@ -42,9 +42,10 @@ abstract class SchemaBuilder {
 	 * Constructor. We hide it so people don't try to construct their own schema
 	 * classes. Use a sane entry point, like newFromType() or newFromCustomSchema()
 	 *
-	 * @param $schema Array See Schema::$tables for more information
+	 * @param $schema Array See Schema::$defaultTables for more information
 	 */
 	private final function __construct( $schema ) {
+		wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
 		$this->tables = $schema;
 	}
 
@@ -55,25 +56,11 @@ abstract class SchemaBuilder {
 	 * @return SchemaBuilder subclass
 	 */
 	public static function newFromType( $type ) {
-		return self::newFromCustomSchema( $type, Schema::$defaultTables );
-	}
-
-	/**
-	 * Given an array-based abstract schema, return a DBMS-specific SchemaBuilder object
-	 * 
-	 * @param $type String A database type (eg: mysql, postgres, sqlite)
-	 * @param $schema Array See Schema::$tables for more information
-	 * @return SchemaBuilder subclass
-	 */
-	public static function newFromCustomSchema( $dbType, $schema ) {
 		$class = ucfirst( strtolower( $dbType ) ) . 'Schema';
 		if ( !class_exists( $class ) ) {
 			throw new Exception( "No such database class $class" );
-		} elseif( !is_array( $schema ) ) {
-			throw new Exception( '$schema is not a valid schema' );
-		}
-		else {
-			return new $class( $schema );
+		} else {
+			return new $class( Schema::$defaultTables );
 		}
 	}
 
@@ -83,9 +70,9 @@ abstract class SchemaBuilder {
 	 * 
 	 * @return boolean
 	 */
-	public function generateTables() {
+	public function createAllTables() {
 		foreach( $this->tables as $name => $definition ) {
-			$this->outputSql .= $this->defineTable( $name, $definition );
+			$this->outputSql .= $this->createTable( $name, $definition );
 		}
 		return $this->isOk;
 	}
@@ -96,12 +83,14 @@ abstract class SchemaBuilder {
 	 * @param $db Database object
 	 * @return boolean
 	 */
-	public function generateMissingTables( DatabaseBase $db ) {
+	public function updateAllTables( DatabaseBase $db ) {
+		$this->setTablePrefix( $db->tablePrefix() );
 		foreach( $this->tables as $name => $definition ) {
 			if( $db->tableExists( $name ) ) {
-				continue;
+				$this->outputSql .= $this->updateTable( $name, $definition, $db );
+			} else {
+				$this->outputSql .= $this->createTable( $name, $definition );
 			}
-			$this->outputSql .= $this->defineTable( $name, $definition );
 		}
 		return $this->isOk;
 	}
@@ -144,19 +133,29 @@ abstract class SchemaBuilder {
 
 	/**
 	 * Given an abstract table definition, return a DBMS-specific command to
-	 * create it. All child classes need to implement this
+	 * create it.
 	 * @param $name The name of the table, like 'page' or 'revision'
 	 * @param $definition Array An abstract table definition
 	 * @return String
 	 */
-	abstract protected function defineTable( $name, $definition );
+	abstract protected function createTable( $name, $definition );
+
+	/**
+	 * Given an abstract table definition, check the current table and see if
+	 * it needs updating, returning appropriate update queries as needed.
+	 * @param $name The name of the table, like 'page' or 'revision'
+	 * @param $definition Array An abstract table definition
+	 * @param $db DatabaseBase object, referring to current wiki DB
+	 * @return String
+	 */
+	abstract protected function updateTable( $name, $definition, $db );
 }
 
 class MysqlSchema extends SchemaBuilder {
 	/**
-	 * @see SchemaBuilder::getFieldDefinition(
+	 * @see SchemaBuilder::createTable()
 	 */
-	protected function defineTable( $name, $def ) {
+	protected function createTable( $name, $def ) {
 		$prefix = $def['prefix'] ? $def['prefix'] . '_' : '';
 		$tblName = $this->tblPrefix . $name;
 		$sql = "CREATE TABLE `$tblName` (";
@@ -264,5 +263,9 @@ class MysqlSchema extends SchemaBuilder {
 			$def .= " AUTO_INCREMENT";
 		}
 		return $def . ",";
+	}
+
+	protected function updateTable() {
+		return '';
 	}
 }
