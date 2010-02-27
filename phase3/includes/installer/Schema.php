@@ -2176,6 +2176,3 @@ class Schema {
 		),
 	);
 }
-
-require_once( "SchemaBuilder.php" );
-$sch = SchemaBuilder::newFromType('mysql');
