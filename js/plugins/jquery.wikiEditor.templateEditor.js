@@ -225,8 +225,10 @@ fn: {
 				$displayDiv.text( model.getName() );
 			};
 			
-			
 			function createDialog( $templateDiv ) {
+				// Give the user some feedback on what they're doing
+				context.fn.highlightLine( $templateDiv );
+				//
 				var $wikitext = $templateDiv.children( '.wikiEditor-template-text' );
 				//TODO: check if template model has been changed
 				var templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $wikitext.text() );
@@ -249,7 +251,11 @@ fn: {
 						.addClass( 'wikiEditor-template-dialog-row' );
 					var $paramName = $( '<td />' )
 						.addClass( 'wikiEditor-template-dialog-name' )
-						.text( param.name );
+						.text(
+							param.name.replace( /[\_\-]/g, ' ' ).replace( /^(.)|\s(.)/g, function ( first ) {
+								return first.toUpperCase(); 
+							} )
+						);
 					var $paramVal = $( '<td />' )
 						.addClass( 'wikiEditor-template-dialog-value' );
 					var $paramInput = $( '<input />' )
@@ -261,6 +267,9 @@ fn: {
 				}
 				//click handler for values
 				$( '<button />' ).click( function() {
+					// More user feedback
+					context.fn.highlightLine( $templateDiv );
+					//
 					$( '.wikiEditor-template-dialog-value input' ).each( function(){
 						templateModel.setValue( $(this).data('name'), $(this).val() );
 					});

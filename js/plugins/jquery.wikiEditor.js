@@ -588,6 +588,13 @@ if ( typeof context == 'undefined' ) {
 				.hide()
 				.appendTo( context.$ui );
 		},
+		'highlightLine': function( $element, mode ) {
+			if ( !$element.is( 'p' ) ) {
+				$element = $element.closest( 'p' );
+			}
+			$element.css( 'backgroundColor', '#AACCFF' );
+			setTimeout( function() { $element.animate( { 'backgroundColor': 'white' }, 'slow' ); }, 100 )
+		},
 		'htmlToText': function( html ) {
 			// This function is slow for large inputs, so aggressively cache input/output pairs
 			if ( html in context.htmlToTextMap ) {
