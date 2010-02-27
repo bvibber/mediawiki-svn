@@ -83,6 +83,7 @@ $messages['en'] = array(
 	'qp_func_invalid_proposal_id' => 'Invalid proposal id=$3 (not a number) for the poll $1, question $2',
 	'qp_error_no_such_poll' => 'No such poll ($1).
 Make sure that the poll declared and saved, also be sure to use address delimiter character #',
+	'qp_error_in_question_header' => 'Invalid question header: $1',
 	'qp_error_id_in_stats_mode' => 'Cannot declare an ID of the poll in statistical mode',
 	'qp_error_dependance_in_stats_mode' => 'Cannot declare dependance chain of the poll in statistical mode',
 	'qp_error_no_stats' => 'No statistical data is available, because no one has voted for this poll, yet (address=$1)',
@@ -1888,6 +1889,7 @@ $messages['ru'] = array(
 	'qp_func_missing_proposal_id' => 'Укажите идентификатор строки (начинающийся с нуля) для опроса $1, вопроса $2',
 	'qp_func_invalid_proposal_id' => 'Ошибочный идентификатор строки (proposal id=$3 - требуется числовое значение) для опроса $1, вопроса $2',
 	'qp_error_no_such_poll' => 'Опрос не найден ($1). Убедитесь что заданный опрос определён и сохранён, а также что используется символ разделителя адреса #',
+	'qp_error_in_question_header' => 'Неверный заголовок вопроса: $1',
 	'qp_error_id_in_stats_mode' => 'Недопустимо определять идентификатор опроса (id) в статистическом режиме вывода',
 	'qp_error_dependance_in_stats_mode' => 'Недопустимо определять атрибут зависимости опроса (dependance) в статистическом режиме',
 	'qp_error_no_stats' => 'Статистика голосования недоступна, так как еще никто не голосовал в этом опросе (address=$1)',
