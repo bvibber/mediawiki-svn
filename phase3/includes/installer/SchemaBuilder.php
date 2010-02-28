@@ -244,6 +244,7 @@ class MysqlSchema extends SchemaBuilder {
 				break;
 			case Schema::TYPE_REAL:
 				$def = 'real';
+				break;
 			default:
 				$this->isOk = false;
 		}
@@ -254,7 +255,7 @@ class MysqlSchema extends SchemaBuilder {
 			$def = $def . ' binary';
 		}
 		if( isset( $attribs['null'] ) ) {
-				$def .= $attribs['null'] ? ' NULL ' : ' NOT NULL';
+				$def .= $attribs['null'] ? ' NULL' : ' NOT NULL';
 		}
 		// Use array_key_exists() since 'default' might be set to null
 		if( array_key_exists( 'default', $attribs ) ) {
