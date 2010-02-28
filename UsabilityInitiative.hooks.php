@@ -74,19 +74,19 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 7 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 27 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 157 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 35 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 36 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 52 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 19 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 95 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 11 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 26 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 27 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 3 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 293 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 294 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 293 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 294 ),
 			),
 		),
 	);
