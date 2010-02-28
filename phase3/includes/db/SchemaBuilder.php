@@ -341,26 +341,27 @@ class MysqlSchema extends SchemaBuilder {
 
 class SqliteSchema extends SchemaBuilder {
 	static $typeMapping = array(
-		TYPE_INT       => 'INTEGER',
-		TYPE_VARCHAR   => 'TEXT',
-		TYPE_DATETIME  => 'TEXT',
-		TYPE_TEXT      => 'TEXT',
-		TYPE_BLOB      => 'BLOB',
-		TYPE_BINARY    => 'BLOB',
-		TYPE_VARBINARY => 'BLOB',
-		TYPE_BOOL      => 'INTEGER',
-		TYPE_ENUM      => 'BLOB',
-		TYPE_FLOAT     => 'REAL',
-		TYPE_REAL      => 'REAL',
-		TYPE_CHAR      => 'TEXT',
-		TYPE_NONE      => '',
+		Schema::TYPE_INT       => 'INTEGER',
+		Schema::TYPE_VARCHAR   => 'TEXT',
+		Schema::TYPE_DATETIME  => 'TEXT',
+		Schema::TYPE_TEXT      => 'TEXT',
+		Schema::TYPE_BLOB      => 'BLOB',
+		Schema::TYPE_BINARY    => 'BLOB',
+		Schema::TYPE_VARBINARY => 'BLOB',
+		Schema::TYPE_BOOL      => 'INTEGER',
+		Schema::TYPE_ENUM      => 'BLOB',
+		Schema::TYPE_FLOAT     => 'REAL',
+		Schema::TYPE_REAL      => 'REAL',
+		Schema::TYPE_CHAR      => 'TEXT',
+		Schema::TYPE_NONE      => '',
 	);
 	
 	/**
 	 * @todo: update updatelog with fts3
 	 */
 	protected function addDatabaseSpecificTables() {
-		$db = wfGetDB( DB_MASTER );
+		$tmpFile = tempnam( sys_get_temp_dir(), 'mw' );
+		$db = new DatabaseSqliteStandalone( $tmpFile );
 		if ( $db->getFulltextSearchModule() == 'FTS3' ) {
 			$this->tables['searchindex'] = array(
 				'prefix' => 'si',
@@ -387,6 +388,8 @@ class SqliteSchema extends SchemaBuilder {
 				)
 			);
 		}
+		$db->close();
+		unlink( $tmpFile );
 	}
 
 	protected function createTable( $name, $def ) {
@@ -434,6 +437,24 @@ class SqliteSchema extends SchemaBuilder {
 		if ( !isset( self::$typeMapping[$type] ) ) {
 			throw new MWException( "Unknown type $type" );
 		}
+		$def = self::$typeMapping[$type];
+		if( isset( $attribs['null'] ) ) {
+				$def .= $attribs['null'] ? ' NULL' : ' NOT NULL';
+		}
+		// Use array_key_exists() since 'default' might be set to null
+		if( array_key_exists( 'default', $attribs ) ) {
+			if( $attribs['default'] === null ) {
+				$def .= ' default NULL';
+			} else {
+				$def .= " DEFAULT '" . $attribs['default'] . "'";
+			}
+		}		if( isset( $attribs['primary-key'] ) && $attribs['primary-key'] ) {
+			$def .= ' PRIMARY KEY';
+		}
+		if( isset( $attribs['auto-increment'] ) && $attribs['auto-increment'] ) {
+			$def .= ' AUTOINCREMENT';
+		}
+		return $def . ',';
 	}
 
 	protected function updateTable( $name, $definition, $db ) {
