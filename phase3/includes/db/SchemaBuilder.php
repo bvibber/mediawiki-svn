@@ -226,7 +226,7 @@ class MysqlSchema extends SchemaBuilder {
 				} else {
 					$sql .= "CREATE INDEX ";
 				}
-				$sql .= "{$prefix}{$idx} ON $tblName (";
+				$sql .= "{$this->tblPrefix}{$idx} ON $tblName (";
 				foreach( $idxDef as $col ) {
 					$sql .= "{$prefix}{$col},";
 				}
@@ -416,7 +416,7 @@ class SqliteSchema extends SchemaBuilder {
 				} else {
 					$sql .= "CREATE INDEX ";
 				}
-				$sql .= "{$prefix}{$idx} ON $tblName (";
+				$sql .= "{$this->tblPrefix}{$idx} ON $tblName (";
 				foreach( $idxDef as $col ) {
 					$sql .= "{$prefix}{$col},";
 				}
