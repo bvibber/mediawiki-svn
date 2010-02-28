@@ -39,7 +39,9 @@
 			var fnEnd,fnScroll;
 			var offset=0;
 			var lsp=-1;_css();
+			
 			opt.boxTemplate=(opt.boxTemplate||"<span class='"+opt.boxClass+"'>&nbsp</span>");
+			
 			if(opt.horizontal){
 				opt.batchTemplate=(opt.batchTemplate||"<td></td>");
 				$sp=jQuery("<table><tr></tr></table>").addClass(opt.scrollPaneClass);
@@ -59,10 +61,13 @@
 				fnEnd=vEnd;
 				fnScroll=vScroll;
 			}
+			
 			setTimeout(monEnd,opt.endDelay);
+			
 			if(typeof opt.updateBatch=='function'){
 				setTimeout(monScroll,opt.scrollDelay);
 			}
+			
 			function _css(){
 				if(opt.horizontal){
 					$me.css({"overflow-x":"auto","overflow-y":"hidden"});
@@ -70,8 +75,10 @@
 					$me.css({"overflow-x":"hidden","overflow-y":"auto"});
 				}
 			}
+			
 			function _ab(){
 				var os,b;
+				
 				if(opt.horizontal){
 					os=$me.find('.batch:first').next().offset().left;
 					b=($me.width()/os+1)*os;
@@ -79,21 +86,27 @@
 					os=$me.find('.batch:first').next().offset().top;
 					b=($me.height()/os+1)*os;
 				}
+				
 				if("auto"==opt.uBound){
 					opt.uBound=b;
 				}
+				
 				if("auto"==opt.lBound){
 					opt.lBound=-b;
 				}
+				
 				if("auto"==opt.eBound){
 					opt.eBound=b*2;
 				}
 			}
+			
 			function _bz(){
 				$me.scrollTop(0).scrollLeft(0);
 			};
+			
 			function batch($s,o,opt){
 				var $b,i,rp=opt.batchNum;
+				
 				while(rp--){
 					$b=jQuery(opt.batchTemplate).attr({offset:o,len:opt.batchSize}).addClass(opt.batchClass+" "+opt.emptyBatchClass);
 					i=opt.batchSize;
@@ -102,13 +115,17 @@
 					}
 					$s.append($b);
 				}
+				
 				return o;
 			};
+			
 			function vScroll(){
 				var so=$me.scrollTop();
+				
 				if(lsp!=so){
 					lsp=so;
 					var co=$me.offset().top;
+					
 					$sp.find('> .'+opt.emptyBatchClass).each(function(i,obj){
 						var $b=jQuery(obj);
 						var p=$b.position().top-co;
@@ -117,8 +134,10 @@
 					});
 				}
 			};
+			
 			function hScroll(){
 				var so=$me.scrollLeft();
+				
 				if(lsp!=so){
 					lsp=so;
 					var co=$me.offset().left;
@@ -130,29 +149,36 @@
 					});
 				}
 			};
+			
 			function vEnd(){
 				if(ele.scrollTop>0&&ele.scrollHeight-ele.scrollTop<opt.eBound){
 					offset=batch($sp,offset,opt);
 					return 1;
 				}
+				
 				return opt.endDelay;
 			};
+			
 			function hEnd(){
 				if(ele.scrollLeft>0&&ele.scrollWidth-ele.scrollLeft<opt.eBound){
 					offset=batch($sp.find("tr:first"),offset,opt);
 					return 1;
 				}
+				
 				return opt.endDelay;
 			};
+			
 			function monScroll(){
 				fnScroll();
 				setTimeout(monScroll,opt.scrollDelay);
 			};
+			
 			function monEnd(){
 				if(offset<opt.maxOffset){
 					setTimeout(monEnd,fnEnd());
 				}
 			}
+			
 		});
 	}; 
 })(jQuery);
