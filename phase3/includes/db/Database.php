@@ -284,6 +284,11 @@ abstract class DatabaseBase {
 		}
 	}
 
+	/**
+	 * Get the type of the DBMS, as it appears in $wgDBtype.
+	 */
+	abstract function getType();
+
 #------------------------------------------------------------------------------
 # Other functions
 #------------------------------------------------------------------------------
@@ -422,7 +427,7 @@ abstract class DatabaseBase {
 	 * Should return true if unsure.
 	 */
 	function isWriteQuery( $sql ) {
-		return !preg_match( '/^(?:SELECT|BEGIN|COMMIT|SET|SHOW)\b/i', $sql );
+		return !preg_match( '/^(?:SELECT|BEGIN|COMMIT|SET|SHOW|\(SELECT)\b/i', $sql );
 	}
 
 	/**
@@ -2223,7 +2228,7 @@ abstract class DatabaseBase {
 				}
 			}
 
-			if ( '' != $cmd ) { $cmd .= ' '; }
+			if ( $cmd != '' ) { $cmd .= ' '; }
 			$cmd .= "$line\n";
 
 			if ( $done ) {
@@ -2618,8 +2623,6 @@ class DBConnectionError extends DBError {
     <input type="hidden" name="num" value="50" />
     <input type="hidden" name="ie" value="$wgInputEncoding" />
     <input type="hidden" name="oe" value="$wgInputEncoding" />
-
-    <img src="http://www.google.com/logos/Logo_40wht.gif" alt="" style="float:left; margin-left: 1.5em; margin-right: 1.5em;" />
 
     <input type="text" name="q" size="31" maxlength="255" value="$search" />
     <input type="submit" name="btnG" value="$googlesearch" />

@@ -7,6 +7,10 @@
  * @see Database
  */
 class DatabaseMysql extends DatabaseBase {
+	function getType() {
+		return 'mysql';
+	}
+
 	/*private*/ function doQuery( $sql ) {
 		if( $this->bufferResults() ) {
 			$ret = mysql_query( $sql, $this->mConn );
@@ -362,7 +366,7 @@ class DatabaseMysql extends DatabaseBase {
 	public function unlockTables( $method ) {
 		$this->query( "UNLOCK TABLES", $method );
 	}
-	
+
 	public function setBigSelects( $value = true ) {
 		if ( $value === 'default' ) {
 			if ( $this->mDefaultBigSelects === null ) {
