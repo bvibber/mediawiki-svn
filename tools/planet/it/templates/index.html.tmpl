@@ -22,9 +22,6 @@
 </head>
 
 <body>
-
-<div class="gmq-langlinks"><a href="index.da.html">Dansk</a> · <a href="index.fo.html">Føroyskt</a> · <a href="index.is.html">Íslenska</a> · Norsk (<a href="index.nb.html">bokmål</a> · <a href="index.nn.html">nynorsk</a>) · <b>Svenska</b></div>
-
 <h1><TMPL_VAR name></h1>
 
 <TMPL_LOOP Items>
@@ -75,7 +72,7 @@
 ### demonstrate below.
 
 <p class="date">
-<a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author>av <TMPL_VAR author></TMPL_IF> <TMPL_VAR date></a>
+<a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author>by <TMPL_VAR author> at </TMPL_IF><TMPL_VAR date><TMPL_IF category> under <TMPL_VAR category></TMPL_IF></a>
 </p>
 </div>
 </div>
@@ -91,20 +88,19 @@
 
 <div class="sidebar">
 <img src="images/logo.png" width="135" height="135" alt="">
-<h2>Prenumerera</h2>
+<h2>Subscribe</h2>
 <ul><li>
-<a href="/atom.xml">atom</A></li>
+<a href="/atom.xml">atom feed</A></li>
 <li><a href="/rss10.xml">rss 1.0</A></li>
 <li><a href="/rss20.xml">rss 2.0</a></li>
 </ul>
 
-<h2>Om</h2>
+<h2>About</h2>
 
-<I>
-Planet Wikimedia är en sammanställning av vad deltagare inom olika Wikimediaprojekt skriver om wikis. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Mer information&nbsp;…</a>
+<I>Planet Wikimedia is a combined view on what Wikimedia project participants have to say in their blogs about wikis. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">More information ..</A>
 </I>
 
-<h2>Bloggare</h2>
+<h2>Subscriptions</h2>
 <ul>
 <TMPL_LOOP Channels>
 <li>
@@ -113,36 +109,39 @@ Planet Wikimedia är en sammanställning av vad deltagare inom olika Wikimediapr
 </TMPL_LOOP>
 </ul>
 <P>
-<strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Lägg til din blogg</A> &ndash; <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language">Föreslå ett nytt språk</A></strong>
+<strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Add your blog</A> &ndash; <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language">Request new language</A></strong>
 </P>
 <p>
-<strong>Senast uppdaterat:</strong><br>
+<strong>Last updated:</strong><br>
 <TMPL_VAR date><br>
-<em>Alla tider visas i UTC.</em><br>
+<em>All times are UTC.</em><br>
 <br>
-Programvara:<br>
+Powered by:<br>
 <a href="http://www.planetplanet.org/"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a>
 </p>
 <P>
-<H2>Förbehåll</H2>
-
-Planet Wikimedia drivs av den icke vinstdrivande organisationen <a href="http://wikimediafoundation.org/">Wikimedia Foundation</a> i syfte att tillhandahålla information och åsikter bland medlemmarna inom Wikimediagemenskapen. Insamlingen av inlägg på bloggarna är en datorkontrollerad process, och Wikimedia Foundation kan inte hållas ansvarig för material som postas av deltagare i denna nätgemenskap.
+<H2>Disclaimer</H2>
+Planet Wikimedia is operated by the non-profit <a href="http://wikimediafoundation.org/">Wikimedia Foundation</A> for the purpose of facilitating the sharing of
+information and opinions among members of the Wikimedia community. The aggregation of posts from weblogs is a computer-controlled process, and the Wikimedia Foundation is not liable for any material 
+submitted by participants in this online community.
 </P>
 <p>
-<h2>Planetarium</h2>
+<h2>Planetarium:</h2>
 <ul>
 <li><a href="http://wikiblogplanet.com/">Wiki Blog Planet</a></li>
-<li><a href="http://www.planetapache.org/">Planet Apache</a></li>
-<li><a href="http://planet.debian.net/">Planet Debian</a></li>
+<li><a href="http://planet.creativecommons.org/">Planet CC</A></li>
+<li><a href="http://planet.laptop.org/">Planet OLPC</A></li>
 <li><a href="http://planet.freedesktop.org/">Planet freedesktop.org</a></li>
-<li><a href="http://planet.gnome.org/">Planet GNOME</a></li>
-<li><a href="http://planetsun.org/">Planet Sun</a></li>
-<li><a href="http://fedora.linux.duke.edu/fedorapeople/">Fedora People</a></li>
-<li><a href="http://www.planetplanet.org/">mer&nbsp;…</a></li>
+<li><a href="http://planet.mozilla.org/">Planet Mozilla</A></li>
+<li><a href="http://planet.inkscape.org/">Planet Inkscape</A></li>
+<li><a href="http://planet.ubuntu.com/">Planet Ubuntu</A></li>
+<li><a href="http://planet.debian.net/">Planet Debian</a></li>
+<li><a href="http://planet.fedoraproject.org/">Planet Fedora</a></li>
+<li><a href="http://intelligentdesigns.net/Planet_tracker">more...</a></li>
 </ul>
 </p>
 <p>
-<h2>På andra språk</h2>
+<h2>In other languages:</h2>
 <ul>
 <li><a href="http://ar.planet.wikimedia.org">العربية</a></li>
 <li><a href="http://cs.planet.wikimedia.org">Česky</a></li>
@@ -156,8 +155,8 @@ Planet Wikimedia drivs av den icke vinstdrivande organisationen <a href="http://
 <li><a href="http://gmq.planet.wikimedia.org/index.is.html">Íslenska</a></li>
 <li><a href="http://gmq.planet.wikimedia.org/index.nb.html">Norsk (bokmål)</a></li>
 <li><a href="http://gmq.planet.wikimedia.org/index.nn.html">Norsk (nynorsk)</a></li>
+<li><a href="http://gmq.planet.wikimedia.org/index.sv.html">Svenska</a></li>
 </ul></li>
-<li><a href="http://it.planet.wikimedia.org">Italiano</a></li>
 <li><a href="http://pl.planet.wikimedia.org">Polski</a></li>
 <li><a href="http://pt.planet.wikimedia.org">Português</a></li>
 <li><a href="http://ro.planet.wikimedia.org">Română</a></li>
