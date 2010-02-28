@@ -33,7 +33,7 @@ abstract class SchemaBuilder {
 	protected $tblPrefix = '';
 
 	// Any options for the table creation. Things like ENGINE=InnoDB
-	protected $tblOptions = '';
+	protected $tblOptions = array();
 
 	// Our table definition
 	protected $tables = array();
@@ -184,6 +184,21 @@ class MysqlSchema extends SchemaBuilder {
 			'options' => array(
 				'engine' => 'MyISAM',
 			),
+		);
+
+		$this->tables['revision']['options'] = array(
+			'max_rows' => 10000000,
+			'avg_row_length' => 1024,
+		);
+
+		$this->tables['text']['options'] = array(
+			'max_rows' => 10000000,
+			'avg_row_length' => 10240,
+		);
+
+		$this->tables['hitcounter']['options'] = array(
+			'max_rows' => 25000,
+			'engine' => 'HEAP',
 		);
 	}
 
