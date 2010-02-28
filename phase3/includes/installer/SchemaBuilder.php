@@ -115,21 +115,11 @@ abstract class SchemaBuilder {
 	}
 
 	/**
-	 * Set the prefix for all tables (unless they override this)
-	 * 
-	 * @param $opts String The options for all tables, like ENGINE=InnoDB
+	 * Set the default table options for all tables
+	 * @param $opts Array of table options, like 'engine' => 'InnoDB', etc
 	 */
 	public function setTableOptions( $opts ) {
 		$this->tblOptions = $opts;
-	}
-
-	/**
-	 * Get table options
-	 * 
-	 * @return String
-	 */
-	protected function getTableOptions() {
-		return $this->tblOptions;
 	}
 
 	/**
@@ -164,18 +154,18 @@ class MysqlSchema extends SchemaBuilder {
 			'prefix' => 'si',
 			'fields' => array(
 				'page' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => Schema::TYPE_INT,
 					'signed' => false,
 					'null'   => false,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => Schema::TYPE_VARCHAR,
 					'length'  => 255,
 					'null'    => false,
 					'default' => '',
 				),
 				'text' => array(
-					'type'   => self::TYPE_TEXT,
+					'type'   => Schema::TYPE_TEXT,
 					'length' => 'medium',
 					'null'   => false,
 				),
@@ -191,6 +181,9 @@ class MysqlSchema extends SchemaBuilder {
 					'FULLTEXT', 'text',
 				),
 			),
+			'options' => array(
+				'engine' => 'MyISAM',
+			),
 		);
 	}
 
@@ -200,12 +193,13 @@ class MysqlSchema extends SchemaBuilder {
 	protected function createTable( $name, $def ) {
 		$prefix = $def['prefix'] ? $def['prefix'] . '_' : '';
 		$tblName = $this->tblPrefix . $name;
+		$opts = isset( $def['options'] ) ? $def['options'] : array();
 		$sql = "CREATE TABLE `$tblName` (";
 		foreach( $def['fields'] as $field => $attribs ) {
 			$sql .= "\n\t{$prefix}{$field} " . $this->getFieldDefinition( $attribs );
 		}
 		$sql = rtrim( $sql, ',' );
-		$sql .= "\n) " . $this->getTableOptions() . ";\n";
+		$sql .= "\n) " . $this->getTableOptions( $opts ) . ";\n";
 		if( isset( $def['indexes'] ) ) {
 			foreach( $def['indexes'] as $idx => $idxDef ) {
 				if( $idxDef[0] === 'UNIQUE' ) {
@@ -314,6 +308,15 @@ class MysqlSchema extends SchemaBuilder {
 			$def .= " AUTO_INCREMENT";
 		}
 		return $def . ",";
+	}
+
+	private function getTableOptions( $opts ) {
+		$opts = array_merge( $this->tblOptions, $opts );
+		$ret = array();
+		foreach( $opts as $name => $value ) {
+			$ret[] = strtoupper( $name ) . "=$value";
+		}
+		return implode( ', ', $ret );
 	}
 
 	protected function updateTable( $name, $definition, $db ) {

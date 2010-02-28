@@ -18,7 +18,6 @@
  *
  * @author Chad Horohoe <chad@anyonecanedit.org>
  * @todo FOLLOWING TABLES NEED WORK:
- *		-searchindex, hitcounter (custom table options)
  *		-externallinks, ipblocks, oldimage, job (indexes)
  *      -trackbacks, testitem (REFERENCES)
  */
@@ -374,6 +373,10 @@ class Schema {
 					'user_text', 'timestamp',
 				),
 			),
+			'options' => array(
+				'max_rows' => 10000000,
+				'avg_row_length' => 1024,
+			),
 		),
 		'text' => array(
 			'prefix' => 'old',
@@ -397,6 +400,10 @@ class Schema {
 				),
 			),
 			'indexes' => array(),
+			'options' => array(
+				'max_rows' => 10000000,
+				'avg_row_length' => 10240,
+			),
 		),
 		'archive' => array(
 			'prefix' => 'ar',
@@ -808,6 +815,10 @@ class Schema {
 					'signed' => false,
 					'null'   => false,
 				),
+			),
+			'options' => array(
+				'max_rows' => 25000,
+				'engine' => 'HEAP',
 			),
 		),
 		'ipblocks' => array(
