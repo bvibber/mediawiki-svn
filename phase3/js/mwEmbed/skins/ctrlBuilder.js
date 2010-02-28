@@ -89,11 +89,11 @@ ctrlBuilder.prototype = {
 		// Set up local ctrlBuilder
 		var _this = this;
 
-		// Remove any old controls: 
-		embedPlayer.$interface.find( '.control-bar' ).remove();
+		// Remove any old controls & old overlays:
+		embedPlayer.$interface.find( '.control-bar,.overlay-win' ).remove();			
 		
 		// Setup the controlBar container
-		var $controlBar = $j('<div>')
+		var $controlBar = $j('<div />')
 			.addClass( 'ui-state-default ui-widget-header ui-helper-clearfix control-bar' )
 			.css( 'height', this.height )			
 		
@@ -996,7 +996,7 @@ ctrlBuilder.prototype = {
 	* @param {Object} $target jQuery target for output
 	*/
 	getPlayerSelect: function( ) {		
-		mw.log('getPlayerSelect');		
+		mw.log('getPlayerSelect::');		
 		
 		var embedPlayer = this.embedPlayer;
 		
