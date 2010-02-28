@@ -4097,7 +4097,7 @@ Please check your php.ini and make sure session.save_path is set to an appropria
 'config-page-welcome' => 'Welcome',
 'config-page-dbconnect' => 'Connect to DB',
 'config-page-upgrade' => 'Upgrade existing',
-'config-page-dbsettings' => 'DB settings',
+'config-page-dbsettings' => 'Database settings',
 'config-page-name' => 'Name',
 'config-page-options' => 'Options',
 'config-page-install' => 'Install',
@@ -4188,30 +4188,30 @@ cannot use these for object caching.',
 'config-no-uri' => '<strong>Error:</strong> Could not determine the current URI. Installation aborted.',
 'config-extension' => 'Installing MediaWiki with <tt>$1</tt> file extensions',
 
-'config-db-type' => 'DB type:',
-'config-db-host' => 'DB host:',
+'config-db-type' => 'Database type:',
+'config-db-host' => 'Database host:',
 'config-db-host-help' => 'If your database server isn\'t on your web server, enter the name or IP address here.
 
 If you are using a shared web host, your hosting provider should give you the correct host name in their documentation.',
 'config-db-wiki-settings' => 'Identify this wiki',
-'config-db-name' => 'DB name:',
+'config-db-name' => 'Database name:',
 'config-db-name-help' => 'Choose a name that identifies your wiki. It should not contain spaces or hyphens.
 
 If you are using a shared host, your hosting provider will either give you a specific database name to use, or let you create databases via a control panel.',
 'config-db-install-account' => 'User account for installation',
-'config-db-username' => 'DB username:',
-'config-db-password' => 'DB password:',
+'config-db-username' => 'Database username:',
+'config-db-password' => 'Database password:',
 'config-db-install-help' => 'Select the username and password that will be used to connect to the database during the installation process.',
 'config-db-account-lock' => 'Use the same username and password during normal operation',
 'config-db-wiki-account' => 'User account for normal operation',
 'config-db-wiki-help' => 'Select the username and password that will be used to connect to the database during normal wiki operation. 
 If the account does not exist, and the installation account has sufficient privileges, this user account will be created with the minimum privileges required to operate the wiki.',
-'config-db-prefix' => 'DB table prefix:',
+'config-db-prefix' => 'Database table prefix:',
 'config-db-prefix-help' => 'If you need to share one database between multiple wikis, or between MediaWiki and another web application, you may choose to add a prefix to all the table names to avoid conflicts.
 Do not use spaces or hyphens.
 
 This may normally be left blank.',
-'config-db-charset' => 'DB character set',
+'config-db-charset' => 'Database character set',
 'config-charset-mysql5-binary' => 'MySQL 4.1/5.0 binary',
 'config-charset-mysql5' => 'MySQL 4.1/5.0 UTF-8',
 'config-charset-mysql4' => 'MySQL 4.0 backwards-compatible UTF-8',
@@ -4219,7 +4219,7 @@ This may normally be left blank.',
 <br/><br/>
 In <b>binary mode</b>, MediaWiki stores UTF-8 text to the database in binary fields. This is more efficient than MySQL\'s UTF-8 mode, and allows you to use the full range of Unicode characters. In <b>UTF-8 mode</b>, MySQL will know what character set your data is in, and can present and convert it appropriately, but it won\'t let you store characters above the [http://en.wikipedia.org/wiki/Mapping_of_Unicode_character_planes Basic Multilingual Plane].',
 'config-mysql-old' => 'MySQL $1 or later is required, you have $2.',
-'config-db-port' => 'DB port:',
+'config-db-port' => 'Database port:',
 'config-db-schema' => 'Schema for MediaWiki',
 'config-db-ts2-schema' => 'Schema for tsearch2',
 'config-db-schema-help' => 'The above schemas are generally correct, only change them if you are sure you need to.',
@@ -4236,10 +4236,10 @@ If you don\'t know, it\'s probably safe to leave the default.',
 'config-header-mysql' => 'MySQL settings',
 'config-header-postgres' => 'PostgreSQL settings',
 'config-header-sqlite' => 'SQLite settings',
-'config-invalid-db-type' => 'Invalid DB type',
-'config-missing-db-name' => 'You must enter a value for "DB name"',
-'config-invalid-db-name' => 'Invalid DB name "$1". It may only contain numbers, letters and underscores.',
-'config-invalid-db-prefix' => 'Invalid DB prefix "$1". It may only contain numbers, letters and underscores.',
+'config-invalid-db-type' => 'Invalid database type',
+'config-missing-db-name' => 'You must enter a value for "Database name"',
+'config-invalid-db-name' => 'Invalid database name "$1". It may only contain numbers, letters and underscores.',
+'config-invalid-db-prefix' => 'Invalid database prefix "$1". It may only contain numbers, letters and underscores.',
 'config-connection-error' => '$1.
 
 Check the host, username and password below and try again.',
@@ -4252,7 +4252,7 @@ Check the host, username and password below and try again.',
 'config-sqlite-unwritable' => 'Unable to write to the directory specified: $1. Please change its permissions so that the webserver can write to it, and try again.',
 'config-sqlite-connection-error' => '$1.
 
-Check the data directory and DB name below and try again.',
+Check the data directory and database name below and try again.',
 'config-can-upgrade' => 'There are MediaWiki tables in this database. 
 To upgrade them to MediaWiki $1, click <strong>Continue</strong>.',
 'config-upgrade-done' => 'Upgrade complete. 
@@ -4265,7 +4265,7 @@ This is <strong>not recommended</strong> unless you are having problems with you
 'config-show-table-status' => 'SHOW TABLE STATUS query failed!',
 'config-unknown-collation' => '<strong>Warning:</strong> Unrecognised existing collation',
 
-'config-db-web-account' => 'DB account for web access',
+'config-db-web-account' => 'Database account for web access',
 'config-db-web-help' => 'Select the username and password that the web server will use to connect to the database server, during ordinary operation of the wiki.',
 'config-db-web-account-same' => 'Use the same account as for installation',
 'config-db-web-create' => 'Create the account if it doesn\'t already exist',
