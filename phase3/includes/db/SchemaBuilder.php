@@ -45,7 +45,7 @@ abstract class SchemaBuilder {
 	 * @param $schema Array See Schema::$defaultTables for more information
 	 */
 	private final function __construct( $schema ) {
-		wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
+		// wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
 		$this->tables = $schema;
 		$this->addDatabaseSpecificTables();
 	}
