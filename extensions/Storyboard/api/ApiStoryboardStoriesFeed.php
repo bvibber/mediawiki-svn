@@ -52,7 +52,7 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 			'story_title',
 			'story_text',
 			'story_created'
-		) );		
+		) );
 		$this->addWhere( array(
 			'story_is_published' => 1
 		) );
@@ -62,9 +62,13 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 		$stories = $this->select( __METHOD__ );
 		
 		while ( $story = $stories->fetchObject() ) {
-			$res = array( 'id' => $story->story_id, $story->story_title );
-			$storyHtml = "<span class='ajaxscroll-box'><b>$story->story_title</b><br />$story->story_text</span>";
-			ApiResult::setContent( $res, $storyHtml );
+			$res = array(
+				'id' => $story->story_id,
+				'author' => $story->story_author_name,
+				'title' => $story->story_title,
+				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
+			);
+			ApiResult::setContent( $res, $story->story_text );
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );
 		}
 		
