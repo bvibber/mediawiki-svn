@@ -105,6 +105,7 @@ $messages['gsw'] = array(
 	'right-storyreview' => 'Gschichte priefe, bearbeite un uusblände',
 	'storyboard-storyreview' => 'Gschicht beurteilde',
 	'storyboard-publish' => 'Vereffetlige',
+	'storyboard-unpublish' => 'Vereffetlichung zruckneh',
 	'storyboard-reviewed' => 'Prieft',
 	'storyboard-unreviewed' => 'Nit prieft',
 );
@@ -215,5 +216,12 @@ $messages['ru'] = array(
 	'storyboard-unpublish' => 'Убрать',
 	'storyboard-reviewed' => 'Проверенных',
 	'storyboard-unreviewed' => 'Непроверенных',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'storyboard-publish' => 'ప్రచురించు',
 );
 

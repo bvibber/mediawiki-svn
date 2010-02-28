@@ -930,6 +930,7 @@ $messages['gsw'] = array(
 	'qp_func_invalid_proposal_id' => 'Nit giltigi Vorschlags-Chännnummere ($3, kei Zahl) fir d Abstimmig $1, Frog $2',
 	'qp_error_no_such_poll' => 'Kei sonigi Abstimmig ($1).
 Stell sicher, ass d Abstimmig verchindet un gspycheret woren isch, stell au sicher, ass as Trännzeiche in dr Adräss alliwyl # brucht wird',
+	'qp_error_in_question_header' => 'Nit giltige Frogechopf: $1',
 	'qp_error_id_in_stats_mode' => 'Cha dr Abstimmig kei Chännnummere zuewyyse im statistische Modus',
 	'qp_error_dependance_in_stats_mode' => 'Cha d Abhägikeits-Chette vu dr Abstimmig nit verchinde im statistische Modus',
 	'qp_error_no_stats' => 'Kei statistischi Date verfiegbar, wel no keini Benutzer abgstumme hän (Adräss $1)',
@@ -1172,6 +1173,7 @@ $messages['ia'] = array(
 	'qp_func_invalid_proposal_id' => 'ID de proposition invalide "$3" (non un numero) pro le sondage $1, question $2',
 	'qp_error_no_such_poll' => 'Sondage non existe ($1).
 Verifica que le sondage ha essite declarate e salveguardate, e que le character # es usate como delimitator de adresse.',
+	'qp_error_in_question_header' => 'Titulo de question invalide: $1',
 	'qp_error_id_in_stats_mode' => 'Non pote declarar un ID del sondage in modo statistic',
 	'qp_error_dependance_in_stats_mode' => 'Non pote declarar le catena de dependentia del sondage in modo statistic',
 	'qp_error_no_stats' => 'Nulle dato statistic es disponibile, proque necuno ha ancora votate pro iste sondage (adresse=$1)',
@@ -1478,6 +1480,7 @@ $messages['mk'] = array(
 	'qp_func_invalid_proposal_id' => 'Неважечки идентификатор id=$3 на предлог (не е број) за анкетата $1, прашање $2',
 	'qp_error_no_such_poll' => 'Нема таква анкета ($1).
 Проверете дали анкетата е утврдена и зачувана, и осигурајте се дека во адресата користите разграничен знак #',
+	'qp_error_in_question_header' => 'Погрешно заглавие за прашањето: $1',
 	'qp_error_id_in_stats_mode' => 'Не може да се утврди ID-број за анкетата во статистички режим',
 	'qp_error_dependance_in_stats_mode' => 'Не можете да утврдите ланец на зависност за анкетата во статистички режим',
 	'qp_error_no_stats' => 'Нема достапни статистички податоци, бидејќи сè уште никој нема гласано на оваа анкета (address=$1)',

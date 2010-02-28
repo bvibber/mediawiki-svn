@@ -331,8 +331,8 @@ $messages['hy'] = array(
  */
 $messages['ia'] = array(
 	'block_title_error_page_title' => 'Titulo blocate',
-	'block_title_error-desc' => 'Forni un methodo simple pro impedir le creation o immagazinage de paginas con certe titulos',
-	'block_title_error' => 'Pardono, non es permittite immagazinar un pagina con iste titulo.',
+	'block_title_error-desc' => 'Forni un methodo simple pro impedir le creation o salveguarda de paginas con certe titulos',
+	'block_title_error' => 'Pardono, non es permittite publicar un pagina con iste titulo.',
 );
 
 /** Indonesian (Bahasa Indonesia)

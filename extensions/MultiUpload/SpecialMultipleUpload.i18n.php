@@ -761,11 +761,11 @@ A nem megfelelő fájlok azonnal törölve lesznek, lásd a [[{{MediaWiki:Multip
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'multipleupload' => 'Cargar plure files',
-	'multipleupload-desc' => 'Permitte que le usatores [[Special:MultipleUpload|carga plure files simultaneemente]]',
-	'multipleupload-ignoreallwarnings' => "Ignorar '''tote le advertimentos''' e immagazinar totevia le files.",
-	'multipleupload-saveallfiles' => 'Immagazinar tote le files',
-	'multipleupload-addresswarnings' => 'Per favor remedia omne advertimentos ante de recargar files.',
+	'multipleupload' => 'Incargar plure files',
+	'multipleupload-desc' => 'Permitte que le usatores [[Special:MultipleUpload|incarga plure files insimul]]',
+	'multipleupload-ignoreallwarnings' => "Ignorar '''tote le advertimentos''' e salveguardar le files totevia.",
+	'multipleupload-saveallfiles' => 'Salveguardar tote le files',
+	'multipleupload-addresswarnings' => 'Per favor remedia omne advertimentos ante de reincargar files.',
 	'multipleupload-page' => '{{ns:project}}:Politica pro le deletion de files',
 	'multipleupload-text' => "Incarga multiple files hic.
 
@@ -775,8 +775,8 @@ Tu pote incargar inter 1 e $1 files insimul.
 Tu pote entrar optionalmente un '''Nomine de file de destination''' e fornir un '''Summario''' que describe tu file.
 
 Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multipleupload-page}}|politica pro le deletion de files]].",
-	'multiupload-fileuploaded' => 'File cargate.',
-	'multiupload-toolbox' => 'Cargar plure files',
+	'multiupload-fileuploaded' => 'File incargate.',
+	'multiupload-toolbox' => 'Incargar plure files',
 	'multiupload-no-files' => 'Per favor selige al minus un file a incargar',
 	'multiupload-blank' => 'Nulle file seligite',
 );
@@ -1098,13 +1098,14 @@ $messages['nah'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'multipleupload' => 'Meerdere bestanden uploaden',
 	'multipleupload-desc' => 'Laat gebruikers toe om meerdere bestanden [[Special:MultipleUpload|in één keer te uploaden]]',
-	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden sowieso uploaden.",
+	'multipleupload-ignoreallwarnings' => "'''Alle waarschuwingen''' negeren en de bestanden toch opslaan.",
 	'multipleupload-saveallfiles' => 'Alle bestanden opslaan',
 	'multipleupload-addresswarnings' => 'Los de waarschuwingen op voordat u het opnieuw probeert.',
 	'multipleupload-page' => '{{ns:project}}:Verwijderingsbeleid van bestanden',

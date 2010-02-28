@@ -162,6 +162,13 @@ $messages['ksh'] = array(
 	'wlfeed-desc' => 'Klasse för verbäßerte Abonnemangs-Kanähl (<i lang="en">feeds</i>) aanzelääje',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wlfeed-desc' => 'Verbessert Klasse vu Generatioun vu Feed',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

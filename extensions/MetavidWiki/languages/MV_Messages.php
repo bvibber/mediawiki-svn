@@ -4550,7 +4550,7 @@ Per favor reporta isto al [[{{MediaWiki:Grouppage-sysop}}|administrator del sito
 	'mv_duration_label' => 'Durata',
 	'mv_file_desc_label' => 'message de description del fluxo',
 	'mv_delete_stream_file' => 'deler referentia al file de fluxo',
-	'mv_save_changes' => 'Immagazinar modificationes',
+	'mv_save_changes' => 'Salveguardar modificationes',
 	'mv_file_with_same_desc' => 'Error: file de fluxo con le mesme clave de description <i>$1</i> ja presente',
 	'mv_updated_stream_files' => 'Actualisava le registro de files de fluxo',
 	'mv_removed_file_stream' => 'Removeva file de fluxo: $1',
@@ -4601,10 +4601,10 @@ o alternativemente <a href="$3">adder le fluxo</a>.',
 	'mv_interest_group_matches' => 'Gruppos de interesse correspondente',
 	'mv_click_to_edit' => 'clicca pro modificar',
 	'ht_en' => 'Transcription',
-	'ht_en_desc' => 'Transcriptiones anglese.
+	'ht_en_desc' => 'Transcriptiones in anglese.
 Iste typo de superposition es pro texto parlate',
 	'anno_en' => 'Annotationes e categorias',
-	'anno_en_desc' => 'Categorisationes e annotationes anglese.
+	'anno_en_desc' => 'Categorisationes e annotationes in anglese.
 Iste superposition pote esser usate pro categorisar sectiones de video o pro adder informationes annotative que non es texto parlate',
 	'thomas_en' => 'Transcription official',
 	'thomas_en_desc' => 'Transcription Thomas official ab le servicio de registro governamental THOMAS.
@@ -4710,8 +4710,8 @@ Saltar verso le vista del fluxo: $2',
 	'mv_simple_editor_desc' => 'editor simple (in stilo iMovie)',
 	'mv_advanced_editor_desc' => 'editor avantiate (in stilo Final Cut)',
 	'mv_transitions' => 'Transitiones',
-	'mv_save_sequence' => 'Immagazinar sequentia',
-	'mv_sequence_page_desc' => 'Immagazinar le sequentia actual',
+	'mv_save_sequence' => 'Salveguardar sequentia',
+	'mv_sequence_page_desc' => 'Salveguardar le sequentia actual',
 	'mv_sequence_add' => 'Adder clips',
 	'mv_sequence_add_manual' => 'Adder per nomine',
 	'mv_sequence_add_manual_desc' => 'Adder clips per nomine de fluxo',

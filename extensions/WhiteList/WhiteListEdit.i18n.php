@@ -3379,6 +3379,7 @@ $messages['te'] = array(
 	'whitelisttablechangedate' => 'కాలపరిమితి తేదీని మార్చు',
 	'whitelisttableremove' => 'తొలగించు',
 	'whitelistnewtabledate' => 'కాల పరిమితి:',
+	'whitelistnewtableprocess' => 'ప్రక్రియ',
 	'whitelistnewtablereview' => 'సమీక్షించు',
 	'whitelistpagelist' => '$1 కై {{SITENAME}} పేజీలు',
 	'whitelistrequest' => 'మరిన్ని పేజీలకు అనుమతిని అభ్యర్థించండి',

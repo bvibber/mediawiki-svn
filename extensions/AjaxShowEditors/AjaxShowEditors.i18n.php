@@ -1074,6 +1074,15 @@ $messages['sv'] = array(
 	'ajax-se-usernotfound' => 'Fel: användaren hittades inte',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'ajax-se-pagedoesnotexist' => 'ukurasa haupatikani',
+	'ajax-se-userinvalid' => 'Hitilafu: mtumiaji batili',
+	'ajax-se-usernotfound' => 'Hitilafu: mtumiaji huyu hakuna',
+);
+
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */

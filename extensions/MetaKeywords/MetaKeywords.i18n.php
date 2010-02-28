@@ -133,6 +133,13 @@ $messages['es'] = array(
 	'metakeywords-desc' => 'Permite configurar etiquetas de <tt><nowiki><meta "keywords"></nowiki></tt> y <tt><nowiki><meta "description"></nowiki></tt> para cada espacio de nombres',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'metakeywords-desc' => 'Sallii <tt><nowiki><meta "keywords"></nowiki></tt> -asetukset ja <tt><nowiki><meta "description"></nowiki></tt> merkkikoodit nimiavaruuksittain',
+);
+
 /** French (Français)
  * @author Grondin
  * @author PieRRoMaN

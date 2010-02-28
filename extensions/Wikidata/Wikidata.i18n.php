@@ -5668,7 +5668,7 @@ Selige un collection a exportar. In le quadro de texto a linguas, entra un lista
 	'ow_exporttsv_not_allowed' => 'Tu non ha le permission de facer un exportation in TSV.',
 	'ow_exporttsv_export_failed' => 'Exportation fallite',
 	'addcollection' => 'Wikidatos: Adder collection',
-	'ow_save' => 'Immagazinar',
+	'ow_save' => 'Salveguardar',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Selection de collection de datos',
 	'ow_noedit_title' => 'Nulle permission de modificar',

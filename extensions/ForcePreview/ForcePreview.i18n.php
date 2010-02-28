@@ -290,7 +290,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'forcepreview' => 'Immagazinar pagina (face primo un previsualisation)',
+	'forcepreview' => 'Publicar pagina (face primo un previsualisation)',
 	'forcepreview-desc' => 'Fortia le uso del previsualisation pro usatores non privilegiate',
 	'right-forcepreviewexempt' => 'Pote publicar sin uso de "Monstrar previsualisation"',
 );

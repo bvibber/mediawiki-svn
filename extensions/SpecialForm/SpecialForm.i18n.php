@@ -695,7 +695,7 @@ $messages['ia'] = array(
 	'formbadnametext' => 'Non existe un formulario con iste nomine.',
 	'formpattern' => 'formulario-$1',
 	'formtitlepattern' => 'Adder nove $1',
-	'formsave' => 'Immagazinar',
+	'formsave' => 'Salveguardar',
 	'formindexmismatch-title' => 'Non-correspondentia inter forma de nomine e patrono',
 	'formindexmismatch' => 'Iste formulario ha formas de nomine e patronos non correspondente a partir del indice $1.',
 	'formarticleexists' => 'Pagina existe',
@@ -706,8 +706,8 @@ $messages['ia'] = array(
 	'formrequiredfielderror' => 'Le {{PLURAL:$2|campo|campos}} $1 es requirite pro iste formulario.
 Per favor completa {{PLURAL:$2|lo|los}}.',
 	'formsavesummary' => 'Nove pagina con [[Special:Form/$1|le formulario $1]]',
-	'formsaveerror' => 'Error durante le immagazinage del formulario',
-	'formsaveerrortext' => "Il occurreva un error incognite durante le immagazinage del pagina '$1'.",
+	'formsaveerror' => 'Error durante le salveguarda del formulario',
+	'formsaveerrortext' => "Il occurreva un error incognite durante le salveguarda del pagina '$1'.",
 );
 
 /** Indonesian (Bahasa Indonesia)

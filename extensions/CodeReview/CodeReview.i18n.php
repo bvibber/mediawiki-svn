@@ -4220,8 +4220,8 @@ $messages['ia'] = array(
 	'code-revfilter-cr_status' => 'Stato = $1',
 	'code-revfilter-cr_author' => 'Autor = $1',
 	'code-revfilter-clear' => 'Rader filtro',
-	'code-rev-submit' => 'Immagazinar modificationes',
-	'code-rev-submit-next' => 'Immagazinar & proxime non resolvite',
+	'code-rev-submit' => 'Salveguardar modificationes',
+	'code-rev-submit-next' => 'Salveguardar & problema sequente',
 	'code-batch-status' => 'Cambiar stato:',
 	'code-batch-tags' => 'Cambiar etiquettas:',
 	'codereview-batch-title' => 'Cambiar tote le revisiones seligite',
@@ -6455,6 +6455,7 @@ $3',
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author McDutchie
  */
 $messages['oc'] = array(
 	'code' => 'Verificacion del còde',
@@ -6533,7 +6534,7 @@ $messages['oc'] = array(
 	'code-status-deferred' => 'deferit',
 	'code-pathsearch-legend' => 'Recèrca las versions dins aqueste depaus segon lo camin',
 	'code-pathsearch-path' => 'Camin :',
-	'code-rev-submit' => 'Salvar las modificacions :',
+	'code-rev-submit' => 'Salvar las modificacions',
 	'code-rev-submit-next' => 'Salvar & venenta pas resolguda',
 	'code-batch-status' => "Modificar l'estatut :",
 	'code-batch-tags' => 'Modificar las balisas :',

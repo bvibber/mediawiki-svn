@@ -40,6 +40,13 @@ $messages['ia'] = array(
 	'dynamicsidebar-desc' => 'Provide barras lateral dynamic a base de paginas de usator, gruppos e categorias',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'dynamicsidebar-desc' => 'Generéiert dynamesch säitlech Menuen déi op de Benotzersäiten, Gruppen a Kategorie bséieren',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -52,6 +59,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'dynamicsidebar-desc' => "Maakt dynamische menubalk mogelijk gebaseerd op gebruikerspagina's, groepen en categorieën",
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
+ */
+$messages['no'] = array(
+	'dynamicsidebar-desc' => 'Gir dynamiske sidelinjer basert på brukersider, grupper og kategorier',
 );
 
 /** Piedmontese (Piemontèis)
