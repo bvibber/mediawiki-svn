@@ -23,10 +23,10 @@ class TagStoryboard {
 		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.js');
 
 		$output = <<<EOT
-<div class="ajaxscroll" id="storyboard">
+<div class="ajaxscroll" id="storyboard" style="height: 400px; width: 80%;">
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 jQuery(function(){ jQuery('#storyboard').ajaxScroll({ updateBatch: updateStoryboard, batchSize: 5, batchNum: 2 }); });
-function updateStoryboard(obj){ obj.load('$wgScriptPath/api.php?action=stories&offset=' + obj.attr('offset')); }
+function updateStoryboard(obj){ obj.load('$wgScriptPath/api.php?action=query&list=stories&stcontinue=' + obj.attr('offset') + '&stlimit=5'); }
 /*]]>*/ </script>
 EOT;
 

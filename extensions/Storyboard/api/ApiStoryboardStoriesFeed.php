@@ -47,6 +47,7 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 		
 		$this->addTables( 'storyboard' );
 		$this->addFields( array(
+			'story_id',
 			'story_author_name',
 			'story_title',
 			'story_text',
@@ -61,8 +62,13 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 		$stories = $this->select( __METHOD__ );
 		
 		while ( $story = $stories->fetchObject() ) {
-			// TODO: figure out how to output the data so the storyboard can use it
+			$res = array( 'id' => $story->story_id, $story->story_title );
+			$storyHtml = "<span class='ajaxscroll-box'><b>$story->story_title</b><br />$story->story_text</span>";
+			ApiResult::setContent( $res, $storyHtml );
+			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );
 		}
+		
+		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'story' );
 	}
 	
 	/**

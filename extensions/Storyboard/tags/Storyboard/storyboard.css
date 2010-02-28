@@ -10,11 +10,11 @@
 .ajaxscroll {
 border: 1px solid #ddd;
 }
-.ajaxscroll .batch {
+.ajaxscroll .ajaxscroll-batch {
 	margin: 0;
 	padding: 0;
 }
-.ajaxscroll .box {
+.ajaxscroll .ajaxscroll-box {
 	display: inline-block;
 	border: 1px solid #eee;
 	width: 99%;
@@ -23,11 +23,7 @@ border: 1px solid #ddd;
 	margin: 5px !important;
 	margin-bottom: 25px;
 }
-.ajaxscroll .empty .box {
+.ajaxscroll .ajaxscroll-empty .ajaxscroll-box {
 	border: 1px solid #ddd;
 	background: #FCFCFC url(../../images/storyboard-loader.gif) no-repeat scroll center center;
-}
-#storyboard {
-	height: 400px;
-	width: 80%;
 }
