@@ -2,7 +2,7 @@
 /**
  * API extension for Storyboard.
  * 
- * @file ApiStories.php
+ * @file ApiStoryboardStoriesFeed.php
  * @ingroup Storyboard
  * 
  * @author Jeroen De Dauw

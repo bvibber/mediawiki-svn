@@ -49,6 +49,8 @@ $wgSpecialPageGroups['StoryReview'] = 'contribution';
 // API
 $wgAutoloadClasses['ApiStoryboardStoriesFeed'] = "{$egStoryboardDir}api/ApiStoryboardStoriesFeed.php";
 $wgAPIListModules['stories'] = 'ApiStoryboardStoriesFeed';
+$wgAutoloadClasses['ApiStoryReview'] = "{$egStoryboardDir}api/ApiStoryReview.php";
+$wgAPIModules['storyreview'] = 'ApiStoryReview';
 
 // Hooks
 $wgHooks['ParserFirstCallInit'][] = 'efStoryboardParserFirstCallInit';
