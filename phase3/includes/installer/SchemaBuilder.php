@@ -47,6 +47,7 @@ abstract class SchemaBuilder {
 	private final function __construct( $schema ) {
 		wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
 		$this->tables = $schema;
+		$this->addDatabaseSpecificTables();
 	}
 
 	/**
@@ -149,9 +150,50 @@ abstract class SchemaBuilder {
 	 * @return String
 	 */
 	abstract protected function updateTable( $name, $definition, $db );
+
+	/**
+	 * Adds database-specific tables to the in-class list.
+	 * @return Nothing
+	 */
+	abstract protected function addDatabaseSpecificTables();
 }
 
 class MysqlSchema extends SchemaBuilder {
+	protected function addDatabaseSpecificTables() {
+		$this->tables['searchindex'] = array(
+			'prefix' => 'si',
+			'fields' => array(
+				'page' => array(
+					'type'   => self::TYPE_INT,
+					'signed' => false,
+					'null'   => false,
+				),
+				'title' => array(
+					'type'    => self::TYPE_VARCHAR,
+					'length'  => 255,
+					'null'    => false,
+					'default' => '',
+				),
+				'text' => array(
+					'type'   => self::TYPE_TEXT,
+					'length' => 'medium',
+					'null'   => false,
+				),
+			),
+			'indexes' => array(
+				'si_page' => array(
+					'UNIQUE', 'page',
+				),
+				'si_title' => array(
+					'FULLTEXT', 'title',
+				),
+				'si_text' => array(
+					'FULLTEXT', 'text',
+				),
+			),
+		);
+	}
+
 	/**
 	 * @see SchemaBuilder::createTable()
 	 */
@@ -272,6 +314,108 @@ class MysqlSchema extends SchemaBuilder {
 			$def .= " AUTO_INCREMENT";
 		}
 		return $def . ",";
+	}
+
+	protected function updateTable( $name, $definition, $db ) {
+		return '';
+	}
+}
+
+class SqliteSchema extends SchemaBuilder {
+	static $typeMapping = array(
+		TYPE_INT       => 'INTEGER',
+		TYPE_VARCHAR   => 'TEXT',
+		TYPE_DATETIME  => 'TEXT',
+		TYPE_TEXT      => 'TEXT',
+		TYPE_BLOB      => 'BLOB',
+		TYPE_BINARY    => 'BLOB',
+		TYPE_VARBINARY => 'BLOB',
+		TYPE_BOOL      => 'INTEGER',
+		TYPE_ENUM      => 'BLOB',
+		TYPE_FLOAT     => 'REAL',
+		TYPE_REAL      => 'REAL',
+		TYPE_CHAR      => 'TEXT',
+		TYPE_NONE      => '',
+	);
+	
+	/**
+	 * @todo: update updatelog with fts3
+	 */
+	protected function addDatabaseSpecificTables() {
+		$db = wfGetDB( DB_MASTER );
+		if ( $db->getFulltextSearchModule() == 'FTS3' ) {
+			$this->tables['searchindex'] = array(
+				'prefix' => 'si',
+				'virtual' => 'FTS3',
+				'fields' => array(
+					'title' => array(
+						'type' => Schema::TYPE_NONE,
+					),
+					'text' => array(
+						'type' => Schema::TYPE_NONE,
+					),
+				)
+			);
+		} else {
+			$this->tables['searchindex'] = array(
+				'prefix' => 'si',
+				'fields' => array(
+					'title' => array(
+						'type' => Schema::TYPE_TEXT,
+					),
+					'text' => array(
+						'type' => Schema::TYPE_TEXT,
+					),
+				)
+			);
+		}
+	}
+
+	protected function createTable( $name, $def ) {
+		$prefix = $def['prefix'] ? $def['prefix'] . '_' : '';
+		$tblName = $this->tblPrefix . $name;
+		$virtual = isset ( $def['virtual'] ) ? $def['virtual'] : false;
+		if ( $virtual ) {
+			$sql = "CREATE VIRTUAL TABLE `$tblName` USING $virtual (";
+		} else {
+			$sql = "CREATE TABLE `$tblName` (";
+		}
+		foreach( $def['fields'] as $field => $attribs ) {
+			$sql .= "\n\t{$prefix}{$field} " . $this->getFieldDefinition( $attribs );
+		}
+		$sql = rtrim( $sql, ',' );
+		$sql .= "\n);\n";
+		if( isset( $def['indexes'] ) ) {
+			foreach( $def['indexes'] as $idx => $idxDef ) {
+				if( $idxDef[0] === 'UNIQUE' ) {
+					array_shift( $idxDef );
+					$sql .= "CREATE UNIQUE INDEX ";
+				} elseif( $idxDef[0] == 'FULLTEXT' ) {
+					continue; // no thanks
+				} else {
+					$sql .= "CREATE INDEX ";
+				}
+				$sql .= "{$prefix}{$idx} ON $tblName (";
+				foreach( $idxDef as $col ) {
+					$sql .= "{$prefix}{$col},";
+				}
+				$sql = rtrim( $sql, ',' );
+				$sql .= ");\n";
+			}
+		}
+		return $sql . "\n";
+	}
+
+	/**
+	 * Given an abstract field definition, return a MySQL-specific definition.
+	 * @param $attribs Array An abstract table definition
+	 * @return String
+	 */
+	private function getFieldDefinition( $attribs ) {
+		$type = $attribs['type'];
+		if ( !isset( self::$typeMapping[$type] ) ) {
+			throw new MWException( "Unknown type $type" );
+		}
 	}
 
 	protected function updateTable( $name, $definition, $db ) {

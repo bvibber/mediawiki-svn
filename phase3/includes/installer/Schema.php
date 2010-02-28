@@ -38,6 +38,7 @@ class Schema {
 	const TYPE_FLOAT     = 10;
 	const TYPE_REAL      = 11;
 	const TYPE_CHAR      = 12;
+	const TYPE_NONE      = 13; // omit type completely (for SQLite)
 
 	/**
 	 * The actual database definition itself. A multi-dimensional associative
@@ -1492,38 +1493,6 @@ class Schema {
 			'indexes' => array(
 				'math_inputhash' => array(
 					'UNIQUE', 'inputhash',
-				),
-			),
-		),
-		'searchindex' => array(
-			'prefix' => 'si',
-			'fields' => array(
-				'page' => array(
-					'type'   => self::TYPE_INT,
-					'signed' => false,
-					'null'   => false,
-				),
-				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
-					'length'  => 255,
-					'null'    => false,
-					'default' => '',
-				),
-				'text' => array(
-					'type'   => self::TYPE_TEXT,
-					'length' => 'medium',
-					'null'   => false,
-				),
-			),
-			'indexes' => array(
-				'si_page' => array(
-					'UNIQUE', 'page',
-				),
-				'si_title' => array(
-					'FULLTEXT', 'title',
-				),
-				'si_text' => array(
-					'FULLTEXT', 'text',
 				),
 			),
 		),
