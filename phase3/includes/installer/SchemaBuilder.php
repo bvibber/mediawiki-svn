@@ -56,7 +56,7 @@ abstract class SchemaBuilder {
 	 * @return SchemaBuilder subclass
 	 */
 	public static function newFromType( $type ) {
-		$class = ucfirst( strtolower( $dbType ) ) . 'Schema';
+		$class = ucfirst( strtolower( $type ) ) . 'Schema';
 		if ( !class_exists( $class ) ) {
 			throw new Exception( "No such database class $class" );
 		} else {
