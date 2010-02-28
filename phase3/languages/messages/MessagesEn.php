@@ -4113,8 +4113,7 @@ Please check your php.ini and make sure session.save_path is set to an appropria
 === Technical data ===
 
 Below is some technical data that you can provide to us if you need help during installation.',
-'config-copyright' => "
-=== Copyright and Terms ===
+'config-copyright' => "=== Copyright and Terms ===
 
 MediaWiki is Copyright © 2001-2008 by Magnus Manske, Brion Vibber, Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström, Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz and others.
 
@@ -4122,16 +4121,13 @@ This program is free software; you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but <strong>without any warranty</strong>; without even the implied warranty of <strong>merchantability</strong> or <strong>fitness for a particular purpose</strong>.  See the GNU General Public License for more details.
 
-You should have received <doclink href=Copying>a copy of the GNU General Public License</doclink> along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. or [http://www.gnu.org/copyleft/gpl.html read it online].
-",
-'config-sidebar' => "
-* [http://www.mediawiki.org MediaWiki home]
+You should have received <doclink href=Copying>a copy of the GNU General Public License</doclink> along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. or [http://www.gnu.org/copyleft/gpl.html read it online].",
+'config-sidebar' => "* [http://www.mediawiki.org MediaWiki home]
 * <doclink href=Readme>Readme</doclink>
 * <doclink href=ReleaseNotes>Release notes</doclink>
 * [http://www.mediawiki.org/wiki/Help:Contents User's Guide]
 * [http://www.mediawiki.org/wiki/Manual:Contents Administrator's Guide]
-* [http://www.mediawiki.org/wiki/Manual:FAQ FAQ]
-",
+* [http://www.mediawiki.org/wiki/Manual:FAQ FAQ]",
 'config-env-latest-ok' => 'You are installing the latest version of Mediawiki',
 'config-env-latest-new' => "'''Note:''' You are installing a development version of Mediawiki",
 'config-env-latest-old' => "'''Warning''': You are installing an outdated version of Mediawiki",
@@ -4221,8 +4217,7 @@ This may normally be left blank.',
 'config-charset-mysql4' => 'MySQL 4.0 backwards-compatible UTF-8',
 'config-charset-help' => '<b>WARNING:</b> If you use <b>backwards-compatible UTF-8</b> on MySQL 4.1+, and subsequently back up the database with <tt>mysqldump</tt>, it may destroy all non-ASCII characters, irreversibly corrupting your backups!.
 <br/><br/>
-In <b>binary mode</b>, MediaWiki stores UTF-8 text to the database in binary fields. This is more efficient than MySQL\'s UTF-8 mode, and allows you to use the full range of Unicode characters. In <b>UTF-8 mode</b>, MySQL will know what character set your data is in, and can present and convert it appropriately, but it won\'t let you store characters above the [http://en.wikipedia.org/wiki/Mapping_of_Unicode_character_planes Basic Multilingual Plane].
-',
+In <b>binary mode</b>, MediaWiki stores UTF-8 text to the database in binary fields. This is more efficient than MySQL\'s UTF-8 mode, and allows you to use the full range of Unicode characters. In <b>UTF-8 mode</b>, MySQL will know what character set your data is in, and can present and convert it appropriately, but it won\'t let you store characters above the [http://en.wikipedia.org/wiki/Mapping_of_Unicode_character_planes Basic Multilingual Plane].',
 'config-mysql-old' => 'MySQL $1 or later is required, you have $2.',
 'config-db-port' => 'DB port:',
 'config-db-schema' => 'Schema for MediaWiki',
@@ -4265,15 +4260,13 @@ To upgrade them to MediaWiki $1, click <strong>Continue</strong>.',
 You can now [$1 start using your wiki].
 
 If you want to regenerate your LocalSettings.php file, click the button below. 
-This is <strong>not recommended</strong> unless you are having problems with your wiki.
-',
+This is <strong>not recommended</strong> unless you are having problems with your wiki.',
 'config-regenerate' => 'Regenerate LocalSettings.php >',
 'config-show-table-status' => 'SHOW TABLE STATUS query failed!',
 'config-unknown-collation' => '<strong>Warning:</strong> Unrecognised existing collation',
 
 'config-db-web-account' => 'DB account for web access',
-'config-db-web-help' => 'Select the username and password that the web server will use to connect to the database server, during ordinary operation of the wiki.
-',
+'config-db-web-help' => 'Select the username and password that the web server will use to connect to the database server, during ordinary operation of the wiki.',
 'config-db-web-account-same' => 'Use the same account as for installation',
 'config-db-web-create' => 'Create the account if it doesn\'t already exist',
 'config-db-web-no-create-privs' => 'The account you specified for installation does not have enough privileges to safely create accounts, so the account you specify here must already exist.',
@@ -4282,8 +4275,7 @@ This is <strong>not recommended</strong> unless you are having problems with you
 'config-mysql-myisam' => 'MyISAM',
 'config-mysql-engine-help' => '<strong>InnoDB</strong> is best for public web installations, since it has good concurrency support. 
 
-<strong>MyISAM</strong> may be faster in single-user installations. MyISAM databases tend to get corrupted more often than InnoDB databases.
-',
+<strong>MyISAM</strong> may be faster in single-user installations. MyISAM databases tend to get corrupted more often than InnoDB databases.',
 'config-mysql-charset' => 'Database character set',
 'config-mysql-binary' => 'Binary',
 'config-mysql-utf-8' => 'UTF-8',
@@ -4295,7 +4287,7 @@ In '''UTF-8 mode''', MySQL will know what character set your data is in, and can
 'config-site-name-blank' => 'Please enter a site name.',
 'config-project-namespace' => 'Project namespace',
 'config-ns-generic' => 'Project',
-'config-ns-site-name' => 'Same as the wiki name: ',
+'config-ns-site-name' => 'Same as the wiki name:',
 'config-ns-other' => 'Other (please specify)',
 'config-project-namespace-help' => 'Following Wikipedia\'s example, many wikis keep their policy and help pages separate from their content pages, in a "<strong>project namespace</strong>". 
 All page titles in this namespace start with a certain prefix, which you can specify here. 
@@ -4308,7 +4300,7 @@ Traditionally, this prefix is derived from the name of the wiki, but it cannot c
 'config-admin-help' => 'Enter your preferred username here, for example "Joe Bloggs".
 This is the name you will use to log in to the wiki.
 
-The password cannot be the same as the username. ',
+The password cannot be the same as the username.',
 'config-admin-name-blank' => 'Please enter an administrator username.',
 'config-admin-name-invalid' => 'The specified username "<nowiki>$1</nowiki>" is invalid. Please specify a different username.',
 'config-admin-password-blank' => 'Please enter an administrator password.',
