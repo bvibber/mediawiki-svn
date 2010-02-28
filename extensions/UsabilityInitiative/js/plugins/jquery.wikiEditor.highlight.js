@@ -219,16 +219,18 @@ fn: {
 			}
 			
 			var end = markers[i].end;
-			var e = context.fn.getOffset( end );
+			// To avoid ending up at the first char of the next node, we grab the offset for end - 1
+			// and add one to the offset
+			var e = context.fn.getOffset( end - 1 );
 			if ( !e ) {
 				// This shouldn't happen
 				continue;
 			}
 			var endNode = e.node;
 			var endDepth = e.depth;
-			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
+			if ( e.offset + 1 < e.length - 1 && e.node.nodeName == '#text' ) {
 				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
-				endNode.splitText( e.offset );
+				endNode.splitText( e.offset + 1 );
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
