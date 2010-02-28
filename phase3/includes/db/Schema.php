@@ -25,19 +25,8 @@ class Schema {
 	/**
 	 * Field types
 	 */
-	const TYPE_INT       = 1;
-	const TYPE_VARCHAR   = 2;
-	const TYPE_DATETIME  = 3; // On Postgres this is DATETIME. MySQL we use binary(14)
-	const TYPE_TEXT      = 4;
-	const TYPE_BLOB      = 5;
-	const TYPE_BINARY    = 6;
-	const TYPE_VARBINARY = 7;
-	const TYPE_BOOL      = 8;
-	const TYPE_ENUM      = 9;
-	const TYPE_FLOAT     = 10;
-	const TYPE_REAL      = 11;
-	const TYPE_CHAR      = 12;
-	const TYPE_NONE      = 13; // omit type completely (for SQLite)
+	public static $dataTypes = array( 'int', 'varchar', 'datetime', 'text', 'blob',
+		'binary', 'varbinary', 'bool', 'enum', 'float', 'real', 'char', 'none' );
 
 	/**
 	 * The actual database definition itself. A multi-dimensional associative
@@ -55,74 +44,74 @@ class Schema {
 			'prefix' => 'user',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 					'signed'         => false,
 				),
 				'name' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'null'    => false,
 					'binary'  => true,
 					'default' => '',
 				),
 				'real_name' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'null'    => false,
 					'binary'  => true,
 					'default' => '',
 				),
 				'password' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'new_password' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'newpass_time' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 				),
 				'email' => array(
-					'type'   => self::TYPE_TEXT,
+					'type'   => 'text',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'options' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 				'touched' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'token' => array(
-					'type'    => self::TYPE_BINARY,
+					'type'    => 'binary',
 					'length'  => 32,
 					'null'    => false,
 					'default' => '',
 				),
 				'email_authenticated' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 				),
 				'email_token' => array(
-					'type'   => self::TYPE_BINARY,
+					'type'   => 'binary',
 					'length' => 32,
 				),
 				'email_token_expires' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 				),
 				'registration' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 				),
 				'editcount' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 				),
 			),
 			'indexes' => array(
@@ -138,14 +127,14 @@ class Schema {
 			'prefix' => 'ug',
 			'fields' => array(
 				'user' => array(
-					'type'        => self::TYPE_INT,
+					'type'        => 'int',
 					'null'        => false,
 					'primary-key' => true,
 					'default'     => 0,
 					'signed'      => false,
 				),
 				'group' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 16,
 					'null'    => false,
 					'default' => '',
@@ -164,18 +153,18 @@ class Schema {
 			'prefix' => 'user',
 			'fields' => array(
 				'id' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'ip' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'null'    => false,
 					'length'  => 40,
 					'default' => '',
 				),
 				'last_timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
@@ -193,16 +182,16 @@ class Schema {
 			'prefix' => 'up',
 			'fields' => array(
 				'user' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'property' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'null'   => false,
 					'length' => 32,
 				),
 				'value' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 				),
 			),
 			'indexes' => array(
@@ -218,65 +207,65 @@ class Schema {
 			'prefix' => 'page',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 					'signed'         => false,
 				),
 				'namespace' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'title' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
 				),
 				'restrictions' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'counter' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'big',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'is_redirect' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'is_new' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'random' => array(
-					'type'   => self::TYPE_REAL,
+					'type'   => 'real',
 					'signed' => false,
 					'null'   => false,
 				),
 				'touched' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'latest' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'null'   => false,
 					'signed' => false,
 				),
 				'len' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'null'   => false,
 					'signed' => false,
 				),
@@ -297,61 +286,61 @@ class Schema {
 			'prefix' => 'rev',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 					'signed'         => false,
 				),
 				'page' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'null'   => false,
 					'signed' => false,
 				),
 				'text_id' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'null'   => false,
 					'signed' => false,
 				),
 				'comment' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'user_text' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'minor_edit' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'deleted' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'len' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => null,
 					'signed'  => false,
 				),
@@ -378,19 +367,19 @@ class Schema {
 			'prefix' => 'old',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 					'signed'         => false,
 				),
 				'text' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 					'null'   => false,
 				),
 				'flags' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
@@ -401,80 +390,80 @@ class Schema {
 			'prefix' => 'ar',
 			'fields' => array(
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'text' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 					'null'   => false,
 				),
 				'comment' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'user_text' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'minor_edit' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
 				),
 				'flags' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'rev_id' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 				),
 				'text_id' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 				),
 				'deleted' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'len' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 				),
 				'page_id' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 				),
 				'parent_id' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => null,
 					'signed'  => false,
 				),
@@ -492,18 +481,18 @@ class Schema {
 			'prefix' => 'pl',
 			'fields' => array(
 				'from' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
@@ -523,18 +512,18 @@ class Schema {
 			'prefix' => 'tl',
 			'fields' => array(
 				'from' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
@@ -554,13 +543,13 @@ class Schema {
 			'prefix' => 'il',
 			'fields' => array(
 				'from' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'to' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
@@ -580,27 +569,27 @@ class Schema {
 			'prefix' => 'cl',
 			'fields' => array(
 				'from' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'to' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'sortkey' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 70,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'timestamp' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 					'null' => false,
 				),
 			),
@@ -620,38 +609,38 @@ class Schema {
 			'prefix' => 'cat',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 					'signed'         => false,
 				),
 				'title' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
 				),
 				'pages' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => true,
 					'null'    => false,
 					'default' => 0,
 				),
 				'subcats' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => true,
 					'null'    => false,
 					'default' => 0,
 				),
 				'files' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => true,
 					'null'    => false,
 					'default' => 0,
 				),
 				'hidden' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
@@ -671,17 +660,17 @@ class Schema {
 			'prefix' => 'el',
 			'fields' => array(
 				'from' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 					'null'    => false,
 					'signed'  => false,
 				),
 				'to' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 				'index' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 			),
@@ -693,13 +682,13 @@ class Schema {
 			'prefix' => 'eu',
 			'fields' => array(
 				'local_id' => array(
-					'type'        => self::TYPE_INT,
+					'type'        => 'int',
 					'null'        => false,
 					'primary-key' => true,
 					'signed'      => false,
 				),
 				'external_id' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
@@ -715,19 +704,19 @@ class Schema {
 			'prefix' => 'll',
 			'fields' => array(
 				'from' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 					'null'    => false,
 					'signed'  => false,
 				),
 				'lang' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 20,
 					'null'    => false,
 					'default' => '',
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
@@ -747,49 +736,49 @@ class Schema {
 			'prefix' => 'ss',
 			'fields' => array(
 				'row_id' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 					'null'   => false,
 				),
 				'total_views' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'length'  => 'big',
 					'default' => 0,
 				),
 				'total_edits' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'length'  => 'big',
 					'default' => 0,
 				),
 				'good_articles' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'length'  => 'big',
 					'default' => 0,
 				),
 				'total_pages' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'big',
 					'default' => -1,
 				),
 				'users' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'big',
 					'default' => -1,
 				),
 				'active_users' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'big',
 					'default' => -1,
 				),
 				'admins' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => -1,
 				),
 				'images' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 				),
 			),
@@ -803,7 +792,7 @@ class Schema {
 			'prefix' => 'hc',
 			'fields' => array(
 				'id' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 					'null'   => false,
 				),
@@ -813,92 +802,92 @@ class Schema {
 			'prefix' => 'ipb',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 				),
 				'address' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 					'null'    => false,
 					'signed'  => false,
 				),
 				'by' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 					'null'    => false,
 					'signed'  => false,
 				),
 				'by_text' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'reason' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'auto' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 0,
 				),
 				'anon_only' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 0,
 				),
 				'create_account' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 1,
 				),
 				'enable_autoblock' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 1,
 				),
 				'expiry' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'range_start' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'range_end' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'deleted' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 0,
 				),
 				'block_email' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 0,
 				),
 				'allow_usertalk' => array(
-					'type'    => self::TYPE_BOOL,
+					'type'    => 'bool',
 					'null'    => false,
 					'default' => 0,
 				),
@@ -911,7 +900,7 @@ class Schema {
 			'prefix' => 'img',
 			'fields' => array(
 				'name' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'binary'      => true,
 					'null'        => false,
@@ -919,33 +908,33 @@ class Schema {
 					'primary-key' => true,
 				),
 				'size' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'width' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'height' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'metadata' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 					'null'   => false,
 				),
 				'bits' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'media_type' => array(
-					'type'   => self::TYPE_ENUM,
+					'type'   => 'enum',
 					'values' => array(
 						"UNKNOWN", "BITMAP", "DRAWING", "AUDIO", "VIDEO", 
 						"MULTIMEDIA", "OFFICE", "TEXT", "EXECUTABLE", "ARCHIVE"
@@ -953,7 +942,7 @@ class Schema {
 					'default' => null,
 				),
 				'major_mime' => array(
-					'type'   => self::TYPE_ENUM,
+					'type'   => 'enum',
 					'null'   => false,
 					'values' => array(
 						"unknown", "application", "audio", "image", "text",
@@ -962,35 +951,35 @@ class Schema {
 					'default' => 'unknown',
 				),
 				'minor_mime' => array(
-					'type'     => self::TYPE_VARBINARY,
+					'type'     => 'varbinary',
 					'length'   => 32,
 					'null'     => false,
 					'default' => 'unknown',
 				),
 				'description' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'user_text' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'sha1' => array(
-					'type'     => self::TYPE_VARBINARY,
+					'type'     => 'varbinary',
 					'length'   => 32,
 					'null'     => false,
 					'default' => '',
@@ -1015,47 +1004,47 @@ class Schema {
 			'prefix' => 'oi',
 			'fields' => array(
 				'name' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'binary'      => true,
 					'null'        => false,
 					'default'     => '',
 				),
 				'archive_name' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'binary'      => true,
 					'null'        => false,
 					'default'     => '',
 				),
 				'size' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'width' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'height' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'metadata' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 					'null'   => false,
 				),
 				'bits' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'media_type' => array(
-					'type'   => self::TYPE_ENUM,
+					'type'   => 'enum',
 					'values' => array(
 						"UNKNOWN", "BITMAP", "DRAWING", "AUDIO", "VIDEO",
 						"MULTIMEDIA", "OFFICE", "TEXT", "EXECUTABLE", "ARCHIVE"
@@ -1063,7 +1052,7 @@ class Schema {
 					'default' => null,
 				),
 				'major_mime' => array(
-					'type'   => self::TYPE_ENUM,
+					'type'   => 'enum',
 					'null'   => false,
 					'values' => array(
 						"unknown", "application", "audio", "image", "text",
@@ -1072,35 +1061,35 @@ class Schema {
 					'default' => 'unknown',
 				),
 				'minor_mime' => array(
-					'type'     => self::TYPE_VARBINARY,
+					'type'     => 'varbinary',
 					'length'   => 32,
 					'null'     => false,
 					'default' => 'unknown',
 				),
 				'description' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'user_text' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'sha1' => array(
-					'type'     => self::TYPE_VARBINARY,
+					'type'     => 'varbinary',
 					'length'   => 32,
 					'null'     => false,
 					'default' => '',
@@ -1125,68 +1114,68 @@ class Schema {
 			'prefix' => 'fa',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 				),
 				'name' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'binary'      => true,
 					'null'        => false,
 					'default'     => '',
 				),
 				'archive_name' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'binary'      => true,
 					'default'     => '',
 				),
 				'storage_group' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 16,
 				),
 				'storage_key' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 64,
 					'default' => '',
 				),
 				'deleted_user' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 				),
 				'deleted_timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'default' => '',
 				),
 				'deleted_reason' => array(
-					'type' => self::TYPE_TEXT,
+					'type' => 'text',
 				),
 				'size' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'default' => 0,
 				),
 				'width' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'height' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'metadata' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 				),
 				'bits' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 				),
 				'media_type' => array(
-					'type'   => self::TYPE_ENUM,
+					'type'   => 'enum',
 					'values' => array(
 						"UNKNOWN", "BITMAP", "DRAWING", "AUDIO", "VIDEO",
 						"MULTIMEDIA", "OFFICE", "TEXT", "EXECUTABLE", "ARCHIVE"
@@ -1194,7 +1183,7 @@ class Schema {
 					'default' => null,
 				),
 				'major_mime' => array(
-					'type'   => self::TYPE_ENUM,
+					'type'   => 'enum',
 					'null'   => false,
 					'values' => array(
 						"unknown", "application", "audio", "image", "text",
@@ -1203,30 +1192,30 @@ class Schema {
 					'default' => 'unknown',
 				),
 				'minor_mime' => array(
-					'type'     => self::TYPE_VARBINARY,
+					'type'     => 'varbinary',
 					'length'   => 32,
 					'default' => 'unknown',
 				),
 				'description' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'default' => 0,
 				),
 				'user_text' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'default' => '',
 				),
 				'deleted' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'signed'  => false,
@@ -1252,158 +1241,158 @@ class Schema {
 			'prefix' => 'rc',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'cur_time' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'user_text' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'comment' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'minor' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'bot' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'new' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'cur_id' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'this_oldid' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'last_oldid' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'type' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'moved_to_ns' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'moved_to_title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'patrolled' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'ip' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 40,
 					'null'    => false,
 					'default' => '',
 				),
 				'old_len' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 				),
 				'new_len' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 				),
 				'deleted' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'length'  => 'tiny',
 					'signed'  => false,
 				),
 				'log_id' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 					'signed'  => false,
 				),
 				'log_type' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 255,
 					'null'    => true,
 					'default' => null,
 				),
 				'log_action' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 255,
 					'null'    => true,
 					'default' => null,
 				),
 				'log_params' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => true,
 				),
 			),
@@ -1435,24 +1424,24 @@ class Schema {
 			'prefix' => 'wl',
 			'fields' => array(
 				'user' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 					'null'   => false,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'default' => 0,
 					'null'    => false,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'notificationtimestamp' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 				),
 			),
 			'indexes' => array(
@@ -1468,25 +1457,25 @@ class Schema {
 			'prefix' => 'math',
 			'fields' => array(
 				'inputhash' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 16,
 					'null'   => false,
 				),
 				'outputhash' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 16,
 					'null'   => false,
 				),
 				'html_conservativeness' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'length'  => 'tiny',
 				),
 				'html' => array(
-					'type' => self::TYPE_TEXT,
+					'type' => 'text',
 				),
 				'mathml' => array(
-					'type' => self::TYPE_TEXT,
+					'type' => 'text',
 				),
 			),
 			'indexes' => array(
@@ -1499,20 +1488,20 @@ class Schema {
 			'prefix' => 'iw',
 			'fields' => array(
 				'prefix' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 32,
 					'null'   => false,
 				),
 				'url' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 				'local' => array(
-					'type' => self::TYPE_BOOL,
+					'type' => 'bool',
 					'null' => false,
 				),
 				'trans' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'null'    => false,
 					'default' => 0,
@@ -1528,23 +1517,23 @@ class Schema {
 			'prefix' => 'qc',
 			'fields' => array(
 				'type' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 32,
 					'null'   => false,
 				),
 				'value' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
@@ -1561,18 +1550,18 @@ class Schema {
 			'prefix' => '',
 			'fields' => array(
 				'keyname' => array(
-					'type'        => self::TYPE_VARBINARY,
+					'type'        => 'varbinary',
 					'length'      => 255,
 					'null'        => false,
 					'default'     => '',
 					'primary-key' => true,
 				),
 				'value' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 				),
 				'exptime' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 				),
 			),
 			'indexes' => array(
@@ -1585,15 +1574,15 @@ class Schema {
 			'prefix' => 'tc',
 			'fields' => array(
 				'url' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 255,
 					'null'   => false,
 				),
 				'contents' => array(
-					'type' => self::TYPE_TEXT,
+					'type' => 'text',
 				),
 				'time' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 					'null' => false,
 				),
 			),
@@ -1607,71 +1596,71 @@ class Schema {
 			'prefix' => 'log',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'signed'         => false,
 					'null'           => false,
 					'primary-key'    => true,
 					'auto-increment' => true,
 				),
 				'type' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 32,
 					'null'    => false,
 					'default' => '',
 				),
 				'action' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 32,
 					'null'    => false,
 					'default' => '',
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '19700101000000',
 				),
 				'user' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'user_text' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'page' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 					'null'   => true,
 				),
 				'comment' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'null'    => false,
 					'default' => '',
 				),
 				'params' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 				'deleted' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'length'  => 'tiny',
 					'signed'  => false,
 					'null'    => false,
@@ -1703,17 +1692,17 @@ class Schema {
 			'prefix' => 'ls',
 			'fields' => array(
 				'field' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 32,
 					'null'   => false,
 				),
 				'value' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'null'   => false,
 				),
 				'log_id' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
@@ -1732,28 +1721,28 @@ class Schema {
 			'prefix' => 'tb',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'primary-key'    => true,
 					'auto-increment' => true,
 				),
 				'page' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					/** @todo DO REST OF THIS FIELD **/
 				),
 				'title' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'null'   => false,
 				),
 				'url' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 				'ex' => array(
-					'type'   => self::TYPE_TEXT,
+					'type'   => 'text',
 				),
 				'title' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 				),
 			),
@@ -1767,30 +1756,30 @@ class Schema {
 			'prefix' => 'job',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'signed'         => false,
 					'null'           => false,
 					'primary-key'    => true,
 					'auto-increment' => true,
 				),
 				'cmd' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 60,
 					'null'    => false,
 					'default' => '',
 				),
 				'namespace' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'title' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'binary' => true,
 					'null'   => false,
 				),
 				'params' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 			),
@@ -1804,13 +1793,13 @@ class Schema {
 			'prefix' => 'qci',
 			'fields' => array(
 				'type' => array(
-					'type'    => self::TYPE_VARBINARY,
+					'type'    => 'varbinary',
 					'length'  => 32,
 					'null'    => false,
 					'default' => '',
 				),
 				'timestamp' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '19700101000000',
 				),
@@ -1826,31 +1815,31 @@ class Schema {
 			'prefix' => 'rd',
 			'fields' => array(
 				'from' => array(
-					'type'        => self::TYPE_INT,
+					'type'        => 'int',
 					'signed'      => false,
 					'null'        => false,
 					'primary-key' => true,
 					'default'     => 0,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'interwiki' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 32,
 					'default' => null,
 				),
 				'fragment' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'default' => null,
@@ -1866,35 +1855,35 @@ class Schema {
 			'prefix' => 'qcc',
 			'fields' => array(
 				'type' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 32,
 					'null'   => false,
 				),
 				'value' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'signed'  => false,
 					'null'    => false,
 					'default' => 0,
 				),
 				'namespace' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
 				),
 				'namespacetwo' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'titletwo' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
@@ -1917,34 +1906,34 @@ class Schema {
 			'prefix' => 'pr',
 			'fields' => array(
 				'page' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'type' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 60,
 					'null'   => false,
 				),
 				'level' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 60,
 					'null'   => false,
 				),
 				'cascade' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'length' => 'tiny',
 					'null'   => false,
 				),
 				'user' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'expiry' => array(
-					'type' => self::TYPE_DATETIME,
+					'type' => 'datetime',
 					'null' => true,
 				),
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'signed'         => false,
 					'null'           => false,
 					'primary-key'    => true,
@@ -1970,36 +1959,36 @@ class Schema {
 			'prefix' => 'pt',
 			'fields' => array(
 				'namespace' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'title' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'binary'  => true,
 					'null'    => false,
 				),
 				'namespace' => array(
-					'type'   => self::TYPE_INT,
+					'type'   => 'int',
 					'null'   => false,
 					'signed' => false,
 				),
 				'reason' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'tiny',
 				),
 				'timestamp' => array(
-					'type'   => self::TYPE_BINARY,
+					'type'   => 'binary',
 					'length' => 14,
 					'null'   => false,
 				),
 				'expiry' => array(
-					'type'    => self::TYPE_DATETIME,
+					'type'    => 'datetime',
 					'null'    => false,
 					'default' => '',
 				),
 				'create_perm' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 60,
 					'null'   => false,
 				),
@@ -2017,16 +2006,16 @@ class Schema {
 			'prefix' => 'pp',
 			'fields' => array(
 				'page' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'propname' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 60,
 					'null'   => false,
 				),
 				'value' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 			),
@@ -2035,7 +2024,7 @@ class Schema {
 			'prefix' => 'ul',
 			'fields' => array(
 				'key' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'null'        => false,
 					'primary-key' => true,
@@ -2046,24 +2035,24 @@ class Schema {
 			'prefix' => 'ct',
 			'fields' => array(
 				'rc_id' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'log_id' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'rev_id' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'tag' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'null'   => false,
 				),
 				'params' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => true,
 				),
 			),
@@ -2086,19 +2075,19 @@ class Schema {
 			'prefix' => 'ts',
 			'fields' => array(
 				'rc_id' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'log_id' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'rev_id' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => true,
 				),
 				'tags' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 					'null' => false,
 				),
 			),
@@ -2118,7 +2107,7 @@ class Schema {
 			'prefix' => 'vt',
 			'fields' => array(
 				'tag' => array(
-					'type'        => self::TYPE_VARCHAR,
+					'type'        => 'varchar',
 					'length'      => 255,
 					'null'        => false,
 					'primary-key' => true,
@@ -2129,17 +2118,17 @@ class Schema {
 			'prefix' => 'lc',
 			'fields' => array(
 				'lang' => array(
-					'type'   => self::TYPE_VARBINARY,
+					'type'   => 'varbinary',
 					'length' => 32,
 					'null'   => false,
 				),
 				'key' => array(
-					'type'   => self::TYPE_VARCHAR,
+					'type'   => 'varchar',
 					'length' => 255,
 					'null'   => false,
 				),
 				'value' => array(
-					'type'   => self::TYPE_BLOB,
+					'type'   => 'blob',
 					'length' => 'medium',
 					'null'   => false,
 				),
@@ -2161,28 +2150,28 @@ class Schema {
 			'prefix' => 'pf',
 			'fields' => array(
 				'count' => array(
-					'type'    => self::TYPE_INT,
+					'type'    => 'int',
 					'null'    => false,
 					'default' => 0,
 				),
 				'time' => array(
-					'type'    => self::TYPE_FLOAT,
+					'type'    => 'float',
 					'null'    => false,
 					'default' => 0,
 				),
 				'memory' => array(
-					'type'    => self::TYPE_FLOAT,
+					'type'    => 'float',
 					'null'    => false,
 					'default' => 0,
 				),
 				'name' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'null'    => false,
 					'default' => '',
 				),
 				'server' => array(
-					'type'    => self::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 30,
 					'null'    => false,
 					'default' => '',
@@ -2198,27 +2187,27 @@ class Schema {
 			'prefix' => 'tr',
 			'fields' => array(
 				'id' => array(
-					'type'           => self::TYPE_INT,
+					'type'           => 'int',
 					'null'           => false,
 					'auto-increment' => true,
 					'primary-key'    => true,
 				),
 				'date' => array(
-					'type'   => self::TYPE_CHAR,
+					'type'   => 'char',
 					'length' => 14,
 					'binary' => true,
 				),
 				'mw_version' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 				),
 				'php_version' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 				),
 				'db_version' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 				),
 				'uname' => array(
-					'type' => self::TYPE_BLOB,
+					'type' => 'blob',
 				),
 			),
 		),
@@ -2226,15 +2215,15 @@ class Schema {
 			'prefix' => 'ti',
 			'fields' => array(
 				'run' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'run' => array(
-					'type' => self::TYPE_INT,
+					'type' => 'int',
 					'null' => false,
 				),
 				'success' => array(
-					'type' => self::TYPE_BOOL,
+					'type' => 'bool',
 				)
 			),
 		),

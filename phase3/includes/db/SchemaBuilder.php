@@ -40,12 +40,12 @@ abstract class SchemaBuilder {
 
 	/**
 	 * Constructor. We hide it so people don't try to construct their own schema
-	 * classes. Use a sane entry point, like newFromType() or newFromCustomSchema()
+	 * classes. Use a sane entry point, like newFromType()
 	 *
 	 * @param $schema Array See Schema::$defaultTables for more information
 	 */
 	private final function __construct( $schema ) {
-		// wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
+		wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
 		$this->tables = $schema;
 		$this->addDatabaseSpecificTables();
 	}
@@ -154,18 +154,18 @@ class MysqlSchema extends SchemaBuilder {
 			'prefix' => 'si',
 			'fields' => array(
 				'page' => array(
-					'type'   => Schema::TYPE_INT,
+					'type'   => 'int',
 					'signed' => false,
 					'null'   => false,
 				),
 				'title' => array(
-					'type'    => Schema::TYPE_VARCHAR,
+					'type'    => 'varchar',
 					'length'  => 255,
 					'null'    => false,
 					'default' => '',
 				),
 				'text' => array(
-					'type'   => Schema::TYPE_TEXT,
+					'type'   => 'text',
 					'length' => 'medium',
 					'null'   => false,
 				),
@@ -250,50 +250,50 @@ class MysqlSchema extends SchemaBuilder {
 		$fieldType = $attribs['type'];
 		$def = '';
 		switch( $fieldType ) {
-			case Schema::TYPE_INT:
+			case 'int':
 				$def = 'int';
 				if( isset( $attribs['length'] ) ) {
 					$def = $attribs['length'] . $def;
 				}
 				break;
-			case Schema::TYPE_VARCHAR:
+			case 'varchar':
 				$def = 'varchar(' . $attribs['length'] . ')';
 				break;
-			case Schema::TYPE_CHAR:
+			case 'char':
 				$def = 'char(' . $attribs['length'] . ')';
 				break;
-			case Schema::TYPE_DATETIME:
+			case 'datetime':
 				$def = 'binary(14)';
 				break;
-			case Schema::TYPE_TEXT:
+			case 'text':
 				$def = 'text';
 				if( isset( $attribs['length'] ) ) {
 					$def = $attribs['length'] . $def;
 				}
 				break;
-			case Schema::TYPE_BLOB:
+			case 'blob':
 				$def = 'blob';
 				if( isset( $attribs['length'] ) ) {
 					$def = $attribs['length'] . $def;
 				}
 				break;
-			case Schema::TYPE_BINARY:
+			case 'binary':
 				$def = 'binary(' . $attribs['length'] . ')';
 				break;
-			case Schema::TYPE_VARBINARY:
+			case 'varbinary':
 				$def = 'varbinary(' . $attribs['length'] . ')';
 				break;
-			case Schema::TYPE_BOOL:
+			case 'bool':
 				$def = 'bool';
 				break;
-			case Schema::TYPE_ENUM:
+			case 'enum':
 				$def = 'ENUM("' . implode( '", "', $attribs['values'] );
 				$def = rtrim( $def, ', "' ) . '")';
 				break;
-			case Schema::TYPE_FLOAT:
+			case 'float':
 				$def = 'float';
 				break;
-			case Schema::TYPE_REAL:
+			case 'real':
 				$def = 'real';
 				break;
 			default:
@@ -341,19 +341,19 @@ class MysqlSchema extends SchemaBuilder {
 
 class SqliteSchema extends SchemaBuilder {
 	static $typeMapping = array(
-		Schema::TYPE_INT       => 'INTEGER',
-		Schema::TYPE_VARCHAR   => 'TEXT',
-		Schema::TYPE_DATETIME  => 'TEXT',
-		Schema::TYPE_TEXT      => 'TEXT',
-		Schema::TYPE_BLOB      => 'BLOB',
-		Schema::TYPE_BINARY    => 'BLOB',
-		Schema::TYPE_VARBINARY => 'BLOB',
-		Schema::TYPE_BOOL      => 'INTEGER',
-		Schema::TYPE_ENUM      => 'BLOB',
-		Schema::TYPE_FLOAT     => 'REAL',
-		Schema::TYPE_REAL      => 'REAL',
-		Schema::TYPE_CHAR      => 'TEXT',
-		Schema::TYPE_NONE      => '',
+		'int'       => 'INTEGER',
+		'varchar'   => 'TEXT',
+		'datetime'  => 'TEXT',
+		'text'      => 'TEXT',
+		'blob'      => 'BLOB',
+		'binary'    => 'BLOB',
+		'varbinary' => 'BLOB',
+		'bool'      => 'INTEGER',
+		'enum'      => 'BLOB',
+		'float'     => 'REAL',
+		'real'      => 'REAL',
+		'char'      => 'TEXT',
+		'none'      => '',
 	);
 	
 	/**
