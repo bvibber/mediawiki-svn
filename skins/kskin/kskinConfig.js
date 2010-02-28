@@ -60,22 +60,27 @@ var kskinConfig = {
 				var embedPlayer = ctrlObj.embedPlayer;				
 				
 				$menuOverlay = $j( '<div />')					
-					.addClass( 'k-menu ui-widget-content' )
+					.addClass( 'overlay-win k-menu ui-widget-content' )
 					.css( {
 						'width' : '100%',
 						'position': 'absolute',	
 						'top' : '0px',
 						'bottom' : ( ctrlObj.getHeight() + 2 ) + 'px'
 					} );
-				
-				if(  embedPlayer.getPlayerHeight() == '0' ){
-					$menuOverlay.css( "height",  ctrlObj.getOverlayHeight() )
-				}
+							
 				// Setup menu offset ( if player height <  getOverlayHeight )
 				// This displays the menu outside of the player on small embeds	
 				if ( embedPlayer.getPlayerHeight() <  ctrlObj.getOverlayHeight() ) {
-				
-					$menuOverlay.css( 'top', parseInt( embedPlayer.getPlayerHeight() + ctrlObj.getHeight() ) + 'px' );
+					var topPos = ( ctrlObj.checkOverlayControls() )
+							? embedPlayer.getPlayerHeight()					
+							: embedPlayer.getPlayerHeight() + ctrlObj.getHeight();
+							 
+					$menuOverlay.css( { 
+						'top' : topPos + 'px',
+						'bottom' : null,
+						'height' :  ctrlObj.getOverlayHeight() + 'px'
+					});
+										
 					
 					// Special common overflow hack for thumbnail display of player 								
 					$j( embedPlayer ).parents( '.thumbinner' ).css( 'overflow', 'visible' );
