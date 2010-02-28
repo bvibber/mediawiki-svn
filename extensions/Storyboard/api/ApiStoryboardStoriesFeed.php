@@ -66,9 +66,9 @@ class ApiStoryboardStoriesFeed extends ApiQueryBase {
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
+				'text' => $story->story_text,
 				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
 			);
-			ApiResult::setContent( $res, $story->story_text );
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );
 		}
 		
