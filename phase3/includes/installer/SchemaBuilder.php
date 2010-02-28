@@ -273,7 +273,7 @@ class MysqlSchema extends SchemaBuilder {
 		return $def . ",";
 	}
 
-	protected function updateTable() {
+	protected function updateTable( $name, $definition, $db ) {
 		return '';
 	}
 }
