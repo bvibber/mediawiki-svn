@@ -192,7 +192,7 @@ class Schema {
 		'user_properties' => array(
 			'prefix' => 'up',
 			'fields' => array(
-				'id' => array(
+				'user' => array(
 					'type' => self::TYPE_INT,
 					'null' => false,
 				),
@@ -598,6 +598,10 @@ class Schema {
 					'binary'  => true,
 					'null'    => false,
 					'default' => '',
+				),
+				'timestamp' => array(
+					'type' => self::TYPE_DATETIME,
+					'null' => false,
 				),
 			),
 			'indexes' => array(
