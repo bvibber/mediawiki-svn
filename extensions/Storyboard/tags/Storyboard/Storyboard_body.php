@@ -20,7 +20,7 @@ class TagStoryboard {
 		
 		$wgOut->addStyle($egStoryboardScriptPath . '/tags/Storyboard/storyboard.css');		
 		$wgOut->includeJQuery();
-		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.min.js');
+		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.js');
 
 		$output = <<<EOT
 <div class="ajaxscroll" id="storyboard">
