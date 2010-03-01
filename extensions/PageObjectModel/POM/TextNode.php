@@ -15,6 +15,7 @@ class POMTextNode extends POMElement {
 
 	public function asString()
 	{
+		if ($this->hidden()) return "";
 		return $this->nodeText;
 	}
 }

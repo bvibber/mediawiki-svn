@@ -39,7 +39,7 @@ class POMCommentParser extends POMParser {
 					$newchildren[] = new POMTextNode(substr($nodetext, 0, $open));
 
 					// part between opening <!-- and closing --> becomes comment
-					$comment = new POMComment(substr($nodetext, $open+4, $position-($open+4)));
+					$comment = new POMComment(substr($nodetext, $open, $position+3-$open));
 					$newchildren[] = $comment;
 					$page->c['comments'][] = $comment;
 

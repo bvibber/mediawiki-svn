@@ -7,9 +7,13 @@
 abstract class POMElement {
 
 	public $children = array();
+	
+	private $hide = false;
 
 	function asString() {
 		$output = '';
+		
+		if ($this->hide) return $output;
 
 		foreach ($this->children as $child)
 		{
@@ -22,6 +26,18 @@ abstract class POMElement {
 	function addChild(POMElement $el)
 	{
 		$this->children[] = $el;
+	}
+	
+	function hide() {
+		$this->hide = true;
+	}
+
+	function unhide() {
+		$this->hide = false;
+	}
+
+	function hidden() {
+		return $this->hide;
 	}
 }
 

@@ -9,7 +9,7 @@ class POMPage extends POMElement
 
 	var $templates; # shortcut to $c['templates'], set up if POMTemplateParser was used
 
-	public function POMPage($text, $parsers = array('POMCommentParser', 'POMTemplateParser'))
+	public function POMPage($text, $parsers = array('POMCommentParser', 'POMTemplateParser', 'POMLinkParser'))
 	{
 		$this->addChild(new POMTextNode($text));
 

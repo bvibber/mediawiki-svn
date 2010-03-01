@@ -60,6 +60,24 @@ class POMTemplate extends POMElement
 			return "";		
 	}
 	
+	public function removeParameterByNumber( $number ) {
+		if ($number < 0) return;
+		if ($number > count($this->parameters)-1) return;
+		unset($this->parameters[$number]);
+		$this->parameters = array_values($this->parameters);
+	}
+	
+	public function getNumberByName( $name ) {
+		$trimmed_name = trim($name);
+		if (strlen($trimmed_name) == 0)
+			throw new WrongParameterNameException('Can\'t get parameter with no name');
+		
+		for ($i = 0; $i < count($this->parameters); $i++) {
+			$parameter = $this->parameters[$i];
+			if ($parameter->getName() == $trimmed_name) return $i;
+		}
+	}
+	
 	public function getParameterByNumber($number) {
 		if ($number < 0) return "";
 		if ($number > count($this->parameters)-1) return "";
@@ -100,7 +118,15 @@ class POMTemplate extends POMElement
 		
 		return null; # none matched
 	}
-
+	
+	public function addParameter($name, $value) {
+		if (strlen(trim($name)) == 0)
+			throw new WrongParameterNameException("Can't set parameter with no name");
+		
+		# add parameter to parameters array
+		$this->parameters[] = new POMTemplateNamedParameter($name, $value);
+	}
+	
 	public function setParameter($name, $value,
 		$ignore_name_spacing = true,
 		$ignore_value_spacing = true,
@@ -164,6 +190,8 @@ class POMTemplate extends POMElement
 
 	public function asString()
 	{
+		if ($this->hidden()) return "";
+		
 		$text = '{{'.$this->title_triple->toString();
 
 		for ($i = 0; $i < count($this->parameters); $i++)
