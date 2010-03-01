@@ -416,65 +416,6 @@ class SpecialRecordAdmin extends SpecialPage {
 	}
 
 	/**
-	 * Return a list of title objects of a specified record type
-	 */
-	static function getRecordsByType( $type ) {
-		$records = array();
-		$dbr  = wfGetDB( DB_SLAVE );
-		$tbl  = $dbr->tableName( 'templatelinks' );
-		$ty   = $dbr->addQuotes( $type );
-		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
-		while ( $row = $dbr->fetchRow( $res ) ) $records[] = Title::newFromID( $row[0] );
-		$dbr->freeResult( $res );
-		return $records;
-	}
-
-	/**
-	 * Get a field value from a record
-	 */
-	static function getFieldValue( &$args ) {
-		$result = '';
-
-		# Build SQL condition from the supplied args, if any
-        $regexp = '';
-        foreach ( $args as $k => $v ) {
-			if ( $k == 'type' ) $type = $v;
-			elseif ( $k == 'record' ) $record = $v;
-			elseif ( $k == 'field' ) $field = $v;
-			else $regexp .= "AND old_text REGEXP('[|] *{$k} *= *{$v}[[:space:]]*[|}]')";
-        }
-
-		# If a record and field name are specified, return the field value
-		if ( isset( $type ) && isset( $record ) && isset( $field ) ) {
-			if ( is_object( $record ) ) $title = $record; else $title = Title::newFromText( $record );
-			if ( is_object( $title ) ) {
-				$article = new Article( $title );
-				$text = $article->getContent();
-				$braces = false;
-				foreach ( self::examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
-				if ( $braces ) {
-					$values = self::valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
-					$result = isset( $values[$field] ) ? $values[$field] : '';
-				}
-			}
-		}
-
-		# If record is not set, find first record matching the supplied field values
-		if ( isset( $type ) && !isset( $record ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow(
-				array( 'page', 'revision', 'text', 'templatelinks' ),
-				'page_id',
-				"rev_id=page_latest AND old_id=rev_text_id AND tl_from=page_id AND tl_title='$type' $regexp",
-				__METHOD__
-			);
-			if ( $row ) $result = Title::newFromId( $row->page_id )->getPrefixedText();
-		}
-
-		return $result;
-	}
-
-	/**
 	 * Compares a field value according to its operator
 	 * - $a is the field value for the current row
 	 * - $b is the expression from the recordtable query
@@ -870,6 +811,76 @@ class SpecialRecordAdmin extends SpecialPage {
 			}
 		}
 		return $braces;
+	}
+
+	/**
+	 * Return a list of title objects of a specified record type
+	 */
+	static function getRecordsByType( $type ) {
+		$records = array();
+		$dbr  = wfGetDB( DB_SLAVE );
+		$tbl  = $dbr->tableName( 'templatelinks' );
+		$ty   = $dbr->addQuotes( $type );
+		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+		while ( $row = $dbr->fetchRow( $res ) ) $records[] = Title::newFromID( $row[0] );
+		$dbr->freeResult( $res );
+		return $records;
+	}
+
+	/**
+	 * Get a field value from a record
+	 */
+	static function getFieldValue( &$args ) {
+		$result = '';
+
+		# Build SQL condition from the supplied args, if any
+        $regexp = '';
+        foreach ( $args as $k => $v ) {
+			if ( $k == 'type' ) $type = $v;
+			elseif ( $k == 'record' ) $record = $v;
+			elseif ( $k == 'field' ) $field = $v;
+			else $regexp .= "AND old_text REGEXP('[|] *{$k} *= *{$v}[[:space:]]*[|}]')";
+        }
+
+		# If a record and field name are specified, return the field value
+		if ( isset( $type ) && isset( $record ) && isset( $field ) ) {
+			$values = self::getRecordArgs( $record, $type );
+			$result = isset( $values[$field] ) ? $values[$field] : '';
+		}
+
+		# If record is not set, find first record matching the supplied field values
+		if ( isset( $type ) && !isset( $record ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow(
+				array( 'page', 'revision', 'text', 'templatelinks' ),
+				'page_id',
+				"rev_id=page_latest AND old_id=rev_text_id AND tl_from=page_id AND tl_title='$type' $regexp",
+				__METHOD__
+			);
+			if ( $row ) $result = Title::newFromId( $row->page_id )->getPrefixedText();
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Get args from a record article
+	 * - if type not specified, first template is used
+	 */
+	static function getRecordArgs( &$record, $type = false ) {
+		if ( is_object( $record ) ) $title = $record; else $title = Title::newFromText( $record );
+		if ( is_object( $title ) ) {
+			$article = new Article( $title );
+			$text = $article->getContent();
+			$eb = self::examineBraces( $text );
+			$braces = false;
+			if ( $type ) {
+				foreach ( $eb as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+			} elseif ( count( $eb ) > 0 ) $braces = $eb[0];
+			if ( $braces ) {
+				$values = self::valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
+			}
+		}
 	}
 
 	/**
