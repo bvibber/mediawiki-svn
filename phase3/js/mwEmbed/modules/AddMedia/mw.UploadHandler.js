@@ -88,7 +88,6 @@ var default_bui_options = {
 mw.UploadHandler = function( options ) {
 	return this.init( options );
 }
-
 mw.UploadHandler.prototype = {
 	
 	// The form data to be submitted
@@ -120,7 +119,6 @@ mw.UploadHandler.prototype = {
 	// The following are really state of the upload, not the interface.
 	// we are currently only managing one, so this is okay... for now.
 	uploadBeginTime: null,
-
 	
 	/**
 	 * Object initialization
