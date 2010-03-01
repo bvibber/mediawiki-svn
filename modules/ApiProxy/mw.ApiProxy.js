@@ -57,7 +57,7 @@ mw.ApiProxy = { };
 	var currentApiReq = { };
 	
 	// The url for the last api request target.
-	var currentApiUrl = null; 
+	var currentServerApiUrl = null; 
 	
 	// Time we should wait for proxy page callback
 	// ( note this time starts form when the page is "done"
@@ -92,7 +92,7 @@ mw.ApiProxy = { };
         // ( presently the api proxy only support sequential requests
         // for multiple simultaneous requests we will need to do some minor refactoring ) 
 		currentApiReq = requestQuery;
-		currentApiUrl = apiUrl;
+		currentServerApiUrl = apiUrl;
 		
 		// Setup the callback:
 		proxyCallback = callback;
@@ -157,7 +157,7 @@ mw.ApiProxy = { };
 		}
 		
 		// Update the current apiUrl:
-		currentApiUrl = options.api_url;
+		currentServerApiUrl = options.api_url;
 		
 		if( ! options.width ) {
 			options.width = 270;		
@@ -179,7 +179,7 @@ mw.ApiProxy = { };
 		// Empty the target ( so that the iframe can be put there )
 		$j( options.target ).empty();
 		
-		// Append the iframe to the target:  
+		// Append the browseFile iframe to the target:  
 		appendIframe( {
 			'persist' : true,
 			'style' : frameStyle,
@@ -190,7 +190,7 @@ mw.ApiProxy = { };
 		},  function( ) {
 			// Add a 10 second timeout for setting up the nested child callback (after iframe load)		
 			setTimeout( function() {
-				if ( !frameProxyOk ) {
+				if ( ! frameProxyOk ) {
 					// we timmed out no api proxy (should make sure the user is "logged in")
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					proxyNotReadyDialog();
@@ -202,11 +202,24 @@ mw.ApiProxy = { };
 			$j('<div />').loadingSpinner()
 		);
 		
-		var uploadDialogInterface = new mw.DialogInterface();
+		var uploadDialogInterface = new mw.DialogInterface({
+			'uploadHandlerAction' : function( action ){
+				mw.log(	'apiProxy uploadActionHandler:: ' + action );
+				// Send action to remote frame 
+				mw.ApiProxy.sendServerMsg( {
+					'api_url' : options.api_url, 
+					'frameName' : iFrameName,
+					'frameMsg' : {
+						'action' : 'uploadHandlerAction',
+						'uiAction' :  action
+					}
+				} );
+			}
+		});
 		
 		// Setup the proxy scope callback to display the upload unhide the iframe upload form 
 		proxyCallback = function( iframeData ) {
-			// proccess fileBrowse callbacks::
+			// Process fileBrowse callbacks ::
 			
 			// check for basic status "ok"
 			if( iframeData['status'] == 'ok' ) {
@@ -293,7 +306,10 @@ mw.ApiProxy = { };
 		switch( frameMsg.action ){
 			case 'fileSubmit':
 				serverSubmitFile( frameMsg.formData );
-			break;			
+			break;
+			case 'uploadHandlerAction': 
+				serverSendUploadHandlerAction( frameMsg.uiAction );
+			break;
 		}
 	}
 	
@@ -342,9 +358,9 @@ mw.ApiProxy = { };
 	//var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
 	var gadgetWithJS = '';
 	function getServerFrame( apiUrl ) {
-		// Set to local scope currentApiUrl if unset by argument
+		// Set to local scope currentServerApiUrl if unset by argument
 		if( !apiUrl) {
-			apiUrl = currentApiUrl;
+			apiUrl = currentServerApiUrl;
 		}
 		var parsedUrl = mw.parseUri( apiUrl );
 		
@@ -607,7 +623,7 @@ mw.ApiProxy = { };
 			mw.load( 'AddMedia.UploadHandler', function() {	
 				var uploadConfig = getUploadFileConfig();
 									
-				$j( 'mw-upload-form' ).uploadHandler( uploadConfig );
+				$j( '#mw-upload-form' ).uploadHandler( uploadConfig );
 				
 				// Update status
 				sendClientMsg( {'status':'ok'} );
@@ -653,7 +669,7 @@ mw.ApiProxy = { };
 	}
 	
 	/**
-	* Browse file upload config gennerator
+	* Browse file upload config generator
 	*/
 	function getUploadFileConfig(){
 		var uploadIframeUI = new mw.UploadIframeUI( function( method ){
@@ -682,6 +698,21 @@ mw.ApiProxy = { };
 		}
 		return 	uploadConfig;
 	}
+		
+	/**
+	* Server send interface action
+	*/
+	function serverSendUploadHandlerAction( action ) {
+		// Get a refrence to the uploadHandler:
+		// NOTE: this should not be hard-coded
+		var selector = ( wgEnableFirefogg ) ? '#wpUploadFile' : '#mw-upload-form';
+		var uploadHandler = $j( selector ).get(0).uploadHandler;		
+		if( uploadHandler ){	 
+			uploadHandler.uploadHandlerAction( action );
+		} else {
+			mw.log( "Error: could not find upload handler" );
+		}
+	}
 	
 	/**
 	* Server submit file
@@ -695,6 +726,7 @@ mw.ApiProxy = { };
 			$form.append(
 				$j( '<input />' )
 				.attr( {
+					'id' : 'wpDestFile',
 					'name' : 'filename',
 					'type' : 'hidden'
  				} )
@@ -704,7 +736,8 @@ mw.ApiProxy = { };
 			$form.append(
 				$j( '<input />' )
 				.attr( {
-					'name' : 'description',
+					'id' : 'wpUploadDescription',
+					'name' : 'comment',
 					'type' : 'hidden'
 				} )
 			);
@@ -721,6 +754,7 @@ mw.ApiProxy = { };
 		// Do submit the form
 		$form.submit();		
 	};
+	
 	/**
 	* Outputs the result object to the client domain
 	*

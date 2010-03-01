@@ -13,7 +13,11 @@
 *     Dispatches updates to an iframe target for upload proxy
 * 
 */
-
+mw.addMessages({	
+	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
+	"mwe-uploaded-status" : "Uploaded",
+	"mwe-uploaded-time-remaining" : "Time remaining: $1",
+});
 /**
  * Base UploadInterface object  
  */
@@ -23,7 +27,11 @@ mw.UploadInterface = { };
 /**
  * Dialog Interface
  */
-mw.DialogInterface = function( ) {
+mw.DialogInterface = function( uploadHandler ) {
+	// Set a reference the uploadHandler if provided  
+	if( uploadHandler ) {
+		this.uploadHandler = uploadHandler;
+	}
 	return this;
 }
 mw.DialogInterface.prototype = {
@@ -126,8 +134,10 @@ mw.DialogInterface.prototype = {
 	 * Update the progress bar to a given completion fraction (between 0 and 1)
      * NOTE: This progress bar is used for encoding AND for upload with no clear Distinction (might want to fix) 
      * @param {Float} progress Progress float
+     * @param {Number} [loaded] Bytes loaded
+     * @param {Number} [contentLength] Length of content
 	 */
-	updateProgress: function( fraction ) {
+	updateProgress: function( fraction, loaded, contentLength ) {
 		var _this = this;
 		
 		$j( '#up-progressbar' ).progressbar( 'value', parseInt( fraction * 100 ) );
@@ -141,6 +151,25 @@ mw.DialogInterface.prototype = {
 				$j( '#up-etr' ).html( gM( 'mwe-uploaded-time-remaining', mw.seconds2npt( remainingSeconds ) ) );
 			}
 		}
+		if( loaded && contentLength ){ 
+			$j( '#up-status-container' ).text(
+				gM( 'mwe-upload-stats-fileprogress',
+					[
+						mw.lang.formatSize( data.upload['loaded'] ),
+						mw.lang.formatSize( data.upload['content_length'] )
+					]
+				)
+			);
+		} else if ( loaded ){
+			$j( '#up-status-container' ).text(
+				gM( 'mwe-upload-stats-fileprogress',
+					[
+						mw.lang.formatSize( data.upload['loaded'] ),
+						gM( 'mwe-upload-unknown-size' )
+					]
+				)
+			);
+		}		 
 	
 	},
 	
@@ -161,7 +190,7 @@ mw.DialogInterface.prototype = {
 	 * Set the dialog to loading
 	 * @param optional loadingText text to set dialog to. 
 	 */
-	setLoading: function( loadingText ) {
+	setLoading: function( ) {
 		this.action_done = false;
 		//Update the progress dialog (no bar without XHR request)
 		$j( '#upProgressDialog' ).loadingSpinner();
@@ -191,9 +220,223 @@ mw.DialogInterface.prototype = {
 				$j( this ).dialog( 'close' ).remove();
 			};
 		}
+		
 		$j( '#upProgressDialog' ).dialog( 'option', 'title',  title_txt );
 		$j( '#upProgressDialog' ).html( msg );
 		$j( '#upProgressDialog' ).dialog( 'option', 'buttons', buttons );
+	},
+	
+	
+	/**
+	 * Given the result of an action=upload API request, display the error message
+	 * to the user.
+	 * 
+	 * @param {Object} apiRes The result object
+	 */
+	showApiError: function( apiRes ) {
+		var _this = this;		
+		// NOTE: this could be simplified and cleaned up 
+		// by simplified the error output provided by the upload api 		
+		
+		// Generate the error button			
+		var buttons = {};
+		buttons[ gM( 'mwe-return-to-form' ) ] = function() {
+			_this.form_post_override = false;
+			$j( this ).dialog( 'close' );
+		};
+			
+				
+		if ( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ) {			
+		
+			// Check a few places for the error code			
+			var error_code = 0;
+			var errorReplaceArg = '';
+			if ( apiRes.error && apiRes.error.code ) {
+				error_code = apiRes.error.code;
+			} else if ( apiRes.upload.code && typeof apiRes.upload.code == 'object' ) {
+				if ( apiRes.upload.code[0] ) {
+					error_code = apiRes.upload.code[0];
+				}
+				if ( apiRes.upload.code['status'] ) {
+					error_code = apiRes.upload.code['status'];
+					if ( apiRes.upload.code['filtered'] ){
+						errorReplaceArg = apiRes.upload.code['filtered'];
+					}
+				}
+			}
+			
+			var error_msg = '';
+			if ( typeof apiRes.error == 'string' ){
+				error_msg = apiRes.error;
+			}
+			// There are many possible error messages here, so we don't load all
+			// message text in advance, instead we use mw.getRemoteMsg() for some.
+			//
+			// This code is similar to the error handling code formerly in
+			// SpecialUpload::processUpload()
+			var error_msg_key = {
+				'2' : 'largefileserver',
+				'3' : 'emptyfile',
+				'4' : 'minlength1',
+				'5' : 'illegalfilename'
+			};
+			
+			if ( typeof error_code == 'number'
+				&& typeof error_msg_key[ error_code ] == 'undefined' )
+			{
+				if ( apiRes.upload.code.finalExt ) {
+					_this.setPrompt(
+						gM( 'mwe-uploaderror' ),
+						gM( 'mwe-wgfogg_warning_bad_extension', apiRes.upload.code.finalExt ),
+						buttons );
+				} else {
+					_this.setPrompt(
+						gM( 'mwe-uploaderror' ),
+						gM( 'mwe-unknown-error' ) + ' : ' + error_code,
+						buttons );
+				}
+				return false;
+			}
+			
+			// If no "error_code" was provided or it is an unknown-error
+			// try to use the errorKey in apiRes.upload.details
+			if ( !error_code || error_code == 'unknown-error' ) {							
+				if ( apiRes.upload.error == 'internal-error' ) {
+					// Do a remote message load
+					errorKey = apiRes.upload.details[0];
+					mw.getRemoteMsg( errorKey, function() {
+						_this.setPrompt( gM( 'mwe-uploaderror' ), gM( errorKey ), buttons );
+					});
+					return false;
+				}
+				_this.setPrompt(
+					gM('mwe-uploaderror'),
+					gM('mwe-unknown-error') + '<br>' + error_msg,
+					buttons 
+				);
+				return false;
+			}
+			
+			// This is the ideal error handling, 
+			// if apiRes consistently provided error.info
+			if ( apiRes.error && apiRes.error.info ) {
+				_this.setPrompt( gM( 'mwe-uploaderror' ), apiRes.error.info, buttons );
+				return false;
+			}						
+
+			mw.log( 'get remote error key: ' + error_msg_key[ error_code ] )
+			mw.getRemoteMsg( error_msg_key[ error_code ], function() {
+				_this.setPrompt(
+					gM( 'mwe-uploaderror' ),
+					gM( error_msg_key[ error_code ], errorReplaceArg ),
+					buttons );
+			});
+			mw.log( "api.error" );
+			return false;
+		}
+
+		// If nothing above was able to set the error
+		// set simple unknown-error
+		if ( apiRes.upload && apiRes.upload.error ) {
+			mw.log( ' apiRes.upload.error: ' +  apiRes.upload.error );						
+			_this.setPrompt(
+				gM( 'mwe-uploaderror' ),
+				gM( 'mwe-unknown-error' ) + '<br>',
+				buttons );
+			return false;
+		}
+
+		// Check for warnings:
+		if ( apiRes.upload && apiRes.upload.warnings ) {
+			var wmsg = '<ul>';
+			for ( var wtype in apiRes.upload.warnings ) {
+				var winfo = apiRes.upload.warnings[wtype]
+				wmsg += '<li>';
+				switch ( wtype ) {
+					case 'duplicate':
+					case 'exists':
+						if ( winfo[1] && winfo[1].title && winfo[1].title.mTextform ) {
+							wmsg += gM( 'mwe-file-exists-duplicate' ) + ' ' +
+								'<b>' + winfo[1].title.mTextform + '</b>';
+						} else {
+							//misc error (weird that winfo[1] not present
+							wmsg += gM( 'mwe-upload-misc-error' ) + ' ' + wtype;
+						}
+						break;
+					case 'file-thumbnail-no':
+						wmsg += gM( 'mwe-file-thumbnail-no', winfo );
+						break;
+					default:
+						wmsg += gM( 'mwe-upload-misc-error' ) + ' ' + wtype;
+						break;
+				}
+				wmsg += '</li>';
+			}
+			wmsg += '</ul>';
+						
+
+			// Create the "ignore warning" button
+			var buttons = {};
+			buttons[ gM( 'mwe-ignorewarning' ) ] = function() {
+				// call the upload object ignore warnings: 
+				_this.sendUploadAction( 'ignoreWarnings' );				
+			};
+			// Create the "return to form" button
+			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
+				$j( this ).dialog( 'close' );
+				_this.sendUploadAction( 'disableFormPostOverride' );
+			}
+			// Show warning
+			_this.setPrompt(
+				gM( 'mwe-uploadwarning' ),
+				$j('<div />')
+				.append(
+					$j( '<h3 />' )
+					.text( gM( 'mwe-uploadwarning' ) ),
+					
+					$j('<span />')
+					.html( wmsg )
+				),
+				buttons );
+			return false;
+		}
+		// No error!
+		return true;
+	},
+	
+	/**
+	* Send an upload action to the upload handler.
+	* @param {Object} action  			
+	*/ 
+	sendUploadAction: function( action ) {
+		this.uploadHandler.uploadHandlerAction( action );
+	},
+	
+	/**
+	* Shows api success from a apiResult
+	*/
+	showApiSuccess: function( apiRes ){
+		mw.log( " UI:: showApiSuccess: " );
+		// set the target resource url: 
+		var url = apiRes.upload.imageinfo.descriptionurl;
+		var _this = this;
+		var buttons = {};
+		// "Return" button
+		buttons[ gM( 'mwe-return-to-form' ) ] = function() {
+			$j( this ).dialog( 'destroy' ).remove();
+			_this.sendUploadAction( 'disableFormPostOverride' );
+		}
+		// "Go to resource" button
+		buttons[ gM('mwe-go-to-resource') ] = function() {
+			window.location = url;
+		};
+		_this.action_done = true;
+		_this.setPrompt(
+			gM( 'mwe-successfulupload' ),
+			gM( 'mwe-upload_done', url),
+			buttons 
+		);
+		mw.log( 'apiRes.upload.imageinfo::' + url );
 	},
 	
 	/**
@@ -241,19 +484,25 @@ mw.UploadIframeUI.prototype = {
 		this.callbackProxy( 'setup', options );	
 	},
 	
-	// Don't call update progress more than once every 4 seconds 
+	// Don't call update progress more than once every 3 seconds 
 	// Since it involves loading a cached iframe. Once we support html5 
 	// cross domain "sendMsg" then we can pass all updates   
 	updateProgress: function( fraction ) {
-		if( ( new Date() ).getTime() - this.lastProgressTime > 4000 ){
-			this.lastProgressTime = ( new Date() ).getTime()
-			mw.log('do update progress' );
+		if( ( new Date() ).getTime() - this.lastProgressTime > 3000 ){
+			this.lastProgressTime = ( new Date() ).getTime()			
 			this.callbackProxy( 'updateProgress', fraction );
 		}
 	},
-	
-	setPrompt: function( title_txt, msg, buttons ) {
-		// @@todo fix button isssue:
-		this.callbackProxy( 'setPrompt', title_txt, msg, buttons );		
-	}	
+	// Pass on the show api errror:  
+	showApiError: function ( apiRes ){
+		this.callbackProxy( 'showApiError', apiRes );
+	},
+	// Pass on the show api success:
+	showApiSuccess: function ( apiRes ) {
+		this.callbackProxy( 'showApiSuccess', apiRes );
+	},
+	// Pass on api action
+	sendUploadAction: function( action ) {
+		this.callbackProxy( 'sendUploadAction', action );
+	}
 };

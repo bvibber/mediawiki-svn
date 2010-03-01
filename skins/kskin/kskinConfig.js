@@ -78,6 +78,7 @@ var kskinConfig = {
 					$menuOverlay.css( { 
 						'top' : topPos + 'px',
 						'bottom' : null,
+						'width' : ctrlObj.getOverlayWidth(),
 						'height' :  ctrlObj.getOverlayHeight() + 'px'
 					});
 										

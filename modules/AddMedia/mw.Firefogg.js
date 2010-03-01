@@ -107,8 +107,8 @@ var default_firefogg_options = {
 				
 		if ( myFogg ) {
 			myFogg.doRewrite( );
-			var selectorElement = $j( options.selector ).get( 0 );
-			selectorElement[ 'firefogg' ] = myFogg;		
+			var selectorElement = $j( this.selector ).get( 0 );
+			selectorElement[ 'uploadHandler' ] = myFogg;		
 		}
 	}
 } )( jQuery );
@@ -171,13 +171,17 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 			// Prefix conflicting members with parent_
 			for ( var i in myBUI ) {
-				if ( this[i] ) {
+				if ( this[ i ] ) {
 					this[ 'parent_'+ i ] = myBUI[i];
 				} else {
-					this[i] =  myBUI[i];
+					this[ i ] =  myBUI[i];
 				}
 			}
 		}		
+		
+		// Setup ui uploadHandler pointer
+		this.ui.uploadHandler = this;
+		
 		if ( !this.selector ) {
 			mw.log('firefogg: missing selector ');
 		}
@@ -1140,7 +1144,13 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					}
 				}
 											
-				//Check for success:
+				// Process the api result ( if not a chunk )
+				if( ! apiResult.resultUrl ){
+					_this.processApiResult ( apiResult );
+					return true;
+				}
+				
+				/*
 				if( apiResult && _this.isApiSuccess( apiResult ) ) {
 					if( _this.processApiResult ( apiResult ) ) {
 						return true;
@@ -1149,11 +1159,12 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				
 				if ( apiResult && !_this.isApiSuccess( apiResult ) ) {
 					// Show the error and stop the upload
-					_this.showApiError( apiResult );
+					_this.ui.showApiError( apiResult );
 					_this.action_done = true;
 					_this.fogg.cancel();
 					return false;
 				}
+				*/
 
 			}
 			// Show the video preview if encoding and show_preview is enabled. 
@@ -1178,7 +1189,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			}
 			// Chunk upload mode:
 			if ( apiResult && apiResult.resultUrl ) {
-				var buttons = {};
+				var buttons = { };
 				buttons[ gM( 'mwe-go-to-resource' ) ] =  function() {
 					window.location = apiResult.resultUrl;
 				}
