@@ -446,7 +446,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# If a record and field name are specified, return the field value
 		if ( isset( $type ) && isset( $record ) && isset( $field ) ) {
-			$title = Title::newFromText( $record );
+			if ( is_object( $record ) ) $title = $record; else $title = Title::newFromText( $record );
 			if ( is_object( $title ) ) {
 				$article = new Article( $title );
 				$text = $article->getContent();
