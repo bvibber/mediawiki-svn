@@ -61,6 +61,10 @@ class WikiEditorHooks {
 					),
 				),
 			),
+			'messages' => array(
+				'wikieditor-template-editor-dialog-title',
+				'wikieditor-template-editor-dialog-submit',
+			),
 		),
 		'preview' => array(
 			'i18n' => 'WikiEditorPreview',
