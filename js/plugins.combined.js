@@ -9382,6 +9382,7 @@ fn: {
 			},
 			dialog: {
 				width: 500,
+				dialogClass: 'wikiEditor-toolbar-dialog',
 				buttons: {
 					'wikieditor-template-editor-dialog-submit': function() {
 						// More user feedback
@@ -9420,7 +9421,7 @@ fn: {
 							continue;
 						}
 						var $paramRow = $( '<tr />' ).addClass( 'wikiEditor-template-dialog-row' );
-						$( '<td />' ).addClass( 'wikiEditor-template-dialog-name' ).text(
+						$( '<td />' ).addClass( 'wikiEditor-template-dialog-label' ).text(
 							typeof param == 'string' ?
 							param.name.replace( /[\_\-]/g, ' ' )
 								.replace( /^(.)|\s(.)/g, function( first ) {
