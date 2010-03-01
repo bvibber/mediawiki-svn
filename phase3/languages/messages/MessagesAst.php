@@ -200,9 +200,6 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:Entrugues más frecuentes',
 
-# Metadata in edit box
-'metadata_help' => 'Metadatos:',
-
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Vuelve a $1.',
 'tagline'           => 'De {{SITENAME}}',
@@ -579,7 +576,7 @@ Por favor, amiesta toos estos detalles nes consultes que faigas.',
 'whitelistedittext'                => 'Tienes que $1 pa editar páxines.',
 'confirmedittext'                  => "Has confirmar la to direición de corréu electrónicu enantes d'editar páxines. Por favor, configúrala y valídala nes tos [[Special:Preferences|preferencies d'usuariu]].",
 'nosuchsectiontitle'               => 'Nun esiste tala seición',
-'nosuchsectiontext'                => 'Intentasti editar una seición que nun esiste.  Como nun hai seición $1, nun hai sitiu pa guardar la to edición.',
+'nosuchsectiontext'                => 'Intentasti editar una seición que nun esiste.',
 'loginreqtitle'                    => 'Identificación Requerida',
 'loginreqlink'                     => 'identificase',
 'loginreqpagetext'                 => 'Has $1 pa ver otres páxines.',
@@ -1227,7 +1224,6 @@ Si tovía asina quies xubir l'archivu, por favor vuelvi atrás y usa otru nome. 
 'uploaddisabled'              => 'Deshabilitaes les xubíes',
 'uploaddisabledtext'          => "Les xubíes d'archivos tán desactivaes.",
 'uploadscripted'              => 'Esti archivu contién códigu HTML o scripts que puen ser interpretaos erróneamente por un navegador.',
-'uploadcorrupt'               => "L'archivu ta corruptu o tien una estensión incorreuta. Por favor comprueba l'archivu y vuelve a xubilu.",
 'uploadvirus'                 => "¡L'archivu tien un virus! Detalles: $1",
 'sourcefilename'              => "Nome d'orixe:",
 'destfilename'                => 'Nome de destín:',

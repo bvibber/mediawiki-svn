@@ -314,9 +314,6 @@ $messages = array(
 'namespaces'                 => 'فضانامان',
 'variants'                   => 'گوشگان',
 
-# Metadata in edit box
-'metadata_help' => 'متادیتا',
-
 'errorpagetitle'    => 'حطا',
 'returnto'          => 'تررگ به $1.',
 'tagline'           => 'چه {{SITENAME}}',
@@ -710,8 +707,7 @@ $2',
 'confirmedittext'                  => 'شما بایدن وتی آدرس ایمیل آ پیش چه اصلاح کتن صفحات تایید کنیت.
 لطفا وتی آدرس ایمیل آی چه طریق [[Special:Preferences|ترجحات کاربر]] تنظیم و معتبر کنیت.',
 'nosuchsectiontitle'               => 'هچ چوشن بخش',
-'nosuchsectiontext'                => 'شما سعی کت یک بخشی اصلاح کنیت که نیستن.
-چوش که هچ بخشی $1 نیست، هچ جاهی په ذخیره کتن شمی اصلاح نیست.',
+'nosuchsectiontext'                => 'شما سعی کت یک بخشی اصلاح کنیت که نیستن.',
 'loginreqtitle'                    => 'ورود نیازنت',
 'loginreqlink'                     => 'ورود',
 'loginreqpagetext'                 => 'شما باید $1 په گندگ دگه صفحات.',
@@ -1428,8 +1424,6 @@ $1",
 'uploaddisabledtext'          => 'آپلود فایل غیر فعال انت.',
 'php-uploaddisabledtext'      => 'آپلود کتن فایل ته پی‌اچ‌پی فعال نهنت. تنظیم file_uploads کنترل کنیت.',
 'uploadscripted'              => 'ای فایل شامل کد HTML یا اسکریپت انت که شاید گون وب بروزر اشتباهی وانگ بیت.',
-'uploadcorrupt'               => 'ای فایل حرابنت یا اشتباهین بندی هست.
-لطفا فایل کتنرل کنیت و دگه آپلود کنیت.',
 'uploadvirus'                 => 'فایل یک ویروسی داریتن! جزییات: $1',
 'sourcefilename'              => 'منبع نام فایل:',
 'destfilename'                => 'مقصد نام فایل',

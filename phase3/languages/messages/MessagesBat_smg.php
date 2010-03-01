@@ -191,9 +191,6 @@ $messages = array(
 'faq'            => 'DOK',
 'faqpage'        => 'Project:DOK',
 
-# Metadata in edit box
-'metadata_help' => 'Metadoumenīs:',
-
 'errorpagetitle'    => 'Klaida',
 'returnto'          => 'Grīžtė i $1.',
 'tagline'           => 'Straipsnis ėš {{SITENAME}}.',
@@ -927,7 +924,6 @@ Prašuom ėšsėrėnktė kėta varda.",
 'overwroteimage'             => 'ikruovė nauja „[[$1]]“ versėjė',
 'uploaddisabledtext'         => 'Failu ikielėmā oždraustė īr.',
 'uploadscripted'             => 'Šėts failos tor HTML a programėni kuoda, katros gal būtė klaidėngā soprasts interneta naršīklės.',
-'uploadcorrupt'              => 'Fails īr pažeists a tor neteisėnga galūne. Prašuom patėkrėntė faila ėr ikeltė ana par naujė.',
 'uploadvirus'                => 'Šėtom faile īr virosas! Ėšsamiau: $1',
 'sourcefilename'             => 'Ikeliams fails',
 'destfilename'               => 'Nuorims faila pavadinims',

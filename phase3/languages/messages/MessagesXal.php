@@ -14,26 +14,42 @@
 
 $fallback = 'ru';
 
+$fallback8bitEncoding = "windows-1251";
+
 $namespaceNames = array(
 	NS_MEDIA            => 'Аһар',
-	NS_SPECIAL          => 'Көдлхнə',
-	NS_TALK             => 'Ухалвр',
-	NS_USER             => 'Орлцач',
-	NS_USER_TALK        => 'Орлцачна_тускар_ухалвр',
-	NS_PROJECT_TALK     => '$1_тускар_ухалвр',
-	NS_FILE             => 'Зург',
-	NS_FILE_TALK        => 'Зургин_тускар_ухалвр',
+	NS_SPECIAL          => 'Көдлхнә',
+	NS_TALK             => 'Меткән',
+	NS_USER             => 'Демнч',
+	NS_USER_TALK        => 'Демнчна_туск_меткән',
+	NS_PROJECT_TALK     => '$1_туск_меткән',
+	NS_FILE             => 'Боомг',
+	NS_FILE_TALK        => 'Боомгин_туск_меткән',
 	NS_MEDIAWIKI        => 'MediaWiki',
-	NS_MEDIAWIKI_TALK   => 'MediaWiki_тускар_ухалвр',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_туск_меткән',
 	NS_TEMPLATE         => 'Зура',
-	NS_TEMPLATE_TALK    => 'Зуран_тускар_ухалвр',
-	NS_HELP             => 'Цəəлһлһн',
-	NS_HELP_TALK        => 'Цəəлһлһин_тускар_ухалвр',
-	NS_CATEGORY         => 'Янз',
-	NS_CATEGORY_TALK    => 'Янзин_тускар_ухалвр',
+	NS_TEMPLATE_TALK    => 'Зуран_туск_меткән',
+	NS_HELP             => 'Цәәлһлһн',
+	NS_HELP_TALK        => 'Цәәлһлһин_туск_меткән',
+	NS_CATEGORY         => 'Әәшл',
+	NS_CATEGORY_TALK    => 'Әәшлин_туск_меткән',
 );
 
-$fallback8bitEncoding = "windows-1251";
+$namespaceAliases = array(
+	'Көдлхнə'                 => NS_SPECIAL,
+	'Ухалвр'                  => NS_TALK,
+	'Орлцач'                  => NS_USER,
+	'Орлцачна_тускар_ухалвр'  => NS_USER_TALK,
+	'$1_тускар_ухалвр'        => NS_PROJECT_TALK,
+	'Зург'                    => NS_FILE,
+	'Зургин_тускар_ухалвр'    => NS_FILE_TALK,
+	'MediaWiki_тускар_ухалвр' => NS_MEDIAWIKI_TALK,
+	'Зуран_тускар_ухалвр'     => NS_TEMPLATE_TALK,
+	'Цəəлһлһн'                => NS_HELP,
+	'Цəəлһлһин_тускар_ухалвр' => NS_HELP_TALK,
+	'Янз'                     => NS_CATEGORY,
+	'Янзин_тускар_ухалвр'     => NS_CATEGORY_TALK,
+);
 
 $messages = array(
 # User preference toggles
@@ -48,10 +64,12 @@ $messages = array(
 'tog-editsection'             => '«Чиклх» заавр болвчн хүвд үзүлх',
 'tog-editsectiononrightclick' => 'Һарчига барун индстлһар хүвиг чиклх (JavaScript кергтә)',
 'tog-rememberpassword'        => 'Намаг эн тоолдврд тодлх',
+'tog-editwidth'               => 'Чикллһнә тег цуг харата болулх',
 'tog-watchcreations'          => 'Би эврәннь немгдсн халхс шинҗллһнә сеткүлд немх',
 'tog-watchdefault'            => 'Би эврәннь чиклсн халхс шинҗллһнә сеткүлд немх',
 'tog-watchmoves'              => 'Би эврәннь көндсн халхс шинҗллһнә сеткүлд немх',
 'tog-watchdeletion'           => 'Би эврәннь һарһсн халхс шинҗллһнә сеткүлд немх',
+'tog-minordefault'            => 'Цуг сольлһн баһ чинртә таасн болулх',
 'tog-oldsig'                  => 'Бәәдг тәвсн һарна хәләвр:',
 'tog-fancysig'                => 'Эврән тәвсн һарна бики темдлһн (авто заалһта уга)',
 'tog-watchlisthideown'        => 'Шинҗллһнә сеткүлд мини сольлһиг бултулх',
@@ -62,8 +80,9 @@ $messages = array(
 'tog-watchlisthidepatrolled'  => 'Шинҗллһнә сеткүлд шүүсн сольлһиг бултулх',
 'tog-showhiddencats'          => 'Бултулсн әәшлүд үзүлх',
 
-'underline-always' => 'Даңгин болх',
-'underline-never'  => 'Кезәчн болшго',
+'underline-always'  => 'Даңгин болх',
+'underline-never'   => 'Кезәчн болшго',
+'underline-default' => 'Хәләгчин таасн',
 
 # Font style option in Special:Preferences
 'editfont-style'     => 'Чикллһнә цаасна үзг-кевин янз:',
@@ -192,9 +211,6 @@ $messages = array(
 'namespaces'                 => 'Нернә ус',
 'variants'                   => 'Суңһлтс',
 
-# Metadata in edit box
-'metadata_help' => 'Мета өггцн:',
-
 'errorpagetitle'    => 'Эндү',
 'returnto'          => '«$1» тал хәрү ирх.',
 'tagline'           => '{{grammar:genitive|{{SITENAME}}}} гидг һазрас өггцн',
@@ -262,37 +278,41 @@ $messages = array(
 'helppage'             => 'Help:Һарг',
 'mainpage'             => 'Эклц',
 'mainpage-description' => 'Эклц',
+'policy-url'           => 'Project:Бодлһн',
 'portal'               => 'Бүрдәцин хург',
+'portal-url'           => 'Project:Бүрдәцин хург',
 'privacy'              => 'Нууцин бодлһн',
 'privacypage'          => 'Project:Нууцин бодлһн',
 
 'badaccess' => 'Зөвәнә эндү',
 
-'ok'                  => 'Чик',
-'retrievedfrom'       => '"$1" гидг халхас йовулсн',
-'youhavenewmessages'  => 'Та $1та бәәнәт ($2).',
-'newmessageslink'     => 'шин зәңгс',
-'newmessagesdifflink' => 'шидрә сольлһн',
-'editsection'         => 'чиклх',
-'editold'             => 'чиклх',
-'viewsourceold'       => 'ишиг үзх',
-'editlink'            => 'чиклх',
-'viewsourcelink'      => 'ишиг хәләх',
-'editsectionhint'     => '«$1» гидг хүвиг чиклх',
-'toc'                 => 'Һарг',
-'showtoc'             => 'үзүлх',
-'hidetoc'             => 'бултулх',
-'viewdeleted'         => '$1 үзүлхү?',
-'feedlinks'           => 'Тер бәәдлтә',
-'site-rss-feed'       => '$1 — RSS-зәңг',
-'site-atom-feed'      => '$1 — Atom-зәңг',
-'page-rss-feed'       => '«$1» — RSS-зәнгллһн',
-'page-atom-feed'      => '«$1» — Atom зәнгллһн',
-'red-link-title'      => '$1 (халх бәәшго)',
+'ok'                      => 'Чик',
+'retrievedfrom'           => '"$1" гидг халхас йовулсн',
+'youhavenewmessages'      => 'Та $1та бәәнәт ($2).',
+'newmessageslink'         => 'шин зәңгс',
+'newmessagesdifflink'     => 'шидрә сольлһн',
+'youhavenewmessagesmulti' => 'Та $1та бәәнәт',
+'editsection'             => 'чиклх',
+'editold'                 => 'чиклх',
+'viewsourceold'           => 'ишиг үзх',
+'editlink'                => 'чиклх',
+'viewsourcelink'          => 'ишиг хәләх',
+'editsectionhint'         => '«$1» гидг хүвиг чиклх',
+'toc'                     => 'Һарг',
+'showtoc'                 => 'үзүлх',
+'hidetoc'                 => 'бултулх',
+'viewdeleted'             => '$1 үзүлхү?',
+'feedlinks'               => 'Тер бәәдлтә',
+'site-rss-feed'           => '$1 — RSS-зәңг',
+'site-atom-feed'          => '$1 — Atom-зәңг',
+'page-rss-feed'           => '«$1» — RSS-зәнгллһн',
+'page-atom-feed'          => '«$1» — Atom зәнгллһн',
+'red-link-title'          => '$1 (халх бәәшго)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Халх',
 'nstab-user'      => 'Демнч',
+'nstab-media'     => 'Аһарин халх',
 'nstab-special'   => 'Көдлхнә халх',
 'nstab-project'   => 'Проектин халх',
 'nstab-image'     => 'Боомг',
@@ -319,6 +339,8 @@ $messages = array(
 'badtitle'            => 'Буру нернь',
 'badtitletext'        => 'Сурсн нерн буру, хоосн, аль му бичсн келн хоорнд нертә. Тиим чигн биз, нерн зөв уга үзгтә.',
 'viewsource'          => 'Ишиг хәләх',
+'viewsourcefor'       => '$1 халх',
+'ns-specialprotected' => 'Шишлң халх чиклсн бәәх болшго.',
 
 # Login and logout pages
 'logouttext'              => "'''Та һарад бәәнәт.'''

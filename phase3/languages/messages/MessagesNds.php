@@ -380,9 +380,6 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'vector-view-view'           => 'Lesen',
 'vector-view-viewsource'     => 'Borntext bekieken',
 
-# Metadata in edit box
-'metadata_help' => 'Metadaten:',
-
 'errorpagetitle'    => 'Fehler',
 'returnto'          => 'Trüch to $1.',
 'tagline'           => 'Vun {{SITENAME}}',
@@ -1436,7 +1433,6 @@ Wenn du ehr liekers hoochladen wullt, gah trüch un laad de Datei ünner en anne
 'uploaddisabledtext'          => 'Dat Hoochladen vun Datein is utschalt.',
 'php-uploaddisabledtext'      => 'Dat Hoochladen vun Datein is in PHP utstellt. Kiek de file_uploads-Instellungen na.',
 'uploadscripted'              => 'In disse Datei steiht HTML- oder Skriptkood in, de vun welk Browsers verkehrt dorstellt oder utföhrt warrn kann.',
-'uploadcorrupt'               => 'De Datei is korrupt oder hett en falsch Ennen. Datei pröven un nieg hoochladen.',
 'uploadvirus'                 => 'In de Datei stickt en Virus! Mehr: $1',
 'sourcefilename'              => 'Dateinaam op dien Reekner:',
 'destfilename'                => 'Dateinaam, so as dat hier spiekert warrn schall:',
@@ -1515,7 +1511,7 @@ Kiek op de [$2 Bildsied dor] för mehr Infos.',
 'sharedupload-desc-here'    => 'Disse Datei is as gemeensam bruukte Datei op $1 hoochlaadt un warrt mööglicherwies ok vun annere Wikis bruukt.
 De [$2 Bildsied vun dor] warrt ünnen wiest.',
 'filepage-nofile'           => 'Gifft keen Datei mit dissen Naam.',
-'filepage-nofile-link'      => 'Dat gifft keen Datei mit dissen Naaam, aver du kannst een [$1 hoochladen].',
+'filepage-nofile-link'      => 'Dat gifft keen Datei mit dissen Naam, aver du kannst een [$1 hoochladen].',
 'uploadnewversion-linktext' => 'Ne’e Version vun disse Datei hoochladen',
 'shared-repo-from'          => 'ut $1',
 'shared-repo'               => 'en tohoop bruukt Medienarchiv',

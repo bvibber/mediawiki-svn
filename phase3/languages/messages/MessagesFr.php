@@ -42,6 +42,7 @@
  * @author PieRRoMaN
  * @author Quentinv57
  * @author Remember the dot
+ * @author Robby
  * @author Seb35
  * @author Sherbrooke
  * @author Skalman
@@ -520,9 +521,6 @@ $messages = array(
 'namespaces'                 => 'Espaces de noms',
 'variants'                   => 'Variantes',
 
-# Metadata in edit box
-'metadata_help' => 'Métadonnées :',
-
 'errorpagetitle'    => 'Erreur',
 'returnto'          => 'Revenir à la page $1.',
 'tagline'           => 'De {{SITENAME}}.',
@@ -690,6 +688,8 @@ Veuillez le signaler à un [[Special:ListUsers/sysop|administrateur]] sans oubli
 'readonly_lag'         => 'La base de données a été automatiquement verrouillée pendant que les serveurs secondaires rattrapent leur retard sur le serveur principal.',
 'internalerror'        => 'Erreur interne',
 'internalerror_info'   => 'Erreur interne : $1',
+'fileappenderrorread'  => "Impossible de lire « $1 » lors de l'insertion",
+'fileappenderror'      => 'Impossible d’ajouter « $1 » à « $2 ».',
 'filecopyerror'        => 'Impossible de copier le fichier « $1 » vers « $2 ».',
 'filerenameerror'      => 'Impossible de renommer le fichier « $1 » en « $2 ».',
 'filedeleteerror'      => 'Impossible de supprimer le fichier « $1 ».',
@@ -776,6 +776,7 @@ Les noms d’utilisateurs sont sensibles à la casse.
 Vérifiez l’orthographe, ou [[Special:UserLogin/signup|créez un nouveau compte]].',
 'nosuchusershort'            => 'Il n’y a pas de contributeur avec le nom « <nowiki>$1</nowiki> ». Veuillez vérifier l’orthographe.',
 'nouserspecified'            => 'Vous devez saisir un nom d’utilisateur.',
+'login-userblocked'          => 'Cet utilisateur est bloqué. Connexion non autorisée.',
 'wrongpassword'              => 'Le mot de passe est incorrect. Veuillez essayer à nouveau.',
 'wrongpasswordempty'         => 'Vous n’avez pas entré de mot de passe. Veuillez essayer à nouveau.',
 'passwordtooshort'           => 'Votre mot de passe doit contenir au moins $1 caractère{{PLURAL:$1||s}}.',
@@ -818,6 +819,7 @@ Ignorez ce message si ce compte a été créé par erreur.',
 'login-throttled'            => 'Vous avez tenté un trop grand nombre de connexions dernièrement.
 Veuillez attendre avant d’essayer à nouveau.',
 'loginlanguagelabel'         => 'Langue : $1',
+'suspicious-userlogout'      => "Votre demande de déconnexion a été refusée car il semble qu'elle été envoyée par un navigateur cassé ou la mise en cache d'un proxy.",
 
 # Password reset dialog
 'resetpass'                 => 'Changer le mot de passe',
@@ -832,6 +834,7 @@ Veuillez attendre avant d’essayer à nouveau.',
 'resetpass_forbidden'       => 'Les mots de passe ne peuvent pas être changés',
 'resetpass-no-info'         => 'Vous devez être connecté pour avoir accès à cette page.',
 'resetpass-submit-loggedin' => 'Changer le mot de passe',
+'resetpass-submit-cancel'   => 'Annuler',
 'resetpass-wrong-oldpass'   => 'Mot de passe actuel ou temporaire invalide.
 Vous avez peut-être déjà changé votre mot de passe ou demandé un nouveau mot de passe temporaire.',
 'resetpass-temp-password'   => 'Mot de passe temporaire :',
@@ -912,9 +915,9 @@ Veuillez préciser ces indications dans toutes les requêtes que vous ferez.",
 'whitelistedittext'                => 'Vous devez être $1 pour avoir la permission de modifier le contenu.',
 'confirmedittext'                  => 'Vous devez confirmer votre adresse de courriel avant de modifier les pages.
 Veuillez entrer et valider votre adresse de courriel dans vos [[Special:Preferences|préférences utilisateur]].',
-'nosuchsectiontitle'               => 'Section manquante',
+'nosuchsectiontitle'               => 'Impossible de trouver la section',
 'nosuchsectiontext'                => 'Vous avez essayé de modifier une section qui n’existe pas.
-Puisqu’il n’y a pas de section $1, il n’y a pas d’endroit où publier vos modifications.',
+Elle a peut-être été déplacée ou supprimée depuis que vous avez lu cette page.',
 'loginreqtitle'                    => 'Connexion nécessaire',
 'loginreqlink'                     => 'connecter',
 'loginreqpagetext'                 => 'Vous devez vous $1 pour voir les autres pages.',
@@ -935,6 +938,8 @@ Vous pouvez [[Special:Search/{{PAGENAME}}|faire une recherche sur le titre de la
 ou <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} rechercher dans les journaux associés]</span>.',
 'userpage-userdoesnotexist'        => 'Le compte utilisateur « $1 » n’est pas enregistré. Veuillez vérifier que vous voulez créer cette page.',
 'userpage-userdoesnotexist-view'   => 'Le compte utilisateur « $1 » n’est pas enregistré.',
+'blocked-notice-logextract'        => "Cet utilisateur est actuellement bloqué.
+La dernière entrée du registre des blocages est indiquée ci-dessous à titre d'information :",
 'clearyourcache'                   => "'''Note :''' après avoir enregistré vos préférences, vous devrez forcer le rechargement complet du cache de votre navigateur pour voir les changements.
 '''Mozilla / Firefox / Konqueror / Safari :''' maintenez la touche ''Majuscule'' (''Shift'') en cliquant sur le bouton ''Actualiser'' (''Reload'') ou pressez ''Maj-Ctrl-R'' (''Maj-Cmd-R'' sur Apple Mac) ;
 '''Internet Explorer / Opera :''' maintenez la touche ''Ctrl'' en cliquant sur le bouton ''Actualiser'' ou pressez ''Ctrl-F5''.",
@@ -964,7 +969,7 @@ Ce problème se produit parfois lorsque vous utilisez un serveur mandataire anon
 'editingsection'                   => 'Modification de $1 (section)',
 'editingcomment'                   => 'Modification de $1 (nouvelle section)',
 'editconflict'                     => 'Conflit de modification : $1',
-'explainconflict'                  => "Cette page a été sauvegardée après que vous ayez commencé à la modifier.
+'explainconflict'                  => "Cette page a été sauvegardée après que vous avez commencé à la modifier.
 La zone de modification supérieure contient le texte tel qu’il est enregistré actuellement dans la base de données.
 Vos modifications apparaissent dans la zone de modification inférieure.
 Vous allez devoir fusionner vos modifications dans le texte existant.
@@ -988,11 +993,10 @@ certains navigateurs Web gèrent mal la modification des pages approchant ou dé
 
 L’administrateur ayant verrouillé la base de données a donné l’explication suivante :<br 
 />$1",
-'protectedpagewarning'             => "'''AVERTISSEMENT : cette page est protégée.
-Seuls les utilisateurs ayant le statut d’administrateur peuvent la modifier.'''",
-'semiprotectedpagewarning'         => "'''Note :''' Cette page a été protégée de telle façon que seuls les contributeurs enregistrés puissent la modifier.",
+'protectedpagewarning'             => "'''AVERTISSEMENT : cette page est protégée. Seuls les utilisateurs ayant le statut d’administrateur peuvent la modifier.''' La dernière entrée du journal est affichée ci-dessous pour référence :",
+'semiprotectedpagewarning'         => "'''Note :''' Cette page a été protégée de telle façon que seuls les contributeurs enregistrés puissent la modifier. La dernière entrée du journal est affichée ci-dessous pour référence :",
 'cascadeprotectedwarning'          => "'''ATTENTION :''' Cette page a été protégée de manière à ce que seuls les administrateurs puissent l’éditer. Cette protection a été faite car cette page est incluse dans {{PLURAL:$1|une page protégée|des pages protégées}} avec la « protection en cascade » activée.",
-'titleprotectedwarning'            => "'''ATTENTION : Cette page a été protégée de telle manière que des [[Special:ListGroupRights|droits spécifiques]] sont requis pour pouvoir la créer.'''",
+'titleprotectedwarning'            => "'''ATTENTION : Cette page a été protégée de telle manière que des [[Special:ListGroupRights|droits spécifiques]] sont requis pour pouvoir la créer.''' La dernière entrée du journal est affichée ci-dessous pour référence :",
 'templatesused'                    => '{{PLURAL:$1|Modèle utilisé|Modèles utilisés}} par cette page :',
 'templatesusedpreview'             => '{{PLURAL:$1|Modèle utilisé|Modèles utilisés}} dans cette prévisualisation :',
 'templatesusedsection'             => '{{PLURAL:$1|Modèle utilisé|Modèles utilisés}} dans cette section :',
@@ -1034,6 +1038,7 @@ Il devrait y avoir moins de $2 appel{{PLURAL:$2||s}}, alors qu’il y en a maint
 'post-expand-template-argument-category'  => 'Pages contenant des paramètres de modèle non évalués',
 'parser-template-loop-warning'            => 'Modèle en boucle détecté : [[$1]]',
 'parser-template-recursion-depth-warning' => 'Limite de profondeur des appels de modèles dépassée ($1)',
+'language-converter-depth-warning'        => 'Limite de profondeur du convertisseur de langue dépassée ($1)',
 
 # "Undo" feature
 'undo-success' => 'Cette modification va être défaite. Veuillez vérifier les modifications ci-dessous, puis publier si c’est bien ce que vous voulez faire.',
@@ -1084,29 +1089,30 @@ Essayez de [[Special:Search|rechercher sur le wiki]] pour trouver des pages en r
 'rev-deleted-event'           => '(entrée supprimée)',
 'rev-deleted-user-contribs'   => "[nom d'utilisateur ou adresse IP supprimée - modification cachée sur les contributions]",
 'rev-deleted-text-permission' => "Cette version de la page a été '''effacée'''.
-Il peut y avoir des détails dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
+Des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
 'rev-deleted-text-unhide'     => "Cette version de la page a été '''effacée'''.
-Il peut y avoir plus de détails dans [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} le journal des effacements].
+Des détails sont disponibles dans [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} le journal des effacements].
 Comme administrateur, vous pouvez toujours [$1 voir cette version] si vous le voulez.",
 'rev-suppressed-text-unhide'  => "Cette version de la page a été '''supprimée'''.
-Il peut y avoir plus de détails dans [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} le journal des suppression].
+Des détails sont disponibles dans [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} le journal des suppression].
 Comme administrateur, vous pouvez toujours [$1 voir cette version] si vous le voulez.",
 'rev-deleted-text-view'       => "Cette version de la page a été '''effacée'''.
-En tant qu’administrateur, vous pouvez la visualiser ; il peut y avoir des détails dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
+En tant qu’administrateur, vous pouvez la visualiser ; des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
 'rev-suppressed-text-view'    => "Cette version de la page a été '''supprimée'''.
-En tant qu’administrateur, vous pouvez la visualiser ; il peut y avoir des détails dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des suppressions].",
+En tant qu’administrateur, vous pouvez la visualiser ; des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des suppressions].",
 'rev-deleted-no-diff'         => "Vous ne pouvez par voir ce diff parce qu’une des versions a été '''effacée'''.
-Il peut y avoir plus de détails dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
+Des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
+'rev-suppressed-no-diff'      => "Vous ne pouvez pas voir cette différence car une des révisions a été '''supprimée'''.",
 'rev-deleted-unhide-diff'     => "Une des révisions de cette différence a été '''effacée'''.
-Il peut y avoir plus de détails dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].
+Des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].
 En tant qu’administrateur vous pouvez toujours [$1 voir cette différence] si vous le voulez.",
 'rev-suppressed-unhide-diff'  => "L'une des révisions de ce diff a été '''supprimée'''.
-Il peut y avoir des détails dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des suppressions].
+Des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des suppressions].
 En tant qu'administrateur, vous pouvez toujours [$1 voir ce diff] si vous souhaitez poursuivre.",
 'rev-deleted-diff-view'       => "Une des révisions de ce diff a été '''supprimée'''.
-En tant qu'administrateur vous pouvez voir ce diff ; il peut y avoir plus de détails dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des suppressions].",
+En tant qu'administrateur vous pouvez voir ce diff ; des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des suppressions].",
 'rev-suppressed-diff-view'    => "Une des révisions de ce diff a été '''effacée'''.
-En tant qu'administrateur vous pouvez voir ce diff ; il peut y avoir plus de détails dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des effacements].",
+En tant qu'administrateur vous pouvez voir ce diff ; des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des effacements].",
 'rev-delundel'                => 'afficher/masquer',
 'rev-showdeleted'             => 'afficher',
 'revisiondelete'              => 'Supprimer ou restaurer des événements',
@@ -1405,25 +1411,26 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'prefs-diffs'                   => 'Différences',
 
 # User rights
-'userrights'                  => 'Gestion des droits des utilisateurs',
-'userrights-lookup-user'      => 'Gestion des groupes d’utilisateurs',
-'userrights-user-editname'    => 'Entrez un nom d’utilisateur :',
-'editusergroup'               => 'Modification des groupes d’utilisateurs',
-'editinguser'                 => "Modification des droits de l’utilisateur '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Modifier les groupes de l’utilisateur',
-'saveusergroups'              => 'Sauvegarder les groupes d’utilisateurs',
-'userrights-groupsmember'     => 'Membre de :',
-'userrights-groups-help'      => 'Vous pouvez modifier les groupes auxquels appartient cet utilisateur.
+'userrights'                   => 'Gestion des droits des utilisateurs',
+'userrights-lookup-user'       => 'Gestion des groupes d’utilisateurs',
+'userrights-user-editname'     => 'Entrez un nom d’utilisateur :',
+'editusergroup'                => 'Modification des groupes d’utilisateurs',
+'editinguser'                  => "Modification des droits de l’utilisateur '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Modifier les groupes de l’utilisateur',
+'saveusergroups'               => 'Sauvegarder les groupes d’utilisateurs',
+'userrights-groupsmember'      => 'Membre de :',
+'userrights-groupsmember-auto' => 'Membre implicite de :',
+'userrights-groups-help'       => 'Vous pouvez modifier les groupes auxquels appartient cet utilisateur.
 * Une case cochée signifie que l’utilisateur se trouve dans ce groupe.
 * Une case non cochée signifie qu’il ne s’y trouve pas.
-* Un astérisque (*) indique que vous ne pouvez pas retirer ce groupe une fois que vous l’avez ajouté et vice-versa.',
-'userrights-reason'           => 'Raison du changement :',
-'userrights-no-interwiki'     => 'Vous n’avez pas la permission de modifier des droits d’utilisateurs sur d’autres wikis.',
-'userrights-nodatabase'       => 'La base de donnée « $1 » n’existe pas ou n’est pas locale.',
-'userrights-nologin'          => 'Vous devez vous [[Special:UserLogin|connecter]] avec un compte d’administrateur pour modifier des droits d’utilisateur.',
-'userrights-notallowed'       => 'Votre compte n’a pas la permission de modifier des droits d’utilisateur.',
-'userrights-changeable-col'   => 'Les groupes que vous pouvez modifier',
-'userrights-unchangeable-col' => 'Les groupes que vous ne pouvez pas modifier',
+* Un astérisque (*) indique que vous ne pouvez pas retirer ce groupe une fois que vous l’avez ajouté.',
+'userrights-reason'            => 'Raison du changement :',
+'userrights-no-interwiki'      => 'Vous n’avez pas la permission de modifier des droits d’utilisateurs sur d’autres wikis.',
+'userrights-nodatabase'        => 'La base de donnée « $1 » n’existe pas ou n’est pas locale.',
+'userrights-nologin'           => 'Vous devez vous [[Special:UserLogin|connecter]] avec un compte d’administrateur pour modifier des droits d’utilisateur.',
+'userrights-notallowed'        => 'Votre compte n’a pas la permission de modifier des droits d’utilisateur.',
+'userrights-changeable-col'    => 'Les groupes que vous pouvez modifier',
+'userrights-unchangeable-col'  => 'Les groupes que vous ne pouvez pas modifier',
 
 # Groups
 'group'               => 'Groupe :',
@@ -1638,6 +1645,7 @@ Voyez la [[Special:NewFiles|galerie des nouvelles images]] pour une présentatio
 'minlength1'                  => 'Le noms de fichiers doivent comprendre au moins une lettre.',
 'illegalfilename'             => 'Le nom de fichier « $1 » contient des caractères interdits dans les titres de pages. Merci de le renommer et de le téléverser à nouveau.',
 'badfilename'                 => 'Le fichier a été renommé en « $1 ».',
+'filetype-mime-mismatch'      => "L'extension du fichier ne correspond pas au type MIME.",
 'filetype-badmime'            => 'Les fichiers du type MIME « $1 » ne peuvent pas être téléversés.',
 'filetype-bad-ie-mime'        => 'Le fichier ne peut pas être téléversé parce qu’il serait détecté comme « $1 » par Internet Explorer, ce qui correspond à un type de fichier interdit car potentiellement dangereux.',
 'filetype-unwanted-type'      => "'''« .$1 »''' est un format de fichier non désiré.
@@ -1682,8 +1690,6 @@ Si vous voulez toujours téléverser votre fichier, veuillez revenir en arrière
 'uploaddisabledtext'          => 'Le téléversement de fichiers est désactivé sur ce wiki.',
 'php-uploaddisabledtext'      => 'Le téléversement de fichiers a été désactivé dans PHP. Vérifiez l’option de configuration file_uploads.',
 'uploadscripted'              => 'Ce fichier contient du code HTML ou un script qui pourrait être interprété de façon incorrecte par un navigateur web.',
-'uploadcorrupt'               => 'Ce fichier est corrompu, a une taille nulle ou possède une extension invalide.
-Veuillez vérifier le fichier avant de le téléverser à nouveau.',
 'uploadvirus'                 => 'Ce fichier contient un virus ! Pour plus de détails, consultez : $1',
 'upload-source'               => 'Fichier source',
 'sourcefilename'              => 'Nom du fichier source :',
@@ -1745,6 +1751,16 @@ Ce wiki est configuré comme un wiki public.
 Pour une sécurité optimale, img_auth.php est désactivé.',
 'img-auth-noread'       => 'L’utilisateur n’a pas le droit en lecture sur « $1 ».',
 
+# HTTP errors
+'http-invalid-url'      => 'URL incorrecte : $1',
+'http-invalid-scheme'   => 'Les URLs avec le schéma « $1 » ne sont pas supportées',
+'http-request-error'    => "Erreur inconnue lors de l'envoi de la requête.",
+'http-read-error'       => 'Erreur de lecture HTTP.',
+'http-timed-out'        => 'La requête HTTP a expiré.',
+'http-curl-error'       => "Erreur lors de la récupération de l'URL : $1",
+'http-host-unreachable' => "Impossible d'atteindre l'URL",
+'http-bad-status'       => 'Il y a eu un problème lors de la requête HTTP : $1 $2',
+
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL injoignable',
 'upload-curl-error6-text'  => 'L’URL fournie ne peut pas être atteinte. Veuillez vérifier que l’URL est correcte et que le site est en ligne.',
@@ -1801,7 +1817,7 @@ Une [[Special:WhatLinksHere/$2|liste complète]] est disponible.',
 'sharedupload'              => 'Ce fichier provient de $1 et peut être utilisé par d’autres projets.',
 'sharedupload-desc-there'   => 'Ce fichier provient de $1 et peut être utilisé par d’autres projets. Voyez [$2 sa page de description] pour plus d’informations.',
 'sharedupload-desc-here'    => 'Ce fichier provient de $1 et peut être utilisé par d’autres projets. Sa [$2 page de description] est affichée ci-dessous.',
-'filepage-nofile'           => 'Aucun ficher de ce nom existe.',
+'filepage-nofile'           => 'Aucun fichier de ce nom existe.',
 'filepage-nofile-link'      => "Aucun fichier de ce nom n'existe, mais vous pouvez [$1 en téléverser un].",
 'uploadnewversion-linktext' => 'Téléverser une nouvelle version de ce fichier',
 'shared-repo-from'          => 'de $1',
@@ -2162,6 +2178,9 @@ Vous pouvez aussi réinitialiser les drapeaux de notification pour toutes les pa
 Pour modifier les paramètres de votre liste de suivi, visitez
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+Pour supprimer la page de votre liste de suivi, visitez
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 Retour et assistance :
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2486,6 +2505,7 @@ Il est possible qu’un déblocage ait déjà été effectué.',
 'ipb_blocked_as_range'            => 'Erreur : l’adresse IP $1 n’est pas bloquée directement et ne peut donc pas être débloquée.
 Elle fait cependant partie de la plage $2 qui, elle, peut être débloquée.',
 'ip_range_invalid'                => 'Plage IP incorrecte.',
+'ip_range_toolarge'               => 'Les blocages de plages plus grandes que /$1 ne sont pas autorisées.',
 'blockme'                         => 'Bloquez-moi',
 'proxyblocker'                    => 'Bloqueur de mandataires',
 'proxyblocker-disabled'           => 'Cette fonction est désactivée.',
@@ -2535,6 +2555,7 @@ Ceci peut provoquer un changement radical et imprévu pour une page souvent cons
 
 Dans ces cas-là, vous devrez renommer ou fusionner cette page de discussion manuellement si vous le désirez.",
 'movearticle'                  => 'Renommer la page :',
+'moveuserpage-warning'         => "'''Attention:''' Vous êtes sur le point de renommer une page d'utilisateur. Veuillez noter que seul la page sera renommée et que l'utilisateur '''ne''' sera '''pas''' renommé.",
 'movenologin'                  => 'Vous n’êtes pas identifié{{GENDER:||e|(e)}}.',
 'movenologintext'              => 'Pour pouvoir renommer une page, vous devez être [[Special:UserLogin|identifié{{GENDER:||e|(e)}}]] avec un compte utilisateur enregistré et d’ancienneté suffisante.',
 'movenotallowed'               => 'Vous n’avez pas la permission de renommer les pages.',
@@ -2542,7 +2563,7 @@ Dans ces cas-là, vous devrez renommer ou fusionner cette page de discussion man
 'cant-move-user-page'          => 'Vous n’avez pas la permission de renommer les pages principales d’utilisateurs (en dehors de leurs sous-pages).',
 'cant-move-to-user-page'       => 'Vous n’avez pas la permission de renommer une page vers une page utilisateur (à l’exception d’une sous-page).',
 'newtitle'                     => 'Vers le nouveau titre :',
-'move-watch'                   => 'Suivre ces pages',
+'move-watch'                   => 'Suivre les pages originale et nouvelle',
 'movepagebtn'                  => 'Renommer la page',
 'pagemovedsub'                 => 'Déplacement réussi',
 'movepage-moved'               => "<big>'''« $1 »''' a été renommé '''« $2 »'''</big>",
@@ -2588,8 +2609,8 @@ impossible de renommer une page sur elle-même.',
 'imageinvalidfilename'         => 'Le nom du fichier cible est incorrect',
 'fix-double-redirects'         => 'Mettre à jour les redirections pointant vers le titre original',
 'move-leave-redirect'          => 'Laisser une redirection vers le nouveau titre',
-'protectedpagemovewarning'     => "'''Attention :''' Cette page a été protégée afin que seuls les utilisateurs possédant les droits d'administrateur puissent la renommer.",
-'semiprotectedpagemovewarning' => "'''Note:''' Cette page a été bloqué afin que seul les utilisateurs enregistrés puissent la renommer.",
+'protectedpagemovewarning'     => "'''Attention :''' Cette page a été protégée afin que seuls les utilisateurs possédant les droits d'administrateur puissent la renommer. La dernière entrée du journal est affichée ci-dessous pour référence :",
+'semiprotectedpagemovewarning' => "'''Note:''' Cette page a été protégée afin que seuls les utilisateurs enregistrés puissent la renommer. La dernière entrée du journal est affichée ci-dessous pour référence :",
 'move-over-sharedrepo'         => '== Le fichier existe ==
 [[:$1]] existe déjà sur un dépôt partagé. Renommer ce fichier rendra le fichier sur le dépôt partage inaccessible.',
 'file-exists-sharedrepo'       => 'Le nom choisi est déjà utilisé par un fichier sur un dépôt partagé.
@@ -2852,7 +2873,7 @@ Permet de rétablir la version précédente et d’ajouter un motif dans la boî
 'markaspatrolleddiff'                 => 'Marquer comme patrouillée',
 'markaspatrolledtext'                 => 'Marquer cette page comme patrouillée',
 'markedaspatrolled'                   => 'Marqué comme patrouillé',
-'markedaspatrolledtext'               => 'La version sélectionnée a été marquée comme patrouillée.',
+'markedaspatrolledtext'               => 'La révision sélectionnée de [[:$1]] a été marquée comme patrouillée.',
 'rcpatroldisabled'                    => 'La fonction de patrouille des modifications récentes n’est pas activée.',
 'rcpatroldisabledtext'                => 'La fonctionnalité de patrouille des modifications récentes est actuellement désactivée.',
 'markedaspatrollederror'              => 'Ne peut être marquée comme patrouillée',
@@ -3210,31 +3231,31 @@ Les autres liens sur la même ligne sont considérés comme des exceptions, par 
 'limitall'         => 'tous',
 
 # E-mail address confirmation
-'confirmemail'             => 'Confirmer l’adresse de courriel',
-'confirmemail_noemail'     => 'Vous n’avez pas défini une adresse de courriel valide dans vos [[Special:Preferences|préférences]].',
-'confirmemail_text'        => 'Ce wiki nécessite la vérification de votre adresse de courriel avant de pouvoir utiliser toute fonction de messagerie.
+'confirmemail'              => 'Confirmer l’adresse de courriel',
+'confirmemail_noemail'      => 'Vous n’avez pas défini une adresse de courriel valide dans vos [[Special:Preferences|préférences]].',
+'confirmemail_text'         => 'Ce wiki nécessite la vérification de votre adresse de courriel avant de pouvoir utiliser toute fonction de messagerie.
 Utilisez le bouton ci-dessous pour envoyer un courriel de confirmation à votre adresse.
 Le courriel inclura un lien comportant un code à usage unique et limité dans le temps ;
 chargez ce lien dans votre navigateur pour confirmer que votre adresse de courriel est valide.',
-'confirmemail_pending'     => 'Un code de confirmation vous a déjà été envoyé par courriel ;
+'confirmemail_pending'      => 'Un code de confirmation vous a déjà été envoyé par courriel ;
 si vous venez de créer votre compte, veuillez attendre quelques minutes que le courriel arrive avant de demander un nouveau code.',
-'confirmemail_send'        => 'Envoyer un code de confirmation',
-'confirmemail_sent'        => 'Courriel de confirmation envoyé',
-'confirmemail_oncreate'    => 'Un code de confirmation a été envoyé à votre adresse de courriel.
+'confirmemail_send'         => 'Envoyer un code de confirmation',
+'confirmemail_sent'         => 'Courriel de confirmation envoyé',
+'confirmemail_oncreate'     => 'Un code de confirmation a été envoyé à votre adresse de courriel.
 Ce code n’est pas requis pour vous identifier sur ce wiki, mais vous devrez le fournir pour activer toute fonctionnalité basée sur les courriels.',
-'confirmemail_sendfailed'  => '{{SITENAME}} n’a pas pu vous envoyer le courriel de confirmation.
+'confirmemail_sendfailed'   => '{{SITENAME}} n’a pas pu vous envoyer le courriel de confirmation.
 Veuillez vérifiez que votre adresse de courriel ne comprend aucun caractère incorrect.
 
 Le programme d’envoi de courriel a retourné l’indication suivante : $1',
-'confirmemail_invalid'     => 'Code de confirmation incorrect.
+'confirmemail_invalid'      => 'Code de confirmation incorrect.
 Celui-ci a peut-être expiré.',
-'confirmemail_needlogin'   => 'Vous devez $1 pour confirmer votre adresse de courriel.',
-'confirmemail_success'     => 'Votre adresse de courriel a été confirmée.
+'confirmemail_needlogin'    => 'Vous devez $1 pour confirmer votre adresse de courriel.',
+'confirmemail_success'      => 'Votre adresse de courriel a été confirmée.
 Vous pouvez maintenant vous [[Special:UserLogin|identifier]] et profiter du wiki.',
-'confirmemail_loggedin'    => 'Votre adresse de courriel est maintenant confirmée.',
-'confirmemail_error'       => 'Un problème est survenu lors de l’enregistrement de votre confirmation.',
-'confirmemail_subject'     => 'Confirmation d’adresse de courriel pour {{SITENAME}}',
-'confirmemail_body'        => 'Quelqu’un, probablement vous, à partir de l’adresse IP $1,
+'confirmemail_loggedin'     => 'Votre adresse de courriel est maintenant confirmée.',
+'confirmemail_error'        => 'Un problème est survenu lors de l’enregistrement de votre confirmation.',
+'confirmemail_subject'      => 'Confirmation d’adresse de courriel pour {{SITENAME}}',
+'confirmemail_body'         => 'Quelqu’un, probablement vous, à partir de l’adresse IP $1,
 a enregistré un compte « $2 » avec cette adresse de courriel
 sur le site {{SITENAME}}.
 
@@ -3251,8 +3272,25 @@ confirmation de votre adresse courriel :
 $5
 
 Ce code de confirmation expirera le $4.',
-'confirmemail_invalidated' => 'Confirmation de l’adresse courriel annulée',
-'invalidateemail'          => 'Annuler la confirmation de l’adresse de courriel',
+'confirmemail_body_changed' => "Quelqu’un, probablement vous, à partir de l’adresse IP $1,
+a modifié l'adresse de courriel associée au compte « $2 » de {{SITENAME}}
+à cette adresse.
+
+Pour confirmer que ce compte vous appartient vraiment et afin
+de réactiver les fonctions de messagerie sur {{SITENAME}},
+veuillez suivre ce lien dans votre navigateur :
+
+$3
+
+Si ce compte ne vous appartient *pas*, n’ouvrez pas ce lien ;
+vous pouvez suivre l’autre lien ci-dessous pour annuler la
+confirmation de votre adresse courriel :
+
+$5
+
+Ce code de confirmation expirera le $4.",
+'confirmemail_invalidated'  => 'Confirmation de l’adresse courriel annulée',
+'invalidateemail'           => 'Annuler la confirmation de l’adresse de courriel',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[La transclusion interwiki est désactivée]',

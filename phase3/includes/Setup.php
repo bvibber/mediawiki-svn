@@ -40,6 +40,7 @@ if( $wgArticlePath === false ) {
 
 if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
 if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
+if( $wgExtensionAssetsPath === false ) $wgExtensionAssetsPath = "$wgScriptPath/extensions";
 
 if( $wgLogo === false ) $wgLogo = "$wgStylePath/common/images/wiki.png";
 
@@ -140,7 +141,6 @@ if( $wgUseInstantCommons ) {
 	);
 }
 
-
 if ( !class_exists( 'AutoLoader' ) ) {
 	require_once( "$IP/includes/AutoLoader.php" );
 }
@@ -160,8 +160,18 @@ require_once( "$IP/includes/ImageFunctions.php" );
 require_once( "$IP/includes/StubObject.php" );
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
+
 # Raise the memory limit if it's too low
 wfMemoryLimit();
+
+/**
+ * Set up the timezone, suppressing the pseudo-security warning in PHP 5.1+ 
+ * that happens whenever you use a date function without the timezone being
+ * explicitly set. Inspired by phpMyAdmin's treatment of the problem.
+ */
+wfSuppressWarnings();
+date_default_timezone_set( date_default_timezone_get() );
+wfRestoreWarnings();
 
 $wgIP = false; # Load on demand
 # Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
@@ -170,24 +180,28 @@ $wgRequest = new WebRequest;
 # Useful debug output
 if ( $wgCommandLineMode ) {
 	wfDebug( "\n\nStart command line script $self\n" );
-} elseif ( function_exists( 'getallheaders' ) ) {
-	wfDebug( "\n\nStart request\n" );
+} else {
+	wfDebug( "Start request\n\n" );
 	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
-	$headers = getallheaders();
-	foreach ($headers as $name => $value) {
-		wfDebug( "$name: $value\n" );
-	}
-	wfDebug( "\n" );
-} elseif( isset( $_SERVER['REQUEST_URI'] ) ) {
-	wfDebug( "\n\nStart request\n" );
-	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
-	foreach ( $_SERVER as $name => $value ) {
-		if ( substr( $name, 0, 5 ) == 'HTTP_' ) {
-			$name = substr( $name, 5 );
-			wfDebug( "$name: $value\n" );
+
+	if ( $wgDebugPrintHttpHeaders ) {
+		$headerOut = "HTTP HEADERS:\n";
+
+		if ( function_exists( 'getallheaders' ) ) {
+			$headers = getallheaders();
+			foreach ( $headers as $name => $value ) {
+				$headerOut .= "$name: $value\n";
+			}
+		} else {
+			$headers = $_SERVER;
+			foreach ( $headers as $name => $value ) {
+				if ( substr( $name, 0, 5 ) !== 'HTTP_' ) continue;
+				$name = substr( $name, 5 );
+				$headerOut .= "$name: $value\n";
+			}
 		}
+		wfDebug( "$headerOut\n" );
 	}
-	wfDebug( "\n" );
 }
 
 if( $wgRCFilterByAge ) {
@@ -245,9 +259,9 @@ $wgMemc =& wfGetMainCache();
 $messageMemc =& wfGetMessageCacheStorage();
 $parserMemc =& wfGetParserCacheStorage();
 
-wfDebug( 'Main cache: ' . get_class( $wgMemc ) .
-	"\nMessage cache: " . get_class( $messageMemc ) .
-	"\nParser cache: " . get_class( $parserMemc ) . "\n" );
+wfDebug( 'CACHES: ' . get_class( $wgMemc ) . '[main] ' .
+	get_class( $messageMemc ) . '[message] ' .
+	get_class( $parserMemc ) . "[parser]\n" );
 
 wfProfileOut( $fname.'-memcached' );
 
@@ -327,8 +341,6 @@ $wgPostCommitUpdateList = array();
 
 if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
 if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'SpecialUpload::ajaxGetExistsWarning';
-if( $wgAjaxLicensePreview )
-	$wgAjaxExportList[] = 'SpecialUpload::ajaxGetLicensePreview';
 
 # Placeholders in case of DB error
 $wgTitle = null;

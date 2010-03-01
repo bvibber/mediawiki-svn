@@ -49,8 +49,8 @@ $dateFormats = array(
         'mdy date' => 'M j, Y',
         'mdy both' => 'H:i, M j, Y',
         'dmy time' => 'H:i',
-        'dmy date' => 'j. M Y',
-        'dmy both' => 'j. M Y, H:i',
+        'dmy date' => 'j M Y',
+        'dmy both' => 'j M Y, H:i',
         'ymd time' => 'H:i',
         'ymd date' => 'Y M j',
         'ymd both' => 'H:i, Y M j',
@@ -433,7 +433,6 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'savefile'          => 'Saqla biremne',
 'uploadedimage'     => 'yöklände "$1"',
 'uploaddisabled'    => 'Ğafu it, yökläw sünderelgän kileş tora.',
-'uploadcorrupt'     => 'Bu birem yä üze watıq, yä quşımtası yaraqsız. Birem tikşerüdän soñ qabat yöklä zínhar.',
 
 # Special:ListFiles
 'imgfile'   => 'fayl',

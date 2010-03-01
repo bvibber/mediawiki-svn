@@ -297,9 +297,6 @@ $messages = array(
 'faq'            => 'KBS',
 'faqpage'        => 'Project:KBS',
 
-# Metadata in edit box
-'metadata_help' => "Metamag'lıwmat:",
-
 'errorpagetitle'    => 'Qatelik',
 'returnto'          => '$1 betine qaytıw.',
 'tagline'           => "{{SITENAME}} mag'lıwmatı",
@@ -663,8 +660,7 @@ to'mende ko'rsetilgen:",
 'confirmedittext'                  => "Betlerge o'zgeris kiritiwin'iz ushın aldın E-pochta adresin'izdi tastıyıqlawın'ız kerek.
 E-pochta adresin'izdi [[Special:Preferences|paydalanıwshı sazlawları bo'limi]] arqalı ko'rsetin' ha'm jaramlılıg'ın tekserin'.",
 'nosuchsectiontitle'               => "Bunday bo'lim joq",
-'nosuchsectiontext'                => "Ele jaratılmag'an bo'limdi o'zgerpekshisiz.
-$1 bo'limi joq bolg'anlıg'ı sebepli sizin' o'zgertiwin'izdi saqlawg'a orın joq.",
+'nosuchsectiontext'                => "Ele jaratılmag'an bo'limdi o'zgerpekshisiz.",
 'loginreqtitle'                    => "Sistemag'a kiriw kerek",
 'loginreqlink'                     => 'kiriw',
 'loginreqpagetext'                 => "Basqa betlerdi ko'riw ushın sizge $1 kerek.",

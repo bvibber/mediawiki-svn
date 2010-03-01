@@ -508,9 +508,6 @@ $messages = array(
 'faq'            => 'Jïi qoýılğan sawaldar',
 'faqpage'        => 'Project:Jïi qoýılğan sawaldar',
 
-# Metadata in edit box
-'metadata_help' => 'Qosımşa derekter:',
-
 'errorpagetitle'    => 'Qatelik',
 'returnto'          => '$1 degenge qaýta kelw.',
 'tagline'           => '{{GRAMMAR:ablative|{{SITENAME}}}}',
@@ -880,8 +877,7 @@ Bul nömirdi ärbir suranımıñızdarğa kiristiriñiz.",
 'confirmedittext'                  => 'Betterdi öñdew üşin aldın ala E-poşta mekenjaýıñızdı quptawıñız jön.
 E-poşta mekenjaýıñızdı [[{{#special:Preferences}}|paýdalanwşılıq baptalımdarıñız]] arqılı qoýıñız da jaramdılığın tekserip şığıñız.',
 'nosuchsectiontitle'               => 'Osındaý eş bölim joq',
-'nosuchsectiontext'                => 'Joq bölimdi öñdewdi talap etipsiz.
-Mında $1 degen bölim joq eken, öñdemeñizdi saqtaw üşin orın joq.',
+'nosuchsectiontext'                => 'Joq bölimdi öñdewdi talap etipsiz.',
 'loginreqtitle'                    => 'Kirwiñiz kerek',
 'loginreqlink'                     => 'kirw',
 'loginreqpagetext'                 => 'Basqa betterdi körw üşin siz $1 bolwıñız jön.',
@@ -1438,8 +1434,6 @@ keri qaýtıñız da, osı faýldı jaña atımen qotarıp beriñiz. [[File:$1|t
 'uploaddisabled'              => 'Qotarıp berw öşirilgen',
 'uploaddisabledtext'          => '{{SITENAME}} jobasında faýl qotarıp berwi öşirilgen.',
 'uploadscripted'              => 'Bul faýlda veb şolğıştı qatelikpen taldatqızatın HTML ne ämir kodı bar.',
-'uploadcorrupt'               => 'Bul faýl büldirilgen, ne burıs keñeýtimi bar.
-Faýldı tekserip şığıñız da, qaýta qotarıp beriñiz.',
 'uploadvirus'                 => 'Bul faýlda vïrws bar! Egjeý-tegjeýleri: $1',
 'sourcefilename'              => 'Qaýnar faýl atawı:',
 'destfilename'                => 'Nısana faýl atawı:',

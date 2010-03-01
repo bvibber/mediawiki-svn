@@ -174,9 +174,6 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
-# Metadata in edit box
-'metadata_help' => 'Metadane:',
-
 'errorpagetitle'    => 'Feler',
 'returnto'          => 'Nazod do zajty $1.',
 'tagline'           => 'S {{GRAMMAR:D.lp|{{SITENAME}}}}',
@@ -532,7 +529,7 @@ Twůj adres IP je terozki $3. Idyntyfikator Twojij blokady to $5. Zanotuj śe go
 'confirmedittext'                  => 'Muśiš podać a potwjerdźić swůj e-brif, coby můc sam sprowjać.
 Možeš to zrobić we [[Special:Preferences|swojich štalowańach]].',
 'nosuchsectiontitle'               => 'Ńy mo takij tajli',
-'nosuchsectiontext'                => 'Průbowoužeś sprowjać tajla kero ńy istńeje. Jak sam ńy ma tajli $1, ńy ma tyž kaj naškryflać twojigo sprowjyńo.',
+'nosuchsectiontext'                => 'Průbowoužeś sprowjać tajla kero ńy istńeje.',
 'loginreqtitle'                    => 'Muśiš śe zalůgować',
 'loginreqlink'                     => 'zalůguj śe',
 'loginreqpagetext'                 => 'Muśiš $1 coby můc přeglůndać inkše zajty.',
@@ -1140,7 +1137,6 @@ Idź nazod i wćepej tyn plik pod inkšym mjanym. [[File:$1|thumb|center|$1]]',
 'uploaddisabled'              => 'Wćepywanie sam plikůw je zawarte',
 'uploaddisabledtext'          => 'Wćepywańe plikůw je zawarte.',
 'uploadscripted'              => 'Tyn plik zawjyro kod HTML abo skrypt kery može zostać felerńe zinterpretowany bez přyglůndarka internetowo.',
-'uploadcorrupt'               => 'Tyn plik je uškodzůny abo mo felerne rozšeřyńy. Proša sprawdźić plik i wćepać sam poprawno wersja.',
 'uploadvirus'                 => 'W tym pliku je wirus! Ščygůuy: $1',
 'sourcefilename'              => 'Mjano oryginalne:',
 'destfilename'                => 'Mjano docylowe:',

@@ -305,9 +305,6 @@ $messages = array(
 'faq'            => 'FAQ (väölgesjtèlde vraoge)',
 'faqpage'        => 'Project:Väölgestjèlde vraoge',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Truuk nao $1.',
 'tagline'           => 'Van {{SITENAME}}',
@@ -670,7 +667,7 @@ Vermeld det esse örges euver deze blokkaasj reageers.",
 'confirmedittext'                  => "De mós dien e-mailadres bevestige veurdats te kèns bewirke.
 Veur dien e-mailadres in en bevestig 'm bie [[Special:Preferences|dien veurkäöre]].",
 'nosuchsectiontitle'               => 'Deze subkop bestuit neet',
-'nosuchsectiontext'                => "Doe probeers 'ne subkop te bewirke dae neet besjtuit. Ómdet subkop $1 neet besjtuit, kin dien bewirking ouch neet waere opgesjlage.",
+'nosuchsectiontext'                => "Doe probeers 'ne subkop te bewirke dae neet besjtuit.",
 'loginreqtitle'                    => 'Aanmelje verplich',
 'loginreqlink'                     => 'inglogge',
 'loginreqpagetext'                 => "De mos $1 om anger pazjena's te bekieke.",
@@ -1346,7 +1343,6 @@ Raodpleeg t verwiederingslogbook veurdet se wiejer geis.',
 'uploaddisabledtext'          => "'t uploade van bestenj is oetgesjakeld.",
 'php-uploaddisabledtext'      => 'PHP-bestanduploads zeen oetgesjakeld. Controleer a.u.b. de file_uploads-instelling.',
 'uploadscripted'              => 'Dit bestandj bevat HTML- of scriptcode die foutief door diene browser weergegaeve kinne waere.',
-'uploadcorrupt'               => "'t bestand is corrup of haet 'n onzjuste extensie. Controleer 't bestand en upload 't opnuuj.",
 'uploadvirus'                 => "'t Bestand bevat 'n virus! Details: $1",
 'sourcefilename'              => 'Oorspronkelike bestandsnaam:',
 'destfilename'                => 'Doeltitel:',
@@ -2166,8 +2162,8 @@ In 't letste geval kèns te ouch 'ne link gebroeken, bieveurbild [[{{#Special:Ex
 'allmessagesname'           => 'Naam',
 'allmessagesdefault'        => 'Obligaten teks',
 'allmessagescurrent'        => 'Hujige teks',
-'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki:-naamruumde.
-Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWikilokalisaasje] en [http://translatewiki.net translatewiki.net] wense wils biedrage ane lokalisaasje.",
+'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki-naamruumde.
+Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWiki-lokalisatie] en [http://translatewiki.net translatewiki.net] es doe wils biedrage aon lokalisatie.",
 'allmessagesnotsupportedDB' => "Deze pagina kan neet gebroek waere omdet '''\$wgUseDatabaseMessages''' oet steit.",
 
 # Thumbnails

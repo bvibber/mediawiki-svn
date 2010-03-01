@@ -324,9 +324,6 @@ $messages = array(
 'namespaces'                 => 'Nammeromten',
 'variants'                   => 'Farianten',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Werom nei "$1".',
 'tagline'           => 'Ut {{SITENAME}}',
@@ -691,7 +688,7 @@ Jo tsjintwurdich e-postadres is $3 en it útsletnûmer is #$5. Neam beide gegeve
 'whitelistedittext'                => 'Jo moatte $1 om siden te bewurkjen.',
 'confirmedittext'                  => "Jo moatte jo e-mailadres befêstichje foar't jo siden feroarje kinne. Fier in e-mailedres yn by jo [[Special:Preferences|ynstellings]] en befêstichje it.",
 'nosuchsectiontitle'               => 'Dizze subkop bestiet net',
-'nosuchsectiontext'                => "Jo besochten in subkop te bewurkjen dy't net bestiet. Om't subkop $1 net bestiet, kin jo bewurking ek net opslein wurde.",
+'nosuchsectiontext'                => "Jo besochten in subkop te bewurkjen dy't net bestiet.",
 'loginreqtitle'                    => 'Oanmelding frege',
 'loginreqlink'                     => 'Oanmelde',
 'loginreqpagetext'                 => 'Jo moatte jo $1 om oare siden besjen te kinnen.',
@@ -1379,8 +1376,6 @@ Rieplachtsje it fuorthel-logboek foar't jo fierder geane.",
 'uploaddisabledtext'          => 'It oanbieden fan triemmen is útskeakele.',
 'php-uploaddisabledtext'      => 'PHP-triemuploads binne útskeakele. Kontrolearje a.j.w. de triem_uploads-ynstelling.',
 'uploadscripted'              => "Dizze triem befettet HTML- of scriptkoade dy't ferkeard troch jo browser werjûn wurde kin.",
-'uploadcorrupt'               => 'De triem is net ynoarder of hat de ferkearde útgong.  
-Kontrolearje de triem en bied dy wer oan.',
 'uploadvirus'                 => 'De triem befettet in firus! Details: $1',
 'sourcefilename'              => 'Triemnamme boarne:',
 'destfilename'                => 'Triemnamme om op te slaan:',

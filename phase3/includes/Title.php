@@ -435,7 +435,7 @@ class Title {
 		global $wgContLang;
 
 		$lc = SearchEngine::legalSearchChars() . '&#;';
-		$t = $wgContLang->stripForSearch( $title );
+		$t = $wgContLang->normalizeForSearch( $title );
 		$t = preg_replace( "/[^{$lc}]+/", ' ', $t );
 		$t = $wgContLang->lc( $t );
 
@@ -501,13 +501,11 @@ class Title {
 	 * Escape a text fragment, say from a link, for a URL
 	 */
 	static function escapeFragmentForURL( $fragment ) {
-		global $wgEnforceHtmlIds;
 		# Note that we don't urlencode the fragment.  urlencoded Unicode
 		# fragments appear not to work in IE (at least up to 7) or in at least
 		# one version of Opera 9.x.  The W3C validator, for one, doesn't seem
 		# to care if they aren't encoded.
-		return Sanitizer::escapeId( $fragment,
-			$wgEnforceHtmlIds ? 'noninitial' : 'xml' );
+		return Sanitizer::escapeId( $fragment, 'noninitial' );
 	}
 
 #----------------------------------------------------------------------------
@@ -542,7 +540,7 @@ class Title {
 	public function getNsText() {
 		global $wgContLang;
 
-		if ( '' != $this->mInterwiki ) {
+		if ( $this->mInterwiki != '' ) {
 			// This probably shouldn't even happen. ohh man, oh yuck.
 			// But for interwiki transclusion it sometimes does.
 			// Shit. Shit shit shit.
@@ -654,7 +652,7 @@ class Title {
 	 */
 	public function getFullText() {
 		$text = $this->getPrefixedText();
-		if( '' != $this->mFragment ) {
+		if( $this->mFragment != '' ) {
 			$text .= '#' . $this->mFragment;
 		}
 		return $text;
@@ -738,7 +736,7 @@ class Title {
 			$baseUrl = $interwiki->getURL( );
 
 			$namespace = wfUrlencode( $this->getNsText() );
-			if ( '' != $namespace ) {
+			if ( $namespace != '' ) {
 				# Can this actually happen? Interwikis shouldn't be parsed.
 				# Yes! It can in interwiki transclusion. But... it probably shouldn't.
 				$namespace .= ':';
@@ -910,7 +908,7 @@ class Title {
 	 *  interwiki link
 	 */
 	public function getEditURL() {
-		if ( '' != $this->mInterwiki ) { return ''; }
+		if ( $this->mInterwiki != '' ) { return ''; }
 		$s = $this->getLocalURL( 'action=edit' );
 
 		return $s;
@@ -929,12 +927,12 @@ class Title {
 	 * Is this Title interwiki?
 	 * @return \type{\bool}
 	 */
-	public function isExternal() { return ( '' != $this->mInterwiki ); }
+	public function isExternal() { return ( $this->mInterwiki != '' ); }
 
 	/**
 	 * Is this page "semi-protected" - the *only* protection is autoconfirm?
 	 *
-	 * @param @action \type{\string} Action to check (default: edit)
+	 * @param $action \type{\string} Action to check (default: edit)
 	 * @return \type{\bool}
 	 */
 	public function isSemiProtected( $action = 'edit' ) {
@@ -958,7 +956,7 @@ class Title {
 
 	/**
 	 * Does the title correspond to a protected article?
-	 * @param $what \type{\string} the action the page is protected from,
+	 * @param $action \type{\string} the action the page is protected from,
 	 * by default checks all actions.
 	 * @return \type{\bool}
 	 */
@@ -981,6 +979,19 @@ class Title {
 					}
 				}
 			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Is this a conversion table for the LanguageConverter?
+	 * @return \type{\bool}
+	 */
+	public function isConversionTable() {
+		if($this->getNamespace() == NS_MEDIAWIKI
+		   && strpos( $this->getText(), 'Conversiontable' ) !== false ) {
+			return true;
 		}
 
 		return false;
@@ -1305,7 +1316,7 @@ class Title {
 			if( $right == 'sysop' ) {
 				$right = 'protect';
 			}
-			if( '' != $right && !$user->isAllowed( $right ) ) {
+			if( $right != '' && !$user->isAllowed( $right ) ) {
 				// Users with 'editprotected' permission can edit protected pages
 				if( $action=='edit' && $user->isAllowed( 'editprotected' ) ) {
 					// Users with 'editprotected' permission cannot edit protected pages
@@ -1337,7 +1348,7 @@ class Title {
 			if( $cascadingSources > 0 && isset($restrictions[$action]) ) {
 				foreach( $restrictions[$action] as $right ) {
 					$right = ( $right == 'sysop' ) ? 'protect' : $right;
-					if( '' != $right && !$user->isAllowed( $right ) ) {
+					if( $right != '' && !$user->isAllowed( $right ) ) {
 						$pages = '';
 						foreach( $cascadingSources as $page )
 							$pages .= '* [[:' . $page->getPrefixedText() . "]]\n";
@@ -2196,7 +2207,7 @@ class Title {
 	 */
 	/* private */ function prefix( $name ) {
 		$p = '';
-		if ( '' != $this->mInterwiki ) {
+		if ( $this->mInterwiki != '' ) {
 			$p = $this->mInterwiki . ':';
 		}
 		if ( 0 != $this->mNamespace ) {
@@ -2274,7 +2285,7 @@ class Title {
 		$dbkey = preg_replace( '/[ _\xA0\x{1680}\x{180E}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}]+/u', '_', $dbkey );
 		$dbkey = trim( $dbkey, '_' );
 
-		if ( '' == $dbkey ) {
+		if ( $dbkey == '' ) {
 			return false;
 		}
 
@@ -2349,7 +2360,7 @@ class Title {
 
 		# We already know that some pages won't be in the database!
 		#
-		if ( '' != $this->mInterwiki || NS_SPECIAL == $this->mNamespace ) {
+		if ( $this->mInterwiki != '' || NS_SPECIAL == $this->mNamespace ) {
 			$this->mArticleID = 0;
 		}
 		$fragment = strstr( $dbkey, '#' );
@@ -2661,9 +2672,9 @@ class Title {
 		if ( strlen( $nt->getDBkey() ) < 1 ) {
 			$errors[] = array('articleexists');
 		}
-		if ( ( '' == $this->getDBkey() ) ||
+		if ( ( $this->getDBkey() == '' ) ||
 			 ( !$oldid ) ||
-		     ( '' == $nt->getDBkey() ) ) {
+		     ( $nt->getDBkey() == '' ) ) {
 			$errors[] = array('badarticleerror');
 		}
 
@@ -2680,12 +2691,12 @@ class Title {
 				if( !File::checkExtensionCompatibility( $file, $nt->getDBkey() ) ) {
 					$errors[] = array('imagetypemismatch');
 				}
-			} 
+			}
 			$destfile = wfLocalFile( $nt );
 			if( !$wgUser->isAllowed( 'reupload-shared' ) && !$destfile->exists() && wfFindFile( $nt ) ) {
 				$errors[] = array( 'file-exists-sharedrepo' );
 			}
-			
+
 		}
 
 		if ( $auth ) {
@@ -2879,13 +2890,15 @@ class Title {
 	 *  Ignored if the user doesn't have the suppressredirect right
 	 */
 	private function moveOverExistingRedirect( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgUseSquid, $wgUser;
+		global $wgUseSquid, $wgUser, $wgContLang;
 
 		$comment = wfMsgForContent( '1movedto2_redir', $this->getPrefixedText(), $nt->getPrefixedText() );
 
 		if ( $reason ) {
 			$comment .= wfMsgForContent( 'colon-separator' ) . $reason;
 		}
+		# Truncate for whole multibyte characters. +5 bytes for ellipsis
+		$comment = $wgContLang->truncate( $comment, 250 );
 
 		$now = wfTimestampNow();
 		$newid = $nt->getArticleID();
@@ -2993,7 +3006,7 @@ class Title {
 	 *  Ignored if the user doesn't have the suppressredirect right
 	 */
 	private function moveToNewTitle( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgUseSquid, $wgUser;
+		global $wgUseSquid, $wgUser, $wgContLang;
 
 		$comment = wfMsgForContent( '1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
 		if ( $reason ) {
@@ -3001,6 +3014,8 @@ class Title {
 				array( 'escapenoentities', 'content' ) );
 			$comment .= $reason;
 		}
+		# Truncate for whole multibyte characters. +5 bytes for ellipsis
+		$comment = $wgContLang->truncate( $comment, 250 );
 
 		$newid = $nt->getArticleID();
 		$oldid = $this->getArticleID();
@@ -3642,6 +3657,13 @@ class Title {
 			$namespaceKey = 'image';
 		}
 		return $prepend . $namespaceKey;
+	}
+
+	/**
+	 * Returns true if this is a special page.
+	 */
+	public function isSpecialPage( ) {
+		return $this->getNamespace() == NS_SPECIAL;
 	}
 
 	/**

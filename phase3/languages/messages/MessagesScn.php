@@ -319,9 +319,6 @@ $messages = array(
 'namespaces'                 => 'Namespace',
 'variants'                   => 'Varianti',
 
-# Metadata in edit box
-'metadata_help' => 'Metadati:',
-
 'errorpagetitle'    => 'Erruri',
 'returnto'          => 'Ritorna a $1.',
 'tagline'           => 'Di {{SITENAME}}',
@@ -690,7 +687,7 @@ Pi favuri nclùdilu nta tutti li dumanni chi fai.",
 'whitelistedittext'                => "Hai a $1 pi canciari l'artìculi.",
 'confirmedittext'                  => "P'èssiri abbilitati a lu canciamentu dî pàggini è nicissariu cunfirmari lu propiu ndirizzu e-mail. Pi mpustari e cunfirmari lu ndirizzu sirvìrisi dî [[Special:Preferences|prifirenzi]].",
 'nosuchsectiontitle'               => 'Sta sezzioni nun esisti',
-'nosuchsectiontext'                => 'Pruvasti a canciari na sezzioni chi nun esisti. Li tò canciamenti nun ponnu èssiri sarvati, picchì nun esisti la sezzioni $1.',
+'nosuchsectiontext'                => 'Pruvasti a canciari na sezzioni chi nun esisti.',
 'loginreqtitle'                    => 'Login nicissariu',
 'loginreqlink'                     => "esèquiri l'accessu",
 'loginreqpagetext'                 => 'Pi vìdiri àutri pàggini è nicissariu $1.',
@@ -1390,7 +1387,6 @@ Siddu si disponi dâ mmàggini ntâ risuluzzioni urigginali, si prega di carric�
 'uploaddisabledtext'          => 'Lu carricamentu dî file nun è attivu supra a stu situ.',
 'php-uploaddisabledtext'      => 'Li file PHP non sunnu abbilitati. Pi favuri cuntrolla li mpustazzioni dû file_uploads.',
 'uploadscripted'              => "Stu file cunteni còdici HTML o di script, ca putissi èssiri nterpritato erroniamenti d'un browser web.",
-'uploadcorrupt'               => 'Lu file è currumputu o hà na stinzioni nun curretta. Pi favuri cuntrolla lu file e esequi di novu lu carricamentu.',
 'uploadvirus'                 => 'Lu file cunteni un virus! Ultiriuri nfurmazzioni: $1',
 'sourcefilename'              => "Nomu dû file d'orìggini:",
 'destfilename'                => 'Nomu dû file di distinazzioni:',

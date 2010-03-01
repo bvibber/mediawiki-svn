@@ -8,6 +8,7 @@
  * @file
  *
  * @author Alsandro
+ * @author BRUTE
  * @author Dato deutschland
  * @author David1010
  * @author Malafaya
@@ -98,6 +99,12 @@ $specialPageAliases = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#გადამისამართება', '#REDIRECT' ),
+	'nogallery'             => array( '0', '__უგალერეო__', '__NOGALLERY__' ),
+	'subst'                 => array( '0', 'მიდგმ:', 'SUBST:' ),
+	'img_thumbnail'         => array( '1', 'მინიატიურა', 'მინი', 'thumbnail', 'thumb' ),
+	'img_right'             => array( '1', 'მარჯვნივ', 'right' ),
+	'img_left'              => array( '1', 'მარცხნივ', 'left' ),
+	'img_center'            => array( '1', 'ცენტრი', 'center', 'centre' ),
 );
 
 $linkPrefixExtension = true;
@@ -291,9 +298,6 @@ $messages = array(
 'actions'                    => 'მოქმედებები',
 'namespaces'                 => 'სახელთა სივრცე',
 'variants'                   => 'ვარიანტები',
-
-# Metadata in edit box
-'metadata_help' => 'მეტამონაცემები:',
 
 'errorpagetitle'    => 'შეცდომა',
 'returnto'          => 'დაბრუნდი $1-ზე.',
@@ -523,6 +527,7 @@ $2',
 'nav-login-createaccount'    => 'შესვლა',
 'loginprompt'                => '{{SITENAME}}-ში შესასვლელად საჭიროა კუკის (cookies) გააქტიურება.',
 'userlogin'                  => 'შესვლა/ანგარიშის შექმნა',
+'userloginnocreate'          => 'შესვლა',
 'logout'                     => 'გასვლა',
 'userlogout'                 => 'გასვლა',
 'notloggedin'                => 'შესული არ ხართ',
@@ -684,7 +689,7 @@ $1 საათში.',
 'whitelistedittext'                => 'გვერდების რედაქტირებისათვის თქვენ გესაჭიროებათ $1.',
 'confirmedittext'                  => 'გვერდების დარედაქტირებამდე უნდა დაადასტუროთ თქვენი ელფოსტის მისამართი. გთხოვთ [[Special:Preferences|მომხმარებლის პარამეტრებში]] მიუთითოთ და დაამოწმოთ ელფოსტის მისამართი.',
 'nosuchsectiontitle'               => 'სექცია არ არსებობს',
-'nosuchsectiontext'                => 'თქვენ სცადეთ არარსებული სექციის რედაქტირება. ვინაიდან სექცია $1 არ არსებობს, არ არის მისი შენახვის ადგილი.',
+'nosuchsectiontext'                => 'თქვენ სცადეთ არარსებული სექციის რედაქტირება.',
 'loginreqtitle'                    => 'რეგისტრაცია აუცილებელია',
 'loginreqlink'                     => 'შესვლა',
 'loginreqpagetext'                 => 'თქვენ უნდა $1 სხვა გვერდები აჩვენოთ.',
@@ -894,6 +899,8 @@ $3 -ემ ამგვარი ახსნა : ''$2''",
 'revdelete-hide-comment'      => 'რედაქტირების კომენტარის დამალვა',
 'revdelete-hide-user'         => 'რედაქტორის მომხ. სახელის/IP-ს დამალვა',
 'revdelete-hide-restricted'   => 'დამალეთ მონაცემები ადმინთაგანაც',
+'revdelete-radio-set'         => 'დიახ',
+'revdelete-radio-unset'       => 'არა',
 'revdelete-suppress'          => 'დამალეთ მონაცემები ადმინთაგანაც',
 'revdelete-unsuppress'        => 'მოხსენით შეზღუდვა ვერსიების აღდგენისგან',
 'revdelete-log'               => 'წაშლის მიზეზი:',
@@ -1433,8 +1440,8 @@ $1",
 'uploaddisabledtext'          => 'ფაილების ატვირთვა შეუძლებელია.',
 'php-uploaddisabledtext'      => 'ფაილების ატვირთვა შეჩერებულია PHP-ით. გთხოვთ შეამოწმოთ file_uploads-ის მნიშვნელობა.',
 'uploadscripted'              => 'ფაილი შეიცავს HTML-კოდს, ან სკრიპტს, რომელიც ბროუზერმა შეიძლება არასწორედ გაანალიზოს.',
-'uploadcorrupt'               => 'ფაილი დაზიანებულია ან არასწორი გაფართოვება აქვს. გთხოვთ შეამოწმოთ ფაილი და განმეორებით ატვირთეთ.',
 'uploadvirus'                 => 'ფაილი ვირუსს შეიცავს! დეტალები: $1',
+'upload-source'               => 'ფაილის წყარო',
 'sourcefilename'              => 'წყარო:',
 'destfilename'                => 'საბოლოო სახელი:',
 'upload-maxfilesize'          => 'ფაილის მაქსიმალური ზომაა $1',
@@ -2110,6 +2117,7 @@ $1',
 
 # Block/unblock
 'blockip'                         => 'მომხმარებლის ან IP მისამართის ბლოკირება',
+'blockip-title'                   => 'მომხმარებლის დაბლოკვა',
 'blockip-legend'                  => 'მომხმარებლის დაბლოკვა',
 'blockiptext'                     => 'გამოიყენეთ ქვემოთ მოყვანილი ფორმა სპეციფიური IP მისამართის
 ან მომხმარებლისთვის რედაქტირების ბლოკირებისთვის.
@@ -2165,6 +2173,7 @@ $1',
 'ipblocklist-sh-tempblocks'       => '$1 დროებითი ბლოკირებები',
 'ipblocklist-sh-addressblocks'    => 'გარკვეული IP-ს $1 ბლოკირებები',
 'ipblocklist-submit'              => 'ძიება',
+'ipblocklist-localblock'          => 'ლოკალური ბლოკირება',
 'ipblocklist-otherblocks'         => 'სხვა {{PLURAL:$1|დაბლოკვა|დაბლოკვები}}',
 'blocklistline'                   => '$1, $2 დაბლოკა $3 ($4)',
 'infiniteblock'                   => 'უსასრულო',
@@ -2482,10 +2491,12 @@ $1',
 # Attribution
 'anonymous'        => '{{SITENAME}}-ის ანონიმური {{PLURAL:$1|მომხმარებელი|მომხმარებლები}}',
 'siteuser'         => '{{SITENAME}} მომხმარებელი $1',
+'anonuser'         => '{{SITENAME}} ანონიმური მომხმარებელი $1',
 'lastmodifiedatby' => 'ეს გვერდი ბოლოს შეიცვალა $2, $1  $3-ით.',
 'othercontribs'    => '$1-ს ნამუშევრის მიხედვით.',
 'others'           => 'სხვები',
 'siteusers'        => '{{SITENAME}}-ის {{PLURAL:$2|მომხმარებელი|მომხმარებლები|}} $1',
+'anonusers'        => '{{SITENAME}} ანონიმური {{PLURAL:$2|მომხმარებელი|მომხმარებლები}} $1',
 'creditspage'      => 'წვლილი',
 'nocredits'        => 'აქ ამ გვერდისთვის ხელმისაწვდომი ინფორმაცია არ არსებობს.',
 

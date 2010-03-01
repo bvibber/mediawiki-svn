@@ -448,9 +448,6 @@ $messages = array(
 'namespaces'                 => 'Spazji tal-isem',
 'variants'                   => 'Varjanti',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Problema',
 'returnto'          => "Erġa' lura lejn $1.",
 'tagline'           => 'Minn {{SITENAME}}',
@@ -832,8 +829,7 @@ Jekk jogħġbok inkludi mqar wieħed minn dawn it-tnejn f'kwalunkwe rikjesta.",
 'confirmedittext'                  => "Jinħtieġ li tikkonferma l-indirizz tal-e-mail tiegħek sabiex tkun tista' timmodifika l-paġni.
 Jekk jogħġbok, issettja u kkonferma l-indirizz tal-e-mail tiegħek mill-[[Special:Preferences|preferenzi tal-utent]].",
 'nosuchsectiontitle'               => 'L-Ebda sezzjoni',
-'nosuchsectiontext'                => 'Provajt timodifika sezzjoni li ma teżistix.
-Minħabba li $1 ma teżistix, il-modifiki tiegħek ma ġewx salvati.',
+'nosuchsectiontext'                => 'Provajt timodifika sezzjoni li ma teżistix.',
 'loginreqtitle'                    => "Sabiex tagħmel modifiki f'din il-paġna huwa neċessarju li tidħol bħalha utent reġistrat fuq dan is-sit.",
 'loginreqlink'                     => 'li tidħol fil-kont tiegħek',
 'loginreqpagetext'                 => "Int trid ikollhok $1 sabiex tkun tista' tara paġni oħrajn.",
@@ -1490,8 +1486,6 @@ Jekk jogħġbok mur lura u tella' dan il-fajl b'isem ġdid. [[File:$1|thumb|cent
 'uploaddisabled'              => "Skuzana, però ''uploads'' ta' fajls huwa temporalment sospiż.",
 'uploaddisabledtext'          => "It-tlugħ ta' fajls mhuwiex attiv.",
 'uploadscripted'              => "Dan il-fajl fih kodiċi ta' ''HTML'' u ''script'' li jista' jkun interpretat hażin mill-''web browser''.",
-'uploadcorrupt'               => "Dan il-fajl jidher li huwa maħruq jew għandu estenżjoni ħażina.
-Jekk jogħġbok verifika l-fajl u erġa' prova tellgħu.",
 'uploadvirus'                 => "Dan il-fajl huwa infettat b'virus! Dettalji: $1",
 'sourcefilename'              => 'L-isem tal-fajl tal-oriġini:',
 'destfilename'                => 'L-Isem tal-fajl tad-destinazzjoni:',
@@ -1906,7 +1900,7 @@ Biex tagħti l-kumment tiegħek u għal aktar għajnuna:
 'exblank'                => 'paġna kienet vojta',
 'delete-confirm'         => 'Ħassar "$1"',
 'delete-legend'          => 'Ħassar',
-'historywarning'         => "Twissija: Il-paġna li se tħassar għandha kronoloġija b'{{PLURAL:$1|reviżjoni waħda|numru ta' reviżjonijiet}}:",
+'historywarning'         => "'''Twissija:''' Il-paġna li se tħassar għandha kronoloġija b'madwar {{PLURAL:$1|reviżjoni waħda|$1 reviżjoni}}:",
 'confirmdeletetext'      => "Int se tħassar għal kollox mid-database paġna jew stampa, flimkien mal-kronoloġija kollha tagħha. Jekk jogħġbok, ikkonferma li hija x-xewqa tiegħek li tkompli bit-tħassir ta' din il-paġna, u tifhem il-konsegwenzi ta' li qiegħed tagħmel, u li qiegħed tagħmilhom skont il- [[{{MediaWiki:Policy-url}}|politika]] stabbilita.",
 'actioncomplete'         => 'Azzjoni mwettqa',
 'deletedtext'            => '"<nowiki>$1</nowiki>" ġiet imħassra.

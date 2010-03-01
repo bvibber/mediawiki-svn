@@ -395,9 +395,6 @@ $messages = array(
 'namespaces'                 => 'Imenski prostori',
 'variants'                   => 'Varijante',
 
-# Metadata in edit box
-'metadata_help' => 'Metapodaci:',
-
 'errorpagetitle'    => 'Greška',
 'returnto'          => 'Povratak na $1.',
 'tagline'           => 'Iz projekta {{SITENAME}}',
@@ -792,7 +789,7 @@ Molimo vas navedite ovaj ID broj prilikom pravljenja bilo kakvih upita.',
 'confirmedittext'                  => 'Morate potvrditi vašu adresu e-pošte pre uređivanja strana.
 Molimo postavite i potvrdite adresu vaše e-pošte preko vaših [[Special:Preferences|korisničkih podešavanja]].',
 'nosuchsectiontitle'               => 'Ne postoji takav odeljak',
-'nosuchsectiontext'                => 'Pokušali ste da uredite odeljak koji ne postoji. Kako ne postoji odeljak $1, nema ni mesta za čuvanje vaše izmene.',
+'nosuchsectiontext'                => 'Pokušali ste da uredite odeljak koji ne postoji.',
 'loginreqtitle'                    => 'Potrebno [[{{ns:special}}:Userlogin|prijavljivanje]]',
 'loginreqlink'                     => 'prijava',
 'loginreqpagetext'                 => 'Morate $1 da biste videli ostale strane.',
@@ -1508,7 +1505,6 @@ Trebalo bi da proverite istoriju brisanja fajla pre ponovnog slanja.',
 'php-uploaddisabledtext'      => 'Slanje fajlova je onemogućeno u samom PHP-u.
 Molimo, proverite podešavanja file_uploads.',
 'uploadscripted'              => 'Ovaj fajl sadrži HTML ili kod skripte koje internet brauzer može pogrešno da interpretira.',
-'uploadcorrupt'               => 'Fajl je neispravan ili ima netačnu ekstenziju. Molimo proverite fajl i pošaljite ga ponovo.',
 'uploadvirus'                 => 'Fajl sadrži virus! Detalji: $1',
 'sourcefilename'              => 'Ime fajla izvora:',
 'destfilename'                => 'Ciljano ime fajla:',

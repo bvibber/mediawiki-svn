@@ -114,7 +114,7 @@ class Preferences {
 	}
 
 	static function profilePreferences( $user, &$defaultPreferences ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 		## User info #####################################
 		// Information panel
 		$defaultPreferences['username'] =
@@ -209,7 +209,6 @@ class Preferences {
 				);
 
 		if( $wgAuth->allowPasswordChange() ) {
-			global $wgUser; // For skin.
 			$link = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Resetpass' ),
 				wfMsgHtml( 'prefs-resetpass' ), array(),
 				array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' ) ) );
@@ -362,7 +361,6 @@ class Preferences {
 						$disableEmailPrefs = false;
 					} else {
 						$disableEmailPrefs = true;
-						global $wgUser; // wgUser is okay here, it's for display
 						$skin = $wgUser->getSkin();
 						$emailauthenticated = wfMsgExt( 'emailnotauthenticated', 'parseinline' ) . '<br />' .
 							$skin->link(
@@ -637,7 +635,7 @@ class Preferences {
 	}
 
 	static function editingPreferences( $user, &$defaultPreferences ) {
-		global $wgUseExternalEditor;
+		global $wgUseExternalEditor, $wgLivePreview;
 
 		## Editing #####################################
 		$defaultPreferences['cols'] =
@@ -739,6 +737,14 @@ class Preferences {
 					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-forceeditsummary',
 				);
+		if ( $wgLivePreview ) {
+			$defaultPreferences['uselivepreview'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'editing/advancedediting',
+						'label-message' => 'tog-uselivepreview',
+					);
+		}
 	}
 
 	static function rcPreferences( $user, &$defaultPreferences ) {
@@ -773,7 +779,6 @@ class Preferences {
 					'section' => 'rc/advancedrc',
 				);
 
-		global $wgUseRCPatrol;
 		if( $wgUseRCPatrol ) {
 			$defaultPreferences['hidepatrolled'] =
 					array(
@@ -1063,7 +1068,7 @@ class Preferences {
 			}
 
 			$idCnt = 0;
-			$epoch = '20010115161234'; # Wikipedia day
+			$epoch = wfTimestampNow();
 			foreach( $dateopts as $key ) {
 				if( $key == 'default' ) {
 					$formatted = wfMsgHtml( 'datedefault' );
@@ -1256,18 +1261,18 @@ class Preferences {
 		);
 
 		if( $wgEnableEmail ) {
-			$newadr = $formData['emailaddress'];
-			$oldadr = $wgUser->getEmail();
-			if( ( $newadr != '' ) && ( $newadr != $oldadr ) ) {
+			$newaddr = $formData['emailaddress'];
+			$oldaddr = $wgUser->getEmail();
+			if( ( $newaddr != '' ) && ( $newaddr != $oldaddr ) ) {
 				# the user has supplied a new email address on the login page
 				# new behaviour: set this new emailaddr from login-page into user database record
-				$wgUser->setEmail( $newadr );
+				$wgUser->setEmail( $newaddr );
 				# but flag as "dirty" = unauthenticated
 				$wgUser->invalidateEmail();
 				if( $wgEmailAuthentication ) {
 					# Mail a temporary password to the dirty address.
 					# User can come back through the confirmation URL to re-enable email.
-					$result = $wgUser->sendConfirmationMail();
+					$result = $wgUser->sendConfirmationMail( $oldaddr != '' );
 					if( WikiError::isError( $result ) ) {
 						return wfMsg( 'mailerror', htmlspecialchars( $result->getMessage() ) );
 					} elseif( $entryPoint == 'ui' ) {
@@ -1275,10 +1280,10 @@ class Preferences {
 					}
 				}
 			} else {
-				$wgUser->setEmail( $newadr );
+				$wgUser->setEmail( $newaddr );
 			}
-			if( $oldadr != $newadr ) {
-				wfRunHooks( 'PrefsEmailAudit', array( $wgUser, $oldadr, $newadr ) );
+			if( $oldaddr != $newaddr ) {
+				wfRunHooks( 'PrefsEmailAudit', array( $wgUser, $oldaddr, $newaddr ) );
 			}
 		}
 

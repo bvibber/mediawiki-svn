@@ -33,7 +33,7 @@ if ( !defined( 'MW_PHP4' ) ) {
 }
 
 /** MediaWiki version number */
-$wgVersion = '1.16alpha';
+$wgVersion = '1.17alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -142,9 +142,11 @@ $wgRedirectScript   = false; ///< defaults to "{$wgScriptPath}/redirect{$wgScrip
  * splitting style sheets or images outside the main document root.
  */
 /**
- * style path as seen by users
+ * asset paths as seen by users
  */
 $wgStylePath   = false; ///< defaults to "{$wgScriptPath}/skins"
+$wgExtensionAssetsPath = false; ///< defaults to "{$wgScriptPath}/extensions"
+
 /**
  * filesystem stylesheets directory
  */
@@ -471,7 +473,7 @@ $wgMaxUploadSize = 1024*1024*100; # 100MB
  * Useful if you want to use a shared repository by default
  * without disabling local uploads (use $wgEnableUploads = false for that)
  * e.g. $wgUploadNavigationUrl = 'http://commons.wikimedia.org/wiki/Special:Upload';
- * 
+ *
  * This also affects images inline images that do not exist. In that case the URL will get
  * (?|&)wpDestFile=<filename> appended to it as appropriate.
  */
@@ -715,12 +717,6 @@ $wgDBservers		= false;
  */
 $wgLBFactoryConf    = array( 'class' => 'LBFactory_Simple' );
 
-/** 
- * Unique identifier if you're paranoid and don't want $wgDBname as part of 
- * wfWikiId(). See bug 21086
- */
-$wgWikiId = false;
-
 /** How long to wait for a slave to catch up to the master */
 $wgMasterWaitTimeout = 10;
 
@@ -797,6 +793,7 @@ $wgUseMemCached     = false;
 $wgMemCachedDebug   = false; ///< Will be set to false in Setup.php, if the server isn't working
 $wgMemCachedServers = array( '127.0.0.1:11000' );
 $wgMemCachedPersistent = false;
+$wgMemCachedTimeout = 100000; //Data timeout in microseconds
 /**@}*/
 
 /**
@@ -861,23 +858,38 @@ $wgHideInterlanguageLinks = false;
 /** List of language names or overrides for default names in Names.php */
 $wgExtraLanguageNames = array();
 
+/**
+ * List of language codes that don't correspond to an actual language.
+ * These codes are leftoffs from renames, or other legacy things.
+ * Also, qqq is a dummy "language" for documenting messages.
+ */
+$wgDummyLanguageCodes = array( 'qqq', 'als', 'be-x-old', 'dk', 'fiu-vro', 'iu', 'nb', 'simple', 'tp' );
+
 /** We speak UTF-8 all the time now, unless some oddities happen */
 $wgInputEncoding  = 'UTF-8';
 $wgOutputEncoding = 'UTF-8';
 $wgEditEncoding   = '';
 
-/** 
- * Set this to true to clean up archaic Unicode sequences in Arabic and 
- * Malayalam text. Currently only works if $wgLanguageCode is set to Arabic
- * or Malayalam.
+/**
+ * Set this to true to replace Arabic presentation forms with their standard 
+ * forms in the U+0600-U+06FF block. This only works if $wgLanguageCode is
+ * set to "ar".
  *
- * Enabling this is generally a good idea for new wikis, since it fixes a few 
- * technical problems to do with editing these languages. However, if it's 
- * enabled on an existing wiki, pages which contain the problematic characters 
- * in their page titles may become inaccessible. Running maintenance/cleanupTitles.php
- * after enabling it may fix this.
+ * Note that pages with titles containing presentation forms will become 
+ * inaccessible, run maintenance/cleanupTitles.php to fix this.
  */
-$wgFixArchaicUnicode = false;
+$wgFixArabicUnicode = true;
+
+/**
+ * Set this to true to replace ZWJ-based chillu sequences in Malayalam text
+ * with their Unicode 5.1 equivalents. This only works if $wgLanguageCode is 
+ * set to "ml". Note that some clients (even new clients as of 2010) do not 
+ * support these characters. 
+ *
+ * If you enable this on an existing wiki, run maintenance/cleanupTitles.php to
+ * fix any ZWJ sequences in existing page titles.
+ */
+$wgFixMalayalamUnicode = true;
 
 /**
  * Locale for LC_CTYPE, to work around http://bugs.php.net/bug.php?id=45132
@@ -936,15 +948,15 @@ $wgHtml5 = true;
 $wgHtml5Version = null;
 
 /**
- * Enabled RDFa attributes for use in wikitext. 
+ * Enabled RDFa attributes for use in wikitext.
  * NOTE: Interaction with HTML5 is somewhat underspecified.
  */
-$wgAllowRdfaAttributes = true;
+$wgAllowRdfaAttributes = false;
 
 /**
  * Enabled HTML5 microdata attributes for use in wikitext, if $wgHtml5 is also true.
  */
-$wgAllowMicrodataAttributes = true;
+$wgAllowMicrodataAttributes = false;
 
 /**
  * Should we try to make our HTML output well-formed XML?  If set to false,
@@ -1040,17 +1052,17 @@ $wgDisabledVariants = array();
  * Like $wgArticlePath, but on multi-variant wikis, this provides a
  * path format that describes which parts of the URL contain the
  * language variant.  For Example:
- * 
+ *
  *   $wgLanguageCode = 'sr';
  *   $wgVariantArticlePath = '/$2/$1';
  *   $wgArticlePath = '/wiki/$1';
- * 
+ *
  * A link to /wiki/ would be redirected to /sr/Главна_страна
  *
  * It is important that $wgArticlePath not overlap with possible values
  * of $wgVariantArticlePath.
  */
-$wgVariantArticlePath = false;///< defaults to false 
+$wgVariantArticlePath = false;///< defaults to false
 
 /**
  * Show a bar of language selection links in the user login and user
@@ -1210,6 +1222,16 @@ $wgDebugLogGroups       = array();
 $wgShowDebug            = false;
 
 /**
+ * Prefix debug messages with relative timestamp. Very-poor man's profiler.
+ */
+$wgDebugTimestamps = false;
+
+/**
+ * Print HTTP headers for every request in the debug information.
+ */
+$wgDebugPrintHttpHeaders = true;
+
+/**
  * Show the contents of $wgHooks in Special:Version
  */
 $wgSpecialVersionShowHooks =  false;
@@ -1258,7 +1280,7 @@ $wgDevelopmentWarnings = false;
 $wgUseCategoryBrowser   = false;
 
 /**
- * Keep parsed pages in a cache (objectcache table, turck, or memcached)
+ * Keep parsed pages in a cache (objectcache table or memcached)
  * to speed up output of the same page viewed by another user with the
  * same options.
  *
@@ -1321,6 +1343,15 @@ $wgBlockCIDRLimit = array(
 	'IPv4' => 16, # Blocks larger than a /16 (64k addresses) will not be allowed
 	'IPv6' => 64, # 2^64 = ~1.8x10^19 addresses
 );
+
+/**
+ * If true, blocked users will not be allowed to login. When using this with
+ * a public wiki, the effect of logging out blocked users may actually be
+ * avers: unless the user's address is also blocked (e.g. auto-block),
+ * logging the user out will again allow reading and editing, just as for
+ * anonymous visitors.
+ */
+$wgBlockDisablesLogin = false; #
 
 # Pages anonymous user may see as an array, e.g.:
 # array ( "Main Page", "Wikipedia:Help");
@@ -1655,7 +1686,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '258';
+$wgStyleVersion = '267';
 
 
 # Server-side caching:
@@ -1803,11 +1834,6 @@ $wgSquidServers = array();
  */
 $wgSquidServersNoPurge = array();
 
-/**
- * Default character limit for squid purge responses
- */
-$wgSquidResponseLimit = 250;
-
 /** Maximum number of titles to purge in any one client operation */
 $wgMaxSquidPurgeTitles = 400;
 
@@ -1932,13 +1958,13 @@ $wgSpecialPageCacheUpdates = array(
 $wgUseTeX = false;
 /** Location of the texvc binary */
 $wgTexvc = './math/texvc';
-/** 
-  * Texvc background color 
+/**
+  * Texvc background color
   * use LaTeX color format as used in \special function
   * for transparent background use value 'Transparent' for alpha transparency or
   * 'transparent' for binary transparency.
   */
-$wgTexvcBackgroundColor = 'rgb 1.0 1.0 1.0';
+$wgTexvcBackgroundColor = 'transparent';
 
 /**
  * Normally when generating math images, we double-check that the
@@ -1980,8 +2006,6 @@ $wgUDPProfilerPort = '3811';
 $wgDebugProfiling = false;
 /** Output debug message on every wfProfileIn/wfProfileOut */
 $wgDebugFunctionEntry = 0;
-/** Lots of debugging output from SquidUpdate.php */
-$wgDebugSquid = false;
 
 /*
  * Destination for wfIncrStats() data...
@@ -2014,15 +2038,16 @@ $wgSearchHighlightBoundaries = version_compare("5.1", PHP_VERSION, "<")? '[\p{Z}
 	: '[ ,.;:!?~!@#$%\^&*\(\)+=\-\\|\[\]"\'<>\n\r\/{}]'; // PHP 5.0 workaround
 
 /**
- * Set to true to have the default MySQL search engine count total
+ * Set to true to have the search engine count total
  * search matches to present in the Special:Search UI.
+ * Not supported by every search engine shipped with MW.
  *
  * This could however be slow on larger wikis, and is pretty flaky
  * with the current title vs content split. Recommend avoiding until
  * that's been worked out cleanly; but this may aid in testing the
  * search UI and API to confirm that the result count works.
  */
-$wgSearchMySQLTotalHits = false;
+$wgCountTotalSearchHits = false;
 
 /**
  * Template for OpenSearch suggestions, defaults to API action=opensearch
@@ -2048,6 +2073,11 @@ $wgEnableMWSuggest = false;
  * want reduce load caused by cached scripts pulling suggestions.
  */
 $wgEnableOpenSearchSuggest = true;
+
+/**
+ * Expiry time for search suggestion responses
+ */
+$wgSearchSuggestCacheExpiry = 1200;
 
 /**
  *  Template for internal MediaWiki suggestion engine, defaults to API action=opensearch
@@ -2455,16 +2485,6 @@ $wgRC2UDPOmitBots = false;
  * Kill it once fixed.
  */
 $wgEnableNewpagesUserFilter = true;
-
-/**
- * Whether to use metadata edition
- * This will put categories, language links and allowed templates in a separate text box
- * while editing pages
- * EXPERIMENTAL
- */
-$wgUseMetadataEdit = false;
-/** Full name (including namespace) of the page containing templates names that will be allowed as metadata */
-$wgMetadataWhitelist = '';
 
 #
 # Copyright and credits settings
@@ -2942,6 +2962,12 @@ $wgFeedDiffCutoff = 32768;
 $wgOverrideSiteFeed = array();
 
 /**
+ * Which feed types should we provide by default?  This can include 'rss',
+ * 'atom', neither, or both.
+ */
+$wgAdvertisedFeedTypes = array( 'atom' );
+
+/**
  * Additional namespaces. If the namespaces defined in Language.php and
  * Namespace.php are insufficient, you can create new ones here, for example,
  * to import Help files in other languages.
@@ -3073,10 +3099,10 @@ $wgBrowserBlackList = array(
 /**
  * Fake out the timezone that the server thinks it's in. This will be used for
  * date display and not for what's stored in the DB. Leave to null to retain
- * your server's OS-based timezone value. This is the same as the timezone.
+ * your server's OS-based timezone value.
  *
- * This variable is currently used ONLY for signature formatting, not for
- * anything else.
+ * This variable is currently used only for signature formatting and for local
+ * time/date parser variables ({{LOCALTIME}} etc.)
  *
  * Timezones can be translated by editing MediaWiki messages of type
  * timezone-nameinlowercase like timezone-utc.
@@ -3098,10 +3124,10 @@ $wgLocaltimezone = null;
  *   $wgLocalTZoffset = date("Z") / 60;
  *
  * If your server is not configured for the timezone you want, you can set
- * this in conjunction with the signature timezone and override the TZ
- * environment variable like so:
+ * this in conjunction with the signature timezone and override the PHP default
+ * timezone like so:
  *   $wgLocaltimezone="Europe/Berlin";
- *   putenv("TZ=$wgLocaltimezone");
+ *   date_default_timezone_set( $wgLocaltimezone );
  *   $wgLocalTZoffset = date("Z") / 60;
  *
  * Leave at NULL to show times in universal time (UTC/GMT).
@@ -3679,9 +3705,14 @@ $wgTrustedMediaFormats= array(
 $wgAllowSpecialInclusion = true;
 
 /**
- * Timeout for HTTP requests done via CURL
+ * Timeout for HTTP requests done internally
  */
 $wgHTTPTimeout = 25;
+
+/**
+ * Timeout for Asynchronous (background) HTTP requests
+ */
+$wgAsyncHTTPTimeout = 25;
 
 /**
  * Proxy to use for CURL requests.
@@ -3750,7 +3781,7 @@ $wgAjaxWatch = true;
 $wgAjaxUploadDestCheck = true;
 
 /**
- * Enable previewing licences via AJAX
+ * Enable previewing licences via AJAX. Also requires $wgEnableAPI to be true.
  */
 $wgAjaxLicensePreview = true;
 
@@ -4108,12 +4139,15 @@ $wgEdititis = false;
 $wgUniversalEditButton = true;
 
 /**
- * Allow id's that don't conform to HTML4 backward compatibility requirements.
- * This is purely experimental, has multiple known flaws, and will likely be
- * renamed and reconcepted based on HTML5 in the future, so should not be used
- * except for testing.
+ * Should we allow a broader set of characters in id attributes, per HTML5?  If
+ * not, use only HTML 4-compatible IDs.  This option is for testing -- when the
+ * functionality is ready, it will be on by default with no option.
+ *
+ * Currently this appears to work fine in Chrome 4 and 5, Firefox 3.5 and 3.6, IE6
+ * and 8, and Opera 10.50, but it fails in Opera 10.10: Unicode IDs don't seem
+ * to work as anchors.  So not quite ready for general use yet.
  */
-$wgEnforceHtmlIds = true;
+$wgExperimentalHtmlIds = false;
 
 /**
  * Search form behavior
@@ -4296,3 +4330,4 @@ $wgUploadMaintenance = false;
  * Use old names for change_tags indices.
  */
 $wgOldChangeTagsIndex = false;
+

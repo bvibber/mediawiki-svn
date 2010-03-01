@@ -547,6 +547,11 @@ input.mw-revdelundel-hidden {
 	visibility: hidden;
 }
 
+td.mw-revdel-checkbox, th.mw-revdel-checkbox {
+	padding-right: 10px;
+	text-align: center;
+}
+
 /* feed links */
 a.feedlink {
 	background: url("images/feed-icon.png") center left no-repeat;
@@ -812,7 +817,7 @@ td.mw-enhanced-rc {
 	padding: 10px !important;
 	margin-right: 0.6em;
 	background-image: url(images/spinner.gif);
-	background-position: middle middle;
+	background-position: center center;
 	background-repeat: no-repeat;
 }
 

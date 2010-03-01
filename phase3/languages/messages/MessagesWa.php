@@ -199,9 +199,6 @@ $messages = array(
 'qbmyoptions'    => 'Mes pådjes',
 'qbspecialpages' => 'Pådjes sipeciåles',
 
-# Metadata in edit box
-'metadata_help' => 'Meta-dnêyes :',
-
 'errorpagetitle'    => 'Aroke',
 'returnto'          => 'Rivni al pådje «$1».',
 'tagline'           => 'Èn årtike di {{SITENAME}}.',
@@ -795,7 +792,6 @@ ou co po les sons
 'uploaddisabled'              => 'Eberwetaedje di fitchîs dismetou',
 'uploaddisabledtext'          => "Mande escuzes, mins l' eberwetaedje di fitchîs a stî dismetou pol moumint.",
 'uploadscripted'              => 'Ci fitchî ci a-st å dvins do côde HTML ou on scripe ki pôreut esse må comprin pa on betchteu waibe.',
-'uploadcorrupt'               => "Li fitchî est cron oudonbén il a-st ene mwaijhe cawete. Verifyîz l' fitchî eyet l' reberweter s' i vs plait.",
 'uploadvirus'                 => 'Li fitchî a-st on virusse! Detays: $1',
 'sourcefilename'              => "No d' fitchî so vosse copiutrece:",
 'destfilename'                => "No d' fitchî a eployî so {{SITENAME}}:",

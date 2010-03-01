@@ -131,9 +131,6 @@ $messages = array(
 'qbmyoptions'    => 'Ásahusat',
 'qbspecialpages' => 'Doaibmasiiddut',
 
-# Metadata in edit box
-'metadata_help' => 'Sisdoallogovvádusat:',
-
 'errorpagetitle'    => 'Feaila',
 'returnto'          => 'Máhcat siidui $1.',
 'tagline'           => '{{SITENAME}}',
@@ -377,7 +374,7 @@ Du geavaheaddjidovddaldat lea dál anus.
 'whitelistedittext'        => 'Don fertet $1, ovdalgo sáhtat rievdadit siidduid.',
 'confirmedittext'          => 'It sáhte rievdadit siiddu ovdalgo leat sihkarastan iežat e-poastačujuhusa. Sáhtat sihkarastit [[Special:Preferences|ásahussiidduin]].',
 'nosuchsectiontitle'       => 'Diekkár oassi ii dihtto',
-'nosuchsectiontext'        => 'Isket rievdadit oasi, mii ii dihtto. Daningo oassi $1 ii dihtto, rievdadusa ii sáhte vurket.',
+'nosuchsectiontext'        => 'Isket rievdadit oasi, mii ii dihtto.',
 'loginreqtitle'            => 'Sisačállin gáibiduvvo',
 'loginreqlink'             => 'čálligoahtit sisa',
 'loginreqpagetext'         => 'Don fertet $1, ovdalgo oainnat eará siidduid.',
@@ -623,7 +620,6 @@ $1 {{int:pipe-separator}} $2',
 'uploaddisabled'     => '{{GRAMMAR:genitive|{{SITENAME}}}} ii sáhte lasihit fiillaid.',
 'uploaddisabledtext' => 'Fiillaid vurken lea váldojuvvon eret anus.',
 'uploadscripted'     => 'Dát fiila sisdisdoalla HTML-koda dahje skriptaid, maid neahttabláđejeaddji sáhttá vahagis dahkat.',
-'uploadcorrupt'      => 'Fiila lea billahuvvan dahje das lea boasto fiilageažus. Dárkis fiilla ja sádde dan ođđasit.',
 'uploadvirus'        => 'Fiila sisdoalla virusa. Dárkilut dieđut: $1',
 'sourcefilename'     => 'Gáldonamma',
 'destfilename'       => 'Mearrenamma',

@@ -33,6 +33,8 @@
  * @author Skalman
  * @author StefanB
  * @author Steinninn
+ * @author Where next Columbus
+ * @author Where next Columbus?
  * @author לערי ריינהארט
  */
 
@@ -158,7 +160,9 @@ $magicWords = array(
 	'forcetoc'              => array( '0', '__ALLTIDINNEHÅLLSFÖRTECKNING__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__INNEHÅLLSFÖRTECKNING__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__INTEREDIGERASEKTION__', '__NOEDITSECTION__' ),
+	'noheader'              => array( '0', '__INGENRUBRIK__', '__NOHEADER__' ),
 	'currentmonth'          => array( '1', 'NUVARANDEMÅNAD', 'NUMÅNAD', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth1'         => array( '1', 'NUVARANDEMÅNAD1', 'CURRENTMONTH1' ),
 	'currentmonthname'      => array( '1', 'NUVARANDEMÅNADSNAMN', 'NUMÅNADSNAMN', 'CURRENTMONTHNAME' ),
 	'currentmonthabbrev'    => array( '1', 'NUVARANDEMÅNADKORT', 'NUMÅNADKORT', 'CURRENTMONTHABBREV' ),
 	'currentday'            => array( '1', 'NUVARANDEDAG', 'NUDAG', 'CURRENTDAY' ),
@@ -168,6 +172,7 @@ $magicWords = array(
 	'currenttime'           => array( '1', 'NUVARANDETID', 'NUTID', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'NUVARANDETIMME', 'NUTIMME', 'CURRENTHOUR' ),
 	'localmonth'            => array( '1', 'LOKALMÅNAD', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth1'           => array( '1', 'LOKALMÅNAD1', 'LOCALMONTH1' ),
 	'localmonthname'        => array( '1', 'LOKALMÅNADSNAMN', 'LOCALMONTHNAME' ),
 	'localmonthabbrev'      => array( '1', 'LOKALMÅNADKORT', 'LOCALMONTHABBREV' ),
 	'localday'              => array( '1', 'LOKALDAG', 'LOCALDAY' ),
@@ -264,9 +269,12 @@ $magicWords = array(
 	'hiddencat'             => array( '1', '__DOLDKAT__', '__HIDDENCAT__' ),
 	'pagesincategory'       => array( '1', 'SIDORIKATEGORI', 'PAGESINCATEGORY', 'PAGESINCAT' ),
 	'pagesize'              => array( '1', 'SIDSTORLEK', 'PAGESIZE' ),
+	'index'                 => array( '1', '__INDEXERA__', '__INDEX__' ),
+	'noindex'               => array( '1', '__INTEINDEXERA_', '__NOINDEX__' ),
 	'numberingroup'         => array( '1', 'ANTALIGRUPP', 'NUMBERINGROUP', 'NUMINGROUP' ),
 	'staticredirect'        => array( '1', '__STATISKOMDIRIGERING__', '__STATICREDIRECT__' ),
 	'protectionlevel'       => array( '1', 'SKYDDSNIVÅ', 'PROTECTIONLEVEL' ),
+	'formatdate'            => array( '0', 'formateradatum', 'datumformat', 'formatdate', 'dateformat' ),
 );
 
 $linkTrail = '/^([a-zåäöéÅÄÖÉ]+)(.*)$/sDu';
@@ -318,7 +326,7 @@ $messages = array(
 'tog-enotifwatchlistpages'    => 'Skicka e-post till mig när en sida på min bevakningslista ändras',
 'tog-enotifusertalkpages'     => 'Skicka e-post till mig när något händer på min diskussionssida',
 'tog-enotifminoredits'        => 'Skicka mig e-post även för små redigeringar',
-'tog-enotifrevealaddr'        => 'Visa min e-postadress i e-post från systemet',
+'tog-enotifrevealaddr'        => 'Visa min e-postadress i e-postmeddelanden om ändringar som skickas till andra',
 'tog-shownumberswatching'     => 'Visa antalet användare som bevakar',
 'tog-oldsig'                  => 'Förhandsvisning av nuvarande signatur:',
 'tog-fancysig'                => 'Rå signatur som wikitext (utan en automatisk länk)',
@@ -478,9 +486,6 @@ $messages = array(
 'actions'                    => 'Åtgärder',
 'namespaces'                 => 'Namnrymder',
 'variants'                   => 'Varianter',
-
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
 
 'errorpagetitle'    => 'Fel',
 'returnto'          => 'Tillbaka till $1.',
@@ -649,6 +654,7 @@ Rapportera gärna problemet till någon [[Special:ListUsers/sysop|administratör
 'readonly_lag'         => 'Databasen har automatiskt skrivskyddats medan slavdatabasservrarna synkroniseras med huvudservern.',
 'internalerror'        => 'Internt fel',
 'internalerror_info'   => 'Internt fel: $1',
+'fileappenderror'      => 'Kunde inte bifoga "$1" till "$2".',
 'filecopyerror'        => 'Kunde inte kopiera filen "$1" till "$2".',
 'filerenameerror'      => 'Kunde inte byta namn på filen "$1" till "$2".',
 'filedeleteerror'      => 'Kunde inte radera filen "$1".',
@@ -708,6 +714,7 @@ Glöm inte att justera dina [[Special:Preferences|{{SITENAME}}-inställningar]].
 'nav-login-createaccount'    => 'Logga in / skapa konto',
 'loginprompt'                => 'Du måste tillåta cookies för att logga in på {{SITENAME}}.',
 'userlogin'                  => 'Logga in / skapa konto',
+'userloginnocreate'          => 'Logga in',
 'logout'                     => 'Logga ut',
 'userlogout'                 => 'Logga ut',
 'notloggedin'                => 'Inte inloggad',
@@ -735,6 +742,7 @@ Användarnamn är skiftlägeskänsliga.
 Kontrollera din stavning, eller [[Special:UserLogin/signup|skapa ett nytt konto]].',
 'nosuchusershort'            => 'Det finns ingen användare som heter "<nowiki>$1</nowiki>". Kontrollera att du stavat rätt.',
 'nouserspecified'            => 'Du måste ange ett användarnamn.',
+'login-userblocked'          => 'Denna användare är blockerad. Login inte tillåtet.',
 'wrongpassword'              => 'Lösenordet du angav är felaktigt. Försök igen',
 'wrongpasswordempty'         => 'Lösenordet som angavs var blankt. Var god försök igen.',
 'passwordtooshort'           => 'Lösenord måste innehålla minst {{PLURAL:$1|$1 tecken}}.',
@@ -866,12 +874,13 @@ Vänligen ange informationen ovan i alla förfrågningar som du gör i ärendet.
 'whitelistedittitle'               => 'Du måste logga in för att redigera',
 'whitelistedittext'                => 'Du måste $1 för att kunna redigera sidor.',
 'confirmedittext'                  => 'Du måste bekräfta din e-postadress innan du kan redigera sidor. Var vänlig ställ in och validera din e-postadress genom dina [[Special:Preferences|användarinställningar]].',
-'nosuchsectiontitle'               => 'Avsnittet finns inte',
-'nosuchsectiontext'                => 'Du försökte redigera ett avsnitt som inte finns. Eftersom avsnitt $1 inte finns, så kan inte din redigering sparas.',
+'nosuchsectiontitle'               => 'Kan inte hitta avsnitt',
+'nosuchsectiontext'                => 'Du försökte redigera ett avsnitt som inte finns.
+Det kan ha flyttats eller raderats medan du tittade på sidan.',
 'loginreqtitle'                    => 'Inloggning krävs',
 'loginreqlink'                     => 'logga in',
 'loginreqpagetext'                 => 'Du måste $1 för att visa andra sidor.',
-'accmailtitle'                     => 'Lösenordet är skickat.',
+'accmailtitle'                     => 'Lösenord skickat.',
 'accmailtext'                      => "Ett slumpgenererat lösenord för [[User talk:$1|$1]] har skickats till $2.
 
 Lösenordet för det här nya användarkontot kan ändras på sidan ''[[Special:ChangePassword|ändra lösenord]]'' när du loggar in.",
@@ -941,10 +950,13 @@ vissa webbläsare kan ha problem att redigera sidor som närmar sig eller är st
 Det kan vara klokt att kopiera över texten till din egen dator, tills databasen är upplåst igen.'''
 
 Administratören som låste databasen gav följande förklaring: $1",
-'protectedpagewarning'             => "'''VARNING: Den här sidan är låst så att bara administratörer kan redigera den.'''",
-'semiprotectedpagewarning'         => "'''Observera:''' Denna sida har skrivskyddats så att endast registrerade användare kan redigera den.",
+'protectedpagewarning'             => "'''Varning: Den här sidan har låsts så att bara användare med administratörsrättigheter kan redigera den.'''
+Den senaste loggposten tillhandahålls nedan som referens:",
+'semiprotectedpagewarning'         => "'''Observera:''' Denna sida har låsts så att endast registrerade användare kan redigera den.
+Den senaste loggposten tillhandahålls nedan som referens:",
 'cascadeprotectedwarning'          => "'''Varning:''' Den här sidan är låst så att bara användare med administratörsrättigheter kan redigera den, eftersom den är inkluderad på följande {{PLURAL:$1|sida|sidor}} som skyddats med kaskaderande skrivskydd:",
-'titleprotectedwarning'            => "'''VARNING: Den här sidan har skyddats så att [[Special:ListGroupRights|specifika rättigheter]] krävs för att skapa den.'''",
+'titleprotectedwarning'            => "'''Varning: Denna sida har låsts så att [[Special:ListGroupRights|specifika rättigheter]] krävs för att skapa den.'''
+Den senaste loggposten tillhandahålls nedan som referens:",
 'templatesused'                    => '{{PLURAL:$1|Mall|Mallar}} som används på den här sidan:',
 'templatesusedpreview'             => '{{PLURAL:$1|Mall|Mallar}} som används i denna förhandsgranskning:',
 'templatesusedsection'             => '{{PLURAL:$1|Mall|Mallar}} som används i det här avsnittet:',
@@ -990,6 +1002,7 @@ Dessa parametrar har uteslutits.',
 'post-expand-template-argument-category'  => 'Sidor med uteslutna mallparametrar',
 'parser-template-loop-warning'            => 'Mall-loop upptäckt: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Gräns för mallrekursionsdjup överskriden ($1)',
+'language-converter-depth-warning'        => 'Gräns för språkkonverteringsdjup överskriden ($1)',
 
 # "Undo" feature
 'undo-success' => 'Redigeringen kan göras ogjord.
@@ -1055,6 +1068,7 @@ Som administratör kan du se den; det kan finnas mer information i [{{fullurl:{{
 Som administratör kan du se den; det kan finnas mer information i [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} undanhållandeloggen].",
 'rev-deleted-no-diff'         => "Du kan inte se den här diffen på grund av att en av versionerna har '''raderats'''.
 Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} raderingsloggen].",
+'rev-suppressed-no-diff'      => "Du kan inte se skillnaden för en av revisionerna har blivit '''raderad'''.",
 'rev-deleted-unhide-diff'     => "En av versionerna för den här diffen har '''raderats'''.
 Det kan finnas mer information i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} raderingsloggen].
 Som administratör kan du fortfarande [$1 se den här diffen] om du önskar att fortsätta.",
@@ -1645,7 +1659,6 @@ Om du ändå vill ladda upp din fil, gå då tillbaka och använd ett annat namn
 'uploaddisabledtext'          => 'Uppladdning av filer är avstängd.',
 'php-uploaddisabledtext'      => 'PHP filuppladdningar är avaktiverade. Kolla inställningarna för file_uploads.',
 'uploadscripted'              => 'Denna fil innehåller HTML eller script som felaktigt kan komma att tolkas av webbläsare.',
-'uploadcorrupt'               => 'Antingen har det blivit något fel på filen, eller så har den en felaktig filändelse. Kontrollera din fil, och ladda upp på nytt.',
 'uploadvirus'                 => 'Filen innehåller virus! Detaljer: $1',
 'upload-source'               => 'Källfil',
 'sourcefilename'              => 'Ursprungsfilens namn:',
@@ -1706,6 +1719,11 @@ Endast åtkomst till filer är tillåten.',
 Denna wiki är konfigurerad som en publik wiki.
 För optimal säkerhet, har img_auth.php blivit avaktiverad.',
 'img-auth-noread'       => 'Användaren har inte tillåtelse att läsa "$1"',
+
+# HTTP errors
+'http-invalid-url'    => 'Ogiltig URL: $1',
+'http-invalid-scheme' => 'URLer med "$1"-formen stöds inte',
+'http-request-error'  => 'HTTP-begäran misslyckades på grund av okänt fel.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL:en kunde inte nås',
@@ -2124,6 +2142,9 @@ Du kan också ta bort flaggan för meddelanden om ändringar på alla sidor i di
 För att ändra inställningarna i din bevakningslista, besök
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+För att radera sidan från din bevakningslista, besök
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 Feedback och ytterligare hjälp:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2438,6 +2459,7 @@ $1 är redan blockerad. Vill du ändra inställningarna?',
 'ipb_cant_unblock'                => 'Fel: Hittade inte blockering $1. Det är möjligt att den redan har upphävts.',
 'ipb_blocked_as_range'            => 'Fel: IP-adressen $1 är inte direkt blockerad, och kan därför inte avblockeras. Adressen är blockerad som en del av IP-intervallet $2, som kan avblockeras.',
 'ip_range_invalid'                => 'Ogiltigt IP-intervall.',
+'ip_range_toolarge'               => 'Blockering av block större än /$1 är inte tillåtna.',
 'blockme'                         => 'Blockera mig',
 'proxyblocker'                    => 'Proxy-block',
 'proxyblocker-disabled'           => 'Den här funktionen är avaktiverad.',
@@ -2541,8 +2563,10 @@ Den titel du vill flytta sidan till, "[[:$1]]", finns redan. Vill du radera den 
 'imageinvalidfilename'         => 'Önskat filnamn är ogiltigt',
 'fix-double-redirects'         => 'Uppdatera omdirigeringar som leder till den gamla titeln',
 'move-leave-redirect'          => 'Lämna kvar en omdirigering',
-'protectedpagemovewarning'     => "'''VARNING:''' Den här sidan har låsts så att endast användare med administratörsrättigheter kan flytta den.",
-'semiprotectedpagemovewarning' => "'''Not:''' Den här sidan har låsts så att endast registrerade användare kan flytta den.",
+'protectedpagemovewarning'     => "'''Varning:''' Den här sidan har låsts så att endast användare med administratörsrättigheter kan flytta den.
+Den senaste loggposten tillhandahålls nedan som referens:",
+'semiprotectedpagemovewarning' => "'''Observera:''' Denna sida har låsts så att endast registrerade användare kan flytta den.
+Den senaste loggposten tillhandahålls nedan som referens:",
 'move-over-sharedrepo'         => '== Filen existerar ==
 [[:$1]] existerar på en delad källa. Om du flyttar en fil till detta namn kommer den delad filen bli överskriven.',
 'file-exists-sharedrepo'       => 'Detta filnamn existerar redan på en delad källa.
@@ -2803,7 +2827,7 @@ Detta orsakades troligen av en länk till en svartlistad webbplats.',
 'markaspatrolleddiff'                 => 'Märk som patrullerad',
 'markaspatrolledtext'                 => 'Märk den här sidan som patrullerad',
 'markedaspatrolled'                   => 'Markerad som patrullerad',
-'markedaspatrolledtext'               => 'Den valda versionen har märkts som patrullerad.',
+'markedaspatrolledtext'               => 'Den valda versionen av [[:$1]] har märkts som patrullerad.',
 'rcpatroldisabled'                    => 'Patrullering av Senaste ändringar är avstängd.',
 'rcpatroldisabledtext'                => 'Funktionen "patrullering av Senaste ändringar" är tillfälligt avstängd.',
 'markedaspatrollederror'              => 'Kan inte markera som patrullerad',

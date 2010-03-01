@@ -38,8 +38,8 @@ $namespaceNames = array(
 	NS_PROJECT_TALK     => '$1_tartışma',
 	NS_FILE             => 'Dosya',
 	NS_FILE_TALK        => 'Dosya_tartışma',
-	NS_MEDIAWIKI        => 'MedyaViki',
-	NS_MEDIAWIKI_TALK   => 'MedyaViki_tartışma',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_tartışma',
 	NS_TEMPLATE         => 'Şablon',
 	NS_TEMPLATE_TALK    => 'Şablon_tartışma',
 	NS_HELP             => 'Yardım',
@@ -51,6 +51,8 @@ $namespaceNames = array(
 $namespaceAliases = array(
 	'Resim' => NS_FILE,
 	'Resim_tartışma' => NS_FILE_TALK,
+	'MedyaViki' => NS_MEDIAWIKI,
+	'MedyaViki_tartışma' => NS_MEDIAWIKI_TALK,
 );
 
 $specialPageAliases = array(
@@ -470,9 +472,6 @@ $messages = array(
 'namespaces'                 => 'Ad alanları',
 'variants'                   => 'Varyantlar',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Hata',
 'returnto'          => '$1 sayfasına dön.',
 'tagline'           => '{{SITENAME}} sitesinden',
@@ -637,6 +636,7 @@ Lütfen bunu bir [[Special:ListUsers/sysop|hizmetliye]], URL\'yi not ederek ilet
 'readonly_lag'         => 'Yedek sunucular ana sunucu ile güncellemeye çalışırken veritabanı otomatik olarak kilitlendi.',
 'internalerror'        => 'Yazılım hatası',
 'internalerror_info'   => 'İç hata: $1',
+'fileappenderror'      => '"$1" dosyası "$2" dosyasına eklenemiyor.',
 'filecopyerror'        => '"$1"  "$2" dosyasına kopyalanamıyor.',
 'filerenameerror'      => '"$1" dosyasının ismi "$2" olarak değiştirilemedi.',
 'filedeleteerror'      => '"$1" dosyası silinemedi.',
@@ -698,6 +698,7 @@ Hesabınız açıldı.
 'nav-login-createaccount'    => 'Oturum aç ya da yeni hesap edin',
 'loginprompt'                => '{{SITENAME}} sitesinde oturum açabilmek için çerezleri etkinleştirmeniz gerekmektedir.',
 'userlogin'                  => 'Oturum aç',
+'userloginnocreate'          => 'Giriş yap',
 'logout'                     => 'Oturumu kapat',
 'userlogout'                 => 'Oturumu kapat',
 'notloggedin'                => 'Oturum açık değil',
@@ -724,6 +725,7 @@ Kullanıcı adları büyük-küçük harf duyarlıdır.
 Yazılışı kontrol edin veya [[Special:UserLogin/signup|yeni bir hesap açın]].',
 'nosuchusershort'            => '"<nowiki>$1</nowiki>" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin.',
 'nouserspecified'            => 'Bir kullanıcı adı belirtmek zorundasınız.',
+'login-userblocked'          => 'Bu kullanıcı engellenmiş. Giriş yapmaya izin verilmiyor.',
 'wrongpassword'              => 'Parolayı yanlış girdiniz. Lütfen tekrar deneyiniz.',
 'wrongpasswordempty'         => 'Boş parola girdiniz. Lütfen tekrar deneyiniz.',
 'passwordtooshort'           => 'Parolalar en az {{PLURAL:$1|1 karakter|$1 karakter}} uzunluğunda olmalı.',
@@ -778,6 +780,7 @@ Girişi bitirmek için, burada yeni bir parola yazın:',
 'resetpass_forbidden'       => 'Parolalar değiştirilememektedir',
 'resetpass-no-info'         => 'Bu sayfaya doğrudan erişmek için oturum açmanız gereklidir.',
 'resetpass-submit-loggedin' => 'Parolayı değiştir',
+'resetpass-submit-cancel'   => 'İptal',
 'resetpass-wrong-oldpass'   => 'Geçersiz geçici veya güncel şifre.
 Şifrenizi zaten başarıyla değiştirdiniz ya da yeni bir geçici şifre istediniz.',
 'resetpass-temp-password'   => 'Geçici parola:',
@@ -855,8 +858,9 @@ Lütfen yapacağınız herhangi bir sorguda yukarıdaki bütün detayları bulun
 'whitelistedittitle'               => 'Değişiklik yapmak için oturum açmalısınız',
 'whitelistedittext'                => 'Değişiklik yapabilmek için $1.',
 'confirmedittext'                  => 'Sayfa değiştirmeden önce e-posta adresinizi onaylamalısınız. Lütfen [[Special:Preferences|tercihler]] kısmından e-postanızı ekleyin ve onaylayın.',
-'nosuchsectiontitle'               => 'Böyle bir bölüm yok',
-'nosuchsectiontext'                => 'Bulunmayan bir konu başlığını değiştirmeyi denediniz. Burada $1 isimli bir konu başlığı bulunmamaktadır, katkınızı kaydedecek bir yer bulunmamaktadır.',
+'nosuchsectiontitle'               => 'Bölüm bulunamadı',
+'nosuchsectiontext'                => 'Bulunmayan bir konu başlığını değiştirmeyi denediniz.
+Siz sayfayı görüntülerken taşınmış veya silinmiş olabilir.',
 'loginreqtitle'                    => 'Oturum açmanız gerekiyor',
 'loginreqlink'                     => 'oturum aç',
 'loginreqpagetext'                 => 'Diğer sayfaları görmek için $1 olmalısınız.',
@@ -876,6 +880,8 @@ Bu başlığı [[Special:Search/{{PAGENAME}}|diğer sayfalarda arayabilir]]
 ya da <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ilgili günlükleri tarayabilirsiniz].</span>',
 'userpage-userdoesnotexist'        => '"$1" kullanıcı hesabı kayıtlı değil. Bu sayfayı oluşturmak/değiştirmek istiyorsanız lütfen kontrol edin.',
 'userpage-userdoesnotexist-view'   => '"$1" kullanıcı hesabı kayıtlı değil.',
+'blocked-notice-logextract'        => 'Bu kullancı şuanda engellenmiş.
+Son engelleme günlüğü girdisi referans için aşağıda sağlanmıştır:',
 'clearyourcache'                   => "'''Not:''' Ayarlarınızı kaydettikten sonra, tarayıcınızın belleğini de temizlemeniz gerekmektedir: '''Mozilla / Firefox / Safari:''' ''Shift'' e basılıyken safyayı yeniden yükleyerek veya ''Ctrl-Shift-R'' yaparak (Apple Mac için ''Cmd-Shift-R'');, '''IE:''' ''Ctrl-F5'', '''Konqueror:''' Sadece sayfayı yeniden yükle tuşuna basarak.",
 'usercssyoucanpreview'             => "'''İpucu:''' Sayfayı kaydetmeden önce '''önizlemeyi göster''''e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
 'userjsyoucanpreview'              => "'''İpucu:''' Sayfayı kaydetmeden önce '''önizlemeyi göster''''e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
@@ -922,10 +928,13 @@ Kaydedilmesi mümkün değildir.'''",
 'readonlywarning'                  => "'''DİKKAT: Bakım nedeni ile veritabanı şu anda kilitlidir. Bu sebeple değişiklikleriniz şu anda kaydedilememektedir. Yazdıklarınızı başka bir editöre alıp saklayabilir ve daha sonra tekrar buraya getirip kaydedebilirsiniz'''
 
 Kilitleyen hizmetli şu açıklamayı eklemiştir: $1",
-'protectedpagewarning'             => 'UYARI: Bu sayfa koruma altına alınmıştır ve yalnızca hizmetli olanlar tarafından değiştirilebilir. Bu sayfayı değiştirirken lütfen [[Project:Koruma altına alınmış sayfa|korumalı sayfa kurallarını]] uygulayınız.',
-'semiprotectedpagewarning'         => "'''Uyarı''': Bu sayfa sadece kayıtlı kullanıcı olanlar tarafından değiştirilebilir.",
+'protectedpagewarning'             => "'''Uyarı: Bu sayfa koruma altına alınmıştır ve yalnızca hizmetli olanlar tarafından değiştirilebilir.'''
+Son günlük girdisi referans amaçlı aşağıda verilmiştir:",
+'semiprotectedpagewarning'         => "'''Not:''' Bu sayfa sadece kayıtlı kullanıcı olanlar tarafından değiştirilebilir.
+Son günlük girdisi referans amaçlı aşağıda verilmiştir:",
 'cascadeprotectedwarning'          => "'''UYARI:''' Bu sayfa sadece hizmetlilik yetkileri olan kullanıcıların değişiklik yapabileceği şekilde koruma altına alınmıştır. Çünkü  \"kademeli\" seçeneği aktif hale getirilerek koruma altına alınan {{PLURAL:\$1|sayfada|sayfada}} kullanılmaktadır:",
-'titleprotectedwarning'            => "'''UYARI: Bu sayfa [[Special:ListGroupRights|özel hakları]] olanların oluşturabilmeleri için kilitlenmiştir.'''",
+'titleprotectedwarning'            => "'''Uyarı: Bu sayfa [[Special:ListGroupRights|özel hakları]] olanların oluşturabilmeleri için kilitlenmiştir.'''
+Son günlük girdisi referans amaçlı aşağıda verilmiştir:",
 'templatesused'                    => 'Bu sayfada kullanılan {{PLURAL:$1|şablon|şablonlar}}:',
 'templatesusedpreview'             => 'Bu önizlemede kullanılan {{PLURAL:$1|şablon|şablonlar}}:',
 'templatesusedsection'             => 'Bu bölümde kullanılan {{PLURAL:$1|şablon|şablonlar}}:',
@@ -970,6 +979,7 @@ Bu değişkenler atlandı.',
 'post-expand-template-argument-category'  => 'Geçersiz şablon argümanları içeren sayfalar',
 'parser-template-loop-warning'            => 'Şablon düğümü tespit edildi: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Şablon özyineleme yoğunluğu limiti aşıldı ($1)',
+'language-converter-depth-warning'        => 'Dil çevirici derinlik sınırı aşıldı ($1)',
 
 # "Undo" feature
 'undo-success' => 'Bu değişiklik geri alınabilir. Lütfen aşağıdaki karşılaştırmayı kontrol edin, gerçekten bu değişikliği yapmak istediğinizden emin olun ve sayfayı kaydederek bir önceki değişikliği geriye alın.',
@@ -1035,6 +1045,7 @@ Bir hizmetli olarak sayfayı görebilirsiniz; [{{fullurl:{{#Special:Log}}/delete
 Bir hizmetli olarak sayfayı görebilirsiniz; [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} durdurma kayıtlarında] ayrıntılar bulunabilir.",
 'rev-deleted-no-diff'         => "Bu sayfa değişikliğini göremezsiniz çünkü revizyonlardan biri '''silinmiş'''.
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Silme günlüğünde] ayrıntılar bulunabilir.",
+'rev-suppressed-no-diff'      => "Bu farkı göremezsiniz çünkü revizyonlardan birisi '''silinmiş'''.",
 'rev-deleted-unhide-diff'     => "Bu değişikliğinin revizyonlarından birisi '''silinmiş'''.
 [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Silme günlüğünde] ayrıntılar bulunabilir.
 Bir hizmetli olarak eğer devam ederseniz [$1 bu değişikliği hala görebilirsiniz].",
@@ -1619,7 +1630,6 @@ Dosyanızı yinede yüklemek istiyorsanız, lütfen geri gidip yeni bir isim kul
 'uploaddisabledtext'          => 'Dosya yüklemeleri devredışı bırakılmıştır.',
 'php-uploaddisabledtext'      => 'PHP dosyası yüklemeleri devre dışıdır. Lütfen file_uploads ayarını kontrol edin.',
 'uploadscripted'              => 'Bu dosya bir internet tarayıcısı tarafından hatalı çevrilebilecek bir HTML veya script kodu içermektedir.',
-'uploadcorrupt'               => 'Bu dosya ya bozuk ya da uzantısı yanlış. Dosyayı kontrol edip, tekrar yüklemeyi deneyin.',
 'uploadvirus'                 => 'Bu dosya virüslüdür! Detayları: $1',
 'upload-source'               => 'Kaynak dosyası',
 'sourcefilename'              => 'Yüklemek istediğiniz dosya:',
@@ -1681,6 +1691,16 @@ Sadece dosya erişimine izin veriliyor.',
 Bu viki genel bir viki olarak ayarlanmış.
 En uygun güvenlik için, img_auth.php devre dışı bırakıldı.",
 'img-auth-noread'       => 'Kullanıcının "$1" dosyasını okumaya erişimi yok.',
+
+# HTTP errors
+'http-invalid-url'      => 'Geçersiz URL: $1',
+'http-invalid-scheme'   => '"$1" şemasına sahip URLler desteklenmiyor',
+'http-request-error'    => 'HTTP isteği bilinmeyen bir nedenle başarısız oldu.',
+'http-read-error'       => 'HTTP okuma hatası.',
+'http-timed-out'        => 'HTTP isteği zaman aşımına uğradı.',
+'http-curl-error'       => 'URL alınırken hata: $1',
+'http-host-unreachable' => "URL'ye ulaşılamıyor.",
+'http-bad-status'       => 'HTTP isteği sırasında bir sorun oluştu: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => "URL'ye ulaşılamadı",
@@ -2099,10 +2119,13 @@ Bahsi geçen sayfayı ziyaret edinceye kadar sayfayla ilgili başka değişiklik
               {{SITENAME}} sitesinin uyarı sistemi.
 
 --
-Ayarları değiştirmek için:
-{{fullurl:Special:Watchlist/edit}}
+İzleme listesi ayarlarınızı değiştirmek için:
+{{fullurl:{{#special:Watchlist}}/edit}}
 
-Yardım ve öneriler için:
+Sayfayı izleme listenizden silmek için:
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
+Geridönüt ve daha fazla yardım için:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
@@ -2419,6 +2442,7 @@ Engelleme kaldırılmış olabilir.',
 'ipb_blocked_as_range'            => 'Hata: $1 IP adresi doğrudan engellenmemiş ve engelleme kaldırılamaz.
 Ancak, bu adres $2 aralığının parçası olarak engellenmiş, aralık engellemesini kaldırabilirsiniz.',
 'ip_range_invalid'                => 'Geçersiz IP aralığı.',
+'ip_range_toolarge'               => '/$1 bloktan daha büyük aralık bloklarına izin verilmez.',
 'blockme'                         => 'Beni engelle',
 'proxyblocker'                    => 'Proxy engelleyici',
 'proxyblocker-disabled'           => 'Bu özellik engellenildi.',
@@ -2469,6 +2493,7 @@ Bu değişim popüler bir sayfa için beklenmeyen sonuçlar doğurabilir; lütfe
 
 Bu durumlarda sayfayı kendiniz aktarmalısınız.",
 'movearticle'                  => 'Eski isim',
+'moveuserpage-warning'         => "'''Uyarı:''' Bir kullanıcı sayfasını taşımak üzeresiniz. Lütfen sadece sayfanın taşınacağına, ancak kullanıcının yeniden ''adlandırılmayacağına'' dikkat edin.",
 'movenologin'                  => 'Sistemde değilsiniz.',
 'movenologintext'              => 'Sayfanın adını değiştirebilmek için kayıtlı ve [[Special:UserLogin|sisteme]] giriş yapmış olmanız gerekmektedir.',
 'movenotallowed'               => 'Sayfaları taşımaya izniniz yok.',
@@ -2521,8 +2546,10 @@ Lütfen başka bir isim deneyiniz.',
 'imageinvalidfilename'         => 'Hedef dosya adı geçersiz',
 'fix-double-redirects'         => 'Orijinal başlığa işaret eden yönlendirmeleri güncelle',
 'move-leave-redirect'          => 'Arkada bir yönlendirme bırak',
-'protectedpagemovewarning'     => "'''UYARI:''' Bu sayfa kilitlenmiş, sadece hizmetli ayrıcalıklarına sahip kullanıcılar taşıyabilir.",
-'semiprotectedpagemovewarning' => "'''Not:''' Bu sayfa kilitlenmiş, sadece kayıtlı kullanıcılar taşıyabilir.",
+'protectedpagemovewarning'     => "'''Uyarı:''' Bu sayfa kilitlenmiş, sadece hizmetli ayrıcalıklarına sahip kullanıcılar taşıyabilir.
+Son günlük girdisi referans amaçlı aşağıda verilmiştir:",
+'semiprotectedpagemovewarning' => "'''Not:''' Bu sayfa kilitlenmiş, sadece kayıtlı kullanıcılar taşıyabilir.
+Son günlük girdisi referans amaçlı aşağıda verilmiştir:",
 'move-over-sharedrepo'         => '== Dosya mevcut ==
 [[:$1]] paylaşılmış havuzda mevcut. Bir dosyayı bu başlığa taşımak paylaşılmış dosyanın üstüne gelecektir.',
 'file-exists-sharedrepo'       => 'Seçilen isim paylaşılmış bir havuzda zaten mevcut.
@@ -2763,7 +2790,7 @@ ayarlamak için math/README'ye bakın.",
 'markaspatrolleddiff'                 => 'Kontrol edilmiş olarak işaretle',
 'markaspatrolledtext'                 => 'Kontrol edilmiş olarak işaretle',
 'markedaspatrolled'                   => 'Kontrol edildi',
-'markedaspatrolledtext'               => 'Gözden geçirilen metin kontrol edilmiş olarak işaretlendi.',
+'markedaspatrolledtext'               => '[[:$1]] için seçili revizyon gözden geçirilmiş olarak işaretlendi.',
 'rcpatroldisabled'                    => 'Son Değişiklikler Gözetimi devre dışı bırakıldı',
 'rcpatroldisabledtext'                => 'Son Değişiklikler Gözetimi özelliği şuanda devre dışı.',
 'markedaspatrollederror'              => 'Kontrol edilmedi',

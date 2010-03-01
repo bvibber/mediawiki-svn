@@ -552,11 +552,6 @@ $user: the user who did the block (not the one being blocked)
 'BookInformation': Before information output on Special:Booksources
 $isbn: ISBN to show information for
 $output: OutputPage object in use
-
-'CacheHeadersAfterSet': after cache headers have been set in 
-OutputPage::sendCacheControl, so they can be overridden without 
-disabling output method
-$out: OutputPage instance
  
 'CategoryPageView': before viewing a categorypage in CategoryPage::view
 $catpage: CategoryPage instance
@@ -643,6 +638,10 @@ new pages
 &$text: Text to preload with
 &$title: Title object representing the page being created
 
+'EditFormInitialText': Allows modifying the edit form when editing existing
+pages
+$editPage: EditPage	object
+
 'EditPage::attemptSave': called before an article is
 saved, that is before insertNewArticle() is called
 $editpage_Obj: the current EditPage object
@@ -693,6 +692,19 @@ textarea in the edit form
 'EditPageCopyrightWarning': Allow for site and per-namespace customization of contribution/copyright notice.
 $title: title of page being edited
 &$msg: localization message name, overridable. Default is either 'copyrightwarning' or 'copyrightwarning2'
+
+'EditPageGetDiffText': Allow modifying the wikitext that will be used in
+"Show changes"
+$editPage: EditPage object
+&$newtext: wikitext that will be used as "your version"
+
+'EditPageGetPreviewText': Allow modifying the wikitext that will be previewed
+$editPage: EditPage object
+&$toparse: wikitext that will be parsed
+
+'EditPageNoSuchSection': When a section edit request is given for an non-existent section
+&$editpage: The current EditPage object
+&$res: the HTML of the error text
 
 'EditPageTosSummary':  Give a chance for site and per-namespace customizations
 of terms of service summary link that might exist separately from the copyright
@@ -1141,6 +1153,7 @@ $article: the article that the history is loading for
 'PageHistoryLineEnding' : right before the end <li> is added to a history line
 $row: the revision row for this line
 $s: the string representing this parsed line
+$classes: array containing the <li> element classes
 
 'PageHistoryPager::getQueryInfo': when a history pager query parameter set
 is constructed
@@ -1282,9 +1295,26 @@ $namespace : Page namespace
 $title : Page title
 $text : Current text being indexed
 
-'SearchGetNearMatch': An extra chance for exact-title-matches in "go" searches
+'SearchGetNearMatchBefore': Perform exact-title-matches in "go" searches before the normal operations
+$allSearchTerms : Array of the search terms in all content languages
+&$titleResult : Outparam; the value to return. A Title object or null.
+
+'SearchGetNearMatch': An extra chance for exact-title-matches in "go" searches if nothing was found
 $term : Search term string
 &$title : Outparam; set to $title object and return false for a match
+
+'SearchGetNearMatchComplete': A chance to modify exact-title-matches in "go" searches
+$term : Search term string
+&$title : Current Title object that is being returned (null if none found).
+
+'SearchEngineReplacePrefixesComplete': Run after SearchEngine::replacePrefixes().
+$searchEngine : The SearchEngine object. Users of this hooks will be interested 
+in the $searchEngine->namespaces array.
+$query : Original query.
+&$parsed : Resultant query with the prefixes stripped.
+
+'SearchableNamespaces': An option to modify which namespaces are searchable.
+&$arr : Array of namespaces ($nsId => $name) which will be used.
 
 'SetupAfterCache': Called in Setup.php, after cache objects are set
 
@@ -1457,6 +1487,7 @@ SpecialRecentChanges
 &$tables: array of tables to be queried
 &$join_conds: join conditions for the tables
 $opts: FormOptions for this request
+&$query_options: array of options for the database request
 
 'SpecialSearchNogomatch': called when user clicked the "Go" button but the
 target doesn't exist

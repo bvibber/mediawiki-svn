@@ -11,13 +11,13 @@
  * @author Dalibor Bosits
  * @author Demicx
  * @author Dnik
+ * @author Ex13
  * @author Luka Krstulovic
  * @author MayaSimFan
  * @author Meno25
  * @author Mvrban
  * @author Roberta F.
  * @author SpeedyGonsales
- * @author Suradnik13
  * @author Treecko
  * @author לערי ריינהארט
  */
@@ -483,9 +483,6 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'namespaces'                 => 'Imenski prostori',
 'variants'                   => 'Inačice',
 
-# Metadata in edit box
-'metadata_help' => 'Metapodaci:',
-
 'errorpagetitle'    => 'Pogreška',
 'returnto'          => 'Vrati se na $1.',
 'tagline'           => 'Izvor: {{SITENAME}}',
@@ -661,7 +658,8 @@ Ako to nije slučaj, možda se radi o softverskoj grešci. Molimo da u tom sluč
 'unexpected'           => 'Neočekivana vrijednost: "$1"="$2".',
 'formerror'            => 'Pogreška: Ne mogu poslati podatke',
 'badarticleerror'      => 'Ovu radnju nije moguće izvesti s tom stranicom.',
-'cannotdelete'         => 'Ne mogu obrisati navedenu stranicu ili sliku. (Moguće da je već obrisana.)',
+'cannotdelete'         => 'Ne može se obrisati stranica ili datoteka "$1".
+Moguće je da ju je netko drugi već obrisao.',
 'badtitle'             => 'Loš naslov',
 'badtitletext'         => 'Navedeni naslov stranice nepravilan ili loše formirana interwiki poveznica.',
 'perfcached'           => 'Sljedeći podaci su iz međuspremnika i možda nisu najsvježiji:',
@@ -694,8 +692,8 @@ $2',
 # Login and logout pages
 'logouttext'                 => "'''Odjavili ste se.'''
 
-Možete nastaviti s korištenjem projekta {{SITENAME}} neprijavljeni, ili se možete ponovo prijaviti pod istim ili drugim imenom. Neke se stranice mogu
-prikazivati kao da ste još uvijek prijavljeni, sve dok ne očistite međuspremnik svog preglednika.",
+Možete nastaviti s korištenjem {{SITENAME}} neprijavljeni, ili se možete ponovo [[Special:UserLogin|prijaviti]] pod istim ili drugim imenom. 
+Neke se stranice mogu prikazivati kao da ste još uvijek prijavljeni, sve dok ne očistite međuspremnik svog preglednika.",
 'welcomecreation'            => '== Dobrodošli, $1! ==
 Vaš je suradnički račun otvoren. 
 
@@ -710,6 +708,7 @@ Ne zaboravite prilagoditi [[Special:Preferences|{{SITENAME}} postavke]].',
 'nav-login-createaccount'    => 'Prijavi se',
 'loginprompt'                => 'Za prijavu na sustav {{SITENAME}} morate u pregledniku uključiti kolačiće (cookies).',
 'userlogin'                  => 'Prijavi se / stvori račun',
+'userloginnocreate'          => 'Prijavi se',
 'logout'                     => 'Odjavi se',
 'userlogout'                 => 'Odjavi se',
 'notloggedin'                => 'Niste prijavljeni',
@@ -867,7 +866,7 @@ Vaša trenutačna IP adresa je $3, a oznaka bloka #$5. Molimo navedite ovaj broj
 'whitelistedittext'                => 'Za uređivanje stranice morate se $1.',
 'confirmedittext'                  => 'Morate ovjeriti vašu e-mail adresu prije nego što vam bude omogućeno uređivanje. Molim unesite i ovjerite vašu e-mail adresu u [[Special:Preferences|suradničkim postavkama]].',
 'nosuchsectiontitle'               => 'Odlomak ne postoji',
-'nosuchsectiontext'                => 'Pokušali ste uređivati odlomak koji ne postoji (moguće je nedavno obrisan). Pošto odlomak $1 ne postoji, nije moguće snimiti vaše promjene.',
+'nosuchsectiontext'                => 'Pokušali ste uređivati odlomak koji ne postoji (moguće je nedavno obrisan).',
 'loginreqtitle'                    => 'Nužna prijava',
 'loginreqlink'                     => 'prijavite se',
 'loginreqpagetext'                 => 'Morate se $1 da biste vidjeli ostale stranice.',
@@ -938,9 +937,9 @@ Administrator je zaključao bazu iz razloga: $1",
 'semiprotectedpagewarning'         => "'''Napomena:''' Ovu stranicu mogu uređivati samo prijavljeni suradnici.",
 'cascadeprotectedwarning'          => "'''UPOZORENJE:''' Ova stranica je zaključana i mogu je uređivati samo suradnici s administratorskim pravima, jer je uključena u {{PLURAL:\$1|slijedeću stranicu|slijedeće stranice}} koje su zaštićene \"prenosivom\" zaštitom:",
 'titleprotectedwarning'            => "'''UPOZORENJE:  Ova stranica je zaključana i samo je suradnici sa [[Special:ListGroupRights|slijedećim pravima]] mogu stvoriti.'''",
-'templatesused'                    => 'Predlošci korišteni na ovoj stranici:',
-'templatesusedpreview'             => 'Predlošci koji se koriste u ovom predpregledu:',
-'templatesusedsection'             => 'Predlošci koji se koriste u odjeljku:',
+'templatesused'                    => '{{PLURAL:$1|Predložak koji se rabi|Predlošci koji se rabe}} na ovoj stranici:',
+'templatesusedpreview'             => '{{PLURAL:$1|Predložak koji se rabi|Predlošci koji se rabe}} u ovom predpregledu:',
+'templatesusedsection'             => '{{PLURAL:$1|Predložak koji se rabi|Predlošci koji se rabe}} u ovom odjeljku:',
 'template-protected'               => '(zaštićen)',
 'template-semiprotected'           => '(djelomično zaštićen)',
 'hiddencategories'                 => 'Ova stranica je član {{PLURAL:$1|1 skrivene kategorija|$1 skrivene kategorije|$1 skrivenih kategorija}}:',
@@ -948,6 +947,8 @@ Administrator je zaključao bazu iz razloga: $1",
 'nocreatetext'                     => 'Na ovom je projektu ograničeno otvaranje novih stranica.
 Možete se vratiti i uređivati već postojeće stranice ili se [[Special:UserLogin|prijaviti ili otvoriti suradnički račun]].',
 'nocreate-loggedin'                => 'Nemate ovlasti za stvaranje novih stranica.',
+'sectioneditnotsupported-title'    => 'Uređivanje odjeljka nije podržano',
+'sectioneditnotsupported-text'     => 'Uređivanje odjeljka nije podržano na ovoj stranici',
 'permissionserrors'                => 'Pogreška u pravima',
 'permissionserrorstext'            => 'Nemate ovlasti za tu radnju iz sljedećih {{PLURAL:$1|razlog|razloga}}:',
 'permissionserrorstext-withaction' => 'Nemate dopuštenje za $2, iz {{PLURAL:$1|razloga|razloga}}:',
@@ -1028,6 +1029,7 @@ Pokušajte [[Special:Search|pretražiti]] važnije nove stranice na wikiju.',
 'rev-deleted-comment'         => '(komentar uklonjen)',
 'rev-deleted-user'            => '(suradničko ime uklonjeno)',
 'rev-deleted-event'           => '(zapis uklonjen)',
+'rev-deleted-user-contribs'   => '[suradničko ime ili IP adresa uklonjeni - izmjena skrivena u doprinosima]',
 'rev-deleted-text-permission' => "Ova izmjena je '''izbrisana'''.
 Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
 'rev-deleted-text-unhide'     => "Ova izmjena je '''izbrisana.'''
@@ -1045,6 +1047,10 @@ Detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAG
 'rev-suppressed-unhide-diff'  => "Jedna od revizija ove razlike je '''uklonjena'''.
 Postoji mnogo detalja u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} zapisniku uklanjanja].
 Kao administrator i dalje možete [$1 vidjeti ove razlike] ako želite da nastavite.",
+'rev-deleted-diff-view'       => "Jedna od izmjena je '''izbrisana'''.
+Kao administrator možete ju vidjeti; detalji se vjerojatno nalaze u [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} evidenciji brisanja].",
+'rev-suppressed-diff-view'    => "Jedna od izmjena stranice je '''skrivena'''.
+Kao administrator možete ju pregledati; vjerojatno postoji više podataka u [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} evidenciji skrivanja].",
 'rev-delundel'                => 'pokaži/skrij',
 'rev-showdeleted'             => 'prikaži',
 'revisiondelete'              => 'Izbriši/vrati izmjene',
@@ -1061,6 +1067,7 @@ Kao administrator i dalje možete [$1 vidjeti ove razlike] ako želite da nastav
 'logdelete-selected'          => "'''{{PLURAL:$1|Odabrani zapis u evidenciji|Odabrani zapisi u evidenciji}}:'''",
 'revdelete-text'              => "'''Obrisane će se izmjene i dalje nalaziti u javnom popisu izmjena, ali njihov sadržaj neće biti dostupan javnosti.'''
 Drugi administratori ovoga projekta ({{SITENAME}}) moći će i dalje pristupiti skrivenom sadržaju i vratiti ga u javni pristup putem ovog sučelja, osim ako operateri na projektu nisu postavili dodatna ograničenja.",
+'revdelete-confirm'           => 'Molimo potvrdite da namjeravate ovo učiniti, da razumijete posljedice i da to činite u skladu s [[{{MediaWiki:Policy-url}}|pravilima]].',
 'revdelete-suppress-text'     => "Sklanjanje uređivanja treba raditi '''iznimno''' u slijedećih par slučajeva:
 * Privatne informacije neprilične javnom mediju tipa
 *: ''kućna adresa i broj telefona, JMBG ili OIB, itd.''",
@@ -1071,14 +1078,17 @@ Drugi administratori ovoga projekta ({{SITENAME}}) moći će i dalje pristupiti 
 'revdelete-hide-comment'      => 'Sakrij komentar (sažetak)',
 'revdelete-hide-user'         => 'Sakrij suradnikovo ime/IP adresu',
 'revdelete-hide-restricted'   => 'Postavi ograničenja i za administratore kao i za ostale suradnike',
+'revdelete-radio-same'        => '(ne mijenjaj)',
+'revdelete-radio-set'         => 'Da',
+'revdelete-radio-unset'       => 'Ne',
 'revdelete-suppress'          => 'Sakrij podatke od administratora i ostalih suradnika',
 'revdelete-unsuppress'        => 'Ukloni ograničenja na vraćenim izmjenama',
 'revdelete-log'               => 'Razlog za brisanje:',
-'revdelete-submit'            => 'Izvrši brisanje/sakrivanje',
+'revdelete-submit'            => 'Primijeni na {{PLURAL:$1|odabranu inačicu|odabrane inačice}}',
 'revdelete-logentry'          => 'promijenjena vidljivost izmjene za [[$1]]',
 'logdelete-logentry'          => 'promijenjena vidljivost uređivanja [[$1]]',
-'revdelete-success'           => "'''Vidljivost promjene uspješno postavljena.'''",
-'revdelete-failure'           => "'''Vidljivost inačice se ne može postaviti:'''
+'revdelete-success'           => "'''Vidljivost izmjene uspješno ažurirana.'''",
+'revdelete-failure'           => "'''Vidljivost inačice nije mogla biti ažurirana:'''
 $1",
 'logdelete-success'           => "'''Vidljivost uređivanja uspješno postavljena.'''",
 'logdelete-failure'           => "'''Vidljivost evidencije ne može biti postavljena:'''
@@ -1104,7 +1114,7 @@ Nemate pristup do nje.',
 'revdelete-no-change'         => "'''Upozorenje:''' stavka od $2, $1 već ima tražene postavke vidljivosti.",
 'revdelete-concurrent-change' => 'Greška pri izmjeni stavke od $2, $1: izgleda da je njen status promijenio netko drugi dok ste ju pokušavali mijenjati. 
 Provjerite evidencije.',
-'revdelete-only-restricted'   => 'Ne možete sakriti stavke od pregleda administratora bez odabira još jedne od drugih mogućnosti skrivanja.',
+'revdelete-only-restricted'   => 'Greška pri skrivanju stavke od dana $2, $1: ne možete ukloniti stavke od pregledavanja administratora bez da odaberete neku od drugih mogućnosti vidljivosti.',
 'revdelete-reason-dropdown'   => '*Uobičajeni razlozi brisanja
 ** Kršenje autorskih prava
 ** Neprimjereni osobni podaci',
@@ -1348,7 +1358,7 @@ Možete omogućiti drugima da vas kontaktiraju na suradničkoj stranici ili stra
 * Označena kućica pokazuje skupinu kojoj suradnik pripada.
 * Neoznačena kućica pokazuje skupinu kojoj suradnik ne pripada.
 * Zvjezdica * označava skupinu koju ne možete ukloniti kad ju jednom dodate, ili obratno.',
-'userrights-reason'           => 'Razlog za promjenu:',
+'userrights-reason'           => 'Razlog:',
 'userrights-no-interwiki'     => 'Nemate dopuštenje za uređivanje suradničkih prava na drugim wikijima.',
 'userrights-nodatabase'       => 'Baza podataka $1 ne postoji ili nije lokalno dostupna.',
 'userrights-nologin'          => 'Morate se [[Special:UserLogin|prijaviti]] s administratorskim računom da bi mogli dodijeliti suradnička prava.',
@@ -1537,6 +1547,7 @@ Možete omogućiti drugima da vas kontaktiraju na suradničkoj stranici ili stra
 'upload'                      => 'Postavi datoteku',
 'uploadbtn'                   => 'Postavi datoteku',
 'reuploaddesc'                => 'Vratite se u obrazac za postavljanje.',
+'upload-tryagain'             => 'Pošalji izmijenjeni opis datoteke',
 'uploadnologin'               => 'Niste prijavljeni',
 'uploadnologintext'           => 'Za postavljanje datoteka morate biti  [[Special:UserLogin|prijavljeni]].',
 'upload_directory_missing'    => 'Mapa za datoteke ($1) nedostaje i webserver ju ne može napraviti.',
@@ -1599,6 +1610,7 @@ Ako još uvijek želite postaviti svoju datoteku, idite nazad i postavite ju pod
 'file-deleted-duplicate'      => 'Datoteka istovjetna ovoj datoteci ([[$1]]) prethodno je obrisana. Provjerite evidenciju brisanja za tu datoteke datoteku prije nego što nastavite s ponovnim postavljanjem.',
 'successfulupload'            => 'Postavljanje uspješno.',
 'uploadwarning'               => 'Upozorenje kod postavljanja',
+'uploadwarning-text'          => 'Molimo izmijenite opis datoteke ispod i pokušajte kasnije.',
 'savefile'                    => 'Sačuvaj datoteku',
 'uploadedimage'               => 'postavljeno "$1"',
 'overwroteimage'              => 'postavljena nova inačica od "[[$1]]"',
@@ -1606,7 +1618,6 @@ Ako još uvijek želite postaviti svoju datoteku, idite nazad i postavite ju pod
 'uploaddisabledtext'          => 'Postavljanje datoteka je onemogućeno.',
 'php-uploaddisabledtext'      => 'Postavljanja datoteka su onemogućena u PHP-u. Molimo provjerite postavke za postavljanje datoteka.',
 'uploadscripted'              => 'Ova datoteka sadrži HTML ili skriptu, što može dovesti do grešaka u web pregledniku.',
-'uploadcorrupt'               => 'Ova je datoteka oštećena ili ima nepravilan nastavak. Provjerite i pokušajte ponovo.',
 'uploadvirus'                 => 'Datoteka sadrži virus! Podrobnije: $1',
 'upload-source'               => 'Izvorna datoteka',
 'sourcefilename'              => 'Ime datoteke na vašem računalu:',
@@ -1868,8 +1879,8 @@ koja obično ukazuje na "pravu" odredišnu stranicu, na koju bi trebalo pokaziva
 'ancientpages'            => 'Najstarije stranice',
 'move'                    => 'Premjesti',
 'movethispage'            => 'Premjesti ovu stranicu',
-'unusedimagestext'        => '<p>Moguće je da su druge mrežne stranice izvan ovog
-wikija povezane na sliku neposrednim URLom, a nisu ovdje navedene unatoč aktivnoj uporabi.</p>',
+'unusedimagestext'        => 'Sljedeće datoteke postoje, ali nisu uključene ni u jednu stranicu.
+Molimo obratite pozornost da druge web stranice mogu povezivati sliku izravnim URL-om, i tako mogu  još uvijek biti prikazani ovdje unatoč činjenici da više nisu u aktivnoj uporabi.',
 'unusedcategoriestext'    => 'Na navedenim stranicama kategorija nema ni jednog članka ili potkategorije.',
 'notargettitle'           => 'Nema odredišta',
 'notargettext'            => 'Niste naveli ciljnu stranicu ili suradnika za izvršavanje ove funkcije.',
@@ -1944,6 +1955,7 @@ Također pogledajte [[Special:WantedCategories|tražene kategorije]].',
 
 # Special:ActiveUsers
 'activeusers'            => 'Popis aktivnih suradnika',
+'activeusers-intro'      => 'Ovo je popis suradnika koji su napravili neku aktivnost u {{PLURAL:$1|zadnji $1 dan|zadnja $1 dana|zadnjih $1 dana}}.',
 'activeusers-count'      => '{{PLURAL:$1|nedavna $1 izmjena|nedavne $1 izmjene|nedavnih $1 izmjena}} u {{PLURAL:$3|posljednji $3 dan|posljednja $3 dana|posljednjih $3 dana}}',
 'activeusers-from'       => 'Prikaži suradnike počevši od:',
 'activeusers-hidebots'   => 'Sakrij botove',
@@ -2085,7 +2097,7 @@ Za pomoć posjetite:
 'exblank'                => 'stranica je bila prazna',
 'delete-confirm'         => 'Obriši "$1"',
 'delete-legend'          => 'Izbriši',
-'historywarning'         => "'''Upozorenje''':  Stranica koju želite obrisati ima starije izmjene s $1 {{PLURAL:$1|inačicom|inačice|inačica}}:",
+'historywarning'         => "'''Upozorenje''':  Stranica koju želite obrisati ima starije izmjene s približno $1 {{PLURAL:$1|inačicom|inačice|inačica}}:",
 'confirmdeletetext'      => 'Zauvijek ćete izbrisati stranicu ili sliku zajedno s prijašnjim inačicama.
 Molim potvrdite svoju namjeru, da razumijete posljedice i da ovo radite u skladu s [[{{MediaWiki:Policy-url}}|pravilima]].',
 'actioncomplete'         => 'Zahvat završen',
@@ -2142,6 +2154,7 @@ Pogledajte [[Special:ProtectedPages|zaštićene stranice]] za popis trenutačno 
 'protectexpiry'               => 'Trajanje zaštite:',
 'protect_expiry_invalid'      => 'Upisani vremenski rok nije valjan.',
 'protect_expiry_old'          => 'Vrijeme isteka je u prošlosti.',
+'protect-unchain-permissions' => 'Otključaj daljnje mogućnosti zaštićivanja',
 'protect-text'                => "Ovdje možete pregledati i promijeniti razinu zaštite za stranicu '''<nowiki>$1</nowiki>'''.",
 'protect-locked-blocked'      => "Ne možete mijenjati nivo zaštite dok ste blokirani.
 Slijede postavke stranice '''$1''':",
@@ -2287,6 +2300,7 @@ $1',
 
 # Block/unblock
 'blockip'                         => 'Blokiraj suradnika',
+'blockip-title'                   => 'Blokiraj suradnika',
 'blockip-legend'                  => 'Blokiraj suradnika',
 'blockiptext'                     => 'Koristite donji obrazac za blokiranje pisanja pojedinih suradnika ili IP adresa .
 To biste trebali raditi samo zbog sprječavanja vandalizma i u skladu
@@ -2342,7 +2356,7 @@ Pogledaj [[Special:IPBlockList|popis blokiranih IP adresa]] za pregled.',
 'ipblocklist-sh-addressblocks'    => '$1 blokirane IP-eve',
 'ipblocklist-submit'              => 'Traži',
 'ipblocklist-localblock'          => 'Lokalno blokiranje',
-'ipblocklist-otherblocks'         => 'Druga blokiranja',
+'ipblocklist-otherblocks'         => '{{PLURAL:$1|Ostalo blokiranje|Ostala blokiranja}}',
 'blocklistline'                   => '$1, $2 je blokirao $3 ($4)',
 'infiniteblock'                   => 'neograničeno',
 'expiringblock'                   => 'istječe $1 u $2',
@@ -2381,9 +2395,11 @@ Zapisnik skrivanja je prikazan ispod kao napomena:',
 'ipb_already_blocked'             => '"$1" je već blokiran',
 'ipb-needreblock'                 => '== Već blokiran ==
 $1 je već blokiran. Želite promijeniti postavke blokiranja?',
+'ipb-otherblocks-header'          => '{{PLURAL:$1|Ostalo blokiranje|Ostala blokiranja}}',
 'ipb_cant_unblock'                => 'Pogreška: blok ID $1 nije nađen. Moguće je da je suradnik već odblokiran.',
 'ipb_blocked_as_range'            => 'Pogreška: IP adresa $1 nije blokirana direktno te stoga ne može biti odblokirana. Blokirana je kao dio opsega $2, koji može biti odblokiran.',
 'ip_range_invalid'                => 'Raspon IP adresa nije valjan.',
+'ip_range_toolarge'               => 'Opsezi blokiranja veći od /$1 nisu dozvoljeni.',
 'blockme'                         => 'Blokiraj me',
 'proxyblocker'                    => 'Zaštita od otvorenih posrednika (proxyja)',
 'proxyblocker-disabled'           => 'Ova funkcija je onemogućena.',
@@ -2755,8 +2771,8 @@ $1',
 'nextdiff'     => 'Novija izmjena →',
 
 # Media information
-'mediawarning'         => "'''Upozorenje''': Ova datoteka možda sadrži zlonamjerni program čije bi izvršavanje moglo ugroziti vaš računalni sustav.
-<hr />",
+'mediawarning'         => "'''Upozorenje''': Ova datoteka možda sadrži štetan kod.
+Njegovim izvršavanjem mogli biste oštetiti svoj sustav.<hr />",
 'imagemaxsize'         => "Ograniči veličinu slike:<br />''(za stranicu s opisom datoteke)''",
 'thumbsize'            => 'Veličina sličice (umanjene inačice slike):',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|stranica|stranice}}',

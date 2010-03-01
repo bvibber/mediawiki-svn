@@ -216,7 +216,7 @@ class User {
 		$mBlockreason, $mBlock, $mEffectiveGroups, $mBlockedGlobally,
 		$mLocked, $mHideName, $mOptions;
 	//@}
-	
+
 	static $idCacheByName = array();
 
 	/**
@@ -345,7 +345,8 @@ class User {
 	 *    User::getCanonicalName(), except that true is accepted as an alias
 	 *    for 'valid', for BC.
 	 *
-	 * @return \type{User} The User object, or null if the username is invalid. If the
+	 * @return \type{User} The User object, or false if the username is invalid 
+	 *    (e.g. if it contains illegal characters or is an IP address). If the
 	 *    username is not present in the database, the result will be a user object
 	 *    with a name, zero user ID and default settings.
 	 */
@@ -354,9 +355,7 @@ class User {
 			$validate = 'valid';
 		}
 		$name = self::getCanonicalName( $name, $validate );
-		if ( WikiError::isError( $name ) ) {
-			return $name;
-		} elseif ( $name === false ) {
+		if ( $name === false ) {
 			return false;
 		} else {
 			# Create unloaded user object
@@ -437,7 +436,7 @@ class User {
 	 */
 	static function whoIs( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField( 'user', 'user_name', array( 'user_id' => $id ), 'User::whoIs' );
+		return $dbr->selectField( 'user', 'user_name', array( 'user_id' => $id ), __METHOD__ );
 	}
 
 	/**
@@ -636,12 +635,12 @@ class User {
 	 */
 	function getPasswordValidity( $password ) {
 		global $wgMinimalPasswordLength, $wgContLang;
-		
+
 		$result = false; //init $result to false for the internal checks
-		
+
 		if( !wfRunHooks( 'isValidPassword', array( $password, &$result, $this ) ) )
 			return $result;
-		
+
 		if ( $result === false ) {
 			if( strlen( $password ) < $wgMinimalPasswordLength ) {
 				return 'passwordtooshort';
@@ -701,7 +700,7 @@ class User {
 		# with title normalisation, but then it's too late to
 		# check elsewhere
 		if( strpos( $name, '#' ) !== false )
-			return new WikiError( 'usernamehasherror' );
+			return false;
 
 		# Clean up name according to title rules
 		$t = ( $validate === 'valid' ) ?
@@ -904,6 +903,13 @@ class User {
 			return false;
 		}
 
+		global $wgBlockDisablesLogin;
+		if( $wgBlockDisablesLogin && $this->isBlocked() ) {
+			# User blocked and we've disabled blocked user logins
+			$this->loadDefaults();
+			return false;
+		}
+
 		if ( isset( $_SESSION['wsToken'] ) ) {
 			$passwordCorrect = $_SESSION['wsToken'] == $this->mToken;
 			$from = 'session';
@@ -1055,7 +1061,7 @@ class User {
 			$defOpt['searchNs'.$nsnum] = !empty( $wgNamespacesToBeSearchedDefault[$nsnum] );
 		}
 		$defOpt['skin'] = $wgDefaultSkin;
-		
+
 		return $defOpt;
 	}
 
@@ -1147,6 +1153,8 @@ class User {
 		if ( $this->mBlock->load( $ip , $this->mId ) ) {
 			wfDebug( __METHOD__ . ": Found block.\n" );
 			$this->mBlockedby = $this->mBlock->mBy;
+			if( $this->mBlockedby == 0 )
+				$this->mBlockedby = $this->mBlock->mByName;
 			$this->mBlockreason = $this->mBlock->mReason;
 			$this->mHideName = $this->mBlock->mHideName;
 			$this->mAllowUsertalk = $this->mBlock->mAllowUsertalk;
@@ -1392,9 +1400,9 @@ class User {
 			$blocked = false;
 			wfDebug( __METHOD__ . ": self-talk page, ignoring any blocks\n" );
 		}
-		
+
 		wfRunHooks( 'UserIsBlockedFrom', array( $this, $title, &$blocked, &$allowUsertalk ) );
-		
+
 		wfProfileOut( __METHOD__ );
 		return $blocked;
 	}
@@ -2525,9 +2533,9 @@ class User {
 				'user_id' => $this->mId
 			), __METHOD__
 		);
-		
+
 		$this->saveOptions();
-		
+
 		wfRunHooks( 'UserSaveSettings', array( $this ) );
 		$this->clearSharedCache();
 		$this->getUserPage()->invalidateCache();
@@ -2626,7 +2634,7 @@ class User {
 
 		// Clear instance cache other than user table data, which is already accurate
 		$this->clearInstanceCache();
-		
+
 		$this->saveOptions();
 	}
 
@@ -2900,9 +2908,10 @@ class User {
 	 * Generate a new e-mail confirmation token and send a confirmation/invalidation
 	 * mail to the user's given address.
 	 *
+	 * @param $changed Boolean: whether the adress changed
 	 * @return \types{\bool,\type{WikiError}} True on success, a WikiError object on failure.
 	 */
-	function sendConfirmationMail() {
+	function sendConfirmationMail( $changed = false ) {
 		global $wgLang;
 		$expiration = null; // gets passed-by-ref and defined in next line.
 		$token = $this->confirmationToken( $expiration );
@@ -2910,8 +2919,9 @@ class User {
 		$invalidateURL = $this->invalidationTokenUrl( $token );
 		$this->saveSettings();
 
+		$message = $changed ? 'confirmemail_body_changed' : 'confirmemail_body';
 		return $this->sendMail( wfMsg( 'confirmemail_subject' ),
-			wfMsg( 'confirmemail_body',
+			wfMsg( $message,
 				wfGetIP(),
 				$this->getName(),
 				$url,
@@ -3050,8 +3060,8 @@ class User {
 	 * @return \bool True if allowed
 	 */
 	function canSendEmail() {
-		global $wgEnableEmail, $wgEnableUserEmail, $wgUser;
-		if( !$wgEnableEmail || !$wgEnableUserEmail || !$wgUser->isAllowed( 'sendemail' ) ) {
+		global $wgEnableEmail, $wgEnableUserEmail;
+		if( !$wgEnableEmail || !$wgEnableUserEmail || !$this->isAllowed( 'sendemail' ) ) {
 			return false;
 		}
 		$canSend = $this->isEmailConfirmed();
@@ -3563,11 +3573,11 @@ class User {
 	 * @param $byEmail Boolean: account made by email?
 	 */
 	public function addNewUserLogEntry( $byEmail = false ) {
-		global $wgUser, $wgContLang, $wgNewUserLog;
+		global $wgUser, $wgNewUserLog;
 		if( empty( $wgNewUserLog ) ) {
 			return true; // disabled
 		}
-		$talk = $wgContLang->getFormattedNsText( NS_TALK );
+
 		if( $this->getName() == $wgUser->getName() ) {
 			$action = 'create';
 			$message = '';
@@ -3602,7 +3612,6 @@ class User {
 	}
 
 	protected function loadOptions() {
-		global $wgCookiePrefix;
 		$this->load();
 		if ( $this->mOptionsLoaded || !$this->getId() )
 			return;
@@ -3631,11 +3640,6 @@ class User {
 				$this->mOptionOverrides[$row->up_property] = $row->up_value;
 				$this->mOptions[$row->up_property] = $row->up_value;
 			}
-
-			//null skin if User::mId is loaded out of session data without persistant credentials
-			if ( !isset( $_SESSION['wsToken'] ) && !isset( $_COOKIE["{$wgCookiePrefix}Token"] ) )
-				$this->mOptions['skin'] = null;
-
 		}
 
 		$this->mOptionsLoaded = true;
@@ -3650,11 +3654,11 @@ class User {
 
 		$this->loadOptions();
 		$dbw = wfGetDB( DB_MASTER );
-		
+
 		$insert_rows = array();
-		
+
 		$saveOptions = $this->mOptions;
-		
+
 		// Allow hooks to abort, for instance to save to a global profile.
 		// Reset options to default state before saving.
 		if( !wfRunHooks( 'UserSaveOptions', array( $this, &$saveOptions ) ) )

@@ -198,9 +198,6 @@ $messages = array(
 'namespaces'                 => 'Fazohoi nom',
 'variants'                   => 'Variantho',
 
-# Metadata in edit box
-'metadata_help' => 'Metadoda:',
-
 'errorpagetitle'    => 'Xato',
 'returnto'          => 'Bozgaşt ba $1.',
 'tagline'           => 'Az {{SITENAME}}',
@@ -532,7 +529,7 @@ Lutfan in jo onro va jo hardui onro dar darxosthoi xud zikr kuned.",
 'whitelistedittext'                => 'Baroi viroişi maqola bojad ba sistem $1 şaved.',
 'confirmedittext'                  => 'Şumo bojad nişonai poctai elektroniatonro peş az viroiş kardani sahifaho, tasdiq kuned. Lutfan in korro tariqi [[Special:Preferences|tarçihoti korbar]] surat dihed.',
 'nosuchsectiontitle'               => 'Cunin baxşe vuçud nadorad',
-'nosuchsectiontext'                => 'Şumo xosted, ki qismero viroiş kuned, ki on vuçud nadorad.  To hole, ki qismi $1 vuçud nadorad, baroi viroişi şumo çoj nest.',
+'nosuchsectiontext'                => 'Şumo xosted, ki qismero viroiş kuned, ki on vuçud nadorad.',
 'loginreqtitle'                    => 'Vurud ba sistem lozim ast',
 'loginreqlink'                     => 'vurud ba sistem',
 'loginreqpagetext'                 => 'Baroi didani sahifahoi digar şumo bojad $1 kuned.',
@@ -1017,7 +1014,6 @@ Agar parvandai barrasişuda aksi xurd karda şudai on parvandai aslī ast, nijoz
 'overwroteimage'             => 'nusxai çadidi "[[$1]]" borguzorī şud',
 'uploaddisabled'             => "Bor kordan ƣajrifa'ol ast",
 'uploadscripted'             => 'In parvanda kodi skriptī jo HTML dorad, ki metavonad dar mururgarī veb nodurust namojon şavad.',
-'uploadcorrupt'              => 'In parvanda xarob ast va jo pasvandi xato dorad. Lutfan onro sançida az nav bor kuned.',
 'uploadvirus'                => "In parvanda virus dorad! Çuz'ijot: $1",
 'sourcefilename'             => 'Nomi parvandai aslī:',
 'destfilename'               => 'Nomi parvandai maqsad:',

@@ -246,9 +246,6 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 'vector-namespace-mediawiki' => 'Teachtaireacht',
 'vector-view-view'           => 'Léigh',
 
-# Metadata in edit box
-'metadata_help' => 'Meiteasonraí:',
-
 'errorpagetitle'    => 'Earráid',
 'returnto'          => 'Fill ar ais go $1.',
 'tagline'           => 'Ó {{SITENAME}}.',
@@ -1003,8 +1000,6 @@ Má theastáilann uait do chomhad a uaslódáil fós, téigh ar ais agus úsáid
 'uploadedimage'        => 'uaslódáladh "[[$1]]"',
 'uploaddisabled'       => 'Tá brón orainn, ní féidir aon rud a uaslódáil faoi láthair.',
 'uploaddisabledtext'   => 'Tá cosc ar uaslódáil comhad.',
-'uploadcorrupt'        => 'Tá an comhad truaillithe nó tá iarmhír comhadainm neamhbhailí aige. Scrúdaigh an comhad agus
-uaslódáil é arís, le do thoil.',
 'uploadvirus'          => 'Tá víreas ann sa comhad seo! Eolas: $1',
 'sourcefilename'       => 'Comhadainm foinse:',
 'destfilename'         => 'Comhadainm sprice:',
@@ -1249,7 +1244,7 @@ Beidh do seoladh ríomhphoist a d\'iontráil tú i [[Special:Preferences|do chui
 Amach anseo liostálfar athruithe don leathanach seo agus dá leathanach plé ansin,
 agus beidh '''cló trom''' ar a theideal san [[Special:RecentChanges|liosta de na hathruithe is déanaí]] sa chaoi go bhfeicfeá iad go héasca.",
 'removedwatch'         => 'Bainte den liosta faire',
-'removedwatchtext'     => 'Baineadh an leathanach "<nowiki>$1</nowiki>" as [[Special:Watchlist|do liosta faire]].',
+'removedwatchtext'     => 'Baineadh an leathanach "[[:$1]]" as [[Special:Watchlist|do liosta faire]].',
 'watch'                => 'Déan faire',
 'watchthispage'        => 'Déan faire ar an leathanach seo',
 'unwatch'              => 'Ná fair',
@@ -1587,7 +1582,7 @@ Sna cásanna sin, caithfidh tú an leathanach a aistrigh nó a chumasc tú féin
 'movedto'                 => 'athainmnithe bheith',
 'movetalk'                => 'Athainmnigh an leathanach plé freisin.',
 '1movedto2'               => 'tar éis [[$1]] a athainmniú mar [[$2]]',
-'1movedto2_redir'         => 'Rinneadh athsheoladh de $1 go $2.',
+'1movedto2_redir'         => 'rinneadh athsheoladh de [[$1]] go [[$2]]',
 'movelogpage'             => 'Log athainmnithe',
 'movelogpagetext'         => 'Liosta is ea seo thíos de leathanaigh athainmnithe.',
 'movereason'              => 'Cúis',

@@ -1,4 +1,4 @@
-MediaWiki 1.16 is a collaborative project released under the
+MediaWiki 1.17 is a collaborative project released under the
 GNU General Public License v2. We would like to recognize the
 following names for their contribution to the product.
 
@@ -60,6 +60,7 @@ following names for their contribution to the product.
 * Soxred93
 * Thomas Bleher
 * Tim Starling
+* Tom Gries
 * Victor Vasiliev
 
 == Patch Contributors ==
@@ -73,7 +74,6 @@ following names for their contribution to the product.
 * Brianna Laugher
 * Carlin
 * Conrad Irwin
-* Crb
 * Dan Nessett
 * Daniel Arnold
 * Denny Vrandecic
@@ -111,7 +111,6 @@ following names for their contribution to the product.
 * René Kijewski
 * Robert Treat
 * RockMFR
-* Roi Avinoam
 * ST47
 * Scott Colcord
 * Simon Walker

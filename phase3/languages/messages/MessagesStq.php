@@ -217,9 +217,6 @@ $messages = array(
 'namespaces'                 => 'Noomeruume',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metadoatäie:',
-
 'errorpagetitle'    => 'Failer',
 'returnto'          => 'Tourääch tou Siede $1.',
 'tagline'           => 'Uut {{SITENAME}}',
@@ -612,7 +609,7 @@ Du koast $1 of aan fon do uur [[{{MediaWiki:Grouppage-sysop}}|Administratore]] k
 'whitelistedittext'                => 'Du moast die $1, uum Artikkele beoarbaidje tou konnen.',
 'confirmedittext'                  => 'Du moast dien E-Mail-Adresse eerste anärkanne, eer du beoarbaidje koast. Fäl dien E-Mail uut un ärkanne ju an in do [[Special:Preferences|Ienstaalengen]].',
 'nosuchsectiontitle'               => 'Oudeelenge bestoant nit',
-'nosuchsectiontext'                => 'Du fersäkst ju nit bestoundende Oudeelenge $1 tou beoarbaidjen. Man bloot al bestoundende Oudeelengen konnen beoarbaided wäide.',
+'nosuchsectiontext'                => 'Du fersäkst ju nit bestoundende Oudeelenge tou beoarbaidjen.',
 'loginreqtitle'                    => 'Anmäldenge ärfoarderelk',
 'loginreqlink'                     => 'anmäldje',
 'loginreqpagetext'                 => 'Du moast die $1, uum uur Sieden betrachtje tou konnen.',
@@ -1385,7 +1382,6 @@ Wan du ju Doatäi daach hoochleede moatest, gung dan tourääch un leed dien Doa
 'uploaddisabledtext'          => 'Dät Hoochleeden fon Doatäie is nit muugelk.',
 'php-uploaddisabledtext'      => 'PHP-Doatäi-Uploads wuuden deaktivierd. Wröich ju file_uploads-Ienstaalenge.',
 'uploadscripted'              => 'Disse Doatäi änthaalt HTML- of Scriptcode, ju bie Fersjoon fon aan Webbrowser apfierd wäide kuude.',
-'uploadcorrupt'               => 'Ju Doatäi is beschäädiged of häd n falsken Noome. Uurpröiwe jädden ju Doatäi un leede ju fonnäien hooch.',
 'uploadvirus'                 => 'Disse Doatäi änthaalt n Virus! Details: $1',
 'upload-source'               => 'Wälledoatäi',
 'sourcefilename'              => 'Wälledoatäi:',

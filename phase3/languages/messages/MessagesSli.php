@@ -209,9 +209,6 @@ $messages = array(
 'namespaces'                 => 'Noamensraum:',
 'variants'                   => 'Varianta',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fehler',
 'returnto'          => 'Zurück zur Seite $1.',
 'tagline'           => 'Aus {{SITENAME}}',
@@ -593,7 +590,7 @@ Bitte fiege olle Informationa jeder Oafroage hinzu, de du stallt.",
 'whitelistedittext'                => 'Du mußt diech $1, im Seyta beoarbeeta zu kinna.',
 'confirmedittext'                  => 'Du mußt denne E-Mail-Atresse erscht bestätiga, bevor du Beoarbeetunga durchfiehrn koast. Bitte ergänze und bestätige Denne E-Mail ei dann [[Special:Preferences|Eenstallunga]].',
 'nosuchsectiontitle'               => 'Obschnitt ne vurhanda',
-'nosuchsectiontext'                => 'Du versichst dann ne vorhandena Obschnitt $1 zu beoarbeeta. Is kinna jedoch ock bereits vorhandene Obschnitte beoarbeetet waan.',
+'nosuchsectiontext'                => 'Du versichst dann ne vorhandena Obschnitt zu beoarbeeta.',
 'loginreqtitle'                    => 'Oameldung erforderlich',
 'loginreqlink'                     => 'Oanmelda',
 'loginreqpagetext'                 => 'Du mußt diech $1, im Seyta lasa zu kinna.',
@@ -1251,7 +1248,6 @@ Bitte priefe, ob du doas Bild ei voller Ufflesung vorliegen host und loade diese
 'uploaddisabled'             => 'Huchlada deaktiviert',
 'uploaddisabledtext'         => 'Doas Huchloada vu Dateien ies deaktiviert.',
 'uploadscripted'             => "Diese Datei enthält HTML- oder Scriptcode, dar irrtiemlich vu a'm Webbrowser ausgefiehrt waan kennte.",
-'uploadcorrupt'              => 'De Datei ies beschädigt oder hoot anne foalsche Datei-Erweiterung. Bitte ieberpriefe de Datei und wiederhole dann Huchloade-Vurgang.',
 'uploadvirus'                => "Diese Datei enthält an'n Virus! Details: $1",
 'upload-source'              => 'Quelldatei',
 'sourcefilename'             => 'Quelldatei:',

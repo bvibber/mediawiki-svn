@@ -105,7 +105,7 @@ class IPBlockForm {
 			$msg = wfMsgReal( $key, $err );
 			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
 			$wgOut->addHTML( Xml::tags( 'p', array( 'class' => 'error' ), $msg ) );
-		} elseif( $this->BlockAddress ) {
+		} elseif( $this->BlockAddress !== null ) {
 			# Get other blocks, i.e. from GlobalBlocking or TorBlock extension
 			wfRunHooks( 'OtherBlockLogLink', array( &$otherBlockedMsgs, $this->BlockAddress ) );
 
@@ -410,7 +410,7 @@ class IPBlockForm {
 				# Username block
 				if( $wgSysopUserBans ) {
 					$user = User::newFromName( $this->BlockAddress );
-					if( !is_null( $user ) && $user->getId() ) {
+					if( $user instanceof User && $user->getId() ) {
 						# Use canonical name
 						$userId = $user->getId();
 						$this->BlockAddress = $user->getName();
@@ -539,19 +539,20 @@ class IPBlockForm {
 		}
 	}
 
-	public static function suppressUserName( $name, $userId ) {
+	public static function suppressUserName( $name, $userId, $dbw = null ) {
 		$op = '|'; // bitwise OR
-		return self::setUsernameBitfields( $name, $userId, $op );
+		return self::setUsernameBitfields( $name, $userId, $op, $dbw );
 	}
 
-	public static function unsuppressUserName( $name, $userId ) {
+	public static function unsuppressUserName( $name, $userId, $dbw = null ) {
 		$op = '&'; // bitwise AND
-		return self::setUsernameBitfields( $name, $userId, $op );
+		return self::setUsernameBitfields( $name, $userId, $op, $dbw );
 	}
 
-	private static function setUsernameBitfields( $name, $userId, $op ) {
+	private static function setUsernameBitfields( $name, $userId, $op, $dbw ) {
 		if( $op !== '|' && $op !== '&' ) return false; // sanity check
-		$dbw = wfGetDB( DB_MASTER );
+		if( !$dbw )
+			$dbw = wfGetDB( DB_MASTER );
 		$delUser = Revision::DELETED_USER | Revision::DELETED_RESTRICTED;
 		$delAction = LogPage::DELETED_ACTION | Revision::DELETED_RESTRICTED;
 		# Normalize user name

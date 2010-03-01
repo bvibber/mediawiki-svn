@@ -8,6 +8,7 @@
  * @file
  *
  * @author Agony
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Jaakonam
@@ -485,9 +486,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'namespaces'                 => 'Nimiavaruudet',
 'variants'                   => 'Muuttujat',
 
-# Metadata in edit box
-'metadata_help' => 'Sisältökuvaukset:',
-
 'errorpagetitle'    => 'Virhe',
 'returnto'          => 'Palaa sivulle $1.',
 'tagline'           => '{{SITENAME}}',
@@ -647,6 +645,8 @@ Ilmoita tämän sivun osoite wikin [[Special:ListUsers/sysop|ylläpitäjälle]].
 'readonly_lag'         => 'Tietokanta on automaattisesti lukittu, jotta kaikki tietokantapalvelimet saisivat kaikki tuoreet muutokset',
 'internalerror'        => 'Sisäinen virhe',
 'internalerror_info'   => 'Sisäinen virhe: $1',
+'fileappenderrorread'  => 'Ei voitu lukea tiedostoa ”$1” liittämisen aikana.',
+'fileappenderror'      => 'Tiedostoa ”$1” ei voitu lisätä tiedostoon ”$2”.',
 'filecopyerror'        => 'Tiedostoa <b>$1</b> ei voitu kopioida tiedostoksi <b>$2</b>.',
 'filerenameerror'      => 'Tiedostoa <b>$1</b> ei voitu nimetä uudelleen nimellä <b>$2</b>.',
 'filedeleteerror'      => 'Tiedostoa <b>$1</b> ei voitu poistaa.',
@@ -727,6 +727,7 @@ Käyttäjätunnuksesi on luotu.
 'nosuchuser'                 => 'Käyttäjää ”$1” ei ole olemassa. Nimet ovat kirjainkoosta riippuvaisia. Tarkista kirjoititko nimen oikein, tai [[Special:UserLogin/signup|luo uusi käyttäjätunnus]].',
 'nosuchusershort'            => 'Käyttäjää nimeltä ”<nowiki>$1</nowiki>” ei ole. Kirjoititko nimen oikein?',
 'nouserspecified'            => 'Käyttäjätunnusta ei ole määritelty.',
+'login-userblocked'          => 'Tämä käyttäjä on estetty. Kirjautuminen ei ole sallittua.',
 'wrongpassword'              => 'Syöttämäsi salasana ei ole oikein. Ole hyvä ja yritä uudelleen.',
 'wrongpasswordempty'         => 'Et voi antaa tyhjää salasanaa.',
 'passwordtooshort'           => 'Salasanan täytyy olla vähintään {{PLURAL:$1|yhden merkin pituinen|$1 merkkiä pitkä}}.',
@@ -761,6 +762,7 @@ Sinun ei tarvitse huomioida tätä viestiä, jos tunnus on luotu virheellisesti.
 'login-throttled'            => 'Olet tehnyt liian monta kirjautumisyritystä.
 Odota ennen kuin yrität uudelleen.',
 'loginlanguagelabel'         => 'Kieli: $1',
+'suspicious-userlogout'      => 'Pyyntösi kirjautua ulos evättiin, koska se näytti rikkinäisen selaimen tai välimuistipalvelimen lähettämältä.',
 
 # Password reset dialog
 'resetpass'                 => 'Muuta salasana',
@@ -775,6 +777,7 @@ Odota ennen kuin yrität uudelleen.',
 'resetpass_forbidden'       => 'Salasanoja ei voi vaihtaa.',
 'resetpass-no-info'         => 'Et voi nähdä tätä sivua kirjautumatta sisään.',
 'resetpass-submit-loggedin' => 'Muuta salasana',
+'resetpass-submit-cancel'   => 'Peruuta',
 'resetpass-wrong-oldpass'   => 'Virheellinen väliaikainen tai nykyinen salasana.
 Olet saattanut jo onnistuneesti vaihtaa salasanasi tai pyytää uutta väliaikaista salasanaa.',
 'resetpass-temp-password'   => 'Väliaikainen salasana:',
@@ -853,7 +856,8 @@ Liitä kaikki yllä olevat tiedot mahdollisiin kyselyihisi.",
 'whitelistedittext'                => 'Sinun täytyy $1, jotta voisit muokata sivuja.',
 'confirmedittext'                  => 'Et voi muokata sivuja, ennen kuin olet varmentanut sähköpostiosoitteesi. Voit tehdä varmennuksen [[Special:Preferences|asetussivulla]].',
 'nosuchsectiontitle'               => 'Pyydettyä osiota ei ole',
-'nosuchsectiontext'                => 'Yritit muokata osiota, jota ei ole olemassa. Koska osiota $1 ei ole olemassa, muokkausta ei voida tallentaa.',
+'nosuchsectiontext'                => 'Yritit muokata osiota, jota ei ole olemassa.
+Se on saatettu siirtää tai poistaa äskettäin.',
 'loginreqtitle'                    => 'Sisäänkirjautuminen vaaditaan',
 'loginreqlink'                     => 'kirjautua sisään',
 'loginreqpagetext'                 => 'Sinun täytyy $1, jotta voisit nähdä muut sivut.',
@@ -875,6 +879,8 @@ Voit [[Special:Search/{{PAGENAME}}|etsiä sivun nimellä]] muilta sivuilta
 tai <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} hakea aiheeseen liittyviä lokeja]',
 'userpage-userdoesnotexist'        => 'Käyttäjätunnusta $1 ei ole rekisteröity. Varmista haluatko muokata tätä sivua.',
 'userpage-userdoesnotexist-view'   => 'Käyttäjätunnusta ”$1” ei ole rekisteröity.',
+'blocked-notice-logextract'        => 'Tämä käyttäjä on tällä hetkellä estetty.
+Alla on viimeisin estolokin tapahtuma:',
 'clearyourcache'                   => "'''Huomautus:''' Selaimen välimuisti pitää tyhjentää asetusten tallentamisen jälkeen, jotta muutokset tulisivat voimaan:
 *'''Mozilla, Konqueror ja Safari:''' napsauta ''Shift''-näppäin pohjassa päivitä tai paina ''Ctrl-Shift-R'' (''Cmd-Shift-R'' Applella)
 *'''IE:''' napsauta ''Ctrl''-näppäin pohjassa päivitä tai paina ''Ctrl-F5''
@@ -913,10 +919,13 @@ Yritä uudelleen. Jos ongelma ei katoa, yritä [[Special:UserLogout|kirjautua ul
 'readonlywarning'                  => "'''Varoitus: Tietokanta on lukittu huoltoa varten, joten voi olla ettet pysty tallentamaan muokkauksiasi juuri nyt.''' Saattaa olla paras leikata ja liimata tekstisi omaan tekstitiedostoosi ja tallentaa se tänne myöhemmin.
 
 Lukitsemisen syy: $1",
-'protectedpagewarning'             => "'''Tämä sivu on lukittu. Vain ylläpitäjät voivat muokata sitä.'''",
-'semiprotectedpagewarning'         => 'Vain rekisteröityneet käyttäjät voivat muokata tätä sivua.',
+'protectedpagewarning'             => "'''Varoitus: Tämä sivu on lukittu siten, että vain ylläpitäjät voivat muokata sitä.'''
+Alla on viimeisin lokitapahtuma:",
+'semiprotectedpagewarning'         => 'Tämä sivu on lukittu siten, että vain rekisteröityneet käyttäjät voivat muokata sitä.
+Alla on viimeisin lokitapahtuma:',
 'cascadeprotectedwarning'          => '<strong>Vain ylläpitäjät voivat muokata tätä sivua, koska se on sisällytetty alla {{PLURAL:$1|olevaan laajennetusti suojattuun sivuun|oleviin laajennetusti suojattuihin sivuihin}}</strong>:',
-'titleprotectedwarning'            => "'''Tämä sivun luominen on rajoitettu vain osalle käyttäjistä [[Special:ListGroupRights|tietyillä oikeuksilla]].'''",
+'titleprotectedwarning'            => "'''Tämä sivun luominen on rajoitettu vain osalle käyttäjistä [[Special:ListGroupRights|tietyillä oikeuksilla]].'''
+Alla on viimeisin lokitapahtuma:",
 'templatesused'                    => 'Tällä sivulla {{PLURAL:$1|käytetty malline|käytetyt mallineet}}:',
 'templatesusedpreview'             => 'Esikatselussa mukana {{PLURAL:$1|oleva malline|olevat mallineet}}:',
 'templatesusedsection'             => 'Tässä osiossa mukana {{PLURAL:$1|oleva malline|olevat mallineet}}:',
@@ -956,7 +965,8 @@ Joitakin mallineita ei ole sisällytetty.',
 Nämä muuttujat on jätetty käsittelemättä.',
 'post-expand-template-argument-category'  => 'Käsittelemättömiä mallinemuuttujia sisältävät sivut',
 'parser-template-loop-warning'            => 'Mallinesilmukka havaittu: [[$1]]',
-'parser-template-recursion-depth-warning' => 'Mallineen rekursioraja ylitetty ($1)',
+'parser-template-recursion-depth-warning' => 'Mallineen rekursioraja ylittyi ($1)',
+'language-converter-depth-warning'        => 'Kielimuuntimen syvyysraja ylittyi ($1)',
 
 # "Undo" feature
 'undo-success' => 'Kumoaminen onnistui. Valitse <em>tallenna</em> toteuttaaksesi muutokset.',
@@ -1020,6 +1030,7 @@ Ylläpitäjänä voit nähdä sen. Lisätietoja saattaa olla [{{fullurl:{{#Speci
 Ylläpitäjänä voit nähdä sen. Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} häivytyslokissa].",
 'rev-deleted-no-diff'         => "Et voi katsoa tätä muokkausta, koska yksi versioista on '''poistettu'''.
 Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} poistolokissa].",
+'rev-suppressed-no-diff'      => "Et voi katsoa tätä eroa koska yksi korjattu versio on '''poistettu'''.",
 'rev-deleted-unhide-diff'     => "Yksi tämän muutoksen versioista on '''poistettu'''.
 Lisätietoja saattaa olla [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} poistolokissa].
 Ylläpitäjänä voit silti [$1 nähdä tämän muutoksen].",
@@ -1324,25 +1335,26 @@ Tässä satunnaisesti tuotettu arvo, jota voit käyttää: $1',
 'prefs-diffs'                   => 'Erot',
 
 # User rights
-'userrights'                  => 'Käyttöoikeuksien hallinta',
-'userrights-lookup-user'      => 'Käyttöoikeuksien hallinta',
-'userrights-user-editname'    => 'Käyttäjätunnus',
-'editusergroup'               => 'Muokkaa käyttäjän ryhmiä',
-'editinguser'                 => "Käyttäjän '''[[User:$1|$1]]''' oikeudet ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Käyttäjän ryhmät',
-'saveusergroups'              => 'Tallenna',
-'userrights-groupsmember'     => 'Käyttäjä on jäsenenä ryhmissä',
-'userrights-groups-help'      => 'Voit muuttaa ryhmiä, joissa tämä käyttäjä on.
+'userrights'                   => 'Käyttöoikeuksien hallinta',
+'userrights-lookup-user'       => 'Käyttöoikeuksien hallinta',
+'userrights-user-editname'     => 'Käyttäjätunnus',
+'editusergroup'                => 'Muokkaa käyttäjän ryhmiä',
+'editinguser'                  => "Käyttäjän '''[[User:$1|$1]]''' oikeudet ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Käyttäjän ryhmät',
+'saveusergroups'               => 'Tallenna',
+'userrights-groupsmember'      => 'Käyttäjä on jäsenenä ryhmissä',
+'userrights-groupsmember-auto' => 'Implisiittinen jäsen:',
+'userrights-groups-help'       => 'Voit muuttaa ryhmiä, joissa tämä käyttäjä on.
 * Merkattu valintaruutu tarkoittaa, että käyttäjä on kyseisessä ryhmässä.
 * Merkkaamaton valintaruutu tarkoittaa, että käyttäjä ei ole kyseisessä ryhmässä.
 * <nowiki>*</nowiki> tarkoittaa, että et pysty kumoamaan kyseistä operaatiota.',
-'userrights-reason'           => 'Syy',
-'userrights-no-interwiki'     => 'Sinulla ei ole lupaa muokata käyttöoikeuksia muissa wikeissä.',
-'userrights-nodatabase'       => 'Tietokantaa $1 ei ole tai se ei ole paikallinen.',
-'userrights-nologin'          => 'Sinun täytyy [[Special:UserLogin|kirjautua sisään]] ylläpitäjätunnuksella, jotta voisit muuttaa käyttöoikeuksia.',
-'userrights-notallowed'       => 'Tunnuksellasi ei ole lupaa muuttaa käyttöoikeuksia.',
-'userrights-changeable-col'   => 'Ryhmät, joita voit muuttaa',
-'userrights-unchangeable-col' => 'Ryhmät, joita et voi muuttaa',
+'userrights-reason'            => 'Syy',
+'userrights-no-interwiki'      => 'Sinulla ei ole lupaa muokata käyttöoikeuksia muissa wikeissä.',
+'userrights-nodatabase'        => 'Tietokantaa $1 ei ole tai se ei ole paikallinen.',
+'userrights-nologin'           => 'Sinun täytyy [[Special:UserLogin|kirjautua sisään]] ylläpitäjätunnuksella, jotta voisit muuttaa käyttöoikeuksia.',
+'userrights-notallowed'        => 'Tunnuksellasi ei ole lupaa muuttaa käyttöoikeuksia.',
+'userrights-changeable-col'    => 'Ryhmät, joita voit muuttaa',
+'userrights-unchangeable-col'  => 'Ryhmät, joita et voi muuttaa',
 
 # Groups
 'group'               => 'Ryhmä',
@@ -1555,6 +1567,7 @@ Voit käyttää tiedostoja wikisivuilla seuraavilla tavoilla:
 'minlength1'                  => 'Tiedoston nimessä pitää olla vähintään yksi merkki.',
 'illegalfilename'             => "Tiedoston nimessä '''$1''' on merkkejä, joita ei sallita sivujen nimissä. Vaihda tiedoston nimeä, ja yritä lähettämistä uudelleen.",
 'badfilename'                 => 'Tiedoston nimi vaihdettiin: $1.',
+'filetype-mime-mismatch'      => 'Tiedostopääte ei vastaa MIME-tyyppiä.',
 'filetype-badmime'            => 'Tiedostot, joiden MIME-tyyppi on <tt>$1</tt> ei voi lähettää.',
 'filetype-bad-ie-mime'        => 'Tiedostoa ei voi tallentaa, koska Internet Explorer tunnistaa sen kielletyksi tiedostomuodoksi $1, joka on mahdollisesti vaarallinen.',
 'filetype-unwanted-type'      => "'''.$1''' ei ole toivottu tiedostomuoto. {{PLURAL:$3|Suositeltu tiedostomuoto on|Suositeltuja tiedostomuotoja ovat}} $2.",
@@ -1593,7 +1606,6 @@ Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapaukses
 'uploaddisabledtext'          => 'Tiedostojen tallennus on poistettu käytöstä.',
 'php-uploaddisabledtext'      => 'PHP:n tiedostojen lähetys ei ole käytössä. Tarkista asetukset kohdasta file_uploads.',
 'uploadscripted'              => 'Tämä tiedosto sisältää HTML-koodia tai skriptejä, jotka selain saattaa virheellisesti suorittaa.',
-'uploadcorrupt'               => 'Tiedosto on vioittunut tai sillä on väärä tiedostopääte. Tarkista tiedosto ja lähetä se uudelleen.',
 'uploadvirus'                 => 'Tiedosto sisältää viruksen. Tarkemmat tiedot: $1',
 'upload-source'               => 'Lähdetiedosto',
 'sourcefilename'              => 'Lähdenimi',
@@ -1636,6 +1648,16 @@ Vain tiedostoihin pääsy on sallittu.',
 Tämä wiki on asennettu julkiseksi wikiksi.
 Parhaan turvallisuuden vuoksi img_auth.php on poissa käytöstä.',
 'img-auth-noread'       => 'Käyttäjillä ei ole oikeutta lukea tiedostoa ”$1”.',
+
+# HTTP errors
+'http-invalid-url'      => 'Kelpaamaton URL: $1',
+'http-invalid-scheme'   => 'Verkko-osoitteita kaavalla "$1" ei tueta',
+'http-request-error'    => 'HTTP-pyyntö epäonnistui tuntemattoman virheen takia.',
+'http-read-error'       => 'HTTP-lukuvirhe.',
+'http-timed-out'        => 'HTTP-pyyntö aikakatkaistiin.',
+'http-curl-error'       => 'Virhe noudettaessa verkko-osoitetta: $1',
+'http-host-unreachable' => 'Ei voitu tavoittaa verkko-osoitetta',
+'http-bad-status'       => 'HTTP-pyynnön aikana oli ongelma: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Toimimaton osoite',
@@ -2049,6 +2071,9 @@ Uusia ilmoituksia tästä sivusta ei tule kunnes vierailet sivulla. Voit myös n
 Tarkkailulistan asetuksia voit muuttaa osoitteessa:
 {{fullurl:Special:Watchlist/edit}}
 
+Voit poistaa sivun tarkkailulistalta osoitteessa:
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 Palaute ja lisäapu osoitteessa:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2131,7 +2156,7 @@ Viimeisimmän muokkauksen on tehnyt käyttäjä [[User:$3|$3]] ([[User talk:$3|k
 'protect-othertime'           => 'Muu kesto',
 'protect-othertime-op'        => 'muu kesto',
 'protect-existing-expiry'     => 'Nykyinen vanhenemisaika: $3 kello $2',
-'protect-otherreason'         => 'Muu tai lisäsyy',
+'protect-otherreason'         => 'Muu syy tai tarkennus',
 'protect-otherreason-op'      => 'Muu syy',
 'protect-dropdown'            => '*Yleiset suojaussyyt
 ** Jatkuva vandalismi
@@ -2346,6 +2371,7 @@ $1 on jo estetty. Haluatko muuttaa eston asetuksia?',
 'ipb_cant_unblock'                => 'Estoa ”$1” ei löytynyt. Se on saatettu poistaa.',
 'ipb_blocked_as_range'            => 'IP-osoite $1 on estetty välillisesti ja sen estoa ei voi poistaa. Se on estetty osana verkkoaluetta $2, jonka eston voi poistaa',
 'ip_range_invalid'                => 'Virheellinen IP-alue.',
+'ip_range_toolarge'               => 'Suuremmat osoitealue-estot kuin /$1 eivät ole sallittuja.',
 'blockme'                         => 'Estä minut',
 'proxyblocker'                    => 'Välityspalvelinesto',
 'proxyblocker-disabled'           => 'Tämä toiminto ei ole käytössä.',
@@ -2393,6 +2419,7 @@ Tämä saattaa olla suuri ja odottamaton muutos suositulle sivulle. Varmista, et
 
 Näissä tapauksissa sivut täytyy siirtää tai yhdistää käsin.",
 'movearticle'                  => 'Siirrä sivu',
+'moveuserpage-warning'         => "'''Varoitus:''' Olet siirtämässä käyttäjäsivua. Huomaa, että vain sivu siirretään ja käyttäjää ''ei'' nimetä uudelleen.",
 'movenologin'                  => 'Et ole kirjautunut sisään',
 'movenologintext'              => 'Sinun pitää olla rekisteröitynyt käyttäjä ja [[Special:UserLogin|kirjautua sisään]], jotta voisit siirtää sivun.',
 'movenotallowed'               => 'Sinulla ei ole oikeuksia siirtää sivuja.',
@@ -2443,8 +2470,10 @@ $1 {{PLURAL:$1|sivu|sivua}} siirrettiin.',
 'imageinvalidfilename'         => 'Kohdenimi on virheellinen',
 'fix-double-redirects'         => 'Päivitä kaikki tänne viittaavat ohjaukset ohjaamaan uudelle nimelle',
 'move-leave-redirect'          => 'Jätä paikalle ohjaus',
-'protectedpagemovewarning'     => "'''Varoitus:''' Tämä sivu on lukittu siten, että vain ylläpitäjät voivat siirtää sitä.",
-'semiprotectedpagemovewarning' => "Tämä sivu on '''lukittu''' siten, että vain rekisteröityneet käyttäjät voivat siirtää sitä.",
+'protectedpagemovewarning'     => "'''Varoitus:''' Tämä sivu on lukittu siten, että vain ylläpitäjät voivat siirtää sitä.
+Alla on viimeisin lokitapahtuma:",
+'semiprotectedpagemovewarning' => 'Tämä sivu on lukittu siten, että vain rekisteröityneet käyttäjät voivat siirtää sitä.
+Alla on viimeisin lokitapahtuma:',
 'move-over-sharedrepo'         => '== Tiedosto on olemassa ==
 [[:$1]] on olemassa jaetussa tietovarastossa. Tiedoston siirtäminen tälle nimelle ohittaa jaetun tiedoston.',
 'file-exists-sharedrepo'       => 'Valittu tiedostonimi on jo käytössä jaetussa varastossa.
@@ -2686,7 +2715,7 @@ Jos haluat muokata MediaWikin yleistä kotoistusta, käy [http://www.mediawiki.o
 'markaspatrolleddiff'                 => 'Merkitse tarkastetuksi',
 'markaspatrolledtext'                 => 'Merkitse muokkaus tarkastetuksi',
 'markedaspatrolled'                   => 'Tarkastettu',
-'markedaspatrolledtext'               => 'Valittu versio on tarkastettu.',
+'markedaspatrolledtext'               => 'Valittu versio sivusta [[:$1]] on tarkastettu.',
 'rcpatroldisabled'                    => 'Tuoreiden muutosten tarkastustoiminto ei ole käytössä',
 'rcpatroldisabledtext'                => 'Tuoreiden muutosten tarkastustoiminto ei ole käytössä.',
 'markedaspatrollederror'              => 'Muutoksen merkitseminen tarkastetuksi epäonnistui.',

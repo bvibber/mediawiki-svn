@@ -1,5 +1,5 @@
 <?php
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文(傳統字)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -304,7 +304,7 @@ $messages = array(
 'hidden-categories'              => '$1個隱藏分類',
 'hidden-category-category'       => '隱藏分類',
 'category-subcat-count'          => '{{PLURAL:$2|這個分類中只有以下的附分類。|這個分類中有以下的$1個附分類，共有$2個附分類。}}',
-'category-subcat-count-limited'  => '這個分類下有$1個子分類。',
+'category-subcat-count-limited'  => '這個分類下有$1個附分類。',
 'category-article-count'         => '{{PLURAL:$2|這個分類中只有以下的頁面。|這個分類中有以下的$1個頁面，共有$2個頁面。}}',
 'category-article-count-limited' => '這個分類下有$1個頁面。',
 'category-file-count'            => '{{PLURAL:$2|這個分類中只有以下的檔案。|這個分類中有以下的$1個檔案，共有$2個檔案。}}',
@@ -370,9 +370,6 @@ $messages = array(
 'actions'                    => '動作',
 'namespaces'                 => '名字空間',
 'variants'                   => '變換',
-
-# Metadata in edit box
-'metadata_help' => '元數據:',
 
 'errorpagetitle'    => '錯誤',
 'returnto'          => '返回到$1。',
@@ -541,6 +538,8 @@ $1',
 'readonly_lag'         => '附屬資料庫伺服器正在將快取更新到主伺服器，資料庫已被自動鎖定',
 'internalerror'        => '內部錯誤',
 'internalerror_info'   => '內部錯誤: $1',
+'fileappenderrorread'  => '當附加時無法讀取"$1"。',
+'fileappenderror'      => '不能附加"$1"到"$2"。',
 'filecopyerror'        => '無法複製檔案"$1"到"$2"。',
 'filerenameerror'      => '無法重新命名檔案"$1"到"$2"。',
 'filedeleteerror'      => '無法刪除檔案"$1"。',
@@ -586,7 +585,9 @@ $2',
 
 您可以以匿名方式繼續使用{{SITENAME}}，或以相同或不同用戶身份[[Special:UserLogin|登入]]。
 請注意，如果你再次登入，此頁或會繼續顯示，直到您清除瀏覽器緩存。',
-'welcomecreation'            => '<h2>歡迎，$1!</h2><p>您的帳號已經建立，不要忘記設置[[Special:Preferences|{{SITENAME}}個人參數]]。</p>',
+'welcomecreation'            => '== 歡迎，$1！ ==
+您的帳號已經建立。
+不要忘記設置[[Special:Preferences|{{SITENAME}}的個人參數]]。',
 'yourname'                   => '您的用戶名:',
 'yourpassword'               => '您的密碼:',
 'yourpasswordagain'          => '再次輸入密碼:',
@@ -597,6 +598,7 @@ $2',
 'nav-login-createaccount'    => '登入／建立新賬號',
 'loginprompt'                => '您必須允許瀏覽器紀錄Cookie才能成功登入 {{SITENAME}} 並順利進行操作',
 'userlogin'                  => '登入／建立新賬號',
+'userloginnocreate'          => '登入',
 'logout'                     => '登出',
 'userlogout'                 => '登出',
 'notloggedin'                => '未登入',
@@ -620,6 +622,7 @@ $2',
 檢查您的拼寫，或者用下面的表格[[Special:UserLogin/signup|建立一個新賬號]]。',
 'nosuchusershort'            => '沒有一個名為「<nowiki>$1</nowiki>」的用戶。請檢查您輸入的文字是否有錯誤。',
 'nouserspecified'            => '{{GENDER:|你|妳|你}}需要指定一個用戶名。',
+'login-userblocked'          => '這位用戶已被封鎖。不容許登入。',
 'wrongpassword'              => '您輸入的密碼錯誤，請再試一次。',
 'wrongpasswordempty'         => '沒有輸入密碼！請重試。',
 'passwordtooshort'           => '您的密碼不能少於$1個字元。',
@@ -658,6 +661,7 @@ $2',
 'login-throttled'            => '您已經嘗試多次的登入動作。
 請稍等多一會再試。',
 'loginlanguagelabel'         => '語言: $1',
+'suspicious-userlogout'      => '您登出的要求已經被拒絕，因為它可能是由已損壞的瀏覽器或者快取代理傳送。',
 
 # Password reset dialog
 'resetpass'                 => '更改密碼',
@@ -668,10 +672,12 @@ $2',
 'newpassword'               => '新密碼:',
 'retypenew'                 => '確認密碼:',
 'resetpass_submit'          => '設定密碼並登入',
-'resetpass_success'         => '您的密碼已經被成功更改！現在正為您登入...',
+'resetpass_success'         => '您的密碼已經被成功更改！
+現在正為您登入...',
 'resetpass_forbidden'       => '無法更改密碼',
 'resetpass-no-info'         => '您必須登入後直接進入這個頁面。',
 'resetpass-submit-loggedin' => '更改密碼',
+'resetpass-submit-cancel'   => '取消',
 'resetpass-wrong-oldpass'   => '無效的臨時或現有的密碼。
 您可能已成功地更改了您的密碼，或者已經請求一個新的臨時密碼。',
 'resetpass-temp-password'   => '臨時密碼:',
@@ -745,7 +751,8 @@ $2',
 'whitelistedittext'                => '您必須先$1才可編輯頁面。',
 'confirmedittext'                  => '在編輯此頁之前您必須確認您的郵箱位址。請透過[[Special:Preferences|參數設定]]設定並驗証您的郵箱位址。',
 'nosuchsectiontitle'               => '沒有這個段落',
-'nosuchsectiontext'                => '您嘗試編輯的段落並不存在。在這裡是無第$1個段落，所以是沒有一個地方去儲存{{GENDER:|你|妳|你}}的編輯。',
+'nosuchsectiontext'                => '您嘗試編輯的章節並不存在。
+可能在您查看頁面時已經移動或刪除。',
 'loginreqtitle'                    => '需要登入',
 'loginreqlink'                     => '登入',
 'loginreqpagetext'                 => '您必須$1才能檢視其它頁面。',
@@ -765,7 +772,9 @@ $2',
 或<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索有關日誌]</span>。',
 'userpage-userdoesnotexist'        => '未曾創建用戶名「$1」。請在創建／編輯這個頁面前先檢查一下。',
 'userpage-userdoesnotexist-view'   => '未曾創建用戶名「$1」。',
-'clearyourcache'                   => "'''注意 - 在儲存以後，您必須清除瀏覽器的快取才能看到所作出的改變。'''
+'blocked-notice-logextract'        => '這位用戶現正被封鎖。
+下面有最近的封鎖紀錄以供參考：',
+'clearyourcache'                   => "'''注意：在儲存以後，您必須清除瀏覽器的快取才能看到所作出的改變。'''
 '''Mozilla / Firefox / Safari''': 按著 ''Shift'' 再點擊''重新整理''，或按下''Ctrl-F5''或''Ctrl-R''（在Macintosh上按下''Command-R''）；
 '''Konqueror''': 只需點擊 ''重新整理''或按下''F5''；
 '''Opera''': 在 ''工具→設定'' 中完整地清除它們的快取，或按下''Alt-F5''；
@@ -781,7 +790,9 @@ $2',
 'note'                             => "'''注意:'''",
 'previewnote'                      => "'''請記住這只是預覽。'''內容還未保存！",
 'previewconflict'                  => '這個預覽顯示了上面文字編輯區中的內容。它將在{{GENDER:|你|妳|你}}選擇保存後出現。',
-'session_fail_preview'             => "'''抱歉！由於部份資料遺失，我們無法處理您的編輯。'''請再試一次，如果仍然失敗，請[[Special:UserLogout|登出]]後重新登入。",
+'session_fail_preview'             => "'''抱歉！由於會話數據丟失，我們不能處理你的編輯。'''
+請重試。
+如果再次失敗，請嘗試[[Special:UserLogout|登出]]後重新登入。",
 'session_fail_preview_html'        => "'''抱歉！部份資料已遺失，我們無法處理您的編輯。'''
 
 ''由於{{SITENAME}}已經開放原始 HTML 碼，預覽已經隱藏以預防 JavaScript 的攻擊。''
@@ -818,10 +829,13 @@ $2',
 'readonlywarning'                  => "'''警告: 資料庫被鎖以進行維護，所以您目前將無法保存您的修改。'''您或許希望先將本段文字複製並保存到文字文件，然後等一會兒再修改。
 
 管理員有如下解釋: $1",
-'protectedpagewarning'             => "'''警告: 本頁已經被保護，只有擁有管理員許可權的用戶才可修改。'''",
-'semiprotectedpagewarning'         => "'''注意:''' 本頁面被鎖定，僅限註冊用戶編輯。",
+'protectedpagewarning'             => "'''警告: 本頁已經被保護，只有擁有管理員許可權的用戶才可修改。'''
+最近的日誌在下面提供以便參考：",
+'semiprotectedpagewarning'         => "'''注意:''' 本頁面被鎖定，僅限註冊用戶編輯。
+最近的日誌在下面提供以便參考：",
 'cascadeprotectedwarning'          => '警告: 本頁已經被保護，只有擁有管理員權限的用戶才可修改，因為本頁已被以下連鎖保護的{{PLURAL:$1|一個|多個}}頁面所包含:',
-'titleprotectedwarning'            => "'''警告: 本頁面已被鎖上，需要[[Special:ListGroupRights|指定權限]]方可創建。'''",
+'titleprotectedwarning'            => "'''警告: 本頁面已被鎖上，需要[[Special:ListGroupRights|指定權限]]方可創建。'''
+最近的日誌在下面提供以便參考：",
 'templatesused'                    => '此頁面包含以下{{PLURAL:$1|模板|模板}}:',
 'templatesusedpreview'             => '此次預覽中使用的{{PLURAL:$1|模板|模板}}有:',
 'templatesusedsection'             => '在這個段落上使用的{{PLURAL:$1|模板|模板}}有:',
@@ -832,7 +846,7 @@ $2',
 'nocreatetitle'                    => '創建頁面受限',
 'nocreatetext'                     => '{{SITENAME}}限制了創建新頁面的功能。{{GENDER:|你|妳|你}}可以返回並編輯已有的頁面，或者[[Special:UserLogin|登錄或創建新賬戶]]。',
 'nocreate-loggedin'                => '您並無許可權去創建新頁面。',
-'sectioneditnotsupported-title'    => '此頁面不支持段落編輯',
+'sectioneditnotsupported-title'    => '不支持段落編輯',
 'sectioneditnotsupported-text'     => '此頁面不支持段落編輯。',
 'permissionserrors'                => '權限錯誤',
 'permissionserrorstext'            => '根據以下的{{PLURAL:$1|原因|原因}}，您並無權限去做以下的動作:',
@@ -866,6 +880,7 @@ $2',
 'post-expand-template-argument-category'  => '包含着略過模板參數的頁面',
 'parser-template-loop-warning'            => '已偵測迴歸模板: [[$1]]',
 'parser-template-recursion-depth-warning' => '已超過迴歸模板深度限制 （$1）',
+'language-converter-depth-warning'        => '已超過字詞轉換器深度限制（$1）',
 
 # "Undo" feature
 'undo-success' => '該編輯可以被撤銷。請檢查以下對比以核實這正是您想做的，然後儲存以下更改以完成撤銷編輯。',
@@ -915,25 +930,26 @@ $2',
 'rev-deleted-user'            => '（用戶名已移除）',
 'rev-deleted-event'           => '（日誌動作已移除）',
 'rev-deleted-user-contribs'   => '[用戶名或IP地址已移除 - 從貢獻中隱藏編輯]',
-'rev-deleted-text-permission' => "該頁面修訂已經被'''刪除'''。
-在[{{fullurl:{{#Special:Log}}/delete|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。",
+'rev-deleted-text-permission' => "該頁面修訂已被'''刪除'''。
+在[{{fullurl:{{#Special:Log}}/delete|page={{PAGENAMEE}}}} 刪除日誌]中可以找到詳細的訊息。",
 'rev-deleted-text-unhide'     => "該頁面修訂已經被'''刪除'''。
-在[{{fullurl:{{#Special:Log}}/delete|page={{PAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。
+在[{{fullurl:{{#Special:Log}}/delete|page={{PAGENAMEE}}}} 刪除日誌]中可以找到詳細的訊息。
 作為管理員，如果您想繼續的話，您可以仍然[$1 去檢視這次修訂]。",
 'rev-suppressed-text-unhide'  => "該頁面修訂已經被'''廢止'''。
-在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 廢止日誌]中您可能會檢視到詳細的訊息。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 廢止日誌]中可以找到詳細的訊息。
 作為管理員，如果您想繼續的話，您可以仍然[$1 去檢視這次修訂]。",
 'rev-deleted-text-view'       => "該頁面修訂已經被'''刪除'''。作為管理員，您可以檢視它；
-在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中您可能會檢視到詳細的訊息。",
+在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可以找到詳細的訊息。",
 'rev-suppressed-text-view'    => "該頁面修訂已經被'''廢止'''。作為管理員，您可以檢視它；
-在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中您可能會檢視到詳細的訊息。",
-'rev-deleted-no-diff'         => "因為其中一次修訂'''刪除'''，您不可以檢視這個差異。
-在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可能有更多的資料。",
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中可以找到詳細的訊息。",
+'rev-deleted-no-diff'         => "因為其中一次修訂已被'''刪除'''，您不可以檢視這個差異。
+在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可以找到更多的資料。",
+'rev-suppressed-no-diff'      => "該頁面的其中一次修訂已經被'''刪除'''，你不可以查看這次的修訂。",
 'rev-deleted-unhide-diff'     => "該頁面的其中一次修訂已經被'''刪除'''。
-在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可能有更多的資料。
+在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中可以找到更多的資料。
 作為管理員，如果您想繼續的話，您可以仍然[$1 去檢視這次修訂]。",
 'rev-suppressed-unhide-diff'  => "該頁面的其中一次修訂已經被'''廢止'''。
-在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中可能有更多的資料。
+在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 廢止日誌]中可以找到更多的資料。
 作為管理員，如果您想繼續的話，您可以仍然[$1 去檢視這次修訂]。",
 'rev-deleted-diff-view'       => "差異中的一次修訂已被'''刪除'''。
 作為管理員，您可以檢視此差異。詳細訊息可在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 刪除日誌]中找到。",
@@ -1000,7 +1016,7 @@ $1",
 'revdelete-modify-missing'    => '正在更改項目ID $1錯誤：它在資料庫中遺失！',
 'revdelete-no-change'         => '警告：於$1 $2之項目已經請求了可見性的設定。',
 'revdelete-concurrent-change' => '正在更改於$1 $2之項目錯誤：當我們嘗試更改它的設定時，已經被另一些人更改過。請檢查紀錄。',
-'revdelete-only-restricted'   => '在隱藏$1 $2的項目時發生錯誤：您不能在選擇了另一可見性選項後阻止管理員查看該項目。',
+'revdelete-only-restricted'   => '在隱藏$1 $2的項目時發生錯誤：您不能在選擇了另一可見性選項後廢止管理員查看該項目。',
 'revdelete-reason-dropdown'   => '*常用刪除理由
 ** 侵犯版權
 ** 不合適的個人資料',
@@ -1142,7 +1158,7 @@ $1",
 'prefs-watchlist-days-max'      => '最大7天',
 'prefs-watchlist-edits'         => '在增強的監視列表中顯示的最多更改次數:',
 'prefs-watchlist-edits-max'     => '最多數量: 1000',
-'prefs-watchlist-token'         => '監視列表幣：',
+'prefs-watchlist-token'         => '監視列表密鑰：',
 'prefs-misc'                    => '雜項',
 'prefs-resetpass'               => '更改密碼',
 'prefs-email'                   => '電郵選項',
@@ -1232,25 +1248,26 @@ $1",
 'prefs-diffs'                   => '差異',
 
 # User rights
-'userrights'                  => '用戶權限管理',
-'userrights-lookup-user'      => '管理用戶群組',
-'userrights-user-editname'    => '輸入用戶名:',
-'editusergroup'               => '編輯用戶群組',
-'editinguser'                 => "正在更改用戶'''[[User:$1|$1]]''' （[[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]） 的用戶權限",
-'userrights-editusergroup'    => '編輯用戶群組',
-'saveusergroups'              => '保存用戶群組',
-'userrights-groupsmember'     => '屬於:',
-'userrights-groups-help'      => '您可以改動這位用戶所屬的群組:
+'userrights'                   => '用戶權限管理',
+'userrights-lookup-user'       => '管理用戶群組',
+'userrights-user-editname'     => '輸入用戶名:',
+'editusergroup'                => '編輯用戶群組',
+'editinguser'                  => "正在更改用戶'''[[User:$1|$1]]''' （[[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]） 的用戶權限",
+'userrights-editusergroup'     => '編輯用戶群組',
+'saveusergroups'               => '保存用戶群組',
+'userrights-groupsmember'      => '屬於:',
+'userrights-groupsmember-auto' => '固有屬於:',
+'userrights-groups-help'       => '您可以改動這位用戶所屬的群組:
 * 已剔選的核取方塊代表該用戶屬於該群組。
 * 未剔選的核取方塊代表該用戶不是屬於該群組。
 * 有 * 項目表示一旦您加入該群組之後便不能移除它，反之亦然。',
-'userrights-reason'           => '原因:',
-'userrights-no-interwiki'     => '您並沒有權限去編輯在其它wiki上的用戶權限。',
-'userrights-nodatabase'       => '資料庫$1不存在或並非為本地的。',
-'userrights-nologin'          => '您必須要以操作員帳戶[[Special:UserLogin|登入]]之後才可以指定用戶權限。',
-'userrights-notallowed'       => '您的帳戶無權限去指定用戶權限。',
-'userrights-changeable-col'   => '您可以更改的群組',
-'userrights-unchangeable-col' => '您不可以更改的群組',
+'userrights-reason'            => '原因:',
+'userrights-no-interwiki'      => '您並沒有權限去編輯在其它wiki上的用戶權限。',
+'userrights-nodatabase'        => '資料庫$1不存在或並非為本地的。',
+'userrights-nologin'           => '您必須要以操作員帳戶[[Special:UserLogin|登入]]之後才可以指定用戶權限。',
+'userrights-notallowed'        => '您的帳戶無權限去指定用戶權限。',
+'userrights-changeable-col'    => '您可以更改的群組',
+'userrights-unchangeable-col'  => '您不可以更改的群組',
 
 # Groups
 'group'               => '群組:',
@@ -1284,7 +1301,7 @@ $1",
 'right-createaccount'         => '創建新用戶賬戶',
 'right-minoredit'             => '標示作小編輯',
 'right-move'                  => '移動頁面',
-'right-move-subpages'         => '移動頁面跟它的字頁面',
+'right-move-subpages'         => '移動頁面跟它的子頁面',
 'right-move-rootuserpages'    => '移動根用戶頁面',
 'right-movefile'              => '移動檔案',
 'right-suppressredirect'      => '當移動頁面時不建立來源頁面之重定向',
@@ -1302,7 +1319,7 @@ $1",
 'right-delete'                => '刪除頁面',
 'right-bigdelete'             => '刪除大量歷史之頁面',
 'right-deleterevision'        => '刪除及同反刪除頁面中的指定修訂',
-'right-deletedhistory'        => '檢視已刪除之項目，不含有關的字',
+'right-deletedhistory'        => '檢視已刪除之歷史項目，不含關聯的文本',
 'right-deletedtext'           => '檢視已刪除修訂中之已刪除的字以及更改',
 'right-browsearchive'         => '搜尋已刪除之頁面',
 'right-undelete'              => '反刪除頁面',
@@ -1470,6 +1487,7 @@ $1",
 'minlength1'                  => '檔案名字必須至少有一個字母。',
 'illegalfilename'             => '檔案名“$1”包含有頁面標題所禁止的字符。請改名後重新上傳。',
 'badfilename'                 => '檔案名已被改為「$1」。',
+'filetype-mime-mismatch'      => '檔案擴展名不配MIME類型。',
 'filetype-badmime'            => 'MIME類別"$1"不是容許的檔案格式。',
 'filetype-bad-ie-mime'        => '不可以上傳這個檔案，因為 Internet Explorer 會將它偵測為 "$1"，它是一種不容許以及有潛在危險性之檔案類型。',
 'filetype-unwanted-type'      => "'''\".\$1\"'''是一種不需要的檔案類型。
@@ -1501,14 +1519,14 @@ $1",
 'uploadwarning'               => '上載警告',
 'uploadwarning-text'          => '請修改以下的檔案描述並重試。',
 'savefile'                    => '保存檔案',
-'uploadedimage'               => '已上載"[[$1]]"',
+'uploadedimage'               => '已上載「[[$1]]」',
 'overwroteimage'              => '已經上載"[[$1]]"的新版本',
 'uploaddisabled'              => '無法上傳',
 'uploaddisabledtext'          => '檔案上傳不可用。',
 'php-uploaddisabledtext'      => 'PHP 檔案上載已經停用。請檢查 file_uploads 設定。',
 'uploadscripted'              => '該檔案包含可能被網路瀏覽器錯誤解釋的 HTML 或腳本代碼。',
-'uploadcorrupt'               => '該檔案包含或具有一個不正確的擴展名。請檢查此檔案並重新上傳。',
-'uploadvirus'                 => '該檔案包含有病毒！詳情: $1',
+'uploadvirus'                 => '該檔案包含有病毒！
+詳情: $1',
 'upload-source'               => '來源檔案',
 'sourcefilename'              => '來源檔案名：',
 'sourceurl'                   => '來源網址：',
@@ -1551,6 +1569,16 @@ $1",
 這個wiki是已經設定做一個公共wiki。
 基於保安最佳化，img_auth.php已經停用。',
 'img-auth-noread'       => '用戶無存取權去讀"$1"。',
+
+# HTTP errors
+'http-invalid-url'      => '無效的URL：$1',
+'http-invalid-scheme'   => '不支援含有「$1」的URL。',
+'http-request-error'    => '未知的錯誤令到HTTP請求失敗。',
+'http-read-error'       => 'HTTP讀取錯誤。',
+'http-timed-out'        => 'HTTP請求已過時。',
+'http-curl-error'       => '擷取URL時出錯：$1',
+'http-host-unreachable' => '無法到達URL。',
+'http-bad-status'       => '進行HTTP請求時出現問題：$1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '無法訪問 URL',
@@ -1978,6 +2006,9 @@ $NEWPAGE
 要改變您的監視列表設定，請參閱
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+要刪除您監視清單中的該頁面，請參閱
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 回饋和進一步的幫助:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -1990,7 +2021,7 @@ $NEWPAGE
 'exblank'                => '頁面為空',
 'delete-confirm'         => '刪除「$1」',
 'delete-legend'          => '刪除',
-'historywarning'         => "'''警告: '''您將要刪除的頁內含有$1次{{PLURAL:$1|修訂|修訂}}的歷史：",
+'historywarning'         => "'''警告: '''您將要刪除的頁內含有約$1次{{PLURAL:$1|修訂|修訂}}的歷史：",
 'confirmdeletetext'      => '您即將刪除一個頁面或圖片以及其歷史。
 請確定您要進行此項操作，並且了解其後果，同時您的行為符合[[{{MediaWiki:Policy-url}}]]。',
 'actioncomplete'         => '操作完成',
@@ -2023,7 +2054,7 @@ $NEWPAGE
 
 該頁最後的編輯者是[[User:$3|$3]]（[[User talk:$3|討論]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]）。',
 'editcomment'       => "編輯摘要: \"''\$1''\"。",
-'revertpage'        => '恢復由[[Special:Contributions/$2|$2]] （[[User talk:$2|對話]]）的編輯至[[User:$1|$1]]的最後一個修訂版本',
+'revertpage'        => '恢復由[[Special:Contributions/$2|$2]]（[[User talk:$2|對話]]）的編輯至[[User:$1|$1]]的最後一個修訂版本',
 'revertpage-nouser' => '恢復由（移除了的用戶名）的編輯到[[User:$1|$1]]的最後一個修訂版本',
 'rollback-success'  => '恢復由$1的編輯；更改回$2的最後一個修訂版本。',
 'sessionfailure'    => '您的登入資訊似乎有問題，為防止此該訊息被攔截，本次操作已經取消，請按「上一頁」重新載入。',
@@ -2221,7 +2252,7 @@ $1',
 'blockipsuccesstext'              => '[[Special:Contributions/$1|$1]]已經被查封。
 <br />參看[[Special:IPBlockList|被封IP地址列表]]以覆審查封。',
 'ipb-edit-dropdown'               => '編輯查封原因',
-'ipb-unblock-addr'                => '解除封禁$1',
+'ipb-unblock-addr'                => '解封$1',
 'ipb-unblock'                     => '解除禁封用戶名或IP地址',
 'ipb-blocklist-addr'              => '$1的現有封禁',
 'ipb-blocklist'                   => '檢視現有的封禁',
@@ -2281,6 +2312,7 @@ $1已經被封鎖。您是否想更改這個設定？',
 'ipb_cant_unblock'                => '錯誤: 找不到查封ID$1。可能已經解除封禁。',
 'ipb_blocked_as_range'            => '錯誤: 該IP $1 無直接查封，不可以解除封禁。但是它是在 $2 的查封範圍之內，該段範圍是可以解除封禁的。',
 'ip_range_invalid'                => '無效的IP範圍。',
+'ip_range_toolarge'               => '大於 /$1 的封鎖範圍是不容許的。',
 'blockme'                         => '查封我',
 'proxyblocker'                    => '代理封鎖器',
 'proxyblocker-disabled'           => '這個功能已經停用。',
@@ -2289,7 +2321,8 @@ $1已經被封鎖。您是否想更改這個設定？',
 'sorbsreason'                     => '您的IP位址在{{SITENAME}}中被 DNSBL列為屬於開放代理服務器。',
 'sorbs_create_account_reason'     => '由於您的IP位址在{{SITENAME}}中被 DNSBL列為屬於開放代理服務器，所以您無法建立帳號。',
 'cant-block-while-blocked'        => '當您被封鎖時不可以封鎖其他用戶。',
-'cant-see-hidden-user'            => '您現正嘗試封鎖的用戶已經被封鎖或隱藏。您現在沒有隱藏用戶的權限，您不可以檢視或者編輯這位用戶的封鎖。',
+'cant-see-hidden-user'            => '您現正嘗試封鎖的用戶已經被封鎖或隱藏。
+您現在沒有隱藏用戶的權限，您不可以檢視或者編輯這位用戶的封鎖。',
 
 # Developer tools
 'lockdb'              => '禁止更改資料庫',
@@ -2335,6 +2368,7 @@ $1已經被封鎖。您是否想更改這個設定？',
 
 在這些情況下，您在必要時必須手工移動或合併頁面。",
 'movearticle'                  => '移動頁面:',
+'moveuserpage-warning'         => "'''警告：'''您將會移動一個用戶頁面。請留意該頁面在移動後該用戶的名字是''不會''變更的。",
 'movenologin'                  => '未登入',
 'movenologintext'              => '您必須是一名登記用戶並且[[Special:UserLogin|登入]]
 後才可移動一個頁面。',
@@ -2343,7 +2377,7 @@ $1已經被封鎖。您是否想更改這個設定？',
 'cant-move-user-page'          => '您並沒有許可權去移動用戶頁面（它的字頁面除外）。',
 'cant-move-to-user-page'       => '您並沒有許可權去移動到用戶頁面（它的字頁面除外）。',
 'newtitle'                     => '新標題:',
-'move-watch'                   => '監視此頁',
+'move-watch'                   => '監視來源以及目標頁',
 'movepagebtn'                  => '移動頁面',
 'pagemovedsub'                 => '移動成功',
 'movepage-moved'               => "<big>'''「$1」已經移動到「$2」'''</big>",
@@ -2388,8 +2422,10 @@ $1已經被封鎖。您是否想更改這個設定？',
 'imageinvalidfilename'         => '目標檔案名稱是無效的',
 'fix-double-redirects'         => '更新指到原先標題的任何重新定向',
 'move-leave-redirect'          => '留下重新定向',
-'protectedpagemovewarning'     => "'''警告：'''這個頁面已經被鎖上，只有擁有管理員權限的用戶才可以移動它。",
-'semiprotectedpagemovewarning' => "'''注意：'''這個頁面已經被鎖上，只有已經註冊的用戶才可以移動它。",
+'protectedpagemovewarning'     => "'''警告：'''這個頁面已經被鎖上，只有擁有管理員權限的用戶才可以移動它。
+最近的日誌在下面提供以便參考：",
+'semiprotectedpagemovewarning' => "'''注意：'''這個頁面已經被鎖上，只有已經註冊的用戶才可以移動它。
+最近的日誌在下面提供以便參考：",
 'move-over-sharedrepo'         => '== 檔案已存在 ==
 [[:$1]]已於共享資源存在，將檔案移動到此標題會覆蓋共享資源中的檔案。',
 'file-exists-sharedrepo'       => '同名檔案已於共享資源存在。
@@ -2645,7 +2681,7 @@ $1已經被封鎖。您是否想更改這個設定？',
 'markaspatrolleddiff'                 => '標記為已檢查',
 'markaspatrolledtext'                 => '標記此頁面為已檢查',
 'markedaspatrolled'                   => '標記為已檢查',
-'markedaspatrolledtext'               => '選定的版本已被標記為已檢查。',
+'markedaspatrolledtext'               => '[[:$1]]的已選定修訂版本已被標識為已巡查。',
 'rcpatroldisabled'                    => '最新更改檢查被關閉',
 'rcpatroldisabledtext'                => '最新更改檢查的功能目前已關閉。',
 'markedaspatrollederror'              => '不能標誌為已檢查',
@@ -3015,28 +3051,28 @@ Variants for Chinese language
 'limitall'         => '全部',
 
 # E-mail address confirmation
-'confirmemail'             => '確認郵箱位址',
-'confirmemail_noemail'     => '您沒有在您的[[Special:Preferences|用戶設定]]裡面輸入一個有效的 email 位址。',
-'confirmemail_text'        => '{{SITENAME}}要求您在使用郵件功能之前驗證您的郵箱位址。
+'confirmemail'              => '確認郵箱位址',
+'confirmemail_noemail'      => '您沒有在您的[[Special:Preferences|用戶設定]]裡面輸入一個有效的 email 位址。',
+'confirmemail_text'         => '{{SITENAME}}要求您在使用郵件功能之前驗證您的郵箱位址。
 點擊以下按鈕可向您的郵箱發送一封確認郵件。該郵件包含有一行代碼連結；
 請在您的瀏覽器中加載此連結以確認您的郵箱位址是有效的。',
-'confirmemail_pending'     => '一個確認代碼已經被發送到您的郵箱，您可能需要等幾分鐘才能收到。如果無法收到，請在申請一個新的確認碼！',
-'confirmemail_send'        => '郵發確認代碼',
-'confirmemail_sent'        => '確認郵件已發送。',
-'confirmemail_oncreate'    => '一個確認代碼已經被發送到您的郵箱。該代碼並不要求您進行登錄，
+'confirmemail_pending'      => '一個確認碼已經被發送到您的郵箱，您可能需要等幾分鐘才能收到。如果無法收到，請再申請一個新的確認碼。',
+'confirmemail_send'         => '郵發確認代碼',
+'confirmemail_sent'         => '確認郵件已發送。',
+'confirmemail_oncreate'     => '一個確認代碼已經被發送到您的郵箱。該代碼並不要求您進行登錄，
 但若您要啟用在此 wiki 上的任何基於電子郵件的功能，您必須先提交此代碼。',
-'confirmemail_sendfailed'  => '{{SITENAME}}無法發送確認郵件，請檢查郵箱位址是否包含非法字元。
+'confirmemail_sendfailed'   => '{{SITENAME}}無法發送確認郵件，請檢查郵箱位址是否包含非法字元。
 
 郵件傳送員回應: $1',
-'confirmemail_invalid'     => '無效的確認碼，該代碼可能已經過期。',
-'confirmemail_needlogin'   => '您需要$1以確認您的郵箱位址。',
-'confirmemail_success'     => '您的郵箱已經被確認。您現在可以[[Special:UserLogin|登錄]]並使用此網站了。',
-'confirmemail_loggedin'    => '您的郵箱位址現下已被確認。',
-'confirmemail_error'       => '{{GENDER:|你|妳|你}}的確認過程發生錯誤。',
-'confirmemail_subject'     => '{{SITENAME}}郵箱位址確認',
-'confirmemail_body'        => '擁有IP位址$1的用戶（可能是您）在{{SITENAME}}創建了帳戶"$2"，並提交了您的電子郵箱位址。
+'confirmemail_invalid'      => '無效的確認碼，該代碼可能已經過期。',
+'confirmemail_needlogin'    => '您需要$1以確認您的郵箱位址。',
+'confirmemail_success'      => '您的郵箱已經被確認。您現在可以[[Special:UserLogin|登錄]]並使用此網站了。',
+'confirmemail_loggedin'     => '您的郵箱位址現下已被確認。',
+'confirmemail_error'        => '{{GENDER:|你|妳|你}}的確認過程發生錯誤。',
+'confirmemail_subject'      => '{{SITENAME}}郵箱位址確認',
+'confirmemail_body'         => '擁有IP位址$1的用戶（可能是您）在{{SITENAME}}創建了賬戶"$2"，並提交了您的電子郵箱位址。
 
-請確認這個帳戶是屬於您的，並同時啟用在{{SITENAME}}上的
+請確認這個賬戶是屬於您的，並同時啟用在{{SITENAME}}上的
 電子郵件功能。請在瀏覽器中打開下面的連結:
 
 $3
@@ -3047,8 +3083,21 @@ $3
 $5
 
 確認碼會在$4過期。',
-'confirmemail_invalidated' => '電郵地址確認已取消',
-'invalidateemail'          => '取消電郵確認',
+'confirmemail_body_changed' => '擁有IP位址$1的用戶（可能是您）在{{SITENAME}}更改了賬戶"$2"的電子郵箱位址。
+
+請確認這個賬戶是屬於您的，並同時重新啟用在{{SITENAME}}上的
+電子郵件功能。請在瀏覽器中打開下面的連結:
+
+$3
+
+如果這個賬戶*不是*屬於您的，
+請打開下面的連結去取消電子郵件確認:
+
+$5
+
+確認碼會在$4過期。',
+'confirmemail_invalidated'  => '電郵地址確認已取消',
+'invalidateemail'           => '取消電郵確認',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[跨wiki轉換代碼不可用]',
@@ -3108,8 +3157,10 @@ $1',
 # Live preview
 'livepreview-loading' => '正在載入…',
 'livepreview-ready'   => '正在載入… 完成!',
-'livepreview-failed'  => '實時預覽失敗! 嘗試標準預覽。',
-'livepreview-error'   => '連接失敗: $1 "$2" 嘗試標準預覽。',
+'livepreview-failed'  => '實時預覽失敗!
+嘗試標準預覽。',
+'livepreview-error'   => '連接失敗: $1 "$2"。
+嘗試標準預覽。',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => '過去$1秒內的更改未必會在這個清單中顯示。',
@@ -3120,7 +3171,7 @@ $1',
 'watchlistedit-noitems'        => '您的監視列表並無標題。',
 'watchlistedit-normal-title'   => '編輯監視列表',
 'watchlistedit-normal-legend'  => '從監視列表中移除標題',
-'watchlistedit-normal-explain' => '在您的監視列表中的標題在下面顯示。要移除一個標題，在它前面剔一下，接著點擊移除標題。您亦都可以[[Special:Watchlist/raw|編輯原始監視列表]]。',
+'watchlistedit-normal-explain' => '在您的監視列表中的標題在下面顯示。要移除一個標題，在它前面剔一下，接著點擊「移除標題」。您亦都可以[[Special:Watchlist/raw|編輯原始監視列表]]。',
 'watchlistedit-normal-submit'  => '移除標題',
 'watchlistedit-normal-done'    => '$1個標題已經從您的監視列表中移除:',
 'watchlistedit-raw-title'      => '編輯原始監視列表',
@@ -3229,7 +3280,8 @@ $1',
 
 # Database error messages
 'dberr-header'      => '這個 wiki 出現了問題',
-'dberr-problems'    => '抱歉！這個網站出現了一些技術上的問題。',
+'dberr-problems'    => '抱歉！
+這個網站出現了一些技術上的問題。',
 'dberr-again'       => '嘗試等候數分鐘後，然後再試。',
 'dberr-info'        => '（無法連繫到資料庫伺服器: $1）',
 'dberr-usegoogle'   => '在現階段您可以嘗試透過 Google 搜尋。',

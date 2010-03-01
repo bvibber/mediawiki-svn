@@ -11,7 +11,6 @@ class ZhConverter extends LanguageConverter {
 	function __construct($langobj, $maincode,
 								$variants=array(),
 								$variantfallbacks=array(),
-								$markup=array(),
 								$flags = array(),
 								$manualLevel = array() ) {
 		$this->mDescCodeSep = '：';
@@ -19,7 +18,6 @@ class ZhConverter extends LanguageConverter {
 		parent::__construct($langobj, $maincode,
 									$variants,
 									$variantfallbacks,
-									$markup,
 									$flags,
 									$manualLevel);
 		$names = array(
@@ -153,7 +151,7 @@ class LanguageZh extends LanguageZh_hans {
 
 		$this->mConverter = new ZhConverter( $this, 'zh',
 								$variants, $variantfallbacks,
-								array(),array(),
+								array(),
 								$ml);
 
 		$wgHooks['ArticleSaveComplete'][] = $this->mConverter;
@@ -172,24 +170,31 @@ class LanguageZh extends LanguageZh_hans {
 			"\"$1\"", $text);
 	}
 
-	// word segmentation
-	function stripForSearch( $string ) {
+	/**
+	 * auto convert to zh-hans and normalize special characters.
+	 *
+	 * @param $string String
+	 * @param $autoVariant String, default to 'zh-hans'
+	 * @return String
+	 */
+	function normalizeForSearch( $string, $autoVariant = 'zh-hans' ) {
 		wfProfileIn( __METHOD__ );
 
-        //always convert to zh-hans before indexing. it should be
-		//better to use zh-hans for search, since conversion from
-		//Traditional to Simplified is less ambiguous than the
-		//other way around
-
-		$t = $this->mConverter->autoConvert( $string, 'zh-hans' );
-		$t = parent::stripForSearch( $t );
+		// always convert to zh-hans before indexing. it should be
+		// better to use zh-hans for search, since conversion from
+		// Traditional to Simplified is less ambiguous than the
+		// other way around
+		$s = $this->mConverter->autoConvert( $string, $autoVariant );
+		// LanguageZh_hans::normalizeForSearch
+		$s = parent::normalizeForSearch( $s );
 		wfProfileOut( __METHOD__ );
-		return $t;
+		return $s;
 
 	}
 
 	function convertForSearchResult( $termsArray ) {
 		$terms = implode( '|', $termsArray );
+		$terms = self::convertDoubleWidth( $terms );
 		$terms = implode( '|', $this->mConverter->autoConvertToAllVariants( $terms ) );
 		$ret = array_unique( explode('|', $terms) );
 		return $ret;

@@ -340,9 +340,6 @@ $messages = array(
 'namespaces'                 => 'Mjenjowe rumy',
 'variants'                   => 'Warianty',
 
-# Metadata in edit box
-'metadata_help' => 'Metadaty:',
-
 'errorpagetitle'    => 'Zmólka',
 'returnto'          => 'Slědk k boku $1.',
 'tagline'           => 'Z {{GRAMMAR:genitiw|{{SITENAME}}}}',
@@ -716,8 +713,9 @@ Zapśimjejśo pšosym wše górjejce pomjenjowane drobnosći do wšych napšašo
 'whitelistedittitle'               => 'Za wobźěłanje dejš se pśizjawiś',
 'whitelistedittext'                => 'Musyš se $1, aby mógał boki wobźěłowaś.',
 'confirmedittext'                  => 'Nježli až móžoš źěłaš, musyš swóju e-mailowu adresu wobkšuśiś. Pšosym dodaj a wobkšuś swóju e-mailowu adresu w [[Special:Preferences|nastajenjach]].',
-'nosuchsectiontitle'               => 'Wótrězk njeeksistěrujo.',
-'nosuchsectiontext'                => 'Sy wopytał wobźěłaś njeeksistěrujucy wótrězk $1. Dokulaž taki wótrězk njeeksistěrujo, njamóžoš swójo wobźěłanje niźi składowaś.',
+'nosuchsectiontitle'               => 'Wótrězk njedajo se namakaś',
+'nosuchsectiontext'                => 'Sy wopytał wótrězk wobźěłaś, kótaryž njeeksistěrujo.
+Jo se snaź pśesunuł abo wulašował, mjaztym až woglědujoš se bok.',
 'loginreqtitle'                    => 'Pśizjawjenje trěbne',
 'loginreqlink'                     => 'se pśizjawiś',
 'loginreqpagetext'                 => 'Dejš $1, aby mógł boki pšawje cytaś.',
@@ -780,10 +778,13 @@ Pšosym pśemysli, jolic njamóžo se bok na mjeńše wótrězki rozdźěliś.''
 'readonlywarning'                  => "'''WARNOWANJE: Datowa banka jo se za wótwardowanje zacyniła, togodla njebuźo tuchylu móžno, twóje změny składowaś. Jolic až coš, ga móžoš tekst do tekstoweje dataje kopěrowaś a pózdźej składowaś.'''
 
 Administrator, kenž jo ju zastajił, su toś tu pśicynu pódał: $1",
-'protectedpagewarning'             => "'''Glědaj: Toś ten bok jo se zakazał, tak až jano sysopowe wužywarje mógu jen wobźěłaś.'''",
-'semiprotectedpagewarning'         => "'''Markuj:''' Toś ten bok jo se zakazał, tak až jano registrěrowane wužywarje mógu jen wobźěłaś.",
+'protectedpagewarning'             => "'''Warnowanje: Toś ten bok jo se zastajił, tak až jano wužywarje z pšawami administratora mógu jen wobźěłaś.'''
+Nejnowšy protokolowy zapisk jo dokojce ako referenca pódany:",
+'semiprotectedpagewarning'         => "'''Glědaj:''' Toś ten bok jo se zastajił, tak až jano zregistrěrowane wužywarje mógu jen wobźěłaś.
+Nejnowšy protokolowy zapisk jo dołojce ako referenca pódany:",
 'cascadeprotectedwarning'          => "'''Glědaj: Toś ten bok jo se zakazał, tak až jano wužywarje ze sysopowymi priwiliegijami mógu jen wobźěłaś, dokulaž jo zawězana do {{PLURAL:$1|slědujucego boka|slědujuceju bokowu|slědujucych bokow}}, {{PLURAL:$1|kótaryž jo šćitany|kótarejž stej šćitanej|kótarež su šćitane}} z pomocu kaskadoweje zakazanskeje opcije.'''",
-'titleprotectedwarning'            => "'''WARNOWANJE: Toś ten bok bu zakazany, tak až [[Special:ListGroupRights|wósebne pšawa]] su trěbne, aby jen napórał.'''",
+'titleprotectedwarning'            => "'''WARNOWANJE: Toś ten bok jo se zastajił, tak až [[Special:ListGroupRights|wósebne pšawa]] su trěbne, aby se napórał.'''
+Nejnowšy protokolowy zapisk jo dołojce ako referenca pódany:",
 'templatesused'                    => 'Na toś tom boku {{PLURAL:$1|wužywana pśedłoga|wužywanej pśedłoze|wužyane pśedłogi|wužywane pśedłogi}}:',
 'templatesusedpreview'             => 'W toś tom pśeglěźe {{PLURAL:$1|wužywana pśedłoga|wužywanej pśedłoze|wužywane pśedłogi|wužywane pśedłogi}}:',
 'templatesusedsection'             => 'W toś tom wótrězku {{PLURAL:$1|wužywana pśedłoga|wužywanej pśedłoze|wužywane pśedłogi|wužywane pśedłogi}}:',
@@ -825,6 +826,7 @@ Njesmějo daś wěcej nježli $2 {{PLURAL:$2|wołanja|wołanjowu|wołanjow|woła
 'post-expand-template-argument-category'  => 'Boki, kótarež wuwóstajone pśedłogowe argumenty wopśimuju',
 'parser-template-loop-warning'            => 'Pśedłogowa šlejfa namakana: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Limit rekursijneje dłymi pśedłogi pśekšocony ($1)',
+'language-converter-depth-warning'        => 'Limit dłymokosći rěcnego konwertera pśekšocony ($1)',
 
 # "Undo" feature
 'undo-success' => 'Wobźěłanje móžo se wótpóraś. Pšosym pśeglěduj dołojcne pśirownowanje aby se wěsty był, až to wót wěrnosći coš, a pón składuj změny, aby se wobźěłanje doskóńcnje wótpórało.',
@@ -891,6 +893,7 @@ Ako administrator móžoš se ju woglědaś; glědaj drobnostki w [{{fullurl:{{#
 Ako administrator móžoš se ju woglědaś; glědaj drobnostki w [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} protokolu pódtłocenjow].",
 'rev-deleted-no-diff'         => "Njamóžoš se toś ten rozdźěl woglědaś, dokulaž jadna z wersijow jo se '''wulašowała'''.
 Glědaj drobnostki w [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].",
+'rev-suppressed-no-diff'      => "Njamóžoš se toś ten rozdźěl woglědaś, dokulaž jadna z wersijow jo se '''wulašowała'''.",
 'rev-deleted-unhide-diff'     => "Jadna z wersijow toś togo rozdźěla jo se '''wulašowała'''.
 Glědaj drobnostki w [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} protokolu wulašowanjow].
 Ako administrator móžoš hyšći se [$1 toś ten rozdźěl woglědaś], jolic coš pókšacowaś.",
@@ -1470,7 +1473,6 @@ Jolic maš toś ten wobraz w połnem rozeznaśu, nagraj jen, howac změń pšosy
 'uploaddisabledtext'          => 'Nagraśa datajow su znjemóžnjone.',
 'php-uploaddisabledtext'      => 'Nagraśa PHP-datajow su znjemóžnjone. Pšosym pśekontrolěruj nastajenje file_uploads.',
 'uploadscripted'              => 'Toś ta dataja wopśimjejo HTML abo script code, kótaryž móžo wót browsera se zamólnje wuwjasć.',
-'uploadcorrupt'               => 'Dataja jo skóńcowana abo ma njekorektnu kóńcowku. Pšosym kontrolěruj dataju a uploaduj hyšći raz.',
 'uploadvirus'                 => 'Toś ta dataja ma wirus! Nadrobnosći: $1',
 'upload-source'               => 'Žrědłowa dataja',
 'sourcefilename'              => 'Mě žrědłoweje dataje:',
@@ -2240,6 +2242,7 @@ $1 jo južo zablokěrowany. Coš nastajenja změniś?',
 'ipb_cant_unblock'                => 'Zmólka: Blokěrowańska ID $1 njejo se namakała. Blokěrowanje jo było južo wótpórane.',
 'ipb_blocked_as_range'            => 'Zmólka: IP-adresa $1 njejo direktnje blokěrowana a njeda se wótblokěrowaś. Jo pak ako źěl wobcerka $2 blokěrowana, kótaryž da se wótblokěrowaś.',
 'ip_range_invalid'                => 'Njepłaśecy wobłuk IP-adresow.',
+'ip_range_toolarge'               => 'Wobcerkowe bloki, kótarež su wětše ako /$1, njejsu dowólone.',
 'blockme'                         => 'blokěruj mě',
 'proxyblocker'                    => 'Blokěrowanje proxy',
 'proxyblocker-disabled'           => 'Toś ta funkcija jo znjemóžnjona.',
@@ -2339,8 +2342,10 @@ Bok „[[:$1]]“ južo eksistěrujo. Coš jen wulašowaś, aby mógał toś ten
 'imageinvalidfilename'         => 'Mě celoweje dataje jo njepłaśiwe',
 'fix-double-redirects'         => 'Dalejpósrědnjenja, kótarež wótkazuju na originalny titel, aktualizěrowaś',
 'move-leave-redirect'          => 'Daleposrědnjenje zawóstajiś',
-'protectedpagemovewarning'     => "'''WARNOWANJE:''' Toś ten bok jo se zastajił, aby jano wužiwarje z pšawami administratora mógli jen pśesunuś.",
-'semiprotectedpagemovewarning' => "'''Glědaj:''' Toś ten bok jo se zastajił, aby jano zregistrěrowane wužywarje mógli jen pśesunuś.",
+'protectedpagemovewarning'     => "'''WARNOWANJE:''' Toś ten bok jo se zastajił, aby jano wužiwarje z pšawami administratora mógli jen pśesunuś.
+Nejnowšy protokolowy zapisk jo dołojce ako referenca pódany:",
+'semiprotectedpagemovewarning' => "'''Glědaj:''' Toś ten bok jo se zastajił, aby jano zregistrěrowane wužywarje mógli jen pśesunuś.
+Nejnowšy protokolowy zapisk jo dołojce ako referenca pódany:",
 'move-over-sharedrepo'         => '== Dataja eksistěrujo ==
 [[:$1]] eksistěrujo w gromaźe wužywanem repozitoriumje. Pśesunjenje dataje k toś tomu titeloju buźo gromaźe wužywanu dataju pśepisowaś.',
 'file-exists-sharedrepo'       => 'Wubrane datajowe mě wužywa se južo w gromaźe wužywanem repozitoriumje.
@@ -2579,7 +2584,7 @@ W zespominanju dajo se pśicyna pódaś.',
 'markaspatrolleddiff'                 => 'Ako kontrolěrowane markěrowaś',
 'markaspatrolledtext'                 => 'Markěruj toś ten bok ako kontrolěrowany',
 'markedaspatrolled'                   => 'jo se ako kontrolěrowany markěrował',
-'markedaspatrolledtext'               => 'Wuzwólona wersija jo se markěrowała ako kontrolěrowana.',
+'markedaspatrolledtext'               => 'Wubrana wersija [[:$1]] jo se markěrowała ako kontrolěrowana.',
 'rcpatroldisabled'                    => 'Kontrolěrowanje slědnych změnow jo se znjemóžniło.',
 'rcpatroldisabledtext'                => 'Kontrolěrowanje slědnych změnow jo tuchylu se znjemóžniło.',
 'markedaspatrollederror'              => 'Markěrowanje ako "kontrolěrowane" njejo móžne.',

@@ -143,9 +143,6 @@ $messages = array(
 'faq'            => 'Cocmíiit cmaa',
 'faqpage'        => 'Project:Cocmíiit cmaa',
 
-# Metadata in edit box
-'metadata_help' => 'Datade Meta:',
-
 'errorpagetitle'    => 'Römj',
 'returnto'          => 'Jumpöx $1.',
 'tagline'           => "{{SITENAME}} iti'ab",
@@ -470,7 +467,7 @@ Me IDde block coccebj $5. Includam 1 jöx 2 pac querinám iti.",
 'whitelistedittext'         => 'Mecoccebj $1 ticpatlöx páhinám.',
 'confirmedittext'           => "Me confirmöx menadressade de e-iitom ticpatlöx 'depre. Set' ö validatenan menadressade IP [[Special:Preferences|hequáatlaác]] mii.",
 'nosuchsectiontitle'        => "Ne'dáár partam",
-'nosuchsectiontext'         => "Me pos-xuniim ticpatlöx ne'dáár partam.  Zo necoccebj ne'dáár partam $1, meticpatlöx necoccebj xuniim.",
+'nosuchsectiontext'         => "Me pos-xuniim ticpatlöx ne'dáár partam.",
 'loginreqtitle'             => 'Caápo Neces',
 'loginreqlink'              => 'caápo',
 'loginreqpagetext'          => 'Zo coccebj Neces $1 cohuatlöx jömde páhinám.',

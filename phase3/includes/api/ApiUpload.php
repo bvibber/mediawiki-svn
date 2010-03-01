@@ -1,9 +1,9 @@
 <?php
-/*
+/**
  * Created on Aug 21, 2008
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2008 - 2009 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
+ * Copyright © 2008 - 2010 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once("ApiBase.php");
+	require_once( "ApiBase.php" );
 }
 
 /**
@@ -40,48 +40,54 @@ class ApiUpload extends ApiBase {
 	public function execute() {
 		global $wgUser, $wgAllowCopyUploads;
 
-		$this->getMain()->isWriteMode();
+		// Check whether upload is enabled
+		if ( !UploadBase::isEnabled() ) {
+			$this->dieUsageMsg( array( 'uploaddisabled' ) );
+		}
+
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
-
-		// Do token checks:
-		if ( is_null( $this->mParams['token'] ) )
-			$this->dieUsageMsg( array( 'missingparam', 'token' ) );
-		if ( !$wgUser->matchEditToken( $this->mParams['token'] ) )
-			$this->dieUsageMsg( array( 'sessionfailure' ) );
-
 
 		// Add the uploaded file to the params array
 		$this->mParams['file'] = $request->getFileName( 'file' );
 
-		// Check whether upload is enabled
-		if ( !UploadBase::isEnabled() )
-			$this->dieUsageMsg( array( 'uploaddisabled' ) );
-
 		// One and only one of the following parameters is needed
 		$this->requireOnlyOneParameter( $this->mParams,
-			'sessionkey', 'file', 'url' );
+			'sessionkey', 'file', 'url', 'enablechunks' );
 
-		if( $this->mParams['sessionkey'] ) {
+		// Initialize $this->mUpload
+		if ( $this->mParams['enablechunks'] ) {
+			$this->mUpload = new UploadFromChunks();
+
+			$this->mUpload->initialize(
+				$request->getVal( 'done', null ),
+				$request->getVal( 'filename', null ),
+				$request->getVal( 'chunksession', null ),
+				$request->getFileTempName( 'chunk' ),
+				$request->getFileSize( 'chunk' ),
+				$request->getSessionData( 'wsUploadData' )
+			);
+
+			if ( !$this->mUpload->status->isOK() ) {
+				$this->dieUsageMsg( $this->mUpload->status->getErrorsArray() );
+			}
+		} elseif ( $this->mParams['sessionkey'] ) {
 			/**
 			 * Upload stashed in a previous request
 			 */
 			// Check the session key
-			if( !isset( $_SESSION['wsUploadData'][$this->mParams['sessionkey']] ) )
-				return $this->dieUsageMsg( array( 'invalid-session-key' ) );
-			
+			if ( !isset( $_SESSION['wsUploadData'][$this->mParams['sessionkey']] ) ) {
+				$this->dieUsageMsg( array( 'invalid-session-key' ) );
+			}
+
 			$this->mUpload = new UploadFromStash();
 			$this->mUpload->initialize( $this->mParams['filename'],
-					$_SESSION['wsUploadData'][$this->mParams['sessionkey']] );
-		} else {
+				$_SESSION['wsUploadData'][$this->mParams['sessionkey']] );
+		} elseif ( isset( $this->mParams['filename'] ) ) {
 			/**
-			 * Upload from url or file
+			 * Upload from URL, etc.
 			 * Parameter filename is required
 			 */
-			if ( !isset( $this->mParams['filename'] ) )
-				$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
-
-			// Initialize $this->mUpload
 			if ( isset( $this->mParams['file'] ) ) {
 				$this->mUpload = new UploadFromFile();
 				$this->mUpload->initialize(
@@ -90,65 +96,72 @@ class ApiUpload extends ApiBase {
 					$request->getFileSize( 'file' )
 				);
 			} elseif ( isset( $this->mParams['url'] ) ) {
-				//make sure upload by url is enabled: 
-				if( !$wgAllowCopyUploads )
+				// make sure upload by URL is enabled:
+				if ( !$wgAllowCopyUploads ) {
 					$this->dieUsageMsg( array( 'uploaddisabled' ) );
-				
-				//make sure the current user can upload
-				if(! $wgUser->isAllowed('upload_by_url') )
+				}
+
+				// make sure the current user can upload
+				if ( !$wgUser->isAllowed( 'upload_by_url' ) ) {
 					$this->dieUsageMsg( array( 'badaccess-groups' ) );
-					
-				
+				}
+
 				$this->mUpload = new UploadFromUrl();
 				$this->mUpload->initialize( $this->mParams['filename'],
 						$this->mParams['url'] );
 
 				$status = $this->mUpload->fetchFile();
-				if( !$status->isOK() ) {
-					return $this->dieUsage( $status->getWikiText(),  'fetchfileerror' );
+				if ( !$status->isOK() ) {
+					$this->dieUsage( $status->getWikiText(),  'fetchfileerror' );
 				}
 			}
+		} else {
+			$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
 		}
 
-		if( !isset( $this->mUpload ) )
+		if ( !isset( $this->mUpload ) ) {
 			$this->dieUsage( 'No upload module set', 'nomodule' );
+		}
 
-
-		// Finish up the exec command:
-		$this->doExecUpload();
-
-	}
-
-	protected function doExecUpload(){
-		global $wgUser;
 		// Check whether the user has the appropriate permissions to upload anyway
 		$permission = $this->mUpload->isAllowed( $wgUser );
 
-		if( $permission !== true ) {
-			if( !$wgUser->isLoggedIn() )
+		if ( $permission !== true ) {
+			if ( !$wgUser->isLoggedIn() ) {
 				$this->dieUsageMsg( array( 'mustbeloggedin', 'upload' ) );
-			else
+			} else {
 				$this->dieUsageMsg( array( 'badaccess-groups' ) );
+			}
 		}
 		// Perform the upload
 		$result = $this->performUpload();
+
 		// Cleanup any temporary mess
-		// FIXME: This should be in a try .. finally block with performUpload
 		$this->mUpload->cleanupTempFile();
-		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+
+		if ( isset( $result['chunked-output'] ) ) {
+			foreach ( $result['chunked-output'] as $key => $value ) {
+				if ( $value === null ) {
+					$value = '';
+				}
+				$this->getResult()->addValue( null, $key, $value );
+			}
+		} else {
+			$this->getResult()->addValue( null, $this->getModuleName(), $result );
+		}
 	}
 
 	protected function performUpload() {
 		global $wgUser;
 		$result = array();
 		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
-		if( $permErrors !== true ) {
+		if ( $permErrors !== true ) {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
 		// TODO: Move them to ApiBase's message map
 		$verification = $this->mUpload->verifyUpload();
-		if( $verification['status'] !== UploadBase::OK ) {
+		if ( $verification['status'] !== UploadBase::OK ) {
 			$result['result'] = 'Failure';
 			switch( $verification['status'] ) {
 				case UploadBase::EMPTY_FILE:
@@ -191,22 +204,21 @@ class ApiUpload extends ApiBase {
 			}
 			return $result;
 		}
-		if( !$this->mParams['ignorewarnings'] ) {
+		if ( !$this->mParams['ignorewarnings'] ) {
 			$warnings = $this->mUpload->checkWarnings();
-			if( $warnings ) {
+			if ( $warnings ) {
 				// Add indices
 				$this->getResult()->setIndexedTagName( $warnings, 'warning' );
 
-				if( isset( $warnings['duplicate'] ) ) {
+				if ( isset( $warnings['duplicate'] ) ) {
 					$dupes = array();
-					foreach( $warnings['duplicate'] as $key => $dupe )
+					foreach ( $warnings['duplicate'] as $key => $dupe )
 						$dupes[] = $dupe->getName();
-					$this->getResult()->setIndexedTagName( $dupes, 'duplicate');
+					$this->getResult()->setIndexedTagName( $dupes, 'duplicate' );
 					$warnings['duplicate'] = $dupes;
 				}
 
-
-				if( isset( $warnings['exists'] ) ) {
+				if ( isset( $warnings['exists'] ) ) {
 					$warning = $warnings['exists'];
 					unset( $warnings['exists'] );
 					$warnings[$warning['warning']] = $warning['file']->getName();
@@ -216,8 +228,9 @@ class ApiUpload extends ApiBase {
 				$result['warnings'] = $warnings;
 
 				$sessionKey = $this->mUpload->stashSession();
-				if ( !$sessionKey )
+				if ( !$sessionKey ) {
 					$this->dieUsage( 'Stashing temporary file failed', 'stashfailed' );
+				}
 
 				$result['sessionkey'] = $sessionKey;
 
@@ -226,28 +239,27 @@ class ApiUpload extends ApiBase {
 		}
 
 		// Use comment as initial page text by default
-		if (is_null($this->mParams['text']))
+		if ( is_null( $this->mParams['text'] ) ) {
 			$this->mParams['text'] = $this->mParams['comment'];
-		
+		}
+
 		// No errors, no warnings: do the upload
 		$status = $this->mUpload->performUpload( $this->mParams['comment'],
 			$this->mParams['text'], $this->mParams['watch'], $wgUser );
 
-		if( !$status->isGood() ) {
+		if ( !$status->isGood() ) {
 			$error = $status->getErrorsArray();
 			$this->getResult()->setIndexedTagName( $result['details'], 'error' );
 
 			$this->dieUsage( 'An internal error occurred', 'internal-error', 0, $error );
+		} elseif ( $this->mParams['enablechunks'] ) {
+			return array( 'chunked-output' => $status->value );
 		}
 
 		$file = $this->mUpload->getLocalFile();
 		$result['result'] = 'Success';
 		$result['filename'] = $file->getName();
-
-		// Append imageinfo to the result
-		$imParam = ApiQueryImageInfo::getPropertyNames();
-		$result['imageinfo'] = ApiQueryImageInfo::getInfo( $file,
-				array_flip( $imParam ), $this->getResult() );
+		$result['imageinfo'] = $this->mUpload->getImageInfo( $this->getResult() );
 
 		return $result;
 	}
@@ -271,14 +283,18 @@ class ApiUpload extends ApiBase {
 			'watch' => false,
 			'ignorewarnings' => false,
 			'file' => null,
+			'enablechunks' => false,
+			'chunksession' => null,
+			'chunk' => null,
+			'done' => false,
 			'url' => null,
 			'sessionkey' => null,
 		);
 
-		if ( $this->getMain()->isInternalMode() )
+		if ( $this->getMain()->isInternalMode() ) {
 			$params['internalhttpsession'] = null;
+		}
 		return $params;
-
 	}
 
 	public function getParamDescription() {
@@ -290,6 +306,10 @@ class ApiUpload extends ApiBase {
 			'watch' => 'Watch the page',
 			'ignorewarnings' => 'Ignore any warnings',
 			'file' => 'File contents',
+			'enablechunks' => 'Set to use chunk mode; see http://firefogg.org/dev/chunk_post.html for protocol',
+			'chunksession' => 'The session key, established on the first contact during the chunked upload',
+			'chunk' => 'The data in this chunk of a chunked upload',
+			'done' => 'Set to 1 on the last chunk of a chunked upload',
 			'url' => 'Url to fetch the file from',
 			'sessionkey' => array(
 				'Session key returned by a previous upload that failed due to warnings',
@@ -301,12 +321,39 @@ class ApiUpload extends ApiBase {
 		return array(
 			'Upload a file, or get the status of pending uploads. Several methods are available:',
 			' * Upload file contents directly, using the "file" parameter',
+			' * Upload a file in chunks, using the "enablechunks",',
+			' * Have the MediaWiki server fetch a file from a URL, using the "url" parameter',
 			' * Complete an earlier upload that failed due to warnings, using the "sessionkey" parameter',
 			'Note that the HTTP POST must be done as a file upload (i.e. using multipart/form-data) when',
-			'sending the "file" parameter. Note also that queries using session keys must be',
+			'sending the "file" or "chunk" parameters. Note also that queries using session keys must be',
 			'done in the same login session as the query that originally returned the key (i.e. do not',
 			'log out and then log back in). Also you must get and send an edit token before doing any upload stuff.'
 		);
+	}
+
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'uploaddisabled' ),
+			array( 'invalid-session-key' ),
+			array( 'uploaddisabled' ),
+			array( 'badaccess-groups' ),
+			array( 'missingparam', 'filename' ),
+			array( 'mustbeloggedin', 'upload' ),
+			array( 'badaccess-groups' ),
+			array( 'badaccess-groups' ),
+			array( 'code' => 'fetchfileerror', 'info' => '' ),
+			array( 'code' => 'nomodule', 'info' => 'No upload module set' ),
+			array( 'code' => 'empty-file', 'info' => 'The file you submitted was empty' ),
+			array( 'code' => 'filetype-missing', 'info' => 'The file is missing an extension' ),
+			array( 'code' => 'filename-tooshort', 'info' => 'The filename is too short' ),
+			array( 'code' => 'overwrite', 'info' => 'Overwriting an existing file is not allowed' ),
+			array( 'code' => 'stashfailed', 'info' => 'Stashing temporary file failed' ),
+			array( 'code' => 'internal-error', 'info' => 'An internal error occurred' ),
+		) );
+	}
+
+	public function getTokenSalt() {
+		return '';
 	}
 
 	protected function getExamples() {
@@ -315,6 +362,8 @@ class ApiUpload extends ApiBase {
 			'    api.php?action=upload&filename=Wiki.png&url=http%3A//upload.wikimedia.org/wikipedia/en/b/bc/Wiki.png',
 			'Complete an upload that failed due to warnings:',
 			'    api.php?action=upload&filename=Wiki.png&sessionkey=sessionkey&ignorewarnings=1',
+			'Begin a chunked upload:',
+			'    api.php?action=upload&filename=Wiki.png&enablechunks=1'
 		);
 	}
 

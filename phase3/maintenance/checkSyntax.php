@@ -22,7 +22,7 @@
  
 require_once( dirname( __FILE__ ) . '/Maintenance.php' );
 
-class SyntaxChecker extends Maintenance {
+class CheckSyntax extends Maintenance {
 
 	// List of files we're going to check
 	private $mFiles = array(), $mFailures = array(), $mWarnings = array();
@@ -49,7 +49,9 @@ class SyntaxChecker extends Maintenance {
 		// ParseKit is broken on PHP 5.3+, disabled until this is fixed
 		$useParseKit = function_exists( 'parsekit_compile_file' ) && version_compare( PHP_VERSION, '5.3', '<' );
 
-		$this->output( "Checking syntax (this can take a really long time)...\n\n" );
+		$str = 'Checking syntax (using ' . ( $useParseKit ? 
+			'parsekit)' : ' php -l, this can take a long time)' );
+		$this->output( $str );
 		foreach( $this->mFiles as $f ) {
 			if( $useParseKit ) {
 				$this->checkFileWithParsekit( $f );
@@ -118,7 +120,7 @@ class SyntaxChecker extends Maintenance {
 				$this->output( "done\n" );
 			}
 
-			preg_match_all( '/^\s*[AM]\s+(.*?)\r?$/m', $output, $matches );
+			preg_match_all( '/^\s*[AM].{7}(.*?)\r?$/m', $output, $matches );
 			foreach ( $matches[1] as $file ) {
 				if ( self::isSuitableFile( $file ) && !is_dir( $file ) ) {
 					$this->mFiles[] = $file;
@@ -127,7 +129,7 @@ class SyntaxChecker extends Maintenance {
 			return;
 		}
 
-		$this->output( "Building file list..." );
+		$this->output( 'Building file list...', 'listfiles' );
 
 		// Only check files in these directories. 
 		// Don't just put $IP, because the recursive dir thingie goes into all subdirs
@@ -154,7 +156,7 @@ class SyntaxChecker extends Maintenance {
 			$this->mFiles[] = "$IP/AdminSettings.php";
 		}
 
-		$this->output( "done.\n" );
+		$this->output( 'done.', 'listfiles' );
 	}
 	
 	/**
@@ -289,6 +291,6 @@ class SyntaxChecker extends Maintenance {
 	}
 }
 
-$maintClass = "SyntaxChecker";
+$maintClass = "CheckSyntax";
 require_once( DO_MAINTENANCE );
 

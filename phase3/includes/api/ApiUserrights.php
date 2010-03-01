@@ -1,10 +1,10 @@
 <?php
 
-/*
+/**
  * Created on Mar 24, 2009
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2009 Roan Kattouw <Firstname>.<Lastname>@home.nl
+ * Copyright © 2009 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,47 +22,36 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once( "ApiBase.php" );
 }
-
 
 /**
  * @ingroup API
  */
 class ApiUserrights extends ApiBase {
 
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	public function execute() {
-		global $wgUser;
 		$params = $this->extractRequestParams();
-		if(is_null($params['user']))
-			$this->dieUsageMsg(array('missingparam', 'user'));
-		if(is_null($params['token']))
-			$this->dieUsageMsg(array('missingparam', 'token'));
 
+		// User already validated in call to getTokenSalt from Main
 		$form = new UserrightsPage;
-		$user = $form->fetchUser($params['user']);
-		if($user instanceof WikiErrorMsg)
-			$this->dieUsageMsg(array_merge(
-				(array)$user->getMessageKey(),
-				$user->getMessageArgs()));
-		if(!$wgUser->matchEditToken($params['token'], $user->getName()))
-			$this->dieUsageMsg(array('sessionfailure'));
-		
+		$user = $form->fetchUser( $params['user'] );
+
 		$r['user'] = $user->getName();
-		list($r['added'], $r['removed']) =
+		list( $r['added'], $r['removed'] ) =
 			$form->doSaveUserGroups(
 				$user, (array)$params['add'],
-				(array)$params['remove'], $params['reason']);
+				(array)$params['remove'], $params['reason'] );
 
-		$this->getResult()->setIndexedTagName($r['added'], 'group');
-		$this->getResult()->setIndexedTagName($r['removed'], 'group');
-		$this->getResult()->addValue(null, $this->getModuleName(), $r);
+		$this->getResult()->setIndexedTagName( $r['added'], 'group' );
+		$this->getResult()->setIndexedTagName( $r['removed'], 'group' );
+		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
 	public function mustBePosted() {
@@ -77,22 +66,22 @@ class ApiUserrights extends ApiBase {
 		return array (
 			'user' => null,
 			'add' => array(
-				ApiBase :: PARAM_TYPE => User::getAllGroups(),
-				ApiBase :: PARAM_ISMULTI => true
+				ApiBase::PARAM_TYPE => User::getAllGroups(),
+				ApiBase::PARAM_ISMULTI => true
 			),
 			'remove' => array(
-				ApiBase :: PARAM_TYPE => User::getAllGroups(),
-				ApiBase :: PARAM_ISMULTI => true
+				ApiBase::PARAM_TYPE => User::getAllGroups(),
+				ApiBase::PARAM_ISMULTI => true
 			),
 			'token' => null,
 			'reason' => array(
-				ApiBase :: PARAM_DFLT => ''
+				ApiBase::PARAM_DFLT => ''
 			)
 		);
 	}
 
 	public function getParamDescription() {
-		return array (
+		return array(
 			'user' => 'User name',
 			'add' => 'Add the user to these groups',
 			'remove' => 'Remove the user from these groups',
@@ -107,8 +96,30 @@ class ApiUserrights extends ApiBase {
 		);
 	}
 
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'missingparam', 'user' ),
+		) );
+	}
+
+	public function getTokenSalt() {
+		$params = $this->extractRequestParams();
+		if ( is_null( $params['user'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
+		}
+
+		$form = new UserrightsPage;
+		$user = $form->fetchUser( $params['user'] );
+		if ( $user instanceof WikiErrorMsg ) {
+			$this->dieUsageMsg( array_merge(
+				(array)$user->getMessageKey(), $user->getMessageArgs() ) );
+		}
+
+		return $user->getName();
+	}
+
 	protected function getExamples() {
-		return array (
+		return array(
 			'api.php?action=userrights&user=FooBot&add=bot&remove=sysop|bureaucrat&token=123ABC'
 		);
 	}

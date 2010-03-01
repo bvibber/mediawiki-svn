@@ -1,5 +1,4 @@
 <?php
-
 /* This defines autoloading handler for whole MediaWiki framework */
 
 # Locations of core classes
@@ -36,6 +35,8 @@ $wgAutoloadLocalClasses = array(
 	'ChangesFeed' => 'includes/ChangesFeed.php',
 	'ChangeTags' => 'includes/ChangeTags.php',
 	'ChannelFeed' => 'includes/Feed.php',
+	'Cookie' => 'includes/HttpFunctions.php',
+	'CookieJar' => 'includes/HttpFunctions.php',
 	'ConcatenatedGzipHistoryBlob' => 'includes/HistoryBlob.php',
 	'ConfEditor' => 'includes/ConfEditor.php',
 	'ConfEditorParseError' => 'includes/ConfEditor.php',
@@ -80,7 +81,9 @@ $wgAutoloadLocalClasses = array(
 	'ExternalUser_vB' => 'includes/extauth/vB.php',
 	'FatalError' => 'includes/Exception.php',
 	'FakeTitle' => 'includes/FakeTitle.php',
+	'FakeMemCachedClient' => 'includes/ObjectCache.php',
 	'FauxRequest' => 'includes/WebRequest.php',
+	'FauxResponse' => 'includes/WebResponse.php',
 	'FeedItem' => 'includes/Feed.php',
 	'FeedUtils' => 'includes/FeedUtils.php',
 	'FileDeleteForm' => 'includes/FileDeleteForm.php',
@@ -120,9 +123,6 @@ $wgAutoloadLocalClasses = array(
 	'HTMLInfoField' => 'includes/HTMLForm.php',
 	'Http' => 'includes/HttpFunctions.php',
 	'HttpRequest' => 'includes/HttpFunctions.php',
-	'curlHttpRequest' => 'includes/HttpFunctions.php',
-	'phpHttpRequest' => 'includes/HttpFunctions.php',
-	'simpleFileWriter' => 'includes/HttpFunctions.php',
 	'IEContentAnalyzer' => 'includes/IEContentAnalyzer.php',
 	'ImageGallery' => 'includes/ImageGallery.php',
 	'ImageHistoryList' => 'includes/ImagePage.php',
@@ -134,6 +134,7 @@ $wgAutoloadLocalClasses = array(
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
 	'Job' => 'includes/JobQueue.php',
+	'JSMin' => 'includes/JSMin.php',
 	'LCStore_DB' => 'includes/LocalisationCache.php',
 	'LCStore_CDB' => 'includes/LocalisationCache.php',
 	'LCStore_Null' => 'includes/LocalisationCache.php',
@@ -156,8 +157,8 @@ $wgAutoloadLocalClasses = array(
 	'MagicWord' => 'includes/MagicWord.php',
 	'MailAddress' => 'includes/UserMailer.php',
 	'MathRenderer' => 'includes/Math.php',
-	'MediaTransformError' => 'includes/MediaTransformOutput.php',
-	'MediaTransformOutput' => 'includes/MediaTransformOutput.php',
+	'MediaTransformError' => 'includes/media/MediaTransformOutput.php',
+	'MediaTransformOutput' => 'includes/media/MediaTransformOutput.php',
 	'MediaWikiBagOStuff' => 'includes/BagOStuff.php',
 	'MediaWiki_I18N' => 'includes/SkinTemplate.php',
 	'MediaWiki' => 'includes/Wiki.php',
@@ -213,23 +214,29 @@ $wgAutoloadLocalClasses = array(
 	'SpecialRedirectToSpecial' => 'includes/SpecialPage.php',
 	'SqlBagOStuff' => 'includes/BagOStuff.php',
 	'SquidUpdate' => 'includes/SquidUpdate.php',
+	'SquidPurgeClient' => 'includes/SquidPurgeClient.php',
+	'SquidPurgeClientPool' => 'includes/SquidPurgeClient.php',
 	'Status' => 'includes/Status.php',
+	'StubContLang' => 'includes/StubObject.php',
+	'StubUser' => 'includes/StubObject.php',
+	'StubUserLang' => 'includes/StubObject.php',
+	'StubObject' => 'includes/StubObject.php',
 	'StringUtils' => 'includes/StringUtils.php',
 	'TablePager' => 'includes/Pager.php',
-	'ThumbnailImage' => 'includes/MediaTransformOutput.php',
+	'ThumbnailImage' => 'includes/media/MediaTransformOutput.php',
 	'TiffHandler' => 'includes/media/Tiff.php',
 	'TitleDependency' => 'includes/CacheDependency.php',
 	'Title' => 'includes/Title.php',
 	'TitleArray' => 'includes/TitleArray.php',
 	'TitleArrayFromResult' => 'includes/TitleArray.php',
 	'TitleListDependency' => 'includes/CacheDependency.php',
-	'TransformParameterError' => 'includes/MediaTransformOutput.php',
-	'TurckBagOStuff' => 'includes/BagOStuff.php',
+	'TransformParameterError' => 'includes/media/MediaTransformOutput.php',
 	'UnlistedSpecialPage' => 'includes/SpecialPage.php',
 	'UploadBase' => 'includes/upload/UploadBase.php',
 	'UploadFromStash' => 'includes/upload/UploadFromStash.php',
 	'UploadFromFile' => 'includes/upload/UploadFromFile.php',
 	'UploadFromUrl' => 'includes/upload/UploadFromUrl.php',
+	'UploadFromChunks' => 'includes/upload/UploadFromChunks.php',
 	'User' => 'includes/User.php',
 	'UserArray' => 'includes/UserArray.php',
 	'UserArrayFromResult' => 'includes/UserArray.php',
@@ -442,6 +449,7 @@ $wgAutoloadLocalClasses = array(
 	# includes/parser
 	'CoreLinkFunctions' => 'includes/parser/CoreLinkFunctions.php',
 	'CoreParserFunctions' => 'includes/parser/CoreParserFunctions.php',
+	'CoreTagHooks' => 'includes/parser/CoreTagHooks.php',
 	'DateFormatter' => 'includes/parser/DateFormatter.php',
 	'LinkHolderArray' => 'includes/parser/LinkHolderArray.php',
 	'LinkMarkerReplacer' => 'includes/parser/Parser_LinkHooks.php',
@@ -479,9 +487,7 @@ $wgAutoloadLocalClasses = array(
 	'MWTidy' => 'includes/parser/Tidy.php',
 
 	# includes/search
-	'IBM_DB2SearchResultSet' => 'includes/search/SearchIBM_DB2.php',
 	'MySQLSearchResultSet' => 'includes/search/SearchMySQL.php',
-	'OracleSearchResultSet' => 'includes/search/SearchOracle.php',
 	'PostgresSearchResult' => 'includes/search/SearchPostgres.php',
 	'PostgresSearchResultSet' => 'includes/search/SearchPostgres.php',
 	'SearchEngineDummy' => 'includes/search/SearchEngine.php',
@@ -499,6 +505,7 @@ $wgAutoloadLocalClasses = array(
 	'SearchUpdate' => 'includes/search/SearchUpdate.php',
 	'SearchUpdateMyISAM' => 'includes/search/SearchUpdate.php',
 	'SqliteSearchResultSet' => 'includes/search/SearchSqlite.php',
+	'SqlSearchResultSet' => 'includes/search/SearchEngine.php',
 
 	# includes/specials
 	'SpecialAllmessages' => 'includes/specials/SpecialAllmessages.php',
@@ -622,7 +629,7 @@ class AutoLoader {
 	/**
 	 * autoload - take a class name and attempt to load it
 	 *
-	 * @param string $className Name of class we're looking for.
+	 * @param $className String: name of class we're looking for.
 	 * @return bool Returning false is important on failure as
 	 * it allows Zend to try and look in other registered autoloaders
 	 * as well.

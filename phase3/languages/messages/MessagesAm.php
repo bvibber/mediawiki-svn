@@ -198,9 +198,6 @@ $messages = array(
 'vector-namespace-image'    => 'ፋይል',
 'vector-namespace-talk'     => 'ውይይት',
 
-# Metadata in edit box
-'metadata_help' => 'ተጨማሪ መረጃ:',
-
 'errorpagetitle'    => 'ስህተት',
 'returnto'          => '(ወደ $1 ለመመለስ)',
 'tagline'           => 'ከ{{SITENAME}}',
@@ -252,7 +249,7 @@ $messages = array(
 'lastmodifiedat'    => 'ይህ ገጽ መጨረሻ የተቀየረው እ.ኣ.አ በ$2፣ $1 ዓ.ም. ነበር።',
 'viewcount'         => 'ይህ ገጽ {{PLURAL:$1|አንዴ|$1 ጊዜ}} ታይቷል።',
 'protectedpage'     => 'የተቆለፈ ገጽ',
-'jumpto'            => 'ዘልለው ለመሐድ፦',
+'jumpto'            => 'ዘልለው ለመሔድ፦',
 'jumptonavigation'  => 'የማውጫ ቁልፎች',
 'jumptosearch'      => 'ፍለጋ',
 
@@ -533,7 +530,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'whitelistedittext'                => 'ገጾችን ለማዘጋጀት $1 አስቀድሞ ያስፈልግዎታል።',
 'confirmedittext'                  => 'ገጽ ማዘጋጀት ሳይችሉ፣ አስቀድመው የኢ-ሜል አድራሻዎን ማረጋገጥ አለብዎት። እባክዎ፣ በ[[Special:Preferences|ምርጫዎችዎ]] በኩል ኢ-ሜል አድራሻዎን ያረጋግጡ።',
 'nosuchsectiontitle'               => 'የማይኖር ክፍል',
-'nosuchsectiontext'                => 'የማይኖር ክፍል ለማዘጋጀት ሞክረዋል። ክፍሉ $1 ስለማይኖር፣ ለውጥዎን ለማስቀመጥ ምንም ሥፍራ የለም።',
+'nosuchsectiontext'                => 'የማይኖር ክፍል ለማዘጋጀት ሞክረዋል።',
 'loginreqtitle'                    => 'መግባት ያስፈልጋል።',
 'loginreqlink'                     => 'መግባት',
 'loginreqpagetext'                 => 'ሌሎች ገጾች ለመመልከት $1 ያስፈልግዎታል።',
@@ -1051,7 +1048,6 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'overwroteimage'              => 'የ«[[$1]]» አዲስ ዕትም ላከ',
 'uploaddisabled'              => 'ፋይል መላክ አይቻልም',
 'uploaddisabledtext'          => 'ፋይል መላክ በዚህ ዊኪ አይቻልም።',
-'uploadcorrupt'               => 'ይህ ፋይል ብልሹ ነው፤ ወይም ትክክለኛ ያልሆነ ቅጥያ አለው። እባክዎ ፋይሉን ተመልክተው እንደገና ይላኩት።',
 'uploadvirus'                 => 'ፋይሉ ቫይረስ አለበት! ዝርዝር፦ $1',
 'sourcefilename'              => 'የቆየው የፋይሉ ስም፦',
 'destfilename'                => 'የፋይሉ አዲስ ስም፦',

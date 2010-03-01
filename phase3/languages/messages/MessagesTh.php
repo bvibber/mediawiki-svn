@@ -8,6 +8,7 @@
  * @file
  *
  * @author Ans
+ * @author Horus
  * @author LMNOP at Thai Wikipedia (manop@itshee.com) since July 2007
  * @author Manop
  * @author Mopza
@@ -364,9 +365,6 @@ $messages = array(
 'namespaces'                 => 'เนมสเปซ',
 'variants'                   => 'สิ่งที่แตกต่าง',
 
-# Metadata in edit box
-'metadata_help' => 'เมทาเดทา:',
-
 'errorpagetitle'    => 'มีข้อผิดพลาด',
 'returnto'          => 'กลับไปสู่ $1',
 'tagline'           => 'จาก {{SITENAME}}',
@@ -588,6 +586,7 @@ $1',
 'nav-login-createaccount'    => 'ล็อกอิน / สร้างบัญชีผู้ใช้',
 'loginprompt'                => 'ต้องเปิดใช้คุกกี้ก่อนที่จะล็อกอินเข้าสู่ {{SITENAME}}',
 'userlogin'                  => 'ล็อกอิน / สร้างบัญชีผู้ใช้',
+'userloginnocreate'          => 'ล็อกอิน',
 'logout'                     => 'ล็อกเอาต์',
 'userlogout'                 => 'ล็อกเอาต์',
 'notloggedin'                => 'ไม่ได้ล็อกอิน',
@@ -1510,7 +1509,6 @@ $1",
 'php-uploaddisabledtext'      => 'การอัปโหลดไฟล์ถูกปิดการใช้งานใน PHP
 กรุณาตรวจสอบการตั้งค่า file_uploads',
 'uploadscripted'              => 'ไฟล์นี้มีส่วนประกอบของโค้ดเอชทีเอ็มแอลหรือสคริปต์ ซึ่งอาจก่อให้เกิดความผิดพลาดในการแสดงผลของเว็บเบราว์เซอร์',
-'uploadcorrupt'               => 'ไฟล์ไม่สมบูรณ์หรือมีส่วนขยายไม่ถูกต้อง กรุณาตรวจสอบไฟล์และอัปโหลดใหม่',
 'uploadvirus'                 => 'ไฟล์นี้มีไวรัส! รายละเอียด: $1',
 'upload-source'               => 'ไฟล์ต้นทาง',
 'sourcefilename'              => 'ไฟล์ที่ต้องการ:',

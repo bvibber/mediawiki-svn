@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2009 Aryeh Gregor
+# Copyright © 2009 Aryeh Gregor
 # http://www.mediawiki.org/
 #
 # This program is free software; you can redistribute it and/or modify
@@ -38,6 +38,8 @@
  * This class is meant to be confined to utility functions that are called from
  * trusted code paths.  It does not do enforcement of policy like not allowing
  * <a> elements.
+ *
+ * @since 1.16
  */
 class Html {
 	# List of void elements from HTML5, section 9.1.2 as of 2009-08-10
@@ -106,7 +108,38 @@ class Html {
 	 * @return string Raw HTML
 	 */
 	public static function rawElement( $element, $attribs = array(), $contents = '' ) {
-		global $wgHtml5, $wgWellFormedXml;
+		global $wgWellFormedXml;
+		$start = self::openElement( $element, $attribs );
+		if ( in_array( $element, self::$voidElements ) ) {
+			if ( $wgWellFormedXml ) {
+				# Silly XML.
+				return substr( $start, 0, -1 ) . ' />';
+			}
+			return $start;
+		} else {
+			return "$start$contents</$element>";
+		}
+	}
+
+	/**
+	 * Identical to rawElement(), but HTML-escapes $contents (like
+	 * Xml::element()).
+	 */
+	public static function element( $element, $attribs = array(), $contents = '' ) {
+		return self::rawElement( $element, $attribs, strtr( $contents, array(
+			# There's no point in escaping quotes, >, etc. in the contents of
+			# elements.
+			'&' => '&amp;',
+			'<' => '&lt;'
+		) ) );
+	}
+
+	/**
+	 * Identical to rawElement(), but has no third parameter and omits the end
+	 * tag (and the self-closing / in XML mode for empty elements).
+	 */
+	public static function openElement( $element, $attribs = array() ) {
+		global $wgHtml5;
 		$attribs = (array)$attribs;
 		# This is not required in HTML5, but let's do it anyway, for
 		# consistency and better compression.
@@ -155,29 +188,8 @@ class Html {
 			}
 		}
 
-		$start = "<$element" . self::expandAttributes(
-			self::dropDefaults( $element, $attribs ) );
-		if ( in_array( $element, self::$voidElements ) ) {
-			if ( $wgWellFormedXml ) {
-				return "$start />";
-			}
-			return "$start>";
-		} else {
-			return "$start>$contents</$element>";
-		}
-	}
-
-	/**
-	 * Identical to rawElement(), but HTML-escapes $contents (like
-	 * Xml::element()).
-	 */
-	public static function element( $element, $attribs = array(), $contents = '' ) {
-		return self::rawElement( $element, $attribs, strtr( $contents, array(
-			# There's no point in escaping quotes, >, etc. in the contents of
-			# elements.
-			'&' => '&amp;',
-			'<' => '&lt;'
-		) ) );
+		return "<$element" . self::expandAttributes(
+			self::dropDefaults( $element, $attribs ) ) . '>';
 	}
 
 	/**
@@ -366,8 +378,9 @@ class Html {
 					"\t" => '&#9;'
 				);
 				if ( $wgWellFormedXml ) {
-					# '<' must be escaped in attributes for XML for some
-					# reason, per spec: http://www.w3.org/TR/xml/#NT-AttValue
+					# This is allowed per spec: <http://www.w3.org/TR/xml/#NT-AttValue>
+					# But reportedly it breaks some XML tools?  FIXME: is this
+					# really true?
 					$map['<'] = '&lt;';
 				}
 				$ret .= " $key=$quote" . strtr( $value, $map ) . $quote;
@@ -503,9 +516,9 @@ class Html {
 		global $wgHtml5;
 		$attribs['name'] = $name;
 		if ( !$wgHtml5 ) {
-			if ( !array_key_exists('cols', $attribs) )
+			if ( !isset( $attribs['cols'] ) )
 				$attribs['cols'] = "";
-			if ( !array_key_exists('rows', $attribs) )
+			if ( !isset( $attribs['rows'] ) )
 				$attribs['rows'] = "";
 		}
 		return self::element( 'textarea', $attribs, $value );

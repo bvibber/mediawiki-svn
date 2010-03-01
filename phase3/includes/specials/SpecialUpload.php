@@ -30,10 +30,10 @@ class SpecialUpload extends SpecialPage {
 	protected $mUploadClicked;
 
 	/** User input variables from the "description" section **/
-	protected $mDesiredDestName;	// The requested target file name
+	public    $mDesiredDestName;	// The requested target file name
 	protected $mComment;
 	protected $mLicense;
-
+	
 	/** User input variables from the root section **/
 	protected $mIgnoreWarning;
 	protected $mWatchThis;
@@ -45,6 +45,7 @@ class SpecialUpload extends SpecialPage {
 	protected $mForReUpload;		// The user followed an "overwrite this file" link
 	protected $mCancelUpload;		// The user clicked "Cancel and return to upload form" button
 	protected $mTokenOk;
+	protected $mUploadSuccessful = false;	// Subclasses can use this to determine whether a file was uploaded
 	
 	/** Text injection points for hooks not using HTMLForm **/
 	public $uploadFormTextTop;
@@ -181,18 +182,23 @@ class SpecialUpload extends SpecialPage {
 	}
 
 	/**
-	 * Show the main upload form and optionally add the session key to the
-	 * output. This hides the source selection.
+	 * Show the main upload form 
 	 *
-	 * @param string $message HTML message to be shown at top of form
-	 * @param string $sessionKey Session key of the stashed upload
+	 * @param mixed $form An HTMLForm instance or HTML string to show
 	 */
 	protected function showUploadForm( $form ) {
 		# Add links if file was previously deleted
-		if ( !$this->mDesiredDestName )
+		if ( !$this->mDesiredDestName ) {
 			$this->showViewDeletedLinks();
-
-		$form->show();
+		}
+		
+		if ( $form instanceof HTMLForm ) {
+			$form->show();
+		} else {
+			global $wgOut;
+			$wgOut->addHTML( $form );
+		}
+		
 	}
 
 	/**
@@ -315,7 +321,7 @@ class SpecialUpload extends SpecialPage {
 		foreach( $warnings as $warning => $args ) {
 				$msg = '';
 				if( $warning == 'exists' ) {
-					$msg = self::getExistsWarning( $args );
+					$msg = "\t<li>" . self::getExistsWarning( $args ) . "</li>\n";
 				} elseif( $warning == 'duplicate' ) {
 					$msg = self::getDupeWarning( $args );
 				} elseif( $warning == 'duplicate-archive' ) {
@@ -323,7 +329,7 @@ class SpecialUpload extends SpecialPage {
 							array( Title::makeTitle( NS_FILE, $args )->getPrefixedText() ) )
 						. "</li>\n";
 				} else {
-					if ( is_bool( $args ) )
+					if ( $args === true )
 						$args = array();
 					elseif ( !is_array( $args ) )
 						$args = array( $args );
@@ -416,6 +422,7 @@ class SpecialUpload extends SpecialPage {
 		}
 
 		// Success, redirect to description page
+		$this->mUploadSuccessful = true;
 		wfRunHooks( 'SpecialUploadComplete', array( &$this ) );
 		$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
 
@@ -569,7 +576,6 @@ class SpecialUpload extends SpecialPage {
 	 *
 	 * @param array $exists The result of UploadBase::getExistsWarning
 	 * @return string Empty string if there is no warning or an HTML fragment
-	 * consisting of one or more <li> elements if there is a warning.
 	 */
 	public static function getExistsWarning( $exists ) {
 		global $wgUser, $wgContLang;
@@ -579,30 +585,30 @@ class SpecialUpload extends SpecialPage {
 
 		$file = $exists['file'];
 		$filename = $file->getTitle()->getPrefixedText();
-		$warning = array();
+		$warning = '';
 
 		$sk = $wgUser->getSkin();
 
 		if( $exists['warning'] == 'exists' ) {
 			// Exact match
-			$warning[] = '<li>' . wfMsgExt( 'fileexists', 'parseinline', $filename ) . '</li>';
+			$warning = wfMsgExt( 'fileexists', 'parseinline', $filename );
 		} elseif( $exists['warning'] == 'page-exists' ) {
 			// Page exists but file does not
-			$warning[] = '<li>' . wfMsgExt( 'filepageexists', 'parseinline', $filename ) . '</li>';
+			$warning = wfMsgExt( 'filepageexists', 'parseinline', $filename );
 		} elseif ( $exists['warning'] == 'exists-normalized' ) {
-			$warning[] = '<li>' . wfMsgExt( 'fileexists-extension', 'parseinline', $filename,
-				$exists['normalizedFile']->getTitle()->getPrefixedText() ) . '</li>';
+			$warning = wfMsgExt( 'fileexists-extension', 'parseinline', $filename,
+				$exists['normalizedFile']->getTitle()->getPrefixedText() );
 		} elseif ( $exists['warning'] == 'thumb' ) {
 			// Swapped argument order compared with other messages for backwards compatibility
-			$warning[] = '<li>' . wfMsgExt( 'fileexists-thumbnail-yes', 'parseinline',
-				$exists['thumbFile']->getTitle()->getPrefixedText(), $filename ) . '</li>';
+			$warning = wfMsgExt( 'fileexists-thumbnail-yes', 'parseinline',
+				$exists['thumbFile']->getTitle()->getPrefixedText(), $filename );
 		} elseif ( $exists['warning'] == 'thumb-name' ) {
 			// Image w/o '180px-' does not exists, but we do not like these filenames
 			$name = $file->getName();
 			$badPart = substr( $name, 0, strpos( $name, '-' ) + 1 );
-			$warning[] = '<li>' . wfMsgExt( 'file-thumbnail-no', 'parseinline', $badPart ) . '</li>';
+			$warning = wfMsgExt( 'file-thumbnail-no', 'parseinline', $badPart );
 		} elseif ( $exists['warning'] == 'bad-prefix' ) {
-			$warning[] = '<li>' . wfMsgExt( 'filename-bad-prefix', 'parseinline', $exists['prefix'] ) . '</li>';
+			$warning = wfMsgExt( 'filename-bad-prefix', 'parseinline', $exists['prefix'] );
 		} elseif ( $exists['warning'] == 'was-deleted' ) {
 			# If the file existed before and was deleted, warn the user of this
 			$ltitle = SpecialPage::getTitleFor( 'Log' );
@@ -615,10 +621,10 @@ class SpecialUpload extends SpecialPage {
 					'page' => $filename
 				)
 			);
-			$warning[] = '<li>' . wfMsgWikiHtml( 'filewasdeleted', $llink ) . '</li>';
+			$warning = wfMsgWikiHtml( 'filewasdeleted', $llink );
 		}
 
-		return implode( "\n", $warning );
+		return $warning;
 	}
 
 	/**
@@ -639,29 +645,10 @@ class SpecialUpload extends SpecialPage {
 			$exists = UploadBase::getExistsWarning( $file );
 			$warning = self::getExistsWarning( $exists );
 			if ( $warning !== '' ) {
-				$s = "<ul>$warning</ul>";
+				$s = "<div>$warning</div>";
 			}
 		}
 		return $s;
-	}
-
-	/**
-	 * Render a preview of a given license for the AJAX preview on upload
-	 *
-	 * @param string $license
-	 * @return string
-	 */
-	public static function ajaxGetLicensePreview( $license ) {
-		global $wgParser, $wgUser;
-		$text = '{{' . $license . '}}';
-		$title = Title::makeTitle( NS_FILE, 'Sample.jpg' );
-		$options = ParserOptions::newFromUser( $wgUser );
-
-		// Expand subst: first, then live templates...
-		$text = $wgParser->preSaveTransform( $text, $title, $wgUser, $options );
-		$output = $wgParser->parse( $text, $title, $options );
-
-		return $output->getText();
 	}
 
 	/**
@@ -721,7 +708,7 @@ class UploadForm extends HTMLForm {
 			+ $this->getDescriptionSection()
 			+ $this->getOptionsSection();
 
-		wfRunHooks( 'UploadFormInitDescriptor', array( $descriptor ) );
+		wfRunHooks( 'UploadFormInitDescriptor', array( &$descriptor ) );
 		parent::__construct( $descriptor, 'upload' );
 
 		# Set some form properties
@@ -985,15 +972,15 @@ class UploadForm extends HTMLForm {
 	 * 	filename text box
 	 */
 	protected function addUploadJS( ) {
-		global $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
+		global $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview, $wgEnableAPI;
 		global $wgOut;
 
 		$useAjaxDestCheck = $wgUseAjax && $wgAjaxUploadDestCheck;
-		$useAjaxLicensePreview = $wgUseAjax && $wgAjaxLicensePreview;
+		$useAjaxLicensePreview = $wgUseAjax && $wgAjaxLicensePreview && $wgEnableAPI;
 
 		$scriptVars = array(
-			'wgAjaxUploadDestCheck' => $wgUseAjax && $wgAjaxUploadDestCheck,
-			'wgAjaxLicensePreview' => $wgUseAjax && $wgAjaxLicensePreview,
+			'wgAjaxUploadDestCheck' => $useAjaxDestCheck,
+			'wgAjaxLicensePreview' => $useAjaxLicensePreview,
 			'wgUploadAutoFill' => !$this->mForReUpload,
 			'wgUploadSourceIds' => $this->mSourceIds,
 		);

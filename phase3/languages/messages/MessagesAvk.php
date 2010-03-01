@@ -234,9 +234,6 @@ $messages = array(
 'faq'            => 'NEB',
 'faqpage'        => 'Project:FAQ',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Rokla',
 'returnto'          => 'Dimgrablera va $1 bu.',
 'tagline'           => 'Teliz mal {{SITENAME}}.',
@@ -561,7 +558,7 @@ Rinaf tise IP mane tir $3 ise ID elekara tir #$5. Va bate ik bane mane ko kota e
 'whitelistedittext'                => 'Ta bubetara rin gonaskil ta $1',
 'confirmedittext'                  => 'Abdi bubetara va rinafe e-mail mane gogruyel. Kan rinaf [[Special:Preferences|favesiklodamaceem]] va rinafe e-mail mane vay plekul ise tuenal !',
 'nosuchsectiontitle'               => 'Me man gabot',
-'nosuchsectiontext'                => 'Rin yawal da va metis gabot betal. Oye da $1 gabot me tir, giwaxo me tir.',
+'nosuchsectiontext'                => 'Rin yawal da va metis gabot betal.',
 'loginreqtitle'                    => 'Kucilan favesikyolt',
 'loginreqlink'                     => 'dogluyara',
 'loginreqpagetext'                 => '$1 tir adrafa ta da va aru bu rodisukel.',
@@ -1084,8 +1081,6 @@ Ede va man iyeltak soe co-djukalvajal, vay dimpil ise va warzaf yolt favel. [[Fi
 'uploaddisabled'              => 'Skalev, staksera va iyeltak tir gritegirayan.',
 'uploaddisabledtext'          => 'Iyeltakkalvajara tir gritegirayana.',
 'uploadscripted'              => 'Bat iyeltak va HTML ok Script beksa rotir narujutuna gan web exulesiki ruldar.',
-'uploadcorrupt'               => 'Bat iyeltak tir avonanaf ok lumiskaf oke va mewadaf yolt digir.
-Va iyeltak gonageltal.',
 'uploadvirus'                 => 'Iyeltak va kio ruldar ! Pinta se : $1',
 'sourcefilename'              => 'Klitiyeltakyolt:',
 'destfilename'                => 'Warzaf iyeltakyolt:',

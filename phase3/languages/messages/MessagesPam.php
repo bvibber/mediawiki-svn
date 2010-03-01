@@ -537,8 +537,7 @@ Pakibanggit me iting ID neng atin kang pamangutang.',
 'confirmedittext'                  => "Kailangan meng kumpirman ing kekang e-mail address bayo mo a-edit deting bulung.
 Pakisulat me at patutuan ing kekang e-mail address kapamilata'ning [[Special:Preferences|pinili ning talagamit]] (user preferences).",
 'nosuchsectiontitle'               => 'Alang makanian a dake (seksiyon)',
-'nosuchsectiontext'                => 'Sibukan mung mag-edit king seksiyon a yala naman. 
-Uling alang seksiyon a $1, alang lugal a pirinan ketang kekang in-edit.',
+'nosuchsectiontext'                => 'Sibukan mung mag-edit king seksiyon a yala naman.',
 'loginreqtitle'                    => 'Kailangang Mag-login',
 'loginreqlink'                     => 'mag-login',
 'loginreqpagetext'                 => 'Kailangan mung $1 ba mong akit deng aliwang bulung.',
@@ -1085,8 +1084,6 @@ mibalik ka at ilulan (upload) me king lalam ning bayung lagyu. [[File:$1|thumb|c
 'uploaddisabled'              => 'Makapatda ing pamag-upload',
 'uploaddisabledtext'          => 'Makapatda ing pamag-upload king {{SITENAME}}.',
 'uploadscripted'              => 'Atin yang HTML o script code ing simpan a ini, at maliaring magkamali ya ing web browser king pamamasa kaniti.',
-'uploadcorrupt'               => 'Sira (corrupt) ya ing simpan a ini, o atin yang extension a e ustu.
-Pakilawe me ing simpan a ilulan (upload) meng pasibayu.',
 'uploadvirus'                 => 'Atin yang virus ing simpan (file) a ini! Detalle: $1',
 'sourcefilename'              => 'Lagyungsimpan (filename) ning pikuanan:',
 'destfilename'                => 'Lagyungsimpan (filename) ning puntalan:',

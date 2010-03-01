@@ -147,9 +147,6 @@ $messages = array(
 'faq'            => 'Sòng-kien mun-thì kié-tap',
 'faqpage'        => 'Project:Sòng-kien mun-thì kié-tap',
 
-# Metadata in edit box
-'metadata_help' => 'Ngièn sṳ-kí:',
-
 'errorpagetitle'    => 'Chho-ngu',
 'returnto'          => 'Fán-fì to $1.',
 'tagline'           => 'Chhut-chhṳ {{SITENAME}}',
@@ -433,7 +430,7 @@ Liá-chhṳ chhà-fûng he yù $1 só fûng ke. Tông-chûng ke ngièn-yîn he '
 'whitelistedittext'         => 'Ngì pit-sî siên $1 chhòi-nèn phiên-siá vùn-chông.',
 'confirmedittext'           => 'Chhai phiên-cho chhṳ́-chông chṳ̂-chhièn pit-sî khok-ngin ngì-ke email thi-tiám. Chhiáng theu-ko [[Special:Preferences|chhâm-su sat-thin]] sat-thin pin ngiam-chṳn ngì-ke email thi-tiám.',
 'nosuchsectiontitle'        => 'Mò-yû liá-ke thon-lo̍k',
-'nosuchsectiontext'         => 'Ngì sòng-chhṳ phiên-cho ke thon-lo̍k pin-put chhùn-chhai. Chhai liá-piên he mò thi-$1-ke thon-lo̍k,  só-yî he mò-yû yit-ke thi-fông tú-chhùn ngì-ke phiên-cho.',
+'nosuchsectiontext'         => 'Ngì sòng-chhṳ phiên-cho ke thon-lo̍k pin-put chhùn-chhai.',
 'loginreqtitle'             => 'Sî-yeu Tên-ngi̍p',
 'loginreqlink'              => 'tên-ngi̍p',
 'loginreqpagetext'          => 'Ngì pit-sî $1 chhòi-nèn kiám-sṳ khì-thâ vùn-chông.',
@@ -790,7 +787,6 @@ Kó-yèn ngì yû liá-ke thù-hìn ke vàn-cháng thai-séu.",
 'uploaddisabled'              => 'Mò-fap song-chhòn',
 'uploaddisabledtext'          => 'Tóng-on song-chhòn chhai chhṳ́ miong-chham put hí-khó yung.',
 'uploadscripted'              => 'Ke tóng-on pâu-hàm khó-nèn pûn mióng-lu-hi chho-ngu kié-sṳt ke HTML fe̍t-chá kiok-pún thoi-me̍t.',
-'uploadcorrupt'               => 'Ke tóng-on pâu-hàm fe̍t-chá khí-yû yit-ke put chṳn-khok ke khóng-chán-miàng. Chhiáng kiám-chhà chhṳ́ tóng-on pin chhùng-sîn song-chhòn.',
 'uploadvirus'                 => 'Ke-tóng-on yû pâu-hàm phiang-thu̍k! Siòng-se chhìn-khóng: $1',
 'sourcefilename'              => 'Kòi-ngièn ke tóng-on miàng',
 'destfilename'                => 'Muk-phêu tóng-on miàng',

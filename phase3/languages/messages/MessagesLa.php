@@ -319,9 +319,6 @@ $messages = array(
 'namespaces'                 => 'Spatia nominalia',
 'variants'                   => 'Variantes',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Erratum',
 'returnto'          => 'Redire ad $1.',
 'tagline'           => 'E {{grammar:ablative|{{SITENAME}}}}',
@@ -503,9 +500,9 @@ Nota bene paginas fortasse videantur quasi tuum conventum esset apertum, priusqu
 'welcomecreation'            => '== Salve, $1! ==
 Ratio tua iam creata est.
 Noli oblivisci [[Special:Preferences|praeferentias tuas]] apud {{grammar:accusative|{{SITENAME}}}} mutare.',
-'yourname'                   => 'Nomen tuum usoris:',
-'yourpassword'               => 'Tessera tua:',
-'yourpasswordagain'          => 'Tesseram tuam adfirmare:',
+'yourname'                   => 'Nomen usoris:',
+'yourpassword'               => 'Tessera:',
+'yourpasswordagain'          => 'Tesseram adfirmare:',
 'remembermypassword'         => 'Tesseram meam inter conventa memento',
 'yourdomainname'             => 'Regnum tuum:',
 'login'                      => 'Conventum aperire',
@@ -641,8 +638,9 @@ Locus IP tuus temporarius $3 est et numerus obstructionis tuus est #$5. Quaesumu
 'whitelistedittitle'               => 'Conventum aperiendum ut recenseas',
 'whitelistedittext'                => 'Necesse est tibi $1 priusquam paginas recenseas.',
 'confirmedittext'                  => 'Tua inscriptio electronica est adfirmanda priusquam paginas recenseas. Quaesumus eam selige et adfirma per tuas [[Special:Preferences|praeferentias]].',
-'nosuchsectiontitle'               => 'Haec pars non est',
-'nosuchsectiontext'                => 'Partem inexistentem recensere conaris. Quia pars $1 non est, recensio tua servari non potest.',
+'nosuchsectiontitle'               => 'Haec pars inveniri non potest',
+'nosuchsectiontext'                => 'Partem inexistentem recensere conaris.
+Fortasse aliquis hanc partem movit vel delevit.',
 'loginreqtitle'                    => 'Conventum aperiendum',
 'loginreqlink'                     => 'conventum aperire',
 'loginreqpagetext'                 => 'Necesse est tibi $1 priusquam paginas alias legas.',
@@ -941,12 +939,12 @@ Conare praefixare tua inquisitionem cum ''all:'' ut quaeras contenta omnia (pagi
 'prefs-custom-js'           => 'JS proprium',
 'prefs-emailconfirm-label'  => 'Adfirmatio inscriptionis electronicae:',
 'prefs-textboxsize'         => 'Magnitudo capsae recensionis',
-'youremail'                 => 'Inscriptio tua electronica:',
+'youremail'                 => 'Inscriptio electronica:',
 'username'                  => 'Nomen usoris:',
 'uid'                       => 'ID usoris:',
 'prefs-registration'        => 'Dies creationis rationis:',
-'yourrealname'              => 'Nomen tuum verum:',
-'yourlanguage'              => 'Lingua tua:',
+'yourrealname'              => 'Nomen verum:',
+'yourlanguage'              => 'Lingua:',
 'yourvariant'               => 'Differentia:',
 'yournick'                  => 'Subscriptio nova:',
 'badsig'                    => 'Subscriptio cruda non est valida; scrutina affixa HTML.',
@@ -1765,6 +1763,10 @@ Si pagina nova cum ipso nomine post deletionem creata est, emendationes restitut
 'contribslink'                 => 'conlationes',
 'autoblocker'                  => 'Obstructus es automatice quia "[[User:$1|$1]]" nuper tuum locum IP adhibuit. Ratio data ob obstructionem usoris $1 est: "$2"',
 'blocklogpage'                 => 'Index obstructionum',
+'blocklog-showlog'             => 'Hic usor antea obstructus est.
+Commodule notatio obstructionum subter datur.',
+'blocklog-showsuppresslog'     => 'Hic usor antea obstructus est celatus est.
+Commodule notatio obstructionum subter datur.',
 'blocklogentry'                => 'obstruxit [[$1]], exire $2 $3',
 'reblock-logentry'             => 'modificavit obstructionem usoris [[$1]], exire $2 $3',
 'blocklogtext'                 => 'Hic est index actorum obstructionis deobstructionisque. Loci IP qui automatice obstructi sunt non enumerantur. Vide [[Special:IPBlockList|indicem usorum locorumque IP obstructorum]] pro indice toto.',
@@ -1823,6 +1825,7 @@ adfirma te consequentias intellegere antequam procedis.",
 
 Ergo manu necesse disputationes motare vel contribuere erit, si vis.",
 'movearticle'               => 'Paginam movere:',
+'moveuserpage-warning'      => "'''Monitio:''' Si paginam usoris moves, solum pagina movetur, usor '''non''' renominatur.",
 'movenologin'               => 'Conventum non est apertum',
 'movenologintext'           => 'Rationem usoris habere et [[Special:UserLogin|conventum aperire]] debes ad movendum paginam.',
 'movenotallowed'            => 'Tibi non licet paginas movere.',

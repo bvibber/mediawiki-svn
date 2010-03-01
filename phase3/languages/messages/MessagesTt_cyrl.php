@@ -29,8 +29,8 @@ $dateFormats = array(
         'mdy date' => 'M j, Y',
         'mdy both' => 'H:i, M j, Y',
         'dmy time' => 'H:i',
-        'dmy date' => 'j. M Y',
-        'dmy both' => 'j. M Y, H:i',
+        'dmy date' => 'j M Y',
+        'dmy both' => 'j M Y, H:i',
         'ymd time' => 'H:i',
         'ymd date' => 'Y M j',
         'ymd both' => 'H:i, Y M j',
@@ -315,9 +315,6 @@ $messages = array(
 'namespaces'                 => 'Исемнәр мәйданы',
 'variants'                   => 'Төрләр',
 
-# Metadata in edit box
-'metadata_help' => 'Мета-мәгълүматлар:',
-
 'errorpagetitle'    => 'Хата',
 'returnto'          => '$1 битенә кайту.',
 'tagline'           => '{{SITENAME}} проектыннан',
@@ -486,6 +483,7 @@ $1',
 'readonly_lag'         => 'Мәгълүматлар базасы, өстәмә сервер төп сервер белән синхронизацияләшкәнче, үзгәрүләрдән автомат рәвештә ябылды.',
 'internalerror'        => 'Эчке хата',
 'internalerror_info'   => 'Эчке хата: $1',
+'fileappenderror'      => '"$1" һәм "$2" не кушып булмады.',
 'filecopyerror'        => '«$2» файлына «$1» файлының копиясен ясап булмый.',
 'filerenameerror'      => '«$1» файлының исемен «$2» исеменә алыштырып булмый.',
 'filedeleteerror'      => '«$1» файлын сыздырып булмый.',
@@ -544,6 +542,7 @@ $2',
 'nav-login-createaccount'    => 'Керү / теркәлү',
 'loginprompt'                => '{{SITENAME}} проектына керү өчен «cookies» рөхсәт ителгән булырга тиеш.',
 'userlogin'                  => 'Керү / теркәлү',
+'userloginnocreate'          => 'Керү',
 'logout'                     => 'Чыгу',
 'userlogout'                 => 'Чыгу',
 'notloggedin'                => 'Сез хисап язмагызга кермәгәнсез',
@@ -568,6 +567,7 @@ $2',
 Язылышыгызны тикшерегез яки [[Special:UserLogin/signup|яңа хисап язмасы төзегез]].',
 'nosuchusershort'            => '<nowiki>$1</nowiki> исемле кулланучы юк. Язылышыгызны тикшерегез.',
 'nouserspecified'            => 'Сез теркәү исмегезне күрсәтергә тиешсез.',
+'login-userblocked'          => 'Бу катнашучы тыелды. Керү тыелган.',
 'wrongpassword'              => 'Язылган серсүз дөрес түгел. Тагын бер тапкыр сынагыз.',
 'wrongpasswordempty'         => 'Серсүз юлы буш булырга тиеш түгел.',
 'passwordtooshort'           => 'Сезсүз $1 {{PLURAL:$1|символдан}} торырга тиеш.',
@@ -616,6 +616,7 @@ $2',
 'resetpass_forbidden'       => 'Серсүз үзгәртелә алмый',
 'resetpass-no-info'         => 'Бу битне карау өчен сез системага үз хисап язмагыз ярдәмендә керергә тиеш.',
 'resetpass-submit-loggedin' => 'Серсүзне үзгәртергә',
+'resetpass-submit-cancel'   => 'Кире кагу',
 'resetpass-wrong-oldpass'   => 'Ялгыш серсүз.
 Сез серсүзегезне үзгәрткән яисә яңа вакытлы серсүз сораткан булырга мөмкинсез.',
 'resetpass-temp-password'   => 'Вакытлы серсүз:',
@@ -780,6 +781,8 @@ $2',
 'nocreatetext'                     => '{{SITENAME}}: сайтта яңа битләр төзү чикләнгән.
 Сез артка кайтып, төзелгән битне үзгәртә аласыз. [[Special:UserLogin|Керергә яисә теркәлергә]] тәгъдим ителә.',
 'nocreate-loggedin'                => 'Сезгә яңа битләр төзү хокукы бирелмәгән.',
+'sectioneditnotsupported-title'    => 'Бүлекләрне төзәтү рөхсәт ителмәгән.',
+'sectioneditnotsupported-text'     => 'Бу сәхифәдә бүлекләрне төзәтү рөхсәт ителмәгән.',
 'permissionserrors'                => 'Керү хокукы хаталары',
 'permissionserrorstext'            => 'Түбәндәге {{PLURAL:$1|сәбәп|сәбәпләр}} аркасында сез бу гамәлне башкара алмыйсыз:',
 'permissionserrorstext-withaction' => '$2 гамәлен башкара алмыйсыз. {{PLURAL:$1|Сәбәбе|Сәбәпләре}}:',
@@ -843,6 +846,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'page_last'              => 'соңгы',
 'histlegend'             => "Аңлатмалар: '''({{int:cur}})''' = хәзерге версиядән аерымлыклар, '''({{int:last}})''' = баягы версиядән аерымлыклар, '''{{int:minoreditletter}}''' = кече үзгәртүләр.",
 'history-fieldset-title' => 'Тарихын карау',
+'history-show-deleted'   => 'Бары тик бетерү',
 'histfirst'              => 'Элеккеге',
 'histlast'               => 'Соңгы',
 'historysize'            => '($1 {{PLURAL:$1|байт}})',
@@ -888,8 +892,11 @@ $3 күрсәткән сәбәп: ''$2''",
 'revdelete-show-file-submit'  => 'Әйе',
 'revdelete-legend'            => 'Чикләүләр урнаштыр:',
 'revdelete-hide-text'         => 'Битнең бу версиясе текстын яшер',
+'revdelete-radio-set'         => 'Әйе',
+'revdelete-radio-unset'       => 'Юк',
 'revdel-restore'              => 'күренүчәнлекне үзгәртергә',
 'pagehist'                    => 'битнең тарихы',
+'deletedhist'                 => 'Бетерүләр тарихы',
 'revdelete-content'           => 'контент',
 'revdelete-uname'             => 'кулланучы исеме',
 
@@ -920,6 +927,8 @@ $3 күрсәткән сәбәп: ''$2''",
 'viewprevnext'                 => 'Күрсәтелүе: ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'               => 'Help:Эчтәлек',
 'searchprofile-images'         => 'Мультимедиа',
+'searchprofile-everything'     => 'Һәркайда',
+'searchprofile-advanced'       => 'Киңәйтелгән',
 'searchprofile-images-tooltip' => 'Файллар эзләү',
 'search-result-size'           => '$1 ({{PLURAL:$2|$2 сүз}})',
 'search-redirect'              => '(юнәлтү $1)',
@@ -1013,8 +1022,9 @@ $3 күрсәткән сәбәп: ''$2''",
 'grouppage-suppress'      => '{{ns:project}}:Тикшерүчеләр',
 
 # User rights log
-'rightslog'  => 'Кулланучының хокуклары көндәлеге',
-'rightsnone' => '(юк)',
+'rightslog'      => 'Кулланучының хокуклары көндәлеге',
+'rightslogentry' => '$1 кулланучысын $2 группасыннан $3 группасына күчерде',
+'rightsnone'     => '(юк)',
 
 # Associated actions - in the sentence "You do not have permission to X"
 'action-edit' => 'бу битне узгәртергә',
@@ -1023,6 +1033,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'nchanges'                          => '$1 {{PLURAL:$1|үзгәртү|үзгәртү}}',
 'recentchanges'                     => 'Соңгы үзгәртүләр',
 'recentchanges-legend'              => 'Соңгы үзгәртүләр көйләүләре',
+'recentchangestext'                 => 'Бу биттә {{grammar:genitive|{{SITENAME}}}} проектының соңгы үзгәртүләре күрсәтелә.',
 'recentchanges-feed-description'    => 'Бу агымда соңгы үзгәртүләрне күзәтү.',
 'recentchanges-legend-newpage'      => '$1 — яңа бит',
 'recentchanges-label-newpage'       => 'Бу үзгәртү белән яңа бит төзелде',
@@ -1038,7 +1049,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'rcshowhidepatr'                    => 'тикшерергән үзгәртүләрне $1',
 'rcshowhidemine'                    => 'минем үзгәртүләремне $1',
 'rclinks'                           => 'Соңгы $2 көн эчендә соңгы $1 үзгәртүне күрсәт<br />$3',
-'diff'                              => 'аерма.',
+'diff'                              => 'аерма',
 'hist'                              => 'тарих',
 'hide'                              => 'яшер',
 'show'                              => 'күрсәт',
@@ -1169,7 +1180,7 @@ $3 күрсәткән сәбәп: ''$2''",
 # Special:AllPages
 'allpages'       => 'Барлык битләр',
 'alphaindexline' => '$1 битеннән $2 битенә кадәр',
-'nextpage'       => 'Чираттагы бит ($1)',
+'nextpage'       => 'Алдагы бит ($1)',
 'prevpage'       => 'Алдагы бит ($1)',
 'allpagesfrom'   => 'Моңа башланучы битләрне чыгарырга:',
 'allpagesto'     => 'Монда чыгаруны туктатырга:',
@@ -1241,6 +1252,30 @@ $3 күрсәткән сәбәп: ''$2''",
 'enotif_impersonal_salutation' => '{{SITENAME}} кулланучы',
 'changed'                      => 'үзгәртелде',
 'created'                      => 'төзергән',
+'enotif_subject'               => '{{SITENAME}} проектының $PAGETITLE бите $PAGEEDITOR тарафыннан $CHANGEDORCREATED',
+'enotif_lastvisited'           => 'Соңгы керүегездән соң булган барлык үзгәртүләрне күрер өчен, бу сылтама аша узыгыз: $1',
+'enotif_body'                  => '$WATCHINGUSERNAME,
+
+«{{SITENAME}}» проектының «$PAGETITLE» бите $PAGEEDITOR тарафыннан $PAGEEDITDATE көнне $CHANGEDORCREATED. Битне карар өчен $PAGETITLE_URL буенча узыгыз.
+
+$NEWPAGE
+
+Үзгәртүнең кыска эчтәлеге: $PAGESUMMARY $PAGEMINOREDIT
+
+Үзгәртүчегә язу:
+эл. почта $PAGEEDITOR_EMAIL
+вики $PAGEEDITOR_WIKI
+
+Бу биткә кермәсәгез, аның башка үзгәртүләре турында хат җибәрелмәячәк. Шулай ук сез күзәтү исемлегегездә булган битләр өчен хәбәр бирү флагын алып куя аласыз.
+
+             {{SITENAME}} хәбәр бирү системасы
+
+--
+Күзәтү исемлеге көйләүләрен үзгәртү:
+{{fullurl:{{#special:Watchlist}}/edit}}
+
+Элемтә һәм ярдәм:
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
 'deletepage'            => 'Битне бетерү',
@@ -1323,7 +1358,7 @@ $1',
 
 # Namespace form on various pages
 'namespace'      => 'Исемнәр мәйданы:',
-'invert'         => 'Сайланганны әйләнергә',
+'invert'         => 'Киресен сайлау',
 'blanknamespace' => '(Төп)',
 
 # Contributions
@@ -1350,11 +1385,13 @@ $1',
 'linkshere'                => "'''[[:$1]]''' биткә чираттагы битләр сылтый:",
 'nolinkshere'              => "'''[[:$1]]''' битенә башка битләр сылтамыйлар.",
 'isredirect'               => 'юнәлтү бите',
+'istemplate'               => 'кертүләр',
 'isimage'                  => 'рәсем өчен сылтама',
 'whatlinkshere-prev'       => '{{PLURAL:$1|алдагы|алдагы $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|чираттагы|чираттагы $1}}',
 'whatlinkshere-links'      => '← сылтамалар',
 'whatlinkshere-hideredirs' => 'Юнәлтүләрне $1',
+'whatlinkshere-hidetrans'  => '$1 кертү',
 'whatlinkshere-hidelinks'  => '$1 сылтамалар',
 'whatlinkshere-filters'    => 'Фильтрлар',
 
@@ -1382,6 +1419,7 @@ $1',
 'unlockbtn' => 'Мәгълүматлар базасына язу мөмкинлеген кайтарырга',
 
 # Move page
+'move-page-legend'          => 'Битне күчерү',
 'movepagetext'              => "Астагы форманы куллану битнең исемен алыштырып, аның барлык тарихын яңа исемле биткә күчерер.
 Иске исемле бит яңа исемле биткә юнәлтү булып калыр.
 Сез иске исемгә юнәлтүләрне автоматик рәвештә яңа исемгә күчерә аласыз.
@@ -1405,6 +1443,7 @@ $1',
 'movepagebtn'               => 'Битне күчерү',
 'pagemovedsub'              => 'Бит күчерелде',
 'movepage-moved'            => "<big>'''«$1» бите «$2» битенә күчерелде'''</big>",
+'movepage-moved-redirect'   => 'Юнәлтү ясалды.',
 'movepage-moved-noredirect' => 'Юнәлтүне ясау тыелды',
 'articleexists'             => 'Мондый исемле бит бар инде, яисә мондый исем рөхсәт ителми.
 Зинһар башка исем сайлагыз.',
@@ -1417,6 +1456,8 @@ $1',
 'movelogpage'               => 'Күчерү көндәлеге',
 'movereason'                => 'Сәбәп:',
 'revertmove'                => 'кире кайту',
+'delete_and_move_reason'    => 'Күчерүне мөмкин итәр өчен бетерелде',
+'move-leave-redirect'       => 'Юнәлтүне калдырырга',
 
 # Export
 'export' => 'Битләрне чыгаруы',
@@ -1488,7 +1529,9 @@ $1',
 'tooltip-undo'                    => 'Бу үзгәртүне алдан карап үткәрмәү. Шулай ук үткәрмәүнең сәбәбен язып була.',
 
 # Patrolling
-'markaspatrolledtext' => 'Бу мәкаләне тикшерелгән дип тамгаларга',
+'markaspatrolledtext'   => 'Бу мәкаләне тикшерелгән дип тамгаларга',
+'markedaspatrolled'     => 'Тикшерелгән дип тамгаланды',
+'markedaspatrolledtext' => 'Сайланган версия тикшерелгән дип тамгаланды.',
 
 # Browsing diffs
 'previousdiff' => '← Алдагы үзгәртү',
@@ -1538,11 +1581,15 @@ $1',
 'namespacesall' => 'барлык',
 'monthsall'     => 'барлык',
 
+# Multipage image navigation
+'imgmultipagenext' => 'алдагы бит →',
+
 # Table pager
 'table_pager_next' => 'Киләсе бит',
 
 # Auto-summaries
-'autosumm-new' => 'Яңа бит: «$1»',
+'autoredircomment' => '[[$1]] битенә юнәлтү',
+'autosumm-new'     => 'Яңа бит: «$1»',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Соңгы үзгәртүләрне күрсәтү',

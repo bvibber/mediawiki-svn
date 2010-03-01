@@ -13,6 +13,7 @@
  */
 
 $namespaceNames = array(
+	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Ýörite',
 	NS_TALK             => 'Çekişme',
 	NS_USER             => 'Ulanyjy',
@@ -219,9 +220,6 @@ kiçi kategoriýadan {{PLURAL:$1|sany kiçi kategoriýa|$1 sany kiçi kategoriý
 'actions'                    => 'Hereketler',
 'namespaces'                 => 'At giňişlikleri',
 'variants'                   => 'Wariantlar',
-
-# Metadata in edit box
-'metadata_help' => 'Meta-maglumat:',
 
 'errorpagetitle'    => 'Säwlik',
 'returnto'          => '$1.',
@@ -612,7 +610,7 @@ Häzirki IP adresiňiz $3, blokirleme belgiňiz bolsa #$5.
 'confirmedittext'                  => 'Sahypa redaktirlemäp başlamankaňyz e-poçta adresiňizi tassyklamalysyňyz. 
 [[Special:Preferences|Ulanyjy ileri tutmalaryňyza]] e-poçta adresiňizi ýazyp tassyklamagyňyzy haýyş edýäris.',
 'nosuchsectiontitle'               => 'Beýle bölüm ýok',
-'nosuchsectiontext'                => 'Siz ýok bölümi redaktirlejek bolduňyz. $1 atly bölüm bolmansoň, özgerdişiňizi ýazdyrara ýer ýok.',
+'nosuchsectiontext'                => 'Siz ýok bölümi redaktirlejek bolduňyz.',
 'loginreqtitle'                    => 'Sessiýa açmagyňyz zerur',
 'loginreqlink'                     => 'sessiýa açyň',
 'loginreqpagetext'                 => 'Başga sahypalary görmek üçin $1.',
@@ -1233,7 +1231,7 @@ $1 {{PLURAL:$1|simwoldan|simwoldan}} köp bolmaly däl.',
 # User rights log
 'rightslog'      => 'Ulanyjy hukuklarynyň gündeligi',
 'rightslogtext'  => 'Ulanyjy hukuklaryndaky üýtgeşmeler gündeligi.',
-'rightslogentry' => '$1 üçin topar agzalygyny $2 toparyndan $3 toparyna üýtgetmäge',
+'rightslogentry' => '$1 üçin topar agzalygyny $2 toparyndan $3 toparyna üýtgetdi',
 'rightsnone'     => '(hiç biri)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1406,7 +1404,6 @@ Faýlyňyzy şonda-da ýüklemek isleýän bolsaňyz, onda yza gaýdyp täze bir
 'uploaddisabledtext'          => 'Faýl ýüklemeklik ýapyk.',
 'php-uploaddisabledtext'      => 'PHP-de faýl ýüklemek ýapyk dur. file_uploads sazlamasyny barlap görüň.',
 'uploadscripted'              => 'Bu faýlda web brauzeri tarapyndan ýalňyş teswirlenmegi mümkin bolan bir HTML ýa-da skript kody bar.',
-'uploadcorrupt'               => 'Bu faýla ýa zeper ýetipdir ýa-da onuň giňeltmesi ýalňyş. Faýly barlap, gaýtadan ýüklemegiňizi haýyş edýäris.',
 'uploadvirus'                 => 'Faýlda wirus bar! Jikme-jiklik: $1',
 'upload-source'               => 'Çeşme faýl',
 'sourcefilename'              => 'Çeşme faýlyň ady:',

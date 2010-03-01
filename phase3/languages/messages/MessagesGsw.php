@@ -297,9 +297,6 @@ $messages = array(
 'namespaces'                 => 'Namensryym',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metadate:',
-
 'errorpagetitle'    => 'Fähler',
 'returnto'          => 'Zruck zur Syte $1.',
 'tagline'           => 'Us {{SITENAME}}',
@@ -466,6 +463,8 @@ Wänn s des nit isch, hesch villicht e Fähler in dr Software gfunde. Bitte mäl
 'readonly_lag'         => 'D Datebank isch automatisch gperrt wore, wil di verteilte Datebankserver (Sklave) mien mit em Hauptdatebankserver (Meischter) abgliche wäre.',
 'internalerror'        => 'Interner Fähler',
 'internalerror_info'   => 'Interne Fähler: $1',
+'fileappenderrorread'  => '„$1“ het nit chenne gläse wäre bim Aahänke.',
+'fileappenderror'      => 'Het „$1“ nit an „$2“ chenne anhänke.',
 'filecopyerror'        => 'Datei "$1" het nit noch "$2" kopiert werre kinne.',
 'filerenameerror'      => 'D Datei "$1" het nit in "$2" umgnennt werre kinne.',
 'filedeleteerror'      => 'Datei "$1" het nit glöscht werre kinne.',
@@ -526,6 +525,7 @@ Vergiss nid, dyni [[Special:Preferences|{{SITENAME}}-Yystellige]] aazpasse.',
 'nav-login-createaccount'    => 'Aamälde / Konto aaleege',
 'loginprompt'                => '<small>Für di bir {{SITENAME}} aazmälde, muesch Cookies erloube!</small>',
 'userlogin'                  => 'Aamälde/Konto aalege',
+'userloginnocreate'          => 'Aamälde',
 'logout'                     => 'Abmälde',
 'userlogout'                 => 'Abmälde',
 'notloggedin'                => 'Nit aagmäldet',
@@ -550,6 +550,7 @@ Bitte nimm e andere.',
 Iberprief d Schrybwys, oder mäld Di as [[Special:UserLogin/signup|neje Benutzer aa]].',
 'nosuchusershort'            => 'S git kei Benutzername „<nowiki>$1</nowiki>“. Bitte iberprief d Schrybwys.',
 'nouserspecified'            => 'Bitte gib e Benutzername yy.',
+'login-userblocked'          => 'Dää Benutzer isch gsperrt. Aamäldig nit erlaubt.',
 'wrongpassword'              => 'Des Passwort isch falsch (oder fählt). Bitte versuech s nomol.',
 'wrongpasswordempty'         => 'Du hesch vergässe dyy Passwort yyzgee. Bitte versuech s nomol.',
 'passwordtooshort'           => 'Passwerter mien zmindescht {{PLURAL:$1|1 Zeiche|$1 Zeiche}} haa.',
@@ -595,6 +596,7 @@ Wänn s Benutzerkonto us Versäh aaglait woren isch, chasch die Nochricht ignori
 'usernamehasherror'          => 'In Benutzernäme derf s kei Rautezeiche din haa',
 'login-throttled'            => 'Du hesch z vilmol vergebli versuecht, Di aazmälde. Bitte wart, voreb Du s non emol versuechsch.',
 'loginlanguagelabel'         => 'Sproch: $1',
+'suspicious-userlogout'      => 'Dyy Versuech di abzmälde isch abbroche wore, wel s uusgsäh het, wie wänn s vun eme bschedigte Browser oder eme Cacheproxy uus gsändet woren isch.',
 
 # Password reset dialog
 'resetpass'                 => 'Passwort fir s Benutzerkonto ändere oder zrucksetze',
@@ -609,6 +611,7 @@ Wänn s Benutzerkonto us Versäh aaglait woren isch, chasch die Nochricht ignori
 'resetpass_forbidden'       => 'S Passwort cha nid gänderet wäre.',
 'resetpass-no-info'         => 'Du muesch Di aamälde zum uf die Syte diräkt zuegryfe z chenne.',
 'resetpass-submit-loggedin' => 'Passwort ändere',
+'resetpass-submit-cancel'   => 'Abbräche',
 'resetpass-wrong-oldpass'   => 'S temporär oder aktuäll Passwort isch nimi giltig.
 Villicht hesch Dyy Passwort scho gänderet oder e nej temporär Passwort aagforderet.',
 'resetpass-temp-password'   => 'Temporär Passwort:',
@@ -690,8 +693,9 @@ Du chasch $1 oder ein vu dr andre [[{{MediaWiki:Grouppage-sysop}}|Ammanne]] kont
 'whitelistedittitle'               => 'Zum Bearbeite muess mer aagmäldet syy.',
 'whitelistedittext'                => 'Du muesch Di $1 zum Artikel bearbeite.',
 'confirmedittext'                  => 'Si mien Ihri E-Mail-Adräss zerscht bstätige, voreb Si Syte chenne ändere. Bitte setze Si in [[Special:Preferences|Ihre Iistellige]] Ihri E-Mail-Adräss yy un len Si si priefe.',
-'nosuchsectiontitle'               => 'Abschnitt git s nid.',
-'nosuchsectiontext'                => 'Du versuechsch dr Abschnitt $1, wu s nid git, z bearbeite. Mer cha aber nume Abschnitt bearbeiter, wu s scho git.',
+'nosuchsectiontitle'               => 'Abschnitt nit gfunde',
+'nosuchsectiontext'                => 'Du hesch versuecht e Abschnitt z bearbeite, wu s nid git.
+S cha syy, ass er verschoben oder glescht woren isch, derwylscht Du d Syte aagluegt hesch.',
 'loginreqtitle'                    => 'S brucht d Aamäldig.',
 'loginreqlink'                     => 'aamälde',
 'loginreqpagetext'                 => 'Du muesch Di $1, zum Syte chenne läse.',
@@ -711,6 +715,8 @@ Du chasch dää Titel uf andre Syte [[Special:Search/{{PAGENAME}}|sueche]]
 oder <span class="plainlinks">in dr zuegherige [{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbiecher sueche].',
 'userpage-userdoesnotexist'        => 'S Benutzerkonto „$1“ git s nit. Bitte prief, eb Du die Syte wirkli wit aalege/bearbeite.',
 'userpage-userdoesnotexist-view'   => 'S Benutzerkonto „$1“ isch nit registriert.',
+'blocked-notice-logextract'        => 'Dää Benutzer isch zur Zyt gsperrt.
+As Information chunnt do ne aktuälle Uuszug us em Benutzersperr-Logbuech:',
 'clearyourcache'                   => "'''Hywys:''' Noch dynere Änderig muess no der Browser-Cache gläärt wäre!<br />'''Mozilla/Safari/Konqueror:''' ''Strg-Umschalttaschte-R'' (oder ''Umschalttasche'' druckt halte und uf s ''Nei-Lade''-Symbol klicke), '''IE:''' ''Strg-F5'', '''Opera/Firefox:''' ''F5''",
 'usercssyoucanpreview'             => "'''Tipp:''' Nimm dr Vorschau-Chnopf, zum Dyy nej CSS vor em Spichere z teschte.",
 'userjsyoucanpreview'              => "'''Tipp:''' Nimm dr Vorschau-Chnopf, zum Dyy nej JS vor em Spichere z teschte.",
@@ -764,10 +770,13 @@ Si verspräche uns usserdäm, dass Si des alles selber gschribe oder vo nere Qu�
 Sichere de Täxt bitte lokal uf Dyynem Computer un versuech speter nomol, d Änderige z ibertrage.'''
 
 Grund fir d Sperri: $1",
-'protectedpagewarning'             => "'''WARNIG: Die Syten isch gsperrt worde, so das se nume Benutzer mit Sysop-Rechten chöi verändere.'''",
-'semiprotectedpagewarning'         => "'''''Halbsperrig''': Die Syte cha vu aagmäldete Benutzern bearbeitet wäre. Fir Benutzer, wu nid oder grad erscht aagmäldet sin, isch dr Schrybzuegang gsperrt.''",
+'protectedpagewarning'             => "'''WARNIG: Die Syten isch gsperrt wore, ass si nume Benutzer mit Administrator-Rächt chenne verändere.'''
+As Referänz wird do dr letscht Logbuechyytrag aagee:",
+'semiprotectedpagewarning'         => "'''Obacht''': Die Syte isch halb gsperrt, ass si nume vu aagmäldete Benutzer cha bearbeitet wäre.
+As Referänz wird do dr letscht Logbuechyytrag aagee:",
 'cascadeprotectedwarning'          => "'''ACHTIG: Die Syte isch gsperrt. Wäg däm cha si nume vu Benutzer mit Ammannerächt bearbeitet wäre. Si isch in die {{PLURAL:$1|Syte|Syte}} yybunde, wu mit ere Kaskadesperroption gschitzt {{PLURAL:$1|isch|sin}}:'''",
-'titleprotectedwarning'            => "'''ACHTIG: S Aalege vu däre Syte isch gsperrt. Wäg däm bruucht mer [[Special:ListGroupRights|bstimmti Rächt]] go si aalege.'''",
+'titleprotectedwarning'            => "'''Obacht: S Aalege vu däre Syte isch gsperrt. Wäg däm bruucht mer [[Special:ListGroupRights|bstimmti Rächt]] go si aalege.'''
+As Referänz wird do dr letscht Logbuechyytrag aagee:",
 'templatesused'                    => '{{PLURAL:$1|Vorlag, wu in däm Artikel brucht wird|Vorlage, wu in däm Artikel brucht wäre}}:',
 'templatesusedpreview'             => '{{PLURAL:$1|Vorlag, wu in däre Vorschau brucht wird|Vorlage, wu in däre Vorschau brucht wäre}}:',
 'templatesusedsection'             => '{{PLURAL:$1|Vorlag, wu in däm Abschnitt brucht wird|Vorlage, wu in däm Abschnitt brucht wäre}}:',
@@ -809,6 +818,7 @@ S {{PLURAL:$2|derf nid meh wie ein Ufruef|derfe nid meh wie $1 Ufruef}} gee.',
 'post-expand-template-argument-category'  => 'Syte, wu s ignorierti Vorlageargumänt din het',
 'parser-template-loop-warning'            => 'Vorlagelätsch entdeckt: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Vorlagerekursionstiefegränz iberschritte ($1)',
+'language-converter-depth-warning'        => 'Gränz vu dr Sprochkonvertertiefi iberschritte ($1)',
 
 # "Undo" feature
 'undo-success' => 'Zum die Änderig ruckgängig z mache, kontrollier bitte d Bearbeitig in dr Verglichsaasicht un druck derno uf „Syte spichere“.',
@@ -872,6 +882,7 @@ Informatione zue dr Leschig un e Begrindig het s im [{{fullurl:{{#Special:Log}}/
 As Ammann chasch si aaluege; s cha syy, ass es Detail het im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Unterdruckigs-Logbuech].",
 'rev-deleted-no-diff'         => "Du chasch die Änderig nit aaluege, wel eini vu dr Versione '''glescht''' woren isch.
 Villicht het s Detail im [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].",
+'rev-suppressed-no-diff'      => "Du chasch dää Versionsunterschid nit bschaue, wel eini vu dr Versione '''glescht''' woren isch.",
 'rev-deleted-unhide-diff'     => "Eini vu dr Versione isch '''glescht''' wore.
 Villicht het s Detail im [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lesch-Logbuech].
 Wänn Du Ammann bisch, chasch [$1 dä Unterschid aaluege] wänn Du wytermache witt.",
@@ -1177,24 +1188,25 @@ Des cha nimmi ruckgängig gmacht wäre.',
 'prefs-diffs'                   => 'Versionsverglych',
 
 # User rights
-'userrights'                  => 'Benutzerrächtsverwaltig',
-'userrights-lookup-user'      => 'Verwalt d Gruppezuegherigkeit',
-'userrights-user-editname'    => 'Benutzername:',
-'editusergroup'               => 'Ändere vo Benutzerrächt',
-'editinguser'                 => "Benutzerrächt ändere vu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Bearbeit d Gruppezuegherigkeit vum Benutzer',
-'saveusergroups'              => 'Spychere d Gruppezuegherigkeit',
-'userrights-groupsmember'     => 'Mitgliid vu:',
-'userrights-groups-help'      => 'Du chasch d Gruppezuegherigkeit fir dää Benutzer ändere:
+'userrights'                   => 'Benutzerrächtsverwaltig',
+'userrights-lookup-user'       => 'Verwalt d Gruppezuegherigkeit',
+'userrights-user-editname'     => 'Benutzername:',
+'editusergroup'                => 'Ändere vo Benutzerrächt',
+'editinguser'                  => "Benutzerrächt ändere vu '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Bearbeit d Gruppezuegherigkeit vum Benutzer',
+'saveusergroups'               => 'Spychere d Gruppezuegherigkeit',
+'userrights-groupsmember'      => 'Mitgliid vu:',
+'userrights-groupsmember-auto' => 'Yygschlosse Mitglid vu:',
+'userrights-groups-help'       => 'Du chasch d Gruppezuegherigkeit fir dää Benutzer ändere:
 * E markiert Chäschtli bedytet, ass dr Benutzer Mitgliid vu däre Gruppe isch
 * E * bedytet, ass Du s Benutzerrächt nit wider chasch zruckneh, wänn s erteilt isch (oder umgchehrt).',
-'userrights-reason'           => 'Grund:',
-'userrights-no-interwiki'     => 'Du hesch nit d Berächtigung, Benutzerrächt in andere Wiki z ändere.',
-'userrights-nodatabase'       => 'D Datebank $1 git s nit oder si isch nit lokal.',
-'userrights-nologin'          => 'Du muesch Di mit eme Ammanne-Benutzerkonto [[Special:UserLogin|aamälde]], zum Benutzerrächt z ändere.',
-'userrights-notallowed'       => 'Du hesch nit d Berächtigung zum Benutzerrächt vergee.',
-'userrights-changeable-col'   => 'Gruppezuegherigkeit, wu Du chasch ändere',
-'userrights-unchangeable-col' => 'Gruppezuegherigkeit, wu Du nit chasch ändere',
+'userrights-reason'            => 'Grund:',
+'userrights-no-interwiki'      => 'Du hesch nit d Berächtigung, Benutzerrächt in andere Wiki z ändere.',
+'userrights-nodatabase'        => 'D Datebank $1 git s nit oder si isch nit lokal.',
+'userrights-nologin'           => 'Du muesch Di mit eme Ammanne-Benutzerkonto [[Special:UserLogin|aamälde]], zum Benutzerrächt z ändere.',
+'userrights-notallowed'        => 'Du hesch nit d Berächtigung zum Benutzerrächt vergee.',
+'userrights-changeable-col'    => 'Gruppezuegherigkeit, wu Du chasch ändere',
+'userrights-unchangeable-col'  => 'Gruppezuegherigkeit, wu Du nit chasch ändere',
 
 # Groups
 'group'               => 'Grupp:',
@@ -1411,6 +1423,7 @@ Lueg au d [[Special:NewFiles|Galerii vu neije Dateie]] fir e visuälle Iberblick
 'minlength1'                  => 'Dateinäme mien zmindescht e Buechstab lang syy.',
 'illegalfilename'             => 'Im Dateiname „$1“ het s zmindescht ei Zeiche, wu nit erlaubt isch. Bitte gib dr Datei e andere Name un versuech nomol si uffezlade.',
 'badfilename'                 => 'Dr Dateiname isch in „$1“ gänderet wore.',
+'filetype-mime-mismatch'      => 'Dateierwyterig passt nit zum MIME-Typ.',
 'filetype-badmime'            => 'Dateie mit em MIME-Typ „$1“ derfe nit uffeglade wäre.',
 'filetype-bad-ie-mime'        => 'Die Datei cha nit uffeglade wäre, wel dr Internet Explorer si as „$1“ kennt, wu e nit erlaubte, villicht gferlige Dateityp isch.',
 'filetype-unwanted-type'      => "'''„.$1“''' isch e Dateiformat, wu nit gwinscht isch. Erlaubt {{PLURAL:$3|isch s Dateiformat|sin d Dateiformat}}: $2.",
@@ -1452,7 +1465,6 @@ Wänn Du die Datei einewäg wit uffelade, gang bitte zruck un ändere dr Name.
 'uploaddisabledtext'          => 'S Uffelade vu Dateie isch deaktiviert.',
 'php-uploaddisabledtext'      => 'S Uffelade vu PHP-Dateie isch deaktiviert wore. Bitte iberprief d file_uploads-Yystellig.',
 'uploadscripted'              => 'In däre Datei git s HTML- oder Scriptcode, wu fälschligerwyys vun eme Webbrowser usgfiert chennt were.',
-'uploadcorrupt'               => 'Die Datei isch bschädigt oder het e falschi Datei-Erwyterig. Bitte iberprief d Datei un lad si no mol uffe.',
 'uploadvirus'                 => 'In däre Datei het s e Virus! Detail: $1',
 'upload-source'               => 'Quälldatei',
 'sourcefilename'              => 'Quälldatei:',
@@ -1500,6 +1512,16 @@ Nume Dateizuegriff isch erlaubt.',
 Des Wiki isch as effentlig Wiki konfiguriert.
 Us Sicherheitsgrinde isch img_auth.php deaktiviert.',
 'img-auth-noread'       => 'Benutzer derf „$1“ nit läse.',
+
+# HTTP errors
+'http-invalid-url'      => 'Nit giltigi URL: $1',
+'http-invalid-scheme'   => 'URL mit em Schema „$1“ wäre nit unterstitzt',
+'http-request-error'    => 'Fähler bim Verschicke vu dr Aafrog.',
+'http-read-error'       => 'Fähler bim Läse vu HTTP.',
+'http-timed-out'        => 'Uuszyt bim HTTP-Versuech.',
+'http-curl-error'       => 'Fähler bim Ufsueche vu dr URL: $1',
+'http-host-unreachable' => 'URL isch nit z verwitsche',
+'http-bad-status'       => 'Bi dr HTTP-Aafrog isch e Fähler ufdrätte: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL isch nit z verwitsche',
@@ -1893,25 +1915,31 @@ Wänn Du d Syte speter wider vu dr Lischt witt stryyche, deno druck eifach uf �
 'enotif_lastvisited'           => '$1 zeigt alli Änderige uf s Mol.',
 'enotif_lastdiff'              => 'Lueg $1 no däre Änderig.',
 'enotif_anon_editor'           => 'Anonyme Benutzer $1',
-'enotif_body'                  => 'Liebe/r $WATCHINGUSERNAME,
+'enotif_body'                  => 'Liebe/Liebi $WATCHINGUSERNAME,
 
-d {{SITENAME}}-Syte $PAGETITLE isch vum $PAGEEDITOR am $PAGEEDITDATE $CHANGEDORCREATED wore, di aktuelli Version isch: $PAGETITLE_URL
+d {{SITENAME}}-Syte $PAGETITLE isch vum $PAGEEDITOR am $PAGEEDITDATE $CHANGEDORCREATED wore, di aktuell Version isch: $PAGETITLE_URL
 
 
 $NEWPAGE
 
-Zämmenfassig vom Autor: $PAGESUMMARY $PAGEMINOREDIT
-Kontakt zuem Autor:
+Zämmenfassig vum Autor: $PAGESUMMARY $PAGEMINOREDIT
+Kontakt zum Autor:
 Mail $PAGEEDITOR_EMAIL
 Wiki $PAGEEDITOR_WIKI
 
-Es wird kei wiiteri Benochrichtigungsposcht gschickt bis Si selli Syte wider bsueche. Uf de Beobachtigssyte chönne Si d Beobachtigsmarker zrucksetze.
+Es wird kei wyteri Nochricht iber Änderige gschickt, bis Du uf sälli Syte gohsch.
+Uf Dyyre Beobachtigssyte chasch d Beobachtigsmarker fir alli Syte zrucksetze, wu Du beobachte tuesch.
 
-             Ihr fründlichs {{SITENAME}} Benochrichtigssyschtem
+             Dyy fryndli {{SITENAME}}-Nochrichtesyschtem
 
 ---
-Ihri Beobachtigslischte {{fullurl:Special:Watchlist/edit}}
-Hilf zue de Benutzig gits uff {{fullurl:{{MediaWiki:Helppage}}}}',
+Go d Yystellige vu Dyyre Beobachtigslischte ändere, gang uf {{fullurl:Special:Watchlist/edit}}
+
+Go d Syte us Dyyre Beobachtigslischte uuseneh, gang uf
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
+Ruckmäldig un wyteri Hilf:
+{{fullurl:{{MediaWiki:Helppage}}}}',
 
 # Delete
 'deletepage'             => 'Syte lösche',
@@ -2217,6 +2245,7 @@ Go d Sperri ufhebe lueg d [[Special:IPBlockList|Lisch vu allene aktive Sperrine]
 'ipb_cant_unblock'                => 'Fähler: Sperr-ID $1 nit gfunde. S cha syy, ass d Sperri scho ufghoben isch .',
 'ipb_blocked_as_range'            => 'Fähler: D IP-Adräss $1 isch as Teil vu dr Beryychssperri $2 indirekt gsperrt. S isch nit megli, nume $1 z entsperre.',
 'ip_range_invalid'                => 'Uugiltige IP-Adrässberyych.',
+'ip_range_toolarge'               => 'Adrässberyych, wu greßer sin wie /$1, sin nit erlaubt.',
 'blockme'                         => 'Sperr mi',
 'proxyblocker'                    => 'Proxy blocker',
 'proxyblocker-disabled'           => 'Die Funktion isch deaktiviert.',
@@ -2255,6 +2284,7 @@ Go d Sperri ufhebe lueg d [[Special:IPBlockList|Lisch vu allene aktive Sperrine]
 
 I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde.",
 'movearticle'                  => 'Artikel verschiebe',
+'moveuserpage-warning'         => "'''Warnig:''' Du bis am Verschiebe vun ere Benutzersyte. Bitte gib Achtig, ass doderdur nume die Syte verschobe wird, aber dr Benutzer '''nit''' umgnännt wird.",
 'movenologin'                  => 'Du bisch nid aagmäldet',
 'movenologintext'              => 'Du muesch e regischtrierte Benutzer syy un Di [[Special:UserLogin|aamälde]] go die Syte verschiebe.',
 'movenotallowed'               => 'Du derfsch kei Syte verschiebe.',
@@ -2306,8 +2336,10 @@ D Syte „[[:$1]]“ gits scho. Wottsch du si lösche, zume Platz zum verschiebe
 'imageinvalidfilename'         => 'De Name vo dr Ziildatei isch ungültig',
 'fix-double-redirects'         => 'Alli Wyterleitige, wo uf de alte Titel zeige, aktualisiere',
 'move-leave-redirect'          => 'E Wyterleitig hinterloo',
-'protectedpagemovewarning'     => "'''WARNIG:''' Die Syte isch gschitzt wore, ass si nume Benutzer mit Ammannerächt chenne verschiebe.",
-'semiprotectedpagemovewarning' => "'''OBACHT:''' Die Syte isch gschitzt wore, ass si nume regischtrieti Benutzer chenne verschiebe.",
+'protectedpagemovewarning'     => "'''WARNIG:''' Die Syte isch gschitzt wore, ass si nume Benutzer mit Ammannerächt chenne verschiebe.
+As Referänz wird do dr letscht Logbuechyytrag aagee:",
+'semiprotectedpagemovewarning' => "'''OBACHT:''' Die Syte isch gschitzt wore, ass si nume aagmäldeti Benutzer chenne verschiebe.
+As Referänz wird do dr letscht Logbuechyytrag aagee:",
 'move-over-sharedrepo'         => '==Datei git s==
 [[:$1]] git s in ere gmeinsam gnutzte Mediedatebank. S Verschiebe vun ere Datei uf dää Titel iberschrybt di gmeinsam gnutzt Datei.',
 'file-exists-sharedrepo'       => 'Dr gwehlt Dateiname wird scho in ere gmeinsam gnutzte Mediedatebank brucht.
@@ -2525,7 +2557,7 @@ prief di korrekt Installation vu latex, dvips, gs un convert',
 'markaspatrolleddiff'                 => 'Als patrulyrt markyre',
 'markaspatrolledtext'                 => 'Erschtversion patrulyre',
 'markedaspatrolled'                   => 'As kontrolliert markiert',
-'markedaspatrolledtext'               => 'D’Änderig isch als patrulyrt markyrt.',
+'markedaspatrolledtext'               => 'Di uusgwehlt Änderig [[:$1]] isch vum Fäldhieter aagluegt wore.',
 'rcpatroldisabled'                    => 'Kontroll vu dr letschte Änderige gsperrt',
 'rcpatroldisabledtext'                => 'D Kontroll vu dr letschte Änderige isch im Momänt gsperrt.',
 'markedaspatrollederror'              => 'Markierig as „kontrolliert“ nit megli.',
@@ -2880,24 +2912,24 @@ Anderi Metadate sy standardmäßig versteckt.
 'limitall'         => 'alli',
 
 # E-mail address confirmation
-'confirmemail'             => 'Bstätigung vo Ihre E-Poscht-Adräss',
-'confirmemail_noemail'     => 'Du hesch in dyne [[Special:Preferences|persönliche Ystellige]] e kei E-Mail-Adress ygää.',
-'confirmemail_text'        => 'Dermit du di erwyterete Mailfunktione chasch bruuche, muesch du die E-Mail-Adrässe, wo du hesch aaggä, la bestätige. Klick ufe Chnopf unte; das schickt dir es Mail. I däm Mail isch e Link; we du däm Link folgsch, de tuesch dadermit bestätige, das die E-Mail-Adrässe dyni isch.',
-'confirmemail_pending'     => 'Es isch Dir scho en Code zum Bestätige zuegschiggt worde. Falls du Dyn Konto grad erscht aagleit hesch, muesch villicht noo e weng warte bis d E-Mail ytrifft, bevor du en nöie Code aafordresch.',
-'confirmemail_send'        => 'Bestätigungs-Mail verschicke',
-'confirmemail_sent'        => 'Es isch dir es Mail zur Adrässbestätigung gschickt worde.',
-'confirmemail_oncreate'    => 'En Code isch aa dyni E-Mail-Adress zum bestätige gschiggt worde. Du bruuch de Code zwar nüt zum dich aamälde, er wird aber zum aktiviere vo de E-Mail-Funktione in däm Wiki bruucht.',
-'confirmemail_sendfailed'  => '{{SITENAME}} het d E-Mail zum bestätige nüt chönne verschigge.
+'confirmemail'              => 'Bstätigung vo Ihre E-Poscht-Adräss',
+'confirmemail_noemail'      => 'Du hesch in dyne [[Special:Preferences|persönliche Ystellige]] e kei E-Mail-Adress ygää.',
+'confirmemail_text'         => 'Dermit du di erwyterete Mailfunktione chasch bruuche, muesch du die E-Mail-Adrässe, wo du hesch aaggä, la bestätige. Klick ufe Chnopf unte; das schickt dir es Mail. I däm Mail isch e Link; we du däm Link folgsch, de tuesch dadermit bestätige, das die E-Mail-Adrässe dyni isch.',
+'confirmemail_pending'      => 'Es isch Dir scho en Code zum Bestätige zuegschiggt worde. Falls du Dyn Konto grad erscht aagleit hesch, muesch villicht noo e weng warte bis d E-Mail ytrifft, bevor du en nöie Code aafordresch.',
+'confirmemail_send'         => 'Bestätigungs-Mail verschicke',
+'confirmemail_sent'         => 'Es isch dir es Mail zur Adrässbestätigung gschickt worde.',
+'confirmemail_oncreate'     => 'En Code isch aa dyni E-Mail-Adress zum bestätige gschiggt worde. Du bruuch de Code zwar nüt zum dich aamälde, er wird aber zum aktiviere vo de E-Mail-Funktione in däm Wiki bruucht.',
+'confirmemail_sendfailed'   => '{{SITENAME}} het d E-Mail zum bestätige nüt chönne verschigge.
 Bitte überprüef d E-Mail-Adress uf ungültigi Zeiche.
 
 Ruggmäldig vum Mailserver: $1',
-'confirmemail_invalid'     => 'De Bestätigscode isch ungültig. Es isch mögli das er abgloffe isch. In däm Fall chasch probiere d Bestätigung z widerhole.',
-'confirmemail_needlogin'   => 'Du muesch dich $1, zume dyni E-Mail-Adress bstätige.',
-'confirmemail_success'     => 'Dyni E-Mail-Adräss isch bstätiget worde. Du chasch di jitz aamälde.',
-'confirmemail_loggedin'    => 'Dyni E-Mail-Adräss isch jitz bstätigt.',
-'confirmemail_error'       => 'Öbis isch bim Bestätige vo dynrer E-Mail-Adress schief gloffe.',
-'confirmemail_subject'     => '{{SITENAME}} E-Mail-Adrässbstätigung',
-'confirmemail_body'        => 'Salü
+'confirmemail_invalid'      => 'De Bestätigscode isch ungültig. Es isch mögli das er abgloffe isch. In däm Fall chasch probiere d Bestätigung z widerhole.',
+'confirmemail_needlogin'    => 'Du muesch dich $1, zume dyni E-Mail-Adress bstätige.',
+'confirmemail_success'      => 'Dyni E-Mail-Adräss isch bstätiget worde. Du chasch di jitz aamälde.',
+'confirmemail_loggedin'     => 'Dyni E-Mail-Adräss isch jitz bstätigt.',
+'confirmemail_error'        => 'Öbis isch bim Bestätige vo dynrer E-Mail-Adress schief gloffe.',
+'confirmemail_subject'      => '{{SITENAME}} E-Mail-Adrässbstätigung',
+'confirmemail_body'         => 'Salü
 
 {{SITENAME}}-BenutzerIn «$2» — das bisch allwäg Du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
 
@@ -2912,8 +2944,22 @@ $5
 De Bstätigungs-Code isch gültig bis $4.
 
 Fründlechi Grüess',
-'confirmemail_invalidated' => 'D E-Mail-Adressbestätig isch abbroche worde',
-'invalidateemail'          => 'S Bestätige vo dr E-Mail-Adress abbreche',
+'confirmemail_body_changed' => 'Eber mit dr IP-Adräss $1, wahrschyns Du sälber,
+het d E-Mail-Adräss vum Benutzerkonto „$2“ uf die Adräss gänderet uf {{SITENAME}}.
+
+Go bstetige, ass des Benutzerkonto wirkli Dir ghert
+un go d E-Mail-Feature uf {{SITENAME}} reaktiviere, mach des Gleich in Dyym Browser uf:
+
+$3
+
+Wänn des Konto imfall *nit* Dir ghert, gang däm Gleich noo
+go d E-Mail-Adräss-Bstetigung abbräche:
+
+$5
+
+Dää Bstetigungscode isch giltig bis am $4.',
+'confirmemail_invalidated'  => 'D E-Mail-Adressbestätig isch abbroche worde',
+'invalidateemail'           => 'S Bestätige vo dr E-Mail-Adress abbreche',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki-Yybindig isch deaktiviert]',

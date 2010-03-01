@@ -380,9 +380,6 @@ $messages = array(
 'namespaces'                 => 'Naamruimtes',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Keer terug na $1.',
 'tagline'           => 'Vanuit {{SITENAME}}',
@@ -553,6 +550,8 @@ Indien dit nie die geval is nie, het u moontlik 'n fout in die sagteware ontdek.
 'readonly_lag'         => 'Die databasis is outomaties gesluit terwyl die slaafdatabasisse sinchroniseer met die meester',
 'internalerror'        => 'Interne fout',
 'internalerror_info'   => 'Interne fout: $1',
+'fileappenderrorread'  => 'Kon nie "$1" tydens die "append" lees nie.',
+'fileappenderror'      => 'Kon nie "$1" agteraan "$2" voeg nie.',
 'filecopyerror'        => 'Kon nie lêer van "$1" na "$2" kopieer nie.',
 'filerenameerror'      => 'Kon nie lêernaam van "$1" na "$2" wysig nie.',
 'filedeleteerror'      => 'Kon nie lêer "$1" skrap nie.',
@@ -598,7 +597,8 @@ Die rede gegee is ''$2''.",
 # Login and logout pages
 'logouttext'                 => "'''U is nou uitgeteken'''
 
-U kan aanhou om {{SITENAME}} anoniem te gebruik; of u kan [[Special:UserLogin|inteken]] as dieselfde of 'n ander gebruiker.",
+U kan aanhou om {{SITENAME}} anoniem te gebruik; of u kan weer [[Special:UserLogin|inteken]] as dieselfde of 'n ander gebruiker.
+Dit is moontlik dat sommige bladsye nog sal aandui dat u aangeteken is totdat u u webblaaier se kas skoonmaak.",
 'welcomecreation'            => '== Welkom, $1! ==
 U rekening is geskep;
 moenie vergeet om u [[Special:Preferences|persoonlike voorkeure vir {{SITENAME}}]] te stel nie.',
@@ -634,12 +634,14 @@ Stel u rekenaar om dit te aanvaar, dan kan u met u nuwe naam en wagwoord inteken
 'nocookieslogin'             => '{{SITENAME}} gebruik koekies vir die aanteken van gebruikers, maar u blaaier laat dit nie toe nie. Skakel dit asseblief aan en probeer weer.',
 'noname'                     => 'Ongeldige gebruikersnaam.',
 'loginsuccesstitle'          => 'Suksesvolle intekening',
-'loginsuccess'               => 'U is ingeteken by {{SITENAME}} as "$1".',
+'loginsuccess'               => 'U is nou by {{SITENAME}} as "$1" ingeteken.',
 'nosuchuser'                 => 'Die gebruiker "$1" bestaan nie. 
 Gebruikersname is gevoelig vir hoofletters.
 Maak seker dit is reg gespel of [[Special:UserLogin/signup|skep \'n nuwe rekening]].',
 'nosuchusershort'            => 'Daar is geen gebruikersnaam "<nowiki>$1</nowiki>" nie. Maak seker dit is reg gespel.',
 'nouserspecified'            => "U moet 'n gebruikersnaam spesifiseer.",
+'login-userblocked'          => 'Hierdie gebruiker is geblokkeer.
+Intekening word verbied.',
 'wrongpassword'              => 'Ongeldige wagwoord, probeer weer.',
 'wrongpasswordempty'         => 'Die wagwoord was leeg. Probeer asseblief weer.',
 'passwordtooshort'           => 'Wagwoorde moet ten minste {{PLURAL:$1|1 karakter|$1 karakters}} lank wees.',
@@ -692,6 +694,7 @@ Om voort te gaan moet u 'n nuwe wagwoord hier kies:",
 'resetpass_forbidden'       => 'Wagwoorde kannie gewysig word nie.',
 'resetpass-no-info'         => 'U moet ingeteken wees om hierdie bladsy direk te kan gebruik.',
 'resetpass-submit-loggedin' => 'Verander wagwoord',
+'resetpass-submit-cancel'   => 'Kanselleer',
 'resetpass-wrong-oldpass'   => "Die huidige of tydelike wagwoord is ongeldig.
 U het moontlik reeds u wagwoord gewysig of 'n nuwe tydelike wagwoord aangevra.",
 'resetpass-temp-password'   => 'Tydelike wagwoord:',
@@ -769,9 +772,9 @@ Vermeld asseblief die bovermelde bloknommer as u die saak rapporteer,",
 'whitelistedittitle'               => 'U moet aangeteken wees om te kan redigeer.',
 'whitelistedittext'                => 'U moet $1 om bladsye te wysig.',
 'confirmedittext'                  => 'U moet u e-posadres bevestig voor u bladsye wysig. Verstel en bevestig asseblief u e-posadres by u [[Special:Preferences|voorkeure]].',
-'nosuchsectiontitle'               => 'Afdeling bestaan nie',
-'nosuchsectiontext'                => "U probeer 'n afdeling wysig wat nie bestaan nie.
-Omdat die afdeling $1 nie bestaan nie, kan u wysigings nie gestoor word nie.",
+'nosuchsectiontitle'               => 'Kan nie die afdeling vind nie',
+'nosuchsectiontext'                => "U het probeer om 'n afdeling wat nie bestaan nie te wysig.
+Dis was moontlik geskuif of verwyder terwyl u die bladsy gelees het.",
 'loginreqtitle'                    => 'Inteken Benodig',
 'loginreqlink'                     => 'teken in',
 'loginreqpagetext'                 => 'U moet $1 om ander bladsye te bekyk.',
@@ -785,13 +788,15 @@ Tik iets in die invoerboks hier onder om 'n nuwe bladsy te skep. Meer inligting 
 As u per ongeluk hier uitgekom het, gebruik u blaaier se '''terug'''-knoppie.",
 'anontalkpagetext'                 => "----''Hierdie is die besprekingsblad vir 'n anonieme gebruiker wat nog nie 'n rekening geskep het nie of wat dit nie gebruik nie. Daarom moet ons sy/haar numeriese IP-adres gebruik vir identifikasie. Só 'n adres kan deur verskeie gebruikers gedeel word. Indien u 'n anonieme gebruiker is wat voel dat ontoepaslike kommentaar teen u gerig is, [[Special:UserLogin/signup|skep 'n rekening]] of [[Special:UserLogin|teken in]] om verwarring met ander anonieme gebruikers te voorkom.''",
 'noarticletext'                    => 'Hierdie bladsy bevat geen teks nie.
-U kan [[Special:Search/{{PAGENAME}}|na hierdie bladsytitel in ander bladsye soek]],
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} die verwante logboeke deursoek],
+U kan [[Special:Search/{{PAGENAME}}|vir die bladsytitel in ander bladsye soek]],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} die verwante logboeke deursoek]
 of [{{fullurl:{{FULLPAGENAME}}|action=edit}} hierdie bladsy wysig]</span>.',
 'noarticletext-nopermission'       => 'Daar is tans geen teks in hierdie bladsy nie. U kan vir die bladsytitel [[Special:Search/{{PAGENAME}}|in ander bladsye soek]] of
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} die verwante logboeke deursoek]</span>.',
 'userpage-userdoesnotexist'        => 'U is besig om \'n gebruikersblad wat nie bestaan nie te wysig (gebruiker "$1"). Maak asseblief seker of u die bladsy wil skep/ wysig.',
 'userpage-userdoesnotexist-view'   => 'Die gebruiker "$1" is nie geregistreer nie.',
+'blocked-notice-logextract'        => 'Hierdie gebruiker is tans geblokkeer.
+Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
 'clearyourcache'                   => "'''Let wel''': Na die voorkeure gestoor is, moet u blaaier se kasgeheue verfris word om die veranderinge te sien: '''Mozilla:''' klik ''Reload'' (of ''Ctrl-R''), '''IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''.",
 'usercssyoucanpreview'             => "'''Wenk:''' Gebruik die \"Wys voorskou\"-knoppie om u nuwe CSS te toets voor u stoor.",
 'userjsyoucanpreview'              => "'''Wenk:''' Gebruik die \"Wys voorskou\"-knoppie om u nuwe JS te toets voor u stoor.",
@@ -844,16 +849,18 @@ Die bladsy kan nie gestoor word nie.'''",
 'readonlywarning'                  => "'''WAARSKUWING: Die databasis is gesluit vir onderhoud. Dus sal u nie nou u wysigings kan stoor nie. Dalk wil u die teks plak in 'n lêer en stoor vir later.'''
 
 Een administrateur het die databasis geblokkeer vir hierdie rede: $1",
-'protectedpagewarning'             => "'''WAARSKUWING: Hierdie blad is beskerm, en slegs administrateurs kan die inhoud verander.'''",
-'semiprotectedpagewarning'         => "'''Let wel:''' Hierdie artikel is beskerm sodat slegs ingetekende gebruikers dit kan wysig.",
+'protectedpagewarning'             => "'''WAARSKUWING: Hierdie bladsy is beveilig sodat slegs administrateurs die inhoud sal kan verander.''' Die nuutste logboekinskrywing word hieronder ter verwysing vertoon:",
+'semiprotectedpagewarning'         => "'''Let wel:''' Hierdie artikel is beveilig sodat slegs ingetekende gebruikers dit sal kan wysig. Die nuutste logboekinskrywing word hieronder ter verwysing vertoon:",
 'cascadeprotectedwarning'          => "'''Waarskuwing:''' Die bladsy was beveilig sodat dit slegs deur administrateurs gewysig kan word, omrede dit ingesluit is in die volgende {{PLURAL:$1|bladsy|bladsye}} wat kaskade-beskerming geniet:",
-'titleprotectedwarning'            => "'''WAARSKUWING: Die bladsy is gesluit sodat net gebruikers met [[Special:ListGroupRights|spesiale regte]] dit sal kan skep.'''",
+'titleprotectedwarning'            => "'''WAARSKUWING: Hierdie bladsy is beveilig. Slegs gebruikers met [[Special:ListGroupRights|spesiale regte]] sal dit kan skep.'''
+Die nuutste logboekinskrywing word hieronder ter verwysing vertoon:",
 'templatesused'                    => 'Hierdie bladsy {{PLURAL:$1|gebruik sjabloon|gebruik sjablone}}:',
 'templatesusedpreview'             => '{{PLURAL:$1|Sjabloon|Sjablone}} gebruik in hierdie voorskou:',
 'templatesusedsection'             => 'Die volgende {{PLURAL:$1|sjabloon|sjablone}} word in hierdie afdeling gebruik:',
 'template-protected'               => '(beskermd)',
 'template-semiprotected'           => '(half-beskerm)',
 'hiddencategories'                 => "Hierdie bladsy is 'n lid van {{PLURAL:$1|1 versteekte kategorie|$1 versteekte kategorië}}:",
+'edittools'                        => '<!-- Die teks hier sal onderaan wysiging- en oplaaivorms vertoon word. -->',
 'nocreatetitle'                    => 'Bladsy skepping beperk',
 'nocreatetext'                     => '{{SITENAME}} het die skep van nuwe bladsye beperk.
 U kan slegs bestaande bladsye wysig, of u kan [[Special:UserLogin|aanteken of registreer]].',
@@ -892,6 +899,7 @@ Hierdie parameters is uitgelaat.",
 'post-expand-template-argument-category'  => 'Bladsye met weggelate sjabloonargumente',
 'parser-template-loop-warning'            => "Sjablone is in 'n oneindige lus: [[$1]]",
 'parser-template-recursion-depth-warning' => 'Die rekursiediepte vir sjablone is oorskry ($1)',
+'language-converter-depth-warning'        => 'Die dieptelimiet vir die taalomskakelaar is oorskrei ($1)',
 
 # "Undo" feature
 'undo-success' => 'Die wysiging kan ongedaan gemaak word.
@@ -959,6 +967,7 @@ As administrateur kan u dit sien.
 Details kan moontlik in die [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} logboek van onderdrukte weergawes] gesien word.",
 'rev-deleted-no-diff'         => "U kan nie die verskille sien nie omdat een van die weergawes '''verwyder''' is.
 Details kan moontlik in die [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} skraplogboek] aanwesig wees.",
+'rev-suppressed-no-diff'      => "U kan nie hierdie verskil sien nie omdat een van die weergawes '''geskrap''' is.",
 'rev-deleted-unhide-diff'     => "Een van die weergawes vir hierdie verskil wat u aangevra het is '''verwyder'''.
 Meer details mag moontlik in die [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} verwyderingslogboek] aanwesig wees.
 As administrateur kan u steeds [$1 die verskille sien] as u wil voortgaan.",
@@ -1182,7 +1191,7 @@ U kan ook 'n naamruimte as voorvoegsel gebruik.",
 'prefs-misc'                    => 'Allerlei',
 'prefs-resetpass'               => 'Verander wagwoord',
 'prefs-email'                   => 'E-posopsies',
-'prefs-rendering'               => 'Uiterlik',
+'prefs-rendering'               => 'Voorkoms',
 'saveprefs'                     => 'Stoor voorkeure',
 'resetprefs'                    => 'Herstel voorkeure',
 'restoreprefs'                  => 'Herstel voorkeure',
@@ -1270,25 +1279,26 @@ U kan ook besluit om e-pos te ontvang as ander gebruikers u gebruikers- of bespr
 'prefs-diffs'                   => 'Verskille',
 
 # User rights
-'userrights'                  => 'Bestuur gebruikersregte',
-'userrights-lookup-user'      => 'Beheer gebruikersgroepe',
-'userrights-user-editname'    => 'Voer gebruikersnaam in:',
-'editusergroup'               => 'Wysig gebruikersgroepe',
-'editinguser'                 => "Besig om gebruikersregte van gebruiker '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) te wysig",
-'userrights-editusergroup'    => 'wysig gebruikersgroepe',
-'saveusergroups'              => 'Stoor gebruikersgroepe',
-'userrights-groupsmember'     => 'Lid van:',
-'userrights-groups-help'      => "U kan die groepe waarvan die gebruiker 'n lid is verander. 
+'userrights'                   => 'Bestuur gebruikersregte',
+'userrights-lookup-user'       => 'Beheer gebruikersgroepe',
+'userrights-user-editname'     => 'Voer gebruikersnaam in:',
+'editusergroup'                => 'Wysig gebruikersgroepe',
+'editinguser'                  => "Besig om gebruikersregte van gebruiker '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) te wysig",
+'userrights-editusergroup'     => 'wysig gebruikersgroepe',
+'saveusergroups'               => 'Stoor gebruikersgroepe',
+'userrights-groupsmember'      => 'Lid van:',
+'userrights-groupsmember-auto' => 'Implisiete lid van:',
+'userrights-groups-help'       => "U kan die groepe waarvan die gebruiker 'n lid is verander. 
 * 'n Geselekteerde boks beteken dat die gebruiker lid is van die groep.
 * 'n Ongeselekteerde boks beteken dat die gebruiker nie 'n lid van die groep is nie.
 * 'n Ster (*) beteken dat u nie die gebruiker uit 'n groep kan verwyder as hy eers daaraan behoort nie, of vice versa.",
-'userrights-reason'           => 'Rede:',
-'userrights-no-interwiki'     => 'U het nie toestemming om gebruikersregte op ander wikis te verander nie.',
-'userrights-nodatabase'       => 'Databasis $1 bestaan nie of is nie hier beskikbaar nie.',
-'userrights-nologin'          => "U moet [[Special:UserLogin|aanteken]] as 'n administrateur om gebruikersregte te mag toeken.",
-'userrights-notallowed'       => 'U het nie die toestemming om gebruikersregte toe te ken nie.',
-'userrights-changeable-col'   => 'Groepe wat u kan verander',
-'userrights-unchangeable-col' => 'Groepe wat u nie kan verander nie',
+'userrights-reason'            => 'Rede:',
+'userrights-no-interwiki'      => 'U het nie toestemming om gebruikersregte op ander wikis te verander nie.',
+'userrights-nodatabase'        => 'Databasis $1 bestaan nie of is nie hier beskikbaar nie.',
+'userrights-nologin'           => "U moet [[Special:UserLogin|aanteken]] as 'n administrateur om gebruikersregte te mag toeken.",
+'userrights-notallowed'        => 'U het nie die toestemming om gebruikersregte toe te ken nie.',
+'userrights-changeable-col'    => 'Groepe wat u kan verander',
+'userrights-unchangeable-col'  => 'Groepe wat u nie kan verander nie',
 
 # Groups
 'group'               => 'Groep:',
@@ -1512,6 +1522,7 @@ Om die lêer in 'n artikel te gebruik, plaas 'n skakel in een van die volgende f
 'minlength1'                  => 'Prentname moet ten minste een letter lank wees.',
 'illegalfilename'             => 'Die lêernaam "$1" bevat karakters wat nie toegelaat word in bladsytitels nie. Verander asseblief die naam en probeer die lêer weer laai.',
 'badfilename'                 => 'Prentnaam is verander na "$1".',
+'filetype-mime-mismatch'      => 'Lêer-uitbreiding stem nie met die MIME-tipe ooreen nie.',
 'filetype-badmime'            => 'Lêers met MIME-tipe "$1" word nie toegelaat nie.',
 'filetype-bad-ie-mime'        => 'Die lêer kan nie opgelaai word nie omdat Internet Explorer dit sal identifiseer as "$1", \'n nie toegelate lêertipe wat moontlik skadelik is.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' is 'n ongewenste lêertipe. 
@@ -1561,7 +1572,6 @@ Dit word aanbeveel dat u die lêer se skrapgeskiedenis besigtig voor u poog om d
 'php-uploaddisabledtext'      => 'Die oplaai van lêers is in PHP afgeskakel.
 Kyk na die "file_uploads"-instelling.',
 'uploadscripted'              => "Hierdie lêer bevat HTML- en scriptkode wat verkeerdelik deur 'n webblaaier geïnterpreteer kan word.",
-'uploadcorrupt'               => "Die lêer is foutief of is van 'n verkeerde tipe. Gaan asseblief die lêer na en laai weer op.",
 'uploadvirus'                 => "Hierdie lêer bevat 'n virus! Inligting: $1",
 'upload-source'               => 'Bronlêer',
 'sourcefilename'              => 'Bronlêernaam:',
@@ -1610,6 +1620,16 @@ Slegs toegang tot lêers word toegelaat.',
 Hierdie wiki is opgestel as 'n publieke wiki.
 Vir veiligheidsredes is img_auth.php gedeaktiveer.",
 'img-auth-noread'       => 'Gebruiker het nie toegang om "$1" te lees nie.',
+
+# HTTP errors
+'http-invalid-url'      => 'Ongeldige URL: $1',
+'http-invalid-scheme'   => 'URL\'s met die "$1"-skema word nie ondersteun nie',
+'http-request-error'    => "'n Onbekende fout het tydens die stuur van die versoek voorgekom.",
+'http-read-error'       => 'Fout met die lees van HTTP.',
+'http-timed-out'        => 'HTTP-versoek se tyd is verstreke.',
+'http-curl-error'       => 'Fout met die ophaal van URL: $1',
+'http-host-unreachable' => 'Die URL is nie bereikbaar nie.',
+'http-bad-status'       => "Daar was 'n probleem tydens die HTTP-versoek: $1 $2",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Kon nie die URL bereik nie',
@@ -1976,7 +1996,7 @@ Daar kan [[{{MediaWiki:Listgrouprights-helppage}}|extra inligting]] oor individu
 'watchnologintext'     => 'U moet [[Special:UserLogin|ingeteken]]
 wees om u dophoulys te verander.',
 'addedwatch'           => 'Bygevoeg tot dophoulys',
-'addedwatchtext'       => "Die bladsy \"\$1\" is by u [[Special:Watchlist|dophoulys]] gevoeg. Toekomstige veranderinge aan hierdie bladsy en sy verwante besprekingsblad sal daar verskyn en die bladsy sal in '''vetdruk''' verskyn in die [[Special:RecentChanges|lys van onlangse wysigings]], sodat u dit makliker kan raaksien.
+'addedwatchtext'       => "Die bladsy \"[[:\$1]]\" is by u [[Special:Watchlist|dophoulys]] bygevoeg. Toekomstige wysigings aan hierdie bladsy en sy verwante besprekingsblad sal op [[Special:Watchlist|u dophoulys]] gelys word en sal in '''vetdruk''' in die [[Special:RecentChanges|lys van onlangse wysigings]] vertoon word, sodat u dit makliker kan raaksien.
 
 As u die bladsy later van u dophoulys wil verwyder, kliek \"verwyder van dophoulys\" in die kieslys bo-aan die bladsy.",
 'removedwatch'         => 'Afgehaal van dophoulys',
@@ -2028,11 +2048,14 @@ Wiki: $PAGEEDITOR_WIKI
 Tensy u hierdie bladsy besoek, sal u geen verdere kennisgewings ontvang nie.
 U kan ook die waarskuwingsvlag op u dophoulys verstel.
 
-             Groete van die {{SITENAME}} waarskuwingssisteem.
+             Groete van {{SITENAME}} se waarskuwingssisteem.
 
 --
 U kan u dophoulys wysig by:
 {{fullurl:{{#special:Watchlist}}/edit}}
+
+Om die bladsy vanaf u dophoulys te verwyder, besoek:
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
 
 Terugvoer en verdere bystand:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2156,7 +2179,7 @@ Hier is die huidige verstellings vir bladsy '''$1''':",
 # Undelete
 'undelete'                     => 'Besigtig geskrapte bladsye',
 'undeletepage'                 => 'Bekyk en herstel geskrapte bladsye',
-'undeletepagetitle'            => "'''Hier onder is die verwyderde bydraes van [[:$1]]'''.",
+'undeletepagetitle'            => "'''Hier onder is die verwyderde weergawes van [[:$1]]'''.",
 'viewdeletedpage'              => 'Bekyk geskrapte bladsye',
 'undeletepagetext'             => 'Die volgende {{PLURAL:$1|bladsy|$1 bladsye}} is geskrap, maar is nog in die argief en kan teruggeplaas word. Die argief van geskrapte blaaie kan periodiek skoongemaak word.',
 'undelete-fieldset-title'      => 'Weergawes terugplaas',
@@ -2311,7 +2334,7 @@ Sien die [[Special:IPBlockList|IP-bloklys]] vir 'n oorsig van blokkerings.",
 'ipblocklist-localblock'          => 'Lokale blokkade',
 'ipblocklist-otherblocks'         => 'Ander {{PLURAL:$1|blokkade|blokkades}}',
 'blocklistline'                   => '$1, $2 het $3 geblok ($4)',
-'infiniteblock'                   => 'is onbeperk',
+'infiniteblock'                   => 'vir altyd',
 'expiringblock'                   => 'verval op $1 om $2',
 'anononlyblock'                   => 'anoniem-alleen',
 'noautoblockblock'                => 'autoblok afgeskakel',
@@ -2356,6 +2379,7 @@ Die blokkade is moontlik reeds opgehef.',
 'ipb_blocked_as_range'            => "Fout: die IP-adres $1 is nie direk geblokkeer nie en die blokkade kan nie opgehef word nie.
 Die blokkade is 'n onderdeel van die reeks $2, waarvan die blokkade wel opgehef kan word.",
 'ip_range_invalid'                => 'Ongeldige IP waardegebied.',
+'ip_range_toolarge'               => 'Reeks-blokkades groter as /$1 word nie toegelaat nie.',
 'blockme'                         => 'Versper my',
 'proxyblocker'                    => 'Proxyblokker',
 'proxyblocker-disabled'           => 'Die funksie is gedeaktiveer.',
@@ -2408,6 +2432,8 @@ maak asseblief seker dat u die gevolge van hierdie aksie verstaan voordat u voor
 
 Indien wel sal u self die blad moet skuif of versmelt (indien nodig).",
 'movearticle'                  => 'Skuif bladsy',
+'moveuserpage-warning'         => "'''Waarskuwing:''' U gaan 'n gebruikersblad skuif.
+Let daarop dat slegs die bladsy geskuif sal word. Die gebruiker self sal ''nie'' hernoem word ''nie''.",
 'movenologin'                  => 'Nie ingeteken nie',
 'movenologintext'              => "U moet 'n geregistreerde gebruiker wees en [[Special:UserLogin|ingeteken]]
 wees om 'n bladsy te skuif.",
@@ -2461,8 +2487,8 @@ Die teikenartikel "[[:$1]]" bestaan reeds. Wil u dit skrap om plek te maak vir d
 'imageinvalidfilename'         => 'Die nuwe lêernaam is ongeldig',
 'fix-double-redirects'         => 'Opdateer alle aansture wat na die oorspronklike titel wys',
 'move-leave-redirect'          => "Los 'n aanstuur agter",
-'protectedpagemovewarning'     => "'''Waarskuwing:''' Hierdie bladsy kan slegs deur administrateurs geskuif word.",
-'semiprotectedpagemovewarning' => "'''Let op:''' Hierdie bladsy kan slegs deur geregistreerde gebruikers geskuif word.",
+'protectedpagemovewarning'     => "'''Waarskuwing:''' Hierdie bladsy kan slegs deur administrateurs geskuif word. Die nuutste logboekinskrywing word hieronder ter verwysing vertoon:",
+'semiprotectedpagemovewarning' => "'''Let wel:''' Hierdie bladsy kan slegs deur geregistreerde gebruikers geskuif word. Die nuutste logboekinskrywing word hieronder ter verwysing vertoon:",
 'move-over-sharedrepo'         => "== Die lêer bestaan reeds ==
 [[:$1]] bestaan al reeds in 'n gedeelde mediabank.
 As u 'n lêer na die naam skuif, sal die lêer in die gedeelde mediabank nie meer gebruik word nie.",
@@ -2699,7 +2725,7 @@ stel asseblief op volgens die beskrywing in math/README.',
 'markaspatrolleddiff'                 => 'Merk as gekontroleerd',
 'markaspatrolledtext'                 => 'Merk hierdie bladsy as gekontroleerd',
 'markedaspatrolled'                   => 'As gekontroleerd gemerk',
-'markedaspatrolledtext'               => 'Die gekose weergawe is as gekontroleerd gemerk.',
+'markedaspatrolledtext'               => 'Die gekose weergawe van [[:$1]] is as gekontroleerd gemerk.',
 'rcpatroldisabled'                    => 'Onlangse Wysigingskontrolering buiten staat gestel',
 'rcpatroldisabledtext'                => 'Die Onlangse Wysigingskontroleringsfunksie is tans buiten staat gestel.',
 'markedaspatrollederror'              => 'Kan nie as gekontroleerd merk nie',
@@ -2779,7 +2805,7 @@ Ander velde sal versteek wees.
 * focallength',
 
 # EXIF tags
-'exif-imagewidth'                  => 'Wydte',
+'exif-imagewidth'                  => 'Breedte',
 'exif-imagelength'                 => 'Hoogte',
 'exif-bitspersample'               => 'Grepe per komponent',
 'exif-compression'                 => 'Kompressiemetode',

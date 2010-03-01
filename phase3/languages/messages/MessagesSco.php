@@ -189,9 +189,6 @@ $messages = array(
 'actions'                    => 'Actions',
 'namespaces'                 => 'Namespaces',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Return tae $1.',
 'tagline'           => 'Frae {{SITENAME}}',
@@ -548,7 +545,7 @@ Yer block ID is $5. Please include this ID in ony argies ye mak.',
 'whitelistedittext'                => 'Ye hae tae $1 tae edit pages.',
 'confirmedittext'                  => 'Ye maun confirm yer e-mail address afore editin pages. Please set an validate yer e-mail address throu yer [[Special:Preferences|uiser settins]].',
 'nosuchsectiontitle'               => 'There isnae a section wi that teetle',
-'nosuchsectiontext'                => "Yer tryin tae edit a section that isnae there.  Acause there isnae a section $1, there's naegate to sauf yer edit.",
+'nosuchsectiontext'                => 'Yer tryin tae edit a section that isnae there.',
 'loginreqtitle'                    => 'Login Requirit!',
 'loginreqlink'                     => 'log in',
 'loginreqpagetext'                 => 'Ye maun $1 tae view ither pages.',
@@ -831,7 +828,6 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'uploadedimage'               => 'uplaidit "$1"',
 'uploaddisabled'              => 'Sorry, uplaidin is disabled.',
 'uploadscripted'              => 'This file hauds HTML or script code that micht be wrang interpretit bi a wab brouser.',
-'uploadcorrupt'               => 'The file is corrupt or haes a wrang extension. Please check the file an uplaid again.',
 'uploadvirus'                 => 'The file hauds a virus! Details: $1',
 'sourcefilename'              => 'Soorce filename:',
 

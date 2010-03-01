@@ -227,6 +227,43 @@ class FSRepo extends FileRepo {
 		return $status;
 	}
 
+	function append( $srcPath, $toAppendPath, $flags = 0 ) {
+		$status = $this->newGood();
+
+		// Resolve the virtual URL
+		if ( self::isVirtualUrl( $srcPath ) ) {
+			$srcPath = $this->resolveVirtualUrl( $srcPath );
+		}
+		// Make sure the files are there
+		if ( !is_file( $srcPath ) )
+			$status->fatal( 'filenotfound', $srcPath );
+
+		if ( !is_file( $toAppendPath ) )
+			$status->fatal( 'filenotfound', $toAppendPath );
+
+		if ( !$status->isOk() ) return $status;
+
+		// Do the append
+		$chunk = file_get_contents( $toAppendPath );
+		if( $chunk === false ) {
+			$status->fatal( 'fileappenderrorread', $toAppendPath );
+		}
+
+		if( $status->isOk() ) {
+			if ( file_put_contents( $srcPath, $chunk, FILE_APPEND ) ) {
+				$status->value = $srcPath;
+			} else {
+				$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
+			}
+		}
+
+		if ( $flags & self::DELETE_SOURCE ) {
+			unlink( $toAppendPath );
+		}
+
+		return $status;
+	}
+
 	/**
 	 * Checks existence of specified array of files.
 	 *
@@ -575,7 +612,7 @@ class FSRepo extends FileRepo {
 		}
 		return strtr( $param, $this->simpleCleanPairs );
 	}
-	
+
 	/**
 	 * Chmod a file, supressing the warnings.
 	 * @param String $path The path to change

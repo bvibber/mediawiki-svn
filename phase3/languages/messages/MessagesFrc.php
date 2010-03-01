@@ -148,9 +148,6 @@ $messages = array(
 'faq'            => 'Questions Communes',
 'faqpage'        => 'Project:Questions Communes',
 
-# Metadata in edit box
-'metadata_help' => 'Meta-information:',
-
 'errorpagetitle'    => 'Erreur',
 'returnto'          => 'Retourner back à la page $1.',
 'tagline'           => 'Un article de {{SITENAME}}',
@@ -454,7 +451,7 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 'whitelistedittext'          => 'Il faut $1 pour faire des changements.',
 'confirmedittext'            => "Il faut confirmer votre adresse e-mail pour faire des changements.  Mettez et confirmez un adresse e-mail dans votre [[Special:Preferences|réglage de compte]], s'il vous plaît.",
 'nosuchsectiontitle'         => 'Aucune section pareille',
-'nosuchsectiontext'          => "Vous avez assayé de faire des changements dans une section qu'existe pas.  Le système peut pas sauver des changements dans une section qu'existe pas.",
+'nosuchsectiontext'          => "Vous avez assayé de faire des changements dans une section qu'existe pas.",
 'loginreqtitle'              => 'Il faut connecter.',
 'loginreqlink'               => 'connecter',
 'loginreqpagetext'           => 'Il faut $1 pour voir des autres pages.',

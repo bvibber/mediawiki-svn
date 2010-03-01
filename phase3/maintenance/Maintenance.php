@@ -98,6 +98,7 @@ abstract class Maintenance {
 	 */
 	public function __construct() {
 		$this->addDefaultParams();
+		register_shutdown_function( array( $this, 'outputChanneled' ), false );
 	}
 
 	/**
@@ -214,14 +215,14 @@ abstract class Maintenance {
 	 * Throw some output to the user. Scripts can call this with no fears,
 	 * as we handle all --quiet stuff here
 	 * @param $out String The text to show to the user
+	 * @param $channel Mixed Unique identifier for the channel. See function outputChanneled.
 	 */
-	protected function output( $out ) {
+	protected function output( $out, $channel = null ) {
 		if( $this->mQuiet ) {
 			return;
 		}
-		$f = fopen( 'php://stdout', 'w' );
-		fwrite( $f, $out );
-		fclose( $f );
+		$out = preg_replace( '/\n\z/', '', $out );
+		$this->outputChanneled( $out, $channel );
 	}
 
 	/**
@@ -231,6 +232,7 @@ abstract class Maintenance {
 	 * @param $die boolean If true, go ahead and die out.
 	 */
 	protected function error( $err, $die = false ) {
+		$this->outputChanneled( false );
 		if ( php_sapi_name() == 'cli' ) {
 			fwrite( STDERR, $err . "\n" );
 		} else {
@@ -239,6 +241,45 @@ abstract class Maintenance {
 			fclose( $f );
 		}
 		if( $die ) die();
+	}
+
+	private $atLineStart = true;
+	private $lastChannel = null;
+	
+	/**
+	 * Message outputter with channeled message support. Messages on the
+	 * same channel are concatenated, but any intervening messages in another
+	 * channel start a new line.
+	 * @param $msg String The message without trailing newline
+	 * @param $channel Channel identifier or null for no channel. Channel comparison uses ===.
+	 */
+	public function outputChanneled( $msg, $channel = null ) {
+		$handle = fopen( 'php://stdout', 'w' ); 
+
+		if ( $msg === false ) {
+			// For cleanup
+			if ( !$this->atLineStart ) fwrite( $handle, "\n" );
+			fclose( $handle );
+			return;
+		}
+
+		// End the current line if necessary
+		if ( !$this->atLineStart && $channel !== $this->lastChannel ) {
+			fwrite( $handle, "\n" );
+		}
+
+		fwrite( $handle, $msg );
+
+		$this->atLineStart = false;
+		if ( $channel === null ) {
+			// For unchanneled messages, output trailing newline immediately
+			fwrite( $handle, "\n" );
+			$this->atLineStart = true;
+		}
+		$this->lastChannel = $channel;
+
+		// Cleanup handle
+		fclose( $handle );
 	}
 
 	/**
@@ -315,7 +356,7 @@ abstract class Maintenance {
 	 * Do some sanity checking and basic setup
 	 */
 	public function setup() {
-		global $IP, $wgCommandLineMode, $wgUseNormalUser, $wgRequestTime;
+		global $IP, $wgCommandLineMode, $wgRequestTime;
 
 		# Abort if called from a web server
 		if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
@@ -365,15 +406,11 @@ abstract class Maintenance {
 		# Turn off output buffering if it's on
 		@ob_end_flush();
 
-		if ( !isset( $wgUseNormalUser ) ) {
-			$wgUseNormalUser = false;
-		}
-
 		$this->loadParamsAndArgs();
 		$this->maybeHelp();
 		$this->validateParamsAndArgs();
 	}
-	
+
 	/**
 	 * Normally we disable the memory_limit when running admin scripts.
 	 * Some scripts may wish to actually set a limit, however, to avoid
@@ -531,22 +568,23 @@ abstract class Maintenance {
 		ksort( $this->mParams );
 		if( $this->hasOption( 'help' ) || $force ) {
 			$this->mQuiet = false;
+
 			if( $this->mDescription ) {
 				$this->output( "\n" . $this->mDescription . "\n" );
 			}
-			$this->output( "\nUsage: php " . $this->mSelf );
+			$output = "\nUsage: php " . $this->mSelf;
 			if( $this->mParams ) {
-				$this->output( " [--" . implode( array_keys( $this->mParams ), "|--" ) . "]" );
+				$output .= " [--" . implode( array_keys( $this->mParams ), "|--" ) . "]";
 			}
 			if( $this->mArgList ) {
-				$this->output( " <" );
+				$output .= " <";
 				foreach( $this->mArgList as $k => $arg ) {
-					$this->output( $arg['name'] . ">" );
+					$output .= $arg['name'] . ">";
 					if( $k < count( $this->mArgList ) - 1 )
-						$this->output( " <" );
+						$output .= " <";
 				}
 			}
-			$this->output( "\n" );
+			$this->output( "$output\n" );
 			foreach( $this->mParams as $par => $info ) {
 				$this->output( "\t$par : " . $info['desc'] . "\n" );
 			}
@@ -561,7 +599,7 @@ abstract class Maintenance {
 	 * Handle some last-minute setup here.
 	 */
 	public function finalSetup() {
-		global $wgCommandLineMode, $wgUseNormalUser, $wgShowSQLErrors;
+		global $wgCommandLineMode, $wgShowSQLErrors;
 		global $wgTitle, $wgProfiling, $IP, $wgDBadminuser, $wgDBadminpassword;
 		global $wgDBuser, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
 
@@ -578,7 +616,7 @@ abstract class Maintenance {
 		if( $this->mDbPass )
 			$wgDBadminpassword = $this->mDbPass;
 
-		if ( empty( $wgUseNormalUser ) && isset( $wgDBadminuser ) ) {
+		if ( $this->getDbType() == self::DB_ADMIN && isset( $wgDBadminuser ) ) {
 			$wgDBuser = $wgDBadminuser;
 			$wgDBpassword = $wgDBadminpassword;
 

@@ -243,9 +243,6 @@ $messages = array(
 'vector-view-edit'      => 'Liwatón',
 'vector-view-view'      => 'Basáhon',
 
-# Metadata in edit box
-'metadata_help' => 'Mga Metadatos:',
-
 'errorpagetitle'    => 'Salâ',
 'returnto'          => 'Magbwelta sa $1.',
 'tagline'           => 'Halì sa {{SITENAME}}',
@@ -593,7 +590,7 @@ Giromdomon tabî na pwede mo sanang gamiton an \"''e''-suratan ining parágamit\
 'whitelistedittext'          => 'Kaipuhan mong $1 tangarig makahirá nin mga páhina.',
 'confirmedittext'            => "Kaipuhan mong kompirmaron an saimong ''e''-surat. Ipwesto tabî asin patunayan an saimong ''e''-surat sa [[Special:Preferences|mga kabôtan kan parágamit]].",
 'nosuchsectiontitle'         => 'Mayong siring na seksyón',
-'nosuchsectiontext'          => 'Mayo man an seksyón an pighihira mo. Nin huli ta mayô nin seksyón na $1, mayong lugar na pwedeng tagamahan kan hirá mo.',
+'nosuchsectiontext'          => 'Mayo man an seksyón an pighihira mo.',
 'loginreqtitle'              => 'Kaipuhan Maglaog',
 'loginreqlink'               => 'maglaog',
 'loginreqpagetext'           => 'Kaipuhan kang $1 tangarig makahilíng nin ibang pahina.',
@@ -980,7 +977,6 @@ Kun igwa ka nin ladawan na may resolusyón na maximo ikarga tabî ini, kun dai, 
 'uploaddisabled'              => 'Pigpopondó an mga pagkargá',
 'uploaddisabledtext'          => "Pigpopogolan an pagkarga nin mga ''file'' o sa ining wiki.",
 'uploadscripted'              => "Ining ''file'' igwang HTML o kodang eskritura na pwede ser na salang mainterpretar kan ''browser''.",
-'uploadcorrupt'               => "Raot ining ''file'' o igwang ekstensyón na salâ. Sosogon tabî an ''file'' asin ikarga giraray.",
 'uploadvirus'                 => "May virus an ''file''! Mga detalye: $1",
 'sourcefilename'              => 'Ginikanan kan pangaran kan dokumento',
 'destfilename'                => "''Filename'' kan destinasyón",

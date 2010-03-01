@@ -488,9 +488,6 @@ $messages = array(
 'namespaces'                 => 'Èspâços de noms',
 'variants'                   => 'Variantes',
 
-# Metadata in edit box
-'metadata_help' => 'Mètabalyês :',
-
 'errorpagetitle'    => 'Èrror',
 'returnto'          => 'Tornar a la pâge $1.',
 'tagline'           => 'De {{SITENAME}}.',
@@ -723,6 +720,7 @@ Oubliâd pas de pèrsonalisar voutres [[Special:Preferences|prèferences dessus 
 'nav-login-createaccount'    => 'Fâre un compto ou sè branchiér',
 'loginprompt'                => "Vos dête activar los tèmouens (''cookies'') por vos branchiér a {{SITENAME}}.",
 'userlogin'                  => 'Fâre un compto ou sè branchiér',
+'userloginnocreate'          => 'Sè branchiér',
 'logout'                     => 'Sè dèbranchiér',
 'userlogout'                 => 'Dèbranchement',
 'notloggedin'                => 'Pas branchiê',
@@ -751,6 +749,7 @@ Controlâd l’ortografia, ou ben [[Special:UserLogin/signup|féte un compto nov
 'nosuchusershort'            => 'Y at gins de contributor avouéc lo nom « <nowiki>$1</nowiki> ».
 Volyéd controlar l’ortografia.',
 'nouserspecified'            => 'Vos dête buchiér un nom d’utilisator.',
+'login-userblocked'          => 'Ceti utilisator est blocâ. Branchement pas ôtorisâ.',
 'wrongpassword'              => 'Lo mot de pâssa est fôx.
 Volyéd tornar èprovar.',
 'wrongpasswordempty'         => 'Vos éd pas buchiê de mot de pâssa.
@@ -894,9 +893,9 @@ Volyéd spècefiar cetes endicacions dens totes les requétes que vos faréd.",
 'whitelistedittext'                => 'Vos dête étre $1 por avêr la pèrmission de changiér lo contegnu.',
 'confirmedittext'                  => 'Vos dête confirmar voutra adrèce èlèctronica devant que changiér les pâges.
 Volyéd buchiér et pués validar voutra adrèce èlèctronica dens voutres [[Special:Preferences|prèferences]].',
-'nosuchsectiontitle'               => 'Sèccion manquenta',
+'nosuchsectiontitle'               => 'Empossiblo de trovar la sèccion',
 'nosuchsectiontext'                => 'Vos éd tâchiê de changiér una sèccion qu’ègziste pas.
-Puésqu’y at gins de sèccion $1, y at gins d’endrêt yô que sôvar voutros changements.',
+El at pôt-étre étâ dèplaciê ou ben suprimâ dês que vos éd liesu cela pâge.',
 'loginreqtitle'                    => 'Branchement nècèssèro',
 'loginreqlink'                     => 'branchiér',
 'loginreqpagetext'                 => 'Vos vos dête $1 por vêre les ôtres pâges.',
@@ -984,11 +983,14 @@ Lo tèxto pôt pas étre sôvâ.",
 Vos pouede copiyér lo tèxto dens un fichiér tèxto et pués lo sôvar por ples târd.
 
 L’administrator qu’at vèrrolyê la bâsa de balyês at balyê ceta èxplicacion : $1",
-'protectedpagewarning'             => "'''ATENCION : ceta pâge at étâ protègiê de façon que solament los utilisators qu’ont lo statut d’administrator la pouessont changiér.'''",
-'semiprotectedpagewarning'         => "'''Nota :''' ceta pâge at étâ protègiê de façon que solament los utilisators encartâs la pouessont changiér.",
+'protectedpagewarning'             => "'''ATENCION : ceta pâge at étâ protègiê de façon que solament los utilisators qu’ont lo statut d’administrator la pouessont changiér.'''
+La dèrriére entrâ du jornal est montrâ ce-desot coment refèrence :",
+'semiprotectedpagewarning'         => "'''Nota :''' ceta pâge at étâ protègiê de façon que solament los utilisators encartâs la pouessont changiér.
+La dèrriére entrâ du jornal est montrâ ce-desot coment refèrence :",
 'cascadeprotectedwarning'          => "'''ATENCION :''' ceta pâge at étâ protègiê de façon que solament los utilisators qu’ont lo statut d’administrator la pouessont changiér.
 Cela protèccion at étâ fêta perce que ceta pâge est encllua dens {{PLURAL:$1|ceta pâge protègiê|cetes pâges protègiês}} avouéc la « protèccion en cascâda » activâ :",
-'titleprotectedwarning'            => "'''ATENCION : ceta pâge at étâ protègiê de façon que des [[Special:ListGroupRights|drêts spèceficos]] sont nècèssèros por la povêr fâre.'''",
+'titleprotectedwarning'            => "'''ATENCION : ceta pâge at étâ protègiê de façon que des [[Special:ListGroupRights|drêts spèceficos]] sont nècèssèros por la povêr fâre.'''
+La dèrriére entrâ du jornal est montrâ ce-desot coment refèrence :",
 'templatesused'                    => '{{PLURAL:$1|Modèlo utilisâ|Modèlos utilisâs}} per ceta pâge :',
 'templatesusedpreview'             => '{{PLURAL:$1|Modèlo utilisâ|Modèlos utilisâs}} dens ceta prèvisualisacion :',
 'templatesusedsection'             => '{{PLURAL:$1|Modèlo utilisâ|Modèlos utilisâs}} dens ceta sèccion :',
@@ -1034,6 +1036,7 @@ Aprés èxtension, ceti arêt balyê un rèsultat trop long, il at vêr pas ét�
 'post-expand-template-argument-category'  => 'Pâges que contegnont u muens yon paramètre de modèlo pas encllu',
 'parser-template-loop-warning'            => 'Modèlo en boclla dècelâ : [[$1]]',
 'parser-template-recursion-depth-warning' => 'Limita de provondior des apèls de modèlos dèpassâ ($1)',
+'language-converter-depth-warning'        => 'Limita de provondior du convèrtissor de lengoua dèpassâ ($1)',
 
 # "Undo" feature
 'undo-success' => 'Ceti changement vôt étre dèfêt.
@@ -1099,6 +1102,7 @@ Coment administrator, vos la pouede vêre ; y pôt avêr més de dètalys dens l
 Coment administrator, vos la pouede vêre ; y pôt avêr més de dètalys dens lo [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} jornal de les suprèssions].",
 'rev-deleted-no-diff'         => "Vos pouede pas vêre ceti dif perce que yona de les vèrsions at étâ '''suprimâ'''.
 Y pôt avêr més de dètalys dens lo [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} jornal de les suprèssions].",
+'rev-suppressed-no-diff'      => "Vos pouede pas vêre ceta difèrence perce que yona de les vèrsions at étâ '''suprimâ'''.",
 'rev-deleted-unhide-diff'     => "Yona de les vèrsions de ceti dif at étâ '''suprimâ'''.
 Y pôt avêr més de dètalys dens lo [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} jornal de les suprèssions].
 Coment administrator, vos pouede adés [$1 vêre cél dif] se vos lo voléd.",
@@ -1414,25 +1418,26 @@ Vos pouede asse-ben dècidar de lèssiér los ôtros sè veriér vers vos avoué
 'prefs-diffs'                   => 'Difèrences',
 
 # User rights
-'userrights'                  => 'Administracion des drêts d’utilisator',
-'userrights-lookup-user'      => 'Administracion a les tropes d’utilisators',
-'userrights-user-editname'    => 'Buchiéd un nom d’utilisator :',
-'editusergroup'               => 'Changiér les tropes a l’utilisator',
-'editinguser'                 => "Changement des drêts d’utilisator a '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Changement a les tropes a l’utilisator',
-'saveusergroups'              => 'Sôvar les tropes a l’utilisator',
-'userrights-groupsmember'     => 'Membro de :',
-'userrights-groups-help'      => 'Vos pouede changiér les tropes a lesquintes apartint ceti utilisator.
+'userrights'                   => 'Administracion des drêts d’utilisator',
+'userrights-lookup-user'       => 'Administracion a les tropes d’utilisators',
+'userrights-user-editname'     => 'Buchiéd un nom d’utilisator :',
+'editusergroup'                => 'Changiér les tropes a l’utilisator',
+'editinguser'                  => "Changement des drêts d’utilisator a '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Changement a les tropes a l’utilisator',
+'saveusergroups'               => 'Sôvar les tropes a l’utilisator',
+'userrights-groupsmember'      => 'Membro de :',
+'userrights-groupsmember-auto' => 'Membro emplicito de :',
+'userrights-groups-help'       => 'Vos pouede changiér les tropes a lesquintes apartint ceti utilisator.
 * Una câsa pouentâ vôt dére que l’utilisator sè trove dens cela tropa.
 * Una câsa pas pouentâ vôt dére qu’y sè trove pas.
 * Una ètêla (*) endique que vos porréd pas enlevar cela tropa setout que vos l’aréd apondua et l’un l’ôtro.',
-'userrights-reason'           => 'Rêson :',
-'userrights-no-interwiki'     => 'Vos avéd pas la pèrmission de changiér des drêts d’utilisator dessus d’ôtros vouiquis.',
-'userrights-nodatabase'       => 'La bâsa de balyês « $1 » ègziste pas ou ben el est pas locala.',
-'userrights-nologin'          => 'Vos vos dête [[Special:UserLogin|branchiér]] avouéc un compto d’administrator por balyér des drêts d’utilisator.',
-'userrights-notallowed'       => 'Voutron compto at pas la pèrmission de balyér des drêts d’utilisator.',
-'userrights-changeable-col'   => 'Les tropes que vos pouede changiér',
-'userrights-unchangeable-col' => 'Les tropes que vos pouede pas changiér',
+'userrights-reason'            => 'Rêson :',
+'userrights-no-interwiki'      => 'Vos avéd pas la pèrmission de changiér des drêts d’utilisator dessus d’ôtros vouiquis.',
+'userrights-nodatabase'        => 'La bâsa de balyês « $1 » ègziste pas ou ben el est pas locala.',
+'userrights-nologin'           => 'Vos vos dête [[Special:UserLogin|branchiér]] avouéc un compto d’administrator por balyér des drêts d’utilisator.',
+'userrights-notallowed'        => 'Voutron compto at pas la pèrmission de balyér des drêts d’utilisator.',
+'userrights-changeable-col'    => 'Les tropes que vos pouede changiér',
+'userrights-unchangeable-col'  => 'Les tropes que vos pouede pas changiér',
 
 # Groups
 'group'               => 'Tropa :',
@@ -1701,8 +1706,6 @@ Vos devriâd controlar lo jornal de les suprèssions de cél fichiér devant que
 'php-uploaddisabledtext'      => 'Lo tèlèchargement de fichiérs at étâ dèsactivâ dens PHP.
 Volyéd controlar lo chouèx de configuracion « file_uploads ».',
 'uploadscripted'              => 'Cél fichiér contint de code HTML ou ben un scripte que porrêt étre entèrprètâ de façon fôssa per un navigator vouèbe.',
-'uploadcorrupt'               => 'Cél fichiér est corrompu, il at una talye nula ou ben una èxtension envalida.
-Volyéd controlar lo fichiér devant que lo tornar tèlèchargiér.',
 'uploadvirus'                 => 'Cél fichiér contint un virus ! Por més de dètalys, vêde : $1',
 'upload-source'               => 'Fichiér sôrsa',
 'sourcefilename'              => 'Nom du fichiér sôrsa :',
@@ -1765,6 +1768,15 @@ Solament l’accès ux fichiérs est pèrmês.',
 Ceti vouiqui est configurâ coment un vouiqui publico.
 Por una sècuritât parfèta, img_auth.php est dèsactivâ.',
 'img-auth-noread'       => 'L’utilisator at pas lo drêt en lèctura dessus « $1 ».',
+
+# HTTP errors
+'http-invalid-url'      => 'URL fôssa : $1',
+'http-invalid-scheme'   => 'Les URLs avouéc lo plan « $1 » sont pas recognues.',
+'http-request-error'    => 'Èrror encognua pendent l’èxpèdicion de la requéta.',
+'http-read-error'       => 'Èrror de lèctura HTTP.',
+'http-timed-out'        => 'La requéta HTTP at èxpirâ.',
+'http-curl-error'       => 'Èrror pendent la rècupèracion de l’URL : $1',
+'http-host-unreachable' => 'URL pas juentâbla.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL pas juentâbla',
@@ -2192,6 +2204,9 @@ Vos pouede asse-ben tornar inicialisar los drapéls de notificacion por totes le
 Por changiér los paramètres de voutra lista de survelyence, visitâd
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+Por suprimar la pâge de voutra lista de survelyence, visitâd
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 Retôrn et assistance :
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2522,6 +2537,7 @@ O est possiblo qu’un dèblocâjo èye ja étâ fêt.',
 'ipb_blocked_as_range'            => 'Èrror : l’adrèce IP $1 est pas blocâ tot drêt et pôt vêr pas étre dèblocâ.
 Portant, el est avouéc la plage $2 que pôt étre dèblocâ.',
 'ip_range_invalid'                => 'Plage d’adrèces IP fôssa.',
+'ip_range_toolarge'               => 'Los blocâjos de plages d’adrèces IP ples grantes que /$1 sont pas ôtorisâs.',
 'blockme'                         => 'Blocâd-mè',
 'proxyblocker'                    => "Bloquior de sèrvors mandatèros (''proxies'')",
 'proxyblocker-disabled'           => 'Cela fonccion est dèsactivâ.',
@@ -2630,8 +2646,10 @@ empossiblo de renomar una pâge sur lyé-méma.',
 'imageinvalidfilename'         => 'Lo nom du fichiér ciba est fôx',
 'fix-double-redirects'         => 'Betar a jorn les redirèccions que pouentont vers lo titro originâl',
 'move-leave-redirect'          => 'Lèssiér una redirèccion de vers lo titro novél',
-'protectedpagemovewarning'     => "'''ATENCION :''' ceta pâge at étâ protègiê de façon que solament los utilisators qu’ont lo statut d’administrator la pouessont renomar.",
-'semiprotectedpagemovewarning' => "'''Nota :''' ceta pâge at étâ protègiê de façon que solament los utilisators encartâs la pouessont renomar.",
+'protectedpagemovewarning'     => "'''ATENCION :''' ceta pâge at étâ protègiê de façon que solament los utilisators qu’ont lo statut d’administrator la pouessont renomar.
+La dèrriére entrâ du jornal est montrâ ce-desot coment refèrence :",
+'semiprotectedpagemovewarning' => "'''Nota :''' ceta pâge at étâ protègiê de façon que solament los utilisators encartâs la pouessont renomar.
+La dèrriére entrâ du jornal est montrâ ce-desot coment refèrence :",
 'move-over-sharedrepo'         => '== Lo fichiér ègziste ==
 [[:$1]] ègziste ja sur un dèpôt de fichiérs partagiê. Renomar cél fichiér rendrat lo fichiér sur lo dèpôt de fichiérs partagiê pas accèssiblo.',
 'file-exists-sharedrepo'       => 'Lo nom chouèsi est ja utilisâ per un fichiér sur un dèpôt de fichiérs partagiê.
@@ -2900,7 +2918,7 @@ Volyéd liére « math/README » por lo configurar.',
 'markaspatrolleddiff'                 => 'Marcar coment survelyê',
 'markaspatrolledtext'                 => 'Marcar ceta pâge coment survelyê',
 'markedaspatrolled'                   => 'Marcâ coment survelyê',
-'markedaspatrolledtext'               => 'La vèrsion chouèsia at étâ marcâ coment survelyê.',
+'markedaspatrolledtext'               => 'La vèrsion chouèsia de [[:$1]] at étâ marcâ coment survelyê.',
 'rcpatroldisabled'                    => 'La fonccion de survelyence des dèrriérs changements est pas activâ.',
 'rcpatroldisabledtext'                => 'La fonccionalitât de survelyence des dèrriérs changements est pas activâ.',
 'markedaspatrollederror'              => 'Pôt pas étre marcâ coment survelyê.',

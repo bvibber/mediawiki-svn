@@ -341,9 +341,6 @@ $messages = array(
 'namespaces'                 => 'Ruang nama',
 'variants'                   => 'Kelainan',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Ralat',
 'returnto'          => 'Kembali ke $1.',
 'tagline'           => 'Daripada {{SITENAME}}.',
@@ -567,6 +564,7 @@ Akaun anda telah dibuka. Jangan lupa untuk mengubah [[Special:Preferences|keutam
 'nav-login-createaccount'    => 'Log masuk / buka akaun',
 'loginprompt'                => 'Anda mesti membenarkan kuki untuk log masuk ke dalam {{SITENAME}}.',
 'userlogin'                  => 'Log masuk / buka akaun',
+'userloginnocreate'          => 'Log masuk',
 'logout'                     => 'Log keluar',
 'userlogout'                 => 'Log keluar',
 'notloggedin'                => 'Belum log masuk',
@@ -588,6 +586,7 @@ Akaun anda telah dibuka. Jangan lupa untuk mengubah [[Special:Preferences|keutam
 'nosuchuser'                 => 'Pengguna "$1" tidak wujud. Nama pengguna adalah peka huruf besar. Sila semak ejaan anda, atau anda boleh [[Special:UserLogin/signup|membuka akaun baru]].',
 'nosuchusershort'            => 'Pengguna "<nowiki>$1</nowiki>" tidak wujud. Sila semak ejaan anda.',
 'nouserspecified'            => 'Sila nyatakan nama pengguna.',
+'login-userblocked'          => 'Pengguna ini disekat. Log masuk tidak dibenarkan.',
 'wrongpassword'              => 'Kata laluan yang dimasukkan adalah salah. Sila cuba lagi.',
 'wrongpasswordempty'         => 'Kata laluan yang dimasukkan adalah kosong. Sila cuba lagi.',
 'passwordtooshort'           => 'Kata laluan mestilah sekurang-kurangnya {{PLURAL:$1|1 aksara|$1 aksara}}.',
@@ -722,8 +721,9 @@ ditunjukkan di bawah:",
 'whitelistedittitle'               => 'Log masuk dahulu untuk menyunting',
 'whitelistedittext'                => 'Anda hendaklah $1 terlebih dahulu untuk menyunting laman.',
 'confirmedittext'                  => 'Anda perlu mengesahkan alamat e-mel anda terlebih dahulu untuk menyunting mana-mana laman. Sila tetapkan dan sahkan alamat e-mel anda melalui [[Special:Preferences|laman keutamaan]].',
-'nosuchsectiontitle'               => 'Bahagian tidak wujud',
-'nosuchsectiontext'                => 'Anda telah mencuba untuk menyunting bahagian "$1" yang tidak wujud. Oleh itu, suntingan anda tidak boleh disimpan.',
+'nosuchsectiontitle'               => 'Tidak ada bahagian ini',
+'nosuchsectiontext'                => 'Anda cuba untuk menyunting bahagian yang tidak wujud.
+Ia mungkin telah dialih atau dihapus semasa anda melihat laman ini.',
 'loginreqtitle'                    => 'Log masuk diperlukan',
 'loginreqlink'                     => 'log masuk',
 'loginreqpagetext'                 => 'Anda harus $1 untuk dapat melihat laman yang lain.',
@@ -739,7 +739,7 @@ Jika anda tiba di sini secara tak sengaja, hanya klik butang '''back''' pada pel
 'anontalkpagetext'                 => "----''Ini ialah laman perbincangan bagi pengguna tanpa nama yang belum membuka akaun atau tidak log masuk.
 Oleh itu kami terpaksa menggunakan alamat IP untuk mengenal pasti pengguna tersebut. Alamat IP ini boleh dikongsi oleh ramai pengguna.
 Sekiranya anda adalah seorang pengguna tanpa nama dan berasa bahawa komen yang tidak kena mengena telah ditujukan kepada anda, sila [[Special:UserLogin/signup|buka akaun baru]] atau [[Special:UserLogin|log masuk]] untuk mengelakkan sebarang kekeliruan dengan pengguna tanpa nama yang lain.''",
-'noarticletext'                    => 'Tiada teks dalam laman ini pada masa sekarang. Anda boleh [[Special:Search/{{PAGENAME}}|mencari tajuk bagi laman ini]] dalam laman-laman lain, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} menggelintar log-log yang berkaitan], atau [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting laman ini].',
+'noarticletext'                    => 'Tiada teks dalam laman ini pada masa sekarang. Anda boleh [[Special:Search/{{PAGENAME}}|mencari tajuk bagi laman ini]] dalam laman-laman lain, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} menggelintar log-log yang berkaitan], atau [{{fullurl:{{FULLPAGENAME}}|action=edit}} menyunting laman ini]</span>.',
 'noarticletext-nopermission'       => 'Tiada teks dalam laman ini ketika ini.
 Anda boleh [[Special:Search/{{PAGENAME}}|mencari tajuk laman ini]] dalam laman lain,
 atau <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} menggelintar log yang berkaitan]</span>.',
@@ -801,10 +801,13 @@ melebihi had maksimum $2 kilobait. Ia tidak boleh disimpan.'''",
 Anda boleh menyalin teks anda ke dalam komputer anda terlebih dahulu dan simpan teks tersebut di sini pada masa akan datang.'''
 
 Yang berikut ialah penjelasan yang diberikan: $1",
-'protectedpagewarning'             => "'''AMARAN: Laman ini telah dikunci supaya hanya penyelia boleh menyuntingnya.'''",
-'semiprotectedpagewarning'         => "'''Catatan:''' Laman ini telah dikunci supaya hanya pengguna berdaftar sahaja yang boleh menyuntingnya.",
+'protectedpagewarning'             => "'''Amaran: Laman ini telah dikunci supaya hanya mereka yang mempunyai keistimewaan penyelia boleh menyuntingnya.'''
+Masukan log terakhir ditunjukkan di bawah untuk rujukan:",
+'semiprotectedpagewarning'         => "'''Nota:''' Laman ini telah dikunci agar hanya pengguna berdaftar sahaja boleh menyuntingnya.
+Masukan log terakhir ditunjukkan di bawah untuk rujukan:",
 'cascadeprotectedwarning'          => "'''Amaran:''' Laman ini telah dikunci, oleh itu hanya penyelia boleh menyuntingnya. Ini kerana ia termasuk dalam {{PLURAL:$1|laman|laman-laman}} berikut yang dilindungi secara melata:",
-'titleprotectedwarning'            => "'''AMARAN: Laman ini telah dikunci supaya hanya pengguna dengan [[Special:ListGroupRights|hak-hak tertentu]] sahaja boleh menciptanya.'''",
+'titleprotectedwarning'            => "'''Amaran: Laman ini telah dikunci hingga [[Special:ListGroupRights|hak-hak tertentu]] diperlukan untuk menciptanya.'''
+Masukan log terakhir ditunjukkan di bawah untuk rujukan:",
 'templatesused'                    => '{{PLURAL:$1|Templat|Templat}} yang digunakan dalam laman ini:',
 'templatesusedpreview'             => '{{PLURAL:$1|Templat|Templat}} yang digunakan dalam pratonton ini:',
 'templatesusedsection'             => '{{PLURAL:$1|Templat|Templat}} digunakan dalam bahagian ini:',
@@ -913,13 +916,13 @@ Mungkin terdapat butiran lanjut di dalam [{{fullurl:{{#Special:Log}}/delete|page
 'rev-deleted-unhide-diff'     => "Salah satu semakan laman ini telah '''dihapuskan'''.
 Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log penghapusan].
 Sebagai seorang pentadbir anda masih boleh [$1 melihat semakan ini] jika anda ingin teruskan.",
-'rev-suppressed-unhide-diff'  => "Perubahan dilakukan '''tidak dikenal pasti'''
-Maklumat berkenaan dapat dijumpai dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log berikut].
-Sebagai admin, anda masih boleh [$1 melihat perubahan berkaitan] jika anda ingin teruskan.",
-'rev-deleted-diff-view'       => "Satu dari semakan diff ini telah '''dipadamkan'''
-Sebagai pentakbir anda boleh melihat diff ini; mungkin terdapat perincian pada [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log pemadaman].",
-'rev-suppressed-diff-view'    => "Satu dari semakan diff ini telah '''dipendam'''
-Sebagai pentakbir anda boleh melihat diff ini; mungkin terdapat perincian pada [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log pemendaman].",
+'rev-suppressed-unhide-diff'  => "Salah satu semakan perbezaan ini telah '''diselindungkan'''.
+Butiran lanjut mungkin boleh didapati dalam [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} log penyelindungan].
+Sebagai pentadbir anda masih boleh [$1 melihat perbezaan ini] jika anda ingin teruskan.",
+'rev-deleted-diff-view'       => "Salah satu semakan perbezaan ini telah '''dihapuskan'''.
+Sebagai pentadbir anda boleh melihat perbezaan ini; mungkin terdapat perincian pada [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log penghapusan].",
+'rev-suppressed-diff-view'    => "Salah satu semakan perbezaan ini telah '''dipendam'''.
+Sebagai pentadbir anda boleh melihat perbezaan ini; mungkin terdapat perincian pada [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} log penyelindungan].",
 'rev-delundel'                => 'tunjuk/sembunyi',
 'rev-showdeleted'             => 'tunjuk',
 'revisiondelete'              => 'Hapus/nyahhapus semakan',
@@ -1127,7 +1130,7 @@ Cuba berikan awalan ''all:'' untuk menggelintar semua kandungan (termasuk laman 
 'prefs-watchlist-token'         => 'Token senarai pantau:',
 'prefs-misc'                    => 'Pelbagai',
 'prefs-resetpass'               => 'Tukar kata laluan',
-'prefs-email'                   => 'Pilihan email',
+'prefs-email'                   => 'Pilihan e-mel',
 'prefs-rendering'               => 'Penampilan',
 'saveprefs'                     => 'Simpan',
 'resetprefs'                    => 'Set semula',
@@ -1468,7 +1471,6 @@ Jika anda memiliki imej ini dalam leraian penuh, sila muat naik fail tersebut. S
 'uploaddisabledtext'          => 'Ciri muat naik fail dimatikan.',
 'php-uploaddisabledtext'      => 'Pemuatnaikan fail PHP dilumpuhkan. Sila semak tetapan file_uploads.',
 'uploadscripted'              => 'Fail ini mengandungi kod HTML atau skrip yang boleh disalahtafsirkan oleh pelayar web.',
-'uploadcorrupt'               => 'Fail tersebut rosak atau mempunyai sambungan yang salah. Sila periksa fail tersebut dan cuba lagi.',
 'uploadvirus'                 => 'Fail tersebut mengandungi virus! Butiran: $1',
 'sourcefilename'              => 'Nama fail sumber:',
 'destfilename'                => 'Nama fail destinasi:',
@@ -1608,8 +1610,9 @@ Penerangan pada [$2 laman penerangan failnya] di sana ditunjukkan di bawah.',
 'statistics'                   => 'Statistik',
 'statistics-header-pages'      => 'Statistik laman',
 'statistics-header-edits'      => 'Statistik suntingan',
-'statistics-header-views'      => 'Statistics pandangan',
+'statistics-header-views'      => 'Statistik pandangan',
 'statistics-header-users'      => 'Statistik pengguna',
+'statistics-header-hooks'      => 'Statistik lain',
 'statistics-articles'          => 'Laman kandungan',
 'statistics-pages'             => 'Laman',
 'statistics-pages-desc'        => 'Semua laman di wiki ini, termasuk laman perbincangan, lencongan, dan lain-lain.',
@@ -1888,11 +1891,14 @@ wiki: $PAGEEDITOR_WIKI
 Tiada pemberitahuan lain akan dikirim berkaitan perubahan selanjutnya melainkan anda mengunjungi laman tersebut.
 Anda juga boleh menetapkan semula penanda pemberitahuan bagi semua laman dalam senarai pantau anda.
 
-         Sistem pemberitahuan {{SITENAME}} anda yang mesra
+         Sistem pemberitahuan {{SITENAME}} anda yang ramah
 
 --
-Untuk mengubah tetapan senarai pantau anda, sila kunjungi
+Untuk mengubah tetapan senarai pantau anda, lawati
 {{fullurl:{{#special:Watchlist}}/edit}}
+
+Untuk memadam laman ini dari senarai pantau anda, lawati
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
 
 Maklum balas dan bantuan:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1906,7 +1912,7 @@ Maklum balas dan bantuan:
 'exblank'                => 'laman tersebut kosong',
 'delete-confirm'         => 'Hapus "$1"',
 'delete-legend'          => 'Hapus',
-'historywarning'         => "'''Amaran:''' Laman yang ingin anda hapuskan mengandungi sejarah dengan $1 {{PLURAL:$1|semakan|semakan}}:",
+'historywarning'         => "'''Amaran:''' Laman yang ingin anda hapuskan mengandungi sejarah dengan kira-kira $1 {{PLURAL:$1|semakan|semakan}}:",
 'confirmdeletetext'      => 'Anda sudah hendak menghapuskan sebuah laman berserta semua sejarahnya.
 Sila sahkan bahawa anda memang hendak berbuat demikian, anda faham akan
 akibatnya, dan perbuatan anda mematuhi [[{{MediaWiki:Policy-url}}|dasar kami]].',
@@ -2301,8 +2307,10 @@ Laman destinasi "[[:$1]]" telah pun wujud. Adakah anda mahu menghapuskannya supa
 'imageinvalidfilename'         => 'Nama fail imej sasaran tidak sah',
 'fix-double-redirects'         => 'Kemas kinikan semua lencongan yang menuju ke tajuk asal',
 'move-leave-redirect'          => 'Lencongkan ke tajuk baru',
-'protectedpagemovewarning'     => "'''Amaran:''' Laman ini telah dikunci supaya hanya mereka yang mempunyai keistimewaan penyelia mampu mengalihkannya.",
-'semiprotectedpagemovewarning' => "'''Nota:''' Laman ini telah dikunci agar hanya pengguna berdaftar sahaja yang boleh memindahkannya.",
+'protectedpagemovewarning'     => "'''Amaran:''' Laman ini telah dikunci supaya hanya mereka yang mempunyai keistimewaan penyelia boleh mengalihkannya.
+Masukan log terakhir ditunjukkan di bawah untuk rujukan:",
+'semiprotectedpagemovewarning' => "'''Nota:''' Laman ini telah dikunci agar hanya pengguna berdaftar sahaja boleh memindahkannya.
+Masukan log terakhir ditunjukkan di bawah untuk rujukan:",
 
 # Export
 'export'            => 'Eksport laman',
@@ -2517,7 +2525,7 @@ Semua tindakan import transwiki dicatatkan dalam [[Special:Log/import|log import
 'markaspatrolleddiff'                 => 'Tanda ronda',
 'markaspatrolledtext'                 => 'Tanda ronda laman ini',
 'markedaspatrolled'                   => 'Tanda ronda',
-'markedaspatrolledtext'               => 'Semakan tersebut telah ditanda ronda.',
+'markedaspatrolledtext'               => 'Semakan [[:$1]] tersebut telah ditanda sebagai telah diperiksa.',
 'rcpatroldisabled'                    => 'Rondaan Perubahan Terkini dimatikan',
 'rcpatroldisabledtext'                => 'Ciri Rondaan Perubahan Terkini dimatikan.',
 'markedaspatrollederror'              => 'Tidak boleh menanda ronda',

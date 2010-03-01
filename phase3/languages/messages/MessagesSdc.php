@@ -259,9 +259,6 @@ Li sighenti cullegamenti so in linga ingrese:
 'vector-view-edit'          => 'Mudifigga',
 'vector-view-view'          => 'Leggi',
 
-# Metadata in edit box
-'metadata_help' => 'Metadati:',
-
 'errorpagetitle'    => 'Errori',
 'returnto'          => 'Turra a $1.',
 'tagline'           => 'Da {{SITENAME}}.',
@@ -614,7 +611,7 @@ Si vói ciaramiddanne, pa piazeri prizzisa sempri lu nùmaru di lu broccu (ID #$
 'whitelistedittext'                => 'Pa mudìfiggà li pàgini è nezzessàriu $1.',
 'confirmedittext'                  => "Pa assé abiritaddi a la mudìfigga di li pàgini è nezzessàriu cunfèimma lu proprio indirizzu di postha erettrònica. Pa impusthà e cunfèimmà l'indirizzu usà li [[Special:Preferences|prifirenzi]].",
 'nosuchsectiontitle'               => 'La sezzioni nò esisthi',
-'nosuchsectiontext'                => "S'è prubendi a mudìfiggà una sezzioni inesisthenti. No è pussìbiri sàivvà li mudìfigghi parchí la sezzioni $1 no isisthi.",
+'nosuchsectiontext'                => "S'è prubendi a mudìfiggà una sezzioni inesisthenti.",
 'loginreqtitle'                    => 'Pa mudìfiggà chistha pàgina è nezzessàriu intrà',
 'loginreqlink'                     => 'intra',
 'loginreqpagetext'                 => 'Pa vidé althri pàgini è nezzessàriu $1.',
@@ -1063,7 +1060,6 @@ Si si diponi di l'immàgina i' la risoruzioni originari, pa piazeri carriggalla.
 'uploaddisabled'              => 'Semmu dipiazuddi, ma lu carriggamentu di file è timpuraniamenti suippesu.',
 'uploaddisabledtext'          => "Lu carriggamentu di file nò è attibu i' {{SITENAME}}.",
 'uploadscripted'              => 'Chistu file cunteni còdizi HTML o script, chi pudia assé interpretaddu mari da lu nabiggadori.',
-'uploadcorrupt'               => "Lu file è currumpiddu o à un'esthensioni nò curretta. Contrullà lu file e turrà a prubà lu carriggamentu.",
 'uploadvirus'                 => 'Chisthu file cunteni un virus! Dettàgli: $1',
 'sourcefilename'              => "Nommu d'orìgini di lu file:",
 'destfilename'                => 'Nommu di lu file di disthinazioni:',

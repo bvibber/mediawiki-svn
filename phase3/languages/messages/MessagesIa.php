@@ -15,9 +15,8 @@
 
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
 
-
 $namespaceNames = array(
-	NS_MEDIA            => 'Media',
+	NS_MEDIA            => 'Multimedia',
 	NS_SPECIAL          => 'Special',
 	NS_TALK             => 'Discussion',
 	NS_USER             => 'Usator',
@@ -50,7 +49,7 @@ $specialPageAliases = array(
 	'Preferences'               => array( 'Preferentias' ),
 	'Watchlist'                 => array( 'Observatorio' ),
 	'Recentchanges'             => array( 'Modificationes recente' ),
-	'Upload'                    => array( 'Cargar' ),
+	'Upload'                    => array( 'Incargar', 'Cargar' ),
 	'Listfiles'                 => array( 'Lista de files', 'Lista de imagines' ),
 	'Newimages'                 => array( 'Nove files', 'Nove imagines' ),
 	'Listusers'                 => array( 'Lista de usatores' ),
@@ -118,7 +117,7 @@ $specialPageAliases = array(
 	'Listbots'                  => array( 'Lista de robots' ),
 	'Popularpages'              => array( 'Paginas popular' ),
 	'Search'                    => array( 'Recerca' ),
-	'Resetpass'                 => array( 'Cambiar contrasigno', 'Redefinir contrasigno' ),
+	'Resetpass'                 => array( 'Cambiar contrasigno' ),
 	'Withoutinterwiki'          => array( 'Sin interwiki' ),
 	'MergeHistory'              => array( 'Fusionar historia' ),
 	'Filepath'                  => array( 'Cammino al file' ),
@@ -144,7 +143,7 @@ $messages = array(
 'tog-showtoolbar'             => 'Monstrar barra de instrumentos pro modification (require JavaScript)',
 'tog-editondblclick'          => 'Duple clic pro modificar un pagina (require JavaScript)',
 'tog-editsection'             => 'Activar le modification de sectiones con ligamines [modificar]',
-'tog-editsectiononrightclick' => 'Activar modification de sectiones con clic-a-derecta super lor titulos (require JavaScript)',
+'tog-editsectiononrightclick' => 'Activar modification de sectiones con clic-a-dextra super lor titulos (require JavaScript)',
 'tog-showtoc'                 => 'Monstrar tabula de contento (in paginas con plus de 3 sectiones)',
 'tog-rememberpassword'        => 'Memorar mi contrasigno in iste computator',
 'tog-editwidth'               => 'Allargar le quadro de modification pro plenar le schermo integre',
@@ -319,9 +318,6 @@ $messages = array(
 'namespaces'                 => 'Spatios de nomines',
 'variants'                   => 'Variantes',
 
-# Metadata in edit box
-'metadata_help' => 'Metadatos:',
-
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Retornar a $1.',
 'tagline'           => 'De {{SITENAME}}',
@@ -490,6 +486,8 @@ Per favor reporta isto a un [[Special:ListUsers/sysop|administrator]], faciente 
 'readonly_lag'         => 'Le base de datos ha essite automaticamente blocate durante que le servitores de base de datos secundari se synchronisa con le servitor principal.',
 'internalerror'        => 'Error interne',
 'internalerror_info'   => 'Error interne: $1',
+'fileappenderrorread'  => 'Non poteva leger "$1" durante le adjunction.',
+'fileappenderror'      => 'Non poteva adjunger "$1" a "$2".',
 'filecopyerror'        => 'Impossibile copiar file "$1" a "$2".',
 'filerenameerror'      => 'Impossibile renominar file "$1" a "$2".',
 'filedeleteerror'      => 'Impossibile deler file "$1".',
@@ -536,10 +534,10 @@ Le ration date es ''$2''.",
 'virus-unknownscanner' => 'antivirus non cognoscite:',
 
 # Login and logout pages
-'logouttext'                 => "'''Tu ha claudite tu session.'''
+'logouttext'                 => "'''Tu ha claudite le session.'''
 
-Tu pote continuar a usar {{SITENAME}} anonymemente, o tu pote [[Special:UserLogin|initiar un nove session]] como le mesme o como un altere usator.
-Nota que alcun paginas pote continuar a monstrar se como si le session esserea ancora active. Pro remediar isto, tu pote vacuar le cache de tu navigator.",
+Tu pote continuar a usar {{SITENAME}} anonymemente, o tu pote [[Special:UserLogin|aperir un nove session]] con le mesme nomine de usator o con un altere.
+Nota que alcun paginas pote continuar a apparer como si tu esserea ancora identificate. Pro remediar isto, tu pote vacuar le cache de tu navigator.",
 'welcomecreation'            => '== Benvenite, $1! ==
 Tu conto ha essite create.
 Non oblida personalisar tu [[Special:Preferences|preferentias in {{SITENAME}}]].',
@@ -584,6 +582,7 @@ Verifica le orthographia, o [[Special:UserLogin/signup|crea un nove conto]].',
 'nosuchusershort'            => 'Non existe un usator con le nomine "<nowiki>$1</nowiki>".
 Verifica le orthographia.',
 'nouserspecified'            => 'Tu debe specificar un nomine de usator.',
+'login-userblocked'          => 'Iste usator es blocate. Apertura de session non permittite.',
 'wrongpassword'              => 'Le contrasigno que tu entrava es incorrecte. Per favor reprova.',
 'wrongpasswordempty'         => 'Tu non entrava un contrasigno. Per favor reprova.',
 'passwordtooshort'           => 'Le contrasignos debe continer al minus {{PLURAL:$1|1 character|$1 characteres}}.',
@@ -630,6 +629,7 @@ Tu pote ignorar iste message si iste conto ha essite create in error.',
 'login-throttled'            => 'Tu ha facite troppo de tentativas de identification.
 Per favor attende ante de probar lo novemente.',
 'loginlanguagelabel'         => 'Lingua: $1',
+'suspicious-userlogout'      => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
 
 # Password reset dialog
 'resetpass'                 => 'Cambiar contrasigno',
@@ -645,6 +645,7 @@ Pro completar le accesso, tu debe definir un nove contrasigno hic:',
 'resetpass_forbidden'       => 'Le contrasignos non pote esser cambiate',
 'resetpass-no-info'         => 'Tu debe aperir un session pro poter acceder directemente a iste pagina.',
 'resetpass-submit-loggedin' => 'Cambiar contrasigno',
+'resetpass-submit-cancel'   => 'Cancellar',
 'resetpass-wrong-oldpass'   => 'Le contrasigno temporari o actual es invalide. 
 Es possibile que tu ha ja cambiate tu contrasigno o requestate un nove contrasigno temporari.',
 'resetpass-temp-password'   => 'Contrasigno temporari:',
@@ -727,9 +728,9 @@ Per favor include tote le detalios supra specificate in omne correspondentia.',
 'whitelistedittext'                => 'Tu debe $1 pro poter modificar paginas.',
 'confirmedittext'                  => 'Tu debe confirmar tu adresse de e-mail pro poter modificar paginas.
 Per favor defini e valida tu adresse de e-mail per medio de tu [[Special:Preferences|preferentias de usator]].',
-'nosuchsectiontitle'               => 'Non existe tal section',
-'nosuchsectiontext'                => 'Tu essayava modificar un section que non existe.
-Viste que il non ha alcun section $1, il non ha alcun location pro publicar tu modification.',
+'nosuchsectiontitle'               => 'Section non trovate',
+'nosuchsectiontext'                => 'Tu ha tentate modificar un section que non existe.
+Illo pote haber essite displaciate o delite durante que tu legeva le pagina.',
 'loginreqtitle'                    => 'Identification requirite',
 'loginreqlink'                     => 'aperir un session',
 'loginreqpagetext'                 => 'Tu debe $1 pro poter vider altere paginas.',
@@ -753,12 +754,15 @@ Tu pote [[Special:Search/{{PAGENAME}}|cercar le titulo de iste pagina]] in alter
 o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} cercar in le registros pertinente].',
 'userpage-userdoesnotexist'        => 'Le conto de usator "$1" non es registrate. Per favor verifica que tu vole crear/modificar iste pagina.',
 'userpage-userdoesnotexist-view'   => 'Le conto de usator "$1" non es registrate.',
+'blocked-notice-logextract'        => 'Iste usator es actualmente blocate.
+Le ultime entrata del registro de blocadas es reproducite ci infra pro information:',
 'clearyourcache'                   => "'''Nota - Post confirmar, il pote esser necessari refrescar le ''cache'' de tu navigator pro vider le cambiamentos.''' '''Mozilla / Firefox / Safari:''' tenente ''Shift'' clicca ''Reload,'' o preme ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' in un Macintosh); '''Konqueror: '''clicca ''Reload'' o preme ''F5;'' '''Opera:''' vacua le ''cache'' in ''Tools → Preferences;'' '''Internet Explorer:''' tenente ''Ctrl'' clicca ''Refresh,'' o preme ''Ctrl-F5.''",
 'usercssyoucanpreview'             => "'''Consilio:''' Usa le button 'Monstrar previsualisation' pro testar tu nove CSS ante de publicar lo.",
 'userjsyoucanpreview'              => "'''Consilio:''' Usa le button 'Monstrar previsualisation' pro testar tu nove JS ante de publicar lo.",
 'usercsspreview'                   => "'''Non oblida que isto es solmente un previsualisation de tu CSS personalisate.
-Le modificationes non ha ancora essite immagazinate!'''",
-'userjspreview'                    => "'''Non oblida que isto es solmente un test/previsualisation de tu JavaScript personalisate, illo non ha ancora essite immagazinate!'''",
+Le modificationes non ha ancora essite salveguardate!'''",
+'userjspreview'                    => "'''Non oblida que isto es solmente un test/previsualisation de tu JavaScript personalisate.'''
+'''Illo non ha ancora essite salveguardate!'''",
 'userinvalidcssjstitle'            => "'''Attention:''' Le stilo \"\$1\" non existe.
 Memora que le paginas .css and .js personalisate usa un titulo in minusculas, p.ex. {{ns:user}}:Foo/monobook.css e non {{ns:user}}:Foo/Monobook.css.",
 'updated'                          => '(Actualisate)',
@@ -808,23 +812,23 @@ In addition, tu nos garanti que tu es le autor de isto, o que tu lo ha copiate d
 'longpagewarning'                  => "'''ATTENTION: Iste pagina occupa $1 kilobytes;
 alcun navigatores pote presentar problemas in modificar paginas que approxima o excede 32 kilobytes.
 Per favor considera divider le pagina in sectiones minus grande.'''",
-'longpageerror'                    => "'''ERROR: Le texto que tu submitteva occupa $1 kilobytes, excedente le maximo de $2 kilobytes.
-Illo non pote esser immagazinate.'''",
-'readonlywarning'                  => "'''ATTENTION: Le base de datos ha essite blocate pro mantenentia, ergo tu non pote immagazinar tu modificationes justo nunc.
-Nos recommenda copiar-e-collar le texto pro immagazinar lo in un file de texto, assi que tu potera publicar lo plus tarde.'''
+'longpageerror'                    => "'''Error: Le texto que tu submitteva occupa $1 kilobytes, excedente le maximo de $2 kilobytes.
+Illo non pote esser salveguardate.'''",
+'readonlywarning'                  => "'''Attention: Le base de datos ha essite blocate pro mantenentia, ergo tu non pote salveguardar tu modificationes in iste momento.'''
+Nos recommenda copiar-e-collar le texto in un file de texto e salveguardar lo pro plus tarde.
 
 Le administrator qui lo blocava dava iste explication: $1",
-'protectedpagewarning'             => "'''ATTENTION:  Iste pagina ha essite protegite. Solmente administratores pote modificar lo.'''",
-'semiprotectedpagewarning'         => "'''Nota:''' Iste pagina ha essite protegite de maniera que solmente usatores registrate pote modificar lo.",
+'protectedpagewarning'             => "'''Attention:  Iste pagina ha essite protegite de sorta que solmente usatores con privilegios de administrator pote modificar lo.''' Le ultime entrata del registro es fornite hic infra pro referentia:",
+'semiprotectedpagewarning'         => "'''Nota:''' Iste pagina ha essite protegite de maniera que solmente usatores registrate pote modificar lo. Le ultime entrata del registro es fornite hic infra pro referentia:",
 'cascadeprotectedwarning'          => "'''Attention:''' Iste pagina ha essite protegite de maniera que solmente administratores pote modificar lo, proque illo es includite in le protection in cascada del sequente {{PLURAL:$1|pagina|paginas}}:",
-'titleprotectedwarning'            => "'''ATTENTION:  Iste pagina ha essite protegite de maniera que [[Special:ListGroupRights|permissiones specific]] es requirite pro crear lo.'''",
+'titleprotectedwarning'            => "'''Attention:  Iste pagina ha essite protegite de maniera que [[Special:ListGroupRights|permissiones specific]] es requirite pro crear lo.''' Le ultime entrata del registro es fornite hic infra pro referentia:",
 'templatesused'                    => '{{PLURAL:$1|Patrono|Patronos}} usate in iste pagina:',
 'templatesusedpreview'             => '{{PLURAL:$1|Patrono|Patronos}} usate in iste previsualisation:',
 'templatesusedsection'             => '{{PLURAL:$1|Patrono|Patronos}} usate in iste section:',
 'template-protected'               => '(protegite)',
 'template-semiprotected'           => '(semi-protegite)',
 'hiddencategories'                 => 'Iste pagina es membro de {{PLURAL:$1|1 categoria|$1 categorias}} celate:',
-'edittools'                        => '<!-- Iste texto se monstrara sub le formularios de modificar articulos e de cargar files. -->',
+'edittools'                        => '<!-- Iste texto se monstrara sub le formularios de modificar articulos e de incargar files. -->',
 'nocreatetitle'                    => 'Creation de paginas limitate',
 'nocreatetext'                     => '{{SITENAME}} ha restringite le permission de crear nove paginas.
 Tu pote retornar e modificar un pagina existente, o [[Special:UserLogin|identificar te, o crear un conto]].',
@@ -863,10 +867,11 @@ Iste parametros ha essite omittite.',
 'post-expand-template-argument-category'  => 'Paginas que omitte alcun parametros de patrono',
 'parser-template-loop-warning'            => 'Recursion infinite detegite in patrono: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Limite de recursion del patrono excedite ($1)',
+'language-converter-depth-warning'        => 'Limite de profunditate del conversor de lingua excedite ($1)',
 
 # "Undo" feature
-'undo-success' => 'Le modification pote esser annullate.
-Per favor controla le comparation infra pro verificar que tu vole facer isto, e alora immagazina le modificationes infra pro assi annullar le modification.',
+'undo-success' => 'Le modification pote esser disfacite.
+Per favor controla le comparation infra pro verificar que tu vole facer isto, e postea salveguarda le modificationes infra pro assi disfacer le modification.',
 'undo-failure' => 'Le modification non poteva esser annullate a causa de conflicto con modificationes intermedie.',
 'undo-norev'   => 'Impossibile annullar le modification proque illo non existe o esseva delite.',
 'undo-summary' => 'Annullava le version $1 per [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussion]] | [[Special:Contributions/$2|{{MediaWiki:Contribslink}}]])',
@@ -888,7 +893,7 @@ Le motivo que $3 dava es ''$2''",
 'nextrevision'           => 'Version sequente →',
 'currentrevisionlink'    => 'Version actual',
 'cur'                    => 'actu',
-'next'                   => 'sequ',
+'next'                   => 'seq',
 'last'                   => 'prec',
 'page_first'             => 'prime',
 'page_last'              => 'ultime',
@@ -930,6 +935,7 @@ es possibile que se trova detalios in le [{{fullurl:{{#Special:Log}}/delete|page
 Tu, qua administrator, pote vider lo; es possibile que se trova detalios in le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} registro de suppressiones].",
 'rev-deleted-no-diff'         => "Tu non pote vider iste diff proque un del versiones ha essite '''delite'''.
 Es possibile que se trova detalios in le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} registro de deletiones].",
+'rev-suppressed-no-diff'      => "Tu non pote vider iste diff proque un del versiones ha essite '''delite'''.",
 'rev-deleted-unhide-diff'     => "Un del versiones de iste diff ha essite '''delite'''.
 Es possibile que se trova detalios in le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} registro de deletiones].
 Tu, qua administrator, pote ancora [$1 vider iste diff] si tu vole proceder.",
@@ -1129,9 +1135,9 @@ Nota que lor indices del contento de {{SITENAME}} pote esser obsolete.',
 'qbsettings'               => 'Barra rapide',
 'qbsettings-none'          => 'Necun',
 'qbsettings-fixedleft'     => 'Fixe a sinistra',
-'qbsettings-fixedright'    => 'Fixe a derecta',
+'qbsettings-fixedright'    => 'Fixe a dextra',
 'qbsettings-floatingleft'  => 'Flottante a sinistra',
-'qbsettings-floatingright' => 'Flottante a derecta',
+'qbsettings-floatingright' => 'Flottante a dextra',
 
 # Preferences page
 'preferences'                   => 'Preferentias',
@@ -1243,25 +1249,26 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'prefs-diffs'                   => 'Differentias',
 
 # User rights
-'userrights'                  => 'Gestion de derectos de usator',
-'userrights-lookup-user'      => 'Gerer gruppos de usatores',
-'userrights-user-editname'    => 'Entra un nomine de usator:',
-'editusergroup'               => 'Modificar gruppos de usatores',
-'editinguser'                 => "Cambiamento del derectos del usator '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Modificar gruppos de usatores',
-'saveusergroups'              => 'Immagazinar gruppos de usatores',
-'userrights-groupsmember'     => 'Membro de:',
-'userrights-groups-help'      => 'Tu pote alterar le gruppos del quales iste usator es membro:
+'userrights'                   => 'Gestion de derectos de usator',
+'userrights-lookup-user'       => 'Gerer gruppos de usatores',
+'userrights-user-editname'     => 'Entra un nomine de usator:',
+'editusergroup'                => 'Modificar gruppos de usatores',
+'editinguser'                  => "Cambiamento del derectos del usator '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Modificar gruppos de usatores',
+'saveusergroups'               => 'Salveguardar gruppos de usatores',
+'userrights-groupsmember'      => 'Membro de:',
+'userrights-groupsmember-auto' => 'Membro implicite de:',
+'userrights-groups-help'       => 'Tu pote alterar le gruppos del quales iste usator es membro:
 * Un quadrato marcate significa que le usator es membro del gruppo in question.
 * Un non marcate significa que ille non es membro de illo.
 * Un * indica que tu non potera eliminar le gruppo quando tu lo ha addite, o vice versa.',
-'userrights-reason'           => 'Motivo:',
-'userrights-no-interwiki'     => 'Tu non ha le permission de modificar le derectos de usatores in altere wikis.',
-'userrights-nodatabase'       => 'Le base de datos $1 non existe o non es local.',
-'userrights-nologin'          => 'Tu debe [[Special:UserLogin|aperir un session]] con un conto de administrator pro poter assignar derectos de usator.',
-'userrights-notallowed'       => 'Tu conto non ha le permission de assignar derectos de usator.',
-'userrights-changeable-col'   => 'Gruppos que tu pote modificar',
-'userrights-unchangeable-col' => 'Gruppos que tu non pote modificar',
+'userrights-reason'            => 'Motivo:',
+'userrights-no-interwiki'      => 'Tu non ha le permission de modificar le derectos de usatores in altere wikis.',
+'userrights-nodatabase'        => 'Le base de datos $1 non existe o non es local.',
+'userrights-nologin'           => 'Tu debe [[Special:UserLogin|aperir un session]] con un conto de administrator pro poter assignar derectos de usator.',
+'userrights-notallowed'        => 'Tu conto non ha le permission de assignar derectos de usator.',
+'userrights-changeable-col'    => 'Gruppos que tu pote modificar',
+'userrights-unchangeable-col'  => 'Gruppos que tu non pote modificar',
 
 # Groups
 'group'               => 'Gruppo:',
@@ -1299,11 +1306,11 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-move-rootuserpages'    => 'Renominar le paginas radice de usator',
 'right-movefile'              => 'Renominar files',
 'right-suppressredirect'      => 'Non rediriger le ancian nomine verso le nove quando se renomina un pagina',
-'right-upload'                => 'Cargar files',
+'right-upload'                => 'Incargar files',
 'right-reupload'              => 'Superscriber un file existente',
-'right-reupload-own'          => 'Superscriber un file anteriormente cargate per uno mesme',
+'right-reupload-own'          => 'Superscriber un file anteriormente incargate per uno mesme',
 'right-reupload-shared'       => 'Supplantar localmente le files del respositorio commun de media',
-'right-upload_by_url'         => 'Cargar un file ab un adresse URL',
+'right-upload_by_url'         => 'Incargar un file ab un adresse URL',
 'right-purge'                 => 'Purgar le cache de un pagina in le sito sin confirmation',
 'right-autoconfirmed'         => 'Modificar paginas semiprotegite',
 'right-bot'                   => 'Esser tractate como processo automatic',
@@ -1334,7 +1341,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-markbotedits'          => 'Marcar modificationes de reversion como facite per un bot',
 'right-noratelimit'           => 'Non esser subjecte al limites de frequentia de actiones',
 'right-import'                => 'Importar paginas de altere wikis',
-'right-importupload'          => 'Importar paginas specificate in un file que tu carga',
+'right-importupload'          => 'Importar paginas ex un file incargate',
 'right-patrol'                => 'Marcar le modificationes de alteres como patruliate',
 'right-autopatrol'            => 'Marcar automaticamente le proprie modificationes como patruliate',
 'right-patrolmarks'           => 'Vider marcas de patrulia in le modificationes recente',
@@ -1366,10 +1373,10 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'action-move-subpages'        => 'renominar iste pagina e su subpaginas',
 'action-move-rootuserpages'   => 'renominar le paginas radice de usator',
 'action-movefile'             => 'renominar iste file',
-'action-upload'               => 'cargar iste file',
+'action-upload'               => 'incargar iste file',
 'action-reupload'             => 'superscriber iste file existente',
 'action-reupload-shared'      => 'supplantar iste file in un deposito commun',
-'action-upload_by_url'        => 'cargar iste file ab un adresse URL',
+'action-upload_by_url'        => 'incargar iste file ab un adresse URL',
 'action-writeapi'             => 'usar le API de scriptura',
 'action-delete'               => 'deler iste pagina',
 'action-deleterevision'       => 'deler iste version',
@@ -1381,7 +1388,7 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'action-block'                => 'blocar iste usator de facer modificationes',
 'action-protect'              => 'cambiar le nivellos de protection pro iste pagina',
 'action-import'               => 'importar iste pagina ab un altere wiki',
-'action-importupload'         => 'importar iste pagina ab un file cargate',
+'action-importupload'         => 'importar iste pagina ex un file incargate',
 'action-patrol'               => 'marcar le modificationes de alteros como patruliate',
 'action-autopatrol'           => 'haber tu modification marcate como patruliate',
 'action-unwatchedpages'       => 'vider le lista de paginas non observate',
@@ -1442,17 +1449,17 @@ Le paginas presente in [[Special:Watchlist|tu observatorio]] appare in litteras 
 'recentchangeslinked-to'       => 'Monstrar modificationes in paginas con ligamines al pagina specificate',
 
 # Upload
-'upload'                      => 'Cargar file',
-'uploadbtn'                   => 'Cargar file',
-'reuploaddesc'                => 'Cancellar le carga e retornar al formulario de carga',
+'upload'                      => 'Incargar file',
+'uploadbtn'                   => 'Incargar file',
+'reuploaddesc'                => 'Cancellar e retornar al formulario de incargamento',
 'upload-tryagain'             => 'Submitter description modificate del file',
 'uploadnologin'               => 'Tu non te ha identificate',
-'uploadnologintext'           => 'Tu debe [[Special:UserLogin|aperir un session]] pro poter cargar files.',
-'upload_directory_missing'    => 'Le directorio de cargamento ($1) manca, e le servitor de web non poteva crear lo.',
-'upload_directory_read_only'  => 'Le servitor de web non ha le permission de scriber in le directorio de cargamento ($1).',
-'uploaderror'                 => 'Error de carga',
-'uploadtext'                  => "Tu pote cargar files con le formulario infra.
-Pro vider o cercar imagines cargate anteriormente, visita le [[Special:FileList|lista de imagines cargate]]. In ultra, le (re)cargas es registrate in le [[Special:Log/upload|registro de cargas]], le deletiones in le [[Special:Log/delete|registro de deletiones]].
+'uploadnologintext'           => 'Tu debe [[Special:UserLogin|aperir un session]] pro poter incargar files.',
+'upload_directory_missing'    => 'Le directorio de incargamento ($1) manca, e le servitor de web non poteva crear lo.',
+'upload_directory_read_only'  => 'Le servitor web non ha le permission de scriber in le directorio de incargamento ($1).',
+'uploaderror'                 => 'Error de incargamento',
+'uploadtext'                  => "Tu pote incargar files con le formulario infra.
+Pro vider o cercar imagines incargate anteriormente, visita le [[Special:FileList|lista de imagines incargate]]. In ultra, le (re)incargamentos es registrate in le [[Special:Log/upload|registro de incargamentos]], le deletiones in le [[Special:Log/delete|registro de deletiones]].
 
 Pro includer un file in un articulo, usa un ligamine in un del sequente formas:
 * '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''' pro usar le version complete del file
@@ -1461,9 +1468,9 @@ Pro includer un file in un articulo, usa un ligamine in un del sequente formas:
 'upload-permitted'            => 'Typos de file permittite: $1.',
 'upload-preferred'            => 'Typos de file preferite: $1.',
 'upload-prohibited'           => 'Typos de file prohibite: $1.',
-'uploadlog'                   => 'registro de cargas',
-'uploadlogpage'               => 'Registro de cargas',
-'uploadlogpagetext'           => 'Infra es un lista del plus recente cargas de files.
+'uploadlog'                   => 'registro de incargamentos',
+'uploadlogpage'               => 'Registro de incargamentos',
+'uploadlogpagetext'           => 'Infra es un lista de files recentemente incargate.
 Vide le [[Special:NewFiles|galeria de nove files]] pro un presentation plus visual.',
 'filename'                    => 'Nomine del file',
 'filedesc'                    => 'Summario',
@@ -1471,15 +1478,16 @@ Vide le [[Special:NewFiles|galeria de nove files]] pro un presentation plus visu
 'filereuploadsummary'         => 'Modificationes al file:',
 'filestatus'                  => 'Stato de copyright:',
 'filesource'                  => 'Origine:',
-'uploadedfiles'               => 'Files cargate',
-'ignorewarning'               => 'Ignorar le advertimento e immagazinar totevia le file',
+'uploadedfiles'               => 'Files incargate',
+'ignorewarning'               => 'Ignorar le advertimento e salveguardar totevia le file',
 'ignorewarnings'              => 'Ignorar omne advertimentos',
 'minlength1'                  => 'Le nomines de file debe haber al minus un littera.',
 'illegalfilename'             => 'Le nomine de file "$1" contine characteres que non es permittite in le titulos de paginas.
-Per favor renomina le file e prova recargar lo.',
+Per favor renomina le file e tenta re-incargar lo.',
 'badfilename'                 => 'Le nomine del imagine esseva cambiate a "$1".',
-'filetype-badmime'            => 'Non es permittite cargar files del typo MIME "$1".',
-'filetype-bad-ie-mime'        => 'Non pote cargar iste file proque Internet Explorer lo detegerea como "$1", le qual es un typo de files prohibite e potentialmente periculose.',
+'filetype-mime-mismatch'      => 'Le extension del nomine del file non corresponde al typo MIME.',
+'filetype-badmime'            => 'Non es permittite incargar files del typo MIME "$1".',
+'filetype-bad-ie-mime'        => 'Non pote incargar iste file proque Internet Explorer lo detegerea como "$1", le qual es un typo de file prohibite e potentialmente periculose.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' es un typo de file non desirate.
 Le {{PLURAL:\$3|typo|typos}} de file preferite es \$2.",
 'filetype-banned-type'        => "Le typo de file '''\".\$1\"''' non es permittite.
@@ -1488,9 +1496,9 @@ Le {{PLURAL:\$3|typo|typos}} de file permittite es \$2.",
 'large-file'                  => 'Es recommendate que le files non sia plus grande de $1;
 iste file occupa $2.',
 'largefileserver'             => 'Le grandor de iste file excede le limite configurate in le servitor.',
-'emptyfile'                   => 'Le file que tu cargava pare esser vacue.
+'emptyfile'                   => 'Le file que tu incargava pare esser vacue.
 Isto pote esser debite a un error in le nomine del file.
-Per favor verifica que tu realmente vole cargar iste file.',
+Per favor verifica que tu realmente vole incargar iste file.',
 'fileexists'                  => "Un file con iste nomine existe ja.
 Per favor verifica '''<tt>[[:$1]]</tt>''' si tu non es secur de voler cambiar lo.
 [[$1|thumb]]",
@@ -1499,33 +1507,31 @@ Le summario que tu entra non apparera in le pagina de description.
 Si tu vole que illo appare, tu debe inserer lo manualmente.
 [[$1|thumb]]",
 'fileexists-extension'        => "Un file con un nomine similar existe ja: [[$2|thumb]]
-* Nomine del file que tu carga: '''<tt>[[:$1]]</tt>'''
+* Nomine del file a incargar: '''<tt>[[:$1]]</tt>'''
 * Nomine del file existente: '''<tt>[[:$2]]</tt>'''
 Per favor selige un altere nomine.",
 'fileexists-thumbnail-yes'    => "Iste file pare esser un imagine a grandor reducite ''(miniatura)''. [[$1|thumb]]
 Per favor verifica le file '''<tt>[[:$1]]</tt>'''.
-Si le file verificate es le mesme imagine a grandor original, non es necessari cargar un miniatura additional.",
+Si le file verificate es le mesme imagine a grandor original, non es necessari incargar un miniatura additional.",
 'file-thumbnail-no'           => "Le nomine del file comencia con '''<tt>$1</tt>'''.
 Illo pare esser un imagine a grandor reducite ''(miniatura)''.
-Si tu possede iste imagine in plen resolution, carga lo, alteremente cambia le nomine del file per favor.",
+Si tu possede iste imagine in plen resolution, incarga lo, alteremente cambia le nomine del file per favor.",
 'fileexists-forbidden'        => 'Un file con iste nomine existe ja, e non pote esser superscribite.
-Si tu vole ancora cargar iste file, per favor retorna e usa un nove nomine. [[File:$1|thumb|center|$1]]',
+Si tu vole ancora incargar iste file, per favor retorna e usa un nove nomine. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Un file con iste nomine existe ja in le deposito de files commun.
-Si tu vole totevia cargar iste file, per favor retorna e usa un nove nomine. [[File:$1|thumb|center|$1]]',
+Si tu vole totevia incargar iste file, per favor retorna e usa un nove nomine. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Iste file es un duplicato del sequente {{PLURAL:$1|file|files}}:',
-'file-deleted-duplicate'      => 'Un file identic a iste file ([[$1]]) esseva ja delite anteriormente. Tu deberea verificar le registro de deletiones concernente iste file ante de re-cargar lo.',
-'successfulupload'            => 'Cargamento succedite',
-'uploadwarning'               => 'Advertimento de cargamento',
+'file-deleted-duplicate'      => 'Un file identic a iste file ([[$1]]) esseva ja delite anteriormente. Tu deberea verificar le registro de deletiones concernente iste file ante de re-incargar lo.',
+'successfulupload'            => 'Incargamento succedite',
+'uploadwarning'               => 'Advertimento de incargamento',
 'uploadwarning-text'          => 'Per favor modifica le description del file ci infra e reproba.',
-'savefile'                    => 'Immagazinar file',
-'uploadedimage'               => 'cargava "[[$1]]"',
-'overwroteimage'              => 'cargava un nove version de "[[$1]]"',
-'uploaddisabled'              => 'Cargamentos disactivate',
-'uploaddisabledtext'          => 'Le cargamento de files es disactivate.',
-'php-uploaddisabledtext'      => 'Le cargamento de files PHP es disactivate. Per favor verifica le configuration file_uploads.',
+'savefile'                    => 'Salveguardar file',
+'uploadedimage'               => 'incargava "[[$1]]"',
+'overwroteimage'              => 'incargava un nove version de "[[$1]]"',
+'uploaddisabled'              => 'Incargamento de files disactivate',
+'uploaddisabledtext'          => 'Le incargamento de files es disactivate.',
+'php-uploaddisabledtext'      => 'Le incargamento de files PHP es disactivate. Per favor verifica le configuration file_uploads.',
 'uploadscripted'              => 'Iste file contine codice de HTML o de script que pote esser interpretate erroneemente per un navigator del web.',
-'uploadcorrupt'               => 'Le file es corrupte o su nomine ha un extension incorrecte.
-Per favor verifica le file e recarga lo.',
 'uploadvirus'                 => 'Le file contine un virus! Detalios: $1',
 'upload-source'               => 'File de origine',
 'sourcefilename'              => 'Nomine del file de origine:',
@@ -1533,15 +1539,15 @@ Per favor verifica le file e recarga lo.',
 'destfilename'                => 'Nomine del file de destination:',
 'upload-maxfilesize'          => 'Grandor maximal del files: $1',
 'upload-description'          => 'Description del file',
-'upload-options'              => 'Optiones de cargamento',
+'upload-options'              => 'Optiones de incargamento',
 'watchthisupload'             => 'Observar iste file',
-'filewasdeleted'              => 'Un file con iste nomine ha anteriormente essite cargate e postea delite.
-Tu debe verificar le $1 ante de proceder e recargar lo.',
-'upload-wasdeleted'           => "'''Attention: Tu va cargar un file que esseva anteriormente delite.'''
+'filewasdeleted'              => 'Un file con iste nomine ha anteriormente essite incargate e postea delite.
+Tu debe verificar le $1 ante de re-incargar lo de novo.',
+'upload-wasdeleted'           => "'''Attention: Tu es super le puncto de incargar un file que esseva anteriormente delite.'''
 
-Tu debe considerar si es appropriate continuar a cargar iste file.
+Tu deberea considerar si es appropriate continuar a incargar iste file.
 Pro major commoditate se trova hic le registro de deletiones correspondente a iste file:",
-'filename-bad-prefix'         => "Le nomine del file que tu va cargar comencia con '''\"\$1\"''', le qual es un nomine non descriptive, typicamente assignate automaticamente per le cameras digital.
+'filename-bad-prefix'         => "Le nomine del file que tu es super le puncto de incargar comencia con '''\"\$1\"''', le qual es un nomine non descriptive, typicamente assignate automaticamente per le cameras digital.
 Per favor selige un nomine plus descriptive pro tu file.",
 'filename-prefix-blacklist'   => ' #<!-- non modificar de alcun modo iste linea --> <pre>
 # Le syntaxe es como seque:
@@ -1559,13 +1565,13 @@ PICT # misc.
  #</pre> <!-- non modificar de alcun modo iste linea -->',
 
 'upload-proto-error'        => 'Protocollo incorrecte',
-'upload-proto-error-text'   => 'Le cargamento remote require que le adresses URL comencia con <code>http://</code> o <code>ftp://</code>.',
+'upload-proto-error-text'   => 'Le incargamento remote require que le adresses URL comencia con <code>http://</code> o <code>ftp://</code>.',
 'upload-file-error'         => 'Error interne',
 'upload-file-error-text'    => 'Un error interne occurreva quando se tentava crear un file temporari in le servitor.
 Per favor contacta un [[Special:ListUsers/sysop|administrator]].',
-'upload-misc-error'         => 'Error de cargamento non cognoscite',
-'upload-misc-error-text'    => 'Un error non cognoscite occurreva durante le cargamento.
-Per favor verifica que le adresse URL sia valide e accessible, e reprova.
+'upload-misc-error'         => 'Error incognite de incargamento',
+'upload-misc-error-text'    => 'Un error non cognoscite occurreva durante le incargamento.
+Per favor verifica que le adresse URL sia valide e accessibile, e reproba.
 Si le problema persiste, contacta un [[Special:ListUsers/sysop|administrator]].',
 'upload-too-many-redirects' => 'Le URL contineva troppo de redirectiones',
 'upload-unknown-size'       => 'Dimension incognite',
@@ -1577,7 +1583,7 @@ Si le problema persiste, contacta un [[Special:ListUsers/sysop|administrator]].'
 Le servitor non ha essite configurate pro passar iste information.
 Illo pote esser basate super CGI e non pote supportar img_auth.
 Vide http://www.mediawiki.org/wiki/Manual:Image_Authorization .',
-'img-auth-notindir'     => 'Le cammino requestate non es in le directorio de cargas configurate.',
+'img-auth-notindir'     => 'Le cammino requestate non es in le directorio de incargamentos configurate.',
 'img-auth-badtitle'     => 'Impossibile construer un titulo valide ex "$1".',
 'img-auth-nologinnWL'   => 'Tu non ha aperite un session e "$1" non es in le lista blanc.',
 'img-auth-nofile'       => 'File "$1" non existe.',
@@ -1589,11 +1595,21 @@ Iste wiki es configurate como un wiki public.
 Pro securitate optimal, img_auth.php es disactivate.',
 'img-auth-noread'       => 'Le usator non ha accesso pro leger "$1".',
 
+# HTTP errors
+'http-invalid-url'      => 'URL invalide: $1',
+'http-invalid-scheme'   => 'URLs con le schema "$1" non es supportate',
+'http-request-error'    => 'Error incognite durante le invio del requesta.',
+'http-read-error'       => 'Error de lectura HTTP.',
+'http-timed-out'        => 'Le requesta HTTP ha expirate.',
+'http-curl-error'       => 'Error al obtener datos del URL: $1',
+'http-host-unreachable' => 'Non poteva acceder al URL',
+'http-bad-status'       => 'Un problema occurreva durante le requesta HTTP: $1 $2',
+
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Non poteva acceder al URL',
 'upload-curl-error6-text'  => 'Le adresse URL fornite es inaccessibile.
 Per favor reverifica que le adresse URL sia correcte e que le sito sia in operation.',
-'upload-curl-error28'      => 'Le cargamento se prolongava troppo',
+'upload-curl-error28'      => 'Le incargamento se prolongava troppo',
 'upload-curl-error28-text' => 'Le sito non respondeva intra le limite de tempore.
 Per favor controla que le sito sia in operation, attende un poco e reprova.
 Pote esser preferite reprovar quando le sito es minus occupate.',
@@ -1606,8 +1622,8 @@ Pote esser preferite reprovar quando le sito es minus occupate.',
 'upload_source_file' => ' (un file in tu computator)',
 
 # Special:ListFiles
-'listfiles-summary'     => 'Iste pagina special monstra tote le files cargate.
-Per predefinition le ultime files cargate se monstra al initio del lista.
+'listfiles-summary'     => 'Iste pagina special monstra tote le files incargate.
+Per predefinition le ultime files incargate se monstra al initio del lista.
 Tu pote reordinar le lista con un clic super le titulo de un columna.',
 'listfiles_search_for'  => 'Cercar un nomine de media:',
 'imgfile'               => 'file',
@@ -1651,8 +1667,8 @@ Vide le [$2 pagina de description del file] pro ulterior informationes.',
 'sharedupload-desc-here'    => 'Iste file proveni de $1 e pote esser usate per altere projectos.
 Le description de su [$2 pagina de description] ibi es monstrate in basso.',
 'filepage-nofile'           => 'Nulle file con iste nomine existe.',
-'filepage-nofile-link'      => 'Nulle file con iste nomine existe, ma tu pote [$1 cargar lo].',
-'uploadnewversion-linktext' => 'Cargar un nove version de iste file',
+'filepage-nofile-link'      => 'Nulle file con iste nomine existe, ma tu pote [$1 incargar lo].',
+'uploadnewversion-linktext' => 'Incargar un nove version de iste file',
 'shared-repo-from'          => 'ab $1',
 'shared-repo'               => 'un deposito pro uso in commun',
 
@@ -1722,7 +1738,7 @@ Memora verificar que non existe altere ligamines al patronos ante que tu los del
 'statistics-articles'          => 'Paginas de contento',
 'statistics-pages'             => 'Paginas',
 'statistics-pages-desc'        => 'Tote le paginas del wiki, includente paginas de discussion, redirectiones, etc.',
-'statistics-files'             => 'Files cargate',
+'statistics-files'             => 'Files incargate',
 'statistics-edits'             => 'Modificationes de paginas depost le installation de {{SITENAME}}',
 'statistics-edits-average'     => 'Media del modificationes per pagina',
 'statistics-views-total'       => 'Visitas total',
@@ -2019,6 +2035,9 @@ Como alternativa tu pote reinitialisar le optiones de notification pro tote le p
 Pro cambiar le configuration de tu observatorio, visita
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+Pro retirar le pagina de tu observatorio, visita
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 Feedback e ulterior assistentia:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2135,7 +2154,7 @@ Tu pote cambiar le nivello de protection de iste pagina, ma isto non cambiara le
 'restriction-edit'   => 'Modificar',
 'restriction-move'   => 'Renominar',
 'restriction-create' => 'Crear',
-'restriction-upload' => 'Cargar',
+'restriction-upload' => 'Incargar',
 
 # Restriction levels
 'restriction-level-sysop'         => 'completemente protegite',
@@ -2169,7 +2188,7 @@ Es possibile que le adresse URL es invalide, o que le version ha essite restaura
 'undeletebtn'                  => 'Restaurar',
 'undeletelink'                 => 'vider/restaurar',
 'undeleteviewlink'             => 'vider',
-'undeletereset'                => 'Reinitiar',
+'undeletereset'                => 'Reinitialisar',
 'undeleteinvert'               => 'Inverter selection',
 'undeletecomment'              => 'Commento:',
 'undeletedarticle'             => 'restaurava "[[$1]]"',
@@ -2235,7 +2254,7 @@ $1',
 'nolinkshere-ns'           => "Nulle pagina liga a '''[[:$1]]''' in le spatio de nomines seligite.",
 'isredirect'               => 'pagina de redirection',
 'istemplate'               => 'transclusion',
-'isimage'                  => 'imagine inserite in pagina',
+'isimage'                  => 'ligamine al imagine',
 'whatlinkshere-prev'       => '{{PLURAL:$1|precedente|precedente $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|sequente|sequente $1}}',
 'whatlinkshere-links'      => '← ligamines',
@@ -2350,6 +2369,7 @@ $1 es ja blocate. Esque tu vole cambiar le configurationes?',
 'ipb_blocked_as_range'            => 'Error: Le IP $1 non es blocate directemente e non pote esser disblocate.
 Illo es, nonobstante, blocate como parte del intervallo $2, le qual pote esser disblocate.',
 'ip_range_invalid'                => 'Intervallo de adresses IP invalide.',
+'ip_range_toolarge'               => 'Non es permittite blocar un gamma de adresses IP plus grande que /$1.',
 'blockme'                         => 'Blocar me',
 'proxyblocker'                    => 'Blocator de proxy',
 'proxyblocker-disabled'           => 'Iste function is disactivate.',
@@ -2409,6 +2429,7 @@ per favor assecura te de haber comprendite le consequentias de isto ante de cont
 
 Il tal casos, tu debera renominar o fusionar le pagina manualmente si desirate.",
 'movearticle'                  => 'Renominar pagina:',
+'moveuserpage-warning'         => "'''Attention:''' Tu es super le puncto de renominar un pagina de usator. Nota ben que solmente le pagina, e ''non'' le usator, essera renominate.",
 'movenologin'                  => 'Tu non ha aperite un session',
 'movenologintext'              => 'Tu debe esser un usator registrate e [[Special:UserLogin|aperir un session]] pro poter renominar un pagina.',
 'movenotallowed'               => 'Tu non ha le permission de renominar paginas.',
@@ -2416,7 +2437,7 @@ Il tal casos, tu debera renominar o fusionar le pagina manualmente si desirate."
 'cant-move-user-page'          => 'Tu non ha le permission de renominar paginas principal de usatores.',
 'cant-move-to-user-page'       => 'Tu non ha le permission de renominar un pagina verso un pagina de usator (excepte un subpagina de usator).',
 'newtitle'                     => 'Al nove titulo:',
-'move-watch'                   => 'Observar iste pagina',
+'move-watch'                   => 'Observar le paginas de origine e de destination',
 'movepagebtn'                  => 'Renominar pagina',
 'pagemovedsub'                 => 'Renomination succedite',
 'movepage-moved'               => '<big>\'\'\'"$1" ha essite renominate a "$2"\'\'\'</big>',
@@ -2463,8 +2484,8 @@ non pote renominar un pagina al mesme titulo.',
 'imageinvalidfilename'         => 'Le nomine del file de destination es invalide',
 'fix-double-redirects'         => 'Actualisar tote le redirectiones que puncta verso le titulo original',
 'move-leave-redirect'          => 'Lassar un redirection',
-'protectedpagemovewarning'     => "'''ATTENTION:''' Iste pagina ha essite serrate de modo que solmente usatores con privilegios de administrator pote renominar lo.",
-'semiprotectedpagemovewarning' => "'''Nota:''' Iste pagina ha essite serrate de modo que solmente usatores registrate pote renominar lo.",
+'protectedpagemovewarning'     => "'''Attention:''' Iste pagina ha essite protegite de sorta que solmente usatores con privilegios de administrator pote renominar lo. Le ultime entrata del registro es fornite hic infra pro referentia:",
+'semiprotectedpagemovewarning' => "'''Nota:''' Iste pagina ha essite protegite de sorta que solmente usatores registrate pote renominar lo. Le ultime entrata del registro es fornite hic infra pro referentia:",
 'move-over-sharedrepo'         => '== File existe ==
 [[:$1]] existe ja in un deposito usate in commun. Si tu renomina le file a iste titulo, illo supplantara le file del deposito.',
 'file-exists-sharedrepo'       => 'Le nomine de file seligite es ja in uso in un deposito usate in commun.
@@ -2486,7 +2507,7 @@ In le secunde caso tu pote etiam usar un ligamine, p.ex. [[{{#Special:Export}}/{
 'export-addcat'     => 'Adder',
 'export-addnstext'  => 'Adder paginas ab le spatio de nomines:',
 'export-addns'      => 'Adder',
-'export-download'   => 'Immagazinar como file',
+'export-download'   => 'Salveguardar como file',
 'export-templates'  => 'Includer patronos',
 'export-pagelinks'  => 'Includer paginas ligate a un profunditate de:',
 
@@ -2532,8 +2553,8 @@ Tote le actiones de importation transwiki se registra in le [[Special:Log/import
 'import-interwiki-namespace' => 'Spatio de nomines de destination:',
 'import-upload-filename'     => 'Nomine del file:',
 'import-comment'             => 'Commento:',
-'importtext'                 => 'Per favor exporta le file del wiki de origine con le [[Special:Export|facilitate pro exportar]].
-Immagazina lo in tu disco e carga lo hic.',
+'importtext'                 => 'Per favor exporta le file del wiki de origine con le [[Special:Export|facilitate de exportation]].
+Salveguarda lo in tu computator e incarga lo hic.',
 'importstart'                => 'Importation de paginas in curso…',
 'import-revision-count'      => '$1 {{PLURAL:$1|version|versiones}}',
 'importnopages'              => 'Nulle paginas a importar.',
@@ -2544,23 +2565,23 @@ Immagazina lo in tu disco e carga lo hic.',
 'importnotext'               => 'Texto vacue o mancante',
 'importsuccess'              => 'Importation complete!',
 'importhistoryconflict'      => 'Existe un conflicto in le historia de versiones (es possibile que iste pagina ha essite importate anteriormente)',
-'importnosources'            => 'Nulle origine de importation transwiki ha essite definite e le cargas de historia directe es disactivate.',
-'importnofile'               => 'Nulle file de importation esseva cargate.',
-'importuploaderrorsize'      => 'Le carga del file de importation ha fallite. Le grandor del file excede le limite pro cargas.',
-'importuploaderrorpartial'   => 'Le carga del file de importation ha fallite. Le file esseva cargate solmente partialmente.',
-'importuploaderrortemp'      => 'Le carga del file de importation ha fallite. Un directorio temporari manca.',
+'importnosources'            => 'Nulle origine de importation transwiki ha essite definite e le incargamento directe de historias es disactivate.',
+'importnofile'               => 'Nulle file de importation esseva incargate.',
+'importuploaderrorsize'      => 'Le incargamento del file de importation ha fallite. Le grandor del file excede le limite pro incargamentos.',
+'importuploaderrorpartial'   => 'Le incargamento del file de importation ha fallite. Le file esseva incargate solmente in parte.',
+'importuploaderrortemp'      => 'Le incargamento del file de importation ha fallite. Un directorio temporari manca.',
 'import-parse-failure'       => 'Error syntactic durante importation XML',
 'import-noarticle'           => 'Nulle pagina a importar!',
 'import-nonewrevisions'      => 'Tote le versiones habeva ja essite importate anteriormente.',
 'xml-error-string'           => '$1 al linea $2, col $3 (byte $4): $5',
-'import-upload'              => 'Cargar datos XML',
+'import-upload'              => 'Incargar datos XML',
 'import-token-mismatch'      => 'Perdita del datos del session. Per favor reprova.',
 'import-invalid-interwiki'   => 'Non pote importar ab le wiki specificate.',
 
 # Import log
 'importlogpage'                    => 'Registro de importationes',
 'importlogpagetext'                => 'Importationes administrative de paginas con historia de modificationes desde altere wikis.',
-'import-logentry-upload'           => 'importava [[$1]] per medio de carga de file',
+'import-logentry-upload'           => 'importava [[$1]] per incargamento de file',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|version|versiones}}',
 'import-logentry-interwiki'        => 'importava $1 transwiki',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|version|versiones}} desde $2',
@@ -2607,7 +2628,7 @@ Tu pote vider su codice-fonte.',
 'tooltip-feed-atom'               => 'Syndication Atom pro iste pagina',
 'tooltip-t-contributions'         => 'Vider le lista de contributiones de iste usator',
 'tooltip-t-emailuser'             => 'Inviar un e-mail a iste usator',
-'tooltip-t-upload'                => 'Cargar files',
+'tooltip-t-upload'                => 'Incargar files',
 'tooltip-t-specialpages'          => 'Lista de tote le paginas special',
 'tooltip-t-print'                 => 'Version imprimibile de iste pagina',
 'tooltip-t-permalink'             => 'Ligamine permanente a iste version del pagina',
@@ -2628,7 +2649,7 @@ Tu pote vider su codice-fonte.',
 'tooltip-compareselectedversions' => 'Vider le differentias inter le seligite duo versiones de iste pagina.',
 'tooltip-watch'                   => 'Adder iste pagina a tu observatorio',
 'tooltip-recreate'                => 'Recrear le pagina nonobstante que illo ha essite delite',
-'tooltip-upload'                  => 'Comencia cargar',
+'tooltip-upload'                  => 'Comenciar le incargamento',
 'tooltip-rollback'                => '"Revocar" reverte le modification(es) de iste pagina del ultime contributor con un singule clic.',
 'tooltip-undo'                    => '"Annullar" reverte iste modification e aperi le formulario de modification in modo de previsualistion.
 Es possibile adder un motivo in le summario.',
@@ -2645,7 +2666,7 @@ Es possibile adder un motivo in le summario.',
 'modern.css'      => '/* Le CSS placiate hic afficera le usatores del stilo Modern */',
 
 # Scripts
-'common.js'      => '/* Omne JavaScript hic se executara pro tote le usatores a cata carga de pagina. */',
+'common.js'      => '/* Omne JavaScript hic se executara pro tote le usatores a cata cargamento de pagina. */',
 'standard.js'    => '/* Omne JavaScript hic se executara pro le usatores del stilo Standard */',
 'nostalgia.js'   => '/* Omne JavaScript hic se executara pro le usatores del stilo Nostalgia */',
 'cologneblue.js' => '/* Omne JavaScript hic se executara pro le usatores del stilo Cologne Blue */',
@@ -2674,7 +2695,7 @@ Es possibile adder un motivo in le summario.',
 
 # Spam protection
 'spamprotectiontitle' => 'Filtro de protection antispam',
-'spamprotectiontext'  => 'Le pagina que tu voleva immagazinar esseva blocate per le filtro antispam.
+'spamprotectiontext'  => 'Le pagina que tu voleva salveguardar esseva blocate per le filtro antispam.
 Le causa es probabilemente un ligamine verso un sito externe que es presente in un lista nigre.',
 'spamprotectionmatch' => 'Le sequente texto es lo que activava nostre filtro antispam: $1',
 'spambot_username'    => 'Nettamento de spam in MediaWiki',
@@ -2724,7 +2745,7 @@ per favor vide math/README pro configurar lo.",
 'markaspatrolleddiff'                 => 'Marcar como patruliate',
 'markaspatrolledtext'                 => 'Marcar iste pagina como patruliate',
 'markedaspatrolled'                   => 'Marcate como patruliate',
-'markedaspatrolledtext'               => 'Le version seligite ha essite marcate como patruliate.',
+'markedaspatrolledtext'               => 'Le version seligite de [[:$1]] ha essite marcate como patruliate.',
 'rcpatroldisabled'                    => 'Patrulia de modificationes recente disactivate',
 'rcpatroldisabledtext'                => 'Le functionalitate de patrulia de modificationes recente es disactivate al momento.',
 'markedaspatrollederror'              => 'Impossibile marcar como patruliate',
@@ -2772,7 +2793,7 @@ Le execution de illo pote compromitter le securitate de tu systema.<hr />",
 # Special:NewFiles
 'newimages'             => 'Galeria de nove files',
 'imagelisttext'         => "Infra es un lista de '''$1''' {{PLURAL:$1|imagine|imagines}} ordinate $2.",
-'newimages-summary'     => 'Iste pagina special detalia le recente files cargate.',
+'newimages-summary'     => 'Iste pagina special detalia le recente files incargate.',
 'newimages-legend'      => 'Filtro',
 'newimages-label'       => 'Nomine del file (o un parte de illo):',
 'showhidebots'          => '($1 bots)',
@@ -3080,31 +3101,31 @@ Le alteres essera initialmente celate.
 'limitall'         => 'totes',
 
 # E-mail address confirmation
-'confirmemail'             => 'Confirmar adresse de e-mail',
-'confirmemail_noemail'     => 'Tu non ha configurate un adresse de e-mail valide in tu [[Special:Preferences|preferentias de usator]].',
-'confirmemail_text'        => '{{SITENAME}} require que tu valida tu adresse de e-mail ante que tu usa functiones involvente e-mail.
+'confirmemail'              => 'Confirmar adresse de e-mail',
+'confirmemail_noemail'      => 'Tu non ha configurate un adresse de e-mail valide in tu [[Special:Preferences|preferentias de usator]].',
+'confirmemail_text'         => '{{SITENAME}} require que tu valida tu adresse de e-mail ante que tu usa functiones involvente e-mail.
 Activa le button infra pro inviar un message de confirmation a tu adresse.
 Le message includera un ligamine continente un codice;
 visita le ligamine in tu navigator pro confirmar que tu adresse de e-mail es valide.',
-'confirmemail_pending'     => 'Un codice de confirmation ha ja essite inviate a te;
+'confirmemail_pending'      => 'Un codice de confirmation ha ja essite inviate a te;
 si tu ha recentemente create tu conto, es recommendate attender le arrivata de illo durante alcun minutas ante de provar requestar un nove codice.',
-'confirmemail_send'        => 'Inviar un codice de confirmation',
-'confirmemail_sent'        => 'Message de confirmation inviate.',
-'confirmemail_oncreate'    => 'Un codice de confirmation ha essite inviate a tu adresse de e-mail.
+'confirmemail_send'         => 'Inviar un codice de confirmation',
+'confirmemail_sent'         => 'Message de confirmation inviate.',
+'confirmemail_oncreate'     => 'Un codice de confirmation ha essite inviate a tu adresse de e-mail.
 Iste codice non es necessari pro aperir un session, ma es requirite pro activar omne functiones a base de e-mail in le wiki.',
-'confirmemail_sendfailed'  => '{{SITENAME}} non poteva inviar te le message de confirmation.
+'confirmemail_sendfailed'   => '{{SITENAME}} non poteva inviar te le message de confirmation.
 Per favor verifica que tu adresse de e-mail non ha characteres invalide.
 
 Le servitor de e-mail retornava: $1',
-'confirmemail_invalid'     => 'Codice de confirmation invalide.
+'confirmemail_invalid'      => 'Codice de confirmation invalide.
 Es possibile que le codice ha expirate.',
-'confirmemail_needlogin'   => 'Tu debe $1 pro confirmar tu adresse de e-mail.',
-'confirmemail_success'     => 'Tu adresse de e-mail ha essite confirmate.
+'confirmemail_needlogin'    => 'Tu debe $1 pro confirmar tu adresse de e-mail.',
+'confirmemail_success'      => 'Tu adresse de e-mail ha essite confirmate.
 Tu pote ora aperir un session e fruer te del wiki.',
-'confirmemail_loggedin'    => 'Tu adresse de e-mail ha ora essite confirmate.',
-'confirmemail_error'       => 'Un problema occureva durante le immagazinage de tu confirmation.',
-'confirmemail_subject'     => 'Confirmation del adresse de e-mail pro {{SITENAME}}',
-'confirmemail_body'        => 'Un persona, probabilemente tu, usante le adresse IP $1,
+'confirmemail_loggedin'     => 'Tu adresse de e-mail ha ora essite confirmate.',
+'confirmemail_error'        => 'Un problema occurreva durante le salveguarda de tu confirmation.',
+'confirmemail_subject'      => 'Confirmation del adresse de e-mail pro {{SITENAME}}',
+'confirmemail_body'         => 'Un persona, probabilemente tu, usante le adresse IP $1,
 ha registrate un conto "$2" con iste adresse de e-mail in {{SITENAME}}.
 
 Pro confirmar que iste conto es de facto tue, e pro activar le functiones
@@ -3118,8 +3139,22 @@ pro cancellar le confirmation del adresse de e-mail:
 $5
 
 Iste codice de confirmation expirara a $4.',
-'confirmemail_invalidated' => 'Confirmation del adresse de e-mail cancellate',
-'invalidateemail'          => 'Cancellar confirmation del adresse de e-mail',
+'confirmemail_body_changed' => 'Un persona, probabilemente tu, usante le adresse IP $1,
+ha cambiate le adresse de e-mail del conto "$2" a iste adresse in {{SITENAME}}.
+
+Pro confirmar que iste conto es de facto tue, e pro reactivar le functiones
+de e-mail in {{SITENAME}}, visita iste ligamine in tu navigator:
+
+$3
+
+Si le conto *non* pertine a te, seque iste ligamine
+pro cancellar le confirmation del adresse de e-mail:
+
+$5
+
+Iste codice de confirmation expirara a $4.',
+'confirmemail_invalidated'  => 'Confirmation del adresse de e-mail cancellate',
+'invalidateemail'           => 'Cancellar confirmation del adresse de e-mail',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Le transclusion interwiki es disactivate]',
@@ -3160,7 +3195,7 @@ Per favor confirma que tu realmente vole recrear iste pagina.",
 'table_pager_last'         => 'Ultime pagina',
 'table_pager_limit'        => 'Monstrar $1 entratas per pagina',
 'table_pager_limit_submit' => 'Ir',
-'table_pager_empty'        => 'Nulle resultatos',
+'table_pager_empty'        => 'Nulle resultato',
 
 # Auto-summaries
 'autosumm-blank'   => 'Pagina vacuate',
@@ -3260,7 +3295,7 @@ Entra le nomine del file sin le prefixo \"{{ns:file}}:\".",
 'specialpages-group-other'       => 'Altere paginas special',
 'specialpages-group-login'       => 'Aperir session / crear conto',
 'specialpages-group-changes'     => 'Modificationes recente e registros',
-'specialpages-group-media'       => 'Reportos de media e cargas',
+'specialpages-group-media'       => 'Reportos e incargamentos de multimedia',
 'specialpages-group-users'       => 'Usatores e derectos',
 'specialpages-group-highuse'     => 'Paginas multo usate',
 'specialpages-group-pages'       => 'Listas de paginas',

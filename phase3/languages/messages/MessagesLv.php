@@ -225,9 +225,6 @@ $messages = array(
 'actions'                    => 'Darbības',
 'variants'                   => 'Varianti',
 
-# Metadata in edit box
-'metadata_help' => 'Metadati:',
-
 'errorpagetitle'    => 'Kļūda',
 'returnto'          => 'Atgriezties: $1.',
 'tagline'           => "No ''{{grammar:ģenitīvs|{{SITENAME}}}}''",
@@ -563,8 +560,7 @@ Lūdzu iekļauj šos visos ziņojumos, kurus sūti adminiem, apspriežot šo blo
 'confirmedittext'            => 'Lai varētu izmainīt lapas, vispirms jāapstiprina savu e-pasta adresi.
 Norādi un apstiprini e-pasta adresi savos [[Special:Preferences|lietotāja uzstādījumos]].',
 'nosuchsectiontitle'         => 'Nav šādas nodaļas',
-'nosuchsectiontext'          => 'Tu mēģināji izmainīt neeksistējošu nodaļu.
-Tā kā te nav nodaļas $1, te nav kur saglabāt tavu izmaiņu.',
+'nosuchsectiontext'          => 'Tu mēģināji izmainīt neeksistējošu nodaļu.',
 'loginreqtitle'              => 'Nepieciešama ieiešana',
 'loginreqlink'               => 'login',
 'accmailtitle'               => 'Parole izsūtīta.',
@@ -1080,7 +1076,6 @@ Ja tu joprojām gribi augšuplādēt šo failu, tad mēģini vēlreiz, ar citu f
 'uploaddisabled'         => 'Augšupielāde atslēgta',
 'uploaddisabledtext'     => 'Failu augšupielāde ir atslēgta.',
 'uploadscripted'         => 'Šis fails satur HTML vai skriptu kodu, kuru, interneta pārlūks, var kļūdas pēc, mēģināt interpretēt (ar potenciāli sliktām sekām).',
-'uploadcorrupt'          => 'Šis fails ir bojāts, vai arī tam ir nekorekts paplašinājums. Lūdzu pārbaudi failu un augšupielādē vēlreiz.',
 'uploadvirus'            => 'Šis fails satur vīrusu! Sīkāk: $1',
 'sourcefilename'         => 'Augšuplādējamais fails:',
 'destfilename'           => 'Vajadzīgais faila nosaukums:',

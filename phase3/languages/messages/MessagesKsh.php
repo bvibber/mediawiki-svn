@@ -387,9 +387,6 @@ Dat es och all op Änglesch:
 'namespaces'                 => 'Appachtemangs',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metta-Daate:',
-
 'errorpagetitle'    => 'Fähler',
 'returnto'          => 'Jangk widder noh: „$1“.',
 'tagline'           => 'Us de {{SITENAME}}',
@@ -840,9 +837,7 @@ Do kanns och noch en et <span class=\"plainlinks\">[{{fullurl:Special:IPBlockLis
 'confirmedittext'                  => 'Do muss Ding E-Mail Adress ald bestätich han, ih dat De heh Sigge ändere darfs.
 Drag Ding E-Mail Adress en Ding [[Special:Preferences|ming Enstellunge]] en, un dun „Dun Ding E-Mail Adress bestätije looße“ klicke.',
 'nosuchsectiontitle'               => "Dä Afschnitt ham'mer nit",
-'nosuchsectiontext'                => 'Do häß versooch, ene Avschnet ze ändere,
-dä mer janit han, däm sing Nommer es <strong>„$1“</strong>.
-Esu lang wie et dä nit jit, hätte mer keine Plaz, wo hen met Dingem Täx.',
+'nosuchsectiontext'                => 'Do häß versooch, ene Avschnet ze ändere, dä mer janit han.',
 'loginreqtitle'                    => 'Enlogge es nüdich',
 'loginreqlink'                     => 'enjelogg sin',
 'loginreqpagetext'                 => 'Do mööts eets ens $1, öm ander Sigge aanzeluure.',
@@ -1694,12 +1689,6 @@ wann De se noch han wells.',
 'php-uploaddisabledtext'      => 'Et Dateie Huhlade es en PHP affjeschalldt.
 Bes esu joot un donn noh de Enshtellung <i lang="en">file_uploads</i> loore.',
 'uploadscripted'              => 'En dä Datei es HTML dren oder Code vun enem Skripp, dä künnt Dinge Brauser en do verkihrte Hals krije un usführe.',
-'uploadcorrupt'               => 'Schad.
-<br />
-De Datei es kapott, hät en verkihrte File Name Extention, oder irjends ene andere Dress es passeet.
-<br />
-<br />
-Luur ens noh dä Datei, un dann muss de et noch ens versöke.',
 'uploadvirus'                 => 'Esu ene Dress:
 <br />
 En dä Datei stich e Kompjutervirus!

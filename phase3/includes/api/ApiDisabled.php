@@ -1,10 +1,10 @@
 <?php
 
-/*
+/**
  * Created on Sep 25, 2008
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
+ * Copyright © 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,11 +22,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once( "ApiBase.php" );
 }
-
 
 /**
  * API module that dies with an error immediately.
@@ -40,12 +39,12 @@ if (!defined('MEDIAWIKI')) {
  */
 class ApiDisabled extends ApiBase {
 
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	public function execute() {
-		$this->dieUsage("The ``{$this->getModuleName()}'' module has been disabled.", 'moduledisabled');
+		$this->dieUsage( "The ``{$this->getModuleName()}'' module has been disabled.", 'moduledisabled' );
 	}
 
 	public function isReadMode() {
@@ -53,11 +52,11 @@ class ApiDisabled extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array ();
+		return array();
 	}
 
 	public function getParamDescription() {
-		return array ();
+		return array();
 	}
 
 	public function getDescription() {
@@ -67,7 +66,7 @@ class ApiDisabled extends ApiBase {
 	}
 
 	protected function getExamples() {
-		return array ();
+		return array();
 	}
 
 	public function getVersion() {

@@ -48,6 +48,18 @@ class SearchEngine {
 	}
 	
 	/**
+	 * When overridden in derived class, performs database-specific conversions
+	 * on text to be used for searching or updating search index.
+	 * Default implementation does nothing (simply returns $string).
+	 *
+	 * @param $string string: String to process
+	 * @return string
+	 */
+	public function normalizeText( $string ) {
+		return $string;
+	}
+
+	/**
 	 * Transform search term in cases when parts of the query came as different GET params (when supported)
 	 * e.g. for prefix queries: search=test&prefix=Main_Page/Archive -> test prefix:Main Page/Archive
 	 */
@@ -63,15 +75,29 @@ class SearchEngine {
 	 * @return Title
 	 */
 	public static function getNearMatch( $searchterm ) {
+		$title = self::getNearMatchInternal( $searchterm );
+		
+		wfRunHooks( 'SearchGetNearMatchComplete', array( $searchterm, &$title ) );
+		return $title;
+	}
+	
+	/**
+	 * Really find the title match.
+	 */
+	private static function getNearMatchInternal( $searchterm ) {
 		global $wgContLang;
 
 		$allSearchTerms = array($searchterm);
 
-		if($wgContLang->hasVariants()){
+		if ( $wgContLang->hasVariants() ) {
 			$allSearchTerms = array_merge($allSearchTerms,$wgContLang->convertLinkToAllVariants($searchterm));
 		}
 
-		foreach($allSearchTerms as $term){
+		if( !wfRunHooks( 'SearchGetNearMatchBefore', array( $allSearchTerms, &$titleResult ) ) ) {
+			return $titleResult;
+		}
+
+		foreach($allSearchTerms as $term) {
 
 			# Exact match? No need to look further.
 			$title = Title::newFromText( $term );
@@ -196,10 +222,12 @@ class SearchEngine {
 	function replacePrefixes( $query ){
 		global $wgContLang;
 
-		if( strpos($query,':') === false )
-			return $query; // nothing to do
-
 		$parsed = $query;
+		if( strpos($query,':') === false ) { // nothing to do
+			wfRunHooks( 'SearchEngineReplacePrefixesComplete', array( $this, $query, &$parsed ) );
+			return $parsed;
+		}
+		
 		$allkeyword = wfMsgForContent('searchall').":";
 		if( strncmp($query, $allkeyword, strlen($allkeyword)) == 0 ){
 			$this->namespaces = null;
@@ -213,7 +241,9 @@ class SearchEngine {
 			}
 		}
 		if(trim($parsed) == '')
-			return $query; // prefix was the whole query
+			$parsed = $query; // prefix was the whole query
+
+		wfRunHooks( 'SearchEngineReplacePrefixesComplete', array( $this, $query, &$parsed ) );
 
 		return $parsed;
 	}
@@ -230,6 +260,8 @@ class SearchEngine {
 				$arr[$ns] = $name;
 			}
 		}
+		
+		wfRunHooks( 'SearchableNamespaces', array( &$arr ) );
 		return $arr;
 	}
 	
@@ -512,6 +544,37 @@ class SearchResultSet {
 	}
 }
 
+/**
+ * This class is used for different SQL-based search engines shipped with MediaWiki
+ */
+class SqlSearchResultSet extends SearchResultSet {
+	function __construct( $resultSet, $terms ) {
+		$this->mResultSet = $resultSet;
+		$this->mTerms = $terms;
+	}
+
+	function termMatches() {
+		return $this->mTerms;
+	}
+
+	function numRows() {
+		return $this->mResultSet->numRows();
+	}
+
+	function next() {
+		if ($this->mResultSet === false )
+			return false;
+
+		$row = $this->mResultSet->fetchObject();
+		if ($row === false)
+			return false;
+		return new SearchResult($row);
+	}
+
+	function free() {
+		$this->mResultSet->free();
+	}
+}
 
 /**
  * @ingroup Search

@@ -134,9 +134,12 @@ class SkinTemplate extends Skin {
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks, $wgUseSiteJs, $wgDebugComments;
-		global $wgArticlePath, $wgScriptPath, $wgServer;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgProfiler;
 
 		wfProfileIn( __METHOD__ );
+		if ( is_object( $wgProfiler ) ) {
+			$wgProfiler->setTemplated( true );
+		}
 
 		$oldid = $wgRequest->getVal( 'oldid' );
 		$diff = $wgRequest->getVal( 'diff' );
@@ -304,7 +307,26 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
 		$tpl->set( 'userlang', $wgLang->getCode() );
-		$tpl->set( 'userlangattributes', 'lang="' . $wgLang->getCode() . '" xml:lang="' . $wgLang->getCode() . '"' );
+
+		// Users can have their language set differently than the
+		// content of the wiki. For these users, tell the web browser
+		// that interface elements are in a different language.
+		$tpl->set( 'userlangattributes', '');
+		$tpl->set( 'specialpageattributes', '');
+
+		$lang = $wgLang->getCode();
+		$dir  = $wgLang->getDir();
+		if ( $lang !== $wgContLang->getCode() || $dir !== $wgContLang->getDir() ) {
+			$attrs = " lang='$lang' dir='$dir'";
+
+			$tpl->set( 'userlangattributes', $attrs );
+
+			// The content of SpecialPages should be presented in the
+			// user's language. Content of regular pages should not be touched.
+			if($this->mTitle->isSpecialPage()) {
+				$tpl->set( 'specialpageattributes', $attrs );
+			}
+		}
 
 		$newtalks = $wgUser->getNewMessageLinks();
 
@@ -472,14 +494,6 @@ class SkinTemplate extends Skin {
 		$content_actions = $this->buildContentActionUrls();
 		$tpl->setRef( 'content_actions', $content_actions );
 
-		// XXX: attach this from javascript, same with section editing
-		if( $this->iseditable && $wgUser->getOption( 'editondblclick' ) ){
-			$encEditUrl = Xml::escapeJsString( $this->mTitle->getLocalUrl( $this->editUrlOptions() ) );
-			$tpl->set( 'body_ondblclick', 'document.location = "' . $encEditUrl . '";' );
-		} else {
-			$tpl->set( 'body_ondblclick', false );
-		}
-		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
 
@@ -741,19 +755,10 @@ class SkinTemplate extends Skin {
 				// adds new section link if page is a current revision of a talk page or
 				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
-						$urlArgs = 'action=edit&section=new';
-						$preloadMsg = wfMsgForContent( 'talk-addsection-preload' );
-						$editintroMsg = wfMsgForContent( 'talk-addsection-editintro' );
-						if( '' != $preloadMsg  ) {
-							$urlArgs .= '&preload=' . urlencode( $preloadMsg );
-						}
-						if( '' != $editintroMsg ) {
-							$urlArgs .= '&editintro=' . urlencode( $editintroMsg );
-						}
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
-							'href' => $this->mTitle->getLocalUrl( $urlArgs )
+							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
 						);
 					}
 				}
