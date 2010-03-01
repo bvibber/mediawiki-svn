@@ -222,8 +222,17 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 	background-image: url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png );
 }
 /* Template Editor Dialogs */
-.wikiEditor-template-dialog-label {
+.wikiEditor-template-dialog-fields label {
 	text-transform: capitalize;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper {
+	padding: 0 0 25px 0;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper label {
+	display: block;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper input {
+	width: 100%;
 }
 /* Self Clearing Floats */
 .wikieditor-toolbar-table-dimension-fields:after,
