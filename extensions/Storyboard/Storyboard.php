@@ -47,8 +47,8 @@ $wgSpecialPages['StoryReview'] = 'SpecialStoryReview';
 $wgSpecialPageGroups['StoryReview'] = 'contribution';
 
 // API
-$wgAutoloadClasses['ApiStoryboardStoriesFeed'] = "{$egStoryboardDir}api/ApiStoryboardStoriesFeed.php";
-$wgAPIListModules['stories'] = 'ApiStoryboardStoriesFeed';
+$wgAutoloadClasses['ApiQueryStories'] = "{$egStoryboardDir}api/ApiQueryStories.php";
+$wgAPIListModules['stories'] = 'ApiQueryStories';
 $wgAutoloadClasses['ApiStoryReview'] = "{$egStoryboardDir}api/ApiStoryReview.php";
 $wgAPIModules['storyreview'] = 'ApiStoryReview';
 

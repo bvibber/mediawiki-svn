@@ -2,7 +2,7 @@
 /**
  * API extension for Storyboard.
  * 
- * @file ApiStoryboardStoriesFeed.php
+ * @file ApiQueryStories.php
  * @ingroup Storyboard
  * 
  * @author Jeroen De Dauw
@@ -33,7 +33,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @ingroup Storyboard
  */
-class ApiStoryboardStoriesFeed extends ApiQueryBase {
+class ApiQueryStories extends ApiQueryBase {
 	public function __construct( $main, $action ) {
 		parent :: __construct( $main, $action, 'st' );
 	}
