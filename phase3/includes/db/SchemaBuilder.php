@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
  *
  * @author Chad Horohoe <chad@anyonecanedit.org>
- * @todo Handle custom table options, eg: MyISAM for searchindex, MAX_ROWS, etc
  * @todo Handle lengths on indexes, eg: el_from, el_to(40)
  * @toto Handle REFERENCES/ON DELETE CASCADE
  */
@@ -35,8 +34,19 @@ abstract class SchemaBuilder {
 	// Any options for the table creation. Things like ENGINE=InnoDB
 	protected $tblOptions = array();
 
+	/**
+	 * Pieces accessible to extensions
+	 */
+
 	// Our table definition
-	protected $tables = array();
+	public $tables = array();
+
+	// Old tables that should be deleted if they're still present
+	public $tablesToDelete = array();
+	
+	/**
+	 * End externally-visible fields
+	 */
 
 	/**
 	 * Constructor. We hide it so people don't try to construct their own schema
@@ -45,7 +55,7 @@ abstract class SchemaBuilder {
 	 * @param $schema Array See Schema::$defaultTables for more information
 	 */
 	private final function __construct( $schema ) {
-		wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$schema ) );
+		wfRunHooks( 'LoadExtensionSchemaUpdates', array( $this ) );
 		$this->tables = $schema;
 		$this->addDatabaseSpecificTables();
 	}
@@ -123,6 +133,11 @@ abstract class SchemaBuilder {
 	}
 
 	/**
+	 * Returns database type
+	 */
+	abstract public function getType();
+
+	/**
 	 * Given an abstract table definition, return a DBMS-specific command to
 	 * create it.
 	 * @param $name The name of the table, like 'page' or 'revision'
@@ -149,6 +164,11 @@ abstract class SchemaBuilder {
 }
 
 class MysqlSchema extends SchemaBuilder {
+
+	public function getType() {
+		return 'mysql';
+	}
+
 	protected function addDatabaseSpecificTables() {
 		$this->tables['searchindex'] = array(
 			'prefix' => 'si',
@@ -228,9 +248,9 @@ class MysqlSchema extends SchemaBuilder {
 				}
 				$sql .= "{$this->tblPrefix}{$idx} ON $tblName (";
 				foreach( $idxDef as $col ) {
-					$sql .= "{$prefix}{$col},";
+					$sql .= "{$prefix}{$col}, ";
 				}
-				$sql = rtrim( $sql, ',' );
+				$sql = rtrim( $sql, ', ' );
 				$sql .= ");\n";
 			}
 		}
@@ -355,7 +375,11 @@ class SqliteSchema extends SchemaBuilder {
 		'char'      => 'TEXT',
 		'none'      => '',
 	);
-	
+
+	public function getType() {
+		return 'sqlite';
+	}
+
 	/**
 	 * @todo: update updatelog with fts3
 	 */
@@ -368,10 +392,10 @@ class SqliteSchema extends SchemaBuilder {
 				'virtual' => 'FTS3',
 				'fields' => array(
 					'title' => array(
-						'type' => Schema::TYPE_NONE,
+						'type' => 'none',
 					),
 					'text' => array(
-						'type' => Schema::TYPE_NONE,
+						'type' => 'none',
 					),
 				)
 			);
@@ -380,12 +404,15 @@ class SqliteSchema extends SchemaBuilder {
 				'prefix' => 'si',
 				'fields' => array(
 					'title' => array(
-						'type' => Schema::TYPE_TEXT,
+						'type' => 'text',
 					),
 					'text' => array(
-						'type' => Schema::TYPE_TEXT,
+						'type' => 'text',
 					),
 				)
+			);
+			$this->tablesToDelete[] = array_merge( $this->tablesToDelete,
+				array( 'searchindex_content', 'searchindex_segdir', 'searchindex_segments' )
 			);
 		}
 		$db->close();
@@ -418,9 +445,9 @@ class SqliteSchema extends SchemaBuilder {
 				}
 				$sql .= "{$this->tblPrefix}{$idx} ON $tblName (";
 				foreach( $idxDef as $col ) {
-					$sql .= "{$prefix}{$col},";
+					$sql .= "{$prefix}{$col}, ";
 				}
-				$sql = rtrim( $sql, ',' );
+				$sql = rtrim( $sql, ', ' );
 				$sql .= ");\n";
 			}
 		}
