@@ -1522,7 +1522,7 @@ mw.EmbedPlayer.prototype = {
 			var missingType = '';
 			var or = '';
 			for ( var i = 0; i < this.mediaElement.sources.length; i++ ) {
-				missing_type += or + this.mediaElement.sources[i].mime_type;
+				missingType += or + this.mediaElement.sources[i].mime_type;
 				or = ' or ';
 			}
 			// Get from parent playlist if set: 		
