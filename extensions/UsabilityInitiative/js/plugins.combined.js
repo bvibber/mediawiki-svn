@@ -9406,10 +9406,7 @@ fn: {
 						var $paramRow = $( '<tr />' ).addClass( 'wikiEditor-template-dialog-row' );
 						$( '<td />' ).addClass( 'wikiEditor-template-dialog-label' ).text(
 							typeof param == 'string' ?
-							param.name.replace( /[\_\-]/g, ' ' )
-								.replace( /^(.)|\s(.)/g, function( first ) {
-									return first.toUpperCase();
-								} ) :
+							param.name.replace( /[\_\-]/g, ' ' ) :
 							param.name
 						).appendTo( $paramRow );
 						$( '<td />' ).addClass( 'wikiEditor-template-dialog-value' ).append(
