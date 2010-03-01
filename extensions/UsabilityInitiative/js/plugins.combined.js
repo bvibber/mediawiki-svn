@@ -5259,7 +5259,8 @@ $.fn.autoEllipsis = function( options ) {
 	} );
 };
 
-} )( jQuery );/*
+} )( jQuery );
+/*
 
 jQuery Browser Plugin
 	* Version 2.3
@@ -5446,7 +5447,8 @@ $.collapsibleTabs = {
 	}
 };
 
-} )( jQuery );/*
+} )( jQuery );
+/*
  * jQuery Color Animations
  * Copyright 2007 John Resig
  * Released under the MIT and GPL licenses.
@@ -5734,26 +5736,6 @@ $.fn.extend( {
 	}
 } );
 } )( jQuery );
-/**
- * Plugin that fills a <select> with namespaces
- */
-
-(function ($) {
-$.fn.namespaceSelector = function( defaultNS ) {
-	if ( typeof defaultNS == 'undefined' )
-		defaultNS = 0;
-	return this.each( function() {
-		for ( var id in wgFormattedNamespaces ) {
-			var opt = $( '<option />' )
-				.attr( 'value', id )
-				.text( wgFormattedNamespaces[id] );
-			if ( id == defaultNS )
-				opt.attr( 'selected', 'selected' );
-			opt.appendTo( $(this) );
-		}
-	});
-};})(jQuery);
-
 /**
  * This plugin provides a generic way to add suggestions to a text box.
  *
@@ -6558,7 +6540,8 @@ scrollToCaretPosition: function( options ) {
 	return retval;
 };
 
-} )( jQuery );/**
+} )( jQuery );
+/**
  * This plugin provides a way to build a wiki-text editing user interface around a textarea.
  * 
  * @example To intialize without any modules:
