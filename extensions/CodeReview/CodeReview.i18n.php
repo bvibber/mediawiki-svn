@@ -298,6 +298,8 @@ $messages['af'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'geverifieer',
 	'code-pathsearch-path' => 'Pad:',
+	'code-revfilter-cr_status' => 'Status = $1',
+	'code-revfilter-cr_author' => 'Outeur = $1',
 	'codereview-batch-submit' => 'Dien in',
 	'code-release-badrange' => 'Die reeks is te groot.',
 	'codereview-subtitle' => 'Vir $1',

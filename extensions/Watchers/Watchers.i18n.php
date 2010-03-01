@@ -469,15 +469,17 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'watchers' => 'Figyelők',
 	'watchers-desc' => 'Megmutatja, hogy [[Special:Watchers|egy adott lapot mely szerkesztők figyelik]]',
 	'watchers_link_title' => 'Ki figyeli ezt a lapot?',
 	'watchers_error_article' => "'''Hiba:''' A lap nem létezik.",
+	'watchers-error-invalid-page' => "'''Hiba:''' a(z) „$1” érvénytelen lapcím.",
 	'watchers_header' => '{{PLURAL:$2|Szerkesztő, aki figyeli|Szerkesztők, akik figyelik}} a(z) „[[:$1]]” című lapot',
 	'watchers_noone_watches' => 'Ezt a lapot nem figyeli senki.',
-	'watchers_x_or_more' => '{{PLURAL:$1|Egy|$1}} vagy több szerkesztő figyeli ezt a lapot.',
+	'watchers_x_or_more' => '{{PLURAL:$1|Egy|$1}} vagy több felhasználó figyelőlistáján szerepel a(z) [[:$2]] lap.',
 	'watchers_less_than_x' => 'Kevesebb, mint {{PLURAL:$1|Egy|$1}} szerkesztő figyeli ezt a lapot.',
 );
 

@@ -1364,7 +1364,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'voctrain_Hello_World' => 'OLA WIKI!',
-	'voctrain_Permission_Denied' => 'Permiso denegado',
+	'voctrain_Permission_Denied' => 'Permisos rexeitados',
 	'voctrain_try_again_' => 'intentalo de novo?',
 	'voctrain_Action_unknown' => 'Acción descoñecida',
 	'voctrain_I_don_t_know_what_to_do_with_action_' => "Non sei o que facer con '%action'.",

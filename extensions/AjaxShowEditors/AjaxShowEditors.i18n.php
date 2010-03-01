@@ -1078,6 +1078,8 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'ajax-se-title' => 'Wanaohariri sasa hivi:',
+	'ajax-se-idling' => '($1s zilizopita)',
 	'ajax-se-pagedoesnotexist' => 'ukurasa haupatikani',
 	'ajax-se-userinvalid' => 'Hitilafu: mtumiaji batili',
 	'ajax-se-usernotfound' => 'Hitilafu: mtumiaji huyu hakuna',

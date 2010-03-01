@@ -473,7 +473,6 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'inspectcache' => 'Pufrowak pruwować',
 	'inspectcache-desc' => 'Jednory nastroj za pytanje zmylkow, za přepruwowanje wobsaha dźěleneho pufrowaka',
-	'inspectcache-ok' => 'W porjadku',
 	'inspectcache-general' => 'Powšitkowny pufrowak',
 	'inspectcache-parser' => 'Parserowy pufrowak',
 	'inspectcache-message' => 'Zdźělenkowy pufrowak',
@@ -481,6 +480,7 @@ $messages['hsb'] = array(
 	'inspectcache-delete' => 'Wuprózdnić',
 	'inspectcache-deleted' => 'Wuprózdnjeny pufrowak',
 	'inspectcache-list' => 'Lisćina',
+	'right-inspectcache' => 'Zapiski pufrowaka wobhladać a zhašeć',
 );
 
 /** Hungarian (Magyar)
@@ -491,7 +491,6 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'inspectcache' => 'Gyorsítótár ellenőrzése',
 	'inspectcache-desc' => 'Egyszerű hibakereső eszköz az osztott gyorsítótár tartalmának vizsgálatára',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Általános gyorsítótár',
 	'inspectcache-parser' => 'Értelmező gyorsítótár',
 	'inspectcache-message' => 'Üzenet gyorsítótár',
@@ -499,6 +498,7 @@ $messages['hu'] = array(
 	'inspectcache-delete' => 'Törlés',
 	'inspectcache-deleted' => 'Törlési gyorsítótár',
 	'inspectcache-list' => 'Listázás',
+	'right-inspectcache' => 'Gyorsítótár-bejegyzések megjelenítése és törlése',
 );
 
 /** Interlingua (Interlingua)
@@ -835,7 +835,6 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'inspectcache' => 'Ispession-a la cache',
 	'inspectcache-desc' => 'Un sempi utiss ëd debug për ispessioné ël contnù dla cache condivisa',
-	'inspectcache-ok' => 'Va bin',
 	'inspectcache-general' => 'Cache general',
 	'inspectcache-parser' => 'Cache dël parser',
 	'inspectcache-message' => 'Cache dij messagi',
@@ -843,6 +842,7 @@ $messages['pms'] = array(
 	'inspectcache-delete' => 'Scansela',
 	'inspectcache-deleted' => 'Cache scanselà',
 	'inspectcache-list' => 'Lista',
+	'right-inspectcache' => 'Varda e scansela le vos ëd cache',
 );
 
 /** Pashto (پښتو)

@@ -212,6 +212,8 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-template-editor-preference' => 'വിക്കി ഫലകങ്ങളിൽ തിരുത്തുവാൻ ഫോം ഉപയോഗിക്കൽ സജ്ജമാക്കുക',
+	'wikieditor-template-editor-dialog-title' => 'ഫലകം തിരുത്തുക',
+	'wikieditor-template-editor-dialog-submit' => 'ശരി',
 );
 
 /** Dutch (Nederlands)

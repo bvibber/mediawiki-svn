@@ -573,16 +573,16 @@ $messages['hsb'] = array(
 	'importfreeimages' => 'Swobodne wobrazy importować',
 	'importfreeimages-desc' => 'Zmóžnja [[Special:ImportFreeImages|import wobrazow z prawej licencu]] z [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Tuta strona ći dowola na Flickr za wobrazami z prihódnej ličencu pytać a je do swojeho wiki importować.',
-	'importfreeimages_noapikey' => 'Njejsy swój kluč Flickr API konfigurował. Prošu požadaj jón [http://www.flickr.com/services/api/misc.api_keys.html jowle] a nastaj $wgFlickrAPIKey w ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Njejsu so žane fota za twoje pytanske kriterije "$1" namakali.',
-	'importfreeimages_invalidurl' => 'URL "$1" płaćiwy wobraz Flickr njeje.',
 	'importfreeimages_owner' => 'Awtor',
 	'importfreeimages_importthis' => 'importować',
 	'importfreeimages_next' => 'Přichodny $1',
-	'importfreeimages_filefromflickr' => '$1 wot wužiwarja <b>[$2]</b> z flickra. Originalny URL',
-	'importfreeimages_promptuserforfilename' => 'Prošu zapodaj mjeno ciloweje dataje:',
-	'importfreeimages_returntoform' => "Abo klikń <a href='$1'>sem</a>, zo by k stronje z pytanskimi wuslědkami wróćił.",
-	'importfreeimages_nophpflickr' => 'Njejsy phpFlickr instalował, prošu nastaj $wgIFphpFlickr w swojej dataji LocalSettings.php.',
+	'importfreeimages_size_square' => 'Kwadrat',
+	'importfreeimages_size_thumbnail' => 'Wobrazk',
+	'importfreeimages_size_small' => 'Mały',
+	'importfreeimages_size_medium' => 'Srěni',
+	'importfreeimages_size_large' => 'Wulki',
+	'importfreeimages_size_original' => 'Originalny',
 );
 
 /** Hungarian (Magyar)
@@ -1026,17 +1026,16 @@ $messages['pms'] = array(
 	'importfreeimages' => 'Ampòrta figure libre',
 	'importfreeimages-desc' => "A dà na manera d'[[Special:ImportFreeImages|amporté fòto con lissensa aproprià]] da [http://www.flickr.com flickr]",
 	'importfreeimages_description' => "Sta pàgina-sì at përmëtt ëd serché fòto con lissensa aproprià da flickr e d'amporteje ant toa wiki.",
-	'importfreeimages_noapikey' => 'It l\'has pa configurà toa ciav API Flickr.
-Për fé sò, për piasì oten na ciav API da [http://www.flickr.com/services/api/misc.api_keys.html sì] e ampòsta $wgFlickrAPIKey an ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Pa gnun-e fòto a son ëstàite trovà con ël tò criteri d'arserca '$1', për piasì preuva torna.",
-	'importfreeimages_invalidurl' => 'Ël colegament "$1" a l\'é pa na figura Flickr bon-a.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'ampòrta sòn sì',
 	'importfreeimages_next' => "$1 ch'a ven",
-	'importfreeimages_filefromflickr' => "$1 ëd l'utent <b>[$2]</b> da flickr. Colegament original",
-	'importfreeimages_promptuserforfilename' => 'Për piasì ansëriss un filename ëd destinassion:',
-	'importfreeimages_returntoform' => "O, sgnaca <a href='$1'>sì</a> për artorné ai tò arzultà d'arserca",
-	'importfreeimages_nophpflickr' => 'It l\'has pa instalà phpFlickr, për piasì ampòsta $wgIFphpFlickr an tò LocalSettings.php.',
+	'importfreeimages_size_square' => 'Quàder',
+	'importfreeimages_size_thumbnail' => 'Figurin-a',
+	'importfreeimages_size_small' => 'Cit',
+	'importfreeimages_size_medium' => 'Medi',
+	'importfreeimages_size_large' => 'Gròss',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Pashto (پښتو)

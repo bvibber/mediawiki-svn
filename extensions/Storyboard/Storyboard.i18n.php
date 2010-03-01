@@ -35,6 +35,7 @@ $messages['af'] = array(
 	'storyboard-name' => 'Storiebord',
 	'storyboard-desc' => "Bied 'n landingsbladsy vir skenkers, 'n bladsy waar verhale ingestuur kan word en 'n koppelvlak om stories te beheer",
 	'right-storyreview' => 'Hersien, wysig, publiseer en verberg stories',
+	'storyboard-publish' => 'Publiseer',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -200,6 +201,7 @@ $messages['pms'] = array(
 	'right-storyreview' => 'Lese torna, modifiché, publiché e stërmé le stòrie',
 	'storyboard-storyreview' => 'Riletura ëd la stòria',
 	'storyboard-publish' => 'Publiché',
+	'storyboard-unpublish' => 'Pùblica pa',
 	'storyboard-reviewed' => 'Revisionà',
 	'storyboard-unreviewed' => 'Pa revisionà',
 );

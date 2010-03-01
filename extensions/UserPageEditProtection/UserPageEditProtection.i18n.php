@@ -72,6 +72,14 @@ $messages['gsw'] = array(
 	'right-editalluserpages' => 'Benutzersyte bearbeite',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'userpageeditprotection-desc' => 'Wobmjezuje wobdźěłowanje na wužiwarskich stronach na wužiwarja a woprawnjenych wobdźěłarjow',
+	'right-editalluserpages' => 'Wužiwarske strony wobdźěłać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

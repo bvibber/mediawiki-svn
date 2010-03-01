@@ -30,6 +30,14 @@ $messages['cy'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'metadataedit-desc' => 'Kategorije, rěčne wotkazy a dowolene předłohi při wobdźěkowanju stronow do separatneho tekstoweho pola stajić',
+	'metadata_help' => 'Metadaty:',
+);
+
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */

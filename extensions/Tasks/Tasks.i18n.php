@@ -117,14 +117,6 @@ Don't change '|' character.",
 	'tasks_status_open' => 'This is an adjective.',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'tasks_table_header_page' => 'Sayfe',
-	'tasks_search_form_title' => 'Mgori',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -137,6 +129,7 @@ $messages['af'] = array(
 	'tasks_search_status' => 'Status',
 	'tasks_previous' => 'Vorige',
 	'tasks_next' => 'Volgende',
+	'tasks_status_closed' => 'Gesluit',
 );
 
 /** Amharic (አማርኛ)
@@ -2273,6 +2266,14 @@ $messages['lb'] = array(
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir "[[$1]]"',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'tasks_table_header_page' => 'Sayfe',
+	'tasks_search_form_title' => 'Mgori',
 );
 
 /** Macedonian (Македонски)

@@ -236,7 +236,7 @@ $messages['gl'] = array(
 	'sendmailtowiki-err-wrongprefix' => 'Prefixo de conta wiki erróneo. Póñase en contacto co administrador.',
 	'sendmailtowiki-err-invalidaccount' => 'Conta non válida. Comprobe o enderezo de correo electrónico de destino.',
 	'sendmailtowiki-err-invalidsender' => 'Remitente non válido. Comprobe o enderezo de correo electrónico de procedencia.',
-	'sendmailtowiki-err-invalidpin' => 'PIN non válido. Acceso denegado.',
+	'sendmailtowiki-err-invalidpin' => 'PIN non válido. Acceso rexeitado.',
 	'sendmailtowiki-err-onlyplain' => 'Debido a posibles erros de interpretación, só se aceptan mensaxes de texto.',
 );
 

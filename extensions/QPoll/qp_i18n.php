@@ -402,6 +402,7 @@ $messages['be-tarask'] = array(
 	'qp_func_invalid_proposal_id' => 'Няслушны ідэнтыфікатар=$3 (ня лік) для апытаньня $1, пытаньня $2',
 	'qp_error_no_such_poll' => 'Няма такога апытаньня ($1).
 Упэўніцеся што апытаньне вызначанае і захаванае, а таксама, што выкарыстоўваецца сымбаль падзелу адрасу #',
+	'qp_error_in_question_header' => 'Няслушны загаловак пытаньня: $1',
 	'qp_error_id_in_stats_mode' => 'Немагчыма вызначаць ідэнтыфікатар апытаньня ў статыстычным рэжыме',
 	'qp_error_dependance_in_stats_mode' => 'Немагчыма вызначаць залежную пасьлядоўнасьць апытаньня ў статыстычным рэжыме',
 	'qp_error_no_stats' => 'Няма статыстычных зьвестак, таму што ніхто яшчэ не падаў голас у гэтым апытаньні (адрас=$1)',
@@ -862,6 +863,7 @@ $messages['gl'] = array(
 	'qp_func_invalid_proposal_id' => 'proposal id=$3 (non un número) non válido para a enquisa $1, pregunta $2',
 	'qp_error_no_such_poll' => 'Non existe tal enquisa ($1).
 Asegúrese de que a enquisa está declarada e gardada, non esqueza usar o carácter delimitador de enderezo #',
+	'qp_error_in_question_header' => 'Cabeceira de pregunta inválida: $1',
 	'qp_error_id_in_stats_mode' => 'Non se pode declarar un ID da enquisa no modo de estatística',
 	'qp_error_dependance_in_stats_mode' => 'Non se pode declarar a cadea de dependencia da enquisa no modo de estatística',
 	'qp_error_no_stats' => 'Non hai datos estatísticos dispoñibles porque aínda ninguén votou nesta enquisa (address=$1)',
@@ -1040,6 +1042,7 @@ $messages['hsb'] = array(
 	'qp_func_invalid_proposal_id' => 'Njepłaćiwy namjet id=$3 (žana ličba) za wothłosowanje $1, prašenje $2',
 	'qp_error_no_such_poll' => 'Tajke wothłosowanje njeje ($1).
 Zawěsć, zo wothłosowanje bu deklarowane a składowane, přeswědč so, zo wužiwaš adresowe dźělatko #',
+	'qp_error_in_question_header' => 'Njepłaćiwy prašenski typ: $1',
 	'qp_error_id_in_stats_mode' => 'Njeje móžno ID wothłosowanja w statistiskim modusu deklarowác',
 	'qp_error_dependance_in_stats_mode' => 'Njeje móžno wotwisnosćowy rjećazk  wothłosowanja w statistiskim modusu deklarować',
 	'qp_error_no_stats' => 'Žane statistiske daty k dispoziciji, dokelž dotal nichtó njeje za tute wothłosowanje hłosował (adresa=$1)',
@@ -1070,6 +1073,7 @@ Zo by wothłosowanje składował, wotpósćel jo, bjeztoho zo by na namjetowe pr
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'pollresults' => 'Az oldal szavazásainak eredményei',
@@ -1106,6 +1110,7 @@ $messages['hu'] = array(
 	'qp_func_invalid_proposal_id' => 'Érvénytelen javaslat id=$3 (nem szám) a(z) $1 szavazás $2 kérdéséhez',
 	'qp_error_no_such_poll' => 'Nincs ilyen szavazás ($1).
 Győződj meg róla, hogy a szavazás deklarálva van, és elmentetted, valamint hogy használtad-e a címhatároló karaktert (#)',
+	'qp_error_in_question_header' => 'Érvénytelen kérdés-fejléc: $1',
 	'qp_error_id_in_stats_mode' => 'Nem deklarálható egy szavazás azonosítója statisztikai módban',
 	'qp_error_dependance_in_stats_mode' => 'Nem deklarálható a szavazás függőségi lánca statisztikai módban',
 	'qp_error_no_stats' => 'A statisztikai adatok nem elérhetőek, mert még senki sem szavazott ezen a szavazáson (address=$1)',
@@ -1705,6 +1710,7 @@ $messages['pms'] = array(
 	'qp_func_invalid_proposal_id' => 'Id propòsta=$3 pa bon (pa un nùmer) për ël sondagi $1, chestion $2',
 	'qp_error_no_such_poll' => "Sondagi pa esistent ($1).
 Sicurte che ël sondagi a sia diciarà e salvà, ëdcò sicurte ëd dovré ël caràter delimitador d'adrësse #",
+	'qp_error_in_question_header' => 'Testà dla custion pa bon-a: $1',
 	'qp_error_id_in_stats_mode' => "As peul pa diciaresse n'ID ëd sondagi an manera statìstica",
 	'qp_error_dependance_in_stats_mode' => 'As peul pa diciaresse na caden-a ëd dipendensa dël sondagi an manera statìstica',
 	'qp_error_no_stats' => "Pa gnun dat statìstich a son disponìbij, përchè gnun a l'ha votà për sto sondagi-sì, për adess (adrëssa=$1)",

@@ -33,6 +33,20 @@ $messages['gsw'] = array(
 	'dynamicsidebar-desc' => 'Stellt dynamischi Sytelyyschte z Verfiegig fir Benutzersyte, Gruppe un Kategorie',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'dynamicsidebar-desc' => 'Dodawa dynamiske bóčnicy na zakładźe wužiwarskich stronow, skupinow a kategorijow',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'dynamicsidebar-desc' => 'Dinamikus oldalsávok felhasználói lapok, csoportok és kategóriák alapján',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -161,6 +161,7 @@ $messages['af'] = array(
 	'sign-viewfield-email' => 'E-pos',
 	'sign-viewfield-options' => 'Opsies',
 	'sign-signatures' => 'Handtekeninge',
+	'sign-closed' => 'gesluit',
 	'sig-private' => '<i>Privaat</i>',
 	'sign-viewfield-reviewedby' => 'Resensent',
 	'sign-viewfield-reviewcomment' => 'Opmerking',

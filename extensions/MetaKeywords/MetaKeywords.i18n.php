@@ -135,9 +135,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Crt
  */
 $messages['fi'] = array(
-	'metakeywords-desc' => 'Sallii <tt><nowiki><meta "keywords"></nowiki></tt> -asetukset ja <tt><nowiki><meta "description"></nowiki></tt> merkkikoodit nimiavaruuksittain',
+	'metakeywords-desc' => 'Mahdollistaa <tt><nowiki><meta "keywords"></nowiki></tt> -asetukset ja <tt><nowiki><meta "description"></nowiki></tt> -elementit nimiavaruuksittain.',
 );
 
 /** French (Français)

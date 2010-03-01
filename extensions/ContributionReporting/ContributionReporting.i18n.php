@@ -2594,6 +2594,7 @@ $messages['ka'] = array(
 	'contribstats-credit-card' => 'საკრედიტო ბარათი',
 	'fundraiserstats-date' => 'თარიღი',
 	'fundraiserstats-contributions' => 'წვლილი',
+	'fundraiserstats-avg' => 'საშუალო (USD)',
 	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
 	'fundraiserstats-tab-maximums' => 'მაქსიმუმი (USD)',
 );
