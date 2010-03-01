@@ -269,6 +269,7 @@ $messages['hsb'] = array(
 	'wikieditor' => 'Rozšěrjeny powjerch za wobdźěłowanje wikiteksta',
 	'wikieditor-desc' => 'Steji rozšěrjujomny powjerch za wobdźěłowanje wikiteksta a wjele modulow k dispoziciji.',
 	'wikieditor-wikitext-tab' => 'WikiTekst',
+	'wikieditor-loading' => 'Začituje so',
 );
 
 /** Hungarian (Magyar)
@@ -303,11 +304,13 @@ $messages['id'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'wikieditor' => '高度なウィキテキスト編集インターフェイス',
 	'wikieditor-desc' => '拡張可能なウィキテキスト編集インターフェイスと多数の機能モジュールを提供する',
 	'wikieditor-wikitext-tab' => 'ウィキテキスト',
+	'wikieditor-loading' => '読み込み中',
 );
 
 /** Georgian (ქართული)
