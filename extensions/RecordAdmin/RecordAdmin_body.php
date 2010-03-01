@@ -267,7 +267,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$watch   = $wgRequest->getText( 'wpWatchthis' );
 
 					# Get the location and length of the record braces to replace
-					foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+					foreach ( self::examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
 
 					# Attempt to save the article if allowed
 					if ( !$wgSecurityProtectRecords || $this->template->userCan( 'edit' ) ) {
@@ -291,7 +291,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 				# Extract current values from article
 				$braces = false;
-				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+				foreach ( self::examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
 				if ( $braces ) {
 
 					# Fill in current values
@@ -733,7 +733,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$max = 25;
 		do {
 			$braces = false;
-			foreach ( $this->examineBraces( $this->form ) as $brace ) {
+			foreach ( self::examineBraces( $this->form ) as $brace ) {
 				if ( $brace['DEPTH'] == 2 ) $braces = $brace;
 			}
 			if ( $braces ) {
