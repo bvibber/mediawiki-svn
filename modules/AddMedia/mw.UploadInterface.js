@@ -19,6 +19,7 @@
  */
 mw.UploadInterface = { };
 
+
 /**
  * Dialog Interface
  */
@@ -31,7 +32,11 @@ mw.DialogInterface.prototype = {
 	// we are currently only managing one, so this is okay... for now.
 	uploadBeginTime: null,
 	
-	setup: function( options ) {		
+	/**
+	* Setup the dialog display 
+	* @param {Object} options
+	*/	
+	setup: function( options ) {	
 		var _this = this;
 		
 		// Start the "upload" time
@@ -211,36 +216,44 @@ mw.DialogInterface.prototype = {
 		};
 		return cancelBtn;
 	}	
-}
+};
+
 
 /**
- * Iframe Interface ( sends updates to an iframe for remoteing upload progress events )
+ * Iframe Interface ( sends updates to an iframe for remote upload progress events )
  */
-mw.UploadIframeUI = function( callbackProxy ) {	
-	return this;
-}
-mw.UploadIframeUI.prototype = {
-	'lastProgressTime' : 0,
+mw.UploadIframeUI = function( callbackProxy ) {
+	return this.init( callbackProxy );
+};
+mw.UploadIframeUI.prototype = { 
+	lastProgressTime : 0,
 	
+	/**
+	* init 
+	* @param {Function} callbackProxy Function that reciveds
+	* 	all the method calls to be pass along as msgs to the 
+	* 	other domain via iframe proxy or eventually html5 sendMsg  
+	*/
 	init: function( callbackProxy ){
 		this.callbackProxy = callbackProxy;
-	},
-	
+	},	
 	setup: function( options ){
 		this.callbackProxy( 'setup', options );	
 	},
-	// Don't call update progress more than every 3 seconds 
+	
+	// Don't call update progress more than once every 4 seconds 
+	// Since it involves loading a cached iframe. Once we support html5 
+	// cross domain "sendMsg" then we can pass all updates   
 	updateProgress: function( fraction ) {
-		if( ( new Date() ).getTime() - _this.lastProgressTime > 3000 ){
-			_this.lastProgressTime = ( new Date() ).getTime()
+		if( ( new Date() ).getTime() - this.lastProgressTime > 4000 ){
+			this.lastProgressTime = ( new Date() ).getTime()
 			mw.log('do update progress' );
 			this.callbackProxy( 'updateProgress', fraction );
 		}
 	},
+	
 	setPrompt: function( title_txt, msg, buttons ) {
 		// @@todo fix button isssue:
 		this.callbackProxy( 'setPrompt', title_txt, msg, buttons );		
 	}	
 };
-
-

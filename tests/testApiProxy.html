@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Api Proxy Test</title>
-<script type="text/javascript" src="../mwEmbed.js?debug=true"></script>
-
+	<script type="text/javascript" src="../mwEmbed.js?debug=true"></script> 
+	<!-- <script type="text/javascript" src="../jsScriptLoader.php?class=mwEmbed,mw.ApiProxy&debug=true"></script>-->
 <script type="text/javascript" >
 //HARD coded local test: 
 var remote_wiki_host = 'http://commons.wikimedia.org';
@@ -24,9 +24,9 @@ function doHello(){
 	mw.log('to a hello user');
 	$j('#helloTarget').html( mw.loading_spinner() );
 	//first get the user name:
-	getUserName(function( user_name ){	
+	getUserName( function( user_name ){	
 		$j('#helloTarget').addClass('UserNameFound').hide().text( user_name  ).fadeIn('slow');
-	});
+	} );
 	return false;
 }
 function getUserName( callback ){
@@ -159,7 +159,7 @@ function doFileUpload(){
 			Target file name: <input id="file-name" type="text" size="15" />
 			<div id="file-warning"></div>
 			<BR>
-			Target desc: <input id="file-desc" type="text" size="20" />
+			Target desc: <input id="file-desc" type="text" size="20" value="test proxy desc"/>
 		</div>
 		<div style="background:#CEF;margin:20px;">
 			<h3> Browse File Served From Remote: </h3>

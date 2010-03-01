@@ -121,7 +121,7 @@ function doPageSpecificRewrite() {
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
-	
+		
 	// OggHandler rewrite for view pages:
 	var vidIdList = [];
 	var divs = document.getElementsByTagName( 'div' );

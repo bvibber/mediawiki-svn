@@ -46,11 +46,7 @@ mw.ApiProxy = { };
 	
 // ApiProxy scoped functions: 
 ( function( $ ) {
-	
-
-	// Local scope public vars 
-	//( should probably tie these var defines to the scope of the doRequest call using something like "curry" function ) 
-	
+	 	
 	// Callback function for client requests 
 	var proxyCallback = null;
 	 
@@ -67,7 +63,8 @@ mw.ApiProxy = { };
 	// ( note this time starts form when the page is "done"
 	// loading so it should only be the time need to load some 
 	// cached js for the callback)	
-	var proxyPageLoadTimeout = 10000;
+	// 15 seconds
+	var proxyPageLoadTimeout = 15000;
 			
 	/**  
 	* Takes a requestQuery, executes the query and then calls the callback
@@ -158,7 +155,8 @@ mw.ApiProxy = { };
 			mw.log( "Error: no api url to target" );
 			return false; 
 		}
-		//update the current apiUrl:
+		
+		// Update the current apiUrl:
 		currentApiUrl = options.api_url;
 		
 		if( ! options.width ) {
@@ -204,7 +202,7 @@ mw.ApiProxy = { };
 			$j('<div />').loadingSpinner()
 		);
 		
-		var uploadDialogInterface = mw.DialogInterface();
+		var uploadDialogInterface = new mw.DialogInterface();
 		
 		// Setup the proxy scope callback to display the upload unhide the iframe upload form 
 		proxyCallback = function( iframeData ) {
@@ -229,11 +227,11 @@ mw.ApiProxy = { };
 					break
 					case 'uploadUI':
 						if( uploadDialogInterface[ iframeData['method'] ] ){
-							var args = iframeData['arguments'];	
-							debugger;		
+							var args = iframeData['arguments'];				
+							mw.log( "Do dialog interface: " + iframeData['method'] + ' args: ' + args[0] + ', ' + args[1] + ', ' + args[2] );		
 							uploadDialogInterface[ iframeData['method'] ](
 								args[0], args[1], args[2]
-							);							
+							);
 						}
 					break;	
 					default:
@@ -268,17 +266,17 @@ mw.ApiProxy = { };
 			'action' : 'sendFrameMsg',
 			'frameName' : options.frameName,
 			'frameMsg' : options.frameMsg
-		};		
+		};
 		
 		// Send the iframe request:   	
 		appendIframe( {
-			'persist' : true,	
+			'persist' : true,
 			'src' : getServerFrame(  options.api_url ),
 			'request' : iFrameRequest,
 			'target' : options.target
-		}, function() {
+		}, function( ) {
 			mw.log( "sendServerMsg iframe done loading" );
-		} )		 
+		} );
 	}
 	
 	/**
@@ -287,14 +285,14 @@ mw.ApiProxy = { };
 	* @param {Object} frameMsg  
 	*/
 	$.handleServerMsg = function( frameMsg ){
-		mw.log( "handleServerMsg:: " + frameMsg );
+		mw.log( "handleServerMsg:: " + JSON.stringify( frameMsg ) );
 		if( ! frameMsg.action ){
 			mw.log(" missing frameMsg action " );
 			return false;
 		}	
 		switch( frameMsg.action ){
 			case 'fileSubmit':
-				
+				serverSubmitFile( frameMsg.formData );
 			break;			
 		}
 	}
@@ -302,7 +300,7 @@ mw.ApiProxy = { };
 	/** 
 	* Api server proxy entry point: 
 	* validates the server frame request
-	* and proccess the request type
+	* and process the request type
 	*/
 	$.server = function() {		
 		// Validate the server request:
@@ -383,7 +381,7 @@ mw.ApiProxy = { };
 			
 			setTimeout( function() {
 				if ( !frameProxyOk ) {
-					// We timmed out no api proxy (should make sure the user is "logged in")
+					// We timed out no api proxy (should make sure the user is "logged in")
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					proxyNotReadyDialog();
 				}
@@ -544,8 +542,9 @@ mw.ApiProxy = { };
 		clientRequest.request[ 'format' ] = 'json';		
 		
 		mw.log(" do post request to: " + wgScriptPath + '/api' + wgScriptExtension );
-		for(var i in clientRequest.request ) {
-			mw.log("req: " + i + " :: " + clientRequest.request[i] );  
+		
+		for( var i in clientRequest.request ) {
+			mw.log("req: " + i + " = " + clientRequest.request[i] );  
 		} 
 		
 		// Process the API request. We don't use mw.getJSON since we need to "post"
@@ -573,7 +572,7 @@ mw.ApiProxy = { };
 			mw.log("Error serverSendFrameMsg without frame msg or frameName" );
 			return false;
 		}				
-		// Send the messege to the target frame
+		// Send the message to the target frame
 		top[ clientRequest.frameName ].mw.ApiProxy.handleServerMsg( clientRequest.frameMsg );
 	}
 	
@@ -589,22 +588,28 @@ mw.ApiProxy = { };
 			wgEnableFirefogg = true;
 		}
 		
-		// Load the mw.upload library with iframe interface (similar to uploadPage.js)
+		// Setup the browse file html
+		serverBrowseFileSetup();
 		
-		// Check if firefogg is enabled: 
+		// Load the mw.upload library with iframe interface (similar to uploadPage.js)		
+		// Check if firefogg is enabled:
+		// NOTE: the binding function should be made identical.  
 		if( wgEnableFirefogg ) {
 			mw.load( 'AddMedia.firefogg', function() {	
-				var uploadConfig = serverBrowseFileSetup();
-				
+				var uploadConfig = getUploadFileConfig( );
+								
 				$j( '#wpUploadFile' ).firefogg( uploadConfig );
+				
 				// Update status 
 				sendClientMsg( {'status':'ok'} );
 			});
 		} else {
 			mw.load( 'AddMedia.UploadHandler', function() {	
-				var uploadConfig = serverBrowseFileSetup();
+				var uploadConfig = getUploadFileConfig();
 									
 				$j( 'mw-upload-form' ).uploadHandler( uploadConfig );
+				
+				// Update status
 				sendClientMsg( {'status':'ok'} );
 			});
 		}		
@@ -615,7 +620,7 @@ mw.ApiProxy = { };
 	 * @return browse file config
 	 */
 	function serverBrowseFileSetup( ){
-			// Get the proxy config
+		// Get the proxy config
 		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
 		//check for fw ( file width )
 		if( ! proxyConfig.fileWidth ) {
@@ -644,19 +649,26 @@ mw.ApiProxy = { };
 					'width' : proxyConfig.fileWidth
 				})
 			)
-		);
-						
-		var uploadIframeUI = mw.UploadIframeUI( function( method ){			
+		);		
+	}
+	
+	/**
+	* Browse file upload config gennerator
+	*/
+	function getUploadFileConfig(){
+		var uploadIframeUI = new mw.UploadIframeUI( function( method ){
+			// Get all the arguments after the "method"
+			var args = $j.makeArray( arguments ).splice( 1 );			
 			// Send the client the msg:
 			sendClientMsg( {
 				'event' : 'uploadUI',
 				'method' : method,
 				// Get all the arguments after the "method"
-				'arguments' : arguments.split( 1 ) 	
+				'arguments' : args
 			} );
-		}) 
+		} );
 				
-		var uploadConfig = {
+		var uploadConfig = {		
 			// Set the interface type
 			'ui' : uploadIframeUI,
 			
@@ -669,14 +681,17 @@ mw.ApiProxy = { };
 			}
 		}
 		return 	uploadConfig;
-		
 	}
 	
-	function serverSubmitFile( options ){
+	/**
+	* Server submit file
+	* @param {Object} options Options for submiting file
+	*/
+	function serverSubmitFile( formData ){
 		// Add the FileName and and the description to the form
 		var $form = $j('#mw-upload-form');
 		// Add the filename and description if missing 
-		if( ! $form.find('#filename').length ){
+		if( ! $form.find("[name='filename']").length ){
 			$form.append(
 				$j( '<input />' )
 				.attr( {
@@ -685,7 +700,7 @@ mw.ApiProxy = { };
  				} )
 			);
 		}
-		if( ! $form.find('#description').length ){
+		if( ! $form.find("[name='description']").length ){
 			$form.append(
 				$j( '<input />' )
 				.attr( {
@@ -696,13 +711,13 @@ mw.ApiProxy = { };
 		}						
 			
 		// Update filename and description ( if set )
-		if( options.filename ) {
-			$form.find( "#filename" ).val( options.filename )
+		if( formData.filename ) {
+			$form.find( "[name='filename']" ).val( formData.filename )
 		}
-		if( options.description ) {
-			$form.find( '#description' ).val( options.description )
+		if( formData.description ) {
+			$form.find( "[name='description']" ).val( formData.description )
 		}
-				
+		
 		// Do submit the form
 		$form.submit();		
 	};
@@ -713,15 +728,15 @@ mw.ApiProxy = { };
 	*/ 
 	function sendClientMsg( msgObj ) {
 		
-		// Get a local refrence to the client request		
+		// Get a local reference to the client request		
 		var clientFrame = getClientRequest()['clientFrame'];
 		
-		// Double check that the client is an approved domain before outputing the iframe
+		// Double check that the client is an approved domain before outputting the iframe
 		if( ! isAllowedClientFrame ( clientFrame ) ) {
 			mw.log( "cant send msg to " + clientFrame );
 			return false;
 		}
-		var nestName = 'NestedFrame_' + $j('iframe').length;
+		var nestName = 'NestedFrame_' + $j( 'iframe' ).length;
 		
 		// Append the iframe to body
 		appendIframe( { 
@@ -786,7 +801,7 @@ mw.ApiProxy = { };
 			if( ! options.persist ){
 				// Schedule the removal of the iframe
 				setTimeout( function() {
-					$j('#' +  options['name'] ).remove();
+					$j('#' +  options[ 'name' ] ).remove();
 				}, 10 );
 			}
 			// Call the onload callback if set:
@@ -795,6 +810,5 @@ mw.ApiProxy = { };
 			}
 		};				
 	}
-	
-	 		
+		
 } )( window.mw.ApiProxy );

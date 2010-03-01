@@ -114,7 +114,7 @@ var default_firefogg_options = {
 } )( jQuery );
 
 
-mw.Firefogg = function( options ) {
+mw.Firefogg = function( options ) {	
 	return this.init( options );
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
