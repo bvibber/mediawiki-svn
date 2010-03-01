@@ -415,6 +415,9 @@ class SpecialRecordAdmin extends SpecialPage {
 		return $records;
 	}
 
+	/**
+	 * Return a list of title objects of a specified record type
+	 */
 	static function getRecordsByType( $type ) {
 		$records = array();
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -426,6 +429,50 @@ class SpecialRecordAdmin extends SpecialPage {
 		return $records;
 	}
 
+	/**
+	 * Get a field value from a record
+	 */
+	static function getFieldValue( &$args ) {
+		$result = '';
+
+		# Build SQL condition from the supplied args, if any
+        $regexp = '';
+        foreach ( $args as $k => $v ) {
+			if ( $k == 'type' ) $type = $v;
+			elseif ( $k == 'record' ) $record = $v;
+			elseif ( $k == 'field' ) $field = $v;
+			else $regexp .= "AND old_text REGEXP('[|] *{$k} *= *{$v}[[:space:]]*[|}]')";
+        }
+
+		# If a record and field name are specified, return the field value
+		if ( isset( $type ) && isset( $record ) && isset( $field ) ) {
+			$title = Title::newFromText( $record );
+			if ( is_object( $title ) ) {
+				$article = new Article( $title );
+				$text = $article->getContent();
+				$braces = false;
+				foreach ( self::examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
+				if ( $braces ) {
+					$values = self::valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
+					$result = isset( $values[$field] ) ? $values[$field] : '';
+				}
+			}
+		}
+
+		# If record is not set, find first record matching the supplied field values
+		if ( isset( $type ) && !isset( $record ) ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow(
+				array( 'page', 'revision', 'text', 'templatelinks' ),
+				'page_id',
+				"rev_id=page_latest AND old_id=rev_text_id AND tl_from=page_id AND tl_title='$type' $regexp",
+				__METHOD__
+			);
+			if ( $row ) $result = Title::newFromId( $row->page_id )->getPrefixedText();
+		}
+
+		return $result;
+	}
 
 	/**
 	 * Compares a field value according to its operator
@@ -696,7 +743,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function populateForm( $values ) {
 
 		# If values are wikitext, convert to hash
-		if ( !is_array( $values ) ) $values = $this->values = $this->valuesFromText( $values );
+		if ( !is_array( $values ) ) $values = $this->values = self::valuesFromText( $values );
 
 		# Add the values into the form's HTML depending on their type
 		foreach( $this->types as $k => $type ) {
@@ -802,7 +849,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Return array of braces used and the name, position, length and depth
 	 * See http://www.organicdesign.co.nz/MediaWiki_code_snippets
 	 */
-	function examineBraces( &$content ) {
+	static function examineBraces( &$content ) {
 		$braces = array();
 		$depths = array();
 		$depth = 1;
@@ -828,7 +875,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Return array of args represented by passed template syntax
 	 */
-	function valuesFromText( $text ) {
+	static function valuesFromText( $text ) {
 		$values = array();
 		preg_match_all( "|^\s*\|\s*(.+?)\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
 		foreach ( $m[1] as $i => $k ) $values[$k] = $m[2][$i];
@@ -844,7 +891,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		
 		# If there are current values, preserve any that aren't in the passed array
 		if ( $current ) {
-			foreach ( $this->valuesFromText( $current ) as $k => $v ) {
+			foreach ( self::valuesFromText( $current ) as $k => $v ) {
 				if ( !isset( $values[$k] ) ) $values[$k] = $v;
 			}
 		}
@@ -996,45 +1043,14 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function expandDataMagic( &$parser ) {
 		$parser->mOutput->mCacheTime = -1;
-		$regexp = '';
+		$args = array();
 		foreach ( func_get_args() as $arg ) if ( !is_object( $arg ) ) {
 			if ( preg_match( "|^(.+?)\s*=\s*(.+)$|", $arg, $match ) ) {
 				list( , $k, $v ) = $match;
-				if ( $k == 'type' ) $type = $v;
-				elseif ( $k == 'record' ) $record = $v;
-				elseif ( $k == 'field' ) $field = $v;
-				else $regexp .= "AND old_text REGEXP('[|] *{$k} *= *{$v}[[:space:]]*[|}]')";
+				$args[$k] = $v;
 			}
 		}
-		
-		# If a record and field name are specified, return the field value
-		if ( isset( $type ) && isset( $record ) && isset( $field ) ) {
-			$title = Title::newFromText( $record );
-			if ( is_object( $title ) ) {
-				$article = new Article( $title );
-				$text = $article->getContent();
-				$braces = false;
-				foreach ( $this->examineBraces( $text ) as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
-				if ( $braces ) {
-					$values = $this->valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
-					return isset( $values[$field] ) ? $values[$field] : '';
-				}
-			}
-		}
-
-		# If record is not set, find first record matching the supplied field values
-		if ( isset( $type ) && !isset( $record ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow(
-				array( 'page', 'revision', 'text', 'templatelinks' ),
-				'page_id',
-				"rev_id=page_latest AND old_id=rev_text_id AND tl_from=page_id AND tl_title='$type' $regexp",
-				__METHOD__
-			);
-			if ( $row ) return Title::newFromId( $row->page_id )->getPrefixedText();
-		}
-
-		return '';
+		return self::getFieldValue( $args );
 	}
 
 	/**
