@@ -459,7 +459,7 @@ fn: {
 							'startContainer': wrapper
 						} );
 						// Bring user's eyes to the point we've now jumped to
-						context.fn.zoomBox( $( wrapper ) );
+						context.fn.highlightLine( $( wrapper ) );
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
 						$( this ).addClass( 'current' );
