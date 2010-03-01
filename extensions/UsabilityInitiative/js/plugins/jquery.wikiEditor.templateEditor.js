@@ -74,7 +74,7 @@ evt: {
 						afterWrap: function( node ) {
 							// Store model so we can compare it later
 							$( node ).data( 'model', $( node ).data( 'marker' ).model );
-							if ( model.isCollapsible() ) {
+							if ( $( node ).data( 'model' ).isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.wrapTemplate( $( node ) );
 							} else {
 								$( node ).addClass( 'wikiEditor-template-text' );
@@ -150,6 +150,7 @@ fn: {
 		var context = $wrapper.data( 'marker' ).context;
 		
 		var $template = $wrapper
+			.addClass( 'wikiEditor-template-text' )
 			.wrap( '<span class="wikiEditor-template"></span>' )
 			.addClass( 'wikiEditor-nodisplay' )
 			.parent()
@@ -164,20 +165,20 @@ fn: {
 		
 		var $templateExpand = $( '<span />' )
 			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
-			.append( '<img src="' + $.wikiEditor.imgPath + '/templateEditor/expand.png" width="12" height="16" />' )
-			.append( '<img src="' + $.wikiEditor.imgPath + '/templateEditor/collapse.png" width="12" height="16" style="display:none;" />' )
+			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/expand.png' ) + '" width="12" height="16" />' )
+			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/collapse.png' ) + '" width="12" height="16" style="display:none;" />' )
 			.mousedown( toggleWikiTextEditor )
 			.prependTo( $template );
 		
 		var $templateDialog = $( '<span />' )
 			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
-			.append( '<img src="' + $.wikiEditor.imgPath + '/templateEditor/dialog-collapsed.png" width="22" height="16" />' )
-			.append( '<img src="' + $.wikiEditor.imgPath + '/templateEditor/dialog-expanded.png" width="22" height="16" style="display:none;" />' )
+			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/dialog-collapsed.png' ) + '" width="22" height="16" />' )
+			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/dialog-expanded.png' ) + '" width="22" height="16" style="display:none;" />' )
 			.mousedown( function() { createDialog( $template ); return false; } )
 			.insertAfter( $templateName );
 
 		function toggleWikiTextEditor() {
-			context.fn.refreshOffsets();
+			context.fn.purgeOffsets();
 			var $template = $( this ).closest( '.wikiEditor-template' );
 			$template
 				.toggleClass( 'wikiEditor-template-expanded' )
@@ -194,16 +195,17 @@ fn: {
 				var model = new $.wikiEditor.modules.templateEditor.fn.model(
 					$template.children( '.wikiEditor-template-text' ).text()
 				);
-				$template.data( 'model' , model );
+				$template.children( '.wikiEditor-template-text' ).data( 'model', model );
 				$template.children( '.wikiEditor-template-name' ).text( model.getName() );
 			} else { //we just expanded this
-				$wikitext.text( $template.data( 'model' ).getText() );
+				$wikitext.text( $template.children( '.wikiEditor-template-text' ).data( 'model' ).getText() );
 			}
 			
 			return false;
 		};
 	
 		// Expand
+		// FIXME: This function is unused
 		function expandTemplate( $displayDiv ) {
 			// Housekeeping
 			$displayDiv
@@ -233,6 +235,7 @@ fn: {
 			}
 		};
 		// Collapse
+		// FIXME: This function is unused
 		function collapseTemplate( $displayDiv ) {
 			// Housekeeping
 			$displayDiv
@@ -241,89 +244,84 @@ fn: {
 				.text( model.getName() );
 		};
 		
-		function createDialog( $templateDiv ) {
-			// Give the user some feedback on what they're doing
-			context.fn.highlightLine( $templateDiv );
-			//
-			var $wikitext = $templateDiv.children( '.wikiEditor-template-text' );
-			//TODO: check if template model has been changed
-			var templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $wikitext.text() );
-			$templateDiv.data( 'model', templateModel );
-			var $dialog = $( '<div />' );
-			var $title = $(' <div />' )
-				.text( templateModel.getName() )
-				.addClass( 'wikiEditor-template-dialog-title' );
-			var $table = $( '<table />' )
-				.addClass( 'wikiEditor-template-dialog-table' )
-				.appendTo( $dialog );
-			var allInitialParams = templateModel.getAllInitialParams();
-			for ( var paramIndex in allInitialParams ) {
-				var param = allInitialParams[paramIndex];
-				if ( typeof param.name == 'undefined' ) {
-					//param 0 is the name
-					continue;
+		var dialog = {
+			'titleMsg': 'wikieditor-template-editor-dialog-title',
+			'id': 'wikiEditor-template-dialog',
+			'html': '\
+				<fieldset>\
+					<div class="wikiEditor-template-dialog-title" />\
+					<table class="wikiEditor-template-dialog-table" />\
+				</fieldset>',
+			init: function() {
+				$(this).find( '[rel]' ).each( function() {
+					$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
+				} );
+			},
+			dialog: {
+				width: 500,
+				buttons: {
+					'wikieditor-template-editor-dialog-submit': function() {
+						// More user feedback
+						var $templateDiv = $(this).data( 'templateDiv' );
+						context.fn.highlightLine( $templateDiv );
+						
+						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
+						var templateModel = $templateText.data( 'model' );
+						$(this).find( '.wikiEditor-template-dialog-value input' ).each( function() {
+							templateModel.setValue( $(this).data( 'name' ), $(this).val() );
+						});
+						//keep text consistent
+						$templateText.text( templateModel.getText() );
+						
+						$(this).dialog( 'close' );
+					}
+				},
+				open: function() {
+					var $templateDiv = $(this).data( 'templateDiv' );
+					var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
+					var templateModel = $templateText.data( 'model' );
+					// Update the model if we need to
+					if ( templateModel.getText() != $templateText.text() ) {
+						templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $templateText.text() );
+						$templateText.data( 'model', templateModel );
+					}
+					
+					// Build the table
+					// TODO: Be smart and recycle existing table
+					var params = templateModel.getAllInitialParams();
+					var $table = $(this).find( '.wikiEditor-template-dialog-table' ).empty();
+					for ( var paramIndex in params ) {
+						var param = params[paramIndex];
+						if ( typeof param.name == 'undefined' ) {
+							// param is the template name, skip it
+							continue;
+						}
+						var $paramRow = $( '<tr />' ).addClass( 'wikiEditor-template-dialog-row' );
+						$( '<td />' ).addClass( 'wikiEditor-template-dialog-name' ).text(
+							typeof param == 'string' ?
+							param.name.replace( /[\_\-]/g, ' ' )
+								.replace( /^(.)|\s(.)/g, function( first ) {
+									return first.toUpperCase();
+								} ) :
+							param.name
+						).appendTo( $paramRow );
+						$( '<td />' ).addClass( 'wikiEditor-template-dialog-value' ).append(
+							$( '<input />' )
+								.data( 'name', param.name )
+								.val( templateModel.getValue( param.name ) )
+						).appendTo( $paramRow );
+						$table.append( $paramRow );
+					}
 				}
-				var $paramRow = $( '<tr />' )
-					.addClass( 'wikiEditor-template-dialog-row' );
-				var $paramName = $( '<td />' )
-					.addClass( 'wikiEditor-template-dialog-name' )
-					.text(
-						param.name.replace( /[\_\-]/g, ' ' ).replace( /^(.)|\s(.)/g, function ( first ) {
-							return first.toUpperCase(); 
-						} )
-					);
-				var $paramVal = $( '<td />' )
-					.addClass( 'wikiEditor-template-dialog-value' );
-				var $paramInput = $( '<input />' )
-					.data( 'name', param.name )
-					.val( templateModel.getValue( param.name ) );
-				$paramVal.append( $paramInput );
-				$paramRow.append( $paramName ).append( $paramVal );
-				$table.append( $paramRow );
 			}
-			//click handler for values
-			$( '<button />' ).click( function() {
-				// More user feedback
-				context.fn.highlightLine( $templateDiv );
-				//
-				$( '.wikiEditor-template-dialog-value input' ).each( function(){
-					templateModel.setValue( $(this).data( 'name' ), $(this).val() );
-				});
-				//keep text consistent
-				$wikitext.text( templateModel.getText() );
-				
-				$dialog.dialog( 'close' );
-				
-			}).text( 'OK' ).appendTo( $dialog ); // FIXME: Internationalize 'OK'
-			$dialog.dialog(); //opens dialog
-			return false;
 		};
 		
-		function toggleWikiText() {
-			var $template = $( this ).closest( '.wikiEditor-template' );
-			$template
-				.toggleClass( 'wikiEditor-template-collapsed' )
-				.toggleClass( 'wikiEditor-template-expanded' )
-				.children( '.wikiEditor-template-text, .wikiEditor-template-name, .wikiEditor-template-modes' )
-				.toggleClass( 'wikiEditor-nodisplay' );
-			
-			//if we just collapsed this
-			if ( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
-				var model = new $.wikiEditor.modules.templateEditor.fn.model(
-					$template.children( '.wikiEditor-template-text' ).text()
-				);
-				$template.data( 'model' , model );
-				$template.children( '.wikiEditor-template-name' ).text( model.getName() );
-			} else{ //else we just expanded this
-				$template.children( '.wikiEditor-template-text' ).children('.wikiEditor-template-inner-text').text( 
-						$template.data('model')
-						.getText()
-						.replace(/\{\{/, '')
-						.replace(/\}\}$/, '')
-				);
-				
-			}
-			return false;
+		function createDialog( $templateDiv ) {
+			// Lazy-create the dialog at this time
+			context.$textarea.wikiEditor( 'addDialog', { 'templateEditor': dialog } );
+			$( '#' + dialog.id )
+				.data( 'templateDiv', $templateDiv )
+				.dialog( 'open' );
 		}
 		
 		function noEdit() {
