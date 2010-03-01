@@ -14,7 +14,7 @@ $messages = array();
 $messages['en'] = array(
 	'wikieditor-template-editor-preference' => 'Enable form-based editing of wiki templates',
 	'wikieditor-template-editor-dialog-title' => 'Edit template',
-	'wikieditor-template-editor-dialog-submit' => 'OK',
+	'wikieditor-template-editor-dialog-submit' => 'Update',
 );
 
 /** Afrikaans (Afrikaans)
