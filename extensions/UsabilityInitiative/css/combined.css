@@ -468,6 +468,10 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 body.rtl #wikieditor-toolbar-link-int-target-status-external {
 	background-image: url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png );
 }
+/* Template Editor Dialogs */
+.wikiEditor-template-dialog-label {
+	text-transform: capitalize;
+}
 /* Self Clearing Floats */
 .wikieditor-toolbar-table-dimension-fields:after,
 .wikieditor-toolbar-dialog-wrapper:after {
