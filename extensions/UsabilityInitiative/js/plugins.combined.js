@@ -9151,9 +9151,8 @@ fn: {
 		var context = $wrapper.data( 'marker' ).context;
 		
 		var $template = $wrapper
-			.addClass( 'wikiEditor-template-text' )
 			.wrap( '<span class="wikiEditor-template"></span>' )
-			.addClass( 'wikiEditor-nodisplay' )
+			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 			.parent()
 			.addClass( 'wikiEditor-template-collapsed' )
 			.data( 'model', model );
