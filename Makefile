@@ -23,6 +23,7 @@ PLUGINS := \
 	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
 	js/plugins/jquery.collapsibleTabs.js\
+	js/plugins/jquery.color.js\
 	js/plugins/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
 	js/plugins/jquery.namespaceSelect.js\
