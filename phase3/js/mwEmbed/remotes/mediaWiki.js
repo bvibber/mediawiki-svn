@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r101';
+var mwRemoteVersion = 'r102';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
@@ -118,16 +118,6 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
-			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
-		} );
-	}
-	
-	// Special api browse for file proxy page
-	if ( wgPageName == 'MediaWiki:ApiProxyBrowserFile' ) {
-		var wgEnableIframeApiProxy = true;
-		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
-			mwApiProxyConfig = {};
-			mwApiProxyConfig[ 'browserFile' ] = true;
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}

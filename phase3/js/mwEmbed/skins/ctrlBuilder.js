@@ -90,7 +90,7 @@ ctrlBuilder.prototype = {
 		var _this = this;
 
 		// Remove any old controls & old overlays:
-		embedPlayer.$interface.find( '.control-bar,.overlay-win' ).remove();			
+		embedPlayer.$interface.find( '.control-bar,.overlay-win' ).remove();
 		
 		// Setup the controlBar container
 		var $controlBar = $j('<div />')

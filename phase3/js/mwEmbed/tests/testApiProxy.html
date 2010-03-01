@@ -81,9 +81,9 @@ function doFileUpload(){
 	$j('#file-upload-container').fadeIn( 'slow' );		
 	$j('#browseTarget').loadingSpinner();
 
-	mw.load('AddMedia.firefogg', function(){	
-		mw.load( 'ApiProxy', function(){						
-			var browserFrame = mw.ApiProxy.browseFile( {
+	mw.load('AddMedia.firefogg', function( ) {	
+		mw.load( 'ApiProxy', function( ) {		
+			var fileIframeName = mw.ApiProxy.browseFile( {
 				//Target div to put the iframe browser button:
 				'target' : '#browseTarget',
 	
@@ -93,18 +93,43 @@ function doFileUpload(){
 				// File Destination Name change callback: 
 				'selectFileCb' : function( fname ){				
 					// Update our local target:
-					$j('#target-fname').val( fname );
+					$j('#file-name').val( fname );
 					// Run a destination file name check on the remote target 			
-					$j('#target-fname').doDestCheck( {
+					$j('#file-name').doDestCheck( {
 						'api_url' : remote_api_url,
 						'warn_target': '#file-warning'
 					} );				
-				}			
-			} );	
+				},
 
+				// Update progress callback
+				'uploadProgressCb': function(){
+					
+				}
+				// Error / "prompt" callback
+			} );
+
+			//Setup submit binding: 
+			$j('#uploadButton').click(function(){
+				
+				// Build the output and send upload request to fileProxy  
+				mw.ApiProxy.sendServerMsg( {
+					'api_url' : remote_api_url, 
+					'frameName' : fileIframeName,
+					'frameMsg' : {
+						'action' : 'fileSubmit',
+						'formData' : {
+							'filename' : $j('#file-name').val(),
+							'comment' : $j('#file-desc').val()
+						}
+					}
+				} );
+				// Maybe set loading to spinner
+			} );
+
+			
 			// Setup doDestCheck on change
-			$j('#target-fname').change(function(){
-				$j('#target-fname').doDestCheck( {
+			$j('#file-name').change(function(){
+				$j('#file-name').doDestCheck( {
 					'api_url' : remote_api_url,
 					'warn_target': '#file-warning'
 				} );	
@@ -131,10 +156,10 @@ function doFileUpload(){
 	<div id="file-upload-container" style="display:none">
 		<div style="background:#FEF;margin:20px;">
 			<h3> Local input </h3>
-			Target file name: <input id="target-fname" type="text" size="15" />
+			Target file name: <input id="file-name" type="text" size="15" />
 			<div id="file-warning"></div>
 			<BR>
-			Target desc: <input type="text" size="20" />
+			Target desc: <input id="file-desc" type="text" size="20" />
 		</div>
 		<div style="background:#CEF;margin:20px;">
 			<h3> Browse File Served From Remote: </h3>
@@ -142,7 +167,7 @@ function doFileUpload(){
 		</div>
 		<div style="background:#FEF;margin:20px;">
 			<h3> Local submit </h3>
-			<input type="submit" size="10" value="upload" />
+			<input id="uploadButton" type="submit" size="10" value="upload" />
 		</div>
 	</div>
 </div>

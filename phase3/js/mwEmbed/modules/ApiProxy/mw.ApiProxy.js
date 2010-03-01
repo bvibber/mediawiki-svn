@@ -3,12 +3,15 @@
 * Api proxy system
 *
 * Supports cross domain uploading, and api actions for a approved set of domains.
+* 
+* All cross domain communication is done with iframe children ( Avoids polling 
+* which is resource intensive and can lose messages ) 
 *
 * The framework ~will eventually~ support a request approval system for per-user domain approval
 * and a central blacklisting of domains controlled by the site 
 *  
-* if the browser supports it we should pass msgs with postMessage  API
-* http://ejohn.org/blog/cross-window-messaging/ 
+* NOTE: If the browser supports it we should pass msgs with postMessage  API
+* http://ejohn.org/blog/cross-window-messaging/ ( rather than using these iframes ) 
 *
 * NOTE: refactor efforts will include separating out "core" proxy functions and
 * having a separate class for "server" and "client" api usage  
@@ -112,12 +115,12 @@ mw.ApiProxy = { };
 		// Close the loader if present: 
 		mw.closeLoaderDialog();
 		
-		mw.log( '$.proxy.nested callback :: ' + unescape( hashResult ) );
+		mw.log( '$.proxy.nested callback :: ' + decodeURIComponent( hashResult ) );
 		frameProxyOk = true;
 		
 		// Try to parse the hash result 
 		try {
-			var resultObject = JSON.parse( unescape( hashResult ) );
+			var resultObject = JSON.parse( decodeURIComponent( hashResult ) );
 		} catch ( e ) {
 			mw.log( "Error could not parse hashResult" );
 		}
@@ -166,30 +169,28 @@ mw.ApiProxy = { };
 		}
 		var iFrameName = ( options.iframeName ) ? options.iframeName : 'fileBrowse_' + $j('iframe').length;		
 		// Setup an object to be packaged into the frame
-		var hashPack ={
+		var iFrameRequest ={
 			'clientFrame' : getClientFrame(),
-			'browseFile' : true			
+			'action' : 'browseFile'			
 		};
 		
-		// Set to host file browse rewrite position
-		// NOTE we can't use jQuery buildout for iframes because IE throws away attributes  
-		$j( options.target ).html(									 		
-			 	'<iframe ' +
-				 	'style="display:none;border:none;overflow:hidden;width:'+ parseInt( options.width ) + 'px;height:' + parseInt( options.height ) +'px;" '+ 
-				 	'id="' + escape( iFrameName ) + '" name="' + escape( iFrameName ) + '" ' +
-					'src="' + getServerBrowseFileFrame(  options.api_url ) + 
-						'#' + escape( JSON.stringify( hashPack ) ) + '">' + 				
-				'</iframe>' 
-		);
+		var frameStyle = 'display:none;border:none;overflow:hidden;'
+			+ 'width:'+ parseInt( options.width ) + 'px;'
+			+ 'height:' + parseInt( options.height ) +'px';
+			
+		// Empty the target ( so that the iframe can be put there )
+		$j( options.target ).empty();
 		
-		// Add a loading spinner
-		$j( options.target ).append( 
-			$j('<div />').loadingSpinner()
-		);
-		
-		// add an onLoad hook: 
-		$j( '#' + iFrameName ).get( 0 ).onload = function() {		
-			// Add a 10 second timeout for setting up the nested child callback (after page load)		
+		// Append the iframe to the target:  
+		appendIframe( {
+			'persist' : true,
+			'style' : frameStyle,
+			'name' : iFrameName,
+			'src' : getServerFrame(  options.api_url ),
+			'request' : iFrameRequest,
+			'target' : options.target
+		},  function( ) {
+			// Add a 10 second timeout for setting up the nested child callback (after iframe load)		
 			setTimeout( function() {
 				if ( !frameProxyOk ) {
 					// we timmed out no api proxy (should make sure the user is "logged in")
@@ -197,9 +198,15 @@ mw.ApiProxy = { };
 					proxyNotReadyDialog();
 				}
 			}, proxyPageLoadTimeout );
-		};
+		} );
+		// Add a loading spinner to the target
+		$j( options.target ).append( 
+			$j('<div />').loadingSpinner()
+		);
 		
-		// Setup the proxy callback to display the upload unhide the iframe upload form 
+		var uploadDialogInterface = mw.DialogInterface();
+		
+		// Setup the proxy scope callback to display the upload unhide the iframe upload form 
 		proxyCallback = function( iframeData ) {
 			// proccess fileBrowse callbacks::
 			
@@ -209,20 +216,87 @@ mw.ApiProxy = { };
 				$j( options.target ).find('.loading_spinner').fadeOut('fast');
 				mw.log("iframe ready callback");
 				$j( '#' + iFrameName ).fadeIn( 'fast' );	
+				return ;
 			}
-			// else check for event 
+			
+			// Else check for event 
 			if( iframeData['event'] ) {
 				switch( iframeData['event'] ) {
 					case 'selectFileCb':
 						if( options.selectFileCb ) {
 							options.selectFileCb( iframeData['fileName'] );
 						}
+					break
+					case 'uploadUI':
+						if( uploadDialogInterface[ iframeData['method'] ] ){
+							var args = iframeData['arguments'];	
+							debugger;		
+							uploadDialogInterface[ iframeData['method'] ](
+								args[0], args[1], args[2]
+							);							
+						}
 					break;	
 					default:
 						mw.log(" Error unreconginzed event " + iframeData['event'] );
 				}				
 			}						
-		}		
+		}
+		
+		// Return the name of the browseFile frame
+		return iFrameName;
+	}
+	
+	/**
+	 * Output a server msg to a server iFrame 
+	 * ( such as a hosted browse file or dialog prompt ) 
+	 * 
+	 * @param {Object} options Arguments to setup send server msg
+	 * 	api_url The api url of the server to send the frame msg to
+	 *  frameName The frame name to send the msg to
+	 *  frameMsg The msg object to send to frame 
+	 */
+	$.sendServerMsg = function( options ){
+		if( !options.api_url || ! options.frameMsg || !options.frameName ){
+			mw.log( "Error missing required option");
+			return false;
+		}
+		
+		// Send a msg to the server frameName from the server domain
+		// Setup an object to be packaged into the frame
+		var iFrameRequest = {
+			'clientFrame' : getClientFrame(),
+			'action' : 'sendFrameMsg',
+			'frameName' : options.frameName,
+			'frameMsg' : options.frameMsg
+		};		
+		
+		// Send the iframe request:   	
+		appendIframe( {
+			'persist' : true,	
+			'src' : getServerFrame(  options.api_url ),
+			'request' : iFrameRequest,
+			'target' : options.target
+		}, function() {
+			mw.log( "sendServerMsg iframe done loading" );
+		} )		 
+	}
+	
+	/**
+	* Handle a server msg
+	* 
+	* @param {Object} frameMsg  
+	*/
+	$.handleServerMsg = function( frameMsg ){
+		mw.log( "handleServerMsg:: " + frameMsg );
+		if( ! frameMsg.action ){
+			mw.log(" missing frameMsg action " );
+			return false;
+		}	
+		switch( frameMsg.action ){
+			case 'fileSubmit':
+				
+			break;			
+		}
 	}
 	
 	/** 
@@ -231,9 +305,8 @@ mw.ApiProxy = { };
 	* and proccess the request type
 	*/
 	$.server = function() {		
-		var proxyConfig = mw.getConfig( 'apiProxyConfig' );	
 		// Validate the server request:
-		if( !validateIframeRequest( proxyConfig ) ) {
+		if( ! validateIframeRequest() ) {
 			mw.log( "Not a valid iframe request");
 			return false;
 		}				
@@ -244,7 +317,7 @@ mw.ApiProxy = { };
 	}
 	
 	/**
-	* Local scoped helper functions: (works well with closure compiler ) 
+	* Local scoped helper functions:
 	*/	
 	
 	/**
@@ -255,33 +328,30 @@ mw.ApiProxy = { };
 	}
 	
 	/**
-	* Get the server Frame path per requested Api url (presently hard coded to MediaWiki:ApiProxy per /remotes/medaiWiki.js )
+	* Get the server Frame path per requested Api url
+	* (presently hard coded to MediaWiki:ApiProxy per /remotes/medaiWiki.js )
 	* 
-	* NOTE: we can switch this for a real proxy entry point once we set that up on the server. 
+	* NOTE: we should have a Hosted page once we deploy mwEmbed on the servers.
+	* A hosted page would be much faster since it would not have to load all the 
+	* normal page view assets prior to being rewrite for api proxy usage.   
 	* 
-	* NOTE: we add the gadget incase the user has not enabled the gadget on the project they want to iframe to. 
-	* ( there is no cost if they do already have the gadget on ) 
+	* NOTE: We add the gadget incase the user has not enabled the gadget on the 
+	* domain they want to iframe to. There is no cost if they  already have the
+	* gadget on. This can be removed once deployed as well.  
+	* 
+	* @param {URL} apiUrl The url of the api server
 	*/
-	//var gadgetWithJS = 'withJS=MediaWiki:Gadget-mwEmbed.js';
+	//var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
 	var gadgetWithJS = '';
 	function getServerFrame( apiUrl ) {
 		// Set to local scope currentApiUrl if unset by argument
 		if( !apiUrl) {
 			apiUrl = currentApiUrl;
 		}
-		var  parsedUrl = mw.parseUri( apiUrl );
-		return parsedUrl.protocol + '://' + parsedUrl.authority + '/w/index.php/MediaWiki:ApiProxy?' + gadgetWithJS;	
-	}
-	/**
-	* Same as getServerFrame but for browse file interface
-	*/
-	function getServerBrowseFileFrame( apiUrl ) {
-		// Set to local scope currentApiUrl if unset by argument
-		if( !apiUrl) {
-			apiUrl = currentApiUrl;
-		}
-		var  parsedUrl = mw.parseUri( apiUrl );
-		return parsedUrl.protocol + '://' + parsedUrl.authority + '/w/index.php/MediaWiki:ApiProxyBrowserFile?' + gadgetWithJS;	
+		var parsedUrl = mw.parseUri( apiUrl );
+		
+		return 	parsedUrl.protocol + '://' + parsedUrl.authority 
+			+ '/w/index.php/MediaWiki:ApiProxy' + gadgetWithJS;
 	}
 	
 	/** 
@@ -292,26 +362,19 @@ mw.ApiProxy = { };
 	*/
 	function doFrameProxy ( requestQuery ) {
 		
-		var hashPack = {
+		var iframeRequest = {
 			// Client domain frame ( will be approved by the server before sending and reciving msgs )
 			'clientFrame' : getClientFrame(),
+			'action' : 'apiRequest',
 			'request' : requestQuery
 		}
-		
+		  
 		mw.log( "Do frame proxy request on src: \n" + getServerFrame() + "\n" + JSON.stringify(  requestQuery ) );
-					
-		// We can't update src's so we have to remove and add all the time :(
-		// NOTE: we should support frame msg system 
-		$j( '#frame_proxy' ).remove();
-		// NOTE we can't use jQuery buildout for iframes because IE throws away the "name"
-		$j( 'body' ).append( '<iframe style="display:none" id="frame_proxy" name="frame_proxy" ' +
-				'src="' + getServerFrame() +
-				 '#' + escape( JSON.stringify( hashPack ) ) +
-				 '"></iframe>' );
-				 
-		// add an onLoad hook: 
-		$j( '#frame_proxy' ).get( 0 ).onload = function() {
-		
+		appendIframe({
+			'persist' : true,
+			'src' : getServerFrame(),
+			'request' :  iframeRequest
+		}, function() {		
 			// Add a 10 second timeout for setting up the nested child callback (after page load)
 			
 			// NOTE: once we have a real entry point instead of ( mediaWiki:ApiProxy rewrite) 
@@ -324,8 +387,12 @@ mw.ApiProxy = { };
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					proxyNotReadyDialog();
 				}
+				// NOTE:: todo we could remove the iframe from the dom once the
+				//  request process is complete. 
+				// ( should be part of supporting multiple requests at once refactor) 
+				
 			}, proxyPageLoadTimeout );
-		}
+		})
 	}
 	
 	/**
@@ -334,12 +401,9 @@ mw.ApiProxy = { };
 	* checks  master_blacklist 
 	* checks  master_whitelist
 	*/
-	function validateIframeRequest( proxyConfig ) {
-		var clientRequest = false;
-		
-		
+	function validateIframeRequest() {				
 		var clientRequest = getClientRequest();
-		
+				
 		if ( !clientRequest || !clientRequest.clientFrame ) {
 			mw.log( "Error: no client domain provided " );
 			$j( 'body' ).append( "no client frame provided" ); 
@@ -359,9 +423,7 @@ mw.ApiProxy = { };
 		/**
 		* HERE WE CHECK IF THE DOMAIN IS ALLOWED per the proxyConfig	
 		*/		
-		return isAllowedClientFrame( clientRequest.clientFrame );
-					
-		// Not a valid request return false
+		return isAllowedClientFrame( clientRequest.clientFrame );							
 	}
 	
 	/**
@@ -372,6 +434,7 @@ mw.ApiProxy = { };
 		var clientDomain =  mw.parseUri( clientFrame ).host ;
 		// Get the proxy config
 		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
+		
 		// Check master blacklist
 		for ( var i in proxyConfig.master_blacklist ) {
 			if ( clientDomain == proxyConfig.master_blacklist ) {
@@ -421,12 +484,9 @@ mw.ApiProxy = { };
 		buttons[ gM( 'mwe-cancel' ) ] = function() {
 			mw.closeLoaderDialog();
 		}
-		var pUri =  mw.parseUri( getServerFrame() );
 		
-		// FIXME we should have a Hosted page once we deploy mwEmbed on the servers.
-		// A hosted page would be much faster since it would not have to load all the 
-		// normal page view assets prior to being rewrite for api proxy usage.  
-		
+		// Setup the login link: 
+		var pUri =  mw.parseUri( getServerFrame() );			
 		var login_url = pUri.protocol + '://' + pUri.host;
 		login_url += pUri.path.replace( 'MediaWiki:ApiProxy', 'Special:UserLogin' );
 		
@@ -438,10 +498,7 @@ mw.ApiProxy = { };
 				'</p>',
 			buttons
 		)
-	}
-	
-				
-	
+	}	
 	
 	/**
 	* API iFrame Server::
@@ -453,17 +510,27 @@ mw.ApiProxy = { };
 	/**
 	* serverHandleRequest handle a given request from the client 
 	* maps the request to serverBrowseFile or serverApiRequest
+	* 
+	* NOTE: mw.ApiProxy.server entry point validates the request
 	*/
-	function serverHandleRequest() {		
+	function serverHandleRequest( ) {		
 		var clientRequest = getClientRequest();
-		mw.log(" handle client request :: " +  	clientRequest );
+		mw.log(" handle client request :: " +  	JSON.stringify( clientRequest ) );
+		//debugger;
 		// Process request type:
-		if( clientRequest['browseFile'] ) {
-			serverBrowseFile();
-			return true;
-		}						
-		// Else do an api request : 
-		return serverApiRequest();
+		switch( clientRequest['action'] ){
+			case 'browseFile':
+				return serverBrowseFile();
+			break;			
+			case 'apiRequest':
+				return serverApiRequest();
+			break;
+			case 'sendFrameMsg':
+				return serverSendFrameMsg();
+			break;			
+		}
+		mw.log( "Error could not handle client request" );
+		return false;
 	}
 	
  	/**
@@ -493,12 +560,62 @@ mw.ApiProxy = { };
 	}
 	
 	/**
+	 *  Send a msg to a server frame
+	 *  
+	 *  Server frame instances that handle msgs
+	 *  should accept processMsg calls 
+	 */
+	function serverSendFrameMsg( ){
+		var clientRequest = getClientRequest();
+		
+		// Make sure the requested frame exists:
+		if( ! clientRequest.frameMsg || ! clientRequest.frameName ) {
+			mw.log("Error serverSendFrameMsg without frame msg or frameName" );
+			return false;
+		}				
+		// Send the messege to the target frame
+		top[ clientRequest.frameName ].mw.ApiProxy.handleServerMsg( clientRequest.frameMsg );
+	}
+	
+	/**
 	* Setup the browse file proxy on the "server"
 	* 
 	* Sets the page content to browser file 
 	*/
 	function serverBrowseFile( ) {
-		// Get the proxy config
+		
+		// If wgEnableFirefogg is not boolean false, set to true
+		if ( typeof wgEnableFirefogg == 'undefined' ) {
+			wgEnableFirefogg = true;
+		}
+		
+		// Load the mw.upload library with iframe interface (similar to uploadPage.js)
+		
+		// Check if firefogg is enabled: 
+		if( wgEnableFirefogg ) {
+			mw.load( 'AddMedia.firefogg', function() {	
+				var uploadConfig = serverBrowseFileSetup();
+				
+				$j( '#wpUploadFile' ).firefogg( uploadConfig );
+				// Update status 
+				sendClientMsg( {'status':'ok'} );
+			});
+		} else {
+			mw.load( 'AddMedia.UploadHandler', function() {	
+				var uploadConfig = serverBrowseFileSetup();
+									
+				$j( 'mw-upload-form' ).uploadHandler( uploadConfig );
+				sendClientMsg( {'status':'ok'} );
+			});
+		}		
+	};
+	
+	/**
+	 * Setup the browse file html
+	 * @return browse file config
+	 */
+	function serverBrowseFileSetup( ){
+			// Get the proxy config
 		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
 		//check for fw ( file width )
 		if( ! proxyConfig.fileWidth ) {
@@ -528,19 +645,20 @@ mw.ApiProxy = { };
 				})
 			)
 		);
-		
-		
-		// load the mw.upload library with iframe interface (similar to uploadPage.js)
-		
-		// If wgEnableFirefogg is not boolean false, set to true
-		if ( typeof wgEnableFirefogg == 'undefined' ) {
-			wgEnableFirefogg = true;
-		}
-			
-		
+						
+		var uploadIframeUI = mw.UploadIframeUI( function( method ){			
+			// Send the client the msg:
+			sendClientMsg( {
+				'event' : 'uploadUI',
+				'method' : method,
+				// Get all the arguments after the "method"
+				'arguments' : arguments.split( 1 ) 	
+			} );
+		}) 
+				
 		var uploadConfig = {
 			// Set the interface type
-			'interface_type' : 'iframe',
+			'ui' : uploadIframeUI,
 			
 			// Set the select file callback to update clientFrame
 			'selectFileCb' : function( fileName ) {
@@ -550,21 +668,44 @@ mw.ApiProxy = { };
 				} );
 			}
 		}
+		return 	uploadConfig;
 		
-		if( wgEnableFirefogg ) {
-			mw.load( 'AddMedia.firefogg', function() {			
-				$j( '#wpUploadFile' ).firefogg( uploadConfig );
-				// Update status 
-				sendClientMsg( {'status':'ok'} );
-			});
-		} else {
-			mw.load( 'AddMedia.UploadHandler', function() {						
-				$j( 'mw-upload-form' ).uploadHandler( uploadConfig );
-				sendClientMsg( {'status':'ok'} );
-			});
-		}		
-	};
+	}
 	
+	function serverSubmitFile( options ){
+		// Add the FileName and and the description to the form
+		var $form = $j('#mw-upload-form');
+		// Add the filename and description if missing 
+		if( ! $form.find('#filename').length ){
+			$form.append(
+				$j( '<input />' )
+				.attr( {
+					'name' : 'filename',
+					'type' : 'hidden'
+ 				} )
+			);
+		}
+		if( ! $form.find('#description').length ){
+			$form.append(
+				$j( '<input />' )
+				.attr( {
+					'name' : 'description',
+					'type' : 'hidden'
+				} )
+			);
+		}						
+			
+		// Update filename and description ( if set )
+		if( options.filename ) {
+			$form.find( "#filename" ).val( options.filename )
+		}
+		if( options.description ) {
+			$form.find( '#description' ).val( options.description )
+		}
+				
+		// Do submit the form
+		$form.submit();		
+	};
 	/**
 	* Outputs the result object to the client domain
 	*
@@ -581,25 +722,79 @@ mw.ApiProxy = { };
 			return false;
 		}
 		var nestName = 'NestedFrame_' + $j('iframe').length;
-				
-		// Setup the nested iframe proxy that points back to top domain 
-		// can't use jquery build out because of IE name attribute bug
-		$j( 'body' ).append( 
-			'<iframe ' +
-				'id="' + nestName + '" ' +
-				'name="' + nestName + '" ' +
-				'src="' + clientFrame + '#' + escape( JSON.stringify( msgObj ) ) + '" ' +
-				'style="display:none" ' +
-			'></iframe>'
-		);
-		 
-		// After the nested frame is done loading schedule its removal
-		$j( '#' + nestName ).get( 0 ).onload = function() {
-			// Use a settimeout to give time for client frame to propagate update.
-			setTimeout( function() {
-				$j('#' +  nestName ).remove();
-			}, 10 );
-		}
+		
+		// Append the iframe to body
+		appendIframe( { 
+			'src' : clientFrame,
+			'request' : msgObj	
+		} );				
 	};
+	
+	/** 
+	 * Appends an iframe to the body from a given set of options
+	 * 
+	 * NOTE: this uses string html building instead of jquery build-out
+	 * because IE does not allow setting of iframe attributes  
+	 * 
+	 * @param {Object} options Iframe attribute options 
+	 * 	name - the name of the iframe
+	 *  src - the url for the iframe
+	 *  request - the request object to be packaged into the hash url
+	 *  persist - set to true if the iframe should not 
+	 * 			  be removed from the dom after its done loading
+	 * @param {Function} callback Function called once iframe is loaded
+	 */
+	function appendIframe( options, callback ){		
+		var s = '<iframe ';
+		var iframeAttr = ['id', 'name', 'style'];
+		
+		// Check for frame name:
+		if( ! options[ 'name' ] ) {
+			options[ 'name' ] = 'mwApiProxyFrame_' + $j('iframe').length;	
+		}
+		
+		// Add the frame name / id:
+		s += 'name="' +  mw.escapeQuotes( options[ 'name' ] ) + '" ';
+		s += 'id="' +  mw.escapeQuotes( options[ 'name' ] ) + '" ';		
+		
+		// Check for style: 
+		if( ! options['style'] ){
+			options['style'] = 'display:none';
+		}
+		// Add style attribute:
+		s += 'style="' + mw.escapeQuotes( options[ 'style' ] ) + '" ';
+		
+		// Special handler for src and packaged hash request: 
+		if( options.src ){
+			s += 'src="' + options.src;
+			if( options.request ){
+				s += '#' + encodeURIComponent( JSON.stringify(  options.request ) );
+			}
+			s += '" ';
+		}
+		// Close up the iframe: 
+		s += '></iframe>';
+		
+		if( ! options[ 'target' ] ){
+			options[ 'target' ] = 'body';
+		} 		
+		// Append to body if no target set
+		$j( options['target'] ).append( s );
+		
+		// Setup the onload callback
+		$j( '#' + options['name'] ).get( 0 ).onload = function() {
+			if( ! options.persist ){
+				// Schedule the removal of the iframe
+				setTimeout( function() {
+					$j('#' +  options['name'] ).remove();
+				}, 10 );
+			}
+			// Call the onload callback if set:
+			if( callback ){
+				callback();		
+			}
+		};				
+	}
+	
 	 		
 } )( window.mw.ApiProxy );

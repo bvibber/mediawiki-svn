@@ -56,12 +56,11 @@ var default_bui_options = {
 	// Callback for modifying form data on submit  
 	'onsubmit_cb' : null,
 	
-	// The interface type sent to mw.interface factory
-	// can be 'dialog', 'iframe', 'inline' 
-	'interface_type' : 'dialog',
-	
 	// Equivalent to $wgUseCopyrightUpload in php ( should be set via configuration )
-	'useCopyrightUpload' : true
+	'useCopyrightUpload' : true,
+	
+	// Callback which is called when the source name changes
+	'selectFileCb': false
 
 };
 
@@ -75,8 +74,8 @@ var default_bui_options = {
 		}
 	
 		// Add the selector
-		options[ 'form_selector' ] = this.selector;
-				
+		options[ 'form_selector' ] = this.selector;			
+		
 		// Setup the firefogg Firefogg: 
 		var myUpload = new mw.UploadHandler( options );
 				
@@ -136,12 +135,16 @@ mw.UploadHandler.prototype = {
 		if( !this.api_url ) {
 			this.api_url = mw.getLocalApiUrl();
 		}		
-		// Setup the UploadInterface handler
-		this.interface = mw.UploadInterface.factory( this.interface_type );
 		
-		mw.log( "init mvUploadHandler:: " + this.api_url + ' interface: ' + this.interface );
+		// Setup the UploadInterface handler		
+		if( ! options.ui  ){		
+			this.ui = mw.DialogInterface( );
+		} else { 		
+			this.ui = options.ui;
+		}
+				
+		mw.log( "init mvUploadHandler:: " + this.api_url + ' interface: ' + this.ui );
 	},
-
 	/**
 	 * Set up the upload form, register onsubmit handler.
 	 * May remap it to use the API field names.
@@ -205,7 +208,7 @@ mw.UploadHandler.prototype = {
 		// Put into a try catch so we are sure to return false:
 		try {
 			// Startup interface dispatch dialog
-			_this.interface.setup( {'title': gM('mwe-upload-in-progress') } );			
+			_this.ui.setup( {'title': gM('mwe-upload-in-progress') } );			
 						
 			// Drop down the #p-search z-index so its not ontop
 			$j( '#p-search' ).css( 'z-index', 1 );
@@ -216,7 +219,7 @@ mw.UploadHandler.prototype = {
 				_this.doUpload();
 			} );
 		} catch( e ) {
-			mw.log( '::error in this.interface or doUpload ' + e );
+			mw.log( '::error in this.ui or doUpload ' + e );
 		}
 
 		// Don't submit the form we will do the post in ajax
@@ -255,31 +258,30 @@ mw.UploadHandler.prototype = {
 
 			// FIXME: move this to configuration and avoid this API request
 			mw.getJSON( _this.api_url, { 'action' : 'paraminfo', 'modules' : 'upload' }, function( data ) {
-					if ( typeof data.paraminfo == 'undefined'
-						|| typeof data.paraminfo.modules == 'undefined' )
-					{
-						return mw.log( 'Error: bad api results' );
-					}
-					if ( typeof data.paraminfo.modules[0].classname == 'undefined' ) {
-						mw.log( 'Autodetect Upload Mode: \'post\' ' );
-						_this.upload_mode = 'post';
-						callback( 'post' );
-					} else {
-						mw.log( 'Autodetect Upload Mode: api ' );
-						_this.upload_mode = 'api';
-						// Check to see if chunks are supported
-						for ( var i in data.paraminfo.modules[0].parameters ) {
-							var pname = data.paraminfo.modules[0].parameters[i].name;
-							if( pname == 'enablechunks' ) {
-								mw.log( 'this.chunks_supported = true' );
-								_this.chunks_supported = true;
-								break;
-							}
-						}
-						callback( 'api' );
-					}
+				if ( typeof data.paraminfo == 'undefined'
+					|| typeof data.paraminfo.modules == 'undefined' )
+				{
+					return mw.log( 'Error: bad api results' );
 				}
-			);
+				if ( typeof data.paraminfo.modules[0].classname == 'undefined' ) {
+					mw.log( 'Autodetect Upload Mode: \'post\' ' );
+					_this.upload_mode = 'post';
+					callback( 'post' );
+				} else {
+					mw.log( 'Autodetect Upload Mode: api ' );
+					_this.upload_mode = 'api';
+					// Check to see if chunks are supported
+					for ( var i in data.paraminfo.modules[0].parameters ) {
+						var pname = data.paraminfo.modules[0].parameters[i].name;
+						if( pname == 'enablechunks' ) {
+							mw.log( 'this.chunks_supported = true' );
+							_this.chunks_supported = true;
+							break;
+						}
+					}
+					callback( 'api' );
+				}
+			} );
 		} else if ( _this.upload_mode == 'api' ) {
 			callback( 'api' );
 		} else if ( _this.upload_mode == 'post' ) {
@@ -326,9 +328,9 @@ mw.UploadHandler.prototype = {
 		var $form = $j( this.form_selector );		
 
 		// Set the form action
-		try{
+		try {
 			$form.attr('action', _this.api_url);
-		}catch(e) {
+		} catch( e ) {
 			mw.log("IE for some reason error's out when you change the action")
 		}
 
@@ -442,13 +444,13 @@ mw.UploadHandler.prototype = {
 					// Do a remote message load
 					errorKey = apiRes.upload.details[0];
 					mw.getRemoteMsg( errorKey, function() {
-						_this.interface.setPrompt( gM( 'mwe-uploaderror' ), gM( errorKey ), buttons );
+						_this.ui.setPrompt( gM( 'mwe-uploaderror' ), gM( errorKey ), buttons );
 
 					});
 					return false;
 				}
 
-				_this.interface.setPrompt(
+				_this.ui.setPrompt(
 						gM('mwe-uploaderror'),
 						gM('mwe-unknown-error') + '<br>' + error_msg,
 						buttons );
@@ -456,7 +458,7 @@ mw.UploadHandler.prototype = {
 			}
 
 			if ( apiRes.error && apiRes.error.info ) {
-				_this.interface.setPrompt( gM( 'mwe-uploaderror' ), apiRes.error.info, buttons );
+				_this.ui.setPrompt( gM( 'mwe-uploaderror' ), apiRes.error.info, buttons );
 				return false;
 			}
 
@@ -464,12 +466,12 @@ mw.UploadHandler.prototype = {
 				&& typeof error_msg_key[error_code] == 'undefined' )
 			{
 				if ( apiRes.upload.code.finalExt ) {
-					_this.interface.setPrompt(
+					_this.ui.setPrompt(
 						gM( 'mwe-uploaderror' ),
 						gM( 'mwe-wgfogg_warning_bad_extension', apiRes.upload.code.finalExt ),
 						buttons );
 				} else {
-					_this.interface.setPrompt(
+					_this.ui.setPrompt(
 						gM( 'mwe-uploaderror' ),
 						gM( 'mwe-unknown-error' ) + ' : ' + error_code,
 						buttons );
@@ -479,7 +481,7 @@ mw.UploadHandler.prototype = {
 
 			mw.log( 'get key: ' + error_msg_key[ error_code ] )
 			mw.getRemoteMsg( error_msg_key[ error_code ], function() {
-				_this.interface.setPrompt(
+				_this.ui.setPrompt(
 					gM( 'mwe-uploaderror' ),
 					gM( error_msg_key[ error_code ], errorReplaceArg ),
 					buttons );
@@ -491,7 +493,7 @@ mw.UploadHandler.prototype = {
 		// Check upload.error
 		if ( apiRes.upload && apiRes.upload.error ) {
 			mw.log( ' apiRes.upload.error: ' +  apiRes.upload.error );
-			_this.interface.setPrompt(
+			_this.ui.setPrompt(
 				gM( 'mwe-uploaderror' ),
 				gM( 'mwe-unknown-error' ) + '<br>',
 				buttons );
@@ -561,7 +563,7 @@ mw.UploadHandler.prototype = {
 				_this.form_post_override = false;
 			}
 			// Show warning
-			_this.interface.setPrompt(
+			_this.ui.setPrompt(
 				gM( 'mwe-uploadwarning' ),
 				$j('<div />')
 				.append(
@@ -606,7 +608,7 @@ mw.UploadHandler.prototype = {
 
 		// TODO check for sendAsBinary to support Firefox/HTML5 progress on upload
 		
-		this.interface.setLoading();
+		this.ui.setLoading();
 
 		// Add the iframe
 		_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
@@ -756,10 +758,10 @@ mw.UploadHandler.prototype = {
 	doHttpUpload: function( params ) {
 		var _this = this;
 		// Get a clean setup of the interface dispatch 
-		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );					
+		this.ui.setup( {'title': gM('mwe-upload-in-progress') } );					
 
 		// Set the interface dispatch to loading ( in case we don't get an update for some time )
-		this.interface.setLoading();		
+		this.ui.setLoading();		
 
 		// Set up the request
 		var request = {
@@ -797,7 +799,7 @@ mw.UploadHandler.prototype = {
 		var _this = this;
 
 		// Set up interface dispatch to display for status updates:
-		this.interface.setup( {'title': gM('mwe-upload-in-progress') } );					
+		this.ui.setup( {'title': gM('mwe-upload-in-progress') } );					
 		
 		this.upload_status_request = {
 			'action'     : 'upload',
@@ -834,7 +836,7 @@ mw.UploadHandler.prototype = {
 		// Check if we are done
 		if ( data.upload['apiUploadResult'] ) {
 			//update status to 100%
-			_this.interface.updateProgress( 1 );
+			_this.ui.updateProgress( 1 );
 			//see if we need JSON
 			mw.load( [
 				'JSON'
@@ -856,7 +858,7 @@ mw.UploadHandler.prototype = {
 			// We have content length we can show percentage done:
 			var fraction = data.upload['loaded'] / data.upload['content_length'];
 			// Update the status:
-			_this.interface.updateProgress( fraction );
+			_this.ui.updateProgress( fraction );
 			//special case update the file progress where we have data size:
 			$j( '#up-status-container' ).html(
 				gM( 'mwe-upload-stats-fileprogress',
@@ -867,7 +869,7 @@ mw.UploadHandler.prototype = {
 				)
 			);
 		} else if( data.upload['loaded'] ) {
-			_this.interface.updateProgress( 1 );
+			_this.ui.updateProgress( 1 );
 			mw.log( 'just have loaded (no cotent length: ' + data.upload['loaded'] );
 			//for lack of content-length requests:
 			$j( '#up-status-container' ).html(
@@ -947,7 +949,7 @@ mw.UploadHandler.prototype = {
 				
 				// This overrides our normal completion handling so we close the
 				// dialog immediately.
-				_this.interface.close();
+				_this.ui.close();
 				_this.done_upload_cb( apiRes.upload );
 				return false;
 			}
@@ -963,7 +965,7 @@ mw.UploadHandler.prototype = {
 				window.location = url;
 			};
 			_this.action_done = true;
-			_this.interface.setPrompt(
+			_this.ui.setPrompt(
 					gM( 'mwe-successfulupload' ),
 					gM( 'mwe-upload_done', url),
 					buttons );
