@@ -219,7 +219,7 @@ fn: {
 				} );
 			},
 			dialog: {
-				width: 500,
+				width: 600,
 				height: 400,
 				dialogClass: 'wikiEditor-toolbar-dialog',
 				buttons: {
