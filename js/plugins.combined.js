@@ -9318,7 +9318,7 @@ fn: {
 			'html': '\
 				<fieldset>\
 					<div class="wikiEditor-template-dialog-title" />\
-					<table class="wikiEditor-template-dialog-table" />\
+					<div class="wikiEditor-template-dialog-fields" />\
 				</fieldset>',
 			init: function() {
 				$(this).find( '[rel]' ).each( function() {
@@ -9327,26 +9327,27 @@ fn: {
 			},
 			dialog: {
 				width: 500,
+				height: 400,
 				dialogClass: 'wikiEditor-toolbar-dialog',
 				buttons: {
 					'wikieditor-template-editor-dialog-submit': function() {
 						// More user feedback
-						var $templateDiv = $(this).data( 'templateDiv' );
+						var $templateDiv = $( this ).data( 'templateDiv' );
 						context.fn.highlightLine( $templateDiv );
 						
 						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 						var templateModel = $templateText.data( 'model' );
-						$(this).find( '.wikiEditor-template-dialog-value input' ).each( function() {
-							templateModel.setValue( $(this).data( 'name' ), $(this).val() );
+						$( this ).find( '.wikiEditor-template-dialog-field-wrapper input' ).each( function() {
+							templateModel.setValue( $( this ).data( 'name' ), $( this ).val() );
 						});
 						//keep text consistent
 						$templateText.text( templateModel.getText() );
 						
-						$(this).dialog( 'close' );
+						$( this ).dialog( 'close' );
 					}
 				},
 				open: function() {
-					var $templateDiv = $(this).data( 'templateDiv' );
+					var $templateDiv = $( this ).data( 'templateDiv' );
 					var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 					var templateModel = $templateText.data( 'model' );
 					// Update the model if we need to
@@ -9358,9 +9359,9 @@ fn: {
 					// Build the table
 					// TODO: Be smart and recycle existing table
 					var params = templateModel.getAllInitialParams();
-					var $table = $(this).find( '.wikiEditor-template-dialog-table' ).empty();
+					var $fields = $( this ).find( '.wikiEditor-template-dialog-fields' ).empty();
 					// Do some bookkeeping so we can recycle existing rows
-					var $rows = $table.find( 'tr' );
+					var $rows = $fields.find( '.wikiEditor-template-dialog-field-wrapper' );
 					for ( var paramIndex in params ) {
 						var param = params[paramIndex];
 						if ( typeof param.name == 'undefined' ) {
@@ -9375,20 +9376,21 @@ fn: {
 						if ( $rows.length > 0 ) {
 							// We have another row to recycle
 							var $row = $rows.eq( 0 );
-							$row.children( '.wikiEditor-template-dialog-label' ).text( paramText );
-							$row.children( '.wikiEditor-template-dialog-value input' ).val( paramVal );
+							$row.children( 'label' ).text( paramText );
+							$row.children( 'input' ).val( paramVal );
 							$rows = $rows.not( $row );
 						} else {
 							// Create a new row
-							var $paramRow = $( '<tr />' ).addClass( 'wikiEditor-template-dialog-row' );
-							$( '<td />' )
-								.addClass( 'wikiEditor-template-dialog-label' )
+							var $paramRow = $( '<div />' )
+								.addClass( 'wikiEditor-template-dialog-field-wrapper' );
+							$( '<label />' )
 								.text( paramText )
 								.appendTo( $paramRow );
-							$( '<td />' ).addClass( 'wikiEditor-template-dialog-value' ).append(
-								$( '<input />' ).data( 'name', param.name ).val( paramVal )
-							).appendTo( $paramRow );
-							$table.append( $paramRow );
+							$( '<input />' )
+								.data( 'name', param.name )
+								.val( paramVal )
+								.appendTo( $paramRow );
+							$fields.append( $paramRow );
 						}
 						// Remove any leftover rows
 						$rows.remove();
