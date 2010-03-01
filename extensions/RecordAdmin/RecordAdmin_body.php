@@ -343,16 +343,9 @@ class SpecialRecordAdmin extends SpecialPage {
 		# If an export has been requested but not for this query-id, then bail with empty set
 		if ( ( $export = $wgRequest->getText( 'quid' ) ) && $export != $this->quid ) return array();
 
-		# First get all the articles using the type's template
+		# Loop through all records of this type adding only those that match the regex fields
 		$records = array();
-		$dbr  = wfGetDB( DB_SLAVE );
-		$tbl  = $dbr->tableName( 'templatelinks' );
-		$ty   = $dbr->addQuotes( $type );
-		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
-
-		# Loop through them adding only those that match the regex fields
-		while ( $row = $dbr->fetchRow( $res ) ) {
-			$t = Title::newFromID( $row[0] );
+		foreach ( self::getRecordsByType( $type ) as $t ) {
 			if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
 				$a = new Article( $t );
 				$text = $a->getContent();
@@ -370,9 +363,9 @@ class SpecialRecordAdmin extends SpecialPage {
 				if ( $match ) $records[] = $r;
 			}
 		}
-		$dbr->freeResult( $res );
 
 		# Add the creation and modified date columns to the records
+		$dbr  = wfGetDB( DB_SLAVE );
 		foreach ( $records as $i => $r ) {
 			$t = $r[0];
 			$id = $t->getArticleID();
@@ -421,6 +414,18 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		return $records;
 	}
+
+	static function getRecordsByType( $type ) {
+		$records = array();
+		$dbr  = wfGetDB( DB_SLAVE );
+		$tbl  = $dbr->tableName( 'templatelinks' );
+		$ty   = $dbr->addQuotes( $type );
+		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+		while ( $row = $dbr->fetchRow( $res ) ) $records[] = Title::newFromID( $row[0] );
+		$dbr->freeResult( $res );
+		return $records;
+	}
+
 
 	/**
 	 * Compares a field value according to its operator
