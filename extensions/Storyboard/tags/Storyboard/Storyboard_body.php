@@ -18,71 +18,39 @@ class TagStoryboard {
 	public static function render( $input, $args, $parser, $frame ) {
 		global $wgOut, $wgJsMimeType, $wgScriptPath, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
-		$wgOut->addStyle($egStoryboardScriptPath . '/tags/Storyboard/storyboard.css');		
+		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storyboard/storyboard.css' );
 		$wgOut->includeJQuery();
-		$wgOut->addScriptFile($egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.js');
+		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.js' );
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storyboard/storyboard.js' );
 		
-		$widthGiven = array_key_exists('width', $args)
-			&& (is_numeric($args['width'])
-				|| (strlen($args['width']) > 1
-					&& is_numeric(substr($args['width'], 0, strlen($args['width']) - 1))
-					&& substr($args['width'], strlen($args['width']) == '%'
-					)
-				)
-			);
-		$width = $widthGiven ? $args['width'] : $egStoryboardWidth;
-		
-		$heightGiven = array_key_exists('height', $args)
-			&& (is_numeric($args['height'])
-				|| (strlen($args['height']) > 1
-					&& is_numeric(substr($args['height'], 0, strlen($args['height']) - 1))
-					&& substr($args['height'], strlen($args['height']) == '%'
-					)
-				)
-			);
-		$height = $heightGiven ? $args['height'] : $egStoryboardHeight;
-		
-		TagStoryboard::addPxWhenNeeded($width);
-		TagStoryboard::addPxWhenNeeded($height);
-		
-		$output = <<<EOT
-<div class="ajaxscroll" id="storyboard" style="height: $height; width: $width;">
-<script type="$wgJsMimeType"> /*<![CDATA[*/
-jQuery(function(){
-	jQuery('#storyboard').ajaxScroll({
-		updateBatch: updateStoryboard,
-		batchSize: 5,
-		batchNum: 1
-	});
-});
-function updateStoryboard(obj){
-	jQuery.getJSON('$wgScriptPath/api.php',
-		{
-			'action': 'query',
-			'list': 'stories',
-			'stcontinue': obj.attr( 'offset' ),
-			'stlimit': '5',
-			'format': 'json'
-		},
-		function( data ) {
-			// TODO: use data to create stories html
-		}
-	);
-}
-/*]]>*/ </script>
-EOT;
+		$width = self::getDimension( $args, 'width', $egStoryboardWidth );
+		$height = self::getDimension( $args, 'height', $egStoryboardHeight );
 
-	return array($output, 'noparse' => 'true', 'isHTML' => 'true');
+		$output = Html::element( 'div', array(
+				'class' => 'ajaxscroll',
+				'id' => 'storyboard', // FIXME: Causes id conflicts for multiple <storyboard> tags
+				'style' => "height: $height; width: $width;"
+			)
+		);
+		return array( $output, 'noparse' => 'true', 'isHTML' => 'true' );
 	}
 	
 	/**
-	 * Adds 'px' to a width or height value when it's not there yet, and it's not a percentage. 
-	 * @param string $value
+	 * Get the width or height from an arguments array, or use the default value if not specified or not valid
+	 * @param $arr Array of arguments
+	 * @param $name Key in $array
+	 * @param $default Default value to use if $arr[$name] is not set or not valid
 	 */
-	private static function addPxWhenNeeded(&$value){
-		$hasPx = strrpos( $value, 'px' ) === strlen( $value ) - 2;
-		$hasPercent = strrpos( $value, '%' ) === strlen( $value ) - 1;
-    	if (!$hasPx && !$hasPercent) $value .= 'px';
+	private static function getDimension( $arr, $name, $default ) {
+		$value = $default;
+		if ( isset( $arr[$name] ) && preg_match( '/\d+(\.\d+)?%?/', $arr[$name] ) ) {
+			$value = $arr[$name];
+		}
+		if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) {
+			$value .= 'px';
+		}
+		return $value;
 	}
 	
 }
