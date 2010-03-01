@@ -48,9 +48,6 @@ var default_firefogg_options = {
 	// (no upload or progress bars)
 	'only_firefogg': false,
 
-	// Callback which is called when the source name changes
-	'selectFileCb': false,
-
 	// jQuery selector identifying the target control container or form (can't be left null)
 	'selector': '',
 
@@ -733,7 +730,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			return false;
 		}
 		// Setup the interface progress indicator:
-		_this.interface.setup( { 'title' : gM( 'fogg-transcoding' ) } );
+		_this.ui.setup( { 'title' : gM( 'fogg-transcoding' ) } );
 		
 		// Add the preview controls if transcoding:  
 		if ( !_this.getEncoderSettings()['passthrough'] ) {
@@ -751,7 +748,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// We have a source file, now do the encode		
 		this.doEncode(
 			function /* onProgress */ ( progress ) {
-				_this.interface.updateProgress( progress );
+				_this.ui.updateProgress( progress );
 			},
 			function /* onDone */ () {
 				mw.log( "done with encoding (no upload) " );				
@@ -765,7 +762,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 */
 	onLocalEncodeDone: function() {
 		var _this = this;
-		_this.interface.setPrompt( gM( 'fogg-encoding-done' ),
+		_this.ui.setPrompt( gM( 'fogg-encoding-done' ),
 			gM( 'fogg-encoding-done' ) + '<br>' +
 			//show the video at full resolution upto 720px wide
 			'<video controls="true" style="margin:auto" id="fogg_final_vid" '+ 
@@ -896,7 +893,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 		
 		// Setup the firefogg dialog (if not passthrough )
-		_this.interface.setup( { 'title' : gM( 'mwe-upload-transcode-in-progress' ) } );
+		_this.ui.setup( { 'title' : gM( 'mwe-upload-transcode-in-progress' ) } );
 		
 		// Add the preview controls if transcoding:  
 		if ( !_this.getEncoderSettings()['passthrough'] ) {
@@ -933,7 +930,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// No edit token. Fetch it asynchronously and then do the upload.
 		mw.getToken( _this.api_url, 'File:'+ _this.formData['filename'], function( editToken ) {
 			if( !editToken || editToken == '+\\' ) {
-				_this.interface.setPrompt( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
+				_this.ui.setPrompt( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
 				return false;
 			}
 			_this.editToken = editToken;
@@ -954,7 +951,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			// Encode and then do a post upload
 			_this.doEncode(
 				function /* onProgress */ ( progress ) {
-					_this.interface.updateProgress( progress );
+					_this.ui.updateProgress( progress );
 				},
 				function /* onDone */ () {															
 					var uploadRequest = _this.getUploadApiRequest();
@@ -1166,7 +1163,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			
 			//mw.log( 'Update fogg progress: ' +  _this.fogg.progress() );
 			// If not an error, Update the progress bar
-			_this.interface.updateProgress( _this.fogg.progress() );
+			_this.ui.updateProgress( _this.fogg.progress() );
 
 			// If we're still uploading or encoding, continue to poll the status
 			if ( _this.fogg.state == 'encoding' || _this.fogg.state == 'uploading' ) {
@@ -1193,7 +1190,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					showMessage = _this.done_upload_cb( _this.formData );
 				}
 				if ( showMessage ) {
-					_this.interface.setPrompt( gM( 'mwe-successfulupload' ), 
+					_this.ui.setPrompt( gM( 'mwe-successfulupload' ), 
 						gM( 'mwe-upload_done', apiResult.resultUrl ), buttons );
 				} else {
 					this.action_done = true;

@@ -2124,8 +2124,7 @@ var MW_EMBED_VERSION = '1.1d';
 	*	the updated url
 	*/  
 	mw.replaceUrlParams = function( url, newParams ) {
-		var parsedUrl = mw.parseUri( url );
-				
+		var parsedUrl = mw.parseUri( url );			
 		
 		if ( parsedUrl.protocol != '' ) {
 			var new_url = parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.path + '?';
@@ -2226,7 +2225,7 @@ var MW_EMBED_VERSION = '1.1d';
 		text = text.replace(re,"\\'");
 		re = new RegExp("\\n","g");
 		text = text.replace(re,"\\n");
-		return escapeQuotesHTML(text);
+		return mw.escapeQuotesHTML(text);
 	};
 	
 	/**

@@ -17,19 +17,7 @@
 /**
  * Base UploadInterface object  
  */
-mw.UploadInterface = { 
-	factory : function( interfaceType ) {
-		switch( interfaceType ) {
-			case 'iframe':
-				return new mw.iframeInterface( );
-			break;
-			case 'dialog':
-			default:				
-				return new mw.DialogInterface( );	
-			break;			
-		}
-	}
-};
+mw.UploadInterface = { };
 
 /**
  * Dialog Interface
@@ -55,7 +43,7 @@ mw.DialogInterface.prototype = {
 		}
 		
 		// Add a new one
-		$j( 'body' ).append( 
+		$j( 'body' ).append(
 			$j( '<div />')
 			.attr( 'id', "upProgressDialog" )
 		);
@@ -134,7 +122,7 @@ mw.DialogInterface.prototype = {
      * NOTE: This progress bar is used for encoding AND for upload with no clear Distinction (might want to fix) 
      * @param {Float} progress Progress float
 	 */
-	updateProgress: function( fraction, start_time ) {
+	updateProgress: function( fraction ) {
 		var _this = this;
 		
 		$j( '#up-progressbar' ).progressbar( 'value', parseInt( fraction * 100 ) );
@@ -145,7 +133,7 @@ mw.DialogInterface.prototype = {
 			if (fraction > 0.0 && elapsedMilliseconds > 0) { // or some other minimums for good data
 				var fractionPerMillisecond = fraction / elapsedMilliseconds;
 				var remainingSeconds = parseInt( ( ( 1.0 - fraction ) / fractionPerMillisecond ) / 1000 ); 
-				$j( '#up-etr' ).html( gM( 'mwe-uploaded-time-remaining', mw.seconds2npt(remainingSeconds) ) );
+				$j( '#up-etr' ).html( gM( 'mwe-uploaded-time-remaining', mw.seconds2npt( remainingSeconds ) ) );
 			}
 		}
 	
@@ -210,6 +198,7 @@ mw.DialogInterface.prototype = {
 		this.action_done = true;
 		$j( '#upProgressDialog' ).dialog( 'destroy' ).remove();
 	},
+	
 	/**
 	* Get a standard cancel button in the jQuery.ui dialog format
 	*/
@@ -227,11 +216,31 @@ mw.DialogInterface.prototype = {
 /**
  * Iframe Interface ( sends updates to an iframe for remoteing upload progress events )
  */
-mw.iframeInterface = function( ) {
+mw.UploadIframeUI = function( callbackProxy ) {	
 	return this;
 }
-mw.iframeInterface.prototype = {
-
+mw.UploadIframeUI.prototype = {
+	'lastProgressTime' : 0,
+	
+	init: function( callbackProxy ){
+		this.callbackProxy = callbackProxy;
+	},
+	
+	setup: function( options ){
+		this.callbackProxy( 'setup', options );	
+	},
+	// Don't call update progress more than every 3 seconds 
+	updateProgress: function( fraction ) {
+		if( ( new Date() ).getTime() - _this.lastProgressTime > 3000 ){
+			_this.lastProgressTime = ( new Date() ).getTime()
+			mw.log('do update progress' );
+			this.callbackProxy( 'updateProgress', fraction );
+		}
+	},
+	setPrompt: function( title_txt, msg, buttons ) {
+		// @@todo fix button isssue:
+		this.callbackProxy( 'setPrompt', title_txt, msg, buttons );		
+	}	
 };
 
 
