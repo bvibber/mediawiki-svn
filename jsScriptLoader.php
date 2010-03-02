@@ -4,7 +4,6 @@
  * @file
  */
 
-
 //Setup the script local script cache directory
 // ( has to be hard coded rather than config based for fast non-mediawiki config hits )
 $wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/cache';
@@ -487,7 +486,6 @@ class jsScriptLoader {
 
 		$langCode = self::checkForCommonsLanguageFormHack( $langCode );
 
-
 		$reqClassList = false;
 		if ( isset( $_GET['class'] ) && $_GET['class'] != '' ) {
 			$reqClassList = explode( ',', $_GET['class'] );
@@ -530,17 +528,23 @@ class jsScriptLoader {
 	 */
 	public static function checkForCommonsLanguageFormHack( $langKey){
 		$formNames = array( 'ownwork', 'fromflickr', 'fromwikimedia', 'fromgov');
-		foreach($formNames as $formName){
+		foreach( $formNames as $formName ){
 			// Directly reference a form Name then its "english"
-			if( $formName == $langKey )
+			if( $formName == $langKey ){
 				return 'en';
-			// If the langKey includes a form name (ie esownwork)
+			}
+			// If the langKey includes a form name (ie esownwork or es-ownwork)
 			// then strip the form name use that as the language key
-			if( strpos($langKey, $formName)!==false){
-				return str_replace($formName, '', $langKey);
+			if( strpos($langKey, $formName) !==false ){
+				$langKey = str_replace($formName, '', $langKey);
+				//English wikipedia puts "-" after language keys remove that:
+				if( $langKey[ strlen( $langKey ) - 1 ] == '-'){
+					$langKey = substr( $langKey, 0,  strlen( $langKey ) - 1 );
+				}
+				return $langKey;
 			}
 		}
-		//else just return the key unchanged:
+		// Else just return the key unchanged:
 		return $langKey;
 	}
 	/**
