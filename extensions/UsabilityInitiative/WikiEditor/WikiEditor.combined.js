@@ -1849,7 +1849,7 @@ $j(document).ready( function() {
 		return true;
 	}
 	//disable if in template namespace
-	if( wgNamespaceNumber == wgNamespaceIds['template']){
+	if ( wgNamespaceNumber == 10 ) {
 		return true;
 	}
 	// Add the templateEditor module
