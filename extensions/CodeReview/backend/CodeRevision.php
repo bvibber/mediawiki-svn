@@ -614,6 +614,8 @@ class CodeRevision {
 	}
 	
 	public function getTestRuns() {
+		global $wgCodeReviewTestsTimeout;
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select(
 			array(
@@ -628,9 +630,14 @@ class CodeRevision {
 			),
 			__METHOD__ );
 		$runs = array();
+		$timedOut = time() > ( wfTimestamp( TS_UNIX, $this->mTimestamp) + $wgCodeReviewTestsTimeout );
 		foreach( $result as $row ) {
 			$suite = CodeTestSuite::newFromRow( $this->mRepo, $row );
-			$runs[] = new CodeTestRun( $suite, $row );
+			$run = new CodeTestRun( $suite, $row );
+			if ( $timedOut ) {
+				$run->status = 'abort';
+			}
+			$runs[] = $run;
 		}
 		return $runs;
 	}

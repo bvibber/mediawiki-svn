@@ -337,11 +337,14 @@ class SvnRevTablePager extends SvnTablePager {
 				$total = 0;
 				$success = 0;
 				$progress = false;
+				$aborted = false;
 				foreach( $runs as $run ) {
 					$total += $run->countTotal;
 					$success += $run->countSuccess;
 					if( $run->status == 'running' ) {
 						$progress = true;
+					} elseif ( $run->status == 'abort' ) {
+						$aborted = true;
 					}
 				}
 				if( $progress ) {
@@ -351,8 +354,10 @@ class SvnRevTablePager extends SvnTablePager {
 						'width' => 20,
 						'height' => 20,
 						'alt' => "...",
-						'title' => "Tests in progress...",
+						'title' => wfMsg( 'codereview-tests-running' ),
 					));
+				} elseif ( $aborted ) {
+					return "<span class='mw-codereview-fail'><strong>" . wfMsg( 'codereview-tests-failed' ) . "</strong></span>";
 				}
 				if( $success == $total ) {
 					$class = 'mw-codereview-success';

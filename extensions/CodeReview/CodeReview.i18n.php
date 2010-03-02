@@ -117,6 +117,7 @@ $messages['en'] = array(
 	'codereview-tests-failed2'  => '$1 succeeded {{PLURAL:$2|test|tests}}, $3 failed {{PLURAL:$4|test|tests}}:',
 	'codereview-tests-running' => 'Test cases are running...',
 	'codereview-tests-aborted' => 'Test run aborted.',
+	'codereview-tests-failed' => 'Failed',
 
 	'codereview-email-subj' => '[$1] [$2]: New comment added',
 	'codereview-email-body' => 'User "$1" posted a comment on $3.

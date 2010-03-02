@@ -151,6 +151,11 @@ $wgCodeReviewSharedSecret = false;
  */
 $wgCodeReviewMaxDiffSize = 500000;
 
+/**
+ * Maximum duration of test in seconds. After that time the test is considered failed.
+ */
+$wgCodeReviewTestsTimeout = 60 * 60; // 1 hour
+
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
