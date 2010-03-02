@@ -34,6 +34,9 @@ $wgOptInStyleVersion = 11;
 // array( prefname => value )
 $wgOptInPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
 
+// Preferences to set when users opt out. Null value means set default
+$wgOptOutPrefs = array( 'skin' => null, 'usebetatoolbar' => null );
+
 // Survey questions to ask when users opt out
 $wgOptInSurvey = array(
 	'likedislike' => array(
