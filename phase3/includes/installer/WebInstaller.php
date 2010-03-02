@@ -568,6 +568,11 @@ class WebInstaller extends Installer {
 		if ( !isset( $params['attribs'] ) ) {
 			$params['attribs'] = array();
 		}
+		if( isset( $params['rawtext'] ) ) {
+			$labelText = $params['rawtext'];
+		} else {
+			$labelText = $this->parse( wfMsg( $params['label'] ) );
+		}
 		return 
 			"<div class=\"config-input-check\">\n" .
 			"<label>\n" .
@@ -580,7 +585,7 @@ class WebInstaller extends Installer {
 					'tabindex' => $this->nextTabIndex(),
 				)
 			) .
-			$this->parse( wfMsg( $params['label'] ) ) . "\n" .
+			$labelText . "\n" .
 			"</label>\n" .
 			"</div>\n";
 	}
@@ -1235,8 +1240,24 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-email-sender'
 			) ) .
 			$this->parent->getHelpBox( 'config-email-sender-help' ) .
-			$this->parent->getFieldsetEnd() .
+			$this->parent->getFieldsetEnd()
+		);
 
+		$extensions = $this->parent->findExtensions();
+		if( $extensions ) {
+			$extHtml = $this->parent->getFieldsetStart( 'config-extension' ) .
+				$this->parent->getHelpBox( 'config-extension-help' );
+			foreach( $extensions as $ext ) {
+				$extHtml .= $this->parent->getCheckBox( array(
+					'var' => "ext-$ext",
+					'rawtext' => $ext,
+				) );
+			}
+			$extHtml .= $this->parent->getFieldsetEnd();
+			$this->parent->output->addHTML( $extHtml );
+		}
+
+		$this->parent->output->addHTML(
 			# Uploading
 			$this->parent->getFieldsetStart( 'config-upload-settings' ) .
 			$this->parent->getCheckBox( array( 
@@ -1381,6 +1402,13 @@ class WebInstaller_Options extends WebInstallerPage {
 			$this->setVar( 'wgRightsIcon', '' );
 		}
 
+		$exts = $this->parent->getVar( '_Extensions' );
+		foreach( $exts as $key => $ext ) {
+			if( !$this->parent->request->getCheck( 'config_ext-' . $ext ) ) {
+				unset( $exts[$key] );
+			}
+		}
+		$this->parent->setVar( '_Extensions', $exts );
 		return true;
 	}
 }

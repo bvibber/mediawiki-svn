@@ -4414,6 +4414,10 @@ If you don't want a logo, leave this box blank.",
 'config-cc-not-chosen' => 'Please choose which Creative Commons license you want and click "proceed".',
 'config-advanced-settings' => 'Advanced configuration',
 
+'config-extension' => 'Extensions',
+'config-extension-help' => "The following extensions were automatically detected in your extensions directory.\n
+They may require additional configuration, but you can enable them now",
+
 # Special:Version
 'version'                          => 'Version',
 'version-extensions'               => 'Installed extensions',

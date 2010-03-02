@@ -62,6 +62,7 @@ abstract class Installer {
 		'_RightsProfile' => 'wiki',
 		'_LicenseCode' => 'none',
 		'_CCDone' => false,
+		'_Extensions' => array(),
 	);
 
 	/**
@@ -627,6 +628,22 @@ abstract class Installer {
 	 */
 	protected function getDocUrl( $page ) {
 		return "{$_SERVER['PHP_SELF']}?page=" . urlencode( $attribs['href'] );
+	}
+
+	public function findExtensions() {
+		if( $this->getVar( 'IP' ) === null ) {
+			return false;
+		}
+		$exts = array();
+		$dir = $this->getVar( 'IP' ) . '/extensions';
+		$dh = opendir( $dir );
+		while ( ( $file = readdir( $dh ) ) !== false ) {
+			if( file_exists( "$dir/$file/$file.php" ) ) {
+				$exts[] = $file;
+			}
+		}
+		$this->setVar( '_Extensions', $exts );
+		return $exts;
 	}
 }
 

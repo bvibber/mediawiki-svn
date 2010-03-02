@@ -3325,6 +3325,8 @@ $wgMessageStructure = array(
 		'config-cc-again',
 		'config-cc-not-chosen',
 		'config-advanced-settings',
+		'config-extension',
+		'config-extension-help',
 	),
 );
 
