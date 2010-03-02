@@ -593,7 +593,8 @@ if ( typeof context == 'undefined' ) {
 				$element = $element.closest( 'p' );
 			}
 			$element.css( 'backgroundColor', '#AACCFF' );
-			setTimeout( function() { $element.animate( { 'backgroundColor': 'white' }, 'slow' ); }, 100 )
+			setTimeout( function() { $element.animate( { 'backgroundColor': 'white' }, 'slow' ); }, 100 );
+			setTimeout( function() { $element.css( 'backgroundColor', 'white' ); }, 1000 );
 		},
 		'htmlToText': function( html ) {
 			// This function is slow for large inputs, so aggressively cache input/output pairs

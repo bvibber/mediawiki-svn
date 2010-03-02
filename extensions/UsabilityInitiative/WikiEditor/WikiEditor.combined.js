@@ -1848,6 +1848,10 @@ $j(document).ready( function() {
 	if ( !wgWikiEditorEnabledModules.templateEditor ) {
 		return true;
 	}
+	//disable if in template namespace
+	if( wgNamespaceNumber == wgNamespaceIds['template']){
+		return true;
+	}
 	// Add the templateEditor module
 	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'templateEditor' );
