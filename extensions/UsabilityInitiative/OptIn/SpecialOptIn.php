@@ -46,9 +46,9 @@ class SpecialOptIn extends SpecialPage {
 	}
 
 	public static function optOut( $user ) {
-		global $wgOptInPrefs;
-		foreach ( $wgOptInPrefs as $pref => $value ) {
-			$user->setOption( $pref, null );
+		global $wgOptOutPrefs;
+		foreach ( $wgOptOutPrefs as $pref => $value ) {
+			$user->setOption( $pref, $value );
 		}
 		$user->saveSettings();
 	}
