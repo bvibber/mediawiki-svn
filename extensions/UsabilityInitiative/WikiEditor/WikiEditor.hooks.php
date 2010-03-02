@@ -44,7 +44,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-highlight-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/labs',
 					),
 				),
 			),
@@ -57,7 +57,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-template-editor-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/labs',
 					),
 				),
 			),
@@ -74,7 +74,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-preview-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/labs',
 					),
 				),
 			),
@@ -92,7 +92,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-publish-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/labs',
 					),
 				),
 			),
@@ -116,7 +116,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-toc-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/labs',
 					),
 				),
 			),
@@ -139,7 +139,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-toolbar-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/beta',
 					),
 				),
 				'dialogs' => array(
@@ -148,7 +148,7 @@ class WikiEditorHooks {
 					'ui' => array(
 						'type' => 'toggle',
 						'label-message' => 'wikieditor-toolbar-dialogs-preference',
-						'section' => 'editing/experimental',
+						'section' => 'editing/beta',
 					),
 				),
 			),
