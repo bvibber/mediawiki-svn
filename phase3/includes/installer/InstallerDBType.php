@@ -67,9 +67,9 @@ abstract class InstallerDBType {
 	abstract function getConnection();
 
 	/**
-	 * Create a database and MediaWiki tables with the configured settings
+	 * Create the database and return a database object to use it
 	 */
-	abstract function install();
+	abstract function setupDatabase();
 
 	/** 
 	 * Construct and initialise parent.

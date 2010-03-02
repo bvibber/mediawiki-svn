@@ -4418,6 +4418,12 @@ If you don't want a logo, leave this box blank.",
 'config-extension-help' => "The following extensions were automatically detected in your extensions directory.\n
 They may require additional configuration, but you can enable them now",
 
+'config-stage-done' => 'done',
+'config-install-extensions' => 'Including extensions',
+'config-install-database' => 'Setting up database',
+'config-install-schema' => 'Generating schema',
+'config-install-tables' => 'Creating tables',
+
 # Special:Version
 'version'                          => 'Version',
 'version-extensions'               => 'Installed extensions',

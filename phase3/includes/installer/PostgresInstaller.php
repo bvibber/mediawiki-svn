@@ -124,7 +124,6 @@ class PostgresInstaller extends InstallerDBType {
 		return Status::newGood();
 	}
 
-	function install() {
-		echo "TODO";
+	function setupDatabase() {
 	}
 }

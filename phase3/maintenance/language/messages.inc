@@ -3327,6 +3327,11 @@ $wgMessageStructure = array(
 		'config-advanced-settings',
 		'config-extension',
 		'config-extension-help',
+		'config-stage-done',
+		'config-install-extensions',
+		'config-install-database',
+		'config-install-schema',
+		'config-install-tables',
 	),
 );
 

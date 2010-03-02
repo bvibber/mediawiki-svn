@@ -370,7 +370,17 @@ class MysqlInstaller extends InstallerDBType {
 		return Status::newGood();
 	}
 
-	function install() {
-		echo "TODO";
+	function setupDatabase() {
+		$status = $this->getConnection();
+		if ( !$status->isOK() ) {
+			return false;
+		}
+		$conn = $status->value;
+		$dbName = $this->getVar( 'wgDBname' );
+		if( !$conn->selectDB( $dbName ) ) {
+			$conn->query( "CREATE DATABASE `$dbName`" );
+			$conn->selectDB( $dbName );
+		}
+		return $conn;
 	}
 }

@@ -1413,6 +1413,61 @@ class WebInstaller_Options extends WebInstallerPage {
 	}
 }
 class WebInstaller_Install extends WebInstallerPage {
+
+	function execute() {
+		$this->parent->output->addHTML("<ul>");
+
+		// Extensions
+		$exts = $this->parent->getVar( '_Extensions' );
+		if( count( $exts ) ) {
+			global $wgHooks;
+			$this->startStage( 'config-install-extensions' );
+			$path = $this->getVar( 'IP' ) . '/extensions';
+			foreach( $exts as $e ) {
+				require( "$path/$e/$e.php" );
+			}
+			$this->endStage();
+		}
+
+		// Get database
+		$this->startStage( 'config-install-database' );
+		$dbType = $this->parent->getVar( 'wgDBtype' );
+		$installer = $this->parent->getDBInstaller( $dbType );
+		$db = $installer->setupDatabase();
+		if( !$db ) {
+			// @todo Need some sort of failure
+			return;
+		}
+		$this->endStage();
+
+		// Generate schema
+		$this->startStage( 'config-install-schema' );
+		$schema = SchemaBuilder::newFromType( $dbType );
+		$schema->setTablePrefix( $this->getVar( 'wgDBprefix' ) );
+		if( !$schema->createAllTables() ) {
+			// @todo Need some sort of failure
+			return;
+		}
+		$this->endStage();
+
+		// Create tables
+		$this->startStage( 'config-install-tables' );
+		$queries = explode( ";", $schema->getSql() );
+		foreach( $queries as $qry ) {
+			$db->query( $qry );
+		}
+		$this->endStage();
+
+		// @TODO Write LocalSettings, create admin account
+	}
+
+	private function startStage( $msg ) {
+		$this->parent->output->addHTML( "<li>" . wfMsgHtml( $msg ) . wfMsg( 'ellipsis') );
+	}
+
+	private function endStage() {
+		$this->parent->output->addHTML( wfMsgHtml( 'config-stage-done' ) . "</li>\n" );
+	}
 }
 class WebInstaller_Complete extends WebInstallerPage {
 }
