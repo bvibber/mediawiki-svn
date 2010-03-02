@@ -9136,10 +9136,6 @@ fn: {
  */
 evt: {
 	mark: function( context, event ) {
-		if ( $( 'body' ).hasClass( 'ns-10' ) ) {
-			// We're in the template namespace, don't collapse any templates
-			return;
-		}
 		// Get references to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
