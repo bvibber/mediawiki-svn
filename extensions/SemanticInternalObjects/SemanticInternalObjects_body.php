@@ -129,11 +129,20 @@ class SIOHandler {
 		$obj_to_page_prop_name = array_shift( $params );
 		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $parser->getTitle() );
 		foreach ( $params as $param ) {
-			$parts = explode( "=", trim( $param ) );
+			$parts = explode( "=", trim( $param ), 2 );
 			if ( count( $parts ) == 2 ) {
 				$key = $parts[0];
 				$value = $parts[1];
-				$internal_object->addPropertyAndValue( $key, $value );
+				// if the property name
+				if ( substr( $key, -5 ) == '#list' ) {
+					$key = substr( $key, 0, strlen( $key ) - 5 );
+					$list_values = explode( ',', $value );
+					foreach ( $list_values as $list_value ) {
+						$internal_object->addPropertyAndValue( $key, trim( $list_value ) );
+					}
+				} else {
+					$internal_object->addPropertyAndValue( $key, $value );
+				}
 			}
 		}
 		self::$internal_objects[] = $internal_object;
@@ -160,7 +169,7 @@ class SIOHandler {
 			$all_text2_inserts = array_merge($all_text2_inserts, $up_text2);
 		}
 
-		// now save everything to the database
+		// now save everything to the database, in a single transaction
 		$db = wfGetDB( DB_MASTER );
 		$db->begin('SIO::updatePageData');
 		if (count($ids_for_deletion) > 0) {
@@ -179,9 +188,29 @@ class SIOHandler {
 		if (count($all_text2_inserts) > 0) {
 			$db->insert( 'smw_text2', $all_text2_inserts, 'SIO::updateText2Data');
 		}
+		// end transaction
 		$db->commit('SIO::updatePageData');
 		self::$internal_objects = array();
 		return true;
 	}
 
+	/**
+	 * Takes a set of SMW "update jobs", and keeps only the unique, actual
+	 * titles among them - this is useful if there are any internal objects
+	 * among the group; a set of names like "Page name#1", "Page name#2"
+	 * etc. should be turned into just "Page name".
+	 */
+	static function handleUpdatingOfInternalObjects(&$jobs) {
+		$unique_titles = array();
+		foreach ($jobs as $i => $job) {
+			$title = Title::makeTitleSafe($job->title->getNamespace(), $job->title->getText());
+			$id = $title->getArticleID();
+			$unique_titles[$id] = $title;
+		}
+		$jobs = array();
+		foreach ($unique_titles as $id => $title) {
+			$jobs[] = new SMWUpdateJob($title);
+		}
+		return true;
+	}
 }
