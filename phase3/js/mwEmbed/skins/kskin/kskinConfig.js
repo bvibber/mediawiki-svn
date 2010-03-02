@@ -81,11 +81,10 @@ var kskinConfig = {
 						'width' : ctrlObj.getOverlayWidth(),
 						'height' :  ctrlObj.getOverlayHeight() + 'px'
 					});
-										
-					
 					// Special common overflow hack for thumbnail display of player 								
 					$j( embedPlayer ).parents( '.thumbinner' ).css( 'overflow', 'visible' );
 				}
+				
 				$menuBar = $j( '<ul />' )
 					.addClass( 'k-menu-bar' );
 					

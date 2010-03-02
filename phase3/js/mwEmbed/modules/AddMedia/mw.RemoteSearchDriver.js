@@ -50,6 +50,7 @@ mw.addMessages( {
 	"mwe-do-more-modification" : "Do More Modification",
 	"mwe-checking-resource" : "Checking for resource",
 	"mwe-resource-needs-import" : "Resource $1 needs to be imported to $2",
+	
 	"mwe-ftype-svg" : "SVG vector file",
 	"mwe-ftype-jpg" : "JPEG image file",
 	"mwe-ftype-png" : "PNG image file",
@@ -64,7 +65,7 @@ mw.addMessages( {
 	"rsd-kaltura" : "Kaltura agragated search for free-licensed media across multiple search providers",
 
 	"rsd-this_wiki-title" : "This wiki",
-	"rsd-this_wiki-desc" : "The local wiki install",
+	"rsd-this_wiki-desc" : "The local wiki",
 
 	"rsd-archive_org-title": "Archive.org",
 	"rsd-archive_org-desc" : "The Internet Archive, a digital library of cultural artifacts",
@@ -192,7 +193,7 @@ mw.RemoteSearchDriver.prototype = {
 	// Current provider stores the current provider 
 	'current_provider': null,
 	
-	// Previus provider stores the previous provider for provider switching when calling search
+	// Previous provider stores the previous provider for provider switching when calling search
 	// NOTE: can be removed once we clean up "upload" tab abstraction 
 	'previus_provider': null,
 	
@@ -279,7 +280,7 @@ mw.RemoteSearchDriver.prototype = {
 			'lib': 'mediaWiki',
 			'tab_img': true,
 			
-			// Prefix on imported resources (not applicable if the repository is local)
+			// Prefix on imported resources (not applicable if the repository is local or shared)
 			'resource_prefix': 'WC_', 
 
 			// Commons can be enabled as a remote repo do check shared 
@@ -991,12 +992,12 @@ mw.RemoteSearchDriver.prototype = {
 			$uploadButton = $j.button( { icon_id: 'disk', text: gM( 'mwe-upload_tab' ) })
 				.addClass("rsd_upload_button")
 				.click(function() {
-					// Update the previus_provider
+					// Update the previus_provider to swap back
 					if( _this.current_provider != 'upload' ) {
 						_this.previus_provider = _this.current_provider;
 					}
 					_this.current_provider = 'upload';
-					_this.updateUploadResults( );
+					_this.showUploadTab( );
 					return false;
 				});
 			$searchForm.append( $uploadButton );
@@ -1016,15 +1017,16 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Shows the upload tab loader and issues a call to showUploadForm
 	*/
-	updateUploadResults: function() {
-		mw.log( "updateUploadResults::" );
+	showUploadTab: function() {
+		mw.log( "showUploadTab::" );
 		var _this = this;
-		// set it to loading:
+		
+		// Set the tab container to loading:
 		this.$resultsContainer.loadingSpinner();
+		
 		//Show the upload form
-		mw.load( ['$j.fn.simpleUploadForm'], function() {			
-			var provider = _this.content_providers['this_wiki'];
-
+		mw.load( ['mw.UploadForm'], function() {						
+			var provider = _this.content_providers[ 'this_wiki' ];
 			// Load this_wiki search system to grab the resource
 			_this.loadSearchLib( provider, function() {
 				_this.showUploadForm( provider );
@@ -1084,9 +1086,31 @@ mw.RemoteSearchDriver.prototype = {
 		}else{
 			$j('#upload_bin').empty().text( gM( 'mwe-no_recent_uploads' ) );
 		}
-
+		
+		// The api stuff: 
+		var commonsProvider = this.content_providers[ 'wiki_commons' ];
+		var thisWikiProvider = this.content_providers[ 'this_wiki' ];
+		
+		// Send the upload target menu from UploadForm class
+		mw.UploadForm.getUploadMenu( {
+			'target': '#upload_form',
+			'uploadTargets' : {
+				'commons' : {
+					'apiUrl' : commonsProvider.api_url,
+					'title' : gM( 'rsd-wiki_commons-title')
+				},
+				'this_wiki' : {
+					'apiUrl' : thisWikiProvider.api_url,
+					// Unfortunally mediaWiki pages don't expose the title of the wiki 
+					// Could get in an api request ( just use domain for now)  
+					'title' : mw.parseURI( thisWikiProvider.api_url ).host
+				}
+			}
+		} );
+		
 		// Deal with the api form upload form directly:
-		$j( '#upload_form' ).simpleUploadForm( {
+		/*mw.UploadForm.getForm( {
+			"target" : '#upload_form',
 			"api_target" 	  : _this.upload_api_target,
 			"ondone_callback" : function( resultData ) {
 				var wTitle = resultData['filename'];
@@ -1103,6 +1127,7 @@ mw.RemoteSearchDriver.prototype = {
 				return false;
 			}
 		} );
+		*/
 	},
 	
 	/**
@@ -2964,7 +2989,7 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log( 'select tab: ' + provider_id );
 		this.current_provider = provider_id;
 		if ( this.current_provider == 'upload' ) {
-			this.updateUploadResults();
+			this.showUploadTab();
 		} else {
 			// update the search results:
 			this.updateResults();
