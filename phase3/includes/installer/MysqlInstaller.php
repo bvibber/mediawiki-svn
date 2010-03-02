@@ -383,4 +383,9 @@ class MysqlInstaller extends InstallerDBType {
 		}
 		return $conn;
 	}
+
+	function getTableOptions() {
+		return array( 'engine' => $this->getVar( '_MysqlEngine' ),
+			'default charset' => $this->getVar( '_MysqlCharset' ) );
+	}
 }

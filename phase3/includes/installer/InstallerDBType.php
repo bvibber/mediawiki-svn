@@ -71,6 +71,15 @@ abstract class InstallerDBType {
 	 */
 	abstract function setupDatabase();
 
+	/**
+	 * Return any table options to be applied to all tables that don't
+	 * override them
+	 * @return Array
+	 */
+	function getTableOptions() {
+		return array();
+	}
+
 	/** 
 	 * Construct and initialise parent.
 	 * This is typically only called from Installer::getDBInstaller()

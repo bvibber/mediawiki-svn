@@ -1443,6 +1443,7 @@ class WebInstaller_Install extends WebInstallerPage {
 		// Generate schema
 		$this->startStage( 'config-install-schema' );
 		$schema = SchemaBuilder::newFromType( $dbType );
+		$schema->setTableOptions( $installer->getTableOptions() );
 		$schema->setTablePrefix( $this->getVar( 'wgDBprefix' ) );
 		if( !$schema->createAllTables() ) {
 			// @todo Need some sort of failure
