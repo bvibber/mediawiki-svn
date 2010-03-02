@@ -868,7 +868,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * - if type not specified, first template is used
 	 */
 	static function getRecordArgs( &$record, $type = false ) {
-		if ( is_object( $record ) ) $title = $record; else $title = Title::newFromText( $record );
+		if ( is_object( $record ) ) $title =& $record; else $title = Title::newFromText( $record );
 		if ( is_object( $title ) ) {
 			$article = new Article( $title );
 			$text = $article->getContent();
@@ -876,11 +876,12 @@ class SpecialRecordAdmin extends SpecialPage {
 			$braces = false;
 			if ( $type ) {
 				foreach ( $eb as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
-			} elseif ( count( $eb ) > 0 ) $braces = $eb[0];
+			} elseif ( count( $eb ) >= 0 ) $braces = $eb[0];
 			if ( $braces ) {
 				$values = self::valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 			}
 		}
+		return $values;
 	}
 
 	/**
@@ -889,7 +890,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	static function valuesFromText( $text ) {
 		$values = array();
 		preg_match_all( "|^\s*\|\s*(.+?)\s*= *(.*?) *(?=^\s*[\|\}])|sm", $text, $m );
-		foreach ( $m[1] as $i => $k ) $values[$k] = $m[2][$i];
+		foreach ( $m[1] as $i => $k ) $values[trim( $k )] = trim( $m[2][$i] );
 		return $values;
 	}
 
