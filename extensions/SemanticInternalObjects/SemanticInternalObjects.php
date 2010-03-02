@@ -9,9 +9,10 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'SIO_VERSION', '0.3' );
+define( 'SIO_VERSION', '0.4' );
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name'	=> 'Semantic Internal Objects',
 	'version'	=> SIO_VERSION,
 	'author'	=> 'Yaron Koren',
@@ -22,6 +23,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgHooks['ParserFirstCallInit'][] = 'siofRegisterParserFunctions';
 $wgHooks['LanguageGetMagic'][] = 'siofLanguageGetMagic';
 $wgHooks['smwDeleteSemanticData'][] = 'SIOHandler::updateData';
+$wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
 
 $siogIP = $IP . '/extensions/SemanticInternalObjects';
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
