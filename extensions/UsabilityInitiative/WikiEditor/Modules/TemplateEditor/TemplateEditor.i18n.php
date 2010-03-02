@@ -43,6 +43,8 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'wikieditor-template-editor-preference' => 'Дазволіць рэдагаваньне шаблёнаў вікі праз формы',
+	'wikieditor-template-editor-dialog-title' => 'Рэдагаваць шаблён',
+	'wikieditor-template-editor-dialog-submit' => 'Абнавіць',
 );
 
 /** Bulgarian (Български)
@@ -135,6 +137,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'wikieditor-template-editor-preference' => 'Activar a edición de modelos wiki baseada en formularios',
+	'wikieditor-template-editor-dialog-title' => 'Editar o modelo',
+	'wikieditor-template-editor-dialog-submit' => 'Actualizar',
 );
 
 /** Swiss German (Alemannisch)
@@ -213,7 +217,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'wikieditor-template-editor-preference' => 'വിക്കി ഫലകങ്ങളിൽ തിരുത്തുവാൻ ഫോം ഉപയോഗിക്കൽ സജ്ജമാക്കുക',
 	'wikieditor-template-editor-dialog-title' => 'ഫലകം തിരുത്തുക',
-	'wikieditor-template-editor-dialog-submit' => 'ശരി',
+	'wikieditor-template-editor-dialog-submit' => 'പുതുക്കുക',
 );
 
 /** Dutch (Nederlands)
@@ -224,10 +228,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiver skjemabasert redigering av wikimaler',
+	'wikieditor-template-editor-dialog-title' => 'Rediger mal',
+	'wikieditor-template-editor-dialog-submit' => 'Oppdater',
 );
 
 /** Occitan (Occitan)

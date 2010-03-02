@@ -1913,6 +1913,7 @@ $messages['wuu'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'sitematrix' => 'רשימה פֿון וויקימעדיע וויקיס',
 	'sitematrix-language' => 'שפראַך',
 	'sitematrix-others' => 'אַנדערע פראיעקטן פֿון וויקימעדיע',
 );

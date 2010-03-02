@@ -1516,6 +1516,13 @@ $messages['vo'] = array(
 	'scanset_prev' => '&lt; Büik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'scanset_next' => 'קומענדיק &gt;',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

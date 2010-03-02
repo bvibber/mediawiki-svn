@@ -350,6 +350,18 @@ $messages['ia'] = array(
 Tu pote [[Special:RefHelper|adder le referentia manualmente]] o [[Special:RefSearch|cercar le citation a adder]].',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'refhelper-title' => 'タイトル:',
+	'refhelper-pages' => 'ページ:',
+	'refhelper-year' => '年:',
+	'refhelper-category' => 'カテゴリ $1:',
+	'refhelper-create' => '作成',
+	'refhelper-search' => '検索',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

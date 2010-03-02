@@ -2415,6 +2415,13 @@ $messages['vo'] = array(
 	'readerfeedback-finished' => 'Danö!',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'readerfeedback-level-3' => 'הויך',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Gaoxuewei

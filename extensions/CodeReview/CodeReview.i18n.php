@@ -6861,7 +6861,7 @@ $messages['pms'] = array(
 	'code-pathsearch-filter' => 'Filtr aplicà:',
 	'code-revfilter-cr_status' => 'Stat = $1',
 	'code-revfilter-cr_author' => 'Autor = $1',
-	'code-revfilter-clear' => 'Polida filtr',
+	'code-revfilter-clear' => 'Scancelé ël filtr',
 	'code-rev-submit' => 'Salvé ij cangiament',
 	'code-rev-submit-next' => 'Salvé & problema nen arzolvù apress',
 	'code-batch-status' => 'Cangé lë statù:',

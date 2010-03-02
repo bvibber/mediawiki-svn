@@ -83,10 +83,11 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'dynamicsidebar-desc' => 'A dà bare lateraj dinàmiche basà dzora a pàgine utent, partìe, e categorìe',
+	'dynamicsidebar-desc' => "A dà 'd bare lateraj dinàmiche basà dzora a le pàgine dj'utent, soe partìe e soe categorìe",
 );
 
 /** Russian (Русский)

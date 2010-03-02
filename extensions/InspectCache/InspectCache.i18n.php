@@ -830,6 +830,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -842,7 +843,7 @@ $messages['pms'] = array(
 	'inspectcache-delete' => 'Scansela',
 	'inspectcache-deleted' => 'Cache scanselà',
 	'inspectcache-list' => 'Lista',
-	'right-inspectcache' => 'Varda e scansela le vos ëd cache',
+	'right-inspectcache' => 'Mostré e scancelé le vos dla memòria local',
 );
 
 /** Pashto (پښتو)

@@ -1710,7 +1710,7 @@ $messages['pms'] = array(
 	'qp_func_invalid_proposal_id' => 'Id propòsta=$3 pa bon (pa un nùmer) për ël sondagi $1, chestion $2',
 	'qp_error_no_such_poll' => "Sondagi pa esistent ($1).
 Sicurte che ël sondagi a sia diciarà e salvà, ëdcò sicurte ëd dovré ël caràter delimitador d'adrësse #",
-	'qp_error_in_question_header' => 'Testà dla custion pa bon-a: $1',
+	'qp_error_in_question_header' => 'Antestassion dla chestion pa bon-a: $1',
 	'qp_error_id_in_stats_mode' => "As peul pa diciaresse n'ID ëd sondagi an manera statìstica",
 	'qp_error_dependance_in_stats_mode' => 'As peul pa diciaresse na caden-a ëd dipendensa dël sondagi an manera statìstica',
 	'qp_error_no_stats' => "Pa gnun dat statìstich a son disponìbij, përchè gnun a l'ha votà për sto sondagi-sì, për adess (adrëssa=$1)",
