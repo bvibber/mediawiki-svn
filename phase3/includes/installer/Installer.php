@@ -32,6 +32,7 @@ abstract class Installer {
 //		'wgDeletedDirectory',
 		'wgEnableUploads',
 		'wgLogo',
+		'wgShellLocale'
 	);
 
 	/**
@@ -113,6 +114,7 @@ abstract class Installer {
 		'envCheckGraphics',
 		'envCheckPath',
 		'envCheckExtension',
+		'envCheckShellLocale',
 	);
 
 	/**
@@ -581,7 +583,80 @@ abstract class Installer {
 			$ext = 'php';
 		}
 		$this->setVar( 'wgScriptExtension', ".$ext" );
-		$this->showMessage( 'config-extension', $ext );
+		$this->showMessage( 'config-file-extension', $ext );
+	}
+
+	function envCheckShellLocale() {
+		# Give up now if we're in safe mode or open_basedir
+		# It's theoretically possible but tricky to work with
+		if ( wfIniGetBool( "safe_mode" ) || ini_get( 'open_basedir' ) || !function_exists( 'exec' ) ) {
+			return true;
+		}
+
+		$os = php_uname( 's' );
+		$supported = array( 'Linux', 'SunOS', 'HP-UX' ); # Tested these
+		if ( !in_array( $os, $supported ) ) {
+			return true;
+		}
+
+		# Get a list of available locales
+		$lines = $ret = false;
+		exec( '/usr/bin/locale -a', $lines, $ret );
+		if ( $ret ) {
+			return true;
+		}
+
+		$lines = wfArrayMap( 'trim', $lines );
+		$candidatesByLocale = array();
+		$candidatesByLang = array();
+		foreach ( $lines as $line ) {
+			if ( $line === '' ) {
+				continue;
+			}
+			if ( !preg_match( '/^([a-zA-Z]+)(_[a-zA-Z]+|)\.(utf8|UTF-8)(@[a-zA-Z_]*|)$/i', $line, $m ) ) {
+				continue;
+			}
+			list( $all, $lang, $territory, $charset, $modifier ) = $m;
+			$candidatesByLocale[$m[0]] = $m;
+			$candidatesByLang[$lang][] = $m;
+		}
+
+		# Try the current value of LANG
+		if ( isset( $candidatesByLocale[ getenv( 'LANG' ) ] ) ) {
+			$this->setVar( 'wgShellLocale', getenv( 'LANG' ) );
+			$this->showMessage( 'config-shell-locale', getenv( 'LANG' ) );
+			return true;
+		}
+
+		# Try the most common ones
+		$commonLocales = array( 'en_US.UTF-8', 'en_US.utf8', 'de_DE.UTF-8', 'de_DE.utf8' );
+		foreach ( $commonLocales as $commonLocale ) {
+			if ( isset( $candidatesByLocale[$commonLocale] ) ) {
+				$this->setVar( 'wgShellLocale', $commonLocale );
+				$this->showMessage( 'config-shell-locale', $commonLocale );
+				return true;
+			}
+		}
+
+		# Is there an available locale in the Wiki's language?
+		$wikiLang = $this->getVar( 'wgLanguageCode' );
+		if ( isset( $candidatesByLang[$wikiLang] ) ) {
+			$m = reset( $candidatesByLang[$wikiLang] );
+			$this->setVar( 'wgShellLocale', $m[0] );
+			$this->showMessage( 'config-shell-locale', $m[0] );
+			return true;
+		}
+
+		# Are there any at all?
+		if ( count( $candidatesByLocale ) ) {
+			$m = reset( $candidatesByLocale );
+			$this->setVar( 'wgShellLocale', $m[0] );
+			$this->showMessage( 'config-shell-locale', $m[0] );
+			return true;
+		}
+
+		# Give up
+		return true;
 	}
 
 	/**

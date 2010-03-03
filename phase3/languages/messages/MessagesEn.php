@@ -4228,7 +4228,8 @@ cannot use these for object caching.',
 'config-dir' => 'Installation directory: <tt>$1</tt>',
 'config-uri' => 'Script URI path: <tt>$1</tt>',
 'config-no-uri' => '<strong>Error:</strong> Could not determine the current URI. Installation aborted.',
-'config-extension' => 'Installing MediaWiki with <tt>$1</tt> file extensions',
+'config-file-extension' => 'Installing MediaWiki with <tt>$1</tt> file extensions',
+'config-shell-locale' => 'Detected shell locale, $1',
 
 'config-db-type' => 'Database type:',
 'config-db-host' => 'Database host:',
@@ -4414,8 +4415,8 @@ If you don't want a logo, leave this box blank.",
 'config-cc-not-chosen' => 'Please choose which Creative Commons license you want and click "proceed".',
 'config-advanced-settings' => 'Advanced configuration',
 
-'config-extension' => 'Extensions',
-'config-extension-help' => "The following extensions were automatically detected in your extensions directory.\n
+'config-extensions' => 'Extensions',
+'config-extensions-help' => "The following extensions were automatically detected in your extensions directory.\n
 They may require additional configuration, but you can enable them now",
 
 'config-stage-done' => 'done',
@@ -4423,6 +4424,8 @@ They may require additional configuration, but you can enable them now",
 'config-install-database' => 'Setting up database',
 'config-install-schema' => 'Generating schema',
 'config-install-tables' => 'Creating tables',
+'config-install-user' => 'Creating admin user',
+'config-install-localsettings' => 'Writing LocalSettings.php',
 
 # Special:Version
 'version'                          => 'Version',
