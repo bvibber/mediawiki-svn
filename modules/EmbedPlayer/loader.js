@@ -64,6 +64,8 @@ mw.addClassStyleSheets( {
 * 
 * NOTE: this function can be part of setup can run prior to jQuery being ready
 */
+
+
 mw.documentHasPlayerTags = function() {
 	var rewriteTags = mw.getConfig( 'rewritePlayerTags' );				
 	if( rewriteTags ) {

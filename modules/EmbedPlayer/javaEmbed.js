@@ -73,9 +73,10 @@ var javaEmbed = {
 			newDoc.write( '<html><body>' + appletCode + '</body></html>' );
 			// spurious error in some versions of FF, no workaround known
 			newDoc.close(); 
-		} else {*/
+		} else {
 			$j( this ).html( appletCode );
 		//}	
+		*/		
 		
 		// Start the monitor: 
 		this.monitor();
@@ -86,15 +87,15 @@ var javaEmbed = {
 	*/
 	getAppletLocation: function() {
 		var mediaSrc = this.getSrc()
-		if ( mediaSrc.indexOf( '://' ) != -1 & !mw.isLocalDomain( mediaSrc ) ) {
+		if ( !mw.isLocalDomain( mediaSrc ) ) {
 			if ( window.cortadoDomainLocations[ mw.parseUri( mediaSrc ).host ] ) {
-				applet_loc =  window.cortadoDomainLocations[mw.parseUri( mediaSrc ).host];
+				applet_loc =  window.cortadoDomainLocations[ mw.parseUri( mediaSrc ).host ];
 			} else {
 				applet_loc  = 'http://theora.org/cortado.jar';
 			}
 		} else {
 			// should be identical to cortado.jar
-			applet_loc = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/cortado/cortado-ovt-stripped-0.5.0.jar';
+			applet_loc = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/cortado/cortado-january.jar';			
 		}
 		return applet_loc;
 	},
@@ -107,10 +108,10 @@ var javaEmbed = {
 		if ( this.playerElement ) {
 				try {
 				   // java reads ogg media time.. so no need to add the start or seek offset:
-				   mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
-				   this.currentTime = this.playerElement.getPlayPosition();
-				   if ( this.playerElement.getPlayPosition() < 0 ) {
-				   		mw.log( 'pp:' + this.playerElement.getPlayPosition() );
+				   //mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
+				   this.currentTime = this.playerElement.currentTime;
+				   if ( this.currentTime < 0 ) {
+				   		mw.log( 'pp:' +  this.currentTime );
 						// Probably reached clip end					
 						this.onClipDone();
 				   }
@@ -120,7 +121,7 @@ var javaEmbed = {
 		}else{
 			mw.log(" could not find playerElement " );
 		}			
-		// Once currentTime is updated call parent_monitor 
+		// Once currentTime is updated call parent_monitor		
 		this.parent_monitor();
 	},
 	
@@ -137,8 +138,8 @@ var javaEmbed = {
 			this.parent_doSeek( percentage );			
 		} else if ( this.playerElement ) {
 		   // do a (generally broken) local seek:   
-		   mw.log( "cortado javascript seems to always fail ... but here we go... doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
-		   this.playerElement.doSeek( percentage * parseFloat( this.getDuration() )  );
+		   mw.log( "Cortado seek is not very accurate :: doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
+		   this.playerElement.currentTime = ( percentage * parseFloat( this.getDuration() )  );
 		} else {
 			this.doPlayThenSeek( percentage );
 		}
@@ -175,10 +176,13 @@ var javaEmbed = {
 	* Update the playerElement instance with a pointer to the embed object 
 	*/
 	getPlayerElement:function() {
+		//this.playerElement = $j( '#' + this.pid ).get( 0 );
+		this.playerElement = document.applets[ 0 ];
+		// NOTE we are currently not using the iframe embed method: 		
 		//if ( $j.browser.mozilla ) {
 		//	this.playerElement  = $j('#cframe_' + this.id).contents().find( '#' +  this.pid );							
 		//} else {
-			this.playerElement = $j( '#' + this.pid ).get( 0 );
+		//	this.playerElement = $j( '#' + this.pid ).get( 0 );
 		//}
 	},	
 	
@@ -189,7 +193,7 @@ var javaEmbed = {
 	play: function() {
 		this.getPlayerElement();
 		this.parent_play();
-		if ( this.playerElement && this.playerElement.play ) {
+		if ( this.playerElement ) {
 			this.playerElement.play();
 		}
 	},
@@ -203,7 +207,7 @@ var javaEmbed = {
 		// Update the interface
 		this.parent_pause();
 		// Call the pause function if it exists:		
-		if ( this.playerElement && this.playerElement.pause ) {
+		if ( this.playerElement ) {
 			this.playerElement.pause();
 		}
 	}

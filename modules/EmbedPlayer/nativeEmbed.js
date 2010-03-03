@@ -217,11 +217,10 @@ var nativeEmbed = {
 	/**
 	* Monitor the video playback & update the currentTime
 	*/
-	monitor: function() {
+	monitor: function() {		
 		this.getPlayerElement(); // make sure we have .vid obj
 		if ( !this.playerElement ) {
 			mw.log( 'could not find video embed: ' + this.id + ' stop monitor' );
-			this.stopMonitor();
 			return false;
 		}					
 				
@@ -235,6 +234,7 @@ var nativeEmbed = {
 	
 	/**
 	* Get video src URI
+	* appends this.urlAppend for unique urls for re-requesting src urls on broken playback 
 	*/
 	getSrc: function() {
 		var src = this.parent_getSrc();
@@ -253,8 +253,6 @@ var nativeEmbed = {
 		if ( this.playerElement ) {
 			this.playerElement.pause();
 		}
-		// stop updates: 
-		this.stopMonitor();
 	},
 	
 	/**
@@ -346,6 +344,7 @@ var nativeEmbed = {
 	*/ 
 	getPlayerElement : function () {
 		this.playerElement = $j( '#' + this.pid ).get( 0 );
+		return this.playerElement;
 	},
 	
 	/**
