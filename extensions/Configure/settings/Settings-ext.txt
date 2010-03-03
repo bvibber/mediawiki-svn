@@ -275,6 +275,7 @@ settings[] = wgSubversionUser: text, wgSubversionPassword: text
 settings[] = wgCodeReviewImportBatchSize: int, wgWikiSVN: text
 settings[] = wgCodeReviewSharedSecret: text, wgSubversionOptions: text
 settings[] = wgCodeReviewCommentWatcher: text, wgCodeReviewMaxDiffSize: int
+settings[] = wgCodeReviewTestsTimeout: int
 empty[] = wgCodeReviewSharedSecret: false, wgCodeReviewCommentWatcher: false
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CodeReview
