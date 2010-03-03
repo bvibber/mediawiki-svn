@@ -43,18 +43,17 @@ $wgSeleniumTestsWikiUrl               = 'http://localhost';
 
 // Wiki login. Used by Selenium to log onto the wiki
 $wgSeleniumTestsWikiUser      = "WikiSysop";
-$wgSeleniumTestsWikiPassword  = "hallowelt";
+$wgSeleniumTestsWikiPassword  = "password";
 
 // Common browsers on Windows platform
 // Use the *chrome handler in order to be able to test file uploads
 // further solution suggestions: http://www.brokenbuild.com/blog/2007/06/07/testing-file-uploads-with-selenium-rc-and-firefoxor-reducing-javascript-security-in-firefox-for-fun-and-profit/
 //$wgSeleniumTestsBrowsers['firefox']   = '*firefox c:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe';
-//$wgSeleniumTestsBrowsers['firefox']   = '*chrome c:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe';
-$wgSeleniumTestsBrowsers['firefox']   = '*chrome D:\\Firefox35\\firefox.exe';
+$wgSeleniumTestsBrowsers['firefox']   = '*chrome c:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe';
 $wgSeleniumTestsBrowsers['iexplorer'] = '*iexploreproxy';
 
 // Actually, use this browser
-$wgSeleniumTestsUseBrowser = 'iexplorer';
+$wgSeleniumTestsUseBrowser = 'firefox';
 
 // requires PHPUnit 3.4
 require_once 'Testing/Selenium.php';
@@ -81,6 +80,12 @@ $wgSeleniumTestSuites = array();
 
 // Todo: include automatically
 include_once '../extensions/PagedTiffHandler/selenium/PagedTiffHandler_tests.php';
+
+// Here, you can override standard setting
+if (file_exists('LocalSeleniumSettings.php'))
+{
+	include_once 'LocalSeleniumSettings.php';
+}
 
 // run tests
 foreach ($wgSeleniumTestSuites as $suite)
