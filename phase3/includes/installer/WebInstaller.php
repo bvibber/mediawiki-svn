@@ -1481,6 +1481,21 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		$this->endStage();
 
+		$this->startStage( 'config-install-secretkey' );
+		$file = @fopen( "/dev/urandom", "r" );
+		if ( $file ) {
+			$secretKey = bin2hex( fread( $file, 32 ) );
+			fclose( $file );
+			$this->endStage();
+		} else {
+			$secretKey = "";
+			for ( $i=0; $i<8; $i++ ) {
+				$secretKey .= dechex(mt_rand(0, 0x7fffffff));
+			}
+			$this->parent->output->addHTML( wfMsgHtml( 'config-insecure-secretkey' ) . "</li>\n" );
+		}
+		$this->setVar( 'wgSecretKey', $secretKey );
+
 		// @TODO Write LocalSettings, create admin account
 	}
 

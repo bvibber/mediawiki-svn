@@ -3340,6 +3340,8 @@ $wgMessageStructure = array(
 		'config-install-database',
 		'config-install-schema',
 		'config-install-tables',
+		'config-install-secretkey',
+		'config-insecure-secretkey',
 		'config-install-user',
 		'config-install-localsettings',
 	),

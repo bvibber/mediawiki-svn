@@ -4433,6 +4433,8 @@ They may require additional configuration, but you can enable them now",
 'config-install-database' => 'Setting up database',
 'config-install-schema' => 'Generating schema',
 'config-install-tables' => 'Creating tables',
+'config-install-secretkey' => 'Generating secret key',
+'config-insecure-secretkey' => 'Warning: $wgSecretKey key is insecure, generated with mt_rand(), consider changing it manually',
 'config-install-user' => 'Creating admin user',
 'config-install-localsettings' => 'Writing LocalSettings.php',
 

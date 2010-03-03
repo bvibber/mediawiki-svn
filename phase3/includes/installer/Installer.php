@@ -36,7 +36,8 @@ abstract class Installer {
 //		'wgDeletedDirectory',
 		'wgEnableUploads',
 		'wgLogo',
-		'wgShellLocale'
+		'wgShellLocale',
+		'wgSecretKey',
 	);
 
 	/**
