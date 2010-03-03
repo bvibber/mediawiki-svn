@@ -7800,9 +7800,11 @@ if ( typeof context == 'undefined' ) {
 						} else {
 							atEnd = true;
 						}
-					} else if ( range.startContainer.nodeName == '#text' &&
-							range.startOffset == range.startContainer.nodeValue.length ) {
-						// Apparently this happens when splitting text nodes
+					}
+					if ( ( range.endOffset == 0 && range.endContainer.nodeValue == null ) ||
+							( range.endContainer.nodeName == '#text' &&
+									range.endOffset == range.endContainer.nodeValue.length ) ||
+							( range.endContainer.nodeName == 'P' && range.endContainer.nodeValue == null ) ) {
 						atEnd = true;
 					}
 					if ( !atStart ) {
