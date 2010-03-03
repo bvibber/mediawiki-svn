@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class TagStoryboard {
-	
+
 	public static function render( $input, $args, $parser, $frame ) {
 		global $wgOut, $wgJsMimeType, $wgScriptPath, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
@@ -30,7 +30,6 @@ class TagStoryboard {
 
 		$output = Html::element( 'div', array(
 				'class' => 'ajaxscroll',
-				'class' => 'storyboard',
 				'style' => "height: $height; width: $width;"
 			)
 		);

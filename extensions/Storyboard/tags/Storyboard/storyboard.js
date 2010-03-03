@@ -3,7 +3,7 @@
  */
 
 $j( document ).ready( function(){
-	$j( '.storyboard' ).ajaxScroll( {
+	$j( '.ajaxscroll' ).ajaxScroll( {
 		updateBatch: updateStoryboard,
 		batchSize: 5,
 		batchNum: 1
