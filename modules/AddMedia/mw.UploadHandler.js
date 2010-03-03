@@ -37,7 +37,7 @@ mw.addMessages({
 
 var default_bui_options = {
 	// Target api to upload to
-	'api_url' : null,
+	'apiUrl' : null,
 	
 	// The selected form
 	'form' : null,
@@ -128,9 +128,9 @@ mw.UploadHandler.prototype = {
 			options = {};
 		$j.extend( this, default_bui_options, options );
 		
-		// Set a api_url if unset
-		if( !this.api_url ) {
-			this.api_url = mw.getLocalApiUrl();
+		// Set a apiUrl if unset
+		if( !this.apiUrl ) {
+			this.apiUrl = mw.getLocalApiUrl();
 		}		
 		
 		// We can't pass around actual function refrences since sometimes the interface
@@ -145,7 +145,7 @@ mw.UploadHandler.prototype = {
 		// Setup ui uploadHandler pointer
 		this.ui.uploadHandler = this;
 		
-		mw.log( "init mvUploadHandler:: " + this.api_url + ' interface: ' + this.ui );
+		mw.log( "init mvUploadHandler:: " + this.apiUrl + ' interface: ' + this.ui );
 	},
 	
 	/**
@@ -255,8 +255,8 @@ mw.UploadHandler.prototype = {
 		} else if ( !_this.isCopyUpload() ) {
 			callback( 'post' );
 		} else if ( _this.upload_mode == 'autodetect' ) {
-			mw.log( 'detectUploadMode::' + _this.upload_mode + ' api:' + _this.api_url );
-			if( !_this.api_url ) {
+			mw.log( 'detectUploadMode::' + _this.upload_mode + ' api:' + _this.apiUrl );
+			if( !_this.apiUrl ) {
 				mw.log( 'Error: can\'t autodetect mode without api url' );
 				return;
 			}
@@ -265,7 +265,7 @@ mw.UploadHandler.prototype = {
 			_this.upload_mode = 'detect_in_progress';
 
 			// FIXME: move this to configuration and avoid this API request
-			mw.getJSON( _this.api_url, { 'action' : 'paraminfo', 'modules' : 'upload' }, function( data ) {
+			mw.getJSON( _this.apiUrl, { 'action' : 'paraminfo', 'modules' : 'upload' }, function( data ) {
 				if ( typeof data.paraminfo == 'undefined'
 					|| typeof data.paraminfo.modules == 'undefined' )
 				{
@@ -326,9 +326,9 @@ mw.UploadHandler.prototype = {
 	remapFormToApi: function() {
 		var _this = this;
 		//
-		mw.log("remapFormToApi:: " + this.api_url + ' form: ' + this.form);
+		mw.log("remapFormToApi:: " + this.apiUrl + ' form: ' + this.form);
 		
-		if ( !this.api_url ) {
+		if ( !this.apiUrl ) {
 			mw.log( 'Error: no api url target' ); 
 			return false;
 		}
@@ -336,7 +336,7 @@ mw.UploadHandler.prototype = {
 
 		// Set the form action
 		try {
-			$form.attr('action', _this.api_url);
+			$form.attr('action', _this.apiUrl);
 		} catch( e ) {
 			mw.log( "IE sometimes errors out when you change the action" );
 		}
@@ -576,7 +576,7 @@ mw.UploadHandler.prototype = {
 		}
 
 		// Add the edit token (if available)
-		if( !_this.editToken && _this.api_url ) {
+		if( !_this.editToken && _this.apiUrl ) {
 			mw.log( 'Error:doHttpUpload: missing token' );
 		} else {
 			request['token'] =_this.editToken;
@@ -586,7 +586,7 @@ mw.UploadHandler.prototype = {
 		_this.action_done = false;
 		
 		// Do the api request:
-		mw.getJSON(_this.api_url, request, function( data ) {
+		mw.getJSON(_this.apiUrl, request, function( data ) {
 			_this.processApiResult( data );
 		});
 	},
@@ -621,7 +621,7 @@ mw.UploadHandler.prototype = {
 	onAjaxUploadStatusTimer: function() {
 		var _this = this;
 		//do the api request:
-		mw.getJSON( this.api_url, this.upload_status_request, function ( data ) {
+		mw.getJSON( this.apiUrl, this.upload_status_request, function ( data ) {
 			_this.onAjaxUploadStatusResponse( data );
 		} );
 	},
@@ -782,7 +782,7 @@ mw.UploadHandler.prototype = {
 				'comment' : _this.getUploadDescription()
 			};
 			//run the upload from stash request
-			mw.getJSON(_this.api_url, request, function( data ) {
+			mw.getJSON(_this.apiUrl, request, function( data ) {
 					_this.processApiResult( data );
 			} );
 		} else {
@@ -826,7 +826,7 @@ mw.UploadHandler.prototype = {
 	 * @selector (jquery selector) The target destination name to check for conflits  
 	 * @param {Object} options Options that define: 
 	 * 		warn_target target for display of warning
-	 * 		api_url Api url to check for destination
+	 * 		apiUrl Api url to check for destination
 	 */
 	$.fn.doDestCheck = function( options ) {
 		var _this = this;
@@ -837,8 +837,8 @@ mw.UploadHandler.prototype = {
 			options.warn_target = '#wpDestFile-warning';
 		}
 		
-		if( ! options.api_url ) {
-			options.api_url = mw.getLocalApiUrl();
+		if( ! options.apiUrl ) {
+			options.apiUrl = mw.getLocalApiUrl();
 		}		
 
 		// Add the wpDestFile-warning row ( if in mediaWiki upload page )
@@ -872,7 +872,7 @@ mw.UploadHandler.prototype = {
 		};		
 				
 		// Do the destination check ( on the local wiki )
-		mw.getJSON( options.api_url, request, function( data ) {
+		mw.getJSON( options.apiUrl, request, function( data ) {
 				// Remove spinner
 				$j( '#mw-spinner-wpDestFile' ).remove();
 				

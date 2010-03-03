@@ -215,8 +215,7 @@ ctrlBuilder.prototype = {
 		return {
 			'height': targetHeight,
 			'width' : targetWidth,
-			'top' : offsetTop,
-			'left' : offsetLeft
+			'top' : offsetTop
 		}
 	},
 	

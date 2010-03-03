@@ -38,7 +38,7 @@ archiveOrgSearch.prototype = {
 	getProviderResults: function( search_query, callback ) {
 		
 		var _this = this;
-		mw.log( 'archive_org:getProviderResults for:' + search_query + ' from: ' + this.provider.api_url );
+		mw.log( 'archive_org:getProviderResults for:' + search_query + ' from: ' + this.provider.apiUrl );
 		
 		
 		// For now force (Ogg video) & url based license
@@ -55,7 +55,7 @@ archiveOrgSearch.prototype = {
 			'page' : page_number,
 			'xmlsearch' : 'Search'
 		}
-		mw.getJSON( this.provider.api_url + '?json.wrf=?', request, function( data ) {
+		mw.getJSON( this.provider.apiUrl + '?json.wrf=?', request, function( data ) {
 			_this.addResults( data );
 			callback( 'ok' );
 		} );

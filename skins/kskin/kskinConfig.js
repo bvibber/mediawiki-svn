@@ -340,7 +340,7 @@ var kskinConfig = {
 		var _this = this;	
 		var $target = embedPlayer.$interface.find( '.menu-credits' );
 		
-		var api_url = mw.getApiProviderURL( embedPlayer.apiProvider );
+		var apiUrl = mw.getApiProviderURL( embedPlayer.apiProvider );
 		var fileTitle = 'File:' + embedPlayer.apiTitleKey.replace(/File:|Image:/, '');
 		
 		// Get the image info
@@ -350,7 +350,7 @@ var kskinConfig = {
 			'iiprop' : 'url'		
 		};
 		var articleUrl = '';
-		mw.getJSON( api_url, request, function( data ){			
+		mw.getJSON( apiUrl, request, function( data ){			
 			if ( data.query.pages ) {
 				for ( var i in data.query.pages ) {
 					var imageProps = data.query.pages[i];

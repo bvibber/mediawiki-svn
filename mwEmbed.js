@@ -215,24 +215,44 @@ var MW_EMBED_VERSION = '1.1d';
 	 * the user msg.
 	 *
 	 * @param {String} msgKey The msg key as set by mw.addMessages
-	 * @param {Array} args  An array of replacement strings or jQuery objects
+	 * @param {Mixed} args  A string|jQuery Object or array of string|jQuery Objects
+	 *
+	 * extra paramaters are appended to the args array as numbered replacements
+	 *
 	 * @return string
 	 */
-	mw.getMsg = function( msgKey , args ) {
-	
+	mw.getMsg = function( msgKey , args ) {		
+		
 		// Check for missing message key
-		if ( ! messageCache[ msgKey ] )
-			return '&lt;' + msgKey + '&gt;';		
-			
-		var ms =  mw.lang.msgReplaceArgs( messageCache[ msgKey ], args );
+		if ( ! messageCache[ msgKey ] ){
+			return '&lt;' + msgKey + '&gt;';
+		}		
+		
+		// Check if we need to do args replacements: 
+		if( typeof args != 'undefined' ) {
+			// Make sure args are of type array
+			if ( typeof args == 'string' || typeof args == 'number' ) {
+				args = [ args ];
+			}
+			// Put any extra arguments into the args array
+			var extraArgs = $j.makeArray( arguments );
+			for(var i=2; i < extraArgs.length; i ++ ){		
+				args.push(  extraArgs[ i ] );
+			}
+			var ms =  mw.lang.msgReplaceArgs( messageCache[ msgKey ], args );
+		}else{
+			var ms = messageCache[ msgKey ];
+		}
+		
 		// A quick check to see if we need to send the msg to the 'parser'
 		if ( ms.indexOf( '{{' ) === -1 && ms.indexOf( '[' ) === -1 ) {									
 			return ms;	
 		}
-				
+					
 		// Send the msg key through the parser
 		var pObj = mw.parser( ms );
-		// return the transformed msg
+		
+		// Return the transformed msg
 		return pObj.getHTML();
 	}
 	
@@ -240,41 +260,33 @@ var MW_EMBED_VERSION = '1.1d';
 	* Swap in an array of values for $1, $2, $n for a given msg key 
 	*
 	* @param string msgKey The msg key to lookup
-	* @param [mixed] args  An array of string or jquery objects to be swapped in
+	* @param [Array] args  An array of string or jquery objects to be swapped in
 	* @return string
 	*/
 	mw.lang.msgReplaceArgs = function( message , args ) {		
 		// Replace Values
-		if ( typeof args == 'object' || typeof args == 'array' ) {
-			for ( var v =0; v < args.length; v++ ) {				
-				if( typeof args[v] == 'undefined' ) {
-					continue;
-				}				
-				var replaceValue =  args[ v ];
-				
-				// Convert number if applicable
-				if( parseInt( replaceValue ) == replaceValue ) {
-					replaceValue = mw.lang.convertNumber( replaceValue );
-				}
-				
-				// Message test replace arguments start at 1 instead of zero:
-				var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );
-								
-				// Check if we got passed in a jQuery object:
-				if( typeof args[v]['html'] == 'function' ) {
-					message = message.replace( rep, $j('<div />').append( replaceValue ).html() );
-				}else{
-					// Assume replaceValue string
-					message = message.replace( rep, replaceValue );
-				}				
-			}
-		} else if ( typeof args == 'string' || typeof args == 'number' ) {
+		for ( var v =0; v < args.length; v++ ) {				
+			if( typeof args[v] == 'undefined' ) {
+				continue;
+			}				
+			var replaceValue =  args[ v ];
+			
 			// Convert number if applicable
-			if( parseInt( args ) ==  args ) {
-				args = mw.lang.convertNumber( args );
+			if( parseInt( replaceValue ) == replaceValue ) {
+				replaceValue = mw.lang.convertNumber( replaceValue );
 			}
-			message = message.replace( /\$1/g, args );
-		}
+			
+			// Message test replace arguments start at 1 instead of zero:
+			var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );			
+			
+			// Check if we got passed in a jQuery object:			
+			if( typeof replaceValue[ 'tagName' ] != 'undefined' ) {
+				message = message.replace( rep, $j('<div />').append( replaceValue ).html() );
+			} else {
+				// Assume replaceValue is a string
+				message = message.replace( rep, replaceValue );
+			}				
+		}		
 		return message;
 	}
 
@@ -1346,41 +1358,49 @@ var MW_EMBED_VERSION = '1.1d';
 	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* 
 	* The mediaWiki version lets you skip the url part 
-	* mw.getJSON( [url], data, callback ); 
+	* mw.getJSON( [url], data, callback, [timeoutCallback] ); 
 	* 
 	* Lets you assume:
 	* 	url is optional 
 	* 		( If the first argument is not a string we assume a local mediaWiki api request )
-	*   callback parameter is not needed we setup the callback automatically
+	*   callback parameter is not needed for the request data
 	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
-	* 	automatically issues request over "POST" 
-	* 		( If the api specifices the action must be done over a post request )
+	* 	automatically issues request over "POST" if the request requires a post
 	*	automatically will setup apiProxy where needed.
 	*
 	* @param {Mixed} url or data request
 	* @param {Mixed} data or callback
-	* @param {Mixed} callbcak
+	* @param {Function} callbcak function called on success
+	* @param {Function} callbackTimeout - optional function called on timeout
+	* 	Setting timeout callback also avoids dialog display for timed out proxy calls.
 	*
 	*/	
-	mw.getJSON = function( arg1, arg2, arg3 ) {		
-		// Set up the url		
+	mw.getJSON = function() {		
+		// Set up the url
+			
 		var url = false;
-		url = ( typeof arg1 == 'string' ) ? arg1 : mw.getLocalApiUrl();		
+		url = ( typeof arguments[0] == 'string' ) ? arguments[0] : mw.getLocalApiUrl();		
 		
 		// Set up the data: 
 		var data = null;
-		data = ( typeof arg1 == 'object' ) ? arg1 : null;
-		if( !data && typeof arg2 == 'object' ) {
-			data = arg2;
+		data = ( typeof arguments[0] == 'object' ) ? arguments[0] : null;
+		if( !data && typeof arguments[1] == 'object' ) {
+			data = arguments[1];
 		} 
 		
 		// Setup the callback
 		var callback = false;
-		callback = ( typeof arg2 == 'function') ? arg2 : false;
-		if( ! callback && ( typeof arg3 == 'function') ) {
-			callback = arg3;	
+		callback = ( typeof arguments[1] == 'function') ? arguments[1] : false;		
+		var cbinx = 1;
+		if( ! callback && ( typeof arguments[2] == 'function') ) {
+			callback = arguments[2];
+			cbinx = 2;	
 		}		
+		
+		// Setup the timeoutCallback ( function after callback index )
+		var timeoutCallback = false;
+		timeoutCallback = ( typeof arguments[ cbinx + 1 ] == 'function' ) ? arguments[ cbinx + 1 ] : false;		
 				
 		// Make sure we got a url:
 		if( !url ) { 
@@ -1398,6 +1418,26 @@ var MW_EMBED_VERSION = '1.1d';
 			data['format'] = 'json';
 		}
 		
+		// Setup callback wrapper for timeout		
+		var requestTimeOutFlag = false;
+		var ranCallback = false;
+		var myCallback = function( data ){
+			if( ! requestTimeOutFlag ){
+				ranCallback = true;
+				callback( data );
+			}
+		} 		
+		// Set the local timeout call based on defaultRequestTimeout
+		setTimeout( function( ) {
+			if( ! ranCallback ){
+				requestTimeOutFlag = true;
+				mw.log( "Error:: request timed out: " + url ) ;
+				if( timeoutCallback ) {
+					timeoutCallback();
+				}
+			}
+		}, mw.getConfig( 'defaultRequestTimeout' ) * 1000  );
+		
 		mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );		
 		// Check if the request requires a "post" 
 		if( mw.checkRequestPost( data )  ) {
@@ -1405,11 +1445,11 @@ var MW_EMBED_VERSION = '1.1d';
 			if( ! mw.isLocalDomain( url ) ) {
 				// Load the proxy and issue the request
 				mw.load( 'ApiProxy', function() {							
-					mw.ApiProxy.doRequest( url, data, callback );				
+					mw.ApiProxy.doRequest( url, data, myCallback, timeoutCallback);				
 				});				
 			}else{
 				// Do the request an ajax post 
-				$j.post( url, data, callback, 'json');				
+				$j.post( url, data, myCallback, 'json');
 			}
 			return ;
 		}
@@ -1421,7 +1461,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}				 
 		}
 		// Pass off the jQuery getJSON request:
-		$j.getJSON( url, data, callback );			
+		$j.getJSON( url, data, myCallback );			
 	}
 	
 	/**
@@ -1464,16 +1504,16 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	 * Simple api helper to grab an edit token
 	 *
-	 * @param {String} [api_url] Optional target API URL (uses default local api if unset) 
+	 * @param {String} [apiUrl] Optional target API URL (uses default local api if unset) 
 	 * @param {String} title The wiki page title you want to edit	 
 	 * @param {callback} callback Function to pass the token to
 	 */
-	mw.getToken = function( api_url, title, callback ) {
-		// Make the api_url be optional: 
+	mw.getToken = function( apiUrl, title, callback ) {
+		// Make the apiUrl be optional: 
 		if( typeof title == 'function' ) {
 			callback = title;
-			title = api_url;
-			api_url = mw.getLocalApiUrl();	
+			title = apiUrl;
+			apiUrl = mw.getLocalApiUrl();	
 		}		
 		
 		mw.log( 'mw:getToken' );		
@@ -1482,8 +1522,8 @@ var MW_EMBED_VERSION = '1.1d';
 			'prop': 'info',
 			'intoken': 'edit',
 			'titles': title
-		};		
-		mw.getJSON( api_url, request, function( data ) {
+		};
+		mw.getJSON( apiUrl, request, function( data ) {
 			for ( var i in data.query.pages ) {
 				if ( data.query.pages[i]['edittoken'] ) {
 					if ( typeof callback == 'function' )
@@ -1494,7 +1534,6 @@ var MW_EMBED_VERSION = '1.1d';
 			return false;
 		} );
 	}
-	
 	
 	/**
 	* Utility Functions

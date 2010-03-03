@@ -67,7 +67,7 @@ flickrSearch.prototype = {
 			'text': search_query,
 			'extras' :	'license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o'
 		}
-		$j.getJSON( this.provider.api_url + '?jsoncallback=?', request, function( data ) {
+		$j.getJSON( this.provider.apiUrl + '?jsoncallback=?', request, function( data ) {
 			_this.addResults( data );
 			callback( 'ok' );
 		} );

@@ -500,3 +500,7 @@ ul.ui-provider-selection li a {
 	position:relative;
 	top:-1px;
 }
+
+#rsd_upload_form {
+	font-size: 110%;
+}

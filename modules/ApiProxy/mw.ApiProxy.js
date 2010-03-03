@@ -23,7 +23,8 @@ mw.addMessages( {
 	"mwe-re-try" : "Retry API request",
 	"mwe-re-trying" : "Retrying API request...",
 	"mwe-proxy-not-ready" : "Proxy is not configured",
-	"mwe-please-login" : "You are not <a target=\"_new\" href=\"$1\">logged in<\/a> on $2 or mwEmbed has not been enabled. Resolve the issue, and then retry the request.",
+	"mwe-please-login" : "The request failed. Are you logged in on $1 ? Please $2 and try again",
+	"mwe-log-in-link" : "log in",
 	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."
 } );
 
@@ -49,7 +50,9 @@ mw.ApiProxy = { };
 	 	
 	// Callback function for client requests 
 	var proxyCallback = null;
-	 
+	
+	var proxyTimeoutCallback = null;
+	
 	// FrameProxy Flag: 	
 	var frameProxyOk = false;
 	
@@ -72,13 +75,15 @@ mw.ApiProxy = { };
 	* 
 	* @param {String} apiUrl Url to the api we want to do the request on.  
 	* @param {Object} requestQuery Api request object
-	* @param {Function} callback Function called once the request is complete 
+	* @param {Function} callback Function called once the request is complete
+	* @param {Function} [callbackTimeout] Optional Function called on api timeout 
 	*/
-	$.doRequest = function( apiUrl, requestQuery, callback ) {			
+	$.doRequest = function( apiUrl, requestQuery, callback , callbackTimeout ) {			
 		
 		// Reset local vars:
 		proxyCallback = false;
 		frameProxyOk = false;
+		proxyTimeoutCallback = false;
 			
 		// Sanity check: 
 		if ( mw.isLocalDomain( apiUrl ) ) {
@@ -90,12 +95,16 @@ mw.ApiProxy = { };
 		
         // Set local scope current request
         // ( presently the api proxy only support sequential requests
-        // for multiple simultaneous requests we will need to do some minor refactoring ) 
+        // for multiple simultaneous requests we will need to do some refactoring )
+         
 		currentApiReq = requestQuery;
 		currentServerApiUrl = apiUrl;
 		
-		// Setup the callback:
+		// Setup the callback:		
 		proxyCallback = callback;
+		
+		// Setup the timeout callback:
+		proxyTimeoutCallback = callbackTimeout;
 		
 		// Do the proxy req:
 		doFrameProxy( requestQuery );
@@ -140,8 +149,11 @@ mw.ApiProxy = { };
 	*/
 	$.browseFile = function( options ) {
 	
-		// Set frame proxy ok state flag: 
+		// Reset local vars: 
+		// NOTE: ( Again this makes the system not work with multiple concurent proxy requests ) 
+		proxyCallback = false;
 		frameProxyOk = false;
+		proxyTimeoutCallback = false;
 		
 		if( ! options ) {
 			options = {};
@@ -151,13 +163,13 @@ mw.ApiProxy = { };
 			mw.log( "Error: no target for file browse iframe" ) ;
 			return false;
 		}
-		if( ! options.api_url ) {
+		if( ! options.apiUrl ) {
 			mw.log( "Error: no api url to target" );
 			return false; 
 		}
 		
 		// Update the current apiUrl:
-		currentServerApiUrl = options.api_url;
+		currentServerApiUrl = options.apiUrl;
 		
 		if( ! options.width ) {
 			options.width = 270;		
@@ -184,7 +196,7 @@ mw.ApiProxy = { };
 			'persist' : true,
 			'style' : frameStyle,
 			'name' : iFrameName,
-			'src' : getServerFrame(  options.api_url ),
+			'src' : getServerFrame(  options.apiUrl ),
 			'request' : iFrameRequest,
 			'target' : options.target
 		},  function( ) {
@@ -207,7 +219,7 @@ mw.ApiProxy = { };
 				mw.log(	'apiProxy uploadActionHandler:: ' + action );
 				// Send action to remote frame 
 				mw.ApiProxy.sendServerMsg( {
-					'api_url' : options.api_url, 
+					'apiUrl' : options.apiUrl, 
 					'frameName' : iFrameName,
 					'frameMsg' : {
 						'action' : 'uploadHandlerAction',
@@ -262,12 +274,12 @@ mw.ApiProxy = { };
 	 * ( such as a hosted browse file or dialog prompt ) 
 	 * 
 	 * @param {Object} options Arguments to setup send server msg
-	 * 	api_url The api url of the server to send the frame msg to
+	 * 	apiUrl The api url of the server to send the frame msg to
 	 *  frameName The frame name to send the msg to
 	 *  frameMsg The msg object to send to frame 
 	 */
 	$.sendServerMsg = function( options ){
-		if( !options.api_url || ! options.frameMsg || !options.frameName ){
+		if( !options.apiUrl || ! options.frameMsg || !options.frameName ){
 			mw.log( "Error missing required option");
 			return false;
 		}
@@ -284,7 +296,7 @@ mw.ApiProxy = { };
 		// Send the iframe request:   	
 		appendIframe( {
 			'persist' : true,
-			'src' : getServerFrame(  options.api_url ),
+			'src' : getServerFrame(  options.apiUrl ),
 			'request' : iFrameRequest,
 			'target' : options.target
 		}, function( ) {
@@ -490,6 +502,13 @@ mw.ApiProxy = { };
 	* Dialog to send the user if a proxy to the remote server could not be created 
 	*/
 	function proxyNotReadyDialog() {
+		// See if we have a callback function to call ( do not display the dialog ) 
+		if( proxyTimeoutCallback ){
+			proxyTimeoutCallback();
+			return ;
+		}
+	
+	
 		var buttons = { };
 		buttons[ gM( 'mwe-re-try' ) ] = function() {
 			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );
@@ -504,12 +523,28 @@ mw.ApiProxy = { };
 		var login_url = pUri.protocol + '://' + pUri.host;
 		login_url += pUri.path.replace( 'MediaWiki:ApiProxy', 'Special:UserLogin' );
 		
+		var $dialogMsg = $j('<p />');
+		$dialogMsg.append(
+			gM( 'mwe-please-login',
+				pUri.host,
+				
+				// Add log-in link: 	
+				$j( '<a />') 
+				.attr( {
+					'href' : login_url,
+					'target' : '_new'
+				} )
+				.text( gM('mwe-log-in-link') )
+			) 
+		)
+		// Add the sequrity note as well: 	
+		$dialogMsg.append( 			
+			gM( 'mwe-remember-loging' )  
+		)
+		
 		mw.addDialog( 
 			gM( 'mwe-proxy-not-ready' ), 
-			gM( 'mwe-please-login', [ login_url, pUri.host] ) +
-				'<p style="font-size:small">' + 
-					gM( 'mwe-remember-loging' ) + 
-				'</p>',
+			$dialogMsg,
 			buttons
 		)
 	}	

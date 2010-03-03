@@ -37,7 +37,7 @@ metavidSearch.prototype = {
 		mw.log( 'metavidSearch::getProviderResults()' );
 		
 		// Process all options
-		var url = this.provider.api_url;
+		var url = this.provider.apiUrl;
 		var request = $j.extend( {}, this.defaultReq );
 		request[ 'f[0][t]' ] = 'match';
 		request[ 'f[0][v]' ] = search_query;
