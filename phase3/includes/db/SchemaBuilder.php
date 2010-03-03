@@ -57,7 +57,7 @@ abstract class SchemaBuilder {
 	private final function __construct( $schema ) {
 		wfRunHooks( 'LoadExtensionSchemaUpdates', array( $this ) );
 		$this->tables = $schema;
-		$this->addDatabaseSpecificTables();
+		$this->adjustTablesForDatabase();
 	}
 
 	/**
@@ -157,10 +157,10 @@ abstract class SchemaBuilder {
 	abstract protected function updateTable( $name, $definition, $db );
 
 	/**
-	 * Adds database-specific tables to the in-class list.
+	 * Makes database-specific changes to the schema. No-op by default.
 	 * @return Nothing
 	 */
-	abstract protected function addDatabaseSpecificTables();
+	protected function adjustTablesForDatabase() {}
 }
 
 class MysqlSchema extends SchemaBuilder {
@@ -169,7 +169,7 @@ class MysqlSchema extends SchemaBuilder {
 		return 'mysql';
 	}
 
-	protected function addDatabaseSpecificTables() {
+	protected function adjustTablesForDatabase() {
 		$this->tables['searchindex'] = array(
 			'prefix' => 'si',
 			'fields' => array(
@@ -383,7 +383,7 @@ class SqliteSchema extends SchemaBuilder {
 	/**
 	 * @todo: update updatelog with fts3
 	 */
-	protected function addDatabaseSpecificTables() {
+	protected function adjustTablesForDatabase() {
 		$tmpFile = tempnam( sys_get_temp_dir(), 'mw' );
 		$db = new DatabaseSqliteStandalone( $tmpFile );
 		if ( $db->getFulltextSearchModule() == 'FTS3' ) {
