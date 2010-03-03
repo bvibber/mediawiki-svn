@@ -161,16 +161,12 @@ fn: {
 			.prependTo( $template );
 		
 		var $templateExpand = $( '<span />' )
-			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/expand.png' ) + '" width="12" height="16" />' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/collapse.png' ) + '" width="12" height="16" style="display:none;" />' )
+			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude wikiEditor-template-expand-collapsed' )
 			.mousedown( toggleWikiTextEditor )
 			.prependTo( $template );
 		
 		var $templateDialog = $( '<span />' )
-			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/dialog-collapsed.png' ) + '" width="22" height="16" />' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/dialog-expanded.png' ) + '" width="22" height="16" style="display:none;" />' )
+			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude wikiEditor-template-dialog-collapsed' )
 			.mousedown( function() { createDialog( $template ); return false; } )
 			.insertAfter( $templateName );
 
@@ -179,12 +175,18 @@ fn: {
 			var $template = $( this ).closest( '.wikiEditor-template' );
 			$template
 				.toggleClass( 'wikiEditor-template-expanded' )
-				.toggleClass( 'wikiEditor-template-collapsed' )
-				.find( 'img' )
-				.each( function() {
-					$( this ).toggle(); 
-				} );
+				.toggleClass( 'wikiEditor-template-collapsed' );
+			var $templateExpand = $template.find('.wikiEditor-template-expand');
+			var $templateDialog = $template.find('.wikiEditor-template-dialog');
 			var $wikitext = $template.children( '.wikiEditor-template-text' );
+			
+			$templateExpand
+				.toggleClass('wikiEditor-template-expand-collapsed')
+				.toggleClass('wikiEditor-template-expand-expanded');
+			$templateDialog
+				.toggleClass('wikiEditor-template-dialog-collapsed')
+				.toggleClass('wikiEditor-template-dialog-expanded');
+			
 			$wikitext.toggleClass( 'wikiEditor-nodisplay' );
 			
 			//if we just collapsed this
