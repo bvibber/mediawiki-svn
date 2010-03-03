@@ -183,7 +183,9 @@ class MysqlInstaller extends InstallerDBType {
 		$engines = array();
 		$res = $conn->query( 'SHOW ENGINES' );
 		foreach ( $res as $row ) {
-			$engines[] = $row->Engine;
+			if ( $row->Support == 'YES' || $row->Support == 'DEFAULT' ) {
+				$engines[] = $row->Engine;
+			}
 		}
 		$engines = array_intersect( $this->supportedEngines, $engines );
 		return $engines;
