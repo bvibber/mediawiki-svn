@@ -2,8 +2,10 @@
 /** To get this working you must
 * - set a valid path to PEAR
 * - check upload size in php.ini: Multipage.tiff needs at least 3M
-* - Either upload multipage.tiff when PagedTiffHandler is active or set $wgSeleniumTiffTestUploads = true
-* - set the locale to german
+* - Either upload multipage.tiff when PagedTiffHandler is active or set $wgSeleniumTiffTestUploads = true.
+* - - if $wgSeleniumTiffTestsUploads = true, please remember to obtain all missing test images. See
+* - - testImages/SOURCES.txt for further information
+* - set the locale to english
 */
 
 
@@ -18,6 +20,7 @@ $wgSeleniumTiffTestCheckPrerequistes = true;
 class SeleniumCheckPrerequisites extends SeleniumTestCase
 {
     public $name = "Check prerequisites";
+	private $allChecksOk = true;
 
     public function runTest()
     {
@@ -26,14 +29,23 @@ class SeleniumCheckPrerequisites extends SeleniumTestCase
         $this->open($wgSeleniumTestsWikiUrl.'/index.php?title=Image:Multipage.tiff');
 
         $source = $this->getAttribute("//div[@id='bodyContent']//ul@id");
-        $this->assertEquals($source, 'filetoc');
+		if ($source != 'filetoc') $this->allChecksOk = false;
 		
 		//check for language
-		$this->open($wgSeleniumTestsWikiUrl.'/index.php/Special:Preferences');
+		$this->open($wgSeleniumTestsWikiUrl.'/api.php?action=query&meta=userinfo&uiprop=options&format=xml');
 		
-		$source = $this->getAttribute("//select[@id='mw-input-language']/option[@value='de']/@selected");
-        $this->assertEquals($source, 'selected');
+		$source = $this->getAttribute("//options/@language");
+        if ($source != 'en') $this->allChecksOk = false;
        }
+
+	 public function tearDown()
+	 {
+		 if (!$this->allChecksOk)
+		 {
+			 $this->selenium->stop();
+			 die("failed");
+		 }
+	 }
 }
 
 
@@ -121,7 +133,7 @@ class SeleniumDeleteTiffTest extends SeleniumTestCase
         $this->waitForPageToLoad(10000);
 
         // Todo: This message is localized
-        $this->assertSeleniumHTMLContains('//div[@id="bodyContent"]/p', ucfirst($this->filename).'.*wurde gelöscht.');
+        $this->assertSeleniumHTMLContains('//div[@id="bodyContent"]/p', ucfirst($this->filename).'.*has been deleted.');
 
 
     }
@@ -333,31 +345,31 @@ if ($wgSeleniumTiffTestCheckPrerequistes)
 
 if ($wgSeleniumTiffTestUploads)
 {
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("caspian.tif", 'Die hochgeladene Datei ist fehlerhaft.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("caspian.tif", 'The uploaded file contains errors.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("cramps.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("cramps-tile.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("dscf0013.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("fax2d.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("g3test.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("Jello.tif"));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("jim___ah.tif", 'Die errechnete Größe der Datei stimmt nicht mit der tatsächlichen überein.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("jim___ah.tif", 'The reported file size does not match the actual file size.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("jim___cg.tif"));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("jim___dg.tif", 'Die errechnete Größe der Datei stimmt nicht mit der tatsächlichen überein.'));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("jim___gg.tif", 'Die errechnete Größe der Datei stimmt nicht mit der tatsächlichen überein.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("jim___dg.tif", 'The reported file size does not match the actual file size.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("jim___gg.tif", 'The reported file size does not match the actual file size.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("ladoga.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("off_l16.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("off_luv24.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("off_luv24.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("oxford.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("pc260001.tif"));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("quad-jpeg.tif", 'Die hochgeladene Datei konnte nicht verarbeitet werden. ImageMagick ist nicht verfügbar.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("quad-jpeg.tif", 'The uploaded file could not be processed. ImageMagick is not available.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("quad-lzw.tif"));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("quad-tile.tif"));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("smallliz.tif", 'Die hochgeladene Datei konnte nicht verarbeitet werden. ImageMagick ist nicht verfügbar.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("smallliz.tif", 'The uploaded file could not be processed. ImageMagick is not available.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("strike.tif"));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("text.tif", 'Die hochgeladene Datei ist fehlerhaft.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("text.tif", 'The uploaded file contains errors.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("ycbcr-cat.tif"));
-    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("zackthecat.tif", 'Die hochgeladene Datei konnte nicht verarbeitet werden. ImageMagick ist nicht verfügbar.'));
+    $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadBrokenTiffTest("zackthecat.tif", 'The uploaded file could not be processed. ImageMagick is not available.'));
     $wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("multipage.tiff"));
 }
 //$wgSeleniumTestSuites['PagedTiffHandler']->addTest(new SeleniumUploadWorkingTiffTest("multipage.tiff"));
