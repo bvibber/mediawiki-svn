@@ -855,11 +855,14 @@ class WebInstaller_Language extends WebInstallerPage {
 	 * Get a <select> for selecting languages
 	 */
 	function getLanguageSelector( $name, $label, $selectedCode ) {
+		global $wgDummyLanguageCodes;
 		$s = Xml::openElement( 'select', array( 'id' => $name, 'name' => $name ) ) . "\n";
 		
 		$languages = Language::getLanguageNames();
 		ksort( $languages );
+		$dummies = array_flip( $wgDummyLanguageCodes );
 		foreach ( $languages as $code => $name ) {
+			if ( isset( $dummies[$code] ) ) continue;
 			$s .= "\n" . Xml::option( "$code - $name", $code, $code == $selectedCode );
 		}
 		$s .= "\n</select>\n";
