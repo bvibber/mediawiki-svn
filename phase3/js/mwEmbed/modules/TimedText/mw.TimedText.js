@@ -282,16 +282,16 @@ mw.addMessages( {
 			
 			// Try to get sources from text provider:
 			var provider_id = ( this.embedPlayer.apiProvider ) ?  this.embedPlayer.apiProvider : 'local'; 
-			var api_url = mw.getApiProviderURL( provider_id );
+			var apiUrl = mw.getApiProviderURL( provider_id );
 			var assetKey = 	this.embedPlayer.apiTitleKey;
-			if( !api_url || !assetKey ) {
+			if( !apiUrl || !assetKey ) {
 				mw.log("Error: loading source without apiProvider or apiTitleKey");
 				return ;
 			}
 			//For now only support mediaWikiText provider library
 			this.textProvider = new mw.MediaWikiTextProvider( {
 				'provider_id' : provider_id,
-				'api_url': api_url,
+				'apiUrl': apiUrl,
 				'embedPlayer': this.embedPlayer
 			} );
 					
@@ -1160,7 +1160,7 @@ mw.addMessages( {
 
 	 */
 	 var default_textProvider_attr = [
-		'api_url',
+		'apiUrl',
 		'provider_id',
 		'timed_text_NS',
 		'embedPlayer'
@@ -1172,7 +1172,7 @@ mw.addMessages( {
 	mw.MediaWikiTextProvider.prototype = {
 		
 		// The api url:
-		api_url: null,
+		apiUrl: null,
 		
 		// The timed text namespace
 		timed_text_NS: null,
@@ -1199,7 +1199,7 @@ mw.addMessages( {
 				'action': 'parse',
 				'page': titleKey
 			};
-			mw.getJSON( this.api_url, request, function( data ) {
+			mw.getJSON( this.apiUrl, request, function( data ) {
 				if ( data && data.parse && data.parse.text['*'] ) {
 					callback(  data.parse.text['*']  );
 					return;
@@ -1243,14 +1243,14 @@ mw.addMessages( {
 				'aplimit' : 200,
 				'prop':'revisions'
 			};
-			mw.getJSON( this.api_url, request, function( sourcePages ) {
+			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
 				//If "timedText" is not a valid namespace try "just" with prefix: 
 				if (	sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
 					var request = { 
 						'list' : 'allpages', 
 						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.embedPlayer.apiTitleKey 
 					};
-					mw.getJSON( _this.api_url, request, function( sourcePages ) {
+					mw.getJSON( _this.apiUrl, request, function( sourcePages ) {
 						callback( sourcePages )
 					} );
 				} else {

@@ -37,7 +37,11 @@ mw.addMessages( {
 	"rsd_config_error" : "Add media wizard configuration error: $1",
 	"mwe-your_recent_uploads" : "Your recent uploads to $1",
 	"mwe-no_recent_uploads" : "No recent uploads",
-	"mwe-upload_a_file" : "Upload a new file to $1",
+	
+	"mwe-not-logged-in-uploads" : "You may not be logged in so no recent uploads can be displayed. $1 login and try again",
+	"mwe-loggin-link" : "Please login", 
+	
+	"mwe-upload_a_file" : "Upload a new file",
 	"mwe-resource_page_desc" : "Resource page description:",
 	"mwe-edit_resource_desc" : "Edit wiki text resource description:",
 	"mwe-local_resource_title" : "Local resource title:",
@@ -224,7 +228,7 @@ mw.RemoteSearchDriver.prototype = {
 		*
 		* 	@homepage: the homepage url for the search provider
 		*
-		*	@api_url: the url to query against given the library type:
+		*	@apiUrl: the url to query against given the library type:
 		*	
 		*	@lib: the search library to use corresponding to the
 		*		search object ie: 'mediaWiki' = new mediaWikiSearchSearch()
@@ -251,7 +255,7 @@ mw.RemoteSearchDriver.prototype = {
 		*/
 		'this_wiki': {
 			'enabled': 1,
-			'api_url':  ( wgServer && wgScriptPath ) ? 
+			'apiUrl':  ( wgServer && wgScriptPath ) ? 
 				wgServer + wgScriptPath + '/api.php' : null,
 			'lib': 'mediaWiki',
 			'local': true,
@@ -264,7 +268,7 @@ mw.RemoteSearchDriver.prototype = {
 		'kaltura': {
 			'enabled': 1,
 			'homepage': 'http://kaltura.com',
-			'api_url': 'http://kaldev.kaltura.com/michael/aggregator.php',
+			'apiUrl': 'http://kaldev.kaltura.com/michael/aggregator.php',
 			'lib': 'kaltura',
 			'resource_prefix' : '',
 			'tab_image':false
@@ -276,7 +280,7 @@ mw.RemoteSearchDriver.prototype = {
 		'wiki_commons': {
 			'enabled': 1,
 			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',
-			'api_url': 'http://commons.wikimedia.org/w/api.php',
+			'apiUrl': 'http://commons.wikimedia.org/w/api.php',
 			'lib': 'mediaWiki',
 			'tab_img': true,
 			
@@ -301,7 +305,7 @@ mw.RemoteSearchDriver.prototype = {
 			'enabled': 1,
 			'homepage': 'http://www.archive.org/about/about.php',
 
-			'api_url': 'http://www.archive.org/advancedsearch.php',
+			'apiUrl': 'http://www.archive.org/advancedsearch.php',
 			'lib': 'archiveOrg',
 			'local': false,
 			'resource_prefix': 'AO_',
@@ -315,7 +319,7 @@ mw.RemoteSearchDriver.prototype = {
 			'enabled': 1,
 			'homepage': 'http://www.flickr.com/about/',
 
-			'api_url': 'http://www.flickr.com/services/rest/',
+			'apiUrl': 'http://www.flickr.com/services/rest/',
 			'lib': 'flickr',
 			'local': false,
 			// Just prefix with Flickr_ for now.
@@ -329,7 +333,7 @@ mw.RemoteSearchDriver.prototype = {
 		'metavid': {
 			'enabled': 1,
 			'homepage': 'http://metavid.org/wiki/Metavid_Overview',
-			'api_url': 'http://metavid.org/w/index.php?title=Special:MvExportSearch',
+			'apiUrl': 'http://metavid.org/w/index.php?title=Special:MvExportSearch',
 			'lib': 'metavid',			
 			'local': false, 
 			
@@ -450,7 +454,7 @@ mw.RemoteSearchDriver.prototype = {
 			// Set the provider id
 			provider[ 'id' ] = provider_id
 				
-			if ( _this.enabled_providers == 'all' && !this.current_provider && provider.api_url ) {
+			if ( _this.enabled_providers == 'all' && !this.current_provider && provider.apiUrl ) {
 				this.current_provider = provider_id;
 				break;
 			} else {
@@ -485,7 +489,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Set up the local API upload URL
 		if ( _this.upload_api_target == 'local' ) {
 			if ( ! mw.getLocalApiUrl() ) {
-				$j( this.target_container ).html( gM( 'rsd_config_error', 'missing_local_api_url' ) );
+				$j( this.target_container ).html( gM( 'rsd_config_error', 'missing_local_apiUrl' ) );
 				return false;
 			} else {
 				_this.upload_api_target = mw.getLocalApiUrl();
@@ -928,6 +932,9 @@ mw.RemoteSearchDriver.prototype = {
 				.addClass( 'rsd_search_button' )
 				.buttonHover()
 				.click(function () {					
+					if( _this.current_provider == 'upload' ){
+						_this.current_provider = _this.previus_provider; 
+					}
 					_this.updateResults( _this.current_provider, true );
 					return false;
 				});
@@ -935,14 +942,14 @@ mw.RemoteSearchDriver.prototype = {
 		var $searchBox = $j( '<input />' )
 			.addClass( 'ui-corner-all' )
 			.attr({
-				type: "text",
-				tabindex: 1,
-				value: this.getDefaultQuery(),
-				maxlength: 512,
-				id: "rsd_q",
-				name: "rsd_q",
-				size: 20,
-				autocomplete: "off"
+				'type' : "text",
+				'tabindex' : 1,
+				'value' : _this.getDefaultQuery(),
+				'maxlength' : 512,
+				'id' : "rsd_q",
+				'name' : "rsd_q",
+				'size' : 20,
+				'autocomplete' : "off"
 			})
 		// Prevent searching for empty input.
 		.keyup(function () {
@@ -958,7 +965,7 @@ mw.RemoteSearchDriver.prototype = {
 		for ( var providerName in this.content_providers ) {
 			var content_providers = this.content_providers;
 			var provider = content_providers[ providerName ];
-			if ( provider.enabled && provider.api_url ) {
+			if ( provider.enabled && provider.apiUrl ) {
 				var $anchor = $j( '<div />' )
 					.text( gM( 'rsd-' + providerName + '-title' ) )
 					.attr({
@@ -1032,7 +1039,6 @@ mw.RemoteSearchDriver.prototype = {
 				_this.showUploadForm( provider );
 			} );
 		} );
-
 	},
 	
 	/**
@@ -1042,8 +1048,6 @@ mw.RemoteSearchDriver.prototype = {
 	*/
 	showUploadForm: function( provider ) {
 		var _this = this;
-		var uploadMsg = gM( 'mwe-upload_a_file', _this.upload_api_name );
-		var recentUploadsMsg = gM( 'mwe-your_recent_uploads', _this.upload_api_name );
 		
 		// Do basic layout form on left upload "bin" on right
 		$uploadTableRow = $j('<tr />').append(
@@ -1055,9 +1059,11 @@ mw.RemoteSearchDriver.prototype = {
 				 'padding-right' : '12px'
 			})
 			.append(
-				$j('<h4 />').text( uploadMsg ),
+				$j('<h3 />')
+				.text(  gM( 'mwe-upload_a_file' ) ),
+				
 				$j('<div />').attr({
-					'id': 'upload_form'
+					'id': 'rsd_upload_form'
 				})
 				.loadingSpinner()
 			),
@@ -1073,44 +1079,18 @@ mw.RemoteSearchDriver.prototype = {
 				$uploadTableRow
 			) 
 		);
-
-		// Fill in the user uploads:
-		if ( typeof wgUserName != 'undefined' && wgUserName ) {
-			// Load the upload bin with anything the current user has uploaded
-			provider.sObj.getUserRecentUploads( wgUserName, function( ) {	
-				$j('#upload_bin').empty().append( 
-					$j('<h4 />').text( recentUploadsMsg )
-				);	
-				_this.showResults();
-			} );
-		}else{
-			$j('#upload_bin').empty().text( gM( 'mwe-no_recent_uploads' ) );
-		}
 		
-		// The api stuff: 
-		var commonsProvider = this.content_providers[ 'wiki_commons' ];
-		var thisWikiProvider = this.content_providers[ 'this_wiki' ];
+		this.showRecentUserUploads( '#upload_bin' );		
 		
 		// Send the upload target menu from UploadForm class
 		mw.UploadForm.getUploadMenu( {
-			'target': '#upload_form',
-			'uploadTargets' : {
-				'commons' : {
-					'apiUrl' : commonsProvider.api_url,
-					'title' : gM( 'rsd-wiki_commons-title')
-				},
-				'this_wiki' : {
-					'apiUrl' : thisWikiProvider.api_url,
-					// Unfortunally mediaWiki pages don't expose the title of the wiki 
-					// Could get in an api request ( just use domain for now)  
-					'title' : mw.parseURI( thisWikiProvider.api_url ).host
-				}
-			}
+			'target': '#rsd_upload_form',
+			'uploadTargets' :  _this.getUploadTargets()
 		} );
 		
 		// Deal with the api form upload form directly:
 		/*mw.UploadForm.getForm( {
-			"target" : '#upload_form',
+			"target" : '#rsd_upload_form',
 			"api_target" 	  : _this.upload_api_target,
 			"ondone_callback" : function( resultData ) {
 				var wTitle = resultData['filename'];
@@ -1128,6 +1108,162 @@ mw.RemoteSearchDriver.prototype = {
 			}
 		} );
 		*/
+	},
+	
+	/**
+	* Show recent user uploads
+	*/
+	showRecentUserUploads: function( target ){
+		var _this = this;  				
+		var uploadTargets = this.getUploadTargets();		
+		
+		$j( target ).empty();
+				
+		// Show recent uploads for each upload target
+		for( var uploadTargetId in uploadTargets ){
+			var uploadTarget = uploadTargets[ uploadTargetId ];
+			
+			$j( target ).append(
+				$j( '<h3 />' )
+				.append( 
+					gM( 'mwe-your_recent_uploads',  uploadTarget.title )
+				),
+				
+				// Add the targetUpload container
+				$j('<div />')
+				.attr( 'id', 'user-results-' + uploadTargetId )
+				.loadingSpinner()
+			)
+			// Issue the call to get the recent uploads:
+			_this.showUserRecentUploads( uploadTargetId ); 					
+		}
+		
+	},
+	
+	showUserRecentUploads: function( uploadTargetId  ){
+		var _this = this;
+		var provider = _this.content_providers[ uploadTargetId ];
+		var uploadTargets = _this.getUploadTargets();
+		var uploadApiUrl = uploadTargets[ uploadTargetId ].apiUrl ;
+
+		// If the target is not local or we don't have a userName
+		// ( try and grab the user name via api call (will be a proxy call if remote) ) 
+		if( ! mw.isLocalDomain( uploadApiUrl ) ) {
+			// Garb the userName via api call 	
+			var request = {
+				'action':'query',
+				'meta':'userinfo'
+			}
+			// Do request ( will automatically invoke proxy because its a proxy action and remote url )  
+			mw.getJSON( uploadApiUrl, request, function( data ){		
+				// Now we get the data back for that domain
+				if( !data || !data.query || !data.query.userinfo ){
+					// Could not get user name user is not-logge
+					mw.log( " No user data in resposne " );
+					return false;
+				}
+				var userName = data.query.userinfo.name;
+				_this.showUserRecentUploadsWithUser( uploadTargetId, userName );
+				
+			}, 
+			// Add a timeout function for getting the user-name
+			function(){
+				var logInLink = uploadApiUrl.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin'; 
+				// Timed out or proxy not setup ( for remotes ) 
+				$j( '#user-results-' + uploadTargetId ).html(
+					gM( "mwe-not-logged-in-uploads", 
+						$j( '<a />' )
+						.attr( 'href', logInLink )
+						.append( gM( 'mwe-loggin-link' ) )
+					)
+				);
+			} );
+		} else {
+			// No user name, since every page outputs wgUserName assume the user is not logged in )
+			if( !wgUserName ) {
+				$j( '#user-results-' + uploadTargetId )
+				.text( gM( 'mwe-not-logged-in-uploads' ) );
+			}else{
+				_this.showUserRecentUploadsWithUser( uploadTargetId,  wgUserName );
+			}
+		}
+	},	
+	
+	showUserRecentUploadsWithUser: function( uploadTargetId, userId ){
+		var _this = this;		
+		var provider = this.content_providers[ uploadTargetId ];
+		
+		// Setup a local scope function to call the search 
+		//  ( since we may have to load the provider search lib )  
+		function doProviderSearch(){
+			provider.sObj.getUserRecentUploads( userId, function( ) {		
+				_this.showResults( {
+					'resultsContainer' :  $j( '#user-results-' + uploadTargetId ),
+					'provider' : provider,
+					'hideResultsHeader' : true
+				});
+			} );
+		}
+				
+		// Make sure the provider has a search object: 		
+		if (!provider.sObj) {
+			this.loadSearchLib( provider, function() {
+				doProviderSearch(); 
+			} );			
+		} else {
+			doProviderSearch();
+		}		
+	},
+	
+	/**
+	* Get the upload targets
+	* NOTE: this should be configurable 
+	*/
+	getUploadTargets: function(){		
+		// Setup upload targets
+		var uploadTargets = { };
+		
+		// Always include commons upload target: 
+		// Setup commons upload target
+		var commonsProvider = this.content_providers[ 'wiki_commons' ];
+		// Check for commons upload page
+		var commonsUploadPage = 'Commons:Upload';		
+		
+		// Add the user language of the commonsUploadPage link 
+		if( typeof wgUserLanguage != 'undefined' && wgUserLanguage != 'en' ) {
+			commonsUploadPage += '/' + wgUserLanguage;
+		}
+		
+		uploadTargets['wiki_commons']= {
+			'apiUrl' : commonsProvider.apiUrl,
+			'title' : gM( 'rsd-wiki_commons-title'),
+			'uploadPage' : commonsProvider.apiUrl.replace( 'api.php', 'index.php' ) + '?title=' + commonsUploadPage
+		}
+		
+		// If we are ~on commons~ no other links needed:
+		if( mw.parseUri( document.URL ).host == 'commons.wikimedia.org' ) {
+			return uploadTargets;
+		}		
+		
+		// check if we have a link to commons for our t-upload toolbox link:
+		// ( ie the project does not support local uploads )		
+		$uploadLink = $j( '#t-upload' ).find('a');
+		if( $uploadLink.length 
+			&& mw.parseUri( $uploadLink.attr('href') ).host == 'commons.wikimedia.org' )
+		{
+			return uploadTargets;
+		} 
+		
+		// Elese this_wiki accepts uploads setup upload links:
+		var thisWikiProvider = this.content_providers[ 'this_wiki' ]; 
+		/* uploadTargets[ 'this_wiki' ] = {
+			'apiUrl' : thisWikiProvider.apiUrl,
+			// Unfortunately mediaWiki pages don't expose the title of the wiki 
+			// Could get in an api request ( just use domain for now)  
+			'title' : mw.parseUri( thisWikiProvider.apiUrl ).host,
+			'uploadPage' : $uploadLink.attr('href')			
+		} */
+		return uploadTargets;		
 	},
 	
 	/**
@@ -1161,8 +1297,10 @@ mw.RemoteSearchDriver.prototype = {
 				mw.log( 'last query is: ' + provider.sObj.last_query + 
 					' matches: ' +  $j( '#rsd_q' ).val() + ' no search needed');
 				
-				// Show search results directly
-				this.showResults();
+				// Show search results directly							
+				this.showResults( );
+				// Done with processing
+				return true;
 			}
 		}
 			
@@ -1204,7 +1342,7 @@ mw.RemoteSearchDriver.prototype = {
 		}
 		// If we don't have the local wiki api defined we can't auto-detect use "link"
 		if ( ! _this.upload_api_target ) {
-			mw.log( 'import mode: remote link (no import_wiki_api_url)' );
+			mw.log( 'import mode: remote link (no import_wiki_apiUrl)' );
 			_this.import_url_mode = 'remote_link';
 			callback();
 		}
@@ -1348,7 +1486,7 @@ mw.RemoteSearchDriver.prototype = {
 	
 			// If we are given a result location, we hide them.
 			if ($location) {
-				$location.html( mw.loading_spinner("float: left") );
+				$location.loadingSpinner();
 			}
 			
 			var d = new Date();
@@ -1356,16 +1494,15 @@ mw.RemoteSearchDriver.prototype = {
 			_this.currentRequest = context();
 			mw.log( "ProviderCallBack Generated " + context() )
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , 
-					function( resultStatus ) {
-						
+					function( resultStatus ) {						
 						mw.log( "ProviderCallBack Received  " + context() );
 						if( _this.currentRequest != context() ) {
+							mw.log( "Context mismatch for request " + _this.currentRequest + ' != ' + context );
 					        // do not update the results this.currentRequest 
 							// does not match the interface request state.
 					        return false;
-					    }
-					    
-						//else update search results		
+					    }					    
+						//else update search results
 						_this.showResults();
 					});
 			
@@ -1462,17 +1599,32 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/**
-	* Show Results for the current_provider
+	* Show Results and apply bindings
+	*
+	* @param {Object} options Configuration optiosn can inclue: 
+	* 'resultsContainer' - {jQuery Object} $resultsContainer The container for the results
+	* 'provider' - {Object} provider The search provider to grab results from.  
 	*/
-	showResults: function() {
-		mw.log( 'f:showResults::' + this.current_provider );
+	showResults: function( options ) {	
 		var _this = this;
 		
-		var provider = this.content_providers[ this.current_provider ];
+		if( !options ) {
+			options = { };
+		}
 		
+		// Set all the option defaults if not provided:
+		var $resultsContainer = ( options.resultsContainer ) 
+			? options.resultsContainer 
+			: _this.$resultsContainer;
+			
+		var provider = ( options.provider )
+			? options.provider
+			: _this.content_providers[ _this.current_provider ];
+		
+		mw.log( 'f:showResults::' + provider.id );		
 		// Result page structure:
 		//
-		// resultContainer
+		// resultsContainer
 		//   header
 		//   resultBody
 		//     filter form
@@ -1480,31 +1632,24 @@ mw.RemoteSearchDriver.prototype = {
 		//     resultList
 		//       results...
 		//   footer
-		
-		var $resultsContainer;
+						
 		var $resultsBody = $j( '<div />' ).addClass( 'rsd_results_body' );
 		var $resultsList = $j( '<div />' ).addClass( 'rsd_results_list' );
 		
-		// The "upload" tab has special results output target rather than top level
-		// resutls container.
-		if ( this.current_provider == 'upload' ) {
-			$resultsContainer = $j('#upload_bin');
-			var provider = _this.content_providers['this_wiki'];
-		} else {
-			var provider = this.content_providers[ this.current_provider ];
-			$resultsContainer = this.$resultsContainer;
-			 
-			// Add the results header:
-			$resultsContainer.empty().append( this.createResultsHeader() )
+		// Add the results header:
+		$resultsContainer.empty();	
 			
-			// Enable search filters, if the provider supports them.
-			if ( provider.sObj.filters && !(provider.disable_filters) ) {
-				provider.sObj.filters.filterChangeCallBack = 
-					this.curry( this.getProviderCallback(), provider, $resultsList );
-				$resultsBody.append( provider.sObj.filters.getHTML().attr ({
-					id: 'rsd_filters_container'
-				}));
-			}
+		if( ! options.hideResultsHeader ){
+			$resultsContainer.append( this.createResultsHeader() )
+		}
+		
+		// Enable search filters, if the provider supports them.
+		if ( provider.sObj.filters && !(provider.disable_filters) ) {
+			provider.sObj.filters.filterChangeCallBack = 
+				this.curry( this.getProviderCallback(), provider, $resultsList );
+			$resultsBody.append( provider.sObj.filters.getHTML().attr ({
+				id: 'rsd_filters_container'
+			}));
 		}
 		
 		var numResults = 0;
@@ -1820,31 +1965,49 @@ mw.RemoteSearchDriver.prototype = {
 		_this.removeResourceEditor();
 
 		var mediaType = _this.getMediaType( resource );
-		var maxWidth = _this.getMaxEditWidth( resource );
-
+		var width = _this.getMaxEditWidth( resource );
+		
+		// if maxWidth makes height > available height resize request:
+		var width = resource.width;
+		var height = parseInt( width * ( resource.width / resource.height ) ); 
+		
+		// Update the resource size constrained by clip_edit_disp
+		if( width > $j('#clip_edit_disp').width() ){
+			width = $j('#clip_edit_disp').width();
+			height = width * (  width / height );
+		}
+		if( height > $j('#clip_edit_disp').height() ){
+			height =  $j('#clip_edit_disp').height();
+			width = height * (  height / width );
+		}																					
+		mw.log(" set height to: " + height + ' width to: ' + width );
+		
+			
 		// Append to the top level of model window:
-		_this.addResourceEditLoader( maxWidth  );
-		// update add media wizard title:
+		_this.addResourceEditLoader( width  );
+		
+		// Update add media wizard title:
 		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' +
 			gM( 'rsd_resource_edit', resource.title );
+			
 		$j( _this.target_container ).dialog( 'option', 'title', dialogTitle );
 		
 		mw.log( 'did append to: ' + _this.target_container );
 			
 		if ( mediaType == 'image' ) {
 			_this.loadHighQualityImage( 
-				resource, 
-				{ 'width': maxWidth }, 
+				resource, {
+					'width': width 
+				}, 
 				'rsd_edit_img', 
 				function( img_src ) {
-					$j( '.loading_spinner' ).remove();
+					$j( '.loading_spinner' ).remove();									
 					$j( '<img />' )
 						.attr( {
-							id: 'rsd_edit_img',
-							src: img_src
+							'id' : 'rsd_edit_img',
+							'src' : img_src
 						} )
-						.appendTo( '#clip_edit_disp' );
-					
+					.appendTo( '#clip_edit_disp' );					
 				}
 			);
 		}
@@ -1872,6 +2035,7 @@ mw.RemoteSearchDriver.prototype = {
 	* @param {Function} callback the function to be calle once the image is loaded 
 	*/
 	loadHighQualityImage: function( resource, size, target_img_id, callback ) {
+		mw.log( "loadHighQualityImage" );
 		// Get the high quality image url:
 		resource.pSobj.getImageObj( resource, size, function( imObj ) {
 			resource['edit_url'] = imObj.url;
@@ -1880,31 +2044,20 @@ mw.RemoteSearchDriver.prototype = {
 			// Update the resource
 			resource['width'] = imObj.width;
 			resource['height'] = imObj.height;
-
-			// See if we need to animate some transition
-			if ( size.width != imObj.width ) {
-				mw.log( 'loadHighQualityImage:size mismatch: ' + size.width + ' != ' + imObj.width );
-				// Set the target id to the new size:
-				$j( '#' + target_img_id ).animate( {
-					'width': imObj.width + 'px',
-					'height': imObj.height + 'px'
-				});
-			} else {
-				mw.log( 'use req size: ' + imObj.width + 'x' + imObj.height );
-				$j( '#' + target_img_id ).animate( {
-					'width': imObj.width + 'px', 
-					'height': imObj.height + 'px' 
-				});
-			}
+			
+			var width = imObj.width;
+			var height = imObj.height;
+						
+			
 			// Don't swap it in until its loaded
 			var img = new Image();
 			// Load the image
 			$j( img ).load( function () {
-					 // Update changes using the callback
-					 callback( resource.edit_url );
-				} ).error( function () {
-					mw.log( "Error with:  " +  resource.edit_url );
-				} ).attr( 'src', resource.edit_url );
+				 // Update changes using the callback
+				 callback( resource.edit_url );
+			} ).error( function () {
+				mw.log( "Error with:  " +  resource.edit_url );
+			} ).attr( 'src', resource.edit_url );
 		} );
 	},
 	
@@ -2526,7 +2679,7 @@ mw.RemoteSearchDriver.prototype = {
 				// Initiate a upload object ( similar to url copy ):
 				// ( mvBaseUploadInterface handles upload errors ) 
 				var uploader = new mw.BaseUploadInterface( {
-					'api_url' : _this.upload_api_target,
+					'apiUrl' : _this.upload_api_target,
 					'done_upload_cb':function() {
 						mw.log( 'doApiImport:: run callback::' );
 						// We have finished the upload:
@@ -2849,10 +3002,10 @@ mw.RemoteSearchDriver.prototype = {
 				'href' : provider.homepage, 
 				'target' : '_new'
 			} )
-			.text( gM( 'rsd-' + this.current_provider + '-title' ) )
-		)
+			.append( gM( 'rsd-' + provider.id + '-title' ) )
+		);		
 		
-		var $searchContent = $j( '<span />' ).html(resultsFromMsg);
+		var $searchContent = $j( '<span />' ).html( resultsFromMsg );
 		var $searchDescription = $j( '<span />' ).addClass( 'rsd_search_description' )
 			.attr({
 				id: 'rsd_search_description'
@@ -2861,6 +3014,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		return $searchDescription;
 	},
+	
 	/**
 	* Results Header controls like box vs list view
 	* & search description
@@ -2991,7 +3145,7 @@ mw.RemoteSearchDriver.prototype = {
 		if ( this.current_provider == 'upload' ) {
 			this.showUploadTab();
 		} else {
-			// update the search results:
+			// Update the search results:
 			this.updateResults();
 		}
 	},
@@ -3003,7 +3157,7 @@ mw.RemoteSearchDriver.prototype = {
 	setDisplayMode: function( mode ) {
 		mw.log( 'setDisplayMode:' + mode );
 		this.displayMode = mode;
-		// run /update search display:
-		this.showResults();
+		// Run / update search display:		
+		this.showResults( );
 	}
 };

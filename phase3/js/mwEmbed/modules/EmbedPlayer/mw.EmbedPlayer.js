@@ -1754,7 +1754,7 @@ mw.EmbedPlayer.prototype = {
 				'iiprop'	: 'url',
 				'iiurlwidth': '80'
 			};
-			mw.getJSON( mw.commons_api_url, request, function( data ) {
+			mw.getJSON( mw.commons_apiUrl, request, function( data ) {
 	            // empty the videos:		            
 	            $j( '#' + _this.id + ' .related_vids ul' ).html( ' ' );
 	            				           

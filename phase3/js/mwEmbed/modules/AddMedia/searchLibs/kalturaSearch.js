@@ -244,7 +244,7 @@ kalturaSearch.prototype = {
 		}
 		
 		mw.log( "Kaltura::getProviderResults query: " + request['s'] + " page: " + request['page']);
-		mw.getJSON( this.provider.api_url + '?callback=?', request, function( data ) {
+		mw.getJSON( this.provider.apiUrl + '?callback=?', request, function( data ) {
 			_this.addResults( data );
 			callback( 'ok' );
 		} );

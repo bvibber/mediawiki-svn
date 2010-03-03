@@ -9,7 +9,7 @@
 //HARD coded local test: 
 var remote_wiki_host = 'http://commons.wikimedia.org';
 var remote_script_path = '/w';
-var remote_api_url = remote_wiki_host + remote_script_path + '/api.php';
+var remote_apiUrl = remote_wiki_host + remote_script_path + '/api.php';
 
 mw.ready( function(){
 	$j('#hostName').text( remote_wiki_host );		
@@ -35,7 +35,7 @@ function getUserName( callback ){
 		'meta':'userinfo'
 	}
 	// Do request ( will automatically invoke proxy because its a proxy action and remote url )  
-	mw.getJSON( remote_api_url, rObj, function( data ){		
+	mw.getJSON( remote_apiUrl, rObj, function( data ){		
 			//now we get the data back for that domain
 			if( !data.query || !data.query.userinfo ){
 				mw.log("Error no query.userinfo ");
@@ -50,10 +50,10 @@ function getUserName( callback ){
 function doAppend(){
 	$j('#appendTarget').html( mw.loading_spinner() );
 	//get user name
-	getUserName( function(userName){
+	getUserName( function( userName ){
 		var eTitle = 'User_talk:' + userName;
 		// Get a edit token		
-		mw.getToken( remote_api_url, eTitle, function( token ) {
+		mw.getToken( remote_apiUrl, eTitle, function( token ) {
 			mw.log("got token: " + token) ;
 			var request = {
 				'action':'edit',
@@ -62,7 +62,7 @@ function doAppend(){
 				'appendtext': "\n\n==== Hello from Api proxy At: " + Date() + " ====",
 				'token': token
 			}
-			mw.getJSON( remote_api_url, request, function( result ){
+			mw.getJSON( remote_apiUrl, request, function( result ){
 				if(result.edit && result.edit.newrevid){				
 					$j('#appendTarget').html( "success: " + JSON.stringify ( result) );
 					url = remote_wiki_host +  remote_script_path + '/index.php/';
@@ -88,7 +88,7 @@ function doFileUpload(){
 				'target' : '#browseTarget',
 	
 				// Api url to upload to
-				'api_url' : remote_api_url,
+				'apiUrl' : remote_apiUrl,
 	
 				// File Destination Name change callback: 
 				'selectFileCb' : function( fname ){				
@@ -96,7 +96,7 @@ function doFileUpload(){
 					$j('#file-name').val( fname );
 					// Run a destination file name check on the remote target 			
 					$j('#file-name').doDestCheck( {
-						'api_url' : remote_api_url,
+						'apiUrl' : remote_apiUrl,
 						'warn_target': '#file-warning'
 					} );				
 				},
@@ -113,7 +113,7 @@ function doFileUpload(){
 				
 				// Build the output and send upload request to fileProxy  
 				mw.ApiProxy.sendServerMsg( {
-					'api_url' : remote_api_url, 
+					'apiUrl' : remote_apiUrl, 
 					'frameName' : fileIframeName,
 					'frameMsg' : {
 						'action' : 'fileSubmit',
@@ -130,7 +130,7 @@ function doFileUpload(){
 			// Setup doDestCheck on change
 			$j('#file-name').change(function(){
 				$j('#file-name').doDestCheck( {
-					'api_url' : remote_api_url,
+					'apiUrl' : remote_apiUrl,
 					'warn_target': '#file-warning'
 				} );	
 			});

@@ -258,9 +258,9 @@ mw.ClipEdit.prototype = {
 						'rvprop':'content'
 					};
 					// get the interface uri from the plObject
-					var api_url = _this.parentSequence.plObj.interface_url;
+					var apiUrl = _this.parentSequence.plObj.interface_url;
 					// first check
-					mw.getJSON( api_url, request, function( data ) {
+					mw.getJSON( apiUrl, request, function( data ) {
 						if ( typeof data.query.pages == 'undefined' )
 							return _this.showEditOptions( target );
 						for ( var i in data.query.pages ) {
@@ -403,8 +403,8 @@ mw.ClipEdit.prototype = {
 			};
 			$j( _this.resource.embed ).html( mw.loading_spinner() );
 
-			var api_url = _this.parentSequence.plObj.interface_url;
-			mw.getJSON( api_url, request, function( data ) {
+			var apiUrl = _this.parentSequence.plObj.interface_url;
+			mw.getJSON( apiUrl, request, function( data ) {
 				if ( data.parse.text['*'] ) {
 					// update the target
 					$j( _this.resource.embed ).html( data.parse.text['*'] );

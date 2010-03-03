@@ -36,7 +36,7 @@ var default_firefogg_options = {
 	'done_upload_cb': false,	
 
 	// The API URL to upload to
-	'api_url': null,
+	'apiUrl': null,
 
 	// True when a file is uploaded without re-encoding
 	'passthrough': false,
@@ -152,8 +152,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		if ( !options )
 			options = {};
 
-		// If we have no api_url, set upload mode to "post"
-		if ( !options.api_url )
+		// If we have no apiUrl, set upload mode to "post"
+		if ( !options.apiUrl )
 			options.upload_mode = 'post';
 
 		// Set options
@@ -932,7 +932,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 
 		// No edit token. Fetch it asynchronously and then do the upload.
-		mw.getToken( _this.api_url, 'File:'+ _this.formData['filename'], function( editToken ) {
+		mw.getToken( _this.apiUrl, 'File:'+ _this.formData['filename'], function( editToken ) {
 			if( !editToken || editToken == '+\\' ) {
 				_this.ui.setPrompt( gM( 'fogg-badtoken' ), gM( 'fogg-badtoken' ) );
 				return false;
@@ -960,9 +960,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				function /* onDone */ () {															
 					var uploadRequest = _this.getUploadApiRequest();
 					
-					mw.log( 'Do POST upload to:' +_this.api_url + ' with data:\n' + JSON.stringify( uploadRequest ) );
+					mw.log( 'Do POST upload to:' +_this.apiUrl + ' with data:\n' + JSON.stringify( uploadRequest ) );
 					
-					_this.fogg.post( _this.api_url, 'file', JSON.stringify( uploadRequest ) );
+					_this.fogg.post( _this.apiUrl, 'file', JSON.stringify( uploadRequest ) );
 						
 					_this.doUploadStatus();
 				}
@@ -1040,9 +1040,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		var uploadRequest = this.getUploadApiRequest( { 'enable_chunks' : true } );
 
 		var encoderSettings = this.getEncoderSettings();
-		mw.log( 'do fogg upload/encode call: ' + _this.api_url + ' :: ' + JSON.stringify( uploadRequest ) );
+		mw.log( 'do fogg upload/encode call: ' + _this.apiUrl + ' :: ' + JSON.stringify( uploadRequest ) );
 		mw.log( 'foggEncode: ' + JSON.stringify( encoderSettings ) );
-		_this.fogg.upload( JSON.stringify( encoderSettings ), _this.api_url, 
+		_this.fogg.upload( JSON.stringify( encoderSettings ), _this.apiUrl, 
 			JSON.stringify( uploadRequest ) );
 
 		// Start polling the upload status

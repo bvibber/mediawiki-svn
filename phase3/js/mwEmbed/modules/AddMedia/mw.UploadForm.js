@@ -26,8 +26,9 @@ var default_form_options = {
 	'api_target' : false,
 	'ondone_callback' : null
 };
+mw.UploadForm = { };
 
-( function( mw.UploadForm ) {
+( function( $ ) {
 	/**
 	* Add a upload target selection menu
 	* with binding to build update form target 
@@ -51,7 +52,7 @@ var default_form_options = {
 		for( var i in options.uploadTargets ){
 			var provider = options.uploadTargets[ i ]
 			$uploadTargetsList.append(
-				getProviderUploadLinks( provider );
+				getProviderUploadLinks( provider )
 			);
 		}
 		
@@ -86,7 +87,7 @@ var default_form_options = {
 			}
 			// Add the upload form html: 
 			$j( options.target ).html(
-				getUploadForm( options );
+				getUploadForm( options )
 			);			
 						
 		
@@ -120,8 +121,10 @@ var default_form_options = {
 					fname = path.substring( backslash + 1, 10000 );
 				}
 				fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
+				
 				// Output result
 				$j( "#wpDestFile" ).val( fname );
+				
 				// Do destination check
 				$j( "#wpDestFile" ).doDestCheck( {
 					'warn_target':'#wpDestFile-warning'
@@ -144,7 +147,7 @@ var default_form_options = {
 				mw.load( 'AddMedia.firefogg', function() {
 					$j( "#wpUploadFile" ).firefogg( {
 						// An api url (we won't submit directly to action of the form)
-						'api_url' : options.api_target,
+						'apiUrl' : options.api_target,
 											
 						// MediaWiki API supports chunk uploads: 
 						'enable_chunks' : false,
@@ -187,33 +190,37 @@ var default_form_options = {
 	* Get a provider upload links for local upload and remote
 	*/
 	function getProviderUploadLinks( provider ){
-		var api_url = provider.api_url;
+		var apiUrl = provider.apiUrl;
 		
-		$uploadLinks = $j( '<li />' );
+		$uploadLinks = $j( '<div />' );
 		
 		// Upload your own file
 		$uploadLinks.append(
-			$j( '<a />' )
-			.attr( {
-				'href' : '#'
-			} )
-			.text(
-				gM( 'mwe-upload-own-file', provider.title ) 
+			$j('<li />').append( 
+				$j( '<a />' )
+				.attr( {
+					'href' : '#'
+				} )
+				.text(
+					gM( 'mwe-upload-own-file', provider.title ) 
+				)
+				.click( function(){
+					mw.log(" do interface for:" + provider.apiUrl );
+				})
 			)
-			.click( function(){
-				mw.log(" do interface for:" + provider.api_url );
-			});
 		);		
 		
 		// Upload a file not your own ( link to special:upload for that api url )
-		$uploadLinks.append (	
-			$j( '<a />' )
-			.attr( {
-				'href' : provider.api_url.replace( 'api.php', 'index.php' ) + '?title=Special:Upload',
-				'target' : '_new'
-			} )
-			.text( 
-				gM( 'mwe-upload-not-my-file', provider.title ) 
+		$uploadLinks.append (
+			$j('<li />').append( 
+				$j( '<a />' )
+				.attr( {
+					'href' : provider.uploadPage,
+					'target' : '_new'
+				} )
+				.text( 
+					gM( 'mwe-upload-not-my-file', provider.title ) 
+				)
 			)
 		);
 		
@@ -293,12 +300,13 @@ var default_form_options = {
 				'id' : "wpUploadDescription",
 				'cols' : "30",
 				'rows' : "3",
-				'name' : "wpUploadDescription"
+				'name' : "wpUploadDescription",
 				'tabindex' : "3"
-			} )
+			} ),
 			
 			$j( '<br />' )
 		);
+		
 		// Add watchlist checkbox
 		$uploadForm.append(
 			$j('<input />')
@@ -388,5 +396,6 @@ var default_form_options = {
 		);
 		return $uploadFrom;
 	}
-	
+	 
+
 } )( window.mw.UploadForm );

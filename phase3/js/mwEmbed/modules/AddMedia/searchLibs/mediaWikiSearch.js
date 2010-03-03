@@ -47,7 +47,7 @@ mediaWikiSearch.prototype = {
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		}
-		mw.getJSON(this.provider.api_url, request, function( data ) {				
+		mw.getJSON(this.provider.apiUrl, request, function( data ) {				
 				// check for redirect
 				for ( var i in data.query.pages ) {
 					var page = data.query.pages[i];
@@ -76,15 +76,15 @@ mediaWikiSearch.prototype = {
 	* @param {String} user Name of the user
 	* @param {Function} callback Function to call once user upload list has been populated
 	*/
-	getUserRecentUploads: function( user, callback ) {
+	getUserRecentUploads: function( user, callback, timeoutCallback ) {
 		var _this = this;
 		var request = {
-			'list':'recentchanges',
-			'rcnamespace':6, // only files
-			'rcuser': user,
-			'rclimit':15 // get last 15 uploaded files 				
+			'list' : 'recentchanges',
+			'rcnamespace' : 6, // only files
+			'rcuser' :  user,
+			'rclimit' : 10 // get last 10 uploaded files 				
 		};
-		mw.getJSON( this.provider.api_url, request, function( data ) {
+		mw.getJSON( this.provider.apiUrl, request, function( data ) {
 			var titleSet = { };
 			var titleStr = ''
 			var pound = '';
@@ -108,13 +108,13 @@ mediaWikiSearch.prototype = {
 				'iiurlwidth': parseInt( _this.rsd.thumb_width ),
 				'rvprop':'content'
 			};
-			mw.getJSON( _this.provider.api_url, resourceQuery, function( data ) {
+			mw.getJSON( _this.provider.apiUrl, resourceQuery, function( data ) {
 				_this.clearResults();
 				_this.addResults( data );
 				if ( callback )
 					callback();
 			} );
-		} );
+		}, timeoutCallback );
 	},
 	
 	/**
@@ -144,7 +144,7 @@ mediaWikiSearch.prototype = {
 		};
 		
 		// Do the api request:  
-		mw.getJSON( this.provider.api_url, request, function( data ) {				
+		mw.getJSON( this.provider.apiUrl, request, function( data ) {				
 				// Add result data:
 				_this.addResults( data );				
 				callback();
@@ -174,6 +174,7 @@ mediaWikiSearch.prototype = {
 			if ( typeof data['query-continue'].search != 'undefined' )
 				this.more_results = true;
 		}
+		
 		// Make sure we have pages to iterate: 	
 		if ( data.query && data.query.pages ) {
 			for ( var page_id in  data.query.pages ) {
@@ -267,7 +268,7 @@ mediaWikiSearch.prototype = {
 			}
 		} else {
 			mw.log( 'no results:' + data );
-		}
+		}		
 	},
 	
 	/* 
@@ -289,10 +290,12 @@ mediaWikiSearch.prototype = {
 	* @param {Object} size Requested size: .width and .height
 	* @param {Function} callbcak Function to be called once image has been reqeusted 
 	*/
-	getImageObj:function( resource, size, callback ) {
-		if ( resource.mime == 'application/ogg' )
+	getImageObj: function( resource, size, callback ) {
+		mw.log( 'mediaWiki: getImageObj' ); 
+		if ( resource.mime == 'application/ogg' ){
 			return callback( { 'url':resource.src, 'poster' : resource.url } );
-		
+		}
+				
 		// This could be depreciated if thumb.php support is standard
 		var request = {
 			'action':'query',
@@ -301,13 +304,13 @@ mediaWikiSearch.prototype = {
 			'prop':'imageinfo',
 			'iiprop':'url|size|mime'
 		}
-		// Set the width: 
-		if ( size.width )
-			request['iiurlwidth'] = size.width;
-			
-		mw.log( 'going to do req: ' + this.provider.api_url + ' ' + resource.titleKey );
 		
-		mw.getJSON( this.provider.api_url, request, function( data ) {			
+		// Set the width: 
+		if ( size.width ) {
+			request['iiurlwidth'] = size.width;
+		}					
+		
+		mw.getJSON( this.provider.apiUrl, request, function( data ) {			
 			var imObj = { };
 			for ( var page_id in  data.query.pages ) {
 				if( page_id == -1 ) {
@@ -316,11 +319,15 @@ mediaWikiSearch.prototype = {
 				}
 					
 				var iminfo =  data.query.pages[ page_id ].imageinfo[0];
-				// store the original width:				 
+								
+				// Store the original width:				 
 				imObj['org_width'] = iminfo.width;
-				// check if thumb size > than image size and is jpeg or png (it will not scale well above its max res)				
-				if ( ( iminfo.mime == 'image/jpeg' || iminfo == 'image/png' ) &&
-					iminfo.thumbwidth > iminfo.width ) {
+				
+				// Check if thumb size > than image size and is jpeg or png (it will not scale well above its max res)				
+				if ( ( iminfo.mime == 'image/jpeg' || iminfo == 'image/png' ) 
+					&& iminfo.thumbwidth > iminfo.width
+					|| !iminfo.thumburl ) 
+				{
 					imObj['url'] = iminfo.url;
 					imObj['width'] = iminfo.width;
 					imObj['height'] = iminfo.height;
@@ -329,7 +336,8 @@ mediaWikiSearch.prototype = {
 					imObj['width'] = iminfo.thumbwidth;
 					imObj['height'] = iminfo.thumbheight;
 				}
-			}
+			}			
+			
 			mw.log( 'getImageObj: get: ' + size.width + ' got url:' + imObj.url );
 			callback( imObj );
 		} );
@@ -340,7 +348,7 @@ mediaWikiSearch.prototype = {
 	* 
 	* @param {Object} resource Resource to get description of. 
 	*/
-	getInlineDescWiki:function( resource ) {
+	getInlineDescWiki: function( resource ) {
 		var desc = this.parent_getInlineDescWiki( resource );
 		
 		// Strip categories for inline Desc: (should strip license tags too but not as easy)

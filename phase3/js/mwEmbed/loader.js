@@ -87,12 +87,16 @@ mw.setDefaultConfig ( {
 		'sr_ec', 'sr_el', 'sr', 'ti', 'tl', 'uk', 'wa'
 	],
 	
+	// Default request timeout ( for cases where we inlucde js and normal browser timeout can't be used )
+	// stored in seconds
+	'defaultRequestTimeout' : 30,
+	
 	// Default user language is "en" Can be overwritten by: 
 	// 	"uselang" url param 
 	// 	wgUserLang global  
 	'userLanguage' : 'en',
 	
-	// Set the default providers ( you can add more provider via {provider_id}_apiurl = $api_url	  
+	// Set the default providers ( you can add more provider via {provider_id}_apiurl = apiUrl	  
 	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
 } );
 

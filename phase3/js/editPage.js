@@ -24,7 +24,7 @@ var defaultAddMediaConfig = {
 		// Here we can setup the content provider overrides
 		'enabled_providers': ['wiki_commons'],
 		// The local wiki API URL:
-		'local_wiki_api_url': wgServer + wgScriptPath + '/api.php'
+		'local_wiki_apiUrl': wgServer + wgScriptPath + '/api.php'
 };
 
 mw.ready( function() {

@@ -19,7 +19,7 @@ var mwUploadHelper = {
 				$j( '#wpUploadFile' ).firefogg( {
 					
 					// An API URL (default is getLocalApiUrl but set here for clarity )
-					'api_url': mw.getLocalApiUrl(),
+					'apiUrl': mw.getLocalApiUrl(),
 					
 					// MediaWiki API supports chunk uploads: 
 					'enable_chunks' : false, 
