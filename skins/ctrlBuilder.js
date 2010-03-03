@@ -1316,7 +1316,7 @@ ctrlBuilder.prototype = {
 			'o': function( ctrlObj ) {
 				
 				// Setup "dobuleclick" fullscreen binding to embedPlayer 
-				$j( ctrlObj.embedPlayer ).bind("dblclick", function(){
+				$j( ctrlObj.embedPlayer ).unbind("dblclick").bind("dblclick", function(){
 					ctrlObj.embedPlayer.fullscreen();
 				});			
 				

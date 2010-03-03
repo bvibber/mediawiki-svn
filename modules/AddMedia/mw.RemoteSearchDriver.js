@@ -38,8 +38,9 @@ mw.addMessages( {
 	"mwe-your_recent_uploads" : "Your recent uploads to $1",
 	"mwe-no_recent_uploads" : "No recent uploads",
 	
-	"mwe-not-logged-in-uploads" : "You may not be logged in so no recent uploads can be displayed. $1 login and try again",
+	"mwe-not-logged-in-uploads" : "You may not be logged in so no recent uploads can be displayed. $1 login and $2",
 	"mwe-loggin-link" : "Please login", 
+	"mwe-try-again-link" : "try again",
 	
 	"mwe-upload_a_file" : "Upload a new file",
 	"mwe-resource_page_desc" : "Resource page description:",
@@ -523,9 +524,9 @@ mw.RemoteSearchDriver.prototype = {
 		
 		var $licenseLink = $j( '<a />' )
 			.attr( {
-				target: '_new',
-				href: licenseObj.lurl,
-				title: licenseObj.title
+				'target' : '_new',
+				'href' : licenseObj.lurl,
+				'title' : licenseObj.title
 			} )
 			.append( licenseObj.img_html );
 		
@@ -1085,7 +1086,8 @@ mw.RemoteSearchDriver.prototype = {
 		// Send the upload target menu from UploadForm class
 		mw.UploadForm.getUploadMenu( {
 			'target': '#rsd_upload_form',
-			'uploadTargets' :  _this.getUploadTargets()
+			'uploadTargets' :  _this.getUploadTargets(),
+			'remoteSearchDriver' : this
 		} );
 		
 		// Deal with the api form upload form directly:
@@ -1173,10 +1175,28 @@ mw.RemoteSearchDriver.prototype = {
 				$j( '#user-results-' + uploadTargetId ).html(
 					gM( "mwe-not-logged-in-uploads", 
 						$j( '<a />' )
-						.attr( 'href', logInLink )
-						.append( gM( 'mwe-loggin-link' ) )
+						.attr( {
+							'href': logInLink,
+							'target' : '_new'							 
+						})
+						.append( gM( 'mwe-loggin-link' ) ),
+						
+						$j( '<a />' )
+						.attr( {
+							'href': '#'
+						})
+						.addClass('try-again')
+						.append( gM( 'mwe-try-again-link' ) )						
 					)
 				);
+				// Note if we updated gM to return jQuery ojbects then we could 
+				// bind above
+				$j( '#user-results-' + uploadTargetId )
+				.find( '.try-again' )
+				.click(function(){
+					//Refresh the user uploads
+					_this.showUserRecentUploads( uploadTargetId );
+				})	
 			} );
 		} else {
 			// No user name, since every page outputs wgUserName assume the user is not logged in )
@@ -1256,13 +1276,13 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// Elese this_wiki accepts uploads setup upload links:
 		var thisWikiProvider = this.content_providers[ 'this_wiki' ]; 
-		/* uploadTargets[ 'this_wiki' ] = {
+		uploadTargets[ 'this_wiki' ] = {
 			'apiUrl' : thisWikiProvider.apiUrl,
 			// Unfortunately mediaWiki pages don't expose the title of the wiki 
 			// Could get in an api request ( just use domain for now)  
 			'title' : mw.parseUri( thisWikiProvider.apiUrl ).host,
 			'uploadPage' : $uploadLink.attr('href')			
-		} */
+		}
 		return uploadTargets;		
 	},
 	
@@ -1750,9 +1770,9 @@ mw.RemoteSearchDriver.prototype = {
 				.addClass( 'rsd_linkback ui-corner-all ui-state-default ui-widget-content' )
 				.append( $j( '<a />' )
 					     	.attr( {
-					     		target: '_new',
-					     		title: gM( 'mwe-resource_description_page' ),
-					     		href: resource.link
+					     		'target' : '_new',
+					     		'title' : gM( 'mwe-resource_description_page' ),
+					     		'href' : resource.link
 					     	} )
 					     	.append( gM( 'mwe-link' )));
 			
@@ -1854,9 +1874,9 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Add Resource edit layout and display a loader.
 	*/
-	addResourceEditLoader: function( maxWidth ) {
+	addResourceEditLoader: function( ) {
 		var _this = this;
-		if ( !maxWidth ) maxWidth = 400;
+		editWidth = 400;
 		// Remove any old instance:
 		$j( _this.target_container ).find( '#rsd_resource_edit' ).remove();
 
@@ -1874,7 +1894,7 @@ mw.RemoteSearchDriver.prototype = {
 				'left' : '2px',
 				'top' : '5px',
 				'bottom' : '10px', 
-				'width' : ( maxWidth + 5 ) + 'px',
+				'width' : ( editWidth + 5 ) + 'px',
 				'overflow' : 'auto',
 				'padding' : '5px'
 			} )
@@ -1886,7 +1906,7 @@ mw.RemoteSearchDriver.prototype = {
 			.css({
 				'position' : 'absolute',
 				'overflow' : 'auto;',
-				'left' : ( maxWidth + 25 ) + 'px',
+				'left' : ( editWidth + 25 ) + 'px',
 				'right' :'0px', 
 				'top' : '5px',
 				'bottom' : '10px',
@@ -1964,10 +1984,14 @@ mw.RemoteSearchDriver.prototype = {
 		// Remove any existing resource edit interface
 		_this.removeResourceEditor();
 
+		// Append to the top level of model window:
+		_this.addResourceEditLoader();
+
 		var mediaType = _this.getMediaType( resource );
 		var width = _this.getMaxEditWidth( resource );
 		
 		// if maxWidth makes height > available height resize request:
+		
 		var width = resource.width;
 		var height = parseInt( width * ( resource.width / resource.height ) ); 
 		
@@ -1981,10 +2005,7 @@ mw.RemoteSearchDriver.prototype = {
 			width = height * (  height / width );
 		}																					
 		mw.log(" set height to: " + height + ' width to: ' + width );
-		
-			
-		// Append to the top level of model window:
-		_this.addResourceEditLoader( width  );
+							
 		
 		// Update add media wizard title:
 		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' +
@@ -1996,7 +2017,8 @@ mw.RemoteSearchDriver.prototype = {
 			
 		if ( mediaType == 'image' ) {
 			_this.loadHighQualityImage( 
-				resource, {
+				resource, 
+				{
 					'width': width 
 				}, 
 				'rsd_edit_img', 
@@ -3075,7 +3097,7 @@ mw.RemoteSearchDriver.prototype = {
 			( parseInt( provider.offset ) + parseInt( search.num_results ) ) :
 			( parseInt( provider.offset ) + parseInt( provider.limit ) );
 		
-		var $pagingControl = $j('<span />').attr({
+		var $pagingControl = $j( '<span />' ).attr({
 			id: 'rsd_paging_control'
 		});
 		

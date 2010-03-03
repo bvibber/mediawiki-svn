@@ -230,14 +230,18 @@ var MW_EMBED_VERSION = '1.1d';
 		// Check for missing message key
 		if ( ! messageCache[ msgKey ] ){
 			return '&lt;' + msgKey + '&gt;';
-		}		
-		
+		}				
 		// Check if we need to do args replacements: 
 		if( typeof args != 'undefined' ) {
-			// Make sure args are of type array
-			if ( typeof args == 'string' || typeof args == 'number' ) {
+			
+			// Make arg into an array if its not already an array
+			if ( typeof args == 'string' 
+				|| typeof args == 'number'
+				|| args instanceof jQuery) 
+			{
 				args = [ args ];
 			}
+			
 			// Put any extra arguments into the args array
 			var extraArgs = $j.makeArray( arguments );
 			for(var i=2; i < extraArgs.length; i ++ ){		
@@ -269,7 +273,7 @@ var MW_EMBED_VERSION = '1.1d';
 	*/
 	mw.lang.msgReplaceArgs = function( message , args ) {		
 		// Replace Values
-		for ( var v =0; v < args.length; v++ ) {				
+		for ( var v = 0; v < args.length; v++ ) {				
 			if( typeof args[v] == 'undefined' ) {
 				continue;
 			}				
@@ -282,9 +286,8 @@ var MW_EMBED_VERSION = '1.1d';
 			
 			// Message test replace arguments start at 1 instead of zero:
 			var rep = new RegExp( '\\$' + ( parseInt( v ) + 1 ), 'g' );			
-			
 			// Check if we got passed in a jQuery object:			
-			if( typeof replaceValue[ 'tagName' ] != 'undefined' ) {
+			if( replaceValue instanceof jQuery) {				
 				message = message.replace( rep, $j('<div />').append( replaceValue ).html() );
 			} else {
 				// Assume replaceValue is a string

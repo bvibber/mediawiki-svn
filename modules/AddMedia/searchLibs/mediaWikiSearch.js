@@ -303,8 +303,7 @@ mediaWikiSearch.prototype = {
 			'titles' : resource.titleKey,
 			'prop':'imageinfo',
 			'iiprop':'url|size|mime'
-		}
-		
+		}		
 		// Set the width: 
 		if ( size.width ) {
 			request['iiurlwidth'] = size.width;
