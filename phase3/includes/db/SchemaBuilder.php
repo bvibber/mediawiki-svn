@@ -384,8 +384,7 @@ class SqliteSchema extends SchemaBuilder {
 	 * @todo: update updatelog with fts3
 	 */
 	protected function adjustTablesForDatabase() {
-		$tmpFile = tempnam( sys_get_temp_dir(), 'mw' );
-		$db = new DatabaseSqliteStandalone( $tmpFile );
+		$db = new DatabaseSqliteStandalone( ':memory:' );
 		if ( $db->getFulltextSearchModule() == 'FTS3' ) {
 			$this->tables['searchindex'] = array(
 				'prefix' => 'si',
@@ -416,7 +415,6 @@ class SqliteSchema extends SchemaBuilder {
 			);
 		}
 		$db->close();
-		unlink( $tmpFile );
 	}
 
 	protected function createTable( $name, $def ) {
