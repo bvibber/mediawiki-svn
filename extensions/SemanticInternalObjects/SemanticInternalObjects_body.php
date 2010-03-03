@@ -127,13 +127,14 @@ class SIOHandler {
 		array_shift( $params ); // we already know the $parser...
 		$internal_object = new SIOInternalObject( $parser->getTitle(), $cur_object_num );
 		$obj_to_page_prop_name = array_shift( $params );
-		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $parser->getTitle() );
+		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $parser->getTitle()->getText() );
 		foreach ( $params as $param ) {
 			$parts = explode( "=", trim( $param ), 2 );
 			if ( count( $parts ) == 2 ) {
 				$key = $parts[0];
 				$value = $parts[1];
-				// if the property name
+				// if the property name ends with '#list', it's
+				// a comma-delimited group of values
 				if ( substr( $key, -5 ) == '#list' ) {
 					$key = substr( $key, 0, strlen( $key ) - 5 );
 					$list_values = explode( ',', $value );
