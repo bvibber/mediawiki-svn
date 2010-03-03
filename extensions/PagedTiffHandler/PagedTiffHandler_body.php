@@ -1,9 +1,9 @@
 <?php
  /**
-  * Copyright (C) Wikimedia Deuschland, 2009
-  * Authors Hallo Welt! Medienwerkstatt GmbH
-  * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
-  *
+ * Copyright (C) Wikimedia Deuschland, 2009
+ * Authors Hallo Welt! Medienwerkstatt GmbH
+ * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -553,6 +553,9 @@ class PagedTiffHandler extends ImageHandler {
      */
     function getPageDimensions( $image, $page ) {
         if(!$page) { $page=1; } // makeImageLink2 (Linker.php) sets $page to false if no page parameter in wiki code is set
+        if ( $page > $this->pageCount( $image ) ) {
+            $page = $this->pageCount( $image );
+        }
         $data = $this->getMetaArray( $image );
         return PagedTiffImage::getPageSize( $data, $page );
     }
