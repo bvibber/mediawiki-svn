@@ -26,16 +26,15 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 	private $image;
 	private $preCheckError;
 
-	function setUp()
+	function setUp($autoUpload = false)
 	{
 		global $wgTitle;
 		$wgTitle = Title::newFromText("PagedTiffHandler_UnitTest");
 		
 		$this->handler = new PagedTiffHandler();
-		$this->image = wfFindFile(Title::newFromText('Image:Multipage.tiff'));
-		if (!$this->image)
+		if (!file_exists( dirname(__FILE__) . '/testImages'))
 		{
-			echo "Please upload the image testImages/multipage.tiff into the wiki\n";
+			echo "testImages directory cannot be found.\n";
 			$this->preCheckError = true;
 		}
 		if (!file_exists(dirname(__FILE__) . '/testImages/caspian.tif'))
@@ -48,12 +47,34 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 			echo "testImages/Multipage.tif cannot be found.\n";
 			$this->preCheckError = true;
 		}
-		if (!file_exists( dirname(__FILE__) . '/testImages'))
+		$multipageTitle = Title::newFromText('Image:Multipage.tiff');
+		$this->image = wfFindFile($multipageTitle);
+		if (!$this->image)
 		{
-			echo "testImages directory cannot be found.\n";
-			$this->preCheckError = true;
+			if ($autoUpload)
+			{
+				echo "testImages/multipage.tiff seems not to be present in the wiki. Trying to upload.\n";
+				$this->image = wfLocalFile( $multipageTitle );
+				$archive = $this->image->publish( dirname(__FILE__) . '/testImages/multipage.tiff' );
+				$this->image->recordUpload( $archive->value, "Test file used for PagedTiffHandler unit test", "No license" );
+				if( WikiError::isError( $archive ) || !$archive->isGood() )
+				{
+					echo "Something went wrong. Please manually upload testImages/multipage.tiff\n";
+					$this->preCheckError = true;
+				}
+				else
+				{
+					echo "Upload was successful.\n";
+				}
+			}
+			else
+			{
+				echo "Please upload the image testImages/multipage.tiff into the wiki\n";
+				$this->preCheckError = true;
+			}
+			
 		}
-		
+
 		$this->path = dirname(__FILE__) . '/testImages/multipage.tiff';
 	}
 	
@@ -106,8 +127,8 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->handler->getPageDimensions( $this->image, 5 ), array('width' => 1024, 'height' => 768)  );
 		$this->assertEquals($this->handler->getPageDimensions( $this->image, 6 ), array('width' => 1024, 'height' => 768)  );
 		$this->assertEquals($this->handler->getPageDimensions( $this->image, 7 ), array('width' => 768, 'height' => 1024)  );
-		// TODO: check this, -1 is also false
-		$this->assertEquals($this->handler->getPageDimensions( $this->image, 8 ), false  );
+		// return dimensions of last page if page number is too high
+		$this->assertEquals($this->handler->getPageDimensions( $this->image, 8 ), array('width' => 768, 'height' => 1024)  );
 		// isMultiPage
 		$this->assertTrue($this->handler->isMultiPage($this->image));
 	
@@ -119,9 +140,11 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($this->handler->isMetadataValid($this->image, $metadata));
 		// getMetaArray
 		$metaArray = $this->handler->getMetaArray($this->image);
+
 		$this->assertEquals($metaArray['Pages'], 7);
-		$this->assertEquals($metaArray['pages'][1]['alpha'], 'False');
-		$this->assertEquals($metaArray['pages'][2]['alpha'], 'True');
+		//this is also strtolower in PagedTiffHandler::getThumbExtension
+		$this->assertEquals(strtolower($metaArray['pages'][1]['alpha']), 'false');
+		$this->assertEquals(strtolower($metaArray['pages'][2]['alpha']), 'true');
 		$this->assertEquals($metaArray['exif']['Endianess'], 'MSB');
 		// formatMetadata
 		$formattedMetadata = $this->handler->formatMetadata($this->image) ;
@@ -132,6 +155,6 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 $wgShowExceptionDetails = true;
 
 $t = new PagedTiffHandlerTest();
-$t->setUp();
+$t->setUp(true);
 $t->runTest();
 ?>
