@@ -4391,7 +4391,16 @@ If Wikipedia-compatibility is not important, <strong>Creative Commons</strong> w
 'config-email-settings' => 'Email settings',
 'config-enable-email' => 'Enable outbound email',
 'config-enable-email-help' => "If you want email to work, [http://au2.php.net/manual/en/mail.configuration.php PHP's mail settings] need to be configured correctly.
-If you don't want any email features, you can disable it here.", 
+If you don't want any email features, you can disable it here.",
+'config-email-user' => 'Enable user-to-user e-mail',
+'config-email-user-help' => "All users to send each other e-mail, if they've enabled it in their preferences",
+'config-email-usertalk' => 'Enable usertalk notification',
+'config-email-usertalk-help' => "Allow users to receive notifications on user talk changes, if they've enabled it in their preferences",
+'config-email-watchlist' => 'Enable watchlist notification',
+'config-email-watchlist-help' => "Allow users to receive notifications to their watched pages, if they've enabled it in their preferences",
+'config-email-auth' => 'Enable e-mail authentication',
+'config-email-auth-help' => "If this option is enabled, users have to confirm their e-mail address using a magic link sent to them whenever they set or change it, and only authenticated e-mail addresses can receive mails from other users and/or
+change notification mails. Setting this option is '''recommended''' for public wikis because of potential abuse of the e-mail features above.",
 'config-email-sender' => 'Return address:',
 'config-email-sender-help' => 'Enter the email address to use as the return address on outbound email.
 This is where bounces will be sent. 

@@ -1202,7 +1202,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		}
 
 		$licenseJs = 'showControlArray("config__LicenseCode_cc-choose", ["config-cc-wrapper"]);';
-		$emailJs = 'enableControlArray("config_wgEnableEmail", ["config_wgPasswordSender"]);';
+		$emailJs = 'enableControlArray("config_wgEnableEmail", ["config_wgPasswordSender", "config_wgEnableUserEmail", "config_wgEnotifUserTalk", "config_wgEnotifWatchlist", "config_wgEmailAuthentication"]);';
 		$uploadJs = 'enableControlArray("config_wgEnableUploads", ["config_wgDeletedDirectory"]);';
 
 		$this->startForm();
@@ -1240,6 +1240,26 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-email-sender'
 			) ) .
 			$this->parent->getHelpBox( 'config-email-sender-help' ) .
+			$this->parent->getCheckBox( array(
+				'var' => 'wgEnableUserEmail',
+				'label' => 'config-email-user',
+			) ) .
+			$this->parent->getHelpBox( 'config-email-user-help' ) .
+			$this->parent->getCheckBox( array(
+				'var' => 'wgEnotifUserTalk',
+				'label' => 'config-email-usertalk',
+			) ) .
+			$this->parent->getHelpBox( 'config-email-usertalk-help' ) .
+			$this->parent->getCheckBox( array(
+				'var' => 'wgEnotifWatchlist',
+				'label' => 'config-email-watchlist',
+			) ) .
+			$this->parent->getHelpBox( 'config-email-watchlist-help' ) .
+			$this->parent->getCheckBox( array(
+				'var' => 'wgEmailAuthentication',
+				'label' => 'config-email-auth',
+			) ) .
+			$this->parent->getHelpBox( 'config-email-auth-help' ) .
 			$this->parent->getFieldsetEnd()
 		);
 
@@ -1372,7 +1392,9 @@ class WebInstaller_Options extends WebInstallerPage {
 
 	function submit() {
 		$this->parent->setVarsFromRequest( array( '_RightsProfile', '_LicenseCode', 
-			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo' ) );
+			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo',
+			'wgEnableUserEmail', 'wgEnotifUserTalk', 'wgEnotifWatchlist',
+			'wgEmailAuthentication') );
 
 		if ( !in_array( $this->getVar( '_RightsProfile' ), 
 			array_keys( $this->parent->rightsProfiles ) ) ) 
