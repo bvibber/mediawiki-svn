@@ -411,7 +411,7 @@ class SqliteSchema extends SchemaBuilder {
 					),
 				)
 			);
-			$this->tablesToDelete[] = array_merge( $this->tablesToDelete,
+			$this->tablesToDelete = array_merge( $this->tablesToDelete,
 				array( 'searchindex_content', 'searchindex_segdir', 'searchindex_segments' )
 			);
 		}
