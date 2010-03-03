@@ -15,9 +15,11 @@ mw.addMessages( {
 	"mwe-watch-this-file" : "Watch this file",
 	"mwe-ignore-any-warnings" : "Ignore any warnings",
 	
-	"mwe-i-would-like-to" : "I would like to ...",
+	"mwe-i-would-like-to" : "I would like to ...NOTE: upload links are still under development",
 	"mwe-upload-own-file" : "Upload my own work to $1",
-	"mwe-upload-not-my-file" : "Upload media that is not my own work to $1"
+	"mwe-upload-not-my-file" : "Upload media that is not my own work to $1",
+	"mwe-upload-once-done" : "Please upload in the new window or tab. Once you have completed your upload, $1",
+	"mwe-upload-refresh" : "refresh your upload list"
 } );
 
 var default_form_options = {
@@ -33,13 +35,22 @@ mw.UploadForm = { };
 	* Add a upload target selection menu
 	* with binding to build update form target 
 	*/
+	var uploadMenuTarget = null;
+	var remoteSearchDriver = null;
 	mw.UploadForm.getUploadMenu = function( options ){
 		if( ! options.target ){
 			mw.log("Error no target for upload menu" );
 			return false;
 		}
+		// Update local scope pointers:
+		uploadMenuTarget = options.target;
+				
+		if( options.remoteSearchDriver ) {
+			remoteSearchDriver = options.remoteSearchDriver
+		}
+		
 		// Build out the menu
-		$j( options.target ).empty().append(
+		$j( uploadMenuTarget ).empty().append(
 			$j( '<span />' )
 			.text(
 				gM('mwe-i-would-like-to' )
@@ -49,14 +60,13 @@ mw.UploadForm = { };
 		);
 		$uploadTargetsList = $j( '<ul />'  );
 		// Set provider Target		
-		for( var i in options.uploadTargets ){
-			var provider = options.uploadTargets[ i ]
+		for( var uploadTargetId in options.uploadTargets ){			
 			$uploadTargetsList.append(
-				getProviderUploadLinks( provider )
+				getProviderUploadLinks( uploadTargetId )
 			);
 		}
 		
-		$j( options.target ).append( $uploadTargetsList );				
+		$j( uploadMenuTarget ).append( $uploadTargetsList );				
 	};
 
 	/** 
@@ -189,9 +199,9 @@ mw.UploadForm = { };
 	/**
 	* Get a provider upload links for local upload and remote
 	*/
-	function getProviderUploadLinks( provider ){
-		var apiUrl = provider.apiUrl;
-		
+	function getProviderUploadLinks( uploadTargetId ){		
+		var uploadProvider = remoteSearchDriver.getUploadTargets()[ uploadTargetId ];
+		var apiUrl = uploadProvider.apiUrl;		
 		$uploadLinks = $j( '<div />' );
 		
 		// Upload your own file
@@ -202,10 +212,10 @@ mw.UploadForm = { };
 					'href' : '#'
 				} )
 				.text(
-					gM( 'mwe-upload-own-file', provider.title ) 
+					gM( 'mwe-upload-own-file', uploadProvider.title ) 
 				)
 				.click( function(){
-					mw.log(" do interface for:" + provider.apiUrl );
+					mw.log(" do interface for:" + uploadProvider.apiUrl );
 				})
 			)
 		);		
@@ -215,12 +225,36 @@ mw.UploadForm = { };
 			$j('<li />').append( 
 				$j( '<a />' )
 				.attr( {
-					'href' : provider.uploadPage,
+					'href' : uploadProvider.uploadPage,
 					'target' : '_new'
 				} )
 				.text( 
-					gM( 'mwe-upload-not-my-file', provider.title ) 
-				)
+					gM( 'mwe-upload-not-my-file', uploadProvider.title ) 
+				).click( function ( ) {
+					//Show refresh link
+					$j( uploadMenuTarget ).empty().html(
+						gM( "mwe-upload-once-done",
+							$j('<a />')
+							.attr({								
+								'href' : '#'
+							})
+							.addClass('user-upload-refresh')
+							.text(
+								gM('mwe-upload-refresh')
+							)
+						)
+					);					
+					// NOTE: if gM supported jquery object a bit better
+					// we could bind the link above
+					$j( uploadMenuTarget ).find( '.user-upload-refresh' )
+					.click( function( ) {
+						remoteSearchDriver.showUserRecentUploads( uploadTargetId );
+					} );
+					
+					// Follow the link to open a new tab
+					return true;					
+				})
+				
 			)
 		);
 		

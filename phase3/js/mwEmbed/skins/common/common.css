@@ -100,6 +100,7 @@ div.floatleft, table.floatleft {
 	overflow: auto;
 }
 
+
 .ui-filter-title {
 	font-weight: bold;
 	margin-top: 15px;
@@ -126,12 +127,12 @@ div.floatleft, table.floatleft {
 .rsd_cp_tab a{
 	height:16px;
 }
-.rsd_results_container{
-	left:2px;
-	right:2px;
-	top:2px;
-	bottom:2px;		
+
+#rsd_results_container a{
+	text-decoration:underline;
 }
+
+
 #rsd_resource_edit{
 	z-index:2;
 }
