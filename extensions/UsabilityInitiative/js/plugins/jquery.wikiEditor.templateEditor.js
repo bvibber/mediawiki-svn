@@ -161,12 +161,12 @@ fn: {
 			.prependTo( $template );
 		
 		var $templateExpand = $( '<span />' )
-			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude wikiEditor-template-expand-collapsed' )
+			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
 			.mousedown( toggleWikiTextEditor )
 			.prependTo( $template );
 		
 		var $templateDialog = $( '<span />' )
-			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude wikiEditor-template-dialog-collapsed' )
+			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
 			.mousedown( function() { createDialog( $template ); return false; } )
 			.insertAfter( $templateName );
 
@@ -176,21 +176,12 @@ fn: {
 			$template
 				.toggleClass( 'wikiEditor-template-expanded' )
 				.toggleClass( 'wikiEditor-template-collapsed' );
-			var $templateExpand = $template.find('.wikiEditor-template-expand');
-			var $templateDialog = $template.find('.wikiEditor-template-dialog');
 			var $wikitext = $template.children( '.wikiEditor-template-text' );
-			
-			$templateExpand
-				.toggleClass('wikiEditor-template-expand-collapsed')
-				.toggleClass('wikiEditor-template-expand-expanded');
-			$templateDialog
-				.toggleClass('wikiEditor-template-dialog-collapsed')
-				.toggleClass('wikiEditor-template-dialog-expanded');
 			
 			$wikitext.toggleClass( 'wikiEditor-nodisplay' );
 			
 			//if we just collapsed this
-			if( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
+			if ( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
 				var model = new $.wikiEditor.modules.templateEditor.fn.model(
 					$template.children( '.wikiEditor-template-text' ).text()
 				);
