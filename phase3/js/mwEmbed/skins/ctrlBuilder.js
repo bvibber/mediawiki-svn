@@ -103,7 +103,7 @@ ctrlBuilder.prototype = {
 				'position': 'absolute',
 				'bottom' : '0px',
 				'left' : '0px',
-				'right' : '0px'				
+				'right' : '0px'
 			})
 			.hide()
 			// Make sure the interface is correct height: 
@@ -113,7 +113,7 @@ ctrlBuilder.prototype = {
 		} else {
 			// Add some space to interface for the control bar ( if not overlaying controls )
 			embedPlayer.$interface.css( {
-				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) + 2
+				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) +2
 			} );
 			// update the control bar display to "block" 
 			$controlBar.css( 'display', 'block' );			
@@ -215,7 +215,8 @@ ctrlBuilder.prototype = {
 		return {
 			'height': targetHeight,
 			'width' : targetWidth,
-			'top' : offsetTop
+			'top' : offsetTop,
+			'left': offsetLeft
 		}
 	},
 	
@@ -314,7 +315,7 @@ ctrlBuilder.prototype = {
 			'left' : leftOffset,
 			'width' : $j( window ).width(),
 			'height' :  $j( window ).height(),
-			'overlow' : 'hidden'			
+			'overlow' : 'hidden'		
 		} )
 		
 		// Set the player height width: 
@@ -325,7 +326,7 @@ ctrlBuilder.prototype = {
 		.animate( _this.getFullscreenPlayerCss() );
 		
 		// Resize the timed text font size per window width	
-		$interface.find( '.itext' ).animate( _this.getFullscreenTextCss() );		
+		$interface.find( '.itext' ).css( _this.getFullscreenTextCss() );		
 		
 		// Reposition play-btn-large ( this is unfortunatly not easy to position with 'margin': 'auto'
 		$interface.find('.play-btn-large').animate( _this.getFullscreenPlayButtonCss() )		
@@ -434,7 +435,7 @@ ctrlBuilder.prototype = {
 		} );
 		
 		// Restore text size: 
-		$interface.find('.itext').animate({
+		$interface.find( '.itext' ).css({
 			'font-size' : '100%'
 		})
 	},
@@ -783,7 +784,7 @@ ctrlBuilder.prototype = {
 					);						
 				}
 			)
-		},				
+		},	
 								
 		// Download the file menu
 		'download': function( ctrlObj ) {
@@ -1499,8 +1500,6 @@ ctrlBuilder.prototype = {
 							if ( embedPlayer.userSlide ) {
 								embedPlayer.userSlide = false;
 								embedPlayer.seeking = true;
-								// Stop the monitor timer (if we can)				
-								embedPlayer.stopMonitor();
 			
 								var perc = ui.value / 1000;
 								// set seek time (in case we have to do a url seek)

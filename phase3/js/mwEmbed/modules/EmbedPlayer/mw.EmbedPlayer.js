@@ -258,35 +258,16 @@ var default_source_attributes = [
 		if( ! mw.playerManager ) 
 			mw.playerManager = new EmbedPlayerManager(); 
 		
-		//Add the current callback 
-		if( typeof callback == 'function' )  
+		//Add the embedPlayer ready callback 
+		if( typeof callback == 'function' ){  
 			mw.playerManager.addCallback( callback );
-		
-		// IE not working well with jQuery selector on "VIDEO", "AUDIO" etc. 
-		var ie_safe_selector = coma = '';
-		if( $j.browser.msie ) {
-			var selectors = player_select.split(',');		
-			for( var i=0; i < selectors.length; i++ ) {	
-				if( selectors[i] == 'video' || 
-					selectors[i] == 'playlist' || 
-					selectors[i] == 'audio'
-				) {				
-					$j( document.getElementsByTagName( selectors[ i ] )).each( function( ) {														
-						mw.playerManager.addElement( this, attributes );
-					} );
-				}else{
-					ie_safe_selector += coma + selectors[i];
-					coma = ',';
-				}
-			}			
-			player_select = ie_safe_selector;
 		}
-		if( player_select != '') {
-			// Add each selected element to the player manager:		
-			$j( player_select ).each( function(na, playerElement) {			
-				mw.playerManager.addElement( playerElement, attributes);
-			} );	
-		}		
+				
+		// Add each selected element to the player manager:		
+		$j( player_select ).each( function(na, playerElement) {			
+			mw.playerManager.addElement( playerElement, attributes);
+		} );	
+		
 		// Once we are done adding new players start to check if players are ready:
 		mw.playerManager.waitPlayersReadyCallback();		
 	}	
@@ -882,30 +863,10 @@ mediaElement.prototype = {
 		if ( $j( video_element ).attr( "src" ) ) {
 			this.tryAddSource( video_element );
 		}
-		
-		if( ! $j.browser.msie ){
-			// Most browsers are oky with inner unknown element selectors:
-			$j( video_element ).find( 'source,itext' ).each( function( ) {			
-				_this.tryAddSource( this );
-			} );		 
-		} else {
-			// IE on the other hand is not.
 			
-			// IE apperntly has the source tags floating in DOM space but not 
-			// as child of the unknown video tag element rather as its "sibling" 
-						
-			// Add the video element with an identifiable div
-			
-			// NOTE this fails for multiple video tags in a given div
-			// but if we $j( video_element ).wrap ( $j('<div />' ) ) it fails all together					
-			$j( $j( video_element ).parent().get(0).getElementsByTagName('source') ).each( function(){
-				_this.tryAddSource( this );
-			});
-			
-			$j( $j( video_element ).parent().get(0).getElementsByTagName( 'itext' ) ).each( function(){
-				_this.tryAddSource( this );
-			});
-		}					
+		$j( video_element ).find( 'source,itext' ).each( function( ) {			
+			_this.tryAddSource( this );
+		} );		
 	},
 	
 	/** 
@@ -2148,8 +2109,7 @@ mw.EmbedPlayer.prototype = {
 			mw.log( "embedPlayer:showPlayer::AddControls" );
 			this.ctrlBuilder.addControls();
 		}
-						  
-		
+				
 		if ( this.autoplay ) {
 			mw.log( 'showPlayer::activating autoplay' );
 			this.play();
@@ -2518,9 +2478,9 @@ mw.EmbedPlayer.prototype = {
 				mw.log( 'no selected_player' );				
 				this.showPluginMissingHTML();
 			} else {
-				this.doEmbedPlayer();
-				this.paused = false;
 				this.thumbnail_disp = false;
+				this.paused = false;
+				this.doEmbedPlayer();				
 			}
 		} else {
 			// the plugin is already being displayed			
@@ -2600,16 +2560,17 @@ mw.EmbedPlayer.prototype = {
 		// no longer seeking:
 		this.didSeekJump = false;
 		
-		// first issue pause to update interface	(only call the parent) 
+		// first issue pause to update interface (only call this parent) 
 		if ( this['parent_pause'] ) {
 			this.parent_pause();
 		} else {
 			this.pause();
 		}
 		
-		// reset the currentTime: 
+		// Reset the currentTime: 
 		this.currentTime = 0;
-		// check if thumbnail is being displayed in which case do nothing
+		
+		// Check if thumbnail is being displayed in which case do nothing
 		if ( this.thumbnail_disp ) {
 			// already in stooped state
 			mw.log( 'already in stopped state' );
@@ -2734,7 +2695,7 @@ mw.EmbedPlayer.prototype = {
 	* underling plugin objects are responsible for updating currentTime
 	*/
 	monitor: function() {
-		var _this = this;		
+		var _this = this;				
 		//mw.log(' ct: ' + this.currentTime + ' dur: ' + ( parseInt( this.duration ) + 1 )  + ' is seek: ' + this.seeking );		
 		if ( this.currentTime && this.currentTime > 0  && this.duration ) {
 			if ( !this.userSlide && !this.seeking ) {				
@@ -2774,31 +2735,15 @@ mw.EmbedPlayer.prototype = {
 		
 		// Update buffer information 
 		this.updateBufferStatus();		
-		
-		// Update monitorTimerId to call child monitor
-		if ( ! this.monitorTimerId ) {
-			// Make sure an instance of this.id exists: 
-			if ( document.getElementById( this.id ) ) {
-				this.monitorTimerId = setInterval( function() {
-					if ( _this.id && $j( '#' + _this.id ).length != 0 ) {
-						_this.monitor();
-						//$j( '#' + _this.id ).get( 0 ).monitor();
-					}
-				}, 250 );
-			}
-		}		
-		this.runHook( 'monitor' );
-	},
-	
-	/**
-	* Stop the playback monitor
-	*/
-	stopMonitor:function() {
-		if ( this.monitorTimerId != 0 ) {
-			clearInterval( this.monitorTimerId );
-			this.monitorTimerId = 0;
+		// Call monitor at 250ms interval. 
+		if( ! this.isStoped() ) {
+			setTimeout( function(){
+				_this.monitor();
+			}, 250 )
 		}
-	},
+		
+		this.runHook( 'monitor' );
+	},	
 	
 	/**
 	* Update the buffer status based on the local bufferedPercent var

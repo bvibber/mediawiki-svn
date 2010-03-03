@@ -1,3 +1,7 @@
+// Add support for html5 / mwEmbed elements to IE ( must come before js code ) 
+// For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
+/*@cc_on'video source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})@*/
+
 /**
  * ~mwEmbed ~
  * For details see: http://www.mediawiki.org/wiki/MwEmbed
