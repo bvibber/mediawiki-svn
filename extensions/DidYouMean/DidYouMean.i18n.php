@@ -203,6 +203,13 @@ $messages['gsw'] = array(
 	'didyoumean-desc' => 'Fiegt in Syte Gleicher yy mit ähnlige Titel',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'didyoumean-desc' => 'Cur kianglaghyn da duillagyn lesh enmyssyn "cosoylagh"',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

@@ -1080,6 +1080,18 @@ $messages['ug-arab'] = array(
 	'talkhere-collapse' => 'تەھرىرلىگۈچ يوشۇر',
 );
 
+/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+ * @author Jose77
+ */
+$messages['ug-latn'] = array(
+	'talkhere-talkpage' => 'munazire béti',
+	'talkhere-notalk' => "(''téxi teklip yoq'')",
+	'talkhere-addcomment' => 'teklip qosh',
+	'talkhere-beforeinput' => 'töwende teklip qoshalaysiz',
+	'talkhere-loading' => 'tehrirligüch yüklewatidu…',
+	'talkhere-collapse' => 'tehrirligüch yoshur',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  * @author Prima klasy4na

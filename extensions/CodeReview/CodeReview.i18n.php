@@ -782,6 +782,7 @@ $messages['be-tarask'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|пасьпяховая праверка|пасьняховыя праверкі|пасьпяховых праверак}}, $3 {{PLURAL:$4|няўдалая праверка|няўдалых праверкі|няўдалых праверак}}:',
 	'codereview-tests-running' => 'Выконваюцца праверкі…',
 	'codereview-tests-aborted' => 'Выкананьне праверкі спыненае.',
+	'codereview-tests-failed' => 'Памылкі',
 	'codereview-email-subj' => '[$1] [$2]: Дададзены новы камэнтар',
 	'codereview-email-body' => 'Удзельнік «$1» дадаў камэнтар для $3.
 
@@ -1662,6 +1663,7 @@ Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|erfolgreicher Test|erfolgreiche Tests}}, $3 {{PLURAL:$4|fehlgeschlagender Test|fehlgeschlagende Tests}}:',
 	'codereview-tests-running' => 'Testfälle sind am laufen …',
 	'codereview-tests-aborted' => 'Testlauf ist abgebrochen.',
+	'codereview-tests-failed' => 'Fehlgeschlagen',
 	'codereview-email-subj' => '[$1] [$2]: Neuer Kommentar hinzugefügt',
 	'codereview-email-body' => 'Benutzer „$1“ hat Revision $3 kommentiert:
 
@@ -1803,6 +1805,7 @@ $messages['diq'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|testan}} ke biyo, $3 {{PLURAL:$4|test|testan}} nibiyo:',
 	'codereview-tests-running' => 'Test ho hebiyeno...',
 	'codereview-tests-aborted' => 'Test iptel biyo.',
+	'codereview-tests-failed' => 'testanê de ğeletî biy:',
 	'codereview-email-subj' => '[$1] [$2]: Xulasayê newî de biyo',
 	'codereview-email-body' => 'Karberê "$1"î yew xulasa se $3 rê nuşt. 
 
@@ -1944,6 +1947,7 @@ $messages['dsb'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|raźony test|raźonej testa|raźone testy|raźonych testow}}, $3 {{PLURAL:$4|njeraźony test|njeraźonej testa|njeraźone testy|njeraźonych testow}}:',
 	'codereview-tests-running' => 'Testowe pady běže...',
 	'codereview-tests-aborted' => 'Testowy běg pśetergnjony.',
+	'codereview-tests-failed' => 'njeraźone testy:',
 	'codereview-email-subj' => '[$1] [$2]: Nowy komentar pśidany',
 	'codereview-email-body' => 'Wužywaŕ "$1" jo komentar wó $3 pósłał.
 
@@ -2987,6 +2991,7 @@ $messages['fr'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test réussi|tests réussis}}, $3 {{PLURAL:$4|test échoué|tests échoués}} :',
 	'codereview-tests-running' => 'Tests en cours...',
 	'codereview-tests-aborted' => 'Exécution du test interrompue.',
+	'codereview-tests-failed' => 'tests échoués :',
 	'codereview-email-subj' => '[$1] [$2] : nouveau commentaire ajouté',
 	'codereview-email-body' => 'L’utilisateur « $1 » a posté un commentaire sur $3.
 
@@ -3291,6 +3296,7 @@ $messages['gl'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba errada|probas erradas}}:',
 	'codereview-tests-running' => 'As probas están en curso...',
 	'codereview-tests-aborted' => 'Interrompeuse a execución da proba.',
+	'codereview-tests-failed' => 'Fallou',
 	'codereview-email-subj' => '[$1] [$2]: engadido un novo comentario',
 	'codereview-email-body' => 'O usuario "$1" deixou un comentario na versión $3.
 
@@ -3542,6 +3548,7 @@ $messages['gsw'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|erfolgryyche Tescht|erfolgryychi Tescht}}, $3 {{PLURAL:$4|fählgschlage Tescht|fählgschlageni Tescht}}:',
 	'codereview-tests-running' => 'Teschtfäll sin am Laufe ...',
 	'codereview-tests-aborted' => 'Teschtlauf abbroche.',
+	'codereview-tests-failed' => 'Fählgschlaa',
 	'codereview-email-subj' => '[$1] [$2]: Neije Kommentar zuegfiegt',
 	'codereview-email-body' => 'Benutzer „$1“ het $3 kommentiert:
 
@@ -3690,6 +3697,7 @@ $messages['he'] = array(
 	'codereview-tests-failed2' => '{{PLURAL:$2|בדיקה אחת שהצליחה|$1 בדיקות שהצליחו}},{{PLURAL:$2|בדיקה אחת שנכשלה|$1 בדיקות שנכשלו}}',
 	'codereview-tests-running' => 'הבדיקות רצות כעת...',
 	'codereview-tests-aborted' => 'הבדיקות הופסקו.',
+	'codereview-tests-failed' => 'בדיקות שנכשלו:',
 	'codereview-email-subj' => '[$1] [גרסה $2]: נוספה הערה חדשה',
 	'codereview-email-body' => 'המשתמש "$1" פרסם הערה אודות $3.
 
@@ -3951,6 +3959,7 @@ $messages['hsb'] = array(
 	'codereview-tests-failed2' => ' $1 {{PLURAL:$2|poradźeny test|poradźenej testaj|poradźene testy|poradźenych testow}}, $3 {{PLURAL:$4|njeporadźeny test|njeporadźenej testaj|njeporadźene testy|njeporadźenych testow}}:',
 	'codereview-tests-running' => 'Testowe pady běža...',
 	'codereview-tests-aborted' => 'Testowy běh přetorhnjeny.',
+	'codereview-tests-failed' => 'njeporadźene testy:',
 	'codereview-email-subj' => '[$1] [$2]: Nowy komentar přidaty',
 	'codereview-email-body' => 'Wužiwar "$1" je komentar wo $3 pósłał.
 
@@ -4240,6 +4249,7 @@ $messages['ia'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|tests}} succedite, $3 {{PLURAL:$4|test|tests}} fallite:',
 	'codereview-tests-running' => 'Le casos de test es executate...',
 	'codereview-tests-aborted' => 'Execution del test interrumpite.',
+	'codereview-tests-failed' => 'Fallite',
 	'codereview-email-subj' => '[$1] [v$2]: Nove commento addite',
 	'codereview-email-body' => 'Le usator "$1" publicava un commento in v$3.
 
@@ -5581,6 +5591,7 @@ $messages['mk'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешна проба|успешни проби}}, $3 {{PLURAL:$4|неуспешна проба|неуспешни проби}}:',
 	'codereview-tests-running' => 'Испробувањето на примери е во тек...',
 	'codereview-tests-aborted' => 'Проверката е откажана.',
+	'codereview-tests-failed' => 'Неуспешно',
 	'codereview-email-subj' => '[$1] [$2]: Додаден е нов коментар',
 	'codereview-email-body' => 'Корисникот „$1“ објави коментар за $3.
 
@@ -5729,6 +5740,7 @@ $messages['ml'] = array(
 	'codereview-tests-failed2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു, {{PLURAL:$4|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $3 പരാജയപ്പെട്ടിരിക്കുന്നു:',
 	'codereview-tests-running' => 'പരീക്ഷണ ഓട്ടങ്ങൾ തുടരുന്നു...',
 	'codereview-tests-aborted' => 'പരീക്ഷണ ഓട്ടം റദ്ദാക്കിയിരിക്കുന്നു.',
+	'codereview-tests-failed' => 'പരാജയപ്പെട്ടവ',
 	'codereview-email-subj' => '[$1] [$2]: പുതിയ അഭിപ്രായം ചേർത്തിരിക്കുന്നു',
 	'codereview-email-body' => '$3-യിൽ "$1" ഒരു അഭിപ്രായം ചേർത്തിരിക്കുന്നു.
 
@@ -6139,6 +6151,7 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'codereview-tests-failed2' => '$1 geslaagde {{PLURAL:$2|test|tests}}, $3 gefaalde {{PLURAL:$4|test|tests}}:',
 	'codereview-tests-running' => 'De tests worden uitgevoerd...',
 	'codereview-tests-aborted' => 'Het testen is afgebroken.',
+	'codereview-tests-failed' => 'Mislukt',
 	'codereview-email-subj' => '[$1] [$2]: Nieuwe opmerking toegevoegd',
 	'codereview-email-body' => 'Gebruiker "$1" heeft een opmerking toegevoegd aan $3:
 
@@ -6412,6 +6425,7 @@ $messages['no'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}, $3 {{PLURAL:$4|test|tester}} feilet',
 	'codereview-tests-running' => 'Testtilfeller kjører...',
 	'codereview-tests-aborted' => 'Testkjøring avbrutt.',
+	'codereview-tests-failed' => 'Mislyktes',
 	'codereview-email-subj' => '[$1] [$2]: Ny kommentar lagt inn',
 	'codereview-email-body' => 'Bruker $1 la inn en kommentar på $3
 
@@ -6730,6 +6744,7 @@ $messages['pl'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|udany test|udane testy|udanych testów}}, $3 {{PLURAL:$4|nieudany test|nieudane testy|nieudanych testów}}',
 	'codereview-tests-running' => 'Testy są wykonywane...',
 	'codereview-tests-aborted' => 'Przerwano wykonywanie testu.',
+	'codereview-tests-failed' => 'nieudane testy:',
 	'codereview-email-subj' => '[$1] [$2]: Dodano nowy komentarz',
 	'codereview-email-body' => 'Użytkownik „$1” dodał komentarz w $3.
 
@@ -7483,6 +7498,7 @@ $messages['ru'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешная проверка|успешные проверки|успешных проверок}}, $3 {{PLURAL:$4|неудавшаяся проверка|неудавшиеся проверки|неудавшихся проверок}}:',
 	'codereview-tests-running' => 'Выполнение контрольных примеров…',
 	'codereview-tests-aborted' => 'Выполнение проверки прервано.',
+	'codereview-tests-failed' => 'Ошибка',
 	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
 	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции r$3.
 
@@ -8949,6 +8965,7 @@ $messages['tr'] = array(
 	'codereview-tests-failed2' => '$1 başarılı {{PLURAL:$2|test|test}}, $3 başarısız {{PLURAL:$4|test|test}}:',
 	'codereview-tests-running' => 'Test durumları çalışıyor...',
 	'codereview-tests-aborted' => 'Test çalıştırması durduruldu.',
+	'codereview-tests-failed' => 'testlerde başarısız oldu:',
 	'codereview-email-subj' => '[$1] [$2]: Yeni yorum eklendi',
 	'codereview-email-body' => '$3\'de "$1" kullanıcısı bir yorum yolladı.
 

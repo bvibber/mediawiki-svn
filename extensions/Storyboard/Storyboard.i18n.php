@@ -48,6 +48,7 @@ $messages['be-tarask'] = array(
 	'right-storyreview' => 'рэцэнзаваньне, рэдагаваньне, публікацыя і хаваньне гісторыяў',
 	'storyboard-storyreview' => 'Рэцэнзаваць гісторыю',
 	'storyboard-publish' => 'Апублікаваць',
+	'storyboard-unpublish' => 'Прыбраць',
 	'storyboard-reviewed' => 'Рэцэнзаваная',
 	'storyboard-unreviewed' => 'Не рэцэнзаваная',
 );
@@ -187,6 +188,7 @@ $messages['oc'] = array(
 	'right-storyreview' => 'Relegir, modificar, publicar, e amagar las istòrias',
 	'storyboard-storyreview' => "Relectura de l'istòria",
 	'storyboard-publish' => 'Publicar',
+	'storyboard-unpublish' => 'Despublicar',
 	'storyboard-reviewed' => 'Relegit',
 	'storyboard-unreviewed' => 'Pas revisada',
 );

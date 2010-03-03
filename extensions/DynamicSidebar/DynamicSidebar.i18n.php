@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'dynamicsidebar-desc' => 'Provides dynamic sidebars based on user pages, groups, and categories',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'dynamicsidebar-desc' => 'Дадае дынамічныя бакавыя панэлі на старонках удзельнікаў, групаў і катэгорыяў.',
+);
+
 /** French (Français)
  * @author IAlex
  */

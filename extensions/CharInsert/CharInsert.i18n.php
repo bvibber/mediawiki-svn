@@ -204,6 +204,13 @@ $messages['gsw'] = array(
 	'charinsert-desc' => 'Erlaubt s Aalege vun ere JavaScript gstyyrte Leischte zum [[MediaWiki:Edittools|Yyfiege vu Sonderzeiche]]',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'charinsert-desc' => "T'eh shoh lhiggey da crooaght chishtey JavaScript dy [[MediaWiki:Edittools|chur cowraghyn neu-stundayrtit stiagh]]",
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

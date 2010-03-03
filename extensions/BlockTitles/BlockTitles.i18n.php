@@ -268,6 +268,7 @@ $messages['gsw'] = array(
  */
 $messages['gv'] = array(
 	'block_title_error_page_title' => 'Ennym fo ghlass',
+	'block_title_error' => "S'treih lhien agh cha nod shiu sauail enmys y duillag shoh",
 );
 
 /** Hebrew (עברית)

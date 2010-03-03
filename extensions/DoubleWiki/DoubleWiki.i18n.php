@@ -215,6 +215,13 @@ $messages['gsw'] = array(
 	'doublewiki-desc' => 'Zeigt e Syte un ihri Ibersetzig us eme andere Wiki zwoospaltig uf derglyyche Syte aa',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'doublewiki-desc' => "T'eh shoh taishbyney duillag as y çhyndaa eck veih wiki elley er daa cholloo jeh'n duillag cheddin",
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

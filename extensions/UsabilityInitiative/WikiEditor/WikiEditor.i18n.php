@@ -396,6 +396,7 @@ $messages['oc'] = array(
 	'wikieditor' => 'Interfàcia avançada de modificacion de wikitèxte',
 	'wikieditor-desc' => 'Provesís una interfàcia de modificacion de wikitèxte extensible e mantuna foncionalitats.',
 	'wikieditor-wikitext-tab' => 'Wikitèxte',
+	'wikieditor-loading' => 'Cargament',
 );
 
 /** Polish (Polski)
@@ -406,6 +407,7 @@ $messages['pl'] = array(
 	'wikieditor' => 'Zaawansowany interfejs edycji wikitekstu',
 	'wikieditor-desc' => 'Dostarcza rozszerzalny interfejs edycji wikitekstu oraz wiele funkcji oferowane przez moduły',
 	'wikieditor-wikitext-tab' => 'Wikikod',
+	'wikieditor-loading' => 'Ładowanie',
 );
 
 /** Piedmontese (Piemontèis)

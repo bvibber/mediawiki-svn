@@ -560,8 +560,20 @@ $messages['gsw'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'authorprotect-confirm' => 'Coadee',
+	'authorprotect' => 'Coadee y duillag veih neu-ughtaryn',
+	'authorprotect-desc' => "T'eh shoh lhiggey da ughtar duillag erbee ee dy choadee veih ymmydeyryn elley",
+	'authorprotect-notauthor' => 'Cha nel shiu ughtar y duillag shoh',
+	'authorprotect-confirm' => 'Caghlaa kiartyn coadee',
+	'authorprotect-edit' => 'Lhig da ughtaryn ynrican dy reaghey',
+	'authorprotect-move' => 'Lhig da ughtaryn ynrican dy scughey',
+	'authorprotect-expiry' => 'Traa yerree',
 	'authorprotect-reason' => 'Fa',
+	'authorprotect-intro' => "Jean ymmyd jeh'n form shoh dy chur glass er y duillag shoh veih neu-ughtaryn",
+	'authorprotect-success' => "Va'n coadey rahoil!",
+	'authorprotect-failure' => 'Cha row yn coadey rahoil',
+	'protect-level-author' => 'Coadee veih neu-ughtaryn',
+	'restriction-level-author' => 'Coadit liorish yn ughtar',
+	'right-authorprotect' => 'Coadee duillagyn ughtarit',
 );
 
 /** Hebrew (עברית)

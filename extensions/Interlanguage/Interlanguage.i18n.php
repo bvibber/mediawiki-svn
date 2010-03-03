@@ -125,6 +125,13 @@ $messages['gsw'] = array(
 	'interlanguage-desc' => 'Holt Interwikigleicher us eme andere Wiki',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'interlanguage-desc' => "T'eh shoh goaill greim er kianglaghyn eddyr-wiki veih wiki elley",
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

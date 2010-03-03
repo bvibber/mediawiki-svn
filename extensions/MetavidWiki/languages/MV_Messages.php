@@ -7116,6 +7116,7 @@ Denne overleggstypen kan brukes for å kategorisere seksjoner av videoer eller t
 	'mv_remove_filter' => 'fjern filter',
 	'mv_advaced_search' => 'Avansert mediesøk',
 	'mv_expand_play' => 'Utvid og spill integrert',
+	'mv_play_inline' => 'Spill av internt',
 	'mv_view_in_stream_interface' => 'Vis i datastrømgrensesnitt',
 	'mv_view_wiki_page' => 'Vis wikiside',
 	'mv_error_mvd_not_found' => 'Feil: mvd ikke funnet',

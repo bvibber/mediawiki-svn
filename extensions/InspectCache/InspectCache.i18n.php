@@ -791,7 +791,6 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'inspectcache' => "Inspeccion de l'Amagatal",
 	'inspectcache-desc' => "Un esplech simple de debogatge per inspectar los elements dins l'amagatal partejat.",
-	'inspectcache-ok' => 'Amodar',
 	'inspectcache-general' => 'Amagatal general',
 	'inspectcache-parser' => 'Amagatal dels parsers',
 	'inspectcache-message' => 'Amagatal dels messatges',
@@ -799,6 +798,7 @@ $messages['oc'] = array(
 	'inspectcache-delete' => 'Suprimir',
 	'inspectcache-deleted' => 'Amagatal suprimit',
 	'inspectcache-list' => 'Lista',
+	'right-inspectcache' => "Afichar e suprimir las entradas de l'amagatal",
 );
 
 /** Ossetic (Иронау)

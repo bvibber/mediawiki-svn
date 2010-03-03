@@ -60,6 +60,8 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'usabilityinitiative' => 'Ініцыятыва па паляпшэньні зручнасьці і прастаты выкарыстаньня',
 	'usabilityinitiative-desc' => 'Дапаўненьні распрацаваныя ў межах ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня MediaWiki',
+	'prefs-beta' => 'Тэставыя магчымасьці',
+	'prefs-labs' => 'Экспэрымэнтальныя магчымасьці',
 );
 
 /** Bulgarian (Български)
@@ -228,6 +230,9 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidade',
 	'usabilityinitiative-desc' => 'Características desenvolvidas pola Iniciativa de usabilidade da Wikipedia para mellorar a usabilidade de MediaWiki',
+	'prefs-beta' => 'Características en probas',
+	'prefs-labs' => 'Características experimentais
+sds',
 );
 
 /** Swiss German (Alemannisch)
@@ -284,6 +289,8 @@ $messages['hy'] = array(
 $messages['ia'] = array(
 	'usabilityinitiative' => 'Initiativa de usabilitate',
 	'usabilityinitiative-desc' => 'Functiones disveloppate per le Initiativa de Usabilitate de Wikipedia pro meliorar le usabilitate de MediaWiki',
+	'prefs-beta' => 'Functiones beta',
+	'prefs-labs' => 'Functiones experimental',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -362,6 +369,8 @@ $messages['lt'] = array(
 $messages['mk'] = array(
 	'usabilityinitiative' => 'Иницијатива за употребливост',
 	'usabilityinitiative-desc' => 'Алатки и можности изработени од Иницијативата за употребливост на Википедија со цел да се подобри употребливоста на МедијаВики',
+	'prefs-beta' => 'Бета-можности',
+	'prefs-labs' => 'Експериментални можности',
 );
 
 /** Malayalam (മലയാളം)
@@ -370,6 +379,8 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'usabilityinitiative' => 'യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ്',
 	'usabilityinitiative-desc' => 'മീഡിയവിക്കിയുടെ മെച്ചപ്പെട്ട ഉപയോഗ്യതയ്ക്കായി വിക്കിപീഡിയ യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വികസിപ്പിച്ചെടുത്ത വിശേഷഗുണങ്ങൾ',
+	'prefs-beta' => 'പരീക്ഷണാടിസ്ഥാനത്തിലുള്ള സൗകര്യങ്ങൾ',
+	'prefs-labs' => 'പരീക്ഷണശാലയിൽ തയ്യാറാകുന്ന സൗകര്യങ്ങൾ',
 );
 
 /** Malay (Bahasa Melayu)
@@ -395,6 +406,8 @@ $messages['nds-nl'] = array(
 $messages['nl'] = array(
 	'usabilityinitiative' => 'Bruikbaarheidsinitiatief',
 	'usabilityinitiative-desc' => 'Functionaliteit die door het Wikipedia Bruikbaarheidsinitiatief is ontwikkeld ter verbetering van de bruikbaarheid van MediaWiki',
+	'prefs-beta' => 'Bètafunctionaliteit',
+	'prefs-labs' => 'Alphafunctionaliteit',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -408,11 +421,14 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  * @author Stigmj
  */
 $messages['no'] = array(
 	'usabilityinitiative' => 'Initiativet for brukervennlighet',
 	'usabilityinitiative-desc' => "Funksjoner utviklet av ''Wikipedias initiativ for brukervennlighet'', for å forbedre MediaWikis brukervennlighet",
+	'prefs-beta' => 'Betafunksjoner',
+	'prefs-labs' => 'Lab-funksjoner',
 );
 
 /** Occitan (Occitan)
@@ -421,6 +437,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'usabilityinitiative' => "Iniciativa d'utilizabilitat",
 	'usabilityinitiative-desc' => "Foncionalitats desvolopadas per l'iniciativa d'utilizabilitat de Wikipèdia per melhorar l'utilizabilitat de MediaWiki",
+	'prefs-beta' => 'Foncionalitats bèta',
 );
 
 /** Polish (Polski)
@@ -430,14 +447,19 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
 	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
+	'prefs-beta' => 'Funkcjonalności testowe',
+	'prefs-labs' => 'Funkcjonalności doświadczalne',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'usabilityinitiative' => 'Inissiativa ëd dovrabilità',
 	'usabilityinitiative-desc' => 'Caraterìstiche dësvilupà da la Wikipedia Usability Initiative për mijoré la dovrabilità ëd MediaWiki',
+	'prefs-beta' => 'Caraterìstiche dla Beta',
+	'prefs-labs' => 'Caraterìstiche dël laboratòri',
 );
 
 /** Portuguese (Português)
@@ -481,6 +503,8 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'usabilityinitiative' => 'Инициатива юзабилити',
 	'usabilityinitiative-desc' => 'Возможности движка MediaWiki, разработанные в рамках Инициативы юзабилити Википедии и направленные на улучшение его удобства и простоты использования',
+	'prefs-beta' => 'Бета-возможности',
+	'prefs-labs' => 'Экспериментальные возможности',
 );
 
 /** Yakut (Саха тыла)
