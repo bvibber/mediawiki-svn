@@ -9270,15 +9270,11 @@ fn: {
 		
 		var $templateExpand = $( '<span />' )
 			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/expand.png' ) + '" width="12" height="16" />' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/collapse.png' ) + '" width="12" height="16" style="display:none;" />' )
 			.mousedown( toggleWikiTextEditor )
 			.prependTo( $template );
 		
 		var $templateDialog = $( '<span />' )
 			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/dialog-collapsed.png' ) + '" width="22" height="16" />' )
-			.append( '<img src="' + $.wikiEditor.autoIcon( 'templateEditor/dialog-expanded.png' ) + '" width="22" height="16" style="display:none;" />' )
 			.mousedown( function() { createDialog( $template ); return false; } )
 			.insertAfter( $templateName );
 
@@ -9287,16 +9283,13 @@ fn: {
 			var $template = $( this ).closest( '.wikiEditor-template' );
 			$template
 				.toggleClass( 'wikiEditor-template-expanded' )
-				.toggleClass( 'wikiEditor-template-collapsed' )
-				.find( 'img' )
-				.each( function() {
-					$( this ).toggle(); 
-				} );
+				.toggleClass( 'wikiEditor-template-collapsed' );
 			var $wikitext = $template.children( '.wikiEditor-template-text' );
+			
 			$wikitext.toggleClass( 'wikiEditor-nodisplay' );
 			
 			//if we just collapsed this
-			if( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
+			if ( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
 				var model = new $.wikiEditor.modules.templateEditor.fn.model(
 					$template.children( '.wikiEditor-template-text' ).text()
 				);
