@@ -67,6 +67,8 @@ class SqliteInstaller extends InstallerDBType {
 	}
 
 	function getConnection() {
+		global $wgSQLiteDataDir;
+
 		$status = Status::newGood();
 		$dir = $this->getVar( 'wgSQLiteDataDir' );
 		$dbName = $this->getVar( 'wgDBname' );
@@ -87,7 +89,7 @@ class SqliteInstaller extends InstallerDBType {
 		$dir = $this->getVar( 'wgSQLiteDataDir' );
 		$dbName = $this->getVar( 'wgDBname' );
 		// Don't create the data file yet
-		if ( !file_exists( "$dir/$dbName.sqlite" ) ) {
+		if ( !file_exists( DatabaseSqlite::generateFileName( $dir, $dbName ) ) ) {
 			return false;
 		}
 
