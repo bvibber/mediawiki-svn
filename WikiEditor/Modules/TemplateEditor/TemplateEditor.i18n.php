@@ -146,6 +146,8 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'wikieditor-template-editor-preference' => 'Formatbasiert Bearbeite vu Wikivorlage meglig mache',
+	'wikieditor-template-editor-dialog-title' => 'Vorlag bearbeite',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualisiere',
 );
 
 /** Hebrew (עברית)
@@ -174,6 +176,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'wikieditor-template-editor-preference' => 'Permitter le modification de patronos wiki con formularios',
+	'wikieditor-template-editor-dialog-title' => 'Modificar patrono',
+	'wikieditor-template-editor-dialog-submit' => 'Actualisar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -209,6 +213,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'wikieditor-template-editor-preference' => 'Овозможи уредување на вики-шаблони преку образец',
+	'wikieditor-template-editor-dialog-title' => 'Уреди шаблон',
+	'wikieditor-template-editor-dialog-submit' => 'Поднови',
 );
 
 /** Malayalam (മലയാളം)
@@ -225,6 +231,8 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'wikieditor-template-editor-preference' => 'Formuliergebaseerd bewerken van wikisjablonen inschakelen',
+	'wikieditor-template-editor-dialog-title' => 'Sjabloon bewerken',
+	'wikieditor-template-editor-dialog-submit' => 'Bijwerken',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -242,20 +250,28 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'wikieditor-template-editor-preference' => 'Activar la modificacion a basa de formularis dels modèls wiki',
+	'wikieditor-template-editor-dialog-title' => 'Modificar lo modèl',
+	'wikieditor-template-editor-dialog-submit' => 'Metre a jorn',
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
 	'wikieditor-template-editor-preference' => 'Umożliwia edycję szablonów wiki za pomocą formularzy',
+	'wikieditor-template-editor-dialog-title' => 'Edytuj szablon',
+	'wikieditor-template-editor-dialog-submit' => 'Uaktualnij',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'wikieditor-template-editor-preference' => 'Abìlita le modìfiche basà su forma djë stamp wiki',
+	'wikieditor-template-editor-dialog-title' => 'Modifiché lë stamp',
+	'wikieditor-template-editor-dialog-submit' => 'Agiorné',
 );
 
 /** Portuguese (Português)
@@ -291,6 +307,8 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-template-editor-preference' => 'Включить редактирование шаблонов с помощью форм',
+	'wikieditor-template-editor-dialog-title' => 'Изменение шаблона',
+	'wikieditor-template-editor-dialog-submit' => 'Обновить',
 );
 
 /** Yakut (Саха тыла)
