@@ -635,7 +635,7 @@ if ( typeof context == 'undefined' ) {
 				// We need the traverser because there can be other weird stuff in between
 				
 				// Check for preceding text
-				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
+				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ), true ).prev();
 				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.prev();
 				}
@@ -644,7 +644,7 @@ if ( typeof context == 'undefined' ) {
 				}
 				
 				// Check for following text
-				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
+				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ), true ).next();
 				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.next();
 				}
@@ -750,11 +750,12 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Object used by traverser(). Don't use this unless you know what you're doing
 		 */
-		'rawTraverser': function( node, depth, inP, ancestor ) {
+		'rawTraverser': function( node, depth, inP, ancestor, skipNoinclude ) {
 			this.node = node;
 			this.depth = depth;
 			this.inP = inP;
 			this.ancestor = ancestor;
+			this.skipNoinclude = skipNoinclude;
 			this.next = function() {
 				var p = this.node;
 				var nextDepth = this.depth;
@@ -778,8 +779,10 @@ if ( typeof context == 'undefined' ) {
 					// Filter nodes with the wikiEditor-noinclude class
 					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
 					// $() is slow in a tight loop
-					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
-						p = p.nextSibling;
+					if ( this.skipNoinclude ) {
+						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+							p = p.nextSibling;
+						}
 					}
 					if ( p && p.firstChild ) {
 						p = p.firstChild;
@@ -789,7 +792,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.firstChild );
-				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor ) : null;
+				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor, this.skipNoinclude ) : null;
 			};
 			this.prev = function() {
 				var p = this.node;
@@ -814,8 +817,10 @@ if ( typeof context == 'undefined' ) {
 					// Filter nodes with the wikiEditor-noinclude class
 					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
 					// $() is slow in a tight loop
-					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
-						p = p.previousSibling;
+					if ( this.skipNoinclude ) {
+						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+							p = p.previousSibling;
+						}
 					}
 					if ( p && p.lastChild ) {
 						p = p.lastChild;
@@ -825,7 +830,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.lastChild );
-				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor ) : null;
+				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor, this.skipNoinclude ) : null;
 			};
 		},
 		/**
@@ -841,7 +846,8 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'traverser': function( start ) {
 			// Find the leftmost leaf node in the tree
-			var node = start.jquery ? start.get( 0 ) : start;
+			var startNode = start.jquery ? start.get( 0 ) : start;
+			var node = startNode;
 			var depth = 0;
 			var inP = node.nodeName == "P" ? node : null;
 			do {
@@ -859,7 +865,7 @@ if ( typeof context == 'undefined' ) {
 					}
 				}
 			} while ( node && node.firstChild );
-			return new context.fn.rawTraverser( node, depth, inP, node );
+			return new context.fn.rawTraverser( node, depth, inP, startNode, true );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {

@@ -62,14 +62,9 @@ evt: {
 						end: tokenArray[endIndex].offset,
 						type: 'template',
 						anchor: 'wrap',
-						//splitPs: model.isCollapsible(),
-						splitPs: false,
 						afterWrap: function( node ) {
 							// Generate model
-							var model = new $.wikiEditor.modules.templateEditor.fn.model(
-								$( node ).text()
-							);
-							$( node ).data( 'model', model );
+							var model = $.wikiEditor.modules.templateEditor.fn.updateModel( $( node ) );
 							if ( model.isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.wrapTemplate( $( node ) );
 							} else {
@@ -82,16 +77,23 @@ evt: {
 							}
 						},
 						onSkip: function( node ) {
-							if ( $( node ).data( 'model' ).getText() == $( node ).text() ) {
+							if ( $( node ).html() == $( node ).data( 'oldHTML' ) ) {
 								// No change
 								return;
 							}
-							// Text changed, regenerate model
-							var model = new $.wikiEditor.modules.templateEditor.fn.model(
-								$( node ).text()
-							);
-							$( node ).data( 'model', model );
 							
+							// Text changed, regenerate model
+							var model = $.wikiEditor.modules.templateEditor.fn.updateModel( $( node ) );
+							
+							// Update template name if needed
+							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) ) {
+								var $name = $( node ).parent().children( '.wikiEditor-template-name' );
+								if ( $name.text() != model.getName() ) {
+									$name.text( model.getName() );
+								}
+							}
+							
+							// Wrap or unwrap the template if needed
 							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) &&
 									!model.isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.unwrapTemplate( $( node ) );
@@ -151,8 +153,7 @@ fn: {
 			.wrap( '<span class="wikiEditor-template"></span>' )
 			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 			.parent()
-			.addClass( 'wikiEditor-template-collapsed' )
-			.data( 'model', model );
+			.addClass( 'wikiEditor-template-collapsed' );
 		
 		var $templateName = $( '<span />' )
 			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
@@ -176,21 +177,9 @@ fn: {
 			$template
 				.toggleClass( 'wikiEditor-template-expanded' )
 				.toggleClass( 'wikiEditor-template-collapsed' );
+			
 			var $wikitext = $template.children( '.wikiEditor-template-text' );
-			
 			$wikitext.toggleClass( 'wikiEditor-nodisplay' );
-			
-			//if we just collapsed this
-			if ( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
-				var model = new $.wikiEditor.modules.templateEditor.fn.model(
-					$template.children( '.wikiEditor-template-text' ).text()
-				);
-				$template.children( '.wikiEditor-template-text' ).data( 'model', model );
-				$template.children( '.wikiEditor-template-name' ).text( model.getName() );
-			} else { //we just expanded this
-				$wikitext.text( $template.children( '.wikiEditor-template-text' ).data( 'model' ).getText() );
-			}
-			
 			return false;
 		};
 		
@@ -223,7 +212,7 @@ fn: {
 							templateModel.setValue( $( this ).data( 'name' ), $( this ).val() );
 						});
 						//keep text consistent
-						$templateText.text( templateModel.getText() );
+						$.wikiEditor.modules.templateEditor.fn.updateModel( $templateText, templateModel );
 						
 						$( this ).dialog( 'close' );
 					}
@@ -233,9 +222,8 @@ fn: {
 					var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 					var templateModel = $templateText.data( 'model' );
 					// Update the model if we need to
-					if ( templateModel.getText() != $templateText.text() ) {
-						templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $templateText.text() );
-						$templateText.data( 'model', templateModel );
+					if ( $templateText.html() != $templateText.data( 'oldHTML' ) ) {
+						templateModel = $.wikiEditor.modules.templateEditor.fn.updateModel( $templateText );
 					}
 					
 					// Build the table
@@ -295,6 +283,31 @@ fn: {
 	 */
 	unwrapTemplate: function( $wrapper ) {
 		$wrapper.parent().replaceWith( $wrapper );
+	},
+	
+	/**
+	 * Update a template's model and HTML
+	 * @param $templateText Wrapper <span> containing the template text
+	 * @param model Template model to use, will be generated if not set
+	 * @return model object
+	 */
+	updateModel: function( $templateText, model ) {
+		var context = $templateText.data( 'marker' ).context;
+		var text;
+		if ( typeof model == 'undefined' ) {
+			text = context.fn.htmlToText( $templateText.html() );
+		} else {
+			text = model.getText();
+		}
+		// To keep stuff simple but not break it, we need to do encode newlines as <br>s
+		$templateText.text( text );
+		$templateText.html( $templateText.html().replace( /\n/g, '<br />' ) );
+		$templateText.data( 'oldHTML', $templateText.html() );
+		if ( typeof model == 'undefined' ) {
+			model = new $.wikiEditor.modules.templateEditor.fn.model( text );
+			$templateText.data( 'model', model );
+		}
+		return model;
 	},
 	
 	/**
