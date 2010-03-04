@@ -56,6 +56,9 @@ mw.addMessages( {
 	"mwe-checking-resource" : "Checking for resource",
 	"mwe-resource-needs-import" : "Resource $1 needs to be imported to $2",
 	
+	"mwe-warning-upload-to-commons" : "$1 recomends you upload to commons, only upload localy after you have read $2",
+	"mwe-local-upload-policy-link" : "local upload policy" ,
+	
 	"mwe-ftype-svg" : "SVG vector file",
 	"mwe-ftype-jpg" : "JPEG image file",
 	"mwe-ftype-png" : "PNG image file",
@@ -82,7 +85,6 @@ mw.addMessages( {
 	
 	"rsd-search-timeout" : "The search request did not complete. The server may be down experiencing heavy load. You can try again later"
 } );
-
 /**
 * default_remote_search_options
 * 
@@ -151,7 +153,7 @@ var default_remote_search_options = {
 	'search_provider_timeout': 10
 };
 
-/*
+/**
 * Set the jQuery bindings: 
 */ 
 ( function( $ ) {
@@ -173,6 +175,7 @@ var default_remote_search_options = {
 	}
 	
 } )( jQuery );
+
 /**
 * Set the mediaWiki globals if unset
 */
@@ -343,7 +346,7 @@ mw.RemoteSearchDriver.prototype = {
 			
 			// if the domain name contains metavid
 			// no need to import metavid content to metavid sites
-			'local_domains': ['metavid'], 
+			'local_domains': [ 'metavid' ], 
 			
 			// which stream to import, could be mv_ogg_high_quality
 			// or flash stream, see ROE xml for keys
@@ -1088,28 +1091,7 @@ mw.RemoteSearchDriver.prototype = {
 			'target': '#rsd_upload_form',
 			'uploadTargets' :  _this.getUploadTargets(),
 			'remoteSearchDriver' : this
-		} );
-		
-		// Deal with the api form upload form directly:
-		/*mw.UploadForm.getForm( {
-			"target" : '#rsd_upload_form',
-			"api_target" 	  : _this.upload_api_target,
-			"ondone_callback" : function( resultData ) {
-				var wTitle = resultData['filename'];
-				// Add a loading div
-				_this.addResourceEditLoader();
-				//Add the uploaded result
-				provider.sObj.addByTitle( wTitle, function( resource ) {
-					// Redraw ( with added result if new )
-					_this.showResults();										
-					// Pull up resource editor:
-					_this.showResourceEditor( resource );
-				} );
-				// Return false to close progress window:
-				return false;
-			}
-		} );
-		*/
+		} );		
 	},
 	
 	/**
@@ -1254,7 +1236,7 @@ mw.RemoteSearchDriver.prototype = {
 			commonsUploadPage += '/' + wgUserLanguage;
 		}
 		
-		uploadTargets['wiki_commons']= {
+		uploadTargets[ 'wiki_commons' ] = {
 			'apiUrl' : commonsProvider.apiUrl,
 			'title' : gM( 'rsd-wiki_commons-title'),
 			'uploadPage' : commonsProvider.apiUrl.replace( 'api.php', 'index.php' ) + '?title=' + commonsUploadPage
@@ -1265,25 +1247,35 @@ mw.RemoteSearchDriver.prototype = {
 			return uploadTargets;
 		}		
 		
-		// check if we have a link to commons for our t-upload toolbox link:
+		// Check if we have a link to commons for our t-upload toolbox link:
 		// ( ie the project does not support local uploads )		
 		$uploadLink = $j( '#t-upload' ).find('a');
-		if( $uploadLink.length 
+		if( $uploadLink.length
 			&& mw.parseUri( $uploadLink.attr('href') ).host == 'commons.wikimedia.org' )
 		{
 			return uploadTargets;
 		} 
 		
-		// Elese this_wiki accepts uploads setup upload links:
+		// Else this_wiki accepts uploads setup upload links:
+		// NOTE this should be set via setConfig calls 
 		var thisWikiProvider = this.content_providers[ 'this_wiki' ]; 
 		uploadTargets[ 'this_wiki' ] = {
 			'apiUrl' : thisWikiProvider.apiUrl,
+			 // Add a warning that the user should really target commons: 
+			'providerDescription' : gM('mwe-warning-upload-to-commons', 
+				mw.parseUri( thisWikiProvider.apiUrl ).host,
+				$j( '<a />' )
+				.attr( { 
+					'href' : $uploadLink.attr('href')
+				} )
+				.text( gM('mwe-local-upload-policy-link') )
+			),
 			// Unfortunately mediaWiki pages don't expose the title of the wiki 
 			// Could get in an api request ( just use domain for now)  
 			'title' : mw.parseUri( thisWikiProvider.apiUrl ).host,
 			'uploadPage' : $uploadLink.attr('href')			
 		}
-		return uploadTargets;		
+		return uploadTargets;
 	},
 	
 	/**
