@@ -22,10 +22,10 @@ class TagStorysubmission {
 
 		global $wgRequest;
 		
-		if ($wgRequest->wasPosted()) {
-			$output = $this->doSubmissionAndGetResult();
+		if ( $wgRequest->wasPosted() ) {
+			$output = TagStorysubmission::doSubmissionAndGetResult();
 		} else {
-			$output = $this->getFrom();
+			$output = TagStorysubmission::getFrom( $parser );
 		}
 		
 		return $output;
@@ -33,15 +33,49 @@ class TagStorysubmission {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	private function getFrom() {
-		return <<<EOT
-<form name="storysubmission" action="#" method="get">
+	private static function getFrom( $parser ) {
+		$fieldSize = 50;
+		
+		$url = $parser->getTitle()->getLocalURL( 'action=submit' );
+		
+		$formBody = '<table width="100%">';
+		
+		$formBody .= '<tr><td>' . wfMsg( 'storyboard-yourname' ) . '</td><td>' . Html::element(
+			'input',
+			array('id' => 'name', 'name' => 'name', 'type' => 'text', 'size' => $fieldSize),
+			null
+		) . '</td></tr>';
+		
+		$formBody .= '<tr><td>' . wfMsg( 'storyboard-location' ) . '</td><td>' . Html::element(
+			'input',
+			array('id' => 'location', 'name' => 'location', 'type' => 'text', 'size' => $fieldSize),
+			null
+		) . '</td></tr>'; 		
+		
+		$formBody .= '<tr><td>' . wfMsg( 'storyboard-occupation' ) . '</td><td>' . Html::element(
+			'input',
+			array('id' => 'occupation', 'name' => 'occupation', 'type' => 'text', 'size' => $fieldSize),
+			null
+		) . '</td></tr>';
 
-</form>
-EOT;
+		$formBody .= '<tr><td>' . wfMsg( 'storyboard-contact' ) . '</td><td>' . Html::element(
+			'input',
+			array('id' => 'contact', 'name' => 'contact', 'type' => 'text', 'size' => $fieldSize),
+			null
+		) . '</td></tr>';
+
+		$formBody .= '<tr><td></td><td><input type="submit" value="' . wfMsg( 'htmlform-submit' ) . '"></td></tr>';
+		
+		$formBody .= '</table>';
+		
+		return Html::rawElement(
+			'form',
+			array( 'id' => 'storyform', 'name' => 'storyform', 'method' => 'post', 'action' => $url ),
+			$formBody
+		);
 	}
 	
-	private function doSubmissionAndGetResult() {
+	private static function doSubmissionAndGetResult() {
 		
 	}
 	

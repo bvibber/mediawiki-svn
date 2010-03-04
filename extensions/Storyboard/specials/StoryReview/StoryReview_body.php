@@ -110,7 +110,7 @@ EOT
 				<table width="100%" border="1">
 					<tr>
 						<td rowspan="2" width="200px">
-							<img src="$imageSrc">
+							<img src="$imageSrc" />
 						</td>
 						<td>
 							<b>$title</b>

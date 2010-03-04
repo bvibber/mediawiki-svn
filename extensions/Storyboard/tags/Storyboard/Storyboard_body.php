@@ -29,7 +29,7 @@ class TagStoryboard {
 		$height = self::getDimension( $args, 'height', $egStoryboardHeight );
 
 		$output = Html::element( 'div', array(
-				'class' => 'ajaxscroll',
+				'class' => 'storyboard',
 				'style' => "height: $height; width: $width;"
 			)
 		);
