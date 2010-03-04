@@ -26,7 +26,7 @@
 * When using the scriptLoader the enabledModules loader code
 *  is transcluded into base mwEmbed class include.  
 */
-var mwEnabledModuleList =  [
+var mwEnabledModuleList = [
 	'AddMedia',
 	'ClipEdit',
 	'EmbedPlayer',

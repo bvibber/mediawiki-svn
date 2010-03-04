@@ -60,14 +60,7 @@ mw.ApiProxy = { };
 	var currentApiReq = { };
 	
 	// The url for the last api request target.
-	var currentServerApiUrl = null; 
-	
-	// Time we should wait for proxy page callback
-	// ( note this time starts form when the page is "done"
-	// loading so it should only be the time need to load some 
-	// cached js for the callback)	
-	// 15 seconds
-	var proxyPageLoadTimeout = 15000;
+	var currentServerApiUrl = null;
 			
 	/**  
 	* Takes a requestQuery, executes the query and then calls the callback
@@ -207,7 +200,7 @@ mw.ApiProxy = { };
 					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
 					proxyNotReadyDialog();
 				}
-			}, proxyPageLoadTimeout );
+			}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
 		} );
 		// Add a loading spinner to the target
 		$j( options.target ).append( 
@@ -394,8 +387,8 @@ mw.ApiProxy = { };
 			'action' : 'apiRequest',
 			'request' : requestQuery
 		}
-		  
-		mw.log( "Do frame proxy request on src: \n" + getServerFrame() + "\n" + JSON.stringify(  requestQuery ) );
+				  
+		mw.log( "Do frame proxy request on src: \n" + getServerFrame() + "\n" + JSON.stringify(  requestQuery ) );		
 		appendIframe({
 			'persist' : true,
 			'src' : getServerFrame(),
@@ -417,7 +410,7 @@ mw.ApiProxy = { };
 				//  request process is complete. 
 				// ( should be part of supporting multiple requests at once refactor) 
 				
-			}, proxyPageLoadTimeout );
+			}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
 		})
 	}
 	
@@ -503,7 +496,7 @@ mw.ApiProxy = { };
 	*/
 	function proxyNotReadyDialog() {
 		// See if we have a callback function to call ( do not display the dialog ) 
-		if( proxyTimeoutCallback ){
+		if( proxyTimeoutCallback ) {
 			proxyTimeoutCallback();
 			return ;
 		}
