@@ -463,7 +463,10 @@ $messages['no'] = array(
 	'multiboilerplate-desc' => 'Viser en boks på toppen av redigeringssiden for å velge og laste en standardtekst',
 	'multiboilerplate-legend' => 'Velg standardtekst',
 	'multiboilerplate-submit' => 'Last',
+	'boilerplates' => 'Tilgjengelige standardtekster',
 	'multiboilerplate-special-pagetext' => 'Disse malene kan være forhåndslastet ved sideopprettelse. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} demo]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Standardtekster er definert i LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Standardtekster er definert i [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Occitan (Occitan)

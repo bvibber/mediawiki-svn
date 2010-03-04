@@ -2991,7 +2991,7 @@ $messages['fr'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test réussi|tests réussis}}, $3 {{PLURAL:$4|test échoué|tests échoués}} :',
 	'codereview-tests-running' => 'Tests en cours...',
 	'codereview-tests-aborted' => 'Exécution du test interrompue.',
-	'codereview-tests-failed' => 'tests échoués :',
+	'codereview-tests-failed' => 'Échec',
 	'codereview-email-subj' => '[$1] [$2] : nouveau commentaire ajouté',
 	'codereview-email-body' => 'L’utilisateur « $1 » a posté un commentaire sur $3.
 

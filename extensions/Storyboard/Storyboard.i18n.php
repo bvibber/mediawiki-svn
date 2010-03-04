@@ -33,7 +33,7 @@ $messages['en'] = array(
 	'storyboard-occupation' => 'Your occupation',
 	'storyboard-story' => "What's your story",
 	'storyboard-photo' => 'Have a photo of yourself? Why not share it?',
-	'storyboard-contact' => 'E-mail or phone',
+	'storyboard-contact' => 'E-mail address or telephone number',
 	'storyboard-agreement' => 'I agree with the publication of this story.',
 );
 
@@ -68,6 +68,11 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'storyboard-name' => 'Storyboard',
 	'right-storyreview' => 'Adlenn, kemmañ, embann, ha kuzhat an istorioù',
+	'storyboard-storyreview' => 'Adweladenn an istor',
+	'storyboard-publish' => 'Embann',
+	'storyboard-unpublish' => 'Diembann',
+	'storyboard-reviewed' => 'Adwelet',
+	'storyboard-unreviewed' => 'Nann-adwelet',
 );
 
 /** Finnish (Suomi)

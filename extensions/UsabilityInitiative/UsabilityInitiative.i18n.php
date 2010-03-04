@@ -210,10 +210,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'usabilityinitiative' => "Initiative d'utilisabilité",
 	'usabilityinitiative-desc' => "Fonctionnalités développées par l'initiative d'utilisabilité de Wikipédia pour améliorer l'utilisabilité de MediaWiki",
+	'prefs-beta' => 'Fonctionnalités bêta',
+	'prefs-labs' => 'Fonctionnalités « labs »',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -231,8 +234,7 @@ $messages['gl'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidade',
 	'usabilityinitiative-desc' => 'Características desenvolvidas pola Iniciativa de usabilidade da Wikipedia para mellorar a usabilidade de MediaWiki',
 	'prefs-beta' => 'Características en probas',
-	'prefs-labs' => 'Características experimentais
-sds',
+	'prefs-labs' => 'Características experimentais',
 );
 
 /** Swiss German (Alemannisch)
@@ -241,6 +243,8 @@ sds',
 $messages['gsw'] = array(
 	'usabilityinitiative' => 'Benutzerfrejndligkeits-Initiative',
 	'usabilityinitiative-desc' => 'Features entwicklet dur d Wikipedia-Benutzerfrejndligkeits-Initiative go d Benutzerfrejndligkeit vu MediWiki verbessere',
+	'prefs-beta' => 'Betafunktione',
+	'prefs-labs' => 'Alphafunktione',
 );
 
 /** Hebrew (עברית)

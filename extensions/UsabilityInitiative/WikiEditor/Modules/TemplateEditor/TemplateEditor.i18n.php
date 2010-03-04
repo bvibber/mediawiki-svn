@@ -119,10 +119,13 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Peter17
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'wikieditor-template-editor-preference' => 'Activer la modification à base de formulaires des modèles wiki',
+	'wikieditor-template-editor-dialog-title' => 'Modifier le modèle',
+	'wikieditor-template-editor-dialog-submit' => 'Mettre à jour',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -169,6 +172,8 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'wikieditor-template-editor-preference' => 'Wiki sablonok űrlap alapú szerkesztésének engedélyezése',
+	'wikieditor-template-editor-dialog-title' => 'Sablon szerkesztése',
+	'wikieditor-template-editor-dialog-submit' => 'Frissítés',
 );
 
 /** Interlingua (Interlingua)
@@ -347,10 +352,13 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'wikieditor-template-editor-preference' => 'Увімкнути редагування шаблонів за допомогою форм',
+	'wikieditor-template-editor-dialog-title' => 'Редагувати шаблон',
+	'wikieditor-template-editor-dialog-submit' => 'Оновити',
 );
 
 /** Vèneto (Vèneto)
