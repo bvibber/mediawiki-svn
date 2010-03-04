@@ -3192,7 +3192,6 @@ $wgMessageStructure = array(
 		'config-memory-ok',
 		'config-memory-raised',
 		'config-memory-bad',
-		'config-turck',
 		'config-xcache',
 		'config-apc',
 		'config-eaccel',

@@ -4211,13 +4211,11 @@ MediaWiki requires the Perl-compatible regular expression functions.',
 'config-memory-raised' => 'PHP\'s <tt>memory_limit</tt> is $1, raised to $2.',
 'config-memory-bad' => '<strong>Warning:</strong> PHP\'s <tt>memory_limit</tt> is $1.
 This is probably too low, the installation may fail!',
-'config-turck' => '[http://turck-mmcache.sourceforge.net/ Turck MMCache] installed</li>',
 'config-xcache' => '[http://trac.lighttpd.net/xcache/ XCache] installed',
 'config-apc' => '[http://www.php.net/apc APC] installed',
 'config-eaccel' => '[http://eaccelerator.sourceforge.net/ eAccelerator] installed',
 'config-no-cache' => '<strong>Warning:</strong> 
-Couldn\'t find [http://turck-mmcache.sourceforge.net Turck MMCache],
-[http://eaccelerator.sourceforge.net eAccelerator],
+Couldn\'t find [http://eaccelerator.sourceforge.net eAccelerator],
 [http://www.php.net/apc APC] or [http://trac.lighttpd.net/xcache/ XCache];
 cannot use these for object caching.',
 'config-diff3-good' => 'Found GNU diff3: <tt>$1</tt>.',
