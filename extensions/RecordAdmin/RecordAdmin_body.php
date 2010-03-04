@@ -395,7 +395,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Group the records according to the "groupby" parameter
 		if ( $groupby ) {
-			$groupby = preg_split( '/\s*,\s*/', $groupby );
+			$groupby = self::split( $groupby, ',' );
 			$tmp = array();
 			foreach ( $records as $r ) {
 				$v0 = $r[$groupby[0]];
@@ -460,7 +460,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true, $groupby = false ) {
 		global $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
-		if ( $groupby ) $groupby = preg_split( '/\s*,\s*/', $groupby );
+		if ( $groupby ) $groupby = self::split( $groupby, ',' );
 
 		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
 		$type     = $this->type;
@@ -611,7 +611,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Otherwise add export links
 		elseif ( $export ) {
-			$export = $export === true ? array( 'pdf', 'csv' ) : preg_split( "/\s*,\s*/", strtolower( $export ) );
+			$export = $export === true ? array( 'pdf', 'csv' ) : self::split( strtolower( $export ), ',' );
 			$qs = "wpType=$type&wpFind=1&quid={$this->quid}";
 			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
 			$url = $wgTitle->getLocalURL( $qs );
@@ -710,7 +710,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$html = preg_replace_callback( "|\{\{.+?\}\}|s", array( $this, 'parsePart' ), $html );
 					$html = preg_replace( "|(<option[^<>]*) selected|i", "$1", $html ); # remove the currently selected option
 					if ( $v ) {
-						foreach( split( "\n", $v ) as $v ) {
+						foreach( self::split( $v ) as $v ) {
 							$v = htmlentities( preg_replace( "|([\[\]\|\\\(\)])|", "\\$1", $v ) );
 							$html = preg_match( "|<option[^>]+value\s*=|is", $html )
 								? preg_replace( "|(<option)([^>]+value\s*=\s*[\"']{$v}['\"])|is", "$1 selected$2", $html )
@@ -830,7 +830,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	/**
 	 * Get a field value from a record
 	 */
-	static function getFieldValue( &$args ) {
+	static function getFieldValue( &$args, $multi = false ) {
 		$result = '';
 
 		# Build SQL condition from the supplied args, if any
@@ -860,6 +860,18 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ( $row ) $result = Title::newFromId( $row->page_id )->getPrefixedText();
 		}
 
+		if ( $multi ) $result = self::split( $result );
+		return $result;
+	}
+
+	/**
+	 * Common function for splitting items by a separator character
+	 * - default is newline
+	 * - whitespace around separators is removed
+	 */
+	static function split( $text, $sep = "[\r\n]+" ) {
+		$result = preg_split( "/\s*$sep\s*/", trim( $text ) );
+		print_r($result);
 		return $result;
 	}
 
@@ -1027,7 +1039,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ( $k == 'orderby' )  $orderby  = $v;
 				elseif ( $k == 'groupby' )  $groupby  = $v;
 				elseif ( $k == 'format' )   $format   = $v;
-				elseif ( $k == 'cols' )     $cols     = preg_split( '/\s*,\s*/', $v );
+				elseif ( $k == 'cols' )     $cols     = self::split( $v, ',' );
 				elseif ( $k == 'sortable' ) $sortable = eregi( '1|yes|true|on', $v );
 				elseif ( $k == 'template' ) $template = $v;
 				elseif ( $k == 'count' )    $count    = $v;
