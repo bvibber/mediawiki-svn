@@ -23,9 +23,9 @@ class TagStorysubmission {
 		global $wgRequest;
 		
 		if ( $wgRequest->wasPosted() ) {
-			$output = TagStorysubmission::doSubmissionAndGetResult();
+			$output = self::doSubmissionAndGetResult();
 		} else {
-			$output = TagStorysubmission::getFrom( $parser );
+			$output = self::getFrom( $parser );
 		}
 		
 		return $output;
@@ -40,31 +40,39 @@ class TagStorysubmission {
 		
 		$formBody = '<table width="100%">';
 		
-		$formBody .= '<tr><td>' . wfMsg( 'storyboard-yourname' ) . '</td><td>' . Html::element(
-			'input',
-			array('id' => 'name', 'name' => 'name', 'type' => 'text', 'size' => $fieldSize),
-			null
-		) . '</td></tr>';
+		$formBody .= '<tr>' .
+			Html::element( 'td', array(), wfMsg( 'storyboard-yourname' ) ) .
+			'<td>' . Html::element(
+				'input',
+				array( 'id' => 'name', 'name' => 'name', 'type' => 'text', 'size' => $fieldSize ),
+				null
+			) . '</td></tr>';
 		
-		$formBody .= '<tr><td>' . wfMsg( 'storyboard-location' ) . '</td><td>' . Html::element(
-			'input',
-			array('id' => 'location', 'name' => 'location', 'type' => 'text', 'size' => $fieldSize),
-			null
-		) . '</td></tr>'; 		
+		$formBody .= '<tr>' .
+			Html::element( 'td', array(), wfMsg( 'storyboard-location' ) ) .
+			'<td>' . Html::element(
+				'input',
+				array(' id' => 'location', 'name' => 'location', 'type' => 'text', 'size' => $fieldSize ),
+				null
+			) . '</td></tr>';
 		
-		$formBody .= '<tr><td>' . wfMsg( 'storyboard-occupation' ) . '</td><td>' . Html::element(
-			'input',
-			array('id' => 'occupation', 'name' => 'occupation', 'type' => 'text', 'size' => $fieldSize),
-			null
-		) . '</td></tr>';
+		$formBody .= '<tr>' .
+			Html::element( 'td', array(), wfMsg( 'storyboard-occupation' ) ) .
+			'<td>' . Html::element(
+				'input',
+				array( 'id' => 'occupation', 'name' => 'occupation', 'type' => 'text', 'size' => $fieldSize ),
+				null
+			) . '</td></tr>';
 
-		$formBody .= '<tr><td>' . wfMsg( 'storyboard-contact' ) . '</td><td>' . Html::element(
-			'input',
-			array('id' => 'contact', 'name' => 'contact', 'type' => 'text', 'size' => $fieldSize),
-			null
-		) . '</td></tr>';
+		$formBody .= '<tr>' .
+			Html::element( 'td', array(), wfMsg( 'storyboard-contact' ) ) .
+			'<td>' . Html::element(
+				'input',
+				array( 'id' => 'contact', 'name' => 'contact', 'type' => 'text', 'size' => $fieldSize ),
+				null
+			) . '</td></tr>';
 
-		$formBody .= '<tr><td></td><td><input type="submit" value="' . wfMsg( 'htmlform-submit' ) . '"></td></tr>';
+		$formBody .= '<tr><td></td><td>' . Html::input( '', wfMsg( 'htmlform-submit' ), 'submit' ) . '</td></tr>';
 		
 		$formBody .= '</table>';
 		
