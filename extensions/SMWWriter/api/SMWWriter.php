@@ -533,6 +533,17 @@ class SMWWriter {
 			$this->remove = new SMWWriterData(); 
 			$this->add = new SMWWriterData();
 			$this->add->copySemanticData($add);
+
+			// for each spv in a :
+			$propertiesAdd = $this->add->getPropertynames();
+			foreach ($propertiesAdd as $propertyname) {
+				$values = $this->add->getPropertyValues($propertyname);
+				foreach ($values as $value) {
+				// if spv in current : a -= spv
+				if ($this->current->contains( $propertyname, $value ))
+					$this->add->removePropertynameValue( $propertyname, $value );
+				}
+			}
 			return;
 		}
 		
@@ -824,10 +835,6 @@ class SMWWriter {
 	private function addPropertyValues( /* string */ $propertyname, /* array of SMWDataValue */ $values ) {
 		$property = SMWPropertyValue::makeUserProperty($propertyname);
 		
-		// TODO We should first check if there is a fitting template where we
-		// can add the missing values, but for speeding up the implementation
-		// this was not done right now.
-		
 		// What about existing links? Adding annotations to existing links
 		// though is a bad idea, I think, because it will not be able to tell
 		// if this is the right place to add it, think of the following example:
@@ -836,6 +843,39 @@ class SMWWriter {
 		// but not with the second sentence. And this can only be done with
 		// a system that understands the sentence, and thus would make the whole
 		// idea of SMW somehow superfluous :) -- denny
+		
+		// We first check if there is a fitting template where we can add the
+		// missing values
+		foreach (array_keys($this->pom->templates) as $name) {
+			if (strpos($name, "#") === FALSE) {
+				$templatetitle = Title::newFromText($name, NS_TEMPLATE);
+				if ( !$templatetitle->exists() ) continue;
+				$templatearticle = new Article( $templatetitle );
+				if ( !$templatearticle ) continue;
+				$templatetext = $templatearticle->fetchContent();
+				$tmplpom = new POMPage( $templatetext );
+				if (array_key_exists('#declare', $tmplpom->templates)) {
+					foreach ($tmplpom->templates['#declare'] as $declaration) {
+						$count = $declaration->getParametersCount();
+						for ($i = 0; $i < $count; $i++) {
+							$argument = $declaration->getParameterByNumber($i);
+							$templateproperty = $declaration->getParameterName($i);
+							if (empty($templateproperty)) 
+								$templateproperty = $argument;
+								$p = SMWPropertyValue::makeUserProperty($templateproperty);
+							if ($p->getHash() !== $property->getHash()) continue;
+							foreach ($this->pom->templates[$name] as $tmpl) {
+								$value = $tmpl->getParameter($argument);
+								if (!is_null($value)) continue;
+								if (count($values)==0) break;
+								$value = array_pop($values);
+								$tmpl->setParameter($argument, $value->getWikiValue());
+							}
+						}
+					}
+				}
+			}
+		}
 		
 		$set = null;
 		// if there is no #set yet, then add one
