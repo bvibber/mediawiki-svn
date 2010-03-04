@@ -870,9 +870,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * - whitespace around separators is removed
 	 */
 	static function split( $text, $sep = "[\r\n]+" ) {
-		$result = preg_split( "/\s*$sep\s*/", trim( $text ) );
-		print_r($result);
-		return $result;
+		return preg_split( "/\s*$sep\s*/", trim( $text ) );
 	}
 
 	/**
