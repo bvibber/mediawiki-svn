@@ -31,9 +31,9 @@ $messages['en'] = array(
 	'storyboard-yourname' => 'Your name',
 	'storyboard-location' => 'Where do you live?',
 	'storyboard-occupation' => 'Your occupation',
-	'storyboard-story' => 'What\'s your story',
+	'storyboard-story' => "What's your story",
 	'storyboard-photo' => 'Have a photo of yourself? Why not share it?',
-	'storyboard-contact' => 'Email or phone',
+	'storyboard-contact' => 'E-mail or phone',
 	'storyboard-agreement' => 'I agree with the publication of this story.',
 );
 
