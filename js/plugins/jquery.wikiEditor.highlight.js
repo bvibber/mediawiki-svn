@@ -205,19 +205,7 @@ fn: {
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
-			// Because we can't put block elements in <p>s, we'll have to split the <p> as well
-			// if afterWrap() needs us to
-			if ( markers[i].splitPs && startNode.parentNode.nodeName == 'P' ) {
-				// Create a new <p> left of startNode, and append startNode's left siblings to it
-				var startP = startNode.ownerDocument.createElement( 'p' );
-				while ( startNode.parentNode.firstChild != startNode ) {
-					startP.appendChild( startNode.parentNode.firstChild );
-				}
-				if ( startP.firstChild ) {
-					startNode.parentNode.insertBefore( startP, startNode );
-				}
-			}
-			
+
 			var end = markers[i].end;
 			// To avoid ending up at the first char of the next node, we grab the offset for end - 1
 			// and add one to the offset
@@ -234,20 +222,6 @@ fn: {
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
-			// Split <p>s if needed, see above
-			if ( markers[i].splitPs && endNode.parentNode.nodeName == 'P' && endNode.parentNode.parentNode ) {
-				// Move textnodes preceding endNode out of the wrapping <p>
-				var endP = endNode.parentNode;
-				while ( endP.firstChild != endNode ) {
-					endP.parentNode.insertBefore( endP.firstChild, endP );
-				}
-				// Move endNode itself out as well
-				endP.parentNode.insertBefore( endNode, endP );
-				if ( !endP.firstChild ) {
-					// endP is empty, remove it
-					endP.parentNode.removeChild( endP );
-				}
-			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
@@ -255,37 +229,53 @@ fn: {
 				endDepth = e.lastTextNodeDepth;
 			}
 			
-			// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
-			// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
-			// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
-			// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
-			// can't cleanly wrap things without misnesting and we silently fail.
+			// If startNode and endNode have different parents, we need to pull endNode and all textnodes in between
+			// into startNode's parent and replace </p><p> with <br>
+			if ( startNode.parentNode != endNode.parentNode ) {
+				var startP = $( startNode ).closest( 'p' ).get( 0 );
+				var t = new context.fn.rawTraverser( startNode, 0, startP, context.$content.get( 0 ), false );
+				var afterStart = startNode.nextSibling;
+				var lastP = startP;
+				var nextT = t.next();
+				while ( nextT && t.node != endNode ) {
+					t = nextT;
+					nextT = t.next();
+					// If t.node has a different parent, merge t.node.parentNode with startNode.parentNode
+					if ( t.node.parentNode != startNode.parentNode ) {
+						var oldParent = t.node.parentNode;
+						if ( afterStart ) {
+							if ( lastP != t.inP ) {
+								// We're entering a new <p>, insert a <br>
+								startNode.parentNode.insertBefore(
+									startNode.ownerDocument.createElement( 'br' ),
+									afterStart
+								);
+							}
+							// Move all children of oldParent into startNode's parent
+							while ( oldParent.firstChild ) {
+								startNode.parentNode.insertBefore( oldParent.firstChild, afterStart );
+							}
+						} else {
+							if ( lastP != t.inP ) {
+								// We're entering a new <p>, insert a <br>
+								startNode.parentNode.appendChild(
+									startNode.ownerDocument.createElement( 'br' )
+								);
+							}
+							// Move all children of oldParent into startNode's parent
+							while ( oldParent.firstChild ) {
+								startNode.parentNode.appendChild( oldParent.firstChild );
+							}
+						}
+						// Remove oldParent, which is now empty
+						oldParent.parentNode.removeChild( oldParent );
+					}
+					lastP = t.inP;
+				}
+			}
+			
+			// Now wrap everything between startNode and endNode (may be equal).
 			var ca1 = startNode, ca2 = endNode;
-			// Correct for startNode and endNode possibly not having the same depth
-			if ( startDepth > endDepth ) {
-				for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
-					ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-				}
-			}
-			else if ( startDepth < endDepth ) {
-				for ( var j = 0; j < endDepth - startDepth && ca2; j++ ) {
-					ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-				}
-			}
-			// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
-			// to find the common ancestor
-			while (
-				ca1 &&
-				ca2 &&
-				ca1.parentNode &&
-				ca2.parentNode &&
-				ca1.parentNode != ca2.parentNode &&
-				ca1.parentNode.firstChild &&
-				ca2.parentNode.lastChild
-			) {
-				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-			}
 			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
@@ -349,11 +339,7 @@ fn: {
 				$(this).removeAttr( 'class' );
 			} else {
 				// Assume anchor == 'wrap'
-				if ( $(this).children().size() > 0 ) {
-					$(this).replaceWith( $(this).children() );
-				} else {
-					$(this).replaceWith( $(this).html() );
-				}
+				$(this).replaceWith( this.childNodes );
 			}
 		});
 	}

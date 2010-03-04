@@ -7178,7 +7178,7 @@ if ( typeof context == 'undefined' ) {
 				// We need the traverser because there can be other weird stuff in between
 				
 				// Check for preceding text
-				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ) ).prev();
+				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ), true ).prev();
 				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.prev();
 				}
@@ -7187,7 +7187,7 @@ if ( typeof context == 'undefined' ) {
 				}
 				
 				// Check for following text
-				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ) ).next();
+				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ), true ).next();
 				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.next();
 				}
@@ -7293,11 +7293,12 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Object used by traverser(). Don't use this unless you know what you're doing
 		 */
-		'rawTraverser': function( node, depth, inP, ancestor ) {
+		'rawTraverser': function( node, depth, inP, ancestor, skipNoinclude ) {
 			this.node = node;
 			this.depth = depth;
 			this.inP = inP;
 			this.ancestor = ancestor;
+			this.skipNoinclude = skipNoinclude;
 			this.next = function() {
 				var p = this.node;
 				var nextDepth = this.depth;
@@ -7321,8 +7322,10 @@ if ( typeof context == 'undefined' ) {
 					// Filter nodes with the wikiEditor-noinclude class
 					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
 					// $() is slow in a tight loop
-					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
-						p = p.nextSibling;
+					if ( this.skipNoinclude ) {
+						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+							p = p.nextSibling;
+						}
 					}
 					if ( p && p.firstChild ) {
 						p = p.firstChild;
@@ -7332,7 +7335,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.firstChild );
-				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor ) : null;
+				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor, this.skipNoinclude ) : null;
 			};
 			this.prev = function() {
 				var p = this.node;
@@ -7357,8 +7360,10 @@ if ( typeof context == 'undefined' ) {
 					// Filter nodes with the wikiEditor-noinclude class
 					// Don't use $( p ).hasClass( 'wikiEditor-noinclude' ) because
 					// $() is slow in a tight loop
-					while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
-						p = p.previousSibling;
+					if ( this.skipNoinclude ) {
+						while ( p && ( ' ' + p.className + ' ' ).indexOf( ' wikiEditor-noinclude ' ) != -1 ) {
+							p = p.previousSibling;
+						}
 					}
 					if ( p && p.lastChild ) {
 						p = p.lastChild;
@@ -7368,7 +7373,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.lastChild );
-				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor ) : null;
+				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor, this.skipNoinclude ) : null;
 			};
 		},
 		/**
@@ -7384,7 +7389,8 @@ if ( typeof context == 'undefined' ) {
 		 */
 		'traverser': function( start ) {
 			// Find the leftmost leaf node in the tree
-			var node = start.jquery ? start.get( 0 ) : start;
+			var startNode = start.jquery ? start.get( 0 ) : start;
+			var node = startNode;
 			var depth = 0;
 			var inP = node.nodeName == "P" ? node : null;
 			do {
@@ -7402,7 +7408,7 @@ if ( typeof context == 'undefined' ) {
 					}
 				}
 			} while ( node && node.firstChild );
-			return new context.fn.rawTraverser( node, depth, inP, node );
+			return new context.fn.rawTraverser( node, depth, inP, startNode, true );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
@@ -8655,19 +8661,7 @@ fn: {
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
-			// Because we can't put block elements in <p>s, we'll have to split the <p> as well
-			// if afterWrap() needs us to
-			if ( markers[i].splitPs && startNode.parentNode.nodeName == 'P' ) {
-				// Create a new <p> left of startNode, and append startNode's left siblings to it
-				var startP = startNode.ownerDocument.createElement( 'p' );
-				while ( startNode.parentNode.firstChild != startNode ) {
-					startP.appendChild( startNode.parentNode.firstChild );
-				}
-				if ( startP.firstChild ) {
-					startNode.parentNode.insertBefore( startP, startNode );
-				}
-			}
-			
+
 			var end = markers[i].end;
 			// To avoid ending up at the first char of the next node, we grab the offset for end - 1
 			// and add one to the offset
@@ -8684,20 +8678,6 @@ fn: {
 				// This also invalidates cached offset objects
 				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
 			}
-			// Split <p>s if needed, see above
-			if ( markers[i].splitPs && endNode.parentNode.nodeName == 'P' && endNode.parentNode.parentNode ) {
-				// Move textnodes preceding endNode out of the wrapping <p>
-				var endP = endNode.parentNode;
-				while ( endP.firstChild != endNode ) {
-					endP.parentNode.insertBefore( endP.firstChild, endP );
-				}
-				// Move endNode itself out as well
-				endP.parentNode.insertBefore( endNode, endP );
-				if ( !endP.firstChild ) {
-					// endP is empty, remove it
-					endP.parentNode.removeChild( endP );
-				}
-			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
@@ -8705,37 +8685,53 @@ fn: {
 				endDepth = e.lastTextNodeDepth;
 			}
 			
-			// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
-			// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
-			// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
-			// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
-			// can't cleanly wrap things without misnesting and we silently fail.
+			// If startNode and endNode have different parents, we need to pull endNode and all textnodes in between
+			// into startNode's parent and replace </p><p> with <br>
+			if ( startNode.parentNode != endNode.parentNode ) {
+				var startP = $( startNode ).closest( 'p' ).get( 0 );
+				var t = new context.fn.rawTraverser( startNode, 0, startP, context.$content.get( 0 ), false );
+				var afterStart = startNode.nextSibling;
+				var lastP = startP;
+				var nextT = t.next();
+				while ( nextT && t.node != endNode ) {
+					t = nextT;
+					nextT = t.next();
+					// If t.node has a different parent, merge t.node.parentNode with startNode.parentNode
+					if ( t.node.parentNode != startNode.parentNode ) {
+						var oldParent = t.node.parentNode;
+						if ( afterStart ) {
+							if ( lastP != t.inP ) {
+								// We're entering a new <p>, insert a <br>
+								startNode.parentNode.insertBefore(
+									startNode.ownerDocument.createElement( 'br' ),
+									afterStart
+								);
+							}
+							// Move all children of oldParent into startNode's parent
+							while ( oldParent.firstChild ) {
+								startNode.parentNode.insertBefore( oldParent.firstChild, afterStart );
+							}
+						} else {
+							if ( lastP != t.inP ) {
+								// We're entering a new <p>, insert a <br>
+								startNode.parentNode.appendChild(
+									startNode.ownerDocument.createElement( 'br' )
+								);
+							}
+							// Move all children of oldParent into startNode's parent
+							while ( oldParent.firstChild ) {
+								startNode.parentNode.appendChild( oldParent.firstChild );
+							}
+						}
+						// Remove oldParent, which is now empty
+						oldParent.parentNode.removeChild( oldParent );
+					}
+					lastP = t.inP;
+				}
+			}
+			
+			// Now wrap everything between startNode and endNode (may be equal).
 			var ca1 = startNode, ca2 = endNode;
-			// Correct for startNode and endNode possibly not having the same depth
-			if ( startDepth > endDepth ) {
-				for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
-					ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-				}
-			}
-			else if ( startDepth < endDepth ) {
-				for ( var j = 0; j < endDepth - startDepth && ca2; j++ ) {
-					ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-				}
-			}
-			// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
-			// to find the common ancestor
-			while (
-				ca1 &&
-				ca2 &&
-				ca1.parentNode &&
-				ca2.parentNode &&
-				ca1.parentNode != ca2.parentNode &&
-				ca1.parentNode.firstChild &&
-				ca2.parentNode.lastChild
-			) {
-				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-			}
 			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
@@ -8799,11 +8795,7 @@ fn: {
 				$(this).removeAttr( 'class' );
 			} else {
 				// Assume anchor == 'wrap'
-				if ( $(this).children().size() > 0 ) {
-					$(this).replaceWith( $(this).children() );
-				} else {
-					$(this).replaceWith( $(this).html() );
-				}
+				$(this).replaceWith( this.childNodes );
 			}
 		});
 	}
@@ -9172,14 +9164,9 @@ evt: {
 						end: tokenArray[endIndex].offset,
 						type: 'template',
 						anchor: 'wrap',
-						//splitPs: model.isCollapsible(),
-						splitPs: false,
 						afterWrap: function( node ) {
 							// Generate model
-							var model = new $.wikiEditor.modules.templateEditor.fn.model(
-								$( node ).text()
-							);
-							$( node ).data( 'model', model );
+							var model = $.wikiEditor.modules.templateEditor.fn.updateModel( $( node ) );
 							if ( model.isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.wrapTemplate( $( node ) );
 							} else {
@@ -9192,16 +9179,23 @@ evt: {
 							}
 						},
 						onSkip: function( node ) {
-							if ( $( node ).data( 'model' ).getText() == $( node ).text() ) {
+							if ( $( node ).html() == $( node ).data( 'oldHTML' ) ) {
 								// No change
 								return;
 							}
-							// Text changed, regenerate model
-							var model = new $.wikiEditor.modules.templateEditor.fn.model(
-								$( node ).text()
-							);
-							$( node ).data( 'model', model );
 							
+							// Text changed, regenerate model
+							var model = $.wikiEditor.modules.templateEditor.fn.updateModel( $( node ) );
+							
+							// Update template name if needed
+							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) ) {
+								var $name = $( node ).parent().children( '.wikiEditor-template-name' );
+								if ( $name.text() != model.getName() ) {
+									$name.text( model.getName() );
+								}
+							}
+							
+							// Wrap or unwrap the template if needed
 							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) &&
 									!model.isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.unwrapTemplate( $( node ) );
@@ -9261,8 +9255,7 @@ fn: {
 			.wrap( '<span class="wikiEditor-template"></span>' )
 			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 			.parent()
-			.addClass( 'wikiEditor-template-collapsed' )
-			.data( 'model', model );
+			.addClass( 'wikiEditor-template-collapsed' );
 		
 		var $templateName = $( '<span />' )
 			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
@@ -9286,21 +9279,9 @@ fn: {
 			$template
 				.toggleClass( 'wikiEditor-template-expanded' )
 				.toggleClass( 'wikiEditor-template-collapsed' );
+			
 			var $wikitext = $template.children( '.wikiEditor-template-text' );
-			
 			$wikitext.toggleClass( 'wikiEditor-nodisplay' );
-			
-			//if we just collapsed this
-			if ( $template.hasClass( 'wikiEditor-template-collapsed' ) ) {
-				var model = new $.wikiEditor.modules.templateEditor.fn.model(
-					$template.children( '.wikiEditor-template-text' ).text()
-				);
-				$template.children( '.wikiEditor-template-text' ).data( 'model', model );
-				$template.children( '.wikiEditor-template-name' ).text( model.getName() );
-			} else { //we just expanded this
-				$wikitext.text( $template.children( '.wikiEditor-template-text' ).data( 'model' ).getText() );
-			}
-			
 			return false;
 		};
 		
@@ -9333,7 +9314,7 @@ fn: {
 							templateModel.setValue( $( this ).data( 'name' ), $( this ).val() );
 						});
 						//keep text consistent
-						$templateText.text( templateModel.getText() );
+						$.wikiEditor.modules.templateEditor.fn.updateModel( $templateText, templateModel );
 						
 						$( this ).dialog( 'close' );
 					}
@@ -9343,9 +9324,8 @@ fn: {
 					var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 					var templateModel = $templateText.data( 'model' );
 					// Update the model if we need to
-					if ( templateModel.getText() != $templateText.text() ) {
-						templateModel = new $.wikiEditor.modules.templateEditor.fn.model( $templateText.text() );
-						$templateText.data( 'model', templateModel );
+					if ( $templateText.html() != $templateText.data( 'oldHTML' ) ) {
+						templateModel = $.wikiEditor.modules.templateEditor.fn.updateModel( $templateText );
 					}
 					
 					// Build the table
@@ -9405,6 +9385,31 @@ fn: {
 	 */
 	unwrapTemplate: function( $wrapper ) {
 		$wrapper.parent().replaceWith( $wrapper );
+	},
+	
+	/**
+	 * Update a template's model and HTML
+	 * @param $templateText Wrapper <span> containing the template text
+	 * @param model Template model to use, will be generated if not set
+	 * @return model object
+	 */
+	updateModel: function( $templateText, model ) {
+		var context = $templateText.data( 'marker' ).context;
+		var text;
+		if ( typeof model == 'undefined' ) {
+			text = context.fn.htmlToText( $templateText.html() );
+		} else {
+			text = model.getText();
+		}
+		// To keep stuff simple but not break it, we need to do encode newlines as <br>s
+		$templateText.text( text );
+		$templateText.html( $templateText.html().replace( /\n/g, '<br />' ) );
+		$templateText.data( 'oldHTML', $templateText.html() );
+		if ( typeof model == 'undefined' ) {
+			model = new $.wikiEditor.modules.templateEditor.fn.model( text );
+			$templateText.data( 'model', model );
+		}
+		return model;
 	},
 	
 	/**
@@ -9906,7 +9911,6 @@ evt: {
 				end: tokenArray[i].offset,
 				type: 'toc',
 				anchor: 'tag',
-				splitPs: false,
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
 					$( node ).addClass( 'wikiEditor-toc-header' )
