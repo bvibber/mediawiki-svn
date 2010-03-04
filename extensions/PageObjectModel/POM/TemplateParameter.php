@@ -122,6 +122,11 @@ class POMTemplateNumberedParameter extends POMTemplateParameter
 		}
 	}
 
+	function getName()
+	{
+		return '';
+	}
+	
 	function getValue()
 	{
 		return $this->value_triple->trimmed;
