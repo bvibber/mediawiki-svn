@@ -837,14 +837,17 @@ class SMWWriter {
 		// a system that understands the sentence, and thus would make the whole
 		// idea of SMW somehow superfluous :) -- denny
 		
+		$set = null;
 		// if there is no #set yet, then add one
 		if (!array_key_exists('#set', $this->pom->templates)) {
-			$set = new POMTemplate("{{#set:\n|\n}}\n");
+			$set = new POMTemplate("{{#set:\n}}");
 			$this->pom->addChild($set);
+		} else {
+			// grab the first set and add all the stated facts
+			$set = $this->pom->templates['#set'][0];
 		}
 		
-		// grab the first set and add all the stated facts
-		$set = $this->pom->templates['#set'][0];
+		
 		
 		foreach ($values as $value)
 			$set->addParameter($propertyname, $value->getWikiValue() . "\n");
