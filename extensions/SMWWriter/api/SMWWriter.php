@@ -325,7 +325,8 @@ class SMWWriter {
 	 * If a non-empty string is returned, the state of the wiki was not changed.
 	 */
 	public function update(SMWSemanticData $remove, SMWSemanticData $add, $editsummary, $flags = 0) {
-
+		if (!empty($this->error)) return;
+		
 		if (empty($editsummary)) $editsummary = "Changed by calling SMWWriter::Update"; // TODO make this more intelligent
 		$this->editsummary = $editsummary;
 		$this->flags = $flags;
