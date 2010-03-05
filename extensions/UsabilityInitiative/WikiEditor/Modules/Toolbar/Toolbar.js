@@ -983,8 +983,14 @@ $j(document).ready( function() {
 				);
 			}
 			$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).click( function() {
-				if( $j( '#wikieditor-toolbar-link-type-ext' ).is( ':checked' ) )
+				if( $j( '#wikieditor-toolbar-link-type-ext' ).is( ':checked' ) ) {
+					// Abort previous request
+					var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
+					if ( request ) {
+						request.abort();
+					}
 					updateWidget( 'external' );
+				}
 				if( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) )
 					updateExistence();
 			});
