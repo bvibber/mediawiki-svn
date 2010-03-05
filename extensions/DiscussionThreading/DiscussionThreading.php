@@ -14,11 +14,10 @@ if (!defined('MEDIAWIKI')) die('Not an entry point.');
 # Internationalisation file
 $wgExtensionMessagesFiles['DiscussionThreading'] =  dirname(__FILE__) . '/DiscussionThreading.i18n.php';
 
-$wgExtensionFunctions[] = 'efDiscussionThreadSetup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DiscussionThreading',
-	'author' => 'Jack D. Pond, Daniel Brice',
+	'author' => array( 'Jack D. Pond', 'Daniel Brice' ),
 	'version' => '1.3',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
 	'descriptionmsg' => 'discussionthreading-desc',
@@ -40,20 +39,6 @@ $wgHooks['EditSectionLink'][] =  'efDiscussionLink';
 $wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
 
 /**
- * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
-*/
-function efDiscussionThreadSetup() {
-	global $wgVersion;
-	$xversion = explode(".",$wgVersion);
-	if ($xversion[0] <= "1" && $xversion[1] <= "11") {
-		global $wgMessageCache, $messages,$wgExtensionMessagesFiles;
-		require_once($wgExtensionMessagesFiles['DiscussionThreading']);
-		foreach( $messages as $lang => $LangMsg )
-			$wgMessageCache->addMessages( $LangMsg, $lang );
-	} else wfLoadExtensionMessages( 'DiscussionThreading' );
-}
-
-/**
  * This function creates a linkobject for the editSectionLinkForOther function in linker
  *
  * @param $callobj Article object.
@@ -68,6 +53,7 @@ function efDiscussionLink4other ($callobj, $title, $section , $url , &$result)
 {
 	global $wgSectionThreadingOn;
 	if($wgSectionThreadingOn && $title->isTalkPage() ) {
+		wfLoadExtensionMessages( 'DiscussionThreading' );
 		$commenturl = '&section='.$section.'&replyto=yes';
 		$curl = $callobj->makeKnownLinkObj( $title, wfMsg('discussionthreading-replysection'), 'action=edit'.$commenturl );
 		$newthreadurl = '&section=new';
@@ -92,6 +78,7 @@ function efDiscussionLink ($callobj, $nt, $section, $hint='', $url , &$result)
 {
 	global $wgSectionThreadingOn;
 	if($wgSectionThreadingOn && $nt->isTalkPage() ) {
+		wfLoadExtensionMessages( 'DiscussionThreading' );
 		$commenturl = '&section='.$section.'&replyto=yes';
 		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-replysectionhint', htmlspecialchars( $hint ) ) . '"';
 		$curl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-replysection'), 'action=edit'.$commenturl, '', '', '',  $hint );

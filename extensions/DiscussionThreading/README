@@ -42,7 +42,7 @@ Using Wikis for project management and collaboration.  Many of the older users w
 
 == Installation ==
 
-Installation is straightforward for REL1_11 and greater because hooks were added in Linker.php that eliminated the need for patching.  However, if you are using a version below REL1_11, you will have to patch as described in the [[Extension:DiscussionThreading/doc#Installation_Instructions|installation instructions]].
+Installation is straightforward for REL1_11 and greater because hooks were added in Linker.php that eliminated the need for patching.
 
 See [http://www.mediawiki.org/wiki/Extension:DiscussionThreading/doc#DiscussionThreading_Extension_Download_and_Installation Installation Instructions]
 
@@ -68,8 +68,6 @@ Has the following hooks:
 ###
 	$wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
 </pre>
-
-Patches required to Linker.php in all versions up to 1.11 - after that version, no patching required
 
 == Indenting Headers ==
 
