@@ -348,12 +348,13 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'signaturelogpage' => 'Lëscht vun den Ënnerschreften',
 	'signature-desc' => "Aktivéiert d'[[Special:SignDocument|ënnerschreiwen]] vun Dokumenten",
-	'signaturelogpagetext' => "Dëst ass d'Lëscht vun [[Special:SignDocument|allen Ënnnerschreften déi op dëst Dokument derbäigesat goufen]].",
+	'signaturelogpagetext' => "Dëst ass d'Lëscht vun [[Special:SignDocument|allen Ënnnerschrëften déi op dëst Dokument derbäigesat goufen]].",
 	'signaturelogentry' => "huet d'Dokument $1 ënnerschriwwen",
 	'right-sigadmin' => 'Ënnerschreiwe vun Dokuementer geréieren',
 	'right-createsigndocument' => 'Dokumenter uleeën déi ënnerschriwwe kënne ginn',

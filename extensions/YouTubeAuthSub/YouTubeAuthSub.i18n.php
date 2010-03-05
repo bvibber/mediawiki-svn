@@ -1761,7 +1761,7 @@ $messages['lad'] = array(
 $messages['lb'] = array(
 	'youtubeauthsub' => 'YouTube Video eroplueden',
 	'youtubeauthsub-desc' => 'Erlaabt de Benotzer fir [[Special:YouTubeAuthSub|Videoen direkt op YouTube eropzelueden]]',
-	'youtubeauthsub_info' => 'Fir ee Video op YouTube eropzelueden, deen fir op eng Säit anzebannen, gitt w.e.g. dës Informatiounen un:',
+	'youtubeauthsub_info' => 'Fir ee Video op YouTube eropzelueden, a fir deen op eng Säit anzebannen, gitt w.e.g. dës Informatiounen un:',
 	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_description' => 'Beschreiwung',
 	'youtubeauthsub_password' => 'YouTube Passwuert',
@@ -1781,7 +1781,7 @@ YouTube brauch e bëssen Zäit fir äre Video ze verschaffen, do wéint kéint e
 Fir äre Video an eng Wiki-Säit anzebannen, gitt w.e.g. de folgende Code an eng Säit an:
 
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => "Fir ee Video eropzelueden musst Dir iech fir d'éischt op YouTube eraloggen.",
+	'youtubeauthsub_authsubinstructions' => "Fir ee Video eropzeluede musst Dir Iech fir d'éischt op YouTube eraloggen.",
 	'youtubeauthsub_uploadhere' => 'Äre Video vun hei eroplueden:',
 	'youtubeauthsub_uploadbutton' => 'Eroplueden',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.

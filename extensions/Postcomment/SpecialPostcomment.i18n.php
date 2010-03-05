@@ -593,6 +593,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -600,7 +601,7 @@ $messages['lb'] = array(
 	'postcomment_discussionprotected' => 'Dës Diskussiounssäit gouf fir weider Ännerunge gespaart.',
 	'postcomment_notloggedin' => 'Dir sidd net ugemellt.',
 	'postcomment_youareloggedinas' => 'Dir sidd als $1 ugemellt',
-	'postcomment_addcommentdiscussionpage' => "Schreiwt är Bmierkung op d'Diskussiounssäit",
+	'postcomment_addcommentdiscussionpage' => "Schreift Är Bemierkung op d'Diskussiounssäit",
 	'postcomment_leavemessagefor' => 'E Message fir de(n) $1 hannerloossen',
 	'postcomment_post' => 'Schécken',
 	'postcomment_on' => 'Den',

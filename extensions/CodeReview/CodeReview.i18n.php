@@ -4847,6 +4847,7 @@ $messages['ka'] = array(
 	'code-status-new' => 'ახალი',
 	'code-status-fixme' => 'შემოწმება',
 	'code-status-resolved' => 'მოგვარებულია',
+	'code-status-ok' => 'ok',
 	'code-revfilter-cr_status' => 'სტატუსი = $1',
 	'code-revfilter-cr_author' => 'ავტორი = $1',
 	'code-rev-submit' => 'ცვლილებების შენახვა',
@@ -4854,6 +4855,7 @@ $messages['ka'] = array(
 	'codereview-subtitle' => '$1-სთვის',
 	'codereview-reply-link' => 'პასუხი',
 	'repoadmin-new-button' => 'შექმნა',
+	'repoadmin-edit-button' => 'კარგი',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -406,7 +406,7 @@ es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.',
  * @author Robby
  */
 $messages['lb'] = array(
-	'newusernotifsubj' => 'Informatioun iwwer e neie Benotzer op $1',
+	'newusernotifsubj' => 'Informatioun iwwer en neie Benotzer op $1',
 	'newusernotif-desc' => 'Schéckt eng Informatioun per e-Mail wann e neie Benotzerkont opgemaach gëtt',
 	'newusernotifbody' => 'Bonjour $1,
 

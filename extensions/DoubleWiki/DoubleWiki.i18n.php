@@ -329,10 +329,11 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'doublewiki-desc' => 'Weist eng Säit an hir Iwwersetzung aus enger anerer Wiki an zwou Kolonnen op der selweschter Säit',
+	'doublewiki-desc' => 'Weist eng Säit an hir Iwwersetzung aus enger anerer Wiki an zwou Kolonnen op derselwechter Säit',
 );
 
 /** Limburgish (Limburgs)

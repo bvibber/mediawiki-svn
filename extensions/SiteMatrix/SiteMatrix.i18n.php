@@ -1591,9 +1591,10 @@ $messages['sr-el'] = array(
 
 /** Swati (SiSwati)
  * @author Jatrobat
+ * @author Sibande
  */
 $messages['ss'] = array(
-	'sitematrix-language' => 'Lúlwîmi',
+	'sitematrix-language' => 'Lulwimi',
 );
 
 /** Seeltersk (Seeltersk)

@@ -500,6 +500,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'იგზავნება...',
+	'communityvoice-ratings-scale-status-thanks' => 'გმადლობთ ხმის მიცემისათვის!',
 );
 
 /** Khmer (ភាសាខ្មែរ)
