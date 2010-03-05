@@ -143,7 +143,7 @@ mw.ApiProxy = { };
 	$.browseFile = function( options ) {
 	
 		// Reset local vars: 
-		// NOTE: ( Again this makes the system not work with multiple concurent proxy requests ) 
+		// NOTE: ( Again this makes the system not work with multiple concurrent proxy requests ) 
 		proxyCallback = false;
 		frameProxyOk = false;
 		proxyTimeoutCallback = false;
@@ -206,21 +206,23 @@ mw.ApiProxy = { };
 		$j( options.target ).append( 
 			$j('<div />').loadingSpinner()
 		);
-		
-		var uploadDialogInterface = new mw.UploadDialogInterface({
-			'uploadHandlerAction' : function( action ){
-				mw.log(	'apiProxy uploadActionHandler:: ' + action );
-				// Send action to remote frame 
-				mw.ApiProxy.sendServerMsg( {
-					'apiUrl' : options.apiUrl, 
-					'frameName' : iFrameName,
-					'frameMsg' : {
-						'action' : 'uploadHandlerAction',
-						'uiAction' :  action
-					}
-				} );
-			}
-		});
+		// make sure we have the dialog interface:
+		mw.load( 'mw.UploadInterface', function(){
+			var uploadDialogInterface = new mw.UploadDialogInterface( {
+				'uploadHandlerAction' : function( action ){
+					mw.log(	'apiProxy uploadActionHandler:: ' + action );
+					// Send action to remote frame 
+					mw.ApiProxy.sendServerMsg( {
+						'apiUrl' : options.apiUrl, 
+						'frameName' : iFrameName,
+						'frameMsg' : {
+							'action' : 'uploadHandlerAction',
+							'uiAction' :  action
+						}
+					} );
+				}
+			} );
+		} );
 		
 		// Setup the proxy scope callback to display the upload unhide the iframe upload form 
 		proxyCallback = function( iframeData ) {
@@ -847,6 +849,7 @@ mw.ApiProxy = { };
 			}
 			s += '" ';
 		}
+		
 		// Close up the iframe: 
 		s += '></iframe>';
 		
@@ -854,12 +857,10 @@ mw.ApiProxy = { };
 		if( ! options[ 'target' ] ){
 			options[ 'target' ] = 'body';
 		}
+		
 		// Append to target
 		$j( options['target'] ).append( s );
-		mw.log( 'append: ' + s + ' to: ' + $j( options['target'] ) );
-		mw.log(" lenth of target: " + options['target'].length );
-		mw.log('len of: ' + options['name'] + '::' + $j( '#' + options['name'] ).length );
-		mw.log('len target len: ' + $j( options['target'] ).find( '#' + options['name'] ).length );
+		
 		// Setup the onload callback		
 		$j( '#' + options['name'] ).get( 0 ).onload = function() {
 			if( ! options.persist ){

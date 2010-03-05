@@ -279,25 +279,33 @@ ctrlBuilder.prototype = {
 		}			
 		this.fullscreenMode = true;		
 		
-		// Add the css fixed fullscreen black overlay:
-		$j( '<div />' )
-		.addClass( 'mw-fullscreen-overlay' )
-		// Set some arbitrary high z-index
-		.css('z-index', mw.getConfig( 'fullScreenIndex' ) -1) 
-		.appendTo('body')
-		.hide()
-		.fadeIn("slow");
-		
-		
+		// Add the css fixed fullscreen black overlay as a sibling to the video element
+		$interface.after( 
+			$j( '<div />' )
+			.addClass( 'mw-fullscreen-overlay' )
+			// Set some arbitrary high z-index
+			.css('z-index', mw.getConfig( 'fullScreenIndex' ) ) 		
+			.hide()
+			.fadeIn("slow")
+		);			
 		
 		// Change the interface to absolute positioned: 
 		this.windowPositionStyle = $interface.css( 'position' );
 		this.windowZindex = $interface.css( 'z-index' );
 		
+		// Change the z-index of the interface
 		$interface.css( {
 			'position' : 'fixed',
-			'z-index' : mw.getConfig( 'fullScreenIndex' )
+			'z-index' : mw.getConfig( 'fullScreenIndex' ) + 1
 		} );
+		
+		
+		
+		// Empty out the parent absolute index
+		_this.parentsAbsolute = [];		
+		
+		// Hide the body scroll bar
+		$j('body').css( 'overflow', 'hidden' );
 		
 		// Get the base offset: 
 		this.windowOffset = $interface.offset();		
@@ -308,7 +316,8 @@ ctrlBuilder.prototype = {
 		if( $interface.offsetParent().get(0).tagName.toLowerCase() != 'body' ) {
 			topOffset = -this.windowOffset.top + 'px';
 			leftOffset = -this.windowOffset.left + 'px';
-		}
+		}			
+		
 		// Resize interface container		
 		$interface.animate( {			
 			'top' : topOffset,
@@ -316,6 +325,16 @@ ctrlBuilder.prototype = {
 			'width' : $j( window ).width(),
 			'height' :  $j( window ).height(),
 			'overlow' : 'hidden'		
+		}, function(){
+			// Remove absolute css of the interface parents
+			$interface.parents().each( function() {
+				mw.log(' parent : ' + $j( this ).attr('id' ) + ' class: ' + $j( this ).attr('class') + ' pos: ' +  $j( this ).css( 'position' ) );  
+				if( $j( this ).css( 'position' ) == 'absolute' ) {				
+					_this.parentsAbsolute.push( $j( this ) );				
+					$j( this ).css( 'position', null );
+					mw.log(' should update position: ' +  $j( this ).css( 'position' ) );
+				}
+			} );
 		} )
 		
 		// Set the player height width: 
@@ -419,7 +438,17 @@ ctrlBuilder.prototype = {
 				'overlow' : 'visible',
 				'top' : null,
 				'left' : null 
+			} );					
+			
+			//Restore absolute layout of parents:			
+			$j.each( _this.parentsAbsolute, function( na, element  ){
+				$j( element ).css( 'position', 'absolute' );
 			} );
+			_this.parentsAbsolute = null;
+			
+			// Restore the body scroll bar
+			$j('body').css( 'overflow', 'auto' );
+			
 		} );
 		// Restore the player: 
 		$j( embedPlayer ).animate( {
@@ -1297,7 +1326,7 @@ ctrlBuilder.prototype = {
 						// Options binding:
 						.menu( {
 							'content' : ctrlObj.getOptionsMenu(),
-							'zindex' : mw.getConfig( 'fullScreenIndex' ),		
+							'zindex' : mw.getConfig( 'fullScreenIndex' ) + 1, 		
 							'positionOpts': {
 								'directionV' : 'up',								
 								'offsetY' : 30,
