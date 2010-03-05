@@ -41,6 +41,15 @@ class CodeRevision {
 			}
 		}
 		$rev->mCommonPath = $common;
+
+		// Check for ignored paths
+		global $wgCodeReviewDeferredPaths;
+		foreach( $wgCodeReviewDeferredPaths as $defer ) {
+			if( preg_match( $defer, $rev->commonPath ) ) {
+				$rev->mStatus = 'deferred';
+				break;
+			}
+		}
 		return $rev;
 	}
 
