@@ -13,6 +13,7 @@ $messages['en'] = array(
 	'intersection_toomanycats'   => 'Error: Too many categories!',
 	'intersection_noresults'     => 'Error: No results!',
 	'intersection_noincludecats' => 'Error: You need to include at least one category, or specify a namespace!',
+	'intersection_inline_delimiter' => ', ' //probably don't need to translate
 );
 
 /** Message documentation (Message documentation)
@@ -20,6 +21,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'intersection-desc' => 'Short description of the Intersection extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'intersection_inline_delimiter' => 'Seperator when used in inline mode. Probably should not translate.',
 );
 
 /** Afrikaans (Afrikaans)

@@ -73,6 +73,7 @@ function DynamicPageList( $input ) {
 	$sEndList = '</ul>';
 	$sStartItem = '<li>';
 	$sEndItem = '</li>';
+	$bDoNotEndLastItem = false; // control putting $sEndItem after last item
 
 	$bUseGallery = false;
 	$bGalleryFileSize = false;
@@ -177,12 +178,22 @@ function DynamicPageList( $input ) {
 						$sEndList = '';
 						$sStartItem = '';
 						$sEndItem = '<br />';
+						$bDoNotEndLastItem = false;
 						break;
 					case 'ordered':
 						$sStartList = '<ol>';
 						$sEndList = '</ol>';
 						$sStartItem = '<li>';
 						$sEndItem = '</li>';
+						$bDoNotEndLastItem = false;
+						break;
+					case 'inline':
+						//aka comma seperated list
+						$sStartList = '';
+						$sEndList = '';
+						$sStartItem = '';
+						$sEndItem = wfMsgHtml('intersection_inline_delimiter');
+						$bDoNotEndLastItem = true;
 						break;
 					case 'unordered':
 					default:
@@ -190,6 +201,7 @@ function DynamicPageList( $input ) {
 						$sEndList = '</ul>';
 						$sStartItem = '<li>';
 						$sEndItem = '</li>';
+						$bDoNotEndLastItem = false;
 						break;
 				}
 				break;
@@ -531,7 +543,9 @@ function DynamicPageList( $input ) {
 
 	//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 	//or something similar if the list uses other startlist/endlist
+	$rowCount = $dbr->numRows( $res );
 	while ($row = $dbr->fetchObject( $res ) ) {
+		$rowCount--;
 		$title = Title::makeTitle( $row->page_namespace, $row->page_title);
 		$output .= $sStartItem;
 		if ( true == $bAddFirstCategoryDate ) {
@@ -576,7 +590,9 @@ function DynamicPageList( $input ) {
 		} else {
 			$output .= $categoryDate;
 			$output .= $sk->link( $title, htmlspecialchars( $titleText ), $aLinkOptions, $query, array( 'forcearticlepath', 'known' ) );
-			$output .= $sEndItem . "\n";
+			if (!($bDoNotEndLastItem && $rowCount === 0)) { 
+				$output .= $sEndItem . "\n";
+			}
 		}
 	}
 
