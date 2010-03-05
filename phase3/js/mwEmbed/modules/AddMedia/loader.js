@@ -13,7 +13,7 @@
 	mw.addClassFilePaths( {
 		"$j.fn.dragDropFile"	: "modules/AddMedia/jquery.dragDropFile.js",
 			
-		"mw.UploadForm": "modules/AddMedia/mw.UploadForm.js",
+		"mw.UploadForm"			: "modules/AddMedia/mw.UploadForm.js",
 		
 		"mw.UploadHandler"		: "modules/AddMedia/mw.UploadHandler.js",
 		"mw.UploadInterface"	: "modules/AddMedia/mw.UploadInterface.js",

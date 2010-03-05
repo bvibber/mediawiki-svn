@@ -1,5 +1,5 @@
 /**
- * simple form output jquery binding
+ * Simple form output jquery binding
  * enables dynamic form output to a given target
  *
  */
@@ -96,10 +96,8 @@ mw.UploadForm = { };
 				return false;
 			}
 			options.eToken = eToken;
-			// Add the upload form html: 
-			$j( options.target ).html(
-				getUploadForm( options )
-			);			
+			// Add the upload form to the options target:  			
+			addUploadForm( options );
 						
 		
 			// Set the target with the form output:
@@ -117,35 +115,41 @@ mw.UploadForm = { };
 				}
 			} );
 			
-			// Do destination fill
-			$j( "#wpUploadFile" ).change( function() {
-				var path = $j( this ).val();
-				// Find trailing part
-				var slash = path.lastIndexOf( '/' );
-				var backslash = path.lastIndexOf( '\\' );
-				var fname;
-				if ( slash == -1 && backslash == -1 ) {
-					fname = path;
-				} else if ( slash > backslash ) {
-					fname = path.substring( slash + 1, 10000 );
-				} else {
-					fname = path.substring( backslash + 1, 10000 );
-				}
-				fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
-				
-				// Output result
-				$j( "#wpDestFile" ).val( fname );
-				
-				// Do destination check
-				$j( "#wpDestFile" ).doDestCheck( {
-					'warn_target':'#wpDestFile-warning'
+			
+			// Do local destination fill ( if we are local ) 
+			// Otherwise its handled via mw.ApiProxy.browseFile selectFileCb option
+			if( mw.isLocalDomain( options.api_target ) ) {					
+				$j( "#wpUploadFile" ).change( function() {
+					var path = $j( this ).val();
+					// Find trailing part
+					var slash = path.lastIndexOf( '/' );
+					var backslash = path.lastIndexOf( '\\' );
+					var fname;
+					if ( slash == -1 && backslash == -1 ) {
+						fname = path;
+					} else if ( slash > backslash ) {
+						fname = path.substring( slash + 1, 10000 );
+					} else {
+						fname = path.substring( backslash + 1, 10000 );
+					}
+					fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
+					
+					// Output result
+					$j( "#wpDestFile" ).val( fname );
+					
+					// Do destination check
+					$j( "#wpDestFile" ).doDestCheck( {
+						'warn_target':'#wpDestFile-warning'
+					} );
 				} );
-			} );
+				
+			}
 
 
-			// Do destination check:
+			// Do remote or local destination check:
 			$j( "#wpDestFile" ).change( function() {			
 				$j( "#wpDestFile" ).doDestCheck( {
+					'apiUrl' : options.api_target,
 					'warn_target':'#wpDestFile-warning'
 				} );
 			} );
@@ -197,6 +201,33 @@ mw.UploadForm = { };
 		} );		
 	}
 	
+	/**
+	* Setup a fileBrowse proxy for a given target
+	*/
+	function setupApiFileBrowseProxy ( $targetFileBrowse, options ) {		
+		// Load the apiProxy ( if its not already loaded )
+		mw.load( 'ApiProxy', function( ) {
+			var fileIframeName = mw.ApiProxy.browseFile( {
+				//Target div to put the iframe browser button:
+				'target' : $targetFileBrowse,
+	
+				// Api url to upload to
+				'apiUrl' : options.api_target,
+	
+				// File Destination Name change callback: 
+				'selectFileCb' : function( fname ) {
+					// Update our local target:
+					$j('#wpDestFile').val( fname );
+					// Run a destination file name check on the remote target 			
+					$j('#wpDestFile').doDestCheck( {
+						'apiUrl' : options.api_target,
+						'warn_target': '#file-warning'
+					} );				
+				}
+				// Error / "prompt" callback
+			} );
+		});		
+	}
 	/**
 	* Get a provider upload links for local upload and remote
 	*/
@@ -290,21 +321,26 @@ mw.UploadForm = { };
 	/**
 	* Get a jquery built upload form 
 	*/
-	function getUploadForm( options ){
+	function addUploadForm( options ){
 	
 		if( ! options.eToken ){
 			mw.log( "Error getUploadForm missing token" );
 			return false;
 		}
 		
-		// Build an upload form:			
-		var $uploadForm = $j( '<form />' ).attr( {
-			'id' : "suf_upload",
-			'name' : "suf_upload", 
-			'enctype' : "multipart/form-data",
-			'action' : options.api_target,
-			'method' : "post"
-		} );
+		// Build an upload form:
+		$j( options.target ).empty().append( 
+			$j( '<form />' ).attr( {
+				'id' : "suf_upload",
+				'name' : "suf_upload", 
+				'enctype' : "multipart/form-data",
+				'action' : options.api_target,
+				'method' : "post"
+			} )
+		);
+		
+		//Set the uploadForm target
+		var $uploadForm = $j( options.target ).find('#suf_upload');
 		
 		// Add hidden input
 		$uploadForm.append(
@@ -334,7 +370,7 @@ mw.UploadForm = { };
 		// Add upload File input 
 		$uploadForm.append(
 			$j( '<label />' ).attr({ 
-				'for' : "wpUploadFile"
+				'for' : "file-name"
 			})
 			.text( gM( 'mwe-select_file' ) ),
 			
@@ -353,13 +389,13 @@ mw.UploadForm = { };
 				} )
 				.css( 'display', 'inline' )
 			);						
-		} else { 
+		} else {
 			$uploadForm.append( 
 				$j( '<div />' )
 				.addClass( 'remote-browse-file' )
 				.loadingSpinner()
 			)
-			setupApiFileBrowseProxy( 
+			setupApiFileBrowseProxy(
 				$uploadForm.find('.remote-browse-file' ),
 				options
 			);
@@ -370,7 +406,7 @@ mw.UploadForm = { };
 			$j( '<br />' ),
 			$j( '<label />' )
 			.attr({
-				'for' : "wpUploadDescription"
+				'for' : "file-desc"
 			})
 			.text( gM( 'mwe-summary' ) ),
 			
@@ -479,34 +515,6 @@ mw.UploadForm = { };
 		
 		return $uploadForm;
 	};
-	
-	/**
-	* Setup a fileBrowse proxy for a given target
-	*/
-	function setupApiFileBrowseProxy ( $targetFileBrowse, options ) {
-		// Load the apiProxy ( if its not already loaded )
-		mw.load( 'ApiProxy', function( ) {		
-			var fileIframeName = mw.ApiProxy.browseFile( {
-				//Target div to put the iframe browser button:
-				'target' : $targetFileBrowse,
-	
-				// Api url to upload to
-				'apiUrl' : options.api_target,
-	
-				// File Destination Name change callback: 
-				'selectFileCb' : function( fname ) {
-					// Update our local target:
-					$j('#file-name').val( fname );
-					// Run a destination file name check on the remote target 			
-					$j('#file-name').doDestCheck( {
-						'apiUrl' : options.api_target,
-						'warn_target': '#file-warning'
-					} );				
-				}
-				// Error / "prompt" callback
-			} );
-		});		
-	}
 	 
 
 } )( window.mw.UploadForm );

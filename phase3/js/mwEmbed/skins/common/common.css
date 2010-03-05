@@ -330,6 +330,9 @@ ui-widget-overlay{
 .ui-widget-content input {
 	padding: 5px;
 }
+.ui-widget-content a {
+	color:#009;
+}
 
 ul.ui-provider-selection {
 	list-style-type: none;

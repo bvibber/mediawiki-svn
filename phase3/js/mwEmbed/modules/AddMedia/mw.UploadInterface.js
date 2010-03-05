@@ -18,23 +18,23 @@ mw.addMessages({
 	"mwe-uploaded-status" : "Uploaded",
 	"mwe-uploaded-time-remaining" : "Time remaining: $1"
 });
+
 /**
- * Base UploadInterface object  
+ * Set the base uploadInterface   
  */
 mw.UploadInterface = { };
 
-
 /**
- * Dialog Interface
+ * Upload Dialog Interface
  */
-mw.DialogInterface = function( uploadHandler ) {
+mw.UploadDialogInterface = function( uploadHandler ) {
 	// Set a reference the uploadHandler if provided  
 	if( uploadHandler ) {
 		this.uploadHandler = uploadHandler;
 	}
 	return this;
 }
-mw.DialogInterface.prototype = {
+mw.UploadDialogInterface.prototype = {
 	
 	// The following are really state of the upload, not the interface.
 	// we are currently only managing one, so this is okay... for now.
@@ -48,7 +48,7 @@ mw.DialogInterface.prototype = {
 		var _this = this;
 		
 		// Start the "upload" time
-		this.uploadBeginTime = (new Date()).getTime();
+		this.uploadBeginTime = ( new Date() ).getTime();
 		
 		// Remove the old instance if present
 		if( $j( '#upProgressDialog' ).length != 0 ) {

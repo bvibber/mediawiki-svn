@@ -262,6 +262,8 @@ mw.RemoteSearchDriver.prototype = {
 			'apiUrl':  ( wgServer && wgScriptPath ) ? 
 				wgServer + wgScriptPath + '/api.php' : null,
 			'lib': 'mediaWiki',
+			'homepage' : ( wgServer && wgScript ) ? 
+				 wgServer + wgScript : null,
 			'local': true,
 			'tab_img': false
 		},

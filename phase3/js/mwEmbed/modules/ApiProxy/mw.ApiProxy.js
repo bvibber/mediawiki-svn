@@ -207,7 +207,7 @@ mw.ApiProxy = { };
 			$j('<div />').loadingSpinner()
 		);
 		
-		var uploadDialogInterface = new mw.DialogInterface({
+		var uploadDialogInterface = new mw.UploadDialogInterface({
 			'uploadHandlerAction' : function( action ){
 				mw.log(	'apiProxy uploadActionHandler:: ' + action );
 				// Send action to remote frame 
@@ -822,9 +822,7 @@ mw.ApiProxy = { };
 	 * @param {Function} callback Function called once iframe is loaded
 	 */
 	function appendIframe( options, callback ){		
-		var s = '<iframe ';
-		var iframeAttr = ['id', 'name', 'style'];
-		
+		var s = '<iframe ';		
 		// Check for frame name:
 		if( ! options[ 'name' ] ) {
 			options[ 'name' ] = 'mwApiProxyFrame_' + $j('iframe').length;	
@@ -852,13 +850,17 @@ mw.ApiProxy = { };
 		// Close up the iframe: 
 		s += '></iframe>';
 		
+		// Check for the iframe append target ( default "body" tag ) 
 		if( ! options[ 'target' ] ){
 			options[ 'target' ] = 'body';
-		} 		
-		// Append to body if no target set
+		}
+		// Append to target
 		$j( options['target'] ).append( s );
-		
-		// Setup the onload callback
+		mw.log( 'append: ' + s + ' to: ' + $j( options['target'] ) );
+		mw.log(" lenth of target: " + options['target'].length );
+		mw.log('len of: ' + options['name'] + '::' + $j( '#' + options['name'] ).length );
+		mw.log('len target len: ' + $j( options['target'] ).find( '#' + options['name'] ).length );
+		// Setup the onload callback		
 		$j( '#' + options['name'] ).get( 0 ).onload = function() {
 			if( ! options.persist ){
 				// Schedule the removal of the iframe
@@ -870,7 +872,7 @@ mw.ApiProxy = { };
 			if( callback ){
 				callback();		
 			}
-		};				
+		};
 	}
 		
 } )( window.mw.ApiProxy );
