@@ -13,11 +13,11 @@
 *     Dispatches updates to an iframe target for upload proxy
 * 
 */
-mw.addMessages({	
+mw.addMessages( {	
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-uploaded-status" : "Uploaded",
 	"mwe-uploaded-time-remaining" : "Time remaining: $1"
-});
+} );
 
 /**
  * Set the base uploadInterface   
@@ -97,6 +97,7 @@ mw.UploadDialogInterface.prototype = {
 					'height' : '15px'
 				})
 		);
+		
 		// Add the status container
 		$progressContainer.append( $j('<span />' )
 			.attr( 'id', 'up-status-container')
@@ -111,6 +112,7 @@ mw.UploadDialogInterface.prototype = {
 				.text( gM( 'mwe-uploaded-status' ) )				
 			)
 		);
+		
 		// Add the estimated time remaining 
 		$progressContainer.append(
 			$j('<span />')
@@ -118,6 +120,7 @@ mw.UploadDialogInterface.prototype = {
 			.css( 'float', 'right' )
 			.text( gM( 'mwe-uploaded-time-remaining', '' ) )
 		)
+		
 		// Add the status container to dialog div
 		$j( '#upProgressDialog' ).empty().append( $progressContainer	);
 		
@@ -132,10 +135,11 @@ mw.UploadDialogInterface.prototype = {
 	
 	/**
 	 * Update the progress bar to a given completion fraction (between 0 and 1)
-     * NOTE: This progress bar is used for encoding AND for upload with no clear Distinction (might want to fix) 
+     * NOTE: This progress bar is used for encoding AND for upload. The dialog title is set elsewhere
+     * 
      * @param {Float} progress Progress float
-     * @param {Number} [loaded] Bytes loaded
-     * @param {Number} [contentLength] Length of content
+     * @param {Number} [loaded] optional Bytes loaded
+     * @param {Number} [contentLength] optional Length of content
 	 */
 	updateProgress: function( fraction, loaded, contentLength ) {
 		var _this = this;
