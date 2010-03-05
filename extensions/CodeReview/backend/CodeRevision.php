@@ -45,7 +45,7 @@ class CodeRevision {
 		// Check for ignored paths
 		global $wgCodeReviewDeferredPaths;
 		foreach( $wgCodeReviewDeferredPaths as $defer ) {
-			if( preg_match( $defer, $rev->commonPath ) ) {
+			if( preg_match( $defer, $rev->mCommonPath ) ) {
 				$rev->mStatus = 'deferred';
 				break;
 			}
