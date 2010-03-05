@@ -92,9 +92,12 @@ class SubversionPecl extends SubversionAdaptor {
 	}
 
 	function getLog( $path, $startRev = null, $endRev = null ) {
-		return svn_log( $this->mRepo . $path,
+		wfSuppressWarnings();
+		$log = svn_log( $this->mRepo . $path,
 			$this->_rev( $startRev, SVN_REVISION_INITIAL ),
 			$this->_rev( $endRev, SVN_REVISION_HEAD ) );
+		wfRestoreWarnings();
+		return $log;
 	}
 }
 
