@@ -75,7 +75,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				# Add an "edit with form" action link
 				if ( $wgRecordAdminEditWithForm ) {
 					$wgHooks['SkinTemplateTabs'][] = $this;
-					$qs = "wpType={$this->type}&wpRecord=" . $title->getPrefixedText();
+					$qs = "wpType={$this->type}&wpRecord=" . urlencode( $title->getPrefixedText() );
 					$this->acturl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
 				}
 			}
