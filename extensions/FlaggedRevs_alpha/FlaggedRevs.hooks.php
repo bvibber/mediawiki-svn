@@ -145,8 +145,16 @@ class FlaggedRevsHooks {
 		}
 		return true;
 	}
-	
-	public static function markUnderReview( $output, $article, $title, $user, $request ) {
+
+	public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request ) {
+		$fa = FlaggedArticle::getTitleInstance( $title );
+		if( $fa->isReviewable() ) {
+			self::maybeMarkUnderReview( $article, $user, $request );
+		}
+		return true;
+	}
+
+	public static function maybeMarkUnderReview( $article, $user, $request ) {
 		if( !$user->isAllowed( 'review' ) ) {
 			return true; // user cannot review
 		}
@@ -154,7 +162,7 @@ class FlaggedRevsHooks {
 		# NOTE: diff-to-stable views already handled elsewhere.
 		if ( $request->getInt( 'reviewing' ) || $request->getInt( 'rcid' ) ) {
 			global $wgMemc;
-			$key = wfMemcKey( 'unreviewedPages', 'underReview', $title->getArticleId() );
+			$key = wfMemcKey( 'unreviewedPages', 'underReview', $article->getId() );
 			$wgMemc->set( $key, '1', 20 * 60 ); // 20 min
 		}
 		return true;
