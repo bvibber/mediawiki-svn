@@ -48,7 +48,7 @@ class ListChangedArticles extends UnlistedSpecialPage
 			$attribs["title"] = $t->getDBkey() ;
 			$attribs["namespace_id"] = $obj->page_namespace ;
 			$attribs["namespace_name"] = $wgLang->getNsText ( $obj->page_namespace ) ;
-			$ret .= wfElement ( "article" , $attribs ) ;
+			$ret .= Xml::element( "article" , $attribs ) ;
 		}
 
 		$ret .= "</articlelist>" ;

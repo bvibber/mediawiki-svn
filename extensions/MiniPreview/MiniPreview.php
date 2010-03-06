@@ -146,14 +146,14 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 				'style' => "width:{$wgMiniPreviewThumbnailSize}px;height:{$wgMiniPreviewThumbnailSize}px;",
 				'class' => 'MiniPreview_count' ));
 			$html .= wfMsgExt( 'minipreview-files_in_'.$mode , array( 'parsemag' ), $p->image_count );
-			$html .= wfCloseElement ( "div" ) ;
-			$html .= wfCloseElement ( "td" ) ;
-			$html .= wfCloseElement ( "tr" ) ;
-			$html .= wfCloseElement ( "table" ) ;
-			$html .= wfCloseElement ( "div" ) ;
+			$html .= Xml::closeElement( "div" ) ;
+			$html .= Xml::closeElement( "td" ) ;
+			$html .= Xml::closeElement( "tr" ) ;
+			$html .= Xml::closeElement( "table" ) ;
+			$html .= Xml::closeElement( "div" ) ;
 		}
 	}
-	$html .= wfCloseElement ( "div" ) ;
+	$html .= Xml::closeElement( "div" ) ;
 	$output->addHTML( $html );
 
 	return true;
@@ -200,9 +200,9 @@ function wfMiniPreviewGetThumbnail ( $entry , &$image_data ) {
 		$image_url = $image_data[$entry->title]->getTitle()->getLocalURL();
 		$image_name = $image_data[$entry->title]->getTitle()->getText();
 
-		$ret .= wfOpenElement ( 'a' , array ( 'href' => $image_url ));
-		$ret .= wfElement ( 'img' , array ( 'border' => '0', 'style' => $style, 'src' => $thumb_url , 'alt' => $image_name ));
-		$ret .= wfCloseElement ( 'a' );
+		$ret .= Xml::openElement( 'a' , array ( 'href' => $image_url ));
+		$ret .= Xml::element( 'img' , array ( 'border' => '0', 'style' => $style, 'src' => $thumb_url , 'alt' => $image_name ));
+		$ret .= Xml::closeElement ( 'a' );
 	} else { # No such file
 		$ret .= wfMsg ( 'minipreview-no_more_files_here' ) ;
 	}
