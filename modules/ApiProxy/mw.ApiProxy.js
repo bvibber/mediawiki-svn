@@ -47,21 +47,11 @@ mw.ApiProxy = { };
 	
 // ApiProxy scoped functions: 
 ( function( $ ) {
-	 	
-	// Callback function for client requests 
-	var proxyCallback = null;
+	 		
+	// Proxy Context stores an array of proxy context requests
+	// this enables multiple simultaneous requests to be processed. 
+	var proxyContext = [];
 	
-	var proxyTimeoutCallback = null;
-	
-	// FrameProxy Flag: 	
-	var frameProxyOk = false;
-	
-	// The last run api request data object
-	var currentApiReq = { };
-	
-	// The url for the last api request target.
-	var currentServerApiUrl = null;
-			
 	/**  
 	* Takes a requestQuery, executes the query and then calls the callback
 	*  sets the local callback to be called once requestQuery completes
@@ -71,83 +61,34 @@ mw.ApiProxy = { };
 	* @param {Function} callback Function called once the request is complete
 	* @param {Function} [callbackTimeout] Optional Function called on api timeout 
 	*/
-	$.doRequest = function( apiUrl, requestQuery, callback , callbackTimeout ) {			
-		
-		// Reset local vars:
-		proxyCallback = false;
-		frameProxyOk = false;
-		proxyTimeoutCallback = false;
-			
+	$.doRequest = function( apiUrl, requestQuery, callback , callbackTimeout ) {		
 		// Sanity check: 
 		if ( mw.isLocalDomain( apiUrl ) ) {
 			mw.log( "Error: trying to proxy local domain? " );
 			return false;
-		}
+		}			
 		
-		mw.log( "doRequest:: " + JSON.stringify( requestQuery ) );
+		// Generate a new context object: (its oky that optional arguments are null ) 
+		var context = getNewContext({
+			'apiUrl' :  apiUrl,// currentServerApiUrl
+			'apiReq' : requestQuery,
+			'callback' : callback,			
+			'timeoutCb' : callbackTimeout			
+		} ); 
 		
-        // Set local scope current request
-        // ( presently the api proxy only support sequential requests
-        // for multiple simultaneous requests we will need to do some refactoring )
-         
-		currentApiReq = requestQuery;
-		currentServerApiUrl = apiUrl;
-		
-		// Setup the callback:		
-		proxyCallback = callback;
-		
-		// Setup the timeout callback:
-		proxyTimeoutCallback = callbackTimeout;
+		mw.log( "doRequest:: " + JSON.stringify( requestQuery ) );		
 		
 		// Do the proxy req:
-		doFrameProxy( requestQuery );
+		doFrameProxy( context );
 	}
 
-	/**
-	 * The nested iframe action that passes its result back up to the top frame instance 
-	 * 
-	 * Entry point for hashResult from nested iframe
-	 *
-	 * @param {Object} hashResult Value to be sent to parent frame	 
-	 */
-	$.nested = function( hashResult ) {
-		// Close the loader if present: 
-		mw.closeLoaderDialog();
-		
-		mw.log( '$.proxy.nested callback :: ' + decodeURIComponent( hashResult ) );
-		frameProxyOk = true;
-		
-		// Try to parse the hash result 
-		try {
-			var resultObject = JSON.parse( decodeURIComponent( hashResult ) );
-		} catch ( e ) {
-			mw.log( "Error could not parse hashResult" );
-		}
-		
-		// Special callback to frameProxyOk flag 
-		// (only used to quickly test the proxy connection)   
-		if ( resultObject.state == 'ok' ) {
-			return ;
-		}
-		
-		// Pass the result object to the callback:
-		proxyCallback( resultObject );
-	}
-	
 	/**
 	* Generates a remote browse file iframe window
 	*	usefull for "uploading" cross domain
 	* 
 	* @param {Function} callback Function to host the 
 	*/
-	$.browseFile = function( options ) {
-	
-		// Reset local vars: 
-		// NOTE: ( Again this makes the system not work with multiple concurrent proxy requests ) 
-		proxyCallback = false;
-		frameProxyOk = false;
-		proxyTimeoutCallback = false;
-		
+	$.browseFile = function( options ) {		
 		if( ! options ) {
 			options = {};
 		}
@@ -161,20 +102,63 @@ mw.ApiProxy = { };
 			return false; 
 		}
 		
-		// Update the current apiUrl:
-		currentServerApiUrl = options.apiUrl;
+		// Setup the context with the callback
+		var context = getNewContext({
+			'apiUrl' : options.apiUrl,
+			// Setup the proxy scope callback to display the upload unhide the iframe upload form 
+			'callback' : function( iframeData ) {
+				// Process fileBrowse callbacks ::
+				
+				// check for basic status "ok"
+				if( iframeData['status'] == 'ok' ) {
+					// Hide the loading spinner
+					$j( options.target ).find('.loading_spinner').fadeOut('fast');
+					mw.log("iframe ready callback");
+					$j( '#' + iFrameName ).fadeIn( 'fast' );	
+					return ;
+				}
+				
+				// Else check for event 
+				if( iframeData['event'] ) {
+					switch( iframeData['event'] ) {
+						case 'selectFileCb':
+							if( options.selectFileCb ) {
+								options.selectFileCb( iframeData['fileName'] );
+							}
+						break
+						case 'uploadUI':
+							if( uploadDialogInterface[ iframeData['method'] ] ){
+								var args = iframeData['arguments'];				
+								mw.log( "Do dialog interface: " + iframeData['method'] + ' args: ' + args[0] + ', ' + args[1] + ', ' + args[2] );		
+								uploadDialogInterface[ iframeData['method'] ](
+									args[0], args[1], args[2]
+								);
+							}
+						break;	
+						default:
+							mw.log(" Error unreconginzed event " + iframeData['event'] );
+					}				
+				}						
+			}
+		}); 
 		
+				
+		// Update the current apiUrl:
+		context[ 'apiUrl' ] = options.apiUrl;
+		
+		// Setup the default width and height: 
 		if( ! options.width ) {
 			options.width = 270;		
 		}
 		if( ! options.height ) {
 			options.height = 27;
 		}
+		
 		var iFrameName = ( options.iframeName ) ? options.iframeName : 'fileBrowse_' + $j('iframe').length;		
 		// Setup an object to be packaged into the frame
 		var iFrameRequest ={
-			'clientFrame' : getClientFrame(),
-			'action' : 'browseFile'			
+			'clientFrame' : getClientFrame( context ),
+			'action' : 'browseFile'
 		};
 		
 		var frameStyle = 'display:none;border:none;overflow:hidden;'
@@ -186,34 +170,27 @@ mw.ApiProxy = { };
 		
 		// Append the browseFile iframe to the target:  
 		appendIframe( {
+			'context' : context,
 			'persist' : true,
 			'style' : frameStyle,
-			'name' : iFrameName,
-			'src' : getServerFrame(  options.apiUrl ),
+			'name' : iFrameName,			
 			'request' : iFrameRequest,
 			'target' : options.target
-		},  function( ) {
-			// Add a 10 second timeout for setting up the nested child callback (after iframe load)		
-			setTimeout( function() {
-				if ( ! frameProxyOk ) {
-					// we timmed out no api proxy (should make sure the user is "logged in")
-					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
-					proxyNotReadyDialog();
-				}
-			}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
 		} );
+		
 		// Add a loading spinner to the target
 		$j( options.target ).append( 
-			$j('<div />').loadingSpinner()
+			$j( '<div />' ).loadingSpinner()
 		);
-		// make sure we have the dialog interface:
+		
+		// Make sure we have the dialog interface:
 		mw.load( 'mw.UploadInterface', function(){
 			var uploadDialogInterface = new mw.UploadDialogInterface( {
 				'uploadHandlerAction' : function( action ){
 					mw.log(	'apiProxy uploadActionHandler:: ' + action );
 					// Send action to remote frame 
 					mw.ApiProxy.sendServerMsg( {
-						'apiUrl' : options.apiUrl, 
+						'apiUrl' : options.apiUrl,
 						'frameName' : iFrameName,
 						'frameMsg' : {
 							'action' : 'uploadHandlerAction',
@@ -222,43 +199,7 @@ mw.ApiProxy = { };
 					} );
 				}
 			} );
-		} );
-		
-		// Setup the proxy scope callback to display the upload unhide the iframe upload form 
-		proxyCallback = function( iframeData ) {
-			// Process fileBrowse callbacks ::
-			
-			// check for basic status "ok"
-			if( iframeData['status'] == 'ok' ) {
-				// Hide the loading spinner
-				$j( options.target ).find('.loading_spinner').fadeOut('fast');
-				mw.log("iframe ready callback");
-				$j( '#' + iFrameName ).fadeIn( 'fast' );	
-				return ;
-			}
-			
-			// Else check for event 
-			if( iframeData['event'] ) {
-				switch( iframeData['event'] ) {
-					case 'selectFileCb':
-						if( options.selectFileCb ) {
-							options.selectFileCb( iframeData['fileName'] );
-						}
-					break
-					case 'uploadUI':
-						if( uploadDialogInterface[ iframeData['method'] ] ){
-							var args = iframeData['arguments'];				
-							mw.log( "Do dialog interface: " + iframeData['method'] + ' args: ' + args[0] + ', ' + args[1] + ', ' + args[2] );		
-							uploadDialogInterface[ iframeData['method'] ](
-								args[0], args[1], args[2]
-							);
-						}
-					break;	
-					default:
-						mw.log(" Error unreconginzed event " + iframeData['event'] );
-				}				
-			}						
-		}
+		} );		
 		
 		// Return the name of the browseFile frame
 		return iFrameName;
@@ -279,10 +220,15 @@ mw.ApiProxy = { };
 			return false;
 		}
 		
+		//Setup a new context
+		var context = getNewContext({
+			'apiUrl' : options.apiUrl
+		});
+		
 		// Send a msg to the server frameName from the server domain
 		// Setup an object to be packaged into the frame
-		var iFrameRequest = {
-			'clientFrame' : getClientFrame(),
+		var iFrameRequest = {			
+			'clientFrame' : getClientFrame( context ),
 			'action' : 'sendFrameMsg',
 			'frameName' : options.frameName,
 			'frameMsg' : options.frameMsg
@@ -291,13 +237,57 @@ mw.ApiProxy = { };
 		// Send the iframe request:   	
 		appendIframe( {
 			'persist' : true,
-			'src' : getServerFrame(  options.apiUrl ),
+			'context' : context,
 			'request' : iFrameRequest,
 			'target' : options.target
 		}, function( ) {
 			mw.log( "sendServerMsg iframe done loading" );
 		} );
 	}
+	
+	/**
+	 * The nested iframe action that passes its result back up to the top frame instance 
+	 * 
+	 * Entry point for hashResult from nested iframe
+	 *
+	 * @param {Object} hashResult Value to be sent to parent frame	 
+	 */
+	$.nested = function( hashResult ) {
+		// Close the loader if present: 
+		mw.closeLoaderDialog();
+		
+		mw.log( '$.proxy.nested callback :: ' + decodeURIComponent( hashResult ) );	
+		
+		// Try to parse the hash result 
+		try {
+			var resultObject = JSON.parse( decodeURIComponent( hashResult ) );
+		} catch ( e ) {
+			mw.log( "Error could not parse hashResult" );
+		}
+		// Check for the contextKey
+		if( ! resultObject.contextKey ) {			
+			mw.log( "Error missing context key in nested callback" );
+			return false;
+		}
+		
+		// Get the context via contextKey
+		var context = getContext( resultObject.contextKey  );
+		
+		// Set the loaded flag to true. ( avoids timeout calls )
+		context[ 'proxyLoaded' ] = true;
+			
+		// Special callback to frameProxyOk flag 
+		// (only used to quickly test the proxy connection)   
+		if ( resultObject.state == 'ok' ) {
+			return ;
+		}
+		
+		// Check for the context callback: 
+		if( context ['callback'] ){
+			context ['callback']( resultObject );
+		}			
+	}
+	
 	
 	/**
 	* Handle a server msg
@@ -342,10 +332,50 @@ mw.ApiProxy = { };
 	*/	
 	
 	/**
-	* Get the client frame path ( within mwEmbed )
+	* Get new context (creates a new context and stores it in the proxyContext local global  
+	* @param {Object} contextVars Initial contextVars
+	*/ 
+	function getNewContext ( contextVars ) {		
+		// Create a ~ sufficently ~ unique context key 
+		var contextKey = new Date().getTime() * Math.random();
+		proxyContext [ contextKey ] = contextVars;
+						
+		// Setup the proxy loaded flag for this context:
+		proxyContext[ contextKey ][ 'proxyLoaded' ] = false; // frameProxyOk
+		
+		// Set a local pointer to the contextKey	
+		proxyContext[ contextKey ]['contextKey' ] = contextKey;
+		
+		// Return the proxy context
+		return proxyContext [ contextKey ];
+	}
+	
+	/**
+	* Get a context from a contextKey
+	* @param {String} contextKey Key of the context object to be returned
+	* @return context object
+	*	false if context object can not be found
 	*/
-	function getClientFrame() {
-		return mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html';
+	function getContext ( contextKey ){
+		if( ! proxyContext [ contextKey ] ){
+			mw.log( "Error: contextKey not found:: " + contextKey );
+			var cat = proxyContext;
+			debugger;
+			return false;
+		}
+		return proxyContext [ contextKey ];;
+	}
+	
+	/**
+	* Get the client frame path 
+	*/
+	function getClientFrame( context ) {
+		// Check if the mwEmbed is on the same server as we are
+		if( mw.isLocalDomain( mw.getMwEmbedPath() ) ){
+			return mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html';
+		} else {
+			// Use the nested callback function
+		}
 	}
 	
 	/**
@@ -362,14 +392,15 @@ mw.ApiProxy = { };
 	* 
 	* @param {URL} apiUrl The url of the api server
 	*/
+	// Include gadget js ( in case the user has not enabled the gadget on that domain )
 	//var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
 	var gadgetWithJS = '';
-	function getServerFrame( apiUrl ) {
-		// Set to local scope currentServerApiUrl if unset by argument
-		if( !apiUrl) {
-			apiUrl = currentServerApiUrl;
+	function getServerFrame( context ) {
+		if( ! context.apiUrl ){
+			mw.log( "Error no context api url " );
+			return false;
 		}
-		var parsedUrl = mw.parseUri( apiUrl );
+		var parsedUrl = mw.parseUri( context.apiUrl );
 		
 		return 	parsedUrl.protocol + '://' + parsedUrl.authority 
 			+ '/w/index.php/MediaWiki:ApiProxy' + gadgetWithJS;
@@ -379,41 +410,24 @@ mw.ApiProxy = { };
 	* Do the frame proxy
 	* 	Writes an iframe with a hashed value of the requestQuery
 	*
+	* @param {Object} context ( the context of the current doFrameProxy call ) 
 	* @param {Object} requestQuery The api request object 
 	*/
-	function doFrameProxy ( requestQuery ) {
+	function doFrameProxy ( context ) {
 		
 		var iframeRequest = {
-			// Client domain frame ( will be approved by the server before sending and reciving msgs )
-			'clientFrame' : getClientFrame(),
+			// Client domain frame ( will be approved by the server before sending and receiving msgs )
+			'clientFrame' : getClientFrame( context ),
 			'action' : 'apiRequest',
-			'request' : requestQuery
+			'request' : context[ 'apiReq' ]
 		}
 				  
-		mw.log( "Do frame proxy request on src: \n" + getServerFrame() + "\n" + JSON.stringify(  requestQuery ) );		
-		appendIframe({
+		mw.log( "Do frame proxy request on src: \n" + getServerFrame( context ) + "\n" + JSON.stringify(  context[ 'apiReq' ] ) );		
+		appendIframe( {	
 			'persist' : true,
-			'src' : getServerFrame(),
-			'request' :  iframeRequest
-		}, function() {		
-			// Add a 10 second timeout for setting up the nested child callback (after page load)
-			
-			// NOTE: once we have a real entry point instead of ( mediaWiki:ApiProxy rewrite) 
-			// this number can be reduced since it won't have to load all the style sheets and
-			// javascript for a normal page view 
-			
-			setTimeout( function() {
-				if ( !frameProxyOk ) {
-					// We timed out no api proxy (should make sure the user is "logged in")
-					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
-					proxyNotReadyDialog();
-				}
-				// NOTE:: todo we could remove the iframe from the dom once the
-				//  request process is complete. 
-				// ( should be part of supporting multiple requests at once refactor) 
-				
-			}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
-		})
+			'request' :  iframeRequest,
+			'context' : context
+		} )
 	}
 	
 	/**
@@ -495,19 +509,21 @@ mw.ApiProxy = { };
 	
 	/**
 	* Dialog to send the user if a proxy to the remote server could not be created 
+	* @param {Object} context 
 	*/
-	function proxyNotReadyDialog() {
+	function proxyNotReadyTimeout( context ) {
+		
 		// See if we have a callback function to call ( do not display the dialog ) 
-		if( proxyTimeoutCallback ) {
-			proxyTimeoutCallback();
-			return ;
-		}
-	
+		if( context[ 'timeoutCb' ] && typeof context[ 'timeoutCb' ] == 'function' ) {
+			context[ 'timeoutCb' ]();
+			return true;
+		}	
 	
 		var buttons = { };
 		buttons[ gM( 'mwe-re-try' ) ] = function() {
 			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );
-			doFrameProxy( currentApiReq );
+			// Re try the same context request:
+			doFrameProxy( context );
 		}
 		buttons[ gM( 'mwe-cancel' ) ] = function() {
 			mw.closeLoaderDialog();
@@ -532,7 +548,7 @@ mw.ApiProxy = { };
 				.text( gM('mwe-log-in-link') )
 			) 
 		)
-		// Add the sequrity note as well: 	
+		// Add the security note as well: 	
 		$dialogMsg.append( 			
 			gM( 'mwe-remember-loging' )  
 		)
@@ -617,7 +633,8 @@ mw.ApiProxy = { };
 		if( ! clientRequest.frameMsg || ! clientRequest.frameName ) {
 			mw.log("Error serverSendFrameMsg without frame msg or frameName" );
 			return false;
-		}				
+		}
+		
 		// Send the message to the target frame
 		top[ clientRequest.frameName ].mw.ApiProxy.handleServerMsg( clientRequest.frameMsg );
 	}
@@ -791,21 +808,36 @@ mw.ApiProxy = { };
 	* @param {msgObj} msgObj Msg to send to client domain
 	*/ 
 	function sendClientMsg( msgObj ) {
+	
+		// Get the client Request: 
+		var clientRequest = getClientRequest();
 		
 		// Get a local reference to the client request		
 		var clientFrame = getClientRequest()['clientFrame'];
 		
 		// Double check that the client is an approved domain before outputting the iframe
 		if( ! isAllowedClientFrame ( clientFrame ) ) {
-			mw.log( "cant send msg to " + clientFrame );
+			mw.log( "Cant send msg to " + clientFrame );
 			return false;
 		}
+		
+		// Double check we have a context key:
+		if( ! clientRequest.contextKey ) {
+			mw.log( "Error: missing context key " );
+			return false;
+		} 
+		
+		
 		var nestName = 'NestedFrame_' + $j( 'iframe' ).length;
 		
 		// Append the iframe to body
 		appendIframe( { 
 			'src' : clientFrame,
-			'request' : msgObj	
+			'request' : msgObj,
+			// Client msgs just have the contextKey ( not the full context )
+			'context' : { 
+				'contextKey' : clientRequest.contextKey
+			}
 		} );				
 	};
 	
@@ -821,10 +853,22 @@ mw.ApiProxy = { };
 	 *  request - the request object to be packaged into the hash url
 	 *  persist - set to true if the iframe should not 
 	 * 			  be removed from the dom after its done loading
-	 * @param {Function} callback Function called once iframe is loaded
 	 */
-	function appendIframe( options, callback ){		
-		var s = '<iframe ';		
+	function appendIframe( options ){	
+		var s = '<iframe ';
+		
+		// check for context 
+		if( ! options[ 'context' ] ) {
+			mw.log("Error missing context");
+			return false;
+		}else{
+			var context =  options[ 'context' ];
+		}
+				
+		if( ! options[ 'src' ] ) {		
+			options[ 'src' ] = getServerFrame( context );
+		}
+		
 		// Check for frame name:
 		if( ! options[ 'name' ] ) {
 			options[ 'name' ] = 'mwApiProxyFrame_' + $j('iframe').length;	
@@ -845,6 +889,11 @@ mw.ApiProxy = { };
 		if( options.src ){
 			s += 'src="' + options.src;
 			if( options.request ){
+			
+				// Add the contextKey to the request 
+				options.request[ 'contextKey' ] = context.contextKey;
+				
+				// Add the escaped version of the request: 
 				s += '#' + encodeURIComponent( JSON.stringify(  options.request ) );
 			}
 			s += '" ';
@@ -864,15 +913,22 @@ mw.ApiProxy = { };
 		// Setup the onload callback		
 		$j( '#' + options['name'] ).get( 0 ).onload = function() {
 			if( ! options.persist ){
-				// Schedule the removal of the iframe
+			
+				// Schedule the removal of the iframe 
+				// We don't call it directly since some browsers seem to call "ready"
+				//  before blocking code is done running   
 				setTimeout( function() {
 					$j('#' +  options[ 'name' ] ).remove();
 				}, 10 );
-			}
-			// Call the onload callback if set:
-			if( callback ){
-				callback();		
-			}
+			}			
+			// Setupt the timeout check: 
+			setTimeout( function() {
+				if ( context[ 'frameProxyOk'] ) {
+					// We timed out no api proxy (should make sure the user is "logged in")
+					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
+					proxyNotReadyTimeout( context );
+				}				
+			}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
 		};
 	}
 		

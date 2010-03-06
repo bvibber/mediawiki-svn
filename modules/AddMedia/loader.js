@@ -90,7 +90,7 @@
 	 
 	// Clone the baseUploadlibs array
 	var mwBaseFirefoggReq = baseUploadlibs.slice( 0 )
-	mwBaseFirefoggReq[0].push('mw.Firefogg');
+	mwBaseFirefoggReq[ 0 ].push( 'mw.Firefogg' );
 	
 	mw.addModuleLoader( 'AddMedia.firefogg', function( callback ) {
 		

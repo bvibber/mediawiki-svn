@@ -93,6 +93,8 @@ var default_firefogg_options = {
 
 /**
 * Setup firefogg jquery binding
+* NOTE: we should have the firefogg binding work the same way as 
+* the upload form binding. 
 */
 ( function( $ ) { 
 	$.fn.firefogg = function( options ) {
@@ -100,9 +102,9 @@ var default_firefogg_options = {
 			options = { };
 	
 		// Add the selector
-		options['selector'] = this.selector;
+		options[ 'selector' ] = this.selector;
 				
-		// Setup the firefogg Firefogg: 
+		// Setup the Firefogg: 
 		var myFogg = new mw.Firefogg( options );
 				
 		if ( myFogg ) {
@@ -189,7 +191,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 	/**
 	 * Rewrite the upload form, or create our own upload controls for local transcoding.
-	 * Called from $j.firefogg(), in mwEmbed.js.
+	 * Called from firefogg() jQuery binding
 	 */
 	doRewrite: function( callback ) {
 		var _this = this;

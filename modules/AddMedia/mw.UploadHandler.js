@@ -74,7 +74,7 @@ var default_bui_options = {
 		// Add the selector
 		options[ 'form_selector' ] = this.selector;			
 		
-		// Setup the firefogg Firefogg: 
+		// Setup the upload Handler
 		var myUpload = new mw.UploadHandler( options );
 				
 		if ( myUpload ) {
@@ -133,13 +133,12 @@ mw.UploadHandler.prototype = {
 			this.apiUrl = mw.getLocalApiUrl();
 		}		
 		
-		// We can't pass around actual function refrences since sometimes the interface
-		// is seperated via iframe #hash messege communication.		
+		// Setup the ui pointer
 		if( options.ui  ){
 			this.ui = options.ui;
 		} else { 					
 			// Setup the default DialogInterface UI
-			this.ui = new mw.DialogInterface();
+			this.ui = new mw.UploadDialogInterface();
 		}		
 		
 		// Setup ui uploadHandler pointer
@@ -171,11 +170,7 @@ mw.UploadHandler.prototype = {
 		
 		// Set up the submit action:
 		$j( this.form ).submit( function() {	
-			mw.log( "FORM SUBMIT::" );
-			/*var data = $j( this ).serializeArray();
-			for ( var i = 0; i < data.length; i++ ) {
-				mw.log( $j( data[i] ).attr('name') + ' : ' + $j(data[i]).val() );
-			}*/
+			mw.log( "FORM SUBMIT::" );			
 			return _this.onSubmit();
 		} );
 	},

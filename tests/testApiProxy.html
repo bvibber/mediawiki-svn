@@ -99,18 +99,11 @@ function doFileUpload(){
 						'apiUrl' : remote_apiUrl,
 						'warn_target': '#file-warning'
 					} );				
-				},
-
-				// Update progress callback
-				'uploadProgressCb': function(){
-					
-				}
-				// Error / "prompt" callback
+				}				
 			} );
 
 			//Setup submit binding: 
-			$j('#uploadButton').click(function(){
-				
+			$j('#uploadButton').click(function(){				
 				// Build the output and send upload request to fileProxy  
 				mw.ApiProxy.sendServerMsg( {
 					'apiUrl' : remote_apiUrl, 
