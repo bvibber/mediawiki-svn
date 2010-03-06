@@ -34,10 +34,10 @@
 						.appendTo( $storyBody );
 					
 					var $header = $( "<div />" ).addClass( "storyboard-header" ).appendTo( $storyBody );
-					$( "<div />" ).addClass( "storyboard-title" ).text( story.title ) ).appendTo( $header );
+					$( "<div />" ).addClass( "storyboard-title" ).text( story.title ).appendTo( $header );
 					
 					$( "<div />" )
-						.addClass( "storyboard-sharing" );
+						.addClass( "storyboard-sharing" )
 						.append(
 							$( "<div />" ).addClass( "storyboard-sharing-item" ).append(
 								$( "<a />" ).attr( {
