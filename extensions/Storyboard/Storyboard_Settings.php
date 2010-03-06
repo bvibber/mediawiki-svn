@@ -42,6 +42,12 @@ $egStoryboardWidth = '80%';
 $egStoryboardHeight = 400;
 
 /**
+ * The default width of storysubmission forms, either in pixels, or as percentage.
+ * @var mixed
+ */
+$egStorysubmissionWidth = '700px';
+
+/**
  * TODO: document
  * @var integer
  */

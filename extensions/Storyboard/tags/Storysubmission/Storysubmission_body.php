@@ -25,7 +25,7 @@ class TagStorysubmission {
 		if ( $wgRequest->wasPosted() ) {
 			$output = self::doSubmissionAndGetResult();
 		} else {
-			$output = self::getFrom( $parser );
+			$output = self::getFrom( $parser, $args );
 		}
 		
 		return $output;
@@ -33,15 +33,19 @@ class TagStorysubmission {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	private static function getFrom( $parser ) {
+	private static function getFrom( $parser, $args ) {
+		global $egStorysubmissionWidth;
+		
 		$fieldSize = 50;
+		
+		$width = StoryboardUtils::getDimension( $args, 'width', $egStorysubmissionWidth );
 		
 		$url = $parser->getTitle()->getLocalURL( 'action=submit' );
 		
-		$formBody = '<table width="100%">';
+		$formBody = "<table width='$width'>";
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array(), wfMsg( 'storyboard-yourname' ) ) .
+			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' . Html::element(
 				'input',
 				array( 'id' => 'name', 'name' => 'name', 'type' => 'text', 'size' => $fieldSize ),
@@ -49,7 +53,7 @@ class TagStorysubmission {
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array(), wfMsg( 'storyboard-location' ) ) .
+			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-location' ) ) .
 			'<td>' . Html::element(
 				'input',
 				array(' id' => 'location', 'name' => 'location', 'type' => 'text', 'size' => $fieldSize ),
@@ -57,7 +61,7 @@ class TagStorysubmission {
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array(), wfMsg( 'storyboard-occupation' ) ) .
+			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-occupation' ) ) .
 			'<td>' . Html::element(
 				'input',
 				array( 'id' => 'occupation', 'name' => 'occupation', 'type' => 'text', 'size' => $fieldSize ),
@@ -65,14 +69,23 @@ class TagStorysubmission {
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
-			Html::element( 'td', array(), wfMsg( 'storyboard-contact' ) ) .
+			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-contact' ) ) .
 			'<td>' . Html::element(
 				'input',
 				array( 'id' => 'contact', 'name' => 'contact', 'type' => 'text', 'size' => $fieldSize ),
 				null
 			) . '</td></tr>';
-
-		$formBody .= '<tr><td></td><td>' . Html::input( '', wfMsg( 'htmlform-submit' ), 'submit' ) . '</td></tr>';
+			
+		$formBody .= '<tr><td colspan="2">' . // TODO: add 'x-chars left' feature
+			wfMsg( 'storyboard-story' ) . '<br />' . 
+			Html::element(
+				'textarea',
+				array( 'id' => 'story', 'rows' => 7 ),
+				null
+			) .
+			'</td></tr>';
+			
+		$formBody .= '<tr><td colspan="2">' . Html::input( '', wfMsg( 'htmlform-submit' ), 'submit' ) . '</td></tr>';
 		
 		$formBody .= '</table>';
 		

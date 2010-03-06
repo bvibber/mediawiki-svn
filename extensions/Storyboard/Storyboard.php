@@ -38,6 +38,7 @@ $wgExtensionMessagesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.i18n.ph
 $wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.php';
 
 // Load classes
+$wgAutoloadClasses['StoryboardUtils'] = $egStoryboardDir . 'Storyboard_Utils.php';
 $wgAutoloadClasses['SpecialStory'] = $egStoryboardDir . 'specials/Story/Story_body.php';
 $wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview/StoryReview_body.php';
 $wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard/Storyboard_body.php';
