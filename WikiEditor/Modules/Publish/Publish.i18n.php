@@ -215,6 +215,13 @@ $messages['cy'] = array(
 	'wikieditor-publish-dialog-goback' => 'Yn ôl',
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-publish-dialog-minor' => 'Mindre ændring',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Lyzzy

@@ -353,8 +353,8 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'wikieditor' => 'വിക്കിഎഴുത്തുകൾ തിരുത്തുവാനുള്ള നൂതന ദൃശ്യമണ്ഡലം',
-	'wikieditor-desc' => 'വികസിപ്പിക്കാവുന്ന വിധത്തിലുള്ള വിക്കിഎഴുത്ത് തിരുത്തൽ ദൃശ്യമണ്ഡലവും മറ്റ് സവിശേഷ ഘടകങ്ങളും നൽകുന്നു',
+	'wikieditor' => 'വിക്കിഎഴുത്തുകൾ തിരുത്തുവാനുള്ള നൂതന സമ്പർക്കമുഖം',
+	'wikieditor-desc' => 'വികസിപ്പിക്കാവുന്ന വിധത്തിലുള്ള വിക്കിഎഴുത്ത് തിരുത്തൽ സമ്പർക്കമുഖവും മറ്റ് സവിശേഷ ഘടകങ്ങളും നൽകുന്നു',
 	'wikieditor-wikitext-tab' => 'വിക്കിഎഴുത്ത്',
 	'wikieditor-loading' => 'ശേഖരിക്കുന്നു',
 );
@@ -456,6 +456,7 @@ $messages['roa-tara'] = array(
 	'wikieditor' => "Wikitext avanzate pe le cangiaminde de l'inderfacce",
 	'wikieditor-desc' => "Dè 'nu wikitext estendibbele pe le cangiaminde de l'inderfacce e 'nu sbuenne de funzionalità de cchiù previste sus a le module",
 	'wikieditor-wikitext-tab' => 'Uicchiteste',
+	'wikieditor-loading' => 'Stoche a careche',
 );
 
 /** Russian (Русский)

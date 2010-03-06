@@ -60,13 +60,6 @@ $messages['qqq'] = array(
 	'ct-and' => '{{Identical|And}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'ct-and' => 'do',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -334,6 +327,16 @@ $messages['cs'] = array(
  */
 $messages['cu'] = array(
 	'ct-and' => 'и',
+);
+
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'ct-beginner' => 'Begynder',
+	'ct-expert' => 'Ekspert',
+	'ct-anon-users' => 'Anonyme brugere',
+	'ct-and' => 'og',
 );
 
 /** German (Deutsch)
@@ -1045,6 +1048,13 @@ $messages['lb'] = array(
 	'ct-user-span' => 'Benotzerkontributiounen am Zäitraum',
 	'ct-and' => 'an',
 	'ct-update-table' => 'Tabell aktualiséieren',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'ct-and' => 'do',
 );
 
 /** Macedonian (Македонски)

@@ -130,6 +130,14 @@ $messages['cy'] = array(
 	'wikieditor-toc-hide' => "Cuddio 'Cynnwys'",
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-toc-show' => 'Vis indhold',
+	'wikieditor-toc-hide' => 'Skjul indhold',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
