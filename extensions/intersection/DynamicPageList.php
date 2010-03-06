@@ -73,7 +73,7 @@ function DynamicPageList( $input ) {
 	$sEndList = '</ul>';
 	$sStartItem = '<li>';
 	$sEndItem = '</li>';
-	$bDoNotEndLastItem = false; // control putting $sEndItem after last item
+	$bInlineMode = false;
 
 	$bUseGallery = false;
 	$bGalleryFileSize = false;
@@ -178,22 +178,21 @@ function DynamicPageList( $input ) {
 						$sEndList = '';
 						$sStartItem = '';
 						$sEndItem = '<br />';
-						$bDoNotEndLastItem = false;
+						$bInlineMode = false;
 						break;
 					case 'ordered':
 						$sStartList = '<ol>';
 						$sEndList = '</ol>';
 						$sStartItem = '<li>';
 						$sEndItem = '</li>';
-						$bDoNotEndLastItem = false;
+						$bInlineMode = false;
 						break;
 					case 'inline':
 						//aka comma seperated list
 						$sStartList = '';
 						$sEndList = '';
 						$sStartItem = '';
-						$sEndItem = wfMsgHtml('intersection_inline_delimiter');
-						$bDoNotEndLastItem = true;
+						$bInlineMode = true;
 						break;
 					case 'unordered':
 					default:
@@ -201,7 +200,7 @@ function DynamicPageList( $input ) {
 						$sEndList = '</ul>';
 						$sStartItem = '<li>';
 						$sEndItem = '</li>';
-						$bDoNotEndLastItem = false;
+						$bInlineMode = false;
 						break;
 				}
 				break;
@@ -543,11 +542,9 @@ function DynamicPageList( $input ) {
 
 	//process results of query, outputing equivalent of <li>[[Article]]</li> for each result,
 	//or something similar if the list uses other startlist/endlist
-	$rowCount = $dbr->numRows( $res );
+	$articleList = Array();
 	while ($row = $dbr->fetchObject( $res ) ) {
-		$rowCount--;
 		$title = Title::makeTitle( $row->page_namespace, $row->page_title);
-		$output .= $sStartItem;
 		if ( true == $bAddFirstCategoryDate ) {
 			if ( $sDateFormat != '' ) {
 				# this is a tad ugly
@@ -588,11 +585,8 @@ function DynamicPageList( $input ) {
 				# would come from the dateformatter <span>.
 				$gallery->add( $title, $categoryDate );
 		} else {
-			$output .= $categoryDate;
-			$output .= $sk->link( $title, htmlspecialchars( $titleText ), $aLinkOptions, $query, array( 'forcearticlepath', 'known' ) );
-			if (!($bDoNotEndLastItem && $rowCount === 0)) { 
-				$output .= $sEndItem . "\n";
-			}
+			$articleList[] = $categoryDate
+				. $sk->link( $title, htmlspecialchars( $titleText ), $aLinkOptions, $query, array( 'forcearticlepath', 'known' ) );
 		}
 	}
 
@@ -611,6 +605,13 @@ function DynamicPageList( $input ) {
 			$gallery->setCaption( $sGalleryCaption ); # gallery class escapes string
 		$output = $gallery->toHtml();
 	} else {
+		$output .= $sStartItem;
+		if ( $bInlineMode ) {
+			$output .= $wgContLang->commaList( $articleList );
+		} else { 
+			$output .= implode( "$sEndItem \n $sStartItem", $articleList ); 
+		}
+		$output .= $sEndItem;
 		$output .= $sEndList . "\n";
 	}
 	return $output;
