@@ -13,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-class SpecialStoryReview extends IncludableSpecialPage {
+class SpecialStoryReview extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'StoryReview' );

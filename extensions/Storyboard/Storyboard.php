@@ -33,18 +33,21 @@ $egStoryboardStyleVersion = $wgStyleVersion . '-' . Storyboard_VERSION;
 // Include the settings file.
 require_once( $egStoryboardDir . 'Storyboard_Settings.php' );
 
-// Load classes
-$wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview/StoryReview_body.php';
-$wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard/Storyboard_body.php';
-$wgAutoloadClasses['TagStorysubmission'] = $egStoryboardDir . 'tags/Storysubmission/Storysubmission_body.php';
-
 // Register the initernationalization and aliasing files of Storyboard.
 $wgExtensionMessagesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.i18n.php';
 $wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.php';
 
+// Load classes
+$wgAutoloadClasses['SpecialStory'] = $egStoryboardDir . 'specials/Story/Story_body.php';
+$wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview/StoryReview_body.php';
+$wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard/Storyboard_body.php';
+$wgAutoloadClasses['TagStorysubmission'] = $egStoryboardDir . 'tags/Storysubmission/Storysubmission_body.php';
+
 // Load and register the StoryReview special page and register it's group.
 $wgSpecialPages['StoryReview'] = 'SpecialStoryReview';
 $wgSpecialPageGroups['StoryReview'] = 'contribution';
+$wgSpecialPages['Story'] = 'SpecialStory';
+$wgSpecialPageGroups['Story'] = 'contribution';
 
 // API
 $wgAutoloadClasses['ApiQueryStories'] = "{$egStoryboardDir}api/ApiQueryStories.php";

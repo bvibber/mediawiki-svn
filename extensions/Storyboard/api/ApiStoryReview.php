@@ -41,8 +41,27 @@ class ApiStoryReview extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
-
+		
+		if ( !$wgUser->isAllowed( 'storyreview' ) || $wgUser->isBlocked() ) {
+			$this->dieUsageMsg( reset( $retval ) );
+			$this->dieUsageMsg( array( 'notanarticle' ) );
+		} 
+		
+		// TODO
+		
 	}
+	
+	private static function getPermissionsError( &$title, $token ) {
+		global $wgUser;
+
+		// Check permissions
+		$errors = $title->getUserPermissionsErrors( 'storyreview', $wgUser );
+		if ( count( $errors ) > 0 ) {
+			return $errors;
+		}
+
+		return array();
+	}	
 	
 	public function getAllowedParams() {
 		return array(
