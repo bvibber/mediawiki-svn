@@ -12,6 +12,10 @@ mw.addMessages( {
 	"mwe-destfilename" : "Destination filename:",
 	"mwe-summary" : "Summary",
 	"mwe-error_not_loggedin" : "You do not appear to be logged in or do not have upload privileges.",
+	
+	"mwe-error-not-loggedin-file" : "You do not appear to be logged in or there was an error in the software. You can $1 and try again",
+	"mwe-link-login" : "login",
+	
 	"mwe-watch-this-file" : "Watch this file",
 	"mwe-ignore-any-warnings" : "Ignore any warnings",
 	
@@ -51,6 +55,7 @@ mw.UploadForm = { };
 		
 		// Build out the menu
 		$j( uploadMenuTarget ).empty().append(
+		
 			$j( '<span />' )
 			.text(
 				gM('mwe-i-would-like-to' )
@@ -58,6 +63,7 @@ mw.UploadForm = { };
 			
 			$j( '<br />' )
 		);
+		
 		$uploadTargetsList = $j( '<ul />'  );
 		// Set provider Target		
 		for( var uploadTargetId in options.uploadTargets ){			
@@ -95,19 +101,17 @@ mw.UploadForm = { };
 				$j( options.target ).html( gM( 'mwe-error_not_loggedin' ) );
 				return false;
 			}
+			// Update the options Token
 			options.eToken = eToken;
+			
 			// Add the upload form to the options target:  			
-			addUploadForm( options );
-						
-		
-			// Set the target with the form output:
-			//$( _this.selector ).html( o );
+			addUploadForm( options );		
 			
 			// By default disable:
 			$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
 
 			// Set up basic license binding:
-			$j( '#wpLicence' ).click( function() {
+			$j( '#wpLicence' ).click( function( ) {
 				if ( $j( this ).is( ':checked' ) ) {
 					$j( '#wpUploadBtn' ).removeAttr( 'disabled' );
 				} else {
@@ -119,68 +123,76 @@ mw.UploadForm = { };
 			// Do local destination fill ( if we are local ) 
 			// Otherwise its handled via mw.ApiProxy.browseFile selectFileCb option
 			if( mw.isLocalDomain( options.api_target ) ) {					
-				$j( "#wpUploadFile" ).change( function() {
-					var path = $j( this ).val();
-					// Find trailing part
-					var slash = path.lastIndexOf( '/' );
-					var backslash = path.lastIndexOf( '\\' );
-					var fname;
-					if ( slash == -1 && backslash == -1 ) {
-						fname = path;
-					} else if ( slash > backslash ) {
-						fname = path.substring( slash + 1, 10000 );
-					} else {
-						fname = path.substring( backslash + 1, 10000 );
-					}
-					fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
-					
-					// Output result
-					$j( "#wpDestFile" ).val( fname );
-					
-					// Do destination check
-					$j( "#wpDestFile" ).doDestCheck( {
-						'warn_target':'#wpDestFile-warning'
-					} );
-				} );
-				
+				setupLocalUploadBindings();
 			}
 
-
 			// Do remote or local destination check:
-			$j( "#wpDestFile" ).change( function() {			
+			$j( "#wpDestFile" ).change( function( ) {			
 				$j( "#wpDestFile" ).doDestCheck( {
 					'apiUrl' : options.api_target,
 					'warn_target':'#wpDestFile-warning'
 				} );
 			} );
 
-			if ( typeof options.ondone_callback == 'undefined' )
+			if ( typeof options.ondone_callback == 'undefined' ) {
 				options.ondone_callback = false;
-
-			// Set up the binding per the config
-			if ( options.enable_fogg ) {
-				mw.load( 'AddMedia.firefogg', function() {
-					$j( "#wpUploadFile" ).firefogg( {
-						// An api url (we won't submit directly to action of the form)
-						'apiUrl' : options.api_target,
-											
-						// MediaWiki API supports chunk uploads: 
-						'enable_chunks' : false,
-											
-						'form_selector' : '#suf_upload',
-						'selectFileCb' : function( fileName ) {
-							$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
-								warn_target: "#wpDestFile-warning"
-							} );
-						},
-						'onsubmit_cb' : function( ) {
-							// Update with basic info template:	
-							// TODO: it would be nice to have a template generator class
-							var desc = $j('#wpUploadDescription').val();
-							
-							// Update the template if the user does not already have template code:
-							if( desc.indexOf('{{Information') == -1) {
-								$j('#wpUploadDescription').val( 
+			}
+		}); // ( token ) 
+	}
+	
+	/**
+	* Setup the local upload bindings 
+	* ( this is different from the api file proxy bindings that 
+	* handles the interface bindings within the api file proxy setup. 
+	*/ 
+	function setupLocalUploadBindings( ) {
+	
+		$j( "#wpUploadFile" ).change( function() {
+			var path = $j( this ).val();
+			// Find trailing part
+			var slash = path.lastIndexOf( '/' );
+			var backslash = path.lastIndexOf( '\\' );
+			var fname;
+			if ( slash == -1 && backslash == -1 ) {
+				fname = path;
+			} else if ( slash > backslash ) {
+				fname = path.substring( slash + 1, 10000 );
+			} else {
+				fname = path.substring( backslash + 1, 10000 );
+			}
+			fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
+			
+			// Output result
+			$j( "#wpDestFile" ).val( fname );
+			
+			// Do destination check
+			$j( "#wpDestFile" ).doDestCheck( {
+				'warn_target':'#wpDestFile-warning'
+			} );
+		} );
+		
+		mw.load( 'AddMedia.firefogg', function( ) {
+			$j( "#wpUploadFile" ).firefogg( {
+				// An api url (we won't submit directly to action of the form)
+				'apiUrl' : options.api_target,
+									
+				// MediaWiki API supports chunk uploads: 
+				'enable_chunks' : false,
+									
+				'form_selector' : '#suf_upload',
+				'selectFileCb' : function( fileName ) {
+					$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
+						warn_target: "#wpDestFile-warning"
+					} );
+				},
+				'onsubmit_cb' : function( ) {
+					// Update with basic info template:	
+					// TODO: it would be nice to have a template generator class
+					var desc = $j('#wpUploadDescription').val();
+					
+					// Update the template if the user does not already have template code:
+					if( desc.indexOf('{{Information') == -1) {
+						$j('#wpUploadDescription').val( 
 '== {{int:filedesc}} ==' + "\n" +
 '{{Information' + "\n" +
 '|Description={{en|' + desc + "\n}}\n" +
@@ -191,16 +203,13 @@ mw.UploadForm = { };
 '|other_versions=' + "\n" + 
 '}}' + "\n" +
 '{{self|cc-by-sa-3.0}}' + "\n"
-								);
-							}
-						},
-						'done_upload_cb' : options.ondone_callback
-					} );
-				});
-			}
-		} );		
+						);
+					}
+				},
+				'done_upload_cb' : options.ondone_callback
+			} );
+		});
 	}
-	
 	/**
 	* Setup a fileBrowse proxy for a given target
 	*/
@@ -223,8 +232,19 @@ mw.UploadForm = { };
 						'apiUrl' : options.api_target,
 						'warn_target': '#file-warning'
 					} );				
+				},
+				// Timeout callback
+				'timeoutCb' : function(){
+					mw.log("timed out in setting up setupApiFileBrowseProxy");
+					$targetFileBrowse.html( 
+						gM( 'mwe-error-not-loggedin-file',
+						 	$j( '<a />' )
+						 	.text( gM('mwe-link-login') )
+						 	.attr('attr', options.api_target.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin' )
+						 ) 
+					); 
+					
 				}
-				// Error / "prompt" callback
 			} );
 		});		
 	}
@@ -292,9 +312,9 @@ mw.UploadForm = { };
 					$j( uploadMenuTarget ).empty().html(
 						gM( "mwe-upload-once-done",
 							$j('<a />')
-							.attr({								
+							.attr( {								
 								'href' : '#'
-							})
+							} )
 							.addClass('user-upload-refresh')
 							.text(
 								gM('mwe-upload-refresh')
@@ -302,7 +322,7 @@ mw.UploadForm = { };
 						)
 					);					
 					// NOTE: if gM supported jquery object a bit better
-					// we could bind the link above
+					// we could bind the link above in the gM call
 					$j( uploadMenuTarget ).find( '.user-upload-refresh' )
 					.click( function( ) {
 						remoteSearchDriver.showUserRecentUploads( uploadTargetId );
@@ -310,11 +330,9 @@ mw.UploadForm = { };
 					
 					// Follow the link to open a new tab
 					return true;					
-				})
-				
+				} )
 			)
-		);
-		
+		);		
 		return $uploadLinks;
 	};	
 	
@@ -370,7 +388,7 @@ mw.UploadForm = { };
 		// Add upload File input 
 		$uploadForm.append(
 			$j( '<label />' ).attr({ 
-				'for' : "file-name"
+				'for' : "wpUploadFile"
 			})
 			.text( gM( 'mwe-select_file' ) ),
 			
@@ -390,23 +408,51 @@ mw.UploadForm = { };
 				.css( 'display', 'inline' )
 			);						
 		} else {
+			/** 
+			* If the upload target is a remote domain 
+			* add the browse file button as a an iframe
+			* to the target api location
+			*/
 			$uploadForm.append( 
 				$j( '<div />' )
 				.addClass( 'remote-browse-file' )
 				.loadingSpinner()
-			)
+			)			
 			setupApiFileBrowseProxy(
 				$uploadForm.find('.remote-browse-file' ),
 				options
 			);
 		}
 		
+		// Add firefogg warning
+		
+		
+		// Add destination fileName
+		$uploadForm.append(
+			$j( '<label />' ).attr({ 
+				'for' : "wpDestFile"
+			})
+			.text( gM( 'mwe-destfilename' ) ),
+			
+			$j( '<br />' ),
+			
+			$j( '<input />' )
+			.attr( {
+				'id' : 'wpDestFile',
+				'name' : 'wpDestFile',
+				'type' : 'text',
+				'size' : "15"
+			} )
+			.css( 'display', 'inline' )
+		)
+		
+		
 		// Add upload description:
 		$uploadForm.append(
 			$j( '<br />' ),
 			$j( '<label />' )
 			.attr({
-				'for' : "file-desc"
+				'for' : "wpUploadDescription"
 			})
 			.text( gM( 'mwe-summary' ) ),
 			
