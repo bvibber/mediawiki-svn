@@ -689,6 +689,10 @@ textarea in the edit form
 $title: title of page being edited
 &$msg: localization message name, overridable. Default is either 'copyrightwarning' or 'copyrightwarning2'
 
+'EditPageNoSuchSection': When a section edit request is given for an non-existent section
+&$editpage: The current EditPage object
+&$res: the HTML of the error text
+
 'EditPageTosSummary':  Give a chance for site and per-namespace customizations
 of terms of service summary link that might exist separately from the copyright
 notice.
@@ -1108,6 +1112,7 @@ $article: the article that the history is loading for
 'PageHistoryLineEnding' : right before the end <li> is added to a history line
 $row: the revision row for this line
 $s: the string representing this parsed line
+$classes: array containing the <li> element classes
 
 'PageHistoryPager::getQueryInfo': when a history pager query parameter set
 is constructed
