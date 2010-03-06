@@ -113,6 +113,13 @@ $messages['cy'] = array(
 	'contributionseditcount-desc' => "Yn dangos nifer golygiadau'r defnyddiwr ar ei [[Special:Contributions|dudalen gyfraniadau]]",
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'contributionseditcount' => 'Denne bruger har foretaget {{PLURAL:$1|én redigering|$1 redigeringer}}.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender

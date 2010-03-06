@@ -137,6 +137,14 @@ $messages['pms'] = array(
 	'right-editalluserpages' => 'Modifiché le pàgine utent',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'userpageeditprotection-desc' => "Restringe le cangiaminde sus  a le pàggene utinde a l'utende stesse e a tutte le cangiature ca tènene 'u permesse",
+	'right-editalluserpages' => 'Cange le pàggene utinde',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

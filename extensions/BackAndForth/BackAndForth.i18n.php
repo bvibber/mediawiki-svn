@@ -187,9 +187,12 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
-/** Danish (Dansk) */
+/** Danish (Dansk)
+ * @author Sarrus
+ */
 $messages['da'] = array(
 	'backforth-next' => 'Næste ($1)',
+	'backforth-prev' => 'Forrige ($1)',
 );
 
 /** German (Deutsch)

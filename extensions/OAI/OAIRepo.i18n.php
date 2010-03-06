@@ -319,7 +319,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'oai-desc' => 'റെപ്പോസിറ്ററി ദൃശ്യമണ്ഡലമായ [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] നൽകുന്നു',
+	'oai-desc' => 'റെപ്പോസിറ്ററി സമ്പർക്കമുഖമായ [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] നൽകുന്നു',
 );
 
 /** Marathi (मराठी)

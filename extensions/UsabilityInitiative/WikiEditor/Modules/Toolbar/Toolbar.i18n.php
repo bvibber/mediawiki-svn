@@ -2597,6 +2597,7 @@ $messages['cy'] = array(
  * @author Byrial
  * @author F. Cosoleto
  * @author Leolaursen
+ * @author Sarrus
  */
 $messages['da'] = array(
 	'wikieditor-toolbar' => 'Værktøjslinje til redigering',
@@ -2660,22 +2661,42 @@ $messages['da'] = array(
 {{ns:file}}:Eksempel.jpg|Billedtekst2',
 	'wikieditor-toolbar-tool-newline' => 'Ny linje',
 	'wikieditor-toolbar-tool-table' => 'Tabel',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! overskrift 1
+! overskrift 2
+! overskrift 3
+|-
+| række 1, celle 1
+| række 1, celle 2
+| række 1, celle 3
+|-
+| række 2, celle 1
+| række 2, celle 2
+| række 2, celle 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'Række $1, celle $2',
 	'wikieditor-toolbar-tool-table-example-header' => 'Række $1, celle $2 (overskrift)',
 	'wikieditor-toolbar-tool-table-title' => 'Indsæt tabel',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rækker',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolonner',
 	'wikieditor-toolbar-tool-table-example' => 'Række $1, celle $2',
+	'wikieditor-toolbar-tool-table-preview' => 'Forhåndsvisning',
 	'wikieditor-toolbar-tool-table-insert' => 'Indsæt',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annullér',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Du har ikke angivet et gyldigt antal rækker eller kolonner.',
+	'wikieditor-toolbar-tool-table-zero' => 'Du kan ikke indsætte en tabel med nul rækker eller kolonner',
 	'wikieditor-toolbar-tool-replace' => 'Søg og erstat',
 	'wikieditor-toolbar-tool-replace-title' => 'Søg og erstat',
 	'wikieditor-toolbar-tool-replace-search' => 'Søg efter:',
 	'wikieditor-toolbar-tool-replace-replace' => 'Erstat med:',
 	'wikieditor-toolbar-tool-replace-case' => 'Skeln mellem store og små bogstaver',
 	'wikieditor-toolbar-tool-replace-regex' => 'Behandl søgestrengen som et regulært udtryk',
+	'wikieditor-toolbar-tool-replace-button-findnext' => 'Find næste',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Erstat alle',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Erstat alle',
 	'wikieditor-toolbar-tool-replace-close' => 'Annullér',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Din søgning gav ingen resultater',
+	'wikieditor-toolbar-tool-replace-success' => '$1 udskiftning(er) foretaget.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Du skrev ikke noget at søge efter',
 	'wikieditor-toolbar-section-characters' => 'Specialtegn',
 	'wikieditor-toolbar-characters-page-latin' => 'Latin',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Udvidet latin',

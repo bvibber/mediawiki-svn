@@ -1698,7 +1698,7 @@ $messages['ml'] = array(
 * [[Special:CrosswikiBlock|തടയല്‍ ഫോം]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'ഉപയോക്തൃനാമം ചേര്‍ത്തില്ല',
-	'crosswikiblock-local' => 'ഈ ഇന്റര്‍ഫേസ് വഴി പ്രാദേശിക തടയല്‍ സാധിക്കില്ല. [[Special:BlockIP|{{int:blockip}}]] ഉപയോഗിക്കുക.',
+	'crosswikiblock-local' => 'ഈ സമ്പർക്കമുഖം വഴി പ്രാദേശിക തടയല്‍ സാധിക്കില്ല. [[Special:BlockIP|{{int:blockip}}]] ഉപയോഗിക്കുക.',
 	'crosswikiblock-dbnotfound' => '$1 എന്ന ഡാറ്റബേസ് നിലവിലില്ല',
 	'crosswikiblock-noname' => '"$1" എന്നതു സാധുവായ ഉപയോക്തൃനാമമല്ല.',
 	'crosswikiblock-nouser' => '"$3" എന്ന ഉപയോക്താവിനെ കണ്ടില്ല.',

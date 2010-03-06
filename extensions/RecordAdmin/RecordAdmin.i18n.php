@@ -952,6 +952,9 @@ $messages['hsb'] = array(
 	'recordadmin-editwithform' => 'Z formularom wobdźěłać',
 	'recordadmin-typeinfo' => 'Datowa sadźba $1',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Žadyn "$1"',
 );
 
 /** Hungarian (Magyar)

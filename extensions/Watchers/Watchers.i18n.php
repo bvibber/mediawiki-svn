@@ -461,10 +461,13 @@ $messages['hsb'] = array(
 	'watchers-desc' => 'Pokazuje [[Special:Watchers|kotři wužiwarjo maja stronu na swojich wobkedźbowankach]]',
 	'watchers_link_title' => 'Štó tutu stronu wobkedźbuje?',
 	'watchers_error_article' => '<b>Zmylk:</b> Strona njeeksistuje.',
+	'watchers-error-invalid-page' => "'''Zmylk''' \"\$1\" je njepłaćiwy titul strony.",
 	'watchers_header' => '{{PLURAL:$2|Wužiwar|Wužiwarjej|Wužiwarjo|Wužiwarjo}}, {{PLURAL:$2|kotryž|kotrajž|kotřiž|kotřiž}} "[[:$1]]" {{PLURAL:$2|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuja}}',
 	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
-	'watchers_x_or_more' => '$1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} abo wjace {{PLURAL:$1|wobkedźbuje|wobkedźbujetej|wobkedźbuja|wobkedźbuje}} tutu stronu.',
+	'watchers_x_or_more' => '$1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} abo wjace {{PLURAL:$1|wobkedźbuje|wobkedźbujetej|wobkedźbuja|wobkedźbuje}} stronu [[:$2]].',
 	'watchers_less_than_x' => 'Mjenje hač $1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} {{PLURAL:$1|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuje}} tutu stronu.',
+	'watchers-num' => '$1 {{PLURAL:$1|wužiwar wobkedźbuje|wužiwarjej wobkedźbujetej|wužiwarjo wobkedźbuja|wužiwarjow wobkedźbuje}} stronu [[:$2]].',
+	'right-watchers-list' => '[[Special:Watchers|Lisćina wužiwarjow, kotřiž wěstu stronu wobkedźbuja]]',
 );
 
 /** Hungarian (Magyar)

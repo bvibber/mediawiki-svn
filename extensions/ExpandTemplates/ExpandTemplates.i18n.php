@@ -1632,6 +1632,12 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'expandtemplates' => 'Template spannute',
+	'expandtemplates-desc' => "[[Special:ExpandTemplates|Template ca se spannene, funziune de analise e variabbele]] pe fà vedè 'u Uicchiteste espanse e fà vedè l'andeprime d'a pàgene renderizzate",
+	'expand_templates_intro' => "Sta pàgena speciale pigghie quacche teste e spanne tutte le template jndr'à jidde recorsivamende.<br />
+Jidde spanne pure le funziune de analise cumme<br />
+<nowiki>{{</nowiki>#if:…}}, e variabbele cumme <br />
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; in pratiche tutte quidde ca stè jndr'à le doppie parendesi graffe.<br />
+'U face quiste, chiamanne l'analizzatore direttamende da MediaUicchi.",
 	'expand_templates_title' => 'Titele condestuale, pe {{PAGENAME}} ecc.:',
 	'expand_templates_input' => 'Teste de input:',
 	'expand_templates_output' => 'Resultete',

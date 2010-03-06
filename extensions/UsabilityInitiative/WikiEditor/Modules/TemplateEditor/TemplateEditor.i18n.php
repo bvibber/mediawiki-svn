@@ -56,9 +56,12 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'wikieditor-template-editor-preference' => "Gweredekaat ar c'hemmañ partromoù wiki diwar furmskridoù",
+	'wikieditor-template-editor-dialog-title' => 'Kemmañ ar patrom',
+	'wikieditor-template-editor-dialog-submit' => 'Hizivaat',
 );
 
 /** Bosnian (Bosanski)
@@ -73,6 +76,14 @@ $messages['bs'] = array(
  */
 $messages['cs'] = array(
 	'wikieditor-template-editor-preference' => 'Zapnout formulářovou editaci šablon wiki',
+);
+
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Rediger skabelon',
+	'wikieditor-template-editor-dialog-submit' => 'Opdater',
 );
 
 /** German (Deutsch)
@@ -194,9 +205,11 @@ $messages['id'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'wikieditor-template-editor-preference' => 'フォームを利用したテンプレートの編集を有効化する',
+	'wikieditor-template-editor-dialog-submit' => '更新',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -305,6 +318,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'wikieditor-template-editor-preference' => 'Abbilete le cangiaminde basate sus a le module de le template de uicchi',
+	'wikieditor-template-editor-dialog-title' => "Cange 'u template",
+	'wikieditor-template-editor-dialog-submit' => 'Aggiorne',
 );
 
 /** Russian (Русский)

@@ -423,8 +423,10 @@ $messages['cs'] = array(
 
 /** Danish (Dansk)
  * @author Jon Harald Søby
+ * @author Sarrus
  */
 $messages['da'] = array(
+	'badimages-added' => '$1 blev tilføjet til listen',
 	'badimages-name' => 'Navn:',
 	'badimages-reason' => 'Begrundelse:',
 );

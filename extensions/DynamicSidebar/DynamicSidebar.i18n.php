@@ -97,6 +97,13 @@ $messages['pms'] = array(
 	'dynamicsidebar-desc' => "A dà 'd bare lateraj dinàmiche basà dzora a le pàgine dj'utent, soe partìe e soe categorìe",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'dynamicsidebar-desc' => "Fornisce 'na barra laterale dinameche basate sus a le pàggene utende, gruppe e categorije",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -1181,6 +1181,8 @@ $messages['sk'] = array(
  * @author Verlor
  */
 $messages['sr-ec'] = array(
+	'importfreeimages_owner' => 'Аутор',
+	'importfreeimages_next' => 'Следеће $1',
 	'importfreeimages_size_small' => 'Мала',
 	'importfreeimages_size_medium' => 'Средња',
 	'importfreeimages_size_large' => 'Велика',

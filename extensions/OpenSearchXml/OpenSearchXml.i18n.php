@@ -287,7 +287,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'opensearchxml-desc' => 'എഴുത്തുകൾ മാത്രമായി എടുക്കാനുള്ള [http://www.opensearch.org ഓപ്പൺസേർച്ച്] എക്സ്.എം.എൽ. ദൃശ്യമണ്ഡലം നൽകുന്നു',
+	'opensearchxml-desc' => 'എഴുത്തുകൾ മാത്രമായി എടുക്കാനുള്ള [http://www.opensearch.org ഓപ്പൺസേർച്ച്] എക്സ്.എം.എൽ. സമ്പർക്കമുഖം നൽകുന്നു',
 );
 
 /** Malay (Bahasa Melayu)

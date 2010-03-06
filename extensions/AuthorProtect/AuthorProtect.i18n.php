@@ -280,6 +280,14 @@ $messages['cy'] = array(
 	'right-authorprotect' => "Gallu awdur i ddiogelu tudalennau o'i waith ei hun",
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'authorprotect-expiry' => 'Udløbstid',
+	'authorprotect-reason' => 'Begrundelse',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender

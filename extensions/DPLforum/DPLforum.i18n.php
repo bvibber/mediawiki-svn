@@ -732,10 +732,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Verlor
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'dplforum-by' => 'од $1',
+	'dplforum-never' => 'Никад',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

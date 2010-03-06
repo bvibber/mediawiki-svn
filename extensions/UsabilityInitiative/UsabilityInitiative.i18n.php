@@ -499,6 +499,8 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'usabilityinitiative' => "Iniziative pe l'usabbilità",
 	'usabilityinitiative-desc' => "Dettaglie sviluppate de 'a Wikipedia Usability Initiative pe aumendà l'usabbilità de Uicchipèdie",
+	'prefs-beta' => 'Funziune de Beta',
+	'prefs-labs' => 'Funziune de Labs',
 );
 
 /** Russian (Русский)
@@ -580,10 +582,13 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'usabilityinitiative' => 'Ініціатива Ефективності',
 	'usabilityinitiative-desc' => 'Можливості рушія MediaWiki, розроблені в рамках Ініціативи Ефективності Вікіпедії (Wikipedia Usability Initiative) і направлені на поліпшення його зручності і простоти використання',
+	'prefs-beta' => 'Бета-функції',
+	'prefs-labs' => 'Експериментальні функції',
 );
 
 /** Vèneto (Vèneto)
