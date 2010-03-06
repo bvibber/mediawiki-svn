@@ -241,7 +241,7 @@ class EmailContactForm {
 <span id='wpTextLabel'><label for=\"wpText\">{$emm}:</label><br /></span>
 <textarea name=\"wpText\" rows='20' cols='80' wrap='virtual' style=\"width: 100%;\">" . htmlspecialchars( $this->text ) .
 "</textarea>
-" . wfCheckLabel( $emc, 'wpCCMe', 'wpCCMe', $wgUser->getBoolOption( 'ccmeonemails' ) ) . "<br />
+" . Xml::checkLabel( $emc, 'wpCCMe', 'wpCCMe', $wgUser->getBoolOption( 'ccmeonemails' ) ) . "<br />
 " . $this->getCaptcha() . "
 <input type='submit' name=\"wpSend\" value=\"{$ems}\" />
 <input type='hidden' name='wpEditToken' value=\"$token\" />
