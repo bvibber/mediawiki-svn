@@ -4,8 +4,8 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r103';
-var mwUseScriptLoader = false;
+var mwRemoteVersion = 'r104';
+var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -120,6 +120,10 @@ function doPageSpecificRewrite() {
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
+	}
+	if ( wgPageName == 'MediaWiki:ApiProxyNestedCb' ) {
+		// Note top.mw.ApiProxy.nested frame needs to be on the same domain of course
+		top.mw.ApiProxy.nested( window.location.href.split("#")[1] || false );		
 	}
 		
 	// OggHandler rewrite for view pages:

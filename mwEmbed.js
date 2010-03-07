@@ -1362,6 +1362,24 @@ var MW_EMBED_VERSION = '1.1d';
 	}		
 	
 	/**
+	* Issues the wikitext parse call 
+	* 
+	* @param {String} wikitext Wiki Text to be parsed by mediaWiki api call
+	* @param {String} title Context title of the content to be parsed
+	* @param {Function} callback Function called with api parser output 
+	*/
+	mw.parseWikiText = function( wikitext, title, callback ) {		
+		mw.getJSON( mw.getLocalApiUrl(), 
+			{
+				'action': 'parse',
+				'title' : title,
+				'text': wikitext
+			}, function( data ) {
+				callback( data.parse.text['*'] );
+			}
+		);
+	}
+	/**
 	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* 
 	* The mediaWiki version lets you skip the url part 

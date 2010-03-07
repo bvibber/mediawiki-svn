@@ -99,9 +99,10 @@ var default_firefogg_options = {
 */
 ( function( $ ) { 
 	$.fn.firefogg = function( options ) {
-		if ( !options )
+		if ( !options ){
 			options = { };
-	
+		}
+		
 		// Add the selector
 		options[ 'selector' ] = this.selector;
 				
@@ -183,7 +184,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				this.showInstallFirefog();
 				return ;
 			}
-			if( console.firebug ) {		
+			if( typeof console != 'undefined' && console.firebug ) {		
 				this.appendFirebugWarning();
 			}
 			mw.log( "installCheckMode no firefogg init");
@@ -1225,12 +1226,11 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				this.action_done = true;
 				// Call the callback
 				if ( typeof _this.doneUploadCb == 'function' ) {
-					// check if the callback returns true and close up shop	
-					if( _this.doneUploadCb( apiRes ) ){
-						_this.ui.close();
-						return true;
-					}
-				}
+					_this.doneUploadCb( apiRes )
+					// Close the ui
+					_this.ui.close();
+					return true;
+				}	
 				// Else pass off the api Success to interface:
 				_this.ui.showApiSuccess( apiResult );	
 				return true;				

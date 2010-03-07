@@ -1043,13 +1043,11 @@ mw.RemoteSearchDriver.prototype = {
 		// Show the upload form (use the standard module AddMedia.firefogg
 		//  This way we get a high cache hit rate by using a general module
 		//  and not grouping mw.UploadForm into the upload code set 
-		mw.load( 'AddMedia.firefogg', function() {
-			mw.load( 'mw.UploadForm', function() {	
-				var provider = _this.content_providers[ 'this_wiki' ];
-				// Load this_wiki search system to grab the resource
-				_this.loadSearchLib( provider, function() {
-					_this.showUploadForm( provider );
-				} );
+		mw.load( [ 'AddMedia.firefogg', 'AddMedia.UploadForm' ], function() {			
+			var provider = _this.content_providers[ 'this_wiki' ];
+			// Load this_wiki search system to grab the resource
+			_this.loadSearchLib( provider, function() {
+				_this.showUploadForm( provider );
 			} );
 		} );
 	},
@@ -2405,7 +2403,7 @@ mw.RemoteSearchDriver.prototype = {
 		}
 
 		// Load the preview text:
-		_this.parse(
+		mw.parseWikiText(
 			description, _this.canonicalFileNS + ':' + resource.target_resource_title, 
 			function( descHtml ) {
 				$j( '#rsd_import_desc' ).html( descHtml );
@@ -2419,12 +2417,12 @@ mw.RemoteSearchDriver.prototype = {
 				mw.log( " Do preview asset update" );
 				$j( '#rsd_import_desc' ).html( mw.loading_spinner() );
 				// load the preview text:
-				_this.parse( 
+				mw.parseWikiText(
 					$j( '#wpUploadDescription' ).val(), 
 					_this.canonicalFileNS + ':' + resource.target_resource_title, 
-					function( o ) {
+					function( parseHtml ) {
 						mw.log( 'got updated preview: ' );
-						$j( '#rsd_import_desc' ).html( o );
+						$j( '#rsd_import_desc' ).html( parseHtml );
 					} 
 				);
 				return false;
@@ -2795,9 +2793,9 @@ mw.RemoteSearchDriver.prototype = {
 			var embed_code = _this.getEmbedCode( resource );
 			var pos = $j( _this.target_textbox ).textSelection( 'getCaretPosition' );			
 			var editWikiText = $j( _this.target_textbox ).val();
-			var parseText = editWikiText.substr(0, pos) + embed_code + editWikiText.substr( pos );
-			_this.parse( 
-				parseText,
+			var wikiText = editWikiText.substr(0, pos) + embed_code + editWikiText.substr( pos );
+			mw.parseWikiText( 
+				wikiText,
 				_this.target_title,
 				function( phtml ) {
 					$j( '#rsd_preview_display' ).html( phtml );
@@ -2826,26 +2824,7 @@ mw.RemoteSearchDriver.prototype = {
 		} else {
 			return resource.pSobj.getEmbedWikiCode( resource );
 		}
-	},	
-	
-	/**
-	* issues the wikitext parse call 
-	* 
-	* @param {String} wikitext Wiki Text to be parsed by mediaWiki api call
-	* @param {String} title Context title of the content to be parsed
-	* @param {Function} callback Function called with api parser output 
-	*/
-	parse: function( wikitext, title, callback ) {		
-		mw.getJSON( mw.getLocalApiUrl(), 
-			{
-				'action': 'parse',
-				'title' : title,
-				'text': wikitext
-			}, function( data ) {
-				callback( data.parse.text['*'] );
-			}
-		);
-	},
+	},		
 	
 	/**
 	* Insert a resource
