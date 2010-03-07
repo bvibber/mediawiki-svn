@@ -4,8 +4,8 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r102';
-var mwUseScriptLoader = true;
+var mwRemoteVersion = 'r103';
+var mwUseScriptLoader = false;
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -32,10 +32,10 @@ addOnloadHook( function() {
 */ 
 function doPageSpecificRewrite() {
 	// Deal with multiple doPageSpecificRewrite
-	if( typeof window.ranRewrites != 'undefined'){
+	if( typeof window.ranMwRewrites != 'undefined'){
 		return ;
 	}
-	window.ranRewrites = 'done';
+	window.ranMwRewrites = 'done';
 	
 	// Add media wizard
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {
@@ -100,7 +100,7 @@ function doPageSpecificRewrite() {
 		if ( location.search.indexOf('uploadWizard=1') != -1 ) {
 			scriptName = 'uploadWizard.js';
 		}
-		loadMwEmbed([ 
+		loadMwEmbed( [ 
 				'mw.UploadHandler',
 				'mw.UploadInterface',
 				'mw.Firefogg', 

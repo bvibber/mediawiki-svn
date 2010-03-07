@@ -1380,8 +1380,7 @@ var MW_EMBED_VERSION = '1.1d';
 	* @param {Mixed} data or callback
 	* @param {Function} callbcak function called on success
 	* @param {Function} callbackTimeout - optional function called on timeout
-	* 	Setting timeout callback also avoids dialog display for timed out proxy calls.
-	*
+	* 	Setting timeout callback also avoids default dialog display for timed-out proxy calls.
 	*/	
 	mw.getJSON = function() {		
 		// Set up the url
@@ -1425,10 +1424,15 @@ var MW_EMBED_VERSION = '1.1d';
 			data['format'] = 'json';
 		}
 		
-		// Setup callback wrapper for timeout		
+		// Setup callback wrapper for timeout
 		var requestTimeOutFlag = false;
 		var ranCallback = false;
-		var myCallback = function( data ){
+		
+		/**
+		 * local callback function to control timeout
+		 * @param {Object} data Result data
+		 */
+		var myCallback = function( data ){			
 			if( ! requestTimeOutFlag ){
 				ranCallback = true;
 				callback( data );
@@ -1436,25 +1440,33 @@ var MW_EMBED_VERSION = '1.1d';
 		} 		
 		// Set the local timeout call based on defaultRequestTimeout
 		setTimeout( function( ) {
-			if( ! ranCallback ){
+			if( ! ranCallback ) {
 				requestTimeOutFlag = true;
-				mw.log( "Error:: request timed out: " + url ) ;
-				if( timeoutCallback ) {
+				mw.log( "Error:: request timed out: " + url ) ;			
+				if( timeoutCallback ){	
 					timeoutCallback();
 				}
 			}
 		}, mw.getConfig( 'defaultRequestTimeout' ) * 1000  );
 		
-		mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );		
+		mw.log("run getJSON: " + mw.replaceUrlParams( url, data ) );
+				
 		// Check if the request requires a "post" 
 		if( mw.checkRequestPost( data )  ) {
+		
 			// Check if we need to setup a proxy
 			if( ! mw.isLocalDomain( url ) ) {
+		
+				//Set local scope ranCallback to true 
+				// ( ApiProxy handles timeouts internnaly )
+				ranCallback = true;
+		
 				// Load the proxy and issue the request
-				mw.load( 'ApiProxy', function() {							
-					mw.ApiProxy.doRequest( url, data, myCallback, timeoutCallback);				
+				mw.load( 'ApiProxy', function() {		
+					mw.ApiProxy.doRequest( url, data, callback, timeoutCallback);				
 				});				
-			}else{
+				
+			} else {
 				// Do the request an ajax post 
 				$j.post( url, data, myCallback, 'json');
 			}
@@ -1509,11 +1521,11 @@ var MW_EMBED_VERSION = '1.1d';
 	}
 	
 	/**
-	 * Simple api helper to grab an edit token
+	 * Api helper to grab an edit token
 	 *
 	 * @param {String} [apiUrl] Optional target API URL (uses default local api if unset) 
 	 * @param {String} title The wiki page title you want to edit	 
-	 * @param {callback} callback Function to pass the token to
+	 * @param {callback} callback Function to pass the token to returns false if token not retrived
 	 */
 	mw.getToken = function( apiUrl, title, callback ) {
 		// Make the apiUrl be optional: 
@@ -1533,12 +1545,59 @@ var MW_EMBED_VERSION = '1.1d';
 		mw.getJSON( apiUrl, request, function( data ) {
 			for ( var i in data.query.pages ) {
 				if ( data.query.pages[i]['edittoken'] ) {
-					if ( typeof callback == 'function' )
-						callback ( data.query.pages[i]['edittoken'] );
+					callback ( data.query.pages[i]['edittoken'] );	
+					return ;				
 				}
 			}
 			// No token found:
-			return false;
+			callback ( false );
+		} );
+	}
+	
+	/**
+	 * Api helper to grab the username
+	 * @param {String} [apiUrl] Optional target API url (uses default local api if unset) 
+	 * @param {Function} callback Function to callback with username or false if not found	 
+	 */
+	 mw.getUserName = function( apiUrl, callback ){	 		 	
+	 	if( typeof apiUrl == 'function' ){
+	 		var callback = apiUrl;
+	 		var apiUrl =  mw.getLocalApiUrl();	 		
+	 	}
+	 	
+	 	// If apiUrl is local check wgUserName global
+	 	//  before issuing the api request.
+	 	if( mw.isLocalDomain( apiUrl ) ){	 		
+	 		if( typeof wgUserName != 'undefined' &&  wgUserName !== null ) {
+	 			callback( wgUserName )
+	 			return ;
+	 		}
+	 	}
+	 	
+	 	// Setup the api request
+		var request = {
+			'action':'query',
+			'meta':'userinfo'
+		}
+		
+		// Do request 
+		mw.getJSON( apiUrl, request, function( data ) {
+			if( !data || !data.query || !data.query.userinfo || !data.query.userinfo.name ){
+				// Could not get user name user is not-logged in
+				mw.log( " No userName in response " );
+				callback( false );
+				return ;
+			}
+			// Check for "not logged in" id == 0
+			if( data.query.userinfo.id == 0 ){
+				callback( false );
+				return ;
+			}
+			// Else return the username: 
+			callback( data.query.userinfo.name );				
+		}, function(){
+			//Timeout also results in callback( false );
+			callback( false );
 		} );
 	}
 	
@@ -1548,8 +1607,7 @@ var MW_EMBED_VERSION = '1.1d';
 	
 	/**
 	* addLoaderDialog
-	*  small helper for putting a loading dialog box on top of everything
-	* (helps block for request that
+	*  small helper for displaying a loading dialog
 	*
 	* @param msg text text of the loader msg
 	*/
@@ -1567,7 +1625,7 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	* Add a (temporary) dialog window:
 	* @param {String} title Title string for the dialog
-	* @param {String} msg_txt String to be inserted in msg box
+	* @param {String} msg_html String to be inserted in msg box
 	* @param {Mixed} buttons A button object for the dialog 
 	*					Can be 'ok' for oky button.
 	*/

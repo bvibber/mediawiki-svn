@@ -16,7 +16,8 @@
 mw.addMessages( {	
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-uploaded-status" : "Uploaded",
-	"mwe-uploaded-time-remaining" : "Time remaining: $1"
+	"mwe-uploaded-time-remaining" : "Time remaining: $1",	
+	"mwe-upload-done" : "Your upload <i>should be<\/i> accessible.",	
 } );
 
 /**
@@ -60,9 +61,11 @@ mw.UploadDialogInterface.prototype = {
 			$j( '<div />')
 			.attr( 'id', "upProgressDialog" )
 		);
+		
 		if( typeof options == 'undefined' || !options.title ) {
 			options.title = gM('mwe-upload-in-progress');
 		}
+		
 		$j( '#upProgressDialog' ).dialog( {
 			title : options.title,
 			bgiframe: true,
@@ -82,6 +85,7 @@ mw.UploadDialogInterface.prototype = {
 			},
 			buttons: _this.getCancelButton()
 		} );
+		
 		mw.log( 'upProgressDialog::dialog done' );		
 
 		var $progressContainer = $j('<div />')
@@ -89,7 +93,8 @@ mw.UploadDialogInterface.prototype = {
 			.css({
 				'height' : '15px'
 			});
-		// add the progress bar	
+			
+		// Add the progress bar	
 		$progressContainer.append(
 			$j('<div />')
 				.attr('id', 'up-progressbar')
@@ -192,7 +197,6 @@ mw.UploadDialogInterface.prototype = {
 	
 	/**
 	 * Set the dialog to loading
-	 * @param optional loadingText text to set dialog to. 
 	 */
 	setLoading: function( ) {
 		this.action_done = false;
@@ -244,9 +248,10 @@ mw.UploadDialogInterface.prototype = {
 		
 		// Generate the error button			
 		var buttons = {};
-		buttons[ gM( 'mwe-return-to-form' ) ] = function() {
-			_this.form_post_override = false;
+		buttons[ gM( 'mwe-return-to-form' ) ] = function() {			
 			$j( this ).dialog( 'close' );
+			// Disable direct submit so that we can handle updated form data
+			_this.sendUploadAction( 'disableDirectSubmit' );
 		};
 			
 				
@@ -388,7 +393,7 @@ mw.UploadDialogInterface.prototype = {
 			// Create the "return to form" button
 			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
 				$j( this ).dialog( 'close' );
-				_this.sendUploadAction( 'disableFormPostOverride' );
+				_this.sendUploadAction( 'disableDirectSubmit' );
 			}
 			// Show warning
 			_this.setPrompt(
@@ -418,6 +423,7 @@ mw.UploadDialogInterface.prototype = {
 	
 	/**
 	* Shows api success from a apiResult
+	* @param {Object} apiRes Result object
 	*/
 	showApiSuccess: function( apiRes ){
 		mw.log( " UI:: showApiSuccess: " );
@@ -428,7 +434,7 @@ mw.UploadDialogInterface.prototype = {
 		// "Return" button
 		buttons[ gM( 'mwe-return-to-form' ) ] = function() {
 			$j( this ).dialog( 'destroy' ).remove();
-			_this.sendUploadAction( 'disableFormPostOverride' );
+			_this.sendUploadAction( 'disableDirectSubmit' );
 		}
 		// "Go to resource" button
 		buttons[ gM('mwe-go-to-resource') ] = function() {
@@ -437,7 +443,11 @@ mw.UploadDialogInterface.prototype = {
 		_this.action_done = true;
 		_this.setPrompt(
 			gM( 'mwe-successfulupload' ),
-			gM( 'mwe-upload_done', url),
+			$j('<a />')
+			.attr( 'href', url )
+			.html( 
+				gM( 'mwe-upload-done')
+			),
 			buttons 
 		);
 		mw.log( 'apiRes.upload.imageinfo::' + url );
@@ -482,12 +492,10 @@ mw.UploadIframeUI.prototype = {
 	* 	other domain via iframe proxy or eventually html5 sendMsg  
 	*/
 	init: function( callbackProxy ){
-		this.callbackProxy = callbackProxy;
+		var _this = this;
+		this.callbackProxy = callbackProxy;		
 	},	
-	setup: function( options ){
-		this.callbackProxy( 'setup', options );	
-	},
-	
+
 	// Don't call update progress more than once every 3 seconds 
 	// Since it involves loading a cached iframe. Once we support html5 
 	// cross domain "sendMsg" then we can pass all updates   
@@ -497,16 +505,35 @@ mw.UploadIframeUI.prototype = {
 			this.callbackProxy( 'updateProgress', fraction );
 		}
 	},
+	
+	// Pass on the setup call
+	setup: function( options ){
+		this.callbackProxy( 'setup', options );	
+	},
+	
+	// pass along the close request
+	close: function(){
+		this.callbackProxy( 'close' );
+	},
+	
+	// Pass on the "setLoading" action
+	setLoading: function( ){
+		this.callbackProxy( 'setLoading' );
+	},
+	
 	// Pass on the show api errror:  
 	showApiError: function ( apiRes ){
 		this.callbackProxy( 'showApiError', apiRes );
 	},
+	
 	// Pass on the show api success:
 	showApiSuccess: function ( apiRes ) {
 		this.callbackProxy( 'showApiSuccess', apiRes );
 	},
+	
 	// Pass on api action
 	sendUploadAction: function( action ) {
 		this.callbackProxy( 'sendUploadAction', action );
 	}
+	
 };

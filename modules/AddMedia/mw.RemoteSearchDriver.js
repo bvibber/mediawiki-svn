@@ -36,14 +36,16 @@ mw.addMessages( {
 	"mwe-missing_desc_see_source" : "This asset is missing a description. Please see the $1 and help describe it.",
 	
 	"rsd_config_error" : "Add media wizard configuration error: $1",
-	"mwe-your_recent_uploads" : "Your recent uploads to $1",
+	"mwe-your-recent-uploads" : "Your recent uploads to $1",
 	"mwe-no_recent_uploads" : "No recent uploads",
 	
 	"mwe-not-logged-in-uploads" : "You may not be logged in so no recent uploads can be displayed. $1 login and $2",
 	"mwe-loggin-link" : "Please login", 
 	"mwe-try-again-link" : "try again",
 	
-	"mwe-upload_a_file" : "Upload a new file",
+	"mwe-upload-a-file" : "Upload a new file",
+	"mwe-upload-a-file-to" : "Upload a new file to $1",
+	
 	"mwe-resource_page_desc" : "Resource page description:",
 	"mwe-edit_resource_desc" : "Edit wiki text resource description:",
 	"mwe-local_resource_title" : "Local resource title:",
@@ -1038,12 +1040,16 @@ mw.RemoteSearchDriver.prototype = {
 		// Set the tab container to loading:
 		this.$resultsContainer.loadingSpinner();
 		
-		//Show the upload form
-		mw.load( ['mw.UploadForm'], function() {						
-			var provider = _this.content_providers[ 'this_wiki' ];
-			// Load this_wiki search system to grab the resource
-			_this.loadSearchLib( provider, function() {
-				_this.showUploadForm( provider );
+		// Show the upload form (use the standard module AddMedia.firefogg
+		//  This way we get a high cache hit rate by using a general module
+		//  and not grouping mw.UploadForm into the upload code set 
+		mw.load( 'AddMedia.firefogg', function() {
+			mw.load( 'mw.UploadForm', function() {	
+				var provider = _this.content_providers[ 'this_wiki' ];
+				// Load this_wiki search system to grab the resource
+				_this.loadSearchLib( provider, function() {
+					_this.showUploadForm( provider );
+				} );
 			} );
 		} );
 	},
@@ -1067,7 +1073,8 @@ mw.RemoteSearchDriver.prototype = {
 			})
 			.append(
 				$j('<h3 />')
-				.text(  gM( 'mwe-upload_a_file' ) ),
+				.addClass( 'upload-a-file-msg' )
+				.text(  gM( 'mwe-upload-a-file' ) ),
 				
 				$j('<div />').attr({
 					'id': 'rsd_upload_form'
@@ -1093,7 +1100,12 @@ mw.RemoteSearchDriver.prototype = {
 		mw.UploadForm.getUploadMenu( {
 			'target': '#rsd_upload_form',
 			'uploadTargets' :  _this.getUploadTargets(),
-			'remoteSearchDriver' : this
+			'remoteSearchDriver' : this,
+			'selectUploadProviderCb' : function( uploadProvider ){
+				_this.$resultsContainer.find( '.upload-a-file-msg' ).html(
+					gM( 'mwe-upload-a-file-to', uploadProvider.title )
+				);
+			}
 		} );		
 	},
 	
@@ -1113,13 +1125,12 @@ mw.RemoteSearchDriver.prototype = {
 			$j( target ).append(
 				$j( '<h3 />' )
 				.append( 
-					gM( 'mwe-your_recent_uploads',  uploadTarget.title )
+					gM( 'mwe-your-recent-uploads',  uploadTarget.title )
 				),
 				
 				// Add the targetUpload container
 				$j('<div />')
-				.attr( 'id', 'user-results-' + uploadTargetId )
-				.loadingSpinner()
+				.attr( 'id', 'user-results-' + uploadTargetId )		
 			)
 			// Issue the call to get the recent uploads:
 			_this.showUserRecentUploads( uploadTargetId ); 					
@@ -1132,32 +1143,17 @@ mw.RemoteSearchDriver.prototype = {
 		var provider = _this.content_providers[ uploadTargetId ];
 		var uploadTargets = _this.getUploadTargets();
 		var uploadApiUrl = uploadTargets[ uploadTargetId ].apiUrl ;
-
+		
+		// Set the target to a loadingSpinner
+		$j('#user-results-' + uploadTargetId ).loadingSpinner();
+		
 		// If the target is not local or we don't have a userName
 		// ( try and grab the user name via api call (will be a proxy call if remote) ) 
-		if( ! mw.isLocalDomain( uploadApiUrl ) ) {
-			// Garb the userName via api call 	
-			var request = {
-				'action':'query',
-				'meta':'userinfo'
-			}
-			// Do request ( will automatically invoke proxy because its a proxy action and remote url )  
-			mw.getJSON( uploadApiUrl, request, function( data ){		
-				// Now we get the data back for that domain
-				if( !data || !data.query || !data.query.userinfo ){
-					// Could not get user name user is not-logge
-					mw.log( " No user data in resposne " );
-					return false;
-				}
-				var userName = data.query.userinfo.name;
-				_this.showUserRecentUploadsWithUser( uploadTargetId, userName );
-				
-			}, 
-			// Add a timeout function for getting the user-name
-			function( ) {				
+		mw.getUserName( uploadApiUrl, function( userName ) {			
+			if( userName === false ){
 				var logInLink = uploadApiUrl.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin'; 
 				// Timed out or proxy not setup ( for remotes ) 
-				$j( '#user-results-' + uploadTargetId ).html(
+				$j( '#user-results-' + uploadTargetId ).html(					
 					gM( "mwe-not-logged-in-uploads", 
 						$j( '<a />' )
 						.attr( {
@@ -1179,19 +1175,15 @@ mw.RemoteSearchDriver.prototype = {
 				$j( '#user-results-' + uploadTargetId )
 				.find( '.try-again' )
 				.click(function(){
-					//Refresh the user uploads
+					mw.log(" try again:: " + uploadTargetId);
+					$j( '#user-results-' + uploadTargetId ).empty().loadingSpinner();					
+					// Refresh the user uploads
 					_this.showUserRecentUploads( uploadTargetId );
 				})	
-			} );
-		} else {
-			// No user name, since every page outputs wgUserName assume the user is not logged in )
-			if( !wgUserName ) {
-				$j( '#user-results-' + uploadTargetId )
-				.text( gM( 'mwe-not-logged-in-uploads' ) );
-			}else{
-				_this.showUserRecentUploadsWithUser( uploadTargetId,  wgUserName );
+			} else {
+				_this.showUserRecentUploadsWithUser( uploadTargetId, userName );
 			}
-		}
+		} );				
 	},	
 	
 	showUserRecentUploadsWithUser: function( uploadTargetId, userId ){
@@ -1269,7 +1261,8 @@ mw.RemoteSearchDriver.prototype = {
 				mw.parseUri( thisWikiProvider.apiUrl ).host,
 				$j( '<a />' )
 				.attr( { 
-					'href' : $uploadLink.attr('href')
+					'href' : $uploadLink.attr('href'),
+					'target' : '_new'
 				} )
 				.text( gM('mwe-local-upload-policy-link') )
 			),
@@ -1286,7 +1279,7 @@ mw.RemoteSearchDriver.prototype = {
 	*/
 	updateResults: function() {
 		if ( this.current_provider == 'upload' ) {
-			this.updateUploadResults();
+			this.showUploadTab();
 		} else {
 			this.updateSearchResults( this.current_provider, false );
 		}
@@ -1509,17 +1502,18 @@ mw.RemoteSearchDriver.prototype = {
 			_this.currentRequest = context();
 			mw.log( "ProviderCallBack Generated " + context() )
 			provider.sObj.getSearchResults( $j( '#rsd_q' ).val() , 
-					function( resultStatus ) {						
-						mw.log( "ProviderCallBack Received  " + context() );
-						if( _this.currentRequest != context() ) {
-							mw.log( "Context mismatch for request " + _this.currentRequest + ' != ' + context );
-					        // do not update the results this.currentRequest 
-							// does not match the interface request state.
-					        return false;
-					    }					    
-						//else update search results
-						_this.showResults();
-					});
+				function( resultStatus ) {				
+					mw.log( "ProviderCallBack Received  " + context() );
+					if( _this.currentRequest != context() ) {
+						mw.log( "Context mismatch for request " + _this.currentRequest + ' != ' + context );
+				        // do not update the results this.currentRequest 
+						// does not match the interface request state.
+				        return false;
+				    }					    
+					//else update search results
+					_this.showResults();
+				}
+			);
 			
 			// Set a timeout of 20 seconds
 			setTimeout( function() {
@@ -1693,9 +1687,16 @@ mw.RemoteSearchDriver.prototype = {
 		// Add "no search results" text
 		$j( '#rsd_no_search_res' ).remove();
 		if ( numResults == 0 ) {
-			$resultsContainer.append( 
-				gM( 'rsd_no_results', $j( '#rsd_q' ).val() )
-			) 
+			// NOTE: we should handle no-results with a callback not with condition check
+			if( _this.current_provider == 'upload' ) {
+			 	$resultsContainer.append( 
+			 		gM( 'mwe-no_recent_uploads' )
+			 	);
+			} else {
+				$resultsContainer.append( 
+					gM( 'rsd_no_results', $j( '#rsd_q' ).val() )
+				) ;
+			}
 		}
 		this.addResultBindings();
 	},
@@ -2697,7 +2698,7 @@ mw.RemoteSearchDriver.prototype = {
 				// ( mvBaseUploadInterface handles upload errors ) 
 				var uploader = new mw.BaseUploadInterface( {
 					'apiUrl' : _this.upload_api_target,
-					'done_upload_cb':function() {
+					'doneUploadCb': function() {
 						mw.log( 'doApiImport:: run callback::' );
 						// We have finished the upload:
 
