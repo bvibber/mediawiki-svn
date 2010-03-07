@@ -7,6 +7,9 @@
  * @ingroup Storyboard
  *
  * @author Jeroen De Dauw
+ * 
+ * Notice: This class is designed with the idea that only one storysubmission form is placed
+ * on a single page, and might not work properly when multiple are placed on a page.
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -34,64 +37,83 @@ class TagStorysubmission {
 	}
 	
 	private static function getFrom( $parser, $args ) {
-		global $egStorysubmissionWidth;
+		global $wgOut, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		
+		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.css' );
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.js' );
 		
 		$fieldSize = 50;
 		
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStorysubmissionWidth );
+		$maxLen = array_key_exists('maxlength', $args) && is_numeric($args['maxlength']) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
+		$minLen = array_key_exists('minlength', $args) && is_numeric($args['minlength']) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
-		$url = $parser->getTitle()->getLocalURL( 'action=submit' );
+		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=submit' ); // TODO: fix parameters
 		
 		$formBody = "<table width='$width'>";
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-yourname' ) ) .
-			'<td>' . Html::element(
-				'input',
-				array( 'id' => 'name', 'name' => 'name', 'type' => 'text', 'size' => $fieldSize ),
-				null
+			'<td>' . 
+			Html::input('name' ,'', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-location' ) ) .
-			'<td>' . Html::element(
-				'input',
-				array(' id' => 'location', 'name' => 'location', 'type' => 'text', 'size' => $fieldSize ),
-				null
+			'<td>' . Html::input('location' ,'', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-occupation' ) ) .
-			'<td>' . Html::element(
-				'input',
-				array( 'id' => 'occupation', 'name' => 'occupation', 'type' => 'text', 'size' => $fieldSize ),
-				null
+			'<td>' . Html::input('occupation' ,'', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-contact' ) ) .
-			'<td>' . Html::element(
-				'input',
-				array( 'id' => 'contact', 'name' => 'contact', 'type' => 'text', 'size' => $fieldSize ),
-				null
+			'<td>' . Html::input('contact' ,'', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
-			
-		$formBody .= '<tr><td colspan="2">' . // TODO: add 'x-chars left' feature
-			wfMsg( 'storyboard-story' ) . '<br />' . 
+		
+		$formBody .= '<tr><td colspan="2">' .
+			wfMsg( 'storyboard-story' ) .
+			Html::element(
+				'div',
+				array('class' => 'storysubmission-charcount', 'id' => 'storysubmission-charlimitinfo'),
+				wfMsgExt( 'storyboard-charsneeded', 'parsemag', $minLen )
+			) .
+			'<br />' . 
 			Html::element(
 				'textarea',
-				array( 'id' => 'story', 'rows' => 7 ),
+				array(
+					'id' => 'story',
+					'rows' => 7,
+					'onkeyup' => "stbValidateStory( this, $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )",
+					// TODO: make disabled when JS is enabled
+				),
 				null
 			) .
 			'</td></tr>';
-			
-		$formBody .= '<tr><td colspan="2">' . Html::input( '', wfMsg( 'htmlform-submit' ), 'submit' ) . '</td></tr>';
 		
+		// TODO: add upload functionality
+		
+		$formBody .= '<tr><td colspan="2"><input type="checkbox" id="storyboard-agreement" />&nbsp;' .
+			htmlspecialchars( wfMsg( 'storyboard-agreement' ) ) .
+			'</td></tr>';
+			
+		$formBody .= '<tr><td colspan="2">' . 
+			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array('id' => 'storysubmission-button') ) .
+			'</td></tr>';
+			
 		$formBody .= '</table>';
 		
 		return Html::rawElement(
 			'form',
-			array( 'id' => 'storyform', 'name' => 'storyform', 'method' => 'post', 'action' => $url ),
+			array(
+				'id' => 'storyform',
+				'name' => 'storyform',
+				'method' => 'post',
+				'action' => $submissionUrl,
+				'onsubmit' => 'return stbValidateSubmission( "storyboard-agreement" );'
+			),
 			$formBody
 		);
 	}

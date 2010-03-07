@@ -29,12 +29,16 @@ $messages['en'] = array(
 
 	// Story submission
 	'storyboard-yourname' => 'Your name',
-	'storyboard-location' => 'Where do you live?',
+	'storyboard-location' => 'Your location',
 	'storyboard-occupation' => 'Your occupation',
-	'storyboard-story' => "What's your story",
+	'storyboard-story' => "Your story",
 	'storyboard-photo' => 'Have a photo of yourself? Why not share it?',
-	'storyboard-contact' => 'E-mail address or telephone number',
+	'storyboard-contact' => 'Your E-mail address or telephone number',
 	'storyboard-agreement' => 'I agree with the publication of this story.',
+	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',
+	'storyboard-cannotbelonger' => 'Your story may not exceed $ characters!',
+	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
+	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.'
 );
 
 /** Afrikaans (Afrikaans)

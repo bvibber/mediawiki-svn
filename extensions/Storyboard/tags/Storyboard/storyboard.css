@@ -1,11 +1,11 @@
 /**
-  * Storyboard css.
+  * Css for <storyboard> tags of the Storyboard extension.
   *
   * @file Storyboard.css
   * @ingroup Storyboard
   *
   * @author Jeroen De Dauw
- */
+  */
 
 .storyboard {
 border: 1px solid #ddd;
