@@ -3212,6 +3212,7 @@ $messages['ig'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'wikilog-desc' => 'ブログ機能を追加し、ウィキとブログのハイブリッドを作る',
@@ -3271,8 +3272,13 @@ $messages['ja'] = array(
 	'wikilog-edit-fieldset-legend' => 'ウィキログのオプション:',
 	'wikilog-edit-signpub' => 'この記事に署名し公開する',
 	'wikilog-edit-signpub-tooltip' => '保存時にこの記事が署名され、そのウィキログに公開されます。この記事を下書きのままにするのなら、このボックスをチェックしないでください。',
+	'wikilog-comment-permalink' => '$1の$2',
+	'wikilog-comment-note-item' => '$1への投稿',
+	'wikilog-comment-note-edited' => '$1の$2に最後の編集',
+	'wikilog-comment-anonsig' => '$3（匿名利用者）',
 	'wikilog-comment-pending' => 'このコメントは承認待ちです。',
 	'wikilog-comment-deleted' => 'このコメントは削除されました。',
+	'wikilog-comment-omitted-x' => 'コメント省略(#$1)。',
 	'wikilog-comment-autosumm' => '$1 による新規コメント: $2',
 	'wikilog-reply-to-comment' => 'このコメントへの返信を投稿',
 	'wikilog-comment-page' => 'このコメントのページへ移動',
@@ -3284,6 +3290,9 @@ $messages['ja'] = array(
 	'wikilog-newtalk-text' => '<!-- ウィキログによって作成された空白ページ -->',
 	'wikilog-newtalk-summary' => 'ウィキログにより自動的に作成',
 	'wikilog-feed-description' => 'このフィードで最新の投稿を読む。',
+	'wikilog-comment-feed-title1' => '$2からのコメント(#$1)',
+	'wikilog-comment-feed-title2' => '$3への$2からのコメント(#$1)',
+	'wikilog-comment-feed-description' => 'このフィードで最新のコメントを購読する。',
 	'wikilog-title-comments' => 'コメント - $1',
 	'wikilog-error-msg' => 'ウィキログ: $1',
 	'wikilog-error-title' => 'ウィキログのエラー',

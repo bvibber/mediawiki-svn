@@ -333,9 +333,13 @@ $messages['cu'] = array(
  * @author Sarrus
  */
 $messages['da'] = array(
+	'ct-event-name' => 'Navn på hændelse',
+	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
+	'ct-end-date' => 'Slutdato (ÅÅÅÅMMDD)',
 	'ct-beginner' => 'Begynder',
 	'ct-expert' => 'Ekspert',
 	'ct-anon-users' => 'Anonyme brugere',
+	'ct-user-contribs' => 'Totalt antal brugerbidrag',
 	'ct-and' => 'og',
 );
 

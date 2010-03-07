@@ -55,10 +55,13 @@ $messages['ar'] = array(
 );
 
 /** Araucanian (Mapudungun)
+ * @author Kaniw
  * @author Lin linao
  */
 $messages['arn'] = array(
-	'languageselector' => 'Dungun',
+	'languageselector' => 'Cezugun',
+	'languageselector-desc' => 'Cezugun ñi zujipeyvm fijke aztapvl mew, keyv jajitufe',
+	'languageselector-setlang' => 'zujipe',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

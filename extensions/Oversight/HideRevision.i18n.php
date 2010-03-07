@@ -712,9 +712,20 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 /** Danish (Dansk)
  * @author Byrial
  * @author Jan Friberg
+ * @author Sarrus
  */
 $messages['da'] = array(
+	'right-oversight' => 'Se en tidligere skjult version',
 	'right-hiderevision' => 'Skjule versioner for administratorer',
+	'hiderevision-prompt' => 'Versionsnummeret, der skal fjernes',
+	'hiderevision-continue' => 'Fortsæt',
+	'hiderevision-reason' => 'Årsag (logges privat):',
+	'hiderevision-submit' => 'Skjul disse data permanent',
+	'hiderevision-tab' => 'Skjul version',
+	'hiderevision-link' => 'skjulte brugerbidrag',
+	'hiderevision-norevisions' => 'Der er ikke angivet, hvilke versioner, der skal slettes.',
+	'hiderevision-noreason' => 'Du skal angive en begrundelse til fjernelsen.',
+	'hiderevision-error-missing' => 'Ikke fundet i databasen.',
 );
 
 /** German (Deutsch)

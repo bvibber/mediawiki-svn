@@ -759,6 +759,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'mostrevisors-header' => "'''ఈ పేజీ ఎక్కవమంది కూర్పురులున్న {{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తుంది.'''",
 	'mostrevisors-namespace' => 'పేరుబరి:',
 	'mostrevisors-showing' => '{{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తున్నాం:',
 	'mostrevisors-submit' => 'వెళ్ళు',

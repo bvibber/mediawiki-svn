@@ -116,10 +116,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
 	'wikieditor-template-editor-preference' => 'Abilitar edición basada en formularios de plantillas wiki',
+	'wikieditor-template-editor-dialog-title' => 'Editar plantilla',
+	'wikieditor-template-editor-dialog-submit' => 'Actualizar',
 );
 
 /** Finnish (Suomi)
@@ -224,6 +227,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'wikieditor-template-editor-preference' => "D'Ännere vu Wiki-Schablounen op der Basis vu Formulairen aschalten",
+	'wikieditor-template-editor-dialog-title' => 'Schabloun änneren',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualiséieren',
 );
 
 /** Macedonian (Македонски)

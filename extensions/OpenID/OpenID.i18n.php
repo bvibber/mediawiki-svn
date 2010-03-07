@@ -2713,6 +2713,10 @@ $messages['ja'] = array(
 	'openiddelete' => 'OpenID を削除',
 	'openiddelete-text' => '「{{int:openiddelete-button}}」ボタンをクリックすると、あなたのアカウントから OpenID $1 を除去します。以降、あなたはこの OpenID を使ってログインすることができなくなります。',
 	'openiddelete-button' => '確定',
+	'openiddeleteerrornopassword' => 'アカウントにパスワードが設定されていないため、あなたのOpenIDを削除できません。
+あなたは、OpenIDを使用せずにログインできません。',
+	'openiddeleteerroropenidonly' => 'OpenIDを使用してのログインのみが許可されているため、あなたのOpenIDを削除できません。
+あなたは、OpenIDを使用せずにログインできません。',
 	'openiddelete-sucess' => 'この OpenID のあなたのアカウントからの除去に成功しました。',
 	'openiddelete-error' => 'あなたのアカウントからこの OpenID を除去している途中でエラーが発生しました。',
 	'openid-prefstext' => '[http://openid.net/ OpenID] の設定',

@@ -87,11 +87,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'wikieditor' => 'Etrefas kemmañ wikitestenn klokaet',
 	'wikieditor-desc' => "Poruchas a ra un etrefas kemmañ wikitestenn astennidik ha meur a arc'hwel all.",
 	'wikieditor-wikitext-tab' => 'Wikitestenn',
+	'wikieditor-loading' => 'O kargañ',
 );
 
 /** Bosnian (Bosanski)
@@ -499,11 +501,13 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'wikieditor' => 'Avancerat gränssnitt för redigering av wikitext',
 	'wikieditor-desc' => 'Tillhandahåller ett utökat gränssnitt för redigering av wikitext och många moduler som tillhandahåller funktioner',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Laddar',
 );
 
 /** Swahili (Kiswahili)

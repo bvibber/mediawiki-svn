@@ -677,6 +677,7 @@ Per farlo richiedi una chiave API [http://www.flickr.com/services/api/misc.api_k
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'importfreeimages' => 'フリーの画像をインポート',
@@ -687,7 +688,10 @@ $messages['ja'] = array(
 	'importfreeimages_importthis' => 'これをインポート',
 	'importfreeimages_next' => '次の$1件',
 	'importfreeimages_size_square' => '四角',
+	'importfreeimages_size_thumbnail' => 'サムネイル',
 	'importfreeimages_size_small' => '小さい',
+	'importfreeimages_size_medium' => '中',
+	'importfreeimages_size_large' => '大',
 	'importfreeimages_size_original' => 'オリジナル',
 );
 
@@ -1231,21 +1235,22 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Sannab
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'importfreeimages' => 'Importera fria bilder',
 	'importfreeimages-desc' => 'Ger möjlighet att [[Special:ImportFreeImages|importera bilder med lämplig licens]] från [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Denna sida låter dig söka efter bilder med riktig licens på Flickr och importera dem till din wiki.',
-	'importfreeimages_noapikey' => 'Du har inte konfigurerat din nyckel för Flickrs API. För att göra det måste du skaffa en API-nyckel [http://www.flickr.com/services/api/misc.api_keys.html härifrån] och sätta $wgFlickrAPIKey  i ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Inga bilder hittades för dina sökkriterier '$1', försök igen.",
-	'importfreeimages_invalidurl' => 'URL:en "$1" är inte en giltig Flickr-bild.',
 	'importfreeimages_owner' => 'Upphovsman',
 	'importfreeimages_importthis' => 'importera',
 	'importfreeimages_next' => 'Nästa $1',
-	'importfreeimages_filefromflickr' => '$1 av användaren <b>[$2]</b> från Flickr. Orginal URL',
-	'importfreeimages_promptuserforfilename' => 'Var god skriv in ett destinationsnamn för filen:',
-	'importfreeimages_returntoform' => "Eller klicka <a href='$1'>här</a> för att gå tillbaka till dina sökresultat",
-	'importfreeimages_nophpflickr' => 'Du har inte phpFlickr installerat, ställ in $wgIFphpFlickr i filen LocalSettings.php.',
+	'importfreeimages_size_square' => 'Kvadratisk',
+	'importfreeimages_size_thumbnail' => 'Miniatyr',
+	'importfreeimages_size_small' => 'Liten',
+	'importfreeimages_size_medium' => 'Medium',
+	'importfreeimages_size_large' => 'Stor',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Telugu (తెలుగు)
@@ -1255,8 +1260,7 @@ $messages['te'] = array(
 	'importfreeimages_nophotosfound' => "'$1' అనే మీ అన్వేషణా ప్రశ్నకి ఫొటోలు ఏమీ దొరకలేదు, మళ్ళీ ప్రయత్నించండి.",
 	'importfreeimages_owner' => 'కృతికర్త',
 	'importfreeimages_next' => 'తర్వాతి $1',
-	'importfreeimages_promptuserforfilename' => 'గమ్యస్థానపు ఫైలు పేరుని ఇవ్వండి:',
-	'importfreeimages_returntoform' => "లేదా, తిరిగి మీ అన్వేషణ ఫలితాలకు వెళ్ళడానికి <a href='$1'>ఇక్కడ</a> నొక్కండి",
+	'importfreeimages_size_original' => 'అసలు',
 );
 
 /** Tetum (Tetun)

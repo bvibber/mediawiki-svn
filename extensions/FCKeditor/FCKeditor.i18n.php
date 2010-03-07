@@ -1132,9 +1132,13 @@ $messages['sk'] = array(
 	'tog-riched_toggle_remember_state' => 'Pamätať si posledný stav prepínača',
 );
 
-/** Swedish (Svenska) */
+/** Swedish (Svenska)
+ * @author Sertion
+ */
 $messages['sv'] = array(
+	'fckeditor-desc' => 'Skapar möjligheten att redigera med WYSIWYG-redigeraren FGKeditor',
 	'textrichditor' => 'Grafiskt läge',
+	'prefs-fckeditor' => 'Grafiskt läge',
 	'tog-riched_disable' => 'Inaktivera grafiskt läge',
 	'tog-riched_disable_ns_main' => 'Inaktivera grafiskt läge i huvudnamnrymden',
 	'tog-riched_disable_ns_talk' => 'Inaktivera grafiskt läge i "{{ns:talk}}" namnrymden',

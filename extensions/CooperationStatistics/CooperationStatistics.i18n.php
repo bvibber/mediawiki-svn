@@ -716,9 +716,13 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 
 /** Swedish (Svenska)
  * @author Per
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'cooperationstatistics' => 'Samarbetsstatistik',
+	'cooperationstatistics-desc' => 'Visa [[Special:CooperationStatistics|samarbetsstatisitk för huvudnamnrymden]].',
+	'cooperationstatistics-text' => "Visa samarbetsstatistik från huvudnamnrymden.
+Från [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] till [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] bidragsgivare.<br /> Se också [[Special:MostRevisors|'''sidorna med flest bidragsgivare''']] och [[Special:MostRevisions|sidorna med längst historik]].",
 	'cooperationstatistics-tablearticle' => 'Sidantal',
 	'cooperationstatistics-tablevalue' => 'Antal bidragsgivare',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sida|sidor}}',

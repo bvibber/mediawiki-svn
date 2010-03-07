@@ -19,6 +19,13 @@ $messages['be-tarask'] = array(
 	'dynamicsidebar-desc' => 'Дадае дынамічныя бакавыя панэлі на старонках удзельнікаў, групаў і катэгорыяў.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'dynamicsidebar-desc' => 'Reiñ a ra barrennoù kostez dinamek diazezet war pajennoù an implijerien, o strolladoù hag ar rummadoù',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -59,6 +66,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'dynamicsidebar-desc' => 'Provide barras lateral dynamic a base de paginas de usator, gruppos e categorias',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'dynamicsidebar-desc' => '利用者のページやグループ、カテゴリにもとづいて、動的に生成されるサイドバーを提供する。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -109,5 +123,12 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'dynamicsidebar-desc' => 'Обеспечивает динамические боковые панели на основе личных страниц участников, групп и категорий',
+);
+
+/** Swedish (Svenska)
+ * @author Sertion
+ */
+$messages['sv'] = array(
+	'dynamicsidebar-desc' => 'Skapar en dynamisk sidomeny baserat på användarsidor, grupper och kategorier.',
 );
 

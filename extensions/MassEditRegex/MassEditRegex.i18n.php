@@ -229,6 +229,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'masseditregex-pagelisttxt' => 'Pajennoù da gemmañ (hep rakger an esaouenn anvioù) :',
 	'masseditregex-matchtxt' => 'Klask :',
 	'masseditregex-replacetxt' => "Erlec'hiañ gant :",
 	'masseditregex-executebtn' => 'Seveniñ',
@@ -243,9 +244,12 @@ $messages['br'] = array(
 	'masseditregex-hint-headmatch' => 'Klotadenn',
 	'masseditregex-hint-headreplace' => "Erlec'hiañ",
 	'masseditregex-hint-headeffect' => 'Efed',
+	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
 	'masseditregex-listtype-intro' => 'Setu ur roll eus :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
+	'masseditregex-listtype-backlinks' => 'Pajennoù liammet (kemmañ ar pajennoù enno ul liamm davet houmañ)',
 	'masseditregex-namespace-intro' => 'Emañ an holl bajennoù-mañ en esaouenn anv :',
+	'masseditregex-exprnomatch' => 'N\'eo bet kavet ar jedad "$1" e pajenn ebet.',
 	'masseditregex-badregex' => "N'eo ket mat ar regex :",
 	'masseditregex-editfailed' => 'Fazi e-pad an embann :',
 	'masseditregex-tooltip-execute' => "Arloañ ar c'hemmoù-se da bep pajenn",

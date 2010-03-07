@@ -37,6 +37,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'userpageeditprotection-desc' => "A strisha kemmoù ar pajennoù implijer d'he ferc'henn ha d'an implijerien aotreet hepken",
 	'right-editalluserpages' => 'Kemmañ ar pajennoù implijer',
 );
 

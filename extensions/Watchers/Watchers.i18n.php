@@ -946,10 +946,12 @@ $messages['szl'] = array(
  */
 $messages['te'] = array(
 	'watchers' => 'వీక్షకులు',
+	'watchers-desc' => '[[Special:Watchers|ఏయే వాడుకరులు ఒక పేజీని వారి వీక్షణజాబితాలో ఉంచుకున్నారో]] చూపిస్తుంది',
 	'watchers_link_title' => 'ఈ పేజీని ఎవరెవరు గమనిస్తున్నారు?',
 	'watchers_error_article' => '<b>పొరపాటు:</b> పేజీ ఉనికిలో లేదు.',
 	'watchers_header' => '{{PLURAL:$2|వాడుకరి|మంది వాడుకరులు }}  "[[:$1]]" పేజీని చూస్తున్నారు',
 	'watchers_noone_watches' => 'ఈ పేజీని ఎవరూ గమనించట్లేదు.',
+	'watchers-num' => '$1 {{PLURAL:$1|వాడుకరి|గురు వాడుకరులు}} [[:$2]] పేజీని {{PLURAL:$1|వారి|వారి}} వీక్షణజాబితాలో ఉంచుకున్నారు.',
 );
 
 /** Tagalog (Tagalog)

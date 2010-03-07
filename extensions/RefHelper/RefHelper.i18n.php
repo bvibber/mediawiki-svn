@@ -352,8 +352,15 @@ Tu pote [[Special:RefHelper|adder le referentia manualmente]] o [[Special:RefSea
 
 /** Japanese (日本語)
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
+	'refhelper-refcreate_autocomment' => '自動ページ作成。',
+	'refhelper-refcreate_success' => 'ページ[[$1]]は存在しておらず、作成されていません。',
+	'refhelper-refcreate_failure' => 'ページ[[$1]]は既に存在しています！',
+	'refhelper-label_workspace' => '作業場（コピーアンドペースト領域）：',
+	'refhelper-label_authorforename' => '作成者$1の名前：',
+	'refhelper-label_authorsurname' => '名字：',
 	'refhelper-title' => 'タイトル:',
 	'refhelper-pages' => 'ページ:',
 	'refhelper-year' => '年:',
@@ -592,6 +599,7 @@ $messages['ru'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'refhelper-label_authorsurname' => 'ఇంటిపేరు:',
 	'refhelper-pages' => 'పేజీలు:',
 	'refhelper-year' => 'సంవత్సరం:',
 	'refhelper-search' => 'వెతుకు',

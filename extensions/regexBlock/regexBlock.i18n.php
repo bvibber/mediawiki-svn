@@ -2729,6 +2729,7 @@ $messages['su'] = array(
  * @author Fluff
  * @author M.M.S.
  * @author Najami
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'regexblock' => 'Regex-blockering',
@@ -2762,6 +2763,8 @@ Var god skapa ett annat användarnamn eller [[$1|kontakta oss]] om problemet.',
 	'regexblock-form-submit-empty' => 'Ange ett användarnamn eller en IP-adress att blockera.',
 	'regexblock-form-submit-regex' => 'Ogiltigt reguljärt uttryck',
 	'regexblock-form-submit-expiry' => 'Var god ange en utgångstid.',
+	'regexblock-link' => 'blockering med reguljära uttryck',
+	'regexblock-match-stats-record' => "$1 blockerade '$2' på $3 vid $4, loggade in från $5",
 	'regexblock-nodata-found' => 'Hittade ingen data',
 	'regexblock-stats-title' => 'Regex-blockeringsstatistik',
 	'regexblock-unblock-success' => 'Avblockering lyckades',

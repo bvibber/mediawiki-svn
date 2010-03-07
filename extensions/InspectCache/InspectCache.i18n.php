@@ -1005,11 +1005,11 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'inspectcache' => 'Inspektera mellanlagring',
 	'inspectcache-desc' => 'Ett enkelt felsökningsverktyg för att inspektera innehållet i den delade cachen',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Generell cache',
 	'inspectcache-parser' => 'Parsercache',
 	'inspectcache-message' => 'Cache av meddelanden',
@@ -1017,6 +1017,7 @@ $messages['sv'] = array(
 	'inspectcache-delete' => 'Radera',
 	'inspectcache-deleted' => 'Raderad cache',
 	'inspectcache-list' => 'Lista',
+	'right-inspectcache' => 'Granska och radera cacheposter',
 );
 
 /** Silesian (Ślůnski)

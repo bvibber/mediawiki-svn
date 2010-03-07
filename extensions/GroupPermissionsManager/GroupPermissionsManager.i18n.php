@@ -1937,6 +1937,7 @@ $messages['lb'] = array(
 	'removeunusedgroups' => 'Gruppen déi net benotzt ginn ewechhuelen',
 	'grouppermissions-desc' => "D'Rechter vu Gruppen iwwer eng [[Special:GroupPermissions|Spezialsäit]] geréieren",
 	'grouppermissions-desc2' => 'ERweiderte System vun de Rechter',
+	'grouppermissions-desc3' => "Erméiglecht d'Upassung vun Inhaltsaktiounen (tabs)",
 	'grouppermissions-desc4' => "Erlaabt et zusätzlech Objeten an d'Geschiirkëscht derbäizesetzen",
 	'grouppermissions-desc-nsm' => 'Grupperechter iwwer eng Spezialsäit verwalten',
 	'grouppermissions-header' => "Dir kënnt dës Säit benotze fir déi ënnerluechte Rechter vun de verschiddene Benotzergruppen z'änneren.",

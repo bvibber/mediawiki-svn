@@ -164,10 +164,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Egmontaz
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'msfunc_desc' => 'Μία συλλογή μαθηματικών και στατιστικών συναρτήσεων',
+	'msfunc_nan' => 'Η τιμή που προκύπτει δεν είναι αριθμός',
 	'msfunc_div_zero' => 'Διαίρεση διά του μηδενός',
 );
 

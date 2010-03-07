@@ -8994,6 +8994,7 @@ $messages['su'] = array(
  * @author M.M.S.
  * @author Najami
  * @author Per
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'configure' => 'Konfigurera wikin',
@@ -9077,6 +9078,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-namespaces' => 'Namnrymder',
 	'configure-section-stats' => 'Sajtstatistik',
 	'configure-section-skin' => 'Utseenden',
+	'configure-section-vector' => 'Vectortemat',
 	'configure-section-category' => 'Kategorier',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Parsercache',
@@ -9098,6 +9100,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-section-specialpages' => 'Specialsidor',
 	'configure-section-recentchanges' => 'Senaste ändringar',
 	'configure-section-users' => 'Användare',
+	'configure-section-externalauth' => 'Extern autentisering',
 	'configure-section-feed' => 'Matning',
 	'configure-section-job' => 'Jobb',
 	'configure-section-extension' => 'Tillägg',
@@ -9172,6 +9175,7 @@ För att använda det här programtillägget måste du skapa den eller byta den.
 	'configure-condition-description-4' => 'I {{PLURAL:$2|gruppen $1|alla grupperna $1}}',
 	'configure-condition-description-5' => 'Användarens Ip-adress är $1',
 	'configure-condition-description-6' => 'Användarens IP-adress är i intervallet $1',
+	'configure-condition-description-7' => 'Lägsta ålder på kontot är $1 {{PLURAL:$1|sekund|sekunder}} efter första redigeringen',
 	'configure-boolop-description-and' => 'Alla villkor måste vara sanna',
 	'configure-boolop-description-or' => 'Minst ett villkor måste vara sant',
 	'configure-boolop-description-xor' => 'Exakt ett villkor måste vara sant',

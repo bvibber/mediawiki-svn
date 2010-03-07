@@ -633,6 +633,7 @@ Aby składował napšašowanje, wótpósćel jo, mimo až sy wótegronił na nar
 );
 
 /** Greek (Ελληνικά)
+ * @author Egmontaz
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -653,6 +654,7 @@ $messages['el'] = array(
 	'qp_user_polls_link' => 'Συμμετοχή σε $1 {{PLURAL:$1|δημοσκόπηση|δημοσκοπήσεις}}',
 	'qp_user_missing_polls_link' => 'Καμία συμμετοχή',
 	'qp_not_participated_link' => 'Δεν συμμετείχε',
+	'qp_order_by_username' => 'Ταξινόμηση κατά όνομα χρήστη',
 	'qp_results_line_qupl' => 'Σελίδα "$1" Δημοσκόπηση "$2": $3',
 	'qp_func_no_such_poll' => 'Καμιά τέτοια δημοσκόπηση ($1)',
 );

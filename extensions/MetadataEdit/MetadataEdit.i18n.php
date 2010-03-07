@@ -22,6 +22,15 @@ $messages['be-tarask'] = array(
 	'metadata_help' => 'Мэтазьвесткі:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'metadataedit-desc' => "A lak ar rummadoù, al liammoù etrewiki hag ar patromoù aotreet en ur zonenn testenn diforc'het, e-pad kemmadur ar pajennoù",
+	'metadata_help' => 'Metaroadennoù :',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -77,6 +86,15 @@ $messages['pms'] = array(
 $messages['ru'] = array(
 	'metadataedit-desc' => 'При редактировании страниц указывайте категории, языковые ссылки и допустимые шаблоны в отдельном текстовом поле',
 	'metadata_help' => 'Метаданные:',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ * @author Sertion
+ */
+$messages['sv'] = array(
+	'metadataedit-desc' => 'Lägg kategorier, språklänkar och tillåtna mallar i en separat ruta när du redigerar sidor',
+	'metadata_help' => 'Metadata:',
 );
 
 /** Vietnamese (Tiếng Việt)

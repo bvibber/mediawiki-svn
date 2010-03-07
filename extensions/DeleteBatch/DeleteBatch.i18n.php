@@ -940,7 +940,7 @@ $messages['nn'] = array(
 	'deletebatch-desc' => '[[Special:DeleteBatch|Masseslett sider]]',
 	'deletebatch-help' => 'Slett ein serie av sider. Du kan òg utføra ei enkel sletting, eller sletta sider lista opp i ei fil.
 Vel ein brukar som skal bli vist i sletteloggen.
-Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteårsak skilt frå tittelen med «|».',
+Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteårsak skild frå tittelen med «|».',
 	'deletebatch-caption' => 'Sidelista:',
 	'deletebatch-title' => 'Slett serie',
 	'deletebatch-link-back' => 'Gå attende til spesialsida',

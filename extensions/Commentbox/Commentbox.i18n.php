@@ -779,10 +779,15 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 
 /** Swedish (Svenska)
  * @author Per
+ * @author Sertion
  */
 $messages['sv'] = array(
+	'commentbox-desc' => 'Lägger till en kommentarbox till vissa sidor',
+	'commentbox-intro' => '== Lägg till en kommentar... ==
+Har du en kommentar till den här sidan? Lägg till den här eller <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} redigera sidan manuellt]</span>.',
 	'commentbox-savebutton' => 'Spara kommentar',
 	'commentbox-name' => 'Namn:',
+	'commentbox-name-explanation' => '<small>(Tips: När du [[Special:UserLogin|loggar in]] så slipper du att fylla i ditt namn manuellt.)</small>',
 	'commentbox-log' => 'Nya kommentarer',
 	'commentbox-first-comment-heading' => '== Kommentarer ==',
 	'commentbox-regex' => '/\\n==\\s*Kommentarer\\s*==\\s*\\n/i',

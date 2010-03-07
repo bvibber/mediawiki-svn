@@ -220,6 +220,7 @@ $messages['cy'] = array(
  */
 $messages['da'] = array(
 	'wikieditor-publish-dialog-minor' => 'Mindre ændring',
+	'wikieditor-publish-dialog-watch' => 'Overvåg denne side',
 );
 
 /** German (Deutsch)

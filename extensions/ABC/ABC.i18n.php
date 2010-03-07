@@ -65,6 +65,14 @@ $messages['ar'] = array(
 	'abcvorbis' => 'أو جي جي فوربيس',
 );
 
+/** Araucanian (Mapudungun)
+ * @author Kaniw
+ */
+$messages['arn'] = array(
+	'abc-desc' => 'Yomvmfi tici cilkan <tt>&lt;abc&gt;</tt> ñi vlkantuwirin "ABC music"',
+	'abcdownload' => 'Nakvmpan:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
