@@ -433,6 +433,7 @@ $wgAutoloadLocalClasses = array(
 	'MysqlInstaller' => 'includes/installer/MysqlInstaller.php',
 	'PostgresInstaller' => 'includes/installer/PostgresInstaller.php',
 	'SqliteInstaller' => 'includes/installer/SqliteInstaller.php',
+	'OracleInstaller' => 'includes/installer/OracleInstaller.php',
 
 	# includes/media
 	'BitmapHandler' => 'includes/media/Bitmap.php',

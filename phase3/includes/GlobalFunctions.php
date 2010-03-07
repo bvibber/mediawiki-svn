@@ -3362,3 +3362,14 @@ function wfBCP47( $code ) {
 	$langCode = implode ( '-' , $codeBCP );
 	return $langCode;
 }
+
+function wfArrayMap( $function, $input ) {
+	$ret = array_map( $function, $input );
+	foreach ( $ret as $key => $value ) {
+		$taint = istainted( $input[$key] );
+		if ( $taint ) {
+			taint( $ret[$key], $taint );
+		}
+	}
+	return $ret;
+}

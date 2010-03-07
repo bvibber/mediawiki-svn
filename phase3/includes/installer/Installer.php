@@ -82,7 +82,8 @@ abstract class Installer {
 	var $dbTypes = array(
 		'mysql',
 		'postgres',
-		'sqlite'
+		'sqlite',
+		'oracle'
 	);
 
 	/**
