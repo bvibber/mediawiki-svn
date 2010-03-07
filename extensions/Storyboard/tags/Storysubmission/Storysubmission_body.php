@@ -25,6 +25,8 @@ class TagStorysubmission {
 
 		global $wgRequest;
 		
+		var_dump($wgRequest->wasPosted()); die();
+		
 		if ( $wgRequest->wasPosted() ) {
 			$output = self::doSubmissionAndGetResult();
 		} else {
@@ -37,7 +39,7 @@ class TagStorysubmission {
 	}
 	
 	private static function getFrom( $parser, $args ) {
-		global $wgOut, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgOut, $wgJsMimeType, $wgSc, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.css' );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.js' );
@@ -48,7 +50,7 @@ class TagStorysubmission {
 		$maxLen = array_key_exists('maxlength', $args) && is_numeric($args['maxlength']) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
 		$minLen = array_key_exists('minlength', $args) && is_numeric($args['minlength']) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
-		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=submit' ); // TODO: fix parameters
+		$submissionUrl = $parser->getTitle()->getLocalURL( '' ); // TODO: fix parameters
 		
 		$formBody = "<table width='$width'>";
 		
@@ -105,7 +107,7 @@ class TagStorysubmission {
 			
 		$formBody .= '</table>';
 		
-		return Html::rawElement(
+		$formHtml = Html::rawElement(
 			'form',
 			array(
 				'id' => 'storyform',
@@ -116,6 +118,11 @@ class TagStorysubmission {
 			),
 			$formBody
 		);
+		
+		// Disable the submission button when JS is enabled.
+		$formJs = "<script type='$wgJsMimeType'>/*<![CDATA[*/ document.getElementById( 'storysubmission-button' ).disabled = true; /*]]>*/</script>";
+		
+		return $formHtml . $formJs;
 	}
 	
 	private static function doSubmissionAndGetResult() {

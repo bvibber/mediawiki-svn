@@ -16,20 +16,19 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SpecialStoryReview extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'StoryReview' );
+		parent::__construct( 'StoryReview', 'storyreview' );
 	}
 
 	public function execute( $language ) {
 		wfProfileIn( __METHOD__ );
 		
 		global $wgUser;
-		if ( $wgUser->isAllowed( 'storyreview' ) && !$wgUser->isBlocked() ) {
+		if( $this->userCanExecute( $wgUser ) ){
 			// If the user has the storyreview permission and is not blocked, show the regular output.
 			$this->addOutput();
 		} else {
 			// If the user is not authorized, show an error.
-			global $wgOut;
-			$wgOut->permissionRequired( 'storyreview' );
+			$this->displayRestrictionError();
 		}
 		
 		wfProfileOut( __METHOD__ );

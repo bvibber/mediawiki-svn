@@ -16,7 +16,7 @@ function stbLimitChars(textarea, lowerLimit, upperLimit, infodiv) {
 	var info = document.getElementById( infodiv );
 	
 	if(textlength > upperLimit) {
-		info.innerHTML = 'Your story may not exceed ' + upperLimit + ' characters!'; // TODO: i18n
+		info.innerHTML = ( upperLimit - textlength ) + ' characters to many!'; // TODO: i18n
 		return false;
 	} else if (textlength < lowerLimit) {
 		info.innerHTML = '('+ ( lowerLimit - textlength ) + ' more characters needed)'; // TODO: i18n
