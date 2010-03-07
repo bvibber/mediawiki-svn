@@ -1402,19 +1402,7 @@ ctrlBuilder.prototype = {
 						.buttonHover()
 						.click( function() {			
 							ctrlObj.embedPlayer.showTextInterface();
-						} )
-						/*
-						* menu: 
-						.menu( {
-							'content' : gM('mwe-loading_txt')
-							'positionOpts': {
-								'directionV' : 'up',								
-								'offsetY' : 32,
-								'directionH' : 'left',
-								'offsetX' : -28
-							}							
-						} );
-						*/
+						} )						
 			}
 		},
 		

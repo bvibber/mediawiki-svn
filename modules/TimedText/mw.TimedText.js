@@ -211,7 +211,7 @@ mw.addMessages( {
 			_this.menuTarget = target;
 			var $menuButton = this.embedPlayer.$interface.find( '.timed-text' );
 			
-			var positionOpts = null;
+			var positionOpts = { };
 			if( this.embedPlayer.supports[ 'overlays' ] ){
 				var positionOpts = {
 					'directionV' : 'up',								

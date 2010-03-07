@@ -115,7 +115,7 @@ var kskinConfig = {
 						'top' : '0px',
 						'left' : '0px',
 						'bottom' : '0px',
-						'right' : '45px',						
+						'right' : '45px'			
 					} )
 				for ( var menuItem in ctrlObj.supportedMenuItems ) {
 					$menuScreens.append(
