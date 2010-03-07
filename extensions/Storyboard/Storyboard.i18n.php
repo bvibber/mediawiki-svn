@@ -36,7 +36,7 @@ $messages['en'] = array(
 	'storyboard-contact' => 'Your E-mail address or telephone number',
 	'storyboard-agreement' => 'I agree with the publication of this story.',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',
-	'storyboard-cannotbelonger' => 'Your story may not exceed $ characters!',
+	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} to long!',
 	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.'
 );
