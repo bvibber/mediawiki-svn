@@ -101,7 +101,7 @@ function Menu(caller, options) {
 	this.menuOpen = false;
 	this.menuExists = false;
 	
-	var options = jQuery.extend({
+	var options = jQuery.extend( {
 		content: null,
 		autoShow: false,
 		width: 180, // width of menu container, must be set or passed in to calculate widths of child menus
@@ -171,11 +171,13 @@ function Menu(caller, options) {
 	};
 
 	this.showMenu = function() {
-		mw.log('$j.menu:: show menu' );				
+		mw.log('$j.menu:: show menu' );					
 		killAllMenus();
-		if (!menu.menuExists) { 
+		mw.log('done:: killAllMenus' );		
+		if ( ! menu.menuExists) { 
 			menu.create() 
 		};		
+		mw.log('done:: menu.create' );		
 		caller
 			.addClass('fg-menu-open')
 			.addClass(options.callerOnState);
@@ -183,6 +185,8 @@ function Menu(caller, options) {
 			menu.kill(); 
 			return false; 
 		});
+		mw.log('done:: menu. binding container' );
+		
 		container.hide().slideDown(options.showSpeed).find('.fg-menu:eq(0)');
 		menu.menuOpen = true;
 		caller.removeClass(options.loadingState);
@@ -270,26 +274,39 @@ function Menu(caller, options) {
 		});
 	};
 	
-	this.create = function() {	
-		container.css({ width: options.width }).appendTo('body').find('ul:first').not('.fg-menu-breadcrumb').addClass('fg-menu');
+	this.create = function() {
+		mw.log( "jquery.menu.create ");	
+		container.css({ 
+			'width' : options.width 
+		})
+		.appendTo('body')
+		.find( 'ul:first' )
+		.not( '.fg-menu-breadcrumb' )
+		.addClass('fg-menu');
+		
+		
 		container.find('ul, li a').addClass('ui-corner-all');
 		
 		// aria roles & attributes
-		container.find('ul').attr('role', 'menu').eq(0).attr('aria-activedescendant','active-menuitem').attr('aria-labelledby', caller.attr('id'));
-		container.find('li').attr('role', 'menuitem');
-		container.find('li:has(ul)').attr('aria-haspopup', 'true').find('ul').attr('aria-expanded', 'false');
-		container.find('a').attr('tabindex', '-1');
+		container.find( 'ul' ).attr('role', 'menu').eq(0).attr('aria-activedescendant','active-menuitem').attr('aria-labelledby', caller.attr('id'));
+		container.find( 'li' ).attr('role', 'menuitem');
+		container.find( 'li:has(ul)' ).attr('aria-haspopup', 'true').find('ul').attr('aria-expanded', 'false');
+		container.find( 'a' ).attr('tabindex', '-1');
 		
 		// when there are multiple levels of hierarchy, create flyout or drilldown menu
-		if (container.find('ul').size() > 1) {
-			if (options.flyOut) { menu.flyout(container, options); }
-			else { menu.drilldown(container, options); }	
-		}
-		else {
-			container.find('a').click(function() {									 
-				menu.chooseItem(this);
+		if ( container.find( 'ul' ).size() > 1 ) {
+			if ( options.flyOut ) {
+				mw.log(" call menu.flyout "); 
+				menu.flyout(container, options); 
+			} else {
+				mw.log(" call menu.drilldown "); 
+				menu.drilldown(container, options); 
+			}	
+		} else {
+			container.find( 'a' ).click( function() {									 
+				menu.chooseItem( this );
 				return false;
-			});
+			} );
 		};	
 		
 		if (options.linkHover) {
@@ -315,8 +332,8 @@ function Menu(caller, options) {
 				},
 				function() { $(this).removeClass(options.linkHoverSecondary); }
 			);
-		};
-			
+		};					
+		
 		menu.setPosition(container, caller, options);
 		menu.menuExists = true;
 	};
@@ -544,6 +561,8 @@ Menu.prototype.drilldown = function(container, options) {
 		- linkToFront: copy the menu link and place it on top of the menu (visual effect to make it look like it overlaps the object) */
 
 Menu.prototype.setPosition = function(widget, caller, options) {	
+	mw.log( 'setPosition' );
+	
 	var el = widget;
 	var referrer = caller;
 	var dims = {
@@ -557,6 +576,9 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	
 	var helper = $( '<div class="menuPositionHelper">' );	
 	helper.css( 'z-index', options.zindex );
+	
+	mw.log("set z-index");
+	
 	// Hard code width height of button if unset ( crazy IE )
 	if(  isNaN( dims.refW ) ||  isNaN( dims.refH ) ) {
 		dims.refH = 16;
@@ -569,10 +591,16 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 		'width': dims.refW, 
 		'height': dims.refH 
 	});
+	
+	mw.log("set helper.css ");
+	
 	el.wrap( helper );
+	
+	mw.log("wrap helper");
+	
 	xVal = yVal = 0;
-	// get X pos
-	switch(options.positionOpts.posX) {
+	// get X pos			
+	switch( options.positionOpts.posX ) {
 		case 'left': xVal = 0; 
 			break;				
 		case 'center': xVal = dims.refW / 2;
@@ -582,7 +610,7 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 	};
 	
 	// get Y pos
-	switch(options.positionOpts.posY) {
+	switch( options.positionOpts.posY ) {
 		case 'top' :	yVal = 0;
 			break;				
 		case 'center' : yVal = dims.refH / 2;
@@ -590,23 +618,38 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 		case 'bottom' : yVal = dims.refH;
 			break;
 	};	
+
 	// add the offsets (zero by default)
-	xVal += options.positionOpts.offsetX;
-	yVal += options.positionOpts.offsetY;
+	xVal += ( options.positionOpts.offsetX )? options.positionOpts.offsetX : 0;
+	yVal += ( options.positionOpts.offsetY )? options.positionOpts.offsetY : 0;
 	
+	mw.log(" about to position: " + yVal );
 	// position the object vertically
 	if (options.positionOpts.directionV == 'up') {
-		el.css( { top: 'auto', bottom: yVal } );
+		el.css( { 
+			'top': 'auto', 
+			'bottom': yVal 
+		} );
 		if (options.positionOpts.detectV && !fitVertical(el)) {
-			el.css({ bottom: 'auto', top: yVal });
+			el.css({ 
+				'bottom' : 'auto', 
+				'top' : yVal 
+			});
 		}
-	} 
-	else {
-		el.css({ bottom: 'auto', top: yVal });
+	}  else {
+		el.css({ 
+			'bottom' : 'auto',
+			'top' : yVal 
+		});
 		if (options.positionOpts.detectV && !fitVertical(el)) {
-			el.css({ top: 'auto', bottom: yVal });
+			el.css({ 
+				'top' : 'auto', 
+				'bottom' : yVal 
+			});
 		}
 	};
+	
+	mw.log(" done with add the offsets && position the object vertically");
 	
 	// and horizontally
 	if (options.positionOpts.directionH == 'left') {
@@ -622,6 +665,8 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 		}
 	};
 	
+	mw.log(" done with position the object horizontally");
+	
 	// if specified, clone the referring element and position it so that it appears on top of the menu
 	if (options.positionOpts.linkToFront) {
 		referrer.clone().addClass('linkClone').css({
@@ -634,6 +679,7 @@ Menu.prototype.setPosition = function(widget, caller, options) {
 			height: referrer.height()
 		}).insertAfter(el);
 	};
+	mw.log('done with all');
 };
 
 
