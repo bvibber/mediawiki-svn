@@ -148,6 +148,13 @@ $messages['cy'] = array(
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-preview-tab' => 'Forhåndsvisning',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author DaSch

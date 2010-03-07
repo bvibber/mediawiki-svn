@@ -128,9 +128,11 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Sarrus
  */
 $messages['da'] = array(
 	'vector-simplesearch-search' => 'Søg',
+	'vector-simplesearch-containing' => 'indeholder...',
 );
 
 /** German (Deutsch)

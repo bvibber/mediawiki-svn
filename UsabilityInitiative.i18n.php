@@ -84,10 +84,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'usabilityinitiative' => 'Intrudu Implijadusted',
 	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted MediaWiki",
+	'prefs-beta' => "Arc'hweladurioù beta",
+	'prefs-labs' => 'Arc\'hweladurioù "labs"',
 );
 
 /** Bosnian (Bosanski)
@@ -113,6 +116,8 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'usabilityinitiative' => 'Iniciativa použitelnosti',
 	'usabilityinitiative-desc' => 'Vylepšení použitelnosti MediaWiki vyvinutá v rámci Iniciativy použitelnosti Wikipedie',
+	'prefs-beta' => 'Funkce z betaverze',
+	'prefs-labs' => 'Funkce z Labs',
 );
 
 /** Welsh (Cymraeg)
@@ -357,6 +362,8 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'usabilityinitiative' => "Initiativ fir d'Benotzerfrëndlechkeet",
 	'usabilityinitiative-desc' => "Fonctinnalitéiten déi vun der Wikipedia Benotzerfrëndlechkeets-Initiative entwéckelt goufe fir d'Benotzerfrëndleckeet vu MediaWiki ze verbesseren",
+	'prefs-beta' => 'Beta-Fonctiounen',
+	'prefs-labs' => '"Labs"-Fonctiounen',
 );
 
 /** Lithuanian (Lietuvių)
