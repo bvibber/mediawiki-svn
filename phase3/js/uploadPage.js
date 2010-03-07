@@ -13,6 +13,8 @@ var mwUploadHelper = {
 		if ( typeof wgEnableFirefogg == 'undefined' ){
 			wgEnableFirefogg = true;
 		}		
+		// NOTE: we should unify upload handler call so we don't have to call firefogg and 
+		// UploadHandler separately. 
 		if ( wgEnableFirefogg ) {
 			mw.load( 'AddMedia.firefogg', function(){
 				// Set up the upload handler to Firefogg. Should work with the HTTP uploads too.
@@ -32,9 +34,6 @@ var mwUploadHelper = {
 					// Set the select file callback:
 					'selectFileCb': function( fileName ) {
 						$j( '#wpDestFile' ).val( fileName );
-						$j( '#wpDestFile' ).doDestCheck( {
-							'warn_target': '#wpDestFile-warning'
-						} );
 					}
 				} );
 			} )
@@ -42,7 +41,14 @@ var mwUploadHelper = {
 			// Add basic upload profile support ( http status monitoring, progress box for
 			// browsers that support it, etc.)
 			mw.load( 'AddMedia.UploadHandler', function(){						
-				$j( mwUploadFormSelector ).uploadHandler( );			
+				$j( mwUploadFormSelector ).uploadHandler( {
+					'selectFileCb': function( fileName ) {
+						$j( '#wpDestFile' ).val( fileName );
+						$j( '#wpDestFile' ).doDestCheck( {
+							'warn_target': '#wpDestFile-warning'
+						} );
+					}
+				});			
 			});
 		}
 
@@ -64,6 +70,7 @@ var mwUploadHelper = {
 				_this.toggleUpType( this.id == 'wpSourceTypeFile' );
 			} );
 		}
+		
 		$j( '#wpUploadFile,#wpUploadFileURL' )
 		.focus( function() {
 			_this.toggleUpType( this.id == 'wpUploadFile' );

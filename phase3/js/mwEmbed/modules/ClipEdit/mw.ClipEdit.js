@@ -772,6 +772,7 @@ mw.ClipEdit.prototype = {
 					$j( '#mw_layout_right' )[0].checked = false;
 					$j( '#mw_layout_left' )[0].checked = true;
 					_this.resource.layout = 'left';
+					return true;
 				} );
 				
 				// Right radio click
@@ -779,6 +780,7 @@ mw.ClipEdit.prototype = {
 					$j( '#mw_layout_left' )[0].checked = false;
 					$j( '#mw_layout_right' )[0].checked = true;
 					_this.resource.layout = 'right';
+					return true;
 				} );
 			break;
 			case 'crop':

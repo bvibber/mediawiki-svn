@@ -1,9 +1,8 @@
 /**
  * Simple form output jquery binding
  * enables dynamic form output to a given target
- *
  */
-
+ 
 mw.addMessages( {
 	"mwe-select_file" : "Select file",
 	"mwe-select_ownwork" : "I am uploading entirely my own work, and licensing it under:",
@@ -22,15 +21,16 @@ mw.addMessages( {
 	"mwe-i-would-like-to" : "I would like to",
 	"mwe-upload-own-file" : "Upload my own work to $1",
 	"mwe-upload-not-my-file" : "Upload media that is not my own work to $1",
-	"mwe-upload-once-done" : "Please upload in the new window or tab. Once you have completed your upload, $1",
+	"mwe-upload-once-done" : "Please $1. Once you have completed your upload, $2",
+	"mwe-upload-in-new-win-link" : "upload in the new window or tab",
 	"mwe-upload-refresh" : "refresh your upload list"
 } );
 
 var default_form_options = {
 	'enable_fogg'	 : true,
 	'license_options': ['cc-by-sa'],
-	'api_target' : false,
-	'ondone_callback' : null
+	'apiUrl' : false,
+	'doneUploadCb' : null
 };
 mw.UploadForm = { };
 
@@ -41,6 +41,8 @@ mw.UploadForm = { };
 	*/
 	var uploadMenuTarget = null;
 	var remoteSearchDriver = null;
+	var selectUploadProviderCb = null;
+	
 	mw.UploadForm.getUploadMenu = function( options ){
 		if( ! options.target ){
 			mw.log("Error no target for upload menu" );
@@ -53,9 +55,12 @@ mw.UploadForm = { };
 			remoteSearchDriver = options.remoteSearchDriver
 		}
 		
-		// Build out the menu
-		$j( uploadMenuTarget ).empty().append(
+		if( options.selectUploadProviderCb ){
+			selectUploadProviderCb = options.selectUploadProviderCb;
+		}	
 		
+		// Build out the menu
+		$j( uploadMenuTarget ).empty().append(		
 			$j( '<span />' )
 			.text(
 				gM('mwe-i-would-like-to' )
@@ -65,6 +70,7 @@ mw.UploadForm = { };
 		);
 		
 		$uploadTargetsList = $j( '<ul />'  );
+		
 		// Set provider Target		
 		for( var uploadTargetId in options.uploadTargets ){			
 			$uploadTargetsList.append(
@@ -90,13 +96,13 @@ mw.UploadForm = { };
 		}
 
 		// First do a reality check on the options:
-		if ( !options.api_target ) {
+		if ( !options.apiUrl ) {
 			$j( options.target ).html( 'Error: Missing api target' );
 			return false;
 		}
 		
 		// Get an edit Token for "uploading"
-		mw.getToken( options.api_target, 'File:MyRandomFileTokenCheck.jpg', function( eToken ) {			
+		mw.getToken( options.apiUrl, 'File:MyRandomFileTokenCheck.jpg', function( eToken ) {			
 			if ( !eToken || eToken == '+\\' ) {
 				$j( options.target ).html( gM( 'mwe-error_not_loggedin' ) );
 				return false;
@@ -120,23 +126,24 @@ mw.UploadForm = { };
 			} );
 			
 			
-			// Do local destination fill ( if we are local ) 
-			// Otherwise its handled via mw.ApiProxy.browseFile selectFileCb option
-			if( mw.isLocalDomain( options.api_target ) ) {					
-				setupLocalUploadBindings();
+			//Set up the bindings			
+			if( mw.isLocalDomain( options.apiUrl ) ) {
+				// Setup Local upload bindings					
+				setupLocalUploadBindings( options );
+			}else{
+				// Setup ApiFile bindings	
+				setupApiFileBrowseProxy(					
+					options
+				);
 			}
 
 			// Do remote or local destination check:
 			$j( "#wpDestFile" ).change( function( ) {			
 				$j( "#wpDestFile" ).doDestCheck( {
-					'apiUrl' : options.api_target,
+					'apiUrl' : options.apiUrl,
 					'warn_target':'#wpDestFile-warning'
 				} );
-			} );
-
-			if ( typeof options.ondone_callback == 'undefined' ) {
-				options.ondone_callback = false;
-			}
+			} );			
 		}); // ( token ) 
 	}
 	
@@ -145,44 +152,26 @@ mw.UploadForm = { };
 	* ( this is different from the api file proxy bindings that 
 	* handles the interface bindings within the api file proxy setup. 
 	*/ 
-	function setupLocalUploadBindings( ) {
-	
-		$j( "#wpUploadFile" ).change( function() {
-			var path = $j( this ).val();
-			// Find trailing part
-			var slash = path.lastIndexOf( '/' );
-			var backslash = path.lastIndexOf( '\\' );
-			var fname;
-			if ( slash == -1 && backslash == -1 ) {
-				fname = path;
-			} else if ( slash > backslash ) {
-				fname = path.substring( slash + 1, 10000 );
-			} else {
-				fname = path.substring( backslash + 1, 10000 );
-			}
-			fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
-			
-			// Output result
-			$j( "#wpDestFile" ).val( fname );
-			
-			// Do destination check
-			$j( "#wpDestFile" ).doDestCheck( {
-				'warn_target':'#wpDestFile-warning'
-			} );
-		} );
+	function setupLocalUploadBindings( options ) {	
 		
-		mw.load( 'AddMedia.firefogg', function( ) {
+		mw.load( 'AddMedia.firefogg', function( ) {			
 			$j( "#wpUploadFile" ).firefogg( {
 				// An api url (we won't submit directly to action of the form)
-				'apiUrl' : options.api_target,
+				'apiUrl' : options.apiUrl,
 									
 				// MediaWiki API supports chunk uploads: 
 				'enable_chunks' : false,
 									
 				'form_selector' : '#suf_upload',
+				
+				'doneUploadCb' : options.doneUploadCb,
+				
 				'selectFileCb' : function( fileName ) {
-					$j( "#wpDestFile" ).val( oggName ).doDestCheck( {
-						warn_target: "#wpDestFile-warning"
+					// Update our local target:
+					$j('#wpDestFile').val( fileName );
+					$j( "#wpDestFile" ).doDestCheck( {
+						'apiUrl' : options.apiUrl,
+						'warn_target' : "#wpDestFile-warning"
 					} );
 				},
 				'onsubmit_cb' : function( ) {
@@ -205,31 +194,42 @@ mw.UploadForm = { };
 '{{self|cc-by-sa-3.0}}' + "\n"
 						);
 					}
-				},
-				'done_upload_cb' : options.ondone_callback
+				}
 			} );
 		});
 	}
 	/**
 	* Setup a fileBrowse proxy for a given target
 	*/
-	function setupApiFileBrowseProxy ( $targetFileBrowse, options ) {		
+	function setupApiFileBrowseProxy ( options ) {
+		// Set the "firefogg warning" 
+		// ( note AddMedia.firefogg will be loaded by the same url should be cached )
+		mw.load( 'AddMedia.firefogg', function( ) {					
+			$j( options.target ).find( '.remote-browse-file' ).firefogg( {
+				'installCheckMode' : true
+			});
+		} );
 		// Load the apiProxy ( if its not already loaded )
 		mw.load( 'ApiProxy', function( ) {
 			var fileIframeName = mw.ApiProxy.browseFile( {
 				//Target div to put the iframe browser button:
-				'target' : $targetFileBrowse,
+				'target' : 	$j( options.target ).find( '.remote-browse-file' ),
+	
+				'token' : options.eToken,
 	
 				// Api url to upload to
-				'apiUrl' : options.api_target,
-	
+				'apiUrl' : options.apiUrl,
+				
+				// Setup the callback: 
+				'doneUploadCb' : options.doneUploadCb,
+				
 				// File Destination Name change callback: 
-				'selectFileCb' : function( fname ) {
+				'selectFileCb' : function( fileName ) {
 					// Update our local target:
-					$j('#wpDestFile').val( fname );
+					$j('#wpDestFile').val( fileName );
 					// Run a destination file name check on the remote target 			
 					$j('#wpDestFile').doDestCheck( {
-						'apiUrl' : options.api_target,
+						'apiUrl' : options.apiUrl,
 						'warn_target': '#file-warning'
 					} );				
 				},
@@ -240,19 +240,50 @@ mw.UploadForm = { };
 						gM( 'mwe-error-not-loggedin-file',
 						 	$j( '<a />' )
 						 	.text( gM('mwe-link-login') )
-						 	.attr('attr', options.api_target.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin' )
+						 	.attr('attr', options.apiUrl.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin' )
 						 ) 
 					); 
 					
 				}
 			} );
-		});		
+			
+			// Setup submit binding: 
+			$j('#wpUploadBtn').click( function(){								
+				// Build the output and send upload request to fileProxy  
+				mw.ApiProxy.sendServerMsg( {
+					'apiUrl' : options.apiUrl, 
+					'frameName' : fileIframeName,
+					'frameMsg' : {
+						'action' : 'fileSubmit',
+						'formData' : {
+							'filename' : $j('#wpDestFile').val(),
+							'comment' : $j('#wpUploadDescription').val(),
+							'watch' : ( $j( '#wpWatchthis' ).is( ':checked' ) ) ? 'true' : 'false',
+							'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'							
+						}
+					}
+				} );
+				// Maybe set loading to spinner				
+			} );
+			
+			// Overwide the form submit: 
+			$j( '#suf_upload' ).submit( function(){
+				// Only support form submit via button click
+				return false;
+			});
+			
+			
+		});					
 	}
 	/**
 	* Get a provider upload links for local upload and remote
 	*/
-	function getProviderUploadLinks( uploadTargetId ){		
+	function getProviderUploadLinks( uploadTargetId ){
+		// Setup local pointers:		
+		var _this = this
 		var uploadProvider = remoteSearchDriver.getUploadTargets()[ uploadTargetId ];
+		var searchProvider = remoteSearchDriver.content_providers[ uploadTargetId ];
+		
 		var apiUrl = uploadProvider.apiUrl;		
 		$uploadLinks = $j( '<div />' );
 		
@@ -272,19 +303,31 @@ mw.UploadForm = { };
 					gM( 'mwe-upload-own-file', uploadProvider.title ) 
 				)
 				.click( function( ) {
-					$j( uploadMenuTarget ).empty().loadingSpinner();
+					$j( uploadMenuTarget ).empty().loadingSpinner();	
+									
+					// if selectUploadProviderCb is set run the callback
+					if( selectUploadProviderCb ){
+						selectUploadProviderCb( uploadProvider )			
+					}
+					
 					// Do upload form					
 					mw.UploadForm.getForm( {
 						"target" : uploadMenuTarget,
-						"api_target" : apiUrl,
-						"ondone_callback" : function( resultData ) {
-							var wTitle = resultData['filename'];
-							// Add a loading div
+						"apiUrl" : apiUrl,
+						"doneUploadCb" : function( resultData ) {	
+							if( !resultData || ! resultData.upload || ! resultData.upload['filename']){
+								mw.log( "Error in upload form no upload data in done Upload callback ");
+								return false;
+							}													
+							var wTitle = resultData.upload['filename'];								
+							mw.log( 'uploadForm: doneUploadCb : '+ wTitle);						
+							// Add the resource editor interface with loaders: 					
 							remoteSearchDriver.addResourceEditLoader();
+					
 							//Add the uploaded result
-							provider.sObj.addByTitle( wTitle, function( resource ) {
-								// Redraw ( with added result if new )
-								remoteSearchDriver.showResults();										
+							searchProvider.sObj.addByTitle( wTitle, function( resource ) {
+								// Update the recent uploads ( background task ) 
+								remoteSearchDriver.showUserRecentUploads( uploadTargetId );																	
 								// Pull up resource editor:
 								remoteSearchDriver.showResourceEditor( resource );
 							} );
@@ -302,7 +345,7 @@ mw.UploadForm = { };
 			$j('<li />').append( 
 				$j( '<a />' )
 				.attr( {
-					'href' : uploadProvider.uploadPage,
+					'href' : '#',
 					'target' : '_new'
 				} )
 				.text( 
@@ -311,6 +354,15 @@ mw.UploadForm = { };
 					//Show refresh link
 					$j( uploadMenuTarget ).empty().html(
 						gM( "mwe-upload-once-done",
+							$j('<a />')
+							.attr( {								
+								'href' : uploadProvider.uploadPage,
+								'target' : "_new"
+							} )
+							.text(
+								gM("mwe-upload-in-new-win-link")
+							),
+	
 							$j('<a />')
 							.attr( {								
 								'href' : '#'
@@ -326,10 +378,8 @@ mw.UploadForm = { };
 					$j( uploadMenuTarget ).find( '.user-upload-refresh' )
 					.click( function( ) {
 						remoteSearchDriver.showUserRecentUploads( uploadTargetId );
-					} );
-					
-					// Follow the link to open a new tab
-					return true;					
+						return false;
+					} );								
 				} )
 			)
 		);		
@@ -352,7 +402,7 @@ mw.UploadForm = { };
 				'id' : "suf_upload",
 				'name' : "suf_upload", 
 				'enctype' : "multipart/form-data",
-				'action' : options.api_target,
+				'action' : options.apiUrl,
 				'method' : "post"
 			} )
 		);
@@ -380,7 +430,7 @@ mw.UploadForm = { };
 			.attr( {
 				'type' : "hidden",
 				'id' : "wpEditToken",
-				'name' : "wpEditToken",
+				'name' : "token",
 				'value' : options.eToken
 			}) 
 		)
@@ -396,7 +446,7 @@ mw.UploadForm = { };
 		);
 		
 		// Output the upload file button ( check for cross domain )
-		if( mw.isLocalDomain( options.api_target ) ) {
+		if( mw.isLocalDomain( options.apiUrl ) ) {
 			$uploadForm.append(
 				$j( '<input />')
 				.attr( {
@@ -405,7 +455,9 @@ mw.UploadForm = { };
 					'name' : "wpUploadFile",
 					'size' : "15"					
 				} )
-				.css( 'display', 'inline' )
+				.css( 'display', 'inline' ),
+				
+				$j( '<br />' )
 			);						
 		} else {
 			/** 
@@ -417,15 +469,8 @@ mw.UploadForm = { };
 				$j( '<div />' )
 				.addClass( 'remote-browse-file' )
 				.loadingSpinner()
-			)			
-			setupApiFileBrowseProxy(
-				$uploadForm.find('.remote-browse-file' ),
-				options
-			);
-		}
-		
-		// Add firefogg warning
-		
+			);		
+		}		
 		
 		// Add destination fileName
 		$uploadForm.append(

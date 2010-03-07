@@ -80,54 +80,74 @@ function doAppend(){
 function doFileUpload(){
 	$j('#file-upload-container').fadeIn( 'slow' );		
 	$j('#browseTarget').loadingSpinner();
-
-	mw.load('AddMedia.firefogg', function( ) {	
+	// Load firefogg lib
+	mw.load('AddMedia.firefogg', function( ) {
+		// Load proxy lib	
 		mw.load( 'ApiProxy', function( ) {		
-			var fileIframeName = mw.ApiProxy.browseFile( {
-				//Target div to put the iframe browser button:
-				'target' : '#browseTarget',
+			// Get a token for the upload: 
+			mw.getToken( remote_apiUrl, 'File:MyRandomFileTokenCheck.jpg', function( eToken ) {	
+				mw.log(" got token :: " + eToken);
+				// Add the token to the dom:
+				$j( '#file-name' ).append(
+					$j('<input />')
+					.attr({
+						'type': 'hidden',
+						 'id' : 'wpEditToken',
+						 'name' : 'token' 
+					})
+					.val( eToken )
+				);			
+				var fileIframeName = mw.ApiProxy.browseFile( {
+					//Target div to put the iframe browser button:
+					'target' : '#browseTarget',
+
+					// Set the token
+					'token' : eToken,
+					
+					// Api url to upload to
+					'apiUrl' : remote_apiUrl,
+		
+					// File Destination Name change callback: 
+					'selectFileCb' : function( fname ){				
+						// Update our local target:
+						$j('#file-name').val( fname );
+						// Run a destination file name check on the remote target 			
+						$j('#file-name').doDestCheck( {
+							'apiUrl' : remote_apiUrl,
+							'warn_target': '#file-warning'
+						} );				
+					},
+					'doneUploadCb' : function( apiResult ){
+						alert(' upload done' );
+					}				
+				} );
 	
-				// Api url to upload to
-				'apiUrl' : remote_apiUrl,
+				//Setup submit binding: 
+				$j('#uploadButton').click( function( ){				
+					// Build the output and send upload request to fileProxy  
+					mw.ApiProxy.sendServerMsg( {
+						'apiUrl' : remote_apiUrl, 
+						'frameName' : fileIframeName,
+						'frameMsg' : {
+							'action' : 'fileSubmit',
+							'formData' : {
+								'filename' : $j('#file-name').val(),
+								'comment' : $j('#file-desc').val()								
+							}
+						}
+					} );
+					// Maybe set loading to spinner
+				} );
 	
-				// File Destination Name change callback: 
-				'selectFileCb' : function( fname ){				
-					// Update our local target:
-					$j('#file-name').val( fname );
-					// Run a destination file name check on the remote target 			
+				
+				// Setup doDestCheck on change
+				$j('#file-name').change(function(){
 					$j('#file-name').doDestCheck( {
 						'apiUrl' : remote_apiUrl,
 						'warn_target': '#file-warning'
-					} );				
-				}				
-			} );
-
-			//Setup submit binding: 
-			$j('#uploadButton').click(function(){				
-				// Build the output and send upload request to fileProxy  
-				mw.ApiProxy.sendServerMsg( {
-					'apiUrl' : remote_apiUrl, 
-					'frameName' : fileIframeName,
-					'frameMsg' : {
-						'action' : 'fileSubmit',
-						'formData' : {
-							'filename' : $j('#file-name').val(),
-							'comment' : $j('#file-desc').val()
-						}
-					}
-				} );
-				// Maybe set loading to spinner
-			} );
-
-			
-			// Setup doDestCheck on change
-			$j('#file-name').change(function(){
-				$j('#file-name').doDestCheck( {
-					'apiUrl' : remote_apiUrl,
-					'warn_target': '#file-warning'
-				} );	
+					} );	
+				});
 			});
-				
 		})
 	});
 };

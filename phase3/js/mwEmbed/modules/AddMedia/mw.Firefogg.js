@@ -4,6 +4,7 @@
  */
 
 mw.addMessages({
+	"mwe-upload-transcoded-status" : "Transcoded",
 	"mwe-upload-transcode-in-progress" : "Transcode and upload in progress (do not close this window)",	
 	"fogg-transcoding" : "Encoding video to ogg",	
 	"fogg-select_file" : "Select file",	
@@ -11,12 +12,13 @@ mw.addMessages({
 	"fogg-select_url" : "Select URL",
 	"fogg-check_for_firefogg" : "Checking for Firefogg...",
 	"fogg-installed" : "Firefogg is installed,",
-	"fogg-not-installed" : "Firefogg is not installed",
+	"fogg-not-installed" : "Firefogg is not installed or not enabled.",
 	"fogg-for_improved_uploads" : "For improved uploads:",
 	"fogg-please-install" : "$1. More $2",
 	"fogg-please-install-install-linktext" : "Install firefogg",
 	"fogg-please-install-about-linktext" : "about firefogg",
-	"fogg-use_latest_firefox" : "Please first install <a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=firefogg\">Firefox 3.5<\/a> (or later). <i>Then revisit this page to install the <b>Firefogg<\/b> extension.<\/i>",
+	"fogg-use_latest_firefox" : "Please first install $1. <i>Then revisit this page to install the <b>Firefogg<\/b> extension.<\/i>",
+	"fogg-latest-firefox" : "latest firefox",
 	"fogg-passthrough_mode" : "Your selected file is already ogg or not a video file",	
 	"fogg-encoding-done" : "Encoding complete",
 	"fogg-badtoken" : "Token is not valid",
@@ -33,7 +35,7 @@ var firefogg_install_links = {
 
 var default_firefogg_options = {
 	// Callback for upload completion
-	'done_upload_cb': false,	
+	'doneUploadCb': false,	
 
 	// The API URL to upload to
 	'apiUrl': null,
@@ -44,15 +46,14 @@ var default_firefogg_options = {
 	// True if we will be showing the encoder interface
 	'encoder_interface': false,
 
-	// True if we want to limit the library functionality to "only firefogg" 
-	// (no upload or progress bars)
-	'only_firefogg': false,
-
 	// jQuery selector identifying the target control container or form (can't be left null)
 	'selector': '',
 
 	// May be "upload" to if we are rewriting an upload form, or "local" if we are encoding a local file	
 	'form_type': 'local',
+	
+	// Special Mode that just checks for firefogg install and puts a notice after the target
+	'installCheckMode': false,
 
 	// CSS selector for the select file button
 	'target_btn_select_file': false,
@@ -106,8 +107,10 @@ var default_firefogg_options = {
 				
 		// Setup the Firefogg: 
 		var myFogg = new mw.Firefogg( options );
-				
-		if ( myFogg ) {
+		
+		// Kind of silly installCheckMode check 
+		//  need to refactor as described in init :: installCheckMode 
+		if ( myFogg && ! myFogg.installCheckMode ) {
 			myFogg.doRewrite( );
 			var selectorElement = $j( this.selector ).get( 0 );
 			selectorElement[ 'uploadHandler' ] = myFogg;		
@@ -151,12 +154,14 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * Object initialisation
 	 */
 	init: function( options ) {
-		if ( !options )
+		if ( !options ){
 			options = {};
+		}
 
 		// If we have no apiUrl, set upload mode to "post"
-		if ( !options.apiUrl )
+		if ( !options.apiUrl ){
 			options.upload_mode = 'post';
+		}
 
 		// Set options
 		for ( var i in default_firefogg_options ) {
@@ -166,18 +171,34 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				this[i] = default_firefogg_options[i];
 			}
 		}
+		
+		// Check for special installCheckMode
+		
+		// NOTE we should refactor install checks into static functions / entry points
+		//  so that they can be called without initializing the firefogg object with a special flag. 
+		if( this.installCheckMode ){					
+			if ( ! this.getFirefogg() ) {	
+				this.form_type = 'upload';	
+				// Show install firefogg msg
+				this.showInstallFirefog();
+				return ;
+			}
+			if( console.firebug ) {		
+				this.appendFirebugWarning();
+			}
+			mw.log( "installCheckMode no firefogg init");
+			return ;
+		}				
 
-		// Inherit from mw.BaseUploadHandler (unless we're in only_firefogg mode)
-		if ( !this.only_firefogg ) {
-			var myBUI = new mw.UploadHandler( options );
+		// Inherit from mw.BaseUploadHandler
+		var myBUI = new mw.UploadHandler( options );
 
-			// Prefix conflicting members with parent_
-			for ( var i in myBUI ) {
-				if ( this[ i ] ) {
-					this[ 'parent_'+ i ] = myBUI[i];
-				} else {
-					this[ i ] =  myBUI[i];
-				}
+		// Prefix conflicting members with parent_
+		for ( var i in myBUI ) {
+			if ( this[ i ] ) {
+				this[ 'parent_'+ i ] = myBUI[i];
+			} else {
+				this[ i ] =  myBUI[i];
 			}
 		}		
 		
@@ -319,10 +340,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	/**
 	* Show the install firefogg msg
 	*/
-	showInstallFirefog: function() {		
-		var _this = this;			
+	showInstallFirefog: function() {
+		var _this = this;
 		
-		var upMsg = ( _this.form_type == 'upload' ) ? 
+		var upMsg = ( _this.form_type == 'upload' ) ?
 			gM( 'fogg-for_improved_uploads' ) + ' ' : gM( 'fogg-not-installed') + ' ';
 		
 		// Show the "use latest Firefox" message if necessary
@@ -332,7 +353,22 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			
 			// Add the use_latest if not present: 
 			if ( !this.target_use_latest_firefox ) {
-				$j( this.selector ).after( this.getControlHtml( 'target_use_latest_firefox' ) );
+				$j( this.selector ).after(
+					$j( '<div />' )
+					.addClass( 'target_use_latest_firefox' )
+					.html( 
+						gM('fogg-use_latest_firefox',
+							$j('<a />')
+							.attr({
+								'href' : 'http://www.mozilla.com/firefox/?from=firefogg',
+								'target' : "_new"
+							})
+							.text(
+								gM( 'fogg-latest-firefox' )
+							)
+						)
+					) 
+				);
 				this.target_use_latest_firefox = this.selector + ' ~ .target_use_latest_firefox';
 			}
 			
@@ -342,24 +378,31 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				.prepend( upMsg );
 			}
 			
-			$j( _this.target_use_latest_firefox ).show();		
+			$j( _this.target_use_latest_firefox ).show();
 			return ;
 		}
 		mw.log( 'should show install link');
 
-		// Otherwise show the "install Firefogg" message		
+		// Otherwise show the "install Firefogg" message
 		var firefoggUrl = _this.getFirefoggInstallUrl();
 		if( firefoggUrl ) {
 			
 			// Add the target please install in not present: 
 			if ( !this.target_please_install ) {
-					$j( this.selector ).after( this.getControlHtml( 'target_please_install' ) );
-					this.target_please_install = this.selector + ' ~ .target_please_install';
+				$j( this.selector ).after( 
+					$j('<div />')
+					.addClass( 'ui-corner-all target_please_install' )
+					.css({
+						'border' : 'thin solid black',
+						'margin' : '4px'
+					})					
+				);
+				this.target_please_install = this.selector + ' ~ .target_please_install';
 			}				
 			// Add the install msg 
 			$j( _this.target_please_install )
 				.html( upMsg + 
-					gM( 'fogg-please-install', [					
+					gM( 'fogg-please-install', [
 						// Install link
 						$j('<a />')
 						.text( gM( "fogg-please-install-install-linktext" ) )
@@ -368,7 +411,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 						// About link
 						$j('<a />')
 						.text( gM( "fogg-please-install-about-linktext" ) )
-						.attr( 'href', 'http://commons.wikimedia.org/wiki/Commons:Firefogg' ) 						
+						.attr({
+							'href' : 'http://commons.wikimedia.org/wiki/Commons:Firefogg',
+							'target' : '_new' 
+						} )
 					])					
 				)
 				.css( 'padding', '10px' )
@@ -423,7 +469,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 		
 		// If Firefogg is not available, just show a "please install" message
-		if ( ! _this.getFirefogg() ) {		
+		if ( ! _this.getFirefogg() ) {
 			// Show install firefogg msg
 			this.showInstallFirefog();
 			return;
@@ -433,16 +479,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		if ( this.form_type == 'upload' 
 			&&	typeof console != 'undefined' 
 			&& console.firebug ) {		
-			$j( this.selector ).after(
-				$j( '<div />' )
-				.addClass( 'ui-state-error ui-corner-all' )
-				.html( gM( 'fogg-warning-firebug' ) )
-				.css({ 
-					'width' : 'auto',
-					'margin' : '5px',
-					'padding' : '5px'
-				})
-			); 
+			this.appendFirebugWarning();
 		}
 
 		// Change the file browser to type text. We can't simply change the attribute so 
@@ -473,7 +510,18 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		this.createControls();
 		this.bindControls();
 	},
-
+	appendFirebugWarning : function(){
+		$j( this.selector ).after(
+			$j( '<div />' )
+			.addClass( 'ui-state-error ui-corner-all' )
+			.html( gM( 'fogg-warning-firebug' ) )
+			.css({ 
+				'width' : 'auto',
+				'margin' : '5px',
+				'padding' : '5px'
+			})
+		); 
+	},
 	/**
 	 * Create controls for showing a transcode/crop/resize preview
 	 */
@@ -883,13 +931,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 	/**
 	 * Do an upload, with the mode given by this.upload_mode
-	 * XXX should probably be dispatched from BaseUploadHandler doUpload instead
+	 * NOTE: should probably be dispatched from BaseUploadHandler doUpload instead
 	 */
 	doUpload: function() {
-		var _this = this;
-		mw.log( "firefogg: doUpload:: " + 
-			( this.getFirefogg() ? 'on' : 'off' ) + 
-			' up mode:' + _this.upload_mode );
+		var _this = this;		
 	
  		_this.uploadBeginTime = (new Date()).getTime();
 		// If Firefogg is disabled or doing an copyByUrl upload, just invoke the parent method
@@ -897,6 +942,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			_this.parent_doUpload();
 			return ;
 		}
+		// We are doing a firefogg upload: 
+		mw.log( "firefogg: doUpload:: " );
 		
 		// Setup the firefogg dialog (if not passthrough )
 		_this.ui.setup( { 'title' : gM( 'mwe-upload-transcode-in-progress' ) } );
@@ -1151,22 +1198,6 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					_this.processApiResult ( apiResult );
 					return true;
 				}
-				
-				/*
-				if( apiResult && _this.isApiSuccess( apiResult ) ) {
-					if( _this.processApiResult ( apiResult ) ) {
-						return true;
-					}
-				}
-				
-				if ( apiResult && !_this.isApiSuccess( apiResult ) ) {
-					// Show the error and stop the upload
-					_this.ui.showApiError( apiResult );
-					_this.action_done = true;
-					_this.fogg.cancel();
-					return false;
-				}
-				*/
 
 			}
 			// Show the video preview if encoding and show_preview is enabled. 
@@ -1191,26 +1222,21 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			}
 			// Chunk upload mode:
 			if ( apiResult && apiResult.resultUrl ) {
-				var buttons = { };
-				buttons[ gM( 'mwe-go-to-resource' ) ] =  function() {
-					window.location = apiResult.resultUrl;
+				this.action_done = true;
+				// Call the callback
+				if ( typeof _this.doneUploadCb == 'function' ) {
+					// check if the callback returns true and close up shop	
+					if( _this.doneUploadCb( apiRes ) ){
+						_this.ui.close();
+						return true;
+					}
 				}
-				var go_to_url_txt = gM( 'mwe-go-to-resource' );
-				var showMessage = true;
-				if ( typeof _this.done_upload_cb == 'function' ) {
-					// Call the callback
-					// It will return false if it doesn't want us to show our own "done" message
-					showMessage = _this.done_upload_cb( _this.formData );
-				}
-				if ( showMessage ) {
-					_this.ui.setPrompt( gM( 'mwe-successfulupload' ), 
-						gM( 'mwe-upload_done', apiResult.resultUrl ), buttons );
-				} else {
-					this.action_done = true;
-					$j( '#upProgressDialog' ).empty().dialog( 'close' );
-				}
+				// Else pass off the api Success to interface:
+				_this.ui.showApiSuccess( apiResult );	
+				return true;				
 			} else {
-				// Done state with error? Not really possible given how firefogg works...
+				// Done state with error? 
+				// Should not be possible because firefogg would not be "done" without resultURL
 				mw.log( " Upload done in chunks mode, but no resultUrl!" );
 			}
 			

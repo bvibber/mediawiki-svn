@@ -69,7 +69,7 @@ mw.ApiProxy = { };
 		}			
 		
 		// Generate a new context object: (its oky that optional arguments are null ) 
-		var context = getNewContext({
+		var context = createContext({
 			'apiUrl' :  apiUrl,// currentServerApiUrl
 			'apiReq' : requestQuery,
 			'callback' : callback,			
@@ -97,15 +97,42 @@ mw.ApiProxy = { };
 			mw.log( "Error: no target for file browse iframe" ) ;
 			return false;
 		}
+		
+		if( !options.token ){
+			mw.log( "Error: no token for file browse ");
+			return false;
+		}
+		
+		mw.log( "browseFile:: " + $j(options.target).length );
+		
+		mw.log( "BROWSE FILE:: cb: " + options.doneUploadCb);
+		
 		if( ! options.apiUrl ) {
 			mw.log( "Error: no api url to target" );
 			return false; 
 		}
+		mw.log( 'Setup uploadDialogInterface' );
 		
-		// Setup the context with the callback
-		var context = getNewContext({
+		// Make sure we have the dialog interface:		
+		var uploadDialogInterface = new mw.UploadDialogInterface( {
+			'uploadHandlerAction' : function( action ){
+				mw.log(	'apiProxy uploadActionHandler:: ' + action );
+				// Send action to remote frame 
+				mw.ApiProxy.sendServerMsg( {
+					'apiUrl' : options.apiUrl,
+					'frameName' : iFrameName,
+					'frameMsg' : {
+						'action' : 'uploadHandlerAction',
+						'uiAction' :  action
+					}
+				} );
+			}
+		} );				
+			
+		// Setup the context with the callback in the current closure
+		var context = createContext({
 			'apiUrl' : options.apiUrl,
-			// Setup the proxy scope callback to display the upload unhide the iframe upload form 
+			// Setup the callback to process iframeData
 			'callback' : function( iframeData ) {
 				// Process fileBrowse callbacks ::
 				
@@ -117,17 +144,28 @@ mw.ApiProxy = { };
 					$j( '#' + iFrameName ).fadeIn( 'fast' );	
 					return ;
 				}
+				mw.log( '~browseFile Callback~ event type: ' +  iframeData['event']  );
 				
 				// Else check for event 
 				if( iframeData['event'] ) {
 					switch( iframeData['event'] ) {
 						case 'selectFileCb':
 							if( options.selectFileCb ) {
-								options.selectFileCb( iframeData['fileName'] );
+								options.selectFileCb( iframeData[ 'fileName' ] );
 							}
 						break
+						// Set the doneUploadCb if set in the browseFile options
+						case 'doneUploadCb':
+							mw.log( "should call cb: " + options.doneUploadCb );
+							if( options.doneUploadCb ) {
+								options.doneUploadCb( iframeData[ 'apiResult' ] );
+								return true;
+							}else{
+								return false;
+							}						
+						break;
 						case 'uploadUI':
-							if( uploadDialogInterface[ iframeData['method'] ] ){
+							if( uploadDialogInterface[ iframeData[ 'method' ] ] ){
 								var args = iframeData['arguments'];				
 								mw.log( "Do dialog interface: " + iframeData['method'] + ' args: ' + args[0] + ', ' + args[1] + ', ' + args[2] );		
 								uploadDialogInterface[ iframeData['method'] ](
@@ -142,10 +180,6 @@ mw.ApiProxy = { };
 			}
 		}); 
 		
-				
-		// Update the current apiUrl:
-		context[ 'apiUrl' ] = options.apiUrl;
-		
 		// Setup the default width and height: 
 		if( ! options.width ) {
 			options.width = 270;		
@@ -156,9 +190,10 @@ mw.ApiProxy = { };
 		
 		var iFrameName = ( options.iframeName ) ? options.iframeName : 'fileBrowse_' + $j('iframe').length;		
 		// Setup an object to be packaged into the frame
-		var iFrameRequest ={
+		var iFrameRequest = {
 			'clientFrame' : getClientFrame( context ),
-			'action' : 'browseFile'
+			'action' : 'browseFile',
+			'token' : options.token
 		};
 		
 		var frameStyle = 'display:none;border:none;overflow:hidden;'
@@ -168,7 +203,13 @@ mw.ApiProxy = { };
 		// Empty the target ( so that the iframe can be put there )
 		$j( options.target ).empty();
 		
-		// Append the browseFile iframe to the target:  
+		mw.log( 'append spinner');
+		// Add a loading spinner to the target
+		$j( options.target ).append( 
+			$j( '<div />' ).loadingSpinner()
+		);			
+		
+		// Append the browseFile iframe to the target:
 		appendIframe( {
 			'context' : context,
 			'persist' : true,
@@ -176,29 +217,6 @@ mw.ApiProxy = { };
 			'name' : iFrameName,			
 			'request' : iFrameRequest,
 			'target' : options.target
-		} );
-		
-		// Add a loading spinner to the target
-		$j( options.target ).append( 
-			$j( '<div />' ).loadingSpinner()
-		);
-		
-		// Make sure we have the dialog interface:
-		mw.load( 'mw.UploadInterface', function(){
-			var uploadDialogInterface = new mw.UploadDialogInterface( {
-				'uploadHandlerAction' : function( action ){
-					mw.log(	'apiProxy uploadActionHandler:: ' + action );
-					// Send action to remote frame 
-					mw.ApiProxy.sendServerMsg( {
-						'apiUrl' : options.apiUrl,
-						'frameName' : iFrameName,
-						'frameMsg' : {
-							'action' : 'uploadHandlerAction',
-							'uiAction' :  action
-						}
-					} );
-				}
-			} );
 		} );		
 		
 		// Return the name of the browseFile frame
@@ -221,7 +239,7 @@ mw.ApiProxy = { };
 		}
 		
 		//Setup a new context
-		var context = getNewContext({
+		var context = createContext({
 			'apiUrl' : options.apiUrl
 		});
 		
@@ -271,20 +289,21 @@ mw.ApiProxy = { };
 		}
 		
 		// Get the context via contextKey
-		var context = getContext( resultObject.contextKey  );
+		var context = getContext( resultObject.contextKey  );			
 		
 		// Set the loaded flag to true. ( avoids timeout calls )
 		context[ 'proxyLoaded' ] = true;
 			
-		// Special callback to frameProxyOk flag 
-		// (only used to quickly test the proxy connection)   
+		// Special callback to quickly establish a valid proxy connection.
+		// If the proxyed "request" takes more time it does not
+		// count against the proxy connection being established.   
 		if ( resultObject.state == 'ok' ) {
 			return ;
 		}
 		
 		// Check for the context callback: 
-		if( context ['callback'] ){
-			context ['callback']( resultObject );
+		if( context.callback ){			
+			context.callback( resultObject );
 		}			
 	}
 	
@@ -332,19 +351,21 @@ mw.ApiProxy = { };
 	*/	
 	
 	/**
-	* Get new context (creates a new context and stores it in the proxyContext local global  
+	* Creates a new context stored in the proxyContext local global  
 	* @param {Object} contextVars Initial contextVars
 	*/ 
-	function getNewContext ( contextVars ) {		
+	function createContext ( contextVars ) {		
 		// Create a ~ sufficently ~ unique context key 
 		var contextKey = new Date().getTime() * Math.random();
 		proxyContext [ contextKey ] = contextVars;
 						
 		// Setup the proxy loaded flag for this context:
-		proxyContext[ contextKey ][ 'proxyLoaded' ] = false; // frameProxyOk
+		proxyContext[ contextKey ][ 'proxyLoaded' ] = false;
 		
 		// Set a local pointer to the contextKey	
 		proxyContext[ contextKey ]['contextKey' ] = contextKey;
+		
+		mw.log( "created context with key:" + contextKey ); 
 		
 		// Return the proxy context
 		return proxyContext [ contextKey ];
@@ -352,15 +373,13 @@ mw.ApiProxy = { };
 	
 	/**
 	* Get a context from a contextKey
-	* @param {String} contextKey Key of the context object to be returned
+	* @param {String} [optional] contextKey Key of the context object to be returned
 	* @return context object
 	*	false if context object can not be found
 	*/
-	function getContext ( contextKey ){
+	function getContext ( contextKey ){				
 		if( ! proxyContext [ contextKey ] ){
 			mw.log( "Error: contextKey not found:: " + contextKey );
-			var cat = proxyContext;
-			debugger;
 			return false;
 		}
 		return proxyContext [ contextKey ];;
@@ -396,7 +415,7 @@ mw.ApiProxy = { };
 	//var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
 	var gadgetWithJS = '';
 	function getServerFrame( context ) {
-		if( ! context.apiUrl ){
+		if( ! context || ! context.apiUrl ){
 			mw.log( "Error no context api url " );
 			return false;
 		}
@@ -408,7 +427,7 @@ mw.ApiProxy = { };
 	
 	/** 
 	* Do the frame proxy
-	* 	Writes an iframe with a hashed value of the requestQuery
+	* 	Sets up a frame proxy request
 	*
 	* @param {Object} context ( the context of the current doFrameProxy call ) 
 	* @param {Object} requestQuery The api request object 
@@ -512,6 +531,7 @@ mw.ApiProxy = { };
 	* @param {Object} context 
 	*/
 	function proxyNotReadyTimeout( context ) {
+		mw.log( 'proxyNotReadyTimeout::' + context[ 'timeoutCb' ]);
 		
 		// See if we have a callback function to call ( do not display the dialog ) 
 		if( context[ 'timeoutCb' ] && typeof context[ 'timeoutCb' ] == 'function' ) {
@@ -521,16 +541,16 @@ mw.ApiProxy = { };
 	
 		var buttons = { };
 		buttons[ gM( 'mwe-re-try' ) ] = function() {
-			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );
+			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );			
 			// Re try the same context request:
-			doFrameProxy( context );
+			doFrameProxy( context );			
 		}
 		buttons[ gM( 'mwe-cancel' ) ] = function() {
 			mw.closeLoaderDialog();
 		}
 		
 		// Setup the login link: 
-		var pUri =  mw.parseUri( getServerFrame() );			
+		var pUri =  mw.parseUri( getServerFrame( context ) );			
 		var login_url = pUri.protocol + '://' + pUri.host;
 		login_url += pUri.path.replace( 'MediaWiki:ApiProxy', 'Special:UserLogin' );
 		
@@ -604,10 +624,11 @@ mw.ApiProxy = { };
 		clientRequest.request[ 'format' ] = 'json';		
 		
 		mw.log(" do post request to: " + wgScriptPath + '/api' + wgScriptExtension );
-		
+		/*
 		for( var i in clientRequest.request ) {
 			mw.log("req: " + i + " = " + clientRequest.request[i] );  
 		} 
+		*/
 		
 		// Process the API request. We don't use mw.getJSON since we need to "post"
 		$j.post( wgScriptPath + '/api' + wgScriptExtension,
@@ -683,12 +704,19 @@ mw.ApiProxy = { };
 	 * @return browse file config
 	 */
 	function serverBrowseFileSetup( ){
-		// Get the proxy config
-		var proxyConfig = mw.getConfig( 'apiProxyConfig' );
-		//check for fw ( file width )
-		if( ! proxyConfig.fileWidth ) {
-			proxyConfig.fileWidth = 130;
+		// Get the client request config
+		var clientRequest = getClientRequest();
+
+		// Check for fw ( file width )
+		if( ! clientRequest.fileWidth ) {
+			clientRequest.fileWidth = 130;
 		}
+		// Check for the token
+		if( ! clientRequest.token ){			
+			mw.log("Error server browse file setup without token")
+			return false;
+		}
+		
 		//Build a form with bindings similar to uploadPage.js ( but only the browse button ) 		
 		$j('body').html(
 			$j('<form />')
@@ -701,7 +729,7 @@ mw.ApiProxy = { };
 				'action' : 	mw.getLocalApiUrl()
 			} )
 			.append(
-				//Add a single "browse for file" button
+				//Add the "browse for file" button
 				$j('<input />')
 				.attr({
 					'type' : "file",					
@@ -709,8 +737,17 @@ mw.ApiProxy = { };
 					'id' : "wpUploadFile"
 				})
 				.css({
-					'width' : proxyConfig.fileWidth
+					'width' : clientRequest.fileWidth
+				}),
+				
+				// Append the token 
+				$j('<input />')
+				.attr({
+					'type' : 'hidden',
+					'id' : "wpEditToken",
+					'name' : 'token', 
 				})
+				.val( clientRequest.token ) 
 			)
 		);		
 	}
@@ -718,7 +755,9 @@ mw.ApiProxy = { };
 	/**
 	* Browse file upload config generator
 	*/
-	function getUploadFileConfig(){
+	function getUploadFileConfig(){		
+		
+		// Setup the upload iframeUI
 		var uploadIframeUI = new mw.UploadIframeUI( function( method ){
 			// Get all the arguments after the "method"
 			var args = $j.makeArray( arguments ).splice( 1 );			
@@ -741,8 +780,16 @@ mw.ApiProxy = { };
 					'event': 'selectFileCb',
 					'fileName' : fileName
 				} );
-			}
-		}
+			},
+			// Set the doneUploadCb if set in the browseFile options
+			'doneUploadCb' : function ( apiResult ){
+				sendClientMsg( {
+					'event': 'doneUploadCb',
+					'apiResult' : apiResult
+				} );				
+			}			
+		}		
+		
 		return 	uploadConfig;
 	}
 		
@@ -751,7 +798,7 @@ mw.ApiProxy = { };
 	*/
 	function serverSendUploadHandlerAction( action ) {
 		// Get a refrence to the uploadHandler:
-		// NOTE: this should not be hard-coded
+		// NOTE: both firefogg and upload form should save upload target in a similar way
 		var selector = ( wgEnableFirefogg ) ? '#wpUploadFile' : '#mw-upload-form';
 		var uploadHandler = $j( selector ).get(0).uploadHandler;		
 		if( uploadHandler ){	 
@@ -766,38 +813,28 @@ mw.ApiProxy = { };
 	* @param {Object} options Options for submiting file
 	*/
 	function serverSubmitFile( formData ){
+		mw.log("Submit form with fname:" + formData.filename  +  "\n :: " + formData.comment)
 		// Add the FileName and and the description to the form
 		var $form = $j('#mw-upload-form');
-		// Add the filename and description if missing 
-		if( ! $form.find("[name='filename']").length ){
-			$form.append(
-				$j( '<input />' )
-				.attr( {
-					'id' : 'wpDestFile',
-					'name' : 'filename',
-					'type' : 'hidden'
- 				} )
-			);
-		}
-		if( ! $form.find("[name='description']").length ){
-			$form.append(
-				$j( '<input />' )
-				.attr( {
-					'id' : 'wpUploadDescription',
-					'name' : 'comment',
-					'type' : 'hidden'
-				} )
-			);
-		}						
-			
-		// Update filename and description ( if set )
-		if( formData.filename ) {
-			$form.find( "[name='filename']" ).val( formData.filename )
-		}
-		if( formData.description ) {
-			$form.find( "[name='description']" ).val( formData.description )
-		}
+		var formApiFields = [ 'filename', 'comment', 'watch', 'ignorewarnings', 'token' ];
 		
+		for( var i=0; i <  formApiFields.length ; i++ ){
+			var fieldName = formApiFields[ i ];
+			if( typeof formData[ fieldName ] == 'string' ) {
+				// Add the input field if not already there: 
+				if( ! $form.find("[name='" + fieldName + "']" ).length ){
+					$form.append(
+						$j( '<input />' )
+						.attr( {					
+							'name' : fieldName,
+							'type' : 'hidden'
+		 				} )
+		 			)				
+				}
+				// Add the value if set: 		
+				$form.find("[name='" + fieldName + "']" ).val( formData[ fieldName ] );
+			}
+		}		
 		// Do submit the form
 		$form.submit();		
 	};
@@ -854,9 +891,10 @@ mw.ApiProxy = { };
 	 *  persist - set to true if the iframe should not 
 	 * 			  be removed from the dom after its done loading
 	 */
-	function appendIframe( options ){	
-		var s = '<iframe ';
-		
+	function appendIframe( options ){
+
+			
+		var s = '<iframe ';		
 		// check for context 
 		if( ! options[ 'context' ] ) {
 			mw.log("Error missing context");
@@ -873,7 +911,8 @@ mw.ApiProxy = { };
 		if( ! options[ 'name' ] ) {
 			options[ 'name' ] = 'mwApiProxyFrame_' + $j('iframe').length;	
 		}
-		
+
+				
 		// Add the frame name / id:
 		s += 'name="' +  mw.escapeQuotes( options[ 'name' ] ) + '" ';
 		s += 'id="' +  mw.escapeQuotes( options[ 'name' ] ) + '" ';		
@@ -906,14 +945,14 @@ mw.ApiProxy = { };
 		if( ! options[ 'target' ] ){
 			options[ 'target' ] = 'body';
 		}
-		
+		var nameTarget = ( typeof options[ 'target' ] == 'string') ? options[ 'target' ] : $j( options[ 'target' ]).length ;
+		mw.log( "Append iframe:" + options[ 'name' ] + ' to: ' + nameTarget);  
 		// Append to target
 		$j( options['target'] ).append( s );
 		
 		// Setup the onload callback		
-		$j( '#' + options['name'] ).get( 0 ).onload = function() {
+		$j( '#' + options['name'] ).get( 0 ).onload = function() {			
 			if( ! options.persist ){
-			
 				// Schedule the removal of the iframe 
 				// We don't call it directly since some browsers seem to call "ready"
 				//  before blocking code is done running   
@@ -921,15 +960,15 @@ mw.ApiProxy = { };
 					$j('#' +  options[ 'name' ] ).remove();
 				}, 10 );
 			}			
-			// Setupt the timeout check: 
-			setTimeout( function() {
-				if ( context[ 'frameProxyOk'] ) {
-					// We timed out no api proxy (should make sure the user is "logged in")
-					mw.log( "Error:: api proxy timeout are we logged in? mwEmbed is on?" );
-					proxyNotReadyTimeout( context );
-				}				
-			}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
-		};
+		};		
+		// Setupt the timeout check: 
+		setTimeout( function() {
+			if ( context[ 'proxyLoaded'] === false ) {
+				// We timed out no api proxy (should make sure the user is "logged in")
+				mw.log( "Error:: api proxy timeout" + context.contextKey );
+				proxyNotReadyTimeout( context );
+			}
+		}, mw.getConfig( 'defaultRequestTimeout') * 1000 );
 	}
 		
 } )( window.mw.ApiProxy );

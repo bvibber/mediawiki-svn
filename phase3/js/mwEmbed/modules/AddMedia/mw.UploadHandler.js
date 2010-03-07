@@ -7,11 +7,8 @@
  * This base upload class is optionally extended by Firefogg
  *
  */
-mw.addMessages({		
-	"mwe-upload-transcoded-status" : "Transcoded",
-	"mwe-upload-stats-fileprogress" : "$1 of $2",
-	"mwe-upload_completed" : "Your upload is complete",
-	"mwe-upload_done" : "<a href=\"$1\">Your upload <i>should be<\/i> accessible<\/a>.",
+mw.addMessages( {		
+	"mwe-upload-stats-fileprogress" : "$1 of $2",	
 	"mwe-upload-unknown-size" : "Unknown size",
 	"mwe-cancel-confim" : "Are you sure you want to cancel?",
 	"mwe-successfulupload" : "Upload successful",
@@ -21,7 +18,7 @@ mw.addMessages({
 	"mwe-return-to-form" : "Return to form",
 	"mwe-file-exists-duplicate" : "This file is a duplicate of the following file:",
 	"mwe-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to change it.",
-	"mwe-fileexists-thumb" : "<center><b>Existing file<\/b><\/center>",
+	"mwe-fileexists-thumb" : "Existing file",
 	"mwe-ignorewarning" : "Ignore warning and save file anyway",
 	"mwe-file-thumbnail-no" : "The filename begins with <b><tt>$1<\/tt><\/b>",
 	"mwe-go-to-resource" : "Go to resource page",
@@ -102,10 +99,10 @@ mw.UploadHandler.prototype = {
 	// If chunks uploading is supported
 	chunks_supported: true,
 	
-	// If the existing form should be used to post to the api
+	// If the form should be used to directly upload / submit to the api
 	// Since file selection can't be "moved" we have to use the existing
 	// form and just submit it to a different target  
-	form_post_override: false,
+	formDirectSubmit: false,
 	
 	// http copy by url mode flag
 	http_copy_upload : null,
@@ -113,9 +110,9 @@ mw.UploadHandler.prototype = {
 	// If the upload action is done
 	action_done: false,
 	
-	// Edit token for upload
+	// Edit token for upload lazy initialized with getToken() function
 	editToken: false,
-
+	
 	// The DOM node for the upload form
 	form: false,
 	
@@ -168,19 +165,48 @@ mw.UploadHandler.prototype = {
 			this.orig_onsubmit = this.form.onsubmit;
 		}
 		
+		if( this.selectFileCb ){			
+			this.bindSelectFileCb();
+		}
+		
 		// Set up the submit action:
-		$j( this.form ).submit( function() {	
+		$j( this.form ).unbind( 'submit' ).submit( function() {	
 			mw.log( "FORM SUBMIT::" );			
 			return _this.onSubmit();
 		} );
 	},
-
+	
+	/**
+	 * Binds the onSelect file callback
+	 */
+	bindSelectFileCb: function(){
+		var _this = this;		
+		// Grab the select file input from the form		
+		var $target = $j( this.form ).find( "input[type='file']" );
+		$target.change( function() {
+			var path = $j( this ).val();
+			// Find trailing part
+			var slash = path.lastIndexOf( '/' );
+			var backslash = path.lastIndexOf( '\\' );
+			var fname;
+			if ( slash == -1 && backslash == -1 ) {
+				fname = path;
+			} else if ( slash > backslash ) {
+				fname = path.substring( slash + 1, 10000 );
+			} else {
+				fname = path.substring( backslash + 1, 10000 );
+			}
+			fname = fname.charAt( 0 ).toUpperCase().concat( fname.substring( 1, 10000 ) ).replace( / /g, '_' );
+			_this.selectFileCb( fname );
+		} );
+	},
+	
 	/**
 	 * onSubmit handler for the upload form
 	 */
 	onSubmit: function() {
 		var _this = this;
-		mw.log( 'Base::onSubmit:' );
+		mw.log( 'Base::onSubmit:  isRawFormUpload:' + this.formDirectSubmit );
 		
 		// Run the original onsubmit (if not run yet set flag to avoid excessive chaining)
 		if ( typeof( this.orig_onsubmit ) == 'function' ) {
@@ -189,6 +215,13 @@ mw.UploadHandler.prototype = {
 				return false;
 			}
 		}		
+		// Check for post action 
+		// formDirectSubmit is needed to actualy do the upload via a form "submit"	
+		if ( this.formDirectSubmit ) {		
+			mw.log("direct submit: ");
+				
+			return true;
+		}	
 		
 		// Call the onsubmit_cb option if set:
 		if( this.onsubmit_cb && typeof this.onsubmit_cb == 'function' ) {
@@ -198,12 +231,9 @@ mw.UploadHandler.prototype = {
 		// Remap the upload form to the "api" form:
 		this.remapFormToApi();
 		
-		// Check for post action override	
-		if ( this.form_post_override ) {
-			mw.log( 'form_post_override is true, do ordinary form submit' );
-			return true;
-		}		
-		mw.log(" about to run try / catch " );
+		
+		
+		mw.log(" about to run onSubmit try / catch: detectUploadMode" );
 		// Put into a try catch so we are sure to return false:		
 		try {
 			// Startup interface dispatch dialog
@@ -321,13 +351,13 @@ mw.UploadHandler.prototype = {
 	remapFormToApi: function() {
 		var _this = this;
 		//
-		mw.log("remapFormToApi:: " + this.apiUrl + ' form: ' + this.form);
+		mw.log("remapFormToApi:: " + this.apiUrl + ' form: ' +  this.form);
 		
 		if ( !this.apiUrl ) {
 			mw.log( 'Error: no api url target' ); 
 			return false;
 		}
-		var $form = $j( this.form_selector );		
+		var $form = $j( this.form );		
 
 		// Set the form action
 		try {
@@ -335,7 +365,7 @@ mw.UploadHandler.prototype = {
 		} catch( e ) {
 			mw.log( "IE sometimes errors out when you change the action" );
 		}
-
+		
 		// Add API action
 		if ( $form.find( "[name='action']" ).length == 0 ) {
 			$form.append( 
@@ -346,7 +376,7 @@ mw.UploadHandler.prototype = {
 					'value' : "upload"
 				})
 			)
-		}
+		}		
 
 		// Add JSON response format
 		if ( $form.find( "[name='format']" ).length == 0 ) {
@@ -358,8 +388,8 @@ mw.UploadHandler.prototype = {
 					'value' : "jsonfm"
 				})
 			) 
-		}
-
+		}		
+		
 		// Map a new hidden form
 		$form.find( "[name='wpUploadFile']" ).attr( 'name', 'file' );
 		$form.find( "[name='wpDestFile']" ).attr( 'name', 'filename' );
@@ -391,11 +421,7 @@ mw.UploadHandler.prototype = {
 	doPostUpload: function() {
 		var _this = this;
 		var $form = $j( _this.form );
-		mw.log( 'mvBaseUploadHandler.doPostUpload' );
-		
-		// Issue a normal post request
-		// Get the token from the page
-		_this.editToken = $j( "#wpEditToken" ).val();
+		mw.log( 'mvBaseUploadHandler.doPostUpload' );		
 
 		// TODO check for sendAsBinary to support Firefox/HTML5 progress on upload		
 		this.ui.setLoading();
@@ -413,13 +439,13 @@ mw.UploadHandler.prototype = {
 		$j( "body" ).append( 
 			$j( iframe )
 			.attr({
-				'src':'javascript:false;',
-				'id':_this.iframeId,
-				'name':  _this.iframeId
+				'src' : 'javascript:false;',
+				'id' : _this.iframeId,
+				'name': _this.iframeId
 			}) 
 			.css('display', 'none')
 		);
-
+		
 
 		// Set the form target to the iframe
 		$form.attr( 'target', _this.iframeId );		
@@ -429,9 +455,13 @@ mw.UploadHandler.prototype = {
 			_this.processIframeResult( $j( this ).get( 0 ) );
 		});			
 		
-		// Do post override
-		_this.form_post_override = true;
-						
+		// Do normal post upload override
+		_this.formDirectSubmit = true;		
+		mw.log('About to submit:');
+		$form.find('input').each( function(){
+			mw.log( $j(this).attr( 'name' ) + ' :: ' + $j(this).val() );	
+		})
+		
 		$form.submit();
 	},
 
@@ -448,9 +478,7 @@ mw.UploadHandler.prototype = {
 			'comment'   : this.getUploadDescription(),
 			'watch'     : ( $j( '#wpWatchthis' ).is( ':checked' ) ) ? 'true' : 'false',
 			'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'
-		}
-		//check for editToken
-		this.editToken = $j( "#wpEditToken" ).val();
+		}			
 		this.doHttpUpload( httpUpConf );
 	},
 	
@@ -466,7 +494,8 @@ mw.UploadHandler.prototype = {
 		//Special case of upload.js commons hack: 
 		var comment_value = $j( '#wpUploadDescription' ).val();
 		if(  comment_value == '' ) {
-			comment_value = $j( "[name='wpUploadDescription']").val();
+			// Else try with the form name: 
+			comment_value = $j( "[name='comment']").val();
 		}
 		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.useCopyrightUpload );
 		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
@@ -515,8 +544,8 @@ mw.UploadHandler.prototype = {
 	 * @param {Element} iframe iframe to extract result from 
 	 */
 	processIframeResult: function( iframe ) {
-		var _this = this;
-		var doc = iframe.contentDocument ? iframe.contentDocument : frames[iframe.id].document;
+		var _this = this;		
+		var doc = iframe.contentDocument ? iframe.contentDocument : frames[ iframe.id ].document;
 		// Fix for Opera 9.26
 		if ( doc.readyState && doc.readyState != 'complete' ) {
 			return;
@@ -525,13 +554,14 @@ mw.UploadHandler.prototype = {
 		if ( doc.body && doc.body.innerHTML == "false" ) {
 			return;
 		}
+		
 		var response;
 		if ( doc.XMLDocument ) {
 			// The response is a document property in IE
 			response = doc.XMLDocument;
 		} else if ( doc.body ) {
 			// Get the json string
-			json = $j( doc.body ).find( 'pre' ).text();
+			var json = $j( doc.body ).find( 'pre' ).text();
 			//mw.log( 'iframe:json::' + json_str + "\nbody:" + $j( doc.body ).html() );
 			if ( json ) {
 				response = window["eval"]( "(" + json + ")" );
@@ -560,7 +590,8 @@ mw.UploadHandler.prototype = {
 		// Set up the request
 		var request = {
 			'action'        : 'upload',
-			'asyncdownload' : true // Do async download
+			'asyncdownload' : true, // Do async download
+			'token' : this.getToken()
 		};
 
 		// Add any parameters specified by the caller
@@ -568,13 +599,6 @@ mw.UploadHandler.prototype = {
 			if ( !request[key] ) {
 				request[key] = params[key];
 			}
-		}
-
-		// Add the edit token (if available)
-		if( !_this.editToken && _this.apiUrl ) {
-			mw.log( 'Error:doHttpUpload: missing token' );
-		} else {
-			request['token'] =_this.editToken;
 		}
 
 		// Reset the done with action flag
@@ -598,12 +622,9 @@ mw.UploadHandler.prototype = {
 		this.upload_status_request = {
 			'action'     : 'upload',
 			'httpstatus' : 'true',
-			'sessionkey' : _this.upload_session_key
-		};
-		
-		// Add token if present
-		if ( this.editToken )
-			this.upload_status_request['token'] = this.editToken;
+			'sessionkey' : _this.upload_session_key,
+			'token' 	 : _this.getToken()			
+		};			
 
 		// Trigger an initial request (subsequent ones will be done by a timer)
 		this.onAjaxUploadStatusTimer();
@@ -720,16 +741,14 @@ mw.UploadHandler.prototype = {
 
 		if ( apiRes.upload && apiRes.upload.imageinfo && apiRes.upload.imageinfo.descriptionurl ) {							
 			// Call the completion callback if available.
-			if ( _this.done_upload_cb && typeof _this.done_upload_cb == 'function' ) {
-				mw.log( "call done_upload_cb" );
-				
-				// This overrides our normal completion handling so we close the
-				// dialog immediately.
-				_this.ui.close();
-				_this.done_upload_cb( apiRes.upload );
-				return true;
-			}
-			
+			if ( typeof _this.doneUploadCb == 'function' ) {
+				// check if the callback returns true and close up shop	
+				if( _this.doneUploadCb( apiRes ) ){
+					// Close the ui
+					_this.ui.close();
+					return true;
+				}
+			}			
 			// Else pass off the api Success to interface:
 			_this.ui.showApiSuccess( apiRes );	
 			return true;
@@ -747,8 +766,8 @@ mw.UploadHandler.prototype = {
 			case 'ignoreWarnings':
 				this.ignoreWarningsSubmit();
 			break;
-			case 'disableFormPostOverride':
-				this.form_post_override = false;
+			case 'disableDirectSubmit':
+				this.formDirectSubmit = false;
 			break;
 			default: 
 				mw.log( "Error reciveUploadAction:: unkown action: " + action );
@@ -766,14 +785,14 @@ mw.UploadHandler.prototype = {
 		// Check if we have a stashed key:
 		if ( _this.warnings_sessionkey !== false ) {
 			//set to "loading"
-			$j( '#upProgressDialog' ).html( mw.loading_spinner() );
+			_this.ui.setLoading();
 			//setup request:
 			var request = {
 				'action': 'upload',
 				'sessionkey': _this.warnings_sessionkey,
 				'ignorewarnings': 1,
 				'filename': $j( '#wpDestFile' ).val(),
-				'token' :  _this.editToken,
+				'token' :  _this.getToken(),
 				'comment' : _this.getUploadDescription()
 			};
 			//run the upload from stash request
@@ -782,9 +801,9 @@ mw.UploadHandler.prototype = {
 			} );
 		} else {
 			mw.log( 'No session key re-sending upload' )
-			//do a stashed upload
+			//Do a stashed upload
 			$j( '#wpIgnoreWarning' ).attr( 'checked', true );
-			$j( _this.editForm ).submit();
+			$j( _this.form ).submit();
 		}
 	},
 	
@@ -799,15 +818,32 @@ mw.UploadHandler.prototype = {
 	 * Get the DOMNode of the form element we are rewriting.
 	 * Returns false if it can't be found.
 	 */
-	getForm: function() {
-	
+	getForm: function() {	
 		if ( this.form_selector && $j( this.form_selector ).length != 0 ) {
 			return $j( this.form_selector ).get( 0 );
 		} else {
 			mw.log( "mvBaseUploadHandler.getForm(): no form_selector" );
 			return false;
 		}
-	}	
+	},
+	
+	// Get the editToken from the page. 
+	getToken : function(){
+		if( this.editToken ){
+			return this.editToken;
+		}
+		if( $j( '#wpEditToken').length ){
+			this.editToken = $j( '#wpEditToken').val();
+		}
+		if( $j("form[name='token']").length){
+			this.editToken = $j("form[name='token']").val();
+		}
+		if( !this.editToken ){
+			mw.log("Error: can not find edit token ")
+			return false;
+		}
+		return this.editToken;
+	}
 
 };
 
@@ -831,6 +867,7 @@ mw.UploadHandler.prototype = {
 		if ( !options.warn_target ) {
 			options.warn_target = '#wpDestFile-warning';
 		}
+		mw.log( 'do doDestCheck and update: ' + options.warn_target );
 		
 		if( ! options.apiUrl ) {
 			options.apiUrl = mw.getLocalApiUrl();
@@ -845,8 +882,7 @@ mw.UploadHandler.prototype = {
 				.append( '<td />' )
 					.attr('id', 'wpDestFile-warning')
 				);
-		}
-		mw.log( 'past dest');
+		}	
 		// Remove any existing warning
 		$j( options.warn_target ).empty();
 
@@ -859,72 +895,116 @@ mw.UploadHandler.prototype = {
 			.loadingSpinner()
 		);		
 		// Setup the request
-		var request =  {
+		var request = {
 			'titles': 'File:' + $j( _this.selector ).val(),
 			'prop':  'imageinfo',
 			'iiprop': 'url|mime|size',
 			'iiurlwidth': 150
-		};		
+		};
 				
 		// Do the destination check ( on the local wiki )
 		mw.getJSON( options.apiUrl, request, function( data ) {
-				// Remove spinner
-				$j( '#mw-spinner-wpDestFile' ).remove();
-				
-				if ( !data || !data.query || !data.query.pages ) {
-					// Ignore a null result
-					return;
-				}
-
-				if ( data.query.pages[-1] ) {
-					// No conflict found
-					return;
-				}
-				for ( var page_id in data.query.pages ) {
-					if ( !data.query.pages[ page_id ].imageinfo ) {
-						continue;
-					}
-
-					// Conflict found, show warning
-					if ( data.query.normalized ) {
-						var ntitle = data.query.normalized[0].to;
-					} else {
-						var ntitle = data.query.pages[ page_id ].title
-					}
-					var img = data.query.pages[ page_id ].imageinfo[0];
-					$j( options.warn_target  ).html(
-						gM( 'mwe-fileexists', ntitle ) +
-						'<div class="thumb tright">' +
-						'<div ' +
-							'style="width: ' + ( parseInt( img.thumbwidth ) + 2 ) + 'px;" ' +
-							'class="thumbinner">' +
-						'<a ' +
-							'title="' + ntitle + '" ' +
-							'class="image" ' +
-							'href="' + img.descriptionurl + '">' +
-						'<img ' +
-							'width="' + img.thumbwidth + '" ' +
-							'height="' + img.thumbheight + '" ' +
-							'border="0" ' +
-							'class="thumbimage" ' +
-							'src="' + img.thumburl + '" ' +
-							'alt="' + ntitle + '"/>' +
-						'</a>' +
-						'<div class="thumbcaption">' +
-						'<div class="magnify">' +
-						'<a title="' + gM('thumbnail-more') + '" class="internal" ' +
-							'href="' + img.descriptionurl +'">' +
-						'<img border="0" width="15" height="11" alt="" ' +
-							'src="' + mw.getConfig( 'images_path' ) + 'magnify-clip.png" />' +
-						'</a>' +
-						'</div>' +
-						gM( 'mwe-fileexists-thumb' ) +
-						'</div>' +
-						'</div>' +
-						'</div>'
-					);
-				}
+			mw.log(" got callback? wtf");
+			// Remove spinner
+			$j( '#mw-spinner-wpDestFile' ).remove();
+			
+			if ( !data || !data.query || !data.query.pages ) {
+				// Ignore a null result
+				mw.log(" No data in DestCheck result")
+				return;
 			}
-		);
+
+			if ( data.query.pages[-1] ) {
+				// No conflict found
+				mw.log(" No pages in DestCheck result")
+				return;
+			}
+			for ( var page_id in data.query.pages ) {
+				if ( !data.query.pages[ page_id ].imageinfo ) {
+					continue;
+				}
+
+				// Conflict found, show warning
+				if ( data.query.normalized ) {
+					var ntitle = data.query.normalized[0].to;
+				} else {
+					var ntitle = data.query.pages[ page_id ].title
+				}
+				var img = data.query.pages[ page_id ].imageinfo[0];
+				
+				var linkAttr ={ 
+					'title' : ntitle,
+					'href' : img.descriptionurl,
+					'target' : '_new'
+				};
+				
+				var $fileAlreadyExists = $j('<div />')
+				.append(				
+					gM( 'mwe-fileexists', 
+						$j('<a />')
+						.attr( linkAttr )
+						.text( ntitle )
+					)
+				)
+				
+				var $imageLink = $j('<a />')
+					.addClass( 'image' )
+					.attr( linkAttr )
+					.append( 
+						$j( '<img />')
+						.addClass( 'thumbimage' )
+						.attr( {
+							'width' : img.thumbwidth,
+							'height' : img.thumbheight,
+							'border' : 0,
+							'src' : img.thumburl,
+							'alt' : ntitle
+						} )
+					);
+					
+				var $imageCaption = $j( '<div />' )
+					.addClass( 'thumbcaption' )
+					.append( 
+						$j('<div />')
+						.addClass( "magnify" )
+						.append(
+							$j('<a />' )
+							.addClass( 'internal' )
+							.attr( {
+								'title' : gM('thumbnail-more'),
+								'href' : img.descriptionurl
+							} ),
+							
+							$j( '<img />' )
+							.attr( {
+								'border' : 0,
+								'width' : 15,
+								'height' : 11,
+								'src' : mw.getConfig( 'images_path' ) + 'magnify-clip.png'
+							} ), 
+							
+							$j('<span />')
+							.html( gM( 'mwe-fileexists-thumb' ) )
+						)													
+					);
+				$j( options.warn_target  ).append(
+					$fileAlreadyExists,
+					
+					$j( '<div />' )
+					.addClass( 'thumb tright' )
+					.append(
+						$j( '<div />' )
+						.addClass( 'thumbinner' )
+						.css({
+							'width' : ( parseInt( img.thumbwidth ) + 2 ) + 'px;'
+						})
+						.append( 
+							$imageLink, 
+							$imageCaption
+						)					
+					)
+				);				
+			}
+		} );
 	}
 })( jQuery );
