@@ -31,10 +31,22 @@
 		"kalturaSearch"			: "modules/AddMedia/searchLibs/kalturaSearch.js"
 	});	
 	
-	/**
-	* Note: We should move relevant parts of these style sheets to the addMedia/css folder 
-	* phase 2: We should separate out sheet sets per sub-module:
-	*/ 
+	// Upload form includes "datapicker" 
+	mw.addModuleLoader( 'AddMedia.UploadForm', function( callback ){
+		var request = [
+			[
+				'mw.UploadForm',
+				'$j.ui'
+			],
+			[
+				'$j.ui.datepicker'
+			]
+		];
+		mw.load( request , function() {
+			callback( 'AddMedia.UploadForm' );
+		} );
+	})
+	
 	
 	//Setup the addMediaWizard module
 	mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ) {

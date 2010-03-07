@@ -101,11 +101,7 @@ mw.ApiProxy = { };
 		if( !options.token ){
 			mw.log( "Error: no token for file browse ");
 			return false;
-		}
-		
-		mw.log( "browseFile:: " + $j(options.target).length );
-		
-		mw.log( "BROWSE FILE:: cb: " + options.doneUploadCb);
+		}				
 		
 		if( ! options.apiUrl ) {
 			mw.log( "Error: no api url to target" );
@@ -239,9 +235,9 @@ mw.ApiProxy = { };
 		}
 		
 		//Setup a new context
-		var context = createContext({
+		var context = createContext( {
 			'apiUrl' : options.apiUrl
-		});
+		} );
 		
 		// Send a msg to the server frameName from the server domain
 		// Setup an object to be packaged into the frame
@@ -388,12 +384,19 @@ mw.ApiProxy = { };
 	/**
 	* Get the client frame path 
 	*/
-	function getClientFrame( context ) {
+	function getClientFrame( context ) {	
 		// Check if the mwEmbed is on the same server as we are
 		if( mw.isLocalDomain( mw.getMwEmbedPath() ) ){
 			return mw.getMwEmbedPath() + 'modules/ApiProxy/NestedCallbackIframe.html';
-		} else {
-			// Use the nested callback function
+		} else {			
+			// Use the nested callback function ( server frame point back )
+			nestedServerFrame = getServerFrame( {
+				'apiUrl' :  mw.getLocalApiUrl(),
+				'pageName' : 'ApiProxyNestedCb'
+			} ); 
+						
+			// Update the context to include the nestedCallbackFlag flag in the request			
+			return nestedServerFrame;
 		}
 	}
 	
@@ -421,8 +424,10 @@ mw.ApiProxy = { };
 		}
 		var parsedUrl = mw.parseUri( context.apiUrl );
 		
+		var pageName = ( context.pageName ) ? context.pageName :  'ApiProxy'
+		
 		return 	parsedUrl.protocol + '://' + parsedUrl.authority 
-			+ '/w/index.php/MediaWiki:ApiProxy' + gadgetWithJS;
+			+ '/w/index.php/MediaWiki:' + pageName + gadgetWithJS;
 	}
 	
 	/** 
@@ -531,11 +536,11 @@ mw.ApiProxy = { };
 	* @param {Object} context 
 	*/
 	function proxyNotReadyTimeout( context ) {
-		mw.log( 'proxyNotReadyTimeout::' + context[ 'timeoutCb' ]);
+		mw.log( "Error:: api proxy timeout " + context.contextKey );
 		
 		// See if we have a callback function to call ( do not display the dialog ) 
 		if( context[ 'timeoutCb' ] && typeof context[ 'timeoutCb' ] == 'function' ) {
-			context[ 'timeoutCb' ]();
+			context[ 'timeoutCb' ] ( );
 			return true;
 		}	
 	
@@ -546,7 +551,7 @@ mw.ApiProxy = { };
 			doFrameProxy( context );			
 		}
 		buttons[ gM( 'mwe-cancel' ) ] = function() {
-			mw.closeLoaderDialog();
+			mw.closeLoaderDialog ( );
 		}
 		
 		// Setup the login link: 
@@ -595,10 +600,15 @@ mw.ApiProxy = { };
 	*/
 	function serverHandleRequest( ) {		
 		var clientRequest = getClientRequest();
-		mw.log(" handle client request :: " +  	JSON.stringify( clientRequest ) );
+		mw.log(" Handle client request :: " +  	JSON.stringify( clientRequest ) );
 		//debugger;
 		// Process request type:
-		switch( clientRequest['action'] ){
+		switch( clientRequest[ 'action' ] ){
+			case 'nestedCallback':
+				alert('nestedCallback')
+				// pretend this was a nested callback
+				return $.nested('');
+			break;
 			case 'browseFile':
 				return serverBrowseFile();
 			break;			
@@ -781,6 +791,10 @@ mw.ApiProxy = { };
 					'fileName' : fileName
 				} );
 			},
+			
+			// Api proxy does not handle descriptionText rewrite
+			'rewriteDescriptionText' : false,
+			
 			// Set the doneUploadCb if set in the browseFile options
 			'doneUploadCb' : function ( apiResult ){
 				sendClientMsg( {
@@ -862,8 +876,7 @@ mw.ApiProxy = { };
 		if( ! clientRequest.contextKey ) {
 			mw.log( "Error: missing context key " );
 			return false;
-		} 
-		
+		}		
 		
 		var nestName = 'NestedFrame_' + $j( 'iframe' ).length;
 		
@@ -872,7 +885,7 @@ mw.ApiProxy = { };
 			'src' : clientFrame,
 			'request' : msgObj,
 			// Client msgs just have the contextKey ( not the full context )
-			'context' : { 
+			'context' : {
 				'contextKey' : clientRequest.contextKey
 			}
 		} );				
@@ -892,10 +905,12 @@ mw.ApiProxy = { };
 	 * 			  be removed from the dom after its done loading
 	 */
 	function appendIframe( options ){
-
-			
-		var s = '<iframe ';		
-		// check for context 
+		
+		// Build out iframe in string since IE throws away attributes of
+		//  jQuery iframe buildout
+		var s = '<iframe ';
+				
+		// Check for context 
 		if( ! options[ 'context' ] ) {
 			mw.log("Error missing context");
 			return false;
@@ -911,7 +926,6 @@ mw.ApiProxy = { };
 		if( ! options[ 'name' ] ) {
 			options[ 'name' ] = 'mwApiProxyFrame_' + $j('iframe').length;	
 		}
-
 				
 		// Add the frame name / id:
 		s += 'name="' +  mw.escapeQuotes( options[ 'name' ] ) + '" ';
@@ -921,16 +935,17 @@ mw.ApiProxy = { };
 		if( ! options['style'] ){
 			options['style'] = 'display:none';
 		}
+		
 		// Add style attribute:
 		s += 'style="' + mw.escapeQuotes( options[ 'style' ] ) + '" ';
 		
 		// Special handler for src and packaged hash request: 
-		if( options.src ){
+		if( options.src ) {
 			s += 'src="' + options.src;
-			if( options.request ){
-			
+			if( options.request ) {
+							
 				// Add the contextKey to the request 
-				options.request[ 'contextKey' ] = context.contextKey;
+				options.request[ 'contextKey' ] = context.contextKey;						
 				
 				// Add the escaped version of the request: 
 				s += '#' + encodeURIComponent( JSON.stringify(  options.request ) );
@@ -946,26 +961,27 @@ mw.ApiProxy = { };
 			options[ 'target' ] = 'body';
 		}
 		var nameTarget = ( typeof options[ 'target' ] == 'string') ? options[ 'target' ] : $j( options[ 'target' ]).length ;
-		mw.log( "Append iframe:" + options[ 'name' ] + ' to: ' + nameTarget);  
+		mw.log( "Append iframe:" + options[ 'src' ] + ' to: ' + nameTarget + " \n WITH REQUEST: " + JSON.stringify(  options.request ) );  
+		
 		// Append to target
-		$j( options['target'] ).append( s );
+		$j( options[ 'target' ] ).append( s );
 		
 		// Setup the onload callback		
-		$j( '#' + options['name'] ).get( 0 ).onload = function() {			
+		$j( '#' + options[ 'name' ] ).get( 0 ).onload = function() {			
 			if( ! options.persist ){
 				// Schedule the removal of the iframe 
-				// We don't call it directly since some browsers seem to call "ready"
-				//  before blocking code is done running   
+				// We don't call remove directly since some browsers seem to call "ready"
+				//  before blocking javascript code is done running   
 				setTimeout( function() {
 					$j('#' +  options[ 'name' ] ).remove();
 				}, 10 );
 			}			
 		};		
+		
 		// Setupt the timeout check: 
 		setTimeout( function() {
-			if ( context[ 'proxyLoaded'] === false ) {
+			if ( context[ 'proxyLoaded' ] === false ) {
 				// We timed out no api proxy (should make sure the user is "logged in")
-				mw.log( "Error:: api proxy timeout" + context.contextKey );
 				proxyNotReadyTimeout( context );
 			}
 		}, mw.getConfig( 'defaultRequestTimeout') * 1000 );

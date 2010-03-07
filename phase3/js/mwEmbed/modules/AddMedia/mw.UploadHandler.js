@@ -49,10 +49,10 @@ var default_bui_options = {
 	'upload_mode' : 'api',
 	
 	// Callback for modifying form data on submit  
-	'onsubmit_cb' : null,
+	'beforeSubmitCb' : null,
 	
 	// Equivalent to $wgUseCopyrightUpload in php ( should be set via configuration )
-	'useCopyrightUpload' : true,
+	'rewriteDescriptionText' : true,
 	
 	// Callback which is called when the source name changes
 	'selectFileCb': false
@@ -223,15 +223,13 @@ mw.UploadHandler.prototype = {
 			return true;
 		}	
 		
-		// Call the onsubmit_cb option if set:
-		if( this.onsubmit_cb && typeof this.onsubmit_cb == 'function' ) {
-			this.onsubmit_cb();
+		// Call the beforeSubmitCb option if set:
+		if( this.beforeSubmitCb && typeof this.beforeSubmitCb == 'function' ) {
+			this.beforeSubmitCb();
 		}				
 		
 		// Remap the upload form to the "api" form:
-		this.remapFormToApi();
-		
-		
+		this.remapFormToApi();		
 		
 		mw.log(" about to run onSubmit try / catch: detectUploadMode" );
 		// Put into a try catch so we are sure to return false:		
@@ -251,6 +249,7 @@ mw.UploadHandler.prototype = {
 				_this.upload_mode = mode;
 				_this.doUpload();
 			} );
+			
 		} catch( e ) {
 			mw.log( '::error in this.ui or doUpload ' + e );
 		}
@@ -497,9 +496,9 @@ mw.UploadHandler.prototype = {
 			// Else try with the form name: 
 			comment_value = $j( "[name='comment']").val();
 		}
-		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.useCopyrightUpload );
+		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.rewriteDescriptionText );
 		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
-		if ( this.useCopyrightUpload ) {
+		if ( this.rewriteDescriptionText ) {
 			var license = ( $j("[name='wpLicense']").length ) ? $j("[name='wpLicense']").val() : '';
 			var copyStatus = ( $j("[name='wpUploadCopyStatus']" ).length ) ? $j("[name='wpUploadCopyStatus']" ).val() : '';
 			var source =  ( $j("[name='wpSource']").length ) ? $j("[name='wpSource']").val() : '';
@@ -513,7 +512,7 @@ mw.UploadHandler.prototype = {
 	
 	/**
 	* Get the comment text ( port of getInitialPageText from SpecialUpload.php
-	* We only copy part of the check where useCopyrightUpload is enabled as
+	* We only copy part of the check where rewriteDescriptionText is enabled as
 	* to not conflict with other js rewrites. 
 	*   
 	* @param {String} comment Comment string
@@ -532,7 +531,7 @@ mw.UploadHandler.prototype = {
 						licensetxt;
 		}
 		if( source ){
-			pageText += '== ' + gM( 'filesource' ) + " ==\n" . source ;
+			pageText += '== ' + gM( 'filesource' ) + " ==\n" + source ;
 		}
 		return pageText;
 	},
@@ -735,20 +734,18 @@ mw.UploadHandler.prototype = {
 			// Async upload, do AJAX status polling
 			_this.upload_session_key = apiRes.upload.upload_session_key;
 			_this.doAjaxUploadStatus();
-			mw.log( "set upload_session_key: " + _this.upload_session_key );
+			mw.log( "Set upload_session_key: " + _this.upload_session_key );
 			return true;
 		}
 
 		if ( apiRes.upload && apiRes.upload.imageinfo && apiRes.upload.imageinfo.descriptionurl ) {							
 			// Call the completion callback if available.
 			if ( typeof _this.doneUploadCb == 'function' ) {
-				// check if the callback returns true and close up shop	
-				if( _this.doneUploadCb( apiRes ) ){
+					_this.doneUploadCb( apiRes )
 					// Close the ui
 					_this.ui.close();
 					return true;
-				}
-			}			
+			}
 			// Else pass off the api Success to interface:
 			_this.ui.showApiSuccess( apiRes );	
 			return true;

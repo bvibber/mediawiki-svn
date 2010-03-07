@@ -9,7 +9,10 @@ mw.addMessages( {
 	"mwe-license_cc-by-sa" : "Creative Commons Share Alike (3.0)",
 	"mwe-upload" : "Upload file",
 	"mwe-destfilename" : "Destination filename:",
+	
 	"mwe-summary" : "Summary",
+	"mwe-date-of-work" : "Date of the work",
+	
 	"mwe-error_not_loggedin" : "You do not appear to be logged in or do not have upload privileges.",
 	
 	"mwe-error-not-loggedin-file" : "You do not appear to be logged in or there was an error in the software. You can $1 and try again",
@@ -161,6 +164,8 @@ mw.UploadForm = { };
 									
 				// MediaWiki API supports chunk uploads: 
 				'enable_chunks' : false,
+				// We manually rewrite our description text
+				'rewriteDescriptionText' : false,
 									
 				'form_selector' : '#suf_upload',
 				
@@ -174,29 +179,39 @@ mw.UploadForm = { };
 						'warn_target' : "#wpDestFile-warning"
 					} );
 				},
-				'onsubmit_cb' : function( ) {
-					// Update with basic info template:	
-					// TODO: it would be nice to have a template generator class
-					var desc = $j('#wpUploadDescription').val();
-					
-					// Update the template if the user does not already have template code:
-					if( desc.indexOf('{{Information') == -1) {
-						$j('#wpUploadDescription').val( 
-'== {{int:filedesc}} ==' + "\n" +
-'{{Information' + "\n" +
-'|Description={{en|' + desc + "\n}}\n" +
-'|Author=[[User:' + wgUserName + '|' + wgUserName + ']]' + "\n" +
-'|Source=' + "\n" +
-'|Date=' + "\n" +
-'|Permission=' + "\n" +
-'|other_versions=' + "\n" + 
-'}}' + "\n" +
-'{{self|cc-by-sa-3.0}}' + "\n"
-						);
-					}
+				'beforeSubmitCb' : function( ) {
+					buildAssetDescription();							
 				}
 			} );
 		});
+	}
+	/**
+	 * Build the Asset Description info template
+	 * and update the wpUploadDescription value
+	 */
+	function buildAssetDescription(){		
+		// Update with basic info template:	
+		// TODO: it would be nice to have a template generator class
+		// this is basicaly a simple version of the commons form hack
+		var desc = $j('#comment-desc').val();
+		var date = $j('#comment-date').val();
+		
+		// Update the template if the user does not already have template code:
+		if( desc.indexOf('{{Information') == -1) {
+			$j('#wpUploadDescription').val( 
+				'== {{int:filedesc}} ==' + "\n" +
+				'{{Information' + "\n" +
+				'|Description={{en|' + desc + "\n}}\n" +
+				'|Author=[[User:' + wgUserName + '|' + wgUserName + ']]' + "\n" +
+				'|Source=' + "\n" +
+				'|Date=' + date + "\n" +
+				'|Permission=' + "\n" +
+				'|other_versions=' + "\n" + 
+				'}}' + "\n" +
+				'== {{int:license}} ==' + "\n" +
+				'{{self|cc-by-sa-3.0}}' + "\n"
+			);
+		}
 	}
 	/**
 	* Setup a fileBrowse proxy for a given target
@@ -233,6 +248,7 @@ mw.UploadForm = { };
 						'warn_target': '#file-warning'
 					} );				
 				},
+				
 				// Timeout callback
 				'timeoutCb' : function(){
 					mw.log("timed out in setting up setupApiFileBrowseProxy");
@@ -248,7 +264,19 @@ mw.UploadForm = { };
 			} );
 			
 			// Setup submit binding: 
-			$j('#wpUploadBtn').click( function(){								
+			$j('#wpUploadBtn').click( function(){
+							
+				// Update the asset description:
+				buildAssetDescription();
+				
+				// Dissable upload button and add loader:
+				$j( '#wpUploadBtn' )
+				.attr( 'disabled', 'disabled' )
+				.before(
+					$j('<span />').loadingSpinner()
+				);	
+				
+				
 				// Build the output and send upload request to fileProxy  
 				mw.ApiProxy.sendServerMsg( {
 					'apiUrl' : options.apiUrl, 
@@ -262,8 +290,7 @@ mw.UploadForm = { };
 							'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'							
 						}
 					}
-				} );
-				// Maybe set loading to spinner				
+				} );				
 			} );
 			
 			// Overwide the form submit: 
@@ -317,7 +344,7 @@ mw.UploadForm = { };
 						"doneUploadCb" : function( resultData ) {	
 							if( !resultData || ! resultData.upload || ! resultData.upload['filename']){
 								mw.log( "Error in upload form no upload data in done Upload callback ");
-								return false;
+								return true;
 							}													
 							var wTitle = resultData.upload['filename'];								
 							mw.log( 'uploadForm: doneUploadCb : '+ wTitle);						
@@ -331,8 +358,8 @@ mw.UploadForm = { };
 								// Pull up resource editor:
 								remoteSearchDriver.showResourceEditor( resource );
 							} );
-							// Return false to close progress window:
-							return false;
+							// Return true to close progress window:
+							return true;
 						}
 					} );
 					
@@ -497,7 +524,7 @@ mw.UploadForm = { };
 			$j( '<br />' ),
 			$j( '<label />' )
 			.attr({
-				'for' : "wpUploadDescription"
+				'for' : "comment-desc"
 			})
 			.text( gM( 'mwe-summary' ) ),
 			
@@ -505,15 +532,64 @@ mw.UploadForm = { };
 			
 			$j( '<textarea />' )
 			.attr( { 
-				'id' : "wpUploadDescription",
+				'id' : "comment-desc",
 				'cols' : "30",
 				'rows' : "3",
-				'name' : "wpUploadDescription",
+				'name' : "comment-desc",
 				'tabindex' : "3"
 			} ),
 			
 			$j( '<br />' )
 		);
+		// Add the hidden wpUploadDescription
+		$uploadForm.append( 
+			$j( '<input />' )
+			.attr( { 
+				'id' : "wpUploadDescription",
+				'type' : "hidden",
+				'name' : "wpUploadDescription"				
+			} )
+			.val('')
+		)
+		
+		//Add date of work
+		$uploadForm.append(
+			$j( '<label />' )
+			.attr({
+				'for' : "comment-date"
+			})
+			.text( gM( 'mwe-date-of-work' ) ),
+			
+			$j( '<br />' ),
+			
+			$j( '<input />' )
+			.attr( { 
+				'id' : "comment-date",
+				'size' : 15,
+				'name' : "comment-date",
+				'tabindex' : "4"
+			} )
+			.datepicker({
+				changeMonth: true,
+				changeYear: true,
+				verticalOffset: 40,
+				dateFormat: 'yy-mm-dd',
+				onSelect: function( dateText ) {
+					$j( this ).val( dateText );
+				},
+				beforeShow: function() {					
+					$j('#ui-datepicker-div').css({						
+						'z-index': 10001
+					}); 
+					return true;
+				}
+			}),			
+			
+			$j( '<br />' )
+		)
+		
+		
+		
 		
 		// Add watchlist checkbox
 		$uploadForm.append(
@@ -523,7 +599,7 @@ mw.UploadForm = { };
 				'value' : 'true',
 				'id' : 'wpWatchthis',
 				'name' : 'watch', 
-				'tabindex' : 7
+				'tabindex' : "5"
 			}),
 			
 			$j( '<label />' )
@@ -541,7 +617,7 @@ mw.UploadForm = { };
 				'value' : "true",
 				'id' : "wpIgnoreWarning",
 				'name' : "ignorewarnings",
-				'tabindex' : "8"
+				'tabindex' : "6"
 			} ),
 			
 			$j( '<label />' )
@@ -600,7 +676,7 @@ mw.UploadForm = { };
 				'value' : gM( 'mwe-upload' ),
 				'name' : "wpUploadBtn",
 				'id' : "wpUploadBtn",
-				'tabindex' : "9"
+				'tabindex' : "7"
 			})
 		);
 		

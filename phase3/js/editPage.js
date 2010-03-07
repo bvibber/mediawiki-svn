@@ -15,8 +15,8 @@ var defaultAddMediaConfig = {
 		'default_query': wgTitle,
 		'target_title': wgPageName,
 		
-		// if the info overlay per asset should be displayed
-		'displayResourceInfoIcons' : false, 
+		// If the info overlay per asset should be displayed
+		'displayResourceInfoIcons' : true, 
 		
 		// If we should display buttons to switch between "box" and "detailed" view
 		'displayResultFormatButton' : false,
