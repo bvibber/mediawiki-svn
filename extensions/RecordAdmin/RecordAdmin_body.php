@@ -300,8 +300,8 @@ class SpecialRecordAdmin extends SpecialPage {
 					# Render the form
 					$wgOut->addHTML( "<form class=\"{$this->formClass}\"{$this->formAtts} action=\"$action\" method=\"POST\">" );
 					$wgOut->addHTML( $this->form );
-					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
-					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
+					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'id' => 'ra-type', 'value' => $type ) ) );
+					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'id' => 'ra-record', 'value' => $record ) ) );
 					$wgOut->addHTML( '<br /><hr /><br />'
 						. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&nbsp;"
 						. Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpSummary', 'id' => 'wpSummary', 'maxlength' => '200', 'size' => '60' ) )
