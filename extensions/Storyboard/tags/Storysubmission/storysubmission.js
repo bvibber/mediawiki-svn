@@ -34,3 +34,7 @@ function stbValidateSubmission( termsCheckbox ) {
 	}
 	return agreementValid;
 }
+
+addOnloadHook( function() { 
+	document.getElementById( 'storysubmission-button' ).disabled = true;
+} );

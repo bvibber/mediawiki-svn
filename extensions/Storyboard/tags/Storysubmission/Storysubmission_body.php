@@ -40,9 +40,11 @@ class TagStorysubmission {
 	 * @param $parser
 	 * @param array $args
 	 * @return HTML
+	 * 
+	 * TODO: any sort of client side validation?
 	 */
 	private static function getFrom( $parser, array $args ) {
-		global $wgOut, $wgUser, $wgJsMimeType, $wgSc, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgOut, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.css' );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.js' );
@@ -57,6 +59,7 @@ class TagStorysubmission {
 		
 		$formBody = "<table width='$width'>";
 		
+		// TODO: if logged in, use real name as default, or username when not available
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' . 
@@ -77,6 +80,11 @@ class TagStorysubmission {
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-contact' ) ) .
 			'<td>' . Html::input('contact' ,'', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
+			
+		$formBody .= '<tr>' .
+			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-storytitle' ) ) .
+			'<td>' . Html::input('storytitle' ,'', 'text', array( 'size' => $fieldSize )
+			) . '</td></tr>';			
 		
 		$formBody .= '<tr><td colspan="2">' .
 			wfMsg( 'storyboard-story' ) .
@@ -89,7 +97,8 @@ class TagStorysubmission {
 			Html::element(
 				'textarea',
 				array(
-					'id' => 'story',
+					'id' => 'storytext',
+					'name' => 'storytext',
 					'rows' => 7,
 					'onkeyup' => "stbValidateStory( this, $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )",
 				),
@@ -111,7 +120,7 @@ class TagStorysubmission {
 		
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
 		
-		$formHtml = Html::rawElement(
+		return Html::rawElement(
 			'form',
 			array(
 				'id' => 'storyform',
@@ -122,11 +131,6 @@ class TagStorysubmission {
 			),
 			$formBody
 		);
-		
-		// Disable the submission button when JS is enabled.
-		$formJs = "<script type='$wgJsMimeType'>/*<![CDATA[*/ document.getElementById( 'storysubmission-button' ).disabled = true; /*]]>*/</script>";
-		
-		return $formHtml . $formJs;
 	}
 	
 	/**
@@ -136,7 +140,25 @@ class TagStorysubmission {
 		global $wgRequest, $wgUser;
 		
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->insert( 'storyboard' ); // TODO
+		
+		// TODO: some sort of validation?
+		
+		$story = array(
+			'story_author_name' => $dbw->addQuotes( $wgRequest->getText( 'name' ) ),
+			'story_author_location' => $dbw->addQuotes( $wgRequest->getText( 'location' ) ),
+			'story_author_occupation' => $dbw->addQuotes( $wgRequest->getText( 'occupation' ) ),
+			'story_title' => $dbw->addQuotes( $wgRequest->getText( 'storytitle' ) ),
+			'story_text' => $dbw->addQuotes( $wgRequest->getText( 'storytext' ) ),
+			// TODO: add other fields
+		);
+		
+		// TODO: Add user id to $story if user is logged in
+		
+		$dbw->insert( 'storyboard', $story );
+		
+		$responseHtml = ''; // TODO: create html response
+		
+		return $responseHtml;
 	}
 	
 }
