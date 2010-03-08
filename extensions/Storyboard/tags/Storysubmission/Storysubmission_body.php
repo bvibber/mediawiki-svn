@@ -152,8 +152,8 @@ class TagStorysubmission {
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
 			'story_title' => $wgRequest->getText( 'storytitle' ),
 			'story_text' => $wgRequest->getText( 'storytext' ),
-			'story_created' => wfTimestamp( TS_ISO_8601, time() ),
-			'story_modified' => wfTimestamp( TS_ISO_8601, time() ),
+			'story_created' => $dbw->timestamp(),
+			'story_modified' => $dbw->timestamp(),
 		);
 
 		// If the user is logged in, also store his user id.
