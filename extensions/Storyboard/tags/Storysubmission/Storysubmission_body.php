@@ -61,7 +61,7 @@ class TagStorysubmission {
 		
 		$defaultName = '';
 		if ( $wgUser->isLoggedIn() ) {
-			$defaultName = strlen($wgUser->getRealName()) > 0 ? $wgUser->getRealName() : $wgUser->getName();
+			$defaultName = $wgUser->getRealName() !== '' ? $wgUser->getRealName() : $wgUser->getName();
 		}
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-yourname' ) ) .
@@ -152,8 +152,8 @@ class TagStorysubmission {
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
 			'story_title' => $wgRequest->getText( 'storytitle' ),
 			'story_text' => $wgRequest->getText( 'storytext' ),
-			'story_created' => $dbw->timestamp(),
-			'story_modified' => $dbw->timestamp(),
+			'story_created' => $dbw->timestamp( time() ),
+			'story_modified' => $dbw->timestamp( time() ),
 		);
 
 		// If the user is logged in, also store his user id.
