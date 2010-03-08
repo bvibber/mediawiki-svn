@@ -2309,6 +2309,7 @@ $messages['yi'] = array(
 	'prefstats' => 'פרעפֿערענץ סטאַטיסטיק',
 	'prefstats-title' => 'פרעפֿערענץ סטאַטיסטיק',
 	'prefstats-xaxis' => "געדויער (שעה'ן)",
+	'prefstats-factors' => 'צוקוק לויט: $1',
 	'prefstats-factor-hour' => 'שעה',
 	'prefstats-factor-sixhours' => 'זעקס שעה',
 	'prefstats-factor-day' => 'טאָג',

@@ -44,6 +44,14 @@ $messages['gl'] = array(
 	'ukgeocoding_desc' => 'Expande os mapas cunha función analítica display_uk_point coa implementación do Google Maps',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'ukgeocoding_name' => 'VCH Geokodierig fir Charte',
+	'ukgeocoding_desc' => 'Breitet Charte uus mit dr „display_uk_point“-Parserfunktion mit Hilf vun ere Google Maps-Implemäntierig',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -66,6 +74,14 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'ukgeocoding_name' => 'VK-geocodering voor Maps',
 	'ukgeocoding_desc' => 'Uitbreiding van Maps met de parserfunctie "display_uk_point" met een implementatie voor Google Maps',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'ukgeocoding_name' => 'Geocoding Regn Unì për Maps',
+	'ukgeocoding_desc' => 'A estend Maps con na fonsion ëd parser display_uk_point con amplëmentassion Google maps',
 );
 
 /** Tarandíne (Tarandíne)

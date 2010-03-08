@@ -991,7 +991,7 @@ A maioría das extensións traballan con múltiples versións de MediaWiki, polo
 	'extdist-svn-error' => 'A subversión atopou un erro: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Non se pode procesar o XML de "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar devolveu o código de saída $1:',
-	'extdist-created' => "Unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b> foi creada. A súa descarga debería comezar automaticamente en 5 segundos.
+	'extdist-created' => "Creouse unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b>. A súa descarga debería comezar automaticamente en 5 segundos.
 
 O enderezo URL desta fotografía é:
 :$4
