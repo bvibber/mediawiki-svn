@@ -40,6 +40,8 @@ mw.addMessages( {
 	"mwe-no_recent_uploads" : "No recent uploads",
 	
 	"mwe-not-logged-in-uploads" : "You may not be logged in so no recent uploads can be displayed. $1 login and $2",
+	"mwe-ie-eye-permision" : "If using Internet Exploer and logged in, you may need to adjust your privacy settings",
+	
 	"mwe-loggin-link" : "Please login", 
 	"mwe-try-again-link" : "try again",
 	
@@ -1168,6 +1170,25 @@ mw.RemoteSearchDriver.prototype = {
 						.append( gM( 'mwe-try-again-link' ) )						
 					)
 				);
+				
+				// If using internet exploer it could be IE privacy settings ( aka "evil eye" )
+				// http://stackoverflow.com/questions/389456/cookie-blocked-not-saved-in-iframe-in-internet-explorer
+				if( $j.browser.msie ){
+					$j( '#user-results-' + uploadTargetId ).append( 
+						$j('<br />'),
+						$j('<br />'),
+							
+						$j('<span />')
+						.text( gM('mwe-ie-eye-permision' ) ),
+												
+						$j('<img />' )
+						.attr( {
+							'src': mw.getConfig('images_path' ) + 'cookies_blocked_MSIE_eye.png',
+							'alt' : gM('mwe-ie-eye-permision' )
+						})
+					);
+				}
+				
 				// Note if we updated gM to return jQuery ojbects then we could 
 				// bind above
 				$j( '#user-results-' + uploadTargetId )
@@ -1869,15 +1890,14 @@ mw.RemoteSearchDriver.prototype = {
 	* Add Resource edit layout and display a loader.
 	*/
 	addResourceEditLoader: function( ) {
+		mw.log()
 		var _this = this;
 		editWidth = 400;
 		// Remove any old instance:
 		$j( _this.target_container ).find( '#rsd_resource_edit' ).remove();
-
+		
 		// Hide the results container
-		this.$resultsContainer.hide();
-
-		var pt = $j( _this.target_container ).html();
+		this.$resultsContainer.hide();			
 		
 		// Set up the interface compoents:
 		var $clipEditControl =	$j('<div />')
@@ -1893,21 +1913,22 @@ mw.RemoteSearchDriver.prototype = {
 				'padding' : '5px'
 			} )
 			.loadingSpinner();
+		
+		mw.log(" clip edit control ");
 			
 		var $clipEditDisplay = $j('<div />')
 			.attr( 'id', 'clip_edit_disp' )
 			.addClass( 'ui-widget ui-widget-content ui-corner-all' )
 			.css({
 				'position' : 'absolute',
-				'overflow' : 'auto;',
+				'overflow' : 'auto',
 				'left' : ( editWidth + 25 ) + 'px',
 				'right' :'0px', 
 				'top' : '5px',
 				'bottom' : '10px',
 				'padding' : '5px'			
 			})
-			.loadingSpinner();
-				
+			.loadingSpinner();						
 		
 		// Add the edit layout window with loading place holders
 		$j( _this.target_container ).append( 
@@ -1920,7 +1941,8 @@ mw.RemoteSearchDriver.prototype = {
 				'bottom' : '0px',
 				'right' : '4px',
 				'background-color' : '#FFF'
-			} ).append( 
+			} )
+			.append( 
 				$clipEditControl,
 				$clipEditDisplay
 			)
@@ -1977,9 +1999,11 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// Remove any existing resource edit interface
 		_this.removeResourceEditor();
-
+		mw.log(" removed old resource ");
+		
 		// Append to the top level of model window:
 		_this.addResourceEditLoader();
+		mw.log("done adding resource editor");
 
 		var mediaType = _this.getMediaType( resource );
 		var width = _this.getMaxEditWidth( resource );
@@ -2197,10 +2221,10 @@ mw.RemoteSearchDriver.prototype = {
 				mw.log( 'append html: ' + embedHtml );
 				$j( '#clip_edit_disp' ).html( embedHtml );								
 				
-				mw.log( "about to call $j.embedPlayer::embed_vid" );							
+				mw.log( "about to call $j.embedPlayer::embed_vid" );
+											
 				// Rewrite by id	
-				$j( '#embed_vid').embedPlayer ( function() {
-					
+				$j( '#embed_vid').embedPlayer ( function() {					
 					// Add extra space at the top if the embed player is less than 90px high
 					// bug 22189				
 					if( $j('#embed_vid').get(0).getPlayerHeight() < 90 ) {
@@ -2219,9 +2243,8 @@ mw.RemoteSearchDriver.prototype = {
 					// Add libraries resizable and hoverIntent to support video edit tools
 					var librarySet = [
 						'mw.ClipEdit', 
-						'$j.ui.resizable',
-						'$j.fn.hoverIntent'
-					] 
+						'$j.ui.resizable'
+					];
 					mw.load( librarySet, function() {						
 						// Make sure the rsd_edit_img is removed:
 						$j( '#rsd_edit_img' ).remove();

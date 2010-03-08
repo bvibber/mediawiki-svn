@@ -5,7 +5,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = 'r104';
-var mwUseScriptLoader = false;
+var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -116,8 +116,7 @@ function doPageSpecificRewrite() {
 	
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
-		var wgEnableIframeApiProxy = true;
-		alert( " MediaWiki:ApiProxy rewrite " );
+		var wgEnableIframeApiProxy = true;		
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );

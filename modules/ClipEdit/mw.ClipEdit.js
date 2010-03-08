@@ -795,7 +795,7 @@ mw.ClipEdit.prototype = {
 					
 					$j( '<a />')
 					.attr({
-						'href': '#',							
+						'href': '#'							
 					})
 					.addClass( 'mw_crop_msg' )
 					.text(  gM( 'mwe-crop' ) ),

@@ -25,7 +25,8 @@ mw.addMessages( {
 	"mwe-proxy-not-ready" : "Proxy is not configured",
 	"mwe-please-login" : "The request failed. Are you logged in on $1 ? Please $2 and try again",
 	"mwe-log-in-link" : "log in",
-	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."
+	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."	
+	
 } );
 
 
@@ -415,8 +416,8 @@ mw.ApiProxy = { };
 	* @param {URL} apiUrl The url of the api server
 	*/
 	// Include gadget js ( in case the user has not enabled the gadget on that domain )
-	//var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
-	var gadgetWithJS = '';
+	var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
+	//var gadgetWithJS = '';
 	function getServerFrame( context ) {
 		if( ! context || ! context.apiUrl ){
 			mw.log( "Error no context api url " );
@@ -932,9 +933,9 @@ mw.ApiProxy = { };
 		s += 'id="' +  mw.escapeQuotes( options[ 'name' ] ) + '" ';		
 		
 		// Check for style: 
-		if( ! options['style'] ){
+		if( ! options['style'] ) {
 			options['style'] = 'display:none';
-		}
+		}		
 		
 		// Add style attribute:
 		s += 'style="' + mw.escapeQuotes( options[ 'style' ] ) + '" ';
@@ -963,6 +964,7 @@ mw.ApiProxy = { };
 		var targetName = ( typeof options[ 'target' ] == 'string') ? options[ 'target' ] : $j( options[ 'target' ]).length ;
 		
 		mw.log( "Append iframe:" + options[ 'src' ] + ' to: ' + targetName + " \n WITH REQUEST: " + JSON.stringify(  options.request ) );  		
+		
 		// Append to target
 		$j( options[ 'target' ] ).append( s );
 		
