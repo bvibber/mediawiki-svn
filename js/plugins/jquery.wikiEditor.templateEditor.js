@@ -210,7 +210,7 @@ fn: {
 						
 						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 						var templateModel = $templateText.data( 'model' );
-						$( this ).find( '.wikiEditor-template-dialog-field-wrapper input' ).each( function() {
+						$( this ).find( '.wikiEditor-template-dialog-field-wrapper textarea' ).each( function() {
 							templateModel.setValue( $( this ).data( 'name' ), $( this ).val() );
 						});
 						//keep text consistent
@@ -258,9 +258,28 @@ fn: {
 							$( '<label />' )
 								.text( paramText )
 								.appendTo( $paramRow );
-							$( '<input />' )
+							$( '<textarea />' )
 								.data( 'name', param.name )
 								.val( paramVal )
+								.bind( 'cut paste keypress click', function() {
+									$this = $(this);
+									setTimeout( function() {
+										var expanded = $this.data( 'expanded' );
+										if ( $this.val().length > 24 ) {
+											if ( !expanded ) {
+												$this.animate( { 'height': '4.5em' }, 'fast' );
+												$this.data( 'expanded', true );
+											}
+										} else {
+											if ( expanded ) {
+												$this.animate( { 'height': '1.5em' }, 'fast' );
+												$this.data( 'expanded', false );
+											}
+										}
+									}, 0 );
+								} )
+								.appendTo( $paramRow );
+							$( '<div style="clear:both"></div>' )
 								.appendTo( $paramRow );
 							$fields.append( $paramRow );
 						}
