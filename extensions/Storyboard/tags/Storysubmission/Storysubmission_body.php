@@ -18,8 +18,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class TagStorysubmission {
 	
-	// http://www.mediawiki.org/wiki/Manual:Forms
-	// http://www.mediawiki.org/wiki/Manual:Hooks/UnknownAction
 	public static function render( $input, $args, $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
 
@@ -36,7 +34,14 @@ class TagStorysubmission {
 		wfProfileOut( __METHOD__ );
 	}
 	
-	private static function getFrom( $parser, $args ) {
+	/**
+	 * Returns the HTML for a storysubmission form.
+	 * 
+	 * @param $parser
+	 * @param array $args
+	 * @return HTML
+	 */
+	private static function getFrom( $parser, array $args ) {
 		global $wgOut, $wgUser, $wgJsMimeType, $wgSc, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.css' );
@@ -48,7 +53,7 @@ class TagStorysubmission {
 		$maxLen = array_key_exists('maxlength', $args) && is_numeric($args['maxlength']) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
 		$minLen = array_key_exists('minlength', $args) && is_numeric($args['minlength']) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
-		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=purge' ); // TODO: fix parameters
+		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=purge' );
 		
 		$formBody = "<table width='$width'>";
 		
@@ -87,7 +92,6 @@ class TagStorysubmission {
 					'id' => 'story',
 					'rows' => 7,
 					'onkeyup' => "stbValidateStory( this, $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )",
-					// TODO: make disabled when JS is enabled
 				),
 				null
 			) .
@@ -131,7 +135,8 @@ class TagStorysubmission {
 	private static function doSubmissionAndGetResult() {
 		global $wgRequest, $wgUser;
 		
-		
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->insert( 'storyboard' ); // TODO
 	}
 	
 }
