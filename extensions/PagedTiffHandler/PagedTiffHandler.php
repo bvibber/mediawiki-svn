@@ -101,6 +101,7 @@ $wgFileExtensions[] = 'tif';
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['PagedTiffHandler'] = $dir . 'PagedTiffHandler.i18n.php';
+$wgExtensionMessagesFiles['PagedTiffImage'] = $dir . 'PagedTiffHandler.i18n.php';
 $wgAutoloadClasses['PagedTiffImage'] = $dir . 'PagedTiffHandler.image.php';
 $wgAutoloadClasses['PagedTiffHandler'] = $dir . 'PagedTiffHandler_body.php';
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
