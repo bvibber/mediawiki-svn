@@ -11,9 +11,10 @@ class OracleInstaller extends InstallerDBType {
 	);
 
 	var $internalDefaults = array(
-		'_InstallUser' => 'sys',
-		'_InstallPassword' => '',
+		'oracle_SameAccount' => false,
+		'oracle_InstallUser' => 'sys'
 	);
+
 
 	function getName() {
 		return 'oracle';
