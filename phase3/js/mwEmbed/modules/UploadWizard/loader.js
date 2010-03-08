@@ -10,9 +10,8 @@
 	});
 	
 	// Add class file paths ( From ROOT )
-	mw.addClassFilePaths( {
-			
-		// "mw.UploadHandler"		: "modules/UploadWizard/mw.UploadHandler.js",
+	// "mw.UploadHandler"		: "modules/UploadWizard/mw.UploadHandler.js",
+	mw.addClassFilePaths( {		
 		"mw.UploadWizard"		: "modules/UploadWizard/mw.UploadWizard.js",
 		"mw.UploadApiProcessor"		: "modules/UploadWizard/mw.UploadApiProcessor.js",
 		"mw.IframeTransport"		: "modules/UploadWizard/mw.IframeTransport.js",
