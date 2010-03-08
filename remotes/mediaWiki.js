@@ -5,7 +5,6 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = 'r104';
-var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -17,9 +16,12 @@ var reqParts = urlparts[1].substring( 1 ).split( '&' );
 var mwReqParam = { };
 for ( var i = 0; i < reqParts.length; i++ ) {
 	var p = reqParts[i].split( '=' );
-	if ( p.length == 2 )
+	if ( p.length == 2 ) {
 		mwReqParam[ p[0] ] = p[1];
+	}
 }
+
+var mwUseScriptLoader = (mwReqParam['debug'] != 'true');
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	
@@ -96,11 +98,15 @@ function doPageSpecificRewrite() {
 	
 	// Upload page -> Firefogg / upload API / uploadWizard integration
 	if ( wgPageName == "Special:Upload" ) {
-		var scriptName = 'uploadPage.js';
-		if ( location.search.indexOf('uploadWizard=1') != -1 ) {
-			scriptName = 'uploadWizard.js';
-		}
-		loadMwEmbed( [ 
+		var scriptUrl = null;
+		var scriptName = null;
+		var libraries = [];
+		if ( location.search.indexOf('uploadWizard=1') !== -1 ) {
+			scriptName = 'uploadWizardPage.js';
+	   		libraries = []; 
+		} else {
+ 			scriptName = 'uploadPage.js';
+	   		libraries = [
 				'mw.UploadHandler',
 				'mw.UploadInterface',
 				'mw.Firefogg', 
@@ -108,10 +114,10 @@ function doPageSpecificRewrite() {
 				'$j.ui.progressbar', 
 				'$j.ui.dialog', 
 				'$j.ui.draggable'
-			], function() {				
-				mw.load( mwEmbedHostPath + '/' + scriptName + '?' + mwGetReqArgs() ); 
-			} 
-		);
+			];
+		}
+		var scriptUrl = mwEmbedHostPath + '/' + scriptName + '?' + mwGetReqArgs()
+		loadMwEmbed(libraries, function() { mw.load( scriptUrl ) } );
 	}
 	
 	// Special api proxy page

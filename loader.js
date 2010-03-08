@@ -32,7 +32,8 @@ var mwEnabledModuleList = [
 	'EmbedPlayer',
 	'ApiProxy',
 	'Sequencer',
-	'TimedText'	
+	'TimedText',
+	'UploadWizard'	
 ]; 
 
 /**

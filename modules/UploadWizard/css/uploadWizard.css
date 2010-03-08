@@ -1,0 +1,117 @@
+/* XXX all these absolute pixel floats are evil, will bite us when i18n-ized */
+/* XXX mwe-upwiz-add-file jumps to the right when all file inputs are removed */
+
+form.mwe-upwiz-form {
+	display: inline;
+}
+
+.upload-section {
+	padding: 1em;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	border: 1px solid #e0e0e0;
+}
+
+#mwe-upwiz-tabs {
+	float: left;
+	width: 100px;
+}
+
+#mwe-upwiz-content {
+	margin-left: 100px;
+}
+
+#mwe-upwiz-clearing {
+	clear: left;
+	width: 100%;
+}
+
+#mwe-upwiz-tabs ul {
+	list-style-type: none;
+	list-style-image: none;
+}
+
+#mwe-upwiz-tabs ul li {
+	padding: 0.5em;
+	margin: 0px;
+	color: #999999;
+	border-color: #e0e0e0;
+	border-width: 1px 0px 1px 1px;
+	border-style: solid;
+}
+
+
+#mwe-upwiz-tabs ul li.mwe-upwiz-tab-highlight {
+	font-weight: bold;
+	color: black;
+	border-color: #999999;
+}
+
+#mwe-upwiz-content {
+	padding: 1em;
+}
+
+/* perhaps a general class for links that are actually "buttons" */
+#mwe-upwiz-add-file, .mwe-upwiz-file-remove {
+	cursor: pointer;
+}
+
+#mwe-upwiz-select-files {
+	float: left;
+	width: 100px;
+}
+
+#mwe-upwiz-files {
+	margin-left: 100px;
+}
+
+#mwe-upwiz-add-file {
+	margin-left: 100px;
+}
+
+.mwe-upwiz-file-remove {
+	margin-left: 5px;
+	padding: 5px;
+}
+
+a.mwe-upwiz-file-remove:link, 
+a.mwe-upwiz-file-remove:active,
+a.mwe-upwiz-file-remove:visited {
+	color: #999999;	
+	text-decoration: none;
+}
+
+a.mwe-upwiz-file-remove:hover {
+	color: #ff0000;
+	text-decoration: none;
+}
+
+a[disabled=true] {
+	color: #999999;
+	text-decoration: none;
+	cursor: default;
+}
+
+a[disabled=true]:hover {
+	text-decoration: none;
+}
+
+.mwe-upwiz-status-progress {
+	font-weight: bold;
+	color: #ff9900;
+}
+
+/* XXX add background of checkmark, with left-padding offset */
+.mwe-upwiz-status-completed {
+	font-weight: bold;
+	color: #009900;
+}
+
+.mwe-upwiz-upload-warning {
+	background: #ffffe0;
+}
+
+.mwe-upwiz-metadata-error {
+	display: none;
+	background: #ffffe0;
+}
