@@ -144,11 +144,11 @@ class TagStorysubmission {
 		// TODO: some sort of validation?
 		
 		$story = array(
-			'story_author_name' => $dbw->addQuotes( $wgRequest->getText( 'name' ) ),
-			'story_author_location' => $dbw->addQuotes( $wgRequest->getText( 'location' ) ),
-			'story_author_occupation' => $dbw->addQuotes( $wgRequest->getText( 'occupation' ) ),
-			'story_title' => $dbw->addQuotes( $wgRequest->getText( 'storytitle' ) ),
-			'story_text' => $dbw->addQuotes( $wgRequest->getText( 'storytext' ) ),
+			'story_author_name' => $wgRequest->getText( 'name' ),
+			'story_author_location' => $wgRequest->getText( 'location' ),
+			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
+			'story_title' => $wgRequest->getText( 'storytitle' ),
+			'story_text' => $wgRequest->getText( 'storytext' ),
 			// TODO: add other fields
 		);
 		
