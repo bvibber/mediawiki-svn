@@ -328,6 +328,9 @@ div.suggestions {
 .wikiEditor-toolbar-dialog .ui-dialog-content input[type="checkbox"] {
 	margin-left: 0;
 }
+.wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
+	padding: 0;
+}
 body.ltr .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close {
 	right: 0.9em;
 }

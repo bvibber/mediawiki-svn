@@ -267,6 +267,9 @@ fn: {
 						// Remove any leftover rows
 						$rows.remove();
 					}
+					// Ensure our close button doesn't recieve the ui-state-focus class 
+					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
+						.removeClass( 'ui-state-focus' );
 				}
 			}
 		};
