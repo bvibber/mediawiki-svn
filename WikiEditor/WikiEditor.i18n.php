@@ -583,6 +583,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
+	'wikieditor-loading' => 'לאָדנדיק',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

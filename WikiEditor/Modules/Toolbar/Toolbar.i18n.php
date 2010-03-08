@@ -14683,6 +14683,7 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-characters-page-sinhala' => 'סינהאַלאַ',
 	'wikieditor-toolbar-characters-page-gujarati' => 'גודזשאַראַטי',
 	'wikieditor-toolbar-section-help' => 'הילף',
+	'wikieditor-toolbar-help-heading-description' => 'באַשרײַבונג',
 	'wikieditor-toolbar-help-page-file' => 'טעקעס',
 	'wikieditor-toolbar-help-page-reference' => 'רעפערענצן',
 	'wikieditor-toolbar-help-content-bold-description' => 'דיק',
