@@ -907,7 +907,7 @@ class WebInstaller_DBConnect extends WebInstallerPage {
 		$types = "<ul class=\"config-settings-block\">\n";
 		$settings = '';
 		$defaultType = $this->getVar( 'wgDBtype' );
-		foreach ( $this->parent->getDBTypes() as $type ) {
+		foreach ( $this->parent->getVar( '_CompiledDBs' ) as $type ) {
 			$installer = $this->parent->getDBInstaller( $type );
 			$encType = Xml::encodeJsVar( $type );
 			$types .= 

@@ -354,7 +354,7 @@ abstract class Installer {
 			$db = $this->getDBInstaller( $name );
 			$readableName = wfMsg( 'config-type-' . $name );
 			if ( $db->isCompiled() ) {
-				$compiledDBs[$name] = true;
+				$compiledDBs[] = $name;
 				$goodNames[] = $readableName;
 			}
 			$allNames[] = $readableName;
