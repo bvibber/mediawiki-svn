@@ -1,4 +1,5 @@
 -- Postgres version of the database schema for the Storyboard extension.
+-- TODO: update to equivalent of latest MySQL sql
 
 BEGIN;
 

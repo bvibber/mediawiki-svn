@@ -23,11 +23,9 @@ class TagStorysubmission {
 	public static function render( $input, $args, $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
 
-		global $wgRequest;
+		global $wgRequest, $wgUser;
 		
-		var_dump($wgRequest->wasPosted()); die();
-		
-		if ( $wgRequest->wasPosted() ) {
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			$output = self::doSubmissionAndGetResult();
 		} else {
 			$output = self::getFrom( $parser, $args );
@@ -39,7 +37,7 @@ class TagStorysubmission {
 	}
 	
 	private static function getFrom( $parser, $args ) {
-		global $wgOut, $wgJsMimeType, $wgSc, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgOut, $wgUser, $wgJsMimeType, $wgSc, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.css' );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.js' );
@@ -50,7 +48,7 @@ class TagStorysubmission {
 		$maxLen = array_key_exists('maxlength', $args) && is_numeric($args['maxlength']) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
 		$minLen = array_key_exists('minlength', $args) && is_numeric($args['minlength']) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
-		$submissionUrl = $parser->getTitle()->getLocalURL( '' ); // TODO: fix parameters
+		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=purge' ); // TODO: fix parameters
 		
 		$formBody = "<table width='$width'>";
 		
@@ -107,6 +105,8 @@ class TagStorysubmission {
 			
 		$formBody .= '</table>';
 		
+		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
+		
 		$formHtml = Html::rawElement(
 			'form',
 			array(
@@ -125,7 +125,12 @@ class TagStorysubmission {
 		return $formHtml . $formJs;
 	}
 	
+	/**
+	 * Store the submitted story in the database, and return a page telling the user his story has been submitted.
+	 */
 	private static function doSubmissionAndGetResult() {
+		global $wgRequest, $wgUser;
+		
 		
 	}
 	
