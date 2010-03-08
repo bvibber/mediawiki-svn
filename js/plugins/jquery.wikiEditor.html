@@ -49,30 +49,39 @@
 			margin: 0 2px;
 		}
 		.wikiEditor-template-name {
+			cursor: pointer;
+			display: inline-block;
+			height: 16px;
 			background: url( '../../images/wikiEditor/templateEditor/name-bg.png' ) 0 0 repeat-x #e8e8e8;
-			color:#333333;
-			font-family: Helvetica, sans-serif;
+			color: #333333;
+			font-family: sans-serif;
+			text-decoration: none;
+			overflow: hidden;
+			line-height: 16px;
+			padding-left: 0.33em;
 			font-size: 12px;
-			padding-left:4px;
-			padding-right: 9px;
-			padding-top: 1px;
-			display: inline;
-			text-decoration:none;
-			border:1px solid #d9d9d9;
-			border-right: none;
-			cursor: pointer;
 		}
-		.wikiEditor-template-expand{
+		.wikiEditor-template-expand {
 			cursor: pointer;
+			display: inline-block;
+			height: 16px;
+			width: 13px;
+			background-position: 50%; /*FF3*/
+			/*
 			padding-left: 6px;
 			padding-right: 6px;
-			background-position: 50%; /*FF3*/
+			*/
 		}
-		.wikiEditor-template-dialog{
+		.wikiEditor-template-dialog {
 			cursor: pointer;
+			display: inline-block;
+			height: 16px;
+			width: 22px;
+			background-position: 50%; /*FF3*/
+			/*
 			padding-left: 11px;
 			padding-right: 11px;
-			background-position: 50%; /*FF3*/
+			*/
 		}
 		.wikiEditor-template-expanded .wikiEditor-template-expand {
 			background-image: url(../../images/wikiEditor/templateEditor/collapse.png);
@@ -115,11 +124,12 @@
 			display: inline;
 		}
 		.wikiEditor-template .wikiEditor-template-text {
-			background: #f3f3f3;
-			margin-top: -4px;
-			border: solid 1px #d9d9d9;
-			padding-left: 4px;
+			margin-top: -8px;
 			display: block;
+			background: #f3f3f3;
+			border-top: solid 1px #cccccc;
+			border-bottom: solid 1px #cccccc;
+			padding: 0.5em 4px;
 		}
 		.wikiEditor-template-end, .wikiEditor-template-start {
 			color: blue;
