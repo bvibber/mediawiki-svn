@@ -25,4 +25,3 @@ $wgExtensionAliasesFiles['Eval'] = $dir . 'SpecialEval.alias.php';
 $wgSpecialPages['Eval'] = 'SpecialEval';
 $wgAutoloadClasses['SpecialEval'] = $dir . 'SpecialEval.class.php';
 
-?>

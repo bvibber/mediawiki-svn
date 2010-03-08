@@ -26,7 +26,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 		// print $wgRequest->getText( 'param' );
 		// set the header:
 		$this->setHeaders();
-		 
+
 		// do the page:
 		switch( $this->req_param ) {
 			case 'Survey':
@@ -51,7 +51,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 	function do_survey_forum() {
 		global $wgOut, $psEmbedAry, $wgTitle, $wgUser, $wgEnableParserCache, $wgParser, $wgScript;
 		$wgOut->addHTML ( wfMsg( 'ps_survey_description' ) );
-		 
+
 		// select the embed ary element:
 		$tw = 0;
 		foreach ( $psEmbedAry as $embed ) {
@@ -85,7 +85,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 		// work with "embed"
 		$embed_key = $embed['embed_key'];
 		$userToken = htmlspecialchars( $wgUser->editToken() );
-		
+
 		// output table with flash and or video embed:
 		$wgOut->addHTML( <<<EOT
 		<p>
@@ -107,31 +107,31 @@ EOT
 		$wgOut->addHTML( '<br /><input type="radio" name="ps_could_play"  value="yes"
 				onclick="document.getElementById(\'ps_could_not_play\').style.display = \'none\';">' .
 		wfMsg( 'ps_play_yes' ) . '<br />
-				<input type="radio" name="ps_could_play"  value="no" 
+				<input type="radio" name="ps_could_play"  value="no"
 				onclick="document.getElementById(\'ps_could_not_play\').style.display = \'inline\';">' .
 		wfMsg( 'ps_play_no' ) . '<p>
 	<div id="ps_could_not_play" style="display:none;">
 		' . wfMsg( 'ps_problem_checkoff' ) . '
-		 <table border="0" cellspacing="0" cellpadding="0">
-           	<tr>
-           	  <td><input type="checkbox" name="ps_no_video" value="1"></td>
-              <td>' . wfMsg( 'ps_no_video' ) . ' </td>             
-            </tr>
-            <tr>
-            <tr>
-              <td><input type="checkbox" name="ps_jumpy_playback" value="1"></td>
-              <td>' . wfMsg( 'ps_jumpy_playback' ) . ' </td>              
-            </tr>
-            <tr> 
-              <td><input type="checkbox" name="ps_bad_sync" value="1"></td>
-              <td>' . wfMsg( 'ps_bad_sync' ) . ' </td>             
-            </tr>           
+		<table border="0" cellspacing="0" cellpadding="0">
 			<tr>
-			  <td><input type="checkbox" name="ps_no_sound" value="1"></td>
-              <td>' . wfMsg( 'ps_no_sound' ) . '</td>              
-            </tr>
-          </table>		
-          ' . wfMsg( 'ps_problems_desc' ) . '<br /><textarea name="ps_problems_desc" rows="2" cols="40" MAXLENGTH="300"></textarea><br />        
+				<td><input type="checkbox" name="ps_no_video" value="1"></td>
+				<td>' . wfMsg( 'ps_no_video' ) . ' </td>
+			</tr>
+			<tr>
+			<tr>
+				<td><input type="checkbox" name="ps_jumpy_playback" value="1"></td>
+				<td>' . wfMsg( 'ps_jumpy_playback' ) . ' </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="ps_bad_sync" value="1"></td>
+				<td>' . wfMsg( 'ps_bad_sync' ) . ' </td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="ps_no_sound" value="1"></td>
+				<td>' . wfMsg( 'ps_no_sound' ) . '</td>
+			</tr>
+		</table>
+		' . wfMsg( 'ps_problems_desc' ) . '<br /><textarea name="ps_problems_desc" rows="2" cols="40" MAXLENGTH="300"></textarea><br />
 	</div>
 	' . wfMsg( 'ps_would_install' ) . '<br />' .
 	'<input type="radio" name="ps_would_install"  value="yes">' . wfMsg( 'ps_yes_install' ) . '<br />' .
@@ -160,7 +160,7 @@ EOT
 	function do_submit_player_log() {
 		global $wgRequest, $psLogEveryPlayRequestPerUser;
 		// do the insert into the userPlayerStats table:
-		$dbr = wfGetDB( DB_READ );	
+		$dbr = wfGetDB( DB_READ );
 		$cs = $wgRequest->getArray( 'cs', array() );
 		// set up insert array:
 		$insAry = array(
@@ -185,7 +185,7 @@ EOT
 		$insert_id = $dbr->selectField( 'player_stats_log', 'id',
 		array(	'user_hash' => $wgRequest->getVal( 'uh' ) ),
 								'do_submit_player_log::Select User Hash' );
-		// if the user_hash is not already in the db or if we are logging every request do INSERT		
+		// if the user_hash is not already in the db or if we are logging every request do INSERT
 		if ( !$insert_id || $psLogEveryPlayRequestPerUser ) {
 			$dbw = wfGetDB( DB_WRITE );
 			$dbw->insert( 'player_stats_log', $insAry, 'mw_push_player_stats::Insert' );
@@ -213,29 +213,29 @@ EOT
 			$wgOut->addHTML ( wfMsg( 'token_suffix_mismatch' ) );
 			return false;
 		}
-		
+
 		// print "NO VIDEO: "
 		$dbr = wfGetDB( DB_READ );
 		$insAry = array(
-	            'user_hash'			=> $wgRequest->getVal( 'uh' ),
+				'user_hash'			=> $wgRequest->getVal( 'uh' ),
 				'embed_key'			=> $wgRequest->getVal( 'embed_key' ),
 				'player_stats_log_id' => $wgRequest->getVal( 'player_stats_log_id' ),
-					           
-	        	'ps_jumpy_playback' => ( $wgRequest->getVal( 'ps_jumpy_playback' ) == '' ) ? 0:1,
-	            'ps_no_video' 		=> ( $wgRequest->getVal( 'ps_no_video' ) == '' ) ? 0:1,
-	            'ps_bad_sync' 		=> ( $wgRequest->getVal( 'ps_bad_sync' ) == '' ) ? 0:1,
-	            'ps_no_sound' 		=> ( $wgRequest->getVal( 'ps_no_sound' ) == '' ) ? 0:1,
 
-	        	'ps_your_email'		=> htmlspecialchars( $wgRequest->getVal( 'ps_your_email' ) ),
-	        	'ps_problems_desc'	=> htmlspecialchars( $wgRequest->getVal( 'ps_problems_desc' ) )
+				'ps_jumpy_playback' => ( $wgRequest->getVal( 'ps_jumpy_playback' ) == '' ) ? 0:1,
+				'ps_no_video' 		=> ( $wgRequest->getVal( 'ps_no_video' ) == '' ) ? 0:1,
+				'ps_bad_sync' 		=> ( $wgRequest->getVal( 'ps_bad_sync' ) == '' ) ? 0:1,
+				'ps_no_sound' 		=> ( $wgRequest->getVal( 'ps_no_sound' ) == '' ) ? 0:1,
+
+				'ps_your_email'		=> htmlspecialchars( $wgRequest->getVal( 'ps_your_email' ) ),
+				'ps_problems_desc'	=> htmlspecialchars( $wgRequest->getVal( 'ps_problems_desc' ) )
 		);
 		// leave NULL if un-answered for all yes no questions: :
 		if ( $wgRequest->getVal( 'ps_could_play' ) != '' )
 			$insAry['ps_could_play'] = ( $wgRequest->getVal( 'ps_could_play' ) == 'yes' ) ? 1:0;
-		
+
 		if ( $wgRequest->getVal( 'ps_would_install' ) != '' )
 			$insAry['ps_would_install'] = ( $wgRequest->getVal( 'ps_would_install' ) == 'yes' ) ? 1:0;
-			
+
 		if ( $wgRequest->getVal( 'ps_would_switch' ) != '' )
 			$insAry['ps_would_switch'] = ( $wgRequest->getVal( 'ps_would_switch' ) == 'yes' ) ? 1:0;
 
@@ -261,17 +261,15 @@ EOT
 		global $wgOut, $wgScriptPath, $wgUser , $wgProxyKey;
 		$scriptPath = OggHandler::getMyScriptPath();
 		// include the javascript and do the stats
-		$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );			
+		$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
 		$wgOut->addHTML( '
 		<script type="text/javascript" src="'. htmlspecialchars( $scriptPath ) .'/OggPlayer.js"></script>
 		<script type="text/javascript" src="'. htmlspecialchars( $wgScriptPath ) . '/extensions/PlayerStatsGrabber/playerStats.js"></script>
-        	<script type="text/javascript">
-        		wgOggPlayer.userHash = '.  Xml::encodeJsVar( $jsUserHash ) .';        		
-        		wgOggPlayer.videoUrl='. Xml::encodeJsVar( $vid_url ) . ';
-        		wgOggPlayer.doStats();
-        	</script>'
+			<script type="text/javascript">
+				wgOggPlayer.userHash = '.  Xml::encodeJsVar( $jsUserHash ) .';
+				wgOggPlayer.videoUrl='. Xml::encodeJsVar( $vid_url ) . ';
+				wgOggPlayer.doStats();
+			</script>'
 		);
 	}
 }
-
-?>

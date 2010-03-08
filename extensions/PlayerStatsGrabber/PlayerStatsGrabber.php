@@ -1,6 +1,6 @@
 <?php
 /*
- * simple stats output and gather for oggPlay and a "sample page" 
+ * simple stats output and gather for oggPlay and a "sample page"
  */
 
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the special pages file directly.
@@ -17,8 +17,8 @@ $psScriptPath = $wgScriptPath . '/extensions/PlayerStatsGrabber';
  * config values
  */
 
-// $psLogEveryPlayRequestPerUser 
-// true we log every play request 
+// $psLogEveryPlayRequestPerUser
+// true we log every play request
 // false we only log play request from different users
 $psLogEveryPlayRequestPerUser = true;
 
@@ -30,30 +30,30 @@ $psAllowMultipleSurveysPerUser = true;
 $wgPlayerStatsDB='';
 //$psCentralDB = wfGetDB( DB_MASTER, array(), $wgPlayerStatsDB );
 
-// embed code and "weight" (ie weight of 3 is 3x more likely than weight of 1)  
+// embed code and "weight" (ie weight of 3 is 3x more likely than weight of 1)
 // flash embed code (the raw html that gets outputted to the browsers))
-// embed key gets recorded to the database to identify what player was sent to the client in the survey 
-// (you need to add it as an ENUM option) 
+// embed key gets recorded to the database to identify what player was sent to the client in the survey
+// (you need to add it as an ENUM option)
 $flowFLVurl = $psScriptPath .'sample_media/sample_barney.flv';
 $flowEmbedCode = <<<EOT
 <script type="text/javascript" src="{$psScriptPath}/flow_player/flashembed.min.js"></script>
 <script type="text/javascript">
-	flashembed("example", 
+	flashembed("example",
 		{
 			src:'{$psScriptPath}/flow_player/FlowPlayerDark.swf',
-			width: 400, 
+			width: 400,
 			height: 320,
 			id:'myflash_id',
 		},
 		{
-		config: {   
+		config: {
 			autoPlay: false,
 			id: 'myflash_id',
 			autoBuffering: true,
 			controlBarBackgroundColor:'0x2e8860',
 			initialScale: 'scale',
 			videoFile: '{$flowFLVurl}'
-		}} 
+		}}
 	);
 </script>
 
@@ -86,13 +86,13 @@ $psEmbedAry = array(
 /*
  * end config
  */
-$wgExtensionMessagesFiles['PlayerStatsGrabber'] 	= dirname( __FILE__ ) . '/PlayerStatsGrabber.i18n.php';
-$wgAutoloadClasses['SpecialPlayerStatsGrabber'] 	= dirname( __FILE__ ) . '/PlayerStatsGrabber_body.php';
-$wgSpecialPages['PlayerStatsGrabber']		   				=  array( 'SpecialPlayerStatsGrabber' );
-											 
+$wgExtensionMessagesFiles['PlayerStatsGrabber'] = dirname( __FILE__ ) . '/PlayerStatsGrabber.i18n.php';
+$wgAutoloadClasses['SpecialPlayerStatsGrabber'] = dirname( __FILE__ ) . '/PlayerStatsGrabber_body.php';
+$wgSpecialPages['PlayerStatsGrabber'] =  array( 'SpecialPlayerStatsGrabber' );
+
 $wgSpecialPageGroups['PlayerStatsGrabber'] = 'wiki'; // like Special:Statistics
 
-// add ajax hook to accept the status input: 
+// add ajax hook to accept the status input:
 $wgAjaxExportList[] = 'mw_push_player_stats';
 
 $wgExtensionCredits['media'][] = array(
@@ -106,9 +106,9 @@ $wgExtensionCredits['media'][] = array(
 
 /*
  * does a player stats request.. returns the "db key"
- *  (lets people fill out survey after playing clip) 
- *  or 
- *  (ties survey page data to detection) 
+ *  (lets people fill out survey after playing clip)
+ *  or
+ *  (ties survey page data to detection)
  */
 function mw_push_player_stats() {
 	return SpecialPlayerStatsGrabber::do_submit_player_log();
@@ -165,5 +165,3 @@ if ( ! function_exists( 'javascript_escape' ) ) {
 							$val );
 	}
 }
-
-?>
