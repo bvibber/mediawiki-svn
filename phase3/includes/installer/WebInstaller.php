@@ -1299,10 +1299,26 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-logo'
 			) ) .
 			$this->parent->getHelpBox( 'config-logo-help' ) .
-			$this->parent->getFieldsetEnd() .
+			$this->parent->getFieldsetEnd()
+		);
 
+		$caches = array( 'none', 'anything', 'db' );
+		if( count( $this->getVar( '_Caches' ) ) ) {
+			$caches[] = 'accel';
+		}
+		$caches[] = 'memcached';
+
+		$this->parent->output->addHTML(
 			# Advanced settings
 			$this->parent->getFieldsetStart( 'config-advanced-settings' ) .
+			# Object cache settings
+			$this->parent->getRadioSet( array(
+				'var' => 'wgMainCacheType',
+				'label' => 'config-cache-options',
+				'itemLabelPrefix' => 'config-cache-',
+				'values' => $caches,
+			) ) .
+			$this->parent->getHelpBox( 'config-cache-help' ) .
 			$this->parent->getFieldsetEnd() .
 
 			"<script type=\"text/javascript\">$licenseJs $emailJs $uploadJs</script>\n"
@@ -1397,7 +1413,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		$this->parent->setVarsFromRequest( array( '_RightsProfile', '_LicenseCode', 
 			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo',
 			'wgEnableUserEmail', 'wgEnotifUserTalk', 'wgEnotifWatchlist',
-			'wgEmailAuthentication') );
+			'wgEmailAuthentication', 'wgMainCacheType' ) );
 
 		if ( !in_array( $this->getVar( '_RightsProfile' ), 
 			array_keys( $this->parent->rightsProfiles ) ) ) 

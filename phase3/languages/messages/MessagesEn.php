@@ -4423,6 +4423,14 @@ If you don't want a logo, leave this box blank.",
 'config-cc-again' => 'Pick again...',
 'config-cc-not-chosen' => 'Please choose which Creative Commons license you want and click "proceed".',
 'config-advanced-settings' => 'Advanced configuration',
+'config-cache-options' => 'Object cache settings',
+'config-cache-help' => 'Object caching is used to improve the speed of MediaWiki. Medium to large sites
+are highly encouraged to enable this, and small sites will see benefits as well.',
+'config-cache-anything' => 'MediaWiki will attempt to cache anywhere possible, except Memcached',
+'config-cache-db' => 'Cache data in the database',
+'config-cache-accel' => 'PHP object caching (APC, eAccelerator or XCache)',
+'config-cache-memcached' => 'Use Memcached (requires additional setup, and server IP addresses below)',
+'config-cache-none' => 'Use no caching. No functionality is removed, but speed may be impacted',
 
 'config-extensions' => 'Extensions',
 'config-extensions-help' => "The following extensions were automatically detected in your extensions directory.\n
