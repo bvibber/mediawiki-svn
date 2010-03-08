@@ -9260,28 +9260,30 @@ fn: {
 		var $templateName = $( '<span />' )
 			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
 			.text( model.getName() )
-			.mousedown( toggleWikiTextEditor )
+			.click( function() { createDialog( $template ); return false; } )
+			.mousedown( function() { return false; } )
 			.prependTo( $template );
 		
 		var $templateExpand = $( '<span />' )
 			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
-			.mousedown( toggleWikiTextEditor )
+			.click( toggleWikiTextEditor )
+			.mousedown( function() { return false; } )
 			.prependTo( $template );
 		
 		var $templateDialog = $( '<span />' )
 			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
-			.mousedown( function() { createDialog( $template ); return false; } )
+			.click( function() { createDialog( $template ); return false; } )
+			.mousedown( function() { return false; } )
 			.insertAfter( $templateName );
-
+		
 		function toggleWikiTextEditor() {
 			context.fn.purgeOffsets();
-			var $template = $( this ).closest( '.wikiEditor-template' );
-			$template
+			$(this)
+				.closest( '.wikiEditor-template' )
 				.toggleClass( 'wikiEditor-template-expanded' )
-				.toggleClass( 'wikiEditor-template-collapsed' );
-			
-			var $wikitext = $template.children( '.wikiEditor-template-text' );
-			$wikitext.toggleClass( 'wikiEditor-nodisplay' );
+				.toggleClass( 'wikiEditor-template-collapsed' )
+				.find( '.wikiEditor-template-text' )
+				.toggleClass( 'wikiEditor-nodisplay' );
 			return false;
 		};
 		
