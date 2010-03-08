@@ -363,7 +363,7 @@ baseRemoteSearch.prototype = {
 				.css({
 					'position' : 'relative',
 					'top' : '-' + resource.crop.y,
-					'left': '-' + resource.crop.x,					
+					'left': '-' + resource.crop.x					
 				})
 				.append( $img )
 			)

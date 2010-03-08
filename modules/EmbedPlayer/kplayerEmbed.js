@@ -22,38 +22,11 @@ var kplayerEmbed = {
 	*/
 	doEmbedHTML : function () {
 		var _this = this;
-		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';
-		
-		
-		/*$j( this ).html(
-		 	'<object width="' + this.getWidth() + '" height="' + this.getHeight() + '" ' + 
-			 'data="' + playerPath + '/wrapper.swf" allowfullscreen="true" ' + 
-			 'allownetworking="all" allowscriptaccess="always" ' +
-			 'type="application/x-shockwave-flash" ' +
-			 'flashVars="kdpUrl=' + playerPath + '/kdp.swf' +
-			  		'&ks=dummy&partner_id=0&subp_id=0' +
-			  		'&uid=0&emptyF=onKdpEmpty&readyF=onKdpReady' +
-			  		'" '+
-			 'wmode="opaque" ' + 
-			 'id="' + this.pid + '" name="' + this.pid + '">' +
-				'<param value="always" name="allowScriptAccess"/>' +
-				'<param value="all" name="allowNetworking"/>' +
-			  	'<param value="true" name="allowFullScreen"/>' +
-			  	'<param value="#000000" name="bgcolor"/>' +
-			  	'<param value="wrapper.swf" name="movie"/>' +
-			  	'<param value="' +
-			  		'kdpUrl=' + playerPath + '/kdp.swf' +
-			  		'&ks=dummy&partner_id=0&subp_id=0' +
-			  		'&uid=0&emptyF=onKdpEmpty&readyF=onKdpReady' +
-			  		'" ' +
-			  		'name="flashVars"/>' +
-			  	'<param value="opaque" name="wmode"/>' +
-			 '</object>'
-		)*/
+		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';				
 		
 		var flashvars = {};
 		flashvars.autoPlay = "true";
-		flashvars.entryId = _this.getSrc();
+		flashvars.entryId = mw.absoluteUrl( _this.getSrc() );
 		flashvars.debugMode = "true";
 		flashvars.fileSystemMode = "true";
 		flashvars.widgetId = "_7463";
@@ -62,7 +35,7 @@ var kplayerEmbed = {
 		flashvars.kml = "local";
 		flashvars.kmlPath = playerPath + '/config.xml';
 		flashvars.sourceType = "url";
-		flashvars.host = "www.kaltura.com";
+		//flashvars.host = "www.kaltura.com";
 		flashvars.externalInterfaceDisabled = 'false';
 		
 		var params = {};
@@ -72,16 +45,32 @@ var kplayerEmbed = {
 		params.allowscriptaccess = "sameDomain";
 		
 		var attributes = {};
-		attributes.id = 'vid1';
-		attributes.name = "kdp3";
-		attributes.styleclass = "player";
-		debugger;
-		swfobject.embedSWF( playerPath + "/kdp3.swf", "kdp3", "790", "466", "10.0.0", playerPath +"/expressInstall.swf", flashvars, params, attributes);
+		attributes.id = this.pid;
+		attributes.name = this.pid;
+		attributes.styleclass = "player";		
 		
-				
+		$j( this ).html(
+			$j('<div />')
+			.attr( 'id', this.pid + '_container' )
+		);
+		
+		// Do the flash embeding with embedSWF
+		swfobject.embedSWF( 
+			playerPath + "/kdp3.swf", 
+			this.pid + '_container', 
+			this.getWidth(), 
+			this.getHeight(), 
+			"10.0.0", 
+			playerPath + "/expressInstall.swf", 
+			flashvars, 
+			params, 
+			attributes
+		);
+		
 		setTimeout(function() {
 			_this.postEmbedJS();
-		}, 50);
+		}, 250 );
+						
 	},	
 	
 	/**
@@ -90,34 +79,22 @@ var kplayerEmbed = {
 	postEmbedJS:function() {
 		var _this = this;
 		this.getPlayerElement();	
-		//alert( 	this.playerElement );
-		if( this.playerElement && this.playerElement.insertMedia) {
-			// Add KDP listeners
-			
-			//this.playerElement.addJsListener("doPlay","kdpDoOnPlay");
-			//this.playerElement.addJsListener("doStop","kdpDoOnStop");
-			//myKdp.addJsListener("fastForward","kdpDoOnFF");
 						
+		//alert( 	this.playerElement );
+		if( this.playerElement ) {
+			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
 			_this.bindPlayerFunction( 'doPlay', 'play' );
 			_this.bindPlayerFunction( 'playerPlayEnd', 'onClipDone' );
-						
-			// KDP player likes an absolute url for the src:
-			var src = mw.absoluteUrl( _this.getSrc() );
-			mw.log('play src: ' + src);
-			
-			// Insert the src:	
-			this.playerElement.insertMedia( "-1", src, 'true' );			
-			this.playerElement.dispatchKdpEvent( 'doPlay' );
-			
+			_this.bindPlayerFunction( 'playerUpdatePlayhead', 'onUpdatePlayhead' );								
 			// Start the monitor
 			this.monitor();
 		}else{
-			// Keep trying to get the html: 
+			// Keep trying to get the player element
 			//mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
 			setTimeout( function() {
 				_this.postEmbedJS();
-			}, 25);
+			}, 250);
 		}		
 	},	
 	
@@ -131,7 +108,7 @@ var kplayerEmbed = {
 	*/
 	bindPlayerFunction:function( bName, fName ) {
 		var cbid = fName + '_cb_' + this.id.replace(' ', '_');
-		eval( 'window[ \'' + cbid +'\' ] = function() {$j(\'#' + this.id + '\').get(0).'+ fName +'();}' );
+		eval( 'window[ \'' + cbid +'\' ] = function( data ) {$j(\'#' + this.id + '\').get(0).'+ fName +'( data );}' );
 		this.playerElement.addJsListener( bName , cbid);
 	},
 	
@@ -148,8 +125,8 @@ var kplayerEmbed = {
 	*  calls parent_play to update the interface 
 	*/
 	play:function() {
-		if( this.playerElement && this.playerElement.dispatchKdpEvent )
-			this.playerElement.dispatchKdpEvent('doPlay');
+		if( this.playerElement && this.playerElement.sendNotification )
+			this.playerElement.sendNotification( 'doPlay' );
 		this.parent_play();
 	},
 	
@@ -158,7 +135,7 @@ var kplayerEmbed = {
 	*  calls parent_pause to update the interface 
 	*/
 	pause:function() {
-		this.playerElement.dispatchKdpEvent('doPause');
+		this.playerElement.sendNotification('doPause');
 		this.parent_pause();
 	},
 	
@@ -169,7 +146,7 @@ var kplayerEmbed = {
 		var _this = this;
 		if( this.playerElement ) {
 			var seek_time = prec * this.getDuration(); 
-			this.playerElement.dispatchKdpEvent('doSeek',  seek_time);
+			this.playerElement.sendNotification('doSeek',  seek_time);
 			// Kdp is missing seek done callback
 			setTimeout(function() {
 				_this.seeking= false;
@@ -182,19 +159,22 @@ var kplayerEmbed = {
 	* Issues a volume update to the playerElement
 	*/
 	updateVolumen:function( percentage ) {
-		if( this.playerElement && this.playerElement.dispatchKdpEvent )
-			this.playerElement.dispatchKdpEvent('volumeChange', percentage);
+		if( this.playerElement && this.playerElement.sendNotification )
+			this.playerElement.sendNotification('volumeChange', percentage);
 	},
 	
 	/**
-	* Monitors playback updating the current Time
-	*/
-	monitor:function() {	
-		if( this.playerElement && this.playerElement.getMediaSeekTime ) {
-			this.currentTime = this.playerElement.getMediaSeekTime();
-		}
-		this.parent_monitor();
+	 * function called by flash at set interval to update the playhead. 
+	 */
+	onUpdatePlayhead : function ( playheadValue ){		
+		this.currentTime = playheadValue;
 	},
+	
+	/**
+	* We just use the parent monitor since currentTime is updated by push binding. 
+	* monitor: function(){
+	* }
+	*/
 	
 	/**
 	* Get the embed fla object player Element
@@ -214,8 +194,12 @@ function onKdpReady( playerId ) {
 
 
 
+
 /*!	SWFObject v2.2 <http://code.google.com/p/swfobject/> 
 	is released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+* 
+*  NOTE: we should seperate this out into a seperate file. It requires some minor
+*  	refactoring in how embedPlayer[s] are loaded.
 */
 
 var swfobject = function() {
@@ -991,3 +975,4 @@ var swfobject = function() {
 		}
 	};
 }();
+

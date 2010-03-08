@@ -5,7 +5,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = 'r104';
-var mwUseScriptLoader = true;
+var mwUseScriptLoader = false;
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -117,12 +117,16 @@ function doPageSpecificRewrite() {
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;
+		alert( " MediaWiki:ApiProxy rewrite " );
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
 			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
+	
+	// Special api proxy page for nested callback of hash url
+	// Can be replaced with: 
 	if ( wgPageName == 'MediaWiki:ApiProxyNestedCb' ) {
-		// Note top.mw.ApiProxy.nested frame needs to be on the same domain of course
+		// Note top.mw.ApiProxy.nested frame needs to be on the same domain
 		top.mw.ApiProxy.nested( window.location.href.split("#")[1] || false );		
 	}
 		
