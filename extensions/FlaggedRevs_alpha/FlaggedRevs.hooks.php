@@ -24,7 +24,9 @@ class FlaggedRevsHooks {
 		if ( $wgUseTagFilter && ChangeTags::listDefinedTags() ) {
 			$list['ProblemChanges'] = $wgSpecialPages['ProblemChanges'] = 'ProblemChanges';
 		}
-		$list['ReviewedPages'] = $wgSpecialPages['ReviewedPages'] = 'ReviewedPages';
+		if( !FlaggedRevs::stableOnlyIfConfigured() ) {
+			$list['ReviewedPages'] = $wgSpecialPages['ReviewedPages'] = 'ReviewedPages';
+		}
 		$list['QualityOversight'] = $wgSpecialPages['QualityOversight'] = 'QualityOversight';
 		$list['ValidationStatistics'] = $wgSpecialPages['ValidationStatistics'] = 'ValidationStatistics';
 		if ( !$wgFlaggedRevsOverride ) {
@@ -806,8 +808,8 @@ class FlaggedRevsHooks {
 				$result = false;
 				return false;
 			}
-		# Enforce autoreview restrictions
-		} else if( $action === 'autoreview' ) {
+		# Enforce autoreview/review restrictions
+		} else if( $action === 'autoreview' || $action === 'review' ) {
 			# Get autoreview restriction settings...
 			$config = FlaggedRevs::getPageVisibilitySettings( $title, true );
 			# Convert Sysop -> protect
