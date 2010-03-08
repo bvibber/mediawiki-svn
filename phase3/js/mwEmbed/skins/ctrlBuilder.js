@@ -610,28 +610,22 @@ ctrlBuilder.prototype = {
 		}
 
 		// See if we have native support for ogg: 
-		var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
-		for ( var i = 0; i < supporting_players.length; i++ ) {
-			if ( supporting_players[i].id == 'oggNative' ) {
+		var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
+		for ( var i = 0; i < supportingPlayers.length; i++ ) {
+			if ( supportingPlayers[i].id == 'oggNative' ) {
 				return false;
 			}
 		}
 		
-		// See if we are using mwEmbed without a ogg source in which case no point in promoting firefox :P			
-		if (  this.embedPlayer.mediaElement &&  this.embedPlayer.mediaElement.sources ) {
-			var foundOgg = false;
-			var playable_sources =  this.embedPlayer.mediaElement.getPlayableSources();
-			for ( var sInx = 0; sInx < playable_sources.length; sInx++ ) {
-				var mime_type = playable_sources[sInx].mime_type;
-				if ( mime_type == 'video/ogg' ) {
-					foundOgg = true;
-				}
-			}
-			// No ogg src... no point in download firefox link
-			if ( !foundOgg ){
-				return false;
-			}
+		// Check for h264 source and playback support
+		var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( 'video/h264' );
+		var h264streams = this.embedPlayer.mediaElement.getSources( 'video/h264' );
+		if( supportingPlayers.length && h264streams.length ){
+			// No firefox link if a h.264 stream is present
+			return false;
 		}
+		
+		// Should issue the native warning
 		return true;
 	},
 	
@@ -1050,16 +1044,16 @@ ctrlBuilder.prototype = {
 			if ( playable ) {
 				$playerList = $j('<ul />');
 				// output the player select code:
-				var supporting_players = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
+				var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
 
-				for ( var i = 0; i < supporting_players.length ; i++ ) {									
+				for ( var i = 0; i < supportingPlayers.length ; i++ ) {									
 									
 					// Add link to select the player if not already selected )
-					if( embedPlayer.selected_player.id == supporting_players[i].id && is_selected ) {	
+					if( embedPlayer.selected_player.id == supportingPlayers[i].id && is_selected ) {	
 						// Active player ( no link )
 						$playerLine = $j( '<span />' )
 						.text( 
-						 	supporting_players[i].getName()
+						 	supportingPlayers[i].getName()
 						)
 						.addClass( 'ui-state-highlight ui-corner-all' );							
 					} else {
@@ -1068,10 +1062,10 @@ ctrlBuilder.prototype = {
 							.attr({
 								'href' : '#',
 								'rel' : 'sel_source',
-								'id' : 'sc_' + source_id + '_' + supporting_players[i].id 
+								'id' : 'sc_' + source_id + '_' + supportingPlayers[i].id 
 							})
 							.addClass( 'ui-corner-all')
-							.text( supporting_players[i].getName() )
+							.text( supportingPlayers[i].getName() )
 							.click( function() {
 								var iparts = $j( this ).attr( 'id' ).replace(/sc_/ , '' ).split( '_' );
 								var source_id = iparts[0];

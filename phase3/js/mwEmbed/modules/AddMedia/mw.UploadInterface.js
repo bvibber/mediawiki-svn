@@ -17,7 +17,7 @@ mw.addMessages( {
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-uploaded-status" : "Uploaded",
 	"mwe-uploaded-time-remaining" : "Time remaining: $1",	
-	"mwe-upload-done" : "Your upload <i>should be<\/i> accessible.",	
+	"mwe-upload-done" : "Your upload <i>should be<\/i> accessible."	
 } );
 
 /**

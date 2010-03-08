@@ -755,7 +755,7 @@ mw.ApiProxy = { };
 				.attr({
 					'type' : 'hidden',
 					'id' : "wpEditToken",
-					'name' : 'token', 
+					'name' : 'token' 
 				})
 				.val( clientRequest.token ) 
 			)
@@ -960,9 +960,9 @@ mw.ApiProxy = { };
 		if( ! options[ 'target' ] ){
 			options[ 'target' ] = 'body';
 		}
-		var nameTarget = ( typeof options[ 'target' ] == 'string') ? options[ 'target' ] : $j( options[ 'target' ]).length ;
-		mw.log( "Append iframe:" + options[ 'src' ] + ' to: ' + nameTarget + " \n WITH REQUEST: " + JSON.stringify(  options.request ) );  
+		var targetName = ( typeof options[ 'target' ] == 'string') ? options[ 'target' ] : $j( options[ 'target' ]).length ;
 		
+		mw.log( "Append iframe:" + options[ 'src' ] + ' to: ' + targetName + " \n WITH REQUEST: " + JSON.stringify(  options.request ) );  		
 		// Append to target
 		$j( options[ 'target' ] ).append( s );
 		

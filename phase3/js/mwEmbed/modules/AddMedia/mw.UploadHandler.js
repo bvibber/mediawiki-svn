@@ -887,7 +887,7 @@ mw.UploadHandler.prototype = {
 		$j( _this.selector ).after( 
 			$j('<div />')			
 			.attr({
-				'id' : "mw-spinner-wpDestFile",				
+				'id' : "mw-spinner-wpDestFile"				
 			})
 			.loadingSpinner()
 		);		
