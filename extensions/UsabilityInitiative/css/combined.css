@@ -474,16 +474,23 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 /* Template Editor Dialogs */
 .wikiEditor-template-dialog-fields label {
 	text-transform: capitalize;
+	float: left;
+	width: 25%;
+	line-height: 1.5em;
+}
+.wikiEditor-template-dialog-fields textarea {
+	float: right;
+	width: 70%;
+	line-height: 1.5em;
+	height: 1.5em;
 }
 .wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper {
-	padding: 0 0 25px 0;
+	padding: 0.75em 0.33em;
+	border-bottom: dashed 1px silver;
+	clear: both;
 }
-.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper label {
-	display: block;
-}
-.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper input {
-	width: 100%;
-}
+
+
 /* Self Clearing Floats */
 .wikieditor-toolbar-table-dimension-fields:after,
 .wikieditor-toolbar-dialog-wrapper:after {
