@@ -81,7 +81,7 @@ var kplayerEmbed = {
 		this.getPlayerElement();	
 						
 		//alert( 	this.playerElement );
-		if( this.playerElement ) {
+		if( this.playerElement && this.playerElement.addJsListener ) {
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
 			_this.bindPlayerFunction( 'doPlay', 'play' );

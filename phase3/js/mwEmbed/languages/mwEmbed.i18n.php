@@ -300,6 +300,14 @@ $messages['en'] = array(
 	'rsd-search-timeout' => 'The search request did not complete. The server may be down experiencing heavy load. You can try again later',
 
 	/*
+	 * js file: /modules/AddMedia/mw.UploadInterface.js
+	 */
+	'mwe-upload-in-progress' => 'Upload in progress (do not close this window)',
+	'mwe-uploaded-status' => 'Uploaded',
+	'mwe-uploaded-time-remaining' => 'Time remaining: $1',
+	'mwe-upload-done' => 'Your upload <i>should be</i> accessible.',
+
+	/*
 	 * js file: /modules/AddMedia/mw.UploadHandler.js
 	 */
 	'mwe-upload-stats-fileprogress' => '$1 of $2',
@@ -383,6 +391,7 @@ $messages['en'] = array(
 	'mwe-upload' => 'Upload file',
 	'mwe-destfilename' => 'Destination filename:',
 	'mwe-summary' => 'Summary',
+	'mwe-date-of-work' => 'Date of the work',
 	'mwe-error_not_loggedin' => 'You do not appear to be logged in or do not have upload privileges.',
 	'mwe-error-not-loggedin-file' => 'You do not appear to be logged in or there was an error in the software. You can $1 and try again',
 	'mwe-link-login' => 'login',
@@ -394,6 +403,7 @@ $messages['en'] = array(
 	'mwe-upload-once-done' => 'Please $1. Once you have completed your upload, $2',
 	'mwe-upload-in-new-win-link' => 'upload in the new window or tab',
 	'mwe-upload-refresh' => 'refresh your upload list',
+	'mwe-ie-inline-upload' => 'Inline uploading is currently disabled for Internet Exploer. You can $1 then $2',
 
 	/*
 	 * js file: /modules/AddMedia/mw.FirefoggGUI.js

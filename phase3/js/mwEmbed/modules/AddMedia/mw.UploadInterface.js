@@ -48,6 +48,10 @@ mw.UploadDialogInterface.prototype = {
 	setup: function( options ) {	
 		var _this = this;
 		
+		if( ! options ){
+			options = { };
+		}
+		
 		// Start the "upload" time
 		this.uploadBeginTime = ( new Date() ).getTime();
 		
@@ -62,7 +66,7 @@ mw.UploadDialogInterface.prototype = {
 			.attr( 'id', "upProgressDialog" )
 		);
 		
-		if( typeof options == 'undefined' || !options.title ) {
+		if( !options.title ) {
 			options.title = gM('mwe-upload-in-progress');
 		}
 		
@@ -255,7 +259,7 @@ mw.UploadDialogInterface.prototype = {
 		};
 			
 				
-		if ( apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ) {			
+		if ( apiRes && apiRes.error || ( apiRes.upload && apiRes.upload.result == "Failure" ) ) {			
 		
 			// Check a few places for the error code			
 			var error_code = 0;

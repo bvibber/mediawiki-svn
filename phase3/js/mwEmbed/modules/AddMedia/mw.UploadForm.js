@@ -26,7 +26,9 @@ mw.addMessages( {
 	"mwe-upload-not-my-file" : "Upload media that is not my own work to $1",
 	"mwe-upload-once-done" : "Please $1. Once you have completed your upload, $2",
 	"mwe-upload-in-new-win-link" : "upload in the new window or tab",
-	"mwe-upload-refresh" : "refresh your upload list"
+	"mwe-upload-refresh" : "refresh your upload list",
+	
+	"mwe-ie-inline-upload" : "Inline uploading is currently disabled for Internet Exploer. You can $1 then $2"
 } );
 
 var default_form_options = {
@@ -185,6 +187,7 @@ mw.UploadForm = { };
 			} );
 		});
 	}
+	
 	/**
 	 * Build the Asset Description info template
 	 * and update the wpUploadDescription value
@@ -258,8 +261,7 @@ mw.UploadForm = { };
 						 	.text( gM('mwe-link-login') )
 						 	.attr('attr', options.apiUrl.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin' )
 						 ) 
-					); 
-					
+					); 					
 				}
 			} );
 			
@@ -330,6 +332,12 @@ mw.UploadForm = { };
 					gM( 'mwe-upload-own-file', uploadProvider.title ) 
 				)
 				.click( function( ) {
+					// Check for IE ( requires p3p policy and requires more porting work. )
+					if( $j.browser.msie ) {
+						showUploadInTab( uploadProvider, uploadMenuTarget,  "mwe-ie-inline-upload" );
+						return false;
+					}
+					
 					$j( uploadMenuTarget ).empty().loadingSpinner();	
 									
 					// if selectUploadProviderCb is set run the callback
@@ -378,41 +386,47 @@ mw.UploadForm = { };
 				.text( 
 					gM( 'mwe-upload-not-my-file', uploadProvider.title ) 
 				).click( function ( ) {
-					//Show refresh link
-					$j( uploadMenuTarget ).empty().html(
-						gM( "mwe-upload-once-done",
-							$j('<a />')
-							.attr( {								
-								'href' : uploadProvider.uploadPage,
-								'target' : "_new"
-							} )
-							.text(
-								gM("mwe-upload-in-new-win-link")
-							),
-	
-							$j('<a />')
-							.attr( {								
-								'href' : '#'
-							} )
-							.addClass('user-upload-refresh')
-							.text(
-								gM('mwe-upload-refresh')
-							)
-						)
-					);					
-					// NOTE: if gM supported jquery object a bit better
-					// we could bind the link above in the gM call
-					$j( uploadMenuTarget ).find( '.user-upload-refresh' )
-					.click( function( ) {
-						remoteSearchDriver.showUserRecentUploads( uploadTargetId );
-						return false;
-					} );								
+					showUploadInTab( uploadProvider, uploadMenuTarget,  "mwe-upload-once-done" );					
 				} )
 			)
 		);		
 		return $uploadLinks;
 	};	
 	
+	/**
+	 * Handles the very similar layout of IE and non-inline upload
+	 */
+	function showUploadInTab(uploadProvider, uploadMenuTarget, msgKey ){
+		//Show refresh link
+		$j( uploadMenuTarget ).empty().html(
+			gM( msgKey,
+				$j('<a />')
+				.attr( {								
+					'href' : uploadProvider.uploadPage,
+					'target' : "_new"
+				} )
+				.text(
+					gM("mwe-upload-in-new-win-link")
+				),
+
+				$j('<a />')
+				.attr( {								
+					'href' : '#'
+				} )
+				.addClass('user-upload-refresh')
+				.text(
+					gM('mwe-upload-refresh')
+				)
+			)
+		);					
+		// NOTE: if gM supported jquery object a bit better
+		// we could bind the link above in the gM call
+		$j( uploadMenuTarget ).find( '.user-upload-refresh' )
+		.click( function( ) {
+			remoteSearchDriver.showUserRecentUploads( uploadTargetId );
+			return false;
+		} );	
+	}
 	/**
 	* Get a jquery built upload form 
 	*/
