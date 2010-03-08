@@ -842,6 +842,7 @@ $j(document).ready( function() {
 	'insert-link': {
 		// For now, apply the old browser and iframe requirements to the link and table dialogs as well
 		// This'll be removed once these dialogs are confirmed stable without the iframe and/or in more browsers
+		/*
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
@@ -861,6 +862,7 @@ $j(document).ready( function() {
 			}
 		},
 		'req': [ 'iframe' ],
+		*/
 		titleMsg: 'wikieditor-toolbar-tool-link-title',
 		id: 'wikieditor-toolbar-link-dialog',
 		html: '\
@@ -1351,6 +1353,7 @@ $j(document).ready( function() {
 	'insert-table': {
 		// For now, apply the old browser and iframe requirements to the link and table dialogs as well
 		// This'll be removed once these dialogs are confirmed stable without the iframe and/or in more browsers
+		/*
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
@@ -1370,6 +1373,7 @@ $j(document).ready( function() {
 			}
 		},
 		'req': [ 'iframe' ],
+		*/
 		titleMsg: 'wikieditor-toolbar-tool-table-title',
 		id: 'wikieditor-toolbar-table-dialog',
 		// FIXME: Localize 'x'?
