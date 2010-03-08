@@ -1520,7 +1520,12 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		$this->setVar( 'wgSecretKey', $secretKey );
 
-		// @TODO Write LocalSettings, create admin account
+		// @TODO create admin account
+
+		$this->startStage( 'config-install-localsettings' );
+		$localSettings = new LocalSettings( $this->parent );
+		$localSettings->writeLocalSettings();
+		$this->endStage();
 	}
 
 	private function startStage( $msg ) {

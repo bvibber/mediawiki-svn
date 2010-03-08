@@ -80,6 +80,12 @@ abstract class InstallerDBType {
 		return array();
 	}
 
+	/**
+	 * Get the DBMS-specific options for LocalSettings.php generation.
+	 * @return String
+	 */
+	abstract function getLocalSettings();
+
 	/** 
 	 * Construct and initialise parent.
 	 * This is typically only called from Installer::getDBInstaller()

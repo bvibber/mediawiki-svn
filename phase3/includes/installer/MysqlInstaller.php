@@ -390,4 +390,20 @@ class MysqlInstaller extends InstallerDBType {
 		return array( 'engine' => $this->getVar( '_MysqlEngine' ),
 			'default charset' => $this->getVar( '_MysqlCharset' ) );
 	}
+
+	function getLocalSettings() {
+		$dbmysql5 = wfBoolToStr( $this->getVar( 'wgDBmysql5', true ) );
+		$prefix = $this->getVar( 'wgDBprefix' );
+		$opts = $this->getTableOptions();
+		$tblOpts = "ENGINE=" . $opts['engine'] . ', DEFAULT CHARSET=' . $opts['default charset'];
+		return
+"# MySQL specific settings
+\$wgDBprefix         = \"{$prefix}\";
+
+# MySQL table options to use during installation or update
+\$wgDBTableOptions   = \"{$tblOpts}\";
+
+# Experimental charset support for MySQL 4.1/5.0.
+\$wgDBmysql5 = {$dbmysql5};";
+	}
 }

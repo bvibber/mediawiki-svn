@@ -431,6 +431,7 @@ $wgAutoloadLocalClasses = array(
 	'Installer' => 'includes/installer/Installer.php',
 	'InstallerDBType' => 'includes/installer/InstallerDBType.php',
 	'LBFactory_InstallerFake' => 'includes/installer/Installer.php',
+	'LocalSettings' => 'includes/installer/LocalSettings.php',
 	'WebInstaller' => 'includes/installer/WebInstaller.php',
 	'WebInstallerOutput' => 'includes/installer/WebInstallerOutput.php',
 	'MysqlInstaller' => 'includes/installer/MysqlInstaller.php',

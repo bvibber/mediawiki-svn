@@ -92,5 +92,11 @@ class OracleInstaller extends InstallerDBType {
 	function getConnection() {}
 
 	function setupDatabase() {}
-	
+
+	function getLocalSettings() {
+		$prefix = $this->getVar( 'wgDBprefix' );
+		return
+"# Oracle specific settings
+\$wgDBprefix         = \"{$prefix}\";";
+	}
 }
