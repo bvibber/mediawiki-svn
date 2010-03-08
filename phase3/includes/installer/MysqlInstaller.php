@@ -107,7 +107,7 @@ class MysqlInstaller extends InstallerDBType {
 	function getConnection() {
 		$status = Status::newGood();
 		try {
-			$this->conn = new Database( 
+			$this->conn = new DatabaseMysql(
 				$this->getVar( 'wgDBserver' ),
 				$this->getVar( '_InstallUser' ),
 				$this->getVar( '_InstallPassword' ),
