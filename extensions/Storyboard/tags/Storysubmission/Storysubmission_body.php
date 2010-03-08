@@ -59,31 +59,34 @@ class TagStorysubmission {
 		
 		$formBody = "<table width='$width'>";
 		
-		// TODO: if logged in, use real name as default, or username when not available
+		$defaultName = '';
+		if ( $wgUser->isLoggedIn() ) {
+			$defaultName = strlen($wgUser->getRealName()) > 0 ? $wgUser->getRealName() : $wgUser->getName();
+		}
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' . 
-			Html::input('name' ,'', 'text', array( 'size' => $fieldSize )
+			Html::input('name', $defaultName, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-location' ) ) .
-			'<td>' . Html::input('location' ,'', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input('location', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-occupation' ) ) .
-			'<td>' . Html::input('occupation' ,'', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input('occupation', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-contact' ) ) .
-			'<td>' . Html::input('contact' ,'', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input('contact', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . Html::input('storytitle' ,'', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input('storytitle', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';			
 		
 		$formBody .= '<tr><td colspan="2">' .
@@ -149,10 +152,14 @@ class TagStorysubmission {
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
 			'story_title' => $wgRequest->getText( 'storytitle' ),
 			'story_text' => $wgRequest->getText( 'storytext' ),
-			// TODO: add other fields
+			'story_created' => wfTimestamp( TS_ISO_8601, time() ),
+			'story_modified' => wfTimestamp( TS_ISO_8601, time() ),
 		);
-		
-		// TODO: Add user id to $story if user is logged in
+
+		// If the user is logged in, also store his user id.
+		if ( $wgUser->isLoggedIn() ) {
+			$story[ 'story_author_id' ] = $wgUser->getId();
+		}
 		
 		$dbw->insert( 'storyboard', $story );
 		
