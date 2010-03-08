@@ -4431,6 +4431,9 @@ are highly encouraged to enable this, and small sites will see benefits as well.
 'config-cache-accel' => 'PHP object caching (APC, eAccelerator or XCache)',
 'config-cache-memcached' => 'Use Memcached (requires additional setup, and server IP addresses below)',
 'config-cache-none' => 'Use no caching. No functionality is removed, but speed may be impacted',
+'config-memcached-servers' => 'Memcached servers',
+'config-memcached-help' => 'List of IP addresses to use for Memcached. Should be separated with
+commas and specify the port to be used (eg: 1.2.3.4:56, 7.8.9.10:11)',
 
 'config-extensions' => 'Extensions',
 'config-extensions-help' => "The following extensions were automatically detected in your extensions directory.\n

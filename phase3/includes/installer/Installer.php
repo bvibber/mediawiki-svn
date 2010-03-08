@@ -69,6 +69,7 @@ abstract class Installer {
 		'_LicenseCode' => 'none',
 		'_CCDone' => false,
 		'_Extensions' => array(),
+		'_MemCachedServers' => '',
 	);
 
 	/**

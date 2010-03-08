@@ -1319,6 +1319,11 @@ class WebInstaller_Options extends WebInstallerPage {
 				'values' => $caches,
 			) ) .
 			$this->parent->getHelpBox( 'config-cache-help' ) .
+			$this->parent->getTextBox( array(
+				'var' => '_MemCachedServers',
+				'label' => 'config-memcached-servers',
+			) ) .
+			$this->parent->getHelpBox( 'config-memcached-help' ) .
 			$this->parent->getFieldsetEnd() .
 
 			"<script type=\"text/javascript\">$licenseJs $emailJs $uploadJs</script>\n"
@@ -1413,7 +1418,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		$this->parent->setVarsFromRequest( array( '_RightsProfile', '_LicenseCode', 
 			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo',
 			'wgEnableUserEmail', 'wgEnotifUserTalk', 'wgEnotifWatchlist',
-			'wgEmailAuthentication', 'wgMainCacheType' ) );
+			'wgEmailAuthentication', 'wgMainCacheType', '_MemCachedServers' ) );
 
 		if ( !in_array( $this->getVar( '_RightsProfile' ), 
 			array_keys( $this->parent->rightsProfiles ) ) ) 

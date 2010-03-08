@@ -3341,6 +3341,8 @@ $wgMessageStructure = array(
 		'config-cache-memcached',
 		'config-cache-db',
 		'config-cache-anything',
+		'config-memcached-servers',
+		'config-memcached-help',
 		'config-extensions',
 		'config-extensions-help',
 		'config-stage-done',
