@@ -128,9 +128,7 @@ abstract class InstallerDBType {
 	function getVar( $var, $default = null ) {
 		$defaults = $this->getGlobalDefaults();
 		$internal = $this->getInternalDefaults();
-		if ( isset( $internal[$this->getName().$var] ) ) {
-			return $internal[$this->getName().$var];
-		} elseif ( isset( $defaults[$var] ) ) {
+		if ( isset( $defaults[$var] ) ) {
 			$default = $defaults[$var];
 		} elseif ( isset( $internal[$var] ) ) {
 			$default = $internal[$var];
