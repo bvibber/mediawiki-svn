@@ -264,6 +264,7 @@ fn: {
 							$( '<textarea />' )
 								.data( 'name', param.name )
 								.val( paramVal )
+								.css( 'height', $(this).val().length > 24 ? '4.5em' : '1.5em' )
 								.data( 'expanded', false )
 								.bind( 'cut paste keypress click change', function( e ) {
 									// If this was fired by a tab keypress, let it go
