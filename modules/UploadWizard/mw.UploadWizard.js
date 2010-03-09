@@ -293,9 +293,8 @@ mw.UploadWizardMetadata = function(containerDiv) {
 
 	_this.div = $j('<div class="mwe-upwiz-metadata-file"></div>');
 
-	_this.thumbnail = $j('<img class="mwe-upwiz-thumbnail"/>').get(0);
-	var thumbnailDiv = $j('<div class="mwe-upwiz-thumbnail"></div>').append(_this.thumbnail).get(0);
-
+	_this.thumbnailDiv = $j('<div class="mwe-upwiz-thumbnail"></div>');
+	
 	_this.errorDiv = $j('<div class="mwe-upwiz-metadata-error"></div>');
 
 	_this.dataDiv = $j('<div class="mwe-upwiz-metadata-data"></div>');
@@ -312,7 +311,7 @@ mw.UploadWizardMetadata = function(containerDiv) {
 				
 
 	$j(_this.div)
-		.append(thumbnailDiv)
+		.append(_this.thumbnailDiv)
 		.append(_this.errorDiv)
 		.append($j(_this.dataDiv)
 			.append(_this.descriptionsContainerDiv));
@@ -407,6 +406,7 @@ mw.UploadWizardMetadata.prototype = {
 		_this.setThumbnail(upload.filename, mw.getConfig('thumbnailWidth')); 
 		
 		// _this.setFilename(upload.filename);
+
 		//_this.setDescription(); // is there anything worthwhile here? image comment?
 		//_this.setDate(upload.metadata);	
 		//_this.setLocation(upload.metadata); // we could be VERY clever with location sensing...
@@ -418,14 +418,16 @@ mw.UploadWizardMetadata.prototype = {
 	setThumbnail: function(filename, width) {
 		var _this = this;
 
-		var callback = function(img) { 
-			_this.thumbnail.width = img.width;
-			_this.thumbnail.height = img.height;
-			_this.thumbnail.src = img.src;
-			// XXX stop thumbnail spinner
+		var callback = function(imageInfo) { 
+			var thumbnail = $j('<img class="mwe-upwiz-thumbnail"/>').get(0);
+			thumbnail.width = imageInfo.thumbwidth;
+			thumbnail.height = imageInfo.thumbheight;
+			thumbnail.src = imageInfo.thumburl;
+			// side effect: will replace thumbnail's loadingSpinner
+			_this.thumbnailDiv.html(thumbnail);
 		};
 
-		// XXX start thumbnail spinner
+		_this.thumbnailDiv.loadingSpinner();
 		_this.getThumbnail("File:" + filename, width, callback);
 
 	},
@@ -461,10 +463,8 @@ mw.UploadWizardMetadata.prototype = {
 				if (! page.imageinfo ) {
 					// not found? error
 				} else {
-					var img = page.imageinfo[0];
-					setThumbnailCb( { src: img.thumburl, 
-							  width: img.thumbwidth, 
-							  height: img.thumbheight });
+					var imageInfo = page.imageinfo[0];
+					setThumbnailCb(imageInfo);
 				}
 			}
 		});
@@ -580,7 +580,7 @@ mw.UploadWizard.prototype = {
 		var _this = this;
 		div.innerHTML = 
 	
-		       '<div id="mwe-upwiz-tabs" class="mwe-upwiz-tabs">'
+		       '<div id="mwe-upwiz-tabs">'
 		       + '<ul>'
 		       +   '<li id="mwe-upwiz-tab-file">'     + gM('mwe-upwiz-tab-file')     + '</li>'
 		       +   '<li id="mwe-upwiz-tab-metadata">' + gM('mwe-upwiz-tab-metadata') + '</li>'
@@ -645,7 +645,7 @@ mw.UploadWizard.prototype = {
 				tabDiv.show();
 				tab.addClass('mwe-upwiz-tab-highlight');
 			} else {
-				//tabDiv.hide();
+				// tabDiv.hide();
 				tab.removeClass('mwe-upwiz-tab-highlight');
 			}
 		}
