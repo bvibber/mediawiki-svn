@@ -9669,10 +9669,14 @@ fn: {
 				sanatizedStr.substring( endBraces.index + 2 );
 		}
 		
+		
 		//treat HTML comments like whitespace
 		while ( sanatizedStr.indexOf( '<!' ) != -1 ) {
 			startIndex = sanatizedStr.indexOf( '<!' );
 			endIndex = sanatizedStr.indexOf('-->') + 3;
+			if( endIndex < 3 ){
+				break;
+			}
 			sanatizedSegment = sanatizedStr.substring( startIndex,endIndex ).replace( /\S/g , ' ' );
 			sanatizedStr =
 				sanatizedStr.substring( 0, startIndex ) + sanatizedSegment + sanatizedStr.substring( endIndex );
