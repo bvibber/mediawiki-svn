@@ -8,7 +8,7 @@
 */
 
 /**
-* The set of modules that you want enable. 
+* The default set of enabled modules
 * 
 * Each enabledModules array value should be a name
 * of a folder in mwEmbed/modules 

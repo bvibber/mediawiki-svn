@@ -508,3 +508,8 @@ ul.ui-provider-selection li a {
 #rsd_upload_form {
 	font-size: 110%;
 }
+
+.ui-dialog-buttonpane a{
+	float: right;
+	margin-right: 10px;
+}

@@ -866,6 +866,7 @@ mw.UploadHandler.prototype = {
 		}
 		mw.log( 'do doDestCheck and update: ' + options.warn_target );
 		
+		// Check for the apiUrl
 		if( ! options.apiUrl ) {
 			options.apiUrl = mw.getLocalApiUrl();
 		}		
@@ -879,7 +880,8 @@ mw.UploadHandler.prototype = {
 				.append( '<td />' )
 					.attr('id', 'wpDestFile-warning')
 				);
-		}	
+		}
+		
 		// Remove any existing warning
 		$j( options.warn_target ).empty();
 
@@ -900,8 +902,7 @@ mw.UploadHandler.prototype = {
 		};
 				
 		// Do the destination check ( on the local wiki )
-		mw.getJSON( options.apiUrl, request, function( data ) {
-			mw.log(" got callback? wtf");
+		mw.getJSON( options.apiUrl, request, function( data ) {			
 			// Remove spinner
 			$j( '#mw-spinner-wpDestFile' ).remove();
 			

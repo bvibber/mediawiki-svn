@@ -74,16 +74,14 @@ mw.UploadForm = { };
 			$j( '<br />' )
 		);
 		
-		$uploadTargetsList = $j( '<ul />'  );
+
 		
 		// Set provider Target		
 		for( var uploadTargetId in options.uploadTargets ){			
-			$uploadTargetsList.append(
+			$j( uploadMenuTarget ).append(			
 				getProviderUploadLinks( uploadTargetId )
 			);
-		}
-		
-		$j( uploadMenuTarget ).append( $uploadTargetsList );				
+		}						
 	};
 
 	/** 
@@ -115,40 +113,53 @@ mw.UploadForm = { };
 			// Update the options Token
 			options.eToken = eToken;
 			
-			// Add the upload form to the options target:  			
-			addUploadForm( options );		
-			
-			// By default disable:
-			$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
-
-			// Set up basic license binding:
-			$j( '#wpLicence' ).click( function( ) {
-				if ( $j( this ).is( ':checked' ) ) {
-					$j( '#wpUploadBtn' ).removeAttr( 'disabled' );
-				} else {
-					$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
-				}
-			} );
-			
-			
-			//Set up the bindings			
-			if( mw.isLocalDomain( options.apiUrl ) ) {
-				// Setup Local upload bindings					
-				setupLocalUploadBindings( options );
-			}else{
-				// Setup ApiFile bindings	
-				setupApiFileBrowseProxy(					
-					options
-				);
-			}
-
-			// Do remote or local destination check:
-			$j( "#wpDestFile" ).change( function( ) {			
-				$j( "#wpDestFile" ).doDestCheck( {
-					'apiUrl' : options.apiUrl,
-					'warn_target':'#wpDestFile-warning'
+			// Get a user Name for the upload
+			mw.getUserName( options.apiUrl, function( userName ) {
+				if( !userName ) {
+					gM( 'mwe-error-not-loggedin-file',
+					 	$j( '<a />' )
+					 	.text( gM('mwe-link-login') )
+					 	.attr('attr', options.apiUrl.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin' )
+					 )
+				}	
+				// Set the user name: 
+				options.userName = userName;
+				
+				// Add the upload form to the options target:  			
+				addUploadForm( options );		
+				
+				// By default disable:
+				$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
+	
+				// Set up basic license binding:
+				$j( '#wpLicence' ).click( function( ) {
+					if ( $j( this ).is( ':checked' ) ) {
+						$j( '#wpUploadBtn' ).removeAttr( 'disabled' );
+					} else {
+						$j( '#wpUploadBtn' ).attr( 'disabled', 'disabled' );
+					}
 				} );
-			} );			
+				
+				
+				//Set up the bindings			
+				if( mw.isLocalDomain( options.apiUrl ) ) {
+					// Setup Local upload bindings					
+					setupLocalUploadBindings( options );
+				}else{
+					// Setup ApiFile bindings	
+					setupApiFileBrowseProxy(					
+						options
+					);
+				}
+	
+				// Do remote or local destination check:
+				$j( "#wpDestFile" ).change( function( ) {			
+					$j( "#wpDestFile" ).doDestCheck( {
+						'apiUrl' : options.apiUrl,
+						'warn_target':'#wpDestFile-warning'
+					} );
+				} );
+			} ); // ( userName )
 		}); // ( token ) 
 	}
 	
@@ -182,7 +193,7 @@ mw.UploadForm = { };
 					} );
 				},
 				'beforeSubmitCb' : function( ) {
-					buildAssetDescription();							
+					buildAssetDescription( options );							
 				}
 			} );
 		});
@@ -192,20 +203,24 @@ mw.UploadForm = { };
 	 * Build the Asset Description info template
 	 * and update the wpUploadDescription value
 	 */
-	function buildAssetDescription(){		
+	function buildAssetDescription( options ){		
 		// Update with basic info template:	
 		// TODO: it would be nice to have a template generator class
-		// this is basicaly a simple version of the commons form hack
+		// this is basically a simple version of the commons form hack
 		var desc = $j('#comment-desc').val();
 		var date = $j('#comment-date').val();
 		
+		if( !options.userName ){
+			mw.log( "Error:: buildAssetDescription ::  no userName" );
+		}
+		
 		// Update the template if the user does not already have template code:
 		if( desc.indexOf('{{Information') == -1) {
-			$j('#wpUploadDescription').val( 
+			$j('#wpUploadDescription').val(
 				'== {{int:filedesc}} ==' + "\n" +
 				'{{Information' + "\n" +
 				'|Description={{en|' + desc + "\n}}\n" +
-				'|Author=[[User:' + wgUserName + '|' + wgUserName + ']]' + "\n" +
+				'|Author=[[User:' + options.userName + '|' + options.userName + ']]' + "\n" +
 				'|Source=' + "\n" +
 				'|Date=' + date + "\n" +
 				'|Permission=' + "\n" +
@@ -228,7 +243,7 @@ mw.UploadForm = { };
 			});
 		} );
 		// Load the apiProxy ( if its not already loaded )
-		mw.load( 'ApiProxy', function( ) {
+		mw.load( 'ApiProxy', function( ) {			
 			var fileIframeName = mw.ApiProxy.browseFile( {
 				//Target div to put the iframe browser button:
 				'target' : 	$j( options.target ).find( '.remote-browse-file' ),
@@ -269,7 +284,7 @@ mw.UploadForm = { };
 			$j('#wpUploadBtn').click( function(){
 							
 				// Update the asset description:
-				buildAssetDescription();
+				buildAssetDescription( options );
 				
 				// Dissable upload button and add loader:
 				$j( '#wpUploadBtn' )
@@ -314,15 +329,17 @@ mw.UploadForm = { };
 		var searchProvider = remoteSearchDriver.content_providers[ uploadTargetId ];
 		
 		var apiUrl = uploadProvider.apiUrl;		
-		$uploadLinks = $j( '<div />' );
+		$uploadLinksContainer = $j( '<div />' );
 		
 		if( uploadProvider.providerDescription ){
-			$uploadLinks.append( $j('<br />'), 
+			$uploadLinksContainer.append( $j('<br />'), 
 				uploadProvider.providerDescription 
 			);
 		}
+		var $uploadLinksList = 	$j('<ul />');
+						
 		// Upload your own file
-		$uploadLinks.append(
+		$uploadLinksList.append(
 			$j('<li />').append( 
 				$j( '<a />' )
 				.attr( {
@@ -376,7 +393,7 @@ mw.UploadForm = { };
 		);		
 		
 		// Upload a file not your own ( link to special:upload for that api url )
-		$uploadLinks.append (
+		$uploadLinksList.append (
 			$j('<li />').append( 
 				$j( '<a />' )
 				.attr( {
@@ -390,7 +407,9 @@ mw.UploadForm = { };
 				} )
 			)
 		);		
-		return $uploadLinks;
+		$uploadLinksContainer.append( $uploadLinksList );
+		// return the list: 
+		return $uploadLinksContainer;
 	};	
 	
 	/**
@@ -527,7 +546,7 @@ mw.UploadForm = { };
 				'id' : 'wpDestFile',
 				'name' : 'wpDestFile',
 				'type' : 'text',
-				'size' : "15"
+				'size' : "25"
 			} )
 			.css( 'display', 'inline' )
 		)

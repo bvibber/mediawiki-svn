@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r104';
+var mwRemoteVersion = 'r105';
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -21,7 +21,7 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 	}
 }
 
-var mwUseScriptLoader = (mwReqParam['debug'] != 'true');
+var mwUseScriptLoader = ( mwReqParam['debug'] != 'true');
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	

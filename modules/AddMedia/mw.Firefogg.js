@@ -45,6 +45,9 @@ var default_firefogg_options = {
 
 	// True if we will be showing the encoder interface
 	'encoder_interface': false,
+	
+	// If the install firefogg should be shown or not. 
+	'showFoggWarningFlag' : true,
 
 	// jQuery selector identifying the target control container or form (can't be left null)
 	'selector': '',
@@ -163,16 +166,15 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		if ( !options.apiUrl ){
 			options.upload_mode = 'post';
 		}
-
+		
 		// Set options
 		for ( var i in default_firefogg_options ) {
-			if ( options[i] ) {
-				this[i] = options[i];
+			if ( typeof options[ i ] != 'undefined' ) {
+				this[ i ] = options[i];
 			} else {
-				this[i] = default_firefogg_options[i];
+				this[ i ] = default_firefogg_options[i];
 			}
-		}
-		
+		}				
 		// Check for special installCheckMode
 		
 		// NOTE we should refactor install checks into static functions / entry points
@@ -287,7 +289,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	/**
 	 * Set up events for the controls which were created with createControls()
 	 */
-	bindControls: function() {
+	bindControls: function( ) {
 		var _this = this;
 
 		// Hide all controls
@@ -461,8 +463,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * Set up the upload form
 	 */
 	setupForm: function() {
-		mw.log( 'firefogg::setupForm::' );
-			
+		mw.log( 'firefogg::setupForm::' );		
 		var _this = this;		
 		// Set up the parent if we are in upload mode
 		if ( this.form_type == 'upload' ) {
@@ -472,14 +473,16 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		// If Firefogg is not available, just show a "please install" message
 		if ( ! _this.getFirefogg() ) {
 			// Show install firefogg msg
-			this.showInstallFirefog();
-			return;
-		}		
-				
+			if( _this.showFoggWarningFlag ){
+				this.showInstallFirefog();
+			}
+			return ;
+		}
+		
 		// If uploading and firefogg is on show warning
 		if ( this.form_type == 'upload' 
 			&&	typeof console != 'undefined' 
-			&& console.firebug ) {		
+			&& console.firebug && _this.showFoggWarningFlag ) {
 			this.appendFirebugWarning();
 		}
 
