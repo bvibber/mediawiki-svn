@@ -388,8 +388,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 		// Otherwise show the "install Firefogg" message
 		var firefoggUrl = _this.getFirefoggInstallUrl();
-		if( firefoggUrl ) {
-			
+		if( firefoggUrl ) {			
 			// Add the target please install in not present: 
 			if ( !this.target_please_install ) {
 				$j( this.selector ).after( 
@@ -788,10 +787,13 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			return false;
 		}
 		// Setup the interface progress indicator:
-		_this.ui.setup( { 'title' : gM( 'fogg-transcoding' ) } );
+		_this.ui.setup( { 
+			'title' : gM( 'fogg-transcoding' ),
+			'statusType' : 'transcode' 
+		} );
 		
 		// Add the preview controls if transcoding:  
-		if ( !_this.getEncoderSettings()['passthrough'] ) {
+		if ( !_this.getEncoderSettings()[ 'passthrough' ] ) {
 			_this.createPreviewControls();
 		}
 		
@@ -948,13 +950,17 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}
 		// We are doing a firefogg upload: 
 		mw.log( "firefogg: doUpload:: " );
-		
-		// Setup the firefogg dialog (if not passthrough )
-		_this.ui.setup( { 'title' : gM( 'mwe-upload-transcode-in-progress' ) } );
-		
+			
 		// Add the preview controls if transcoding:  
 		if ( !_this.getEncoderSettings()['passthrough'] ) {
 			_this.createPreviewControls();
+			
+			// Setup the firefogg transcode dialog (if not passthrough )
+			_this.ui.setup( { 
+				'title' : gM( 'mwe-upload-transcode-in-progress' ),			
+				'statusType' : 'transcode' 		
+			} );
+			
 		}
 		
 		
@@ -1012,6 +1018,12 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				},
 				function /* onDone */ () {															
 					var uploadRequest = _this.getUploadApiRequest();
+					
+					// Update the UI for uploading
+					_this.ui.setup( { 
+						'title' : gM( 'mwe-upload-in-progress' ),
+						'statusType' : 'upload' 
+					} );
 					
 					mw.log( 'Do POST upload to:' +_this.apiUrl + ' with data:\n' + JSON.stringify( uploadRequest ) );
 					
@@ -1125,10 +1137,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		}		
 		
 		mw.log( 'doEncode: with: ' +  JSON.stringify( encoderSettings ) );
-		_this.fogg.encode( JSON.stringify( encoderSettings ) );
-
-		// Show transcode status:
-		$j( '#up-status-state' ).html( gM( 'mwe-upload-transcoded-status' ) );
+		_this.fogg.encode( JSON.stringify( encoderSettings ) );	
 		
 
 		// Setup a local function for timed callback:

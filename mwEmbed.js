@@ -30,15 +30,12 @@ if ( !window['mw'] ) {
 }
 
 /*
-* Set the mwEmbedVersion ( not set by stopgap )
+* Set the mwEmbedVersion
 */
-var MW_EMBED_VERSION = '1.1d';
+var MW_EMBED_VERSION = '1.1e';
 
 /**
 * The global mw object:
-*
-* Any global functions/classes that are not jQuery plugins should make
-* there way into the mw namespace
 */
 ( function( mw ) {
 	
@@ -49,9 +46,7 @@ var MW_EMBED_VERSION = '1.1d';
 	mw.version = MW_EMBED_VERSION	
 
 	/**
-	* Configuration System: 
-	* 
-	* Simple system of inherit defaults, with getter setter functions: 	
+	* Configuration System:  	
 	*/	
 		
 	// Local scope configuration var:
@@ -577,12 +572,13 @@ var MW_EMBED_VERSION = '1.1d';
 						}
 						node = node['p'];
 					}
-					if ( !node['t'] )
+					if ( !node['t'] ) {
 						node['t'] = '';
+					}
 					// Don't put }} closures into output:
-					if ( txt[a] &&  txt[a] != '}' )
+					if ( txt[a] &&  txt[a] != '}' ) {
 							node['t'] += txt[a];
-							
+					}
 				}
 				return node;
 			}
@@ -1380,6 +1376,7 @@ var MW_EMBED_VERSION = '1.1d';
 			}
 		);
 	}
+	
 	/**
 	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* 
@@ -2831,8 +2828,8 @@ mw.addMessages( {
 	"mwe-load-drag-item" : "Loading dragged item",
 	"mwe-ok" : "OK",
 	"mwe-cancel" : "Cancel",
-	"mwe-enable-gadget" : "Enable mwEmbed gadget for all pages",
-	"mwe-enable-gadget-done" : "mwEmbed gadget has been enabled",
+	"mwe-enable-gadget" : "Enable multimedia beta ( mwEmbed ) for all pages",
+	"mwe-enable-gadget-done" : "multimedia beta gadget has been enabled",
 	"mwe-must-login-gadget" : "To enable gadget you must <a target=\"_new\" href=\"$1\">login</a>",
 	"mwe-test-plural" : "I ran {{PLURAL:$1|$1 test|$1 tests}}"
 } );

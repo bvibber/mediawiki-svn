@@ -55,7 +55,10 @@ var default_bui_options = {
 	'rewriteDescriptionText' : true,
 	
 	// Callback which is called when the source name changes
-	'selectFileCb': false
+	'selectFileCb': null, 
+	
+	// Callback called when an upload completes or is canceld and we want to re-activeate the form
+	'returnToFormCb' : null
 
 };
 
@@ -139,7 +142,7 @@ mw.UploadHandler.prototype = {
 		}		
 		
 		// Setup ui uploadHandler pointer
-		this.ui.uploadHandler = this;
+		this.ui.uploadHandler = this;		
 		
 		mw.log( "init mvUploadHandler:: " + this.apiUrl + ' interface: ' + this.ui );
 	},
@@ -473,7 +476,7 @@ mw.UploadHandler.prototype = {
 		
 		var httpUpConf = {
 			'url'       : $j( '#wpUploadFileURL' ).val(),
-			'filename'  : $j( '#wpDestFile' ).val(),
+			'filename'  : _this.getFilename(),
 			'comment'   : this.getUploadDescription(),
 			'watch'     : ( $j( '#wpWatchthis' ).is( ':checked' ) ) ? 'true' : 'false',
 			'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'
@@ -787,11 +790,15 @@ mw.UploadHandler.prototype = {
 			var request = {
 				'action': 'upload',
 				'sessionkey': _this.warnings_sessionkey,
-				'ignorewarnings': 1,
-				'filename': $j( '#wpDestFile' ).val(),
+				'ignorewarnings': 1,			
 				'token' :  _this.getToken(),
-				'comment' : _this.getUploadDescription()
+				'filename' :  _this.getFileName()					
 			};
+			// presently we don't let the user update desc at ignoreWarningsSubmit
+			/*			  		
+				'comment' : _this.getUploadDescription()
+			*/
+			
 			//run the upload from stash request
 			mw.getJSON(_this.apiUrl, request, function( data ) {
 					_this.processApiResult( data );
@@ -822,6 +829,10 @@ mw.UploadHandler.prototype = {
 			mw.log( "mvBaseUploadHandler.getForm(): no form_selector" );
 			return false;
 		}
+	},
+	// get the filename from the current form
+	getFileName: function() {
+		return $j( this.form ).find( "[name='filename']" ).val();
 	},
 	
 	// Get the editToken from the page. 

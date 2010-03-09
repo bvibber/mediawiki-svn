@@ -82,6 +82,7 @@ var kplayerEmbed = {
 						
 		//alert( 	this.playerElement );
 		if( this.playerElement && this.playerElement.addJsListener ) {
+			
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
 			_this.bindPlayerFunction( 'doPlay', 'onPlay' );
@@ -134,8 +135,9 @@ var kplayerEmbed = {
 	*  calls parent_play to update the interface 
 	*/
 	play: function() {
-		if( this.playerElement && this.playerElement.sendNotification )
+		if( this.playerElement && this.playerElement.sendNotification ){
 			this.playerElement.sendNotification( 'doPlay' );
+		}
 		this.parent_play();
 	},
 	

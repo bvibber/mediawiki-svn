@@ -16,6 +16,7 @@
 mw.addMessages( {	
 	"mwe-upload-in-progress" : "Upload in progress (do not close this window)",
 	"mwe-uploaded-status" : "Uploaded",
+	"mwe-transcoded-status" : "Transcoded",
 	"mwe-uploaded-time-remaining" : "Time remaining: $1",	
 	"mwe-upload-done" : "Your upload <i>should be<\/i> accessible."	
 } );
@@ -117,10 +118,16 @@ mw.UploadDialogInterface.prototype = {
 				.text( '0% -' ),
 				
 				$j( '<span />' )
-				.attr( 'id', 'up-status-state' )
-				.text( gM( 'mwe-uploaded-status' ) )				
+				.attr( 'id', 'up-status-state' )							
 			)
 		);
+		
+		var $statusState = $progressContainer.find( '#up-status-state' );
+		if( options.statusType == 'transcode' ){
+			$statusState.text( gM( 'mwe-transcoded-status' ) );
+		} else {			
+			$statusState.text( gM( 'mwe-uploaded-status' ) );
+		}
 		
 		// Add the estimated time remaining 
 		$progressContainer.append(
@@ -252,10 +259,8 @@ mw.UploadDialogInterface.prototype = {
 		
 		// Generate the error button			
 		var buttons = {};
-		buttons[ gM( 'mwe-return-to-form' ) ] = function() {			
-			$j( this ).dialog( 'close' );
-			// Disable direct submit so that we can handle updated form data
-			_this.sendUploadAction( 'disableDirectSubmit' );
+		buttons[ gM( 'mwe-return-to-form' ) ] = function() {
+			_this.returnToForm( this );
 		};
 			
 				
@@ -396,8 +401,7 @@ mw.UploadDialogInterface.prototype = {
 			};
 			// Create the "return to form" button
 			buttons[ gM( 'mwe-return-to-form' ) ] = function() {
-				$j( this ).dialog( 'close' );
-				_this.sendUploadAction( 'disableDirectSubmit' );
+				_this.returnToForm( this );				
 			}
 			// Show warning
 			_this.setPrompt(
@@ -415,6 +419,18 @@ mw.UploadDialogInterface.prototype = {
 		}
 		// No error!
 		return true;
+	},
+	/**
+	 * return to the upload form handler
+	 */
+	returnToForm: function( dialogElement ){
+		$j( dialogElement ).dialog( 'close' );
+		
+		// Dissable direct submit on the transport ( so send via sendUploadAction ) 	
+		this.sendUploadAction( 'disableDirectSubmit' );
+		
+		// returnToFormCb
+		this.sendUploadAction( 'returnToFormCb' );
 	},
 	
 	/**
@@ -438,6 +454,7 @@ mw.UploadDialogInterface.prototype = {
 		// "Return" button
 		buttons[ gM( 'mwe-return-to-form' ) ] = function() {
 			$j( this ).dialog( 'destroy' ).remove();
+			_this.sendUploadAction( 'returnToForm' );
 			_this.sendUploadAction( 'disableDirectSubmit' );
 		}
 		// "Go to resource" button
@@ -473,7 +490,7 @@ mw.UploadDialogInterface.prototype = {
 		mw.log( 'f: getCancelButton()' );
 		var cancelBtn = [];
 		cancelBtn[ gM( 'mwe-cancel' ) ] = function() {
-			$j( dlElm ).dialog( 'close' );
+			$j( this ).dialog( 'close' );
 		};
 		return cancelBtn;
 	}	

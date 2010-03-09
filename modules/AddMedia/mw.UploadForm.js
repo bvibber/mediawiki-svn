@@ -192,6 +192,16 @@ mw.UploadForm = { };
 						'warn_target' : "#wpDestFile-warning"
 					} );
 				},
+				
+				'returnToFormCb' : function(){
+					// Enable upload button and remove loader
+					$j( '#wpUploadBtn' )
+					.attr( 'disabled', null )
+					.parent()
+					.find( '.loading_spinner' )
+					.remove();				
+				},
+				
 				'beforeSubmitCb' : function( ) {
 					buildAssetDescription( options );							
 				}
@@ -266,7 +276,15 @@ mw.UploadForm = { };
 						'warn_target': '#file-warning'
 					} );				
 				},
-				
+				'returnToFormCb' : function(){
+					alert("UPLOAD form returnToFormCb ");
+					// Enable upload button and remove loader
+					$j( '#wpUploadBtn' )
+					.attr( 'disabled', null )
+					.parent()
+					.find( '.loading_spinner' )
+					.remove();				
+				},
 				// Timeout callback
 				'timeoutCb' : function(){
 					mw.log("timed out in setting up setupApiFileBrowseProxy");
@@ -291,8 +309,20 @@ mw.UploadForm = { };
 				.attr( 'disabled', 'disabled' )
 				.before(
 					$j('<span />').loadingSpinner()
-				);	
+				);
 				
+				// Setup the form data:	
+				var formData =  {
+					'filename' : $j( '#wpDestFile' ).val(),
+					'comment' : $j( '#wpUploadDescription' ).val(),															
+				}
+				
+				if( $j( '#wpWatchthis' ).is( ':checked' ) ) { 
+					formData[ 'watch' ] = 'true';
+				}
+				if( $j('#wpIgnoreWarning' ).is( ':checked' ) ) {
+					formData[ 'ignorewarnings' ] = 'true';
+				}
 				
 				// Build the output and send upload request to fileProxy  
 				mw.ApiProxy.sendServerMsg( {
@@ -300,12 +330,7 @@ mw.UploadForm = { };
 					'frameName' : fileIframeName,
 					'frameMsg' : {
 						'action' : 'fileSubmit',
-						'formData' : {
-							'filename' : $j('#wpDestFile').val(),
-							'comment' : $j('#wpUploadDescription').val(),
-							'watch' : ( $j( '#wpWatchthis' ).is( ':checked' ) ) ? 'true' : 'false',
-							'ignorewarnings': ($j('#wpIgnoreWarning' ).is( ':checked' ) ) ? 'true' : 'false'							
-						}
+						'formData' : formData
 					}
 				} );				
 			} );
