@@ -9324,6 +9324,7 @@ fn: {
 						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 						var templateModel = $templateText.data( 'model' );
 						$( this ).find( '.wikiEditor-template-dialog-field-wrapper textarea' ).each( function() {
+							// Update the value, ensuring we strip any illegal multiple line breaks
 							templateModel.setValue( $( this ).data( 'name' ), $( this ).val().replace( /\n+/g, '/n' ) );
 						});
 						//keep text consistent
@@ -9383,7 +9384,7 @@ fn: {
 									var $this = $( this );
 									setTimeout( function() {
 										var expanded = $this.data( 'expanded' );
-										if ( $this.val().match( /\n/ ) || $this.val().length > 24 ) {
+										if ( $this.val().indexOf( '\n' ) != -1 || $this.val().length > 24 ) {
 											if ( !expanded ) {
 												$this.animate( { 'height': '4.5em' }, 'fast' );
 												$this.data( 'expanded', true );
