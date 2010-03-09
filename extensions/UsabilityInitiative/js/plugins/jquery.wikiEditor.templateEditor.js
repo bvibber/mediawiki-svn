@@ -211,7 +211,7 @@ fn: {
 						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 						var templateModel = $templateText.data( 'model' );
 						$( this ).find( '.wikiEditor-template-dialog-field-wrapper textarea' ).each( function() {
-							templateModel.setValue( $( this ).data( 'name' ), $( this ).val() );
+							templateModel.setValue( $( this ).data( 'name' ), $( this ).val().replace( /\n+/g, '/n' ) );
 						});
 						//keep text consistent
 						$.wikiEditor.modules.templateEditor.fn.updateModel( $templateText, templateModel );
@@ -264,11 +264,13 @@ fn: {
 								.data( 'name', param.name )
 								.val( paramVal )
 								.data( 'expanded', false )
-								.bind( 'cut paste keypress click change', function() {
-									var $this = $(this);
+								.bind( 'cut paste keypress click change', function( e ) {
+									// If this was fired by a tab keypress, let it go
+									if ( e.keyCode == '9' ) return true;
+									var $this = $( this );
 									setTimeout( function() {
 										var expanded = $this.data( 'expanded' );
-										if ( $this.val().length > 24 ) {
+										if ( $this.val().match( /\n/ ) || $this.val().length > 24 ) {
 											if ( !expanded ) {
 												$this.animate( { 'height': '4.5em' }, 'fast' );
 												$this.data( 'expanded', true );
