@@ -24,7 +24,7 @@ var mwUploadHelper = {
 					'apiUrl': mw.getLocalApiUrl(),
 					
 					// MediaWiki API supports chunk uploads: 
-					'enable_chunks' : false, 
+					'enable_chunks' : false,
 					
 					// Set the interface type
 					'interface_type' : 'dialog',
@@ -75,6 +75,7 @@ var mwUploadHelper = {
 		.focus( function() {
 			_this.toggleUpType( this.id == 'wpUploadFile' );
 		} )
+		
 		// Also setup the onChange event binding:
 		.change( function() {
 			if ( wgUploadAutoFill ) {
