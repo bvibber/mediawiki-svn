@@ -272,6 +272,8 @@ fn: {
 					}
 					lastP = t.inP;
 				}
+				// Moving nodes around like this invalidates offset objects
+				context.fn.purgeOffsets();
 			}
 			
 			// Now wrap everything between startNode and endNode (may be equal).
@@ -342,6 +344,10 @@ fn: {
 				$(this).replaceWith( this.childNodes );
 			}
 		});
+		
+		// Purge offsets after we're done
+		// TODO: Ideally this is not needed
+		context.fn.purgeOffsets();
 	}
 }
 

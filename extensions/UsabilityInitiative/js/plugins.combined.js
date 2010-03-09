@@ -6913,12 +6913,7 @@ if ( typeof context == 'undefined' ) {
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
 			}
-			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
-			switch ( event.which ) {
-				case 8: // backspace
-					// do something here...
-					break;
-			}
+			
 			return true;
 		},
 		'delayedChange': function( event ) {
@@ -6928,6 +6923,17 @@ if ( typeof context == 'undefined' ) {
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
 			}
+			
+			//surround by <p> if it does not already have it
+			var t = context.fn.getOffset();
+			if ( t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				var cursorPos = context.fn.getCaretPosition()[0];
+				$( t.node ).wrap( "<p></p>" );
+				context.fn.refreshOffsets();
+				context.fn.setSelection( { start: cursorPos, end: cursorPos } );
+			}
+			
+			
 			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
 		},
@@ -8107,10 +8113,10 @@ if ( typeof context == 'undefined' ) {
 					end = e ? e.offset : null;
 					// Don't try to set the selection past the end of a node, causes errors
 					// Just put the selection at the end of the node in this case
-					if ( sc.nodeName == '#text' && start >= sc.nodeValue.length ) {
+					if ( sc.nodeName == '#text' && start > sc.nodeValue.length ) {
 						start = sc.nodeValue.length - 1;
 					}
-					if ( ec.nodeName == '#text' && end >= ec.nodeValue.length ) {
+					if ( ec.nodeName == '#text' && end > ec.nodeValue.length ) {
 						end = ec.nodeValue.length - 1;
 					}
 				}
@@ -8728,6 +8734,8 @@ fn: {
 					}
 					lastP = t.inP;
 				}
+				// Moving nodes around like this invalidates offset objects
+				context.fn.purgeOffsets();
 			}
 			
 			// Now wrap everything between startNode and endNode (may be equal).
@@ -8798,6 +8806,10 @@ fn: {
 				$(this).replaceWith( this.childNodes );
 			}
 		});
+		
+		// Purge offsets after we're done
+		// TODO: Ideally this is not needed
+		context.fn.purgeOffsets();
 	}
 }
 
@@ -9333,7 +9345,7 @@ fn: {
 					// Build the table
 					// TODO: Be smart and recycle existing table
 					var params = templateModel.getAllInitialParams();
-					var $fields = $( this ).find( '.wikiEditor-template-dialog-fields' ).empty();
+					var $fields = $( this ).find( '.wikiEditor-template-dialog-fields' );
 					// Do some bookkeeping so we can recycle existing rows
 					var $rows = $fields.find( '.wikiEditor-template-dialog-field-wrapper' );
 					for ( var paramIndex in params ) {
@@ -9350,7 +9362,10 @@ fn: {
 							// We have another row to recycle
 							var $row = $rows.eq( 0 );
 							$row.children( 'label' ).text( paramText );
-							$row.children( 'input' ).val( paramVal );
+							$row.children( 'textarea' )
+								.data( 'name', param.name )
+								.val( paramVal )
+								.change();
 							$rows = $rows.not( $row );
 						} else {
 							// Create a new row
@@ -9362,8 +9377,9 @@ fn: {
 							$( '<textarea />' )
 								.data( 'name', param.name )
 								.val( paramVal )
-								.bind( 'cut paste keypress click', function() {
-									$this = $(this);
+								.data( 'expanded', false )
+								.bind( 'cut paste keypress click change', function() {
+									var $this = $(this);
 									setTimeout( function() {
 										var expanded = $this.data( 'expanded' );
 										if ( $this.val().length > 24 ) {
@@ -9380,14 +9396,15 @@ fn: {
 									}, 0 );
 								} )
 								.appendTo( $paramRow );
-							$( '<div style="clear:both"></div>' )
-								.appendTo( $paramRow );
-							$fields.append( $paramRow );
+							$paramRow
+								.append( '<div style="clear:both"></div>' )
+								.appendTo( $fields );
 						}
-						// Remove any leftover rows
-						$rows.remove();
-						$fields.find( 'label' ).autoEllipsis();
 					}
+					
+					// Remove any leftover rows
+					$rows.remove();
+					$fields.find( 'label' ).autoEllipsis();
 					// Ensure our close button doesn't recieve the ui-state-focus class 
 					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
 						.removeClass( 'ui-state-focus' );

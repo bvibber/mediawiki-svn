@@ -443,7 +443,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					t = t.next();
 				}
-				// MS Word + webkit			
+				// MS Word + webkit
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
 						var outerParent = $(this).parent();

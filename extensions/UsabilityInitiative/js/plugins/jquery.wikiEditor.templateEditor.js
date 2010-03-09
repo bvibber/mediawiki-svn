@@ -231,7 +231,7 @@ fn: {
 					// Build the table
 					// TODO: Be smart and recycle existing table
 					var params = templateModel.getAllInitialParams();
-					var $fields = $( this ).find( '.wikiEditor-template-dialog-fields' ).empty();
+					var $fields = $( this ).find( '.wikiEditor-template-dialog-fields' );
 					// Do some bookkeeping so we can recycle existing rows
 					var $rows = $fields.find( '.wikiEditor-template-dialog-field-wrapper' );
 					for ( var paramIndex in params ) {
@@ -248,7 +248,10 @@ fn: {
 							// We have another row to recycle
 							var $row = $rows.eq( 0 );
 							$row.children( 'label' ).text( paramText );
-							$row.children( 'input' ).val( paramVal );
+							$row.children( 'textarea' )
+								.data( 'name', param.name )
+								.val( paramVal )
+								.change();
 							$rows = $rows.not( $row );
 						} else {
 							// Create a new row
@@ -260,8 +263,9 @@ fn: {
 							$( '<textarea />' )
 								.data( 'name', param.name )
 								.val( paramVal )
-								.bind( 'cut paste keypress click', function() {
-									$this = $(this);
+								.data( 'expanded', false )
+								.bind( 'cut paste keypress click change', function() {
+									var $this = $(this);
 									setTimeout( function() {
 										var expanded = $this.data( 'expanded' );
 										if ( $this.val().length > 24 ) {
@@ -278,14 +282,15 @@ fn: {
 									}, 0 );
 								} )
 								.appendTo( $paramRow );
-							$( '<div style="clear:both"></div>' )
-								.appendTo( $paramRow );
-							$fields.append( $paramRow );
+							$paramRow
+								.append( '<div style="clear:both"></div>' )
+								.appendTo( $fields );
 						}
-						// Remove any leftover rows
-						$rows.remove();
-						$fields.find( 'label' ).autoEllipsis();
 					}
+					
+					// Remove any leftover rows
+					$rows.remove();
+					$fields.find( 'label' ).autoEllipsis();
 					// Ensure our close button doesn't recieve the ui-state-focus class 
 					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
 						.removeClass( 'ui-state-focus' );
