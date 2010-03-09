@@ -115,3 +115,7 @@ a[disabled=true]:hover {
 	display: none;
 	background: #ffffe0;
 }
+
+.mwe-upwiz-thumbnail {
+	width: 220px;  /* should be same as configured thumbnail width in uploadWizard.js */
+}
