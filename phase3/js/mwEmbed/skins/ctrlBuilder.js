@@ -98,13 +98,13 @@ ctrlBuilder.prototype = {
 			.css( 'height', this.height )			
 		
 		// Check for overlay controls: 
-		if( _this.checkOverlayControls() ){
-			$controlBar.css({
+		if( _this.checkOverlayControls() ) {
+			$controlBar.css( {
 				'position': 'absolute',
 				'bottom' : '0px',
 				'left' : '0px',
 				'right' : '0px'
-			})
+			} )
 			.hide()
 			// Make sure the interface is correct height: 
 			embedPlayer.$interface.css( {
@@ -195,7 +195,7 @@ ctrlBuilder.prototype = {
 	/**
 	* Get the fullscreen player css
 	*/	
-	getFullscreenPlayerCss: function(){
+	getFullscreenPlayerCss: function() {
 		var embedPlayer = this.embedPlayer;
 		// Setup target height width based on max window size	
 		var fullWidth = $j( window ).width() - 2 ;
@@ -223,7 +223,7 @@ ctrlBuilder.prototype = {
 	/**
 	* Get the fullscreen play button css
 	*/
-	getFullscreenPlayButtonCss: function(){		
+	getFullscreenPlayButtonCss: function() {		
 		var pos = this.getFullscreenPlayerCss();
 		return {
 			'left' : ( (  pos.width - this.getComponentWidth( 'playButtonLarge' ) ) / 2 ),
@@ -234,7 +234,7 @@ ctrlBuilder.prototype = {
 	/**
 	* Get the fullscreen text css
 	*/
-	getFullscreenTextCss: function(){
+	getFullscreenTextCss: function() {
 		// Some arbitrary scale relative to window size
 		var textSize = ( $j( window ).width() / 8 ) + 20;
 		if( textSize < 95 )  textSize = 95;
@@ -250,7 +250,7 @@ ctrlBuilder.prototype = {
 	 *  doFullScreenPlayer to enable fullscreen mode
 	 *  restoreWindowPlayer to restore window mode
 	 */
-	toggleFullscreen: function(){
+	toggleFullscreen: function() {
 		if( this.fullscreenMode ){
 			this.restoreWindowPlayer();			
 		}else{
@@ -261,7 +261,7 @@ ctrlBuilder.prototype = {
 	/**
 	* Do full-screen mode 
 	*/ 
-	doFullScreenPlayer: function(){
+	doFullScreenPlayer: function() {
 		mw.log(" ctrlBuilder :: toggle full-screen ");									
 		// Setup pointer to control builder :
 		var _this = this;

@@ -63,6 +63,7 @@ mw.ApiProxy = { };
 	* @param {Function} [callbackTimeout] Optional Function called on api timeout 
 	*/
 	$.doRequest = function( apiUrl, requestQuery, callback , callbackTimeout ) {		
+		
 		// Sanity check: 
 		if ( mw.isLocalDomain( apiUrl ) ) {
 			mw.log( "Error: trying to proxy local domain? " );
@@ -601,15 +602,9 @@ mw.ApiProxy = { };
 	*/
 	function serverHandleRequest( ) {		
 		var clientRequest = getClientRequest();
-		mw.log(" Handle client request :: " +  	JSON.stringify( clientRequest ) );
-		//debugger;
+		mw.log(" Handle client request :: " +  	JSON.stringify( clientRequest ) );		
 		// Process request type:
-		switch( clientRequest[ 'action' ] ){
-			case 'nestedCallback':
-				alert('nestedCallback')
-				// pretend this was a nested callback
-				return $.nested('');
-			break;
+		switch( clientRequest[ 'action' ] ){			
 			case 'browseFile':
 				return serverBrowseFile();
 			break;			
@@ -690,19 +685,17 @@ mw.ApiProxy = { };
 		// Check if firefogg is enabled:
 		// NOTE: the binding function should be made identical.  
 		if( wgEnableFirefogg ) {
-			mw.load( 'AddMedia.firefogg', function() {	
-				var uploadConfig = getUploadFileConfig( );
-								
-				$j( '#wpUploadFile' ).firefogg( uploadConfig );
+			mw.load( 'AddMedia.firefogg', function() {												
+				$j( '#wpUploadFile' ).firefogg( getUploadFileConfig() );				
 				
 				// Update status 
 				sendClientMsg( {'status':'ok'} );
 			});
 		} else {
 			mw.load( 'AddMedia.UploadHandler', function() {	
-				var uploadConfig = getUploadFileConfig();
-									
-				$j( '#mw-upload-form' ).uploadHandler( uploadConfig );
+				var uploadConfig = getUploadFileConfig();						
+							
+				$j( '#mw-upload-form' ).uploadHandler( getUploadFileConfig() );				
 				
 				// Update status
 				sendClientMsg( {'status':'ok'} );
@@ -795,6 +788,9 @@ mw.ApiProxy = { };
 			
 			// Api proxy does not handle descriptionText rewrite
 			'rewriteDescriptionText' : false,
+			
+			// Don't show firefogg upload warning 
+			'showFoggWarningFlag' : false,
 			
 			// Set the doneUploadCb if set in the browseFile options
 			'doneUploadCb' : function ( apiResult ){

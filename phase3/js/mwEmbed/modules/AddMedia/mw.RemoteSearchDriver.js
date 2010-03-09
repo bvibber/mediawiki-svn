@@ -61,7 +61,7 @@ mw.addMessages( {
 	"mwe-checking-resource" : "Checking for resource",
 	"mwe-resource-needs-import" : "Resource $1 needs to be imported to $2",
 	
-	"mwe-warning-upload-to-commons" : "$1 recomends you upload to commons, only upload localy after you have read $2",
+	"mwe-warning-upload-to-commons" : "$1 recommends you upload to commons, only upload locally after you have read $2",
 	"mwe-local-upload-policy-link" : "local upload policy" ,
 	
 	"mwe-ftype-svg" : "SVG vector file",
@@ -75,13 +75,13 @@ mw.addMessages( {
 	"rsd-wiki_commons": "Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)",
 
 	"rsd-kaltura-title" : "All Sources",
-	"rsd-kaltura" : "Kaltura agragated search for free-licensed media across multiple search providers",
+	"rsd-kaltura" : "Kaltura aggregated search for free-licensed media across multiple search providers",
 
 	"rsd-this_wiki-title" : "This wiki",
 	"rsd-this_wiki-desc" : "The local wiki",
 
 	"rsd-archive_org-title": "Archive.org",
-	"rsd-archive_org-desc" : "The Internet Archive, a digital library of cultural artifacts",
+	"rsd-archive_org-desc" : "The Internet Archive, a digital library of cultural artefacts",
 
 	"rsd-flickr-title" : "Flickr.com",
 	"rsd-flickr-desc" : "Flickr.com, a online photo sharing site",
@@ -90,6 +90,7 @@ mw.addMessages( {
 	
 	"rsd-search-timeout" : "The search request did not complete. The server may be down experiencing heavy load. You can try again later"
 } );
+
 /**
 * default_remote_search_options
 * 
@@ -1138,6 +1139,10 @@ mw.RemoteSearchDriver.prototype = {
 		
 	},
 	
+	/**
+	* Show recent uploads
+	* @param {String} uploadTargetId The upload target id  
+	*/
 	showUserRecentUploads: function( uploadTargetId  ){
 		var _this = this;
 		var provider = _this.content_providers[ uploadTargetId ];
@@ -1149,8 +1154,8 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// If the target is not local or we don't have a userName
 		// ( try and grab the user name via api call (will be a proxy call if remote) ) 
-		mw.getUserName( uploadApiUrl, function( userName ) {			
-			if( userName === false ){
+		mw.getUserName( uploadApiUrl, function( userName ) {
+			if ( userName === false ) {
 				var logInLink = uploadApiUrl.replace( 'api.php', 'index.php' ) + '?title=Special:UserLogin'; 
 				// Timed out or proxy not setup ( for remotes ) 
 				$j( '#user-results-' + uploadTargetId ).html(					
@@ -1158,7 +1163,7 @@ mw.RemoteSearchDriver.prototype = {
 						$j( '<a />' )
 						.attr( {
 							'href': logInLink,
-							'target' : '_new'					 
+							'target' : '_new'
 						})
 						.append( gM( 'mwe-loggin-link' ) ),
 						
@@ -1171,7 +1176,7 @@ mw.RemoteSearchDriver.prototype = {
 					)
 				);
 				
-				// If using internet exploer it could be IE privacy settings ( aka "evil eye" )
+				// If using Internet Exploer it could be IE privacy settings ( aka "evil eye" )
 				// http://stackoverflow.com/questions/389456/cookie-blocked-not-saved-in-iframe-in-internet-explorer
 				if( $j.browser.msie ){
 					$j( '#user-results-' + uploadTargetId ).append( 

@@ -1347,6 +1347,7 @@ var MW_EMBED_VERSION = '1.1d';
 		    'prop' : 'revisions',
 		    'rvprop' : 'content'
 		};	
+		
 		mw.getJSON( apiUrl , request, function( data ) {			
 			if( !data || !data.query || !data.query.pages ) {
 				callback( false );	
@@ -1358,7 +1359,7 @@ var MW_EMBED_VERSION = '1.1d';
 					callback( page[ 'revisions' ][0]['*'] );
 				}
 			}
-		});
+		} );
 	}		
 	
 	/**
@@ -1460,7 +1461,7 @@ var MW_EMBED_VERSION = '1.1d';
 		setTimeout( function( ) {
 			if( ! ranCallback ) {
 				requestTimeOutFlag = true;
-				mw.log( "Error:: request timed out: " + url ) ;			
+				mw.log( "Error:: request timed out: " + url );			
 				if( timeoutCallback ){	
 					timeoutCallback();
 				}
@@ -1474,22 +1475,24 @@ var MW_EMBED_VERSION = '1.1d';
 		
 			// Check if we need to setup a proxy
 			if( ! mw.isLocalDomain( url ) ) {
-		
+					
 				//Set local scope ranCallback to true 
-				// ( ApiProxy handles timeouts internnaly )
+				// ( ApiProxy handles timeouts internally )
 				ranCallback = true;
 		
 				// Load the proxy and issue the request
-				mw.load( 'ApiProxy', function() {		
+				mw.load( 'ApiProxy', function( ) {
 					mw.ApiProxy.doRequest( url, data, callback, timeoutCallback);				
-				});				
-				
+				} );
+								
 			} else {
+							
 				// Do the request an ajax post 
-				$j.post( url, data, myCallback, 'json');
+				$j.post( url, data, myCallback, 'json');				
 			}
 			return ;
 		}
+		
 		// If cross domain setup a callback: 
 		if( ! mw.isLocalDomain( url ) ) {				 
 			if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ) {
@@ -1497,6 +1500,7 @@ var MW_EMBED_VERSION = '1.1d';
 				url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
 			}				 
 		}
+		
 		// Pass off the jQuery getJSON request:
 		$j.getJSON( url, data, myCallback );			
 	}
@@ -1575,9 +1579,12 @@ var MW_EMBED_VERSION = '1.1d';
 	/**
 	 * Api helper to grab the username
 	 * @param {String} [apiUrl] Optional target API url (uses default local api if unset) 
-	 * @param {Function} callback Function to callback with username or false if not found	 
+	 * @param {Function} callback Function to callback with username or false if not found	 	
 	 */
-	 mw.getUserName = function( apiUrl, callback ){	 		 	
+	 // Stub feature apiUserNameCache to avoid multiple calls 
+	 // ( a more general api cache framework should be devloped ) 
+	 var apiUserNameCache = {};
+	 mw.getUserName = function( apiUrl, callback, fresh ){	 		 	
 	 	if( typeof apiUrl == 'function' ){
 	 		var callback = apiUrl;
 	 		var apiUrl =  mw.getLocalApiUrl();	 		
@@ -1590,6 +1597,10 @@ var MW_EMBED_VERSION = '1.1d';
 	 			callback( wgUserName )
 	 			return ;
 	 		}
+	 	}
+	 	if( ! fresh && apiUserNameCache[ apiUrl ]  ) {
+	 		callback( apiUserNameCache[ apiUrl ]  );
+	 		return ; 
 	 	}
 	 	
 	 	// Setup the api request
@@ -1611,10 +1622,11 @@ var MW_EMBED_VERSION = '1.1d';
 				callback( false );
 				return ;
 			}
+			apiUserNameCache[ apiUrl ] = data.query.userinfo.name;
 			// Else return the username: 
 			callback( data.query.userinfo.name );				
 		}, function(){
-			//Timeout also results in callback( false );
+			// Timeout also results in callback( false ) ( no user found) 
 			callback( false );
 		} );
 	}
