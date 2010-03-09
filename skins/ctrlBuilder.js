@@ -279,6 +279,14 @@ ctrlBuilder.prototype = {
 		}			
 		this.fullscreenMode = true;		
 		
+		//Remove any old mw-fullscreen-overlay
+		$interface.find( '.mw-fullscreen-overlay' ).remove();
+		
+		// Special hack for mediawiki monobook skin search box
+		if( $j( '#p-search' ).length ) { 
+			$j( '#p-search' ).css('z-index', 1);
+		} 
+		
 		// Add the css fixed fullscreen black overlay as a sibling to the video element
 		$interface.after( 
 			$j( '<div />' )

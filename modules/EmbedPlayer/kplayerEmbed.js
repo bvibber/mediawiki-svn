@@ -42,7 +42,7 @@ var kplayerEmbed = {
 		params.quality = "best";
 		params.wmode = "opaque";
 		params.allowfullscreen = "true";
-		params.allowscriptaccess = "sameDomain";
+		params.allowscriptaccess = "always";
 		
 		var attributes = {};
 		attributes.id = this.pid;
@@ -67,7 +67,7 @@ var kplayerEmbed = {
 			attributes
 		);
 		
-		setTimeout(function() {
+		setTimeout( function() {
 			_this.postEmbedJS();
 		}, 250 );
 						
@@ -84,9 +84,10 @@ var kplayerEmbed = {
 		if( this.playerElement && this.playerElement.addJsListener ) {
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
-			_this.bindPlayerFunction( 'doPlay', 'play' );
+			_this.bindPlayerFunction( 'doPlay', 'onPlay' );
 			_this.bindPlayerFunction( 'playerPlayEnd', 'onClipDone' );
-			_this.bindPlayerFunction( 'playerUpdatePlayhead', 'onUpdatePlayhead' );								
+			_this.bindPlayerFunction( 'playerUpdatePlayhead', 'onUpdatePlayhead' );
+											
 			// Start the monitor
 			this.monitor();
 		}else{
@@ -106,7 +107,7 @@ var kplayerEmbed = {
 	* @param {String} flash binding name
 	* @param {String} function callback name
 	*/
-	bindPlayerFunction:function( bName, fName ) {
+	bindPlayerFunction: function( bName, fName ) {
 		var cbid = fName + '_cb_' + this.id.replace(' ', '_');
 		eval( 'window[ \'' + cbid +'\' ] = function( data ) {$j(\'#' + this.id + '\').get(0).'+ fName +'( data );}' );
 		this.playerElement.addJsListener( bName , cbid);
@@ -116,15 +117,23 @@ var kplayerEmbed = {
 	* on Pause callback from the kaltura flash player
 	*  calls parent_pause to update the interface
 	*/
-	onPause:function() {		
+	onPause: function() {		
 		this.parent_pause();
+	},
+	
+	/**
+	 * onPlay function callback from the kaltura flash player
+	 * directly call the parent_play
+	 */
+	onPlay: function(){
+		this.parent_play();
 	},
 	
 	/**
 	* play method
 	*  calls parent_play to update the interface 
 	*/
-	play:function() {
+	play: function() {
 		if( this.playerElement && this.playerElement.sendNotification )
 			this.playerElement.sendNotification( 'doPlay' );
 		this.parent_play();
@@ -134,8 +143,10 @@ var kplayerEmbed = {
 	* pause method
 	*  calls parent_pause to update the interface 
 	*/
-	pause:function() {
-		this.playerElement.sendNotification('doPause');
+	pause: function() {
+		if( this.playerElement && this.playerElement.sendNotification ){
+			this.playerElement.sendNotification('doPause');
+		}
 		this.parent_pause();
 	},
 	
@@ -158,9 +169,10 @@ var kplayerEmbed = {
 	/**
 	* Issues a volume update to the playerElement
 	*/
-	updateVolumen:function( percentage ) {
-		if( this.playerElement && this.playerElement.sendNotification )
-			this.playerElement.sendNotification('volumeChange', percentage);
+	updateVolumen: function( percentage ) {				
+		if( this.playerElement && this.playerElement.sendNotification ){			
+			this.playerElement.sendNotification('changeVolume', percentage);
+		}
 	},
 	
 	/**

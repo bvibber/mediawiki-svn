@@ -63,7 +63,6 @@ mw.ApiProxy = { };
 	* @param {Function} [callbackTimeout] Optional Function called on api timeout 
 	*/
 	$.doRequest = function( apiUrl, requestQuery, callback , callbackTimeout ) {		
-		
 		// Sanity check: 
 		if ( mw.isLocalDomain( apiUrl ) ) {
 			mw.log( "Error: trying to proxy local domain? " );
@@ -417,7 +416,7 @@ mw.ApiProxy = { };
 	* @param {URL} apiUrl The url of the api server
 	*/
 	// Include gadget js ( in case the user has not enabled the gadget on that domain )
-	var gadgetWithJS = '?withJS=MediaWiki:Gadget-mwEmbed.js';
+	var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
 	//var gadgetWithJS = '';
 	function getServerFrame( context ) {
 		if( ! context || ! context.apiUrl ){
@@ -602,9 +601,9 @@ mw.ApiProxy = { };
 	*/
 	function serverHandleRequest( ) {		
 		var clientRequest = getClientRequest();
-		mw.log(" Handle client request :: " +  	JSON.stringify( clientRequest ) );		
+		mw.log(" Handle client request :: " +  	JSON.stringify( clientRequest ) );
 		// Process request type:
-		switch( clientRequest[ 'action' ] ){			
+		switch( clientRequest[ 'action' ] ){
 			case 'browseFile':
 				return serverBrowseFile();
 			break;			
@@ -788,7 +787,7 @@ mw.ApiProxy = { };
 			
 			// Api proxy does not handle descriptionText rewrite
 			'rewriteDescriptionText' : false,
-			
+				
 			// Don't show firefogg upload warning 
 			'showFoggWarningFlag' : false,
 			
@@ -938,7 +937,7 @@ mw.ApiProxy = { };
 		
 		// Special handler for src and packaged hash request: 
 		if( options.src ) {
-			s += 'src="' + options.src;
+			s += 'src="' + mw.escapeQuotes( options.src );
 			if( options.request ) {
 							
 				// Add the contextKey to the request 
