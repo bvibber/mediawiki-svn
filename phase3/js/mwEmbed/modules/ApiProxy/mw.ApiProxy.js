@@ -114,7 +114,18 @@ mw.ApiProxy = { };
 		var uploadDialogInterface = new mw.UploadDialogInterface( {
 			'uploadHandlerAction' : function( action ){
 				mw.log(	'apiProxy uploadActionHandler:: ' + action );
-				// Send action to remote frame 
+				
+				// Handle actions that don't need to go to the iframe: 
+				switch ( action ){
+					case 'returnToFormCb':
+						if( options.returnToFormCb ){
+							options.returnToFormCb();
+						} 
+						return ;
+					break;
+				}
+				
+				// Handle actions that get sent to the remote frame 
 				mw.ApiProxy.sendServerMsg( {
 					'apiUrl' : options.apiUrl,
 					'frameName' : iFrameName,
@@ -127,7 +138,7 @@ mw.ApiProxy = { };
 		} );				
 			
 		// Setup the context with the callback in the current closure
-		var context = createContext({
+		var context = createContext( {
 			'apiUrl' : options.apiUrl,
 			// Setup the callback to process iframeData
 			'callback' : function( iframeData ) {
@@ -143,14 +154,14 @@ mw.ApiProxy = { };
 				}
 				mw.log( '~browseFile Callback~ event type: ' +  iframeData['event']  );
 				
-				// Else check for event 
+				// Handle events: 
 				if( iframeData['event'] ) {
 					switch( iframeData['event'] ) {
 						case 'selectFileCb':
 							if( options.selectFileCb ) {
 								options.selectFileCb( iframeData[ 'fileName' ] );
 							}
-						break
+						break						
 						// Set the doneUploadCb if set in the browseFile options
 						case 'doneUploadCb':
 							mw.log( "should call cb: " + options.doneUploadCb );
@@ -312,11 +323,11 @@ mw.ApiProxy = { };
 	*/
 	$.handleServerMsg = function( frameMsg ){
 		mw.log( "handleServerMsg:: " + JSON.stringify( frameMsg ) );
-		if( ! frameMsg.action ){
+		if( ! frameMsg.action ) {
 			mw.log(" missing frameMsg action " );
 			return false;
 		}	
-		switch( frameMsg.action ){
+		switch( frameMsg.action ) {
 			case 'fileSubmit':
 				serverSubmitFile( frameMsg.formData );
 			break;
@@ -374,7 +385,7 @@ mw.ApiProxy = { };
 	* @return context object
 	*	false if context object can not be found
 	*/
-	function getContext ( contextKey ){				
+	function getContext ( contextKey ) {				
 		if( ! proxyContext [ contextKey ] ){
 			mw.log( "Error: contextKey not found:: " + contextKey );
 			return false;
@@ -416,8 +427,8 @@ mw.ApiProxy = { };
 	* @param {URL} apiUrl The url of the api server
 	*/
 	// Include gadget js ( in case the user has not enabled the gadget on that domain )
-	var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
-	//var gadgetWithJS = '';
+	//var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
+	var gadgetWithJS = '';
 	function getServerFrame( context ) {
 		if( ! context || ! context.apiUrl ){
 			mw.log( "Error no context api url " );
@@ -513,7 +524,7 @@ mw.ApiProxy = { };
 		// FIXME offer the user the ability to "approve" requested domain save to
 		// their user preference setup )
 		
-		// FIXME grab the users whitelist for our current domain			
+		// FIXME grab and check domain against the users whitelist and permissions 	
 		return false;		
 	}
 	
@@ -784,7 +795,12 @@ mw.ApiProxy = { };
 					'fileName' : fileName
 				} );
 			},
-			
+			// The return to form cb:
+			'returnToFormCb' : function (){
+				sendClientMsg( {
+					'event': 'returnToFormCb'
+				} );
+			},
 			// Api proxy does not handle descriptionText rewrite
 			'rewriteDescriptionText' : false,
 				
