@@ -257,7 +257,7 @@ $messages['be-tarask'] = array(
 	'recordadmin-modified' => 'Абноўлены',
 	'recordadmin-actions' => 'Дзеяньні',
 	'recordadmin-needscontent' => 'Дадаць зьмест...',
-	'recordadmin-editwithform' => 'Рэдагаваць праз форму',
+	'recordadmin-editwithform' => 'Уласьцівасьці',
 	'recordadmin-typeinfo' => '$1 запіс',
 	'right-recordadmin' => 'пошук і рэдагаваньне старонак запісаў',
 	'recordadmin-export-csv' => 'CSV',
@@ -680,6 +680,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author Peter17
  * @author PieRRoMaN
  */
 $messages['fr'] = array(
@@ -719,7 +720,7 @@ $messages['fr'] = array(
 	'recordadmin-modified' => 'Modifié',
 	'recordadmin-actions' => 'Actions',
 	'recordadmin-needscontent' => 'Ajouter le contenu...',
-	'recordadmin-editwithform' => 'Modifier avec un formulaire',
+	'recordadmin-editwithform' => 'Propriétés',
 	'recordadmin-typeinfo' => 'enregistrement $1',
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 	'recordadmin-export-csv' => 'CSV',
@@ -1042,7 +1043,7 @@ $messages['ia'] = array(
 	'recordadmin-modified' => 'Modificate',
 	'recordadmin-actions' => 'Actiones',
 	'recordadmin-needscontent' => 'Adder contento...',
-	'recordadmin-editwithform' => 'Modificar con formulario',
+	'recordadmin-editwithform' => 'Proprietates',
 	'recordadmin-typeinfo' => 'Registro de typo $1',
 	'right-recordadmin' => 'Cercar e modificar paginas de datos',
 	'recordadmin-export-csv' => 'CSV',
@@ -1320,7 +1321,7 @@ $messages['mk'] = array(
 	'recordadmin-modified' => 'Изменето',
 	'recordadmin-actions' => 'Дејства',
 	'recordadmin-needscontent' => 'Додај содржина...',
-	'recordadmin-editwithform' => 'Уреди со образец',
+	'recordadmin-editwithform' => 'Својства',
 	'recordadmin-typeinfo' => 'Запис од типот $1',
 	'right-recordadmin' => 'Пронаоѓање и уредување на записни страници',
 	'recordadmin-export-csv' => 'CSV',
@@ -1407,7 +1408,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-modified' => 'Gewijzigd',
 	'recordadmin-actions' => 'Acties',
 	'recordadmin-needscontent' => 'Inhoud toevoegen...',
-	'recordadmin-editwithform' => 'Via formulier bewerken',
+	'recordadmin-editwithform' => 'Eigenschappen',
 	'recordadmin-typeinfo' => 'Gegeven van het type $1',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 	'recordadmin-export-csv' => 'CSV',
@@ -1499,7 +1500,7 @@ $messages['no'] = array(
 	'recordadmin-modified' => 'Endret',
 	'recordadmin-actions' => 'Handlinger',
 	'recordadmin-needscontent' => 'Legg til innhold...',
-	'recordadmin-editwithform' => 'Endre med skjema',
+	'recordadmin-editwithform' => 'Egenskaper',
 	'recordadmin-typeinfo' => 'Oppføringstype $1',
 	'right-recordadmin' => 'Finn og endre oppføringssider',
 	'recordadmin-export-csv' => 'CSV',
@@ -1848,7 +1849,7 @@ $messages['ru'] = array(
 	'recordadmin-modified' => 'Изменено',
 	'recordadmin-actions' => 'Действия',
 	'recordadmin-needscontent' => 'Добавить содержимое...',
-	'recordadmin-editwithform' => 'Редактировать с формой',
+	'recordadmin-editwithform' => 'Свойства',
 	'recordadmin-typeinfo' => '$1 запись',
 	'right-recordadmin' => 'поиск и редактирование страниц записей',
 	'recordadmin-export-csv' => 'CSV',

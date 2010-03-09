@@ -127,7 +127,9 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'wikieditor' => 'Rhyngwyneb golygu testun wici uwch',
+	'wikieditor-desc' => 'Yn darparu rhyngwyneb estynadwy ar gyfer golygu testun wici a llawer o fodiwlau o nodweddion arbennig',
 	'wikieditor-wikitext-tab' => 'Testun wici',
+	'wikieditor-loading' => "Wrthi'n llwytho",
 );
 
 /** German (Deutsch)

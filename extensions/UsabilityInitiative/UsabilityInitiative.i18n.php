@@ -124,7 +124,10 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
-	'usabilityinitiative' => 'Cynllun Defnyddioldeb',
+	'usabilityinitiative' => 'Y Cynllun Defnyddioldeb',
+	'usabilityinitiative-desc' => 'Nodweddion a ddatblygwyd gan Gynllun Defnyddioldeb Wicipedia i wella defnyddioldeb MediaWiki',
+	'prefs-beta' => 'Nodweddion Beta',
+	'prefs-labs' => 'Nodweddion Labs',
 );
 
 /** Danish (Dansk)

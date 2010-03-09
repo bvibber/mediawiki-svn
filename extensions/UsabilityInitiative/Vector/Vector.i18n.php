@@ -95,6 +95,14 @@ $messages['cs'] = array(
 	'vector-desc' => 'Vylepšuje prvky uživatelského rozhraní vzhledu Vektor.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'vector' => "Gwelliannau i'r rhyngwyneb ar gyfer Vector",
+	'vector-desc' => 'Yn gwella ar y rhyngwyneb yn y wedd Vector.',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */

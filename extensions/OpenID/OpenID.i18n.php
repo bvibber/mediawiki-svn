@@ -4111,6 +4111,7 @@ Sem um OpenID não se poderia autenticar.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Danielsouzat
  * @author Eduardo.mps
  * @author Hamilton Abreu
  * @author ZehRique
@@ -4147,13 +4148,16 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'Endereço de e-mail',
 	'openidlanguage' => 'Língua',
 	'openidtimezone' => 'Fuso horário',
+	'openidchooselegend' => 'Escolha do nome de usuário',
 	'openidchooseinstructions' => 'Todos os utilizadores precisam de um apelido;
 pode escolher uma das opções abaixo.',
+	'openidchoosenick' => 'Seu apelido ($1)',
 	'openidchoosefull' => 'O seu nome completo ($1)',
 	'openidchooseurl' => 'Um nome escolhido a partir do seu OpenID ($1)',
 	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual' => 'Um nome à sua escolha:',
-	'openidchooseexisting' => 'Uma conta existente neste wiki:',
+	'openidchooseexisting' => 'Uma conta existente nesta wiki',
+	'openidchooseusername' => 'Nome de usuário:',
 	'openidchoosepassword' => 'palavra-chave:',
 	'openidconvertinstructions' => 'Este formulário lhe permite alterar sua conta de usuário para usar uma URL OpenID ou adicionar mais URLs OpenID.',
 	'openidconvertoraddmoreids' => 'Converter para OpenID ou adicionar outra URL OpenID',
@@ -4178,7 +4182,7 @@ Se já possui uma conta em {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]
 Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta em OpenID]] após autenticar-se normalmente.
 
 Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID], e você poderá já ter uma conta ativada para OpenID em outro serviço.',
-	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal',
+	'openidupdateuserinfo' => 'Atualizar minhas informações pessoais:',
 	'openiddelete' => 'Excluir OpenID',
 	'openiddelete-text' => 'Ao clicar no botão "{{int:openiddelete-button}}", você removerá o OpenID $1 de sua conta.
 Você não poderá mais efetuar autenticação com este OpenID.',

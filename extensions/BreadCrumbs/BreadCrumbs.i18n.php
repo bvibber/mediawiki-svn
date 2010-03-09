@@ -302,6 +302,13 @@ $messages['km'] = array(
 	'breadcrumbs-desc' => 'បង្ហាញ​ផ្លូវ​របស់​អ្នកប្រើប្រាស់​នានា​តាមរយៈ​វិគី​។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'breadcrumbs-desc' => 'ವಿಕಿಯಲ್ಲಿ ಸದಸ್ಯರ ಪಥವನ್ನು ತೋರಿಸುತ್ತದೆ.',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Yknok29

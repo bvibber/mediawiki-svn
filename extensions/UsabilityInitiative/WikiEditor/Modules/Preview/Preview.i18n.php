@@ -143,6 +143,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'wikieditor-preview-preference' => 'Galluogi rhagolwg ochr-yn-ochr',
 	'wikieditor-preview-tab' => 'Rhagolwg',
 	'wikieditor-preview-changes-tab' => 'Newidiadau',
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
