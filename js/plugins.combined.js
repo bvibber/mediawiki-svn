@@ -8712,9 +8712,12 @@ fn: {
 									afterStart
 								);
 							}
-							// Move all children of oldParent into startNode's parent
-							while ( oldParent.firstChild ) {
-								startNode.parentNode.insertBefore( oldParent.firstChild, afterStart );
+							// A <p> with just a <br> in it is an empty line, so let's not bother with unwrapping it
+							if ( !( $( oldParent ).children().length == 1 && $( oldParent.firstChild ).is( 'br' ) ) ) {
+								// Move all children of oldParent into startNode's parent
+								while ( oldParent.firstChild ) {
+									startNode.parentNode.insertBefore( oldParent.firstChild, afterStart );
+								}
 							}
 						} else {
 							if ( lastP != t.inP ) {
@@ -8723,9 +8726,12 @@ fn: {
 									startNode.ownerDocument.createElement( 'br' )
 								);
 							}
-							// Move all children of oldParent into startNode's parent
-							while ( oldParent.firstChild ) {
-								startNode.parentNode.appendChild( oldParent.firstChild );
+							// A <p> with just a <br> in it is an empty line, so let's not bother with unwrapping it
+							if ( !( $( oldParent ).children().length == 1 && $( oldParent.firstChild ).is( 'br' ) ) ) {
+								// Move all children of oldParent into startNode's parent
+								while ( oldParent.firstChild ) {
+									startNode.parentNode.appendChild( oldParent.firstChild );
+								}
 							}
 						}
 						// Remove oldParent, which is now empty
@@ -9377,6 +9383,7 @@ fn: {
 							$( '<textarea />' )
 								.data( 'name', param.name )
 								.val( paramVal )
+								.css( 'height', $(this).val().length > 24 ? '4.5em' : '1.5em' )
 								.data( 'expanded', false )
 								.bind( 'cut paste keypress click change', function( e ) {
 									// If this was fired by a tab keypress, let it go
