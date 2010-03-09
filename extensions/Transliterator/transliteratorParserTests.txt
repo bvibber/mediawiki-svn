@@ -139,7 +139,7 @@ Mediawiki:Transliterator:el
 !! article
 MediaWiki:Transliterator:ko
 !! text
-<decompose>
+__DECOMPOSE__
  # Single letters take from http://cpansearch.perl.org/src/KAWASAKI/Lingua-KO-Romanize-Hangul-0.20/lib/Lingua/KO/Romanize/Hangul.pm
  # It needs some special cases for certain adjacent characters but I cannot decipher the documentation, and the perl code above
  # seems to replace characters only in circumstances that they can't appear.
@@ -276,17 +276,16 @@ transliterator: error messages
 {{#transliterate:overlong|what}}
 {{#transliterate:rulelength|what}}
 !! result
-<p><span class="transliterator error"> Invalid syntax <code>invalid rule</code> in <a href="/wiki/MediaWiki:Transliterator:syntax" title="MediaWiki:Transliterator:syntax">MediaWiki:Transliterator:syntax</a> </span>
-<span class="transliterator error"> Ambiguous rule <code>&#65;=&gt;c</code> in <a href="/wiki/MediaWiki:Transliterator:ambiguous" title="MediaWiki:Transliterator:ambiguous">MediaWiki:Transliterator:ambiguous</a> </span>
-<span class="transliterator error"> More than 255 rules in <a href="/wiki/MediaWiki:Transliterator:overlong" title="MediaWiki:Transliterator:overlong">MediaWiki:Transliterator:overlong</a> </span>
-<span class="transliterator error"> Rule <code>maybe a huge rule will work =&gt; no it won't</code> has more than 10 characters on the left in <a href="/wiki/MediaWiki:Transliterator:rulelength" title="MediaWiki:Transliterator:rulelength">MediaWiki:Transliterator:rulelength</a> </span>
+<p><span class="transliterator error">Invalid syntax <code>invalid rule</code> in <a href="/wiki/MediaWiki:Transliterator:syntax" title="MediaWiki:Transliterator:syntax">MediaWiki:Transliterator:syntax</a></span>
+<span class="transliterator error">Ambiguous rule <code>&#65;=&gt;c</code> in <a href="/wiki/MediaWiki:Transliterator:ambiguous" title="MediaWiki:Transliterator:ambiguous">MediaWiki:Transliterator:ambiguous</a></span>
+<span class="transliterator error">More than 255 rules in <a href="/wiki/MediaWiki:Transliterator:overlong" title="MediaWiki:Transliterator:overlong">MediaWiki:Transliterator:overlong</a></span>
+<span class="transliterator error">Rule <code>maybe a huge rule will work =&gt; no it won't</code> has more than 10 characters on the left in <a href="/wiki/MediaWiki:Transliterator:rulelength" title="MediaWiki:Transliterator:rulelength">MediaWiki:Transliterator:rulelength</a></span>
 </p>
 !! end
 
 !! article
 MediaWiki:Transliterator:bookends
 !! text
-<sensitive>
 n => N
 ^n$ => M
 s => s
@@ -300,7 +299,7 @@ transliterator: bookends
 !! input
 {{#transliterate:bookends|nn}}
 {{#transliterate:bookends|n, n!}}
-{{#transliterate:bookends|sesse}}
+{{#transliterate:bookends|Sesse}}
 !! result
 <p>NN
 M, M!
@@ -313,41 +312,24 @@ Sessg
 MediaWiki:Transliterator:case
 !! text
 h => d
-e => a
-E => al
-l => m
-lo => n
+H => e
+^he => f
+he => g
+Hi => a
 !! endarticle
 
 !! test
 transliterator: case-insensitivity
 !! input
 {{#transliterate:case|hello}}
-{{#transliterate:case|HELLO}}
-{{#transliterate:case|Look}}
+{{#transliterate:case|Hello}}
+{{#transliterate:case|hi}}
+{{#transliterate:case|Hi}}
 !! result
-<p>damn
-DalMMO
-Nok
-</p>
-!! end
-
-!! article
-MediaWiki:Transliterator:default
-!! text
-<sensitive>
-=> ?
-a => z
-b => y
-B => W
-!! endarticle
-
-!! test
-transliterator: default transliteration
-!! input
-{{#transliterate:default|abcABC}}
-!! result
-<p>zy??W?
+<p>fllo
+eello
+di
+a
 </p>
 !! end
 

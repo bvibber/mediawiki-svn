@@ -6,7 +6,10 @@ $magicWords = array();
  * English
  */
 $magicWords['en'] = array(
-	'transliterate' => array( 0, 'transliterate' ),
+	'transliterate' => array( '0', 'transliterate' ),
+	// NOTE: only the first case-sensitive synonym is considered.
+	'tr_prefix' => array( '1', 'Transliterator:' ),
+	'tr_decompose' => array( '0', '__DECOMPOSE__' ),
 );
 
 $magicWords['af'] = array(
@@ -15,6 +18,7 @@ $magicWords['af'] = array(
 
 $magicWords['ar'] = array(
 	'transliterate'   => array( '0', 'ترجمة_حرفية', 'transliterate' ),
+	'tr_prefix' => array( '1', 'مترجم حرفي:' ),
 );
 
 $magicWords['arz'] = array(

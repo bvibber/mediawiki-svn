@@ -14,7 +14,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	'transliterator-desc' => "Provides a configurable parser function for transliteration",
-	'transliterator-prefix' => 'Transliterator:', // [[MediaWiki:Transliterator:blah]] NOTE: changing this requires moving all maps
 	// $1 is the line from the map, 'a => z', $2 is the map-page including prefix.
 	'transliterator-error-ambiguous' => "Ambiguous rule <code>$1</code> in [[MediaWiki:$2]]",
 	'transliterator-error-syntax' => "Invalid syntax <code>$1</code> in [[MediaWiki:$2]]",
@@ -23,7 +22,7 @@ $messages['en'] = array(
 	// $3 is the limit on the length of the left hand side (e.g. 'alpha => beta' has 5)
 	'transliterator-error-rulesize' => "Rule <code>$1</code> has more than $3 {{PLURAL:$3|character|characters}} on the left in [[MediaWiki:$2]]",
 	// $1 is the minimum transliterator prefix length, $2 is the name of the message containing the prefix
-	'transliterator-error-prefix' => "[[MediaWiki:$2]] must be at least $1 {{PLURAL:$1|character|characters}} long."
+	'transliterator-error-prefix' => "[[MediaWiki:$2]] must be at least $1 {{PLURAL:$1|character|characters}} long.",
 );
 
 /** Message documentation (Message documentation)
@@ -33,8 +32,6 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'transliterator-desc' => 'This is a short description of the extension. It is shown in [[Special:Version]].',
-	'transliterator-prefix' => "{{optional}}
-This is a prefix for the transliteration maps, used in the MediaWiki namespace like [<nowiki />[MediaWiki:Transliterator:''blah'']]. Changing this requires moving all maps.",
 	'transliterator-error-ambiguous' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
 * $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}',
@@ -69,7 +66,6 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'transliterator-desc' => 'يوفر دالة محلل قابلة للضبط للترجمة الحرفية',
-	'transliterator-prefix' => 'مترجم حرفي:',
 	'transliterator-error-ambiguous' => 'قاعدة غير واضحة <code>$1</code> في [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'صياغة غير صحيحة <code>$1</code> في [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'أكثر من $1 {{PLURAL:$1|قاعدة|قواعد}} في [[MediaWiki:$2]]',
