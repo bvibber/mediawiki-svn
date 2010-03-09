@@ -9342,7 +9342,6 @@ fn: {
 							// param is the template name, skip it
 							continue;
 						}
-						
 						var paramText = typeof param == 'string' ?
 							param.name.replace( /[\_\-]/g, ' ' ) :
 							param.name;
@@ -9387,6 +9386,7 @@ fn: {
 						}
 						// Remove any leftover rows
 						$rows.remove();
+						$fields.find( 'label' ).autoEllipsis();
 					}
 					// Ensure our close button doesn't recieve the ui-state-focus class 
 					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
