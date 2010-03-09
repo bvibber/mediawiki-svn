@@ -6922,18 +6922,17 @@ if ( typeof context == 'undefined' ) {
 			if ( context.oldDelayedHTML != newHTML ) {
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
-			}
-			
-			//surround by <p> if it does not already have it
-			var t = context.fn.getOffset();
-			if ( t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
-				var cursorPos = context.fn.getCaretPosition()[0];
-				$( t.node ).wrap( "<p></p>" );
-				context.fn.refreshOffsets();
-				context.fn.setSelection( { start: cursorPos, end: cursorPos } );
-			}
-			
-			
+				
+				//surround by <p> if it does not already have it
+				var cursorPos = context.fn.getCaretPosition();
+				var t = context.fn.getOffset(cursorPos[0]);
+				if ( t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+					$( t.node ).wrap( "<p></p>" );
+					context.fn.purgeOffsets();
+					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
+				}
+			 } 
+
 			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
 		},
@@ -7032,7 +7031,7 @@ if ( typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[0] + context.fn.getContents().length - oldLength;
+				var restoreTo = cursorPos[1] + context.fn.getContents().length - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
