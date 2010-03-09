@@ -370,12 +370,7 @@ if ( typeof context == 'undefined' ) {
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
 			}
-			// Are we deleting a <p> with one keystroke? if so, either remove preceding <br> or merge <p>s
-			switch ( event.which ) {
-				case 8: // backspace
-					// do something here...
-					break;
-			}
+			
 			return true;
 		},
 		'delayedChange': function( event ) {
@@ -385,6 +380,17 @@ if ( typeof context == 'undefined' ) {
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
 			}
+			
+			//surround by <p> if it does not already have it
+			var t = context.fn.getOffset();
+			if ( t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				var cursorPos = context.fn.getCaretPosition()[0];
+				$( t.node ).wrap( "<p></p>" );
+				context.fn.refreshOffsets();
+				context.fn.setSelection( { start: cursorPos, end: cursorPos } );
+			}
+			
+			
 			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
 		},
@@ -437,7 +443,7 @@ if ( typeof context == 'undefined' ) {
 					}
 					t = t.next();
 				}
-				// MS Word + webkit
+				// MS Word + webkit			
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
 						var outerParent = $(this).parent();
@@ -1564,10 +1570,10 @@ if ( typeof context == 'undefined' ) {
 					end = e ? e.offset : null;
 					// Don't try to set the selection past the end of a node, causes errors
 					// Just put the selection at the end of the node in this case
-					if ( sc.nodeName == '#text' && start >= sc.nodeValue.length ) {
+					if ( sc.nodeName == '#text' && start > sc.nodeValue.length ) {
 						start = sc.nodeValue.length - 1;
 					}
-					if ( ec.nodeName == '#text' && end >= ec.nodeValue.length ) {
+					if ( ec.nodeName == '#text' && end > ec.nodeValue.length ) {
 						end = ec.nodeValue.length - 1;
 					}
 				}
