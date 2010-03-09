@@ -147,7 +147,7 @@ mw.UploadWizardUploadInterface.prototype = {
 		var filename = _this.convertPathToFilename(path);
 		// XXX store the "desired" filename for later, when we rename the file
 		// this is a hack to get a temporary file guaranteed unique -- will change perhaps, later
-		filename = mw.getConfig('userName') + "-" + (new Date()).getTime() + "-" + filename;
+		filename = mw.getConfig('userName') + "_" + (new Date()).getTime() + "_" + filename;
 		$j(_this.filenameCtrl).attr('value', filename);
 		_this.filenameAcceptedCb();
 	},
@@ -293,7 +293,7 @@ mw.UploadWizardMetadata = function(containerDiv) {
 
 	_this.div = $j('<div class="mwe-upwiz-metadata-file"></div>');
 
-	_this.thumbnail = $j('<img class="mwe-upwiz-thumbnail"/>');
+	_this.thumbnail = $j('<img class="mwe-upwiz-thumbnail"/>').get(0);
 	var thumbnailDiv = $j('<div class="mwe-upwiz-thumbnail"></div>').append(_this.thumbnail).get(0);
 
 	_this.errorDiv = $j('<div class="mwe-upwiz-metadata-error"></div>');
@@ -312,7 +312,7 @@ mw.UploadWizardMetadata = function(containerDiv) {
 				
 
 	$j(_this.div)
-		.append(_this.thumbnailDiv)
+		.append(thumbnailDiv)
 		.append(_this.errorDiv)
 		.append($j(_this.dataDiv)
 			.append(_this.descriptionsContainerDiv));
@@ -377,6 +377,7 @@ mw.UploadWizardMetadata.prototype = {
 
 	// just like error but with ok/cancel
 	errorDuplicate: function(sessionKey, duplicates) {
+		var _this = this;
 		/*
 		TODO - do something clever to get page URLs and image URLs 
 		var duplicatePageTitles = result.upload.warnings.duplicate;
@@ -400,54 +401,75 @@ mw.UploadWizardMetadata.prototype = {
 
 	// given the API result pull some info into the form (for instance, extracted from EXIF, desired filename)
 	populateFromResult: function(result) {
+		var _this = this;
 		var upload = result.upload;
-		_this.setThumbnail(upload.imageinfo, mw.getConfig('thumbnailWidth')); 
-		_this.setFilename(upload.filename);
-		_this.setDescription(); // is there anything worthwhile here? image comment?
-		_this.setDate(upload.metadata);	
-		_this.setLocation(upload.metadata); // we could be VERY clever with location sensing...
+		console.log("populating from result");
+		_this.setThumbnail(upload.filename, mw.getConfig('thumbnailWidth')); 
+		
+		// _this.setFilename(upload.filename);
+		//_this.setDescription(); // is there anything worthwhile here? image comment?
+		//_this.setDate(upload.metadata);	
+		//_this.setLocation(upload.metadata); // we could be VERY clever with location sensing...
 		//_this.setProvenance(result);
 		//_this.setAuthor(_this.config.user, upload.exif.Copyright);
 	},
 
-	// transform the url of the image into a suitable thumbnail url
-	// XXX THIS IS EVIL AND WRONG TO DO ON THE CLIENT SIDE
-	// the API should be returning a "thumbnail template" of sorts, as has been proposed before
-	// desiredWidth is in pixels
-	setThumbnail: function(imageInfo, desiredWidth) {
+	// look up thumbnail info and set it 
+	setThumbnail: function(filename, width) {
+		var _this = this;
 
-		var url = imageInfo.url; 
-	
-		// may be off-by-ones if the image scaler on the server rounds differently
-		var desiredHeight = desiredWidth; // assume square
-		if (imageInfo.height && imageInfo.width) {
-			desiredHeight = parseInt(imageInfo.height * (desiredWidth / imageInfo.width));
+		var callback = function(img) { 
+			_this.thumbnail.width = img.width;
+			_this.thumbnail.height = img.height;
+			_this.thumbnail.src = img.src;
+			// XXX stop thumbnail spinner
+		};
+
+		// XXX start thumbnail spinner
+		_this.getThumbnail("File:" + filename, width, callback);
+
+	},
+
+	// use iinfo to get thumbnail info
+	// this API method can be used to get a lot of thumbnails at once, but that may not be so useful for us ATM
+	// this is mostly ripped off from mw.UploadHandler's doDestCheck, but: stripped of UI, does only one, does not check for name collisions.
+	getThumbnail: function(title, width, setThumbnailCb, apiUrl) {
+
+		if (apiUrl === undefined) {
+			apiUrl = mw.getLocalApiUrl();
 		}
 
-		if (url === undefined || url === '') {
-			// XXX what the hell?
-		}
-	
-		// the image url looks like: http://host/path/to/images/filename.jpg
-		// a thumbnail url looks like: http://host/path/to/images/filename.jpg/120px-filename.jpg
-		// filename.jpg must be identical in both cases
+		var params = {
+                        'titles': title,
+                        'iiurlwidth': width, 
+                        'prop':  'imageinfo',
+                        'iiprop': 'url|mime|size'
+                };
 
-		var basename = url.exec(/\/([^\/]+)$/)[1];
+		mw.getJSON(apiUrl, params, function( data ) {
+			if ( !data || !data.query || !data.query.pages ) {
+				mw.log(" No data? ")
+				return;
+			}
 
-		if (basename == undefined || basename == '') {
-			// XXX what the hell?
-		}
-	
-		var thumbnailUrl = url + '/' + desiredWidth + 'px-' + basename; 
-	
-		// this should already be true	
-		_this.thumbnail.width = desiredWidth;
-	
-		// but this might be new info
-		_this.thumbnail.height = desiredHeight;
-		_this.thumbnail.src = thumbnailUrl;
+			if (data.query.pages[-1]) {
+				// not found ? error
+			}
+			// this long chain of properties only works because this method expects exactly one result
+			for ( var page_id in data.query.pages ) {
+				var page = data.query.pages[ page_id ];
+				if (! page.imageinfo ) {
+					// not found? error
+				} else {
+					var img = page.imageinfo[0];
+					setThumbnailCb( { src: img.thumburl, 
+							  width: img.thumbwidth, 
+							  height: img.thumbheight });
+				}
+			}
+		});
+	},
 
-	},	
 
 	getWikiText: function() {
 		wikiText = '';
@@ -517,8 +539,8 @@ mw.UploadWizardMetadata.prototype = {
 
 
 mw.UploadWizard.prototype = {
-	maxUploads: 10,  // arbitrary 
-	maxSimultaneousUploads: 2,   // arbitrary
+	maxUploads: 10,  // XXX get this from config 
+	maxSimultaneousUploads: 2,   //  XXX get this from config
 	tabs: [ 'file', 'metadata', 'thanks' ],
 
 	/*
@@ -829,7 +851,6 @@ mw.UploadWizard.prototype = {
 	uploadProgress: function(upload, progress) {
 		console.log("upload progress is " + progress);
 		var _this = this;
-		//debugger;
 		upload.progress = progress;
 		_this.showProgress();
 	},
@@ -840,6 +861,7 @@ mw.UploadWizard.prototype = {
 		_this.removeItem(_this._uploadsInProgress, upload);
 
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
+			// success
 			setTimeout( function() { upload.metadata.populateFromResult(result); }, 0 );
 		
 		} else if (result.upload && result.upload.sessionkey) {
@@ -901,7 +923,6 @@ mw.UploadWizard.prototype = {
 			// likewise, the remaining time should disappear, fadeout maybe.
 					
 			// do some sort of "all done" thing for the UI - advance to next tab maybe.
-			alert("all done!");
 			_this.moveToTab('metadata');
 		}
 
