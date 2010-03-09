@@ -36,14 +36,14 @@ mw.ApiUploadHandler.prototype = {
 	},
 
 
-	addCompletedCb: function(fn) {
+	addCompletedCb: function(f) {
 		var _this = this;
-		_this.completedCallbacks.push(function() { fn() });		
+		_this.completedCallbacks.push(f);
 	},
 
-	addErrorCb: function(fn) {
+	addErrorCb: function(f) {
 		var _this = this;
-		_this.errorCallbacks.push(function() { fn(error) });				
+		_this.errorCallbacks.push(f);
 	},
 
 	configureForm: function() {
@@ -71,6 +71,9 @@ mw.ApiUploadHandler.prototype = {
 		_this.addFormInputIfMissing('token', mw.getConfig('token'));
 		_this.addFormInputIfMissing('action', 'upload');
 		_this.addFormInputIfMissing('format', 'jsonfm');
+		
+		// XXX only for testing, so it stops complaining about dupes
+		_this.addFormInputIfMissing('ignorewarnings', '1');
 	},
 
 	addFormInputIfMissing: function(name, value) {
@@ -102,7 +105,6 @@ mw.ApiUploadHandler.prototype = {
 		var _this = this;
 		_this.ui.progress(fraction);
 		for (var i = 0; i < _this.progressCallbacks.length; i++) {
-			debugger;
 			_this.progressCallbacks[i](fraction);
 		}
 	},
@@ -113,9 +115,7 @@ mw.ApiUploadHandler.prototype = {
 	completed: function(result) {
 		console.log("api: upload completed!")
 		var _this = this;
-
 		_this.ui.completed();
-
 		for (var i = 0; i < _this.completedCallbacks.length; i++) {
 			_this.completedCallbacks[i](result);
 		}
