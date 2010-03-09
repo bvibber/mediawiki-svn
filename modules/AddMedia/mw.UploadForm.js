@@ -277,7 +277,6 @@ mw.UploadForm = { };
 					} );				
 				},
 				'returnToFormCb' : function(){
-					alert("UPLOAD form returnToFormCb ");
 					// Enable upload button and remove loader
 					$j( '#wpUploadBtn' )
 					.attr( 'disabled', null )
@@ -314,7 +313,7 @@ mw.UploadForm = { };
 				// Setup the form data:	
 				var formData =  {
 					'filename' : $j( '#wpDestFile' ).val(),
-					'comment' : $j( '#wpUploadDescription' ).val(),															
+					'comment' : $j( '#wpUploadDescription' ).val()															
 				}
 				
 				if( $j( '#wpWatchthis' ).is( ':checked' ) ) { 
@@ -376,7 +375,7 @@ mw.UploadForm = { };
 				.click( function( ) {
 					// Check for IE ( requires p3p policy and requires more porting work. )
 					if( $j.browser.msie ) {
-						showUploadInTab( uploadProvider, uploadMenuTarget,  "mwe-ie-inline-upload" );
+						showUploadInTab( uploadTargetId, uploadMenuTarget,  "mwe-ie-inline-upload" );
 						return false;
 					}
 					
@@ -428,7 +427,7 @@ mw.UploadForm = { };
 				.text( 
 					gM( 'mwe-upload-not-my-file', uploadProvider.title ) 
 				).click( function ( ) {
-					showUploadInTab( uploadProvider, uploadMenuTarget,  "mwe-upload-once-done" );					
+					showUploadInTab( uploadTargetId, uploadMenuTarget,  "mwe-upload-once-done" );					
 				} )
 			)
 		);		
@@ -439,8 +438,12 @@ mw.UploadForm = { };
 	
 	/**
 	 * Handles the very similar layout of IE and non-inline upload
+	 * @param {String} uploadTargetId Upload Target provider id
+	 * @param {String} uploadMenuTarget Menu target
+	 * @param {String} msgKey The msgKey to use for the upload in new tab msg text
 	 */
-	function showUploadInTab(uploadProvider, uploadMenuTarget, msgKey ){
+	function showUploadInTab(uploadTargetId, uploadMenuTarget, msgKey ){
+		var uploadProvider = remoteSearchDriver.getUploadTargets()[ uploadTargetId ];
 		//Show refresh link
 		$j( uploadMenuTarget ).empty().html(
 			gM( msgKey,
@@ -644,7 +647,7 @@ mw.UploadForm = { };
 			}),			
 			
 			$j( '<br />' )
-		)
+		);
 		
 		
 		

@@ -160,6 +160,21 @@ $messages['en'] = array(
 	'mwe-layout_left' => 'Left side image layout',
 
 	/*
+	 * js file: /modules/AjaxCategories/mw.AjaxCategories.js
+	 */
+	'ajax-add-category' => '[Add Category]',
+	'ajax-add-category-submit' => '[Add]',
+	'ajax-confirm-prompt' => '[Confirmation Text]',
+	'ajax-confirm-title' => '[Confirmation Title]',
+	'ajax-confirm-save' => '[Save]',
+	'ajax-add-category-summary' => '[Add category $1]',
+	'ajax-remove-category-summary' => '[Remove category $2]',
+	'ajax-confirm-actionsummary' => '[Summary]',
+	'ajax-error-title' => 'Error',
+	'ajax-error-dismiss' => 'OK',
+	'ajax-remove-category-error' => '[RemoveErr]',
+
+	/*
 	 * js file: /modules/ApiProxy/mw.ApiProxy.js
 	 */
 	'mwe-setting-up-proxy' => 'Setting up proxy...',
@@ -261,6 +276,7 @@ $messages['en'] = array(
 	'mwe-your-recent-uploads' => 'Your recent uploads to $1',
 	'mwe-no_recent_uploads' => 'No recent uploads',
 	'mwe-not-logged-in-uploads' => 'You may not be logged in so no recent uploads can be displayed. $1 login and $2',
+	'mwe-ie-eye-permision' => 'If using Internet Exploer and logged in, you may need to adjust your privacy settings',
 	'mwe-loggin-link' => 'Please login',
 	'mwe-try-again-link' => 'try again',
 	'mwe-upload-a-file' => 'Upload a new file',
@@ -277,7 +293,7 @@ $messages['en'] = array(
 	'mwe-do-more-modification' => 'Do More Modification',
 	'mwe-checking-resource' => 'Checking for resource',
 	'mwe-resource-needs-import' => 'Resource $1 needs to be imported to $2',
-	'mwe-warning-upload-to-commons' => '$1 recomends you upload to commons, only upload localy after you have read $2',
+	'mwe-warning-upload-to-commons' => '$1 recommends you upload to commons, only upload locally after you have read $2',
 	'mwe-local-upload-policy-link' => 'local upload policy',
 	'mwe-ftype-svg' => 'SVG vector file',
 	'mwe-ftype-jpg' => 'JPEG image file',
@@ -288,11 +304,11 @@ $messages['en'] = array(
 	'rsd-wiki_commons-title' => 'Wikimedia Commons',
 	'rsd-wiki_commons' => 'Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)',
 	'rsd-kaltura-title' => 'All Sources',
-	'rsd-kaltura' => 'Kaltura agragated search for free-licensed media across multiple search providers',
+	'rsd-kaltura' => 'Kaltura aggregated search for free-licensed media across multiple search providers',
 	'rsd-this_wiki-title' => 'This wiki',
 	'rsd-this_wiki-desc' => 'The local wiki',
 	'rsd-archive_org-title' => 'Archive.org',
-	'rsd-archive_org-desc' => 'The Internet Archive, a digital library of cultural artifacts',
+	'rsd-archive_org-desc' => 'The Internet Archive, a digital library of cultural artefacts',
 	'rsd-flickr-title' => 'Flickr.com',
 	'rsd-flickr-desc' => 'Flickr.com, a online photo sharing site',
 	'rsd-metavid-title' => 'Metavid.org',
@@ -304,6 +320,7 @@ $messages['en'] = array(
 	 */
 	'mwe-upload-in-progress' => 'Upload in progress (do not close this window)',
 	'mwe-uploaded-status' => 'Uploaded',
+	'mwe-transcoded-status' => 'Transcoded',
 	'mwe-uploaded-time-remaining' => 'Time remaining: $1',
 	'mwe-upload-done' => 'Your upload <i>should be</i> accessible.',
 
@@ -478,6 +495,11 @@ $messages['en'] = array(
 	'mwe-loading-add-media-wiz' => 'Loading add media wizard',
 
 	/*
+	 * js file: /modules/UploadWizard/loader.js
+	 */
+	'mwe-loading-upwiz' => 'Loading upload wizard',
+
+	/*
 	 * js file: /mwEmbed.js
 	 */
 	'mwe-loading_txt' => 'Loading ...',
@@ -490,8 +512,8 @@ $messages['en'] = array(
 	'mwe-load-drag-item' => 'Loading dragged item',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancel',
-	'mwe-enable-gadget' => 'Enable mwEmbed gadget for all pages',
-	'mwe-enable-gadget-done' => 'mwEmbed gadget has been enabled',
+	'mwe-enable-gadget' => 'Enable multimedia beta ( mwEmbed ) for all pages',
+	'mwe-enable-gadget-done' => 'multimedia beta gadget has been enabled',
 	'mwe-must-login-gadget' => 'To enable gadget you must <a target="_new" href="$1">login</a>',
 	'mwe-test-plural' => 'I ran {{PLURAL:$1|$1 test|$1 tests}}',
 
