@@ -211,6 +211,7 @@ ctrlBuilder.prototype = {
 		}
 		var offsetTop = ( targetHeight < fullHeight )? ( fullHeight- targetHeight ) / 2 : 0;
 		var offsetLeft = ( targetWidth < fullWidth )? ( fullWidth- targetWidth ) / 2 : 0;
+				
 		//mw.log(" targetWidth: " + targetWidth + ' fullwidth: ' + fullWidth + ' :: ' +  ( fullWidth- targetWidth ) / 2 );
 		return {
 			'height': targetHeight,
@@ -301,10 +302,17 @@ ctrlBuilder.prototype = {
 		this.windowPositionStyle = $interface.css( 'position' );
 		this.windowZindex = $interface.css( 'z-index' );
 		
+		// Get the base offset: 
+		this.windowOffset = $interface.offset();
+		this.windowOffset.top = this.windowOffset.top - $j(document).scrollTop();
+		this.windowOffset.left = this.windowOffset.left - $j(document).scrollLeft();
+				
 		// Change the z-index of the interface
 		$interface.css( {
 			'position' : 'fixed',
-			'z-index' : mw.getConfig( 'fullScreenIndex' ) + 1
+			'z-index' : mw.getConfig( 'fullScreenIndex' ) + 1,
+			'top' : this.windowOffset.top,
+			'left' : this.windowOffset.left
 		} );
 		
 		
@@ -315,8 +323,7 @@ ctrlBuilder.prototype = {
 		// Hide the body scroll bar
 		$j('body').css( 'overflow', 'hidden' );
 		
-		// Get the base offset: 
-		this.windowOffset = $interface.offset();		
+
 		var topOffset = '0px';
 		var leftOffset = '0px';
 				
