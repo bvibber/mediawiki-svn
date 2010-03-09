@@ -78,6 +78,15 @@ $messages['cs'] = array(
 	'wikieditor-template-editor-preference' => 'Zapnout formulářovou editaci šablon wiki',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'wikieditor-template-editor-preference' => 'Galluogi golygu nodynnau wici drwy ffurflen',
+	'wikieditor-template-editor-dialog-title' => "Golygu'r nodyn",
+	'wikieditor-template-editor-dialog-submit' => 'Diweddarer',
+);
+
 /** Danish (Dansk)
  * @author Sarrus
  */

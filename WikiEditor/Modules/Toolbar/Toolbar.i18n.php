@@ -2405,6 +2405,7 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'wikieditor-toolbar' => 'Bar offer golygu',
+	'wikieditor-toolbar-desc' => 'Bar offer y dudalen olygu gyda gwelliannau defnyddioldeb',
 	'wikieditor-toolbar-preference' => "Defnyddio'r bar offer golygu estynedig",
 	'wikieditor-toolbar-dialogs-preference' => 'Galluoger y blychau yn y rhyngwyneb ar gyfer mewnosod cysylltiadau, tablau ag ati',
 	'wikieditor-toolbar-loading' => "Wrthi'n llwytho...",

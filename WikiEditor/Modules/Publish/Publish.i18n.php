@@ -205,6 +205,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'wikieditor-publish-preference' => 'Galluogi cyhoeddi cam-wrth-gam',
 	'wikieditor-publish-button-publish' => 'Cyhoeddi',
 	'wikieditor-publish-button-cancel' => 'Diddymu',
 	'wikieditor-publish-dialog-title' => 'Cyhoeddi ar {{SITENAME}}',

@@ -363,6 +363,7 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'prefstats' => 'Ystadegau dewisiadau',
+	'prefstats-desc' => 'Dilyn ystadegau am y nifer o ddefnyddwyr sydd wedi galluogi rhai dewisiadau',
 	'prefstats-title' => 'Ystadegau dewisiadau',
 	'prefstats-list-intro' => 'Ar hyn o bryd, dilynir hynt y dewisiadau canlynol.
 Cliciwch ar un i weld yr ystadegau amdano.',

@@ -71,6 +71,13 @@ $messages['cs'] = array(
 	'wikieditor-highlight-preference' => 'Při editování zvýrazňovat syntaxi',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'wikieditor-highlight-preference' => 'Galluogi amlygu cystrawen wrth olygu',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  */
