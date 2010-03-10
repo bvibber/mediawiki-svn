@@ -102,6 +102,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'wikieditor-template-editor-preference' => 'Formularbasiertes Bearbeiten von Wiki-Vorlagen aktivieren',
+	'wikieditor-template-editor-dialog-cancel' => 'Abbrechen',
 );
 
 /** Zazaki (Zazaki)
