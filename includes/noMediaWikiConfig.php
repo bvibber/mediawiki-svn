@@ -58,7 +58,7 @@ jsClassLoader::loadClassPaths();
 require_once( realpath( dirname( __FILE__ ) ) . '/library/JSMin.php' );
 
 // Get the messages file:
-require_once( realpath( dirname( __FILE__ ) ) . '/languages/mwEmbed.i18n.php' );
+require_once( realpath( dirname( __FILE__ ) ) . '/../languages/mwEmbed.i18n.php' );
 
 function wfDebug() {
     return false;
