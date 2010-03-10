@@ -8646,7 +8646,7 @@ fn: {
 				//start same
 				oldStarts[markers[i].start+","+markers[i].type] = true;
 				if(division == 'realchange'){
-					cBreak = true;
+					cBreak = true; //already existed, offsets fine
 				}
 			}
 			else{
@@ -8655,7 +8655,7 @@ fn: {
 					context.modules.highlight.markersOldStarts = oldStarts;
 					purgeStarts = true;
 					if(division == 'realchange'){
-						cBreak = true;
+						cBreak = true; //user is currently typing in something whose begin exists
 					}
 				}
 				context.modules.highlight.markersOldStarts[markers[i].start+","+markers[i].type] = true;
@@ -8773,14 +8773,12 @@ fn: {
 			var ca1 = startNode, ca2 = endNode;
 			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
-				if(cBreak){
-					return;
-				}
-				if ( !anchor ) {
+				if ( !anchor && !cBreak ) { //cBreak prevents a new span from being created which stops cursor jumps
 					var commonAncestor = ca1.parentNode;
-					if ( markers[i].anchor == 'wrap' ) {
+					if ( markers[i].anchor == 'wrap') {
 						// We have to store things like .parentNode and .nextSibling because
 						// appendChild() changes these properties
+						
 						var newNode = ca1.ownerDocument.createElement( 'span' );
 						
 						var nextNode = ca2.nextSibling;
@@ -8792,6 +8790,7 @@ fn: {
 							n = ns;
 						}
 						// Insert newNode in the right place
+						
 						if ( nextNode ) {
 							commonAncestor.insertBefore( newNode, nextNode );
 						} else {
@@ -8804,7 +8803,6 @@ fn: {
 					}
 					$( anchor ).data( 'marker', markers[i] )
 						.addClass( 'wikiEditor-highlight' );
-					
 					// Allow the module adding this marker to manipulate it
 					markers[i].afterWrap( anchor, markers[i] );
 
