@@ -47,8 +47,17 @@ fn: {
 		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
 			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
 				var module = $.wikiEditor.modules.dialogs.modules[mod];
-				// Only create the dialog if it's supported and doesn't exist yet
-				if ( $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+				// Only create the dialog if it's supported, not filtered and doesn't exist yet
+				var filtered = false;
+				if ( typeof module.filters != 'undefined' ) {
+					for ( var i = 0; i < module.filters.length; i++ ) {
+						if ( $( module.filters[i] ).length == 0 ) {
+							filtered = true;
+							break;
+						}
+					}
+				}
+				if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
 					// If this dialog requires the iframe, set it up
 					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
 						context.fn.setupIframe();

@@ -912,6 +912,7 @@ $j(document).ready( function() {
 		},
 		'req': [ 'iframe' ],
 		*/
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-link-title',
 		id: 'wikieditor-toolbar-link-dialog',
 		html: '\
@@ -1423,6 +1424,7 @@ $j(document).ready( function() {
 		},
 		'req': [ 'iframe' ],
 		*/
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-table-title',
 		id: 'wikieditor-toolbar-table-dialog',
 		// FIXME: Localize 'x'?
@@ -1635,6 +1637,7 @@ $j(document).ready( function() {
 		}
 	},
 	'search-and-replace': {
+		/*
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
@@ -1654,6 +1657,8 @@ $j(document).ready( function() {
 			}
 		},
 		'req': [ 'iframe' ],
+		*/
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-replace-title',
 		id: 'wikieditor-toolbar-replace-dialog',
 		html: '\
@@ -1781,6 +1786,9 @@ $j(document).ready( function() {
 					}
 					$textarea.textSelection( 'scrollToCaretPosition' );
 					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
+					var context = $j(this).data( 'context' );
+					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe.contentWindow : $textarea;
+					textbox.focus();
 				}
 			});
 		},
@@ -1827,7 +1835,11 @@ $j(document).ready( function() {
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
 				var that = this;
-				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
+				var context = $j(this).data( 'context' );
+				var textbox = typeof context.$iframe != 'undefined' ?
+					context.$iframe[0].contentWindow.document : context.$textarea;
+					
+				$j( textbox )
 					.bind( 'keypress.srdialog', function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
 							// Enter
@@ -1841,8 +1853,10 @@ $j(document).ready( function() {
 					});
 			},
 			close: function() {
-				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
-						.unbind( 'keypress.srdialog' );
+				var context = $j(this).data( 'context' );
+				var textbox = typeof context.$iframe != 'undefined' ?
+					context.$iframe[0].contentWindow.document : context.$textarea;
+				$j( textbox ).unbind( 'keypress.srdialog' );
 				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}
