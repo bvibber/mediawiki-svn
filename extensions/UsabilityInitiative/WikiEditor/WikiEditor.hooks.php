@@ -17,13 +17,13 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 53 ),
-			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 5 ),
+			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 56 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 57 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 56 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 57 ),
 		),
 	);
 	static $messages = array(
@@ -64,6 +64,7 @@ class WikiEditorHooks {
 			'messages' => array(
 				'wikieditor-template-editor-dialog-title',
 				'wikieditor-template-editor-dialog-submit',
+				'wikieditor-template-editor-dialog-cancel',
 			),
 		),
 		'preview' => array(

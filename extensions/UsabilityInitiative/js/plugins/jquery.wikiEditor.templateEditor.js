@@ -218,6 +218,9 @@ fn: {
 						$.wikiEditor.modules.templateEditor.fn.updateModel( $templateText, templateModel );
 						
 						$( this ).dialog( 'close' );
+					},
+					'wikieditor-template-editor-dialog-cancel': function() {
+						$j(this).dialog( 'close' );
 					}
 				},
 				open: function() {
