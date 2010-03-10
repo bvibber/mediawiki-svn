@@ -9320,7 +9320,7 @@ fn: {
 			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
 			.click( function() { createDialog( $template ); return false; } )
 			.mousedown( function() { return false; } )
-			.insertAfter( $templateName );
+			.appendTo( $templateName );
 		
 		function toggleWikiTextEditor() {
 			context.fn.purgeOffsets();
