@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <smil baseProfile="Language" version="3.0" xmlns="http://www.w3.org/ns/SMIL">
   <head>
-    <meta name="title" content="Simple "Ken Burns" Example"/>
+    <meta name="title" content="Simple Ken Burns Example"/>
 	
     <transition id="xFade" 
 	type="fade" 
@@ -25,7 +25,7 @@
       	fit="meet"
       	fill="transition"
       >
-      <--! scroll down and zoom in on the image !-->
+      <!-- scroll down and zoom in on the image !-->
          <animate attributeName="panZoom" 
 			values="5%,0,90%,50%; 0,50%,100%,50%" 
 			dur="10s" />

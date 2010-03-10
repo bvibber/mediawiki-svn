@@ -90,7 +90,7 @@ mw.setDefaultConfig ( {
 	
 	// Default request timeout ( for cases where we inlucde js and normal browser timeout can't be used )
 	// stored in seconds
-	'defaultRequestTimeout' : 20,
+	'defaultRequestTimeout' : 30,
 	
 	// Default user language is "en" Can be overwritten by: 
 	// 	"uselang" url param 

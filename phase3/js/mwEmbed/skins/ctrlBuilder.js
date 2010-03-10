@@ -343,7 +343,7 @@ ctrlBuilder.prototype = {
 		}, function(){
 			// Remove absolute css of the interface parents
 			$interface.parents().each( function() {
-				mw.log(' parent : ' + $j( this ).attr('id' ) + ' class: ' + $j( this ).attr('class') + ' pos: ' +  $j( this ).css( 'position' ) );  
+				//mw.log(' parent : ' + $j( this ).attr('id' ) + ' class: ' + $j( this ).attr('class') + ' pos: ' +  $j( this ).css( 'position' ) );  
 				if( $j( this ).css( 'position' ) == 'absolute' ) {				
 					_this.parentsAbsolute.push( $j( this ) );				
 					$j( this ).css( 'position', null );
@@ -416,7 +416,7 @@ ctrlBuilder.prototype = {
 			if( event.keyCode == 27 ){
 				_this.restoreWindowPlayer();
 			}
-		} );		
+		} );
 	},		
 	
 	/**
