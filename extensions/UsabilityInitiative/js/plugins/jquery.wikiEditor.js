@@ -768,7 +768,7 @@ if ( typeof context == 'undefined' ) {
 				while ( p && !p.nextSibling ) {
 					p = p.parentNode;
 					nextDepth--;
-					if ( p == ancestor ) {
+					if ( p == this.ancestor ) {
 						// We're back at the ancestor, stop here
 						p = null;
 					}
@@ -797,7 +797,9 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.firstChild );
-				return p ? new context.fn.rawTraverser( p, nextDepth, nextInP, this.ancestor, this.skipNoinclude ) : null;
+				// Instead of calling the rawTraverser constructor, inline it. This avoids function call overhead
+				return p ? { 'node': p, 'depth': nextDepth, 'inP': nextInP, 'ancestor': this.ancestor,
+						'skipNoinclude': this.skipNoinclude, 'next': this.next, 'prev': this.prev } : null;
 			};
 			this.prev = function() {
 				var p = this.node;
@@ -806,7 +808,7 @@ if ( typeof context == 'undefined' ) {
 				while ( p && !p.previousSibling ) {
 					p = p.parentNode;
 					prevDepth--;
-					if ( p == ancestor ) {
+					if ( p == this.ancestor ) {
 						// We're back at the ancestor, stop here
 						p = null;
 					}
@@ -835,7 +837,9 @@ if ( typeof context == 'undefined' ) {
 						}
 					}
 				} while ( p && p.lastChild );
-				return p ? new context.fn.rawTraverser( p, prevDepth, prevInP, this.ancestor, this.skipNoinclude ) : null;
+				// Instead of calling the rawTraverser constructor, inline it. This avoids function call overhead
+				return p ? { 'node': p, 'depth': prevDepth, 'inP': prevInP, 'ancestor': this.ancestor,
+						'skipNoinclude': this.skipNoinclude, 'next': this.next, 'prev': this.prev } : null;
 			};
 		},
 		/**
