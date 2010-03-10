@@ -6,7 +6,8 @@
  * mDom - Used to create Dom objects and get's returned at the end of parsing
  */
 class ParseEngine {
-	private $mRules, $mStartRule, $mDom;
+	const maxIter = 8192;
+	private $mRules, $mStartRule, $mDom, $mIter;
 
 	function __construct($rules, $startRule) {
 		$this->mRules = $rules;
@@ -18,25 +19,37 @@ class ParseEngine {
 		if ($wgDebugParserLog != '') {
 			wfErrorLog("==========Start Parsing==========\n", $wgDebugParserLog);
 		}
+		$this->mIter = 0;
 		$this->mDom = new DOMDocument();
 		if (! $this->callParser($this->mStartRule, $text, $children, NULL)) {
 			throw new MWException('Parser regected text.');
 		}
 		$this->mDom->appendChild($children[0]);
+		$this->mDom->normalizeDocument();
 		if ($wgDebugParserLog != '') {
 			wfErrorLog("XML - " . $this->mDom->saveXML() . "\n", $wgDebugParserLog);
 		}
 		return $this->mDom;
 	}
 
-	function callParser($childName, &$text, &$children, $replaceStr) {
+	function callParser($child, &$text, &$children, $replaceStr) {
+		$childName = get_class($child);
+		if (is_string($child)) {
+			$childName = $child;
+			$child = $this->mRules[$childName];
+		}
 		global $wgDebugParserLog;
 		if ($wgDebugParserLog != '') {
-			wfErrorLog("Entering " . $childName . ", Text - " . $text . "\n", $wgDebugParserLog);
+			wfErrorLog("Entering $childName\n", $wgDebugParserLog);
 		}
-		$retCode = $this->mRules[$childName]->parse($text, $this, $this->mDom, $children, $replaceStr);
+		$this->mIter ++;
+		if ($this->mIter > ParseEngine::maxIter) {
+			throw new MWException('Parser iterated too many times.  Probable loop in grammar.');
+		}
+		$retCode = $child->parse($text, $this, $this->mDom, $children, $replaceStr);
 		if ($wgDebugParserLog != '') {
-			wfErrorLog("Exiting " . $childName . ", Text - " . $text . "\n", $wgDebugParserLog);
+			wfErrorLog("Exiting $childName, Return Code - $retCode\n", $wgDebugParserLog);
+			wfErrorLog("Text - $text\n", $wgDebugParserLog);
 		}
 		return $retCode;
 	}
@@ -113,17 +126,13 @@ class ParseQuant implements ParseObject {
  * mMatchChar - This is a shortcut. If the starting char of the text is different then parse will return FALSE.
  */
 class ParseChoice implements ParseObject {
-	private $mList, $mMatchChar;
+	private $mList;
 
-	function __construct($list, $matchChar = NULL) {
-		$this->mList = $list;
-		$this->mMatchChar = $matchChar;
+	function __construct() {
+		$this->mList = $args = func_get_args();
 	}
 
 	function parse(&$text, &$engine, &$dom, &$children, $replaceStr) {
-		if ($this->mMatchChar != NULL && $text[0] != $this->mMatchChar) {
-			return FALSE;
-		}
 		foreach ($this->mList as $crrnt) {
 			$newText = $text;
 			if ($engine->callParser($crrnt, $newText, $children, $replaceStr)) {
