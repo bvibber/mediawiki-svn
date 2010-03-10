@@ -208,7 +208,7 @@ fn: {
 			}
 			var startNode = s.node;
 			var startDepth = s.depth;
-
+			
 			// Don't wrap leading BRs, produces undesirable results
 			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
 			// .length to fake the newline caused by startNode being in a P. In this case, prevent
@@ -219,19 +219,50 @@ fn: {
 				startNode = s.node;
 				startDepth = s.depth;
 			}
-
+			
 			// The next marker starts somewhere in this textNode or at this BR
 			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
+				var newStartNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
 					s.offset : s.node.nodeValue.length - 1
 				);
-				// This also invalidates cached offset objects
-				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
-			}
+				var oldStartNode = startNode;
+				startNode = newStartNode;
+				
+				// Update offset objects. We don't need purgeOffsets(), simply
+				// manipulating the existing offset objects will suffice
+				// FIXME: This manipulates context.offsets directly, which is ugly,
+				// but the performance improvement vs. purgeOffsets() is worth it
+				// This code doesn't set lastTextNode to newStartNode for offset objects
+				// with lastTextNode == oldStartNode, but that doesn't really matter
+				var subtracted = s.offset;
+				var oldLength = s.length;
+				var oldDepth = s.depth;
 
+				var j, o;
+				// Update offset objects referring to oldStartNode
+				for ( j = start - subtracted; j < start; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = oldStartNode;
+						o.length = subtracted;
+					}
+				}
+				// Update offset objects referring to newStartNode
+				for ( j = start; j < start - subtracted + oldLength; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = newStartNode;
+						o.offset -= subtracted;
+						o.length -= subtracted;
+						o.lastTextNode = oldStartNode;
+						o.lastTextNodeDepth = oldDepth;
+					}
+				}
+			}
+			
 			var end = markers[i].end;
 			// To avoid ending up at the first char of the next node, we grab the offset for end - 1
 			// and add one to the offset
@@ -242,11 +273,35 @@ fn: {
 			}
 			var endNode = e.node;
 			var endDepth = e.depth;
-			if ( e.offset + 1 < e.length - 1 && e.node.nodeName == '#text' ) {
+			if ( e.offset + 1 < e.length - 1 && endNode.nodeName == '#text' ) {
 				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
-				endNode.splitText( e.offset + 1 );
-				// This also invalidates cached offset objects
-				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+				var newEndNode = endNode;
+				var oldEndNode = endNode.splitText( e.offset + 1 );
+				
+				// Update offset objects
+				var subtracted = e.offset + 1;
+				var oldLength = e.length;
+				var oldDepth = e.depth;
+				
+				var j, o;
+				// Update offset objects referring to oldEndNode
+				for ( j = end - subtracted; j < end; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = oldEndNode;
+						o.length = subtracted;
+					}
+				}
+				for ( j = end; j < end - subtracted + oldLength; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = newEndNode;
+						o.offset -= subtracted;
+						o.length -= subtracted;
+						o.lastTextNode = oldEndNode;
+						o.lastTextNodeDepth = oldDepth;
+					}
+				}
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
@@ -305,6 +360,8 @@ fn: {
 					lastP = t.inP;
 				}
 				// Moving nodes around like this invalidates offset objects
+				// TODO: Update offset objects ourselves for performance. Requires rewriting this code block to be
+				// offset-based rather than traverser-based
 				context.fn.purgeOffsets();
 			}
 			
