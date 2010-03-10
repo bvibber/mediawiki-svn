@@ -163,6 +163,7 @@ body.rtl wikiEditor-ui-toc ul ul ul ul ul ul li div {
 }
 .wikiEditor-ui-right .ui-resizable-w {
 	left: 0px !important;
+	z-index: 0;
 }
 
 .wikiEditor-ui-right .wikiEditor-ui-toc-resize-grip {
