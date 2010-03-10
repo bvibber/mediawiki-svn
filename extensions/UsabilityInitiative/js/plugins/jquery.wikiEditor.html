@@ -47,10 +47,11 @@
 		/* A collapsed template */
 		.wikiEditor-template {
 			display: inline-block;
+			font-size: 12px;
 		}
 		.wikiEditor-template-name {
 			cursor: pointer;
-			vertical-align: middle;
+			vertical-align: -2px;
 			display: inline-block;
 			height: 16px;
 			margin-bottom: -1px;
@@ -64,7 +65,7 @@
 		}
 		.wikiEditor-template-expand {
 			cursor: pointer;
-			vertical-align: middle;
+			vertical-align: -2px;
 			display: inline-block;
 			margin-left: 2px;
 			height: 16px;
@@ -75,7 +76,7 @@
 		}
 		.wikiEditor-template-dialog {
 			cursor: pointer;
-			vertical-align: top;
+			vertical-align: -3px;
 			display: inline-block;
 			height: 16px;
 			overflow: hidden;
@@ -124,6 +125,10 @@
 		.wikiEditor-template-end, .wikiEditor-template-start {
 			color: blue;
 			cursor: pointer;
+		}
+		.wikiEditor-template-expanded .wikiEditor-template-expand,
+		.wikiEditor-template-expanded .wikiEditor-template-name {
+			margin-bottom: -3px;
 		}
 		/* == Header == */
 		.wikiEditor-toc-header {

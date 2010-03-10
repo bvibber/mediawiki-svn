@@ -640,6 +640,7 @@ overflow:visible;
 }
 .wikiEditor-ui-right .ui-resizable-w{
 left:0px !important;
+z-index:0;
 }
 .wikiEditor-ui-right .wikiEditor-ui-toc-resize-grip{
 width:5px;
