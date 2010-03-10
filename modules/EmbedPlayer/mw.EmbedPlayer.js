@@ -348,22 +348,11 @@ EmbedPlayerManager.prototype = {
 				
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function() {	
-			var waitForMeta = _this.waitForMetaCheck( element );								
+			// set the wait for meta flag
+			var waitForMeta = _this.waitForMetaCheck( element );	
+										
 			switch( element.tagName.toLowerCase() ) {
-				case 'playlist':
-					// Make sure we have the necessary playlist libs loaded:
-					mw.load( 'mw.PlayList', function() {
-					
-						// Create playlist player interface
-						var playlistPlayer = new mw.PlayList( element, attributes );
-						
-						// Swap in playlist player interface
-						_this.swapEmbedPlayerElement( element, playlistPlayer );												
-						
-						// Issue the checkPlayerSources call to the new playlist interface: 				
-						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
-					} );
-				break;
+				case 'playlist':					
 				case 'video':
 				case 'audio':
 				// By default treat the rewrite request as "video"
@@ -429,6 +418,7 @@ EmbedPlayerManager.prototype = {
 		if( this.height == 150 && this.width == 300 ){
 			waitForMeta = true; 
 		}
+		
 		// Make sure we have a src attribute or source child 
 		// ( i.e not a video tag to be dynamically populated or looked up from xml resource description )
 		if( waitForMeta 
@@ -437,6 +427,7 @@ EmbedPlayerManager.prototype = {
 				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
 			)
 		){
+			// detect src type ( if no type set ) 
 			return true;
 		}
 		
@@ -519,7 +510,7 @@ function mediaSource( element ) {
 
 mediaSource.prototype = {
 	// MIME type of the source.
-	mime_type:null,
+	mimeType:null,
 	
 	// URI of the source.
 	uri:null,
@@ -584,16 +575,17 @@ mediaSource.prototype = {
 			}
 		}
 		
+		
 		// Set the content type: 
 		if ( $j( element ).attr( 'type' ) ) {
-			this.mime_type = $j( element ).attr( 'type' );
+			this.mimeType = $j( element ).attr( 'type' );
 		}else if ( $j( element ).attr( 'content-type' ) ) {
-			this.mime_type = $j( element ).attr( 'content-type' );
+			this.mimeType = $j( element ).attr( 'content-type' );
 		}else if( $j( element ).get(0).tagName.toLowerCase() == 'audio' ){
 			// If the element is an "audio" tag set audio format
-			this.mime_type = 'audio/ogg';
+			this.mimeType = 'audio/ogg';
 		} else {
-			this.mime_type = this.detectType( this.src );
+			this.mimeType = this.detectType( this.src );
 		}
 		
 			
@@ -660,10 +652,10 @@ mediaSource.prototype = {
 	* @return {String} the MIME type of the source.
 	*/
 	getMIMEType: function() {
-		if( this.mime_type )
-			return this.mime_type;
-		this.mime_type = this.detectType( this.src );
-		return this.mime_type;
+		if( this.mimeType )
+			return this.mimeType;
+		this.mimeType = this.detectType( this.src );
+		return this.mimeType;
 	},
 	
 	/** URI function.
@@ -713,7 +705,7 @@ mediaSource.prototype = {
 		} 
 		
 		// Return the mime type string if not known type.
-		return this.mime_type;
+		return this.mimeType;
 	},
 	
 	/** Index accessor function.
@@ -766,6 +758,10 @@ mediaSource.prototype = {
 		var end_inx =  ( uri.indexOf( '?' ) != -1 ) ? uri.indexOf( '?' ) : uri.length;
 		var no_param_uri = uri.substr( 0, end_inx );
 		switch( no_param_uri.substr( no_param_uri.lastIndexOf( '.' ), 4 ).toLowerCase() ) {
+			case 'smil':
+			case '.sml':
+				return 'application/smil'
+			break;
 			case '.m4v':
 			case '.mp4':
 				return 'video/h264';
@@ -815,7 +811,7 @@ mediaElement.prototype = {
 	addedROEData:false,
 	
 	// Selected mediaSource element. 
-	selected_source:null,
+	selectedSource:null,
 	
 	// Media element thumbnail
 	thumbnail:null,
@@ -890,9 +886,9 @@ mediaElement.prototype = {
 	*/
 	textSourceExists: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
-			mw.log( this.sources[i].mime_type );
-			if ( this.sources[i].mime_type == 'text/cmml' 
-				|| this.sources[i].mime_type == 'text/x-srt' ) 
+			mw.log( this.sources[i].mimeType );
+			if ( this.sources[i].mimeType == 'text/cmml' 
+				|| this.sources[i].mimeType == 'text/x-srt' ) 
 			{
 					return true;
 			}
@@ -914,8 +910,8 @@ mediaElement.prototype = {
 		// Apply mime filter: 
 		var source_set = new Array();
 		for ( var i = 0; i < this.sources.length ; i++ ) {
-			if ( this.sources[i].mime_type &&
-			this.sources[i].mime_type.indexOf( mime_filter ) != -1 )
+			if ( this.sources[i].mimeType &&
+			this.sources[i].mimeType.indexOf( mime_filter ) != -1 )
 				source_set.push( this.sources[i] );
 		}
 		return source_set;
@@ -935,18 +931,18 @@ mediaElement.prototype = {
 	},
 	
 	/** 
-	* Selects a particular source for playback updating the "selected_source" 
+	* Selects a particular source for playback updating the "selectedSource" 
 	*
-	* @param {Number} index Index of source element to set as selected_source
+	* @param {Number} index Index of source element to set as selectedSource
 	*/
 	selectSource:function( index ) {
 		mw.log( 'f:selectSource:' + index );
-		var playable_sources = this.getPlayableSources();
-		for ( var i = 0; i < playable_sources.length; i++ ) {
+		var playableSources = this.getPlayableSources();
+		for ( var i = 0; i < playableSources.length; i++ ) {
 			if ( i == index ) {
-				this.selected_source = playable_sources[i];
+				this.selectedSource = playableSources[i];
 				// Update the user selected format: 
-				mw.EmbedTypes.players.setFormatPreference( playable_sources[i].mime_type );
+				mw.EmbedTypes.players.setFormatPreference( playableSources[i].mimeType );
 				break;
 			}
 		}
@@ -958,35 +954,35 @@ mediaElement.prototype = {
 	autoSelectSource:function() {
 		mw.log( 'f:autoSelectSource:' );
 		// Select the default source
-		var playable_sources = this.getPlayableSources();
+		var playableSources = this.getPlayableSources();
 		var flash_flag = ogg_flag = false;
 		// debugger;
-		for ( var source = 0; source < playable_sources.length; source++ ) {
-			var mime_type = playable_sources[source].mime_type;
-			if ( playable_sources[source].marked_default ) {
-				mw.log( 'set via marked default: ' + playable_sources[source].marked_default );
-				this.selected_source = playable_sources[source];
+		for ( var source = 0; source < playableSources.length; source++ ) {
+			var mimeType = playableSources[source].mimeType;
+			if ( playableSources[ source ].marked_default ) {
+				mw.log( 'set via marked default: ' + playableSources[source].marked_default );
+				this.selectedSource = playableSources[source];
 				return true;
 			}
 			// Set via user-preference
-			if ( mw.EmbedTypes.players.preference['format_preference'] == mime_type ) {
-				 mw.log( 'set via preference: ' + playable_sources[source].mime_type );
-				 this.selected_source = playable_sources[source];
+			if ( mw.EmbedTypes.players.preference[ 'format_preference' ] == mimeType ) {
+				 mw.log( 'set via preference: ' + playableSources[source].mimeType );
+				 this.selectedSource = playableSources[source];
 				 return true;
 			}
 		}
 		
 		// Set Ogg if client supports it		
-		for ( var source = 0; source < playable_sources.length; source++ ) {
-			mw.log( 'f:autoSelectSource:' + playable_sources[source].mime_type );
-			var mime_type = playable_sources[source].mime_type;
+		for ( var source = 0; source < playableSources.length; source++ ) {
+			mw.log( 'f:autoSelectSource:' + playableSources[source].mimeType );
+			var mimeType = playableSources[source].mimeType;
 			   // set source via player				 
-			if ( mime_type == 'video/ogg' || mime_type == 'ogg/video' || mime_type == 'video/annodex' || mime_type == 'application/ogg' ) {
+			if ( mimeType == 'video/ogg' || mimeType == 'ogg/video' || mimeType == 'video/annodex' || mimeType == 'application/ogg' ) {
 				for ( var i = 0; i < mw.EmbedTypes.players.players.length; i++ ) { // for in loop on object oky
 					var player = mw.EmbedTypes.players.players[i];
 					if ( player.library == 'vlc' || player.library == 'native' ) {
 						mw.log( 'set via ogg via order' );
-						this.selected_source = playable_sources[source];
+						this.selectedSource = playableSources[source];
 						return true;
 					}
 				}
@@ -994,27 +990,27 @@ mediaElement.prototype = {
 		}
 		
 		// Set basic flash
-		for ( var source = 0; source < playable_sources.length; source++ ) {
-			var mime_type = playable_sources[source].mime_type;
-			if ( mime_type == 'video/x-flv' ) {
+		for ( var source = 0; source < playableSources.length; source++ ) {
+			var mimeType = playableSources[source].mimeType;
+			if ( mimeType == 'video/x-flv' ) {
 				mw.log( 'set via by player preference normal flash' )
-				this.selected_source = playable_sources[source];
+				this.selectedSource = playableSources[source];
 				return true;
 			}
 		}
 		// Set h264 flash 
-		for ( var source = 0; source < playable_sources.length; source++ ) {
-			var mime_type = playable_sources[source].mime_type;
-			if ( mime_type == 'video/h264' ) {
-				mw.log( 'set via playable_sources preference h264 flash' )
-				this.selected_source = playable_sources[source];
+		for ( var source = 0; source < playableSources.length; source++ ) {
+			var mimeType = playableSources[source].mimeType;
+			if ( mimeType == 'video/h264' ) {
+				mw.log( 'set via playableSources preference h264 flash' )
+				this.selectedSource = playableSources[source];
 				return true;
 			}
 		}
 		// Select first source		
-		if ( !this.selected_source ) {
-			mw.log( 'set via first source:' + playable_sources[0] );
-			this.selected_source = playable_sources[0];
+		if ( !this.selectedSource ) {
+			mw.log( 'set via first source:' + playableSources[0] );
+			this.selectedSource = playableSources[0];
 			return true;
 		}
 		// No Source found so no source selected
@@ -1031,15 +1027,16 @@ mediaElement.prototype = {
 	
 	/** 
 	* Checks whether there is a stream of a specified MIME type.
-	* @param {String} mime_type MIME type to check.
+	* @param {String} mimeType MIME type to check.
 	* @return {Boolean} true if sources include MIME false if not.
 	*/
-	hasStreamOfMIMEType:function( mime_type )
+	hasStreamOfMIMEType: function( mimeType )
 	{
 		for ( source in this.sources )
 		{
-			if ( this.sources[source].getMIMEType() == mime_type )
+			if ( this.sources[source].getMIMEType() == mimeType ){
 				return true;
+			}
 		}
 		return false;
 	},
@@ -1047,8 +1044,8 @@ mediaElement.prototype = {
 	/**
 	* Checks if media is a playable type
 	*/
-	isPlayableType:function( mime_type ) {
-		if ( mw.EmbedTypes.players.defaultPlayer( mime_type ) ) {
+	isPlayableType: function( mimeType ) {
+		if ( mw.EmbedTypes.players.defaultPlayer( mimeType ) ) {
 			return true;
 		} else {
 			return false;
@@ -1092,15 +1089,15 @@ mediaElement.prototype = {
 	* @returns {Array} of playbale sources
 	*/
 	getPlayableSources: function() {
-		 var playable_sources = new Array();
+		 var playableSources = [];
 		 for ( var i = 0; i < this.sources.length; i++ ) {
-			 if ( this.isPlayableType( this.sources[i].mime_type ) ) {
-				 playable_sources.push( this.sources[i] );
+			 if ( this.isPlayableType( this.sources[i].mimeType ) ) {
+				 playableSources.push( this.sources[i] );
 			 } else {
-				 //mw.log( "type " + this.sources[i].mime_type + 'is not playable' );
+				 //mw.log( "type " + this.sources[i].mimeType + 'is not playable' );
 			 }
 		 };
-		 return playable_sources;
+		 return playableSources;
 	},
 	
 	/**
@@ -1150,6 +1147,7 @@ mw.EmbedPlayer = function( element, customAttributes ) {
 };
 
 mw.EmbedPlayer.prototype = {
+	
 	// The mediaElement object containing all mediaSource objects
 	'mediaElement' : null,
 	
@@ -1458,7 +1456,7 @@ mw.EmbedPlayer.prototype = {
 		// Autoseletct the media source		
 		this.mediaElement.autoSelectSource();
 		// Auto select player based on default order
-		if ( !this.mediaElement.selected_source ) {
+		if ( !this.mediaElement.selectedSource ) {
 			// check for parent clip: 
 			if ( typeof this.pc != 'undefined' ) {
 				mw.log( 'no sources, type:' + this.type + ' check for html' );
@@ -1466,11 +1464,11 @@ mw.EmbedPlayer.prototype = {
 				// do load player if just displaying innerHTML: 
 				if ( this.pc.type == 'text/html' ) {
 					this.selected_player = mw.EmbedTypes.players.defaultPlayer( 'text/html' );
-					mw.log( 'set selected player:' + this.selected_player.mime_type );
+					mw.log( 'set selected player:' + this.selected_player.mimeType );
 				}
 			}
 		} else {
-			this.selected_player = mw.EmbedTypes.players.defaultPlayer( this.mediaElement.selected_source.mime_type );
+			this.selected_player = mw.EmbedTypes.players.defaultPlayer( this.mediaElement.selectedSource.mimeType );
 		}
 		
 		if ( this.selected_player ) {
@@ -1483,7 +1481,7 @@ mw.EmbedPlayer.prototype = {
 			var missingType = '';
 			var or = '';
 			for ( var i = 0; i < this.mediaElement.sources.length; i++ ) {
-				missingType += or + this.mediaElement.sources[i].mime_type;
+				missingType += or + this.mediaElement.sources[i].mimeType;
 				or = ' or ';
 			}
 			// Get from parent playlist if set: 		
@@ -1568,11 +1566,11 @@ mw.EmbedPlayer.prototype = {
 		var default_time_range = '0:00:00' + end_time;		
 		if ( !this.mediaElement )
 			return default_time_range;
-		if ( !this.mediaElement.selected_source )
+		if ( !this.mediaElement.selectedSource )
 			return default_time_range;
-		if ( !this.mediaElement.selected_source.end_npt )
+		if ( !this.mediaElement.selectedSource.end_npt )
 			return default_time_range;		
-		return this.mediaElement.selected_source.start_npt + this.mediaElement.selected_source.end_npt;
+		return this.mediaElement.selectedSource.start_npt + this.mediaElement.selectedSource.end_npt;
 	},
 	
 	/**
@@ -1580,11 +1578,11 @@ mw.EmbedPlayer.prototype = {
 	*/	
 	getDuration:function() {
 		// Update some local pointers for the selected source:	
-		if ( this.mediaElement && this.mediaElement.selected_source && this.mediaElement.selected_source.duration ) {
-			this.duration = parseFloat( this.mediaElement.selected_source.duration );
-			this.startOffset = parseFloat( this.mediaElement.selected_source.startOffset );
-			this.start_npt = this.mediaElement.selected_source.start_npt;
-			this.end_npt = this.mediaElement.selected_source.end_npt;
+		if ( this.mediaElement && this.mediaElement.selectedSource && this.mediaElement.selectedSource.duration ) {
+			this.duration = parseFloat( this.mediaElement.selectedSource.duration );
+			this.startOffset = parseFloat( this.mediaElement.selectedSource.startOffset );
+			this.start_npt = this.mediaElement.selectedSource.start_npt;
+			this.end_npt = this.mediaElement.selectedSource.end_npt;
 		}
 		// Update start end_npt if duration !=0 (set from plugin) 
 		if ( !this.start_npt )
@@ -1892,7 +1890,7 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		// Check for annotative track
 		$j.each( this.mediaElement.sources, function( inx, n ) {
-			if ( n.mime_type == 'text/cmml' ) {
+			if ( n.mimeType == 'text/cmml' ) {
 				if ( n.id == 'Anno_en' ) {
 					anno_track_url = n.src;
 				}
@@ -2170,7 +2168,7 @@ mw.EmbedPlayer.prototype = {
 		this.updatePlayHead( 0 );
 		
 		// reset seek_offset:
-		if ( this.mediaElement.selected_source.URLTimeEncoding )
+		if ( this.mediaElement.selectedSource.URLTimeEncoding )
 			this.seek_time_sec = 0;
 		else
 			this.seek_time_sec = mw.npt2seconds( start_npt );
@@ -2858,8 +2856,8 @@ mw.EmbedPlayer.prototype = {
 	* @return src url	
 	*/
 	getSrc: function() {
-		if( this.mediaElement.selected_source ){
-			return this.mediaElement.selected_source.getSrc( this.seek_time_sec );
+		if( this.mediaElement.selectedSource ){
+			return this.mediaElement.selectedSource.getSrc( this.seek_time_sec );
 		}
 		return false;
 	},
@@ -2873,7 +2871,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	supportsURLTimeEncoding: function() {
 		// do head request if on the same domain
-		return this.mediaElement.selected_source.URLTimeEncoding;
+		return this.mediaElement.selectedSource.URLTimeEncoding;
 	}
 }
 
@@ -3047,20 +3045,20 @@ mediaPlayers.prototype =
 	},
 	
 	/**
-	* get players that support a given mime_type
+	* get players that support a given mimeType
 	*
-	* @param {String} mime_type Mime type of player set
+	* @param {String} mimeType Mime type of player set
 	* @return {Array} 
 	*	Array of players that support a the requested mime type
 	*/
-	getMIMETypePlayers: function( mime_type ) {
+	getMIMETypePlayers: function( mimeType ) {
 		var mime_players = new Array();
 		var _this = this;
-		if ( this.default_players[mime_type] ) {
-			$j.each( this.default_players[ mime_type ], function( d, lib ) {
-				var library = _this.default_players[ mime_type ][ d ];
+		if ( this.default_players[mimeType] ) {
+			$j.each( this.default_players[ mimeType ], function( d, lib ) {
+				var library = _this.default_players[ mimeType ][ d ];
 				for ( var i = 0; i < _this.players.length; i++ ) {
-					if ( _this.players[i].library == library && _this.players[i].supportsMIMEType( mime_type ) ) {
+					if ( _this.players[i].library == library && _this.players[i].supportsMIMEType( mimeType ) ) {
 						mime_players.push( _this.players[i] );
 					}
 				}
@@ -3072,26 +3070,26 @@ mediaPlayers.prototype =
 	/**
 	* Default player for a given mime type
 	*
-	* @param {String} mime_type Mime type of the requested player
+	* @param {String} mimeType Mime type of the requested player
 	* @return 
 	*	Player for mime type
 	* 	null if no player found
 	*/
-	defaultPlayer : function( mime_type ) {	
-		//mw.log( "get defaultPlayer for " + mime_type );
-		var mime_players = this.getMIMETypePlayers( mime_type );
+	defaultPlayer : function( mimeType ) {	
+		//mw.log( "get defaultPlayer for " + mimeType );
+		var mime_players = this.getMIMETypePlayers( mimeType );
 		if ( mime_players.length > 0 )
 		{
 			// Check for prior preference for this mime type
 			for ( var i = 0; i < mime_players.length; i++ ) {
-				if ( mime_players[i].id == this.preference[mime_type] )
+				if ( mime_players[i].id == this.preference[mimeType] )
 					return mime_players[i];
 			}
 			// Otherwise just return the first compatible player
 			// (it will be chosen according to the default_players list
 			return mime_players[0];
 		}
-		//mw.log( 'No default player found for ' + mime_type );
+		//mw.log( 'No default player found for ' + mimeType );
 		return null;
 	},
 	
@@ -3109,15 +3107,15 @@ mediaPlayers.prototype =
 	* Sets the player preference
 	*
 	* @param {String} player_id Prefered player id
-	* @param {String} mime_type Mime type for the associated player stream
+	* @param {String} mimeType Mime type for the associated player stream
 	*/
-	setPlayerPreference : function( player_id, mime_type ) {	
+	setPlayerPreference : function( player_id, mimeType ) {	
 		var selected_player = null;		
 		for ( var i = 0; i < this.players.length; i++ ) {
 			if ( this.players[i].id == player_id ) {
 				selected_player = this.players[i];
-				mw.log( 'choosing ' + player_id + ' for ' + mime_type );
-				this.preference[ mime_type ] = player_id;		
+				mw.log( 'choosing ' + player_id + ' for ' + mimeType );
+				this.preference[ mimeType ] = player_id;		
 				mw.setUserConfig( 'playerPref', this.preference );
 				break;
 			}
@@ -3127,10 +3125,10 @@ mediaPlayers.prototype =
 			var playerList = mw.playerManager.getPlayerList();			 
 			for ( var i = 0; i < playerList.length; i++ ) {
 				var embed = $j( '#' + playerList[i] ).get( 0 );
-				if ( embed.mediaElement.selected_source && ( embed.mediaElement.selected_source.mime_type == mime_type ) )
+				if ( embed.mediaElement.selectedSource && ( embed.mediaElement.selectedSource.mimeType == mimeType ) )
 				{
 					embed.selectPlayer( selected_player );
-					mw.log( 'using ' + embed.selected_player.getName() + ' for ' + embed.mediaElement.selected_source.getTitle() );
+					mw.log( 'using ' + embed.selected_player.getName() + ' for ' + embed.mediaElement.selectedSource.getTitle() );
 				}
 			}
 		}
