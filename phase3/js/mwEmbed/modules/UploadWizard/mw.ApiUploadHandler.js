@@ -53,7 +53,7 @@ mw.ApiUploadHandler.prototype = {
 		}
 
 		var _this = this;
-		console.log("configuring form for Upload API");
+		mw.log("configuring form for Upload API");
 
 		// Set the form action
 		try {
@@ -93,7 +93,7 @@ mw.ApiUploadHandler.prototype = {
 
 	start: function() {
 		var _this = this;
-		console.log("api: upload start!")
+		mw.log("api: upload start!")
 		_this.beginTime = (new Date()).getTime();
 		_this.ui.start();
 		_this.ui.busy();
@@ -101,7 +101,7 @@ mw.ApiUploadHandler.prototype = {
 	},
 
 	progress: function(fraction) {
-		console.log("api: upload progress!")
+		mw.log("api: upload progress!")
 		var _this = this;
 		_this.ui.progress(fraction);
 		for (var i = 0; i < _this.progressCallbacks.length; i++) {
@@ -113,7 +113,7 @@ mw.ApiUploadHandler.prototype = {
 	// perhaps should be abstract to any uploadHandler, or not
 	// in this at all	
 	completed: function(result) {
-		console.log("api: upload completed!")
+		mw.log("api: upload completed!")
 		var _this = this;
 		_this.ui.completed();
 		for (var i = 0; i < _this.completedCallbacks.length; i++) {
@@ -122,7 +122,7 @@ mw.ApiUploadHandler.prototype = {
 	},
 
 	error: function(error) {
-		console.log("api: error!");
+		mw.log("api: error!");
 		var _this = this;
 		_this.ui.error(error);
 		for (var i = 0; i < _this.errorCallbacks.length; i++) {

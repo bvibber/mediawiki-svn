@@ -29,7 +29,7 @@ mw.IframeTransport = function(form, progressCb, completedCb) {
 
 mw.IframeTransport.prototype = {
 	configureForm: function() {
-		console.log("configuring form for iframe transport");
+		mw.log("configuring form for iframe transport");
 		var _this = this;
 		// Set the form target to the iframe
 		var $jForm = $j(_this.form);
@@ -38,14 +38,14 @@ mw.IframeTransport.prototype = {
 		// attach an additional handler to the form, so, when submitted, it starts showing the progress
 		// XXX this is lame .. there should be a generic way to indicate busy status...
 		$jForm.submit( function() { 
-			console.log("submitting to iframe...");
+			mw.log("submitting to iframe...");
 			_this.progressCb(1.0);
 			return true;
 		} );
 
 		// Set up the completion callback
 		$j( '#' + _this.iframeId ).load( function() {
-			console.log("received result in iframe");
+			mw.log("received result in iframe");
 			_this.processIframeResult( $j( this ).get( 0 ) );
 		});			
 	},
@@ -61,13 +61,13 @@ mw.IframeTransport.prototype = {
 		var doc = iframe.contentDocument ? iframe.contentDocument : frames[iframe.id].document;
 		// Fix for Opera 9.26
 		if ( doc.readyState && doc.readyState != 'complete' ) {
-			console.log("not complete");
+			mw.log("not complete");
 			return;
 		}
 			
 		// Fix for Opera 9.64
 		if ( doc.body && doc.body.innerHTML == "false" ) {
-			console.log("no innerhtml");
+			mw.log("no innerhtml");
 			return;
 		}
 		var response;

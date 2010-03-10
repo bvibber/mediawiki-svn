@@ -145,10 +145,16 @@ mw.UploadWizardUploadInterface.prototype = {
 		var _this = this;
 		var path = $j(_this.fileInputCtrl).attr('value');
 		var filename = _this.convertPathToFilename(path);
-		// XXX store the "desired" filename for later, when we rename the file
-		// this is a hack to get a temporary file guaranteed unique -- will change perhaps, later
-		filename = mw.getConfig('userName') + "_" + (new Date()).getTime() + "_" + filename;
-		$j(_this.filenameCtrl).attr('value', filename);
+		// this is a hack to get a filename guaranteed unique.
+		// the specs suggest that we should instead try various names close to what we have: e.g.
+		//  if it's cat.jpg, check with an API call if it's taken
+		//   then if so, try cat_1.jpg, cat_2.jpg ....
+		// We are not doing that here because there could be unlimited API calls to check each name individually, especially
+		// for a common filename. Instead we'll go directly to a name we know will be unique and we'll get the user to fix it later.
+		// XXX the really right thing would be for the server side software to assign a filename based on what we wanted, like,
+		// if we want cat.jpg, it will make some guess and tell us it became cat_1342.jpg in the API return
+		uniqueFilename = mw.getConfig('userName') + "_" + (new Date()).getTime() + "_" + filename;
+		$j(_this.filenameCtrl).attr('value', uniqueFilename);
 		_this.filenameAcceptedCb();
 	},
 
@@ -171,7 +177,7 @@ mw.UploadWizardUploadInterface.prototype = {
 
 	// arguably should be about filename, not path?
 	// may check for common bad patterns here, like DSC_NNNNN, filenames too short, too long, etc.
-		
+	// steal that from the commons js
 	getExtension: function() {
 		var _this = this;
 		var path = $j(_this.fileInputCtrl).attr('value');
@@ -402,15 +408,15 @@ mw.UploadWizardMetadata.prototype = {
 	populateFromResult: function(result) {
 		var _this = this;
 		var upload = result.upload;
-		console.log("populating from result");
+		mw.log("populating from result");
 		_this.setThumbnail(upload.filename, mw.getConfig('thumbnailWidth')); 
+		_this.setSource(upload. result);
 		
-		// _this.setFilename(upload.filename);
+		_this.setFilename(upload.filename);
 
 		//_this.setDescription(); // is there anything worthwhile here? image comment?
 		//_this.setDate(upload.metadata);	
 		//_this.setLocation(upload.metadata); // we could be VERY clever with location sensing...
-		//_this.setProvenance(result);
 		//_this.setAuthor(_this.config.user, upload.exif.Copyright);
 	},
 
@@ -472,6 +478,7 @@ mw.UploadWizardMetadata.prototype = {
 
 
 	getWikiText: function() {
+		var _this = this;
 		wikiText = '';
 	
 
@@ -490,6 +497,10 @@ mw.UploadWizardMetadata.prototype = {
 		
 		// sanity check the descriptions -- do not have two in the same lang
 		// all should be a known lang
+		if (_this.descriptions.length === 0) {
+			// ruh roh
+			// we should not even allow them to press the button (?) but then what about the queue...
+		}
 		for (var i = 0; i < _this.descriptions.length; i++) {
 			// XXX trim the descriptions here, remove leading or trailing whitespace
 			information['Description'] += _this.descriptions[i].getWikiText() + "\n";
@@ -513,10 +524,21 @@ mw.UploadWizardMetadata.prototype = {
 		return wikiText;
 	},
 
+	isReady: function() {
+		// somehow, all the various issues discovered with this upload should be present in a single place
+		// where we can then check on
+		// perhaps as simple as _this.issues or _this.agenda
+	},
+
 	submit: function() {
+		// are we okay to submit?
+
+		// are we changing the name (moving the file?) if so, do that first, and the rest of this submission has to become
+		// a callback when that is completed?
+			
 		// XXX check state of metadata for okayness (license selected, at least one desc, sane filename)
 		var wikiText = _this.getWikiText();
-		console.log(wikiText);
+		mw.log(wikiText);
 		// do some api call to edit the info 
 
 		// api.php  ? action=edit & title=Talk:Main_Page & section=new &  summary=Hello%20World & text=Hello%20everyone! & watch &  basetimestamp=2008-03-20T17:26:39Z &  token=cecded1f35005d22904a35cc7b736e18%2B%5C
@@ -571,6 +593,8 @@ mw.UploadWizard.prototype = {
 	},
 	*/
 
+	// later we will do some testing to see if they can support more advanced UploadHandlers, like 
+	// an XHR based one or Firefogg
 	getUploadHandlerClass: function() {
 		return mw.ApiUploadHandler;
 	},
@@ -645,7 +669,7 @@ mw.UploadWizard.prototype = {
 				tabDiv.show();
 				tab.addClass('mwe-upwiz-tab-highlight');
 			} else {
-				// tabDiv.hide();
+				tabDiv.hide();
 				tab.removeClass('mwe-upwiz-tab-highlight');
 			}
 		}
@@ -671,7 +695,9 @@ mw.UploadWizard.prototype = {
 
 
 		// UI
-		var filenameAcceptedCb = function() { 
+		// originalFilename is the basename of the file on our file system. This is what we really wanted (probably).
+		// the system will upload with a temporary filename and we'll get that back from the API return when we upload
+		var filenameAcceptedCb = function() {
 			_this.updateFileCounts(); 
 		};
 		var ui = new mw.UploadWizardUploadInterface(filenameAcceptedCb); 
@@ -785,7 +811,7 @@ mw.UploadWizard.prototype = {
 	_startUploadsQueued: function() {
 		var _this = this;
 		var uploadsToStart = Math.min(_this.maxSimultaneousUploads - _this._uploadsInProgress.length, _this._uploadsQueued.length);
-		console.log("_startUploadsQueued: should start " + uploadsToStart + " uploads");
+		mw.log("_startUploadsQueued: should start " + uploadsToStart + " uploads");
 		while (uploadsToStart--) {
 			var upload = _this._uploadsQueued.shift();
 			_this._uploadsInProgress.push(upload);
@@ -809,7 +835,7 @@ mw.UploadWizard.prototype = {
 		var fraction = 0;
 		for (var i = 0; i < _this.uploads.length; i++) {
 			var upload = _this.uploads[i]; 
-			console.log("progress of " + upload.ui.fileInputCtrl.value + " = " + upload.progress);
+			mw.log("progress of " + upload.ui.fileInputCtrl.value + " = " + upload.progress);
 			fraction += upload.progress * (upload.weight / _this.totalWeight);
 		}
 		_this.showProgressBar(fraction);
@@ -849,7 +875,7 @@ mw.UploadWizard.prototype = {
 	// okay we are in a confusing state here -- are we asking for progress to be stored in the uploadhandler for our perusal or
 	// to be explicitly forwarded to us
 	uploadProgress: function(upload, progress) {
-		console.log("upload progress is " + progress);
+		mw.log("upload progress is " + progress);
 		var _this = this;
 		upload.progress = progress;
 		_this.showProgress();
@@ -862,7 +888,8 @@ mw.UploadWizard.prototype = {
 
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
-			setTimeout( function() { upload.metadata.populateFromResult(result); }, 0 );
+			setTimeout( function() { 
+				upload.metadata.populateFromResult(result); }, 0 );
 		
 		} else if (result.upload && result.upload.sessionkey) {
 			// there was a warning-type error which prevented it from adding the result to the db 
@@ -884,7 +911,7 @@ mw.UploadWizard.prototype = {
 	// depending on number of file upoads, change link text (and/or disable it)
 	// change button disabled/enabled
 	updateFileCounts: function() {
-		console.log("update counts");
+		mw.log("update counts");
 		var _this = this;
 		var link = $j('#mwe-upwiz-add-file').get(0);
 		link.innerHTML = gM(
