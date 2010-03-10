@@ -5725,12 +5725,14 @@ Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2
 );
 
 /** Telugu (తెలుగు)
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
 	'viewapc' => 'APC సమాచారం',
 	'viewapc-info-general' => 'సాధారణ సమాచారం',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ($2)',
+	'viewapc-hits' => 'సందర్శనలు',
 	'viewapc-rps' => 'క్షణానికి $1 అభ్యర్థనలు',
 	'viewapc-memory-free' => 'ఖాళీ: $1 ($2)',
 	'viewapc-memory-used' => 'వాడినది: $1 ($2)',
@@ -5748,9 +5750,13 @@ $messages['te'] = array(
 	'viewapc-ls-scope-both' => 'రెండూ',
 	'viewapc-ls-sort-size' => 'పరిమాణం',
 	'viewapc-ls-sort-name' => 'పేరు',
+	'viewapc-ls-sort-created' => 'సృష్టించబడినది',
+	'viewapc-ls-sort-deleted' => 'తొలగించారు',
+	'viewapc-ls-sort-timeout' => 'కాలాతీతమైనది',
 	'viewapc-ls-limit-none' => 'అన్నీ',
 	'viewapc-ls-nodata' => "''పోలిన భోగట్టా ఏమీ లేదు''",
 	'viewapc-version-info' => 'సంచిక సమాచారం',
+	'viewapc-version-changelog' => 'మార్పుల చరితం',
 );
 
 /** Tetum (Tetun)

@@ -737,8 +737,12 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'layouts_title' => "Ccreje 'na vosce",
+	'layouts_chooselayout' => "Scacchie 'na disposizione pe $1:",
+	'layouts_nolayout' => 'Nisciuna disposizione',
 	'layouts_continue' => 'Condinue',
+	'layouts_choosecategory' => "Scacchie 'a categorije pe $1:",
 	'layouts_unknown' => 'Scanusciute',
+	'layouts_tagline' => "Sta pàgene ga state generate da 'a disposizione '''$1'''.",
 );
 
 /** Russian (Русский)

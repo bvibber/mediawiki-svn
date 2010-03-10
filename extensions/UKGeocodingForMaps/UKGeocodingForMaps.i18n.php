@@ -21,6 +21,15 @@ $messages['en'] = array(
 	'ukgeocoding_desc' => 'Extends Maps with a display_uk_point parser function with Google Maps implementation',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'ukgeocoding_name' => 'Брытанскае геакадаваньне для мапаў',
+	'ukgeocoding_desc' => 'Пашырае мапы з функцыяй парсэру display_uk_point з выкананьнем у Google Maps',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -52,6 +61,14 @@ $messages['gsw'] = array(
 	'ukgeocoding_desc' => 'Breitet Charte uus mit dr „display_uk_point“-Parserfunktion mit Hilf vun ere Google Maps-Implemäntierig',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'ukgeocoding_name' => 'UK Geocoding za mapy',
+	'ukgeocoding_desc' => 'Rozšěrja mapy přez parserowu funkciju display_uk_point z implementaciju Google Maps',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -77,11 +94,12 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'ukgeocoding_name' => 'Geocoding Regn Unì për Maps',
-	'ukgeocoding_desc' => 'A estend Maps con na fonsion ëd parser display_uk_point con amplëmentassion Google maps',
+	'ukgeocoding_name' => 'Geocodìfica dël Regn Unì për le carte',
+	'ukgeocoding_desc' => 'A estend le carte con na fonsion ëd parser display_uk_point con realisassion Google maps',
 );
 
 /** Tarandíne (Tarandíne)

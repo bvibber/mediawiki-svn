@@ -1019,7 +1019,7 @@ Los elementos eliminados no serán visibles por nadie en todo el sitio web, pero
 	'hiderevision-reason' => 'Motivo (será registrado de manera privada):',
 	'hiderevision-submit' => 'Esconder estos datos permanentemente',
 	'hiderevision-tab' => 'Esconder revisión',
-	'hiderevision-link' => 'Contribuciones ocultas del usuario',
+	'hiderevision-link' => 'contribuciones ocultas del usuario',
 	'hiderevision-norevisions' => 'No se han especificado revisiones para borrar.',
 	'hiderevision-noreason' => 'Debes describir el motivo de esta eliminación.',
 	'hiderevision-status' => 'Revisión $1: $2',

@@ -559,6 +559,17 @@ $messages['ps'] = array(
 	'refhelper-search' => 'پلټل',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'refhelper-refcreate_failure' => 'A página [[$1]] já existe!',
+	'refhelper-label_authorsurname' => 'Sobrenome:',
+	'refhelper-pages' => 'Páginas:',
+	'refhelper-year' => 'Ano:',
+	'refhelper-create' => 'Criar',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

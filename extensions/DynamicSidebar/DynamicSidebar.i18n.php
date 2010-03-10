@@ -132,3 +132,10 @@ $messages['sv'] = array(
 	'dynamicsidebar-desc' => 'Skapar en dynamisk sidomeny baserat på användarsidor, grupper och kategorier.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'dynamicsidebar-desc' => 'వాడుకరి పేజీలు, సమూహాలు, వర్గాలను బట్టి అప్పటికప్పుడు పక్క పట్టీని చూపిస్తుంది.',
+);
+

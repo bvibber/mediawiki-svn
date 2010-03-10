@@ -183,6 +183,20 @@ $messages['gsw'] = array(
 	'right-lastlogin' => 'D Zyt aaluege, wu ne Benutzer sich s letscht Mol aagmäldet gha het',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'lastuserlogin' => 'Poslednje přizjewjenje wužiwarja',
+	'lastuserlogin-desc' => 'Pokazuje, hdyž je so wužiwar posledni raz přizjewił',
+	'lastuserlogin_userid' => 'Wužiwarske mjeno',
+	'lastuserlogin_username' => 'Woprawdźite mjeno',
+	'lastuserlogin_useremail' => 'Wužiwarska e-mejl',
+	'lastuserlogin_lastlogin' => 'Poslednje přizjewjenje',
+	'lastuserlogin_daysago' => 'Dny',
+	'right-lastlogin' => 'Pokazać, hdyž so wužiwar posledni raz přizjewił',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -295,6 +295,14 @@ $messages['sk'] = array(
 	'flv-long-desc' => '(Flash video, $1 × $2 pixlov, veľkosť súboru: $3)',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'flvhandler_desc' => 'ఫ్లాష్ దృశ్యపు ఫైళ్ళను(.flv) మామూలు ఫైళ్ళలాగా చేర్చడాన్ని అనుమతించండి. (ఉదా <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki> )',
+	'flv-long-desc' => '(ఫ్లాష్ దృశ్యం, $1 × $2 పిక్సెళ్ళు, ఫైలు పరిమాణం: $3)',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Vito Genovese

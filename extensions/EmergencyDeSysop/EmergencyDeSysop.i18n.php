@@ -894,12 +894,16 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Kiranmayee
+ * @author Ravichandra
  * @author Veeven
  */
 $messages['te'] = array(
+	'emergencydesysop' => 'అత్యవసరంగా నిర్వాహకత్వం తొలగింపు',
 	'emergencydesysop-reason' => 'తొలగింపునకు కారణం',
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
 	'emergencydesysop-nogroups' => 'ఏదీకాదు',
+	'emergencydesysop-noright' => 'ఈ పుటను చూడ్డానికి మీకు అనుమతులు లేవు',
+	'right-emergencydesysop' => 'ఒకరి నిర్వాహకత్వం మరొకరు రద్దు చేయవచ్చు',
 );
 
 /** Thai (ไทย)

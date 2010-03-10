@@ -323,6 +323,15 @@ $messages['pms'] = array(
 	'tiff-file-info-size' => "(pàgina $5, $1 x $2 pontin, dimension dl'archivi: $3, sòrt MIME: $4)",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'tiff_file_too_large' => 'O arquivo carregado é muito grande e foi recusado.',
+	'tiff_out_of_service' => 'O arquivo carregado não pôde ser processado. ImageMagick não está disponível.',
+	'tiff_bad_file' => 'O arquivo carregado contém erros.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

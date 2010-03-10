@@ -478,6 +478,9 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'logentry-append' => 'Mitte in code',
+	'logentry-parserhook-desc' => "St'enstenzione d'u tag consente 'nu module pe appennere/mettere nnande a le pàggene de le archivije",
+	'logentry-specialpage-desc' => "St'enstenzione d'u tag consente 'u processe pe appennere a le pàggene de le archivije",
+	'logentry' => 'LogEntry',
 	'logentry-invalidpage' => 'Pàgene invalide',
 	'logentry-invalidtoken' => 'Token invalide',
 );

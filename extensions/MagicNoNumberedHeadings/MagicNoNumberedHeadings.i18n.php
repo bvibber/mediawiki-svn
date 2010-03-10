@@ -307,6 +307,13 @@ $messages['sv'] = array(
 	'magicnonumberedheadings-desc' => 'Lägger till det magiska ordet "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'magicnonumberedheadings-desc' => '"<nowiki>__NONUMBEREDHEADINGS__</nowiki>" అనే పదాన్ని చేరుస్తుంది',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

@@ -308,11 +308,13 @@ $messages['br'] = array(
 	'recordadmin-createsuccess' => '$1 zo bet krouet',
 	'recordadmin-createerror' => "C'hoarvezet ez eus ur fazi pa oad o klask krouiñ an $1 !",
 	'recordadmin-badtitle' => 'Titl fall !',
+	'recordadmin-recordid' => 'ID/Anv an enrolladenn :',
 	'recordadmin-invert' => 'Eilpennañ an diuzadenn',
 	'recordadmin-buttonsearch' => 'Klask',
 	'recordadmin-buttoncreate' => 'Krouiñ',
 	'recordadmin-buttonreset' => 'Adderaouekaat',
 	'recordadmin-searchresult' => "Disoc'hoù ar c'hlask",
+	'recordadmin-nomatch' => "N'eo bet kavet enrolladenn klotaus ebet !",
 	'recordadmin-edit' => 'Ho kemmañ $2 enrolladenn "$1"',
 	'recordadmin-typeupdated' => 'hizivaet eo perzhioù $1',
 	'recordadmin-updatesuccess' => 'Hizivaet eo $1',
@@ -328,7 +330,7 @@ $messages['br'] = array(
 	'recordadmin-modified' => 'Kemmet',
 	'recordadmin-actions' => 'Oberoù',
 	'recordadmin-needscontent' => 'Ouzhpennañ an danvez...',
-	'recordadmin-editwithform' => 'Aozañ gant ur furmskrid',
+	'recordadmin-editwithform' => 'Perzhioù',
 	'recordadmin-typeinfo' => 'enrolladenn $1',
 	'right-recordadmin' => 'Kavout hag aozañ ar pajennoù enrollañ',
 	'recordadmin-export-csv' => 'CSV',
@@ -786,7 +788,7 @@ $messages['gl'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Accións',
 	'recordadmin-needscontent' => 'Engadir o contido...',
-	'recordadmin-editwithform' => 'Editar con formulario',
+	'recordadmin-editwithform' => 'Propiedades',
 	'recordadmin-typeinfo' => 'Rexistro de tipo $1',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 	'recordadmin-export-csv' => 'CSV',
@@ -849,7 +851,7 @@ $messages['gsw'] = array(
 	'recordadmin-modified' => 'Gänderet',
 	'recordadmin-actions' => 'Aktione',
 	'recordadmin-needscontent' => 'Inhalt zuefiege ...',
-	'recordadmin-editwithform' => 'Mit eme Formular bearbeite',
+	'recordadmin-editwithform' => 'Eigeschafte',
 	'recordadmin-typeinfo' => '$1 Ufzeichnig',
 	'right-recordadmin' => 'Find Ufzeichnigssyte un bearbeit si',
 	'recordadmin-export-csv' => 'CSV',
@@ -950,7 +952,7 @@ $messages['hsb'] = array(
 	'recordadmin-modified' => 'Změnjeny',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wobsah přidać...',
-	'recordadmin-editwithform' => 'Z formularom wobdźěłać',
+	'recordadmin-editwithform' => 'Kajkosće',
 	'recordadmin-typeinfo' => 'Datowa sadźba $1',
 	'right-recordadmin' => 'Strony zregistrowanjow namakać a wobdźěłać',
 	'recordadmin-export-csv' => 'CSV',
@@ -1661,7 +1663,7 @@ $messages['pms'] = array(
 	'recordadmin-modified' => 'Modificà',
 	'recordadmin-actions' => 'Assion',
 	'recordadmin-needscontent' => 'Gionté contnù ...',
-	'recordadmin-editwithform' => 'Modifiché con un formolari',
+	'recordadmin-editwithform' => 'Proprietà',
 	'recordadmin-typeinfo' => '$1 anotassion',
 	'right-recordadmin' => "Treuva e modifica pàgine d'anotassion",
 	'recordadmin-export-csv' => 'CSV',
@@ -1734,6 +1736,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'recordadmin' => 'Administração de registros',
@@ -1772,9 +1775,11 @@ $messages['pt-br'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Ações',
 	'recordadmin-needscontent' => 'Adicione conteúdo...',
-	'recordadmin-editwithform' => 'Editar com formulário',
+	'recordadmin-editwithform' => 'Propriedades',
 	'recordadmin-typeinfo' => 'registro "$1"',
 	'right-recordadmin' => 'Encontrar e editar páginas de registros',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
 );
 
 /** Romanian (Română)
