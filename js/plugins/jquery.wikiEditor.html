@@ -46,28 +46,28 @@
 		}
 		/* A collapsed template */
 		.wikiEditor-template {
-			line-height: 16px;
+			display: inline-block;
 		}
 		.wikiEditor-template-name {
 			cursor: pointer;
-			vertical-align: top;
+			vertical-align: middle;
 			display: inline-block;
 			height: 16px;
-			line-height: 16px;
 			margin-bottom: -1px;
+			margin-right: 2px;
 			overflow: hidden;
-			background: url( '../../images/wikiEditor/templateEditor/name-bg.png' ) 0 0 repeat-x #e8e8e8;
-			color: #333333;
+			background: url( '../../images/wikiEditor/templateEditor/name-base.png' ) 0 0 repeat-x #e8e8e8;
+			color: #0645ad;
 			font-family: sans-serif;
 			text-decoration: none;
 			padding-left: 0.33em;
 		}
 		.wikiEditor-template-expand {
 			cursor: pointer;
+			vertical-align: middle;
 			display: inline-block;
 			margin-left: 2px;
 			height: 16px;
-			line-height: 16px;
 			margin-bottom: -1px;
 			overflow: hidden;
 			width: 13px;
@@ -75,11 +75,9 @@
 		}
 		.wikiEditor-template-dialog {
 			cursor: pointer;
+			vertical-align: top;
 			display: inline-block;
-			margin-right: 2px;
 			height: 16px;
-			line-height: 16px;
-			margin-bottom: -1px;
 			overflow: hidden;
 			width: 22px;
 			background-position: 50%; /*FF3*/
@@ -87,6 +85,13 @@
 			padding-left: 11px;
 			padding-right: 11px;
 			*/
+		}
+		.wikiEditor-template-name:hover {
+			text-decoration: underline;
+		}
+		.wikiEditor-template-expanded .wikiEditor-template-name,
+		.wikiEditor-template-expanded .wikiEditor-template-expand,
+		.wikiEditor-template-expanded .wikiEditor-template-dialog {
 		}
 		.wikiEditor-template-expanded .wikiEditor-template-expand {
 			background-image: url(../../images/wikiEditor/templateEditor/collapse.png);
@@ -100,30 +105,6 @@
 		.wikiEditor-template-collapsed .wikiEditor-template-dialog {
 			background-image: url(../../images/wikiEditor/templateEditor/dialog-collapsed.png);
 		}
-		.wikiEditor-template-expanded img,
-		.wikiEditor-template-collapsed img {
-			vertical-align: top;
-			padding-top: 1px;
-		}
-		ul.wikiEditor-template-modes,
-		ul.wikiEditor-template-modes li {
-			display: inline;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-		ul.wikiEditor-template-modes {
-			padding: 0 0 0 0.15em;
-		}
-		ul.wikiEditor-template-modes li {
-			border-left: 1px solid #79848e;
-			margin: 0 1px;
-			cursor: pointer;
-		}
-		ul.wikiEditor-template-modes li img {
-			vertical-align: middle;
-			cursor: pointer !important;
-		}
 		/* An expanded template */
 		.wikiEditor-template-expanded {
 			display: block;
@@ -132,10 +113,13 @@
 			display: block;
 			width: 100%;
 			background: #f3f3f3;
-			border-top: solid 1px #cccccc;
 			border-bottom: solid 1px #cccccc;
 			padding: 0.5em 4px;
-			margin-top: -5px;
+			padding-top: 1.25em;
+			margin-top: -0.75em;
+			background-image: url(../../images/wikiEditor/templateEditor/text-base.png);
+			background-position: top;
+			background-repeat: repeat-x;
 		}
 		.wikiEditor-template-end, .wikiEditor-template-start {
 			color: blue;
