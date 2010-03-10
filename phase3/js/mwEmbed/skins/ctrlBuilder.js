@@ -284,8 +284,8 @@ ctrlBuilder.prototype = {
 		$interface.find( '.mw-fullscreen-overlay' ).remove();
 		
 		// Special hack for mediawiki monobook skin search box
-		if( $j( '#p-search' ).length ) { 
-			$j( '#p-search' ).css('z-index', 1);
+		if( $j( '#p-search,#p-logo' ).length ) { 
+			$j( '#p-search,#p-logo,#ca-nstab-project a' ).css('z-index', 1);			
 		} 
 		
 		// Add the css fixed fullscreen black overlay as a sibling to the video element
@@ -362,7 +362,7 @@ ctrlBuilder.prototype = {
 		// Resize the timed text font size per window width	
 		$interface.find( '.itext' ).css( _this.getFullscreenTextCss() );		
 		
-		// Reposition play-btn-large ( this is unfortunatly not easy to position with 'margin': 'auto'
+		// Reposition play-btn-large ( this is unfortunately not easy to position with 'margin': 'auto'
 		$interface.find('.play-btn-large').animate( _this.getFullscreenPlayButtonCss() )		
 		
 		// Bind mouse move in interface to hide control bar
