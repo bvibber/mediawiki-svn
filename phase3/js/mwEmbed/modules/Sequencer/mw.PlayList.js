@@ -382,6 +382,7 @@ mw.PlayList.prototype = {
 			}
 		}
 	},
+	
 	// set up minimal media_element emulation:	 
 	media_element: {
 		selected_source: {
