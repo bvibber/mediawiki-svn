@@ -223,11 +223,12 @@ baseRemoteSearch.prototype = {
 			options.height = resource.height;
 			
 		var outHtml  = '';
-		if ( options['max_height'] ) {
-			options.height = ( options.max_height > resource.height ) ? resource.height : options.max_height;
-			options.width = ( resource.width / resource.height ) * options.height;						
-		}		
-		
+		if ( ! options['max_width'] ) {
+			options['max_width'] = 500;
+		}
+		options.width = ( options.max_width > resource.width ) ? resource.width : options.max_width;
+		options.height = ( resource.height / resource.width ) * options.width;						
+			
 		options.style = '';
 		if( options.height ) {
 			options.style += 'height:' + parseInt( options.height ) + 'px;';

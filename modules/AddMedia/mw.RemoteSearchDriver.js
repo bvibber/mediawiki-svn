@@ -2021,14 +2021,12 @@ mw.RemoteSearchDriver.prototype = {
 		// Update the resource size constrained by clip_edit_disp
 		if( width > $j('#clip_edit_disp').width() ){
 			width = $j('#clip_edit_disp').width();
-			height = width * (  width / height );
+			height = parseInt( width * (  height / width ) );
 		}
 		if( height > $j('#clip_edit_disp').height() ){
 			height =  $j('#clip_edit_disp').height();
-			width = height * (  height / width );
-		}																					
-		mw.log(" set height to: " + height + ' width to: ' + width );
-							
+			width = height * (  width / height );
+		}							
 		
 		// Update add media wizard title:
 		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' +
@@ -2042,7 +2040,8 @@ mw.RemoteSearchDriver.prototype = {
 			_this.loadHighQualityImage( 
 				resource, 
 				{
-					'width': width 
+					'width': width,
+					'height' : height
 				}, 
 				'rsd_edit_img', 
 				function( img_src ) {
@@ -2050,7 +2049,9 @@ mw.RemoteSearchDriver.prototype = {
 					$j( '<img />' )
 						.attr( {
 							'id' : 'rsd_edit_img',
-							'src' : img_src
+							'src' : img_src,
+							'width': width,
+							'height' : height
 						} )
 					.appendTo( '#clip_edit_disp' );					
 				}
@@ -2842,7 +2843,7 @@ mw.RemoteSearchDriver.prototype = {
 	* Get the embed code
 	*
 	* based on import_url_mode:
-	* calls the resource providers getEmbedHTML method
+	* calls the resource providers getEmbedWithDescription method
 	* 	or 
 	* calls the resource providers getEmbedWikiCode method
 	*/	
