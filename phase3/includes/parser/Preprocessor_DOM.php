@@ -160,7 +160,7 @@ class Preprocessor_DOM implements Preprocessor {
 				new ParseAssign("h", new ParseSeq(array("DefaultPat", "HeadingSeq"), '==='), "level", "3"), 
 				new ParseAssign("h", new ParseSeq(array("DefaultPat", "HeadingSeq"), '=='), "level", "2"), 
 				new ParseAssign("h", new ParseSeq(array("DefaultPat", "HeadingSeq"), '='), "level", "1")),
-			"HeadingSeq" => new ParseSeq(array("MainQuant", "DefaultPat"), '~r(?=(?: *<!--.*?-->)*(?:\n|$))'),
+			"HeadingSeq" => new ParseSeq(array("MainQuant", "DefaultPat"), '~r'),
 			"TemplateSeq" => new ParseSeq(array(new ParseAssign("title", "MainQuant"), 
 				new ParseQuant(new ParseAssign("part", new ParseSeq(array(new ParsePattern('/^\|/s'), new ParseChoice(new ParseSeq(array(
 					new ParseAssign("name", new ParseSeq(array("MainQuant", new ParsePattern('/^=/s')), '~r|\||=(?!~r|\|)')), 
@@ -414,9 +414,6 @@ class PPFrame_DOM implements PPFrame {
 					$out .= $this->parser->extensionSubstitution( $params, $this );
 				} elseif ( $contextNode->nodeName == 'h' ) {
 					# Heading
-					$headerTag = str_repeat("=", $contextNode->getAttribute("level"));
-					$contextNode->insertBefore($contextNode->ownerDocument->createTextNode($headerTag), $contextNode->firstChild);
-					$contextNode->appendChild($contextNode->ownerDocument->createTextNode($headerTag));
 					$s = $this->expand( $contextNode->childNodes, $flags );
 
 					# Insert a heading marker only for <h> children of <root>
@@ -430,11 +427,16 @@ class PPFrame_DOM implements PPFrame {
 						$serial = count( $this->parser->mHeadings ) - 1;
 						$marker = "{$this->parser->mUniqPrefix}-h-$serial-" . Parser::MARKER_SUFFIX;
 						$count = $contextNode->getAttribute( 'level' );
-						$s = substr( $s, 0, $count ) . $marker . substr( $s, $count );
+						$s = $marker . $s;
 						$this->parser->mStripState->general->setPair( $marker, '' );
 					}
-					$out .= $s;
+					$headerTag = str_repeat("=", $contextNode->getAttribute("level"));
+					$out .= $headerTag . $s . $headerTag;
 					$headingIndex ++;
+					$nextNode = $contextNode->nextSibling;
+					if ($nextNode != NULL && ! ($nextNode instanceof DOMText && $nextNode->substringData(0, 1) == "\n")) {
+						$out .= "\n";
+					}
 				} else {
 					# Generic recursive expansion
 					$newIterator = $contextNode->childNodes;
