@@ -1,10 +1,10 @@
 /**
- * This file exposes some of the functionality of mwEmbed to wikis
+ * This file exposes the functionality of mwEmbed to wikis
  * that do not yet have mwEmbed enabled
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r107';
+var mwRemoteVersion = 'r108';
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
