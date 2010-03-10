@@ -56,6 +56,43 @@ form.mwe-upwiz-form {
 	cursor: pointer;
 }
 
+/* CSS styling hack for file inputs - http://www.quirksmode.org/dom/inputfile.html */
+.mwe-upwiz-file-ctrl-container {
+	position: relative;
+	display: inline;
+}
+
+.mwe-upwiz-file, .mwe-upwiz-visible-file {
+	width: 250px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.mwe-upwiz-visible-file {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+
+	border: 1px solid blue; /* XXX just to make it visible for now */
+}
+
+/* XXX we probably have a standard for this */
+.helper {
+	color: #cccccc; /* or whatever we do for greyed out text */
+	font-variant: italic, oblique;
+	text-align: center;
+}
+
+
+.mwe-upwiz-file {
+	position: relative;
+	-moz-opacity: 0; 
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+}
+
 #mwe-upwiz-select-files {
 	float: left;
 	width: 100px;
@@ -119,3 +156,4 @@ a[disabled=true]:hover {
 .mwe-upwiz-thumbnail {
 	width: 220px;  /* should be same as configured thumbnail width in uploadWizard.js */
 }
+

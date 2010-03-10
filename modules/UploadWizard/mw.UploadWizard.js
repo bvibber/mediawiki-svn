@@ -8,6 +8,7 @@ mw.addMessages({
 	'mwe-upwiz-add-file-0': 'Add a file',
 	'mwe-upwiz-browse': 'Browse...',
 	'mwe-upwiz-completed': 'OK',
+	'mwe-upwiz-click-here': 'Click here to select a file',
 	'mwe-upwiz-uploading': 'uploading...',
 	'mwe-upwiz-remove-upload': 'Remove this upload',
 	'mwe-upwiz-upload': 'Upload',
@@ -64,6 +65,9 @@ mw.addMessages({
 
 
 // this interface only works for the wizard... should say so in class name
+// XXX there is a CSS/scripting trick to get X-browser consistent file input, plus one-click file input
+// It will not work in Netscape 4, Explorer 4, or Netscape 3. 
+// We probably don't care, but...  http://www.quirksmode.org/dom/inputfile.html in case we do
 mw.UploadWizardUploadInterface = function(filenameAcceptedCb) {
 	var _this = this;
 
@@ -75,11 +79,18 @@ mw.UploadWizardUploadInterface = function(filenameAcceptedCb) {
 
 	_this.fileInputCtrl = $j('<input size=40 class="mwe-upwiz-file" name="file" type="file"/>').get(0);
 
+	// XXX better class for helper, we probably have a standard already
+	_this.visibleFilename = $j('<div class="mwe-upwiz-visible-file helper">' + gM('mwe-upwiz-click-here') + '</div>');
+
 	// XXX not sure if we will have a filename here -- we may want to autogenerate a "stashed" filename, 
 	// with this flow
 	_this.filenameCtrl = $j('<input type="hidden" name="filename" value=""/>').get(0); 
 
-	_this.form = $j('<form class="mwe-upwiz-form"></form>').append(_this.fileInputCtrl).append(_this.filenameCtrl).get(0);
+	_this.form = $j('<form class="mwe-upwiz-form"></form>')
+			.append($j('<div class="mwe-upwiz-file-ctrl-container">')
+				.append(_this.fileInputCtrl)
+				.append(_this.visibleFilename)
+			).append(_this.filenameCtrl).get(0);
 
 	_this.progressMessage = $j('<span class="mwe-upwiz-status-message" style="display: none"></span>').get(0);
 
@@ -141,18 +152,25 @@ mw.UploadWizardUploadInterface.prototype = {
 		}
 	},
 
+	// this does two things: 
+	//   1) since the file input has been hidden with some clever CSS (to avoid x-browser styling issues), 
+	//      update the visible filename
+	//
+	//   2) update the filename desired when added to MediaWiki. This should be RELATED to the filename on the filesystem,
+	//      but it should be silently fixed so that it does not trigger uniqueness conflicts. i.e. if server has cat.jpg we change ours to cat_2.jpg.
+	//      This is hard to do in a scalable fashion on the client; we don't want to do 12 api calls to get cat_12.jpg. 
+	//      Ideally we should ask the SERVER for a decently unique filename related to our own. 
+	//	So, at the moment, this is hacked with a guaranteed-unique filename instead.  
 	updateFilename: function() {
 		var _this = this;
 		var path = $j(_this.fileInputCtrl).attr('value');
+	
+		// visible filename	
+		$j(_this.visibleFilename).removeClass('helper').html(path);
+
+		// desired filename 
 		var filename = _this.convertPathToFilename(path);
 		// this is a hack to get a filename guaranteed unique.
-		// the specs suggest that we should instead try various names close to what we have: e.g.
-		//  if it's cat.jpg, check with an API call if it's taken
-		//   then if so, try cat_1.jpg, cat_2.jpg ....
-		// We are not doing that here because there could be unlimited API calls to check each name individually, especially
-		// for a common filename. Instead we'll go directly to a name we know will be unique and we'll get the user to fix it later.
-		// XXX the really right thing would be for the server side software to assign a filename based on what we wanted, like,
-		// if we want cat.jpg, it will make some guess and tell us it became cat_1342.jpg in the API return
 		uniqueFilename = mw.getConfig('userName') + "_" + (new Date()).getTime() + "_" + filename;
 		$j(_this.filenameCtrl).attr('value', uniqueFilename);
 		_this.filenameAcceptedCb();
@@ -228,13 +246,6 @@ mw.UploadWizardUploadInterface.prototype = {
 
 
 mw.UploadWizard = function() {
-
-	// this detect upload mode checks the API. Slow!
-	// works for the add media wizard since it is talking to a remote server
-	// we need to make it configure itself based on local globals if local server, remote only if remote.
-	// UploadHandler.detectUploadMode();
-
-	// XXX does not work yet
 
 	this.uploadHandlerClass = mw.getConfig('uploadHandlerClass') || this.getUploadHandlerClass();
 	this.isCompleted = false;
@@ -734,9 +745,6 @@ mw.UploadWizard.prototype = {
 		// update the uploadUi to add files - we may be over limit 
 		_this.updateFileCounts();
 
-		// the next thing we probably want to do is to get the file, so let's save them a click.
-		// XXX why doesn't this work?
-		// $j(ui.fileInputCtrl).trigger('click');
 	},
 
 	/* Remove an upload from our array of uploads, and the HTML UI 
