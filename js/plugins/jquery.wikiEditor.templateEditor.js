@@ -211,8 +211,8 @@ fn: {
 						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 						var templateModel = $templateText.data( 'model' );
 						$( this ).find( '.wikiEditor-template-dialog-field-wrapper textarea' ).each( function() {
-							// Update the value, ensuring we strip any illegal multiple line breaks
-							templateModel.setValue( $( this ).data( 'name' ), $( this ).val().replace( /\n+/g, '/n' ) );
+							// Update the value
+							templateModel.setValue( $( this ).data( 'name' ), $( this ).val() );
 						});
 						//keep text consistent
 						$.wikiEditor.modules.templateEditor.fn.updateModel( $templateText, templateModel );
