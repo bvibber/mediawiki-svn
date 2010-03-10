@@ -176,51 +176,9 @@ class Preprocessor_DOM implements Preprocessor {
 		$parser = new ParseEngine($rules, "Root");
 
 		$dom = $parser->parse($text);
-		$this->transformDOM($dom);
 
 		wfProfileOut( __METHOD__ );
 		return $dom;
-	}
-
-	// Temporary function to add needed redundant info to the parse tree after parsing.
-	private function transformDOM(&$node, &$headingInd = 1) {
-		if ($node->hasChildNodes()) {
-			if ($node->nodeName == "h") {
-				$headerTag = str_repeat("=", $node->getAttribute("level"));
-				if ($node->firstChild instanceof DOMText) {
-					$node->firstChild->insertData(0, $headerTag);
-				} else {
-					$node->insertBefore($node->ownerDocument->createTextNode($headerTag), $crrnt->firstChild);
-				}
-				if ($node->lastChild instanceof DOMText) {
-					$node->lastChild->appendData($headerTag);
-				} else {
-					$node->appendChild($node->ownerDocument->createTextNode($headerTag));
-				}
-				$node->setAttribute("i", $headingInd);
-				$headingInd ++;
-			} elseif ($node->nodeName == "template" && $node->previousSibling instanceof DOMText) {
-				$preText = $node->previousSibling->wholeText;
-				if ($preText[strlen($preText) - 1] == "\n") {
-					$node->setAttribute("lineStart", 1);
-				}
-			}
-			$partInd = 1;
-			foreach ($node->childNodes as $crrnt) {
-				$this->transformDOM($crrnt, $headingInd);
-				if ($crrnt->nodeName == "part") {
-					if ($crrnt->firstChild->nodeName != "name") {
-						$newNode = $node->ownerDocument->createElement("name");
-						$newNode->setAttribute("index", $partInd);
-						$partInd ++;
-						$crrnt->insertBefore($newNode, $crrnt->firstChild);
-					} else {
-						$newNode = $node->ownerDocument->createTextNode("=");
-						$crrnt->insertBefore($newNode, $crrnt->lastChild);
-					}
-				}
-			}
-		}
 	}
 }
 
@@ -323,6 +281,7 @@ class PPFrame_DOM implements PPFrame {
 		$outStack = array( '', '' );
 		$iteratorStack = array( false, $root );
 		$indexStack = array( 0, 0 );
+		$headingIndex = 1;
 
 		while ( count( $iteratorStack ) > 1 ) {
 			$level = count( $outStack ) - 1;
@@ -370,40 +329,41 @@ class PPFrame_DOM implements PPFrame {
 			} elseif ( $contextNode instanceof DOMNode ) {
 				if ( $contextNode->nodeType == XML_TEXT_NODE ) {
 					$out .= $contextNode->nodeValue;
-				} elseif ( $contextNode->nodeName == 'template' ) {
-					# Double-brace expansion
+				} elseif ( $contextNode->nodeName == 'template' || $contextNode->nodeName == 'tplarg' ) {
+					# brace expansion
 					$xpath = new DOMXPath( $contextNode->ownerDocument );
 					$titles = $xpath->query( 'title', $contextNode );
 					$title = $titles->item( 0 );
 					$parts = $xpath->query( 'part', $contextNode );
-					if ( $flags & self::NO_TEMPLATES ) {
-						$newIterator = $this->virtualBracketedImplode( '{{', '|', '}}', $title, $parts );
-					} else {
-						$lineStart = $contextNode->getAttribute( 'lineStart' );
-						$params = array(
-							'title' => new PPNode_DOM( $title ),
-							'parts' => new PPNode_DOM( $parts ),
-							'lineStart' => $lineStart );
-						$ret = $this->parser->braceSubstitution( $params, $this );
-						if ( isset( $ret['object'] ) ) {
-							$newIterator = $ret['object'];
+					$partInd = 1;
+					foreach ($parts as $part) {
+						if ($part->firstChild->nodeName != "name") {
+							$newNode = $contextNode->ownerDocument->createElement("name");
+							$newNode->setAttribute("index", $partInd);
+							$partInd ++;
+							$part->insertBefore($newNode, $part->firstChild);
 						} else {
-							$out .= $ret['text'];
+							$newNode = $contextNode->ownerDocument->createTextNode("=");
+							$part->insertBefore($newNode, $part->lastChild);
 						}
 					}
-				} elseif ( $contextNode->nodeName == 'tplarg' ) {
-					# Triple-brace expansion
-					$xpath = new DOMXPath( $contextNode->ownerDocument );
-					$titles = $xpath->query( 'title', $contextNode );
-					$title = $titles->item( 0 );
-					$parts = $xpath->query( 'part', $contextNode );
 					if ( $flags & self::NO_ARGS ) {
-						$newIterator = $this->virtualBracketedImplode( '{{{', '|', '}}}', $title, $parts );
+						if ( $contextNode->nodeName == 'template' ) {
+							$newIterator = $this->virtualBracketedImplode( '{{', '|', '}}', $title, $parts );
+						} else {
+							$newIterator = $this->virtualBracketedImplode( '{{{', '|', '}}}', $title, $parts );
+						}
 					} else {
 						$params = array(
 							'title' => new PPNode_DOM( $title ),
 							'parts' => new PPNode_DOM( $parts ) );
-						$ret = $this->parser->argSubstitution( $params, $this );
+						if ( $contextNode->nodeName == 'template' ) {
+							$preText = $contextNode->previousSibling->wholeText;
+							$params['lineStart'] = $preText[strlen($preText) - 1] == "\n";
+							$ret = $this->parser->braceSubstitution( $params, $this );
+						} else {
+							$ret = $this->parser->argSubstitution( $params, $this );
+						}
 						if ( isset( $ret['object'] ) ) {
 							$newIterator = $ret['object'];
 						} else {
@@ -454,6 +414,9 @@ class PPFrame_DOM implements PPFrame {
 					$out .= $this->parser->extensionSubstitution( $params, $this );
 				} elseif ( $contextNode->nodeName == 'h' ) {
 					# Heading
+					$headerTag = str_repeat("=", $contextNode->getAttribute("level"));
+					$contextNode->insertBefore($contextNode->ownerDocument->createTextNode($headerTag), $contextNode->firstChild);
+					$contextNode->appendChild($contextNode->ownerDocument->createTextNode($headerTag));
 					$s = $this->expand( $contextNode->childNodes, $flags );
 
 					# Insert a heading marker only for <h> children of <root>
@@ -462,7 +425,6 @@ class PPFrame_DOM implements PPFrame {
 					  && $this->parser->ot['html'] )
 					{
 						# Insert heading index marker
-						$headingIndex = $contextNode->getAttribute( 'i' );
 						$titleText = $this->title->getPrefixedDBkey();
 						$this->parser->mHeadings[] = array( $titleText, $headingIndex );
 						$serial = count( $this->parser->mHeadings ) - 1;
@@ -472,6 +434,7 @@ class PPFrame_DOM implements PPFrame {
 						$this->parser->mStripState->general->setPair( $marker, '' );
 					}
 					$out .= $s;
+					$headingIndex ++;
 				} else {
 					# Generic recursive expansion
 					$newIterator = $contextNode->childNodes;

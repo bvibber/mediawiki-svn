@@ -22,12 +22,12 @@ class ParseEngine {
 		$this->mIter = 0;
 		$this->mDom = new DOMDocument();
 		if (! $this->callParser($this->mStartRule, $text, $children, NULL)) {
-			throw new MWException('Parser regected text.');
+			throw new MWException("Parser rejected text.");
 		}
 		$this->mDom->appendChild($children[0]);
 		$this->mDom->normalizeDocument();
 		if ($wgDebugParserLog != '') {
-			wfErrorLog("XML - " . $this->mDom->saveXML() . "\n", $wgDebugParserLog);
+			wfErrorLog("XML - {$this->mDom->saveXML()}\n", $wgDebugParserLog);
 		}
 		return $this->mDom;
 	}
@@ -44,7 +44,7 @@ class ParseEngine {
 		}
 		$this->mIter ++;
 		if ($this->mIter > ParseEngine::maxIter) {
-			throw new MWException('Parser iterated too many times.  Probable loop in grammar.');
+			throw new MWException("Parser iterated too many times. Probable loop in grammar.");
 		}
 		$retCode = $child->parse($text, $this, $this->mDom, $children, $replaceStr);
 		if ($wgDebugParserLog != '') {

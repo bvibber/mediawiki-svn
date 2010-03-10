@@ -4853,17 +4853,19 @@ class Parser
 		$node = $root->getFirstChild();
 
 		// Find the target section
+		$ind = 1;
 		if ( $sectionIndex == 0 ) {
 			// Section zero doesn't nest, level=big
 			$targetLevel = 1000;
 		} else {
-            while ( $node ) {
-                if ( $node->getName() === 'h' ) {
-                    $bits = $node->splitHeading();
-					if ( $bits['i'] == $sectionIndex ) {
-        				$targetLevel = $bits['level'];
+			while ( $node ) {
+				if ( $node->getName() === 'h' ) {
+					if ( $ind == $sectionIndex ) {
+						$bits = $node->splitHeading();
+						$targetLevel = $bits['level'];
 						break;
 					}
+					$ind ++;
 				}
 				if ( $mode === 'replace' ) {
 					$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
@@ -4886,9 +4888,10 @@ class Parser
 			if ( $node->getName() === 'h' ) {
 				$bits = $node->splitHeading();
 				$curLevel = $bits['level'];
-				if ( $bits['i'] != $sectionIndex && $curLevel <= $targetLevel ) {
+				if ( $ind != $sectionIndex && $curLevel <= $targetLevel ) {
 					break;
 				}
+				$ind ++;
 			}
 			if ( $mode === 'get' ) {
 				$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
