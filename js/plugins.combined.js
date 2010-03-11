@@ -9310,6 +9310,7 @@ evt: {
 							var model = $.wikiEditor.modules.templateEditor.fn.updateModel( $( node ) );
 							if ( model.isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.wrapTemplate( $( node ) );
+								$.wikiEditor.modules.templateEditor.fn.bindTemplateEvents( $( node ) );
 							} else {
 								$( node ).addClass( 'wikiEditor-template-text' );
 							}
@@ -9343,6 +9344,7 @@ evt: {
 							} else if ( !$( node ).parent().hasClass( 'wikiEditor-template' ) &&
 									model.isCollapsible() ) {
 								$.wikiEditor.modules.templateEditor.fn.wrapTemplate( $( node ) );
+								$.wikiEditor.modules.templateEditor.fn.bindTemplateEvents( $( node ) );
 							}
 						},
 						getAnchor: function( ca1, ca2 ) {
@@ -9391,43 +9393,66 @@ fn: {
 	wrapTemplate: function( $wrapper ) {
 		var model = $wrapper.data( 'model' );
 		var context = $wrapper.data( 'marker' ).context;
-		
 		var $template = $wrapper
 			.wrap( '<span class="wikiEditor-template"></span>' )
 			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 			.parent()
 			.addClass( 'wikiEditor-template-collapsed' );
-		
 		var $templateName = $( '<span />' )
 			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
 			.text( model.getName() )
-			.click( function() { createDialog( $template ); return false; } )
-			.mousedown( function() { return false; } )
 			.prependTo( $template );
-		
 		var $templateExpand = $( '<span />' )
 			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
-			.click( toggleWikiTextEditor )
-			.mousedown( function() { return false; } )
 			.prependTo( $template );
-		
 		var $templateDialog = $( '<span />' )
 			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
-			.click( function() { createDialog( $template ); return false; } )
-			.mousedown( function() { return false; } )
 			.appendTo( $templateName );
-		
-		function toggleWikiTextEditor() {
-			context.fn.purgeOffsets();
-			$(this)
-				.closest( '.wikiEditor-template' )
-				.toggleClass( 'wikiEditor-template-expanded' )
-				.toggleClass( 'wikiEditor-template-collapsed' )
-				.find( '.wikiEditor-template-text' )
-				.toggleClass( 'wikiEditor-nodisplay' );
-			return false;
-		};
-		
+	},
+	/**
+	 * Turn a complex template wrapper back into a simple one
+	 * @param $wrapper Wrapping <span>
+	 */
+	unwrapTemplate: function( $wrapper ) {
+		$wrapper.parent().replaceWith( $wrapper );
+	},
+	/**
+	 * Bind events to a template
+	 * @param $wrapper Original wrapper for the template to bind events to
+	 */
+	bindTemplateEvents: function( $wrapper ) {
+		var $template = $wrapper.parent( '.wikiEditor-template' );
+		$template.find( '.wikiEditor-template-name' )
+			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
+			.mousedown( function() { return false; } );
+		$template.find( '.wikiEditor-template-expand' )
+			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
+			.mousedown( function() { return false; } );
+		$template.find( '.wikiEditor-template-dialog' )
+			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
+			.mousedown( function() { return false; } );
+	},
+	/**
+	 * Toggle the visisbilty of the wikitext for a given template
+	 * @param $wrapper The origianl wrapper we want expand/collapse
+	 */
+	 toggleWikiTextEditor: function( $wrapper ) {
+		var context = $wrapper.data( 'marker' ).context;
+		var $template = $wrapper.parent( '.wikiEditor-template' );
+		context.fn.purgeOffsets();
+		$template
+			.toggleClass( 'wikiEditor-template-expanded' )
+			.toggleClass( 'wikiEditor-template-collapsed' )
+			.find( '.wikiEditor-template-text' )
+			.toggleClass( 'wikiEditor-nodisplay' );
+	},
+	/**
+	 * Create a dialog for editing a given template and open it
+	 * @param $wrapper The origianl wrapper for which to create the dialog
+	*/
+	createDialog: function( $wrapper ) {
+		var context = $wrapper.data( 'marker' ).context;
+		var $template = $wrapper.parent( '.wikiEditor-template' );
 		var dialog = {
 			'titleMsg': 'wikieditor-template-editor-dialog-title',
 			'id': 'wikiEditor-template-dialog',
@@ -9450,7 +9475,7 @@ fn: {
 						// More user feedback
 						var $templateDiv = $( this ).data( 'templateDiv' );
 						context.fn.highlightLine( $templateDiv );
-						
+
 						var $templateText = $templateDiv.children( '.wikiEditor-template-text' );
 						var templateModel = $templateText.data( 'model' );
 						$( this ).find( '.wikiEditor-template-dialog-field-wrapper textarea' ).each( function() {
@@ -9459,7 +9484,7 @@ fn: {
 						});
 						//keep text consistent
 						$.wikiEditor.modules.templateEditor.fn.updateModel( $templateText, templateModel );
-						
+
 						$( this ).dialog( 'close' );
 					},
 					'wikieditor-template-editor-dialog-cancel': function() {
@@ -9474,7 +9499,7 @@ fn: {
 					if ( $templateText.html() != $templateText.data( 'oldHTML' ) ) {
 						templateModel = $.wikiEditor.modules.templateEditor.fn.updateModel( $templateText );
 					}
-					
+
 					// Build the table
 					// TODO: Be smart and recycle existing table
 					var params = templateModel.getAllInitialParams();
@@ -9537,7 +9562,7 @@ fn: {
 								.appendTo( $fields );
 						}
 					}
-					
+
 					// Remove any leftover rows
 					$rows.remove();
 					$fields.find( 'label' ).autoEllipsis();
@@ -9547,23 +9572,12 @@ fn: {
 				}
 			}
 		};
-		
-		function createDialog( $templateDiv ) {
-			// Lazy-create the dialog at this time
-			context.$textarea.wikiEditor( 'addDialog', { 'templateEditor': dialog } );
-			$( '#' + dialog.id )
-				.data( 'templateDiv', $templateDiv )
-				.dialog( 'open' );
-		}
+		// Lazy-create the dialog at this time
+		context.$textarea.wikiEditor( 'addDialog', { 'templateEditor': dialog } );
+		$( '#' + dialog.id )
+			.data( 'templateDiv', $template )
+			.dialog( 'open' );
 	},
-	/**
-	 * Turn a complex template wrapper back into a simple one
-	 * @param $wrapper Wrapping <span>
-	 */
-	unwrapTemplate: function( $wrapper ) {
-		$wrapper.parent().replaceWith( $wrapper );
-	},
-	
 	/**
 	 * Update a template's model and HTML
 	 * @param $templateText Wrapper <span> containing the template text
