@@ -301,11 +301,15 @@ class LqtView {
 	}
 
 	function showReplyForm( $thread ) {
+		$html = Xml::openElement( 'div',
+					array( 'class' => 'lqt-reply-form' ) );
+		$this->output->addHTML( $html );
 		if ( $thread->root()->getTitle()->userCan( 'edit' ) ) {
-			$this->showEditingFormInGeneral( null, 'reply', $thread );
+		 	$this->showEditingFormInGeneral( null, 'reply', $thread );
 		} else {
 			$this->showReplyProtectedNotice( $thread );
 		}
+		$this->output->addHTML('</div>');
 	}
 
 	function showSummarizeForm( $thread ) {
@@ -1558,6 +1562,10 @@ class LqtView {
 			$this->showThreadReplies( $thread, $startAt, $maxCount, $showThreads,
 				$cascadeOptions );
 		} elseif ( $hasSubthreads && !$showThreads ) {
+			if ($replyTo) {
+				$this->showReplyForm( $thread );
+			}
+			
 			// Add a "show subthreads" link.
 			$link = $this->getShowReplies( $thread );
 
@@ -1575,10 +1583,8 @@ class LqtView {
 				$class = 'lqt-thread-replies lqt-thread-replies-'.
 						$this->threadNestingLevel;
 				$html = Xml::openElement( 'div', array( 'class' => $class ) );
-				$html .= Xml::openElement( 'div',
-							array( 'class' => 'lqt-reply-form' ) );
 				$this->output->addHTML( $html );
-
+				
 				$this->showReplyForm( $thread );
 
 				$finishDiv = Xml::tags( 'div',
@@ -1594,6 +1600,22 @@ class LqtView {
 				$finishHTML .= Xml::closeElement( 'div' ); // lqt-thread-replies
 				$this->output->addHTML( $finishHTML );
 			}
+		} elseif ( !$hasSubthreads && $replyTo ) {
+			$class = 'lqt-thread-replies lqt-thread-replies-'.
+					$this->threadNestingLevel;
+			$html = Xml::openElement( 'div', array( 'class' => $class ) );
+			$this->output->addHTML( $html );
+			
+			$this->showReplyForm( $thread );
+			
+			$html = Xml::tags( 'div',
+					array( 'class' => 'lqt-replies-finish' ),
+					Xml::tags( 'div',
+						array( 'class' =>
+							'lqt-replies-finish-corner'
+						), '&nbsp;' ) );
+			$html .= Xml::closeElement( 'div' );
+			$this->output->addHTML( $html );
 		}
 
 		if ( $this->threadNestingLevel == 1 ) {
@@ -1616,10 +1638,7 @@ class LqtView {
 		// Check if we're actually replying to this thread.
 		if ( $this->methodAppliesToThread( 'reply', $thread ) ) {
 			// As with above, flush HTML to avoid refactoring EditPage.
-			$this->output->addHTML( Xml::openElement( 'div',
-				array( 'class' => 'lqt-reply-form' ) ) );
 			$this->showReplyForm( $thread );
-			$this->output->addHTML( Xml::closeElement( 'div' ) );
 			return;
 		} elseif ( !$thread->canUserReply( $this->user ) ) {
 			return;
