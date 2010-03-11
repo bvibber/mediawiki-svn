@@ -68,11 +68,16 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 	 *
 	 */	
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgJsMimeType, $egValidatorErrorLevel;
 		
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );	
 		
-		$couldNotGeocodeMsg = Xml::escapeJsString( wfMsg( 'ukgeocoding_couldNotGeocode' ) );
+		if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) {
+			$couldNotGeocodeMsg = Xml::escapeJsString( wfMsg( 'ukgeocoding_couldNotGeocode' ) );
+			$showErrorJs = "document.getElementById( '{$this->mapName}_errors' ).innerHTML = '$couldNotGeocodeMsg';";
+		} else {
+			$showErrorJs = '';
+		}
 		
 		$this->output .=<<<EOT
 <div id="$this->mapName"></div>
@@ -100,7 +105,7 @@ addOnloadHook( function() {
 				if ( localSearch.results[0] ) {    
 					callbackFunction(new GLatLng(localSearch.results[0].lat, localSearch.results[0].lng), marker);
 				} else {
-					document.getElementById( '{$this->mapName}_errors' ).innerHTML = '$couldNotGeocodeMsg';
+					$showErrorJs
 				}
 			}
 		);
