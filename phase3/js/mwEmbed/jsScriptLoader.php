@@ -14,8 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){
 	// Load noMediaWiki helper for quick cache result
 	$myScriptLoader = new jsScriptLoader();
 
-	if( $myScriptLoader->outputFromCache() )
+	if( $myScriptLoader->outputFromCache() ) {
 		exit();
+	}
 
 	//Else load up all the config and do normal stand alone ScriptLoader process:
 	require_once( realpath( dirname( __FILE__ ) ) . '/includes/noMediaWikiConfig.php' );
@@ -99,6 +100,10 @@ class jsScriptLoader {
 		$this->jsout .= 'var mwScriptLoaderRequestKey = "' . htmlspecialchars( $this->requestKey ) . '";'  . "\n";
 		$this->jsout .= 'var mwLang = "' . htmlspecialchars( $this->langCode ) . '";' . "\n";
 
+		// Special prepend js var to be added to the top of minification output.
+		// useful for special comment tags in minification output
+		$minificationTopJs = '';
+
 		// Build the output
 		// Swap in the appropriate language per js_file
 		foreach ( $this->jsFileList as $classKey => $file_name ) {
@@ -115,6 +120,8 @@ class jsScriptLoader {
 				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
 				// Output the current language class js
 				$this->jsout .= jsClassLoader::getLanguageJs( $this->langCode );
+				// Output special IE comment tag to support special mwEmbed tags.
+				$minificationTopJs.='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
 			}
 		}
 
@@ -128,6 +135,7 @@ class jsScriptLoader {
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
 			$this->jsout = self::getMinifiedJs( $this->jsout , $this->requestKey );
+			$this->jsout = $minificationTopJs . $this->jsout;
 		}
 
 		// Save to the file cache
