@@ -245,7 +245,7 @@ fn: {
 						$( this ).dialog( 'close' );
 					},
 					'wikieditor-template-editor-dialog-cancel': function() {
-						$j(this).dialog( 'close' );
+						$(this).dialog( 'close' );
 					}
 				},
 				open: function() {
