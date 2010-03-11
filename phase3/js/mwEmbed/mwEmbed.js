@@ -339,7 +339,7 @@ var MW_EMBED_VERSION = '1.1e';
 		if( tObj.arg && tObj.param && mw.lang.convertPlural) {
 			// Check if we have forms to replace
 			if ( tObj.param.length == 0 ) { 
-				return ''; 
+				return '';
 			}
 			// Restore the count into a Number ( if it got converted earlier )
 			var count = mw.lang.convertNumber( tObj.arg, true );

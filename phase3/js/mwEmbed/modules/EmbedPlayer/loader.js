@@ -100,6 +100,7 @@ mw.addDOMReadyHook( function() {
 	
 		// Tell mwEmbed to run setup
 		mw.setConfig( 'runSetupMwEmbed', true );
+		
 		mw.log(" run setup is: " + mw.getConfig( 'runSetupMwEmbed' ) );
 	}
 });

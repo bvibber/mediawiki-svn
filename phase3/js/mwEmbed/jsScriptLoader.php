@@ -591,8 +591,10 @@ class jsScriptLoader {
 		wfRestoreWarnings();
 
 		if ( $str === false ) {
+			$fname = explode( '/',$filePath);
+			$fname = last( $fname );
 			// NOTE: check PHP error level. Don't want to expose paths if errors are hidden.
-			$this->errorMsg .= 'Requested File: ' . htmlspecialchars( $IP.'/'.$filePath ) . ' could not be read' . "\n";
+			$this->errorMsg .= 'Requested File: ' . htmlspecialchars( $fname ) . ' could not be read' . "\n";
 			return false;
 		}
 		return $str;
