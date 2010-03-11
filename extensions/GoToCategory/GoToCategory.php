@@ -18,13 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GoToCategory',
 );
 
-$wgExtensionFunctions[] = 'efGoToCategory_Setup';
-
-function efGoToCategory_Setup() {
-	global $wgHooks;
-	$wgHooks['SpecialSearchNogomatch'][] = 'efGoToCategory_SpecialSearchNogomatch';
-	return true;
-}
+$wgHooks['SpecialSearchNogomatch'][] = 'efGoToCategory_SpecialSearchNogomatch';
 
 function efGoToCategory_SpecialSearchNogomatch($t) {
 	global $wgOut, $wgRequest;
