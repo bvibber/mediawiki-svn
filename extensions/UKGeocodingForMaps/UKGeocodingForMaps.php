@@ -21,7 +21,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('UKG_VERSION', '0.1');
+define('UKG_VERSION', '0.2 a1');
 
 $ukggScriptPath 	= (isset($wgExtensionAssetsPath) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions') . '/UKGeocodingForMaps';
 $ukggDir 			= dirname( __FILE__ ) . '/';
@@ -51,7 +51,7 @@ function ukgfSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg( 'ukgeocoding_name' ),
 		'version' => UKG_VERSION,
-		'author' => array('[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw] for Neill Mitchell at Prescient Software Ltd'),
+		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw] for Neill Mitchell at Prescient Software Ltd' ),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:UK_geocoding_for_Maps',
 		'descriptionmsg' => 'ukgeocoding_desc',
 	);

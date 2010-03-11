@@ -52,10 +52,10 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage, $loadedAjaxApi, $egGoogleAjaxSearchKey;
 		
-		MapsGoogleMaps::addGMapDependencies($this->output);
+		MapsGoogleMaps::addGMapDependencies( $this->output );
 		$egGoogleMapsOnThisPage++;
 		
-		if (!$loadedAjaxApi) {
+		if ( !$loadedAjaxApi ) {
 			$this->output .= "<script src='http://www.google.com/uds/api?file=uds.js&v=1.0&key=$egGoogleAjaxSearchKey' type='text/javascript'></script>";
 			$loadedAjaxApi = true;
 		}
@@ -70,10 +70,13 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);	
+		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );	
+		
+		$couldNotGeocodeMsg = Xml::escapeJsString( wfMsg( 'ukgeocoding_couldNotGeocode' ) );
 		
 		$this->output .=<<<EOT
 <div id="$this->mapName"></div>
+<div id="{$this->mapName}_errors"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook( function() {
 	var map = initializeGoogleMap('$this->mapName', 
@@ -91,13 +94,13 @@ addOnloadHook( function() {
 		[]
 	);
 	var localSearch = new GlocalSearch();
-	function usePointFromPostcode(marker, callbackFunction) {
-		localSearch.setSearchCompleteCallback(null,
+	function usePointFromPostcode( marker, callbackFunction ) {
+		localSearch.setSearchCompleteCallback( null,
 			function() {
-				if (localSearch.results[0]) {    
+				if ( localSearch.results[0] ) {    
 					callbackFunction(new GLatLng(localSearch.results[0].lat, localSearch.results[0].lng), marker);
-				}else{
-					alert("Postcode not found!");
+				} else {
+					document.getElementById( '{$this->mapName}_errors' ).innerHTML = '$couldNotGeocodeMsg';
 				}
 			}
 		);

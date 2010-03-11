@@ -19,6 +19,8 @@ $messages['en'] = array(
 	// General
 	'ukgeocoding_name' => 'UK Geocoding for Maps',
 	'ukgeocoding_desc' => 'Extends Maps with a display_uk_point parser function with Google Maps implementation',
+
+	'ukgeocoding_couldNotGeocode' => 'One or more postalcodes could not be geocoded and have been omitted from the map.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

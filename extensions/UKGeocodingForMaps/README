@@ -4,5 +4,5 @@ services is only possible using the Google AJAX search API, the standard geocodi
 of Maps could not be used, and this extension should be seen as a sort of hack. Initial
 development for this extension was funded by Neill Mitchell for Prescient Software Ltd.
 
-Version 0.1 is an experimental release, in which multiple issues are expected. I'm hoping to
+Version 0.2 is an experimental release, in which multiple issues are expected. I'm hoping to
 polish the whole extension a little more once I have some free time. Bug reports are welcome though.
