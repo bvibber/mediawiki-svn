@@ -326,7 +326,7 @@ class SearchMySQL extends SearchEngine {
 		wfProfileIn( __METHOD__ );
 		
 		// Some languages such as Chinese require word segmentation
-		$out = $wgContLang->wordSegmentation( $string );
+		$out = $wgContLang->segmentByWord( $string );
 
 		// MySQL fulltext index doesn't grok utf-8, so we
 		// need to fold cases and convert to hex
