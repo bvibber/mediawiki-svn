@@ -386,11 +386,12 @@ $messages['kw'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'seealso' => 'Kuckt och',
-	'seealso-desc' => "Iwwerschrëft 'Kuckt och' a Benotzen vum Tag <code><nowiki><seealso></nowiki></code>",
+	'seealso-desc' => "Iwwerschrëft 'Kuckt och' a Benotze vum Tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Limburgish (Limburgs)

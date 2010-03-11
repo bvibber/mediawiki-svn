@@ -839,6 +839,21 @@ Korisnička imena razlikuju veličinu slova.
 Proverite da li ste ga dobro ukucali.',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'ajaxlogin-desc' => 'Kotak dinamis anu bisa dipaké asup log jeung ngingetan sandi pamaké',
+	'ajaxLogin1' => 'Pikeun nganggeuskeun asup log, anjeun kudu ngasupkeun sandi anyar.
+Balukarna, anjeun kudu kaluar ti ieu kaca sarta kaleungitan robahan anjeun.',
+	'ajaxLogin2' => 'Anjeun yakin?
+Anjeun bisa kaleungitan parobahan anu keur dijieun di ieu kaca lamun ditinggalkeun ayeuna.',
+	'ajaxlogin-create' => 'Jieun rekening anyar',
+	'al-nosuchuser' => 'Euweuh pamaké nu sandiasmana "$1".
+Sandiasma teu nyaruakeun aksara gedé jeung leutik.
+Mangga pariksa éjahanana.',
+);
+
 /** Swedish (Svenska)
  * @author Grillmannen
  * @author Najami

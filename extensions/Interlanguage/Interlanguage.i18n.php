@@ -310,6 +310,13 @@ $messages['sk'] = array(
 	'interlanguage-desc' => 'Získa medzijazykové odkazy z inej wiki',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'interlanguage-desc' => 'Nyokot tutumbu antarbasa ti wiki séjén',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

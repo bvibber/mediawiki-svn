@@ -1325,12 +1325,13 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'countedits' => 'Itung éditan',
+	'countedits-desc' => '[[Special:CountEdits|Kaca husus]] anu ngitung robahan pamaké sarta ngabéréndélkeun sapuluh panulis anu pangonjoyna',
 	'countedits-warning' => "'''Ati-ati''': ulah nganiléy kontributor dumasar kana jumlah éditanana.",
 	'countedits-username' => 'Landihan pamaké:',
 	'countedits-ok' => 'Heug',
 	'countedits-nosuchuser' => 'Euweuh pamaké nu landihanana $1.',
 	'countedits-resultheader' => 'Hasil pikeun $1',
-	'countedits-resulttext' => '$1 geus nyieun $2 éditan',
+	'countedits-resulttext' => '$1 geus nyieun {{PLURAL:$2|éditan|éditan}}',
 	'countedits-mostactive' => 'Kontributor panggetolna',
 	'countedits-nocontribs' => 'Can aya kontribusi ka ieu wiki.',
 );

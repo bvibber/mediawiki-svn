@@ -1377,8 +1377,8 @@ $messages['su'] = array(
 	'contributors-target' => 'Judul:',
 	'contributors-submit' => 'Témbongkeun',
 	'contributors-subtitle' => 'Kontributor utama $1',
-	'contributors-others-long' => 'Aya $1 kontributor séjénna pikeun kaca ieu.',
-	'contributors-others' => 'sarta $1 lianna',
+	'contributors-others-long' => 'Aya {{PLURAL:$1|hiji kontributor séjénna}} pikeun kaca ieu.',
+	'contributors-others' => 'sarta {{PLURAL:$1|hiji lianna|$1 lianna}}',
 	'contributors-badtitle' => 'Judulna teu sah.',
 	'contributors-nosuchpage' => 'Kaca $1 euweuh.',
 );

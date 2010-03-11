@@ -2216,6 +2216,7 @@ $messages['su'] = array(
 	'badimages-log-add' => 'nambahkeun [[$1]] ka daptar gambar rusak',
 	'badimages-log-remove' => 'ngahapus [[$1]] ti daptar gambar rusak',
 	'badimages-page' => '{{ns:help}}:Daptar gambar rusak',
+	'right-badimages' => 'Anyarkeun béréndélan gambar joré',
 );
 
 /** Swedish (Svenska)

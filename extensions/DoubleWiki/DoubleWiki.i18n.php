@@ -505,6 +505,13 @@ $messages['stq'] = array(
 	'doublewiki-desc' => 'Wiest ne Siede un hiere Uursättenge uut n uur Wiki twospaltich ap jusälge Siede an',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'doublewiki-desc' => 'Némbongkeun hiji kaca katut alih basana ti wiki séjén dina dua kolom',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  */

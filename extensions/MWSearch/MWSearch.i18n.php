@@ -511,6 +511,13 @@ $messages['stq'] = array(
 	'mwsearch-desc' => 'Bäätergruundprozess foar ju Lucene-Säikmaschine',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

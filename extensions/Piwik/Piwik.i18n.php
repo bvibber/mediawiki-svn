@@ -577,12 +577,14 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
 	'piwik-desc' => 'Ngasupkeun skrip Piwiki ka kaca MediaWiki keur ngalacak jeung ngasupkeun [[Special:Piwik|sababaraha statistik]]',
 	'piwik-lastvisits' => 'pamungkas nganjang',
 	'piwik-countries' => 'Nagara',
 	'piwik-browsers' => 'Panyungsi',
+	'right-viewpiwik' => 'Tempo [[Special:Piwik|Statistika Piwik]]',
 );
 
 /** Swedish (Svenska)

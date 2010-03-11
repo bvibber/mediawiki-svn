@@ -436,6 +436,13 @@ $messages['sr-el'] = array(
 	'emailaddressimage-desc' => 'Dodaje <tt>&amp;lt;email&amp;gt;</tt> tag, za prikazivanje imejl adresa kao slika',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'emailaddressimage-desc' => 'Nambahkeun <tt>&lt;email&gt;</tt> pikeun némbongkeun alamat surélék salaku gambar',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

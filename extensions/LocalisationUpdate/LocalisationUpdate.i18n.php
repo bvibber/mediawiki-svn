@@ -367,6 +367,13 @@ $messages['sr-el'] = array(
 	'localisationupdate-desc' => 'Ažurira lokalizovane poruke koliko je to moguće',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'localisationupdate-desc' => 'Ngajaga sangkan talatah-talatah nu geus dialihbasakeun salawasnya mutahir',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

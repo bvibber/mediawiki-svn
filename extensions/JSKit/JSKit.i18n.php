@@ -319,6 +319,13 @@ $messages['sr-el'] = array(
 	'jskit-desc' => 'Integriše js-kit alate u Viki-članak',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'jskit-desc' => 'Ngagabungkeun parabot js-kit kana kaca wiki',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

@@ -41,11 +41,13 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'wikieditor-template-editor-preference' => 'Дазволіць рэдагаваньне шаблёнаў вікі праз формы',
 	'wikieditor-template-editor-dialog-title' => 'Рэдагаваць шаблён',
 	'wikieditor-template-editor-dialog-submit' => 'Абнавіць',
+	'wikieditor-template-editor-dialog-cancel' => 'Адмяніць',
 );
 
 /** Bulgarian (Български)
@@ -144,6 +146,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Jean-Frédéric
  * @author Peter17
  * @author PieRRoMaN
  */
@@ -151,6 +154,7 @@ $messages['fr'] = array(
 	'wikieditor-template-editor-preference' => 'Activer la modification à base de formulaires des modèles wiki',
 	'wikieditor-template-editor-dialog-title' => 'Modifier le modèle',
 	'wikieditor-template-editor-dialog-submit' => 'Mettre à jour',
+	'wikieditor-template-editor-dialog-cancel' => 'Annuler',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -208,6 +212,7 @@ $messages['ia'] = array(
 	'wikieditor-template-editor-preference' => 'Permitter le modification de patronos wiki con formularios',
 	'wikieditor-template-editor-dialog-title' => 'Modificar patrono',
 	'wikieditor-template-editor-dialog-submit' => 'Actualisar',
+	'wikieditor-template-editor-dialog-cancel' => 'Cancellar',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -240,6 +245,7 @@ $messages['lb'] = array(
 	'wikieditor-template-editor-preference' => "D'Ännere vu Wiki-Schablounen op der Basis vu Formulairen aschalten",
 	'wikieditor-template-editor-dialog-title' => 'Schabloun änneren',
 	'wikieditor-template-editor-dialog-submit' => 'Aktualiséieren',
+	'wikieditor-template-editor-dialog-cancel' => 'Annulléieren',
 );
 
 /** Macedonian (Македонски)
@@ -249,6 +255,7 @@ $messages['mk'] = array(
 	'wikieditor-template-editor-preference' => 'Овозможи уредување на вики-шаблони преку образец',
 	'wikieditor-template-editor-dialog-title' => 'Уреди шаблон',
 	'wikieditor-template-editor-dialog-submit' => 'Поднови',
+	'wikieditor-template-editor-dialog-cancel' => 'Откажи',
 );
 
 /** Malayalam (മലയാളം)
@@ -258,6 +265,7 @@ $messages['ml'] = array(
 	'wikieditor-template-editor-preference' => 'വിക്കി ഫലകങ്ങളിൽ തിരുത്തുവാൻ ഫോം ഉപയോഗിക്കൽ സജ്ജമാക്കുക',
 	'wikieditor-template-editor-dialog-title' => 'ഫലകം തിരുത്തുക',
 	'wikieditor-template-editor-dialog-submit' => 'പുതുക്കുക',
+	'wikieditor-template-editor-dialog-cancel' => 'റദ്ദാക്കുക',
 );
 
 /** Dutch (Nederlands)
@@ -345,6 +353,7 @@ $messages['ru'] = array(
 	'wikieditor-template-editor-preference' => 'Включить редактирование шаблонов с помощью форм',
 	'wikieditor-template-editor-dialog-title' => 'Изменение шаблона',
 	'wikieditor-template-editor-dialog-submit' => 'Обновить',
+	'wikieditor-template-editor-dialog-cancel' => 'Отмена',
 );
 
 /** Yakut (Саха тыла)

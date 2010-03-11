@@ -357,6 +357,13 @@ $messages['stq'] = array(
 	'randomimage-desc' => 'Föiget dät <tt>&lt;randomimage /&gt;</tt>-Tag toun Anwiesen fon ne toufällige Bielde bietou',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'randomimage-desc' => 'Nyadiakeun pamilih média sacara acak migunakeun <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

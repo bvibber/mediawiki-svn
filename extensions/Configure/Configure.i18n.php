@@ -5700,7 +5700,7 @@ Leet se w.e.g. un a féiert configure.sql doran aus oder verbessert hiren Numm."
 
 Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-no-old' => 'Et gëtt keng al Versioun vun der Configuratioun.',
-	'configure-no-setup' => 'Dir musst <code>efConfigureSetup()</code> explizit an Ärem Fichier LocalSettings.php opruffe fir dës Erweiderung ze bnotzen.',
+	'configure-no-setup' => 'Dir musst <code>efConfigureSetup()</code> explizit an Ärem Fichier LocalSettings.php opruffe fir dës Erweiderung ze benotzen.',
 	'configure-no-transwiki' => "Dir däerft d'Configuratioun an anere Wikien net änneren",
 	'configure-old' => 'Al Versiounen',
 	'configure-old-versions' => 'Lëscht vun den ale Versioune vun der Configuratioun:',

@@ -417,6 +417,13 @@ $messages['sr-el'] = array(
 	'editown-desc' => 'Korisnici bez editall prava mogu da menjaju samo strane koje su sami napravili',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'editown-desc' => 'Pamaké nu teu boga kawenangan robah-kabéh ngan bisa ngarobah kaca-kaca jieunanana sorangan',
+);
+
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.

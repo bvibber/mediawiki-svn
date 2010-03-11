@@ -2761,6 +2761,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -2812,7 +2813,7 @@ $messages['lb'] = array(
 	'contribstats-landingpage' => 'Zilsäit',
 	'contribstats-donatepage' => 'Spende-Säit',
 	'contribstats-average' => 'Duerchschnëtt',
-	'contribstats-imperfect-data' => "Dës Date sinnnet perfekt, wëll et schwiereg ass fir d'Donateuren ze erfaassen ouni 'Session tracking' ze benotzen.",
+	'contribstats-imperfect-data' => "Dës Date sinn net perfekt, well et schwiereg ass fir d'Donateuren ze erfaassen ouni 'Session tracking' ze benotzen.",
 	'contribstats-paypal-donations' => 'PayPal-Donen',
 	'contribstats-credit-card' => 'Kreditkaart',
 	'contribstats-fraud-note' => 'Et gëtt e puer frauduleus Donen.',

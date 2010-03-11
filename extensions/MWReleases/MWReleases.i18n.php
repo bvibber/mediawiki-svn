@@ -317,6 +317,13 @@ $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'mwreleases-desc' => 'Nambahkeun [[Mediawiki:Mwreleases-list|béréndélan]] rilis nu dirojong, bisa dibuka ngaliwatan API-na',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

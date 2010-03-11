@@ -88,6 +88,14 @@ $messages['ru'] = array(
 	'metadata_help' => 'Метаданные:',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'metadataedit-desc' => 'Méré kategori, tutumbu basa, jeung citakan anu diwenangkeun dina kotak téks anu misah sabari ngédit kaca',
+	'metadata_help' => 'Métadata:',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Sertion

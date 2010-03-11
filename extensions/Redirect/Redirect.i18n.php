@@ -312,6 +312,13 @@ $messages['stq'] = array(
 	'redirect-desc' => 'Ferlööwet dät eenfach Konfigurierjen fon Fäärelaitengen bie dät [[MediaWiki:Redirect-addnewaccount|Moakjen fon Benutserkonten]] un bie dät [[MediaWiki:Redirect-userlogoutcomplete|Oumäldjen]]',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'redirect-desc' => 'Bisa ngatur konfigurasi alihan dina [[MediaWiki:Redirect-addnewaccount|nyieun rekening]] jeung [[MediaWiki:Redirect-userlogoutcomplete|kaluar log]]',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

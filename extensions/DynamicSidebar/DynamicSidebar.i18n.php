@@ -125,6 +125,13 @@ $messages['ru'] = array(
 	'dynamicsidebar-desc' => 'Обеспечивает динамические боковые панели на основе личных страниц участников, групп и категорий',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'dynamicsidebar-desc' => 'Nyadiakeun kolom sisi dinamis dumasar kaca, kelompok, jeung kategori pamaké',
+);
+
 /** Swedish (Svenska)
  * @author Sertion
  */

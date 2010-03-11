@@ -393,6 +393,13 @@ $messages['sr-el'] = array(
 	'metakeywords-desc' => 'Omogućuje konfiguraciju <tt><nowiki><meta "keywords"></nowiki></tt> i <tt><nowiki><meta "description"></nowiki></tt> tagova po imenskom prostoru',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'metakeywords-desc' => 'Ngawenangkeun konfigurasi tag <tt><nowiki><meta "keywords"></nowiki></tt> jeung <tt><nowiki><meta "description"></nowiki></tt> per rohang ngaran',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

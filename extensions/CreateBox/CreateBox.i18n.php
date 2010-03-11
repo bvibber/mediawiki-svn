@@ -696,8 +696,10 @@ Túto stránku nemôžete vytvoriť, ale môžete ju [{{fullurl:{{FULLPAGENAME}}
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
+	'createbox-desc' => 'Kotak asupan husus pikeun nyieun kaca',
 	'createbox-create' => 'Jieun',
 );
 
