@@ -111,7 +111,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => $wgCollectionVersion,
 	'author' => array( 'PediaPress GmbH', 'Siebrand Mazeland' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Collection',
-	'description' => 'Create books',
 	'descriptionmsg' => 'coll-desc',
 );
 
@@ -279,6 +278,29 @@ function wfAjaxCollectionClear() {
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionClear';
+
+function wfAjaxCollectionGetPopupData( $title ) {
+	global $wgScriptPath;
+
+	wfLoadExtensionMessages( 'CollectionCore' );
+	$json = new Services_JSON();
+	$result = array();
+	$imagePath = "$wgScriptPath/extensions/Collection/images";
+	if ( CollectionSession::findArticle( $title ) == -1 ) {
+		$result['action'] = 'add';
+		$result['text'] = wfMsg( 'coll-add_linked_article' );
+		$result['img'] = "$imagePath/silk-add.png";
+	} else {
+		$result['action'] = 'remove';
+		$result['text'] = wfMsg( 'coll-remove_linked_article' );
+		$result['img'] = "$imagePath/silk-remove.png";
+	}
+	$r = new AjaxResponse( $json->encode( $result ) );
+	$r->setContentType( 'application/json' );
+	return $r;
+}
+
+$wgAjaxExportList[] = 'wfAjaxCollectionGetPopupData';
 
 /**
  * Backend of several following SAJAX function handlers...

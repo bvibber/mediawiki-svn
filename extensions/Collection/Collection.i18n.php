@@ -4526,6 +4526,8 @@ Ha ez nem történik meg, kérlek nyomd meg a böngésződ frissítés gombját!
 	'coll-rendering_status' => '<strong>Állapot:</strong> $1',
 	'coll-rendering_article' => '(lap: $1)',
 	'coll-rendering_page' => '(oldal: $1)',
+	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Lap információinak renderelése',
+	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Gyűjtemény információinak renderelése',
 	'coll-rendering_finished_title' => 'A renderelés befejeződött',
 	'coll-rendering_finished_text' => '<strong>A dokumentum ekészült.</strong>
 <strong>[$1 Fájl letöltése]</strong> a számítógépedre.
@@ -4732,12 +4734,12 @@ Iste pagina non functionara correctemente si JavaScript non es activate.</strong
 	'coll-error_reponse' => 'Responsa de error ab servitor',
 	'coll-empty_collection' => 'Libro vacue',
 	'coll-revision' => 'Version: $1',
-	'coll-save_collection_title' => 'Immagazinar tu libro pro uso in commun',
+	'coll-save_collection_title' => 'Salveguardar e condivider tu libro',
 	'coll-save_collection_text' => 'Selige un location:',
-	'coll-login_to_save' => 'Si tu vole immagazinar libros pro uso futur, per favor [[Special:UserLogin|aperi un session o crea un conto]].',
+	'coll-login_to_save' => 'Si tu vole salveguardar libros pro uso futur, per favor [[Special:UserLogin|aperi un session o crea un conto]].',
 	'coll-personal_collection_label' => 'Libro personal:',
 	'coll-community_collection_label' => 'Libro communitari:',
-	'coll-save_collection' => 'Immagazinar libro',
+	'coll-save_collection' => 'Salveguardar libro',
 	'coll-save_category' => 'Tote le libros immagazinate es addite al categoria [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]].',
 	'coll-overwrite_title' => 'Le pagina existe ja.
 Superscriber lo?',
@@ -4810,8 +4812,8 @@ Le lista es actualisate cata vice que tu clicca super le buttones "adder" o "rem
 	'coll-suggest_article_remove' => 'Le pagina <strong>$1</strong> ha essite removite de tu libro ($2).',
 	'coll-suggest_undo_tooltip' => 'Disfacer iste action',
 	'coll-suggest_undo' => 'disfacer',
-	'right-collectionsaveasuserpage' => 'Immagazinar libros como pagina de usator',
-	'right-collectionsaveascommunitypage' => 'Immagazinar libros como pagina de communitate',
+	'right-collectionsaveasuserpage' => 'Salveguardar libros como pagina de usator',
+	'right-collectionsaveascommunitypage' => 'Salveguardar libros como pagina de communitate',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -5381,12 +5383,15 @@ Mangga hubungi pangurus MediaWiki panjenengan.',
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'coll-desc' => '[[Special:Book|წიგნის შექმნა]]',
+	'coll-book_creator_help' => 'მეტი ინფორმაციისათვის იხილეთ [[{{MediaWiki:Coll-helppage}}|დახმარების გვერდი წიგნებზე]].',
 	'coll-collection' => 'წიგნი',
 	'coll-collections' => 'წიგნები',
 	'coll-print_template_prefix' => 'დაბეჭვდა',
 	'coll-print_template_pattern' => '$1/დაბეჭვდა',
 	'coll-unknown_subpage_title' => 'უცნობი ქვეგვერდი',
 	'coll-unknown_subpage_text' => '[[Special:Book|წიგნის]] ეს ქვეგვერდები არ არსებობს',
+	'coll-couldnotaddarticle_title' => 'შეუძლებელია ვიკი-გვერდის დამატება',
 	'coll-your_book' => 'თქვენი წიგნი',
 	'coll-download_title' => 'ჩამოტვირთვა',
 	'coll-download' => 'ჩამოტვირთვა',
@@ -5473,6 +5478,7 @@ $messages['ka'] = array(
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/ინფორმაცია PediaPress-ის შეკვვეთაზე',
 	'coll-suggest_add_selected' => 'არჩეული გვერდების დამატება',
 	'coll-suggest_your_book' => 'თქვენი წიგნი',
+	'coll-suggest_show' => 'ჩვენება',
 	'coll-suggest_undo' => 'გაუქმება',
 	'right-collectionsaveasuserpage' => 'შეინახე წიგნი, როგორც მომხმარებლის გვერდი',
 	'right-collectionsaveascommunitypage' => 'შეინახეთ წიგნი, როგორც საზოგადოების გვერდი',
@@ -6329,7 +6335,7 @@ $messages['ml'] = array(
 	'coll-save_collection' => 'പുസ്തകം സേവ് ചെയ്യുക',
 	'coll-save_category' => 'സേവ് ചെയ്ത പുസ്തകങ്ങളെല്ലാം [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]] വർഗ്ഗത്തിലേയ്ക്ക് ചേർത്തിരിക്കുന്നു.',
 	'coll-overwrite_title' => 'താള്‍ നിലവിലുണ്ട്. അതിനെ ഓവര്‍റൈറ്റ് ചെയ്യട്ടെ?',
-	'coll-overwrite_text' => '[[:$1]] എന്ന പേരില്‍ ഒരു താള്‍ നിലവിലുണ്ട്. താങ്കളുടെ ശേഖരം ആ താളിനു ബദലാക്കണോ?',
+	'coll-overwrite_text' => '[[:$1]] എന്ന പേരില്‍ ഒരു താള്‍ നിലവിലുണ്ട്. താങ്കളുടെ പുസ്തകം ആ താളിനു ബദലാക്കണോ?',
 	'coll-yes' => 'ശരി',
 	'coll-no' => 'ഇല്ല',
 	'coll-load_overwrite_text' => 'താങ്കളുടെ പുസ്തകത്തില്‍ ഇപ്പോള്‍ തന്നെ കുറച്ചു താളുകള്‍ ഉണ്ട്.
@@ -7708,7 +7714,7 @@ $messages['pt'] = array(
 	'coll-exclusion_category_title' => 'Excluir ao imprimir',
 	'coll-print_template_prefix' => 'Imprime',
 	'coll-print_template_pattern' => '$1/Imprimir',
-	'coll-unknown_subpage_title' => 'Sub-página desconhecida',
+	'coll-unknown_subpage_title' => 'Subpágina desconhecida',
 	'coll-unknown_subpage_text' => 'Não existe esta sub-página do [[Special:Book|Livro]]',
 	'coll-couldnotaddarticle_title' => 'Não foi possível adicionar a página wiki',
 	'coll-couldnotaddarticle_msg' => 'A página wiki não pode ser adicionada.',
