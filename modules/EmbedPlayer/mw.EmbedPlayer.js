@@ -516,7 +516,7 @@ mediaSource.prototype = {
 	uri:null,
 	
 	// Title of the source.
-	title:null,
+	title: null,
 	
 	// True if the source has been marked as the default.
 	marked_default:false,
@@ -604,8 +604,9 @@ mediaSource.prototype = {
 	*/
 	updateSource: function( element ) {
 		// for now just update the title: 
-		if ( $j( element ).attr( "title" ) )
+		if ( $j( element ).attr( "title" ) ) {
 			this.title = $j( element ).attr( "title" );
+		}
 	},
 	
 	/** 

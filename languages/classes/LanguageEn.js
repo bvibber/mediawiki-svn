@@ -25,10 +25,10 @@
  * @param forms Array: different plural forms
  * @return string Correct form of plural for count in this language
  */
- 
+
 mw.lang.convertPlural = function( count, forms ){	
-	if ( forms.length == 0 ) { 
+	if ( !forms || forms.length == 0 ) { 
 		return ''; 
 	}	
 	return ( parseInt( count ) == 1 ) ? forms[0] : forms[1];
-}
+};
