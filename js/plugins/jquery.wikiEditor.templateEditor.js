@@ -122,31 +122,29 @@ evt: {
 		// reset our ignoreKeypress variable if it's set to true
 		if( context.$iframe.data( 'ignoreKeypress' ) ) context.$iframe.data( 'ignoreKeypress', false );
 		var $evtElem = event.jQueryNode;
-		if ( $evtElem ) {
-			if( $evtElem.hasClass( 'wikiEditor-template-name' ) ) {
-				// allow anything if the command or control key are depressed
-				if ( event.ctrlKey || event.metaKey ) return true;
-				switch ( event.which ) {
-					case 37://left
-					case 38://up
-					case 39://right
-					case 40: return true;//down
-					default: 
-						// set the ignroreKeypress variable so we don't allow typing if the key is held
-						context.$iframe.data( 'ignoreKeypress', true ); 
-						//can't type in a template name
-						return false; 
-				}
-			} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ){
-				switch ( event.which ) {
+		if( $evtElem.hasClass( 'wikiEditor-template-name' ) ) {
+			// allow anything if the command or control key are depressed
+			if ( event.ctrlKey || event.metaKey ) return true;
+			switch ( event.which ) {
+				case 37://left
+				case 38://up
+				case 39://right
+				case 40: return true;//down
+				default:
+					// set the ignroreKeypress variable so we don't allow typing if the key is held
+					context.$iframe.data( 'ignoreKeypress', true );
+					//can't type in a template name
+					return false;
+			}
+		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
+			switch ( event.which ) {
 				case 13: //enter
 					//FIXME: may be a more elegant way to do this, but this works too
-					context.fn.encapsulateSelection({'pre':'\n', 'peri':'','post':''});
+					context.fn.encapsulateSelection( { 'pre':'\n', 'peri':'', 'post':'' } );
 					return false;
 				default: return true;
-				}
-			}//classes
-		}
+			}
+		}//classes
 	}, //keydown
 	keyup: function( context, event ) {
 		// rest our ignoreKeypress variable if it's set to true

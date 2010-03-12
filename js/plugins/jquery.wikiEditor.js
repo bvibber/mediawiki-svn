@@ -541,10 +541,10 @@ if ( typeof context == 'undefined' ) {
 					}
 				}
 			}
-			if(returnFromModules != null){
+			if ( returnFromModules != null ) {
 				return returnFromModules;
-			} else{
-					return true;
+			} else {
+				return true;
 			}
 		},
 		/**
@@ -1125,19 +1125,16 @@ if ( typeof context == 'undefined' ) {
 					// Setup event handling on the iframe
 					$( context.$iframe[0].contentWindow.document )
 						.bind( 'keydown', function( event ) {
-							var $cElem = context.fn.getElementAtCursor();
-							event.jQueryNode = $cElem
+							event.jQueryNode = context.fn.getElementAtCursor();
 							return context.fn.trigger( 'keydown', event );
 							
 						} )
 						.bind( 'keyup', function( event ) {
-							var $cElem = context.fn.getElementAtCursor();
-							event.jQueryNode = $cElem
+							event.jQueryNode = context.fn.getElementAtCursor();
 							return context.fn.trigger( 'keyup', event );
 						} )
 						.bind( 'keypress', function( event ) {
-							var $cElem = context.fn.getElementAtCursor();
-							event.jQueryNode = $cElem
+							event.jQueryNode = context.fn.getElementAtCursor();
 							return context.fn.trigger( 'keypress', event );
 						} )
 						.bind( 'paste', function( event ) {
@@ -1175,18 +1172,20 @@ if ( typeof context == 'undefined' ) {
 		 * equivilant functionality to the otherwise textarea-based functionality.
 		 */
 		
-		'getElementAtCursor': function(){
+		'getElementAtCursor': function() {
 			//firefox only
+			// TODO: IE support
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				var selection = context.$iframe[0].contentWindow.getSelection();
 				if ( selection.rangeCount == 0 ) {
 					// We don't know where the cursor is
-					return null;
+					return $( [] );
 				}
 				var sc = selection.getRangeAt( 0 ).startContainer;
-				return $( sc.parentNode ).eq( 0 );
-			}
-			else return null;
+				return $( sc.parentNode );
+			} else {
+				return $( [] );
+			}	
 		},
 		
 		/**
