@@ -37,6 +37,10 @@ class UpgradeTest:
 		self.currentVersion = None
 
 	def run( self ):
+		if len(sys.argv) <= 1:
+			sys.stderr.write( "Usage: python upgradeTest.py <version>\n" )
+			sys.exit( 1 )
+
 		# Configure
 		settings = ['php', 'svnroot', 'dbUser', 'dbPassword', 'runUpdate', 
 				'runRebuildMessages', 'runOldUpdate']
@@ -76,10 +80,6 @@ password = %s
 			os.unlink( self.baseDir + '/schemas/' + path )
 
 		# Execute tests
-		if len(sys.argv) <= 1:
-			sys.stderr.write( "Usage: python upgradeTest.py <version>" )
-			sys.exit( 1 )
-
 		targetVersion = sys.argv[1];
 
 		versions = self.getAllVersions()
@@ -230,13 +230,13 @@ password = %s
 		self.currentVersion = version
 		if ( self.getConf( 'runUpdate' ) ):
 			self.runPhp(
-				branch + "/phase3", 
-				"maintenance/update.php", "--quick")
+				branch + "/phase3/maintenance", 
+				"update.php", "--quick")
 
 		if ( self.getConf( 'runRebuildMessages' ) ):
 			self.runPhp(
-				branch + "/phase3", 
-				"maintenance/rebuildMessages.php", 
+				branch + "/phase3/maintenance", 
+				"rebuildMessages.php", 
 				stdin = open( self.baseDir + '/' + "rebuildMessages.in" ) )
 
 	def svnCheckout( self, version ):
