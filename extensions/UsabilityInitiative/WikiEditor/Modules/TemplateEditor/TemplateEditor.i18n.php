@@ -180,6 +180,7 @@ $messages['gsw'] = array(
 	'wikieditor-template-editor-preference' => 'Formatbasiert Bearbeite vu Wikivorlage meglig mache',
 	'wikieditor-template-editor-dialog-title' => 'Vorlag bearbeite',
 	'wikieditor-template-editor-dialog-submit' => 'Aktualisiere',
+	'wikieditor-template-editor-dialog-cancel' => 'Abbräche',
 );
 
 /** Hebrew (עברית)
@@ -269,12 +270,14 @@ $messages['ml'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'wikieditor-template-editor-preference' => 'Formuliergebaseerd bewerken van wikisjablonen inschakelen',
 	'wikieditor-template-editor-dialog-title' => 'Sjabloon bewerken',
 	'wikieditor-template-editor-dialog-submit' => 'Bijwerken',
+	'wikieditor-template-editor-dialog-cancel' => 'Annuleren',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -285,6 +288,7 @@ $messages['no'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiver skjemabasert redigering av wikimaler',
 	'wikieditor-template-editor-dialog-title' => 'Rediger mal',
 	'wikieditor-template-editor-dialog-submit' => 'Oppdater',
+	'wikieditor-template-editor-dialog-cancel' => 'Avbryt',
 );
 
 /** Occitan (Occitan)
@@ -389,6 +393,9 @@ $messages['sv'] = array(
  */
 $messages['tr'] = array(
 	'wikieditor-template-editor-preference' => 'Viki şablonlarının form-bazlı değiştirilmesini etkinleştir',
+	'wikieditor-template-editor-dialog-title' => 'Şablonu değiştir',
+	'wikieditor-template-editor-dialog-submit' => 'Güncelle',
+	'wikieditor-template-editor-dialog-cancel' => 'İptal',
 );
 
 /** Ukrainian (Українська)

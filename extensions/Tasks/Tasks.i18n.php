@@ -612,6 +612,7 @@ $messages['ckb-arab'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'tasks' => 'Úkoly',
@@ -655,8 +656,9 @@ $messages['cs'] = array(
 	'tasks_event_on_creation' => 'zkontrolovat',
 	'tasks_event_on_creation_anon' => 'zkontrolovat',
 	'tasks_on_creation_comment' => 'Automatický úkol, vytvořený při vytvoření stránky',
-	'tasks_link_your_assignments' => 'otevřít přidělené úkoly',
-	'tasks_see_your_assignments' => 'Momentálně máte {{PLURAL:$1|otevřený $1 přidělený úkol|otevřeny $1 přidělené úkoly|otevřeno $1 přidělených úkolů}}. Podívejte se na váš $2.',
+	'tasks_link_your_assignments' => 'otevřené úkoly',
+	'tasks_see_your_assignments' => 'Momentálně máte {{PLURAL:$1|otevřený $1 přidělený úkol|otevřeny $1 přidělené úkoly|otevřeno $1 přidělených úkolů}}. Podívejte se na své $2.',
+	'tasks_my_assignments' => 'Vaše aktuální {{PLURAL:$1|přidělená úloha|přidělené úlohy}}',
 	'tasks_table_header_page' => 'Stránka',
 	'tasks_you_have_no_assignments' => 'Nemáte otevřeny žádné přidělené úkoly',
 	'tasks_search_form_title' => 'Hledat',

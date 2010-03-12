@@ -80,9 +80,10 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'wikieditor-highlight-preference' => 'Markierung der Syntax beim Editieren ermöglichen',
+	'wikieditor-highlight-preference' => 'Markierung der Syntax beim Bearbeiten ermöglichen',
 );
 
 /** Zazaki (Zazaki)

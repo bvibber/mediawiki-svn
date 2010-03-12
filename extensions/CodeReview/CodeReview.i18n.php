@@ -8998,7 +8998,7 @@ $messages['tr'] = array(
 	'codereview-tests-failed2' => '$1 başarılı {{PLURAL:$2|test|test}}, $3 başarısız {{PLURAL:$4|test|test}}:',
 	'codereview-tests-running' => 'Test durumları çalışıyor...',
 	'codereview-tests-aborted' => 'Test çalıştırması durduruldu.',
-	'codereview-tests-failed' => 'testlerde başarısız oldu:',
+	'codereview-tests-failed' => 'Başarısız',
 	'codereview-email-subj' => '[$1] [$2]: Yeni yorum eklendi',
 	'codereview-email-body' => '$3\'de "$1" kullanıcısı bir yorum yolladı.
 

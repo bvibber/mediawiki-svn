@@ -30,13 +30,17 @@ $messages['en'] = array(
 $messages['be-tarask'] = array(
 	'ukgeocoding_name' => 'Брытанскае геакадаваньне для мапаў',
 	'ukgeocoding_desc' => 'Пашырае мапы з функцыяй парсэру display_uk_point з выкананьнем у Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Адзін ці болей паштовых індэксаў ня могуць быць геакадаванымі і былі выдаленыя з мапы.',
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
-	'ukgeocoding_name' => 'Geokodiñ ar Rouantelezh-Unanet evit ar gartennoù',
+	'ukgeocoding_name' => "Geokod ar Rouantelezh-Unanet evit ar c'hartennoù",
+	'ukgeocoding_desc' => "Astenn a ra ar c'hartennoù gant un arc'hwel eus ar parser display_uk_point gant emplementadur Google Maps",
+	'ukgeocoding_couldNotGeocode' => "N'eus ket bet gallet geokodiñ ur c'hod-post pe meur a hini; tennet int bet diwar ar gartenn.",
 );
 
 /** French (Français)
@@ -61,6 +65,7 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'ukgeocoding_name' => 'VCH Geokodierig fir Charte',
 	'ukgeocoding_desc' => 'Breitet Charte uus mit dr „display_uk_point“-Parserfunktion mit Hilf vun ere Google Maps-Implemäntierig',
+	'ukgeocoding_couldNotGeocode' => 'Ein oder mehreri Poschtleitzahle hän nit chenne geokodiert wäre oder sin us dr Charte uusgloo wore',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -77,6 +82,7 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'ukgeocoding_name' => 'Geocodification regnounitese pro Maps',
 	'ukgeocoding_desc' => 'Extende Maps con un function syntactic "display_uk_point" con implementation pro Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Un o plus codices postal non poteva esser geocodificate e ha essite omittite del carta.',
 );
 
 /** Macedonian (Македонски)
@@ -85,6 +91,7 @@ $messages['ia'] = array(
 $messages['mk'] = array(
 	'ukgeocoding_name' => 'Британско геокодирање за карти',
 	'ukgeocoding_desc' => 'Ги проширува картите со display_uk_point парсерски функции со имплементирање на Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Еден или повеќе поштенски броеви не можеа да се геокодираат и затоа не се на картата.',
 );
 
 /** Dutch (Nederlands)
