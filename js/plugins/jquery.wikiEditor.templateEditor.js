@@ -204,8 +204,7 @@ fn: {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
 		$template.find( '.wikiEditor-template-name' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
-			.mousedown( function() { return false; } )
-			.data("keydownHandler", function(){console.log("CARLOS!");});
+			.mousedown( function() { return false; } );
 		$template.find( '.wikiEditor-template-expand' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
 			.mousedown( function() { return false; } );
@@ -581,10 +580,6 @@ fn: {
 			}
 		};
 		
-		//not collapsing "small" templates
-		if ( wikitext.length < 20 ) {
-			collapsible = false;
-		}
 		// Whitespace* {{ whitespace* nonwhitespace:
 		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
 			collapsible = false; // is a parser function

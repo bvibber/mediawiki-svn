@@ -176,30 +176,9 @@ fn: {
 		// Traverse the iframe DOM, inserting markers where they're needed.
 		// Store visited markers here so we know which markers should be removed
 		var visited = [], v = 0;
-		var purgeStarts = false;
-		var cBreak = false;
 		for ( var i = 0; i < markers.length; i++ ) {
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
-			if(!purgeStarts && ( (markers[i].start + "," + markers[i].type) in context.modules.highlight.markersOldStarts) ){
-				//start same
-				oldStarts[markers[i].start+","+markers[i].type] = true;
-				if(division == 'realchange'){
-					cBreak = true; //already existed, offsets fine
-				}
-			}
-			else{
-				//only do this once
-				if(!purgeStarts){
-					context.modules.highlight.markersOldStarts = oldStarts;
-					purgeStarts = true;
-					if(division == 'realchange'){
-						cBreak = true; //user is currently typing in something whose begin exists
-					}
-				}
-				context.modules.highlight.markersOldStarts[markers[i].start+","+markers[i].type] = true;
-			}
-			
 			var start = markers[i].start;
 			var s = context.fn.getOffset( start );
 			if ( !s ) {
@@ -369,7 +348,7 @@ fn: {
 			var ca1 = startNode, ca2 = endNode;
 			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
-				if ( !anchor && !cBreak ) { //cBreak prevents a new span from being created which stops cursor jumps
+				if ( !anchor ) {
 					var commonAncestor = ca1.parentNode;
 					if ( markers[i].anchor == 'wrap') {
 						// We have to store things like .parentNode and .nextSibling because
