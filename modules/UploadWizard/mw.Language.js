@@ -398,11 +398,10 @@ mw.Language = {
 		mw.Language.initialized = true;
 	},
 
-	getMenu: function(id, code, withUnknown) {
+	getMenu: function(name, code, withUnknown) {
 		mw.Language.initialize();
 		var $select = mw.Language.$_select.clone();
-		$select.attr('id', id)
-	      	       .attr('name', id);
+		$select.attr('name', name);
 		if (withUnknown) {
 			// n.b. MediaWiki LanguageHandler has ability to add custom label for 'Unknown'; possibly as pseudo-label
 			$select.prepend($j('<option>').attr('value', mw.Language.UNKNOWN).append(gM('mwe-code-unknown')));
