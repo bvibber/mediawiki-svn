@@ -217,7 +217,7 @@ var htmlEmbed = {
 	* Get the ThumbnailHTML
 	*  ThumbnailHTML is used for both the "paused and playing states of the htmlEmbed player	
 	*/
-	getThumbnailHTML:function( opt ) {
+	getThumbnailHTML: function( opt ) {
 		var out = '';
 		if ( !opt )
 			opt = { };
@@ -232,6 +232,10 @@ var htmlEmbed = {
 		}
 		// mw.log('f:getThumbnailHTML: got thumb: '+out);
 		return out;
+	},
+	updateThumbnailHTML: function(){
+		$j( this ).css( 'background', '#fff');
+		$j( this ).html( this.getThumbnailHTML() );
 	},
 	
 	/**
