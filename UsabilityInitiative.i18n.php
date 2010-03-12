@@ -588,6 +588,8 @@ $messages['tk'] = array(
 $messages['tr'] = array(
 	'usabilityinitiative' => 'Kullanılabilirlik Girişimi',
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
+	'prefs-beta' => 'Beta özellikleri',
+	'prefs-labs' => 'Lab özellikleri',
 );
 
 /** Ukrainian (Українська)
