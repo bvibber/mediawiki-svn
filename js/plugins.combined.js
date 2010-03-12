@@ -7064,6 +7064,8 @@ if ( typeof context == 'undefined' ) {
 					return false;
 				}
 			}
+			
+			var returnFromModules = null; //they return null by default
 			// Pass the event around to all modules activated on this context
 			for ( var module in context.modules ) {
 				if (
@@ -7071,10 +7073,22 @@ if ( typeof context == 'undefined' ) {
 					'evt' in $.wikiEditor.modules[module] &&
 					name in $.wikiEditor.modules[module].evt
 				) {
-					$.wikiEditor.modules[module].evt[name]( context, event );
+					var ret = $.wikiEditor.modules[module].evt[name]( context, event );
+					if(ret != null){
+						//if 1 returns false, the end result is false
+						if( returnFromModules == null ) {
+							returnFromModules = ret; 
+						} else {
+							returnFromModules = returnFromModules && ret;
+						} 
+					}
 				}
 			}
-			return true;
+			if(returnFromModules != null){
+				return returnFromModules;
+			} else{
+					return true;
+			}
 		},
 		/**
 		 * Adds a button to the UI
@@ -7654,7 +7668,10 @@ if ( typeof context == 'undefined' ) {
 					// Setup event handling on the iframe
 					$( context.$iframe[0].contentWindow.document )
 						.bind( 'keydown', function( event ) {
+							var $cElem = context.fn.getElementAtCursor();
+							event.jQueryNode = $cElem
 							return context.fn.trigger( 'keydown', event );
+							
 						} )
 						.bind( 'paste', function( event ) {
 							return context.fn.trigger( 'paste', event );
@@ -7690,6 +7707,20 @@ if ( typeof context == 'undefined' ) {
 		 * Compatibility with the $.textSelection jQuery plug-in. When the iframe is in use, these functions provide
 		 * equivilant functionality to the otherwise textarea-based functionality.
 		 */
+		
+		'getElementAtCursor': function(){
+			//firefox only
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				var selection = context.$iframe[0].contentWindow.getSelection();
+				if ( selection.rangeCount == 0 ) {
+					// We don't know where the cursor is
+					return null;
+				}
+				var sc = selection.getRangeAt( 0 ).startContainer;
+				return $( sc.parentNode ).eq( 0 );
+			}
+			else return null;
+		},
 		
 		/**
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
@@ -9359,7 +9390,22 @@ evt: {
 				}
 			}//if opentemplates
 		}
-	}
+	}, //mark
+	
+	keydown: function( context, event ){
+		var $evtElem = event.jQueryNode;
+		if ( $evtElem ) {
+			if( $evtElem.hasClass( 'wikiEditor-template-name' ) ){
+				switch ( event.which ) {
+					case 37://left
+					case 38://up
+					case 39://right
+					case 40: return true;//down
+					default: return false; //can't type in a template name
+				}
+			}
+		}
+	} //keydown
 },
 /**
  * Regular expressions that produce tokens
@@ -9424,7 +9470,8 @@ fn: {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
 		$template.find( '.wikiEditor-template-name' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.mousedown( function() { return false; } )
+			.data("keydownHandler", function(){console.log("CARLOS!");});
 		$template.find( '.wikiEditor-template-expand' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
 			.mousedown( function() { return false; } );

@@ -521,6 +521,8 @@ if ( typeof context == 'undefined' ) {
 					return false;
 				}
 			}
+			
+			var returnFromModules = null; //they return null by default
 			// Pass the event around to all modules activated on this context
 			for ( var module in context.modules ) {
 				if (
@@ -528,10 +530,22 @@ if ( typeof context == 'undefined' ) {
 					'evt' in $.wikiEditor.modules[module] &&
 					name in $.wikiEditor.modules[module].evt
 				) {
-					$.wikiEditor.modules[module].evt[name]( context, event );
+					var ret = $.wikiEditor.modules[module].evt[name]( context, event );
+					if(ret != null){
+						//if 1 returns false, the end result is false
+						if( returnFromModules == null ) {
+							returnFromModules = ret; 
+						} else {
+							returnFromModules = returnFromModules && ret;
+						} 
+					}
 				}
 			}
-			return true;
+			if(returnFromModules != null){
+				return returnFromModules;
+			} else{
+					return true;
+			}
 		},
 		/**
 		 * Adds a button to the UI
@@ -1111,7 +1125,10 @@ if ( typeof context == 'undefined' ) {
 					// Setup event handling on the iframe
 					$( context.$iframe[0].contentWindow.document )
 						.bind( 'keydown', function( event ) {
+							var $cElem = context.fn.getElementAtCursor();
+							event.jQueryNode = $cElem
 							return context.fn.trigger( 'keydown', event );
+							
 						} )
 						.bind( 'paste', function( event ) {
 							return context.fn.trigger( 'paste', event );
@@ -1147,6 +1164,20 @@ if ( typeof context == 'undefined' ) {
 		 * Compatibility with the $.textSelection jQuery plug-in. When the iframe is in use, these functions provide
 		 * equivilant functionality to the otherwise textarea-based functionality.
 		 */
+		
+		'getElementAtCursor': function(){
+			//firefox only
+			if ( context.$iframe[0].contentWindow.getSelection ) {
+				var selection = context.$iframe[0].contentWindow.getSelection();
+				if ( selection.rangeCount == 0 ) {
+					// We don't know where the cursor is
+					return null;
+				}
+				var sc = selection.getRangeAt( 0 ).startContainer;
+				return $( sc.parentNode ).eq( 0 );
+			}
+			else return null;
+		},
 		
 		/**
 		 * Gets the complete contents of the iframe (in plain text, not HTML)
