@@ -275,7 +275,6 @@ mw.UploadWizardDescription = function(languageCode) {
 
 	_this.languageMenu = mw.Language.getMenu("lang", languageCode);
 	$j(_this.languageMenu).addClass('mwe-upwiz-desc-lang-select');
-
 	_this.description = $j('<textarea name="desc" rows="3" cols="50" class="mwe-upwiz-desc-lang-text"></textarea>').get(0);
 	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append(_this.languageMenu)
@@ -286,7 +285,8 @@ mw.UploadWizardDescription = function(languageCode) {
 mw.UploadWizardDescription.prototype = {
 
 	getWikiText: function() {
-		return '{{' + _this.languageMenu.value() + '|' + _this.description.value() + '}}'	
+		var _this = this;
+		return '{{' + _this.languageMenu.value + '|' + _this.description.value + '}}'	
 	}
 };
 
@@ -296,6 +296,9 @@ mw.UploadWizardMetadata = function(containerDiv) {
 	_this.descriptions = [];
 
 	_this.div = $j('<div class="mwe-upwiz-metadata-file"></div>');
+
+	_this.macroDiv = $j('<div class="mwe-upwiz-macro"></div>')
+		.append($j('<input type="submit" value="test edit"/>').click(function() { _this.submit() }));
 
 	_this.thumbnailDiv = $j('<div class="mwe-upwiz-thumbnail"></div>');
 	
@@ -319,6 +322,7 @@ mw.UploadWizardMetadata = function(containerDiv) {
 				
 
 	$j(_this.div)
+		.append(_this.macroDiv)
 		.append(_this.thumbnailDiv)
 		.append(_this.errorDiv)
 		.append($j(_this.dataDiv)
@@ -518,27 +522,25 @@ mw.UploadWizardMetadata.prototype = {
 			// ruh roh
 			// we should not even allow them to press the button (?) but then what about the queue...
 		}
-		for (var i = 0; i < _this.descriptions.length; i++) {
-			// XXX trim the descriptions here, remove leading or trailing whitespace
-			information['Description'] += _this.descriptions[i].getWikiText() + "\n";
-		}
-
+		$j.each(_this.descriptions, function(i, description) {
+			information.description += descriptions.getWikiText();
+		})
+	
 		var info = '';
 		for (var key in information) {
-			info += '|' + key/ + '=' + information[key];	
+			info += '|' + key + '=' + information[key] + "\n";	
 		}	
 
 		wikiText += "=={int:filedesc}==\n";
 
-		return '{{Information ' + info + '}}';
+		wikiText += '{{Information\n' + info + '}}\n';
 		
-		wikiText += "=={int:license}==\n";
+		// wikiText += "=={int:license}==\n";
 		// XXX get the real one -- usually dual license GFDL/cc-by-sa
-		wikiText += "{{cc-by-sa-3.0}}\n";
+		//wikiText += "{{cc-by-sa-3.0}}\n";
 		// http://commons.wikimedia.org/wiki/Template:Information
-	
 
-		return wikiText;
+		return wikiText;	
 	},
 
 	isReady: function() {
@@ -548,7 +550,9 @@ mw.UploadWizardMetadata.prototype = {
 	},
 
 	submit: function() {
+		var _this = this;
 		// are we okay to submit?
+		// check descriptions
 
 		// are we changing the name (moving the file?) if so, do that first, and the rest of this submission has to become
 		// a callback when that is completed?
@@ -613,6 +617,7 @@ mw.UploadWizard.prototype = {
 	// later we will do some testing to see if they can support more advanced UploadHandlers, like 
 	// an XHR based one or Firefogg
 	getUploadHandlerClass: function() {
+		// return mw.MockUploadHandler;
 		return mw.ApiUploadHandler;
 	},
 
