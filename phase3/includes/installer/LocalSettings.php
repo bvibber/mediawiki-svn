@@ -61,7 +61,7 @@ class LocalSettings {
 		if( count( $this->extensions ) ) {
 			$localSettings .= "\n# The following extensions were automatically enabled:\n";
 			foreach( $this->extensions as $ext ) {
-				$localSettings .= "require( '$ext/$ext.php' );\n";
+				$localSettings .= "require( 'extensions/$ext/$ext.php' );\n";
 			}
 		}
 		return file_put_contents( $this->configPath . '/LocalSettings.php', $localSettings );

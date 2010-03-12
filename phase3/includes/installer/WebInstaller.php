@@ -1466,7 +1466,7 @@ class WebInstaller_Install extends WebInstallerPage {
 		// Extensions
 		$exts = $this->parent->getVar( '_Extensions' );
 		if( count( $exts ) ) {
-			global $wgHooks;
+			global $wgHooks, $wgAutoloadClasses;
 			$this->startStage( 'config-install-extensions' );
 			$path = $this->getVar( 'IP' ) . '/extensions';
 			foreach( $exts as $e ) {
