@@ -1,0 +1,17 @@
+This directory contains a few files I found useful when making language menus in Javascript.
+
+The problem was that MediaWiki sorted the items in the language menu by the language code, but displayed languages by their
+localized name. This meant that the languages were in effectively random order and were very difficult to find. Arabic was right
+next to Austrian, and so on.
+
+This perl script can sort by the unicode name, and then outputs a suitable fragment of a data structure for Javascript. You
+may find it useful for PHP as well.
+
+Problems:
+  - At present there seem to be a lot of weird dupes and deprecated codes and other stuff which may not be good to include.
+  - Some languages have needless Left-to-Right markers, which affects how they sort
+  - A true lexicographic sort would probably look different (Cesky (Czech) should be up in the European scripts, not down among the Middle Eastern scripts)
+
+
+-- Neil Kandalgaonkar (neilk@wikimedia.org)
+   11 March 2010
