@@ -466,6 +466,12 @@ padding:0.75em 0.33em;
 border-bottom:dashed 1px silver;
 clear:both;
 }
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper:first-child{
+padding-top:0;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper:last-child{
+border-bottom:none;
+}
 .wikieditor-toolbar-table-dimension-fields:after,
 .wikieditor-toolbar-dialog-wrapper:after{
 visibility:hidden;
