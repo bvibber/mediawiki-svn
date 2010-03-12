@@ -116,7 +116,22 @@ evt: {
 				}
 			}//if opentemplates
 		}
-	}
+	}, //mark
+	
+	keydown: function( context, event ){
+		var $evtElem = event.jQueryNode;
+		if ( $evtElem ) {
+			if( $evtElem.hasClass( 'wikiEditor-template-name' ) ){
+				switch ( event.which ) {
+					case 37://left
+					case 38://up
+					case 39://right
+					case 40: return true;//down
+					default: return false; //can't type in a template name
+				}
+			}
+		}
+	} //keydown
 },
 /**
  * Regular expressions that produce tokens
@@ -181,7 +196,8 @@ fn: {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
 		$template.find( '.wikiEditor-template-name' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.mousedown( function() { return false; } )
+			.data("keydownHandler", function(){console.log("CARLOS!");});
 		$template.find( '.wikiEditor-template-expand' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
 			.mousedown( function() { return false; } );
