@@ -1130,6 +1130,16 @@ if ( typeof context == 'undefined' ) {
 							return context.fn.trigger( 'keydown', event );
 							
 						} )
+						.bind( 'keyup', function( event ) {
+							var $cElem = context.fn.getElementAtCursor();
+							event.jQueryNode = $cElem
+							return context.fn.trigger( 'keyup', event );
+						} )
+						.bind( 'keypress', function( event ) {
+							var $cElem = context.fn.getElementAtCursor();
+							event.jQueryNode = $cElem
+							return context.fn.trigger( 'keypress', event );
+						} )
 						.bind( 'paste', function( event ) {
 							return context.fn.trigger( 'paste', event );
 						} )
