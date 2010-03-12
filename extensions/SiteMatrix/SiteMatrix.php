@@ -55,6 +55,9 @@ $wgSiteMatrixSites = array(
 		'prefix' => 'v',
 	)
 );
+$wgSiteMatrixPrivateSites = null;
+$wgSiteMatrixFishbowlSites = null;
+$wgSiteMatrixClosedSites = null;
 
 $dir = dirname(__FILE__) . '/';
 

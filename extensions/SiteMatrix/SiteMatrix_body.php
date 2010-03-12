@@ -10,7 +10,8 @@ global $IP;
 require_once( $IP.'/languages/Names.php' );
 
 class SiteMatrix {
-	protected $langlist, $sites, $names, $hosts, $private, $fishbowl;
+	protected $langlist, $sites, $names, $hosts;
+	protected $private = null, $fishbowl = null, $closed = null;
 	protected $specials, $matrix, $count, $countPerSite;
 
 	public function __construct(){
@@ -33,8 +34,6 @@ class SiteMatrix {
 		$this->sites = array();
 		$this->names = array();
 		$this->hosts = array();
-		$this->private = array();
-		$this->fishbowl = array();
 
 		foreach( $wgSiteMatrixSites as $site => $conf ){
 			$this->sites[] = $site;
@@ -94,8 +93,6 @@ class SiteMatrix {
 		}
 
 		$this->count = count( $wgLocalDatabases );
-		
-		wfRunHooks( 'SiteMatrixGetPrivateAndFishbowlWikis', array( &$this->private, &$this->fishbowl ) );
 	}
 
 	public static function sortSpecial( $a1, $a2 ){
@@ -115,15 +112,15 @@ class SiteMatrix {
 	}
 
 	public function getSpecials(){
-		return $this->specials;	
+		return $this->specials;
 	}
 
 	public function getCount(){
-		return $this->count;	
+		return $this->count;
 	}
 
 	public function getCountPerSite( $site ){
-		return $this->countPerSite[$site];	
+		return $this->countPerSite[$site];
 	}
 
 	public function getSiteUrl( $site ){
@@ -142,31 +139,59 @@ class SiteMatrix {
 		return !empty( $this->matrix[$major][$minor] );
 	}
 
-	# FIXME: Function does not work any longer:
-	# 2008-01-09 04:08 Tim: migrated all locked wikis from $wgReadOnly(File) to permissions-based locking,
-	# so that stewards can edit the alternate project links, and so that various MediaWiki components don't break on page view
-
-	# From http://noc.wikimedia.org/conf/highlight.php?file=InitialiseSettings.php: 
-	# 'wgReadOnlyFile' => array(
-	# 	# Now soft-locked via closed.dblist:
-
 	public function isClosed( $minor, $major ) {
-		global $wgConf;
+		global $wgSiteMatrixClosedSites;
 
 		$dbname = $minor . $major;
-		if( $wgConf->get( 'wgReadOnly', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
-			return true;
-		$readOnlyFile = $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) );
-		if( $readOnlyFile && file_exists( $readOnlyFile ) )
-			return true;
-		return false;
+
+		if ( $wgSiteMatrixClosedSites === null ) {
+			global $wgConf;
+
+			if( $wgConf->get( 'wgReadOnly', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) ) )
+				return true;
+			$readOnlyFile = $wgConf->get( 'wgReadOnlyFile', $dbname, $major, array( 'site' => $major, 'lang' => $minor ) );
+			if( $readOnlyFile && file_exists( $readOnlyFile ) )
+				return true;
+			return false;
+		} elseif ( $this->closed == null ) {
+			$this->closed = array();
+			if ( is_string( $wgSiteMatrixClosedSites ) ) {
+				$this->closed = array_map( 'trim', file( $wgSiteMatrixClosedSites ) );
+			} elseif ( is_array( $wgSiteMatrixClosedSites ) ) {
+				$this->closed = $wgSiteMatrixClosedSites;
+			}
+		}
+
+		return in_array( $dbname, $this->closed );
 	}
 
 	public function isPrivate( $dbname ) {
+		global $wgSiteMatrixPrivateSites;
+
+		if ( $this->private == null ) {
+			$this->private = array();
+			if ( is_string( $wgSiteMatrixPrivateSites ) ) {
+				$this->private = array_map( 'trim', file( $wgSiteMatrixPrivateSites ) );
+			} elseif ( is_array( $wgSiteMatrixPrivateSites ) ) {
+				$this->private = $wgSiteMatrixPrivateSites;
+			}
+		}
+
 		return in_array( $dbname, $this->private );
 	}
 
 	public function isFishbowl( $dbname ) {
+		global $wgSiteMatrixFishbowlSites;
+
+		if ( $this->fishbowl == null ) {
+			$this->fishbowl = array();
+			if ( is_string( $wgSiteMatrixFishbowlSites ) ) {
+				$this->fishbowl = array_map( 'trim', file( $wgSiteMatrixFishbowlSites ) );
+			} elseif ( is_array( $wgSiteMatrixFishbowlSites ) ) {
+				$this->fishbowl = $wgSiteMatrixFishbowlSites;
+			}
+		}
+
 		return in_array( $dbname, $this->fishbowl );
 	}
 }
@@ -180,12 +205,12 @@ class SiteMatrixPage extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgRequest, $wgLanguageNames;
 		wfLoadExtensionMessages( 'SiteMatrix' );
-		
+
 		$this->setHeaders();
 		$this->outputHeader();
 
 		$matrix = new SiteMatrix();
-		
+
 		if( class_exists( 'LanguageNames' ) ) {
 			global $wgLang;
 			$localLanguageNames = LanguageNames::getNames( $wgLang->getCode() );
@@ -290,7 +315,7 @@ class SiteMatrixPage extends SpecialPage {
 			list( $lang, $site ) = $special;
 			$langhost = str_replace( '_', '-', $lang );
 			$url = $matrix->getUrl( $lang, $site );
-			
+
 			# Handle options
 			$flags = array();
 			if( $matrix->isPrivate( $lang . $site ) )
@@ -326,7 +351,7 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 		$matrix_out = array(
 			'count' => $matrix->getCount(),
 		);
-		
+
 		if( class_exists( 'LanguageNames' ) ) {
 			global $wgLang;
 			$localLanguageNames = LanguageNames::getNames( $wgLang->getCode() );
@@ -352,6 +377,8 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 						'url' => $url,
 						'code' => $site,
 					);
+					if( $matrix->isClosed( $lang, $site ) )
+						$site_out['closed'] = '';
 					$language['site'][] = $site_out;
 				}
 			}
@@ -370,12 +397,12 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 			$wiki = array();
 			$wiki['url'] = $url;
 			$wiki['code'] = str_replace( '_', '-', $lang ) . ( $site != 'wiki' ? $site : '' );
-			
-			if( $matrix->isPrivate( $lang . $site ) ) 
+
+			if( $matrix->isPrivate( $lang . $site ) )
 				$wiki['private'] = '';
 			if( $matrix->isFishbowl( $lang . $site ) )
 				$wiki['fishbowl'] = '';
-			
+
 			$specials[] = $wiki;
 		}
 
