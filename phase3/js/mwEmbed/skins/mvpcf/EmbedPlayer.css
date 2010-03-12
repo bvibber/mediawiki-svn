@@ -4,8 +4,8 @@
 
 /*Video player*/
 .mv-player {
-	color: #FFF;
-	background: #000;
+	color: #000;
+	background: #FFF;
 }
  
 /* large play button: */
@@ -147,6 +147,7 @@
 	height:15px;
 	margin-left:-5px;
 	margin-top: -1px;	
+	z-index: 4;
 }
 
 .mv-player .inOutSlider .ui-slider-handle{

@@ -292,8 +292,8 @@ EmbedPlayerManager.prototype = {
 	* Constructor initializes callbackFunctions and playerList  
 	*/
 	init: function( ) {	
-		this.callbackFunctions = new Array();
-		this.playerList = new Array();
+		this.callbackFunctions = [];
+		this.playerList = [];
 	},
 	
 	/**
@@ -352,7 +352,20 @@ EmbedPlayerManager.prototype = {
 			var waitForMeta = _this.waitForMetaCheck( element );	
 										
 			switch( element.tagName.toLowerCase() ) {
-				case 'playlist':					
+				case 'playlist':
+					// Make sure we have the necessary playlist libs loaded:
+					mw.load( 'mw.PlayList', function() {
+					
+						// Create playlist player interface
+						var playlistPlayer = new mw.PlayList( element, attributes );
+						
+						// Swap in playlist player interface
+						_this.swapEmbedPlayerElement( element, playlistPlayer );												
+						
+						// Issue the checkPlayerSources call to the new playlist interface: 				
+						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
+					} );
+				break;					
 				case 'video':
 				case 'audio':
 				// By default treat the rewrite request as "video"
@@ -367,7 +380,8 @@ EmbedPlayerManager.prototype = {
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
 						_this.swapEmbedPlayerElement( element, playerInterface );	
-						// Issue the checkPlayerSources call to the new player interface:											
+						// Issue the checkPlayerSources call to the new player interface:
+						// make sure to use the element that is in the DOM: 										
 						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();						
 					}
 									
@@ -403,9 +417,10 @@ EmbedPlayerManager.prototype = {
 		){
 			waitForMeta = true;
 		}else{
-			// css width height attribute has been set on the element return false
+			// Css width height attribute has been set on the element return false
 			return false;
 		}
+		
 		//Firefox ~ sometimes ~ gives -1 for unloaded media
 		if ( $j(element).attr('width') == -1 || $j(element).attr('height') == -1 ){
 			waitForMeta = true;

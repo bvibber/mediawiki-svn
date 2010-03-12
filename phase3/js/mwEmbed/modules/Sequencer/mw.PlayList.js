@@ -78,11 +78,11 @@ mw.PlayList.prototype = {
 	},
 	// embed object type support system; 
 	supports: {
-		'play_head':true,
+		'playHead':true,
 		'pause':true,
 		'fullscreen':false,
-		'time_display':true,
-		'volume_control':true,
+		'timeDisplay':true,
+		'volumeControl':true,
 		
 		'overlays':true,
 		'playlist_swap_loader':true // if the object supports playlist functions		
@@ -511,16 +511,17 @@ mw.PlayList.prototype = {
 			clip.embed.showPlayer();// get the thubnails for everything			
 
 			$j( clip.embed ).css( {
-				'position':"absolute",
 				'top':"0px",
 				'left':"0px"
 			} );
+			
 			if ( $j( '#clipDesc_' + clip.id ).length != 0 ) {
 				mw.log( "should set: #clipDesc_" + clip.id + ' to: ' + $j( clip.embed ).html() )
 				$j( '#clipDesc_' + clip.id ).append( clip.embed );
 			} else {
 				mw.log( 'cound not find: clipDesc_' + clip.id );
 			}
+			
 		} );
 		if ( this.cur_clip )
 			$j( '#clipDesc_' + this.cur_clip.id ).css( { display:'inline' } );
@@ -672,14 +673,16 @@ mw.PlayList.prototype = {
 	},
 	// called to play the next clip if done call onClipDone 
 	playNext: function() {
-		// advance the playhead to the next clip			
-		var next_clip = this.getNextClip();
+		// Advance the playhead to the next clip			
+		var next_clip = this.getNextClip();		
 		
 		if ( !next_clip ) {
-			mw.log( 'play next with no next clip... must be done:' );
-			this.onClipDone();
+			mw.log( 'no next clip... must be done:' );
+			this.onClipDone();			
+			this.stop();
 			return ;
 		}
+		
 		// @@todo where the plugin supports pre_loading future clips and manage that in javascript
 		// stop current clip
 		this.cur_clip.embed.stop();
@@ -773,7 +776,7 @@ mw.PlayList.prototype = {
 			// set the cur_clip to active
 			this.activeClipList.add( this.cur_clip );
 			
-			// navtive support:
+			// native support:
 			// * pre-loads clips
 			// * mv_playlist smil extension, manages transitions animations overlays etc.			 
 			// mw.log('clip obj supports playlist swap_loader (ie playlist controlled playback)');							
@@ -1026,8 +1029,8 @@ mw.PlayList.prototype = {
 			return false;
 		return track.getClip( tc );
 	},
-	/* 
-	 * generic add Clip to ~default~ track
+	/** 
+	 * Generic add Clip to ~default~ track
 	 */
 	addCliptoTrack: function( clipObj, pos ) {
 		if ( typeof clipObj['track_id'] == 'undefined' ) {
@@ -1508,8 +1511,7 @@ mw.PlayList.prototype.monitor = function() {
 	
 	// pre-load any future clips:
 	this.loadFutureClips();
-	
-	
+		
 	// status updates are handled by children clips ... playlist mostly manages smil actions
 	this.doSmilActions();
 	
