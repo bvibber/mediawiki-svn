@@ -1461,6 +1461,10 @@ class WebInstaller_Options extends WebInstallerPage {
 class WebInstaller_Install extends WebInstallerPage {
 
 	function execute() {
+		if( $this->parent->request->wasPosted() ) {
+			return 'continue';
+		}
+		$this->startForm();
 		$this->parent->output->addHTML("<ul>");
 
 		// Extensions
@@ -1526,6 +1530,10 @@ class WebInstaller_Install extends WebInstallerPage {
 		$localSettings = new LocalSettings( $this->parent );
 		$localSettings->writeLocalSettings();
 		$this->endStage();
+
+		$this->parent->setVar( '_InstallStatus', 'installed' );
+
+		$this->endForm();
 	}
 
 	private function startStage( $msg ) {
@@ -1537,6 +1545,21 @@ class WebInstaller_Install extends WebInstallerPage {
 	}
 }
 class WebInstaller_Complete extends WebInstallerPage {
+	public function execute() {
+		$status = $this->parent->getVar( '_InstallStatus' );
+		$this->startForm();
+		if( $status === 'installed' ) {
+			$msg = 'config-install-done';
+		} elseif( $status === 'upgraded' ) {
+			$msg = 'config-upgrade-done';
+		} else {
+			$msg = 'config-install-failed';
+		}
+		global $wgServer;
+		$url = $wgServer . preg_replace( "/config\/[a-z\-]+\.php5?/i", '', $this->parent->getUrl() );
+		$this->parent->output->addWikiText( wfMsg( $msg, $url ) );
+		$this->endForm( false );
+	}
 }
 class WebInstaller_Restart extends WebInstallerPage {
 	function execute() {

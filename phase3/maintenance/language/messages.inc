@@ -3354,6 +3354,9 @@ $wgMessageStructure = array(
 		'config-insecure-secretkey',
 		'config-install-user',
 		'config-install-localsettings',
+		'config-install-done',
+		'config-install-failed',
+		'config-upgrade-done',
 	),
 );
 

@@ -70,6 +70,7 @@ abstract class Installer {
 		'_CCDone' => false,
 		'_Extensions' => array(),
 		'_MemCachedServers' => '',
+		'_InstallStatus' => false,
 	);
 
 	/**

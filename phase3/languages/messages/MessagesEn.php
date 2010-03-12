@@ -4456,6 +4456,19 @@ They may require additional configuration, but you can enable them now",
 'config-insecure-secretkey' => 'Warning: Unable to create secure $wgSecretKey. Consider changing it manually.',
 'config-install-user' => 'Creating administrator user account',
 'config-install-localsettings' => 'Writing LocalSettings.php',
+'config-install-done' => "'''Congratulations''', you have successfully installed MediaWiki.
+
+You will need to move it from <tt>./config/LocalSettings.php</tt> to <tt>./LocalSettings.php</tt> in order
+for MediaWiki to begin working.
+
+[$1 Link to your wiki]",
+'config-install-failed' => "'''Sorry''', something in the installation process seems to have gone horribly wrong.",
+'config-upgrade-done' => "'''Congratulations''', you have successfully upgraded MediaWiki.
+
+If you chose to overwrite your LocalSettings.php file, you will need to move it from <tt>./config/LocalSettings.php</tt>
+to <tt>./LocalSettings.php</tt>.
+
+[$1 Link to your wiki]",
 
 # Special:Version
 'version'                          => 'Version',
