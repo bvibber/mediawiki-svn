@@ -47,7 +47,6 @@ var kplayerEmbed = {
 		var attributes = {};
 		attributes.id = this.pid;
 		attributes.name = this.pid;
-		attributes.styleclass = "player";		
 		
 		$j( this ).html(
 			$j('<div />')
