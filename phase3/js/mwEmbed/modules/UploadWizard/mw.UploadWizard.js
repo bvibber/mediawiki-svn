@@ -23,8 +23,8 @@ mw.addMessages({
 	'mwe-upwiz-provenance-website': 'They come from a website',
 	'mwe-upwiz-provenance-custom': 'Did you know? You can <a href="$1">customize</a> the default options you see here.',
 	'mwe-upwiz-more-options': 'more options...',
-	'mwe-upwiz-desc-lang': 'Description in',
-	'mwe-upwiz-desc-lang-another': 'add a description in another language',
+	'mwe-upwiz-desc': 'Description in',
+	'mwe-upwiz-desc-another': 'add a description in another language',
 	'mwe-upwiz-title': 'Title',
 	'mwe-upwiz-categories-intro': 'Help people find your works by adding categories',
 	'mwe-upwiz-categories-another': 'Add other categories',
@@ -42,7 +42,7 @@ mw.addMessages({
 	'mwe-upwiz-other': 'Other information',
 	'mwe-upwiz-other-prefill': 'Free wikitext field',
 	'mwe-upwiz-showall': 'show all',
-	'mwe-upwiz-desc-lang': 'Description in',  // caution: FRAGMENT -- bad for i18n
+	'mwe-upwiz-desc': 'Description in',  // caution: FRAGMENT -- bad for i18n
 
 	'mwe-upwiz-upload-error-bad-filename-extension': 'This wiki does not accept filenames with the extension "$1".',
 	'mwe-upwiz-upload-error-duplicate': 'This file was previously uploaded to this wiki.',
@@ -263,30 +263,23 @@ mw.UploadWizard = function() {
 	
 mw.UploadWizardDescription = function(languageCode) {
 	var _this = this;
-	
-	// XXX obtain list of real languages from config
-	var languageMenu = $j('<select name="lang" class="mwe-upwiz-desc-lang"></select>');
 
-	// this could be cached, and cloned as necessary...?
-	var languages = mw.getConfig('languages');
-	for (var i = 0; i < languages.length; i++) {
-		var language = languages[i];
-		var selected = "";
-		if (language.code == languageCode) {
-			selected = " selected";
-		}
-		var option = $j('<option value="' + language.code + selected + ">" + language.name + '</option>');
-		languageMenu.append(option);
+	// Logic copied from MediaWiki:UploadForm.js
+	// Per request from Portuguese and Brazilian users, treat Brazilian Portuguese as Portuguese.
+	if (languageCode == 'pt-br') {
+		languageCode = 'pt';
+	} else if (languageCode == 'en-gb') {
+		languageCode = 'en';
 	}
 
-	
-	_this.languageMenu = languageMenu.get(0);
+	_this.languageMenu = mw.Language.getMenu("lang", languageCode);
+
 	_this.description = $j('<input name="desc" class="mwe-upwiz-desc-lang-text" type="text" size="40"/>').get(0);
 	
 	_this.removeCtrl = $j('<a class="mwe-upwiz-desc-lang-remove" href="#">x</a>').get(0);
 	_this.removeCtrl.click = function () { _this.remove() };
 
-	_this.div = $j('<div class="mwe-upwiz-desc-lang"></div>')
+	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append(_this.languageMenu)
 	               .append(_this.description)
 		       .append(_this.removeCtrl); 
@@ -294,6 +287,7 @@ mw.UploadWizardDescription = function(languageCode) {
 };
 
 mw.UploadWizardDescription.prototype = {
+
 	remove: function() {
 		// XXX todo
 	},
@@ -320,10 +314,10 @@ mw.UploadWizardMetadata = function(containerDiv) {
 
 	_this.descriptionsContainerDiv = 
 		$j('<div class="mwe-upwiz-metadata-descriptions-container"></div>')
-			.append( $j('<div class="mwe-upwiz-metadata-descriptions-title">' + gM('mwe-upwiz-desc-lang') + '</div>') )
+			.append( $j('<div class="mwe-upwiz-metadata-descriptions-title">' + gM('mwe-upwiz-desc') + '</div>') )
 			.append(_this.descriptionsDiv)
 			.append( $j('<div class="mwe-upwiz-metadata-descriptions-add"></div>')
-	        		.append( $j('<a href="#">' + gM('mwe-upwiz-desc-lang-another') + '</a>').click( function() { _this.addDescription() } ) )
+	        		.append( $j('<a href="#">' + gM('mwe-upwiz-desc-another') + '</a>').click( function() { _this.addDescription() } ) )
 			);
 				
 
@@ -421,9 +415,9 @@ mw.UploadWizardMetadata.prototype = {
 		var upload = result.upload;
 		mw.log("populating from result");
 		_this.setThumbnail(upload.filename, mw.getConfig('thumbnailWidth')); 
-		_this.setSource(upload. result);
+		//_this.setSource(upload. result);
 		
-		_this.setFilename(upload.filename);
+		//_this.setFilename(upload.filename);
 
 		//_this.setDescription(); // is there anything worthwhile here? image comment?
 		//_this.setDate(upload.metadata);	
@@ -474,7 +468,6 @@ mw.UploadWizardMetadata.prototype = {
 			if (data.query.pages[-1]) {
 				// not found ? error
 			}
-			// this long chain of properties only works because this method expects exactly one result
 			for ( var page_id in data.query.pages ) {
 				var page = data.query.pages[ page_id ];
 				if (! page.imageinfo ) {
@@ -692,7 +685,7 @@ mw.UploadWizard.prototype = {
 	addUpload: function() {
 		var _this = this;
 		var idx = _this.uploads.length;  // or?
-		if (idx + 1 > _this.maxUploads) {
+		if (idx == _this.maxUploads) {
 			return false;
 		}
 
@@ -718,7 +711,6 @@ mw.UploadWizard.prototype = {
 		$j(ui.div).append(ui.removeCtrl);
 
 		upload.ui = ui;
-
 		// handler -- usually ApiUploadHandler
 		upload.handler = new _this.uploadHandlerClass(upload.ui);
 
@@ -741,6 +733,11 @@ mw.UploadWizard.prototype = {
 		_this.uploads.push(upload);
 		
 		$j("#mwe-upwiz-files").append(upload.ui.div);
+
+
+
+
+		//$j("#testac").languageMenu();
 
 		// update the uploadUi to add files - we may be over limit 
 		_this.updateFileCounts();

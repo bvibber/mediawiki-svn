@@ -10,8 +10,8 @@
 	});
 	
 	// Add class file paths ( From ROOT )
-	// "mw.UploadHandler"		: "modules/UploadWizard/mw.UploadHandler.js",
-	mw.addClassFilePaths( {		
+	mw.addClassFilePaths( {
+		"mw.Language"			: "modules/UploadWizard/mw.Language.js",
 		"mw.UploadWizard"		: "modules/UploadWizard/mw.UploadWizard.js",
 		"mw.UploadApiProcessor"		: "modules/UploadWizard/mw.UploadApiProcessor.js",
 		"mw.IframeTransport"		: "modules/UploadWizard/mw.IframeTransport.js",
@@ -22,7 +22,8 @@
 	});	
 
 	mw.addClassStyleSheets( {
-		'mw.UploadWizard'		: 'modules/UploadWizard/css/uploadWizard.css'
+		'mw.UploadWizard'		: 'modules/UploadWizard/css/uploadWizard.css',
+		'$j.fn.autocomplete'		: 'jquery/plugins/jquery.autocomplete.css'
 	} );
 	
 	//Set a variable for the base upload interface for easy inclution
@@ -35,7 +36,8 @@
 		[
 			'$j.ui.progressbar',
 			'$j.ui.dialog',
-			'$j.ui.draggable'
+			'$j.ui.draggable',
+			'$j.fn.autocomplete'
 		]
 	];
 		
@@ -54,6 +56,7 @@
 		
 		//Add uploadwizard classes to a new "request" var: 
 		request.push( [
+			'mw.Language',
 			'mw.IframeTransport',
 			'mw.ApiUploadHandler',
 			'mw.UploadWizard'
@@ -71,6 +74,7 @@
 	 	
 		//Add uploadwizard classes to a new "request" var: 
 		request.push( [
+			'mw.Language',
 			'mw.IframeTransport',
 			'mw.ApiUploadHandler',
 			'mw.MockUploadHandler',
