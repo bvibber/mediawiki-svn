@@ -312,7 +312,7 @@ fn: {
 								);
 							}
 							// A <p> with just a <br> in it is an empty line, so let's not bother with unwrapping it
-							if ( !( $( oldParent ).children().length == 1 && $( oldParent.firstChild ).is( 'br' ) ) ) {
+							if ( !( oldParent.childNodes.length == 1 && oldParent.firstChild.nodeName == 'BR' ) ) {
 								// Move all children of oldParent into startNode's parent
 								while ( oldParent.firstChild ) {
 									startNode.parentNode.insertBefore( oldParent.firstChild, afterStart );
@@ -326,7 +326,7 @@ fn: {
 								);
 							}
 							// A <p> with just a <br> in it is an empty line, so let's not bother with unwrapping it
-							if ( !( $( oldParent ).children().length == 1 && $( oldParent.firstChild ).is( 'br' ) ) ) {
+							if ( !( oldParent.childNodes.length == 1 && oldParent.firstChild.nodeName == 'BR' ) ) {
 								// Move all children of oldParent into startNode's parent
 								while ( oldParent.firstChild ) {
 									startNode.parentNode.appendChild( oldParent.firstChild );
