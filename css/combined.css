@@ -489,7 +489,12 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 	border-bottom: dashed 1px silver;
 	clear: both;
 }
-
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper:first-child {
+	padding-top: 0;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper:last-child {
+	border-bottom: none;
+}
 
 /* Self Clearing Floats */
 .wikieditor-toolbar-table-dimension-fields:after,
