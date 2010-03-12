@@ -6,9 +6,11 @@ mw.addMessages({
 // TODO: make this a more common library, used by this and TimedText
 mw.Language = {
 
+	defaultCode: 'en',  // when we absolutely have no idea what language to preselect
+
 	initialized: false,
 
-	UNKNOWN: 0,
+	UNKNOWN: 'unknown',
 
 	/**
 	 * List of all languages mediaWiki supports ( Avoid an api call to get this same info )
@@ -398,15 +400,15 @@ mw.Language = {
 		mw.Language.initialized = true;
 	},
 
-	getMenu: function(name, code, withUnknown) {
+	getMenu: function(name, code) {
 		mw.Language.initialize();
 		var $select = mw.Language.$_select.clone();
 		$select.attr('name', name);
-		if (withUnknown) {
+		if (code === mw.Language.UNKNOWN) {
 			// n.b. MediaWiki LanguageHandler has ability to add custom label for 'Unknown'; possibly as pseudo-label
 			$select.prepend($j('<option>').attr('value', mw.Language.UNKNOWN).append(gM('mwe-code-unknown')));
-		}
-		if (code !== undefined) {
+			$select.val(mw.Language.UNKNOWN);
+		} else if (code !== undefined) {
 			$select.val(mw.Language.getClosest(code));
 		}
 		return $select.get(0);
@@ -419,7 +421,7 @@ mw.Language = {
 	getClosest: function(code) {
 		mw.Language.initialize();
 		if (typeof (code) != 'string' || code === null || code.length === 0) {
-			return undefined;
+			return mw.Language.defaultCode;
 		}
     		if (code == 'nan' || code == 'minnan') {
 			return 'zh-min-nan';
