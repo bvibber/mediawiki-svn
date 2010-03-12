@@ -129,7 +129,15 @@ evt: {
 					case 40: return true;//down
 					default: return false; //can't type in a template name
 				}
-			}
+			} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ){
+				switch ( event.which ) {
+				case 13: //enter
+					//FIXME: may be a more elegant way to do this, but this works too
+					context.fn.encapsulateSelection({'pre':'\n', 'peri':'','post':''});
+					return false;
+				default: return true;
+				}
+			}//classes
 		}
 	} //keydown
 },
