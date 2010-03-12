@@ -10,7 +10,8 @@ mw.addMessages({
 	'mwe-upwiz-completed': 'OK',
 	'mwe-upwiz-click-here': 'Click here to select a file',
 	'mwe-upwiz-uploading': 'uploading...',
-	'mwe-upwiz-remove-upload': 'Remove this upload',
+	'mwe-upwiz-remove-upload': 'Remove this file from the list of files to upload',
+	'mwe-upwiz-remove-description': 'Remove this description',
 	'mwe-upwiz-upload': 'Upload',
 	'mwe-upwiz-upload-count': '$1 of $2 files uploaded',
 	'mwe-upwiz-progressbar-uploading': 'uploading',
@@ -24,7 +25,8 @@ mw.addMessages({
 	'mwe-upwiz-provenance-custom': 'Did you know? You can <a href="$1">customize</a> the default options you see here.',
 	'mwe-upwiz-more-options': 'more options...',
 	'mwe-upwiz-desc': 'Description in',
-	'mwe-upwiz-desc-another': 'add a description in another language',
+	'mwe-upwiz-desc-add-n': 'add a description in another language',
+	'mwe-upwiz-desc-add-0': 'add a description',
 	'mwe-upwiz-title': 'Title',
 	'mwe-upwiz-categories-intro': 'Help people find your works by adding categories',
 	'mwe-upwiz-categories-another': 'Add other categories',
@@ -42,7 +44,6 @@ mw.addMessages({
 	'mwe-upwiz-other': 'Other information',
 	'mwe-upwiz-other-prefill': 'Free wikitext field',
 	'mwe-upwiz-showall': 'show all',
-	'mwe-upwiz-desc': 'Description in',  // caution: FRAGMENT -- bad for i18n
 
 	'mwe-upwiz-upload-error-bad-filename-extension': 'This wiki does not accept filenames with the extension "$1".',
 	'mwe-upwiz-upload-error-duplicate': 'This file was previously uploaded to this wiki.',
@@ -100,7 +101,6 @@ mw.UploadWizardUploadInterface = function(filenameAcceptedCb) {
 
 
 	$j(_this.div).append(_this.form)
-		    .append(_this.removeCtrl)
 		    .append(_this.progressMessage)
 		    .append(_this.errorDiv);
 
@@ -268,30 +268,23 @@ mw.UploadWizardDescription = function(languageCode) {
 	// Per request from Portuguese and Brazilian users, treat Brazilian Portuguese as Portuguese.
 	if (languageCode == 'pt-br') {
 		languageCode = 'pt';
+	// this was also in UploadForm.js, but without the heartwarming justification
 	} else if (languageCode == 'en-gb') {
 		languageCode = 'en';
 	}
 
 	_this.languageMenu = mw.Language.getMenu("lang", languageCode);
+	$j(_this.languageMenu).addClass('mwe-upwiz-desc-lang-select');
 
-	_this.description = $j('<input name="desc" class="mwe-upwiz-desc-lang-text" type="text" size="40"/>').get(0);
-	
-	_this.removeCtrl = $j('<a class="mwe-upwiz-desc-lang-remove" href="#">x</a>').get(0);
-	_this.removeCtrl.click = function () { _this.remove() };
-
+	_this.description = $j('<textarea name="desc" rows="3" cols="50" class="mwe-upwiz-desc-lang-text"></textarea>').get(0);
 	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append(_this.languageMenu)
 	               .append(_this.description)
-		       .append(_this.removeCtrl); 
 	
 };
 
 mw.UploadWizardDescription.prototype = {
 
-	remove: function() {
-		// XXX todo
-	},
-	
 	getWikiText: function() {
 		return '{{' + _this.languageMenu.value() + '|' + _this.description.value() + '}}'	
 	}
@@ -312,13 +305,17 @@ mw.UploadWizardMetadata = function(containerDiv) {
 
 	_this.descriptionsDiv = $j('<div class="mwe-upwiz-metadata-descriptions"></div>');
 
+	_this.descriptionAdder = $j('<a id="mwe-upwiz-desc-add"/>')
+					.attr('href', '#')
+					.html( gM('mwe-upwiz-desc-add-0') )
+					.click( function() { _this.addDescription() } );
+
 	_this.descriptionsContainerDiv = 
 		$j('<div class="mwe-upwiz-metadata-descriptions-container"></div>')
 			.append( $j('<div class="mwe-upwiz-metadata-descriptions-title">' + gM('mwe-upwiz-desc') + '</div>') )
 			.append(_this.descriptionsDiv)
 			.append( $j('<div class="mwe-upwiz-metadata-descriptions-add"></div>')
-	        		.append( $j('<a href="#">' + gM('mwe-upwiz-desc-another') + '</a>').click( function() { _this.addDescription() } ) )
-			);
+					.append(_this.descriptionAdder) );
 				
 
 	$j(_this.div)
@@ -358,19 +355,35 @@ mw.UploadWizardMetadata = function(containerDiv) {
 
 mw.UploadWizardMetadata.prototype = {
 
-	addDescription: function(languageCode) {
+	recountDescriptions: function() {
 		var _this = this;
-		if (languageCode === undefined) {
-			languageCode = mw.getConfig('userLanguage');
-		} else {
-			// is languageCodeuage sane?
-			// if not, raise some kind of error
-		}
+		// if there is some maximum number of descriptions, deal with that here
+		$j(_this.descriptionAdder).html( gM('mwe-upwiz-desc-add-' + (_this.descriptions.length == 0 ? '0' : 'n') ) );
+	},
 
-		// we assume we always add new descriptions in the user's languageCodeuage
+
+	addDescription: function() {
+		var _this = this;
+		var languageCode = _this.descriptions.length ? mw.Language.UNKNOWN : mw.getConfig('userLanguage');
 		var description = new mw.UploadWizardDescription(languageCode);
+
+		description.removeCtrl = $j('<a title="' + gM( 'mwe-upwiz-remove-description') + '" href="#">x</a>')
+					.addClass('mwe-upwiz-remove')
+					.addClass('mwe-upwiz-remove-desc')
+					.click( function() { _this.removeDescription(description) } )
+					.get(0);
+		$j(description.div).append(description.removeCtrl);
+
 		$j(_this.descriptionsDiv).append(description.div);
 		_this.descriptions.push(description);
+		_this.recountDescriptions();
+	},
+
+	removeDescription: function(description) {
+		var _this = this;
+		$j(description.div).remove();
+		mw.UploadWizardUtil.removeItem(_this.descriptions, description);
+		_this.recountDescriptions();
 	},
 
 	// this is a lot like upload ui's error -- should merge
@@ -705,7 +718,8 @@ mw.UploadWizard.prototype = {
 			_this.updateFileCounts(); 
 		};
 		var ui = new mw.UploadWizardUploadInterface(filenameAcceptedCb); 
-		ui.removeCtrl = $j('<a title="' + gM( 'mwe-upwiz-remove-upload') + '" href="#" class="mwe-upwiz-file-remove">x</a>')
+		ui.removeCtrl = $j('<a title="' + gM( 'mwe-upwiz-remove-upload') 
+						+ '" href="#" class="mwe-upwiz-remove">x</a>')
 					.click( function() { _this.removeUpload(upload) } )
 					.get(0);
 		$j(ui.div).append(ui.removeCtrl);
@@ -751,7 +765,7 @@ mw.UploadWizard.prototype = {
 		var _this = this;
 		$j(upload.ui.div).remove();
 		$j(upload.metadata.div).remove();
-		_this.removeItem(_this.uploads, upload);
+		mw.UploadWizardUtil.removeItem(_this.uploads, upload);
 		_this.updateFileCounts();
 	},
 
@@ -889,7 +903,7 @@ mw.UploadWizard.prototype = {
 	uploadCompleted: function(upload, result) {
 		var _this = this;
 		_this._uploadsCompleted.push(upload);
-		_this.removeItem(_this._uploadsInProgress, upload);
+		mw.UploadWizardUtil.removeItem(_this._uploadsInProgress, upload);
 
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
@@ -918,14 +932,11 @@ mw.UploadWizard.prototype = {
 	updateFileCounts: function() {
 		mw.log("update counts");
 		var _this = this;
-		var link = $j('#mwe-upwiz-add-file').get(0);
-		link.innerHTML = gM(
-			'mwe-upwiz-add-file-' + (_this.uploads.length === 0 ? '0' : 'n')
-		);
+		$j('#mwe-upwiz-add-file').html(gM('mwe-upwiz-add-file-' + (_this.uploads.length === 0 ? '0' : 'n')));
 		if (_this.uploads.length < _this.maxUploads) {
-			link.removeAttribute('disabled');
+			$j('#mwe-upwiz-add-file').removeAttr('disabled');
 		} else {
-			link.setAttribute('disabled', true);
+			$j('#mwe-upwiz-add-file').attr('disabled', true);
 		}
 
 		var hasFile;
@@ -944,7 +955,7 @@ mw.UploadWizard.prototype = {
 		
 		$j('#mwe-upwiz-count').html( gM('mwe-upwiz-upload-count', [ _this._uploadsCompleted.length, _this.uploads.length ]) );
 
-		if (_this._uploadsCompleted.length == _this.uploads.length) {
+		if (_this.uploads.length > 0 && _this._uploadsCompleted.length == _this.uploads.length) {
 			// is this enough to stop the progress monitor?
 			_this.isCompleted = true;
 			// set progress to 100%
@@ -981,16 +992,20 @@ mw.UploadWizard.prototype = {
 
 	},
 
-	// utility function. not an object method
+	
+
+};
+
+// XXX refactor? or, reconsider approach -- this is an awful hack in some ways
+// The jQuery way would be to query the DOM for objects, not to keep a separate array hanging around
+mw.UploadWizardUtil = {
 	removeItem: function(items, item) {
 		for (var i = 0; i < items.length; i++) {
 			if (items[i] === item) {
 				items.splice(i, 1);
 			}
 		}
-	},
-
-
-
+	}
 };
+
 
