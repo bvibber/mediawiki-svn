@@ -324,7 +324,10 @@ class SiteMatrixPage extends SpecialPage {
 				$flags[] = wfMsgHtml( 'sitematrix-fishbowl' );
 			$flagsStr = implode( ', ', $flags );
 			if( $site != 'wiki' ) $langhost .= $site;
-			$s .= '<li>' . wfSpecialList( '<a href="' . $url . '/">' . $langhost . "</a>", $flagsStr ) . "</li>\n";
+			$closed = $matrix->isClosed( $lang, $site );
+			$s .= '<li>' . ( $closed ? '<s>' : '' ) .
+				wfSpecialList( '<a href="' . $url . '/">' . $langhost . "</a>", $flagsStr ) .
+				( $closed ? '</s>' : '' ) . "</li>\n";
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );
@@ -402,6 +405,8 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 				$wiki['private'] = '';
 			if( $matrix->isFishbowl( $lang . $site ) )
 				$wiki['fishbowl'] = '';
+			if( $matrix->isClosed( $lang, $site ) )
+				$wiki['closed'] = '';
 
 			$specials[] = $wiki;
 		}
