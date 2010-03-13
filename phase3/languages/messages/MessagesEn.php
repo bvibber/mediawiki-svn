@@ -4462,13 +4462,6 @@ You will need to move it from <tt>./config/LocalSettings.php</tt> to <tt>./Local
 for MediaWiki to begin working.
 
 [$1 Link to your wiki]",
-'config-install-failed' => "'''Sorry''', something in the installation process seems to have gone horribly wrong.",
-'config-upgrade-done' => "'''Congratulations''', you have successfully upgraded MediaWiki.
-
-If you chose to overwrite your LocalSettings.php file, you will need to move it from <tt>./config/LocalSettings.php</tt>
-to <tt>./LocalSettings.php</tt>.
-
-[$1 Link to your wiki]",
 
 # Special:Version
 'version'                          => 'Version',
