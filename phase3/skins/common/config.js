@@ -91,6 +91,6 @@ function setProjectNamespace() {
 	value = value.replace(/^_+/, '').replace(/_+$/, '');
 	value = value.substr(0, 1).toUpperCase() 
 		+ value.substr(1);
-	label.innerHTML = wgSameNamespacePrefix + value;
+	label.innerHTML = wgSameNamespacePrefix + ' ' + value;
 }
 
