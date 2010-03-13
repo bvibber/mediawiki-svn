@@ -520,12 +520,15 @@ $messages['sq'] = array(
 /** Swedish (Svenska)
  * @author Fluff
  * @author Najami
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'logentry-append' => 'Lägg till efter',
 	'logentry-parserhook-desc' => 'Detta märkestillägget ger ett formulär för att lägga till element före/efter andra element på loggsidor',
+	'logentry-specialpage-desc' => 'Det här tillägget gör det möjligt att lägga till saker på loggsidor',
 	'logentry' => 'Loggelement',
 	'logentry-invalidpage' => 'Ogiltig sida',
+	'logentry-invalidtoken' => 'Ogiltig typ',
 );
 
 /** Tagalog (Tagalog)

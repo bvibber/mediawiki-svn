@@ -8913,6 +8913,7 @@ $messages['tr'] = array(
 	'code-prop-changes' => 'Durum & etiket günlüğü',
 	'code-desc' => '[[Special:Code|Kod gözden geçirme aracı]], [[Special:RepoAdmin|Altsürüm desteği]] ile',
 	'code-no-repo' => 'Hiç depo yapılandırılmadı!',
+	'code-repo-not-found' => 'Depo <b>$1</b> mevcut değil!',
 	'code-load-diff' => 'Farkları yüklüyor…',
 	'code-notes' => 'son yorumlar',
 	'code-statuschanges' => 'durum değişiklikleri',

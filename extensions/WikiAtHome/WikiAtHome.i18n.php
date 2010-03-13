@@ -480,6 +480,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Lou
  * @author ZaDiak
  * @author Περίεργος
  */
@@ -496,6 +497,7 @@ $messages['el'] = array(
 	'wah-menu-stats' => 'Στατιστικά',
 	'wah-menu-pref' => 'Προτιμήσεις',
 	'wah-lookingforjob' => 'Αναζήτηση νέας εργασίας ...',
+	'wah-notoken-login' => 'Είστε συνδεδεμένος (-η); Εάν όχι, παρακαλούμε συνδεθείτε πρώτα.',
 	'wah-downloading' => 'Η μεταφόρτωση του αρχείου <i>$1</i> ολοκληρώθηκε',
 	'wah-uploadfail' => 'Η φόρτωση απέτυχε',
 );

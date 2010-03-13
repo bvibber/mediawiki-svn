@@ -566,6 +566,7 @@ $messages['eo'] = array(
  * @author Antur
  * @author Crazymadlover
  * @author Imre
+ * @author Peter17
  * @author Translationista
  */
 $messages['es'] = array(
@@ -605,7 +606,7 @@ $messages['es'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acciones',
 	'recordadmin-needscontent' => 'Agregar contenido...',
-	'recordadmin-editwithform' => 'Editar este formulario',
+	'recordadmin-editwithform' => 'Propiedades',
 	'recordadmin-typeinfo' => 'Registro de $1',
 	'right-recordadmin' => 'Encontrar y editar páginas de registro',
 	'recordadmin-export-csv' => 'CSV',

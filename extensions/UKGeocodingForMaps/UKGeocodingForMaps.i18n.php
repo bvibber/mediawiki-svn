@@ -57,6 +57,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'ukgeocoding_name' => 'Xeocodificación do Reino Unido para os mapas',
 	'ukgeocoding_desc' => 'Expande os mapas cunha función analítica display_uk_point coa implementación do Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Un ou máis códigos postais non se puideron xeocodificar e omitíronse no mapa.',
 );
 
 /** Swiss German (Alemannisch)

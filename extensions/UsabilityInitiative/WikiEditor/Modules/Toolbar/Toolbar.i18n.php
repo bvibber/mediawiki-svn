@@ -3392,6 +3392,7 @@ $messages['dsb'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Geraki
+ * @author Lou
  * @author Omnipaedista
  * @author ZaDiak
  * @author Περίεργος
@@ -3413,7 +3414,7 @@ $messages['el'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Εισαγωγή συνδέσμου',
 	'wikieditor-toolbar-tool-link-int' => 'Σε μία σελίδα wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Τίτλος άρθρου:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Εισάγετε τον τίτλο της σελίδας',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Τίτλος ή URL της σελίδας',
 	'wikieditor-toolbar-tool-link-int-text' => 'Κείμενο συνδέσμου:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Κείμενο προς εμφάνιση',
 	'wikieditor-toolbar-tool-link-ext' => 'Σε μία εξωτερική ιστοσελίδα',
