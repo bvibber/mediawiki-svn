@@ -73,6 +73,8 @@ form.mwe-upwiz-form {
 	top: 0px;
 	left: 0px;
 	z-index: 1;
+	white-space: nowrap;
+	overflow: hidden;
 
 	border: 1px solid blue; /* XXX just to make it visible for now */
 }
