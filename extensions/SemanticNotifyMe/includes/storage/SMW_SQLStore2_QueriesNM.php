@@ -7,6 +7,9 @@
  *
  * @author dch
  */
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 global $smwgIP;
 include_once( "$smwgIP/includes/storage/SMW_SQLStore2_Queries.php" );

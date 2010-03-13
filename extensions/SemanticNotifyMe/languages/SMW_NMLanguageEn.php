@@ -2,6 +2,9 @@
 /**
  * @author dch
  */
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 global $smwgNMIP;
 include_once( $smwgNMIP . '/languages/SMW_NMLanguage.php' );

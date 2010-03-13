@@ -2,6 +2,9 @@
 #
 # This will enable POM editing throught MediaWiki API
 #
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 require_once ("$IP/extensions/PageObjectModel/POM.php");
 
 require_once ("$IP/includes/api/ApiBase.php");

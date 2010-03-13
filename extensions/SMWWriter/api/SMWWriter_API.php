@@ -6,7 +6,9 @@
  * @ingroup SMWWriter
  * @author Denny Vrandecic
  */
-
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 require_once ("$IP/includes/api/ApiBase.php");
 
 global $wgAPIModules;
