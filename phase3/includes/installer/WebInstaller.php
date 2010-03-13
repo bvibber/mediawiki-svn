@@ -1596,12 +1596,16 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 	}
 
 	protected function formatTextFile( $text ) {
+		// replace numbering with [1], [2], etc with MW-style numbering
 		$text = preg_replace( "/\r?\n(\r?\n)?\\[\\d+\\]/m", "\\1#", $text );
+		// join word-wrapped lines into one
 		do {
 			$prev = $text;
 			$text = preg_replace( "/\n([\\*#])([^\r\n]*?)\r?\n([^\r\n#\\*:]+)/", "\n\\1\\2 \\3", $text );
 		} while ( $text != $prev );
+		// turn (bug nnnn) into links
 		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
+		// add links to manual to every global variable mentioned
 		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
 		return $text;
 	}
@@ -1634,5 +1638,17 @@ class WebInstaller_ReleaseNotes extends WebInstaller_Document {
 }
 
 class WebInstaller_Copying extends WebInstaller_Document { 
-	function getFileName() { return 'COPYING'; } 
+	function getFileName() { return 'COPYING'; }
+
+	function getFileContents() {
+		$text = parent::getFileContents();
+		$text = str_replace( "\x0C", '', $text );
+		$text = preg_replace_callback( '/\n[ \t]+/m', array( 'WebInstaller_Copying', 'replaceLeadingSpaces' ), $text );
+		$text = '<tt>' . nl2br( $text ) . '</tt>';
+		return $text;
+	}
+
+	private static function replaceLeadingSpaces( $matches ) {
+		return "\n" . str_repeat( '&nbsp;', strlen( $matches[0] ) );
+	}
 }
