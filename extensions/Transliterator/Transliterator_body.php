@@ -46,13 +46,12 @@ class ExtTransliterator  {
 	const WORD_START = "\x1F";  // A character that will be appended when ^ should match at the start
 	const WORD_END = "\x1E";    // A character that will be appended when $ should match at the end
 	const LETTER_END = "\x1D";  // A chacter added between each character as a separator
-	const META_CHARS = "\x1D\x1E\x1F";
 
 	// TODO: some characters from \p{Cf} should probably be here too.
 	const COMBINING = '\p{Mn}\p{Me}';
 
 	// The prefix to use for cache items (the number should be incremented when the map format changes)
-	const CACHE_PREFIX = "extTransliterator.3"; 
+	const CACHE_PREFIX = "extTransliterator.4"; 
 
 	// flags for preprocessor
 	const DECOMPOSE = 1;
@@ -200,30 +199,10 @@ class ExtTransliterator  {
 	}
 
 	/**
-	 * Add meta-characters to make transliteration work without splitting multi-code-point characters.
-	 *
-	 * (NFC) Insert an "end" after each sequence of unicode character + (combining codepoints)*
-	 * (NFD) Insert an "end" after each individual code-point.
-	 *
-	 * @param $word  String from user input
-	 * @param $flags  may include self::DECOMPOSE
-	 * @return String
-	 */
-	static function handleMetaCharacters( $word, $flags ) {
-		if ( $flags & self::DECOMPOSE ) {
-			$word = UtfNormal::toNFD( $word );
-			$word = preg_replace( '/./u', '$0' . self::LETTER_END, $word );
-		} else {
-			$word = preg_replace( '/.[' . self::COMBINING . ']*/u', '$0' . self::LETTER_END, $word );
-		}
-		return $word;
-	}
-
-	/**
 	 * Normalise the text so it can be used with strtr() safely
 	 *
 	 * 1. decodeCharReferences
-	 * 2. handleMetaCharacters
+	 * 2. split into NFD codepoints or NFC fully combined
 	 * 3. add bookends on word boundaries
 	 *
 	 * @param $word  String from user input
@@ -233,9 +212,17 @@ class ExtTransliterator  {
 	static function forTransliteration( $word, $flags ) {
 		static $regexes = null;
 
+		// NOTE: this is very slightly inconsistent with MediaWiki if an NFD code-point
+		// has been HTML escaped it will be converted to NFC if it passes through
+		// transliteration unchanged, I think that's a WONTFIX though.
 		$word = Sanitizer::decodeCharReferences( $word );
 
-		$word = self::handleMetaCharacters( $word, $flags );
+		if ( $flags & self::DECOMPOSE ) {
+			$word = UtfNormal::toNFD( $word );
+			$word = preg_replace( '/./u', '$0' . self::LETTER_END, $word );
+		} else {
+			$word = preg_replace( '/.[' . self::COMBINING . ']*/u', '$0' . self::LETTER_END, $word );
+		}
 
 		if( !$regexes ) {
 			// A "letter" is a unicode letter followed by some combining characters
@@ -260,24 +247,6 @@ class ExtTransliterator  {
 		$regex = $regexes[ $flags & self::IGNORE_ENDINGS ? 'ignore-endings' : 'endings' ];
 		$word = preg_replace( $regex['end'], '$1' . self::WORD_END . '$2', $word );
 		$word = preg_replace( $regex['start'], '$1' . self::WORD_START . '$2', $word );
-
-		return $word;
-	}
-
-	/**
-	 * Restore the string ready to be output.
-	 *
-	 * 1. Remove any left-over meta-characters, these are forbidden in user input
-	 *    so must be the result of messy transliteration (or buggy other extension)
-	 * 2. convert back to NFC, MediaWiki would not translate NFD html entities into 
-	 *    NFC code-points, we do by accident, should perhaps be fixed in the future.
-	 *
-	 * @param $word
-	 * @return String
-	 */
-	static function cleanWord( $word ) {
-		$word = preg_replace('/[' . self::META_CHARS . ']+/u', '', $word );
-		$word = UtfNormal::toNFC( $word );
 
 		return $word;
 	}
@@ -308,7 +277,6 @@ class ExtTransliterator  {
 		}
 
 		$from = self::forTransliteration( $from, $flags | self::IGNORE_ENDINGS );
-		$to = self::handleMetaCharacters( $to, $flags );
 
 		if ( !$noprefix ) {
 			$from = preg_replace( '/^[\^][' . self::LETTER_END . '][' . self::WORD_START . ']/u', '', $from, 1, &$count );
@@ -416,13 +384,16 @@ class ExtTransliterator  {
 	}
 
 	/**
-	 * Fix precedence problems created by readMap.
+	 * Fix problems created by readMap.
 	 *
-	 * Problem (1) Long auto-generated case rules override case-specific rules.
+	 * 1. Long auto-generated case rules override case-specific rules.
 	 *   Delete the auto-generated rules.
 	 *
-	 * Problem (2) The ^ operator overrides length ($ is ok though).
-	 *  Insert extra ^ rules with each needed length.
+	 * 2. The ^ operator overrides length ($ is ok though).
+	 *   Insert extra ^ rules with each needed length.
+	 *
+	 * 3. All the bookends we have inserted are still there
+	 *   Add rules to remove them.
 	 *
 	 * @param $rules  Array( from => to )
 	 * @param $attrs  Array( from => self::PREFIXED | self::UPCASED )
@@ -437,7 +408,6 @@ class ExtTransliterator  {
 		$naturalCased = false;
 		foreach ( $attrs as $from => $attr ) {
 
-			// Problem (1)
 			// If the current rule has been auto-upcased, but a prefix of this rule wasn't,
 			// remove the auto-upcased rule as the specified upper-case takes priority.
 			if ( $attr & self::UPCASED ) {
@@ -461,7 +431,6 @@ class ExtTransliterator  {
 
 			}
 
-			// Problem (2)
 			// When it finds a ^ed rule, it duplicates all rules that start with that rule
 			// which has the effect of promoting length to override ^.
                         // If the length is actually the same, ^x needs to maintain priority over x$
@@ -485,6 +454,12 @@ class ExtTransliterator  {
 			}
 		}
 
+		$rules[ self::LETTER_END ] = '';
+		$rules[ self::WORD_END ] = '';
+		$rules[ self::WORD_START ] = '';
+
+		$rules = new ReplacementArray( $rules );
+
 		return array( 'rules' => $rules, 'flags' => $flags );
 	}
 
@@ -501,10 +476,10 @@ class ExtTransliterator  {
 		$word = self::forTransliteration( $word, $map['flags'] );
 
 		// Perform transliteration
-		$output = strtr( $word, $map['rules'] );
+		$output = $map['rules']->replace( $word );
 
-		// Remove remaining bookends and combining character markers
-		return self::cleanWord( $output );
+		// Maintain MediaWiki invariant of NFC
+		return UtfNormal::toNFC( $output );
 	}
 
 	/**
