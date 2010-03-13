@@ -1,3 +1,5 @@
+// TODO copy interface from ApiUploadHandler -- it changed
+
 // Currently this doesn't at all follow the interface that Mdale made in UploadHandler
 // will have to figure this out.
 
