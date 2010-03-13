@@ -40,7 +40,27 @@ class ActiveUsersPager extends UsersPager {
 				$this->requestedUser = $username->getText();
 			}
 		}
+		
+		$this->setupOptions();
+		
 		parent::__construct();
+	}
+
+	public function setupOptions() {
+		global $wgRequest;
+		
+		$this->opts = new FormOptions();
+
+		$this->opts->add( 'hidebots', false, FormOptions::BOOL );
+		$this->opts->add( 'hidesysops', false, FormOptions::BOOL );
+
+		$this->opts->fetchValuesFromRequest( $wgRequest );
+
+		$this->groups = array();
+		if ($this->opts->getValue('hidebots') == 1)
+			$this->groups['bot'] = true;
+		if ($this->opts->getValue('hidesysops') == 1)
+			$this->groups['sysop'] = true;
 	}
 
 	function getIndexField() {
@@ -51,7 +71,8 @@ class ActiveUsersPager extends UsersPager {
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array( 'rc_user > 0' ); // Users - no anons
 		$conds[] = 'ipb_deleted IS NULL'; // don't show hidden names
-		$conds[] = 'rc_log_type IS NULL OR rc_log_type != "newusers"';
+		$conds[] = "rc_log_type IS NULL OR rc_log_type != 'newusers'";
+		
 		if( $this->requestedUser != '' ) {
 			$conds[] = 'rc_user_text >= ' . $dbr->addQuotes( $this->requestedUser );
 		}
@@ -60,12 +81,12 @@ class ActiveUsersPager extends UsersPager {
 			'tables' => array( 'recentchanges', 'user', 'ipblocks' ),
 			'fields' => array( 'rc_user_text AS user_name', // inheritance
 				'rc_user_text', // for Pager
-				'MAX(user_id) AS user_id',
+				'user_id',
 				'COUNT(*) AS recentedits',
 				'MAX(ipb_user) AS blocked'
 			),
 			'options' => array(
-				'GROUP BY' => 'rc_user_text',
+				'GROUP BY' => 'rc_user_text, user_id',
 				'USE INDEX' => array( 'recentchanges' => 'rc_user_text' )
 			),
 			'join_conds' => array(
@@ -86,6 +107,8 @@ class ActiveUsersPager extends UsersPager {
 
 		$list = array();
 		foreach( self::getGroups( $row->user_id ) as $group ) {
+			if (isset($this->groups[$group]))
+				return;
 			$list[] = self::buildGroupLink( $group );
 		}
 		$groups = $wgLang->commaList( $list );
@@ -104,17 +127,25 @@ class ActiveUsersPager extends UsersPager {
 
 	function getPageHeader() {
 		global $wgScript, $wgRequest;
+
 		$self = $this->getTitle();
 		$limit = $this->mLimit ? Xml::hidden( 'limit', $this->mLimit ) : '';
 
-		return  Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) . # Form tag
-			Xml::fieldset( wfMsg( 'activeusers' ) ) . "\n" .
-			Xml::hidden( 'title', $self->getPrefixedDBkey() ) .
-			$limit . "\n" .
-			Xml::inputLabel( wfMsg( 'activeusers-from' ), 'username', 'offset', 20, $this->requestedUser ) . ' ' . # Username field
-			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .  "\n" .# Submit button and form bottom
-			Xml::closeElement( 'fieldset' ) .
-			Xml::closeElement( 'form' );
+		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ); # Form tag
+		$out .= Xml::fieldset( wfMsg( 'activeusers' ) ) . "\n";
+		$out .= Xml::hidden( 'title', $self->getPrefixedDBkey() ) . $limit . "\n";
+
+		$out .= Xml::inputLabel( wfMsg( 'activeusers-from' ), 'username', 'offset', 20, $this->requestedUser ) . '<br />';# Username field
+
+		$out .= Xml::checkLabel( wfMsg('activeusers-hidebots'), 'hidebots', 'hidebots', $this->opts->getValue( 'hidebots' ) );
+
+		$out .= Xml::checkLabel( wfMsg('activeusers-hidesysops'), 'hidesysops', 'hidesysops', $this->opts->getValue( 'hidesysops' ) ) . '<br />';
+
+		$out .= Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .  "\n";# Submit button and form bottom
+		$out .= Xml::closeElement( 'fieldset' );
+		$out .= Xml::closeElement( 'form' );
+		
+		return $out;
 	}
 }
 
@@ -136,7 +167,7 @@ class SpecialActiveUsers extends SpecialPage {
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
 	public function execute( $par ) {
-		global $wgOut;
+		global $wgOut, $wgLang, $wgRCMaxAge;
 
 		$this->setHeaders();
 
@@ -144,7 +175,12 @@ class SpecialActiveUsers extends SpecialPage {
 
 		# getBody() first to check, if empty
 		$usersbody = $up->getBody();
-		$s = $up->getPageHeader();
+
+                $s = Html::rawElement( 'div', array( 'class' => 'mw-activeusers-intro' ),
+                        wfMsgExt( 'activeusers-intro', array( 'parsemag', 'escape' ), $wgLang->formatNum( ceil( $wgRCMaxAge / 86400 ) ) )
+                );
+
+		$s .= $up->getPageHeader();
 		if( $usersbody ) {
 			$s .= $up->getNavigationBar();
 			$s .= Html::rawElement( 'ul', array(), $usersbody );

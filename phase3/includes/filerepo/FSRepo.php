@@ -6,7 +6,7 @@
  * @ingroup FileRepo
  */
 class FSRepo extends FileRepo {
-	var $directory, $deletedDir, $url, $deletedHashLevels, $fileMode;
+	var $directory, $deletedDir, $deletedHashLevels, $fileMode;
 	var $fileFactory = array( 'UnregisteredLocalFile', 'newFromTitle' );
 	var $oldFileFactory = false;
 	var $pathDisclosureProtection = 'simple';
@@ -76,7 +76,7 @@ class FSRepo extends FileRepo {
 	}
 
 	/**
-	 * Get the URL corresponding to one of the three basic zones
+	 * @see FileRepo::getZoneUrl()
 	 */
 	function getZoneUrl( $zone ) {
 		switch ( $zone ) {
@@ -85,11 +85,11 @@ class FSRepo extends FileRepo {
 			case 'temp':
 				return "{$this->url}/temp";
 			case 'deleted':
-				return false; // no public URL
+				return parent::getZoneUrl( $zone ); // no public URL
 			case 'thumb':
 				return $this->thumbUrl;
 			default:
-				return false;
+				return parent::getZoneUrl( $zone );
 		}
 	}
 
@@ -227,7 +227,7 @@ class FSRepo extends FileRepo {
 		return $status;
 	}
 
-	function append( $srcPath, $toAppendPath ) {
+	function append( $srcPath, $toAppendPath, $flags = 0 ) {
 		$status = $this->newGood();
 
 		// Resolve the virtual URL
@@ -236,20 +236,30 @@ class FSRepo extends FileRepo {
 		}
 		// Make sure the files are there
 		if ( !is_file( $srcPath ) )
-			$status->fatal( 'append-src-filenotfound', $srcPath );
+			$status->fatal( 'filenotfound', $srcPath );
 
 		if ( !is_file( $toAppendPath ) )
-			$status->fatal( 'append-toappend-filenotfound', $toAppendPath );
+			$status->fatal( 'filenotfound', $toAppendPath );
+
+		if ( !$status->isOk() ) return $status;
 
 		// Do the append
-		if( file_put_contents( $srcPath, file_get_contents( $toAppendPath ), FILE_APPEND ) ) {
-			$status->value = $srcPath;
-		} else {
-			$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
+		$chunk = file_get_contents( $toAppendPath );
+		if( $chunk === false ) {
+			$status->fatal( 'fileappenderrorread', $toAppendPath );
 		}
 
-		// Remove the source file
-		unlink( $toAppendPath );
+		if( $status->isOk() ) {
+			if ( file_put_contents( $srcPath, $chunk, FILE_APPEND ) ) {
+				$status->value = $srcPath;
+			} else {
+				$status->fatal( 'fileappenderror', $toAppendPath,  $srcPath);
+			}
+		}
+
+		if ( $flags & self::DELETE_SOURCE ) {
+			unlink( $toAppendPath );
+		}
 
 		return $status;
 	}
@@ -602,7 +612,7 @@ class FSRepo extends FileRepo {
 		}
 		return strtr( $param, $this->simpleCleanPairs );
 	}
-	
+
 	/**
 	 * Chmod a file, supressing the warnings.
 	 * @param String $path The path to change

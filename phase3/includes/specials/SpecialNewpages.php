@@ -136,6 +136,7 @@ class SpecialNewpages extends SpecialPage {
 		);
 
 		// Disable some if needed
+		# FIXME: throws E_NOTICEs if not set; and doesn't obey hooks etc
 		if ( $wgGroupPermissions['*']['createpage'] !== true )
 			unset($filters['hideliu']);
 
@@ -232,12 +233,8 @@ class SpecialNewpages extends SpecialPage {
 
 	protected function setSyndicated() {
 		global $wgOut;
-		$queryParams = array(
-			'namespace' => $this->opts->getValue( 'namespace' ),
-			'username' => $this->opts->getValue( 'username' )
-		);
 		$wgOut->setSyndicated( true );
-		$wgOut->setFeedAppendQuery( wfArrayToCGI( $queryParams ) );
+		$wgOut->setFeedAppendQuery( wfArrayToCGI( $this->opts->getAllValues() ) );
 	}
 
 	/**
@@ -361,7 +358,7 @@ class SpecialNewpages extends SpecialPage {
 				$this->feedItemAuthor( $row ),
 				$comments);
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 

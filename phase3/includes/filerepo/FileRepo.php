@@ -14,7 +14,7 @@ abstract class FileRepo {
 	var $thumbScriptUrl, $transformVia404;
 	var $descBaseUrl, $scriptDirUrl, $articleUrl, $fetchDescription, $initialCapital;
 	var $pathDisclosureProtection = 'paranoid';
-	var $descriptionCacheExpiry, $apiThumbCacheExpiry, $hashLevels;
+	var $descriptionCacheExpiry, $hashLevels, $url, $thumbUrl;
 
 	/**
 	 * Factory functions for creating new files
@@ -28,10 +28,10 @@ abstract class FileRepo {
 		$this->name = $info['name'];
 
 		// Optional settings
-		$this->initialCapital = true; // by default
+		$this->initialCapital = MWNamespace::isCapitalized( NS_FILE );
 		foreach ( array( 'descBaseUrl', 'scriptDirUrl', 'articleUrl', 'fetchDescription',
-			'thumbScriptUrl', 'initialCapital', 'pathDisclosureProtection', 
-			'descriptionCacheExpiry', 'apiThumbCacheExpiry', 'hashLevels' ) as $var )
+			'thumbScriptUrl', 'initialCapital', 'pathDisclosureProtection',
+			'descriptionCacheExpiry', 'hashLevels', 'url', 'thumbUrl' ) as $var )
 		{
 			if ( isset( $info[$var] ) ) {
 				$this->$var = $info[$var];
@@ -87,7 +87,7 @@ abstract class FileRepo {
 	 *
 	 *     ignoreRedirect: If true, do not follow file redirects
 	 *
-	 *     private:        If true, return restricted (deleted) files if the current 
+	 *     private:        If true, return restricted (deleted) files if the current
 	 *                     user is allowed to view them. Otherwise, such files will not
 	 *                     be found.
 	 */
@@ -123,12 +123,12 @@ abstract class FileRepo {
 				}
 			}
 		}
-				
+
 		# Now try redirects
 		if ( !empty( $options['ignoreRedirect'] ) ) {
 			return false;
 		}
-		$redir = $this->checkRedirect( $title );	
+		$redir = $this->checkRedirect( $title );
 		if( $redir && $redir->getNamespace() == NS_FILE) {
 			$img = $this->newFile( $redir );
 			if( !$img ) {
@@ -141,9 +141,9 @@ abstract class FileRepo {
 		}
 		return false;
 	}
-	
+
 	/*
-	 * Find many files at once. 
+	 * Find many files at once.
 	 * @param array $items, an array of titles, or an array of findFile() options with
 	 *    the "title" option giving the title. Example:
 	 *
@@ -168,7 +168,7 @@ abstract class FileRepo {
 		}
 		return $result;
 	}
-	
+
 	/**
 	 * Create a new File object from the local repository
 	 * @param mixed $sha1 SHA-1 key
@@ -189,14 +189,14 @@ abstract class FileRepo {
 			return call_user_func( $this->fileFactoryKey, $sha1, $this );
 		}
 	}
-	
+
 	/**
 	 * Find an instance of the file with this key, created at the specified time
 	 * Returns false if the file does not exist. Repositories not supporting
 	 * version control should return false if the time is specified.
 	 *
 	 * @param string $sha1 string
-	 * @param array $options Option array, same as findFile(). 
+	 * @param array $options Option array, same as findFile().
 	 */
 	function findFileFromKey( $sha1, $options = array() ) {
 		if ( !is_array( $options ) ) {
@@ -236,6 +236,15 @@ abstract class FileRepo {
 	}
 
 	/**
+	 * Get the URL corresponding to one of the four basic zones
+	 * @param String $zone One of: public, deleted, temp, thumb
+	 * @return String or false
+	 */
+	function getZoneUrl( $zone ) {
+		return false;
+	}
+
+	/**
 	 * Returns true if the repository can transform files via a 404 handler
 	 */
 	function canTransformVia404() {
@@ -247,7 +256,7 @@ abstract class FileRepo {
 	 */
 	function getNameFromTitle( $title ) {
 		global $wgCapitalLinks;
-		if ( $this->initialCapital != $wgCapitalLinks ) {
+		if ( $this->initialCapital != MWNamespace::isCapitalized( NS_FILE ) ) {
 			global $wgContLang;
 			$name = $title->getUserCaseDBKey();
 			if ( $this->initialCapital ) {
@@ -271,7 +280,7 @@ abstract class FileRepo {
 			return $path;
 		}
 	}
-	
+
 	/**
 	 * Get a relative path including trailing slash, e.g. f/fa/
 	 * If the repo is not hashed, returns an empty string
@@ -388,8 +397,17 @@ abstract class FileRepo {
 	 */
 	abstract function storeTemp( $originalName, $srcPath );
 
-	abstract function append( $srcPath, $toAppendPath );
-	
+
+	/**
+	 * Append the contents of the source path to the given file.
+	 * @param $srcPath string location of the source file
+	 * @param $toAppendPath string path to append to.
+	 * @param $flags Bitfield, may be FileRepo::DELETE_SOURCE to indicate
+	 *        that the source file should be deleted if possible
+	 * @return mixed Status or false
+	 */
+	abstract function append( $srcPath, $toAppendPath, $flags = 0 );
+
 	/**
 	 * Remove a temporary file or mark it for garbage collection
 	 * @param string $virtualUrl The virtual URL returned by storeTemp
@@ -580,14 +598,14 @@ abstract class FileRepo {
 	/**
 	 * Invalidates image redirect cache related to that image
 	 * Doesn't do anything for repositories that don't support image redirects.
-	 * 
+	 *
 	 * STUB
 	 * @param Title $title Title of image
-	 */	
+	 */
 	function invalidateImageRedirect( $title ) {}
-	
+
 	/**
-	 * Get an array or iterator of file objects for files that have a given 
+	 * Get an array or iterator of file objects for files that have a given
 	 * SHA-1 content hash.
 	 *
 	 * STUB
@@ -595,9 +613,9 @@ abstract class FileRepo {
 	function findBySha1( $hash ) {
 		return array();
 	}
-	
+
 	/**
-	 * Get the human-readable name of the repo. 
+	 * Get the human-readable name of the repo.
 	 * @return string
 	 */
 	public function getDisplayName() {
@@ -605,16 +623,17 @@ abstract class FileRepo {
 		if ( $this->name == 'local' ) {
 			return null;
 		}
+		// 'shared-repo-name-wikimediacommons' is used when $wgUseInstantCommons = true
 		$repoName = wfMsg( 'shared-repo-name-' . $this->name );
 		if ( !wfEmptyMsg( 'shared-repo-name-' . $this->name, $repoName ) ) {
 			return $repoName;
 		}
-		return wfMsg( 'shared-repo' ); 
+		return wfMsg( 'shared-repo' );
 	}
-	
+
 	/**
 	 * Get a key on the primary cache for this repository.
-	 * Returns false if the repository's cache is not accessible at this site. 
+	 * Returns false if the repository's cache is not accessible at this site.
 	 * The parameters are the parts of the key, as for wfMemcKey().
 	 *
 	 * STUB
@@ -624,7 +643,7 @@ abstract class FileRepo {
 	}
 
 	/**
-	 * Get a key for this repo in the local cache domain. These cache keys are 
+	 * Get a key for this repo in the local cache domain. These cache keys are
 	 * not shared with remote instances of the repo.
 	 * The parameters are the parts of the key, as for wfMemcKey().
 	 */

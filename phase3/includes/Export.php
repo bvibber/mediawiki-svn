@@ -55,6 +55,7 @@ class WikiExporter {
 	 *                   limit: maximum number of rows to return
 	 *                   dir: "asc" or "desc" timestamp order
 	 * @param $buffer Int: one of WikiExporter::BUFFER or WikiExporter::STREAM
+	 * @param $text Int: one of WikiExporter::TEXT or WikiExporter::STUB
 	 */
 	function __construct( &$db, $history = WikiExporter::CURRENT,
 			$buffer = WikiExporter::BUFFER, $text = WikiExporter::TEXT ) {
@@ -207,24 +208,8 @@ class WikiExporter {
 			$opts = array( 'ORDER BY' => 'page_id ASC' );
 			$opts['USE INDEX'] = array();
 			$join = array();
-			# Latest revision dumps...
-			if( $this->history & WikiExporter::CURRENT ) {
-				if( $this->list_authors && $cond != '' )  { // List authors, if so desired
-					list($page,$revision) = $this->db->tableNamesN('page','revision');
-					$this->do_list_authors( $page, $revision, $cond );
-				}
-				$join['revision'] = array('INNER JOIN','page_id=rev_page AND page_latest=rev_id');
-			# "Stable" revision dumps...
-			} elseif( $this->history & WikiExporter::STABLE ) {
-				# Default JOIN, to be overridden...
-				$join['revision'] = array('INNER JOIN','page_id=rev_page AND page_latest=rev_id');
-				# One, and only one hook should set this, and return false
-				if( wfRunHooks( 'WikiExporter::dumpStableQuery', array(&$tables,&$opts,&$join) ) ) {
-					wfProfileOut( __METHOD__ );
-					return new WikiError( __METHOD__." given invalid history dump type." );
-				}
-			# Time offset/limit for all pages/history...
-			} elseif( is_array( $this->history ) ) {
+			if( is_array( $this->history ) ) {
+				# Time offset/limit for all pages/history...
 				$revJoin = 'page_id=rev_page';
 				# Set time order
 				if( $this->history['dir'] == 'asc' ) {
@@ -244,11 +229,27 @@ class WikiExporter {
 				if( !empty( $this->history['limit'] ) ) {
 					$opts['LIMIT'] = intval( $this->history['limit'] );
 				}
-			# Full history dumps...
 			} elseif( $this->history & WikiExporter::FULL ) {
+				# Full history dumps...
 				$join['revision'] = array('INNER JOIN','page_id=rev_page');
-			# Uknown history specification parameter?
+			} elseif( $this->history & WikiExporter::CURRENT ) {
+				# Latest revision dumps...
+				if( $this->list_authors && $cond != '' )  { // List authors, if so desired
+					list($page,$revision) = $this->db->tableNamesN('page','revision');
+					$this->do_list_authors( $page, $revision, $cond );
+				}
+				$join['revision'] = array('INNER JOIN','page_id=rev_page AND page_latest=rev_id');
+			} elseif( $this->history & WikiExporter::STABLE ) {
+				# "Stable" revision dumps...
+				# Default JOIN, to be overridden...
+				$join['revision'] = array('INNER JOIN','page_id=rev_page AND page_latest=rev_id');
+				# One, and only one hook should set this, and return false
+				if( wfRunHooks( 'WikiExporter::dumpStableQuery', array(&$tables,&$opts,&$join) ) ) {
+					wfProfileOut( __METHOD__ );
+					return new WikiError( __METHOD__." given invalid history dump type." );
+				}
 			} else {
+				# Uknown history specification parameter?
 				wfProfileOut( __METHOD__ );
 				return new WikiError( __METHOD__." given invalid history dump type." );
 			}
@@ -413,7 +414,11 @@ class XmlDumpWriter {
 		global $wgContLang;
 		$spaces = "<namespaces>\n";
 		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title ) {
-			$spaces .= '      ' . Xml::element( 'namespace', array( 'key' => $ns ), $title ) . "\n";
+			$spaces .= '      ' . 
+				Xml::element( 'namespace', 
+					array(	'key' => $ns,
+							'case' => MWNamespace::isCapitalized( $ns ) ? 'first-letter' : 'case-sensitive',
+					), $title ) . "\n";
 		}
 		$spaces .= "    </namespaces>";
 		return $spaces;
@@ -444,7 +449,7 @@ class XmlDumpWriter {
 		if( $row->page_is_redirect ) {
 			$out .= '    ' . Xml::element( 'redirect', array() ) . "\n";
 		}
-		if( '' != $row->page_restrictions ) {
+		if( $row->page_restrictions != '' ) {
 			$out .= '    ' . Xml::element( 'restrictions', array(),
 				strval( $row->page_restrictions ) ) . "\n";
 		}
@@ -495,6 +500,7 @@ class XmlDumpWriter {
 			$out .= "      " . Xml::elementClean( 'comment', null, strval( $row->rev_comment ) ) . "\n";
 		}
 
+		$text = '';
 		if( $row->rev_deleted & Revision::DELETED_TEXT ) {
 			$out .= "      " . Xml::element( 'text', array( 'deleted' => 'deleted' ) ) . "\n";
 		} elseif( isset( $row->old_text ) ) {
@@ -509,7 +515,7 @@ class XmlDumpWriter {
 				array( 'id' => $row->rev_text_id ),
 				"" ) . "\n";
 		}
-		
+
 		wfRunHooks( 'XmlDumpWriterWriteRevision', array( &$this, &$out, $row, $text ) );
 
 		$out .= "    </revision>\n";

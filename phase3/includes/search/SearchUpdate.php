@@ -37,17 +37,17 @@ class SearchUpdate {
 
 		if( $this->mText === false ) {
 			$search->updateTitle($this->mId,
-				Title::indexTitle( $this->mNamespace, $this->mTitle ));
+				$search->normalizeText( Title::indexTitle( $this->mNamespace, $this->mTitle ) ) );
 			wfProfileOut( $fname );
 			return;
 		}
 
 		# Language-specific strip/conversion
-		$text = $wgContLang->stripForSearch( $this->mText );
+		$text = $wgContLang->normalizeForSearch( $this->mText );
 
 		wfProfileIn( $fname.'-regexps' );
-		$text = preg_replace( "/<\\/?\\s*[A-Za-z][A-Za-z0-9]*\\s*([^>]*?)>/",
-		  ' ', strtolower( " " . $text /*$this->mText*/ . " " ) ); # Strip HTML markup
+		$text = preg_replace( "/<\\/?\\s*[A-Za-z][^>]*?>/",
+			' ', $wgContLang->lc( " " . $text . " " ) ); # Strip HTML markup
 		$text = preg_replace( "/(^|\\n)==\\s*([^\\n]+)\\s*==(\\s)/sD",
 		  "\\1\\2 \\2 \\2\\3", $text ); # Emphasize headings
 
@@ -97,8 +97,8 @@ class SearchUpdate {
 		wfRunHooks( 'SearchUpdate', array( $this->mId, $this->mNamespace, $this->mTitle, &$text ) );
 
 		# Perform the actual update
-		$search->update($this->mId, Title::indexTitle( $this->mNamespace, $this->mTitle ),
-				$text);
+		$search->update($this->mId, $search->normalizeText( Title::indexTitle( $this->mNamespace, $this->mTitle ) ),
+				$search->normalizeText( $text ) );
 
 		wfProfileOut( $fname );
 	}

@@ -9,7 +9,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
-require_once dirname(__FILE__) . '/XmlFunctions.php';
 
 // Hide compatibility functions from Doxygen
 /// @cond
@@ -190,6 +189,37 @@ if ( !function_exists( 'array_diff_key' ) ) {
 	}
 }
 
+if ( !function_exists( 'array_intersect_key' ) ) {
+	/**
+	* Exists in 5.1.0+
+	* Define our own array_intersect_key function
+	*/
+	function array_intersect_key( $isec, $keys ) {
+		$argc = func_num_args();
+
+		if ( $argc > 2 ) {
+			for ( $i = 1; $isec && $i < $argc; $i++ ) {
+				$arr = func_get_arg( $i );
+
+				foreach ( array_keys( $isec ) as $key ) {
+					if ( !isset( $arr[$key] ) )
+						unset( $isec[$key] );
+				}
+			}
+
+			return $isec;
+		} else {
+			$res = array();
+			foreach ( array_keys( $isec ) as $key ) {
+				if ( isset( $keys[$key] ) )
+					$res[$key] = $isec[$key];
+			}
+
+			return $res;
+		}
+	}
+}
+
 // Support for Wietse Venema's taint feature
 if ( !function_exists( 'istainted' ) ) {
 	function istainted( $var ) {
@@ -231,15 +261,6 @@ function wfArrayDiff2_cmp( $a, $b ) {
 }
 
 /**
- * Wrapper for clone(), for compatibility with PHP4-friendly extensions.
- * PHP 5 won't let you declare a 'clone' function, even conditionally,
- * so it has to be a wrapper with a different name.
- */
-function wfClone( $object ) {
-	return clone( $object );
-}
-
-/**
  * Seed Mersenne Twister
  * No-op for compatibility; only necessary in PHP < 4.2.0
  */
@@ -277,16 +298,27 @@ function wfRandom() {
  *
  * ;:@$!*(),/
  *
+ * However, IIS7 redirects fail when the url contains a colon (Bug 22709), 
+ * so no fancy : for IIS7.
+ * 
  * %2F in the page titles seems to fatally break for some reason.
  *
  * @param $s String:
  * @return string
 */
 function wfUrlencode( $s ) {
+	static $needle;
+	if ( is_null( $needle ) ) {
+		$needle = array( '%3B','%40','%24','%21','%2A','%28','%29','%2C','%2F' );
+		if (! isset($_SERVER['SERVER_SOFTWARE']) || ( strpos($_SERVER['SERVER_SOFTWARE'], "Microsoft-IIS/7") === false)) {
+			$needle[] = '%3A';
+		}
+	}		
+	
 	$s = urlencode( $s );
 	$s = str_ireplace(
-		array( '%3B','%3A','%40','%24','%21','%2A','%28','%29','%2C','%2F' ),
-		array(   ';',  ':',  '@',  '$',  '!',  '*',  '(',  ')',  ',',  '/' ),
+		$needle,
+		array( ';',  '@',  '$',  '!',  '*',  '(',  ')',  ',',  '/',  ':' ),
 		$s
 	);
 
@@ -312,6 +344,7 @@ function wfDebug( $text, $logonly = false ) {
 	static $recursion = 0;
 
 	static $cache = array(); // Cache of unoutputted messages
+	$text = wfDebugTimer() . $text;
 
 	# Check for raw action using $_GET not $wgRequest, since the latter might not be initialised yet
 	if ( isset( $_GET['action'] ) && $_GET['action'] == 'raw' && !$wgDebugRawPage ) {
@@ -337,13 +370,28 @@ function wfDebug( $text, $logonly = false ) {
 		array_map( array( $wgOut, 'debug' ), $cache );
 		$cache = array();
 	}
-	if ( '' != $wgDebugLogFile && !$wgProfileOnly ) {
+	if ( $wgDebugLogFile != '' && !$wgProfileOnly ) {
 		# Strip unprintables; they can switch terminal modes when binary data
 		# gets dumped, which is pretty annoying.
 		$text = preg_replace( '![\x00-\x08\x0b\x0c\x0e-\x1f]!', ' ', $text );
 		$text = $wgDebugLogPrefix . $text;
 		wfErrorLog( $text, $wgDebugLogFile );
 	}
+}
+
+function wfDebugTimer() {
+	global $wgDebugTimestamps;
+	if ( !$wgDebugTimestamps ) return '';
+	static $start = null;
+
+	if ( $start === null ) {
+		$start = microtime( true );
+		$prefix = "\n$start";
+	} else {
+		$prefix = sprintf( "%6.4f", microtime( true ) - $start );
+	}
+
+	return $prefix . '  ';
 }
 
 /**
@@ -411,13 +459,18 @@ function wfErrorLog( $text, $file ) {
 			// IPv6 bracketed host
 			$protocol = $m[1];
 			$host = $m[2];
-			$port = $m[3];
+			$port = intval( $m[3] );
 			$prefix = isset( $m[4] ) ? $m[4] : false;
+			$domain = AF_INET6;
 		} elseif ( preg_match( '!^(tcp|udp):(?://)?([a-zA-Z0-9.-]+):(\d+)(?:/(.*))?$!', $file, $m ) ) {
 			$protocol = $m[1];
 			$host = $m[2];
-			$port = $m[3];
+			if ( !IP::isIPv4( $host ) ) {
+				$host = gethostbyname( $host );
+			}
+			$port = intval( $m[3] );
 			$prefix = isset( $m[4] ) ? $m[4] : false;
+			$domain = AF_INET;
 		} else {
 			throw new MWException( __METHOD__.": Invalid UDP specification" );
 		}
@@ -429,12 +482,12 @@ function wfErrorLog( $text, $file ) {
 			}
 		}
 
-		$sock = fsockopen( "$protocol://$host", $port );
+		$sock = socket_create( $domain, SOCK_DGRAM, SOL_UDP );
 		if ( !$sock ) {
 			return;
 		}
-		fwrite( $sock, $text );
-		fclose( $sock );
+		socket_sendto( $sock, $text, strlen( $text ), 0, $host, $port );
+		socket_close( $sock );
 	} else {
 		wfSuppressWarnings();
 		$exists = file_exists( $file );
@@ -453,7 +506,7 @@ function wfLogProfilingData() {
 	global $wgRequestTime, $wgDebugLogFile, $wgDebugRawPage, $wgRequest;
 	global $wgProfiler, $wgProfileLimit, $wgUser;
 	# Profiling must actually be enabled...
-	if( !isset( $wgProfiler ) ) return;
+	if( is_null( $wgProfiler ) ) return;
 	# Get total page request time
 	$now = wfTime();
 	$elapsed = $now - $wgRequestTime;
@@ -475,7 +528,7 @@ function wfLogProfilingData() {
 	$log = sprintf( "%s\t%04.3f\t%s\n",
 	  gmdate( 'YmdHis' ), $elapsed,
 	  urldecode( $wgRequest->getRequestURL() . $forward ) );
-	if ( '' != $wgDebugLogFile && ( $wgRequest->getVal('action') != 'raw' || $wgDebugRawPage ) ) {
+	if ( $wgDebugLogFile != '' && ( $wgRequest->getVal('action') != 'raw' || $wgDebugRawPage ) ) {
 		wfErrorLog( $log . $prof, $wgDebugLogFile );
 	}
 }
@@ -492,7 +545,7 @@ function wfReadOnly() {
 	if ( !is_null( $wgReadOnly ) ) {
 		return (bool)$wgReadOnly;
 	}
-	if ( '' == $wgReadOnlyFile ) {
+	if ( $wgReadOnlyFile == '' ) {
 		return false;
 	}
 	// Set $wgReadOnly for faster access next time
@@ -1162,8 +1215,7 @@ function wfNumLink( $offset, $limit, $title, $query = '' ) {
  * @return bool Whereas client accept gzip compression
  */
 function wfClientAcceptsGzip() {
-	global $wgUseGzip;
-	if( $wgUseGzip ) {
+	if( isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) ) {
 		# FIXME: we may want to blacklist some broken browsers
 		$m = array();
 		if( preg_match(
@@ -1272,7 +1324,7 @@ function wfSetBit( &$dest, $bit, $state = true ) {
  * "days=7&limit=100". Options in the first array override options in the second.
  * Options set to "" will not be output.
  */
-function wfArrayToCGI( $array1, $array2 = NULL )
+function wfArrayToCGI( $array1, $array2 = null )
 {
 	if ( !is_null( $array2 ) ) {
 		$array1 = $array1 + $array2;
@@ -1280,8 +1332,8 @@ function wfArrayToCGI( $array1, $array2 = NULL )
 
 	$cgi = '';
 	foreach ( $array1 as $key => $value ) {
-		if ( '' !== $value ) {
-			if ( '' != $cgi ) {
+		if ( $value !== '' ) {
+			if ( $cgi != '' ) {
 				$cgi .= '&';
 			}
 			if ( is_array( $value ) ) {
@@ -1418,13 +1470,17 @@ function wfEscapeShellArg( ) {
 				}
 				$delim = !$delim;
 			}
+			
 			// Double the backslashes before the end of the string, because
 			// we will soon add a quote
 			$m = array();
 			if ( preg_match( '/^(.*?)(\\\\+)$/', $arg, $m ) ) {
 				$arg = $m[1] . str_replace( '\\', '\\\\', $m[2] );
 			}
-
+			
+			// The caret is also an special character
+			$arg = str_replace( "^", "^^", $arg );
+			
 			// Add surrounding quotes
 			$retVal .= '"' . $arg . '"';
 		} else {
@@ -1712,7 +1768,7 @@ function mimeTypeMatch( $type, $avail ) {
 		} elseif( array_key_exists( '*/*', $avail ) ) {
 			return '*/*';
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 }
@@ -1754,7 +1810,7 @@ function wfNegotiateType( $cprefs, $sprefs ) {
 	}
 
 	$bestq = 0;
-	$besttype = NULL;
+	$besttype = null;
 
 	foreach( array_keys( $combine ) as $type ) {
 		if( $combine[$type] > $bestq ) {
@@ -2084,9 +2140,10 @@ function &wfGetMimeMagic() {
 }
 
 /**
- * Tries to get the system directory for temporary files.
- * The TMPDIR, TMP, and TEMP environment variables are checked in sequence,
- * and if none are set /tmp is returned as the generic Unix default.
+ * Tries to get the system directory for temporary files. For PHP >= 5.2.1,
+ * we'll use sys_get_temp_dir(). The TMPDIR, TMP, and TEMP environment
+ * variables are then checked in sequence, and if none are set /tmp is
+ * returned as the generic Unix default.
  *
  * NOTE: When possible, use the tempfile() function to create temporary
  * files to avoid race conditions on file creation, etc.
@@ -2094,6 +2151,9 @@ function &wfGetMimeMagic() {
  * @return String
  */
 function wfTempDir() {
+	if( function_exists( 'sys_get_temp_dir' ) ) {
+		return sys_get_temp_dir();
+	}
 	foreach( array( 'TMPDIR', 'TMP', 'TEMP' ) as $var ) {
 		$tmp = getenv( $var );
 		if( $tmp && file_exists( $tmp ) && is_dir( $tmp ) && is_writable( $tmp ) ) {
@@ -2237,6 +2297,10 @@ function wfSpecialList( $page, $details ) {
 function wfUrlProtocols() {
 	global $wgUrlProtocols;
 
+	static $retval = null;
+	if ( !is_null( $retval ) )
+		return $retval;
+
 	// Support old-style $wgUrlProtocols strings, for backwards compatibility
 	// with LocalSettings files from 1.5
 	if ( is_array( $wgUrlProtocols ) ) {
@@ -2244,10 +2308,11 @@ function wfUrlProtocols() {
 		foreach ($wgUrlProtocols as $protocol)
 			$protocols[] = preg_quote( $protocol, '/' );
 
-		return implode( '|', $protocols );
+		$retval = implode( '|', $protocols );
 	} else {
-		return $wgUrlProtocols;
+		$retval = $wgUrlProtocols;
 	}
+	return $retval;
 }
 
 /**
@@ -2326,9 +2391,12 @@ function wfShellExec( $cmd, &$retval=null ) {
 				$cmd = escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
 			}
 		}
-	} elseif ( php_uname( 's' ) == 'Windows NT' && substr( php_uname( 'v' ), 6, 4 ) <= 6001 ) {
+	} elseif ( php_uname( 's' ) == 'Windows NT' && 
+		version_compare( PHP_VERSION, '5.3.0', '<' ) ) 
+	{
 		# This is a hack to work around PHP's flawed invocation of cmd.exe
 		# http://news.php.net/php.internals/21796
+		# Which is fixed in 5.3.0 :)
 		$cmd = '"' . $cmd . '"';
 	}
 	wfDebug( "wfShellExec: $cmd\n" );
@@ -2343,45 +2411,6 @@ function wfShellExec( $cmd, &$retval=null ) {
 		wfDebugLog( 'exec', "Possibly missing executable file: $cmd\n" );
 	}
 	return $output;
-}
-
-/**
- * Executes a shell command in the background. Returns true if successful.
- *
- * @param $cmd String
- */
-function wfShellBackgroundExec( $cmd ) {
-	wfDebug( "wfShellBackgroundExec: $cmd\n" );
-
-	if ( !wfShellExecEnabled() ) {
-		return false;
-	}
-
-	if ( wfIsWindows() ) {
-		shell_exec( "start /b $cmd >nul" );
-		return true;
-	} else {
-		$pid = shell_exec( "nohup $cmd > /dev/null & echo $!" );
-		return (bool)$pid;
-	}
-}
-
-/**
- * Return true if we can execute a shell command (i.e. not safe mode, etc.)
- */
-function wfShellExecEnabled() {
-	if( wfIniGetBool( 'safe_mode' ) ) {
-		wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
-		return false;
-	}
-	$functions = explode( ',', ini_get( 'disable_functions' ) );
-	$functions = array_map( 'trim', $functions );
-	$functions = array_map( 'strtolower', $functions );
-	if ( in_array( 'passthru', $functions ) ) {
-		wfDebug( "passthru is in disabled_functions\n" );
-		return false;
-	}
-	return true;
 }
 
 /**
@@ -2551,11 +2580,13 @@ function wfArrayMerge( $array1/* ... */ ) {
  *   		array( 'y' )
  *   	)
  */
-function wfMergeErrorArrays(/*...*/) {
+function wfMergeErrorArrays( /*...*/ ) {
 	$args = func_get_args();
 	$out = array();
 	foreach ( $args as $errors ) {
 		foreach ( $errors as $params ) {
+			# FIXME: sometimes get nested arrays for $params,
+			# which leads to E_NOTICEs
 			$spec = implode( "\t", $params );
 			$out[$spec] = $params;
 		}
@@ -2780,15 +2811,6 @@ function wfCreateObject( $name, $p ){
 
 /**
  * Alias for modularized function
- * @deprecated Use Http::get() instead
- */
-function wfGetHTTP( $url ) {
-	wfDeprecated(__FUNCTION__);
-	return Http::get( $url );
-}
-
-/**
- * Alias for modularized function
  * @deprecated Use Http::isLocalURL() instead
  */
 function wfIsLocalURL( $url ) {
@@ -2978,6 +3000,7 @@ function &wfGetLBFactory() {
 /**
  * Find a file.
  * Shortcut for RepoGroup::singleton()->findFile()
+ * @param $title Either a string or Title object
  * @param $options Associative array of options:
  *     time:           requested time for an archived image, or false for the
  *                     current version. An image object will be returned which was
@@ -3000,6 +3023,8 @@ function wfFindFile( $title, $options = array() ) {
 /**
  * Get an object referring to a locally registered file.
  * Returns a valid placeholder object if the file does not exist.
+ * @param $title Either a string or Title object
+ * @return File, or null if passed an invalid Title
  */
 function wfLocalFile( $title ) {
 	return RepoGroup::singleton()->getLocalRepo()->newFile( $title );
@@ -3065,7 +3090,7 @@ function wfBoolToStr( $value ) {
 
 /**
  * Load an extension messages file
- * @deprecated
+ * @deprecated in 1.16 (warnings in 1.18, removed in ?)
  */
 function wfLoadExtensionMessages( $extensionName, $langcode = false ) {
 }
@@ -3161,12 +3186,13 @@ function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {
  * to use this outside maintenance scripts in its present form.
  *
  * @param $maxLag Integer
+ * @param $wiki mixed Wiki identifier accepted by wfGetLB
  * @return null
  */
-function wfWaitForSlaves( $maxLag ) {
+function wfWaitForSlaves( $maxLag, $wiki = false ) {
 	if( $maxLag ) {
-		$lb = wfGetLB();
-		list( $host, $lag ) = $lb->getMaxLag();
+		$lb = wfGetLB( $wiki );
+		list( $host, $lag ) = $lb->getMaxLag( $wiki );
 		while( $lag > $maxLag ) {
 			$name = @gethostbyaddr( $host );
 			if( $name !== false ) {

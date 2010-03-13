@@ -7,6 +7,10 @@
  * @see Database
  */
 class DatabaseMysql extends DatabaseBase {
+	function getType() {
+		return 'mysql';
+	}
+
 	/*private*/ function doQuery( $sql ) {
 		if( $this->bufferResults() ) {
 			$ret = mysql_query( $sql, $this->mConn );
@@ -129,7 +133,7 @@ class DatabaseMysql extends DatabaseBase {
 		$this->mOpened = false;
 		if ( $this->mConn ) {
 			if ( $this->trxLevel() ) {
-				$this->immediateCommit();
+				$this->commit();
 			}
 			return mysql_close( $this->mConn );
 		} else {
@@ -229,6 +233,30 @@ class DatabaseMysql extends DatabaseBase {
 	}
 
 	function affectedRows() { return mysql_affected_rows( $this->mConn ); }
+	
+	/**
+	 * Estimate rows in dataset
+	 * Returns estimated count, based on EXPLAIN output
+	 * Takes same arguments as Database::select()
+	 */
+	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		$options['EXPLAIN'] = true;
+		$res = $this->select( $table, $vars, $conds, $fname, $options );
+		if ( $res === false )
+			return false;
+		if ( !$this->numRows( $res ) ) {
+			$this->freeResult($res);
+			return 0;
+		}
+
+		$rows = 1;
+		while( $plan = $this->fetchObject( $res ) ) {
+			$rows *= $plan->rows > 0 ? $plan->rows : 1; // avoid resetting to zero
+		}
+
+		$this->freeResult($res);
+		return $rows;		
+	}
 
 	function fieldInfo( $table, $field ) {
 		$table = $this->tableName( $table );
@@ -324,7 +352,7 @@ class DatabaseMysql extends DatabaseBase {
 
 		foreach( $write as $table ) {
 			$tbl = $this->tableName( $table ) . 
-					$lowPriority ? ' LOW_PRIORITY' : '' . 
+					( $lowPriority ? ' LOW_PRIORITY' : '' ) . 
 					' WRITE';
 			$items[] = $tbl;
 		}
@@ -338,7 +366,7 @@ class DatabaseMysql extends DatabaseBase {
 	public function unlockTables( $method ) {
 		$this->query( "UNLOCK TABLES", $method );
 	}
-	
+
 	public function setBigSelects( $value = true ) {
 		if ( $value === 'default' ) {
 			if ( $this->mDefaultBigSelects === null ) {
@@ -376,6 +404,32 @@ class DatabaseMysql extends DatabaseBase {
 	function wasReadOnlyError() {
 		return $this->lastErrno() == 1223 || 
 			( $this->lastErrno() == 1290 && strpos( $this->lastError(), '--read-only' ) !== false );
+	}
+
+	function duplicateTableStructure( $oldName, $newName, $temporary = false, $fname = 'DatabaseMysql::duplicateTableStructure' ) {
+		$tmp = $temporary ? 'TEMPORARY ' : '';
+		if ( strcmp( $this->getServerVersion(), '4.1' ) < 0 ) {
+			# Hack for MySQL versions < 4.1, which don't support
+			# "CREATE TABLE ... LIKE". Note that
+			# "CREATE TEMPORARY TABLE ... SELECT * FROM ... LIMIT 0"
+			# would not create the indexes we need....
+			#
+			# Note that we don't bother changing around the prefixes here be-
+			# cause we know we're using MySQL anyway.
+
+			$res = $this->query( "SHOW CREATE TABLE $oldName" );
+			$row = $this->fetchRow( $res );
+			$oldQuery = $row[1];
+			$query = preg_replace( '/CREATE TABLE `(.*?)`/', 
+				"CREATE $tmp TABLE `$newName`", $oldQuery );
+			if ($oldQuery === $query) {
+				# Couldn't do replacement
+				throw new MWException( "could not create temporary table $newName" );
+			}
+		} else {
+			$query = "CREATE $tmp TABLE $newName (LIKE $oldName)";
+		}
+		$this->query( $query, $fname );
 	}
 
 }

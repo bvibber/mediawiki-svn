@@ -19,19 +19,30 @@
  */
 class ForeignAPIRepo extends FileRepo {
 	var $fileFactory = array( 'ForeignAPIFile', 'newFromTitle' );
-	var $apiThumbCacheExpiry = 0;
+	var $apiThumbCacheExpiry = 86400;
 	protected $mQueryCache = array();
 	protected $mFileExists = array();
-	
+
 	function __construct( $info ) {
 		parent::__construct( $info );
 		$this->mApiBase = $info['apibase']; // http://commons.wikimedia.org/w/api.php
+		if( isset( $info['apiThumbCacheExpiry'] ) ) {
+			$this->apiThumbCacheExpiry = $info['apiThumbCacheExpiry'];
+		}
 		if( !$this->scriptDirUrl ) {
 			// hack for description fetches
 			$this->scriptDirUrl = dirname( $this->mApiBase );
 		}
+		// If we can cache thumbs we can guess sane defaults for these
+		if( $this->canCacheThumbs() && !$this->url ) {
+			global $wgLocalFileRepo;
+			$this->url = $wgLocalFileRepo['url'];
+		}
+		if( $this->canCacheThumbs() && !$this->thumbUrl ) {
+			$this->thumbUrl = $this->url . '/thumb';
+		}
 	}
-	
+
 	/**
 	 * Per docs in FileRepo, this needs to return false if we don't support versioned
 	 * files. Well, we don't.
@@ -52,7 +63,7 @@ class ForeignAPIRepo extends FileRepo {
 	function storeTemp( $originalName, $srcPath ) {
 		return false;
 	}
-	function append( $srcPath, $toAppendPath ){
+	function append( $srcPath, $toAppendPath, $flags = 0 ){
 		return false;
 	}
 	function publishBatch( $triplets, $flags = 0 ) {
@@ -61,7 +72,7 @@ class ForeignAPIRepo extends FileRepo {
 	function deleteBatch( $sourceDestPairs ) {
 		return false;
 	}
-	
+
 
 	function fileExistsBatch( $files, $flags = 0 ) {
 		$results = array();
@@ -91,10 +102,10 @@ class ForeignAPIRepo extends FileRepo {
 	function getFileProps( $virtualUrl ) {
 		return false;
 	}
-	
+
 	protected function queryImage( $query ) {
 		$data = $this->fetchImageQuery( $query );
-		
+
 		if( isset( $data['query']['pages'] ) ) {
 			foreach( $data['query']['pages'] as $pageid => $info ) {
 				if( isset( $info['imageinfo'][0] ) ) {
@@ -104,10 +115,10 @@ class ForeignAPIRepo extends FileRepo {
 		}
 		return false;
 	}
-	
+
 	protected function fetchImageQuery( $query ) {
 		global $wgMemc;
-		
+
 		$url = $this->mApiBase .
 			'?' .
 			wfArrayToCgi(
@@ -115,7 +126,7 @@ class ForeignAPIRepo extends FileRepo {
 					array(
 						'format' => 'json',
 						'action' => 'query' ) ) );
-		
+
 		if( !isset( $this->mQueryCache[$url] ) ) {
 			$key = $this->getLocalCacheKey( 'ForeignAPIRepo', 'Metadata', md5( $url ) );
 			$data = $wgMemc->get( $key );
@@ -135,14 +146,14 @@ class ForeignAPIRepo extends FileRepo {
 		}
 		return FormatJson::decode( $this->mQueryCache[$url], true );
 	}
-	
+
 	function getImageInfo( $title, $time = false ) {
 		return $this->queryImage( array(
 			'titles' => 'Image:' . $title->getText(),
 			'iiprop' => 'timestamp|user|comment|url|size|sha1|metadata|mime',
 			'prop' => 'imageinfo' ) );
 	}
-	
+
 	function findBySha1( $hash ) {
 		$results = $this->fetchImageQuery( array(
 										'aisha1base36' => $hash,
@@ -156,7 +167,7 @@ class ForeignAPIRepo extends FileRepo {
 		}
 		return $ret;
 	}
-	
+
 	function getThumbUrl( $name, $width=-1, $height=-1 ) {
 		$info = $this->queryImage( array(
 			'titles' => 'Image:' . $name,
@@ -164,21 +175,21 @@ class ForeignAPIRepo extends FileRepo {
 			'iiurlwidth' => $width,
 			'iiurlheight' => $height,
 			'prop' => 'imageinfo' ) );
-		if( $info ) {
+		if( $info && $info['thumburl'] ) {
 			wfDebug( __METHOD__ . " got remote thumb " . $info['thumburl'] . "\n" );
 			return $info['thumburl'];
 		} else {
 			return false;
 		}
 	}
-	
+
 	function getThumbUrlFromCache( $name, $width, $height ) {
 		global $wgMemc, $wgUploadPath, $wgServer, $wgUploadDirectory;
-		
+
 		if ( !$this->canCacheThumbs() ) {
 			return $this->getThumbUrl( $name, $width, $height );
 		}
-		
+
 		$key = $this->getLocalCacheKey( 'ForeignAPIRepo', 'ThumbUrl', $name );
 		if ( $thumbUrl = $wgMemc->get($key) ) {
 			wfDebug("Got thumb from local cache. $thumbUrl \n");
@@ -186,7 +197,15 @@ class ForeignAPIRepo extends FileRepo {
 		}
 		else {
 			$foreignUrl = $this->getThumbUrl( $name, $width, $height );
-			
+			if( !$foreignUrl ) {
+				wfDebug( __METHOD__ . " Could not find thumburl\n" );
+				return false;
+			}
+			$thumb = Http::get( $foreignUrl );
+			if( !$thumb ) {
+				wfDebug( __METHOD__ . " Could not download thumb\n" );
+				return false;
+			}
 			// We need the same filename as the remote one :)
 			$fileName = rawurldecode( pathinfo( $foreignUrl, PATHINFO_BASENAME ) );
 			$path = 'thumb/' . $this->getHashPath( $name ) . $name . "/";
@@ -194,7 +213,6 @@ class ForeignAPIRepo extends FileRepo {
 				wfMkdirParents($wgUploadDirectory . '/' . $path);
 			}
 			$localUrl =  $wgServer . $wgUploadPath . '/' . $path . $fileName;
-			$thumb = Http::get( $foreignUrl );
 			# FIXME: Delete old thumbs that aren't being used. Maintenance script?
 			if( !file_put_contents($wgUploadDirectory . '/' . $path . $fileName, $thumb ) ) {
 				wfDebug( __METHOD__ . " could not write to thumb path\n" );
@@ -205,7 +223,21 @@ class ForeignAPIRepo extends FileRepo {
 			return $localUrl;
 		}
 	}
-	
+
+	/**
+	 * @see FileRepo::getZoneUrl()
+	 */
+	function getZoneUrl( $zone ) {
+		switch ( $zone ) {
+			case 'public':
+				return $this->url;
+			case 'thumb':
+				return $this->thumbUrl;
+			default:
+				return parent::getZoneUrl( $zone );
+		}
+	}
+
 	/**
 	 * Are we locally caching the thumbnails?
 	 * @return bool

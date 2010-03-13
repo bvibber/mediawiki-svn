@@ -103,7 +103,7 @@ define( 'CACHE_ANYTHING', -1 );  // Use anything, as long as it works
 define( 'CACHE_NONE', 0 );       // Do not cache
 define( 'CACHE_DB', 1 );         // Store cache objects in the DB
 define( 'CACHE_MEMCACHED', 2 );  // MemCached, must specify servers in $wgMemCacheServers
-define( 'CACHE_ACCEL', 3 );      // eAccelerator or Turck, whichever is available
+define( 'CACHE_ACCEL', 3 );      // eAccelerator
 define( 'CACHE_DBA', 4 );        // Use PHP's DBA extension to store in a DBM-style database
 /**#@-*/
 
@@ -201,6 +201,7 @@ require_once dirname(__FILE__).'/normal/UtfNormalDefines.php';
 # Hook support constants
 define( 'MW_SUPPORTS_EDITFILTERMERGED', 1 );
 define( 'MW_SUPPORTS_PARSERFIRSTCALLINIT', 1 );
+define( 'MW_SUPPORTS_LOCALISATIONCACHE', 1 );
 
 # Allowed values for Parser::$mOutputType
 # Parameter to Parser::startExternalParse().
@@ -208,6 +209,7 @@ define( 'OT_HTML', 1 );
 define( 'OT_WIKI', 2 );
 define( 'OT_PREPROCESS', 3 );
 define( 'OT_MSG' , 3 );  // b/c alias for OT_PREPROCESS
+define( 'OT_PLAIN', 4 );
 
 # Flags for Parser::setFunctionHook
 define( 'SFH_NO_HASH', 1 );

@@ -33,7 +33,7 @@ class LogPage {
 	const DELETED_ACTION = 1;
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
-    const DELETED_RESTRICTED = 8;
+	const DELETED_RESTRICTED = 8;
 	// Convenience fields
 	const SUPPRESSED_USER = 12;
 	const SUPPRESSED_ACTION = 9;
@@ -60,7 +60,7 @@ class LogPage {
 		global $wgLogRestrictions;
 
 		$dbw = wfGetDB( DB_MASTER );
-		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
+		$log_id = $dbw->nextSequenceValue( 'logging_log_id_seq' );
 
 		$this->timestamp = $now = wfTimestampNow();
 		$data = array(
@@ -104,7 +104,7 @@ class LogPage {
 	 */
 	public function getRcComment() {
 		$rcComment = $this->actionText;
-		if( '' != $this->comment ) {
+		if( $this->comment != '' ) {
 			if ($rcComment == '')
 				$rcComment = $this->comment;
 			else
@@ -166,7 +166,7 @@ class LogPage {
 	 * @static
 	 * @return HTML string
 	 */
-	public static function actionText( $type, $action, $title = NULL, $skin = NULL, 
+	public static function actionText( $type, $action, $title = null, $skin = null, 
 		$params = array(), $filterWikilinks = false ) 
 	{
 		global $wgLang, $wgContLang, $wgLogActions, $wgMessageCache;
@@ -291,7 +291,7 @@ class LogPage {
 	}
 	
 	protected static function getTitleLink( $type, $skin, $title, &$params ) {
-		global $wgLang, $wgContLang;
+		global $wgLang, $wgContLang, $wgUserrightsInterwikiDelimiter;
 		if( !$skin ) {
 			return $title->getPrefixedText();
 		}
@@ -327,6 +327,13 @@ class LogPage {
 				break;
 			case 'rights':
 				$text = $wgContLang->ucfirst( $title->getText() );
+				$parts = explode( $wgUserrightsInterwikiDelimiter, $text, 2 );
+				if ( count( $parts ) == 2 ) {
+					$titleLink = WikiMap::foreignUserLink( $parts[1], $parts[0],
+						htmlspecialchars( $title->getPrefixedText() ) );
+					if ( $titleLink !== false )
+						break;
+				}
 				$titleLink = $skin->link( Title::makeTitle( NS_USER, $text ) );
 				break;
 			case 'merge':
@@ -371,6 +378,8 @@ class LogPage {
 			$params = array( $params );
 		}
 
+		if ( $comment === null ) $comment = "";
+
 		$this->action = $action;
 		$this->target = $target;
 		$this->comment = $comment;
@@ -385,7 +394,7 @@ class LogPage {
 		
 		$this->doer = $doer;
 
-		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
+		$this->actionText = LogPage::actionText( $this->type, $action, $target, null, $params );
 
 		return $this->saveContent();
 	}

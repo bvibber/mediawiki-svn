@@ -464,7 +464,7 @@ class SpecialUserLogin extends SpecialPage {
 				# 'Shell out' to Special:ResetPass to get the user to 
 	 			# set a new permanent password from a temporary one.
 				$reset = new SpecialResetpass();
-				$reset->mHeaderMsg = 'resetpass_announce';
+				$reset->mHeaderMsg = wfMsgExt( 'resetpass_announce', 'parseinline' );
 				$reset->mHeaderMsgType = 'success';
 				$reset->execute( null );
 				break;
@@ -518,10 +518,10 @@ class SpecialUserLogin extends SpecialPage {
 				$this->mainLoginForm( wfMsgExt( 'noname', 'parseinline' ) );
 				return;
 			case Login::NOT_EXISTS: 
-				$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $this->mLogin->mUser->getName() ) ) );
+				$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $this->mLogin->getUser()->getName() ) ) );
 				return;
 			case Login::MAIL_EMPTY_EMAIL: 
-				$this->mainLoginForm( wfMsgExt( 'noemail', 'parseinline', $this->mLogin->mUser->getName() ) );
+				$this->mainLoginForm( wfMsgExt( 'noemail', 'parseinline', $this->mLogin->getUser()->getName() ) );
 				return;
 			case Login::MAIL_BAD_IP: 
 				$this->mainLoginForm( wfMsgExt( 'badipaddress', 'parseinline' ) );
@@ -530,7 +530,7 @@ class SpecialUserLogin extends SpecialPage {
 				$this->mainLoginForm( wfMsgExt( 'mailerror', 'parseinline', $this->mLogin->mMailResult->getMessage() ) );
 				return;
 			case Login::SUCCESS:
-				$this->mainLoginForm( wfMsgExt( 'passwordsent', 'parseinline', $this->mLogin->mUser->getName() ), 'success' );
+				$this->mainLoginForm( wfMsgExt( 'passwordsent', 'parseinline', $this->mLogin->getUser()->getName() ), 'success' );
 				return;
 		}
 	}

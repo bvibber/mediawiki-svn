@@ -129,14 +129,17 @@ class SkinTemplate extends Skin {
 		global $wgArticle, $wgUser, $wgLang, $wgContLang;
 		global $wgScript, $wgStylePath, $wgContLanguageCode;
 		global $wgMimeType, $wgJsMimeType, $wgOutputEncoding, $wgRequest;
-		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces;
+		global $wgXhtmlDefaultNamespace, $wgXhtmlNamespaces, $wgHtml5Version;
 		global $wgDisableCounters, $wgLogo, $wgHideInterlanguageLinks;
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks, $wgUseSiteJs, $wgDebugComments;
-		global $wgArticlePath, $wgScriptPath, $wgServer, $wgCanonicalNamespaceNames;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgProfiler;
 
 		wfProfileIn( __METHOD__ );
+		if ( is_object( $wgProfiler ) ) {
+			$wgProfiler->setTemplated( true );
+		}
 
 		$oldid = $wgRequest->getVal( 'oldid' );
 		$diff = $wgRequest->getVal( 'diff' );
@@ -208,6 +211,7 @@ class SkinTemplate extends Skin {
 
 			$tpl->setRef( 'xhtmldefaultnamespace', $wgXhtmlDefaultNamespace );
 			$tpl->set( 'xhtmlnamespaces', $wgXhtmlNamespaces );
+			$tpl->set( 'html5version', $wgHtml5Version );
 			$tpl->set( 'headlinks', $out->getHeadLinks() );
 			$tpl->set( 'csslinks', $out->buildCssLinks() );
 
@@ -226,8 +230,8 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'pageclass', $this->getPageClasses( $this->mTitle ) );
 		$tpl->set( 'skinnameclass', ( 'skin-' . Sanitizer::escapeClass( $this->getSkinName() ) ) );
 
-		$nsname = isset( $wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] ) ?
-					$wgCanonicalNamespaceNames[ $this->mTitle->getNamespace() ] :
+		$nsname = MWNamespace::exists( $this->mTitle->getNamespace() ) ?
+					MWNamespace::getCanonicalName( $this->mTitle->getNamespace() ) :
 					$this->mTitle->getNsText();
 
 		$tpl->set( 'nscanonical', $nsname );
@@ -299,11 +303,30 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
-		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
+		$tpl->set( 'username', $wgUser->isAnon() ? null : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
 		$tpl->set( 'userlang', $wgLang->getCode() );
-		$tpl->set( 'userlangattributes', 'lang="' . $wgLang->getCode() . '" xml:lang="' . $wgLang->getCode() . '"' );
+
+		// Users can have their language set differently than the
+		// content of the wiki. For these users, tell the web browser
+		// that interface elements are in a different language.
+		$tpl->set( 'userlangattributes', '');
+		$tpl->set( 'specialpageattributes', '');
+
+		$lang = $wgLang->getCode();
+		$dir  = $wgLang->getDir();
+		if ( $lang !== $wgContLang->getCode() || $dir !== $wgContLang->getDir() ) {
+			$attrs = " lang='$lang' dir='$dir'";
+
+			$tpl->set( 'userlangattributes', $attrs );
+
+			// The content of SpecialPages should be presented in the
+			// user's language. Content of regular pages should not be touched.
+			if($this->mTitle->isSpecialPage()) {
+				$tpl->set( 'specialpageattributes', $attrs );
+			}
+		}
 
 		$newtalks = $wgUser->getNewMessageLinks();
 
@@ -471,14 +494,6 @@ class SkinTemplate extends Skin {
 		$content_actions = $this->buildContentActionUrls();
 		$tpl->setRef( 'content_actions', $content_actions );
 
-		// XXX: attach this from javascript, same with section editing
-		if( $this->iseditable && $wgUser->getOption( 'editondblclick' ) ){
-			$encEditUrl = Xml::escapeJsString( $this->mTitle->getLocalUrl( $this->editUrlOptions() ) );
-			$tpl->set( 'body_ondblclick', 'document.location = "' . $encEditUrl . '";' );
-		} else {
-			$tpl->set( 'body_ondblclick', false );
-		}
-		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
 
@@ -800,7 +815,7 @@ class SkinTemplate extends Skin {
 				}
 			} else {
 				//article doesn't exist or is deleted
-				if( $wgUser->isAllowed( 'deletedhistory' ) && $wgUser->isAllowed( 'deletedcontent' ) ) {
+				if( $wgUser->isAllowed( 'deletedhistory' ) && $wgUser->isAllowed( 'deletedtext' ) ) {
 					if( $n = $this->mTitle->isDeleted() ) {
 						$undelTitle = SpecialPage::getTitleFor( 'Undelete' );
 						$content_actions['undelete'] = array(
@@ -849,7 +864,7 @@ class SkinTemplate extends Skin {
 			}
 
 
-			wfRunHooks( 'SkinTemplateTabs', array( &$this, &$content_actions ) );
+			wfRunHooks( 'SkinTemplateTabs', array( $this, &$content_actions ) );
 		} else {
 			/* show special page tab */
 

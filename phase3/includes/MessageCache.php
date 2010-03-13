@@ -256,7 +256,7 @@ class MessageCache {
 
 			$this->lock($cacheKey);
 
-			# Limit the concurrency of loadFromDB to a single process 
+			# Limit the concurrency of loadFromDB to a single process
 			# This prevents the site from going down when the cache expires
 			$statusKey = wfMemcKey( 'messages', $code, 'status' );
 			$success = $this->mMemc->add( $statusKey, 'loading', MSG_LOAD_TIMEOUT );
@@ -318,12 +318,11 @@ class MessageCache {
 			# database or in code.
 			if ( $code !== $wgContLanguageCode ) {
 				# Messages for particular language
-				$escapedCode = $dbr->escapeLike( $code );
-				$conds[] = "page_title like '%%/$escapedCode'";
+				$conds[] = 'page_title' . $dbr->buildLike( $dbr->anyString(), "/$code" );
 			} else {
 				# Effectively disallows use of '/' character in NS_MEDIAWIKI for uses
 				# other than language code.
-				$conds[] = "page_title not like '%%/%%'";
+				$conds[] = 'page_title NOT' . $dbr->buildLike( $dbr->anyString(), '/', $dbr->anyString() );
 			}
 		}
 
@@ -563,7 +562,7 @@ class MessageCache {
 		}
 
 		# Fix whitespace
-		$message = strtr( $message, 
+		$message = strtr( $message,
 			array(
 				# Fix for trailing whitespace, removed by textarea
 				'&#32;' => ' ',
@@ -636,7 +635,7 @@ class MessageCache {
 			$message = $revision->getText();
 			if ($this->mUseCache) {
 				$this->mCache[$code][$title] = ' ' . $message;
-				$this->mMemc->set( $titleKey, $message, $this->mExpiry );
+				$this->mMemc->set( $titleKey, ' ' . $message, $this->mExpiry );
 			}
 		} else {
 			# Negative caching
@@ -678,7 +677,7 @@ class MessageCache {
 
 	function disable() { $this->mDisable = true; }
 	function enable() { $this->mDisable = false; }
- 
+
 	/** @deprecated */
 	function disableTransform(){
 		wfDeprecated( __METHOD__ );

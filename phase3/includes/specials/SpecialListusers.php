@@ -193,11 +193,11 @@ class UsersPager extends AlphabeticPager {
 			Xml::option( wfMsg( 'group-all' ), '' );
 		foreach( $this->getAllGroups() as $group => $groupText )
 			$out .= Xml::option( $groupText, $group, $group == $this->requestedGroup );
-		$out .= Xml::closeElement( 'select' ) . '<br/>';
+		$out .= Xml::closeElement( 'select' ) . '<br />';
 		$out .= Xml::checkLabel( wfMsg('listusers-editsonly'), 'editsOnly', 'editsOnly', $this->editsOnly );
 		$out .= '&nbsp;';
 		$out .= Xml::checkLabel( wfMsg('listusers-creationsort'), 'creationSort', 'creationSort', $this->creationSort );
-		$out .= '<br/>';
+		$out .= '<br />';
 
 		wfRunHooks( 'SpecialListusersHeaderForm', array( $this, &$out ) );
 
@@ -241,7 +241,7 @@ class UsersPager extends AlphabeticPager {
 	/**
 	 * Get a list of groups the specified user belongs to
 	 *
-	 * @param int $uid
+	 * @param $uid Integer: user id
 	 * @return array
 	 */
 	protected static function getGroups( $uid ) {
@@ -253,7 +253,7 @@ class UsersPager extends AlphabeticPager {
 	/**
 	 * Format a link to a group description page
 	 *
-	 * @param string $group
+	 * @param $group String: group name
 	 * @return string
 	 */
 	protected static function buildGroupLink( $group ) {

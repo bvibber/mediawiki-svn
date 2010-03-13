@@ -108,13 +108,13 @@ class IP {
 	 */
 	public static function toUnsigned6( $ip ) {
 		if ( !$ip ) return null;
-       	$ip = explode(':', self::sanitizeIP( $ip ) );
-       	$r_ip = '';
-       	foreach ($ip as $v) {
-       		$r_ip .= str_pad( $v, 4, 0, STR_PAD_LEFT );
-        }
-        $r_ip = wfBaseConvert( $r_ip, 16, 10 );
-       	return $r_ip;
+		$ip = explode(':', self::sanitizeIP( $ip ) );
+		$r_ip = '';
+		foreach ($ip as $v) {
+			$r_ip .= str_pad( $v, 4, 0, STR_PAD_LEFT );
+		}
+		$r_ip = wfBaseConvert( $r_ip, 16, 10 );
+		return $r_ip;
 	}
 
 	/**
@@ -145,29 +145,29 @@ class IP {
 			} else {
 				$repeat = ':0'; $extra = ':'; $pad = 8; // 6+2 (due to '::')
 			}
-    		$ip = str_replace('::', str_repeat($repeat, $pad-substr_count($ip,':')).$extra, $ip);
-    	}
-    	// Remove leading zereos from each bloc as needed
-    	$ip = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip );
-    	return $ip;
+			$ip = str_replace('::', str_repeat($repeat, $pad-substr_count($ip,':')).$extra, $ip);
+		}
+		// Remove leading zereos from each bloc as needed
+		$ip = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip );
+		return $ip;
 	}
 
 	/**
 	 * Given an unsigned integer, returns an IPv6 address in octet notation
-	 * @param $ip integer IP address.
+	 * @param $ip_int integer IP address.
 	 * @return string
 	 */
 	public static function toOctet( $ip_int ) {
-   		// Convert to padded uppercase hex
-   		$ip_hex = wfBaseConvert($ip_int, 10, 16, 32, false);
-   		// Separate into 8 octets
-   		$ip_oct = substr( $ip_hex, 0, 4 );
-   		for ($n=1; $n < 8; $n++) {
-   			$ip_oct .= ':' . substr($ip_hex, 4*$n, 4);
-   		}
-   		// NO leading zeroes
-   		$ip_oct = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip_oct );
-       	return $ip_oct;
+		// Convert to padded uppercase hex
+		$ip_hex = wfBaseConvert($ip_int, 10, 16, 32, false);
+		// Separate into 8 octets
+		$ip_oct = substr( $ip_hex, 0, 4 );
+		for ($n=1; $n < 8; $n++) {
+			$ip_oct .= ':' . substr($ip_hex, 4*$n, 4);
+		}
+		// NO leading zeroes
+		$ip_oct = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip_oct );
+		return $ip_oct;
 	}
 
 	/**
@@ -183,20 +183,20 @@ class IP {
 	
 	/**
 	 * Given a hexadecimal number, returns to an IPv6 address in octet notation
-	 * @param $ip string hex IP
+	 * @param $ip_hex string hex IP
 	 * @return string
 	 */
 	public static function hextoOctet( $ip_hex ) {
-   		// Convert to padded uppercase hex
-   		$ip_hex = str_pad( strtoupper($ip_hex), 32, '0');
-   		// Separate into 8 octets
-   		$ip_oct = substr( $ip_hex, 0, 4 );
-   		for ($n=1; $n < 8; $n++) {
-   			$ip_oct .= ':' . substr($ip_hex, 4*$n, 4);
-   		}
-   		// NO leading zeroes
-   		$ip_oct = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip_oct );
-       	return $ip_oct;
+		// Convert to padded uppercase hex
+		$ip_hex = str_pad( strtoupper($ip_hex), 32, '0');
+		// Separate into 8 octets
+		$ip_oct = substr( $ip_hex, 0, 4 );
+		for ($n=1; $n < 8; $n++) {
+			$ip_oct .= ':' . substr($ip_hex, 4*$n, 4);
+		}
+		// NO leading zeroes
+		$ip_oct = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip_oct );
+		return $ip_oct;
 	}
 	
 	/**
@@ -297,7 +297,7 @@ class IP {
 		} else {
 			return array( $start, $end );
 		}
-    }
+	}
 
 	/**
 	 * Validate an IP address.
@@ -357,7 +357,7 @@ class IP {
 	 * Split out an IP block as an array of 4 bytes and a mask,
 	 * return false if it can't be determined
 	 *
-	 * @param $ip string A quad dotted/octet IP address
+	 * @param $ipblock string A quad dotted/octet IP address
 	 * @return array
 	 */
 	public static function toArray( $ipblock ) {
@@ -511,33 +511,33 @@ class IP {
 		} else {
 			return array( $start, $end );
 		}
-    }
+	}
 
-    /**
-     * Determine if a given IPv4/IPv6 address is in a given CIDR network
-     * @param $addr The address to check against the given range.
-     * @param $range The range to check the given address against.
-     * @return bool Whether or not the given address is in the given range.
-     */
-    public static function isInRange( $addr, $range ) {
-    // Convert to IPv6 if needed
-        $hexIP = self::toHex( $addr );
-        list( $start, $end ) = self::parseRange( $range );
-        return (strcmp($hexIP, $start) >= 0 &&
+	/**
+	 * Determine if a given IPv4/IPv6 address is in a given CIDR network
+	 * @param $addr The address to check against the given range.
+	 * @param $range The range to check the given address against.
+	 * @return bool Whether or not the given address is in the given range.
+	 */
+	public static function isInRange( $addr, $range ) {
+		// Convert to IPv6 if needed
+		$hexIP = self::toHex( $addr );
+		list( $start, $end ) = self::parseRange( $range );
+		return (strcmp($hexIP, $start) >= 0 &&
 		strcmp($hexIP, $end) <= 0);
-    }
+	}
 
-    /**
-     * Convert some unusual representations of IPv4 addresses to their
-     * canonical dotted quad representation.
-     *
-     * This currently only checks a few IPV4-to-IPv6 related cases.  More
-     * unusual representations may be added later.
-     *
-     * @param $addr something that might be an IP address
-     * @return valid dotted quad IPv4 address or null
-     */
-    public static function canonicalize( $addr ) {
+	/**
+	 * Convert some unusual representations of IPv4 addresses to their
+	 * canonical dotted quad representation.
+	 *
+	 * This currently only checks a few IPV4-to-IPv6 related cases.  More
+	 * unusual representations may be added later.
+	 *
+	 * @param $addr something that might be an IP address
+	 * @return valid dotted quad IPv4 address or null
+	 */
+	public static function canonicalize( $addr ) {
 		if ( self::isValid( $addr ) )
 			return $addr;
 
@@ -554,10 +554,10 @@ class IP {
 
 		// IPv4-mapped and IPv4-compatible IPv6 addresses
 		if ( preg_match( '/^' . RE_IPV6_V4_PREFIX . '(' . RE_IP_ADD . ')$/i', $addr, $m ) )
-		    return $m[1];
+			return $m[1];
 		if ( preg_match( '/^' . RE_IPV6_V4_PREFIX . RE_IPV6_WORD . ':' . RE_IPV6_WORD . '$/i', $addr, $m ) )
-		    return long2ip( ( hexdec( $m[1] ) << 16 ) + hexdec( $m[2] ) );
+			return long2ip( ( hexdec( $m[1] ) << 16 ) + hexdec( $m[2] ) );
 
 		return null;  // give up
-    }
+	}
 }

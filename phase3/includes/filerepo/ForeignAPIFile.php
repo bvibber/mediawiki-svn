@@ -43,10 +43,7 @@ class ForeignAPIFile extends File {
 				$this->getName(),
 				isset( $params['width'] ) ? $params['width'] : -1,
 				isset( $params['height'] ) ? $params['height'] : -1 );
-		if( $thumbUrl ) {
-			return $this->handler->getTransform( $this, 'bogus', $thumbUrl, $params );;
-		}
-		return false;
+		return $this->handler->getTransform( $this, 'bogus', $thumbUrl, $params );;
 	}
 
 	// Info we can get from API...
@@ -108,7 +105,7 @@ class ForeignAPIFile extends File {
 		return $this->mInfo['mime'];
 	}
 	
-	/// @fixme May guess wrong on file types that can be eg audio or video
+	/// @todo Fixme: may guess wrong on file types that can be eg audio or video
 	function getMediaType() {
 		$magic = MimeMagic::singleton();
 		return $magic->getMediaType( null, $this->getMimeType() );

@@ -50,10 +50,10 @@ class SpecialResetpass extends SpecialPage {
 	public $mHeaderMsg = '';
 	public $mHeaderMsgType = 'error';
 	
-	protected $mUsername;
-	protected $mOldpass;
-	protected $mNewpass;
-	protected $mRetype;
+	public $mUsername;
+	public $mOldpass;
+	public $mNewpass;
+	public $mRetype;
 
 	/**
 	 * Main execution point
@@ -72,6 +72,10 @@ class SpecialResetpass extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
+		if( wfReadOnly() ){
+			$wgOut->readOnlyPage();
+			return false;
+		}
 		if( !$wgAuth->allowPasswordChange() ) {
 			$wgOut->showErrorPage( 'errorpagetitle', 'resetpass_forbidden' );
 			return false;
@@ -81,6 +85,12 @@ class SpecialResetpass extends SpecialPage {
 			$wgOut->showErrorPage( 'errorpagetitle', 'resetpass-no-info' );
 			return false;
 		}
+		
+		$data = array(
+			'wpName'     => $this->mUsername,
+			'wpPassword' => $this->mOldpass,
+		);
+		$this->mLogin =  new Login( new FauxRequest( $data, true ) );		
 
 		if( $wgRequest->wasPosted() 
 		    && $wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') )
@@ -89,23 +99,13 @@ class SpecialResetpass extends SpecialPage {
 			# Log the user in if they're not already (ie we're 
 			# coming from the e-mail-password-reset route
 			if( !$wgUser->isLoggedIn() ) {
-				$data = array(
-					'wpName'     => $this->mUsername,
-					'wpPassword' => $this->mNewpass,
-					'returnto'   => $this->mReturnTo,
-				);
-				if( $this->mRemember ) {
-					$data['wpRemember'] = 1;
-				}
-				$login = new Login( new FauxRequest( $data, true ) );
-				$login->attemptLogin();
-			
+				$this->mLogin->attemptLogin( $this->mNewpass );
 				# Redirect out to the appropriate target.
 				SpecialUserlogin::successfulLogin( 
 					'resetpass_success', 
 					$this->mReturnTo, 
 					$this->mReturnToQuery,
-					$login->mLoginResult
+					$this->mLogin->mLoginResult
 				);
 			} else {
 				# Redirect out to the appropriate target.
@@ -136,31 +136,19 @@ class SpecialResetpass extends SpecialPage {
 		$this->mFormFields['Name']['default'] = $this->mUsername;
 		
 		$header = $this->mHeaderMsg
-			? Xml::element( 'div', array( 'class' => "{$this->mHeaderMsgType}box" ), wfMsg( $this->mHeaderMsg ) )
+			? Html::element( 'div', array( 'class' => "{$this->mHeaderMsgType}box" ), wfMsgExt( $this->mHeaderMsg, 'parse' ) )
 			: '';
 				
 		$form = new HTMLForm( $this->mFormFields, '' );
 		$form->suppressReset();
 		$form->setSubmitText( wfMsg( $this->mSubmitMsg ) );
 		$form->setTitle( $this->getTitle() );
+		$form->addHiddenField( 'wpName', $this->mUsername );
+		$form->addHiddenField( 'returnto', $this->mReturnTo );
+		$form->setWrapperLegend( wfMsg( 'resetpass_header' ) );
 		$form->loadData();
 		
-		$formContents = '' 
-			. $form->getBody()
-			. $form->getButtons()
-			. $form->getHiddenFields()
-			. Html::hidden( 'wpName', $this->mUsername )
-			. Html::hidden( 'returnto', $this->mReturnTo )
-			;
-		$formOutput = $form->wrapForm( $formContents );
-		
-		$wgOut->addHTML(
-			$header
-			. Html::rawElement( 'fieldset', array( 'class' => 'visualClear' ), ''
-				. Html::element( 'legend', array(), wfMsg( 'resetpass_header' ) )
-				. $formOutput
-			)
-		);
+		$form->displayForm( $this->mHeaderMsg );
 	}
 
 	/**
@@ -175,22 +163,22 @@ class SpecialResetpass extends SpecialPage {
 			return false;
 		}
 		
-		$user = User::newFromName( $this->mUsername );
-		if( !$user || $user->isAnon() ) {
-			$this->mHeaderMsg = 'no such user';
+		$user = $this->mLogin->getUser();
+		if( !( $user instanceof User ) ){
+			$this->mHeaderMsg = wfMsgExt( 'nosuchuser', 'parse' );
 			return false;
 		}
 		
 		if( $this->mNewpass !== $this->mRetype ) {
 			wfRunHooks( 'PrefsPasswordAudit', array( $user, $this->mNewpass, 'badretype' ) );
-			$this->mHeaderMsg = 'badretype';
+			$this->mHeaderMsg = wfMsgExt( 'badretype', 'parse' );
 			return false;
 		}
 
-		if( !$user->checkTemporaryPassword($this->mOldpass) && !$user->checkPassword($this->mOldpass) ) 
+		if( !$user->checkPassword( $this->mOldpass ) && !$user->checkTemporaryPassword( $this->mOldpass ) ) 
 		{
 			wfRunHooks( 'PrefsPasswordAudit', array( $user, $this->mNewpass, 'wrongpassword' ) );
-			$this->mHeaderMsg = 'resetpass-wrong-oldpass';
+			$this->mHeaderMsg = wfMsgExt( 'resetpass-wrong-oldpass', 'parse' );
 			return false;
 		}
 		

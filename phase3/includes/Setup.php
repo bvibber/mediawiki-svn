@@ -8,7 +8,6 @@
  * MEDIAWIKI is defined
  */
 if( !defined( 'MEDIAWIKI' ) ) {
-	echo "This file is part of MediaWiki, it is not a valid entry point.\n";
 	exit( 1 );
 }
 
@@ -41,6 +40,7 @@ if( $wgArticlePath === false ) {
 
 if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
 if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
+if( $wgExtensionAssetsPath === false ) $wgExtensionAssetsPath = "$wgScriptPath/extensions";
 
 if( $wgLogo === false ) $wgLogo = "$wgStylePath/common/images/wiki.png";
 
@@ -87,7 +87,6 @@ if ( !$wgLocalFileRepo ) {
 		'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
 		'thumbScriptUrl' => $wgThumbnailScriptPath,
 		'transformVia404' => !$wgGenerateThumbnailOnParse,
-		'initialCapital' => $wgCapitalLinks,
 		'deletedDir' => $wgFileStore['deleted']['directory'],
 		'deletedHashLevels' => $wgFileStore['deleted']['hash']
 	);
@@ -130,6 +129,18 @@ if ( $wgUseSharedUploads ) {
 		);
 	}
 }
+if( $wgUseInstantCommons ) {
+	$wgForeignFileRepos[] = array(
+		'class'                   => 'ForeignAPIRepo',
+		'name'                    => 'wikimediacommons',
+		'apibase'                 => 'http://commons.wikimedia.org/w/api.php',
+		'hashLevels'              => 2,
+		'fetchDescription'        => true,
+		'descriptionCacheExpiry'  => 43200,
+		'apiThumbCacheExpiry'     => 86400,
+	);
+}
+
 if ( !class_exists( 'AutoLoader' ) ) {
 	require_once( "$IP/includes/AutoLoader.php" );
 }
@@ -149,8 +160,18 @@ require_once( "$IP/includes/ImageFunctions.php" );
 require_once( "$IP/includes/StubObject.php" );
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
+
 # Raise the memory limit if it's too low
 wfMemoryLimit();
+
+/**
+ * Set up the timezone, suppressing the pseudo-security warning in PHP 5.1+ 
+ * that happens whenever you use a date function without the timezone being
+ * explicitly set. Inspired by phpMyAdmin's treatment of the problem.
+ */
+wfSuppressWarnings();
+date_default_timezone_set( date_default_timezone_get() );
+wfRestoreWarnings();
 
 $wgIP = false; # Load on demand
 # Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
@@ -159,24 +180,28 @@ $wgRequest = new WebRequest;
 # Useful debug output
 if ( $wgCommandLineMode ) {
 	wfDebug( "\n\nStart command line script $self\n" );
-} elseif ( function_exists( 'getallheaders' ) ) {
-	wfDebug( "\n\nStart request\n" );
+} else {
+	wfDebug( "Start request\n\n" );
 	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
-	$headers = getallheaders();
-	foreach ($headers as $name => $value) {
-		wfDebug( "$name: $value\n" );
-	}
-	wfDebug( "\n" );
-} elseif( isset( $_SERVER['REQUEST_URI'] ) ) {
-	wfDebug( "\n\nStart request\n" );
-	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
-	foreach ( $_SERVER as $name => $value ) {
-		if ( substr( $name, 0, 5 ) == 'HTTP_' ) {
-			$name = substr( $name, 5 );
-			wfDebug( "$name: $value\n" );
+
+	if ( $wgDebugPrintHttpHeaders ) {
+		$headerOut = "HTTP HEADERS:\n";
+
+		if ( function_exists( 'getallheaders' ) ) {
+			$headers = getallheaders();
+			foreach ( $headers as $name => $value ) {
+				$headerOut .= "$name: $value\n";
+			}
+		} else {
+			$headers = $_SERVER;
+			foreach ( $headers as $name => $value ) {
+				if ( substr( $name, 0, 5 ) !== 'HTTP_' ) continue;
+				$name = substr( $name, 5 );
+				$headerOut .= "$name: $value\n";
+			}
 		}
+		wfDebug( "$headerOut\n" );
 	}
-	wfDebug( "\n" );
 }
 
 if( $wgRCFilterByAge ) {
@@ -220,6 +245,13 @@ if( !$wgAllowUserSkin ) {
 	$wgHiddenPrefs[] = 'skin';
 }
 
+if ( !$wgHtml5Version && $wgHtml5 && $wgAllowRdfaAttributes ) {
+	# see http://www.w3.org/TR/rdfa-in-html/#document-conformance
+	if ( $wgMimeType == 'application/xhtml+xml' ) $wgHtml5Version = 'XHTML+RDFa 1.0';
+	else $wgHtml5Version = 'HTML+RDFa 1.0';
+}
+
+
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
 
@@ -227,9 +259,9 @@ $wgMemc =& wfGetMainCache();
 $messageMemc =& wfGetMessageCacheStorage();
 $parserMemc =& wfGetParserCacheStorage();
 
-wfDebug( 'Main cache: ' . get_class( $wgMemc ) .
-	"\nMessage cache: " . get_class( $messageMemc ) .
-	"\nParser cache: " . get_class( $parserMemc ) . "\n" );
+wfDebug( 'CACHES: ' . get_class( $wgMemc ) . '[main] ' .
+	get_class( $messageMemc ) . '[message] ' .
+	get_class( $parserMemc ) . "[parser]\n" );
 
 wfProfileOut( $fname.'-memcached' );
 
@@ -308,9 +340,7 @@ $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
 if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
-if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'UploadForm::ajaxGetExistsWarning';
-if( $wgAjaxLicensePreview )
-	$wgAjaxExportList[] = 'UploadForm::ajaxGetLicensePreview';
+if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'SpecialUpload::ajaxGetExistsWarning';
 
 # Placeholders in case of DB error
 $wgTitle = null;
@@ -318,17 +348,6 @@ $wgArticle = null;
 
 wfProfileOut( $fname.'-misc2' );
 wfProfileIn( $fname.'-extensions' );
-
-# load the $wgExtensionMessagesFiles for the script loader
-# this can't be done in a normal extension type way
-# since the script-loader is an entry point
-#
-$wgExtensionMessagesFiles['mwEmbed'] = "{$IP}/js2/mwEmbed/php/languages/mwEmbed.i18n.php";
-
-# Include the js2/mwEmbed autoLoadClasses if js2 is enabled
-if( $wgEnableJS2system ){
-	require_once("$IP/js2/mwEmbed/php/jsAutoloadLocalClasses.php");
-}
 
 # Extension setup functions for extensions other than skins
 # Entries should be added to this variable during the inclusion

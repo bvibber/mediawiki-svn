@@ -27,6 +27,34 @@
  * @ingroup Search
  */
 class SearchOracle extends SearchEngine {
+	
+	private $reservedWords = array ('ABOUT' => 1, 
+									'ACCUM' => 1, 
+									'AND' => 1, 
+									'BT' => 1, 
+									'BTG' => 1, 
+									'BTI' => 1, 
+									'BTP' => 1,
+									'FUZZY' => 1, 
+									'HASPATH' => 1, 
+									'INPATH' => 1, 
+									'MINUS' => 1, 
+									'NEAR' => 1, 
+									'NOT' => 1,
+									'NT' => 1, 
+									'NTG' => 1, 
+									'NTI' => 1, 
+									'NTP' => 1, 
+									'OR' => 1, 
+									'PT' => 1, 
+									'RT' => 1, 
+									'SQE' => 1,
+									'SYN' => 1, 
+									'TR' => 1, 
+									'TRSYN' => 1, 
+									'TT' => 1, 
+									'WITHIN' => 1);
+	
 	function __construct($db) {
 		$this->db = $db;
 	}
@@ -35,26 +63,26 @@ class SearchOracle extends SearchEngine {
 	 * Perform a full text search query and return a result set.
 	 *
 	 * @param $term String: raw search term
-	 * @return OracleSearchResultSet
+	 * @return SqlSearchResultSet
 	 */
 	function searchText( $term ) {
 		if ($term == '')
-			return new OracleSearchResultSet(false, '');
-		
+			return new SqlSearchResultSet(false, '');
+
 		$resultSet = $this->db->resultObject($this->db->query($this->getQuery($this->filter($term), true)));
-		return new OracleSearchResultSet($resultSet, $this->searchTerms);
+		return new SqlSearchResultSet($resultSet, $this->searchTerms);
 	}
 
 	/**
 	 * Perform a title-only search query and return a result set.
 	 *
 	 * @param $term String: raw search term
-	 * @return ORacleSearchResultSet
+	 * @return SqlSearchResultSet
 	 */
 	function searchTitle($term) {
 		if ($term == '')
-			return new OracleSearchResultSet(false, '');
-		
+			return new SqlSearchResultSet(false, '');
+
 		$resultSet = $this->db->resultObject($this->db->query($this->getQuery($this->filter($term), false)));
 		return new MySQLSearchResultSet($resultSet, $this->searchTerms);
 	}
@@ -143,8 +171,8 @@ class SearchOracle extends SearchEngine {
 			'WHERE page_id=si_page AND ' . $match;
 	}
 
-	/** 
-	 * Parse a user input search string, and return an SQL fragment to be used 
+	/**
+	 * Parse a user input search string, and return an SQL fragment to be used
 	 * as part of a WHERE clause
 	 */
 	function parseQuery($filteredText, $fulltext) {
@@ -154,23 +182,22 @@ class SearchOracle extends SearchEngine {
 
 		# FIXME: This doesn't handle parenthetical expressions.
 		$m = array();
-		$q = array();
-
+		$searchon = '';
 		if (preg_match_all('/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER)) {
 			foreach($m as $terms) {
-				
 				// Search terms in all variant forms, only
 				// apply on wiki with LanguageConverter
 				$temp_terms = $wgContLang->autoConvertToAllVariants( $terms[2] );
 				if( is_array( $temp_terms )) {
 					$temp_terms = array_unique( array_values( $temp_terms ));
-					foreach( $temp_terms as $t )
-						$q[] = $terms[1] . $wgContLang->stripForSearch( $t );
+					foreach( $temp_terms as $t ) {
+						$searchon .= ($terms[1] == '-' ? ' ~' : ' & ') . $this->escapeTerm( $t );
+					}
 				}
-				else
-					$q[] = $terms[1] . $wgContLang->stripForSearch( $terms[2] );
-
+				else {
+					$searchon .= ($terms[1] == '-' ? ' ~' : ' & ') . $this->escapeTerm( $terms[2] );
+				}
 				if (!empty($terms[3])) {
 					$regexp = preg_quote( $terms[3], '/' );
 					if ($terms[4])
@@ -182,11 +209,20 @@ class SearchOracle extends SearchEngine {
 			}
 		}
 
-		$searchon = $this->db->addQuotes(join(',', $q));
+
+		$searchon = $this->db->addQuotes(ltrim($searchon, ' &'));
 		$field = $this->getIndexField($fulltext);
 		return " CONTAINS($field, $searchon, 1) > 0 ";
 	}
 
+	private function escapeTerm($t) {
+		global $wgContLang;
+		$t = $wgContLang->normalizeForSearch($t);
+		$t = isset($this->reservedWords[strtoupper($t)]) ? '{'.$t.'}' : $t;
+		$t = preg_replace('/^"(.*)"$/', '($1)', $t);
+		$t = preg_replace('/([-&|])/', '\\\\$1', $t);
+		return $t;
+	}
 	/**
 	 * Create or update the search index record for the given page.
 	 * Title and text should be pre-processed.
@@ -224,36 +260,9 @@ class SearchOracle extends SearchEngine {
 			'SearchOracle::updateTitle',
 			array());
 	}
-}
 
-/**
- * @ingroup Search
- */
-class OracleSearchResultSet extends SearchResultSet {
 
-	function __construct($resultSet, $terms) {
-		$this->mResultSet = $resultSet;
-		$this->mTerms = $terms;
-	}
-
-	function termMatches() {
-		return $this->mTerms;
-	}
-
-	function numRows() {
-		if ($this->mResultSet === false )
-			return 0;
-		else
-			return $this->mResultSet->numRows();
-	}
-
-	function next() {
-		if ($this->mResultSet === false )
-			return false;
-
-		$row = $this->mResultSet->fetchObject();
-		if ($row === false)
-			return false;
-		return new SearchResult($row);
+	public static function legalSearchChars() {
+		return "\"" . parent::legalSearchChars();
 	}
 }

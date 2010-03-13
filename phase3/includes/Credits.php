@@ -40,7 +40,7 @@ class Credits {
 		if( $article->mTitle->getArticleID() == 0 ) {
 			$s = wfMsg( 'nocredits' );
 		} else {
-			$s = self::getCredits($article, -1 );
+			$s = self::getCredits( $article, -1 );
 		}
 	
 		$wgOut->addHTML( $s );
@@ -167,7 +167,7 @@ class Credits {
 	}
 
 	/**
-	 * Get a link to $user_name page
+	 * Get a link to $user's user page
 	 * @param $user User object
 	 * @return String: html
 	 */
@@ -187,9 +187,8 @@ class Credits {
 	}
 
 	/**
-	 * Get a link to $user_name page
-	 * @param $user_name String: user name
-	 * @param $linkText String: optional display
+	 * Get a link to $user's user page
+	 * @param $user User object
 	 * @return String: html
 	 */
 	protected static function userLink( User $user ) {

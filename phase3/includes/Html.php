@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2009 Aryeh Gregor
+# Copyright © 2009 Aryeh Gregor
 # http://www.mediawiki.org/
 #
 # This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 /**
  * This class is a collection of static functions that serve two purposes:
  *
- * 1) Implement any algorithms specified by HTML 5, or other HTML
+ * 1) Implement any algorithms specified by HTML5, or other HTML
  * specifications, in a convenient and self-contained way.
  *
  * 2) Allow HTML elements to be conveniently and safely generated, like the
@@ -38,9 +38,11 @@
  * This class is meant to be confined to utility functions that are called from
  * trusted code paths.  It does not do enforcement of policy like not allowing
  * <a> elements.
+ *
+ * @since 1.16
  */
 class Html {
-	# List of void elements from HTML 5, section 9.1.2 as of 2009-08-10
+	# List of void elements from HTML5, section 9.1.2 as of 2009-08-10
 	private static $voidElements = array(
 		'area',
 		'base',
@@ -59,7 +61,7 @@ class Html {
 	);
 
 	# Boolean attributes, which may have the value omitted entirely.  Manually
-	# collected from the HTML 5 spec as of 2009-08-10.
+	# collected from the HTML5 spec as of 2009-08-10.
 	private static $boolAttribs = array(
 		'async',
 		'autobuffer',
@@ -106,19 +108,47 @@ class Html {
 	 * @return string Raw HTML
 	 */
 	public static function rawElement( $element, $attribs = array(), $contents = '' ) {
-		global $wgHtml5, $wgWellFormedXml;
+		global $wgWellFormedXml;
+		$start = self::openElement( $element, $attribs );
+		if ( in_array( $element, self::$voidElements ) ) {
+			if ( $wgWellFormedXml ) {
+				# Silly XML.
+				return substr( $start, 0, -1 ) . ' />';
+			}
+			return $start;
+		} else {
+			return "$start$contents</$element>";
+		}
+	}
+
+	/**
+	 * Identical to rawElement(), but HTML-escapes $contents (like
+	 * Xml::element()).
+	 */
+	public static function element( $element, $attribs = array(), $contents = '' ) {
+		return self::rawElement( $element, $attribs, strtr( $contents, array(
+			# There's no point in escaping quotes, >, etc. in the contents of
+			# elements.
+			'&' => '&amp;',
+			'<' => '&lt;'
+		) ) );
+	}
+
+	/**
+	 * Identical to rawElement(), but has no third parameter and omits the end
+	 * tag (and the self-closing / in XML mode for empty elements).
+	 */
+	public static function openElement( $element, $attribs = array() ) {
+		global $wgHtml5;
 		$attribs = (array)$attribs;
-		# This is not required in HTML 5, but let's do it anyway, for
+		# This is not required in HTML5, but let's do it anyway, for
 		# consistency and better compression.
 		$element = strtolower( $element );
 
-		# Element-specific hacks to slim down output and ensure validity
-		if ( $element == 'input' ) {
-			if ( !$wgHtml5 ) {
-				# With $wgHtml5 off we want to validate as XHTML 1, so we
-				# strip out any fancy HTML 5-only input types for now.
-				#
-				# Whitelist of valid types:
+		# Remove HTML5-only attributes if we aren't doing HTML5
+		if ( !$wgHtml5 ) {
+			if ( $element == 'input' ) {
+				# Whitelist of valid XHTML1 types
 				$validTypes = array(
 					'hidden',
 					'text',
@@ -136,47 +166,30 @@ class Html {
 					# Fall back to type=text, the default
 					unset( $attribs['type'] );
 				}
-				# Here we're blacklisting some HTML5-only attributes...
-				$html5attribs = array(
-					'autocomplete',
-					'autofocus',
-					'max',
-					'min',
-					'multiple',
-					'pattern',
-					'placeholder',
-					'required',
-					'step',
-				);
-				foreach ( $html5attribs as $badAttr ) {
-					unset( $attribs[$badAttr] );
-				}
+			}
+			if ( $element == 'textarea' && isset( $attribs['maxlength'] ) ) {
+				unset( $attribs['maxlength'] );
+			}
+			# Here we're blacklisting some HTML5-only attributes...
+			$html5attribs = array(
+				'autocomplete',
+				'autofocus',
+				'max',
+				'min',
+				'multiple',
+				'pattern',
+				'placeholder',
+				'required',
+				'step',
+				'spellcheck',
+			);
+			foreach ( $html5attribs as $badAttr ) {
+				unset( $attribs[$badAttr] );
 			}
 		}
 
-		$start = "<$element" . self::expandAttributes(
-			self::dropDefaults( $element, $attribs ) );
-		if ( in_array( $element, self::$voidElements ) ) {
-			if ( $wgWellFormedXml ) {
-				return "$start />";
-			}
-			return "$start>";
-		} else {
-			return "$start>$contents</$element>";
-		}
-	}
-
-	/**
-	 * Identical to rawElement(), but HTML-escapes $contents (like
-	 * Xml::element()).
-	 */
-	public static function element( $element, $attribs = array(), $contents = '' ) {
-		return self::rawElement( $element, $attribs, strtr( $contents, array(
-			# There's no point in escaping quotes, >, etc. in the contents of
-			# elements.
-			'&' => '&amp;',
-			'<' => '&lt;'
-		) ) );
+		return "<$element" . self::expandAttributes(
+			self::dropDefaults( $element, $attribs ) ) . '>';
 	}
 
 	/**
@@ -230,7 +243,7 @@ class Html {
 			'link' => array( 'media' => 'all' ),
 			'menu' => array( 'type' => 'list' ),
 			# Note: the use of text/javascript here instead of other JavaScript
-			# MIME types follows the HTML 5 spec.
+			# MIME types follows the HTML5 spec.
 			'script' => array( 'type' => 'text/javascript' ),
 			'style' => array(
 				'media' => 'all',
@@ -314,11 +327,11 @@ class Html {
 				$key = $value;
 			}
 
-			# Not technically required in HTML 5, but required in XHTML 1.0,
+			# Not technically required in HTML5, but required in XHTML 1.0,
 			# and we'd like consistency and better compression anyway.
 			$key = strtolower( $key );
 
-			# See the "Attributes" section in the HTML syntax part of HTML 5,
+			# See the "Attributes" section in the HTML syntax part of HTML5,
 			# 9.1.2.3 as of 2009-08-10.  Most attributes can have quotation
 			# marks omitted, but not all.  (Although a literal " is not
 			# permitted, we don't check for that, since it will be escaped
@@ -338,7 +351,7 @@ class Html {
 
 			if ( in_array( $key, self::$boolAttribs ) ) {
 				# In XHTML 1.0 Transitional, the value needs to be equal to the
-				# key.  In HTML 5, we can leave the value empty instead.  If we
+				# key.  In HTML5, we can leave the value empty instead.  If we
 				# don't need well-formed XML, we can omit the = entirely.
 				if ( !$wgWellFormedXml ) {
 					$ret .= " $key";
@@ -353,17 +366,24 @@ class Html {
 				# and we don't need <> escaped here, we may as well not call
 				# htmlspecialchars().  FIXME: verify that we actually need to
 				# escape \n\r\t here, and explain why, exactly.
-				if ( $wgHtml5 ) {
-					$ret .= " $key=$quote" . strtr( $value, array(
-						'&' => '&amp;',
-						'"' => '&quot;',
-						"\n" => '&#10;',
-						"\r" => '&#13;',
-						"\t" => '&#9;'
-					) ) . $quote;
-				} else {
-					$ret .= " $key=$quote" . Sanitizer::encodeAttribute( $value ) . $quote;
+				#
+				# We could call Sanitizer::encodeAttribute() for this, but we
+				# don't because we're stubborn and like our marginal savings on
+				# byte size from not having to encode unnecessary quotes.
+				$map = array(
+					'&' => '&amp;',
+					'"' => '&quot;',
+					"\n" => '&#10;',
+					"\r" => '&#13;',
+					"\t" => '&#9;'
+				);
+				if ( $wgWellFormedXml ) {
+					# This is allowed per spec: <http://www.w3.org/TR/xml/#NT-AttValue>
+					# But reportedly it breaks some XML tools?  FIXME: is this
+					# really true?
+					$map['<'] = '&lt;';
 				}
+				$ret .= " $key=$quote" . strtr( $value, $map ) . $quote;
 			}
 		}
 		return $ret;
@@ -447,7 +467,7 @@ class Html {
 
 	/**
 	 * Convenience function to produce an <input> element.  This supports the
-	 * new HTML 5 input types and attributes, and will silently strip them if
+	 * new HTML5 input types and attributes, and will silently strip them if
 	 * $wgHtml5 is false.
 	 *
 	 * @param $name    string name attribute
@@ -477,5 +497,30 @@ class Html {
 	 */
 	public static function hidden( $name, $value, $attribs = array() ) {
 		return self::input( $name, $value, 'hidden', $attribs );
+	}
+
+	/**
+	 * Convenience function to produce an <input> element.  This supports leaving
+	 * out the cols= and rows= which Xml requires and are required by HTML4/XHTML
+	 * but not required by HTML5 and will silently set cols="" and rows="" if
+	 * $wgHtml5 is false and cols and rows are omitted (HTML4 validates present
+	 * but empty cols="" and rows="" as valid).
+	 *
+	 * @param $name    string name attribute
+	 * @param $value   string value attribute
+	 * @param $attribs array  Associative array of miscellaneous extra
+	 *   attributes, passed to Html::element()
+	 * @return string Raw HTML
+	 */
+	public static function textarea( $name, $value = '', $attribs = array() ) {
+		global $wgHtml5;
+		$attribs['name'] = $name;
+		if ( !$wgHtml5 ) {
+			if ( !isset( $attribs['cols'] ) )
+				$attribs['cols'] = "";
+			if ( !isset( $attribs['rows'] ) )
+				$attribs['rows'] = "";
+		}
+		return self::element( 'textarea', $attribs, $value );
 	}
 }

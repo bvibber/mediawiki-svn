@@ -25,7 +25,7 @@ class DatabaseMssql extends DatabaseBase {
 			$failFunction = false, $flags = 0, $tablePrefix = 'get from global') {
 
 		global $wgOut, $wgDBprefix, $wgCommandLineMode;
-		if (!isset($wgOut)) $wgOut = NULL; # Can't get a reference if it hasn't been set yet
+		if (!isset($wgOut)) $wgOut = null; # Can't get a reference if it hasn't been set yet
 		$this->mOut =& $wgOut;
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
@@ -43,6 +43,10 @@ class DatabaseMssql extends DatabaseBase {
 
 		if ($server) $this->open($server, $user, $password, $dbName);
 
+	}
+
+	function getType() {
+		return 'mssql';
 	}
 
 	/**
@@ -131,7 +135,7 @@ class DatabaseMssql extends DatabaseBase {
 	function close() {
 		$this->mOpened = false;
 		if ($this->mConn) {
-			if ($this->trxLevel()) $this->immediateCommit();
+			if ($this->trxLevel()) $this->commit();
 			return mssql_close($this->mConn);
 		} else return true;
 	}
@@ -446,22 +450,6 @@ class DatabaseMssql extends DatabaseBase {
 	}
 
 	/**
-	 * Estimate rows in dataset
-	 * Returns estimated count, based on EXPLAIN output
-	 * Takes same arguments as Database::select()
-	 */
-	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
-		$rows = 0;
-		$res = $this->select ($table, 'COUNT(*)', $conds, $fname, $options );
-		if ($res) {
-			$row = $this->fetchObject($res);
-			$rows = $row[0];
-		}
-		$this->freeResult($res);
-		return $rows;
-	}
-	
-	/**
 	 * Determines whether a field exists in a table
 	 * Usually aborts on failure
 	 * If errors are explicitly ignored, returns NULL on failure
@@ -490,13 +478,13 @@ class DatabaseMssql extends DatabaseBase {
 	function indexInfo( $table, $index, $fname = 'Database::indexInfo' ) {
 
 		throw new DBUnexpectedError( $this, 'Database::indexInfo called which is not supported yet' );
-		return NULL;
+		return null;
 
 		$table = $this->tableName( $table );
 		$sql = 'SHOW INDEX FROM '.$table;
 		$res = $this->query( $sql, $fname );
 		if ( !$res ) {
-			return NULL;
+			return null;
 		}
 
 		$result = array();
@@ -845,7 +833,7 @@ class DatabaseMssql extends DatabaseBase {
 		if ($offset) {
 			throw new DBUnexpectedError( $this, 'Database::limitResult called with non-zero offset which is not supported yet' );
 		} else {
-			$sql = ereg_replace("^SELECT", "SELECT TOP $limit", $sql);
+			$sql = preg_replace("/^SELECT/i", "SELECT TOP $limit", $sql);
 		}
 		return $sql;
 	}
@@ -856,22 +844,6 @@ class DatabaseMssql extends DatabaseBase {
 	 */
 	function wasDeadlock() {
 		return $this->lastErrno() == 1205;
-	}
-
-	/**
-	 * Begin a transaction, committing any previously open transaction
-	 * @deprecated use begin()
-	 */
-	function immediateBegin( $fname = 'Database::immediateBegin' ) {
-		$this->begin();
-	}
-
-	/**
-	 * Commit transaction, if one is open
-	 * @deprecated use commit()
-	 */
-	function immediateCommit( $fname = 'Database::immediateCommit' ) {
-		$this->commit();
 	}
 
 	/**
@@ -904,7 +876,7 @@ class DatabaseMssql extends DatabaseBase {
 	 */
 	function getServerVersion() {
 		$row = mssql_fetch_row(mssql_query('select @@VERSION'));
-		return ereg("^(.+[0-9]+\\.[0-9]+\\.[0-9]+) ",$row[0],$m) ? $m[1] : $row[0];
+		return preg_match("/^(.+[0-9]+\\.[0-9]+\\.[0-9]+) /",$row[0],$m) ? $m[1] : $row[0];
 	}
 
 	function limitResultForUpdate($sql, $num) {

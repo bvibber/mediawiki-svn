@@ -64,6 +64,7 @@ class MagicWord {
 		'server',
 		'servername',
 		'scriptpath',
+		'stylepath',
 		'pagename',
 		'pagenamee',
 		'fullpagename',
@@ -160,8 +161,14 @@ class MagicWord {
 		'index',
 		'noindex',
 		'staticredirect',
+		'notitleconvert',
+		'nocontentconvert',
 	);
 
+	static public $mSubstIDs = array(
+		'subst',
+		'safesubst',
+	);
 
 	static public $mObjects = array();
 	static public $mDoubleUnderscoreArray = null;
@@ -211,6 +218,13 @@ class MagicWord {
 			self::$mVariableIDsInitialised = true;
 		}
 		return self::$mVariableIDs;
+	}
+
+	/**
+	 * Get an array of parser substitution modifier IDs
+	 */
+	static function getSubstIDs() {
+		return self::$mSubstIDs; 
 	}
 
 	/* Allow external reads of TTL array */
@@ -321,7 +335,7 @@ class MagicWord {
 	 * @return bool
 	 */
 	function match( $text ) {
-		return preg_match( $this->getRegex(), $text );
+		return (bool)preg_match( $this->getRegex(), $text );
 	}
 
 	/**
@@ -329,7 +343,7 @@ class MagicWord {
 	 * @return bool
 	 */
 	function matchStart( $text ) {
-		return preg_match( $this->getRegexStart(), $text );
+		return (bool)preg_match( $this->getRegexStart(), $text );
 	}
 
 	/**
@@ -342,7 +356,7 @@ class MagicWord {
 		$matches = array();
 		$matchcount = preg_match( $this->getVariableStartToEndRegex(), $text, $matches );
 		if ( $matchcount == 0 ) {
-			return NULL;
+			return null;
 		} else {
 			# multiple matched parts (variable match); some will be empty because of
 			# synonyms. The variable will be the second non-empty one so remove any
@@ -556,7 +570,7 @@ class MagicWordArray {
 	}
 
 	/**
-	 * Get an unanchored regex
+	 * Get an unanchored regex that does not match parameters
 	 */
 	function getRegex() {
 		if ( is_null( $this->regex ) ) {
@@ -573,14 +587,29 @@ class MagicWordArray {
 	}
 
 	/**
-	 * Get a regex for matching variables
+	 * Get a regex for matching variables with parameters
 	 */
 	function getVariableRegex() {
 		return str_replace( "\\$1", "(.*?)", $this->getRegex() );
 	}
 
 	/**
-	 * Get an anchored regex for matching variables
+	 * Get a regex anchored to the start of the string that does not match parameters
+	 */
+	function getRegexStart() {
+		$base = $this->getBaseRegex();
+		$newRegex = array( '', '' );
+		if ( $base[0] !== '' ) {
+			$newRegex[0] = "/^(?:{$base[0]})/iuS";
+		}
+		if ( $base[1] !== '' ) {
+			$newRegex[1] = "/^(?:{$base[1]})/S"; 
+		}
+		return $newRegex;
+	}
+
+	/**
+	 * Get an anchored regex for matching variables with parameters
 	 */
 	function getVariableStartToEndRegex() {
 		$base = $this->getBaseRegex();
@@ -676,5 +705,30 @@ class MagicWordArray {
 			$text = preg_replace( $regex, '', $text );
 		}
 		return $found;
+	}
+
+	/**
+	 * Return the ID of the magic word at the start of $text, and remove
+	 * the prefix from $text.
+	 * Return false if no match found and $text is not modified.
+	 * Does not match parameters.
+	 */
+	public function matchStartAndRemove( &$text ) {
+		$regexes = $this->getRegexStart();
+		foreach ( $regexes as $regex ) {
+			if ( $regex === '' ) {
+				continue;
+			}
+			if ( preg_match( $regex, $text, $m ) ) {
+				list( $id, $param ) = $this->parseMatch( $m );
+				if ( strlen( $m[0] ) >= strlen( $text ) ) {
+					$text = '';
+				} else {
+					$text = substr( $text, strlen( $m[0] ) );
+				}
+				return $id;
+			}
+		}
+		return false;
 	}
 }

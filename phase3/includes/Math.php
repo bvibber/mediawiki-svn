@@ -33,8 +33,7 @@ class MathRenderer {
 
 	function render() {
 		global $wgTmpDirectory, $wgInputEncoding;
-		global $wgTexvc, $wgMathCheckFiles;
-		$fname = 'MathRenderer::render';
+		global $wgTexvc, $wgMathCheckFiles, $wgTexvcBackgroundColor;
 
 		if( $this->mode == MW_MATH_SOURCE ) {
 			# No need to render or parse anything more!
@@ -63,7 +62,8 @@ class MathRenderer {
 					escapeshellarg( $wgTmpDirectory ).' '.
 					escapeshellarg( $wgTmpDirectory ).' '.
 					escapeshellarg( $this->tex ).' '.
-					escapeshellarg( $wgInputEncoding );
+					escapeshellarg( $wgInputEncoding ).' '.
+					escapeshellarg(	$wgTexvcBackgroundColor );
 
 			if ( wfIsWindows() ) {
 				# Invoke it within cygwin sh, because texvc expects sh features in its default shell
@@ -103,14 +103,14 @@ class MathRenderer {
 				} else {
 					$this->conservativeness = 0;
 				}
-				$this->mathml = NULL;
+				$this->mathml = null;
 			} else if ($retval == 'X') {
-				$this->html = NULL;
+				$this->html = null;
 				$this->mathml = substr ($contents, 33);
 				$this->conservativeness = 0;
 			} else if ($retval == '+') {
-				$this->html = NULL;
-				$this->mathml = NULL;
+				$this->html = null;
+				$this->mathml = null;
 				$this->conservativeness = 0;
 			} else {
 				$errbit = htmlspecialchars( substr($contents, 1) );
@@ -178,7 +178,7 @@ class MathRenderer {
 					'math_html_conservativeness' => $this->conservativeness,
 					'math_html' => $this->html,
 					'math_mathml' => $this->mathml,
-				  ), $fname
+				  ), __METHOD__
 				);
 			}
 			
@@ -203,14 +203,13 @@ class MathRenderer {
 
 	function _recall() {
 		global $wgMathDirectory, $wgMathCheckFiles;
-		$fname = 'MathRenderer::_recall';
 
 		$this->md5 = md5( $this->tex );
 		$dbr = wfGetDB( DB_SLAVE );
 		$rpage = $dbr->selectRow( 'math',
 			array( 'math_outputhash','math_html_conservativeness','math_html','math_mathml' ),
 			array( 'math_inputhash' => $dbr->encodeBlob(pack("H32", $this->md5))), # Binary packed, not hex
-			$fname
+			__METHOD__
 		);
 
 		if( $rpage !== false ) {

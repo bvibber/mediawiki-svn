@@ -62,13 +62,12 @@ class AuthPlugin {
 	/**
 	 * Modify options in the login template.
 	 *
-	 * @param $sp SpecialUserlogin or SpecialCreateAccount object.
-	 * @param $type String 'signup' or 'login'. Redundant because
-	 *    you can just use instanceof to tell the two cases apart.
+	 * @param $template UserLoginTemplate object.
+	 * @param $type String 'signup' or 'login'.
 	 */
-	public function modifyUITemplate( &$sp, $type=null ) {
+	public function modifyUITemplate( &$template, $type ) {
 		# Override this!
-		$sp->mDomains = false;
+		$template->set( 'usedomain', false );
 	}
 
 	/**
@@ -99,7 +98,7 @@ class AuthPlugin {
 	 * The User object is passed by reference so it can be modified; don't
 	 * forget the & on your function declaration.
 	 *
-	 * @param User $user
+	 * @param $user User object
 	 */
 	public function updateUser( &$user ) {
 		# Override this and do something
@@ -118,7 +117,7 @@ class AuthPlugin {
 	 *
 	 * This is just a question, and shouldn't perform any actions.
 	 *
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function autoCreate() {
 		return false;
@@ -129,7 +128,7 @@ class AuthPlugin {
 	 * and use the same keys. 'Realname' 'Emailaddress' and 'Nickname'
 	 * all reference this.
 	 *
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function allowPropChange( $prop = '' ) {
 		if( $prop == 'realname' && is_callable( array( $this, 'allowRealNameChange' ) ) ) {
@@ -173,7 +172,7 @@ class AuthPlugin {
 	 * Return true if successful.
 	 *
 	 * @param $user User object.
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function updateExternalDB( $user ) {
 		return true;
@@ -182,7 +181,7 @@ class AuthPlugin {
 	/**
 	 * Check to see if external accounts can be created.
 	 * Return true if external accounts can be created.
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function canCreateAccounts() {
 		return false;
@@ -192,11 +191,11 @@ class AuthPlugin {
 	 * Add a user to the external authentication database.
 	 * Return true if successful.
 	 *
-	 * @param User $user - only the name should be assumed valid at this point
-	 * @param string $password
-	 * @param string $email
-	 * @param string $realname
-	 * @return bool
+	 * @param $user User: only the name should be assumed valid at this point
+	 * @param $password String
+	 * @param $email String
+	 * @param $realname String
+	 * @return Boolean
 	 */
 	public function addUser( $user, $password, $email='', $realname='' ) {
 		return true;
@@ -209,7 +208,7 @@ class AuthPlugin {
 	 *
 	 * This is just a question, and shouldn't perform any actions.
 	 *
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function strict() {
 		return false;
@@ -220,7 +219,7 @@ class AuthPlugin {
 	 * If either this or strict() returns true, local authentication is not used.
 	 *
 	 * @param $username String: username.
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function strictUserAuth( $username ) {
 		return false;
@@ -235,7 +234,7 @@ class AuthPlugin {
 	 * forget the & on your function declaration.
 	 *
 	 * @param $user User object.
-	 * @param $autocreate bool True if user is being autocreated on login
+	 * @param $autocreate Boolean: True if user is being autocreated on login
 	 */
 	public function initUser( &$user, $autocreate=false ) {
 		# Override this to do something.
@@ -253,7 +252,6 @@ class AuthPlugin {
 	 * Get an instance of a User object
 	 *
 	 * @param $user User
-	 * @public
 	 */
 	public function getUserInstance( User &$user ) {
 		return new AuthPluginUser( $user );

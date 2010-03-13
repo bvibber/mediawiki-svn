@@ -207,8 +207,8 @@ class SpecialCreateAccount extends SpecialPage {
 		# smart (and sensible) and save that language as the user's preference
 		global $wgLoginLanguageSelector;
 		if( $wgLoginLanguageSelector && $this->mLanguage )
-			$this->mLogin->mUser->setOption( 'language', $this->mLanguage );
-		$this->mLogin->mUser->saveSettings();
+			$this->mLogin->getUser()->setOption( 'language', $this->mLanguage );
+		$this->mLogin->getUser()->saveSettings();
 	
 		if( $byEmail ) {
 			if( $status == Login::MAIL_ERROR ){
@@ -217,7 +217,7 @@ class SpecialCreateAccount extends SpecialPage {
 			} else {
 				global $wgOut;
 				$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
-				$wgOut->addWikiMsg( 'accmailtext', $this->mLogin->mUser->getName(), $this->mLogin->mUser->getEmail() );
+				$wgOut->addWikiMsg( 'accmailtext', $this->mLogin->getUser()->getName(), $this->mLogin->getUser()->getEmail() );
 				$wgOut->returnToMain( false );
 			}
 			
@@ -238,7 +238,7 @@ class SpecialCreateAccount extends SpecialPage {
 			# one and set session cookies then show a "welcome" message 
 			# or a "need cookies" message as needed
 			if( $wgUser->isAnon() ) {
-				$wgUser = $this->mLogin->mUser;
+				$wgUser = $this->mLogin->getUser();
 				$wgUser->setCookies();
 				if( $this->hasSessionCookie() ) {
 					return $this->successfulCreation();
@@ -250,7 +250,7 @@ class SpecialCreateAccount extends SpecialPage {
 				global $wgOut;
 				$self = SpecialPage::getTitleFor( 'Userlogin' );
 				$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-				$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $this->mLogin->mUser->getName() ) );
+				$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $this->mLogin->getUser()->getName() ) );
 				$wgOut->returnToMain( false, $self );
 				return true;
 			}
@@ -422,14 +422,14 @@ class SpecialCreateAccount extends SpecialPage {
 			. Html::rawElement( 
 				'div', 
 				array( 'id' => 'signupstart' ), 
-				wfMsgExt( 'loginstart', array( 'parseinline' ) )
+				wfMsgExt( 'signupstart', array( 'parseinline' ) )
 			)
 		);
 		$form->addPostText(
 			Html::rawElement( 
 				'div', 
 				array( 'id' => 'signupend' ), 
-				wfMsgExt( 'loginend', array( 'parseinline' ) )
+				wfMsgExt( 'signupend', array( 'parseinline' ) )
 			)
 		);
 		
