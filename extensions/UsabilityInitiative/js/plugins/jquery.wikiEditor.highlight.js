@@ -186,7 +186,6 @@ fn: {
 				continue;
 			}
 			var startNode = s.node;
-			var startDepth = s.depth;
 			
 			// Don't wrap leading BRs, produces undesirable results
 			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
@@ -196,7 +195,6 @@ fn: {
 				start++;
 				s = context.fn.getOffset( start );
 				startNode = s.node;
-				startDepth = s.depth;
 			}
 			
 			// The next marker starts somewhere in this textNode or at this BR
@@ -218,7 +216,6 @@ fn: {
 				// with lastTextNode == oldStartNode, but that doesn't really matter
 				var subtracted = s.offset;
 				var oldLength = s.length;
-				var oldDepth = s.depth;
 
 				var j, o;
 				// Update offset objects referring to oldStartNode
@@ -237,7 +234,6 @@ fn: {
 						o.offset -= subtracted;
 						o.length -= subtracted;
 						o.lastTextNode = oldStartNode;
-						o.lastTextNodeDepth = oldDepth;
 					}
 				}
 			}
@@ -251,7 +247,6 @@ fn: {
 				continue;
 			}
 			var endNode = e.node;
-			var endDepth = e.depth;
 			if ( e.offset + 1 < e.length - 1 && endNode.nodeName == '#text' ) {
 				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
 				var newEndNode = endNode;
@@ -260,7 +255,7 @@ fn: {
 				// Update offset objects
 				var subtracted = e.offset + 1;
 				var oldLength = e.length;
-				var oldDepth = e.depth;
+
 				
 				var j, o;
 				// Update offset objects referring to oldEndNode
@@ -278,7 +273,6 @@ fn: {
 						o.offset -= subtracted;
 						o.length -= subtracted;
 						o.lastTextNode = oldEndNode;
-						o.lastTextNodeDepth = oldDepth;
 					}
 				}
 			}
@@ -286,14 +280,13 @@ fn: {
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
 				endNode = e.lastTextNode;
-				endDepth = e.lastTextNodeDepth;
 			}
 			
 			// If startNode and endNode have different parents, we need to pull endNode and all textnodes in between
 			// into startNode's parent and replace </p><p> with <br>
 			if ( startNode.parentNode != endNode.parentNode ) {
 				var startP = $( startNode ).closest( 'p' ).get( 0 );
-				var t = new context.fn.rawTraverser( startNode, 0, startP, context.$content.get( 0 ), false );
+				var t = new context.fn.rawTraverser( startNode, startP, context.$content.get( 0 ), false );
 				var afterStart = startNode.nextSibling;
 				var lastP = startP;
 				var nextT = t.next();
@@ -341,7 +334,6 @@ fn: {
 				// Moving nodes around like this invalidates offset objects
 				// TODO: Update offset objects ourselves for performance. Requires rewriting this code block to be
 				// offset-based rather than traverser-based
-				context.fn.purgeOffsets();
 			}
 			
 			// Now wrap everything between startNode and endNode (may be equal).
@@ -412,11 +404,9 @@ fn: {
 				// Assume anchor == 'wrap'
 				$(this).replaceWith( this.childNodes );
 			}
+			context.fn.purgeOffsets();
 		});
 		
-		// Purge offsets after we're done
-		// TODO: Ideally this is not needed
-		context.fn.purgeOffsets();
 	}
 }
 
