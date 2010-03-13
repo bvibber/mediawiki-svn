@@ -6926,7 +6926,7 @@ if ( typeof context == 'undefined' ) {
 				//surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
 				var t = context.fn.getOffset(cursorPos[0]);
-				if ( t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				if ( t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
 					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
