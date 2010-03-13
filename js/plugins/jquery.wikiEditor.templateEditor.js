@@ -118,7 +118,7 @@ evt: {
 		}
 	}, //mark
 	
-	keydown: function( context, event ){
+	keydown: function( context, event ) {
 		// reset our ignoreKeypress variable if it's set to true
 		if( context.$iframe.data( 'ignoreKeypress' ) ) context.$iframe.data( 'ignoreKeypress', false );
 		var $evtElem = event.jQueryNode;

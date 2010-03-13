@@ -654,7 +654,7 @@ if ( typeof context == 'undefined' ) {
 				// We need the traverser because there can be other weird stuff in between
 				
 				// Check for preceding text
-				var t = new context.fn.rawTraverser( this.firstChild, 0, this, $pre.get( 0 ), true ).prev();
+				var t = new context.fn.rawTraverser( this.firstChild, this, $pre.get( 0 ), true ).prev();
 				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.prev();
 				}
@@ -663,7 +663,7 @@ if ( typeof context == 'undefined' ) {
 				}
 				
 				// Check for following text
-				t = new context.fn.rawTraverser( this.lastChild, 0, this, $pre.get( 0 ), true ).next();
+				t = new context.fn.rawTraverser( this.lastChild, this, $pre.get( 0 ), true ).next();
 				while ( t && t.node.nodeName != '#text' && t.node.nodeName != 'BR' && t.node.nodeName != 'P' ) {
 					t = t.next();
 				}
@@ -769,19 +769,16 @@ if ( typeof context == 'undefined' ) {
 		/**
 		 * Object used by traverser(). Don't use this unless you know what you're doing
 		 */
-		'rawTraverser': function( node, depth, inP, ancestor, skipNoinclude ) {
+		'rawTraverser': function( node, inP, ancestor, skipNoinclude ) {
 			this.node = node;
-			this.depth = depth;
 			this.inP = inP;
 			this.ancestor = ancestor;
 			this.skipNoinclude = skipNoinclude;
 			this.next = function() {
 				var p = this.node;
-				var nextDepth = this.depth;
 				var nextInP = this.inP;
 				while ( p && !p.nextSibling ) {
 					p = p.parentNode;
-					nextDepth--;
 					if ( p == this.ancestor ) {
 						// We're back at the ancestor, stop here
 						p = null;
@@ -805,23 +802,20 @@ if ( typeof context == 'undefined' ) {
 					}
 					if ( p && p.firstChild ) {
 						p = p.firstChild;
-						nextDepth++;
 						if ( p.nodeName == "P" ) {
 							nextInP = p;
 						}
 					}
 				} while ( p && p.firstChild );
 				// Instead of calling the rawTraverser constructor, inline it. This avoids function call overhead
-				return p ? { 'node': p, 'depth': nextDepth, 'inP': nextInP, 'ancestor': this.ancestor,
+				return p ? { 'node': p, 'inP': nextInP, 'ancestor': this.ancestor,
 						'skipNoinclude': this.skipNoinclude, 'next': this.next, 'prev': this.prev } : null;
 			};
 			this.prev = function() {
 				var p = this.node;
-				var prevDepth = this.depth;
 				var prevInP = this.inP;
 				while ( p && !p.previousSibling ) {
 					p = p.parentNode;
-					prevDepth--;
 					if ( p == this.ancestor ) {
 						// We're back at the ancestor, stop here
 						p = null;
@@ -845,14 +839,13 @@ if ( typeof context == 'undefined' ) {
 					}
 					if ( p && p.lastChild ) {
 						p = p.lastChild;
-						prevDepth++;
 						if ( p.nodeName == "P" ) {
 							prevInP = p;
 						}
 					}
 				} while ( p && p.lastChild );
 				// Instead of calling the rawTraverser constructor, inline it. This avoids function call overhead
-				return p ? { 'node': p, 'depth': prevDepth, 'inP': prevInP, 'ancestor': this.ancestor,
+				return p ? { 'node': p, 'inP': prevInP, 'ancestor': this.ancestor,
 						'skipNoinclude': this.skipNoinclude, 'next': this.next, 'prev': this.prev } : null;
 			};
 		},
@@ -860,18 +853,14 @@ if ( typeof context == 'undefined' ) {
 		 * Get an object used to traverse the leaf nodes in the iframe DOM. This traversal skips leaf nodes
 		 * inside an element with the wikiEditor-noinclude class. This basically wraps rawTraverser
 		 *
-		 * Usage:
-		 * var t = context.fn.traverser( context.$content );
-		 * // t.node is the first textnode, t.depth is its depth
-		 * t.goNext();
-		 * // t.node is the second textnode, t.depth is its depth
-		 * // Trying to advance past the end will set t.node to null
+		 * @param start Node to start at
+		 * @return Traverser object, use .next() or .prev() to get a traverser object referring to the
+		 *  previous/next node
 		 */
 		'traverser': function( start ) {
 			// Find the leftmost leaf node in the tree
 			var startNode = start.jquery ? start.get( 0 ) : start;
 			var node = startNode;
-			var depth = 0;
 			var inP = node.nodeName == "P" ? node : null;
 			do {
 				// Filter nodes with the wikiEditor-noinclude class
@@ -882,13 +871,12 @@ if ( typeof context == 'undefined' ) {
 				}
 				if ( node && node.firstChild ) {
 					node = node.firstChild;
-					depth++;
 					if ( node.nodeName == "P" ) {
 						inP = node;
 					}
 				}
 			} while ( node && node.firstChild );
-			return new context.fn.rawTraverser( node, depth, inP, startNode, true );
+			return new context.fn.rawTraverser( node, inP, startNode, true );
 		},
 		'getOffset': function( offset ) {
 			if ( !context.offsets ) {
@@ -914,9 +902,7 @@ if ( typeof context == 'undefined' ) {
 				'node': base.node,
 				'offset': base.offset + offset - lowerBound,
 				'length': base.length,
-				'depth': base.depth,
-				'lastTextNode': base.lastTextNode,
-				'lastTextNodeDepth': base.lastTextNodeDepth
+				'lastTextNode': base.lastTextNode
 			};
 		},
 		'purgeOffsets': function() {
@@ -925,7 +911,7 @@ if ( typeof context == 'undefined' ) {
 		'refreshOffsets': function() {
 			context.offsets = [ ];
 			var t = context.fn.traverser( context.$content );
-			var pos = 0, lastTextNode = null, lastTextNodeDepth = null;
+			var pos = 0, lastTextNode = null;
 			while ( t ) {
 				if ( t.node.nodeName != '#text' && t.node.nodeName != 'BR' ) {
 					t = t.next();
@@ -938,9 +924,7 @@ if ( typeof context == 'undefined' ) {
 					'node': t.node,
 					'offset': 0,
 					'length': nextPos - pos + ( leavingP ? 1 : 0 ),
-					'depth': t.depth,
-					'lastTextNode': lastTextNode,
-					'lastTextNodeDepth': lastTextNodeDepth
+					'lastTextNode': lastTextNode
 				};
 				if ( leavingP ) {
 					// <p>Foo</p> looks like "Foo\n", make it quack like it too
@@ -949,15 +933,12 @@ if ( typeof context == 'undefined' ) {
 						'node': t.node,
 						'offset': nextPos - pos,
 						'length': nextPos - pos + 1,
-						'depth': t.depth,
-						'lastTextNode': lastTextNode,
-						'lastTextNodeDepth': lastTextNodeDepth
+						'lastTextNode': lastTextNode
 					};
 				}
 				pos = nextPos + ( leavingP ? 1 : 0 );
 				if ( t.node.nodeName == '#text' ) {
 					lastTextNode = t.node;
-					lastTextNodeDepth = t.depth;
 				}
 				t = nextT;
 			}
