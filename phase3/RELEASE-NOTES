@@ -31,7 +31,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   when the address changed
 * (bug 22664) Special:Userrights now accepts '0' as a valid user name
 
-== API changes in 1.17 ==
+=== API changes in 1.17 ===
 
 === Languages updated in 1.17 ===
 
