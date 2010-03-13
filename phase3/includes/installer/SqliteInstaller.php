@@ -33,13 +33,15 @@ class SqliteInstaller extends InstallerDBType {
 	}
 
 	function getConnectForm() {
-		return 
-			$this->getTextBox( 'wgSQLiteDataDir', 'config-sqlite-dir' ) .
+		$s = $this->getTextBox( 'wgSQLiteDataDir', 'config-sqlite-dir' ) .
 			$this->parent->getHelpBox( 'config-sqlite-dir-help' ) .
 			$this->getTextBox( 'wgDBname', 'config-db-name' ) .
-			$this->parent->getHelpBox( 'config-sqlite-name-help' ) .
-			$this->getTextBox( 'wgSQLiteDataDirMode', 'config-sqlite-permissions' ) .
-			$this->parent->getHelpBox( 'config-sqlite-permissions-help' );
+			$this->parent->getHelpBox( 'config-sqlite-name-help' );
+		if ( !wfIsWindows() ) {
+			$s .= $this->getTextBox( 'wgSQLiteDataDirMode', 'config-sqlite-permissions' ) .
+				$this->parent->getHelpBox( 'config-sqlite-permissions-help' );
+		}
+		return $s;
 	}
 
 	function submitConnectForm() {
