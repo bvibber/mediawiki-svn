@@ -2,8 +2,10 @@ mw.addMessages({
 	'mwe-code-unknown': 'Unknown language'
 });
 
-
-// TODO: make this a more common library, used by this and TimedText
+/**
+ * Utility class which knows about languages, and how to construct HTML to select them
+ * TODO: make this a more common library, used by this and TimedText
+ */
 mw.Language = {
 
 	defaultCode: 'en',  // when we absolutely have no idea what language to preselect
@@ -379,68 +381,84 @@ mw.Language = {
 		{ code: "got",           text: "\ud800\udf32\ud800\udf3f\ud800\udf44\ud800\udf39\ud800\udf43\ud800\udf3a" },
 	],
 
-	// cache some useful objects
-	// 1) mostly ready-to-go language HTML menu. When/if we upgrade, make it a jQuery combobox
-	// 2) dict of language code to name -- useful for testing for existence, maybe other things.
+	/**
+	 * cache some useful objects
+	 * 1) mostly ready-to-go language HTML menu. When/if we upgrade, make it a jQuery combobox
+	 * 2) dict of language code to name -- useful for testing for existence, maybe other things.
+	 */
 	initialize: function() {
-		if (mw.Language.initialized) {
+		if ( mw.Language.initialized ) {
 			return;	
 		}
 		mw.Language._codes = {};
-		var select = $j('<select/>');
-		$j.each(mw.Language.languages, function(i, language) {
+		var select = $j( '<select/>' );
+		$j.each( mw.Language.languages, function( i, language ) {
 			select.append(
-				$j('<option>')
-					.attr('value', language.code)
-					.append(language.text)
+				$j( '<option>' )
+					.attr( 'value', language.code )
+					.append( language.text )
 			);
 			mw.Language._codes[language.code] = language.text;
-		});
+		} );
 		mw.Language.$_select = select;
 		mw.Language.initialized = true;
 	},
 
-	getMenu: function(name, code) {
+	/**
+	 * Get an HTML select menu of all our languages. 
+	 * @param name	desired name of select element
+	 * @param code	desired default language code
+	 * @return HTML	select element configured as desired
+	 */
+	getMenu: function( name, code ) {
 		mw.Language.initialize();
 		var $select = mw.Language.$_select.clone();
-		$select.attr('name', name);
-		if (code === mw.Language.UNKNOWN) {
+		$select.attr( 'name', name );
+		if ( code === mw.Language.UNKNOWN ) {
 			// n.b. MediaWiki LanguageHandler has ability to add custom label for 'Unknown'; possibly as pseudo-label
-			$select.prepend($j('<option>').attr('value', mw.Language.UNKNOWN).append(gM('mwe-code-unknown')));
-			$select.val(mw.Language.UNKNOWN);
-		} else if (code !== undefined) {
-			$select.val(mw.Language.getClosest(code));
+			$select.prepend( $j( '<option>' ).attr( 'value', mw.Language.UNKNOWN ).append( gM( 'mwe-code-unknown' )) );
+			$select.val( mw.Language.UNKNOWN );
+		} else if ( code !== undefined ) {
+			$select.val( mw.Language.getClosest( code ));
 		}
-		return $select.get(0);
+		return $select.get( 0 );
 	},
 
-	/* logic from MediaWiki:LanguageHandler.js */
-	// handle null cases, special cases for some Chinese variants
-	// Otherwise, if handed "foo-bar-baz" language, try to match most specific language,
-	//    "foo-bar-baz", then "foo-bar", then "foo"
-	getClosest: function(code) {
+	/** 
+ 	 * Figure out the closest language we have to a supplied language code.
+	 * It seems that people on Mediawiki set their language code as freetext, and it could be anything, even
+	 * variants we don't have a record for, or ones that are not in any ISO standard.
+	 *
+	 * Logic copied from MediaWiki:LanguageHandler.js 
+	 * handle null cases, special cases for some Chinese variants
+	 * Otherwise, if handed "foo-bar-baz" language, try to match most specific language,
+	 *    "foo-bar-baz", then "foo-bar", then "foo"
+	 *
+	 * @param code 	A string representing a language code, which we may or may not have. 
+	 *		Expected to be separated with dashes as codes from ISO 639, e.g. "zh-tw" for Chinese ( Traditional )
+	 * @return a language code which is close to the supplied parameter, or fall back to mw.Language.defaultCode
+	 */
+	getClosest: function( code ) {
 		mw.Language.initialize();
-		if (typeof (code) != 'string' || code === null || code.length === 0) {
+		if ( typeof ( code ) != 'string' || code === null || code.length === 0 ) {
 			return mw.Language.defaultCode;
 		}
-    		if (code == 'nan' || code == 'minnan') {
+    		if ( code == 'nan' || code == 'minnan' ) {
 			return 'zh-min-nan';
-		} else if (mw.Language._codes[code] !== undefined) {
+		} else if ( mw.Language._codes[code] !== undefined ) {
 			return code;					
 		} 
-		return mw.Language.getClosest(code.substring(0, code.indexOf('-')));
+		return mw.Language.getClosest( code.substring( 0, code.indexOf( '-' )) );
 	},
-
-	// XXX n.b. there are a lot of "closest matching language" features in older MediaWiki:LanguageHandler; we will have to emulate
 
 
 	// enhance a simple text input to be an autocompleting language menu
 	// this will work when/if we move to jQuery 1.4. As of now the autocomplete is too underpowered for our needs without
 	// serious hackery
 	/* 
-	$j.fn.languageMenu = function(options) {
+	$j.fn.languageMenu = function( options ) {
 		var _this = this;
-		_this.autocomplete(null, {
+		_this.autocomplete( null, {
 			minChars: 0,
 			width: 310,
 			selectFirst: true, 
@@ -450,16 +468,16 @@ mw.Language = {
 			highlightItem: true,
 			scroll: true,
 			scrollHeight: 220,
-			formatItem: function(row, i, max, term) {
+			formatItem: function( row, i, max, term ) {
 				return row.code + " " + row.code;
 			},
-			formatMatch: function(row, i, max, term) {
+			formatMatch: function( row, i, max, term ) {
 				return row.code + " " + row.code;
 			},
-			formatResult: function(row) {
+			formatResult: function( row ) {
 				return row.code;
 			}
-		}, mw.languages);
+		}, mw.languages );
 
 		// and add a dropdown so we can see the thingy, too 
 		return _this;
@@ -467,7 +485,7 @@ mw.Language = {
 	*/
 
 	// XXX the concept of "internal language" exists in UploadForm.js -- seems to be how they handled i18n, with 
-	// language codes that has underscores rather than dashes, ("en_gb" rather than the correct "en-gb").
+	// language codes that has underscores rather than dashes, ( "en_gb" rather than the correct "en-gb" ).
 	// although other info such as Information boxes was recorded correctly.	
 	// This is presumed not to apply to the shiny new world of JS2, where i18n is handled in other ways.
 
