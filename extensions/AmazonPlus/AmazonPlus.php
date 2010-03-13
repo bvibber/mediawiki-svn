@@ -21,6 +21,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 if( !function_exists( 'wfIniGetBool' ) ) {
 	#perhaps GlobalFunctions wasn't loaded?

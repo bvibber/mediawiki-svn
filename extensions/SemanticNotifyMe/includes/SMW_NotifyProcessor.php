@@ -5,6 +5,9 @@
  *
  * @author dch
  */
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 global $smwgIP, $smwgNMIP ;
 require_once( $smwgIP . '/includes/storage/SMW_Store.php' );

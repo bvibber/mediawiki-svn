@@ -24,6 +24,8 @@
  * @addtogroup Extensions
  * @author Juliano F. Ravasi < dev juliano info >
  */
+$WIKILOGDIR = dirname( dirname( __FILE__ ) );
+$MEDIAWIKIDIR = dirname( dirname( $WIKILOGDIR ) );
 
 $optionsWithArgs = array();
 require_once( "$MEDIAWIKIDIR/maintenance/commandLine.inc" );
