@@ -4,14 +4,14 @@
  * @param form	an HTML form
  * @param progressCb	callback to execute when we've started. (does not do float here because iframes can't 
  *			  monitor fractional progress).
- * @param completedCb	callback to execute when we've finished the upload
+ * @param transportedCb	callback to execute when we've finished the upload
  */
-mw.IframeTransport = function( form, progressCb, completedCb ) {
+mw.IframeTransport = function( form, progressCb, transportedCb ) {
 	var _this = this;
 
 	_this.form = form;
 	_this.progressCb = progressCb;
-	_this.completedCb = completedCb;
+	_this.transportedCb = transportedCb;
 
 	_this.iframeId = 'f_' + ( $j( 'iframe' ).length + 1 );
 	
@@ -101,7 +101,7 @@ mw.IframeTransport.prototype = {
 			response = doc;
 		}
 		// Process the API result
-		_this.completedCb( response );
+		_this.transportedCb( response );
 	}
 };
 
