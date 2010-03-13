@@ -1607,6 +1607,11 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
 		// add links to manual to every global variable mentioned
 		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
+		// special case for <pre> - formatted links
+		do {
+			$prev = $text;
+			$text = preg_replace( '/^([^\\s].*?)\r?\n[\\s]+(https?:\/\/)/m', "\\1\n:\\2", $text );
+		} while ( $text != $prev );
 		return $text;
 	}
 
