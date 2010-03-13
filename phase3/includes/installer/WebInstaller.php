@@ -1596,7 +1596,11 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 	}
 
 	protected function formatTextFile( $text ) {
-		$text = preg_replace( "/\n\\*([^\r\n]*?)\r?\n[ \t]+/", "\n*\\1 ", $text );
+		$text = preg_replace( "/\r?\n(\r?\n)?\\[\\d+\\]/m", "\\1#", $text );
+		do {
+			$prev = $text;
+			$text = preg_replace( "/\n([\\*#])([^\r\n]*?)\r?\n([^\r\n#\\*:]+)/", "\n\\1\\2 \\3", $text );
+		} while ( $text != $prev );
 		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
 		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
 		return $text;
@@ -1615,15 +1619,20 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 
 class WebInstaller_Readme extends WebInstaller_Document { 
 	function getFileName() { return 'README'; } 
+
+	function getFileContents() {
+		return $this->formatTextFile( parent::getFileContents() );
+	}
 }
+
 class WebInstaller_ReleaseNotes extends WebInstaller_Document { 
 	function getFileName() { return 'RELEASE-NOTES'; }
 
 	function getFileContents() {
-		echo $this->formatTextFile( parent::getFileContents() );
 		return $this->formatTextFile( parent::getFileContents() );
 	}
 }
+
 class WebInstaller_Copying extends WebInstaller_Document { 
 	function getFileName() { return 'COPYING'; } 
 }
