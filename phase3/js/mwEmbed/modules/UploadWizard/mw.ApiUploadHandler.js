@@ -17,7 +17,7 @@ mw.ApiUploadHandler = function( ui ) {
 
 	var form = _this.ui.form;
 
-	_this.completedCallbacks = [];
+	_this.transportedCallbacks = [];
 	_this.progressCallbacks = [];
 	_this.errorCallbacks = [];
 
@@ -28,7 +28,7 @@ mw.ApiUploadHandler = function( ui ) {
 	_this.transport = new mw.IframeTransport(
 		_this.ui.form, 
 		function( fraction ){ _this.progress( fraction ) },
-		function( result ) { _this.completed( result ) }
+		function( result ) { _this.transported( result ) }
 	);
 
 };
@@ -47,9 +47,9 @@ mw.ApiUploadHandler.prototype = {
 	 * Allow other parties to register interest in when we finish uploading
 	 * @param callback
 	 */
-	addCompletedCb: function( f ) {
+	addTransportedCb: function( f ) {
 		var _this = this;
-		_this.completedCallbacks.push( f );
+		_this.transportedCallbacks.push( f );
 	},
 
 	/**
@@ -144,15 +144,15 @@ mw.ApiUploadHandler.prototype = {
 	},
 
 	/** 
-	 * Central dispatch function for everyone else interested if we've completed
+	 * Central dispatch function for everyone else interested if we've transported
 	 * @param result  javascript object representing MediaWiki API result.
 	 */
-	completed: function( result ) {
-		mw.log( "api: upload completed!" );
+	transported: function( result ) {
+		mw.log( "api: upload transported!" );
 		var _this = this;
-		_this.ui.completed();
-		for ( var i = 0; i < _this.completedCallbacks.length; i++ ) {
-			_this.completedCallbacks[i]( result );
+		_this.ui.transported();
+		for ( var i = 0; i < _this.transportedCallbacks.length; i++ ) {
+			_this.transportedCallbacks[i]( result );
 		}
 	},
 

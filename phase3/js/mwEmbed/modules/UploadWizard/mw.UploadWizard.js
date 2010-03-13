@@ -1,13 +1,13 @@
 mw.addMessages( {
 	'mwe-upwiz-tab-file': 'Step 1',
-	'mwe-upwiz-tab-metadata': 'Step 2',
+	'mwe-upwiz-tab-details': 'Step 2',
 	'mwe-upwiz-tab-thanks': 'Step 3',
 	'mwe-upwiz-intro': 'Introductory text (short)',
 	'mwe-upwiz-select-files': 'Select files:',
 	'mwe-upwiz-add-file-n': 'Add another file',
 	'mwe-upwiz-add-file-0': 'Add a file',
 	'mwe-upwiz-browse': 'Browse...',
-	'mwe-upwiz-completed': 'OK',
+	'mwe-upwiz-transported': 'OK',
 	'mwe-upwiz-click-here': 'Click here to select a file',
 	'mwe-upwiz-uploading': 'uploading...',
 	'mwe-upwiz-remove-upload': 'Remove this file from the list of files to upload',
@@ -16,7 +16,7 @@ mw.addMessages( {
 	'mwe-upwiz-upload-count': '$1 of $2 files uploaded',
 	'mwe-upwiz-progressbar-uploading': 'uploading',
 	'mwe-upwiz-remaining': '$1 remaining',
-	'mwe-upwiz-intro-metadata': 'Thank you for uploading your works! Now we need some basic information in order to complete your upload.',
+	'mwe-upwiz-intro-details': 'Thank you for uploading your works! Now we need some basic information in order to complete your upload.',
 	'mwe-upwiz-provenance-ownwork': 'They are entirely your own work.',
 	'mwe-upwiz-provenance-ownwork-assert': 'I, $1, the copyright holder of this work, hereby grant anyone the right to use these works for any purpose, as long as they credit me and share derivative work under the same terms.',
 	'mwe-upwiz-provenance-ownwork-assert-note': 'This means you release your work under a double Creative Commons Attribution ShareAlike and GFDL license.',
@@ -64,6 +64,88 @@ mw.addMessages( {
 } );
 
 
+/**
+ * Represents the upload -- in its local and remote state. (Possibly those could be separate objects too...)
+ * This is our 'model' object if we are thinking MVC. Needs to be better factored, lots of feature envy with the UploadWizard
+ */
+mw.UploadWizardUpload = function() {
+	var _this = this;
+	_this._thumbnails = {};
+	_this.imageinfo = {};
+};
+
+mw.UploadWizardUpload.prototype = {
+	/** 
+ 	 * Accept the result from a successful API upload transport, and fill our own info 
+	 *
+	 * @param result The JSON object from a successful API upload result.
+	 */
+	extractImageInfo: function( result ) {
+		var _this = this;
+
+		_this.filename = result.upload.filename;
+		_this.title = "File:" + _this.filename;
+
+		for (var key in result.upload.imageinfo) {
+			_this.imageinfo[key] = result.upload.imageinfo[key];
+		}
+	},
+
+	/**
+	 * Supply information to create a thumbnail for this Upload. Runs async, with a callback. 
+	 * It is assumed you don't call this until it's been transported.
+ 	 *
+	 * XXX should check if we really need this second API call or if we can get MediaWiki to make us a thumbnail URL upon upload
+	 *
+	 * @param width - desired width of thumbnail (height will scale to match)
+	 * @param callback - callback to execute once thumbnail has been obtained -- must accept object with properties of width, height, and url.
+	 */
+	getThumbnail: function( width, callback ) {
+		var _this = this;
+		if ( _this._thumbnails[ "width" + width ] !== undefined ) {
+			callback( _this.thumbnails[ "width" + width ] );
+			return;
+		}
+
+		var apiUrl = mw.getLocalApiUrl();
+
+		var params = {
+                        'titles': _this.title,
+                        'iiurlwidth': width, 
+                        'prop':  'imageinfo',
+                        'iiprop': 'url'
+                };
+
+		mw.getJSON( apiUrl, params, function( data ) {
+			if ( !data || !data.query || !data.query.pages ) {
+				mw.log(" No data? ")
+				// XXX do something about the thumbnail spinner, maybe call the callback with a broken image.
+				return;
+			}
+
+			if ( data.query.pages[-1] ) {
+				// XXX do something about the thumbnail spinner, maybe call the callback with a broken image.
+				return;
+			}
+			for ( var page_id in data.query.pages ) {
+				var page = data.query.pages[ page_id ];
+				if ( ! page.imageinfo ) {
+					// not found? error
+				} else {
+					var imageInfo = page.imageinfo[0];
+					var thumbnail = {
+						width: 	imageInfo.thumbwidth,
+						height: imageInfo.thumbheight,
+						url: 	imageInfo.url
+					}
+					_this._thumbnails[ "width" + width ] = thumbnail; 
+					callback( thumbnail );
+				}
+			}
+		} );
+
+	}
+};
 
 /**
  * Create an interface fragment corresponding to a file input, suitable for Upload Wizard.
@@ -105,7 +187,7 @@ mw.UploadWizardUploadInterface = function( filenameAcceptedCb ) {
 		    .append( _this.errorDiv );
 
 	// _this.progressBar = ( no progress bar for individual uploads yet )
-	// add a metadata thing to metadata
+	// add a details thing to details
 };
 
 mw.UploadWizardUploadInterface.prototype = {
@@ -141,14 +223,14 @@ mw.UploadWizardUploadInterface.prototype = {
 	},
 
 	/**
-	 * Execute when this upload is completed; cleans up interface. 
+	 * Execute when this upload is transported; cleans up interface. 
 	 * @param result	AJAx result object
 	 */
-	completed: function( result ) {
+	transported: function( result ) {
 		var _this = this;
 		$j( _this.progressMessage ).removeClass( 'mwe-upwiz-status-progress' )
-					   .addClass( 'mwe-upwiz-status-completed' )
-		   			   .html( gM( 'mwe-upwiz-completed' ) );
+					   .addClass( 'mwe-upwiz-status-transported' )
+		   			   .html( gM( 'mwe-upwiz-transported' ) );
 	},
 
 	/**
@@ -276,7 +358,7 @@ mw.UploadWizardUploadInterface.prototype = {
 };	
 	
 /**
- * Object that represents an indvidual language description, in the metadata portion of Upload Wizard
+ * Object that represents an indvidual language description, in the details portion of Upload Wizard
  * @param languageCode
  */
 mw.UploadWizardDescription = function( languageCode ) {
@@ -313,26 +395,31 @@ mw.UploadWizardDescription.prototype = {
 };
 
 /**
- * Object that represents the Metadata (step 2) portion of the UploadWizard
+ * Object that represents the Details (step 2) portion of the UploadWizard
+ * n.b. each upload gets its own details.
+ *
+ * @param UploadWizardUpload
  * @param containerDiv	The div to put the interface into
  */
-mw.UploadWizardMetadata = function( containerDiv ) {
+mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	var _this = this;
+	_this.upload = upload;
+
 	_this.descriptions = [];
 
-	_this.div = $j( '<div class="mwe-upwiz-metadata-file"></div>' );
+	_this.div = $j( '<div class="mwe-upwiz-details-file"></div>' );
 
 	_this.macroDiv = $j( '<div class="mwe-upwiz-macro"></div>' )
 		.append( $j( '<input type="submit" value="test edit"/>' ).click( function( ) { _this.submit( ) } ));
 
 	_this.thumbnailDiv = $j( '<div class="mwe-upwiz-thumbnail"></div>' );
 	
-	_this.errorDiv = $j( '<div class="mwe-upwiz-metadata-error"></div>' );
+	_this.errorDiv = $j( '<div class="mwe-upwiz-details-error"></div>' );
 
-	_this.dataDiv = $j( '<div class="mwe-upwiz-metadata-data"></div>' );
+	_this.dataDiv = $j( '<div class="mwe-upwiz-details-data"></div>' );
 
-	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-metadata-descriptions"></div>' );
+	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions"></div>' );
 
 	_this.descriptionAdder = $j( '<a id="mwe-upwiz-desc-add"/>' )
 					.attr( 'href', '#' )
@@ -340,10 +427,10 @@ mw.UploadWizardMetadata = function( containerDiv ) {
 					.click( function( ) { _this.addDescription( ) } );
 
 	_this.descriptionsContainerDiv = 
-		$j( '<div class="mwe-upwiz-metadata-descriptions-container"></div>' )
-			.append( $j( '<div class="mwe-upwiz-metadata-descriptions-title">' + gM( 'mwe-upwiz-desc' ) + '</div>' ) )
+		$j( '<div class="mwe-upwiz-details-descriptions-container"></div>' )
+			.append( $j( '<div class="mwe-upwiz-details-descriptions-title">' + gM( 'mwe-upwiz-desc' ) + '</div>' ) )
 			.append( _this.descriptionsDiv )
-			.append( $j( '<div class="mwe-upwiz-metadata-descriptions-add"></div>' )
+			.append( $j( '<div class="mwe-upwiz-details-descriptions-add"></div>' )
 					.append( _this.descriptionAdder ) );
 				
 
@@ -383,7 +470,7 @@ mw.UploadWizardMetadata = function( containerDiv ) {
 
 };
 
-mw.UploadWizardMetadata.prototype = {
+mw.UploadWizardDetails.prototype = {
 
 	/**
 	 * Do anything related to a change in the number of descriptions
@@ -427,7 +514,7 @@ mw.UploadWizardMetadata.prototype = {
 	},
 
 	/**
-	 * Display an error with metadata
+	 * Display an error with details
 	 * XXX this is a lot like upload ui's error -- should merge
 	 */
 	error: function() {
@@ -475,19 +562,18 @@ mw.UploadWizardMetadata.prototype = {
 	 * Given the API result pull some info into the form ( for instance, extracted from EXIF, desired filename )
 	 * @param result	Upload API result object
 	 */
-	populateFromResult: function( result ) {
+	populate: function() {
 		var _this = this;
-		var upload = result.upload;
-		mw.log( "populating from result" );
-		_this.setThumbnail( upload.filename, mw.getConfig( 'thumbnailWidth' )); 
-		//_this.setSource( upload. result );
-		
-		//_this.setFilename( upload.filename );
+		mw.log( "populating details from upload" );
+		_this.setThumbnail( mw.getConfig( 'thumbnailWidth' ) ); 
+		//_this.setDate();
 
-		//_this.setDescription(); // is there anything worthwhile here? image comment?
-		//_this.setDate( upload.metadata );	
-		//_this.setLocation( upload.metadata ); // we could be VERY clever with location sensing...
-		//_this.setAuthor( _this.config.user, upload.exif.Copyright );
+		//_this.setSource();
+		
+		//_this.setFilename();
+
+		//_this.setLocation(); // we could be VERY clever with location sensing...
+		//_this.setAuthor(); 
 	},
 
 	/**
@@ -495,70 +581,30 @@ mw.UploadWizardMetadata.prototype = {
 	 * @param filename
 	 * @param width
 	 */
-	setThumbnail: function( filename, width ) {
+	setThumbnail: function( width ) {
 		var _this = this;
 
-		var callback = function( imageInfo ) { 
-			var thumbnail = $j( '<img class="mwe-upwiz-thumbnail"/>' ).get( 0 );
-			thumbnail.width = imageInfo.thumbwidth;
-			thumbnail.height = imageInfo.thumbheight;
-			thumbnail.src = imageInfo.thumburl;
+		var callback = function( thumbnail ) { 
 			// side effect: will replace thumbnail's loadingSpinner
-			_this.thumbnailDiv.html( thumbnail );
+			_this.thumbnailDiv.html(
+				$j('<a>')
+					.attr( 'href', _this.upload.imageinfo.descriptionurl )
+					.append(
+						$j( '<img/>' )
+							.addClass( "mwe-upwiz-thumbnail" )
+							.attr( 'width',  thumbnail.width )
+							.attr( 'height', thumbnail.height )
+							.attr( 'src',    thumbnail.url ) ) );
 		};
 
 		_this.thumbnailDiv.loadingSpinner();
-		_this.getThumbnail( "File:" + filename, width, callback );
+		_this.upload.getThumbnail( width, callback );
 
 	},
 
 	/**
-	 * use iinfo to get thumbnail info
-	 * this API method can be used to get a lot of thumbnails at once, but that may not be so useful for us ATM
-	 * this is mostly ripped off from mw.UploadHandler's doDestCheck, but: stripped of UI, does only one, does not check for name collisions.
-	 * @param title	- name of the file on mediawiki (e.g. File:Foo.jpg)
-	 * @param width - desired width of thumbnail (height will scale to match)
-	 * @param setThumbnailCb - callback to execute once info has been obtained (for instance, put it into the interface)
-	 * @param apiUrl - where to get your API results
-	 */
-	getThumbnail: function( title, width, setThumbnailCb, apiUrl ) {
-
-		if ( apiUrl === undefined ) {
-			apiUrl = mw.getLocalApiUrl();
-		}
-
-		var params = {
-                        'titles': title,
-                        'iiurlwidth': width, 
-                        'prop':  'imageinfo',
-                        'iiprop': 'url|mime|size'
-                };
-
-		mw.getJSON( apiUrl, params, function( data ) {
-			if ( !data || !data.query || !data.query.pages ) {
-				mw.log(" No data? ")
-				return;
-			}
-
-			if ( data.query.pages[-1] ) {
-				// not found ? error
-			}
-			for ( var page_id in data.query.pages ) {
-				var page = data.query.pages[ page_id ];
-				if ( ! page.imageinfo ) {
-					// not found? error
-				} else {
-					var imageInfo = page.imageinfo[0];
-					setThumbnailCb( imageInfo );
-				}
-			}
-		} );
-	},
-
-
-	/**
-	 * Convert entire metadata for this file into wikiText, which will then be posted to the file 
-	 * @return wikitext representing all metadata
+	 * Convert entire details for this file into wikiText, which will then be posted to the file 
+	 * @return wikitext representing all details
 	 */
 	getWikiText: function() {
 		var _this = this;
@@ -623,9 +669,9 @@ mw.UploadWizardMetadata.prototype = {
 		// check descriptions
 
 		// are we changing the name ( moving the file? ) if so, do that first, and the rest of this submission has to become
-		// a callback when that is completed?
+		// a callback when that is transported?
 			
-		// XXX check state of metadata for okayness ( license selected, at least one desc, sane filename )
+		// XXX check state of details for okayness ( license selected, at least one desc, sane filename )
 		var wikiText = _this.getWikiText();
 		mw.log( wikiText );
 		// do some api call to edit the info 
@@ -656,12 +702,14 @@ mw.UploadWizardMetadata.prototype = {
 mw.UploadWizard = function() {
 
 	this.uploadHandlerClass = mw.getConfig('uploadHandlerClass') || this.getUploadHandlerClass();
-	this.isCompleted = false;
+	this.isTransported = false;
 	
 	this.uploads = [];
 	// leading underline for privacy. DO NOT TAMPER.
 	this._uploadsQueued = [];
 	this._uploadsInProgress = [];
+	this._uploadsTransported = [];
+	this._uploadsEditingDetails = [];
 	this._uploadsCompleted = [];
 
 	this.uploadsBeginTime = null;	
@@ -671,7 +719,7 @@ mw.UploadWizard = function() {
 mw.UploadWizard.prototype = {
 	maxUploads: 10,  // XXX get this from config 
 	maxSimultaneousUploads: 2,   //  XXX get this from config
-	tabs: [ 'file', 'metadata', 'thanks' ],
+	tabs: [ 'file', 'details', 'thanks' ],
 
 	/*
 	// list possible upload handlers in order of preference
@@ -719,7 +767,7 @@ mw.UploadWizard.prototype = {
 		       '<div id="mwe-upwiz-tabs">'
 		       + '<ul>'
 		       +   '<li id="mwe-upwiz-tab-file">'     + gM('mwe-upwiz-tab-file')     + '</li>'
-		       +   '<li id="mwe-upwiz-tab-metadata">' + gM('mwe-upwiz-tab-metadata') + '</li>'
+		       +   '<li id="mwe-upwiz-tab-details">'  + gM('mwe-upwiz-tab-details')  + '</li>'
 		       +   '<li id="mwe-upwiz-tab-thanks">'   + gM('mwe-upwiz-tab-thanks')   + '</li>'
 		       + '</ul>'
 		       + '</div>'
@@ -742,9 +790,9 @@ mw.UploadWizard.prototype = {
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
 		       + '</div>'
-		       + '<div id="mwe-upwiz-tabdiv-metadata">'
-		       +   '<div id="mwe-upwiz-metadata-macro"></div>'
-		       +   '<div id="mwe-upwiz-metadata-files"></div>'
+		       + '<div id="mwe-upwiz-tabdiv-details">'
+		       +   '<div id="mwe-upwiz-details-macro"></div>'
+		       +   '<div id="mwe-upwiz-details-files"></div>'
 		       + '</div>'
 		       + '<div id="mwe-upwiz-tabdiv-thanks">'
 		       +   '<div id="mwe-upwiz-thanks"></div>'
@@ -795,7 +843,7 @@ mw.UploadWizard.prototype = {
 	/**
 	 * add an Upload
 	 *   we create the upload interface, a handler to transport it to the server,
-	 *   and UI for the upload itself and the "metadata" at the second step of the wizard.
+	 *   and UI for the upload itself and the "details" at the second step of the wizard.
 	 *   Finally stuff it into an array of uploads. 
 	 * @return boolean success
 	 */
@@ -806,14 +854,9 @@ mw.UploadWizard.prototype = {
 			return false;
 		}
 
-		// could (should?) be an object, but so far it doesn't have its own methods really. 
-		// plus, here in UploadWizard, we have additional concepts like metadata...
-		var upload = {};
+		var upload = new mw.UploadWizardUpload();
 
-		// API	
-		// XXX hardcoded for now. Maybe passed through config or guessed at here.
-		// upload.api =  new mw.UploadApiProcessor( function( result ) { _this.uploadCompleted );
-
+		// XXX much of the following should be moved to UploadWizardUpload constructor.
 
 		// UI
 		// originalFilename is the basename of the file on our file system. This is what we really wanted ( probably ).
@@ -836,18 +879,17 @@ mw.UploadWizard.prototype = {
 		upload.handler.addProgressCb( function( fraction ) { _this.uploadProgress( upload, fraction ) } );
 
 		// this is only the UI one, so is the result even going to be there?
-		upload.handler.addCompletedCb( function( result ) { _this.uploadCompleted( upload, result ) } );
+		upload.handler.addTransportedCb( function( result ) { _this.uploadTransported( upload, result ) } );
 
 		// not sure about this...UI only?
 		// this will tell us that at least one of our uploads has had an error -- may change messaging,
 		// like, please fix below
 		upload.handler.addErrorCb( function( error ) { _this.uploadError( upload, error ) } );
 
-		// metadata		
-		upload.metadata = new mw.UploadWizardMetadata( $j( '#mwe-upwiz-metadata-files' ));
+		// details 		
+		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-details-files' ));
 
 
-		
 		_this.uploads.push( upload );
 		
 		$j( "#mwe-upwiz-files" ).append( upload.ui.div );
@@ -872,7 +914,7 @@ mw.UploadWizard.prototype = {
 	removeUpload: function( upload ) {
 		var _this = this;
 		$j( upload.ui.div ).remove();
-		$j( upload.metadata.div ).remove();
+		$j( upload.details.div ).remove();
 		mw.UploadWizardUtil.removeItem( _this.uploads, upload );
 		_this.updateFileCounts();
 	},
@@ -944,7 +986,7 @@ mw.UploadWizard.prototype = {
 	 * Uploads must be 'queued' to be considered for uploading
 	 *  making this another thread of execution, because we want to avoid any race condition
 	 * this way, this is the only "thread" that can start uploads
-	 * it may miss a newly completed upload but it will get it eventually
+	 * it may miss a newly transported upload but it will get it eventually
 	 *
 	 */
 	_startUploadsQueued: function() {
@@ -971,7 +1013,7 @@ mw.UploadWizard.prototype = {
 	 */
 	showProgress: function() {
 		var _this = this;
-		if ( _this.isCompleted ) {
+		if ( _this.isTransported ) {
 			return;
 		}
 
@@ -991,7 +1033,7 @@ mw.UploadWizard.prototype = {
 	
 	/**
 	 * Show the progress bar for the entire Upload Wizard.
-	 * @param fraction	fraction completed (float between 0 and 1)
+	 * @param fraction	fraction transported (float between 0 and 1)
 	 */
 	showProgressBar: function( fraction ) {		
 		$j( '#mwe-upwiz-progress-bar' ).progressbar( 'value', parseInt( fraction * 100 ) );
@@ -1011,15 +1053,15 @@ mw.UploadWizard.prototype = {
 	 * Calculate remaining time for all uploads to complete.
 	 * 
 	 * @param beginTime	time in whatever unit getTime returns, presume epoch milliseconds
-	 * @param fractionCompleted	fraction completed
+	 * @param fractionTransported	fraction transported
 	 * @return 	time in whatever units getTime() returns; presumed milliseconds
 	 */
-	getRemainingTime: function ( beginTime, fractionCompleted ) {
+	getRemainingTime: function ( beginTime, fractionTransported ) {
 		if ( beginTime ) {
 			var elapsedTime = ( new Date() ).getTime() - beginTime;
-			if ( fractionCompleted > 0.0 && elapsedTime > 0 ) { // or some other minimums for good data
-				var rate = fractionCompleted / elapsedTime;
-				return parseInt( ( 1.0 - fractionCompleted ) / rate ); 
+			if ( fractionTransported > 0.0 && elapsedTime > 0 ) { // or some other minimums for good data
+				var rate = fractionTransported / elapsedTime;
+				return parseInt( ( 1.0 - fractionTransported ) / rate ); 
 			}
 		}
 		return null;
@@ -1040,25 +1082,26 @@ mw.UploadWizard.prototype = {
 	},
 
 	/**
-	 * To be executed when an individual upload finishes. Processes the result and updates step 2's metadata
+	 * To be executed when an individual upload finishes. Processes the result and updates step 2's details 
 	 * @param upload 	an Upload object
 	 * @param result	the API result in parsed JSON form
 	 */
-	uploadCompleted: function( upload, result ) {
+	uploadTransported: function( upload, result ) {
 		var _this = this;
-		_this._uploadsCompleted.push( upload );
+		_this._uploadsTransported.push( upload );
 		mw.UploadWizardUtil.removeItem( _this._uploadsInProgress, upload );
 
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
-			setTimeout( function() { 
-				upload.metadata.populateFromResult( result ); }, 0 );
+			_this._uploadsEditingDetails.push( upload );
+			upload.extractImageInfo( result );	
+			upload.details.populate();
 		
 		} else if ( result.upload && result.upload.sessionkey ) {
 			// there was a warning - type error which prevented it from adding the result to the db 
 			if ( result.upload.warnings.duplicate ) {
 				var duplicates = result.upload.warnings.duplicate;
-				_this.metadata.errorDuplicate( result.upload.sessionkey, duplicates );
+				_this.details.errorDuplicate( result.upload.sessionkey, duplicates );
 			}
 
 			// XXX namespace collision
@@ -1072,8 +1115,8 @@ mw.UploadWizard.prototype = {
 
 
 	/**
-	 * Occurs whenever we need to update the interface based on how many files are there or have completed
-	 * Also detects if all uploads have completed and kicks off the process that eventually gets us to Step 2.
+	 * Occurs whenever we need to update the interface based on how many files are there or have transported
+	 * Also detects if all uploads have transported and kicks off the process that eventually gets us to Step 2.
 	 */
 	updateFileCounts: function() {
 		mw.log( "update counts" );
@@ -1099,11 +1142,11 @@ mw.UploadWizard.prototype = {
 		}
 
 		
-		$j( '#mwe-upwiz-count' ).html( gM( 'mwe-upwiz-upload-count', [ _this._uploadsCompleted.length, _this.uploads.length ] ) );
+		$j( '#mwe-upwiz-count' ).html( gM( 'mwe-upwiz-upload-count', [ _this._uploadsTransported.length, _this.uploads.length ] ) );
 
-		if ( _this.uploads.length > 0 && _this._uploadsCompleted.length == _this.uploads.length ) {
+		if ( _this.uploads.length > 0 && _this._uploadsTransported.length == _this.uploads.length ) {
 			// is this enough to stop the progress monitor?
-			_this.isCompleted = true;
+			_this.isTransported = true;
 			// set progress to 100%
 			_this.showProgressBar( 1 );
 			_this.showRemainingTime( 0 );
@@ -1112,7 +1155,7 @@ mw.UploadWizard.prototype = {
 			// likewise, the remaining time should disappear, fadeout maybe.
 					
 			// do some sort of "all done" thing for the UI - advance to next tab maybe.
-			_this.moveToTab( 'metadata' );
+			_this.moveToTab( 'details' );
 		}
 
 	},
@@ -1139,14 +1182,14 @@ mw.UploadWizard.prototype = {
 	/**
 	 *
 	 */
-	createMetadata: function() {
+	createDetails: function() {
 
 	},
 
 	/**
 	 *
 	 */
-	submitMetadata: function() {
+	submitDetails: function() {
 
 	},
 
