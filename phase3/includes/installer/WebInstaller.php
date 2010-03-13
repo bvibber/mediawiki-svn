@@ -1594,26 +1594,34 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 	function getFileContents() {
 		return file_get_contents( dirname( __FILE__ ) . '/../../' . $this->getFileName() );
 	}
+
+	protected function formatTextFile( $text ) {
+		$text = preg_replace( "/\n\\*([^\r\n]*?)\r?\n[ \t]+/", "\n*\\1 ", $text );
+		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
+		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
+		return $text;
+	}
+
+	private static function replaceBugLinks( $matches ) {
+		return '(<span class="config-plainlink">[https://bugzilla.wikimedia.org/show_bug.cgi?id=' .
+			$matches[1] . ' bug ' . $matches[1] . ']</span>)';
+	}
+
+	private static function replaceConfigLinks( $matches ) {
+		return '<span class="config-plainlink">[http://www.mediawiki.org/wiki/Manual:' .
+			$matches[1] . ' ' . $matches[1] . ']</span>';
+	}
 }
 
 class WebInstaller_Readme extends WebInstaller_Document { 
 	function getFileName() { return 'README'; } 
 }
 class WebInstaller_ReleaseNotes extends WebInstaller_Document { 
-	function getFileName() { return 'RELEASE-NOTES'; } 
+	function getFileName() { return 'RELEASE-NOTES'; }
+
 	function getFileContents() {
-		$text = parent::getFileContents();
-		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
-		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
-		return $text;
-	}
-	private static function replaceBugLinks( $matches ) {
-		return '(<span class="config-plainlink">[https://bugzilla.wikimedia.org/show_bug.cgi?id=' .
-			$matches[1] . ' bug ' . $matches[1] . '])';
-	}
-	private static function replaceConfigLinks( $matches ) {
-		return '<span class="config-plainlink">[http://www.mediawiki.org/wiki/Manual:' .
-			$matches[1] . ' ' . $matches[1] . ']';
+		echo $this->formatTextFile( parent::getFileContents() );
+		return $this->formatTextFile( parent::getFileContents() );
 	}
 }
 class WebInstaller_Copying extends WebInstaller_Document { 
