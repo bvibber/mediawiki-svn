@@ -4340,7 +4340,7 @@ In '''UTF-8 mode''', MySQL will know what character set your data is in, and can
 'config-site-name-blank' => 'Please enter a site name.',
 'config-project-namespace' => 'Project namespace',
 'config-ns-generic' => 'Project',
-'config-ns-site-name' => 'Same as the wiki name:',
+'config-ns-site-name' => 'Same as the wiki name: $1',
 'config-ns-other' => 'Other (please specify)',
 'config-project-namespace-help' => 'Following Wikipedia\'s example, many wikis keep their policy and help pages separate from their content pages, in a "<strong>project namespace</strong>". 
 All page titles in this namespace start with a certain prefix, which you can specify here. 
