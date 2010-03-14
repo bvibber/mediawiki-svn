@@ -4,7 +4,7 @@
 
 /**
 * Default player module configuration 
-*/	
+*/
 
 mw.setDefaultConfig( {
 	// If the Timed Text interface should be displayed: 
