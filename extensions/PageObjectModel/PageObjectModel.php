@@ -5,9 +5,9 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
-require_once ("$IP/extensions/PageObjectModel/POM.php");
+require_once ( "$IP/extensions/PageObjectModel/POM.php" );
 
-require_once ("$IP/includes/api/ApiBase.php");
+require_once ( "$IP/includes/api/ApiBase.php" );
 
 global $wgAPIModules;
 $wgAPIModules['pomsettplparam'] = 'ApiPOMSetTemplateParameter';
@@ -18,24 +18,24 @@ $wgAPIModules['pomgettplparam'] = 'ApiPOMGetTemplateParameter';
  */
 class ApiPOMSetTemplateParameter extends ApiBase {
 
-	public function __construct($query, $moduleName) {
-		parent :: __construct($query, $moduleName);
+	public function __construct( $query, $moduleName ) {
+		parent :: __construct( $query, $moduleName );
 	}
 
 	public function execute() {
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		if (is_null($params['page']))
-			$this->dieUsage('Must specify page title', 0);
-		if (is_null($params['tpl']))
-			$this->dieUsage('Must specify template name', 1);
-		if (is_null($params['param']))
-			$this->dieUsage('Must specify parameter name', 2);
-		if (is_null($params['value']))
-			$this->dieUsage('Must specify value', 3);
-		if (is_null($params['summary']))
-			$this->dieUsage('Must specify edit summary', 4);
+		if ( is_null( $params['page'] ) )
+			$this->dieUsage( 'Must specify page title', 0 );
+		if ( is_null( $params['tpl'] ) )
+			$this->dieUsage( 'Must specify template name', 1 );
+		if ( is_null( $params['param'] ) )
+			$this->dieUsage( 'Must specify parameter name', 2 );
+		if ( is_null( $params['value'] ) )
+			$this->dieUsage( 'Must specify value', 3 );
+		if ( is_null( $params['summary'] ) )
+			$this->dieUsage( 'Must specify edit summary', 4 );
 
 		$page = $params['page'];
 		$template = $params['tpl'];
@@ -46,39 +46,39 @@ class ApiPOMSetTemplateParameter extends ApiBase {
 
 
 		$articleTitle = Title::newFromText( $page );
-		if (!$articleTitle)
-			$this->dieUsage("Can't create title object ($page)", 5);
+		if ( !$articleTitle )
+			$this->dieUsage( "Can't create title object ($page)", 5 );
 		
-		$errors = $articleTitle->getUserPermissionsErrors('edit', $wgUser);
-		if(!empty($errors))
-			$this->dieUsage(wfMsg($errors[0][0], $errors[0][1]), 8);
+		$errors = $articleTitle->getUserPermissionsErrors( 'edit', $wgUser );
+		if ( !empty( $errors ) )
+			$this->dieUsage( wfMsg( $errors[0][0], $errors[0][1] ), 8 );
 
-		$article = new Article($articleTitle);
-		if (!$article->exists())
-			$this->dieUsage("Article doesn't exist ($page)", 6);
+		$article = new Article( $articleTitle );
+		if ( !$article->exists() )
+			$this->dieUsage( "Article doesn't exist ($page)", 6 );
 	
-		$pom = new POMPage($article->getContent());
-		if (array_key_exists($template, $pom->templates)
-			&& array_key_exists($instance, $pom->templates[$template])
+		$pom = new POMPage( $article->getContent() );
+		if ( array_key_exists( $template, $pom->templates )
+			&& array_key_exists( $instance, $pom->templates[$template] )
 			)
 		{
-			$pom->templates[$template][$instance]->setParameter($parameter, $value);
+			$pom->templates[$template][$instance]->setParameter( $parameter, $value );
 		}
 		else
 		{
-			$this->dieUsage("This template ($template, instance #$instance) with this parameter ($parameter) doesn't exist within this page ($page)", 7);
+			$this->dieUsage( "This template ($template, instance #$instance) with this parameter ($parameter) doesn't exist within this page ($page)", 7 );
 		}
 
-		$success = $article->doEdit($pom->asString(), $summary);
+		$success = $article->doEdit( $pom->asString(), $summary );
 
-		$result=array();
+		$result = array();
 		if ( $success ) {
-			$result['result']='Success';
+			$result['result'] = 'Success';
 		} else {
-			$result['result']='Failure';
+			$result['result'] = 'Failure';
 		}
 
-		$this->getResult()->addValue(null, 'pomsettplparam', $result);
+		$this->getResult()->addValue( null, 'pomsettplparam', $result );
 	}
 
 	protected function getAllowedParams() {
@@ -135,20 +135,20 @@ class ApiPOMSetTemplateParameter extends ApiBase {
  */
 class ApiPOMGetTemplateParameter extends ApiBase {
 
-	public function __construct($query, $moduleName) {
-		parent :: __construct($query, $moduleName);
+	public function __construct( $query, $moduleName ) {
+		parent :: __construct( $query, $moduleName );
 	}
 
 	public function execute() {
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		if (is_null($params['page']))
-			$this->dieUsage('Must specify page title', 0);
-		if (is_null($params['tpl']))
-			$this->dieUsage('Must specify template name', 1);
-		if (is_null($params['param']))
-			$this->dieUsage('Must specify parameter name', 2);
+		if ( is_null( $params['page'] ) )
+			$this->dieUsage( 'Must specify page title', 0 );
+		if ( is_null( $params['tpl'] ) )
+			$this->dieUsage( 'Must specify template name', 1 );
+		if ( is_null( $params['param'] ) )
+			$this->dieUsage( 'Must specify parameter name', 2 );
 
 		$page = $params['page'];
 		$template = $params['tpl'];
@@ -156,28 +156,28 @@ class ApiPOMGetTemplateParameter extends ApiBase {
 		$parameter = $params['param'];
 
 		$articleTitle = Title::newFromText( $page );
-		if (!$articleTitle)
-			$this->dieUsage("Can't create title object ($page)", 5);
+		if ( !$articleTitle )
+			$this->dieUsage( "Can't create title object ($page)", 5 );
 		
-		$errors = $articleTitle->getUserPermissionsErrors('read', $wgUser);
-		if(!empty($errors))
-			$this->dieUsage(wfMsg($errors[0][0], $errors[0][1]), 8);
+		$errors = $articleTitle->getUserPermissionsErrors( 'read', $wgUser );
+		if ( !empty( $errors ) )
+			$this->dieUsage( wfMsg( $errors[0][0], $errors[0][1] ), 8 );
 
-		$article = new Article($articleTitle);
-		if (!$article->exists())
-			$this->dieUsage("Article doesn't exist ($page)", 6);
+		$article = new Article( $articleTitle );
+		if ( !$article->exists() )
+			$this->dieUsage( "Article doesn't exist ($page)", 6 );
 	
-		$pom = new POMPage($article->getContent());
-		if (array_key_exists($template, $pom->templates)
-			&& array_key_exists($instance, $pom->templates[$template])
+		$pom = new POMPage( $article->getContent() );
+		if ( array_key_exists( $template, $pom->templates )
+			&& array_key_exists( $instance, $pom->templates[$template] )
 			)
 		{
-			$result['value'] = $pom->templates[$template][$instance]->getParameter($parameter);
-			$this->getResult()->addValue(null, 'pomgettplparam', $result);
+			$result['value'] = $pom->templates[$template][$instance]->getParameter( $parameter );
+			$this->getResult()->addValue( null, 'pomgettplparam', $result );
 		}
 		else
 		{
-			$this->dieUsage("This template ($template, instance #$instance) with this parameter ($parameter) doesn't exist within this page ($page)", 7);
+			$this->dieUsage( "This template ($template, instance #$instance) with this parameter ($parameter) doesn't exist within this page ($page)", 7 );
 		}
 	}
 

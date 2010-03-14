@@ -13,17 +13,17 @@ abstract class POMElement {
 	function asString() {
 		$output = '';
 		
-		if ($this->hide) return $output;
+		if ( $this->hide ) return $output;
 
-		foreach ($this->children as $child)
+		foreach ( $this->children as $child )
 		{
-			$output.=$child->asString();
+			$output .= $child->asString();
 		}
 
 		return $output;
 	}
 
-	function addChild(POMElement $el)
+	function addChild( POMElement $el )
 	{
 		$this->children[] = $el;
 	}
