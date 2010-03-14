@@ -17,3 +17,4 @@ CREATE TABLE /*$wgDBprefix*/storyboard (
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX story_published_modified ON /*$wgDBprefix*/storyboard (story_is_published, story_modified);
+CREATE INDEX story_title ON /*$wgDBprefix*/storyboard (story_title);

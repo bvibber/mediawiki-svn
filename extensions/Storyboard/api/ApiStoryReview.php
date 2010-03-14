@@ -43,33 +43,85 @@ class ApiStoryReview extends ApiBase {
 		global $wgUser;
 		
 		if ( !$wgUser->isAllowed( 'storyreview' ) || $wgUser->isBlocked() ) {
-			$this->dieUsageMsg( reset( $retval ) );
-			$this->dieUsageMsg( array( 'notanarticle' ) );
+			$this->dieUsageMsg( array( 'storyreview' ) );
 		} 
 		
-		// TODO
+		$params = $this->extractRequestParams();
 		
-	}
-	
-	private static function getPermissionsError( &$title, $token ) {
-		global $wgUser;
-
-		// Check permissions
-		$errors = $title->getUserPermissionsErrors( 'storyreview', $wgUser );
-		if ( count( $errors ) > 0 ) {
-			return $errors;
+		// Check required parameters
+		if ( !array_key_exists( 'storyid', $params ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'storyid' ) );
 		}
+		if ( !array_key_exists( 'storyaction', $params ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'storyaction' ) );
+		}
+		
+		// TODO: test the actions after using them in the storyreview special page
+		$dbw = wfGetDB( DB_MASTER );
 
-		return array();
-	}	
+		if ( $params['storyaction'] == 'delete' ) {
+			// TODO: does this need to be escaped, or is putting the type of the param to integer sufficient?
+			$dbw->delete( 'storyboard', "story_id = '$params[storyid]'" );
+		} else {
+			$conds = array(
+				'story_id' => $params['storyid']
+			);
+			
+			switch( $params['storyaction'] ) {
+				case 'hide' :
+					$values = array(
+						'story_is_hidden' => 1
+					);
+					break;
+				case 'unhide' :
+					$values = array(
+						'story_is_hidden' => 0
+					);
+					break;
+				case 'publish' :
+					$values = array(
+						'story_is_published' => 1
+					);
+					break;	
+				case 'unpublish' :
+					$values = array(
+						'story_is_published' => 0
+					);					
+					break;
+				case 'hideimage' :
+					$values = array(
+						'story_image_hidden' => 1
+					);
+					break;
+				case 'showimage' :
+					$values = array(
+						'story_image_hidden' => 0
+					);
+					break;
+				case 'deleteimage' :
+					$values = array(
+						'story_author_image' => ''
+					);
+					break;															
+			}
+			
+			$dbw->update( 'storyboard', $values, $conds );
+		}
+	}
 	
 	public function getAllowedParams() {
 		return array(
+			'storyid' => array(
+				ApiBase :: PARAM_TYPE => 'integer',		
+			),
+			'storyaction' => null,		
 		);
 	}	
 	
 	public function getParamDescription() {
 		return array(
+			'storyid' => '',
+			'storyaction' => '',			
 		);
 	}
 	
@@ -81,12 +133,16 @@ class ApiStoryReview extends ApiBase {
 	
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'missingparam', 'storyid' ),
+			array( 'missingparam', 'storyaction' ),		
 		) );
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=storyreview&...' // TODO
+			'api.php?action=storyreview&storyid=42&storyaction=publish',
+			'api.php?action=storyreview&storyid=42&storyaction=hide',
+			'api.php?action=storyreview&storyid=42&storyaction=delete',
 		);
 	}
 
