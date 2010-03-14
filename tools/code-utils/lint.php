@@ -16,7 +16,7 @@ if ( isset( $argv[1] ) ) {
 	$dir = '.';
 }
 	
-if ( !check_dir( $dir ) ){
+if ( !check_dir( $dir ) ) {
 	exit( 1 );
 } else {
 	exit( 0 );
@@ -34,7 +34,7 @@ function check_dir( $dir ) {
 		}
 		if ( is_dir( "$dir/$fileName" ) ) {
 			$ret = check_dir( "$dir/$fileName" );
-		} elseif ( substr( $fileName, -4 ) == '.php' ) {
+		} elseif ( substr( $fileName, - 4 ) == '.php' ) {
 			$ret = check_file( "$dir/$fileName" );
 		} else {
 			$ret = true;

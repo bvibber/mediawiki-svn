@@ -29,7 +29,7 @@ if ( count( $argv ) ) {
 }
 
 function stylize_recursivly( $dir ) {
-	foreach ( glob("$dir/*") as $dirOrFile ) {
+	foreach ( glob( "$dir/*" ) as $dirOrFile ) {
 		if ( is_dir( $dirOrFile ) ) { // It's a directory, so call this function again.
 			stylize_recursivly( $dirOrFile );
 		} elseif ( is_file( $dirOrFile ) ) { // It's a file, so let's stylize it.
@@ -38,7 +38,7 @@ function stylize_recursivly( $dir ) {
 				stylize_file( $dirOrFile, false );
 			}
 		}
-	} 
+	}
 }
 
 function stylize_file( $filename, $backup = true ) {
@@ -69,7 +69,7 @@ class Stylizer {
 	static $tablesInitialised = false;
 	static $xSpaceBefore, $xSpaceAfter;
 
-	static $space = array( 
+	static $space = array(
 		T_WHITESPACE,
 		'START',
 		'END',
@@ -121,7 +121,7 @@ class Stylizer {
 		'=',
 		'+',
 		'|',
-		//':', can be a case label
+		// ':', can be a case label
 		'.',
 		'<',
 		'>',
@@ -156,11 +156,11 @@ class Stylizer {
 		$s = str_replace( "\r\n", "\n", $s );
 		$this->tokens = token_get_all( $s );
 		if ( !self::$tablesInitialised ) {
-			self::$xSpaceBefore = array_combine( 
+			self::$xSpaceBefore = array_combine(
 				array_merge( self::$spaceBefore, self::$spaceBothSides ),
 				array_fill( 0, count( self::$spaceBefore ) + count( self::$spaceBothSides ), true )
 			);
-			self::$xSpaceAfter = array_combine( 
+			self::$xSpaceAfter = array_combine(
 				array_merge( self::$spaceAfter, self::$spaceBothSides ),
 				array_fill( 0, count( self::$spaceAfter ) + count( self::$spaceBothSides ), true )
 			);
@@ -170,7 +170,7 @@ class Stylizer {
 	function get( $i ) {
 		if ( $i < 0 ) {
 			return array( 'START', '' );
-		} elseif( $i >= count( $this->tokens ) ) {
+		} elseif ( $i >= count( $this->tokens ) ) {
 			return array( 'END', '' );
 		} else {
 			$token = $this->tokens[$i];
@@ -245,14 +245,14 @@ class Stylizer {
 			}
 
 			// Detect close pairs like ()
-			$closePairBefore = isset( self::$closePairs[$prevType] ) 
+			$closePairBefore = isset( self::$closePairs[$prevType] )
 				&& $curType == self::$closePairs[$prevType];
-			$closePairAfter = isset( self::$closePairs[$curType] ) 
+			$closePairAfter = isset( self::$closePairs[$curType] )
 				&& $nextType == self::$closePairs[$curType];
 
 			// Add space before
-			if ( $this->isSpaceBefore( $curToken ) 
-				&& !$this->isSpace( $prevToken ) 
+			if ( $this->isSpaceBefore( $curToken )
+				&& !$this->isSpace( $prevToken )
 				&& !$closePairBefore
 			) {
 					$out .= ' ';
@@ -274,7 +274,7 @@ class Stylizer {
 			}
 
 			// Add space after
-			if ( $wantSpaceAfter 
+			if ( $wantSpaceAfter
 				&& !$closePairAfter
 				&& !$this->isSpace( $nextToken )
 				&& !$this->isSpaceBefore( $nextToken )
