@@ -3,23 +3,46 @@
 /**
  * A PHP code beautifier aimed at adding lots of spaces to files that lack them,
  * in keeping with MediaWiki's spacey site style.
+ * 
+ * @author tstarling 
+ * @author Jeroen De Dauw
  */
 
 
 if ( php_sapi_name() != 'cli' ) {
-	print "This script must be run from the command line\n";
+	echo "This script must be run from the command line\n";
 	exit( 1 );
 }
+
 array_shift( $argv );
+
 if ( count( $argv ) ) {
-	foreach ( $argv as $filename ) {
-		stylize_file( $filename );
+	foreach ( $argv as $dirOrFile ) {
+		if ( is_dir( $dirOrFile ) ) {
+			stylize_recursivly( $dirOrFile );
+		} else {
+			stylize_file( $dirOrFile );
+		}
 	}
 } else {
 	stylize_file( '-' );
 }
 
-function stylize_file( $filename ) {
+function stylize_recursivly( $dir ) {
+	foreach ( glob("$dir/*") as $dirOrFile ) {
+		if ( is_dir( $dirOrFile ) ) { // It's a directory, so call this function again.
+			stylize_recursivly( $dirOrFile );
+		} elseif ( is_file( $dirOrFile ) ) { // It's a file, so let's stylize it.
+			// Only stylize php and js files, omitting minified js files.
+			if ( preg_match( '/\.(php|php5|js)$/', $dirOrFile ) && !preg_match( '/\.(min\.js)$/', $dirOrFile ) ) {
+				stylize_file( $dirOrFile, false );
+			}
+		}
+	} 
+}
+
+function stylize_file( $filename, $backup = true ) {
+	echo "Stylizing file $filename\n";
 	if ( $filename == '-' ) {
 		$s = file_get_contents( '/dev/stdin' );
 		if ( $s === false ) {
@@ -35,7 +58,7 @@ function stylize_file( $filename ) {
 		}
 		$stylizer = new Stylizer( $s );
 		$s = $stylizer->stylize();
-		rename( $filename, "$filename~" );
+		if ( $backup ) rename( $filename, "$filename~" );
 		file_put_contents( $filename, $s );
 	}
 }
