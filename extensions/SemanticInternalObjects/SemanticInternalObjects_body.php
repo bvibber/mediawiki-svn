@@ -62,24 +62,24 @@ class SIOSQLStore extends SMWSQLStore2 {
 		foreach ( $internal_object->property_value_pairs as $property_value_pair ) {
 			list( $property, $value ) = $property_value_pair;
 			// handling changed in SMW 1.5
-			if (method_exists('SMWSQLStore2', 'findPropertyTableID')) {
+			if ( method_exists( 'SMWSQLStore2', 'findPropertyTableID' ) ) {
 				$tableid = SMWSQLStore2::findPropertyTableID( $property );
-				$is_relation = ($tableid == 'smw_rels2');
-				$is_attribute = ($tableid == 'smw_atts2');
-				$is_text = ($tableid == 'smw_text2');
+				$is_relation = ( $tableid == 'smw_rels2' );
+				$is_attribute = ( $tableid == 'smw_atts2' );
+				$is_text = ( $tableid == 'smw_text2' );
 			} else {
 				$mode = SMWSQLStore2::getStorageMode( $property->getPropertyTypeID() );
-				$is_relation = ($mode == SMW_SQL2_RELS2);
-				$is_attribute = ($mode == SMW_SQL2_ATTS2);
-				$is_text = ($mode == SMW_SQL2_TEXT2);
+				$is_relation = ( $mode == SMW_SQL2_RELS2 );
+				$is_attribute = ( $mode == SMW_SQL2_ATTS2 );
+				$is_text = ( $mode == SMW_SQL2_TEXT2 );
 			}
-			if ($is_relation) {
+			if ( $is_relation ) {
 				$up_rels2[] = array(
 					's_id' => $io_id,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'o_id' => $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki() )
 				);
-			} elseif ($is_attribute) {
+			} elseif ( $is_attribute ) {
 				$keys = $value->getDBkeys();
 				$up_atts2[] = array(
 					's_id' => $io_id,
@@ -88,11 +88,11 @@ class SIOSQLStore extends SMWSQLStore2 {
 					'value_xsd' => $keys[0],
 					'value_num' => $value->getNumericValue()
 				);
-			} elseif ($is_text) {
-				$keys = $value->getDBkeys();	 
-				$up_text2[] = array(	 
-					's_id' => $io_id,	 
-					'p_id' => $this->makeSMWPropertyID($property),	 
+			} elseif ( $is_text ) {
+				$keys = $value->getDBkeys();
+				$up_text2[] = array(
+					's_id' => $io_id,
+					'p_id' => $this->makeSMWPropertyID( $property ),
 					'value_blob' => $keys[0]
 				);
 			}
@@ -135,7 +135,7 @@ class SIOHandler {
 				$value = $parts[1];
 				// if the property name ends with '#list', it's
 				// a comma-delimited group of values
-				if ( substr( $key, -5 ) == '#list' ) {
+				if ( substr( $key, - 5 ) == '#list' ) {
 					$key = substr( $key, 0, strlen( $key ) - 5 );
 					$list_values = explode( ',', $value );
 					foreach ( $list_values as $list_value ) {
@@ -158,39 +158,39 @@ class SIOHandler {
 		// array.
 		$page_name = $subject->getDBKey();
 		$namespace = $subject->getNamespace();
-		$ids_for_deletion = $sio_sql_store->getIDsForDeletion($page_name, $namespace);
+		$ids_for_deletion = $sio_sql_store->getIDsForDeletion( $page_name, $namespace );
 
 		$all_rels2_inserts = array();
 		$all_atts2_inserts = array();
 		$all_text2_inserts = array();
-		foreach (self::$internal_objects as $internal_object) {
-			list($up_rels2, $up_atts2, $up_text2) = $sio_sql_store->getStorageSQL($page_name, $namespace, $internal_object);
-			$all_rels2_inserts = array_merge($all_rels2_inserts, $up_rels2);
-			$all_atts2_inserts = array_merge($all_atts2_inserts, $up_atts2);
-			$all_text2_inserts = array_merge($all_text2_inserts, $up_text2);
+		foreach ( self::$internal_objects as $internal_object ) {
+			list( $up_rels2, $up_atts2, $up_text2 ) = $sio_sql_store->getStorageSQL( $page_name, $namespace, $internal_object );
+			$all_rels2_inserts = array_merge( $all_rels2_inserts, $up_rels2 );
+			$all_atts2_inserts = array_merge( $all_atts2_inserts, $up_atts2 );
+			$all_text2_inserts = array_merge( $all_text2_inserts, $up_text2 );
 		}
 
 		// now save everything to the database, in a single transaction
 		$db = wfGetDB( DB_MASTER );
-		$db->begin('SIO::updatePageData');
-		if (count($ids_for_deletion) > 0) {
-			$ids_string = '(' . implode (', ', $ids_for_deletion) . ')';
-			$db->delete('smw_rels2', array("(s_id IN $ids_string) OR (o_id IN $ids_string)"), 'SIO::deleteRels2Data');
-			$db->delete('smw_atts2', array("s_id IN $ids_string"), 'SIO::deleteAtts2Data');
-			$db->delete('smw_text2', array("s_id IN $ids_string"), 'SIO::deleteText2Data');
+		$db->begin( 'SIO::updatePageData' );
+		if ( count( $ids_for_deletion ) > 0 ) {
+			$ids_string = '(' . implode ( ', ', $ids_for_deletion ) . ')';
+			$db->delete( 'smw_rels2', array( "(s_id IN $ids_string) OR (o_id IN $ids_string)" ), 'SIO::deleteRels2Data' );
+			$db->delete( 'smw_atts2', array( "s_id IN $ids_string" ), 'SIO::deleteAtts2Data' );
+			$db->delete( 'smw_text2', array( "s_id IN $ids_string" ), 'SIO::deleteText2Data' );
 		}
 
-		if (count($all_rels2_inserts) > 0) {
-			$db->insert( 'smw_rels2', $all_rels2_inserts, 'SIO::updateRels2Data');
+		if ( count( $all_rels2_inserts ) > 0 ) {
+			$db->insert( 'smw_rels2', $all_rels2_inserts, 'SIO::updateRels2Data' );
 		}
-		if (count($all_atts2_inserts) > 0) {
-			$db->insert( 'smw_atts2', $all_atts2_inserts, 'SIO::updateAtts2Data');
+		if ( count( $all_atts2_inserts ) > 0 ) {
+			$db->insert( 'smw_atts2', $all_atts2_inserts, 'SIO::updateAtts2Data' );
 		}
-		if (count($all_text2_inserts) > 0) {
-			$db->insert( 'smw_text2', $all_text2_inserts, 'SIO::updateText2Data');
+		if ( count( $all_text2_inserts ) > 0 ) {
+			$db->insert( 'smw_text2', $all_text2_inserts, 'SIO::updateText2Data' );
 		}
 		// end transaction
-		$db->commit('SIO::updatePageData');
+		$db->commit( 'SIO::updatePageData' );
 		self::$internal_objects = array();
 		return true;
 	}
@@ -201,16 +201,16 @@ class SIOHandler {
 	 * among the group; a set of names like "Page name#1", "Page name#2"
 	 * etc. should be turned into just "Page name".
 	 */
-	static function handleUpdatingOfInternalObjects(&$jobs) {
+	static function handleUpdatingOfInternalObjects( &$jobs ) {
 		$unique_titles = array();
-		foreach ($jobs as $i => $job) {
-			$title = Title::makeTitleSafe($job->title->getNamespace(), $job->title->getText());
+		foreach ( $jobs as $i => $job ) {
+			$title = Title::makeTitleSafe( $job->title->getNamespace(), $job->title->getText() );
 			$id = $title->getArticleID();
 			$unique_titles[$id] = $title;
 		}
 		$jobs = array();
-		foreach ($unique_titles as $id => $title) {
-			$jobs[] = new SMWUpdateJob($title);
+		foreach ( $unique_titles as $id => $title ) {
+			$jobs[] = new SMWUpdateJob( $title );
 		}
 		return true;
 	}
