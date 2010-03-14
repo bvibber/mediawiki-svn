@@ -96,9 +96,7 @@ class SpecialCode extends SpecialPage {
 			// repository list with an appropriate message.
 			if ( !$view->mRepo ) {
 				$view = new CodeRepoListView();
-				$wgOut->addHTML( "<p>" 
-								. wfMsg( 'code-repo-not-found',  $params[0] ) 
-								. "</p>" );
+				$wgOut->addWikiMsg( 'code-repo-not-found', wfEscapeWikiText( $params[0] ) );
 			}
 		}
 		$view->execute();

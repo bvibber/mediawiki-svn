@@ -194,6 +194,7 @@ $messages['qqq'] = array(
 	'code-field-comments' => '{{Identical|Notes}}',
 	'code-field-path' => '{{Identical|Path}}',
 	'code-field-select' => '{{Identical|Select}}',
+	'code-rev-id' => 'Modify the raw numeric revision ID (which is in $1) to the standard display format (rNNN).  This probably shouldn\'t be localised as the hot-linking within comments only recognises rNNN and having another representation of this in the interface will cause confusion.  In all other messages which take a revision ID as a parameter, the revision ID will already have been expanded using this message, so you should not include the \'r\' in the message itself.',
 	'code-rev-author' => '{{Identical|Author}}',
 	'code-rev-date' => '{{Identical|Date}}',
 	'code-rev-message' => '{{Identical|Comment}}',
@@ -235,6 +236,7 @@ $1 = Repository name',
 	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
 * <code>$2</code> – URL to the revision
 * <code>$3</code> – Commit message for the revision',
+	'code-repo-not-found' => 'Message displayed when the requested repository does not exist in the wiki\'s repo definitions.  $1 is the name that was requested, and will be fully escaped before output.',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
