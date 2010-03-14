@@ -97,6 +97,7 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -113,7 +114,7 @@ Klasket ho peus : '''$1'''",
 Klasket ho peus : '''$1'''",
 	'rt-badowner' => "N'eo ket mat an arguzenn owner (o) : rankout a ra bezañ un anv gwiriek.
 Klasket ho peus : '''$1'''",
-	'rt-nomatches' => "N'eo bet kavet tiked RT ebet",
+	'rt-nomatches' => "N'eus bet kavet tiked RT ebet o klotañ",
 );
 
 /** Bosnian (Bosanski)

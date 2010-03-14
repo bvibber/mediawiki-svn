@@ -118,6 +118,7 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -125,11 +126,11 @@ $messages['br'] = array(
 	'emergencydesysop-reason' => 'Abeg evit lemel',
 	'emergencydesysop-submit' => 'Kas',
 	'emergencydesysop-incomplete' => 'Rekis eo holl vaeziennoù ar furmskrid, esaeit en-dro mar plij.',
-	'emergencydesysop-notasysop' => "An implijer buket n'emañ ket er strollad merourien.",
+	'emergencydesysop-notasysop' => "An implijer buket n'emañ ket er strollad merañ.",
 	'emergencydesysop-nogroups' => 'Hini ebet',
 	'emergencydesysop-done' => 'Obererezh echuet, tennet eo bet ho kwirioù merour ha re [[$1]].',
-	'emergencydesysop-invalidtarget' => "N' ez eus ket eus an implijer buket.",
-	'emergencydesysop-blocked' => "Ne c'helloc'h ket mont d'ar bajenn-se keit ma 'moc'h stanket",
+	'emergencydesysop-invalidtarget' => "N'eus ket eus an implijer buket.",
+	'emergencydesysop-blocked' => "N'hallit ket gwelet ar bajenn-mañ e-keit ha ma'z oc'h stanket",
 	'emergencydesysop-noright' => "N'hoc'h eus ket aotreoù a-walc'h evit mont d'ar bajenn-mañ",
 );
 

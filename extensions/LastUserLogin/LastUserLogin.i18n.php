@@ -100,6 +100,20 @@ $messages['de'] = array(
 	'lastuserlogin_daysago' => 'Tage',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'lastuserlogin' => 'Τελευταία σύνδεση χρήστη',
+	'lastuserlogin-desc' => 'Εμφανίζει την τελευταία φορά που ένας χρήστης συνδέθηκε',
+	'lastuserlogin_userid' => 'Όνομα χρήστη',
+	'lastuserlogin_username' => 'Πραγματικό όνομα',
+	'lastuserlogin_useremail' => 'Email χρήστη',
+	'lastuserlogin_lastlogin' => 'Τελευταία σύνδεση',
+	'lastuserlogin_daysago' => 'Μέρες πριν',
+	'right-lastlogin' => 'Δείτε την τελευταία φορά που ένας χρήστης συνδέθηκε',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */

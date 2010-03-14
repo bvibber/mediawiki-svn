@@ -45,10 +45,12 @@ $messages['br'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'ukgeocoding_name' => 'Géocodage du Royaume-Uni pour les cartes',
 	'ukgeocoding_desc' => "Étend les cartes avec une fonction du parseur display_uk_point avec l'implémentation Google Maps",
+	'ukgeocoding_couldNotGeocode' => "Un ou plusieurs codes postaux n'ont pas pu être géolocalisés et ont été omis de la carte.",
 );
 
 /** Galician (Galego)
@@ -101,6 +103,7 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'ukgeocoding_name' => 'VK-geocodering voor Maps',
 	'ukgeocoding_desc' => 'Uitbreiding van Maps met de parserfunctie "display_uk_point" met een implementatie voor Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Een of meer postcodes konden niet gegeocodeerd worden en zijn uit de kaart weggelaten.',
 );
 
 /** Piedmontese (Piemontèis)

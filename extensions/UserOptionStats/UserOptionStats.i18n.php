@@ -689,6 +689,15 @@ $messages['tt-cyrl'] = array(
 	'uos-unknown' => '*Килешү буенча',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
+$messages['uk'] = array(
+	'useroptionstats' => 'Статистика користувацьких налаштувань',
+	'uos-unknown' => '*За умовчанням',
+	'uos-other' => '*Інші',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

@@ -226,6 +226,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -237,21 +238,21 @@ $messages['br'] = array(
 	'masseditregex-before' => 'A-raok',
 	'masseditregex-after' => 'Goude',
 	'masseditregex-max-preview-diffs' => "Bevennet eo ar rakweladenn d'{{PLURAL:$1|an disoc'h kentañ|ar $1 disoc'h kentañ}}.",
-	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|kemm|kemmoù}}',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|kemm|kemm}}',
 	'masseditregex-page-not-exists' => "N'eus ket eus $1",
-	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pennad|pennadoù}} embannet',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pennad|pennad}} kemmet',
 	'masseditregex-view-full-summary' => "Gwelet diverrañ klok ar c'hemmoù",
 	'masseditregex-hint-headmatch' => 'Klotadenn',
 	'masseditregex-hint-headreplace' => "Erlec'hiañ",
 	'masseditregex-hint-headeffect' => 'Efed',
 	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
-	'masseditregex-listtype-intro' => 'Setu ur roll eus :',
+	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
 	'masseditregex-listtype-backlinks' => 'Pajennoù liammet (kemmañ ar pajennoù enno ul liamm davet houmañ)',
 	'masseditregex-namespace-intro' => 'Emañ an holl bajennoù-mañ en esaouenn anv :',
 	'masseditregex-exprnomatch' => 'N\'eo bet kavet ar jedad "$1" e pajenn ebet.',
 	'masseditregex-badregex' => "N'eo ket mat ar regex :",
-	'masseditregex-editfailed' => 'Fazi e-pad an embann :',
+	'masseditregex-editfailed' => "C'hwitet an aozañ :",
 	'masseditregex-tooltip-execute' => "Arloañ ar c'hemmoù-se da bep pajenn",
 );
 

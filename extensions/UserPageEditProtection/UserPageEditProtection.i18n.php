@@ -49,6 +49,14 @@ $messages['de'] = array(
 	'right-editalluserpages' => 'Benutzerseiten bearbeiten',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'userpageeditprotection-desc' => 'Περιορίζει την επεξεργασία στις σελίδες χρήστη στον χρήστη και επιτρεπόμενους συντάκτες',
+	'right-editalluserpages' => 'Επεξεργασία σελίδων χρήστη',
+);
+
 /** French (Français)
  * @author IAlex
  */

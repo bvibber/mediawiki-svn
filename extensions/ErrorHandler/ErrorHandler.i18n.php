@@ -177,7 +177,7 @@ $messages['br'] = array(
 	'errorhandler-desc' => 'Merer ar fazioù evit MediaWiki',
 	'errorhandler-errors' => 'Fazioù :',
 	'errorhandler-error-fatal' => 'Fazi diremed',
-	'errorhandler-error-warning' => 'Evezhiadenn',
+	'errorhandler-error-warning' => 'Diwallit',
 	'errorhandler-error-parse' => 'Fazi parser',
 	'errorhandler-error-notice' => 'Notennig',
 	'errorhandler-error-deprecated' => "Dic'hizet",
@@ -195,7 +195,7 @@ $messages['br'] = array(
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> e <b>$3</b> (linenn <b>$4</b>)',
 	'errorhandler-trace' => 'roud :',
 	'errorhandler-trace-line' => '$1 (linenn $2) : $3',
-	'errorhandler-trace-line-internal' => '[foñksion diabarzh]: $1',
+	'errorhandler-trace-line-internal' => "[arc'hwel diabarzh] : $1",
 );
 
 /** Bosnian (Bosanski)

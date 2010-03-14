@@ -1208,7 +1208,7 @@ Wir möchten gerne erfahren, was du über unsere neue Benutzeroberfläche denkst
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Ich mag das Aussehen nicht.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ich mag die neuen Tabs und das Layout nicht.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ich mag die neue Werkzeugleiste nicht.',
-	'optin-survey-answer-whyoptout-other' => 'Andere Begründung:',
+	'optin-survey-answer-whyoptout-other' => 'Anderer Grund:',
 	'optin-survey-question-explain' => 'Bitte erkläre deine obige Antwort oder arbeite sie aus:',
 	'optin-survey-question-techfail' => 'Hast du beim Ausprobieren von Beta irgendwelche technischen Fehler entdeckt?',
 	'optin-survey-question-techfail-ifyes' => 'Falls ja, bitte ausarbeiten oder erklären:',

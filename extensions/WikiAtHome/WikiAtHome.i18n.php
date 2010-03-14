@@ -343,6 +343,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'wah-desc' => 'Umožňuje distribuci úloh překódování videa klientům pomocí Firefogg',
@@ -367,7 +368,7 @@ $messages['cs'] = array(
 	'wah-start-on-visit' => 'Spustit Wiki@Home vždy, když navštívím tuto stránku.',
 	'wah-jobs-while-away' => 'Spouštět úlohy pouze, pokud jsem prohlížeč nepoužíval více než 20 minut.',
 	'wah-nojobfound' => 'Nebyla nalezena žádná úloha. Opětovný pokus za $1.',
-	'wah-notoken-login' => 'Jste přihlášeni? Pokud ne, přihlašte se, prosím.',
+	'wah-notoken-login' => 'Jste přihlášeni? Pokud ne, přihlaste se, prosím.',
 	'wah-apioff' => 'Zdá se, že API Wiki@Home je vypnuto. Zkontaktuje prosím správce wiki.',
 	'wah-doing-job' => 'Úloha: <i>$1</i>: <i>$2</i>',
 	'wah-downloading' => 'Stahování souboru <i>$1%</i> dokončeno',

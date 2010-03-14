@@ -267,6 +267,7 @@ $messages['br'] = array(
 	'povwatch_push' => 'Bountañ',
 	'povwatch_title' => 'Titl :',
 	'povwatch_comment' => 'Addispleg evit an deizlevr :',
+	'povwatch_no_log' => "N'ez eus moned ebet er marilh.",
 	'povwatch_no_subscribers' => "N'eus ket koumananterien.",
 	'povwatch_unsubscribe_intro' => "Koumanantet oc'h da bPovWatch.
 Klikit war ar bouton a-is evit digoumanantiñ.",
@@ -275,6 +276,7 @@ Klikit war ar bouton a-is evit digoumanantiñ.",
 Evit en em enskrivañ klikit war ar bouton da-heul.",
 	'povwatch_subscribe' => 'Koumanantiñ',
 	'povwatch_added' => 'ouzhpennet',
+	'action-povwatch_admin' => 'melestriñ ar gwirioù implijer evit PovWatch',
 	'action-povwatch_user' => 'ouzhpennañ ar bajenn-mañ da roll evezhiañ un implijer all',
 );
 
