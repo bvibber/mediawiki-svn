@@ -19,28 +19,29 @@ class SpecialStory extends IncludableSpecialPage {
 		parent::__construct( 'Story' );
 	}
 
-	public function execute( $identifier ) {
+	public function execute( $title ) {
 		wfProfileIn( __METHOD__ );
-		
-		if ( trim( $identifier ) == '' ) {
-			global $wgOut;
-			$wgOut->addHTML( wfMsg( 'storyboard-nostorytitle' ) );
-			return;
-		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		if ( is_numeric( $identifier ) ) {
+		if ( trim( $identifier ) != '' ) {
 			$conds = array(
-				'story_id' => $identifier
+				'story_title' => str_replace( '_', ' ', $title )
 			);
 		} else {
-			$conds = array(
-				'story_title' => str_replace( '_', ' ', $identifier ) // TODO: escaping required?
-			);
+			$id = $wgRequest->getIntOrNull( 'id' );
+			if ( $id ) {
+				$conds = array(
+					'story_id' => $id
+				);				
+			} else {
+				global $wgOut;
+				$wgOut->addWikiMsg( 'storyboard-nostorytitle' );
+				return;
+			}
 		}
 		
-		$stories = $dbr->Select(
+		$stories = $dbr->selectRow(
 			'storyboard',
 			array(
 				'story_id',

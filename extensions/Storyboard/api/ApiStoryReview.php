@@ -43,7 +43,7 @@ class ApiStoryReview extends ApiBase {
 		global $wgUser;
 		
 		if ( !$wgUser->isAllowed( 'storyreview' ) || $wgUser->isBlocked() ) {
-			$this->dieUsageMsg( array( 'storyreview' ) );
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 		
 		$params = $this->extractRequestParams();
@@ -60,8 +60,7 @@ class ApiStoryReview extends ApiBase {
 		$dbw = wfGetDB( DB_MASTER );
 
 		if ( $params['storyaction'] == 'delete' ) {
-			// TODO: does this need to be escaped, or is putting the type of the param to integer sufficient?
-			$dbw->delete( 'storyboard', "story_id = '$params[storyid]'" );
+			$dbw->delete( 'storyboard', array( 'story_id' => $dbw->escape( $params['storyid'] ) ) );
 		} else {
 			$conds = array(
 				'story_id' => $params['storyid']
@@ -114,14 +113,24 @@ class ApiStoryReview extends ApiBase {
 			'storyid' => array(
 				ApiBase :: PARAM_TYPE => 'integer',
 			),
-			'storyaction' => null,
+			'storyaction' => array(
+				ApiBase::PARAM_TYPE => array(
+					'hide',
+					'unhide',
+					'publish',
+					'unpublish',
+					'hideimage',
+					'showimage',
+					'deleteimage',
+				)
+			),
 		);
 	}
 	
 	public function getParamDescription() {
 		return array(
-			'storyid' => '',
-			'storyaction' => '',
+			'storyid' => 'The id of the story you want to modify or delete',
+			'storyaction' => 'Indicates in what way you want to modify the story',
 		);
 	}
 	
