@@ -65,6 +65,7 @@ $messages['br'] = array(
 	'wikieditor-template-editor-preference' => "Gweredekaat ar c'hemmañ partromoù wiki diwar furmskridoù",
 	'wikieditor-template-editor-dialog-title' => 'Kemmañ ar patrom',
 	'wikieditor-template-editor-dialog-submit' => 'Hizivaat',
+	'wikieditor-template-editor-dialog-cancel' => 'Nullañ',
 );
 
 /** Bosnian (Bosanski)
@@ -104,6 +105,8 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'wikieditor-template-editor-preference' => 'Formularbasiertes Bearbeiten von Wiki-Vorlagen aktivieren',
+	'wikieditor-template-editor-dialog-title' => 'Vorlage bearbeiten',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualisieren',
 	'wikieditor-template-editor-dialog-cancel' => 'Abbrechen',
 );
 

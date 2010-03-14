@@ -145,6 +145,8 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'usabilityinitiative' => 'Benutzerfreundlichkeitsinitiative',
 	'usabilityinitiative-desc' => 'Von der Wikipedia-Benutzerfreundlichkeitsinitiative entwickelte Features, um die Benutzerfreundlichkeit von MediaWiki zu verbessern',
+	'prefs-beta' => 'Beta-Funktionen',
+	'prefs-labs' => 'Experimentelle Labor-Funktionen',
 );
 
 /** Zazaki (Zazaki)
@@ -331,6 +333,8 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'usabilityinitiative' => 'ユーザビリティ・イニシアティブ',
 	'usabilityinitiative-desc' => 'ウィキペディア・ユーザビリティ・イニシアティブによって MediaWiki の使いやすさを向上させるために開発された各種機能',
+	'prefs-beta' => 'ベータ版機能',
+	'prefs-labs' => 'ラボの機能',
 );
 
 /** Georgian (ქართული)
