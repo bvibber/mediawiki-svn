@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -27,14 +27,14 @@ $egMapsAvailableFeatures['pf']['hooks'][]	= 'UKGDisplayUkPoint';
 function efUKGDisplayUkPointMagic( &$magicWords, $langCode ) {
 	$magicWords['display_uk_point'] = array( 0, 'display_uk_point', 'display_uk_points' );
 	return true; // Unless we return true, other parser functions won't get loaded.
-}	
+}
 
 /**
  * Adds the parser function hooks
  */
-function efUKGRegisterDisplayPoint(&$wgParser) {
+function efUKGRegisterDisplayPoint( &$wgParser ) {
 	// Hooks to enable the '#display_uk_point' and '#display_uk_points' parser functions.
-	$wgParser->setFunctionHook( 'display_uk_point', array('UKGDisplayUkPoint', 'displayUkPointRender') );
+	$wgParser->setFunctionHook( 'display_uk_point', array( 'UKGDisplayUkPoint', 'displayUkPointRender' ) );
 	return true;
 }
 
@@ -61,58 +61,58 @@ final class UKGDisplayUkPoint {
 	 * 
 	 * @return array
 	 */
-	public static function displayUkPointRender(&$parser) {
+	public static function displayUkPointRender( &$parser ) {
 		global $wgLang, $egValidatorErrorLevel;
 		
 		$params = func_get_args();
         
         array_shift( $params ); // We already know the $parser.
-        
+
         $map = array();
         $coordFails = array();
         
-        $paramInfo = array_merge(MapsMapper::getMainParams(), self::$parameters);
+        $paramInfo = array_merge( MapsMapper::getMainParams(), self::$parameters );
         
 		// Go through all parameters, split their names and values, and put them in the $map array.
-        foreach($params as $param) {
-			$split = explode('=', $param);
-			if (count($split) > 1) {
-                $paramName = strtolower(trim($split[0]));
-                $paramValue = trim($split[1]);
-                if (strlen($paramName) > 0 && strlen($paramValue) > 0) {
+        foreach ( $params as $param ) {
+			$split = explode( '=', $param );
+			if ( count( $split ) > 1 ) {
+                $paramName = strtolower( trim( $split[0] ) );
+                $paramValue = trim( $split[1] );
+                if ( strlen( $paramName ) > 0 && strlen( $paramValue ) > 0 ) {
                 	$map[$paramName] = $paramValue;
-                	if (MapsParserFunctions::inParamAliases($paramName, 'coordinates', $paramInfo)) {
-                		$coordFails = MapsParserFunctions::filterInvalidCoords($map[$paramName]);
+                	if ( MapsParserFunctions::inParamAliases( $paramName, 'coordinates', $paramInfo ) ) {
+                		$coordFails = MapsParserFunctions::filterInvalidCoords( $map[$paramName] );
                 	}
                 }
             }
-            else if (count($split) == 1) { // Default parameter (without name)
-            	$split[0] = trim($split[0]);
-                if (strlen($split[0]) > 0) $map['coordinates'] = $split[0];
-            }			
+            else if ( count( $split ) == 1 ) { // Default parameter (without name)
+            	$split[0] = trim( $split[0] );
+                if ( strlen( $split[0] ) > 0 ) $map['coordinates'] = $split[0];
+            }
         }
         
-		if (! MapsParserFunctions::paramIsPresent('service', $map, $paramInfo)) $map['service'] = '';
+		if ( ! MapsParserFunctions::paramIsPresent( 'service', $map, $paramInfo ) ) $map['service'] = '';
 
-		$map['service'] = MapsMapper::getValidService($map['service'], 'pf', 'display_uk_point');                
+		$map['service'] = MapsMapper::getValidService( $map['service'], 'pf', 'display_uk_point' );
 
-		$mapClass = MapsParserFunctions::getParserClassInstance($map['service'], 'display_uk_point');
+		$mapClass = MapsParserFunctions::getParserClassInstance( $map['service'], 'display_uk_point' );
     
 		// Call the function according to the map service to get the HTML output
-		$output = $mapClass->displayMap($parser, $map);    
+		$output = $mapClass->displayMap( $parser, $map );
 
-		if ($egValidatorErrorLevel >= Validator_ERRORS_WARN && count($coordFails) > 0) {
-			$output .= '<i>' . wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';        	
+		if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN && count( $coordFails ) > 0 ) {
+			$output .= '<i>' . wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
 		}
         
         // Return the result
-        return $parser->insertStripItem($output, $parser->mStripState);	
+        return $parser->insertStripItem( $output, $parser->mStripState );
 	}
 	
 	private static function initializeParams() {
 		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsAvailableServices, $egMapsDefaultServices;
 		
-		self::$parameters = array(	
+		self::$parameters = array(
 			'service' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
@@ -120,7 +120,7 @@ final class UKGDisplayUkPoint {
 				'default' => $egMapsDefaultServices['pf']
 			),
 			'coordinates' => array(
-				'aliases' => array('coords', 'location', 'locations'),
+				'aliases' => array( 'coords', 'location', 'locations' ),
 			),
 			'title' => array(
 				'default' => $egMapsDefaultTitle
@@ -128,11 +128,11 @@ final class UKGDisplayUkPoint {
 			'label' => array(
 				'default' => $egMapsDefaultLabel
 			),
-			'icon' => array(			
+			'icon' => array(
 				'criteria' => array(
 					'not_empty' => array()
 				),
-			),									
+			),
 		);
-	}	
+	}
 }	

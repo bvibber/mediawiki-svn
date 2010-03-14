@@ -7,7 +7,7 @@
  * @ingroup UKGeocodingForMaps
  *
  * @author Jeroen De Dauw
- */ 
+ */
 
 $messages = array();
 

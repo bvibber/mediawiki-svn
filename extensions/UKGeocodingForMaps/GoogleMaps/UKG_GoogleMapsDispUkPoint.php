@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -27,7 +27,7 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 	/**
 	 * @see MapsBaseMap::setMapSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
 		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
 		
@@ -36,19 +36,19 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 		
 		$this->spesificParameters = array(
 			'overlays' => array(
-				'type' => array('string', 'list'),
+				'type' => array( 'string', 'list' ),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),	
-				'default' => $egMapsGMapOverlays,		
+					),
+				'default' => $egMapsGMapOverlays,
 				),
-		);		
+		);
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		
+	 */
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage, $loadedAjaxApi, $egGoogleAjaxSearchKey;
 		
@@ -66,11 +66,11 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */	
+	 */
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType, $egValidatorErrorLevel;
 		
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );	
+		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
 		if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) {
 			$couldNotGeocodeMsg = Xml::escapeJsString( wfMsg( 'ukgeocoding_couldNotGeocode' ) );
@@ -79,7 +79,7 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 			$showErrorJs = '';
 		}
 		
-		$this->output .=<<<EOT
+		$this->output .= <<<EOT
 <div id="$this->mapName"></div>
 <div id="{$this->mapName}_errors"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/

@@ -17,19 +17,19 @@
  * @defgroup UKGeocodingForMaps UK Geocoding for Maps
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('UKG_VERSION', '0.2 a1');
+define( 'UKG_VERSION', '0.2 a1' );
 
-$ukggScriptPath 	= (isset($wgExtensionAssetsPath) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions') . '/UKGeocodingForMaps';
+$ukggScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/UKGeocodingForMaps';
 $ukggDir 			= dirname( __FILE__ ) . '/';
 
 $ukggStyleVersion 	= $wgStyleVersion . '-' . UKG_VERSION;
 
 // Include the settings file
-require_once($ukggDir . 'UKGeocodingForMaps_Settings.php');
+require_once( $ukggDir . 'UKGeocodingForMaps_Settings.php' );
 
 $wgExtensionMessagesFiles['UKGeocodingForMaps'] = $ukggDir . 'UKGeocodingForMaps.i18n.php';
 
@@ -47,7 +47,7 @@ function ukgfSetup() {
 
 	wfLoadExtensionMessages( 'UKGeocodingForMaps' );
 
-	$wgExtensionCredits['parserhook'][]= array(
+	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg( 'ukgeocoding_name' ),
 		'version' => UKG_VERSION,
@@ -56,5 +56,5 @@ function ukgfSetup() {
 		'descriptionmsg' => 'ukgeocoding_desc',
 	);
 
-	return true;	
+	return true;
 }

@@ -6,8 +6,8 @@
  * @ingroup UKGeocodingForMaps
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps2']['pf']['display_uk_point'] = array('class' => 'UKGGoogleMapsDispUkPoint', 'file' => 'UKGeocodingForMaps/GoogleMaps/UKG_GoogleMapsDispUkPoint.php');
+$egMapsServices['googlemaps2']['pf']['display_uk_point'] = array( 'class' => 'UKGGoogleMapsDispUkPoint', 'file' => 'UKGeocodingForMaps/GoogleMaps/UKG_GoogleMapsDispUkPoint.php' );
