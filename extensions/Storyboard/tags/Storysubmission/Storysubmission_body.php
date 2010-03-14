@@ -52,8 +52,8 @@ class TagStorysubmission {
 		$fieldSize = 50;
 		
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStorysubmissionWidth );
-		$maxLen = array_key_exists('maxlength', $args) && is_numeric($args['maxlength']) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
-		$minLen = array_key_exists('minlength', $args) && is_numeric($args['minlength']) ? $args['minlength'] : $egStoryboardMinStoryLen;
+		$maxLen = array_key_exists( 'maxlength', $args ) && is_numeric( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
+		$minLen = array_key_exists( 'minlength', $args ) && is_numeric( $args['minlength'] ) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
 		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=purge' );
 		
@@ -64,39 +64,39 @@ class TagStorysubmission {
 			$defaultName = $wgUser->getRealName() !== '' ? $wgUser->getRealName() : $wgUser->getName();
 		}
 		$formBody .= '<tr>' .
-			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-yourname' ) ) .
-			'<td>' . 
-			Html::input('name', $defaultName, 'text', array( 'size' => $fieldSize )
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-yourname' ) ) .
+			'<td>' .
+			Html::input( 'name', $defaultName, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-location' ) ) .
-			'<td>' . Html::input('location', '', 'text', array( 'size' => $fieldSize )
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-location' ) ) .
+			'<td>' . Html::input( 'location', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-occupation' ) ) .
-			'<td>' . Html::input('occupation', '', 'text', array( 'size' => $fieldSize )
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-occupation' ) ) .
+			'<td>' . Html::input( 'occupation', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
-			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-contact' ) ) .
-			'<td>' . Html::input('contact', '', 'text', array( 'size' => $fieldSize )
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-contact' ) ) .
+			'<td>' . Html::input( 'contact', '', 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .
-			Html::element( 'td', array('width' => '100%'), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . Html::input('storytitle', '', 'text', array( 'size' => $fieldSize )
-			) . '</td></tr>';			
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-storytitle' ) ) .
+			'<td>' . Html::input( 'storytitle', '', 'text', array( 'size' => $fieldSize )
+			) . '</td></tr>';
 		
 		$formBody .= '<tr><td colspan="2">' .
 			wfMsg( 'storyboard-story' ) .
 			Html::element(
 				'div',
-				array('class' => 'storysubmission-charcount', 'id' => 'storysubmission-charlimitinfo'),
+				array( 'class' => 'storysubmission-charcount', 'id' => 'storysubmission-charlimitinfo' ),
 				wfMsgExt( 'storyboard-charsneeded', 'parsemag', $minLen )
 			) .
-			'<br />' . 
+			'<br />' .
 			Html::element(
 				'textarea',
 				array(
@@ -110,13 +110,13 @@ class TagStorysubmission {
 			'</td></tr>';
 		
 		// TODO: add upload functionality
-		
+
 		$formBody .= '<tr><td colspan="2"><input type="checkbox" id="storyboard-agreement" />&nbsp;' .
 			htmlspecialchars( wfMsg( 'storyboard-agreement' ) ) .
 			'</td></tr>';
 			
-		$formBody .= '<tr><td colspan="2">' . 
-			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array('id' => 'storysubmission-button') ) .
+		$formBody .= '<tr><td colspan="2">' .
+			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
 			'</td></tr>';
 			
 		$formBody .= '</table>';
@@ -145,7 +145,7 @@ class TagStorysubmission {
 		$dbw = wfGetDB( DB_MASTER );
 		
 		// TODO: some sort of validation?
-		
+
 		$story = array(
 			'story_author_name' => $wgRequest->getText( 'name' ),
 			'story_author_location' => $wgRequest->getText( 'location' ),
@@ -164,7 +164,7 @@ class TagStorysubmission {
 		$dbw->insert( 'storyboard', $story );
 		
 		$responseHtml = ''; // TODO: create html response
-		
+
 		return $responseHtml;
 	}
 	

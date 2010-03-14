@@ -23,7 +23,7 @@ class SpecialStoryReview extends SpecialPage {
 		wfProfileIn( __METHOD__ );
 		
 		global $wgUser;
-		if( $this->userCanExecute( $wgUser ) ){
+		if ( $this->userCanExecute( $wgUser ) ) {
 			// If the user has the storyreview permission and is not blocked, show the regular output.
 			$this->addOutput();
 		} else {
@@ -52,7 +52,7 @@ class SpecialStoryReview extends SpecialPage {
 				'story_author_name',
 				'story_title',
 				'story_text',
-				'story_is_published'			
+				'story_is_published'
 			),
 			array( 'story_is_hidden' => 0 )
 		);
@@ -75,7 +75,7 @@ class SpecialStoryReview extends SpecialPage {
 		$revMsg = wfMsg( 'storyboard-reviewed' );
 		
 		// Output the html for the stories.
-		$wgOut->addHTML(<<<EOT
+		$wgOut->addHTML( <<<EOT
 		<h2>$unrevMsg</h2>
 		<table width="100%">
 		$unreviewed

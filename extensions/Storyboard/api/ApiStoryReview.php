@@ -44,7 +44,7 @@ class ApiStoryReview extends ApiBase {
 		
 		if ( !$wgUser->isAllowed( 'storyreview' ) || $wgUser->isBlocked() ) {
 			$this->dieUsageMsg( array( 'storyreview' ) );
-		} 
+		}
 		
 		$params = $this->extractRequestParams();
 		
@@ -82,11 +82,11 @@ class ApiStoryReview extends ApiBase {
 					$values = array(
 						'story_is_published' => 1
 					);
-					break;	
+					break;
 				case 'unpublish' :
 					$values = array(
 						'story_is_published' => 0
-					);					
+					);
 					break;
 				case 'hideimage' :
 					$values = array(
@@ -102,7 +102,7 @@ class ApiStoryReview extends ApiBase {
 					$values = array(
 						'story_author_image' => ''
 					);
-					break;															
+					break;
 			}
 			
 			$dbw->update( 'storyboard', $values, $conds );
@@ -112,16 +112,16 @@ class ApiStoryReview extends ApiBase {
 	public function getAllowedParams() {
 		return array(
 			'storyid' => array(
-				ApiBase :: PARAM_TYPE => 'integer',		
+				ApiBase :: PARAM_TYPE => 'integer',
 			),
-			'storyaction' => null,		
+			'storyaction' => null,
 		);
-	}	
+	}
 	
 	public function getParamDescription() {
 		return array(
 			'storyid' => '',
-			'storyaction' => '',			
+			'storyaction' => '',
 		);
 	}
 	
@@ -134,7 +134,7 @@ class ApiStoryReview extends ApiBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'storyid' ),
-			array( 'missingparam', 'storyaction' ),		
+			array( 'missingparam', 'storyaction' ),
 		) );
 	}
 
@@ -148,5 +148,5 @@ class ApiStoryReview extends ApiBase {
 
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
-	}	
+	}
 }

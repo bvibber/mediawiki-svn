@@ -89,7 +89,7 @@ class ApiQueryStories extends ApiQueryBase {
 				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
-			'continue' => null,						
+			'continue' => null,
 		);
 	}
 
@@ -126,6 +126,6 @@ class ApiQueryStories extends ApiQueryBase {
 
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
-	}	
+	}
 	
 }

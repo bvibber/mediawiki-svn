@@ -22,8 +22,8 @@ class SpecialStory extends IncludableSpecialPage {
 	public function execute( $identifier ) {
 		wfProfileIn( __METHOD__ );
 		
-		if ( trim($identifier) == '' ) {
-			global $wgOut;			
+		if ( trim( $identifier ) == '' ) {
+			global $wgOut;
 			$wgOut->addHTML( wfMsg( 'storyboard-nostorytitle' ) );
 			return;
 		}
@@ -37,10 +37,10 @@ class SpecialStory extends IncludableSpecialPage {
 		} else {
 			$conds = array(
 				'story_title' => str_replace( '_', ' ', $identifier ) // TODO: escaping required?
-			);			
+			);
 		}
 		
-		$stories = $dbr->Select( 
+		$stories = $dbr->Select(
 			'storyboard',
 			array(
 				'story_id',
@@ -48,7 +48,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'story_title',
 				'story_text',
 				'story_created',
-				'story_is_published',		
+				'story_is_published',
 			),
 			$conds
 		);
@@ -61,7 +61,7 @@ class SpecialStory extends IncludableSpecialPage {
 			}
 			else {
 				$wgOut->addHTML( wfMsg( 'storyboard-unpublished' ) );
-			}			
+			}
 		}
 		else {
 			global $wgOut;

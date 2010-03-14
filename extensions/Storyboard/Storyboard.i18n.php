@@ -23,10 +23,10 @@ $messages['en'] = array(
 	// Special:Story
 	'storyboard-nosuchstory' => 'The story you requested does not exist. It might have been removed.',
 	'storyboard-unpublished' => 'The story you requested has not been published yet.',
-	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',	
+	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
 
 	// Story review
-	'storyboard-storyreview' => 'Story review',	
+	'storyboard-storyreview' => 'Story review',
 	'storyboard-publish' => 'Publish',
 	'storyboard-unpublish' => 'Unpublish',
 	'storyboard-reviewed' => 'Reviewed',
