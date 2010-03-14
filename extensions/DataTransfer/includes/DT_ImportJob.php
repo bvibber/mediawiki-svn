@@ -24,7 +24,7 @@ class DTImportJob extends Job {
 			return false;
 		}
 
-		$article = new Article($this->title);
+		$article = new Article( $this->title );
 		if ( !$article ) {
 			$this->error = 'dtImport: Article not found "' . $this->title->getPrefixedDBkey() . '"';
 			wfProfileOut( __METHOD__ );
@@ -35,10 +35,10 @@ class DTImportJob extends Job {
 		// the job only for the extent of this import
 		global $wgUser;
 		$actual_user = $wgUser;
-		$wgUser = User::newFromId($this->params['user_id']);
+		$wgUser = User::newFromId( $this->params['user_id'] );
 		$text = $this->params['text'];
 		$edit_summary = $this->params['edit_summary'];
-		$article->doEdit($text, $edit_summary);
+		$article->doEdit( $text, $edit_summary );
 		$wgUser = $actual_user;
 		wfProfileOut( __METHOD__ );
 		return true;

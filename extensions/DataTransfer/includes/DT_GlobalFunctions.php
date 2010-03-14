@@ -5,15 +5,15 @@
  * @author Yaron Koren
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define('DT_VERSION','0.3.4');
+define( 'DT_VERSION', '0.3.4' );
 
 // constants for special properties
-define('DT_SP_HAS_XML_GROUPING', 1);
-define('DT_SP_IS_EXCLUDED_FROM_XML', 2);
+define( 'DT_SP_HAS_XML_GROUPING', 1 );
+define( 'DT_SP_IS_EXCLUDED_FROM_XML', 2 );
 
-$wgExtensionCredits['specialpage'][]= array(
+$wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Data Transfer',
 	'version'        => DT_VERSION,
@@ -37,7 +37,7 @@ $wgAutoloadClasses['DTXMLParser'] = $dtgIP . '/includes/DT_XMLParser.php';
 $wgHooks['AdminLinks'][] = 'dtfAddToAdminLinks';
 $wgHooks['smwInitProperties'][] = 'dtfInitProperties';
 
-require_once($dtgIP . '/languages/DT_Language.php');
+require_once( $dtgIP . '/languages/DT_Language.php' );
 $wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
 $wgExtensionAliasesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Aliases.php';
 
@@ -51,20 +51,20 @@ $wgExtensionAliasesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Aliases.php';
  * determine labels for additional namespaces. In contrast, messages
  * can be initialised much later when they are actually needed.
  */
-function dtfInitContentLanguage($langcode) {
+function dtfInitContentLanguage( $langcode ) {
 	global $dtgIP, $dtgContLang;
 
-	if (!empty($dtgContLang)) { return; }
+	if ( !empty( $dtgContLang ) ) { return; }
 
 	$dtContLangClass = 'DT_Language' . str_replace( '-', '_', ucfirst( $langcode ) );
 
-	if (file_exists($dtgIP . '/languages/'. $dtContLangClass . '.php')) {
-		include_once( $dtgIP . '/languages/'. $dtContLangClass . '.php' );
+	if ( file_exists( $dtgIP . '/languages/' . $dtContLangClass . '.php' ) ) {
+		include_once( $dtgIP . '/languages/' . $dtContLangClass . '.php' );
 	}
 
 	// fallback if language not supported
-	if ( !class_exists($dtContLangClass)) {
-		include_once($dtgIP . '/languages/DT_LanguageEn.php');
+	if ( !class_exists( $dtContLangClass ) ) {
+		include_once( $dtgIP . '/languages/DT_LanguageEn.php' );
 		$dtContLangClass = 'DT_LanguageEn';
 	}
 
@@ -76,19 +76,19 @@ function dtfInitContentLanguage($langcode) {
  * must happen after the content language was initialised, since
  * this language is used as a fallback.
  */
-function dtfInitUserLanguage($langcode) {
+function dtfInitUserLanguage( $langcode ) {
 	global $dtgIP, $dtgLang;
 
-	if (!empty($dtgLang)) { return; }
+	if ( !empty( $dtgLang ) ) { return; }
 
 	$dtLangClass = 'DT_Language' . str_replace( '-', '_', ucfirst( $langcode ) );
 
-	if (file_exists($dtgIP . '/languages/'. $dtLangClass . '.php')) {
-		include_once( $dtgIP . '/languages/'. $dtLangClass . '.php' );
+	if ( file_exists( $dtgIP . '/languages/' . $dtLangClass . '.php' ) ) {
+		include_once( $dtgIP . '/languages/' . $dtLangClass . '.php' );
 	}
 
 	// fallback if language not supported
-	if ( !class_exists($dtLangClass)) {
+	if ( !class_exists( $dtLangClass ) ) {
 		global $dtgContLang;
 		$dtgLang = $dtgContLang;
 	} else {
@@ -103,7 +103,7 @@ function dtfInitUserLanguage($langcode) {
 function dtfInitProperties() {
 	global $dtgContLang;
 	$dt_props = $dtgContLang->getPropertyLabels();
-	SMWPropertyValue::registerProperty('_DT_XG', '_str', $dt_props[DT_SP_HAS_XML_GROUPING], true);
+	SMWPropertyValue::registerProperty( '_DT_XG', '_str', $dt_props[DT_SP_HAS_XML_GROUPING], true );
 	// TODO - this should set a "backup" English value as well,
 	// so that the phrase "Has XML grouping" works in all languages
 	return true;
@@ -113,11 +113,11 @@ function dtfInitProperties() {
  * Add links to the 'AdminLinks' special page, defined by the Admin Links
  * extension
  */
-function dtfAddToAdminLinks($admin_links_tree) {
-	$import_export_section = $admin_links_tree->getSection(wfMsg('adminlinks_importexport'));
-	$main_row = $import_export_section->getRow('main');
-	$main_row->addItem(ALItem::newFromSpecialPage('ViewXML'));
-	$main_row->addItem(ALItem::newFromSpecialPage('ImportXML'));
-	$main_row->addItem(ALItem::newFromSpecialPage('ImportCSV'));
+function dtfAddToAdminLinks( $admin_links_tree ) {
+	$import_export_section = $admin_links_tree->getSection( wfMsg( 'adminlinks_importexport' ) );
+	$main_row = $import_export_section->getRow( 'main' );
+	$main_row->addItem( ALItem::newFromSpecialPage( 'ViewXML' ) );
+	$main_row->addItem( ALItem::newFromSpecialPage( 'ImportXML' ) );
+	$main_row->addItem( ALItem::newFromSpecialPage( 'ImportCSV' ) );
 	return true;
 }
