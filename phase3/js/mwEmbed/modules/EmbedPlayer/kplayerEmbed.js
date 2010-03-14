@@ -37,8 +37,9 @@ var kplayerEmbed = {
 		flashvars.sourceType = "url";
 		//flashvars.host = "www.kaltura.com";
 		flashvars.externalInterfaceDisabled = 'false';
+		flashvars.skinPath = playerPath + '/skin.swf';
 		
-		var params = {};
+		var params = { };
 		params.quality = "best";
 		params.wmode = "opaque";
 		params.allowfullscreen = "true";
