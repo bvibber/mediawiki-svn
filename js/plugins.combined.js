@@ -5326,7 +5326,7 @@ jQuery Browser Plugin
 			['Navigator', 'Netscape']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
@@ -6587,7 +6587,10 @@ $.wikiEditor = {
 			'opera': [['>=', 9.6]],
 			// jQuery minimums
 			'safari': [['>=', 3]],
-			'chrome': [['>=', 3]]
+			'chrome': [['>=', 3]],
+			'blackberry': [['&&', false]], // blacklisted
+			'ipod': [['&&', false]], // blacklisted
+			'iphone': [['&&', false]] // blacklisted
 		},
 		// Right-to-left languages
 		'rtl': {
@@ -6599,7 +6602,10 @@ $.wikiEditor = {
 			'opera': [['>=', 9.6]],
 			// jQuery minimums
 			'safari': [['>=', 3]],
-			'chrome': [['>=', 3]]
+			'chrome': [['>=', 3]],
+			'blackberry': [['&&', false]], // blacklisted
+			'ipod': [['&&', false]], // blacklisted
+			'iphone': [['&&', false]] // blacklisted
 		}
 	},
 	/**
@@ -7074,7 +7080,7 @@ if ( typeof context == 'undefined' ) {
 					name in $.wikiEditor.modules[module].evt
 				) {
 					var ret = $.wikiEditor.modules[module].evt[name]( context, event );
-					if(ret != null){
+					if (ret != null) {
 						//if 1 returns false, the end result is false
 						if( returnFromModules == null ) {
 							returnFromModules = ret; 

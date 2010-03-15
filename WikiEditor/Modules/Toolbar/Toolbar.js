@@ -1589,27 +1589,25 @@ $j(document).ready( function() {
 		}
 	},
 	'search-and-replace': {
-		/*
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
 				'msie': [['>=', 7]],
-				'firefox': [['>=', 3]],
-				'opera': [['>=', 10]],
-				'safari': [['>=', 4]],
-				'chrome': [['>=', 4]]
+				'firefox': [['>=', 2]],
+				'opera': [['&&', false]], // blacklisted
+				'safari': [['>=', 3]],
+				'chrome': [['>=', 3]]
 			},
 			// Right-to-left languages
 			'rtl': {
 				'msie': [['>=', 8]],
-				'firefox': [['>=', 3]],
-				'opera': [['>=', 10]],
-				'safari': [['>=', 4]],
-				'chrome': [['>=', 4]]
+				'firefox': [['>=', 2]],
+				'opera': ['&&', false], // blacklisted
+				'safari': [['>=', 3]],
+				'chrome': [['>=', 3]]
 			}
 		},
 		'req': [ 'iframe' ],
-		*/
 		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-replace-title',
 		id: 'wikieditor-toolbar-replace-dialog',
