@@ -1174,7 +1174,8 @@ if ( typeof context == 'undefined' ) {
 					return $( [] );
 				}
 				var sc = selection.getRangeAt( 0 ).startContainer;
-				return $( sc.parentNode );
+				if ( sc.nodeName == "#text" ) sc = sc.parentNode;
+				return $( sc );
 			} else {
 				return $( [] );
 			}	

@@ -33,7 +33,6 @@ evt: {
 		var tokenArray = context.modules.highlight.tokenArray;
 		// Collect matching level 0 template call boundaries from the tokenArray
 		var level = 0;
-		
 		var tokenIndex = 0;
 		while ( tokenIndex < tokenArray.length ){
 			while ( tokenIndex < tokenArray.length && tokenArray[tokenIndex].label != 'TEMPLATE_BEGIN' ) {
@@ -139,6 +138,8 @@ evt: {
 		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
 			switch ( event.which ) {
 				case 13: //enter
+					// Ensure that the user can't break this by holding in the enter key
+					context.$iframe.data( 'ignoreKeypress', true );
 					//FIXME: may be a more elegant way to do this, but this works too
 					context.fn.encapsulateSelection( { 'pre':'\n', 'peri':'', 'post':'' } );
 					return false;
