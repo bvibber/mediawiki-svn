@@ -38,6 +38,7 @@ class WebInstaller extends Installer {
 		'Readme',
 		'ReleaseNotes',
 		'Copying',
+		'UpgradeDoc', // Can't use Upgrade due to Upgrade step
 	);
 
 	/**
@@ -1600,9 +1601,9 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 			$text = preg_replace( "/\n([\\*#])([^\r\n]*?)\r?\n([^\r\n#\\*:]+)/", "\n\\1\\2 \\3", $text );
 		} while ( $text != $prev );
 		// turn (bug nnnn) into links
-		$text = preg_replace_callback('/\(bug (\d+)\)/', array( 'WebInstaller_ReleaseNotes', 'replaceBugLinks' ), $text );
+		$text = preg_replace_callback('/\(bug (\d+)\)/', array( $this, 'replaceBugLinks' ), $text );
 		// add links to manual to every global variable mentioned
-		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( 'WebInstaller_ReleaseNotes', 'replaceConfigLinks' ), $text );
+		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( $this, 'replaceConfigLinks' ), $text );
 		// special case for <pre> - formatted links
 		do {
 			$prev = $text;
@@ -1611,12 +1612,12 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 		return $text;
 	}
 
-	private static function replaceBugLinks( $matches ) {
+	private function replaceBugLinks( $matches ) {
 		return '(<span class="config-plainlink">[https://bugzilla.wikimedia.org/show_bug.cgi?id=' .
 			$matches[1] . ' bug ' . $matches[1] . ']</span>)';
 	}
 
-	private static function replaceConfigLinks( $matches ) {
+	private function replaceConfigLinks( $matches ) {
 		return '<span class="config-plainlink">[http://www.mediawiki.org/wiki/Manual:' .
 			$matches[1] . ' ' . $matches[1] . ']</span>';
 	}
@@ -1632,6 +1633,13 @@ class WebInstaller_Readme extends WebInstaller_Document {
 
 class WebInstaller_ReleaseNotes extends WebInstaller_Document { 
 	function getFileName() { return 'RELEASE-NOTES'; }
+
+	function getFileContents() {
+		return $this->formatTextFile( parent::getFileContents() );
+	}
+}
+class WebInstaller_UpgradeDoc extends WebInstaller_Document {
+	function getFileName() { return 'UPGRADE'; }
 
 	function getFileContents() {
 		return $this->formatTextFile( parent::getFileContents() );

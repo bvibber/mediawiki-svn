@@ -4148,6 +4148,7 @@ Please check your php.ini and make sure session.save_path is set to an appropria
 'config-page-readme' => 'Read me',
 'config-page-releasenotes' => 'Release notes',
 'config-page-copying' => 'Copying',
+'config-page-upgradedoc' => 'Upgrading',
 'config-help-restart' => 'Do you want to clear all saved data that you have entered, and restart the installation process?',
 'config-restart' => 'Yes, restart it',
 'config-welcome' => 'Welcome to MediaWiki!

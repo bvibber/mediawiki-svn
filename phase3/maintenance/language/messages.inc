@@ -3164,6 +3164,7 @@ $wgMessageStructure = array(
 		'config-page-readme',
 		'config-page-releasenotes',
 		'config-page-copying',
+		'config-page-upgradedoc',
 		'config-help-restart',
 		'config-restart',
 		'config-welcome',
