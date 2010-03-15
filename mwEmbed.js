@@ -2458,8 +2458,11 @@ var MW_EMBED_VERSION = '1.1e';
 	
 		// Make sure we have jQuery: 
 		mw.load( 'window.jQuery', function() {							
-			if ( !window['$j'] ) {
-				window['$j'] = jQuery.noConflict();
+			if ( ! window['$j'] ) {
+				// Don't use noConflict() since other web embeding context may 
+				// have mixed use of $ aliased to jQuery or not but would
+				// mannage it themselves with use of jQuery.noConflict();
+				window['$j'] = jQuery;
 			}										
 			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 			
