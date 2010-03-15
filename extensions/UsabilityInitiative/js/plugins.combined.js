@@ -9332,9 +9332,9 @@ evt: {
 							
 							// Update template name if needed
 							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) ) {
-								var $name = $( node ).parent().children( '.wikiEditor-template-name' );
-								if ( $name.text() != model.getName() ) {
-									$name.text( model.getName() );
+								var $label = $( node ).parent().find( '.wikiEditor-template-label' );
+								if ( $label.text() != model.getName() ) {
+									$label.text( model.getName() );
 								}
 							}
 							
@@ -9436,17 +9436,14 @@ fn: {
 			.wrap( '<span class="wikiEditor-template"></span>' )
 			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 			.parent()
-			.addClass( 'wikiEditor-template-collapsed' );
-		var $templateName = $( '<span />' )
-			.addClass( 'wikiEditor-template-name wikiEditor-noinclude' )
-			.text( model.getName() )
-			.prependTo( $template );
-		var $templateExpand = $( '<span />' )
-			.addClass( 'wikiEditor-template-expand wikiEditor-noinclude' )
-			.prependTo( $template );
-		var $templateDialog = $( '<span />' )
-			.addClass( 'wikiEditor-template-dialog wikiEditor-noinclude' )
-			.appendTo( $templateName );
+			.addClass( 'wikiEditor-template-collapsed' )
+			.prepend( $(
+				'<span class="wikiEditor-template-expand wikiEditor-noinclude"></span>' +
+				'<span class="wikiEditor-template-name wikiEditor-noinclude">' +
+					'<span class="wikiEditor-template-label wikiEditor-noinclude">' + model.getName() + '</span>' +
+					'<span class="wikiEditor-template-dialog wikiEditor-noinclude"></span>' +
+				'</span>'
+			) );
 	},
 	/**
 	 * Turn a complex template wrapper back into a simple one
@@ -9466,9 +9463,6 @@ fn: {
 			.mousedown( function() { return false; } );
 		$template.find( '.wikiEditor-template-expand' )
 			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
-		$template.find( '.wikiEditor-template-dialog' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
 			.mousedown( function() { return false; } );
 	},
 	/**
