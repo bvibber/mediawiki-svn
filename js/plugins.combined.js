@@ -6588,9 +6588,9 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
-			'blackberry': [['&&', false]], // blacklisted
-			'ipod': [['&&', false]], // blacklisted
-			'iphone': [['&&', false]] // blacklisted
+			'blackberry': [['&&', 0]], // blacklisted
+			'ipod': [['&&', 0]], // blacklisted
+			'iphone': [['&&', 0]] // blacklisted
 		},
 		// Right-to-left languages
 		'rtl': {
@@ -6603,9 +6603,9 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
-			'blackberry': [['&&', false]], // blacklisted
-			'ipod': [['&&', false]], // blacklisted
-			'iphone': [['&&', false]] // blacklisted
+			'blackberry': [['&&', 0]], // blacklisted
+			'ipod': [['&&', 0]], // blacklisted
+			'iphone': [['&&', 0]] // blacklisted
 		}
 	},
 	/**
