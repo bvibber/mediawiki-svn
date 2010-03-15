@@ -1643,7 +1643,7 @@ $j(document).ready( function() {
 			'ltr': {
 				'msie': [['>=', 7]],
 				'firefox': [['>=', 2]],
-				'opera': [['&&', 0]], // blacklisted
+				'opera': false,
 				'safari': [['>=', 3]],
 				'chrome': [['>=', 3]]
 			},
@@ -1651,7 +1651,7 @@ $j(document).ready( function() {
 			'rtl': {
 				'msie': [['>=', 8]],
 				'firefox': [['>=', 2]],
-				'opera': [['&&', 0]], // blacklisted
+				'opera': false,
 				'safari': [['>=', 3]],
 				'chrome': [['>=', 3]]
 			}
