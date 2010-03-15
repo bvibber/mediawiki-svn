@@ -44,7 +44,10 @@ $.wikiEditor = {
 			'opera': [['>=', 9.6]],
 			// jQuery minimums
 			'safari': [['>=', 3]],
-			'chrome': [['>=', 3]]
+			'chrome': [['>=', 3]],
+			'blackberry': [['&&', false]], // blacklisted
+			'ipod': [['&&', false]], // blacklisted
+			'iphone': [['&&', false]] // blacklisted
 		},
 		// Right-to-left languages
 		'rtl': {
@@ -56,7 +59,10 @@ $.wikiEditor = {
 			'opera': [['>=', 9.6]],
 			// jQuery minimums
 			'safari': [['>=', 3]],
-			'chrome': [['>=', 3]]
+			'chrome': [['>=', 3]],
+			'blackberry': [['&&', false]], // blacklisted
+			'ipod': [['&&', false]], // blacklisted
+			'iphone': [['&&', false]] // blacklisted
 		}
 	},
 	/**
@@ -531,7 +537,7 @@ if ( typeof context == 'undefined' ) {
 					name in $.wikiEditor.modules[module].evt
 				) {
 					var ret = $.wikiEditor.modules[module].evt[name]( context, event );
-					if(ret != null){
+					if (ret != null) {
 						//if 1 returns false, the end result is false
 						if( returnFromModules == null ) {
 							returnFromModules = ret; 
