@@ -30,6 +30,13 @@ $messages['qqq'] = array(
 	'showprocesslist-time' => '{{Identical|Time}}',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'showprocesslist-user' => 'Иалоу',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin

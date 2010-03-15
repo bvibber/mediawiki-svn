@@ -111,6 +111,13 @@ $messages['pms'] = array(
 	'dynamicsidebar-desc' => "A dà 'd bare lateraj dinàmiche basà dzora a le pàgine dj'utent, soe partìe e soe categorìe",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'dynamicsidebar-desc' => 'Cria barras laterais dinâmicas baseadas nas páginas, grupos e categorias dos utilizadores',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

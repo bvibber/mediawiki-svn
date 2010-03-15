@@ -1754,7 +1754,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'pollresults' => 'Resultados de sondagens neste sítio',
+	'pollresults' => 'Resultados das sondagens neste síte',
 	'qp_desc' => 'Permite a criação de sondagens',
 	'qp_desc-sp' => '[[Special:PollResults|Página especial]] para visualizar os resultados das sondagens',
 	'qp_result_NA' => 'Sem resposta',
@@ -1788,6 +1788,7 @@ $messages['pt'] = array(
 	'qp_func_invalid_proposal_id' => 'Número de proposta=$3 é inválido (não é numérico) para a sondagem $1, pergunta $2',
 	'qp_error_no_such_poll' => 'Sondagem inexistente ($1).
 Verifique que a sondagem foi declarada e gravada, certifique-se também de que foi usado o carácter delimitador #',
+	'qp_error_in_question_header' => 'Cabeçalho de pergunta inválido: $1',
 	'qp_error_id_in_stats_mode' => 'Não é possível declarar um identificador da sondagem em modo estatístico',
 	'qp_error_dependance_in_stats_mode' => 'Não é possível declarar uma cadeia de dependências da sondagem em modo estatístico',
 	'qp_error_no_stats' => 'Não estão disponíveis dados estatísticos, porque ainda ninguém votou nesta sondagem (endereço=$1)',

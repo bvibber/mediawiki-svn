@@ -57,6 +57,14 @@ $messages['el'] = array(
 	'right-editalluserpages' => 'Επεξεργασία σελίδων χρήστη',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'userpageeditprotection-desc' => 'Lankide eta baimendutako editoreei lankide orrialdeak aldatzeko eskumena kentzen die',
+	'right-editalluserpages' => 'Lankide orrialdeak aldatu',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -178,6 +178,23 @@ $messages['es'] = array(
 	'refhelper-newarticle_nocitation' => 'Actualmente no hay citas con este nombre.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'refhelper-refcreate_legend' => 'Erreferentzia berria sortu',
+	'refhelper-label_authorsurname' => 'Abizena:',
+	'refhelper-title' => 'Izenburua:',
+	'refhelper-volume' => 'Bolumena:',
+	'refhelper-pages' => 'Orrialdeak:',
+	'refhelper-year' => 'Urtea:',
+	'refhelper-refname' => 'Erref izena:',
+	'refhelper-category' => 'Kategoria $1:',
+	'refhelper-create' => 'Sortu',
+	'refhelper-search' => 'Bilatu',
+	'refhelper-toolbox_link_create' => 'Erreferentzia sortu',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt

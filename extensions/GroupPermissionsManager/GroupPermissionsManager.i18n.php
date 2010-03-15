@@ -1984,6 +1984,7 @@ $messages['lb'] = array(
 	'right-grouppermissions' => 'Grupperechter verwalten',
 	'right-viewsource' => 'De Wiki-Quelltext vu gespaarte Säit weisen',
 	'right-raw' => 'Réi (raw) Säite kucken',
+	'right-render' => 'Gerendert Säiten oun Navigatioun kucken',
 	'right-info' => "D'Informarioune vun der Säit weisen",
 	'right-credits' => 'Referenzen (Credits) vun der Säit kucken',
 	'right-history' => "D'Versioune vun der Säit weisen",
