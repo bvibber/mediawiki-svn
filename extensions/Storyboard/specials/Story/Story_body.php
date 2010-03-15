@@ -53,8 +53,6 @@ class SpecialStory extends IncludableSpecialPage {
 			),
 			$conds
 		);
-		
-		$story = $dbr->fetchObject( $story );
 
 		if ( $story ) {
 			if ( $story->story_is_published == 1 ) {
