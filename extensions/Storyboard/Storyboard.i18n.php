@@ -31,6 +31,9 @@ $messages['en'] = array(
 	'storyboard-unpublish' => 'Unpublish',
 	'storyboard-reviewed' => 'Reviewed',
 	'storyboard-unreviewed' => 'Unreviewed',
+	'storyboard-hideimage' => 'Hide image',
+	'storyboard-unhideimage' => 'Show image',
+	'storyboard-deleteimage' => 'Delete image',
 
 	// Story submission
 	'storyboard-yourname' => 'Your name',

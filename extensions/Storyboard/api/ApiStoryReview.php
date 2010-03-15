@@ -49,16 +49,15 @@ class ApiStoryReview extends ApiBase {
 		$params = $this->extractRequestParams();
 		
 		// Check required parameters
-		if ( !array_key_exists( 'storyid', $params ) ) {
+		if ( !isset( $params['storyid'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'storyid' ) );
 		}
-		if ( !array_key_exists( 'storyaction', $params ) ) {
+		if ( !isset( $params['storyaction'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'storyaction' ) );
 		}
 		
-		// TODO: test the actions after using them in the storyreview special page
 		$dbw = wfGetDB( DB_MASTER );
-
+		
 		if ( $params['storyaction'] == 'delete' ) {
 			$dbw->delete( 'storyboard', array( 'story_id' => $dbw->escape( $params['storyid'] ) ) );
 		} else {
@@ -92,7 +91,7 @@ class ApiStoryReview extends ApiBase {
 						'story_image_hidden' => 1
 					);
 					break;
-				case 'showimage' :
+				case 'unhideimage' :
 					$values = array(
 						'story_image_hidden' => 0
 					);
@@ -100,12 +99,20 @@ class ApiStoryReview extends ApiBase {
 				case 'deleteimage' :
 					$values = array(
 						'story_author_image' => ''
-					);
+					); // TODO: should image file also be removed?
 					break;
 			}
 			
 			$dbw->update( 'storyboard', $values, $conds );
 		}
+		
+		$result = array(
+			'action' => $params['storyaction'],
+			'id' => $params['storyid'],	
+		);
+		
+		$this->getResult()->setIndexedTagName( $result, 'story' );
+		$this->getResult()->addValue( null, 'result', $result );
 	}
 	
 	public function getAllowedParams() {
@@ -120,7 +127,7 @@ class ApiStoryReview extends ApiBase {
 					'publish',
 					'unpublish',
 					'hideimage',
-					'showimage',
+					'unhideimage',
 					'deleteimage',
 				)
 			),

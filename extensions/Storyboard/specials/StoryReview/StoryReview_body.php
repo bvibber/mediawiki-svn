@@ -35,11 +35,13 @@ class SpecialStoryReview extends SpecialPage {
 	}
 
 	private function addOutput() {
-		global $wgOut;
+		global $wgOut, $egStoryboardScriptPath;
 		
 		$wgOut->setPageTitle( wfMsg( 'storyboard-storyreview' ) );
 		
+		$wgOut->addStyle( $egStoryboardScriptPath . '/story.css' );
 		$wgOut->includeJQuery();
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/specials/StoryReview/storyreview.js' );
 		
 		// Get a slave db object to do read operations against.
 		$dbr = wfGetDB( DB_SLAVE );
@@ -52,7 +54,8 @@ class SpecialStoryReview extends SpecialPage {
 				'story_author_name',
 				'story_title',
 				'story_text',
-				'story_is_published'
+				'story_is_published',
+				'story_image_hidden'
 			),
 			array( 'story_is_hidden' => 0 )
 		);
@@ -64,10 +67,10 @@ class SpecialStoryReview extends SpecialPage {
 		// Loop through all stories, get their html, and add it to the appropriate string.
 		while ( $story = $dbr->fetchObject( $stories ) ) {
 			if ( $story->story_is_published ) {
-				$reviewed .= $this->getStorySegments( $story, $story->story_is_published  );
+				$reviewed .= $this->getStorySegments( $story );
 			}
 			else {
-				$unreviewed .= $this->getStorySegments( $story, $story->story_is_published  );
+				$unreviewed .= $this->getStorySegments( $story );
 			}
 		}
 
@@ -77,13 +80,9 @@ class SpecialStoryReview extends SpecialPage {
 		// Output the html for the stories.
 		$wgOut->addHTML( <<<EOT
 		<h2>$unrevMsg</h2>
-		<table width="100%">
 		$unreviewed
-		</table>
 		<h2>$revMsg</h2>
-		<table width="100%">
-		$reviewed
-		</table>		
+		$reviewed		
 EOT
 		);
 	}
@@ -95,37 +94,43 @@ EOT
 	 * 
 	 * @return string
 	 */
-	private function getStorySegments( $story, $published ) {
+	private function getStorySegments( $story ) {
 		$imageSrc = 'http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png'; // TODO: get cropped image here
+		
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );
-		$publish = $published ? wfMsg( 'storyboard-unpublish' ) : wfMsg( 'storyboard-publish' );
-		$edit = wfMsg( 'edit' );
-		$hide = wfMsg( 'hide' );
+		
+		$publishAction = $story->story_is_published ? 'unpublish' : 'publish';
+		$publishMsg = wfMsg( "storyboard-$publishAction" );
+		
+		$imageAction = $story->story_image_hidden ? 'unhideimage' : 'hideimage';
+		$imageMsg = wfMsg( "storyboard-$imageAction" );
+		
+		$editMsg = wfMsg( 'edit' );
+		$hideMsg = wfMsg( 'hide' );
+		$deleteImageMsg = wfMsg( 'storyboard-deleteimage' );
 		
 		return <<<EOT
-		<tr>
-			<td>
-				<table width="100%" border="1">
-					<tr>
-						<td rowspan="2" width="200px">
-							<img src="$imageSrc" />
-						</td>
-						<td>
-							<b>$title</b>
-							<br />$text
-						</td>
-					</tr>
-					<tr>
-						<td align="center" height="35">
-							<button type="button">$publish</button>&nbsp;&nbsp;&nbsp;
-							<button type="button">$edit</button>&nbsp;&nbsp;&nbsp;
-							<button type="button">$hide</button>
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
+		<table width="100%" border="1" id="story_$story->story_id">
+			<tr>
+				<td>
+					<div class="story">
+						<img src="http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png" class="story-image">
+						<div class="story-title">$title</div><br />
+						$text
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" height="35">
+					<button type="button" onclick="doStoryAction( this, $story->story_id, '$publishAction' )">$publishMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="">$editMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="doStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="doStoryAction( this, $story->story_id, '$imageAction' )">$imageMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="deleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
+				</td>
+			</tr>
+		</table>
 EOT;
 	}
 }

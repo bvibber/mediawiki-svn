@@ -29,13 +29,15 @@
 					var story = data.query.stories[i];
 					var $storyBody = $( "<div />" ).addClass( "storyboard-box" );
 					
-					var $header = $( "<div />" ).addClass( "storyboard-header" ).appendTo( $storyBody );
-					$( "<div />" ).addClass( "storyboard-title" ).text( story.title ).appendTo( $header );
+					var $header = $( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
+					$( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
+					
+					// TODO: move social sharing to a pop-up that's triggered by a link above each storyboard-box
 					
 					$( "<div />" )
-						.addClass( "storyboard-sharing" )
+						.addClass( "story-sharing" )
 						.append(
-							$( "<div />" ).addClass( "storyboard-sharing-item" ).append(
+							$( "<div />" ).addClass( "story-sharing-item" ).append(
 								$( "<a />" ).attr( {
 									"target": "_blank",
 									"href": "http://delicious.com/save?jump=yes&url=" + ""
@@ -46,7 +48,7 @@
 							)
 						) //TODO
 						.append(
-							$( "<div />" ).addClass( "storyboard-sharing-item" ).append(
+							$( "<div />" ).addClass( "story-sharing-item" ).append(
 								$( "<a />" ).attr( {
 									"target": "_blank",
 									"href": "http://www.facebook.com/sharer.php?u=" + "" + "&t=" + story.title
@@ -57,7 +59,7 @@
 							)
 						) //TODO
 						.append(
-							$( "<div />" ).addClass( "storyboard-sharing-item" ).append(
+							$( "<div />" ).addClass( "story-sharing-item" ).append(
 								$( "<a />" ).attr( {
 									"target": "_blank",
 									"href": "http://twitter.com/home?status=" + ""
@@ -69,14 +71,16 @@
 						) //TODO
 						.appendTo( $header );
 					
-					$storyBody.append( $( "<div />" ).addClass( "storyboard-text" )
+					$storyBody.append( $( "<div />" ).addClass( "story-text" )
 						.text( story["*"] )
 						.prepend( $( "<img />" )
 							// TODO: replace by wgScriptPath + path/to/scropped/img
 							.attr( "src", "http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png" )
-							.addClass( "storyboard-image" )
+							.addClass( "story-image" )
 						)
 					);
+					
+					// TODO: add delete button that hides the story from the storyboard (=unpublish+hide?)
 					
 					$div.append( $storyBody );
 				}
