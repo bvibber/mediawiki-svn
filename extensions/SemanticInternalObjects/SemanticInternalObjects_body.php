@@ -111,6 +111,13 @@ class SIOHandler {
 	static $internal_object_index = 1;
 	static $internal_objects = array();
 
+	public static function clearState( &$parser ) {
+		self::$cur_page_name = '';
+		self::$cur_page_namespace = 0;
+		self::$internal_object_index = 1;
+		return true;
+	}
+
 	public static function doSetInternal( &$parser ) {
 		$main_page_name = $parser->getTitle()->getDBKey();
 		$main_page_namespace = $parser->getTitle()->getNamespace();

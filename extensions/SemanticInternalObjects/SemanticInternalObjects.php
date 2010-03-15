@@ -22,6 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $wgHooks['ParserFirstCallInit'][] = 'siofRegisterParserFunctions';
 $wgHooks['LanguageGetMagic'][] = 'siofLanguageGetMagic';
+$wgHooks['ParserClearState'][] = 'SIOHandler::clearState';
 $wgHooks['smwDeleteSemanticData'][] = 'SIOHandler::updateData';
 $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
 
