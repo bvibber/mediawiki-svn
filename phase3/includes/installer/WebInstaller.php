@@ -1601,7 +1601,7 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 			$text = preg_replace( "/\n([\\*#])([^\r\n]*?)\r?\n([^\r\n#\\*:]+)/", "\n\\1\\2 \\3", $text );
 		} while ( $text != $prev );
 		// turn (bug nnnn) into links
-		$text = preg_replace_callback('/\(bug (\d+)\)/', array( $this, 'replaceBugLinks' ), $text );
+		$text = preg_replace_callback('/bug (\d+)/', array( $this, 'replaceBugLinks' ), $text );
 		// add links to manual to every global variable mentioned
 		$text = preg_replace_callback('/(\$wg[a-z0-9_]+)/i', array( $this, 'replaceConfigLinks' ), $text );
 		// special case for <pre> - formatted links
@@ -1613,8 +1613,8 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 	}
 
 	private function replaceBugLinks( $matches ) {
-		return '(<span class="config-plainlink">[https://bugzilla.wikimedia.org/show_bug.cgi?id=' .
-			$matches[1] . ' bug ' . $matches[1] . ']</span>)';
+		return '<span class="config-plainlink">[https://bugzilla.wikimedia.org/' .
+			$matches[1] . ' bug ' . $matches[1] . ']</span>';
 	}
 
 	private function replaceConfigLinks( $matches ) {
