@@ -121,7 +121,7 @@ evt: {
 		// reset our ignoreKeypress variable if it's set to true
 		if( context.$iframe.data( 'ignoreKeypress' ) ) context.$iframe.data( 'ignoreKeypress', false );
 		var $evtElem = event.jQueryNode;
-		if( $evtElem.hasClass( 'wikiEditor-template-name' ) ) {
+		if( $evtElem.hasClass( 'wikiEditor-template-label' ) ) {
 			// allow anything if the command or control key are depressed
 			if ( event.ctrlKey || event.metaKey ) return true;
 			switch ( event.which ) {
