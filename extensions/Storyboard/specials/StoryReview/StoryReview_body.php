@@ -100,10 +100,14 @@ EOT
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );
 		
+		// TODO: htmlspecialchars the messages?
+		
 		$publishAction = $story->story_is_published ? 'unpublish' : 'publish';
+		// Uses storyboard-unpublish or storyboard-publish
 		$publishMsg = wfMsg( "storyboard-$publishAction" );
 		
 		$imageAction = $story->story_image_hidden ? 'unhideimage' : 'hideimage';
+		// Uses storyboard-unhideimage or storyboard-hideimage
 		$imageMsg = wfMsg( "storyboard-$imageAction" );
 		
 		$editMsg = wfMsg( 'edit' );

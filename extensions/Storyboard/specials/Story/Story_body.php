@@ -41,7 +41,7 @@ class SpecialStory extends IncludableSpecialPage {
 			}
 		}
 		
-		$stories = $dbr->selectRow(
+		$story = $dbr->selectRow(
 			'storyboard',
 			array(
 				'story_id',
@@ -54,7 +54,7 @@ class SpecialStory extends IncludableSpecialPage {
 			$conds
 		);
 		
-		$story = $dbr->fetchObject( $stories );
+		$story = $dbr->fetchObject( $story );
 
 		if ( $story ) {
 			if ( $story->story_is_published == 1 ) {

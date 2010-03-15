@@ -59,7 +59,7 @@ class ApiStoryReview extends ApiBase {
 		$dbw = wfGetDB( DB_MASTER );
 		
 		if ( $params['storyaction'] == 'delete' ) {
-			$dbw->delete( 'storyboard', array( 'story_id' => $dbw->escape( $params['storyid'] ) ) );
+			$dbw->delete( 'storyboard', array( 'story_id' => $params['storyid'] ) );
 		} else {
 			$conds = array(
 				'story_id' => $params['storyid']
@@ -112,7 +112,7 @@ class ApiStoryReview extends ApiBase {
 		);
 		
 		$this->getResult()->setIndexedTagName( $result, 'story' );
-		$this->getResult()->addValue( null, 'result', $result );
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	
 	public function getAllowedParams() {
@@ -122,6 +122,7 @@ class ApiStoryReview extends ApiBase {
 			),
 			'storyaction' => array(
 				ApiBase::PARAM_TYPE => array(
+					'delete',
 					'hide',
 					'unhide',
 					'publish',
