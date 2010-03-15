@@ -1544,7 +1544,8 @@ $j(document).ready( function() {
 					var colsVal = $j( '#wikieditor-toolbar-table-dimensions-columns' ).val();
 					var rows = parseInt( rowsVal, 10 );
 					var cols = parseInt( colsVal, 10 );
-					var header = Math.min( 1, $j( '#wikieditor-toolbar-table-dimensions-header:checked' ).size() );
+					var header = $j( '#wikieditor-toolbar-table-dimensions-header:checked' ).is( ':checked' ) ?
+						1 : 0;
 					var u = mw.usability;
 					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
 						alert( u.getMsg( 'wikieditor-toolbar-tool-table-invalidnumber' ) );
@@ -1564,7 +1565,7 @@ $j(document).ready( function() {
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
 						for ( var c = 0; c < cols; c++ ) {
-							var isHeader = ( r + 1 == header );
+							var isHeader = ( header && r == 0 );
 							var delim = isHeader ? '!' : '|';
 							if ( c > 0 ) {
 								delim += delim;
