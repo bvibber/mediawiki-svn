@@ -6588,9 +6588,9 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
-			'blackberry': [['&&', 0]], // blacklisted
-			'ipod': [['&&', 0]], // blacklisted
-			'iphone': [['&&', 0]] // blacklisted
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false
 		},
 		// Right-to-left languages
 		'rtl': {
@@ -6603,9 +6603,9 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
-			'blackberry': [['&&', 0]], // blacklisted
-			'ipod': [['&&', 0]], // blacklisted
-			'iphone': [['&&', 0]] // blacklisted
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false
 		}
 	},
 	/**
@@ -6640,10 +6640,15 @@ $.wikiEditor = {
 		}
 		// Check over each browser condition to determine if we are running in a compatible client
 		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
+		if ( typeof browser != 'object' ) {
+			return mod.supported = false;
+		}
 		for ( var condition in browser ) {
 			var op = browser[condition][0];
 			var val = browser[condition][1];
-			if ( typeof val == 'string' ) {
+			if ( val === false ) {
+				return mod.supported = false;
+			} else if ( typeof val == 'string' ) {
 				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
 					return mod.supported = false;
 				}
