@@ -25,6 +25,7 @@ $wgHooks['LanguageGetMagic'][] = 'siofLanguageGetMagic';
 $wgHooks['ParserClearState'][] = 'SIOHandler::clearState';
 $wgHooks['smwDeleteSemanticData'][] = 'SIOHandler::updateData';
 $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
+$wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
 
 $siogIP = $IP . '/extensions/SemanticInternalObjects';
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
