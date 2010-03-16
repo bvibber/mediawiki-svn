@@ -9373,44 +9373,55 @@ evt: {
 	}, //mark
 	
 	keydown: function( context, event ) {
-		// reset our ignoreKeypress variable if it's set to true
-		if( context.$iframe.data( 'ignoreKeypress' ) ) context.$iframe.data( 'ignoreKeypress', false );
+		// Reset our ignoreKeypress variable if it's set to true
+		if ( context.$iframe.data( 'ignoreKeypress' ) ) {
+			context.$iframe.data( 'ignoreKeypress', false );
+		}
 		var $evtElem = event.jQueryNode;
-		if( $evtElem.hasClass( 'wikiEditor-template-label' ) ) {
-			// allow anything if the command or control key are depressed
+		if ( $evtElem.hasClass( 'wikiEditor-template-label' ) ) {
+			// Allow anything if the command or control key are depressed
 			if ( event.ctrlKey || event.metaKey ) return true;
 			switch ( event.which ) {
-				case 37://left
-				case 38://up
-				case 39://right
-				case 40: return true;//down
+				case 13: // Enter
+					$evtElem.click();
+					return false;
+				case 32: // Space
+					$evtElem.parent().siblings( '.wikiEditor-template-expand' ).click();
+					return false;
+				case 37:// Left
+				case 38:// Up
+				case 39:// Right
+				case 40: //Down
+					return true; 
 				default:
-					// set the ignroreKeypress variable so we don't allow typing if the key is held
+					// Set the ignroreKeypress variable so we don't allow typing if the key is held
 					context.$iframe.data( 'ignoreKeypress', true );
-					//can't type in a template name
+					// Can't type in a template name
 					return false;
 			}
 		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
 			switch ( event.which ) {
-				case 13: //enter
+				case 13: // Enter
 					// Ensure that the user can't break this by holding in the enter key
 					context.$iframe.data( 'ignoreKeypress', true );
-					//FIXME: may be a more elegant way to do this, but this works too
-					context.fn.encapsulateSelection( { 'pre':'\n', 'peri':'', 'post':'' } );
+					// FIXME: May be a more elegant way to do this, but this works too
+					context.fn.encapsulateSelection( { 'pre': '\n', 'peri': '', 'post': '' } );
 					return false;
 				default: return true;
 			}
-		}//classes
-	}, //keydown
+		}
+	},
 	keyup: function( context, event ) {
-		// rest our ignoreKeypress variable if it's set to true
-		if( context.$iframe.data( 'ignoreKeypress' ) ) context.$iframe.data( 'ignoreKeypress', false );
+		// Rest our ignoreKeypress variable if it's set to true
+		if ( context.$iframe.data( 'ignoreKeypress' ) ) {
+			context.$iframe.data( 'ignoreKeypress', false );
+		}
 		return true;
-	}, //keyup
+	},
 	keypress: function( context, event ) {
-		// if this event is from a keydown event which we want to block, ignore it
+		// If this event is from a keydown event which we want to block, ignore it
 		return ( context.$iframe.data( 'ignoreKeypress' ) ? false : true );
-	} //keypress
+	}
 },
 /**
  * Regular expressions that produce tokens
