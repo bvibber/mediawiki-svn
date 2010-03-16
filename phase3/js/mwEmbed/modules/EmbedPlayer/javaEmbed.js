@@ -7,8 +7,8 @@ window.cortadoDomainLocations = {
 
 var javaEmbed = {
 
-	// instance name:
-	instanceOf:'javaEmbed',
+	// Instance name:
+	instanceOf: 'javaEmbed',
 	
 	// Supported feature set of the cortado applet: 		
 	supports: {

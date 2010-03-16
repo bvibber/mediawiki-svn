@@ -64,8 +64,6 @@ mw.addClassStyleSheets( {
 * 
 * NOTE: this function can be part of setup can run prior to jQuery being ready
 */
-
-
 mw.documentHasPlayerTags = function() {
 	var rewriteTags = mw.getConfig( 'rewritePlayerTags' );				
 	if( rewriteTags ) {
@@ -100,8 +98,6 @@ mw.addDOMReadyHook( function() {
 	
 		// Tell mwEmbed to run setup
 		mw.setConfig( 'runSetupMwEmbed', true );
-		
-		mw.log(" run setup is: " + mw.getConfig( 'runSetupMwEmbed' ) );
 	}
 });
 
@@ -129,9 +125,6 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			'$j.ui.slider'
 		]
 	];
-	
-	 
-	
 		
 	var addTimedTextReqFlag = false;
 		
@@ -177,14 +170,14 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	}
 	
 	// Add PNG fix code needed:
-	if ( $j.browser.msie || $j.browser.version < 7 ) {
+	if ( $j.browser.msie && $j.browser.version < 7 ) {
 		dependencyRequest[0].push( '$j.fn.pngFix' );
 	}
 	
 	// Do short detection, to avoid extra player library request in ~most~ cases. 
 	//( If browser is firefox include native, if browser is IE include java ) 
 	if( $j.browser.msie ) {
-		dependencyRequest[0].push( 'javaEmbed' )
+		dependencyRequest[0].push( 'javaEmbed' )		
 	}
 	
 	// Safari gets slower load since we have to detect ogg support 

@@ -2901,7 +2901,10 @@ setTimeout( function( ) {
 	mwCheckBody();
 }, 250);
 
-// If window.jQuery is already avaliable set no conflict before setup
+// If window.jQuery is already avaliable set mapping before setup
+// ( we don't use noConflict since other pages that include
+// mwEmbed may depend on $ = jQuery, with a simple 
+// alias we should be fine
 if( window.jQuery ){
-	window['$j'] = jQuery.noConflict();
+	window['$j'] = jQuery();
 }
