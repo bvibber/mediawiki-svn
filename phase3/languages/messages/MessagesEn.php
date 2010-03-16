@@ -4127,6 +4127,7 @@ Sessions are configured for a lifetime of $1, you can increase this by setting s
 Please restart the installation process.',
 'config-no-session' => 'Your session data was lost!
 Please check your php.ini and make sure session.save_path is set to an appropriate directory.',
+'config-session-path-bad' => 'Your session.save_path ($1) seems to be invalid or unwritable.',
 'config-show-help' => 'Help',
 'config-hide-help' => 'Hide help',
 'config-your-language' => 'Your language:',

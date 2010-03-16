@@ -3143,6 +3143,7 @@ $wgMessageStructure = array(
 		'config-session-error',
 		'config-session-expired',
 		'config-no-session',
+		'config-session-path-bad',
 		'config-show-help',
 		'config-hide-help',
 		'config-your-language',

@@ -203,6 +203,11 @@ class WebInstaller extends Installer {
 	 * Start the PHP session. This may be called before execute() to start the PHP session.
 	 */
 	function startSession() {
+		$sessPath = $this->getSessionSavePath();
+		if( !is_dir( $sessPath ) || !is_writeable( $sessPath ) ) {
+			$this->showError( 'config-session-path-bad', $sessPath );
+			return false;
+		}
 		if( wfIniGetBool( 'session.auto_start' ) || session_id() ) {
 			// Done already
 			return true;
@@ -217,6 +222,21 @@ class WebInstaller extends Installer {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Get the value of session.save_path
+	 *
+	 * Per http://www.php.net/manual/en/ref.session.php#ini.session.save-path,
+	 * this might have some additional preceding parts which need to be
+	 * ditched
+	 *
+	 * @return string
+	 */
+	private function getSessionSavePath() {
+		$path = ini_get( 'session.save_path' );
+		$path = substr( $path, strrpos( $path, ';' ) );
+		return $path;
 	}
 
 	/**
