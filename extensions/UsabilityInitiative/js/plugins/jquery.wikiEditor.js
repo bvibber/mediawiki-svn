@@ -393,13 +393,13 @@ if ( typeof context == 'undefined' ) {
 				
 				//surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
-				var t = context.fn.getOffset(cursorPos[0]);
+				var t = context.fn.getOffset( cursorPos[0] );
 				if ( t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
 					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
 				}
-			 } 
+			 }
 
 			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
@@ -897,12 +897,14 @@ if ( typeof context == 'undefined' ) {
 				return context.offsets[offset];
 			}
 			// Our offset is not pre-cached. Find the highest offset below it and interpolate
+			// We need to traverse the entire object because for() doesn't traverse in order
+			// We don't do in-order traversal because the object is sparse
 			var lowerBound = -1;
 			for ( var o in context.offsets ) {
-				if ( o > offset ) {
-					break;
+				var realO = parseInt( o );
+				if ( realO < offset && realO > lowerBound) {
+					lowerBound = realO;
 				}
-				lowerBound = o;
 			}
 			if ( !( lowerBound in context.offsets ) ) {
 				// Weird edge case: either offset is too large or the document is empty
@@ -984,7 +986,6 @@ if ( typeof context == 'undefined' ) {
 				context.history.length == 0 ||
 				( htmlChange && context.oldDelayedHistoryPosition == context.historyPosition )
 			) {
-				context.fn.purgeOffsets();
 				context.oldDelayedSel = newSel;
 				// Do we need to trim extras from our history? 
 				// FIXME: this should really be happing on change, not on the delay

@@ -1606,7 +1606,6 @@ $j(document).ready( function() {
 				'chrome': [['>=', 3]]
 			}
 		},
-		'req': [ 'iframe' ],
 		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-replace-title',
 		id: 'wikieditor-toolbar-replace-dialog',
