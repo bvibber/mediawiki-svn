@@ -464,6 +464,8 @@ $messages['cs'] = array(
 	'coll-disable' => 'vypnout',
 	'coll-book_creator_disable' => 'Vypnout editor knih',
 	'coll-book_creator_disable_tooltip' => 'Přestane s používáním editoru knih',
+	'coll-add_linked_article' => 'Přidat odkazovanou stránku wiki do knihy',
+	'coll-remove_linked_article' => 'Odebrat odkazovanou stránku wiki z knihy',
 	'coll-add_category' => 'Přidat tuto kategorii do vaší knihy',
 	'coll-add_category_tooltip' => 'Přidá všechny stránky wiki v této kategorii do vaší knihy',
 	'coll-add_this_page' => 'Přidat tuto stránku do vaší knihy',
@@ -581,6 +583,8 @@ $messages['de'] = array(
 	'coll-disable' => 'deaktivieren',
 	'coll-book_creator_disable' => 'Buchgenerator deaktivieren',
 	'coll-book_creator_disable_tooltip' => 'Buchgenerator nicht verwenden',
+	'coll-add_linked_article' => 'Füge die verlinkte Wikiseite deinem Buch hinzu',
+	'coll-remove_linked_article' => 'Entferne die verlinkte Wikiseite aus deinem Buch',
 	'coll-add_category' => 'Alle Seiten aus dieser Kategorie deinem Buch hinzufügen',
 	'coll-add_category_tooltip' => 'Alle Wikiseiten dieser Kategorie deinem Buch hinzufügen',
 	'coll-add_this_page' => 'Diese Seite zu deinem Buch hinzufügen',
@@ -951,6 +955,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author Guillom
  * @author IAlex
+ * @author Jean-Frédéric
  * @author McDutchie
  * @author Meithal
  * @author PieRRoMaN
@@ -966,6 +971,8 @@ $messages['fr'] = array(
 	'coll-disable' => 'désactiver',
 	'coll-book_creator_disable' => 'Désactiver le créateur de livre',
 	'coll-book_creator_disable_tooltip' => "Cesser d'utiliser le créateur de livre",
+	'coll-add_linked_article' => 'Ajouter la page wiki liée à votre livre',
+	'coll-remove_linked_article' => 'Retirer la page wiki liée de votre livre',
 	'coll-add_category' => 'Ajouter cette catégorie à votre livre',
 	'coll-add_category_tooltip' => 'Ajouter tous les articles de cette catégorie à votre livre',
 	'coll-add_this_page' => 'Ajouter cette page à votre livre',
@@ -1043,6 +1050,8 @@ $messages['gl'] = array(
 	'coll-disable' => 'desactivar',
 	'coll-book_creator_disable' => 'Desactivar o creador de libros',
 	'coll-book_creator_disable_tooltip' => 'Deixar de usar o creador de libros',
+	'coll-add_linked_article' => 'Engadir a páxina wiki ligada ao seu libro',
+	'coll-remove_linked_article' => 'Eliminar a páxina wiki ligada do seu libro',
 	'coll-add_category' => 'Engadir esta categoría ao seu libro',
 	'coll-add_category_tooltip' => 'Engadir todas as páxinas wiki desta categoría ao seu libro',
 	'coll-add_this_page' => 'Engadir esta páxina ao seu libro',
@@ -1231,6 +1240,8 @@ $messages['hsb'] = array(
 	'coll-disable' => 'znjemóžnić',
 	'coll-book_creator_disable' => 'Generator knihow znjemóžnić',
 	'coll-book_creator_disable_tooltip' => 'Wužiwanje generatora knihow zastajić',
+	'coll-add_linked_article' => 'Wotkazanu wikistronu twojej knize přidać',
+	'coll-remove_linked_article' => 'Wotkazanu wikistronu z twojeje knihi wotstronić',
 	'coll-add_category' => 'Tutu kategoriju twojej knize přidać',
 	'coll-add_category_tooltip' => 'Wšě wikistrony w tutej kategoriji twojej knize přidać',
 	'coll-add_this_page' => 'Tutu stronu twojej knize přidać',
@@ -1658,6 +1669,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1669,7 +1681,9 @@ $messages['lb'] = array(
 	'coll-download_as_tooltip' => 'Eng $1 Versioun vun dëser Wiki-Säit eroflueden',
 	'coll-disable' => 'Ausschalten',
 	'coll-book_creator_disable' => 'Buchfonctioun ausschalten',
-	'coll-book_creator_disable_tooltip' => "Ophalen d'buchfonctioun ze benotzen",
+	'coll-book_creator_disable_tooltip' => "Ophalen d'Buchfonctioun ze benotzen",
+	'coll-add_linked_article' => 'Déi verlinkte Wiki-Säit an däi buch derbäisetzen',
+	'coll-remove_linked_article' => 'Déi verlinkte Wiki-Säit aus dengem Buch eraushuelen',
 	'coll-add_category' => 'Dës Kategorie an Ärt Buch derbäisetzen',
 	'coll-add_category_tooltip' => 'All Wiki-Säiten aus dëser Kategorie an Ärt Buch derbäisetzen',
 	'coll-add_this_page' => 'Dës Säit an Ärt Buch derbäisetzen',
@@ -1740,6 +1754,8 @@ $messages['mk'] = array(
 	'coll-disable' => 'оневозможи',
 	'coll-book_creator_disable' => 'Оневозможи ја книговезницата',
 	'coll-book_creator_disable_tooltip' => 'Прекини со користење на книговезницата',
+	'coll-add_linked_article' => 'Додавај врска до викистраница во книгата',
+	'coll-remove_linked_article' => 'Отстрани врска до викистраница од книгата',
 	'coll-add_category' => 'Додајте ја категоријава во вашата книга',
 	'coll-add_category_tooltip' => 'Додај ги сите вики-страници од оваа категорија во книгата',
 	'coll-add_this_page' => 'Додај ја страницава во мојата книга',
@@ -1906,6 +1922,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author Siebrand
  * @author Tvdm
  */
@@ -1919,6 +1936,8 @@ $messages['nl'] = array(
 	'coll-disable' => 'uitschakelen',
 	'coll-book_creator_disable' => 'Boekenmaker uitschakelen',
 	'coll-book_creator_disable_tooltip' => 'Boekenmaker niet meer gebruiken',
+	'coll-add_linked_article' => 'De gekoppelde wikipagina aan uw boek toevoegen',
+	'coll-remove_linked_article' => 'De gekoppelde wikipagina uit uw boek verwijderen',
 	'coll-add_category' => 'Deze categorie aan uw boek toevoegen',
 	'coll-add_category_tooltip' => "Alle pagina's in deze categorie aan uw boek toevoegen",
 	'coll-add_this_page' => 'Deze pagina aan uw boek toevoegen',
@@ -2335,6 +2354,8 @@ $messages['ru'] = array(
 	'coll-disable' => 'выключить',
 	'coll-book_creator_disable' => 'Отключить книжного мастера',
 	'coll-book_creator_disable_tooltip' => 'Прекратите использование книжного мастера',
+	'coll-add_linked_article' => 'Добавить связанную вики-страницу в вашу книгу',
+	'coll-remove_linked_article' => 'Удалить связанную вики-страницу из вашей книги',
 	'coll-add_category' => 'Добавить эту категорию в вашу книгу',
 	'coll-add_category_tooltip' => 'Добавить все вики-страницы этой категории в книгу',
 	'coll-add_this_page' => 'Добавить эту страницу в вашу книгу',
@@ -2742,6 +2763,8 @@ $messages['tr'] = array(
 	'coll-disable' => 'devre dışı bırak',
 	'coll-book_creator_disable' => 'Koleksiyon oluşturucuyu devre dışı bırak',
 	'coll-book_creator_disable_tooltip' => 'Koleksiyon oluşturucuyu kullanmayı bırak',
+	'coll-add_linked_article' => 'Bağlantılı viki sayfasını kitabınıza ekleyin',
+	'coll-remove_linked_article' => 'Bağlantılı viki sayfasını kitabınızdan çıkarın',
 	'coll-add_category' => 'Bu kategoriyi kitabınıza ekleyin',
 	'coll-add_category_tooltip' => 'Bu kategorideki tüm viki sayfalarını koleksiyonunuza ekleyin',
 	'coll-add_this_page' => 'Bu sayfayı koleksiyonunuza ekleyin',
