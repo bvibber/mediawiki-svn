@@ -200,8 +200,7 @@ mediaWikiSearch.prototype = {
 				
 				// Get the url safe titleKey from the descriptionurl
 				var titleKey = page.imageinfo[0].descriptionurl.split( '/' );
-				titleKey = unescape( titleKey[ titleKey.length - 1 ] );
-				titleKey = titleKey.replace( /File:|Image:/, '' );
+				titleKey = unescape( titleKey[ titleKey.length - 1 ] );				
 				
 				var resource = 	{
 					'id'		 : page_id,
@@ -314,7 +313,7 @@ mediaWikiSearch.prototype = {
 		// Set the width: 
 		if ( size.width ) {
 			request['iiurlwidth'] = size.width;
-		}					
+		}
 		
 		mw.getJSON( this.provider.apiUrl, request, function( data ) {			
 			var imObj = { };
