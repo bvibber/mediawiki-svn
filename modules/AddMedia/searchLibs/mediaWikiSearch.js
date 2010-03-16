@@ -194,13 +194,20 @@ mediaWikiSearch.prototype = {
 				}
 				
 				// Skip if its an empty or missing imageinfo: 
-				if ( !page.imageinfo )
+				if ( !page.imageinfo ){
 					continue;
+				}
+				
+				// Get the url safe titleKey from the descriptionurl
+				var titleKey = page.imageinfo[0].descriptionurl.split( '/' );
+				titleKey = unescape( titleKey[ titleKey.length - 1 ] );
+				titleKey = titleKey.replace( /File:|Image:/, '' );
+				
 				var resource = 	{
 					'id'		 : page_id,
-					'titleKey'	 : page.title,
+					'titleKey'	 : titleKey,
 					'link'		 : page.imageinfo[0].descriptionurl,
-					'title'		 : page.title.replace(/File:.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
+					'title'		 : page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
 					'poster'	 : page.imageinfo[0].thumburl,
 					'thumbwidth' : page.imageinfo[0].thumbwidth,
 					'thumbheight': page.imageinfo[0].thumbheight,

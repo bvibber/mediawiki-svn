@@ -248,26 +248,29 @@ var default_source_attributes = [
 	*
 	*/
 	$.fn.embedPlayer = function( attributes, callback ) {	
-		mw.log('fn:embedPlayer on: ' + this.selector);
+		mw.log('embedPlayer on: ' + this.selector);
 		var player_select = this.selector;
 		//Handle optional include of attributes argument:
-		if( typeof attributes == 'function' && typeof( callback ) != 'function' )
+		if( typeof attributes == 'function' ){
 			callback = attributes;		
+		}
 		
 		// Create the Global Embed Player Manager ( if not already created )  
-		if( ! mw.playerManager ) 
-			mw.playerManager = new EmbedPlayerManager(); 
+		mw.log( "create the player manager:" );
+		if( ! mw.playerManager ){
+			mw.playerManager = new EmbedPlayerManager();
+		} 
 		
 		//Add the embedPlayer ready callback 
 		if( typeof callback == 'function' ){  
 			mw.playerManager.addCallback( callback );
-		}
-				
+		} 
+		mw.log("about to run jQuery select on : " + player_select);
 		// Add each selected element to the player manager:		
 		$j( player_select ).each( function(na, playerElement) {			
 			mw.playerManager.addElement( playerElement, attributes);
 		} );	
-		
+
 		// Once we are done adding new players start to check if players are ready:
 		mw.playerManager.waitPlayersReadyCallback();		
 	}	
@@ -411,7 +414,7 @@ EmbedPlayerManager.prototype = {
 		var width = $j( element ).css( 'width' );
 		var height = $j( element ).css( 'height' );
 	
-		// Css video defaults: 
+		// Css video defaults 
 		if( $j( element ).css( 'width' ) == '300px' 
 			&&  $j( element ).css( 'height' ) == '150px'
 		){
@@ -491,7 +494,8 @@ EmbedPlayerManager.prototype = {
 	*/
 	waitPlayersReadyCallback: function() {
 		var _this = this;
-		// mw.log('checkClipsReady');
+		mw.log( 'waitPlayersReadyCallback' );
+		
 		var is_ready = true;
 		for ( var i = 0; i < this.playerList.length; i++ ) {
 			var player =  $j( '#' + this.playerList[i] ).get( 0 );
@@ -502,8 +506,10 @@ EmbedPlayerManager.prototype = {
 		}
 		if ( is_ready ) {
 			// Run queued functions 
-			while ( this.callbackFunctions.length ) {
-				this.callbackFunctions.shift()();
+			if( this.callbackFunctions ) {
+				while ( this.callbackFunctions.length ) {
+					this.callbackFunctions.shift()();
+				}
 			}
 		} else {			
 			// Continue checking the playerList
