@@ -13,9 +13,9 @@
 	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/* VERSION configure build update test/** udplogger/**"/>
 	<property name="include.bin" value="*.log4j *.txt config.inc template/** udplogger/**"/>
 	<property name="include.sh" value="configure build update lsearchd"/>
-	
+
 	<property file="${basedir}/hostname"/>
-	
+
 	<path id="classpath">
 		<fileset dir="${lib}" includes="*.jar"/>
 	</path>
@@ -28,10 +28,10 @@
 	        	<fileset dir="${lib}">
 	            	<include name="*.jar"/>
 	        	</fileset>
-      		</classpath> 
+      		</classpath>
     	</java>
-  	</target> 
-	
+  	</target>
+
 	<target name="makejar" depends="build">
 		<jar destfile="${basedir}/${jar.name}">
 			<manifest>
@@ -40,42 +40,42 @@
             </manifest>
 			<zipfileset dir="${bin}" prefix="">
 				<include name="org/**"/>
-			</zipfileset>			
+			</zipfileset>
 		</jar>
 	</target>
-	
+
 	<target name="alljar" depends="build" description="All-in-one jar">
 		<jar jarfile="${jar.name}" compress="true">
 			<manifest>
 				<attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager" />
 			</manifest>
 			<fileset dir="bin" includes="org/**" />
-			
+
 			<!-- pack libraries as well -->
 			<zipfileset src="lib/xmlrpc-common-3.0.jar" />
 			<zipfileset src="lib/xmlrpc-client-3.0.jar" />
 			<zipfileset src="lib/xmlrpc-server-3.0.jar" />
 			<zipfileset src="lib/commons-logging-1.1.jar" />
 			<zipfileset src="lib/ws-commons-util-1.0.1.jar" />
-			<zipfileset src="lib/log4j-1.2.14.jar" />			
+			<zipfileset src="lib/log4j-1.2.14.jar" />
 			<zipfileset src="lib/lucene-core-2.3.jar" />
-			<zipfileset src="lib/lucene-analyzers.jar" />			
+			<zipfileset src="lib/lucene-analyzers.jar" />
 			<zipfileset src="lib/snowball.jar" />
 			<zipfileset src="lib/mwdumper.jar" />
 			<zipfileset src="lib/mysql-connector-java-3.0.17-ga-bin.jar" />
-			
+
 			<fileset dir="resources" includes="*/**" />
 		</jar>
 	</target>
 
-	
+
 	<target name="build" description="Compile classes">
 	    <mkdir dir="${bin}"/>
 	    <javac srcdir="${src}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${bin}/">
 	      <classpath refid="classpath"/>
 	    </javac>
   	</target>
-	
+
 	<target name="pack" description="Make tar.gz distribution">
 		<mkdir dir="${dist}"/>
 		<delete file="${dist}/${pack.name}.tar"/>
@@ -87,7 +87,7 @@
 		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar"/>
 	</target>
-	
+
 	<target name="pack-src" depends="alljar" description="Make tar.gz distribution of only core source files">
 		<mkdir dir="${dist}"/>
 		<delete file="${dist}/${src.name}.tar"/>
@@ -100,7 +100,7 @@
 		<delete file="${dist}/${src.name}.tar"/>
 	</target>
 
-	
+
 	<target name="binary" depends="alljar" description="Make binary tar.gz distribution">
 		<mkdir dir="${bin}"/>
 		<delete file="${dist}/${binary.name}.tar"/>
@@ -113,5 +113,5 @@
 		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
 		<delete file="${dist}/${binary.name}.tar"/>
 	</target>
-	
+
 </project>

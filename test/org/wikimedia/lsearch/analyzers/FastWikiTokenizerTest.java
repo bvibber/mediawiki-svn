@@ -25,116 +25,116 @@ import org.wikimedia.lsearch.test.WikiTestCase;
 
 public class FastWikiTokenizerTest extends WikiTestCase {
 	IndexId iid;
-	TokenizerOptions options; 
-	
+	TokenizerOptions options;
+
 	public void testIndex(){
 		this.iid = IndexId.get("enwiki");
 		this.options = new TokenizerOptions.ContentOptions(false);
-		
-		assertEquals("1 [link] 1 [text]", 
+
+		assertEquals("1 [link] 1 [text]",
 				tokens("[[link text]]"));
-		
-		assertEquals("1 [anchor] 1 [text]", 
+
+		assertEquals("1 [anchor] 1 [text]",
 				tokens("[[some link|anchor text]]"));
-		
-		assertEquals("1 [italic] 2 [see]", 
+
+		assertEquals("1 [italic] 2 [see]",
 				tokens("''italic''<nowiki><!-- see --></nowiki><!-- nosee -->"));
-		
-		assertEquals("1 [http] 2 [en] 1 [wikipedia] 1 [org/] 0 [org] 1 [english] 1 [wikipedia]", 
+
+		assertEquals("1 [http] 2 [en] 1 [wikipedia] 1 [org/] 0 [org] 1 [english] 1 [wikipedia]",
 				tokens("[http://en.wikipedia.org/ english wikipedia]"));
-		
-		assertEquals("500 [image] 1 [argishti] 1 [monument] 1 [jpg] 1 [king] 1 [argishti] 1 [of] 1 [urartu]", 
+
+		assertEquals("500 [image] 1 [argishti] 1 [monument] 1 [jpg] 1 [king] 1 [argishti] 1 [of] 1 [urartu]",
 				tokens("[[Image:Argishti monument.JPG|thumb|King Argishti of Urartu]]"));
-		
-		assertEquals("500 [image] 1 [argishti] 1 [monument] 1 [jpg] 1 [king] 1 [argishti] 1 [of] 1 [urartu]", 
+
+		assertEquals("500 [image] 1 [argishti] 1 [monument] 1 [jpg] 1 [king] 1 [argishti] 1 [of] 1 [urartu]",
 				tokens("[[Image:Argishti monument.JPG|thumb|King [[link target|Argishti]] of Urartu]]"));
-		
+
 		assertEquals("500 [image] 1 [frizbi] 1 [jpg] 1 [frizbi] 1 [za] 1 [ultimate] 1 [28] 1 [cm] 1 [175] 1 [g]",
 				tokens("[[Image:frizbi.jpg|десно|мини|240п|Frizbi za ultimate, 28cm, 175g]]"));
-		
-		assertEquals("1 [image] 3 [argishti] 1 [monument] 1 [jpg] 1 [thumb] 1 [king] 1 [argishti] 1 [of] 1 [urartu]", 
+
+		assertEquals("1 [image] 3 [argishti] 1 [monument] 1 [jpg] 1 [thumb] 1 [king] 1 [argishti] 1 [of] 1 [urartu]",
 				tokens("[[Image:Argishti monument.JPG|thumb|King Argishti of Urartu"));
-		
-		assertEquals("1 [clinton] 1 [comets]", 
+
+		assertEquals("1 [clinton] 1 [comets]",
 				tokens("{| style=\"margin:0px 5px 10px 10px; border:1px solid #8888AA;\" align=right cellpadding=3 cellspacing=3 width=360\n|- align=\"center\" bgcolor=\"#dddddd\"\n|colspan=\"3\"| '''Clinton Comets'''"));
-		
-		assertEquals("2 [or] 1 [ا] 500 [lɒs] 1 [ˈændʒəˌlɪs] 0 [ˈaendʒəˌlɪs]", 
+
+		assertEquals("2 [or] 1 [ا] 500 [lɒs] 1 [ˈændʒəˌlɪs] 0 [ˈaendʒəˌlɪs]",
 				tokens("{{IPA|[l&#594;s &#712;&aelig;nd&#658;&#601;&#716;l&#618;s]}} &lt; or &#60; &copy; &#169;&#1575;"));
-		
-		assertEquals("500 [text1] 1 [text2] 1 [text3]", 
+
+		assertEquals("500 [text1] 1 [text2] 1 [text3]",
 				tokens("{{template|text1}} {{template|text2|text3}}"));
-		
+
 		assertEquals("",
 				tokens("[[sr:Naslov]]"));
-		
-		assertEquals("500 [some] 1 [category] 1 [name]", 
+
+		assertEquals("500 [some] 1 [category] 1 [name]",
 				tokens("[[Category:Some category name]]"));
-		
-		assertEquals("[Some category name]", 
+
+		assertEquals("[Some category name]",
 				categories("[[Category:Some category name]]"));
-		
-		assertEquals("500 [param1] 1 [param2] 1 [value2]", 
+
+		assertEquals("500 [param1] 1 [param2] 1 [value2]",
 				tokens("{{template|param1 = {{value1}}|param2 = value2}}"));
-		
-		assertEquals("500 [param1] 1 [value1] 1 [param2] 1 [value2]", 
+
+		assertEquals("500 [param1] 1 [value1] 1 [param2] 1 [value2]",
 				tokens("{{template|param1 = [[target|value1]]|param2 = value2}}"));
-		
+
 		assertEquals("1 [wikipedia] 1 [is] 1 [accurate] 2 [and] 1 [it's] 0 [its] 1 [not] 1 [a] 1 [lie] 20 [see] 1 [kurir]",
 				tokens("Wikipedia is accurate<ref>see Kurir</ref>, and it's not a lie."));
-		
+
 		assertEquals("1 [this] 1 [column] 1 [is] 1 [100] 1 [points] 1 [wide] 1 [this] 1 [column] 1 [is] 1 [200] 1 [points] 1 [wide] 1 [this] 1 [column] 1 [is] 1 [300] 1 [points] 1 [wide] 1 [blah] 1 [blah] 1 [blah]",
 				tokens("{| border=\"1\" cellpadding=\"2\"\n|-\n|width=\"100pt\"|This column is 100 points wide\n|width=\"200pt\"|This column is 200 points wide\n|width=\"300pt\"|This column is 300 points wide\n|-\n|blah || blah || blah\n|}"));
-		
+
 		assertEquals("1 [first] 10 [second]",
 				tokens("first\n\nsecond"));
-		
+
 		assertEquals("1 [u2] 1 [heading1]",
 				tokens("u2 heading1"));
-		
+
 		assertEquals("1 [test] 1 [apostrophe's] 0 [apostrophes] 1 [and] 1 [other’s] 0 [others]",
 				tokens("Test apostrophe's and other\u2019s."));
 
-		
+
 	}
-	
+
 	public void testHighlight(){
 		this.iid = IndexId.get("enwiki");
 		this.options = new TokenizerOptions.Highlight(false);
-		
-		assertEquals("1 [' ' GLUE FIRST_SECTION] 1 ['link' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['text' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION]", 
+
+		assertEquals("1 [' ' GLUE FIRST_SECTION] 1 ['link' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['text' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION]",
 				tokens("[[link text]]"));
-		
-		assertEquals("1 [' ' GLUE BULLETINS] 10 ['bullet1' TEXT BULLETINS] 1 [' ' SENTENCE_BREAK BULLETINS] 1 ['bullet2' TEXT BULLETINS]", 
+
+		assertEquals("1 [' ' GLUE BULLETINS] 10 ['bullet1' TEXT BULLETINS] 1 [' ' SENTENCE_BREAK BULLETINS] 1 ['bullet2' TEXT BULLETINS]",
 				tokens("* bullet1\n* bullet2"));
-		
-		assertEquals("1 [' ' GLUE FIRST_SECTION] 1 ['http' TEXT FIRST_SECTION] 1 ['://' MINOR_BREAK FIRST_SECTION] 1 ['en' TEXT FIRST_SECTION] 1 ['.' SENTENCE_BREAK FIRST_SECTION] 1 ['wikipedia' TEXT FIRST_SECTION] 1 ['.' SENTENCE_BREAK FIRST_SECTION] 1 ['org/' TEXT FIRST_SECTION] 0 ['org' TEXT FIRST_SECTION] 1 ['wiki' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['english' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['wiki' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION]", 
+
+		assertEquals("1 [' ' GLUE FIRST_SECTION] 1 ['http' TEXT FIRST_SECTION] 1 ['://' MINOR_BREAK FIRST_SECTION] 1 ['en' TEXT FIRST_SECTION] 1 ['.' SENTENCE_BREAK FIRST_SECTION] 1 ['wikipedia' TEXT FIRST_SECTION] 1 ['.' SENTENCE_BREAK FIRST_SECTION] 1 ['org/' TEXT FIRST_SECTION] 0 ['org' TEXT FIRST_SECTION] 1 ['wiki' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['english' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['wiki' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION]",
 				tokens("[http://en.wikipedia.org/wiki english wiki]"));
-		
-		assertEquals("1 [' ' GLUE IMAGE_CAT_IW] 1 ['image' TEXT IMAGE_CAT_IW] 1 [':' MINOR_BREAK IMAGE_CAT_IW] 1 ['argishti' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['monument' TEXT IMAGE_CAT_IW] 1 ['.' SENTENCE_BREAK IMAGE_CAT_IW] 1 ['jpg' TEXT IMAGE_CAT_IW] 1 [' | ' GLUE IMAGE_CAT_IW] 1 ['king' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['argishti' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['of' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['urartu' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 [' ' SENTENCE_BREAK FIRST_SECTION] 1 ['main' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['text' TEXT FIRST_SECTION]", 
+
+		assertEquals("1 [' ' GLUE IMAGE_CAT_IW] 1 ['image' TEXT IMAGE_CAT_IW] 1 [':' MINOR_BREAK IMAGE_CAT_IW] 1 ['argishti' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['monument' TEXT IMAGE_CAT_IW] 1 ['.' SENTENCE_BREAK IMAGE_CAT_IW] 1 ['jpg' TEXT IMAGE_CAT_IW] 1 [' | ' GLUE IMAGE_CAT_IW] 1 ['king' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['argishti' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['of' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 ['urartu' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW] 1 [' ' SENTENCE_BREAK FIRST_SECTION] 1 ['main' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['text' TEXT FIRST_SECTION]",
 				tokens("[[Image:Argishti monument.JPG|thumb|King Argishti of Urartu]]\n\nMain text"));
-		
+
 		assertEquals("1 [' ' GLUE IMAGE_CAT_IW] 1 ['category' TEXT IMAGE_CAT_IW] 1 [':' MINOR_BREAK IMAGE_CAT_IW] 1 ['name' TEXT IMAGE_CAT_IW] 1 [' ' GLUE IMAGE_CAT_IW]",
 				tokens("[[Category:Name|sort key]]"));
-		
-		assertEquals("1 [' ' GLUE TEMPLATE] 1 ['param1' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 ['value1' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 [' | ' GLUE TEMPLATE] 1 ['param2' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 ['value2' TEXT TEMPLATE] 1 [' ' GLUE FIRST_SECTION]", 
+
+		assertEquals("1 [' ' GLUE TEMPLATE] 1 ['param1' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 ['value1' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 [' | ' GLUE TEMPLATE] 1 ['param2' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 ['value2' TEXT TEMPLATE] 1 [' ' GLUE FIRST_SECTION]",
 				tokens("{{template|param1 = [[value1]]|param2 = value2}}"));
-		
-		assertEquals("1 [' ' GLUE TEMPLATE] 1 ['param1' TEXT TEMPLATE] 1 ['  | ' GLUE TEMPLATE] 1 ['param2' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 ['value2' TEXT TEMPLATE] 1 [' ' GLUE FIRST_SECTION]", 
+
+		assertEquals("1 [' ' GLUE TEMPLATE] 1 ['param1' TEXT TEMPLATE] 1 ['  | ' GLUE TEMPLATE] 1 ['param2' TEXT TEMPLATE] 1 [' ' GLUE TEMPLATE] 1 ['value2' TEXT TEMPLATE] 1 [' ' GLUE FIRST_SECTION]",
 				tokens("{{template|param1 = {{value1}}|param2 = value2}}"));
 
 		assertEquals("1 [' ' GLUE HEADING] 1 ['heading' TEXT HEADING] 1 [' ' GLUE HEADING] 1 ['1' TEXT HEADING] 1 [' ' GLUE HEADING] 1 [' ' GLUE NORMAL]",
 				tokens("== Heading 1 ==\n"));
-		
+
 		assertEquals("1 ['wikipedia' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['is' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['accurate' TEXT FIRST_SECTION] 1 [', ' MINOR_BREAK FIRST_SECTION] 1 ['and' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['it's' TEXT FIRST_SECTION] 0 ['its' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['not' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['a' TEXT FIRST_SECTION] 1 [' ' GLUE FIRST_SECTION] 1 ['lie' TEXT FIRST_SECTION] 1 ['.' SENTENCE_BREAK FIRST_SECTION] 20 [' ' GLUE REFERENCE] 1 ['see' TEXT REFERENCE] 1 [' ' GLUE REFERENCE] 1 ['kurir' TEXT REFERENCE] 1 [' ' GLUE REFERENCE]",
 				tokens("Wikipedia is accurate<ref>see Kurir</ref>, and it's not a lie."));
-		
+
 		assertEquals("1 [' | ' GLUE TABLE] 1 ['this' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['column' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['is' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['100' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['points' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['wide' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['this' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['column' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['is' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['200' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['points' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['wide' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['this' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['column' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['is' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['300' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['points' TEXT TABLE] 1 [' ' GLUE TABLE] 1 ['wide' TEXT TABLE] 1 [' | ' SENTENCE_BREAK TABLE] 1 ['blah' TEXT TABLE] 1 [' | ' GLUE TABLE] 1 ['blah' TEXT TABLE] 1 [' | ' GLUE TABLE] 1 ['blah' TEXT TABLE] 1 [' | ' GLUE FIRST_SECTION]",
 				tokens("{| border=\"1\" cellpadding=\"2\"\n|-\n|width=\"100pt\"|This column is 100 points wide\n|width=\"200pt\"|This column is 200 points wide\n|width=\"300pt\"|This column is 300 points wide\n|-\n|blah || blah || blah\n|}"));
-		
+
 	}
-	
-	
-	
+
+
+
 	public String tokens(String text){
 		StringBuilder sb = new StringBuilder();
 		FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,iid,options);
@@ -149,7 +149,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		}
 		return sb.toString().trim();
 	}
-	
+
 	public String categories(String text){
 		FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,iid,options);
 		parser.parse();
@@ -179,7 +179,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 			System.out.print("INTERWIKI: ");
 		}
 		for(Entry<String,String> t : iw.entrySet()){
-			System.out.print("["+t.getKey()+"] => ["+t.getValue()+"] ");			
+			System.out.print("["+t.getKey()+"] => ["+t.getValue()+"] ");
 		}
 		if(iw.size()!=0) System.out.println();
 
@@ -188,7 +188,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 			System.out.print("KEYWORDS: ");
 		}
 		for(String t : keywords){
-			System.out.print("["+t+"] ");			
+			System.out.print("["+t+"] ");
 		}
 		if(keywords.size()!=0) System.out.println();
 
@@ -198,7 +198,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 	static void showTokens(String text){
 		System.out.println("TEXT: "+text);
 		System.out.flush();
-		displayTokensForParser(text);	
+		displayTokensForParser(text);
 		System.out.flush();
 	}
 
@@ -231,7 +231,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		text = "|something|else| is| there| to | see";
 		showTokens(text);
 		text = "-test 3.14 and U.S.A and more, .test more";
-		showTokens(text);			
+		showTokens(text);
 		text = "{{IPA|[l&#594;s &#712;&aelig;nd&#658;&#601;&#716;l&#618;s]}} &lt; or &#60; &copy; &#169;&#1575; or &#x627;  ";
 		showTokens(text);
 		text = "| Unseen\n|-\n| \"Junior\"\n|\n| Goa'uld larva\n|} something";
@@ -318,14 +318,14 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		text = "[[First]] second third fourth and so on goes the ... [[last link]]";
 		showTokens(text);
 		text = "{{Something| param = {{another}}[[First]]  } }} }} }} [[first good]]s {{name| [[many]] many many tokens }} second third fourth and so on goes the ... [[good keyword]]";
-		showTokens(text);			
-		text = "{| style=\"float: right; clear: right; background-color: transparent\"\n|-\n|{{Infobox Military Conflict|\n|conflict=1982 Lebanon War <br>([[Israel-Lebanon conflict]])\n|image=[[Image:Map of Lebanon.png|300px]]\n|caption=Map of modern Lebanon\n|date=June - September 1982\n|place=Southern [[Lebanon]]\n|casus=Two main causes:\n*Terrorist raids on northern Israel by [[PLO]] [[guerrilla]] based in Lebanon\n*the [[Shlomo Argov|shooting of Israel's ambassador]] by the [[Abu Nidal Organization]]<ref>[http://www.usatoday.com/graphics/news/gra/gisrael2/flash.htm The Middle East conflict], ''[[USA Today]]'' (sourced guardian.co.uk, Facts on File, AP) \"Israel invades Lebanon in response to terrorist attacks by PLO guerrillas based there.\"</ref><ref>{{cite book\n|author = Mark C. Carnes, John A. Garraty\n|title = The American Nation\n|publisher = Pearson Education, Inc.\n|date = 2006\n|location = USA\n|pages = 903\n|id = ISBN 0-321-42606-1\n}}</ref><ref>{{cite book\n|author= ''[[Time (magazine)|Time]]''\n|title = The Year in Review\n|publisher = Time Books\n|date = 2006\n|location = 1271 Avenue of the Americs, New York, NY 10020\n|id = ISSN: 1097-5721\n}} \"For decades now, Arab terrorists operating out of southern Lebanon have staged raids and fired mortar shells into northern Israel, denying the Israelis peace of mind. In the early 1980s, the terrorists operating out of Lebanon were controlled by Yasser Arafat's Palestine Liberation Organization (P.L.O.). After Israel's ambassador to Britain, Shlomo Argov, was shot in cold blood and seriously wounded by the Palestinian terror group Abu Nidal in London in 1982, fed-up Israelis sent tanks and troops rolling into Lebanon to disperse the guerrillas.\" (pg. 44-45)</ref><ref>\"The Palestine Liberation Organization (PLO) had been launching guerrilla attacks against Israel since the 1960s (see Palestine Liberation Organization). After the PLO was driven from Jordan in 1971, the organization established bases in southern Lebanon, from which it continued to attack Israel. In 1981 heavy PLO rocket fire on Israeli settlements led Israel to conduct air strikes in Lebanon. The Israelis also destroyed Iraq's nuclear reactor at Daura near Baghdad."; 
-		showTokens(text);	
+		showTokens(text);
+		text = "{| style=\"float: right; clear: right; background-color: transparent\"\n|-\n|{{Infobox Military Conflict|\n|conflict=1982 Lebanon War <br>([[Israel-Lebanon conflict]])\n|image=[[Image:Map of Lebanon.png|300px]]\n|caption=Map of modern Lebanon\n|date=June - September 1982\n|place=Southern [[Lebanon]]\n|casus=Two main causes:\n*Terrorist raids on northern Israel by [[PLO]] [[guerrilla]] based in Lebanon\n*the [[Shlomo Argov|shooting of Israel's ambassador]] by the [[Abu Nidal Organization]]<ref>[http://www.usatoday.com/graphics/news/gra/gisrael2/flash.htm The Middle East conflict], ''[[USA Today]]'' (sourced guardian.co.uk, Facts on File, AP) \"Israel invades Lebanon in response to terrorist attacks by PLO guerrillas based there.\"</ref><ref>{{cite book\n|author = Mark C. Carnes, John A. Garraty\n|title = The American Nation\n|publisher = Pearson Education, Inc.\n|date = 2006\n|location = USA\n|pages = 903\n|id = ISBN 0-321-42606-1\n}}</ref><ref>{{cite book\n|author= ''[[Time (magazine)|Time]]''\n|title = The Year in Review\n|publisher = Time Books\n|date = 2006\n|location = 1271 Avenue of the Americs, New York, NY 10020\n|id = ISSN: 1097-5721\n}} \"For decades now, Arab terrorists operating out of southern Lebanon have staged raids and fired mortar shells into northern Israel, denying the Israelis peace of mind. In the early 1980s, the terrorists operating out of Lebanon were controlled by Yasser Arafat's Palestine Liberation Organization (P.L.O.). After Israel's ambassador to Britain, Shlomo Argov, was shot in cold blood and seriously wounded by the Palestinian terror group Abu Nidal in London in 1982, fed-up Israelis sent tanks and troops rolling into Lebanon to disperse the guerrillas.\" (pg. 44-45)</ref><ref>\"The Palestine Liberation Organization (PLO) had been launching guerrilla attacks against Israel since the 1960s (see Palestine Liberation Organization). After the PLO was driven from Jordan in 1971, the organization established bases in southern Lebanon, from which it continued to attack Israel. In 1981 heavy PLO rocket fire on Israeli settlements led Israel to conduct air strikes in Lebanon. The Israelis also destroyed Iraq's nuclear reactor at Daura near Baghdad.";
+		showTokens(text);
 
 
 
 		ArticlesParser ap1 = new ArticlesParser("./test-data/indexing-articles.test");
-		ArrayList<TestArticle> articles1 = ap1.getArticles();			
+		ArrayList<TestArticle> articles1 = ap1.getArticles();
 		showTokens(articles1.get(articles1.size()-1).content);
 
 		//if(true)
@@ -378,7 +378,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 				ObjectOutputStream out = new ObjectOutputStream(ba);
 				out.writeObject(tokens);
 				size += ba.size(); */
-			//byte[] b = ExtToken.serializetokens); 
+			//byte[] b = ExtToken.serializetokens);
 			//size += b.length;
 			//ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(ba.toByteArray()));
 			//ArrayList<ExtToken> some = (ArrayList<ExtToken>) in.readObject();
@@ -388,7 +388,7 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		System.out.println("Parser elapsed: "+delta+"ms, per serialization: "+((double)delta/total)+"ms, size:"+size/total);
 
 	}
-	
+
 	public void testVowels(){
 		assertEquals("zdrv", FastWikiTokenizerEngine.deleteVowels("zdravo"));
 		assertEquals("v g mlrd", FastWikiTokenizerEngine.deleteVowels("eve ga milorad"));

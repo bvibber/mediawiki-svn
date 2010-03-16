@@ -21,7 +21,7 @@ import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 
 /**
  * Local cache of aggregate field meta informations
- * 
+ *
  * @author rainman
  *
  */
@@ -32,20 +32,20 @@ public class AggregateMetaField {
 	protected static Object lock = new Object();
 	/** directory -> fields */
 	protected static WeakHashMap<Directory,Set<String>> cachingInProgress = new WeakHashMap<Directory,Set<String>>();
-	
+
 	/** Check if there is a current background caching on a reader */
 	public static boolean isBeingCached(IndexReader reader){
 		synchronized(cachingInProgress){
 			return cachingInProgress.containsKey(reader.directory());
 		}
 	}
-	
+
 	public static void invalidateCache(IndexReader reader){
 		synchronized (lock) {
 			cache.remove(reader.directory());
 		}
 	}
-	
+
 	/** Get a meta cacher, return null if field is already cached or being cached */
 	public static CacheBuilder getCacherBuilder(IndexReader reader, String field) throws IOException {
 		synchronized(lock){
@@ -61,10 +61,10 @@ public class AggregateMetaField {
 				s = new AggregateMetaFieldSource(reader,field);
 				fields.put(field,s);
 				return s;
-			}		
+			}
 		}
 	}
-	
+
 	/** Get a cached meta source to use in queries */
 	public static AggregateMetaFieldSource getCachedSource(IndexReader reader, String field) {
 		synchronized(lock){
@@ -75,10 +75,10 @@ public class AggregateMetaField {
 		}
 	}
 
-	
+
 	/**
-	 * Cached meta aggregate info 
-	 * 
+	 * Cached meta aggregate info
+	 *
 	 * @author rainman
 	 *
 	 */
@@ -94,10 +94,10 @@ public class AggregateMetaField {
 		protected String field;
 		protected boolean cachingFinished = false;
 		protected boolean isOptimized;
-		// temporary: 
+		// temporary:
 		protected int count = 0;
 		protected int maxdoc = 0;
-		
+
 		public void init() {
 			synchronized(cachingInProgress){
 				Set<String> set = cachingInProgress.get(reader.directory());
@@ -113,7 +113,7 @@ public class AggregateMetaField {
 			index = new int[maxdoc];
 			length = new byte[maxdoc]; // estimate maxdoc values
 			lengthNoStopWords = new byte[maxdoc];
-			lengthComplete = new byte[maxdoc];			
+			lengthComplete = new byte[maxdoc];
 			boost = new float[maxdoc];
 			flags = new byte[maxdoc];
 			namespaces = new byte[maxdoc];
@@ -133,10 +133,10 @@ public class AggregateMetaField {
 					if(count >= length.length){
 						length = extendBytes(length);
 						lengthNoStopWords = extendBytes(lengthNoStopWords);
-						lengthComplete = extendBytes(lengthComplete);						
+						lengthComplete = extendBytes(lengthComplete);
 						boost = extendFloats(boost);
 						flags = extendBytes(flags);
-					}						
+					}
 					length[count] = stored[j*8];
 					if(length[count] == 0){
 						log.debug("Broken length=0 for docid="+i+", at position "+j);
@@ -147,14 +147,14 @@ public class AggregateMetaField {
 					lengthComplete[count] = stored[j*8+6];
 					flags[count] = stored[j*8+7];
 					count++;
-				}										
+				}
 			} catch(Exception e){
 				log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage(),e);
 				e.printStackTrace();
 				throw new IOException(e.getMessage());
 			}
 		}
-		
+
 		public void end(){
 			if(count < length.length - 1){
 				length = resizeBytes(length,count);
@@ -164,7 +164,7 @@ public class AggregateMetaField {
 				flags = resizeBytes(flags,count);
 			}
 			cachingFinished = true;
-			
+
 			synchronized(cachingInProgress){
 				Set<String> set = cachingInProgress.get(reader.directory());
 				set.remove(field);
@@ -172,7 +172,7 @@ public class AggregateMetaField {
 					cachingInProgress.remove(reader.directory());
 			}
 		}
-		
+
 		protected byte[] extendBytes(byte[] array){
 			return resizeBytes(array,array.length*2);
 		}
@@ -183,13 +183,13 @@ public class AggregateMetaField {
 		}
 		protected float[] extendFloats(float[] array){
 			return resizeFloats(array,array.length*2);
-		}		
+		}
 		protected float[] resizeFloats(float[] array, int size){
 			float[] t = new float[size];
 			System.arraycopy(array,0,t,0,Math.min(array.length,size));
 			return t;
 		}
-		
+
 		protected AggregateMetaFieldSource(IndexReader reader, String fieldBase) throws IOException{
 			this.reader = reader;
 			this.field = fieldBase+"_meta";
@@ -203,13 +203,13 @@ public class AggregateMetaField {
 			int end = (docid == index.length-1)? length.length : index[docid+1];
 			if(position >= end-start){
 				if(checkExists) // if true this is not an error
-					return -1; 
+					return -1;
 				else
 					throwException(docid,position,end-start-1);
 			}
 			return start+position;
 		}
-		
+
 		private void throwException(int docid, int position, int lastValid){
 			try {
 				// first try to give more detailed error
@@ -217,22 +217,22 @@ public class AggregateMetaField {
 			} catch (IOException e) {
 				e.printStackTrace();
 				throw new ArrayIndexOutOfBoundsException("Requested position "+position+" on field "+field+" unavailable"+" on "+reader.directory());
-			}			
+			}
 		}
-		
+
 		protected byte[] getStored(int docid) throws CorruptIndexException, IOException{
 			return reader.document(docid).getBinaryValue(field);
 		}
-		
-		/** Get length of nonalias tokens */ 
+
+		/** Get length of nonalias tokens */
 		public int getLength(int docid, int position) throws CorruptIndexException, IOException{
 			if(!cachingFinished) // still caching in background
 				return getStored(docid)[position*8];
 			return length[getValueIndex(docid,position)];
-		}		
-		/** Get length without stop words */ 
+		}
+		/** Get length without stop words */
 		public int getLengthNoStopWords(int docid, int position) throws CorruptIndexException, IOException{
-			if(!cachingFinished) 
+			if(!cachingFinished)
 				return getStored(docid)[position*8+1];
 			return lengthNoStopWords[getValueIndex(docid,position)];
 		}
@@ -242,7 +242,7 @@ public class AggregateMetaField {
 				return getStored(docid)[position*8+6];
 			return lengthComplete[getValueIndex(docid,position)];
 		}
-		
+
 		/** generic function to get boost value at some position, if checkExists=true won't die on error */
 		private float getBoost(int docid, int position, boolean checkExists) throws CorruptIndexException, IOException{
 			if(!cachingFinished){
@@ -261,25 +261,25 @@ public class AggregateMetaField {
 				return 1;
 			return boost[inx];
 		}
-		
-		/** Get boost for position */ 
+
+		/** Get boost for position */
 		public float getBoost(int docid, int position) throws CorruptIndexException, IOException{
 			return getBoost(docid,position,false);
 		}
-		
+
 		/** Get rank (boost at position 0) */
 		public float getRank(int docid) throws CorruptIndexException, IOException{
 			return getBoost(docid,0,true);
 		}
-		
+
 		/** Get namespace of the document */
 		public int getNamespace(int docid) throws CorruptIndexException, IOException{
 			if(!cachingFinished){
 				return Integer.parseInt(reader.document(docid).get("namespace"));
-			} 
+			}
 			return namespaces[docid];
 		}
-		
+
 		/** Get flag values for docid at position */
 		public Flags getFlags(int docid, int position) throws CorruptIndexException, IOException{
 			int ord = 0;
@@ -290,8 +290,8 @@ public class AggregateMetaField {
 
 			return Flags.values()[ord];
 		}
-		
-		
+
+
 	}
 
 }
