@@ -999,7 +999,12 @@ mediaElement.prototype = {
 			mw.log( 'f:autoSelectSource:' + playableSources[source].mimeType );
 			var mimeType = playableSources[source].mimeType;
 			   // set source via player				 
-			if ( mimeType == 'video/ogg' || mimeType == 'ogg/video' || mimeType == 'video/annodex' || mimeType == 'application/ogg' ) {
+			if ( mimeType == 'video/ogg' 
+				|| mimeType == 'ogg/video' 
+				|| mimeType == 'video/annodex' 
+				|| mimeType == 'application/ogg'
+				|| mimeType == 'video/theora' 
+			) {
 				for ( var i = 0; i < mw.EmbedTypes.players.players.length; i++ ) { // for in loop on object oky
 					var player = mw.EmbedTypes.players.players[i];
 					if ( player.library == 'vlc' || player.library == 'native' ) {
