@@ -8708,7 +8708,7 @@ fn: {
 		// Store visited markers here so we know which markers should be removed
 		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
-			if ( markers[i].skipDivision && ( division == markers[i].skipDivision ) ) { 
+			if ( typeof markers[i].skipDivision !== 'undefined' && ( division == markers[i].skipDivision ) ) { 
 				continue;
 			}
 			
@@ -8878,6 +8878,10 @@ fn: {
 			
 			// Remove this marker
 			var marker = $(this).data( 'marker' );
+			if ( typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
+				// Don't remove these either
+				return true;
+			}
 			if ( marker && typeof marker.beforeUnwrap == 'function' )
 				marker.beforeUnwrap( this );
 			if ( ( marker && marker.anchor == 'tag' ) || $(this).is( 'p' ) ) {
