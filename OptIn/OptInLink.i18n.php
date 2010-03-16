@@ -328,6 +328,7 @@ $messages['eu'] = array(
 	'optin-leave' => 'Beta utzi',
 	'tooltip-pt-optin-leave' => 'Eginbide berriak ezgaitu',
 	'optin-feedback' => 'Beta feedbacka',
+	'tooltip-pt-optin-feedback' => 'Tresna berrien zure esperientzia azaldu feedbackaren bitartez',
 );
 
 /** Persian (فارسی)

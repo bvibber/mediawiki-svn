@@ -143,6 +143,15 @@ $messages['es'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Txantiloia aldatu',
+	'wikieditor-template-editor-dialog-submit' => 'Eguneratu',
+	'wikieditor-template-editor-dialog-cancel' => 'Utzi',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

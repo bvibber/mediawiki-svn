@@ -236,6 +236,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor-preview-preference' => 'Aldetik aldeko aurrikuspena gaitu',
 	'wikieditor-preview-tab' => 'Aurreikuspena',
 	'wikieditor-preview-changes-tab' => 'Aldaketak',
 	'wikieditor-preview-loading' => 'Kargatzen...',
