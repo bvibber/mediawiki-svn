@@ -1544,8 +1544,7 @@ $j(document).ready( function() {
 					var colsVal = $j( '#wikieditor-toolbar-table-dimensions-columns' ).val();
 					var rows = parseInt( rowsVal, 10 );
 					var cols = parseInt( colsVal, 10 );
-					var header = $j( '#wikieditor-toolbar-table-dimensions-header:checked' ).is( ':checked' ) ?
-						1 : 0;
+					var header = $j( '#wikieditor-toolbar-table-dimensions-header' ).is( ':checked' ) ? 1 : 0;
 					var u = mw.usability;
 					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
 						alert( u.getMsg( 'wikieditor-toolbar-tool-table-invalidnumber' ) );
