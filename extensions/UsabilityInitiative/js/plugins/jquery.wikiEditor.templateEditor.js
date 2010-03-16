@@ -39,6 +39,9 @@ evt: {
 	
 	mark: function( context, event ) {
 		// Get references to the markers and tokens from the current context
+		if(context.modules.highlight.currentScope == "realchange"){
+			return; //do nothing on realchange
+		}
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
 		// Collect matching level 0 template call boundaries from the tokenArray
