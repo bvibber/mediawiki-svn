@@ -1771,6 +1771,7 @@ $j(document).ready( function() {
 					var start = match.index + offset;
 					var end = start + match[0].length;
 					var newEnd = start + replaceStr.length;
+					var context = $j( this ).data( 'context' );
 					$textarea.textSelection( 'setSelection', { 'start': start,
 						'end': end } );
 					if ( mode == 'replace' ) {
@@ -1784,8 +1785,7 @@ $j(document).ready( function() {
 					}
 					$textarea.textSelection( 'scrollToCaretPosition' );
 					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
-					var context = $j(this).data( 'context' );
-					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe.contentWindow : $textarea;
+					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe[0].contentWindow : $textarea;
 					textbox.focus();
 				}
 			});
