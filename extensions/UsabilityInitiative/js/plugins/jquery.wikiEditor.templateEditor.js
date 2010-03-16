@@ -36,6 +36,7 @@
  * Event handlers
  */
 evt: {
+	
 	mark: function( context, event ) {
 		// Get references to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
@@ -117,7 +118,8 @@ evt: {
 							return $( ca1.parentNode ).is( 'span.wikiEditor-template-text' ) ?
 								ca1.parentNode : null;
 						},
-						context: context
+						context: context,
+						skipDivision: "realchange"
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';

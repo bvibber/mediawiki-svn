@@ -154,6 +154,7 @@ fn: {
 
 		var markers = context.modules.highlight.markers = [];
 		// Get all markers
+		
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
@@ -169,14 +170,14 @@ fn: {
 		}
 		context.modules.highlight.markersStr = markersStr;
 		
-		var oldStarts = [];
-		if(!context.modules.highlight.markersOldStarts){
-			context.modules.highlight.markersOldStarts = [];
-		}
 		// Traverse the iframe DOM, inserting markers where they're needed.
 		// Store visited markers here so we know which markers should be removed
 		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
+			if(markers[i].skipDivision && (division == markers[i].skipDivision)){ 
+				continue;
+			}
+			
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
 			var start = markers[i].start;
