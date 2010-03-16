@@ -2459,10 +2459,7 @@ var MW_EMBED_VERSION = '1.1e';
 		// Make sure we have jQuery: 
 		mw.load( 'window.jQuery', function() {							
 			if ( ! window['$j'] ) {
-				// Don't use noConflict() since other web embeding context may 
-				// have mixed use of $ aliased to jQuery or not but would
-				// mannage it themselves with use of jQuery.noConflict();
-				window['$j'] = jQuery;
+				window['$j'] = jQuery.noConflict();				
 			}										
 			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
 			
@@ -2901,10 +2898,17 @@ setTimeout( function( ) {
 	mwCheckBody();
 }, 250);
 
-// If window.jQuery is already avaliable set mapping before setup
-// ( we don't use noConflict since other pages that include
-// mwEmbed may depend on $ = jQuery, with a simple 
-// alias we should be fine
+// Somewhat weird hack to keep jQuery in $ when its
+// already there, but also use noConflict to get $j. 
 if( window.jQuery ){
-	window['$j'] = jQuery();
+	var dollarFlag = false;	
+	if( $ && $.fn && $.fn.jquery ){
+		// NOTE we could check the version of
+		// jQuery and do a removal call if too old
+		dollarFlag = true;		
+	}
+	window['$j'] = jQuery.noConflict();
+	if( dollarFlag ) {
+		window['$'] = jQuery.noConflict();
+	}
 }
