@@ -63,8 +63,23 @@ fn: {
 						$(this).find( '[rel]' ).each( function() {
 							$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
 						});
-						$(this).find( '.wikiEditor-dialog-copywarn' )
-							.html( $( '#editpage-copywarn' ).html() );
+						
+						//reformat the copyright warning stuff
+						var copywarnHTML = $( '#editpage-copywarn' ).html();
+						
+						//TODO: internationalize by splitting on other characters that end statements
+						var copywarnStatements = copywarnHTML.split(". "); 
+						var newcopywarnHTML = "<ul>";
+						for(var i = 0; i < copywarnStatements.length; i++){
+							if(copywarnStatements[i] != ""){
+								newcopywarnHTML += "<li>" + copywarnStatements[i] + ". </li>" ;
+							}
+						}
+						newcopywarnHTML += "</ul>";
+
+						//no list if there's only one element
+						$(this).find( '.wikiEditor-dialog-copywarn' ).html( 
+								copywarnStatements.length > 1 ? newcopywarnHTML : copywarnHTML );
 						
 						if ( $( '#wpMinoredit' ).size() == 0 )
 							$( '#wikiEditor-' + context.instance + '-dialog-minor' ).hide();

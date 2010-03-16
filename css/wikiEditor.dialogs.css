@@ -280,3 +280,8 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 .wikiEditor-toolbar-dialog .ui-dialog-content {
 	padding-bottom: 1em !important;
 }
+
+/* Edit dialog */
+.wikiEditor-dialog-editoptions {
+	margin-top: 15px;
+}
