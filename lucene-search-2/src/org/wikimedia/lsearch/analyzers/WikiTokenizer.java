@@ -10,6 +10,7 @@ import java.util.Iterator;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.Tokenizer;
+import org.wikimedia.lsearch.config.IndexId;
 
 /** Uses FastWikiTokenizerEngine to tokenize text */
 public class WikiTokenizer extends Tokenizer {
@@ -19,14 +20,8 @@ public class WikiTokenizer extends Tokenizer {
 	protected ArrayList<String> categories = null;
 	protected HashMap<String,String> interwikis = null;
 	protected HashSet<String> keywords = null;
-	
-	/** Use <code>WikiTokenizer(String)</code> constructor */
-	@Deprecated
-	public WikiTokenizer(Reader r){
-		parser = new FastWikiTokenizerEngine(r);		
-		this.input = r;
-		//throw new Exception("Use constructor WikiTokenizer(String), to have optimal perfomance");
-	}
+	protected ArrayList<String> headingText = null;
+
 	
 	/** Use this with constructor with caution, since tokenizer won't 
 	 * be able to read localized data (i.e. localized name for image, 
@@ -36,8 +31,8 @@ public class WikiTokenizer extends Tokenizer {
 	 * @param str
 	 */
 	
-	public WikiTokenizer(String str, String lang, boolean exactCase){
-		parser = new FastWikiTokenizerEngine(str,lang,exactCase);		
+	public WikiTokenizer(String str, IndexId iid, TokenizerOptions options){
+		parser = new FastWikiTokenizerEngine(str,iid,options);		
 		this.input = null;
 	}
 	
@@ -52,6 +47,7 @@ public class WikiTokenizer extends Tokenizer {
 			categories = parser.getCategories();
 			interwikis = parser.getInterwikis();
 			keywords = parser.getKeywords();
+			headingText = parser.getHeadingText();
 		}
 	}
 	
@@ -88,6 +84,11 @@ public class WikiTokenizer extends Tokenizer {
 	public HashSet<String> getKeywords() {
 		return keywords;
 	}
+	
+	public ArrayList<String> getHeadingText() {
+		return headingText;
+	}
+	
 	
 	
 	

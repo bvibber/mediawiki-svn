@@ -34,9 +34,13 @@ public class IndexUpdateRecord implements Serializable {
 	protected String reportHost;
 	/** Used to identify this object in a back report */
 	protected ReportId reportId;
+	/** If this is link/precursor update */
+	protected boolean linkUpdate = false;
 	
-	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, boolean redirect, int rank, Action role){
-		article = new Article(pageId,title,text,redirect,rank);
+	@Deprecated
+	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, String redirectTo, int rank, Action role){
+		// FIXME: redirect target might be wrong (but then this is deprecated...)
+		article = new Article(pageId,title,text,redirectTo,0,rank,0);
 		this.action = role;
 		iid = IndexId.get(dbrole);
 		alwaysAdd = true;
@@ -55,7 +59,7 @@ public class IndexUpdateRecord implements Serializable {
 		dbrole = iid.toString();
 		reportId = null;
 	}	
-	public IndexUpdateRecord(Article article, Action action, IndexId iid, String dbrole, boolean alwaysAdd, boolean reportBack, String reportHost, ReportId reportId) {
+	public IndexUpdateRecord(Article article, Action action, IndexId iid, String dbrole, boolean alwaysAdd, boolean reportBack, String reportHost, ReportId reportId, boolean linkUpdate) {
 		this.article = article;
 		this.action = action;
 		this.iid = iid;
@@ -64,6 +68,7 @@ public class IndexUpdateRecord implements Serializable {
 		this.reportBack = reportBack;
 		this.reportHost = reportHost;
 		this.reportId = reportId;
+		this.linkUpdate = linkUpdate;
 	}
 	
 	public void setAction(Action action) {
@@ -71,7 +76,7 @@ public class IndexUpdateRecord implements Serializable {
 	}
 	@Override
 	public Object clone() {
-		return new IndexUpdateRecord(article,action,iid,dbrole,alwaysAdd,reportBack,reportHost,reportId);
+		return new IndexUpdateRecord(article,action,iid,dbrole,alwaysAdd,reportBack,reportHost,reportId,linkUpdate);
 	}
 	public ReportId getReportId() {
 		return reportId;
@@ -108,6 +113,12 @@ public class IndexUpdateRecord implements Serializable {
 		dbrole = iid.toString();
 	}
 	
+	public boolean isLinkUpdate() {
+		return linkUpdate;
+	}
+	public void setLinkUpdate(boolean linkUpdate) {
+		this.linkUpdate = linkUpdate;
+	}
 	public String toString(){
 		if(iid == null)
 			iid = IndexId.get(dbrole);
@@ -147,10 +158,17 @@ public class IndexUpdateRecord implements Serializable {
 	}
 	
 	/**
-	 * @return Returns the page key (via article)
+	 * @return page index key -- page_id (via article)
 	 */
-	public String getKey(){
-		return article.getKey();
+	public String getIndexKey(){
+		return article.getIndexKey();
+	}
+	
+	/**
+	 * @return ns:title key, used in links, highlight, prefix, etc.. indexes
+	 */
+	public String getNsTitleKey(){
+		return article.getTitleObject().getKey();
 	}
 	
 }

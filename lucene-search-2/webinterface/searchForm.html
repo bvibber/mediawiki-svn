@@ -1,71 +1,76 @@
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/lucenesearch.css" />
+<script type="text/javascript">
+var skin = "monobook";
+var stylepath = "/wiki-lucene/phase3/skins";
+var wgArticlePath = "/wiki-lucene/phase3/index.php/$1";
+var wgScriptPath = "/wiki-lucene/phase3";
+var wgScript = "/wiki-lucene/phase3/index.php";
+var wgServer = "http://localhost";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Main_Page";
+var wgTitle = "Main Page";
+var wgAction = "view";
+var wgRestrictionEdit = [];
+var wgRestrictionMove = [];
+var wgArticleId = "1";
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = "26709";
+</script>
+<script type="text/javascript" src="/wikibits.js"></script>
+<script type="text/javascript" src="/ajax.js"></script>
+<script type="text/javascript">
+	var wgLuceneAjaxSuggestWrapper="/prefixQuery"; 
+	var wgDBname="enwiki";
+</script>
+<script type="text/javascript" src="/luceneajaxsuggest.js"></script>
+</head>
 <body>
 
-<h2> Test web interface for lucene-search 2.0 </h2>
+<h2> Test web interface for lucene-search 2.1 </h2>
 
-<p>
-<strong>Highlights:</strong>
-<ul>
-<li> Prefixed searches. If you want to search only some namespace, prefix the
-search string with it. E.g. <i>help:editing</i> will search only help namespace.
-You can combine namespaces, e.g. <i>help,help_talk:editing</i>. You can also
-use aliases (these will be customizable in MW). I've predefined
-some aliases (the list is below), so the last query can be written: <i>h,ht:editing</i>.
-You can also search everything by prefixing it with <i>all</i>. E.g. <i>
-all:editing</i>
-
-<li> Category searches. You can limit search by categories (note: this won't
-work recursivelly for subcategories, you need to include them!). E.g. <i>
-white cheese incategory:cheeses</i>. To avoid ambiguity, category names need 
-to be given exactly. E.g. <i>monument incategory:"World Heritage Sites in Serbia"</i>.
-By default category intersection is searched, but any combination can be searched
-using AND/OR and +/- operators.
-
-<li> Improved scoring. Short articles are not strongly favored any more,
-and stemmed words are penalized. Number are included in the index.
-
-<li> Accentless search. Accents are automatically removed in both indexed and searched terms.
-</ul>
 Send comments to: Robert Stojnić (rainmansr@gmail.com)
 </p>
 
 <p>
-<strong>Warning:</strong> this test is not running on the current en.wiki database. The
-indexes is built from the latest dumps, with incremental updates running
-the last few days (e.g. if edit is made during the weekend 19-20 of May
-the article should be updated). The index is updated once a day (early
-morning GMT)
+<strong>Status:</strong> Super-slow (doing some testing)
 </p>
 <strong>Search:</strong>
 <hr>
-
-<form id="search" method="get" action="/search">
+<div id="globalWrapper">
+<form name="search" id="search" method="get" action="/search">
 
 Wiki:
-	<select name="dbname">
+	<select name="dbname" onchange="wgDBname=window.document.search.dbname.options[selectedIndex].text;">
+		<option value="wikilucene">wikilucene</option>
 		<option value="enwiki">enwiki</option>
 		<option value="dewiki">dewiki</option>
 		<option value="frwiki">frwiki</option>
-		<option value="plwiki">plwiki</option>
 		<option value="jawiki">jawiki</option>
-		<option value="nlwiki">nlwiki</option>
 		<option value="itwiki">itwiki</option>
-		<option value="ptwiki">ptwiki</option>
-		<option value="eswiki">eswiki</option>
-		<option value="svwiki">svwiki</option>
+		<option value="srwiki">srwiki</option>
 		<option value="ruwiki">ruwiki</option>
-		<option value="zhwiki">zhwiki</option>
-		<option value="fiwiki">fiwiki</option>
-		<option value="nowiki">nowiki</option>
-		<option value="srwiki">srwiki</option>	
 		<option value="enwiktionary">enwiktionary</option>
+		<option value="enwikinews">enwikinews</option>
+		<option value="enwikisource">enwikisource</option>		
+		<option value="enwikiquote">enwikiquote</option>
+		<option value="enwikibooks">enwikibooks</option>
+		<option value="enwikiversity">enwikiversity</option>
 		<option value="enwiktionary-exact">enwiktionary-exact</option>
-		<!-- <option value="wikilucene">wikilucene</option>
-		<option value="wikidev">wikidev</option>   -->
+		<!-- <option value="jawikiquote">jawikiquote</option>
+		<option value="wikilucene">wikilucene</option>
+		<option value="wikidev">wikidev</option> -->
 	</select>
 	
-Search for <input type='text' name="query" value="" size="30" />
+Search for <input type='text' name="query" value="" size="30" id="lsearchbox" />
 	 <input type="submit" value="Search" />
 	 <hr>
 	
@@ -93,31 +98,7 @@ Default namespaces:
  <label><input type='checkbox' value="1" name="ns101" />Portal talk</label>
 
 </form>
-
-<hr>
-<hr>
-<p>
-<strong>Appendix: predefined namespace prefixes</strong><br>
-Namespace / prefixes<br>
-Main: main, m<br>
-Talk: talk, mt<br>
-User: user, u<br>
-User talk: user_talk, ut<br>
-Project: project, p<br>
-Project talk: project_talk, pt<br>
-Image: image, i<br>
-Image talk: image_talk, it<br>
-MediaWiki: mediawiki, mw<br>
-MediaWiki talk: mediawiki_talk, mwt<br>
-Template: template, t<br>
-Template talk: template_talk, tt<br>
-Help: help, h<br>
-Help talk: help_talk, ht<br>
-Category: category, c<br>
-Category_talk: category_talk, ct<br>
-Portal: portal<br>
-Portal talk: portal_talk<br>
-
-</p>
+<br><br><br><br><br><br><br><br><br><br><br>
+</div>
 </body>
 </html>

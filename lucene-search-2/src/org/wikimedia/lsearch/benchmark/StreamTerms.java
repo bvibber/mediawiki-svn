@@ -48,5 +48,10 @@ public class StreamTerms implements Terms {
 			}
 		}
 	}
+
+	public int termCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

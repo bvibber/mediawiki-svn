@@ -1,0 +1,10 @@
+stopwords-da.txt
+stopwords-de.txt
+stopwords-en.txt
+stopwords-es.txt
+stopwords-fr.txt
+stopwords-it.txt
+stopwords-nl.txt
+stopwords-no.txt
+stopwords-pt.txt
+stopwords-sv.txt

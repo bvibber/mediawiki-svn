@@ -965,4 +965,10 @@ public class SampleTerms implements Terms {
 		"volcom",
 		"Charlotte ross"
 	};
+
+	public int termCount() {
+		return terms.length;
+	}
+	
+	
 }

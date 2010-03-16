@@ -28,51 +28,47 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collection;
+import java.util.HashSet;
 
 /** A bean-like class that contains information about what namespaces
  *  to filter  */
 public class NamespaceFilter implements Serializable {
 	private BitSet included;
-	private boolean empty;
 	
 	protected void init(){
-		empty = true;
 		included = new BitSet(64);
 	}
 	
+	/** "all" filter */
 	public NamespaceFilter() {
 		init();
 	}
 	
+	/** filter namespaces */
 	public NamespaceFilter(Collection<Integer> namespaces){
 		init();
 		for(Integer namespace : namespaces){
-			empty = false;
 			included.set(namespace.intValue());
 		}
 	}
-	
+	/** filter on one namespace */
 	public NamespaceFilter(int namespace){
 		init();
-		empty = false;
 		included.set(namespace);
 	}
-	
+	/** filter number of namespaces separated by comma, e.g. 0,2,10 */
 	public NamespaceFilter(String namespaces) {
 		init();
 		if (namespaces != null && !namespaces.equals("")) {
 			String[] bits = namespaces.split(",");
 			for (int i = 0; i < bits.length; i++) {
-				empty = false;
-				included.set(Integer.parseInt(bits[i]));
+				included.set(Integer.parseInt(bits[i].trim()));
 			}
 		}
 	}
 	
 	/** Decompose this filter into an array of single-namespace filters, do OR to construct */
 	public ArrayList<NamespaceFilter> decompose(){
-		if(empty)
-			return null;
 		ArrayList<NamespaceFilter> dec = new ArrayList<NamespaceFilter>();
 		for(int i = included.nextSetBit(0);i>=0;i=included.nextSetBit(i+1)){
 			dec.add(new NamespaceFilter(i));
@@ -80,19 +76,53 @@ public class NamespaceFilter implements Serializable {
 		return dec;
 	}
 	
+	public HashSet<Integer> getNamespaces(){
+		HashSet<Integer> ret = new HashSet<Integer>();
+		if(included.cardinality() == 0)
+			return ret;
+		for(int i = included.nextSetBit(0);i>=0;i=included.nextSetBit(i+1)){
+			ret.add(i);
+		}
+		return ret;
+	}
+	
+	public ArrayList<Integer> getNamespacesOrdered(){
+		ArrayList<Integer> ret = new ArrayList<Integer>();
+		if(included.cardinality() == 0)
+			return ret;
+		for(int i = included.nextSetBit(0);i>=0;i=included.nextSetBit(i+1)){
+			ret.add(i);
+		}
+		return ret;
+	}
+	
 	public boolean filter(String namespace) {
 		return filter(Integer.parseInt(namespace));
 	}
 	
 	public boolean filter(int namespace) {
-		if (empty)
-			return true;
-		
 		return included.get(namespace);
 	}
 	
+	/** Set bit for namespace to true */
+	public void set(int namespace){
+		included.set(namespace);
+	}
+	
+	/** Set bit for namespace to false */
+	public void unset(int namespace){
+		included.set(namespace,false);
+	}
+	
 	public boolean contains(int namespace){
-		return included.get(namespace);
+		if(namespace < 0)
+			return false;
+		else
+			return included.get(namespace);
+	}
+	
+	public boolean contains(String namespace){
+		return contains(Integer.parseInt(namespace));
 	}
 	
 	public BitSet getIncluded() {
@@ -107,6 +137,11 @@ public class NamespaceFilter implements Serializable {
 		return included.nextSetBit(0);		
 	}
 	
+	/** if empty filter ("all" keyword") */
+	public boolean isAll(){
+		return cardinality() == 0; 
+	}
+	
 	@Override
 	public String toString() {
 		return included.toString();
@@ -116,7 +151,6 @@ public class NamespaceFilter implements Serializable {
 	public int hashCode() {
 		final int PRIME = 31;
 		int result = 1;
-		result = PRIME * result + (empty ? 1231 : 1237);
 		result = PRIME * result + ((included == null) ? 0 : included.hashCode());
 		return result;
 	}
@@ -125,11 +159,11 @@ public class NamespaceFilter implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
+		if (obj == null)
+			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		final NamespaceFilter other = (NamespaceFilter) obj;
-		if (empty != other.empty)
-			return false;
 		if (included == null) {
 			if (other.included != null)
 				return false;
@@ -137,5 +171,7 @@ public class NamespaceFilter implements Serializable {
 			return false;
 		return true;
 	}
+
+
 	
 }

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+source ./config.inc
+
+if [ -n "$1" ]; then
+  dumpfile="$1"
+else
+  dumps="$base/dumps"
+  [ -e $dumps ]  || mkdir $dumps
+  dumpfile="$dumps/dump-$dbname.xml"
+  timestamp=`date -u +%Y-%m-%d`
+  slave=`php $mediawiki/maintenance/getSlaveServer.php \
+    $dbname \
+    --conf $mediawiki/LocalSettings.php \
+    --aconf $mediawiki/AdminSettings.php`
+  echo "Dumping $dbname..."
+  cd $mediawiki && php maintenance/dumpBackup.php \
+    $dbname \
+    --conf $mediawiki/LocalSettings.php \
+    --aconf $mediawiki/AdminSettings.php \
+    --current \
+    --server=$slave > $dumpfile
+  [ -e $indexes/status ] || mkdir -p $indexes/status
+  echo "timestamp=$timestamp" > $indexes/status/$dbname
+fi
+
+cd $base &&
+java -cp LuceneSearch.jar org.wikimedia.lsearch.importer.BuildAll $dumpfile $dbname

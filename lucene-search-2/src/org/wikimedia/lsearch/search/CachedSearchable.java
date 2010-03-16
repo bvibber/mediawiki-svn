@@ -1,10 +1,15 @@
 package org.wikimedia.lsearch.search;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.FieldSelector;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.Filter;
@@ -16,6 +21,7 @@ import org.apache.lucene.search.Sort;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.TopFieldDocs;
 import org.apache.lucene.search.Weight;
+import org.wikimedia.lsearch.config.IndexId;
 
 /**
  * Wrapper for remote searchable objects. 
@@ -31,8 +37,13 @@ public class CachedSearchable implements SearchableMul {
 	static org.apache.log4j.Logger log = Logger.getLogger(CachedSearchable.class);
 	protected SearchableMul searchable;
 	protected int maxDocCached;		
+	protected IndexId iid; 
+	protected String host;
 	
-	CachedSearchable(SearchableMul searchable){
+	CachedSearchable(SearchableMul searchable, IndexId iid, String host){
+		// info about where the cached searchable is
+		this.iid = iid;
+		this.host = host;
 		maxDocCached = -1;
 		this.searchable = searchable;
 		log.debug("New cached searchable for "+searchable);
@@ -43,7 +54,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			searchable.close();
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);		
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);		
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -53,7 +65,19 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.doc(i);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
+			throw new IOException(e.getMessage());
+		}
+	}
+	
+	public Document doc(int i, FieldSelector sel) throws IOException {
+		log.debug("called doc("+i+","+sel+")");
+		try{
+			return searchable.doc(i,sel);
+		} catch(Exception e){
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -63,18 +87,32 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.docs(i);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
+			throw new IOException(e.getMessage());
+		}
+	}
+	
+	public Document[] docs(int[] i, FieldSelector sel) throws IOException {
+		log.debug("called docs("+Arrays.toString(i)+","+sel+")");
+		try{
+			return searchable.docs(i,sel);
+		} catch(Exception e){
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
 
 	public int docFreq(Term term) throws IOException {
 		log.debug("called docFreq("+term+")");
+		log.warn("Should never call docFreq(Term), but docFreqs(Term[])");
 		Thread.dumpStack();
 		try{
 			return searchable.docFreq(term);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -84,8 +122,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.docFreqs(terms);
 		} catch(Exception e){
-			e.printStackTrace();
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -95,7 +133,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.explain(weight,doc);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -109,7 +148,8 @@ public class CachedSearchable implements SearchableMul {
 				log.debug("called maxDoc(), returning cached value: "+maxDocCached);
 			return maxDocCached;
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -119,7 +159,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.rewrite(query);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -129,7 +170,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			searchable.search(weight,filter,results);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -139,7 +181,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.search(weight,filter,n,sort);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -149,7 +192,8 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.search(weight,filter,n);
 		} catch(Exception e){
-			SearcherCache.getInstance().checkSearchable(searchable,this);
+			log.error(e.getMessage(), e);
+			SearcherCache.getInstance().reInitializeRemote(iid,host);
 			throw new IOException(e.getMessage());
 		}
 	}
@@ -158,8 +202,6 @@ public class CachedSearchable implements SearchableMul {
 	public String toString() {
 		return searchable.toString();
 	}
-	
-	
 
 	
 }

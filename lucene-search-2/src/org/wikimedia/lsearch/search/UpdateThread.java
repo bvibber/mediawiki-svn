@@ -2,10 +2,13 @@ package org.wikimedia.lsearch.search;
 
 import java.io.File;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -17,7 +20,6 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.Analyzers;
-import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.LocalIndex;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -27,6 +29,7 @@ import org.wikimedia.lsearch.index.WikiSimilarity;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.interoperability.RMIServer;
 import org.wikimedia.lsearch.util.Command;
+import org.wikimedia.lsearch.util.FSUtils;
 
 
 /**
@@ -36,6 +39,16 @@ import org.wikimedia.lsearch.util.Command;
  *
  */
 public class UpdateThread extends Thread {
+	public static long MAX_DEPLOYMENT_DELAY = 15*60; // 15 minutes
+	enum RebuildType { STANDALONE, FULL };
+	
+	/** iids currently being deployed and out of rotation */
+	protected static Set<String> beingDeployed = Collections.synchronizedSet(new HashSet<String>());	
+	
+	public static boolean isBeingDeployed(IndexId iid){
+		return beingDeployed.contains(iid.toString());
+	}
+	
 	/** After waiting for some time process updates 
 	 *  Warning: the delay should not be too long, else 
 	 *  the fetch will end in error... 
@@ -43,10 +56,12 @@ public class UpdateThread extends Thread {
 	class DeferredUpdate extends Thread {
 		ArrayList<LocalIndex> forUpdate;
 		long delay;
+		RebuildType type;
 		
-		DeferredUpdate(ArrayList<LocalIndex> forUpdate, long delay){
+		DeferredUpdate(ArrayList<LocalIndex> forUpdate, long delay, RebuildType type){
 			this.forUpdate = forUpdate;
 			this.delay = delay;
+			this.type = type;
 		}
 
 		@Override
@@ -59,12 +74,14 @@ public class UpdateThread extends Thread {
 			// get the new snapshots via rsync, might be lengthy
 			for(LocalIndex li : forUpdate){
 				try{
-					log.debug("Syncing "+li.iid);
-					rebuild(li); // rsync, update registry, cache
-					pending.remove(li.iid.toString());
+					synchronized (threadSerialization){
+						log.debug("Syncing "+li.iid);
+						rebuild(li,type); // rsync, update registry, cache
+						pending.remove(li.iid.toString());
+					}
 				} catch(Exception e){
 					e.printStackTrace();
-					log.error("Error syncing "+li+" : "+e.getMessage());
+					log.error("Error syncing "+li+" : "+e.getMessage(),e);
 				}
 			}
 		}		
@@ -82,6 +99,17 @@ public class UpdateThread extends Thread {
 	/** Bad indexes at indexer, prevent infinite rsync attempts */
 	protected Hashtable<String,Long> badIndexes =  new Hashtable<String,Long>();
 	protected static UpdateThread instance = null;
+	protected String rsyncPath = null;
+	protected String rsyncParams = null;
+	protected long numChecks = 0;
+	/** If localhost should be *always* taken out of rotation */ 
+	protected boolean forceLocalDeployment = false;
+	/** If old update/ dirs should be deleted once the new index is deployed */
+	protected boolean deleteOldUpdates = false;
+	/** when indexes are updated, which indexes to take out of rotation */
+	protected Set<String> forceRedirect = Collections.synchronizedSet(new HashSet<String>());
+	
+	protected static Object threadSerialization = new Object();
 	
 	@Override
 	public void run() {
@@ -89,7 +117,8 @@ public class UpdateThread extends Thread {
 		while(true){
 			lastCheck = System.currentTimeMillis();
 			checkForUpdate();
-			now = System.currentTimeMillis(); 
+			now = System.currentTimeMillis();
+			numChecks++;
 			if((now-lastCheck) < queryInterval){
 				try {
 					// try to check for updates in regular intervals
@@ -101,10 +130,30 @@ public class UpdateThread extends Thread {
 		}
 	}
 	
-	protected void checkForUpdate(){
-		HashSet<IndexId> iids = global.getMySearch();
+	/** Update one index - call ONLY in standalone mode (i.e. in index importers, etc) */
+	public void update(IndexId iid) throws IOException {
+		HashSet<IndexId> iids = new HashSet<IndexId>();
+		iids.add(iid);
+		ArrayList<LocalIndex> forUpdate = checkForUpdate(iids,false);
+		for(LocalIndex li : forUpdate){
+			log.info("Syncing "+li.iid);
+			if(!iid.isMySearch())
+				iid.forceMySearch();
+			// be sure to have the latest version here
+			registry.refreshCurrent(iid);
+			rebuild(li,RebuildType.STANDALONE); // rsync, update registry, cache
+			pending.remove(li.iid.toString());
+		}
+	}
+	/** Thread mode, check for updates on all index searched by this host, and schedule updates */
+	protected ArrayList<LocalIndex> checkForUpdate(){
+		return checkForUpdate(global.getMySearch(),true);
+	}
+	
+	protected ArrayList<LocalIndex> checkForUpdate(HashSet<IndexId> iids, boolean scheduleUpdate){
 		HashMap<String,ArrayList<IndexId>> hostMap = new HashMap<String,ArrayList<IndexId>>();
 		ArrayList<LocalIndex> forUpdate = new ArrayList<LocalIndex>();
+		boolean urgent = false; // if indexes are broke and should be rsynced right away
 		
 		// organize into hostmap: host -> iids (indexes at that host)
 		for(IndexId iid : iids){
@@ -117,7 +166,7 @@ public class UpdateThread extends Thread {
 			hostiids.add(iid);			
 		}		
 		// check for new snapshots
-		for(Entry<String,ArrayList<IndexId>> hostiid : hostMap.entrySet()){
+		for(Entry<String,ArrayList<IndexId>> hostiid : hostMap.entrySet()){			
 			ArrayList<IndexId> hiids = hostiid.getValue();
 			String host = hostiid.getKey();
 			long[] timestamps = messenger.getIndexTimestamp(hiids, host);
@@ -136,15 +185,21 @@ public class UpdateThread extends Thread {
 							timestamps[i]);
 					forUpdate.add(li); // newer snapshot available
 					pending.put(iid.toString(),new Long(timestamps[i]));
+					if(registry.getCurrentSearch(iid) == null)
+						urgent = true;
 				}
 			}
 		}
-		if(forUpdate.size()>0)
-			new DeferredUpdate(forUpdate,delayInterval).start();
+		if(scheduleUpdate && forUpdate.size()>0)
+			new DeferredUpdate(
+					forUpdate,
+					(urgent || numChecks==0)? 0 : delayInterval, 
+					RebuildType.FULL).start();
+		return forUpdate;
 	}
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */
-	protected void rebuild(LocalIndex li){
+	protected void rebuild(LocalIndex li, RebuildType type){
 		// check if index has previously failed
 		if(badIndexes.containsKey(li.iid.toString()) && badIndexes.get(li.iid.toString()).equals(li.timestamp))
 			return;
@@ -174,24 +229,49 @@ public class UpdateThread extends Thread {
 		}
 		new File(updatepath).mkdirs();
 		try{
+			if(forceLocalDeployment){
+				cache.hostDeploying("localhost");
+				String myHost = global.getLocalhost();
+				for(String host : global.getAllSearchHosts()){
+					try{
+						if(!host.equals(myHost))
+							messenger.hostDeploying(host,myHost);
+					} catch(Exception e){
+						log.warn("Error notifying host "+host+" of index deployment: "+e.getMessage(),e);
+					}
+				}
+			} else if( !forceRedirect.isEmpty() ){
+				for(String dbrole : forceRedirect){
+					cache.takeOutOfRotation("localhost", dbrole);
+					String myHost = global.getLocalhost();
+					for(String host : global.getAllSearchHosts()){
+						try{
+							if(!host.equals(myHost))
+								messenger.takeOutOfRotation(host,myHost,dbrole);
+						} catch(Exception e){
+							log.warn("Error trying to take index "+dbrole+" out of rotation on "+host+" : "+e.getMessage(),e);
+						}
+					}
+				}
+			}
 			// if local, use cp -lr instead of rsync
 			if(global.isLocalhost(iid.getIndexHost())){
-				Command.exec("/bin/cp -lr "+iid.getSnapshotPath()+sep+li.timestamp+" "+iid.getUpdatePath());
+				FSUtils.createHardLinkRecursive(
+						iid.getSnapshotPath()+sep+li.timestamp,
+						updatepath);
 			} else{
 				File ind = new File(iid.getCanonicalSearchPath());
 
 				if(ind.exists()){ // prepare a local hard-linked copy of index
-					ind = ind.getCanonicalFile();
-					for(File f: ind.listFiles()){
-						//  a cp -lr command for each file in the index
-						Command.exec("/bin/cp -lr "+ind.getCanonicalPath()+sep+f.getName()+" "+updatepath+sep+f.getName());
-					}
+					FSUtils.createHardLinkRecursive(
+							ind.getCanonicalPath(),
+							updatepath);					
 				}
 				long startTime = System.currentTimeMillis();
 				// rsync
 				log.info("Starting rsync of "+iid);
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
-				Command.exec("/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
+				Command.exec(rsyncPath+" "+rsyncParams+" -W --delete -u -t -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
 				log.info("Finished rsync of "+iid+" in "+(System.currentTimeMillis()-startTime)+" ms");
 
 			}
@@ -202,37 +282,159 @@ public class UpdateThread extends Thread {
 				searchpath.mkdir();
 
 			// check if updated index is a valid one (throws an exception on error)
-			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize()); 
+			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize(iid)); 
 			
 			// refresh the symlink
-			Command.exec("/bin/rm -rf "+iid.getSearchPath());
-			Command.exec("/bin/ln -fs "+updatepath+" "+iid.getSearchPath());			
+			FSUtils.delete(iid.getSearchPath());
+			FSUtils.createSymLink(updatepath,iid.getSearchPath());
 			
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);
-			updateCache(pool,li);
-			RMIServer.rebind(iid);
+			warmupAndDeploy(pool,li,type);
 			registry.refreshCurrent(li);
+			if(type != RebuildType.STANDALONE)
+				RMIServer.rebind(iid);
 			
 			// notify all remote searchers of change
 			messenger.notifyIndexUpdated(iid,iid.getDBSearchHosts());
 			
+			// cleanup old index updates if neccessary
+			if(deleteOldUpdates && myli != null){
+				deleteDirRecursive(new File(iid.getUpdatePath()+Configuration.PATH_SEP+myli.timestamp));
+			}
+			
 		} catch(IOException ioe){
-			log.error("I/O error updating index "+iid+" at "+li.path+" : "+ioe.getMessage());
+			ioe.printStackTrace();
+			log.error("I/O error updating index "+iid+" at "+li.path+" : "+ioe.getMessage(),ioe);
 			badIndexes.put(li.iid.toString(),li.timestamp);
+		} finally {
+			if(forceLocalDeployment){
+				cache.hostDeployed("localhost");
+				String myHost = global.getLocalhost();
+				for(String host : global.getAllSearchHosts()){
+					try{
+						if(!host.equals(myHost))
+							messenger.hostDeployed(host,myHost);
+					} catch(Exception e){
+						log.warn("Error notifying host "+host+" of end of deployment: "+e.getMessage(),e);
+					}
+				}
+			} else if( !forceRedirect.isEmpty() ){
+				for(String dbrole : forceRedirect){
+					cache.returnToRotation("localhost", dbrole);
+					String myHost = global.getLocalhost();
+					for(String host : global.getAllSearchHosts()){
+						try{
+							if(!host.equals(myHost))
+								messenger.returnToRotation(host,myHost,dbrole);
+						} catch(Exception e){
+							log.warn("Error trying to return index "+dbrole+" in rotation on "+host+" : "+e.getMessage(),e);
+						}
+					}
+				}
+
+			}
 		}
 	}
 	
-	/** Update search cache after successful rsync of update version of index */
-	protected void updateCache(SearcherCache.SearcherPool pool, LocalIndex li){
-		// do some typical queries to preload some lucene caches, pages into memory, etc..
-		for(IndexSearcherMul is : pool.searchers)
-			Warmup.warmupIndexSearcher(is,li.iid,true);			
-		// add to cache
-		cache.invalidateLocalSearcher(li.iid,pool);		
+	/** Update searcher cache after warming up searchers */
+	protected void warmupAndDeploy(SearcherCache.SearcherPool pool, LocalIndex li, RebuildType type){
+		boolean reroute = false;
+		try{
+			// see if we can go ahead and deploy the searcher or should we wait
+			IndexId iid = li.iid;
+			HashSet<String> group = iid.getSearchHosts();
+			int succ = 0, fail = 0;			
+			long waitedSoFar = 0;
+			if(type == RebuildType.FULL){			
+				// never deploy more than one searcher of iid in a search group
+				// wait for other peers to finish deploying before proceeding
+				boolean wait = false;			
+				do{
+					if(group.size() >= 2){
+						log.info("Attempting deployment of "+iid);
+						for(String host : group){
+							if(!RMIMessengerClient.isLocal(host)){
+								try{
+									if(messenger.attemptIndexDeployment(host,iid.toString()))
+										succ ++;
+									else
+										fail ++;
+								} catch(RemoteException e){
+									e.printStackTrace();
+									log.warn("Error response from "+host+" : "+e.getMessage(),e);
+								}
+							}
+						}
+						if(succ >= 1){
+							wait = false; // proceed to deployment
+							reroute = true;
+						} else if(succ == 0){
+							wait = false; // we're the only one alive, just deploy.. 
+						} else
+							wait = true;
+					}
+					if(wait){ // wait random time (5 -> 15 seconds)
+						try {
+							long interval = (long)(10000 * (Math.random()+0.5));
+							waitedSoFar += interval/1000;
+							Thread.sleep(interval);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				} while(wait && waitedSoFar < MAX_DEPLOYMENT_DELAY);
+
+				// reoute queries to other servers
+				if( reroute ){
+					String myHost = global.getLocalhost();
+					log.info("Deploying "+iid+" on "+myHost);
+					beingDeployed.add(iid.toString());					
+					/* for(String host : global.getAllSearchHosts()){
+						try{
+							messenger.hostDeploying(host,myHost);
+						} catch(Exception e){
+							log.warn("Error notifying host "+host+" of index deployment: "+e.getMessage(),e);
+						}
+					} */
+					try{
+						//RMIServer.unbind(iid,cache.getLocalSearcherPool(iid));
+					} catch(Exception e) {
+						// we gave it a shot...
+					}
+					//cache.updateLocalSearcherPool(iid,null);
+				}
+
+			}
+			
+			// do some typical queries to preload some lucene caches, pages into memory, etc..
+			for(IndexSearcherMul is : pool.searchers){
+				try{
+					// do one to trigger caching
+					//Warmup.warmupIndexSearcher(is,li.iid,true,1);
+					//Warmup.waitForAggregate(pool.searchers);
+					// do proper warmup
+					Warmup.warmupIndexSearcher(is,li.iid,false,null);
+				} catch(IOException e){
+					e.printStackTrace();
+					log.warn("Error warmup up "+li+" : "+e.getMessage(),e);
+				}
+			}
+			
+			
+			// add to cache
+			cache.updateLocalSearcherPool(li.iid,pool);
+			if( reroute ){
+				log.info("Deployed "+iid);
+				beingDeployed.remove(iid.toString());
+			}
+		} finally{
+			// be sure stuff is not stuck as being deployed
+			beingDeployed.remove(li.iid.toString());			
+		}
 	}
 	
-	protected UpdateThread(){
+	protected UpdateThread(RebuildType type){
 		messenger = new RMIMessengerClient();
 		global = GlobalConfiguration.getInstance();
 		registry = IndexRegistry.getInstance();
@@ -240,12 +442,35 @@ public class UpdateThread extends Thread {
 		// query interval in config is in minutes
 		queryInterval = (long)(config.getDouble("Search","updateinterval",15) * 60 * 1000);
 		delayInterval = (long)(config.getDouble("Search","updatedelay",0)*1000);
-		cache = SearcherCache.getInstance();
+		if(type == RebuildType.STANDALONE)
+			cache = SearcherCache.getStandalone();
+		else
+			cache = SearcherCache.getInstance();
+		rsyncPath = config.getString("Rsync","path","/usr/bin/rsync");
+		rsyncParams = config.getString("Rsync","params","");
+		forceLocalDeployment = config.getBoolean("Search","forceLocalDeployment");
+		String[] forceRedirectValue = config.getArray("Search","forceRedirect");
+		if(forceRedirectValue != null){
+			for(String indexpart : forceRedirectValue){
+				try{
+					// make sure these indexes are actually valid index names
+					IndexId iid = IndexId.get(indexpart);
+					forceRedirect.add(iid.toString());
+				} catch(RuntimeException e){
+					log.warn("Ignoring force redirect index "+indexpart+" since it doesn't exist.");
+				}
+			}
+		}
+		deleteOldUpdates = config.getBoolean("Search","deleteOldUpdates");
+	}
+	
+	public static UpdateThread getStandalone(){
+		return new UpdateThread(RebuildType.STANDALONE);
 	}
 	
 	public static synchronized UpdateThread getInstance(){
 		if(instance == null)
-			instance = new UpdateThread();
+			instance = new UpdateThread(RebuildType.FULL);
 		
 		return instance;
 	}

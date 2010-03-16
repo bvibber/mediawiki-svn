@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.1.jar" sourcepath="/home/rainman/lucene/junit-4.1-src.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
@@ -10,10 +12,9 @@
 	<classpathentry kind="lib" path="lib/xmlrpc-common-3.0.jar"/>
 	<classpathentry kind="lib" path="lib/xmlrpc-server-3.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/snowball.jar"/>
-	<classpathentry kind="lib" path="lib/lucene-core-2.0.1-dev.jar" sourcepath="/lucene-2.0"/>
 	<classpathentry kind="lib" path="lib/mwdumper.jar" sourcepath="/mwdumper"/>
-	<classpathentry kind="lib" path="lib/highlighter.jar" sourcepath="/sandbox/highlighter"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
+	<classpathentry kind="lib" path="lib/snowball.jar" sourcepath="/lucene-2.3/contrib/snowball/src"/>
+	<classpathentry kind="lib" path="lib/lucene-core-2.3.jar" sourcepath="/home/rainman/Documents/packages/lucene-2.3.2"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

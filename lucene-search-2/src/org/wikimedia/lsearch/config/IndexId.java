@@ -2,11 +2,17 @@ package org.wikimedia.lsearch.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.log4j.Logger;
-import org.wikimedia.lsearch.index.IndexThread;
+import org.apache.lucene.search.ArticleNamespaceScaling;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.search.SearcherCache;
 
 /**
  * Encapsulated an index ID in form db.part, e.g. entest.mainpart.
@@ -49,6 +55,8 @@ public class IndexId {
 	protected String part;
 	/** The string representation of IndexId, e.g. entest.mainpart */
 	protected String dbrole;
+	/** The sub-division part, e.g. sub1 in enwiki.mainpart.sub1 */
+	protected String subpart;
 	
 	/** Names of split indexes, e.g. entest.part1, entest.part2 ... */
 	protected String[] splitParts;
@@ -58,7 +66,20 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, 
+		PREFIX, TITLE_NGRAM, SUBDIVIDED, TITLES_BY_SUFFIX, PRECURSOR };
+		
+	/** the index of this subdivided part */
+	protected int subpartNum;
+	/** total number of subdivided parts */
+	protected int subFactor;
+	/** if this index (e.g. enwiki.mainpart) is further subdivided */
+	protected boolean furtherSubdivided;
+	/** full dbroles of every subpart, e.g. enwiki.nspart1.sub1, enwiki.nspart1.sub2 ..  */
+	protected String[] subParts = null;
+	
+	/** If this is the highlight index, containing the fulltext version of articles */
+	protected boolean highlight = false; 
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
@@ -87,12 +108,59 @@ public class IndexId {
 	/** Path where status files are for incremental updater */
 	protected String statusPath;
 	/** Path where transaction data is stored */
-	protected String transactionPath;
+	protected Hashtable<Transaction,String> transactionPath;
+	/** Path to temporary index (e.g. for rebuilding spell-check words) */
+	protected String tempPath;
+	
+	/** Index where titles for this index are */
+	protected String titlesIndex;
+	/** Suffix used to group titles by */
+	protected String titlesSuffix; 
+	/** For titles part (tspart) indexes, maps suffix -> iw */
+	protected Hashtable<String,String> suffixIwMap = null;
+	/** For titles parts (tspart) indexes, map suffix -> dbname */
+	protected Hashtable<String,String> suffixToDbname = null;
+	/** Dbname after suffix is deleted */
+	protected String reducedDbname = null;
 	
 	/** url of OAI repository */
 	protected String OAIRepository;
 	
 	protected String rsyncSnapshotPath = null;
+	
+	/** language code, e.g. "en" */
+	protected String langCode = null;
+	
+	/** if this is index that doesn't capitalize first letters of titles */
+	protected Boolean exactCase = null;
+	
+	/** Namespaces that are searched by default */
+	protected NamespaceFilter defaultNs = null;
+	
+	/** filter set to true for namespaces with subpages */
+	protected NamespaceFilter nsWithSubpages = null;
+	
+	/** namespaces with content (from initialise settings) */
+	protected NamespaceFilter contentNamespaces = null;
+	
+	/** If we should be using additional global rank for scores */
+	protected Boolean useAdditionalRank = null;
+	
+	/** on which index image are we doing transaction */
+	public static enum Transaction {INDEX, IMPORT, TEMP}; 
+	
+	public static enum AgeScaling { WEAK, MEDIUM, STRONG, NONE };
+	
+	protected AgeScaling ageScaling = null;
+	
+	/** lock used in {@link SearcherCache} class */
+	protected Object searcherCacheLock  = new Object();
+
+	/** locks used to serialize transactions on different transaction paths */
+	protected Hashtable<Transaction,Lock> transactionLocks = new Hashtable<Transaction,Lock>();
+	
+	/** Namespace boost mapping */
+	protected ArticleNamespaceScaling namespaceScaling = null;
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -103,7 +171,10 @@ public class IndexId {
 	 * @return
 	 */
 	static public IndexId get(String dbrole){
-		return GlobalConfiguration.getIndexId(dbrole);
+		IndexId ret = GlobalConfiguration.getIndexId(dbrole);
+		if(ret == null)
+			throw new RuntimeException("Index "+dbrole+" doesn't exist");
+		return ret;
 	}
 		
 	/**
@@ -125,7 +196,8 @@ public class IndexId {
 	public IndexId(String dbrole, String type, String indexHost, String indexRsyncPath, 
 			Hashtable<String, String> typeParams, Hashtable<String, String> params, 
 			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localIndexPath, 
-			boolean myIndex, boolean mySearch, String OAIRepository) {
+			boolean myIndex, boolean mySearch, String OAIRepository, boolean isSubdivided,
+			String titlesIndex, String titlesSuffix, Hashtable<String,String> suffixToDbname) {
 		final String sep = Configuration.PATH_SEP;
 		this.indexHost = indexHost;
 		if(!indexRsyncPath.endsWith("/"))
@@ -144,6 +216,10 @@ public class IndexId {
 		this.dbrole = dbrole;
 		this.params = params;
 		this.OAIRepository = OAIRepository;
+		this.furtherSubdivided = isSubdivided;
+		this.titlesIndex = titlesIndex;
+		this.titlesSuffix = titlesSuffix;		
+		this.suffixToDbname = suffixToDbname;
 		
 		// types
 		if(type.equals("single"))
@@ -154,22 +230,59 @@ public class IndexId {
 			this.type = IndexType.SPLIT;
 		else if(type.equals("nssplit"))
 			this.type = IndexType.NSSPLIT;
+		else if(type.equals("spell"))
+			this.type = IndexType.SPELL;
+		else if(type.equals("links"))
+			this.type = IndexType.LINKS;
+		else if(type.equals("related"))
+			this.type = IndexType.RELATED;
+		else if(type.equals("prefix"))
+			this.type = IndexType.PREFIX;
+		else if(type.equals("title_ngram"))
+			this.type = IndexType.TITLE_NGRAM;
+		else if(type.equals("subdivided"))
+			this.type = IndexType.SUBDIVIDED;
+		else if(type.equals("titles_by_suffix"))
+			this.type = IndexType.TITLES_BY_SUFFIX;
+		else if(type.equals("precursor"))
+			this.type = IndexType.PRECURSOR;
+		
+		// highlight index
+		String suffix = "";
+		if(dbrole.endsWith(".hl")){
+			highlight = true;
+			dbrole = dbrole.substring(0,dbrole.lastIndexOf('.'));
+			suffix = ".hl";
+		}
+		if(dbrole.endsWith(".pre")){
+			dbrole = dbrole.substring(0,dbrole.lastIndexOf('.'));
+			suffix += ".pre";
+		}
 		
 		// parts
+		part = null;
+		subpart = null;
+		subpartNum = -1;
 		String[] parts = dbrole.split("\\.");
-		dbname = parts[0];
+		dbname = parts[0];		
 		if(parts.length==2)
 			part = parts[1];
-		else
-			part = null;
+		else if(parts.length==3 && this.type == IndexType.SUBDIVIDED){
+			part = parts[1];
+			subpart = parts[2];
+			subpartNum = Integer.parseInt(subpart.substring(3));
+		}
+		
+		if(titlesSuffix != null)
+			reducedDbname = dbname.substring(0,dbname.indexOf(titlesSuffix));
 		
 		partNum = -1;
 		splitParts = null;
 		// split part names
 		if(this.type == IndexType.MAINSPLIT){
 			splitParts = new String[2];
-			splitParts[0] = dbname+".mainpart";
-			splitParts[1] = dbname+".restpart";
+			splitParts[0] = dbname+".mainpart"+suffix;
+			splitParts[1] = dbname+".restpart"+suffix;
 			
 			if(part == null);
 			else if(part.equalsIgnoreCase("mainpart"))
@@ -180,7 +293,7 @@ public class IndexId {
 			splitFactor = Integer.parseInt(typeParams.get("number"));
 			splitParts = new String[splitFactor];
 			for(int i=0;i<splitFactor;i++)
-				splitParts[i] = dbname+".part"+(i+1);
+				splitParts[i] = dbname+".part"+(i+1)+suffix;
 			if(part != null)
 				partNum = Integer.parseInt(part.substring(4));
 			else
@@ -189,7 +302,7 @@ public class IndexId {
 			splitFactor = Integer.parseInt(typeParams.get("number"));
 			splitParts = new String[splitFactor];
 			for(int i=0;i<splitFactor;i++)
-				splitParts[i] = dbname+".nspart"+(i+1);			
+				splitParts[i] = dbname+".nspart"+(i+1)+suffix;			
 			if(part!=null){
 				partNum = Integer.parseInt(part.substring(6));
 				namespaceSet = new HashSet<String>();
@@ -198,35 +311,69 @@ public class IndexId {
 					namespaceSet.add(ns.trim());	 
 			} else
 				partNum = 0;
+		} else if(this.type == IndexType.TITLES_BY_SUFFIX){ // split by default
+			splitFactor = Integer.parseInt(typeParams.get("number"));
+			splitParts = new String[splitFactor];
+			for(int i=0;i<splitFactor;i++)
+				splitParts[i] = dbname+".tspart"+(i+1)+suffix;
+			// additional params
+			if(part!=null){				
+				partNum = Integer.parseInt(part.substring(6));
+				suffixIwMap = params;
+			} else
+				partNum = 0;
 		}
+		
+		// handle subdivided indexes
+		if(isSubdivided){
+			subFactor = Integer.parseInt(params.get("subdivisions"));
+			subParts = new String[subFactor];
+			for(int i=1;i<=subFactor;i++)
+				subParts[i-1] = dbname+"."+part+".sub"+i+suffix;
+			if(this.type == IndexType.SUBDIVIDED)
+				this.furtherSubdivided = false; // cannot futher subdivide
+			else
+				this.furtherSubdivided = true;
+		}
+		
 		// for split/mainsplit the main iid is logical, it doesn't have local path
-		if(myIndex && !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT))){
-			indexPath = localIndexPath + "index" + sep + dbrole;
-			importPath = localIndexPath + "import" + sep + dbrole;
-			snapshotPath = localIndexPath + "snapshot" + sep + dbrole;
-		} else{
+		/* if(myIndex 
+				&& !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT || this.type==IndexType.TITLES_BY_SUFFIX))
+				&& !furtherSubdivided){ */
+			indexPath = localIndexPath + "index" + sep + this.dbrole;
+			importPath = localIndexPath + "import" + sep + this.dbrole;
+			snapshotPath = localIndexPath + "snapshot" + sep + this.dbrole;
+		/* } else{
 			indexPath = null;
 			importPath = null;
 			snapshotPath = null;
-		}
+		} */
 		
-		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
-		statusPath = localIndexPath + "status" + sep + dbrole;
-		transactionPath = localIndexPath + "transaction" + sep + dbrole;
+		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + this.dbrole;
+		statusPath = localIndexPath + "status" + sep + this.dbrole;
+		String transRoot = localIndexPath + "transaction" + sep + this.dbrole + sep; 
+		transactionPath = new Hashtable<Transaction,String>();		
+		transactionPath.put(Transaction.INDEX,transRoot+"index");
+		transactionPath.put(Transaction.IMPORT,transRoot+"import");
+		transactionPath.put(Transaction.TEMP,transRoot+"temp");
+		transactionLocks.put(Transaction.INDEX,new ReentrantLock());
+		transactionLocks.put(Transaction.IMPORT,new ReentrantLock());
+		transactionLocks.put(Transaction.TEMP,new ReentrantLock());
+		tempPath = localIndexPath + "temp" + sep + this.dbrole;
 
-		if(mySearch){
-			searchPath = localIndexPath + "search" + sep + dbrole;
-			updatePath = localIndexPath + "update" + sep + dbrole;
-		} else{
+		//if(mySearch){
+			searchPath = localIndexPath + "search" + sep + this.dbrole;
+			updatePath = localIndexPath + "update" + sep + this.dbrole;
+		/*} else{
 			searchPath = null;
 			updatePath = null;
-		}
+		} */
 		
 	}
 	
 	/** If this is logical name referring to a set of split indexes */
 	public boolean isLogical(){
-		return part == null && type != IndexType.SINGLE;
+		return (part == null && type != IndexType.SINGLE) || (subpart==null && furtherSubdivided);
 	}	
 	/** If type of this index is single */
 	public boolean isSingle(){
@@ -244,6 +391,45 @@ public class IndexId {
 	public boolean isNssplit(){
 		return type == IndexType.NSSPLIT;
 	}
+	/** If this is the spell-check index */
+	public boolean isSpell(){
+		return type == IndexType.SPELL;
+	}
+	/** If this is the index storing pagelinks */
+	public boolean isLinks(){
+		return type == IndexType.LINKS;
+	}
+	/** If this is the index storing info about related articles */
+	public boolean isRelated(){
+		return type == IndexType.RELATED;
+	}
+	/** If this is the index storing article list for specific prefixes */
+	public boolean isPrefix(){
+		return type == IndexType.PREFIX;
+	}
+	/** If this index hold all titles ngrams */
+	public boolean isTitleNgram(){
+		return type == IndexType.TITLE_NGRAM;
+	}	
+	/** If this is index is subdivided part of a logical index */
+	public boolean isSubdivided(){
+		return type == IndexType.SUBDIVIDED;
+	}
+	/** If this is grouping titles by suffix */
+	public boolean isTitlesBySuffix(){
+		return type == IndexType.TITLES_BY_SUFFIX;
+	}
+	/** If this is a precursor index to the root index (e.g. enwiki.spell.pre for enwiki.spell) */
+	public boolean isPrecursor(){
+		return type == IndexType.PRECURSOR;
+	}
+	/** Is one of main article indexes, e.g. *not* spell, related, links etc.. */
+	public boolean isArticleIndex(){
+		return (isSingle() || isMainsplit() || isSplit() || isNssplit() || isSubdivided()) 
+		&& !isHighlight() && !isTitlesBySuffix() && !isSpell() && !isPrefix() && !isPrecursor() && !isTitleNgram()
+		&& !isLinks() && !isRelated();
+	}
+	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
 	public int getPartNum() {
 		if(type == IndexType.SPLIT || type == IndexType.NSSPLIT || type == IndexType.MAINSPLIT)
@@ -298,6 +484,35 @@ public class IndexId {
 		return dbrole;
 	}
 
+	/** If this is the index containing higlighing info */
+	public boolean isHighlight(){
+		return highlight;
+	}
+	/** If this index (e.g. mainpart) has been subdivided into smaller indexes */
+	public boolean isFurtherSubdivided(){
+		return furtherSubdivided;
+	}	
+	/** Get textual repesentation of subdivided part, e.g. sub1 */
+	public String getSubpartString(){
+		return subpart;
+	}
+	/** Get number of this index in array of subivisions, 1..subFactor */
+	public int getSubpartNum(){
+		return subpartNum;
+	}
+	/** Return the number of subdivided parts */
+	public int getSubdivisionFactor(){
+		return subFactor;
+	}
+	/** Get string representations of all subparts */
+	public String[] getSubparts(){
+		return subParts;
+	}
+	/** Get iid of subpart with index i */
+	public IndexId getSubpart(int i){
+		return get(subParts[i-1]);
+	}
+	
 	/** Get IndexId for the mainpart of mainsplit index */
 	public IndexId getMainPart(){
 		if(type == IndexType.MAINSPLIT)
@@ -320,34 +535,57 @@ public class IndexId {
 	public String getRsyncSnapshotPath() {
 		return rsyncSnapshotPath;
 	}
+	
+	public String getPath(Transaction type){
+		switch(type){
+		case INDEX: return getIndexPath();
+		case IMPORT: return getImportPath();
+		case TEMP: return getTempPath();
+		}
+		throw new RuntimeException("Unknown transaction type "+type);
+	}
 
 	/** Where the indexer writes the current version of index */
 	public String getIndexPath() {
+		if(!myIndex)
+			throw new RuntimeException("Trying to retrieve index path for "+dbrole+", but index not indexed by this host");
 		return indexPath;
 	}
 	/** Where the searcher stores the latest snapshot of index */
 	public String getSearchPath() {
+		if(!mySearch)
+			throw new RuntimeException("Trying to retrieve search path for "+dbrole+", but index not searched by this host");
 		return searchPath;
 	}
 	/** Where the indexer places the snapshots */
 	public String getSnapshotPath() {
+		if(!myIndex)
+			throw new RuntimeException("Trying to retrieve snapshot path for "+dbrole+", but index not indexed by this host");
 		return snapshotPath;
 	}
 	/** Where the searcher fetches the snapshot via rsync */
 	public String getUpdatePath() {
+		if(!mySearch)
+			throw new RuntimeException("Trying to retrieve update path for "+dbrole+", but index not searched by this host");
 		return updatePath;
 	}
 	/** Where indexes are made when built from XML importing */
 	public String getImportPath() {
+		if(!myIndex)
+			throw new RuntimeException("Trying to retrieve import path for "+dbrole+", but index not indexed by this host");
 		return importPath;
 	}
 	/** Where transaction data is stored */
-	public String getTransactionPath() {
-		return transactionPath;
+	public String getTransactionPath(Transaction type) {
+		return transactionPath.get(type);
 	}
 	/** Status file for incremental updater */ 
 	public String getStatusPath() {
 		return statusPath;
+	}
+	/** Path for temporary indexes */ 
+	public String getTempPath() {
+		return tempPath;
 	}
 
 	/** Get search path with resolved symlinks */
@@ -384,24 +622,32 @@ public class IndexId {
 		return searchHosts;
 	}
 	
+	protected void addToHosts(HashSet<String> hosts, String[] splitParts){
+		for(String splitpart : splitParts){
+			if(get(splitpart)!=null)
+				hosts.addAll(get(splitpart).getSearchHosts());
+		}
+	}
+	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isTitleNgram() || isTitlesBySuffix())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
 			HashSet<String> hosts = new HashSet<String>();
 			if(get(dbname)!=null)
 				hosts.addAll(get(dbname).getSearchHosts());
-			for(String splitpart : splitParts){
-				if(get(splitpart)!=null)
-					hosts.addAll(get(splitpart).getSearchHosts());
-			}
+			if(splitParts != null)
+				addToHosts(hosts,splitParts);
+			if(subParts != null)
+				addToHosts(hosts,subParts);
+			
 			return hosts;
 		}
 	}
 	
-	/** searcher hosts within this machines group */
+	/** searcher hosts within this search group */
 	public HashSet<String> getMySearchHosts() {
 		return mySearchHosts;
 	}
@@ -425,6 +671,10 @@ public class IndexId {
 	public boolean isMySearch() {
 		return mySearch;
 	}
+	/** For this iid to be searched at current host */
+	public void forceMySearch(){
+		mySearch = true;
+	}
 	/** Get base URL of OAI repository */
 	public String getOAIRepository() {
 		return OAIRepository;
@@ -437,14 +687,40 @@ public class IndexId {
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
-		if(isSingle())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isTitleNgram())
 			ret.add(dbrole);
-		else if(isMainsplit() || isSplit() || isNssplit()){
-			for(String p : splitParts)
-				ret.add(p);
+		else if(isTitlesBySuffix()){
+			if(part != null) // part
+				ret.add(dbrole);
+			else{ // main 
+				for(String p : splitParts)
+					ret.add(p);
+			}
+		} else if(isMainsplit() || isSplit() || isNssplit()){
+			String[] parts = furtherSubdivided? subParts : splitParts;
+			for(String p : parts){
+				IndexId ip = IndexId.get(p);
+				if(ip.isFurtherSubdivided())
+					ret.addAll(ip.getPhysicalIndexes());
+				else
+					ret.add(p);
+			}
 		}
 		
 		return ret;
+	}
+	
+	/**
+	 * Wrapper for getPhysicalIndexes to get iid objects
+	 * 
+	 * @return
+	 */
+	public ArrayList<IndexId> getPhysicalIndexIds(){
+		HashSet<String> physical = getPhysicalIndexes();
+		ArrayList<IndexId> parts = new ArrayList<IndexId>();
+		for(String p : physical)
+			parts.add(get(p));
+		return parts;		
 	}
 
 	/** Rebuild namespace map from information, call only when sure that iid's for all parts are constructed.
@@ -482,7 +758,7 @@ public class IndexId {
 			else
 				return getRestPart();
 		} else
-			return null;
+			return this;
 	}
 
 	/** Return the set of namespaces which are searched by this nssplit part */
@@ -490,6 +766,205 @@ public class IndexId {
 		return namespaceSet;
 	}
 	
+	/** Get iid for dbname of this index, i.e. enwiki.mainpart -> enwiki */
+	public IndexId getDB(){
+		return get(dbname);
+	}
+
+	/** Return true if the spell-check index exists */
+	public boolean hasSpell(){
+		if(FilterFactory.isCJKLanguage(getLangCode()))
+			return false; // don't try to build spellchecks for CJK 
+		return GlobalConfiguration.getIndexId(dbname+".spell") != null;
+	}
 	
-		
+	public boolean hasPrefix(){
+		return GlobalConfiguration.getIndexId(dbname+".prefix") != null;
+	}
+	
+	public boolean hasTitleNgram(){
+		return GlobalConfiguration.getIndexId(dbname+".title_ngram") != null;
+	}
+	
+	/** Get the coresponding spell words iid */
+	public IndexId getSpell() {
+		return get(dbname+".spell");
+	}
+	
+	/** Get the pagelinks iid */
+	public IndexId getLinks() {
+		return get(dbname+".links");
+	}
+	
+	/** Get the related-articles index iid */
+	public IndexId getRelated() {
+		return get(dbname+".related");
+	}
+	
+	/** Get the prefix index iid */
+	public IndexId getPrefix() {
+		return get(dbname+".prefix");
+	}
+	
+	/** Get the prefix titles index iid */
+	public IndexId getPrefixTitles() {
+		return get(dbname+".prefix_titles");
+	}
+	
+	/** If this is a precursor index get the index it's precursor to, e.g. enwiki.spell for enwiki.spell.pre */
+	public IndexId getPrecursorTarget(){
+		if(!isPrecursor())
+			throw new RuntimeException("Trying to fetch precursor target for non-precursor index "+dbrole);
+		return get(dbrole.substring(0,dbrole.lastIndexOf('.')));
+	}
+	
+	public IndexId getPrecursor(){
+		return get(dbrole+".pre");
+	}
+	
+	/** Get the higlight index for this iid */
+	public IndexId getHighlight() {
+		if(highlight)
+			return this;
+		else if(isTitlesBySuffix())			 
+			// kinda ugly, all indexes have index+hl, only titles are all-in-one, this is mainly done
+			// for performance, and since it's only a single (rather small) additional field
+			return this;
+		else
+			return get(dbrole+".hl");
+	}
+	
+	/** Get language code for this db, e.g. "en" */
+	public String getLangCode(){
+		if(langCode == null)
+			langCode = GlobalConfiguration.getInstance().getLanguage(dbname);
+		return langCode;
+	}
+	
+	/** Get if this is index that doesn't capitalize first letters of articles */
+	public boolean isExactCase(){
+		if(exactCase == null)
+			exactCase = GlobalConfiguration.getInstance().exactCaseIndex(dbname);
+		return exactCase;
+	}
+
+	/** If this is a titles_by_suffix index, gets mapping: suffix -> iw */
+	public String getInterwikiBySuffix(String suffix) {
+		if(isTitlesBySuffix()){
+			if( part == null ){ // this is the main index
+				for(IndexId piid : getPhysicalIndexIds()){
+					String iw = piid.getInterwikiBySuffix(suffix);
+					if(iw != null)
+						return iw;
+				}
+			} else // this is one of the parts
+				return suffixIwMap.get(suffix);
+		}
+		throw new RuntimeException("Called getInterwikiBySuffix() on non-titles_by_suffix index");		
+	}
+	/** If index containing only titles is defined */
+	public boolean hasTitlesIndex(){
+		return titlesIndex != null;
+	}
+	/** Get iid where the titles for this index are */
+	public IndexId getTitlesIndex() {
+		if(titlesIndex == null)
+			throw new RuntimeException(dbrole+" doesn't have titles index part");
+		return get(titlesIndex);
+	}
+	/** Get suffix used to group titles */
+	public String getTitlesSuffix() {
+		return titlesSuffix;
+	}
+	/** Number of different dbname in this titles by suffix index */
+	public int getTitlesBySuffixCount(){
+		if(suffixIwMap == null)
+			return 0;
+		else
+			return suffixIwMap.size();
+	}
+	/** Get namespaces of default search */
+	public NamespaceFilter getDefaultNamespace(){
+		if(defaultNs == null){
+			defaultNs = GlobalConfiguration.getInstance().getDefaultNamespace(this);
+		}		
+		return defaultNs;		
+	}
+
+	/** Content namespaces */
+	public NamespaceFilter getContentNamespaces(){
+		if(contentNamespaces == null){
+			contentNamespaces = GlobalConfiguration.getInstance().getContentNamespaces(this);
+		}		
+		return contentNamespaces;		
+	}
+	
+	
+	/** Get namespaces where subpages are enabled */
+	public NamespaceFilter getNamespacesWithSubpages(){
+		if(nsWithSubpages == null){
+			nsWithSubpages = GlobalConfiguration.getInstance().getNamespacesWithSubpages(getDBname());
+		}		
+		return nsWithSubpages;		
+	}
+	
+	/** If we should use article additional rank in scoring, useful for non-encyclopedias */
+	public boolean useAdditionalRank(){
+		if(useAdditionalRank == null)
+			useAdditionalRank = GlobalConfiguration.getInstance().useAdditionalRank(getDBname());
+		return useAdditionalRank;
+	}
+	
+	/** For tspart indexes, mapping: suffix -> dbname */ 
+	public Hashtable<String, String> getSuffixToDbname() {
+		if(!isTitlesBySuffix())
+			throw new RuntimeException("Trying to get suffix->dbname map for "+dbrole);
+		if(part == null && suffixToDbname == null){
+			// init for the main logical index
+			suffixToDbname = new Hashtable<String,String>();
+			for(IndexId part : getPhysicalIndexIds()){
+				suffixToDbname.putAll(part.getSuffixToDbname());
+			}
+		}
+		return suffixToDbname;
+	}
+	
+	/** Get IndexId for a suffix in tspart (or main) indexes */
+	public IndexId getIndexIdforSuffix(String suffix){
+		return IndexId.get(getSuffixToDbname().get(suffix));
+	}
+	
+	/** Return age scaling to be used on this iid */
+	public AgeScaling getAgeScaling(){
+		if(ageScaling == null)
+			ageScaling = GlobalConfiguration.getInstance().getAgeScaling(getDBname());
+		return ageScaling;
+	}
+	
+	/** Get the related title_ngram index */
+	public IndexId getTitleNgram(){
+		return IndexId.get(dbname+".title_ngram");
+	}
+	
+	/** If this iid is in chinese or japanese */
+	public boolean isCJK(){
+		return FilterFactory.isCJKLanguage(getLangCode());
+	}
+
+	public Object getSearcherCacheLock() {
+		return searcherCacheLock;
+	}
+	
+	/** Get transaction lock for a transaction type */
+	public Lock getTransactionLock(Transaction trans) {
+		return transactionLocks.get(trans);
+	}
+	
+	/** Namespace boost for various namespaces */
+	public ArticleNamespaceScaling getNamespaceScaling(){
+		if(namespaceScaling == null)
+			namespaceScaling = GlobalConfiguration.getInstance().getNamespaceScaling(getDBname());
+		return namespaceScaling;
+	}
+
 }

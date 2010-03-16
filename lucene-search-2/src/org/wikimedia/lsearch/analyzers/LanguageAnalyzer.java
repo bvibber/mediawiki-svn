@@ -21,7 +21,7 @@ import org.apache.lucene.analysis.TokenStream;
  *
  */
 public class LanguageAnalyzer extends Analyzer {
-	public class ArrayTokens extends TokenStream {
+	public static class ArrayTokens extends TokenStream {
 		protected Iterator<Token> tokensIt = null;
 		
 		public ArrayTokens(ArrayList<Token> tokens){
@@ -61,10 +61,14 @@ public class LanguageAnalyzer extends Analyzer {
 		if(filters.hasCustomFilter())
 			tokens = applyCustomFilter(tokens);
 		
-		return new AliasFilter(filters,
-				new ArrayTokens(tokens), new ArrayTokens(tokens)); 
+		TokenStream out = new AliasFilter(filters,
+				new ArrayTokens(tokens), new ArrayTokens(tokens));
+		if(filters.hasAdditionalFilters())
+			return filters.makeAdditionalFilterChain(fieldName,out);
+		else
+			return out;
 	}
-
+	
 	/** Filter the tokens via the custom filter. For instance, to delete
 	 * stop words, or in Thai to tokenize words properly. 
 	 */
@@ -79,7 +83,7 @@ public class LanguageAnalyzer extends Analyzer {
 				
 				return filtered;				
 			} catch (Exception e){
-				log.error("Error applying custom filter for "+filters.getLanguage());
+				log.error("Error applying custom filter for "+filters.getLanguage(),e);
 			}
 		}
 		return tokens;
@@ -88,5 +92,9 @@ public class LanguageAnalyzer extends Analyzer {
 	@Override
 	public String toString() {
 		return "LanguageAnalyzer for "+filters.getLanguage();
+	}
+	
+	public WikiTokenizer getWikiTokenizer(){
+		return wikitokenizer;
 	}
 }

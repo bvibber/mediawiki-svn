@@ -1,0 +1,89 @@
+# By default, will check /etc/mwsearch.conf
+
+################################################
+# Global configuration
+################################################
+
+# URL to global configuration, this is the shared main config file, it can 
+# be on a NFS partition or available somewhere on the network
+# MWConfig.global=set by WikiTestCase
+
+# Local path to root directory of indexes
+Indexes.path=/usr/local/var/ls2
+
+################################################
+# Search node related configuration
+################################################
+
+# Port of http daemon, if different from default 8123
+# Search.port=8000
+
+# In minutes, how frequently will the index host be checked for updates
+Search.updateinterval=1
+
+# In seconds, delay after which the update will be fetched
+# used to scatter the updates around the hour
+Search.updatedelay=0
+
+# In seconds, how frequently the dead search nodes should be checked
+Search.checkinterval=30
+
+################################################
+# Indexer related configuration
+################################################
+
+# In minutes, how frequently is a clean snapshot of index created
+Index.snapshotinterval=5
+
+# Daemon type (http is started by default)
+#Index.daemon=xmlrpc
+
+# Port of daemon (default is 8321)
+#Index.port=8080
+
+# Maximal queue size after which index is being updated
+Index.maxqueuecount=5000
+
+# Maximal time an update can remain in queue before being processed (in seconds)
+Index.maxqueuetimeout=12
+
+################################################
+# Log, ganglia, localization
+################################################
+
+# URL to message files, {0} is replaced with language code, i.e. En
+Localization.url=file:///var/www/html/wiki-lucene/phase3/languages/messages/Messages{0}.php
+
+# suffixes to database name, the rest is assumed to be language code
+Database.suffix=test
+
+# Pattern for OAI repo. {0} is replaced with dbname, {1} with language
+OAI.repo=http://localhost/wiki-lucene/phase3/index.php/Special:OAIRepository
+
+# Username/password for password authenticated OAI repo
+OAI.username=user
+OAI.password=pass
+
+# Max queue size on remote indexer after which we wait a bit
+OAI.maxqueue=5000
+
+# RecentUpdateDaemon udp and tcp ports
+RecentUpdateDaemon.udp=8111
+RecentUpdateDaemon.tcp=8112
+# Hot spare
+RecentUpdateDaemon.hostspareHost=vega
+RecentUpdateDaemon.hostspareUdpPort=8111
+RecentUpdateDaemon.hostspareTcpPort=8112
+
+# Log configuration
+# Logging.logconfig=/etc/mwsearch.log4j
+
+# Set debug to true to diagnose problems with log4j configuration
+Logging.debug=false
+
+# Turn this on to broadcast status to a Ganglia reporting system.
+# Requires that 'gmetric' be in the PATH and runnable. You can
+# override the default UDP broadcast port and interface if required.
+#Ganglia.report=true
+#Ganglia.port=8649
+#Ganglia.interface=eth0

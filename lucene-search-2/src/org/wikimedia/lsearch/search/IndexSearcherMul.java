@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.FieldSelector;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.SearchableMul;
@@ -27,6 +28,13 @@ public class IndexSearcherMul extends IndexSearcher implements SearchableMul {
 		  Document[] ds = new Document[docIds.length];
 		  for(int j=0;j<docIds.length;j++)
 		    ds[j] = doc(docIds[j]);
+		  return ds;
+	}
+	
+	public Document[] docs(int[] docIds, FieldSelector sel) throws IOException {
+		  Document[] ds = new Document[docIds.length];
+		  for(int j=0;j<docIds.length;j++)
+		    ds[j] = doc(docIds[j],sel);
 		  return ds;
 	}
 

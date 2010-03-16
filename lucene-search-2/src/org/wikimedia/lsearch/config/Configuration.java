@@ -41,6 +41,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.helpers.LogLog;
 
@@ -53,6 +55,8 @@ import org.apache.log4j.helpers.LogLog;
 public class Configuration {
 	private static Configuration instance;
 	private static String configfile = null; 
+	private static String globalConfigUrl = null;
+	private static boolean verbose = true; // print info and error messages
 	
 	protected final String CONF_FILE_NAME = "lsearch.conf";
 	
@@ -95,15 +99,17 @@ public class Configuration {
 		String logconfig = getString("Logging","logconfig");
 		if (logconfig == null) {
 			// debug!
-			System.out.println("Errors will be logged to console...");
-			BasicConfigurator.configure();			
+			if(verbose)
+				System.out.println("Errors will be logged to console...");
+			BasicConfigurator.configure();
+			Logger.getRootLogger().setLevel(Level.INFO);
 		} else {
 			PropertyConfigurator.configure(logconfig);
 		}
 		
 		// open the global configuration
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
-		String globalurl = getString("MWConfig","global");
+		String globalurl = globalConfigUrl!=null? globalConfigUrl : getString("MWConfig","global");
 		String indexpath = getString("Indexes","path");
 		if(globalurl==null){
 			System.out.println("FATAL: Need to define global configuration url in local config file.");
@@ -129,7 +135,8 @@ public class Configuration {
 		for(int i=0;i<paths.length;i++){
 			try {
 				String path = paths[i];
-				System.out.println("Trying config file at path "+path);
+				if(verbose)
+					System.out.println("Trying config file at path "+path);
 				props.load(new FileInputStream(new File(path)));
 				configfile = path;
 				return;
@@ -140,7 +147,7 @@ public class Configuration {
 				return;
 			}
 		} 
-		System.out.println("Couldn't find a config file");
+		System.out.println("FATAL: Couldn't find a config file");
 		System.exit(1);
 	}
 
@@ -167,6 +174,14 @@ public class Configuration {
 	public boolean getBoolean(String section, String name) {
 		String s = getString(section, name);
 		return s != null && s.equals("true");		
+	}
+	
+	public boolean getBoolean(String section, String name, boolean defaultValue) {
+		String s = getString(section, name);
+		if( s != null)
+			return s.equals("true");
+		else
+			return defaultValue;
 	}
 	
 	public int getInt(String section, String name, int defaultValue) {
@@ -201,4 +216,15 @@ public class Configuration {
 			return defaultValue;
 		}
 	}
+
+	public static void setVerbose(boolean v) {
+		verbose = v;		
+	}
+
+	public static void setGlobalConfigUrl(String globalConfigUrl) {
+		Configuration.globalConfigUrl = globalConfigUrl;
+	}
+	
+	
+	
 }

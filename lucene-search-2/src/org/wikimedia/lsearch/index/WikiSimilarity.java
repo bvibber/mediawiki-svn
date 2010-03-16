@@ -39,13 +39,12 @@ public class WikiSimilarity extends DefaultSimilarity {
 			float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
 			//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 			return f;
-		} else if(fieldName.startsWith("redirect") || fieldName.startsWith("keyword")){
+		} else if(fieldName.startsWith("redirect") || fieldName.startsWith("keyword") || fieldName.startsWith("related")  || fieldName.startsWith("anchor") || fieldName.startsWith("context")){
 			return 1;
 		} else
 			return super.lengthNorm(fieldName,numTokens);
 		
 	}
-
 	
 
 }

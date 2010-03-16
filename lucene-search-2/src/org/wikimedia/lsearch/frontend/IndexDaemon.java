@@ -19,24 +19,9 @@ public class IndexDaemon {
 
 	public IndexDaemon() {
 		if(indexer == null){
-			indexer = new IndexThread();
-			indexer.start();
+			indexer = IndexThread.getInstance();
 		}
 	}
-
-	public void updatePage(String databaseName, String pageId, Title title, String isRedirect, String text ) {
-		// FIXME: ranks are ignored!
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, isRedirect.equals("1"), 1, IndexUpdateRecord.Action.UPDATE));
-	}
-
-	public void deletePage(String databaseName, String pageId, Title title) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName,Long.parseLong(pageId),title,"",false, 1, IndexUpdateRecord.Action.DELETE));
-	}
-
-	public void addPage(String databaseName, String pageId, Title title, String text) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, false, 1, IndexUpdateRecord.Action.ADD));
-	}
-
 	public String getStatus() {
 		return indexer.getStatus();
 	}
@@ -58,7 +43,30 @@ public class IndexDaemon {
 	}
 
 	public void makeSnapshots(){
-		indexer.makeSnapshotsNow();
+		makeSnapshots("");
+	}
+	
+	public void makeSnapshots(String pattern){
+		indexer.makeSnapshotsNow(true,pattern,false);
+	}
+	
+	public void snapshot(){
+		makeSnapshots();
+	}
+	
+	public void snapshot(String pattern){
+		makeSnapshots(pattern);
+	}
+	
+	public void snapshotPrecursors(){
+		snapshotPrecursors("","true");
+	}
+	public void snapshotPrecursors(String pattern){
+		indexer.makeSnapshotsNow(true,pattern,true);
+	}
+	
+	public void snapshotPrecursors(String pattern, String optimize){
+		indexer.makeSnapshotsNow(optimize.equalsIgnoreCase("true"),pattern,true);
 	}
 
 }

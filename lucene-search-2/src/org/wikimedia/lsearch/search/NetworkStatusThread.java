@@ -1,22 +1,17 @@
 package org.wikimedia.lsearch.search;
 
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.apache.lucene.search.RemoteSearchable;
-import org.apache.lucene.search.Searchable;
-import org.apache.lucene.search.SearchableMul;
 import org.wikimedia.lsearch.beans.SearchHost;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessenger;
-import org.wikimedia.lsearch.interoperability.RMIMessengerImpl;
+import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.search.SearcherCache.SearcherPoolStatus;
 
 
 /**
@@ -40,10 +35,9 @@ public class NetworkStatusThread extends Thread {
 	
 	protected static NetworkStatusThread instance = null;
 	
-	protected NetworkStatusThread(RMIMessenger messenger){
-		this.messenger = messenger;
+	protected NetworkStatusThread(){
 		Configuration config = Configuration.open();
-		pingInterval = config.getInt("Search","checkinterval",30) * 1000;
+		pingInterval = config.getInt("Search","checkinterval",10) * 1000;
 		indexUpdates = new ArrayList<SearchHost>();
 		cache = SearcherCache.getInstance();
 	}
@@ -73,31 +67,27 @@ public class NetworkStatusThread extends Thread {
 	
 	/** Check dead hosts, and flush caches is host is alive */
 	protected void pingHosts() {
-		Registry registry;
 		HashSet<String> noRetryHosts = new HashSet<String>();
-		Set<SearchHost> deadHosts = cache.getDeadHosts();
+		HashSet<SearchHost> deadPool = new HashSet<SearchHost>();
+		deadPool.addAll(cache.getDeadPools());
+		RMIMessengerClient messenger = new RMIMessengerClient();
 		
-		log.debug("Pinging remote hosts to see it they are up");
-		for(SearchHost sh : deadHosts){
-			String name = "RemoteSearchable<"+sh.iid+">";
+		log.debug("Pinging remote hosts to see if they are up");
+		for(SearchHost sh : deadPool){
 			if(noRetryHosts.contains(sh.host)){
 				continue;
 			}
 			try {
 				log.debug("Pinging "+sh.host+" for "+sh.iid);
-				registry = LocateRegistry.getRegistry(sh.host);
-				SearchableMul rs = (SearchableMul) registry.lookup(name);
-				rs.maxDoc(); // call some method
-				// if we made it to here without exception, flush caches
-				cache.invalidateSearchable(sh.iid,sh.host,rs);
+				SearcherPoolStatus status = messenger.getSearcherPoolStatus(sh.host,sh.iid.toString());
+				if(status != null && status.ok){
+					cache.reInitializeRemote(sh.iid,sh.host);
+				}
 			} catch (RemoteException e) {
-				log.warn("Host "+sh.host+" still down.");
-				noRetryHosts.add(sh.host);
-			} catch (NotBoundException e) {
-				log.warn("Still could not find RemoteSearchable instance on host \""+sh.host+"\" for indexid \""+sh.iid+"\"");
+				log.warn("Host "+sh.host+" for "+sh.iid+" still down.",e);
+				//noRetryHosts.add(sh.host);
 			} catch (Exception e) {
-				// error making the wiki searcher				
-				log.warn("Error making WikiSearcher on host \""+sh.host+"\" for indexid \""+sh.iid+"\"");
+				e.printStackTrace();
 			}
 		}
 	}
@@ -111,7 +101,7 @@ public class NetworkStatusThread extends Thread {
 		}
 		
 		for(SearchHost update : updates){
-			cache.invalidateSearchable(update.iid, update.host);
+			cache.reInitializeRemote(update.iid, update.host);
 		}
 		
 	}
@@ -119,9 +109,7 @@ public class NetworkStatusThread extends Thread {
 	/** Get singleton instance */
 	public static synchronized NetworkStatusThread getInstance(){
 		if(instance == null){
-			// ensure the RMI messenger is constructed
-			RMIMessengerImpl ms = RMIMessengerImpl.getInstance();
-			instance = new NetworkStatusThread(ms);
+			instance = new NetworkStatusThread();
 		}
 		
 		return instance;

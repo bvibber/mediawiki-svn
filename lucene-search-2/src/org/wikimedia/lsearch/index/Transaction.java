@@ -5,11 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.locks.Lock;
 
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Command;
+import org.wikimedia.lsearch.util.FSUtils;
 
 /**
  * Simple transaction support for indexing. Wrap index operations by 
@@ -25,10 +27,14 @@ import org.wikimedia.lsearch.util.Command;
 public class Transaction {
 	static Logger log = Logger.getLogger(Transaction.class);
 	protected IndexId iid;
-	protected boolean inTransaction; 
+	protected boolean inTransaction;
+	protected IndexId.Transaction type;
+	protected Lock lock;
 	
-	public Transaction(IndexId iid){
+	public Transaction(IndexId iid, IndexId.Transaction type){
 		this.iid = iid;
+		this.type = type;
+		this.lock = iid.getTransactionLock(type); 
 		inTransaction = false;
 	}
 	
@@ -37,6 +43,8 @@ public class Transaction {
 	 * if not, will return index to consistent state. 
 	 */
 	public void begin(){
+		// acquire lock, this will serialize transactions on indexes
+		lock.lock();
 		File backup = new File(getBackupDir());
 		File info = new File(getInfoFile());
 		if(backup.exists() && info.exists()){
@@ -58,20 +66,20 @@ public class Transaction {
 		// start new transaction
 		backup.getParentFile().mkdirs();
 		try{
-			if( exec("/bin/cp -lr "+iid.getIndexPath()+" "+backup.getAbsolutePath()) == 0){
-				Properties prop = new Properties();
-				// write out the status file
-				prop.setProperty("status","started at "+System.currentTimeMillis());			
-				FileOutputStream fileos = new FileOutputStream(info,false);
-				prop.store(fileos,"");
-				fileos.close();
-				// all is good, set transaction flag
-				inTransaction = true;
-				log.info("Transaction on index "+iid+" started");
-			} else
-				log.warn("Making a transaction copy for "+iid+" failed.");
+			// make a copy
+			FSUtils.createHardLinkRecursive(iid.getPath(type),backup.getAbsolutePath(),true);
+			Properties prop = new Properties();
+			// write out the status file
+			prop.setProperty("status","started at "+System.currentTimeMillis());			
+			FileOutputStream fileos = new FileOutputStream(info,false);
+			prop.store(fileos,"");
+			fileos.close();
+			// all is good, set transaction flag
+			inTransaction = true;
+			log.info("Transaction on index "+iid+" started");
 		} catch(Exception e){
-			log.warn("Error while intializing transaction: "+e.getMessage());
+			log.error("Error while intializing transaction: "+e.getMessage(),e);
+			lock.unlock();
 		}
 	}
 	
@@ -82,21 +90,21 @@ public class Transaction {
 		// cleanup before starting new transaction
 		try{
 			if(trans.exists())
-				exec("/bin/rm -rf "+trans.getAbsolutePath());
+				FSUtils.deleteRecursive(trans.getAbsoluteFile());
 			if(info.exists())
-				exec("/bin/rm -rf "+info.getAbsolutePath());
+				FSUtils.deleteRecursive(info.getAbsoluteFile());
 		} catch(Exception e){
-			log.warn("Error removing old transaction data from "+iid.getTransactionPath()+" : "+e.getMessage());
+			log.error("Error removing old transaction data from "+iid.getTransactionPath(type)+" : "+e.getMessage(),e);
 		}
 
 	}
 	/** This is where index backup is stored */
 	protected String getBackupDir(){
-		return iid.getTransactionPath() + Configuration.PATH_SEP + "backup" ;
+		return iid.getTransactionPath(type) + Configuration.PATH_SEP + "backup" ;
 	}
 	/** Property file holding info about the status of transaction */
 	protected String getInfoFile(){
-		return iid.getTransactionPath() + Configuration.PATH_SEP + "transaction.info";
+		return iid.getTransactionPath(type) + Configuration.PATH_SEP + "transaction.info";
 	}
 
 	protected int exec(String command) throws Exception {
@@ -118,19 +126,20 @@ public class Transaction {
 	 */
 	protected void recover(){
 		File backup = new File(getBackupDir());
-		File index = new File(iid.getIndexPath());
+		File index = new File(iid.getTransactionPath(type));
+		String path = iid.getPath(type);
 		try{
+			log.info("Recovering "+path+" from "+backup.getPath());
 			if(index.exists()) // clear locks before recovering
-				WikiIndexModifier.unlockIndex(iid.getIndexPath());
-			if( exec("/bin/rm -rf "+iid.getIndexPath()) == 0 ){
-				if( exec("/bin/mv "+backup.getAbsolutePath()+" "+iid.getIndexPath()) == 0 ){
-					log.info("Successfully recovered index for "+iid);
-				} else
-					log.warn("Recovery of "+iid+" failed: cannot move "+backup.getAbsolutePath());
-			} else
-				log.warn("Recovery of "+iid+" failed: cannot delete "+iid.getIndexPath());
+				WikiIndexModifier.unlockIndex(path);
+			
+			// delete old indexpath 
+			FSUtils.deleteRecursive(new File(path));
+			
+			FSUtils.createHardLinkRecursive(backup.getAbsolutePath(),path);
+			FSUtils.deleteRecursive(backup.getAbsoluteFile()); // cleanup 
 		} catch(Exception e){
-			log.warn("Recovery of index "+iid+" failed with error "+e.getMessage());
+			log.error("Recovery of index "+iid+" failed with error "+e.getMessage(),e);
 		}
 	}
 	
@@ -138,18 +147,32 @@ public class Transaction {
 	 * Commit changes to index. 
 	 */
 	public void commit(){
-		cleanup();
-		inTransaction = false;
-		log.info("Successfully commited changes on "+iid);
+		boolean wasInTransaction = inTransaction;
+		try{
+			cleanup();
+			inTransaction = false;
+			log.info("Successfully commited changes on "+iid);
+		} finally{
+			if(wasInTransaction)
+				lock.unlock();
+		}
 	}
 	
 	/**
 	 * Rollback changes to index. Returns to previous consistent state.
 	 */
 	public void rollback(){
-		recover();
-		inTransaction = false;
-		log.info("Succesbully rollbacked changes on "+iid);
+		boolean wasInTransaction = inTransaction;
+		try{
+			if(inTransaction){
+				recover();
+				inTransaction = false;
+				log.info("Succesfully rollbacked changes on "+iid);
+			}
+		} finally{
+			if(wasInTransaction)
+				lock.unlock();
+		}
 	}
 
 	public boolean isInTransaction() {

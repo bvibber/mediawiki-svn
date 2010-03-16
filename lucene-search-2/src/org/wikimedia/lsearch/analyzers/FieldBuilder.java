@@ -1,5 +1,7 @@
 package org.wikimedia.lsearch.analyzers;
 
+import org.wikimedia.lsearch.config.IndexId;
+
 /**
  * Agregate class for FilterFactory and FieldNameFactory. This class
  * contains methods used to build various fields of the index, 
@@ -39,24 +41,49 @@ public class FieldBuilder {
 	
 	protected BuilderSet[] builders = new BuilderSet[2];
 	
-	/** Construct case-insensitive field builder */
-	public FieldBuilder(String lang){
-		this(lang,false);
+	/** default is ignore case (upper/lower), use exact_case for wiktionaries, etc */
+	public static enum Case { IGNORE_CASE, EXACT_CASE };
+	/** use stemmer if available, of force no stemming */
+	public static enum Stemmer { USE_STEMMER, NO_STEMMER };
+	/** additional options */ 
+	public static enum Options { NONE, SPELL_CHECK };
+	
+	/** Construct case-insensitive field builder with stemming */
+	public FieldBuilder(IndexId iid){
+		this(iid,Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
 	}
 	
-	public FieldBuilder(String lang, boolean exactCase){
-		if(exactCase){
-			builders = new BuilderSet[2];
-			// additional exact case factory
+	public FieldBuilder(IndexId iid, boolean exactCase){
+		this(iid,exactCase? Case.EXACT_CASE : Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
+	}
+	
+	public FieldBuilder(IndexId iid, Case useCase){
+		this(iid,useCase,Stemmer.USE_STEMMER,Options.NONE);
+	}
+	
+	public FieldBuilder(IndexId iid, Case useCase, Stemmer useStemmer, Options options){
+		FilterFactory.Type type = FilterFactory.Type.FULL;
+		if(options == Options.SPELL_CHECK)
+			type = FilterFactory.Type.SPELL_CHECK;
+		// additional exact case factory
+		if(useCase == Case.EXACT_CASE){
+			builders = new BuilderSet[2];	
 			builders[1] = new BuilderSet(
-					new FilterFactory(lang).getNoStemmerFilterFactory(),
+					new FilterFactory(iid,type).getNoStemmerFilterFactory(),
 					new FieldNameFactory(FieldNameFactory.EXACT_CASE));
 		} else
 			builders = new BuilderSet[1];
+		
 		// default factory, lowercase all data
-		builders[0] = new BuilderSet(
-				new FilterFactory(lang),
-				new FieldNameFactory());
+		if(useStemmer == Stemmer.USE_STEMMER){
+			builders[0] = new BuilderSet(
+					new FilterFactory(iid,type),
+					new FieldNameFactory());
+		} else{
+			builders[0] = new BuilderSet(
+					new FilterFactory(iid,type).getNoStemmerFilterFactory(),
+					new FieldNameFactory());
+		}
 		
 	}
 
@@ -66,12 +93,16 @@ public class FieldBuilder {
 	
 	/** Get the case-insensitive builder */
 	public BuilderSet getBuilder(){
-		return getBuilder(false);
+		return getBuilder(Case.IGNORE_CASE);
+	}
+	
+	public BuilderSet getBuilder(boolean exactCase){
+		return getBuilder(exactCase? Case.EXACT_CASE : Case.IGNORE_CASE);
 	}
 	
 	/** Get BuilderSet for exactCase value */
-	public BuilderSet getBuilder(boolean exactCase){
-		if(exactCase && builders.length > 1)
+	public BuilderSet getBuilder(Case dCase){
+		if(dCase == Case.EXACT_CASE && builders.length > 1)
 			return builders[1];
 		else
 			return builders[0];

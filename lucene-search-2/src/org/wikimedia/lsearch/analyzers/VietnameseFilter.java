@@ -50,12 +50,12 @@ public class VietnameseFilter extends TokenFilter {
 				buffer[len++] = c;				
 		}
 		if(replace){
-			Token tt = new Token(new String(buffer,0,len),t.startOffset(),t.endOffset(),t.type());
+			Token tt = new Token(new String(buffer,0,len),t.startOffset(),t.endOffset(),"alias");
 			tt.setPositionIncrement(0);
 			next = input.next();
-			if(next!=null && next.type().equals("transliteration"))
+			if(next!=null && next.getPositionIncrement()==0)
 				return t; // we'll replace d's in next token
-			else if(t.type().equals("transliteration")){
+			else if(t.getPositionIncrement()==0){
 				return tt; // replace the transliterated token with one with d's
 			} else{
 				afterNext = next;

@@ -3,10 +3,15 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.FieldSelector;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.Filter;
@@ -20,9 +25,12 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.TopFieldDocs;
 import org.apache.lucene.search.Weight;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 
 /**
- * Encapsulates the lucene search interface for MWSearch.
+ * A generalized index searcher, supports various index
+ * architectures.
+ * 
  * Depending on the structure of the index (single file, 
  * mainsplit, split) makes either a local 
  * <code>IndexSearcher</code>, or a <code>MultiSearcher</code> 
@@ -44,27 +52,28 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	/** parts of the multisearcher, dbrole -> searchable */
 	protected Hashtable<String,Searchable> searcherParts = new Hashtable<String,Searchable>();
 	protected MultiSearcherMul ms = null;
+	protected Searcher cachedDfs = null;
+	/** searchable -> host */
+	protected Hashtable<Searchable,String> searchableHost = new Hashtable<Searchable,String>();
 	
 	public static final boolean INVALIDATE_CACHE = true;
 	
-	protected MultiSearcherMul makeMultiSearcher(ArrayList<IndexId> iids) throws IOException{
+	protected MultiSearcherMul makeMultiSearcher(Collection<IndexId> iids) throws IOException{
 		ArrayList<Searchable> ss = new ArrayList<Searchable>();
 		for(IndexId iid : iids){
 			Searchable s = null;
-			if(iid.isMySearch()){
-				// always try to use a local copy if available
-				try {
+			String host = cache.getRandomHost(iid);
+			if(host != null){
+				if(RMIMessengerClient.isLocal(host))
 					s = cache.getLocalSearcher(iid);
-				} catch (IOException e) {
-					// ok, try remote
-				}
+				else
+					s = cache.getRemoteSearcher(iid,host);
 			}
-			if(s == null)
-				s = cache.getRandomRemoteSearchable(iid);
-			
+						
 			if(s != null){
 				ss.add(s);
 				searcherParts.put(iid.toString(),s);
+				searchableHost.put(s,host);
 			} else
 				log.warn("Cannot get a search index (nor local or remote) for "+iid);				
 		}
@@ -75,31 +84,32 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	}
 	
 	/** New object from cache */
-	public WikiSearcher(IndexId iid) throws Exception {
+	public WikiSearcher(IndexId iid, IndexId commonsWiki) throws IOException {
 		cache = SearcherCache.getInstance();
-		
-		if(iid.isSingle()){ // is always local 
-			searcher = cache.getLocalSearcher(iid);
-		} else if(iid.isMainsplit()){
-			ArrayList<IndexId> parts = new ArrayList<IndexId>();
-			
-			parts.add(iid.getMainPart());
-			parts.add(iid.getRestPart());
-			
-			ms = makeMultiSearcher(parts);
-			searcher = ms;
-		} else if(iid.isSplit() || iid.isNssplit()){			
-			ArrayList<IndexId> parts = new ArrayList<IndexId>();
-			for(int i=1; i<=iid.getSplitFactor(); i++){
-				parts.add(iid.getPart(i));
-			}
+
+		if(commonsWiki != null){
+			// make multi searcher with all parts + commons wiki
+			ArrayList<IndexId> parts = iid.getPhysicalIndexIds();
+			parts.add(commonsWiki);
 			searcher = ms = makeMultiSearcher(parts);
-		} else
-			throw new Exception("Cannot make searcher, unrecognized type of IndexId.");
+		} else if(iid.isSingle()){ // is always local 
+			searcher = cache.getLocalSearcher(iid);
+			searcherParts.put(iid.toString(),searcher);
+		} else {
+			ArrayList<IndexId> parts = iid.getPhysicalIndexIds();
+			searcher = ms = makeMultiSearcher(parts);
+		}
 		
 		if(searcher == null)
-			throw new Exception("Error constructing searcher, check logs.");
-		
+			throw new IOException("Error constructing searcher for "+iid);		
+	}
+	
+	/** New object only with required parts */
+	public WikiSearcher(Collection<IndexId> parts) throws IOException {
+		cache = SearcherCache.getInstance();
+		searcher = ms = makeMultiSearcher(parts);
+		if(searcher == null)
+			throw new IOException("Error constructing searcher for "+parts);
 	}
 
 	/** Got host for the iid within this multi searcher */
@@ -108,7 +118,16 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		if(s == null)
 			return null;
 		else
-			return cache.getSearchableHost(s);
+			return searchableHost.get(s);
+	}
+	
+	/** Get map iid->host for of all parts in this searcher */
+	public HashMap<String,String> getAllHosts(){
+		HashMap<String,String> ret = new HashMap<String,String>();
+		for(Entry<String,Searchable> e : searcherParts.entrySet()){
+			ret.put(e.getKey(),searchableHost.get(e.getValue()));
+		}
+		return ret;
 	}
 
 	@Override
@@ -120,9 +139,22 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		return searcher.doc(i);
 	}
 
+	/** Note: for split indexes, the value is always cached (from last query) */
 	@Override
 	public int docFreq(Term term) throws IOException {
-		return searcher.docFreq(term);
+		if(ms != null)
+			return ms.getLastCachedDfSource().docFreq(term);
+		else
+			return searcher.docFreq(term);
+	}
+	
+	/** Note: for split indexes, these values are always cached (from last query) */
+	@Override
+	public int[] docFreqs(Term[] terms) throws IOException {
+		if(ms != null)
+			return ms.getLastCachedDfSource().docFreqs(terms);
+		else
+			return searcher.docFreqs(terms);
 	}
 
 	@Override
@@ -176,6 +208,14 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 			return Arrays.toString(ms.getSearchables());
 		else 
 			return searcher.toString();
+	}
+
+	public Document[] docs(int[] i, FieldSelector sel) throws IOException {
+		return searcher.docs(i,sel);
+	}
+
+	public Document doc(int i, FieldSelector sel) throws CorruptIndexException, IOException {
+		return searcher.doc(i,sel);
 	}
 	
 	

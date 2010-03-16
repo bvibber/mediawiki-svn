@@ -52,7 +52,10 @@ public class AliasFilter extends TokenStream {
 			return original;
 		Token stemmed = stemmer.next();
 		// NOTE: we require them to be the SAME OBJECT, so we don't waste time doing equal()
-		if(original == stemmed)
+		if(original == stemmed
+				|| original.type().equals("upper") || original.type().equals("titlecase")
+				|| original.termText().contains(".")
+				|| (original instanceof ExtToken && ((ExtToken)original).getType()!=ExtToken.Type.TEXT))
 			return original;
 		else{
 			stemmed.setPositionIncrement(0); // alias

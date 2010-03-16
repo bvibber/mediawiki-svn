@@ -5,8 +5,10 @@
 package org.wikimedia.lsearch.frontend;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URI;
@@ -41,22 +43,27 @@ abstract public class HttpHandler extends Thread {
 	protected String postData;
 
 	protected final int BUF_SIZE = 8192;
-	protected final char[] outputBuffer = new char[BUF_SIZE];
+	protected char[] outputBuffer = new char[BUF_SIZE];
 	protected int bufLength = 0;
 
 	protected int minorVersion; // the x in HTTP 1.x
 
 	protected String contentType = "text/html";	
+	protected String charset = "none";
 	boolean headersSent;
 
 	protected HashMap headers;
+	
+	protected static HttpMonitor monitor = null; 
 
 	public HttpHandler(Socket s) {
+		if(monitor == null)
+			monitor = HttpMonitor.getInstance();
 		try {
 			istrm = new DataInputStream(new BufferedInputStream(s.getInputStream()));
-			ostrm = new PrintWriter(s.getOutputStream());			
+			ostrm = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream(),"utf-8")));			
 		} catch (IOException e) {
-			log.error("I/O in opening http socket.");
+			log.error("I/O in opening http socket.",e);
 		}
 	}
 
@@ -110,10 +117,10 @@ abstract public class HttpHandler extends Thread {
 			log.debug("No keep-alive, closing connection ... ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error(e.getMessage());
+			log.error(e.getMessage(),e);
 		} finally {
 			if (!headersSent) {
-				sendError(500, "Internal server error", "An internal error occurred.");
+				sendError(500, "Internal server error", "An internal error occurred: no header sent.");
 			}
 			flushOutput();
 			// Make sure the client is closed out.
@@ -171,7 +178,7 @@ abstract public class HttpHandler extends Thread {
 		} catch (URISyntaxException e) {
 			sendError(400, "Bad Request",
 			"Couldn't make sense of the given URI.");
-			log.warn("Bad URI in request: " + rawUri);
+			log.warn("Bad URI in request: " + rawUri,e);
 			return;
 		}	
 
@@ -182,9 +189,10 @@ abstract public class HttpHandler extends Thread {
 			if(len==0) postData = "";
 			else postData = new String(readBytes(len));
 		}
-
+		monitor.requestStart(this);
 		processRequest();
 		flushOutput();
+		monitor.requestEnd(this);
 	}
 
 	abstract protected void processRequest();
@@ -199,7 +207,7 @@ abstract public class HttpHandler extends Thread {
 			return;
 		}
 		sendOutputLine("HTTP/1.1 "+code+" "+message);
-		sendOutputLine("Content-Type: " + contentType);
+		sendOutputLine("Content-Type: " + contentType+((!charset.equals("none"))? "; charset="+charset : ""));
 		if(contentLen!=-1)
 			sendOutputLine("Content-Length: "+contentLen);
 		if(version=="HTTP/1.0" && isKeepAlive())
@@ -218,7 +226,7 @@ abstract public class HttpHandler extends Thread {
 				"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n"+
 				"<head>\n<title>Error: " + code + " " + message + "</title>\n"+
 				"</head>\n<body>\n<h1>" + code + " " + message + "</h1>\n"+
-				"<p>" + detail + "</p>\n<hr />\n<p><i>MWSearch on localhost" + 
+				"<div>" + detail + "</div>\n<hr />\n<p><i>LSearch daemon on localhost" + 
 		"</i></p>\n</body>\n</html>");
 	}
 
@@ -227,9 +235,12 @@ abstract public class HttpHandler extends Thread {
 		log.debug(">>>"+sout);
 		// write to buffer instead directly to stream!
 		char[] s = (sout+"\r\n").toCharArray(); 
-		if(bufLength + s.length >= BUF_SIZE)
+		if(bufLength + s.length >= outputBuffer.length)
 			flushOutput();
-		// FIXME: what if array is 2x larger than buffer?
+		// extend buffer if needed
+		if(s.length > bufLength){
+			outputBuffer = new char[s.length*2];
+		}
 		System.arraycopy(s,0,outputBuffer,bufLength,s.length);
 		bufLength+=s.length;
 	}
@@ -255,7 +266,7 @@ abstract public class HttpHandler extends Thread {
 			//log.error("Internal error, read "+read+" bytes istead of "+contentLength+" from POST request");
 			return data; 
 		} catch (IOException e) {
-			log.warn("Could not send raw data in bytes to output stream.");
+			log.warn("Could not send raw data in bytes to output stream.",e);
 		}
 		return null;
 	}
@@ -267,7 +278,7 @@ abstract public class HttpHandler extends Thread {
 		try {
 			sin = istrm.readLine();
 		} catch (IOException e) {
-			log.warn("I/O problem in reading from stream");
+			log.warn("I/O problem in reading from stream",e);
 		}
 		log.debug("<<<"+ sin);
 		return sin;

@@ -1,49 +1,61 @@
-  Lucene Search 2: extension for MediaWiki
-  ==========================================
 
-Requirements:
+Lucene-search 2.1: search extension for MediaWiki
 
- - Java 5.0
- - Lucene 2.0dev (modified Lucene 2.0)
- - MediaWiki 1.9 with MWSearch extension
- 
- Optionally:
- - Rsync (for distributed architecture)
- - Apache XMLRPC 3.0 (for XMLRPC interface)
- - Apache Ant 1.6 (for building from source, etc)
+== Requirements ==
 
-Installing:
+ - Java 5 +
+ - MediaWiki 1.13 with MWSearch extension 
+ - Apache Ant 1.6 (for building from source)
 
- - Up-to-date instructions and troubleshooting can be found at: 
+== Installation ==
 
-   http://www.mediawiki.org/wiki/Extension:LuceneSearch
- 	
-Running:
+A single-host, single-wiki configuration can be generated as follows.
 
- - start rsync daemon (if distributed architecture)
- - "./lsearchd" or "ant run" (setup hostname in file "hostname")
- 
-Features: 
+First make sure LuceneSearch.jar is present. If building from sources, 
+run ant to make it:
 
- - distributed architecture, indexes can be either single file (single), 
-   split between main namespace and rest (mainsplit) or split into some 
-   number of subindexes (split). Indexer makes periodic snapshots of
-   index, and searchers check for this snapshots to update their local
-   copy.
-   
- - incremental updater using oai interface. Periodically checks wikis
-   for new updates, and enqueues them on the indexer.
-   
- - wiki syntax parser, articles are parsed for basic wiki syntax and are 
-   stripped of accents. Localization for wiki syntax can be read from 
-   MediaWiki message files. Categories are extracted and put into 
-   separate field. Additionaly, template names (but not parameters), 
-   table parameters, image parameters (except caption) are not indexed.
-   
- - query parser, faster search query parsing, enables prefixes for namespaces,
-   e.g. 'help:editing pages'. Prefixes are localized within MediaWiki. Rewrites 
-   all of these so that stemmed present are present but add less to document score. 
-   
- - (hopefully) robust architecture, with threads pinging hosts that are down,
-   and search daemons trying alternatives if host holding part of the 
-   index is down.
+ant
+
+To generate configuration files, run:
+
+./configure <path to mediawiki root directory>
+
+This script will examine your MediaWiki installation, and generate
+configuration files to match your installation. If everything went
+without exception, build indexes:
+
+./build
+
+This will build search, highlight and spellcheck indexes from xml
+database dump. For small wikis, just put this script into daily
+cron and installation is done. 
+
+For larger wikis, install OAIRepository MediaWiki extension and 
+after building the initial index use incremental updater:
+
+./update
+
+This will fetch latest updates from your wiki, and update various
+indexes with search, page links and spell check data. Put this into 
+daily cron to keep the indexes up-to-date. 
+
+== Running ==
+
+Once the indexes have been built, run the daemon:
+
+./lsearchd
+
+The deamon will listen on port 8123 for incoming search requests 
+from MediaWiki, and on port 8321 for incoming incremental updates
+for the index. 
+
+== Further notes ==
+
+For more complex configuration instructions and troubleshooting please
+visit:
+
+  http://www.mediawiki.org/wiki/Extension:Lucene-search
+
+
+
+

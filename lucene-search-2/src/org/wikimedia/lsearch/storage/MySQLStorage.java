@@ -1,7 +1,6 @@
 package org.wikimedia.lsearch.storage;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,14 +10,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
-import org.wikimedia.lsearch.ranks.CompactArticleLinks;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 
 /**
  * MySQL storage backend
@@ -27,6 +31,7 @@ import org.wikimedia.lsearch.ranks.CompactArticleLinks;
  * @author rainman
  *
  */
+@Deprecated
 public class MySQLStorage extends Storage {
 	static Logger log = Logger.getLogger(MySQLStorage.class);
 	protected Configuration config;
@@ -56,7 +61,7 @@ public class MySQLStorage extends Storage {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			log.error("Cannot load mysql jdbc driver, class not found: "+e.getMessage());
+			log.error("Cannot load mysql jdbc driver, class not found: "+e.getMessage(),e);
 		}
 		
 		lib = config.getString("Storage","lib","./sql");
@@ -162,14 +167,14 @@ public class MySQLStorage extends Storage {
 	
 	// inherit javadoc 
 	public Collection<CompactArticleLinks> getPageReferences(Collection<Title> titles, String dbname) throws IOException {		
-		String sql = "SELECT rf_key, rf_references from "+getTableName("references",dbname)+" WHERE ";
+		String sql = "SELECT page_key, page_references from "+getTableName("page",dbname)+" WHERE ";
 		if(titles == null || titles.size()==0)
 			return new ArrayList<CompactArticleLinks>();
 		else if(titles.size()==1){
-			sql += "rf_key="+quote(escape(titles.iterator().next().getKey()));
+			sql += "page_key="+quote(escape(titles.iterator().next().getKey()));
 		} else{			
 			StringBuilder sb = new StringBuilder(sql);
-			sb.append("rf_key IN (");
+			sb.append("page_key IN (");
 			Iterator<Title> it = titles.iterator();
 			while(it.hasNext()){
 				sb.append('\'');
@@ -178,7 +183,7 @@ public class MySQLStorage extends Storage {
 				if(it.hasNext())
 					sb.append(',');
 			}
-			sb.append(")");
+			sb.append(");");
 			sql = sb.toString();
 		}
 		try {
@@ -188,7 +193,7 @@ public class MySQLStorage extends Storage {
 			ResultSet res = stmt.executeQuery(sql);
 			ArrayList<CompactArticleLinks> ret = new ArrayList<CompactArticleLinks>();
 			while(res.next()){
-				ret.add(new CompactArticleLinks(res.getString("rf_key"),res.getInt("rf_references")));				
+				ret.add(new CompactArticleLinks(res.getString("page_key"),res.getInt("page_references")));				
 			}
 			conn.close();
 			return ret;
@@ -202,11 +207,11 @@ public class MySQLStorage extends Storage {
 	public void storePageReferences(Collection<CompactArticleLinks> refs, String dbname) throws IOException {
 		final int maxPerQuery = 10000;		
 		Connection conn = getWriteConnection(dbname);
-		verifyTable("references",dbname,conn);		
+		verifyTable("page",dbname,conn);		
 		Iterator<CompactArticleLinks> it = refs.iterator();
 		// send chunks of maxPerQuery referenace replacements 
 		while(it.hasNext()){		
-			StringBuilder sb = new StringBuilder("REPLACE INTO "+getTableName("references",dbname)+" (rf_key,rf_references) VALUES ");
+			StringBuilder sb = new StringBuilder("INSERT INTO "+getTableName("page",dbname)+" (page_key,page_references) VALUES ");
 			int count = 0;
 			while(it.hasNext() && count < maxPerQuery){
 				CompactArticleLinks cs = it.next();
@@ -218,7 +223,7 @@ public class MySQLStorage extends Storage {
 				if(it.hasNext() && count<maxPerQuery)
 					sb.append("'), ");
 				else
-					sb.append("');");
+					sb.append("') ON DUPLICATE KEY UPDATE page_references=VALUES(page_references);");
 			}
 			try {
 				log.info("Storing "+Math.min(maxPerQuery,count)+" page ranks... ");
@@ -283,5 +288,135 @@ public class MySQLStorage extends Storage {
 			log.error("Cannot create table "+table+" : "+e.getMessage());
 			throw new IOException(e.getMessage());
 		}	
+	}
+
+	@Override
+	public HashMap<Title, ArrayList<RelatedTitle>> getRelatedPages(Collection<Title> titles, String dbname) throws IOException {
+		String page = getTableName("page",dbname);
+		String related = getTableName("related",dbname);
+		String sql = "SELECT a.page_key as 'r_to', b.page_key as 'r_related', rel_score FROM "+related+", "+page+" a, "+page+" b WHERE rel_to=a.page_id AND rel_related=b.page_id AND ";
+		if(titles == null || titles.size()==0)
+			return new HashMap<Title, ArrayList<RelatedTitle>>();
+		else if(titles.size()==1){
+			sql += "a.page_key="+quote(escape(titles.iterator().next().getKey()));
+		} else{			
+			StringBuilder sb = new StringBuilder(sql);
+			sb.append("a.page_key IN (");
+			Iterator<Title> it = titles.iterator();
+			while(it.hasNext()){
+				sb.append('\'');
+				sb.append(escape(it.next().getKey()));
+				sb.append('\'');
+				if(it.hasNext())
+					sb.append(',');
+			}
+			sb.append(");");
+			sql = sb.toString();
+		}
+		try {
+			Connection conn = getReadConnection(dbname);
+			log.info("Fetching related info for "+titles.size()+" articles");
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(sql);
+			HashMap<Title, ArrayList<RelatedTitle>> ret = new HashMap<Title, ArrayList<RelatedTitle>>();
+			while(res.next()){
+				Title t1 = new Title(res.getString("r_to"));
+				Title t2 = new Title(res.getString("r_related"));
+				double score = res.getDouble("rel_score");
+				ArrayList<RelatedTitle> rel = ret.get(t1);
+				if(rel == null){
+					rel = new ArrayList<RelatedTitle>();
+					ret.put(t1,rel);
+				}
+				rel.add(new RelatedTitle(t2,score));				
+			}
+			conn.close();
+			return ret;
+		} catch (SQLException e) {
+			log.error("Cannot execute sql "+sql+" : "+e.getMessage());
+			throw new IOException(e.getMessage());
+		}
+	}
+	
+	protected HashMap<String,Integer> getPageIDs(Collection<String> keys, String dbname, Connection conn) throws IOException{		
+		String sql = "SELECT page_key, page_id from "+getTableName("page",dbname)+" WHERE ";
+		if(keys.size()==1){
+			sql += "page_key="+quote(escape(keys.iterator().next()));
+		} else{			
+			StringBuilder sb = new StringBuilder(sql);
+			sb.append("page_key IN (");
+			Iterator<String> it = keys.iterator();
+			while(it.hasNext()){
+				sb.append('\'');
+				sb.append(escape(it.next()));
+				sb.append('\'');
+				if(it.hasNext())
+					sb.append(',');
+			}
+			sb.append(");");
+			sql = sb.toString();
+		}
+		try {
+			log.info("Fetching page ids for "+keys.size()+" pages");
+			Statement stmt = conn.createStatement();
+			ResultSet res = stmt.executeQuery(sql);
+			HashMap<String,Integer> map = new HashMap<String,Integer>();
+			while(res.next()){
+				map.put(res.getString("page_key"),res.getInt("page_id"));
+			}
+			return map;
+		} catch (SQLException e) {
+			log.error("Cannot execute sql "+sql+" : "+e.getMessage());
+			throw new IOException(e.getMessage());
+		}
+	}
+
+	@Override
+	public void storeRelatedPages(Collection<Related> related, String dbname) throws IOException {
+		Connection read = getReadConnection(dbname);
+		HashSet<String> keys = new HashSet<String>();
+		for(Related r : related){
+			keys.add(r.getTitle().toString());
+			keys.add(r.getRelates().toString());
+		}
+		HashMap<String,Integer> map = getPageIDs(keys,dbname,read);
+		final int maxPerQuery = 20000;		
+		Connection write = getWriteConnection(dbname);
+		verifyTable("related",dbname,write);		
+		Iterator<Related> it = related.iterator();
+		// send chunks of maxPerQuery referenace replacements 
+		while(it.hasNext()){		
+			StringBuilder sb = new StringBuilder("INSERT INTO "+getTableName("related",dbname)+" (rel_to,rel_related,rel_score) VALUES ");
+			int count = 0;
+			while(it.hasNext() && count < maxPerQuery){
+				Related r = it.next();
+				sb.append("('");
+				sb.append(Integer.toString(map.get(r.getTitle().toString())));
+				sb.append("','");
+				sb.append(Integer.toString(map.get(r.getRelates().toString())));
+				sb.append("','");
+				sb.append(Double.toString(r.getScore()));
+				count++;
+				if(it.hasNext() && count<maxPerQuery)
+					sb.append("'), ");
+				else
+					sb.append("') ON DUPLICATE KEY UPDATE rel_score=VALUES(rel_score);");
+			}
+			try {
+				log.info("Storing "+Math.min(maxPerQuery,count)+" related pages... ");
+				Statement stmt = write.createStatement();
+				stmt.executeUpdate(sb.toString());			
+				
+			} catch (SQLException e) {
+				log.error("Cannot execute replace query "+sb+" : "+e.getMessage());
+				throw new IOException(e.getMessage());
+			}		
+		}
+		try {
+			write.close(); // be sure we close the connection
+			read.close();
+		} catch (SQLException e) {
+		}
+		
 	}	
 }

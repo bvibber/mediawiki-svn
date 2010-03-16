@@ -2,6 +2,9 @@ package org.wikimedia.lsearch.oai;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -15,7 +18,12 @@ import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.importer.DumpImporter;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.LinksBuilder;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
 
 public class IndexUpdatesCollector implements DumpWriter {
@@ -31,7 +39,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public IndexUpdatesCollector(IndexId iid){
 		this.iid = iid;
-		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
+		this.langCode = iid.getLangCode();
 	}
 	
 	public void addRedirect(String redirectTitle, int references) {
@@ -49,7 +57,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void addDeletion(long pageId){
 		// pageId is enough for page deletion
-		Article article = new Article(pageId,-1,"","",false,1);
+		Article article = new Article(pageId,-1,"","",null,1,0,0);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.DELETE));
 		log.debug(iid+": Deletion for "+pageId);
 	}
@@ -65,7 +73,18 @@ public class IndexUpdatesCollector implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),references,redirects);
+		Date date = new Date(revision.Timestamp.getTimeInMillis());
+		org.wikimedia.lsearch.beans.Title redirect = Localization.getRedirectTitle(revision.Text,iid);
+		String redirectTo = null;
+		if(redirect != null)
+			redirectTo = redirect.getKey();
+		
+		// references and related titles are set correctly later (in incremental updater)
+		Article article = new Article(page.Id, page.Title.Namespace, page.Title.Text,
+					revision.Text, redirectTo, references, 0, 0,
+					redirects, new ArrayList<RelatedTitle>(),
+					new Hashtable<String,Integer>(), date,
+					DumpImporter.processLiquidThreadInfo(page.DiscussionThreadingInfo) );
 		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);
@@ -75,12 +94,15 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
 		this.info = info;
+		RMIMessengerClient messenger = new RMIMessengerClient(true);
 		// write to localization
+		HashMap<Integer,String> map = new HashMap<Integer,String>();
 		Iterator it = info.Namespaces.orderedEntries();
 		while(it.hasNext()){
 			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
-			Localization.addCustomMapping(pair.getValue(),pair.getKey(),langCode);
+			map.put(pair.getKey(),pair.getValue());			
 		}
+		messenger.addLocalizationCustomMapping(iid.getIndexHost(),map,iid.getDBname());
 	}
 		
 	public void close() throws IOException {

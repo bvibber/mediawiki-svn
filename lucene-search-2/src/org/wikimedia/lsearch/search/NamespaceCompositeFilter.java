@@ -18,18 +18,28 @@ import org.apache.lucene.search.Filter;
  */
 public class NamespaceCompositeFilter extends Filter {
 	protected ArrayList<Filter> filters;
+	protected ArrayList<Filter> redirects;
 	
-	public NamespaceCompositeFilter(ArrayList<Filter> filters){
+	public NamespaceCompositeFilter(ArrayList<Filter> filters, ArrayList<Filter> redirects){
 		this.filters = filters;
+		this.redirects = redirects;
 	}
 	
 	@Override
 	public BitSet bits(IndexReader reader) throws IOException {
 		BitSet bits = new BitSet(reader.maxDoc());
 		
-		// do logical OR to get composite filter
-		for(Filter f : filters){
-			bits.or(f.bits(reader));
+		if(filters.size() == 0)
+			bits.set(0,reader.maxDoc());
+		else{
+			// do logical OR to get composite filter
+			for(Filter f : filters){
+				bits.or(f.bits(reader));
+			}
+		}
+		// delete cross-namespace redirects
+		for(Filter f : redirects){
+			bits.andNot(f.bits(reader));
 		}
 
 		return bits;

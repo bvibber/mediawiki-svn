@@ -41,7 +41,7 @@ import org.wikimedia.lsearch.statistics.StatisticsThread;
  */
 public class SearchServer extends Thread {
 	private static int port = 8123;
-	private static int maxThreads = 25;
+	private static int maxThreads = 80;
 	private static ServerSocket sock;
 	public static String indexPath;
 	public static String[] dbnames;
@@ -55,10 +55,11 @@ public class SearchServer extends Thread {
 	
 	public void startServer(){
 		config = Configuration.open();
+		SearchServer.port = config.getInt("Search","port",8123);
 		/** Logger */
 		org.apache.log4j.Logger log = Logger.getLogger(SearchServer.class);
 		
-		log.info("Binding server to port " + port);
+		log.info("Searcher started on port " + port);
 		
 		try {
 			sock = new ServerSocket(port);
@@ -89,22 +90,42 @@ public class SearchServer extends Thread {
 		ExecutorService pool = Executors.newFixedThreadPool(maxThreads);
 		
 		for (;;) {
-			Socket client;
-			try {
-				log.debug("Listening...");
-				client = sock.accept();
-			} catch (Exception e) {
-				log.error("accept() error: " + e.getMessage());
-				continue;
-			}
-			
-			int threadCount = SearchDaemon.getOpenCount();
-			if (threadCount > maxThreads) {
-				stats.add(false, 0, threadCount);
-				log.error("too many connections, skipping a request");
-			} else {
-				SearchDaemon worker = new SearchDaemon(client);
-				pool.execute(worker);
+			Socket client = null;
+			try{			
+				try {
+					log.debug("Listening...");
+					client = sock.accept();
+				} catch (Exception e) {
+					log.error("accept() error: " + e.getMessage(),e);
+					// be sure to close all sockets
+					if(client != null){
+						try{ client.getInputStream().close(); } catch(Exception e1) {}
+						try{ client.getOutputStream().close(); } catch(Exception e1) {}
+						try{ client.close(); } catch(Exception e1) {}
+					}
+					continue;
+				}
+
+				int threadCount = SearchDaemon.getOpenCount();
+				if (threadCount > maxThreads) {
+					stats.add(false, 0, threadCount);
+					log.error("too many connections, skipping a request");
+					// be sure to close all sockets
+					if(client != null){
+						try{ client.getInputStream().close(); } catch(Exception e1) {}
+						try{ client.getOutputStream().close(); } catch(Exception e1) {}
+						try{ client.close(); } catch(Exception e1) {}
+					}
+					continue;
+				} else {
+					SearchDaemon worker = new SearchDaemon(client);
+					pool.execute(worker);
+				}
+			} catch(Exception e){
+				log.error("Search server exception: "+e.getMessage(),e);
+				try{ client.getInputStream().close(); } catch(Exception e1) {}
+				try{ client.getOutputStream().close(); } catch(Exception e1) {}
+				try{ client.close(); } catch(Exception e1) {}
 			}
 		}
 	}
@@ -114,20 +135,5 @@ public class SearchServer extends Thread {
 	 */
 	public void run() {
 		startServer();
-	}
-	
-	public static void main(String[] args) {
-		System.out.println(
-				"MediaWiki Lucene search indexer - runtime search daemon.\n"
-				);
-		int i = 0;
-		while (i < args.length) {
-			if (args[i].equals("-port")) {
-				port = Integer.valueOf(args[++i]).intValue();
-			} else if (args[i].equals("-configfile")) {
-				Configuration.setConfigFile(args[++i]);
-			} else break;
-			++i;
-		}
 	}
 }

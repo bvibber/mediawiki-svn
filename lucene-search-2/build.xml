@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MWSearch" default="alljar" basedir=".">
+<project name="LuceneSearch" default="alljar" basedir=".">
 	<property name="lib" value="lib"/>
 	<property name="bin" value="bin"/>
 	<property name="src" value="src"/>
 	<property name="jars" value="jars"/>
 	<property name="dist" location="dist"/>
-	<property name="pack.name" value="lucene-search-2.0"/>
-	<property name="binary.name" value="ls2-bin"/>
+	<property name="pack.name" value="lucene-search-2.1"/>
+	<property name="src.name" value="lucene-search-src-2.1"/>
+	<property name="binary.name" value="ls2.1-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
-	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/*"/>
-	
+	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/* VERSION configure build update resources/** test/** udplogger/**"/>
+	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/* VERSION configure build update test/** udplogger/**"/>
+	<property name="include.bin" value="*.log4j *.txt config.inc template/** udplogger/**"/>
+	<property name="include.sh" value="configure build update lsearchd"/>
+
 	<property file="${basedir}/hostname"/>
-	
+
 	<path id="classpath">
 		<fileset dir="${lib}" includes="*.jar"/>
 	</path>
@@ -24,52 +28,54 @@
 	        	<fileset dir="${lib}">
 	            	<include name="*.jar"/>
 	        	</fileset>
-      		</classpath> 
+      		</classpath>
     	</java>
-  	</target> 
-	
+  	</target>
+
 	<target name="makejar" depends="build">
 		<jar destfile="${basedir}/${jar.name}">
 			<manifest>
 	            <attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager"/>
-                <attribute name="Class-Path" value="${jar.name} lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.0.1-dev.jar lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
+                <attribute name="Class-Path" value="${jar.name} lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.3.jar lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
             </manifest>
 			<zipfileset dir="${bin}" prefix="">
 				<include name="org/**"/>
-			</zipfileset>			
+			</zipfileset>
 		</jar>
 	</target>
-	
+
 	<target name="alljar" depends="build" description="All-in-one jar">
 		<jar jarfile="${jar.name}" compress="true">
 			<manifest>
 				<attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager" />
 			</manifest>
 			<fileset dir="bin" includes="org/**" />
-			
+
 			<!-- pack libraries as well -->
 			<zipfileset src="lib/xmlrpc-common-3.0.jar" />
 			<zipfileset src="lib/xmlrpc-client-3.0.jar" />
 			<zipfileset src="lib/xmlrpc-server-3.0.jar" />
 			<zipfileset src="lib/commons-logging-1.1.jar" />
 			<zipfileset src="lib/ws-commons-util-1.0.1.jar" />
-			<zipfileset src="lib/log4j-1.2.14.jar" />			
-			<zipfileset src="lib/lucene-core-2.0.1-dev.jar" />
-			<zipfileset src="lib/lucene-analyzers.jar" />			
+			<zipfileset src="lib/log4j-1.2.14.jar" />
+			<zipfileset src="lib/lucene-core-2.3.jar" />
+			<zipfileset src="lib/lucene-analyzers.jar" />
 			<zipfileset src="lib/snowball.jar" />
 			<zipfileset src="lib/mwdumper.jar" />
 			<zipfileset src="lib/mysql-connector-java-3.0.17-ga-bin.jar" />
+
+			<fileset dir="resources" includes="*/**" />
 		</jar>
 	</target>
 
-	
+
 	<target name="build" description="Compile classes">
 	    <mkdir dir="${bin}"/>
 	    <javac srcdir="${src}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${bin}/">
 	      <classpath refid="classpath"/>
 	    </javac>
   	</target>
-	
+
 	<target name="pack" description="Make tar.gz distribution">
 		<mkdir dir="${dist}"/>
 		<delete file="${dist}/${pack.name}.tar"/>
@@ -81,17 +87,31 @@
 		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar"/>
 	</target>
-	
+
+	<target name="pack-src" depends="alljar" description="Make tar.gz distribution of only core source files">
+		<mkdir dir="${dist}"/>
+		<delete file="${dist}/${src.name}.tar"/>
+		<delete file="${dist}/${src.name}.tar.gz"/>
+		<tar tarfile="${dist}/${src.name}.tar">
+			<tarfileset prefix="${pack.name}" dir="." includes="${include.src}"/>
+		</tar>
+
+		<gzip zipfile="${dist}/${src.name}.tar.gz" src="${dist}/${src.name}.tar"/>
+		<delete file="${dist}/${src.name}.tar"/>
+	</target>
+
+
 	<target name="binary" depends="alljar" description="Make binary tar.gz distribution">
 		<mkdir dir="${bin}"/>
 		<delete file="${dist}/${binary.name}.tar"/>
 		<delete file="${dist}/${binary.name}.tar.gz"/>
 		<tar tarfile="${dist}/${binary.name}.tar">
-			<tarfileset prefix="${binary.name}" dir="." includes="${jar.name} ${include}" excludes="src/ test-data/ lib/*.jar"/>
+			<tarfileset prefix="${pack.name}" dir="." includes="${jar.name} ${include.bin}" excludes="template/backup/**"/>
+			<tarfileset prefix="${pack.name}" mode="755" dir="." includes="${include.sh}"/>
 		</tar>
 
 		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
 		<delete file="${dist}/${binary.name}.tar"/>
 	</target>
-	
+
 </project>

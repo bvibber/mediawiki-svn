@@ -3,6 +3,8 @@ package org.wikimedia.lsearch.ranks;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,21 +37,16 @@ public class LinkReader implements DumpWriter {
 	Links links;
 	HashSet<String> interwiki;
 	String langCode;
-	boolean readRedirects;
-	
-	public static final boolean READ_REDIRECTS = true;
-	public static final boolean NO_REDIRECTS = false;
+	IndexId iid;
+	boolean exactCase;
 
-	public LinkReader(Links links, String langCode){
-		this(links,langCode,false);
-	}
-	
-	public LinkReader(Links links, String langCode, boolean readRedirects){
+	public LinkReader(Links links, IndexId iid, String langCode){
 		this.links = links;
-		this.readRedirects = readRedirects;
 		if(langCode == null || langCode.equals(""))
 			langCode = "en";
 		this.langCode = langCode;
+		this.iid = iid;
+		this.exactCase = iid.isExactCase();
 		interwiki = Localization.getInterwiki();
 	}
 	public void writeRevision(Revision revision) throws IOException {
@@ -59,113 +56,24 @@ public class LinkReader implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		if(readRedirects){
-			// register redirect
-			Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
-			if( redirect !=null ){
-				CompactArticleLinks cs = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
-				if(cs != null)
-					links.setRedirect(page.Title.Namespace+":"+page.Title.Text,cs);
-				return;
-			}
+		Title t = new Title(page.Title.Namespace,page.Title.Text);
+		try{
+			if( page.Title.Namespace >= 0)
+				links.addArticleInfo(revision.Text,t,exactCase,Integer.toString(page.Id));
+		} catch(Exception e){
+			log.error("Error adding article "+t+" : "+e.getMessage(),e);
+			e.printStackTrace();
 		}
-		processLinks(revision.Text,page.Title.Namespace);
-	}
-	
-	/** Find the links object for the ns:title key */
-	protected CompactArticleLinks findArticleLinks(int ns, String title){
-		String key;
-		CompactArticleLinks rank;
-		if(title.length() == 0)
-			return null;
-		// try exact match
-		key = ns+":"+title;
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try lowercase 
-		key = ns+":"+title.toLowerCase();
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try lowercase with first letter upper case
-		if(title.length()==1) 
-			key = ns+":"+title.toUpperCase();
-		else
-			key = ns+":"+title.substring(0,1).toUpperCase()+title.substring(1).toLowerCase();
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try title case
-		key = ns+":"+WordUtils.capitalize(title);
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try upper case
-		key = ns+":"+title.toUpperCase();
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try capitalizing at word breaks
-		key = ns+":"+WordUtils.capitalize(title,new char[] {' ','-','(',')','}','{','.',',','?','!'});
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		
-		return null;
-	}
-	
-	/** Extract all links from this page, and increment ref count for linked pages */
-	protected void processLinks(String text, int namespace) {
-		Pattern linkPat = Pattern.compile("\\[\\[(.*?)(\\|(.*?))?\\]\\]");
-		Matcher matcher = linkPat.matcher(text);
-		int ns; String title;
-		boolean escaped;
-		
-		HashSet<CompactArticleLinks> pagelinks = new HashSet<CompactArticleLinks>(); 
-		while(matcher.find()){
-			String link = matcher.group(1);
-			int fragment = link.lastIndexOf('#');
-			if(fragment != -1)
-				link = link.substring(0,fragment);
-			//System.out.println("Got link "+link);
-			if(link.startsWith(":")){
-				escaped = true;
-				link = link.substring(1);
-			} else escaped = false;
-			ns = 0; 
-			title = link;			
-			// check for ns:title syntax
-			String[] parts = link.split(":",2);
-			if(parts.length == 2 && parts[0].length() > 1){
-				Integer inx = siteinfo.Namespaces.getIndex(parts[0].substring(0,1).toUpperCase()+parts[0].substring(1).toLowerCase());
-				if(!escaped && (parts[0].equalsIgnoreCase("category") || (inx!=null && inx==14)))
-					continue; // categories, ignore
-				if(inx!=null && inx < 0) 
-					continue; // special pages, ignore
-				if(inx != null){
-					ns = inx;
-					title = parts[1];
-				}
-				
-				// ignore interwiki links
-				if(interwiki.contains(parts[0]))
-					continue;
-			}
-			if(ns == 0 && namespace!=0)
-				continue; // skip links from other namespaces into the main namespace
-			// register as link
-			CompactArticleLinks target = findArticleLinks(ns,title);			
-			if(target != null)
-				pagelinks.add(target);				
-		}
-		// increment page ranks 
-		for(CompactArticleLinks rank : pagelinks){			
-			rank.links++;
-		}
-	}
+	}	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
 		siteinfo = info;
+		// write siteinfo to localization
+		Iterator it = info.Namespaces.orderedEntries();
+		while(it.hasNext()){
+			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
+			Localization.addCustomMapping(pair.getValue(),pair.getKey(),iid.getDBname());
+			links.addToNamespaceMap(pair.getValue(),pair.getKey());
+		}
 	}	
 	public void close() throws IOException {
 		// nop		
@@ -176,7 +84,7 @@ public class LinkReader implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 		// nop		
 	}
-	public Links getRanks() {
+	public Links getLinks() {
 		return links;
 	}
 	
