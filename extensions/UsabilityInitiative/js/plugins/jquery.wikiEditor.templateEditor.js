@@ -217,14 +217,14 @@ fn: {
 			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
 			.parent()
 			.addClass( 'wikiEditor-template-collapsed' )
-			.prepend( $(
+			.prepend(
 				'<span class="wikiEditor-template-expand wikiEditor-noinclude"></span>' +
 				'<span class="wikiEditor-template-name wikiEditor-noinclude">' +
 					'<span class="wikiEditor-template-label wikiEditor-noinclude">' + 
 					$.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName( model ) + '</span>' +
 					'<span class="wikiEditor-template-dialog wikiEditor-noinclude"></span>' +
 				'</span>'
-			) );
+			);
 	},
 	/**
 	 * Turn a complex template wrapper back into a simple one
