@@ -7708,9 +7708,8 @@ if ( typeof context == 'undefined' ) {
 		 */
 		
 		'getElementAtCursor': function() {
-			//firefox only
-			// TODO: IE support
 			if ( context.$iframe[0].contentWindow.getSelection ) {
+				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
 				if ( selection.rangeCount == 0 ) {
 					// We don't know where the cursor is
@@ -7719,9 +7718,11 @@ if ( typeof context == 'undefined' ) {
 				var sc = selection.getRangeAt( 0 ).startContainer;
 				if ( sc.nodeName == "#text" ) sc = sc.parentNode;
 				return $( sc );
-			} else {
-				return $( [] );
-			}	
+			} else if ( context.$iframe[0].contentWindow.document.selection ) { // should come last; Opera!
+				// IE
+				var selection = context.$iframe[0].contentWindow.document.selection.createRange();
+				return $( selection.parentElement() );
+			}
 		},
 		
 		/**
@@ -8221,7 +8222,7 @@ if ( typeof context == 'undefined' ) {
 		 * DO NOT CALL THIS DIRECTLY, use $.textSelection( 'functionname', options ) instead
 		 */
 		'scrollToCaretPosition': function( options ) {
-			// FIXME: context.$textarea.trigger( 'scrollToPosition' ) ?
+			context.fn.scrollToTop( context.fn.getElementAtCursor(), true );
 		},
 		/**
 		 * Scroll an element to the top of the iframe
