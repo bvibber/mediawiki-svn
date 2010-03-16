@@ -4,6 +4,7 @@
 	<property name="bin" value="bin"/>
 	<property name="src" value="src"/>
 	<property name="jars" value="jars"/>
+	<property name="test" value="test"/>
 	<property name="dist" location="dist"/>
 	<property name="pack.name" value="lucene-search-2.1"/>
 	<property name="src.name" value="lucene-search-src-2.1"/>
@@ -21,6 +22,7 @@
 
 	<path id="classpath">
 		<fileset dir="${lib}" includes="*.jar"/>
+		<file name="${jar.name}"/>
 	</path>
 
 	<target name="run">
@@ -123,4 +125,32 @@
 		<delete file="${dist}/${binary.name}.tar"/>
 	</target>
 
+	<target name="test-build" description="Compile the junit tests">
+		<javac srcdir="${test}" destdir="${test}">
+                        <classpath>
+                                <pathelement path="${java.class.path}"/>
+				<pathelement location="${collector.dir}"/>
+                                <pathelement path="${jar.name}"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="test" depends="test-build">
+		<property name="collector.dir" value="${test}"/>
+		<available file="${collector.dir}/${collector.class}.class" property="hasFailingTests"/>
+
+		<junit haltonerror="false" haltonfailure="false">
+                        <classpath>
+                                <pathelement path="${java.class.path}"/>
+				<pathelement location="${collector.dir}"/>
+                                <pathelement path="${jar.name}"/>
+			</classpath>
+			<sysproperty key="ant.junit.failureCollector" value="${collector.dir}/${collector.class}"/>
+
+			<batchtest fork="yes" todir="${collector.dir}" unless="hasFailingTests">
+				<fileset dir="${collector.dir}" includes="**/*.java" excludes="**/${collector.class}.*"/>
+				<formatter type="plain" usefile="false"/>
+			</batchtest>
+		</junit>
+	</target>
 </project>
