@@ -622,7 +622,7 @@ class jsScriptLoader {
 
 		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
-			//$str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
+			$str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
 		}
 
 		// Do language swap by index:
