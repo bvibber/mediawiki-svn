@@ -213,10 +213,40 @@ fn: {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
 				// the rest in a new node which is our start node
-				startNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
+				var newStartNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
 					s.offset : s.node.nodeValue.length - 1
 				);
-				context.fn.purgeOffsets();
+				var oldStartNode = startNode;
+				startNode = newStartNode;
+				
+				// Update offset objects. We don't need purgeOffsets(), simply
+				// manipulating the existing offset objects will suffice
+				// FIXME: This manipulates context.offsets directly, which is ugly,
+				// but the performance improvement vs. purgeOffsets() is worth it
+				// This code doesn't set lastTextNode to newStartNode for offset objects
+				// with lastTextNode == oldStartNode, but that doesn't really matter
+				var subtracted = s.offset;
+				var oldLength = s.length;
+
+				var j, o;
+				// Update offset objects referring to oldStartNode
+				for ( j = start - subtracted; j < start; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = oldStartNode;
+						o.length = subtracted;
+					}
+				}
+				// Update offset objects referring to newStartNode
+				for ( j = start; j < start - subtracted + oldLength; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = newStartNode;
+						o.offset -= subtracted;
+						o.length -= subtracted;
+						o.lastTextNode = oldStartNode;
+					}
+				}
 			}
 			
 			var end = markers[i].end;
@@ -230,10 +260,39 @@ fn: {
 			var endNode = e.node;
 			if ( e.offset + 1 < e.length - 1 && endNode.nodeName == '#text' ) {
 				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
-				var endNode = endNode.splitText( e.offset + 1 );
+				var oldEndNode = endNode;
+				var newEndNode = endNode.splitText( e.offset + 1 );
 				
 				// Update offset objects
-				context.fn.purgeOffsets();
+				var subtracted = e.offset + 1;
+				var oldLength = e.length;
+
+				var j, o;
+				// Update offset objects referring to oldEndNode
+				for ( j = end - subtracted; j < end; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = oldEndNode;
+						o.length = subtracted;
+					}
+				}
+				// We have to insert this one, as it might not exist: we didn't call getOffset( end )
+				context.offsets[end] = {
+					'node': newEndNode,
+					'offset': 0,
+					'length': oldLength - subtracted,
+					'lastTextNode': oldEndNode
+				};
+				// Update offset objects referring to newEndNode
+				for ( j = end + 1; j < end - subtracted + oldLength; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = newEndNode;
+						o.offset -= subtracted;
+						o.length -= subtracted;
+						o.lastTextNode = oldEndNode;
+					}
+				}
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
