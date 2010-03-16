@@ -609,6 +609,14 @@ mediaSource.prototype = {
 			this.mimeType = this.detectType( this.src );
 		}
 		
+		// Conform the mime type to ogg
+		if( this.mimeType == 'video/theora') {
+			this.mimeType = 'video/ogg';
+		}
+		
+		if( this.mimeType == 'audio/vorbis') {
+			this.mimeType = 'audio/ogg';
+		}
 			
 		// Check for parent elements ( supplies categories in "itext" )
 		if( $j( element ).parent().attr('category') ) {			
@@ -2357,7 +2365,7 @@ mw.EmbedPlayer.prototype = {
 			})
 		);		
 				
-		if ( this.controls == true 
+		if ( this.controls 
 			&& this.height > this.ctrlBuilder.getComponentHeight( 'playButtonLarge' ) 
 		) {
 			$j( this ).append(
