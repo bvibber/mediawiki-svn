@@ -567,20 +567,27 @@ ctrlBuilder.prototype = {
 	* Hide the control bar. 
 	*/
 	hideControlBar : function(){
+		var animateDuration = 'slow'		
 		// Else hide the control bar ( if checkOverlayControls is still true ) 	
-		this.embedPlayer.$interface.find( '.control-bar').fadeOut( 'slow' );		
-		// Move down itext if present
-		$j( '.itext' ).animate( {'bottom' : 10 } );
+		this.embedPlayer.$interface.find( '.control-bar').fadeOut( animateDuration );		
+		this.embedPlayer.$interface.find( '.itext' ).animate( { 
+				'bottom' : 10 
+		}, animateDuration );
+		
 	},
 	
 	/**
 	* Show the control bar
 	*/
 	showControlBar : function(){
+		var animateDuration = 'slow'
 		// Show controls
-		this.embedPlayer.$interface.find( '.control-bar').fadeIn( 'slow' );
+		this.embedPlayer.$interface.find( '.control-bar').fadeIn( animateDuration );
 		// Move up itext if present
-		$j( '.itext' ).animate( { 'bottom' : this.getHeight() + 10 } );
+		this.embedPlayer.$interface.find( '.itext' ).animate( { 
+			'bottom' : this.getHeight() + 10 
+		}, animateDuration );		
+		
 	},
 	
 	/**

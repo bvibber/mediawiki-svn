@@ -1244,8 +1244,8 @@ mw.addMessages( {
 				'prop':'revisions'
 			};
 			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
-				//If "timedText" is not a valid namespace try "just" with prefix: 
-				if (	sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
+				// If "timedText" is not a valid namespace try "just" with prefix: 
+				if ( sourcePages.error && sourcePages.error.code == 'apunknown_apnamespace' ) {
 					var request = { 
 						'list' : 'allpages', 
 						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.embedPlayer.apiTitleKey 
