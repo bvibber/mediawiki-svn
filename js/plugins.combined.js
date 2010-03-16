@@ -8708,7 +8708,7 @@ fn: {
 		// Store visited markers here so we know which markers should be removed
 		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
-			if(markers[i].skipDivision && (division == markers[i].skipDivision)){ 
+			if ( markers[i].skipDivision && ( division == markers[i].skipDivision ) ) { 
 				continue;
 			}
 			
@@ -9197,7 +9197,7 @@ fn: {
 /**
  * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
  */
-'name_mappings': {
+'nameMappings': {
    "Infobox skyscraper": "building_name",
    "Infobox settlement": "official_name"
 },		
@@ -9292,7 +9292,7 @@ evt: {
 							// Update template name if needed
 							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) ) {
 								var $label = $( node ).parent().find( '.wikiEditor-template-label' );
-								var displayName = $.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName(model);
+								var displayName = $.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName( model );
 								if ( $label.text() != displayName ) {
 									$label.text( displayName );
 								}
@@ -9415,7 +9415,7 @@ fn: {
 				'<span class="wikiEditor-template-expand wikiEditor-noinclude"></span>' +
 				'<span class="wikiEditor-template-name wikiEditor-noinclude">' +
 					'<span class="wikiEditor-template-label wikiEditor-noinclude">' + 
-					$.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName(model) + '</span>' +
+					$.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName( model ) + '</span>' +
 					'<span class="wikiEditor-template-dialog wikiEditor-noinclude"></span>' +
 				'</span>'
 			) );
@@ -9620,12 +9620,12 @@ fn: {
 	 */
 	getTemplateDisplayName: function ( model ) {
 		var tName = model.getName();
-		if(tName in $.wikiEditor.modules.templateEditor.name_mappings){
-			return tName + ": " + model.getValue( $.wikiEditor.modules.templateEditor.name_mappings[tName] );
-		} else if( model.getValue("name") != ""){
-			return tName + ": " + model.getValue("name");
-		} else if( model.getValue("Name") != ""){
-			return tName + ": " + model.getValue("Name");
+		if( tName in $.wikiEditor.modules.templateEditor.nameMappings ) {
+			return tName + ': ' + model.getValue( $.wikiEditor.modules.templateEditor.nameMappings[tName] );
+		} else if( model.getValue( 'name' ) != '' ) {
+			return tName + ': ' + model.getValue( 'name' );
+		} else if( model.getValue( 'Name' ) != '' ) {
+			return tName + ': ' + model.getValue( 'Name' );
 		}
 		return tName;
 	},

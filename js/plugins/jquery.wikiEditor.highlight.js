@@ -174,7 +174,7 @@ fn: {
 		// Store visited markers here so we know which markers should be removed
 		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
-			if(markers[i].skipDivision && (division == markers[i].skipDivision)){ 
+			if ( markers[i].skipDivision && ( division == markers[i].skipDivision ) ) { 
 				continue;
 			}
 			
