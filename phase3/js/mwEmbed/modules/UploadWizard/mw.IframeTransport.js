@@ -37,7 +37,7 @@ mw.IframeTransport = function( form, progressCb, transportedCb ) {
 
 mw.IframeTransport.prototype = {
 	/**
-	 * Configure the form we have so that it submits to the iframe
+	 * Configure a form with a File Input so that it submits to the iframe
 	 * Ensure callback on completion of upload
 	 */
 	configureForm: function() {
