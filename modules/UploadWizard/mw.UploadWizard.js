@@ -86,9 +86,18 @@ mw.UploadWizardUpload.prototype = {
 		_this.filename = result.upload.filename;
 		_this.title = "File:" + _this.filename;
 
-		for (var key in result.upload.imageinfo) {
-			_this.imageinfo[key] = result.upload.imageinfo[key];
+		for ( var key in result.upload.imageinfo ) {
+			// we get metadata as list of key-val pairs; convert to object for easier lookup. Assuming that EXIF fields are unique.
+			if ( key === 'metadata' ) {
+				_this.imageinfo.metadata = {};
+				$j.each( result.upload.imageinfo.metadata, function( i, pair ) {
+					_this.imageinfo.metadata[pair['name']] = pair['value'];
+				});
+			} else {
+				_this.imageinfo[key] = result.upload.imageinfo[key];
+			}
 		}
+
 	},
 
 	/**
@@ -111,8 +120,8 @@ mw.UploadWizardUpload.prototype = {
 
 		var params = {
                         'titles': _this.title,
-                        'iiurlwidth': width, 
                         'prop':  'imageinfo',
+                        'iiurlwidth': width, 
                         'iiprop': 'url'
                 };
 
@@ -136,7 +145,7 @@ mw.UploadWizardUpload.prototype = {
 					var thumbnail = {
 						width: 	imageInfo.thumbwidth,
 						height: imageInfo.thumbheight,
-						url: 	imageInfo.url
+						url: 	imageInfo.thumburl
 					}
 					_this._thumbnails[ "width" + width ] = thumbnail; 
 					callback( thumbnail );
@@ -420,6 +429,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.dataDiv = $j( '<div class="mwe-upwiz-details-data"></div>' );
 
 	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions"></div>' );
+	
 
 	_this.descriptionAdder = $j( '<a id="mwe-upwiz-desc-add"/>' )
 					.attr( 'href', '#' )
@@ -433,23 +443,22 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			.append( $j( '<div class="mwe-upwiz-details-descriptions-add"></div>' )
 					.append( _this.descriptionAdder ) );
 				
+	_this.dateInput = $j( '<input type="text" class="mwe-date" size="20"/>' );
+	$j( _this.dateInput ).datepicker( { dateFormat: 'yyyy-mm-dd' } );
 
 	$j( _this.div )
 		.append( _this.macroDiv )
 		.append( _this.thumbnailDiv )
 		.append( _this.errorDiv )
 		.append( $j( _this.dataDiv )
-			.append( _this.descriptionsContainerDiv ));
+			.append( _this.descriptionsContainerDiv )
+			.append( _this.dateInput )
+		);
 	
 
 	
 	// create the basic HTML
 	// thumbnail
-
-
-	// description in [ English ]
-	// description field
-	// title
 
 	// about this work
 	// media type
@@ -566,7 +575,7 @@ mw.UploadWizardDetails.prototype = {
 		var _this = this;
 		mw.log( "populating details from upload" );
 		_this.setThumbnail( mw.getConfig( 'thumbnailWidth' ) ); 
-		//_this.setDate();
+		_this.setDate();
 
 		//_this.setSource();
 		
@@ -578,7 +587,7 @@ mw.UploadWizardDetails.prototype = {
 
 	/**
 	 *  look up thumbnail info and set it on the form, with loading spinner
-	 * @param filename
+	 *
 	 * @param width
 	 */
 	setThumbnail: function( width ) {
@@ -600,6 +609,44 @@ mw.UploadWizardDetails.prototype = {
 		_this.thumbnailDiv.loadingSpinner();
 		_this.upload.getThumbnail( width, callback );
 
+	},
+
+	/**
+	 * Check if we got an EXIF date back; otherwise use today's date; and enter it into the details 
+	 * XXX We ought to be using date + time here...
+	 * EXIF examples tend to be in ISO 8601, but the separators are sometimes things like colons, and they have lots of trailing info
+	 * (which we should actually be using, such as time and timezone)
+	 */
+	setDate: function() {
+		var _this = this;
+		var iso8601regex = /^(\d\d\d\d)[:\/-](\d\d)[:\/-](\d\d)\D.*/;
+		var dateStr;
+		var metadata = _this.upload.imageinfo.metadata;
+		$j.each([metadata.DateTimeOriginal, metadata.DateTimeDigitized, metadata.DateTime], 
+			function( i, imageinfoDate ) {
+				if ( imageinfoDate !== undefined ) {
+					var d = imageinfoDate.trim();
+					if ( d.match( iso8601regex ) ) { 
+						dateStr = d.replace( iso8601regex, "$1-$2-$3" );
+						return false; // break from $j.each
+					}
+				}
+			}
+		);
+		// if we don't have EXIF or other metadata, let's use "now"
+		// XXX if we have FileAPI, it might be clever to look at time created of the file. Save that in the 
+		// upload object for use here later, perhaps
+		function pad( n ) { 
+			return n < 10 ? "0" + n : n;
+		}
+
+		if (dateStr === undefined) {
+			d = new Date();
+			dateStr = d.getUTCFullYear() + '-' + pad(d.getUTCMonth()) + pad(d.getUTCDate());
+		}
+
+		// ok by now we should definitely have a date string formatted in YYYY-MM-DD
+		$j(_this.dateInput).val(dateStr);
 	},
 
 	/**
@@ -631,15 +678,18 @@ mw.UploadWizardDetails.prototype = {
 			// we should not even allow them to press the button ( ? ) but then what about the queue...
 		}
 		$j.each( _this.descriptions, function( i, desc ) {
-			information.description += desc.getWikiText();
+			information['description'] += desc.getWikiText();
 		} )
+
+		// XXX add a sanity check here for good date
+		information['date'] = $j(_this.dateInput).val();
 	
 		var info = '';
 		for ( var key in information ) {
 			info += '|' + key + '=' + information[key] + "\n";	
 		}	
 
-		wikiText += "=={int:filedesc}==\n";
+		wikiText += "=={{int:filedesc}}==\n";
 
 		wikiText += '{{Information\n' + info + '}}\n';
 		
@@ -667,18 +717,30 @@ mw.UploadWizardDetails.prototype = {
 		var _this = this;
 		// are we okay to submit?
 		// check descriptions
-
-		// are we changing the name ( moving the file? ) if so, do that first, and the rest of this submission has to become
-		// a callback when that is transported?
 			
 		// XXX check state of details for okayness ( license selected, at least one desc, sane filename )
 		var wikiText = _this.getWikiText();
 		mw.log( wikiText );
-		// do some api call to edit the info 
-
-		// api.php  ? action = edit & title = Talk:Main_Page & section = new &  summary = Hello%20World & text = Hello%20everyone! & watch &  basetimestamp = 2008 - 03 - 20T17:26:39Z &  token = cecded1f35005d22904a35cc7b736e18%2B%5C
-		// caution this may result in a captcha response, which user will have to solve
-		// 
+	
+		var params = {
+			action: 'edit',
+			token: mw.getConfig('token'),
+			title: _this.upload.title,
+			// section: 0, ?? causing issues?
+			text: wikiText,
+			summary: "User edited page with " + mw.UploadWizard.userAgent,
+			// notminor: 1,
+			// basetimestamp: _this.upload.imageinfo.timestamp,  (conflicts?)
+			nocreate: 1
+		};
+		mw.log("editing!");
+		mw.log(params);
+		var callback = function(result) {
+			mw.log(result);
+			mw.log("successful edit");
+			alert("posted successfully");
+		}
+		mw.getJSON(params, callback);
 
 		// then, if the filename was changed, do another api call to move the page
 		// THIS MAY NOT WORK ON ALL WIKIS. for instance, on Commons, it may be that only admins can move pages. This is another example of how
@@ -715,6 +777,10 @@ mw.UploadWizard = function() {
 	this.uploadsBeginTime = null;	
 
 };
+
+mw.UploadWizard.userAgent = "UploadWizard (alpha) on " + $j.browser.name + " " + $j.browser.version;
+
+
 
 mw.UploadWizard.prototype = {
 	maxUploads: 10,  // XXX get this from config 
