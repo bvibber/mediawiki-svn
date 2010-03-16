@@ -156,7 +156,10 @@ var default_remote_search_options = {
 	'default_provider': null,
 	
 	// The timeout for search providers ( in seconds )
-	'search_provider_timeout': 10
+	'search_provider_timeout': 10,
+	
+	// Default edit image width
+	'defaultEditImageWidth' : 400
 };
 
 /**
@@ -421,10 +424,10 @@ mw.RemoteSearchDriver.prototype = {
 	thumb_width: 80,
 	
 	// The width of an image when editing 
-	image_edit_width: 400,
+	defaultImageEditWidth: 400,
 	
 	// The width of the video embed while editing the resource 
-	video_edit_width: 400,
+	defaultVideoEditWidth: 400,
 	
 	// The insert position of the asset (overwritten by cursor position) 
 	insert_text_pos: 0, 
@@ -1959,12 +1962,12 @@ mw.RemoteSearchDriver.prototype = {
 	* 
 	* @param {Object} resource get width of resource
 	*/
-	getMaxEditWidth: function( resource ) {
+	getDefaultEditWidth: function( resource ) {
 		var mediaType = this.getMediaType( resource );
 		if ( mediaType == 'image' ) {
-			return this.image_edit_width;
+			return this.defaultImageEditWidth;
 		} else {
-			return this.video_edit_width;
+			return this.defaultVideoEditWidth;
 		}
 	},
 	
@@ -2011,22 +2014,16 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log("done adding resource editor");
 
 		var mediaType = _this.getMediaType( resource );
-		var width = _this.getMaxEditWidth( resource );
+		var width = _this.getDefaultEditWidth( resource );
 		
-		// if maxWidth makes height > available height resize request:
-		
-		var width = resource.width;
-		var height = parseInt( width * ( resource.width / resource.height ) ); 
-		
-		// Update the resource size constrained by clip_edit_disp
-		if( width > $j('#clip_edit_disp').width() ){
-			width = $j('#clip_edit_disp').width();
-			height = parseInt( width * (  height / width ) );
-		}
+		var height = parseInt( width * ( resource.height / resource.width )  );
+				
 		if( height > $j('#clip_edit_disp').height() ){
 			height =  $j('#clip_edit_disp').height();
-			width = height * (  width / height );
+			width = height * ( resource.width / resource.height);
 		}							
+		
+		//mw.log("org h/w" + resource.width + ' / ' + resource.height +' new w' + width + ' new h:' + height );
 		
 		// Update add media wizard title:
 		var dialogTitle = gM( 'mwe-add_media_wizard' ) + ': ' +
