@@ -129,5 +129,6 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'ukgeocoding_name' => 'Английское геокодирование для карт',
 	'ukgeocoding_desc' => 'Расширяет карты функцией парсера display_uk_point с реализацией Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Один или несколько почтовых кодов не могут быть геокодированы, они были исключены из карты.',
 );
 

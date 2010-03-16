@@ -126,11 +126,13 @@ $messages['es'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'stalepages' => 'Orrialde zaharkituak',
 	'stalepages-desc' => 'Berriki editatu ez diren [[Special:Stalepages|orrialdeen zerrenda]] sortzen du',
+	'stalepages-summary' => 'Azken {{PLURAL:$1|egunean|$1 egunetan}} aldatu gabeko orrialdeak zerrendatzen dira hemen.',
 );
 
 /** Finnish (Suomi)

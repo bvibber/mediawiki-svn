@@ -2004,6 +2004,7 @@ $messages['ka'] = array(
 	'hiderevision-noreason' => 'თქვენ უნდა დაწეროთ წაშლის მიზეზი.',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'hiderevision-error-missing' => 'არ არის ნაპოვნი მონაცემთა ბაზაში.',
+	'oversight-log-hiderev' => 'მოშორდა ცვლილება $1-დან',
 	'oversight-view' => 'დეტალები',
 	'oversight-hidden' => 'დამალული ვერსია',
 );

@@ -2733,19 +2733,21 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Theklan
  */
 $messages['eu'] = array(
 	'configure' => 'Wikia konfiguratu',
 	'configure-desc-group' => 'Taldea',
+	'configure-desc-ns' => 'Izen-tartea',
 	'configure-desc-val' => 'Balioa',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Luzapenak',
 	'configure-ext-doc' => 'Lineako dokumentazioa ikusi',
 	'configure-ext-settings' => 'Konfigurazioa',
 	'configure-ext-use-extension' => 'Luzapen hau erabili',
-	'configure-form-reason' => 'Aldatzeko arrazoia:',
+	'configure-form-reason' => 'Arrazoia:',
 	'configure-arrayinput-oneperline' => "''(bat lerro bakoitzeko)''",
 	'configure-btn-save' => 'Konfigurazioa gorde',
 	'configure-error' => 'Konfigurazioa ezin izan da gorde',
@@ -2772,6 +2774,7 @@ $messages['eu'] = array(
 	'configure-section-debug' => 'Arazketa',
 	'configure-section-site' => 'Gunearen pertsonalizazioa',
 	'configure-section-css-js' => 'CSS eta JavaScript',
+	'configure-section-namespaces' => 'Izen-tarteak',
 	'configure-section-stats' => 'Gunearen estatistikak',
 	'configure-section-skin' => 'Itxurak',
 	'configure-section-category' => 'Kategoriak',
@@ -2794,6 +2797,7 @@ $messages['eu'] = array(
 	'configure-select-wiki-desc' => 'Aukera ezazu konfiguratu nahi duzun wikia.',
 	'configure-select-wiki-view-all' => 'Wiki guztiak',
 	'configure-select-wiki-submit' => 'Aukeratu',
+	'configure-view' => 'Ikusi',
 	'right-configure' => 'Wikia konfiguratu',
 	'right-viewconfig' => 'Wikiaren konfigurazioa ikusi',
 	'right-viewconfig-all' => 'Wiki guztien konfigurazioa ikusi',

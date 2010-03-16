@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'dynamicsidebar-desc' => 'Reiñ a ra barrennoù kostez dinamek diazezet war pajennoù an implijerien, o strolladoù hag ar rummadoù',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'dynamicsidebar-desc' => 'Lankide orrialde, talde eta kategorietan oinarritutako barra dinamikoak eskaintzen ditu',
+);
+
 /** French (Français)
  * @author IAlex
  */

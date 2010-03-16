@@ -190,6 +190,7 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'eval' => 'Ebaluatu',
+	'eval-desc' => '<code>eval()</code> funtzioari [[Special:Eval|interfaze bat]] gehitzen dio',
 	'eval_submit' => 'Ebaluatu',
 	'eval_escape' => 'Ihesbideko irteera',
 	'eval_out' => 'Irteera',

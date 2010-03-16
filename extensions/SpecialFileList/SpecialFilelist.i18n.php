@@ -278,6 +278,7 @@ $messages['eu'] = array(
 	'filelist-desc' => '[[Special:Filelist|Orri berezia]] igotako fitxategiak zerrendatzeko',
 	'filelist-show-list' => 'Zerrenda erakutsi',
 	'filelist-show-gallery' => 'Galeria erakutsi',
+	'filelist-image-desc' => 'behe',
 );
 
 /** Finnish (Suomi)

@@ -353,11 +353,13 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
 	'edituser-desc' => 'Pribilegiatutako erabiltzaileak beste erabiltzaileen hobespenak editatzea baimentzen du',
 	'edituser' => 'Erabiltzailea editatu',
+	'edituser-logout' => 'Saioa itxi',
 	'edituser-username' => 'Izena',
 	'edituser-dosearch' => 'Bilatu',
 	'edituser-nouser' => 'Zehaztutako erabiltzailea ez da existitzen',

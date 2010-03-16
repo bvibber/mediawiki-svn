@@ -819,9 +819,11 @@ $messages['jv'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'imagemap_no_image' => 'შეცდომა: პირველ ხაზზე უნდა მიუთითოთ სურათი',
 	'imagemap_description' => 'ამ სურათის შესახებ',
 );
 

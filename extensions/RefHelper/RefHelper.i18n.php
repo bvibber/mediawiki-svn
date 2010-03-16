@@ -182,7 +182,11 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'refsearch' => 'Erreferentzia bilaketa',
+	'refhelper-refsearch' => 'Erreferentzia bilaketa',
 	'refhelper-refcreate_legend' => 'Erreferentzia berria sortu',
+	'refhelper-refcreate_another' => 'Beste erreferentzia bat sortu',
+	'refhelper-label_workspace' => 'Lantokia (kopiatu eta itsasteko eremua):',
 	'refhelper-label_authorsurname' => 'Abizena:',
 	'refhelper-title' => 'Izenburua:',
 	'refhelper-volume' => 'Bolumena:',
@@ -193,6 +197,7 @@ $messages['eu'] = array(
 	'refhelper-create' => 'Sortu',
 	'refhelper-search' => 'Bilatu',
 	'refhelper-toolbox_link_create' => 'Erreferentzia sortu',
+	'refhelper-toolbox_link_search' => 'Erreferentzia bilaketatik sortu',
 );
 
 /** Finnish (Suomi)

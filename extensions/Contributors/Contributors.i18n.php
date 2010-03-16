@@ -374,6 +374,7 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Theklan
  */
@@ -385,6 +386,7 @@ $messages['eu'] = array(
 	'contributors-target' => 'Izenburua:',
 	'contributors-submit' => 'Erakutsi',
 	'contributors-subtitle' => 'Lankide nagusiak $1-en',
+	'contributors-others-long' => 'Orrialde honetan {{PLURAL:$1|lankide batek|$1 lankideek}} parte hartu dute.',
 	'contributors-others' => 'eta {{PLURAL:$1|beste bat|beste $1}}',
 	'contributors-badtitle' => 'Izenburu ezegokia.',
 	'contributors-nosuchpage' => '$1 orrialdea ez da existitzen.',

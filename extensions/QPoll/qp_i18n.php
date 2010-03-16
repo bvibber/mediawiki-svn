@@ -1636,6 +1636,7 @@ $messages['no'] = array(
 	'qp_func_invalid_proposal_id' => 'Ugyldig forslags-id=$3 (ikke et tall) for spørreundersøkelsen $1, spørsmål $2',
 	'qp_error_no_such_poll' => 'Ingen slik spørreundersøkelse ($1).
 Vær sikker på at spørreundersøkelsen ble deklarert og lagret, vær også sikker på at tegnet # blir brukt som addresse avgrenser',
+	'qp_error_in_question_header' => 'Ugyldig spørsmålsoverskrift: $1',
 	'qp_error_id_in_stats_mode' => 'Kan ikke deklarere en ID for spørreundersøkelsen i statistikkmodus',
 	'qp_error_dependance_in_stats_mode' => 'Kan ikke deklarere kjede av avhengigheter for spørreundersøkelsen i statistikkmodus',
 	'qp_error_no_stats' => 'Ingen statistiske data er tilgjengelig fordi ingen har stemt for denne spørreundersøkelsen enda (address=$1)',

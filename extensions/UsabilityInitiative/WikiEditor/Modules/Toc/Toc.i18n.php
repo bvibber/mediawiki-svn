@@ -208,6 +208,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor-toc-preference' => 'Eduki-taula nabigagarria gaitu',
 	'wikieditor-toc-show' => 'Edukiak erakutsi',
 	'wikieditor-toc-hide' => 'Edukiak ezkutatu',
 );

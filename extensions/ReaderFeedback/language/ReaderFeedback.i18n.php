@@ -767,6 +767,7 @@ $messages['eu'] = array(
 	'readerfeedback-level-4' => 'Bikaina',
 	'readerfeedback-submit' => 'Bidali',
 	'readerfeedback-finished' => 'Mila esker!',
+	'readerfeedback-tagfilter' => 'Etiketa:',
 	'readerfeedback-tier-high' => 'Altua',
 	'readerfeedback-tier-poor' => 'Txarra',
 );

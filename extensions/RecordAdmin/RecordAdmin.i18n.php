@@ -676,7 +676,7 @@ $messages['fi'] = array(
 	'recordadmin-modified' => 'Muutettu',
 	'recordadmin-actions' => 'Toiminnot',
 	'recordadmin-needscontent' => 'Lisää sisältöä...',
-	'recordadmin-editwithform' => 'Muokkaa lomakkeella',
+	'recordadmin-editwithform' => 'Ominaisuudet',
 );
 
 /** French (Français)

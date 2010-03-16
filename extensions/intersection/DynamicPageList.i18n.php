@@ -451,6 +451,14 @@ $messages['jv'] = array(
 	'intersection_noincludecats' => 'Error: Panjenengan perlu minimal mènèhi kategori sawiji, utawa spésifikasi bilik nama sawiji!',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'intersection_toomanycats' => 'შეცდომა: ძალიან ბევრი კატეგორიაა!',
+	'intersection_noresults' => 'შეცდომა: შედეგები არ არის!',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Thearith
