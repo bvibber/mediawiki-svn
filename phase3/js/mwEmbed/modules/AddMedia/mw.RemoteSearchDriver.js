@@ -156,10 +156,7 @@ var default_remote_search_options = {
 	'default_provider': null,
 	
 	// The timeout for search providers ( in seconds )
-	'search_provider_timeout': 10,
-	
-	// Default edit image width
-	'defaultEditImageWidth' : 400
+	'search_provider_timeout': 10	
 };
 
 /**
@@ -1782,9 +1779,12 @@ mw.RemoteSearchDriver.prototype = {
 			.attr( {
 				id: 'res_' + provider.id + '__' + resIndex,
 				title: resource.title,
-				src: provider.sObj.getImageTransform( resource, { 'width': this.thumb_width } )
+				src: provider.sObj.getImageTransform( resource, { 
+					'width': this.thumb_width	
+				} )
 			} )
-			.width( this.thumb_width );
+			.width( this.thumb_width )
+			.height( parseInt( this.thumb_width *  ( resource.height / resource.width ) ) )
 		
 		$resultBox.append( $resultThumb );
 		
@@ -2014,13 +2014,13 @@ mw.RemoteSearchDriver.prototype = {
 		mw.log("done adding resource editor");
 
 		var mediaType = _this.getMediaType( resource );
-		var width = _this.getDefaultEditWidth( resource );
+		var targetWidth = _this.getDefaultEditWidth( resource );
 		
-		var height = parseInt( width * ( resource.height / resource.width )  );
+		var targetHeight = parseInt( targetWidth * ( resource.height / resource.width )  );
 				
-		if( height > $j('#clip_edit_disp').height() ){
-			height =  $j('#clip_edit_disp').height();
-			width = height * ( resource.width / resource.height);
+		if( targetHeight > $j('#clip_edit_disp').height() ){
+			targetHeight =  $j('#clip_edit_disp').height();
+			targetWidth = targetHeight * ( resource.width / resource.height);
 		}							
 		
 		//mw.log("org h/w" + resource.width + ' / ' + resource.height +' new w' + width + ' new h:' + height );
@@ -2032,28 +2032,40 @@ mw.RemoteSearchDriver.prototype = {
 		$j( _this.target_container ).dialog( 'option', 'title', dialogTitle );
 		
 		mw.log( 'did append to: ' + _this.target_container );
-			
-		if ( mediaType == 'image' ) {
-			_this.loadHighQualityImage( 
+		
+		// issue a loadResourceImage request if needed ( image is > than target display resolution )
+		if ( mediaType == 'image'  && resource.width > targetWidth ) {						
+			_this.loadResourceImage( 
 				resource, 
 				{
-					'width': width,
-					'height' : height
+					'width': targetWidth,
+					'height' : targetHeight
 				}, 
-				'rsd_edit_img', 
 				function( img_src ) {
-					$j( '.loading_spinner' ).remove();									
-					$j( '<img />' )
+					$j('#clip_edit_disp').empty().append(							
+						$j( '<img />' )
 						.attr( {
 							'id' : 'rsd_edit_img',
 							'src' : img_src,
-							'width': width,
-							'height' : height
+							'width': targetWidth,
+							'height' : targetHeight
 						} )
-					.appendTo( '#clip_edit_disp' );					
+					);				
 				}
 			);
+		} else if ( mediaType == 'image' ) {
+			//Just use the asset url directly
+			$j('#clip_edit_disp').empty().append(
+				$j( '<img />' )
+				.attr( {
+					'id' : 'rsd_edit_img',
+					'src' : resource.src,
+					'width' : resource.width,
+					'height' : resource.height
+				} )		
+			)
 		}
+		
 		// Also fade in the container:
 		$j( '#rsd_resource_edit' ).animate( {
 			'opacity': 1,
@@ -2070,27 +2082,25 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/*
-	* Loads a higher quality image 
+	* Loads a resource image of set size 
 	*
 	* @param {Object} resource requested resource for higher quality image
 	* @param {Object} size the requested size of the higher quality image
-	* @param {string} target the image id to replace with higher quality image
 	* @param {Function} callback the function to be calle once the image is loaded 
 	*/
-	loadHighQualityImage: function( resource, size, target_img_id, callback ) {
-		mw.log( "loadHighQualityImage" );
-		// Get the high quality image url:
+	loadResourceImage: function( resource, size, callback ) {
+		mw.log( "loadResourceImage" );		
+		// Get the image url:
 		resource.pSobj.getImageObj( resource, size, function( imObj ) {
 			resource['edit_url'] = imObj.url;
 
 			mw.log( "edit url: " + resource.edit_url );
-			// Update the resource
+			// Update the resource::
 			resource['width'] = imObj.width;
 			resource['height'] = imObj.height;
 			
 			var width = imObj.width;
-			var height = imObj.height;
-						
+			var height = imObj.height;						
 			
 			// Don't swap it in until its loaded
 			var img = new Image();
@@ -2218,7 +2228,8 @@ mw.RemoteSearchDriver.prototype = {
 				}
 				var embedHtml = resource.pSobj.getEmbedHTML( resource, 
 					{ 
-						'id' : 'embed_vid'						
+						'id' : 'embed_vid',
+						'apiTitleKey' : resource.title		
 					} 
 				);				
 				mw.log( 'append html: ' + embedHtml );
@@ -2227,7 +2238,7 @@ mw.RemoteSearchDriver.prototype = {
 				mw.log( "about to call $j.embedPlayer::embed_vid" );
 											
 				// Rewrite by id	
-				$j( '#embed_vid').embedPlayer ( function() {					
+				$j( '#embed_vid' ).embedPlayer ( function() {					
 					// Add extra space at the top if the embed player is less than 90px high
 					// bug 22189				
 					if( $j('#embed_vid').get(0).getPlayerHeight() < 90 ) {
@@ -2301,7 +2312,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Add a loader on top
 		mw.addLoaderDialog( gM( 'mwe-checking-resource' ) );
 
-		// Extend the callback, closing the loader dialog before chaining
+		// Extend the callback, closing the loader dialog before calling
 		var myCallback = function( status ) {
 			mw.closeLoaderDialog();
 			if ( typeof callback == 'function' ) {
@@ -2309,7 +2320,7 @@ mw.RemoteSearchDriver.prototype = {
 			}
 		}
 
-		// @@todo get the localized File/Image namespace name or do a general {NS}:Title
+		// NOTE: get the localized File/Image namespace name or do a general {NS}:Title
 		var provider = resource.pSobj.provider;
 		var _this = this;
 
@@ -2328,7 +2339,7 @@ mw.RemoteSearchDriver.prototype = {
 		// or if import mode if just "linking" ( we should already have the 'url' )
 
 		if ( this.isProviderLocal( provider ) || this.import_url_mode == 'remote_link' ) {
-			// Local repo, jump directly to the callback:
+			// Local repo or in remote_link mode, jump directly to the callback:
 			myCallback( 'local' );
 			return ;
 		} else {
@@ -2338,6 +2349,7 @@ mw.RemoteSearchDriver.prototype = {
 				_this.findFileInLocalWiki( fileTitle, function( imagePage ) {
 					if ( imagePage && imagePage['imagerepository'] == 'shared' || 
 									  imagePage['imagerepository'] == 'commons') {
+						resource.commonsShareRepoFlag = true;
 						myCallback( 'shared' );
 					} else {
 						_this.isFileAlreadyImported( resource, myCallback );

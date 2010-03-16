@@ -241,22 +241,33 @@ baseRemoteSearch.prototype = {
 			outHtml = this.getImageEmbedHTML( resource, options );
 		}
 			
-		if ( resource.mime == 'application/ogg' || resource.mime == 'video/ogg' || resource.mime == 'audio/ogg' ) {
+		if ( resource.mime == 'application/ogg' 
+			|| resource.mime == 'video/ogg' 
+			|| resource.mime == 'audio/ogg' 
+		) {
 			// Setup the attribute html 
 			// NOTE: Can't use jQuery builder for video element, ( does not work consistently ) 
 			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-			ahtml+=	'src="' +  mw.escapeQuotesHTML( resource.src ) + '" ' +
-					//'class="' + mw.getConfig( 'skinName' ) + '" ' +
-					// mannualy set kskin (while mw.setConfig is not available on all pages )
-					'class="kskin" '+   					
+			ahtml+=	'src="' +  mw.escapeQuotesHTML( resource.src ) + '" ' +			
+					// Mannualy set kskin, NOTE: should be config option
+					'class="kskin" ' +					   				
 					'style="' + options.style + '" ' +
 					'poster="' +   mw.escapeQuotesHTML( resource.poster ) + '" '+
 					'type="' +  mw.escapeQuotesHTML( resource.mime ) + '" ';
-					
+
+			
 			// Add the api title key if available:
 			if( resource.titleKey ) {
-				'apiTitleKey="' +  mw.escapeQuotesHTML( resource.titleKey ) + '" ';
-			}			
+				ahtml+= 'apiTitleKey="' +  mw.escapeQuotesHTML( resource.titleKey ) + '" ';
+			}
+						
+			// Add the commons apiProvider if the resource is from commons	
+			// ( so that subtitles can be displayed / edited )		
+			if( resource.pSobj.provider.id == 'wiki_commons'
+				|| resource.commonsShareRepoFlag
+			){
+				ahtml+= 'apiProvider="commons" ';
+			}
 			
 			if (  resource.mime == 'application/ogg' || resource.mime == 'video/ogg'  ) {
 				outHtml = '<video ' + ahtml + '></video>';

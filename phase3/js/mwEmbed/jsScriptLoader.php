@@ -620,9 +620,9 @@ class jsScriptLoader {
 	function doProcessJs( $str ){
 		global $wgEnableScriptLocalization;
 
-		// Strip out js_log debug lines (if not in debug mode)
+		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
-			 $str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
+			//$str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
 		}
 
 		// Do language swap by index:
@@ -630,7 +630,7 @@ class jsScriptLoader {
 			$inx = self::getAddMessagesIndex( $str );
 			if($inx){
 				$translated = $this->languageMsgReplace( substr($str, $inx['s'], ($inx['e']-$inx['s']) ));
-				//return the final string (without double {})
+				// Return the final string (without double {})
 				return substr($str, 0, $inx['s']-1) . $translated . substr($str, $inx['e']+1);
 			}
 		}
