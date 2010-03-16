@@ -19,8 +19,7 @@ class TagStoryboard {
 	public static function render( $input, $args, $parser, $frame ) {
 		global $wgOut, $wgJsMimeType, $wgScriptPath, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
-		$wgOut->addStyle( $egStoryboardScriptPath . '/story.css' );
-		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storyboard/storyboard.css' );
+		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.js' );

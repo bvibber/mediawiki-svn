@@ -46,14 +46,24 @@ class TagStorysubmission {
 	private static function getFrom( $parser, array $args ) {
 		global $wgOut, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
-		$wgOut->addStyle( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.css' );
-		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storysubmission/storysubmission.js' );
+		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );		
+		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
+		$wgOut->addScript( 
+			<<<EOT
+			<script type="$wgJsMimeType"> /*<![CDATA[*/
+			addOnloadHook( function() { 
+				document.getElementById( 'storysubmission-button' ).disabled = true;
+			} );
+			/*]]>*/ </script>
+EOT
+		);
 		
 		$fieldSize = 50;
 		
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStorysubmissionWidth );
-		$maxLen = array_key_exists( 'maxlength', $args ) && is_numeric( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
-		$minLen = array_key_exists( 'minlength', $args ) && is_numeric( $args['minlength'] ) ? $args['minlength'] : $egStoryboardMinStoryLen;
+		$maxLen = array_key_exists( 'maxlength', $args ) && is_int( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
+		$minLen = array_key_exists( 'minlength', $args ) && is_int( $args['minlength'] ) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
 		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=purge' );
 		

@@ -39,9 +39,9 @@ class SpecialStoryReview extends SpecialPage {
 		
 		$wgOut->setPageTitle( wfMsg( 'storyboard-storyreview' ) );
 		
-		$wgOut->addStyle( $egStoryboardScriptPath . '/story.css' );
+		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
-		$wgOut->addScriptFile( $egStoryboardScriptPath . '/specials/StoryReview/storyreview.js' );
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );
 		
 		// Get a slave db object to do read operations against.
 		$dbr = wfGetDB( DB_SLAVE );
@@ -127,11 +127,11 @@ EOT
 			</tr>
 			<tr>
 				<td align="center" height="35">
-					<button type="button" onclick="doStoryAction( this, $story->story_id, '$publishAction' )">$publishMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$publishAction' )">$publishMsg</button>&nbsp;&nbsp;&nbsp;
 					<button type="button" onclick="">$editMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="doStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="doStoryAction( this, $story->story_id, '$imageAction' )">$imageMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="deleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
+					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$imageAction' )">$imageMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
 				</td>
 			</tr>
 		</table>
