@@ -9246,6 +9246,15 @@ fn: {
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 /**
+ * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
+ */
+'name_mappings': {
+   "Infobox skyscraper": "building_name",
+   "Infobox settlement": "official_name"
+},		
+
+		
+/**
  * Compatability map
  */
 'browsers': {
@@ -9333,8 +9342,9 @@ evt: {
 							// Update template name if needed
 							if ( $( node ).parent().hasClass( 'wikiEditor-template' ) ) {
 								var $label = $( node ).parent().find( '.wikiEditor-template-label' );
-								if ( $label.text() != model.getName() ) {
-									$label.text( model.getName() );
+								var displayName = $.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName(model);
+								if ( $label.text() != displayName ) {
+									$label.text( displayName );
 								}
 							}
 							
@@ -9442,7 +9452,8 @@ fn: {
 			.prepend( $(
 				'<span class="wikiEditor-template-expand wikiEditor-noinclude"></span>' +
 				'<span class="wikiEditor-template-name wikiEditor-noinclude">' +
-					'<span class="wikiEditor-template-label wikiEditor-noinclude">' + model.getName() + '</span>' +
+					'<span class="wikiEditor-template-label wikiEditor-noinclude">' + 
+					$.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName(model) + '</span>' +
 					'<span class="wikiEditor-template-dialog wikiEditor-noinclude"></span>' +
 				'</span>'
 			) );
@@ -9643,13 +9654,18 @@ fn: {
 	},
 	
 	/**
-	 * Gets templateInfo node from templateInfo extension, if it exists
+	 * Gets template display name
 	 */
-	getTemplateInfo: function ( templateName ) {
-		var templateInfo = '';
-		// TODO: API call here
-		// FIXME: This setup won't work very well with the async nature of grabbing the template info
-		return $( templateInfo );
+	getTemplateDisplayName: function ( model ) {
+		var tName = model.getName();
+		if(tName in $.wikiEditor.modules.templateEditor.name_mappings){
+			return tName + ": " + model.getValue( $.wikiEditor.modules.templateEditor.name_mappings[tName] );
+		} else if( model.getValue("name") != ""){
+			return tName + ": " + model.getValue("name");
+		} else if( model.getValue("Name") != ""){
+			return tName + ": " + model.getValue("Name");
+		}
+		return tName;
 	},
 	
 	/**
