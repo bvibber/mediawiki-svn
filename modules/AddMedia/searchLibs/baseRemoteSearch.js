@@ -258,7 +258,8 @@ baseRemoteSearch.prototype = {
 			
 			// Add the api title key if available:
 			if( resource.titleKey ) {
-				ahtml+= 'apiTitleKey="' +  mw.escapeQuotesHTML( resource.titleKey ) + '" ';
+				ahtml+= 'apiTitleKey="' +  
+					mw.escapeQuotesHTML( resource.titleKey.replace('File:', '') ) + '" ';
 			}
 						
 			// Add the commons apiProvider if the resource is from commons	

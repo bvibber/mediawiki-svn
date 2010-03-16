@@ -2228,8 +2228,7 @@ mw.RemoteSearchDriver.prototype = {
 				}
 				var embedHtml = resource.pSobj.getEmbedHTML( resource, 
 					{ 
-						'id' : 'embed_vid',
-						'apiTitleKey' : resource.title		
+						'id' : 'embed_vid'						
 					} 
 				);				
 				mw.log( 'append html: ' + embedHtml );
