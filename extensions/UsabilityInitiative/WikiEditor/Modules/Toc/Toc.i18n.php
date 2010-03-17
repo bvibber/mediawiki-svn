@@ -47,12 +47,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
-	'wikieditor-toc-show' => 'أظهر المحتويات',
-	'wikieditor-toc-hide' => 'أخفِ المحتويات',
+	'wikieditor-toc-show' => 'بيّن المحتويات',
+	'wikieditor-toc-hide' => 'خبّى المحتويات',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -129,6 +130,14 @@ $messages['cy'] = array(
 	'wikieditor-toc-hide' => "Cuddio 'Cynnwys'",
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-toc-show' => 'Vis indhold',
+	'wikieditor-toc-hide' => 'Skjul indhold',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
@@ -199,6 +208,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor-toc-preference' => 'Eduki-taula nabigagarria gaitu',
 	'wikieditor-toc-show' => 'Edukiak erakutsi',
 	'wikieditor-toc-hide' => 'Edukiak ezkutatu',
 );
@@ -511,6 +521,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-toc-preference' => 'Iwezeshwe orodha ya yaliyomo inayoweza kurambazwa',
 	'wikieditor-toc-show' => 'Fichua yaliyomo',
 	'wikieditor-toc-hide' => 'Ficha yaliyomo',
 );

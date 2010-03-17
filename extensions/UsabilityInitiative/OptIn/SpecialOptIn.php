@@ -186,7 +186,7 @@ class SpecialOptIn extends SpecialPage {
 				array( 'optin-intro' )
 			);
 			$this->showOptInButtons();
-			$wgOut->addWikiMsg( 'optin-improvements' );
+			$wgOut->addWikiMsg( 'optin-improvements2' );
 		}
 	}
 

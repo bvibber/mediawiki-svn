@@ -45,12 +45,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'vector-simplesearch-search' => 'ابحث',
-	'vector-simplesearch-containing' => 'يحتوى...',
+	'vector-simplesearch-search' => 'تدوير',
+	'vector-simplesearch-containing' => 'جوّاه...',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -127,9 +128,11 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Sarrus
  */
 $messages['da'] = array(
 	'vector-simplesearch-search' => 'Søg',
+	'vector-simplesearch-containing' => 'indeholder...',
 );
 
 /** German (Deutsch)

@@ -15,19 +15,25 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': [['>=', 1000]], // Off for now
-		'firefox': [['>=', 1000]], // Off for now
-		'opera': [['>=', 1000]], // Off for now
-		'safari': [['==', 1000]], // Off for now
-		'chrome': [['==', 1000]] // Off for now
+		'msie': [['>=', 7]],
+		// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
+		'firefox': [
+			['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
+		],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 3]],
+		'chrome': [['>=', 3]]
 	},
 	// Right-to-left languages
 	'rtl': {
-		'msie': [['>=', 1000]], // Off for now
-		'firefox': [['>=', 1000]], // Off for now
-		'opera': [['>=', 1000]], // Off for now
-		'safari': [['==', 1000]], // Off for now
-		'chrome': [['==', 1000]] // Off for now
+		'msie': [['>=', 7]],
+		// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
+		'firefox': [
+			['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
+		],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 3]],
+		'chrome': [['>=', 3]]
 	}
 },
 /**
@@ -42,7 +48,7 @@ api: {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
 		}
 	},
-	closeDialog: function( context, data ) {
+	closeDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
 			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'close' );
 		}
@@ -64,11 +70,26 @@ fn: {
 			$.wikiEditor.modules.dialogs.modules[module] = config[module];
 		}
 		// Build out modules immediately
-		mw.usability.load( ['$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( module in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[module];
-				// Only create the dialog if it doesn't exist yet
-				if ( $( '#' + module.id ).size() == 0 ) {
+		// TODO: Move mw.usability.load() call down to where we're sure we're really gonna build a dialog
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
+				var module = $.wikiEditor.modules.dialogs.modules[mod];
+				// Only create the dialog if it's supported, not filtered and doesn't exist yet
+				var filtered = false;
+				if ( typeof module.filters != 'undefined' ) {
+					for ( var i = 0; i < module.filters.length; i++ ) {
+						if ( $( module.filters[i] ).length == 0 ) {
+							filtered = true;
+							break;
+						}
+					}
+				}
+				if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+					// If this dialog requires the iframe, set it up
+					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+						context.fn.setupIframe();
+					}
+					
 					var configuration = module.dialog;
 					// Add some stuff to configuration
 					configuration.bgiframe = true;
@@ -116,6 +137,9 @@ fn: {
 						.each( function() {
 							$j(this).attr( 'tabindex', tabIndex++ );
 						});
+					
+					// Let the outside world know we set up this dialog
+					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 				}
 			}
 		});

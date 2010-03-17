@@ -7,21 +7,25 @@
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': [['>=', 1000]], // Off for now
-		'firefox': [['>=', 1000]], // Off for now
-		'opera': [['>=', 1000]], // Off for now
-		'safari': [['==', 1000]], // Off for now
-		'chrome': [['==', 1000]] // Off for now
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 10]],
+		'safari': [['>=', 4]],
+		'chrome': [['>=', 4]]
 	},
 	// Right-to-left languages
 	'rtl': {
-		'msie': [['>=', 1000]], // Off for now
-		'firefox': [['>=', 1000]], // Off for now
-		'opera': [['>=', 1000]], // Off for now
-		'safari': [['==', 1000]], // Off for now
-		'chrome': [['==', 1000]] // Off for now
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 10]],
+		'safari': [['>=', 4]],
+		'chrome': [['>=', 4]]
 	}
 },
+/**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
 /**
  * Configuration
  */
@@ -82,7 +86,9 @@ evt: {
 			$.wikiEditor.modules.toc.fn.switchLayout( context );
 		}
 		if ( context.modules.toc.$toc.data( 'positionMode' ) == 'goofy' ) {
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+			);
 		}
 		// reset the height of the TOC
 		if ( !context.modules.toc.$toc.data( 'collapsed' ) ){
@@ -111,12 +117,16 @@ evt: {
 				start: tokenArray[i].tokenStart,
 				end: tokenArray[i].offset,
 				type: 'toc',
-				anchor: 'before',
+				anchor: 'tag',
 				afterWrap: function( node ) {
 					var marker = $( node ).data( 'marker' );
 					$( node ).addClass( 'wikiEditor-toc-header' )
 						.addClass( 'wikiEditor-toc-section-' + marker.index )
 						.data( 'section', marker.index );
+				},
+				beforeUnwrap: function( node ) {
+					$( node ).removeClass( 'wikiEditor-toc-header' )
+						.removeClass( 'wikiEditor-toc-section-' + $( node ).data( 'section' ) );
 				},
 				onSkip: function( node ) {
 					var marker = $( node ).data( 'marker' );
@@ -128,8 +138,8 @@ evt: {
 					}
 				},
 				getAnchor: function( ca1, ca2 ) {
-					return $( ca1.parentNode.previousSibling ).is( 'div.wikiEditor-toc-header' ) ?
-						ca1.parentNode.previousSibling : null;
+					return $( ca1.parentNode ).is( '.wikiEditor-toc-header' ) ?
+						ca1.parentNode : null;
 				}
 			} );
 			hash += tokenArray[i].match[2] + '\n';
@@ -265,7 +275,9 @@ fn: {
 		} else {
 			context.$ui.find( '.wikiEditor-ui-right' ).show();
 			$.wikiEditor.modules.toc.fn.redraw( context, $.wikiEditor.modules.toc.cfg.minimumWidth );
-			context.modules.toc.$toc.find( 'div' ).autoEllipsis( { 'position': 'right', 'tooltip': true, 'restoreText': true } );
+			context.modules.toc.$toc.find( 'div' ).autoEllipsis(
+				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
+			);
 		}
 	},
 	unhighlight: function( context ) {
@@ -445,6 +457,8 @@ fn: {
 							'start': 0,
 							'startContainer': wrapper
 						} );
+						// Bring user's eyes to the point we've now jumped to
+						context.fn.highlightLine( $( wrapper ) );
 						// Highlight the clicked link
 						$.wikiEditor.modules.toc.fn.unhighlight( context );
 						$( this ).addClass( 'current' );

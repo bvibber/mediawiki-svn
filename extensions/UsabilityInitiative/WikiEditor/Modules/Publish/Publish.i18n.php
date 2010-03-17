@@ -85,16 +85,17 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor-publish-preference' => 'فعل النشر خطوه بخطوة',
 	'wikieditor-publish-button-publish' => 'انشر',
-	'wikieditor-publish-button-cancel' => 'ألغِ',
+	'wikieditor-publish-button-cancel' => 'كانسل',
 	'wikieditor-publish-dialog-title' => 'انشر فى {{SITENAME}}',
-	'wikieditor-publish-dialog-summary' => 'ملخص التعديل (اشرح باختصار التغييرات التى قمت بها):',
-	'wikieditor-publish-dialog-minor' => 'تعديل طفيف',
-	'wikieditor-publish-dialog-watch' => 'راقب هذه الصفحة',
+	'wikieditor-publish-dialog-summary' => 'ملخص التعديل (اشرح بإختصار التغييرات اللى عملتها):',
+	'wikieditor-publish-dialog-minor' => 'تعديل صغير',
+	'wikieditor-publish-dialog-watch' => 'راقب الصفحه دى',
 	'wikieditor-publish-dialog-publish' => 'انشر',
 	'wikieditor-publish-dialog-goback' => 'ارجع',
 );
@@ -204,6 +205,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'wikieditor-publish-preference' => 'Galluogi cyhoeddi cam-wrth-gam',
 	'wikieditor-publish-button-publish' => 'Cyhoeddi',
 	'wikieditor-publish-button-cancel' => 'Diddymu',
 	'wikieditor-publish-dialog-title' => 'Cyhoeddi ar {{SITENAME}}',
@@ -212,6 +214,14 @@ $messages['cy'] = array(
 	'wikieditor-publish-dialog-watch' => 'Dilyn hynt y dudalen hon',
 	'wikieditor-publish-dialog-publish' => 'Cyhoedder',
 	'wikieditor-publish-dialog-goback' => 'Yn ôl',
+);
+
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-publish-dialog-minor' => 'Mindre ændring',
+	'wikieditor-publish-dialog-watch' => 'Overvåg denne side',
 );
 
 /** German (Deutsch)
@@ -816,8 +826,11 @@ $messages['sah'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'wikieditor-publish-preference' => 'පියවරෙන්-පියවර ප්‍රකාශනය කළ හැකියි',
 	'wikieditor-publish-button-publish' => 'ප්‍රකාශයට පත්කරන්න',
 	'wikieditor-publish-button-cancel' => 'අත් හරින්න',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} ට ප්‍රකාශනය කරන්න',
+	'wikieditor-publish-dialog-summary' => 'සාරාංශය සංස්කරණය කරන්න (ඔබ සිදු කළ වෙනස්කම් කෙටියෙන් විස්තර කරන්න):',
 	'wikieditor-publish-dialog-minor' => 'සුළු සංස්කරණය',
 	'wikieditor-publish-dialog-watch' => 'මෙම පිටුව මුර කරන්න',
 	'wikieditor-publish-dialog-publish' => 'ප්‍රකාශයට පත්කරන්න',
@@ -856,15 +869,17 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'wikieditor-publish-preference' => 'Kuwezesha kutoa mabadiliko hatua kwa hatua',
 	'wikieditor-publish-button-publish' => 'Toa',
 	'wikieditor-publish-button-cancel' => 'Batilisha',
 	'wikieditor-publish-dialog-title' => 'Kutoa kwenye {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Muhtasari ya kuhariri (ueleze kifupi mabadiliko ulioyafanya):',
 	'wikieditor-publish-dialog-minor' => 'Badiliko dogo',
 	'wikieditor-publish-dialog-watch' => 'Fuatilia ukurasa huu',
-	'wikieditor-publish-dialog-publish' => 'Toa',
+	'wikieditor-publish-dialog-publish' => 'Chapisha',
 	'wikieditor-publish-dialog-goback' => 'Rudi',
 );
 

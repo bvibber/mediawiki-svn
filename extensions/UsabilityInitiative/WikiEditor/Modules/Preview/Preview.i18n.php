@@ -60,13 +60,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor-preview-preference' => 'مكّن المعاينه جنبًا لجنب',
-	'wikieditor-preview-tab' => 'عاين',
+	'wikieditor-preview-tab' => 'پروڤه',
 	'wikieditor-preview-changes-tab' => 'تغييرات',
-	'wikieditor-preview-loading' => 'يحمّل...',
+	'wikieditor-preview-loading' => 'بيلوّد...',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -142,9 +143,17 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'wikieditor-preview-preference' => 'Galluogi rhagolwg ochr-yn-ochr',
 	'wikieditor-preview-tab' => 'Rhagolwg',
 	'wikieditor-preview-changes-tab' => 'Newidiadau',
 	'wikieditor-preview-loading' => "Wrthi'n llwytho...",
+);
+
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'wikieditor-preview-tab' => 'Forhåndsvisning',
 );
 
 /** German (Deutsch)
@@ -227,6 +236,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor-preview-preference' => 'Aldetik aldeko aurrikuspena gaitu',
 	'wikieditor-preview-tab' => 'Aurreikuspena',
 	'wikieditor-preview-changes-tab' => 'Aldaketak',
 	'wikieditor-preview-loading' => 'Kargatzen...',
@@ -263,6 +273,15 @@ $messages['frp'] = array(
 	'wikieditor-preview-tab' => 'Prèvisualisacion',
 	'wikieditor-preview-changes-tab' => 'Changements',
 	'wikieditor-preview-loading' => 'Chargement...',
+);
+
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'wikieditor-preview-tab' => 'Anteprime',
+	'wikieditor-preview-changes-tab' => 'Cambiaments',
+	'wikieditor-preview-loading' => 'Daûr a cjamâ…',
 );
 
 /** Galician (Galego)
@@ -566,6 +585,7 @@ $messages['sah'] = array(
  * @author Calcey
  */
 $messages['si'] = array(
+	'wikieditor-preview-preference' => 'දෙපසින්වූ පූර්ව දර්ශනය සක්‍රීය කරයි',
 	'wikieditor-preview-tab' => 'පෙර දසුන',
 	'wikieditor-preview-changes-tab' => 'වෙනස් කිරීම්',
 	'wikieditor-preview-loading' => 'ප්‍රවේශනය වෙමින් පවතී...',
@@ -595,6 +615,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-preview-preference' => 'Kuona hakikisho ya mabadiliko na ukurasa ulivyo sasa kwa pamoja.',
 	'wikieditor-preview-tab' => 'Hakikisho',
 	'wikieditor-preview-changes-tab' => 'Mabadiliko',
 	'wikieditor-preview-loading' => 'Inapakiwa...',

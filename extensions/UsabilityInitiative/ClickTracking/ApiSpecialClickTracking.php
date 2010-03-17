@@ -59,7 +59,7 @@ class ApiSpecialClickTracking extends ApiBase {
 			$this->dieUsage( "startdate not in YYYYMMDD format: <<{$params['startdate']}>>", 'badstartdate' );
 		}
  		if ( $params['enddate'] != 0 && strptime( SpecialClickTracking::space_out_date( $params['enddate'] ), "%Y %m %d" ) === false ) {
-			$this->dieUsage( "enddate not in YYYYMMDD format:<<{$params['enddate']}>>", 'badenddate' );
+			$this->dieUsage( "enddate not in YYYYMMDD format: <<{$params['enddate']}>>", 'badenddate' );
 		}
 
 		// check if increment is a positive int
@@ -71,8 +71,6 @@ class ApiSpecialClickTracking extends ApiBase {
 			$this->dieUsage( "Invalid JSON encoding <<{$params['userdefs']}>>", 'badjson' );
 		}
 	}
-
-
 
 	public function getParamDescription() {
 		return array(
@@ -89,6 +87,21 @@ class ApiSpecialClickTracking extends ApiBase {
 		return array(
 			'Returns data to the Special:ClickTracking visualization page'
 		);
+	}
+	
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(	
+			array( 'missingparam', 'eventid' ),
+			array( 'missingparam', 'startdate' ),
+			array( 'missingparam', 'enddate' ),
+			array( 'missingparam', 'increment' ),
+			array( 'missingparam', 'userdefs' ),
+			array( 'code' => 'badeventid', 'info' => 'Invalid event ID' ),
+			array( 'code' => 'badstartdate', 'info' => 'startdate not in YYYYMMDD format: <<\'startdate\'>>' ),
+			array( 'code' => 'badenddate', 'info' => 'enddate not in YYYYMMDD format: <<\'enddate\'>>' ),
+			array( 'code' => 'badincrement', 'info' => 'Invalid increment' ),
+			array( 'code' => 'badjson', 'info' => 'Invalid JSON encoding <<\'userdefs\'>>' ),
+		) );
 	}
 
 	public function getAllowedParams() {
@@ -117,9 +130,8 @@ class ApiSpecialClickTracking extends ApiBase {
 		);
 	}
 
-	// TODO: create a more useful 'version number'
 	public function getVersion() {
-		return __CLASS__ . ': $Id: $';
+		return __CLASS__ . ': $Id$';
 	}
 
 }

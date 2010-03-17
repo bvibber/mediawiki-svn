@@ -341,17 +341,6 @@ www.example.org is not a real website, but it has been reserved to use in softwa
 	'wikieditor-toolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'wikieditor-toolbar-tool-small' => "Ç'ut'a",
-	'wikieditor-toolbar-tool-gallery' => "Suret'iş Galeri",
-	'wikieditor-toolbar-characters-page-latin' => "Lat'ini",
-	'wikieditor-toolbar-characters-page-greek' => 'Xorumi',
-	'wikieditor-toolbar-characters-page-arabic' => 'Arabuli',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author Omnipaedista
@@ -772,6 +761,7 @@ $messages['arc'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -779,42 +769,42 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-desc' => 'شريط تحرير الصفحات مع تحسين الاستخدامية',
 	'wikieditor-toolbar-preference' => 'مكّن شريط أدوات التحرير المُحسّن',
 	'wikieditor-toolbar-dialogs-preference' => 'مكّن حوارات إدراج الوصلات والجداول وغيرها',
-	'wikieditor-toolbar-loading' => 'تحميل...',
+	'wikieditor-toolbar-loading' => 'بتلوّد...',
 	'wikieditor-toolbar-tool-bold' => 'عريض',
 	'wikieditor-toolbar-tool-bold-example' => 'نص عريض',
 	'wikieditor-toolbar-tool-italic' => 'مائل',
 	'wikieditor-toolbar-tool-italic-example' => 'نص مائل',
-	'wikieditor-toolbar-tool-ilink' => 'وصله داخلية',
-	'wikieditor-toolbar-tool-ilink-example' => 'عنوان الوصلة',
-	'wikieditor-toolbar-tool-xlink' => 'وصله خارجيه (تذكر البدء بhttp://)',
-	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com عنوان الوصلة',
-	'wikieditor-toolbar-tool-link' => 'وصلة',
-	'wikieditor-toolbar-tool-link-title' => 'إدراج وصلة',
-	'wikieditor-toolbar-tool-link-int' => 'لصفحه ويكي',
-	'wikieditor-toolbar-tool-link-int-target' => 'عنوان الصفحة:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'عنوان الصفحة أو المسار',
-	'wikieditor-toolbar-tool-link-int-text' => 'نص الوصلة:',
-	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'أدخل النص الذى ينبغى إظهاره',
-	'wikieditor-toolbar-tool-link-ext' => 'لصفحه وب خارجية',
+	'wikieditor-toolbar-tool-ilink' => 'لينك جوّانى',
+	'wikieditor-toolbar-tool-ilink-example' => 'عنوان اللينك',
+	'wikieditor-toolbar-tool-xlink' => 'لينك برّانى (افتكر تبتدى بـ http://)',
+	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com عنوان اللينك',
+	'wikieditor-toolbar-tool-link' => 'لينك',
+	'wikieditor-toolbar-tool-link-title' => 'حُط لينك',
+	'wikieditor-toolbar-tool-link-int' => 'لصفحة ويكى',
+	'wikieditor-toolbar-tool-link-int-target' => 'الصفحه او الURL:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'عنوان الصفحه او الURL',
+	'wikieditor-toolbar-tool-link-int-text' => 'النَص اللى يتبيّن:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'النَص اللى ح يبان',
+	'wikieditor-toolbar-tool-link-ext' => 'لصفحة web برّانيّه',
 	'wikieditor-toolbar-tool-link-ext-target' => 'مسار الوصلة:',
-	'wikieditor-toolbar-tool-link-ext-text' => 'نص الوصلة:',
+	'wikieditor-toolbar-tool-link-ext-text' => 'نَص اللينك:',
 	'wikieditor-toolbar-tool-link-insert' => 'أدرج الوصلة',
-	'wikieditor-toolbar-tool-link-cancel' => 'ألغِ',
-	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'الصفحه موجودة',
-	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'الصفحه غير موجودة',
-	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'عنوان غير صحيح',
-	'wikieditor-toolbar-tool-link-int-target-status-external' => 'وصله خارجية',
-	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'يلتمس وجود الصفحه...',
-	'wikieditor-toolbar-tool-link-int-invalid' => 'العنوان الذى اخترته غير صالح.',
-	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'يبدو أن المُراد بالمسار الذى حددته وصله إلى صفحه ويكى أخرى. أتريد أن تجعلها وصله داخلية؟',
-	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'وصله داخلية',
-	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'وصله خارجية',
-	'wikieditor-toolbar-tool-link-empty' => 'لم تدخل شيئا لتصل به.',
+	'wikieditor-toolbar-tool-link-cancel' => 'كانسل',
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'الصفحه موجوده',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'الصفحه مش موجوده',
+	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'لينك مش موجود',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'لينك برّانى',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'بيتشيّك على وجود الصفحه...',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'العنوان اللى حددته مش موجود.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'الURL اللى حددته باين عليه انه كان مقصود انه يحوّل على صفحة ويكى تانيه. عايز تخلّيه لينك جوّانى؟',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'لينك جوّانى',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'لينك برّانى',
+	'wikieditor-toolbar-tool-link-empty' => 'انت ما حطّيتش اى حاجه علشان يتوصّل عليها.',
 	'wikieditor-toolbar-tool-file' => 'ملف مضمّن',
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => 'مرجع',
-	'wikieditor-toolbar-tool-reference-example' => 'أدرج نص الحاشيه هنا',
-	'wikieditor-toolbar-tool-signature' => 'توقيع مع الطابع الزمني',
+	'wikieditor-toolbar-tool-reference-example' => 'اعمل insert لنَص الfootnote هنا',
+	'wikieditor-toolbar-tool-signature' => 'الامضا و ختم الوقت',
 	'wikieditor-toolbar-section-advanced' => 'متقدم',
 	'wikieditor-toolbar-tool-heading' => 'ترويسة',
 	'wikieditor-toolbar-tool-heading-1' => 'المستوى 1',
@@ -823,13 +813,13 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-tool-heading-4' => 'المستوى 4',
 	'wikieditor-toolbar-tool-heading-5' => 'المستوى 5',
 	'wikieditor-toolbar-tool-heading-example' => 'نص الترويسة',
-	'wikieditor-toolbar-group-list' => 'قائمة',
+	'wikieditor-toolbar-group-list' => 'ليسته',
 	'wikieditor-toolbar-tool-ulist' => 'قائمه منقّطة',
 	'wikieditor-toolbar-tool-ulist-example' => 'عنصر فائمه منقّطة',
-	'wikieditor-toolbar-tool-olist' => 'قائمه مرقّمة',
-	'wikieditor-toolbar-tool-olist-example' => 'عنصر قائمه مرقّمة',
-	'wikieditor-toolbar-tool-indent' => 'هامش',
-	'wikieditor-toolbar-tool-indent-example' => 'سطر بهامش',
+	'wikieditor-toolbar-tool-olist' => 'ليسته مترقمه',
+	'wikieditor-toolbar-tool-olist-example' => 'Item اليسته المترقمه',
+	'wikieditor-toolbar-tool-indent' => 'المسافه اللى فى الاول (indentation)',
+	'wikieditor-toolbar-tool-indent-example' => 'السطر الindented',
 	'wikieditor-toolbar-group-size' => 'الحجم',
 	'wikieditor-toolbar-tool-big' => 'كبير',
 	'wikieditor-toolbar-tool-big-example' => 'نص كبير',
@@ -841,10 +831,10 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-tool-subscript' => 'حرف سفلي',
 	'wikieditor-toolbar-tool-subscript-example' => 'نص الحرف السفلي',
 	'wikieditor-toolbar-group-insert' => 'أدرج',
-	'wikieditor-toolbar-tool-gallery' => 'معرض صور',
+	'wikieditor-toolbar-tool-gallery' => 'جاليرى الصور',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Example.jpg|تعليق1
 {{ns:file}}:Example.jpg|تعليق2',
-	'wikieditor-toolbar-tool-newline' => 'سطرًا جديدًا',
+	'wikieditor-toolbar-tool-newline' => 'سطر جديد',
 	'wikieditor-toolbar-tool-table' => 'جدولًا',
 	'wikieditor-toolbar-tool-table-example-old' => '-
 ! ترويسه 1
@@ -867,25 +857,25 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-tool-table-wikitable' => 'سمه ذات حدود',
 	'wikieditor-toolbar-tool-table-sortable' => 'اجعل الجدول قابلا للترتيب',
 	'wikieditor-toolbar-tool-table-example' => 'مثال',
-	'wikieditor-toolbar-tool-table-preview' => 'عاين',
+	'wikieditor-toolbar-tool-table-preview' => 'پروڤه',
 	'wikieditor-toolbar-tool-table-insert' => 'أدرج',
-	'wikieditor-toolbar-tool-table-cancel' => 'ألغِ',
-	'wikieditor-toolbar-tool-table-toomany' => 'إدراج جدول بأكثر من $1 خليه غير ممكن عبر هذا الحوار.',
-	'wikieditor-toolbar-tool-table-invalidnumber' => 'لم تدخل رقما صحيحا للصفوف أو الأعمده.',
-	'wikieditor-toolbar-tool-table-zero' => 'لا يمكن أن تدرج جدولا بلا صفوف أو أعمده.',
-	'wikieditor-toolbar-tool-replace' => 'ابحث واستبدل',
+	'wikieditor-toolbar-tool-table-cancel' => 'كانسل',
+	'wikieditor-toolbar-tool-table-toomany' => 'مش ممكن يتعمل insert لـ table بأكتر من $1 cells بالـ dialog ده.',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'انت ما دخّلتش رقم موجود للـ rows او الـ columns',
+	'wikieditor-toolbar-tool-table-zero' => 'ما ينفعش تعمل insert لـ table من-غير rows او columns.',
+	'wikieditor-toolbar-tool-replace' => 'دوّر و بدّل',
 	'wikieditor-toolbar-tool-replace-title' => 'ابحث واستبدل',
-	'wikieditor-toolbar-tool-replace-search' => 'ابحث عن:',
-	'wikieditor-toolbar-tool-replace-replace' => 'استبدل ب:',
+	'wikieditor-toolbar-tool-replace-search' => 'دوّر على:',
+	'wikieditor-toolbar-tool-replace-replace' => 'بدّل بـ:',
 	'wikieditor-toolbar-tool-replace-case' => 'مطابقه الحالة',
 	'wikieditor-toolbar-tool-replace-regex' => 'عامل عباره البحث كتعبير نمطي',
-	'wikieditor-toolbar-tool-replace-button-findnext' => 'جِد التالي',
-	'wikieditor-toolbar-tool-replace-button-replacenext' => 'استبدل التالي',
-	'wikieditor-toolbar-tool-replace-button-replaceall' => 'استبدل الكل',
-	'wikieditor-toolbar-tool-replace-close' => 'ألغِ',
-	'wikieditor-toolbar-tool-replace-nomatch' => 'بحثك لم يطابق أى شيء.',
-	'wikieditor-toolbar-tool-replace-success' => 'أجرى $1 استبدال(ات).',
-	'wikieditor-toolbar-tool-replace-emptysearch' => 'لم تكتب شيئًا لتبحث عنه.',
+	'wikieditor-toolbar-tool-replace-button-findnext' => 'شوف اللى بعده',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => 'بدّل اللى بعده',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => 'بدلهم كلهم',
+	'wikieditor-toolbar-tool-replace-close' => 'كانسل',
+	'wikieditor-toolbar-tool-replace-nomatch' => 'التدوير بتاعك ما وصلش لأى حاجه.',
+	'wikieditor-toolbar-tool-replace-success' => '$1 تبديلات اتعملت.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'انت ما حطّيتش اى حاجه علشان تدوّر عليها.',
 	'wikieditor-toolbar-tool-replace-invalidregex' => 'التعبير النمطى الذى أدخلته غير صالح: $1',
 	'wikieditor-toolbar-section-characters' => 'محارف خاصة',
 	'wikieditor-toolbar-characters-page-latin' => 'اللاتينية',
@@ -899,17 +889,17 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'تيلوجو',
 	'wikieditor-toolbar-characters-page-sinhala' => 'سنهالا',
 	'wikieditor-toolbar-characters-page-gujarati' => 'جوجاراتي',
-	'wikieditor-toolbar-section-help' => 'مساعدة',
+	'wikieditor-toolbar-section-help' => 'مساعده',
 	'wikieditor-toolbar-help-heading-description' => 'الوصف',
-	'wikieditor-toolbar-help-heading-syntax' => 'ما تكتبه',
-	'wikieditor-toolbar-help-heading-result' => 'ما تحصل عليه',
+	'wikieditor-toolbar-help-heading-syntax' => 'اللى بتكتبه',
+	'wikieditor-toolbar-help-heading-result' => 'اللى بتاخده',
 	'wikieditor-toolbar-help-page-format' => 'تنسيق',
-	'wikieditor-toolbar-help-page-link' => 'وصلات',
+	'wikieditor-toolbar-help-page-link' => 'لينكات',
 	'wikieditor-toolbar-help-page-heading' => 'ترويسات',
-	'wikieditor-toolbar-help-page-list' => 'قوائم',
-	'wikieditor-toolbar-help-page-file' => 'ملفات',
+	'wikieditor-toolbar-help-page-list' => 'ليسَت',
+	'wikieditor-toolbar-help-page-file' => 'فايلات',
 	'wikieditor-toolbar-help-page-reference' => 'مراجع',
-	'wikieditor-toolbar-help-page-discussion' => 'نقاش',
+	'wikieditor-toolbar-help-page-discussion' => 'مناقشه',
 	'wikieditor-toolbar-help-content-italic-description' => 'مائل',
 	'wikieditor-toolbar-help-content-italic-syntax' => "''نص مائل''",
 	'wikieditor-toolbar-help-content-italic-result' => '<em>نص مائل</em>',
@@ -922,7 +912,7 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-help-content-ilink-description' => 'وصله داخلية',
 	'wikieditor-toolbar-help-content-ilink-syntax' => '[[عنوان الصفحة|اسم الوصلة]]<br />[[عنوان الصفحة]]',
 	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>اسم الوصلة</a><br /><a href='#'>عنوان الصفحة</a>",
-	'wikieditor-toolbar-help-content-xlink-description' => 'وصله خارجية',
+	'wikieditor-toolbar-help-content-xlink-description' => 'لينك برّانى',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org اسم الوصلة]<br />[http://www.example.org]<br />http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>اسم الوصلة</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
 	'wikieditor-toolbar-help-content-heading1-description' => 'ترويسه المستوى الأول',
@@ -956,11 +946,11 @@ $messages['arz'] = array(
 	'wikieditor-toolbar-help-content-rereference-result' => "نص الصفحه.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'اعرض المراجع',
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>نص الرابط</a>، نص إضافى.</li></ol>",
-	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'التوقيع مع الطابع الزمني',
-	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>اسم المستخدم</a> (<a href='#' title='{{#special:mytalk}}'>ناقش</a>) 15:54، 10 يونيو 2009 (ت‌ع‌م)",
-	'wikieditor-toolbar-help-content-signature-description' => 'التوقيع',
-	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>اسم المستخدم</a> (<a href='#' title='{{#special:mytalk}}'>ناقش</a>)",
-	'wikieditor-toolbar-help-content-indent-description' => 'بادئة',
+	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'الامضا مع ختم الوقت',
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>اسم اليوزر</a> (<a href='#' title='{{#special:mytalk}}'>كلّمه</a>) 15:54,‏ 10 يونيه 2009 ‏(UTC)‏",
+	'wikieditor-toolbar-help-content-signature-description' => 'امضا',
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>اسم اليوزر</a> (<a href='#' title='{{#special:mytalk}}'>كلّمه</a>)",
+	'wikieditor-toolbar-help-content-indent-description' => 'المسافه اللى فى الاول (indent)',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'نص عادي<br />:نص ببادئة<br />::نص ببادئة',
 	'wikieditor-toolbar-help-content-indent-result' => 'نص عادي<dl><dd>نص ببادئة<dl><dd>نص ببادئة</dd></dl></dd></dl>',
 );
@@ -1190,7 +1180,7 @@ $messages['bg'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Вмъкване на препратка',
 	'wikieditor-toolbar-tool-link-int' => 'Към уики-страница',
 	'wikieditor-toolbar-tool-link-int-target' => 'Страница или URL за свързване:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Въведете име на страницата',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Име на страницата или URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Показван текст:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Въведете текста, който да се показва',
 	'wikieditor-toolbar-tool-link-ext' => 'Към външна уеб-страница',
@@ -2415,6 +2405,7 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'wikieditor-toolbar' => 'Bar offer golygu',
+	'wikieditor-toolbar-desc' => 'Bar offer y dudalen olygu gyda gwelliannau defnyddioldeb',
 	'wikieditor-toolbar-preference' => "Defnyddio'r bar offer golygu estynedig",
 	'wikieditor-toolbar-dialogs-preference' => 'Galluoger y blychau yn y rhyngwyneb ar gyfer mewnosod cysylltiadau, tablau ag ati',
 	'wikieditor-toolbar-loading' => "Wrthi'n llwytho...",
@@ -2607,6 +2598,7 @@ $messages['cy'] = array(
  * @author Byrial
  * @author F. Cosoleto
  * @author Leolaursen
+ * @author Sarrus
  */
 $messages['da'] = array(
 	'wikieditor-toolbar' => 'Værktøjslinje til redigering',
@@ -2625,7 +2617,9 @@ $messages['da'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Indsæt henvisning',
 	'wikieditor-toolbar-tool-link-int' => 'Til en wikiartikel/-side',
 	'wikieditor-toolbar-tool-link-int-target' => 'Artikeltitel:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sidetitel eller internetadresse',
 	'wikieditor-toolbar-tool-link-int-text' => 'Henvisningstekst:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Tekst, der skal vises',
 	'wikieditor-toolbar-tool-link-ext' => 'Til en ekstern webside',
 	'wikieditor-toolbar-tool-link-ext-target' => 'Henvisnings-URL:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Henvisningstekst:',
@@ -2670,22 +2664,45 @@ $messages['da'] = array(
 {{ns:file}}:Eksempel.jpg|Billedtekst2',
 	'wikieditor-toolbar-tool-newline' => 'Ny linje',
 	'wikieditor-toolbar-tool-table' => 'Tabel',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! overskrift 1
+! overskrift 2
+! overskrift 3
+|-
+| række 1, celle 1
+| række 1, celle 2
+| række 1, celle 3
+|-
+| række 2, celle 1
+| række 2, celle 2
+| række 2, celle 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'Række $1, celle $2',
 	'wikieditor-toolbar-tool-table-example-header' => 'Række $1, celle $2 (overskrift)',
 	'wikieditor-toolbar-tool-table-title' => 'Indsæt tabel',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rækker',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolonner',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Tilføj række til kolonneoverskrifter',
+	'wikieditor-toolbar-tool-table-sortable' => 'Gør tabel sorterbar',
 	'wikieditor-toolbar-tool-table-example' => 'Række $1, celle $2',
+	'wikieditor-toolbar-tool-table-preview' => 'Forhåndsvisning',
 	'wikieditor-toolbar-tool-table-insert' => 'Indsæt',
 	'wikieditor-toolbar-tool-table-cancel' => 'Annullér',
+	'wikieditor-toolbar-tool-table-toomany' => 'Det er ikke muligt at indsætte en tabel med mere end $1 celler med denne dialogboks',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Du har ikke angivet et gyldigt antal rækker eller kolonner.',
+	'wikieditor-toolbar-tool-table-zero' => 'Du kan ikke indsætte en tabel med nul rækker eller kolonner',
 	'wikieditor-toolbar-tool-replace' => 'Søg og erstat',
 	'wikieditor-toolbar-tool-replace-title' => 'Søg og erstat',
 	'wikieditor-toolbar-tool-replace-search' => 'Søg efter:',
 	'wikieditor-toolbar-tool-replace-replace' => 'Erstat med:',
 	'wikieditor-toolbar-tool-replace-case' => 'Skeln mellem store og små bogstaver',
 	'wikieditor-toolbar-tool-replace-regex' => 'Behandl søgestrengen som et regulært udtryk',
+	'wikieditor-toolbar-tool-replace-button-findnext' => 'Find næste',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Erstat alle',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Erstat alle',
 	'wikieditor-toolbar-tool-replace-close' => 'Annullér',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Din søgning gav ingen resultater',
+	'wikieditor-toolbar-tool-replace-success' => '$1 udskiftning(er) foretaget.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Du skrev ikke noget at søge efter',
 	'wikieditor-toolbar-section-characters' => 'Specialtegn',
 	'wikieditor-toolbar-characters-page-latin' => 'Latin',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Udvidet latin',
@@ -3375,6 +3392,7 @@ $messages['dsb'] = array(
  * @author Consta
  * @author Crazymadlover
  * @author Geraki
+ * @author Lou
  * @author Omnipaedista
  * @author ZaDiak
  * @author Περίεργος
@@ -3396,7 +3414,7 @@ $messages['el'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Εισαγωγή συνδέσμου',
 	'wikieditor-toolbar-tool-link-int' => 'Σε μία σελίδα wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Τίτλος άρθρου:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Εισάγετε τον τίτλο της σελίδας',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Τίτλος ή URL της σελίδας',
 	'wikieditor-toolbar-tool-link-int-text' => 'Κείμενο συνδέσμου:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Κείμενο προς εμφάνιση',
 	'wikieditor-toolbar-tool-link-ext' => 'Σε μία εξωτερική ιστοσελίδα',
@@ -4810,7 +4828,7 @@ $messages['frp'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Entrebetar un lim',
 	'wikieditor-toolbar-tool-link-int' => 'De vers una pâge vouiqui',
 	'wikieditor-toolbar-tool-link-int-target' => 'Titro de la pâge ou ben URL :',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Buchiéd lo titro de la pâge',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Titro de la pâge ou ben URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Tèxto du lim :',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Buchiéd lo tèxto que devrêt étre montrâ',
 	'wikieditor-toolbar-tool-link-ext' => 'De vers una pâge vouèbe de defôr',
@@ -4981,6 +4999,23 @@ $messages['frp'] = array(
 	'wikieditor-toolbar-help-content-indent-description' => 'Endentacion',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Tèxto normal<br />:Tèxto endentâ<br />::Tèxto endentâ',
 	'wikieditor-toolbar-help-content-indent-result' => 'Tèxto normal<dl><dd>Tèxto endentâ<dl><dd>Tèxto endentâ</dd></dl></dd></dl>',
+);
+
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'wikieditor-toolbar-loading' => 'Daûr a cjamâ…',
+	'wikieditor-toolbar-tool-bold' => 'Gruessut',
+	'wikieditor-toolbar-tool-bold-example' => 'Test in gruessut',
+	'wikieditor-toolbar-tool-italic' => 'Corsîf',
+	'wikieditor-toolbar-tool-italic-example' => 'Test in corsîf',
+	'wikieditor-toolbar-tool-ilink' => 'Leam interni',
+	'wikieditor-toolbar-tool-ilink-example' => 'Titul dal leam',
+	'wikieditor-toolbar-tool-link' => 'Leam',
+	'wikieditor-toolbar-tool-table-preview' => 'Anteprime',
+	'wikieditor-toolbar-characters-page-symbols' => 'Simbols',
+	'wikieditor-toolbar-section-help' => 'Jutori',
 );
 
 /** Western Frisian (Frysk)
@@ -5929,7 +5964,7 @@ $messages['hsb'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Wotkaz zasunyć',
 	'wikieditor-toolbar-tool-link-int' => 'K wikinastawkej/stronje',
 	'wikieditor-toolbar-tool-link-int-target' => 'Titul nastawka:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Titul strony zapodać',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Titul strony abo URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Tekst wotkaza:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Tekst, kotryž ma so pokazać, zapodać',
 	'wikieditor-toolbar-tool-link-ext' => 'K eksternej webstronje',
@@ -6125,7 +6160,7 @@ $messages['hu'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Hivatkozás beszúrása',
 	'wikieditor-toolbar-tool-link-int' => 'A wiki egy lapjára',
 	'wikieditor-toolbar-tool-link-int-target' => 'Lap címe:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Add meg a lap címét',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Lapcím vagy URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'A hivatkozás szövege:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Add meg a megjelenítendő szöveget',
 	'wikieditor-toolbar-tool-link-ext' => 'Egy külső weboldalra',
@@ -8584,6 +8619,17 @@ $messages['lv'] = array(
 	'wikieditor-toolbar-help-content-indent-description' => 'Atkāpe',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Teksts bez atkāpes<br />:Teksts ar atkāpi<br />::Teksts ar atkāpi',
 	'wikieditor-toolbar-help-content-indent-result' => 'Teksts bez atkāpes<dl><dd>Teksts ar atkāpi<dl><dd>Teksts ar atkāpi</dd></dl></dd></dl>',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'wikieditor-toolbar-tool-small' => "Ç'ut'a",
+	'wikieditor-toolbar-tool-gallery' => "Suret'iş Galeri",
+	'wikieditor-toolbar-characters-page-latin' => "Lat'ini",
+	'wikieditor-toolbar-characters-page-greek' => 'Xorumi',
+	'wikieditor-toolbar-characters-page-arabic' => 'Arabuli',
 );
 
 /** Macedonian (Македонски)
@@ -12852,7 +12898,9 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-toolbar' => 'Mwambaa zana wa kuhariri',
+	'wikieditor-toolbar-desc' => 'Mwambaa zana wa kuhariri uliozidishwa',
 	'wikieditor-toolbar-preference' => 'Tumia mwambaa zana wa kuhariri uliozidishwa',
+	'wikieditor-toolbar-dialogs-preference' => 'Kuwezesha visanduku vya zana za kuingiza viungo, jedwali na mengineyo',
 	'wikieditor-toolbar-loading' => 'Inapakizwa...',
 	'wikieditor-toolbar-tool-bold' => 'Koze',
 	'wikieditor-toolbar-tool-bold-example' => 'Maandishi ya kooze',
@@ -12880,6 +12928,7 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Kiungo cha nje',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Inahakikishwa kwamba ukurasa inapatikana...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Jina la ukurasa uliloliandika ni batili.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Inaonekana kwamba KISARA (URL) ulioingiza inaelekea ukurasa mwingine wa wiki hii. Je, unataka kutengeneza kiungo cha ndani?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Kiungo cha ndani',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Kiungo cha nje',
 	'wikieditor-toolbar-tool-link-empty' => 'Hukuandika kitu cha kuunganisha naye.',
@@ -12908,12 +12957,15 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-tool-big-example' => 'Maandishi makubwa',
 	'wikieditor-toolbar-tool-small' => 'Ndogo',
 	'wikieditor-toolbar-tool-small-example' => 'Maandishi madogo',
+	'wikieditor-toolbar-group-baseline' => 'Kusogeza herufi',
 	'wikieditor-toolbar-tool-superscript' => 'Herufi za juu',
 	'wikieditor-toolbar-tool-superscript-example' => 'Maandishi ya juu',
 	'wikieditor-toolbar-tool-subscript' => 'Herufi za chini',
 	'wikieditor-toolbar-tool-subscript-example' => 'Maandishi ya chini',
 	'wikieditor-toolbar-group-insert' => 'Kuweka',
 	'wikieditor-toolbar-tool-gallery' => 'Mkusanyiko wa picha',
+	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Example.jpg|Maelezo mafupi 1
+{{ns:file}}:Example.jpg|Maelezo mafupi 2',
 	'wikieditor-toolbar-tool-newline' => 'Mstari mpya',
 	'wikieditor-toolbar-tool-table' => 'Jedwali',
 	'wikieditor-toolbar-tool-table-example-old' => '-
@@ -12991,6 +13043,7 @@ Idadi ya mistari au ya safu si halali.',
 	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>Maandishi ya kiungo</a><br /><a href='#'>Jina la ukurasa</a>",
 	'wikieditor-toolbar-help-content-xlink-description' => 'Kiungo cha nje',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org Maandishi ya kiungo]<br />[http://www.example.org]<br />http://www.example.org',
+	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Maandishi ya kiungo</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
 	'wikieditor-toolbar-help-content-heading1-description' => 'Kichwa cha kiwango cha 1',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= Kichwa cha habari=',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Kichwa cha habari</h1>',
@@ -13013,11 +13066,15 @@ Idadi ya mistari au ya safu si halali.',
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Aya<br /># Aya',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Aya</li><li>Aya</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Faili futike',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Maelezo mafupi]]',
+	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Maelezo mafupi' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Kuza' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>Maelezo mafupi</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Tiniwayo',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Maandishi ya ukurasa.&lt;ref name="mfano"&gt;[http://www.example.org Maandishi ya kiungo], maandishi mengine.&lt;/ref&gt;',
 	'wikieditor-toolbar-help-content-reference-result' => "Maandiko.<sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-rereference-description' => 'Kutumia tiniwayo fulani kwa mara nyingine',
 	'wikieditor-toolbar-help-content-rereference-result' => "Maandiko.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Onyesha tiniwayo',
+	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Maandishi ya kiungo</a>, maandishi mengine.</li></ol>",
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Sahihi pamoja na stempu ya saa',
 	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Jina la mtumiaji</a> (<a href='#' title='{{#special:mytalk}}'>majadiliano</a>) 15:54, 10 June 2009 (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => 'Sahihi',
@@ -14610,7 +14667,10 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-tool-table-example' => 'צעל טעקסט',
 	'wikieditor-toolbar-tool-table-preview' => 'פֿאראויסשטעלונג',
 	'wikieditor-toolbar-tool-table-cancel' => 'אנולירן',
+	'wikieditor-toolbar-tool-replace' => 'זוכן און בײַטן',
+	'wikieditor-toolbar-tool-replace-title' => 'זוכן און בײַטן',
 	'wikieditor-toolbar-tool-replace-search' => 'זוכן פֿאַר:',
+	'wikieditor-toolbar-tool-replace-replace' => 'פֿאַרבייטן מיט:',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'זוכן נעקסטע',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'אויסטוישן נעקסטע',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'אויסטוישן אלץ',
@@ -14621,18 +14681,27 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-characters-page-cyrillic' => 'ציריליש',
 	'wikieditor-toolbar-characters-page-arabic' => 'אראביש',
 	'wikieditor-toolbar-characters-page-hebrew' => 'העברעיש',
+	'wikieditor-toolbar-characters-page-telugu' => 'טעלוגו',
+	'wikieditor-toolbar-characters-page-sinhala' => 'סינהאַלאַ',
+	'wikieditor-toolbar-characters-page-gujarati' => 'גודזשאַראַטי',
 	'wikieditor-toolbar-section-help' => 'הילף',
+	'wikieditor-toolbar-help-heading-description' => 'באַשרײַבונג',
 	'wikieditor-toolbar-help-page-file' => 'טעקעס',
 	'wikieditor-toolbar-help-page-reference' => 'רעפערענצן',
 	'wikieditor-toolbar-help-content-bold-description' => 'דיק',
+	'wikieditor-toolbar-help-content-ilink-description' => 'אינערלעכער לינק',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= קעפל טעקסט =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>קעפל טעקסט</h1>',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== קעפל טעקסט ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>קעפל טעקסט</h2>',
 	'wikieditor-toolbar-help-content-heading3-syntax' => '=== קעפל טעקסט ===',
+	'wikieditor-toolbar-help-content-heading3-result' => '<h3>קעפל טעקסט</h3>',
 	'wikieditor-toolbar-help-content-heading4-syntax' => '==== קעפל טעקסט ====',
+	'wikieditor-toolbar-help-content-heading4-result' => '<h4>קעפל טעקסט</h4>',
+	'wikieditor-toolbar-help-content-heading5-result' => '<h5>קעפל טעקסט</h5>',
 	'wikieditor-toolbar-help-content-ulist-syntax' => '* ליסטע איינצל<br />* ליסטע איינצל',
 	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>ליסטע איינצל</li><li>ליסטע איינצל</li></ul>',
+	'wikieditor-toolbar-help-content-olist-description' => 'נומערירטע ליסטע',
 	'wikieditor-toolbar-help-content-olist-syntax' => '# ליסטע איינצל<br /># ליסטע איינצל',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>ליסטע איינצל</li><li>ליסטע איינצל</li></ol>',
 	'wikieditor-toolbar-help-content-reference-description' => 'רעפערענץ',

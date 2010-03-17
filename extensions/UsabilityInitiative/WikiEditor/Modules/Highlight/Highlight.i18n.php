@@ -71,11 +71,19 @@ $messages['cs'] = array(
 	'wikieditor-highlight-preference' => 'Při editování zvýrazňovat syntaxi',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'wikieditor-highlight-preference' => 'Galluogi amlygu cystrawen wrth olygu',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'wikieditor-highlight-preference' => 'Markierung der Syntax beim Editieren ermöglichen',
+	'wikieditor-highlight-preference' => 'Markierung der Syntax beim Bearbeiten ermöglichen',
 );
 
 /** Zazaki (Zazaki)
@@ -300,6 +308,13 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'wikieditor-highlight-preference' => 'Эрэдээксийэлииргэ синтаксииһын сырдатыыны холбоо',
+);
+
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'wikieditor-highlight-preference' => 'සංස්කරණය කිරීමේදී වාග් රීති උද්දීපනය කිරීම සක්‍රීය කරයි',
 );
 
 /** Slovak (Slovenčina)

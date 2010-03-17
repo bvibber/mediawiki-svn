@@ -2,6 +2,10 @@
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
+ * Core Requirements
+ */
+'req': [ 'iframe' ],
+/**
  * Configuration
  */
 cfg: {
@@ -34,15 +38,17 @@ evt: {
 		 * 			;	Definition
 		 * 			:	Definition
 		 */
+		$.wikiEditor.modules.highlight.currentScope = event.data.scope;
 		if ( event.data.scope == 'realchange' ) {
-			$.wikiEditor.modules.highlight.fn.scan( context, "" );
-			$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
+			$.wikiEditor.modules.highlight.fn.scan( context, '' );
+			$.wikiEditor.modules.highlight.fn.mark( context, 'realchange', '' );
 		}
 	},
 	ready: function( context, event ) {
 		// Highlight stuff for the first time
-		$.wikiEditor.modules.highlight.fn.scan( context, "" );
-		$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
+		$.wikiEditor.modules.highlight.currentScope = 'ready'; // FIXME: Ugly global, kill with fire
+		$.wikiEditor.modules.highlight.fn.scan( context, '' );
+		$.wikiEditor.modules.highlight.fn.mark( context, '', '' );
 	}
 },
 /**
@@ -147,7 +153,18 @@ fn: {
 	// TODO: Document the scan() and mark() APIs somewhere
 	mark: function( context, division, tokens ) {
 		// Reset markers
-		var markers = context.modules.highlight.markers = [];
+		var markers = [];
+		
+		// Recycle markers that will be skipped in this run
+		if ( context.modules.highlight.markers && division != '' ) {
+			for ( var i = 0; i < context.modules.highlight.markers.length; i++ ) {
+				if ( context.modules.highlight.markers[i].skipDivision == division ) {
+					markers.push( context.modules.highlight.markers[i] );
+				}
+			}
+		}
+		context.modules.highlight.markers = markers;
+		
 		// Get all markers
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
@@ -166,8 +183,12 @@ fn: {
 		
 		// Traverse the iframe DOM, inserting markers where they're needed.
 		// Store visited markers here so we know which markers should be removed
-		var visited = [];
+		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
+			if ( typeof markers[i].skipDivision !== 'undefined' && ( division == markers[i].skipDivision ) ) { 
+				continue;
+			}
+			
 			// We want to isolate each marker, so we may need to split textNodes
 			// if a marker starts or ends halfway one.
 			var start = markers[i].start;
@@ -177,8 +198,7 @@ fn: {
 				continue;
 			}
 			var startNode = s.node;
-			var startDepth = s.depth;
-
+			
 			// Don't wrap leading BRs, produces undesirable results
 			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
 			// .length to fake the newline caused by startNode being in a P. In this case, prevent
@@ -187,88 +207,167 @@ fn: {
 				start++;
 				s = context.fn.getOffset( start );
 				startNode = s.node;
-				startDepth = s.depth;
 			}
-
+			
 			// The next marker starts somewhere in this textNode or at this BR
 			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
 				// Split off the prefix
 				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node					
-				startNode = startNode.splitText( s.offset );
-				// This also invalidates cached offset objects
-				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+				// the rest in a new node which is our start node
+				var newStartNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
+					s.offset : s.node.nodeValue.length - 1
+				);
+				var oldStartNode = startNode;
+				startNode = newStartNode;
+				
+				// Update offset objects. We don't need purgeOffsets(), simply
+				// manipulating the existing offset objects will suffice
+				// FIXME: This manipulates context.offsets directly, which is ugly,
+				// but the performance improvement vs. purgeOffsets() is worth it
+				// This code doesn't set lastTextNode to newStartNode for offset objects
+				// with lastTextNode == oldStartNode, but that doesn't really matter
+				var subtracted = s.offset;
+				var oldLength = s.length;
+
+				var j, o;
+				// Update offset objects referring to oldStartNode
+				for ( j = start - subtracted; j < start; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = oldStartNode;
+						o.length = subtracted;
+					}
+				}
+				// Update offset objects referring to newStartNode
+				for ( j = start; j < start - subtracted + oldLength; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = newStartNode;
+						o.offset -= subtracted;
+						o.length -= subtracted;
+						o.lastTextNode = oldStartNode;
+					}
+				}
 			}
 			
 			var end = markers[i].end;
-			var e = context.fn.getOffset( end );
+			// To avoid ending up at the first char of the next node, we grab the offset for end - 1
+			// and add one to the offset
+			var e = context.fn.getOffset( end - 1 );
 			if ( !e ) {
 				// This shouldn't happen
 				continue;
 			}
 			var endNode = e.node;
-			var endDepth = e.depth;
-			if ( e.offset < e.length - 1 && e.node.nodeName == '#text' ) {
-				// Split off the suffix - This puts the suffix in a new node and leaves the rest in the current
-				// node.
-				// endNode.nodeValue.length - ( newPos - markers[i].end )
-				endNode.splitText( e.offset + 1 );
-				// This also invalidates cached offset objects
-				context.fn.purgeOffsets(); // TODO: Optimize better, get end offset object earlier
+			if ( e.offset + 1 < e.length - 1 && endNode.nodeName == '#text' ) {
+				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
+				var oldEndNode = endNode;
+				var newEndNode = endNode.splitText( e.offset + 1 );
+				
+				// Update offset objects
+				var subtracted = e.offset + 1;
+				var oldLength = e.length;
+
+				var j, o;
+				// Update offset objects referring to oldEndNode
+				for ( j = end - subtracted; j < end; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = oldEndNode;
+						o.length = subtracted;
+					}
+				}
+				// We have to insert this one, as it might not exist: we didn't call getOffset( end )
+				context.offsets[end] = {
+					'node': newEndNode,
+					'offset': 0,
+					'length': oldLength - subtracted,
+					'lastTextNode': oldEndNode
+				};
+				// Update offset objects referring to newEndNode
+				for ( j = end + 1; j < end - subtracted + oldLength; j++ ) {
+					if ( j in context.offsets ) {
+						o = context.offsets[j];
+						o.node = newEndNode;
+						o.offset -= subtracted;
+						o.length -= subtracted;
+						o.lastTextNode = oldEndNode;
+					}
+				}
 			}
 			
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
 				endNode = e.lastTextNode;
-				endDepth = e.lastTextNodeDepth;
 			}
 			
-			// Now wrap everything between startNode and endNode (may be equal). First find the common ancestor of
-			// startNode and endNode. ca1 and ca2 will be children of this common ancestor, such that ca1 is an
-			// ancestor of startNode and ca2 of endNode. We also check that startNode and endNode are the leftmost and
-			// rightmost leaves in the subtrees rooted at ca1 and ca2 respectively; if this is not the case, we
-			// can't cleanly wrap things without misnesting and we silently fail.
+			// If startNode and endNode have different parents, we need to pull endNode and all textnodes in between
+			// into startNode's parent and replace </p><p> with <br>
+			if ( startNode.parentNode != endNode.parentNode ) {
+				var startP = $( startNode ).closest( 'p' ).get( 0 );
+				var t = new context.fn.rawTraverser( startNode, startP, context.$content.get( 0 ), false );
+				var afterStart = startNode.nextSibling;
+				var lastP = startP;
+				var nextT = t.next();
+				while ( nextT && t.node != endNode ) {
+					t = nextT;
+					nextT = t.next();
+					// If t.node has a different parent, merge t.node.parentNode with startNode.parentNode
+					if ( t.node.parentNode != startNode.parentNode ) {
+						var oldParent = t.node.parentNode;
+						if ( afterStart ) {
+							if ( lastP != t.inP ) {
+								// We're entering a new <p>, insert a <br>
+								startNode.parentNode.insertBefore(
+									startNode.ownerDocument.createElement( 'br' ),
+									afterStart
+								);
+							}
+							// A <p> with just a <br> in it is an empty line, so let's not bother with unwrapping it
+							if ( !( oldParent.childNodes.length == 1 && oldParent.firstChild.nodeName == 'BR' ) ) {
+								// Move all children of oldParent into startNode's parent
+								while ( oldParent.firstChild ) {
+									startNode.parentNode.insertBefore( oldParent.firstChild, afterStart );
+								}
+							}
+						} else {
+							if ( lastP != t.inP ) {
+								// We're entering a new <p>, insert a <br>
+								startNode.parentNode.appendChild(
+									startNode.ownerDocument.createElement( 'br' )
+								);
+							}
+							// A <p> with just a <br> in it is an empty line, so let's not bother with unwrapping it
+							if ( !( oldParent.childNodes.length == 1 && oldParent.firstChild.nodeName == 'BR' ) ) {
+								// Move all children of oldParent into startNode's parent
+								while ( oldParent.firstChild ) {
+									startNode.parentNode.appendChild( oldParent.firstChild );
+								}
+							}
+						}
+						// Remove oldParent, which is now empty
+						oldParent.parentNode.removeChild( oldParent );
+					}
+					lastP = t.inP;
+				}
+				// Moving nodes around like this invalidates offset objects
+				// TODO: Update offset objects ourselves for performance. Requires rewriting this code block to be
+				// offset-based rather than traverser-based
+			}
+			
+			// Now wrap everything between startNode and endNode (may be equal).
 			var ca1 = startNode, ca2 = endNode;
-			// Correct for startNode and endNode possibly not having the same depth
-			if ( startDepth > endDepth ) {
-				for ( var j = 0; j < startDepth - endDepth && ca1; j++ ) {
-					ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-				}
-			}
-			else if ( startDepth < endDepth ) {
-				for ( var j = 0; j < endDepth - startDepth && ca2; j++ ) {
-					ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-				}
-			}
-			// Now that ca1 and ca2 have the same depth, have them walk up the tree simultaneously
-			// to find the common ancestor
-			while (
-				ca1 &&
-				ca2 &&
-				ca1.parentNode &&
-				ca2.parentNode &&
-				ca1.parentNode != ca2.parentNode &&
-				ca1.parentNode.firstChild &&
-				ca2.parentNode.lastChild
-			) {
-				ca1 = ca1.parentNode.firstChild == ca1 ? ca1.parentNode : null;
-				ca2 = ca2.parentNode.lastChild == ca2 ? ca2.parentNode : null;
-			}
 			if ( ca1 && ca2 && ca1.parentNode ) {
 				var anchor = markers[i].getAnchor( ca1, ca2 );
 				if ( !anchor ) {
-					// We have to store things like .parentNode and .nextSibling because appendChild() changes these
-					// properties
-					var newNode = ca1.ownerDocument.createElement( 'div' );
 					var commonAncestor = ca1.parentNode;
-					// Special case: can't put block elements in a <p>
-					if ( commonAncestor.nodeName == 'P' && commonAncestor.parentNode ) {
-						commonAncestor = commonAncestor.parentNode;
-						ca1 = ca1.parentNode;
-						ca2 = ca2.parentNode;
-					}
-					var nextNode = ca2.nextSibling;
-					if ( markers[i].anchor == 'wrap' ) {
+					if ( markers[i].anchor == 'wrap') {
+						// We have to store things like .parentNode and .nextSibling because
+						// appendChild() changes these properties
+						
+						var newNode = ca1.ownerDocument.createElement( 'span' );
+						
+						var nextNode = ca2.nextSibling;
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
 						var n = ca1;
 						while ( n != nextNode ) {
@@ -277,33 +376,28 @@ fn: {
 							n = ns;
 						}
 						// Insert newNode in the right place
+						
 						if ( nextNode ) {
 							commonAncestor.insertBefore( newNode, nextNode );
 						} else {
 							commonAncestor.appendChild( newNode );
 						}
-					} else if ( markers[i].anchor == 'before' ) {
-						commonAncestor.insertBefore( newNode, ca1 );
-					} else if ( markers[i].anchor == 'after' ) {
-						if ( nextNode ) {
-							commonAncestor.insertBefore( newNode, nextNode );
-						} else {
-							commonAncestor.appendChild( newNode );
-						}
+						
+						anchor = newNode;
+					} else if ( markers[i].anchor == 'tag' ) {
+						anchor = commonAncestor;
 					}
-					
-					$( newNode ).data( 'marker', markers[i] )
+					$( anchor ).data( 'marker', markers[i] )
 						.addClass( 'wikiEditor-highlight' );
-					visited[i] = newNode;
-					
 					// Allow the module adding this marker to manipulate it
-					markers[i].afterWrap( newNode, markers[i] );
+					markers[i].afterWrap( anchor, markers[i] );
+
 				} else {
-					visited[i] = anchor;
 					// Update the marker object
 					$( anchor ).data( 'marker', markers[i] );
 					markers[i].onSkip( anchor );
 				}
+				visited[v++] = anchor;
 			}
 		}
 		
@@ -311,7 +405,7 @@ fn: {
 		// This function works because visited[] contains the visited elements in order and find() and each()
 		// preserve order
 		var j = 0;
-		context.$content.find( 'div.wikiEditor-highlight' ).each( function() {
+		context.$content.find( '.wikiEditor-highlight' ).each( function() {
 			if ( visited[j] == this ) {
 				// This marker is legit, leave it in
 				j++;
@@ -319,14 +413,23 @@ fn: {
 			}
 			
 			// Remove this marker
-			if ( $(this).data( 'marker' ) && typeof $(this).data( 'marker' ).unwrap == 'function' )
-				$(this).data( 'marker' ).unwrap( this );
-			if ( $(this).children().size() > 0 ) {
-				$(this).replaceWith( $(this).children() );
-			} else {
-				$(this).replaceWith( $(this).html() );
+			var marker = $(this).data( 'marker' );
+			if ( typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
+				// Don't remove these either
+				return true;
 			}
+			if ( marker && typeof marker.beforeUnwrap == 'function' )
+				marker.beforeUnwrap( this );
+			if ( ( marker && marker.anchor == 'tag' ) || $(this).is( 'p' ) ) {
+				// Remove all classes
+				$(this).removeAttr( 'class' );
+			} else {
+				// Assume anchor == 'wrap'
+				$(this).replaceWith( this.childNodes );
+			}
+			context.fn.purgeOffsets();
 		});
+		
 	}
 }
 

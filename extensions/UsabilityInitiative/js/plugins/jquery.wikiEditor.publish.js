@@ -2,6 +2,25 @@
 ( function( $ ) { $.wikiEditor.modules.publish = {
 
 /**
+ * Compatability map
+ */
+'browsers': {
+	// Left-to-right languages
+	'ltr': {
+		'msie': [['>=', 7]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	},
+	// Right-to-left languages
+	'rtl': {
+		'msie': [['>=', 8]],
+		'firefox': [['>=', 3]],
+		'opera': [['>=', 9.6]],
+		'safari': [['>=', 4]]
+	}
+},
+/**
  * Internally used functions
  */
 fn: {
@@ -44,8 +63,23 @@ fn: {
 						$(this).find( '[rel]' ).each( function() {
 							$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
 						});
-						$(this).find( '.wikiEditor-dialog-copywarn' )
-							.html( $( '#editpage-copywarn' ).html() );
+						
+						// Reformat the copyright warning stuff
+						var copyWarnHTML = $( '#editpage-copywarn' ).html();
+						
+						// TODO: internationalize by splitting on other characters that end statements
+						var copyWarnStatements = copyWarnHTML.split( '. ' );
+						var newCopyWarnHTML = '';
+						for ( var i = 0; i < copyWarnStatements.length; i++ ) {
+							if ( copyWarnStatements[i] != '' ) {
+								newCopyWarnHTML += '<li>' + copyWarnStatements[i] + '. </li>';
+							}
+						}
+						newCopyWarnHTML += '</ul>';
+
+						// No list if there's only one element
+						$(this).find( '.wikiEditor-dialog-copywarn' ).html( 
+								copyWarnStatements.length > 1 ? newCopyWarnHTML : copyWarnHTML );
 						
 						if ( $( '#wpMinoredit' ).size() == 0 )
 							$( '#wikiEditor-' + context.instance + '-dialog-minor' ).hide();

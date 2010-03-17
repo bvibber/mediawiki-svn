@@ -34,12 +34,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
-	'vector-editwarning-warning' => 'قد تتسبب مغادره هذه الصفحه بخسارتك لأى تغييرات قمت بها.
-يمكنك تعطيل هذا التحذير إذا كنت والجلًا فى قسم "{{int:prefs-editing}}" فى تفضيلاتك.',
-	'vector-editwarning-preference' => 'حذّرنى عندما أغادر تحرير صفحه ذات تغييرات غير محفوظة',
+	'vector-editwarning-warning' => 'لو سيبت الصفحه دى ممكن يخلّيك تضيّع اى تغييرات عملتها.
+لو انت مسجّل دخولك, ممكن تعطّل التحذير ده من الجزء بتاع "{{int:prefs-editing}}" فى تفضيلاتك.',
+	'vector-editwarning-preference' => 'حذّرنى لما اسيب صفحة تعديل فيها تغييرات مش متسييڤه',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -559,6 +560,15 @@ $messages['sah'] = array(
 	'vector-editwarning-warning' => 'Атын сирэйгэ көстөххүнэ билигин оҥорбут уларытыыларыҥ барыта сүтэн хаалыахтара.
 Бэлиэтэммит буоллаҕына, бу сэрэтиини туруорууларыҥ «{{int:prefs-editing}}» сирэйигэр араарыаххын сөп.',
 	'vector-editwarning-preference' => 'Эрэдээксийэлиир сирэйтэн уларытыыларбын бигэргэппэккэ тахсаары гыннахпына сэрэтээр',
+);
+
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'vector-editwarning-warning' => 'මෙම පිටුවෙන් නික්ම යාම ඔබ සිදු කළ වෙනස්කම් නැතිවී යෑමට හේතු විය හැක.
+ඔබ ප්‍රවිෂ්ට වී ඇත්නම්,ඔබගේ වරණයන්වල  "{{int:prefs-editing}}" කොටසේ ඇති මෙම අනතුරු ඇඟවීම අක්‍රීය කළ හැක.',
+	'vector-editwarning-preference' => 'මා සංස්කරණ පිටුවක් සුරකිනු නොලැබූ වෙනස්කිරීම් සමඟ අතහැර යන විට අවවාද කරන්න',
 );
 
 /** Slovak (Slovenčina)

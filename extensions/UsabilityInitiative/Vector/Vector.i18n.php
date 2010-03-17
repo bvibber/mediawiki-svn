@@ -95,6 +95,14 @@ $messages['cs'] = array(
 	'vector-desc' => 'Vylepšuje prvky uživatelského rozhraní vzhledu Vektor.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'vector' => "Gwelliannau i'r rhyngwyneb ar gyfer Vector",
+	'vector-desc' => 'Yn gwella ar y rhyngwyneb yn y wedd Vector.',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -258,8 +266,8 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'vector' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിലെ ദൃശ്യമണ്ഡല മെച്ചപ്പെടുത്തലുകൾ',
-	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ ദൃശ്യമണ്ഡലത്തിലെ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
+	'vector' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിന്റെ സമ്പർക്കമുഖ മെച്ചപ്പെടുത്തലുകൾ',
+	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ സമ്പർക്കമുഖ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
 );
 
 /** Dutch (Nederlands)
@@ -350,6 +358,14 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'vector' => '"Вектор" диэн тиэмэни тупсарар',
 	'vector-desc' => 'Вектор диэн тиэмэ туттар интерфейсын тупсарыы',
+);
+
+/** Sinhala (සිංහල)
+ * @author Calcey
+ */
+$messages['si'] = array(
+	'vector' => 'දෛශික සඳහා UI දියුණු කිරීම්',
+	'vector-desc' => 'දෛශික පෘෂ්ඨයේ පරිශීලක අතුරු මුහුණත් මූලිකාංග මත දියුණු කරයි',
 );
 
 /** Slovak (Slovenčina)

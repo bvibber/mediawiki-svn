@@ -49,21 +49,25 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'wikieditor' => 'واجعه تعديل نص ويكى متقدمة',
 	'wikieditor-desc' => 'يوفر واجهه تعديل نص ويكى قابله للتمديد والعديد من العناصر الموفره للخصائص',
 	'wikieditor-wikitext-tab' => 'نص ويكي',
+	'wikieditor-loading' => 'بيلوّد',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'wikieditor' => 'Пашыраны інтэрфэйс рэдагаваньня вікі-тэксту',
 	'wikieditor-desc' => 'Дадае пашыраны інтэрфэйс рэдагаваньня вікі-тэксту і шмат модульных магчымасьцяў',
 	'wikieditor-wikitext-tab' => 'Вікі-тэкст',
+	'wikieditor-loading' => 'Загрузка',
 );
 
 /** Bulgarian (Български)
@@ -83,11 +87,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'wikieditor' => 'Etrefas kemmañ wikitestenn klokaet',
 	'wikieditor-desc' => "Poruchas a ra un etrefas kemmañ wikitestenn astennidik ha meur a arc'hwel all.",
 	'wikieditor-wikitext-tab' => 'Wikitestenn',
+	'wikieditor-loading' => 'O kargañ',
 );
 
 /** Bosnian (Bosanski)
@@ -113,6 +119,7 @@ $messages['cs'] = array(
 	'wikieditor' => 'Vylepšené rozhraní pro editaci wikitextu',
 	'wikieditor-desc' => 'Poskytuje rozšiřitelné editační rozhraní a mnoho modulů s novými funkcemi',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Načítá se',
 );
 
 /** Welsh (Cymraeg)
@@ -120,7 +127,9 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'wikieditor' => 'Rhyngwyneb golygu testun wici uwch',
+	'wikieditor-desc' => 'Yn darparu rhyngwyneb estynadwy ar gyfer golygu testun wici a llawer o fodiwlau o nodweddion arbennig',
 	'wikieditor-wikitext-tab' => 'Testun wici',
+	'wikieditor-loading' => "Wrthi'n llwytho",
 );
 
 /** German (Deutsch)
@@ -132,6 +141,7 @@ $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
 	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Beabeitung sowie weitere funktionelle Module zur Verfügung',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Lade',
 );
 
 /** Zazaki (Zazaki)
@@ -177,6 +187,7 @@ $messages['es'] = array(
 	'wikieditor' => 'FUZZY!!! Interfaz avanzada de edición de Wikitexto',
 	'wikieditor-desc' => 'Provee de una interfaz extensible de edición de wikitexto y varios módulos que ofrecen características',
 	'wikieditor-wikitext-tab' => 'Wikitexto',
+	'wikieditor-loading' => 'Cargando',
 );
 
 /** Estonian (Eesti)
@@ -191,6 +202,7 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitestua',
+	'wikieditor-loading' => 'Kargatzen',
 );
 
 /** Finnish (Suomi)
@@ -201,6 +213,7 @@ $messages['fi'] = array(
 	'wikieditor' => 'Edistynyt wikitext-muokkauskäyttöliittymä',
 	'wikieditor-desc' => 'Tarjoaa laajennettavan wikitext-muokkauskäyttöliittymän ja monia toimintoja tarjoavia laajennuksia.',
 	'wikieditor-wikitext-tab' => 'Wikiteksti',
+	'wikieditor-loading' => 'Ladataan',
 );
 
 /** French (Français)
@@ -211,6 +224,7 @@ $messages['fr'] = array(
 	'wikieditor' => 'Interface avancée de modification de wikitexte',
 	'wikieditor-desc' => 'Fournit un interface de modification de wikitexte extensible et plusieurs fonctionnalités.',
 	'wikieditor-wikitext-tab' => 'WikiTexte',
+	'wikieditor-loading' => 'Chargement',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -229,6 +243,7 @@ $messages['gl'] = array(
 	'wikieditor' => 'Interface avanzada de edición de texto wiki',
 	'wikieditor-desc' => 'Proporciona unha interface extensible de edición de texto wiki e moitas funcionalidades de módulos',
 	'wikieditor-wikitext-tab' => 'Texto wiki',
+	'wikieditor-loading' => 'Cargando',
 );
 
 /** Swiss German (Alemannisch)
@@ -238,6 +253,7 @@ $messages['gsw'] = array(
 	'wikieditor' => 'Oberflechi fir s fortgschritte Wikitext-Bearbeite',
 	'wikieditor-desc' => 'Stellt e uusklappbari Wikitext-Bearbeitigsoberflechi z Verfiegig un vili Modul mit extra Megligkeite',
 	'wikieditor-wikitext-tab' => 'WikiText',
+	'wikieditor-loading' => 'Am Lade',
 );
 
 /** Hebrew (עברית)
@@ -256,6 +272,7 @@ $messages['hsb'] = array(
 	'wikieditor' => 'Rozšěrjeny powjerch za wobdźěłowanje wikiteksta',
 	'wikieditor-desc' => 'Steji rozšěrjujomny powjerch za wobdźěłowanje wikiteksta a wjele modulow k dispoziciji.',
 	'wikieditor-wikitext-tab' => 'WikiTekst',
+	'wikieditor-loading' => 'Začituje so',
 );
 
 /** Hungarian (Magyar)
@@ -266,6 +283,7 @@ $messages['hu'] = array(
 	'wikieditor' => 'Fejlett szerkesztőfelület wikiszöveghez',
 	'wikieditor-desc' => 'Bővíthető szerkesztőfelület wikiszöveghez és több, új funkciókat kínáló modul',
 	'wikieditor-wikitext-tab' => 'Wikiszöveg',
+	'wikieditor-loading' => 'Betöltés…',
 );
 
 /** Interlingua (Interlingua)
@@ -288,11 +306,13 @@ $messages['id'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'wikieditor' => '高度なウィキテキスト編集インターフェイス',
 	'wikieditor-desc' => '拡張可能なウィキテキスト編集インターフェイスと多数の機能モジュールを提供する',
 	'wikieditor-wikitext-tab' => 'ウィキテキスト',
+	'wikieditor-loading' => '読み込み中',
 );
 
 /** Georgian (ქართული)
@@ -318,6 +338,7 @@ $messages['lb'] = array(
 	'wikieditor' => "Erweiderten Interface fir d'Änner vu Wikitext",
 	'wikieditor-desc' => "Liwwert en erweiderbaren Interface fir d'Ännere vu Wikitext a vill Module mat Fonctiounen",
 	'wikieditor-wikitext-tab' => 'WikiText',
+	'wikieditor-loading' => 'Lueden',
 );
 
 /** Macedonian (Македонски)
@@ -333,8 +354,8 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'wikieditor' => 'വിക്കിഎഴുത്തുകൾ തിരുത്തുവാനുള്ള നൂതന ദൃശ്യമണ്ഡലം',
-	'wikieditor-desc' => 'വികസിപ്പിക്കാവുന്ന വിധത്തിലുള്ള വിക്കിഎഴുത്ത് തിരുത്തൽ ദൃശ്യമണ്ഡലവും മറ്റ് സവിശേഷ ഘടകങ്ങളും നൽകുന്നു',
+	'wikieditor' => 'വിക്കിഎഴുത്തുകൾ തിരുത്തുവാനുള്ള നൂതന സമ്പർക്കമുഖം',
+	'wikieditor-desc' => 'വികസിപ്പിക്കാവുന്ന വിധത്തിലുള്ള വിക്കിഎഴുത്ത് തിരുത്തൽ സമ്പർക്കമുഖവും മറ്റ് സവിശേഷ ഘടകങ്ങളും നൽകുന്നു',
 	'wikieditor-wikitext-tab' => 'വിക്കിഎഴുത്ത്',
 );
 
@@ -358,11 +379,13 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'wikieditor' => 'Avansert grensesnitt for redigering av wikitekst',
 	'wikieditor-desc' => 'Gir et utvidbart tekstredigeringsgrensesnitt og mange utvidelsesmoduler',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Laster',
 );
 
 /** Occitan (Occitan)
@@ -372,6 +395,7 @@ $messages['oc'] = array(
 	'wikieditor' => 'Interfàcia avançada de modificacion de wikitèxte',
 	'wikieditor-desc' => 'Provesís una interfàcia de modificacion de wikitèxte extensible e mantuna foncionalitats.',
 	'wikieditor-wikitext-tab' => 'Wikitèxte',
+	'wikieditor-loading' => 'Cargament',
 );
 
 /** Polish (Polski)
@@ -382,6 +406,7 @@ $messages['pl'] = array(
 	'wikieditor' => 'Zaawansowany interfejs edycji wikitekstu',
 	'wikieditor-desc' => 'Dostarcza rozszerzalny interfejs edycji wikitekstu oraz wiele funkcji oferowane przez moduły',
 	'wikieditor-wikitext-tab' => 'Wikikod',
+	'wikieditor-loading' => 'Ładowanie',
 );
 
 /** Piedmontese (Piemontèis)
@@ -392,6 +417,7 @@ $messages['pms'] = array(
 	'wikieditor' => 'Antërfacia ëd modìfica avansà ëd wikitext',
 	'wikieditor-desc' => "A dà n'antërfacia ëd modìfica estendìbil ëd wikitext e motobin ëd modoj ch'a dan ëd fonsionalità",
 	'wikieditor-wikitext-tab' => 'Test Wiki',
+	'wikieditor-loading' => 'Cariament',
 );
 
 /** Portuguese (Português)
@@ -401,6 +427,7 @@ $messages['pt'] = array(
 	'wikieditor' => 'Interface avançada de edição de wikitexto',
 	'wikieditor-desc' => 'Fornece uma interface extensível de edição de wikitexto e vários módulos funcionais',
 	'wikieditor-wikitext-tab' => 'Texto Wiki',
+	'wikieditor-loading' => 'A carregar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -428,6 +455,7 @@ $messages['roa-tara'] = array(
 	'wikieditor' => "Wikitext avanzate pe le cangiaminde de l'inderfacce",
 	'wikieditor-desc' => "Dè 'nu wikitext estendibbele pe le cangiaminde de l'inderfacce e 'nu sbuenne de funzionalità de cchiù previste sus a le module",
 	'wikieditor-wikitext-tab' => 'Uicchiteste',
+	'wikieditor-loading' => 'Stoche a careche',
 );
 
 /** Russian (Русский)
@@ -437,6 +465,7 @@ $messages['ru'] = array(
 	'wikieditor' => 'Расширенный интерфейс редактирования викитекста',
 	'wikieditor-desc' => 'Обеспечивает расширяемый интерфейс редактирования викитекста и многие функции, предоставляемые модулями',
 	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Загрузка',
 );
 
 /** Yakut (Саха тыла)
@@ -453,7 +482,9 @@ $messages['sah'] = array(
  */
 $messages['si'] = array(
 	'wikieditor' => 'දියුණු කළ විකි පෙළ සංස්කරණය කිරීමේ අතුරු මුහුණත',
+	'wikieditor-desc' => 'විස්තීරණය කළ හැකි විකිපෙළ සංස්කරණය කිරීමේ අතුරු මුහුණතක් හා බොහෝ විශේෂාංග-ලබාදෙන මොඩියුල සපයයි',
 	'wikieditor-wikitext-tab' => 'විකි පෙළ',
+	'wikieditor-loading' => 'ප්‍රවේශනය වෙමින් පවතී',
 );
 
 /** Slovak (Slovenčina)
@@ -467,18 +498,22 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'wikieditor' => 'Avancerat gränssnitt för redigering av wikitext',
 	'wikieditor-desc' => 'Tillhandahåller ett utökat gränssnitt för redigering av wikitext och många moduler som tillhandahåller funktioner',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Laddar',
 );
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
  */
 $messages['sw'] = array(
-	'wikieditor-wikitext-tab' => 'Kodi ya wiki',
+	'wikieditor' => 'Kusano ya juu ya kuandika kiwiki',
+	'wikieditor-wikitext-tab' => 'Maandishi ya kiwiki',
+	'wikieditor-loading' => 'Inapakizwa',
 );
 
 /** Telugu (తెలుగు)
@@ -516,6 +551,7 @@ $messages['uk'] = array(
 	'wikieditor' => 'Розширений інтерфейс редагування вікітексту',
 	'wikieditor-desc' => 'Забезпечує розширюваний інтерфейс редагування вікітексту і багато функціональних модулів',
 	'wikieditor-wikitext-tab' => 'Вікітекст',
+	'wikieditor-loading' => 'Завантаження',
 );
 
 /** Vèneto (Vèneto)
@@ -525,6 +561,7 @@ $messages['vec'] = array(
 	'wikieditor' => 'Interfacia avansada de modifica testo wiki',
 	'wikieditor-desc' => 'Fornisse na interfacia avansada de modifica testo wiki e vari moduli funsionali',
 	'wikieditor-wikitext-tab' => 'Testo wiki',
+	'wikieditor-loading' => 'Drio cargar...',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -534,6 +571,7 @@ $messages['vi'] = array(
 	'wikieditor' => 'Giao diện sửa đổi văn bản wiki nâng cao',
 	'wikieditor-desc' => 'Cung cấp giao diện sửa đổi văn bản wiki có thể mở rộng, cũng như nhiều tính năng khác',
 	'wikieditor-wikitext-tab' => 'Mã wiki',
+	'wikieditor-loading' => 'Đang tải',
 );
 
 /** Yiddish (ייִדיש)
@@ -541,16 +579,19 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
+	'wikieditor-loading' => 'לאָדנדיק',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Fantasticfears
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'wikieditor' => '高级维基文本编辑界面',
 	'wikieditor-desc' => '提供可扩充的维基文本编辑界面及功能组件',
 	'wikieditor-wikitext-tab' => 'Wiki文本',
+	'wikieditor-loading' => '载入中',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -328,6 +328,7 @@ $messages['eu'] = array(
 	'optin-leave' => 'Beta utzi',
 	'tooltip-pt-optin-leave' => 'Eginbide berriak ezgaitu',
 	'optin-feedback' => 'Beta feedbacka',
+	'tooltip-pt-optin-feedback' => 'Tresna berrien zure esperientzia azaldu feedbackaren bitartez',
 );
 
 /** Persian (فارسی)
@@ -382,6 +383,14 @@ $messages['frp'] = array(
 	'tooltip-pt-optin-leave' => 'Dèsactivar les novèles fonccionalitâts',
 	'optin-feedback' => 'Balyéd voutron avis',
 	'tooltip-pt-optin-feedback' => 'Balyéd voutron avis sur l’usâjo de les novèles fonccionalitâts.',
+);
+
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'optin-try' => 'Prove Beta',
+	'tooltip-pt-optin-feedback' => 'Mande opinions e ideis su la tô esperience cu lis gnovis funzions',
 );
 
 /** Galician (Galego)
@@ -959,6 +968,17 @@ $messages['sv'] = array(
 	'tooltip-pt-optin-leave' => 'Stäng av de nya funktionerna',
 	'optin-feedback' => 'Feedback för betaversionen',
 	'tooltip-pt-optin-feedback' => 'Ge feedback om hur du upplever de nya funktionerna',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ * @author Muddyb Blast Producer
+ */
+$messages['sw'] = array(
+	'optin-try' => 'Jaribu Beta',
+	'tooltip-pt-optin-try' => 'Jaribu kutumia mtindo na zana mpya',
+	'optin-leave' => 'Ondoka Beta',
+	'tooltip-pt-optin-leave' => 'Uache kutumia mtindo na zana mpya',
 );
 
 /** Telugu (తెలుగు)

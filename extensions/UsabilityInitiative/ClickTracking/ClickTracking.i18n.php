@@ -60,13 +60,6 @@ $messages['qqq'] = array(
 	'ct-and' => '{{Identical|And}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'ct-and' => 'do',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -336,6 +329,20 @@ $messages['cu'] = array(
 	'ct-and' => 'и',
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'ct-event-name' => 'Navn på hændelse',
+	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
+	'ct-end-date' => 'Slutdato (ÅÅÅÅMMDD)',
+	'ct-beginner' => 'Begynder',
+	'ct-expert' => 'Ekspert',
+	'ct-anon-users' => 'Anonyme brugere',
+	'ct-user-contribs' => 'Totalt antal brugerbidrag',
+	'ct-and' => 'og',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  * @author Umherirrender
@@ -553,6 +560,7 @@ $messages['eu'] = array(
 	'ct-beginner' => 'Hasiberria',
 	'ct-intermediate' => 'Maila ertainekoa',
 	'ct-expert' => 'Aditua',
+	'ct-editing' => 'Orain editatzen:',
 	'ct-anon-users' => 'Lankide anonimoak',
 	'ct-user-contribs' => 'Lankidearen ekarpen guztiak',
 	'ct-and' => 'eta',
@@ -1044,6 +1052,13 @@ $messages['lb'] = array(
 	'ct-user-span' => 'Benotzerkontributiounen am Zäitraum',
 	'ct-and' => 'an',
 	'ct-update-table' => 'Tabell aktualiséieren',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'ct-and' => 'do',
 );
 
 /** Macedonian (Македонски)

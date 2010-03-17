@@ -313,6 +313,9 @@ border-bottom:1px solid #6bc8f3 !important;
 .wikiEditor-toolbar-dialog .ui-dialog-content input[type="checkbox"]{
 margin-left:0;
 }
+.wikiEditor-toolbar-dialog .ui-dialog-titlebar-close{
+padding:0;
+}
 body.ltr .wikiEditor-toolbar-dialog .ui-dialog-titlebar-close{
 right:0.9em;
 }
@@ -326,7 +329,8 @@ margin-right:2em;
 .wikieditor-toolbar-dialog-hint{
 color:#999999;
 }
-.ui-widget-content{
+.wikiEditor-toolbar-dialog,
+.wikiEditor-toolbar-dialog .ui-widget-content{
 border:none !important;
 }
 #wikieditor-toolbar-table-dialog fieldset{
@@ -445,6 +449,29 @@ background-position:100% 50%;
 body.rtl #wikieditor-toolbar-link-int-target-status-external{
 background-image:url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png );
 }
+.wikiEditor-template-dialog-fields label{
+text-transform:capitalize;
+float:left;
+width:25%;
+line-height:2.25em;
+}
+.wikiEditor-template-dialog-fields textarea{
+float:right;
+width:70%;
+line-height:1.5em;
+height:1.5em;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper{
+padding:0.75em 0.33em;
+border-bottom:dashed 1px silver;
+clear:both;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper:first-child{
+padding-top:0;
+}
+.wikiEditor-template-dialog-fields .wikiEditor-template-dialog-field-wrapper:last-child{
+border-bottom:none;
+}
 .wikieditor-toolbar-table-dimension-fields:after,
 .wikieditor-toolbar-dialog-wrapper:after{
 visibility:hidden;
@@ -465,6 +492,15 @@ height:1%;
 .wikieditor-toolbar-table-dimension-fields,
 .wikieditor-toolbar-dialog-wrapper{
 display:block;
+}
+.wikiEditor-toolbar-dialog .ui-dialog-buttonpane{
+border-top:1px solid #cccccc !important;
+}
+.wikiEditor-toolbar-dialog .ui-dialog-content{
+padding-bottom:1em !important;
+}
+.wikiEditor-dialog-editoptions{
+margin-top:15px;
 }
 .wikiEditor-ui-toc{
 padding:0;
@@ -619,6 +655,7 @@ overflow:visible;
 }
 .wikiEditor-ui-right .ui-resizable-w{
 left:0px !important;
+z-index:0;
 }
 .wikiEditor-ui-right .wikiEditor-ui-toc-resize-grip{
 width:5px;

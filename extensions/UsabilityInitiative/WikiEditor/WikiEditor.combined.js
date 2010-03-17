@@ -55,7 +55,7 @@ $j(document).ready( function() {
 		return true;
 	}
 	// Only show content generation dialogs if enabled
-	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( 'dialogs' ) ) {
+	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( $j.wikiEditor.modules.dialogs ) ) {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
 	// Add the toolbar module
@@ -889,6 +889,30 @@ $j(document).ready( function() {
 },
 'dialogs': {
 	'insert-link': {
+		// For now, apply the old browser and iframe requirements to the link and table dialogs as well
+		// This'll be removed once these dialogs are confirmed stable without the iframe and/or in more browsers
+		/*
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				'msie': [['>=', 7]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			},
+			// Right-to-left languages
+			'rtl': {
+				'msie': [['>=', 8]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			}
+		},
+		'req': [ 'iframe' ],
+		*/
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-link-title',
 		id: 'wikieditor-toolbar-link-dialog',
 		html: '\
@@ -956,14 +980,13 @@ $j(document).ready( function() {
 				if ( request ) {
 					request.abort();
 				}
-				
 				var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
 				var cache = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'existencecache' );
 				if ( cache[target] ) {
 					updateWidget( cache[target] );
 					return;
 				}
-				if ( target == '' ) {
+				if ( target.replace( /^\s+$/,'' ) == '' ) {
 					// Hide the widget when the textbox is empty
 					updateWidget( false );
 					return;
@@ -1011,8 +1034,14 @@ $j(document).ready( function() {
 				);
 			}
 			$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).click( function() {
-				if( $j( '#wikieditor-toolbar-link-type-ext' ).is( ':checked' ) )
+				if( $j( '#wikieditor-toolbar-link-type-ext' ).is( ':checked' ) ) {
+					// Abort previous request
+					var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
+					if ( request ) {
+						request.abort();
+					}
 					updateWidget( 'external' );
+				}
 				if( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) )
 					updateExistence();
 			});
@@ -1067,11 +1096,13 @@ $j(document).ready( function() {
 				// $j(this).val() is the old value, before the keypress
 				// Defer this until $j(this).val() has been updated
 				setTimeout( function() {
-					if ( isExternalLink( $j( '#wikieditor-toolbar-link-int-target' ).val() ) )
+					if ( isExternalLink( $j( '#wikieditor-toolbar-link-int-target' ).val() ) ) {
 						$j( '#wikieditor-toolbar-link-type-ext' ).attr( 'checked', 'checked' );
-					else
+						updateWidget( 'external' );
+					} else {
 						$j( '#wikieditor-toolbar-link-type-int' ).attr( 'checked', 'checked' );
-
+						updateExistence();
+					}
 					if ( $j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched' ) )
 						if ( $j( '#wikieditor-toolbar-link-int-target' ).val() == 
 							$j( '#wikieditor-toolbar-link-int-target' ).data( 'tooltip' ) ) {
@@ -1235,7 +1266,7 @@ $j(document).ready( function() {
 							return;
 						}
 						
-						if ( target == text )
+						if ( target == text || !text.length )
 							insertText = '[[' + target + ']]';
 						else
 							insertText = '[[' + target + '|' + escapeInternalText( text ) + ']]';
@@ -1301,7 +1332,8 @@ $j(document).ready( function() {
 						.replace( /\\\$1/g, '(.*)' ) + '$'
 				) );
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' ).$textarea.textSelection( 'getSelection' );
+				var selection = $j(this).data( 'context' )
+					.$textarea.textSelection( 'getSelection' ); 
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
 				// Trigger the change event, so the link status indicator is up to date
 				$j( '#wikieditor-toolbar-link-int-target' ).change();
@@ -1369,6 +1401,30 @@ $j(document).ready( function() {
 		}
 	},
 	'insert-table': {
+		// For now, apply the old browser and iframe requirements to the link and table dialogs as well
+		// This'll be removed once these dialogs are confirmed stable without the iframe and/or in more browsers
+		/*
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				'msie': [['>=', 7]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			},
+			// Right-to-left languages
+			'rtl': {
+				'msie': [['>=', 8]],
+				'firefox': [['>=', 3]],
+				'opera': [['>=', 10]],
+				'safari': [['>=', 4]],
+				'chrome': [['>=', 4]]
+			}
+		},
+		'req': [ 'iframe' ],
+		*/
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-table-title',
 		id: 'wikieditor-toolbar-table-dialog',
 		// FIXME: Localize 'x'?
@@ -1488,7 +1544,7 @@ $j(document).ready( function() {
 					var colsVal = $j( '#wikieditor-toolbar-table-dimensions-columns' ).val();
 					var rows = parseInt( rowsVal, 10 );
 					var cols = parseInt( colsVal, 10 );
-					var header = Math.min( 1, $j( '#wikieditor-toolbar-table-dimensions-header:checked' ).size() );
+					var header = $j( '#wikieditor-toolbar-table-dimensions-header' ).is( ':checked' ) ? 1 : 0;
 					var u = mw.usability;
 					if ( isNaN( rows ) || isNaN( cols ) || rows != rowsVal  || cols != colsVal ) {
 						alert( u.getMsg( 'wikieditor-toolbar-tool-table-invalidnumber' ) );
@@ -1508,7 +1564,7 @@ $j(document).ready( function() {
 					for ( var r = 0; r < rows + header; r++ ) {
 						table += "|-\n";
 						for ( var c = 0; c < cols; c++ ) {
-							var isHeader = ( r + 1 == header );
+							var isHeader = ( header && r == 0 );
 							var delim = isHeader ? '!' : '|';
 							if ( c > 0 ) {
 								delim += delim;
@@ -1581,6 +1637,25 @@ $j(document).ready( function() {
 		}
 	},
 	'search-and-replace': {
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				'msie': [['>=', 7]],
+				'firefox': [['>=', 2]],
+				'opera': false,
+				'safari': [['>=', 3]],
+				'chrome': [['>=', 3]]
+			},
+			// Right-to-left languages
+			'rtl': {
+				'msie': [['>=', 8]],
+				'firefox': [['>=', 2]],
+				'opera': false,
+				'safari': [['>=', 3]],
+				'chrome': [['>=', 3]]
+			}
+		},
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
 		titleMsg: 'wikieditor-toolbar-tool-replace-title',
 		id: 'wikieditor-toolbar-replace-dialog',
 		html: '\
@@ -1695,6 +1770,7 @@ $j(document).ready( function() {
 					var start = match.index + offset;
 					var end = start + match[0].length;
 					var newEnd = start + replaceStr.length;
+					var context = $j( this ).data( 'context' );
 					$textarea.textSelection( 'setSelection', { 'start': start,
 						'end': end } );
 					if ( mode == 'replace' ) {
@@ -1708,6 +1784,8 @@ $j(document).ready( function() {
 					}
 					$textarea.textSelection( 'scrollToCaretPosition' );
 					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
+					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe[0].contentWindow : $textarea;
+					textbox.focus();
 				}
 			});
 		},
@@ -1754,7 +1832,11 @@ $j(document).ready( function() {
 				}
 				var dialog = $j(this).closest( '.ui-dialog' );
 				var that = this;
-				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
+				var context = $j(this).data( 'context' );
+				var textbox = typeof context.$iframe != 'undefined' ?
+					context.$iframe[0].contentWindow.document : context.$textarea;
+					
+				$j( textbox )
 					.bind( 'keypress.srdialog', function( e ) {
 						if ( ( e.keyCode || e.which ) == 13 ) {
 							// Enter
@@ -1768,8 +1850,10 @@ $j(document).ready( function() {
 					});
 			},
 			close: function() {
-				$j( $j(this).data( 'context' ).$iframe[0].contentWindow.document )
-						.unbind( 'keypress.srdialog' );
+				var context = $j(this).data( 'context' );
+				var textbox = typeof context.$iframe != 'undefined' ?
+					context.$iframe[0].contentWindow.document : context.$textarea;
+				$j( textbox ).unbind( 'keypress.srdialog' );
 				$j(this).closest( '.ui-dialog' ).data( 'dialogaction', false );
 			}
 		}
@@ -1783,6 +1867,10 @@ $j(document).ready( function() {
 $j(document).ready( function() {
 	// Check preferences for templateEditor
 	if ( !wgWikiEditorEnabledModules.templateEditor ) {
+		return true;
+	}
+	//disable if in template namespace
+	if ( wgNamespaceNumber == 10 ) {
 		return true;
 	}
 	// Add the templateEditor module
