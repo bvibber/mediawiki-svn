@@ -157,7 +157,7 @@ fn: {
 		
 		// Recycle markers that will be skipped in this run
 		if ( context.modules.highlight.markers && division != '' ) {
-			for ( var i = 0; i < context.modules.markers.length; i++ ) {
+			for ( var i = 0; i < context.modules.highlight.markers.length; i++ ) {
 				if ( context.modules.highlight.markers[i].skipDivision == division ) {
 					markers.push( context.modules.highlight.markers[i] );
 				}
