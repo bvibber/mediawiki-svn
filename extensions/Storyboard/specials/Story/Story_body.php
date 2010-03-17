@@ -60,7 +60,12 @@ class SpecialStory extends IncludableSpecialPage {
 			'storyboard',
 			array(
 				'story_id',
+				'story_author_id',
 				'story_author_name',
+				'story_author_location',
+				'story_author_occupation',
+				'story_author_contact',
+				'story_author_image',
 				'story_title',
 				'story_text',
 				'story_created',
@@ -90,13 +95,27 @@ class SpecialStory extends IncludableSpecialPage {
 	 * Ouputs the story in regular display mode.
 	 * 
 	 * @param $story
+	 * 
+	 * TODO: Improve layout, add social sharing stuff, add story meta data and show edit stuff for people with stroyreview permission.
 	 */
 	private function showStory( $story ) {
-		global $wgOut;
+		global $wgOut, $egStoryboardScriptPath;
 		
+		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );		
 		
+		$imageSrc = 'http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png'; // TODO: get cropped image here
 		
-		$wgOut->addHTML( '' ); // TODO: add output
+		$title = htmlspecialchars( $story->story_title );
+		$text = htmlspecialchars( $story->story_text );		
+		
+		$wgOut->addHTML( <<<EOT
+			<div class="story">
+				<img src="$imageSrc" class="story-image">
+				<div class="story-title">$title</div><br />
+				$text
+			</div>		
+EOT
+		);
 	}
 	
 	/**
@@ -126,33 +145,31 @@ class SpecialStory extends IncludableSpecialPage {
 		$formBody = "<table width='$width'>";
 		
 		$defaultName = '';
-		if ( $wgUser->isLoggedIn() ) {
-			$defaultName = $wgUser->getRealName() !== '' ? $wgUser->getRealName() : $wgUser->getName();
-		}
+		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' .
-			Html::input( 'name', $defaultName, 'text', array( 'size' => $fieldSize )
+			Html::input( 'name', $story->story_author_name, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-location' ) ) .
-			'<td>' . Html::input( 'location', '', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input( 'location', $story->story_author_location, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-occupation' ) ) .
-			'<td>' . Html::input( 'occupation', '', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input( 'occupation', $story->story_author_occupation, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-contact' ) ) .
-			'<td>' . Html::input( 'contact', '', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input( 'contact', $story->story_author_contact, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . Html::input( 'storytitle', '', 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input( 'storytitle', $story->story_title, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr><td colspan="2">' .
@@ -171,12 +188,8 @@ class SpecialStory extends IncludableSpecialPage {
 					'rows' => 7,
 					'onkeyup' => "stbValidateStory( this, $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )",
 				),
-				null
+				$story->story_text
 			) .
-			'</td></tr>';
-
-		$formBody .= '<tr><td colspan="2"><input type="checkbox" id="storyboard-agreement" />&nbsp;' .
-			htmlspecialchars( wfMsg( 'storyboard-agreement' ) ) .
 			'</td></tr>';
 			
 		$formBody .= '<tr><td colspan="2">' .
@@ -194,7 +207,6 @@ class SpecialStory extends IncludableSpecialPage {
 				'name' => 'storyform',
 				'method' => 'post',
 				'action' => $submissionUrl,
-				'onsubmit' => 'return stbValidateSubmission( "storyboard-agreement" );'
 			),
 			$formBody
 		);		
