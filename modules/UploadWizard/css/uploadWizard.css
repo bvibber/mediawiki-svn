@@ -52,7 +52,7 @@ form.mwe-upwiz-form {
 }
 
 /* perhaps a general class for links that are actually "buttons" */
-#mwe-upwiz-add-file, .mwe-upwiz-remove {
+#mwe-upwiz-add-file, .mwe-upwiz-remove, .mwe-upwiz-more-options {
 	cursor: pointer;
 }
 
