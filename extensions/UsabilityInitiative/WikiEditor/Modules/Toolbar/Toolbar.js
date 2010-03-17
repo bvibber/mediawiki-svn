@@ -1283,7 +1283,10 @@ $j(document).ready( function() {
 						.replace( /\\\$1/g, '(.*)' ) + '$'
 				) );
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' ).$textarea.textSelection( 'getSelection' );
+				var selection = $j(this).data( 'context' )
+					.$textarea.textSelection( 'getSelection' )
+					.replace( /\s+$/, '' )
+					.replace( /^\s+/, '' ); 
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
 				// Trigger the change event, so the link status indicator is up to date
 				$j( '#wikieditor-toolbar-link-int-target' ).change();
