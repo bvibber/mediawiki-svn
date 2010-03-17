@@ -1208,7 +1208,6 @@ $j(document).ready( function() {
 						// Instead, generate [[Foo|]]
 						text = '';
 					}
-					console.log( 'text:' + text );
 					if ( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) ) {
 						// FIXME: Exactly how fragile is this?
 						if ( $j( '#wikieditor-toolbar-link-int-target-status-invalid' ).is( ':visible' ) ) {
