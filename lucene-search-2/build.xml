@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="LuceneSearch" default="alljar" basedir=".">
-	<property name="lib" value="lib"/>
-	<property name="bin" value="bin"/>
-	<property name="src" value="src"/>
-	<property name="jars" value="jars"/>
-	<property name="test" value="test"/>
-	<property name="dist" location="dist"/>
-	<property name="pack.name" value="lucene-search-2.1"/>
-	<property name="src.name" value="lucene-search-src-2.1"/>
-	<property name="binary.name" value="ls2.1-bin"/>
-	<property name="jar.name" value="LuceneSearch.jar"/>
+	<property file="build.properties"/>
+        <property name="junit.class.dir" value="${test.dir}/classes"/>
 	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt
 					lsearch* build.xml scripts/* VERSION configure build update
 					resources/** test/** udplogger/**"/>
@@ -18,10 +10,8 @@
 	<property name="include.bin" value="*.log4j *.txt config.inc template/** udplogger/**"/>
 	<property name="include.sh" value="configure build update lsearchd"/>
 
-	<property file="${basedir}/hostname"/>
-
 	<path id="classpath">
-		<fileset dir="${lib}" includes="*.jar"/>
+		<fileset dir="${lib.dir}" includes="*.jar"/>
 		<file name="${jar.name}"/>
 	</path>
 
@@ -30,7 +20,7 @@
 			<sysproperty key="java.rmi.server.codebase" value="file://${basedir}/${jar.name}"/>
 			<sysproperty key="java.rmi.server.hostname" value="${hostname}"/>
 			<classpath>
-				<fileset dir="${lib}">
+				<fileset dir="${lib.dir}">
 					<include name="*.jar"/>
 				</fileset>
 			</classpath>
@@ -48,7 +38,7 @@
 								    lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar
 								    lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
 			</manifest>
-			<zipfileset dir="${bin}" prefix="">
+			<zipfileset dir="${dest.dir}" prefix="">
 				<include name="org/**"/>
 			</zipfileset>
 		</jar>
@@ -80,53 +70,53 @@
 
 
 	<target name="build" description="Compile classes">
-		<mkdir dir="${bin}"/>
-		<javac srcdir="${src}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${bin}/">
+		<mkdir dir="${dest.dir}"/>
+		<javac srcdir="${src.dir}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${dest.dir}/">
 			<classpath refid="classpath"/>
 		</javac>
 	</target>
 
 	<target name="pack" description="Make tar.gz distribution">
-		<mkdir dir="${dist}"/>
-		<delete file="${dist}/${pack.name}.tar"/>
-		<delete file="${dist}/${pack.name}.tar.gz"/>
-		<tar tarfile="${dist}/${pack.name}.tar">
+		<mkdir dir="${dist.dir}"/>
+		<delete file="${dist.dir}/${pack.name}.tar"/>
+		<delete file="${dist.dir}/${pack.name}.tar.gz"/>
+		<tar tarfile="${dist.dir}/${pack.name}.tar">
 			<tarfileset prefix="${pack.name}" dir="." includes="${include}"/>
 		</tar>
 
-		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
-		<delete file="${dist}/${pack.name}.tar"/>
+		<gzip zipfile="${dist.dir}/${pack.name}.tar.gz" src="${dist.dir}/${pack.name}.tar"/>
+		<delete file="${dist.dir}/${pack.name}.tar"/>
 	</target>
 
 	<target name="pack-src" depends="alljar" description="Make tar.gz distribution of only core source files">
-		<mkdir dir="${dist}"/>
-		<delete file="${dist}/${src.name}.tar"/>
-		<delete file="${dist}/${src.name}.tar.gz"/>
-		<tar tarfile="${dist}/${src.name}.tar">
+		<mkdir dir="${dist.dir}"/>
+		<delete file="${dist.dir}/${src.name}.tar"/>
+		<delete file="${dist.dir}/${src.name}.tar.gz"/>
+		<tar tarfile="${dist.dir}/${src.name}.tar">
 			<tarfileset prefix="${pack.name}" dir="." includes="${include.src}"/>
 		</tar>
 
-		<gzip zipfile="${dist}/${src.name}.tar.gz" src="${dist}/${src.name}.tar"/>
-		<delete file="${dist}/${src.name}.tar"/>
+		<gzip zipfile="${dist.dir}/${src.name}.tar.gz" src="${dist.dir}/${src.name}.tar"/>
+		<delete file="${dist.dir}/${src.name}.tar"/>
 	</target>
 
 
 	<target name="binary" depends="alljar" description="Make binary tar.gz distribution">
-		<mkdir dir="${bin}"/>
-		<delete file="${dist}/${binary.name}.tar"/>
-		<delete file="${dist}/${binary.name}.tar.gz"/>
-		<tar tarfile="${dist}/${binary.name}.tar">
+		<mkdir dir="${dest.dir}"/>
+		<delete file="${dist.dir}/${binary.name}.tar"/>
+		<delete file="${dist.dir}/${binary.name}.tar.gz"/>
+		<tar tarfile="${dist.dir}/${binary.name}.tar">
 			<tarfileset prefix="${pack.name}" dir="." includes="${jar.name} ${include.bin}"
 				    excludes="template/backup/**"/>
 			<tarfileset prefix="${pack.name}" mode="755" dir="." includes="${include.sh}"/>
 		</tar>
 
-		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
-		<delete file="${dist}/${binary.name}.tar"/>
+		<gzip zipfile="${dist.dir}/${binary.name}.tar.gz" src="${dist.dir}/${binary.name}.tar"/>
+		<delete file="${dist.dir}/${binary.name}.tar"/>
 	</target>
 
 	<target name="test-build" description="Compile the junit tests">
-		<javac srcdir="${test}" destdir="${test}">
+		<javac srcdir="${test.dir}" destdir="${test.dir}">
                         <classpath>
                                 <pathelement path="${java.class.path}"/>
 				<pathelement location="${collector.dir}"/>
@@ -136,21 +126,30 @@
 	</target>
 
 	<target name="test" depends="test-build">
-		<property name="collector.dir" value="${test}"/>
-		<available file="${collector.dir}/${collector.class}.class" property="hasFailingTests"/>
+		<property name="collector.dir" value="${test.dir}"/>
+                <mkdir dir="${junit.class.dir}"/>
 
-		<junit haltonerror="false" haltonfailure="false">
+		<junit haltonerror="false" haltonfailure="false" printsummary="yes"
+                       errorProperty="tests.failed" failureproperty="tests.failed">
                         <classpath>
                                 <pathelement path="${java.class.path}"/>
 				<pathelement location="${collector.dir}"/>
                                 <pathelement path="${jar.name}"/>
 			</classpath>
-			<sysproperty key="ant.junit.failureCollector" value="${collector.dir}/${collector.class}"/>
 
-			<batchtest fork="yes" todir="${collector.dir}" unless="hasFailingTests">
-				<fileset dir="${collector.dir}" includes="**/*.java" excludes="**/${collector.class}.*"/>
+			<batchtest fork="yes" todir="${collector.dir}">
+				<fileset dir="${collector.dir}" includes="**/*.java"/>
 				<formatter type="plain" usefile="false"/>
 			</batchtest>
 		</junit>
 	</target>
+        <fail if="tests.failed" message="Test(s) failed."/>
+
+        <target name="clean"
+                description="Destroys all generated files and dirs.">
+                <delete dir="${dest.dir}"/>
+                <delete dir="${dist.dir}"/>
+                <delete dir="${junit.class.dir}"/>
+                <delete file="${basedir}/${jar.name}"/>
+        </target>
 </project>
