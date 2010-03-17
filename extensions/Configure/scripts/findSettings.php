@@ -26,7 +26,7 @@ class FindSettings extends Maintenance {
 		$this->addOption( 'alpha', 'get the alphabetical list of settings' );
 	}
 
-	protected function getDbType() {
+	public function getDbType() {
 		return Maintenance::DB_NONE;
 	}
 
