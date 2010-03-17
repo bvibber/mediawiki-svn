@@ -99,11 +99,13 @@ We would like to know what you think about our new interface, so we would apprec
 [[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
 [[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
 ;Enhanced Toolbar
-The enhanced toolbar makes it easier to edit articles. New and improved icons make it clearer what action each tool performs. Expanded sections reduce clutter while keeping infrequently used tools just a click away.
+The enhanced toolbar makes it easier to edit articles.
+New and improved icons make it clearer what action each tool performs.
+Expanded sections reduce clutter while keeping infrequently used tools just a click away.
 ;Dialog
 When creating links or tables, clicking the tool icon now opens a dialog box which helps you to create links and tables by filling out a simple form.
 ;And More
-We've introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
+We have introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
 == How to get involved ==
 To find out more about the Usability Initiative, please visit our [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
 <div style=\"clear:both\"></div>",
