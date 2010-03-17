@@ -6626,12 +6626,12 @@ $.wikiEditor = {
 	 * @param module Module object, defaults to $.wikiEditor
 	 */
 	'isSupported': function( module ) {
+	// Fallback to the wikiEditor browser map if no special map is provided in the module
+		var mod = module && 'browsers' in module ? module : $.wikiEditor;
 		// HORRIBLE LIVE HACK
-		if ( typeof module.name != 'undefined' && module.name == 'toc' && typeof wgReallyGiveMeTOC == 'undefined' ) {
+		if ( typeof mod.name != 'undefined' && mod.name == 'toc' && typeof wgReallyGiveMeTOC == 'undefined' ) {
 			return mod.supported = false;
 		}
-		// Fallback to the wikiEditor browser map if no special map is provided in the module
-		var mod = module && 'browsers' in module ? module : $.wikiEditor;
 		// Check for and make use of cached value and early opportunities to bail
 		if ( typeof mod.supported !== 'undefined' ) {
 			// Cache hit
