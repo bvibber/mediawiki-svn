@@ -6626,6 +6626,10 @@ $.wikiEditor = {
 	 * @param module Module object, defaults to $.wikiEditor
 	 */
 	'isSupported': function( module ) {
+		// HORRIBLE LIVE HACK
+		if ( typeof module.name != 'undefined' && module.name == 'toc' && typeof wgReallyGiveMeTOC == 'undefined' ) {
+			return mod.supported = false;
+		}
 		// Fallback to the wikiEditor browser map if no special map is provided in the module
 		var mod = module && 'browsers' in module ? module : $.wikiEditor;
 		// Check for and make use of cached value and early opportunities to bail
@@ -10115,7 +10119,6 @@ fn: {
  * Compatability map
  */
 'browsers': {
-	/*
 	// Left-to-right languages
 	'ltr': {
 		'msie': [['>=', 7]],
@@ -10132,27 +10135,12 @@ fn: {
 		'safari': [['>=', 4]],
 		'chrome': [['>=', 4]]
 	}
-	*/
-	// Disabled for now
-	'ltr': {
-		'msie': false,
-		'firefox': false,
-		'opera': false,
-		'safari': false,
-		'chrome': false
-	},
-	'rtl': {
-		'msie': false,
-		'firefox': false,
-		'opera': false,
-		'safari': false,
-		'chrome': false
-	}
 },
 /**
  * Core Requirements
  */
 'req': [ 'iframe' ],
+'name': 'toc',
 /**
  * Configuration
  */
