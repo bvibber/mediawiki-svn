@@ -22,14 +22,12 @@ class SpecialStory extends IncludableSpecialPage {
 	public function execute( $title ) {
 		wfProfileIn( __METHOD__ );
 		
-		global $wgOut, $wgRequest;		
+		global $wgOut, $wgRequest, $wgUser;		
 		
-		$action = $wgRequest->getVal( 'action' );
-		
-		if ( $action == 'save' ) {
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			$this->saveStoryAndShowResult();
 		} else if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
-			$this->queryAndShowStory( $title, $action );
+			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->addWikiMsg( 'storyboard-nostorytitle' );	
 		}
@@ -40,7 +38,7 @@ class SpecialStory extends IncludableSpecialPage {
 	/**
 	 * Queries for the requested story and shows it in either display or edit mode when it's found.
 	 */
-	private function queryAndShowStory( $title, $action ) {
+	private function queryAndShowStory( $title ) {
 		global $wgOut, $wgRequest;
 		
 		if ( trim( $title ) != '' ) {
@@ -75,7 +73,7 @@ class SpecialStory extends IncludableSpecialPage {
 		);
 
 		if ( $story ) {
-			if ( $action == 'edit' ) {
+			if ( $wgRequest->getVal( 'action' ) == 'edit' ) {
 				$this->showStoryForm( $story );
 			} else {
 				if ( $story->story_is_published == 1 ) {
@@ -122,6 +120,10 @@ EOT
 	 * Outputs a form to edit the story with. Code based on <storysubmission>.
 	 * 
 	 * @param $story
+	 * 
+	 * TODO: add options to publish/unpublish, hide/unhide and delete the story
+	 * TODO: confirm with erik that author info should be editable here
+	 * TODO: add permission check
 	 */	
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
@@ -138,9 +140,6 @@ EOT
 		
 		$minLen = $wgRequest->getVal( 'minlength' );
 		if ( !is_int( $minLen ) ) $minLen = $egStoryboardMinStoryLen;
-		
-		//$submissionUrl = $wgParser->getTitle()->getLocalURL( 'action=save' );
-		$submissionUrl = ''; // TODO: get title
 		
 		$formBody = "<table width='$width'>";
 		
@@ -199,6 +198,7 @@ EOT
 		$formBody .= '</table>';
 		
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
+		$formBody .= Html::hidden( 'storyId', $story->story_id );
 		
 		$formBody = Html::rawElement(
 			'form',
@@ -206,7 +206,7 @@ EOT
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $submissionUrl,
+				'action' => $this->getTitle()->getLocalURL(),
 			),
 			$formBody
 		);		
@@ -216,11 +216,29 @@ EOT
 	
 	/**
 	 * Saves the story after a story edit form has been submitted and shows a result.
+	 * 
+	 * TODO: add permission check
 	 */
 	private function saveStoryAndShowResult() {
-		global $wgOut;
+		global $wgOut, $wgRequest, $wgUser;
 		
-		// TODO: save story
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$dbw->update(
+			'storyboard',
+			array(
+				'story_author_name' => $wgRequest->getText( 'name' ),
+				'story_author_location' => $wgRequest->getText( 'location' ),
+				'story_author_occupation' => $wgRequest->getText( 'occupation' ),
+				'story_author_contact' => $wgRequest->getText( 'contact' ),
+				'story_title' => $wgRequest->getText( 'storytitle' ),
+				'story_text' => $wgRequest->getText( 'storytext' ),
+				'story_modified' => $dbw->timestamp( time() ),
+			),
+			array(
+				'story_id' => $wgRequest->getText( 'storyId' ),
+			)
+		);
 		
 		$wgOut->addHTML( '' ); // TODO: add output
 	}

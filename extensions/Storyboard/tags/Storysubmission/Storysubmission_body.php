@@ -160,7 +160,7 @@ EOT
 			'story_author_name' => $wgRequest->getText( 'name' ),
 			'story_author_location' => $wgRequest->getText( 'location' ),
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
-			'story_author_contact' => $wgRequest->getText( 'storyboard-contact' ),
+			'story_author_contact' => $wgRequest->getText( 'contact' ),
 			'story_title' => $wgRequest->getText( 'storytitle' ),
 			'story_text' => $wgRequest->getText( 'storytext' ),
 			'story_created' => $dbw->timestamp( time() ),
