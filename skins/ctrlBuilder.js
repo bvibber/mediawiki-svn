@@ -600,11 +600,11 @@ ctrlBuilder.prototype = {
 			return false;
 		}
 		// If the config is false
-		if( ! mw.getConfig( 'overlayControls' ) ){
+		if( mw.getConfig( 'overlayControls' ) === false){
 			return false;
 		} 
 		// If disabled via the player
-		if( ! this.embedPlayer.overlayControls ){
+		if( this.embedPlayer.overlayControls === false ){
 			return false;
 		} 
 		// don't hide controls when content "height" is 0 ( audio tags ) 
