@@ -31,6 +31,12 @@ mw.ready( function() {
 		mw.setConfig('token', token);
 		mw.setConfig('thumbnailWidth', 220); // new standard size
 
+		// not for use with all wikis. 
+		// The ISO 639 code for the language tagalog is "tl".
+		// Normally we name templates for languages by the ISO 639 code.
+		// Commons already had a template called 'tl', though.
+		// so, this workaround will cause tagalog descriptions to be saved with this template instead.
+		mw.setConfig('languageTemplateFixups', { tl: 'tgl' });
 
 		var uploadWizard = new mw.UploadWizard();
 		uploadWizard.createInterface(wizardDiv);

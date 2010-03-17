@@ -36,6 +36,7 @@ mw.addMessages( {
 	'mwe-upwiz-date-created': 'Date created',
 	'mwe-upwiz-geotag': 'Location',
 	'mwe-upwiz-copyright-info': 'Copyright information',
+	'mwe-upwiz-source': 'Source',
 	'mwe-upwiz-author': 'Author',
 	'mwe-upwiz-license': 'License',
 	'mwe-upwiz-about-format': 'About the file',
@@ -51,16 +52,6 @@ mw.addMessages( {
 	'mwe-upwiz-ok': 'OK',
 	'mwe-upwiz-cancel': 'Cancel',
 
-
-	// available licenses should be a configuration of the MediaWiki instance,
-	// not hardcoded here.
-	// but, MediaWiki has no real concept of a License as a first class object -- there are templates and then specially - parsed 
-	// texts to create menus -- hack on top of hacks -- a bit too much to deal with ATM
-	'mwe-lic-pd': 'Public domain',
-	'mwe-lic-cc-0': 'Creative Commons Zero waiver',
-	'mwe-lic-cc-by-3.0': 'Creative Commons Attribution 3.0',
-	'mwe-lic-cc-by-sa-3.0': 'Creative Commons Attribution ShareAlike 3.0',
-	'mwe-lic-gfdl': 'GFDL'
 } );
 
 
@@ -72,6 +63,9 @@ mw.UploadWizardUpload = function() {
 	var _this = this;
 	_this._thumbnails = {};
 	_this.imageinfo = {};
+	_this.title = undefined;
+	_this.filename = undefined;
+	_this.originalFilename = undefined;
 };
 
 mw.UploadWizardUpload.prototype = {
@@ -91,7 +85,7 @@ mw.UploadWizardUpload.prototype = {
 			if ( key === 'metadata' ) {
 				_this.imageinfo.metadata = {};
 				$j.each( result.upload.imageinfo.metadata, function( i, pair ) {
-					_this.imageinfo.metadata[pair['name']] = pair['value'];
+					_this.imageinfo.metadata[pair['name'].toLowerCase()] = pair['value'];
 				});
 			} else {
 				_this.imageinfo[key] = result.upload.imageinfo[key];
@@ -160,9 +154,10 @@ mw.UploadWizardUpload.prototype = {
  * Create an interface fragment corresponding to a file input, suitable for Upload Wizard.
  * @param filenameAcceptedCb 	Execute if good filename entered into this interface; useful for knowing if we're ready to upload
  */
-mw.UploadWizardUploadInterface = function( filenameAcceptedCb ) {
+mw.UploadWizardUploadInterface = function( upload, filenameAcceptedCb ) {
 	var _this = this;
 
+	_this.upload = upload;
 	_this.filenameAcceptedCb = filenameAcceptedCb;
 
 	// may need to collaborate with the particular upload type sometimes
@@ -270,12 +265,14 @@ mw.UploadWizardUploadInterface.prototype = {
 	updateFilename: function() {
 		var _this = this;
 		var path = $j(_this.fileInputCtrl).attr('value');
+
 	
 		// visible filename	
 		$j( _this.visibleFilename ).removeClass( 'helper' ).html( path );
 
 		// desired filename 
 		var filename = _this.convertPathToFilename( path );
+		_this.upload.originalFilename = filename;
 		// this is a hack to get a filename guaranteed unique.
 		uniqueFilename = mw.getConfig( 'userName' ) + "_" + ( new Date() ).getTime() + "_" + filename;
 		$j(_this.filenameCtrl).attr( 'value', uniqueFilename );
@@ -335,12 +332,11 @@ mw.UploadWizardUploadInterface.prototype = {
 	 	// lastFileSeparatorIdx is now -1 if no separator found, or some index in the string.
 		// so, +1, that is either 0 ( beginning of string ) or the character after last separator.
 		// caution! could go past end of string... need to be more careful
-		var filename = path.substring( lastFileSeparatorIdx + 1, 10000 );
+		var filename = path.substr( lastFileSeparatorIdx + 1 );
+		return mw.UploadWizardUtil.pathToTitle( filename );
 
- 		// Capitalise first letter and replace spaces by underscores
- 		filename = filename.charAt( 0 ).toUpperCase() + filename.substring( 1, 10000 );
-		filename.replace(/ /g, '_' );
-		return filename;
+
+	
  	},
 
 	/**
@@ -399,13 +395,23 @@ mw.UploadWizardDescription.prototype = {
 	 */
 	getWikiText: function() {
 		var _this = this;
-		return '{{' + _this.languageMenu.value + '|' + _this.description.value + '}}'	
+		var language = $j( _this.languageMenu ).trim().val();
+		var fix = mw.getConfig("languageTemplateFixups");
+		if (fix[language]) {
+			language = fix[language];
+		}
+		return '{{' + language + '|' + $j( _this.description ).trim().val() + '}}'	
 	}
 };
 
 /**
  * Object that represents the Details (step 2) portion of the UploadWizard
  * n.b. each upload gets its own details.
+ * 
+ * XXX a lot of this construction is not really the jQuery way. 
+ * The correct thing would be to have some hidden static HTML
+ * on the page which we clone and slice up with selectors. Inputs can still be members of the object
+ * but they'll be found by selectors, not by creating them as members and then adding them to a DOM structure.
  *
  * @param UploadWizardUpload
  * @param containerDiv	The div to put the interface into
@@ -428,6 +434,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	_this.dataDiv = $j( '<div class="mwe-upwiz-details-data"></div>' );
 
+	// descriptions
 	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions"></div>' );
 	
 
@@ -435,44 +442,123 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 					.attr( 'href', '#' )
 					.html( gM( 'mwe-upwiz-desc-add-0' ) )
 					.click( function( ) { _this.addDescription( ) } );
-
+	
 	_this.descriptionsContainerDiv = 
 		$j( '<div class="mwe-upwiz-details-descriptions-container"></div>' )
-			.append( $j( '<div class="mwe-upwiz-details-descriptions-title">' + gM( 'mwe-upwiz-desc' ) + '</div>' ) )
+			.append( $j( '<div class="mwe-details-label">' + gM( 'mwe-upwiz-desc' ) + '</div>' ) )
 			.append( _this.descriptionsDiv )
 			.append( $j( '<div class="mwe-upwiz-details-descriptions-add"></div>' )
 					.append( _this.descriptionAdder ) );
-				
+	// title
+	_this.titleInput = $j( '<input type="text" class="mwe-title" size="40"/>' )
+				.keydown( function() { 
+					$j( _this.filenameInput ).val( _this.titleToFilename( $j(_this.titleInput).val() ) );
+				});
+
+	_this.titleContainerDiv = $j('<div></div>')
+		.append( $j( '<div class="mwe-details-label"></div>' ).append( gM( 'mwe-upwiz-title' ) ) )
+		.append( $j( '<div class="mwe-details-title"></div>' ).append( _this.titleInput ) );
+
+	_this.moreDetailsDiv = $j('<div class="mwe-more-details"></div>');
+
+	// more details ctrl 
+	// XXX change class of button to have arrow pointing in different directions
+	// XXX standard jQuery "blind" effect seems to cause a jQuery error, why?
+	_this.moreDetailsCtrl = $j('<a class=".mwe-upwiz-more"/>')
+		.append( gM( 'mwe-upwiz-more-options' ) ).click( function() {
+			_this.moreDetailsOpen = !_this.moreDetailsOpen;
+			_this.moreDetailsOpen ? $j( _this.moreDetailsDiv ).show() 
+					      : $j( _this.moreDetailsDiv ).hide();
+		} );
+	_this.moreDetailsOpen = false;
+	_this.moreDetailsDiv.hide();
+
+	_this.moreDetailsCtrlDiv = $j( '<div class="mwe-details-more-options"></div>' )
+		.append( _this.moreDetailsCtrl );
+
+	
 	_this.dateInput = $j( '<input type="text" class="mwe-date" size="20"/>' );
-	$j( _this.dateInput ).datepicker( { dateFormat: 'yyyy-mm-dd' } );
+	$j( _this.dateInput ).datepicker( { 	
+		dateFormat: 'yyyy-mm-dd',
+		buttonImage: '/js/mwEmbed/skins/common/images/calendar.gif',
+		buttonImageOnly: false  // XXX determine what this does, docs are confusing
+	} );
+
+	var aboutThisWorkDiv = $j('<div></div>')
+		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-about-this-work' ) ) )
+		.append( $j( '<div class="mwe-details-more-subdiv">' )
+			.append( $j( '<div></div>' )
+				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-date-created' ) ) )
+				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.dateInput ) ) 
+			)
+			.append( $j ( '<div></div>' )
+				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-geotag' ) ) )
+				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( "(map widget tba)" ) ) 
+			)
+		);
+
+	_this.sourceInput = $j('<input type="text" class="mwe-source" size="30" />' );
+	_this.authorInput = $j('<input type="text" class="mwe-author" size="30" />' );
+	_this.licenseInput = $j('<input type="text" class="mwe-license" size="30" />' );
+	var sourceDiv = $j( '<div></div>' )
+		.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-source' ) ) )
+		.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.sourceInput ) ); 
+	
+
+	var copyrightInfoDiv = $j('<div></div>')
+		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-copyright-info' ) ) )
+		.append( $j( '<div class="mwe-details-more-subdiv">' )
+			.append( sourceDiv )
+			.append( $j( '<div></div>' )
+				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-author' ) ) )
+				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.authorInput ) ) 
+			)
+			.append( $j( '<div></div>' )
+				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-license' ) ) )
+				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.licenseInput ) ) 
+			)
+		);
+
+	
+	_this.filenameInput = $j('<input type="text" class="mwe-filename" size="30" />' )
+				.keydown( function() { 
+					$j( _this.titleInput ).val( _this.filenameToTitle( $j(_this.filenameInput).val() ) );
+				});
+
+	var aboutTheFileDiv = $j('<div></div>')
+		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-about-format' ) ) ) 
+		.append( $j( '<div class="mwe-details-more-subdiv">' )
+			.append( $j( '<div></div>' )
+				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-filename-tag' ) ) )
+				.append( $j( '<div class="mwe-details-more-input"></div>' )
+					.append( "File:" ) // this is the constant NS_FILE, defined in Namespaces.php. Usually unchangeable?
+					.append( _this.filenameInput ) 
+				)
+			)
+		);
+	
+	var otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea" rows="3" cols="40"></textarea>' );
+	var otherInformationDiv = $j('<div></div>')	
+		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-other' ) ) ) 
+		.append( otherInformationInput );
+	
 
 	$j( _this.div )
-		.append( _this.macroDiv )
+		.append( _this.macroDiv )   // XXX this is wrong; it's not part of a file's details
 		.append( _this.thumbnailDiv )
 		.append( _this.errorDiv )
 		.append( $j( _this.dataDiv )
 			.append( _this.descriptionsContainerDiv )
-			.append( _this.dateInput )
+			.append( _this.titleContainerDiv )
+			.append( _this.moreDetailsCtrlDiv )
+			.append( $j( _this.moreDetailsDiv ) 
+				.append( aboutThisWorkDiv )
+				.append( copyrightInfoDiv )
+				.append( aboutTheFileDiv )
+				.append( otherInformationDiv )
+			)
 		);
-	
 
-	
-	// create the basic HTML
-	// thumbnail
-
-	// about this work
-	// media type
-	// date created
-	// location widget
-
-	// copyright info <--- THIS IS THE IMPORTANT BIT
-	// Author
-	// License
-
-	// About the file...
-	
-	// Other info
-	
 	_this.addDescription();
 	$j( containerDiv ).append( _this.div );
 
@@ -574,15 +660,13 @@ mw.UploadWizardDetails.prototype = {
 	populate: function() {
 		var _this = this;
 		mw.log( "populating details from upload" );
-		_this.setThumbnail( mw.getConfig( 'thumbnailWidth' ) ); 
-		_this.setDate();
-
-		//_this.setSource();
-		
-		//_this.setFilename();
-
-		//_this.setLocation(); // we could be VERY clever with location sensing...
-		//_this.setAuthor(); 
+		_this.setThumbnailFromImageInfo( mw.getConfig( 'thumbnailWidth' ) ); 
+		_this.setDateFromImageInfo();
+		_this.setSourceFromImageInfo();
+		_this.setAuthorFromImageInfo(); 
+		_this.setTitleFromImageInfo();
+		_this.setFilenameFromImageInfo();
+		_this.setLocationFromImageInfo(); 
 	},
 
 	/**
@@ -590,7 +674,7 @@ mw.UploadWizardDetails.prototype = {
 	 *
 	 * @param width
 	 */
-	setThumbnail: function( width ) {
+	setThumbnailFromImageInfo: function( width ) {
 		var _this = this;
 
 		var callback = function( thumbnail ) { 
@@ -617,38 +701,88 @@ mw.UploadWizardDetails.prototype = {
 	 * EXIF examples tend to be in ISO 8601, but the separators are sometimes things like colons, and they have lots of trailing info
 	 * (which we should actually be using, such as time and timezone)
 	 */
-	setDate: function() {
+	setDateFromImageInfo: function() {
 		var _this = this;
-		var iso8601regex = /^(\d\d\d\d)[:\/-](\d\d)[:\/-](\d\d)\D.*/;
+		var yyyyMmDdRegex = /^(\d\d\d\d)[:\/-](\d\d)[:\/-](\d\d)\D.*/;
 		var dateStr;
 		var metadata = _this.upload.imageinfo.metadata;
-		$j.each([metadata.DateTimeOriginal, metadata.DateTimeDigitized, metadata.DateTime], 
+		$j.each([metadata.datetimeoriginal, metadata.datetimedigitized, metadata.datetime, metadata['date']], 
 			function( i, imageinfoDate ) {
 				if ( imageinfoDate !== undefined ) {
 					var d = imageinfoDate.trim();
-					if ( d.match( iso8601regex ) ) { 
-						dateStr = d.replace( iso8601regex, "$1-$2-$3" );
+					if ( d.match( yyyyMmDdRegex ) ) { 
+						dateStr = d.replace( yyyyMmDdRegex, "$1-$2-$3" );
 						return false; // break from $j.each
 					}
 				}
 			}
 		);
 		// if we don't have EXIF or other metadata, let's use "now"
-		// XXX if we have FileAPI, it might be clever to look at time created of the file. Save that in the 
-		// upload object for use here later, perhaps
+		// XXX if we have FileAPI, it might be clever to look at file attrs, saved 
+		// in the upload object for use here later, perhaps
 		function pad( n ) { 
 			return n < 10 ? "0" + n : n;
 		}
 
 		if (dateStr === undefined) {
 			d = new Date();
-			dateStr = d.getUTCFullYear() + '-' + pad(d.getUTCMonth()) + pad(d.getUTCDate());
+			dateStr = d.getUTCFullYear() + '-' + pad(d.getUTCMonth()) + '-' + pad(d.getUTCDate());
 		}
 
 		// ok by now we should definitely have a date string formatted in YYYY-MM-DD
-		$j(_this.dateInput).val(dateStr);
+		$j( _this.dateInput ).val( dateStr );
 	},
 
+	/**
+	 * Set the title of the thing we just uploaded, visibly
+	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
+	 */
+	setTitleFromImageInfo: function() {
+		var _this = this;
+		$j( _this.titleInput ).val( mw.UploadWizardUtil.pathToTitle( _this.upload.originalFilename ) );
+	},
+
+	/**
+	 * Set the title of the thing we just uploaded, visibly
+	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
+	 */
+	setFilenameFromImageInfo: function() {
+		var _this = this;
+		$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.title ) );
+	},
+
+
+	setSourceFromImageInfo: function() {
+		// we have no idea, as far as I can tell
+	},
+
+	setAuthorFromImageInfo: function() {
+		var _this = this;
+		if (_this.upload.metadata.artist !== undefined) {
+			$j( _this.authorInput ).val( _this.upload.metadata.artist );
+		}
+	
+	},
+	
+	setLicenseFromImageInfo: function() {
+		var _this = this;
+		if (_this.upload.metadata.copyright !== undefined) {
+			var copyright = _this.upload.metadata.copyright;
+			if (copyright.match(/\<cc-by-sa\>/i) {
+				// set license to be that CC-BY-SA
+			} else if (copyright.match(/\<cc-by\>/i) {
+				// set license to be that
+			} else if (copyright.match(/\<cc-zero\>/i) {
+				// set license to be that
+				// XXX any other licenses we could pick up from copyright
+			} else {
+				$j( _this.licenseInput ).val( _this.upload.metadata.copyright );
+			}
+		}
+	},
+
+
+	
 	/**
 	 * Convert entire details for this file into wikiText, which will then be posted to the file 
 	 * @return wikitext representing all details
@@ -666,7 +800,7 @@ mw.UploadWizardDetails.prototype = {
 			'date' : '',		 // YYYY, YYYY-MM, or YYYY-MM-DD     required  - use jquery but allow editing, then double check for sane date.
 			'source' : '',    	 // {{own}} or wikitext    optional 
 			'author' : '',		 // any wikitext, but particularly {{Creator:Name Surname}}   required
-			'permission' : '',       // leave blank; by default will be "see below"   optional 
+			'permission' : '',       // leave blank unless OTRS pending; by default will be "see below"   optional 
 			'other_versions' : '',   // pipe separated list, other versions     optional
 			'other_fields' : ''      // ???     additional table fields 
 		};
@@ -680,10 +814,14 @@ mw.UploadWizardDetails.prototype = {
 		$j.each( _this.descriptions, function( i, desc ) {
 			information['description'] += desc.getWikiText();
 		} )
+	
 
 		// XXX add a sanity check here for good date
-		information['date'] = $j(_this.dateInput).val();
-	
+		information['date'] = $j( _this.dateInput ).trim().val();
+		
+		information['source'] = $j( _this.sourceInput ).trim().val();
+		information['author'] = $j( _this.authorInput ).trim().val();
+		
 		var info = '';
 		for ( var key in information ) {
 			info += '|' + key + '=' + information[key] + "\n";	
@@ -697,6 +835,11 @@ mw.UploadWizardDetails.prototype = {
 		// XXX get the real one -- usually dual license GFDL / cc - by - sa
 		//wikiText += "{{cc-by-sa-3.0}}\n";
 		// http://commons.wikimedia.org / wiki / Template:Information
+
+		// add a location template
+
+		// add an "anything else" template
+		wikiText += $j( _this.otherInformationInput ).trim().val();
 
 		return wikiText;	
 	},
@@ -930,7 +1073,7 @@ mw.UploadWizard.prototype = {
 		var filenameAcceptedCb = function() {
 			_this.updateFileCounts(); 
 		};
-		var ui = new mw.UploadWizardUploadInterface( filenameAcceptedCb ); 
+		var ui = new mw.UploadWizardUploadInterface( upload, filenameAcceptedCb ); 
 		ui.removeCtrl = $j( '<a title="' + gM( 'mwe-upwiz-remove-upload' ) 
 						+ '" href="#" class="mwe-upwiz-remove">x</a>' )
 					.click( function() { _this.removeUpload( upload ) } )
@@ -1281,7 +1424,36 @@ mw.UploadWizardUtil = {
 				break;
 			}
 		}
+	},
+
+	/** 
+	 * Capitalise first letter and replace spaces by underscores
+	 * @param filename (basename, without directories)
+	 * @return typical title as would appear on MediaWiki
+	 */
+	pathToTitle: function ( filename ) {
+		return mw.ucfirst( filename.replace(/ /g, '_' ) );
+	},
+
+	/** 
+	 * Capitalise first letter and replace underscores by spaces
+	 * @param title typical title as would appear on MediaWiki
+	 * @return plausible local filename, with spaces changed to underscores.
+	 */
+	titleToPath: function ( title ) {
+		return mw.ucfirst( title.replace(/_/g, ' ' ) );
 	}
+
 };
+
+/**
+ * Upper-case the first letter of a string. XXX move to common library
+ * @param string
+ * @return string with first letter uppercased.
+ */
+mw.ucfirst = function( s ) {
+	return s.substring(0,1).toUpperCase() + s.substr(1);
+};
+
 
 
