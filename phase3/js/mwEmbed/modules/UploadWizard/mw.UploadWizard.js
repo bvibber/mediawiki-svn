@@ -34,7 +34,7 @@ mw.addMessages( {
 	'mwe-upwiz-about-this-work': 'About this work',
 	'mwe-upwiz-media-type': 'Media type',
 	'mwe-upwiz-date-created': 'Date created',
-	'mwe-upwiz-geotag': 'Location',
+	'mwe-upwiz-location': 'Location',
 	'mwe-upwiz-copyright-info': 'Copyright information',
 	'mwe-upwiz-source': 'Source',
 	'mwe-upwiz-author': 'Author',
@@ -53,6 +53,8 @@ mw.addMessages( {
 	'mwe-upwiz-cancel': 'Cancel',
 
 } );
+
+
 
 
 /**
@@ -84,9 +86,13 @@ mw.UploadWizardUpload.prototype = {
 			// we get metadata as list of key-val pairs; convert to object for easier lookup. Assuming that EXIF fields are unique.
 			if ( key === 'metadata' ) {
 				_this.imageinfo.metadata = {};
-				$j.each( result.upload.imageinfo.metadata, function( i, pair ) {
-					_this.imageinfo.metadata[pair['name'].toLowerCase()] = pair['value'];
-				});
+				if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.metadata ) {
+					$j.each( result.upload.imageinfo.metadata, function( i, pair ) {
+						if (pair !== undefined) {
+							_this.imageinfo.metadata[pair['name'].toLowerCase()] = pair['value'];
+						}
+					} );
+				}
 			} else {
 				_this.imageinfo[key] = result.upload.imageinfo[key];
 			}
@@ -380,7 +386,8 @@ mw.UploadWizardDescription = function( languageCode ) {
 
 	_this.languageMenu = mw.Language.getMenu("lang", languageCode);
 	$j(_this.languageMenu).addClass('mwe-upwiz-desc-lang-select');
-	_this.description = $j('<textarea name="desc" rows="3" cols="50" class="mwe-upwiz-desc-lang-text"></textarea>').get(0);
+	_this.description = $j('<textarea name="desc" rows="3" cols="50" class="mwe-upwiz-desc-lang-text"></textarea>')
+				.growTextArea().get(0);
 	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append( _this.languageMenu )
 	               .append( _this.description )
@@ -452,7 +459,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	// title
 	_this.titleInput = $j( '<input type="text" class="mwe-title" size="40"/>' )
 				.keydown( function() { 
-					$j( _this.filenameInput ).val( _this.titleToFilename( $j(_this.titleInput).val() ) );
+					$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( $j(_this.titleInput).val() ) );
 				});
 
 	_this.titleContainerDiv = $j('<div></div>')
@@ -484,6 +491,8 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 		buttonImageOnly: false  // XXX determine what this does, docs are confusing
 	} );
 
+	_this.locationInput = $j( '<input type="text" class="mwe-location" size="20"/>' );
+
 	var aboutThisWorkDiv = $j('<div></div>')
 		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-about-this-work' ) ) )
 		.append( $j( '<div class="mwe-details-more-subdiv">' )
@@ -491,14 +500,15 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-date-created' ) ) )
 				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.dateInput ) ) 
 			)
-			.append( $j ( '<div></div>' )
-				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-geotag' ) ) )
-				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( "(map widget tba)" ) ) 
+			.append( $j ( '<div style="display: none;"></div>' ) // see prefillLocation
+				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-location' ) ) )
+				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.locationInput ) ) 
 			)
 		);
 
-	_this.sourceInput = $j('<input type="text" class="mwe-source" size="30" />' );
-	_this.authorInput = $j('<input type="text" class="mwe-author" size="30" />' );
+	// XXX why is rows=1 giving me two rows. Is this growTextArea's fault?
+	_this.sourceInput = $j('<textarea class="mwe-source" rows="1" cols="40"></textarea>' ).growTextArea();
+	_this.authorInput = $j('<textarea class="mwe-author" rows="1" cols="40"></textarea>' ).growTextArea();
 	_this.licenseInput = $j('<input type="text" class="mwe-license" size="30" />' );
 	var sourceDiv = $j( '<div></div>' )
 		.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-source' ) ) )
@@ -566,6 +576,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 };
 
 mw.UploadWizardDetails.prototype = {
+
 
 	/**
 	 * Do anything related to a change in the number of descriptions
@@ -660,13 +671,13 @@ mw.UploadWizardDetails.prototype = {
 	populate: function() {
 		var _this = this;
 		mw.log( "populating details from upload" );
-		_this.setThumbnailFromImageInfo( mw.getConfig( 'thumbnailWidth' ) ); 
-		_this.setDateFromImageInfo();
-		_this.setSourceFromImageInfo();
-		_this.setAuthorFromImageInfo(); 
-		_this.setTitleFromImageInfo();
-		_this.setFilenameFromImageInfo();
-		_this.setLocationFromImageInfo(); 
+		_this.setThumbnail( mw.getConfig( 'thumbnailWidth' ) ); 
+		_this.prefillDate();
+		_this.prefillSource();
+		_this.prefillAuthor(); 
+		_this.prefillTitle();
+		_this.prefillFilename();
+		_this.prefillLocation(); 
 	},
 
 	/**
@@ -674,7 +685,7 @@ mw.UploadWizardDetails.prototype = {
 	 *
 	 * @param width
 	 */
-	setThumbnailFromImageInfo: function( width ) {
+	setThumbnail: function( width ) {
 		var _this = this;
 
 		var callback = function( thumbnail ) { 
@@ -701,7 +712,7 @@ mw.UploadWizardDetails.prototype = {
 	 * EXIF examples tend to be in ISO 8601, but the separators are sometimes things like colons, and they have lots of trailing info
 	 * (which we should actually be using, such as time and timezone)
 	 */
-	setDateFromImageInfo: function() {
+	prefillDate: function() {
 		var _this = this;
 		var yyyyMmDdRegex = /^(\d\d\d\d)[:\/-](\d\d)[:\/-](\d\d)\D.*/;
 		var dateStr;
@@ -737,7 +748,7 @@ mw.UploadWizardDetails.prototype = {
 	 * Set the title of the thing we just uploaded, visibly
 	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
 	 */
-	setTitleFromImageInfo: function() {
+	prefillTitle: function() {
 		var _this = this;
 		$j( _this.titleInput ).val( mw.UploadWizardUtil.pathToTitle( _this.upload.originalFilename ) );
 	},
@@ -746,37 +757,105 @@ mw.UploadWizardDetails.prototype = {
 	 * Set the title of the thing we just uploaded, visibly
 	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
 	 */
-	setFilenameFromImageInfo: function() {
+	prefillFilename: function() {
 		var _this = this;
 		$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.title ) );
 	},
 
+	/**
+ 	 * Prefill location inputs (and/or scroll to position on map) from image info and metadata
+	 *
+	 * At least for my test images, the EXIF parser on MediaWiki is not giving back any data for
+	 *  GPSLatitude, GPSLongitude, or GPSAltitudeRef. It is giving the lat/long Refs, the Altitude, and the MapDatum 
+	 * So, this is broken until we fix MediaWiki's parser, OR, parse it ourselves somehow 
+	 *
+	 *    in Image namespace
+	 *		GPSTag		Long ??
+	 *
+	 *    in GPSInfo namespace
+	 *    GPSVersionID	byte*	2000 = 2.0.0.0
+	 *    GPSLatitude	rational 
+	 *    GPSLatitudeRef	ascii (N | S)  or North | South 
+	 *    GPSLongitude	rational
+	 *    GPSLongitudeRef   ascii (E | W)    or East | West 
+	 *    GPSAltitude	rational
+	 *    GPSAltitudeRef	byte (0 | 1)    above or below sea level
+	 *    GPSImgDirection	rational
+	 *    GPSImgDirectionRef  ascii (M | T)  magnetic or true north
+	 *    GPSMapDatum 	ascii		"WGS-84" is the standard
+	 *
+	 *  A 'rational' is a string like this:
+	 *	"53/1 0/1 201867/4096"	--> 53 deg  0 min   49.284 seconds 
+	 *	"2/1 11/1 64639/4096"    --> 2 deg  11 min  15.781 seconds
+	 *	"122/1"             -- 122 m  (altitude)
+	 */
+	prefillLocation: function() {
+		var _this = this;
+		var metadata = _this.upload.imageinfo.metadata;
+		if (metadata === undefined) {
+			return;
+		}
+		
 
-	setSourceFromImageInfo: function() {
-		// we have no idea, as far as I can tell
 	},
 
-	setAuthorFromImageInfo: function() {
+	/**
+	 * Given a decimal latitude and longitude, return filled out {{Location}} template
+	 * @param latitude decimal latitude ( -90.0 >= n >= 90.0 ; south = negative )
+	 * @param longitude decimal longitude ( -180.0 >= n >= 180.0 ; west = negative )
+	 * @param scale (optional) how rough the geocoding is. 
+	 * @param heading (optional) what direction the camera is pointing in. (decimal 0.0-360.0, 0 = north, 90 = E)
+	 * @return string with WikiText which will geotag this record
+	 */
+	coordsToWikiText: function(latitude, longitude, scale, heading) {
+		//Wikipedia
+		//http://en.wikipedia.org/wiki/Wikipedia:WikiProject_Geographical_coordinates#Parameters
+		// http://en.wikipedia.org/wiki/Template:Coord
+		//{{coord|61.1631|-149.9721|type:landmark_globe:earth_region:US-AK_scale:150000_source:gnis|name=Kulis Air National Guard Base}}
+		
+		//Wikimedia Commons
+		//{{Coor dms|41|19|20.4|N|19|38|36.7|E}}
+		//{{Location}}
+
+	},
+
+	/**
+	 * If there is a way to figure out source from image info, do so here
+	 * XXX user pref?
+	 */
+	prefillSource: function() {
+		// we have no way to do this AFAICT
+	},
+
+	/**
+	 * Prefill author (such as can be determined) from image info and metadata
+	 * XXX user pref?
+	 */
+	prefillAuthor: function() {
 		var _this = this;
-		if (_this.upload.metadata.artist !== undefined) {
-			$j( _this.authorInput ).val( _this.upload.metadata.artist );
+		if (_this.upload.imageinfo.metadata.artist !== undefined) {
+			$j( _this.authorInput ).val( _this.upload.imageinfo.metadata.artist );
 		}
 	
 	},
 	
-	setLicenseFromImageInfo: function() {
+	/**
+	 * Prefill license (such as can be determined) from image info and metadata
+	 * XXX user pref?
+	 */
+	prefillLicense: function() {
 		var _this = this;
-		if (_this.upload.metadata.copyright !== undefined) {
-			var copyright = _this.upload.metadata.copyright;
-			if (copyright.match(/\<cc-by-sa\>/i) {
+		var copyright = _this.upload.imageinfo.metadata.copyright;
+		if (copyright !== undefined) {
+			if (copyright.match(/\bcc-by-sa\b/i)) {
 				// set license to be that CC-BY-SA
-			} else if (copyright.match(/\<cc-by\>/i) {
+			} else if (copyright.match(/\bcc-by\b/i)) {
 				// set license to be that
-			} else if (copyright.match(/\<cc-zero\>/i) {
+			} else if (copyright.match(/\bcc-zero\b/i)) {
 				// set license to be that
-				// XXX any other licenses we could pick up from copyright
+				// XXX any other licenses we could guess from copyright statement
 			} else {
-				$j( _this.licenseInput ).val( _this.upload.metadata.copyright );
+				$j( _this.licenseInput ).val( copyright );
 			}
 		}
 	},
@@ -785,6 +864,7 @@ mw.UploadWizardDetails.prototype = {
 	
 	/**
 	 * Convert entire details for this file into wikiText, which will then be posted to the file 
+	 * XXX there is a WikiText sanitizer in use on UploadForm -- use that here, or port it 
 	 * @return wikitext representing all details
 	 */
 	getWikiText: function() {
@@ -1302,8 +1382,11 @@ mw.UploadWizard.prototype = {
 
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
+			mw.log("detailing");
 			_this._uploadsEditingDetails.push( upload );
+			mw.log("extract info");
 			upload.extractImageInfo( result );	
+			mw.log("populate");
 			upload.details.populate();
 		
 		} else if ( result.upload && result.upload.sessionkey ) {
@@ -1456,4 +1539,32 @@ mw.ucfirst = function( s ) {
 };
 
 
+/**
+ * jQuery extension. Makes a textarea automatically grow if you enter overflow
+ * (This feature was in the old Commons interface with a confusing arrow icon; it's nicer to make it automatic.)
+ */
+jQuery.fn.growTextArea = function( options ) {
+
+	// this is a jquery-style object
+
+	// in MSIE, this makes it possible to know what scrollheight is 
+	// Technically this means text could now dangle over the edge, 
+	// but it shouldn't because it will always grow to accomodate very quickly.
+	if ($j.msie) {
+		this.each( function(i, textArea) {
+			textArea.style.overflow = 'visible';
+		} );
+	}
+
+	var resizeIfNeeded = function() {
+		// this is the dom element
+		while (this.scrollHeight > this.offsetHeight) {
+			this.rows++;
+		}
+	};
+
+	this.change(resizeIfNeeded).keyup(resizeIfNeeded);
+
+	return this;
+};
 
