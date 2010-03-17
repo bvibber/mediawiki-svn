@@ -131,7 +131,7 @@ $aliases['ko'] = array(
 	'GroupPermissions' => array( '그룹 권한' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'GroupPermissions' => array( 'JroppeRääschte', 'JruppeRääschte' ),
 	'SortPermissions' => array( 'Rääschte_Zotteere', 'RääschteZotteere' ),

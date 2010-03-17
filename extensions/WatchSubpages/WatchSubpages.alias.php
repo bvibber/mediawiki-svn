@@ -113,7 +113,7 @@ $aliases['ko'] = array(
 	'WatchSubpages' => array( '하위문서주시' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WatchSubpages' => array( 'Op Ungersigge oppasse', 'Op Ongersigge oppasse' ),
 );

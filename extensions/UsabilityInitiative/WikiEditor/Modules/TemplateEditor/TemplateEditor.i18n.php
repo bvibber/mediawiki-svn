@@ -210,6 +210,9 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobdźěłowanje wikipředłohow na zakładźe formularow zmóžnić',
+	'wikieditor-template-editor-dialog-title' => 'Předłohu wobdźěłać',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualizować',
+	'wikieditor-template-editor-dialog-cancel' => 'Přetorhnyć',
 );
 
 /** Hungarian (Magyar)
@@ -333,6 +336,7 @@ $messages['pms'] = array(
 	'wikieditor-template-editor-preference' => 'Abìlita le modìfiche basà su forma djë stamp wiki',
 	'wikieditor-template-editor-dialog-title' => 'Modifiché lë stamp',
 	'wikieditor-template-editor-dialog-submit' => 'Agiorné',
+	'wikieditor-template-editor-dialog-cancel' => 'Scancela',
 );
 
 /** Portuguese (Português)
@@ -363,6 +367,7 @@ $messages['roa-tara'] = array(
 	'wikieditor-template-editor-preference' => 'Abbilete le cangiaminde basate sus a le module de le template de uicchi',
 	'wikieditor-template-editor-dialog-title' => "Cange 'u template",
 	'wikieditor-template-editor-dialog-submit' => 'Aggiorne',
+	'wikieditor-template-editor-dialog-cancel' => 'Scangille',
 );
 
 /** Russian (Русский)

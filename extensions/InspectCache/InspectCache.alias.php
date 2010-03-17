@@ -85,7 +85,7 @@ $aliases['ja'] = array(
 	'InspectCache' => array( 'キャッシュの点検' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'InspectCache' => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore' ),
 );

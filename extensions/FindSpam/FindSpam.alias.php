@@ -98,7 +98,7 @@ $aliases['ko'] = array(
 	'FindSpam' => array( '스팸찾기' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'FindSpam' => array( 'SPAM fenge' ),
 );

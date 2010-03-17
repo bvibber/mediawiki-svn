@@ -129,7 +129,7 @@ $aliases['ko'] = array(
 	'Invitations' => array( '초대' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Invitations' => array( 'Enlaadunge', 'Enladunge' ),
 );

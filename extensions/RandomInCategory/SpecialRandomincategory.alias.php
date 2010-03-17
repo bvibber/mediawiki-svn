@@ -85,7 +85,7 @@ $aliases['ja'] = array(
 	'RandomInCategory' => array( 'カテゴリ内おまかせ表示', 'カテゴリ中のランダムなページ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'RandomInCategory' => array( 'Zohfällije Sigg uß en Saachjropp' ),
 );

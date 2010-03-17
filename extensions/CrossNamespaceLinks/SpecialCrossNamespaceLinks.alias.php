@@ -104,7 +104,7 @@ $aliases['km'] = array(
 	'CrossNamespaceLinks' => array( 'តំណភ្ជាប់ឆ្លងលំហឈ្មោះ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CrossNamespaceLinks' => array( 'Lengks en ander Appachtemangs' ),
 );

@@ -68,7 +68,7 @@ $aliases['ja'] = array(
 	'ImageTagging' => array( '画像のラベル付け', 'ラベル付画像' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ImageTagging' => array( 'Belder_Makeere', 'BelderMakeere' ),
 );

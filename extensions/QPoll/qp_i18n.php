@@ -603,6 +603,7 @@ $messages['dsb'] = array(
 	'qp_func_invalid_proposal_id' => 'Njepłaśiwy ID=$3 naraźenja (žedna licba) za napšašowanje $1, pšašanje $2',
 	'qp_error_no_such_poll' => 'Take napšašowanje ($1) njejo.
 Zawěsć, až napšašowanje se deklarěrujo a składujo, zawěsć se teke adresowe źěleńske znamuško # wužywaś',
+	'qp_error_in_question_header' => 'Njepłaśiwy typ pšašanja: $1',
 	'qp_error_id_in_stats_mode' => 'Njejo móžno ID napšašowanja w statistiskem modusu deklarěrowaś',
 	'qp_error_dependance_in_stats_mode' => 'Njejo móžno rjeśak wótwisnosći napšašowanja w statistiskem modusu deklarěrowaś',
 	'qp_error_no_stats' => 'Žedne statistiske daty k dispoziciji, dokulaž nichten njejo wótgłosował za toś to napšašowanje (adresa=$1)',

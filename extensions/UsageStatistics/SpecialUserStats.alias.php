@@ -98,7 +98,7 @@ $aliases['ja'] = array(
 	'SpecialUserStats' => array( '利用統計' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'SpecialUserStats' => array( 'Statistik vun fun de Metmaacher', 'Statistik vun fun de Medmaacher', 'Metmaacher ier Zahle', 'Medmaacher ier Zahle' ),
 );

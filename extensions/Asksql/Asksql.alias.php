@@ -83,7 +83,7 @@ $aliases['ja'] = array(
 	'Asksql' => array( 'SQLクエリの実行', 'ＳＱＬクエリの実行', 'SQL実行', 'ＳＱＬ実行' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Asksql' => array( 'SQL-Frooch', 'SQL-Froore' ),
 );

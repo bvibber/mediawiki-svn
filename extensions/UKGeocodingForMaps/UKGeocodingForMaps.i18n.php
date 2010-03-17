@@ -77,6 +77,7 @@ $messages['gsw'] = array(
 $messages['hsb'] = array(
 	'ukgeocoding_name' => 'UK Geocoding za mapy',
 	'ukgeocoding_desc' => 'Rozšěrja mapy přez parserowu funkciju display_uk_point z implementaciju Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Jedne póstowe wodźenske čisło abo wjacore póstowe wodźenske čisła njedachu so geokodować a buchu na karće wuwostajene.',
 );
 
 /** Interlingua (Interlingua)

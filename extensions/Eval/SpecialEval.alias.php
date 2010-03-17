@@ -94,7 +94,7 @@ $aliases['ko'] = array(
 	'Eval' => array( '평가' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Eval' => array( 'Berääschne' ),
 );

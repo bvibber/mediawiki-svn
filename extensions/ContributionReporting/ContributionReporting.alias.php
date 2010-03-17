@@ -118,7 +118,7 @@ $aliases['ko'] = array(
 	'ContributionHistory' => array( '기여역사' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ContributionHistory' => array( 'MetmaacherVerjangeheit' ),
 	'ContributionStatistics' => array( 'MetmaacherStatistike' ),

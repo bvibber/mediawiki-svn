@@ -118,7 +118,7 @@ $aliases['ja'] = array(
 	'WhatIsMyIP' => array( '自分のIPアドレス', '自分のＩＰアドレス' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WhatIsMyIP' => array( 'Ming IP Address' ),
 );

@@ -23,7 +23,7 @@ $aliases['arz'] = array(
 	'Piwik' => array( 'بيويك' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Piwik' => array( 'Piwik-Shtatistike', 'PiwikShtatistike' ),
 );

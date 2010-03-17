@@ -119,7 +119,7 @@ $aliases['ko'] = array(
 	'PasswordReset' => array( '암호변경' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'PasswordReset' => array( 'NeuPaßwoot' ),
 	'Disabledusers' => array( 'Stilljelaate Metmaacher', 'StilljelaateMetmaacher' ),

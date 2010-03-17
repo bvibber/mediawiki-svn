@@ -114,7 +114,7 @@ $aliases['km'] = array(
 	'Watchers' => array( 'អ្នកតាមដាន' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Watchers' => array( 'Oppassere' ),
 );

@@ -85,7 +85,7 @@ $aliases['ko'] = array(
 	'PurgeCache' => array( '캐시갱신' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'PurgeCache' => array( 'Zwescheschpeischer leddisch' ),
 );

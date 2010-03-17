@@ -87,7 +87,7 @@ $aliases['ko'] = array(
 	'AccountManager' => array( '계정 관리자' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'AccountManager' => array( 'Metmaachere Verwallde', 'MetmaachereVerwallde' ),
 );

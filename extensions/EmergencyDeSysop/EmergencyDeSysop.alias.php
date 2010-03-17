@@ -76,7 +76,7 @@ $aliases['ja'] = array(
 	'EmergencyDeSysop' => array( '緊急管理者解任' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'EmergencyDeSysop' => array( 'Kamikaze' ),
 );

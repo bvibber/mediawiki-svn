@@ -527,7 +527,7 @@ $messages['el'] = array(
 	'recordadmin-modified' => 'Μετατράπηκε',
 	'recordadmin-actions' => 'Ενέργειες',
 	'recordadmin-needscontent' => 'Προσθήκη περιεχομένου...',
-	'recordadmin-editwithform' => 'Επεξεργασία με φόρμα',
+	'recordadmin-editwithform' => 'Ιδιότητες',
 	'recordadmin-typeinfo' => '$1 καταγραφή',
 );
 

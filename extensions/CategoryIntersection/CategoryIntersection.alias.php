@@ -143,7 +143,7 @@ $aliases['jv'] = array(
 	'CategoryIntersection' => array( 'Intersèksi Kategori' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CategoryIntersection' => array( 'Jemeinsam Saachjroppe' ),
 );

@@ -1127,6 +1127,7 @@ $messages['eu'] = array(
 	'tasks_sort' => 'Ordenatu',
 	'tasks_ascending' => 'Zaharrenak lehenago',
 	'tasks_status_open' => 'Ireki',
+	'tasks_status_assigned' => 'Esleitua',
 	'tasks_status_closed' => 'Itxita',
 );
 

@@ -105,7 +105,7 @@ $aliases['ko'] = array(
 	'TaskList' => array( '작업 목록' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'TaskList' => array( 'Aufjabeless', 'Aufjabeleß' ),
 	'TaskListByProject' => array( 'Aufjabeless pro Projäk', 'Aufjabeleß pro Projäk' ),

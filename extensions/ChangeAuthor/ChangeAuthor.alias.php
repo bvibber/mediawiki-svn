@@ -118,7 +118,7 @@ $aliases['ko'] = array(
 	'ChangeAuthor' => array( '저작자변경' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ChangeAuthor' => array( 'Schriiver ußtuusche' ),
 );

@@ -49,7 +49,7 @@ $aliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'UserOptionStats' => array( 'MetmaacherEnstellungsStatistik' ),
 );

@@ -98,7 +98,7 @@ $aliases['ko'] = array(
 	'GlobalUserrights' => array( '전체사용자권한' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'GlobalUserrights' => array( 'Jemeinsam_Metmaacher_Rääschte', 'Jemeinsam_Medmaacher_Rääschte', 'JemeinsamMetmaacherRääschte', 'JemeinsamMedmaacherRääschte' ),
 );

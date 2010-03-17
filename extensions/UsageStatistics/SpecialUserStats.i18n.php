@@ -697,6 +697,7 @@ $messages['eu'] = array(
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]] lankidearen erabilpen-estatistikak</h2>',
 	'usagestatisticsforallusers' => '<h2>Lankide guztien erabilpen-estatistikak</h2>',
 	'usagestatisticsinterval' => 'Denbora-tartea:',
+	'usagestatisticsnamespace' => 'Izen-tartea:',
 	'usagestatisticstype' => 'Mota',
 	'usagestatisticsstart' => 'Hasiera data:',
 	'usagestatisticsend' => 'Amaiera data:',

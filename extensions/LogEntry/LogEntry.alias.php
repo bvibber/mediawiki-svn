@@ -80,7 +80,7 @@ $aliases['ja'] = array(
 	'LogEntry' => array( '記録項目' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'LogEntry' => array( 'LogbochEnndraach' ),
 );

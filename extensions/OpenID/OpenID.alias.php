@@ -63,7 +63,7 @@ $aliases['ko'] = array(
 	'OpenIDServer' => array( 'OpenID서버' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'OpenIDLogin' => array( 'OpenIDAanmedung' ),
 	'OpenIDConvert' => array( 'OpenIDÖmwandele' ),

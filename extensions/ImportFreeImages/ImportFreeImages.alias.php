@@ -88,7 +88,7 @@ $aliases['ja'] = array(
 	'ImportFreeImages' => array( 'フリー画像のインポート', 'フリーの画像をインポート' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ImportFreeImages' => array( 'Frei_Bellder_Empotteere', 'FreiBellderEmpotteere' ),
 );

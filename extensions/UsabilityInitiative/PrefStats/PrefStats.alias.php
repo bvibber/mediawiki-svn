@@ -52,7 +52,7 @@ $aliases['ja'] = array(
 	'PrefStats' => array( '設定統計' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'PrefStats' => array( 'StatistikeFörEnstellunge', 'StatistikeFörEnshtellunge', 'EnstellungStatistike', 'EnstellungStatistik' ),
 );

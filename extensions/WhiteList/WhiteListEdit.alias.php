@@ -123,7 +123,7 @@ $aliases['km'] = array(
 	'WhiteListEdit' => array( 'កែប្រែបញ្ជីស' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WhiteList' => array( 'Wiiße Less' ),
 	'WhiteListEdit' => array( 'Wiiße Less Ändere' ),

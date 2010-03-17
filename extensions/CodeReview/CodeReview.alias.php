@@ -118,7 +118,7 @@ $aliases['ko'] = array(
 	'RepoAdmin' => array( '저장소관리' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Code' => array( 'Quelltäx' ),
 	'RepoAdmin' => array( 'Repositorijum Verwallde', 'Repusitorijum Verwallde' ),

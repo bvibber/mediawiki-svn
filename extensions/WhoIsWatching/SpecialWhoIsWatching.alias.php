@@ -110,7 +110,7 @@ $aliases['km'] = array(
 	'WhoIsWatching' => array( 'អ្នកកំពុងតាមដាន' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WhoIsWatching' => array( 'Wä paß op op', 'WäPassOpOp', 'WäPaßOpOp' ),
 );

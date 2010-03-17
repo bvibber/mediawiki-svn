@@ -58,7 +58,7 @@ $aliases['km'] = array(
 	'CommunityVoice' => array( 'សំលេងសហគមន៍' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CommunityVoice' => array( 'Metmaacherstemme' ),
 );

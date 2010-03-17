@@ -1229,11 +1229,13 @@ $messages['el'] = array(
 	'openidtimezone' => 'Ζώνη ώρας:',
 	'openidchooseinstructions' => 'Όλοι οι χρήστες χρειάζονται ένα nickname,
 για να επιλέξετε μια από τις παρακάτω επιλογές.',
+	'openidchoosenick' => 'Το ψευδώνυμό σας ($ 1)',
 	'openidchoosefull' => 'Το πλήρες όνομά σας ($1)',
 	'openidchooseurl' => 'Ένα όνομα διαλεγμένο από το OpenID σας ($1)',
 	'openidchooseauto' => 'Ένα αυτο-δημιουργημένο όνομα ($1)',
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
 	'openidchooseexisting' => 'Ένας υπάρχων λογαριασμός σε αυτό το βίκι:',
+	'openidchooseusername' => 'Όνομα χρήστη:',
 	'openidchoosepassword' => 'κωδικός:',
 	'openidconvertinstructions' => 'Αυτή η φόρμα σας επιτρέπει να αλλάξετε το λογαριασμό χρήστη σας για να χρησιμοποιήσετε ένα ή περισσόττερα URL OpenID',
 	'openidconvertoraddmoreids' => 'Μετατρέψτε το OpenID ή προσθέστε κι άλλο URL OpenID',
@@ -1258,7 +1260,7 @@ $messages['el'] = array(
 Για να χρησιμοποιήσεις το OpenID στο μέλλον, μπορείς να [[Special:OpenIDConvert|μετατρέψεις το λογαριασμό σου σε OpenID]] αφού έχεις συνδεθεί κανονικά.
 
 Υπάρχουν υπερβολικά πολλοί [http://openid.net/get/ παροχείς OpenID], και μπορεί να έχεις έναν ήδη ενεργοποιημένο με OpenID λογαριασμό σε άλλη υπηρεσία.',
-	'openidupdateuserinfo' => 'Ενημέρωση των προσωπικών πληροφοριών μου',
+	'openidupdateuserinfo' => 'Ενημέρωση των προσωπικών πληροφοριών μου:',
 	'openiddelete' => 'Διαγραφή OpenID',
 	'openiddelete-text' => 'Κάνωντας κλικ στο κουμπί "{{int:openiddelete-button}}", θα αφαιρέσετε το OpenID $1 από το λογαριασμό σας.
 Δεν θα είστε πλέον σε θέση να συνδεθείτε με αυτό το OpenID.',

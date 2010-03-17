@@ -85,7 +85,7 @@ $aliases['ja'] = array(
 	'ShowProcesslist' => array( 'プロセス一覧表示' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ShowProcesslist' => array( 'Prozessless' ),
 );

@@ -43,7 +43,7 @@ $aliases['km'] = array(
 	'CooperationStatistics' => array( 'ស្ថិតិនៃសហប្រតិបត្តិការ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CooperationStatistics' => array( 'StatistikeVumZosammeWerke' ),
 );

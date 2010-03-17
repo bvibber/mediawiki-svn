@@ -73,7 +73,7 @@ $aliases['ja'] = array(
 	'DeleteQueue' => array( '削除キュー' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'DeleteQueue' => array( 'Fottschmiißleß' ),
 );

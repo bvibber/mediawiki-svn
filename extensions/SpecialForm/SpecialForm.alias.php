@@ -95,7 +95,7 @@ $aliases['ko'] = array(
 	'Form' => array( '양식' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Form' => array( 'Fommulaa', 'Formular' ),
 );

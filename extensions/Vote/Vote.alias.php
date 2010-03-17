@@ -140,7 +140,7 @@ $aliases['ko'] = array(
 	'Vote' => array( '투표' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Vote' => array( 'Afstemme', 'Avstemme' ),
 );

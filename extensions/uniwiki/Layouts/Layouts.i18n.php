@@ -736,6 +736,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'layouts-desc' => 'Popole pàggene nuève e ccrejate cu "disposiziune" cangiabbele pe \'ngoraggià \'na strutture comune pe le pàggene',
 	'layouts_title' => "Ccreje 'na vosce",
 	'layouts_chooselayout' => "Scacchie 'na disposizione pe $1:",
 	'layouts_nolayout' => 'Nisciuna disposizione',

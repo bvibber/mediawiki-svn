@@ -149,7 +149,7 @@ $aliases['ko'] = array(
 	'ExpandTemplates' => array( '틀전개' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ExpandTemplates' => array( 'Schabloone Oplööse', 'Schabloone Expandeere' ),
 );

@@ -103,7 +103,7 @@ $aliases['ja'] = array(
 	'Badimages' => array( '好ましくない画像', '不良画像' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Badimages' => array( 'Onjewönsch Bellder' ),
 );

@@ -119,7 +119,7 @@ $aliases['ko'] = array(
 	'EditUser' => array( '사용자 편집' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'EditUser' => array( 'Metmaacher ier Enstellunge Ändere Metmaacher ier Enshtellunge Ändere' ),
 );

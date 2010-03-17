@@ -95,7 +95,7 @@ $aliases['ja'] = array(
 	'DeleteBatch' => array( '一括削除' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'DeleteBatch' => array( 'SiggePöngelFottschmiiße' ),
 );

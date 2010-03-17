@@ -115,7 +115,7 @@ $aliases['km'] = array(
 	'WhosOnline' => array( 'អ្នកកំពុងនៅលើបណ្ដាញ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WhosOnline' => array( 'Wä es online' ),
 );

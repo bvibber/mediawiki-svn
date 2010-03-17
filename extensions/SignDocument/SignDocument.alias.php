@@ -75,7 +75,7 @@ $aliases['ja'] = array(
 	'CreateSignDocument' => array( '文書署名の有効化' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'SignDocument' => array( 'Dokemänt ongerschriive' ),
 	'CreateSignDocument' => array( 'Ongerschrevve Dokemänt aanlääje' ),

@@ -53,7 +53,7 @@ $aliases['ja'] = array(
 	'LookupUser' => array( '利用者情報調査', '利用者情報を調査' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'LookupUser' => array( 'Metmaacher_Nohloore', 'MetmaacherNohloore', 'Medmaacher_Nohloore', 'MedmaacherNohloore' ),
 );

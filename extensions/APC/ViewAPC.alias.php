@@ -103,7 +103,7 @@ $aliases['ko'] = array(
 	'ViewAPC' => array( 'APC보기' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ViewAPC' => array( 'APC-Enfommazjuhne' ),
 );

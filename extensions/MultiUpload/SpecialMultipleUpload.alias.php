@@ -89,7 +89,7 @@ $aliases['ko'] = array(
 	'MultipleUpload' => array( '다중올리기' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'MultipleUpload' => array( 'HuhlaadeEmPöngel' ),
 );

@@ -305,17 +305,15 @@ $messages['el'] = array(
 	'importfreeimages' => 'Εισαγωγή ελεύθερων εικόνων',
 	'importfreeimages-desc' => 'Παρέχει έναν τρόπο [[Special:ImportFreeImages|εισαγωγής σωστά αδειοδοτημένων φωτογραφιών]] από το [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Αυτή η σελίδα σας επιτρέπει να ψάχνετε τις σωστά αδειοδοτημένες φωτογραφίες από το flickr και να της εισάγετε στο βίκι σας.',
-	'importfreeimages_noapikey' => 'Δεν ρυθμίσατε το Κλειδί Flickr API σας.
-Για να το ρυθμίσετε, παρακαλώ αποκτήστε έν κλειδί API από [http://www.flickr.com/services/api/misc.api_keys.html εδώ] και θέστε $wgFlickrAPIKey στο ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Δεν βρέθηκαν καθόλου φωτογραφίες για τα κριτήρια αναζήτησής σας '$1', παρακαλώ δοκιμάστε ξανά.",
-	'importfreeimages_invalidurl' => 'Το URL "$1" δεν είναι έγκυρη εικόνα Flickr.',
 	'importfreeimages_owner' => 'Δημιουργός',
 	'importfreeimages_importthis' => 'εισάγετε αυτό',
 	'importfreeimages_next' => 'Επόμενα $1',
-	'importfreeimages_filefromflickr' => '$1 από τον χρήστη <b>[$2]</b> από το flickr. Αυθεντικό URL',
-	'importfreeimages_promptuserforfilename' => 'Εισάγετε παρακαλώ ένα όνομα αρχείου προορισμό:',
-	'importfreeimages_returntoform' => "Ή κάνετε κλικ <a href='$1'>εδώ</a> για να επιστρέψετε στα αποτελέσματα αναζήτησης",
-	'importfreeimages_nophpflickr' => 'Δεν έχετε εγκαταστήσει το phpFlickr, παρακαλώ ρυθμίστε το wgIFphpFlickr  στο LocalSettings.php σας.',
+	'importfreeimages_size_square' => 'Τετράγωνο',
+	'importfreeimages_size_thumbnail' => 'Εικονίδιο',
+	'importfreeimages_size_small' => 'Μικρός',
+	'importfreeimages_size_medium' => 'Μέσος',
+	'importfreeimages_size_large' => 'Μεγάλος',
 );
 
 /** Esperanto (Esperanto)

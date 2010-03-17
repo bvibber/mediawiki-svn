@@ -201,7 +201,7 @@ $aliases['ko'] = array(
 	'ViewConfig' => array( '설정보기' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Configure' => array( 'Wiki Enstellunge', 'Wiki enställe' ),
 	'Extensions' => array( 'Wiki Zosätz' ),

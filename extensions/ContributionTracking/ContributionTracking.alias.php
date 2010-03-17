@@ -63,7 +63,7 @@ $aliases['ko'] = array(
 	'ContributionTracking' => array( '기여추적' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ContributionTracking' => array( 'MetmaacherVerfoljung' ),
 );

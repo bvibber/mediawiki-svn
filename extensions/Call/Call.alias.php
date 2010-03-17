@@ -98,7 +98,7 @@ $aliases['km'] = array(
 	'Call' => array( 'ហៅ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Call' => array( 'Oproof' ),
 );

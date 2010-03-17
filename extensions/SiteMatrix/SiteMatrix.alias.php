@@ -124,7 +124,7 @@ $aliases['ja'] = array(
 	'SiteMatrix' => array( 'ウィキメディアのウィキ一覧', 'Wikimediaのウィキ一覧' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'SiteMatrix' => array( 'Leß met de Wikimedia Steffung ier Wikis' ),
 );

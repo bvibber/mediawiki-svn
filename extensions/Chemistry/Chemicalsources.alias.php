@@ -73,7 +73,7 @@ $aliases['km'] = array(
 	'ChemicalSources' => array( 'ប្រភពគីមី' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ChemicalSources' => array( 'Schimisch Quelle' ),
 );

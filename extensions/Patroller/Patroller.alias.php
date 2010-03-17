@@ -83,7 +83,7 @@ $aliases['ja'] = array(
 	'Patroller' => array( 'パトローラー', 'パトローラ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Patroller' => array( 'Prööfe', 'Nohloore' ),
 );

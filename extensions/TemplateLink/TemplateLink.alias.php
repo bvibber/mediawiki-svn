@@ -70,7 +70,7 @@ $aliases['km'] = array(
 	'TemplateLink' => array( 'តំណភ្ជាប់ទំព័រគំរូ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'TemplateLink' => array( 'Schabloonelengk' ),
 );

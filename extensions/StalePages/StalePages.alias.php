@@ -50,7 +50,7 @@ $aliases['ja'] = array(
 	'StalePages' => array( '古くなったページ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'StalePages' => array( 'Ahl Sigge' ),
 );

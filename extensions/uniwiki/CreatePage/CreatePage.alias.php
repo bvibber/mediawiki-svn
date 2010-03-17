@@ -115,7 +115,7 @@ $aliases['ko'] = array(
 	'CreatePage' => array( '새문서만들기' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CreatePage' => array( 'Sigge_aanlääje', 'Sigg_aanlääje' ),
 );

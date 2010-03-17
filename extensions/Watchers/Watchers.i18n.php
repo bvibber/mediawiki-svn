@@ -308,6 +308,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Crazymadlover
  * @author Lou
  * @author Omnipaedista
  */
@@ -318,7 +319,7 @@ $messages['el'] = array(
 	'watchers_error_article' => '<b>Σφάλμα:</b> Η σελίδα δεν υπάρχει.',
 	'watchers_header' => '{{PLURAL:$2|Χρήστης που παρακολουθεί|Χρήστες που παρακολουθούν}} το "[[:$1]]"',
 	'watchers_noone_watches' => 'Κανείς δεν παρακολουθεί τη σελίδα [[:$1]].',
-	'watchers_x_or_more' => '$1 ή περισσότεροι {{PLURAL:$1|χρήστης παρακολουθεί|χρήστες παρακολουθούν}} αυτήν τη σελίδα.',
+	'watchers_x_or_more' => '$ 1 ή περισσότερα {{PLURAL: $ 1 | χρήστες | χρήστες}} έχουν την σελίδα [[: $ 2]] στη λίστα παρακολούθησής τους.',
 	'watchers_less_than_x' => '$1 ή λιγότεροι {{PLURAL:$1|χρήστης παρακολουθεί|χρήστες παρακολουθούν}} αυτήν τη σελίδα.',
 );
 

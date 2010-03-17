@@ -93,7 +93,7 @@ $aliases['km'] = array(
 	'ViewXML' => array( 'មើលXML' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'ViewXML' => array( 'XML beloore' ),
 );

@@ -537,6 +537,11 @@ $messages['nn'] = array(
  * @author Simny
  */
 $messages['no'] = array(
+	'plotters-desc' => 'Lar brukere bruke egendefinerte JavaScript i jsplot-merkelapper',
+	'plotters' => 'Plottere',
+	'plotters-title' => 'Plottere',
+	'plotters-pagetext' => 'Under er en liste over spesielle plottere brukere kan bruke i sine jsplot-merkelapper, som definert av [[MediaWiki:Plotters-definition]].
+Denne oversikten gir enkel tilgang til systemmeldingssider som definerer hver plotters beskrivelse og kode.',
 	'plotters-uses' => 'Brukere',
 	'plotters-missing-script' => 'Ingen skript ble definert.',
 	'plotters-missing-arguments' => 'Ingen argument spesifisert.',
@@ -550,6 +555,7 @@ Vennligst definer et plottnavn som er maksimalt 255 tegn langt.',
 Vennligst definer en tabellklasse som er maksimalt 255 tegn langt.',
 	'plotters-no-data' => 'Ingen data var tilgjengelig.',
 	'plotters-invalid-renderer' => 'En ugyldig gjengiver ble valgt.',
+	'plotters-errors' => '{{PLURAL:$1|Plotterfeil|Plotterfeil}}:',
 );
 
 /** Occitan (Occitan)

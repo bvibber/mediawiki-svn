@@ -98,7 +98,7 @@ $aliases['km'] = array(
 	'CountEdits' => array( 'ការរាប់ចំនួនកំណែប្រែ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CountEdits' => array( 'Beijdrääsch zälle' ),
 );

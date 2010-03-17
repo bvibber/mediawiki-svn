@@ -979,6 +979,7 @@ $messages['br'] = array(
 	'code-prop-changes' => 'Marilh ar statudoù hag ar balizenniñ',
 	'code-desc' => '[[Special:Code|Ostilh adwelet ar c\'hodoù]] gant ar [[Special:RepoAdmin|skor "Subversion"]]',
 	'code-no-repo' => "N'eus ket a dastumlec'h kefluniet !",
+	'code-repo-not-found' => "N'eus ket eus an dastumlec'h <b>$1</b> !",
 	'code-load-diff' => "O kargañ an diforc'hioù...",
 	'code-notes' => 'Evezhiadennoù diwezhañ',
 	'code-statuschanges' => 'kemmoù statud',
@@ -1085,6 +1086,7 @@ URL klok : $2
 Diverañ e-pad an arnod :
 
 $3",
+	'repoadmin' => "Melestradurezh an dastumlec'hioù",
 	'repoadmin-new-legend' => "Krouiñ un dastumlec'h nevez",
 	'repoadmin-new-label' => "Anv an dastumlec'h :",
 	'repoadmin-new-button' => 'Krouiñ',

@@ -128,7 +128,7 @@ $aliases['ko'] = array(
 	'Contributors' => array( '기여자목록' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Contributors' => array( 'Schriiver' ),
 );

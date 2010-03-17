@@ -33,7 +33,7 @@ $aliases['ja'] = array(
 	'MostRevisors' => array( '最も編集者の多いページ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'MostRevisors' => array( 'MiehßteSchriiver' ),
 );

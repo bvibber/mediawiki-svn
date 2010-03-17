@@ -93,7 +93,7 @@ $aliases['km'] = array(
 	'CloseWiki' => array( 'បិទវិគី' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CloseWiki' => array( 'Wiki deeschmaacher' ),
 );
