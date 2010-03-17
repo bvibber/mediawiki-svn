@@ -95,7 +95,7 @@ We would like to know what you think about our new interface, so we would apprec
 	'optin-survey-answer-changes-predictability' => 'Improve predictability of performance.',
 	'optin-survey-answer-changes-custom' => 'Allow greater user customization.',
 	'optin-survey-answer-changes-other' => 'Other:',
-	'optin-improvements' => "== What has been improved? ==
+	'optin-improvements2' => "== What has been improved? ==
 [[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
 [[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
 ;Enhanced Toolbar
