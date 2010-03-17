@@ -64,20 +64,19 @@ fn: {
 							$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
 						});
 						
-						//reformat the copyright warning stuff
+						// Reformat the copyright warning stuff
 						var copywarnHTML = $( '#editpage-copywarn' ).html();
 						
-						//TODO: internationalize by splitting on other characters that end statements
-						var copywarnStatements = copywarnHTML.split(". "); 
-						var newcopywarnHTML = "<ul>";
-						for(var i = 0; i < copywarnStatements.length; i++){
-							if(copywarnStatements[i] != ""){
-								newcopywarnHTML += "<li>" + copywarnStatements[i] + ". </li>" ;
+						// TODO: internationalize by splitting on other characters that end statements
+						var copywarnStatements = copywarnHTML.split( '. ' );
+						for ( var i = 0; i < copywarnStatements.length; i++ ) {
+							if ( copywarnStatements[i] != '' ) {
+								newcopywarnHTML += '<li>' + copywarnStatements[i] + '. </li>';
 							}
 						}
-						newcopywarnHTML += "</ul>";
+						newcopywarnHTML += '</ul>';
 
-						//no list if there's only one element
+						// No list if there's only one element
 						$(this).find( '.wikiEditor-dialog-copywarn' ).html( 
 								copywarnStatements.length > 1 ? newcopywarnHTML : copywarnHTML );
 						
