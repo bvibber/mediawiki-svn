@@ -929,14 +929,13 @@ $j(document).ready( function() {
 				if ( request ) {
 					request.abort();
 				}
-				
 				var target = $j( '#wikieditor-toolbar-link-int-target' ).val();
 				var cache = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'existencecache' );
 				if ( cache[target] ) {
 					updateWidget( cache[target] );
 					return;
 				}
-				if ( target == '' ) {
+				if ( target.replace( /^\s+$/,'' ) == '' ) {
 					// Hide the widget when the textbox is empty
 					updateWidget( false );
 					return;
@@ -1283,9 +1282,7 @@ $j(document).ready( function() {
 				) );
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' )
-					.$textarea.textSelection( 'getSelection' )
-					.replace( /\s+$/, '' )
-					.replace( /^\s+/, '' ); 
+					.$textarea.textSelection( 'getSelection' ); 
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
 				// Trigger the change event, so the link status indicator is up to date
 				$j( '#wikieditor-toolbar-link-int-target' ).change();
