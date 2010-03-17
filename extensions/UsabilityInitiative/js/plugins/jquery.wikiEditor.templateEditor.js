@@ -15,14 +15,14 @@
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': [['>=', 8]],
+		'msie': false,
 		'firefox': [['>=', 3]],
 		'opera': [['>=', 10]],
 		'safari': [['>=', 4]]
 	},
 	// Right-to-left languages
 	'rtl': {
-		'msie': [['>=', 8]],
+		'msie': false,
 		'firefox': [['>=', 3]],
 		'opera': [['>=', 10]],
 		'safari': [['>=', 4]]

@@ -381,7 +381,10 @@ if ( typeof context == 'undefined' ) {
 				context.oldHTML = newHTML;
 				event.data.scope = 'realchange';
 			}
-			
+			// Never let the body be totally empty
+			if ( context.$content.children().length == 0 ) {
+				context.$content.append( '<p></p>' );
+			}
 			return true;
 		},
 		'delayedChange': function( event ) {
@@ -390,17 +393,15 @@ if ( typeof context == 'undefined' ) {
 			if ( context.oldDelayedHTML != newHTML ) {
 				context.oldDelayedHTML = newHTML;
 				event.data.scope = 'realchange';
-				
-				//surround by <p> if it does not already have it
+				// Surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
 				var t = context.fn.getOffset( cursorPos[0] );
-				if ( t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				if ( t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
 					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
 				}
-			 }
-
+			}
 			context.fn.updateHistory( event.data.scope == 'realchange' );
 			return true;
 		},
