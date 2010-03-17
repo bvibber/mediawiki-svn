@@ -65,20 +65,21 @@ fn: {
 						});
 						
 						// Reformat the copyright warning stuff
-						var copywarnHTML = $( '#editpage-copywarn' ).html();
+						var copyWarnHTML = $( '#editpage-copywarn' ).html();
 						
 						// TODO: internationalize by splitting on other characters that end statements
-						var copywarnStatements = copywarnHTML.split( '. ' );
-						for ( var i = 0; i < copywarnStatements.length; i++ ) {
-							if ( copywarnStatements[i] != '' ) {
-								newcopywarnHTML += '<li>' + copywarnStatements[i] + '. </li>';
+						var copyWarnStatements = copyWarnHTML.split( '. ' );
+						var newCopyWarnHTML = '';
+						for ( var i = 0; i < copyWarnStatements.length; i++ ) {
+							if ( copyWarnStatements[i] != '' ) {
+								newCopyWarnHTML += '<li>' + copyWarnStatements[i] + '. </li>';
 							}
 						}
-						newcopywarnHTML += '</ul>';
+						newCopyWarnHTML += '</ul>';
 
 						// No list if there's only one element
 						$(this).find( '.wikiEditor-dialog-copywarn' ).html( 
-								copywarnStatements.length > 1 ? newcopywarnHTML : copywarnHTML );
+								copyWarnStatements.length > 1 ? newCopyWarnHTML : copyWarnHTML );
 						
 						if ( $( '#wpMinoredit' ).size() == 0 )
 							$( '#wikiEditor-' + context.instance + '-dialog-minor' ).hide();
