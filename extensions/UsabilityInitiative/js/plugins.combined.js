@@ -10115,6 +10115,7 @@ fn: {
  * Compatability map
  */
 'browsers': {
+	/*
 	// Left-to-right languages
 	'ltr': {
 		'msie': [['>=', 7]],
@@ -10130,6 +10131,22 @@ fn: {
 		'opera': [['>=', 10]],
 		'safari': [['>=', 4]],
 		'chrome': [['>=', 4]]
+	}
+	*/
+	// Disabled for now
+	'ltr': {
+		'msie': false,
+		'firefox': false,
+		'opera': false,
+		'safari': false,
+		'chrome': false
+	},
+	'rtl': {
+		'msie': false,
+		'firefox': false,
+		'opera': false,
+		'safari': false,
+		'chrome': false
 	}
 },
 /**
