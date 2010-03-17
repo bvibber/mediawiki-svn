@@ -9,13 +9,11 @@ $j(document).ready( function() {
 	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( $j.wikiEditor.modules.dialogs ) ) {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
-	// Add the toolbar module
-	if ( $j.fn.wikiEditor ) {
+	if ( $j.fn.wikiEditor && $j.wikiEditor.isSupported( $j.wikiEditor.modules.toolbar ) ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
 		// Add toolbar module
 		$j( '#wpTextbox1' ).wikiEditor( 'addModule', {
-
 'toolbar': {
 	// Main section
 	'main': {
