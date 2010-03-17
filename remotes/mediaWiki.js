@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r111';
+var mwRemoteVersion = 'r112';
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -92,7 +92,7 @@ function doPageSpecificRewrite() {
 						myRemote.updateUI();
 				} );
 			} );
-		} );	
+		} );
 	}
 	
 	
@@ -250,6 +250,9 @@ function rewrite_for_OggHandler( vidIdList ) {
 		var re = new RegExp( /offset(&quot;:?\s*)*([^,&]*)/ );
 		offset = re.exec( rewriteHTML )[2];
 		var offset_attr = offset ? 'startOffset="' + offset + '"' : '';
+		
+		// Check if file is from commons and therefore should explictly set apiProvider to commons: 
+		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		
 
 		if ( src ) {
 			var html_out = '';
@@ -257,6 +260,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			var common_attr = ' id="mwe_' + vidId + '" ' +
 					'apiTitleKey="' + apiTitleKey + '" ' +
 					'src="' + src + '" ' +
+					apiProviderAttr + 
 					duration_attr +
 					offset_attr + ' ' +
 					'class="kskin" ';
