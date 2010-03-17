@@ -40,15 +40,15 @@ evt: {
 		 */
 		$.wikiEditor.modules.highlight.currentScope = event.data.scope;
 		if ( event.data.scope == 'realchange' ) {
-			$.wikiEditor.modules.highlight.fn.scan( context, "" );
-			$.wikiEditor.modules.highlight.fn.mark( context, "realchange", "" );
+			$.wikiEditor.modules.highlight.fn.scan( context, '' );
+			$.wikiEditor.modules.highlight.fn.mark( context, 'realchange', '' );
 		}
 	},
 	ready: function( context, event ) {
 		// Highlight stuff for the first time
-		$.wikiEditor.modules.highlight.currentScope = "ready";
-		$.wikiEditor.modules.highlight.fn.scan( context, "" );
-		$.wikiEditor.modules.highlight.fn.mark( context, "", "" );
+		$.wikiEditor.modules.highlight.currentScope = 'ready'; // FIXME: Ugly global, kill with fire
+		$.wikiEditor.modules.highlight.fn.scan( context, '' );
+		$.wikiEditor.modules.highlight.fn.mark( context, '', '' );
 	}
 },
 /**
@@ -152,18 +152,19 @@ fn: {
 	// FIXME: What do division and tokens do?
 	// TODO: Document the scan() and mark() APIs somewhere
 	mark: function( context, division, tokens ) {
-		
 		// Reset markers
 		var markers = [];
-		if(context.modules.highlight.markers && division !=""){
-			for(var i = 0; i < markers.length; i++){
-				if(context.modules.highlight.markers[i].skipDivision == division){
-					markers.push(context.modules.highlight.markers[i]);
+		
+		// Recycle markers that will be skipped in this run
+		if ( context.modules.highlight.markers && division != '' ) {
+			for ( var i = 0; i < context.modules.markers.length; i++ ) {
+				if ( context.modules.highlight.markers[i].skipDivision == division ) {
+					markers.push( context.modules.highlight.markers[i] );
 				}
 			}
 		}
 		context.modules.highlight.markers = markers;
-			
+		
 		// Get all markers
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );

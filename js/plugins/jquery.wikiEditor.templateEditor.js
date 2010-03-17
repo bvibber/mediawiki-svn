@@ -38,10 +38,12 @@
 evt: {
 	
 	mark: function( context, event ) {
-		// Get references to the markers and tokens from the current context
-		if(context.modules.highlight.currentScope == "realchange"){
-			return; //do nothing on realchange
+		// The markers returned by this function are skipped on realchange, so don't regenerate them in that case
+		if ( context.modules.highlight.currentScope == 'realchange' ) {
+			return;
 		}
+		
+		// Get references to the markers and tokens from the current context
 		var markers = context.modules.highlight.markers;
 		var tokenArray = context.modules.highlight.tokenArray;
 		// Collect matching level 0 template call boundaries from the tokenArray
@@ -122,7 +124,7 @@ evt: {
 								ca1.parentNode : null;
 						},
 						context: context,
-						skipDivision: "realchange"
+						skipDivision: 'realchange'
 					} );
 				} else { //else this was an unmatched opening
 					tokenArray[beginIndex].label = 'TEMPLATE_FALSE_BEGIN';
