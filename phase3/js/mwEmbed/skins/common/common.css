@@ -65,14 +65,6 @@
 	width:16px;
 	height:16px;
 }
-div.floatleft, table.floatleft {
-	border:0pt none;
-	clear:left;
-	float:left;
-	margin:0pt 0.5em 0.5em 0pt;
-	position:relative;
-}
-
 
 
 
