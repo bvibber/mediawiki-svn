@@ -1604,42 +1604,47 @@ class Parser
 
 				if( $m[2] === '' ) {
 					$text = '';
-				} elseif( $m[2] === '|' ) { 
-					$text = $this->getPipeTrickText( $m[1] );
 				} else {
-					$text = substr( $m[2], 1 );
+					if( $m[2] === '|' ) { 
+						$text = Linker::getPipeTrickText( $m[1] );
+					} else {
+						$text = substr( $m[2], 1 );
+						if( $m[1] === '' ) {
+							$m[1] = Linker::getPipeTrickLink( $text, $this->mTitle );
+						}
+					}
+
+					# If we get a ] at the beginning of $m[3] that means we have a link that's something like:
+					# [[Image:Foo.jpg|[http://example.com desc]]] <- having three ] in a row fucks up,
+					# the real problem is with the $e1 regex
+					# See bug 1300.
+					#
+					# Still some problems for cases where the ] is meant to be outside punctuation,
+					# and no image is in sight. See bug 2095.
+					#
+					if( $text !== '' &&
+						substr( $m[3], 0, 1 ) === ']' &&
+						strpos($text, '[') !== false
+					)
+					{
+						$text .= ']'; # so that replaceExternalLinks($text) works later
+						$m[3] = substr( $m[3], 1 );
+					}
 				}
 
-				# If we get a ] at the beginning of $m[3] that means we have a link that's something like:
-				# [[Image:Foo.jpg|[http://example.com desc]]] <- having three ] in a row fucks up,
-				# the real problem is with the $e1 regex
-				# See bug 1300.
-				#
-				# Still some problems for cases where the ] is meant to be outside punctuation,
-				# and no image is in sight. See bug 2095.
-				#
-				if( $text !== '' &&
-					substr( $m[3], 0, 1 ) === ']' &&
-					strpos($text, '[') !== false
-				)
-				{
-					$text .= ']'; # so that replaceExternalLinks($text) works later
-					$m[3] = substr( $m[3], 1 );
-				}
-
-				# Handle pipe-trick for [[|<blah>]]
-				$lnk = $m[1] === '' ? $this->getPipeTrickLink( $text ) : $m[1];
 				# fix up urlencoded title texts
-				if( strpos( $lnk, '%' ) !== false ) {
+				if( strpos( $m[1], '%' ) !== false ) {
 					# Should anchors '#' also be rejected?
-					$lnk = str_replace( array('<', '>'), array('&lt;', '&gt;'), urldecode($lnk) );
+					$m[1] = str_replace( array('<', '>'), array('&lt;', '&gt;'), urldecode($m[1]) );
 				}
 
 				$trail = $m[3];
 			} elseif( preg_match($e1_img, $line, $m) ) { # Invalid, but might be an image with a link in its caption
 				$might_be_img = true;
 				$text = $m[2];
-				$lnk = strpos( $m[1], '%' ) === false ? $m[1] : urldecode( $m[1] );
+				if ( strpos( $m[1], '%' ) !== false ) {
+					$m[1] = urldecode($m[1]);
+				}
 				$trail = "";
 			} else { # Invalid form; output directly
 				$s .= $prefix . '[[' . $line ;
@@ -1652,7 +1657,7 @@ class Parser
 			# Don't allow internal links to pages containing
 			# PROTO: where PROTO is a valid URL protocol; these
 			# should be external links.
-			if ( preg_match( '/^\b(?:' . wfUrlProtocols() . ')/', $lnk ) ) {
+			if ( preg_match( '/^\b(?:' . wfUrlProtocols() . ')/', $m[1] ) ) {
 				$s .= $prefix . '[[' . $line ;
 				wfProfileOut( __METHOD__."-misc" );
 				continue;
@@ -1660,12 +1665,12 @@ class Parser
 
 			# Make subpage if necessary
 			if ( $useSubpages ) {
-				$link = $this->maybeDoSubpageLink( $lnk, $text );
+				$link = $this->maybeDoSubpageLink( $m[1], $text );
 			} else {
-				$link = $lnk;
+				$link = $m[1];
 			}
 
-			$noforce = (substr( $lnk, 0, 1 ) !== ':');
+			$noforce = (substr( $m[1], 0, 1 ) !== ':');
 			if (!$noforce) {
 				# Strip off leading ':'
 				$link = substr( $link, 1 );
@@ -1911,25 +1916,6 @@ class Parser
 	 */
 	function maybeDoSubpageLink($target, &$text) {
 		return Linker::normalizeSubpageLink( $this->mTitle, $target, $text );
-	}
-
-	/**
-	 * From the [[title|]] return link-text as though the used typed [[title|link-text]]
-	 * @param string $link from [[$link|]]
-	 * @return string $text for [[$link|$text]]
-	 */
-	function getPipeTrickText( $link ) {
-		return Linker::getPipeTrickText( $link );
-	}
-
-	/**
-	 * From the [[|link-text]] return the title as though the user typed [[title|link-text]]
-	 * @param string $text from [[|$text]]
-	 * @param Title $title to resolve the link against
-	 * @return string $link for [[$link|$text]]
-	 */
-	function getPipeTrickLink( $text ) {
-		return Linker::getPipeTrickLink( $text, $this->mTitle );
 	}
 
 	/**#@+
@@ -2496,11 +2482,11 @@ class Parser
 				break;
 			case 'pipetrick':
 				$text = $this->mTitle->getText();
-				$value = $this->getPipeTrickText( $text );
+				$value = Linker::getPipeTrickText( $text );
 				break;
 			case 'pipetricke':
 				$text = $this->mTitle->getText();
-				$value = wfUrlEncode( str_replace( ' ', '_', $this->getPipeTrickText( $text ) ) );
+				$value = wfUrlEncode( str_replace( ' ', '_', Linker::getPipeTrickText( $text ) ) );
 				break;
 			case 'revisionid':
 				// Let the edit saving system know we should parse the page
@@ -4066,10 +4052,10 @@ class Parser
 	{
 		if( $m[1] ) { # [[|<blah>]]
 			$text = $m[2];
-			$link = $this->getPipeTrickLink( $text );
+			$link = Linker::getPipeTrickLink( $text, $this->mTitle );
 		} else { # [[<blah>|]]
 			$link = $m[3];
-			$text = $this->getPipeTrickText( $link );
+			$text = Linker::getPipeTrickText( $link );
 		}
 
 		return $link === $text ? "[[$link]]" : "[[$link|$text]]";

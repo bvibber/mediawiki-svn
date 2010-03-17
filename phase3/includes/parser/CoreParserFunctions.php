@@ -443,16 +443,16 @@ class CoreParserFunctions {
 
 	/**
 	 * Performs the pipe trick in the same manner as [[title|]] or [[|title]].
-	 * {{#pipetrick:title}} == {{#pipetrick:title|}} -> Parser::getPipeTrickText
-	 * {{#pipetrick:|title}} -> Parser::getPipeTrickLink (rarer)
+	 * {{#pipetrick:title}} == {{#pipetrick:title|}} -> Linker::getPipeTrickText
+	 * {{#pipetrick:|title}} -> Linker::getPipeTrickLink (rarer)
 	 * See http://en.wikipedia.org/wiki/Help:Pipe_trick and the Parser documentation
 	 * for more information.
 	 */
 	static function pipetrick( $parser, $link = '', $text = '' ) {
 		if ( $link )
-			return $parser->getPipeTrickText( $link );
+			return Linker::getPipeTrickText( $link );
 		else
-			return $parser->getPipeTrickLink( $text );
+			return Linker::getPipeTrickLink( $text, $parser->getTitle() );
 	}
 
 	/**
