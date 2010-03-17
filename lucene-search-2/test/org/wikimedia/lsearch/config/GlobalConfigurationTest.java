@@ -44,7 +44,7 @@ public class GlobalConfigurationTest extends WikiTestCase {
 
 	public void testReadURL(){
 		// database
-		Hashtable database = global.database;			
+		Hashtable database = global.database;
 		Hashtable roles = (Hashtable) database.get("entest");
 		assertNotNull(roles.get("mainsplit"));
 		assertNotNull(roles.get("mainpart"));
@@ -67,7 +67,7 @@ public class GlobalConfigurationTest extends WikiTestCase {
 
 		// search
 		Hashtable search = global.search;
-		ArrayList sr = (ArrayList) search.get("192.168.0.2"); 
+		ArrayList sr = (ArrayList) search.get("192.168.0.2");
 
 		String[] ssr = (String[]) sr.toArray(new String [] {} );
 
@@ -82,12 +82,12 @@ public class GlobalConfigurationTest extends WikiTestCase {
 		Hashtable<String,ArrayList<String>> g0 = sg.get(new Integer(0));
 		assertEquals("{192.168.0.5=[entest.mainpart, entest.restpart], 192.168.0.2=[entest.mainpart]}",g0.toString());
 		Hashtable<String,ArrayList<String>> g1 = sg.get(new Integer(1));
-		assertEquals("{192.168.0.6=[frtest.part3, detest], 192.168.0.4=[frtest.part1, frtest.part2]}",g1.toString());			
+		assertEquals("{192.168.0.6=[frtest.part3, detest], 192.168.0.4=[frtest.part1, frtest.part2]}",g1.toString());
 
 
 		// index
 		Hashtable index = global.index;
-		ArrayList ir = (ArrayList) index.get("192.168.0.5"); 
+		ArrayList ir = (ArrayList) index.get("192.168.0.5");
 
 		String[] sir = (String[]) ir.toArray(new String [] {} );
 
@@ -115,7 +115,7 @@ public class GlobalConfigurationTest extends WikiTestCase {
 		String hostName = host.getHostName();
 		System.out.println("Verify internet IP: "+hostAddr+", and hostname: "+hostName);
 
-		// test prefixes 
+		// test prefixes
 		Hashtable<String,NamespaceFilter> p = global.namespacePrefix;
 		assertEquals(17,p.size());
 
@@ -298,7 +298,7 @@ public class GlobalConfigurationTest extends WikiTestCase {
 		//assertTrue(tn.isTitleNgram());
 
 	}
-	
+
 	public void testComplexWildcard(){
 		Pattern p = Pattern.compile(StringUtils.wildcardToRegexp("(?!(enwiki.|dewiki.|frwiki.|itwiki.|nlwiki|.))*.spell"));
 		assertFalse(p.matcher("enwiki.spell").matches());

@@ -13,11 +13,11 @@ import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.index.IndexThread;
 /**
- * Implements a simplistic unicode decomposer. By default will use 
+ * Implements a simplistic unicode decomposer. By default will use
  * unicode data from lib/UnicodeData.txt. The decomposer attempts
  * to decompose every character into compatible letters, for instance
  * š will be decomposed to s. Wile &#64257 will be decomposed into f and i.
- * 
+ *
  * @author rainman
  *
  */
@@ -33,13 +33,13 @@ public class UnicodeDecomposer {
 			if(len<buffer.length)
 				buffer[len++] = ch;
 		}
-		
+
 	}
 	static org.apache.log4j.Logger log = Logger.getLogger(UnicodeDecomposer.class);
 	final protected static char[][] decomposition = new char[65536][];
 	final protected static boolean[] combining = new boolean[65536];
 	protected static UnicodeDecomposer instance = null;
-	
+
 	/**
 	 * Get decomposing <b>letter</b> characters
 	 * @param ch
@@ -48,17 +48,17 @@ public class UnicodeDecomposer {
 	public char[] decompose(char ch){
 		return decomposition[ch];
 	}
-	
+
 	protected UnicodeDecomposer(String resource){
 		initFromResource(resource);
 		log.debug("Loaded unicode decomposer");
 	}
-	
-	
+
+
 	public boolean isCombiningChar(char ch){
 		return combining[ch];
 	}
-	
+
 	/**
 	 * Get singleton instance of the Unicode decomposer class.
 	 * Loads lib/UnicodeData.txt on first call
@@ -68,10 +68,10 @@ public class UnicodeDecomposer {
 		if(instance == null){
 			instance = new UnicodeDecomposer("/UnicodeData.txt");
 		}
-		
+
 		return instance;
 	}
-		
+
 	protected void initFromResource(String resource){
 		BitSet letters = new BitSet(65536);
 		try {
@@ -89,30 +89,30 @@ public class UnicodeDecomposer {
 					continue; // ignore any additional chars
 				if(parts[2].charAt(0) == 'L')
 					letters.set(chVal);
-				
+
 				if(parts[2].charAt(0) == 'M')
 					combining[chVal] = true;
 				else
 					combining[chVal] = false;
 			}
 			in.close();
-			
+
 			// add some exception requested by users
 			// yiddish stuffs
 			combining[0x05B7] = true;
 			combining[0x05B8] = true;
 			combining[0x05BC] = true;
 			combining[0x05BF] = true;
-			
+
 			// decomposition table
 			char[][] table = new char[65536][];
-			
+
 			// default for all chars: no decomposition
 			for(int ich = 0; ich <= 0xFFFF; ich++){
 				decomposition[ich]=null;
 				table[ich]=null;
 			}
-			
+
 			// second pass, make the decomposition table
 			in = new BufferedReader(new InputStreamReader(UnicodeDecomposer.class.getResourceAsStream(resource)));
 			while((line = in.readLine()) != null){
@@ -138,32 +138,32 @@ public class UnicodeDecomposer {
 						table[ch]= new char[len];
 						for(i=0;i<len;i++)
 							table[ch][i] = buf[i];
-					} 
-				} 				
+					}
+				}
 			}
-			
+
 			// some decomposition exceptions
 			// yiddish stuffs
 			table[0x05F0] = new char[2]; // HEBREW LIGATURE YIDDISH DOUBLE VAV
 			table[0x05F0][0] = 0x05D5;
 			table[0x05F0][1] = 0x05D5;
-			
+
 			table[0x05F1] = new char[2]; // HEBREW LIGATURE YIDDISH VAV YOD
 			table[0x05F1][0] = 0x05D5;
 			table[0x05F1][1] = 0x05D9;
-			
+
 			table[0x05F2] = new char[2]; // HEBREW LIGATURE YIDDISH DOUBLE YOD
 			table[0x05F2][0] = 0x05D9;
 			table[0x05F2][1] = 0x05D9;
-			
+
 			table[0xFB1F] = new char[2]; // HEBREW LIGATURE YIDDISH YOD YOD PATAH
 			table[0xFB1F][0] = 0x05D9;
 			table[0xFB1F][1] = 0x05D9;
-			
+
 			table[0xFB1D] = new char[1]; // HEBREW LETTER YOD WITH HIRIQ
 			table[0xFB1D][0] = 0x05D9;
-			
-			
+
+
 			// using decomposition table recursively decompose characters
 			for(int ich = 0; ich <= 0xFFFF; ich++){
 				if(table[ich]==null)
@@ -174,7 +174,7 @@ public class UnicodeDecomposer {
 					decomposition[ich]= new char[buffer.len];
 					for(i=0;i<buffer.len;i++)
 						decomposition[ich][i] = buffer.buffer[i];
-				}					
+				}
 			}
 			in.close();
 		} catch (IOException e) {
@@ -188,7 +188,7 @@ public class UnicodeDecomposer {
 
 	/**
 	 * Depth-first recursion, gradually decompose characters (if it has many diacritics)
-	 * 
+	 *
 	 * @param buf - buffer where to write resulting decompositions
 	 * @param table - mapping char -> decomposing letters
 	 * @param letters - bitset of letter characters

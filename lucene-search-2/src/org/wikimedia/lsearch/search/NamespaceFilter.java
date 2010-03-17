@@ -1,24 +1,24 @@
 /*
  * Copyright 2005 Brion Vibber
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights 
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
- * copies of the Software, and to permit persons to whom the Software is 
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in 
+ * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * $Id: NamespaceFilter.java 8398 2005-04-17 06:21:19Z vibber $
  */
 
@@ -34,16 +34,16 @@ import java.util.HashSet;
  *  to filter  */
 public class NamespaceFilter implements Serializable {
 	private BitSet included;
-	
+
 	protected void init(){
 		included = new BitSet(64);
 	}
-	
+
 	/** "all" filter */
 	public NamespaceFilter() {
 		init();
 	}
-	
+
 	/** filter namespaces */
 	public NamespaceFilter(Collection<Integer> namespaces){
 		init();
@@ -66,7 +66,7 @@ public class NamespaceFilter implements Serializable {
 			}
 		}
 	}
-	
+
 	/** Decompose this filter into an array of single-namespace filters, do OR to construct */
 	public ArrayList<NamespaceFilter> decompose(){
 		ArrayList<NamespaceFilter> dec = new ArrayList<NamespaceFilter>();
@@ -75,7 +75,7 @@ public class NamespaceFilter implements Serializable {
 		}
 		return dec;
 	}
-	
+
 	public HashSet<Integer> getNamespaces(){
 		HashSet<Integer> ret = new HashSet<Integer>();
 		if(included.cardinality() == 0)
@@ -85,7 +85,7 @@ public class NamespaceFilter implements Serializable {
 		}
 		return ret;
 	}
-	
+
 	public ArrayList<Integer> getNamespacesOrdered(){
 		ArrayList<Integer> ret = new ArrayList<Integer>();
 		if(included.cardinality() == 0)
@@ -95,36 +95,36 @@ public class NamespaceFilter implements Serializable {
 		}
 		return ret;
 	}
-	
+
 	public boolean filter(String namespace) {
 		return filter(Integer.parseInt(namespace));
 	}
-	
+
 	public boolean filter(int namespace) {
 		return included.get(namespace);
 	}
-	
+
 	/** Set bit for namespace to true */
 	public void set(int namespace){
 		included.set(namespace);
 	}
-	
+
 	/** Set bit for namespace to false */
 	public void unset(int namespace){
 		included.set(namespace,false);
 	}
-	
+
 	public boolean contains(int namespace){
 		if(namespace < 0)
 			return false;
 		else
 			return included.get(namespace);
 	}
-	
+
 	public boolean contains(String namespace){
 		return contains(Integer.parseInt(namespace));
 	}
-	
+
 	public BitSet getIncluded() {
 		return included;
 	}
@@ -132,16 +132,16 @@ public class NamespaceFilter implements Serializable {
 	public int cardinality(){
 		return included.cardinality();
 	}
-	
+
 	public int getNamespace(){
-		return included.nextSetBit(0);		
+		return included.nextSetBit(0);
 	}
-	
+
 	/** if empty filter ("all" keyword") */
 	public boolean isAll(){
-		return cardinality() == 0; 
+		return cardinality() == 0;
 	}
-	
+
 	@Override
 	public String toString() {
 		return included.toString();
@@ -173,5 +173,5 @@ public class NamespaceFilter implements Serializable {
 	}
 
 
-	
+
 }

@@ -102,7 +102,7 @@ public final class KStemFilter extends TokenFilter {
 			return null;
 		else {
 			String s = stemmer.stem(token.termText());
-			if (!s.equals(token.termText())) 
+			if (!s.equals(token.termText()))
 				return new Token(s, token.startOffset, token.endOffset, token.type);
 			return token;
 		}

@@ -41,8 +41,8 @@ import org.wikimedia.lsearch.util.StringUtils;
 /**
  * Read and parse the global configuration file, is also used
  * to discover where the indexes are. Global configuration manages
- * a pool of global readonly {@link IndexId} instances. 
- * 
+ * a pool of global readonly {@link IndexId} instances.
+ *
  * @author rainman
  *
  */
@@ -50,7 +50,7 @@ public class GlobalConfiguration {
 	/** The following hashtables are directly read from the config file: */
 	/** dbname -> hashtable ( role -> hashtable ( param => value) ) */
 	protected Hashtable<String, Hashtable<String, Hashtable<String, String>>> database;
-	/** group -> host -> arraylist ( db.role ) */ 
+	/** group -> host -> arraylist ( db.role ) */
 	protected Hashtable<Integer,Hashtable<String,ArrayList<String>>> searchGroup;
 	/** host -> arraylist ( db.role ) */
 	protected Hashtable<String,ArrayList<String>> search;
@@ -73,7 +73,7 @@ public class GlobalConfiguration {
 	/** prefixes, e.g. main, talk, help, and corresponding filters */
 	protected Hashtable<String,NamespaceFilter> namespacePrefix;
 	/** keyword for all namespaces (i.e. no filtering) */
-	protected String namespacePrefixAll; 
+	protected String namespacePrefixAll;
 	/** suffx -> OAI Repo url pattern */
 	protected Hashtable<String,String> oaiRepo;
 	/** wgLanguageCode from InitialiseSettings, suffix -> lang code */
@@ -92,50 +92,50 @@ public class GlobalConfiguration {
 	protected String commonsWiki = null;
 	/** dbname -> namespace scaling */
 	protected Hashtable<String,ArticleNamespaceScaling> namespaceBoost = new Hashtable<String,ArticleNamespaceScaling>();
-	
+
 	/** info about this host */
 	protected static InetAddress myHost;
-	protected static String hostAddr, hostName;	
-	
+	protected static String hostAddr, hostName;
+
 	/** Database suffix if dbname, the rest is supposed to be language, e.g srwiki => (suffix wiki) => sr */
-	protected String[] databaseSuffixes = null;	
+	protected String[] databaseSuffixes = null;
 	/** Databases ending in suffix will use additional keyword scores */
 	protected String[] keywordScoringSuffixes = null;
 	/** Databases ending in suffix will have 2 indexes, one with lowercased words, and one with exact case words */
 	protected String[] exactCaseSuffix = null;
-	
+
 	/** For scaling scores according how old the indexed page is */
 	protected String[] ageScalingStrong = null;
 	protected String[] ageScalingMedium = null;
 	protected String[] ageScalingWeak = null;
-	
+
 	/** wikis with additional global ranking data */
 	protected String[] additionalRank = null;
-	
+
 	protected Properties globalProperties = null;
-	
+
 	/** All identifiers of all indexes (dbrole -> IndexId) */
 	protected static Hashtable<String,IndexId> indexIdPool = new Hashtable<String,IndexId>();
-	
+
 	protected static GlobalConfiguration instance = null;
-	
+
 	/** All the lang codes we encountered, used for "smart interwiki" */
 	protected HashSet<String> smartInterwikiCodes = new HashSet<String>();
 	protected boolean useSmartInterwiki = false;
 	protected int maxSearchLimit = 1000;
-	protected int maxSearchOffset = 1000000; 
-	
+	protected int maxSearchOffset = 1000000;
+
 	/** Wether to report warnings and info */
 	protected static boolean verbose = true;
-	
+
 	/** Sections in lsearch-config.conf */
 	protected static enum Section { DATABASE, INDEX, SEARCH, INDEXPATH, NAMESPACE_PREFIX, OAI, DATABASE_GROUP, NAMESPACE_BOOST };
 
 
 	/**
-	 * Use this function to override the hosts IP address which 
-	 * is determined automatically when first instance is made  
-	 * 
+	 * Use this function to override the hosts IP address which
+	 * is determined automatically when first instance is made
+	 *
 	 * @param host  IP adress
 	 */
 	public static void setHost(InetAddress host){
@@ -143,15 +143,15 @@ public class GlobalConfiguration {
 		hostAddr = myHost.getHostAddress();
 		hostName = myHost.getHostName();
 	}
-	
+
 	protected GlobalConfiguration(){
 		// try to determin this hosts IP address
 		determineInetAddress();
-	}	
-	
+	}
+
 	/**
 	 * Get singleton instance of this class
-	 * 
+	 *
 	 * @return
 	 */
 	synchronized public static GlobalConfiguration getInstance() {
@@ -159,12 +159,12 @@ public class GlobalConfiguration {
 			instance = new GlobalConfiguration();
 		return instance;
 	}
-	
+
 	/**
-	 * Try to determine the (non-loopback) IP address of this 
-	 * computer. Will work only if there is one attached 
+	 * Try to determine the (non-loopback) IP address of this
+	 * computer. Will work only if there is one attached
 	 * network interface, otherwise @link setHost() method
-	 * need to be used 
+	 * need to be used
 	 */
 	protected void determineInetAddress() {
 		try {
@@ -172,27 +172,27 @@ public class GlobalConfiguration {
 		} catch (UnknownHostException e1) {
 			System.out.println("Error resolving local hostname. Make sure that hostname is setup correctly.");
 			e1.printStackTrace();
-		}		
+		}
 	}
-	
+
 	/** Return true if host is the current host (IP or hostname) */
 	public boolean isLocalhost(String host){
 		if(host == null)
 			return false;
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
-	
+
 	/** Secure add-to-list, check if the index definition exists, and avoid duplicates in list */
 	protected void addToList(ArrayList<String> list, String str){
 		if(!list.contains(str)){
 			String[] parts = str.split("\\.");
-			if(database.containsKey(parts[0]) && 
+			if(database.containsKey(parts[0]) &&
 				(parts.length==1 || (parts.length==2 && database.get(parts[0]).containsKey(parts[1])))){
 				list.add(str);
 			}
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	protected void checkSubdivisions(String dbname, String type){
 		Hashtable<String,Hashtable<String,String>> typeParams = database.get(dbname);
@@ -204,11 +204,11 @@ public class GlobalConfiguration {
 				typeParams.put(type+".sub"+i,(Hashtable<String, String>) params.clone());
 		}
 	}
-	
-	/** 
+
+	/**
 	 * Check if the setup is correct,i.e. there is indexer and searcher
 	 * for each db  ...
-	 *   
+	 *
 	 * @return returns true if the setup is OK
 	 */
 	public boolean checkIntegrity(){
@@ -260,7 +260,7 @@ public class GlobalConfiguration {
 		// expand logical index names on searchers
 		for(String host : search.keySet()){
 			ArrayList<String> hostsearch = search.get(host);
-			for(String dbname : hostsearch.toArray(new String[]{})){				
+			for(String dbname : hostsearch.toArray(new String[]{})){
 				Hashtable<String, Hashtable<String,String>> types = database.get(dbname);
 				if(types != null){ // if not null, dbrole is dbname
 					if(types.containsKey("mainsplit")){
@@ -298,7 +298,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") 
+				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related")
 						|| typeid.equals("prefix") || typeid.equals("title_ngram")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
@@ -307,7 +307,7 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
-				
+
 				if(indexLocation.get(dbrole) == null){
 					// fill-in with host that indexes dbname
 					if(indexLocation.get(dbname) != null ){
@@ -319,13 +319,13 @@ public class GlobalConfiguration {
 						return false;
 					} */
 					// add same index location for highlight .hl index
-					/* String host = indexLocation.get(dbrole); 
+					/* String host = indexLocation.get(dbrole);
 					indexLocation.put(dbrole+".hl",host);
 					index.get(host).add(dbrole+".hl"); */
-					
+
 				}
-				/* boolean searched = (getSearchHosts(dbrole).size() != 0); 
-				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") 
+				/* boolean searched = (getSearchHosts(dbrole).size() != 0);
+				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split")
 						|| typeid.equals("nssplit") || typeid.equals("links") || typeid.equals("related") || typeid.equals("title_ngram"))){
 					if(verbose)
 						System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
@@ -334,10 +334,10 @@ public class GlobalConfiguration {
 		}
 		return true;
 	}
-	
-	/** 
+
+	/**
 	 * Read a config file from a given URL
-	 * 
+	 *
 	 * @param url
 	 * @throws IOException
 	 */
@@ -351,15 +351,15 @@ public class GlobalConfiguration {
 		} catch (IOException e) {
 			System.out.println("I/O Error in opening or reading global config at url "+url);
 			throw e;
-		}		
+		}
 	}
 
 	/**
 	 * Prepare hashtables to load data into them
-	 * 
+	 *
 	 */
 	protected void init(){
-		database = new Hashtable<String, Hashtable<String, Hashtable<String, String>>>();		
+		database = new Hashtable<String, Hashtable<String, Hashtable<String, String>>>();
 		searchGroup = new Hashtable<Integer,Hashtable<String, ArrayList<String>>>();
 		search = new Hashtable<String, ArrayList<String>>();
 		searchWildcard = new Hashtable<String, ArrayList<Pattern>>();
@@ -373,46 +373,46 @@ public class GlobalConfiguration {
 		oaiRepo = new Hashtable<String,String>();
 		indexWildcard = new Hashtable<Pattern,String>();
 	}
-	
+
 	protected String[] getArrayProperty(String name){
 		String s = globalProperties.getProperty(name);
 		if (s != null)
 			return s.split(" ");
 		return null;
 	}
-	
-	/** 
+
+	/**
 	 * Reads a config file from a bufferedreader, will
 	 * close the reader when done.
-	 *  
+	 *
 	 * @param in   opened reader
 	 * @throws IOException
 	 */
 	protected void read(BufferedReader in, String indexpath) throws IOException{
-		String line="";		
-		Section section = null; 
+		String line="";
+		Section section = null;
 		Pattern roleRegexp = Pattern.compile("\\((.*?)\\)");
 		int lineNum = 0;
-		// sections	
+		// sections
 		int searchGroupNum = -1;
-		
+
 		init();
 		this.indexPath = indexpath;
-		
+
 		while((line = in.readLine()) != null){
 			lineNum ++;
 			// strip comments
 			line = line.replaceFirst("#.*","");
-			
+
 			if(line.trim().equals(""))
-				continue; 
-			
+				continue;
+
 			line = preprocessLine(line);
-			
+
 			if(line.startsWith("[") && line.length()>2 && !Character.isDigit(line.charAt(1))){ // section
 				int last = line.indexOf("]");
 				String s = line.substring(1,last);
-				
+
 				if(s.equalsIgnoreCase("properties")){
 					globalProperties = new Properties();
 					StringBuilder prop = new StringBuilder(line+"\n");
@@ -421,7 +421,7 @@ public class GlobalConfiguration {
 							break;
 						prop.append(line);
 						prop.append("\n");
-					}					
+					}
 					globalProperties.load(new ByteArrayInputStream(prop.toString().getBytes("utf-8")));
 					// get some predifined global properties
 					this.databaseSuffixes = getArrayProperty("Database.suffix");
@@ -445,7 +445,7 @@ public class GlobalConfiguration {
 					last = line.indexOf("]");
 					s = line.substring(1,last);
 				}
-				
+
 				if(s.equalsIgnoreCase("database"))
 					section = Section.DATABASE;
 				else if(s.equalsIgnoreCase("index"))
@@ -468,33 +468,33 @@ public class GlobalConfiguration {
 					System.out.println("Ignoring a line up to first section heading...");
 			} else if(section == Section.DATABASE || section == Section.DATABASE_GROUP){
 				String[] parts = splitBySemicolon(line,lineNum);
-				if(parts == null) continue;				
+				if(parts == null) continue;
 				String[] dbs = parts[0].split(",");
 				for(int i=0;i<dbs.length;i++) dbs[i]=dbs[i].trim();
-				
-				// syntax: dbname : (role,params), (role2,params2) 				
+
+				// syntax: dbname : (role,params), (role2,params2)
 				Matcher matcher = roleRegexp.matcher(parts[1]);
 				while(matcher.find()){
-					processDBRole(dbs,matcher.group(1));					
+					processDBRole(dbs,matcher.group(1));
 				}
 			} else if(section == Section.SEARCH){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String host = parts[0].trim();
-				
+
 				processSearchRoles( host, parts[1], searchGroupNum);
 			} else if(section == Section.INDEX){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String host = parts[0].trim();
-				
+
 				processIndexRoles(host,parts[1]);
 			} else if(section == Section.INDEXPATH){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String host = parts[0].trim();
 				String path = parts[1].trim();
-				
+
 				if(indexRsyncPath.get(host)!=null && verbose)
 					System.out.println("Warning: repeated path definition for host "+host+" on line "+lineNum+", overwriting old.");
 				indexRsyncPath.put(host,path);
@@ -502,24 +502,24 @@ public class GlobalConfiguration {
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String prefix = parts[0].trim();
-				String filter = parts[1].trim();				
-				
+				String filter = parts[1].trim();
+
 				if(filter.equalsIgnoreCase("<all>"))
 					namespacePrefixAll = prefix;
 				else
-					namespacePrefix.put(prefix,new NamespaceFilter(filter));				
+					namespacePrefix.put(prefix,new NamespaceFilter(filter));
 			} else if(section == Section.OAI){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String suffix = parts[0].trim();
-				String url = parts[1].trim();				
-				
+				String url = parts[1].trim();
+
 				oaiRepo.put(suffix,url);
 			} else if(section == Section.NAMESPACE_BOOST){
 				String[] parts = splitBySemicolon(line,lineNum);
-				if(parts == null) continue;				
+				if(parts == null) continue;
 				String[] dbs = parts[0].split(",");
-				for(int i=0;i<dbs.length;i++) 
+				for(int i=0;i<dbs.length;i++)
 					dbs[i]=dbs[i].trim();
 				processNamespaceBoost(dbs,parts[1]);
 			}
@@ -528,7 +528,7 @@ public class GlobalConfiguration {
 			in.close();
 			System.exit(1);
 		}
-		
+
 		makeIndexIdPool();
 		if(useSmartInterwiki){
 			for(IndexId iid : indexIdPool.values()){
@@ -538,17 +538,17 @@ public class GlobalConfiguration {
 					for(String suffix : databaseSuffixes) {
 						if(dbname.endsWith(suffix))
 							smartInterwikiCodes.add(dbname.substring(0, dbname.length() - suffix.length()).toLowerCase());
-					}	
+					}
 				}
 			}
 		}
 		in.close();
 	}
-	
+
 	protected void processNamespaceBoost(String[] dbs, String def) {
 		Pattern mapRegexp = Pattern.compile("\\((.*?)\\)");
 		HashMap<Integer,Float> map = new HashMap<Integer,Float>();
-		
+
 		Matcher matcher = mapRegexp.matcher(def);
 		while(matcher.find()){
 			String[] parts = matcher.group(1).split(",");
@@ -565,7 +565,7 @@ public class GlobalConfiguration {
 	 * A bit hackish: read InitialiseSettings which we know have a certain
 	 * format to avoid maintaining two copies for config files (one in php
 	 * other for lsearch in global conf)
-	 * 
+	 *
 	 * @param initset
 	 */
 	protected void initializeWmfSettings(String initset) {
@@ -580,7 +580,7 @@ public class GlobalConfiguration {
 			Localization.readDBLocalizations(text);
 		} catch (Exception e) {
 			System.out.println("Error reading InitialiseSettings.php from url "+initset+" : "+e.getMessage());
-		}	
+		}
 	}
 
 	/** Get all hosts which search this inxedId (dbrole) */
@@ -608,7 +608,7 @@ public class GlobalConfiguration {
 		}
 		return searchHosts;
 	}
-	
+
 	/** Get all hosts that search this dbname within current hosts search groups */
 	protected HashSet<String> getMySearchHosts(String dbname, String dbrole){
 		HashSet<String> searchHosts = new HashSet<String>();
@@ -617,16 +617,16 @@ public class GlobalConfiguration {
 			group = databaseHostGroup.get(dbname+"@"+hostName);
 		if(group == null)
 			return searchHosts;
-		
+
 		for(String host : searchGroup.get(group).keySet()){
 			if(search.get(host).contains(dbrole))
 				searchHosts.add(host);
 		}
 		return searchHosts;
 	}
-	
+
 	/**
-	 * Call after all data is read from config file, make indexIds for all the 
+	 * Call after all data is read from config file, make indexIds for all the
 	 * indexes in the system
 	 *
 	 */
@@ -637,7 +637,7 @@ public class GlobalConfiguration {
 			localIndexes = new ArrayList<String>();
 		if(index.get(hostName)!=null)
 			localIndexes.addAll(index.get(hostName)); */
-		
+
 		// dbname -> ts index, e.g. enwiki -> en-titles.tspart1
 		HashMap<String,String> dbnameTitlesPart = new HashMap<String,String>();
 		// dbname -> matched suffix, e.f. enwiki -> wiki
@@ -670,7 +670,7 @@ public class GlobalConfiguration {
 		// process the general pattern
 		if(database.containsKey("<all>")){
 			Hashtable<String,Hashtable<String,String>> allKeyword = database.get("<all>");
-			splitFactor = Integer.parseInt(allKeyword.get("titles_by_suffix").get("number"));			
+			splitFactor = Integer.parseInt(allKeyword.get("titles_by_suffix").get("number"));
 			for(int i=1;i<=splitFactor;i++){
 				String part = "tspart"+i;
 				suffixIwMap.putAll(allKeyword.get(part));
@@ -705,17 +705,17 @@ public class GlobalConfiguration {
 					code.put("code",dbLang.get(db));
 					p.put("language",code);
 				}
-				database.put(db+"-titles",p);				
+				database.put(db+"-titles",p);
 			}
 		}
-		
+
 		// iterate over all dbs and types
 		for(String dbname : database.keySet()){
 			if(dbname.startsWith("<"))
 				continue; // keyword special case
 			for(String typeid : database.get(dbname).keySet()){
 				String type = "";
-				String dbrole = "";				
+				String dbrole = "";
 				if(typeid.equals("single") || typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit")){
 					type = typeid;
 					dbrole = dbname;
@@ -742,20 +742,20 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
-						
+
 				HashSet<String> searchHosts = getSearchHosts(dbrole);
 				// FIXME: grouping is largely broken and not really that useful
 				// HashSet<String> mySearchHosts = getMySearchHosts(dbname,dbrole);
 				HashSet<String> mySearchHosts = searchHosts;
 				boolean mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
 				String indexHost = getIndexHost(dbrole,dbname);
-				boolean myIndex = isMyHost(indexHost); 
+				boolean myIndex = isMyHost(indexHost);
 				Hashtable<String,String> typeidParams = database.get(dbname).get(typeid);
 				boolean isSubdivided = false;
 				if(typeidParams != null && typeidParams.containsKey("subdivisions")){
 					isSubdivided = true;
 				}
-				
+
 				String rsyncIndexPath = "/";
 				// if the index is on the local computer search for it
 				// using both ip address and host name
@@ -764,14 +764,14 @@ public class GlobalConfiguration {
 					if(rsyncIndexPath == null)
 						rsyncIndexPath = indexRsyncPath.get(hostName);
 					if(rsyncIndexPath == null)
-						rsyncIndexPath = indexRsyncPath.get("<default>");	
+						rsyncIndexPath = indexRsyncPath.get("<default>");
 				} else{
 					rsyncIndexPath = indexRsyncPath.get(indexHost);
 					if(rsyncIndexPath == null)
 						rsyncIndexPath = indexRsyncPath.get("<default>");
 				}
 				String oairepo = getOAIRepo(dbname);
-				
+
 				IndexId iid = new IndexId(dbrole,
 						                    type,
 						                    indexHost,
@@ -789,8 +789,8 @@ public class GlobalConfiguration {
 						                    dbnameSuffix.get(dbname),
 						                    getSuffixToDBMap(dbrole,dbnameTitlesPart,dbnameSuffix));
 				indexIdPool.put(dbrole,iid);
-				
-				// add precursor indexes 
+
+				// add precursor indexes
 				if(type.equals("spell") || type.equals("prefix")){
 					iid = new IndexId(dbrole+".pre",
 	                    "precursor",
@@ -811,7 +811,7 @@ public class GlobalConfiguration {
 					indexIdPool.put(dbrole+".pre",iid);
 				}
 				// add highlight indexes
-				if(type.equals("single") || type.equals("mainsplit") || type.equals("split") 
+				if(type.equals("single") || type.equals("mainsplit") || type.equals("split")
 						||	type.equals("nssplit") || type.equals("subdivided")){
 					dbrole+=".hl";
 					searchHosts = getSearchHosts(dbrole);
@@ -837,15 +837,15 @@ public class GlobalConfiguration {
 							            getSuffixToDBMap(dbrole,dbnameTitlesPart,dbnameSuffix));
 					indexIdPool.put(dbrole,iid);
 				}
-				
+
 			}
 			if(indexIdPool.get(dbname).isNssplit()){
 				indexIdPool.get(dbname).rebuildNsMap(indexIdPool);
 				indexIdPool.get(dbname+".hl").rebuildNsMap(indexIdPool);
 			}
-		}		
+		}
 	}
-	
+
 	private String getIndexHost(String dbrole, String dbname){
 		String indexHost = indexLocation.get(dbrole);
 		if(indexHost == null)
@@ -880,7 +880,7 @@ public class GlobalConfiguration {
 		return map;
 	}
 
-	/** 
+	/**
 	 * Return the IndexId object given it's id string representation
 	 * @param dbrole
 	 * @return
@@ -888,11 +888,11 @@ public class GlobalConfiguration {
 	static public IndexId getIndexId(String dbrole){
 		return indexIdPool.get(dbrole);
 	}
-	
+
 	/**
 	 * Substitute {url} with content of url
 	 * where url points to list of db's one in each line
-	 * 
+	 *
 	 * @param line
 	 * @return processed line
 	 */
@@ -918,9 +918,9 @@ public class GlobalConfiguration {
 						text.append(l);
 				}
 				in.close();
-				
+
 				String dbs = text.toString();
-				
+
 				matcher.appendReplacement(replaced,dbs);
 			} catch (MalformedURLException e) {
 				System.out.println("Error in global config file: URL "+matcher.group(1)+" is a malfomed URL");
@@ -929,7 +929,7 @@ public class GlobalConfiguration {
 			}
 		}
 		matcher.appendTail(replaced);
-		
+
 		return replaced.toString();
 
 	}
@@ -942,7 +942,7 @@ public class GlobalConfiguration {
 		}
 		return parts;
 	}
-	
+
 	/**
 	 * Process a list: db.role, db1.role2... put this list into
 	 * index Hashtable, and make a reverse Hashtable indexLocation
@@ -951,13 +951,13 @@ public class GlobalConfiguration {
 	 */
 	protected void processIndexRoles(String host, String roles){
 		String[] dbroles = roles.split("[, ]+");
-		
+
 		ArrayList<String> hostroles = index.get(host);
 		if(hostroles == null){
 			hostroles = new ArrayList<String>();
 			index.put(host,hostroles);
 		}
-		for(String dbrole : dbroles){	
+		for(String dbrole : dbroles){
 			dbrole = dbrole.trim();
 			if(dbrole.length()==0)
 				continue;
@@ -970,12 +970,12 @@ public class GlobalConfiguration {
 			if(dbrole.contains("*"))
 				indexWildcard.put(StringUtils.makeRegexp(dbrole),host);
 			else
-				indexLocation.put(dbrole,host);					
+				indexLocation.put(dbrole,host);
 		}
 	}
-	
+
 	/**
-	 * Process a list: db.role, db1.role2... and put them into 
+	 * Process a list: db.role, db1.role2... and put them into
 	 * search and searchGroup hashtables
 	 * @param host
 	 * @param roles
@@ -983,19 +983,19 @@ public class GlobalConfiguration {
 	 */
 	protected void processSearchRoles(String host, String roles, int groupNum){
 		String[] dbroles = roles.split("[, ]+");
-		
+
 		// the cummulative search hastable
 		ArrayList<String> hostroles = search.get(host);
 		if(hostroles == null){
 			hostroles = new ArrayList<String>();
 			search.put(host,hostroles);
 		}
-		
-		// wildcards that if match will 
+
+		// wildcards that if match will
 		ArrayList<Pattern> hostwildcards = searchWildcard.get(host);
 		if(hostwildcards == null)
 			searchWildcard.put(host,hostwildcards = new ArrayList<Pattern>());
-		
+
 		// process groups
 		Integer grp = new Integer(groupNum);
 		Hashtable<String,ArrayList<String>> grouphosts = searchGroup.get(grp);
@@ -1003,13 +1003,13 @@ public class GlobalConfiguration {
 			grouphosts = new Hashtable<String,ArrayList<String>>();
 			searchGroup.put(grp,grouphosts);
 		}
-		
+
 		ArrayList<String> grouproles = grouphosts.get(host);
 		if(grouproles == null){
 			grouproles = new ArrayList<String>();
 			grouphosts.put(host,grouproles);
 		}
-		
+
 		// add to both lists
 		for(String dbrole : dbroles){
 			dbrole = dbrole.trim();
@@ -1033,24 +1033,24 @@ public class GlobalConfiguration {
 			grouproles.add(dbrole);
 		}
 	}
-	
+
 	/**
 	 * Process roles in format type,param1,param2... and put
 	 * them into the database Hashtable
-	 * 
+	 *
 	 * @param db   name of the db to which the role belongs
 	 * @param role role string in above format
 	 */
 	protected void processDBRole(String[] dbs, String role){
 		String[] tokens = role.split(",");
 		String type = tokens[0].trim().toLowerCase();
-		
+
 		Hashtable<String,Hashtable<String,String>> dbroles = new Hashtable<String,Hashtable<String,String>>();
 		Hashtable<String,String> params = new Hashtable<String,String>();
-		
+
 		if(type.equals("single") || type.equals("mainpart") ||
-		   type.equals("restpart") || type.matches("part[1-9][0-9]*")){		
-			
+		   type.equals("restpart") || type.matches("part[1-9][0-9]*")){
+
 			// all params are optional, if absent default will be used
 			if(tokens.length>1){
 				String token = tokens[1].trim().toLowerCase();
@@ -1067,12 +1067,12 @@ public class GlobalConfiguration {
 				params.put("maxBufDocs", tokens[3]);
 			if(tokens.length>4)
 				params.put("subdivisions", tokens[4]);
-			
+
 			if(tokens.length>5 && verbose)
 				System.out.println("Unrecognized database parameters in ("+role+")");
-			
+
 			dbroles.put(type,params);
-			
+
 		} else if(type.equals("mainsplit")){
 			// currently no params
 			dbroles.put(type,params);
@@ -1089,33 +1089,33 @@ public class GlobalConfiguration {
 			// langauge is optional, or maybe it shouldn't be
 			if(tokens.length>1)
 				params.put("code",tokens[1]);
-			
+
 			if(tokens.length>2 && verbose)
 				System.out.println("Unrecognized language parameters in ("+role+")");
-			
+
 			dbroles.put(type,params);
-			
+
 		} else if(type.startsWith("warmup")){
 			// number of warmup queries
 			if(tokens.length>1)
 				params.put("count",tokens[1]);
-			
+
 			if(tokens.length>2 && verbose)
 				System.out.println("Unrecognized warmup parameters in ("+role+")");
-			
+
 			dbroles.put(type,params);
-			
+
 		} else if(type.matches("nspart[1-9][0-9]*")){
 			// [0,1,2] syntax gets split up in first split, retokenize
 			String ns = role.substring(role.indexOf(",")+1,role.lastIndexOf("]")+1).trim();
 			tokens = role.substring(role.lastIndexOf("]")+1).split(",");
-			// definition of namespaces, e.g. [0,1,2]			
+			// definition of namespaces, e.g. [0,1,2]
 			if(ns.length() > 2 && ns.startsWith("[") && ns.endsWith("]"))
 				ns = ns.substring(1,ns.length()-1);
 			else
 				ns = "<default>";
 			params.put("namespaces",ns);
-			
+
 			// all params are optional, if absent default will be used
 			if(tokens.length>1){
 				String token = tokens[1].trim().toLowerCase();
@@ -1132,35 +1132,35 @@ public class GlobalConfiguration {
 				params.put("maxBufDocs", tokens[3]);
 			if(tokens.length>4)
 				params.put("subdivisions", tokens[4]);
-			
+
 			if(tokens.length>5 && verbose)
 				System.out.println("Unrecognized database parameters in ("+role+")");
-			
+
 			dbroles.put(type,params);
-						
-		} else if(type.equals("spell")){			
+
+		} else if(type.equals("spell")){
 			// all params are optional, if absent default will be used
 			if(tokens.length>1)
 				params.put("wordsMinFreq",tokens[1]);
 			if(tokens.length>2)
 				params.put("phrasesMinFreq",tokens[2]);
-			
+
 			if(tokens.length>3 && verbose)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
-			
+
 			dbroles.put(type,params);
 		} else if(type.equals("title_ngram")){
 			// no params
 			if(tokens.length>1 && verbose)
 				System.out.println("Unrecognized title_ngram parameters in ("+role+")");
-			
+
 			dbroles.put(type,params);
 		} else if(type.equals("prefix")){
 			// no params
 			if(tokens.length>1 && verbose)
 				System.out.println("Unrecognized prefix parameters in ("+role+")");
-			
-			dbroles.put(type,params);			
+
+			dbroles.put(type,params);
 		} else if(type.equals("titles_by_suffix") || type.equals("titles_grouped")){
 			if(tokens.length>1) // number of segments
 				params.put("number",tokens[1]);
@@ -1182,20 +1182,20 @@ public class GlobalConfiguration {
 				else
 					iw = suffix;
 				params.put(suffix,iw);
-			}		
-			dbroles.put(type,params);		
+			}
+			dbroles.put(type,params);
 		} else if(verbose){
 			System.out.println("Warning: Unrecognized role \""+role+"\".Ignoring.");
 		}
-		
-		
+
+
 		// add dbroles to all given dbs
 		for(int i=0;i<dbs.length;i++){
 			String db = dbs[i];
-			
+
 			Hashtable<String, Hashtable<String, String>> dbr =  database.get(db);
 			if(dbr == null){
-				dbr = new Hashtable<String, Hashtable<String, String>>();				
+				dbr = new Hashtable<String, Hashtable<String, String>>();
 				database.put(db,dbr);
 			}
 			if(type.equals("split") || type.equals("mainsplit") || type.equals("single") || type.equals("nssplit")){
@@ -1215,7 +1215,7 @@ public class GlobalConfiguration {
 	 * Returns if host should do some indexing
 	 * @return true if this node is indexer
 	 */
-	public boolean isIndexer(){		
+	public boolean isIndexer(){
 		return index.get(hostAddr)!=null || index.get(hostName)!=null;
 	}
 
@@ -1226,20 +1226,20 @@ public class GlobalConfiguration {
 	public boolean isSearcher() {
 		return search.get(hostAddr)!=null || search.get(hostName)!=null;
 	}
-	
+
 	/**
-	 * Returns parameters of database, i.e. language, warmup ... 
-	 * 
+	 * Returns parameters of database, i.e. language, warmup ...
+	 *
 	 * @param dbname
 	 * @return Hashtable of parameters for dbname.type
 	 */
 	public Hashtable<String,String> getDBParams(String dbname, String type){
 		return database.get(dbname).get(type);
 	}
-	
-	/** 
-	 * Get integer parameter for dbname.type 
-	 * Returns defaultValue if the param is not defined 
+
+	/**
+	 * Get integer parameter for dbname.type
+	 * Returns defaultValue if the param is not defined
 	 */
 	public int getIntDBParam(String dbname, String type, String param, int defaultValue){
 		Hashtable<String,String> p = database.get(dbname).get(type);
@@ -1249,10 +1249,10 @@ public class GlobalConfiguration {
 		else
 			return Integer.parseInt(val);
 	}
-	
-	/** 
-	 * Get string parameter for dbname.type 
-	 * Returns defaultValue if the param is not defined 
+
+	/**
+	 * Get string parameter for dbname.type
+	 * Returns defaultValue if the param is not defined
 	 */
 	public String getStringDBParam(String dbname, String type, String param, String defaultValue){
 		Hashtable<String,String> p = database.get(dbname).get(type);
@@ -1262,11 +1262,11 @@ public class GlobalConfiguration {
 		else
 			return val;
 	}
-	
+
 	/**
 	 * Look at the logical DB structure ([Database] in global config)
-	 * and figure out the main index type of database (e.g. single, 
-	 * mainpart, split).  
+	 * and figure out the main index type of database (e.g. single,
+	 * mainpart, split).
 	 * @param dbname
 	 * @return lowercased db type
 	 */
@@ -1276,10 +1276,10 @@ public class GlobalConfiguration {
 			String type = (String)e.nextElement();
 			if(type.equals("single") || type.equals("mainsplit") || type.equals("split"))
 				return type;
-		}		
+		}
 		// global configuration consistency error
 		System.out.println("Database "+dbname+" does not have a specified type (eg single, mainsplit, split).");
-		return "unknown"; 
+		return "unknown";
 	}
 
 	/**
@@ -1289,7 +1289,7 @@ public class GlobalConfiguration {
 	public boolean isMyHost(String host) {
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
-	
+
 	/** Get language for a dbname */
 	public String getLanguage(String dbname) {
 		// first check explicit language paramter in global settings
@@ -1310,40 +1310,40 @@ public class GlobalConfiguration {
 			for (String suffix : databaseSuffixes) {
 				if (dbname.endsWith(suffix))
 					return dbname.substring(0, dbname.length() - suffix.length());
-			}	
+			}
 		}
-		
+
 		return "";
 	}
-	
+
 	/** All indexes that localhost is indexing */
 	public HashSet<IndexId> getMyIndex(){
 		HashSet<IndexId> ret = new HashSet<IndexId>();
-		
+
 		for(IndexId iid : indexIdPool.values()){
 			if(iid.isMyIndex())
 				ret.add(iid);
 		}
-		
+
 		return ret;
 	}
-	
+
 	/** All indexed that localhost is searching */
 	public HashSet<IndexId> getMySearch(){
 		HashSet<IndexId> ret = new HashSet<IndexId>();
-		
+
 		for(IndexId iid : indexIdPool.values()){
 			if(iid.isMySearch())
 				ret.add(iid);
 		}
-		
+
 		return ret;
 	}
 	/** Get all dbnames that are locally indexed */
 	public ArrayList<String> getMyIndexDBnames(){
 		HashSet<String> dbnames = new HashSet<String>();
 		ArrayList<String> dbnamesSorted = new ArrayList<String>();
-		
+
 		for(IndexId iid : indexIdPool.values()){
 			if(iid.isMyIndex() && !iid.isTitlesBySuffix() && !iid.isSpell())
 				dbnames.add(iid.getDBname().toString());
@@ -1352,7 +1352,7 @@ public class GlobalConfiguration {
 		Collections.sort(dbnamesSorted);
 		return dbnamesSorted;
 	}
-	
+
 	/** Get the name of the localhost as it appears in global configuration */
 	public String getLocalhost(){
 		if(index.get(hostAddr) != null || search.get(hostAddr) != null)
@@ -1370,7 +1370,7 @@ public class GlobalConfiguration {
 	public String getNamespacePrefixAll() {
 		return namespacePrefixAll;
 	}
-	
+
 	/** Check wether dbname has some of the suffixes */
 	protected boolean checkSuffix(String[] suffixes, String dbname){
 		if(suffixes == null)
@@ -1383,32 +1383,32 @@ public class GlobalConfiguration {
 		}
 		return false;
 	}
-	
+
 	/** If dbname should have additional rank boost */
 	public boolean useAdditionalRank(String dbname){
 		return checkSuffix(additionalRank,dbname);
 	}
-	
+
 	/** Returns if keyword scoring should be used for this db, using
 	 *  the suffixes from the global configuration
-	 *  
+	 *
 	 * @param dbname
 	 * @return
 	 */
 	public boolean useKeywordScoring(String dbname){
-		return checkSuffix(keywordScoringSuffixes,dbname);		
+		return checkSuffix(keywordScoringSuffixes,dbname);
 	}
-	
+
 	/**
-	 * If this dbname is assigned an exact-case additional index. 
-	 * 
+	 * If this dbname is assigned an exact-case additional index.
+	 *
 	 * @param dbname
 	 * @return
 	 */
 	public boolean exactCaseIndex(String dbname){
-		return checkSuffix(exactCaseSuffix,dbname);		
+		return checkSuffix(exactCaseSuffix,dbname);
 	}
-	
+
 	/** Find (longest) suffix that matches dbname */
 	public String findSuffix(String[] suffixes, String dbname){
 		if(suffixes == null)
@@ -1438,7 +1438,7 @@ public class GlobalConfiguration {
 			return ret;
 		return null;
 	}
-	
+
 	public AgeScaling getAgeScaling(String dbname){
 		String strong = findSuffix(ageScalingStrong,dbname);
 		String medium = findSuffix(ageScalingMedium,dbname);
@@ -1452,10 +1452,10 @@ public class GlobalConfiguration {
 			return AgeScaling.MEDIUM;
 		if(w>=s && s>=m)
 			return AgeScaling.WEAK;
-		
+
 		return AgeScaling.NONE;
 	}
-	
+
 	/** Get OAI-repo url for dbname */
 	public String getOAIRepo(String dbname){
 		String repo = null;
@@ -1474,7 +1474,7 @@ public class GlobalConfiguration {
 					repo += "/";
 				repo += "w/index.php"; // FIXME: we take this as generic path to index.php
 			}
-				
+
 		}
 		// get from global config
 		if(repo == null){
@@ -1485,13 +1485,13 @@ public class GlobalConfiguration {
 				repo = oaiRepo.get("<default>");
 		}
 		if(repo == null)
-			return ""; // failed, no url		
-		
+			return ""; // failed, no url
+
 		// process $lang
 		String lang = getLanguage(dbname);
 		repo = repo.replace("$lang",lang.replace('_','-'));
 		repo = repo += "?title=Special:OAIRepository";
-		
+
 		return repo;
 	}
 
@@ -1502,7 +1502,7 @@ public class GlobalConfiguration {
 	public static void setVerbose(boolean verbose) {
 		GlobalConfiguration.verbose = verbose;
 	}
-	
+
 	public NamespaceFilter getDefaultNamespace(IndexId iid){
 		return getDefaultNamespace(iid.getDBname());
 	}
@@ -1515,7 +1515,7 @@ public class GlobalConfiguration {
 		}
 		return new NamespaceFilter(0);
 	}
-	
+
 	public NamespaceFilter getContentNamespaces(IndexId iid){
 		return getContentNamespaces(iid.getDBname());
 	}
@@ -1528,7 +1528,7 @@ public class GlobalConfiguration {
 		}
 		return new NamespaceFilter(0);
 	}
-	
+
 	public NamespaceFilter getNamespacesWithSubpages(String dbname){
 		if(wgNamespacesWithSubpages != null){
 			if(wgNamespacesWithSubpages.containsKey(dbname))
@@ -1538,7 +1538,7 @@ public class GlobalConfiguration {
 		}
 		return new NamespaceFilter(2);
 	}
-	
+
 	public ArticleNamespaceScaling getNamespaceScaling(String dbname){
 		if(namespaceBoost.containsKey(dbname))
 			return namespaceBoost.get(dbname);
@@ -1547,19 +1547,19 @@ public class GlobalConfiguration {
 		else
 			return new ArticleNamespaceScaling(new HashMap<Integer,Float>());
 	}
-	
+
 	public HashSet<String> getSmartInterwikiCodes() {
 		return smartInterwikiCodes;
 	}
-	
+
 	public boolean hasCommonsWiki(){
 		return commonsWiki != null;
 	}
-	
+
 	public IndexId getCommonsWiki(){
 		return IndexId.get(commonsWiki);
 	}
-	
+
 	/** Get all searchers (NOTE: this is kindof slow...) */
 	public HashSet<String> getAllSearchHosts(){
 		HashSet<String> hosts = new HashSet<String>();
@@ -1577,11 +1577,11 @@ public class GlobalConfiguration {
 	public int getMaxSearchOffset() {
 		return maxSearchOffset;
 	}
-	
+
 	public String getIndexPath(){
 		return indexPath;
 	}
 
-	
+
 
 }

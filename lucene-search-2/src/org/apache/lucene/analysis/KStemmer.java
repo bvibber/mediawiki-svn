@@ -1233,7 +1233,7 @@ public class KStemmer {
 		if (dict_ht == null)
 			initializeDictHash();
 	}
-	
+
 	public String singular(String term) {
 		boolean stemIt;
 		String result;
@@ -1281,17 +1281,17 @@ public class KStemmer {
 		while (true) {
 			entry = wordInDict();
 			if (entry != null) break;
-			plural();	
+			plural();
 			break;
 		}
-		
+
 		if (entry != null) {
 			if (entry.root != null)
 				result = entry.root;
 			else
 				result = word.toString();
 		} else result = word.toString();
-		
+
 		/* Enter into cache, at the place not used by the last cache hit */
 		if (stem_ht.size() < MaxCacheSize) {
 			/* Add term to cache */
