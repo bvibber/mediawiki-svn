@@ -396,6 +396,7 @@ if ( typeof context == 'undefined' ) {
 				// Surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
 				var t = context.fn.getOffset( cursorPos[0] );
+				if ( typeof t === undefined ) return;
 				if ( t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
@@ -962,14 +963,23 @@ if ( typeof context == 'undefined' ) {
 				// Only IE needs this
 				return;
 			}
-			context.$iframe[0].contentWindow.focus();
-			context.savedSelection = context.$iframe[0].contentWindow.document.selection.createRange();
+			if ( typeof context.$iframe != 'undefined' ) {
+				context.$iframe[0].contentWindow.focus();
+				context.savedSelection = context.$iframe[0].contentWindow.document.selection.createRange();
+			} else {
+				context.$textarea.focus();
+				context.savedSelection = document.selection.createRange();
+			}
 		},
 		'restoreSelection': function() {
 			if ( !$.browser.msie || context.savedSelection === null ) {
 				return;
 			}
-			context.$iframe[0].contentWindow.focus();
+			if ( typeof context.$iframe != 'undefined' ) {
+				context.$iframe[0].contentWindow.focus();
+			} else {
+				context.$textarea.focus();
+			}
 			context.savedSelection.select();
 			context.savedSelection = null;
 		},
