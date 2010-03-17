@@ -87,7 +87,8 @@ public class UnicodeDecomposer {
 				chVal =  Integer.parseInt(parts[0],16);
 				if(chVal > 0xFFFF)
 					continue; // ignore any additional chars
-				if(parts[2].charAt(0) == 'L')
+				if(parts[2].charAt(0) == 'L'
+				    || parts[2].charAt(0) == 'N')
 					letters.set(chVal);
 
 				if(parts[2].charAt(0) == 'M')
