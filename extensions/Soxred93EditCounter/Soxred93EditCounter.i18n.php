@@ -8,18 +8,18 @@ $messages = array();
 
 
 $messages['en'] = array(
-	'title' => 'X!'s tools'
+	'title' => 'X!\'s tools'
 	'source' => 'View Source'
 	'language' => 'Select a language'
-	'tool' => 'X!'s Edit Counter'
+	'tool' => 'X!\'s Edit Counter'
 	'submit' => 'Submit'
 	'nowiki' => '$1 is not a valid wiki'
-	'welcome' => 'Welcome to X!'s edit counter!'
+	'welcome' => 'Welcome to X!\'s edit counter!'
 	'username' => 'Username'
 	'wiki' => 'Wiki'
-	'mysqlerror' => 'MySQL error, please report to X! using <a href='http://en.wikipedia.org/wiki/User:X!/Bugs'>the bug reporter.</a> Be sure to report the following SQL error when reporting:<br /><pre>$1</pre>'
+	'mysqlerror' => 'MySQL error, please report to X! using <a href=\'http://en.wikipedia.org/wiki/User:X!/Bugs\'>the bug reporter.</a> Be sure to report the following SQL error when reporting:<br /><pre>$1</pre>'
 	'nosuchuser' => '$1 does not exist.'
-	'highreplag' => 'Caution: <a href='https://wiki.toolserver.org/view/Replag'>Replication lag</a> is high, changes newer than $1 may not be shown.'
+	'highreplag' => 'Caution: <a href=\'https://wiki.toolserver.org/view/Replag\'>Replication lag</a> is high, changes newer than $1 may not be shown.'
 	'mainspace' => 'Article'
 	'generalinfo' => 'General user info'
 	'groups' => 'User groups'
@@ -43,7 +43,7 @@ $messages['en'] = array(
 
 $messages['qqq'] = array(
 	'title' => 'General title used for header'
-	'source' => 'Used for the 'view source' link'
+	'source' => 'Used for the \'view source\' link'
 	'language' => 'Used for the language select dialog'
 	'tool' => 'Name of the tool'
 	'submit' => 'Submit button on the form'
