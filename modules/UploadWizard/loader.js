@@ -16,6 +16,7 @@
 		"mw.UploadApiProcessor"		: "modules/UploadWizard/mw.UploadApiProcessor.js",
 		"mw.IframeTransport"		: "modules/UploadWizard/mw.IframeTransport.js",
 		"mw.ApiUploadHandler"		: "modules/UploadWizard/mw.ApiUploadHandler.js",
+		"mw.DestinationChecker"		: "modules/UploadWizard/mw.DestinationChecker.js",
 
 		"mw.MockUploadHandler"		: "modules/UploadWizard/mw.MockUploadHandler.js"			
 		
@@ -59,6 +60,7 @@
 			'mw.Language',
 			'mw.IframeTransport',
 			'mw.ApiUploadHandler',
+			'mw.DestinationChecker',
 			'mw.UploadWizard'
 		] );
 		
@@ -77,6 +79,7 @@
 			'mw.Language',
 			'mw.IframeTransport',
 			'mw.ApiUploadHandler',
+			'mw.DestinationChecker',
 			'mw.MockUploadHandler',
 			'mw.UploadWizard'
 		] );

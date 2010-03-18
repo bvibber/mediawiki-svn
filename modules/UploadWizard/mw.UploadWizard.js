@@ -44,6 +44,7 @@ mw.addMessages( {
 	"mwe-upwiz-other": "Other information",
 	"mwe-upwiz-other-prefill": "Free wikitext field",
 	"mwe-upwiz-showall": "show all",
+	
 
 	"mwe-upwiz-upload-error-bad-filename-extension": "This wiki does not accept filenames with the extension \"$1\".",
 	"mwe-upwiz-upload-error-duplicate": "This file was previously uploaded to this wiki.",
@@ -51,13 +52,9 @@ mw.addMessages( {
 	"mwe-upwiz-ok": "OK",
 	"mwe-upwiz-cancel": "Cancel",
 
-
-
-	"mwe-lic-pd": "Public domain",
-	"mwe-lic-cc-0": "Creative Commons Zero waiver",
-	"mwe-lic-cc-by-3.0": "Creative Commons Attribution 3.0",
-	"mwe-lic-cc-by-sa-3.0": "Creative Commons Attribution ShareAlike 3.0",
-	"mwe-lic-gfdl": "GFDL"
+	/* copied from mw.UploadHandler :(  */
+	"mwe-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to change it.",
+	"mwe-thumbnail-more" : "Enlarge"
 } );
 
 	// available licenses should be a configuration of the MediaWiki instance,
@@ -471,10 +468,18 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				.keydown( function() { 
 					$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( $j(_this.titleInput).val() ) );
 				});
+	$j(_this.titleInput).destinationChecked( {
+		spinner: _this.toggleDestinationBusy,
+		preprocess: mw.UploadWizardUtil.titleToPath,
+		processResult: _this.processDestinationCheck
+	} );
+
+	_this.titleErrorDiv = $j('<div></div>');
 
 	_this.titleContainerDiv = $j('<div></div>')
 		.append( $j( '<div class="mwe-details-label"></div>' ).append( gM( 'mwe-upwiz-title' ) ) )
-		.append( $j( '<div class="mwe-details-title"></div>' ).append( _this.titleInput ) );
+		.append( $j( '<div class="mwe-details-title"></div>' ).append( _this.titleInput ) )
+		.append( _this.titleErrorDiv );
 
 	_this.moreDetailsDiv = $j('<div class="mwe-more-details"></div>');
 
@@ -587,6 +592,102 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 mw.UploadWizardDetails.prototype = {
 
+	/**
+	 * show file destination field as "busy" while checking 
+	 * @param busy boolean true = show busy-ness, false = remove
+	 */
+	toggleDestinationBusy: function ( busy ) {
+		if (busy) {
+			_this.titleInput.addClass( busy );
+		} else {
+			_this.titleInput.removeClass( busy );
+		}
+	},
+	
+	/**
+	 * Process the result of a destination filename check.
+	 * See mw.DestinationChecker.js for documentation of result format 
+	 */
+	processDestinationCheck: function( result ) {
+		
+		if ( result.unique ) {
+			// do nothing
+			return;
+		}
+
+		// result is NOT unique
+		var title = result.title;
+		var img = result.img;
+		var href = result.href;
+		
+		var $fileAlreadyExists = $j('<div />')
+		.append(				
+			gM( 'mwe-fileexists', 
+				$j('<a />')
+				.attr( { target: '_new', href: href } )
+				.text( title )
+			)
+		)
+		
+		var $imageLink = $j('<a />')
+			.addClass( 'image' )
+			.attr( { target: '_new', href: href } )
+			.append( 
+				$j( '<img />')
+				.addClass( 'thumbimage' )
+				.attr( {
+					'width' : img.thumbwidth,
+					'height' : img.thumbheight,
+					'border' : 0,
+					'src' : img.thumburl,
+					'alt' : title
+				} )
+			);
+			
+		var $imageCaption = $j( '<div />' )
+			.addClass( 'thumbcaption' )
+			.append( 
+				$j('<div />')
+				.addClass( "magnify" )
+				.append(
+					$j('<a />' )
+					.addClass( 'internal' )
+					.attr( {
+						'title' : gM('mwe-thumbnail-more'),
+						'href' : href
+					} ),
+					
+					$j( '<img />' )
+					.attr( {
+						'border' : 0,
+						'width' : 15,
+						'height' : 11,
+						'src' : mw.getConfig( 'images_path' ) + 'magnify-clip.png'
+					} ), 
+					
+					$j('<span />')
+					.html( gM( 'mwe-fileexists-thumb' ) )
+				)													
+			);
+		$j( _this.titleErrorDiv ).append(
+			$fileAlreadyExists,
+			
+			$j( '<div />' )
+			.addClass( 'thumb tright' )
+			.append(
+				$j( '<div />' )
+				.addClass( 'thumbinner' )
+				.css({
+					'width' : ( parseInt( img.thumbwidth ) + 2 ) + 'px;'
+				})
+				.append( 
+					$imageLink, 
+					$imageCaption
+				)					
+			)
+		);		
+
+	} 
 
 	/**
 	 * Do anything related to a change in the number of descriptions
@@ -976,6 +1077,7 @@ mw.UploadWizardDetails.prototype = {
 		mw.getJSON(params, callback);
 
 		// then, if the filename was changed, do another api call to move the page
+
 		// THIS MAY NOT WORK ON ALL WIKIS. for instance, on Commons, it may be that only admins can move pages. This is another example of how
 		//   we need an "incomplete" upload status
 		// we are presuming this File page is brand new, so let's not bother with the whole redirection deal. ('noredirect')
@@ -986,9 +1088,10 @@ mw.UploadWizardDetails.prototype = {
 		*/
 
 
-	}	
-};
+	}
 
+
+}
 
 
 /**
