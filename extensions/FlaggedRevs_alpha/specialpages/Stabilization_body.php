@@ -77,7 +77,7 @@ class Stabilization extends UnlistedSpecialPage
 		if ( $this->isAllowed && $isValid && $confirm ) {
 			$status = $this->submit();
 			if ( $status === true ) {
-				$wgOut->redirect( $this->page->getFullUrl( $query ) );
+				$wgOut->redirect( $this->page->getFullUrl() );
 			} else {
 				$this->showSettings( wfMsg( $status ) );
 			}
@@ -98,7 +98,7 @@ class Stabilization extends UnlistedSpecialPage
 			return false; // can't continue
 		}
 		# Get old config
-		$this->config = FlaggedRevs::getPageVisibilitySettings( $this->page, true );
+		$this->config = FlaggedRevs::getPageVisibilitySettings( $this->page, FR_MASTER );
 		# Make user readable date for GET requests
 		$this->oldExpiry = $this->config['expiry'] !== 'infinity' ?
 			wfTimestamp( TS_RFC2822, $this->config['expiry'] ) : 'infinite';
@@ -114,8 +114,9 @@ class Stabilization extends UnlistedSpecialPage
 			// Custom expiry takes precedence
 			$this->expiry = strlen( $this->expiry ) ?
 				$this->expiry : $this->expirySelection;
-			if ( $this->expiry == 'existing' )
+			if ( $this->expiry == 'existing' ) {
 				$this->expiry = $this->oldExpiry;
+			}
 			// Custom reason takes precedence
 			if ( $this->reasonSelection != 'other' ) {
 				$comment = $this->reasonSelection; // start with dropdown reason
@@ -131,10 +132,14 @@ class Stabilization extends UnlistedSpecialPage
 			if ( $this->override !== 0 && $this->override !== 1 ) {
 				return false;
 			}
-			// Validate precedence setting
-			$allowed = array( FLAGGED_VIS_QUALITY, FLAGGED_VIS_LATEST, FLAGGED_VIS_PRISTINE );
-			if ( $this->select && !in_array( $this->select, $allowed ) ) {
-				return false; // invalid value
+			// Protection levels used: ignore fpc_select
+			if( FlaggedRevs::useProtectionLevels() ) {
+				$this->select = FlaggedRevs::getPrecedence(); // default
+			// Otherwise: validate precedence setting
+			} else {
+				if ( !FlaggedRevs::isValidPrecedence( $this->select ) ) {
+					return false; // invalid value
+				}
 			}
 			// Check autoreview setting
 			if ( !self::userCanSetAutoreviewLevel( $this->autoreview ) ) {
@@ -157,13 +162,17 @@ class Stabilization extends UnlistedSpecialPage
 
 	/**
 	* Check if a user can set the autoreview restiction level to $right
-	* @param string $level
+	* @param string $right the level
 	* @returns bool
 	*/
 	public static function userCanSetAutoreviewLevel( $right ) {
 		global $wgUser;
-		if ( $right == '' )
-			return true; // no restrictions
+		if ( $right == '' ) {
+			return true; // no restrictions (none)
+		}
+		if ( !in_array( $right, FlaggedRevs::getRestrictionLevels() ) ) {
+			return false; // invalid restriction level
+		}
 		# Don't let them choose levels above their own rights
 		if ( $right == 'sysop' ) {
 			// special case, rewrite sysop to protect and editprotected
@@ -359,24 +368,26 @@ class Stabilization extends UnlistedSpecialPage
 	
 	protected function buildSelector( $selected ) {
 		global $wgUser;
-		$levels = array();
-		foreach ( FlaggedRevs::getRestrictionLevels() as $key ) {
+		$allowedLevels = array();
+		$levels = FlaggedRevs::getRestrictionLevels();
+		array_unshift( $levels, '' ); // Add a "none" level
+		foreach ( $levels as $key ) {
 			# Don't let them choose levels they can't set, 
 			# but *show* them all when the form is disabled.
 			if ( $this->isAllowed && !self::userCanSetAutoreviewLevel( $key ) ) {
 				continue;
 			}
-			$levels[] = $key;
+			$allowedLevels[] = $key;
 		}
 		$id = 'mwProtect-level-autoreview';
 		$attribs = array(
 			'id' => $id,
 			'name' => $id,
-			'size' => count( $levels ),
+			'size' => count( $allowedLevels ),
 		) + $this->disabledAttrib;
 
 		$out = Xml::openElement( 'select', $attribs );
-		foreach ( $levels as $key ) {
+		foreach ( $allowedLevels as $key ) {
 			$out .= Xml::option( $this->getOptionLabel( $key ), $key, $key == $selected );
 		}
 		$out .= Xml::closeElement( 'select' );
@@ -395,116 +406,50 @@ class Stabilization extends UnlistedSpecialPage
 		} else {
 			$key = "protect-level-{$permission}";
 			$msg = wfMsg( $key );
-			if ( wfEmptyMsg( $key, $msg ) )
+			if ( wfEmptyMsg( $key, $msg ) ) {
 				$msg = wfMsg( 'protect-fallback', $permission );
+			}
 			return $msg;
 		}
 	}
 
 	public function submit() {
 		global $wgUser, $wgContLang;
-		$changed = $reset = false;
-		$defaultPrecedence = FlaggedRevs::getPrecedence();
-		$defaultOverride = FlaggedRevs::isStableShownByDefault();
-		if ( $this->select == $defaultPrecedence && $this->override == $defaultOverride )
-		{
-			$reset = ( $this->autoreview == '' ); // we are going back to site defaults
-		}
 		# Take this opportunity to purge out expired configurations
 		FlaggedRevs::purgeExpiredConfigurations();
-		# Parse expiry time given...
+		# Are we are going back to site defaults?
+		$reset = self::configIsReset( $this->select, $this->override, $this->autoreview );
+		# Parse and cleanup the expiry time given...
 		if ( $reset || $this->expiry == 'infinite' || $this->expiry == 'indefinite' ) {
-			$expiry = Block::infinity();
+			$this->expiry = Block::infinity(); // normalize to 'infinity'
 		} else {
 			# Convert GNU-style date, on error returns -1 for PHP <5.1 and false for PHP >=5.1
-			$expiry = strtotime( $this->expiry );
-			if ( $expiry < 0 || $expiry === false ) {
+			$this->expiry = strtotime( $this->expiry );
+			if ( $this->expiry < 0 || $this->expiry === false ) {
 				return 'stabilize_expiry_invalid';
 			}
-			$expiry = wfTimestamp( TS_MW, $expiry );
-			if ( $expiry < wfTimestampNow() ) {
+			# Convert date to MW timestamp format
+			$this->expiry = wfTimestamp( TS_MW, $this->expiry );
+			if ( $this->expiry < wfTimestampNow() ) {
 				return 'stabilize_expiry_old';
 			}
 		}
-
-		$dbw = wfGetDB( DB_MASTER );
-		$article = new Article( $this->page );
-		# Get current config
-		$row = $dbw->selectRow( 'flaggedpage_config',
-			array( 'fpc_select', 'fpc_override', 'fpc_level', 'fpc_expiry' ),
-			array( 'fpc_page_id' => $this->page->getArticleID() ),
-			__METHOD__,
-			'FOR UPDATE'
-		);
-		# If setting to site default values and there is a row...erase it
-		if ( $row && $reset ) {
-			$dbw->delete( 'flaggedpage_config',
-				array( 'fpc_page_id' => $this->page->getArticleID() ),
-				__METHOD__
-			);
-			$changed = ( $dbw->affectedRows() != 0 ); // did this do anything?
-		# Otherwise, add a row unless we are just setting it as the site default,
-		# or it is the same the current one...
-		} elseif ( !$reset ) {
-			if ( !$row // no previous config, or...
-				|| $row->fpc_select != $this->select // ...precedence changed, or...
-				|| $row->fpc_override != $this->override // ...override changed, or...
-				|| $row->fpc_level != $this->autoreview // ...autoreview level changed, or...
-				|| $row->fpc_expiry != $expiry // ...expiry changed
-			) {
-				$changed = true;
-				$dbw->replace( 'flaggedpage_config',
-					array( 'PRIMARY' ),
-					array( 'fpc_page_id' => $this->page->getArticleID(),
-						'fpc_select'   => $this->select,
-						'fpc_override' => $this->override,
-						'fpc_level'    => $this->autoreview,
-						'fpc_expiry'   => $expiry ),
-					__METHOD__
-				);
-			}
-		}
-		// Check if this actually changed anything...
+		# Update the DB row with the new config...
+		$changed = $this->updateConfigRow( $reset );
+		# Log if this actually changed anything...
 		if ( $changed ) {
-			$id = $this->page->getArticleId();
+			$article = new Article( $this->page );
 			$latest = $this->page->getLatestRevID( GAID_FOR_UPDATE );
-			# Config may have changed to allow stable versions...refresh page
-			# tracking to account for any hidden reviewed versions.
+			# Config may have changed to allow stable versions.
+			# Refresh tracking to account for any hidden reviewed versions...
 			$frev = FlaggedRevision::newFromStable( $this->page, FR_MASTER );
 			if ( $frev ) {
 				FlaggedRevs::updateStableVersion( $article, $frev->getRevision(), $latest );
+			} else {
+				FlaggedRevs::clearTrackingRows( $article->getId() );
 			}
-			# ID, accuracy, depth, style
-			$set = array();
-			# @FIXME: do this better
-			// Precedence
-			if ( FlaggedRevs::qualityVersions() ) {
-				$set[] = wfMsgForContent( 'stabilization-sel-short' ) .
-					wfMsgForContent( 'colon-separator' ) .
-					wfMsgForContent( "stabilization-sel-short-{$this->select}" );
-			}
-			// Default version
-			$set[] = wfMsgForContent( 'stabilization-def-short' ) .
-				wfMsgForContent( 'colon-separator' ) .
-				wfMsgForContent( "stabilization-def-short-{$this->override}" );
-			if ( strlen( $this->autoreview ) ) {
-				$set[] = "autoreview={$this->autoreview}";
-			}
-			$settings = '[' . $wgContLang->commaList( $set ) . ']';
-			# Append comment with settings (other than for resets)
-			$reason = $this->reason;
-			if ( !$reset ) {
-				$reason = $this->reason ? "{$this->reason} $settings" : "$settings";
-				$encodedExpiry = Block::encodeExpiry( $expiry, $dbw );
-				if ( $encodedExpiry != 'infinity' ) {
-					$expiry_description = ' (' . wfMsgForContent( 'stabilize-expiring',
-						$wgContLang->timeanddate( $expiry, false, false ) ,
-						$wgContLang->date( $expiry, false, false ) ,
-						$wgContLang->time( $expiry, false, false ) ) . ')';
-					$reason .= "$expiry_description";
-				}
-			}
-			# Add log entry...
+			# Insert stability log entry...
+			$reason = $this->getLogReason( $reset );
 			$log = new LogPage( 'stable' );
 			if ( $reset ) {
 				$log->addEntry( 'reset', $this->page, $reason );
@@ -513,35 +458,35 @@ class Stabilization extends UnlistedSpecialPage
 				$log->addEntry( 'config', $this->page, $reason );
 				$type = "stable-logentry-config";
 			}
-			# Build null-edit comment
+			# Build null-edit comment...
 			$comment = $wgContLang->ucfirst(
 				wfMsgForContent( $type, $this->page->getPrefixedText() ) );
-			if ( $reason ) {
+			if ( $reason != '' ) {
 				$comment .= wfMsgForContent( 'colon-separator' ) . $reason;
 			}
-			# Insert a null revision
-			$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
-			$nullRevId = $nullRevision->insertOn( $dbw );
+			# Insert a null revision...
+			$dbw = wfGetDB( DB_MASTER );
+			$nullRev = Revision::newNullRevision( $dbw, $article->getId(), $comment, true );
+			$nullRevId = $nullRev->insertOn( $dbw );
 			# Update page record and touch page
-			$article->updateRevisionOn( $dbw, $nullRevision, $latest );
+			$article->updateRevisionOn( $dbw, $nullRev, $latest );
 			wfRunHooks( 'NewRevisionFromEditComplete',
-				array( $article, $nullRevision, $latest ) );
-			
-			$invalidate = true;
-			# Take the user to the diff if an outdated version is being
-			# set as the default. This is really an issue with configs
-			# that only let certain pages be reviewed.
-			$frev = FlaggedRevision::newFromStable( $this->page, FR_MASTER );
-			$cfLevel = FlaggedRevs::getPrecedence( $this->select ); // desired level
-			// Is the page out of sync? Is there no stable version?
-			if ( !$frev || $frev->getRevId() != $nullRevId || $frev->getQuality() != $cfLevel ) {
-				$flags = FlaggedRevs::quickTags( $cfLevel ); // desired flags
-				// Try to autoreview to this level...
-				if ( $this->reviewThis && RevisionReview::userCanSetFlags( $flags ) ) {
-					$text = $nullRevision->getText();
-					// Invalidate cache if not already done with auto-review
-					$invalidate = !FlaggedRevs::autoReviewEdit( $article, $wgUser, $text,
-						$nullRevision, $flags, true );
+				array( $article, $nullRev, $latest ) );
+
+			# Null edit may have been autoreviewed already
+			$frev = FlaggedRevision::newFromTitle( $this->page, $nullRevId, FR_MASTER );
+			# We may need to invalidate the page links after changing the stable version.
+			# Only do so if not already done, such as by an auto-review of the null edit.
+			$invalidate = !$frev;
+			# Check if this null edit is to be reviewed...
+			if ( !$frev && $this->reviewThis ) {
+				$flags = null;
+				# Review this revision of the page...
+				$ok = FlaggedRevs::autoReviewEdit(
+					$article, $wgUser, $nullRev->getText(), $nullRev, $flags, true );
+				if( $ok ) {
+					FlaggedRevs::markRevisionPatrolled( $nullRev ); // reviewed -> patrolled
+					$invalidate = false; // links invalidated (with auto-reviewed)
 				}
 			}
 			# Update the links tables as the stable version may now be the default page...
@@ -556,5 +501,119 @@ class Stabilization extends UnlistedSpecialPage
 			$wgUser->removeWatch( $this->page );
 		}
 		return true;
+	}
+
+	protected function updateConfigRow( $reset ) {
+		$changed = false;
+		$dbw = wfGetDB( DB_MASTER );
+		# If setting to site default values and there is a row then erase it
+		if ( $reset ) {
+			$dbw->delete( 'flaggedpage_config',
+				array( 'fpc_page_id' => $this->page->getArticleID() ),
+				__METHOD__
+			);
+			$changed = ( $dbw->affectedRows() != 0 ); // did this do anything?
+		# Otherwise, add/replace row if we are not just setting it to the site default
+		} elseif ( !$reset ) {
+			$dbExpiry = Block::encodeExpiry( $this->expiry, $dbw );
+			$precedence = FlaggedRevs::useProtectionLevels()
+				? -1 // site default; fpc_select "don't care"
+				: $this->select;
+			# Get current config...
+			$oldRow = $dbw->selectRow( 'flaggedpage_config',
+				array( 'fpc_select', 'fpc_override', 'fpc_level', 'fpc_expiry' ),
+				array( 'fpc_page_id' => $this->page->getArticleID() ),
+				__METHOD__,
+				'FOR UPDATE'
+			);
+			# Check if this is not the same config as the existing row (if any)
+			$changed = self::configIsDifferent( $oldRow,
+				$precedence, $this->override, $this->autoreview, $dbExpiry );
+			# If the new config is different, replace the old row...
+			if ( $changed ) {
+				$dbw->replace( 'flaggedpage_config',
+					array( 'PRIMARY' ),
+					array(
+						'fpc_page_id'  => $this->page->getArticleID(),
+						'fpc_select'   => intval( $precedence ),
+						'fpc_override' => intval( $this->override ),
+						'fpc_level'    => $this->autoreview,
+						'fpc_expiry'   => $dbExpiry
+					),
+					__METHOD__
+				);
+			}
+		}
+		return $changed;
+	}
+
+	// Checks if new config is the same as the site default
+	protected function configIsReset( $select, $override, $autoreview ) {
+		# For protection config, just ignore the fpc_select column
+		if( FlaggedRevs::useProtectionLevels() ) {
+			return ( $override == FlaggedRevs::isStableShownByDefault()
+				&& $autoreview == '' );
+		} else {
+			return ( $select == FlaggedRevs::getPrecedence()
+				&& $override == FlaggedRevs::isStableShownByDefault()
+				&& $autoreview == '' );
+		}
+	}
+
+	// Checks if new config is different than the existing row
+	protected function configIsDifferent( $oldRow, $select, $override, $autoreview, $dbExpiry ) {
+		if( !$oldRow ) {
+			return true; // no previous config
+		}
+		# For protection config, just ignore the fpc_select column
+		if( FlaggedRevs::useProtectionLevels() ) {
+			return ( $oldRow->fpc_override != $override // ...override changed, or...
+				|| $oldRow->fpc_level != $autoreview // ...autoreview level changed, or...
+				|| $oldRow->fpc_expiry != $dbExpiry // ...expiry changed
+			);
+		} else {
+			return ( $oldRow->fpc_select != $select // ...precedence changed, or...
+				|| $oldRow->fpc_override != $override // ...override changed, or...
+				|| $oldRow->fpc_level != $autoreview // ...autoreview level changed, or...
+				|| $oldRow->fpc_expiry != $dbExpiry // ...expiry changed
+			);
+		}
+	}
+
+	// @FIXME: do this better
+	protected function getLogReason( $reset ) {
+		global $wgContLang;
+		$set = array();
+		// Precedence (ignored for protection-based configs)
+		if ( !FlaggedRevs::useProtectionLevels() && FlaggedRevs::qualityVersions() ) {
+			$set[] = wfMsgForContent( 'stabilization-sel-short' ) .
+				wfMsgForContent( 'colon-separator' ) .
+				wfMsgForContent( "stabilization-sel-short-{$this->select}" );
+		}
+		// Default version shown on page view
+		$set[] = wfMsgForContent( 'stabilization-def-short' ) .
+			wfMsgForContent( 'colon-separator' ) .
+			wfMsgForContent( "stabilization-def-short-{$this->override}" );
+		if ( strlen( $this->autoreview ) ) {
+			$set[] = "autoreview={$this->autoreview}";
+		}
+		$settings = '[' . $wgContLang->commaList( $set ) . ']';
+		# Append comment with settings (other than for resets)
+		$reason = $this->reason;
+		if ( !$reset ) {
+			$reason = ( $reason != '' )
+				? "{$reason} {$settings}"
+				: $settings;
+			$dbw = wfGetDB( DB_MASTER );
+			# $this->expiry is a MW timestamp or 'infinity'
+			if ( $this->expiry != Block::infinity() ) {
+				$expiry_description = wfMsgForContent( 'stabilize-expiring',
+					$wgContLang->timeanddate( $this->expiry, false, false ) ,
+					$wgContLang->date( $this->expiry, false, false ) ,
+					$wgContLang->time( $this->expiry, false, false ) );
+				$reason .= " ($expiry_description)";
+			}
+		}
+		return $reason;
 	}
 }

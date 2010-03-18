@@ -71,20 +71,24 @@ class FlaggedRevsXML {
 
 	/**
 	 * Get a radio options of available precendents
-	 * @param int $selected, selected level
+	 * @param int $selected selected level, '' for "all"
 	 * @returns string
 	 */
 	public static function getPrecedenceMenu( $selected = null ) {
+		if( is_null($selected) ) {
+			$selected = ''; // "all"
+		}
 		$s = Xml::openElement( 'select',
 			array( 'name' => 'precedence', 'id' => 'wpPrecedence' ) );
+		$s .= Xml::option( wfMsg( 'revreview-lev-all' ), '', $selected == '' );
 		$s .= Xml::option( wfMsg( 'revreview-lev-basic' ), FLAGGED_VIS_LATEST,
-			$selected == FLAGGED_VIS_LATEST );
+			$selected === FLAGGED_VIS_LATEST );
 		if ( FlaggedRevs::qualityVersions() )
 			$s .= Xml::option( wfMsg( 'revreview-lev-quality' ), FLAGGED_VIS_QUALITY,
-				$selected == FLAGGED_VIS_QUALITY );
+				$selected === FLAGGED_VIS_QUALITY );
 		if ( FlaggedRevs::pristineVersions() )
 			$s .= Xml::option( wfMsg( 'revreview-lev-pristine' ), FLAGGED_VIS_PRISTINE,
-				$selected == FLAGGED_VIS_PRISTINE );
+				$selected === FLAGGED_VIS_PRISTINE );
 		$s .= Xml::closeElement( 'select' ) . "\n";
 		return $s;
 	}
@@ -239,8 +243,11 @@ class FlaggedRevsXML {
 		$box .= "<td style='text-align:right;'>" . self::ratingToggle() . "</td></tr>\n";
 		$box .= "<tr><td id='mw-fr-revisionratings'>$html<br />";
 		# Add any rating tags as needed...
-		if ( $flags && ( $type == 'stable' || $type == 'oldstable' ) ) {
-			$box .= self::addTagRatings( $flags, true, $color );
+		if( $flags && !FlaggedRevs::binaryFlagging() ) {
+			# Don't show the ratings on draft views
+			if ( $type == 'stable' || $type == 'oldstable' ) {
+				$box .= self::addTagRatings( $flags, true, $color );
+			}
 		}
 		$box .= "</td><td></td></tr></table>";
         return $box;
@@ -254,7 +261,7 @@ class FlaggedRevsXML {
 		return '<a id="mw-fr-revisiontoggle" class="flaggedrevs_toggle" style="display:none;"' .
 			' onclick="FlaggedRevs.toggleRevRatings()" title="' .
 			wfMsgHtml( 'revreview-toggle-title' ) . '" >' .
-			wfMsgHtml( 'revreview-toggle' ) . '</a>';
+			wfMsgHtml( 'revreview-toggle-show' ) . '</a>';
 	}
 
 	/**
@@ -272,11 +279,11 @@ class FlaggedRevsXML {
 	 * @returns string
 	 * Generates (+/-) JS toggle HTML
 	 */
-	public static function logToggle() {
+	public static function logToggle( $msg ) {
 		return '<a id="mw-fr-logtoggle" class="flaggedrevs_toggle" style="display:none;"' .
 			' onclick="FlaggedRevs.toggleLog()" title="' .
-			wfMsgHtml( 'revreview-log-toggle-show' ) . '" >' .
-			wfMsgHtml( 'revreview-log-toggle-show' ) . '</a>';
+			wfMsgHtml( $msg ) . '" >' .
+			wfMsgHtml( $msg ) . '</a>';
 	}
 	
 	/**
@@ -483,9 +490,6 @@ class FlaggedRevsXML {
 	*/
 	public static function pendingEditNotice( $flaggedArticle, $frev, $revsSince ) {
 		global $wgLang;
-		if( $revsSince < 1 ) {
-			return ''; // only for pending edits
-		}
 		$flags = $frev->getTags();
 		$time = $wgLang->date( $frev->getTimestamp(), true );
 		# Add message text for pending edits

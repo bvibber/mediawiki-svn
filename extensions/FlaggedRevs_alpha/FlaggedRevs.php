@@ -77,9 +77,6 @@ $wgExtensionCredits['specialpage'][] = array(
 # This will only distinguish "sigted", "quality", and unreviewed
 # A small icon will show in the upper right hand corner
 $wgSimpleFlaggedRevsUI = true;
-# Add stable/draft revision tabs. May be redundant due to the tags.
-# If you have an open wiki, with the simple UI, you may want to enable these.
-$wgFlaggedRevTabs = true;
 # For visitors, only show tags/icons for unreviewed/outdated pages
 $wgFlaggedRevsLowProfile = true;
 
@@ -94,8 +91,11 @@ $wgFlaggedRevsWhitelist = array();
 $wgFlaggedRevsOverride = true;
 # Are pages only reviewable if the stable shows by default?
 $wgFlaggedRevsReviewForDefault = false;
-# Do quality revisions show instead of sighted if present by default?
-# Set to 2 to make "pristine" versions override quality revisions.
+# Precedence order for stable version selection.
+# The stable version will be the highest ranked version in the page.
+# FR_PRISTINE : "pristine" > "quality" > "sighted"
+# FR_QUALITY : "pristine" = "quality" > "sighted"
+# FR_SIGHTED : "pristine" = "quality" = "sighted"
 $wgFlaggedRevsPrecedence = FR_QUALITY;
 # Revision tagging can slow development...
 # For example, the main user base may become complacent, perhaps treat flagged
@@ -107,54 +107,51 @@ $wgFlaggedRevsExceptions = array( 'user' );
 # Can users make comments that will show up below flagged revisions?
 $wgFlaggedRevsComments = false;
 # Allow auto-review edits directly to the stable version by reviewers?
-# 1 to allow auto-sighting; 2 for auto-quality; 3 for auto-pristine
-$wgFlaggedRevsAutoReview = 1;
+$wgFlaggedRevsAutoReview = true;
 # Auto-review new pages with the minimal level?
 $wgFlaggedRevsAutoReviewNew = true;
 
-# When setting up new dimensions or levels, you will need to add some
-# MediaWiki messages for the UI to show properly; any sysop can do this.
 # Define the tags we can use to rate an article, number of levels,
 # and set the minimum level to have it become a "quality" or "pristine" version.
+# NOTE: When setting up new dimensions or levels, you will need to add some
+# 		MediaWiki messages for the UI to show properly; any sysop can do this.
 $wgFlaggedRevTags = array(
 	'accuracy' => array( 'levels' => 3, 'quality' => 2, 'pristine' => 4 ),
 	'depth'    => array( 'levels' => 3, 'quality' => 1, 'pristine' => 4 ),
 	'style'    => array( 'levels' => 3, 'quality' => 1, 'pristine' => 4 ),
 );
-# Who can set what flags to what level? (use -1 or 0 for not at all)
-# This maps rights to the highest reviewable level for each tag.
-# Users cannot lower tags from a level they can't set
-# Users with 'validate' can do anything regardless
+
+# For each tag, define the highest tag level that is unlocked by
+# having certain rights. For example, having 'review' rights may
+# allow for "depth" to be rated up to second level.
+# NOTE: Users cannot lower tags from a level they can't set.
+# NOTE: Users with 'validate' can do anything regardless.
 # This is mainly for custom, less experienced, groups
 $wgFlagRestrictions = array(
 	'accuracy' => array( 'review' => 1 ),
 	'depth'	   => array( 'review' => 2 ),
 	'style'	   => array( 'review' => 3 ),
 );
-# Use this to make levels of flags only appear if the page configured to
-# select the stable version in a certain way. Array of tags=>level=>config.
-$wgFlagAvailability = array();
-/* (example usage)
-$wgFlagAvailability = array( 
-	'style' => array( 1=>FLAGGED_VIS_LATEST, 2=>FLAGGED_VIS_QUALITY )
+# For each tag, what is the highest level that it can be auto-reviewed to?
+# $wgFlaggedRevsAutoReview must be enabled for this to apply.
+$wgFlaggedRevsTagsAuto = array(
+	'accuracy' => 1, 'depth' => 1, 'style' => 1
 );
-*/
 
 # At what level of review do patrol marks go away?
-# 0 => sighted; 1 => quality; 2 => pristine
-$wgFlaggedRevsPatrolLevel = 0;
+# (FR_SIGHTED,FR_QUALITY,FR_PRISTINE)
+$wgFlaggedRevsPatrolLevel = FR_SIGHTED;
 
-# Stability levels, defined below, that appear in protection form
-$wgFlaggedRevsProtectLevels = array();
-/* (example usage)
-$wgFlaggedRevsProtectLevels = array(
-	'semi-review' => array('select' => FLAGGED_VIS_LATEST, 'override' => true, 'autoreview' => ''),
-	'intm-review' => array('select' => FLAGGED_VIS_LATEST, 'override' => true, 'autoreview' => 'review'),
-);
-*/
-
-# Restriction levels for auto-review right at Stabilization page
+# Restriction levels for 'autoreview'/'review' rights.
+# When a level is selected for a page, an edit made by a user
+# requires approval unless that user has the specified permission.
+# Levels are set at the Stabilization special page.
 $wgFlaggedRevsRestrictionLevels = array( '', 'sysop' );
+# Set this to disable Stabilization and show the above restriction levels
+# on the protection form of pages. Each level has the stable version shown by default.
+# A "none" level will appear in the forms as well, to restore the default settings.
+# NOTE: The stable version precedence cannot be configured per page with this.
+$wgFlaggedRevsProtection = false;
 
 # Please set these as something different. Any text will do, though it probably
 # shouldn't be very short (less secure) or very long (waste of resources).
@@ -199,6 +196,7 @@ $wgFlaggedRevsAutopromote = array(
 	'days'	              => 60, # days since registration
 	'edits'	              => 250, # total edit count
 	'excludeDeleted'      => true, # exclude deleted edits from 'edits' count above?
+	// Require 'benchmark' edits 'spacing' days apart from each other
 	'spacing'	          => 3, # spacing of edit intervals
 	'benchmarks'          => 15, # how many edit intervals are needed?
 	'recentContentEdits'  => 0, # $wgContentNamespaces edits in recent changes
@@ -307,7 +305,7 @@ $wgAvailableRights[] = 'movestable';
 $wgAvailableRights[] = 'stablesettings';
 
 # Bump this number every time you change flaggedrevs.css/flaggedrevs.js
-$wgFlaggedRevStyleVersion = 66;
+$wgFlaggedRevStyleVersion = 67;
 
 $wgExtensionFunctions[] = 'efLoadFlaggedRevs';
 

@@ -46,7 +46,7 @@ No configuration is possible.',
 	'stabilize_expiry_invalid' => 'Invalid expiration date.',
 	'stabilize_expiry_old' => 'This expiration time has already passed.',
 	'stabilize-expiring' => 'expires $1 (UTC)',
-	'stabilization-review' => 'Review the current version',
+	'stabilization-review' => 'Mark the current revision checked',
 );
 
 /** Message documentation (Message documentation)
@@ -425,7 +425,7 @@ $messages['be-tarask'] = array(
 	'stabilize_expiry_invalid' => 'Няслушны тэрмін.',
 	'stabilize_expiry_old' => 'Час сканчэньня ўжо прайшоў.',
 	'stabilize-expiring' => 'канчаецца $1 (UTC)',
-	'stabilization-review' => 'Праверыць цяперашнюю вэрсію',
+	'stabilization-review' => 'Пазначыць цяперашнюю вэрсію як правераную',
 );
 
 /** Bulgarian (Български)
@@ -496,7 +496,7 @@ Setu an arventennoù red eus [[:$1|$1]] :",
 	'stabilization-leg' => 'Kadarnaat arventennoù ar stumm embannet',
 	'stabilization-select' => 'kentwir diuzadur ar stumm embannet',
 	'stabilization-def1' => "Ar stumm embannet ; ma n'eus hini ebet, lakaat ar stumm red pe ar brouilhed",
-	'stabilization-def2' => 'Ar stumm red pe ar brouilh',
+	'stabilization-def2' => 'Ar stumm red pe ar brouilhed',
 	'stabilization-restrict' => 'Strishadurioù adweladennoù emgefre',
 	'stabilization-restrict-none' => 'Strishadurioù ouzhpenn ebet',
 	'stabilization-submit' => 'Kadarnaat',
@@ -518,7 +518,7 @@ N\'haller ket kefluniañ netra.',
 	'stabilize_expiry_invalid' => 'Direizh eo an deiziad termen.',
 	'stabilize_expiry_old' => 'Tremenet eo dija an amzer termen-se.',
 	'stabilize-expiring' => "Termenet d'an $1 (UTC)",
-	'stabilization-review' => 'Adwelet ar stumm red',
+	'stabilization-review' => 'Merkañ ar stumm red evel adwelet.',
 );
 
 /** Bosnian (Bosanski)
@@ -1075,6 +1075,7 @@ Tässä ovat nykyiset asetukset tunnukselle [[:$1|$1]]:',
  * @author Grondin
  * @author IAlex
  * @author Juanpabl
+ * @author Peter17
  * @author PieRRoMaN
  * @author Purodha
  * @author Sherbrooke
@@ -1116,7 +1117,7 @@ Voici les paramètres actuels de [[:$1|$1]] :",
 	'stabilize_expiry_invalid' => "Date d'expiration invalide.",
 	'stabilize_expiry_old' => "Cette durée d'expiration est déjà écoulée.",
 	'stabilize-expiring' => 'Expire le $1 (UTC)',
-	'stabilization-review' => 'Revoir la version courante',
+	'stabilization-review' => 'Marquer la version actuelle comme vérifiée',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1224,7 +1225,7 @@ Velaquí está a configuración actual de "[[:$1|$1]]":',
 	'stabilize_expiry_invalid' => 'Data non válida de caducidade.',
 	'stabilize_expiry_old' => 'O tempo de caducidade xa pasou.',
 	'stabilize-expiring' => 'caduca o $2 ás $3 (UTC)',
-	'stabilization-review' => 'Revisar a versión actual',
+	'stabilization-review' => 'Marcar a revisión actual como comprobada',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1289,7 +1290,7 @@ Di aktuällen Yystellige fir „[[:$1|$1]]“ sin:',
 	'stabilize_expiry_invalid' => 'Nid giltigs Ablaufdatum.',
 	'stabilize_expiry_old' => 'S Ablaufdatum isch iberschritte wore.',
 	'stabilize-expiring' => 'erlischt $1 (UTC)',
-	'stabilization-review' => 'Di aktuäll Version priefe',
+	'stabilization-review' => 'Di aktuäll Version as aagluegt markiere',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1470,7 +1471,7 @@ Aktualne nastajenja za „[[:$1|$1]]“ su:',
 	'stabilize_expiry_invalid' => 'Njepłaćiwy datum spadnjenja.',
 	'stabilize_expiry_old' => 'Tutón čas spadnjenja je hižo zańdźeny.',
 	'stabilize-expiring' => 'spadnje $1 hodź. (UTC)',
-	'stabilization-review' => 'Aktualnu wersiju přepruwować',
+	'stabilization-review' => 'Aktualnu wersiju jako skontrolowanu markěrować',
 );
 
 /** Hungarian (Magyar)
@@ -1551,7 +1552,7 @@ Nulle configuration es possibile.',
 	'stabilization-comment' => 'Motivo:',
 	'stabilization-otherreason' => 'Altere motivo:',
 	'stabilization-expiry' => 'Expira:',
-	'stabilization-othertime' => 'Altere tempore:',
+	'stabilization-othertime' => 'Altere duration:',
 	'stabilization-sel-short' => 'Precedentia',
 	'stabilization-sel-short-0' => 'Qualitate',
 	'stabilization-sel-short-1' => 'Nulle',
@@ -1562,7 +1563,7 @@ Nulle configuration es possibile.',
 	'stabilize_expiry_invalid' => 'Data de expiration invalide.',
 	'stabilize_expiry_old' => 'Iste tempore de expiration ha ja passate.',
 	'stabilize-expiring' => 'expira le $1 (UTC)',
-	'stabilization-review' => 'Revider le version actual',
+	'stabilization-review' => 'Marcar le version actual como verificate',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1774,8 +1775,10 @@ $messages['ka'] = array(
 კონფიგურაცია შეუძლებელია.',
 	'stabilization-comment' => 'მიზეზი:',
 	'stabilization-otherreason' => 'სხვა მიზეზი:',
+	'stabilization-expiry' => 'ვადა:',
 	'stabilization-othertime' => 'სხვა დრო:',
 	'stabilization-def-short-0' => 'მიმდინარე',
+	'stabilize-expiring' => 'ვადა გასდის: $1 (UTC)',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -1996,7 +1999,7 @@ Et ass keng Konfiguratioun méiglech.',
 	'stabilize_expiry_invalid' => 'Net valabele Schlussdatum',
 	'stabilize_expiry_old' => 'Den Oflafdatum ass schonn eriwwer.',
 	'stabilize-expiring' => 'bis $1 (UTC)',
-	'stabilization-review' => 'Déi aktuell Versioun nokucken',
+	'stabilization-review' => 'Déi aktuell Versioun als nogekuckt markéieren',
 );
 
 /** Limburgish (Limburgs)
@@ -2096,7 +2099,7 @@ $messages['mk'] = array(
 	'stabilize_expiry_invalid' => 'Погрешен датум на важност.',
 	'stabilize_expiry_old' => 'Времето на важност веќе е поминато.',
 	'stabilize-expiring' => 'истекува $1 (UTC)',
-	'stabilization-review' => 'Провери ја моменталната верзија',
+	'stabilization-review' => 'Обележи ја тековната верзија како проверена',
 );
 
 /** Malayalam (മലയാളം)
@@ -2134,7 +2137,7 @@ $messages['ml'] = array(
 	'stabilize_expiry_invalid' => 'അസാധുവായ കാലാവധി തീയതി.',
 	'stabilize_expiry_old' => 'ഈ കാലാവധി സമയം കഴിഞ്ഞു പോയി.',
 	'stabilize-expiring' => 'കാലാവധി തീരുന്നത് - $1 (UTC)',
-	'stabilization-review' => 'ഇപ്പോഴുള്ള പതിപ്പ് സംശോധനം ചെയ്യുക',
+	'stabilization-review' => 'ഇപ്പോഴുള്ള പതിപ്പ് പരിശോധിച്ചതായി അടയാളപ്പെടുത്തുക',
 );
 
 /** Marathi (मराठी)
@@ -2301,7 +2304,7 @@ Instellen is niet mogelijk.',
 	'stabilize_expiry_invalid' => 'Ongeldige vervaldatum.',
 	'stabilize_expiry_old' => 'Deze vervaldatum is al verstreken.',
 	'stabilize-expiring' => 'vervalt $1 (UTC)',
-	'stabilization-review' => 'Huidige versie controleren',
+	'stabilization-review' => 'Huidige versie als gecontroleerd markeren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2393,7 +2396,7 @@ Her er de nåværende innstillingene for [[:$1|$1]]:',
 	'stabilize_expiry_invalid' => 'Ugyldig varighet.',
 	'stabilize_expiry_old' => 'Varigheten har allerede utløpt.',
 	'stabilize-expiring' => 'utgår $1 (UTC)',
-	'stabilization-review' => 'Vurder den nåværende versjonen',
+	'stabilization-review' => 'Merk den nåværende revisjonen som kontrollert',
 );
 
 /** Novial (Novial)
@@ -2562,7 +2565,7 @@ Ambelessì a-i son le regolassion corente për [[:$1|$1]]:",
 	'stabilize_expiry_invalid' => 'Data fin pa bon-a.',
 	'stabilize_expiry_old' => "Sta data fin-sì a l'é già passà",
 	'stabilize-expiring' => 'A finiss $1 (UTC)',
-	'stabilization-review' => 'Revision-a la vërsion corenta',
+	'stabilization-review' => 'Marché la version corenta com controlà',
 );
 
 /** Pashto (پښتو)
@@ -2588,9 +2591,9 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'stabilization-tab' => 'cgq',
 	'stabilization' => 'Configurações da Garantia de Qualidade',
-	'stabilization-text' => "'''Altere as configurações abaixo para ajustar a forma como a versão estável de [[:\$1|\$1]] é seleccionada e apresentada.'''
+	'stabilization-text' => "'''Altere as configurações abaixo para ajustar a forma como a versão publicada de [[:\$1|\$1]] é seleccionada e apresentada.'''
 
-Quanto alterar a configuração da ''selecção da versão estável'' para que sejam usadas como padrão as revisões \"qualidade\" ou \"intocada\",
+Quanto alterar a configuração de ''selecção da versão publicada'' para que sejam usadas por omissão as revisões \"qualidade\" ou \"intocada\",
 verifique que essas revisões realmente existem na página, caso contrário a alteração terá pouco efeito.",
 	'stabilization-perm' => 'Sua conta não possui permissão para alterar as configurações de edições estáveis.
 Seguem-se as configurações para [[:$1|$1]]:',
@@ -2751,7 +2754,7 @@ Non ge stonne le configurazione.',
 	'stabilize_expiry_invalid' => 'Date de scadenze errete.',
 	'stabilize_expiry_old' => 'Sta date de scadenze ha già passete.',
 	'stabilize-expiring' => "scade 'u $1 (UTC)",
-	'stabilization-review' => "Revide 'a versiona corrende",
+	'stabilization-review' => "Signe 'a revisiona corrende cumme verificate",
 );
 
 /** Russian (Русский)
@@ -2798,7 +2801,7 @@ $messages['ru'] = array(
 	'stabilize_expiry_invalid' => 'Ошибочная дата истечения.',
 	'stabilize_expiry_old' => 'Указанное время окончания действия уже прошло.',
 	'stabilize-expiring' => 'истекает $1 (UTC)',
-	'stabilization-review' => 'Досмотр текущей версии',
+	'stabilization-review' => 'Отметить текущую версию как проверенную',
 );
 
 /** Yakut (Саха тыла)
@@ -3349,7 +3352,7 @@ Yapılandırma mümkün değil.',
 	'stabilize_expiry_invalid' => 'Geçersiz sona erme tarihi.',
 	'stabilize_expiry_old' => 'Sona erme tarihi zaten geçmiş.',
 	'stabilize-expiring' => '$1 (UTC) tarihinde sona eriyor',
-	'stabilization-review' => 'Geçerli sürümü gözden geçir',
+	'stabilization-review' => 'Geçerli sürümü kontrol edilmiş olarak işaretle',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
@@ -3404,7 +3407,7 @@ $messages['uk'] = array(
 	'stabilize_expiry_invalid' => 'Помилкова дата закінчення.',
 	'stabilize_expiry_old' => 'Зазначений час закінчення пройшов.',
 	'stabilize-expiring' => 'закінчується о $1 (UTC)',
-	'stabilization-review' => 'Перевірка поточної версії',
+	'stabilization-review' => 'Позначити поточну версію перевіреною',
 );
 
 /** Vèneto (Vèneto)

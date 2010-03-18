@@ -159,7 +159,7 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'unstablepages' => 'Njestabilne boki',
-	'unstablepages-stable' => 'stabilna wersija',
+	'unstablepages-stable' => 'wózjawjona wersija',
 	'unstablepages-text' => 'Slědujo lisćina bokow, kótarež su se manuelnje konfigurěrowali, aby pokazali nacerjeńsku wersiju ako standardne wopśimjeśe za wobglědowarjow.',
 	'unstablepages-none' => 'Toś ta lisćina njewopśimujo boki',
 	'unstablepages-config' => 'Konfiguracija',
@@ -399,6 +399,13 @@ $messages['jv'] = array(
 	'unstablepages-stable' => 'vèrsi stabil',
 	'unstablepages-none' => 'Ora ana kaca ing dhaptar iki',
 	'unstablepages-config' => 'Konfigurasi',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'unstablepages-config' => 'კონფიგურაცია',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -723,7 +730,7 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'unstablepages' => 'Нестабільні сторінки',
 	'unstablepages-stable' => 'опублікована версія',
-	'unstablepages-text' => 'Нижче наведений список сторінок, для яких вручну встановлене налаштування показувати чорнову версію за замовчуванням.',
+	'unstablepages-text' => 'Нижче наведений список сторінок, для яких вручну встановлене налаштування показувати чорнову версію за умовчанням.',
 	'unstablepages-none' => 'У цьому списку нема сторінок',
 	'unstablepages-config' => 'Налаштування',
 );

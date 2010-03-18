@@ -144,7 +144,7 @@ class FlaggedArticleView {
 		$revID = $this->article->getOldIDFromRequest();
 		$frev = FlaggedRevision::newFromTitle( $this->article->getTitle(), $revID );
 		# Give a notice if this rev ID corresponds to a reviewed version...
-		if ( !is_null( $frev ) ) {
+		if ( $frev ) {
 			$time = $wgLang->date( $frev->getTimestamp(), true );
 			$flags = $frev->getTags();
 			$quality = FlaggedRevs::isQuality( $flags );
@@ -231,7 +231,7 @@ class FlaggedArticleView {
 		// Is the page config altered?
 		$prot = FlaggedRevsXML::lockStatusIcon( $this->article );
 		// Is there no stable version?
-		if ( is_null( $frev ) ) {
+		if ( !$frev ) {
 			# Add "no reviewed version" tag, but not for printable output
 			$this->showUnreviewedPage( $tag, $prot );
 			return true;
@@ -585,7 +585,7 @@ class FlaggedArticleView {
 		if ( FlaggedRevs::forDefaultVersionOnly() ) {
 			// If there is only on quality level and we have tabs to know
 			// which version we are looking at, then just use the lock icon...
-			return ( !FlaggedRevs::versionTabsShown() || FlaggedRevs::qualityVersions() );
+			return FlaggedRevs::qualityVersions();
 		}
 		return true;
 	}
@@ -680,7 +680,7 @@ class FlaggedArticleView {
 		} elseif ( $this->pageOverride() ) {
 			$frev = $this->article->getStableRev();
 		}
-		if ( !is_null( $frev ) ) {
+		if ( $frev ) {
 			$time = $frev->getFileTimestamp();
 			// B/C, may be stored in associated image version metadata table
 			if ( !$time ) {
@@ -734,7 +734,7 @@ class FlaggedArticleView {
 		}
 		# Add a notice if there are pending edits...
 		$frev = $this->article->getStableRev();
-		if ( $frev && $frev->getRevId() < $this->article->getLatest() ) {
+		if ( $frev && $frev->getRevId() != $this->article->getLatest() ) {
 			$revsSince = FlaggedRevs::getRevCountSince( $this->article, $frev->getRevId() );
 			$tag = "<div id='mw-fr-revisiontag-edit' class='flaggedrevs_notice plainlinks'>" .
 				FlaggedRevsXML::lockStatusIcon( $this->article ) . # flag protection icon as needed
@@ -851,10 +851,12 @@ class FlaggedArticleView {
 		# Only for pages manually made to be stable...
 		if ( $this->article->isPageLocked() ) {
 			$s = wfMsgExt( 'revreview-locked', 'parseinline' );
+			$s .= ' ' . FlaggedRevsXML::logToggle('revreview-log-details-show');
 			$s .= FlaggedRevsXML::stabilityLogExcerpt( $this->article );
 		# ...or unstable
 		} elseif ( $this->article->isPageUnlocked() ) {
 			$s = wfMsgExt( 'revreview-unlocked', 'parseinline' );
+			$s .= ' ' . FlaggedRevsXML::logToggle('revreview-log-details-show');
 			$s .= FlaggedRevsXML::stabilityLogExcerpt( $this->article );
 		}
 		return $s;
@@ -866,7 +868,7 @@ class FlaggedArticleView {
 			return true; // nothing to do
 		}
 		$frev = $this->article->getStableRev();
-		if( $frev ) {
+		if( $frev && $frev->getRevId() != $this->article->getLatest() ) {
 			$revsSince = FlaggedRevs::getRevCountSince( $this->article, $frev->getRevId() );
 			if( $revsSince ) {
 				$s .= "<div class='flaggedrevs_editnotice plainlinks'>" .
@@ -936,8 +938,9 @@ class FlaggedArticleView {
 	public function addVisibilityLink( &$data ) {
 		global $wgUser, $wgRequest, $wgOut;
 		$this->load();
-		if ( FlaggedRevs::getProtectionLevels() )
+		if ( FlaggedRevs::useProtectionLevels() ) {
 			return true; // simple custom levels set for action=protect
+		}
 		# Check only if the title is reviewable
 		if ( !FlaggedRevs::inReviewNamespace( $this->article->getTitle() ) ) {
 			return true;
@@ -971,7 +974,7 @@ class FlaggedArticleView {
 	public function setActionTabs( $skin, &$actions ) {
 		global $wgUser;
 		$this->load();
-		if ( FlaggedRevs::getProtectionLevels() ) {
+		if ( FlaggedRevs::useProtectionLevels() ) {
 			return true; // simple custom levels set for action=protect
 		}
 		$title = $this->article->getTitle()->getSubjectPage();
@@ -985,10 +988,10 @@ class FlaggedArticleView {
 			!isset( $actions['protect'] ) &&
 			!isset( $actions['unprotect'] ) &&
 			$wgUser->isAllowed( 'stablesettings' ) &&
-			$title->exists()
-		) {
+			$title->exists() )
+		{
 			$stableTitle = SpecialPage::getTitleFor( 'Stabilization' );
-			// Add a tab
+			// Add the tab
 			$actions['default'] = array(
 				'class' => false,
 				'text' => wfMsg( 'stabilization-tab' ),
@@ -1032,7 +1035,7 @@ class FlaggedArticleView {
 				$views['viewsource']['text'] = wfMsg( 'revreview-source' );
 			}
 	   	}
-	 	if ( !FlaggedRevs::versionTabsShown() || $synced ) {
+	 	if ( $synced ) {
 	 		// Exit, since either the draft tab should not be shown
 	 		// or the page is already the most current revision
 	   		return true;
@@ -1615,14 +1618,14 @@ class FlaggedArticleView {
 			if ( count( FlaggedRevs::getDimensions() ) > 1 )
 				$form .= "<br />"; // Don't put too much on one line
 			$form .= "<span id='mw-fr-commentbox' style='clear:both'>" .
-				Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 40, '',
+				Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 35, '',
 					array( 'class' => 'fr-comment-box' ) ) . "&nbsp;&nbsp;&nbsp;</span>";
 		}
 		# Add the submit buttons
 		$form .= FlaggedRevsXML::ratingSubmitButtons( $frev, (bool)$toggle, $allowRereview );
 		# Show stability log if there is anything interesting...
 		if( $this->article->isPageLocked() ) {
-			$form .= ' ' . FlaggedRevsXML::logToggle();
+			$form .= ' ' . FlaggedRevsXML::logToggle('revreview-log-toggle-show');
 		}
 		$form .= Xml::closeElement( 'span' );
 		# ..add the actual stability log body here

@@ -209,7 +209,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'validationstatistics' => 'Stadegoù kadarnaat',
+	'validationstatistics' => 'Stadegoù adlenn ar pajennoù',
 	'validationstatistics-users' => "Evit ar poent, war '''{{SITENAME}}''' ez eus '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|implijer gantañ|implijer ganto}} gwirioù [[{{MediaWiki:Validationpage}}|Aozer]]. 
 
 An Aozerien hag an Adlennerien a zo implijerien staliet a c'hell gwiriañ adweladennoù ar pajennoù.",
@@ -529,7 +529,7 @@ $messages['et'] = array(
  * @author Kobazulo
  */
 $messages['eu'] = array(
-	'validationstatistics' => 'Balioztatzeko estatistikak',
+	'validationstatistics' => 'Orrialde berrikuspen estatistikak',
 	'validationstatistics-ns' => 'Izen-tartea',
 	'validationstatistics-total' => 'Orrialdeak',
 	'validationstatistics-old' => 'Deseguneratua',
@@ -586,12 +586,13 @@ Julkaistu versio sivusta on uusin versio, joka on hyväksytty näytettäväksi o
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Peter17
  * @author PieRRoMaN
  * @author Verdy p
  * @author Zetud
  */
 $messages['fr'] = array(
-	'validationstatistics' => 'Statistiques de validation',
+	'validationstatistics' => 'Statistiques de relecture des pages',
 	'validationstatistics-users' => "'''{{SITENAME}}''' dispose actuellement de '''[[Special:ListUsers/editor|$1]]''' utilisateur{{PLURAL:$1||s}} avec les droits de [[{{MediaWiki:Validationpage}}|contributeur]].
 
 Les contributeurs et relecteurs sont des utilisateurs établis qui peuvent vérifier les révisions des pages.",
@@ -709,7 +710,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'validationstatistics' => 'Markierigsstatischtik',
+	'validationstatistics' => 'Statischtik vu dr Sytepriefige',
 	'validationstatistics-users' => "'''{{SITENAME}}''' het '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|Benutzer|Benutzer}} mit [[{{MediaWiki:Validationpage}}|Sichterrächt]].
 
 Sichter un Priefer sin Benutzer, wu Syte as prieft chenne markiere.",
@@ -819,20 +820,21 @@ Važeća inačica stranice je najnovija inačica koja je odobrena kako bi se pri
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'validationstatistics' => 'Pohódnoćenska statistika',
-	'validationstatistics-users' => "'''{{SITENAME}}''' ma tuchwilu '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|wužiwarja|wužiwarjow|wužiwarjow|wužiwarjow}} z [[{{MediaWiki:Validationpage}}|prawami wobdźěłowarja]]
-a '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|wužiwarja|wužiwarjow|wužiwarjow|wužiwarjow}} z [[{{MediaWiki:Validationpage}}|prawami přepruwowarja]].
+	'validationstatistics' => 'Statistika přepruwowanja stronow',
+	'validationstatistics-users' => "'''{{SITENAME}}''' ma tuchwilu '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|wužiwarja|wužiwarjow|wužiwarjow|wužiwarjow}} z [[{{MediaWiki:Validationpage}}|wobdźěłowarskimi prawami]].
 
-Wobdźěłowarjo a přepruwowarjo su etablěrowani wužiwarjo, kotřiž móžeja wersije stronow kontrolować.",
-	'validationstatistics-time' => "''Slědowace daty su so a $5 $6 posledni raz zaktualizwoali.''
+Wobdźěłowarjo su nazhonići wužiwarjo, kotřiž móžeja wersije stronow kontrolować.",
+	'validationstatistics-time' => "''Slědowace daty su so a $5 $6 posledni raz zaktualizowali.''
 
-Změny, kotrež buchu wot etablěrowanych wužiwarjow skontrolowane, maja so za přepruwowane.
+Změny, kotrež buchu wot nazhonitych wužiwarjow skontrolowane, maja so za přepruwowane.
 
 Přerězne čakanje za změny wot ''wužiwarjow, kotřiž njejsu přizjewjeni'', kotrež dyrbi so pruwować, je '''$1'''; srjedźna hódnota je '''$3'''.
+
 $4
+
 Přerězne komdźenje za [[Special:OldReviewedPages|strony z njepřepruwowanymi změnami]] je '''$2'''.
-Tute strony maja so za ''zestarjene''. Tohorunja maja so strony za ''synchronizowane'', jeli [[{{MediaWiki:Validationpage}}|stabilna wersija]] je tež aktualna naćiskowa wersija.
-Stabilna wersija strony je najnowša wersija, kotraž je so wobkrućena, zo by so po standardźe wšěm čitarjam pokazuje.",
+Tute strony maja so za ''zestarjene''. Tohorunja maja so strony za ''synchronizowane'', jeli njejsu změny, kotrež wužaduja sej přepruwowanje.
+Wozjewjena wersija strony je najnowša wersija, kotraž je so wobkrućena, zo by so po standardźe wšěm čitarjam pokazała.",
 	'validationstatistics-table' => "Slěduja statistiki za kóždy mjenowy rum ''bjez'' daleposrědkowanjow.",
 	'validationstatistics-ns' => 'Mjenowy rum',
 	'validationstatistics-total' => 'Strony',
@@ -882,7 +884,7 @@ A lap publikált változata a legújabb elfogadott változat, amit alapértelmez
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'validationstatistics' => 'Statisticas de validation',
+	'validationstatistics' => 'Statisticas de revision de paginas',
 	'validationstatistics-users' => "'''{{SITENAME}}''' ha al momento '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|usator|usatores}} con privilegios de [[{{MediaWiki:Validationpage}}|Redactor]].
 
 Le Redactores es usatores establite qui pote selectivemente verificar versiones de paginas.",
@@ -1031,6 +1033,10 @@ Editor lan Pamriksa iku panganggo mapan sing bisa mriksa langsung owah-owahan ka
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'validationstatistics-users' => "'''{{SITENAME}}-ს''' ამჟამად ჰყავს '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|მომხმარებელი|მომხმარებელი}} [[{{MediaWiki:Validationpage}}|რედაქტორის]] უფლებებით.
+
+რედაქტორები არისნ მომხმარებლები, რომელთაც შეუძლიათ სტატიის ცვლილებების შემოწმება.",
+	'validationstatistics-ns' => 'სახელთა სივრცე',
 	'validationstatistics-total' => 'გვერდები',
 	'validationstatistics-user' => 'მომხმარებელი',
 );
@@ -1123,7 +1129,7 @@ $messages['kw'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'validationstatistics' => 'Statistike vun de Validatiounen',
+	'validationstatistics' => 'Statistike vun denogekuckte Säiten',
 	'validationstatistics-users' => "'''{{SITENAME}}''' huet elo '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|Benotzer|Benotzer}} mat [[{{MediaWiki:Validationpage}}|Editeursrechter]].
 
 Editeure si confirméiert Benotzer déi nogekuckte Versioune vu Säiten derbäisetze kënnen.",
@@ -1158,7 +1164,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'validationstatistics' => 'Потврдни статистики',
+	'validationstatistics' => 'Статистики за оценки',
 	'validationstatistics-users' => "'''{{SITENAME}}''' моментално има '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|корисник|корисници}} со права на „[[{{MediaWiki:Validationpage}}|Уредник]]“.
 
 Уредниците се докажани корисници кои можат да прават моментални проверки на ревизии на страници.",
@@ -1232,6 +1238,15 @@ Penyunting dan Penyemak adalah pengguna-pengguna berhak yang boleh memeriksa sem
 	'validationstatistics-reviews' => 'Semakan',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'validationstatistics-ns' => 'Spazju tal-isem',
+	'validationstatistics-total' => 'Paġni',
+	'validationstatistics-user' => 'Utent',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -1243,7 +1258,7 @@ $messages['myv'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'validationstatistics' => 'Controlestatistieken',
+	'validationstatistics' => 'Paginacontrolestatistieken',
 	'validationstatistics-users' => "'''{{SITENAME}}''' heeft op het moment '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|gebruiker|gebruikers}} in de rol van [[{{MediaWiki:Validationpage}}|Redacteur]].
 
 Redacteuren zijn gebruikers die zich bewezen hebben en versies van pagina's als gecontroleerd mogen markeren.",
@@ -1401,7 +1416,7 @@ Wersja opublikowana strony to najnowsza wersja, która została zaakceptowana ja
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'validationstatistics' => 'Statìstiche ëd validassion',
+	'validationstatistics' => 'Statìstiche ëd validassion ëd la pàgina',
 	'validationstatistics-users' => "'''{{SITENAME}}''' al moment a l'ha '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utent|utent}} con drit d'[[{{MediaWiki:Validationpage}}|Editor]] 
 
 J'Editor a son utent sicur che a peulo controlé le revision a le pàgine.",
@@ -1444,7 +1459,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'validationstatistics' => 'Estatísticas de validações',
+	'validationstatistics' => 'Estatísticas de revisão de páginas',
 	'validationstatistics-users' => "A '''{{SITENAME}}''' tem, neste momento, '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizador|utilizadores}} com permissões de [[{{MediaWiki:Validationpage}}|Editor]].
 
 Editores são utilizadores que podem verificar as revisões de páginas.",
@@ -1523,7 +1538,7 @@ Editorii şi recenzorii sunt utilizatori stabiliţi care pot verifica modificăr
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'validationstatistics' => 'Statisteche de validazione',
+	'validationstatistics' => "Statisteche d'a pàgene reviste",
 	'validationstatistics-users' => "'''{{SITENAME}}''' jndr'à quiste mumende tène '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utende|utinde}} cu le deritte de [[{{MediaWiki:Validationpage}}|cangiatore]].
 
 Le cangiature sonde utinde stabbelite ca ponne fà verifiche a cambione de le revisiune a le pàggene.",
@@ -1559,7 +1574,7 @@ Ste pàggene sonde conziderate ''scadute''. Pò, stonne le pàggene ca sonde con
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'validationstatistics' => 'Статистика проверок',
+	'validationstatistics' => 'Статистика проверок страниц',
 	'validationstatistics-users' => "В проекте {{SITENAME}} на данный момент '''[[Special:ListUsers/editor|$1]]''' {{plural:$1|участник имееет|участника имеют|участников имеют}} полномочия [[{{MediaWiki:Validationpage}}|«редактора»]].
 
 «Редакторы» — это определённые участники, имеющие возможность делать выборочную проверку конкретных версий страниц.",
@@ -1588,7 +1603,7 @@ $4
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'validationstatistics' => 'Тургутуу статиистиката',
+	'validationstatistics' => 'Сирэй тургутуутун статиистиката',
 	'validationstatistics-table' => "Аллара утаарыылартан ''ураты'' ааттар далларын статиистиката бэриллибит.",
 	'validationstatistics-ns' => 'Аат дала',
 	'validationstatistics-total' => 'Сирэй',
@@ -1787,7 +1802,7 @@ Ang matatatag na mga bersyon ay mga rebisyon ng mga pahinang nasuri ng kahit na 
  * @author Joseph
  */
 $messages['tr'] = array(
-	'validationstatistics' => 'Doğrulama istatistikleri',
+	'validationstatistics' => 'Sayfa gözden geçirme istatistikleri',
 	'validationstatistics-users' => "'''{{SITENAME}}''' sitesinde şuanda [[{{MediaWiki:Validationpage}}|Editör]] yetkisine sahip '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|kullanıcı|kullanıcı}} bulunmaktadır.
 
 Editörler, sayfalara kontrol revizyonu atayabilen belirli kullanıcılardır.",

@@ -54,7 +54,7 @@ $messages['arz'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'problemchanges' => 'Рэцэнзаваць пазначаныя зьмены',
+	'problemchanges' => 'Пазначаныя нерэцэнзаваныя зьмены',
 	'problemchanges-legend' => 'Сьпіс старонак з пазначанымі рэдагаваньнямі, якія чакаюць рэцэнзаваньня',
 	'problemchanges-none' => 'Зараз няма старонак, якія адпавядаюць гэтым крытэрам',
 	'problemchanges-category' => 'Катэгорыя:',
@@ -72,7 +72,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'problemchanges' => "Adwelet ar c'hemmoù balizennet",
+	'problemchanges' => "Kemmoù balizennet o c'hortoz",
 	'problemchanges-legend' => "Rollañ ar pajennoù adwelet gant kemmoù balizennet a c'hortoz bezañ adlennet",
 	'problemchanges-none' => "N'eus pajenn ebet diouzh an dezverkoù-mañ evit poent",
 	'problemchanges-category' => 'Rummad :',
@@ -134,7 +134,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'problemchanges' => 'Markěrowane změny pśeglědaś',
+	'problemchanges' => 'Markěrowane njedocynjone změny',
 	'problemchanges-legend' => 'Lisćina bokow z markěrowanymi změnami, kótarež hyšći njejsu pśeglědane',
 	'problemchanges-none' => 'Tuchylu žedne boki njewótpowěduju toś tym kriterijam',
 	'problemchanges-category' => 'Kategorija:',
@@ -202,7 +202,7 @@ $messages['fi'] = array(
  * @author Peter17
  */
 $messages['fr'] = array(
-	'problemchanges' => 'Relire les modifications balisées',
+	'problemchanges' => 'Modifications balisées en attente',
 	'problemchanges-legend' => 'Lister les pages avec des modifications balisées en attente de relecture',
 	'problemchanges-none' => "Il n'y a pour le moment aucune page satisfaisant ces critères",
 	'problemchanges-category' => 'Catégorie :',
@@ -239,7 +239,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'problemchanges' => 'Markierti Bearbeitige priefe',
+	'problemchanges' => 'Markierti hängigi Änderige',
 	'problemchanges-legend' => 'Lischt vu Syte mit markierte Bearbeitige, wu nonig prieft sin',
 	'problemchanges-none' => 'Zur Zyt träffe fir kei Syte die Kriterie zue',
 	'problemchanges-category' => 'Kategorii:',
@@ -269,7 +269,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'problemchanges' => 'Markěrowane změny přepruwować',
+	'problemchanges' => 'Markěrowane njepřepruwowane změny',
 	'problemchanges-legend' => 'Lisćina stronow z markěrowanymi změnami, kotrež dyrbja so hišće přepruwować',
 	'problemchanges-none' => 'Strony, kotrež tutym kriterijam wotpowěduja, tuchwilu njejsu',
 	'problemchanges-category' => 'Kategorija:',
@@ -290,7 +290,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'problemchanges' => 'Revider modificationes etiquettate',
+	'problemchanges' => 'Modificationes pendente etiquettate',
 	'problemchanges-legend' => 'Listar paginas con modificationes etiquettate que attende revision',
 	'problemchanges-none' => 'Al momento il non ha paginas que satisface iste criterios',
 	'problemchanges-category' => 'Categoria:',
@@ -377,7 +377,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'problemchanges' => 'Markéiert Ännerunge bewerten',
+	'problemchanges' => 'Markéiert Ännerunge am Suspens',
 	'problemchanges-legend' => 'Lëscht vun de markéierte Säiten déi nach net nogekuckt sinn',
 	'problemchanges-none' => 'Et gëtt el keng Säiten déi dës Kriterien entspriechen',
 	'problemchanges-category' => 'Kategorie:',
@@ -387,7 +387,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'problemchanges' => 'Проверка на означени промени',
+	'problemchanges' => 'Означени промени во исчекување',
 	'problemchanges-legend' => 'Листа на прегледани промени со означени уредувања во исчекување на проверка',
 	'problemchanges-none' => 'Моментално нема страници кои ги задоволуваат овие критериуми',
 	'problemchanges-category' => 'Категорија:',
@@ -414,7 +414,7 @@ $messages['ms'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'problemchanges' => 'Gelabelde wijzigingen controleren',
+	'problemchanges' => 'Gelabelde te controleren wijzigingen',
 	'problemchanges-legend' => "Ongecontroleerde pagina's met gelabelde bewerkingen weergeven",
 	'problemchanges-none' => "Er zijn geen pagina's die voldoen aan deze criteria",
 	'problemchanges-category' => 'Categorie:',
@@ -462,10 +462,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'problemchanges' => 'Arvëdd ij cambi etichetà',
+	'problemchanges' => 'Modìfiche etichëttà an cors',
 	'problemchanges-legend' => 'Lista le pàgine con ëd le revision pendente ëd modìfiche etichëttà',
 	'problemchanges-none' => 'A-i é pa al moment ëd pàgine che a sodisfo sto criteri-sì',
 	'problemchanges-category' => 'Categorìa:',
@@ -513,7 +514,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'problemchanges' => 'Revide le cangiaminde taggate',
+	'problemchanges' => 'Tagghe le cangiaminde pendende',
 	'problemchanges-legend' => "Liste de le pàggene riviste cu le cangiaminde taggate aspettane 'na riviste",
 	'problemchanges-none' => 'Non ge stonne pàggene ca ingontrene chiste criterie',
 	'problemchanges-category' => 'Categorije:',
@@ -524,7 +525,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'problemchanges' => 'Досмотр отмеченных изменений',
+	'problemchanges' => 'Отмеченные непроверенные изменения',
 	'problemchanges-legend' => 'Список cтраниц с отмеченными правками, ожидающими проверки',
 	'problemchanges-none' => 'В настоящее время нет отвечающих этим условиям страниц',
 	'problemchanges-category' => 'Категория:',
@@ -589,7 +590,7 @@ $messages['tk'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
-	'problemchanges' => 'Etiketli değişiklikleri gözden geçir',
+	'problemchanges' => 'bekleyen değişiklik olarak etiketlenmiş',
 	'problemchanges-legend' => 'Etiketli değişiklikleri gözden geçirme bekleyen sayfaları listele',
 	'problemchanges-none' => 'Şu anda hiçbir sayfa bu kriterleri karşılamıyor',
 	'problemchanges-category' => 'Kategori:',

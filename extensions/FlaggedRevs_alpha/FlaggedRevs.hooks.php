@@ -7,15 +7,14 @@ class FlaggedRevsHooks {
 	 */
 	public static function defineSpecialPages( &$list ) {
 		global $wgSpecialPages, $wgUseTagFilter;
-		global $wgFlaggedRevsNamespaces, $wgFlaggedRevsOverride, $wgFlaggedRevsProtectLevels;
 		// Show special pages only if FlaggedRevs is enabled on some namespaces
-		if ( empty( $wgFlaggedRevsNamespaces ) ) {
+		if ( !FlaggedRevs::getReviewNamespaces() ) {
 			return true;
 		}
 		$list['RevisionReview'] = $wgSpecialPages['RevisionReview'] = 'RevisionReview';
 		$list['ReviewedVersions'] = $wgSpecialPages['ReviewedVersions'] = 'ReviewedVersions';
 		// Protect levels define allowed stability settings
-		if ( empty( $wgFlaggedRevsProtectLevels ) ) {
+		if ( !FlaggedRevs::useProtectionLevels() ) {
 			$list['Stabilization'] = $wgSpecialPages['Stabilization'] = 'Stabilization';
 		}
 		$list['UnreviewedPages'] = $wgSpecialPages['UnreviewedPages'] = 'UnreviewedPages';
@@ -29,7 +28,7 @@ class FlaggedRevsHooks {
 		}
 		$list['QualityOversight'] = $wgSpecialPages['QualityOversight'] = 'QualityOversight';
 		$list['ValidationStatistics'] = $wgSpecialPages['ValidationStatistics'] = 'ValidationStatistics';
-		if ( !$wgFlaggedRevsOverride ) {
+		if ( !FlaggedRevs::isStableShownByDefault() ) {
 			$list['StablePages'] = $wgSpecialPages['StablePages'] = 'StablePages';
 		} else {
 			$list['UnstablePages'] = $wgSpecialPages['UnstablePages'] = 'UnstablePages';
@@ -67,7 +66,9 @@ class FlaggedRevsHooks {
 		# Set basic messages
 		$msgs = (object) array(
 			'revreviewDiffToggleShow' => wfMsgHtml( 'revreview-diff-toggle-show' ),
-			'revreviewDiffToggleHide' => wfMsgHtml( 'revreview-diff-toggle-hide' )
+			'revreviewDiffToggleHide' => wfMsgHtml( 'revreview-diff-toggle-hide' ),
+			'revreviewToggleShow'	  => wfMsgHtml( 'revreview-toggle-show'),
+			'revreviewToggleHide'     => wfMsgHtml( 'revreview-toggle-hide')
 		);
 		$head .= "\n<script type=\"{$wgJsMimeType}\">" .
 			"FlaggedRevs.messages = " . Xml::encodeJsVar( $msgs ) . ";</script>\n";
@@ -97,6 +98,8 @@ class FlaggedRevsHooks {
 				'unflagMsg'		 => wfMsgHtml( 'revreview-submit-unreview' ),
 				'flagLegMsg'	 => wfMsgHtml( 'revreview-flag' ),
 				'sendingMsg'     => wfMsgHtml( 'revreview-submitting' ),
+				'flaggedMsg'	 => wfMsgHtml( 'revreview-submit-reviewed' ),
+				'unflaggedMsg'	 => wfMsgHtml( 'revreview-submit-unreviewed' ),
 				'actioncomplete' => wfMsgHtml( 'actioncomplete' ),
 				'actionfailed'	 => wfMsgHtml( 'actionfailed' ),
 				'draftRev'  	 => wfMsgHtml( 'revreview-hist-draft' ),
@@ -802,7 +805,7 @@ class FlaggedRevsHooks {
 		# Enforce autoreview/review restrictions
 		} else if( $action === 'autoreview' || $action === 'review' ) {
 			# Get autoreview restriction settings...
-			$config = FlaggedRevs::getPageVisibilitySettings( $title, true );
+			$config = FlaggedRevs::getPageVisibilitySettings( $title, FR_MASTER );
 			# Convert Sysop -> protect
 			$right = ( $config['autoreview'] === 'sysop' ) ?
 				'protect' : $config['autoreview'];
@@ -857,6 +860,8 @@ class FlaggedRevsHooks {
 	* edit was made from is the stable version, or the edit is a reversion
 	* to the stable version, then try to automatically review it.
 	* Also automatically review if the "review this revision" box is checked.
+	*
+	* Note: RC items not inserted yet, RecentChange_save hook does rc_patrolled bit...
 	*/
 	public static function maybeMakeEditReviewed(
 		$article, $rev, $baseRevId = false, $user = null
@@ -874,21 +879,16 @@ class FlaggedRevsHooks {
 		$title->resetArticleID( $rev->getPage() ); // Avoid extra DB hit and lag issues
 		# Get what was just the current revision ID
 		$prevRevId = $rev->getParentId();
-		$prevTimestamp = $frev = $flags = null;
+		$frev = $flags = null;
 		# Get edit timestamp. Existance already validated by EditPage.php.
 		$editTimestamp = $wgRequest->getVal( 'wpEdittime' );
 		# Is the page manually checked off to be reviewed?
-		if ( $wgRequest->getCheck( 'wpReviewEdit' ) && $user->isAllowed( 'review' ) ) {
-			# Check wpEdittime against the previous edit for verification
-			if ( $prevRevId ) {
-				$prevTimestamp = Revision::getTimestampFromId( $title, $prevRevId );
-			}
-			# Review this revision of the page unless edit was auto-merged in between...
-			if ( !$editTimestamp || !$prevTimestamp || $prevTimestamp == $editTimestamp ) {
-				# Note: articlesavecomplete hook does rc_patrolled bit
-				$ok = FlaggedRevs::autoReviewEdit(
-					$article, $user, $rev->getText(), $rev, $flags, false );
-				if ( $ok ) return true; // done!
+		if ( $editTimestamp
+			&& $wgRequest->getCheck( 'wpReviewEdit' )
+			&& $user->isAllowed( 'review' ) )
+		{
+			if( self::editCheckReview( $article, $rev, $user, $editTimestamp ) ) {
+				return true; // reviewed...done!
 			}
 		}
 		# All cases below require auto-review of edits to be enabled
@@ -899,9 +899,7 @@ class FlaggedRevsHooks {
 		$isNullEdit = (bool)$baseRevId;
 		# Get the revision ID the incoming one was based off...
 		if ( !$baseRevId && $prevRevId ) {
-			if ( is_null( $prevTimestamp ) ) { // may already be set
-				$prevTimestamp = Revision::getTimestampFromId( $title, $prevRevId );
-			}
+			$prevTimestamp = Revision::getTimestampFromId( $title, $prevRevId );
 			# The user just made an edit. The one before that should have
 			# been the current version. If not reflected in wpEdittime, an
 			# edit may have been auto-merged in between, in that case, discard
@@ -916,9 +914,10 @@ class FlaggedRevsHooks {
 			}
 		}
 		# Self-reversions to the stable version by anyone can be auto-reviewed...
-		$srev = FlaggedRevision::newFromStable( $title, FR_MASTER );
+		$srev = $fa->getStableRev( FR_MASTER );
 		if ( $srev && self::isSelfRevertToStable( $rev, $srev, $baseRevId, $user ) ) {
 			$flags = $srev->getTags(); // use old tags
+			# Review this revision of the page...
 			FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(), $rev, $flags );
 			return true; // done!
 		}
@@ -939,16 +938,44 @@ class FlaggedRevsHooks {
 				: FlaggedRevision::newFromTitle( $title, $baseRevId, FR_MASTER );
 		}
 		// Is this an edit directly to the stable version? Is it a new page?
-		if ( $isAllowed && ( $reviewableNewPage || !is_null( $frev ) ) ) {
+		if ( $isAllowed && ( $reviewableNewPage || $frev ) ) {
 			if ( $isNullEdit && $frev ) {
-				$flags = $frev->getTags(); // Null edits always keep previous tags
+				$flags = $frev->getTags(); // Dummy edits always keep previous tags
 			}
-			# Review this revision of the page. Let articlesavecomplete hook do rc_patrolled bit...
+			# Review this revision of the page...
 			FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(), $rev, $flags );
 		}
 		return true;
 	}
-	
+
+	// Review $rev if $editTimestamp matches the previous revision's timestamp.
+	// Otherwise, review the revision that has $editTimestamp as its timestamp value.
+	protected static function editCheckReview( $article, $rev, $user, $editTimestamp ) {
+		$prevRevId = $rev->getParentId();
+		$prevTimestamp = $flags = null;
+		$title = $article->getTitle(); // convenience
+		# Check wpEdittime against the former current rev for verification
+		if ( $prevRevId ) {
+			$prevTimestamp = Revision::getTimestampFromId( $title, $prevRevId );
+		}
+		# Is $rev is an edit to an existing page?
+		if ( $prevTimestamp ) {
+			# Check wpEdittime against the former current revision's time.
+			# If an edit was auto-merged in between, review only up to what
+			# was the current rev when this user started editing the page.
+			if ( $editTimestamp != $prevTimestamp ) {
+				$dbw = wfGetDB( DB_MASTER );
+				$rev = Revision::loadFromTimestamp( $dbw, $title, $editTimestamp );
+				if ( !$rev ) {
+					return false; // deleted?
+				}
+			}
+		}
+		# Review this revision of the page...
+		return FlaggedRevs::autoReviewEdit(
+			$article, $user, $rev->getText(), $rev, $flags, false );
+	}
+
 	/**
 	* Check if a user reverted himself to the stable version
 	*/
@@ -986,42 +1013,63 @@ class FlaggedRevsHooks {
 	
 	/**
 	* When an user makes a null-edit we sometimes want to review it...
+	* (a) Null undo or rollback
+	* (b) Null edit with review box checked
 	*/
 	public static function maybeNullEditReview(
 		$article, $user, $text, $summary, $m, $a, $b, $flags, $rev, &$status, $baseId
 	) {
 		global $wgRequest;
-		# Must be in reviewable namespace
-		$title = $article->getTitle();
 		# Revision must *be* null (null edit). We also need the user who made the edit.
-		if ( !$user || $rev !== null || !FlaggedRevs::inReviewNamespace( $title ) ) {
+		if ( !$user || $rev !== null ) {
 			return true;
 		}
+		$fa = FlaggedArticle::getArticleInstance( $article );
+		if ( !$fa->isReviewable( FR_MASTER ) ) {
+			return true; // page is not reviewable
+		}
+		$title = $article->getTitle(); // convenience
 		# Get the current revision ID
 		$rev = Revision::newFromTitle( $title );
+		if( !$rev ) {
+			return true; // wtf?
+		}
 		$flags = null;
 		# Is this a rollback/undo that didn't change anything?
-		if ( $rev && $baseId ) {
+		if ( $baseId > 0 ) {
 			$frev = FlaggedRevision::newFromTitle( $title, $baseId );
 			# Was the edit that we tried to revert to reviewed?
 			if ( $frev ) {
-				FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(), $rev, $flags );
-				FlaggedRevs::markRevisionPatrolled( $rev ); // Make sure it is now marked patrolled...
+				# Review this revision of the page...
+				$ok = FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(), $rev, $flags );
+				if( $ok ) {
+					FlaggedRevs::markRevisionPatrolled( $rev ); // reviewed -> patrolled
+					return true;
+				}
 			}
 		}
 		# Get edit timestamp, it must exist.
 		$editTimestamp = $wgRequest->getVal( 'wpEdittime' );
 		# Is the page checked off to be reviewed?
-		if ( $rev && $editTimestamp && $wgRequest->getCheck( 'wpReviewEdit' )
+		if ( $editTimestamp
+			&& $wgRequest->getCheck( 'wpReviewEdit' )
 			&& $user->isAllowed( 'review' ) )
 		{
-			# Review this revision of the page. Let articlesavecomplete hook do rc_patrolled bit.
-			# Don't do so if an edit was auto-merged in between though...
-			if ( $rev->getTimestamp() == $editTimestamp ) {
-				FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(),
-					$rev, $flags, false );
-				FlaggedRevs::markRevisionPatrolled( $rev ); // Make sure it is now marked patrolled...
-				return true; // done!
+			# Check wpEdittime against current revision's time.
+			# If an edit was auto-merged in between, review only up to what
+			# was the current rev when this user started editing the page.
+			if ( $rev->getTimestamp() != $editTimestamp ) {
+				$dbw = wfGetDB( DB_MASTER );
+				$rev = Revision::loadFromTimestamp( $dbw, $title, $editTimestamp );
+				if( !$rev ) {
+					return true; // deleted?
+				}
+			}
+			# Review this revision of the page...
+			$ok = FlaggedRevs::autoReviewEdit(
+				$article, $user, $rev->getText(), $rev, $flags, false );
+			if ( $ok ) {
+				FlaggedRevs::markRevisionPatrolled( $rev ); // reviewed -> patrolled
 			}
 		}
 		return true;
@@ -1620,7 +1668,8 @@ class FlaggedRevsHooks {
 				return true;
 			}
 			$fa = FlaggedArticle::getTitleInstance( $title );
-			if ( $srev = $fa->getStableRev() ) {
+			$srev = $fa->getStableRev();
+			if ( $srev ) {
 				$view = FlaggedArticleView::singleton();
 				# If synced, nothing special here...
 				if ( $srev->getRevId() != $article->getLatest() && $view->pageOverride() ) {
@@ -2008,17 +2057,17 @@ class FlaggedRevsHooks {
 		}
 		# Can the user actually do anything?
 		$isAllowed = $wgUser->isAllowed( 'stablesettings' );
-		$disabledAttrib = !$isAllowed ? array( 'disabled' => 'disabled' ) : array();
+		$disabledAttrib = !$isAllowed ?
+			array( 'disabled' => 'disabled' ) : array();
 		# Get the current config/expiry
-		$config = FlaggedRevs::getPageVisibilitySettings( $article->getTitle(), true );
+		$config = FlaggedRevs::getPageVisibilitySettings( $article->getTitle(), FR_MASTER );
+		# Convert expiry to a display form (GMT)
 		$oldExpiry = $config['expiry'] !== 'infinity' ?
 			wfTimestamp( TS_RFC2822, $config['expiry'] ) : 'infinite';
-		# Load request params...
+		# Load requested restriction level, default to current level...
 		$selected = $wgRequest->getVal( 'wpStabilityConfig',
 			FlaggedRevs::getProtectionLevel( $config ) );
-		if ( $selected == 'invalid' ) {
-			throw new MWException( 'This page has an undefined stability configuration!' );
-		}
+		# Load the requested expiry time
 		$expiry = $wgRequest->getText( 'mwStabilize-expiry' );
 		# Add some script for expiry dropdowns
 		$wgOut->addScript(
@@ -2038,29 +2087,28 @@ class FlaggedRevsHooks {
 		$output .= Xml::openElement( 'fieldset' );
 		$output .= Xml::element( 'legend', null, wfMsg( 'flaggedrevs-protect-legend' ) );
 		# Add a "no restrictions" level
-		$effectiveLevels = array( "none" => null );
-		$effectiveLevels += FlaggedRevs::getProtectionLevels();
-		
+		$effectiveLevels = FlaggedRevs::getRestrictionLevels();
+		array_unshift( $effectiveLevels, "none" );
+		# Show all restriction levels in a select...
 		$attribs = array(
 			'id' => 'mwStabilityConfig',
 			'name' => 'mwStabilityConfig',
 			'size' => count( $effectiveLevels ),
 		) + $disabledAttrib;
 		$output .= Xml::openElement( 'select', $attribs );
-		# Show all restriction levels in a select...
-		foreach ( $effectiveLevels as $level => $x ) {
-			if ( $level == 'none' ) {
+		foreach ( $effectiveLevels as $limit ) {
+			if ( $limit == 'none' ) {
 				$label = FlaggedRevs::stableOnlyIfConfigured()
 					? wfMsg( 'flaggedrevs-protect-none' )
 					: wfMsg( 'flaggedrevs-protect-basic' );
 			} else {
-				$label = wfMsg( 'flaggedrevs-protect-' . $level );
+				$label = wfMsg( 'flaggedrevs-protect-' . $limit );
 			}
 			// Default to the key itself if no UI message
-			if ( wfEmptyMsg( 'flaggedrevs-protect-' . $level, $label ) ) {
-				$label = 'flaggedrevs-protect-' . $level;
+			if ( wfEmptyMsg( 'flaggedrevs-protect-' . $limit, $label ) ) {
+				$label = 'flaggedrevs-protect-' . $limit;
 			}
-			$output .= Xml::option( $label, $level, $level == $selected );
+			$output .= Xml::option( $label, $limit, $limit == $selected );
 		}
 		$output .= Xml::closeElement( 'select' );
 		# Get expiry dropdown
@@ -2148,14 +2196,14 @@ class FlaggedRevsHooks {
 	// Update stability config from request
 	public static function onProtectionSave( $article, &$errorMsg ) {
 		global $wgUser, $wgRequest;
-		$levels = FlaggedRevs::getProtectionLevels();
-		if ( empty( $levels ) || !$article->exists() )
+		if ( !FlaggedRevs::useProtectionLevels() || !$article->exists() ) {
 			return true; // simple custom levels set for action=protect
-		if ( wfReadOnly() || !$wgUser->isAllowed( 'stablesettings' ) ) {
-			return true; // user cannot change anything
 		}
 		if ( !FlaggedRevs::inReviewNamespace( $article->getTitle() ) ) {
 			return true; // not a reviewable page
+		}
+		if ( wfReadOnly() || !$wgUser->isAllowed( 'stablesettings' ) ) {
+			return true; // user cannot change anything
 		}
 		$form = new Stabilization();
 		$form->target = $article->getTitle(); # Our target page
@@ -2165,20 +2213,20 @@ class FlaggedRevsHooks {
 		$form->expiry = $wgRequest->getText( 'mwStabilize-expiry' ); # Expiry
 		$form->expirySelection = $wgRequest->getVal( 'wpExpirySelection' ); # Expiry dropdown
 		# Fill in config from the protection level...
+		$levels = FlaggedRevs::getRestrictionLevels();
 		$selected = $wgRequest->getVal( 'mwStabilityConfig' );
 		if ( $selected == "none" ) {
-			$form->select = FlaggedRevs::getPrecedence(); // default
 			$form->override = (int)FlaggedRevs::isStableShownByDefault(); // default
 			$form->autoreview = ''; // default
 			$form->reviewThis = false;
-		} else if ( isset( $levels[$selected] ) ) {
-			$form->select = $levels[$selected]['select'];
-			$form->override = $levels[$selected]['override'];
-			$form->autoreview = $levels[$selected]['autoreview'];
-			$form->reviewThis = true; // auto-review; protection-like
+		} else if ( in_array( $selected, $levels ) ) {
+			$form->override = 1; // stable page
+			$form->autoreview = $selected; // autoreview restriction
+			$form->reviewThis = true; // auto-review page; protection-like
 		} else {
 			return false; // bad level
 		}
+		$form->select = null; // site default
 		$form->wasPosted = $wgRequest->wasPosted();
 		if ( $form->handleParams() ) {
 			$status = $form->submit();
