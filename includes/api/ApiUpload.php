@@ -63,6 +63,10 @@ class ApiUpload extends ApiBase {
 			'sessionkey', 'file', 'url', 'enablechunks' );		
 			
 		if ( $this->mParams['enablechunks'] ) {
+			# Temporary patch for XSS
+			$this->dieUsage( 'Chunk upload is disabled', 'chunks-disabled' );
+			return;
+
 			/**
 			 * Chunked upload mode
 			 */
