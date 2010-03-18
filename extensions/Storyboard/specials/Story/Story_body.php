@@ -25,8 +25,11 @@ class SpecialStory extends IncludableSpecialPage {
 		global $wgOut, $wgRequest, $wgUser;		
 		
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-			$this->saveStoryAndShowResult();
-		} else if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
+			// TODO: add permission check
+			$this->saveStory();
+		}
+		
+		if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
 			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->addWikiMsg( 'storyboard-nostorytitle' );	
@@ -206,7 +209,7 @@ EOT
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $this->getTitle()->getLocalURL(),
+				'action' => $this->getTitle()->getLocalURL() . "/$story->story_title", // TODO: can probably beter
 			),
 			$formBody
 		);		
@@ -215,11 +218,9 @@ EOT
 	}
 	
 	/**
-	 * Saves the story after a story edit form has been submitted and shows a result.
-	 * 
-	 * TODO: add permission check
+	 * Saves the story after a story edit form has been submitted.
 	 */
-	private function saveStoryAndShowResult() {
+	private function saveStory() {
 		global $wgOut, $wgRequest, $wgUser;
 		
 		$dbw = wfGetDB( DB_MASTER );
@@ -239,7 +240,5 @@ EOT
 				'story_id' => $wgRequest->getText( 'storyId' ),
 			)
 		);
-		
-		$wgOut->addHTML( '' ); // TODO: add output
 	}
 }
