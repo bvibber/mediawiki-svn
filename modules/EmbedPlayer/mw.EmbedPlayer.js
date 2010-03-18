@@ -35,7 +35,7 @@ mw.addMessages( {
 	"mwe-share" : "Share",
 	"mwe-credits" : "Credits",
 	"mwe-clip_linkback" : "Clip source page",
-	"mwe-chose_player" : "Choose video player",
+	"mwe-chose_player" : "Chose video player",
 	"mwe-no-player" : "No player available for $1", 
 	"mwe-share_this_video" : "Share this video",
 	"mwe-video_credits" : "Video credits",
@@ -981,74 +981,79 @@ mediaElement.prototype = {
 	/** 
 	* Selects the default source via cookie preference, default marked, or by id order
 	*/
-	autoSelectSource:function() {
+	autoSelectSource: function() {
 		mw.log( 'f:autoSelectSource:' );
 		// Select the default source
 		var playableSources = this.getPlayableSources();
-		var flash_flag = ogg_flag = false;
-		// debugger;
+		var flash_flag = ogg_flag = false;		
+		
 		for ( var source = 0; source < playableSources.length; source++ ) {
 			var mimeType = playableSources[source].mimeType;
+			
+			// Set via marked default: 
 			if ( playableSources[ source ].marked_default ) {
 				mw.log( 'set via marked default: ' + playableSources[source].marked_default );
 				this.selectedSource = playableSources[source];
 				return true;
 			}
+			
 			// Set via user-preference
 			if ( mw.EmbedTypes.players.preference[ 'format_preference' ] == mimeType ) {
 				 mw.log( 'set via preference: ' + playableSources[source].mimeType );
 				 this.selectedSource = playableSources[source];
 				 return true;
 			}
-		}
+		}		
+				
 		
-		// Set Ogg if client supports it		
-		for ( var source = 0; source < playableSources.length; source++ ) {
-			mw.log( 'f:autoSelectSource:' + playableSources[source].mimeType );
-			var mimeType = playableSources[source].mimeType;
-			   // set source via player				 
-			if ( mimeType == 'video/ogg' 
-				|| mimeType == 'ogg/video' 
-				|| mimeType == 'video/annodex' 
-				|| mimeType == 'application/ogg'
-				|| mimeType == 'video/theora' 
-			) {
-				for ( var i = 0; i < mw.EmbedTypes.players.players.length; i++ ) { // for in loop on object oky
-					var player = mw.EmbedTypes.players.players[i];
-					if ( player.library == 'vlc' || player.library == 'native' ) {
-						mw.log( 'set via ogg via order' );
-						this.selectedSource = playableSources[source];
-						return true;
-					}
-				}
-			}
-		}
-		
-		// Set basic flash
+		// Set native client for flash
 		for ( var source = 0; source < playableSources.length; source++ ) {
 			var mimeType = playableSources[source].mimeType;
-			if ( mimeType == 'video/x-flv' ) {
-				mw.log( 'set via by player preference normal flash' )
-				this.selectedSource = playableSources[source];
+			var player =  mw.EmbedTypes.players.defaultPlayer( mimeType );
+			mw.log( 'f:autoSelectSource:' +  mimeType );
+			if ( this.isOgg( mimeType )	&& player && player.library == 'native'	) {
+				this.selectedSource = playableSources[ source ];
+				return true;
+			}			
+		}	
+		// Set h264 via native or flash fallback
+		for ( var source = 0; source < playableSources.length; source++ ) {
+			var mimeType = playableSources[source].mimeType;
+			var player =  mw.EmbedTypes.players.defaultPlayer( mimeType );	
+			if ( mimeType == 'video/h264' 
+				&& player 
+				&& ( 
+					player.library == 'native' 
+					||
+					player.library == 'kplayer'
+				)
+			) {				
+				this.selectedSource = playableSources[ source ];
 				return true;
 			}
-		}
-		// Set h264 flash 
-		for ( var source = 0; source < playableSources.length; source++ ) {
-			var mimeType = playableSources[source].mimeType;
-			if ( mimeType == 'video/h264' ) {
-				mw.log( 'set via playableSources preference h264 flash' )
-				this.selectedSource = playableSources[source];
-				return true;
-			}
-		}
-		// Select first source		
+		};
+		
+		// Else just select first source		
 		if ( !this.selectedSource ) {
 			mw.log( 'set via first source:' + playableSources[0] );
 			this.selectedSource = playableSources[0];
 			return true;
 		}
 		// No Source found so no source selected
+		return false;
+	},
+	
+	/**
+	* check if the mime is ogg 
+	*/ 
+	isOgg: function( mimeType ){
+		if ( mimeType == 'video/ogg' 
+			|| mimeType == 'ogg/video' 
+			|| mimeType == 'video/annodex' 
+			|| mimeType == 'application/ogg'
+		) {
+			return true;
+		}
 		return false;
 	},
 	
@@ -1129,7 +1134,7 @@ mediaElement.prototype = {
 			 if ( this.isPlayableType( this.sources[i].mimeType ) ) {
 				 playableSources.push( this.sources[i] );
 			 } else {
-				 //mw.log( "type " + this.sources[i].mimeType + 'is not playable' );
+				 mw.log( "type " + this.sources[i].mimeType + 'is not playable' );
 			 }
 		 };
 		 return playableSources;
@@ -1490,6 +1495,7 @@ mw.EmbedPlayer.prototype = {
 		mw.log("setupSourcePlayer: " + this.id );
 		// Autoseletct the media source		
 		this.mediaElement.autoSelectSource();
+		
 		// Auto select player based on default order
 		if ( !this.mediaElement.selectedSource ) {
 			// check for parent clip: 
@@ -1801,7 +1807,7 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* On clip done action. Called once a clip is done playing
 	*/
-	onClipDone:function() {
+	onClipDone: function() {
 		mw.log( 'base:onClipDone' );
 		
 		// Stop the clip (load the thumbnail etc) 
@@ -2095,7 +2101,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Refresh the player Controls 
-	*  Usefull for updating for when new playback system is selected
+	*  Useful for updating for when new playback system is selected
 	*/	
 	refreshControls:function() {
 		if ( this.$interface.find( '.control-bar' ).length == 0 ) {
@@ -2989,7 +2995,7 @@ mediaPlayer.prototype = {
 */
 
 //Flash based players: 
-//var flowPlayer = new mediaPlayer( 'flowplayer', ['video/x-flv', 'video/h264'], 'flowplayer' );
+
 var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'kplayer');
 var omtkPlayer = new mediaPlayer( 'omtkplayer', ['audio/ogg'], 'omtk' );
 

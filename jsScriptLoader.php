@@ -321,8 +321,8 @@ class jsScriptLoader {
 			header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 			header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 		}else{
-			// Cache for 2 days ( we should always change the request URL so this could be higher in my opinion)
-			$one_day = 60 * 60 * 24 * 2;
+			// Cache for 5 days ( we update the request urid so this has a long expire delay )
+			$one_day = 60 * 60 * 24 * 5;
 			header( "Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_day ) . " GM" );
 		}
 	}

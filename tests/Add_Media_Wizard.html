@@ -13,14 +13,11 @@
 	</style>
 
  	<script type="text/javascript" src="../mwEmbed.js?debug=true"></script>
-
- 	<!-- 	
- 	<script type="text/javascript" src="../jsScriptLoader.php?uselang=en&class=window.jQuery,mwEmbed,mw.RemoteSearchDriver,$j.ui,$j.ui.resizable,$j.ui.draggable,$j.ui.dialog,$j.ui.tabs,$j.ui.sortable,$j.cookie,baseRemoteSearch&urid=1257728132531&debug=true"></script>
- 	-->
  	
  	<script type="text/javascript">
  	mw.ready( function(){
- 		mw.load( 'AddMedia.addMediaWizard', function(){ 			
+ 		mw.load( 'AddMedia.addMediaWizard', function(){
+ 			$j('#add_media_link').wrap( $j( '<a />').attr('href', '#') ).text( 'Add Media Wizard' );
  			$j('#add_media_link').addMediaWizard( {
 				'profile' : 'html_edit',			
 				'target_textbox' : '#wpTextbox1',
@@ -50,7 +47,7 @@
 <body>
 <h3>Sample Add Media Wizard</h3>
 
-<a id="add_media_link" href="#">Add Media</a><br><br>
+<span id="add_media_link">loading...</span><br><br>
 <table border="1" width="800">
 	<tr>
 		<td valign="top" width="50%" id="inline_append">Asset Output</td>

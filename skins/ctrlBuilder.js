@@ -11,7 +11,7 @@ var ctrlBuilder = function( embedPlayer, options ) {
 };
 
 /**
- * controlsBuilder prototype:
+ * ControlsBuilder prototype:
  */
 ctrlBuilder.prototype = {
 	//Default Local values: 
