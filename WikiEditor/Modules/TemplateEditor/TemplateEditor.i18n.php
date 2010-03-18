@@ -122,6 +122,9 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobźěłowanje wikipśedłogow na zakłaźe formularow zmóžniś',
+	'wikieditor-template-editor-dialog-title' => 'Pśedłogu wobźěłaś',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualizěrowaś',
+	'wikieditor-template-editor-dialog-cancel' => 'Pśetergnuś',
 );
 
 /** Esperanto (Esperanto)
@@ -247,7 +250,9 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'wikieditor-template-editor-preference' => 'フォームを利用したテンプレートの編集を有効化する',
+	'wikieditor-template-editor-dialog-title' => 'テンプレートを編集する',
 	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '中止',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -319,6 +324,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  * @author Wpedzich
  */
@@ -326,6 +332,7 @@ $messages['pl'] = array(
 	'wikieditor-template-editor-preference' => 'Umożliwia edycję szablonów wiki za pomocą formularzy',
 	'wikieditor-template-editor-dialog-title' => 'Edytuj szablon',
 	'wikieditor-template-editor-dialog-submit' => 'Uaktualnij',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuluj',
 );
 
 /** Piedmontese (Piemontèis)
