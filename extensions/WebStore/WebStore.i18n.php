@@ -655,7 +655,7 @@ Zawina by mógła wjelicka PHP-zmólka w skalěrowaku byś.',
 	'webstore_invalid_response' => 'Njepłaśiwe wótegrono ze serwera:
 
 $1',
-	'webstore_no_response' => 'Žedne wótegrono ze serwera',
+	'webstore_no_response' => 'Žedno wótegrono ze serwera',
 	'webstore_backend_error' => 'Zmólka ze składowańskego serwera:
 
 $1',

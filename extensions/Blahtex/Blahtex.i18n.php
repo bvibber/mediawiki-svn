@@ -750,7 +750,7 @@ Snaź coš město togo "$2" wužywaś?',
 	'math_IllegalRedefinition' => 'Pśikaz "$1" jo južo definěrowany, njamóžoš jen hyšći raz definěrowaś',
 	'math_InvalidColour' => 'Barwa "$1" jo njepłaśiwa',
 	'math_InvalidUtf8Input' => 'Zapódawański tekst njejo płaśiwy rěd znamješkow UTF-8',
-	'math_LatexFontNotSpecified' => 'Za "$1" njejo žedne pismo LaTeX pódane',
+	'math_LatexFontNotSpecified' => 'Za "$1" njejo žedno pismo LaTeX pódane',
 	'math_LatexPackageUnavailable' => 'Njemóžno PNG kresliś, dokulaž pakśik LaTeX "$1" njestoj k dispoziciji',
 	'math_MismatchedBeginAndEnd' => 'Pśikaza "$1" a "$2" se njemakatej',
 	'math_MisplacedLimits' => 'Pśikaz "$1" móžo jano za matematiskim operatorom wustupowaś.

@@ -346,7 +346,7 @@ Bitte füllen Sie {{PLURAL:$2|es|sie}} aus.',
 $messages['dsb'] = array(
 	'form-desc' => '[[Special:Form|Formular]] za napóranje nowych bokow',
 	'form' => 'Formular',
-	'formnoname' => 'Žedne formularowe mě',
+	'formnoname' => 'Žedno formularowe mě',
 	'formnonametext' => 'Musyš formularowe mě pódaś, na pś. "Special:Form/Měformulara".',
 	'formbadname' => 'Wopacne formularowe mě',
 	'formbadnametext' => 'Njejo formular z tym mjenim.',

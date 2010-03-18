@@ -1151,7 +1151,7 @@ móžoš jadno ze slědujucych opcijow wubraś.',
 	'openidalreadyloggedin' => "'''Sy južo pśizjawjony, $1!'''
 
 Jolic pśichodnje coš OpenID wužywaś, aby se pśizjawił, móžoš [[Special:OpenIDConvert|swójo konto za wužiwanje OpenID konwertěrowaś]].",
-	'openidnousername' => 'Žedne wužywarske mě pódane.',
+	'openidnousername' => 'Žedno wužywarske mě pódane.',
 	'openidbadusername' => 'Wopacne wužywarske mě pódane.',
 	'openidautosubmit' => 'Toś ten bok wopśimujo formular, kótaryž se awtmatiski wótpósćeła, jolic JavaScript jo zmóžnjony. Jolic nic, klikni na tłocašk "Continue" (Dalej).',
 	'openidclientonlytext' => 'Njamóžoš konta z toś togo wikija ako OpneID na drugem sedle wužywaś.',

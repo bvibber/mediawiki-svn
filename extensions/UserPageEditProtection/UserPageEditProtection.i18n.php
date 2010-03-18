@@ -49,6 +49,14 @@ $messages['de'] = array(
 	'right-editalluserpages' => 'Benutzerseiten bearbeiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'userpageeditprotection-desc' => 'Wobgranicujo wobźěłowanje wužywarskich bokow na wužywarja a dowólonych wobźěłarjow',
+	'right-editalluserpages' => 'Wužywarske boki wobźěłaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Dead3y3
  */
@@ -152,6 +160,14 @@ $messages['oc'] = array(
 $messages['pms'] = array(
 	'userpageeditprotection-desc' => "A lìmita ël modifiché le pàgine utent a l'utent e a j'editor con përmess",
 	'right-editalluserpages' => 'Modifiché le pàgine utent',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'userpageeditprotection-desc' => 'Restringe a edição das páginas de utilizador ao próprio utilizador e aos editores permitidos',
+	'right-editalluserpages' => 'Editar páginas de utilizador',
 );
 
 /** Tarandíne (Tarandíne)

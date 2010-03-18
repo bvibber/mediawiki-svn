@@ -300,10 +300,13 @@ $messages['dsb'] = array(
 	'watchers-desc' => 'Pokazujo, [[Special:Watchers|kótare wužywarje maju bok na swójich wobglědowańkach]]',
 	'watchers_link_title' => 'Chto wobglědujo toś ten bok?',
 	'watchers_error_article' => "'''Zmólka:''' Bok njeeksistěrujo.",
+	'watchers-error-invalid-page' => "'''Zmólka:''' \"\$1\" jo njepłaśiwy titel boka.",
 	'watchers_header' => '{{PLURAL:$2|Wužywaŕ, kótaryž "[[:$1]]" wobglědujo|Wužywarja, kótarejž "[[:$1]]" wobglědujotej|Wužywarje, kótarež "[[:$1]]" wobglěduju|Wužywarje, kótarež "[[:$1]]" wobglěduju}}',
-	'watchers_noone_watches' => 'Nichten njewužywa toś ten bok.',
-	'watchers_x_or_more' => '$1 {{PLURAl:$1|wužywaŕ|wužywarja|wužywarje|wužywarjow}} abo wěcej {{PLURAl:$1|wobglědujo|wobglědujotej|wobglěduju|wobglědujo}} toś ten bok.',
+	'watchers_noone_watches' => 'Nichten njewobglědujo bok [[:$1]].',
+	'watchers_x_or_more' => '$1 {{PLURAl:$1|wužywaŕ|wužywarja|wužywarje|wužywarjow}} abo wěcej {{PLURAl:$1|wobglědujo|wobglědujotej|wobglěduju|wobglědujo}} bok [[:$2]].',
 	'watchers_less_than_x' => 'Mjenjej ako $1 {{PLURAL:$1|wužywaŕ wobglědujo|wužywarja wobglědujotej|wužywarje wobglěduju|wužywarjow wobglědujo}} toś ten bok.',
+	'watchers-num' => '$1 {{PLURAl:$1|wužywaŕ|wužywarja|wužywarje|wužywarjow}} {{PLURAl:$1|wobglědujo|wobglědujotej|wobglěduju|wobglědujo}} bok [[:$2]].',
+	'right-watchers-list' => '[[Special:Watchers|Wužywarjow nalicyś, kótarež wobglěduju wěsty bok]]',
 );
 
 /** Greek (Ελληνικά)
@@ -319,7 +322,7 @@ $messages['el'] = array(
 	'watchers_error_article' => '<b>Σφάλμα:</b> Η σελίδα δεν υπάρχει.',
 	'watchers_header' => '{{PLURAL:$2|Χρήστης που παρακολουθεί|Χρήστες που παρακολουθούν}} το "[[:$1]]"',
 	'watchers_noone_watches' => 'Κανείς δεν παρακολουθεί τη σελίδα [[:$1]].',
-	'watchers_x_or_more' => '$ 1 ή περισσότερα {{PLURAL: $ 1 | χρήστες | χρήστες}} έχουν την σελίδα [[: $ 2]] στη λίστα παρακολούθησής τους.',
+	'watchers_x_or_more' => '$1 ή περισσότεροι {{PLURAL:$1|χρήστες|χρήστες}} έχουν την σελίδα [[:$2]] στη λίστα παρακολούθησής τους.',
 	'watchers_less_than_x' => '$1 ή λιγότεροι {{PLURAL:$1|χρήστης παρακολουθεί|χρήστες παρακολουθούν}} αυτήν τη σελίδα.',
 );
 
@@ -797,6 +800,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -805,10 +809,13 @@ $messages['pt'] = array(
 	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
 	'watchers_link_title' => 'Quem está vigiando esta página?',
 	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
+	'watchers-error-invalid-page' => "'''Erro:''' \"\$1\" é um título de página inválido.",
 	'watchers_header' => '{{PLURAL:$2|Utilizador que está|Utilizadores que estão}} vigiando "[[:$1]]"',
 	'watchers_noone_watches' => 'Ninguém está vigiando esta página.',
 	'watchers_x_or_more' => '$1 ou mais {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
+	'watchers-num' => '$1 {{PLURAL:$1|utilizador tem|utilizadores têm}} a página [[:$2]] nas suas páginas vigiadas.',
+	'right-watchers-list' => '[[Special:Watchers|Listar utilizadores que vigiam uma página específica]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

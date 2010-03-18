@@ -588,7 +588,7 @@ Kontrolěruj pšosym, lěc smějoš na toś tom wikiju aktiwny byś a twóje akc
 Slědk k:
 * [[Special:CrosswikiBlock|Blokěrowański formular]]
 * [[$2]]",
-	'crosswikiblock-nousername' => 'Žedne wužywarske mě zapódane',
+	'crosswikiblock-nousername' => 'Žedno wužywarske mě zapódane',
 	'crosswikiblock-local' => 'Lokalne blokěrowanja njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound' => 'Datowa banka $1 njeeksistěrujo',
 	'crosswikiblock-noname' => '"$1" njejo płaśiwe wužywarske mě.',
@@ -698,7 +698,7 @@ Por favor verifique si estás permitido de actuar en este wiki y tus acciones cu
 	'crosswikiunblock-submit' => 'Desbloquear este usuario',
 	'crosswikiunblock-success' => "Usuario '''$1''' desbloqueado exitosamente.
 
-Retornar a:
+Regresar a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'Ningún nombre de usuario fue dado',

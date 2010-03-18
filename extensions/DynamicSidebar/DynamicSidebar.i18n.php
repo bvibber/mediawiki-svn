@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'dynamicsidebar-desc' => 'Reiñ a ra barrennoù kostez dinamek diazezet war pajennoù an implijerien, o strolladoù hag ar rummadoù',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'dynamicsidebar-desc' => 'Stoj dynamiske bocnice na zakłaźe wužywarskich bokow, kupkow a kategorijow k dispoziciji',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

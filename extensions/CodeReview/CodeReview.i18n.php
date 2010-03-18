@@ -5346,6 +5346,7 @@ $messages['lb'] = array(
 	'codereview-tests-failed2' => '$1 huet {{PLURAL:$2|Test|Tester}} gepakt, $3 huet {{PLURAL:$4|Test|Tester}} net gepakt:',
 	'codereview-tests-running' => 'Tester sinn am gaang ...',
 	'codereview-tests-aborted' => 'Tester goufen ofgebrach.',
+	'codereview-tests-failed' => 'huet net fonctionnéiert',
 	'codereview-email-subj' => '[$1] [$2]: Nei Bemierkung derbäigesat',
 	'codereview-email-body' => 'De Benotzer "$1" huet eng Bemierkung op $3 hannerlooss.
 

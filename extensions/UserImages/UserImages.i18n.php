@@ -177,7 +177,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'userimages-desc' => 'Galerije wót wužywarjow nagratych wobrazow pśez <code><nowiki><userimage /></nowiki></code> napóraś',
 	'userimages-caption' => 'Wobraze nagrate wót $1',
-	'userimages-noname' => 'Njepłaśiwe wužywarske mě abo žedne mě pódane',
+	'userimages-noname' => 'Njepłaśiwe wužywarske mě abo žedno mě pódane',
 	'userimages-noimages' => '$1 njama wobrazowe nagraśa.',
 );
 

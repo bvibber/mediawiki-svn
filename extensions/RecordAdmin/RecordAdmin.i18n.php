@@ -490,9 +490,12 @@ $messages['dsb'] = array(
 	'recordadmin-modified' => 'Změnjony',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Wopśimjeśe pśidaś...',
-	'recordadmin-editwithform' => 'Z formularom wobźěłaś',
+	'recordadmin-editwithform' => 'Kakosći',
 	'recordadmin-typeinfo' => 'Datowa sajźba $1',
 	'right-recordadmin' => 'Zapisowe boki namakaś a wobźěłaś',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Žeden "$1"',
 );
 
 /** Greek (Ελληνικά)
@@ -1727,7 +1730,7 @@ $messages['pt'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acções',
 	'recordadmin-needscontent' => 'Adicionar conteúdo...',
-	'recordadmin-editwithform' => 'Editar com formulário',
+	'recordadmin-editwithform' => 'Propriedades',
 	'recordadmin-typeinfo' => 'Registo de $1',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 	'recordadmin-export-csv' => 'CSV',

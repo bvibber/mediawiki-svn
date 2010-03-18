@@ -2725,7 +2725,7 @@ Wubjeŕ zběrku za eksport. W tekstowem kašćiku za rěce, zapódaj lisćinu r�
 	'ow_save' => 'Składowaś',
 	'ow_history' => 'Wersije/Awtory',
 	'ow_datasets' => 'Wuběrk datoweje sajźby',
-	'ow_noedit_title' => 'Žedne pšawo za wobźěłanje',
+	'ow_noedit_title' => 'Žedno pšawo za wobźěłanje',
 	'ow_noedit' => 'Njamaš pšawo boki w datowej sajźbje "$1" wobźěłaś.
 Pšosym glědaj [[{{MediaWiki:Ow editing policy url}}|naše wobźěłowańske zasady]].',
 	'ow_uipref_datasets' => 'Standardny naglěd:',

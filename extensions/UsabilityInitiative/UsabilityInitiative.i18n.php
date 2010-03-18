@@ -164,6 +164,8 @@ $messages['diq'] = array(
 $messages['dsb'] = array(
 	'usabilityinitiative' => 'Iniciatiwa wužywajobnosći',
 	'usabilityinitiative-desc' => 'Funkcije wuwite pśez iniciatiwu wužywajobnosći Wikipedije za pólěpšenje wužywajobnosći MediaWiki',
+	'prefs-beta' => 'Betafunkcije',
+	'prefs-labs' => 'Laborowe funkcije',
 );
 
 /** Greek (Ελληνικά)

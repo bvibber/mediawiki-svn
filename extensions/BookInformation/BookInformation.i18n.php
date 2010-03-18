@@ -348,7 +348,7 @@ $messages['dsb'] = array(
 	'bookinfo-error-invalidisbn' => 'Njepłaśiwy ISBN zapódany.',
 	'bookinfo-error-nosuchitem' => 'Zapisk njeeksistěrujo abo njejo se namakaś dał.',
 	'bookinfo-error-nodriver' => 'Njejo móžno pśiłušny gónjak za informacije wó knigłach inicializěrowaś',
-	'bookinfo-error-noresponse' => 'Žedne wótegrono abo cas za wótegrono wótběgnuł',
+	'bookinfo-error-noresponse' => 'Žedno wótegrono abo cas za wótegrono wótběgnuł',
 	'bookinfo-purchase' => 'Toś te knigły z $1 kupiś',
 	'bookinfo-provider' => 'Librowaŕ datow: $1',
 );
