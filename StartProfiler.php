@@ -34,6 +34,8 @@ if ( @$_SERVER['REQUEST_URI'] == '/w/index.php?title=United_States&action=submit
 		$wgProfiler->setProfileID( 'enwiki' );
 	} elseif ( $host == 'de.wikipedia.org' ) {
 		$wgProfiler->setProfileID( 'dewiki' );
+	} elseif ( $host == 'zh.wikipedia.org' ) {
+		$wgProfiler->setProfileID( 'zhwiki' );
 	} else {
 		$wgProfiler->setProfileID( 'others' );
 	}
