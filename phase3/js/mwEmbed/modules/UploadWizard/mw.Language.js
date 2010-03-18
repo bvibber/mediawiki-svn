@@ -1,5 +1,5 @@
 mw.addMessages({
-	'mwe-code-unknown': 'Unknown language'
+	"mwe-code-unknown": "Unknown language"
 });
 
 /**
