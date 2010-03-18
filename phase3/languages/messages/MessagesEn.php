@@ -4276,9 +4276,6 @@ but it will not let you store characters above the [http://en.wikipedia.org/wiki
 'config-sqlite-dir-help' => 'SQLite stores data into a file in the filesystem.
 This directory must be writable by the webserver.
 It should <strong>not</strong> accessible via the web.',
-'config-sqlite-permissions' => 'Permission for data directory:',
-'config-sqlite-permissions-help' => 'Please specify the default permissions for the data directory.
-If you do not know, it is usually safe to use the default value.',
 'config-type-mysql' => 'MySQL',
 'config-type-postgres' => 'PostgreSQL',
 'config-type-sqlite' => 'SQLite',
