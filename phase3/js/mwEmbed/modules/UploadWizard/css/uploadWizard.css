@@ -172,3 +172,10 @@ a[disabled=true]:hover {
 .mwe-upwiz-desc-lang-select {
 	width: 150px;
 }
+
+/* XXX add spinner gif instead, maybe */
+.busy {
+	background: yellow;
+}
+
+
