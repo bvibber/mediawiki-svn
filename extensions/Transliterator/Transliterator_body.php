@@ -47,11 +47,8 @@ class ExtTransliterator  {
 	const WORD_END = "\x1E";    // A character that will be appended when $ should match at the end
 	const LETTER_END = "\x1D";  // A chacter added between each character as a separator
 
-	// TODO: some characters from \p{Cf} should probably be here too.
-	const COMBINING = '\p{Mn}\p{Me}';
-
 	// The prefix to use for cache items (the number should be incremented when the map format changes)
-	const CACHE_PREFIX = "extTransliterator.4"; 
+	const CACHE_PREFIX = "extTransliterator.4";
 
 	// flags for preprocessor
 	const DECOMPOSE = 1;
@@ -73,7 +70,7 @@ class ExtTransliterator  {
 	 * $format  is a string containing $1 to be replaced by the transliteration if the map exists
 	 * $answer  allows for a user-specified transliteration to override the automatic one
 	 */
-	function render( $parser, $mapname = '', $word = '', $format = '$1', $answer = '') {
+	function render( $parser, $mapname = '', $word = '', $format = '$1', $answer = '' ) {
 		// Handle the case when people use {{#transliterate:<>|<>||<>}}
 		if ( trim( $format ) === '' ) {
 			$format = '$1';
@@ -127,7 +124,7 @@ class ExtTransliterator  {
 		global $wgMemc;
 
 		// Has it been used on this page already?
-		if ( ! is_null($this->mPages) )
+		if ( ! is_null( $this->mPages ) )
 			return $this->mPages;
 
 		// Has it been used since it was last updated?
@@ -144,7 +141,7 @@ class ExtTransliterator  {
 			array( 'page_title', 'page_id' ),
 			array(
 				'page_namespace' => NS_MEDIAWIKI,
-				'page_title LIKE \'' . $dbr->escapeLike( self::getMapPagePrefix() ) .'%\''
+				'page_title LIKE \'' . $dbr->escapeLike( self::getMapPagePrefix() ) . '%\''
 			),
 			__METHOD__
 		);
@@ -188,7 +185,7 @@ class ExtTransliterator  {
 				}
 
 				if ( $map ) {
-					$wgMemc->set( wfMemcKey( self::CACHE_PREFIX, $mappage ), $map);
+					$wgMemc->set( wfMemcKey( self::CACHE_PREFIX, $mappage ), $map );
 				}
 			}
 		} else {
@@ -221,17 +218,17 @@ class ExtTransliterator  {
 			$word = UtfNormal::toNFD( $word );
 			$word = preg_replace( '/./u', '$0' . self::LETTER_END, $word );
 		} else {
-			$word = preg_replace( '/.[' . self::COMBINING . ']*/u', '$0' . self::LETTER_END, $word );
+			$word = preg_replace( '/\X/u', '$0' . self::LETTER_END, $word );
 		}
 
-		if( !$regexes ) {
+		if ( !$regexes ) {
 			// A "letter" is a unicode letter followed by some combining characters
 			// A "non-letter" is any other character followed by some combining characters
 			// "end" is done first so it watches out for word-endings in "start"
 			// If it should treat endings then the start and end of the string are non-letters
 			// Otherwise it does not touch the start or end of the string, only internal transitions
-			$combining = '(?:[' . self::COMBINING . ']*' . self::LETTER_END . ')';
-			$nonletter = '[^\pL' . self::LETTER_END . self::WORD_END . self::COMBINING . ']';
+			$combining = '(?:[\pM]*' . self::LETTER_END . ')';
+			$nonletter = '[^\pL' . self::LETTER_END . self::WORD_END . '\pM]';
 			$regexes = array (
 				'endings' => array (
 					'start' => "/(^$combining?|$nonletter$combining)([\pL])/u",
@@ -244,7 +241,7 @@ class ExtTransliterator  {
 			);
 		}
 
-		$regex = $regexes[ $flags & self::IGNORE_ENDINGS ? 'ignore-endings' : 'endings' ];
+		$regex = $regexes[$flags & self::IGNORE_ENDINGS ? 'ignore-endings' : 'endings'];
 		$word = preg_replace( $regex['end'], '$1' . self::WORD_END . '$2', $word );
 		$word = preg_replace( $regex['start'], '$1' . self::WORD_START . '$2', $word );
 
@@ -270,7 +267,7 @@ class ExtTransliterator  {
 		// in order to find accurate word boundaries. So we check here if
 		// this occurs, and work around it.
 		$noprefix = $nosuffix = false;
-		if ( $from[0] === '&' || $from[strlen( $from ) - 1] === ';') {
+		if ( $from[0] === '&' || $from[strlen( $from ) - 1] === ';' ) {
 		       	$decoded = Sanitizer::decodeCharReferences( $from );
 			$noprefix = $decoded[0] === '^';
 			$nosuffix = $decoded[strlen( $decoded ) - 1] === '$';
@@ -292,7 +289,7 @@ class ExtTransliterator  {
 		}
 
 		// Check that this rule isn't ambiguous
-		if ( isset( $rules[$prefix . $from . $suffix] ) && !($attrs[$from] & self::UPCASED) ) {
+		if ( isset( $rules[$prefix . $from . $suffix] ) && !( $attrs[$from] & self::UPCASED ) ) {
 			return false;
 		}
 
@@ -303,7 +300,7 @@ class ExtTransliterator  {
 		$casefrom = $wgLang->ucfirst( $from ) ;
 		if ( $from !== $casefrom && !isset( $rules[$prefix . $casefrom . $suffix] ) ) {
 			$rules[$prefix . $casefrom . $suffix] = $wgLang->ucfirst( $to );
-			$attrs[$casefrom . $suffix] = ($prefix ? self::PREFIXED : 0) | self::UPCASED;
+			$attrs[$casefrom . $suffix] = ( $prefix ? self::PREFIXED : 0 ) | self::UPCASED;
 		}
 
 		return true;
@@ -422,7 +419,7 @@ class ExtTransliterator  {
 					} else {
 						$naturalCased = false;
 					}
-				} 
+				}
 
 			} else if ( !$naturalCased ) {
 
@@ -436,14 +433,14 @@ class ExtTransliterator  {
                         // If the length is actually the same, ^x needs to maintain priority over x$
 			if ( $attr & self::PREFIXED ) {
 
-				if ( !$wasPrefixed || strpos( $from, $prefixedFrom) !== 0 ) {
+				if ( !$wasPrefixed || strpos( $from, $prefixedFrom ) !== 0 ) {
 					$wasPrefixed = true;
 					$prefixedFrom = $from;
 				}
 
 			} else if ( $wasPrefixed ) {
 
-				if ( strpos( $from, $prefixedFrom ) === 0) {
+				if ( strpos( $from, $prefixedFrom ) === 0 ) {
 					if ( $from !== $prefixedFrom . self::WORD_END ) {
 						$rules[self::WORD_START . $from] = $rules[$from];
 					}
@@ -454,9 +451,9 @@ class ExtTransliterator  {
 			}
 		}
 
-		$rules[ self::LETTER_END ] = '';
-		$rules[ self::WORD_END ] = '';
-		$rules[ self::WORD_START ] = '';
+		$rules[self::LETTER_END] = '';
+		$rules[self::WORD_END] = '';
+		$rules[self::WORD_START] = '';
 
 		$rules = new ReplacementArray( $rules );
 
