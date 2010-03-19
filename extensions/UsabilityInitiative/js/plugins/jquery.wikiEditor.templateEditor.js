@@ -392,6 +392,16 @@ fn: {
 					// Ensure our close button doesn't recieve the ui-state-focus class 
 					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
 						.removeClass( 'ui-state-focus' );
+					
+					// Set tabindexes on form fields if needed
+					// First unset the tabindexes on the buttons and existing form fields
+					// so the order doesn't get messed up
+					var $needTabindex = $( this ).closest( '.ui-dialog' ).find( 'button, textarea' );
+					if ( $needTabindex.not( '[tabindex]' ).length ) {
+						// Only do this if there actually are elements missing a tabindex
+						$needTabindex.removeAttr( 'tabindex' );
+						$.wikiEditor.modules.dialogs.fn.setTabindexes( $needTabindex );
+					}
 				}
 			}
 		};
