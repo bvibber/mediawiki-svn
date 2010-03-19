@@ -16,21 +16,20 @@ import java.util.ArrayList;
  *
  */
 public class ArticlesParser {
-	
+
 	protected ArrayList<TestArticle> articles;
-	
-	
+
 	/**
-	 * Initialize from a file path, open file and read into memory 
-	 * 
+	 * Initialize from a file path, open file and read into memory
+	 *
 	 * @param filename
 	 */
 	public ArticlesParser(String filename){
 		BufferedReader in;
 		try {
 			articles = new ArrayList<TestArticle>();
-			in = new BufferedReader(new FileReader(filename));		
-			readFromFile(in);        
+			in = new BufferedReader(new FileReader(filename));
+			readFromFile(in);
 			in.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -40,10 +39,10 @@ public class ArticlesParser {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Read some articles from BufferedReader
-	 * 
+	 *
 	 * @param in
 	 */
 	protected void readFromFile(BufferedReader in){
@@ -52,7 +51,7 @@ public class ArticlesParser {
 		boolean readingContent = false;
 		try {
 			while ((str = in.readLine()) != null){
-				if(readingContent){					
+				if(readingContent){
 					if(str.startsWith("###")){
 						// done
 						articles.add(a);
@@ -84,12 +83,12 @@ public class ArticlesParser {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * @return Returns the articles.
 	 */
 	public ArrayList<TestArticle> getArticles() {
 		return articles;
-	}	
-	
+	}
+
 }

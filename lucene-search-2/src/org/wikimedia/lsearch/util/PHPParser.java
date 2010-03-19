@@ -432,7 +432,7 @@ public class PHPParser {
 		}
 		try{
 			PHPParser p = new PHPParser();
-			String initset = p.readURL(new URL("file:///home/wikipedia/common/php-1.5/InitialiseSettings.php"));
+			String initset = p.readURL(new URL("InitialiseSettings.php"));
 			System.out.println(p.getLanguages(initset));
 			System.out.println("wgServer: " + p.getServer(initset));
 			System.out.println(p.getDefaultSearch(initset));

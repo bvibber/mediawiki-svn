@@ -71,52 +71,49 @@
 
 	<target name="build" description="Compile classes">
 		<mkdir dir="${dest.dir}"/>
-		<javac srcdir="${src.dir}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${dest.dir}/">
+                <javac srcdir="${src.dir}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${dest.dir}/">
 			<classpath refid="classpath"/>
 		</javac>
 	</target>
 
-	<target name="pack" description="Make tar.gz distribution">
+        <target name="clean-dist" description="Clean up the dist dir">
 		<mkdir dir="${dist.dir}"/>
-		<delete file="${dist.dir}/${pack.name}.tar"/>
-		<delete file="${dist.dir}/${pack.name}.tar.gz"/>
-		<tar tarfile="${dist.dir}/${pack.name}.tar">
-			<tarfileset prefix="${pack.name}" dir="." includes="${include}"/>
-		</tar>
+		<delete file="${dist.dir}/*.tar"/>
+		<delete file="${dist.dir}/*.tar.gz"/>
+        </target>
 
-		<gzip zipfile="${dist.dir}/${pack.name}.tar.gz" src="${dist.dir}/${pack.name}.tar"/>
-		<delete file="${dist.dir}/${pack.name}.tar"/>
+	<target name="pack" depends="clean-dist" description="Make tar.gz distribution">
+		<tar tarfile="${dist.dir}/${pack.name}-${version}.tar">
+			<tarfileset prefix="${pack.name}-${version}" dir="." includes="${include}"/>
+		</tar>
+		<gzip zipfile="${dist.dir}/${pack.name}-${version}.tar.gz" src="${dist.dir}/${pack.name}-${version}.tar"/>
+		<delete file="${dist.dir}/${pack.name}-${version}.tar"/>
 	</target>
 
-	<target name="pack-src" depends="alljar" description="Make tar.gz distribution of only core source files">
-		<mkdir dir="${dist.dir}"/>
-		<delete file="${dist.dir}/${src.name}.tar"/>
-		<delete file="${dist.dir}/${src.name}.tar.gz"/>
-		<tar tarfile="${dist.dir}/${src.name}.tar">
-			<tarfileset prefix="${pack.name}" dir="." includes="${include.src}"/>
+	<target name="pack-src" depends="alljar, clean-dist" description="Make tar.gz distribution of only core source files">
+		<tar tarfile="${dist.dir}/${src.name}-${version}.tar">
+			<tarfileset prefix="${pack.name}-${version}" dir="." includes="${include.src}"/>
 		</tar>
 
-		<gzip zipfile="${dist.dir}/${src.name}.tar.gz" src="${dist.dir}/${src.name}.tar"/>
-		<delete file="${dist.dir}/${src.name}.tar"/>
+		<gzip zipfile="${dist.dir}/${src.name}-${version}.tar.gz" src="${dist.dir}/${src.name}-${version}.tar"/>
+		<delete file="${dist.dir}/${src.name}-${version}.tar"/>
 	</target>
 
 
-	<target name="binary" depends="alljar" description="Make binary tar.gz distribution">
-		<mkdir dir="${dest.dir}"/>
-		<delete file="${dist.dir}/${binary.name}.tar"/>
-		<delete file="${dist.dir}/${binary.name}.tar.gz"/>
-		<tar tarfile="${dist.dir}/${binary.name}.tar">
-			<tarfileset prefix="${pack.name}" dir="." includes="${jar.name} ${include.bin}"
+	<target name="binary" depends="alljar, clean-dist" description="Make binary tar.gz distribution">
+		<tar tarfile="${dist.dir}/${binary.name}-${version}.tar">
+			<tarfileset prefix="${pack.name}-${version}" dir="." includes="${jar.name} ${include.bin}"
 				    excludes="template/backup/**"/>
-			<tarfileset prefix="${pack.name}" mode="755" dir="." includes="${include.sh}"/>
+			<tarfileset prefix="${pack.name}-${version}" mode="755" dir="." includes="${include.sh}"/>
 		</tar>
 
-		<gzip zipfile="${dist.dir}/${binary.name}.tar.gz" src="${dist.dir}/${binary.name}.tar"/>
-		<delete file="${dist.dir}/${binary.name}.tar"/>
+		<gzip zipfile="${dist.dir}/${binary.name}-${version}.tar.gz" src="${dist.dir}/${binary.name}-${version}.tar"/>
+		<delete file="${dist.dir}/${binary.name}-${version}.tar"/>
 	</target>
 
-	<target name="test-build" description="Compile the junit tests">
-		<javac srcdir="${test.dir}" destdir="${test.dir}">
+	<target name="test-build" depends="alljar" description="Compile the junit tests">
+                <mkdir dir="${junit.class.dir}"/>
+		<javac srcdir="${test.dir}" destdir="${junit.class.dir}">
                         <classpath>
                                 <pathelement path="${java.class.path}"/>
 				<pathelement location="${collector.dir}"/>
@@ -127,12 +124,12 @@
 
 	<target name="test" depends="test-build">
 		<property name="collector.dir" value="${test.dir}"/>
-                <mkdir dir="${junit.class.dir}"/>
 
 		<junit haltonerror="false" haltonfailure="false" printsummary="yes"
                        errorProperty="tests.failed" failureproperty="tests.failed">
                         <classpath>
                                 <pathelement path="${java.class.path}"/>
+                                <pathelement location="${junit.class.dir}"/>
 				<pathelement location="${collector.dir}"/>
                                 <pathelement path="${jar.name}"/>
 			</classpath>
@@ -142,14 +139,20 @@
 				<formatter type="plain" usefile="false"/>
 			</batchtest>
 		</junit>
+                <fail if="tests.failed" message="Test(s) failed."/>
 	</target>
-        <fail if="tests.failed" message="Test(s) failed."/>
 
         <target name="clean"
                 description="Destroys all generated files and dirs.">
                 <delete dir="${dest.dir}"/>
                 <delete dir="${dist.dir}"/>
                 <delete dir="${junit.class.dir}"/>
+                <delete dir="dumps"/>
+                <delete dir="indexes"/>
                 <delete file="${basedir}/${jar.name}"/>
+                <delete file="lsearch.log4j"/>
+                <delete file="lsearch-global.conf"/>
+                <delete file="lsearch.conf"/>
+                <delete file="config.inc"/>
         </target>
 </project>

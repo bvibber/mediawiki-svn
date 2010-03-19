@@ -94,6 +94,12 @@ public class FastWikiTokenizerTest extends WikiTestCase {
 		assertEquals("1 [test] 1 [apostrophe's] 0 [apostrophes] 1 [and] 1 [other’s] 0 [others]",
 				tokens("Test apostrophe's and other\u2019s."));
 
+		assertEquals("1 [ａｂｃｄｅｆ] 0 [abcdef]",
+				tokens("ＡＢＣＤＥＦ"));
+
+		assertEquals("1 [１２３４５６７８９] 0 [123456789]",
+				tokens("１２３４５６７８９"));
+
 
 	}
 
