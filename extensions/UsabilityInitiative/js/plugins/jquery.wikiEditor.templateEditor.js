@@ -3,9 +3,9 @@
 /**
  * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
  */
-'nameMappings': {
-   "Infobox skyscraper": "building_name",
-   "Infobox settlement": "official_name"
+'nameMappings': { //keep these all lowercase to navigate web of redirects
+   "infobox skyscraper": "building_name",
+   "infobox settlement": "official_name"
 },		
 
 		
@@ -441,7 +441,7 @@ fn: {
 	 */
 	getTemplateDisplayName: function ( model ) {
 		var tName = model.getName();
-		if( tName in $.wikiEditor.modules.templateEditor.nameMappings ) {
+		if( tName.toLowerCase() in $.wikiEditor.modules.templateEditor.nameMappings ) {
 			return tName + ': ' + model.getValue( $.wikiEditor.modules.templateEditor.nameMappings[tName] );
 		} else if( model.getValue( 'name' ) != '' ) {
 			return tName + ': ' + model.getValue( 'name' );
