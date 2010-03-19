@@ -19,6 +19,7 @@ mw.DestinationChecker = function( options ) {
 	var _this = this;
 	_this.selector = options.selector;		
 	_this.spinner = options.spinner;
+	_this.cachedResult = {};
 	_this.processResult = options.processResult;
 	
 	if (options.apiUrl) {
@@ -39,7 +40,8 @@ mw.DestinationChecker = function( options ) {
 		_this.delay = 500; // ms;
 	}
 
-	$j( selector ).change( _this.change ).keypress( _this.change );
+	var check = _this.getDelayedChecker();
+	$j( _this.selector ).change( check ).keypress( check );
 
 }
 
@@ -53,20 +55,22 @@ mw.DestinationChecker.prototype = {
 	 * fire when the input changes value or keypress
 	 * will trigger a check of the name if the field has been idle for delay ms.
 	 */	
-	change: function() {
-		var _this = this;
+	getDelayedChecker: function() {
+		var checker = this;
+		return function() {
+			var el = this; // but we don't use it...
 
-		// if we changed before the old timeout ran, clear that timeout.
-		if ( _this.timeoutId ) {
-			window.clearTimeout( this.timeoutId );
+			// if we changed before the old timeout ran, clear that timeout.
+			if ( checker.timeoutId ) {
+				window.clearTimeout( checker.timeoutId );
+			}
+
+			// and start another, hoping this time we'll be idle for delay ms.	
+			checker.timeoutId = window.setTimeout( 
+				function() { checker.checkUnique(); },
+				checker.delay 
+			);
 		}
-
-		// and start another, hoping this time we'll be idle for delay ms.	
-		_this.timeoutId = window.setTimeout( 
-			function() { _this.checkUnique() },
-			_this.delay 
-		);
-
 	},
 
 	/**
@@ -74,9 +78,9 @@ mw.DestinationChecker.prototype = {
 	 * This is a more abstract version of AddMedia/UploadHandler.js::doDestCheck
 	 */
 	checkUnique: function() {
-		
+		var _this = this;
 		var found = false;
-		var name = _this.preprocess( $j(_this.input).val() );
+		var name = _this.preprocess( $j( _this.selector ).val() );
 		
 		if ( _this.responseCache[name] !== undefined ) {
 			_this.doResult( name, _this.responseCache[name] );
@@ -101,7 +105,7 @@ mw.DestinationChecker.prototype = {
 			
 			if ( !data || !data.query || !data.query.pages ) {
 				// Ignore a null result
-				mw.log(" No data in checkUnique result")
+				mw.log(" No data in checkUnique result");
 				return;
 			}
 
@@ -128,9 +132,11 @@ mw.DestinationChecker.prototype = {
 						var ntitle = data.query.pages[ page_id ].title
 					}
 
+					var img = data.query.pages[ page_id ].imageinfo[0];
+
 					result = {
 						unique: false,	
-						img: data.query.pages[ page_id ].imageinfo[0],
+						img: img,
 						title: ntitle,
 						href : img.descriptionurl
 					};
@@ -139,11 +145,11 @@ mw.DestinationChecker.prototype = {
 				}
 			}
 
-			if ( result !== undefined) {
+			if ( result !== undefined ) {
 				_this.cachedResult[name] = result;
 				_this.processResult( result );
 			}
-		}
+		} );
 	}
 
 };
@@ -156,7 +162,7 @@ mw.DestinationChecker.prototype = {
 	$.fn.destinationChecked = function( options ) {
 		var _this = this;
 		options.selector = _this;
-		new UploadFileNameChecker( options );
+		new mw.DestinationChecker( options );
 		return _this;
 	}; 
 } )( jQuery );

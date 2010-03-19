@@ -469,9 +469,9 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 					$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( $j(_this.titleInput).val() ) );
 				});
 	$j(_this.titleInput).destinationChecked( {
-		spinner: _this.toggleDestinationBusy,
-		preprocess: mw.UploadWizardUtil.titleToPath,
-		processResult: _this.processDestinationCheck
+		spinner: function(bool) { _this.toggleDestinationBusy(bool) },
+		preprocess: mw.UploadWizardUtil.pathToTitle, // stateless, so we don't need the object
+		processResult: function(result) { _this.processDestinationCheck(result) }
 	} );
 
 	_this.titleErrorDiv = $j('<div></div>');
@@ -597,10 +597,11 @@ mw.UploadWizardDetails.prototype = {
 	 * @param busy boolean true = show busy-ness, false = remove
 	 */
 	toggleDestinationBusy: function ( busy ) {
+		var _this = this;
 		if (busy) {
-			_this.titleInput.addClass( busy );
+			_this.titleInput.addClass( "busy" );
 		} else {
-			_this.titleInput.removeClass( busy );
+			_this.titleInput.removeClass( "busy" );
 		}
 	},
 	
@@ -609,6 +610,7 @@ mw.UploadWizardDetails.prototype = {
 	 * See mw.DestinationChecker.js for documentation of result format 
 	 */
 	processDestinationCheck: function( result ) {
+		var _this = this;
 		
 		if ( result.unique ) {
 			// do nothing
@@ -687,7 +689,7 @@ mw.UploadWizardDetails.prototype = {
 			)
 		);		
 
-	} 
+	}, 
 
 	/**
 	 * Do anything related to a change in the number of descriptions
