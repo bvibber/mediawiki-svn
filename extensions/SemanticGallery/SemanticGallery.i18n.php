@@ -95,9 +95,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Peter17
  */
 $messages['fr'] = array(
-	'semanticgallery-desc' => 'Ajoute un format de sortie de la gallerie dans les requêtes en ligne de SMW',
+	'semanticgallery-desc' => 'Ajoute un format de sortie de la galerie dans les requêtes en ligne de SMW',
 );
 
 /** Galician (Galego)

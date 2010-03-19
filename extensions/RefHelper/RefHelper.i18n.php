@@ -336,6 +336,37 @@ $messages['gsw'] = array(
 Du chasch [[Special:RefHelper|die Quälle vu Hand zuefiege]] oder [[Special:RefSearch|noch eme Zitat suech, wu Du chasch zuefiege]].',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'refhelper' => 'Reference helper',
+	'refsearch' => 'Pytanje referency',
+	'refhelper-desc' => 'Pomha strony za referency wutworić',
+	'refhelper-refsearch' => 'Pytanje referency',
+	'refhelper-refcreate_legend' => 'Nowu referencu wutworić',
+	'refhelper-refsearch_legend' => 'PubMed za referencami přepytać',
+	'refhelper-refcreate_another' => 'Druhu referencu wutworić',
+	'refhelper-refcreate_autocomment' => 'Awtomatiske wutworjenje strony.',
+	'refhelper-refcreate_success' => 'Strona [[$1]] njeeksistowaše a bu wutworjena.',
+	'refhelper-refcreate_failure' => 'Strona [[$1]] hižo eksistuje!',
+	'refhelper-label_workspace' => 'Dźěłowy rum (wobłuk za kopěrowanje a zasunjenje):',
+	'refhelper-label_authorforename' => 'Předmjeno awtora $1:',
+	'refhelper-label_authorsurname' => 'Swójbne mjeno:',
+	'refhelper-title' => 'Titul:',
+	'refhelper-journal' => 'Žurnal:',
+	'refhelper-volume' => 'Zwjazk:',
+	'refhelper-pages' => 'Strony:',
+	'refhelper-year' => 'Lěto:',
+	'refhelper-refname' => 'Mjeno referency:',
+	'refhelper-category' => 'Kategorija $1:',
+	'refhelper-create' => 'Wutworić',
+	'refhelper-search' => 'Pytać',
+	'refhelper-toolbox_link_create' => 'Referencu wutworić',
+	'refhelper-toolbox_link_search' => 'Referencu z pytanja wutworić',
+	'refhelper-newarticle_nocitation' => 'Tuchwilu citat z tutym mjenom njeje.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

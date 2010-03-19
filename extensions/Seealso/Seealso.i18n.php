@@ -561,9 +561,11 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
 	'seealso' => 'Tempo ogé',
+	'seealso-desc' => "Huhulu 'Tempo ogé' anu geus dilokalisasi migunakeun tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Swedish (Svenska)

@@ -6935,6 +6935,7 @@ $messages['pms'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|preuva andàita|preuve andàite}} bin, $3 {{PLURAL:$4|preuva falìa|preuve falìe}}:',
 	'codereview-tests-running' => 'Ij cas ëd preuva a son an cors...',
 	'codereview-tests-aborted' => 'Esecussion dle preuve falìa.',
+	'codereview-tests-failed' => 'Falì',
 	'codereview-email-subj' => '[$1] [$2]: Pa gnun coment giontà',
 	'codereview-email-body' => 'L\'utent "$1" a l\'ha spedì un coment su $3.
 

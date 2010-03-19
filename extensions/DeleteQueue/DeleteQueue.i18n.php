@@ -284,9 +284,11 @@ $messages['am'] = array(
 );
 
 /** Aragonese (Aragonés)
+ * @author Juanpabl
  * @author Remember the dot
  */
 $messages['an'] = array(
+	'deletequeue-delnom-otherreason' => 'Atra razón',
 	'deletequeue-list-header-page' => 'Pachina',
 );
 
@@ -3950,6 +3952,7 @@ $messages['mn'] = array(
  * @author Aurora
  */
 $messages['ms'] = array(
+	'deletequeue-delnom-otherreason' => 'Sebab lain',
 	'deletequeue-case-reason' => 'Sebab:',
 );
 

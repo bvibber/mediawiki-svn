@@ -114,6 +114,7 @@ $messages['nl'] = array(
 $messages['pms'] = array(
 	'ukgeocoding_name' => 'Geocodìfica dël Regn Unì për le carte',
 	'ukgeocoding_desc' => 'A estend le carte con na fonsion ëd parser display_uk_point con realisassion Google maps',
+	'ukgeocoding_couldNotGeocode' => 'Un o pi còdes postaj a peulo pa esse codificà "geocode" e a son pa stàit butà ant la mapa.',
 );
 
 /** Tarandíne (Tarandíne)

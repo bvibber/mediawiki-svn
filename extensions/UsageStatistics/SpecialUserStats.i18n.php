@@ -1471,13 +1471,14 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Zamwan
  */
 $messages['ms'] = array(
 	'usagestatisticsinterval' => 'Selang',
 	'usagestatisticstype' => 'Jenis',
-	'usagestatisticsstart' => 'Tarikh mula',
-	'usagestatisticsend' => 'Tarikh tamat',
+	'usagestatisticsstart' => 'Tarikh mula:',
+	'usagestatisticsend' => 'Tarikh tamat:',
 	'usagestatisticssubmit' => 'Jana statistik',
 	'usagestatisticsnostart' => 'Sila tentukan tarikh mula',
 	'usagestatisticsnoend' => 'Sila tentukan tarikh tamat',
