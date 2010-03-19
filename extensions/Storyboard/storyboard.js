@@ -84,6 +84,7 @@ function stbValidateSubmission( termsCheckbox ) {
  * TODO: support multiple actions at once
  */
 function stbDoStoryAction( sender, storyid, action ) {
+	sender.innerHTML = 'Working...'; // TODO: i18n
 	sender.disabled = true;
 	
 	jQuery.getJSON( wgScriptPath + '/api.php',

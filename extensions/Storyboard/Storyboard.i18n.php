@@ -24,6 +24,8 @@ $messages['en'] = array(
 	'storyboard-nosuchstory' => 'The story you requested does not exist. It might have been removed.',
 	'storyboard-unpublished' => 'The story you requested has not been published yet.',
 	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
+	'storyboard-cantedit' => 'You are not allowed to edit stories.',
+	'storyboard-canedit' => 'You can [$1 edit] and publish this story.',
 
 	// Story review
 	'storyboard-storyreview' => 'Story review',

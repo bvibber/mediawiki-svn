@@ -22,11 +22,17 @@ class SpecialStory extends IncludableSpecialPage {
 	public function execute( $title ) {
 		wfProfileIn( __METHOD__ );
 		
-		global $wgOut, $wgRequest, $wgUser;		
+		global $wgOut, $wgRequest, $wgUser;
+		
+		$title = str_replace( '_', ' ', $title );
+		$wgOut->setPageTitle( $title );
 		
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-			// TODO: add permission check
-			$this->saveStory();
+			if ( $wgUser->isAllowed( 'storyreview' ) ) {
+				$this->saveStory();
+			} else {
+				$wgOut->addWikiMsg( 'storyboard-cantedit' );
+			}
 		}
 		
 		if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
@@ -42,11 +48,11 @@ class SpecialStory extends IncludableSpecialPage {
 	 * Queries for the requested story and shows it in either display or edit mode when it's found.
 	 */
 	private function queryAndShowStory( $title ) {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUser;
 		
 		if ( trim( $title ) != '' ) {
 			$conds = array(
-				'story_title' => str_replace( '_', ' ', $title )
+				'story_title' => $title
 			);
 		} else {
 			$id = $wgRequest->getIntOrNull( 'id' );
@@ -76,15 +82,28 @@ class SpecialStory extends IncludableSpecialPage {
 		);
 
 		if ( $story ) {
-			if ( $wgRequest->getVal( 'action' ) == 'edit' ) {
+			$isEdit = $wgRequest->getVal( 'action' ) == 'edit';
+			
+			if ( $isEdit && $wgUser->isAllowed( 'storyreview' ) ) {
 				$this->showStoryForm( $story );
 			} else {
+				if ( $isEdit ) {
+					$wgOut->addWikiMsg( 'storyboard-cantedit' );
+				}
+				
 				if ( $story->story_is_published == 1 ) {
 					$this->showStory( $story );
 				}
-				else {
+				elseif ( !$isEdit ) {
 					$wgOut->addWikiMsg( 'storyboard-unpublished' );
-				}	
+					
+					if ( $wgUser->isAllowed( 'storyreview' ) ) {
+						$wgOut->addWikiMsg( // TODO: find out how to make the link working
+							'storyboard-canedit',
+							$this->getTitle()->getLocalURL( 'action=edit' )
+						);
+					}
+				}
 			}
 		}
 		else {
@@ -126,7 +145,6 @@ EOT
 	 * 
 	 * TODO: add options to publish/unpublish, hide/unhide and delete the story
 	 * TODO: confirm with erik that author info should be editable here
-	 * TODO: add permission check
 	 */	
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
@@ -209,7 +227,7 @@ EOT
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $this->getTitle()->getLocalURL() . "/$story->story_title", // TODO: can probably beter
+				'action' => $this->getTitle( $story->story_title )->getLocalURL(),
 			),
 			$formBody
 		);		
