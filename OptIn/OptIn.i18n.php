@@ -223,6 +223,13 @@ As u sagtewarefoute aantref, meld dit aan op [http://usability.wikimedia.org/wik
 Baie dankie, ons sien daarna uit om u mening te hoor!',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'optin-survey-answer-whyoptout-other' => 'Atra razón:',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author Meno25
@@ -3829,20 +3836,20 @@ $messages['ml'] = array(
 	'optin-survey-answer-changes-predictability' => "'പ്രതീക്ഷയ്ക്കനുസരിച്ചുള്ള പ്രവർത്തനരീതി പുലർത്തൽ' മെച്ചപ്പെടുത്തുക",
 	'optin-survey-answer-changes-custom' => 'ഉപയോക്താവിനു ഏറ്റവും കൂടുതൽ സജ്ജീകരിച്ചെടുക്കാവുന്ന വിധത്തിലാക്കുക.',
 	'optin-survey-answer-changes-other' => 'കൂടുതൽ:',
-	'optin-improvements' => '==എന്താണു മെച്ചപ്പെടുത്തിയത്?==
-[[File:UsabilityNavigation.png|left|link=|പുതിയ നാവിഗേഷൻ റ്റാബുകളുടെ സ്ക്രീൻഷോട്ട്]]
-;മെച്ചപ്പെട്ട നാവിഗേഷൻ
-പുതിയ നാവിഗേഷൻ സിസ്റ്റം താങ്കൾ എവിടെയെന്നും, എന്താണു ചെയ്യുന്നതെന്നും ലളിതമായി കാണിച്ചു തരുന്നു, എങ്ങനെ മറ്റൊരിടത്തേയ്ക്ക് പോകാം എന്നും അതിലുണ്ട്. തിരച്ചിൽ പെട്ടി മുകളിൽ വലത്തു മൂലയിലായി മാറ്റി സ്ഥാപിച്ചിരിക്കുന്നു. തിരച്ചിൽ ഉപയോഗിച്ച് കണ്ടുപിടിക്കലും ഉപയോഗിക്കലും ഇനി ലളിതമാകും.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|വിപുലീകരിച്ച എഡിറ്റ് റ്റൂൾബാറിന്റെ സ്ക്രീൻഷോട്ട്]]
-;തിരുത്താനുള്ള റ്റൂൾബാറിൽ വരുത്തിയ മെച്ചപ്പെടുത്തലുകൾ
-പുതിയ മെച്ചപ്പെടുത്തിയ ഐകോണുകൾ, ഓരോ ഉപകരണവും ചെയ്യുന്നതെന്താണെന്നു വ്യക്തമായി വെളിപ്പെടുത്തുന്നു. വികസിപ്പിക്കാവുന്ന ഭാഗങ്ങൾ തുടർച്ചയായി ഉപയോഗിക്കാത്തവ മറച്ചു വെയ്ക്കുന്നു, അതേ സമയം വീണ്ടും വീണ്ടും ഉപയോഗിക്കുന്നവ ഒരൊറ്റ ക്ലിക്കിൽ തന്നെ ലഭ്യവുമാണ്.
-<div style="clear:both;"></div>
-== എപ്രകാരം പങ്കെടുക്കാം ==
-പദ്ധതിയെക്കുറിച്ച് കൂടുതൽ അറിയാനും, പങ്കാളിത്ത സാധ്യത ആരായാനും ദയവായി [http://usability.wikimedia.org യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് വിക്കി] സന്ദർശിക്കുക. അവിടെ ഞങ്ങളുടെ പണസ്രോതസ്സുകൾ, ഗവേഷണങ്ങൾ, രൂപകല്പനയും + വികസിപ്പിക്കലും, പതിപ്പുകൾ തുടങ്ങിയവയുടെ വിവരങ്ങൾ ലഭ്യമാണ്. ചോദ്യങ്ങൾ ചോദിക്കാനോ, സാധാരണ അഭിപ്രായം അറിയിക്കാനോ ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Talk:Prototype പ്രോട്ടോടൈപ്പ് സംവാദം താൾ] ഉപയോഗിക്കുക. എന്തെങ്കിലും പ്രത്യേക കാര്യത്തെ കുറിക്കാൻ ബന്ധപ്പെട്ട സംവാദം താൾ ഉപയോഗിക്കുക. താങ്കൾ ബഗ്ഗ് വല്ലതും കണ്ടെത്തിയാൽ ദയവായി [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco അകായ് റിലീസ് സം‌‌വാദം താളിൽ] നൽകുക, അല്ലെങ്കിൽ [https://bugzilla.wikimedia.org ബഗ്സില്ല] ഉപയോഗിക്കുക.
-
-താങ്കളുടെ അഭിപ്രായം അറിയാൻ ഞങ്ങൾ കാത്തിരിക്കുന്നു! നന്ദി.',
+	'optin-improvements2' => '==എന്താണ് മെച്ചപ്പെടുത്തിയത്?==
+[[File:UsabilityToolbar.png|left|link=|മെച്ചപ്പെടുത്തിയ തിരുത്തൽ ടൂൾബാറിന്റെ സ്ക്രീൻഷോട്ട്]]
+[[File:UsabilityDialogs.png|left|link=|പുതിയ ഉള്ളടക്ക സൃഷ്ടി സൗകര്യത്തിന്റെ സ്ക്രീൻഷോട്ട്]]
+;വിപുലമായ ടൂൾബാർ
+വിപുലമായ ടൂൾബർ ലേഖനങ്ങൾ തിരുത്തുന്നത് ലളിതമാക്കുന്നു.
+പുതിയ മെച്ചപ്പെടുത്തിയ ഐകോണുകൾ ഓരോ ഉപകരണവും എന്തെന്ത് പ്രവൃത്തിയാണ് ചെയ്യുന്നതെന്ന് വിളിച്ചോതുന്നു.
+വികസിപ്പിക്കാവുന്ന ഭാഗങ്ങൾ തുടർച്ചയായി ഉപയോഗിക്കാത്ത ഉപകരണങ്ങൾ ഒരു ക്ലിക്ക് അകലത്തിൽ മാറ്റി വെച്ച് അസൗകര്യം ഒഴിവാക്കുന്നു.
+;എഴുതാനുള്ള സൗകര്യം
+കണ്ണികളും പട്ടികകളും നിർമ്മിക്കാനുള്ള ഉപകരണത്തിന്റെ ഐകോണിൽ ഞെക്കുമ്പോൾ ഒരു ഡയലോഗ് ബോക്സ് തുറക്കുകയും, ഒരു ലളിതമായ ഫോം നിറയ്ക്കുന്നതിലൂടെ അവ സൃഷ്ടിക്കാൻ സഹായിക്കുകയും ചെയ്യുന്നു.
+;കൂടുതൽ
+ഞങ്ങൾ മെച്ചപ്പെട്ട നാവിഗേഷൻ, നിർഝരിത റ്റാബുകൾ, മെച്ചപ്പെടുത്തിയ തിരച്ചിൽ തുടങ്ങി ഒരുപിടി മറ്റ് നന്നാക്കലുകളും അവതരിപ്പിക്കുന്നു.
+==എങ്ങനെ ഭാഗഭാക്കാവാം==
+യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവിനെ കുറിച്ച് കൂടുതലറിയാൻ, ദയവായി ഞങ്ങളുടെ [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative പ്രധാനതാൾ] സന്ദർശിക്കുക.
+<div style="clear:both"></div>',
 );
 
 /** Mongolian (Монгол)
@@ -3896,7 +3903,7 @@ Kami ingin ketahui pandangan anda tentang antara muka baru kami, jadi kami mengh
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Saya tidak suka dengan penampilannya.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Saya tidak suka dengan tab-tab dan susun atur yang baru.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Saya tidak suka dengan bar peralatan yang baru.',
-	'optin-survey-answer-whyoptout-other' => 'Sebab-sebab lain:',
+	'optin-survey-answer-whyoptout-other' => 'Sebab lain:',
 	'optin-survey-question-explain' => 'Sila terangkan atau perincikan jawapan anda di atas:',
 	'optin-survey-question-techfail' => 'Pernahkah anda mengalami sebarang kegagalan teknikal semasa menggunakan Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Jika ya, sila perincikan atau terangkan:',
@@ -3919,21 +3926,6 @@ Kami ingin ketahui pandangan anda tentang antara muka baru kami, jadi kami mengh
 	'optin-survey-answer-changes-predictability' => 'Memperbaiki kebolehjankaan prestasi.',
 	'optin-survey-answer-changes-custom' => 'Benarkan pengubahsuaian penguna yang lebih besar.',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
-	'optin-improvements' => '== Apa yang telah dipertingkatkan? ==
-[[File:UsabilityNavigation.png|left|link=|Tampilan skrin tab pandu arah baharu]]
-;Pandu arah yang dipertingkatkan
-Sistem pandu arah yang baharu memudahkan anda untuk melihat di mana anda berada dan apa yang anda lakukan, dan juga ke mana anda boleh pergi dan bagaimana mahu ke sana. Dengan kotak carian diletakkan di bahagian atas sebelah kanan, ciri pencarian adalah lebih mudah ditemui dan dan lebih cepat untuk digunakan.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Tampilan skrin bar alat sunting dipertingkat]]
-;Penambahbaikan bar alat tulis
-Arca-arca yang baharu dan diperbaiki menjadikan tindakan yang akan dilakukan bagi setiap alat lebih jelas. Bahagian-bahagian yang boleh dikembangkan mengurangkan sepah sementara mengekalkan peralatan yang jarang digunakan cuma dalam jarak seklik sahaja.
-Bahagian bantuan membekalkan capaian pantas kepada rujukan bagi penanda wiki yang sering digunakan.
-<div style="clear:both;"></div>
-== Cara untuk menyertai ==
-Bagi mengetahui lebih lanjut akan projek ini ataupun ingin turut serta, sila lawati [http://usability.wikimedia.org Wiki Inisiatif Kepenggunaan].  Di sana anda akan temukan maklumat mengenai geran, kajian, rekaan + pembangunan, dan keluaran-keluaran kami. Bagi pertanyaan soalan dan maklum balas umum, sila gunakan [http://usability.wikimedia.org/wiki/Talk:Prototype laman perbincangan prototaip] kami.  Bagi persoalan suatu subjek khusus, sila gunakan laman perbincangan yang berkaitan.  Sekiranya anda menemui sebarang pepijat, sila tinggalkan komen anda di [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco laman perbincangan keluaran Babaco] ataupun melalui [https://bugzilla.wikimedia.org Bugzilla].
-
-Terima kasih, kami berharap untuk mendengar daripada anda!',
 );
 
 /** Maltese (Malti)
@@ -4618,21 +4610,20 @@ An farìa gòj savèj lòn ch'a pensa ëd nòstra neuva antërfassa, parèj an f
 	'optin-survey-answer-changes-predictability' => 'Amelioré la prevision ëd le prestassion.',
 	'optin-survey-answer-changes-custom' => "Përmëtte pi grande përsonalisassion a l'utent.",
 	'optin-survey-answer-changes-other' => 'Àutr:',
-	'optin-improvements' => "== Cò' a l'é stàit ameliorà? ==
-[[File:UsabilityNavigation.png|left|link=|Scren dle neuve tàule ëd navigassion]]
-;Navigassion anrichìa
-Ël neuv sistema ëd navigassion a rend pì belfé s-ciairé andoa ch'a l'é e lòn ch'a l'é an camin ch'a fa, e ëdcò andoa a peul andé e coma riveje. Con la casela d'arserca ch'a resta ant ël canton an àut a drita, la fonsion d'arserca a l'é pì belfé a trové e pì lesta a dovré.
-<div style=\"clear:both;\"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Scren dla bara dj'utiss ameliorà]]
-;Ameliorassion dla bara dle modìfiche
-Plance neuve e ameliorà a rendo pì ciàir che assion a fa minca utiss. Session ëslarbàbij a diminuisso ël rabel an goernand j'utiss ch'as deuvro da ràir a portà ëd na selession.
-La session d'agiut a smon n'acess lest a la documentassion për j'usagi comun dle tichëtte wiki.
-<div style=\"clear:both;\"></div>
-== Coma amplichesse ==
-Për savèije ëd pì an sël proget o për amplichesse, për piasì ch'a vìsita l'[http://usability.wikimedia.org Inissiativa për n'usagi pì belfé dla wiki].  Ambelelà a trovrà d'anformassion ansima a nòstri borse, arserca, progetassion + dësvlup e version.  Për fé 'd domande o dé opinion generaj, për piasì ch'a deuvra nòstra [http://usability.wikimedia.org/wiki/Talk:Prototype pàgina ëd discussion dël protòtip].  Për traté dij soget particolar, për piasì ch'a deuvra le pàgine ëd discussion assossià. S'a treuva dij bigat, për piasì ch'a lassa sò coment an sla [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pàgina ëd discussion dla version Babaco] o a travers [https://bugzilla.wikimedia.org Bugzilla].
-
-Mersì e speroma d'arsent-se tòst!",
+	'optin-improvements2' => "== Lòn ch'a l'é stàit mejorà?==
+[[File:UsabilityToolbar.png|left|link=|Screenshot ëd la toolbar ëd modìfica mejorà]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot ëd l'antërfacia ëd generassion contnù neuva]]
+;Toolbar Mejorà
+La toolbar mejorà a fà pì bel fé modifiché artìcoj.
+Icon-e neuve e mejorà a rendo pi ciàir che assion a fà minca utiss.
+Session espandùe a ridùo ël casin an mente a rendo pòch frequent dovré j'utiss mach un click prima.
+;Dialog
+Quand as creo colegament o tàule, an sgnacand l'icon-a dl'utiss, adess as deurb na fnesta ëd dialog che at giuta a creé colegament e tàule an vempend a forma sempia.
+;Ëd pi
+I l'oma antrodovù vàire àutr mejorament con navigassion mejorà, menù a tendin-a, arserca mejorà, e ëd pi.
+== Com esse antëressà ==
+Për savèjne ëd pi an sla Usability Initiative, për piasì vìsita nòsta [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style=\"clear:both\"></div>",
 );
 
 /** Pashto (پښتو)
