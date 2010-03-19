@@ -6285,7 +6285,7 @@ encapsulateSelection: function( options ) {
  * Get the position (in resolution of bytes not nessecarily characters)
  * in a textarea
  */
- getCaretPosition: function( options ) {
+getCaretPosition: function( options ) {
 	function getCaret( e ) {
 		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
@@ -6392,6 +6392,9 @@ setSelection: function( options ) {
 		}
 	});
 },
+
+
+
 /**
  * Ported from Wikia's LinkSuggest extension
  * https://svn.wikia-code.com/wikia/trunk/extensions/wikia/LinkSuggest
@@ -10619,24 +10622,32 @@ fn: {
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
-				.mousedown( function() {
+				.mousedown( function( e ) {
 					// No dragging!
+					e.preventDefault();
 					return false;
 				} )
-				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
+				.bind( 'click.wikiEditor-toc', function( e ) {
+					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
+					// No dragging!
+					e.preventDefault();
+					return false;
 				} )
 				.find( 'a' )
 				.text( mw.usability.getMsg( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
-				.mousedown( function() {
+				.mousedown( function( e ) {
 					// No dragging!
+					e.preventDefault();
 					return false;
 				} )
-				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
+				.bind( 'click.wikiEditor-toc', function( e ) {
+					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' );
+					// No dragging!
+					e.preventDefault();
+					return false;
 				} )
 				.hide()
 				.find( 'a' )
@@ -10889,9 +10900,10 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function() {
+								.click( function(e) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
+									e.preventDefault();
 									return false;
 								} )
 						);
@@ -11099,14 +11111,16 @@ fn: {
 					$button
 						.data( 'action', tool.action )
 						.data( 'context', context )
-						.mousedown( function() {
+						.mousedown( function( e ) {
 							// No dragging!
+							e.preventDefault();
 							return false;
 						} )
-						.click( function() {
+						.click( function( e ) {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 							);
+							e.preventDefault();
 							return false;
 						} );
 					// If the action is a dialog that hasn't been loaded yet, hide the button
@@ -11133,11 +11147,12 @@ fn: {
 							$( '<a />' )
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
-								.mousedown( function() {
+								.mousedown( function( e ) {
 									// No dragging!
+									e.preventDefault();
 									return false;
 								} )
-								.click( function() {
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction(
 										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 									);
@@ -11147,6 +11162,7 @@ fn: {
 									if ( $(this).parent().is( ':visible' ) ) {
 										$(this).parent().animate( { 'opacity': 'toggle' }, 'fast' );
 									}
+									e.preventDefault();
 									return false;
 								} )
 								.text( optionLabel )
@@ -11157,18 +11173,20 @@ fn: {
 				}
 				$select.append( $( '<div />' ).addClass( 'menu' ).append( $options ) );
 				$select.append( $( '<a />' )
-							.addClass( 'label' )
-							.text( label )
-							.data( 'options', $options )
-							.attr( 'href', '#' )
-							.mousedown( function() {
-								// No dragging!
-								return false;
-							} )
-							.click( function() {
-								$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
-								return false;
-							} )
+						.addClass( 'label' )
+						.text( label )
+						.data( 'options', $options )
+						.attr( 'href', '#' )
+						.mousedown( function( e ) {
+							// No dragging!
+							e.preventDefault();
+							return false;
+						} )
+						.click( function( e ) {
+							$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
+							e.preventDefault();
+							return false;
+						} )
 				);
 				return $select;
 			default:
@@ -11182,8 +11200,9 @@ fn: {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.mousedown( function() {
+			.mousedown( function( e ) {
 				// No dragging!
+				e.preventDefault();
 				return false;
 			} )
 			.click( function( event ) {
@@ -11201,6 +11220,7 @@ fn: {
 					$.trackAction(section + '.' + $(this).attr('rel'));
 				}
 				// No dragging!
+				event.preventDefault();
 				return false;
 			} )
 	},
@@ -11242,16 +11262,18 @@ fn: {
 					$characters
 						.html( html )
 						.children()
-						.mousedown( function() {
+						.mousedown( function( e ) {
 							// No dragging!
+							e.preventDefault();
 							return false;
 						} )
-						.click( function() {
+						.click( function( e ) {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).parent().data( 'context' ),
 								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )],
 								$(this)
 							);
+							e.preventDefault();
 							return false;
 						} );
 				}
@@ -11316,8 +11338,9 @@ fn: {
 					.mouseup( function( e ) {
 						$(this).blur();
 					} )
-					.mousedown( function() {
+					.mousedown( function( e ) {
 						// No dragging!
+						e.preventDefault();
 						return false;
 					} )
 					.click( function( e ) {
@@ -11356,6 +11379,7 @@ fn: {
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
 						);
+						e.preventDefault();
 						return false;
 					} )
 			);
