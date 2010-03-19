@@ -1048,6 +1048,8 @@ $j(document).ready( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( u.getMsg( $j(this).attr( 'rel' ) ) );
 			});
+			// Set tabindexes on form fields
+			$j.wikiEditor.modules.dialogs.fn.setTabindexes( $j(this).find( 'input' ).not( '[tabindex]' ) );
 			// Setup the tooltips in the textboxes
 			$j( '#wikieditor-toolbar-link-int-target' )
 				.data( 'tooltip', u.getMsg( 'wikieditor-toolbar-tool-link-int-target-tooltip' ) );
@@ -1487,6 +1489,9 @@ $j(document).ready( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( mw.usability.getMsg( $j(this).attr( 'rel' ) ) );
 			});
+			// Set tabindexes on form fields
+			$j.wikiEditor.modules.dialogs.fn.setTabindexes( $j(this).find( 'input' ).not( '[tabindex]' ) );
+			
 			$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
 			$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
 			$j( '#wikieditor-toolbar-table-wikitable' ).click( function() {
@@ -1686,6 +1691,8 @@ $j(document).ready( function() {
 			$j(this).find( '[rel]' ).each( function() {
 				$j(this).text( u.getMsg( $j(this).attr( 'rel' ) ) );
 			});
+			// Set tabindexes on form fields
+			$j.wikiEditor.modules.dialogs.fn.setTabindexes( $j(this).find( 'input' ).not( '[tabindex]' ) );
 			
 			// TODO: Find a cleaner way to share this function
 			$j(this).data( 'replaceCallback', function( mode ) {
