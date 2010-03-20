@@ -2205,7 +2205,7 @@ $messages['uk'] = array(
 	'prefstats-factor-week' => 'тиждень',
 	'prefstats-factor-twoweeks' => 'два тижні',
 	'prefstats-factor-fourweeks' => 'чотири тижні',
-	'prefstats-factor-default' => 'назад до масштабу за замовчуванням',
+	'prefstats-factor-default' => 'назад до масштабу за умовчанням',
 	'prefstats-legend-out' => 'Відключились',
 	'prefstats-legend-in' => 'Підключились',
 );
