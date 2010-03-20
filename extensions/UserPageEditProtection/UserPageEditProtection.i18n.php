@@ -113,6 +113,13 @@ $messages['ia'] = array(
 	'right-editalluserpages' => 'Modificar paginas de usator',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'right-editalluserpages' => '利用者ページを編集',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

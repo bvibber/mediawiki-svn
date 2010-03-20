@@ -294,6 +294,7 @@ Váš přátelský upozorňovací systém %s',
  * @author Melancholie
  * @author Purodha
  * @author Revolus
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'tasklist' => 'Aufgabenliste',
@@ -311,7 +312,7 @@ $messages['de'] = array(
 	'tasklistchooseproj' => 'Projekt auswählen:',
 	'tasklistprojdisp' => 'Anzeigen',
 	'tasklistbyname' => '== Aufgabenliste für %s ==',
-	'tasklistnowguseprojects' => 'Du hast $wgUseProjects auf "false" gesetzt und kannst diese Seite nicht benutzen.',
+	'tasklistnowguseprojects' => 'Du hast $wgUseProjects auf „false“ gesetzt und kannst diese Seite nicht benutzen.',
 	'tasklistnoprojects' => "Fehler: Es sieht so aus, als wenn '''\$wgUseProjects''' aktiviert wäre, aber es wurde keine Seiten [[MediaWiki:TodoTasksValidProjects]] erstellt. Siehe die [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installationsanweisungen] für weitere Details.",
 	'tasklistemailbody' => ',
 

@@ -2628,6 +2628,7 @@ $messages['da'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Siden findes',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Siden findes ikke',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Ugyldig titel',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Ekstern henvisning',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Kontrollerer om siden findes ...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Titlen du gav, er ugyldig.',
 	'wikieditor-toolbar-tool-file' => 'Indlejret fil',

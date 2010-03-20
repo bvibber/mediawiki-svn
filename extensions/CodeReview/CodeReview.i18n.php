@@ -7028,12 +7028,14 @@ $messages['pt'] = array(
 	'code-change-added' => 'adicionou:',
 	'code-old-status' => 'Estado antigo',
 	'code-new-status' => 'Estado novo',
-	'code-prop-changes' => 'Registo de estado & etiquetagem',
-	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte para Subversion]]',
+	'code-prop-changes' => 'Registo de estado e etiquetagem',
+	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte de Subversion]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
+	'code-repo-not-found' => 'O repositório <b>$1</b> não existe!',
 	'code-load-diff' => 'A carregar diferenças…',
 	'code-notes' => 'comentários recentes',
 	'code-statuschanges' => 'alterações de estado',
+	'code-mycommits' => 'as minhas efectivações',
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
@@ -7049,18 +7051,18 @@ $messages['pt'] = array(
 	'code-author-link' => 'associar?',
 	'code-author-unlink' => 'desassociar?',
 	'code-author-unlinksuccess' => 'O autor $1 foi desassociado',
-	'code-browsing-path' => "Visualizando revisões em '''$1'''",
+	'code-browsing-path' => "Visionando revisões em '''$1'''",
 	'code-field-id' => 'Revisão',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentador',
-	'code-field-message' => 'Sumário de efectivação',
+	'code-field-message' => 'Resumo da efectivação',
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
 	'code-field-tests' => 'Testes',
 	'code-field-path' => 'Caminho',
 	'code-field-text' => 'Nota',
-	'code-field-select' => 'Selecionar',
+	'code-field-select' => 'Seleccionar',
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Data:',
 	'code-rev-message' => 'Comentário:',
@@ -7085,6 +7087,7 @@ $messages['pt'] = array(
 	'code-rev-diff-link' => 'dif',
 	'code-rev-diff-too-large' => 'As diferenças são demasiadas para apresentar.',
 	'code-rev-purge-link' => 'purgar',
+	'code-rev-total' => 'Número total de resultados: $1',
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'corrigir',
 	'code-status-reverted' => 'revertido',
@@ -7094,8 +7097,12 @@ $messages['pt'] = array(
 	'code-status-deferred' => 'diferido',
 	'code-pathsearch-legend' => 'Pesquisar revisões neste repositório por caminho',
 	'code-pathsearch-path' => 'Caminho:',
+	'code-pathsearch-filter' => 'Filtro aplicado:',
+	'code-revfilter-cr_status' => 'Estado = $1',
+	'code-revfilter-cr_author' => 'Autor = $1',
+	'code-revfilter-clear' => 'Remover filtro',
 	'code-rev-submit' => 'Gravar alterações',
-	'code-rev-submit-next' => 'Gravar & próximo por resolver',
+	'code-rev-submit-next' => 'Gravar e próximo por resolver',
 	'code-batch-status' => 'Estado da modificação:',
 	'code-batch-tags' => 'Etiquetas da modificação:',
 	'codereview-batch-title' => 'Alterar todas as revisões seleccionadas',
@@ -7111,6 +7118,7 @@ $messages['pt'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso, $3 {{PLURAL:$4|teste falhado|testes falhados}}:',
 	'codereview-tests-running' => 'Casos de teste em execução...',
 	'codereview-tests-aborted' => 'Execução de testes abortada.',
+	'codereview-tests-failed' => 'Falhas',
 	'codereview-email-subj' => '[$1] [$2]: Novo comentário adicionado',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em $3.
 
@@ -7125,12 +7133,12 @@ $4',
 URL completa: $3
 
 Sumário da submissão: $4',
-	'codereview-email-subj3' => '[$1] [$2]: Testes automáticos detetaram regressão',
+	'codereview-email-subj3' => '[$1] [$2]: Testes automáticos detectaram regressão',
 	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em $1.
 
 URL completa: $2
 
-Sumário de efetivação:
+Resumo da efectivação:
 
 $3',
 	'repoadmin' => 'Administração do Repositório',

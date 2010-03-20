@@ -1368,6 +1368,7 @@ $messages['da'] = array(
  * @author Imre
  * @author MF-Warburg
  * @author Tbleher
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -1380,8 +1381,8 @@ $messages['de'] = array(
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Wikilog-Aktionslogbuch',
 	'wikilog-log-pagetext' => 'Unten folgt eine Liste von Wikilog-Aktionen.',
-	'wikilog-log-cmt-approve' => 'freigegebener Kommentar "[[$1]]"',
-	'wikilog-log-cmt-reject' => 'abgelehnter Kommentar "[[$1]]"',
+	'wikilog-log-cmt-approve' => 'freigegebener Kommentar „[[$1]]“',
+	'wikilog-log-cmt-reject' => 'abgelehnter Kommentar „[[$1]]“',
 	'wikilog-log-cmt-rejdel' => 'Abgelehnter Wikilog-Kommentar von [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog Aktionen',

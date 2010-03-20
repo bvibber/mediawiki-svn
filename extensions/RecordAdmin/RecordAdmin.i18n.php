@@ -396,6 +396,7 @@ $messages['ca'] = array(
  * @author Purodha
  * @author Revolus
  * @author Sebastian Wallroth
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -435,7 +436,7 @@ $messages['de'] = array(
 	'recordadmin-modified' => 'Modifiziert',
 	'recordadmin-actions' => 'Aktionen',
 	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
-	'recordadmin-editwithform' => 'Mit Formular bearbeiten',
+	'recordadmin-editwithform' => 'Eigenschaften',
 	'recordadmin-typeinfo' => '$1-Aufnahme',
 	'right-recordadmin' => 'Aufzeichnungsseiten finden und bearbeiten',
 );

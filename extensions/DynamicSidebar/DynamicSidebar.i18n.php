@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'dynamicsidebar-desc' => 'Reiñ a ra barrennoù kostez dinamek diazezet war pajennoù an implijerien, o strolladoù hag ar rummadoù',
 );
 
+/** German (Deutsch)
+ * @author The Evil IP address
+ */
+$messages['de'] = array(
+	'dynamicsidebar-desc' => 'Bietet dynamische Sidebars an, basierend auf Benutzerseiten, Gruppen und Kategorien',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -115,6 +122,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'dynamicsidebar-desc' => 'Gir dynamiske sidelinjer basert på brukersider, grupper og kategorier',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'dynamicsidebar-desc' => 'Provesís de barras lateralas dinamicas basadas sus las paginas dels utilizaires, lors gropes e las categorias',
 );
 
 /** Piedmontese (Piemontèis)

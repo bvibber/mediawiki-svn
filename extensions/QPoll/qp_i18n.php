@@ -487,6 +487,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'pollresults' => 'Abstimmungsergebnisse auf dieser Seite',
@@ -511,9 +512,9 @@ $messages['de'] = array(
 	'qp_not_participated_link' => 'Nicht teilgenommen',
 	'qp_order_by_username' => 'Nach Benutzernamen ordnen',
 	'qp_order_by_polls_count' => 'Nach Abstimmungszahl ordnen',
-	'qp_results_line_qupl' => 'Seite "$1" Abstimmung "$2": $3',
-	'qp_results_line_qpl' => 'Seite "$1" Abstimmung "$2": $3, $4, $5, $6',
-	'qp_header_line_qpul' => '$1 [ Seite "$2" Abstimmung "$3" ]',
+	'qp_results_line_qupl' => 'Seite „$1“ Abstimmung „$2“: $3',
+	'qp_results_line_qpl' => 'Seite „$1“ Abstimmung „$2“: $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Seite „$2“ Abstimmung „$3“ ]',
 	'qp_export_to_xls' => 'Statistiken in das XLS-Format exportieren',
 	'qp_users_answered_questions' => '$1 {{PLURAL:$1|Benutzer|Benutzer}} haben auf die Fragen geantwortet',
 	'qp_func_no_such_poll' => 'Abstimmung nicht vorhanden ($1)',

@@ -985,21 +985,20 @@ Rádi bychom věděli, co si o našem novém rozhraní myslíte, takže oceníme
 	'optin-survey-answer-changes-predictability' => 'Vylepšit předvídatelnost výkonnosti',
 	'optin-survey-answer-changes-custom' => 'Umožnění výraznějšího přizpůsobení uživatelům',
 	'optin-survey-answer-changes-other' => 'Jiné:',
-	'optin-improvements' => '== Co jsme vylepšili? ==
-[[File:UsabilityNavigation.png|left|link=|Snímek obrazovky zobrazující nové navigační záložky]]
-;Zdokonalená navigace
-Díky novému systému navigace snáze vidíte, kde jste a co děláte, stejně tak i to, kam můžete jít a jak se tam dostanete. Vyhledávání umístěné v pravém horním rohu lze jednodušeji nalézt a rychleji používat.
-<div style="clear:both;"></div>
-
+	'optin-improvements2' => '== Co jsme vylepšili? ==
 [[File:UsabilityToolbar.png|left|link=|Snímek obrazovky zobrazující vylepšený editační panel nástrojů]]
-;Vylepšení editačního panelu nástrojů
-Nové a vylepšené ikonky zřetelněji označují, co který nástroj dělá. Díky rozbalovacím částem je panel přehlednější, přitom méně používané nástroje jsou dostupné jediným kliknutím.
-Část s nápovědou poskytuje rychlý přístup k přehledu základního použití wikikódu.
-<div style="clear:both;"></div>
+[[File:UsabilityDialogs.png|left|link=|Snímek obrazovky nových dialogových oken]]
+;Vylepšení panelu nástrojů
+Vylepšený panel nástrojů usnadňuje editaci článků.
+Nové a vylepšené ikonky zřetelněji označují, co který nástroj dělá.
+Díky rozbalovacím částem je panel přehlednější, přitom méně používané nástroje jsou dostupné jediným kliknutím.
+;Dialog
+Při vytváření odkazů nebo tabulek se kliknutím na ikonku nástroje otevře dialogové okno, které vám prostřednictvím jednoduchého formuláře pomůže s tvorbou odkazů a tabulek.
+;A další
+Připravili jsme mnoho dalších vylepšení, jako jsou zdokonalená navigace, kaskádové záložky, vylepšené hledání a jiné.
 == Jak se zapojit ==
-Pokud se chcete o projektu dozvědět více nebo se zapojit, navštivte [http://usability.wikimedia.org wiki Iniciativy použitelnosti]. Najdete tam informace o našem grantu, výzkumu, návrhu a vývoji i vydaných verzích. Pokud se chcete na něco zeptat nebo nám něco sdělit, použijte naši [http://usability.wikimedia.org/wiki/Talk:Prototype diskusi k prototypu]. Připomínky ke konkrétním tématům můžete psát na příslušné diskusní stránky. Pokud najdete nějakou chybu, můžete ji oznámit v [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusi k vydání verze Babaco] nebo pomocí [https://bugzilla.wikimedia.org Bugzilly].
-
-Děkujeme a budeme se těšit na vaše názory!',
+Pokud se chcete o Iniciativě použitelnosti dozvědět více, navštivte [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative náš web].
+<div style="clear:both"></div>',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
