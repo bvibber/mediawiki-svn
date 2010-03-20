@@ -85,8 +85,8 @@ function wfSpecialGetFamily() {
 			$where .= ', ' . $dbr->addQuotes( $lang_code );
 		}
 		$where = substr( $where, 1 );
-		$interwikiTable = $dbr->tableName( 'interwiki' );
-		$result = $dbr->query( "SELECT iw_prefix, iw_url FROM $interwikiTable WHERE iw_prefix IN ( $where );" );
+		$result = $dbr->select( 'interwiki', array( 'iw_prefix', 'iw_url' ),
+			array( "iw_prefix IN ( $where )" ), __METHOD__ );
 
 		$datalinks = array();
 
