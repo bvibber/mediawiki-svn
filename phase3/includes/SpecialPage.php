@@ -142,6 +142,7 @@ class SpecialPage {
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'FileDuplicateSearch'       => array( 'SpecialPage', 'FileDuplicateSearch' ),
 		'Upload'                    => 'SpecialUpload',
+		'UploadWizard'              => 'SpecialUploadWizard',
 
 		# Wiki data and tools
 		'Statistics'				=> 'SpecialStatistics',

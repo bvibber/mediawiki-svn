@@ -567,6 +567,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialStatistics' => 'includes/specials/SpecialStatistics.php',
 	'SpecialTags' => 'includes/specials/SpecialTags.php',
 	'SpecialUpload' => 'includes/specials/SpecialUpload.php',
+	'SpecialUploadWizard' => 'includes/specials/SpecialUploadWizard.php',
 	'SpecialVersion' => 'includes/specials/SpecialVersion.php',
 	'SpecialWhatlinkshere' => 'includes/specials/SpecialWhatlinkshere.php',
 	'SpecialWhatLinksHere' => 'includes/specials/SpecialWhatlinkshere.php',
