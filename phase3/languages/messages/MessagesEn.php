@@ -372,6 +372,7 @@ $specialPageAliases = array(
 	'Watchlist'                 => array( 'Watchlist' ),
 	'Recentchanges'             => array( 'RecentChanges' ),
 	'Upload'                    => array( 'Upload' ),
+	'Uploadwizard'              => array( 'UploadWizard' ),
 	'Listfiles'                 => array( 'ListFiles', 'FileList', 'ImageList' ),
 	'Newimages'                 => array( 'NewFiles', 'NewImages' ),
 	'Listusers'                 => array( 'ListUsers', 'UserList' ),
@@ -4067,6 +4068,9 @@ You can also [[Special:Watchlist/edit|use the standard editor]].',
 # Core parser functions
 'unknown_extension_tag' => 'Unknown extension tag "$1"',
 'duplicate-defaultsort' => '\'\'\'Warning:\'\'\' Default sort key "$2" overrides earlier default sort key "$1".',
+
+# Special:UploadWizard
+'uploadwizard'			   => 'Upload Wizard',
 
 # Special:Version
 'version'                          => 'Version',
