@@ -28,24 +28,44 @@
 	} );
 	
 	//Set a variable for the base upload interface for easy inclution
-	var baseUploadlibs = [
-		[
-			'mw.UploadHandler',
-			'mw.UploadInterface',
-			'$j.ui'
-		],
+	// 
+	// var baseUploadlibraries = [
+	// 	[
+	// 		'mw.UploadHandler',
+	// 		'mw.UploadInterface',
+	// 		'$j.ui'
+	// 	],
+	// 	[
+	// 		'$j.ui.progressbar',
+	// 		'$j.ui.dialog',
+	// 		'$j.ui.draggable',
+	// 		'$j.fn.autocomplete'
+	// 	]
+	// ];
+	// 	
+	// var mwBaseFirefoggReq = baseUploadlibraries.slice( 0 )
+	// mwBaseFirefoggReq[0].push('mw.Firefogg');
+	// 
+
+	var libraries = [ 
 		[
 			'$j.ui.progressbar',
 			'$j.ui.dialog',
 			'$j.ui.draggable',
 			'$j.fn.autocomplete'
-		]
+		],
+		[
+			'mw.Language',
+			'mw.IframeTransport',
+			'mw.ApiUploadHandler',
+			'mw.DestinationChecker',
+			'mw.UploadWizard'
+		],
 	];
-		
-	var mwBaseFirefoggReq = baseUploadlibs.slice( 0 )
-	mwBaseFirefoggReq[0].push('mw.Firefogg');
-	
 
+	var testLibraries = libraries.slice( 0 )
+	testLibraries.push( [ 'mw.MockUploadHandler' ] );
+ 
 	/**
 	* Note: We should move relevant parts of these style sheets to the addMedia/css folder 
 	* phase 2: We should separate out sheet sets per sub-module:
@@ -53,40 +73,28 @@
 	
 	mw.addModuleLoader( 'UploadWizard.UploadWizard', function( callback ) {
 		//Clone the array: 
-		var request = mwBaseFirefoggReq.slice( 0 ) ;
+		//var request = mwBaseFirefoggReq.slice( 0 ) ;
 		
 		//Add uploadwizard classes to a new "request" var: 
-		request.push( [
-			'mw.Language',
-			'mw.IframeTransport',
-			'mw.ApiUploadHandler',
-			'mw.DestinationChecker',
-			'mw.UploadWizard'
-		] );
+		//request.push( libraries );
 		
-		mw.load( request, function() {
+		mw.load( libraries, function() {
 			callback( 'UploadWizard.UploadWizard' );
-		});
+		} );
 
 	} );
 	
 	mw.addModuleLoader( 'UploadWizard.UploadWizardTest', function( callback ) {
 		//Clone the array: 
-		var request = mwBaseFirefoggReq.slice( 0 ) ;
+		//var request = mwBaseFirefoggReq.slice( 0 ) ;
 	 	
 		//Add uploadwizard classes to a new "request" var: 
-		request.push( [
-			'mw.Language',
-			'mw.IframeTransport',
-			'mw.ApiUploadHandler',
-			'mw.DestinationChecker',
-			'mw.MockUploadHandler',
-			'mw.UploadWizard'
-		] );
-		
-		mw.load( request, function() {
+		//request.push( testLibraries );
+		//debugger;
+	
+		mw.load( testLibraries, function() {
 			callback( 'UploadWizard.UploadWizardTest' );
-		});
+		} );
 
 	} );
 
