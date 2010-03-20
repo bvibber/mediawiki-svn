@@ -126,7 +126,12 @@ var liquidThreads = {
 			var windowHeight = $j(window).height();
 			var editBoxHeight = $j(container).height();
 			
-			var scrollOffset = targetOffset - windowHeight + editBoxHeight;
+			var scrollOffset;
+			if ( windowHeight < editBoxHeight ) {
+				scrollOffset = targetOffset;
+			} else {
+				scrollOffset = targetOffset - windowHeight + editBoxHeight;
+			}
 			
 			$j('html,body').animate({scrollTop: scrollOffset}, 'slow');
 			// Auto-focus and set to auto-grow as well
@@ -163,6 +168,7 @@ var liquidThreads = {
 			cancelButton.click( liquidThreads.cancelEdit );
 			
 			$j(container).find('#wpTextbox1').attr( 'rows', 12 );
+			$j(container).find('#wpDiff').hide();
 			
 			// Add toolbar
 			mwSetupToolbar();

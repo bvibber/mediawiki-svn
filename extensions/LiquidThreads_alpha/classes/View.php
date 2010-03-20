@@ -483,6 +483,8 @@ class LqtView {
 			$signatureEditor;
 		$e->previewTextAfterContent .=
 			Xml::tags( 'p', null, $signatureHTML );
+		
+		$wgRequest->setVal( 'wpWatchThis', false );
 			
 		$e->edit();
 		
@@ -1367,7 +1369,11 @@ class LqtView {
 			$html .= Xml::closeElement( 'div' );
 		} else {
 			$html .= Xml::openElement( 'div', array( 'class' => $divClass ) );
-			$html .= $this->showPostBody( $post, $oldid );
+			
+			$show = wfRunHooks( 'LiquidThreadsShowThreadBody', array( $thread, &$post ) );
+			if ($show) {
+				$html .= $this->showPostBody( $post, $oldid );
+			}
 			$html .= Xml::closeElement( 'div' );
 			$html .= $this->showThreadToolbar( $thread );
 			$html .= $this->threadSignature( $thread );
@@ -1435,6 +1441,7 @@ class LqtView {
 		
 		if ( isset( $ebLookup[$editedFlag] ) ) {
 			$editedBy = $ebLookup[$editedFlag];
+			// Used messages: lqt-thread-edited-author, lqt-thread-edited-others
 			$editedNotice = wfMsgExt( 'lqt-thread-edited-' . $editedBy,
 					array( 'parseinline' ),
 					array( $lastEdit, $editorCount, $lastEditTime,
@@ -1444,6 +1451,8 @@ class LqtView {
 						'lqt-thread-toolbar-edited-' . $editedBy ),
 						$editedNotice );
 		}
+		
+		wfRunHooks( 'LiquidThreadsThreadInfoPanel', array( $thread, &$infoElements ) );
 
 		if ( ! count( $infoElements ) ) {
 			return '';
