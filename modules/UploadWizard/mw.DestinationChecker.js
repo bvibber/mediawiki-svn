@@ -4,11 +4,13 @@
  * Perhaps this could be a jQuery ext
  * @param options   dictionary of options 
  *		selector  required, the selector for the input to check
- * 		processResult   required, closure to execute on results. accepts an object with the following fields
- *			isUnique: boolean
- *			img: thumbnail image (supplied if not unique)
- *			href: the url of the full image
- *			title: normalized title of file
+ * 		processResult   required, function to execute on results. accepts two args:
+ *			1) filename that invoked this request -- should check if this is still current filename
+ *			2) an object with the following fields
+ *				isUnique: boolean
+ *				img: thumbnail image src (if not unique)
+ *				href: the url of the full image (if not unique)
+ *				title: normalized title of file (if not unique)
  * 		spinner   required, closure to execute to show progress: accepts true to start, false to stop
  * 		apiUrl    optional url to call for api. falls back to local api url
  * 		delay     optional how long to delay after a change in ms. falls back to configured default
@@ -50,7 +52,7 @@ mw.DestinationChecker = function( options ) {
 mw.DestinationChecker.prototype = {
 
 	// events that the input undergoes which fire off a check
-	events: [ 'change', 'keypress' ],
+	events: [ 'change', 'keyup' ],
 
 	// how long the input muse be "idle" before doing call (don't want to check on each key press)
 	delay: 500, // ms;
@@ -96,23 +98,31 @@ mw.DestinationChecker.prototype = {
 	},
 
 	/**
+  	 * Get the current value of the input, with optional preprocessing
+	 * @return the current input value, with optional processing
+	 */
+	getName: function() {
+		_this.preprocess( $j( _this.selector ).val() );
+	},
+
+	/**
 	 * Async check if a filename is unique. Can be attached to a field's change() event
 	 * This is a more abstract version of AddMedia/UploadHandler.js::doDestCheck
 	 */
 	checkUnique: function() {
 		var _this = this;
 		var found = false;
-		var name = _this.preprocess( $j( _this.selector ).val() );
+		var name = _this.getName();
 		
 		if ( _this.cachedResult[name] !== undefined ) {
-			_this.doResult( name, _this.cachedResult[name] );
+			_this.processResult( name, _this.cachedResult[name] );
 			return;
 		} 
 
 		// set the spinner to spin
 		_this.spinner( true );
 		
-		// Setup the request
+		// Setup the request -- will return thumbnail data if it finds one
 		var request = {
 			'titles': 'File:' + name,
 			'prop':  'imageinfo',
@@ -120,10 +130,15 @@ mw.DestinationChecker.prototype = {
 			'iiurlwidth': 150
 		};
 
-		// Do the destination check ( on the local wiki )
+		// Do the destination check 
 		mw.getJSON( _this.apiUrl, request, function( data ) {			
 			// Remove spinner
 			_this.spinner( false );
+	
+			// if the name's changed in the meantime, our result is useless
+			if ( name != _this.getName() ) {
+				return;
+			}
 			
 			if ( !data || !data.query || !data.query.pages ) {
 				// Ignore a null result
@@ -136,7 +151,7 @@ mw.DestinationChecker.prototype = {
 			if ( data.query.pages[-1] ) {
 				// No conflict found; this file name is unique
 				mw.log(" No pages in checkUnique result");
-				result = { unique: true };
+				result = { isUnique: true };
 
 			} else {
 
@@ -157,7 +172,7 @@ mw.DestinationChecker.prototype = {
 					var img = data.query.pages[ page_id ].imageinfo[0];
 
 					result = {
-						unique: false,	
+						isUnique: false,	
 						img: img,
 						title: ntitle,
 						href : img.descriptionurl
@@ -169,7 +184,7 @@ mw.DestinationChecker.prototype = {
 
 			if ( result !== undefined ) {
 				_this.cachedResult[name] = result;
-				_this.processResult( result );
+				_this.processResult( name, result );
 			}
 		} );
 	}

@@ -44,6 +44,7 @@ mw.addMessages( {
 	"mwe-upwiz-other": "Other information",
 	"mwe-upwiz-other-prefill": "Free wikitext field",
 	"mwe-upwiz-showall": "show all",
+	"mwe-upwiz-source": "Source",
 	
 
 	"mwe-upwiz-upload-error-bad-filename-extension": "This wiki does not accept filenames with the extension \"$1\".",
@@ -53,8 +54,9 @@ mw.addMessages( {
 	"mwe-upwiz-cancel": "Cancel",
 
 	/* copied from mw.UploadHandler :(  */
-	"mwe-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to change it.",
-	"mwe-thumbnail-more" : "Enlarge"
+	"mwe-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to replace it.",
+	"mwe-thumbnail-more" : "Enlarge",
+	"mwe-upwiz-overwrite" : "Replace the file"
 } );
 
 	// available licenses should be a configuration of the MediaWiki instance,
@@ -465,13 +467,15 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 					.append( _this.descriptionAdder ) );
 	// title
 	_this.titleInput = $j( '<input type="text" class="mwe-title" size="40"/>' )
-				.keydown( function() { 
-					$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( $j(_this.titleInput).val() ) );
+				.keyup( function() { 
+					$j( _this.filenameInput )
+						.val( mw.UploadWizardUtil.pathToTitle( $j(_this.titleInput).val() )
+					);
 				});
 	$j(_this.titleInput).destinationChecked( {
 		spinner: function(bool) { _this.toggleDestinationBusy(bool) },
 		preprocess: mw.UploadWizardUtil.pathToTitle, // stateless, so we don't need the object
-		processResult: function(result) { _this.processDestinationCheck(result) }
+		processResult: function( result ) { _this.processDestinationCheck( result ) } 
 	} );
 
 	_this.titleErrorDiv = $j('<div></div>');
@@ -546,8 +550,9 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	
 	_this.filenameInput = $j('<input type="text" class="mwe-filename" size="30" />' )
-				.keydown( function() { 
-					$j( _this.titleInput ).val( _this.filenameToTitle( $j(_this.filenameInput).val() ) );
+				.keyup( function() { 
+					$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( $j( _this.filenameInput ).val() ) )
+							      .keyup();  // simulate keyup to trigger destination check
 				});
 
 	var aboutTheFileDiv = $j('<div></div>')
@@ -608,12 +613,16 @@ mw.UploadWizardDetails.prototype = {
 	/**
 	 * Process the result of a destination filename check.
 	 * See mw.DestinationChecker.js for documentation of result format 
+	 * XXX would be simpler if we created all these divs in the DOM and had a more jquery-friendly way of selecting
+ 	 * attrs. Instead we create & destroy whole interface each time. Won't someone think of the DOM elements?
+	 * @param result
 	 */
 	processDestinationCheck: function( result ) {
 		var _this = this;
-		
-		if ( result.unique ) {
-			// do nothing
+
+		if ( result.isUnique ) {
+			_this.titleErrorDiv.hide().empty();
+			_this.ignoreWarningsInput = undefined;
 			return;
 		}
 
@@ -621,15 +630,20 @@ mw.UploadWizardDetails.prototype = {
 		var title = result.title;
 		var img = result.img;
 		var href = result.href;
-		
+	
+		_this.ignoreWarningsInput = $j("<input />").attr( { type: 'checkbox', name: 'ignorewarnings' } ); 
+	
 		var $fileAlreadyExists = $j('<div />')
-		.append(				
-			gM( 'mwe-fileexists', 
-				$j('<a />')
-				.attr( { target: '_new', href: href } )
-				.text( title )
-			)
-		)
+			.append(				
+				gM( 'mwe-fileexists', 
+					$j('<a />')
+					.attr( { target: '_new', href: href } )
+					.text( title )
+				),
+				$j('<br />'),
+				_this.ignoreWarningsInput,
+				gM('mwe-upwiz-overwrite')
+			);
 		
 		var $imageLink = $j('<a />')
 			.addClass( 'image' )
@@ -671,23 +685,26 @@ mw.UploadWizardDetails.prototype = {
 					.html( gM( 'mwe-fileexists-thumb' ) )
 				)													
 			);
-		$j( _this.titleErrorDiv ).append(
-			$fileAlreadyExists,
-			
-			$j( '<div />' )
-			.addClass( 'thumb tright' )
-			.append(
-				$j( '<div />' )
-				.addClass( 'thumbinner' )
-				.css({
-					'width' : ( parseInt( img.thumbwidth ) + 2 ) + 'px;'
-				})
-				.append( 
-					$imageLink, 
-					$imageCaption
-				)					
-			)
-		);		
+
+		$j( _this.titleErrorDiv ).html(
+			$j('<span />')  // dummy argument since .html() only takes one arg
+				.append(
+					$fileAlreadyExists,
+					$j( '<div />' )
+						.addClass( 'thumb tright' )
+						.append(
+							$j( '<div />' )
+							.addClass( 'thumbinner' )
+							.css({
+								'width' : ( parseInt( img.thumbwidth ) + 2 ) + 'px;'
+							})
+							.append( 
+								$imageLink, 
+								$imageCaption
+							)					
+						)
+				)
+		).show();
 
 	}, 
 
@@ -1083,6 +1100,8 @@ mw.UploadWizardDetails.prototype = {
 		// THIS MAY NOT WORK ON ALL WIKIS. for instance, on Commons, it may be that only admins can move pages. This is another example of how
 		//   we need an "incomplete" upload status
 		// we are presuming this File page is brand new, so let's not bother with the whole redirection deal. ('noredirect')
+		
+		// use _this.ignoreWarningsInput (if it exists) to check if we can blithely move the file or if we have a problem
 
 		/*
 		Note: In this example, all parameters are passed in a GET request just for the sake of simplicity. However, action = move requires POST requests; GET requests will cause an error. Moving Main Pgae ( sic ) and its talk page to Main Page, without creating a redirect
