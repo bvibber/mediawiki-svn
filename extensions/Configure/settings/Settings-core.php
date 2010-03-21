@@ -1178,4 +1178,7 @@ $notEditableSettings = array(
 /**
  * Array of settings depending of the Core version
  */
-$settingsVersion = array();
+$settingsVersion = array(
+	'wgAllowUserCssPrefs' => array( array( '1.17alpha', '>=' ) ),
+	'wgGalleryOptions' => array( array( '1.17alpha', '>=' ) ),
+);
