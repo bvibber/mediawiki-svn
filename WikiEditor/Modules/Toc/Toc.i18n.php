@@ -167,9 +167,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Lou
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'wikieditor-toc-preference' => 'Ενεργοποιήστε πλοηγήσιμο πίνακα περιεχομένων',
 	'wikieditor-toc-show' => 'Εμφάνιση περιεχομένων',
 	'wikieditor-toc-hide' => 'Απόκρυψη περιεχομένων',
 );

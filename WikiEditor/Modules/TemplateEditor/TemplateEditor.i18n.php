@@ -127,6 +127,16 @@ $messages['dsb'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Pśetergnuś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Lou
+ */
+$messages['el'] = array(
+	'wikieditor-template-editor-preference' => 'Ενεργοποίηση επεξεργασίας των προτύπων wiki χάρη σε μια φόρμα',
+	'wikieditor-template-editor-dialog-title' => 'Επεξεργασία προτύπου',
+	'wikieditor-template-editor-dialog-submit' => 'Ενημέρωση',
+	'wikieditor-template-editor-dialog-cancel' => 'Ακύρωση',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
