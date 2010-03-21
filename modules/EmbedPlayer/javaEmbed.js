@@ -87,14 +87,18 @@ var javaEmbed = {
 	*/
 	getAppletLocation: function() {
 		var mediaSrc = this.getSrc()
-		if ( !mw.isLocalDomain( mediaSrc ) ) {
+		if ( 
+			!mw.isLocalDomain( mediaSrc ) 
+			|| 
+			!mw.isLocalDomain( mw.getMwEmbedPath() ) 
+		){
 			if ( window.cortadoDomainLocations[ mw.parseUri( mediaSrc ).host ] ) {
 				applet_loc =  window.cortadoDomainLocations[ mw.parseUri( mediaSrc ).host ];
 			} else {
 				applet_loc  = 'http://theora.org/cortado.jar';
 			}
 		} else {
-			// should be identical to cortado.jar
+			// Should be identical to cortado.jar
 			applet_loc = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/cortado/cortado-january.jar';			
 		}
 		return applet_loc;
