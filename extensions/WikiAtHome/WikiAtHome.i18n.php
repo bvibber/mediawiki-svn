@@ -494,6 +494,7 @@ $messages['el'] = array(
 	'wah-long-general' => '(αρχείο μέσου, διάρκεια $2, $3)',
 	'wah-long-error' => '(το ffmpeg δεν μπορούσε να διαβάσει αυτό το αρχείο: $1)',
 	'wah-transcode-working' => 'Αυτό το βίντεο προωθείται, παρακαλώ δοκιμαστε ξανά αργότερα',
+	'wah-javascript-off' => 'Θα πρέπει να έχετε ενεργοποιημένη τη Javascript για να συμμετάσχετε στο Wiki@Home',
 	'wah-menu-jobs' => 'Εργασίες',
 	'wah-menu-stats' => 'Στατιστικά',
 	'wah-menu-pref' => 'Προτιμήσεις',
@@ -501,6 +502,7 @@ $messages['el'] = array(
 	'wah-notoken-login' => 'Είστε συνδεδεμένος (-η); Εάν όχι, παρακαλούμε συνδεθείτε πρώτα.',
 	'wah-downloading' => 'Η μεταφόρτωση του αρχείου <i>$1</i> ολοκληρώθηκε',
 	'wah-uploadfail' => 'Η φόρτωση απέτυχε',
+	'wah-api-error' => 'Υπήρξε ένα λάθος με το API. Παρακαλώ δοκιμάστε αργότερα.',
 );
 
 /** Esperanto (Esperanto)

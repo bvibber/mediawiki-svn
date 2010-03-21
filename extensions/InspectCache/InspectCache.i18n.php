@@ -144,14 +144,13 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'inspectcache' => "Ensellañ ar c'hrubuilh",
 	'inspectcache-desc' => "Un ostilh debuggañ simpl evit ensellañ an elfennoù er c'hrubuilh kevrannet.",
-	'inspectcache-ok' => 'Mat eo',
 	'inspectcache-general' => 'Krubuilh hollek',
 	'inspectcache-parser' => 'Krubuilh ar parseroù',
-	'inspectcache-message' => 'Krubuilh ar gemenadennoù',
+	'inspectcache-message' => "Krubuilh ar c'hemennadennoù",
 	'inspectcache-get' => 'Tapout',
 	'inspectcache-delete' => '
 Diverkañ',
-	'inspectcache-deleted' => 'Krubuilh bet diverket',
+	'inspectcache-deleted' => 'Krubuilh diverket',
 	'inspectcache-list' => 'Roll',
 );
 

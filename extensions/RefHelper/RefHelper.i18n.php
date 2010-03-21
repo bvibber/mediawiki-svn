@@ -365,6 +365,11 @@ $messages['hsb'] = array(
 	'refhelper-toolbox_link_create' => 'Referencu wutworić',
 	'refhelper-toolbox_link_search' => 'Referencu z pytanja wutworić',
 	'refhelper-newarticle_nocitation' => 'Tuchwilu citat z tutym mjenom njeje.',
+	'refhelper-newarticle_suggestions' => 'Jeli je deleka hodźacy so citat, móžeš tutu stronu přez kliknjenje na wotpowědowace tłóčatko "Wutworić" wutworić. 
+
+<h2>Namjety</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Bohužel njeje móžno było referency namjetować.
+Móžeš [[Special:RefHelper|referencu manuelnje přidać]] abo [[Special:RefSearch|citat pytać, kotryž ma so přidać]].',
 );
 
 /** Interlingua (Interlingua)

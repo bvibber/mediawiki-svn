@@ -214,6 +214,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -233,7 +234,7 @@ N'eo ket bet hizivaet.",
 Disoñjet",
 	'importusers-log' => 'Marilh enporzhiadur an implijerien',
 	'importusers-log-summary' => 'Diverradur',
-	'importusers-log-summary-all' => 'Pep tra',
+	'importusers-log-summary-all' => 'An holl',
 	'importusers-log-summary-added' => 'Ouzhpennet',
 	'importusers-log-summary-updated' => 'Hizivaet',
 	'importusers-login-name' => 'Anv implijer',

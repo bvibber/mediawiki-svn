@@ -685,8 +685,8 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 	'openidconvertoraddmoreids' => "Amdreiñ da OpenID pe ouzhpennañ ur chomlec'h OpenID all",
 	'openidconvertsuccess' => 'Amdroet eo bet davet OpenID',
 	'openidconvertsuccesstext' => 'Amdroet ho peus ho OpenID davet $1.',
-	'openidconvertyourstext' => 'Ho OpenID eo dija.',
-	'openidconvertothertext' => 'OpenID un implijer all eo dija.',
+	'openidconvertyourstext' => "Hoc'h OpenID eo hemañ dija.",
+	'openidconvertothertext' => 'OpenID un implijer all eo hemañ.',
 	'openidalreadyloggedin' => "'''Kevreet oc'h dija, $1!'''
 
 Ma fell deoc'h implijout OpenID da gevreañ diwezhatoc'h, e c'hallit [[Special:OpenIDConvert|amdreiñ ho kont evit implijout OpenID]].",

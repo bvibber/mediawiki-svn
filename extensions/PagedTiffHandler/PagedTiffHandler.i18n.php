@@ -213,6 +213,20 @@ $messages['gsw'] = array(
 	'tiff-file-info-size' => '(Syte $5, $1 × $2 Pixel, Dateigreßi: $3, MIME-Typ: $4)',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'tiff_no_metadata' => 'Z TIFF njedadźa so metadaty wućahać.',
+	'tiff_page_error' => 'Čisło strony we wobłuku njeje',
+	'tiff_too_many_embed_files' => 'Wobraz wobsahuje přewjele zapřijatych datajow.',
+	'tiff_file_too_large' => 'Nahrata dataja je přewulka a bu wotpokazana.',
+	'tiff_too_much_meta' => 'Metadaty wužiwaja přewjele ruma.',
+	'tiff_script_detected' => 'Nahrata dataja wobsahuje skripty.',
+	'tiff_bad_file' => 'Nahrata dataja wobsahuje zmylki.',
+	'tiff-file-info-size' => '(strona $5, $1 × $2 pikselow, wulkosć dataje: $3, MIME-typ: $4)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

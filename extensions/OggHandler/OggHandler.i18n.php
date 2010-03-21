@@ -463,11 +463,11 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'ogg-short-audio' => 'Restr son Ogg $1, $2',
-	'ogg-short-video' => 'Fichennaoueg video Ogg $1, $2',
-	'ogg-short-general' => 'Fichennaoueg media Ogg $1, $2',
-	'ogg-long-audio' => '(Fichennaoueg son Ogg $1, padelezh $2, $3)',
-	'ogg-long-video' => '(Fichennaoueg video Ogg $1, padelezh $2, $4×$5 pixels, $3)',
-	'ogg-long-general' => '(Fichennadoueg media Ogg , padelezh $2, $3)',
+	'ogg-short-video' => 'Restr video Ogg $1, $2',
+	'ogg-short-general' => 'Restr media Ogg $1, $2',
+	'ogg-long-audio' => '(Restr son Ogg $1, pad $2, $3)',
+	'ogg-long-video' => '(Restr video Ogg $1, pad $2, $4×$5 piksel, $3)',
+	'ogg-long-general' => '(Restr media Ogg, pad $2, $3)',
 	'ogg-long-error' => '(Restr ogg direizh : $1)',
 	'ogg-play' => 'Lenn',
 	'ogg-pause' => 'Ehan',

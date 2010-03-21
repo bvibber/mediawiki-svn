@@ -406,10 +406,12 @@ Buź pak wobglědniwy, wuraze njeby pśekrotke abo pśepowšykne byś.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Lou
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'spamregex' => 'Τακτική έκφραση spam',
+	'spamregex-summary' => 'Το κείμενο βρέθηκε στην περίληψη της σελίδας.',
 	'spamregex-currently-blocked' => "'''Υπάρχουσες φραγμένες φράσεις:'''",
 	'spamregex-no-currently-blocked' => "'''Δεν υπάρχουν φραγμένες φράσεις.'''",
 	'spamregex-unblock-success' => 'Η απόφραξη ολοκληρώθηκε επιτυχώς.',

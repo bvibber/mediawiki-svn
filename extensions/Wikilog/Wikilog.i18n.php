@@ -1051,6 +1051,7 @@ Diaskit ar voest-mañ evit ma chomo ar pennad ur brouilhed.",
 	'wikilog-comment-anonsig' => '$3 (dizanv)',
 	'wikilog-comment-pending' => "Emañ an addispleg-mañ o c'hortoz bezañ aprouet.",
 	'wikilog-comment-deleted' => 'Dilamet e oa bet an addispleg-mañ.',
+	'wikilog-comment-omitted-x' => 'Evezhiadenn disoñjet (#$1).',
 	'wikilog-comment-autosumm' => 'Addispleg nevez gant $1 : $2',
 	'wikilog-reply-to-comment' => "Postañ ur respont d'an addispleg-mañ",
 	'wikilog-comment-page' => 'Mont da bajenn an addispleg-mañ',
@@ -1640,6 +1641,7 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Lou
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -1685,9 +1687,15 @@ $messages['el'] = array(
 	'wikilog-summary-categories' => 'Αρχειοποιημένο κάτω από $2',
 	'wikilog-summary-more' => '[[$3|→ συνέχεια ανάγνωσης...]]',
 	'wikilog-edit-fieldset-legend' => 'Επιλογές Βικιαρχείου:',
+	'wikilog-comment-pending' => 'Αυτό το σχόλιο αναμένει έγκριση.',
 	'wikilog-comment-deleted' => 'Αυτό το σχόλιο διαγράφηκε.',
+	'wikilog-comment-omitted-x' => 'Το σχόλιο παραλείπεται (#$1).',
+	'wikilog-comment-autosumm' => 'Νέο σχόλιο από $1: $2',
+	'wikilog-reply-to-comment' => 'Αποστολή απάντησης σε αυτό το σχόλιο',
+	'wikilog-comment-page' => 'Μετάβαση στη σελίδα αυτού του σχολίου',
 	'wikilog-comment-edit' => 'Επεξεργασία αυτού του σχολίου',
 	'wikilog-comment-delete' => 'Διαγραφή αυτού του σχολίου',
+	'wikilog-comment-history' => 'Προβολή ιστορικού του σχολίου',
 	'wikilog-title-comments' => 'Σχόλια - $1',
 	'wikilog-error-msg' => 'Βικιαρχείο: $1',
 	'wikilog-error-title' => 'Σφάλμα Βικιαρχείου',

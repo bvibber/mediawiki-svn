@@ -46,13 +46,6 @@ $messages['qqq'] = array(
 	'gep-categorypage' => '{{optional}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'gep-categories' => "K'at'egorepe",
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -355,10 +348,12 @@ Pśidaj někotare z rědami w menijowej kšomje.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Lou
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'gep-desc' => 'Συμπληρώνει τη σελίδα επεξεργασίας για να είναι πιο φιλική προς το χρήστη',
 	'gep-emailsubject' => '[$1] Πρόταση κατηγορίας: $2',
 	'gep-emailsuccess' => 'Ευχαριστούμε που προτείνατε την κατηγορία: $1.',
 	'gep-categories' => 'Κατηγορίες',
@@ -372,6 +367,7 @@ $messages['el'] = array(
 	'gep-addsectionbutton' => 'Προσθήκη',
 	'gep-classicmode' => 'Κλασσική κατάσταση',
 	'gep-genericmode' => 'Γενική κατάσταση',
+	'gep-nocategories' => 'Παρακαλώ επιλέξτε τουλάχιστον μία κατηγορία πριν αποθηκεύσετε',
 );
 
 /** Esperanto (Esperanto)
@@ -907,6 +903,13 @@ Setzt der mat den Toolen am Menü derbäi.',
  */
 $messages['lmo'] = array(
 	'gep-addsection' => 'Gionta una sezión',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'gep-categories' => "K'at'egorepe",
 );
 
 /** Macedonian (Македонски)

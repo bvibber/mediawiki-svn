@@ -665,6 +665,7 @@ $1',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Lou
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -695,6 +696,7 @@ $messages['el'] = array(
 	'webstore_no_file' => 'Δεν φορτώθηκε κανένα αρχείο.',
 	'webstore_move_uploaded' => 'Σφάλμα στη μετακίνηση του φορτωμένου αρχείου "$1" στην προσωρινή τοποθεσία "$2".',
 	'webstore_invalid_zone' => 'Άκυρη ζώνη "$1".',
+	'webstore_no_deleted' => 'Δεν έχει οριστεί κατάλογος αρχείων για διαγραμμένα αρχεία.',
 	'webstore_curl' => 'Σφάλμα από το cURL: $1',
 	'webstore_404' => 'Το αρχείο δεν βρέθηκε.',
 	'webstore_php_warning' => 'Προειδοποίηση PHP: $1',

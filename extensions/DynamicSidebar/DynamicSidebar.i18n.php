@@ -96,6 +96,13 @@ $messages['ja'] = array(
 	'dynamicsidebar-desc' => '利用者のページやグループ、カテゴリにもとづいて、動的に生成されるサイドバーを提供する。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'dynamicsidebar-desc' => 'Määt en Leß met ongerscheidlije Lenks aan de Sigg, afhängesch vun Metmaachersigge, Jroppe un Saachjroppe.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

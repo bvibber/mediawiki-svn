@@ -235,7 +235,7 @@ $messages['br'] = array(
 	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
 	'patrol-skip' => 'Lezel a-gostez',
-	'patrol-reverting' => 'Nuladennoù: $1',
+	'patrol-reverting' => 'O tisteuler : $1',
 	'patrol-endorsed-ok' => "Merket eo bet ar c'hemm evel gwiriekaet.",
 	'patrol-endorsed-failed' => "N'eo ket bet merket an embann evel gwiriekaet.",
 	'patrol-reverted-ok' => 'Nullet eo bet an embann-se.',
@@ -248,7 +248,7 @@ $messages['br'] = array(
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',
-	'grouppage-patroller' => '{{ns:project}}: Patrouilher',
+	'grouppage-patroller' => '{{ns:project}}:Patrouilher',
 	'right-patroller' => 'Pajennoù patrouilhañ',
 );
 
