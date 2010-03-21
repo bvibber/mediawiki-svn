@@ -38,8 +38,6 @@ $settings = array(
 			'wgUseAutomaticEditSummaries' => 'bool',
 			'wgUseTagFilter' => 'bool',
 			'wgUseTrackbacks' => 'bool',
-			'wgUseMetadataEdit' => 'bool',
-			'wgMetadataWhitelist' => 'text',
 		),
 		'ajax' => array(
 			'wgUseAjax' => 'bool',
@@ -169,7 +167,6 @@ $settings = array(
 	'db' => array(
 		'db' => array(
 			'wgAllDBsAreLocalhost' => 'bool',
-			'wgCheckDBSchema' => 'bool',
 			'wgDBAvgStatusPoll' => 'int',
 #			'wgDBconnection' => 'text', # This setting is deprecated and has an uncertain history. Best not to let people change it.
 			'wgDBerrorLog' => 'text',
@@ -553,6 +550,7 @@ $settings = array(
 			'wgExpensiveParserFunctionLimit' => 'int',
 			'wgExternalLinkTarget' => 'text',
 			'wgCleanSignatures' => 'bool',
+			'wgGalleryOptions' => 'array',
 			'wgGrammarForms' => 'array',
 			'wgLinkHolderBatchSize' => 'int',
 			'wgMaxPPExpandDepth' => 'int',
@@ -635,6 +633,7 @@ $settings = array(
 			'wgAutoConfirmCount' => 'int',
 			'wgAllowRealName' => 'bool',
 			'wgAllowUserSkin' => 'bool',
+			'wgAllowUserCssPrefs' => 'bool',
 			'wgDefaultUserOptions' => 'array',
 			'wgDisableAnonTalk' => 'bool',
 			'wgHiddenPrefs' => 'array',
@@ -885,6 +884,7 @@ $arrayDefs = array(
 	'wgSVGConverters' => 'assoc',
 	'wgAntivirusSetup' => 'array',
 # Parser
+	'wgGalleryOptions' => 'assoc',
 	'wgGrammarForms' => 'array',
 	'wgParserConf' => 'assoc',
 	'wgParserTestFiles' => 'simple',
@@ -1032,7 +1032,6 @@ $editRestricted = array(
 	'wgVariantArticlePath',
 # Db
 	'wgAllDBsAreLocalhost',
-	'wgCheckDBSchema',
 	'wgDBAvgStatusPoll',
 	'wgDBClusterTimeout',
 	'wgDBerrorLog',
