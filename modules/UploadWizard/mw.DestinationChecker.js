@@ -58,7 +58,7 @@ mw.DestinationChecker.prototype = {
 	delay: 500, // ms;
 
 	// what tracks the wait
-	timeoutId: false,
+	timeoutId: null,
 
 	// cached results from api calls
 	cachedResult: {},
@@ -103,7 +103,7 @@ mw.DestinationChecker.prototype = {
 	 */
 	getName: function() {
 		var _this = this;
-		_this.preprocess( $j( _this.selector ).val() );
+		return _this.preprocess( $j( _this.selector ).val() );
 	},
 
 	/**
@@ -112,11 +112,12 @@ mw.DestinationChecker.prototype = {
 	 */
 	checkUnique: function() {
 		var _this = this;
+
 		var found = false;
 		var name = _this.getName();
 		
 		if ( _this.cachedResult[name] !== undefined ) {
-			_this.processResult( name, _this.cachedResult[name] );
+			_this.processResult( _this.cachedResult[name] );
 			return;
 		} 
 
@@ -185,7 +186,7 @@ mw.DestinationChecker.prototype = {
 
 			if ( result !== undefined ) {
 				_this.cachedResult[name] = result;
-				_this.processResult( name, result );
+				_this.processResult( result );
 			}
 		} );
 	}
