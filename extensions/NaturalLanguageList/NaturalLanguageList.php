@@ -39,7 +39,7 @@
 $wgExtensionCredits['parserhook'][] = array(
 	'name'        => 'Natural Language List',
 	'author'      => array( 'Svip', 'Happy-melon' ),
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_language_list_parser_function',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
 	'description' => 'Easy formatting of lists in natural languages.',
 	'version'     => '2.0'
 );
