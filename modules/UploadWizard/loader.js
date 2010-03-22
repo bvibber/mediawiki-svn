@@ -49,9 +49,11 @@
 
 	var libraries = [ 
 		[
+			'$j.ui',
 			'$j.ui.progressbar',
 			'$j.ui.dialog',
-			'$j.ui.draggable',
+			'$j.ui.draggable',			
+			'$j.ui.datepicker',
 			'$j.fn.autocomplete'
 		],
 		[
