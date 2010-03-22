@@ -880,7 +880,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	prefillTitle: function() {
 		var _this = this;
-		$j( _this.titleInput ).val( mw.UploadWizardUtil.pathToTitle( _this.upload.originalFilename ) );
+		$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename ) );
 	},
 
 	/**
@@ -889,7 +889,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	prefillFilename: function() {
 		var _this = this;
-		$j( _this.filenameInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.title ) );
+		$j( _this.filenameInput ).val( mw.UploadWizardUtil.pathToTitle( _this.upload.originalFilename ) );
 	},
 
 	/**
