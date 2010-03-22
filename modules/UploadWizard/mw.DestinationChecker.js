@@ -102,6 +102,7 @@ mw.DestinationChecker.prototype = {
 	 * @return the current input value, with optional processing
 	 */
 	getName: function() {
+		var _this = this;
 		_this.preprocess( $j( _this.selector ).val() );
 	},
 
