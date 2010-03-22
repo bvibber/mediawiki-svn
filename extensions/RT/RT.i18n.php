@@ -26,6 +26,8 @@ You tried: '''\$1'''",
 You tried: '''\$1'''",
 	'rt-badstatus'    => "Invalid status (s) arg: must be a standard field (see documentation).
 You tried: '''\$1'''",
+	'rt-badcfield'    => "Invalid custom field arg: must be a simple word (see documentation).
+You tried: '''\$1'''",
 	'rt-badqueue'     => "Invalid queue (q) arg: must be a simple word.
 You tried: '''\$1'''",
 	'rt-badowner'     => "Invalid owner (o) arg: must be a valid username.
