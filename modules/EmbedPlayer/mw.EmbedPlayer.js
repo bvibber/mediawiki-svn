@@ -50,7 +50,7 @@ mw.addMessages( {
 	"mwe-ogg-player-quicktime-activex" : "QuickTime ActiveX",
 	"mwe-ogg-player-cortado" : "Java Cortado",
 	"mwe-ogg-player-flowplayer" : "Flowplayer",
-	"mwe-ogg-player-kplayer" : "Kaltura player",
+	"mwe-ogg-player-kplayer" : "Kaltura flash player",
 	"mwe-ogg-player-selected" : "(selected)",
 	"mwe-ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mwe-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback Methods<\/a> page to download a player.<br \/>",
@@ -134,7 +134,7 @@ var default_video_attributes = {
 	"start" : 0,
 	
 	// End time of the clip
-	"end" : null,
+	"end" : null,	
 	
 	// A apiTitleKey for looking up subtitles, credits and related videos
 	"apiTitleKey" : null,
@@ -269,10 +269,7 @@ var default_source_attributes = [
 		// Add each selected element to the player manager:		
 		$j( player_select ).each( function(na, playerElement) {			
 			mw.playerManager.addElement( playerElement, attributes);
-		} );	
-
-		// Once we are done adding new players start to check if players are ready:
-		mw.playerManager.waitPlayersReadyCallback();		
+		} );		
 	}	
 
 } )( jQuery );
@@ -322,6 +319,15 @@ EmbedPlayerManager.prototype = {
 	*  uses embedPlayer interface on audio / video elements
 	*  uses mvPlayList interface on playlist elements
 	*
+	* Once a player interface is established the following chain of functions are called;
+	* 
+	*	_this.checkPlayerSources()
+	* 	_this.checkForTimedText()
+	*	_this.setupSourcePlayer()
+	*	_this.inheritEmbedPlayer()
+	*	_this.selected_player.load()
+	* 	_this.showPlayer()
+	* 
 	* @param {Element} element DOM element to be swapped 
 	* @param {Object} [Optional] attributes Extra attributes to apply to the player interface 
 	*/
@@ -345,7 +351,10 @@ EmbedPlayerManager.prototype = {
 		var className = $j( element ).attr( 'class' );
 		for( var n=0; n < mw.valid_skins.length ; n++ ) { 
 			if( className && className.indexOf( mw.valid_skins[ n ] ) !== -1) {
-				skinClassRequest.push( mw.valid_skins[n] + 'Config' );
+				skinClassRequest.push( mw.valid_skins[ n ] + 'Config' ); 		
+				element.skinClass = mw.valid_skins[ n ];
+				// ( Only one skin per plyer )		
+				break;
 			}
 		}			
 				
@@ -487,36 +496,36 @@ EmbedPlayerManager.prototype = {
 	},
 	
 	/**
-	* Runs the callback functions once players are ready	
+	* Player ready will run the global callbacks 
+	* once players are "ready"
+	* 
+	* This enables mw.ready event to expose video tag 
+	* elemetns as if the videotag was supported natively. 
 	*
-	* Will run all the functions in the this.callbackFunctions array
-	* Once all the player in this.playerList are ready
+	* @param {Object} player The EmbedPlayer object
 	*/
-	waitPlayersReadyCallback: function() {
+	playerReady: function( player ) {
 		var _this = this;
-		mw.log( 'waitPlayersReadyCallback' );
+		mw.log( 'ReadyToPlay callback player:' +  player.id );
+		player.readyToPlay = true;
 		
-		var is_ready = true;
+		var is_ready = true; 
 		for ( var i = 0; i < this.playerList.length; i++ ) {
-			var player =  $j( '#' + this.playerList[i] ).get( 0 );
+			var currentPlayer =  $j( '#' + this.playerList[i] ).get( 0 );
 			if ( player ) {
-				// Check if the current video is ready 
-				is_ready = ( player.ready_to_play || player.load_error ) ? is_ready : false;				
+				// Check if the current video is ready ( or has an error out ) 
+				is_ready = ( player.readyToPlay || player.loadError ) ? is_ready : false;				
 			}
 		}
 		if ( is_ready ) {
+			mw.log( "All on-page players ready run playerMannager callbacks" );
 			// Run queued functions 
-			if( this.callbackFunctions ) {
-				while ( this.callbackFunctions.length ) {
-					this.callbackFunctions.shift()();
+			if( _this.callbackFunctions ) {
+				while ( _this.callbackFunctions.length ) {
+					_this.callbackFunctions.shift()();
 				}
 			}
-		} else {			
-			// Continue checking the playerList
-			setTimeout( function() {
-				_this.waitPlayersReadyCallback();
-			}, 10 );
-		 }
+		}
 	}
 }
 
@@ -563,7 +572,7 @@ mediaSource.prototype = {
 	// End time in npt format
 	end_npt: null,
 	
-	// A provider "id" to idenfiy api request type 
+	// A provider "id" to identify api request type 
 	provider_type : null,
 
 	// The api url for the provider
@@ -825,7 +834,7 @@ mediaSource.prototype = {
 * It is implemented as a collection of mediaSource objects.  The media sources
 *	will be initialized from the <video> element, its child <source> elements,
 *	and/or the ROE file referenced by the <video> element.
-*	@param {element} video_element <video> element used for initialization.
+*	@param {element} videoElement <video> element used for initialization.
 *	@constructor
 */
 function mediaElement( element ) {
@@ -835,19 +844,19 @@ function mediaElement( element ) {
 mediaElement.prototype = {
 	
 	// The array of mediaSource elements.
-	sources:null,
+	sources: null,
 	
 	// flag for ROE data being added.
-	addedROEData:false,
+	addedROEData: false,
 	
 	// Selected mediaSource element. 
-	selectedSource:null,
+	selectedSource: null,
 	
 	// Media element thumbnail
-	thumbnail:null,
+	thumbnail: null,
 	
 	// Media element linkback 
-	linkback:null,
+	linkback: null,
 
 	/**
 	* Media Element constructor
@@ -855,42 +864,46 @@ mediaElement.prototype = {
 	* Sets up a  mediaElement from a provided top level "video" element
 	*  adds any child sources that are found
 	*
-	* @param {Element} video_element Element that has src attribute or has children source elements 
+	* @param {Element} videoElement Element that has src attribute or has children source elements 
 	*/
-	init: function( video_element ) {
+	init: function( videoElement ) {
 		var _this = this;
 		mw.log( 'Initializing mediaElement...' );
 		this.sources = new Array();	
 		
-		if ( $j( video_element ).attr( 'thumbnail' ) )
-			this.thumbnail = $j( video_element ).attr( 'thumbnail' );
+		if ( $j( videoElement ).attr( 'thumbnail' ) ) {
+			_this.poster = $j( videoElement ).attr( 'thumbnail' );
+		}
 			
-		if ( $j( video_element ).attr( 'poster' ) )
-			this.thumbnail = $j( video_element ).attr( 'poster' );	
+		if ( $j( videoElement ).attr( 'poster' ) ) {
+			_this.poster = $j( videoElement ).attr( 'poster' );
+		}	
 		
-		if ( $j( video_element ).attr( 'apiTitleKey' ) )
-			this.apiTitleKey = $j( video_element ).attr( 'apiTitleKey' );
+		if ( $j( videoElement ).attr( 'apiTitleKey' ) ) {
+			_this.apiTitleKey = $j( videoElement ).attr( 'apiTitleKey' );
+		}
 		
-		if ( $j( video_element ).attr( 'apiProvider' ) )
-			this.apiProvider = $j( video_element ).attr( 'apiTitleKey' );
+		if ( $j( videoElement ).attr( 'apiProvider' ) ) {
+			_this.apiProvider = $j( videoElement ).attr( 'apiTitleKey' );
+		}
 		
-		if ( $j( video_element ).attr( 'durationHint' ) ) {
-			this.durationHint = $j( video_element ).attr( 'durationHint' );
+		if ( $j( videoElement ).attr( 'durationHint' ) ) {
+			_this.durationHint = $j( videoElement ).attr( 'durationHint' );
 			// Convert duration hint if needed:
-			this.duration = mw.npt2seconds(  this.durationHint );
+			_this.duration = mw.npt2seconds(  _this.durationHint );
 		}							
 		
 		// Set by default thumb value if not found
-		if( ! this.thumbnail  ){
-			this.thumbnail = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
+		if( ! _this.poster  ) {
+			_this.poster = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
 		}
 		
-		// Process the video_element as a source element:
-		if ( $j( video_element ).attr( "src" ) ) {
-			this.tryAddSource( video_element );
+		// Process the videoElement as a source element:
+		if ( $j( videoElement ).attr( "src" ) ) {
+			_this.tryAddSource( videoElement );
 		}
 			
-		$j( video_element ).find( 'source,itext' ).each( function( ) {			
+		$j( videoElement ).find( 'source,itext' ).each( function( ) {			
 			_this.tryAddSource( this );
 		} );		
 	},
@@ -1003,8 +1016,7 @@ mediaElement.prototype = {
 				 this.selectedSource = playableSources[source];
 				 return true;
 			}
-		}		
-				
+		}
 		
 		// Set native client for flash
 		for ( var source = 0; source < playableSources.length; source++ ) {
@@ -1015,7 +1027,8 @@ mediaElement.prototype = {
 				this.selectedSource = playableSources[ source ];
 				return true;
 			}			
-		}	
+		}
+		
 		// Set h264 via native or flash fallback
 		for ( var source = 0; source < playableSources.length; source++ ) {
 			var mimeType = playableSources[source].mimeType;
@@ -1061,8 +1074,8 @@ mediaElement.prototype = {
 	* Returns the thumbnail URL for the media element.
 	* @returns {String} thumbnail URL
 	*/
-	getThumbnailURL: function( ) {
-		return this.thumbnail;
+	getPosterSrc: function( ) {
+		return this.poster;
 	},
 	
 	/** 
@@ -1099,11 +1112,11 @@ mediaElement.prototype = {
 	*/
 	tryAddSource: function( element ) {
 		mw.log( 'f:tryAddSource:' + $j( element ).attr( "src" ) );
-		var new_src = $j( element ).attr( 'src' );
-		if ( new_src ) {			
+		var newSrc = $j( element ).attr( 'src' );
+		if ( newSrc ) {			
 			// make sure an existing element with the same src does not already exist:		 
 			for ( var i = 0; i < this.sources.length; i++ ) {
-				if ( this.sources[i].src == new_src ) {
+				if ( this.sources[i].src == newSrc ) {
 					// Source already exists  update any new attr:  
 					this.sources[i].updateSource( element );
 					return this.sources[i];
@@ -1149,23 +1162,26 @@ mediaElement.prototype = {
 		this.addedROEData = true;
 		var _this = this;		
 		if ( roe_data ) {
-			var $roeParsed = $j( roe_data.pay_load );			
+			var $roeParsed = $j( roe_data.pay_load );	
+					
 			// Add media sources:
 			$roeParsed.find("mediaSource").each( function( inx, source ) {				
 				_this.tryAddSource( source );
 			} );
+			
 			// Set the thumbnail:
 			$roeParsed.find( 'img' ).each( function( inx, n ) {
 				if ( $j( n ).attr( "id" ) == "stream_thumb" ) {
 					mw.log( 'roe:set thumb to ' + $j( n ).attr( "src" ) );
-					_this['thumbnail'] = $j( n ).attr( "src" );
+					_this.poster = $j( n ).attr( "src" );
 				}
 			} );
+			
 			// Set the linkback:
 			$roeParsed.find( 'link' ).each( function( inx, n ) {
 				if ( $j( n ).attr( 'id' ) == 'html_linkback' ) {
 					mw.log( 'roe:set linkback to ' + $j( n ).attr( "href" ) );
-					_this['linkback'] = $j( n ).attr( 'href' );
+					_this.linkback = $j( n ).attr( 'href' );
 				}
 			} );
 		} else {
@@ -1201,10 +1217,10 @@ mw.EmbedPlayer.prototype = {
 	
 	// Ready to play 
 	// NOTE: we should switch over to setting the html5 video ready state
-	'ready_to_play' : false, 
+	'readyToPlay' : false, 
 	
 	// Stores the loading errors
-	'load_error' : false, 
+	'loadError' : false, 
 	
 	// Loading external data flag ( for delaying interface updates )
 	'loading_external_data' : false,
@@ -1258,7 +1274,7 @@ mw.EmbedPlayer.prototype = {
 			// string -> bollean
 			if( this[attr] == "false" ) this[attr] = false;
 			if( this[attr] == "true" ) this[attr] = true;
-		}
+		}		
 		
 		// Set the skin name from the class  
 		var	sn = $j(element).attr( 'class' );
@@ -1357,7 +1373,7 @@ mw.EmbedPlayer.prototype = {
 			if( this['width']  &&  !this['height'] && this.videoAspect  ) {
 				var aspect = this.videoAspect.split( ':' );
 				this['height'] = parseInt( this.width * ( aspect[1] / aspect[0] ) );
-			}				
+			}
 		}
 		
 		// On load sometimes attr is temporally -1 as we don't have video metadata yet.	
@@ -1370,7 +1386,7 @@ mw.EmbedPlayer.prototype = {
 				// Note: ideally firefox would not do random guesses at css values 	
 				( (this.height == 150 || this.height == 64 ) && this.width == 300 )
 			) {			
-			var defaultSize = mw.getConfig( 'video_size' ).split( 'x' );
+			var defaultSize = mw.getConfig( 'videoSize' ).split( 'x' );
 			this['width'] = defaultSize[0];
 			// Special height default for audio tag ( if not set )  
 			if( element.tagName.toLowerCase() == 'audio' ) {
@@ -1399,7 +1415,7 @@ mw.EmbedPlayer.prototype = {
 	getPlayerHeight: function() {		
 		return parseInt( this.height );
 	},
-	
+
 	/**
 	* Check player for sources.  
 	* If we need to get media sources form an external file 
@@ -1408,9 +1424,10 @@ mw.EmbedPlayer.prototype = {
 	checkPlayerSources: function() {
 		mw.log( 'f:checkPlayerSources: ' + this.id );
 		var _this = this;		
+		var sourceCount = this.mediaElement.getPlayableSources().length;
 		// Process the provided ROE file. If we don't yet have sources
 		// ( the ROE file provides xml list of sources ) 
-		if ( this.roe && this.mediaElement.getPlayableSources().length == 0 ) {
+		if ( this.roe &&  sourceCount == 0 ) {
 			mw.log( 'checkPlayerSources: loading external data' );
 			this.loading_external_data = true;					 	
 			this.getMvJsonUrl( this.roe, function( data ) {				
@@ -1423,11 +1440,85 @@ mw.EmbedPlayer.prototype = {
 				
 				_this.checkForTimedText();							
 			} );
-		}else{
+		} else if ( this.apiTitleKey && sourceCount == 0 ){
+			// Load media from external data
+			mw.log( 'checkPlayerSources: loading apiTitleKey data' );
+			_this.loading_external_data = true;
+			_this.loadSourceFromApi( function(){
+				_this.loading_external_data = false;
+				_this.checkForTimedText();
+			} );
+		} else {
 			_this.checkForTimedText();				
 		}
 	},
-
+	/**
+	* Load Source video info From Api title key (  this.apiTitleKey )
+	* @param {Function} callback Function called once loading is complete
+	*/
+	loadSourceFromApi: function( callback ){
+		var _this = this;
+		if( !_this.apiTitleKey ){
+			mw.log( 'Error no apiTitleKey');
+			return false;
+		}
+		
+		// Set local apiProvider via config if not defined
+		if( !_this.apiProvider ) {
+			_this.apiProvider = mw.getConfig( 'apiProvider' );
+		}	
+		
+		// Setup the request
+		var request = {
+			'prop': 'imageinfo',
+			// In case the user added File: or Image: to the apiKey: 
+			'titles': 'File:' + this.apiTitleKey.replace( /^(File:|Image:)/ , '' ),
+			'iiprop': 'url|size|dimensions|metadata',
+			'iiurlwidth': _this.width,
+			'redirects' : true // automatically resolve redirects
+		} 
+	
+		// Run the request:
+		mw.getJSON( mw.getApiProviderURL( this.apiProvider ), request, function( data ){
+			if ( data.query.pages ) {
+				for ( var i in data.query.pages ) {
+					if( i == '-1' ) {
+						callback( false );
+						return ;
+					}
+					var page = data.query.pages[i];
+				}
+			}	else {				
+				callback( false );
+				return ;
+			}
+			
+			var imageinfo = page.imageinfo[0];
+						
+			// Set the poster
+			_this.poster = imageinfo.thumburl;
+			
+			// Add the media src
+			_this.mediaElement.tryAddSource(
+				$j('<source />')
+				.attr( 'src', imageinfo.url )
+				.get( 0 )
+			);
+			
+			// Set the duration
+			if( imageinfo.metadata[2]['name'] == 'length' ) {
+				_this.duration = imageinfo.metadata[2]['value'];
+			}
+			// Set the width height 
+			// Make sure we have an accurate aspect ratio
+			_this.height = parseInt( _this.width * ( imageinfo.height / imageinfo.width ) );
+			//update the css for the player inteface
+			$j( _this ).css( 'height', _this.height);
+			
+			callback();
+		});
+	},
+	
 	/**
 	* Metavid specific roe request helper function
 	* 
@@ -1572,11 +1663,13 @@ mw.EmbedPlayer.prototype = {
 			}											
 			_this.getDuration();
 			_this.showPlayer();
-			_this.ready_to_play = true;
+			// Call the global player mannager to inform this video interface is 100% ready: 
+			mw.playerManager.playerReady( _this );
 			
 			// Run the callback if provided
-			if ( typeof callback == 'function' ) 
+			if ( typeof callback == 'function' ){
 				callback();
+			}
 		} );
 	},
 	
@@ -1649,6 +1742,13 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
+	* Check if the selected source is an audio element: 
+	*/
+	isAudio: function(){
+		return ( this.mediaElement.selectedSource.mimeType.indexOf('audio/') !== -1 );
+	},
+	
+	/**
 	* Get the plugin embed html ( should be implemented by embed player interface )
 	*/
 	doEmbedHTML : function() {
@@ -1718,7 +1818,7 @@ mw.EmbedPlayer.prototype = {
 	getRelatedFromTitleKey: function() {
 		var _this = this;
 		var request = {			
-			//normalize the File NS (ie sometimes its present in apiTitleKey other times not
+			// Normalize the File NS (ie sometimes its present in apiTitleKey other times not
 			'titles' : 'File:' + this.apiTitleKey.replace(/File:|Image:/,''),
 		    'generator' : 'categories'
 		};		
@@ -1856,7 +1956,7 @@ mw.EmbedPlayer.prototype = {
 		);
 
 		if ( this.apiTitleKey ) {
-			$j( '#' + this.id ).append(
+			$j( this ).append(
 				$j( '<div />' )
 				.addClass( 'related_vids' ),
 				
@@ -1945,7 +2045,7 @@ mw.EmbedPlayer.prototype = {
 			return ;
 		}
 		
-		mw.log( 'we have annotative track:' + anno_track_url );
+		mw.log( 'We have annotative track:' + anno_track_url );
 		// Zero out seconds (should improve cache hit rate and generally expands metadata search)
 		// NOTE: this could be replaced with a regExp
 		var annoURL = mw.parseUri( anno_track_url );
@@ -2138,7 +2238,7 @@ mw.EmbedPlayer.prototype = {
 		}
 				
 		//Set up local jQuery object reference to "interface_wrap" 
-		this.$interface = $j(this).parent( '.interface_wrap' );				
+		this.$interface = $j( this ).parent( '.interface_wrap' );				
 		
 		// Update Thumbnail for the "player" 
 		this.updateThumbnailHTML();		
@@ -2209,10 +2309,11 @@ mw.EmbedPlayer.prototype = {
 		this.updatePlayHead( 0 );
 		
 		// reset seek_offset:
-		if ( this.mediaElement.selectedSource.URLTimeEncoding )
+		if ( this.mediaElement.selectedSource.URLTimeEncoding ) {
 			this.seek_time_sec = 0;
-		else
+		} else {
 			this.seek_time_sec = mw.npt2seconds( start_npt );
+		}
 	},
 	
 	/**
@@ -2222,7 +2323,7 @@ mw.EmbedPlayer.prototype = {
 	* @param {Object} options Options for rendred timeline thumb 
 	*/ 
 	renderTimelineThumbnail: function( options ) {
-		var my_thumb_src = this.mediaElement.getThumbnailURL();
+		var my_thumb_src = this.mediaElement.getPosterSrc();
 		// check if our thumbnail has a time attribute: 
 		if ( my_thumb_src.indexOf( 't=' ) !== -1 ) {
 			var time_ntp =  mw.seconds2npt ( options.time + parseInt( this.startOffset ) );
@@ -2257,7 +2358,7 @@ mw.EmbedPlayer.prototype = {
 		// mw.log('updateThumbTime:'+float_sec);
 		var _this = this;
 		if ( typeof this.org_thum_src == 'undefined' ) {
-			this.org_thum_src = this.mediaElement.getThumbnailURL();
+			this.org_thum_src = this.poster;
 		}
 		if ( this.org_thum_src.indexOf( 't=' ) !== -1 ) {
 			this.last_thumb_url = mw.replaceUrlParams( this.org_thum_src,
@@ -2354,9 +2455,8 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'embedPlayer:updateThumbnailHTML::' + this.id );
 		var thumb_html = '';
 		var class_atr = '';
-		var style_atr = '';		
-		this.thumbnail = this.mediaElement.getThumbnailURL();
-		
+		var style_atr = '';
+				
 		// put it all in the div container dc_id
 		$j( this ).html(
 			$j( '<img />' )
@@ -2367,7 +2467,7 @@ mw.EmbedPlayer.prototype = {
 			})
 			.attr({
 				'id' : 'img_thumb_' + this.id,
-				'src' : this.thumbnail 
+				'src' : this.poster 
 			})
 		);		
 				
@@ -2381,43 +2481,146 @@ mw.EmbedPlayer.prototype = {
 	},	
 	
 	/**
-	* Gets code to embed the player remotely
+	* Gets code to embed the player remotely for "share" this player links
 	*/	
-	getEmbeddingHTML:function() {
-		var thumbnail = this.mediaElement.getThumbnailURL();
-
-		var embed_thumb_html;
-		if ( thumbnail.substring( 0, 1 ) == '/' ) {
-			eURL = mw.parseUri( mw.getMwEmbedPath() );
-			embed_thumb_url = eURL.protocol + '://' + eURL.host + thumbnail;
-			// mw.log('set from mwEmbed_path:'+embed_thumb_html);
-		} else {
-			embed_thumb_url = ( thumbnail.indexOf( 'http://' ) != -1 ) ? thumbnail : mw.getMwEmbedPath() + thumbnail;
+	getEmbeddingHTML: function() {
+		switch( mw.getConfig( 'shareEmbedMode' ) ){
+			case 'object':
+				return this.getShareEmbedObject()
+			break;
+			case 'videojs':
+				return this.getShareEmbedVideoJs();
+			break;
 		}
-		var embed_code_html = '&lt;script type=&quot;text/javascript&quot; ' +
-					'src=&quot;' + mw.getMwEmbedPath() + 'mwEmbed.js&quot;&gt;&lt;/script&gt' +
-					'&lt;video ';
+	},
+	/**
+	* Get the share embed object code
+	* 
+	* NOTE this could probably share a bit more code with getShareEmbedVideoJs
+	*/ 
+	getShareEmbedObject: function(){		
+		var iframeUrl = mw.getMwEmbedPath() + 'mwEmbedFrame.php?';
+		
 		if ( this.roe ) {
-			embed_code_html += 'roe=&quot;' + mw.escapeQuotesHTML( this.roe ) + '&quot; ';
-		} else {
-			embed_code_html += 'src=&quot;' + this.src + '&quot; ' +
-				'poster=&quot;' + mw.escapeQuotesHTML( embed_thumb_url ) + '&quot; ';
+			iframeUrl += 'roe=' + escape( this.roe ) + '&';
+		} else if( this.apiTitleKey ) {			
+			iframeUrl += 'apiTitleKey=' + escape( this.apiTitleKey ) + '&';
+			if ( this.apiProvider ) {
+				iframeUrl += 'apiProvider=' + escape( this.apiProvider ) + '&';
+			}
+		} else {			
+			// Output all the video sources:
+			for( var i=0; i < this.mediaElement.length; i++ ){
+				if( source.src ) {
+					iframeUrl +='src[]=' + escape( mw.absoluteUrl( source.src ) ) + '&';
+				}
+			}					
 		}
 		
-		// Add in the wikiTitle key if provided 
-		// (in the future we should just include the titleKey on remote embeds 
-		// and query a roe like xml/json representaiton thing from mediawiki)
-		if ( this.apiTitleKey ) {
-			embed_code_html += 'apiTitleKey=&quot;' + mw.escapeQuotesHTML( this.apiTitleKey ) + '&quot;';
-		}
-		if ( this.apiProvider ) {
-			embed_code_html += 'apiProvider=&quot;' + mw.escapeQuotesHTML( this.apiProvider ) + '&quot;';
+		// Set the skin if set to something other than default
+		if( this.skinName ){
+			iframeUrl += 'skin=' + escape( this.skinName ) + '&';
 		}
 		
-		// close the video tag
-		embed_code_html += '&gt;&lt;/video&gt;';
+		if( this.duration ) {
+			iframeUrl +='durationHint=' + escape( parseFloat( this.duration ) ) + '&';
+		}
+		// Set width / height of iframe embed ( child iframe / object can't read parent frame size )
+		if( this.width || this.height ){
+			iframeUrl += ( this.width )? 'width=' + parseInt( this.width ) + '&' : '';
+			iframeUrl += ( this.height )? 'height=' +parseInt( this.height ) + '&' : '';
+		}
+		
+		// Set up embedFrame src path
+		var embedCode = '&lt;object data=&quot;' + mw.escapeQuotesHTML( iframeUrl ) + '&quot; ';
+		
+		// Set width / height of embed object ( give extra space for controls ) 
+		if( this.width || this.height ){
+			embedCode += ( this.width )? 'width=&quot;' + this.width +'&quot; ': '';
+			embedCode += ( this.height )? 'height=&quot;' + 
+				parseInt( this.height + this.ctrlBuilder.getHeight() + 2 ) + 
+				'&quot; ': '';
+		}
+		//Make sure overflow is hidden: 
+		embedCode += 'style=&quot;overflow:hidden&quot; ';
+		
+		// Close up the embedCode tag: 
+		embedCode+='&gt;&lt/object&gt;';
+		
+		// Return the embed code
+		return embedCode;
+	},
+	
+	/**
+	* Get the share embed Video tag code
+	*/ 
+	getShareEmbedVideoJs: function(){
+		
+		// Set the embed tag type: 
+		var embedtag = ( this.isAudio() )? 'audio': 'video';
+		
+		// Set up the mwEmbed js include: 
+		var embedCode = '&lt;script type=&quot;text/javascript&quot; ' +
+					'src=&quot;' +  
+					mw.escapeQuotesHTML( 
+						mw.absoluteUrl( 
+							mw.getMwEmbedSrc() 
+						)
+					) + '&quot;&gt;&lt;/script&gt' +
+					'&lt;' + embedtag + ' ';
 
-		return embed_code_html;
+		if( this.poster ) {
+			embedCode += 'poster=&quot;' +
+				mw.escapeQuotesHTML(  mw.absoluteUrl( this.poster ) ) + 
+				'&quot; ';
+		}
+	
+		// Set the skin if set to something other than default
+		if( this.skinName ){
+			embedCode += 'class=&quot;' +
+				mw.escapeQuotesHTML( this.skinName ) + 
+				'&quot; ';
+		}
+		
+		if( this.duration ) {
+			embedCode +='durationHint=&quot;' + parseFloat( this.duration ) + '&quot; ';
+		}
+		
+		if( this.width || this.height ){
+			embedCode +='style=&quot;';
+			embedCode += ( this.width )? 'width:' + this.width +'px;': '';
+			embedCode += ( this.height )? 'height:' + this.height +'px;': '';
+			embedCode += '&quot; ';
+		}
+		
+					
+		if ( this.roe ) {
+			embedCode += 'roe=&quot;' + mw.escapeQuotesHTML( this.roe ) + '&quot; ';
+		} else if( this.apiTitleKey ) {			
+			embedCode += 'apiTitleKey=&quot;' + mw.escapeQuotesHTML( this.apiTitleKey ) + '&quot; ';
+			if ( this.apiProvider ) {
+				embedCode += 'apiProvider=&quot;' + mw.escapeQuotesHTML( this.apiProvider ) + '&quot; ';
+			}
+			// close the video tag
+			embedCode += '&gt;&lt;/video&gt;';
+			
+		} else {
+			//Close the video attr
+			embedCode += '&gt;';
+			
+			// Output all the video sources:
+			for( var i=0; i < this.mediaElement.length; i++ ){
+				if( source.src ) {
+					embedCode +='&lt;source src=&quot;' + 
+						mw.absoluteUrl( source.src ) + 
+						'&quot; &lt;&gt;/source&gt;';
+				}
+			}							
+			// Close the video tag
+			embedCode += '&lt;/video&gt;';				
+		}						
+		
+		return embedCode;
 	},
 	
 	/**

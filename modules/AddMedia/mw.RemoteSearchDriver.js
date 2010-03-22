@@ -2683,7 +2683,8 @@ mw.RemoteSearchDriver.prototype = {
 			'titles': 'File:' + fileName.replace( /^(File:|Image:)/ , '' ),
 			'prop': 'imageinfo',
 			'iiprop': 'url',
-			'iiurlwidth': '400'
+			'iiurlwidth': '400',		
+			'redirects' : true // automatically follow redirects
 		};
 		// First check the api for imagerepository
 		mw.getJSON( mw.getLocalApiUrl(), request, function( data ) {

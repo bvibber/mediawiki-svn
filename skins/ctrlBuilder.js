@@ -159,6 +159,11 @@ ctrlBuilder.prototype = {
 		if( mw.getConfig( 'kalturaAttribution' ) ){							 
 			this.supportedComponets[ 'kalturaAttribution' ] = true;
 		}
+		
+		// Check global fullscreen enabled flag
+		if( mw.getConfig( 'enableFullscreen' ) === false ){
+			this.supportedComponets[ 'fullscreen'] = false; 
+		}
 
 		// Output components 
 		for ( var component_id in this.components ) {			

@@ -55,7 +55,6 @@
 			[	'mw.RemoteSearchDriver',
 				'$j.cookie',
 				'$j.fn.textSelection',
-				'$j.browserTest',
 				'$j.ui'
 			], [
 				'$j.ui.resizable',

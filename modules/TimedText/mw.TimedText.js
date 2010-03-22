@@ -258,7 +258,7 @@ mw.addMessages( {
 		
 		/**
 		 * Load all the available text sources from the inline embed
-		 * 	or from a timedTextProviders
+		 * 	or from a apiProvider
 		 * @param {Function} callback Function to call once text sources are loaded
 		 */
 		loadTextSources: function( callback ) {
@@ -273,7 +273,7 @@ mw.addMessages( {
 				this.textSources.push( source );
 			}			
 			
-			//If there are no inline sources check timedTextProviders & apiTitleKey
+			//If there are no inline sources check & apiTitleKey
 			if( !this.embedPlayer.apiTitleKey ) {
 				//no other sources just issue the callback:
 				callback();

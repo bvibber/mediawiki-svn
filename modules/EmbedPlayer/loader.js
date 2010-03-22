@@ -17,16 +17,16 @@ mw.setDefaultConfig( {
 	// can be set to false per embed player via overlayControls attribute 
 	'overlayControls' : true,
 	
-	// Timed Text provider presently just "commons",
-	// NOTE: Each player instance can also specify a provider  
-	"timedTextProvider" : "commons",
+	// A default apiProvider ( ie where to lookup subtitles, video properties etc )
+	// NOTE: Each player instance can also specify a specific provider  
+	"apiProvider" : "commons",
 	
 	// What tags will be re-written to video player by default
 	// Set to empty string or null to avoid automatic video tag rewrites to embedPlayer 	
 	"rewritePlayerTags" : "video,audio,playlist",
 
 	// Default video size ( if no size provided )	
-	"video_size" : "400x300",
+	"videoSize" : "400x300",
 
 	// If the video player should attribute kaltura	
 	 "kalturaAttribution" : true,
@@ -34,8 +34,22 @@ mw.setDefaultConfig( {
 	 // Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
 	'show_player_warning' : true,
 	
-	// The z-index given to the player interface durring full screen ( arbirrary high z-index )  
-	'fullScreenIndex' : 999998
+	// If fullscreen is global enabled. 
+	'enableFullscreen' : true,
+	
+	// The z-index given to the player interface during full screen ( high z-index )  
+	'fullScreenIndex' : 999998,
+	
+	// The default share embed mode ( can be "object" or "videojs" )
+	//
+	// "object" will provide a <object tag pointing to mwEmbedFrame.php
+	// 		Object embeding should be much more compatilbe
+	// "videojs" will include the source javascript and video tag to
+	//	 	rewrite the player on the remote page DOM  
+	//		Video tag embeding is much more mash-up friendly but exposes
+	//		the remote site to the mwEmbed js. 
+	'shareEmbedMode' : 'object'
+	
 } );
 
 
@@ -53,7 +67,7 @@ mw.addClassFilePaths( {
 } );
 
 
-// Add style sheet dependencies ( From ROOT )
+// Add style sheet dependencies
 mw.addClassStyleSheets( {
 	"kskinConfig" : "skins/kskin/EmbedPlayer.css",
 	"mvpcfConfig" : "skins/mvpcf/EmbedPlayer.css"	

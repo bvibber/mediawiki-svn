@@ -138,7 +138,7 @@ RemoteMwTimedText.prototype = {
 			'titles' : 'File:' + fileTitle,
 			'prop' : 'imageinfo|revisions',
 			'iiprop' : 'url|mime|size',
-			'iiurlwidth' : mw.getConfig( 'video_size').split('x').pop(),
+			'iiurlwidth' : mw.getConfig( 'videoSize').split('x').pop(),
 			'rvprop' : 'content'
 		}
 		// (only works for commons right now) 

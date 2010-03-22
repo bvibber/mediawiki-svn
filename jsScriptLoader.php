@@ -192,7 +192,7 @@ class jsScriptLoader {
 		return JSMin::minify( $js_string );
 	}
 	/**
-	 * Optional function to use the google closer compiler to minify js
+	 * Optional function to use the goggle closer compiler to minify js
 	 * @param {String} $js_string Javascript string to be minified
 	 * @param {String} $requestKey request key used for temporary name in closure compile
 	 * @return minified js, or false if minification failed.
@@ -377,7 +377,8 @@ class jsScriptLoader {
 		$wgStyleVersion;
 
 		// Set debug flag
-		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' ) || ( isset( $wgEnableScriptDebug ) && $wgEnableScriptDebug == true ) ) {
+		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' )
+			|| ( isset( $wgEnableScriptDebug ) && $wgEnableScriptDebug == true ) ) {
 			$this->debug = true;
 		}
 
@@ -486,7 +487,7 @@ class jsScriptLoader {
 		// Get the language code (if not provided use the "default" language
 		if ( isset( $_GET['uselang'] ) && $_GET['uselang'] != '' ) {
 			// Make sure its just a simple [A-Za-z] value
-			$langCode = preg_replace( "/[^A-Za-z]/", '', $_GET['uselang']);
+			$langCode = preg_replace( "/[^A-Za-z_]/", '', $_GET['uselang']);
 		}else{
 			// Set English as default
 			$langCode = 'en';

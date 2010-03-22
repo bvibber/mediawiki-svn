@@ -862,7 +862,7 @@ mw.UploadHandler.prototype = {
 	/**
 	 * Check the upload destination filename for conflicts and show a conflict
 	 * error message if there is one
-	 * @selector (jquery selector) The target destination name to check for conflits  
+	 * @selector (jquery selector) The target destination form text filed to check for conflits  
 	 * @param {Object} options Options that define: 
 	 * 		warn_target target for display of warning
 	 * 		apiUrl Api url to check for destination
