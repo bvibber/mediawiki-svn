@@ -50,7 +50,7 @@ class ImageCollection {
 	}
     }
 
-    function addImageUsage($image, $wiki, $usage = "page", $weight = 1) {
+    function addImageUsage($image, $key, $usage = "page", $weight = 1) {
 	$this->addImage($image, $key, $usage, $weight);
     }
 
@@ -288,8 +288,6 @@ class WWImages extends WWWikis {
 	$sql .= " AND gil_page_namespace_id = 0 ";
 	$sql .= " AND ( ( " . implode(" ) OR ( ", $pages) . " ) ) ";
 
-	print "(** $sql **)";
-	
 	return $this->queryWiki("commons", $sql);
     }
 
@@ -337,6 +335,7 @@ class WWImages extends WWWikis {
 
 	$imageUsage = array();
 	$current = NULL;
+	$max = 0;
 	$stats = array();
 	while ($row = mysql_fetch_assoc($rs)) {
 	    $image = $row["image"];
@@ -345,15 +344,21 @@ class WWImages extends WWWikis {
 
 	    if ( is_null($current) ) $current = $image;
 	    else if ($current != $image) {
+		$stats['*max*'] = $max;
 		$imageUsage[$current] = $stats;
 		$stats = array();
 		$current = $image;
+		$max = 0;
 	    }
 
+	    if ( $max < $linkcount) $max = $linkcount;
 	    $stats[$wiki] = $linkcount;
 	}
 
-	if ($current) $imageUsage[$current] = $stats;
+	if ($current) {
+	    $stats['*max*'] = $max;
+	    $imageUsage[$current] = $stats;
+	}
 
 	return $imageUsage;
     }
@@ -380,8 +385,10 @@ class WWImages extends WWWikis {
 	$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, ".*wiki"); //use all wikipedias
 
 	foreach ($globalImageUsage as $image => $usage) {
+	    $m = @$usage['*max*'];
+	    if ( $m >= $wwFrequentImageThreshold ) continue;
+
 	    foreach ($usage as $wiki => $c) {
-		if ( $c >= $wwFrequentImageThreshold ) continue;
 		$images->addImageUsage($image, $wiki.":*", "article", 1);
 	    }
 	}
