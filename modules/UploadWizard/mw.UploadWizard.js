@@ -59,11 +59,71 @@ mw.addMessages( {
 	"mwe-upwiz-overwrite" : "Replace the file"
 } );
 
-	// available licenses should be a configuration of the MediaWiki instance,
-	// not hardcoded here.
-	// but, MediaWiki has no real concept of a License as a first class object -- there are templates and then specially - parsed 
-	// texts to create menus -- hack on top of hacks -- a bit too much to deal with ATM
 
+
+// available licenses should be a configuration of the MediaWiki instance,
+// not hardcoded here.
+// but, MediaWiki has no real concept of a License as a first class object -- there are templates and then specially - parsed 
+// texts to create menus -- hack on top of hacks -- a bit too much to deal with ATM
+mw.UploadWizardLicenseInput = function( div, values ) {
+	var _this = this;
+	var c = mw.UploadWizardLicenseInput.prototype.count++;
+
+	_this.licenses = {
+		pd:          { template: 'pd', text: 'Public Domain' },
+		cc0:         { template: 'cc0', text: 'Creative Commons Zero waiver' },
+		cc_by_30:    { template: 'cc_by_30', text: 'Creative Commons Attribution 3.0' },
+		cc_by_sa_30: { template: 'cc_by_sa_30', text: 'Creative Commons Attribution ShareAlike 3.0' },
+		gfdl:	     { template: 'gfdl', text: 'GFDL (GNU Free Documentation License)' }
+	};
+
+	$div = $j( div );
+	$j.each( _this.licenses, function( key, data ) {
+		var id = 'license_' + key + '_' + c;
+		data.input = $j( '<input />' ).attr( { id: id, type: 'checkbox', value: key } ).get(0);
+		$div.append( 
+			data.input,
+			$j( '<label />' ).attr( { 'for': id } ).html( data.text ),
+			$j( '<br/>' )
+		);
+	} );
+
+	if (values) {
+		_this.setValues( values );
+	}
+};
+
+mw.UploadWizardLicenseInput.prototype = {
+	count: 0,
+
+	/**
+	 * Get wikitext representing the licenses selected in the license object
+	 * @return wikitext of all applicable license templates.
+	 */
+	getWikiText: function() {
+		var _this = this;
+		var wikiText = '';
+		$j.each ( _this.licenses, function( key, data ) {
+			if (data.input.checked) {
+				wikiText += "{" + data.template + "}\n";
+			}		
+		} );
+		return wikiText;
+	},
+
+	/**
+	 * Sets the value(s) of a license input. Missing values are set to false
+	 * @param object of license-key to boolean values, e.g. { cc_by_sa_30: true, gfdl: true }
+	 */
+	setValues: function( licenseValues ) {
+		var _this = this;
+		$j.each( _this.licenses, function( key, data ) {
+			if ( !! licenseValues[key] ) {
+				$j( _this.licenses[key].input ).attr( { 'checked' : 1 } );
+			}
+		} );	
+	}
+};
 
 
 /**
@@ -527,13 +587,16 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	// XXX why is rows=1 giving me two rows. Is this growTextArea's fault?
 	_this.sourceInput = $j('<textarea class="mwe-source" rows="1" cols="40"></textarea>' ).growTextArea();
-	_this.authorInput = $j('<textarea class="mwe-author" rows="1" cols="40"></textarea>' ).growTextArea();
-	_this.licenseInput = $j('<input type="text" class="mwe-license" size="30" />' );
 	var sourceDiv = $j( '<div></div>' )
 		.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-source' ) ) )
 		.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.sourceInput ) ); 
 	
 
+	_this.authorInput = $j('<textarea class="mwe-author" rows="1" cols="40"></textarea>' ).growTextArea();
+	
+
+	var licenseInputDiv = $j('<div></div>');
+	_this.licenseInput = new mw.UploadWizardLicenseInput(licenseInputDiv, { 'cc_by_sa_30': true, 'gfdl' : true } );
 	var copyrightInfoDiv = $j('<div></div>')
 		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-copyright-info' ) ) )
 		.append( $j( '<div class="mwe-details-more-subdiv">' )
@@ -544,7 +607,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			)
 			.append( $j( '<div></div>' )
 				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-license' ) ) )
-				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.licenseInput ) ) 
+				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( licenseInputDiv ) ) 
 			)
 		);
 
@@ -1040,15 +1103,16 @@ mw.UploadWizardDetails.prototype = {
 		wikiText += "=={{int:filedesc}}==\n";
 
 		wikiText += '{{Information\n' + info + '}}\n';
+
+	
+		wikiText += "=={int:licenses}==\n";
 		
-		// wikiText += "=={int:license}==\n";
-		// XXX get the real one -- usually dual license GFDL / cc - by - sa
-		//wikiText += "{{cc-by-sa-3.0}}\n";
-		// http://commons.wikimedia.org / wiki / Template:Information
+		wikiText += _this.licenseInput.getWikiText();
 
 		// add a location template
 
-		// add an "anything else" template
+		// add an "anything else" template XXX if needed
+		wikiText += "=={int:otherinfo}==\n";
 		wikiText += $j( _this.otherInformationInput ).val().trim();
 
 		return wikiText;	
@@ -1075,7 +1139,7 @@ mw.UploadWizardDetails.prototype = {
 		// check descriptions
 		// the filename is in a sane state
 		var desiredFilename = "File:" + $j( _this.filenameInput ).val();
-		shouldRename = 1;
+		shouldRename = (desiredFilename != _this.upload.title);
 
 		// if ok to go			
 		// XXX lock down the interface, spinnerify
@@ -1126,7 +1190,6 @@ mw.UploadWizardDetails.prototype = {
 	rename: function( title ) {
 		var _this = this;
 		mw.log("renaming!");
-		debugger;
 		params = {
 			action: 'move',
 			from: _this.upload.title,
@@ -1151,7 +1214,6 @@ mw.UploadWizardDetails.prototype = {
 			// which should match our request.
 			// we should update the current upload filename
 			// then call the uploadwizard with our progress
-			debugger;
 		} );
 	}
 
