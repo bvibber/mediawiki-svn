@@ -501,9 +501,6 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	_this.div = $j( '<div class="mwe-upwiz-details-file"></div>' );
 
-	_this.macroDiv = $j( '<div class="mwe-upwiz-macro"></div>' )
-		.append( $j( '<input type="submit" value="test edit"/>' ).click( function( ) { _this.submit( ) } ));
-
 	_this.thumbnailDiv = $j( '<div class="mwe-upwiz-thumbnail"></div>' );
 	
 	_this.errorDiv = $j( '<div class="mwe-upwiz-details-error"></div>' );
@@ -615,7 +612,6 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.filenameInput = $j('<input type="text" class="mwe-filename" size="30" />' )
 				.keyup( function() { 
 					$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( $j( _this.filenameInput ).val() ) )
-							      .keyup();  // simulate keyup to trigger destination check
 				});
 
 	var aboutTheFileDiv = $j('<div></div>')
@@ -637,7 +633,6 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 
 	$j( _this.div )
-		.append( _this.macroDiv )   // XXX this is wrong; it's not part of a file's details
 		.append( _this.thumbnailDiv )
 		.append( _this.errorDiv )
 		.append( $j( _this.dataDiv )
@@ -885,7 +880,8 @@ mw.UploadWizardDetails.prototype = {
 			// side effect: will replace thumbnail's loadingSpinner
 			_this.thumbnailDiv.html(
 				$j('<a>')
-					.attr( 'href', _this.upload.imageinfo.descriptionurl )
+					.attr( { 'href': _this.upload.imageinfo.descriptionurl,
+						 'target': '_new' } )
 					.append(
 						$j( '<img/>' )
 							.addClass( "mwe-upwiz-thumbnail" )
@@ -943,7 +939,8 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	prefillTitle: function() {
 		var _this = this;
-		$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename ) );
+		$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename ) )
+				      .change(); // trigger file destination check
 	},
 
 	/**
@@ -1129,8 +1126,9 @@ mw.UploadWizardDetails.prototype = {
 
 	/**
 	 * Post wikitext as edited here, to the file
+	 * @param success callback to be executed upon success
 	 */
-	submit: function() {
+	submit: function(success) {
 		var _this = this;
 
 
@@ -1168,7 +1166,9 @@ mw.UploadWizardDetails.prototype = {
 			mw.log(result);
 			mw.log("successful edit");
 			if ( shouldRename ) {
-				_this.rename( desiredFilename );	
+				_this.rename( desiredFilename, success );	
+			} else {
+				success();
 			}
 		
 		}
@@ -1187,7 +1187,7 @@ mw.UploadWizardDetails.prototype = {
 	 *
 	 * @param filename to rename this file to
  	 */
-	rename: function( title ) {
+	rename: function( title, success ) {
 		var _this = this;
 		mw.log("renaming!");
 		params = {
@@ -1210,10 +1210,12 @@ mw.UploadWizardDetails.prototype = {
 			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
 				_this.upload.title = data.move.to;
 			}
+
 			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
 			// which should match our request.
 			// we should update the current upload filename
 			// then call the uploadwizard with our progress
+			success();
 		} );
 	}
 
@@ -1291,7 +1293,8 @@ mw.UploadWizard.prototype = {
 	 * create the basic interface to make an upload in this div
 	 * @param div	The div in the DOM to put all of this into.
 	 */
-	createInterface: function( div ) {
+	createInterface: function( selector ) {
+		var div = $j( selector ).get(0);
 		var _this = this;
 		div.innerHTML = 
 	
@@ -1322,7 +1325,7 @@ mw.UploadWizard.prototype = {
 		       +   '</div>'
 		       + '</div>'
 		       + '<div id="mwe-upwiz-tabdiv-details">'
-		       +   '<div id="mwe-upwiz-details-macro"></div>'
+		       +   '<div id="mwe-upwiz-macro"></div>'
 		       +   '<div id="mwe-upwiz-details-files"></div>'
 		       + '</div>'
 		       + '<div id="mwe-upwiz-tabdiv-thanks">'
@@ -1331,6 +1334,9 @@ mw.UploadWizard.prototype = {
 		       +'</div>'
 
 		       + '<div id="mwe-upwiz-clearing"></div>';
+
+		// add macro interface
+		_this.addMacroHtml('#mwe-upwiz-macro');
 
 		// within FILE tab div
 		// select files:
@@ -1349,6 +1355,19 @@ mw.UploadWizard.prototype = {
 		// "select" the first tab - highlight, make it visible, hide all others
 		_this.moveToTab('file');
 	},
+
+	/**
+ 	 * Attach interface for selecting case, license, etc. 
+	 * Called "macro" because it affects many at once. Also set the mode of UW details -- may rewrite individual details objects to
+  	 * use a common license input, for instance.
+	 */
+	addMacroHtml: function( selector ) {
+		var _this = this;
+		$j( selector )
+			.append( $j( '<input type="submit" value="submit"/>' )
+					.click( function() { _this.startMacroSubmit() } ) );
+	},
+
 
 	/**
 	 * Advance one "step" in the wizard interface.
@@ -1514,13 +1533,16 @@ mw.UploadWizard.prototype = {
 	},
 
 	/**
-	 * Uploads must be 'queued' to be considered for uploading
+	 * Uploads must be 'queued' to be considered for uploading / details submission
 	 *  making this another thread of execution, because we want to avoid any race condition
 	 * this way, this is the only "thread" that can start uploads
 	 * it may miss a newly transported upload but it will get it eventually
+	 * it is the responsibility of upload.handler.start() or upload.details.submit() to move items 
+	 * out of the queues.
 	 *
+	 * @param mode 'transport' or 'details'
 	 */
-	_startUploadsQueued: function() {
+	_startUploadsQueued: function( mode ) {
 		var _this = this;
 		var uploadsToStart = Math.min( _this.maxSimultaneousUploads - _this._uploadsInProgress.length, 
 					       _this._uploadsQueued.length );
@@ -1528,7 +1550,11 @@ mw.UploadWizard.prototype = {
 		while ( uploadsToStart-- ) {
 			var upload = _this._uploadsQueued.shift();
 			_this._uploadsInProgress.push( upload );
-			upload.handler.start();
+			if ( mode == 'transport' ) {
+				upload.handler.start();
+			} else if ( mode == 'details' ) {
+				upload.details.submit();
+			}
 		}
 		if ( _this._uploadsQueued.length ) {
 			setTimeout( function () { _this._startUploadsQueued(); }, 1000 );
@@ -1625,6 +1651,8 @@ mw.UploadWizard.prototype = {
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
 			mw.log("detailing");
+			mw.UploadWizardUtil.removeItem( _this._uploadsQueued, upload );
+			_this._uploadsQueued.push( upload );
 			_this._uploadsEditingDetails.push( upload );
 			mw.log("extract info");
 			upload.extractImageInfo( result );	
