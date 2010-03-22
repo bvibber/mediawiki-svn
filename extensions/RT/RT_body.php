@@ -227,7 +227,7 @@ class RT {
 			$searchcustom = trim( $args['custom'] );
 			$cfargs = trim( strtolower( $args['custom'] ) );
 			$ticketquery .= ', customfields cf, objectcustomfieldvalues ov';
-			$whereclause .= "\nAND ov.objectid = t.id\nAND ov.customfield=cf.id";
+			$whereclause .= "\nAND ov.objectid = t.id\nAND ov.customfield=cf.id\nAND ov.disabled = 0";
 			$whereclause .= "\nAND LOWER(cf.name) IN (";
 			foreach ( preg_split( '/\s*,\s*/', $cfargs ) as $word ) {
 				$word = trim( $word );
