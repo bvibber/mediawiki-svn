@@ -4609,19 +4609,19 @@ An farìa gòj savèj lòn ch'a pensa ëd nòstra neuva antërfassa, parèj an f
 	'optin-survey-answer-changes-predictability' => 'Amelioré la prevision ëd le prestassion.',
 	'optin-survey-answer-changes-custom' => "Përmëtte pi grande përsonalisassion a l'utent.",
 	'optin-survey-answer-changes-other' => 'Àutr:',
-	'optin-improvements2' => "== Lòn ch'a l'é stàit mejorà?==
-[[File:UsabilityToolbar.png|left|link=|Screenshot ëd la toolbar ëd modìfica mejorà]]
-[[File:UsabilityDialogs.png|left|link=|Screenshot ëd l'antërfacia ëd generassion contnù neuva]]
-;Toolbar Mejorà
-La toolbar mejorà a fà pì bel fé modifiché artìcoj.
-Icon-e neuve e mejorà a rendo pi ciàir che assion a fà minca utiss.
-Session espandùe a ridùo ël casin an mente a rendo pòch frequent dovré j'utiss mach un click prima.
-;Dialog
-Quand as creo colegament o tàule, an sgnacand l'icon-a dl'utiss, adess as deurb na fnesta ëd dialog che at giuta a creé colegament e tàule an vempend a forma sempia.
+	'optin-improvements2' => "== Lòn ch'a l'é stàit ameliorà?==
+[[File:UsabilityToolbar.png|left|link=|Scren ëd la bara dj'utiss ëd modìfica ameliorà]]
+[[File:UsabilityDialogs.png|left|link=|Scren ëd l'antërfacia ëd generassion contnù neuva]]
+;Bara dj'utiss ameliorà
+La bara dj'utiss ameliorà a fà pì bel fé modifiché j'artìcoj.
+Plance neuve e ameliorà a rendo pi ciàir che assion a fà minca utiss.
+Session espandùe a ridùvo ël rabel antant ch'a rendo j'utiss pòch dovrà a portà 'd selession.
+;Diàlogh
+Quand as creo colegament o tàule, an sgnacand la plancia dl'utiss, adess as deurb na fnestra ëd diàlogh che a-j giuta a creé colegament e tàule an compiland un formolari sempi.
 ;Ëd pi
-I l'oma antrodovù vàire àutr mejorament con navigassion mejorà, menù a tendin-a, arserca mejorà, e ëd pi.
-== Com esse antëressà ==
-Për savèjne ëd pi an sla Usability Initiative, për piasì vìsita nòsta [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+I l'oma antrodovù vàire àutre  ameliorassion coma la navigassion ameliorà, liste a ridò, arserca ameliorà, e ëd pi.
+== Com esse anteressà ==
+Për savèjne ëd pi an sl'Inissiativa për n'usagi belfé, për piasì ch'a vìsita nòsta [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative pàgina d'intrada].
 <div style=\"clear:both\"></div>",
 );
 
@@ -6232,6 +6232,7 @@ $messages['yi'] = array(
 אפשר ווילט איר פרובירן אונזער בעטא?',
 	'optin-feedback-intro' => "א דאַנק פֿאַרן אויספרובירן בעטאַ.
 מיר ווילן וויסן וואס איר האַלט וועגן דעם באַניצער אייבערפֿלאַך, דערפֿאַר וועלן מיר אַנערקענען ווען איר וועט אָנ פֿילן דעם ברירה'דיקן אַרומפֿרעג אונטן.",
+	'optin-feedback-back' => 'אַז איר ווילט נישט אויספֿילן דעם פֿרעגבויגן, קענט איר צוריקקערן צו $1.',
 	'optin-success-in' => 'אַצינד פרובירט איר אויס בעטא.
 איר קענט עס פֿאַרלאזן ווען איר ווילט, מען דאַרף נאר אָנקליקן דעם לינק "{{int:optin-leave}}" אויבן.',
 	'optin-success-feedback' => 'א דאַנק פֿאַרן פֿידבעק!',

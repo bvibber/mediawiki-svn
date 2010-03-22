@@ -220,7 +220,6 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'inspectcache' => 'Cache kontrolěrowaś',
 	'inspectcache-desc' => 'Jadnory rěd za pytanje za zmólkami, aby wopśimjeśe zgromadnego cacha kobntrolěrowało',
-	'inspectcache-ok' => 'W pórěźe',
 	'inspectcache-general' => 'Powšykny cache',
 	'inspectcache-parser' => 'Cache parsera',
 	'inspectcache-message' => 'Cache powěsćow',
@@ -228,6 +227,7 @@ $messages['dsb'] = array(
 	'inspectcache-delete' => 'Lašowaś',
 	'inspectcache-deleted' => 'Wulašowany cache',
 	'inspectcache-list' => 'Lisćina',
+	'right-inspectcache' => 'Zapiski cache se woglědaś a wulašowaś',
 );
 
 /** Ewe (Eʋegbe) */

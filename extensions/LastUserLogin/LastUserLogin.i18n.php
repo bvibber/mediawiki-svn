@@ -100,6 +100,20 @@ $messages['de'] = array(
 	'lastuserlogin_daysago' => 'Tage',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'lastuserlogin' => 'Slědne wužywarske pśizjawjenje',
+	'lastuserlogin-desc' => 'Pokazujo, gaž wužywaŕ jo se pśizjawił slědny raz',
+	'lastuserlogin_userid' => 'Wužywarske mě',
+	'lastuserlogin_username' => 'Napšawdne mě',
+	'lastuserlogin_useremail' => 'Wužywarska e-mail',
+	'lastuserlogin_lastlogin' => 'Slědne pśizjawjenje',
+	'lastuserlogin_daysago' => 'Dny',
+	'right-lastlogin' => 'Slědny raz, gaž wužiwaŕ jo se pśizjawił, se woglědaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Dead3y3
  */

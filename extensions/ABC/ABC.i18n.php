@@ -616,6 +616,13 @@ $messages['pcd'] = array(
 	'abcdownload' => 'Télécarquer:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'abcdownload' => 'Runnerlaade:',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Sp5uhe

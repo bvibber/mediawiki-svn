@@ -696,6 +696,8 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'wikieditor-preview-preference' => 'דערמעגלעכן זייַט-אויף-זייַט פֿאָרויסיקע ווייַזונג',
+	'wikieditor-preview-tab' => 'פֿאראויסשטעלונג',
 	'wikieditor-preview-changes-tab' => 'ענדערונגען',
 	'wikieditor-preview-loading' => 'לאָדט…',
 );

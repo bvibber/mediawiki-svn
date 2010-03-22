@@ -321,6 +321,7 @@ Sy spytał: '''$1'''",
 Sy spytał: '''$1'''",
 	'rt-badstatus' => "Njepłaćiwy argument status (s): dyrbi standardne polo być (hlej dokumentaciju).
 Sy spytał: '''$1'''",
+	'rt-badcfield' => "Njepłaćiwy swójski pólny argument: dyrbi jednore słowo (hlej dokumentaciju). Sy spytał: '''$1'''",
 	'rt-badqueue' => "Njepłaćiwy argument queue (q): dyrbi jednore słowo być.
 Sy spytał: '''$1'''",
 	'rt-badowner' => "Njepłaćiwy argument owner (o): dyrbi płaćiwe wužiwarske mjeno być.

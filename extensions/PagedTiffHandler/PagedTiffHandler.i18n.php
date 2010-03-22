@@ -217,11 +217,16 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'tiff-desc' => 'Rozšěrjenje za wobhladowanje TIFF-datajow we wobrazowym modusu',
 	'tiff_no_metadata' => 'Z TIFF njedadźa so metadaty wućahać.',
 	'tiff_page_error' => 'Čisło strony we wobłuku njeje',
 	'tiff_too_many_embed_files' => 'Wobraz wobsahuje přewjele zapřijatych datajow.',
+	'tiff_sourcefile_too_large' => 'Rozeznaće žórłoweje dataje je přewulke. Přehladowy wobraz njebudźe so płodźić.',
 	'tiff_file_too_large' => 'Nahrata dataja je přewulka a bu wotpokazana.',
+	'tiff_out_of_service' => 'Nahrata dataja njeda so předźěłać. ImageMagick njesteji k dispoziciji.',
 	'tiff_too_much_meta' => 'Metadaty wužiwaja přewjele ruma.',
+	'tiff_error_cached' => 'Tuta dataja da so hakle po pufrowanskim interwalu znowa rysować.',
+	'tiff_size_error' => 'Zdźělena wulkosć dataje njewotpowěduje woprawdźitej wulkosći dataje.',
 	'tiff_script_detected' => 'Nahrata dataja wobsahuje skripty.',
 	'tiff_bad_file' => 'Nahrata dataja wobsahuje zmylki.',
 	'tiff-file-info-size' => '(strona $5, $1 × $2 pikselow, wulkosć dataje: $3, MIME-typ: $4)',

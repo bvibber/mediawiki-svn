@@ -235,6 +235,7 @@ $messages['hu'] = array(
 	'wikieditor-template-editor-preference' => 'Wiki sablonok űrlap alapú szerkesztésének engedélyezése',
 	'wikieditor-template-editor-dialog-title' => 'Sablon szerkesztése',
 	'wikieditor-template-editor-dialog-submit' => 'Frissítés',
+	'wikieditor-template-editor-dialog-cancel' => 'Mégse',
 );
 
 /** Interlingua (Interlingua)
@@ -457,6 +458,15 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-template-editor-preference' => 'Sửa đổi bản mẫu wiki trong biểu mẫu',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikieditor-template-editor-dialog-title' => 'רעדאַקטירן מוסטער',
+	'wikieditor-template-editor-dialog-submit' => 'דערהײַנטיקן',
+	'wikieditor-template-editor-dialog-cancel' => 'אַנולירן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

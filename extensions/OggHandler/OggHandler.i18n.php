@@ -2338,6 +2338,7 @@ $messages['pa'] = array(
  */
 $messages['pdc'] = array(
 	'ogg-more' => 'Mehr…',
+	'ogg-download' => 'Feil runnerlaade',
 );
 
 /** Polish (Polski)

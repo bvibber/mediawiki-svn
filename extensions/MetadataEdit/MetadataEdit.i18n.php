@@ -39,6 +39,15 @@ $messages['cy'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ * @author Qualia
+ */
+$messages['dsb'] = array(
+	'metadataedit-desc' => 'Pśi wobźěłowanju bokow kategorije, rěcne wótkaze a dowólone pśedłogi we wósebnem tekstowem kašćiku stajiś',
+	'metadata_help' => 'Metadaty:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

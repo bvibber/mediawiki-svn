@@ -181,17 +181,16 @@ $messages['bs'] = array(
 	'importfreeimages' => 'Uvoz slobodnih slika',
 	'importfreeimages-desc' => 'Omogućuje način [[Special:ImportFreeImages|uvoza pravilno licenciranih slika]] sa [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Ova stranica omogućava pretragu pravilno licenciranih slika sa flickr i njihov uvoz u Vaš wiki.',
-	'importfreeimages_noapikey' => 'Niste podesili Vaš Flickr API ključ.
-Da bi ste to učinili, molimo uzmite API ključ [http://www.flickr.com/services/api/misc.api_keys.html odavde] i postavite $wgFlickrAPIKey  u datoteci ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Nije pronađena nijedna slika po Vašem upitu pretrage '$1', pokušajte ponovno.",
-	'importfreeimages_invalidurl' => 'URL "$1" nije valjana Flickr slika.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'uvezi ovo',
 	'importfreeimages_next' => 'slijedeća $1',
-	'importfreeimages_filefromflickr' => '$1 od {{GENDER:$2|korisnika|korisnice}} <b>[$2]</b> sa flickr. Prvobitni URL',
-	'importfreeimages_promptuserforfilename' => 'Molimo unesite ime odredišne datoteke:',
-	'importfreeimages_returntoform' => "ili kliknite <a href='$1'>ovdje</a> za povratak na Vaše rezultate pretrage",
-	'importfreeimages_nophpflickr' => 'Niste instalirali phpFlickr, molimo postavite $wgIFphpFlickr u Vašem LocalSettings.php.',
+	'importfreeimages_size_square' => 'Kvadrat',
+	'importfreeimages_size_thumbnail' => 'Smanjeni pregled',
+	'importfreeimages_size_small' => 'Malo',
+	'importfreeimages_size_medium' => 'Srednja',
+	'importfreeimages_size_large' => 'Velika',
+	'importfreeimages_size_original' => 'Originalno',
 );
 
 /** Catalan (Català)
@@ -283,17 +282,16 @@ $messages['dsb'] = array(
 	'importfreeimages' => 'Liche wobraze importěrowaś',
 	'importfreeimages-desc' => 'Zmóžnja [[Special:ImportFreeImages|import pórědnje licencěrowanych fotow]] z [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Toś ten bok śi zmóžnja, na Flickrje pórědnje licencěrowane fota pytaś a je do twójogo wikija importěrowaś.',
-	'importfreeimages_noapikey' => 'Njejsy konfigurěrował swój API-kluc za Flickr.
-Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/services/api/misc.api_keys.html how]',
 	'importfreeimages_nophotosfound' => "Za twóje pytańske kriteriumy '$1' njejsu žedne fota namakali, pšosym wopytaj hyšći raz.",
-	'importfreeimages_invalidurl' => 'URL "$1" njejo płaśiwy Flickr-wobraz.',
 	'importfreeimages_owner' => 'Awtor',
 	'importfreeimages_importthis' => 'to importěrowaś',
 	'importfreeimages_next' => 'Pśiducy $1',
-	'importfreeimages_filefromflickr' => '$1 wót wužywarja <b>[$2]</b> z flickr. Originalny URL',
-	'importfreeimages_promptuserforfilename' => 'Pšosym zapódaj mě celowego dataje:',
-	'importfreeimages_returntoform' => "Abo klikni < a href='$1'>sem</a>, aby se wróśił k swójim pytańskim wuslědkam",
-	'importfreeimages_nophpflickr' => 'Njejsy phpFlickr instalěrował. pšosym nastaj $wgIFphpFlickr w swójej dataji LocalSettings.php.',
+	'importfreeimages_size_square' => 'Kwadrat',
+	'importfreeimages_size_thumbnail' => 'Pśeglědowy wobraz',
+	'importfreeimages_size_small' => 'Mały',
+	'importfreeimages_size_medium' => 'Srědny',
+	'importfreeimages_size_large' => 'Wjeliki',
+	'importfreeimages_size_original' => 'Originalny',
 );
 
 /** Greek (Ελληνικά)

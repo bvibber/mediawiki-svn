@@ -132,10 +132,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Lou
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'tablemod-msg-remove' => 'Αφαίρεση',
+	'tablemod-error-invalidaction' => 'Άκυρη ενέργεια.',
 );
 
 /** Esperanto (Esperanto)
