@@ -14,7 +14,7 @@
  *
  * @author Greg Sabino Mullane <greg@endpoint.com>
  * @license MIT <http://www.opensource.org/licenses/mit-license.php>
- * @version 1.9
+ * @version 1.11
  * @link http://www.mediawiki.org/wiki/Extension:RT
  */
 
@@ -55,7 +55,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'RT',
-	'version'        => '1.9',
+	'version'        => '1.11',
 	'author'         => array( 'Greg Sabino Mullane' ),
 	'descriptionmsg' => 'rt-desc',
 	'url'            => $rt_uri,
