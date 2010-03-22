@@ -161,7 +161,7 @@ function doPageSpecificRewrite() {
 * Sets the mediaWiki content to "loading" 
 */
 function mwSetPageToLoading(){
-	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
+	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/EmbedPlayer.css?' + mwGetReqArgs() );
 	var body = document.getElementById('bodyContent');
 	var oldBodyHTML = body.innerHTML;
 	body.innerHTML = '<div class="loading_spinner"></div>';
@@ -173,7 +173,7 @@ function mwSetPageToLoading(){
 */
 function mwLoadPlayer( callback ){
 	//Load the video style sheets:
-	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/styles.css?' + mwGetReqArgs() );
+	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/common/common.css?' + mwGetReqArgs() );
 	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/EmbedPlayer.css?' + mwGetReqArgs() );
 			
 	var jsSetVideo = [
@@ -188,11 +188,13 @@ function mwLoadPlayer( callback ){
 	];		
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )
-	if (navigator.userAgent.indexOf("MSIE") != -1)
+	if (navigator.userAgent.indexOf("MSIE") != -1){
 		jsSetVideo.push( 'javaEmbed' );
+	}
 		
-	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 )
+	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 ){
 		jsSetVideo.push( 'nativeEmbed' );
+	}
 
 	loadMwEmbed( jsSetVideo, function() {
 		callback();
@@ -206,8 +208,9 @@ function mwLoadPlayer( callback ){
 function rewrite_for_OggHandler( vidIdList ) {
 	function procVidId( vidId ) {		
 		// Don't process empty vids
-		if ( !vidId )
+		if ( !vidId ){
 			return ;
+		}
 		
 		
 		tag_type = 'video';

@@ -1532,8 +1532,9 @@ var MW_EMBED_VERSION = '1.1e';
 	* @type {Boolean} 	
 	*/
 	mw.isLocalDomain = function( url ) {
-		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host ||
-			url.indexOf( '://' ) == -1 ) {
+		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host 
+			|| url.indexOf( '://' ) == -1 ) 
+		{
 			return true;
 		}
 		return false;
@@ -2025,11 +2026,10 @@ var MW_EMBED_VERSION = '1.1e';
 	* @return {Mixed}
 	*	url for the provider
 	* 	local wiki api if no apiProvider is set
-	* 	false if no local wiki api found
 	*/ 
-	mw.getApiProviderURL = function( provider_id ) {		
-		if( mw.getConfig( provider_id + '_apiurl') ) {
-			return mw.getConfig( provider_id + '_apiurl');
+	mw.getApiProviderURL = function( providerId ) {		
+		if( mw.getConfig( providerId + '_apiurl') ) {
+			return mw.getConfig( providerId + '_apiurl');
 		}
 		return mw.getLocalApiUrl(); 
 	},
@@ -2054,8 +2054,9 @@ var MW_EMBED_VERSION = '1.1e';
 	* Get the path to the mwEmbed folder
 	*/
 	mw.getMwEmbedPath = function() {
-		if ( mwEmbedPath )
-			return mwEmbedPath;	
+		if ( mwEmbedPath ) {
+			return mwEmbedPath;
+		}	
 			
 		// Get mwEmbed src:
 		var src = mw.getMwEmbedSrc();		
@@ -2078,7 +2079,7 @@ var MW_EMBED_VERSION = '1.1e';
 		}	
 		
 		// Error out if we could not get the path:
-		if( ! mwpath ) {
+		if( mwpath === null ) {
 			mw.log( "Error could not get mwEmbed path " );
 			return ;
 		}
@@ -2100,7 +2101,7 @@ var MW_EMBED_VERSION = '1.1e';
 		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1  ||
 			src.indexOf( 'jsScriptLoader.php' ) !== -1 )
 		{
-			// Return just the script part:
+			// Return just the script part of the url
 			return src.split('?')[0];						
 		}
 		return false;
@@ -2179,8 +2180,9 @@ var MW_EMBED_VERSION = '1.1e';
 	* Gets the mwEmbed script src attribute
 	*/
 	mw.getMwEmbedSrc = function() {
-		if ( mwEmbedSrc )
+		if ( mwEmbedSrc ) {
 			return mwEmbedSrc;
+		}
 			
 		// Get all the javascript includes:
 		var js_elements = document.getElementsByTagName( "script" );

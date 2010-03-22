@@ -385,8 +385,7 @@ var kskinConfig = {
 		var titleStr = embedPlayer.apiTitleKey.replace(/_/g, ' ');		
 		
 		var imgWidth = ( this.getOverlayWidth() < 250 )? 45 : 90;
-		
-		// @@FIXME Do a quick check for source line:
+				
 		return $j( '<div/>' ).addClass( 'creditline' )
 			.append(
 				$j('<a/>').attr({
@@ -395,7 +394,7 @@ var kskinConfig = {
 				}).html( 
 					$j('<img/>').attr( {
 						'border': 0, 
-						'src' : embedPlayer.thumbnail						
+						'src' : embedPlayer.poster					
 					} ).css( {
 						'width' : imgWidth,
 						'height': parseInt( imgWidth * ( embedPlayer.height / embedPlayer.width ) )

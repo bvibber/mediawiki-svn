@@ -45,13 +45,14 @@ mediaWikiSearch.prototype = {
 			'prop':'imageinfo|revisions|categories',
 			'iiprop':'url|mime|size',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
-			'rvprop':'content'
+			'rvprop':'content',
+			'redirects' : true
 		}
 		mw.getJSON(this.provider.apiUrl, request, function( data ) {				
 				// check for redirect
 				for ( var i in data.query.pages ) {
 					var page = data.query.pages[i];
-					if ( page.revisions[0]['*'] && page.revisions[0]['*'].indexOf( '#REDIRECT' ) === 0 ) {
+					if ( page.revisions[0]['*'] ) {
 						var re = new RegExp( /[^\[]*\[\[([^\]]*)/ );
 						var pt = page.revisions[0]['*'].match( re );
 						if ( pt[1] ) {
