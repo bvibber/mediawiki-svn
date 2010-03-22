@@ -222,7 +222,7 @@ class OutputPage {
 
 		if( $path !== false ){
 			if( $wgEnableScriptLoader ) {
-				// Register it with the script loader
+ 				// Register it with the script loader
 				if( !in_array( $jsClass, $this->mScriptLoaderClassList ) ) {
 					$this->mScriptLoaderClassList[] = $jsClass;
 				}

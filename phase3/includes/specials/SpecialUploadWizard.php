@@ -2,10 +2,10 @@
 /**
  * Special:UploadWizard
  *
- * Usability Initiative multi-file upload page. 
- * This page is more of a hack right now, just for the usability testing we will perform in March-April. 
+ * Usability Initiative multi-file upload page.
+ * This page is more of a hack right now, just for the usability testing we will perform in March-April.
  *
- * Deliberately not doing this as an extension because we need to stay within the JS2 branch for now, 
+ * Deliberately not doing this as an extension because we need to stay within the JS2 branch for now,
  * and there aren't any extensions there. This Special page should probably not be permanent.
  *
  * @file
@@ -27,16 +27,16 @@ class SpecialUploadWizard extends SpecialPage {
 		if (! $wgEnableAPI) {
 			// XXX complain
 		}
-               
-		// here we would configure ourselves based on stuff in $request and $wgRequest, but so far, we 
+
+		// here we would configure ourselves based on stuff in $request and $wgRequest, but so far, we
 		// don't have such things
- 
-		parent::__construct( 'UploadWizard', 'upload' ); 
+
+		parent::__construct( 'UploadWizard', 'upload' );
 
 		$this->simpleForm = new UploadWizardSimpleForm();
 		$this->simpleForm->setTitle( $this->getTitle() );
         }
-	
+
 	public function execute() {
 		global $wgUser, $wgOut, $wgMessageCache;
 
@@ -88,7 +88,7 @@ class SpecialUploadWizard extends SpecialPage {
 
 
 		//$j('#firstHeading').html("Upload wizard");
-	
+
 		$this->addJS();
 	}
 
@@ -100,7 +100,7 @@ class SpecialUploadWizard extends SpecialPage {
 		global $wgUseAjax, $wgAjaxLicensePreview, $wgEnableAPI;
 		global $wgEnableFirefogg, $wgFileExtensions;
 
-		$scriptVars = Skin::makeVariablesScript( array(
+		$wgOut->addScript( Skin::makeVariablesScript( array(
 			// uncertain if this is relevant. Can we do license preview with API?
 			'wgAjaxLicensePreview' => $wgUseAjax && $wgAjaxLicensePreview,
 
@@ -114,21 +114,22 @@ class SpecialUploadWizard extends SpecialPage {
 
 			// in the future, we ought to be telling JS land other things,
 			// like: requirements for publication, acceptable licenses, etc.
-			
-		) );
+
+			) )
+		);
 
 
-
-//	
+	global $wgScriptPath;
+//
 //		$initScript = <<<EOD
 //EOD;
 //		$wgOut->addScript( Html::inlineScript( $initScript ) );
 		// not sure why -- can we even load libraries with an included script, or does that cause things to be out of order?
-		$wgOut->addScriptFile( "/js/specialUploadWizardPage.js" );
+		$wgOut->addScriptFile( $wgScriptPath . "/js/specialUploadWizardPage.js" );
 
 
 		// XXX unlike other vars this is specific to the file being uploaded -- re-upload context, for instance
-		// Recorded here because we may probably need to 
+		// Recorded here because we may probably need to
 		// bring it back in some form later. Reupload forms may be special, only one file allowed
 		/*
 		$scriptVars = array(
@@ -145,8 +146,8 @@ class SpecialUploadWizard extends SpecialPage {
 
 /**
  * This is a hack on UploadForm.
- * Normally, UploadForm adds its own Javascript. 
- * We wish to prevent this, because we want to control the case where we have Javascript. 
+ * Normally, UploadForm adds its own Javascript.
+ * We wish to prevent this, because we want to control the case where we have Javascript.
  * So, we subclass UploadForm, and make the addUploadJS a no-op.
  */
 class UploadWizardSimpleForm extends UploadForm {
