@@ -411,12 +411,12 @@ mw.UploadWizardDescription.prototype = {
 	 */
 	getWikiText: function() {
 		var _this = this;
-		var language = $j( _this.languageMenu ).trim().val();
+		var language = $j( _this.languageMenu ).val().trim();
 		var fix = mw.getConfig("languageTemplateFixups");
 		if (fix[language]) {
 			language = fix[language];
 		}
-		return '{{' + language + '|' + $j( _this.description ).trim().val() + '}}'	
+		return '{{' + language + '|' + $j( _this.description ).val().trim() + '}}'	
 	}
 };
 
@@ -505,7 +505,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 	_this.dateInput = $j( '<input type="text" class="mwe-date" size="20"/>' );
 	$j( _this.dateInput ).datepicker( { 	
-		dateFormat: 'yyyy-mm-dd',
+		dateFormat: 'yy-mm-dd', // oddly, this means yyyy-mm-dd
 		buttonImage: '/js/mwEmbed/skins/common/images/calendar.gif',
 		buttonImageOnly: false  // XXX determine what this does, docs are confusing
 	} );
@@ -1027,10 +1027,10 @@ mw.UploadWizardDetails.prototype = {
 	
 
 		// XXX add a sanity check here for good date
-		information['date'] = $j( _this.dateInput ).trim().val();
+		information['date'] = $j( _this.dateInput ).val().trim();
 		
-		information['source'] = $j( _this.sourceInput ).trim().val();
-		information['author'] = $j( _this.authorInput ).trim().val();
+		information['source'] = $j( _this.sourceInput ).val().trim();
+		information['author'] = $j( _this.authorInput ).val().trim();
 		
 		var info = '';
 		for ( var key in information ) {
@@ -1049,7 +1049,7 @@ mw.UploadWizardDetails.prototype = {
 		// add a location template
 
 		// add an "anything else" template
-		wikiText += $j( _this.otherInformationInput ).trim().val();
+		wikiText += $j( _this.otherInformationInput ).val().trim();
 
 		return wikiText;	
 	},
@@ -1068,9 +1068,21 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	submit: function() {
 		var _this = this;
+
+
 		// are we okay to submit?
+		// all necessary fields are ready
 		// check descriptions
-			
+		// the filename is in a sane state
+		var desiredFilename = "File:" + $j( _this.filenameInput ).val();
+		shouldRename = 1;
+
+		// if ok to go			
+		// XXX lock down the interface, spinnerify
+		// else
+		// point out problems
+
+
 		// XXX check state of details for okayness ( license selected, at least one desc, sane filename )
 		var wikiText = _this.getWikiText();
 		mw.log( wikiText );
@@ -1091,25 +1103,59 @@ mw.UploadWizardDetails.prototype = {
 		var callback = function(result) {
 			mw.log(result);
 			mw.log("successful edit");
-			alert("posted successfully");
+			if ( shouldRename ) {
+				_this.rename( desiredFilename );	
+			}
+		
 		}
 		mw.getJSON(params, callback);
+	},
 
-		// then, if the filename was changed, do another api call to move the page
-
-		// THIS MAY NOT WORK ON ALL WIKIS. for instance, on Commons, it may be that only admins can move pages. This is another example of how
-		//   we need an "incomplete" upload status
-		// we are presuming this File page is brand new, so let's not bother with the whole redirection deal. ('noredirect')
-		
-		// use _this.ignoreWarningsInput (if it exists) to check if we can blithely move the file or if we have a problem
-
-		/*
-		Note: In this example, all parameters are passed in a GET request just for the sake of simplicity. However, action = move requires POST requests; GET requests will cause an error. Moving Main Pgae ( sic ) and its talk page to Main Page, without creating a redirect
-		api.php  ? action = move & from = Main%20Pgae & to = Main%20Page &  reason = Oops,%20misspelling & movetalk & noredirect &  token = 58b54e0bab4a1d3fd3f7653af38e75cb%2B\
-		*/
-
-
+	/**
+	 * Rename the file
+         *
+	 *  THIS MAY NOT WORK ON ALL WIKIS. for instance, on Commons, it may be that only admins can move pages. This is another example of how
+	 *  we need an "incomplete" upload status
+	 *  we are presuming this File page is brand new, so let's not bother with the whole redirection deal. ('noredirect')
+	 *
+	 * use _this.ignoreWarningsInput (if it exists) to check if we can blithely move the file or if we have a problem if there
+	 * is a file by that name already there
+	 *
+	 * @param filename to rename this file to
+ 	 */
+	rename: function( title ) {
+		var _this = this;
+		mw.log("renaming!");
+		debugger;
+		params = {
+			action: 'move',
+			from: _this.upload.title,
+			to: title,
+			reason: "User edited page with " + mw.UploadWizard.userAgent,
+			movetalk: '',
+			noredirect: '', // presume it's too new 
+			token: mw.getConfig('token'),
+		};
+		mw.log(params);
+		// despite the name, getJSON magically changes this into a POST request (it has a list of methods and what they require).
+		mw.getJSON( params, function( data ) {
+			// handle errors later
+			// possible error data: { code = 'missingtitle' } -- orig filename not there
+			// and many more
+			
+			// success is
+			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
+				_this.upload.title = data.move.to;
+			}
+			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
+			// which should match our request.
+			// we should update the current upload filename
+			// then call the uploadwizard with our progress
+			debugger;
+		} );
 	}
+
+	
 
 
 }
