@@ -962,7 +962,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			} );
 			
 		}
-		
+		// Update the formData 'comment' per the upload description 
+		$j(this.form).find("[name='comment']").val( _this.getUploadDescription() );
 		
 		// Get the input form data into an array
 		mw.log( 'get this.formData ::' );
@@ -977,7 +978,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 					this.formData[ data[i]['name'] ] = data[i]['value'];
 				}
 			}
-		}		
+		}
+	
+		
 		
 		// Get the edit token from formData if it's not set already
 		if ( !_this.editToken && _this.formData['token'] ) {

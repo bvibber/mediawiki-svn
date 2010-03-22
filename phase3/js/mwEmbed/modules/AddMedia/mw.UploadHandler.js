@@ -222,7 +222,6 @@ mw.UploadHandler.prototype = {
 		// formDirectSubmit is needed to actualy do the upload via a form "submit"	
 		if ( this.formDirectSubmit ) {		
 			mw.log("direct submit: ");
-				
 			return true;
 		}	
 		
@@ -456,10 +455,16 @@ mw.UploadHandler.prototype = {
 		$j( '#' + _this.iframeId ).load( function() {
 			_this.processIframeResult( $j( this ).get( 0 ) );
 		});			
-		
+				
 		// Do normal post upload override
-		_this.formDirectSubmit = true;		
+		_this.formDirectSubmit = true;
+		
+		// Update the wpDescription
+		$form.find("[name='comment']").val( _this.getUploadDescription() );
+		
+				
 		mw.log('About to submit:');
+		
 		$form.find('input').each( function(){
 			mw.log( $j(this).attr( 'name' ) + ' :: ' + $j(this).val() );	
 		})
@@ -502,7 +507,7 @@ mw.UploadHandler.prototype = {
 		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.rewriteDescriptionText );
 		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
 		if ( this.rewriteDescriptionText ) {
-			var license = ( $j("[name='wpLicense']").length ) ? $j("[name='wpLicense']").val() : '';
+			var license = ( $j("[name='wpLicense']").length ) ? $j("[name='wpLicense']").val() : '';			
 			var copyStatus = ( $j("[name='wpUploadCopyStatus']" ).length ) ? $j("[name='wpUploadCopyStatus']" ).val() : '';
 			var source =  ( $j("[name='wpSource']").length ) ? $j("[name='wpSource']").val() : '';
 			
@@ -523,19 +528,17 @@ mw.UploadHandler.prototype = {
 	* @param {String} copyStatus the copyright status field
 	* @param {String} source The source filed			
 	*/
-	getCommentText: function( comment, license, copyStatus, source ) {					
-		var licensetxt = '';
-		if ( license != '' ) {
-			licensetxt = '== ' + gM( 'license-header' ) + " ==\n" + '{{' + license + '}}' + "\n";
-		}
-		pageText = '== ' + gM( 'filedesc' ) + " ==\n" + comment + "\n";
+	getCommentText: function( comment, license, copyStatus, source ) {				
+		var pageText = '== ' + gM( 'filedesc' ) + " ==\n" + comment + "\n";
 		if( copyStatus ){
-			pageText +=  '== ' + gM( 'filestatus' ) + " ==\n" + copyStatus + "\n" +
-						licensetxt;
+			pageText +=  '== ' + gM( 'filestatus' ) + " ==\n" + copyStatus + "\n";
 		}
 		if( source ){
-			pageText += '== ' + gM( 'filesource' ) + " ==\n" + source ;
+			pageText += '== ' + gM( 'filesource' ) + " ==\n" + source  + "\n";
 		}
+		if ( license ) {
+			pageText += '== ' + gM( 'license-header' ) + " ==\n" + '{{' + license + '}}' + "\n"; 
+		}		
 		return pageText;
 	},
 
@@ -792,12 +795,10 @@ mw.UploadHandler.prototype = {
 				'sessionkey': _this.warnings_sessionkey,
 				'ignorewarnings': 1,			
 				'token' :  _this.getToken(),
-				'filename' :  _this.getFileName()					
+				'filename' :  _this.getFileName(),
+				'comment' : $j( this.form ).find( "[name='comment']" ).val()
 			};
-			// presently we don't let the user update desc at ignoreWarningsSubmit
-			/*			  		
-				'comment' : _this.getUploadDescription()
-			*/
+			
 			
 			//run the upload from stash request
 			mw.getJSON(_this.apiUrl, request, function( data ) {
