@@ -261,9 +261,23 @@ fn: {
 		context.fn.purgeOffsets();
 		$template
 			.toggleClass( 'wikiEditor-template-expanded' )
-			.toggleClass( 'wikiEditor-template-collapsed' )
-			.find( '.wikiEditor-template-text' )
-			.toggleClass( 'wikiEditor-nodisplay' );
+			.toggleClass( 'wikiEditor-template-collapsed' ) ;
+		
+		var $templateText = $template.find( '.wikiEditor-template-text' );		
+		$templateText.toggleClass( 'wikiEditor-nodisplay' );
+		if( $templateText.hasClass('wikiEditor-nodisplay') ){
+			//we just closed the template
+		
+			// Update the model if we need to
+			if ( $templateText.html() != $templateText.data( 'oldHTML' ) ) {
+				var templateModel = $.wikiEditor.modules.templateEditor.fn.updateModel( $templateText );
+				
+				//this is the only place the template name can be changed; keep the template name in sync
+				var $tLabel = $template.find( '.wikiEditor-template-label' );
+				$tLabel.text( $.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName( templateModel ) );
+			}
+			
+		}
 	},
 	/**
 	 * Create a dialog for editing a given template and open it
