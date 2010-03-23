@@ -60,6 +60,7 @@ mw.addMessages( {
 } );
 
 
+//mw.setConfig('uploadHandlerClass', mw.MockUploadHandler); // ApiUploadHandler?
 
 // available licenses should be a configuration of the MediaWiki instance,
 // not hardcoded here.
@@ -129,17 +130,109 @@ mw.UploadWizardLicenseInput.prototype = {
 /**
  * Represents the upload -- in its local and remote state. (Possibly those could be separate objects too...)
  * This is our 'model' object if we are thinking MVC. Needs to be better factored, lots of feature envy with the UploadWizard
+ * states:
+ *   'new' 'transporting' 'transported' 'details' 'submitting-details' 'complete'  
+ * should fork this into two -- local and remote, e.g. filename
  */
 mw.UploadWizardUpload = function() {
 	var _this = this;
+	_this.state = 'new';
+	_this.transportWeight = 1;  // default
+	_this.detailsWeight = 1; // default
 	_this._thumbnails = {};
 	_this.imageinfo = {};
 	_this.title = undefined;
 	_this.filename = undefined;
 	_this.originalFilename = undefined;
+	_this.mimetype = undefined;
+		
+	// details 		
+	_this.details = new mw.UploadWizardDetails( _this, $j( '#mwe-upwiz-macro-files' ));
+	_this.ui = new mw.UploadWizardUploadInterface( _this );
+
+	// handler -- usually ApiUploadHandler
+	// _this.handler = new ( mw.getConfig( 'uploadHandlerClass' ) )( _this );
+	// _this.handler = new mw.MockUploadHandler( _this );
+	_this.handler = new mw.ApiUploadHandler( _this );
 };
 
 mw.UploadWizardUpload.prototype = {
+
+	/**
+ 	 * start
+	 */
+	start: function() {
+		var _this = this;
+		_this.setTransportProgress(0.0);
+		_this.handler.start();	
+		_this.ui.start();
+	},
+
+
+	/**
+	 * remove
+	 */
+	remove: function() {
+		var _this = this;
+		$j( _this.ui.div ).remove();
+		$j( _this.details.div ).remove();
+		$j( _this ).trigger( 'removeUpload' );
+	},
+
+	/**
+	 * Wear our current progress, for observing processes to see
+ 	 * @param fraction
+	 */
+	setTransportProgress: function ( fraction ) {
+		var _this = this;
+		_this.state = 'transporting';
+		_this.transportProgress = fraction;
+		$j( _this ).trigger( 'transportProgress' );
+	},
+
+	/**
+	 * To be executed when an individual upload finishes. Processes the result and updates step 2's details 
+	 * @param result	the API result in parsed JSON form
+	 */
+	setTransported: function( result ) {
+		var _this = this;
+		_this.state = 'transported';
+		_this.transportProgress = 1;
+		$j( _this ).trigger( 'transported' );
+
+		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
+			// success
+			_this.extractImageInfo( result );	
+			_this.details.populate();
+		
+		} else if ( result.upload && result.upload.sessionkey ) {
+			// there was a warning - type error which prevented it from adding the result to the db 
+			if ( result.upload.warnings.duplicate ) {
+				var duplicates = result.upload.warnings.duplicate;
+				_this.details.errorDuplicate( result.upload.sessionkey, duplicates );
+			}
+
+			// and other errors that result in a stash
+		} else if ( 0 /* actual failure */ ) {
+			// we may want to tag or otherwise queue it as an upload to retry
+		}
+		
+	
+	},
+
+
+	/**
+	 * call when the file is entered into the file input
+	 * get as much data as possible -- maybe exif, even thumbnail maybe
+	 */
+	initializeLocalFile: function() {
+		if (false) {  // FileAPI, one day
+			_this.transportWeight = getFileSize();
+		}
+		// XXX add filename, original filename, extension, whatever else is interesting.
+	},
+
+
 	/** 
  	 * Accept the result from a successful API upload transport, and fill our own info 
 	 *
@@ -227,13 +320,12 @@ mw.UploadWizardUpload.prototype = {
 
 /**
  * Create an interface fragment corresponding to a file input, suitable for Upload Wizard.
- * @param filenameAcceptedCb 	Execute if good filename entered into this interface; useful for knowing if we're ready to upload
+ * @param upload
  */
-mw.UploadWizardUploadInterface = function( upload, filenameAcceptedCb ) {
+mw.UploadWizardUploadInterface = function( upload ) {
 	var _this = this;
 
 	_this.upload = upload;
-	_this.filenameAcceptedCb = filenameAcceptedCb;
 
 	// may need to collaborate with the particular upload type sometimes
 	// for the interface, as well as the uploadwizard. OY.
@@ -260,14 +352,25 @@ mw.UploadWizardUploadInterface = function( upload, filenameAcceptedCb ) {
 
 	_this.errorDiv = $j('<div class="mwe-upwiz-upload-error" style="display: none;"></div>').get(0);
 
+	_this.removeCtrl = $j( '<a title="' + gM( 'mwe-upwiz-remove-upload' ) 
+					+ '" href="#" class="mwe-upwiz-remove">x</a>' )
+				.click( function() { _this.upload.remove() } )
+				.get( 0 );
+
+
 
 	$j( _this.div ).append( _this.form )
 		    .append( _this.progressMessage )
-		    .append( _this.errorDiv );
+		    .append( _this.errorDiv )
+		    .append( _this.removeCtrl );
 
 	// _this.progressBar = ( no progress bar for individual uploads yet )
 	// add a details thing to details
+	// this should bind only to the FIRST transportProgress
+	$j( upload ).bind( 'transportProgress', function(e) { _this.showTransportProgress(); e.stopPropagation() } );
+	$j( upload ).bind( 'transported', function(e) { _this.showTransported(); e.stopPropagation(); } );
 };
+
 
 mw.UploadWizardUploadInterface.prototype = {
 	/**
@@ -286,18 +389,26 @@ mw.UploadWizardUploadInterface.prototype = {
 		var _this = this;
 		// for now we implement this as looking like "100% progress"
 		// e.g. an animated bar that takes up all the space
-		_this.progress( 1.0 );
+		_this.showTransportProgress( 1.0 );
 	},
 
 	/**
 	 * Show progress by a fraction
 	 * @param fraction	The fraction of progress. Float between 0 and 1
 	 */
-	progress: function( fraction ) {
+	showTransportProgress: function() {
 		var _this = this;
 		$j( _this.progressMessage ).addClass('mwe-upwiz-status-progress')
 		    			   .html(gM( 'mwe-upwiz-uploading' ))
 					   .show();
+		// since, in this iteration of the interface, we never need to know 
+		// about progress again, let's unbind
+
+		// unbind is broken in jquery 1.4.1 -- raises exception but it still works
+		try { 
+			$j( _this.upload ).unbind( 'transportProgress' );
+		} catch (ex) { }
+		
 		// update individual progress bar with fraction?
 	},
 
@@ -305,7 +416,7 @@ mw.UploadWizardUploadInterface.prototype = {
 	 * Execute when this upload is transported; cleans up interface. 
 	 * @param result	AJAx result object
 	 */
-	transported: function( result ) {
+	showTransported: function() {
 		var _this = this;
 		$j( _this.progressMessage ).removeClass( 'mwe-upwiz-status-progress' )
 					   .addClass( 'mwe-upwiz-status-transported' )
@@ -350,8 +461,8 @@ mw.UploadWizardUploadInterface.prototype = {
 		_this.upload.originalFilename = filename;
 		// this is a hack to get a filename guaranteed unique.
 		uniqueFilename = mw.getConfig( 'userName' ) + "_" + ( new Date() ).getTime() + "_" + filename;
-		$j(_this.filenameCtrl).attr( 'value', uniqueFilename );
-		_this.filenameAcceptedCb();
+		$j( _this.filenameCtrl ).attr( 'value', uniqueFilename );
+		$j( _this.upload ).trigger( 'filenameAccepted' );
 	},
 
 	/**
@@ -489,6 +600,8 @@ mw.UploadWizardDescription.prototype = {
  * on the page which we clone and slice up with selectors. Inputs can still be members of the object
  * but they'll be found by selectors, not by creating them as members and then adding them to a DOM structure.
  *
+ * XXX this should have styles for what mode we're in 
+ *
  * @param UploadWizardUpload
  * @param containerDiv	The div to put the interface into
  */
@@ -500,6 +613,9 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.descriptions = [];
 
 	_this.div = $j( '<div class="mwe-upwiz-details-file"></div>' );
+
+	_this.macroDiv = $j( '<div class="mwe-upwiz-macro"></div>' )
+		.append( $j( '<input type="submit" value="test edit"/>' ).click( function( ) { _this.submit( ) } ));
 
 	_this.thumbnailDiv = $j( '<div class="mwe-upwiz-thumbnail"></div>' );
 	
@@ -612,6 +728,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.filenameInput = $j('<input type="text" class="mwe-filename" size="30" />' )
 				.keyup( function() { 
 					$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( $j( _this.filenameInput ).val() ) )
+							      .keyup();  // simulate keyup to trigger destination check
 				});
 
 	var aboutTheFileDiv = $j('<div></div>')
@@ -633,6 +750,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 
 	$j( _this.div )
+		.append( _this.macroDiv )   // XXX this is wrong; it's not part of a file's details
 		.append( _this.thumbnailDiv )
 		.append( _this.errorDiv )
 		.append( $j( _this.dataDiv )
@@ -823,36 +941,6 @@ mw.UploadWizardDetails.prototype = {
 	},
 
 	/**
-	 * Display an error but check before proceeding -- useful for cases where user can override a failed upload due to 
-	 *  hash collision
-	 *  just like error but with ok / cancel
-	 * @param sessionKey
-	 * @param duplicates
-	 */
-	errorDuplicate: function( sessionKey, duplicates ) {
-		var _this = this;
-		/*
-		TODO - do something clever to get page URLs and image URLs 
-		var duplicatePageTitles = result.upload.warnings.duplicate;
-		var duplicates = [];
-		for ( var i = 0; i < duplicates.length; i++ ) {
-			imageInfo = mw.getJSON( undefined, 
-						 {'titles' : duplicatePageTitles[i], 'prop' : 'imageinfo'})
-						 function() { _this.renderUploads() } );
-			duplicates.push( {
-				// ?? async, so we should insert later...
-			} ) 
-		}
-		*/
-		_this.error( 'duplicate' );
-		// add placeholder spinners to div, and then fetch the thumbnails and so on async
-		// meanwhile...
-		//$j( _this.errorDiv ).append(
-		//	$j('<form></form>'); 
-		// same as normal error but you get to ok / cancel, which resubmits with ignore warnings
-	},
-
-	/**
 	 * Given the API result pull some info into the form ( for instance, extracted from EXIF, desired filename )
 	 * @param result	Upload API result object
 	 */
@@ -880,8 +968,7 @@ mw.UploadWizardDetails.prototype = {
 			// side effect: will replace thumbnail's loadingSpinner
 			_this.thumbnailDiv.html(
 				$j('<a>')
-					.attr( { 'href': _this.upload.imageinfo.descriptionurl,
-						 'target': '_new' } )
+					.attr( 'href', _this.upload.imageinfo.descriptionurl )
 					.append(
 						$j( '<img/>' )
 							.addClass( "mwe-upwiz-thumbnail" )
@@ -939,8 +1026,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	prefillTitle: function() {
 		var _this = this;
-		$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename ) )
-				      .change(); // trigger file destination check
+		$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename ) );
 	},
 
 	/**
@@ -1126,9 +1212,8 @@ mw.UploadWizardDetails.prototype = {
 
 	/**
 	 * Post wikitext as edited here, to the file
-	 * @param success callback to be executed upon success
 	 */
-	submit: function(success) {
+	submit: function() {
 		var _this = this;
 
 
@@ -1166,9 +1251,7 @@ mw.UploadWizardDetails.prototype = {
 			mw.log(result);
 			mw.log("successful edit");
 			if ( shouldRename ) {
-				_this.rename( desiredFilename, success );	
-			} else {
-				success();
+				_this.rename( desiredFilename );	
 			}
 		
 		}
@@ -1187,7 +1270,7 @@ mw.UploadWizardDetails.prototype = {
 	 *
 	 * @param filename to rename this file to
  	 */
-	rename: function( title, success ) {
+	rename: function( title ) {
 		var _this = this;
 		mw.log("renaming!");
 		params = {
@@ -1210,12 +1293,10 @@ mw.UploadWizardDetails.prototype = {
 			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
 				_this.upload.title = data.move.to;
 			}
-
 			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
 			// which should match our request.
 			// we should update the current upload filename
 			// then call the uploadwizard with our progress
-			success();
 		} );
 	}
 
@@ -1230,23 +1311,13 @@ mw.UploadWizardDetails.prototype = {
  */
 mw.UploadWizard = function() {
 
-	this.uploadHandlerClass = mw.getConfig('uploadHandlerClass') || this.getUploadHandlerClass();
-	this.isTransported = false;
-	
+	this.state = 'new';
 	this.uploads = [];
-	// leading underline for privacy. DO NOT TAMPER.
-	this._uploadsQueued = [];
-	this._uploadsInProgress = [];
-	this._uploadsTransported = [];
-	this._uploadsEditingDetails = [];
-	this._uploadsCompleted = [];
-
-	this.uploadsBeginTime = null;	
 
 };
 
-mw.UploadWizard.userAgent = "UploadWizard (alpha) on " + $j.browser.name + " " + $j.browser.version;
 
+mw.UploadWizard.userAgent = "UploadWizard (alpha) on " + $j.browser.name + " " + $j.browser.version;
 
 
 mw.UploadWizard.prototype = {
@@ -1272,7 +1343,6 @@ mw.UploadWizard.prototype = {
 	 * For example, the ApiUploadHandler should work just about everywhere, but XhrUploadHandler
 	 *   allows for more fine-grained upload progress
 	 * @return valid JS upload handler class constructor function
-	 */
 	getUploadHandlerClass: function() {
 		// return mw.MockUploadHandler;
 		return mw.ApiUploadHandler;
@@ -1286,16 +1356,16 @@ mw.UploadWizard.prototype = {
 		}
 		// this should never happen; NullUploadHandler should always work
 		return null;
-		*/
 	},
+	*/
 	
 	/**
 	 * create the basic interface to make an upload in this div
 	 * @param div	The div in the DOM to put all of this into.
 	 */
 	createInterface: function( selector ) {
-		var div = $j( selector ).get(0);
 		var _this = this;
+		var div = $j( selector ).get(0);
 		div.innerHTML = 
 	
 		       '<div id="mwe-upwiz-tabs">'
@@ -1325,8 +1395,13 @@ mw.UploadWizard.prototype = {
 		       +   '</div>'
 		       + '</div>'
 		       + '<div id="mwe-upwiz-tabdiv-details">'
-		       +   '<div id="mwe-upwiz-macro"></div>'
-		       +   '<div id="mwe-upwiz-details-files"></div>'
+		       +   '<div id="mwe-upwiz-macro">'
+		       +     '<div id="mwe-upwiz-macro-choice"></div>'
+		       +     '<div id="mwe-upwiz-macro-edit"></div>'
+		       +	'<div id="mwe-upwiz-macro-macro"></div>'
+		       +        '<div id="mwe-upwiz-macro-files"></div>'
+		       +     '</div>'
+		       +   '</div>'
 		       + '</div>'
 		       + '<div id="mwe-upwiz-tabdiv-thanks">'
 		       +   '<div id="mwe-upwiz-thanks"></div>'
@@ -1334,9 +1409,6 @@ mw.UploadWizard.prototype = {
 		       +'</div>'
 
 		       + '<div id="mwe-upwiz-clearing"></div>';
-
-		// add macro interface
-		_this.addMacroHtml('#mwe-upwiz-macro');
 
 		// within FILE tab div
 		// select files:
@@ -1355,19 +1427,6 @@ mw.UploadWizard.prototype = {
 		// "select" the first tab - highlight, make it visible, hide all others
 		_this.moveToTab('file');
 	},
-
-	/**
- 	 * Attach interface for selecting case, license, etc. 
-	 * Called "macro" because it affects many at once. Also set the mode of UW details -- may rewrite individual details objects to
-  	 * use a common license input, for instance.
-	 */
-	addMacroHtml: function( selector ) {
-		var _this = this;
-		$j( selector )
-			.append( $j( '<input type="submit" value="submit"/>' )
-					.click( function() { _this.startMacroSubmit() } ) );
-	},
-
 
 	/**
 	 * Advance one "step" in the wizard interface.
@@ -1399,58 +1458,23 @@ mw.UploadWizard.prototype = {
 	 */
 	addUpload: function() {
 		var _this = this;
-		var idx = _this.uploads.length;  // or?
-		if ( idx == _this.maxUploads ) {
+		if ( _this.uploads.length == _this.maxUploads ) {
 			return false;
 		}
 
 		var upload = new mw.UploadWizardUpload();
-
-		// XXX much of the following should be moved to UploadWizardUpload constructor.
-
-		// UI
-		// originalFilename is the basename of the file on our file system. This is what we really wanted ( probably ).
-		// the system will upload with a temporary filename and we'll get that back from the API return when we upload
-		var filenameAcceptedCb = function() {
-			_this.updateFileCounts(); 
-		};
-		var ui = new mw.UploadWizardUploadInterface( upload, filenameAcceptedCb ); 
-		ui.removeCtrl = $j( '<a title="' + gM( 'mwe-upwiz-remove-upload' ) 
-						+ '" href="#" class="mwe-upwiz-remove">x</a>' )
-					.click( function() { _this.removeUpload( upload ) } )
-					.get( 0 );
-		$j( ui.div ).append( ui.removeCtrl );
-
-		upload.ui = ui;
-		// handler -- usually ApiUploadHandler
-		upload.handler = new _this.uploadHandlerClass( upload.ui );
-
-		// this is for UI only...
-		upload.handler.addProgressCb( function( fraction ) { _this.uploadProgress( upload, fraction ) } );
-
+		$j( upload ).bind( 'filenameAccepted', function(e) { _this.updateFileCounts();  e.stopPropagation(); } );
+		$j( upload ).bind( 'removeUpload', function(e) { _this.removeUpload( upload ); e.stopPropagation(); } );
 		// this is only the UI one, so is the result even going to be there?
-		upload.handler.addTransportedCb( function( result ) { _this.uploadTransported( upload, result ) } );
 
-		// not sure about this...UI only?
-		// this will tell us that at least one of our uploads has had an error -- may change messaging,
-		// like, please fix below
-		upload.handler.addErrorCb( function( error ) { _this.uploadError( upload, error ) } );
-
-		// details 		
-		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-details-files' ));
-
+		// bind to some error state
 
 		_this.uploads.push( upload );
 		
 		$j( "#mwe-upwiz-files" ).append( upload.ui.div );
 
-
-
-
-		//$j("#testac").languageMenu();
-
-		// update the uploadUi to add files - we may be over limit 
 		_this.updateFileCounts();
+
 		return true;
 	},
 
@@ -1463,8 +1487,6 @@ mw.UploadWizard.prototype = {
 	 */
 	removeUpload: function( upload ) {
 		var _this = this;
-		$j( upload.ui.div ).remove();
-		$j( upload.details.div ).remove();
 		mw.UploadWizardUtil.removeItem( _this.uploads, upload );
 		_this.updateFileCounts();
 	},
@@ -1482,9 +1504,58 @@ mw.UploadWizard.prototype = {
 			}
 		};
 		for ( var i = 0; i < toRemove.length; i++ ) {
-			_this.removeUpload( toRemove[i] );
+			toRemove[i].remove();
 		}
 	},
+
+	/**
+	 * monitor progress
+	 */
+	makeMonitor: function( beginState, progressState, endState, progressProperty, weightProperty, 
+				progressCallback, countCallback, endCallback ) {
+		
+		var wizard = this;
+
+		var totalWeight = 0.0;
+		$j.each( wizard.uploads, function( i, upload ) {
+			totalWeight += upload[weightProperty];
+		} );
+		var totalCount = wizard.uploads.length;
+	
+		var monitorBeginTime = ( new Date() ).getTime();
+
+		monitor = function() {
+			var fraction = 0.0;
+			var uploadsToStart = wizard.maxSimultaneousUploads;
+			var endStateCount = 0;
+			$j.each( wizard.uploads, function(i, upload) {
+				if ( upload.state == endState ) {
+					endStateCount++;
+				} else if ( upload.state == progressState ) {
+					uploadsToStart--;
+				} else if ( ( upload.state == beginState ) && ( uploadsToStart > 0 ) ) {
+					upload.start();
+					uploadsToStart--;
+				}
+				if (upload[progressProperty] !== undefined) {
+					fraction += upload[progressProperty] * ( upload[weightProperty] / totalWeight );
+				}
+			} );
+			progressCallback( fraction, monitorBeginTime );
+			countCallback( endStateCount, totalCount );
+			if (endStateCount == totalCount) {
+				endCallback();
+			} else {	
+				setTimeout( monitor, wizard.monitorDelay );
+			}
+		}
+
+		monitor();
+	},
+
+	monitorDelay: 300,  // milliseconds
+
+		
 
 	/**
 	 * Kick off the upload processes.
@@ -1501,66 +1572,23 @@ mw.UploadWizard.prototype = {
 		// remove ability to change files
 		// ideally also hide the "button"... but then we require styleable file input CSS trickery
 		// although, we COULD do this just for files already in progress...
-	
-		// XXX we just want to VISUALLY lock it in -- disabling this seems to remove it from form post	
-		// $j( '.mwe-upwiz-file' ).attr( 'disabled', 'disabled' ); 
 
 		// add the upload progress bar, with ETA
 		// add in the upload count 
 		$j( '#mwe-upwiz-progress' ).show();
-	
-		_this.uploadsBeginTime = ( new Date() ).getTime();
-		
-		var canGetFileSize = ( _this.uploadHandlerClass.prototype.getFileSize !== undefined );
 
-		// queue the uploads
-		_this.totalWeight = 0;
-		for ( var i = 0; i < _this.uploads.length; i++ ) {
-			var upload = _this.uploads[i];
-
-			// we may want to do something clever here to detect
-			// whether this is a real or dummy weight
-			if ( canGetFileSize ) {
-				upload.weight = upload.getFileSize();
-			} else {
-				upload.weight = 1;
-			}
-			_this.totalWeight += upload.weight;
-
-			_this._uploadsQueued.push( upload );
-		}
-		setTimeout( function () { _this._startUploadsQueued(); }, 0 );
+		// it might be interesting to just make this creational -- attach it to the dom element representing 
+		// the progress bar and elapsed time	
+		_this.makeMonitor('new', 'transporting', 'transported', 
+			          'transportProgress', 'transportWeight', 
+				  function( fraction, beginTime) { 
+					_this.showProgress( fraction, beginTime );
+				  },
+				  function ( endStateCount, totalCount) {
+					_this.showCount( endStateCount, totalCount );
+				  },
+			          function() { _this.moveToTab('details') } );
 	},
-
-	/**
-	 * Uploads must be 'queued' to be considered for uploading / details submission
-	 *  making this another thread of execution, because we want to avoid any race condition
-	 * this way, this is the only "thread" that can start uploads
-	 * it may miss a newly transported upload but it will get it eventually
-	 * it is the responsibility of upload.handler.start() or upload.details.submit() to move items 
-	 * out of the queues.
-	 *
-	 * @param mode 'transport' or 'details'
-	 */
-	_startUploadsQueued: function( mode ) {
-		var _this = this;
-		var uploadsToStart = Math.min( _this.maxSimultaneousUploads - _this._uploadsInProgress.length, 
-					       _this._uploadsQueued.length );
-		mw.log( "_startUploadsQueued: should start " + uploadsToStart + " uploads" );
-		while ( uploadsToStart-- ) {
-			var upload = _this._uploadsQueued.shift();
-			_this._uploadsInProgress.push( upload );
-			if ( mode == 'transport' ) {
-				upload.handler.start();
-			} else if ( mode == 'details' ) {
-				upload.details.submit();
-			}
-		}
-		if ( _this._uploadsQueued.length ) {
-			setTimeout( function () { _this._startUploadsQueued(); }, 1000 );
-		}
-	},
-
 
 	/**
 	 * Show overall progress for the entire UploadWizard
@@ -1568,43 +1596,22 @@ mw.UploadWizard.prototype = {
 	 * We did some tricky calculations in startUploads to try to weight each individual file's progress against 
 	 * the overall progress.
 	 */
-	showProgress: function() {
+	showProgress: function( fraction, beginTime ) {
 		var _this = this;
-		if ( _this.isTransported ) {
-			return;
-		}
 
-		var fraction = 0;
-		for ( var i = 0; i < _this.uploads.length; i++ ) {
-			var upload = _this.uploads[i]; 
-			mw.log( "progress of " + upload.ui.fileInputCtrl.value + " = " + upload.progress );
-			fraction += upload.progress * ( upload.weight / _this.totalWeight );
-		}
-		_this.showProgressBar( fraction );
-	
-		var remainingTime = _this.getRemainingTime( _this.uploadsBeginTime, fraction );
-		if ( remainingTime !== null ) {
-			_this.showRemainingTime( remainingTime );
-		}
-	},
-	
-	/**
-	 * Show the progress bar for the entire Upload Wizard.
-	 * @param fraction	fraction transported (float between 0 and 1)
-	 */
-	showProgressBar: function( fraction ) {		
 		$j( '#mwe-upwiz-progress-bar' ).progressbar( 'value', parseInt( fraction * 100 ) );
-	},
 
-	/**
-	 * Show remaining time for all the uploads
-	 * XXX should be localized - x hours, x minutes, x seconds
-	 * @param remainingTime		estimated time remaining in milliseconds
-	 */
-	showRemainingTime: function( remainingTime ) { 
-		$j( '#mwe-upwiz-etr' ).html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000)) ) );
-	},
+		var remainingTime;
+		if (beginTime == null) {
+			remainingTime = 0;
+		} else {	
+			remainingTime = _this.getRemainingTime( beginTime, fraction );
+		}
 
+		if ( remainingTime !== null ) {
+			$j( '#mwe-upwiz-etr' ).html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000)) ) );
+		}
+	},
 
 	/**
 	 * Calculate remaining time for all uploads to complete.
@@ -1625,54 +1632,10 @@ mw.UploadWizard.prototype = {
 	},
 
 	/**
-	 * Record the progress of an individual upload
- 	 * okay we are in a confusing state here -- are we asking for progress to be stored in the uploadhandler for our perusal or
-	 * to be explicitly forwarded to us
-	 * @param upload	an Upload object
-	 * @param progress	fraction of progress (float between 0 and 1)
+	 * Show the overall count as we upload
 	 */
-	uploadProgress: function( upload, progress ) {
-		mw.log("upload progress is " + progress);
-		var _this = this;
-		upload.progress = progress;
-		_this.showProgress();
-	},
-
-	/**
-	 * To be executed when an individual upload finishes. Processes the result and updates step 2's details 
-	 * @param upload 	an Upload object
-	 * @param result	the API result in parsed JSON form
-	 */
-	uploadTransported: function( upload, result ) {
-		var _this = this;
-		_this._uploadsTransported.push( upload );
-		mw.UploadWizardUtil.removeItem( _this._uploadsInProgress, upload );
-
-		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
-			// success
-			mw.log("detailing");
-			mw.UploadWizardUtil.removeItem( _this._uploadsQueued, upload );
-			_this._uploadsQueued.push( upload );
-			_this._uploadsEditingDetails.push( upload );
-			mw.log("extract info");
-			upload.extractImageInfo( result );	
-			mw.log("populate");
-			upload.details.populate();
-		
-		} else if ( result.upload && result.upload.sessionkey ) {
-			// there was a warning - type error which prevented it from adding the result to the db 
-			if ( result.upload.warnings.duplicate ) {
-				var duplicates = result.upload.warnings.duplicate;
-				_this.details.errorDuplicate( result.upload.sessionkey, duplicates );
-			}
-
-			// XXX namespace collision
-			// and other errors that result in a stash
-		} else if ( 0 /* actual failure */ ) {
-			// we may want to tag or otherwise queue it as an upload to retry
-		}
-	
-		_this.updateFileCounts();
+	showCount: function( endStateCount, totalCount ) {
+		$j( '#mwe-upwiz-count' ).html( gM( 'mwe-upwiz-upload-count', [ endStateCount, totalCount ] ) );
 	},
 
 
@@ -1681,8 +1644,9 @@ mw.UploadWizard.prototype = {
 	 * Also detects if all uploads have transported and kicks off the process that eventually gets us to Step 2.
 	 */
 	updateFileCounts: function() {
-		mw.log( "update counts" );
 		var _this = this;
+
+		// Can we enable the "add an upload" button, and what should the text on the button show?
 		$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-' + ( _this.uploads.length === 0 ? '0' : 'n' )) );
 		if ( _this.uploads.length < _this.maxUploads ) {
 			$j( '#mwe-upwiz-add-file' ).removeAttr( 'disabled' );
@@ -1690,36 +1654,55 @@ mw.UploadWizard.prototype = {
 			$j( '#mwe-upwiz-add-file' ).attr( 'disabled', true );
 		}
 
+
+		// Can we enable the "start uploads" button?
 		var hasFile;
-		for ( var i = 0; i < _this.uploads.length; i++ ) {
-			var upload = _this.uploads[i];
-			if ( upload.ui.fileInputCtrl.value != "" ) {
+		$j.each( _this.uploads, function (i, upload) {
+			if ( upload.originalFilename ) {
 				hasFile = true; 
+				return false; // break $j.each
 			}
-		}
+		} );
+
 		if ( hasFile ) {
 			$j( '#mwe-upwiz-upload-ctrl' ).removeAttr( 'disabled' ); 
 		} else {
 			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
 		}
 
-		
-		$j( '#mwe-upwiz-count' ).html( gM( 'mwe-upwiz-upload-count', [ _this._uploadsTransported.length, _this.uploads.length ] ) );
-
+	/*
+		// done
 		if ( _this.uploads.length > 0 && _this._uploadsTransported.length == _this.uploads.length ) {
 			// is this enough to stop the progress monitor?
 			_this.isTransported = true;
 			// set progress to 100%
-			_this.showProgressBar( 1 );
-			_this.showRemainingTime( 0 );
-			
-			// XXX then should make the progress bar not have the animated lines when done. Solid blue, or fade away or something.
-			// likewise, the remaining time should disappear, fadeout maybe.
+			_this.showProgress(1, null);
 					
-			// do some sort of "all done" thing for the UI - advance to next tab maybe.
-			_this.moveToTab( 'details' );
 		}
+	*/
 
+	},
+
+
+	/**
+	 * in details mode, reconfigure all the uploads, for various copyright modes
+	 */
+	configureCopyrightDetails: function( mode ) {
+		$j.each( _this._uploadsEditingDetails, function (i, upload) {
+			if (mode == 'ownwork') {
+				// disable inputs
+				// link source to macro input 
+			} else if (mode == 'permission') {
+				alert( 'unimplemented' );
+
+			} else if (mode == 'found') {
+				// disable inputs
+				// link source to macro input
+
+			} else {
+				alert( 'unknown mode = ' + mode);		
+			}
+		} );
 	},
 
 

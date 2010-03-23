@@ -10,57 +10,23 @@
  * Represents an object which configures a form to upload its files via an iframe talking to the MediaWiki API.
  * @param an UploadInterface object, which contains a .form property which points to a real HTML form in the DOM
  */
-mw.ApiUploadHandler = function( ui ) {
+mw.ApiUploadHandler = function( upload ) {
 	var _this = this;
-
-	_this.ui = ui;
-
-	var form = _this.ui.form;
-
-	_this.transportedCallbacks = [];
-	_this.progressCallbacks = [];
-	_this.errorCallbacks = [];
+	_this.upload = upload;
 
 	_this.configureForm();
 
 	// hardcoded for now
 	// can also use Xhr Binary depending on config
 	_this.transport = new mw.IframeTransport(
-		_this.ui.form, 
-		function( fraction ){ _this.progress( fraction ) },
-		function( result ) { _this.transported( result ) }
+		_this.upload.ui.form, 
+		function( fraction ){ _this.upload.setTransportProgress( fraction ) },
+		function( result ) { _this.upload.setTransported( result ) }
 	);
 
 };
 
 mw.ApiUploadHandler.prototype = {
-	/**
-	 * Allow other parties to register interest in how we are progressing
-	 * @param callback which accepts a float between 0 and 1 as our current progress
-	 */
-	addProgressCb: function( fn ) {
-		var _this = this;
-		_this.progressCallbacks.push( function( progress ) { fn( progress ) } ); 				
-	},
-
-	/**
-	 * Allow other parties to register interest in when we finish uploading
-	 * @param callback
-	 */
-	addTransportedCb: function( f ) {
-		var _this = this;
-		_this.transportedCallbacks.push( f );
-	},
-
-	/**
-	 * Allow other parties to register interest in when we have an error
-	 * @param callback
-	 */
-	addErrorCb: function( f ) {
-		var _this = this;
-		_this.errorCallbacks.push( f );
-	},
-
 	/**
 	 * Configure an HTML form so that it will submit its files to our transport (an iframe)
 	 * with proper params for the API
@@ -77,7 +43,7 @@ mw.ApiUploadHandler.prototype = {
 
 		// Set the form action
 		try {
-			$j( _this.ui.form ) 	
+			$j( _this.upload.ui.form ) 	
 				.attr( 'action', apiUrl )
 				.attr( 'method', 'POST' )
 				.attr( 'enctype', 'multipart/form-data' );
@@ -105,7 +71,7 @@ mw.ApiUploadHandler.prototype = {
 	 */
 	addFormInputIfMissing: function( name, value ) {
 		var _this = this;
-		var $jForm = $j( _this.ui.form );
+		var $jForm = $j( _this.upload.ui.form );
 		if ( $jForm.find( "[name='" + name + "']" ).length == 0 ) {
 			$jForm.append( 
 				$j( '<input />' )
@@ -125,49 +91,9 @@ mw.ApiUploadHandler.prototype = {
 		var _this = this;
 		mw.log( "api: upload start!" );
 		_this.beginTime = ( new Date() ).getTime();
-		_this.ui.start();
-		_this.ui.busy();
-		$j( this.ui.form ).submit();
+		_this.upload.ui.busy();
+		$j( this.upload.ui.form ).submit();
 	},
-
-	/**
-	 * Central dispatch function for every other object interested in our progress
-	 * @param fraction	float between 0 and 1, representing progress
-	 */
-	progress: function( fraction ) {
-		mw.log( "api: upload progress!" );
-		var _this = this;
-		_this.ui.progress( fraction );
-		for ( var i = 0; i < _this.progressCallbacks.length; i++ ) {
-			_this.progressCallbacks[i]( fraction );
-		}
-	},
-
-	/** 
-	 * Central dispatch function for everyone else interested if we've transported
-	 * @param result  javascript object representing MediaWiki API result.
-	 */
-	transported: function( result ) {
-		mw.log( "api: upload transported!" );
-		var _this = this;
-		_this.ui.transported();
-		for ( var i = 0; i < _this.transportedCallbacks.length; i++ ) {
-			_this.transportedCallbacks[i]( result );
-		}
-	},
-
-	/** 
-	 * Central dispatch function for everyone else interested if we've had an error
-	 * @param error  the error
-	 */
-	error: function( error ) {
-		mw.log( "api: error!" );
-		var _this = this;
-		_this.ui.error( error );
-		for ( var i = 0; i < _this.errorCallbacks.length; i++ ) {
-			_this.errorCallbacks[i]( error );
-		}
-	}
 };
 
 
