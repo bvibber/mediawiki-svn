@@ -65,6 +65,13 @@ $messages['el'] = array(
 	'right-editalluserpages' => 'Επεξεργασία σελίδων χρήστη',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'right-editalluserpages' => 'Editar páginas de usuario',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

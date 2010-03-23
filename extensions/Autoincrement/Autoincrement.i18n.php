@@ -316,3 +316,10 @@ $messages['uk'] = array(
 	'autoincrement-desc' => 'Змінний перехоплювач (variable hook), який додає змінну <nowiki>{{AUTOINCREMENT}}</nowiki>, здатну до автоматичного приросту.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'autoincrement-desc' => 'Một hook biến sẽ thêm một biến tự động tăng tiến <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+

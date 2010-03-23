@@ -43,6 +43,13 @@ $messages['br'] = array(
 	'ukgeocoding_couldNotGeocode' => "N'eus ket bet gallet geokodiñ ur c'hod-post pe meur a hini; tennet int bet diwar ar gartenn.",
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'ukgeocoding_name' => 'Geocodificación de Reino Unido para Mapas',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Peter17
@@ -105,6 +112,15 @@ $messages['nl'] = array(
 	'ukgeocoding_name' => 'VK-geocodering voor Maps',
 	'ukgeocoding_desc' => 'Uitbreiding van Maps met de parserfunctie "display_uk_point" met een implementatie voor Google Maps',
 	'ukgeocoding_couldNotGeocode' => 'Een of meer postcodes konden niet gegeocodeerd worden en zijn uit de kaart weggelaten.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'ukgeocoding_name' => 'Geokoding av UK for Maps',
+	'ukgeocoding_desc' => 'Utvider Maps med en display_uk_point-tolkefunksjon med Google Maps-implementasjon',
+	'ukgeocoding_couldNotGeocode' => 'En eller fler postkoder kunne ikke geokodes og har blitt utelatt fra kartet.',
 );
 
 /** Piedmontese (Piemontèis)

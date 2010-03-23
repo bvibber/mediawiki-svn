@@ -188,3 +188,10 @@ $messages['te'] = array(
 	'dynamicsidebar-desc' => 'వాడుకరి పేజీలు, సమూహాలు, వర్గాలను బట్టి అప్పటికప్పుడు పక్క పట్టీని చూపిస్తుంది.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'dynamicsidebar-desc' => 'Cung cấp thanh bên động dựa trên trang thành viên, nhóm, và thể loại',
+);
+

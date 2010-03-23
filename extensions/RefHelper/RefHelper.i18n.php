@@ -159,6 +159,7 @@ $messages['es'] = array(
 	'refhelper-desc' => 'Ayuda a crear páginas para las referencias',
 	'refhelper-refsearch' => 'Búsqueda de referencias',
 	'refhelper-refcreate_legend' => 'Crear nueva referencia',
+	'refhelper-refcreate_another' => 'Crear otra referencia',
 	'refhelper-refcreate_autocomment' => 'Creación de páginas automatizada.',
 	'refhelper-refcreate_success' => 'La página [[$1]] no existía y se ha creado.',
 	'refhelper-refcreate_failure' => '¡La página [[$1]] ya existe!',

@@ -378,9 +378,10 @@ $messages['bs'] = array(
 	'recordadmin-modified' => 'Izmijenjeno',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
-	'recordadmin-editwithform' => 'Uređivanje sa obrascom',
+	'recordadmin-editwithform' => 'Svojstva',
 	'recordadmin-typeinfo' => '$1 zapis',
 	'right-recordadmin' => 'Traženje i uređivanje stranica zapisa',
+	'recordadmin-notset' => 'Bez "$1"',
 );
 
 /** Catalan (Català)
@@ -1005,9 +1006,12 @@ $messages['hu'] = array(
 	'recordadmin-modified' => 'Módosítva',
 	'recordadmin-actions' => 'Műveletek',
 	'recordadmin-needscontent' => 'Tartalom hozzáadása…',
-	'recordadmin-editwithform' => 'Szerkesztés űrlappal',
+	'recordadmin-editwithform' => 'Tulajdonságok',
 	'recordadmin-typeinfo' => '$1 rekord',
 	'right-recordadmin' => 'Rekord lapok keresése és szerkesztése',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Nincs „$1”',
 );
 
 /** Interlingua (Interlingua)

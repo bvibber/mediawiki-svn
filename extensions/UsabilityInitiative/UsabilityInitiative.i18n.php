@@ -190,10 +190,13 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
+ * @author Translationista
  */
 $messages['es'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidad',
 	'usabilityinitiative-desc' => 'Características desarrolladas por la iniciativa de usabilidad de Wikipedia para mejorar la usabilidad de MediaWiki',
+	'prefs-beta' => 'Características de prueba',
+	'prefs-labs' => 'Características de los laboratorios',
 );
 
 /** Estonian (Eesti)

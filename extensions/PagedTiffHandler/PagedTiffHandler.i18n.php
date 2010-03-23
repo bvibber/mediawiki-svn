@@ -69,6 +69,7 @@ $messages['af'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'tiff-desc' => 'Апрацоўшчык для прагляду TIFF-файлаў у выглядзе выяваў',
@@ -76,6 +77,7 @@ $messages['be-tarask'] = array(
 	'tiff_page_error' => 'Нумар старонкі паза дыяпазонам',
 	'tiff_too_many_embed_files' => 'Выява ўтрымлівае зашмат убудаваных файлаў.',
 	'tiff_sourcefile_too_large' => 'Разрозьненьне крынічнага файла занадта вялікае. Мініятуры стварацца ня будуць.',
+	'tiff_targetfile_too_large' => 'Разрозьненьне файла занадта вялікае. Выява для папярэдняга прагляду ня будзе створаная.',
 	'tiff_file_too_large' => 'Памер загружанага файла — занадта вялікі, файл быў адхілены.',
 	'tiff_out_of_service' => 'Загружаны файл ня можа быць апрацаваны. ImageMagick недаступная.',
 	'tiff_too_much_meta' => 'Мэта-зьвесткі займаюць зашмат месца.',
@@ -187,6 +189,7 @@ $messages['gl'] = array(
 	'tiff_page_error' => 'O número da páxina non está no rango',
 	'tiff_too_many_embed_files' => 'A imaxe contén moitos ficheiros incorporados.',
 	'tiff_sourcefile_too_large' => 'A resolución do ficheiro de orixe é moi grande. Non se xerará ningunha miniatura.',
+	'tiff_targetfile_too_large' => 'A resolución do ficheiro de destino é moi grande. Non se xerará ningunha miniatura.',
 	'tiff_file_too_large' => 'O ficheiro cargado é moi grande e foi rexeitado.',
 	'tiff_out_of_service' => 'O ficheiro cargado non se puido procesar. ImageMagick non está dispoñible.',
 	'tiff_too_much_meta' => 'Os metadatos empregan moito espazo.',
@@ -225,6 +228,7 @@ $messages['hsb'] = array(
 	'tiff_page_error' => 'Čisło strony we wobłuku njeje',
 	'tiff_too_many_embed_files' => 'Wobraz wobsahuje přewjele zapřijatych datajow.',
 	'tiff_sourcefile_too_large' => 'Rozeznaće žórłoweje dataje je přewulke. Přehladowy wobraz njebudźe so płodźić.',
+	'tiff_targetfile_too_large' => 'Rozeznaće ciloweje dataje je přewulke. Přehledowy wobrazk njeje so wutworił.',
 	'tiff_file_too_large' => 'Nahrata dataja je přewulka a bu wotpokazana.',
 	'tiff_out_of_service' => 'Nahrata dataja njeda so předźěłać. ImageMagick njesteji k dispoziciji.',
 	'tiff_too_much_meta' => 'Metadaty wužiwaja přewjele ruma.',
@@ -244,6 +248,7 @@ $messages['ia'] = array(
 	'tiff_page_error' => 'Numero de pagina foras del intervallo',
 	'tiff_too_many_embed_files' => 'Le imagine contine troppo de files incastrate.',
 	'tiff_sourcefile_too_large' => 'Le resolution del file de fonte es troppo alte. Nulle miniatura essera generate.',
+	'tiff_targetfile_too_large' => 'Le resolution del file de destination es troppo alte. Nulle miniatura essera generate.',
 	'tiff_file_too_large' => 'Le file incargate es troppo grande e ha essite rejectate.',
 	'tiff_out_of_service' => 'Le file incargate non poteva esser processate. ImageMagick non es disponibile.',
 	'tiff_too_much_meta' => 'Le metadatos usa troppo de spatio.',

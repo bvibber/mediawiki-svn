@@ -4218,9 +4218,12 @@ Büo sädunolös votükami at.',
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'group-oversight' => 'אויפֿזעער',
 	'hiderevision-status' => 'רעוויזיע $1: $2',
 	'hiderevision-error-current' => "מ'קען נישט אויסמעקן די לעצטע באַאַרבעטונג צו א בלאַט.
 פֿריער שטעלט צוריק די ענדערונג.",
+	'oversight' => 'אויֿפזען',
+	'oversight-oversighter' => 'אויפֿזעער:',
 );
 
 /** Yue (粵語)

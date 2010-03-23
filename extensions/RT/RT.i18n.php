@@ -90,6 +90,8 @@ $messages['be-tarask'] = array(
 Вы спрабавалі ўвесьці: '''$1'''",
 	'rt-badstatus' => "Няслушны аргумэнт status (s): ён павінен мець стандартны выгляд (глядзіце дакумэнтацыю).
 Вы спрабавалі ўвесьці: '''$1'''",
+	'rt-badcfield' => "Няслушны аргумэнт для нестандартнага поля: мусіць мець стандартны выгляд (глядзіце дакумэнтацыю).
+Вы спрабавалі ўвесьці: '''$1'''",
 	'rt-badqueue' => "Няслушны аргумэнт queue (q): ён павінен быць простам словам.
 Вы спрабавалі ўвесьці: '''$1'''",
 	'rt-badowner' => "Няслушны аргумэнт owner (o): павінна быць існуючае імя ўдзельніка.
@@ -238,6 +240,7 @@ Yritit: '''$1'''",
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'rt-desc' => 'Interface pour RT (Request Tracker)',
@@ -249,6 +252,8 @@ Vous avez essayé : '''$1'''",
 Vous avez essayé : '''$1'''",
 	'rt-badstatus' => "Argument status (s) invalide : il doit être un champ standard (voir la documentation).
 Vous avez essayé : '''$1'''",
+	'rt-badcfield' => "Argument de champ personnalisé invalide : doit être un mot simple (voir documentation).
+Vous avec essayé : '''$1'''",
 	'rt-badqueue' => "Argument queue (q) invalide : il doit être un mot simple.
 Vous avez essayé : '''$1'''",
 	'rt-badowner' => "Argument owner (o) invalide : il doit être un nom d’utilisateur valide.
@@ -264,16 +269,18 @@ $messages['gl'] = array(
 	'rt-desc' => "Interface da extensión RT (''Request Tracker'')",
 	'rt-inactive' => 'A extensión RT non está activa',
 	'rt-badquery' => 'A extensión RT atopou un erro ao conectar coa súa base de datos',
-	'rt-badlimit' => "O parámetro LIMIT (l) é inválido: debe ser un número.
-Vostede tentou: '''$1'''",
-	'rt-badorderby' => "O parámetro ORDER BY (ob) é inválido: debe ser un campo estándar (véxase a documentación).
-Vostede tentou: '''$1'''",
-	'rt-badstatus' => "O parámetro status (s) é inválido: debe ser un campo estándar (véxase a documentación).
-Vostede tentou: '''$1'''",
-	'rt-badqueue' => "O parámetro queue (q) é inválido: debe ser unha palabra sinxela.
-Vostede tentou: '''$1'''",
-	'rt-badowner' => "O parámetro owner (o) é inválido: debe ser un nome de usuario válido.
-Vostede tentou: '''$1'''",
+	'rt-badlimit' => "O argumento LIMIT (l) é inválido: debe ser un número.
+Vostede intentou: '''$1'''",
+	'rt-badorderby' => "O argumento ORDER BY (ob) é inválido: debe ser un campo estándar (véxase a documentación).
+Vostede intentou: '''$1'''",
+	'rt-badstatus' => "O argumento status (s) é inválido: debe ser un campo estándar (véxase a documentación).
+Vostede intentou: '''$1'''",
+	'rt-badcfield' => "O argumento do campo personalizado é inválido: debe ser unha palabra simple (véxase a documentación).
+Vostede intentou: '''$1'''",
+	'rt-badqueue' => "O argumento queue (q) é inválido: debe ser unha palabra simple.
+Vostede intentou: '''$1'''",
+	'rt-badowner' => "O argumento owner (o) é inválido: debe ser un nome de usuario válido.
+Vostede intentou: '''$1'''",
 	'rt-nomatches' => 'Non se atoparon boletos RT que coincidisen',
 );
 
@@ -289,6 +296,8 @@ Du hesch yygee: '''$1'''",
 	'rt-badorderby' => "Nit giltig ORDER BY (ob)-Argumänt: muess e Standardfäld syy (lueg Dokumäntation).
 Du hesch yygee: '''$1'''",
 	'rt-badstatus' => "Nit giltig status (s)-Argumänt: muess e Standard fäld syy (lueg Dokumäntation).
+Du hesch yygee: '''$1'''",
+	'rt-badcfield' => "Nit giltig Argumänt fir benutzerdefinierti Fälder: muess e eifach Wort syy (lueg Dokumäntation).
 Du hesch yygee: '''$1'''",
 	'rt-badqueue' => "Nit giltig queue (q)-Argumänt: muess e eifach Wort syy.
 Du hesch yygee: '''$1'''",
@@ -361,6 +370,8 @@ Tu entrava: '''$1'''",
 	'rt-badorderby' => "Le parametro ORDER BY (ob) es invalide: debe esser un campo standard (vide le documentation).
 Tu entrava: '''$1'''",
 	'rt-badstatus' => "Le parametro status (s) es invalide: debe esser un campo standard (vide le documentation).
+Tu entrava: '''$1'''",
+	'rt-badcfield' => "Le parametro de campo personalisate es invalide: debe esser un parola simple (vide le documentation).
 Tu entrava: '''$1'''",
 	'rt-badqueue' => "Le parametro queue (q) es invalide: debe esser un parola simple.
 Tu entrava: '''$1'''",
@@ -446,6 +457,8 @@ $messages['mk'] = array(
 Вие наведовте: '''$1'''",
 	'rt-badstatus' => "Неважечки status (s) аргумент: мора да биде стандардно поле (погледајте во документацијата).
 Вие наведовте: '''$1'''",
+	'rt-badcfield' => "Погрешен аргумент за прилагодливо поле: мора да е прост збор (видете во документацијата).
+Вие се обидовте со: '''$1'''",
 	'rt-badqueue' => "Неважечки queue (q) аргумент: мора да биде прост збор.
 Вие наведовте: '''$1'''",
 	'rt-badowner' => "Неважечки owner (o) аргумент: мора да биде важечко корисничко име.
@@ -467,6 +480,8 @@ U hebt het volgende geprobeerd: '''$1'''",
 U hebt het volgende geprobeerd: '''$1'''",
 	'rt-badstatus' => "Ongeldige parameterstatus (s): moet een standaard veld zijn (zie documentatie).
 U hebt het volgende geprobeerd: '''$1'''",
+	'rt-badcfield' => "Ongeldig maatwerkveldargument: het moet een eenvoudig woord zijn (zie documentatie).
+U hebt geprobeerd: '''$1'''",
 	'rt-badqueue' => "Ongeldige parameter queue (q): moet een eenvoudig woord zijn.
 U hebt het volgende geprobeerd: '''$1'''",
 	'rt-badowner' => "Ongeldige parameter owner (o): moet een geldige gebruikersnaam zijn.
@@ -624,6 +639,8 @@ $messages['ru'] = array(
 	'rt-badorderby' => "Неверный аргумент ORDER BY (ob): должно быть стандартное поле (смотрите документацию).
 Вы указали: '''$1'''",
 	'rt-badstatus' => "Неверный аргумент status (s): должно быть стандартное поле (смотрите документацию).
+Вы указали: '''$1'''",
+	'rt-badcfield' => "Недопустимый аргумент пользовательского поля: должно быть простое слово (см. документацию).
 Вы указали: '''$1'''",
 	'rt-badqueue' => "Неверный аргумент queue (l): должно простое слово.
 Вы указали: '''$1'''",

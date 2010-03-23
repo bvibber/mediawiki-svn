@@ -712,6 +712,7 @@ $messages['es'] = array(
 	'qp_func_invalid_proposal_id' => 'Identificador de propuesta inválido=$3 (no es un número) para la encuesta $1, pregunta $2',
 	'qp_error_no_such_poll' => 'No existe tal encuesta ($1).
 Asegúrate de que la encuesta está declarada y guardada, y no olvides usar el carácter delimitador de dirección #',
+	'qp_error_in_question_header' => 'Encabezado de pregunta inválido: $1',
 	'qp_error_id_in_stats_mode' => 'No se puede declarar una ID de encuesta en modo estadístico',
 	'qp_error_dependance_in_stats_mode' => 'No se puede declarar una cadena de dependencia para la encuesta en modo estadístico',
 	'qp_error_no_stats' => 'No hay datos estadísticos disponibles porque nadie ha votado aún en esta encuesta (dirección=$1)',

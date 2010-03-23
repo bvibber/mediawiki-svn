@@ -354,6 +354,7 @@ $messages['es'] = array(
 	'watchers-desc' => 'Muestra [[Special:Watchers|aquellos usuarios que tienen una página en sus listas de vigilancia]]',
 	'watchers_link_title' => '¿Quién vigila esta página?',
 	'watchers_error_article' => "'''Error:''' La página no existe.",
+	'watchers-error-invalid-page' => "'''Error:''' \"\$1\" es un título de página inválido.",
 	'watchers_header' => '{{PLURAL:$2|usuario quien está|Usuarios quienes están}} vigilando "[[:$1]]"',
 	'watchers_noone_watches' => 'Nadie vigila la página [[:$1]]',
 	'watchers_x_or_more' => '$1 o más {{PLURAL:$1|usuarios|usuarios}} tienen la página [[:$2]] en sus listas de vigilancia.',
