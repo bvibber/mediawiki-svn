@@ -372,29 +372,24 @@ class Parser
 
 		wfRunHooks( 'ParserBeforeTidy', array( &$this, &$text ) );
 
-		if ( $this->mTransparentTagHooks ) {
-			//!JF Move to its own function
-			$uniq_prefix = $this->mUniqPrefix;
-			$matches = array();
-			$elements = array_keys( $this->mTransparentTagHooks );
-			$text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+//!JF Move to its own function
 
-			foreach( $matches as $marker => $data ) {
-				list( $element, $content, $params, $tag ) = $data;
-				$tagName = strtolower( $element );
-				if( isset( $this->mTransparentTagHooks[$tagName] ) ) {
-					$output = call_user_func_array( $this->mTransparentTagHooks[$tagName],
-						array( $content, $params, $this ) );
-				} else {
-					$output = $tag;
-				}
-				$this->mStripState->general->setPair( $marker, $output );
+		$uniq_prefix = $this->mUniqPrefix;
+		$matches = array();
+		$elements = array_keys( $this->mTransparentTagHooks );
+		$text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+
+		foreach( $matches as $marker => $data ) {
+			list( $element, $content, $params, $tag ) = $data;
+			$tagName = strtolower( $element );
+			if( isset( $this->mTransparentTagHooks[$tagName] ) ) {
+				$output = call_user_func_array( $this->mTransparentTagHooks[$tagName],
+					array( $content, $params, $this ) );
+			} else {
+				$output = $tag;
 			}
+			$this->mStripState->general->setPair( $marker, $output );
 		}
-
-		# This was originally inserted for transparent tag hooks (now deprecated)
-		# but some extensions (notably <poem>) rely on the extra unstripGeneral()
-		# after unstripNoWiki() so they can modify the contents of <nowiki> tags.
 		$text = $this->mStripState->unstripGeneral( $text );
 
 		$text = Sanitizer::normalizeCharReferences( $text );
@@ -4241,9 +4236,7 @@ class Parser
 		return $oldVal;
 	}
 
-	/* An old work-around for bug 2257 - deprecated 2010-02-13 */
 	function setTransparentTagHook( $tag, $callback ) {
-		wfDeprecated( __METHOD__ );
 		$tag = strtolower( $tag );
 		$oldVal = isset( $this->mTransparentTagHooks[$tag] ) ? $this->mTransparentTagHooks[$tag] : null;
 		$this->mTransparentTagHooks[$tag] = $callback;
