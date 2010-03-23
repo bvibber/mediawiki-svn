@@ -531,10 +531,10 @@ class Schema {
 				),
 			),
 			'indexes' => array(
-				'pl_from' => array(
+				'tl_from' => array(
 					'UNIQUE', 'from','namespace', 'title',
 				),
-				'pl_namespace' => array(
+				'tl_namespace' => array(
 					'UNIQUE', 'namespace','title', 'from',
 				),
 			),
