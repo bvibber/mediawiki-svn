@@ -150,7 +150,7 @@ class NaturalLanguageList {
 		$str = '';
 		foreach( $this->mParams as $i => $param ) {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
-				$str .= wfMsgReplaceArgs( $this->mOptions['itemcover'], $param );
+				$str .= wfMsgReplaceArgs( $this->mOptions['itemoutput'], $param );
 			} else {
 				$str .= $this->mOptions['itemoutput'] === null 
 					? wfMsg ( 'nll-itemoutput' , $param ) 
@@ -320,7 +320,7 @@ class NaturalLanguageList {
 				break;
 			case 'outputseparator':
 			case 'lastseparator':
-			case 'itemcover':
+			case 'itemoutput':
 				$this->mOptions[$name] = self::parseString( $value );
 				break;
 			case 'fieldsperitem':
@@ -341,7 +341,7 @@ class NaturalLanguageList {
 		if ( $magicWords === null ) {
 			$magicWords = new MagicWordArray( array(
 				'nll_blanks', 'nll_duplicates', 
-				'nll_fieldsperitem', 'nll_itemcover',
+				'nll_fieldsperitem', 'nll_itemoutput',
 				'nll_lastseparator', 'nll_outputseparator'
 			) );
 		}
