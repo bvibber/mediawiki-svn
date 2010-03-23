@@ -368,7 +368,14 @@ class WWThesaurus extends WWUTils {
 	
 	foreach ( $byLanguage as $lang => $items ) {
 	    foreach ( $items as $id => $name ) {
-		$byId[$id][$lang] = $name;
+		if (!isset($byId[$id])) {
+		    $byId[$id] = array(
+			'id'  => $id,
+			'name' => array()
+		    );
+		}
+
+		$byId[$id]['name'][$lang] = $name;
 	    }
 	}
 

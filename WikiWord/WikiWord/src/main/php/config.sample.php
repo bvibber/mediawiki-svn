@@ -33,6 +33,9 @@ $wwWikiServerName = "sql-s{num}";
 $wwCommonsServerName = null;
 
 $wwTagsTable = null;
+
+#$wwGilNoiceTable = null;
+#$wwGilNoiceThreshold = 10;
 $wwFrequentImageThreshold = 10;
 
 $wwTagScores = array(

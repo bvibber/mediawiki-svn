@@ -14,7 +14,14 @@ class WWClient {
 	foreach ( $params as $k => $v ) {
 	    if ($v===null) continue;
 	    if ($v===false) $v = "";
-	    if (is_array($v)) $v = implode("|", $v);
+
+	    if (is_array($v)) {
+		#   if (is_array($v[0])) {
+		#	  print_r($v);
+		#	  throw new Exception("foo");
+		#    }
+		    $v = implode("|", $v);
+	    }
 
 	    $url .= '&';
 	    $url .= urlencode( $k );

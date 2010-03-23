@@ -1,12 +1,12 @@
 <?php
 
-$IP = dirname(__FILE__);
+$IP = dirname( dirname(__FILE__) );
 
 require_once("$IP/config.php");
-require_once("$IP/wwimages.php");
+require_once("$IP/common/wwimages.php");
 
-if ($wwAPI) require_once("$IP/wwclient.php");
-else require_once("$IP/wwthesaurus.php");
+if ($wwAPI) require_once("$IP/common/wwclient.php");
+else require_once("$IP/common/wwthesaurus.php");
 
 function printLocalConceptList($lang, $concepts) {
     global $utils;

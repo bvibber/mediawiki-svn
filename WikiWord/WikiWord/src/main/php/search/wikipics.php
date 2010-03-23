@@ -1,20 +1,21 @@
 <?php
 
-$IP = dirname(__FILE__);
+$IP = dirname( dirname(__FILE__) );
 
 require_once("$IP/config.php");
-require_once("$IP/wwimages.php");
+require_once("$IP/common/wwimages.php");
 
-if ($wwAPI) require_once("$IP/wwclient.php");
-else require_once("$IP/wwthesaurus.php");
+if ($wwAPI) require_once("$IP/common/wwclient.php");
+else require_once("$IP/common/wwthesaurus.php");
 
-function printConceptList($concepts, $lang) {
+function printConceptList($langs, $concepts, $class) {
+    if (!$concepts) return;
     ?>
-    <ul class="terselist">
+    <ul class="<?php print $class; ?>">
       <?php
 	foreach ($concepts as $c) {
 	    ?><li><?php
-	    print getConceptDetailsLink($lang, $c);
+	    print getConceptDetailsLink($langs, $c);
 	    ?></li><?php
 	}
       ?>
@@ -27,7 +28,7 @@ function printConceptImageList($concept, $class = "terselist") {
 
     if (!$concept) return false;
 
-    if (is_array($concept) && !isset($concept['id']) && isset($concept[0])) $images = $concept; #XXX: HACK
+    if (is_array($concept) && !isset($concept['id'])) $images = $concept; #XXX: HACK
     else $images = $utils->getImagesAbout($concept, $wwMaxPreviewImages);
 
     ?>
@@ -54,9 +55,10 @@ function getConceptDetailsURL($langs, $concept) {
 function getConceptDetailsLink($langs, $concept) {
     global $utils;
     $name = $utils->pickLocal($concept['name'], $langs);
+    $score = @$concept['score'];
   
     $u = getConceptDetailsURL($langs, $concept);
-    return '<a href="' . htmlspecialchars($u) . '">' . htmlspecialchars($name) . '</a>';
+    return '<a href="' . htmlspecialchars($u) . '" title="' . htmlspecialchars($name) . ' (score: ' . (int)$score . ')'. '">' . htmlspecialchars($name) . '</a>';
 }
 
 function pickPage( $pages ) {
@@ -78,7 +80,7 @@ function getConceptPageURLs($lang, $concept) {
     $urls = array();
     foreach ($concept['pages'][$lang] as $page => $type) {
 	$u = "http://$domain/wiki/" . urlencode($page); 
-	$links[$page] = $u;
+	$urls[$page] = $u;
     }
 
     return $urls;
@@ -89,8 +91,7 @@ function getConceptPageLinks($lang, $concept) {
     if (!$urls) return false;
 
     foreach ($urls as $page => $u) {
-	$u = "http://$domain/wiki/" . urlencode($page); 
-	$links[] = '<a href="' . htmlspecialchars($u) . '">' . htmlspecialchars( str_replace("_", " ", $page) ) . '</a>';
+	$links[] = '<a href="' . htmlspecialchars($u) . '" title="' . htmlspecialchars( str_replace("_", " ", $page) ) . '">' . htmlspecialchars( $lang . ":" . str_replace("_", " ", $page) ) . '</a>';
     }
 
     return $links;
@@ -118,6 +119,45 @@ function printList($items, $escape = true, $class = "list") {
       ?>
     </ul>
     <?php
+}
+
+function printConceptPageList( $langs, $concept, $class ) {
+    $linksByLanguage = getAllConceptPageLinks($concept);
+    ?>
+    <ul class="<?php print htmlspecialchars($class); ?>">
+      <?php
+	foreach ( $linksByLanguage as $lang => $links ) {
+	    foreach ($links as $link ) {
+		print "\t\t<li>" . $link . "</li>\n";
+	    }
+	}
+      ?>
+    </ul>
+    <?php
+}
+
+function array_key_diff($base, $other) {
+    $keys = array_keys($other);
+    foreach ($keys as $k) {
+	unset($base[$k]);
+    }
+
+    return $base;
+}
+
+function printRelatedConceptList( $langs, $concept, $class = "" ) {
+    $related = array();
+    if ( @$concept['similar'] ) $related += $concept['similar'];
+    if ( @$concept['related'] ) $related += $concept['related'];
+    if ( @$concept['narrower'] ) $related += $concept['narrower'];
+
+    if (isset($concept['broader'])) $related = array_key_diff($related, $concept['broader']);
+
+    printConceptList($langs, $related, $class);
+}
+
+function printConceptCategoryList( $langs, $concept, $class = "" ) {
+    if (isset($concept['broader'])) printConceptList($langs, $concept['broader'], $class);
 }
 
 function printDefList($items, $scapeKeys = true, $escapeValues = true, $class = "list") {
@@ -153,38 +193,66 @@ function printConcept($concept, $langs, $terse = true) {
 
     extract( $concept );
     $wclass = getWeightClass($score);
+    $lclass = $terse ? "terselist" : "list";
+    $gallery = $utils->getImagesAbout($concept, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages );
+
+    if (is_array($definition)) $definition = $utils->pickLocal($definition, $langs);
 
     ?>
-    <tr class="row_item">
-      <td class="cell_weight  <?php print "weight_$wclass"; ?>"><?php print htmlspecialchars($score); ?></td>
-      <td colspan="3" class="cell_name  <?php print "weight_$wclass"; ?>">
-	<h3>
+    <tr class="row_top">
+      <td colspan="3">&nbsp;</td>
+    </tr>
+
+    <tr class="row_head">
+      <td colspan="1" class="cell_name">
+	<h3 class="<?php print "weight_$wclass"; ?>">
 	<?php print getConceptDetailsLink($langs, $concept); ?>
-	<?php /* TODO: wiki links */ ?>
 	</h3>
+      </td>
+      <td colspan="2" class="cell_pages">
+	<?php printConceptPageList($langs, $concept, $lclass) ?>
       </td>
     </tr>
 
-    <?php if (isset($definition) && !empty($definition)) { 
-	$definition = $utils->pickLocal($definition, $langs);
-    ?>
-
     <tr class="row_def">
-      <td></td>
       <td colspan="3"><?php print htmlspecialchars($definition); ?></td>
     </tr>
-    <?php } ?>
 
-    <tr class="row_details row_images">
-      <td></td>
-      <td class="cell_images" colspan="3">
+    <tr class="row_related">
+      <td class="cell_related" colspan="3">
+      Related: 
       <?php 
-	  $gallery = $utils->getImagesAbout($concept, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages );
-	  $c = printConceptImageList( $gallery, $terse ? "terselist" : "gallery" ); 
+	  printRelatedConceptList( $langs, $concept, $lclass ); 
       ?>
       </td>
     </tr>
 
+    <tr class="row_images">
+      <td></td>
+      <td class="cell_images" colspan="3">
+      <?php 
+	  printConceptImageList( $gallery, $terse ? "tersegallery" : "gallery" ); 
+      ?>
+      more...<!-- TODO -->
+      </td>
+    </tr>
+
+    <tr class="row_category">
+      <td class="cell_related" colspan="3">
+      Broader:
+      <?php 
+	  printConceptCategoryList( $langs, $concept, $lclass ); 
+      ?>
+      </td>
+    </tr>
+
+    <tr class="row_bottom">
+      <td colspan="3">&nbsp;</td>
+    </tr>
+
+    <tr class="row_blank">
+      <td colspan="3">&nbsp;</td>
+    </tr>
 
     <?php
     if (isset($score) && $score && $score<2 && $pos>=3) return false;
@@ -261,8 +329,8 @@ if (!$error) {
 	.inputform { text-align: center; margin:1ex auto; padding:1ex; width:80%; border:1px solid #666666; background-color:#DDDDDD; }
 	.footer { font-size:80%; text-align: center; border-top: 1px solid #666666; }
 	.note { font-size:80%; }
-	.terselist, .terselist li { display: inline; margin:0; padding:0; }
-	.terselist li { display: inline; }
+
+	.tersegallery, .tersegallery li, .terselist, .terselist li { display: inline; margin:0; padding:0; }
 	.terselist li:before { content:" - " }
 	.terselist li:first-child:before { content:"" }
 
@@ -320,7 +388,6 @@ if ($result) {
 	  if (!$continue) break;
     ?>
     </table>
-    </div>
 
 <?php
     } #concept loop
