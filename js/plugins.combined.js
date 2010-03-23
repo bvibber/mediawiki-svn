@@ -10105,18 +10105,22 @@ fn: {
 				nameIndex = ranges.push( new Range( nameBeginIndex, nameEndIndex ) ) - 1;
 				currentValue = currentField.substring( currentField.indexOf( '=' ) + 1);
 				oldDivider += currentField.indexOf( '=' ) + 1;
+				
+				//default values, since we'll allow empty values
+				valueBeginIndex = oldDivider + 1;
+				valueEndIndex = oldDivider + 1;
+				
 				// First nonwhitespace character
 				valueBegin = currentValue.match( /\S+/ );
-				if( valueBegin == null ){ //ie
-					continue;
+				if( valueBegin != null ){
+					valueBeginIndex = valueBegin.index + oldDivider + 1;
+					// Last nonwhitespace and non } character
+					valueEnd = currentValue.match( /[^\s]\s*$/ );
+					if( valueEnd == null ){ //ie
+						continue;
+					}
+					valueEndIndex = valueEnd.index + oldDivider + 2;
 				}
-				valueBeginIndex = valueBegin.index + oldDivider + 1;
-				// Last nonwhitespace and non } character
-				valueEnd = currentValue.match( /[^\s]\s*$/ );
-				if( valueEnd == null ){ //ie
-					continue;
-				}
-				valueEndIndex = valueEnd.index + oldDivider + 2;
 				// All the chars upto now
 				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end, valueBeginIndex) ) - 1;
 				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) ) - 1;
