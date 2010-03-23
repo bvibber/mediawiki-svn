@@ -797,18 +797,19 @@ mw.UploadHandler.prototype = {
 		var _this = this;
 		// Check if we have a stashed key:
 		if ( _this.warnings_sessionkey !== false ) {
-			//set to "loading"
+		
+			// Set to "loading"
 			_this.ui.setLoading();
-			//setup request:
+			
+			// Setup request:
 			var request = {
 				'action': 'upload',
 				'sessionkey': _this.warnings_sessionkey,
 				'ignorewarnings': 1,			
 				'token' :  _this.getToken(),
 				'filename' :  _this.getFileName(),
-				'comment' : $j( this.form ).find( "[name='comment']" ).val()
-			};
-			
+				'comment' : _this.getUploadDescription()
+			};			
 			
 			//run the upload from stash request
 			mw.getJSON(_this.apiUrl, request, function( data ) {
