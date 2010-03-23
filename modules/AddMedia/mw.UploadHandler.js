@@ -459,15 +459,25 @@ mw.UploadHandler.prototype = {
 		// Do normal post upload override
 		_this.formDirectSubmit = true;
 		
-		// Update the wpDescription
+		// Update the wpDescription ( add if not present)
+		// commons does some ugly hacks that remove wgUploadDesction from the form 
+		if( $form.find("[name='comment']").length == 0) {
+			$form.append( 
+				$j('<input />')
+				.attr({
+					'name': 'comment',
+					'type' : 'hidden'
+				})
+			)
+		}
 		$form.find("[name='comment']").val( _this.getUploadDescription() );
 		
 				
-		mw.log('About to submit:');
-		
+		mw.log('About to submit:' + $form.find("[name='comment']").val() );
+		/*
 		$form.find('input').each( function(){
 			mw.log( $j(this).attr( 'name' ) + ' :: ' + $j(this).val() );	
-		})
+		})*/
 		
 		$form.submit();
 	},
