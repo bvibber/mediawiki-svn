@@ -218,10 +218,25 @@ mw.UploadHandler.prototype = {
 				return false;
 			}
 		}		
+
+		// Reinstate the ['name'=comment'] filed since
+		// commons hacks removes wgUploadDesction from the form 
+		var $form = $j( this.form );
+		if( $form.find("[name='comment']").length == 0) {
+			$form.append( 
+				$j('<input />')
+				.attr({
+					'name': 'comment',
+					'type' : 'hidden'
+				})
+			)
+		}
+		$form.find("[name='comment']").val( _this.getUploadDescription() );
+		
 		// Check for post action 
-		// formDirectSubmit is needed to actualy do the upload via a form "submit"	
+		// formDirectSubmit is needed to actually do the upload via a form "submit"	
 		if ( this.formDirectSubmit ) {		
-			mw.log("direct submit: ");
+			mw.log("direct submit: " );
 			return true;
 		}	
 		
@@ -379,7 +394,7 @@ mw.UploadHandler.prototype = {
 			)
 		}		
 
-		// Add JSON response format
+		// Add JSON response format (jsonfm so that IE does not prompt save dialog box on iframe result )
 		if ( $form.find( "[name='format']" ).length == 0 ) {
 			$form.append( 
 				$j( '<input />' )
@@ -458,19 +473,6 @@ mw.UploadHandler.prototype = {
 				
 		// Do normal post upload override
 		_this.formDirectSubmit = true;
-		
-		// Update the wpDescription ( add if not present)
-		// commons does some ugly hacks that remove wgUploadDesction from the form 
-		if( $form.find("[name='comment']").length == 0) {
-			$form.append( 
-				$j('<input />')
-				.attr({
-					'name': 'comment',
-					'type' : 'hidden'
-				})
-			)
-		}
-		$form.find("[name='comment']").val( _this.getUploadDescription() );
 		
 				
 		mw.log('About to submit:' + $form.find("[name='comment']").val() );
