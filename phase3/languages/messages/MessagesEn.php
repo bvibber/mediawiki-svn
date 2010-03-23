@@ -4121,6 +4121,7 @@ You can also [[Special:Watchlist/edit|use the standard editor]].',
 'duplicate-defaultsort' => '\'\'\'Warning:\'\'\' Default sort key "$2" overrides earlier default sort key "$1".',
 
 # Installer
+'config-information' => 'Information',
 'config-session-error' => 'Error starting session: $1',
 'config-session-expired' => 'Your session data seems to have expired. 
 Sessions are configured for a lifetime of $1, you can increase this by setting session.gc_maxlifetime in php.ini.

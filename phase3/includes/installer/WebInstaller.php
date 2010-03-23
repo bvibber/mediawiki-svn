@@ -427,7 +427,8 @@ class WebInstaller extends Installer {
 				"<div class=\"config-info-left\">\n" .
 				Xml::element( 'img', 
 					array( 
-						'src' => '../skins/common/images/' . $icon
+						'src' => '../skins/common/images/' . $icon,
+						'alt' => wfMsg( 'config-information' ),
 					)
 				) . "\n" . 
 				"</div>\n" . 
@@ -450,12 +451,13 @@ class WebInstaller extends Installer {
 		$text = wfMsgReal( $msg, $args, false, false, false );
 		$html = $this->parse( $text, true );
 		$id = $this->helpId++;
+		$alt = wfMsg( 'help' );
 
 		return 
 			"<div class=\"config-help-wrapper\">\n" . 
 			"<div class=\"config-show-help\" id=\"config-show-help-$id\">\n" .
 			Xml::openElement( 'a', array( 'href' => "javascript:showHelp($id,true)" ) ) .
-			"<img src=\"../skins/common/images/help-22.png\"/>&nbsp;&nbsp;" .
+			"<img src=\"../skins/common/images/help-22.png\" alt=\"$alt\" />&nbsp;&nbsp;" .
 			wfMsgHtml( 'config-show-help' ) .
 			"</a></div>\n" .
 			"<div class=\"config-help-message\" id=\"config-help-message-$id\">\n" .
@@ -463,7 +465,7 @@ class WebInstaller extends Installer {
 			"</div>\n" .
 			"<div class=\"config-hide-help\" id=\"config-hide-help-$id\">\n" .
 			Xml::openElement( 'a', array( 'href' => "javascript:showHelp($id,false)" ) ) .
-			"<img src=\"../skins/common/images/help-22.png\"/>&nbsp;&nbsp;" .
+			"<img src=\"../skins/common/images/help-22.png\" alt=\"$alt\" />&nbsp;&nbsp;" .
 			wfMsgHtml( 'config-hide-help' ) .
 			"</a></div>\n</div>\n";
 	}
@@ -500,10 +502,14 @@ class WebInstaller extends Installer {
 		} else {
 			$labelText = wfMsgHtml( $msg );
 		}
+		$attributes = array( 'class' => 'config-label' );
+		if ( $forId ) {
+			$attributes['for'] = $forId;
+		}
 		return 
 			"<div class=\"config-input\">\n" .
 			Xml::tags( 'label', 
-				array( 'for' => $forId, 'class' => 'config-label' ), 
+				$attributes, 
 				$labelText ) . "\n" .
 			$contents .
 			"</div>\n";
@@ -883,9 +889,9 @@ class WebInstaller_Language extends WebInstallerPage {
 		$languages = Language::getLanguageNames();
 		ksort( $languages );
 		$dummies = array_flip( $wgDummyLanguageCodes );
-		foreach ( $languages as $code => $name ) {
+		foreach ( $languages as $code => $lang ) {
 			if ( isset( $dummies[$code] ) ) continue;
-			$s .= "\n" . Xml::option( "$code - $name", $code, $code == $selectedCode );
+			$s .= "\n" . Xml::option( "$code - $lang", $code, $code == $selectedCode );
 		}
 		$s .= "\n</select>\n";
 		return $this->parent->label( $label, $name, $s );

@@ -3139,7 +3139,8 @@ $wgMessageStructure = array(
 		'ajax-error-dismiss',
 		'ajax-remove-category-error',
 	),
-	'config' => array( 
+	'config' => array(
+		'config-information',
 		'config-session-error',
 		'config-session-expired',
 		'config-no-session',

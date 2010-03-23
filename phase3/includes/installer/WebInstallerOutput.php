@@ -99,7 +99,7 @@ class WebInstallerOutput {
 
 <body class="<?php print $this->getDir(); ?>">
 <noscript>
-<style>
+<style type="text/css">
 .config-help-message { display: block; }
 .config-show-help { display: none; }
 </style>
