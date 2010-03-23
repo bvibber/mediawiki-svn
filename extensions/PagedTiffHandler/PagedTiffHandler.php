@@ -73,7 +73,8 @@ $wgTiffIdentifyBypassMessages = array(
 );
 
 // Use PHP-TiffReader
-$wgTiffUseTiffReader = true;
+// This is still experimental
+$wgTiffUseTiffReader = false;
 $wgTiffReaderPath = dirname(__FILE__);
 $wgTiffReaderCheckEofForJS = 4; // check the last 4MB for JS
 
