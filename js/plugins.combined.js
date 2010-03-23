@@ -9958,7 +9958,7 @@ fn: {
 		};
 		
 		// Whitespace* {{ whitespace* nonwhitespace:
-		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
+		if ( wikitext.match( /\s*{{\s*[^\s|]*:/ ) ) {
 			collapsible = false; // is a parser function
 		}
 		/*
