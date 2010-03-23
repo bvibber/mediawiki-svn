@@ -2694,21 +2694,26 @@ Szeretnénk tudni, hogy mit gondolsz az új felületről ezért örülnénk, ha 
 	'optin-survey-answer-changes-predictability' => 'Fejlesszétek a teljesítmény előrejelezhetőségét.',
 	'optin-survey-answer-changes-custom' => 'Tegyetek lehetővé nagyobb felhasználói szabadságot a beállításokban.',
 	'optin-survey-answer-changes-other' => 'Más:',
-	'optin-improvements' => '== Mit fejlesztettünk? ==
-[[File:UsabilityNavigation.png|left|link=]]
-;Fejlettebb navigáció
-Az új navigációs rendszer könnyebbé teszi, hogy lásd, hol vagy és mit csinálsz éppen, továbbá azt is, hogy hová mehetsz tovább, és hogy hogyan juthatsz el oda. A keresőmező jobb felső sarokba való áthelyezésével könnyebbé válik a keresés.
-<div style="clear:both;"></div>
+	'optin-improvements2' => '== Mi fejlődött? ==
 
-[[File:UsabilityToolbar.png|left|link=]]
-;Kibővített szerkesztőeszköztár
-Az új ikonok sokkal jobban reprezentálják, hogy melyik gomb mire való. A kinyitható részek elrejtik a ritkábban használt eszközöket, átláthatóbbá téve az eszköztárat, miközben továbbra is egyetlen kattintásra elérhetőek.
-A Segítség részben a wiki-jelölőnyelv leggyakrabban használt elemeinek leírását találhatod meg.
-<div style="clear:both;"></div>
-== Hogyan vehetsz részt? ==
-Ha többet szeretnél tudni a projektről, vagy be szeretnél kapcsolódni, látogasd meg a [http://usability.wikimedia.org Usability Initiative wikiét].  Itt információkat találsz az indulásunkról, kutatásról, tervezésről és fejlesztéstől, valamint a kiadásainkról.  Kérdéseidet vagy visszajelzéseidet a [http://usability.wikimedia.org/wiki/Talk:Prototype prototípus megbeszélési lapján] várjuk.  Konkrét probléma orvosolásához keresd fel a megfelelő vitalapot.  Ha hibával találkoznál, hagyj üzenetet az [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco kiadás vitalapján] vagy a [https://bugzilla.wikimedia.org Bugzillán].
+[[File:UsabilityToolbar.png|left|link=|Képernyőkép a fejlettebb szerkesztő-eszköztárról]]
+[[File:UsabilityDialogs.png|left|link=|Képernyőkép az új tartalomgeneráló párbeszédablakokról]]
 
-Köszönjük, és várjuk a visszajelzésedet!',
+;Fejlettebb szerkesztő-eszköztár
+Az új szerkesztő-eszköztár könnyebbé teszi a szócikkek szerkesztését.
+Új és továbbfejlesztett ikonok teszik egyértelműbbé az egyes eszközök funkcióját.
+A kinyitható eszköztárak csökkentik a zsúfoltságot, de a kevésbé gyakran használt eszközök is csak egy kattintásnyira maradnak.
+
+;Párbeszédablakok
+Hivatkozások vagy táblázatok készítésénél a megfelelő gombra kattintva ezentúl egy párbeszédablak nyílik meg, ami segít a létrehozásukban egy űrlap kitöltése után.
+
+;És sok más újdonság
+Számos egyéb javítást eszközöltünk, mint például a fejlettebb navigáció, legördülő lapfülek, okosabb kereső…
+
+== Hogyan vehetek részt benne? ==
+
+Ha szeretnél többet megmegtudni a Usability Initiative-ről, látogasd meg a [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative honlapunkat].
+<div style="clear:both"></div>',
 );
 
 /** Armenian (Հայերեն)
@@ -4226,35 +4231,40 @@ Me skulle likt å veta kva du tenkjer om det nye grensesnittet vårt, so me vill
 	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å bruka.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Det fungerte ikkje på rett vis.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Eg likte ikkje utsjånaden.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Eg lika ikkje den nye verktylina.',
 	'optin-survey-answer-whyoptout-other' => 'Anna årsak:',
-	'optin-survey-question-usedtoolbar-ifyes' => 'Om ja, kva lika du med det? Kva likte du ikkje med det?',
-	'optin-survey-question-different' => "Kva kunne me ha gjort annleis for at du skulle ha halda fram med å bruka denne betaversjonen ''(tilbakemelding på engelsk)''?",
-	'optin-survey-question-feedback' => 'Ver venleg og send ei tilbakemelding:',
+	'optin-survey-question-explain' => 'Forklar eller utdjup gjerne svaret du gav over:',
+	'optin-survey-question-techfail' => 'Møtte du på tekniske feil medan du nytta Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Om ja, utdjup eller forklår:',
+	'optin-survey-question-usedtoolbar' => 'Har du nytta den nye utvidbare verktylina til å endra ei sida?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Om ja, kva lika du med ho? Kva lika du ikkje med ho?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Om nei, kvifor ikkje? Vil du nytta ho i framtida? Utdjup gjerne.',
+	'optin-survey-question-different' => 'Kva kunne me ha gjort annleis for at du skulle ha heldt fram med å nytta Beta?',
+	'optin-survey-question-feedback' => 'Lat oss gjerne få veta om andre kommentarar, tankar eller anna som du vil ha delt - all tilbakemelding er nyttig:',
 	'optin-survey-question-browser' => 'Kva for ein nettlesar nyttar du?',
 	'optin-survey-answer-browser-other' => 'Annan nettlesar:',
 	'optin-survey-question-os' => 'Kva for operativsystem nyttar du?',
 	'optin-survey-answer-os-other' => 'Anna operativsystem:',
 	'optin-survey-question-res' => 'Kva er oppløysinga på skjermen din?',
+	'optin-survey-question-changes' => 'Kva endringar skulle du ha likt å sett i Beta i framtida (vel alt som passar)?',
 	'optin-survey-answer-changes-nav' => 'Gjera det lettare å navigera på denne nettsida.',
 	'optin-survey-answer-changes-upload' => 'Forbetra systemet for opplasting av innhald og media.',
 	'optin-survey-answer-changes-lookfeel' => 'Oppdatera utsjånad og presentasjon av nettsidene.',
 	'optin-survey-answer-changes-other' => 'Andre:',
-	'optin-improvements' => '== Kva er vorte betra? ==
+	'optin-improvements2' => '== Kva er betra? ==
+[[File:UsabilityToolbar.png|left|link=|Skjermbilete av den betra verktylina]]
+[[File:UsabilityDialogs.png|left|link=|Skjermbilete av dei nye dialogane for innhaldsgenerering]]
+;Betra verktylina
+Den betra verktylina gjer det enklare å endra artiklar.
+Nye og betra ikon gjer det klårare kva handlingar kvart einskild verkty utfører. Utvidbare seksjonar reduserer rot, medan verkty som vert nytta lite stadig berre er eit klikk unna.
+;Dialog
+Når du opprettar lenkjer eller tabellar vil verktyikonet opna ein dialogboks som hjelper deg gjennom å lata deg fylla ut eit enkelt skjema.
+;Meir
+Me har introdusert ei rekkja andre betringar, sånn som betra navigasjon, fallande faner, betra søk og meir.
 
-[[File:UsabilityNavigation.png|left|link=|Skjermbilete av dei nye navigeringsfanene]]
-;Betra navigasjon
-Det nye navigasjonssystemet gjer det enklare å sjå kvar du er og kva du gjer, i tillegg til kvar du kan gå og koss du kan koma deg dit. Med søkjeboksen plassert oppe i høgre hyrnet er søkjefunksjonen enklare å finna og kjappare å nytta.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Skjermbilete av den betra verktylinja]]
-;Betra verktylinja
-Nye og betra ikon gjer det klårare kva handlingar kvart einskilde verkty utfører. Utvidbare seksjonar reduserer rot, medan verkty som vert nytta lite stadig berre er eit klikk unna.
-Hjelpeseksjonen gjev kjappt tilgjenge til informasjon om vanleg nytting av wikisyntaks. 
-<div style="clear:both;"></div>
-== Koss verta involvert ==
-For å læra meir om prosjektet eller for å verta  involvert, sjå [http://usability.wikimedia.org wikien til brukarvenlegheitsinitativet]. Der vil du finna informasjon om stipendiatet vårt, forskinga, designet og utviklinga vår og utgjevingar. For å koma med spørsmål eller gje generell tilbakemelding, nytt  [http://usability.wikimedia.org/wiki/Talk:Prototype diskusjonssida til prototypen]. For å ta opp spesielle emne, sjå dei assosierte diskusjonssidene. Om du finn programfeil, gje oss gjerne ein lyd på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusjonssida til utgjevinga av Babaco] eller nytt [https://bugzilla.wikimedia.org Bugzilla].
-
-Me takkar og ser fram til å høyra frå deg.',
+== Koss involvera deg ==
+For å læra meir om prosjektet eller for å verta  involvert, sjå [http://usability.wikimedia.org wikien til brukarvenlegheitsinitativet].
+<div style="clear:both"></div>',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
