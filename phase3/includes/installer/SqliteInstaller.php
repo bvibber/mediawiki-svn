@@ -40,8 +40,14 @@ class SqliteInstaller extends InstallerDBType {
 
 	function submitConnectForm() {
 		global $wgSQLiteDataDir;
-		$newValues = $this->setVarsFromRequest( array( 'wgSQLiteDataDir', 'wgDBname' ) );
-		$dir = $newValues['wgSQLiteDataDir'];
+		$this->setVarsFromRequest( array( 'wgSQLiteDataDir', 'wgDBname' ) );
+
+		$dir = realpath( $this->getVar( 'wgSQLiteDataDir' ) );
+		if ( !$dir ) {
+			// realpath() sometimes fails, especially on Windows
+			$dir = $this->getVar( 'wgSQLiteDataDir' );
+		}
+		$this->setVar( 'wgSQLiteDataDir', $dir );
 		if ( !is_dir( $dir ) ) {
 			if ( !is_writable( dirname( $dir ) ) ) {
 				return Status::newFatal( 'config-sqlite-parent-unwritable', $dir, dirname( $dir ) );
@@ -56,7 +62,7 @@ class SqliteInstaller extends InstallerDBType {
 			file_put_contents( "$dir/.htaccess", "Deny from all\n" );
 		}
 		if ( !is_writable( $dir ) ) {
-			return Status::newFatal( 'config-sqlite-unwritable', $dir );
+			return Status::newFatal( 'config-sqlite-dir-unwritable', $dir );
 		}
 		return Status::newGood();
 	}
@@ -101,6 +107,17 @@ class SqliteInstaller extends InstallerDBType {
 	}
 
 	function setupDatabase() {
+		$file = DatabaseSqlite::generateFileName( $this->getVar( 'wgSQLiteDataDir' ), $this->getVar( 'wgDBname' ) );
+		if ( file_exists( $file ) ) {
+			if ( !is_writable( $file ) ) {
+				return Status::newFatal( 'config-sqlite-readonly', $file );
+			}
+		} else {
+			if ( file_put_contents( $file, '' ) === false ) {
+				return Status::newFatal( 'config-sqlite-cant-create-db', $file );
+			}
+		}
+		return $this->getConnection();
 	}
 
 	function getLocalSettings() {

@@ -4277,6 +4277,18 @@ but it will not let you store characters above the [http://en.wikipedia.org/wiki
 'config-sqlite-dir-help' => 'SQLite stores data into a file in the filesystem.
 This directory must be writable by the webserver.
 It should <strong>not</strong> accessible via the web.',
+'config-sqlite-readonly' => 'File $1 is not writeable.',
+'config-sqlite-name-help' => 'Choose a name that identifies your wiki. Do not use spaces or hyphens. This will be used for the SQLite data file name.',
+'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1", because the parent directory "$2" is not writable by the webserver.
+Please create this directory yourself, make it writable, and try again.',
+'config-sqlite-mkdir-error' => 'Error creating the data directory "$1".
+Please check the location and try again.',
+'config-sqlite-dir-unwritable' => 'Unable to write to the given directory: $1.
+Please change its permissions so that the webserver can write to it, and try again.',
+'config-sqlite-connection-error' => '$1.
+
+Check the data directory and database name below and try again.',
+'config-sqlite-cant-create-db' => 'Could not create database file $1.',
 'config-type-mysql' => 'MySQL',
 'config-type-postgres' => 'PostgreSQL',
 'config-type-sqlite' => 'SQLite',
@@ -4295,16 +4307,6 @@ Check the host, username and password below and try again.',
 'config-invalid-schema' => 'Invalid schema for MediaWiki "$1". Please use only letters, numbers and underscores.',
 'config-invalid-ts2schema' => 'Invalid schema for tsearch2 "$1". Please use only letters, numbers and underscores.',
 'config-postgres-old' => 'PostgreSQL $1 or later is required, you have $2.',
-'config-sqlite-name-help' => 'Choose a name that identifies your wiki. Do not use spaces or hyphens. This will be used for the SQLite data file name.',
-'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1", because the parent directory "$2" is not writable by the webserver.
-Please create this directory yourself, make it writable, and try again.',
-'config-sqlite-mkdir-error' => 'Error creating the data directory "$1".
-Please check the location and try again.',
-'config-sqlite-unwritable' => 'Unable to write to the given directory: $1.
-Please change its permissions so that the webserver can write to it, and try again.',
-'config-sqlite-connection-error' => '$1.
-
-Check the data directory and database name below and try again.',
 'config-can-upgrade' => 'There are MediaWiki tables in this database. 
 To upgrade them to MediaWiki $1, click <strong>Continue</strong>.',
 'config-upgrade-done' => 'Upgrade complete. 
