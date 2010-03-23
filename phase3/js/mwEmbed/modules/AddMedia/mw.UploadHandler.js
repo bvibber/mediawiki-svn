@@ -231,7 +231,10 @@ mw.UploadHandler.prototype = {
 				})
 			)
 		}
-		$form.find("[name='comment']").val( _this.getUploadDescription() );
+		var uploadDesc =  _this.getUploadDescription();
+		if( uploadDesc ) {
+			$form.find("[name='comment']").val( uploadDesc );
+		}
 		
 		// Check for post action 
 		// formDirectSubmit is needed to actually do the upload via a form "submit"	
@@ -506,6 +509,7 @@ mw.UploadHandler.prototype = {
 	*
 	* NOTE: wpUploadDescription should be a configuration option. 
 	*
+	* @param {Boolean} useCache If the upload description cache can be used. 
 	* @return {String} 
 	* 	value of wpUploadDescription 
 	*/
@@ -515,6 +519,9 @@ mw.UploadHandler.prototype = {
 		if(  comment_value == '' ) {
 			// Else try with the form name: 
 			comment_value = $j( "[name='comment']").val();
+		}
+		if( !comment_value){
+			comment_value = $j( this.form ).find( "[name='comment']" ).val();
 		}
 		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.rewriteDescriptionText );
 		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
@@ -527,6 +534,7 @@ mw.UploadHandler.prototype = {
 			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
 		}
 		mw.log( 'getCommentText:: new val:' + comment_value  );
+		this.uploadDescription = comment_value;
 		return comment_value;
 	},
 	
@@ -810,8 +818,8 @@ mw.UploadHandler.prototype = {
 				'ignorewarnings': 1,			
 				'token' :  _this.getToken(),
 				'filename' :  _this.getFileName(),
-				'comment' : _this.getUploadDescription()
-			};			
+				'comment' : _this.getUploadDescription( )			
+			};	
 			
 			//run the upload from stash request
 			mw.getJSON(_this.apiUrl, request, function( data ) {

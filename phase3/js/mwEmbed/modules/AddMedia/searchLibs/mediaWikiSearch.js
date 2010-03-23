@@ -49,26 +49,9 @@ mediaWikiSearch.prototype = {
 			'redirects' : true
 		}
 		mw.getJSON(this.provider.apiUrl, request, function( data ) {				
-				// check for redirect
-				for ( var i in data.query.pages ) {
-					var page = data.query.pages[i];
-					if ( page.revisions[0]['*'] ) {
-						var re = new RegExp( /[^\[]*\[\[([^\]]*)/ );
-						var pt = page.revisions[0]['*'].match( re );
-						if ( pt[1] ) {
-							_this.addByTitle( pt[1], callback, redirect_count++ );
-							return ;
-						} else {
-							mw.log( 'Error: addByTitle could not proccess redirect' );
-							callback( false );
-							return false;
-						}
-					}
-				}
-				// if not a redirect do the callback directly: 	
-				callback( _this.addSingleResult( data ) );
-			}
-		);
+			// call addSingleResult
+			callback( _this.addSingleResult( data ) );
+		});
 	},
 		
 	/**
