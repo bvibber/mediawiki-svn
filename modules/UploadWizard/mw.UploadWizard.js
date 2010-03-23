@@ -45,7 +45,10 @@ mw.addMessages( {
 	"mwe-upwiz-other-prefill": "Free wikitext field",
 	"mwe-upwiz-showall": "show all",
 	"mwe-upwiz-source": "Source",
-	
+	"mwe-upwiz-thanks-intro": "Thanks for uploading your works! You can now use your files on a Wikipedia article or link to them from elsewhere on the web.",
+	"mwe-upwiz-thanks-link": "This file is now available at <b><tt>$1</tt></b>",
+	"mwe-upwiz-thanks-wikitext": "To use it in a Wiki article, copy this text: ",
+	"mwe-upwiz-thanks-url": "To link to it in HTML, copy this HTML code: ",
 
 	"mwe-upwiz-upload-error-bad-filename-extension": "This wiki does not accept filenames with the extension \"$1\".",
 	"mwe-upwiz-upload-error-duplicate": "This file was previously uploaded to this wiki.",
@@ -377,7 +380,7 @@ mw.UploadWizardUpload.prototype = {
 	getThumbnail: function( width, callback ) {
 		var _this = this;
 		if ( _this._thumbnails[ "width" + width ] !== undefined ) {
-			callback( _this.thumbnails[ "width" + width ] );
+			callback( _this._thumbnails[ "width" + width ] );
 			return;
 		}
 
@@ -1066,8 +1069,9 @@ mw.UploadWizardDetails.prototype = {
 		var callback = function( thumbnail ) { 
 			// side effect: will replace thumbnail's loadingSpinner
 			_this.thumbnailDiv.html(
-				$j('<a>')
-					.attr( 'href', _this.upload.imageinfo.descriptionurl )
+				$j('<a/>')
+					.attr( { 'href': _this.upload.imageinfo.descriptionurl,
+						 'target' : '_new' } )
 					.append(
 						$j( '<img/>' )
 							.addClass( "mwe-upwiz-thumbnail" )
@@ -1311,6 +1315,8 @@ mw.UploadWizardDetails.prototype = {
 
 	/**
 	 * Post wikitext as edited here, to the file
+	 * XXX This should be split up -- one part should get wikitext from the interface here, and the ajax call
+	 * should be be part of upload
 	 */
 	submit: function() {
 		var _this = this;
@@ -1393,13 +1399,11 @@ mw.UploadWizardDetails.prototype = {
 			// and many more
 			
 			// success is
+			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
 			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
 				_this.upload.title = data.move.to;
 			}
 
-			// may want to get additional ii params to get the new URL
-
-			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
 			// which should match our request.
 			// we should update the current upload filename
 			// then call the uploadwizard with our progress
@@ -1790,6 +1794,7 @@ mw.UploadWizard.prototype = {
 				upload.details.submit();
 			},
 		        function() { 
+				_this.prefillThanksPage();
 				_this.moveToTab('thanks') 
 		  	} 
 		);
@@ -1823,6 +1828,63 @@ mw.UploadWizard.prototype = {
 		} );
 	},
 
+	// might as well hardcode more of this?
+	prefillThanksPage: function() {
+		var _this = this;
+		
+		var thanksDiv = $j( '#mwe-upwiz-thanks' );
+
+		thanksDiv.append( $j( '<p>' ).append( gM( 'mwe-thanks-intro' ) ) );
+		var width = mw.getConfig( 'thumbnailWidth' );
+
+		$j.each( _this.uploads, function(i, upload) {
+			var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-links-thumbnail' );
+			thanksDiv.append( thumbnailDiv );
+
+			/* this is copied code, evil */
+			var callback = function( thumbnail ) { 
+				// side effect: will replace thumbnail's loadingSpinner
+				thumbnailDiv.html(
+					$j('<a>')
+						.attr( { 'href': upload.imageinfo.descriptionurl,
+							 'target': '_new' } )
+						.append(
+							$j( '<img/>' )
+								.addClass( "mwe-upwiz-thumbnail" )
+								.attr( 'width',  thumbnail.width )
+								.attr( 'height', thumbnail.height )
+								.attr( 'src',    thumbnail.url ) ) );
+			};
+
+			thumbnailDiv.loadingSpinner();
+			upload.getThumbnail( width, callback );
+			/* end evil copied code */
+
+			
+			var linksDiv = $j( '<div></div>')
+				.addClass( 'mwe-upwiz-thanks-links' )
+				.append( $j('<p/>')
+					.append( $j( gM( 'mwe-upwiz-thanks-link' 
+						          [ $j( '<a />' )
+								.attr( { target: '_new', href: upload.imageinfo.descriptionurl } )
+								.text( upload.title ) ] ) ) ) )
+
+				.append( $j('<p/>')
+					.append( $j( gM( 'mwe-upwiz-thanks-wikitext' ) ),
+						 $j( '<input />' )
+							.addClass( 'mwe-thanks-input' )
+							.attr( { type: text, value: "[[File: " + upload.title + "]]" } ) ) )
+				.append( $j('<p/>')
+					.append( $j( gM( 'mwe-upwiz-thanks-url' ) ),
+						 $j( '<input />' )
+							.addClass( 'mwe-thanks-input' )
+							.attr( { type: text, value: upload.imageinfo.descriptionurl } ) ) )
+
+
+			thanksDiv.append(linksDiv);
+
+		} ); 
+	},
 
 	/**
 	 *
@@ -1836,27 +1898,8 @@ mw.UploadWizard.prototype = {
 	 */
 	stop: function() {
 
-	},
+	}
 
-	//
-	// entire METADATA TAB
-	//
-
-	/**
-	 *
-	 */
-	createDetails: function() {
-
-	},
-
-	/**
-	 *
-	 */
-	submitDetails: function() {
-
-	},
-
-	
 
 };
 
