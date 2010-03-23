@@ -116,7 +116,7 @@ class NaturalLanguageList {
 		'fieldsperitem' => 1,
 		'duplicates' => true,
 		'blanks' => false,
-		'itemcover' => null,
+		'itemoutput' => null,
 		'outputseparator' => null,
 		'lastseparator' => null,
 	);
@@ -142,9 +142,9 @@ class NaturalLanguageList {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
 				return wfMsgReplaceArgs( $this->mOptions['itemcover'], $this->mParams[0] );
 			} else {
-				return $this->mOptions['itemcover'] === null 
-					? wfMsg ( 'nll-itemcover' , $this->mParams[0] ) 
-					: wfMsgReplaceArgs( $this->mOptions['itemcover'], array( $this->mParams[0] ) );
+				return $this->mOptions['itemoutput'] === null 
+					? wfMsg ( 'nll-itemoutput' , $this->mParams[0] ) 
+					: wfMsgReplaceArgs( $this->mOptions['itemoutput'], array( $this->mParams[0] ) );
 			}
 		}
 		$str = '';
@@ -152,22 +152,23 @@ class NaturalLanguageList {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
 				$str .= wfMsgReplaceArgs( $this->mOptions['itemcover'], $param );
 			} else {
-				$str .= $this->mOptions['itemcover'] === null 
-					? wfMsg ( 'nll-itemcover' , $param ) 
-					: wfMsgReplaceArgs( $this->mOptions['itemcover'], array( $param ) );
+				$str .= $this->mOptions['itemoutput'] === null 
+					? wfMsg ( 'nll-itemoutput' , $param ) 
+					: wfMsgReplaceArgs( $this->mOptions['itemoutput'], array( $param ) );
 			}
 			if ( $i == $length-1 ) {
  
-			} elseif ( $i == $length-2 ) 
+			} elseif ( $i == $length-2 ) {
 				$str .= ( $this->mOptions['lastseparator'] === null 
 					? ( $this->mOptions['outputseparator'] === null 
 						? wfMsg('nll-lastseparator') 
 						: $this->mOptions['outputseparator'] ) 
 					: $this->mOptions['lastseparator'] );
-			else
+			} else {
 				$str .= ( $this->mOptions['outputseparator'] === null 
 					? wfMsg('nll-separator') 
 					: $this->mOptions['outputseparator'] );
+			}
 		}
 		return $str;
 	}
@@ -278,9 +279,9 @@ class NaturalLanguageList {
 			}
 		}
 		# we need to check for a special case with fieldsperitem;
-		# it cannot be set if itemcover is not set
+		# it cannot be set if itemoutput is not set
 		if ( $this->mOptions['fieldsperitem'] > 1 
-			&& $this->mOptions['itemcover'] === null )
+			&& $this->mOptions['itemoutput'] === null )
 		{
 			$this->mOptions['fieldsperitem'] = 1;
 		}
