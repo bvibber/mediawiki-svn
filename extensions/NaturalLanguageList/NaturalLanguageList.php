@@ -320,26 +320,18 @@ class NaturalLanguageList {
 			}
 		}
 		# Still here?  Then it must be an option
-		switch ( trim( $var ) ) {
+		switch ( $name = self::parseOptionName( $var ) ) {
 			case 'duplicates':
-				$this->mOptions['duplicates'] = self::trueCheck ( $value );
-				break;
 			case 'blanks':
-				$this->mOptions['blanks'] = self::trueCheck ( $value );
+				$this->mOptions[$name] = self::parseBoolean( $value );
 				break;
 			case 'outputseparator':
-			case 'separator':
-				$this->mOptions['outputseparator'] = self::trimString ( $value );
-				break;
 			case 'lastseparator':
-				$this->mOptions['lastseparator'] = self::trimString ( $value );
-				break;
 			case 'itemcover':
-				$this->mOptions['itemcover'] = self::trimString ( $value );
+				$this->mOptions[$name] = self::parseString( $value );
 				break;
 			case 'fieldsperitem':
-			case 'itemsperitem':
-				$this->mOptions['fieldsperitem'] = self::numeralCheck ( $value );
+				$this->mOptions[$name] = self::parseNumeral( $value );
 				break;
 			default:
 				# Wasn't an option after all
@@ -347,22 +339,42 @@ class NaturalLanguageList {
 					? trim( $this->mFrame->expand( $arg ) )
 					: $arg;
 		}
+		return false;
 	}
 
-	private static function numeralCheck ( $value, $default = 1 ) {
-		if ( is_numeric ( $value ) && $value > 0 ) {
+	private static function parseOptionName( $value ) {
+
+		static $magicWords = null;
+		if ( $magicWords === null ) {
+			$magicWords = new MagicWordArray( array(
+				'nll_blanks', 'nll_duplicates', 
+				'nll_fieldsperitem', 'nll_itemcover',
+				'nll_lastseparator', 'nll_outputseparator'
+			) );
+		}
+
+		if ( $name = $magicWords->matchStartToEnd( trim($value) ) ) {
+			return str_replace( 'nll_', '', $name );
+		}
+
+		return false;
+	}
+
+
+	private static function parseNumeral( $value, $default = 1 ) {
+		if ( is_numeric( $value ) && $value > 0 ) {
 			return floor( $value ); # only integers
 		}
 		return $default;
 	}
 
-	private static function trimString ( $value, $default = null ) {
+	private static function parseString( $value, $default = null ) {
 		if ( $value !== '' )
 			return $value;
 		return $default;
 	}
 
-	private static function trueCheck ( $value ) {
+	private static function parseBoolean( $value ) {
 		return in_array( $value, array( 1, true, '1', 'true' ), true );
 	}
 }

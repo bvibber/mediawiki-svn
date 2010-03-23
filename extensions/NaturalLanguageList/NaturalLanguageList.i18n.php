@@ -1,4 +1,6 @@
 <?php
+
+require_once( dirname(__FILE__) . '/NaturalLanguageList.i18n.magic.php' );
 $messages['en'] = array (
 	'nll-itemcover'			=> '$1',
 	'nll-separator'			=> ', ',
