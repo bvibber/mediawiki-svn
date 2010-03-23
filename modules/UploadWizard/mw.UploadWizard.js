@@ -60,6 +60,109 @@ mw.addMessages( {
 } );
 
 
+
+mw.ProgressBar = function( selector ) {
+	var _this = this;
+	_this.progressBarDiv = $j('<div></div>')
+				.addClass("mwe-upwiz-progress-bar")
+				.progressbar( { value: 0 } );
+
+	_this.timeRemainingDiv = $j('<div></div>').addClass("mwe-upwiz-etr");
+
+	_this.countDiv = $j('<div></div>').addClass("mwe-upwiz-count");
+
+	_this.beginTime = undefined;
+	
+	$j( selector ).html( 
+		$j('<div />').addClass( 'mwe-upwiz-progress' )
+			.append( $j( '<div></div>' )
+				.append( _this.progressBarDiv )
+				.append( _this.timeRemainingDiv ) )
+			.append( $j( _this.countDiv ) )
+	);
+			
+};
+
+mw.ProgressBar.prototype = {
+
+	/**
+	 * sets the beginning time (useful for figuring out estimated time remaining)
+	 * if time parameter omitted, will set beginning time to now
+	 *
+	 * @param time  optional; the time this bar is presumed to have started (epoch milliseconds)
+	 */ 
+	setBeginTime: function( time ) {
+		var _this = this;
+		_this.beginTime = time ? time : ( new Date() ).getTime();
+	},
+
+	/**
+	 * sets the total number of things we are tracking
+	 * @param total an integer, for display e.g. uploaded 1 of 5, this is the 5
+	 */ 
+	setTotal: function(total) {
+		var _this = this;
+		_this.total = total;
+	},	
+
+	/**
+	 * Show overall progress for the entire UploadWizard
+	 * The current design doesn't have individual progress bars, just one giant one.
+	 * We did some tricky calculations in startUploads to try to weight each individual file's progress against 
+	 * the overall progress.
+	 * @param fraction the amount of whatever it is that's done whatever it's done
+	 */
+	showProgress: function( fraction ) {
+		var _this = this;
+
+		_this.progressBarDiv.progressbar( 'value', parseInt( fraction * 100 ) );
+
+		var remainingTime;
+		if (_this.beginTime == null) {
+			remainingTime = 0;
+		} else {	
+			remainingTime = _this.getRemainingTime( fraction );
+		}
+
+		if ( remainingTime !== null ) {
+			_this.timeRemainingDiv
+				.html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000)) ) );
+		}
+	},
+
+	/**
+	 * Calculate remaining time for all uploads to complete.
+	 * 
+	 * @param fraction	fraction of progress to show
+	 * @return 		estimated time remaining (in milliseconds)
+	 */
+	getRemainingTime: function ( fraction ) {
+		var _this = this;
+		if ( _this.beginTime ) {
+			var elapsedTime = ( new Date() ).getTime() - _this.beginTime;
+			if ( fraction > 0.0 && elapsedTime > 0 ) { // or some other minimums for good data
+				var rate = fraction / elapsedTime;
+				return parseInt( ( 1.0 - fraction ) / rate ); 
+			}
+		}
+		return null;
+	},
+
+
+	/**
+	 * Show the overall count as we upload
+	 * @param count  -- the number of items that have done whatever has been done e.g. in "uploaded 2 of 5", this is the 2
+	 */
+	showCount: function( count ) {
+		var _this = this;
+		_this.countDiv.html( gM( 'mwe-upwiz-upload-count', [ count, _this.total ] ) );
+	}
+
+
+};
+
+
+
 //mw.setConfig('uploadHandlerClass', mw.MockUploadHandler); // ApiUploadHandler?
 
 // available licenses should be a configuration of the MediaWiki instance,
@@ -614,9 +717,6 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	_this.div = $j( '<div class="mwe-upwiz-details-file"></div>' );
 
-	_this.macroDiv = $j( '<div class="mwe-upwiz-macro"></div>' )
-		.append( $j( '<input type="submit" value="test edit"/>' ).click( function( ) { _this.submit( ) } ));
-
 	_this.thumbnailDiv = $j( '<div class="mwe-upwiz-thumbnail"></div>' );
 	
 	_this.errorDiv = $j( '<div class="mwe-upwiz-details-error"></div>' );
@@ -750,7 +850,6 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 
 	$j( _this.div )
-		.append( _this.macroDiv )   // XXX this is wrong; it's not part of a file's details
 		.append( _this.thumbnailDiv )
 		.append( _this.errorDiv )
 		.append( $j( _this.dataDiv )
@@ -1384,13 +1483,7 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-files"></div>'	
 		       +     '<div><a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a></div>'
 		       +     '<div><button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button></div>'
-		       +     '<div id="mwe-upwiz-progress" style="display:none">'
-		       + 	'<div>'
-		       +           '<div id="mwe-upwiz-progress-bar"></div>'
-		       + 	   '<div id="mwe-upwiz-etr"></div>'
-		       +        '</div>'	
-		       + 	'<div id="mwe-upwiz-count"></div>'
-		       +     '</div>'
+		       +     '<div id="mwe-upwiz-progress"></div>'
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
 		       + '</div>'
@@ -1399,6 +1492,7 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-macro-choice"></div>'
 		       +     '<div id="mwe-upwiz-macro-edit"></div>'
 		       +	'<div id="mwe-upwiz-macro-macro"></div>'
+		       +	'<div id="mwe-upwiz-macro-progress"></div>'
 		       +        '<div id="mwe-upwiz-macro-files"></div>'
 		       +     '</div>'
 		       +   '</div>'
@@ -1416,14 +1510,13 @@ mw.UploadWizard.prototype = {
 		$j('#mwe-upwiz-add-file').click( function() { _this.addUpload() } );
 		$j('#mwe-upwiz-upload-ctrl').click( function() { _this.startUploads() } );
 	
-		// Create global progress bar
-		$j( '#mwe-upwiz-progress-bar' ).progressbar({
-			value: 0
-		} );
-
 		// add one to start
 		_this.addUpload();
 		
+	//	_this.macroDiv = $j( '<div class="mwe-upwiz-macro"></div>' )
+	//	.append( $j( '<input type="submit" value="test edit"/>' ).click( function( ) { _this.submit( ) } ));
+
+
 		// "select" the first tab - highlight, make it visible, hide all others
 		_this.moveToTab('file');
 	},
@@ -1509,10 +1602,29 @@ mw.UploadWizard.prototype = {
 	},
 
 	/**
-	 * monitor progress
+	 * Manage transitioning all of our uploads from one state to another -- like from "new" to "uploaded".
+ 	 * Shows progress bar with estimated time remaining.
+	 *
+	 * There are too many args here. How to fix?
+	 * This is starting to feel like an object.
+	 *
+	 * @param beginState   what state the upload should be in before starting.
+	 * @param progressState  the state to set the upload to while it's doing whatever 
+	 * @param endState   the state to set the upload to after it's done whatever 
+	 * @param progressProperty  the property on the upload showing current progress of whatever
+	 * @param weightProperty    the property on the upload giving how heavy to weight this item in total progress calculation
+	 * @param  starter	 function, taking single argument (upload) which starts the process we're interested in 
+	 * @param progressBarSelector where to put the progress bar
+	 * @param endCallback    function to call when all uploads are in the end state.
 	 */
-	makeMonitor: function( beginState, progressState, endState, progressProperty, weightProperty, 
-				progressCallback, countCallback, endCallback ) {
+	makeTransitioner: function( beginState, 
+				    progressState, 
+				    endState, 
+				    progressProperty, 
+				    weightProperty, 
+				    progressBarSelector,
+				    starter, 
+				    endCallback ) {
 		
 		var wizard = this;
 
@@ -1521,10 +1633,11 @@ mw.UploadWizard.prototype = {
 			totalWeight += upload[weightProperty];
 		} );
 		var totalCount = wizard.uploads.length;
-	
-		var monitorBeginTime = ( new Date() ).getTime();
 
-		monitor = function() {
+		var progressBar = new mw.ProgressBar( progressBarSelector );
+		progressBar.setTotal( totalCount );
+
+		transitioner = function() {
 			var fraction = 0.0;
 			var uploadsToStart = wizard.maxSimultaneousUploads;
 			var endStateCount = 0;
@@ -1534,26 +1647,30 @@ mw.UploadWizard.prototype = {
 				} else if ( upload.state == progressState ) {
 					uploadsToStart--;
 				} else if ( ( upload.state == beginState ) && ( uploadsToStart > 0 ) ) {
-					upload.start();
+					starter( upload );
 					uploadsToStart--;
 				}
 				if (upload[progressProperty] !== undefined) {
 					fraction += upload[progressProperty] * ( upload[weightProperty] / totalWeight );
 				}
 			} );
-			progressCallback( fraction, monitorBeginTime );
-			countCallback( endStateCount, totalCount );
+
+			// perhaps this could be collected into a single progressbar obj
+			progressBar.showProgress( fraction );
+			progressBar.showCount( endStateCount );
+			
 			if (endStateCount == totalCount) {
 				endCallback();
 			} else {	
-				setTimeout( monitor, wizard.monitorDelay );
+				setTimeout( transitioner, wizard.transitionerDelay );
 			}
 		}
 
-		monitor();
+		progressBar.setBeginTime();
+		transitioner();
 	},
 
-	monitorDelay: 300,  // milliseconds
+	transitionerDelay: 300,  // milliseconds
 
 		
 
@@ -1573,72 +1690,28 @@ mw.UploadWizard.prototype = {
 		// ideally also hide the "button"... but then we require styleable file input CSS trickery
 		// although, we COULD do this just for files already in progress...
 
-		// add the upload progress bar, with ETA
-		// add in the upload count 
-		$j( '#mwe-upwiz-progress' ).show();
-
 		// it might be interesting to just make this creational -- attach it to the dom element representing 
 		// the progress bar and elapsed time	
-		_this.makeMonitor('new', 'transporting', 'transported', 
-			          'transportProgress', 'transportWeight', 
-				  function( fraction, beginTime) { 
-					_this.showProgress( fraction, beginTime );
-				  },
-				  function ( endStateCount, totalCount) {
-					_this.showCount( endStateCount, totalCount );
-				  },
-			          function() { _this.moveToTab('details') } );
+		_this.makeTransitioner(
+			'new', 
+			'transporting', 
+			'transported', 
+			'transportProgress', 
+			'transportWeight', 
+			'#mwe-upwiz-progress',
+			function( upload ) {
+				upload.start();
+			},
+		        function() { 
+				$j.each( _this.uploads, function(i, upload) {
+					upload.state = 'details';
+				} );
+				_this.moveToTab('details') 
+		  	} 
+		);
 	},
 
-	/**
-	 * Show overall progress for the entire UploadWizard
-	 * The current design doesn't have individual progress bars, just one giant one.
-	 * We did some tricky calculations in startUploads to try to weight each individual file's progress against 
-	 * the overall progress.
-	 */
-	showProgress: function( fraction, beginTime ) {
-		var _this = this;
-
-		$j( '#mwe-upwiz-progress-bar' ).progressbar( 'value', parseInt( fraction * 100 ) );
-
-		var remainingTime;
-		if (beginTime == null) {
-			remainingTime = 0;
-		} else {	
-			remainingTime = _this.getRemainingTime( beginTime, fraction );
-		}
-
-		if ( remainingTime !== null ) {
-			$j( '#mwe-upwiz-etr' ).html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000)) ) );
-		}
-	},
-
-	/**
-	 * Calculate remaining time for all uploads to complete.
-	 * 
-	 * @param beginTime	time in whatever unit getTime returns, presume epoch milliseconds
-	 * @param fractionTransported	fraction transported
-	 * @return 	time in whatever units getTime() returns; presumed milliseconds
-	 */
-	getRemainingTime: function ( beginTime, fractionTransported ) {
-		if ( beginTime ) {
-			var elapsedTime = ( new Date() ).getTime() - beginTime;
-			if ( fractionTransported > 0.0 && elapsedTime > 0 ) { // or some other minimums for good data
-				var rate = fractionTransported / elapsedTime;
-				return parseInt( ( 1.0 - fractionTransported ) / rate ); 
-			}
-		}
-		return null;
-	},
-
-	/**
-	 * Show the overall count as we upload
-	 */
-	showCount: function( endStateCount, totalCount ) {
-		$j( '#mwe-upwiz-count' ).html( gM( 'mwe-upwiz-upload-count', [ endStateCount, totalCount ] ) );
-	},
-
-
+	
 	/**
 	 * Occurs whenever we need to update the interface based on how many files are there or have transported
 	 * Also detects if all uploads have transported and kicks off the process that eventually gets us to Step 2.
@@ -1670,19 +1743,49 @@ mw.UploadWizard.prototype = {
 			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
 		}
 
-	/*
-		// done
-		if ( _this.uploads.length > 0 && _this._uploadsTransported.length == _this.uploads.length ) {
-			// is this enough to stop the progress monitor?
-			_this.isTransported = true;
-			// set progress to 100%
-			_this.showProgress(1, null);
-					
-		}
-	*/
-
 	},
 
+	/**
+	 * Submit all edited details and other metadata
+	 * Works just like startUploads -- parallel simultaneous submits with progress bar.
+	 */
+	startDetailsSubmission: function() {
+		var _this = this;
+		// some details blocks cannot be submitted (for instance, identical file hash)
+		_this.removeBlockedDetails();
+		
+		// remove all controls
+		//$j( '#mwe-upwiz-upload-ctrl' ).hide();
+		//$j( '#mwe-upwiz-add-file' ).hide();
+		
+		// remove ability to edit details
+		// maybe add some sort of greyish semi-opaque thing
+		
+		// add the upload progress bar, with ETA
+		// add in the upload count 
+		$j( '#mwe-upwiz-progress' ).show();
+
+		// it might be interesting to just make this creational -- attach it to the dom element representing 
+		// the progress bar and elapsed time	
+		_this.makeTransitioner(
+			'details', 'submitting-details', 'complete', 
+			'detailsProgress', 'detailsWeight', 
+			function( fraction, beginTime ) { 
+				_this.showProgress( fraction, beginTime );
+			},
+			function ( endStateCount, totalCount ) {
+				_this.showCount( endStateCount, totalCount );
+			},
+			function() { _this.moveToTab('thanks') } 
+		);
+	},
+
+	/**
+	 * Removes(?) details that we can't edit for whatever reason -- might just advance them to a different state?
+	 */
+	removeBlockedDetails: function() {
+		
+	},
 
 	/**
 	 * in details mode, reconfigure all the uploads, for various copyright modes
