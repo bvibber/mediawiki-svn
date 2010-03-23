@@ -13,6 +13,7 @@ if ( isset( $options['r'] ) ) {
 	print("\n");
 	
 	while( 1 ) {
+		$lb->clearLagTimeCache();
 		$lags = $lb->getLagTimes();
 		unset( $lags[0] );
 		print( gmdate( 'H:i:s' ) . ' ' );
