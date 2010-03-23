@@ -71,7 +71,7 @@ mw.ApiProxy = { };
 		
 		// Generate a new context object: (its oky that optional arguments are null ) 
 		var context = createContext({
-			'apiUrl' :  apiUrl,// currentServerApiUrl
+			'apiUrl' :  apiUrl, // currentServerApiUrl
 			'apiReq' : requestQuery,
 			'callback' : callback,			
 			'timeoutCb' : callbackTimeout			
@@ -587,6 +587,7 @@ mw.ApiProxy = { };
 		)
 		// Add the security note as well: 	
 		$dialogMsg.append( 			
+			$j('<br />'),
 			gM( 'mwe-remember-loging' )  
 		)
 		
