@@ -843,10 +843,10 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			)
 		);
 	
-	var otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea" rows="3" cols="40"></textarea>' );
+	_this.otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea" rows="3" cols="40"></textarea>' );
 	var otherInformationDiv = $j('<div></div>')	
 		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-other' ) ) ) 
-		.append( otherInformationInput );
+		.append( _this.otherInformationInput );
 	
 
 	$j( _this.div )
@@ -1351,9 +1351,13 @@ mw.UploadWizardDetails.prototype = {
 			mw.log("successful edit");
 			if ( shouldRename ) {
 				_this.rename( desiredFilename );	
+			} else {
+				_this.completeDetailsSubmission();
 			}
-		
 		}
+
+		_this.upload.state = 'submitting-details';
+		_this.showProgress();
 		mw.getJSON(params, callback);
 	},
 
@@ -1392,15 +1396,28 @@ mw.UploadWizardDetails.prototype = {
 			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
 				_this.upload.title = data.move.to;
 			}
+
+			// may want to get additional ii params to get the new URL
+
 			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
 			// which should match our request.
 			// we should update the current upload filename
 			// then call the uploadwizard with our progress
+			_this.completeDetailsSubmission();
 		} );
+	},
+
+	showProgress: function() {
+		var _this = this;
+		_this.div.css( { background: 'grey' } );
+		_this.upload.detailsProgress = 1.0;
+	},
+
+	completeDetailsSubmission: function() {
+		var _this = this;
+		_this.upload.state = 'complete';
+		_this.div.css( { background: 'white' } );
 	}
-
-	
-
 
 }
 
@@ -1410,7 +1427,6 @@ mw.UploadWizardDetails.prototype = {
  */
 mw.UploadWizard = function() {
 
-	this.state = 'new';
 	this.uploads = [];
 
 };
@@ -1513,8 +1529,8 @@ mw.UploadWizard.prototype = {
 		// add one to start
 		_this.addUpload();
 		
-	//	_this.macroDiv = $j( '<div class="mwe-upwiz-macro"></div>' )
-	//	.append( $j( '<input type="submit" value="test edit"/>' ).click( function( ) { _this.submit( ) } ));
+		$j( '#mwe-upwiz-macro-choice' )
+		.append( $j( '<input type="submit" value="submit all"/>' ).click( function( ) { _this.detailsSubmit() } ));
 
 
 		// "select" the first tab - highlight, make it visible, hide all others
@@ -1658,12 +1674,10 @@ mw.UploadWizard.prototype = {
 			// perhaps this could be collected into a single progressbar obj
 			progressBar.showProgress( fraction );
 			progressBar.showCount( endStateCount );
-			
-			if (endStateCount == totalCount) {
-				endCallback();
-			} else {	
-				setTimeout( transitioner, wizard.transitionerDelay );
-			}
+	
+			// build in a little delay even for the end state, so user can see progress bar in a complete state.	
+			var nextAction = (endStateCount == totalCount) ? endCallback : transitioner
+			setTimeout( nextAction, wizard.transitionerDelay );
 		}
 
 		progressBar.setBeginTime();
@@ -1749,10 +1763,12 @@ mw.UploadWizard.prototype = {
 	 * Submit all edited details and other metadata
 	 * Works just like startUploads -- parallel simultaneous submits with progress bar.
 	 */
-	startDetailsSubmission: function() {
+	detailsSubmit: function() {
 		var _this = this;
 		// some details blocks cannot be submitted (for instance, identical file hash)
 		_this.removeBlockedDetails();
+
+		// check that it's even possible to submit all
 		
 		// remove all controls
 		//$j( '#mwe-upwiz-upload-ctrl' ).hide();
@@ -1763,20 +1779,19 @@ mw.UploadWizard.prototype = {
 		
 		// add the upload progress bar, with ETA
 		// add in the upload count 
-		$j( '#mwe-upwiz-progress' ).show();
-
-		// it might be interesting to just make this creational -- attach it to the dom element representing 
-		// the progress bar and elapsed time	
 		_this.makeTransitioner(
-			'details', 'submitting-details', 'complete', 
-			'detailsProgress', 'detailsWeight', 
-			function( fraction, beginTime ) { 
-				_this.showProgress( fraction, beginTime );
+			'details', 
+			'submitting-details', 
+			'complete', 
+			'detailsProgress', 
+			'detailsWeight', 
+			'#mwe-upwiz-macro-progress',
+			function( upload ) {
+				upload.details.submit();
 			},
-			function ( endStateCount, totalCount ) {
-				_this.showCount( endStateCount, totalCount );
-			},
-			function() { _this.moveToTab('thanks') } 
+		        function() { 
+				_this.moveToTab('thanks') 
+		  	} 
 		);
 	},
 
