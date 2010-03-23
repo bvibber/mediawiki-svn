@@ -1,0 +1,41 @@
+/* wikiEditor plugin */
+
+/* This ID (#editform) could change in MediaWiki */
+form#editform {
+	margin: 0;
+	padding: 0;
+}
+/* These IDs (#wpSummaryLabel and #wpSummary) could change in MediaWiki */
+#wpSummary, #wpSummaryLabel {
+	margin-bottom: 1em;
+}
+/* This ID (#wpTextbox1) could change in MediaWiki */
+.wikiEditor-ui textarea#wpTextbox1 {
+	border: none;
+	padding: 0;
+	width: 100%;
+	margin: -1px;
+}
+.wikiEditor-ui .wikiEditor-ui-text > textarea#wpTextbox1 {
+	margin: 0;
+}
+.wikiEditor-ui {
+	float: left;
+	position: relative;
+	clear: both;
+	width: 100%;
+	line-height: 1em;
+	background-color: #f3f3f3;
+	border: solid silver 1px;
+}
+body.rtl .wikiEditor-ui {
+	float: right;
+}
+.wikiEditor-ui .wikiEditor-ui-bottom {
+	width: 100%;
+}
+.wikiEditor-ui .wikiEditor-ui-top {
+	position: relative;
+	width: 100%;
+	border-bottom: solid silver 1px;
+}

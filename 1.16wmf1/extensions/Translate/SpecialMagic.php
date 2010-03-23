@@ -1,0 +1,171 @@
+<?php
+if ( !defined( 'MEDIAWIKI' ) ) die();
+
+/**
+ * This special page helps with the translations of MediaWiki features that are
+ * not in the main messages array.
+ */
+class SpecialMagic extends SpecialPage {
+	/** Message prefix for translations */
+	const MSG = 'translate-magic-';
+
+	const MODULE_MAGIC     = 'words';
+	const MODULE_SPECIAL   = 'special';
+	const MODULE_NAMESPACE = 'namespace';
+
+	/** List of supported modules */
+	private $aModules = array(
+		self::MODULE_SPECIAL,
+		self::MODULE_NAMESPACE,
+		self::MODULE_MAGIC
+	);
+
+	/** Page options */
+	private $options = array();
+	private $defaults = array();
+	private $nondefaults = array();
+
+	public function __construct() {
+		SpecialPage::SpecialPage( 'Magic' );
+	}
+
+	/**
+	 * @see SpecialPage::getDescription
+	 */
+	function getDescription() {
+		return wfMsg( self::MSG . 'pagename' );
+	}
+
+	/**
+	 * Returns xhtml output of the form
+	 * GLOBALS: $wgLang
+	 */
+	protected function getForm() {
+		global $wgLang, $wgScript;
+
+		$form = Xml::tags( 'form',
+			array(
+				'action' => $wgScript,
+				'method' => 'get'
+			),
+
+			'<table><tr><td>' .
+				wfMsgHtml( 'translate-page-language' ) .
+			'</td><td>' .
+				TranslateUtils::languageSelector( $wgLang->getCode(), $this->options['language'] ) .
+			'</td></tr><tr><td>' .
+				wfMsgHtml( 'translate-magic-module' ) .
+			'</td><td>' .
+				$this->moduleSelector( $this->options['module'] ) .
+			'</td></tr><tr><td colspan="2">' .
+				Xml::submitButton( wfMsg( self::MSG . 'submit' ) ) . ' ' .
+				Xml::submitButton( wfMsg( 'translate-magic-cm-export' ), array( 'name' => 'export' ) ) .
+			'</td></tr></table>' .
+			Xml::hidden( 'title', $this->getTitle()->getPrefixedText() )
+			
+		);
+		return $form;
+	}
+
+	/**
+	 * Helper function get module selector.
+	 * Returns the xhtml-compatible select-element.
+	 * @param $selectedId which value should be selected by default
+	 * @return string
+	 */
+	protected function moduleSelector( $selectedId ) {
+		$selector = new HTMLSelector( 'module', 'module', $selectedId );
+		foreach ( $this->aModules as $code ) {
+			$selector->addOption( wfMsg( self::MSG . $code ), $code );
+		}
+		return $selector->getHTML();
+	}
+
+	protected function setup( $parameters ) {
+		global $wgUser, $wgRequest;
+
+		$defaults = array(
+		/* str  */ 'module'   => '',
+		/* str  */ 'language' => $wgUser->getOption( 'language' ),
+		/* bool */ 'export'   => false,
+		/* bool */ 'savetodb' => false,
+		);
+
+		// Place where all non default variables will end
+		$nondefaults = array();
+
+		// Temporary store possible values parsed from parameters
+		$options = $defaults;
+		foreach ( $options as $v => $t ) {
+			if ( is_bool( $t ) ) {
+				$r = $wgRequest->getBool( $v, $options[$v] );
+			} elseif ( is_int( $t ) ) {
+				$r = $wgRequest->getInt( $v, $options[$v] );
+			} elseif ( is_string( $t ) ) {
+				$r = $wgRequest->getText( $v, $options[$v] );
+			}
+			wfAppendToArrayIfNotDefault( $v, $r, $defaults, $nondefaults );
+		}
+
+		$this->defaults    = $defaults;
+		$this->nondefaults = $nondefaults;
+		$this->options     = $nondefaults + $defaults;
+	}
+
+	/**
+	 * The special page running code
+	 * GLOBALS: $wgRequest, $wgOut, $wgUser, $wgLang
+	 */
+	public function execute( $parameters ) {
+		global $wgUser, $wgOut, $wgRequest, $wgLang;
+		wfLoadExtensionMessages( 'Translate' );
+
+		$this->setup( $parameters );
+		$this->setHeaders();
+
+		if ( !$this->options['module'] ) { return; }
+		$o = null;
+		switch ( $this->options['module'] ) {
+			case 'alias':
+			case self::MODULE_SPECIAL:
+				$o = new SpecialPageAliasesCM( $this->options['language'] );
+				break;
+			case self::MODULE_MAGIC:
+				$o = new MagicWordsCM( $this->options['language'] );
+				break;
+			case self::MODULE_NAMESPACE:
+				$o = new NamespaceCM( $this->options['language'] );
+				break;
+			default:
+				// OOps.
+		}
+
+		$wgOut->addHTML( $this->getForm() );
+
+		if ( $wgRequest->wasPosted() && $this->options['savetodb'] ) {
+			if ( !$wgUser->isAllowed( 'translate' ) ) {
+				$wgOut->permissionRequired( 'translate' );
+			} else {
+				$o->save( $wgRequest );
+			}
+		}
+
+		if ( $o instanceof ComplexMessages ) {
+			if ( $this->options['export'] ) {
+				$output = $o->export();
+				if ( $output === '' ) {
+					$wgOut->addWikiMsg( 'translate-magic-nothing-to-export' );
+					return;
+				}
+				$result = Xml::element( 'textarea', array( 'rows' => '30' ), $output );
+			} else {
+
+				$wgOut->addWikiMsg( self::MSG . 'help' );
+				$result = $o->output();
+			}
+		}
+
+		$wgOut->addHTML( $result );
+	}
+
+}
