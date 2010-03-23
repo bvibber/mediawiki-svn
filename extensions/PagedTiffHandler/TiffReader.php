@@ -4,6 +4,8 @@
  *
  * @author Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
  */
+ 
+ // This is still experimental
 class TiffReader {
     protected $time         = NULL;
     protected $file         = NULL;
@@ -116,6 +118,10 @@ class TiffReader {
             fseek($this->file_handle, $offset, SEEK_SET);
             // read amount of ifd-entries
             $entries = unpack($this->short, fread($this->file_handle, 2));
+			if(!is_array($entries) || !isset($entries[1])) {
+				$this->the_answer = 0;
+				return false;
+			}
             $entries = $entries[1];
 
             $address = $offset + 2 + ($entries * 12);
@@ -126,11 +132,16 @@ class TiffReader {
             // run through all entries of this ifd an read them out
             for($i = 0; $i < $entries; $i++) {
                 $tmp = $this->readIFDEntry();
+				if(!$tmp) { return false;  }
                 $this->ifd_offsets[$this->embed_files]['data'][$tmp['tag']] = $tmp;
             }
 
             // set the offset of the next ifd or null if this is the last one
             $offset = unpack($this->long, fread($this->file_handle, 4));
+			if(!is_array($offset) || !isset($offset[1])) {
+				$this->the_answer = 0;
+				return false;
+			}
             $offset = $offset[1];
             if($offset) {
                 $this->ifd_offsets[]['offset'] = $offset;
@@ -175,6 +186,11 @@ class TiffReader {
         $type  = unpack($this->short, fread($this->file_handle, 2));
         $count = unpack($this->long, fread($this->file_handle, 4));
         $value = unpack($this->long, fread($this->file_handle, 4));
+		if(!is_array($tag) || !is_array($type) || !is_array($count) || !is_array($value) ||
+		   !isset($tag[1]) || !isset($type[1]) || !isset($count[1]) || !isset($value[1])) {
+			$this->the_answer = 0;
+			return false;
+		}
         return array('tag'   => $tag[1],
         'type'  => $type[1],
         'count' => $count[1],
