@@ -140,11 +140,7 @@ class NaturalLanguageList {
 		$length = count( $this->mParams );
 		if ( $length == 1 ) {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
-				$r = array();
-				foreach( $this->mParams[0] as $i => $v ) {
-					$r[$i+1] = $v;
-				}
-				return wfMsgReplaceArgs( $this->mOptions['itemcover'], $r );
+				return wfMsgReplaceArgs( $this->mOptions['itemcover'], $this->mParams[0] );
 			} else {
 				return $this->mOptions['itemcover'] === null 
 					? wfMsg ( 'nll-itemcover' , $this->mParams[0] ) 
@@ -154,11 +150,7 @@ class NaturalLanguageList {
 		$str = '';
 		foreach( $this->mParams as $i => $param ) {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
-				$r = array();
-				foreach( $param as $i => $v ) {
-					$r[$i+1] = $v;
-				}
-				$str .= wfMsgReplaceArgs( $this->mOptions['itemcover'], $r );
+				$str .= wfMsgReplaceArgs( $this->mOptions['itemcover'], $param );
 			} else {
 				$str .= $this->mOptions['itemcover'] === null 
 					? wfMsg ( 'nll-itemcover' , $param ) 
