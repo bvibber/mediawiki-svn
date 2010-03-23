@@ -20,7 +20,7 @@
 
 // Each module may be configured individually to be globally on/off or user preference based
 $wgVectorModules = array(
-	'collapsiblenav' => array( 'global' => true, 'user' => false ),
+	'collapsiblenav' => array( 'global' => false, 'user' => true ),
 	'collapsibletabs' => array( 'global' => true, 'user' => false ),
 	'editwarning' => array( 'global' => false, 'user' => true ),
 	'footercleanup' => array( 'global' => false, 'user' => false ),
@@ -49,6 +49,7 @@ $wgAutoloadClasses['VectorHooks'] = dirname( __FILE__ ) . '/Vector.hooks.php';
 $wgExtensionMessagesFiles['Vector'] = dirname( __FILE__ ) . '/Vector.i18n.php';
 $wgExtensionMessagesFiles['VectorEditWarning'] = dirname( __FILE__ ) . '/Modules/EditWarning/EditWarning.i18n.php';
 $wgExtensionMessagesFiles['VectorSimpleSearch'] = dirname( __FILE__ ) . '/Modules/SimpleSearch/SimpleSearch.i18n.php';
+$wgExtensionMessagesFiles['VectorCollapsibleNav'] = dirname( __FILE__ ) . '/Modules/CollapsibleNav/CollapsibleNav.i18n.php';
 
 // Register Hooks
 $wgHooks['UsabilityInitiativeLoadModules'][] = 'VectorHooks::addModules';

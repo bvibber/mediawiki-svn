@@ -27,6 +27,17 @@ class VectorHooks {
 	);
 	static $modules = array(
 		'collapsiblenav' => array(
+			'i18n' => 'VectorCollapsibleNav',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'vector-collapsiblenav',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'vector-collapsiblenav-preference',
+						'section' => 'rendering/advancedrendering',
+					),
+				),
+			),
 		),
 		'collapsibletabs' => array(
 		),
