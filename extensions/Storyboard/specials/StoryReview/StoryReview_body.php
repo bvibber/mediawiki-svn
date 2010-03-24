@@ -22,7 +22,10 @@ class SpecialStoryReview extends SpecialPage {
 	public function execute( $language ) {
 		wfProfileIn( __METHOD__ );
 		
-		global $wgUser;
+		global $wgUser, $wgOut;
+		
+		$wgOut->setPageTitle( wfMsg( 'storyboard-storyreview' ) );
+		
 		if ( $this->userCanExecute( $wgUser ) ) {
 			// If the user has the storyreview permission and is not blocked, show the regular output.
 			$this->addOutput();
@@ -36,8 +39,6 @@ class SpecialStoryReview extends SpecialPage {
 
 	private function addOutput() {
 		global $wgOut, $egStoryboardScriptPath;
-		
-		$wgOut->setPageTitle( wfMsg( 'storyboard-storyreview' ) );
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
