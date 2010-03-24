@@ -41,7 +41,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author'      => array( 'Svip', 'Happy-melon' ),
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
 	'description' => 'Easy formatting of lists in natural languages.',
-	'version'     => '2.0'
+	'version'     => '2.1'
 );
 
 $dir = dirname(__FILE__);
@@ -113,7 +113,7 @@ class NaturalLanguageList {
 	private $mFrame;
 	public $mArgs;
 	private $mOptions = array(
-		'fieldsperitem' => 1,
+		'fieldsperitem' => -1,
 		'duplicates' => true,
 		'blanks' => false,
 		'itemoutput' => null,
@@ -150,7 +150,9 @@ class NaturalLanguageList {
 		$str = '';
 		foreach( $this->mParams as $i => $param ) {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
-				$str .= wfMsgReplaceArgs( $this->mOptions['itemoutput'], $param );
+				$str .= $this->mOptions['itemoutput'] === null 
+					? wfMsg ( 'nll-itemoutput' , $param ) 
+					: wfMsgReplaceArgs( $this->mOptions['itemoutput'], $param );
 			} else {
 				$str .= $this->mOptions['itemoutput'] === null 
 					? wfMsg ( 'nll-itemoutput' , $param ) 
@@ -278,13 +280,39 @@ class NaturalLanguageList {
 				$this->mReaditems[] = $item;
 			}
 		}
+		# if itemoutput is set with $2 or more, but not fieldsperitem,
+		# we will assume to use this, unless fieldsperitem is set,
+		# which will overwrite this regardless.
+		if ( $this->mOptions['fieldsperitem'] == -1
+			&& $this->mOptions['itemoutput'] !== null ) {
+			# only bother if it isn't 'overwritten'
+			if ( preg_match ( '@\$[1-9][0-9]*@es', $this->mOptions['itemoutput'] ) ) {
+				# okay then, let's obtain it.
+				$fields = explode( "|", preg_replace ( 
+					'/\$([1-9][0-9]*)/i', 
+					'|$1|', 
+					$this->mOptions['itemoutput'] ) );
+				$highest = 0;
+				foreach ( $fields as $i => $f ) {
+					# if $i is even, it is a field we are looking for
+					if ( $i % 2 && is_numeric ( $f ) ) {
+						if ( $f > $highest )
+							$highest = $f+0;
+					}
+				}
+				$this->mOptions['fieldsperitem'] = $highest;
+			}
+		}
 		# we need to check for a special case with fieldsperitem;
 		# it cannot be set if itemoutput is not set
-		if ( $this->mOptions['fieldsperitem'] > 1 
+		if ( $this->mOptions['fieldsperitem'] == -1 
 			&& $this->mOptions['itemoutput'] === null )
 		{
 			$this->mOptions['fieldsperitem'] = 1;
 		}
+		# oh?  Not set, then let's set it to 1.
+		if ( $this->mOptions['fieldsperitem'] == -1 )
+			$this->mOptions['fieldsperitem'] = 1;
 	}
 
 	/**
