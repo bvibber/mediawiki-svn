@@ -10059,16 +10059,20 @@ fn: {
 			currentField = sanatizedStr.substring( oldDivider+1, divider );
 			if ( currentField.indexOf( '=' ) == -1 ) {
 				// anonymous field, gets a number
+				
+				//default values, since we'll allow empty values
+				valueBeginIndex = oldDivider + 1;
+				valueEndIndex = oldDivider + 1;
+				
 				valueBegin = currentField.match( /\S+/ ); //first nonwhitespace character
-				if( valueBegin == null ){ //ie
-					continue;
+				if( valueBegin != null ){
+					valueBeginIndex = valueBegin.index + oldDivider+1;
+					valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
+					if( valueEnd == null ){ //ie
+						continue;
+					}
+					valueEndIndex = valueEnd.index + oldDivider + 2;
 				}
-				valueBeginIndex = valueBegin.index + oldDivider+1;
-				valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
-				if( valueEnd == null ){ //ie
-					continue;
-				}
-				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
 				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
