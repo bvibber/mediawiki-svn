@@ -994,6 +994,7 @@ $messages['yi'] = array(
 	'wikieditor-publish-button-publish' => 'פֿאַרעפֿנטלעכן',
 	'wikieditor-publish-button-cancel' => 'אַנולירן',
 	'wikieditor-publish-dialog-minor' => 'מינערדיקער רעדאַקטירונג',
+	'wikieditor-publish-dialog-watch' => 'אויפֿפאַסן אויף דעם בלאַט',
 	'wikieditor-publish-dialog-publish' => 'פֿאַרעפֿנטלעכן',
 	'wikieditor-publish-dialog-goback' => 'צוריקגיין',
 );

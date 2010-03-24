@@ -8328,8 +8328,13 @@ if ( typeof context == 'undefined' ) {
 var args = $.makeArray( arguments );
 
 // Dynamically setup the Iframe when needed when adding modules
-if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' && typeof arguments[1] == 'object' ) {
-	for ( module in arguments[1] ) {
+if ( typeof context.$iframe === 'undefined' && args[0] == 'addModule' && typeof args[1] != 'undefined' ) {
+	var modules = args[1];
+	if ( typeof modules != "object" ) {
+		modules = {};
+		modules[args[1]] = '';
+	}
+	for ( module in modules ) {
 		// Only allow modules which are supported (and thus actually being turned on) affect this decision
 		if ( module in $.wikiEditor.modules && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) &&
 				$.wikiEditor.isRequired( $.wikiEditor.modules[module], 'iframe' ) ) {
@@ -8452,19 +8457,22 @@ fn: {
 					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
 					// Transform messages in keys
 					// Stupid JS won't let us do stuff like
-					// foo = { mw.usability.getMsg ('bar'): baz }
+					// foo = { mw.usability.getMsg( 'bar' ): baz }
 					configuration.newButtons = {};
 					for ( msg in configuration.buttons )
 						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
 					configuration.buttons = configuration.newButtons;
 					// Create the dialog <div>
-					var dialogDiv = $( '<div /> ' )
+					var dialogDiv = $( '<div />' )
 						.attr( 'id', module.id )
 						.html( module.html )
 						.data( 'context', context )
 						.appendTo( $( 'body' ) )
 						.each( module.init )
 						.dialog( configuration );
+					// Set tabindexes on buttons added by .dialog()
+					$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
+						.find( 'button' ).not( '[tabindex]' ) );
 					if ( !( 'resizeme' in module ) || module.resizeme ) {
 						dialogDiv
 							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
@@ -8476,21 +8484,6 @@ fn: {
 					dialogDiv.bind( 'dialogclose', function() {
 						context.fn.restoreSelection();
 					} );
-					// Add tabindexes to dialog form elements
-					// Find the highest tabindex in use
-					var maxTI = 0;
-					$j( '[tabindex]' ).each( function() {
-						var ti = parseInt( $j(this).attr( 'tabindex' ) );
-						if ( ti > maxTI )
-							maxTI = ti;
-					});
-					
-					var tabIndex = maxTI + 1;
-					$j( '.ui-dialog input, .ui-dialog button' )
-						.not( '[tabindex]' )
-						.each( function() {
-							$j(this).attr( 'tabindex', tabIndex++ );
-						});
 					
 					// Let the outside world know we set up this dialog
 					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
@@ -8535,6 +8528,23 @@ fn: {
 		oldHidden.each( function() {
 			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
 		});		
+	},
+	/**
+	 * Set the right tabindexes on elements in a dialog
+	 * @param $elements Elements to set tabindexes on. If they already have tabindexes, this function can behave a bit weird
+	 */
+	setTabindexes: function( $elements ) {
+		// Find the highest tabindex in use
+		var maxTI = 0;
+		$j( '[tabindex]' ).each( function() {
+			var ti = parseInt( $j(this).attr( 'tabindex' ) );
+			if ( ti > maxTI )
+				maxTI = ti;
+		});
+		var tabIndex = maxTI + 1;
+		$elements.each( function() {
+			$j(this).attr( 'tabindex', tabIndex++ );
+		} );
 	}
 },
 // This stuff is just hanging here, perhaps we could come up with a better home for this stuff
@@ -9199,24 +9209,26 @@ fn: {
 					id: dialogID,
 					titleMsg: 'wikieditor-publish-dialog-title',
 					html: '\
-						<div class="wikiEditor-dialog-copywarn"></div>\
-						<div class="wikiEditor-dialog-editoptions">\
+						<div class="wikiEditor-publish-dialog-copywarn"></div>\
+						<div class="wikiEditor-publish-dialog-editoptions">\
 							<form id="wikieditor-' + context.instance + '-publish-dialog-form">\
-								<label for="wikiEditor-' + context.instance + '-dialog-summary"\
-									rel="wikieditor-publish-dialog-summary"></label>\
-								<br />\
-								<input type="text" id="wikiEditor-' + context.instance + '-dialog-summary"\
-									style="width: 100%;" />\
-								<br />\
-								<input type="checkbox"\
-									id="wikiEditor-' + context.instance + '-dialog-minor" />\
-								<label for="wikiEditor-' + context.instance + '-dialog-minor"\
-									rel="wikieditor-publish-dialog-minor"></label>\
-								<br />\
-								<input type="checkbox"\
-									id="wikiEditor-' + context.instance + '-dialog-watch" />\
-								<label for="wikiEditor-' + context.instance + '-dialog-watch"\
-									rel="wikieditor-publish-dialog-watch"></label>\
+								<div class="wikiEditor-publish-dialog-summary">\
+									<label for="wikiEditor-' + context.instance + '-dialog-summary"\
+										rel="wikieditor-publish-dialog-summary"></label>\
+									<br />\
+									<input type="text" id="wikiEditor-' + context.instance + '-dialog-summary"\
+										style="width: 100%;" />\
+								</div>\
+								<div class="wikiEditor-publish-dialog-options">\
+									<input type="checkbox"\
+										id="wikiEditor-' + context.instance + '-dialog-minor" />\
+									<label for="wikiEditor-' + context.instance + '-dialog-minor"\
+										rel="wikieditor-publish-dialog-minor"></label>\
+									<input type="checkbox"\
+										id="wikiEditor-' + context.instance + '-dialog-watch" />\
+									<label for="wikiEditor-' + context.instance + '-dialog-watch"\
+										rel="wikieditor-publish-dialog-watch"></label>\
+								</div>\
 							</form>\
 						</div>',
 					init: function() {
@@ -9224,22 +9236,24 @@ fn: {
 							$(this).text( mw.usability.getMsg( $(this).attr( 'rel' ) ) );
 						});
 						
+						/* REALLY DIRTY HACK! */
 						// Reformat the copyright warning stuff
-						var copyWarnHTML = $( '#editpage-copywarn' ).html();
-						
+						var copyWarnHTML = $( '#editpage-copywarn p' ).html();
 						// TODO: internationalize by splitting on other characters that end statements
 						var copyWarnStatements = copyWarnHTML.split( '. ' );
-						var newCopyWarnHTML = '';
+						var newCopyWarnHTML = '<ul>';
 						for ( var i = 0; i < copyWarnStatements.length; i++ ) {
 							if ( copyWarnStatements[i] != '' ) {
-								newCopyWarnHTML += '<li>' + copyWarnStatements[i] + '. </li>';
+								var copyWarnStatement = $j.trim( copyWarnStatements[i] ).replace( /\.*$/, '' );
+								newCopyWarnHTML += '<li>' + copyWarnStatement + '.</li>';
 							}
 						}
 						newCopyWarnHTML += '</ul>';
-
 						// No list if there's only one element
-						$(this).find( '.wikiEditor-dialog-copywarn' ).html( 
-								copyWarnStatements.length > 1 ? newCopyWarnHTML : copyWarnHTML );
+						$(this).find( '.wikiEditor-publish-dialog-copywarn' ).html( 
+								copyWarnStatements.length > 1 ? newCopyWarnHTML : copyWarnHTML
+						);
+						/* END OF REALLY DIRTY HACK */
 						
 						if ( $( '#wpMinoredit' ).size() == 0 )
 							$( '#wikiEditor-' + context.instance + '-dialog-minor' ).hide();
@@ -9305,9 +9319,9 @@ fn: {
 /**
  * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
  */
-'nameMappings': {
-   "Infobox skyscraper": "building_name",
-   "Infobox settlement": "official_name"
+'nameMappings': { //keep these all lowercase to navigate web of redirects
+   "infobox skyscraper": "building_name",
+   "infobox settlement": "official_name"
 },		
 
 		
@@ -9563,9 +9577,23 @@ fn: {
 		context.fn.purgeOffsets();
 		$template
 			.toggleClass( 'wikiEditor-template-expanded' )
-			.toggleClass( 'wikiEditor-template-collapsed' )
-			.find( '.wikiEditor-template-text' )
-			.toggleClass( 'wikiEditor-nodisplay' );
+			.toggleClass( 'wikiEditor-template-collapsed' ) ;
+		
+		var $templateText = $template.find( '.wikiEditor-template-text' );		
+		$templateText.toggleClass( 'wikiEditor-nodisplay' );
+		if( $templateText.hasClass('wikiEditor-nodisplay') ){
+			//we just closed the template
+		
+			// Update the model if we need to
+			if ( $templateText.html() != $templateText.data( 'oldHTML' ) ) {
+				var templateModel = $.wikiEditor.modules.templateEditor.fn.updateModel( $templateText );
+				
+				//this is the only place the template name can be changed; keep the template name in sync
+				var $tLabel = $template.find( '.wikiEditor-template-label' );
+				$tLabel.text( $.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName( templateModel ) );
+			}
+			
+		}
 	},
 	/**
 	 * Create a dialog for editing a given template and open it
@@ -9694,6 +9722,16 @@ fn: {
 					// Ensure our close button doesn't recieve the ui-state-focus class 
 					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
 						.removeClass( 'ui-state-focus' );
+					
+					// Set tabindexes on form fields if needed
+					// First unset the tabindexes on the buttons and existing form fields
+					// so the order doesn't get messed up
+					var $needTabindex = $( this ).closest( '.ui-dialog' ).find( 'button, textarea' );
+					if ( $needTabindex.not( '[tabindex]' ).length ) {
+						// Only do this if there actually are elements missing a tabindex
+						$needTabindex.removeAttr( 'tabindex' );
+						$.wikiEditor.modules.dialogs.fn.setTabindexes( $needTabindex );
+					}
 				}
 			}
 		};
@@ -9733,7 +9771,7 @@ fn: {
 	 */
 	getTemplateDisplayName: function ( model ) {
 		var tName = model.getName();
-		if( tName in $.wikiEditor.modules.templateEditor.nameMappings ) {
+		if( tName.toLowerCase() in $.wikiEditor.modules.templateEditor.nameMappings ) {
 			return tName + ': ' + model.getValue( $.wikiEditor.modules.templateEditor.nameMappings[tName] );
 		} else if( model.getValue( 'name' ) != '' ) {
 			return tName + ': ' + model.getValue( 'name' );
@@ -9927,7 +9965,7 @@ fn: {
 		};
 		
 		// Whitespace* {{ whitespace* nonwhitespace:
-		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
+		if ( wikitext.match( /\s*{{\s*[^\s|]*:/ ) ) {
 			collapsible = false; // is a parser function
 		}
 		/*
@@ -10028,16 +10066,20 @@ fn: {
 			currentField = sanatizedStr.substring( oldDivider+1, divider );
 			if ( currentField.indexOf( '=' ) == -1 ) {
 				// anonymous field, gets a number
+				
+				//default values, since we'll allow empty values
+				valueBeginIndex = oldDivider + 1;
+				valueEndIndex = oldDivider + 1;
+				
 				valueBegin = currentField.match( /\S+/ ); //first nonwhitespace character
-				if( valueBegin == null ){ //ie
-					continue;
+				if( valueBegin != null ){
+					valueBeginIndex = valueBegin.index + oldDivider+1;
+					valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
+					if( valueEnd == null ){ //ie
+						continue;
+					}
+					valueEndIndex = valueEnd.index + oldDivider + 2;
 				}
-				valueBeginIndex = valueBegin.index + oldDivider+1;
-				valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
-				if( valueEnd == null ){ //ie
-					continue;
-				}
-				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
 				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
@@ -10074,18 +10116,22 @@ fn: {
 				nameIndex = ranges.push( new Range( nameBeginIndex, nameEndIndex ) ) - 1;
 				currentValue = currentField.substring( currentField.indexOf( '=' ) + 1);
 				oldDivider += currentField.indexOf( '=' ) + 1;
+				
+				//default values, since we'll allow empty values
+				valueBeginIndex = oldDivider + 1;
+				valueEndIndex = oldDivider + 1;
+				
 				// First nonwhitespace character
 				valueBegin = currentValue.match( /\S+/ );
-				if( valueBegin == null ){ //ie
-					continue;
+				if( valueBegin != null ){
+					valueBeginIndex = valueBegin.index + oldDivider + 1;
+					// Last nonwhitespace and non } character
+					valueEnd = currentValue.match( /[^\s]\s*$/ );
+					if( valueEnd == null ){ //ie
+						continue;
+					}
+					valueEndIndex = valueEnd.index + oldDivider + 2;
 				}
-				valueBeginIndex = valueBegin.index + oldDivider + 1;
-				// Last nonwhitespace and non } character
-				valueEnd = currentValue.match( /[^\s]\s*$/ );
-				if( valueEnd == null ){ //ie
-					continue;
-				}
-				valueEndIndex = valueEnd.index + oldDivider + 2;
 				// All the chars upto now
 				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end, valueBeginIndex) ) - 1;
 				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) ) - 1;
@@ -10603,24 +10649,32 @@ fn: {
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
-				.mousedown( function() {
+				.mousedown( function( e ) {
 					// No dragging!
+					e.preventDefault();
 					return false;
 				} )
-				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
+				.bind( 'click.wikiEditor-toc', function( e ) {
+					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
+					// No dragging!
+					e.preventDefault();
+					return false;
 				} )
 				.find( 'a' )
 				.text( mw.usability.getMsg( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
-				.mousedown( function() {
+				.mousedown( function( e ) {
 					// No dragging!
+					e.preventDefault();
 					return false;
 				} )
-				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
+				.bind( 'click.wikiEditor-toc', function( e ) {
+					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' );
+					// No dragging!
+					e.preventDefault();
+					return false;
 				} )
 				.hide()
 				.find( 'a' )
@@ -10873,9 +10927,10 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function() {
+								.click( function(e) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
+									e.preventDefault();
 									return false;
 								} )
 						);
@@ -11083,14 +11138,16 @@ fn: {
 					$button
 						.data( 'action', tool.action )
 						.data( 'context', context )
-						.mousedown( function() {
+						.mousedown( function( e ) {
 							// No dragging!
+							e.preventDefault();
 							return false;
 						} )
-						.click( function() {
+						.click( function( e ) {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 							);
+							e.preventDefault();
 							return false;
 						} );
 					// If the action is a dialog that hasn't been loaded yet, hide the button
@@ -11117,11 +11174,12 @@ fn: {
 							$( '<a />' )
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
-								.mousedown( function() {
+								.mousedown( function( e ) {
 									// No dragging!
+									e.preventDefault();
 									return false;
 								} )
-								.click( function() {
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction(
 										$(this).data( 'context' ), $(this).data( 'action' ), $(this)
 									);
@@ -11131,6 +11189,7 @@ fn: {
 									if ( $(this).parent().is( ':visible' ) ) {
 										$(this).parent().animate( { 'opacity': 'toggle' }, 'fast' );
 									}
+									e.preventDefault();
 									return false;
 								} )
 								.text( optionLabel )
@@ -11141,18 +11200,20 @@ fn: {
 				}
 				$select.append( $( '<div />' ).addClass( 'menu' ).append( $options ) );
 				$select.append( $( '<a />' )
-							.addClass( 'label' )
-							.text( label )
-							.data( 'options', $options )
-							.attr( 'href', '#' )
-							.mousedown( function() {
-								// No dragging!
-								return false;
-							} )
-							.click( function() {
-								$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
-								return false;
-							} )
+						.addClass( 'label' )
+						.text( label )
+						.data( 'options', $options )
+						.attr( 'href', '#' )
+						.mousedown( function( e ) {
+							// No dragging!
+							e.preventDefault();
+							return false;
+						} )
+						.click( function( e ) {
+							$(this).data( 'options' ).animate( { 'opacity': 'toggle' }, 'fast' );
+							e.preventDefault();
+							return false;
+						} )
 				);
 				return $select;
 			default:
@@ -11166,8 +11227,9 @@ fn: {
 			.text( label )
 			.attr( 'rel', id )
 			.data( 'context', context )
-			.mousedown( function() {
+			.mousedown( function( e ) {
 				// No dragging!
+				e.preventDefault();
 				return false;
 			} )
 			.click( function( event ) {
@@ -11185,6 +11247,7 @@ fn: {
 					$.trackAction(section + '.' + $(this).attr('rel'));
 				}
 				// No dragging!
+				event.preventDefault();
 				return false;
 			} )
 	},
@@ -11226,16 +11289,18 @@ fn: {
 					$characters
 						.html( html )
 						.children()
-						.mousedown( function() {
+						.mousedown( function( e ) {
 							// No dragging!
+							e.preventDefault();
 							return false;
 						} )
-						.click( function() {
+						.click( function( e ) {
 							$.wikiEditor.modules.toolbar.fn.doAction(
 								$(this).parent().data( 'context' ),
 								$(this).parent().data( 'actions' )[$(this).attr( 'rel' )],
 								$(this)
 							);
+							e.preventDefault();
 							return false;
 						} );
 				}
@@ -11300,8 +11365,9 @@ fn: {
 					.mouseup( function( e ) {
 						$(this).blur();
 					} )
-					.mousedown( function() {
+					.mousedown( function( e ) {
 						// No dragging!
+						e.preventDefault();
 						return false;
 					} )
 					.click( function( e ) {
@@ -11340,6 +11406,7 @@ fn: {
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
 							show ? $section.attr( 'rel' ) : null
 						);
+						e.preventDefault();
 						return false;
 					} )
 			);

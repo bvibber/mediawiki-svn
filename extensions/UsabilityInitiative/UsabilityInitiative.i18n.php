@@ -164,6 +164,8 @@ $messages['diq'] = array(
 $messages['dsb'] = array(
 	'usabilityinitiative' => 'Iniciatiwa wužywajobnosći',
 	'usabilityinitiative-desc' => 'Funkcije wuwite pśez iniciatiwu wužywajobnosći Wikipedije za pólěpšenje wužywajobnosći MediaWiki',
+	'prefs-beta' => 'Betafunkcije',
+	'prefs-labs' => 'Laborowe funkcije',
 );
 
 /** Greek (Ελληνικά)
@@ -188,10 +190,13 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
+ * @author Translationista
  */
 $messages['es'] = array(
 	'usabilityinitiative' => 'Iniciativa de usabilidad',
 	'usabilityinitiative-desc' => 'Características desarrolladas por la iniciativa de usabilidad de Wikipedia para mejorar la usabilidad de MediaWiki',
+	'prefs-beta' => 'Características de prueba',
+	'prefs-labs' => 'Características de los laboratorios',
 );
 
 /** Estonian (Eesti)
@@ -280,6 +285,8 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'usabilityinitiative' => 'Iniciatiwa wužiwajomnosće',
 	'usabilityinitiative-desc' => 'Funkcije, wuwite přez iniciatiwu wužiwajomnosće Wikipedije, za polěpšenje wužiwajomnosće MediaWiki',
+	'prefs-beta' => 'Betafunkcije',
+	'prefs-labs' => 'Laborowe funkcije',
 );
 
 /** Hungarian (Magyar)

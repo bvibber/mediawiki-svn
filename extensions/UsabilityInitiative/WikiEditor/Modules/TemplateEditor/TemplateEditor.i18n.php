@@ -122,6 +122,19 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobźěłowanje wikipśedłogow na zakłaźe formularow zmóžniś',
+	'wikieditor-template-editor-dialog-title' => 'Pśedłogu wobźěłaś',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualizěrowaś',
+	'wikieditor-template-editor-dialog-cancel' => 'Pśetergnuś',
+);
+
+/** Greek (Ελληνικά)
+ * @author Lou
+ */
+$messages['el'] = array(
+	'wikieditor-template-editor-preference' => 'Ενεργοποίηση επεξεργασίας των προτύπων wiki χάρη σε μια φόρμα',
+	'wikieditor-template-editor-dialog-title' => 'Επεξεργασία προτύπου',
+	'wikieditor-template-editor-dialog-submit' => 'Ενημέρωση',
+	'wikieditor-template-editor-dialog-cancel' => 'Ακύρωση',
 );
 
 /** Esperanto (Esperanto)
@@ -210,6 +223,9 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'wikieditor-template-editor-preference' => 'Wobdźěłowanje wikipředłohow na zakładźe formularow zmóžnić',
+	'wikieditor-template-editor-dialog-title' => 'Předłohu wobdźěłać',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualizować',
+	'wikieditor-template-editor-dialog-cancel' => 'Přetorhnyć',
 );
 
 /** Hungarian (Magyar)
@@ -219,6 +235,7 @@ $messages['hu'] = array(
 	'wikieditor-template-editor-preference' => 'Wiki sablonok űrlap alapú szerkesztésének engedélyezése',
 	'wikieditor-template-editor-dialog-title' => 'Sablon szerkesztése',
 	'wikieditor-template-editor-dialog-submit' => 'Frissítés',
+	'wikieditor-template-editor-dialog-cancel' => 'Mégse',
 );
 
 /** Interlingua (Interlingua)
@@ -244,7 +261,9 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'wikieditor-template-editor-preference' => 'フォームを利用したテンプレートの編集を有効化する',
+	'wikieditor-template-editor-dialog-title' => 'テンプレートを編集する',
 	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '中止',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -316,6 +335,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  * @author Wpedzich
  */
@@ -323,6 +343,7 @@ $messages['pl'] = array(
 	'wikieditor-template-editor-preference' => 'Umożliwia edycję szablonów wiki za pomocą formularzy',
 	'wikieditor-template-editor-dialog-title' => 'Edytuj szablon',
 	'wikieditor-template-editor-dialog-submit' => 'Uaktualnij',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuluj',
 );
 
 /** Piedmontese (Piemontèis)
@@ -333,6 +354,7 @@ $messages['pms'] = array(
 	'wikieditor-template-editor-preference' => 'Abìlita le modìfiche basà su forma djë stamp wiki',
 	'wikieditor-template-editor-dialog-title' => 'Modifiché lë stamp',
 	'wikieditor-template-editor-dialog-submit' => 'Agiorné',
+	'wikieditor-template-editor-dialog-cancel' => 'Scancela',
 );
 
 /** Portuguese (Português)
@@ -363,6 +385,7 @@ $messages['roa-tara'] = array(
 	'wikieditor-template-editor-preference' => 'Abbilete le cangiaminde basate sus a le module de le template de uicchi',
 	'wikieditor-template-editor-dialog-title' => "Cange 'u template",
 	'wikieditor-template-editor-dialog-submit' => 'Aggiorne',
+	'wikieditor-template-editor-dialog-cancel' => 'Scangille',
 );
 
 /** Russian (Русский)
@@ -435,6 +458,15 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-template-editor-preference' => 'Sửa đổi bản mẫu wiki trong biểu mẫu',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'wikieditor-template-editor-dialog-title' => 'רעדאַקטירן מוסטער',
+	'wikieditor-template-editor-dialog-submit' => 'דערהײַנטיקן',
+	'wikieditor-template-editor-dialog-cancel' => 'אַנולירן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

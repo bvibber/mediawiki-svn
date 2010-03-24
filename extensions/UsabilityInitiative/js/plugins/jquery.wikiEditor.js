@@ -1785,8 +1785,13 @@ if ( typeof context == 'undefined' ) {
 var args = $.makeArray( arguments );
 
 // Dynamically setup the Iframe when needed when adding modules
-if ( typeof context.$iframe === 'undefined' && arguments[0] == 'addModule' && typeof arguments[1] == 'object' ) {
-	for ( module in arguments[1] ) {
+if ( typeof context.$iframe === 'undefined' && args[0] == 'addModule' && typeof args[1] != 'undefined' ) {
+	var modules = args[1];
+	if ( typeof modules != "object" ) {
+		modules = {};
+		modules[args[1]] = '';
+	}
+	for ( module in modules ) {
 		// Only allow modules which are supported (and thus actually being turned on) affect this decision
 		if ( module in $.wikiEditor.modules && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) &&
 				$.wikiEditor.isRequired( $.wikiEditor.modules[module], 'iframe' ) ) {

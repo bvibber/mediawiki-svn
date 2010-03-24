@@ -98,19 +98,22 @@ fn: {
 					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
 					// Transform messages in keys
 					// Stupid JS won't let us do stuff like
-					// foo = { mw.usability.getMsg ('bar'): baz }
+					// foo = { mw.usability.getMsg( 'bar' ): baz }
 					configuration.newButtons = {};
 					for ( msg in configuration.buttons )
 						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
 					configuration.buttons = configuration.newButtons;
 					// Create the dialog <div>
-					var dialogDiv = $( '<div /> ' )
+					var dialogDiv = $( '<div />' )
 						.attr( 'id', module.id )
 						.html( module.html )
 						.data( 'context', context )
 						.appendTo( $( 'body' ) )
 						.each( module.init )
 						.dialog( configuration );
+					// Set tabindexes on buttons added by .dialog()
+					$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
+						.find( 'button' ).not( '[tabindex]' ) );
 					if ( !( 'resizeme' in module ) || module.resizeme ) {
 						dialogDiv
 							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
@@ -122,21 +125,6 @@ fn: {
 					dialogDiv.bind( 'dialogclose', function() {
 						context.fn.restoreSelection();
 					} );
-					// Add tabindexes to dialog form elements
-					// Find the highest tabindex in use
-					var maxTI = 0;
-					$j( '[tabindex]' ).each( function() {
-						var ti = parseInt( $j(this).attr( 'tabindex' ) );
-						if ( ti > maxTI )
-							maxTI = ti;
-					});
-					
-					var tabIndex = maxTI + 1;
-					$j( '.ui-dialog input, .ui-dialog button' )
-						.not( '[tabindex]' )
-						.each( function() {
-							$j(this).attr( 'tabindex', tabIndex++ );
-						});
 					
 					// Let the outside world know we set up this dialog
 					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
@@ -181,6 +169,23 @@ fn: {
 		oldHidden.each( function() {
 			$(this).attr( 'style', $(this).data( 'oldstyle' ) );
 		});		
+	},
+	/**
+	 * Set the right tabindexes on elements in a dialog
+	 * @param $elements Elements to set tabindexes on. If they already have tabindexes, this function can behave a bit weird
+	 */
+	setTabindexes: function( $elements ) {
+		// Find the highest tabindex in use
+		var maxTI = 0;
+		$j( '[tabindex]' ).each( function() {
+			var ti = parseInt( $j(this).attr( 'tabindex' ) );
+			if ( ti > maxTI )
+				maxTI = ti;
+		});
+		var tabIndex = maxTI + 1;
+		$elements.each( function() {
+			$j(this).attr( 'tabindex', tabIndex++ );
+		} );
 	}
 },
 // This stuff is just hanging here, perhaps we could come up with a better home for this stuff

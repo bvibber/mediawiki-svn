@@ -161,6 +161,7 @@ $messages['dsb'] = array(
 	'wikieditor' => 'Rozšyrjony pówjerch za wobźěkowabnje wikiteksta',
 	'wikieditor-desc' => 'Stoj rozšyrjobny pówjerch za wobźěłowanje wikiteksta a wjele modulow k dispoziciji',
 	'wikieditor-wikitext-tab' => 'WikiTekst',
+	'wikieditor-loading' => 'Zacytujo se',
 );
 
 /** Greek (Ελληνικά)

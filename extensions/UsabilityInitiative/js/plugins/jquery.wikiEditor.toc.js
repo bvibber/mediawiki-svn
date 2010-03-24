@@ -489,24 +489,32 @@ fn: {
 				.addClass( 'tab' )
 				.addClass( 'tab-toc' )
 				.append( '<a href="#" />' )
-				.mousedown( function() {
+				.mousedown( function( e ) {
 					// No dragging!
+					e.preventDefault();
 					return false;
 				} )
-				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' ); return false;
+				.bind( 'click.wikiEditor-toc', function( e ) {
+					context.modules.toc.$toc.trigger( 'collapse.wikiEditor-toc' );
+					// No dragging!
+					e.preventDefault();
+					return false;
 				} )
 				.find( 'a' )
 				.text( mw.usability.getMsg( 'wikieditor-toc-hide' ) );
 			$expandControl
 				.addClass( 'wikiEditor-ui-toc-expandControl' )
 				.append( '<a href="#" />' )
-				.mousedown( function() {
+				.mousedown( function( e ) {
 					// No dragging!
+					e.preventDefault();
 					return false;
 				} )
-				.bind( 'click.wikiEditor-toc', function() {
-					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' ); return false;
+				.bind( 'click.wikiEditor-toc', function( e ) {
+					context.modules.toc.$toc.trigger( 'expand.wikiEditor-toc' );
+					// No dragging!
+					e.preventDefault();
+					return false;
 				} )
 				.hide()
 				.find( 'a' )

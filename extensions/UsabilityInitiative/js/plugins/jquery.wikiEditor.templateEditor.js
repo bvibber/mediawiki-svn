@@ -3,9 +3,9 @@
 /**
  * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
  */
-'nameMappings': {
-   "Infobox skyscraper": "building_name",
-   "Infobox settlement": "official_name"
+'nameMappings': { //keep these all lowercase to navigate web of redirects
+   "infobox skyscraper": "building_name",
+   "infobox settlement": "official_name"
 },		
 
 		
@@ -261,9 +261,23 @@ fn: {
 		context.fn.purgeOffsets();
 		$template
 			.toggleClass( 'wikiEditor-template-expanded' )
-			.toggleClass( 'wikiEditor-template-collapsed' )
-			.find( '.wikiEditor-template-text' )
-			.toggleClass( 'wikiEditor-nodisplay' );
+			.toggleClass( 'wikiEditor-template-collapsed' ) ;
+		
+		var $templateText = $template.find( '.wikiEditor-template-text' );		
+		$templateText.toggleClass( 'wikiEditor-nodisplay' );
+		if( $templateText.hasClass('wikiEditor-nodisplay') ){
+			//we just closed the template
+		
+			// Update the model if we need to
+			if ( $templateText.html() != $templateText.data( 'oldHTML' ) ) {
+				var templateModel = $.wikiEditor.modules.templateEditor.fn.updateModel( $templateText );
+				
+				//this is the only place the template name can be changed; keep the template name in sync
+				var $tLabel = $template.find( '.wikiEditor-template-label' );
+				$tLabel.text( $.wikiEditor.modules.templateEditor.fn.getTemplateDisplayName( templateModel ) );
+			}
+			
+		}
 	},
 	/**
 	 * Create a dialog for editing a given template and open it
@@ -392,6 +406,16 @@ fn: {
 					// Ensure our close button doesn't recieve the ui-state-focus class 
 					$( this ).parent( '.ui-dialog' ).find( '.ui-dialog-titlebar-close' )
 						.removeClass( 'ui-state-focus' );
+					
+					// Set tabindexes on form fields if needed
+					// First unset the tabindexes on the buttons and existing form fields
+					// so the order doesn't get messed up
+					var $needTabindex = $( this ).closest( '.ui-dialog' ).find( 'button, textarea' );
+					if ( $needTabindex.not( '[tabindex]' ).length ) {
+						// Only do this if there actually are elements missing a tabindex
+						$needTabindex.removeAttr( 'tabindex' );
+						$.wikiEditor.modules.dialogs.fn.setTabindexes( $needTabindex );
+					}
 				}
 			}
 		};
@@ -431,7 +455,7 @@ fn: {
 	 */
 	getTemplateDisplayName: function ( model ) {
 		var tName = model.getName();
-		if( tName in $.wikiEditor.modules.templateEditor.nameMappings ) {
+		if( tName.toLowerCase() in $.wikiEditor.modules.templateEditor.nameMappings ) {
 			return tName + ': ' + model.getValue( $.wikiEditor.modules.templateEditor.nameMappings[tName] );
 		} else if( model.getValue( 'name' ) != '' ) {
 			return tName + ': ' + model.getValue( 'name' );
@@ -625,7 +649,7 @@ fn: {
 		};
 		
 		// Whitespace* {{ whitespace* nonwhitespace:
-		if ( wikitext.match( /\s*{{\s*\S*:/ ) ) {
+		if ( wikitext.match( /\s*{{\s*[^\s|]*:/ ) ) {
 			collapsible = false; // is a parser function
 		}
 		/*
@@ -726,16 +750,20 @@ fn: {
 			currentField = sanatizedStr.substring( oldDivider+1, divider );
 			if ( currentField.indexOf( '=' ) == -1 ) {
 				// anonymous field, gets a number
+				
+				//default values, since we'll allow empty values
+				valueBeginIndex = oldDivider + 1;
+				valueEndIndex = oldDivider + 1;
+				
 				valueBegin = currentField.match( /\S+/ ); //first nonwhitespace character
-				if( valueBegin == null ){ //ie
-					continue;
+				if( valueBegin != null ){
+					valueBeginIndex = valueBegin.index + oldDivider+1;
+					valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
+					if( valueEnd == null ){ //ie
+						continue;
+					}
+					valueEndIndex = valueEnd.index + oldDivider + 2;
 				}
-				valueBeginIndex = valueBegin.index + oldDivider+1;
-				valueEnd = currentField.match( /[^\s]\s*$/ ); //last nonwhitespace character
-				if( valueEnd == null ){ //ie
-					continue;
-				}
-				valueEndIndex = valueEnd.index + oldDivider + 2;
 				ranges.push( new Range( ranges[ranges.length-1].end,
 					valueBeginIndex ) ); //all the chars upto now
 				nameIndex = ranges.push( new Range( valueBeginIndex, valueBeginIndex ) ) - 1;
@@ -772,18 +800,22 @@ fn: {
 				nameIndex = ranges.push( new Range( nameBeginIndex, nameEndIndex ) ) - 1;
 				currentValue = currentField.substring( currentField.indexOf( '=' ) + 1);
 				oldDivider += currentField.indexOf( '=' ) + 1;
+				
+				//default values, since we'll allow empty values
+				valueBeginIndex = oldDivider + 1;
+				valueEndIndex = oldDivider + 1;
+				
 				// First nonwhitespace character
 				valueBegin = currentValue.match( /\S+/ );
-				if( valueBegin == null ){ //ie
-					continue;
+				if( valueBegin != null ){
+					valueBeginIndex = valueBegin.index + oldDivider + 1;
+					// Last nonwhitespace and non } character
+					valueEnd = currentValue.match( /[^\s]\s*$/ );
+					if( valueEnd == null ){ //ie
+						continue;
+					}
+					valueEndIndex = valueEnd.index + oldDivider + 2;
 				}
-				valueBeginIndex = valueBegin.index + oldDivider + 1;
-				// Last nonwhitespace and non } character
-				valueEnd = currentValue.match( /[^\s]\s*$/ );
-				if( valueEnd == null ){ //ie
-					continue;
-				}
-				valueEndIndex = valueEnd.index + oldDivider + 2;
 				// All the chars upto now
 				equalsIndex = ranges.push( new Range( ranges[ranges.length-1].end, valueBeginIndex) ) - 1;
 				valueIndex = ranges.push( new Range( valueBeginIndex, valueEndIndex ) ) - 1;
