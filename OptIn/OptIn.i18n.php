@@ -729,6 +729,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-changes-upload' => 'Gwelaat an emporzhiann danvez ha media.',
 	'optin-survey-answer-changes-richtext' => "Diorren binvioù aozañ par d'an aozerioù testenn-pinvidikaet",
 	'optin-survey-answer-changes-lookfeel' => "Hizivaat arvez al lec'hienn.",
+	'optin-survey-answer-changes-predictability' => "Gwellaat rakwelusted ar c'hemmoù.",
 	'optin-survey-answer-changes-custom' => "Aotreañ ur personeladur brasoc'h eus an etrefas.",
 	'optin-survey-answer-changes-other' => 'Traoù all :',
 );
@@ -1066,21 +1067,20 @@ Hoffem gael eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn 
 	'optin-survey-answer-changes-lookfeel' => 'Diweddaru "naws a steil" y safle.',
 	'optin-survey-answer-changes-predictability' => 'Gwneud iddo weithredu yn y modd mwyaf dibynadwy posib.',
 	'optin-survey-answer-changes-custom' => "Ehangu'r nifer o ddewisiadau y gall defnyddiwr eu gosod fel ag a myn.",
-	'optin-improvements' => "== Beth sydd wedi ei wella? ==
-[[File:UsabilityNavigation.png|left|link=|Llun o'r tabiau llywio newydd]]
-;Gwella'r llywio
-Mae'r system llywio newydd yn ei gwneud yn haws deall pa le ydych chi a'r hyn ydych yn gwneud, a'r mannau y gallech fynd iddynt a sut i gyrraedd yno. Mae'r blwch chwilio wedi cael ei roi yn y gornel dde ar frig y dudalen, mewn man haws cael gafael arno, ac ar ffurf cyflymach i'w ddefnyddio.
-<div style=\"clear:both;\"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Llun y bar offer golygu estynedig]]
-;Gwelliannau i'r bar offer golygu
-Gosodwyd eiconauNew-and-improved icons make it clearer what action each tool performs. Expandable sections reduce clutter while keeping infrequently used tools just a click away.
-The help section provides quick access to a reference for common uses of wiki-markup.
-<div style=\"clear:both;\"></div>
+	'optin-improvements2' => '== Beth sydd wedi gwella? ==
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+;Bar offer golygu estynedig
+Mae\'n haws golygu gyda\'r bar offer golygu estynedig.
+New and improved icons make it clearer what action each tool performs.
+Expanded sections reduce clutter while keeping infrequently used tools just a click away.
+;Dialog
+When creating links or tables, clicking the tool icon now opens a dialog box which helps you to create links and tables by filling out a simple form.
+;And More
+We have introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
 == How to get involved ==
-To learn more about the project or to get involved, please visit the [http://usability.wikimedia.org Usability Initiative's wiki].  There you will find information about our grant, research, design + development, and releases.  To ask questions or leave general feedback, please use our [http://usability.wikimedia.org/wiki/Talk:Prototype prototype discussion page].  To address particular subjects, please use the associated discussion pages.  If you find bugs, please leave your comments on the [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco release discussion page] or by using [https://bugzilla.wikimedia.org Bugzilla].
-
-Thanks and we look forward to hearing from you!",
+To find out more about the Usability Initiative, please visit our [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
 );
 
 /** Danish (Dansk)
@@ -1450,21 +1450,21 @@ My by rady wěźeli, co mysliš wó našem nowem wužywarskem pówjerchu, togodl
 	'optin-survey-answer-changes-predictability' => 'Pśedpowědajobnosć wugbaśa pólěpšyś.',
 	'optin-survey-answer-changes-custom' => 'Wětše wužywarske pśiměrjenja dowóliś',
 	'optin-survey-answer-changes-other' => 'Druge:',
-	'optin-improvements' => '== Co jo se pólěpšyło? ==
-[[File:UsabilityNavigation.png|left|link=|Njezjapka bildka nowych nawigaciskich rejtarkow]]
-;Pólěpšona nawigacija
-Nowy nawigaciski system wólažcujo wiźeś, źož sy a což cyniš a teke, źož móžoš hyś a kak se tam dostanjoš. Z pytańskim pólom górjejce napšawo pytańska funkcija dajo se lažčej namakaś a malsnjej wužywaś.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Njezjapka bildka pólěpšoneje wobźěłowańskeje kšomy]]
-;Pólěpšenja wobźěłowańskeje kšomy
-Nowe a pólěpšone symbole lěpjej rozjasnjuju, kótaru akciju kuždy rěd wuwjedujo. Wótrězki, kótarež daju se wócyniś, reducěruju barłog, mjaztym až rědko wužywane rědy su jano jadne kliknjenje zdalone.
-Wótrězk pomocy bitujo malsny pśistup na referencu wó powšyknem wužywanju wikijoweje syntaksy.
-<div style="clear:both;"></div>
-== Kak móžoš se wobźěliś ==
-Aby wěcej wó projekśe zgónił, abo wó tom, kak móžoš se wobźěliś, wóglědaj pšosym k [http://usability.wikimedia.org wikijeju iniciatiwy wužywajobnosći]. Tam namakajoš informacije wó našej koncesiji, slěźenju, designje + wuwiśu a nowych wersijach. Za pšašanja abo powšykne powěsći, wužyj naš [http://usability.wikimedia.org/wiki/Talk:Prototype diskusijny bok prototypa]. Aby wósebne temy wobjadnał, wužyj pšosym zwězane diskusijne boki. Jolic namakajoš programowe zmólki, zawóstaj pšosym swóje komentary na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco diskusijnem boku wersije Babaco] abo wužyj [https://bugzilla.wikimedia.org Bugzilla].
-
-Źěkujomy se a by se wjaselili wót tebje słyšaś.',
+	'optin-improvements2' => '== Co jo se pólěpšyło? ==
+[[File:UsabilityToolbar.png|left|link=|Foto wobrazowki pólěpšoneje wobźěłowańskeje kšomy]]
+[[File:UsabilityDialogs.png|left|link=|Foto wobrazowki nwoych dialogow za napóranje wopśijeśa]]
+;Pólěpšona rědowa kšoma
+Pólěpšona rědowa kšoma wólažcujo wobźěłowanje nastawkow.
+Nowe a pólěpšone wobrazowe symbole wujasnjuju lěpjej, kótaru akciju kuždy rěd wuwjedujo.
+Rozłožone wótrězki reducěruju barłog, mjaztym až rědko wužywane rědy su jano jadno kliknjenje zdalone.
+;Dialog
+Gaž se wótkaze abo tabele napóraju, kliknjenje na rědowy wobrazk něnto wocynja dialogowy kašćik, kótaryž śi pomaga, wótkaze a tabele pśez wupołnjowanje jadnorego formulara napóraś.
+;A wěcej
+Smy zawjadli cełu kopicu drugich pólěpšenjow, ako na pś. pólěpšonu nawigaciju, kaskaděrowace rejtarki, pólěpšone pytanje a wěcej.
+== Kak móžoš sobu cyniś ==
+Aby wěcej zgónił wó iniciatiwje wužywajobnosći, woglědaj se pšosym naš
+[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative startowy bok].
+<div style="clear:both"></div>',
 );
 
 /** Ewe (Eʋegbe)
@@ -2436,21 +2436,21 @@ $messages['he'] = array(
 	'optin-survey-answer-changes-predictability' => 'שיפור אפשרויות החיזוי של הביצועים.',
 	'optin-survey-answer-changes-custom' => 'הוספת אפשרויות רבות יותר להתאמה אישית.',
 	'optin-survey-answer-changes-other' => 'אחר:',
-	'optin-improvements' => '== מה השתפר? ==
-[[File:UsabilityNavigation.png|left|link=|צילום מסך של לשוניות הניווט החדשות]]
-;ניווט משופר
-מערכת הניווט החדשה מקלה עליכם לראות איפה אתם ומה אתם עושים, וגם לאן אתם יכולים להגיע ואיך לעשות זאת. כאשר תיבת החיפוש ממוקמת בפינה השמאלית העליונה, קל יותר למצוא את אפשרות החיפוש והשימוש בה מהיר יותר.
-<div style="clear:both;"></div>
-
+	'optin-improvements2' => '== מה שופר? ==
 [[File:UsabilityToolbar.png|left|link=|צילום מסך של סרגל העריכה המשופר]]
-;שיפורים בסרגל העריכה
-סמלים חדשים ומשופרים מבהירים את הפעולה שמבצע כל כלי עריכה. חלקים מתרחבים מקטינים את הבלגן ומאפשרים לשמור את הכלים שמשתמשים בהם פחות במרחק לחיצה אחת בלבד.
-חלק העזרה מאפשר גישה מהירה לתיעוד רוב השימושים הנפוצים של תחביר ויקי.
-<div style="clear:both;"></div>
-== איך להצטרף ==
-כדי ללמוד עוד על המיזם או כדי להצטרף אליו, אנא בקרו ב[http://usability.wikimedia.org אתר הוויקי של יוזמת השימושיות]. שם תוכלו למצוא את כל המידע על המענק, המחקר, העיצוב והפיתוח, ושחרורי הגרסאות שלנו. כדי לשאול שאלות או להשאיר משוב כללי, אנא השתמשו ב[http://usability.wikimedia.org/wiki/Talk:Prototype דף השיחה על אב הטיפוס] שלנו. כדי לדון בנושאים מסוימים, אנא השתמשו בדפי השיחה המתאימים. אם אתם מוצאים באגים, אנא השאירו את הערותיכם ב[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco דף השיחה של הגרסה Babaco] או ב[https://bugzilla.wikimedia.org באגזילה].
+[[File:UsabilityDialogs.png|left|link=|צילום מסך של תיבות דו שיח חדשות ליצירת תוכן]]
+;סרגל כלים מורחב
+הסרגל המורחב מקל על עריכת דפים.
+סמלים חדשים ומשופרים מבהירים את הפעולה של כל כלי בסרגל.
+חלקים מתרחבים מפחיתים את חוסר הסדר ומשאירים את הכלים שהשימוש בהם פחות תכוף במרחק לחיצה אחת.
+;תיבות דו שיח
+בעת יצירת קישורים או טבלאות, לחיצה על סמל הכלי פותחת תיבת דו שיח שעוזרת ליצור קישורים וטבלאות באמצעות מילוי טופס פשוט.
+;ועוד
+הוספנו מספר שיפורים אחרים כגון ניווט מורחב, לשוניות מדורגות, חיפוש משופר ועוד.
 
-תודה, ואנו מקווים לשמוע מכם!',
+== איך להצטרף ==
+למידע נוסף על מיזם השימושיות, בקרו ב[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage דף הבית] שלנו.
+<div style="clear:both"></div>',
 );
 
 /** Hindi (हिन्दी)
@@ -4210,11 +4210,12 @@ $messages['nn'] = array(
 Ynskjer du å prøva betaversjonen vår?',
 	'optin-feedback-intro' => 'Takk for at du prøver Beta.
 Vi vil gjerne vite kva du meiner om det nye grensesnittet vårt, og ynskjer at du deltek i ut den valfrie undersøkinga under.',
+	'optin-feedback-back' => 'Om du ikkje ynskjer å fylla ut undersøkinga, kan du gå attende til $1.',
 	'optin-success-in' => 'Du prøver no ut Beta.
 Du kan trekkja deg frå utprøvinga kva tid som helst ved å trykkja på «{{int:optin-leave}}»-lenkja på øvst på sida.',
 	'optin-leave-cancel' => 'Skulle du ynskja å halda fram med å nytta Beta, kan du gå attende til $1.',
 	'optin-success-out' => 'Du har forlate Beta.
-Du prøva han ut att kva tid som helst ved å trykkja på «{{int:optin-try}}» -lenkja øvst på sida.',
+Du kan prøva han ut att kva tid som helst ved å trykkja på «{{int:optin-try}}» -lenkja øvst på sida.',
 	'optin-success-feedback' => 'Takk for di tilbakemelding!',
 	'optin-accept-short' => 'Lat oss gjera det!',
 	'optin-accept-long' => 'Prøv Beta',
@@ -4227,13 +4228,16 @@ Du prøva han ut att kva tid som helst ved å trykkja på «{{int:optin-try}}» 
 	'optin-survey-no' => 'Nei',
 	'optin-survey-intro' => 'Takk for at du prøvde Beta.
 Me skulle likt å veta kva du tenkjer om det nye grensesnittet vårt, so me ville sett pris på om du fylte ut den valfrie undersøkinga nedanfor før du trykkjer på  «[[#leave|{{int:optin-submit-out}}]]».',
-	'optin-survey-question-whyoptout' => 'Kvifor går du ut av Beta! (Ver venleg å vél alle aktuelle grunnar.)',
-	'optin-survey-answer-whyoptout-hard' => 'Det var for vanskeleg å bruka.',
-	'optin-survey-answer-whyoptout-didntwork' => 'Det fungerte ikkje på rett vis.',
+	'optin-survey-question-likedislike' => 'Kva lika du med Beta? Kva mislika du med Beta?',
+	'optin-survey-question-whyoptout' => 'Kvifor går du ut av Beta? (Vel alt som passar.)',
+	'optin-survey-answer-whyoptout-hard' => 'Han var for vanskeleg å nytta.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Han fungerte ikkje på rett vis.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Han oppførte seg ikkje som ein skulle venta.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Eg likte ikkje utsjånaden.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Eg lika ikkje dei nye fanene og utsjånaden.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Eg lika ikkje den nye verktylina.',
 	'optin-survey-answer-whyoptout-other' => 'Anna årsak:',
-	'optin-survey-question-explain' => 'Forklar eller utdjup gjerne svaret du gav over:',
+	'optin-survey-question-explain' => 'Forklår eller utdjup gjerne svaret du gav over:',
 	'optin-survey-question-techfail' => 'Møtte du på tekniske feil medan du nytta Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Om ja, utdjup eller forklår:',
 	'optin-survey-question-usedtoolbar' => 'Har du nytta den nye utvidbare verktylina til å endra ei sida?',
@@ -4248,8 +4252,11 @@ Me skulle likt å veta kva du tenkjer om det nye grensesnittet vårt, so me vill
 	'optin-survey-question-res' => 'Kva er oppløysinga på skjermen din?',
 	'optin-survey-question-changes' => 'Kva endringar skulle du ha likt å sett i Beta i framtida (vel alt som passar)?',
 	'optin-survey-answer-changes-nav' => 'Gjera det lettare å navigera på denne nettsida.',
-	'optin-survey-answer-changes-upload' => 'Forbetra systemet for opplasting av innhald og media.',
+	'optin-survey-answer-changes-edittools' => 'Utvida og betra endringsverktya.',
+	'optin-survey-answer-changes-upload' => 'Betra systemet for opplasting av innhald og media.',
+	'optin-survey-answer-changes-richtext' => 'Utvikla endringsverkty liknande teksthandsamingsprogram.',
 	'optin-survey-answer-changes-lookfeel' => 'Oppdatera utsjånad og presentasjon av nettsidene.',
+	'optin-survey-answer-changes-custom' => 'Tillata meir brukartilpassing.',
 	'optin-survey-answer-changes-other' => 'Andre:',
 	'optin-improvements2' => '== Kva er betra? ==
 [[File:UsabilityToolbar.png|left|link=|Skjermbilete av den betra verktylina]]
@@ -5620,22 +5627,27 @@ Du kan prova betaversionen igen när som helst genom att klicka på "{{int:optin
 	'optin-survey-answer-changes-predictability' => 'Förbättra förutsägbarheten för hur webbplatsen beter sig.',
 	'optin-survey-answer-changes-custom' => 'Tillåt mer skräddarsydda inställningar.',
 	'optin-survey-answer-changes-other' => "Övrigt ''(endast engelska)'':",
-	'optin-improvements' => '== Vad har förbättrats? ==
-[[File:UsabilityNavigation.png|left|link=|Skärmdump över det nya navigeringsflikarna]]
-;Förbättrad navigering
-Det nya navigationssystemet gör det enklare att se var du är och vad du gör, liksom vart du kan bege dig och hur du kan komma dit. Med sökrutan i det övre högra hörnet så är sökfunktionen lättare att hitta och går snabbare att använda. (Observera att bilderna till vänster inte använder den svenska översättningen som finns.)
-<div style="clear:both;"></div>
+	'optin-improvements2' => '== Vad har förbättrats? == 
+[[Fil: UsabilityToolbar.png | vänster | link = | Skärmdump av det förbättrade redigeringsverktygsfältet]] 
+[[Fil: UsabilityDialogs.png | vänster | link = | Skärmdump av de nya dialogrutorna för att skapa innehåll]]
+;Förbättrat verktygsfält Det förbättrade verktygsfältet gör det enklare att redigera artiklar. 
 
-[[File:UsabilityToolbar.png|left|link=|Skärmdump över de förbättrade redigeringsverktygen]]
-;Förbättringar i verktygsraden
-Nya och förbättrade ikoner gör det tydligare vilken funktion varje verktyg är kopplad till. Utfällbara sektioner minskar rörigheten, men gör att verktyg som sällan används ändå finns nära till hands.
-Hjälpavsnittet ger snabbt förklaringar till vanliga koder i wikitext.
-<div style="clear:both;"></div>
+Nya och förbättrade ikoner gör det tydligare vad de olika verktygen gör. 
 
-== Hur du kan engagera dig ==
-För att få mer information om projektet eller för att engagera dig, besök [http://usability.wikimedia.org wikin för användbarhetsinitiativet]. Där finns mer information om vårt stipendium, forskning, design, utveckling och kommande utgåvor. För att ställa frågor eller lämna allmänna kommentarer, använd vår [http://usability.wikimedia.org/wiki/Talk:Prototype diskussionssida för prototypen]. För att ta upp specifika ämnen, använd motsvarande diskussionssida. Om du hittar buggar så är vi tacksamma om du kommenterar det på [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babacoutgåvans diskussionssida] eller på [https://bugzilla.wikimedia.org Bugzilla].
+Utfällbara avsnitt minskar röran, samtidigt som verktyg som används sällan finns ett enda klick bort.
 
-Tack så mycket, vi ser fram emot att höra av dig!',
+; Dialogruta
+
+Numera när du skapar länkar eller tabeller, och klickar på verktygsikonen, så öppnas en dialogruta som hjälper dig att skapa länkar och tabeller genom att du bara kan fylla i ett formulär.
+
+; Dessutom
+
+Vi har infört en rad andra förbättringar såsom enklare navigering, utfällbara flikar, förbättrad sökning, med mera. 
+
+== Så här kan du hjälpa till == 
+
+Om du vill veta mer om användbarhetsinitiativet, besök vår [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative webbplats].
+<div style="clear:both"></div>',
 );
 
 /** Swahili (Kiswahili)

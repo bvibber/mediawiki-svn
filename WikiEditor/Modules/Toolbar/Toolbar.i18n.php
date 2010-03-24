@@ -14729,7 +14729,8 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-help-content-signature-description' => 'חתימה',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -14814,6 +14815,7 @@ $messages['yue'] = array(
 | 行 2, 格 1
 | 行 2, 格 2
 | 行 2, 格 3',
+	'wikieditor-toolbar-tool-table-preview' => '預覽',
 	'wikieditor-toolbar-section-characters' => '特別字元',
 	'wikieditor-toolbar-characters-page-latin' => '拉丁文',
 	'wikieditor-toolbar-characters-page-symbols' => '符號',
