@@ -20,7 +20,8 @@ class LocalSettings {
 			'wgEnotifUserTalk', 'wgEnotifWatchlist', 'wgEmailAuthentication',
 			'wgDBtype', 'wgSecretKey', 'wgRightsUrl', 'wgSitename', 'wgRightsIcon',
 			'wgRightsText', 'wgRightsCode', 'wgMainCacheType', 'wgEnableUploads',
-			'wgMainCacheType', '_MemCachedServers' ), $db->getGlobalNames() );
+			'wgMainCacheType', '_MemCachedServers', 'wgDBserver', 'wgDBuser',
+			'wgDBpassword' ), $db->getGlobalNames() );
 		$boolItems = array( 'wgEnableEmail', 'wgEnableUserEmail', 'wgEnotifUserTalk',
 			'wgEnotifWatchlist', 'wgEmailAuthentication', 'wgEnableUploads' );
 		foreach( $confItems as $c ) {
@@ -52,7 +53,7 @@ class LocalSettings {
 	}
 
 	/**
-	 * Write the
+	 * Write the file
 	 * @param $secretKey String A random string to
 	 * @return boolean On successful file write
 	 */

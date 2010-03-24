@@ -117,6 +117,10 @@ class SqliteInstaller extends InstallerDBType {
 				return Status::newFatal( 'config-sqlite-cant-create-db', $file );
 			}
 		}
+		// nuke the unused settings for clarity
+		$this->setVar( 'wgDBserver', '' );
+		$this->setVar( 'wgDBuser', '' );
+		$this->setVar( 'wgDBpassword', '' );
 		return $this->getConnection();
 	}
 
