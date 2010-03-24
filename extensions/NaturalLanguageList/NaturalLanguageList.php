@@ -50,6 +50,8 @@ $wgExtensionMessagesFiles['NaturalLanguageList'] = "$dir/NaturalLanguageList.i18
 $wgHooks['ParserFirstCallInit'][] = 'NaturalLanguageList::onParserFirstCallInit';
 $wgHooks['LanguageGetMagic'][] = 'NaturalLanguageList::onLanguageGetMagic';
 
+$wgParserTestFiles[] = dirname( __FILE__ ) . "/nllParserTests.txt";
+
 class NaturalLanguageList {
 
 	public static function onParserFirstCallInit( $parser ) {
