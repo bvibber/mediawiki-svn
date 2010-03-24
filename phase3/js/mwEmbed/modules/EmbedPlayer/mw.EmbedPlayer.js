@@ -3558,13 +3558,15 @@ mw.EmbedTypes = {
 					//this.players.addPlayer( flowPlayer );
 					
 					// check version to add omtk:
-					var flashDescription = navigator.plugins["Shockwave Flash"].description;
-					var descArray = flashDescription.split( " " );
-					var tempArrayMajor = descArray[2].split( "." );
-					var versionMajor = tempArrayMajor[0];
-					// mw.log("version of flash: " + versionMajor);
-					if ( versionMajor >= 10 ) {
-						this.players.addPlayer( omtkPlayer );
+					if( navigator.plugins["Shockwave Flash"] ){
+						var flashDescription = navigator.plugins["Shockwave Flash"].description;
+						var descArray = flashDescription.split( " " );
+						var tempArrayMajor = descArray[2].split( "." );
+						var versionMajor = tempArrayMajor[0];
+						// mw.log("version of flash: " + versionMajor);
+						if ( versionMajor >= 10 ) {
+							this.players.addPlayer( omtkPlayer );
+						}
 					}
 					continue;
 				}
