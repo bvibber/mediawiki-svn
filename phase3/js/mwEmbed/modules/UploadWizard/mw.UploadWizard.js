@@ -46,8 +46,8 @@ mw.addMessages( {
 	"mwe-upwiz-showall": "show all",
 	"mwe-upwiz-source": "Source",
 	"mwe-upwiz-thanks-intro": "Thanks for uploading your works! You can now use your files on a Wikipedia article or link to them from elsewhere on the web.",
-	"mwe-upwiz-thanks-link": "This file is now available at <b><tt>$1</tt></b>",
-	"mwe-upwiz-thanks-wikitext": "To use it in a Wiki article, copy this text: ",
+	"mwe-upwiz-thanks-link": "This file is now available at <b><tt>$1</tt></b>.",
+	"mwe-upwiz-thanks-wikitext": "To use it in a Wikipedia article, copy this text into an article: ",
 	"mwe-upwiz-thanks-url": "To link to it in HTML, copy this HTML code: ",
 
 	"mwe-upwiz-upload-error-bad-filename-extension": "This wiki does not accept filenames with the extension \"$1\".",
@@ -1834,7 +1834,7 @@ mw.UploadWizard.prototype = {
 		
 		var thanksDiv = $j( '#mwe-upwiz-thanks' );
 
-		thanksDiv.append( $j( '<p>' ).append( gM( 'mwe-thanks-intro' ) ) );
+		thanksDiv.append( $j( '<p>' ).append( gM( 'mwe-upwiz-thanks-intro' ) ) );
 		var width = mw.getConfig( 'thumbnailWidth' );
 
 		$j.each( _this.uploads, function(i, upload) {
@@ -1860,28 +1860,29 @@ mw.UploadWizard.prototype = {
 			upload.getThumbnail( width, callback );
 			/* end evil copied code */
 
-			
-			var linksDiv = $j( '<div></div>')
-				.addClass( 'mwe-upwiz-thanks-links' )
-				.append( $j('<p/>')
-					.append( $j( gM( 'mwe-upwiz-thanks-link' 
-						          [ $j( '<a />' )
+			var thumbTitle = upload.title.replace(/^File/, 'Image');
+			var thumbWikiText = "[[" + thumbTitle + "|thumb|right]]";
+
+			thanksDiv.append(
+				$j( '<div></div>' )
+					.addClass( 'mwe-upwiz-thanks-links' )
+					.append( $j('<p/>')
+						.append( gM( 'mwe-upwiz-thanks-link',
+							      $j( '<a />' )
 								.attr( { target: '_new', href: upload.imageinfo.descriptionurl } )
-								.text( upload.title ) ] ) ) ) )
+								.text( upload.title ) ) ) ) 
+					.append( $j('<p/>')
+						.append( gM( 'mwe-upwiz-thanks-wikitext' ),
+							 $j( '<textarea></textarea>' )
+								.addClass( 'mwe-thanks-input-textarea' )
+								.append( thumbWikiText ) ) )
+					.append( $j('<p/>')
+						.append( gM( 'mwe-upwiz-thanks-url' ),
+							 $j( '<input />' )
+								.addClass( 'mwe-thanks-input' )
+								.attr( { type: 'text', value: upload.imageinfo.descriptionurl } ) ) )
 
-				.append( $j('<p/>')
-					.append( $j( gM( 'mwe-upwiz-thanks-wikitext' ) ),
-						 $j( '<input />' )
-							.addClass( 'mwe-thanks-input' )
-							.attr( { type: text, value: "[[File: " + upload.title + "]]" } ) ) )
-				.append( $j('<p/>')
-					.append( $j( gM( 'mwe-upwiz-thanks-url' ) ),
-						 $j( '<input />' )
-							.addClass( 'mwe-thanks-input' )
-							.attr( { type: text, value: upload.imageinfo.descriptionurl } ) ) )
-
-
-			thanksDiv.append(linksDiv);
+			);
 
 		} ); 
 	},
