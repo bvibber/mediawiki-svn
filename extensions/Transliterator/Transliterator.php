@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, not a valid entry point.' );
 }
 
-$wgTransliteratorRuleCount = 255;	// maximum number of permitted rules per map.
+$wgTransliteratorRuleCount = 500;	// maximum number of permitted rules per map.
 $wgTransliteratorRuleSize  =  10;	// maximum number of characters in left side of a rule.
 
 $wgExtensionCredits['parserhook'][] = array(
@@ -29,7 +29,8 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $wgAutoloadClasses['ExtTransliterator'] = dirname( __FILE__ ) . "/Transliterator_body.php";
-$wgExtensionMessagesFiles['Transliterator'] = dirname(__FILE__) . '/Transliterator.i18n.php';
+$wgExtensionMessagesFiles['Transliterator'] = dirname( __FILE__ ) . '/Transliterator.i18n.php';
+$wgParserTestFiles[] = dirname( __FILE__ ) . '/transliteratorParserTests.txt';
 
 $wgHooks['ParserFirstCallInit'][] = 'ExtTransliterator::setup';
 # Purge the cache for as many cases as I can find.
