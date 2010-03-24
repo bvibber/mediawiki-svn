@@ -121,18 +121,18 @@ def decomposeVersion(version):
 
 	ret['major'] = m.group(1) + "." + m.group(2)
 	ret['branch'] = ('tags/REL' + m.group(1) + '_' + m.group(2) + '_' + m.group(3) +
-		m.group(4).upper() + m.group(5))
+		m.group(4) + m.group(5))
 	if int(m.group(5)) == 0:
 		ret['prevVersion'] = None
 	else:
 		newMinor = str(int(m.group(5)) - 1)
 		ret['prevVersion'] = ret['major'] + "." + m.group(3) + m.group(4) + newMinor
 		ret['prevBranch'] = ('tags/REL' + m.group(1) + '_' + m.group(2) + '_' + m.group(3) +
-			m.group(4).upper() + newMinor)
+			m.group(4) + newMinor)
 	return ret
 
 def versionToBranch(version):
-	return 'tags/REL' + version.replace('.', '_').upper()
+	return 'tags/REL' + version.replace('.', '_')
 
 def hashfile(fileName, algorithm):
 	f = open(fileName, 'r')
