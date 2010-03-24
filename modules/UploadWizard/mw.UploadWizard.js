@@ -1297,9 +1297,12 @@ mw.UploadWizardDetails.prototype = {
 
 		// add a location template
 
-		// add an "anything else" template XXX if needed
-		wikiText += "=={int:otherinfo}==\n";
-		wikiText += $j( _this.otherInformationInput ).val().trim();
+		// add an "anything else" template if needed
+		var otherInfoWikiText = $j( _this.otherInformationInput ).val().trim();
+		if ( otherInfoWikiText != '' ) {
+			wikiText += "=={int:otherinfo}==\n";
+			wikiText += otherInfoWikiText;
+		}
 
 		return wikiText;	
 	},
