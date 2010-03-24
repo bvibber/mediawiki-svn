@@ -1475,7 +1475,7 @@ $messages['mr'] = array(
  * @author Zamwan
  */
 $messages['ms'] = array(
-	'usagestatisticsinterval' => 'Selang',
+	'usagestatisticsinterval' => 'Selang:',
 	'usagestatisticstype' => 'Jenis',
 	'usagestatisticsstart' => 'Tarikh mula:',
 	'usagestatisticsend' => 'Tarikh tamat:',

@@ -3024,6 +3024,7 @@ Luo se tai muuta asetusta käyttääksesi tätä laajennusta.',
  * @author Louperivois
  * @author Peter17
  * @author PieRRoMaN
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -3118,7 +3119,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-rates' => 'Limites',
 	'configure-section-proxy' => 'Serveurs mandataires',
 	'configure-section-squid' => 'Serveurs squids',
-	'configure-section-cookie' => 'Cookies',
+	'configure-section-cookie' => 'Témoins',
 	'configure-section-performance' => 'Performance',
 	'configure-section-upload' => 'Téléversements',
 	'configure-section-sharedupload' => 'Téléversements partagés',

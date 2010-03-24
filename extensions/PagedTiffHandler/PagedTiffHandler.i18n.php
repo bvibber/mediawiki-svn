@@ -163,6 +163,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author Jagwar
+ * @author Jean-Frédéric
  */
 $messages['fr'] = array(
 	'tiff-desc' => 'Gestionnaire pour visionner les fichiers TIFF en mode image',
@@ -170,6 +171,7 @@ $messages['fr'] = array(
 	'tiff_page_error' => 'Le numéro de page n’est pas dans la plage.',
 	'tiff_too_many_embed_files' => "L'image contient trop de fichiers embarqués.",
 	'tiff_sourcefile_too_large' => 'La résolution du fichier source est trop élevée. Aucune miniature ne sera générée.',
+	'tiff_targetfile_too_large' => 'La résolution de l’image cible est trop importante. Aucun aperçu ne sera généré.',
 	'tiff_file_too_large' => 'Le fichier téléversé est trop grand et a été rejeté.',
 	'tiff_out_of_service' => "Le fichier téléversé n'a pas pu être traité. ImageMagick n'est pas disponible.",
 	'tiff_too_much_meta' => "Les métadonnées utilisent trop d'espace.",
@@ -302,6 +304,8 @@ $messages['nl'] = array(
 	'tiff_too_many_embed_files' => 'De afbeelding bevat te veel ingesloten bestanden.',
 	'tiff_sourcefile_too_large' => 'De resolutie van het bronbestand is te groot.
 Er kan geen miniatuur worden aangemaakt.',
+	'tiff_targetfile_too_large' => 'De resolutie van het doelbestand is te groot.
+Er wordt geen miniatuur aangemaakt.',
 	'tiff_file_too_large' => 'Het geüploade bestand is te groot en kan niet verwerkt worden.',
 	'tiff_out_of_service' => 'Het geüploade bestand kan niet worden verwerkt.
 ImageMagick is niet beschikbaar.',
@@ -340,6 +344,7 @@ $messages['pms'] = array(
 	'tiff_page_error' => "Nùmer ëd pàgina pa ant l'antërval",
 	'tiff_too_many_embed_files' => 'La figura a conten andrinta tròpi archivi.',
 	'tiff_sourcefile_too_large' => "L'arzolussion dl'archivi sorgiss a l'é tròp gròssa. Gnun-e figurin-e a saran generà.",
+	'tiff_targetfile_too_large' => "L'arzolussion dël file ëd destinassion a l'é tròp gròssa. Pa gnun-e figurin-e a saran generà.",
 	'tiff_file_too_large' => "L'archivi carià a l'é tròp gròss e a l'é stàit arfudà.",
 	'tiff_out_of_service' => "L'archivi carià a l'ha pa podù esse processà. ImageMagick a l'é nen disponìbil.",
 	'tiff_too_much_meta' => 'Ij Metadat a deuvro tròp dë spassi.',

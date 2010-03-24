@@ -107,9 +107,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'pipeescape-desc' => 'Fonction parseur <code>#!</code> pour inséser le caractère pipe en tant que simple caractère.',
+	'pipeescape-desc' => 'Fonction parseur <code>#!</code> pour inséser la barre verticale en tant que simple caractère.',
 );
 
 /** Galician (Galego)

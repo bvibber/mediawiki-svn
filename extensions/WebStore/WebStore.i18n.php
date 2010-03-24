@@ -913,7 +913,7 @@ $wgLocalTmpDirectory doit contenir le nom d’un répertoire accessible en écri
 	'inplace_scaler_not_enough_params' => 'Pas suffisamment de paramètres.',
 	'inplace_scaler_invalid_image' => 'Image incorrecte, impossible de déterminer sa taille.',
 	'inplace_scaler_failed' => 'Une erreur est survenue pendant le redimensionnement de l’image : $1',
-	'inplace_scaler_no_handler' => "Aucun ''handler'' pour transformer ce type MIME.",
+	'inplace_scaler_no_handler' => 'Aucun gestionnaire ne prend en charge ce type MIME.',
 	'inplace_scaler_no_output' => 'La transformation n’a suscité la génération d’aucun fichier de sortie.',
 	'inplace_scaler_zero_size' => 'La transformation a produit un fichier de sortie de taille nulle.',
 	'webstore-desc' => 'Intergiciel de stockage de fichiers pour le Web uniquement (non NFS)',
@@ -955,7 +955,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Les erreurs PHP suivantes sont survenues :',
-	'webstore_no_handler' => "Aucun ''handler'' pour transformer ce type MIME.",
+	'webstore_no_handler' => 'Aucun gestionnaire ne prend en charge ce type MIME.',
 );
 
 /** Irish (Gaeilge)

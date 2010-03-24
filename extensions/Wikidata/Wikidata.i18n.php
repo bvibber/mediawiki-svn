@@ -3972,7 +3972,7 @@ Tulit tälle sivulle ehkä suoraan? Normaalisti sinun ei pitäisi olla täällä
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'wikidata-desc' => 'Ajoute des base de données ressemblant aux wikis pour différents types de contenu',
+	'wikidata-desc' => 'Ajoute une base de données de type wiki pour différents types de contenu',
 	'wikidata-handler-namespace-move-error' => "Les pages dans les espaces de noms pris en charge par l'extension Wikidata ne peuvent pas être déplacées.",
 	'languages' => 'Wikidata : gestionnaire de langues',
 	'langman-desc' => 'Ajouter et modifier les paramètres de langues avec [[Special:Languages]]',

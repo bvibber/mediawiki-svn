@@ -208,18 +208,19 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'sendmailtowiki-desc' => 'Poster le contenu wiki via une adresse de courriel dédiée dynamique',
 	'prefs-sendmailtowiki' => 'Publication du contenu par courriel',
 	'sendmailtowiki-inemail' => 'Adresse de courriel dédiée :',
-	'sendmailtowiki-inpin' => 'PIN :',
-	'prefs-help-sendmailtowiki_pin' => 'Un champ vierge pour le numéro PIN désactive la publication de contenu sur le wiki avec votre compte.',
-	'sendmailtowiki-err-pinlength' => 'Le PIN doit contenir exactement 5 chiffres.',
+	'sendmailtowiki-inpin' => 'NIP :',
+	'prefs-help-sendmailtowiki_pin' => 'Un champ vierge pour le NIP désactive la publication de contenu sur le wiki avec votre compte.',
+	'sendmailtowiki-err-pinlength' => 'Le NIP doit contenir exactement 5 chiffres.',
 	'sendmailtowiki-err-wrongprefix' => "Préfixe de compte wiki erroné. Contactez l'administrateur.",
 	'sendmailtowiki-err-invalidaccount' => "Compte invalide. Vérifiez l'adresse de courriel de destination.",
 	'sendmailtowiki-err-invalidsender' => "Expéditeur invalide. Vérifiez l'adresse de courriel d'émission.",
-	'sendmailtowiki-err-invalidpin' => 'PIN invalide. Accès refusé.',
+	'sendmailtowiki-err-invalidpin' => 'NIP invalide. Accès refusé.',
 	'sendmailtowiki-err-onlyplain' => "En raison d'éventuelles erreurs d'interprétations, seuls les messages contenant du texte brut sont acceptés.",
 );
 

@@ -2183,6 +2183,7 @@ $messages['eo'] = array(
 	'code-prop-changes' => 'Protokolo pri statuso kaj etikedoj',
 	'code-desc' => '[[Special:Code|Koda kontrolilo]] kun [[Special:RepoAdmin|subteno por Subversion]]',
 	'code-no-repo' => 'Neniu kodujoj estas konfigurataj',
+	'code-repo-not-found' => 'Dosierujo <b>$1</b> ne ekzistas!',
 	'code-load-diff' => 'Ŝarĝante diferencon...',
 	'code-notes' => 'lastaj komentoj',
 	'code-statuschanges' => 'statusaj ŝanĝoj',
@@ -2246,6 +2247,10 @@ $messages['eo'] = array(
 	'code-status-deferred' => 'prokrastita',
 	'code-pathsearch-legend' => 'Serĉi versiojn en ĉi tiu kodujo laŭ vojo',
 	'code-pathsearch-path' => 'Vojo:',
+	'code-pathsearch-filter' => 'Filtrilo uzata:',
+	'code-revfilter-cr_status' => 'Statuso = $1',
+	'code-revfilter-cr_author' => 'Aŭtoro = $1',
+	'code-revfilter-clear' => 'Forigi filtrilon',
 	'code-rev-submit' => 'Konservi ŝanĝojn',
 	'code-rev-submit-next' => 'Konservi kaj aliri sekvan nefaritaĵon',
 	'code-batch-status' => 'Ŝanĝi statuson:',
@@ -2263,6 +2268,7 @@ $messages['eo'] = array(
 	'codereview-tests-failed2' => '$1 sukcesis {{PLURAL:$2|teston|testojn}}, $3 malsukcesis {{PLURAL:$4|teston|testojn}}:',
 	'codereview-tests-running' => 'Testkazoj funkcias...',
 	'codereview-tests-aborted' => 'Testfunkciigo haltiĝis.',
+	'codereview-tests-failed' => 'Malsukcesis',
 	'codereview-email-subj' => '[$1] [$2]: Nova komento estis aldonita',
 	'codereview-email-body' => 'Uzanto "$1" afiŝis komenton de $3.
 

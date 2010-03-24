@@ -187,6 +187,8 @@ Sy wopytał: '''$1'''",
 Sy wopytał: '''$1'''",
 	'rt-badstatus' => "Njepłaśiwy argument status (s): musy standardne pólo byś (glědaj dokumentaciju).
 Sy wopytał: '''$1'''",
+	'rt-badcfield' => "Njepłaśiwy swójski pólny argument: musy jadnore słowo byś (glědaj dokumentaciju).
+Sy wopytał: '''$1'''",
 	'rt-badqueue' => "Njepłaśiwy argument queue (q): musy jadnore słowo byś.
 Sy wopytał: '''$1'''",
 	'rt-badowner' => "Njepłaśiwy argument owner (o): musy płaśiwe wužywarske mě byś.
@@ -561,6 +563,8 @@ It l'has provà: '''$1'''",
 	'rt-badorderby' => "Arg ORDER BY (ob) pa bon: a deuv esse un camp standard (varda la documentassion).
 It l'has provà: '''$1'''",
 	'rt-badstatus' => "Arg status (s) pa bon: a deuv esse un camp standard (varda la documentassion).
+It l'has provà: '''$1'''",
+	'rt-badcfield' => "Argoment dël camp utent pa bon: a deuv esse na paròla sola (varda la documentassion).
 It l'has provà: '''$1'''",
 	'rt-badqueue' => "Arg queue (s) pa bon: a deuv esse na paròla sempia.
 It l'has provà: '''$1'''",

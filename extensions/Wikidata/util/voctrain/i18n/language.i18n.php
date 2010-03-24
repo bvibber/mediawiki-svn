@@ -2099,7 +2099,9 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'voctrain_Login' => 'ಲಾಗ್ ಇನ್',
 	'voctrain_Language' => 'ಭಾಷೆ',
+	'voctrain_Log_in' => 'ಲಾಗ್ ಇನ್',
 	'voctrain_other' => 'ಇತರ',
 );
 

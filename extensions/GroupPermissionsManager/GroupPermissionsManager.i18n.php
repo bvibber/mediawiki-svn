@@ -1836,6 +1836,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'grouppermissions-dologin' => 'ಲಾಗ್ ಇನ್',
 	'grouppermissions-dosearch' => 'ಹೋಗು',
 );
 

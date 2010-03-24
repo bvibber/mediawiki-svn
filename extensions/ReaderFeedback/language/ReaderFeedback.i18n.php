@@ -750,11 +750,13 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author An13sa
  * @author Bengoa
+ * @author Joxemai
  * @author Kobazulo
  * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
 	'readerfeedback' => 'Zer deritzozu orrialde honi buruz?',
+	'readerfeedback-text' => "''Har ezazu, mesedez, une bat orri hau baloratzeko. Zure iritzia garrantzitsua da eta gure webgunea hobetzen laguntzen digu.''",
 	'readerfeedback-reliability' => 'Fidagarritasuna',
 	'readerfeedback-npov' => 'Neutraltasuna',
 	'readerfeedback-presentation' => 'Aurkezpena',
@@ -766,8 +768,10 @@ $messages['eu'] = array(
 	'readerfeedback-level-3' => 'Altua',
 	'readerfeedback-level-4' => 'Bikaina',
 	'readerfeedback-submit' => 'Bidali',
+	'readerfeedback-submitting' => 'Bidaltzen',
 	'readerfeedback-finished' => 'Mila esker!',
 	'readerfeedback-tagfilter' => 'Etiketa:',
+	'readerfeedback-tierfilter' => 'Balorazioak:',
 	'readerfeedback-tier-high' => 'Altua',
 	'readerfeedback-tier-poor' => 'Txarra',
 );

@@ -142,6 +142,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'wikieditor-template-editor-preference' => 'Ŝalti formularan redaktadon de vikiaj ŝablonoj',
+	'wikieditor-template-editor-dialog-title' => 'Redakti ŝablonon',
+	'wikieditor-template-editor-dialog-submit' => 'Ĝisdatigi',
+	'wikieditor-template-editor-dialog-cancel' => 'Nuligi',
 );
 
 /** Spanish (Español)
@@ -421,9 +424,21 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Hannibal
  */
 $messages['sv'] = array(
 	'wikieditor-template-editor-preference' => 'Aktivera form-baserad redigering av wikimallar',
+	'wikieditor-template-editor-dialog-title' => 'Redigera mall',
+	'wikieditor-template-editor-dialog-submit' => 'Uppdatera',
+	'wikieditor-template-editor-dialog-cancel' => 'Avbryt',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'తాజాకరించు',
+	'wikieditor-template-editor-dialog-cancel' => 'రద్దుచేయి',
 );
 
 /** Turkish (Türkçe)

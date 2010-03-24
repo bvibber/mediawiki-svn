@@ -542,6 +542,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -565,7 +566,7 @@ $messages['fr'] = array(
 	'patrol-stopped' => 'Vous avez choisi de ne pas vérifier une autre modification. $1',
 	'patrol-resume' => 'Cliquer ici pour reprendre.',
 	'group-patroller' => 'Patrouilleurs',
-	'group-patroller-member' => 'Patrouilleur',
+	'group-patroller-member' => 'patrouilleur',
 	'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
 	'right-patroller' => 'Pages de patrouille',
 );

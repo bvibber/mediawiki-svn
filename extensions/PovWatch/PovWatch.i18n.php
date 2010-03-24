@@ -262,6 +262,7 @@ $messages['br'] = array(
 	'povwatch_unsubscribed' => 'Tennet eo bet ho enskrivadur da PovWatch.',
 	'povwatch_invalid_title' => 'Direizh eo an titl diferet',
 	'povwatch_subscriber_list' => 'Ur [[Special:PovWatch/subscribers|roll koumananterien]] zo da gaout.',
+	'povwatch_subscriber_list_intro' => '<strong>Roll an dud koumanantet</strong>',
 	'povwatch_not_allowed_subscribers' => "N'oc'h ket aotreet da welet roll ar goumananterien PovWatch.",
 	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
 	'povwatch_push' => 'Bountañ',

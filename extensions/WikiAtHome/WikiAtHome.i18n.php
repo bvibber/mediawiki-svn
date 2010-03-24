@@ -622,9 +622,10 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Jean-Frédéric
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'wah-desc' => 'Permet de distribuer le travail de transcodage de vidéo aux clients en utilisant firefogg.',
+	'wah-desc' => 'Permet, à l’aide de Firefogg, de distribuer aux clients les tâches de transcodage vidéo.',
 	'wah-user-desc' => 'Wiki@Home permet aux membre de la communauté de donner des cycles processeur libres pour aider des opérations intensives en ressources.',
 	'wah-short-audio' => 'fichier de son $1, $2',
 	'wah-short-video' => 'fichier vidéo $1, $2',

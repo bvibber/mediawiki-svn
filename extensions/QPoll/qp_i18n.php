@@ -765,6 +765,7 @@ $messages['fi'] = array(
  * @author Jean-Frédéric
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'pollresults' => 'Résultats des sondages sur ce site',
@@ -809,7 +810,7 @@ Assurez-vous que le sondage est déclaré et sauvegardé, vérifiez également q
 	'qp_error_question_not_implemented' => 'Les questions de ce type ne sont pas implémentées : $1',
 	'qp_error_invalid_question_type' => 'Type de question invalide : $1',
 	'qp_error_type_in_stats_mode' => "Le type de question ne peut pas être défini en mode d'affichage statistique : $1",
-	'qp_error_no_poll_id' => "Le tag du sondage n'a pas d'id attribut défini.",
+	'qp_error_no_poll_id' => 'La balise du sondage n’a pas d’identifiant défini.',
 	'qp_error_invalid_poll_id' => "Id sondage invalide (id=$1).
 L'id sondage peut contenir uniquement des lettres, des nombres et le caractère espace",
 	'qp_error_already_used_poll_id' => "L'id sondage a déjà été utilisé sur cette page (id=$1).",

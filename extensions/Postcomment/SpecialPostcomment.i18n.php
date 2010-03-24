@@ -344,6 +344,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author McDutchie
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'postcomment_desc' => 'Permet aux utilisateurs d’envoyer des commentaires directement dans les pages de discussion',
@@ -353,7 +354,7 @@ $messages['fr'] = array(
 	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
 	'postcomment_leavemessagefor' => 'Laissez un message pour $1',
 	'postcomment_post' => 'Publier',
-	'postcomment_on' => 'A',
+	'postcomment_on' => 'Le',
 	'postcomment_said' => 'a dit',
 	'postcomment_invalidrequest' => 'Requête invalide',
 	'postcomment_replyto' => 'Répondre à $1',

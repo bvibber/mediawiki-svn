@@ -890,17 +890,18 @@ Jos sinulla on kysymyksiä tähän jakelujärjestelmään liittyen, sivulla [[Ex
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'extensiondistributor' => 'Télécharger l’extension MediaWiki',
 	'extdist-desc' => 'Extension pour la distribution des archives photographiques des extensions',
 	'extdist-not-configured' => 'Veuillez configurer $wgExtDistTarDir et $wgExtDistWorkingCopy',
-	'extdist-wc-missing' => 'La répertoire pour copies de travail configurée n’existe pas !',
+	'extdist-wc-missing' => 'La répertoire de copies de travail spécifié n’existe pas !',
 	'extdist-no-such-extension' => 'Aucune extension « $1 »',
 	'extdist-no-such-version' => 'L’extension « $1 » n’existe pas dans la version « $2 ».',
 	'extdist-choose-extension' => 'Sélectionnez l’extension que vous voulez télécharger :',
-	'extdist-wc-empty' => 'Le répertoire pour copies de travail configurée n’a aucune extension distribuable !',
+	'extdist-wc-empty' => 'Le répertoire de copies de travail spécifié n’a aucune extension distribuable !',
 	'extdist-submit-extension' => 'Continuer',
 	'extdist-current-version' => 'Version de développement (trunk)',
 	'extdist-choose-version' => '<big>Vous êtes en train de télécharger l’extension <b>$1</b>.</big>

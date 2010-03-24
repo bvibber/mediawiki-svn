@@ -204,15 +204,16 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'shareduserrights' => 'Gestion des droits d’utilisateur partagés',
 	'gblrights-desc' => '[[Special:SharedUserRights|Gestion simple des droits d’utilisateur partagés]]',
 	'gblrights-logpage' => 'Journal des droits partagés',
-	'gblrights-pagetext' => 'Voici l’historique de toutes les modifications apportées à la table des droits partagés d’utilisateur pour la famille wiki',
+	'gblrights-pagetext' => 'Voici l’historique de toutes les modifications apportées à la table des droits d’utilisateur partagés pour la famille wiki',
 	'gblrights-rights-entry' => 'a modifié l’appartenance aux groupes globaux pour $1 de $2 à $3',
-	'right-userrights-shared' => 'Gérer les droits d’utilisateurs partagés',
+	'right-userrights-shared' => 'Gérer les droits d’utilisateur partagés',
 );
 
 /** Irish (Gaeilge)

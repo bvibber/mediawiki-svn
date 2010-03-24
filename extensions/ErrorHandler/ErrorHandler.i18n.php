@@ -420,23 +420,24 @@ $messages['fi'] = array(
  * @author IAlex
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'errorhandler-desc' => "Gestionnaire d'erreurs pour MediaWiki",
 	'errorhandler-errors' => 'Erreurs :',
 	'errorhandler-error-fatal' => 'Erreur fatale',
 	'errorhandler-error-warning' => 'Avertissement',
-	'errorhandler-error-parse' => 'Erreur de parse',
+	'errorhandler-error-parse' => 'Erreur d’analyse',
 	'errorhandler-error-notice' => 'Notice',
-	'errorhandler-error-deprecated' => 'Obsolète',
-	'errorhandler-error-core-error' => 'Erreur de noyau',
+	'errorhandler-error-deprecated' => 'Désuet',
+	'errorhandler-error-core-error' => 'Erreur du noyau',
 	'errorhandler-error-core-warning' => 'Avertissement du noyau',
 	'errorhandler-error-compile-error' => 'Erreur de compilation',
 	'errorhandler-error-compile-warning' => 'Avertissement de compilation',
 	'errorhandler-error-user-error' => 'Erreur (utilisateur)',
 	'errorhandler-error-user-warning' => 'Avertissement (utilisateur)',
 	'errorhandler-error-user-notice' => 'Notice (utilisateur)',
-	'errorhandler-error-user-deprecated' => 'Obsolète (utilisateur)',
+	'errorhandler-error-user-deprecated' => 'Désuet (utilisateur)',
 	'errorhandler-error-strict' => 'Standards stricts',
 	'errorhandler-error-recoverable' => 'Erreur fatale qui peut être attrapée',
 	'errorhandler-msg-text' => '$1 : $2 dans $3 (ligne $4)',

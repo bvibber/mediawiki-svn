@@ -190,9 +190,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'mwsearch-desc' => 'Plug-in pour les recherches dans MediaWiki',
+	'mwsearch-desc' => 'Extension pour les recherches dans MediaWiki',
 );
 
 /** Franco-Provençal (Arpetan)
