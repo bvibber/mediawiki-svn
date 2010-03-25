@@ -30,9 +30,9 @@ $messages = array();
  * @author Alexandre Emsenhuber
  */
 $messages['en'] = array(
-	'openid-desc' => 'Login to the wiki with an [http://openid.net/ OpenID], and login to other OpenID-aware web sites with a wiki user account',
+	'openid-desc' => 'Log in to the wiki with an [http://openid.net/ OpenID], and log in to other OpenID-aware web sites with a wiki user account',
 
-	'openidlogin' => 'Login with OpenID',
+	'openidlogin' => 'Log in with OpenID',
 	'openidserver' => 'OpenID server',
 	'openidxrds' => 'Yadis file',
 	'openidconvert' => 'OpenID converter',
@@ -89,8 +89,8 @@ If you want to use OpenID to log in in the future, you can [[Special:OpenIDConve
 If not, try the "Continue" button.',
 	'openidclientonlytext' => 'You cannot use accounts from this wiki as OpenIDs on another site.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidlogininstructions' => '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single signon between Web sites.
-OpenID lets you log into many different Web sites without using a different password for each.
+	'openidlogininstructions' => '{{SITENAME}} supports the [http://openid.net/ OpenID] standard for single sign-on between websites.
+OpenID lets you log in to many different websites without using a different password for each.
 (See [http://en.wikipedia.org/wiki/OpenID Wikipedia\'s OpenID article] for more information.)
 
 If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
@@ -101,7 +101,7 @@ There are many [http://openid.net/get/ OpenID providers], and you may already ha
 
 	'openiddelete' => 'Delete OpenID',
 	'openiddelete-text' => 'By clicking the "{{int:openiddelete-button}}" button, you will remove the OpenID $1 from your account.
-You will not be able anymore to login with this OpenID.',
+You will no longer be able to log in with this OpenID.',
 	'openiddelete-button' => 'Confirm',
 	'openiddeleteerrornopassword' => 'You cannot delete all your OpenIDs because your account has no password.
 You would not able to log in without an OpenID.',
@@ -113,17 +113,17 @@ You would not able to log in without an OpenID.',
 	'prefs-openid' => 'OpenID',
 	'openid-prefstext' => '[http://openid.net/ OpenID] preferences',
 	'openid-pref-hide' => 'Hide your OpenID URL on your user page, if you log in with OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Update the following information from OpenID persona every time I login:',
+	'openid-pref-update-userinfo-on-login' => 'Update the following information from OpenID persona every time I log in:',
 	'openid-urls-desc' => 'OpenIDs associated with your account:',
 	'openid-urls-url' => 'URL',
 	'openid-urls-action' => 'Action',
 	'openid-urls-delete' => 'Delete',
 	'openid-add-url' => 'Add a new OpenID',
 
-	'openidsigninorcreateaccount' => 'Sign-in or Create New Account',
+	'openidsigninorcreateaccount' => 'Sign in or create new account',
 	'openid-provider-label-openid' => 'Enter your OpenID URL',
-	'openid-provider-label-google' => 'Login using your Google account',
-	'openid-provider-label-yahoo' => 'Login using your Yahoo account',
+	'openid-provider-label-google' => 'Log in using your Google account',
+	'openid-provider-label-yahoo' => 'Log in using your Yahoo account',
 	'openid-provider-label-aol' => 'Enter your AOL screenname',
 	'openid-provider-label-other-username' => 'Enter your $1 username',
 );
