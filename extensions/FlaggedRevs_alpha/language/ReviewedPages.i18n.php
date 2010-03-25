@@ -12,7 +12,7 @@ $messages['en'] = array(
 	'reviewedpages-leg' => 'List pages that have been reviewed',
 	'reviewedpages-list' => 'This lists contains [[{{MediaWiki:Validationpage}}|reviewed]] pages whose \'\'highest attained\'\' review level (of a revision) is the specified level.
 	A link is given to the latest revision of that level.',
-	'reviewedpages-none' => 'There are no pages in this list',
+	'reviewedpages-none' => 'There are no pages in this list.',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
 	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
@@ -175,7 +175,10 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'reviewedpages' => 'Pajennoù adwelet',
 	'reviewedpages-leg' => 'Rollañ ar pajennoù hag a zo bet adlennet',
-	'reviewedpages-list' => "Rollet eo war ar bajenn-mañ ar pajennoù bet adwelet (d'ar muiañ) d'al live spisaet.",
+	'reviewedpages-list' => "Rollet eo war ar bajenn-mañ ar pajennoù bet adwelet (d'ar muiañ) d'al live spisaet.
+
+Er roll-mañ ez eus pajennoù [[{{MediaWiki:Validationpage}}|adlennet]] enno unan anezho hag en deus tizhet al live ''uhelañ'' a adlenn resisaet.
+Al liamm kinniget a ya war-zu ar stumm ziwezhañ eus al live-se.",
 	'reviewedpages-none' => "N'eus pajenn ebet er roll",
 	'reviewedpages-lev-1' => 'Perzhded',
 	'reviewedpages-lev-2' => 'Lakaet war wel',
@@ -188,11 +191,11 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'reviewedpages' => 'Provjerene stranice',
-	'reviewedpages-leg' => 'Spisak stranica po najvišem nivou pregleda',
-	'reviewedpages-list' => 'Ova stranica prikazuje stranice koje su provjerene (najviše) do određenog nivoa.',
+	'reviewedpages-leg' => 'Spisak stranica koje su pregledane',
+	'reviewedpages-list' => "Ovaj spisak sadrži [[{{MediaWiki:Validationpage}}|pregledane]] stranice čiji ''najveći dostignuti'' nivo pregleda (revizije) je ujedno traženi nivo. Dati link na posljednju reviziju tog nivoa.",
 	'reviewedpages-none' => 'Nema stranica na ovom spisku',
 	'reviewedpages-all' => 'pregledane verzije',
-	'reviewedpages-best' => 'najkvalitetnija revizija',
+	'reviewedpages-best' => 'najbolja revizija',
 );
 
 /** Catalan (Català)
@@ -252,8 +255,9 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'reviewedpages' => 'Pśeglědane boki',
-	'reviewedpages-leg' => 'Boki pó nejwušej pśespytowańskej rowninje nalicyś',
-	'reviewedpages-list' => 'Toś ten bok nalistujo boki, kótarež su se pśeglědali (w nejwušem paźe) na pódanej rowninje.',
+	'reviewedpages-leg' => 'Pśeglědane boki nalicyś',
+	'reviewedpages-list' => "Toś ta lisćina wopśimujo [[{{MediaWiki:Validationpage}}|pśeglědane]] boki, kótarychž ''nejwuša dojśpjona'' pśeglědowańska rownina (wersije) jo pódana rownina.
+Wótkaz k nejnowšej wersiji teje rowniny jo pódany.",
 	'reviewedpages-none' => 'Toś ta lisćina njewopśimujo boki.',
 	'reviewedpages-lev-0' => 'Pśeglědany',
 	'reviewedpages-lev-1' => 'Kwalita',
@@ -283,14 +287,15 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'reviewedpages' => 'Kontrolitaj paĝoj',
-	'reviewedpages-leg' => 'Montri paĝojn laŭ plej alta kontrolnivelo',
-	'reviewedpages-list' => 'Ĉi tiu paĝo montras paĝojn kontrolitajn (maksimume) al la petita nivelo.',
+	'reviewedpages-leg' => 'Listigi paĝojn kontrolitajn',
+	'reviewedpages-list' => "Ĉi tiu listigas [[{{MediaWiki:Validationpage}}|kontrolitajn]] paĝojn kies ''plej alta'' kontrolnivelo (de revizio) estas la specifigita nivelo.
+Ligilo estas farata al la lasta revizio de tiu nivelo.",
 	'reviewedpages-none' => 'Neniuj paĝoj estas en ĉi tiu listo',
 	'reviewedpages-lev-0' => 'Reviziita',
 	'reviewedpages-lev-1' => 'Kvalito',
 	'reviewedpages-lev-2' => 'Elstara',
 	'reviewedpages-all' => 'reviziitaj versioj',
-	'reviewedpages-best' => 'ĉefa versio',
+	'reviewedpages-best' => 'plej bona revizio',
 );
 
 /** Spanish (Español)
@@ -348,7 +353,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'reviewedpages' => 'Arvioidut sivut',
-	'reviewedpages-leg' => 'Listaa sivut korkeimman arviointitason mukaan',
+	'reviewedpages-leg' => 'Lista sivuista, jotka on arvioitu',
 	'reviewedpages-list' => 'Tämä sivu listaa sivut, jotka on arvioitu (korkeimmalle) annetulla tasolla.',
 	'reviewedpages-none' => 'Tällä listalla ei ole sivuja.',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
@@ -369,7 +374,7 @@ $messages['fr'] = array(
 	'reviewedpages-leg' => 'Lister les pages qui ont été relues',
 	'reviewedpages-list' => "Cette liste contient les pages [[{{MediaWiki:Validationpage}}|relues]] dont une des versions a atteint ''le plus haut'' niveau de relecture spécifié.
 Le lien donné pointe vers la dernière version de ce niveau.",
-	'reviewedpages-none' => 'Cette liste est vide',
+	'reviewedpages-none' => 'Il n’y a aucune page dans cette liste.',
 	'reviewedpages-lev-0' => 'Visualisée',
 	'reviewedpages-lev-1' => 'De qualité',
 	'reviewedpages-lev-2' => 'Distinguée',
@@ -511,14 +516,16 @@ Wotkaz k najnowšej wersiji teje runiny je podaty.",
  */
 $messages['hu'] = array(
 	'reviewedpages' => 'Ellenőrzött lapok',
-	'reviewedpages-leg' => 'Lapok listázása a legmagasabb értékelési szintjük alapján',
-	'reviewedpages-list' => 'Az alábbi lapok legmagasabb értékelési szintje a megadott szint.',
+	'reviewedpages-leg' => 'Ellenőrzött lapok listázása',
+	'reviewedpages-list' => "A lista azokat az [[{{MediaWiki:Validationpage}}|ellenőrzött]] lapokat tartalmazza, amelyek ''legmagasabb'' ellenőrzési szintje egy változatnál a megadott szint.
+
+A hivatkozások az illető értékelési szint legutolsó változatára mutatnak.",
 	'reviewedpages-none' => 'Nem található egyetlen lap sem a listában.',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
 	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
 	'reviewedpages-all' => 'ellenőrzött változatok',
-	'reviewedpages-best' => 'kiemelkedő változat',
+	'reviewedpages-best' => 'legjobb változat',
 );
 
 /** Interlingua (Interlingua)
@@ -797,7 +804,7 @@ $messages['nl'] = array(
 	'reviewedpages-leg' => "Lijst met pagina's die gecontroleerd zijn",
 	'reviewedpages-list' => "De volgende pagina's zijn [[{{MediaWiki:Validationpage}}|gecontroleerd]] tot het '''hoogst aangegeven''' niveau (van een versie).
 Er wordt een verwijzing gegeven naar de laatste versie voor dat niveau.",
-	'reviewedpages-none' => 'Geen resultaten',
+	'reviewedpages-none' => "Er staan geen pagina's in deze lijst.",
 	'reviewedpages-lev-0' => 'Gecontroleerd',
 	'reviewedpages-lev-1' => 'Kwaliteit',
 	'reviewedpages-lev-2' => 'Uitgelicht',
@@ -905,15 +912,16 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'reviewedpages' => 'Páginas analisadas',
-	'reviewedpages-leg' => 'Listar páginas por nível de revisão mais alto',
-	'reviewedpages-list' => 'Esta página lista as páginas que foram analisadas no nível especificado',
+	'reviewedpages' => 'Páginas revistas',
+	'reviewedpages-leg' => 'Listar as páginas revistas',
+	'reviewedpages-list' => 'Esta lista contém páginas [[{{MediaWiki:Validationpage}}|revistas]] cuja classificação mais elevada na revisão é o nível especificado.
+	Existe um link para a última edição com o mesmo nível.',
 	'reviewedpages-none' => 'Não há páginas nesta lista',
 	'reviewedpages-lev-0' => 'Objetiva',
 	'reviewedpages-lev-1' => 'Qualidade',
 	'reviewedpages-lev-2' => 'Exemplar',
-	'reviewedpages-all' => 'edições analisadas',
-	'reviewedpages-best' => 'edição principal',
+	'reviewedpages-all' => 'versões revistas',
+	'reviewedpages-best' => 'melhor edição',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
