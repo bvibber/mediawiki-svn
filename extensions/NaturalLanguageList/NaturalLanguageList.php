@@ -183,8 +183,8 @@ class NaturalLanguageList {
 		$this->mParams = array_chunk( $items, $this->mOptions['fieldsperitem'] );
 
 		// Disgard any leftovers, hrm...
-		if ( count ( end ( $this->mParams ) ) != $this->mOptions['fieldsperitem'] ) {
-			array_pop ( $this->mParams );
+		if ( count( end( $this->mParams ) ) != $this->mOptions['fieldsperitem'] ) {
+			array_pop( $this->mParams );
 		}
 
 	}
@@ -200,8 +200,8 @@ class NaturalLanguageList {
 
 		# first input is a bit different than the rest,
 		# so we'll treat that differently
+		$primary = trim( $this->mFrame->expand( array_shift( $args ) ) );
 		if ( !$ignorefirst ) {
-			$primary = trim( $this->mFrame->expand( array_shift( $args ) ) );
 			$primary = $this->handleInputItem( $primary );
 			if ( $primary !== false ){
 				$this->mReaditems[] = $primary;
