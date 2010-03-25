@@ -38,10 +38,10 @@
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name'        => 'Natural Language List',
-	'author'      => array( 'Svip', 'Happy-melon' ),
+	'author'      => array( 'Svip', 'Happy-melon', 'Conrad Irwin' ),
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
 	'description' => 'Easy formatting of lists in natural languages.',
-	'version'     => '2.1'
+	'version'     => '2.2'
 );
 
 $dir = dirname(__FILE__);
@@ -85,22 +85,19 @@ class NaturalLanguageList {
 		}
 
 		$obj = new self( $parser, $frame, $args );
-		$obj->readOptions( true );
-		$obj->readArgs();
-
+		
 		$separator = $obj->mArgs[0];
-		$tmp = array();
-		foreach ( $obj->mParams as $arg ) {
-			$tmp = array_merge ( $tmp, explode( $separator, $arg ) );
-		}
-		$obj->mParams = $tmp;
+		
+		$obj->readOptions( true, $separator );		
+		
+		$obj->readArgs( $separator );
 
 		return $obj->outputList();
 	}
-
 	private $mParser;
 	private $mFrame;
-	public $mArgs;
+	public $mArgs;	
+	private $mSeparator = null;
 	private $mOptions = array(
 		'fieldsperitem' => -1,
 		'duplicates' => true,
@@ -134,14 +131,13 @@ class NaturalLanguageList {
 		$items = array_map( array( $this, 'formatOutputItem' ), $this->mParams );
 
 		// If there's only one item, there are no separators
-		if ( count( $items ) === 1 ) {
+		if ( count( $items ) === 1 )
 			return $items[0];
-		}
 
 		// Otherwise remove the last from the list so that we can implode() the remainder
 		$last = array_pop( $items );
 
-		return implode( $this->mOptions['outputseparator'], $items ) .  $this->mOptions['lastseparator'] . $last;
+		return implode( $this->mOptions['outputseparator'], $items ) . $this->mOptions['lastseparator'] . $last;
 	}
 
 	// Format the input pairs that make up each output item using the given format
@@ -152,32 +148,19 @@ class NaturalLanguageList {
 	/**
 	 * Create $this->mParams from $this->mReaditems using $this->mOptions.
 	 */
-	private function readArgs() {
-		$ignoreblock = false;
+	private function readArgs( $separator=null ) {
 		$items = array(); # array of args to include
-		$ignores = array(); # array of args to exclude
 
-		$magicWords = new MagicWordArray( array( 'nll_data', 'nll_ignore' ) );
 		$args = $this->mOptions['duplicates'] ? $this->mReaditems : array_unique( $this->mReaditems );
 
 		foreach ( $args as $arg ) {
-			if ( $flag = $magicWords->matchStartAndRemove( $arg ) ) {
-				$ignoreblock = $flag == 'nll_ignore' ? true : false;
-			}
-
-			if ( !$this->mOptions['blanks'] && $arg === '' ) {
+			if ( !$this->mOptions['blanks'] && $arg === '' )
 				continue;
-			}
-
-			if ( $ignoreblock ) {
-				$ignores[] = $arg;
-			} else {
-				$items[] = $arg;
-			}
+			self::parseArrayItem( $items, $arg, $separator );
 		}
-
+		
 		// Remove the ignored elements from the array
-		$items = array_diff( $items, $ignores );
+		$items = array_diff( $items, $this->mIgnores );
 
 		// Split the array into smaller arrays, one for each output item.
 		$this->mParams = array_chunk( $items, $this->mOptions['fieldsperitem'] );
@@ -192,7 +175,7 @@ class NaturalLanguageList {
 	/**
 	 * Create $this->mOptions and $this->mReaditems from $this->mArgs using $this->mFrame.
 	 */
-	private function readOptions ( $ignorefirst ) {
+	private function readOptions ( $ignorefirst, $separator=null ) {
  		$args = $this->mArgs;
  
 		# an array of items not options
@@ -209,7 +192,7 @@ class NaturalLanguageList {
 		}
 		# check the rest for options
 		foreach( $args as $arg ) {
-			$item = $this->handleInputItem( $arg );
+			$item = $this->handleInputItem( $arg, $separator );
 			if ( $item !== false ) {
 				$this->mReaditems[] = $item;
 			}
@@ -257,7 +240,7 @@ class NaturalLanguageList {
 	 * If it is, then it handles the option (and applies it).
 	 * If it isn't, then it just returns the string it found. 
 	 */
-	private function handleInputItem( $arg ) {
+	private function handleInputItem( $arg, $separator=null ) {
 		if ( $arg instanceof PPNode_DOM ) {
 			$bits = $arg->splitArg();
 			$index = $bits['index'];
@@ -290,6 +273,14 @@ class NaturalLanguageList {
 			case 'fieldsperitem':
 				$this->mOptions[$name] = self::parseNumeral( $value );
 				break;
+			case 'ignore':
+				self::parseArrayItem( $this->mIgnores, $value, $separator );
+				break;
+			case 'data':
+				# just strip the parameter and make the $arg
+				# the value, let the following case handle its
+				# output.
+				$arg = $value;
 			default:
 				# Wasn't an option after all
 				return $arg instanceof PPNode_DOM
@@ -306,7 +297,8 @@ class NaturalLanguageList {
 			$magicWords = new MagicWordArray( array(
 				'nll_blanks', 'nll_duplicates', 
 				'nll_fieldsperitem', 'nll_itemoutput',
-				'nll_lastseparator', 'nll_outputseparator'
+				'nll_lastseparator', 'nll_outputseparator',
+				'nll_ignore', 'nll_data'
 			) );
 		}
 
@@ -316,7 +308,16 @@ class NaturalLanguageList {
 
 		return false;
 	}
-
+	
+	private static function parseArrayItem( &$array, $value, $separator=null ) {
+		if ( $separator === null ) {
+			$array[] = $value;
+		} else {
+			$tmp = explode ( $separator, $value );
+			foreach ( $tmp as $v )
+				$array[] = $v;
+		}
+	}
 
 	private static function parseNumeral( $value, $default = 1 ) {
 		if ( is_numeric( $value ) && $value > 0 ) {
