@@ -51,3 +51,21 @@ Duplicates not allowed
 <p>1, 2, 3, 4 and 5
 </p>
 !! end
+
+!! test
+Basic format
+!! input
+{{#list:format=[[$1]]|Main page}}
+!! result
+<p><a href="/index.php?title=Main_page&amp;action=edit&amp;redlink=1" class="new" title="Main page (page does not exist)">Main page</a>
+</p>
+!! end
+
+!! test
+Calculate fieldsperitem
+!! input
+{{#list:format='''$1'''<sup>$2</sup>|hi|world|world|hi}}
+!! result
+<p><b>hi</b><sup>world</sup> and <b>world</b><sup>hi</sup>
+</p>
+!! end
