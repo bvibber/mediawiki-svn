@@ -1,0 +1,148 @@
+#!/usr/bin/env php
+<?php
+
+if ( php_sapi_name() !== 'cli' ) {
+	echo "This script only works in CLI mode\n";
+	exit( 1 );
+}
+
+if ( count( $argv ) < 3 ) {
+	echo "Usage: make-wmf-branch <new-version> <old-version>";
+	exit( 1 );
+}
+
+$newVersion = $argv[1];
+$oldVersion = $argv[2];
+
+$obj = new MakeWmfBranch( $newVersion, $oldVersion );
+$obj->execute();
+
+class MakeWmfBranch {
+	var $dryRun;
+	var $newVersion, $oldVersion, $codeDir, $buildDir;
+	var $normalExtensions, $specialExtensions, $patches, $preservedItems;
+	var $destBaseUrl, $mainSourceUrl;
+
+	function __construct( $newVersion, $oldVersion ) {
+		$this->newVersion = $newVersion;
+		$this->oldVersion = $oldVersion;
+		$this->codeDir = dirname( __FILE__ );
+		$buildDir = sys_get_temp_dir() . '/make-wmf-branch';
+
+		require( "{$this->codeDir}/default.conf" );
+		if ( file_exists( "{$this->codeDir}/local.conf" ) ) {
+			require( "{$this->codeDir}/local.conf" );
+		}
+
+		$this->dryRun = $dryRun;
+		$this->buildDir = $buildDir;
+		$this->normalExtensions = $normalExtensions;
+		$this->specialExtensions = $specialExtensions;
+		$this->patches = $patches;
+		$this->preservedItems = $preservedItems;
+		$this->destBaseUrl = $destBaseUrl;
+		$this->mainSourceUrl = $mainSourceUrl;
+	}
+
+	function runCmd( /*...*/ ) {
+		$args = func_get_args();
+		$encArgs = array_map( 'escapeshellarg', $args );
+		$cmd = implode( ' ', $encArgs );
+		echo "$cmd\n";
+		passthru( $cmd, $ret );
+		if ( $ret ) {
+			$this->croak( $args[0] . " exit with status $ret\n" );
+		}
+	}
+
+	function runWriteCmd( /*...*/ ) {
+		$args = func_get_args();
+		if ( $this->dryRun ) {
+			$encArgs = array_map( 'escapeshellarg', $args );
+			$cmd = implode( ' ', $encArgs );
+			echo "[dry-run] $cmd\n";
+		} else {
+			call_user_func_array( array( $this, 'runCmd' ), $args );
+		}
+	}
+
+	function chdir( $dir ) {
+		if ( !chdir( $dir ) ) {
+			$this->croak( "Unable to change working directory\n" );
+		}
+		echo "cd $dir\n";
+	}
+
+	function croak( $msg ) {
+		fwrite( STDERR, "$msg\n" );
+		exit( 1 );
+	}
+
+	function execute() {
+		# Create a temporary build directory
+		if ( file_exists( $this->buildDir ) ) {
+			$this->runCmd( 'rm', '-rf', '--', $this->buildDir );
+		}
+		if ( !mkdir( $this->buildDir ) ) {
+			$this->croak( "Unable to create build directory {$this->buildDir}" );
+		}
+		$this->chdir( $this->buildDir );
+
+		# Check out the parent directory of the target branch
+		$this->runCmd( 'svn', 'co', '--depth=empty', '--quiet', $this->destBaseUrl, 'wmf' );
+
+		$this->chdir( 'wmf' );
+
+
+		# Copy in phase3
+		$destRel = $this->newVersion;
+		$this->runCmd( 'svn', 'cp', '--quiet', "{$this->mainSourceUrl}/phase3", $destRel );
+
+
+		# Delete extensions/README
+		$this->runCmd( 'svn', 'rm', '--quiet', "$destRel/extensions/README" );
+
+		# Add normal extensions
+		foreach ( $this->normalExtensions as $name ) {
+			$this->runCmd( 'svn', 'cp', '--ignore-externals', '--quiet',
+				"{$this->mainSourceUrl}/extensions/$name",
+				"$destRel/extensions/$name" );
+		}
+
+		# Add special extensions
+		foreach ( $this->specialExtensions as $name => $sourceUrl ) {
+			$this->runCmd( 'svn', 'cp', '--ignore-externals', '--quiet',
+				$sourceUrl,
+				"$destRel/extensions/$name" );
+		}
+
+		# Copy in preserved items
+		foreach ( $this->preservedItems as $item ) {
+			$this->runCmd( 'svn', 'cp', '--quiet',
+				"{$this->destBaseUrl}/{$this->oldVersion}/$item",
+				dirname( "$destRel/$item" ) );
+		}
+
+		# Do intermediate commit
+		$this->runWriteCmd( 'svn', 'ci', '-q', '-m', "Creating new WMF branch" );
+
+		# Fix $wgVersion
+		$this->fixVersion( "$destRel/includes/DefaultSettings.php" );
+
+		# Apply patches
+		foreach ( $this->patches as $patch ) {
+			$this->runCmd( 'svn', 'merge', '-c', $patch['rev'], $patch['base'], $destRel );
+		}
+
+		# Do the final commit
+		$this->runWriteCmd( 'svn', 'ci', '-q', '-m', 
+			'Applied local patches for new WMF branch' );
+	}
+
+	function fixVersion( $fileName ) {
+		$s = file_get_contents( $fileName );
+		$s = preg_replace( '/^( \$wgVersion \s+ = \s+ )  [^;]*  ( ; \s* ) $/xm',
+			"\\1'{$this->newVersion}\2'", $s );
+		file_put_contents( $fileName, $s );
+	}
+}
