@@ -196,7 +196,7 @@ class MysqlInstaller extends InstallerDBType {
 	 */
 	function getCharsets() {
 		$status = $this->getConnection();
-		$mysql5 = array( 'binary', 'utf-8' );
+		$mysql5 = array( 'binary', 'utf8' );
 		$mysql4 = array( 'mysql4' );
 		if ( !$status->isOK() ) {
 			return $mysql5;
