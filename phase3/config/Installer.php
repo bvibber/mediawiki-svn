@@ -2270,16 +2270,6 @@ function getShellLocale( $wikiLang ) {
 	return false;
 }
 
-function wfArrayMap( $function, $input ) {
-	$ret = array_map( $function, $input );
-	foreach ( $ret as $key => $value ) {
-		$taint = istainted( $input[$key] );
-		if ( $taint ) {
-			taint( $ret[$key], $taint );
-		}
-	}
-	return $ret;
-}
 
 ?>
 
