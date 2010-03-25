@@ -1629,8 +1629,8 @@ mw.UploadWizard.prototype = {
 		$j( '#mwe-upwiz-source-thirdparty' ).click( function() { _this.showDeedThirdParty(); } );
 		$j( '#mwe-upwiz-source-thirdparty' ).click( function() { _this.showDeedChoice() } );
 
-		$j( '.mwe-upwiz-macro-edit-submit' ).each(
-			this.append( $j( '<input />' )
+		$j( '.mwe-upwiz-macro-edit-submit' ).each( function() {
+			$j( this ).append( $j( '<input />' )
 				.addClass( 'mwe-details-submit' )
 				.attr( { type: 'submit', value: gM( 'mwe-upwiz-macro-edit' ) } )
 				.click( function() { 
@@ -1641,7 +1641,7 @@ mw.UploadWizard.prototype = {
 						_this.moveToTab('thanks');
 					} );
 				} ) );
-		);
+		} );
 
 	
 		// add one to start
@@ -2042,7 +2042,7 @@ mw.UploadWizard.prototype = {
 		// transition ?
 
 		var sourceInput = $j( '<input />').attr( { name: "source", value: "{{ownwork}}" } );
-		var authorInput = $j( '#mwe-upwiz-macro-deed-ownwork-form' ).find( 'input[name=author]' ).get(0);
+		var authorInput = $j( '<input />').attr( { name: "author" } ); // value set below
 		var licenseInputDiv = $j( '<div></div>' );
 		var licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
 		licenseInput.setDefaultValues();
