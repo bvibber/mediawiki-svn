@@ -137,6 +137,7 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'wikieditor-publish-preference' => 'ধাপে ধাপে প্রকাশ করা সক্রিয় করো',
 	'wikieditor-publish-button-publish' => 'প্রকাশ করো',
 	'wikieditor-publish-button-cancel' => 'বাতিল',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} এ প্রকাশ করো',
@@ -749,16 +750,20 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Everton137
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'wikieditor-publish-preference' => 'Possibilitar publicação passo a passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Sumário de edição (breve descrição das suas alterações):',
 	'wikieditor-publish-dialog-minor' => 'Edição menor',
 	'wikieditor-publish-dialog-watch' => 'Vigiar esta página',
+	'wikieditor-publish-dialog-publish' => 'Publicar',
 	'wikieditor-publish-dialog-goback' => 'Voltar',
 );
 

@@ -809,12 +809,15 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Everton137
  * @author Hamilton Abreu
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'optin-try' => 'Experimente o Beta',
+	'tooltip-pt-optin-try' => 'Experimente novas funcionalidades',
 	'optin-leave' => 'Sair do Beta',
+	'tooltip-pt-optin-leave' => 'Desativar novas características',
 	'optin-feedback' => 'Enviar comentários',
 	'tooltip-pt-optin-feedback' => 'Dê sua opinião acerca de sua experiência com as novidades',
 );

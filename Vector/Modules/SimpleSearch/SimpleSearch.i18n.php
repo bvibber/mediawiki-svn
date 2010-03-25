@@ -537,10 +537,12 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Everton137
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'vector-simplesearch-search' => 'Pesquisa',
+	'vector-simplesearch-containing' => 'contendo...',
 );
 
 /** Quechua (Runa Simi)

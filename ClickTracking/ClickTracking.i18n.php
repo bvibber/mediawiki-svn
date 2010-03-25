@@ -600,6 +600,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'clicktracking' => "Suivi de clics de l'initiative d'utilisabilité",
@@ -621,7 +622,7 @@ $messages['fr'] = array(
 	'ct-editing' => 'En cours de modification :',
 	'ct-anon-users' => 'Utilisateurs anonymes',
 	'ct-user-contribs' => 'Contributions totales des utilisateurs',
-	'ct-user-span' => "Contributions de l'utilisateur sur la durée",
+	'ct-user-span' => 'Contributions de l’utilisateur pendant la durée',
 	'ct-and' => 'et',
 	'ct-update-table' => 'Mettre à jour la table',
 );
@@ -1335,20 +1336,33 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Everton137
  * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'clicktracking' => 'Monitoramento de cliques da Iniciativa de Usabilidade',
 	'clicktracking-desc' => 'Monitoramento de cliques, destinado ao monitoramento de eventos que não causem uma atualização de página',
+	'ct-title' => 'Cliques de usuário agregados',
+	'ct-event-name' => 'Nome do evento',
+	'ct-expert-header' => 'Cliques de "experiente"',
+	'ct-intermediate-header' => 'Cliques de usuário "intermedio"',
+	'ct-beginner-header' => 'Cliques de "Iniciante"',
 	'ct-total-header' => 'Cliques totais',
 	'ct-start-date' => 'Data de início (AAAAMMDD)',
 	'ct-end-date' => 'Data de término (AAAAMMDD)',
+	'ct-increment-by' => 'Número de dias representado por cada ponto',
 	'ct-change-graph' => 'Mudar gráfico',
+	'ct-beginner' => 'Iniciante',
 	'ct-intermediate' => 'Intermediário',
 	'ct-expert' => 'Experiente',
+	'ct-date-range' => 'Intervalo de datas',
+	'ct-editing' => 'Editando atualmente:',
 	'ct-anon-users' => 'Usuários anônimos',
+	'ct-user-contribs' => 'Total de contribuições dos usuários',
+	'ct-user-span' => 'Contribuições dos usuários no período de tempo',
 	'ct-and' => 'e',
+	'ct-update-table' => 'Atualizar tabela',
 );
 
 /** Romanian (Română)
@@ -1511,11 +1525,14 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
+	'ct-anon-users' => 'Brezimni uporabniki',
+	'ct-and' => 'in',
 );
 
 /** Swedish (Svenska)

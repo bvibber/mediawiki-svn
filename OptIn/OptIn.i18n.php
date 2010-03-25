@@ -1067,20 +1067,20 @@ Hoffem gael eich barn am y rhyngwyneb newydd, a dyma gyfle i chi fynegi'ch barn 
 	'optin-survey-answer-changes-lookfeel' => 'Diweddaru "naws a steil" y safle.',
 	'optin-survey-answer-changes-predictability' => 'Gwneud iddo weithredu yn y modd mwyaf dibynadwy posib.',
 	'optin-survey-answer-changes-custom' => "Ehangu'r nifer o ddewisiadau y gall defnyddiwr eu gosod fel ag a myn.",
-	'optin-improvements2' => '== Beth sydd wedi gwella? ==
-[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
-[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+	'optin-improvements2' => "== Beth sydd wedi gwella? ==
+[[File:UsabilityToolbar.png|left|link=|Ciplun o'r bar offer golygu estynedig]]
+[[File:UsabilityDialogs.png|left|link=|Ciplun o'r Screenshot of the new content generation dialogs]]
 ;Bar offer golygu estynedig
-Mae\'n haws golygu gyda\'r bar offer golygu estynedig.
+Mae'n haws golygu gyda'r bar offer golygu estynedig.
 New and improved icons make it clearer what action each tool performs.
 Expanded sections reduce clutter while keeping infrequently used tools just a click away.
 ;Dialog
 When creating links or tables, clicking the tool icon now opens a dialog box which helps you to create links and tables by filling out a simple form.
-;And More
+;A Rhagor
 We have introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
-== How to get involved ==
-To find out more about the Usability Initiative, please visit our [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
-<div style="clear:both"></div>',
+== Am gyfrannu? ==
+I gael rhagor o wybodaeth am y Cynllun Defnyddioldeb, dewch draw i'n [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative hafan] ni.
+<div style=\"clear:both\"></div>",
 );
 
 /** Danish (Dansk)

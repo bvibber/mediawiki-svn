@@ -97,6 +97,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'wikieditor-preview-preference' => 'পাশাপাশি প্রাকদর্শন সক্রিয় করো',
 	'wikieditor-preview-tab' => 'প্রাকদর্শন',
+	'wikieditor-preview-changes-tab' => 'পরিবর্তনসমূহ',
 	'wikieditor-preview-loading' => 'লোডিং...',
 );
 
