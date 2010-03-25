@@ -1,6 +1,34 @@
 <?php
 
 class SchemaMysql extends SchemaBuilder {
+	/**
+	 * BLOB or TEXT fields on MySQL require a length to be specified in
+	 * index declarations, otherwise CREATE INDEX will fail with error 1170.
+	 */
+	var $indexLengths = array(
+		'el_from' => array(
+			'el_to' => 40,
+		),
+		'el_to' => array(
+			'el_to' => 60,
+		),
+		'el_index' => array(
+			'el_index' => 60,
+		),
+		'ipb_address' => array(
+			'ipb_address' => 255,
+		),
+		'ipb_range' => array(
+			'ipb_range_start' => 8,
+			'ipb_range_end' => 8,
+		),
+		'oi_name_archive_name' => array(
+			'oi_name_archive_name' => 14,
+		),
+		'job_cmd' => array(
+			'job_params' => 128,
+		),
+	);
 
 	public function getType() {
 		return 'mysql';
@@ -85,7 +113,11 @@ class SchemaMysql extends SchemaBuilder {
 				}
 				$sql .= "{$this->tblPrefix}{$idx} ON $tblName (";
 				foreach( $idxDef as $col ) {
-					$sql .= "{$prefix}{$col}, ";
+					$field = "{$prefix}{$col}";
+					if ( isset( $this->indexLengths[$idx] ) && isset( $this->indexLengths[$idx][$field] ) ) {
+						$field .= "({$this->indexLengths[$idx][$field]})";
+					}
+					$sql .= "$field, ";
 				}
 				$sql = rtrim( $sql, ', ' );
 				$sql .= ");\n";
