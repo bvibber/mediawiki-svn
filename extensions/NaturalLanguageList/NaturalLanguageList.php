@@ -142,7 +142,7 @@ class NaturalLanguageList {
 		$length = count( $this->mParams );
 		if ( $length == 1 ) {
 			if ( $this->mOptions['fieldsperitem'] > 1 ) {
-				return wfMsgReplaceArgs( $this->mOptions['itemcover'], $this->mParams[0] );
+				return wfMsgReplaceArgs( $this->mOptions['itemoutput'], $this->mParams[0] );
 			} else {
 				return $this->mOptions['itemoutput'] === null 
 					? wfMsg ( 'nll-itemoutput' , $this->mParams[0] ) 
