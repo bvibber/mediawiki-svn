@@ -1324,6 +1324,11 @@ $j(document).ready( function() {
 				);
 				$j( '#wikieditor-toolbar-link-int-target' ).suggestions();
 				
+				//don't overwrite user's text
+				if( selection != '' ){
+					$j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched', false );
+				}
+				
 				$j( '#wikieditor-toolbar-link-int-text, #wikiedit-toolbar-link-int-target' )
 					.each( function() {
 						if ( $j(this).val() == '' )
