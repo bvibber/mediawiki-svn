@@ -259,12 +259,13 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'useroptionstats' => 'Statistiques des options de l’utilisateur',
-	'useroptionstats-desc' => '[[Special:UserOptionStats|Page spéciale]] pour afficher les utilisations des options utilisateur sur MediaWiki',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Page spéciale]] pour afficher les utilisations des options utilisateurs sur MediaWiki',
 	'uos-warn' => 'PHPlot n’est pas installé !',
-	'uos-choose' => 'Choisissez l’une des options utilisateur suivantes : $1',
+	'uos-choose' => 'Choisissez l’une des options utilisateurs suivantes : $1',
 	'uos-unknown' => '* Par défaut',
 	'uos-other' => '* Autres',
 	'uos-title' => 'Distribution des valeurs de l’option utilisateur $1',

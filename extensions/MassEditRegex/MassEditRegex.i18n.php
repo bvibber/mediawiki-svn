@@ -456,6 +456,7 @@ $messages['fi'] = array(
  * @author Peter17
  * @author PieRRoMaN
  * @author Quentinv57
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'masseditregex' => "Modification en masse à l'aide des expressions rationnelles",
@@ -486,7 +487,7 @@ $messages['fr'] = array(
 	'masseditregex-listtype-categories' => "Nom des catégories (éditer chaque page présente dans ces catégories ; la sélection de l'espace de noms est ignorée)",
 	'masseditregex-listtype-backlinks' => 'Pages liées (éditer les pages qui contiennent un lien vers celles-ci)',
 	'masseditregex-namespace-intro' => 'Toutes ces pages sont dans cet espace de noms:',
-	'masseditregex-exprnomatch' => 'L\'expression "$1" n\'a été trouvée dans aucune page.',
+	'masseditregex-exprnomatch' => 'L’expression « $1 » n’a été trouvée dans aucune page.',
 	'masseditregex-badregex' => 'Regex invalide:',
 	'masseditregex-editfailed' => "Erreur lors de l'édition:",
 	'masseditregex-tooltip-execute' => 'Appliquer ces changements à chaque page',

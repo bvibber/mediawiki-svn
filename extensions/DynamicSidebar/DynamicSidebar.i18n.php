@@ -40,6 +40,13 @@ $messages['dsb'] = array(
 	'dynamicsidebar-desc' => 'Stoj dynamiske bocnice na zakłaźe wužywarskich bokow, kupkow a kategorijow k dispoziciji',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'dynamicsidebar-desc' => 'Proporciona barras laterales dinámicas basadas en páginas de usuario, grupos y categorías',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

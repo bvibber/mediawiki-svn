@@ -177,7 +177,7 @@ Ole hyvä ja odota hetki. Päivitä avoin sivu selaimessa ja lähetä lomake uud
  */
 $messages['fr'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'La création du compte a été automatiquement suspendue pour un certain temps. Ceci est dû à un fort nombre de créations de comptes. Patientez pendant quelques minutes puis essayez à nouveau.',
-	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger »  dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
+	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger » ou « actualiser » dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limite la création d’utilisateurs',
 );
 

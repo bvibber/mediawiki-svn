@@ -1486,9 +1486,11 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Prima klasy4na
  */
 $messages['uk'] = array(
 	'countedits-ok' => 'Гаразд',
+	'countedits-resulttext' => '$1 зробив(ла) $2 {{PLURAL:$2|редагування|редагування|редагувань}}',
 );
 
 /** Vèneto (Vèneto)

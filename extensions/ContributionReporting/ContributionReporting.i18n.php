@@ -4073,6 +4073,14 @@ $messages['sk'] = array(
 	'specialpages-group-contribution' => 'Prispievateľov/fundraising',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'contributionhistory' => 'Zgodovina prispevkov',
+	'contribstats-week' => 'Teden',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
  * @author Михајло Анђелковић

@@ -1129,6 +1129,7 @@ Tätä sivua sovelletaan ainoastaan rajoituksenalaisiin käyttäjiin",
  * @author Grondin
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Urhixidur
  * @author Verdy p
  * @author Zetud
  */
@@ -1164,7 +1165,7 @@ Vous devez [[Special:UserRights|ajouter l’utilisateur au groupe]] avant que vo
 	'whitelistnewtablereview' => 'Relire',
 	'whitelistselectrestricted' => '== Sélectionner un nom d’utilisateur à accès restreint ==',
 	'whitelistpagelist' => 'Pages de {{SITENAME}} pour $1',
-	'whitelistnocalendar' => "<font color='red' size=3>Il semble que le module [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], une extension prérequise, n’ait pas été installée convenablement !</font>",
+	'whitelistnocalendar' => "<font color='red' size=3>Il semble que le module [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], une extension prérequise, n’ait pas été installé convenablement !</font>",
 	'whitelistoverview' => '== Vue générale des changements pour $1 ==',
 	'whitelistoverviewcd' => "* Modification de la date de '''$1''' pour [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Configuration de l’accès à '''$1''' pour [[:$2|$2]]",

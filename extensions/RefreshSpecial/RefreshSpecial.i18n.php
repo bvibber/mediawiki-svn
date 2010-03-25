@@ -471,6 +471,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Urhixidur
  * @author Verdy p
  * @author Zetud
  */
@@ -478,9 +479,9 @@ $messages['fr'] = array(
 	'refreshspecial' => 'Actualiser les pages spéciales',
 	'refreshspecial-desc' => 'Permet [[Special:RefreshSpecial|l’actualisation manuelle]] des pages spéciales',
 	'refreshspecial-title' => 'Actualiser les pages spéciales',
-	'refreshspecial-help' => 'Cette page spéciale fournit les moyens de rafraichir manuellement les pages spéciales.
-Quand vous avez choisi toutes les pages que vous voulez actualiser, cliquer sur le bouton « Actualiser » ci-dessous pour actualiser les pages sélectionnées.
-Attention : l’actualisation peut prendre un certain temps sur des wikis disposant d’une grande taille.',
+	'refreshspecial-help' => 'Cette page spéciale fournit les moyens de rafraîchir manuellement les pages spéciales.
+Quand vous avez choisi toutes les pages que vous voulez actualiser, cliquer sur le bouton « {{int:refreshspecial-button}} » ci-dessous pour actualiser les pages sélectionnées.
+Attention : l’actualisation peut prendre un certain temps sur un wiki de grande taille.',
 	'refreshspecial-button' => 'Actualiser sélectionnées',
 	'refreshspecial-fail' => 'Veuillez cocher au moins une page spéciale à rafraichir.',
 	'refreshspecial-refreshing' => 'Actualisation des pages spéciales',

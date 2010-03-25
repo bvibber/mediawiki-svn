@@ -626,8 +626,8 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'wah-desc' => 'Permet, à l’aide de Firefogg, de distribuer aux clients les tâches de transcodage vidéo.',
-	'wah-user-desc' => 'Wiki@Home permet aux membre de la communauté de donner des cycles processeur libres pour aider des opérations intensives en ressources.',
-	'wah-short-audio' => 'fichier de son $1, $2',
+	'wah-user-desc' => 'Wiki@Home permet aux membres de la communauté de donner des cycles de processeur libres pour aider des opérations exigeantes en ressources.',
+	'wah-short-audio' => 'fichier sonore $1, $2',
 	'wah-short-video' => 'fichier vidéo $1, $2',
 	'wah-short-general' => 'fichier média $1, $2',
 	'wah-long-audio' => '(fichier son $1, durée $2, $3)',
@@ -645,19 +645,19 @@ $messages['fr'] = array(
 	'wah-menu-pref' => 'Préférences',
 	'wah-lookingforjob' => 'Recherche de tâche ...',
 	'wah-start-on-visit' => 'Démarrer Wiki@Home à chaque fois que je visite ce site.',
-	'wah-jobs-while-away' => 'Lancer un tâche seulement quand je ne me suis pas servi de mon navigateur pendant 20 minutes.',
-	'wah-nojobfound' => 'Pas de tâche trouvée. Ré-essai en $1.',
+	'wah-jobs-while-away' => 'Lancer une tâche seulement quand je ne me suis pas servi de mon navigateur pendant 20 minutes.',
+	'wah-nojobfound' => 'Pas de tâche trouvée. Nouvel essai dans $1.',
 	'wah-notoken-login' => "Êtes-vous connecté ? Si ce n'est pas le cas, veuillez commencer par vous connecter.",
 	'wah-apioff' => 'L’API de Wiki@Home semble ne pas fonctionner. Veuillez contacter l’administrateur wiki.',
 	'wah-doing-job' => 'Tâche : <i>$1</i> sur : <i>$2</i>',
 	'wah-downloading' => 'Téléchargement du fichier <i>$1%</i> terminé',
 	'wah-encoding' => 'Encodage du fichier <i>$1%</i> terminé',
-	'wah-encoding-fail' => 'L’encodage a échoué. Veuillez recharger cette page ou réessayer plus tard.',
+	'wah-encoding-fail' => 'L’encodage a échoué. Veuillez recharger cette page ou ressayer plus tard.',
 	'wah-uploading' => 'Téléversement du fichier <i>$1</i> terminé.',
 	'wah-uploadfail' => 'Le téléversement a échoué',
 	'wah-doneuploading' => 'Téléversement terminé. Merci de votre contribution.',
 	'wah-needs-firefogg' => 'Pour contribuer à Wiki@Home vous devez installer <a href="http://firefogg.org">Firefogg</a>.',
-	'wah-api-error' => 'Il y a eu une erreur avec l’API. Veuillez réessayer plus tard.',
+	'wah-api-error' => 'Il y a eu une erreur avec l’API. Veuillez ressayer plus tard.',
 );
 
 /** Galician (Galego)

@@ -231,6 +231,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'refhelper' => 'Assistant de références',
@@ -258,7 +259,7 @@ $messages['fr'] = array(
 	'refhelper-toolbox_link_create' => 'Créer la référence',
 	'refhelper-toolbox_link_search' => 'Créer la référence à partir de la recherche',
 	'refhelper-newarticle_nocitation' => "Il n'existe actuellement aucune citation avec ce nom.",
-	'refhelper-newarticle_suggestions' => "S'il y a une citation correspondante ci-dessous, vous pouvez créer cette page en cliquant sur le bouton « Créer ».
+	'refhelper-newarticle_suggestions' => "S'il y a une citation correspondante ci-dessous, vous pouvez créer cette page en cliquant sur le bouton « {{int:refhelper-create}} ».
 
 <h2>Suggestions</h2>",
 	'refhelper-newarticle_nosuggestions' => "Malheureusement, je n'étais pas en mesure de suggérer aucune référence.

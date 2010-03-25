@@ -302,6 +302,7 @@ Kun lisäät tai poistat useita sivuja, vaihtonäppäimen painaminen antaa sinun
  * @author Grondin
  * @author Louperivois
  * @author PieRRoMaN
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -311,9 +312,9 @@ $messages['fr'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Ajouter des pages à la liste de suivi',
 	'watchsubpages-desc' => 'Ajoute rapidement [[Special:WatchSubpages|toutes les sous-pages]] d’une page à la liste de suivi',
 	'watchsubpages-form' => 'Sélectionnez les pages à ajouter à votre liste de suivi ci-dessous.
-Pour ajouter une page, cocher la case correspondante, et cliquez sur « Ajouter des pages ».
+Pour ajouter une page, cocher la case correspondante, et cliquez sur « {{int:watchsubpages-addtitles}} ».
 
-Pour cocher ou décocher plusieurs pages, vous pouvez maintenir enfoncée la touche « Majuscule » en cliquant sur la case à chaque extrémité du groupe de cases à cocher.',
+Pour cocher ou décocher plusieurs pages, vous pouvez maintenir enfoncée la touche « Majuscule » en cliquant à chaque extrémité du groupe de cases à cocher.',
 );
 
 /** Galician (Galego)

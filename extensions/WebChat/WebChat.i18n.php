@@ -227,15 +227,16 @@ Kirjautumattomille käyttäjille luodaan nimimerkki automaattisesti, mutta sitä
 
 /** French (Français)
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'webchat' => 'Chat web',
-	'webchat-desc' => 'Ajoute une [[Special:WebChat|page spéciale]] utilisée pour chatter en temps réel avec des autres utilisateurs du wiki.',
+	'webchat' => 'Clavardage web',
+	'webchat-desc' => 'Ajoute une [[Special:WebChat|page spéciale]] utilisée pour clavarder en temps réel avec d’autres utilisateurs du wiki.',
 	'webchat-header' => 'Cette page spéciale vous permet de collaborer en temps réel avec d’autres utilisateurs du wiki.
-Pour vous connecter, cliquez simplement sur le bouton « Connect ».
+Pour vous connecter, cliquez simplement sur le bouton « {{int:login}} ».
 Si vous êtes enregistré, votre pseudonyme est prédéfini à l’aide de votre nom d’utilisateur.
 Pour les utilisateurs anonymes, un pseudonyme est créé automatiquement, mais celui-ci peut être modifié.',
-	'right-webchat' => 'Peut utiliser le [[Special:WebChat|chat web]]',
+	'right-webchat' => 'Peut utiliser le [[Special:WebChat|clavardage web]]',
 );
 
 /** Galician (Galego)

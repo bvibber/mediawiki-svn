@@ -363,7 +363,7 @@ $messages['af'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Voeg skakel by',
 	'wikieditor-toolbar-tool-link-int' => "Na 'n wikibladsy",
 	'wikieditor-toolbar-tool-link-int-target' => 'Bladsynaam:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sleutel die bladsynaam in',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Bladsynaam of URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Skakel se teks:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Sleutel die teks wat vertoon moet word in',
 	'wikieditor-toolbar-tool-link-ext' => "Na 'n eksterne webbladsy",
@@ -962,6 +962,19 @@ $messages['as'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 );
 
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ */
+$messages['be'] = array(
+	'wikieditor-toolbar-loading' => 'Счытваем…',
+	'wikieditor-toolbar-tool-bold' => 'Цёмны',
+	'wikieditor-toolbar-tool-bold-example' => 'Цёмны тэкст',
+	'wikieditor-toolbar-tool-italic' => 'Курсіў',
+	'wikieditor-toolbar-tool-italic-example' => 'Курсіўны тэкст',
+	'wikieditor-toolbar-tool-heading-1' => 'Узровень 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Узровень 2',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1371,7 +1384,9 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'লিংক যোগ করো',
 	'wikieditor-toolbar-tool-link-int' => 'কোনো উইকি পাতায়',
 	'wikieditor-toolbar-tool-link-int-target' => 'পাতার শিরোনাম:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'পাতার শিরোনাম অথবা ইউআরএল',
 	'wikieditor-toolbar-tool-link-int-text' => 'লিংক লেখা:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'যে লেখা দৃশ্যমান হবে',
 	'wikieditor-toolbar-tool-link-ext' => 'বহিঃস্থ কোনো ওয়েব পেইজে',
 	'wikieditor-toolbar-tool-link-ext-target' => 'লিংক ইউআরএল:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'সংযোগ লেখ:',
@@ -1380,6 +1395,7 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'পাতা রয়েছে',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'কোনো পাতা নাই',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'ভুল শিরোনাম',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'বহিঃসংযোগ',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'পাতার উপস্থিতি যাচাই...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'আপনার শিরোনামটি ঠিক নয়।',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'আন্তঃসংযোগ',
@@ -4181,6 +4197,7 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author An13sa
  * @author Inorbez
+ * @author Joxemai
  * @author Kobazulo
  * @author Theklan
  */
@@ -4283,6 +4300,7 @@ $messages['eu'] = array(
 	'wikieditor-toolbar-tool-replace-close' => 'Ezeztatu',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Ez dago bilaketarekin bat egiten duten emaitzarik.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 ordezkapen eginda.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Ez duzu bilatu beharreko ezer adierazi.',
 	'wikieditor-toolbar-section-characters' => 'Karaktere bereziak',
 	'wikieditor-toolbar-characters-page-latin' => 'Latinoa',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Latin hedatua',
@@ -10933,6 +10951,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Everton137
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -10940,6 +10959,7 @@ $messages['pt-br'] = array(
 	'wikieditor-toolbar' => 'Barra de ferramentas de edição',
 	'wikieditor-toolbar-desc' => 'Barra de ferramentas de edição com usabilidade melhorada',
 	'wikieditor-toolbar-preference' => 'Ativar a barra de ferramentas de edição melhorada',
+	'wikieditor-toolbar-dialogs-preference' => 'Possibilitar diálogos de inserção de ligações, tabelas e outros',
 	'wikieditor-toolbar-loading' => 'Carregando...',
 	'wikieditor-toolbar-tool-bold' => 'Negrito',
 	'wikieditor-toolbar-tool-bold-example' => 'Texto em negrito',
@@ -10953,8 +10973,9 @@ $messages['pt-br'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Inserir ligação',
 	'wikieditor-toolbar-tool-link-int' => 'Para um artigo ou página wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Título do artigo:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Digite o título da página',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Título da página ou URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Texto da ligação:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Introduza o texto a apresentar',
 	'wikieditor-toolbar-tool-link-ext' => "Para uma página ''web'' externa",
 	'wikieditor-toolbar-tool-link-ext-target' => 'URL da ligação:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Texto da ligação:',
@@ -10966,8 +10987,10 @@ $messages['pt-br'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Ligação externa',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Verificando existência da página...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'O título que você especificou é inválido.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'A URL que você especificou parece ser uma ligação para outra página da wiki. Você deseja torná-la numa ligação interna?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Ligação interna',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Ligação externa',
+	'wikieditor-toolbar-tool-link-empty' => 'Você não introduziu um destino para a ligação.',
 	'wikieditor-toolbar-tool-file' => 'Arquivo embutido',
 	'wikieditor-toolbar-tool-file-example' => 'Exemplo.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referência',
@@ -10986,6 +11009,8 @@ $messages['pt-br'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Item de lista com marcadores',
 	'wikieditor-toolbar-tool-olist' => 'Lista numerada',
 	'wikieditor-toolbar-tool-olist-example' => 'Item de lista numerada',
+	'wikieditor-toolbar-tool-indent' => 'Indentação',
+	'wikieditor-toolbar-tool-indent-example' => 'Linha indentada',
 	'wikieditor-toolbar-group-size' => 'Tamanho',
 	'wikieditor-toolbar-tool-big' => 'Grande',
 	'wikieditor-toolbar-tool-big-example' => 'Texto grande',
@@ -11014,12 +11039,18 @@ $messages['pt-br'] = array(
 | linha 2, célula 2
 | linha 2, célula 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'Texto da célula',
+	'wikieditor-toolbar-tool-table-example-header' => 'Texto do cabeçalho',
 	'wikieditor-toolbar-tool-table-title' => 'Inserir tabela',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linhas',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Colunas',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Inclui linha de cabeçalho',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Estilo com bordas',
+	'wikieditor-toolbar-tool-table-sortable' => 'Tornar a tabela ordenável',
 	'wikieditor-toolbar-tool-table-example' => 'Exemplo',
+	'wikieditor-toolbar-tool-table-preview' => 'Previsão',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserir',
 	'wikieditor-toolbar-tool-table-cancel' => 'Cancelar',
+	'wikieditor-toolbar-tool-table-toomany' => 'Inserir uma tabela com mais de $1 colunas não é possível com esta interface.',
 	'wikieditor-toolbar-tool-table-invalidnumber' => 'Você não introduziu um número válido de linhas ou colunas.',
 	'wikieditor-toolbar-tool-table-zero' => 'Você não pode inserir uma tabela com zero linhas ou colunas.',
 	'wikieditor-toolbar-tool-replace' => 'Localizar e substituir',
@@ -11028,8 +11059,14 @@ $messages['pt-br'] = array(
 	'wikieditor-toolbar-tool-replace-replace' => 'Substituir por:',
 	'wikieditor-toolbar-tool-replace-case' => 'Coincidir maiúsculas e minúsculas',
 	'wikieditor-toolbar-tool-replace-regex' => "Tratar ''string'' da pesquisa como uma expressão regular",
+	'wikieditor-toolbar-tool-replace-button-findnext' => 'Procurar próximo',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Substituir próximo',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Substituir todos',
 	'wikieditor-toolbar-tool-replace-close' => 'Cancelar',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Não houve coincidências para a sua pesquisa.',
+	'wikieditor-toolbar-tool-replace-success' => 'Substituições realizadas: $1.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Você não introduziu nada para buscar.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => "A expressão regular ''(regex)'' que você introduziu é inválida: $1",
 	'wikieditor-toolbar-section-characters' => 'Caracteres especiais',
 	'wikieditor-toolbar-characters-page-latin' => 'Latino',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Latino estendido',
@@ -11040,6 +11077,8 @@ $messages['pt-br'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Árabe',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebraico',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Cingalês',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Guzerate',
 	'wikieditor-toolbar-section-help' => 'Ajuda',
 	'wikieditor-toolbar-help-heading-description' => 'Descrição',
 	'wikieditor-toolbar-help-heading-syntax' => 'O que você digita',

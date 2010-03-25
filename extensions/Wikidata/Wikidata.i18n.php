@@ -4030,7 +4030,7 @@ Les langues doivent être des codes ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata : exportation de données TSV',
 	'ow_exporttsv_title' => 'Exporter une collection en TSV',
 	'ow_exporttsv_header' => '<p>Exporter des définitions et des traductions dans un fichier, délimité par des tabulations, qui peut être importé dans OpenOffice.org, Excel ou un autre tableur ou logiciel de base de données.<br />
-Sélectionnez une collection à exporter. Dans la boite de texte de langues, entrez une liste de codes de langues ISO 639-3 séparées par des virgules. Commencez par les langues que vous allez utiliser pour les traductions (mettez-en autant que vous voulez) et finissez par celles qui seront traduites. Cliquez sur le bouton « Créer » pour créer le fichier.</p>',
+Sélectionnez une collection à exporter. Dans la boîte de texte de langues, entrez une liste de codes de langues ISO 639-3 séparés par des virgules. Commencez par les langues que vous allez utiliser pour les traductions (mettez-en autant que vous voulez) et finissez par celles qui seront traduites. Cliquez sur le bouton « {{int:ow_create}} » pour créer le fichier.</p>',
 	'ow_exporttsv_languages' => 'Langues :',
 	'ow_exporttsv_not_allowed' => 'Vous n’avez pas la permission d’effectuer une exportation de données TSV.',
 	'ow_exporttsv_export_failed' => 'L’exportation de données TSV a échoué',

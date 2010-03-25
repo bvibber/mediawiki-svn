@@ -2553,6 +2553,8 @@ $messages['es'] = array(
 	'configure-arrayinput-oneperline' => "''(uno por línea)''",
 	'configure-summary' => 'Esta página especial le permite configurar esta wiki, vea [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] para mas información',
 	'configure-btn-save' => 'Guardar configuraciones',
+	'configure-db-error' => 'La base de datos que ha especificado para mantener la configuración ($1) no existe.
+Por favor, cree y aplique configure.sql o corrija su nombre.',
 	'configure-db-table-error' => 'La base de datos que has especificado no tiene las tablas requeridas. Por favor aplica configure.sql en esa base de datos.',
 	'configure-directory-not-writable' => 'El directorio usado para guardar las configuraciones <tt>$1</tt>, está protegido contra escritura.
 Por favor cambie los permisos para que PHP pueda escribir si quiere usar esta extensión.',
@@ -2607,6 +2609,7 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-stats' => 'Estadísticas del sitio',
 	'configure-section-skin' => 'Pieles',
+	'configure-section-vector' => 'Skin Vector',
 	'configure-section-category' => 'Categorías',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Cache del parser',

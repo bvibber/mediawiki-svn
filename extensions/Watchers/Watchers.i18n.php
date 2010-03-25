@@ -408,7 +408,7 @@ $messages['fr'] = array(
 	'watchers_x_or_more' => '$1 utilisateur{{PLURAL:$1||s}} ou plus ont la page [[:$2]] dans leur liste de suivi.',
 	'watchers_less_than_x' => 'Moins {{PLURAL:$1|d’un utilisateur suit|de $1 utilisateurs suivent}} cette page.',
 	'watchers-num' => '$1 {{PLURAL:$1|utilisateur a| utilisateurs ont}} la page [[:$2]] dans {{PLURAL:$1|sa liste|leurs listes}} de suivi.',
-	'right-watchers-list' => '[[Special:Watchers|Lister les utilisateur qui suivent une page spécifique]]',
+	'right-watchers-list' => '[[Special:Watchers|Lister les utilisateurs qui suivent une page spécifique]]',
 );
 
 /** Galician (Galego)

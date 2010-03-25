@@ -213,10 +213,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Bertrand GRONDIN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'seealso' => 'Voir aussi',
-	'seealso-desc' => 'En-tête « Voir aussi » utilisée par la balise <code><nowiki><seealso></nowiki></code>',
+	'seealso-desc' => 'En-tête « {{int:seealso}} » utilisée par la balise <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Franco-Provençal (Arpetan)

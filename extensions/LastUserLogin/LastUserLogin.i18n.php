@@ -225,6 +225,20 @@ $messages['hsb'] = array(
 	'right-lastlogin' => 'Pokazać, hdyž so wužiwar posledni raz přizjewił',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'lastuserlogin' => 'A felhasználó legutóbbi bejelentkezése',
+	'lastuserlogin-desc' => 'Megjeleníti, hogy mikor jelentkezett be legutóbb egy adott felhasználó',
+	'lastuserlogin_userid' => 'Felhasználónév',
+	'lastuserlogin_username' => 'Valódi név',
+	'lastuserlogin_useremail' => 'E-mail cím',
+	'lastuserlogin_lastlogin' => 'Legutóbbi bejelentkezés',
+	'lastuserlogin_daysago' => 'nappal ezelőtt',
+	'right-lastlogin' => 'a felhasználó legutóbbi bejelentkezési idejének megtekintése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

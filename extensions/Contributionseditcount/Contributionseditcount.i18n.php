@@ -656,7 +656,7 @@ $messages['tr'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'contributionseditcount' => '{{GENDER:$2|Цей користувач зробив|Ця користувачка зробила}} {{PLURAL:$1|$1 редагування|$1 редагувань}}.',
+	'contributionseditcount' => '{{GENDER:$2|Цей користувач зробив|Ця користувачка зробила}} $1 {{PLURAL:$1|редагування|редагування|редагувань}}.',
 	'contributionseditcount-desc' => 'Відображає кількість редагувань на [[Special:Contributions|сторінці внеску користувача]]',
 );
 

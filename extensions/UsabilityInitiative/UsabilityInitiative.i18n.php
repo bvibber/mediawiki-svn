@@ -80,6 +80,8 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'usabilityinitiative' => 'ইউজাবিলিটি ইনিসিয়েটিভ',
 	'usabilityinitiative-desc' => 'মিডিয়াউইকির ব্যবহারযোগ্যতা বাড়াতে উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভের বৈশিষ্ট্যগুলোর উন্নয়ন করেছে',
+	'prefs-beta' => 'বেটা বৈশিষ্টসমূহ',
+	'prefs-labs' => 'পরীক্ষাগার বৈশিষ্টসমূহ',
 );
 
 /** Breton (Brezhoneg)
@@ -499,10 +501,13 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Everton137
  */
 $messages['pt-br'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
+	'prefs-beta' => 'Características beta',
+	'prefs-labs' => 'Características de laboratório',
 );
 
 /** Romanian (Română)

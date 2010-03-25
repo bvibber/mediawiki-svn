@@ -2238,6 +2238,7 @@ $messages['eo'] = array(
 	'code-rev-diff-link' => 'diferenco',
 	'code-rev-diff-too-large' => 'La diferenco estas tro granda por montri.',
 	'code-rev-purge-link' => 'forviŝi',
+	'code-rev-total' => 'Suma nombro de rezultoj: $1',
 	'code-status-new' => 'nova',
 	'code-status-fixme' => 'riparu-min',
 	'code-status-reverted' => 'malfarita',

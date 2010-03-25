@@ -91,9 +91,10 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Jean-Frédéric
  * @author Quentinv57
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'filepagemasking-desc' => 'Remplace ".xxx" par "_xxx" dans les liens de la page de description du fichier',
+	'filepagemasking-desc' => 'Remplace « .xxx » par « _xxx » dans les liens de la page de description du fichier',
 );
 
 /** Galician (Galego)

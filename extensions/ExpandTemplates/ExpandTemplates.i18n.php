@@ -1744,6 +1744,18 @@ samotného MediaWiki.',
 	'expand_templates_preview' => 'Náhľad',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'expandtemplates' => 'Razširi predloge',
+	'expand_templates_output' => 'Rezultat',
+	'expand_templates_xml_output' => 'Izhod XML',
+	'expand_templates_ok' => 'V redu',
+	'expand_templates_remove_comments' => 'Odstrani komentarje',
+	'expand_templates_preview' => 'Predogled',
+);
+
 /** Albanian (Shqip) */
 $messages['sq'] = array(
 	'expandtemplates' => 'Parapamje stampash',

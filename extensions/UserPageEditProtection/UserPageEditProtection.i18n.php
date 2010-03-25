@@ -82,10 +82,11 @@ $messages['eu'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'userpageeditprotection-desc' => 'Restreint les modifications des pages utilisateur à son propriétaire et aux utilisateurs autorisés',
-	'right-editalluserpages' => 'Modifier les pages utilisateur',
+	'userpageeditprotection-desc' => 'Restreint les modifications des pages utilisateurs à leurs propriétaires et aux utilisateurs autorisés',
+	'right-editalluserpages' => 'Modifier les pages utilisateurs',
 );
 
 /** Galician (Galego)

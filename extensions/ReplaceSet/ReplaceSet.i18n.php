@@ -119,13 +119,14 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author PieRRoMaN
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'replaceset-desc' => 'Ajoute une fonction parseur <nowiki>{{#replaceset}}</nowiki> utilisée pour remplacer des sections de texte avec des données formatées',
 	'replaceset-error-calllimit' => "La limite des appels à la fonction ''ReplaceSet'' a été atteinte.",
-	'replaceset-error-regexnoend' => 'Le délimiteur de fin « $2 » est manquant dans le motif de l’expression régulière « $1 »',
-	'replaceset-error-regexbadmodifier' => 'Le modificateur d’expression régulière  « $1 » est invalide.',
+	'replaceset-error-regexnoend' => 'Le délimiteur de fin « $2 » est manquant dans le motif de l’expression rationnelle « $1 »',
+	'replaceset-error-regexbadmodifier' => 'Le modificateur d’expression rationnelle « $1 » est invalide.',
 );
 
 /** Galician (Galego)
