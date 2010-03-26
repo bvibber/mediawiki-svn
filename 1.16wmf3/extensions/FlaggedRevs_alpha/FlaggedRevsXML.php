@@ -46,7 +46,7 @@ class FlaggedRevsXML {
 	}
 
 	/**
-	 * Get a selector of review levels
+	 * Get a selector of review levels. Used for filters.
 	 * @param int $selected, selected level
 	 * @param string $all, all selector msg?
 	 * @param int $max max level?
@@ -55,7 +55,7 @@ class FlaggedRevsXML {
 	public static function getLevelMenu(
 		$selected = null, $all = 'revreview-filter-all', $max = 2
 	) {
-		$s = "<label for='wpLevel'>" . wfMsgHtml( 'revreview-levelfilter' ) . "</label>&nbsp;";
+		$s = "<label for='wpLevel'>" . wfMsgHtml( 'revreview-levelfilter' ) . "</label>\n";
 		$s .= Xml::openElement( 'select', array( 'name' => 'level', 'id' => 'wpLevel' ) );
 		if ( $all !== false )
 			$s .= Xml::option( wfMsg( $all ), - 1, $selected === - 1 );
@@ -70,36 +70,88 @@ class FlaggedRevsXML {
 	}
 
 	/**
-	 * Get a radio options of available precendents
-	 * @param int $selected selected level, '' for "all"
+	 * Get a <select> of options of available precendents. Used for filters.
+	 * @param int $selected selected level, null for "all"
 	 * @returns string
 	 */
-	public static function getPrecedenceMenu( $selected = null ) {
-		if( is_null($selected) ) {
+	public static function getPrecedenceFilterMenu( $selected = null ) {
+		if ( is_null( $selected ) ) {
 			$selected = ''; // "all"
 		}
-		$s = Xml::openElement( 'select',
+		$s = Xml::label( wfMsg( 'revreview-precedencefilter' ), 'wpPrecedence' ) . "\n";
+		$s .= Xml::openElement( 'select',
 			array( 'name' => 'precedence', 'id' => 'wpPrecedence' ) );
-		$s .= Xml::option( wfMsg( 'revreview-lev-all' ), '', $selected == '' );
+		$s .= Xml::option( wfMsg( 'revreview-lev-all' ), '', $selected === '' );
 		$s .= Xml::option( wfMsg( 'revreview-lev-basic' ), FLAGGED_VIS_LATEST,
 			$selected === FLAGGED_VIS_LATEST );
-		if ( FlaggedRevs::qualityVersions() )
+		if ( FlaggedRevs::qualityVersions() ) {
 			$s .= Xml::option( wfMsg( 'revreview-lev-quality' ), FLAGGED_VIS_QUALITY,
 				$selected === FLAGGED_VIS_QUALITY );
-		if ( FlaggedRevs::pristineVersions() )
+		}
+		if ( FlaggedRevs::pristineVersions() ) {
 			$s .= Xml::option( wfMsg( 'revreview-lev-pristine' ), FLAGGED_VIS_PRISTINE,
 				$selected === FLAGGED_VIS_PRISTINE );
+		}
 		$s .= Xml::closeElement( 'select' ) . "\n";
 		return $s;
 	}
 
 	/**
-	 * Get a selector of "approved"/"unapproved"
+	 * Get a <select> of default page version (stable or draft). Used for filters.
+	 * @param int $selected (0=draft, 1=stable, null=either )
+	 * @returns string
+	 */
+	public static function getDefaultFilterMenu( $selected = null ) {
+		if ( is_null( $selected ) ) {
+			$selected = ''; // "all"
+		}
+		$s = Xml::label( wfMsg( 'revreview-defaultfilter' ), 'wpStable' ) . "\n";
+		$s .= Xml::openElement( 'select',
+			array( 'name' => 'stable', 'id' => 'wpStable' ) );
+		$s .= Xml::option( wfMsg( 'revreview-def-all' ), '', $selected == '' );
+		$s .= Xml::option( wfMsg( 'revreview-def-stable' ), 1, $selected === 1 );
+		$s .= Xml::option( wfMsg( 'revreview-def-draft' ), 0, $selected === 0 );
+		$s .= Xml::closeElement( 'select' ) . "\n";
+		return $s;
+	}
+
+	/**
+	 * Get a <select> of options of 'autoreview' restriction levels. Used for filters.
+	 * @param string $selected ('' for "any", 'none' for none)
+	 * @returns string
+	 */
+	public static function getRestrictionFilterMenu( $selected = '' ) {
+		if ( is_null( $selected ) ) {
+			$selected = ''; // "all"
+		}
+		$s = Xml::label( wfMsg( 'revreview-restrictfilter' ), 'wpRestriction' ) . "\n";
+		$s .= Xml::openElement( 'select',
+			array( 'name' => 'restriction', 'id' => 'wpRestriction' ) );
+		$s .= Xml::option( wfMsg( 'revreview-restriction-any' ), '', $selected == '' );
+		if ( !FlaggedRevs::useProtectionLevels() ) {
+			# All "protected" pages have a protection level, not "none"
+			$s .= Xml::option( wfMsg( 'revreview-restriction-none' ),
+				'none', $selected == 'none' );
+		}
+		foreach( FlaggedRevs::getRestrictionLevels() as $perm ) {
+			$key = "revreview-restriction-{$perm}";
+			$msg = wfMsg( $key );
+			if ( wfEmptyMsg( $key, $msg ) ) {
+				$msg = $perm; // fallback to user right key
+			}
+			$s .= Xml::option( $msg, $perm, $selected == $perm );
+		}
+		$s .= Xml::closeElement( 'select' ) . "\n";
+		return $s;
+	}
+
+	/**
+	 * Get a selector of "approved"/"unapproved". Used for filters.
 	 * @param int $selected, selected level
 	 * @returns string
 	 */
 	public static function getStatusFilterMenu( $selected = null ) {
-		$s = "<label for='wpStatus'>" . wfMsgHtml( 'revreview-statusfilter' ) . "</label>&nbsp;";
+		$s = "<label for='wpStatus'>" . wfMsgHtml( 'revreview-statusfilter' ) . "</label>\n";
 		$s .= Xml::openElement( 'select', array( 'name' => 'status', 'id' => 'wpStatus' ) );
 		$s .= Xml::option( wfMsg( "revreview-filter-all" ), - 1, $selected === - 1 );
 		$s .= Xml::option( wfMsg( "revreview-filter-approved" ), 1, $selected === 1 );
@@ -110,12 +162,12 @@ class FlaggedRevsXML {
 	}
 
 	/**
-	 * Get a selector of "auto"/"manual"
+	 * Get a selector of "auto"/"manual". Used for filters.
 	 * @param int $selected, selected level
 	 * @returns string
 	 */
 	public static function getAutoFilterMenu( $selected = null ) {
-		$s = "<label for='wpApproved'>" . wfMsgHtml( 'revreview-typefilter' ) . "</label>&nbsp;";
+		$s = "<label for='wpApproved'>" . wfMsgHtml( 'revreview-typefilter' ) . "</label>\n";
 		$s .= Xml::openElement( 'select', array( 'name' => 'automatic', 'id' => 'wpApproved' ) );
 		$s .= Xml::option( wfMsg( "revreview-filter-all" ), - 1, $selected === - 1 );
 		$s .= Xml::option( wfMsg( "revreview-filter-manual" ), 0, $selected === 0 );
@@ -219,7 +271,8 @@ class FlaggedRevsXML {
 		if ( $synced && ( $type == 'stable' || $type == 'draft' ) ) {
 			$msg = $quality ?
 				'revreview-quality-same' : 'revreview-basic-same';
-			$html = wfMsgExt( $msg, array( 'parseinline' ), $frev->getRevId(), $time, $revsSince );
+			$html = wfMsgExt( $msg, array( 'parseinline' ),
+				$frev->getRevId(), $time, $revsSince );
 		} elseif ( $type == 'oldstable' ) {
 			$msg = $quality ?
 				'revreview-quality-old' : 'revreview-basic-old';
@@ -235,38 +288,42 @@ class FlaggedRevsXML {
 			# For searching: uses messages 'revreview-quality-i', 'revreview-basic-i',
 			# 'revreview-newest-quality-i', 'revreview-newest-basic-i'
 			$msg .= ( $revsSince == 0 ) ? '-i' : '';
-			$html = wfMsgExt( $msg, array( 'parseinline' ), $frev->getRevId(), $time, $revsSince );
+			$html = wfMsgExt( $msg, array( 'parseinline' ),
+				$frev->getRevId(), $time, $revsSince );
 		}
 		# Make fancy box...
-		$box = "<table style='background: none; border-spacing: 0px;'>";
-		$box .= "<tr style='white-space:nowrap;'><td>$shtml</td>";
-		$box .= "<td style='text-align:right;'>" . self::ratingToggle() . "</td></tr>\n";
-		$box .= "<tr><td id='mw-fr-revisionratings'>$html<br />";
+		$box = "<table style=\"background: none; border-spacing: 0px;\">\n";
+		$box .= '<tr style="white-space:nowrap;">';
+		$box .= '<td align="right">' . $shtml . '&nbsp;' . self::ratingToggle() . '</td>';
+		$box .= "</tr>\n<tr>";
+		$box .= '<td id="mw-fr-revisionratings" align="left">';
+		$box .= $html; // details text
 		# Add any rating tags as needed...
 		if( $flags && !FlaggedRevs::binaryFlagging() ) {
 			# Don't show the ratings on draft views
 			if ( $type == 'stable' || $type == 'oldstable' ) {
-				$box .= self::addTagRatings( $flags, true, $color );
+				$box .= '<p>' . self::addTagRatings( $flags, true, $color ) . '</p>';
 			}
 		}
-		$box .= "</td><td></td></tr></table>";
+		$box .= "</td></tr>\n</table>\n";
         return $box;
 	}
 
 	/**
+	 * Generates (+/-) JS toggle HTML (monospace to keep things in place)
 	 * @returns string
-	 * Generates (+/-) JS toggle HTML
 	 */
 	public static function ratingToggle() {
-		return '<a id="mw-fr-revisiontoggle" class="flaggedrevs_toggle" style="display:none;"' .
+		return '<strong><a id="mw-fr-revisiontoggle" class="flaggedrevs_toggle"' .
+			' style="display:none; font-family: monospace;"' .
 			' onclick="FlaggedRevs.toggleRevRatings()" title="' .
 			wfMsgHtml( 'revreview-toggle-title' ) . '" >' .
-			wfMsgHtml( 'revreview-toggle-show' ) . '</a>';
+			wfMsgHtml( 'revreview-toggle-show' ) . '</a></strong>';
 	}
 
 	/**
+	 * Generates (show/hide) JS toggle HTML
 	 * @returns string
-	 * Generates (+/-) JS toggle HTML
 	 */
 	public static function diffToggle() {
 		return '<a id="mw-fr-difftoggle" class="flaggedrevs_toggle" style="display:none;"' .
@@ -276,8 +333,8 @@ class FlaggedRevsXML {
 	}
 
 	/**
+	 * Generates (show/hide) JS toggle HTML
 	 * @returns string
-	 * Generates (+/-) JS toggle HTML
 	 */
 	public static function logToggle( $msg ) {
 		return '<a id="mw-fr-logtoggle" class="flaggedrevs_toggle" style="display:none;"' .
@@ -447,8 +504,10 @@ class FlaggedRevsXML {
 	* @returns string
 	*/
 	public static function draftStatusIcon() {
-		return '<span class="fr-icon-current" title="'.
-			wfMsgHtml( 'revreview-draft-title' ).'"></span>';
+		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
+		$encTitle = wfMsgHtml( 'revreview-draft-title' );
+		return "<img class=\"flaggedrevs-icon\" src=\"$encPath/1.png\"" .
+			" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\"></img>";
 	}
 	
 	/*
@@ -457,13 +516,13 @@ class FlaggedRevsXML {
 	* @returns string
 	*/
 	public static function stableStatusIcon( $isQuality ) {
-		$class = $isQuality
-			? 'fr-icon-quality'
-			: 'fr-icon-stable';
-		$tooltip = $isQuality
-			? 'revreview-quality-title'
-			: 'revreview-basic-title';
-		return '<span class="'.$class.'" title="'. wfMsgHtml( $tooltip ).'"></span>';
+		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
+		$file = $isQuality ? '3.png' : '2.png';
+		$encTitle = $isQuality
+			? wfMsgHtml( 'revreview-quality-title' )
+			: wfMsgHtml( 'revreview-basic-title' );
+		return "<img class=\"flaggedrevs-icon\" src=\"$encPath/$file\"" .
+			" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\"></img>";
 	}
 
 	/*
@@ -472,12 +531,15 @@ class FlaggedRevsXML {
 	* @returns string
 	*/
 	public static function lockStatusIcon( $flaggedArticle ) {
+		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
 		if ( $flaggedArticle->isPageLocked() ) {
-			return "<span class='fr-icon-locked' title=\"" .
-				wfMsgHtml( 'revreview-locked-title' ) . "\"></span>";
+			$encTitle = wfMsgHtml( 'revreview-locked-title' );
+			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/lock-closed.png\"" .
+				" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\"></img>";
 		} elseif ( $flaggedArticle->isPageUnlocked() ) {
-			return "<span class='fr-icon-unlocked' title=\"" .
-				wfMsgHtml( 'revreview-unlocked-title' ) . "\"></span>";
+			$encTitle = wfMsgHtml( 'revreview-unlocked-title' );
+			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/lock-open.png\"" .
+				" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\"></img>";
 		}
 	}
 	
@@ -510,5 +572,177 @@ class FlaggedRevsXML {
 		LogEventsList::showLogExtract( $logHtml, 'stable',
 			$article->getTitle()->getPrefixedText(), '', array( 'lim' => 1 ) );
 		return "<div id=\"mw-fr-logexcerpt\">$logHtml</div>";
+	}
+	
+
+	 /**
+	 * Generates a brief review form for a page.
+	 * @param FlaggedArticle $article
+	 * @param Revision $rev
+	 * @param array $templateIDs
+	 * @param array $imageSHA1Keys
+	 * @param bool $stableDiff this is a diff-to-stable 
+	 * @return mixed (string/false)
+	 */
+	public static function buildQuickReview(
+		$article, $rev, $templateIDs, $imageSHA1Keys, $stableDiff = false
+	) {
+		global $wgUser, $wgRequest;
+		# The revision must be valid and public
+		if ( !$rev || $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			return false;
+		}
+		$id = $rev->getId();
+		$skin = $wgUser->getSkin();
+		# Do we need to get inclusion IDs from parser output?
+		$getPOut = ( $templateIDs && $imageSHA1Keys );
+
+		$config = $article->getVisibilitySettings();
+		# Variable for sites with no flags, otherwise discarded
+		$approve = $wgRequest->getBool( 'wpApprove' );
+		# See if the version being displayed is flagged...
+		$frev = FlaggedRevision::newFromTitle( $article->getTitle(), $id );
+		$oldFlags = $frev
+			? $frev->getTags() // existing tags
+			: FlaggedRevision::expandRevisionTags( '' ); // unset tags
+		# If we are reviewing updates to a page, start off with the stable revision's
+		# flags. Otherwise, we just fill them in with the selected revision's flags.
+		if ( $stableDiff ) {
+			$srev = $article->getStableRev();
+			$flags = $srev->getTags();
+			# Check if user is allowed to renew the stable version.
+			# If not, then get the flags for the new revision itself.
+			if ( !RevisionReview::userCanSetFlags( $oldFlags ) ) {
+				$flags = $oldFlags;
+			}
+			$reviewNotes = $srev->getComment();
+			# Re-review button is need for template/file only review case
+			$allowRereview = ($srev->getRevId() == $id)
+				&& !FlaggedRevs::stableVersionIsSynced( $srev, $article );
+		} else {
+			$flags = $oldFlags;
+			// Get existing notes to pre-fill field
+			$reviewNotes = $frev ? $frev->getComment() : "";
+			$allowRereview = false; // re-review button
+		}
+
+		# Begin form...
+		$reviewTitle = SpecialPage::getTitleFor( 'RevisionReview' );
+		$action = $reviewTitle->getLocalUrl( 'action=submit' );
+		$params = array( 'method' => 'post', 'action' => $action, 'id' => 'mw-fr-reviewform' );
+		$form = Xml::openElement( 'form', $params );
+		$form .= Xml::openElement( 'fieldset',
+			array( 'class' => 'flaggedrevs_reviewform noprint' ) );
+		# Add appropriate legend text
+		$legendMsg = ( FlaggedRevs::binaryFlagging() && $allowRereview )
+			? 'revreview-reflag'
+			: 'revreview-flag';
+		$form .= Xml::openElement( 'legend', array( 'id' => 'mw-fr-reviewformlegend' ) );
+		$form .= "<strong>" . wfMsgHtml( $legendMsg ) . "</strong>";
+		$form .= Xml::closeElement( 'legend' ) . "\n";
+		# Show explanatory text
+		if ( !FlaggedRevs::lowProfileUI() ) {
+			$form .= wfMsgExt( 'revreview-text', array( 'parse' ) );
+		}
+
+		# Disable form for unprivileged users
+		$uneditable = !$article->getTitle()->quickUserCan( 'edit' );
+		$disabled = !RevisionReview::userCanSetFlags( $flags ) || $uneditable;
+		if ( $disabled ) {
+			$form .= Xml::openElement( 'div', array( 'class' => 'fr-rating-controls-disabled',
+				'id' => 'fr-rating-controls-disabled' ) );
+			$toggle = array( 'disabled' => "disabled" );
+		} else {
+			$form .= Xml::openElement( 'div', array( 'class' => 'fr-rating-controls',
+				'id' => 'fr-rating-controls' ) );
+			$toggle = array();
+		}
+
+		# Add main checkboxes/selects
+		$form .= Xml::openElement( 'span', array( 'id' => 'mw-fr-ratingselects' ) );
+		$form .= FlaggedRevsXML::ratingInputs( $flags, $config, $disabled, (bool)$frev );
+		$form .= Xml::closeElement( 'span' );
+		# Add review notes input
+		if ( FlaggedRevs::allowComments() && $wgUser->isAllowed( 'validate' ) ) {
+			$form .= "<div id='mw-fr-notebox'>\n";
+			$form .= "<p>" . wfMsgHtml( 'revreview-notes' ) . "</p>\n";
+			$form .= Xml::openElement( 'textarea',
+				array( 'name' => 'wpNotes', 'id' => 'wpNotes',
+					'class' => 'fr-notes-box', 'rows' => '2', 'cols' => '80' ) ) .
+				htmlspecialchars( $reviewNotes ) .
+				Xml::closeElement( 'textarea' ) . "\n";
+			$form .= "</div>\n";
+		}
+
+		# Get versions of templates/files used
+		$imageParams = $templateParams = $fileVersion = '';
+		if ( $getPOut ) {
+			$pOutput = false; 
+			# Current version: try parser cache
+			if( $rev->isCurrent() ) {
+				$parserCache = ParserCache::singleton();
+				$pOutput = $parserCache->get( $article, $wgUser );
+			}
+			# Otherwise (or on cache miss), parse the rev text...
+			if ( $pOutput == false ) {
+				global $wgParser, $wgEnableParserCache;
+				$text = $rev->getText();
+				$title = $article->getTitle();
+				$options = FlaggedRevs::makeParserOptions();
+				$pOutput = $wgParser->parse( $text, $title, $options );
+				# Might as well save the cache while we're at it
+				if ( $rev->isCurrent() && $wgEnableParserCache ) {
+					$parserCache->save( $pOutput, $article, $wgUser );
+				}
+			}
+			$templateIDs = $pOutput->mTemplateIds;
+			$imageSHA1Keys = $pOutput->fr_ImageSHA1Keys;
+		}
+		list( $templateParams, $imageParams, $fileVersion ) =
+			FlaggedRevs::getIncludeParams( $article, $templateIDs, $imageSHA1Keys );
+
+		$form .= Xml::openElement( 'span', array( 'style' => 'white-space: nowrap;' ) );
+		# Hide comment input if needed
+		if ( !$disabled ) {
+			if ( count( FlaggedRevs::getDimensions() ) > 1 )
+				$form .= "<br />"; // Don't put too much on one line
+			$form .= "<span id='mw-fr-commentbox' style='clear:both'>" .
+				Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 35, '',
+					array( 'class' => 'fr-comment-box' ) ) . "&nbsp;&nbsp;&nbsp;</span>";
+		}
+		# Add the submit buttons
+		$form .= FlaggedRevsXML::ratingSubmitButtons( $frev, (bool)$toggle, $allowRereview );
+		# Show stability log if there is anything interesting...
+		if( $article->isPageLocked() ) {
+			$form .= ' ' . FlaggedRevsXML::logToggle('revreview-log-toggle-show');
+		}
+		$form .= Xml::closeElement( 'span' );
+		# ..add the actual stability log body here
+	    if( $article->isPageLocked() ) {
+			$form .= FlaggedRevsXML::stabilityLogExcerpt( $article );
+		}
+		$form .= Xml::closeElement( 'div' ) . "\n";
+
+		# Hidden params
+		$form .= Xml::hidden( 'title', $reviewTitle->getPrefixedText() ) . "\n";
+		$form .= Xml::hidden( 'target', $article->getTitle()->getPrefixedDBKey() ) . "\n";
+		$form .= Xml::hidden( 'oldid', $id ) . "\n";
+		$form .= Xml::hidden( 'action', 'submit' ) . "\n";
+		$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n";
+		# Add review parameters
+		$form .= Xml::hidden( 'templateParams', $templateParams ) . "\n";
+		$form .= Xml::hidden( 'imageParams', $imageParams ) . "\n";
+		$form .= Xml::hidden( 'fileVersion', $fileVersion ) . "\n";
+		# Pass this in if given; useful for new page patrol
+		$form .= Xml::hidden( 'rcid', $wgRequest->getVal( 'rcid' ) ) . "\n";
+		# Special token to discourage fiddling...
+		$checkCode = RevisionReview::validationKey(
+			$templateParams, $imageParams, $fileVersion, $id
+		);
+		$form .= Xml::hidden( 'validatedParams', $checkCode ) . "\n";
+
+		$form .= Xml::closeElement( 'fieldset' );
+		$form .= Xml::closeElement( 'form' );
+		return $form;
 	}
 }

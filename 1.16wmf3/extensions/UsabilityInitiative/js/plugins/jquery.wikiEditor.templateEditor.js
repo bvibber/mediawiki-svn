@@ -456,7 +456,7 @@ fn: {
 	getTemplateDisplayName: function ( model ) {
 		var tName = model.getName();
 		if( tName.toLowerCase() in $.wikiEditor.modules.templateEditor.nameMappings ) {
-			return tName + ': ' + model.getValue( $.wikiEditor.modules.templateEditor.nameMappings[tName] );
+			return tName + ': ' + model.getValue( $.wikiEditor.modules.templateEditor.nameMappings[tName.toLowerCase()] );
 		} else if( model.getValue( 'name' ) != '' ) {
 			return tName + ': ' + model.getValue( 'name' );
 		} else if( model.getValue( 'Name' ) != '' ) {

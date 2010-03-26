@@ -238,7 +238,7 @@ Stumm embannet ur bajenn eo an adweladenn diwezhañ zo bet aprouet da vezañ dis
  * @author CERminator
  */
 $messages['bs'] = array(
-	'validationstatistics' => 'Statistike provjera',
+	'validationstatistics' => 'Statistike provjera stranice',
 	'validationstatistics-users' => "'''{{SITENAME}}''' trenutno ima '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|korisnika|korisnika}} sa pravima [[{{MediaWiki:Validationpage}}|urednika]].
 
 Urednici su potvrđeni korisnici koji mogu izvršavati provjere revizija stranice.",
@@ -327,22 +327,21 @@ $messages['cu'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Melancholie
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'validationstatistics' => 'Markierungsstatistik',
-	'validationstatistics-users' => "'''{{SITENAME}}''' hat '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|Benutzer|Benutzer}} mit [[{{MediaWiki:Validationpage}}|Sichterrecht]]
-und '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|Benutzer|Benutzer}} mit [[{{MediaWiki:Validationpage}}|Prüferrecht]].
+	'validationstatistics-users' => "'''{{SITENAME}}''' hat momentan '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|Benutzer|Benutzer}} mit [[{{MediaWiki:Validationpage}}|Sichterrecht]].
 
-Sichter und Prüfer sind anerkannte Benutzer, die Versionen einer Seite überprüfen können.",
+Sichter sind anerkannte Benutzer, die Versionen einer Seite überprüfen können.",
 	'validationstatistics-time' => "''Die folgenden Daten wurden zuletzt am $5 um $6 Uhr aktualisiert.''
 
 Die durchschnittliche Wartezeit für Bearbeitungen, die von nicht angemeldeten Benutzern stammen, beträgt '''$1'''; der Median beträgt '''$3'''.
 $4
 Der durchschnittliche Rückstand auf [[Special:OldReviewedPages|veraltete Seiten]] beträgt '''$2'''.
-''Veraltete'' Seiten sind Seiten mit Bearbeitungen, die neuer als die [[{{MediaWiki:Validationpage}}|markierte Version]] sind.
-Wenn die markierte Version auch die letzte Version ist, ist die Seite ''synchronisiert''.
-Die stabile Version einer Seite ist die neueste Version, die durch einen Sichter bestätigt wurde und als Standard allen Lesern angezeigt wird.",
+Diese Seiten werden als ''veraltet'' angesehen. Seiten werden als ''synchronisiert'' angesehen, wenn keine Bearbeitungen mehr auf eine Kontrolle warten.
+Die veröffentlichte Version einer Seite ist die neueste Version, die durch einen Sichter bestätigt wurde und als Standard allen Lesern angezeigt wird.",
 	'validationstatistics-table' => "Statistiken für jeden Namensraum, ''ausgenommen'' sind Weiterleitungen.",
 	'validationstatistics-ns' => 'Namensraum',
 	'validationstatistics-total' => 'Seiten gesamt',
@@ -450,12 +449,10 @@ $4
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'validationstatistics' => 'Validigadaj statistikoj',
-	'validationstatistics-users' => "'''{{SITENAME}}''' nun havas '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|uzanton|uzantojn}} kun
-[[{{MediaWiki:Validationpage}}|Redaktanto]]-rajtoj
-kaj '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|uzanton|uzantojn}} kun [[{{MediaWiki:Validationpage}}|Kontrolanto]]-rajtoj.
+	'validationstatistics' => 'Statistikoj pri paĝkontrolado',
+	'validationstatistics-users' => "'''{{SITENAME}}''' nun havas '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|uzanton|uzantojn}} kun rajto [[{{MediaWiki:Validationpage}}|Redaktanto]].
 
-Redaktantoj kaj Kontrolantoj estas establitaj uzantoj kiuj povas kontroli ŝanĝojn al paĝojn.",
+Redaktantoj estas daŭraj uzantoj kiuj povas iufoje kontroli paĝojn.",
 	'validationstatistics-time' => "''La jenaj datenoj estis laste ĝisdatitaj je $5, $6.''
 
 Redaktoj kontrolitaj de longdaŭraj uzantoj estas konsiderataj esti kontrolitaj.
@@ -463,9 +460,8 @@ Redaktoj kontrolitaj de longdaŭraj uzantoj estas konsiderataj esti kontrolitaj.
 La averaĝa atendotempo por kontrolendaj redaktoj de ''nesalutita uzantoj'' estas '''$1'''; la mediano estas '''$3'''.
 $4
 La averaĝa atendotempo por [[Special:OldReviewedPages|paĝoj kun nekontrolitaj redaktoj farontaj]] estas '''$2'''.
-Ĉi tiuj paĝoj estas konsiderataj kiel ''malfreŝaj''. Ankaŭ, paĝoj estas konsiderata ''sinkrona'' se la 
-[[{{MediaWiki:Validationpage}}|stabila revizio]] ankaŭ estas la nuna neta versio.
-Stabila revizio de paĝo estas la plej nova revizio aprobita por montri al ĉiuj legantoj.",
+Ĉi tiuj paĝoj estas konsiderataj kiel ''malfreŝaj''. Ankaŭ, paĝoj estas konsiderata ''sinkrona'' se neniuj redaktoj atendas kontrolon.
+Publikigita revizio de paĝo estas la plej nova revizio aprobita por montri al ĉiuj legantoj.",
 	'validationstatistics-table' => "Statistikoj por ĉiu nomspaco estas jene montritaj, ''krom'' alidirektiloj.",
 	'validationstatistics-ns' => 'Nomspaco',
 	'validationstatistics-total' => 'Paĝoj',
@@ -1459,27 +1455,27 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'validationstatistics' => 'Estatísticas de revisão de páginas',
+	'validationstatistics' => 'Estatísticas da revisão de páginas',
 	'validationstatistics-users' => "A '''{{SITENAME}}''' tem, neste momento, '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizador|utilizadores}} com permissões de [[{{MediaWiki:Validationpage}}|Editor]].
 
-Editores são utilizadores que podem verificar as revisões de páginas.",
+Editores são utilizadores que podem rever as edições de páginas.",
 	'validationstatistics-time' => "''Os seguintes dados foram actualizados pela última vez a $5 às $6.''
 
 As edições verificadas por utilizadores estabelecidos são consideradas revistas.
 
-O tempo médio de espera para revisão das edições de ''utilizadores não autenticados'' é '''$1'''; a mediana é '''$3'''.
+O tempo médio de espera para revisão das edições de ''utilizadores não autenticados'' é '''$1'''; a mediana é '''$3'''. 
 $4
 O atraso médio para [[Special:OldReviewedPages|páginas com edições à espera de revisão]] é '''$2'''.
-Estas páginas são consideradas ''desactualizadas''. As páginas são consideradas ''sincronizadas'' se não tiverem revisões em espera.
-A versão publicada de uma página é a revisão mais recente que tenha sido aprovada para ser apresentada por omissão a todos os leitores.",
+Estas páginas são consideradas ''desactualizadas''. As páginas são consideradas ''sincronizadas'' se não tiverem edições em espera.
+A versão publicada de uma página é a edição mais recente que tenha sido aprovada para ser apresentada por omissão a todos os leitores.",
 	'validationstatistics-table' => "São apresentadas abaixo estatísticas para cada espaço nominal, '''excluindo''' páginas de redireccionamento.",
 	'validationstatistics-ns' => 'Espaço nominal',
 	'validationstatistics-total' => 'Páginas',
-	'validationstatistics-stable' => 'Analisadas',
-	'validationstatistics-latest' => 'Sincronizada',
-	'validationstatistics-synced' => 'Sincronizadas/Analisadas',
+	'validationstatistics-stable' => 'Revistas',
+	'validationstatistics-latest' => 'Sincronizadas',
+	'validationstatistics-synced' => 'Sincronizadas/Revistas',
 	'validationstatistics-old' => 'Desactualizadas',
-	'validationstatistics-utable' => 'Abaixo está a lista dos 5 revisores mais ativos na última hora.',
+	'validationstatistics-utable' => 'Abaixo está a lista dos 5 revisores mais activos na última hora.',
 	'validationstatistics-user' => 'Utilizador',
 	'validationstatistics-reviews' => 'Revisões',
 );

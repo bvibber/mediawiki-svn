@@ -13,11 +13,6 @@ class FlaggedRevsHooks {
 		}
 		$list['RevisionReview'] = $wgSpecialPages['RevisionReview'] = 'RevisionReview';
 		$list['ReviewedVersions'] = $wgSpecialPages['ReviewedVersions'] = 'ReviewedVersions';
-		// Protect levels define allowed stability settings
-		if ( !FlaggedRevs::useProtectionLevels() ) {
-			$list['Stabilization'] = $wgSpecialPages['Stabilization'] = 'Stabilization';
-		}
-		$list['UnreviewedPages'] = $wgSpecialPages['UnreviewedPages'] = 'UnreviewedPages';
 		$list['OldReviewedPages'] = $wgSpecialPages['OldReviewedPages'] = 'OldReviewedPages';
 		// Show tag filtered pending edit page if there are tags
 		if ( $wgUseTagFilter && ChangeTags::listDefinedTags() ) {
@@ -25,13 +20,16 @@ class FlaggedRevsHooks {
 		}
 		if( !FlaggedRevs::stableOnlyIfConfigured() ) {
 			$list['ReviewedPages'] = $wgSpecialPages['ReviewedPages'] = 'ReviewedPages';
+			$list['UnreviewedPages'] = $wgSpecialPages['UnreviewedPages'] = 'UnreviewedPages';
 		}
 		$list['QualityOversight'] = $wgSpecialPages['QualityOversight'] = 'QualityOversight';
 		$list['ValidationStatistics'] = $wgSpecialPages['ValidationStatistics'] = 'ValidationStatistics';
-		if ( !FlaggedRevs::isStableShownByDefault() ) {
+		// Protect levels define allowed stability settings
+		if ( FlaggedRevs::useProtectionLevels() ) {
 			$list['StablePages'] = $wgSpecialPages['StablePages'] = 'StablePages';
 		} else {
-			$list['UnstablePages'] = $wgSpecialPages['UnstablePages'] = 'UnstablePages';
+			$list['ConfiguredPages'] = $wgSpecialPages['ConfiguredPages'] = 'ConfiguredPages';
+			$list['Stabilization'] = $wgSpecialPages['Stabilization'] = 'Stabilization';
 		}
 		return true;
 	}
@@ -49,8 +47,8 @@ class FlaggedRevsHooks {
 		if ( !$fa || !$fa->isReviewable() ) {
 			return true;
 		}
-		global $wgScriptPath, $wgJsMimeType, $wgFlaggedRevsStylePath, $wgFlaggedRevStyleVersion;
-		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFlaggedRevsStylePath );
+		global $wgJsMimeType, $wgFlaggedRevStyleVersion;
+		$stylePath = FlaggedRevs::styleUrlPath();
 		# Get JS/CSS file locations
 		$encCssFile = htmlspecialchars( "$stylePath/flaggedrevs.css?$wgFlaggedRevStyleVersion" );
 		$encJsFile = htmlspecialchars( "$stylePath/flaggedrevs.js?$wgFlaggedRevStyleVersion" );
@@ -159,6 +157,7 @@ class FlaggedRevsHooks {
 		return true;
 	}
 
+	// Mark when an unreviewed page is being reviewed
 	public static function maybeMarkUnderReview( $article, $user, $request ) {
 		if( !$user->isAllowed( 'review' ) ) {
 			return true; // user cannot review
@@ -1714,7 +1713,9 @@ class FlaggedRevsHooks {
 	
 	public static function onSkinAfterContent( &$data ) {
 		global $wgOut;
-		if ( $wgOut->isArticleRelated() && FlaggedArticleView::globalArticleInstance() != null ) {
+		if ( $wgOut->isArticleRelated()
+			&& FlaggedArticleView::globalArticleInstance() != null )
+		{
 			$view = FlaggedArticleView::singleton();
 			$view->addReviewNotes( $data );
 			$view->addReviewForm( $data );
@@ -1818,7 +1819,9 @@ class FlaggedRevsHooks {
 		if ( !isset( $row->fr_quality ) ) {
 			if ( $revId > $history->fr_stableRevId ) {
 				$class = 'flaggedrevs-unreviewed';
-				$link = '<strong>' . wfMsgHtml( 'revreview-hist-pending' ) . '</strong>';
+				$link = wfMsgExt( 'revreview-hist-pending', 'parseinline',
+					$title->getPrefixedText(), $history->fr_stableRevId, $revId );
+				$link = '<span class="plainlinks">' . $link . '</span>';
 				$history->fr_pendingRevs = true; // pending rev shown above stable
 			}
 		// Reviewed revision: highlight and add link
@@ -1945,8 +1948,7 @@ class FlaggedRevsHooks {
 		self::injectStyleAndJS();
 		$view = FlaggedArticleView::singleton();
 		$view->setViewFlags( $diff, $oldRev, $newRev );
-		$view->addDiffLink( $diff, $oldRev, $newRev );
-		$view->addDiffNoticeAndIncludes( $diff, $oldRev, $newRev );
+		$view->addToDiffView( $diff, $oldRev, $newRev );
 		return true;
 	}
 
@@ -2192,7 +2194,7 @@ class FlaggedRevsHooks {
 		LogEventsList::showLogExtract( $out, 'stable', $article->getTitle()->getPrefixedText() );
 		return true;
 	}
-	
+
 	// Update stability config from request
 	public static function onProtectionSave( $article, &$errorMsg ) {
 		global $wgUser, $wgRequest;
@@ -2213,19 +2215,17 @@ class FlaggedRevsHooks {
 		$form->expiry = $wgRequest->getText( 'mwStabilize-expiry' ); # Expiry
 		$form->expirySelection = $wgRequest->getVal( 'wpExpirySelection' ); # Expiry dropdown
 		# Fill in config from the protection level...
-		$levels = FlaggedRevs::getRestrictionLevels();
-		$selected = $wgRequest->getVal( 'mwStabilityConfig' );
-		if ( $selected == "none" ) {
-			$form->override = (int)FlaggedRevs::isStableShownByDefault(); // default
+		$permission = $wgRequest->getVal( 'mwStabilityConfig' );
+		if ( $permission == "none" ) {
 			$form->autoreview = ''; // default
 			$form->reviewThis = false;
-		} else if ( in_array( $selected, $levels ) ) {
-			$form->override = 1; // stable page
-			$form->autoreview = $selected; // autoreview restriction
+		} else if ( in_array( $permission, FlaggedRevs::getRestrictionLevels() ) ) {
+			$form->autoreview = $permission; // autoreview restriction
 			$form->reviewThis = true; // auto-review page; protection-like
 		} else {
-			return false; // bad level
+			return false; // bad level, don't save!
 		}
+		$form->override = null; // implied by autoreview level
 		$form->select = null; // site default
 		$form->wasPosted = $wgRequest->wasPosted();
 		if ( $form->handleParams() ) {
