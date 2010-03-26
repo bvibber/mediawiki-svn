@@ -16,14 +16,14 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 68 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 69 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 72 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 73 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 72 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 73 ),
 		),
 	);
 	static $messages = array(
@@ -191,6 +191,10 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-file-pre',
 				'wikieditor-toolbar-tool-file-example',
 				'wikieditor-toolbar-tool-reference',
+				'wikieditor-toolbar-tool-reference-title',
+				'wikieditor-toolbar-tool-reference-cancel',
+				'wikieditor-toolbar-tool-reference-text',
+				'wikieditor-toolbar-tool-reference-insert',
 				'wikieditor-toolbar-tool-reference-example',
 				'wikieditor-toolbar-tool-signature',
 				/* Formatting Section */
