@@ -271,7 +271,8 @@ var kskinConfig = {
 	*/
 	onClipDone: function(){
 		if( this.embedPlayer.apiTitleKey ){
-			this.showMenuOverlay( ); 
+			this.checkMenuOverlay( );
+			this.showMenuOverlay(); 
 			this.showMenuItem( 'credits' );
 		}
 	},
