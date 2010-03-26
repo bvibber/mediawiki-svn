@@ -190,6 +190,14 @@ body.rtl .wikieditor-toolbar-table-dimension-fields .wikieditor-toolbar-field-wr
 	background-image: url( ../images/wikiEditor/dialogs/insert-link-external.png );
 }
 
+/* Reference Dialog */
+#wikieditor-toolbar-reference-dialog label {
+	float: left;
+	line-height: 1.7em;
+}
+#wikieditor-toolbar-reference-text {
+	width: 100%;
+}
 /* RTL Changes */
 body.rtl .wikiEditor-toolbar-dialog .ui-dialog-buttonpane button {
 	float: left;

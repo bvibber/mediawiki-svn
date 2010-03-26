@@ -128,9 +128,19 @@ $j(document).ready( function() {
 							}
 						}
 					},
+					'referenceCGD': {
+						labelMsg: 'wikieditor-toolbar-tool-reference',
+						type: 'button',
+						icon: 'insert-reference.png',
+						filters: [ 'body.ns-subject', '#wpTextbox1.toolbar-dialogs' ],
+						action: {
+							type: 'dialog',
+							module: 'insert-reference'
+						}
+					},
 					'reference': {
 						labelMsg: 'wikieditor-toolbar-tool-reference',
-						filters: [ 'body.ns-subject' ],
+						filters: [ 'body.ns-subject', '#wpTextbox1:not(.toolbar-dialogs)' ],
 						type: 'button',
 						icon: 'insert-reference.png',
 						action: {
@@ -1352,6 +1362,87 @@ $j(document).ready( function() {
 					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
 						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
+				}
+			}
+		}
+	},
+	'insert-reference': {
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
+		titleMsg: 'wikieditor-toolbar-tool-reference-title',
+		id: 'wikieditor-toolbar-reference-dialog',
+		html: '\
+		<div class="wikieditor-toolbar-dialog-wrapper">\
+		<fieldset><div class="wikieditor-toolbar-table-form">\
+			<div class="wikieditor-toolbar-field-wrapper">\
+				<label for="wikieditor-toolbar-reference-text"\
+					rel="wikieditor-toolbar-tool-reference-text"></label>\
+				<input type="text" id="wikieditor-toolbar-reference-text" />\
+			</div>\
+		</div></fieldset>\
+		</div>',
+		init: function() {
+			// Insert translated strings into labels
+			$j( this ).find( '[rel]' ).each( function() {
+				$j( this ).text( mw.usability.getMsg( $j( this ).attr( 'rel' ) ) );
+			} );
+			
+		},
+		dialog: {
+			dialogClass: 'wikiEditor-toolbar-dialog',
+			width: 590,
+			buttons: {
+				'wikieditor-toolbar-tool-reference-insert': function() {
+					var val = $j( '#wikieditor-toolbar-reference-text' ).val();
+					$j.wikiEditor.modules.toolbar.fn.doAction(
+						$j( this ).data( 'context' ),
+						{
+							type: 'replace',
+							options: {
+								pre: '<ref>',
+								peri: val,
+								post: '</ref>',
+								ownline: true
+							}
+						},
+						$j( this )
+					);
+					
+					// Restore form state
+					$j( '#wikieditor-toolbar-reference-text' ).val( "" );
+					// Close the dialog
+					$j( this ).dialog( 'close' );
+
+				},
+				'wikieditor-toolbar-tool-reference-cancel': function() {
+					$j( this ).dialog( 'close' );
+				}
+			},
+			open: function() {
+				// set focus
+				$j( '#wikieditor-toolbar-reference-text' ).focus();
+				// Pre-fill the text fields based on the current selection
+				var selection = $j(this).data( 'context' )
+					.$textarea.textSelection( 'getSelection' ); 
+				if ( selection != '' ) {
+					// TODO: add support for detecting <ref></ref>
+					$j( '#wikieditor-toolbar-reference-text' ).val( selection );
+				}
+				if ( !( $j( this ).data( 'dialogkeypressset' ) ) ) {
+					$j( this ).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j( this ).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							var button = $j( this ).data( 'dialogaction' ) || $j( this ).find( 'button:first' );
+							button.click();
+							e.preventDefault();
+						}
+					} );
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j( this ).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j( this ).closest( '.ui-dialog' ).data( 'dialogaction', this );
+					} );
 				}
 			}
 		}
