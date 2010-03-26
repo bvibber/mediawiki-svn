@@ -57,11 +57,25 @@ $messages['gsw'] = array(
 	'vector-collapsiblenav-preference' => 'Yyklappbar Navgationsmenü yyschalte',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'vector-collapsiblenav-preference' => 'הפעלת תפריט ניווט שמאלי מתקפל',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'vector-collapsiblenav-preference' => 'Fałdujomny lěwy nawigaciski meni zmóžnić',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'vector-collapsiblenav-preference' => 'Activar le menu de navigation plicabile a sinistra',
 );
 
 /** Macedonian (Македонски)

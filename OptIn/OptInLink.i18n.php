@@ -370,7 +370,7 @@ $messages['fr'] = array(
 	'optin-leave' => 'Quitter la bêta Açai',
 	'tooltip-pt-optin-leave' => 'Désactiver les nouvelles fonctionnalités',
 	'optin-feedback' => 'Donnez votre avis',
-	'tooltip-pt-optin-feedback' => "Donnez vos impressions sur l'utilisation des nouvelles fonctionnalités",
+	'tooltip-pt-optin-feedback' => 'Donnez vos impressions sur l’utilisation des nouvelles fonctionnalités',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -632,11 +632,16 @@ $messages['lmo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Matasg
  */
 $messages['lt'] = array(
 	'optin-try' => 'Pabandyti Beta',
+	'tooltip-pt-optin-try' => 'Išbandykite naujas galimybes',
 	'optin-leave' => 'Palikti Beta',
+	'tooltip-pt-optin-leave' => 'Išjungti naujas funkcijas',
+	'optin-feedback' => 'Atsiliepimai apie beta versiją',
+	'tooltip-pt-optin-feedback' => 'Pateikite atsiliepimų apie savo patirtį su naujomis funkcijomis',
 );
 
 /** Latvian (Latviešu)
@@ -910,12 +915,13 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'optin-try' => 'Poskusite Beta različico',
 	'optin-leave' => 'Zapusti Beta različico',
-	'optin-feedback' => 'Povratne informacije Beta različice',
+	'optin-feedback' => 'Mnenja o betarazličici',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

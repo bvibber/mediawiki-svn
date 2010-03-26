@@ -306,9 +306,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
+	'wikieditor-preview-preference' => 'הפעלת תצוגה מקבילה',
 	'wikieditor-preview-tab' => 'תצוגה מקדימה',
 	'wikieditor-preview-changes-tab' => 'שינויים',
 	'wikieditor-preview-loading' => 'נטען...',

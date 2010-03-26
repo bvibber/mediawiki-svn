@@ -225,10 +225,14 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author YaronSh
  */
 $messages['he'] = array(
 	'wikieditor-template-editor-preference' => 'הפעלת עריכה מבוססת טופס של תבניות ויקי',
+	'wikieditor-template-editor-dialog-title' => 'עריכת התבנית',
+	'wikieditor-template-editor-dialog-submit' => 'עדכון',
+	'wikieditor-template-editor-dialog-cancel' => 'ביטול',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -279,6 +283,13 @@ $messages['ja'] = array(
 	'wikieditor-template-editor-dialog-cancel' => '中止',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'განახლება',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -294,6 +305,14 @@ $messages['lb'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Schabloun änneren',
 	'wikieditor-template-editor-dialog-submit' => 'Aktualiséieren',
 	'wikieditor-template-editor-dialog-cancel' => 'Annulléieren',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Redaguoti šabloną',
+	'wikieditor-template-editor-dialog-cancel' => 'Atšaukti',
 );
 
 /** Macedonian (Македонски)

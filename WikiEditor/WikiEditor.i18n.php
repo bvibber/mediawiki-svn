@@ -261,12 +261,14 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'wikieditor' => 'מנשק מתקדם לעריכת טקסט ויקי',
 	'wikieditor-desc' => 'מספקת מנשק עריכת ויקיטקסט הניתן להרחבה ומודולים המאפשרים להוסיף יכולות',
 	'wikieditor-wikitext-tab' => 'ויקיטקסט',
+	'wikieditor-loading' => 'בטעינה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -325,6 +327,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'wikieditor-wikitext-tab' => 'ვიკიტექსტი',
+	'wikieditor-loading' => 'იტვირთება',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -344,6 +347,16 @@ $messages['lb'] = array(
 	'wikieditor-desc' => "Liwwert en erweiderbaren Interface fir d'Ännere vu Wikitext a vill Module mat Fonctiounen",
 	'wikieditor-wikitext-tab' => 'WikiText',
 	'wikieditor-loading' => 'Lueden',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor' => 'Išplėstinė wikiteksto redagavimo sąsaja',
+	'wikieditor-desc' => 'Prideda išplečiamą wikiteksto redagavimo sąsają ir daug funkcijų turinčius modulius',
+	'wikieditor-wikitext-tab' => 'Wikitekstas',
+	'wikieditor-loading' => 'Įkeliama',
 );
 
 /** Macedonian (Македонски)
