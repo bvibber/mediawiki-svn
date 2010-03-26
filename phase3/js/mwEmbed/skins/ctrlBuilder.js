@@ -62,8 +62,7 @@ ctrlBuilder.prototype = {
 		if ( window[ embedPlayer.skinName + 'Config' ] ) {
 		
 			// Clone as to not override prototype with the skin config
-			var _this = $j.extend( true, { }, this, window[ embedPlayer.skinName + 'Config'] );
-			
+			var _this = $j.extend( true, { }, this, window[ embedPlayer.skinName + 'Config'] );	
 			return _this;
 		}
 		// Return the ctrlBuilder Object: 
@@ -814,7 +813,14 @@ ctrlBuilder.prototype = {
 			);
 		}				
 		return $optionsMenu;
-	},		
+	},	
+		
+	/**
+	* Allow the ctrlBuilder to do interface actions onDone
+	*/
+	onClipDone: function(){
+		// Related videos could be shown here 
+	},
 	
 	/**	
 	* Option menu items

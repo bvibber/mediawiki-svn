@@ -69,6 +69,7 @@ class jsScriptLoader {
 
 	/**
 	 * Core scriptLoader driver:
+	 *
 	 * 	get request key
 	 *  builds javascript string
 	 *  optionally gzips the output
@@ -410,7 +411,7 @@ class jsScriptLoader {
 
 		// Check for the requested classes
 		if ( $reqClassList ) {
-			// Clean the class list and populate jsFileList
+			// sanitize the class list and populate jsFileList
 			foreach ( $reqClassList as $reqClass ) {
 				if ( trim( $reqClass ) != '' ) {
 					if ( substr( $reqClass, 0, 3 ) == 'WT:' ) {
@@ -440,7 +441,7 @@ class jsScriptLoader {
 					$reqClass = preg_replace( "/[^A-Za-z0-9_\-\.]/", '', $reqClass );
 
 					$jsFilePath = self::getJsPathFromClass( $reqClass );
-					if(!$jsFilePath){
+					if( !$jsFilePath ){
 						$this->errorMsg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
 					}else{
 						$this->jsFileList[ $reqClass ] = $jsFilePath;
