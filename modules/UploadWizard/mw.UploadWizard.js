@@ -596,7 +596,6 @@ mw.UploadWizardUploadInterface.prototype = {
 	 */
 	fileChanged: function() {
 		var _this = this;
-		debugger;
 		_this.clearErrors();
 		_this.upload.extractLocalFileInfo( $j( _this.fileInputCtrl ).val() );
 		if ( _this.isGoodExtension( _this.upload.extension ) ) {
@@ -812,7 +811,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				} );
 	$j(_this.titleInput).destinationChecked( {
 		spinner: function(bool) { _this.toggleDestinationBusy(bool) },
-		preprocess: function( name ) { return _this.humanToWikiTitle( name ) },
+		preprocess: function( name ) { return _this.getFilenameFromTitle() }, // XXX this is no longer a pre-process
 		processResult: function( result ) { _this.processDestinationCheck( result ) } 
 	} );
 
@@ -933,11 +932,20 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	setFilenameFromTitle: function() {
 		var _this = this;
-		var name = $j( _this.titleInput ).val();
 		// "File:" is the constant NS_FILE, defined in Namespaces.php. Usually unchangeable?
-		_this.filename = "File:" + mw.UploadWizardUtil.pathToTitle( name ) + '.' + _this.upload.extension;
+		_this.filename = "File:" + _this.getFilenameFromTitle();
 		$j( '#mwe-upwiz-details-filename' ).text( _this.filename );		
 			
+	},
+
+	/**
+	 * Gets a filename from the human readable title, using upload's extension.
+	 * @return Filename
+	 */ 
+	getFilenameFromTitle: function() {
+		var _this = this;
+		var name = $j( _this.titleInput ).val();
+		return mw.UploadWizardUtil.pathToTitle( name ) + '.' + _this.upload.extension;
 	},
 
 
@@ -2017,10 +2025,9 @@ mw.UploadWizard.prototype = {
 			upload.getThumbnail( width, callback );
 			/* end evil copied code */
 
-			var thumbTitle = upload.title.replace(/^File/, 'Image');
+			var thumbTitle = upload.title.replace(/^File/, 'Image'); // XXX is this really necessary?
 			var thumbWikiText = "[[" + thumbTitle + "|thumb|right]]";
 
-			// XXX this doesn't have the correct URL -- old "unique" descriptionurl
 			thanksDiv.append(
 				$j( '<div></div>' )
 					.addClass( 'mwe-upwiz-thanks-links' )
