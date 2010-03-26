@@ -667,6 +667,7 @@ $messages['mr'] = array(
 $messages['myv'] = array(
 	'postcomment_post' => 'Кучык',
 	'postcomment_said' => 'мерсь',
+	'postcomment_invalidrequest' => 'Вешемась а маштови.',
 );
 
 /** Nahuatl (Nāhuatl)

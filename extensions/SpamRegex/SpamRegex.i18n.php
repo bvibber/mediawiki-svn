@@ -955,6 +955,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'spamregex-text' => '(ಪಠ್ಯ)',
 	'spamregex-summary-log' => '(ಸಾರಾಂಶ)',
 );
 

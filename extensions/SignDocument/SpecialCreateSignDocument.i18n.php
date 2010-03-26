@@ -998,6 +998,13 @@ $messages['km'] = array(
 	'createsigndoc-error-pagenoexist' => 'កំហុស​៖ មិនមាន​ទំព័រ [[$1]] ទេ​។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'createsigndoc-optional' => 'ಐಚ್ಛಿಕ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author ToePeu

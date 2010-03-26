@@ -1539,6 +1539,22 @@ $messages['sk'] = array(
 	'sitematrix-fishbowl' => 'úpravy obmedzené',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'sitematrix' => 'Seznam Wikimedijinih wikijev',
+	'sitematrix-summary' => 'Ta posebna stran navaja vse Wikimedijine wikije.',
+	'sitematrix-desc' => 'Prikaže [[Special:SiteMatrix|seznam Wikimedijinih wikijev]]',
+	'sitematrix-language' => 'Jezik',
+	'sitematrix-project' => 'Ime projekta, medprojektna povezava in povezava interwiki',
+	'sitematrix-others' => 'Drugi projekti Wikimedije',
+	'sitematrix-total' => "'''Skupno število: $1'''",
+	'sitematrix-sitetotal' => 'Skupaj',
+	'sitematrix-private' => 'zasebno',
+	'sitematrix-fishbowl' => 'urejanje omejeno',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
  */

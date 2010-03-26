@@ -2218,20 +2218,19 @@ $messages['fr'] = array(
 	'wikilog-log-cmt-rejdel' => 'A rejeté le commentaire sur wikilog de [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Actions sur wikilog',
-	'wikilog-missing-wikilog' => "
-Ceci est la page [[{{int:wikilog-help}}|wikilog]] pour [[{{FULLPAGENAME}}]].
+	'wikilog-missing-wikilog' => 'Ceci est la page [[{{int:wikilog-help}}|wikilog]] pour [[{{FULLPAGENAME}}]].
 
-Ce wikilog n'existe pas pour l'instant.
-Il doit d'abord être créé afin de pouvoir publier des articles et utiliser les autres fonctionnalités de wikilog.
+Ce wikilog n’existe pas pour l’instant.
+Il doit d’abord être créé afin de pouvoir publier des articles et utiliser les autres fonctionnalités de wikilog.
 
-* <span class=\"plainlkinks\">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Créer ce wikilog].</span>",
+* <span class="plainlkinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Créer ce wikilog].</span>',
 	'wikilog-information' => 'Information sur wikilog',
 	'wikilog-post-count-published' => 'Il y a {{PLURAL:$1|$1 article publié|$1 articles publiés}} sur ce wikilog,',
 	'wikilog-post-count-drafts' => 'Il y a {{PLURAL:£1|un article non publié (brouillon)|$1 articles non publiés (brouillons)}},',
 	'wikilog-post-count-all' => 'Au total, il y a {{PLURAL:$1|un article|$1 articles}}.',
 	'wikilog-new-item' => 'Créer un nouvel article de wikilog',
 	'wikilog-new-item-go' => 'Créer',
-	'wikilog-item-name' => "Nom de l'article :",
+	'wikilog-item-name' => 'Nom de l’article :',
 	'wikilog-published' => 'Publié',
 	'wikilog-updated' => 'Mis à jour',
 	'wikilog-draft' => 'Brouillon',
@@ -2262,13 +2261,13 @@ Il doit d'abord être créé afin de pouvoir publier des articles et utiliser le
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discuter]])',
 	'wikilog-edit-fieldset-legend' => 'Options de wikilog :',
 	'wikilog-edit-signpub' => 'Signer et publier cet article',
-	'wikilog-edit-signpub-tooltip' => "Fait que l'article est signé et publié dans son wikilog lors de la sauvegarde.
-Décochez cette case pour que l'article reste à l'état de brouillon.",
+	'wikilog-edit-signpub-tooltip' => 'Fait que l’article soit signé et publié dans son wikilog lors de la sauvegarde.
+Décochez cette case pour que l’article reste à l’état de brouillon.',
 	'wikilog-comment-permalink' => '$1 à $2',
 	'wikilog-comment-note-item' => 'Posté à $1',
 	'wikilog-comment-note-edited' => 'dernière modification le $1 à $2',
 	'wikilog-comment-anonsig' => '$3 (anonyme)',
-	'wikilog-comment-pending' => "Ce commentaire est en attente d'une approbation.",
+	'wikilog-comment-pending' => 'Ce commentaire est en attente d’une approbation.',
 	'wikilog-comment-deleted' => 'Ce commentaire a été supprimé.',
 	'wikilog-comment-omitted-x' => 'Commentaire omis (#$1).',
 	'wikilog-comment-autosumm' => 'Nouveau commentaire de $1 : $2',
@@ -2276,7 +2275,7 @@ Décochez cette case pour que l'article reste à l'état de brouillon.",
 	'wikilog-comment-page' => 'Aller à la page de ce commentaire',
 	'wikilog-comment-edit' => 'Modifier ce commentaire',
 	'wikilog-comment-delete' => 'Supprimer ce commentaire',
-	'wikilog-comment-history' => "Voir l'historique des commentaires",
+	'wikilog-comment-history' => 'Voir l’historique des commentaires',
 	'wikilog-comment-approve' => 'Approuver ce commentaire (effet immédiat)',
 	'wikilog-comment-reject' => 'Rejeter ce commentaire (effet immédiat)',
 	'wikilog-newtalk-text' => '<!-- page vierge créée par Wikilog -->',
@@ -2294,21 +2293,21 @@ Décochez cette case pour que l'article reste à l'état de brouillon.",
 	'wikilog-invalid-tag' => 'Marqueur invalide : $1.',
 	'wikilog-invalid-file' => 'Fichier invalide : $1.',
 	'wikilog-file-not-found' => 'Fichier inexistant : $1.',
-	'wikilog-not-an-image' => "Le fichier n'est pas une image : $1.",
+	'wikilog-not-an-image' => 'Le fichier n’est pas une image : $1.',
 	'wikilog-out-of-context' => 'Avertissement : des marqueurs de wikilog sont utilisés hors contexte.
 Ils ne devraient être utilisés que dans les articles de l’espace de noms Wikilog.',
 	'wikilog-too-many-authors' => 'Avertissement : Trop d’auteurs listés dans l’article de wikilog.',
 	'wikilog-too-many-tags' => 'Avertissement : Trop de marqueurs listés dans cet article de wikilog.',
 	'wikilog-comment-is-empty' => 'Le commentaire posté est vide.',
 	'wikilog-comment-too-long' => 'Le commentaire posté est trop long.',
-	'wikilog-comment-invalid-name' => "Le nom fourni n'est pas valide.",
-	'wikilog-no-such-article' => "L'article de wikilog attendu n'existe pas.",
-	'wikilog-reading-draft' => "Cet article de wikilog est un brouillon, il n'a pas encore été publié.",
-	'wikilog-posting-anonymously' => "Vous n'êtes actuellement pas connecté ;
+	'wikilog-comment-invalid-name' => 'Le nom fourni n’est pas valide.',
+	'wikilog-no-such-article' => 'L’article de wikilog attendu n’existe pas.',
+	'wikilog-reading-draft' => 'Cet article de wikilog est un brouillon, il n’a pas encore été publié.',
+	'wikilog-posting-anonymously' => 'Vous n’êtes pas connecté ;
 votre commentaire sera posté anonymement, identifié par votre adresse de connexion à Internet.
-Vous devriez soit spécifier un pseudonyme ci-dessus pour identifier votre commentaire, ou $1 pour qu'il soit attribué correctement.",
-	'wikilog-anonymous-moderated' => "Une fois que vous soumettez votre commentaire, il ne sera pas immédiatement visible sur la page.
-Le commentaire n'apparaîtra qu'après avoir été vérifié par un modérateur.",
+Vous devriez soit spécifier un pseudonyme ci-dessus pour identifier votre commentaire, ou vous $1 pour qu’il soit attribué correctement.',
+	'wikilog-anonymous-moderated' => 'Une fois votre commentaire soumis, il ne sera pas immédiatement visible sur la page.
+Le commentaire n’apparaîtra qu’après avoir été vérifié par un modérateur.',
 	'wikilog-post-comment' => 'Poster un nouveau commentaire',
 	'wikilog-post-reply' => 'Poster une nouvelle réponse',
 	'wikilog-form-legend' => 'Chercher des articles de wikilog',
@@ -3392,6 +3391,7 @@ $messages['jv'] = array(
  */
 $messages['kn'] = array(
 	'wikilog-authors' => 'ಕರ್ತೃಗಳು',
+	'wikilog-view-summary' => 'ಸಾರಾಂಶ',
 	'wikilog-form-category' => 'ವರ್ಗ:',
 	'wikilog-form-name' => 'ಹೆಸರು:',
 	'wikilog-form-author' => 'ಕರ್ತೃ:',

@@ -362,6 +362,14 @@ $messages['pms'] = array(
 	'right-lastlogin' => "Vëdde l'ùltima vira che n'utent a l'é intrà ant ël sistema",
 );
 
+/** Portuguese (Português)
+ * @author Giro720
+ */
+$messages['pt'] = array(
+	'lastuserlogin_username' => 'Nome real',
+	'lastuserlogin_daysago' => 'Dias atrás',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

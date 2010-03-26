@@ -2052,7 +2052,9 @@ $messages['myv'] = array(
 	'youtubeauthsub_keywords' => 'Панжомакс вал',
 	'youtubeauthsub_category' => 'Явовкс',
 	'youtubeauthsub_submit' => 'Максомс',
+	'youtubeauthsub_uploadhere' => 'Ёвкстамс видеот тияня:',
 	'youtubeauthsub_uploadbutton' => 'Ёвкстамс',
+	'youtubeauthsub_summary' => 'Моли YouTube видеонь ёвкставома',
 );
 
 /** Nahuatl (Nāhuatl)

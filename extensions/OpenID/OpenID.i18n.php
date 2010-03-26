@@ -2823,6 +2823,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'openidoptional' => 'ಐಚ್ಛಿಕ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
 );
@@ -3401,11 +3402,13 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'openidoptional' => 'Мелень коряс',
+	'openidrequired' => 'Тентеме кодаяк',
 	'openidnickname' => 'Путонь лем',
 	'openidfullname' => 'Лем педе-пес',
 	'openidemail' => 'Е-сёрма парго',
 	'openidlanguage' => 'Кель',
 	'openidtimezone' => 'Шкань каркс',
+	'openidchooseusername' => 'Совицянь леметь:',
 	'openidchoosepassword' => 'совамо валось:',
 	'openiddelete-button' => 'Кемекстамс',
 );
@@ -4213,6 +4216,7 @@ Você não poderia entrar sem um OpenID.',
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Misterr
  */
 $messages['ro'] = array(
 	'openidlogin' => 'Autentificare cu OpenID',
@@ -4242,9 +4246,13 @@ se poate alege una din opţiunile de mai jos.',
 	'openidchooseauto' => 'Un nume generat automat ($1)',
 	'openidchoosemanual' => 'Un nume la alegere:',
 	'openidchooseexisting' => 'Un cont existent pe acest wiki:',
+	'openidchooseusername' => 'Nume de utilizator',
 	'openidchoosepassword' => 'parolă:',
 	'openidconvertsuccess' => 'Convertit cu succes la OpenID',
 	'openidconvertothertext' => 'Acesta este OpenID-ul altcuiva.',
+	'openidalreadyloggedin' => "'''Sunteţi deja logat, $1!'''
+
+Dacă doriţi să utilizaţi OpenID în viitor, puteţi [[Special:OpenIDConvert|converti contul dvs. OpenID]].",
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
 	'openidbadusername' => 'Nume de utilizator specificat greşit.',
 	'openidloginlabel' => 'URL OpenID',
@@ -4253,8 +4261,10 @@ se poate alege una din opţiunile de mai jos.',
 	'openid-urls-action' => 'Acţiune',
 	'openid-urls-delete' => 'Şterge',
 	'openid-add-url' => 'Adaugă un nou OpenID',
+	'openidsigninorcreateaccount' => 'Înregistraţi-vă sau creaţi-vă un nou cont.',
 	'openid-provider-label-google' => 'Autentificare folosind contul Google',
 	'openid-provider-label-yahoo' => 'Autentificare folosind contul Yahoo',
+	'openid-provider-label-other-username' => 'Introduceţi numele dumneavoastră de $1 utilizator.',
 );
 
 /** Tarandíne (Tarandíne)

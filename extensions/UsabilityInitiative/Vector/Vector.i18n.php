@@ -153,10 +153,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'vector' => 'Améliorations IU pour Vector',
-	'vector-desc' => "Améliorations des éléments de l'interface utilisateur de l'habillage Vector.",
+	'vector-desc' => 'Améliorations des éléments de l’interface utilisateur de l’habillage Vector.',
 );
 
 /** Franco-Provençal (Arpetan)

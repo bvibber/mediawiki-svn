@@ -563,6 +563,7 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'wikieditor-publish-dialog-minor' => 'მცირე შესწორება',
 	'wikieditor-publish-dialog-watch' => 'ამ გვერდის თვალთვალი',
+	'wikieditor-publish-dialog-goback' => 'უკან',
 );
 
 /** Korean (한국어)
@@ -602,6 +603,16 @@ $messages['lb'] = array(
 	'wikieditor-publish-dialog-watch' => 'Dës Säit iwwerwaachen',
 	'wikieditor-publish-dialog-publish' => 'Verëffentlechen',
 	'wikieditor-publish-dialog-goback' => 'Zréck goen',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor-publish-button-cancel' => 'Atšaukti',
+	'wikieditor-publish-dialog-minor' => 'Smulkus keitimas',
+	'wikieditor-publish-dialog-watch' => 'Stebėti šį puslapį',
+	'wikieditor-publish-dialog-goback' => 'Grįžti',
 );
 
 /** Macedonian (Македонски)

@@ -854,12 +854,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'inspectcache' => 'Inspeccionar cache',
 	'inspectcache-desc' => 'Uma ferramenta simples de depuração para inspeccionar o conteúdo da cache partilhada',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Cache geral',
 	'inspectcache-parser' => 'Cache do analisador "parser"',
 	'inspectcache-message' => 'Cache de mensagens',
@@ -867,6 +867,7 @@ $messages['pt'] = array(
 	'inspectcache-delete' => 'Apagar',
 	'inspectcache-deleted' => 'Cache Apagada',
 	'inspectcache-list' => 'Listar',
+	'right-inspectcache' => 'Ver e apagar as entradas de cache',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -131,9 +131,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'userdailycontribs-desc' => "Contributions quotidiennes par utilisateur pour l'extension de suivi des clics",
+	'userdailycontribs-desc' => 'Contributions quotidiennes par utilisateur pour l’extension de suivi des clics',
 );
 
 /** Franco-Provençal (Arpetan)

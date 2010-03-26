@@ -1966,6 +1966,14 @@ $2',
 	'group-manager-member' => 'អ្នកគ្រប់គ្រង',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'whitelisttablepage' => 'ವಿಕಿ ಪುಟ',
+	'whitelisttablenewdate' => 'ಹೊಸ ದಿನಾಂಕ:',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */

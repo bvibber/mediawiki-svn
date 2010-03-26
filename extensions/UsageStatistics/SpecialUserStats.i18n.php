@@ -768,6 +768,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author PieRRoMaN
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'specialuserstats' => 'Statistiques d’utilisation',
@@ -778,7 +779,7 @@ $messages['fr'] = array(
 	'usagestatisticsinterval' => 'Intervalle :',
 	'usagestatisticsnamespace' => 'Espace de noms :',
 	'usagestatisticsexcluderedirects' => 'Exclure les redirections',
-	'usagestatistics-namespace' => "Ces statistiques sont sur l'espace de noms [[Special:Allpages/$1|$2]].",
+	'usagestatistics-namespace' => 'Ces statistiques sont sur l’espace de noms [[Special:Allpages/$1|$2]].',
 	'usagestatistics-noredirects' => 'Les [[Special:ListRedirects|redirections]] ne sont pas prises en compte.',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Date de début :',

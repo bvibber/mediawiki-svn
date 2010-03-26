@@ -121,15 +121,26 @@ Don't change '|' character.",
  * @author Naudefj
  */
 $messages['af'] = array(
+	'tasks' => 'Take',
+	'tasks_tab' => 'Take',
+	'tasks_title' => 'Take vir "$1"',
+	'tasks_form_new' => "Skep 'n nuwe taak",
 	'tasks_form_comment' => 'Opmerking',
 	'tasks_noone' => 'niemand',
 	'tasks_delete' => 'Skrap',
+	'tasks_here' => 'hier',
+	'tasks_more_like_it' => 'meer',
 	'tasks_table_header_page' => 'Bladsy',
 	'tasks_search_form_title' => 'Soek',
 	'tasks_search_status' => 'Status',
 	'tasks_previous' => 'Vorige',
 	'tasks_next' => 'Volgende',
+	'tasks_sort' => 'Sorteer',
 	'tasks_status_closed' => 'Gesluit',
+	'tasks_action_open' => 'Taak "$1" oopgemaak.',
+	'tasks_action_assigned' => 'Taak "$1" toegeken.',
+	'tasks_action_closed' => 'Taak "$1" gesluit.',
+	'tasks_logentry' => 'Vir "[[$1]]"',
 );
 
 /** Amharic (አማርኛ)

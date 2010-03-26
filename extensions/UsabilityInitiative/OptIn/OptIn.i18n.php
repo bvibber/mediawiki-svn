@@ -2088,18 +2088,18 @@ Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous appr�
 	'optin-survey-answer-changes-predictability' => 'Améliorer la prévisibilité des modifications.',
 	'optin-survey-answer-changes-custom' => 'Permettre une plus grande personnalisation de l’interface.',
 	'optin-survey-answer-changes-other' => 'Autre :',
-	'optin-improvements2' => "== Qu'est-ce qui a été amélioré ? ==
-[[File:UsabilityToolbar.png|left|link=|Capture d'écran de la bare d'outils d'édition améliorée]]
-[[File:UsabilityDialogs.png|left|link=|Capture d'écran du dialogue de génération de contenu]]
-;Bare d'outils améliorée
-Avec la bare d'outils améliorée, il est plus facile à éditer des articles. Les icônes ont été améliorés et de nouveaux ont été créés pour rendre plus clair l'action que chaque outil effectue. Les sections déroulantes réduisent l'encombrement tout en conservant les outils que vous utilisez rarement à portée de clic.
+	'optin-improvements2' => '== Qu’est-ce qui a été amélioré ? ==
+[[File:UsabilityToolbar.png|left|link=|Capture d’écran de la barre d’outils d’édition améliorée]]
+[[File:UsabilityDialogs.png|left|link=|Capture d’écran du dialogue de génération de contenu]]
+;Barre d’outils améliorée
+Avec la barre d’outils améliorée, il est plus facile de modifier des articles. Les icônes ont été améliorées et de nouvelles ont été créées pour rendre plus clair l’action que chaque outil effectue. Les sections déroulantes réduisent l’encombrement tout en conservant les outils que vous utilisez rarement à portée de clic.
 ; Dialogues
-Lors de la création de liens ou des tableaux, cliquez sur l'icône et une boîte de dialogue s'ouvrira pour vous aider à créer des liens et des tables en remplissant un simple formulaire.
+Lors de la création de liens ou de tableaux, cliquez sur l’icône et une boîte de dialogue s’ouvrira pour vous aider à créer des liens et des tables en remplissant un simple formulaire.
 ; Et plus
-Nous avons introduit un certain nombre d'autres améliorations comme la navigation améliorée, les onglets en cascade, la recherche amélioré, et plus encore.
-== Comment s'impliquer ==
-Pour en savoir plus sur l'initiative d'utilisabilité, visitez notre [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative page d'accueil].
-<div style=\"clear:both\"></div>",
+Nous avons introduit un certain nombre d’autres améliorations comme la navigation améliorée, les onglets en cascade, la recherche améliorée, et plus encore.
+== Comment s’impliquer ==
+Pour en savoir plus sur l’initiative d’utilisabilité, visitez notre [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative page d’accueil].
+<div style="clear:both"></div>',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -2371,19 +2371,20 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'optin' => 'הרשמה ליוזמת השימושיות',
-	'optin-desc' => 'אפשרות למשתמשים להירשם לגרסת הבטא, הכוללת את שיפורי השימושיות האחרונים של יוזמת השימושיות.',
+	'optin' => 'הרשמה למיזם השמישות',
+	'optin-desc' => 'אפשרות למשתמשים להירשם לגרסת הבטא, הכוללת את שיפורי השמישות האחרונים של מיזם השמישות.',
 	'optin-title-optedout' => 'הרשמה לגרסת הבטא',
 	'optin-title-optedin' => 'עזיבת גרסת הבטא',
 	'optin-title-justoptedin' => 'ברוכים הבאים לגרסת הבטא',
 	'optin-title-justoptedout' => 'תודה לכם על שניסיתם את גרסת הבטא',
 	'optin-title-feedback' => 'משוב על גרסת הבטא',
 	'optin-needlogin' => 'עליכם [$1 להיכנס לחשבון] כדי להירשם לגרסת הבטא.',
-	'optin-intro' => 'יוזמת השימוש של ויקיפדיה עבדה ועובדת קשה כדי לשפר את השימושיות של ויקיפדיה.
+	'optin-intro' => 'מיזם השמישות של ויקיפדיה פעל רבות כדי לשפר את השמישות של ויקיפדיה.
 האם תרצו לנסות את גרסת הבטא שלנו?',
 	'optin-feedback-intro' => 'תודה לכם על שניסיתם את גרסת הבטא.
 נשמח לדעת מה אתם חושבים על הממשק החדש שלנו, לכן נעריך זאת אם תמלאו את השאלון (האופציונלי) שלהלן.',
@@ -2449,7 +2450,7 @@ $messages['he'] = array(
 הוספנו מספר שיפורים אחרים כגון ניווט מורחב, לשוניות מדורגות, חיפוש משופר ועוד.
 
 == איך להצטרף ==
-למידע נוסף על מיזם השימושיות, בקרו ב[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage דף הבית] שלנו.
+למידע נוסף על מיזם השמישות, בקרו ב[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage דף הבית] שלנו.
 <div style="clear:both"></div>',
 );
 
@@ -3322,23 +3323,21 @@ $messages['ko'] = array(
 	'optin-survey-answer-changes-predictability' => '도구를 사용할 때 그 의미를 예상하기 쉽게 만들어주세요.',
 	'optin-survey-answer-changes-custom' => '더 많은 부분을 사용자가 설정할 수 있도록 해 주세요.',
 	'optin-survey-answer-changes-other' => '기타:',
-	'optin-improvements' => '== 어떤 부분이 향상되었나요? ==
-[[File:UsabilityNavigation.png|left|link=|새 둘러보기 탭의 스크린샷]]
-;디자인 구성이 바뀌었습니다
-새로운 디자인을 통해 현재 어떤 문서를 보고 있는지, 어떤 동작을 하고 있는지, 어떤 문서를 어떻게 갈 수 있는지 등을 파악하기가 쉬워졌습니다. 또한, 검색 상자를 오른쪽 위로 옮겨 더욱 사용하기 편리해졌습니다.
-<div style="clear:both;"></div>
+	'optin-improvements2' => '== 어떤 부분이 향상되었나요? ==
+[[File:UsabilityToolbar.png|left|link=|편집 툴바]]
+[[File:UsabilityDialogs.png|left|link=|편집 대화상자]]
+;향상된 편집 툴바
+툴바 버튼이 더 직관적인 모습으로 바뀌었습니다.
+툴바 아이콘을 개선하여, 각 아이콘이 어떤 기능을 하는지 더욱 알기 쉬워졌습니다.
+자주 쓰지 않는 기능은 숨겨 두었고, 숨겨진 기능은 클릭 한 번으로 꺼낼 수 있습니다.
+;편집 대화상자
+문서에 링크를 걸거나 표를 만들고 싶을 때, 편집 툴바 아이콘을 누르면 관련 대화상자가 열립니다. 위키문법을 배우지 않아도 몇 가지 값을 입력하는 것만으로 문서를 만들 수 있습니다.
+;그 밖의 개선점
+이밖에도 둘러보기 메뉴와 검색 기능 등, 여러 부분이 향상되었습니다.
 
-[[File:UsabilityToolbar.png|left|link=|향상된 편집 툴바의 모습]]
-;편집 툴바가 더 편리해졌습니다
-툴바 버튼이 더 직관적인 모습으로 바뀌었습니다. 자주 쓰지 않는 기능은 숨겨 두어 더 사용하기 쉬워졌고, 숨겨진 기능은 클릭 한 번으로 꺼낼 수 있습니다.
-또한 위키 문법을 사용하기 쉽도록 도움말 링크를 추가했습니다.
-<div style="clear:both;"></div>
 == 참여하기 ==
-
-위키미디어 사용성 향상 프로젝트에 참여하려면 [http://usability.wikimedia.org 프로젝트 위키](영어)에 방문해주세요. 프로젝트에서 만든 연구 결과, 디자인, 개발 제품 등을 볼 수 있습니다. 일반적인 질문이나 조언이 있다면 [http://usability.wikimedia.org/wiki/Talk:Prototype 스킨 토론란](영어)를 이용해주시면 됩니다. 특정 주제에 대해서는 해당 토론란을 이용해주세요.
-버그를 발견했다면  [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco 토론란](영어)나 [https://bugzilla.wikimedia.org Bugzilla](영어)에 해당 사실을 알려주시면 됩니다.
-
-우리는 당신의 의견에 귀기울일 것입니다. 감사합니다.',
+위키미디어 사용성 향상 프로젝트에 참여하고 싶은 분은 [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative 프로젝트 위키](영어) 문서를 참고해주세요.
+<div style="clear:both"></div>',
 );
 
 /** Karachay-Balkar (Къарачай-Малкъар)
@@ -4020,6 +4019,7 @@ Grazzi u nisperaw li nisimgħu mingħandek!",
 $messages['myv'] = array(
 	'optin-title-optedout' => 'Варчамс Бета верзиянть',
 	'optin-survey-answer-whyoptout-other' => 'Лия тувтал:',
+	'optin-survey-answer-browser-other' => 'Лия браузер',
 	'optin-survey-answer-changes-other' => 'Лия:',
 );
 
@@ -4882,7 +4882,7 @@ Puteţi să încercaţi iar în orice moment apăsând clic pe legătura „{{in
 	'optin-submit-feedback' => 'Trimiteţi-vă părerea',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Nu',
-	'optin-survey-intro' => 'Mulţumesc că folosiţi versiunea Beta.
+	'optin-survey-intro' => 'Mulţumim că folosiţi versiunea Beta.
 Ne-am dori să ştim ce părere aveţi despre noua noastră interfaţă, aşadar am aprecia dacă aţi completa sondajul opţional de mai jos înainte de a da clic pe „[[#leave|{{int:optin-submit-out}}]]”.',
 	'optin-survey-question-likedislike' => 'Ce v-a plăcut la versiunea Beta ? Ce nu v-a plăcut la versiunea Beta ?',
 	'optin-survey-question-whyoptout' => 'De ce părăsiţi versiunea Beta ? (Vă rugăm selectaţi toate care se aplică.)',

@@ -217,11 +217,11 @@ $messages['fr'] = array(
 	'sendmailtowiki-inpin' => 'NIP :',
 	'prefs-help-sendmailtowiki_pin' => 'Un champ vierge pour le NIP désactive la publication de contenu sur le wiki avec votre compte.',
 	'sendmailtowiki-err-pinlength' => 'Le NIP doit contenir exactement 5 chiffres.',
-	'sendmailtowiki-err-wrongprefix' => "Préfixe de compte wiki erroné. Contactez l'administrateur.",
-	'sendmailtowiki-err-invalidaccount' => "Compte invalide. Vérifiez l'adresse de courriel de destination.",
-	'sendmailtowiki-err-invalidsender' => "Expéditeur invalide. Vérifiez l'adresse de courriel d'émission.",
+	'sendmailtowiki-err-wrongprefix' => 'Préfixe de compte wiki erroné. Contactez l’administrateur.',
+	'sendmailtowiki-err-invalidaccount' => 'Compte invalide. Vérifiez l’adresse de courriel de destination.',
+	'sendmailtowiki-err-invalidsender' => 'Expéditeur invalide. Vérifiez l’adresse de courriel d’émission.',
 	'sendmailtowiki-err-invalidpin' => 'NIP invalide. Accès refusé.',
-	'sendmailtowiki-err-onlyplain' => "En raison d'éventuelles erreurs d'interprétations, seuls les messages contenant du texte brut sont acceptés.",
+	'sendmailtowiki-err-onlyplain' => 'En raison d’éventuelles erreurs d’interprétation, seuls les messages contenant du texte brut sont acceptés.',
 );
 
 /** Galician (Galego)

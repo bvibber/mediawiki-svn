@@ -877,9 +877,9 @@ $messages['fr'] = array(
 	'readerfeedback-level-4' => 'Excellent',
 	'readerfeedback-submit' => 'Soumettre',
 	'readerfeedback-main' => 'Seules les pages de contenu peuvent être évaluées.',
-	'readerfeedback-success' => "'''Merci d'avoir relu cette page !''' ([$2 voir les résultats]) ([$3 des questions ou des commentaires ?])",
+	'readerfeedback-success' => "'''Merci d’avoir relu cette page !''' ([$2 voir les résultats]) ([$3 des questions ou des commentaires ?])",
 	'readerfeedback-voted' => "'''Il semble que vous ayez déjà évalué cette page''' ([$2 voir les résultats]) ([$3 des questions ou des commentaires ?])",
-	'readerfeedback-error' => "'''Une erreur est survenue lors de l'évaluation de cette page''' ([$2 voir les résultats]) ([$3 remarques ou questions ?]).",
+	'readerfeedback-error' => "'''Une erreur est survenue lors de l’évaluation de cette page''' ([$2 voir les résultats]) ([$3 remarques ou questions ?]).",
 	'readerfeedback-submitting' => 'Soumission…',
 	'readerfeedback-finished' => 'Merci !',
 	'readerfeedback-tagfilter' => 'Balise:',
@@ -1551,6 +1551,7 @@ $messages['myv'] = array(
 	'readerfeedback-level-2' => 'А берянь',
 	'readerfeedback-level-3' => 'Вадря-паро',
 	'readerfeedback-level-4' => 'Эйне вадря',
+	'readerfeedback-finished' => 'Сюк пря!',
 );
 
 /** Nahuatl (Nāhuatl)

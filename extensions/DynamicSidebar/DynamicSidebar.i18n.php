@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'dynamicsidebar-desc' => 'Reiñ a ra barrennoù kostez dinamek diazezet war pajennoù an implijerien, o strolladoù hag ar rummadoù',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'dynamicsidebar-desc' => 'Omogućava dinamičke alatne trake zasnovane na korisničkim stranicama, grupama i kategorijama',
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */

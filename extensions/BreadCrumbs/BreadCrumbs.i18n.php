@@ -338,6 +338,13 @@ $messages['li'] = array(
 	'breadcrumbs-desc' => 'Tuuntj gebroekerspaad dore wiki.',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'breadcrumbs-desc' => 'Rodo naudotojo kelią svetainėje',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

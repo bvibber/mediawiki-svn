@@ -772,6 +772,14 @@ $messages['sk'] = array(
 	'sitenotice-desc' => 'Umožňuje používateľom zrušiť zobrazovanie Správy lokality (sitenotice)',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'sitenotice_close' => 'skrij',
+	'sitenotice-desc' => 'Dovoli uporabnikom skriti obvestilo strani',
+);
+
 /** Albanian (Shqip) */
 $messages['sq'] = array(
 	'sitenotice_close' => 'fshihe',

@@ -53,11 +53,12 @@ $messages['es'] = array(
 /** French (Français)
  * @author IAlex
  * @author Peter17
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'ukgeocoding_name' => 'Géocodage du Royaume-Uni pour les cartes',
-	'ukgeocoding_desc' => "Étend les cartes avec une fonction du parseur display_uk_point avec l'implémentation Google Maps",
-	'ukgeocoding_couldNotGeocode' => "Un ou plusieurs codes postaux n'ont pas pu être géolocalisés et ont été omis de la carte.",
+	'ukgeocoding_desc' => 'Étend les cartes avec une fonction du parseur display_uk_point avec l’implémentation Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Un ou plusieurs codes postaux n’ont pas pu être géolocalisés et ont été omis de la carte.',
 );
 
 /** Galician (Galego)

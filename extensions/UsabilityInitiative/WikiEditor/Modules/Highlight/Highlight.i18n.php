@@ -219,6 +219,13 @@ $messages['lb'] = array(
 	'wikieditor-highlight-preference' => 'Dat faarwlecht Eraushiewe vun der Syntax an der Ännerungsfënster aschalten',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor-highlight-preference' => 'Įjungti sintaksės paryškinimą redaguojant',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

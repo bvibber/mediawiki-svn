@@ -183,6 +183,13 @@ $messages['lb'] = array(
 	'autoincrement-desc' => 'Eng Variabel <nowiki>{{AUTOINCREMENT}}</nowiki>  déi sech op all Opruf nach eng Kéier derbäisetzt',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'autoincrement-desc' => 'Prideda automatiškai didėjantį kintamąjį  <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

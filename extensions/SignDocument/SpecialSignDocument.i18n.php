@@ -1409,7 +1409,7 @@ $1',
 	'sign-viewsignatures' => 'Voir les signatures',
 	'sign-closed' => 'fermée',
 	'sign-error-closed' => 'L’authentification de ce document est présentée désactivée.',
-	'sig-anonymous' => "''Anonymement''",
+	'sig-anonymous' => "''Anonyme''",
 	'sig-private' => "''Privé''",
 	'sign-sigdetails' => 'Détails de la signature',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--

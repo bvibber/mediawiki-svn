@@ -211,6 +211,7 @@ $messages['bn'] = array(
 	'prefstats-factor-week' => 'সপ্তাহ',
 	'prefstats-factor-twoweeks' => 'দুই সপ্তাহ',
 	'prefstats-factor-fourweeks' => 'চার সপ্তাহ',
+	'prefstats-factor-default' => 'পূর্ব নির্ধারিত মাপে ফিরে যাও',
 );
 
 /** Breton (Brezhoneg)
@@ -671,10 +672,12 @@ Eelistuse jälgimiseks redigeeri muutujat $wgPrefStatsTrackPrefs.',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Theklan
  */
 $messages['eu'] = array(
 	'prefstats' => 'Hobespen estatistikak',
+	'prefstats-desc' => 'Bilatu estatistikak, hobespen zehatzak indarrean dituzten lankideak zenbat diren jasotzen dutenak',
 	'prefstats-title' => 'Hobespen estatistikak',
 	'prefstats-list-intro' => 'Une honetan, ondorengo hobespenak jarraitzen ari dira.
 Klikatu batean bere estatistikak ikusteko.',
@@ -742,15 +745,16 @@ Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
  * @author IAlex
  * @author Kropotkine 113
  * @author Omnipaedista
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'prefstats' => 'Statistiques des préférences',
-	'prefstats-desc' => "Statistiques sur le nombre d'utilisateurs ayant certaines préférences activées",
+	'prefstats-desc' => 'Statistiques sur le nombre d’utilisateurs ayant certaines préférences activées',
 	'prefstats-title' => 'Statistiques des préférences',
-	'prefstats-list-intro' => "En ce moment, les préférences suivantes sont suivies.
-Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
-	'prefstats-noprefs' => 'Aucune préférence n\'est actuellement suivie. Configurer $wgPrefStatsTrackPrefs pour suivre des préférences.',
+	'prefstats-list-intro' => 'En ce moment, les préférences suivantes sont suivies.
+Cliquez sur l’une d’entre elles pour voir les statistiques à son propos.',
+	'prefstats-noprefs' => 'Aucune préférence n’est actuellement suivie. Configurer $wgPrefStatsTrackPrefs pour suivre des préférences.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisateur a|utilisateurs ont}} activé cette préférence depuis que les statistiques de préférences ont été activées
 ** $2 {{PLURAL:$2|utilisateur a|utilisateurs ont}} activé cette préférence
 ** $3 {{PLURAL:$3|utilisateur a|utilisateurs ont}} désactivé cette préférence',
@@ -766,7 +770,7 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 	'prefstats-factor-week' => 'semaine',
 	'prefstats-factor-twoweeks' => 'deux semaines',
 	'prefstats-factor-fourweeks' => 'quatre semaines',
-	'prefstats-factor-default' => "revenir à l'échelle par défaut",
+	'prefstats-factor-default' => 'revenir à l’échelle par défaut',
 	'prefstats-legend-out' => 'Ne veut plus participer',
 	'prefstats-legend-in' => 'Veut participer',
 );
@@ -1361,6 +1365,7 @@ Sjtèl $wgPrefStatsTrackPrefs in óm prifferensies bie te hauwe.',
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -1369,6 +1374,7 @@ $messages['lt'] = array(
 	'prefstats-title' => 'Nustatymų statistika',
 	'prefstats-list-intro' => 'Šiuo metu yra sekami šie pasirinkimai.
 Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
+	'prefstats-xaxis' => 'Trukmė (valandomis)',
 );
 
 /** Laz (Laz)

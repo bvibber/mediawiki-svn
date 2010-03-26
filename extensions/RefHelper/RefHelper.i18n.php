@@ -149,6 +149,36 @@ $messages['br'] = array(
 Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'refhelper' => 'Reference helper',
+	'refsearch' => 'Pytanje referencow',
+	'refhelper-desc' => 'Pomoga boki za reference napóraś',
+	'refhelper-refsearch' => 'Pytanje referencow',
+	'refhelper-refcreate_legend' => 'Nowu referencu napóraś',
+	'refhelper-refsearch_legend' => 'PubMed za reference pytaś',
+	'refhelper-refcreate_another' => 'Drugu referencu napóraś',
+	'refhelper-refcreate_autocomment' => 'Awtomatizěrowane napóranje bokow',
+	'refhelper-refcreate_success' => 'Bok [[$1]] njeeksistěrujo a jo se napórał.',
+	'refhelper-refcreate_failure' => 'Bok [[$1]] južo eksistěrujo!',
+	'refhelper-label_authorforename' => 'Pśedmě awtora $1:',
+	'refhelper-label_authorsurname' => 'Familijowe mě:',
+	'refhelper-title' => 'Titel:',
+	'refhelper-journal' => 'Žurnal:',
+	'refhelper-volume' => 'Zwězk:',
+	'refhelper-pages' => 'Boki:',
+	'refhelper-year' => 'Lěto:',
+	'refhelper-refname' => 'Mě reference:',
+	'refhelper-category' => 'Kategorija $1:',
+	'refhelper-create' => 'Napóraś',
+	'refhelper-search' => 'Pytaś',
+	'refhelper-toolbox_link_create' => 'Referencu napóraś',
+	'refhelper-toolbox_link_search' => 'Referencu ze pytanja napóraś',
+	'refhelper-newarticle_nocitation' => 'Tuchylu njejo žeden citat z toś tym mjenim.',
+);
+
 /** Spanish (Español)
  * @author Peter17
  * @author Translationista
@@ -242,10 +272,10 @@ $messages['fr'] = array(
 	'refhelper-refsearch_legend' => 'Recherche des références dans PubMed',
 	'refhelper-refcreate_another' => 'Créer une autre référence',
 	'refhelper-refcreate_autocomment' => 'Création de page automatisée.',
-	'refhelper-refcreate_success' => "La page [[$1]] n'existait pas et a été créée.",
+	'refhelper-refcreate_success' => 'La page [[$1]] n’existait pas et a été créée.',
 	'refhelper-refcreate_failure' => 'La page [[$1]] existe déjà !',
 	'refhelper-label_workspace' => 'Espace de travail (zone de copier et coller) :',
-	'refhelper-label_authorforename' => "Prénom de l'auteur $1 :",
+	'refhelper-label_authorforename' => 'Prénom de l’auteur $1 :',
 	'refhelper-label_authorsurname' => 'Nom :',
 	'refhelper-title' => 'Titre :',
 	'refhelper-journal' => 'Journal :',
@@ -258,12 +288,12 @@ $messages['fr'] = array(
 	'refhelper-search' => 'Rechercher',
 	'refhelper-toolbox_link_create' => 'Créer la référence',
 	'refhelper-toolbox_link_search' => 'Créer la référence à partir de la recherche',
-	'refhelper-newarticle_nocitation' => "Il n'existe actuellement aucune citation avec ce nom.",
-	'refhelper-newarticle_suggestions' => "S'il y a une citation correspondante ci-dessous, vous pouvez créer cette page en cliquant sur le bouton « {{int:refhelper-create}} ».
+	'refhelper-newarticle_nocitation' => 'Il n’existe actuellement aucune citation avec ce nom.',
+	'refhelper-newarticle_suggestions' => 'S’il y a une citation correspondante ci-dessous, vous pouvez créer cette page en cliquant sur le bouton « {{int:refhelper-create}} ».
 
-<h2>Suggestions</h2>",
-	'refhelper-newarticle_nosuggestions' => "Malheureusement, je n'étais pas en mesure de suggérer aucune référence.
-Vous pouvez [[Special:RefHelper|ajouter la référence manuellement]] ou [[Special:RefSearch|rechercher la citation à ajouter]].",
+<h2>Suggestions</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Malheureusement, aucune suggestion de référence n’a été trouvée.
+Vous pouvez [[Special:RefHelper|ajouter la référence manuellement]] ou [[Special:RefSearch|rechercher la citation à ajouter]].',
 );
 
 /** Galician (Galego)

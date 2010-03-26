@@ -420,7 +420,7 @@ $messages['bg'] = array(
 	'ogg-use-player' => 'Ползване на плеър:',
 	'ogg-more' => 'Повече...',
 	'ogg-dismiss' => 'Затваряне',
-	'ogg-download' => 'Изтеглене на файла',
+	'ogg-download' => 'Изтегляне на файла',
 	'ogg-desc-link' => 'Информация за файла',
 );
 
@@ -2716,6 +2716,26 @@ $messages['sk'] = array(
 	'ogg-dismiss' => 'Zatvoriť',
 	'ogg-download' => 'Stiahnuť súbor',
 	'ogg-desc-link' => 'O tomto súbore',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ogg-play' => 'Predvajaj',
+	'ogg-pause' => 'Pavza',
+	'ogg-stop' => 'Ustavi',
+	'ogg-play-video' => 'Predvajaj video',
+	'ogg-play-sound' => 'Predvajaj zvok',
+	'ogg-player-videoElement' => 'Vgrajena podpora brskalnika',
+	'ogg-player-thumbnail' => 'Samo stoječa slika',
+	'ogg-player-soundthumb' => 'Brez predvajalnika',
+	'ogg-player-selected' => '(izbrano)',
+	'ogg-use-player' => 'Uporabi predvajalnik:',
+	'ogg-more' => 'Več ...',
+	'ogg-dismiss' => 'Zapri',
+	'ogg-download' => 'Prenesi datoteko',
+	'ogg-desc-link' => 'O datoteki',
 );
 
 /** Albanian (Shqip)

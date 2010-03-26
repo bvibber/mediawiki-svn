@@ -1749,10 +1749,20 @@ samotného MediaWiki.',
  */
 $messages['sl'] = array(
 	'expandtemplates' => 'Razširi predloge',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Razširi predloge, funkcije razčlenjevalnika in spremenljivke]] ter prikaže razširjeno wikibesedilo in predogled upodobljene strani',
+	'expand_templates_intro' => 'Ta posebna stran vnešeno besedilo predela tako, da klice predlog v njem zamenja z njihovo vsebino.
+Prav tako razreši izraze kot
+<nowiki>{{</nowiki>#if:...}} in spremenljivke kot
+<nowiki>{{</nowiki>CURRENTDAY}} – pravzaprav skoraj vse v dvojnih zavitih oklepajih.
+Deluje s pomočjo razčlenjevalnika kode iz samega programja MediaWiki.',
+	'expand_templates_title' => 'Naslov sobesedila, za {{PAGENAME}} ipd.:',
+	'expand_templates_input' => 'Vhodno besedilo:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'Izhod XML',
 	'expand_templates_ok' => 'V redu',
 	'expand_templates_remove_comments' => 'Odstrani komentarje',
+	'expand_templates_remove_nowiki' => 'V rezultatu odstrani oznake <nowiki>',
+	'expand_templates_generate_xml' => 'Pokaži razčlenitveno drevo XML',
 	'expand_templates_preview' => 'Predogled',
 );
 

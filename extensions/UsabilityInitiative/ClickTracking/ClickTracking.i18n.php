@@ -218,6 +218,7 @@ $messages['bn'] = array(
 	'ct-anon-users' => 'বেনামী ব্যবহারকারী',
 	'ct-user-contribs' => 'মোট ব্যবহাকারী অবদান',
 	'ct-and' => 'এবং',
+	'ct-update-table' => 'ছক হালনাগাদ',
 );
 
 /** Breton (Brezhoneg)
@@ -603,10 +604,10 @@ $messages['fi'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'clicktracking' => "Suivi de clics de l'initiative d'utilisabilité",
+	'clicktracking' => 'Suivi de clics de l’initiative d’utilisabilité',
 	'clicktracking-desc' => 'Suivi de clics, visant à traquer les événements qui ne causent pas un rechargement de page',
-	'ct-title' => "Agrégation des clics d'utilisateurs",
-	'ct-event-name' => "Nom de l'événement",
+	'ct-title' => 'Agrégation des clics d’utilisateurs',
+	'ct-event-name' => 'Nom de l’événement',
 	'ct-expert-header' => 'Clics « experts »',
 	'ct-intermediate-header' => 'Clics « intermédiaires »',
 	'ct-beginner-header' => 'Clics « débutants »',
@@ -618,7 +619,7 @@ $messages['fr'] = array(
 	'ct-beginner' => 'Débutant',
 	'ct-intermediate' => 'Intermédiaire',
 	'ct-expert' => 'Expert',
-	'ct-date-range' => 'Portée de la date',
+	'ct-date-range' => 'Plage de dates',
 	'ct-editing' => 'En cours de modification :',
 	'ct-anon-users' => 'Utilisateurs anonymes',
 	'ct-user-contribs' => 'Contributions totales des utilisateurs',
@@ -712,12 +713,13 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'clicktracking' => 'מעקב לחיצות במיזם השימושיות',
+	'clicktracking' => 'מעקב לחיצות במיזם השמישות',
 	'clicktracking-desc' => 'מעקב לחיצות עבור בדיקת אירועים שאינם גורמים לרענון דף',
 	'ct-title' => 'הכמות המצטברת של לחיצות המשתמשים',
 	'ct-event-name' => 'שם האירוע',
@@ -1578,8 +1580,10 @@ $messages['te'] = array(
 	'ct-change-graph' => 'గ్రాఫుని మార్చు',
 	'ct-beginner' => 'ప్రారంభీకులు',
 	'ct-expert' => 'నిపుణులు',
+	'ct-date-range' => 'తేదీ వ్యవధి',
 	'ct-editing' => 'ప్రస్తుతం మారుస్తున్నారు:',
 	'ct-anon-users' => 'అజ్ఞాత వాడుకరులు',
+	'ct-user-contribs' => 'మొత్తం వాడుకరి రచనలు',
 	'ct-and' => 'మరియు',
 	'ct-update-table' => 'పట్టికని తాజాకరించు',
 );

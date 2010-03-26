@@ -745,14 +745,15 @@ Arvioinnit ovat seuraavia:
  * @author Grondin
  * @author IAlex
  * @author PieRRoMaN
+ * @author Urhixidur
  * @author Zetud
  */
 $messages['fr'] = array(
-	'ratinghistory' => "Historique de l'évaluation de la page",
+	'ratinghistory' => 'Historique d’évaluation de la page',
 	'ratinghistory-leg' => 'Données de l’historique des évaluations pour [[:$1|$1]]',
 	'ratinghistory-tab' => 'évaluation',
 	'ratinghistory-link' => 'Évaluation de la page',
-	'ratinghistory-thanks' => "''<font color=\"darkred\">Merci d'avoir consacré du temps pour relire cette page !</font>''",
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Merci d’avoir pris le temps de relire cette page !</font>''",
 	'ratinghistory-period' => 'Période :',
 	'ratinghistory-month' => 'dernier mois',
 	'ratinghistory-3months' => '3 derniers mois',
@@ -761,20 +762,20 @@ $messages['fr'] = array(
 	'ratinghistory-ave' => 'Moyenne : $1',
 	'ratinghistory-chart' => 'Évaluations par les lecteurs au cours du temps',
 	'ratinghistory-purge' => 'purger le cache',
-	'ratinghistory-table' => "Vue d'ensemble des évaluations par les lecteurs",
+	'ratinghistory-table' => 'Vue d’ensemble des évaluations par les lecteurs',
 	'ratinghistory-users' => 'Utilisateurs qui ont fait des évaluations',
 	'ratinghistory-graph' => '$2 sur « $3 » ($1 relecture{{PLURAL:$1||s}})',
 	'ratinghistory-svg' => 'Voir en SVG',
 	'ratinghistory-table-rating' => 'Évaluation',
 	'ratinghistory-table-votes' => 'Votes',
-	'ratinghistory-none' => "Il n’y a pas suffisamment d'avis exprimés par des lecteurs pour établir des graphiques pour l'instant.",
+	'ratinghistory-none' => 'Pour l’instant, il n’y a pas suffisamment d’avis exprimés par des lecteurs pour établir des graphiques.',
 	'ratinghistory-ratings' => "'''Légende :''' '''(1)''' - Mauvais ; '''(2)''' - Médiocre ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
-	'ratinghistory-legend' => "Le '''nombre d'évaluations par jour''' <font color=\"red\">''(rouge)''</font>, l''''évaluation moyenne par jour''' <font color=\"blue\">''(bleu)''</font> et l''''évaluation moyenne en cours''' <font color=\"green\">''(vert)''</font> sont représentées graphiquement ci-dessous, par date.
-L''''évaluation moyenne en cours''' est simplement la moyenne de toutes les évaluations quotidiennes ''dans'' la période du jour choisie.
-Les notations sont les suivantes :
+	'ratinghistory-legend' => "Le '''nombre d’évaluations par jour''' <font color=\"red\">''(rouge)''</font>, l''''évaluation moyenne par jour''' <font color=\"blue\">''(bleu)''</font> et l’'''évaluation moyenne en cours''' <font color=\"green\">''(vert)''</font> sont représentés graphiquement ci-dessous, par date.
+L’'''évaluation moyenne en cours''' est simplement la moyenne de toutes les évaluations quotidiennes pour le jour choisi.
+Les cotes sont les suivantes :
 
 '''(1)''' - Mauvais ; '''(2)''' - Médiocre ; '''(3)''' - Moyen ; '''(4)''' - Bon ; '''(5)''' - Excellent.",
-	'ratinghistory-graph-scale' => "'''Évaluations par jour''' <font color=\"red\">''(rouge)''</font> affichées à l'échelle ''1:\$1''.",
+	'ratinghistory-graph-scale' => "'''Évaluations par jour''' <font color=\"red\">''(rouge)''</font> affichées à l’échelle ''1:\$1''.",
 	'right-feedback' => "Utiliser le formulaire de retour d'informations pour évaluer une page",
 );
 

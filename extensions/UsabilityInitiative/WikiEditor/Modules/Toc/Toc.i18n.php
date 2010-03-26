@@ -363,6 +363,15 @@ $messages['lb'] = array(
 	'wikieditor-toc-hide' => 'Inhalt verstoppen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor-toc-preference' => 'Įjungti naršomą turinį',
+	'wikieditor-toc-show' => 'Rodyti turinį',
+	'wikieditor-toc-hide' => 'Slėpti turinį',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

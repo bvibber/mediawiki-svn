@@ -89,6 +89,14 @@ $messages['pms'] = array(
 	'metadata_help' => 'Metadat:',
 );
 
+/** Portuguese (Português)
+ * @author Giro720
+ */
+$messages['pt'] = array(
+	'metadataedit-desc' => 'Colocar categorias, ligações de idiomas e predefinições permitidas em um caixa de texto separada durante a edição de páginas.',
+	'metadata_help' => 'Metadados:',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

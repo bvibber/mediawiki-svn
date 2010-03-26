@@ -3973,7 +3973,7 @@ Tulit tälle sivulle ehkä suoraan? Normaalisti sinun ei pitäisi olla täällä
  */
 $messages['fr'] = array(
 	'wikidata-desc' => 'Ajoute une base de données de type wiki pour différents types de contenu',
-	'wikidata-handler-namespace-move-error' => "Les pages dans les espaces de noms pris en charge par l'extension Wikidata ne peuvent pas être déplacées.",
+	'wikidata-handler-namespace-move-error' => 'Les pages dans les espaces de noms pris en charge par l’extension Wikidata ne peuvent pas être déplacées.',
 	'languages' => 'Wikidata : gestionnaire de langues',
 	'langman-desc' => 'Ajouter et modifier les paramètres de langues avec [[Special:Languages]]',
 	'langman_title' => 'Gestionnaire de langues',
@@ -6875,6 +6875,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'langman_langname' => 'ಭಾಷೆಯ ಹೆಸರು:',
+	'langman_field_optional' => '(ಐಚ್ಛಿಕ)',
 	'langman_addlang' => 'ಭಾಷೆಯ ಹೆಸರು',
 	'datasearch_language' => 'ಭಾಷೆ:',
 	'datasearch_meaning' => 'ಅರ್ಥ',
@@ -6883,6 +6884,9 @@ $messages['kn'] = array(
 	'ow_transaction_summary' => 'ಸಾರಾಂಶ',
 	'ow_Definition' => 'ವ್ಯಾಖ್ಯಾನ',
 	'ow_Language' => 'ಭಾಷೆ',
+	'ow_Text' => 'ಪಠ್ಯ',
+	'ow_Time' => 'ಸಮಯ',
+	'ow_TranslatedTextAttributeValue' => 'ಪಠ್ಯ',
 	'ow_show' => 'ತೋರಿಸು',
 );
 

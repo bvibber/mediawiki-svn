@@ -872,6 +872,10 @@ $messages['myv'] = array(
 	'importfreeimages' => 'Совавтомс стякодонь артовкст',
 	'importfreeimages_owner' => 'Теицязо',
 	'importfreeimages_importthis' => 'совавтык тень',
+	'importfreeimages_size_thumbnail' => 'Пелька кенжешкась',
+	'importfreeimages_size_small' => 'Вишкине',
+	'importfreeimages_size_large' => 'Покш',
+	'importfreeimages_size_original' => 'Васнянь покшолмась',
 );
 
 /** Nahuatl (Nāhuatl)

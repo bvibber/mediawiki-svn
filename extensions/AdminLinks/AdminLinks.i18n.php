@@ -41,13 +41,6 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'adminlinks_users' => "K'oçepe",
-);
-
 /** Latgaļu (Latgaļu)
  * @author Dark Eagle
  */
@@ -686,6 +679,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'adminlinks_users' => 'მომხმარებლები',
+	'adminlinks_createuser' => 'ანგარიშის შექმნა',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -755,6 +749,13 @@ $messages['li'] = array(
 	'adminlinks_browsesearch' => 'Betrachte en zeuke',
 	'adminlinks_importexport' => 'Importere en exportere',
 	'right-adminlinks' => 'De verwiezing nao [[Special:AdminLinks|verwiezinge veur systeemwèrkers]] betrachte',
+);
+
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'adminlinks_users' => "K'oçepe",
 );
 
 /** Malagasy (Malagasy)

@@ -3462,6 +3462,18 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-offender' => 'Autor revízie:',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'hiderevision' => 'Skrij redakcije za trajno',
+	'hiderevision-continue' => 'Nadaljuj',
+	'hiderevision-error-current' => 'Zadnjega urejanja strani ni moč izbrisati.
+Najprej vrnite to spremembo.',
+	'hiderevision-error-delete' => 'Arhiviranje ni mogoče; je bila redakcija prej izbrisana?',
+	'hiderevision-archive-status' => 'Izbrisana redakcija z dne $1: $2',
+);
+
 /** Samoan (Gagana Samoa)
  * @author MF-Warburg
  */
