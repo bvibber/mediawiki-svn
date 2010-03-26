@@ -258,6 +258,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		# These options won't exist if we can't get them.
+		$fullname = null;
 		if ( array_key_exists( 'fullname', $sreg ) ) {
 			$fullname = $sreg['fullname'];
 		}
