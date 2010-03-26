@@ -1562,7 +1562,8 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		$this->setVar( 'wgSecretKey', $secretKey );
 
-		// @TODO create admin account
+		// @TODO initialize DB first
+		//$this->createWikiSysop();
 
 		$this->startStage( 'config-install-localsettings' );
 		$localSettings = new LocalSettings( $this->parent );
@@ -1570,6 +1571,20 @@ class WebInstaller_Install extends WebInstallerPage {
 		$this->endStage();
 
 		$this->endForm();
+	}
+
+	private function createWikiSysop() {
+		$user = User::newFromName( $this->getVar( '_AdminName' ) );
+		if ( !$user ) {
+			//@todo
+		}
+		if ( $user->idForName() == 0 ) {
+			$user->addToDatabase();
+			$user->setPassword( $this->getVar( '_AdminPassword' ) );
+			$user->saveSettings();
+			$user->addGroup( 'sysop' );
+			$user->addGroup( 'bureaucrat' );
+		}
 	}
 
 	private function startStage( $msg ) {
