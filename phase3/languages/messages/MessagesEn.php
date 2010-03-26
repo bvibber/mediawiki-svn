@@ -4348,6 +4348,7 @@ In '''UTF-8 mode''', MySQL will know what character set your data is in, and can
 All page titles in this namespace start with a certain prefix, which you can specify here. 
 Traditionally, this prefix is derived from the name of the wiki, but it cannot contain punctuation characters such as # or :',
 'config-ns-invalid' => 'The specified namespace "<nowiki>$1</nowiki>" is invalid. Please specify a different project namespace',
+'config-admin-default-username' => 'WikiSysop',
 'config-admin-box' => 'Administrator account',
 'config-admin-name' => 'Your name:',
 'config-admin-password' => 'Password:',

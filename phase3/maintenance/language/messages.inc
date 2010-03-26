@@ -3285,6 +3285,7 @@ $wgMessageStructure = array(
 		'config-ns-other',
 		'config-project-namespace-help',
 		'config-ns-invalid',
+		'config-admin-default-username',
 		'config-admin-box',
 		'config-admin-name',
 		'config-admin-password',
