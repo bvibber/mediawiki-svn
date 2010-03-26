@@ -369,10 +369,12 @@ mw.UploadWizardUpload.prototype = {
 	 * call when the file is entered into the file input
 	 * get as much data as possible -- maybe exif, even thumbnail maybe
 	 */
-	initializeLocalFile: function() {
+	extractLocalFileInfo: function( localFilename ) {
+		var _this = this;
 		if (false) {  // FileAPI, one day
 			_this.transportWeight = getFileSize();
 		}
+		_this.extension = mw.UploadWizardUtil.getExtension( localFilename );
 		// XXX add filename, original filename, extension, whatever else is interesting.
 	},
 
@@ -405,7 +407,7 @@ mw.UploadWizardUpload.prototype = {
 				_this.imageinfo.metadata = {};
 				if ( imageinfo.metadata && imageinfo.metadata.length ) {
 					$j.each( imageinfo.metadata, function( i, pair ) {
-						if (pair !== undefined) {
+						if ( pair !== undefined ) {
 							_this.imageinfo.metadata[pair['name'].toLowerCase()] = pair['value'];
 						}
 					} );
@@ -416,7 +418,7 @@ mw.UploadWizardUpload.prototype = {
 		}
 		
 		// we should already have an extension, but if we don't... 
-		if (! _this.extension ) {
+		if ( _this.extension === undefined ) {
 			var extension = mw.UploadWizardUtil.getExtension( _this.imageinfo.url );
 			if ( !extension ) {
 				if ( _this.imageinfo.mimetype ) {
@@ -425,10 +427,6 @@ mw.UploadWizardUpload.prototype = {
 					} 
 				}
 			}
-			if ( !extension ) {
-				extension = 'unknown';
-			}
-			_this.extension = extension;
 		}
 	},
 
@@ -598,12 +596,14 @@ mw.UploadWizardUploadInterface.prototype = {
 	 */
 	fileChanged: function() {
 		var _this = this;
+		debugger;
 		_this.clearErrors();
-		_this.upload.extension = _this.getExtension();
+		_this.upload.extractLocalFileInfo( $j( _this.fileInputCtrl ).val() );
 		if ( _this.isGoodExtension( _this.upload.extension ) ) {
 			_this.updateFilename();
 		} else {       
-			_this.error( 'bad-filename-extension', ext );
+			//_this.error( 'bad-filename-extension', ext );
+			alert("bad extension");
 		}
 	},
 
@@ -808,13 +808,11 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	// title
 	_this.titleInput = $j( '<input type="text" class="mwe-title" size="40"/>' )
 				.keyup( function() { 
-					$j( _this.filenameInput )
-						.val( mw.UploadWizardUtil.pathToTitle( $j(_this.titleInput).val() )
-					);
-				});
+					_this.setFilenameFromTitle();
+				} );
 	$j(_this.titleInput).destinationChecked( {
 		spinner: function(bool) { _this.toggleDestinationBusy(bool) },
-		preprocess: function( name ) { return _this.humanTitleToWikiTitle( name ) },
+		preprocess: function( name ) { return _this.humanToWikiTitle( name ) },
 		processResult: function( result ) { _this.processDestinationCheck( result ) } 
 	} );
 
@@ -893,23 +891,13 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				 _this.authorDiv, 
 				 _this.licenseDiv ) );
 	
-	_this.filenameInput = $j('<input type="text" class="mwe-filename" size="30" />' )
-				.keyup( function() { 
-					$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( $j( _this.filenameInput ).val() ) )
-							      .keyup();  // simulate keyup to trigger destination check
-				});
 
 	var aboutTheFileDiv = $j('<div></div>')
 		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-about-format' ) ) ) 
 		.append( $j( '<div class="mwe-details-more-subdiv">' )
 			.append( $j( '<div></div>' )
 				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-filename-tag' ) ) )
-				.append( $j( '<div class="mwe-details-more-input"></div>' )
-					.append( "File:" ) // this is the constant NS_FILE, defined in Namespaces.php. Usually unchangeable?
-					.append( _this.filenameInput ) 
-				)
-			)
-		);
+				.append( $j( '<div id="mwe-upwiz-details-filename" class="mwe-details-more-input"></div>' ) ) ) );
 	
 	_this.otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea" rows="3" cols="40"></textarea>' );
 	var otherInformationDiv = $j('<div></div>')	
@@ -940,16 +928,16 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 mw.UploadWizardDetails.prototype = {
 
-
 	/**
-	 * User edits human readable title; we create a wiki title 
-	 * XXX seems to be a bit redundant with the checking for good extension stuff? 
-	 * @param human title, like "a nice day in London"
-	 * @return wiki title, like "A_nice_day_in_London.jpg"
+	 * Sets the filename from the title plus this upload's extension.
 	 */
-	humanTitleToWikiTitle: function( name ) {
+	setFilenameFromTitle: function() {
 		var _this = this;
-		return mw.UploadWizardUtil.pathToTitle( name ) + '.' + _this.upload.extension;
+		var name = $j( _this.titleInput ).val();
+		// "File:" is the constant NS_FILE, defined in Namespaces.php. Usually unchangeable?
+		_this.filename = "File:" + mw.UploadWizardUtil.pathToTitle( name ) + '.' + _this.upload.extension;
+		$j( '#mwe-upwiz-details-filename' ).text( _this.filename );		
+			
 	},
 
 
@@ -1218,7 +1206,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	prefillFilename: function() {
 		var _this = this;
-		$j( _this.filenameInput ).val( mw.UploadWizardUtil.pathToTitle( _this.upload.originalFilename ) );
+		_this.setFilenameFromTitle();
 	},
 
 	/**
@@ -1409,7 +1397,7 @@ mw.UploadWizardDetails.prototype = {
 		// all necessary fields are ready
 		// check descriptions
 		// the filename is in a sane state
-		var desiredFilename = "File:" + $j( _this.filenameInput ).val() + '.' + _this.upload.extension;
+		var desiredFilename = _this.filename;
 		shouldRename = ( desiredFilename != _this.upload.title );
 
 		// if ok to go			
@@ -2372,11 +2360,17 @@ mw.UploadWizardUtil = {
 
 	/** 
  	 * Slice extension off a path
+	 * We assume that extensions are 1-4 characters in length
 	 * @param path to file, like "foo/bar/baz.jpg"
-	 * @return extension, like ".jpg"
+	 * @return extension, like ".jpg" or undefined if it doesn't look lke an extension.
 	 */
 	getExtension: function( path ) {
-		return path.substr( path.lastIndexOf( '.' ) + 1 ).toLowerCase();
+		var extension = undefined;
+		var idx = path.lastIndexOf( '.' );
+		if (idx > 0 && ( idx > ( path.length - 5 ) ) && ( idx < ( path.length - 1 ) )  ) {
+			extension = path.substr( idx + 1 ).toLowerCase();
+		}
+		return extension;
 	},
 
 	/**
