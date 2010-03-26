@@ -84,11 +84,11 @@ $.wikiEditor = {
 	 */
 	'isSupported': function( module ) {
 	// Fallback to the wikiEditor browser map if no special map is provided in the module
-		var mod = module && 'browsers' in module ? module : $.wikiEditor;
 		// HORRIBLE LIVE HACK
-		if ( typeof mod.name != 'undefined' && ( mod.name == 'toc' || mod.name == 'highlight' ) && typeof wgReallyGiveMeTOC == 'undefined' ) {
-			return mod.supported = false;
+		if ( module && typeof module.name != 'undefined' && ( module.name == 'toc' || module.name == 'highlight' ) && typeof wgReallyGiveMeTOC == 'undefined' ) {
+			return module.supported = false;
 		}
+		var mod = module && 'browsers' in module ? module : $.wikiEditor;
 		// Check for and make use of cached value and early opportunities to bail
 		if ( typeof mod.supported !== 'undefined' ) {
 			// Cache hit
