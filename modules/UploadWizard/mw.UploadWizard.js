@@ -47,7 +47,7 @@ mw.addMessages( {
 	"mwe-upwiz-other-prefill": "Free wikitext field",
 	"mwe-upwiz-showall": "show all",
 	"mwe-upwiz-source": "Source",
-	"mwe-upwiz-macro-edit-intro": "Please add some descriptions and other information to your uploads, and then press 'Update descriptions'",
+	"mwe-upwiz-macro-edit-intro": "Please add some descriptions and other information to your uploads, and then press 'Update descriptions'.",
 	"mwe-upwiz-macro-edit": "Update descriptions",
 	"mwe-upwiz-thanks-intro": "Thanks for uploading your works! You can now use your files on a Wikipedia article or link to them from elsewhere on the web.",
 	"mwe-upwiz-thanks-link": "This file is now available at <b><tt>$1</tt></b>.",
@@ -1365,7 +1365,7 @@ mw.UploadWizardDetails.prototype = {
 		// check descriptions
 		// the filename is in a sane state
 		var desiredFilename = "File:" + $j( _this.filenameInput ).val();
-		shouldRename = (desiredFilename != _this.upload.title);
+		shouldRename = ( desiredFilename != _this.upload.title );
 
 		// if ok to go			
 		// XXX lock down the interface, spinnerify
@@ -1379,30 +1379,33 @@ mw.UploadWizardDetails.prototype = {
 	
 		var params = {
 			action: 'edit',
-			token: mw.getConfig('token'),
+			token: mw.getConfig( 'token' ),
 			title: _this.upload.title,
 			// section: 0, ?? causing issues?
 			text: wikiText,
 			summary: "User edited page with " + mw.UploadWizard.userAgent,
 			// notminor: 1,
-			// basetimestamp: _this.upload.imageinfo.timestamp,  (conflicts?)
+			// basetimestamp: _this.upload.imageinfo.timestamp,  ( conflicts? )
 			nocreate: 1
 		};
-		mw.log("editing!");
-		mw.log(params);
-		var callback = function(result) {
-			mw.log(result);
-			mw.log("successful edit");
+
+		var endCallback = function() { _this.completeDetailsSubmission(); }	
+
+		mw.log( "editing!" );
+		mw.log( params );
+		var callback = function( result ) {
+			mw.log( result );
+			mw.log( "successful edit" );
 			if ( shouldRename ) {
-				_this.rename( desiredFilename );	
+				_this.rename( desiredFilename, endCallback );	
 			} else {
-				_this.completeDetailsSubmission();
+				endCallback();
 			}
 		}
 
 		_this.upload.state = 'submitting-details';
 		_this.showProgress();
-		mw.getJSON(params, callback);
+		mw.getJSON( params, callback );
 	},
 
 	/**
@@ -1417,7 +1420,7 @@ mw.UploadWizardDetails.prototype = {
 	 *
 	 * @param filename to rename this file to
  	 */
-	rename: function( title ) {
+	rename: function( title, endCallback ) {
 		var _this = this;
 		mw.log("renaming!");
 		params = {
@@ -1435,30 +1438,65 @@ mw.UploadWizardDetails.prototype = {
 			// handle errors later
 			// possible error data: { code = 'missingtitle' } -- orig filename not there
 			// and many more
-			
+	
+			// which should match our request.
+			// we should update the current upload filename
+			// then call the uploadwizard with our progress
+
 			// success is
 			// { move = { from : ..., reason : ..., redirectcreated : ..., to : .... }
 			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
 				_this.upload.title = data.move.to;
+				_this.refreshImageInfo( _this.upload, _this.upload.title, endCallback );
 			}
+		} );
+	},
 
-			// which should match our request.
-			// we should update the current upload filename
-			// then call the uploadwizard with our progress
-			_this.completeDetailsSubmission();
+	/** 
+	 * Get new image info, for instance, after we renamed an image
+	 * XXX this is very similar to getThumbnail
+	 * XXX ought to be a method on upload instead
+	 *
+	 * @param upload an UploadWizardUpload object
+	 * @param title  title to look up remotely
+	 * @param endCallback  execute upon completion
+	 */
+	refreshImageInfo: function( upload, title, endCallback ) {
+		var params = {
+                        'titles': title,
+                        'prop':  'imageinfo',
+                        'iiprop': 'timestamp|url|user|size|sha1|mime|metadata'
+                };
+		// XXX timeout callback?
+		mw.getJSON( params, function( data ) {
+			if ( data && data.query && data.query.pages ) {
+				if ( ! data.query.pages[-1] ) {
+					for ( var page_id in data.query.pages ) {
+						var page = data.query.pages[ page_id ];
+						if ( ! page.imageinfo ) {
+							// not found? error
+						} else {
+							upload.imageinfo = page.imageinfo[0];
+						}
+					}
+				}	
+			}
+			endCallback();
 		} );
 	},
 
 	showProgress: function() {
 		var _this = this;
-		_this.div.css( { background: 'grey' } );
+		_this.div.disableInputsFade();
+		// XXX spinnerize
 		_this.upload.detailsProgress = 1.0;
 	},
 
 	completeDetailsSubmission: function() {
 		var _this = this;
 		_this.upload.state = 'complete';
-		_this.div.css( { background: 'white' } );
+		// XXX de-spinnerize
+		_this.div.enableInputsFade();
 	},
 
 	/** 
@@ -1561,8 +1599,8 @@ mw.UploadWizard.prototype = {
 
 
 		       + '<div id="mwe-upwiz-content">'
-		       + '<div id="mwe-upwiz-tabdiv-file">'
-		       +   '<div id="mwe-upwiz-intro">' + gM('mwe-upwiz-intro') + '</div>'
+		       +   '<div id="mwe-upwiz-tabdiv-file">'
+		       +     '<div id="mwe-upwiz-intro">' + gM('mwe-upwiz-intro') + '</div>'
 		       +     '<div id="mwe-upwiz-select-files">' + gM('mwe-upwiz-select-files') + '</div>'	
 		       +     '<div id="mwe-upwiz-files"></div>'	
 		       +     '<div><a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a></div>'
@@ -1570,48 +1608,47 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-progress"></div>'
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
-		       + '</div>'
-		       + '<div id="mwe-upwiz-tabdiv-details">'
-		       +   '<div id="mwe-upwiz-macro">'
-		       +     '<div id="mwe-upwiz-macro-choice">' 
-		       +	'<div>' + gM( 'mwe-upwiz-intro-details' ) + '</div>'
-		       +	'<div id="mwe-upwiz-macro-deeds">'
-		       +	  '<div id="mwe-upwiz-macro-deed-ownwork" class="deed">'
-		       +             '<div class="mwe-deed-option-title">'
-		       +               '<span class="deed-header closed"><a id="mwe-upwiz-source-ownwork">' + gM( 'mwe-upwiz-source-ownwork' ) + '</a></span>'
-		       +               '<span class="deed-header open" style="display: none;">' 
-		       + 		 gM( 'mwe-upwiz-source-ownwork' ) 
-		       + 		 ' <a id="mwe-upwiz-source-ownwork-close">' + gM( 'mwe-upwiz-change' ) + '</a>'
-		       +	       '</span>'
-		       +             '</div>' // more deed stuff set up below
-		       +	     '<div id="mwe-upwiz-macro-deed-ownwork-form" class="deed-form" style="display: none"></div>'		
-		       +          '</div>'
-		       +	  '<div id="mwe-upwiz-macro-deed-thirdparty" class="deed">'
-		       +             '<div class="mwe-deed-option-title">'
-		       +               '<span class="deed-header closed"><a id="mwe-upwiz-source-thirdparty">' + gM( 'mwe-upwiz-source-thirdparty' ) + '</a></span>'
-		       +               '<span class="deed-header open" style="display: none;">' 
-		       + 		 gM( 'mwe-upwiz-source-thirdparty' ) 
-		       + 		 ' <a id="mwe-upwiz-source-thirdparty-close">' + gM( 'mwe-upwiz-change' ) + '</a>'
-		       +	       '</span>'
-		       +             '</div>' // more deed stuff set up below
-		       +	     '<div id="mwe-upwiz-macro-deed-thirdparty-form" class="deed-form" style="display: none"></div>'		
-		       +	  '</div>'
-		       +	'</div>'
-		       +     '</div>'
-		       +     '<div id="mwe-upwiz-macro-edit" style="display: none">'
-		       +	'<div class="mwe-upwiz-macro-edit-submit">' 
-		       +	  '<p>' + gM( 'mwe-upwiz-macro-edit-intro' ) + '</p>' 
-		       +        '</div>' // button added below
-		       +	'<div id="mwe-upwiz-macro-progress"></div>'
-		       +        '<div id="mwe-upwiz-macro-files"></div>'
-		       +	'<div class="mwe-upwiz-macro-edit-submit"></div>' // button added below			
+		       +   '<div id="mwe-upwiz-tabdiv-details">'
+		       +     '<div id="mwe-upwiz-macro">'
+		       +       '<div id="mwe-upwiz-macro-choice">' 
+		       +  	'<div>' + gM( 'mwe-upwiz-intro-details' ) + '</div>'
+		       +  	'<div id="mwe-upwiz-macro-deeds">'
+		       +  	  '<div id="mwe-upwiz-macro-deed-ownwork" class="deed">'
+		       +               '<div class="mwe-deed-option-title">'
+		       +                 '<span class="deed-header closed"><a id="mwe-upwiz-source-ownwork">' + gM( 'mwe-upwiz-source-ownwork' ) + '</a></span>'
+		       +                 '<span class="deed-header open" style="display: none;">' 
+		       +   		 gM( 'mwe-upwiz-source-ownwork' ) 
+		       +   		 ' <a id="mwe-upwiz-source-ownwork-close">' + gM( 'mwe-upwiz-change' ) + '</a>'
+		       +  	       '</span>'
+		       +               '</div>' // more deed stuff set up below
+		       +  	     '<div id="mwe-upwiz-macro-deed-ownwork-form" class="deed-form" style="display: none"></div>'		
+		       +            '</div>'
+		       +  	  '<div id="mwe-upwiz-macro-deed-thirdparty" class="deed">'
+		       +               '<div class="mwe-deed-option-title">'
+		       +                 '<span class="deed-header closed"><a id="mwe-upwiz-source-thirdparty">' + gM( 'mwe-upwiz-source-thirdparty' ) + '</a></span>'
+		       +                 '<span class="deed-header open" style="display: none;">' 
+		       +   		 gM( 'mwe-upwiz-source-thirdparty' ) 
+		       +   		 ' <a id="mwe-upwiz-source-thirdparty-close">' + gM( 'mwe-upwiz-change' ) + '</a>'
+		       +  	       '</span>'
+		       +               '</div>' // more deed stuff set up below
+		       +  	     '<div id="mwe-upwiz-macro-deed-thirdparty-form" class="deed-form" style="display: none"></div>'		
+		       +  	  '</div>'
+		       +  	'</div>'
+		       +       '</div>'
+		       +       '<div id="mwe-upwiz-macro-edit" style="display: none">'
+		       +  	'<div class="mwe-upwiz-macro-edit-submit">' 
+		       +  	  '<p>' + gM( 'mwe-upwiz-macro-edit-intro' ) + '</p>' 
+		       +          '</div>' // button added below
+		       +  	'<div id="mwe-upwiz-macro-progress"></div>'
+		       +          '<div id="mwe-upwiz-macro-files"></div>'
+		       +  	'<div class="mwe-upwiz-macro-edit-submit"></div>' // button added below			
+		       +       '</div>'
 		       +     '</div>'
 		       +   '</div>'
+		       +   '<div id="mwe-upwiz-tabdiv-thanks">'
+		       +     '<div id="mwe-upwiz-thanks"></div>'
+                       +   '</div>'
 		       + '</div>'
-		       + '<div id="mwe-upwiz-tabdiv-thanks">'
-		       +   '<div id="mwe-upwiz-thanks"></div>'
-                       + '</div>'
-		       +'</div>'
 
 		       + '<div id="mwe-upwiz-clearing"></div>';
 
@@ -1917,26 +1954,6 @@ mw.UploadWizard.prototype = {
 		
 	},
 
-	/**
-	 * in details mode, reconfigure all the uploads, for various copyright modes
-	 */
-	configureCopyrightDetails: function( mode ) {
-		$j.each( _this._uploadsEditingDetails, function (i, upload) {
-			if (mode == 'ownwork') {
-				// disable inputs
-				// link source to macro input 
-			} else if (mode == 'permission') {
-				alert( 'unimplemented' );
-
-			} else if (mode == 'found') {
-				// disable inputs
-				// link source to macro input
-
-			} else {
-				alert( 'unknown mode = ' + mode);		
-			}
-		} );
-	},
 
 	// might as well hardcode more of this?
 	prefillThanksPage: function() {
@@ -1973,6 +1990,7 @@ mw.UploadWizard.prototype = {
 			var thumbTitle = upload.title.replace(/^File/, 'Image');
 			var thumbWikiText = "[[" + thumbTitle + "|thumb|right]]";
 
+			// XXX this doesn't have the correct URL -- old "unique" descriptionurl
 			thanksDiv.append(
 				$j( '<div></div>' )
 					.addClass( 'mwe-upwiz-thanks-links' )
