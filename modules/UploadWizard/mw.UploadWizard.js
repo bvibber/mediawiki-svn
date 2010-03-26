@@ -288,6 +288,7 @@ mw.UploadWizardUpload = function() {
 	_this.filename = undefined;
 	_this.originalFilename = undefined;
 	_this.mimetype = undefined;
+	_this.extension = undefined;
 		
 	// details 		
 	_this.details = new mw.UploadWizardDetails( _this, $j( '#mwe-upwiz-macro-files' ));
@@ -412,6 +413,22 @@ mw.UploadWizardUpload.prototype = {
 			} else {
 				_this.imageinfo[key] = imageinfo[key];
 			}
+		}
+		
+		// we should already have an extension, but if we don't... 
+		if (! _this.extension ) {
+			var extension = mw.UploadWizardUtil.getExtension( _this.imageinfo.url );
+			if ( !extension ) {
+				if ( _this.imageinfo.mimetype ) {
+					if ( mw.UploadWizardUtil.mimetypeToExtension[ _this.imageinfo.mimetype ] ) {
+						extension = mw.UploadWizardUtil.mimetypeToExtension[ _this.imageinfo.mimetype ];			
+					} 
+				}
+			}
+			if ( !extension ) {
+				extension = 'unknown';
+			}
+			_this.extension = extension;
 		}
 	},
 
@@ -582,8 +599,8 @@ mw.UploadWizardUploadInterface.prototype = {
 	fileChanged: function() {
 		var _this = this;
 		_this.clearErrors();
-		var ext = _this.getExtension();
-		if ( _this.isGoodExtension( ext ) ) {
+		_this.upload.extension = _this.getExtension();
+		if ( _this.isGoodExtension( _this.upload.extension ) ) {
 			_this.updateFilename();
 		} else {       
 			_this.error( 'bad-filename-extension', ext );
@@ -604,7 +621,7 @@ mw.UploadWizardUploadInterface.prototype = {
 	updateFilename: function() {
 		var _this = this;
 		var path = $j(_this.fileInputCtrl).attr('value');
-
+		
 	
 		// visible filename	
 		$j( _this.visibleFilename ).removeClass( 'helper' ).html( path );
@@ -648,7 +665,7 @@ mw.UploadWizardUploadInterface.prototype = {
 	getExtension: function() {
 		var _this = this;
 		var path = $j(_this.fileInputCtrl).attr('value');
-		return path.substr( path.lastIndexOf( '.' ) + 1 ).toLowerCase();
+		return mw.UploadWizardUtil.getExtension(path);
 	},
 
 	/**
@@ -797,7 +814,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				});
 	$j(_this.titleInput).destinationChecked( {
 		spinner: function(bool) { _this.toggleDestinationBusy(bool) },
-		preprocess: mw.UploadWizardUtil.pathToTitle, // stateless, so we don't need the object
+		preprocess: function( name ) { return _this.humanTitleToWikiTitle( name ) },
 		processResult: function( result ) { _this.processDestinationCheck( result ) } 
 	} );
 
@@ -922,6 +939,19 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 };
 
 mw.UploadWizardDetails.prototype = {
+
+
+	/**
+	 * User edits human readable title; we create a wiki title 
+	 * XXX seems to be a bit redundant with the checking for good extension stuff? 
+	 * @param human title, like "a nice day in London"
+	 * @return wiki title, like "A_nice_day_in_London.jpg"
+	 */
+	humanTitleToWikiTitle: function( name ) {
+		var _this = this;
+		return mw.UploadWizardUtil.pathToTitle( name ) + '.' + _this.upload.extension;
+	},
+
 
 	/**
 	 * show file destination field as "busy" while checking 
@@ -1174,11 +1204,12 @@ mw.UploadWizardDetails.prototype = {
 	/**
 	 * Set the title of the thing we just uploaded, visibly
 	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
-	 * XXX in the mock the title does NOT include the extension, so fix that -- use a mime-type mapping
 	 */
 	prefillTitle: function() {
 		var _this = this;
-		$j( _this.titleInput ).val( mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename ) );
+		var titleExt = mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename );
+		var title = titleExt.replace( /\.\w+$/, '' );
+		$j( _this.titleInput ).val( title );
 	},
 
 	/**
@@ -1378,7 +1409,7 @@ mw.UploadWizardDetails.prototype = {
 		// all necessary fields are ready
 		// check descriptions
 		// the filename is in a sane state
-		var desiredFilename = "File:" + $j( _this.filenameInput ).val();
+		var desiredFilename = "File:" + $j( _this.filenameInput ).val() + '.' + _this.upload.extension;
 		shouldRename = ( desiredFilename != _this.upload.title );
 
 		// if ok to go			
@@ -2337,7 +2368,26 @@ mw.UploadWizardUtil = {
 	 */
 	titleToPath: function ( title ) {
 		return mw.ucfirst( title.replace(/_/g, ' ' ) );
+	},
+
+	/** 
+ 	 * Slice extension off a path
+	 * @param path to file, like "foo/bar/baz.jpg"
+	 * @return extension, like ".jpg"
+	 */
+	getExtension: function( path ) {
+		return path.substr( path.lastIndexOf( '.' ) + 1 ).toLowerCase();
+	},
+
+	/**
+	 * Last resort to guess a proper extension
+	 */
+	mimetypeToExtension: {
+		'image/jpeg': 'jpg',
+		'image/gif': 'gif'
+		// fill as needed
 	}
+
 
 };
 
