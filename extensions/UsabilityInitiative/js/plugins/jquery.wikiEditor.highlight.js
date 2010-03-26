@@ -5,6 +5,7 @@
  * Core Requirements
  */
 'req': [ 'iframe' ],
+'name': 'highlight',
 /**
  * Configuration
  */
