@@ -22,6 +22,7 @@ class MakeWmfBranch {
 	var $newVersion, $oldVersion, $codeDir, $buildDir;
 	var $normalExtensions, $specialExtensions, $patches, $preservedItems;
 	var $destBaseUrl, $mainSourceUrl;
+	var $unwantedExternals;
 
 	function __construct( $newVersion, $oldVersion ) {
 		$this->newVersion = $newVersion;
@@ -38,6 +39,7 @@ class MakeWmfBranch {
 		$this->buildDir = $buildDir;
 		$this->normalExtensions = $normalExtensions;
 		$this->specialExtensions = $specialExtensions;
+		$this->unwantedExternals = $unwantedExternals;
 		$this->patches = $patches;
 		$this->preservedItems = $preservedItems;
 		$this->destBaseUrl = $destBaseUrl;
@@ -131,7 +133,12 @@ class MakeWmfBranch {
 
 		# Apply patches
 		foreach ( $this->patches as $patch ) {
-			$this->runCmd( 'svn', 'merge', '-c', $patch['rev'], $patch['base'], $destRel );
+			$this->runCmd( 'svn', 'merge', '-q', '-c', $patch['rev'], $patch['base'], $destRel );
+		}
+
+		# Remove unwanted externals
+		foreach ( $this->unwantedExternals as $external ) {
+			$this->runCmd( 'svn', 'propdel', '-q', 'svn:externals', "$destRel/$external" );
 		}
 
 		# Do the final commit
