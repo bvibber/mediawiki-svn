@@ -345,7 +345,7 @@ mw.UploadWizardUpload.prototype = {
 
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
-			_this.extractImageInfo( result );	
+			_this.extractUploadInfo( result );	
 			_this.details.populate();
 		
 		} else if ( result.upload && result.upload.sessionkey ) {
@@ -381,28 +381,38 @@ mw.UploadWizardUpload.prototype = {
 	 *
 	 * @param result The JSON object from a successful API upload result.
 	 */
-	extractImageInfo: function( result ) {
+	extractUploadInfo: function( result ) {
 		var _this = this;
 
 		_this.filename = result.upload.filename;
 		_this.title = "File:" + _this.filename;
 
-		for ( var key in result.upload.imageinfo ) {
+		_this.extractImageInfo( result.upload.imageinfo );
+
+	},
+
+	/**
+	 * Extract image info into our upload object 	
+	 * Image info is obtained from various different API methods
+	 * @param imageinfo JSON object obtained from API result.
+	 */
+	extractImageInfo: function( imageinfo ) {
+		var _this = this;
+		for ( var key in imageinfo ) {
 			// we get metadata as list of key-val pairs; convert to object for easier lookup. Assuming that EXIF fields are unique.
-			if ( key === 'metadata' ) {
+			if ( key == 'metadata' ) {
 				_this.imageinfo.metadata = {};
-				if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.metadata ) {
-					$j.each( result.upload.imageinfo.metadata, function( i, pair ) {
+				if ( imageinfo.metadata && imageinfo.metadata.length ) {
+					$j.each( imageinfo.metadata, function( i, pair ) {
 						if (pair !== undefined) {
 							_this.imageinfo.metadata[pair['name'].toLowerCase()] = pair['value'];
 						}
 					} );
 				}
 			} else {
-				_this.imageinfo[key] = result.upload.imageinfo[key];
+				_this.imageinfo[key] = imageinfo[key];
 			}
 		}
-
 	},
 
 	/**
@@ -1458,8 +1468,6 @@ mw.UploadWizardDetails.prototype = {
 
 	/** 
 	 * Get new image info, for instance, after we renamed an image
-	 * XXX this is very similar to getThumbnail
-	 * XXX ought to be a method on upload instead
 	 *
 	 * @param upload an UploadWizardUpload object
 	 * @param title  title to look up remotely
@@ -1480,7 +1488,7 @@ mw.UploadWizardDetails.prototype = {
 						if ( ! page.imageinfo ) {
 							// not found? error
 						} else {
-							upload.imageinfo = page.imageinfo[0];
+							upload.extractImageInfo( page.imageinfo[0] );
 						}
 					}
 				}	
