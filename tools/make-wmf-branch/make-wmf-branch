@@ -7,7 +7,8 @@ if ( php_sapi_name() !== 'cli' ) {
 }
 
 if ( count( $argv ) < 3 ) {
-	echo "Usage: make-wmf-branch <new-version> <old-version>";
+	echo "Usage: make-wmf-branch <new-version> <old-version>\n";
+	echo "Example: make-wmf-branch 1.16wmf4 1.16wmf3\n";
 	exit( 1 );
 }
 
@@ -149,7 +150,7 @@ class MakeWmfBranch {
 	function fixVersion( $fileName ) {
 		$s = file_get_contents( $fileName );
 		$s = preg_replace( '/^( \$wgVersion \s+ = \s+ )  [^;]*  ( ; \s* ) $/xm',
-			"\\1'{$this->newVersion}\2'", $s );
+			"\\1'{$this->newVersion}'\\2", $s );
 		file_put_contents( $fileName, $s );
 	}
 }
