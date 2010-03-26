@@ -157,37 +157,47 @@ var kskinConfig = {
 		// Set up control bar pointer
 		this.$playerTarget = embedPlayer.$interface;
 		// Set the menu target: 
-		_this.$kmenu = _this.$playerTarget.find( '.k-menu' );
+		
 		 		
 		// Options menu display:			
 		this.$playerTarget.find( '.k-options' )
 		.unbind()
 		.click( function() {
-			if ( _this.$playerTarget.find( '.k-menu' ).length == 0 ) {				
-				// Stop the player if it does not support overlays:
-				if ( !embedPlayer.supports['overlays'] ) {
-					embedPlayer.stop();
-				}
-				
-				// Add the menu binding
-				_this.addMeunBinding();
-			}
-			_this.$kmenu = _this.$playerTarget.find( '.k-menu' );
-			if ( _this.$kmenu.is( ':visible' ) ) {
-				_this.closeMenuOverlay( $j( this ) );
+			_this.checkMenuOverlay();
+			var $kmenu = _this.$playerTarget.find( '.k-menu' );			
+			if ( $kmenu.is( ':visible' ) ) {
+				_this.closeMenuOverlay( );
 			} else {
-				_this.showMenuOverlay( $j( this ) );
+				_this.showMenuOverlay( );
 			}
 		} );
 		
+	},
+	/**
+	* checks for menu overlay and runs menu bindings if unset 
+	*/ 
+	checkMenuOverlay: function(){
+		var _this = this;
+		var embedPlayer = this.embedPlayer;
+		if ( _this.$playerTarget.find( '.k-menu' ).length == 0 ) {				
+			// Stop the player if it does not support overlays:
+			if ( !embedPlayer.supports['overlays'] ) {
+				embedPlayer.stop();
+			}
+			
+			// Add the menu binding
+			_this.addMeunBinding();
+		}
 	},
 	
 	/**
 	* Close the menu overlay
 	*/
 	closeMenuOverlay: function( ) {
+		mw.log(" close menu overlay" );
 		var $optionsMenu = this.$playerTarget.find( '.k-options' );
-		this.$kmenu.fadeOut( "fast", function() {
+		var $kmenu = this.$playerTarget.find( '.k-menu' );
+		$kmenu.fadeOut( "fast", function() {
 			$optionsMenu.find( 'span' )
 				.text ( gM( 'mwe-menu_btn' ) );
 		} );
@@ -199,7 +209,8 @@ var kskinConfig = {
 	*/
 	showMenuOverlay: function( $ktxt ) {
 		var $optionsMenu = this.$playerTarget.find( '.k-options' );
-		this.$kmenu.fadeIn( "fast", function() {
+		var $kmenu = this.$playerTarget.find( '.k-menu' );
+		$kmenu.fadeIn( "fast", function() {
 			$optionsMenu.find( 'span' )
 				.text ( gM( 'mwe-close_btn' ) );
 		} );
@@ -251,6 +262,17 @@ var kskinConfig = {
 				// Don't follow the # link
 				return false;
 			} );
+		}
+	},
+	
+	/**
+	* onClipDone action
+	* onClipDone for k-skin (with apiTitleKey) show the "credits" screen:
+	*/
+	onClipDone: function(){
+		if( this.embedPlayer.apiTitleKey ){
+			this.showMenuOverlay( ); 
+			this.showMenuItem( 'credits' );
 		}
 	},
 	

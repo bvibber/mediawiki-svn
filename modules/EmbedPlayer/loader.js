@@ -89,7 +89,7 @@ mw.documentHasPlayerTags = function() {
 		}
 	}
 	return false;
-}	
+};
 
 /**
 * Add a DOM ready check for player tags 
