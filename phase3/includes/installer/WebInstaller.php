@@ -1526,25 +1526,9 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		$this->endStage();
 
-		// Generate schema
-		$this->startStage( 'config-install-schema' );
-		$schema = SchemaBuilder::newFromType( $dbType );
-		$schema->setTableOptions( $installer->getTableOptions() );
-		$schema->setTablePrefix( $this->getVar( 'wgDBprefix' ) );
-		if( !$schema->createAllTables() ) {
-			// @todo Need some sort of failure
-			return;
-		}
-		$this->endStage();
-
 		// Create tables
 		$this->startStage( 'config-install-tables' );
-		$queries = explode( ";", trim( $schema->getSql() ) );
-		foreach( $queries as $qry ) {
-			if ( strlen( $qry ) ) { // empty string is an invalid query
-				$db->query( $qry, __METHOD__ );
-			}
-		}
+		$this->parent->createTables();
 		$this->endStage();
 
 		$this->startStage( 'config-install-secretkey' );

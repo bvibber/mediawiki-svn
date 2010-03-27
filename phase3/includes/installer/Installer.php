@@ -236,8 +236,12 @@ abstract class Installer {
 
 	/**
 	 * Get an instance of InstallerDBType for the specified DB type
+	 * @param $type Mixed: DB installer for which is needed, false to use default
 	 */
-	function getDBInstaller( $type ) {
+	function getDBInstaller( $type = false ) {
+		if ( !$type ) {
+			$type = $this->getVar( 'wgDBtype' );
+		}
 		if ( !isset( $this->dbInstallers[$type] ) ) {
 			$class = ucfirst( $type ). 'Installer';
 			$this->dbInstallers[$type] = new $class( $this );
@@ -726,6 +730,11 @@ abstract class Installer {
 		}
 		$this->setVar( '_Extensions', $exts );
 		return $exts;
+	}
+
+	public function createTables() {
+		$installer = $this->getDBInstaller();
+		$installer->createTables();
 	}
 }
 

@@ -78,8 +78,8 @@ class SqliteInstaller extends InstallerDBType {
 			# FIXME: need more sensible constructor parameters, e.g. single associative array
 			# Setting globals kind of sucks
 			$wgSQLiteDataDir = $dir;
-			$this->conn = new DatabaseSqlite( false, false, false, $dbName );
-			return $this->conn;
+			$this->db = new DatabaseSqlite( false, false, false, $dbName );
+			$status->value = $this->db;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-sqlite-connection-error', $e->getMessage() );
 		}
@@ -122,6 +122,23 @@ class SqliteInstaller extends InstallerDBType {
 		$this->setVar( 'wgDBuser', '' );
 		$this->setVar( 'wgDBpassword', '' );
 		return $this->getConnection();
+	}
+
+	function createTables() {
+		global $IP;
+		$status = $this->getConnection();
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		// Process common MySQL/SQLite table definitions
+		$err = $this->db->sourceFile( "$IP/maintenance/tables.sql" );
+		if ( $err !== true ) {
+			//@todo or...?
+			$this->db->reportQueryError( $err, 0, $sql, __FUNCTION__ );
+		}
+		//@todo set up searchindex
+		// Create default interwikis
+		return $this->fillInterwikiTable( $this->db );
 	}
 
 	function getLocalSettings() {

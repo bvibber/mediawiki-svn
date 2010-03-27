@@ -7,6 +7,9 @@ abstract class InstallerDBType {
 	/** The Installer object */
 	var $parent;
 
+	/* Database connection */
+	var $db;
+
 	/**
 	 * Return the internal name, e.g. 'mysql', or 'sqlite'
 	 */
@@ -70,6 +73,12 @@ abstract class InstallerDBType {
 	 * Create the database and return a database object to use it
 	 */
 	abstract function setupDatabase();
+
+	/**
+	 * Create database tables from scratch
+	 * @return \type Status
+	 */
+	abstract function createTables();
 
 	/**
 	 * Return any table options to be applied to all tables that don't
@@ -304,6 +313,27 @@ abstract class InstallerDBType {
 		if ( $this->getVar( '_SameAccount' ) ) {
 			$this->setVar( 'wgDBuser', $this->getVar( '_InstallUser' ) );
 			$this->setVar( 'wgDBpassword', $this->getVar( '_InstallPassword' ) );
+		}
+		return Status::newGood();
+	}
+
+	/**
+	 * Common function for databases that don't understand the MySQLish syntax of interwiki.sql
+	 */
+	protected function fillInterwikiTable( $db ) {
+		global $IP;
+		// Originally from DatabasePostgres
+		$f = fopen( "$IP/maintenance/interwiki.sql", 'r' );
+		if ( $f == false ) {
+			return Status::newFatal( 'config-install-interwiki-sql' );
+		}
+		$table = $db->tableName( 'interwiki' );
+		$sql = "INSERT INTO $table(iw_prefix,iw_url,iw_local) VALUES ";
+		while ( !feof( $f ) ) {
+			$line = fgets( $f, 1024 );
+			$matches = array();
+			if ( !preg_match( '/^\s*(\(.+?),(\d)\)/', $line, $matches ) ) continue;
+			$db->query( "$sql $matches[1],$matches[2])" );
 		}
 		return Status::newGood();
 	}

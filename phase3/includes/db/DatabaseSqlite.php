@@ -476,32 +476,6 @@ class DatabaseSqlite extends DatabaseBase {
 	public function getLag() {
 		return 0;
 	}
-
-	/**
-	 * Called by the installer script (when modified according to the MediaWikiLite installation instructions)
-	 * - this is the same way PostgreSQL works, MySQL reads in tables.sql and interwiki.sql using dbsource (which calls db->sourceFile)
-	 */
-	public function setup_database() {
-		global $IP;
-
-		# Process common MySQL/SQLite table definitions
-		$err = $this->sourceFile( "$IP/maintenance/tables.sql" );
-		if ( $err !== true ) {
-			$this->reportQueryError( $err, 0, $sql, __FUNCTION__ );
-			exit( 1 );
-		}
-
-		# Use DatabasePostgres's code to populate interwiki from MySQL template
-		$f = fopen( "$IP/maintenance/interwiki.sql", 'r' );
-		if ( $f == false ) dieout( "<li>Could not find the interwiki.sql file" );
-		$sql = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
-		while ( !feof( $f ) ) {
-			$line = fgets( $f, 1024 );
-			$matches = array();
-			if ( !preg_match( '/^\s*(\(.+?),(\d)\)/', $line, $matches ) ) continue;
-			$this->query( "$sql $matches[1],$matches[2])" );
-		}
-	}
 	
 	public function getSearchEngine() {
 		return "SearchSqlite";

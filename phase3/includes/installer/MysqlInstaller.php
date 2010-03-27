@@ -28,8 +28,6 @@ class MysqlInstaller extends InstallerDBType {
 		'CREATE TEMPORARY TABLES',
 	);
 
-	var $conn;
-
 	function getName() {
 		return 'mysql';
 	}
@@ -107,7 +105,7 @@ class MysqlInstaller extends InstallerDBType {
 	function getConnection() {
 		$status = Status::newGood();
 		try {
-			$this->conn = new DatabaseMysql(
+			$this->db = new DatabaseMysql(
 				$this->getVar( 'wgDBserver' ),
 				$this->getVar( '_InstallUser' ),
 				$this->getVar( '_InstallPassword' ),
@@ -116,7 +114,7 @@ class MysqlInstaller extends InstallerDBType {
 				0, 
 				$this->getVar( 'wgDBprefix' )
 			);
-			$status->value = $this->conn;
+			$status->value = $this->db;
 			return $status;
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-connection-error', $e->getMessage() );
@@ -384,6 +382,10 @@ class MysqlInstaller extends InstallerDBType {
 			$conn->selectDB( $dbName );
 		}
 		return $conn;
+	}
+
+	function createTables() {
+		
 	}
 
 	function getTableOptions() {
