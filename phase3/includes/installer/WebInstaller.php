@@ -1501,6 +1501,7 @@ class WebInstaller_Install extends WebInstallerPage {
 			return 'continue';
 		}
 		$this->startForm();
+		$this->parent->exportVars();
 		$this->parent->output->addHTML("<ul>");
 		foreach( $this->parent->getInstallSteps() as $step ) {
 			$this->startStage( "config-install-$step" );
@@ -1521,7 +1522,7 @@ class WebInstaller_Install extends WebInstallerPage {
 		$msg = $success ? 'config-install-step-done' : 'config-install-step-failed';
 		$html = wfMsgHtml( $msg );
 		if ( !$success ) {
-			$html = "<span class=\"error\">$html</html>";
+			$html = "<span class=\"error\">$html</span>";
 		}
 		$this->parent->output->addHTML( $html . "</li>\n" );
 	}

@@ -129,7 +129,7 @@ abstract class Installer {
 		'database',
 		'tables',
 		'secretkey',
-	//	'sysop',
+		'sysop',
 		'localsettings',
 	);
 
@@ -306,6 +306,17 @@ abstract class Installer {
 	 */
 	function setVar( $name, $value ) {
 		$this->settings[$name] = $value;
+	}
+
+	/**
+	 * Exports all wg* variables stored by the installer into global scope
+	 */
+	function exportVars() {
+		foreach ( $this->settings as $name => $value ) {
+			if ( substr( $name, 0, 2 ) == 'wg' ) {
+				$GLOBALS[$name] = $value;
+			}
+		}
 	}
 
 	/**
