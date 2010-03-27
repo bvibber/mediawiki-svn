@@ -61,8 +61,15 @@ class ApiQueryStories extends ApiQueryBase {
 		$this->addOption( 'ORDER BY', 'story_modified DESC' );
 		
 		$stories = $this->select( __METHOD__ );
+		$count = 0;
 		
 		while ( $story = $stories->fetchObject() ) {
+			if ( ++$count > $params['limit'] ) {
+				// We've reached the one extra which shows that
+				// there are additional pages to be had. Stop here...
+				$this->setContinueEnumParameter( 'continue', "" ); // TODO: add some weird stuff here
+				break;
+			}
 			$res = array(
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
@@ -99,8 +106,8 @@ class ApiQueryStories extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array (
-			'offset' => 'Number of the first story to return',
-			'size'   => 'Amount of stories to return',
+			'continue' => 'Number of the first story to return',
+			'limit'   => 'Amount of stories to return',
 		);
 	}
 
