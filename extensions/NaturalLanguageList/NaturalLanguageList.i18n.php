@@ -11,23 +11,23 @@ $messages = array();
 $messages['en'] = array (
 	'nll-desc' => 'Easy formatting of lists in natural languages',
 	'nll-itemoutput' => '$1', # do not translate or duplicate this message to other languages
-	'nll-separator' => ', ', # only translate this message to other languages if you have to change it
-	'nll-lastseparator' => ' and',
+	'nll-separator' => ',&#32;', # only translate this message to other languages if you have to change it
+	'nll-lastseparator' => '&#32;and&#32;'
 );
 
 /** Message documentation (Message documentation)
  * @author Raimond Spekking
  */
 $messages['qqq'] = array(
-	'nll-separator' => '{{Optional}}',
-	'nll-lastseparator' => '{{Identical/And}}',
+	'nll-separator' => '{{Optional}}<br/>Please include any necessary spacing: <code>,&amp;#32;</code>',
+	'nll-lastseparator' => '{{Identical/And}}<br/>Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
 );
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
 $messages['af'] = array(
-	'nll-lastseparator' => ' en',
+	'nll-lastseparator' => '&#32;en&#32;'
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -35,14 +35,14 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'nll-desc' => 'Лёгкае фарматаваньне сьпісаў на натуральных мовах',
-	'nll-lastseparator' => ' і',
+	'nll-lastseparator' => '&#32;і&#32;'
 );
 
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
 $messages['br'] = array(
-	'nll-lastseparator' => ' ha',
+	'nll-lastseparator' => '&#32;ha&#32;'
 );
 
 /** Danish (Dansk)
@@ -50,12 +50,12 @@ $messages['br'] = array(
  */
 $messages['da'] = array(
 	'nll-desc' => 'Nem formatering af lister på naturlige sprog',
-	'nll-lastseparator' => ' og',
+	'nll-lastseparator' => '&#32;og&#32;'
 );
 
 /** German (Deutsch) */
 $messages['de'] = array(
-	'nll-lastseparator' => ' und',
+	'nll-lastseparator' => '&#32;und&#32;'
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -63,12 +63,12 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'nll-desc' => 'Lažke formatěrowanje lisćinow w pśirodnych rěcach',
-	'nll-lastseparator' => 'a',
+	'nll-lastseparator' => '&#32;a&#32;',
 );
 
 /** Estonian (Eesti) */
 $messages['et'] = array(
-	'nll-lastseparator' => ' ning',
+	'nll-lastseparator' => '&#32;ning&#32;'
 );
 
 /** French (Français)
@@ -76,7 +76,7 @@ $messages['et'] = array(
  */
 $messages['fr'] = array(
 	'nll-desc' => 'Mise en forme facile de listes en langages naturels',
-	'nll-lastseparator' => ' et',
+	'nll-lastseparator' => '&#32;et&#32;'
 );
 
 /** Galician (Galego)
@@ -84,7 +84,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'nll-desc' => 'Formato sinxelo de listas na lingua materna',
-	'nll-lastseparator' => ' e',
+	'nll-lastseparator' => '&#32;e&#32;'
 );
 
 /** Swiss German (Alemannisch)
@@ -92,7 +92,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'nll-desc' => 'Eifachi Formatierig vu Lischte in natyrlige Sproche',
-	'nll-lastseparator' => 'un',
+	'nll-lastseparator' => '&#32;un&#32;',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -100,7 +100,7 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'nll-desc' => 'Lochke formatowanje lisćinow w přiródnych rěčach',
-	'nll-lastseparator' => 'a',
+	'nll-lastseparator' => '&#32;a&#32;',
 );
 
 /** Interlingua (Interlingua)
@@ -108,7 +108,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'nll-desc' => 'Formatation facile de listas in linguas natural',
-	'nll-lastseparator' => ' e',
+	'nll-lastseparator' => '&#32;e&#32;'
 );
 
 /** Macedonian (Македонски)
@@ -116,7 +116,7 @@ $messages['ia'] = array(
  */
 $messages['mk'] = array(
 	'nll-desc' => 'Лесно форматирање на листи напишани во природен јазик',
-	'nll-lastseparator' => ' и',
+	'nll-lastseparator' => '&#32;и&#32;'
 );
 
 /** Dutch (Nederlands)
@@ -124,7 +124,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'nll-desc' => 'Eenvoudig lijsten opmaken in natuurlijke taal',
-	'nll-lastseparator' => ' en&#32;',
+	'nll-lastseparator' => '&#32;en&#32;'
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -132,7 +132,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'nll-desc' => 'Enkel formatering av lister på naturlige språk',
-	'nll-lastseparator' => ' og',
+	'nll-lastseparator' => '&#32;og&#32;'
 );
 
 /** Piedmontese (Piemontèis)
@@ -140,7 +140,7 @@ $messages['no'] = array(
  */
 $messages['pms'] = array(
 	'nll-desc' => 'Formatassion bel fé ëd liste an lenghe naturaj',
-	'nll-lastseparator' => ' e',
+	'nll-lastseparator' => '&#32;e&#32;'
 );
 
 /** Russian (Русский)
@@ -148,6 +148,6 @@ $messages['pms'] = array(
  */
 $messages['ru'] = array(
 	'nll-desc' => 'Простое форматирование списков на естественных языках',
-	'nll-lastseparator' => ' и',
+	'nll-lastseparator' => '&#32;и&#32;'
 );
 

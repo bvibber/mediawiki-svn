@@ -218,8 +218,7 @@ class NaturalLanguageList {
 			$this->mOptions['outputseparator'] = wfMsgNoTrans( 'nll-separator' );
 
 			if ( $this->mOptions['lastseparator'] === null ) {
-				# HACK. Add a space because http://translatewiki.org strips them.
-				$this->mOptions['lastseparator'] = wfMsgNoTrans( 'nll-lastseparator' ) . ' ';
+				$this->mOptions['lastseparator'] = wfMsgNoTrans( 'nll-lastseparator' );
 			}
 
 		} else if ( $this->mOptions['lastseparator'] === null ) {
