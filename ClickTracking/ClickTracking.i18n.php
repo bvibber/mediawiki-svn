@@ -433,12 +433,14 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Dead3y3
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'clicktracking' => 'Πατήστε παρακολούθηση της Πρωτοβουλίας Χρηστικότητας',
 	'clicktracking-desc' => 'Πατήστε παρακολούθηση, προορίζεται για την παρακολούθηση εκδηλώσεων που δεν προκαλούν ανανέωση σελίδας',
+	'ct-title' => 'Συναθροισμένα κλικ χρήστη',
 	'ct-event-name' => 'Όνομα γεγονότος',
 	'ct-expert-header' => 'Κλικ "ειδικοί"',
 	'ct-intermediate-header' => 'Κλικ "μέτριοι"',
@@ -446,6 +448,7 @@ $messages['el'] = array(
 	'ct-total-header' => 'Συνολικά κλικ',
 	'ct-start-date' => 'Ημερομηνία έναρξης (ΕΕΕΕΜΜΗΗ)',
 	'ct-end-date' => 'Ημερομηνία λήξης (ΕΕΕΕΜΜΗΗ)',
+	'ct-increment-by' => 'Αριθμός των ημερών που κάθε σημείο δεδομένων αναπαριστά',
 	'ct-change-graph' => 'Αλλαγή γραφήματος',
 	'ct-beginner' => 'Αρχάριος',
 	'ct-intermediate' => 'Μέτριος',
@@ -454,6 +457,7 @@ $messages['el'] = array(
 	'ct-editing' => 'Τρέχουσα επεξεργασία:',
 	'ct-anon-users' => 'Ανώνυμοι χρήστες',
 	'ct-user-contribs' => 'Συνολικές συνεισφορές χρήστη',
+	'ct-user-span' => 'Συνεισφορά χρήστη σε χρονικό διάστημα',
 	'ct-and' => 'και',
 	'ct-update-table' => 'Πίνακας ενημερώσεων',
 );
@@ -890,6 +894,7 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Gianfranco
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'ct-title' => 'Clic utente aggregati',
@@ -901,6 +906,7 @@ $messages['it'] = array(
 	'ct-beginner' => 'Principiante',
 	'ct-intermediate' => 'Medio',
 	'ct-expert' => 'Esperto',
+	'ct-date-range' => 'Intervallo di date',
 	'ct-anon-users' => 'Utenti anonimi',
 	'ct-user-contribs' => 'Totale contributi utente',
 	'ct-and' => 'e',

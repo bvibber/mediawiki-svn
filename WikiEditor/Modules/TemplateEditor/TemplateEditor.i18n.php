@@ -272,6 +272,15 @@ $messages['id'] = array(
 	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
 );
 
+/** Italian (Italiano)
+ * @author Una giornata uggiosa '94
+ */
+$messages['it'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Modifica template',
+	'wikieditor-template-editor-dialog-submit' => 'Aggiorna',
+	'wikieditor-template-editor-dialog-cancel' => 'Annulla',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

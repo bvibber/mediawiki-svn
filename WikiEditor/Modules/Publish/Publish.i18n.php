@@ -280,12 +280,15 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'wikieditor-publish-preference' => 'Ενεργοποίηση δημοσίευσης βήμα προς βήμα',
 	'wikieditor-publish-button-publish' => 'Δημοσίευση',
 	'wikieditor-publish-button-cancel' => 'Άκυρο',
 	'wikieditor-publish-dialog-title' => 'Δημοσίευση στο {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Σύνοψη επεξεργασίας (περιγράψτε συντόμως τις αλλαγές που έχετε κάνει):',
 	'wikieditor-publish-dialog-minor' => '"Μικρή" επεξεργασία',
 	'wikieditor-publish-dialog-watch' => 'Παρακολούθηση αυτής της σελίδας',
 	'wikieditor-publish-dialog-publish' => 'Δημοσίευση',
@@ -531,11 +534,13 @@ $messages['id'] = array(
  * @author Aushulz
  * @author F. Cosoleto
  * @author PaoloRomano
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'wikieditor-publish-button-publish' => 'Pubblica',
 	'wikieditor-publish-button-cancel' => 'Annulla',
 	'wikieditor-publish-dialog-title' => 'Pubblica su {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Oggetto (descrivi brevemente le modifiche che hai fatto):',
 	'wikieditor-publish-dialog-minor' => 'Modifica di minore importanza',
 	'wikieditor-publish-dialog-watch' => 'Osserva questa pagina',
 	'wikieditor-publish-dialog-publish' => 'Pubblica',

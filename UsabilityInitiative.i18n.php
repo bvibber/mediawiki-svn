@@ -172,12 +172,15 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Dead3y3
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'usabilityinitiative' => 'Πρωτοβουλία Χρηστικότητας',
 	'usabilityinitiative-desc' => 'Χαρακτηριστικά που έχουν αναπτυχθεί από την Πρωτοβουλία Χρηστικότητας Wikipedia για να ενισχύσει τη χρηστικότητα του MediaWiki',
+	'prefs-beta' => 'Beta χαρακτηριστικά',
+	'prefs-labs' => 'Labs χαρακτηριστικά',
 );
 
 /** Esperanto (Esperanto)

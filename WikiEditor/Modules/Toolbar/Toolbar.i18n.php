@@ -986,6 +986,7 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'wikieditor-toolbar' => 'Панэль інструмэнтаў для рэдагаваньня',
@@ -1027,6 +1028,10 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Прыклад.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Зноска',
 	'wikieditor-toolbar-tool-reference-example' => 'Уставіць тут тэкст зноскі',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Скасаваць',
+	'wikieditor-toolbar-tool-reference-title' => 'Уставіць спасылку',
+	'wikieditor-toolbar-tool-reference-insert' => 'Уставіць',
+	'wikieditor-toolbar-tool-reference-text' => 'Тэкст спасылкі',
 	'wikieditor-toolbar-tool-signature' => 'Подпіс і момант часу',
 	'wikieditor-toolbar-section-advanced' => 'Дадатковыя',
 	'wikieditor-toolbar-tool-heading' => 'Загаловак',
@@ -3262,6 +3267,10 @@ $messages['dsb'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Psikład.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referenca',
 	'wikieditor-toolbar-tool-reference-example' => 'Nožku how zasajźiś',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Pśetergnuś',
+	'wikieditor-toolbar-tool-reference-title' => 'Referencu zasunuś',
+	'wikieditor-toolbar-tool-reference-insert' => 'Zasunuś',
+	'wikieditor-toolbar-tool-reference-text' => 'Tekst reference',
 	'wikieditor-toolbar-tool-signature' => 'Signatura a casowy kołk',
 	'wikieditor-toolbar-section-advanced' => 'Rozšyrjony',
 	'wikieditor-toolbar-tool-heading' => 'Nadpismo',
@@ -3416,6 +3425,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Dead3y3
  * @author Geraki
  * @author Lou
  * @author Omnipaedista
@@ -3518,6 +3528,8 @@ $messages['el'] = array(
 	'wikieditor-toolbar-tool-table-preview' => 'Προεπισκόπηση',
 	'wikieditor-toolbar-tool-table-insert' => 'Εισαγωγή',
 	'wikieditor-toolbar-tool-table-cancel' => 'Άκυρο',
+	'wikieditor-toolbar-tool-table-toomany' => 'Η εισαγωγή ενός πίνακα με περισσότερα από $1 κελιά δεν είναι δυνατόν με αυτό το πλαίσιο διαλόγου.',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Δεν έχετε εισάγει έναν έγκυρο αριθμό των γραμμών ή στηλών.',
 	'wikieditor-toolbar-tool-table-zero' => 'Δεν μπορείτε να εισαγάγετε έναν πίνακα χωρίς γραμμές ή στήλες.',
 	'wikieditor-toolbar-tool-replace' => 'Αναζήτηση και αντικατάσταση',
 	'wikieditor-toolbar-tool-replace-title' => 'Αναζήτηση και αντικατάσταση',
@@ -3857,6 +3869,10 @@ $messages['es'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referencia',
 	'wikieditor-toolbar-tool-reference-example' => 'Insertar nota a pie de página aquí',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Cancelar',
+	'wikieditor-toolbar-tool-reference-title' => 'Insertar una referencia',
+	'wikieditor-toolbar-tool-reference-insert' => 'Insertar',
+	'wikieditor-toolbar-tool-reference-text' => 'Texto de referencia',
 	'wikieditor-toolbar-tool-signature' => 'Firma y fecha',
 	'wikieditor-toolbar-section-advanced' => 'Avanzado',
 	'wikieditor-toolbar-tool-heading' => 'Encabezado',
@@ -4687,6 +4703,10 @@ $messages['fr'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Exemple.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Référence',
 	'wikieditor-toolbar-tool-reference-example' => 'Insérer le texte de la note en bas de page ici',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Annuler',
+	'wikieditor-toolbar-tool-reference-title' => 'Insérer une référence',
+	'wikieditor-toolbar-tool-reference-insert' => 'Insérer',
+	'wikieditor-toolbar-tool-reference-text' => 'Texte de la référence',
 	'wikieditor-toolbar-tool-signature' => 'Signature et date',
 	'wikieditor-toolbar-section-advanced' => 'Avancé',
 	'wikieditor-toolbar-tool-heading' => 'Titre',
@@ -5100,6 +5120,10 @@ $messages['gl'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Exemplo.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referencia',
 	'wikieditor-toolbar-tool-reference-example' => 'Insira unha nota aquí',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Cancelar',
+	'wikieditor-toolbar-tool-reference-title' => 'Inserir unha referencia',
+	'wikieditor-toolbar-tool-reference-insert' => 'Inserir',
+	'wikieditor-toolbar-tool-reference-text' => 'Texto da referencia',
 	'wikieditor-toolbar-tool-signature' => 'Sinatura con data e hora',
 	'wikieditor-toolbar-section-advanced' => 'Avanzado',
 	'wikieditor-toolbar-tool-heading' => 'Cabeceira',
@@ -5391,6 +5415,10 @@ $messages['gsw'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Byschpil.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Quälle',
 	'wikieditor-toolbar-tool-reference-example' => 'Do Fuessnotetekscht yyfiege',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Abbräche',
+	'wikieditor-toolbar-tool-reference-title' => 'Referänz yyfiege',
+	'wikieditor-toolbar-tool-reference-insert' => 'Yyfiege',
+	'wikieditor-toolbar-tool-reference-text' => 'Referänztext',
 	'wikieditor-toolbar-tool-signature' => 'Unterschrift un Zytstämpfel',
 	'wikieditor-toolbar-section-advanced' => 'Erwyteret',
 	'wikieditor-toolbar-tool-heading' => 'Iberschrift',
@@ -6019,6 +6047,10 @@ $messages['hsb'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Přikład.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referenca',
 	'wikieditor-toolbar-tool-reference-example' => 'Tekst nóžki tu zasunyć',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Přetorhnyć',
+	'wikieditor-toolbar-tool-reference-title' => 'Referencu zasunyć',
+	'wikieditor-toolbar-tool-reference-insert' => 'Zasunyć',
+	'wikieditor-toolbar-tool-reference-text' => 'Tekst referency',
 	'wikieditor-toolbar-tool-signature' => 'Signatura a časowy kołk',
 	'wikieditor-toolbar-section-advanced' => 'Rozšěrjeny',
 	'wikieditor-toolbar-tool-heading' => 'Nadpis',
@@ -6980,6 +7012,7 @@ $messages['io'] = array(
  * @author Gianfranco
  * @author Melos
  * @author Nemo bis
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'wikieditor-toolbar' => 'Barra degli strumenti di modifica',
@@ -6999,7 +7032,7 @@ $messages['it'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Inserisci link',
 	'wikieditor-toolbar-tool-link-int' => 'A una pagina wiki',
 	'wikieditor-toolbar-tool-link-int-target' => 'Titolo della pagina:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Inserisci il titolo della pagina',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Titolo della pagina o URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Testo del link:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Inserisci il testo da visualizzare',
 	'wikieditor-toolbar-tool-link-ext' => 'A una pagina di un sito web esterno',
@@ -7021,6 +7054,8 @@ $messages['it'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Esempio.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Nota',
 	'wikieditor-toolbar-tool-reference-example' => 'Inserire qui il testo della nota',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Annulla',
+	'wikieditor-toolbar-tool-reference-insert' => 'Inserisci',
 	'wikieditor-toolbar-tool-signature' => 'Firma e data',
 	'wikieditor-toolbar-section-advanced' => 'Avanzate',
 	'wikieditor-toolbar-tool-heading' => 'Intestazione',
@@ -7727,6 +7762,7 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Exemple.jpg',
 	'wikieditor-toolbar-tool-reference' => '출처',
 	'wikieditor-toolbar-tool-reference-example' => '여기에 출처 내용을 적어 주세요',
+	'wikieditor-toolbar-tool-reference-cancel' => '취소',
 	'wikieditor-toolbar-tool-signature' => '서명 및 시각',
 	'wikieditor-toolbar-section-advanced' => '고급 기능',
 	'wikieditor-toolbar-tool-heading' => '문단 제목',
@@ -8754,6 +8790,7 @@ $messages['lzz'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
 	'wikieditor-toolbar' => 'Алатник за уредување',
@@ -8795,6 +8832,10 @@ $messages['mk'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Пример.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Навод',
 	'wikieditor-toolbar-tool-reference-example' => 'Тука внесете текст на фуснотата',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Откажи',
+	'wikieditor-toolbar-tool-reference-title' => 'Вметни референца',
+	'wikieditor-toolbar-tool-reference-insert' => 'Вметни',
+	'wikieditor-toolbar-tool-reference-text' => 'Текст на наводот',
 	'wikieditor-toolbar-tool-signature' => 'Вашиот потпис со време',
 	'wikieditor-toolbar-section-advanced' => 'Напредно',
 	'wikieditor-toolbar-tool-heading' => 'Наслов',
@@ -8990,6 +9031,10 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'ഉദാഹരണം.jpg',
 	'wikieditor-toolbar-tool-reference' => 'അവലംബം',
 	'wikieditor-toolbar-tool-reference-example' => 'അടിക്കുറിപ്പിനുള്ള എഴുത്ത് ഇവിടെ ചേർക്കുക',
+	'wikieditor-toolbar-tool-reference-cancel' => 'റദ്ദാക്കുക',
+	'wikieditor-toolbar-tool-reference-title' => 'അവലംബം ചേർക്കുക',
+	'wikieditor-toolbar-tool-reference-insert' => 'ചേർക്കുക',
+	'wikieditor-toolbar-tool-reference-text' => 'അവലംബ എഴുത്ത്',
 	'wikieditor-toolbar-tool-signature' => 'ഒപ്പും സമയമുദ്രയും',
 	'wikieditor-toolbar-section-advanced' => 'വിപുലീകരിക്കപ്പെട്ടവ',
 	'wikieditor-toolbar-tool-heading' => 'തലക്കെട്ട്',
@@ -9704,6 +9749,10 @@ Wilt u er een interne verwijzing van maken?',
 	'wikieditor-toolbar-tool-file-example' => 'Voorbeeld.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referentie',
 	'wikieditor-toolbar-tool-reference-example' => 'Plaats hier tekst voor de voetnoot',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Annuleren',
+	'wikieditor-toolbar-tool-reference-title' => 'Referentie invoegen',
+	'wikieditor-toolbar-tool-reference-insert' => 'Invoegen',
+	'wikieditor-toolbar-tool-reference-text' => 'Referentietekst',
 	'wikieditor-toolbar-tool-signature' => 'Ondertekening en tijdstempel',
 	'wikieditor-toolbar-section-advanced' => 'Gevorderde functies',
 	'wikieditor-toolbar-tool-heading' => 'Kopje',
@@ -10033,6 +10082,10 @@ $messages['no'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Eksempel.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referanse',
 	'wikieditor-toolbar-tool-reference-example' => 'Sett inn fotnotetekst her',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Avbryt',
+	'wikieditor-toolbar-tool-reference-title' => 'Sett inn referanse',
+	'wikieditor-toolbar-tool-reference-insert' => 'Sett inn',
+	'wikieditor-toolbar-tool-reference-text' => 'Referansetekst',
 	'wikieditor-toolbar-tool-signature' => 'Din signatur med dato',
 	'wikieditor-toolbar-section-advanced' => 'Avansert',
 	'wikieditor-toolbar-tool-heading' => 'Overskrift',
@@ -10659,6 +10712,10 @@ $messages['pms'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Esempi.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Arferiment',
 	'wikieditor-toolbar-tool-reference-example' => 'Anserì ël test ëd la nòta an bass dla pàgina ambelessì',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Scancela',
+	'wikieditor-toolbar-tool-reference-title' => 'Ansëriss arferiment',
+	'wikieditor-toolbar-tool-reference-insert' => 'Ansëriss',
+	'wikieditor-toolbar-tool-reference-text' => "Test d'arferiment",
 	'wikieditor-toolbar-tool-signature' => 'Signatura e dàita',
 	'wikieditor-toolbar-section-advanced' => 'Avansà',
 	'wikieditor-toolbar-tool-heading' => 'Antestassion',
@@ -11675,6 +11732,10 @@ $messages['ru'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Примечание',
 	'wikieditor-toolbar-tool-reference-example' => 'Вставьте сюда текст сноски',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Отмена',
+	'wikieditor-toolbar-tool-reference-title' => 'Вставить ссылку',
+	'wikieditor-toolbar-tool-reference-insert' => 'Вставить',
+	'wikieditor-toolbar-tool-reference-text' => 'Текст ссылки',
 	'wikieditor-toolbar-tool-signature' => 'Подпись с отметкой времени',
 	'wikieditor-toolbar-section-advanced' => 'Дополнительно',
 	'wikieditor-toolbar-tool-heading' => 'Заголовок',
@@ -12835,6 +12896,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
  * @author Fluff
  * @author GameOn
@@ -12883,6 +12945,8 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Exempel.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referens',
 	'wikieditor-toolbar-tool-reference-example' => 'Sätt in fotnotstexten här',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Avbryt',
+	'wikieditor-toolbar-tool-reference-insert' => 'Infoga',
 	'wikieditor-toolbar-tool-signature' => 'Signatur och tidsstämpel',
 	'wikieditor-toolbar-section-advanced' => 'Avancerad',
 	'wikieditor-toolbar-tool-heading' => 'Rubrik',

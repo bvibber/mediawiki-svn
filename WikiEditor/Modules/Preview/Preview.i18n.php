@@ -192,9 +192,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'wikieditor-preview-preference' => 'Ενεργοποίηση προεπισκόπησης δίπλα-δίπλα',
 	'wikieditor-preview-tab' => 'Προεπισκόπηση',
 	'wikieditor-preview-changes-tab' => 'Αλλαγές',
 	'wikieditor-preview-loading' => 'Φόρτωση...',
