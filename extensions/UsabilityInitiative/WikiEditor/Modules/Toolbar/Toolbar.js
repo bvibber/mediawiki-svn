@@ -1392,16 +1392,17 @@ $j(document).ready( function() {
 			width: 590,
 			buttons: {
 				'wikieditor-toolbar-tool-reference-insert': function() {
-					var val = $j( '#wikieditor-toolbar-reference-text' ).val();
+					var insertText = $j( '#wikieditor-toolbar-reference-text' ).val();
+					var whitespace = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace' );
+					if ( whitespace ) insertText = whitespace[0] + insertText + whitespace[1];
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j( this ).data( 'context' ),
 						{
 							type: 'replace',
 							options: {
 								pre: '<ref>',
-								peri: val,
-								post: '</ref>',
-								ownline: true
+								peri: insertText,
+								post: '</ref>'
 							}
 						},
 						$j( this )
@@ -1424,8 +1425,17 @@ $j(document).ready( function() {
 				var selection = $j(this).data( 'context' )
 					.$textarea.textSelection( 'getSelection' ); 
 				if ( selection != '' ) {
-					// TODO: add support for detecting <ref></ref>
-					$j( '#wikieditor-toolbar-reference-text' ).val( selection );
+					var matches, text;
+					if ( ( matches = selection.match( /^(\s*)(<ref\>)([^\<]+)?(<\/ref\>)(\s*)$/ ) ) ) {
+						// <ref>foo</ref>
+						text = matches[3];
+						console.log(matches[1].length, matches[5].length)
+						// Preserve whitespace when replacing
+						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
+					} else {
+						text = selection;
+					}
+					$j( '#wikieditor-toolbar-reference-text' ).val( text );
 				}
 				if ( !( $j( this ).data( 'dialogkeypressset' ) ) ) {
 					$j( this ).data( 'dialogkeypressset', true );
