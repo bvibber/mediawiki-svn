@@ -2,9 +2,6 @@
 /**
  * Internationalization file for Transliterator
  */
-
-require_once( dirname(__FILE__) . '/Transliterator.i18n.magic.php' );
-
 $messages = array();
 
 /**

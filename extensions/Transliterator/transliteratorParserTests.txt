@@ -278,7 +278,7 @@ transliterator: error messages
 !! result
 <p><span class="transliterator error">Invalid syntax <code>invalid rule</code> in <a href="/wiki/MediaWiki:Transliterator:syntax" title="MediaWiki:Transliterator:syntax">MediaWiki:Transliterator:syntax</a></span>
 <span class="transliterator error">Ambiguous rule <code>&#65;=&gt;c</code> in <a href="/wiki/MediaWiki:Transliterator:ambiguous" title="MediaWiki:Transliterator:ambiguous">MediaWiki:Transliterator:ambiguous</a></span>
-<span class="transliterator error">More than 255 rules in <a href="/wiki/MediaWiki:Transliterator:overlong" title="MediaWiki:Transliterator:overlong">MediaWiki:Transliterator:overlong</a></span>
+<span class="transliterator error">More than 500 rules in <a href="/wiki/MediaWiki:Transliterator:overlong" title="MediaWiki:Transliterator:overlong">MediaWiki:Transliterator:overlong</a></span>
 <span class="transliterator error">Rule <code>maybe a huge rule will work =&gt; no it won't</code> has more than 10 characters on the left in <a href="/wiki/MediaWiki:Transliterator:rulelength" title="MediaWiki:Transliterator:rulelength">MediaWiki:Transliterator:rulelength</a></span>
 </p>
 !! end

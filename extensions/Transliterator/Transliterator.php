@@ -30,6 +30,7 @@ $wgExtensionCredits['parserhook'][] = array(
 
 $wgAutoloadClasses['ExtTransliterator'] = dirname( __FILE__ ) . "/Transliterator_body.php";
 $wgExtensionMessagesFiles['Transliterator'] = dirname( __FILE__ ) . '/Transliterator.i18n.php';
+$wgExtensionMessagesFiles['TransliteratorMagic'] = dirname( __FILE__ ) . '/Transliterator.i18n.magic.php';
 $wgParserTestFiles[] = dirname( __FILE__ ) . '/transliteratorParserTests.txt';
 
 $wgHooks['ParserFirstCallInit'][] = 'ExtTransliterator::setup';
