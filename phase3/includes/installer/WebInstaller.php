@@ -1502,85 +1502,24 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		$this->startForm();
 		$this->parent->output->addHTML("<ul>");
-
-		// Extensions
-		$exts = $this->parent->getVar( '_Extensions' );
-		if( count( $exts ) ) {
-			global $wgHooks, $wgAutoloadClasses;
-			$this->startStage( 'config-install-extensions' );
-			$path = $this->getVar( 'IP' ) . '/extensions';
-			foreach( $exts as $e ) {
-				require( "$path/$e/$e.php" );
-			}
-			$this->endStage();
+		foreach( $this->parent->getInstallSteps() as $step ) {
+			$this->startStage( "config-install-$step" );
+			$func = 'install' . ucfirst( $step );
+			$success = $this->parent->{$func}();
+			$this->endStage( $success );
 		}
-
-		// Get database
-		$this->startStage( 'config-install-database' );
-		$dbType = $this->parent->getVar( 'wgDBtype' );
-		$installer = $this->parent->getDBInstaller( $dbType );
-		$db = $installer->setupDatabase();
-		if( !$db ) {
-			// @todo Need some sort of failure
-			return;
-		}
-		$this->endStage();
-
-		// Create tables
-		$this->startStage( 'config-install-tables' );
-		$this->parent->createTables();
-		$this->endStage();
-
-		$this->startStage( 'config-install-secretkey' );
-		$file = @fopen( "/dev/urandom", "r" );
-		if ( $file ) {
-			$secretKey = bin2hex( fread( $file, 32 ) );
-			fclose( $file );
-			$this->endStage();
-		} else {
-			$secretKey = "";
-			for ( $i=0; $i<8; $i++ ) {
-				$secretKey .= dechex(mt_rand(0, 0x7fffffff));
-			}
-			$this->parent->output->addHTML( wfMsgHtml( 'config-insecure-secretkey' ) . "</li>\n" );
-		}
-		$this->setVar( 'wgSecretKey', $secretKey );
-
-		// @TODO initialize DB first
-		//$this->createWikiSysop();
-
-		$this->startStage( 'config-install-localsettings' );
-		$localSettings = new LocalSettings( $this->parent );
-		$localSettings->writeLocalSettings();
-		$this->endStage();
-
 		$this->endForm();
-	}
+		return true;
 
-	private function createWikiSysop() {
-		$user = User::newFromName( $this->getVar( '_AdminName' ) );
-		if ( !$user ) {
-			//@todo
-		}
-		if ( $user->idForName() == 0 ) {
-			$user->addToDatabase();
-			try {
-				$user->setPassword( $this->getVar( '_AdminPassword' ) );
-			} catch( PasswordError $pwe ) {
-				// need better failure here!
-			}
-			$user->saveSettings();
-			$user->addGroup( 'sysop' );
-			$user->addGroup( 'bureaucrat' );
-		}
 	}
 
 	private function startStage( $msg ) {
 		$this->parent->output->addHTML( "<li>" . wfMsgHtml( $msg ) . wfMsg( 'ellipsis') );
 	}
 
-	private function endStage() {
-		$this->parent->output->addHTML( wfMsgHtml( 'config-stage-done' ) . "</li>\n" );
+	private function endStage( $success = true ) {
+		$msg = $success ? 'config-install-step-done' : 'config-install-step-failed';
+		$this->parent->output->addHTML( wfMsgHtml( $msg ) . "</li>\n" );
 	}
 }
 class WebInstaller_Complete extends WebInstallerPage {

@@ -124,6 +124,15 @@ abstract class Installer {
 		'envCheckShellLocale',
 	);
 
+	var $installSteps = array(
+		'extensions',
+		'database',
+		'tables',
+		'secretkey',
+	//	'sysop',
+		'localsettings',
+	);
+
 	/**
 	 * Known object cache types and the functions used to test for their existence
 	 * @protected
@@ -732,9 +741,80 @@ abstract class Installer {
 		return $exts;
 	}
 
-	public function createTables() {
+
+
+	public function getInstallSteps() {
+		if( !count( $this->getVar( '_Extensions' ) ) ) {
+			unset( $this->installSteps['extensions'] );
+		}
+		return $this->installSteps;
+	}
+
+	public function installExtensions() {
+		global $wgHooks, $wgAutoloadClasses;
+		$exts = $this->getVar( '_Extensions' );
+		$path = $this->getVar( 'IP' ) . '/extensions';
+		foreach( $exts as $e ) {
+			require( "$path/$e/$e.php" );
+		}
+		return true;
+	}
+
+	public function installDatabase() {
+		$installer = $this->getDBInstaller( $this->getVar( 'wgDBtype' ) );
+		$db = $installer->setupDatabase();
+		if( !$db ) {
+			return false;
+		}
+		return true;
+	}
+
+	public function installTables() {
 		$installer = $this->getDBInstaller();
-		$installer->createTables();
+		$status = $installer->createTables();
+		return $status->isGood();
+	}
+
+	public function installSecretKey() {
+		$file = wfIsWindows() ? null : @fopen( "/dev/urandom", "r" );
+		if ( $file ) {
+			$secretKey = bin2hex( fread( $file, 32 ) );
+			fclose( $file );
+			$ret = true;
+		} else {
+			$secretKey = "";
+			for ( $i=0; $i<8; $i++ ) {
+				$secretKey .= dechex(mt_rand(0, 0x7fffffff));
+			}
+			$ret = false;
+		}
+		$this->setVar( 'wgSecretKey', $secretKey );
+		return $ret;
+	}
+
+	private function installSysop() {
+		$user = User::newFromName( $this->getVar( '_AdminName' ) );
+		if ( !$user ) {
+			return false; // we should've validated this earlier anyway!
+		}
+		if ( $user->idForName() == 0 ) {
+			$user->addToDatabase();
+			try {
+				$user->setPassword( $this->getVar( '_AdminPassword' ) );
+			} catch( PasswordError $pwe ) {
+				return false;
+			}
+			$user->saveSettings();
+			$user->addGroup( 'sysop' );
+			$user->addGroup( 'bureaucrat' );
+		}
+		return true;
+	}
+
+	public function installLocalsettings() {
+		$localSettings = new LocalSettings( $this );
+		$localSettings->writeLocalSettings();
+		return true;
 	}
 }
 

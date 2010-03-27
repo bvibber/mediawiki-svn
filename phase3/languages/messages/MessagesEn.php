@@ -4450,14 +4450,14 @@ commas and specify the port to be used (eg: 1.2.3.4:56, 7.8.9.10:11)',
 'config-extensions-help' => "The following extensions were automatically detected in your extensions directory.\n
 They may require additional configuration, but you can enable them now",
 
-'config-stage-done' => 'done',
+'config-install-step-done' => 'done',
+'config-install-step-failed' => "'''FAILED'''",
 'config-install-extensions' => 'Including extensions',
 'config-install-database' => 'Setting up database',
 'config-install-tables' => 'Creating tables',
 'config-install-interwiki-sql' => 'Could not find file interwiki.sql',
 'config-install-secretkey' => 'Generating secret key',
-'config-insecure-secretkey' => 'Warning: Unable to create secure $wgSecretKey. Consider changing it manually.',
-'config-install-user' => 'Creating administrator user account',
+'config-install-sysop' => 'Creating administrator user account',
 'config-install-localsettings' => 'Writing LocalSettings.php',
 'config-install-done' => "'''Congratulations''', you have successfully installed MediaWiki.
 
