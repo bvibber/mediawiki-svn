@@ -24,9 +24,8 @@ public class PopularityDisambiguator extends AbstractDisambiguator {
 	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) {
 		Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>();
 		int pop = 0;
-		for (Map.Entry<String, List<LocalConcept>> e: meanings.entrySet()) {
-			String t= e.getKey();
-			List<LocalConcept> m = e.getValue();
+		for (String t: terms) {
+			List<LocalConcept> m = meanings.get(t);
 			if (m.size()==0) continue;
 			
 			if (m.size()>0) Collections.sort(m, popularityComparator);

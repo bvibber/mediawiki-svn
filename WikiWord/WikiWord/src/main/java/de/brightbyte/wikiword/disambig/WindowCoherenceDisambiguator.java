@@ -1,262 +1,79 @@
 package de.brightbyte.wikiword.disambig;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
-import de.brightbyte.data.cursor.DataSet;
+import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
-import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.WikiWordRanking;
-import de.brightbyte.wikiword.store.LocalConceptStore;
 
-public class WindowCoherenceDisambiguator<K> extends AbstractDisambiguator {
+public class WindowCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> {
+
+	protected int window = 2; 
 	
-	protected int frequencyThreshold = 2; //FIXME: use complex cutoff specifier! 
-	protected double scoreThreshold = 0.002;
-	protected double popularityBias = 0.01;
-	protected Similarity<LabeledVector<K>> similarityMeasure;
-	protected FeatureFetcher<LocalConcept, K> featureFetcher;
-	
-	public WindowCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Similarity<LabeledVector<K>> sim) {
-		super(meaningFetcher);
+	public WindowCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<LocalConcept> popularityMeasure, Similarity<LabeledVector<K>> sim, int window) {
+		super(meaningFetcher, featureFetcher, popularityMeasure, sim);
 		
-		if (sim==null) throw new NullPointerException();
-		if (featureFetcher==null) throw new NullPointerException();
-		this.similarityMeasure = sim;
-		this.featureFetcher = featureFetcher;
-	}
-	
-	public FeatureFetcher getFeatureFetcher() {
-		return featureFetcher;
-	}
-
-	public void setFeatureFetcher(FeatureFetcher<LocalConcept, K> featureFetcher) {
-		this.featureFetcher = featureFetcher;
-	}
-
-	public Similarity<LabeledVector<K>> getSimilarityMeasure() {
-		return similarityMeasure;
-	}
-
-	public void setSimilarityMeasure(
-			Similarity<LabeledVector<K>> similarityMeasure) {
-		if (similarityMeasure==null) throw new NullPointerException();
-		this.similarityMeasure = similarityMeasure;
-	}
-
-	public double getPopularityBias() {
-		return popularityBias;
-	}
-
-	public void setPopularityBias(double popularityBias) {
-		this.popularityBias = popularityBias;
-	}
-
-	public int getFrequencyThreshold() {
-		return frequencyThreshold;
-	}
-
-	public void setFrequencyThreshold(int threshold) {
-		this.frequencyThreshold = threshold;
-	}
-
-	public double getScoreThreshold() {
-		return scoreThreshold;
-	}
-
-	public void setScoreThreshold(double threshold) {
-		this.scoreThreshold = threshold;
+		this.window = window;
 	}
 
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public Result disambiguate(Map<String, List<LocalConcept>> meanings) {
-		Set<LocalConcept> concepts = new HashSet<LocalConcept>();
-		
-		for (String t: terms) {
-			DataSet<LocalConcept> mm = conceptStore.getMeanings(t);
-			List<LocalConcept> m = mm.load();
-			
-			int maxCard = 0;
-			Iterator<LocalConcept> it = m.iterator();
-			while (it.hasNext()) {
-				//FIXME: keep explicitly defined meanings!
-				LocalConcept c = it.next();
-				int card = c.getCardinality();
-				if (maxCard<card) maxCard = card;
-				
-				if (card<maxCard) { //XXX: relies on descending order! //FIXME: ugly subsitute for "keep explicit" rule!
-					if (card < frequencyThreshold) it.remove();
-				}
-			}
-			
-			trace(" - \""+t+"\": "+m.size()+" meanings");
-			if (m.size()>0) meanings.put(t, m);
-			
-			for (LocalConcept c: m) {
-				concepts.add(c);
-			}
-		}
-		
-		if (concepts.size()==0) {
-			return null;
-		}
-		
-		if (meanings.size()==1) {
-			String t = meanings.keySet().iterator().next();
-			List<LocalConcept> m = meanings.get(t);
-			
-			Collections.sort(m, WikiWordRanking.byCardinality);
-			LocalConcept c = m.get(0);
-
-			Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>();
-			disambig.put(t, c);
-			
-			Result r = new Result(disambig, c.getCardinality(), -1, c.getCardinality());
-			return r;
-		}
+	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) throws PersistenceException {
+		Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>(meanings.size()); 
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		
-		List<Map<String, LocalConcept>> combinations = getCombinations(terms, meanings);
-		List<Result> rankings = new ArrayList<Result>();
-		
-		for (Map<String, LocalConcept> combo: combinations) {
-			Result r = getScore(combo, similarities);
-			if (r.getScore() <= scoreThreshold) continue;
+		FeatureCache<LocalConcept, K> features = new FeatureCache<LocalConcept, K>(featureFetcher); //TODO: keep a chain of n caches, resulting in LRU logic.
+
+		for (int i=0; i<terms.size(); i++) {
+			int from = i-window+1;
+			int to = i+1;
 			
-			rankings.add(r);
-		}
-		
-		if (rankings.size()==0) {
-			//NOTE: use most popular
-			Map<String, LocalConcept> combo = new HashMap<String, LocalConcept>();
+			if (from<0) from = 0;
+			if (to>terms.size()) to = terms.size();
 			
-			for (String t: terms) {
-				List<LocalConcept> mm = meanings.get(t);
-				LocalConcept c = mm.isEmpty() ? null : mm.get(0);
-				
-				if (c!=null) combo.put(t, c);
+			String t = terms.get(i);
+			LocalConcept m;
+			
+			if (to-from < 2) {
+				Result r = popularityDisambiguator.disambiguate(terms.subList(from, to), meanings);
+				m = (LocalConcept)r.getMeanings().get(t); //UGLY cast
+			} else {
+				List<Map<String, LocalConcept>> interpretations = getInterpretations(from, to, terms,  disambig, meanings);
+				Result r = getBestInterpretation(terms, meanings, interpretations, similarities, features);
+				m = (LocalConcept)r.getMeanings().get(t); //UGLY cast
 			}
 			
-			Result r = getScore(combo, similarities);
-			/*if (r.getScore() <= scoreThreshold) return null;
-			else*/ return r;
+			disambig.put(t, m);
 		}
 		
-		Collections.sort(rankings);
-		Collections.reverse(rankings);
-		
-		int c = 0;
-		double limit = -1;
-		for (Result r: rankings) {
-			if (limit<0) limit = r.getScore() / 2;
-			else if (r.getScore()<limit) break;
-			
-			trace(" = "+r);
-			c++;
-			
-			if (c>10) break;
-		}
-		
-		//TODO: if result is tight (less than 50% distance), use more popularity score!
-		Result r = rankings.get(0);
-		return r;
+		return getScore(disambig, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
-	private List<Map<String, LocalConcept>> getCombinations(List<String> terms, Map<String, List<LocalConcept>> meanings) {
-		if (terms.size()==0) {
-			List<Map<String, LocalConcept>> combinations = new ArrayList<Map<String, LocalConcept>>();
-			Map<String, LocalConcept> e = new HashMap<String, LocalConcept>();
-			combinations.add(e);
-			return combinations;
-		}
+	protected List<Map<String, LocalConcept>> getInterpretations(int from, int to, List<String> terms,  Map<String, LocalConcept> known, Map<String, List<LocalConcept>> meanings) {
+		Map<String, List<LocalConcept>> mset = new HashMap<String, List<LocalConcept>>();
 		
-		String t = terms.get(0);
-		List<LocalConcept> m = meanings.get(t);
+		if (to>terms.size()) to = terms.size();
 		
-		List<Map<String, LocalConcept>> base = getCombinations(terms.subList(1, terms.size()), meanings);
-
-		if (m==null || m.size()==0) return base;
-		
-		List<Map<String, LocalConcept>> combinations = new ArrayList<Map<String, LocalConcept>>();
-		
-		for (Map<String, LocalConcept> be: base) {
-			for (LocalConcept c: m) {
-				Map<String, LocalConcept> e = new HashMap<String, LocalConcept>();
-				e.putAll(be);
-				e.put(t, c);
-
-				combinations.add(e);
-			}
-		}
-		
-		trace("    ~ "+t+": "+combinations.size()+" combinations");
-		return combinations;
-	}
-
-	protected Result getScore(Map<String, LocalConcept> combo, LabeledMatrix<LocalConcept, LocalConcept> similarities) throws PersistenceException {
-		double sim = 0;
-		double pop = 0;
-
-		int i=0, j=0, n=0, c=0;
-		for (LocalConcept a: combo.values()) {
-			i++;
-			j=0;
-			for (LocalConcept b: combo.values()) {
-				j++;
-				if (i==j) break;
-				
-				double d;
-				
-				if (a==b || a.equals(b)) {
-					d = 1;
-				}
-				else {
-					if (similarities.contains(a, b)) {
-						d = similarities.get(a, b);
-					}
-					else {
-						ConceptFeatures<LocalConcept, K> fa = featureFetcher.getFeatures(a);
-						ConceptFeatures<LocalConcept, K> fb = featureFetcher.getFeatures(b);
-						
-						d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
-						similarities.set(a, b, d);
-					}
-				}
-				
-				if (d<0) throw new IllegalArgumentException("encountered negative similarity score ("+d+") for "+a+" / "+b);
-				sim += d;
-				n ++; //should add up to combo.size*(combo.size()-1)/2, according to Gauss
-			}
+		for (int i=from; i<to; i++) {
+			List<LocalConcept> m;
 			
-			int card = a.getCardinality(); //XXX: this may be local cardinality (indegree), we want the frequency of the meaning-assignment!
-			if (card<=0) card= 1;
-			pop += card; 
-			c ++;
+			String t = terms.get(i);
+			LocalConcept c = known.get(t);
+
+			if (c!=null) m = Collections.singletonList(c);
+			else m = meanings.get(t);
+			
+			mset.put(t, m);
 		}
 		
-		//normalize
-		sim = sim / n; 
-		pop = pop / c;
-		
-		double popf = 1 - 1/(Math.sqrt(pop)+1);  //converge against 1
-		
-		double score =  popf * popularityBias + sim * ( 1 - popularityBias );
-		return new Result(combo, score, sim, pop);
-	}
-	
+		return getInterpretations(terms.subList(from, to), mset);
+	}	
 }

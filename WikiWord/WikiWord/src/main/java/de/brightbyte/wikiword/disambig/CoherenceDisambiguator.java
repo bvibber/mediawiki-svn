@@ -88,10 +88,17 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		}
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		
 		FeatureCache<LocalConcept, K> features = new FeatureCache<LocalConcept, K>(featureFetcher); //TODO: keep a chain of n caches, resulting in LRU logic.
 		
 		List<Map<String, LocalConcept>> interpretations = getInterpretations(terms, meanings);
+
+		return getBestInterpretation(terms, meanings, interpretations, similarities, features);
+	}
+	
+	protected Result getBestInterpretation(List<String> terms, Map<String, List<LocalConcept>> meanings, 
+			List<Map<String, LocalConcept>> interpretations, 
+			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureCache<LocalConcept, K> features) throws PersistenceException {
+		
 		List<Result> rankings = new ArrayList<Result>();
 		
 		for (Map<String, LocalConcept> interp: interpretations) {
@@ -102,34 +109,24 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		}
 		
 		if (rankings.size()==0) {
-			//NOTE: use most popular
-			Map<String, LocalConcept> interp = new HashMap<String, LocalConcept>();
-			
-			for (String t: terms) {
-				List<LocalConcept> mm = meanings.get(t);
-				LocalConcept c = mm.isEmpty() ? null : mm.get(0);
-				
-				if (c!=null) interp.put(t, c);
-			}
-			
-			Result r = getScore(interp, similarities, features);
-			/*if (r.getScore() <= scoreThreshold) return null;
-			else*/ return r;
+			return popularityDisambiguator.disambiguate(terms, meanings);
 		}
 		
 		Collections.sort(rankings);
 		Collections.reverse(rankings);
 		
-		int c = 0;
-		double limit = -1;
-		for (Result r: rankings) {
-			if (limit<0) limit = r.getScore() / 2;
-			else if (r.getScore()<limit) break;
-			
-			trace(" = "+r);
-			c++;
-			
-			if (c>10) break;
+		if (trace!=null) {
+			int c = 0;
+			double limit = -1;
+			for (Result r: rankings) {
+				if (limit<0) limit = r.getScore() / 2;
+				else if (r.getScore()<limit) break;
+				
+				trace(" = "+r);
+				c++;
+				
+				if (c>10) break;
+			}
 		}
 		
 		//TODO: if result is tight (less than 50% distance), use more popularity score!
@@ -137,7 +134,7 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		return r;
 	}
 
-	private List<Map<String, LocalConcept>> getInterpretations(List<String> terms, Map<String, List<LocalConcept>> meanings) {
+	protected List<Map<String, LocalConcept>> getInterpretations(List<String> terms, Map<String, List<LocalConcept>> meanings) {
 		if (terms.size()==0) {
 			List<Map<String, LocalConcept>> combinations = new ArrayList<Map<String, LocalConcept>>();
 			Map<String, LocalConcept> e = new HashMap<String, LocalConcept>();
