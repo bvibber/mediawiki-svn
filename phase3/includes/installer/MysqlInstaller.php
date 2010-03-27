@@ -385,7 +385,18 @@ class MysqlInstaller extends InstallerDBType {
 	}
 
 	function createTables() {
-		
+		global $IP;
+		$status = $this->getConnection();
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
+		if ( !$this->db->sourceFile( "$IP/maintenance/tables.sql" )
+			|| !$this->db->sourceFile( "$IP/maintenance/interwiki.sql" ) )
+		{
+			//@todo
+		}
+		return Status::newGood();
 	}
 
 	function getTableOptions() {

@@ -127,6 +127,9 @@ class PostgresInstaller extends InstallerDBType {
 	function setupDatabase() {
 	}
 
+	function createTables() {
+	}
+
 	function getLocalSettings() {
 		$port = $this->getVar( 'wgDBport' );
 		$schema = $this->getVar( 'wgDBmwschema' );
