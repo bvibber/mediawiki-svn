@@ -43,7 +43,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
 	'description' => 'Easy formatting of lists in natural languages.',
 	'descriptionmsg' => 'nll-desc',
-	'version'     => '2.2'
+	'version'     => '2.3'
 );
 
 $dir = dirname(__FILE__);
@@ -218,7 +218,8 @@ class NaturalLanguageList {
 			$this->mOptions['outputseparator'] = wfMsgNoTrans( 'nll-separator' );
 
 			if ( $this->mOptions['lastseparator'] === null ) {
-				$this->mOptions['lastseparator'] = wfMsgNoTrans( 'nll-lastseparator' );
+				# HACK. Add a space because http://translatewiki.org strips them.
+				$this->mOptions['lastseparator'] = wfMsgNoTrans( 'nll-lastseparator' ) . ' ';
 			}
 
 		} else if ( $this->mOptions['lastseparator'] === null ) {
