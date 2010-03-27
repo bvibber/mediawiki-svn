@@ -53,11 +53,110 @@ Duplicates not allowed
 !! end
 
 !! test
+Blanks not allowed
+!! input
+{{#list:1||3| |4|	|5|}}
+!! result
+<p>1, 3, 4 and 5
+</p>
+!! end
+
+!! test
+Blanks allowed
+!! input
+{{#list:blanks=true|1||3| |4|	|5|}}
+!! result
+<p>1, , 3, , 4, , 5 and 
+</p>
+!! end
+
+!! test
+Blanks allowed, but no duplicates
+!! input
+{{#list:blanks=true|duplicates=false|1||3| |4|	|5|}}
+!! result
+<p>1, , 3, 4 and 5
+</p>
+!! end
+
+!! test
+Output separator, basic with spaces
+!! input
+{{#list:separator=&#32;@&#32;|1|2|3|4}}
+!! result
+<p>1&#32;@&#32;2&#32;@&#32;3&#32;@&#32;4
+</p>
+!! end
+
+!! test
+Output separator, basic without spaces
+!! input
+{{#list:separator=X|1|2|3|4}}
+!! result
+<p>1X2X3X4
+</p>
+!! end
+
+!! test
+Output separator, together with rawlist
+!! input
+{{#rawlist:X|{{#list:separator=X|1|2|3|4}}}}
+!! result
+<p>1, 2, 3 and 4
+</p>
+!! end
+
+!! test
+Output separator with different last separator
+!! input
+{{#list:separator=@&#32;|lastseparator=&#32;or&#32;|1|2|3|4}}
+!! result
+<p>1@&#32;2@&#32;3&#32;or&#32;4
+</p>
+!! end
+
+!! test
+Only last separator
+!! input
+{{#list:lastseparator=&#32;or&#32;|1|2|3|4}}
+!! result
+<p>1, 2, 3&#32;or&#32;4
+</p>
+!! end
+
+!! test
+Sophisticated separator input
+!! input
+{{#list:lastseparator=<span class="serial-comma">,</span> <span class="serial-and">and</span>&#32;|1|2|3|4}}
+!! result
+<p>1, 2, 3<span class="serial-comma">,</span> <span class="serial-and">and</span>&#32;4
+</p>
+!! end
+
+!! test
 Basic format
+!! input
+{{#list:format='''$1'''|1|2|3|4}}
+!! result
+<p><b>1</b>, <b>2</b>, <b>3</b> and <b>4</b>
+</p>
+!! end
+
+!! test
+Basic format with link
 !! input
 {{#list:format=[[$1]]|Main page}}
 !! result
 <p><a href="/index.php?title=Main_page&amp;action=edit&amp;redlink=1" class="new" title="Main page (page does not exist)">Main page</a>
+</p>
+!! end
+
+!! test
+Set fieldsperitem
+!! input
+{{#list:fieldsperitem=2|1|2|3|4}}
+!! result
+<p>1 and 3
 </p>
 !! end
 
@@ -67,5 +166,95 @@ Calculate fieldsperitem
 {{#list:format='''$1'''<sup>$2</sup>|hi|world|world|hi}}
 !! result
 <p><b>hi</b><sup>world</sup> and <b>world</b><sup>hi</sup>
+</p>
+!! end
+
+!! test
+Calculate fieldsperitem; 3
+!! input
+{{#list:format='''$1'''<sup>$2+$3</sup>|1|2|3|4|5|6}}
+!! result
+<p><b>1</b><sup>2+3</sup> and <b>4</b><sup>5+6</sup>
+</p>
+!! end
+
+!! test
+Overwritted calculated fieldsperitem input upward
+!! input
+{{#list:format=$1<sup>$2</sup>|fieldsperitem=3|1|2|3|4|5|6}}
+!! result
+<p>1<sup>2</sup> and 4<sup>5</sup>
+</p>
+!! end
+
+!! test
+Overwritted calculated fieldsperitem input downward
+!! input
+{{#list:format=$1<sup>$2+$3</sup>|fieldsperitem=2|1|2|3|4|5|6}}
+!! result
+<p>1<sup>2+$3</sup>, 3<sup>4+$3</sup> and 5<sup>6+$3</sup>
+</p>
+!! end
+
+!! test
+Basic rawlist input
+!! input
+{{#rawlist:,|1,2,3,4,5}}
+!! result
+<p>1, 2, 3, 4 and 5
+</p>
+!! end
+
+!! test
+Basic rawlist input with ignore
+!! input
+{{#rawlist:,|1,2,3,4,5|ignore=4}}
+!! result
+<p>1, 2, 3 and 5
+</p>
+!! end
+
+!! test
+Rawlist input in two elements
+!! input
+{{#rawlist:,|1,2,3|4,5}}
+!! result
+<p>1, 2, 3, 4 and 5
+</p>
+!! end
+
+!! test
+Rawlist input in two elements with two ignored elements
+!! input
+{{#rawlist:,|1,2,3|4,5|ignore=2,4}}
+!! result
+<p>1, 3 and 5
+</p>
+!! end
+
+!! test
+Basic ignore scenario
+!! input
+{{#list:1|2|3|4|ignore=3}}
+!! result
+<p>1, 2 and 4
+</p>
+!! end
+
+!! test
+Ignoring wikilinks
+!! input
+{{#list: [[Foo]] | [[Bar]] | ignore=[[Foo]] }}
+!! result
+<p><a href="/index.php?title=Bar&amp;action=edit&amp;redlink=1" class="new" title="Bar (page does not exist)">Bar</a>
+</p>
+!! end
+
+!! test
+Overwriting ignore with data
+!! input
+{{#list: [[Foo]] | [[Bar]] | data=ignore=[[Foo]] }}
+!! result
+<p><a href="/index.php?title=Foo&amp;action=edit&amp;redlink=1" class="new" title="Foo (page does not exist)">Foo</a>, <a href="/index.php?title=Bar&amp;action=edit&amp;redlink=1" class="new" title="Bar (page does not exist)">Bar</a> and ignore=<a href="/index.php?title=Foo&amp;action=edit&amp;redlink=1" class="new" title="Foo (page does not exist)">Foo</a>
 </p>
 !! end
