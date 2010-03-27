@@ -4451,7 +4451,7 @@ commas and specify the port to be used (eg: 1.2.3.4:56, 7.8.9.10:11)',
 They may require additional configuration, but you can enable them now",
 
 'config-install-step-done' => 'done',
-'config-install-step-failed' => "'''FAILED'''",
+'config-install-step-failed' => "<b>FAILED</b>",
 'config-install-extensions' => 'Including extensions',
 'config-install-database' => 'Setting up database',
 'config-install-tables' => 'Creating tables',
