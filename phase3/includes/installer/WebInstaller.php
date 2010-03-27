@@ -1524,10 +1524,12 @@ class WebInstaller_Install extends WebInstallerPage {
 }
 class WebInstaller_Complete extends WebInstallerPage {
 	public function execute() {
+		global $IP;
 		$this->startForm();
-		$this->parent->output->addHTML( 
+		$msg = file_exists( "$IP/LocalSettings.php" ) ? 'config-install-done-moved' : 'config-install-done';
+		$this->parent->output->addHTML(
 			$this->parent->getInfoBox(
-				wfMsgNoTrans( 'config-install-done', 
+				wfMsgNoTrans( $msg,
 					$GLOBALS['wgServer'] . 
 						$this->getVar( 'wgScriptPath' ) . '/index' . 
 						$this->getVar( 'wgScriptExtension' )

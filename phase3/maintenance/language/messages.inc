@@ -3361,6 +3361,7 @@ $wgMessageStructure = array(
 		'config-install-sysop',
 		'config-install-localsettings',
 		'config-install-done',
+		'config-install-done-moved',
 	),
 );
 

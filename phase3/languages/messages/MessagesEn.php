@@ -4465,6 +4465,9 @@ You will need to move it from <tt>./config/LocalSettings.php</tt> to <tt>./Local
 for MediaWiki to begin working.
 
 [$1 Link to your wiki]",
+'config-install-done-moved' => "'''Congratulations''', you have successfully installed MediaWiki.
+
+[$1 Link to your wiki]",
 
 # Special:Version
 'version'                          => 'Version',
