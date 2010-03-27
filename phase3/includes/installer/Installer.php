@@ -772,7 +772,12 @@ abstract class Installer {
 	public function installTables() {
 		$installer = $this->getDBInstaller();
 		$status = $installer->createTables();
-		return $status->isGood();
+		if( $status->isGood() ) {
+			LBFactory::enableBackend();
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public function installSecretKey() {
@@ -792,7 +797,7 @@ abstract class Installer {
 		return $ret;
 	}
 
-	private function installSysop() {
+	public function installSysop() {
 		$user = User::newFromName( $this->getVar( '_AdminName' ) );
 		if ( !$user ) {
 			return false; // we should've validated this earlier anyway!
@@ -817,37 +822,3 @@ abstract class Installer {
 		return true;
 	}
 }
-
-/**
- * Exception class for attempted DB access
- */
-class InstallerDBAccessError extends MWException {
-	function __construct() {
-		parent::__construct( "The installer attempted to access the DB via wfGetDB(). This is not allowed." );
-	}
-}
-
-/**
- * LBFactory class that throws an error on any attempt to use it. 
- * This will typically be done via wfGetDB().
- * Installer entry points should ensure that they set up $wgLBFactoryConf to 
- *  array( 'class' => 'LBFactory_InstallerFake' )
- */
-class LBFactory_InstallerFake extends LBFactory {
-	function __construct( $conf ) {}
-
-	function newMainLB( $wiki = false) {
-		throw new InstallerDBAccessError;
-	}
-	function getMainLB( $wiki = false ) {
-		throw new InstallerDBAccessError;
-	}
-	function newExternalLB( $cluster, $wiki = false ) {
-		throw new InstallerDBAccessError;
-	}
-	function &getExternalLB( $cluster, $wiki = false ) {
-		throw new InstallerDBAccessError;
-	}
-	function forEachLB( $callback, $params = array() ) {}
-}
-

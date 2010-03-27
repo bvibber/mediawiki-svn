@@ -7,7 +7,6 @@ define( 'MW_CONFIG_CALLBACK', 'wfInstallerConfig' );
 function wfInstallerConfig() {
 	// Don't access the database
 	$GLOBALS['wgUseDatabaseMessages'] = false;
-	$GLOBALS['wgLBFactoryConf'] = array( 'class' => 'LBFactory_InstallerFake' );
 	// Debug-friendly
 	$GLOBALS['wgShowExceptionDetails'] = true;
 	// Don't break forms
@@ -17,8 +16,9 @@ function wfInstallerConfig() {
 chdir( ".." );
 require( './includes/WebStart.php' );
 
-// Disable the i18n cache
+// Disable the i18n cache and LoadBalancer
 Language::getLocalisationCache()->disableBackend();
+LBFactory::disableBackend();
 
 $installer = new WebInstaller( $wgRequest );
 $wgParser->setHook( 'doclink', array( $installer, 'docLink' ) );
