@@ -48,6 +48,8 @@ $messages['br'] = array(
  */
 $messages['es'] = array(
 	'ukgeocoding_name' => 'Geocodificación de Reino Unido para Mapas',
+	'ukgeocoding_desc' => 'Extiende Mapas con una función parser display_uk_point con implementación de Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Uno o más códigos postales no pudieron ser geocodificados y fueron omitidos en el mapa.',
 );
 
 /** French (Français)

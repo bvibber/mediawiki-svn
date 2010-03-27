@@ -248,13 +248,14 @@ $messages['fi'] = array(
  * @author Grondin
  * @author Peter17
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'ratedpages' => 'Pages évaluées par les lecteurs',
-	'ratedpages-leg' => "Trouver les pages évaluées avec un nombre d'évaluations assez grand",
+	'ratedpages-leg' => 'Trouver les pages évaluées suffisamment souvent',
 	'ratedpages-list' => 'Voici une liste des pages triées suivant leur évaluation par les lecteurs.',
 	'ratedpages-none' => 'Il n’y a aucune page dans cette liste',
-	'ratedpages-graphs' => "données d'évaluation",
+	'ratedpages-graphs' => 'données d’évaluation',
 	'ratedpages-count' => '$1 {{PLURAL:$1|révision|révisions}}',
 );
 

@@ -100,6 +100,13 @@ $messages['dsb'] = array(
 	'wikieditor-highlight-preference' => 'Syntaksowe wuzwignjenje za wobźěłanje zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'wikieditor-highlight-preference' => 'Ενεργοποίηση επισήμανσης σύνταξης κατά την επεξεργασία',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

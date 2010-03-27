@@ -696,6 +696,22 @@ $messages['ru'] = array(
 Вы можете [[Special:RefHelper|добавить сноску вручную]] или [[Special:RefSearch|произвести поиск ссылок]].',
 );
 
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'refhelper-label_authorforename' => 'Författaren $1s förnamn:',
+	'refhelper-label_authorsurname' => 'Efternamn:',
+	'refhelper-title' => 'Titel:',
+	'refhelper-journal' => 'Tidning:',
+	'refhelper-volume' => 'Volym:',
+	'refhelper-pages' => 'Sidor:',
+	'refhelper-year' => 'År:',
+	'refhelper-category' => 'Kategori $1:',
+	'refhelper-create' => 'Skapa',
+	'refhelper-search' => 'Sök',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

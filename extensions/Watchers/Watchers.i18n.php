@@ -359,6 +359,8 @@ $messages['es'] = array(
 	'watchers_noone_watches' => 'Nadie vigila la página [[:$1]]',
 	'watchers_x_or_more' => '$1 o más {{PLURAL:$1|usuarios|usuarios}} tienen la página [[:$2]] en sus listas de vigilancia.',
 	'watchers_less_than_x' => 'menos de $1 {{PLURAL:$1|usuario|usuarios}} tienen esta página en su lista de vigilancia.',
+	'watchers-num' => '$1 {{PLURAL:$1|usuario tiene|usuarios tienen}} la página "[[:$2]]" {{PLURAL:$1|en su lista|en sus listas}} de seguimiento.',
+	'right-watchers-list' => '[[Special:Watchers|Listar los usuarios que vigilan una página específica]]',
 );
 
 /** Basque (Euskara)

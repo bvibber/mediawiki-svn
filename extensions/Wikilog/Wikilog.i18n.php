@@ -1905,6 +1905,7 @@ Para poder publicar artículos y habilitar otras características de wikilog, es
 Desmarcar esta casilla para mantener este artículo como borrador.',
 	'wikilog-comment-permalink' => '$1 en $2',
 	'wikilog-comment-note-item' => 'publicado para $1',
+	'wikilog-comment-note-edited' => 'modificado por última vez el $1 a las $2',
 	'wikilog-comment-anonsig' => '$3 (anónimo)',
 	'wikilog-comment-pending' => 'Este comentario está en espera por ser aprobado',
 	'wikilog-comment-deleted' => 'Este comentario ha sido borrado.',
@@ -5198,6 +5199,7 @@ $messages['si'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Elias Bröms
  * @author Ozp
  * @author Per
@@ -5263,6 +5265,7 @@ För att publicera artiklar och aktivera andra wikilogegenskaper måste den för
 	'wikilog-edit-signpub' => 'Signera och publicera denna artikel',
 	'wikilog-edit-signpub-tooltip' => 'Gör att artiklar blir signerade och publicerade i sin wikilog när de sparas.
 Avmarkera denna box för att lämna artiklar som utkast.',
+	'wikilog-comment-anonsig' => '$3 (anonym)',
 	'wikilog-comment-pending' => 'Denna kommentar väntar på godkännande.',
 	'wikilog-comment-deleted' => 'Denna kommentar har raderats.',
 	'wikilog-comment-autosumm' => 'Ny kommentar av $1: $2',
@@ -5277,6 +5280,9 @@ Avmarkera denna box för att lämna artiklar som utkast.',
 	'wikilog-newtalk-summary' => 'skapad automatiskt av Wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]',
 	'wikilog-feed-description' => 'Läs de senaste inläggen i denna feed.',
+	'wikilog-comment-feed-title1' => 'Kommentar av $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Kommentar av $2 till $3 (#$1)',
+	'wikilog-comment-feed-description' => 'Läs de senaste kommentarerna i denna feed.',
 	'wikilog-title-item-full' => '$1 - $2',
 	'wikilog-title-comments' => 'Kommentarer - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',

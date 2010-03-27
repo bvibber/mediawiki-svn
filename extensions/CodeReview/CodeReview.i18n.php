@@ -2187,6 +2187,7 @@ $messages['eo'] = array(
 	'code-load-diff' => 'Ŝarĝante diferencon...',
 	'code-notes' => 'lastaj komentoj',
 	'code-statuschanges' => 'statusaj ŝanĝoj',
+	'code-mycommits' => 'miaj publikigitaĵoj',
 	'code-authors' => 'aŭtoroj',
 	'code-status' => 'statoj',
 	'code-tags' => 'etikedoj',
@@ -2418,6 +2419,7 @@ $messages['es'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|prueba realizada|pruebas realizadas}} con éxito, $3 {{PLURAL:$4|prueba fallida|pruebas fallidas}}:',
 	'codereview-tests-running' => 'Casos de prueba en ejecución...',
 	'codereview-tests-aborted' => 'Ejecución de prueba abortada.',
+	'codereview-tests-failed' => 'Falló',
 	'codereview-email-subj' => '[$1] [$2]: Añadido nuevo comentario',
 	'codereview-email-body' => 'El usuario «$1» envió un comentario en $3.
 
@@ -8317,6 +8319,7 @@ $messages['sv'] = array(
 	'code-status-deferred' => 'uppskjuten',
 	'code-pathsearch-legend' => 'Sök versioner i denna repo efter sökväg',
 	'code-pathsearch-path' => 'Sökväg:',
+	'code-revfilter-cr_status' => 'Status = $1',
 	'code-rev-submit' => 'Spara ändringar',
 	'code-rev-submit-next' => 'Spara & nästa olösta',
 	'code-batch-status' => 'Ändra status:',

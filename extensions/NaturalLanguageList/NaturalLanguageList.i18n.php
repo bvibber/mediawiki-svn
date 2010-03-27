@@ -27,7 +27,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'nll-lastseparator' => '&#32;en&#32;'
+	'nll-lastseparator' => '&#32;en&#32;',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -35,14 +35,14 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'nll-desc' => 'Лёгкае фарматаваньне сьпісаў на натуральных мовах',
-	'nll-lastseparator' => '&#32;і&#32;'
+	'nll-lastseparator' => '&#32;і&#32;',
 );
 
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
 $messages['br'] = array(
-	'nll-lastseparator' => '&#32;ha&#32;'
+	'nll-lastseparator' => '&#32;ha&#32;',
 );
 
 /** Danish (Dansk)
@@ -50,7 +50,7 @@ $messages['br'] = array(
  */
 $messages['da'] = array(
 	'nll-desc' => 'Nem formatering af lister på naturlige sprog',
-	'nll-lastseparator' => '&#32;og&#32;'
+	'nll-lastseparator' => '&#32;og&#32;',
 );
 
 /** German (Deutsch) */
@@ -68,7 +68,14 @@ $messages['dsb'] = array(
 
 /** Estonian (Eesti) */
 $messages['et'] = array(
-	'nll-lastseparator' => '&#32;ning&#32;'
+	'nll-lastseparator' => '&#32;ning&#32;',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'nll-lastseparator' => ' ja&#32;',
 );
 
 /** French (Français)
@@ -76,7 +83,7 @@ $messages['et'] = array(
  */
 $messages['fr'] = array(
 	'nll-desc' => 'Mise en forme facile de listes en langages naturels',
-	'nll-lastseparator' => '&#32;et&#32;'
+	'nll-lastseparator' => '&#32;et&#32;',
 );
 
 /** Galician (Galego)
@@ -84,7 +91,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'nll-desc' => 'Formato sinxelo de listas na lingua materna',
-	'nll-lastseparator' => '&#32;e&#32;'
+	'nll-lastseparator' => '&#32;e&#32;',
 );
 
 /** Swiss German (Alemannisch)
@@ -108,7 +115,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'nll-desc' => 'Formatation facile de listas in linguas natural',
-	'nll-lastseparator' => '&#32;e&#32;'
+	'nll-lastseparator' => '&#32;e&#32;',
 );
 
 /** Macedonian (Македонски)
@@ -116,7 +123,7 @@ $messages['ia'] = array(
  */
 $messages['mk'] = array(
 	'nll-desc' => 'Лесно форматирање на листи напишани во природен јазик',
-	'nll-lastseparator' => '&#32;и&#32;'
+	'nll-lastseparator' => '&#32;и&#32;',
 );
 
 /** Dutch (Nederlands)
@@ -124,7 +131,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'nll-desc' => 'Eenvoudig lijsten opmaken in natuurlijke taal',
-	'nll-lastseparator' => '&#32;en&#32;'
+	'nll-lastseparator' => '&#32;en&#32;',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -132,7 +139,7 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'nll-desc' => 'Enkel formatering av lister på naturlige språk',
-	'nll-lastseparator' => '&#32;og&#32;'
+	'nll-lastseparator' => '&#32;og&#32;',
 );
 
 /** Piedmontese (Piemontèis)
@@ -140,7 +147,7 @@ $messages['no'] = array(
  */
 $messages['pms'] = array(
 	'nll-desc' => 'Formatassion bel fé ëd liste an lenghe naturaj',
-	'nll-lastseparator' => '&#32;e&#32;'
+	'nll-lastseparator' => '&#32;e&#32;',
 );
 
 /** Russian (Русский)
@@ -148,6 +155,13 @@ $messages['pms'] = array(
  */
 $messages['ru'] = array(
 	'nll-desc' => 'Простое форматирование списков на естественных языках',
-	'nll-lastseparator' => '&#32;и&#32;'
+	'nll-lastseparator' => '&#32;и&#32;',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'nll-lastseparator' => ' och',
 );
 

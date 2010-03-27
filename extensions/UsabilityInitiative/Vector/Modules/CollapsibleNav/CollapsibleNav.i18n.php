@@ -29,6 +29,13 @@ $messages['dsb'] = array(
 	'vector-collapsiblenav-preference' => 'Fałdujobny lěwy nawgiaciski meni zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'vector-collapsiblenav-preference' => 'Ενεργοποίηση πτυσσόμενου αριστερού μενού πλοήγησης',
+);
+
 /** Spanish (Español)
  * @author Manuelt15
  */
@@ -99,6 +106,13 @@ $messages['nl'] = array(
 	'vector-collapsiblenav-preference' => 'Inklapbaar navigatiemenu inschakelen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'vector-collapsiblenav-preference' => 'Aktiver sammenleggbar venstre navigeringsmeny',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -118,5 +132,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'vector-collapsiblenav-preference' => 'Включить скрываемое левое навигационное меню',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'vector-collapsiblenav-preference' => 'Gör den vänstra navigeringsmenyn ihopfällbar',
 );
 

@@ -69,6 +69,7 @@ $messages['el'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'userpageeditprotection-desc' => 'Restringe la edición en las páginas de usuario al usuario y a los editores permitidos',
 	'right-editalluserpages' => 'Editar páginas de usuario',
 );
 

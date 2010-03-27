@@ -167,10 +167,14 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'wikieditor' => 'Προηγμένη διεπαφή επεξεργασίας κειμένου wiki',
+	'wikieditor-desc' => 'Παρέχει μία επεκτάσιμη διεπαφή επεξεργασίας κειμένου wiki και πολλές μονάδες παροχής χαρακτηριστικών',
 	'wikieditor-wikitext-tab' => 'Βικικείμενο',
+	'wikieditor-loading' => 'Φόρτωση',
 );
 
 /** Esperanto (Esperanto)
@@ -309,6 +313,13 @@ $messages['id'] = array(
 	'wikieditor' => 'Antarmuka penyuntingan teks wiki canggih',
 	'wikieditor-desc' => 'Menyediakan antarmuka penyuntingan teks wiki yang lebih berkembang dan banyak modul penyedia fitur',
 	'wikieditor-wikitext-tab' => 'TeksWiki',
+);
+
+/** Italian (Italiano)
+ * @author Una giornata uggiosa '94
+ */
+$messages['it'] = array(
+	'wikieditor-loading' => 'Caricamento',
 );
 
 /** Japanese (日本語)

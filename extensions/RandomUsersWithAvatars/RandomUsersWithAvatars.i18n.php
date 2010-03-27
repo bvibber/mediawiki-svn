@@ -132,9 +132,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'random-users-avatars-title' => 'Faites connaissance de la communauté',
+	'random-users-avatars-title' => 'Faites connaissance avec la communauté',
 	'random-users-avatars-desc' => 'Ajoute la balise <tt>&lt;randomuserswithavatars&gt;</tt> pour afficher les avatars d’utilisateurs choisis aléatoirement',
 );
 

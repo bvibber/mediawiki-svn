@@ -365,9 +365,9 @@ $messages['fi'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'optin-try' => 'Essayer la bêta Açai',
+	'optin-try' => 'Essayer la bêta',
 	'tooltip-pt-optin-try' => 'Essayer les nouvelles fonctionnalités',
-	'optin-leave' => 'Quitter la bêta Açai',
+	'optin-leave' => 'Quitter la bêta',
 	'tooltip-pt-optin-leave' => 'Désactiver les nouvelles fonctionnalités',
 	'optin-feedback' => 'Donnez votre avis',
 	'tooltip-pt-optin-feedback' => 'Donnez vos impressions sur l’utilisation des nouvelles fonctionnalités',

@@ -233,6 +233,13 @@ $messages['km'] = array(
 	'gnuplot-desc' => 'ដាក់បន្ថែមប្លាក<code><nowiki><gnuplot></nowiki></code>ដើម្បីប្រើប្រាស់ Gnuplot',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'gnuplot-desc' => 'Gnuplot를 사용하기 위하여 <code><nowiki><gnuplot></nowiki></code> 태그를 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -127,6 +127,14 @@ $messages['dsb'] = array(
 	'vector-desc' => 'Pólěpša elementy wužywarskego pówjercha za suknju Vector.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'vector' => 'βελτιώσεις στο UI για το Vector',
+	'vector-desc' => 'Παρέχει βελτίωση στα στοιχεία διεπαφής χρήστης του skin Vector.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
