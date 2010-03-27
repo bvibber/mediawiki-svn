@@ -54,9 +54,9 @@ $messages['en'] = array(
 	'wikieditor-toolbar-tool-reference' => 'Reference',
 	'wikieditor-toolbar-tool-reference-example' => 'Insert footnote text here',
 	'wikieditor-toolbar-tool-reference-cancel' => 'Cancel',
-	'wikieditor-toolbar-tool-reference-title' => 'Insert Reference',
+	'wikieditor-toolbar-tool-reference-title' => 'Insert reference',
 	'wikieditor-toolbar-tool-reference-insert' => 'Insert',
-	'wikieditor-toolbar-tool-reference-text' => 'Reference Text',
+	'wikieditor-toolbar-tool-reference-text' => 'Reference text',
 	'wikieditor-toolbar-tool-signature' => 'Signature and timestamp',
 	/* Advanced Section */
 	'wikieditor-toolbar-section-advanced' => 'Advanced',
