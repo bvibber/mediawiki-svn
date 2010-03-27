@@ -1580,7 +1580,11 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		if ( $user->idForName() == 0 ) {
 			$user->addToDatabase();
-			$user->setPassword( $this->getVar( '_AdminPassword' ) );
+			try {
+				$user->setPassword( $this->getVar( '_AdminPassword' ) );
+			} catch( PasswordError $pwe ) {
+				// need better failure here!
+			}
 			$user->saveSettings();
 			$user->addGroup( 'sysop' );
 			$user->addGroup( 'bureaucrat' );
