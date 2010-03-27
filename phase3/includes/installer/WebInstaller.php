@@ -751,8 +751,12 @@ class WebInstallerPage {
 		$this->parent = $parent;
 	}
 
+	function addHTML( $html ) {
+		$this->parent->output->addHTML( $html );
+	}
+
 	function startForm() {
-		$this->parent->output->addHTML( 
+		$this->addHTML( 
 			"<div class=\"config-section\">\n" .
 			Xml::openElement( 
 				'form', 
@@ -790,7 +794,7 @@ class WebInstallerPage {
 				) ) . "\n";
 		}
 		$s .= "</div></form></div>\n";
-		$this->parent->output->addHTML( $s );
+		$this->addHTML( $s );
 	}
 
 	function getName() {
@@ -806,7 +810,7 @@ class WebInstallerPage {
 			return 'continue';
 		} else {
 			$this->startForm();
-			$this->parent->output->addHTML( 'Mockup' );
+			$this->addHTML( 'Mockup' );
 			$this->endForm();
 		}
 	}
@@ -883,7 +887,7 @@ class WebInstaller_Language extends WebInstallerPage {
 			$this->parent->getHelpBox( 'config-wiki-language-help' );
 
 		
-		$this->parent->output->addHTML( $s );
+		$this->addHTML( $s );
 		$this->endForm();
 	}
 
@@ -967,7 +971,7 @@ class WebInstaller_DBConnect extends WebInstallerPage {
 		$types .= "</ul><br clear=\"left\"/>\n";
 		$encType = Xml::encodeJsVar( $defaultType );
 
-		$this->parent->output->addHTML( 
+		$this->addHTML( 
 			$this->parent->label( 'config-db-type', false, $types ) .
 			$settings .
 			"<script type=\"text/javascript\">resetDBArea();</script>\n"
@@ -1021,14 +1025,14 @@ class WebInstaller_Upgrade extends WebInstallerPage {
 		}
 
 		$this->startForm();
-		$this->parent->output->addHTML( $this->parent->getInfoBox( 
+		$this->addHTML( $this->parent->getInfoBox( 
 			wfMsgNoTrans( 'config-can-upgrade', $GLOBALS['wgVersion'] ) ) );
 		$this->endForm();
 	}
 
 	function showDoneMessage() {
 		$this->startForm();
-		$this->parent->output->addHTML( 
+		$this->addHTML( 
 			$this->parent->getInfoBox(
 				wfMsgNoTrans( 'config-upgrade-done', 
 					$GLOBALS['wgServer'] . 
@@ -1063,7 +1067,7 @@ class WebInstaller_DBSettings extends WebInstallerPage {
 		}
 
 		$this->startForm();
-		$this->parent->output->addHTML( $form );
+		$this->addHTML( $form );
 		$this->endForm();
 	}
 
@@ -1086,7 +1090,7 @@ class WebInstaller_Name extends WebInstallerPage {
 		$js = 'enableControlArray("config__NamespaceType_other", ["config_wgMetaNamespace"])';
 		$attribs = array( 'onclick' => $js );
 
-		$this->parent->output->addHTML( 
+		$this->addHTML( 
 			$this->parent->getTextBox( array(
 				'var' => 'wgSitename',
 				'label' => 'config-site-name',
@@ -1245,7 +1249,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		$uploadJs = 'enableControlArray("config_wgEnableUploads", ["config_wgDeletedDirectory"]);';
 
 		$this->startForm();
-		$this->parent->output->addHTML(
+		$this->addHTML(
 			# User Rights
 			$this->parent->getRadioSet( array(
 				'var' => '_RightsProfile',
@@ -1313,10 +1317,10 @@ class WebInstaller_Options extends WebInstallerPage {
 				) );
 			}
 			$extHtml .= $this->parent->getFieldsetEnd();
-			$this->parent->output->addHTML( $extHtml );
+			$this->addHTML( $extHtml );
 		}
 
-		$this->parent->output->addHTML(
+		$this->addHTML(
 			# Uploading
 			$this->parent->getFieldsetStart( 'config-upload-settings' ) .
 			$this->parent->getCheckBox( array( 
@@ -1344,7 +1348,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		}
 		$caches[] = 'memcached';
 
-		$this->parent->output->addHTML(
+		$this->addHTML(
 			# Advanced settings
 			$this->parent->getFieldsetStart( 'config-advanced-settings' ) .
 			# Object cache settings
@@ -1447,7 +1451,7 @@ class WebInstaller_Options extends WebInstallerPage {
 			return;
 		}
 		$this->setVar( '_CCDone', true );
-		$this->parent->output->addHTML( $this->getCCDoneBox() );
+		$this->addHTML( $this->getCCDoneBox() );
 	}
 
 	function submit() {
@@ -1502,20 +1506,21 @@ class WebInstaller_Install extends WebInstallerPage {
 		}
 		$this->startForm();
 		$this->parent->exportVars();
-		$this->parent->output->addHTML("<ul>");
+		$this->addHTML("<ul>");
 		foreach( $this->parent->getInstallSteps() as $step ) {
 			$this->startStage( "config-install-$step" );
 			$func = 'install' . ucfirst( $step );
 			$success = $this->parent->{$func}();
 			$this->endStage( $success );
 		}
+		$this->addHTML("</ul>");
 		$this->endForm();
 		return true;
 
 	}
 
 	private function startStage( $msg ) {
-		$this->parent->output->addHTML( "<li>" . wfMsgHtml( $msg ) . wfMsg( 'ellipsis') );
+		$this->addHTML( "<li>" . wfMsgHtml( $msg ) . wfMsg( 'ellipsis') );
 	}
 
 	private function endStage( $success = true ) {
@@ -1524,7 +1529,7 @@ class WebInstaller_Install extends WebInstallerPage {
 		if ( !$success ) {
 			$html = "<span class=\"error\">$html</span>";
 		}
-		$this->parent->output->addHTML( $html . "</li>\n" );
+		$this->addHTML( $html . "</li>\n" );
 	}
 }
 class WebInstaller_Complete extends WebInstallerPage {
@@ -1532,7 +1537,7 @@ class WebInstaller_Complete extends WebInstallerPage {
 		global $IP;
 		$this->startForm();
 		$msg = file_exists( "$IP/LocalSettings.php" ) ? 'config-install-done-moved' : 'config-install-done';
-		$this->parent->output->addHTML(
+		$this->addHTML(
 			$this->parent->getInfoBox(
 				wfMsgNoTrans( $msg,
 					$GLOBALS['wgServer'] . 
@@ -1559,7 +1564,7 @@ class WebInstaller_Restart extends WebInstallerPage {
 
 		$this->startForm();
 		$s = $this->parent->getWarningBox( wfMsgNoTrans( 'config-help-restart' ) );
-		$this->parent->output->addHTML( $s );
+		$this->addHTML( $s );
 		$this->endForm( 'restart' );
 	}
 }
