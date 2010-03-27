@@ -2,33 +2,35 @@ package de.brightbyte.wikiword.model;
 
 import de.brightbyte.data.LabeledVector;
 
-public class WikiWordConceptFeatures implements WikiWordRanking {
-	protected WikiWordConceptReference reference;
-	protected LabeledVector<Integer> features;
+public class ConceptFeatures<C extends WikiWordConcept, K> implements WikiWordRanking {
+	protected LabeledVector<K> features;
+	protected WikiWordConceptReference<C> reference;
 	
-	public WikiWordConceptFeatures(WikiWordConceptReference reference, LabeledVector<Integer> features) {
-		if (features==null) throw new NullPointerException();
-		
+	public ConceptFeatures(WikiWordConceptReference<C> reference, LabeledVector<K> features) {
 		this.features = features;
 		this.reference = reference;
 	}
+	
+	public String toString() {
+		return reference+ ":"+features;
+	}
 
-	public LabeledVector<Integer> getFeatures() {
+	public LabeledVector<K> getFeatureVector() {
 		return features;
+	}
+	
+	public WikiWordConceptReference<C> getConceptReference() {
+		return reference;
 	}
 	
 	public int getId() {
 		return reference.getId();
 	}
-
+	
 	public String getName() {
 		return reference.getName();
 	}
 	
-	public WikiWordConceptReference getReference() {
-		return reference;
-	}
-
 	public int getCardinality() {
 		return reference==null ? 1 : reference.getCardinality();
 	}
@@ -54,15 +56,9 @@ public class WikiWordConceptFeatures implements WikiWordRanking {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final WikiWordConceptFeatures other = (WikiWordConceptFeatures) obj;
+		final ConceptFeatures other = (ConceptFeatures) obj;
 		
 		return reference.equals(other.reference);
 	}	
 
-	
-	@Override
-	public String toString() {
-		return reference.toString();
-	}
-	
 }

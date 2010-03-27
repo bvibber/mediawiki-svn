@@ -5,26 +5,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.brightbyte.data.cursor.DataSet;
-import de.brightbyte.util.PersistenceException;
+import de.brightbyte.data.measure.Measure;
+import de.brightbyte.data.measure.Measure.Comparator;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.store.LocalConceptStore;
 
 public class PopularityDisambiguator extends AbstractDisambiguator {
-	public PopularityDisambiguator(LocalConceptStore conceptStore) {
-		super(conceptStore);
+	
+	protected Measure<LocalConcept> popularityMeasure;
+	protected Comparator<LocalConcept> popularityComparator;
+	
+	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<LocalConcept> popularityMeasure) {
+		super(meaningFetcher);
+		
+		this.popularityMeasure = popularityMeasure;
+		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
 	}
 
-	public Result disambiguate(List<String> terms) throws PersistenceException {
+	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) {
 		Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>();
-		double pop = 0;
-		
-		for (String t: terms) {
-			DataSet<LocalConcept> mm = conceptStore.getMeanings(t);
-			List<LocalConcept> m = mm.load();
+		int pop = 0;
+		for (Map.Entry<String, List<LocalConcept>> e: meanings.entrySet()) {
+			String t= e.getKey();
+			List<LocalConcept> m = e.getValue();
 			if (m.size()==0) continue;
 			
-			Collections.sort(m, LocalConcept.byCardinality);
+			if (m.size()>0) Collections.sort(m, popularityComparator);
 			
 			LocalConcept c = m.get(0);
 			disambig.put(t, c);

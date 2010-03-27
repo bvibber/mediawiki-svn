@@ -18,6 +18,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConsoleApp;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.model.AbstractConceptOutput;
+import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.ConceptOutput;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
@@ -437,8 +438,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 
 	public void showFeatureVector(int id, ConsoleOutput out) throws PersistenceException {
-		LabeledVector featureVector = getProximityStore().getFeatureVector(id);
-		out.writeFeatureVector(featureVector);
+		ConceptFeatures conceptFeatures = getProximityStore().getConceptFeatures(id);
+		out.writeFeatureVector(conceptFeatures.getFeatureVector());
 	}		
 
 	public static void main(String[] argv) throws Exception {

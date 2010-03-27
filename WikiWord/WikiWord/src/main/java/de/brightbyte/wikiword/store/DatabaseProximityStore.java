@@ -14,7 +14,7 @@ import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 
 public class DatabaseProximityStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> 
 				extends DatabaseFeatureStore<T, R>
-				implements ProximityStore<T, R> {
+				implements ProximityStore<T, R, Integer> {
 	
 		private RelationTable proximityTable;
 		

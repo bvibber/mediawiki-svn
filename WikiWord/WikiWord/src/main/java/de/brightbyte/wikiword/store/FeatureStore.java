@@ -1,12 +1,14 @@
 package de.brightbyte.wikiword.store;
 
-import de.brightbyte.data.LabeledVector;
+import java.util.Map;
+
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
-public interface FeatureStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> {
+public interface FeatureStore<T extends WikiWordConcept, K> {
 
-	public LabeledVector<Integer> getFeatureVector(int concept) throws PersistenceException;
+	public ConceptFeatures<T, K> getConceptFeatures(int concept) throws PersistenceException;
+	public Map<Integer, ConceptFeatures<T, K>> getConceptsFeatures(int[] concepts) throws PersistenceException;
 
 }

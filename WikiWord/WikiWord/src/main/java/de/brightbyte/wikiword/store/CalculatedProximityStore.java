@@ -3,34 +3,31 @@ package de.brightbyte.wikiword.store;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
-import de.brightbyte.data.Functor2;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.cursor.CursorIterator;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSet;
-import de.brightbyte.data.measure.CosineVectorSimilarity;
-import de.brightbyte.data.measure.Distance;
-import de.brightbyte.data.measure.DistanceMeasure;
 import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
+import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.model.WikiWordReference;
 
 public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>>  
-		implements ProximityStore<T, R> {
+		implements ProximityStore<T, R, Integer> {
 
 	protected class EnvironmentDataCursor implements DataCursor<R> {
-		private DataCursor<WikiWordConceptFeatures> neighbours;
+		private DataCursor<ConceptFeatures<T, Integer>> neighbours;
 		private LabeledVector<Integer> centerFeatures;
 		private double minProximity;
 
-		public EnvironmentDataCursor(DataCursor<WikiWordConceptFeatures> neighbours, LabeledVector<Integer> centerFeatures, double minProximity) {
+		public EnvironmentDataCursor(DataCursor<ConceptFeatures<T, Integer>> neighbours, LabeledVector<Integer> centerFeatures, double minProximity) {
 			this.neighbours = neighbours; 
 			this.centerFeatures = centerFeatures; 
 			this.minProximity = minProximity; 
@@ -41,9 +38,9 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 		}
 
 		public R next() throws PersistenceException {
-			WikiWordConceptFeatures f;
+			ConceptFeatures<T, Integer> f;
 			while((f = neighbours.next()) != null) {
-				double prox = getProximity(centerFeatures, f.getFeatures());
+				double prox = getProximity(centerFeatures, f.getFeatureVector());
 				if (prox<minProximity) continue;
 				
 				return newReference(f.getId(), f.getName(), 1, prox);
@@ -54,11 +51,11 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 	}
 	
 	protected class EnvironmentDataSet implements DataSet<R> {
-		private DataSet<WikiWordConceptFeatures> neighbours;
+		private DataSet<ConceptFeatures<T, Integer>> neighbours;
 		private LabeledVector<Integer> centerFeatures;
 		private double minProximity;
 	
-		public EnvironmentDataSet(DataSet<WikiWordConceptFeatures> neighbours, LabeledVector<Integer> centerFeatures, double minProximity) {
+		public EnvironmentDataSet(DataSet<ConceptFeatures<T, Integer>> neighbours, LabeledVector<Integer> centerFeatures, double minProximity) {
 			this.neighbours = neighbours; 
 			this.centerFeatures = centerFeatures; 
 			this.minProximity = minProximity; 
@@ -85,10 +82,10 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 	}
 
 	protected WikiWordReference.Factory<R> referenceFactory;
-	protected FeatureTopologyStore<T, R> featureStore;
+	protected FeatureTopologyStore<T, R, Integer> featureStore;
 	protected Similarity<LabeledVector<Integer>>  proximityMeasure;
 	
-	public CalculatedProximityStore(FeatureTopologyStore<T, R> featureStore, 
+	public CalculatedProximityStore(FeatureTopologyStore<T, R, Integer> featureStore, 
 						WikiWordReference.Factory<R> referenceFactory) {
 		this.featureStore = featureStore;
 		this.proximityMeasure = ScalarVectorSimilarity.<Integer>getInstance();
@@ -97,10 +94,10 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 
 	public DataSet<? extends R> getEnvironment(int concept, double minProximity)
 			throws PersistenceException {
-		LabeledVector<Integer> c = getFeatureVector(concept);
-		DataSet<WikiWordConceptFeatures> n = featureStore.getNeighbourhoodFeatures(concept);
+		ConceptFeatures<T, Integer> c = getConceptFeatures(concept);
+		DataSet<ConceptFeatures<T, Integer>> n = featureStore.getNeighbourhoodFeatures(concept);
 		
-		return new EnvironmentDataSet(n, c, minProximity);
+		return new EnvironmentDataSet(n, c.getFeatureVector(), minProximity);
 	}
 
 	protected R newReference(int id, String name, int cardinality, double relevance) {
@@ -112,23 +109,23 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 		
 		LabeledVector<Integer> env = new MapLabeledVector<Integer>();
 		
-		LabeledVector<Integer> c = getFeatureVector(concept);
-		DataSet<WikiWordConceptFeatures> n = featureStore.getNeighbourhoodFeatures(concept);
+		ConceptFeatures<T, Integer> c = getConceptFeatures(concept);
+		DataSet<ConceptFeatures<T, Integer>> n = featureStore.getNeighbourhoodFeatures(concept);
 		
-		WikiWordConceptFeatures f;
-		DataCursor<WikiWordConceptFeatures> cursor = n.cursor();
+		ConceptFeatures<T, Integer> f;
+		DataCursor<ConceptFeatures<T, Integer>> cursor = n.cursor();
 		while ((f = cursor.next()) != null) {
-			double prox = getProximity(c, f.getFeatures());
+			double prox = getProximity(c.getFeatureVector(), f.getFeatureVector());
 			if (prox>=minProximity) env.set(f.getId(), prox);
 		}
 		
 		return env;
 	}
 
-	public LabeledVector<Integer> getFeatureVector(int concept)
+	public ConceptFeatures<T, Integer> getConceptFeatures(int concept)
 			throws PersistenceException {
 		
-		return featureStore.getFeatureVector(concept);
+		return featureStore.getConceptFeatures(concept);
 	}
 
 	protected double getProximity(LabeledVector<Integer> v, LabeledVector<Integer> w) {
@@ -137,10 +134,14 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 	
 	public double getProximity(int concept1, int concept2)
 			throws PersistenceException {
-		LabeledVector<Integer> v = getFeatureVector(concept1);
-		LabeledVector<Integer> w = getFeatureVector(concept2);
+		ConceptFeatures<T, Integer> v = getConceptFeatures(concept1);
+		ConceptFeatures<T, Integer> w = getConceptFeatures(concept2);
 		
-		return getProximity(v, w);
+		return getProximity(v.getFeatureVector(), w.getFeatureVector());
+	}
+
+	public Map<Integer, ConceptFeatures<T, Integer>> getConceptsFeatures(int[] concepts) throws PersistenceException {
+		return featureStore.getConceptsFeatures(concepts);
 	}
 
 }

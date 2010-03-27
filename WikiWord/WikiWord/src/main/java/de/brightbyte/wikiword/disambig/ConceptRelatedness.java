@@ -4,6 +4,7 @@ import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
+import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 

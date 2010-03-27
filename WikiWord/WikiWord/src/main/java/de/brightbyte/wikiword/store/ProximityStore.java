@@ -6,7 +6,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
-public interface ProximityStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> extends FeatureStore<T, R> {
+public interface ProximityStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>, K> extends FeatureStore<T, K> {
 
 	public double getProximity(int concept1, int concept2) throws PersistenceException;
 

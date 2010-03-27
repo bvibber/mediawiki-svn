@@ -3,12 +3,15 @@ package de.brightbyte.wikiword.store;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.db.DatabaseDataSet;
+import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.QueryDataSet;
 import de.brightbyte.db.RelationTable;
@@ -16,23 +19,23 @@ import de.brightbyte.db.TemporaryTableDataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptFeatures;
+import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 
 public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> 
 				extends DatabaseWikiWordStore
-				implements FeatureTopologyStore<T, R> {
+				implements FeatureTopologyStore<T, R, Integer> {
 	
 		protected WikiWordReference.Factory<R> referenceFactory;
 		protected DatabaseWikiWordConceptStore<T, R> conceptStore;
 		protected RelationTable featureTable;
 		protected EntityTable conceptTable;
 		
-		private DatabaseDataSet.Factory<WikiWordConceptFeatures> conceptFeaturesFactory = new DatabaseDataSet.Factory<WikiWordConceptFeatures>() {
+		private DatabaseDataSet.Factory<ConceptFeatures<T, Integer>> conceptFeaturesFactory = new DatabaseDataSet.Factory<ConceptFeatures<T, Integer>>() {
 		
-			public WikiWordConceptFeatures newInstance(ResultSet row) throws Exception {
+			public ConceptFeatures<T, Integer> newInstance(ResultSet row) throws Exception {
 				int concept = -1;
 				String name = null;
 				LabeledVector<Integer> f = new MapLabeledVector<Integer>(); 
@@ -54,7 +57,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 				if (concept<0) return null;
 				
 				R r = newReference(concept, name, 1, -1); //TODO: global vs. local
-				return new WikiWordConceptFeatures(r, f);
+				return new ConceptFeatures<T, Integer>(r, f);
 			}
 		
 		};
@@ -73,18 +76,29 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			return referenceFactory.newInstance(id, name, cardinality, relevance);
 		}
 
-		public LabeledVector<Integer> getFeatureVector(int concept) throws PersistenceException {
-			String sql = "SELECT feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
+		public ConceptFeatures<T, Integer> getConceptFeatures(int concept) throws PersistenceException {
+			String sql = "SELECT concept, feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
 			sql += " WHERE concept = "+concept;
 
-			return readVector("getFeatireVector", sql, "feature", "normal_weight");
+			return readConceptFeatures("getFeatureVector", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
+		}
+
+		public Map<Integer, ConceptFeatures<T, Integer>> getConceptsFeatures(int[] concepts) throws PersistenceException {
+			try {
+				String sql = "SELECT concept, feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
+				sql += " WHERE concept IN "+database.encodeSet(concepts);
+
+				return readConceptsFeatures("getFeatureVectors", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
 		}
 
 		protected  <K> LabeledVector<K> readVector(String name, String sql, String keyField, String valueField) throws PersistenceException {
 			try {
 				ResultSet rs = database.executeQuery(name, sql);
 				try {
-					return readVector(rs, keyField, valueField, new MapLabeledVector<K>());
+					return readVector(rs, null, keyField, valueField, new MapLabeledVector<K>());
 				} finally {
 					rs.close();
 				}
@@ -93,20 +107,86 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			}
 		}
 
-		protected  <K> LabeledVector<K> readVector(ResultSet rs, String keyField, String valueField, LabeledVector<K> v) throws SQLException {
+		protected  ConceptFeatures<T, Integer> readConceptFeatures(String name, String sql, 
+				String conceptField, String nameField, String cardinalityField, String relevanceField,   
+				String keyField, String valueField) throws PersistenceException {
+			try {
+				ResultSet rs = database.executeQuery(name, sql);
+				try {
+					return readConceptFeatures(rs, conceptField, nameField, cardinalityField, relevanceField, keyField, valueField);
+				} finally {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
+
+		protected  Map<Integer, ConceptFeatures<T, Integer>> readConceptsFeatures(String name, String sql, 
+				String conceptField, String nameField, String cardinalityField, String relevanceField,   
+				String keyField, String valueField) throws PersistenceException {
+			try {
+				ResultSet rs = database.executeQuery(name, sql);
+				Map<Integer, ConceptFeatures<T, Integer>> features = new HashMap<Integer, ConceptFeatures<T, Integer>>();
+				
+				try {
+					while (!rs.isAfterLast()) {
+						ConceptFeatures<T, Integer> f = readConceptFeatures(rs, conceptField, nameField, cardinalityField, relevanceField, keyField, valueField);
+						features.put(f.getId(), f);
+					}
+					
+					return features;
+				} finally {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
+
+		public ConceptFeatures<T, Integer> readConceptFeatures(ResultSet rs, 
+				String conceptField, String nameField, String cardinalityField, String relevanceField,   
+				String keyField, String valueField) throws PersistenceException {
+			try {
+				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>());
+				
+				int id = DatabaseUtil.asInt(rs.getObject(conceptField));
+				String n = nameField == null ? null : DatabaseUtil.asString(rs.getObject(nameField));
+				int c = cardinalityField == null ? 1 : DatabaseUtil.asInt(rs.getObject(cardinalityField));
+				double r = relevanceField == null ? 1 : DatabaseUtil.asDouble(rs.getObject(relevanceField));
+				
+				R ref = referenceFactory.newInstance(id, n, c, r);
+				return new ConceptFeatures<T, Integer>(ref, v);
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
+		
+		protected  <K> LabeledVector<K> readVector(ResultSet rs, String conceptField, String keyField, String valueField, LabeledVector<K> v) throws SQLException {
 			if (v==null) v = new MapLabeledVector<K>();
+			
+			int concept = -1;
 			
 			while (rs.next()) {
 				K k = (K)rs.getObject(keyField);
-				Number n = (Number)rs.getObject(valueField);
 				
-				v.set(k, n instanceof Double ? (Double)n : n.doubleValue());
+				if (conceptField!=null) {
+					Object c = rs.getObject(conceptField);
+					if (concept<0) concept = DatabaseUtil.asInt(c);
+					else if (concept!=DatabaseUtil.asInt(c)) {
+						rs.previous(); //push back
+						break;
+					}
+				}
+				
+				Object n = rs.getObject(valueField);
+				v.set(k,  DatabaseUtil.asDouble(n));
 			}
 			
 			return v;
 		}
 
-		public DataSet<WikiWordConceptFeatures> getNeighbourhoodFeatures(final int concept) throws PersistenceException {
+		public DataSet<ConceptFeatures<T, Integer>> getNeighbourhoodFeatures(final int concept) throws PersistenceException {
 			/*
 			String sql = "SELECT C.id as concept, C.name as name, X.feature as feature, X.normal_weight as value ";
 			sql += " FROM " + featureTable.getSQLName() + " as X force key (PRIMARY) ";
@@ -118,10 +198,10 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			
 			return new QueryDataSet<WikiWordConceptFeatures>(database, getConceptFeaturesFactory(), "getNeighbourhoodFeatures", sql, false);
 			*/
-			return new TemporaryTableDataSet<WikiWordConceptFeatures>(database, getConceptFeaturesFactory()) {
+			return new TemporaryTableDataSet<ConceptFeatures<T, Integer>>(database, getConceptFeaturesFactory()) {
 			
 				@Override
-				public Cursor<WikiWordConceptFeatures> cursor() throws PersistenceException {
+				public Cursor<ConceptFeatures<T, Integer>> cursor() throws PersistenceException {
 					try {
 						String n = database.createTemporaryTable("id integer not null, name varchar(255) default null, primary key (id)");
 						String sql = "INSERT IGNORE INTO "+n+" (id) ";
@@ -143,7 +223,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 						sql+= " JOIN "+featureTable.getSQLName()+" as X ON X.concept = N.id ";
 							
 						ResultSet rs = database.executeQuery("getNeighbourhoodFeatures#features", sql);
-						return new TemporaryTableDataSet.Cursor<WikiWordConceptFeatures>(rs, factory, database, new String[] { n }, database.getLogOutput() );
+						return new TemporaryTableDataSet.Cursor<ConceptFeatures<T, Integer>>(rs, factory, database, new String[] { n }, database.getLogOutput() );
 					} catch (SQLException e) {
 						throw new PersistenceException(e);
 					}
@@ -151,7 +231,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			};
 		}
 
-		private DatabaseDataSet.Factory<WikiWordConceptFeatures> getConceptFeaturesFactory() {
+		private DatabaseDataSet.Factory<ConceptFeatures<T, Integer>> getConceptFeaturesFactory() {
 			return conceptFeaturesFactory;
 		}
 

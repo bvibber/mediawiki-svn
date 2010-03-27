@@ -241,7 +241,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	protected abstract DatabaseStatisticsStore newStatisticsStore() throws SQLException, PersistenceException;
 	protected abstract DatabaseConceptInfoStore<T> newConceptInfoStore() throws SQLException, PersistenceException;
 
-	protected ProximityStore<T, R> newProximityStore() throws SQLException, PersistenceException {
+	protected ProximityStore<T, R, Integer> newProximityStore() throws SQLException, PersistenceException {
 		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), null, isGlobal(), tweaks, false); 
 		
 		if (tweaks.getTweak("proximity.usedStoredProximity", true) && schema.tableExists("proximity")) {
@@ -259,7 +259,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	private DatabaseStatisticsStore statsStore;
 	private DatabaseConceptInfoStore<T> infoStore;
 
-	private ProximityStore<T, R> proximityStore;
+	private ProximityStore<T, R, Integer> proximityStore;
 	
 	public DatabaseConceptInfoStore<T> getConceptInfoStore() throws PersistenceException {
 		try { 
@@ -279,7 +279,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		} 
 	}	
 
-	public ProximityStore<T, R> getProximityStore() throws PersistenceException {
+	public ProximityStore<T, R, Integer> getProximityStore() throws PersistenceException {
 		try { 
 			if (proximityStore==null) proximityStore = newProximityStore();
 			return proximityStore;
