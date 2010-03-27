@@ -1519,7 +1519,11 @@ class WebInstaller_Install extends WebInstallerPage {
 
 	private function endStage( $success = true ) {
 		$msg = $success ? 'config-install-step-done' : 'config-install-step-failed';
-		$this->parent->output->addHTML( wfMsgHtml( $msg ) . "</li>\n" );
+		$html = wfMsgHtml( $msg );
+		if ( !$success ) {
+			$html = "<span class=\"error\">$html</html>";
+		}
+		$this->parent->output->addHTML( $html . "</li>\n" );
 	}
 }
 class WebInstaller_Complete extends WebInstallerPage {

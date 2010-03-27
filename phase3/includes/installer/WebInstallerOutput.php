@@ -88,6 +88,7 @@ class WebInstallerOutput {
 	<meta name="robots" content="noindex, nofollow" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>MediaWiki <?php echo( htmlspecialchars( $wgVersion ) ); ?> Installation</title>
+	<link rel="stylesheet" type="text/css" href="../skins/common/shared.css"/>
 	<link rel="stylesheet" type="text/css" href="../skins/monobook/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../skins/common/config.css"/>
 	<script type="text/javascript"><!--
