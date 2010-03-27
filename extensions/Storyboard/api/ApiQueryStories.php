@@ -57,8 +57,24 @@ class ApiQueryStories extends ApiQueryBase {
 		$this->addWhere( array(
 			'story_is_published' => 1
 		) );
-		$this->addOption( 'LIMIT', $params['limit'] );
-		$this->addOption( 'ORDER BY', 'story_modified DESC' );
+		$this->addOption( 'LIMIT', $params['limit'] + 1 );
+		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
+		
+		if ( !is_null( $params['continue'] ) ) {
+			$continueParams = explode( '|', $params['continue'] );
+			if ( count( $continueParams ) != 2 ) {
+				$this->dieUsage( 'Invalid continue param. You should pass the ' .
+					'original value returned by the previous query', '_badcontinue' );
+			}
+			
+			$storyModified = $continueParams[0];
+			$storyId = intval( $continueParams[1] );
+			
+			$this->addWhere(
+				"story_modified < $storyModified OR " .
+				"(story_modified = $storyId AND story_id <= $storyModified)"
+			);			
+		}
 		
 		$stories = $this->select( __METHOD__ );
 		$count = 0;
@@ -67,7 +83,7 @@ class ApiQueryStories extends ApiQueryBase {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'continue', "" ); // TODO: add some weird stuff here
+				$this->setContinueEnumParameter( 'continue', wfTimestamp(TS_MW, $row->story_modified) . '|' . $row->story_id ); // TODO: add some weird stuff here
 				break;
 			}
 			$res = array(
@@ -126,8 +142,8 @@ class ApiQueryStories extends ApiQueryBase {
 	protected function getExamples() {
 		return array (
 			'api.php?action=query&list=stories',
-			'api.php?action=query&list=stories&stcontinue=42',
-			'api.php?action=query&list=stories&stcontinue=4&stlimit=2',
+			'api.php?action=query&list=stories&stlimit=42',
+			'api.php?action=query&list=stories&stcontinue=20100319202223|4&stlimit=2',
 		);
 	}
 
