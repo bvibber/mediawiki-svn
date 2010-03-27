@@ -1,6 +1,7 @@
 <?php
 
 define( 'MW_NO_DB', 1 );
+define( 'MW_NO_SESSION', 1 );
 define( 'MW_CONFIG_CALLBACK', 'wfInstallerConfig' );
 
 function wfInstallerConfig() {
