@@ -4333,7 +4333,7 @@ The account you specify here must already exist.',
 <strong>MyISAM</strong> may be faster in single-user or read-only installations. MyISAM databases tend to get corrupted more often than InnoDB databases.',
 'config-mysql-charset' => 'Database character set',
 'config-mysql-binary' => 'Binary',
-'config-mysql-utf-8' => 'UTF-8',
+'config-mysql-utf8' => 'UTF-8',
 'config-mysql-charset-help' => "In '''binary mode''', MediaWiki stores UTF-8 text to the database in binary fields. This is more efficient than MySQL's UTF-8 mode, and allows you to use the full range of Unicode characters.
 
 In '''UTF-8 mode''', MySQL will know what character set your data is in, and can present and convert it appropriately, but it won't let you store characters above the [http://en.wikipedia.org/wiki/Mapping_of_Unicode_character_planes Basic Multilingual Plane]. ",

@@ -3274,7 +3274,7 @@ $wgMessageStructure = array(
 		'config-mysql-engine-help',
 		'config-mysql-charset',
 		'config-mysql-binary',
-		'config-mysql-utf-8',
+		'config-mysql-utf8',
 		'config-mysql-charset-help',
 		'config-site-name',
 		'config-site-name-help',
