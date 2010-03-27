@@ -119,10 +119,12 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		*/
 	}
 		
-	protected String meaningWhere(String term) {
-		return " JOIN "+meaningTable.getSQLName()+" as M ON C.id = M.concept " +
-		" WHERE M.term_text = "+database.quoteString(term)+" " +
-		" ORDER BY freq DESC";
+	protected String meaningWhere(String term, ConceptType t) {
+		String sql = " JOIN "+meaningTable.getSQLName()+" as M ON C.id = M.concept ";
+		sql += " WHERE M.term_text = "+database.quoteString(term)+" ";
+		if (t!=null) sql += " AND C.type = "+t.getCode()+" ";
+		sql += " ORDER BY freq DESC";
+		return sql;
 	}
 	
 	@Override
@@ -143,10 +145,14 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		return corpus;
 	}
 	
-	public DataSet<LocalConceptReference> listMeanings(String term)
+	public DataSet<LocalConceptReference> listMeanings(String term) throws PersistenceException {
+		return this.listMeanings(term, null);
+	}
+	
+	public DataSet<LocalConceptReference> listMeanings(String term, ConceptType t)
 		throws PersistenceException { 
 			
-		String sql = referenceSelect("M.freq") + meaningWhere(term);
+		String sql = referenceSelect("M.freq") + meaningWhere(term, t);
 		
 		return new QueryDataSet<LocalConceptReference>(database, getRowReferenceFactory(), "listMeanings", sql, false);
 	}
@@ -157,6 +163,10 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 
 	public DataSet<LocalConcept> getMeanings(String term) throws PersistenceException {
 		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getMeanings(term);
+	}
+		
+	public DataSet<LocalConcept> getMeanings(String term, ConceptType t) throws PersistenceException {
+		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getMeanings(term, t);
 	}
 		
 	public TermReference pickRandomTerm(int top) throws PersistenceException {
@@ -313,10 +323,16 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		}
 		
 
-		public DataSet<LocalConcept> getMeanings(String term)
+		public DataSet<LocalConcept> getMeanings(String term) 
+			throws PersistenceException {
+			
+			return getMeanings(term, null);
+		}
+		
+		public DataSet<LocalConcept> getMeanings(String term, ConceptType t)
 			throws PersistenceException {
 		
-			String sql = conceptSelect("M.freq") + meaningWhere(term);
+			String sql = conceptSelect("M.freq") + meaningWhere(term, t);
 			
 			return new QueryDataSet<LocalConcept>(database, new ConceptFactory(), "getMeanins", sql, false);
 		}

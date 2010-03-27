@@ -8,17 +8,22 @@ import java.util.Map;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Measure.Comparator;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.WikiWordRanking;
 
 public class PopularityDisambiguator extends AbstractDisambiguator {
 	
-	protected Measure<LocalConcept> popularityMeasure;
-	protected Comparator<LocalConcept> popularityComparator;
+	protected Measure<WikiWordRanking> popularityMeasure;
+	protected Comparator<WikiWordRanking> popularityComparator;
 	
-	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<LocalConcept> popularityMeasure) {
+	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher) {
+		this(meaningFetcher, WikiWordRanking.theCardinality);
+	}
+	
+	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<WikiWordRanking> popularityMeasure) {
 		super(meaningFetcher);
 		
 		this.popularityMeasure = popularityMeasure;
-		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
+		this.popularityComparator = new Measure.Comparator<WikiWordRanking>(popularityMeasure, true);
 	}
 
 	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) {

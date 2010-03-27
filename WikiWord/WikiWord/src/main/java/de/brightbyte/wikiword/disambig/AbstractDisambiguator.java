@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ public abstract class AbstractDisambiguator implements Disambiguator {
 		
 	   for (String t: terms) {
 		   List<LocalConcept> m = meaningFetcher.getMeanings(t);
-		   meanings.put(t, m);
+		   if (m!=null && m.size()>0) meanings.put(t, m);
 	   }
 	   
 		return meanings;
@@ -32,7 +33,6 @@ public abstract class AbstractDisambiguator implements Disambiguator {
 	
 	public Result disambiguate(List<String> terms) throws PersistenceException {
 		Map<String, List<LocalConcept>> meanings = fetchMeanings(terms);
-		
 		return disambiguate(terms, meanings);
 	}
 	

@@ -17,6 +17,7 @@ public abstract class WikiWordConcept implements WikiWordRanking {
 	
 	public WikiWordConcept(WikiWordConceptReference reference, DatasetIdentifier dataset, ConceptType type) {
 		if (type==null) throw new NullPointerException();
+		if (reference==null) throw new NullPointerException();
 		
 		this.dataset = dataset;
 		this.type = type;
@@ -44,15 +45,23 @@ public abstract class WikiWordConcept implements WikiWordRanking {
 	}
 
 	public int getCardinality() {
-		return reference==null ? 1 : reference.getCardinality();
+		return reference.getCardinality();
 	}
 
 	public double getRelevance() {
-		return reference==null ? 1 : reference.getRelevance();
+		return reference.getRelevance();
 	}
 	
 	public boolean hasRanking() {
-		return reference != null && ( reference.getCardinality()>0 || reference.getRelevance()>0 );
+		return ( reference.getCardinality()>0 || reference.getRelevance()>0 );
+	}
+
+	public void setCardinality(int cardinality) {
+		reference.setCardinality(cardinality);
+	}
+
+	public void setRelevance(double relevance) {
+		reference.setRelevance(relevance);
 	}
 
 	@Override

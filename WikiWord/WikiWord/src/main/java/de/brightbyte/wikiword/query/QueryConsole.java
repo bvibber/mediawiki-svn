@@ -17,16 +17,22 @@ import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConsoleApp;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.disambig.Disambiguator;
+import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
+import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
+import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
 import de.brightbyte.wikiword.model.AbstractConceptOutput;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.ConceptOutput;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.rdf.RdfOutput;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
+import de.brightbyte.wikiword.store.FeatureStore;
 import de.brightbyte.wikiword.store.GlobalConceptStore;
 import de.brightbyte.wikiword.store.LocalConceptStore;
 import de.brightbyte.wikiword.store.ProximityStore;
@@ -34,6 +40,8 @@ import de.brightbyte.wikiword.store.WikiWordConceptStore;
 
 public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
+	protected Disambiguator disambiguator;
+	
 	public QueryConsole() {
 		super(true, true);
 	}
@@ -104,6 +112,10 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			output.writeConcepts(meanings);
 		}
 
+		public void writeConceptReferences(DataSet<? extends WikiWordConceptReference<? extends WikiWordConcept>> meanings) throws PersistenceException {
+			output.writeConceptReferences(meanings);
+		}
+
 		public void writeGlobalConcept(GlobalConcept concept) throws PersistenceException {
 			output.writeGlobalConcept(concept);
 		}
@@ -116,6 +128,17 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			//XXX: hack!
 			try {
 				writer.write(featureVector.toString());
+				writer.write("\n");
+				writer.flush();
+			} catch (IOException e) {
+				throw new PersistenceException(e);
+			}
+		}
+		
+		public void writeInterpretation(Map<String, ? extends WikiWordConcept> interp) throws PersistenceException  {
+			//XXX: hack!
+			try {
+				writer.write(interp.toString());
 				writer.write("\n");
 				writer.flush();
 			} catch (IOException e) {
@@ -344,6 +367,10 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 					String id = params.get(1);
 					showFeatureVector(Integer.parseInt(id), out);
 			}
+			else if (cmd.equals("d") || cmd.equals("dis") || cmd.equals("disambig")  || cmd.equals("disambiguate")) {
+				List<String> terms = params.subList(1,params.size());
+				showDisambiguation(terms, out);
+		}
 			else if (cmd.equals("ls") || cmd.equals("list")) {
 				listConcepts(out);
 			}
@@ -369,6 +396,21 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		return conceptStore.getProximityStore();
 	}
 
+	protected FeatureStore<LocalConcept, Integer> getFeatureStore() throws PersistenceException {
+		return conceptStore.getFeatureStore();
+	}
+
+	protected Disambiguator getDisambiguator() throws PersistenceException {
+		if (disambiguator==null) disambiguator = 
+			new SlidingCoherenceDisambiguator<Integer>(
+					new StoredMeaningFetcher(getLocalConceptStore()), 
+					new StoredFeatureFetcher<LocalConcept, Integer>(getFeatureStore()),
+					true
+					);
+		
+		return disambiguator;
+	}
+
 	public void dumpStats() throws PersistenceException {
 		Map<String, ? extends Number> m = ((WikiWordConceptStore)conceptStore).getStatisticsStore().getStatistics();
 		
@@ -387,8 +429,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 	
 	public void listMeaningsLocal(String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConcept> meanings = getLocalConceptStore().getMeanings(term);
-		out.writeConcepts(meanings);
+		DataSet<LocalConceptReference> meanings = getLocalConceptStore().listMeanings(term);
+		out.writeConceptReferences(meanings);
 	}		
 
 	public void listMeaningsGlobal(String lang, String term, ConsoleOutput out) throws PersistenceException {
@@ -440,6 +482,11 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	public void showFeatureVector(int id, ConsoleOutput out) throws PersistenceException {
 		ConceptFeatures conceptFeatures = getProximityStore().getConceptFeatures(id);
 		out.writeFeatureVector(conceptFeatures.getFeatureVector());
+	}		
+
+	public void showDisambiguation(List<String> terms, ConsoleOutput out) throws PersistenceException {
+		Disambiguator.Result r = getDisambiguator().disambiguate(terms);
+		out.writeInterpretation(r.getMeanings());
 	}		
 
 	public static void main(String[] argv) throws Exception {

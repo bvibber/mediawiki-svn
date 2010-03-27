@@ -148,12 +148,14 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 				String conceptField, String nameField, String cardinalityField, String relevanceField,   
 				String keyField, String valueField) throws PersistenceException {
 			try {
-				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>());
-				
+				rs.next(); //TODO: return what iof this fails??
 				int id = DatabaseUtil.asInt(rs.getObject(conceptField));
 				String n = nameField == null ? null : DatabaseUtil.asString(rs.getObject(nameField));
 				int c = cardinalityField == null ? 1 : DatabaseUtil.asInt(rs.getObject(cardinalityField));
 				double r = relevanceField == null ? 1 : DatabaseUtil.asDouble(rs.getObject(relevanceField));
+				rs.previous();
+				
+				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>());
 				
 				R ref = referenceFactory.newInstance(id, n, c, r);
 				return new ConceptFeatures<T, Integer>(ref, v);
@@ -174,7 +176,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 					Object c = rs.getObject(conceptField);
 					if (concept<0) concept = DatabaseUtil.asInt(c);
 					else if (concept!=DatabaseUtil.asInt(c)) {
-						rs.previous(); //push back
+						if (!rs.previous()) throw new RuntimeException ("push-back failed on result set! "+rs.getClass()); //push back
 						break;
 					}
 				}

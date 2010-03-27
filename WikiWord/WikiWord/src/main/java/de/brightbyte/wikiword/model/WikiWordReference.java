@@ -39,8 +39,8 @@ public abstract class WikiWordReference<T> implements WikiWordRanking {
 	protected final int id;
 	protected final String name;
 
-	protected final int cardinality;
-	protected final double relevance;
+	protected int cardinality;
+	protected double relevance;
 	
 	public WikiWordReference(final int id, final String name, final int cardinality, final double relevance) {
 		this.cardinality = cardinality;
@@ -57,6 +57,13 @@ public abstract class WikiWordReference<T> implements WikiWordRanking {
 		return relevance;
 	}
 	
+	public void setRelevance(double relevance) {
+		this.relevance = relevance;
+	}
+
+	public void setCardinality(int cardinality) {
+		this.cardinality = cardinality;
+	}
 
 	public int getId() {
 		return id;

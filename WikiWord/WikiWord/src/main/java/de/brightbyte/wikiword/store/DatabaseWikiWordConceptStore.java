@@ -279,6 +279,10 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		} 
 	}	
 
+	public FeatureStore<T, Integer> getFeatureStore() throws PersistenceException {
+		return getProximityStore();
+	}
+	
 	public ProximityStore<T, R, Integer> getProximityStore() throws PersistenceException {
 		try { 
 			if (proximityStore==null) proximityStore = newProximityStore();
