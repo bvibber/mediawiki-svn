@@ -6,16 +6,15 @@ import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
 public class TermRelatedness implements Similarity<String> {
 
 	public static class Relatedness {
 		public final double relatedness;
-		public final WikiWordConceptReference a;
-		public final WikiWordConceptReference b;
+		public final WikiWordConcept a;
+		public final WikiWordConcept b;
 		
-		public Relatedness(final double relatedness, final WikiWordConceptReference a, final WikiWordConceptReference b) {
+		public Relatedness(final double relatedness, final WikiWordConcept a, final WikiWordConcept b) {
 			super();
 			this.relatedness = relatedness;
 			this.a = a;
@@ -65,7 +64,7 @@ public class TermRelatedness implements Similarity<String> {
 				if (d<0) throw new RuntimeException("disambiguator did not provide a coherence score, and no concept similarity measure was defined!");
 			}
 			
-			return new Relatedness(d, ca.getReference(), cb.getReference());
+			return new Relatedness(d, ca, cb);
 		} catch (PersistenceException e) {
 			throw new UncheckedPersistenceException(e);
 		}

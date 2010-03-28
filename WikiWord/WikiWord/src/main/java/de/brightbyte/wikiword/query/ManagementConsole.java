@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword;
+package de.brightbyte.wikiword.query;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +21,9 @@ import de.brightbyte.db.SingletonDataSource;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.io.WriterOutput;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.CliApp;
+import de.brightbyte.wikiword.DatasetIdentifier;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.schema.WikiWordStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;

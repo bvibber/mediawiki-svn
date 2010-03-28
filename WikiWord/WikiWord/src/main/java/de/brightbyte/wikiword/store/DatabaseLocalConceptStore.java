@@ -23,17 +23,17 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.model.ConceptDescription;
 import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.TermReference;
-import de.brightbyte.wikiword.model.TranslationReference;
 import de.brightbyte.wikiword.model.WikiWordResource;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalStatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
+import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseConceptInfoStore;
+import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
+import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseConceptInfoStore.ConceptFactory;
 
 /**
  * A LocalConceptStore implemented based upon a {@link de.brightbyte.db.DatabaseSchema} object,
@@ -42,7 +42,7 @@ import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
  * The TweakSet supplied to the constructur is used by 
  * {@link de.brightbyte.wikiword.store.DatabaseLocalConceptStore}, see there.
  */
-public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<LocalConcept, LocalConceptReference> 
+public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<LocalConcept> 
 	implements LocalConceptStore {
 	
 	protected Corpus corpus;
@@ -128,13 +128,16 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 	}
 	
 	@Override
-	protected LocalConceptReference newReference(int id, String name, int card, double relevance) {
-		return new LocalConceptReference(id, name, card, relevance);
+	protected LocalConcept newConcept(int id, String name, ConceptType type, int card, double relevance) {
+		LocalConcept concept = new LocalConcept(getCorpus(), id, type, name); 
+		concept.setCardinality(card);
+		concept.setRelevance(relevance);
+		return concept;
 	}
 	
 	@Override
-	protected LocalConceptReference[] newReferenceArray(int n) {
-		return new LocalConceptReference[n];
+	protected LocalConcept[] newConceptArray(int n) {
+		return new LocalConcept[n];
 	}
 	
 	public ConceptType getConceptType(int type) {
@@ -145,16 +148,16 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		return corpus;
 	}
 	
-	public DataSet<LocalConceptReference> listMeanings(String term) throws PersistenceException {
+	public DataSet<LocalConcept> listMeanings(String term) throws PersistenceException {
 		return this.listMeanings(term, null);
 	}
 	
-	public DataSet<LocalConceptReference> listMeanings(String term, ConceptType t)
+	public DataSet<LocalConcept> listMeanings(String term, ConceptType t)
 		throws PersistenceException { 
 			
 		String sql = referenceSelect("M.freq") + meaningWhere(term, t);
 		
-		return new QueryDataSet<LocalConceptReference>(database, getRowReferenceFactory(), "listMeanings", sql, false);
+		return new QueryDataSet<LocalConcept>(database, getRowConceptFactory(), "listMeanings", sql, false);
 	}
 
 	public LocalConcept getConceptByName(String name) throws PersistenceException {
@@ -170,35 +173,36 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 	}
 		
 	public TermReference pickRandomTerm(int top) throws PersistenceException {
-		return ((LocalStatisticsStore<LocalConcept, LocalConceptReference>)getStatisticsStore()).pickRandomTerm(top);
+		return ((LocalStatisticsStore<LocalConcept>)getStatisticsStore()).pickRandomTerm(top);
 	}
 	
 	public DataSet<TermReference> getAllTerms() throws PersistenceException {
-		return ((LocalStatisticsStore<LocalConcept, LocalConceptReference>)getStatisticsStore()).getAllTerms();
+		return ((LocalStatisticsStore<LocalConcept>)getStatisticsStore()).getAllTerms();
 	}
 
 	public int getNumberOfTerms() throws PersistenceException {
-		return ((LocalStatisticsStore<LocalConcept, LocalConceptReference>)getStatisticsStore()).getNumberOfTerms();
+		return ((LocalStatisticsStore<LocalConcept>)getStatisticsStore()).getNumberOfTerms();
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
-	protected static final DatabaseDataSet.Factory<TermReference> termFactory = new DatabaseDataSet.Factory<TermReference>() {
+	protected final DatabaseDataSet.Factory<TermReference> termFactory = new DatabaseDataSet.Factory<TermReference>() {
 		public TermReference newInstance(ResultSet row) throws SQLException, PersistenceException {
 			return newTerm(row);
 		}
 	};
 	
-	protected static TermReference newTerm(ResultSet row) throws SQLException, PersistenceException {
+	protected TermReference newTerm(ResultSet row) throws SQLException, PersistenceException {
 		int id = row.getInt("id");
 		String name = asString(row.getObject("name"));
 		int card = row.getInt("cardinality");
 		double relevance = row.getInt("relevance");
 		
-		return new TermReference(id, name, card, relevance);
+		LocalConcept concept = newConcept(id, name, null, card, relevance);
+		return new TermReference(name, concept, relevance);
 	}
 
-	protected class DatabaseLocalStatisticsStore extends DatabaseStatisticsStore implements LocalStatisticsStore<LocalConcept, LocalConceptReference> {
+	protected class DatabaseLocalStatisticsStore extends DatabaseStatisticsStore implements LocalStatisticsStore<LocalConcept> {
 		protected EntityTable termTable;
 		protected int numberOfTerms = -1;
 
@@ -305,21 +309,30 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 
 			String definition = asString(m.get("fDefinition"));
 			
-			LocalConceptReference reference = new LocalConceptReference(id, name, cardinality, relevance);
-			LocalConceptReference[] inlinks = LocalConceptReference.parseList( asString(m.get("rInlinks")), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
-			LocalConceptReference[] outlinks = LocalConceptReference.parseList( asString(m.get("rOutlinks")), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
-			LocalConceptReference[] broader = LocalConceptReference.parseList( asString(m.get("rBroader")), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
-			LocalConceptReference[] narrower = LocalConceptReference.parseList( asString(m.get("rNarrower")), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
+			LocalConcept concept = new LocalConcept(getCorpus(), id, null, name);
+			concept.setCardinality(cardinality);
+			concept.setRelevance(relevance);
+			
+			LocalConcept[] inlinks = LocalConcept.parseList( asString(m.get("rInlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
+			LocalConcept[] outlinks = LocalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
+			LocalConcept[] broader = LocalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
+			LocalConcept[] narrower = LocalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
 			TranslationReference[] langlinks = TranslationReference.parseList( asString(m.get("rLanglinks")), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
-			LocalConceptReference[] similar = LocalConceptReference.parseList( asString(m.get("rSimilar")), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
-			LocalConceptReference[] related = LocalConceptReference.parseList( asString(m.get("rRelated")), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
-			TermReference[] terms = TermReference.parseList( asString(m.get("dTerms")), ((ConceptInfoStoreSchema)database).termReferenceListEntry );
+			LocalConcept[] similar = LocalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
+			LocalConcept[] related = LocalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
+			TermReference[] terms = TermReference.parseList( asString(m.get("dTerms")), getConceptFactory(), ((ConceptInfoStoreSchema)database).termReferenceListEntry );
 			
 			WikiWordResource resource = rcId <= 0 ? null : new WikiWordResource(corpus, rcId, rcName, rcType);
-			ConceptDescription description = new ConceptDescription(corpus, resource, type, definition, terms); 
-			ConceptRelations<LocalConceptReference> relations = new ConceptRelations<LocalConceptReference>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
 			
-			return new LocalConcept(reference, corpus, type, relations, description);
+			concept.setResource(resource);
+			concept.setType(type);
+			concept.setDefinition(definition);
+			concept.setTerms(terms);
+			
+			ConceptRelations<LocalConcept> relations = new ConceptRelations<LocalConcept>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
+			concept.setRelations(relations);
+			
+			return concept;
 		}
 		
 

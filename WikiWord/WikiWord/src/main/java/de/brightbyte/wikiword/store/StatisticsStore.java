@@ -5,9 +5,8 @@ import java.util.Map;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
-public interface StatisticsStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> extends WikiWordStore {
+public interface StatisticsStore<T extends WikiWordConcept> extends WikiWordStore {
 	public abstract Map<String, ? extends Number> getStatistics()
 		throws PersistenceException;
 
@@ -22,7 +21,7 @@ public interface StatisticsStore<T extends WikiWordConcept, R extends WikiWordCo
 	 *        it's interpreted as a percentage of the total number of concepts.
 	 * @return a random concept from the range specified by the top argument.
 	 */
-	public R pickRandomConcept(int top) 
+	public T pickRandomConcept(int top) 
 		throws PersistenceException;
 	
 }

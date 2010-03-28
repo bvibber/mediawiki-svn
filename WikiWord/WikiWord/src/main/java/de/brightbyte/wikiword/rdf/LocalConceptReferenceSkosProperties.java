@@ -1,20 +1,12 @@
 package de.brightbyte.wikiword.rdf;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import de.brightbyte.rdf.AbstractProperties;
 import de.brightbyte.rdf.RdfException;
 import de.brightbyte.rdf.RdfPlatform;
 import de.brightbyte.rdf.vocab.SKOS;
-import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
-import de.brightbyte.wikiword.model.TermReference;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
-import de.brightbyte.wikiword.model.WikiWordResource;
 
-public class LocalConceptReferenceSkosProperties<V, R extends V, A> extends AbstractProperties<V, R, A, LocalConceptReference> {
+public class LocalConceptReferenceSkosProperties<V, R extends V, A> extends AbstractProperties<V, R, A, LocalConcept> {
 
 	protected SKOS<V, R> skos;
 	protected WW<V, R> ww;
@@ -30,12 +22,12 @@ public class LocalConceptReferenceSkosProperties<V, R extends V, A> extends Abst
 		ww = platform.aquireNamespace(WW.class);
 	}
 	
-	public void addLocalProperties(LocalConceptReference concept, A about) throws RdfException {
+	public void addLocalProperties(LocalConcept concept, A about) throws RdfException {
 		String name = concept.getName();
 		setLiteralProperty(about, ww.displayLabel, name, (String)null);
 	}
 	
-	public void addProperties(LocalConceptReference concept, A about) throws RdfException {
+	public void addProperties(LocalConcept concept, A about) throws RdfException {
 		addLocalProperties(concept, about); //////////////////////////////////
 	}
 

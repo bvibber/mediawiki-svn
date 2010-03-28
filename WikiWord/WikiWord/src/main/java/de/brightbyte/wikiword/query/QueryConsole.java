@@ -24,12 +24,10 @@ import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
 import de.brightbyte.wikiword.model.AbstractConceptOutput;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.ConceptOutput;
+import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
-import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.rdf.RdfOutput;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.FeatureStore;
@@ -104,16 +102,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			output.writeConcept(concept);
 		}
 
-		public void writeConceptReference(WikiWordConceptReference concept) throws PersistenceException {
-			output.writeConceptReference(concept);
-		}
-
 		public void writeConcepts(DataSet<? extends WikiWordConcept> meanings) throws PersistenceException {
 			output.writeConcepts(meanings);
-		}
-
-		public void writeConceptReferences(DataSet<? extends WikiWordConceptReference<? extends WikiWordConcept>> meanings) throws PersistenceException {
-			output.writeConceptReferences(meanings);
 		}
 
 		public void writeGlobalConcept(GlobalConcept concept) throws PersistenceException {
@@ -174,14 +164,14 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		}
 
 
-		public void writeConceptReference(WikiWordConceptReference concept) throws PersistenceException {
+		public void writeConceptReference(WikiWordConcept concept) throws PersistenceException {
 			println("> (", concept.getRelevance(), ":", concept.getCardinality(), ") #", concept.getId(), ": ", concept.getName());
 		}
 
 		public void writeGlobalConcept(GlobalConcept concept) throws PersistenceException {
 			println();
 			println("* (", concept.getRelevance(), ":", concept.getCardinality(), ") #", concept.getId(), ": ", concept.getName());
-			writeConceptRelations(concept);
+			writeConceptRelations(concept.getRelations());
 			println();
 		}
 
@@ -189,7 +179,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			println();
 			println("* (", concept.getRelevance(), ":", concept.getCardinality(), ") #", concept.getId(), ": ", concept.getName());
 			writeLocalConceptDescription(concept);
-			writeConceptRelations(concept);
+			writeConceptRelations(concept.getRelations());
 			println();
 		}
 		
@@ -198,14 +188,16 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			printlst(" - Terms", concept.getTerms());
 		}
 		
-		public void writeConceptRelations(WikiWordConcept concept) throws PersistenceException {
-			printlst(" - Similar", concept.getSimilar());
-			printlst(" - Related", concept.getRelated());
-			printlst(" - Broader", concept.getBroader());
-			printlst(" - Narrower", concept.getNarrower());
-			printlst(" - InLinks", concept.getInLinks());
-			printlst(" - OutLinks", concept.getOutLinks());
-			printlst(" - LangLinks", concept.getLanglinks());
+		public void writeConceptRelations(ConceptRelations<? extends WikiWordConcept> relations) throws PersistenceException {
+			if (relations==null) return;
+			
+			printlst(" - Similar", relations.getSimilar());
+			printlst(" - Related", relations.getRelated());
+			printlst(" - Broader", relations.getBroader());
+			printlst(" - Narrower", relations.getNarrower());
+			printlst(" - InLinks", relations.getInLinks());
+			printlst(" - OutLinks", relations.getOutLinks());
+			printlst(" - LangLinks", relations.getLanglinks());
 		}
 		
 		public void println(Object... args) throws PersistenceException {
@@ -233,15 +225,14 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 				for (Object a: args) {
 					if (s.length()>0) s.append(", ");
 
-					if (a instanceof WikiWordConceptReference) {
-						WikiWordConceptReference r = (WikiWordConceptReference)a;
+					if (a instanceof WikiWordConcept) {
+						WikiWordConcept r = (WikiWordConcept)a;
 						int id = r.getId();
 						String n = r.getName();
 						
 						if (n==null && c < maxAutoResolve) {
 							WikiWordConcept x = ((WikiWordConceptStore)conceptStore).getConcept(id);
-							r = x.getReference();
-							n = r.getName();
+							r = x;
 							a = r;
 						}
 
@@ -424,13 +415,13 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}
 	
 	public void listConcepts(ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConcept> meanings = getLocalConceptStore().getConceptInfoStore().getAllConcepts();
+		DataSet<? extends LocalConcept> meanings = getLocalConceptStore().getAllConcepts();
 		out.writeConcepts(meanings);
 	}		
 	
 	public void listMeaningsLocal(String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConceptReference> meanings = getLocalConceptStore().listMeanings(term);
-		out.writeConceptReferences(meanings);
+		DataSet<LocalConcept> meanings = getLocalConceptStore().getMeanings(term);
+		out.writeConcepts(meanings);
 	}		
 
 	public void listMeaningsGlobal(String lang, String term, ConsoleOutput out) throws PersistenceException {
@@ -470,12 +461,12 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 
 	public void showEnvironment(int id, double min, ConsoleOutput out) throws PersistenceException {
-		DataSet<WikiWordConceptReference> environment = getProximityStore().getEnvironment(id, min);
-		List<WikiWordConceptReference> env = environment.load();
-		Collections.sort(env, WikiWordReference.byRelevance);
+		DataSet<WikiWordConcept> environment = getProximityStore().getEnvironment(id, min);
+		List<WikiWordConcept> env = environment.load();
+		Collections.sort(env, WikiWordConcept.byRelevance);
 		
-		for (WikiWordConceptReference r: env) {
-			out.writeConceptReference(r);
+		for (WikiWordConcept e: env) {
+			out.writeConcept(e);
 		}
 	}		
 

@@ -4,24 +4,18 @@ import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.model.TermReference;
 
 
 /**
  * Base interface for a store containing wiki information 
  */
-public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept, LocalConceptReference>, WikiWordLocalStore {
+public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept>, WikiWordLocalStore {
 	
 	/*
 	public abstract DataSet<ConceptReference> getBroaderConcepts() throws PersistenceException;
 	public abstract DataSet<ConceptReference> getNarrowerConcepts() throws PersistenceException;
 	*/
-
-	//TODO: relevance limit? order? filter?
-	public abstract DataSet<LocalConceptReference> listMeanings(String term, ConceptType t) throws PersistenceException;
-	
-	public abstract DataSet<LocalConceptReference> listMeanings(String term) throws PersistenceException;
 
 	public abstract DataSet<LocalConcept> getMeanings(String term, ConceptType t) throws PersistenceException;
 	

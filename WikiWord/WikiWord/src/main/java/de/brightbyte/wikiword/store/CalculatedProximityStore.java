@@ -14,15 +14,14 @@ import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
+import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
-import de.brightbyte.wikiword.model.WikiWordReference;
 
-public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>>  
-		implements ProximityStore<T, R, Integer> {
+public class CalculatedProximityStore<T extends WikiWordConcept>  
+		implements ProximityStore<T, Integer> {
 
-	protected class EnvironmentDataCursor implements DataCursor<R> {
+	protected class EnvironmentDataCursor implements DataCursor<T> {
 		private DataCursor<ConceptFeatures<T, Integer>> neighbours;
 		private LabeledVector<Integer> centerFeatures;
 		private double minProximity;
@@ -37,20 +36,20 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 			this.neighbours.close();
 		}
 
-		public R next() throws PersistenceException {
+		public T next() throws PersistenceException {
 			ConceptFeatures<T, Integer> f;
 			while((f = neighbours.next()) != null) {
 				double prox = getProximity(centerFeatures, f.getFeatureVector());
 				if (prox<minProximity) continue;
 				
-				return newReference(f.getId(), f.getName(), 1, prox);
+				return newConcept(f.getId(), f.getName(), 1, prox);
 			} ;
 			
 			return null;
 		}
 	}
 	
-	protected class EnvironmentDataSet implements DataSet<R> {
+	protected class EnvironmentDataSet implements DataSet<T> {
 		private DataSet<ConceptFeatures<T, Integer>> neighbours;
 		private LabeledVector<Integer> centerFeatures;
 		private double minProximity;
@@ -61,38 +60,38 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 			this.minProximity = minProximity; 
 		}
 
-		public DataCursor<R> cursor() throws PersistenceException {
+		public DataCursor<T> cursor() throws PersistenceException {
 			return new EnvironmentDataCursor(neighbours.cursor(), centerFeatures, minProximity);
 		}
 
-		public Iterator<R> iterator() throws UncheckedPersistenceException {
+		public Iterator<T> iterator() throws UncheckedPersistenceException {
 			try {
-				return new CursorIterator<R>(cursor());
+				return new CursorIterator<T>(cursor());
 			} catch (PersistenceException e) {
 				throw new UncheckedPersistenceException(e);
 			}
 		}
 
-		public List<R> load() throws PersistenceException {
-				ArrayList<R> r = new ArrayList<R>();
-				for (R x: this) r.add(x);
+		public List<T> load() throws PersistenceException {
+				ArrayList<T> r = new ArrayList<T>();
+				for (T x: this) r.add(x);
 				return r;
 		}
 
 	}
 
-	protected WikiWordReference.Factory<R> referenceFactory;
-	protected FeatureTopologyStore<T, R, Integer> featureStore;
+	protected WikiWordConcept.Factory<T> conceptFactory;
+	protected FeatureTopologyStore<T, Integer> featureStore;
 	protected Similarity<LabeledVector<Integer>>  proximityMeasure;
 	
-	public CalculatedProximityStore(FeatureTopologyStore<T, R, Integer> featureStore, 
-						WikiWordReference.Factory<R> referenceFactory) {
+	public CalculatedProximityStore(FeatureTopologyStore<T, Integer> featureStore, 
+						WikiWordConcept.Factory<T> referenceFactory) {
 		this.featureStore = featureStore;
 		this.proximityMeasure = ScalarVectorSimilarity.<Integer>getInstance();
-		this.referenceFactory = referenceFactory;
+		this.conceptFactory = referenceFactory;
 	}
 
-	public DataSet<? extends R> getEnvironment(int concept, double minProximity)
+	public DataSet<? extends T> getEnvironment(int concept, double minProximity)
 			throws PersistenceException {
 		ConceptFeatures<T, Integer> c = getConceptFeatures(concept);
 		DataSet<ConceptFeatures<T, Integer>> n = featureStore.getNeighbourhoodFeatures(concept);
@@ -100,8 +99,8 @@ public class CalculatedProximityStore<T extends WikiWordConcept, R extends WikiW
 		return new EnvironmentDataSet(n, c.getFeatureVector(), minProximity);
 	}
 
-	protected R newReference(int id, String name, int cardinality, double relevance) {
-		return referenceFactory.newInstance(id, name, cardinality, relevance);
+	protected T newConcept(int id, String name, ConceptType type, int cardinality, double relevance) throws PersistenceException {
+		return conceptFactory.newInstance(id, name, type, cardinality, relevance);
 	}
 	
 	public LabeledVector<Integer> getEnvironmentVector(int concept, double minProximity)

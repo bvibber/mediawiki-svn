@@ -22,39 +22,42 @@ import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
-import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
 
-public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> 
+public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept> 
 		extends DatabaseWikiWordStore 
-		implements WikiWordConceptStore<T, R>  {
+		implements WikiWordConceptStore<T>  {
 
 
-	private class RowReferenceFactory implements DatabaseDataSet.Factory<R> {
-		public R newInstance(ResultSet row) throws SQLException, PersistenceException {
-			return newReference(row);
+	private class RowConceptFactory implements DatabaseDataSet.Factory<T> {
+		public T newInstance(ResultSet row) throws SQLException, PersistenceException {
+			return newConcept(row);
 		}
 	}
 	
-	private class ReferenceFactory implements WikiWordReference.Factory<R> {
+	private class ConceptFactory implements WikiWordConcept.Factory<T> {
 
-		public R[] newArray(int size) {
-			return newReferenceArray(size);
+		public T[] newArray(int size) {
+			return newConceptArray(size);
 		}
 
-		public R newInstance(int id, String name, int cardinality, double relevance) {
-			return newReference(id, name, cardinality, relevance);
+		public T newInstance(int id, String name, ConceptType type) throws PersistenceException {
+			return this.newInstance(id, name, type, 1, 1);
+		}
+
+		public T newInstance(int id, String name, ConceptType type, int card, double rel) throws PersistenceException {
+			return newConcept(id, name, type, card, rel);
 		}
 	}
 	
-	private RowReferenceFactory rowReferenceFactory = new RowReferenceFactory();
-	private ReferenceFactory referenceFactory = new ReferenceFactory();
+	private RowConceptFactory rowConceptFactory = new RowConceptFactory();
+	private ConceptFactory conceptFactory = new ConceptFactory();
 	
 	protected EntityTable conceptTable;
 	protected RelationTable broaderTable;
@@ -80,34 +83,36 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		langlinkTable = (RelationTable)database.getTable("langlink");
 	}
 	
-	protected DatabaseDataSet.Factory<R> getRowReferenceFactory() {
-		return rowReferenceFactory;
+	protected DatabaseDataSet.Factory<T> getRowConceptFactory() {
+		return rowConceptFactory;
 	}
 	
-	protected WikiWordReference.Factory<R> getReferenceFactory() {
-		return referenceFactory;
+	protected WikiWordConcept.Factory<T> getConceptFactory() {
+		return conceptFactory;
 	}
 	
-	protected R newReference(ResultSet row) throws SQLException {
+	protected T newConcept(ResultSet row) throws SQLException, PersistenceException {
 		int id = row.getInt("cId");
 		String name = asString(row.getObject("cName"));
+		int type = row.getInt("cType");
 		int card = row.getInt("qCard");
 		double relev = row.getDouble("qRelev");
 	
-		return newReference(id, name, card, relev);
+		return newConcept(id, name, getConceptType(type), card, relev);
 	}
 	
-	protected R newReference(Map m) {
+	protected T newConcept(Map m) throws PersistenceException {
 		int id = asInt(m.get("cId"));
 		String name = asString(m.get("cName"));
+		int type = asInt(m.get("cType"));
 		int card = m.get("qCard") != null ? asInt(m.get("qCard")) : -1;
 		double relev = m.get("qRelev") != null ? asDouble(m.get("qRelev")) : -1;
 		
-		return newReference(id, name, card, relev);
+		return newConcept(id, name, getConceptType(type), card, relev);
 	}
 	
-	protected abstract R newReference(int id, String name, int card, double relevance);
-	protected abstract R[] newReferenceArray(int n);
+	protected abstract T newConcept(int id, String name, ConceptType type, int card, double relevance) throws PersistenceException;
+	protected abstract T[] newConceptArray(int n) ;
 		
 	protected String referenceSelect(String card) {
 		if (areStatsComplete()) return referenceSelect(card, "DT.idf", true);
@@ -141,29 +146,25 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		return getConceptInfoStore().getConcepts(ids);
 	}
 	
-	public DataSet<? extends T> getConcepts(Iterable<R> refs) throws PersistenceException {
-		return getConceptInfoStore().getConcepts(refs);
-	}
-	
 	public T getConcept(int id) throws PersistenceException {
 		return getConceptInfoStore().getConcept(id);
 	}
 	
 	public T getRandomConcept(int top) throws PersistenceException {
-		R r = pickRandomConcept(top);
+		T r = pickRandomConcept(top);
 		return getConcept(r.getId());
 	}
 	
-	public DataSet<R> listAllConcepts() throws PersistenceException { 
+	public DataSet<T> getAllConcepts() throws PersistenceException { 
 		try {
 			String sql = referenceSelect("-1");
-			return new ChunkedQueryDataSet<R>(database, getRowReferenceFactory(), "listAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
+			return new ChunkedQueryDataSet<T>(database, getRowConceptFactory(), "getAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
 	}
 	
-	public R pickRandomConcept(int top) throws PersistenceException {
+	public T pickRandomConcept(int top) throws PersistenceException {
 		return getStatisticsStore().pickRandomConcept(top);
 	}
 	
@@ -241,25 +242,25 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	protected abstract DatabaseStatisticsStore newStatisticsStore() throws SQLException, PersistenceException;
 	protected abstract DatabaseConceptInfoStore<T> newConceptInfoStore() throws SQLException, PersistenceException;
 
-	protected ProximityStore<T, R, Integer> newProximityStore() throws SQLException, PersistenceException {
+	protected ProximityStore<T, Integer> newProximityStore() throws SQLException, PersistenceException {
 		ProximityStoreSchema schema = new ProximityStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), null, isGlobal(), tweaks, false); 
 		
 		if (tweaks.getTweak("proximity.usedStoredProximity", true) && schema.tableExists("proximity")) {
 			int c = schema.getTableSize("proximity");
 			if (c>0) { //proximity values are pre-calculated in the database
-				return new DatabaseProximityStore<T, R>(this, schema, tweaks);
+				return new DatabaseProximityStore<T>(this, schema, tweaks);
 			}
 		} 
 
 		//proximity values are not in the database, calculate on the fly
-		DatabaseFeatureStore<T, R> store = new DatabaseFeatureStore<T, R>(this, schema, tweaks);
-		return new CalculatedProximityStore<T, R>(store, getReferenceFactory());
+		DatabaseFeatureStore<T> store = new DatabaseFeatureStore<T>(this, schema, tweaks);
+		return new CalculatedProximityStore<T>(store, getConceptFactory());
 	}
 	
 	private DatabaseStatisticsStore statsStore;
 	private DatabaseConceptInfoStore<T> infoStore;
 
-	private ProximityStore<T, R, Integer> proximityStore;
+	private ProximityStore<T, Integer> proximityStore;
 	
 	public DatabaseConceptInfoStore<T> getConceptInfoStore() throws PersistenceException {
 		try { 
@@ -270,7 +271,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		} 
 	}
 
-	public StatisticsStore<T, R> getStatisticsStore() throws PersistenceException {
+	public StatisticsStore<T> getStatisticsStore() throws PersistenceException {
 		try {
 			if (statsStore==null) statsStore = newStatisticsStore();
 			return statsStore;
@@ -283,7 +284,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		return getProximityStore();
 	}
 	
-	public ProximityStore<T, R, Integer> getProximityStore() throws PersistenceException {
+	public ProximityStore<T, Integer> getProximityStore() throws PersistenceException {
 		try { 
 			if (proximityStore==null) proximityStore = newProximityStore();
 			return proximityStore;
@@ -294,7 +295,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public abstract class DatabaseStatisticsStore extends DatabaseWikiWordStore implements StatisticsStore<T, R>  {
+	public abstract class DatabaseStatisticsStore extends DatabaseWikiWordStore implements StatisticsStore<T>  {
 		
 		protected EntityTable statsTable;
 		protected EntityTable degreeTable;
@@ -343,7 +344,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 			}
 		}
 		
-		public R pickRandomConcept(int top)
+		public T pickRandomConcept(int top)
 			throws PersistenceException {
 			
 			if (!areStatsComplete()) throw new IllegalStateException("satistics need to be built before accessing node degree!");
@@ -357,9 +358,9 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 						+ " WHERE in_rank = "+r;
 			
 			try {
-				R pick = null;
+				T pick = null;
 				ResultSet rs = executeQuery("pickRandomConcept", sql);
-				if (rs.next()) pick = newReference(rs); 
+				if (rs.next()) pick = newConcept(rs); 
 				rs.close();
 				return pick;
 			} catch (SQLException e) {
@@ -373,8 +374,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public abstract class DatabaseConceptInfoStore<C extends WikiWordConcept> 
-		extends DatabaseWikiWordStore
-		implements ConceptInfoStore<C> {
+		extends DatabaseWikiWordStore {
 
 
 		protected class ConceptFactory implements DatabaseDataSet.Factory<C> {
@@ -444,20 +444,6 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept, R 
 		}
 	
 		protected abstract C newConcept(Map<String, Object> data) throws PersistenceException;
-
-		public DataSet<C> getConcepts(Iterable<? extends WikiWordConceptReference<? extends WikiWordConcept>> refs) throws PersistenceException {
-			List<Integer> ids = new ArrayList<Integer>();
-			
-			for (WikiWordConceptReference<? extends WikiWordConcept> r: refs) {
-				ids.add(r.getId());
-			}
-			
-			int[] ii = new int[ids.size()];
-			int i = 0;
-			for (int id: ids) ii[i++] = id;
-			
-			return getConcepts(ii);
-		}
 		
 	}
 

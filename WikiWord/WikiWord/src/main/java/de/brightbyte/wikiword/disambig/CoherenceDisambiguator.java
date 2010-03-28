@@ -16,7 +16,7 @@ import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.WikiWordRanking;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 	
@@ -26,15 +26,15 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 	
 	protected Similarity<LabeledVector<K>> similarityMeasure;
 	protected FeatureFetcher<LocalConcept, K> featureFetcher;
-	protected Measure<WikiWordRanking> popularityMeasure;
+	protected Measure<WikiWordConcept> popularityMeasure;
 	protected PopularityDisambiguator popularityDisambiguator;
 	
 	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, boolean featuresAreNormalized) {
-		this(meaningFetcher, featureFetcher, WikiWordRanking.theCardinality, 
+		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
 					featuresAreNormalized ? ScalarVectorSimilarity.<K>getInstance() : CosineVectorSimilarity.<K>getInstance());  //if pre-normalized, use scalar to calc cosin
 	}
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<WikiWordRanking> popularityMeasure, Similarity<LabeledVector<K>> sim) {
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<K>> sim) {
 		super(meaningFetcher);
 		
 		if (popularityMeasure==null) throw new NullPointerException();
@@ -200,10 +200,10 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 						
 						//force relevance/cardinality to the figures from the meaning lookup
 						//not strictly necessary, but nice to keep it consistent.
-						fa.getConceptReference().setCardinality(a.getCardinality());
-						fa.getConceptReference().setRelevance(a.getRelevance());
-						fb.getConceptReference().setCardinality(b.getCardinality());
-						fb.getConceptReference().setRelevance(b.getRelevance());
+						fa.getConcept().setCardinality(a.getCardinality());
+						fa.getConcept().setRelevance(a.getRelevance());
+						fb.getConcept().setCardinality(b.getCardinality());
+						fb.getConcept().setRelevance(b.getRelevance());
 						
 						d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						similarities.set(a, b, d);

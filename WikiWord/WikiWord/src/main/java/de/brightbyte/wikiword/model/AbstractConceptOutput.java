@@ -23,12 +23,4 @@ public abstract class AbstractConceptOutput implements ConceptOutput {
 		}
 	}
 
-	public void writeConceptReferences(DataSet<? extends WikiWordConceptReference<? extends WikiWordConcept>> references) throws PersistenceException {
-		DataCursor<? extends WikiWordConceptReference<? extends WikiWordConcept>> cursor = references.cursor();
-		WikiWordConceptReference<? extends WikiWordConcept> r;
-		while ((r = cursor.next()) != null) {
-			writeConceptReference(r);
-		}
-	}
-	
 }

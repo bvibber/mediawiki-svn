@@ -12,7 +12,7 @@ import de.brightbyte.db.KeyType;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.model.WikiWordReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 	public final String referenceSeparator; //info record separator
@@ -21,7 +21,7 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 	public final Pattern referenceSeparatorPattern; //info record separator
 	public final Pattern referenceFieldSeparatorPattern; //info field separator
 
-	public class ReferenceListEntrySpec extends WikiWordReference.ListFormatSpec {
+	public class ReferenceListEntrySpec extends WikiWordConcept.ListFormatSpec {
 
 		public final String joinField;
 		public final String valueExpression;

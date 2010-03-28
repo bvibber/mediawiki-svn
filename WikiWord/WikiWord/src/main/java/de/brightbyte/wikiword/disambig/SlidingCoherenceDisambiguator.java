@@ -15,19 +15,19 @@ import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.WikiWordRanking;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> {
 
 	protected int window ; 
 	
 	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, boolean featuresAreNormalized) {
-		this(meaningFetcher, featureFetcher, WikiWordRanking.theCardinality, 
+		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
 					featuresAreNormalized ? ScalarVectorSimilarity.<K>getInstance() : CosineVectorSimilarity.<K>getInstance(),  //if pre-normalized, use scalar to calc cosin
 					5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<WikiWordRanking> popularityMeasure, Similarity<LabeledVector<K>> sim, int window) {
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<K>> sim, int window) {
 		super(meaningFetcher, featureFetcher, popularityMeasure, sim);
 		
 		this.window = window;

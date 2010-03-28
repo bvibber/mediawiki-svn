@@ -4,25 +4,22 @@ import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
 
-public interface WikiWordConceptStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> extends WikiWordConceptStoreBase {
+public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWordConceptStoreBase {
 
-	public DataSet<? extends R> listAllConcepts() throws PersistenceException;
+	public DataSet<? extends T> getAllConcepts() throws PersistenceException;
 	
 	public ConceptType getConceptType(int type) throws PersistenceException;
 	
 	public StatisticsStore getStatisticsStore() throws PersistenceException;
-	public ConceptInfoStore<T> getConceptInfoStore() throws PersistenceException;
+	//public ConceptInfoStore<T> getConceptInfoStore() throws PersistenceException;
 	public FeatureStore<T, Integer> getFeatureStore() throws PersistenceException;
-	public ProximityStore<T, R, Integer> getProximityStore() throws PersistenceException;
+	public ProximityStore<T, Integer> getProximityStore() throws PersistenceException;
 
 	public T getConcept(int id) throws PersistenceException;
 	
 	public DataSet<? extends T> getConcepts(int[] ids) throws PersistenceException;
-	
-	public DataSet<? extends T> getConcepts(Iterable<R> refs) throws PersistenceException;
 	
 	/**
 	 * Returns a WikiWordConceptReference for a random concept from the top-n 
@@ -32,7 +29,7 @@ public interface WikiWordConceptStore<T extends WikiWordConcept, R extends WikiW
 	 *        it's interpreted as a percentage of the total number of concepts.
 	 * @return a random concept from the range specified by the top argument.
 	 */
-	public R pickRandomConcept(int top) throws PersistenceException;
+	public T pickRandomConcept(int top) throws PersistenceException;
 
 	/**
 	 * Returns a WikiWordConcept for a random concept from the top-n 

@@ -1,113 +1,91 @@
 package de.brightbyte.wikiword.model;
 
+import java.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 
 public class LocalConcept extends WikiWordConcept {
 	
-	/*
-	public static final Factory factory = new Factory<LocalConcept>() {
-	
-		public LocalConcept newInstance(Map<String, Object> m) {
-			Corpus corpus = (Corpus)m.get("corpus"); //XXX: evil hack!
-			
-			int id = (Integer)m.get("cId");
-			String name = (String)m.get("cName");
-			ConceptType type = corpus.getConceptTypes().getType((Integer)m.get("cType"));
-			
-			int cardinality = m.get("qFreq") != null ? ((Number)m.get("qFreq")).intValue() : -1;
-			double relevance = m.get("qConf") != null ? ((Number)m.get("qConf")).doubleValue() : -1;
-			
-			int rcId = m.get("rcId") != null ? ((Number)m.get("rcId")).intValue() : 0;
-			String rcName = (String)m.get("rcName");
-			ResourceType rcType = m.get("rcType") != null ? ResourceType.getType((Integer)m.get("rcType")) : null;
-
-			String definition = (String)m.get("fDefinition");
-			
-			WikiWordRanking ranking = new WikiWordRanking(cardinality, relevance);
-			LocalConceptReference[] broader = LocalConceptReference.parseList( (String)m.get("rBroader"), ConceptDescriptionStoreSchema.broaderReferenceListEntry ); 
-			LocalConceptReference[] narrower = LocalConceptReference.parseList( (String)m.get("rNarrower"), ConceptDescriptionStoreSchema.narrowerReferenceListEntry ); 
-			TranslationReference[] langlinks = TranslationReference.parseList( (String)m.get("rLanglinks"), ConceptDescriptionStoreSchema.langlinkReferenceListEntry ); 
-			TermReference[] terms = TermReference.parseList( (String)m.get("dTerms"), ConceptDescriptionStoreSchema.termReferenceListEntry );
-			
-			WikiWordResource resource = rcId <= 0 ? null : new WikiWordResource(corpus, rcId, rcName, rcType);
-			ConceptDescription description = new ConceptDescription(corpus, resource, type, definition, terms); 
-			ConceptRelations<LocalConceptReference> relations = new ConceptRelations<LocalConceptReference>(broader, narrower, langlinks);
-			
-			return new LocalConcept(id, name, corpus, type, relations, description, ranking);
+	public static class ByName implements Comparator<LocalConcept> {
+		protected Collator collator;
+		
+		public ByName() {
+			this((Collator)null);
 		}
-	
+		
+		public ByName(Locale locale) {
+			this.collator = Collator.getInstance(locale);
+		}
+		
+		public ByName(Collator collator) {
+			this.collator = collator;
+		}
+		
+		public int compare(LocalConcept a, LocalConcept b) {
+			if (collator==null) return a.getName().compareTo(b.getName());
+			else return collator.compare(a.getName(), b.getName());
+		}
 	};
-	*/
-	protected ConceptRelations<LocalConceptReference> relations;
-	protected ConceptDescription description;
 	
-	public LocalConcept(LocalConceptReference reference, Corpus corpus, ConceptType type, /*URI uri,*/ ConceptRelations<LocalConceptReference> relations, ConceptDescription description) {
-		super(reference, corpus, type);
+	protected String name;
+	protected String definition;
+	protected String language;
+	protected WikiWordResource resource;
+	
+	public LocalConcept(Corpus corpus, int id,  ConceptType type, String name) {
+		super(corpus, id, type);
 
-		if (relations==null) throw new NullPointerException();
-		if (description==null) throw new NullPointerException();
-		//if (corpus==null) throw new NullPointerException();
-
-		this.relations = relations;
-		this.description = description;
+		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		if (name!=null) return "#"+id+":[["+name+"]]";
+		else return "#"+id;
+	}
+	
 	public Corpus getCorpus() {
 		return (Corpus)getDatasetIdentifier();
 	}
 
-	public ConceptDescription getDescription() {
-		return description;
-	}
-
-	public ConceptRelations getRelations() {
-		return relations;
-	}
-
 	public String getDefinition() {
-		return description.getDefinition();
+		return definition;
+	}
+
+	public void setDefinition(String definition) {
+		if (this.definition!=null) throw new IllegalStateException("property already initialized");
+		this.definition = definition;
 	}
 
 	public WikiWordResource getResource() {
-		return description.getResource();
+		return resource;
 	}
 
-	public TermReference[] getTerms() {
-		return description.getTerms();
+	public void setResource(WikiWordResource resource) {
+		if (this.resource!=null) throw new IllegalStateException("property already initialized");
+		this.resource = resource;
 	}
 
-	public TranslationReference[] getLanglinks() {
-		return relations.getLanglinks();
+	public String getLanguage() {
+		if (language==null) return getCorpus().getLanguage();
+		else return language;
 	}
 
-	@Override
-	public LocalConceptReference[] getBroader() {
-		return relations.getBroader();
+	public void setLanguage(String language) {
+		if (this.language!=null) throw new IllegalStateException("property already initialized");
+		this.language = language;
 	}
 
-	@Override
-	public LocalConceptReference[] getNarrower() {
-		return relations.getNarrower();
-	}	
-
-	@Override
-	public LocalConceptReference[] getRelated() {
-		return relations.getRelated();
+	public String getName() {
+		return name;
 	}
 
-	@Override
-	public LocalConceptReference[] getSimilar() {
-		return relations.getSimilar();
-	}	
-
-	@Override
-	public LocalConceptReference[] getInLinks() {
-		return relations.getInLinks();
+	public void setName(String name) {
+		if (this.name!=null) throw new IllegalStateException("property already initialized");
+		this.name = name;
 	}
 
-	@Override
-	public LocalConceptReference[] getOutLinks() {
-		return relations.getOutLinks();
-	}	
 }

@@ -17,19 +17,18 @@ import de.brightbyte.db.QueryDataSet;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.db.TemporaryTableDataSet;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.ConceptFeatures;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
-import de.brightbyte.wikiword.model.WikiWordReference;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 
-public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> 
+public class DatabaseFeatureStore<T extends WikiWordConcept> 
 				extends DatabaseWikiWordStore
-				implements FeatureTopologyStore<T, R, Integer> {
+				implements FeatureTopologyStore<T, Integer> {
 	
-		protected WikiWordReference.Factory<R> referenceFactory;
-		protected DatabaseWikiWordConceptStore<T, R> conceptStore;
+		protected WikiWordConcept.Factory<T> conceptFactory;
+		protected DatabaseWikiWordConceptStore<T> conceptStore;
 		protected RelationTable featureTable;
 		protected EntityTable conceptTable;
 		
@@ -56,24 +55,24 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 				
 				if (concept<0) return null;
 				
-				R r = newReference(concept, name, 1, -1); //TODO: global vs. local
+				T r = newConcept(concept, name, null, 1, -1); //TODO: global vs. local
 				return new ConceptFeatures<T, Integer>(r, f);
 			}
 		
 		};
 		
-		protected DatabaseFeatureStore(DatabaseWikiWordConceptStore<T, R> conceptStore, ProximityStoreSchema database, TweakSet tweaks) throws SQLException {
+		protected DatabaseFeatureStore(DatabaseWikiWordConceptStore<T> conceptStore, ProximityStoreSchema database, TweakSet tweaks) throws SQLException {
 			super(database, tweaks);
 			
 		    this.conceptStore = conceptStore;
-			this.referenceFactory = conceptStore.getReferenceFactory();
+			this.conceptFactory = conceptStore.getConceptFactory();
 
 		    this.conceptTable = (EntityTable)conceptStore.getDatabaseAccess().getTable("concept"); 
 			this.featureTable = (RelationTable)database.getTable("feature"); 
 		}
 
-		protected R newReference(int id, String name, int cardinality, double relevance) {
-			return referenceFactory.newInstance(id, name, cardinality, relevance);
+		protected T newConcept(int id, String name, ConceptType type, int cardinality, double relevance) throws PersistenceException {
+			return conceptFactory.newInstance(id, name, type, cardinality, relevance);
 		}
 
 		public ConceptFeatures<T, Integer> getConceptFeatures(int concept) throws PersistenceException {
@@ -157,7 +156,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 				
 				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>());
 				
-				R ref = referenceFactory.newInstance(id, n, c, r);
+				T ref = conceptFactory.newInstance(id, n, null, c, r);
 				return new ConceptFeatures<T, Integer>(ref, v);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
@@ -237,14 +236,14 @@ public class DatabaseFeatureStore<T extends WikiWordConcept, R extends WikiWordC
 			return conceptFeaturesFactory;
 		}
 
-		public DataSet<? extends R> getNeighbours(int concept) throws PersistenceException {
+		public DataSet<? extends T> getNeighbours(int concept) throws PersistenceException {
 			String sql = "SELECT DISTINCT C.id as cId, C.name as cName ";
 			sql += " FROM " + conceptTable.getSQLName() + " as C ";
 			sql += " JOIN "+featureTable.getSQLName()+" as N ON N.feature = C.id ";
 			sql += " JOIN "+featureTable.getSQLName()+" as F ON F.feature = N.concept ";
 			sql += " WHERE F.concept = "+concept+" ";
 			
-			return new QueryDataSet<R>(database, conceptStore.getRowReferenceFactory(), "getNeighbours", sql, false);
+			return new QueryDataSet<T>(database, conceptStore.getRowConceptFactory(), "getNeighbours", sql, false);
 		}
 
 		public List<Integer> getNeighbourList(int concept) throws PersistenceException {

@@ -2,50 +2,35 @@ package de.brightbyte.wikiword.model;
 
 import de.brightbyte.data.LabeledVector;
 
-public class ConceptFeatures<C extends WikiWordConcept, K> implements WikiWordRanking {
+public class ConceptFeatures<C extends WikiWordConcept, K> {
 	protected LabeledVector<K> features;
-	protected WikiWordConceptReference<C> reference;
+	protected WikiWordConcept concept;
 	
-	public ConceptFeatures(WikiWordConceptReference<C> reference, LabeledVector<K> features) {
+	public ConceptFeatures(WikiWordConcept concept, LabeledVector<K> features) {
 		this.features = features;
-		this.reference = reference;
+		this.concept = concept;
 	}
 	
 	public String toString() {
-		return reference+ ":"+features;
+		return concept+ ":"+features;
 	}
 
 	public LabeledVector<K> getFeatureVector() {
 		return features;
 	}
 	
-	public WikiWordConceptReference<C> getConceptReference() {
-		return reference;
+	public WikiWordConcept getConcept() {
+		return concept;
 	}
 	
 	public int getId() {
-		return reference.getId();
+		return concept.getId();
 	}
 	
-	public String getName() {
-		return reference.getName();
-	}
-	
-	public int getCardinality() {
-		return reference==null ? 1 : reference.getCardinality();
-	}
-
-	public double getRelevance() {
-		return reference==null ? 1 : reference.getRelevance();
-	}
-	
-	public boolean hasRanking() {
-		return reference != null && ( reference.getCardinality()>0 || reference.getRelevance()>0 );
-	}
 
 	@Override
 	public int hashCode() {
-		return reference.hashCode();
+		return concept.hashCode();
 	}
 
 	@Override
@@ -58,7 +43,7 @@ public class ConceptFeatures<C extends WikiWordConcept, K> implements WikiWordRa
 			return false;
 		final ConceptFeatures other = (ConceptFeatures) obj;
 		
-		return reference.equals(other.reference);
+		return concept.equals(other.concept);
 	}	
 
 }

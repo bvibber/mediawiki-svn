@@ -4,9 +4,8 @@ import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 
-public interface LocalStatisticsStore<T extends WikiWordConcept, R extends WikiWordConceptReference<T>> extends StatisticsStore<T, R> {
+public interface LocalStatisticsStore<T extends WikiWordConcept> extends StatisticsStore<T> {
 	
 	public int getNumberOfTerms() throws PersistenceException;
 	

@@ -4,9 +4,9 @@ import de.brightbyte.rdf.AbstractProperties;
 import de.brightbyte.rdf.RdfException;
 import de.brightbyte.rdf.RdfPlatform;
 import de.brightbyte.rdf.vocab.SKOS;
-import de.brightbyte.wikiword.model.GlobalConceptReference;
+import de.brightbyte.wikiword.model.GlobalConcept;
 
-public class GlobalConceptReferenceSkosProperties<V, R extends V, A> extends AbstractProperties<V, R, A, GlobalConceptReference> {
+public class GlobalConceptReferenceSkosProperties<V, R extends V, A> extends AbstractProperties<V, R, A, GlobalConcept> {
 
 	protected SKOS<V, R> skos;
 	protected WW<V, R> ww;
@@ -25,7 +25,7 @@ public class GlobalConceptReferenceSkosProperties<V, R extends V, A> extends Abs
 		ww = platform.aquireNamespace(WW.class);
 	}
 	
-	public void addProperties(GlobalConceptReference concept, A about) throws RdfException {
+	public void addProperties(GlobalConcept concept, A about) throws RdfException {
 		//noop
 	}
 

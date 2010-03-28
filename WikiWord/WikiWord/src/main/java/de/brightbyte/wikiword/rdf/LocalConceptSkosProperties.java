@@ -10,7 +10,7 @@ import de.brightbyte.rdf.vocab.SKOS;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermReference;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.WikiWordResource;
 
 public class LocalConceptSkosProperties<V, R extends V, A> extends AbstractProperties<V, R, A, LocalConcept> {
@@ -66,29 +66,29 @@ public class LocalConceptSkosProperties<V, R extends V, A> extends AbstractPrope
 		
 		setLiteralProperty(about, ww.type, concept.getType().getName(), (String)null); //FIXME: resource!
 		
-		Set<WikiWordConceptReference> burned = new HashSet<WikiWordConceptReference>();
-		WikiWordConceptReference[] broader = concept.getBroader();
-		for (WikiWordConceptReference c: broader) {
+		Set<WikiWordConcept> burned = new HashSet<WikiWordConcept>();
+		WikiWordConcept[] broader = concept.getRelations().getBroader();
+		for (WikiWordConcept c: broader) {
 			setReferenceProperty(about, skos.broader, ucorpus, c.getName());
 			burned.add(c);
 		}
 		
-		WikiWordConceptReference[] narrower = concept.getNarrower();
-		for (WikiWordConceptReference c: narrower) {
+		WikiWordConcept[] narrower = concept.getRelations().getNarrower();
+		for (WikiWordConcept c: narrower) {
 			setReferenceProperty(about, skos.narrower, ucorpus, c.getName());
 			burned.add(c);
 		}
 		
-		WikiWordConceptReference[] similar = concept.getSimilar();
-		for (WikiWordConceptReference r: similar) {
+		WikiWordConcept[] similar = concept.getRelations().getSimilar();
+		for (WikiWordConcept r: similar) {
 			if (burned.add(r)) {
 				setReferenceProperty(about, ww.similar, ucorpus, r.getName());
 			}
 		}
 		
 		//FIXME: names are null, causing exceptions! 
-		WikiWordConceptReference[] related = concept.getRelated();
-		for (WikiWordConceptReference r: related) {
+		WikiWordConcept[] related = concept.getRelations().getRelated();
+		for (WikiWordConcept r: related) {
 			if (burned.add(r)) {
 				setReferenceProperty(about, skos.related, ucorpus, r.getName());
 			}
@@ -101,8 +101,8 @@ public class LocalConceptSkosProperties<V, R extends V, A> extends AbstractPrope
 			}
 		}*/
 		
-		WikiWordConceptReference[] out = concept.getOutLinks();
-		for (WikiWordConceptReference c: out) {
+		WikiWordConcept[] out = concept.getRelations().getOutLinks();
+		for (WikiWordConcept c: out) {
 			if (!burned.contains(c)) {
 				setReferenceProperty(about, ww.assoc, ucorpus, c.getName());
 			}
