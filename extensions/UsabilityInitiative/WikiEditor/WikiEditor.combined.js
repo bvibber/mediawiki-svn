@@ -333,11 +333,21 @@ $j(document).ready( function() {
 								splitlines: true
 							}
 						}
+					},
+					'newline': {
+						labelMsg: 'wikieditor-toolbar-tool-newline',
+						type: 'button',
+						icon: 'insert-newline.png',
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<br />\n"
+							}
+						}
 					}
 				}
 			},
 			'size': {
-				labelMsg: 'wikieditor-toolbar-group-size',
 				tools: {
 					'big': {
 						labelMsg: 'wikieditor-toolbar-tool-big',
@@ -364,12 +374,7 @@ $j(document).ready( function() {
 								post: "</small>"
 							}
 						}
-					}
-				}
-			},
-			'baseline': {
-				labelMsg: 'wikieditor-toolbar-group-baseline',
-				tools: {
+					},
 					'superscript': {
 						labelMsg: 'wikieditor-toolbar-tool-superscript',
 						type: 'button',
@@ -437,17 +442,6 @@ $j(document).ready( function() {
 								periMsg: 'wikieditor-toolbar-tool-table-example-old',
 								post: "\n|}",
 								ownline: true
-							}
-						}
-					},
-					'newline': {
-						labelMsg: 'wikieditor-toolbar-tool-newline',
-						type: 'button',
-						icon: 'insert-newline.png',
-						action: {
-							type: 'encapsulate',
-							options: {
-								pre: "<br />\n"
 							}
 						}
 					}
