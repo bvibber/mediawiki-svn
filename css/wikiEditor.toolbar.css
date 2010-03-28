@@ -88,6 +88,24 @@ body.rtl .wikiEditor-ui-toolbar .group {
 	border-right: none;
 	border-left: solid 1px #DDDDDD;
 }
+.wikiEditor-ui-toolbar .group-search {
+	float: right;
+	padding: 0 0 0 6px;
+	border-right: none;
+	border-left: 1px solid #DDDDDD;
+}
+.wikiEditor-ui-toolbar .group-insert {
+	border-right: none;
+}
+body.rtl .wikiEditor-ui-toolbar .group-search {
+	float: left;
+	padding: 0 6px 0 0;
+	border-left: none;
+	border-right: 1px solid #DDDDDD;
+}
+body.rtl .wikiEditor-ui-toolbar .group-insert {
+	border-left: none;
+}
 /* Tabs */
 .wikiEditor-ui-toolbar .tabs {
 	list-style: none;
