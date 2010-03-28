@@ -236,6 +236,8 @@ abstract class Installer {
 	 */
 	abstract function showMessage( $msg /*, ... */ );
 
+	abstract function showStatusError( $status );
+
 	/**
 	 * Get a list of known DB types
 	 */
@@ -602,8 +604,6 @@ abstract class Installer {
 		$this->setVar( 'wgScriptPath', $uri );
 		$this->showMessage( 'config-uri', $uri );
 	}
-
-	abstract function showStatusError( $status );
 
 	/** Environment check for setting the preferred PHP file extension */
 	function envCheckExtension() {

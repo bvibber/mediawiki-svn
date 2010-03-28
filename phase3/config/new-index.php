@@ -39,7 +39,7 @@ if ( isset( $session['settings']['_UserLang'] ) ) {
 }
 $wgLang = Language::factory( $langCode );
 
-$wgMetaNamspace = $wgCanonicalNamespaceNames[NS_PROJECT];
+$wgMetaNamespace = $wgCanonicalNamespaceNames[NS_PROJECT];
 
 $session = $installer->execute( $session );
 
