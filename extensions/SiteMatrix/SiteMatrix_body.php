@@ -331,7 +331,7 @@ class SiteMatrixPage extends SpecialPage {
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );
-		$wgOut->addHTML( wfMsgWikiHtml( 'sitematrix-total', $matrix->getCount() ) );
+		$wgOut->addWikiMsg( 'sitematrix-total', $matrix->getCount() );
 	}
 }
 
