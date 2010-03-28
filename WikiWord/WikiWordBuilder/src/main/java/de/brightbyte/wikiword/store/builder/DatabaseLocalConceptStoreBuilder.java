@@ -1,7 +1,5 @@
 package de.brightbyte.wikiword.store.builder;
 
-import static de.brightbyte.db.DatabaseUtil.asString;
-
 import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -38,7 +36,6 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.NameMaps;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
@@ -1453,16 +1450,18 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		return new DatabaseLocalConceptStore((LocalConceptStoreSchema)database, tweaks);
 	}
 
-	protected static DatabaseDataSet.Factory<LocalConceptReference> localConceptReferenceFactory = new DatabaseDataSet.Factory<LocalConceptReference>() {
-		public LocalConceptReference newInstance(ResultSet row) throws SQLException, PersistenceException {
+	protected DatabaseDataSet.Factory<LocalConcept> localConceptReferenceFactory = new DatabaseDataSet.Factory<LocalConcept>() {
+		public LocalConcept newInstance(ResultSet row) throws SQLException, PersistenceException {
 			int id = row.getInt("id");
-			String name = asString(row.getObject("name"));
+			String name = DatabaseUtil.asString(row.getObject("name"));
+			//FIXME: type?!
 
-			return new LocalConceptReference(id, name, -1, -1);
+			LocalConcept concept = new LocalConcept(getCorpus(), id, null, name);
+			return concept;
 		}
 	};
 	
-	public int processUnknownConcepts(final CursorProcessor<LocalConceptReference> processor) throws PersistenceException {
+	public int processUnknownConcepts(final CursorProcessor<LocalConcept> processor) throws PersistenceException {
 		String sql = "SELECT * FROM "+conceptTable.getSQLName();
 		String where = "type = "+ConceptType.UNKNOWN.getCode();
 		
@@ -1483,7 +1482,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		return ds;
 	}*/
 	
-	public DataSet<LocalConceptReference> listUnknownConcepts() throws PersistenceException {
+	public DataSet<LocalConcept> listUnknownConcepts() throws PersistenceException {
 		String sql = "SELECT * FROM "+conceptTable.getSQLName();
 		String where = "type = "+ConceptType.UNKNOWN.getCode();
 		

@@ -1,7 +1,9 @@
 package de.brightbyte.wikiword.model;
 
+import java.text.Collator;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 import de.brightbyte.data.measure.Measure;
@@ -10,22 +12,59 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.DatasetIdentifier;
 
 public abstract class WikiWordConcept {
-	protected DatasetIdentifier dataset;
-	protected ConceptType type;
+	public static class ByName implements Comparator<WikiWordConcept> {
+		protected Collator collator;
+		
+		public ByName() {
+			this((Collator)null);
+		}
+		
+		public ByName(Locale locale) {
+			this.collator = Collator.getInstance(locale);
+		}
+		
+		public ByName(Collator collator) {
+			this.collator = collator;
+		}
+		
+		public int compare(WikiWordConcept a, WikiWordConcept b) {
+			if (collator==null) return a.getName().compareTo(b.getName());
+			else return collator.compare(a.getName(), b.getName());
+		}
+	};
 	
-	protected int id;
+	private DatasetIdentifier dataset;
+	private ConceptType type;
+	
+	private int id;
+	private String name;
 
-	protected int cardinality = 1;
-	protected double relevance = 1;
+	private int cardinality = 1;
+	private double relevance = 1;
 	
-	protected ConceptRelations relations;
-	protected ConceptFeatures features;
-	protected TermReference[] terms;
+	private ConceptRelations relations;
+	private ConceptFeatures features;
+	private TermReference[] terms;
 	
 	public WikiWordConcept(DatasetIdentifier dataset, int id,  ConceptType type) {
 		this.id = id;
 		this.dataset = dataset;
 		this.type = type;
+	}
+	
+	@Override
+	public String toString() {
+		if (name!=null) return "#"+id+":[["+name+"]]";
+		else return "#"+id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		if (this.name!=null) throw new IllegalStateException("property already initialized");
+		this.name = name;
 	}
 
 	public DatasetIdentifier getDatasetIdentifier() {
@@ -108,12 +147,6 @@ public abstract class WikiWordConcept {
 		
 		return id == other.id;
 	}	
-
-	
-	@Override
-	public String toString() {
-		return "#"+id;
-	}
 	
 	public static final Measure<WikiWordConcept> theCardinality = new Measure<WikiWordConcept>(){
 		public double measure(WikiWordConcept r) {
@@ -144,29 +177,42 @@ public abstract class WikiWordConcept {
 			else return (int)(rb-ra) +1;
 		}
 	};
-
+	
+	public static final Comparator<WikiWordConcept> byName = new ByName();
+	
 	public static interface Factory<T extends WikiWordConcept> {
 		public T newInstance(int id, String name,  ConceptType type) throws PersistenceException;
 		public T newInstance(int id,  String name, ConceptType type, int card, double rel) throws PersistenceException;
 		public T[] newArray(int size);
 	}
 
+	public static final int LIST_FORMAT_USE_ID = 0x0001;
+	public static final int LIST_FORMAT_USE_NAME = 0x0001;
+	public static final int LIST_FORMAT_USE_CARDINALITY = 0x0010;
+	public static final int LIST_FORMAT_USE_RELEVANCE = 0x0020;
+	public static final int LIST_FORMAT_USE_LANGUAGE_PREFIX= 0x0100;
+	
 	public static class ListFormatSpec {
 		public final boolean useId;
 		public final boolean useName;
 		public final boolean useCardinality;
 		public final boolean useRelevance;
+		public final boolean useLanguagePrefix;
 		public final Pattern referenceSeparator;
 		public final Pattern fieldSeparator;
+		public final Pattern prefixSeparator;
 		public final int width;
 		
-		public ListFormatSpec(Pattern referenceSeparator, Pattern fieldSeparator, boolean useId, boolean useName, boolean useCardinality, boolean useRelevance) {
+		public ListFormatSpec(Pattern referenceSeparator, Pattern fieldSeparator, Pattern prefixSeparator, int flags) {
 			this.referenceSeparator = referenceSeparator;
 			this.fieldSeparator = fieldSeparator;
-			this.useId = useId;
-			this.useName = useName;
-			this.useCardinality = useCardinality;
-			this.useRelevance = useRelevance;
+			this.prefixSeparator = prefixSeparator;
+			
+			useId = (flags & LIST_FORMAT_USE_ID) > 0;
+			useName = (flags & LIST_FORMAT_USE_NAME) > 0;
+			useCardinality = (flags & LIST_FORMAT_USE_CARDINALITY) > 0;
+			useRelevance = (flags & LIST_FORMAT_USE_RELEVANCE) > 0;
+			useLanguagePrefix = (flags & LIST_FORMAT_USE_LANGUAGE_PREFIX) > 0;
 			
 			int w = 0;
 			if (useId) w++;
@@ -208,8 +254,19 @@ public abstract class WikiWordConcept {
 			if (rr.length>=i+1 && spec.useName) name = rr[i++]; 
 			if (rr.length>=i+1 && spec.useCardinality) cardinality = rr[i].length()==0 ? -1 : Integer.parseInt(rr[i++]); 
 			if (rr.length>=i+1 && spec.useRelevance) relevance =     rr[i].length()==0 ? -1 : Double.parseDouble(rr[i++]);
+			String lang = null;
 			
-			a[c++] = factory.newInstance(id, name, null, cardinality, relevance);
+			if (spec.useLanguagePrefix) {
+				String[] nn = spec.prefixSeparator.split(name, 2);
+				if (nn.length>1) {
+					name = nn[1];
+					lang = nn[0];
+				}
+			}
+			
+			T t = factory.newInstance(id, name, null, cardinality, relevance);
+			if (lang!=null && t instanceof LocalConcept) ((LocalConcept)t).setLanguage(lang);
+			a[c++] = t;
 		}
 		
 		if (c<a.length) { //should not happen, but might, if values get truncated
@@ -220,7 +277,7 @@ public abstract class WikiWordConcept {
 		
 		if (spec.useRelevance) Arrays.sort(a, byRelevance);
 		else if (spec.useCardinality) Arrays.sort(a, byCardinality);
-		//else if (spec.useName) Arrays.sort(a, byName);
+		else if (spec.useName) Arrays.sort(a, byName);
 		
 		return a;
 	}

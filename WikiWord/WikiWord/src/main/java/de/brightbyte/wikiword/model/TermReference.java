@@ -1,5 +1,9 @@
 package de.brightbyte.wikiword.model;
 
+import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.model.WikiWordConcept.Factory;
+import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema.ConceptListEntrySpec;
+
 
 
 public class TermReference  {
@@ -65,6 +69,23 @@ public class TermReference  {
 		} else if (!term.equals(other.term))
 			return false;
 		return true;
+	}
+
+	public static TermReference[] parseList(String s, Factory<LocalConcept> factory, ConceptListEntrySpec spec) throws PersistenceException {
+		LocalConcept[] concepts = WikiWordConcept.parseList(s, factory, spec); //XXX: this is a terrible, terrible hack.
+		TermReference[] terms = new TermReference[concepts.length];
+		
+		for (int i=0; i<terms.length; i++) {
+			WikiWordConcept dummy = concepts[i];
+			
+			String term = dummy.getName(); //UGHA!
+			double score = dummy.getCardinality();
+			
+			WikiWordConcept target = factory.newInstance(dummy.getId(), null, dummy.getType());
+			terms[i] = new TermReference(term, target, score);
+		}
+		
+		return terms;
 	}
 
 }

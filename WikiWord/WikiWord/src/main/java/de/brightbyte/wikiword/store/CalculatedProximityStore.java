@@ -42,7 +42,7 @@ public class CalculatedProximityStore<T extends WikiWordConcept>
 				double prox = getProximity(centerFeatures, f.getFeatureVector());
 				if (prox<minProximity) continue;
 				
-				return newConcept(f.getId(), f.getName(), 1, prox);
+				return newConcept(f.getId(), f.getConcept().getName(), f.getConcept().getType(), 1, prox);
 			} ;
 			
 			return null;

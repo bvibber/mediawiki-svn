@@ -27,7 +27,7 @@ public class RdfOutput<V, R extends V, A, W> extends AbstractConceptOutput {
 	
 	@SuppressWarnings("unchecked")
 	public RdfOutput(WikiWordIdentifiers identifiers, String platform, Writer writer, String format, DatasetIdentifier ds) throws RdfException, PersistenceException {
-		this(identifiers, (RdfPlatform<V, R, A, W>)RdfPlatforms.newPlatform(platform));
+		this(identifiers, (RdfPlatform<V, R, A, W>)(Object)RdfPlatforms.newPlatform(platform)); //XXX: ugly insane cast to avoid some compilers complaining.
 		init(this.platform.newWriter(writer, format), ds);
 	}
 	

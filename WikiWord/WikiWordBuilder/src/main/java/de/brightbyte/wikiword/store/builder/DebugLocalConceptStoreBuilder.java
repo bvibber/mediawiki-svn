@@ -19,8 +19,6 @@ import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.GroupNameTranslator;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
@@ -834,11 +832,11 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		log("+ storeWarning: rcId="+rcId+", problem="+problem+", details="+details);
 	}
 
-	public WikiWordConceptStore<LocalConcept, WikiWordConceptReference<LocalConcept>> getConceptStore() throws PersistenceException {
+	public WikiWordConceptStore<LocalConcept> getConceptStore() throws PersistenceException {
 		return null; //XXX...
 	}
 
-	public DataSet<LocalConceptReference> listUnknownConcepts() throws PersistenceException {
+	public DataSet<LocalConcept> listUnknownConcepts() throws PersistenceException {
 		return null; //XXX...
 	}
 
@@ -846,7 +844,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		//noop
 	}
 
-	public int processUnknownConcepts(CursorProcessor<LocalConceptReference> processor) throws PersistenceException {
+	public int processUnknownConcepts(CursorProcessor<LocalConcept> processor) throws PersistenceException {
 		//noop
 		return 0;
 	}

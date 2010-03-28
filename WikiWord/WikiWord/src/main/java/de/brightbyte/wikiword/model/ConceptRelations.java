@@ -1,6 +1,5 @@
 package de.brightbyte.wikiword.model;
 
-import java.util.Map;
 
 public class ConceptRelations<R extends WikiWordConcept> {
 
@@ -10,7 +9,7 @@ public class ConceptRelations<R extends WikiWordConcept> {
 	protected R[] narrower;
 	protected R[] similar;
 	protected R[] related;
-	protected Map<String, LocalConcept> langlinks;
+	protected R[] langlinks;
 	
 	//TODO: inlinks, outlinks, coocc, co-coocc
 
@@ -20,7 +19,7 @@ public class ConceptRelations<R extends WikiWordConcept> {
 			R[] outlinks, 
 			R[] similar,
 			R[] related,
-			Map<String, LocalConcept> langlinks) {
+			R[] langlinks) {
 		
 		if (inlinks==null) throw new NullPointerException();
 		if (outlinks==null) throw new NullPointerException();
@@ -43,7 +42,7 @@ public class ConceptRelations<R extends WikiWordConcept> {
 		return broader;
 	}
 
-	public Map<String, LocalConcept> getLanglinks() {
+	public R[] getLanglinks() {
 		return langlinks;
 	}
 

@@ -2,15 +2,14 @@ package de.brightbyte.wikiword.store.builder;
 
 import java.util.Date;
 
-import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.data.cursor.CursorProcessor;
+import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.LocalConceptReference;
 import de.brightbyte.wikiword.schema.AliasScope;
 
 /**
@@ -98,8 +97,8 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 	public Corpus getCorpus();
 
 	public void resetTermsForUnknownConcepts() throws PersistenceException;
-	public DataSet<LocalConceptReference> listUnknownConcepts() throws PersistenceException;
-	public int processUnknownConcepts(CursorProcessor<LocalConceptReference> processor) throws PersistenceException;
+	public DataSet<LocalConcept> listUnknownConcepts() throws PersistenceException;
+	public int processUnknownConcepts(CursorProcessor<LocalConcept> processor) throws PersistenceException;
 
 	public TextStoreBuilder getTextStoreBuilder() throws PersistenceException;
 	public PropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException;

@@ -31,9 +31,6 @@ import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalStatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
-import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseConceptInfoStore;
-import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
-import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseConceptInfoStore.ConceptFactory;
 
 /**
  * A LocalConceptStore implemented based upon a {@link de.brightbyte.db.DatabaseSchema} object,
@@ -295,7 +292,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		}
 			
 		@Override
-		protected LocalConcept newConcept(Map<String, Object> m) {
+		protected LocalConcept newConcept(Map<String, Object> m) throws PersistenceException {
 			int id = asInt(m.get("cId"));
 			String name = asString(m.get("cName"));
 			ConceptType type = corpus.getConceptTypes().getType(asInt(m.get("cType")));
@@ -317,7 +314,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			LocalConcept[] outlinks = LocalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
 			LocalConcept[] broader = LocalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
 			LocalConcept[] narrower = LocalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
-			TranslationReference[] langlinks = TranslationReference.parseList( asString(m.get("rLanglinks")), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
+			LocalConcept[] langlinks = LocalConcept.parseList( asString(m.get("rLanglinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
 			LocalConcept[] similar = LocalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
 			LocalConcept[] related = LocalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
 			TermReference[] terms = TermReference.parseList( asString(m.get("dTerms")), getConceptFactory(), ((ConceptInfoStoreSchema)database).termReferenceListEntry );

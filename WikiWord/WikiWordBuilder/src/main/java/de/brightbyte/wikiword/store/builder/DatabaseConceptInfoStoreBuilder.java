@@ -12,7 +12,7 @@ import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
-import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema.ReferenceListEntrySpec;
+import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema.ConceptListEntrySpec;
 
 public abstract class DatabaseConceptInfoStoreBuilder<T extends WikiWordConcept> 
 				extends DatabaseWikiWordStoreBuilder 
@@ -118,7 +118,7 @@ public abstract class DatabaseConceptInfoStoreBuilder<T extends WikiWordConcept>
 		protected int buildConceptPropertyCache(
 				final DatabaseTable cacheTable, final String cacheIdField, 
 				final String propertyField, final String realtion, final String relConceptField, 
-				final ReferenceListEntrySpec spec, final boolean append, final String threshold,
+				final ConceptListEntrySpec spec, final boolean append, final String threshold,
 				final int chunkFactor) throws PersistenceException {
 			
 			final DatabaseTable relationTable = conceptStore.getDatabaseAccess().getTable(realtion);

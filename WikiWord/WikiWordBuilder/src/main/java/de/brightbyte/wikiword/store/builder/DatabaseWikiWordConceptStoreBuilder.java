@@ -24,7 +24,6 @@ import de.brightbyte.util.Processor;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
-import de.brightbyte.wikiword.model.WikiWordConceptReference;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
 import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore;
 
@@ -425,16 +424,16 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 
 	protected abstract DatabaseStatisticsStoreBuilder newStatisticsStoreBuilder() throws SQLException, PersistenceException;
 	protected abstract DatabaseConceptInfoStoreBuilder<T> newConceptInfoStoreBuilder() throws SQLException, PersistenceException;
-	protected abstract DatabaseWikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> newConceptStore() throws SQLException, PersistenceException;
+	protected abstract DatabaseWikiWordConceptStore<T> newConceptStore() throws SQLException, PersistenceException;
 	protected abstract DatabaseProximityStoreBuilder newProximityStoreBuilder() throws SQLException;
 		
 	private DatabaseStatisticsStoreBuilder statsStore;
 	private DatabaseProximityStoreBuilder proximityStore;
 	private DatabaseConceptInfoStoreBuilder<T> infoStore;
 	
-	private DatabaseWikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> conceptStore;
+	private DatabaseWikiWordConceptStore<T> conceptStore;
 	
-	public DatabaseWikiWordConceptStore<T, ? extends WikiWordConceptReference<T>> getConceptStore() throws PersistenceException {
+	public DatabaseWikiWordConceptStore<T> getConceptStore() throws PersistenceException {
 		try { 
 			if (conceptStore==null) conceptStore = newConceptStore();
 			return conceptStore;

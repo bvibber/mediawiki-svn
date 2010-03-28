@@ -13,22 +13,24 @@ import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
+import static de.brightbyte.wikiword.model.WikiWordConcept.*;
 
 public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 	public final String referenceSeparator; //info record separator
 	public final String referenceFieldSeparator; //info field separator
+	public final String languagePrefixSeparator; //language prefix separator
 	
-	public final Pattern referenceSeparatorPattern; //info record separator
-	public final Pattern referenceFieldSeparatorPattern; //info field separator
+	public final Pattern conceptSeparatorPattern; //info record separator
+	public final Pattern conceptFieldSeparatorPattern; //info field separator
+	public final Pattern languagePrefixPattern; //language prefix separator
 
-	public class ReferenceListEntrySpec extends WikiWordConcept.ListFormatSpec {
+	public class ConceptListEntrySpec extends WikiWordConcept.ListFormatSpec {
 
 		public final String joinField;
 		public final String valueExpression;
 
-		public ReferenceListEntrySpec(String field, String expression, boolean useId, boolean useName, boolean useCardinality, boolean useRelevance) {
-			super(referenceSeparatorPattern, referenceFieldSeparatorPattern, useId, useName,
-					useCardinality, useRelevance);
+		public ConceptListEntrySpec(String field, String expression, int flags) {
+			super(conceptSeparatorPattern, conceptFieldSeparatorPattern, languagePrefixPattern, flags);
 			
 			this.joinField = field;
 			this.valueExpression = expression;
@@ -36,18 +38,18 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		
 	}
 	
-	public final ReferenceListEntrySpec langlinkReferenceListEntry;
+	public final ConceptListEntrySpec langlinkReferenceListEntry;
 
-	public final ReferenceListEntrySpec termReferenceListEntry;
-	public final ReferenceListEntrySpec broaderReferenceListEntry;
-	public final ReferenceListEntrySpec narrowerReferenceListEntry;
-	public final ReferenceListEntrySpec inLinksReferenceListEntry;
-	public final ReferenceListEntrySpec outLinksReferenceListEntry;
-	public final ReferenceListEntrySpec similarReferenceListEntry;
-	public final ReferenceListEntrySpec relatedReferenceListEntry;
-	public final ReferenceListEntrySpec related2ReferenceListEntry;
-	public final ReferenceListEntrySpec featureReferenceListEntry;
-	public final ReferenceListEntrySpec proximityReferenceListEntry;
+	public final ConceptListEntrySpec termReferenceListEntry;
+	public final ConceptListEntrySpec broaderReferenceListEntry;
+	public final ConceptListEntrySpec narrowerReferenceListEntry;
+	public final ConceptListEntrySpec inLinksReferenceListEntry;
+	public final ConceptListEntrySpec outLinksReferenceListEntry;
+	public final ConceptListEntrySpec similarReferenceListEntry;
+	public final ConceptListEntrySpec relatedReferenceListEntry;
+	public final ConceptListEntrySpec related2ReferenceListEntry;
+	public final ConceptListEntrySpec featureReferenceListEntry;
+	public final ConceptListEntrySpec proximityReferenceListEntry;
 	
 	protected EntityTable conceptInfoTable;
 	protected EntityTable conceptDescriptionTable;
@@ -65,52 +67,54 @@ public class ConceptInfoStoreSchema extends WikiWordStoreSchema {
 		
 		referenceSeparator = tweaks.getTweak("dbstore.cacheReferenceSeparator", "\u001E"); //ASCII Record Separator
 		referenceFieldSeparator = tweaks.getTweak("dbstore.cacheReferenceFieldSeparator", "\u001F"); //ASCII Field Separator
-		referenceSeparatorPattern = Pattern.compile(referenceSeparator.replaceAll("[^$(){}\\[\\]\\\\]", "\\\\$0")); 
-		referenceFieldSeparatorPattern = Pattern.compile(referenceFieldSeparator.replaceAll("[^$(){}\\[\\]\\\\]", "\\\\$0")); 
+		languagePrefixSeparator = tweaks.getTweak("dbstore.languagePrefixSeparator", ":"); //ASCII Field Separator
+		conceptSeparatorPattern = Pattern.compile(referenceSeparator.replaceAll("[^$(){}\\[\\]\\\\]", "\\\\$0")); 
+		conceptFieldSeparatorPattern = Pattern.compile(referenceFieldSeparator.replaceAll("[^$(){}\\[\\]\\\\]", "\\\\$0")); 
+		languagePrefixPattern = Pattern.compile(languagePrefixSeparator.replaceAll("[^$(){}\\[\\]\\\\]", "\\\\$0")); 
 
 		langlinkReferenceListEntry = 
-			new ReferenceListEntrySpec("language, target", "concat(language, ':', target)", 
-					false, true, false, false); 
+			new ConceptListEntrySpec("language, target", "concat(language, ':', target)", 
+					LIST_FORMAT_USE_NAME | LIST_FORMAT_USE_LANGUAGE_PREFIX );  
 				
 		termReferenceListEntry = 
-			new ReferenceListEntrySpec("term_text", fields("term_text", "freq"), 
-					false, true, true, false);
+			new ConceptListEntrySpec("term_text", fields("term_text", "freq"), 
+					LIST_FORMAT_USE_NAME | LIST_FORMAT_USE_CARDINALITY );
 
 		broaderReferenceListEntry = 
-			new ReferenceListEntrySpec("broad", cacheNames ? fields("broad", "broad_name", "if (lhs is null or lhs = 0, 0, 1/lhs)") : fields("broad", "if (lhs is null or lhs = 0, 0, 1/lhs)"), 
-					true, cacheNames, false, true);
+			new ConceptListEntrySpec("broad", cacheNames ? fields("broad", "broad_name", "if (lhs is null or lhs = 0, 0, 1/lhs)") : fields("broad", "if (lhs is null or lhs = 0, 0, 1/lhs)"), 
+					LIST_FORMAT_USE_ID | (cacheNames ? LIST_FORMAT_USE_NAME : 0) | LIST_FORMAT_USE_RELEVANCE );
 		
 		narrowerReferenceListEntry = 
-			new ReferenceListEntrySpec("narrow", cacheNames ? fields("narrow", "narrow_name", "if (lhs is null or lhs = 0, 0, 1/lhs)") : fields("narrow", "if (lhs is null or lhs = 0, 0, 1/lhs)"), 
-					true, cacheNames, false, true);
+			new ConceptListEntrySpec("narrow", cacheNames ? fields("narrow", "narrow_name", "if (lhs is null or lhs = 0, 0, 1/lhs)") : fields("narrow", "if (lhs is null or lhs = 0, 0, 1/lhs)"), 
+					LIST_FORMAT_USE_ID | (cacheNames ? LIST_FORMAT_USE_NAME : 0) | LIST_FORMAT_USE_RELEVANCE);
 		
 		inLinksReferenceListEntry = 
-			new ReferenceListEntrySpec("anchor", cacheNames ? fields("anchor", "anchor_name", "idf") : fields("anchor", "idf"), 
-					true, cacheNames, false, true);
+			new ConceptListEntrySpec("anchor", cacheNames ? fields("anchor", "anchor_name", "idf") : fields("anchor", "idf"), 
+					LIST_FORMAT_USE_ID | (cacheNames ? LIST_FORMAT_USE_NAME : 0) | LIST_FORMAT_USE_RELEVANCE );
 		
 		outLinksReferenceListEntry = 
-			new ReferenceListEntrySpec("target", cacheNames ? fields("target", "target_name", "idf") : fields("target", "idf"), 
-					true, cacheNames, false, true);
+			new ConceptListEntrySpec("target", cacheNames ? fields("target", "target_name", "idf") : fields("target", "idf"), 
+					LIST_FORMAT_USE_ID | (cacheNames ? LIST_FORMAT_USE_NAME : 0) | LIST_FORMAT_USE_RELEVANCE );
 			
 		similarReferenceListEntry = 
-			new ReferenceListEntrySpec("concept2", fields("concept2", "langmatch"), //TODO: frequency for similar from langref(!)
-					true, false, true, false); //TODO: name?... in relation table?... //XXX: why no score
+			new ConceptListEntrySpec("concept2", fields("concept2", "langmatch"), //TODO: frequency for similar from langref(!)
+					LIST_FORMAT_USE_ID | LIST_FORMAT_USE_CARDINALITY); //TODO: name?... in relation table?... //XXX: why no score
 		
 		relatedReferenceListEntry = 
-			new ReferenceListEntrySpec("concept2", "concept2", 
-					true, false, false, false); //TODO: name?... in relation table?... //XXX: why no score
+			new ConceptListEntrySpec("concept2", "concept2", 
+					LIST_FORMAT_USE_ID); //TODO: name?... in relation table?... //XXX: why no score
 				
 		related2ReferenceListEntry = 
-			new ReferenceListEntrySpec("concept1","concept1", 
-					true, false, false, false); //TODO: name?... in relation table?... //XXX: why no score
+			new ConceptListEntrySpec("concept1","concept1", 
+					LIST_FORMAT_USE_ID); //TODO: name?... in relation table?... //XXX: why no score
 		
 		featureReferenceListEntry = 
-			new ReferenceListEntrySpec("target",fields("target", "weight"), 
-					true, false, false, true);
+			new ConceptListEntrySpec("target",fields("target", "weight"), 
+					LIST_FORMAT_USE_ID | LIST_FORMAT_USE_RELEVANCE );
 				
 		proximityReferenceListEntry = 
-			new ReferenceListEntrySpec("target",fields("target", "proximity"), 
-					true, false, false, true);
+			new ConceptListEntrySpec("target",fields("target", "proximity"), 
+					LIST_FORMAT_USE_ID | LIST_FORMAT_USE_RELEVANCE );
 				
 		init(tweaks, description);
 	}

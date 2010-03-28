@@ -28,9 +28,6 @@ import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
-import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseConceptInfoStore;
-import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseStatisticsStore;
-import de.brightbyte.wikiword.store.DatabaseWikiWordConceptStore.DatabaseConceptInfoStore.ConceptFactory;
 
 /**
  * A GlobalConceptStore implemented based upon a {@link de.brightbyte.db.DatabaseSchema} object,
@@ -268,18 +265,22 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				
 				Corpus[] languages = ((GlobalConceptStoreSchema)DatabaseGlobalConceptStore.this.database).getLanguages(langBits);
 				
-				GlobalConcept ref = new GlobalConcept(id, name, cardinality, relevance);
-				GlobalConcept[] inlinks = GlobalConcept.parseList( asString(m.get("rInlinks")), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
-				GlobalConcept[] outlinks = GlobalConcept.parseList( asString(m.get("rOutlinks")), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
-				GlobalConcept[] broader = GlobalConcept.parseList( asString(m.get("rBroader")), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
-				GlobalConcept[] narrower = GlobalConcept.parseList( asString(m.get("rNarrower")), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
-				TranslationReference[] langlinks = TranslationReference.parseList( asString(m.get("rLanglinks")), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
-				GlobalConcept[] similar = GlobalConcept.parseList( asString(m.get("rSimilar")), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
-				GlobalConcept[] related = GlobalConcept.parseList( asString(m.get("rRelated")), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
+				GlobalConcept concept = new GlobalConcept(getDatasetIdentifier(), id, type);
+				concept.setCardinality(cardinality);
+				concept.setRelevance(relevance);
+				
+				GlobalConcept[] inlinks = GlobalConcept.parseList( asString(m.get("rInlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
+				GlobalConcept[] outlinks = GlobalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
+				GlobalConcept[] broader = GlobalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
+				GlobalConcept[] narrower = GlobalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
+				GlobalConcept[] langlinks = GlobalConcept.parseList( asString(m.get("rLanglinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
+				GlobalConcept[] similar = GlobalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
+				GlobalConcept[] related = GlobalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
 				
 				ConceptRelations<GlobalConcept> relations = new ConceptRelations<GlobalConcept>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
+				concept.setRelations(relations);
 				
-				return new GlobalConcept(ref, getDatasetIdentifier(), languages, type, DatabaseGlobalConceptStore.this, relations, null);
+				return concept;
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}

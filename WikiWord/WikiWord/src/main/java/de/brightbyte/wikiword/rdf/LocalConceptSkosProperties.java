@@ -49,7 +49,7 @@ public class LocalConceptSkosProperties<V, R extends V, A> extends AbstractPrope
 		TermReference[] tt = concept.getTerms();
 		for (TermReference t: tt) {
 			//if (t.getName().equals(name)) continue; //NOTE: for prefLabel
-			setLiteralProperty(about, skos.altLabel, t.getName(), lang);
+			setLiteralProperty(about, skos.altLabel, t.getTerm(), lang);
 		}
 		
 		//TODO: idf, lhs
