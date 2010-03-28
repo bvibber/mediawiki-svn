@@ -726,7 +726,7 @@ $settings = array(
 			'wgProxyWhitelist' => 'array',
 			'wgSecretKey' => 'text',
 			'wgEnableDnsBlacklist' => 'bool',
-			'wgDnsBlacklistUrls' => 'text',
+			'wgDnsBlacklistUrls' => 'array',
 		),
 	),
 	'squid' => array(
@@ -914,6 +914,7 @@ $arrayDefs = array(
 	'wgProxyList' => 'simple',
 	'wgProxyPorts' => 'simple',
 	'wgProxyWhitelist' => 'simple',
+	'wgDnsBlacklistUrls' => 'simple',
 # Squid
 	'wgSquidServers' => 'simple',
 	'wgSquidServersNoPurge' => 'simple',
