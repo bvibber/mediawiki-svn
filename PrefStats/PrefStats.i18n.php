@@ -1112,6 +1112,7 @@ $messages['io'] = array(
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'prefstats' => 'Statistiche delle preferenze',
@@ -1123,6 +1124,10 @@ Fare clic su una per vedere le statistiche su di essa.',
 	'prefstats-counters' => "* $1 {{PLURAL:$1|l'utente ha|gli utenti hanno}} attivato questa preferenza dopo che le statistiche sulle preferenze erano state attivate
 ** $2 {{PLURAL:$2|l'utente ce l'ha ancora|gli utenti ce l'hanno ancora}} attivata
 ** $3 {{PLURAL:$3|l'utente la ha|gli utenti la hanno}} disattivata dal",
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utente ha|utenti hanno}} attivato questa preferenza da quando le statistiche per le preferenze vengono registrate
+** $2 {{PLURAL:$2|utente la ha|utenti la hanno}} ancora attivata
+** $3 {{PLURAL:$3|utente la ha|utenti la hanno}} disattivata
+* In total, $4 {{PLURAL:$4|utente ha|utenti hanno}} modificato questa preferenza',
 	'prefstats-xaxis' => 'Durata (ore)',
 	'prefstats-factor-hour' => 'ora',
 	'prefstats-factor-sixhours' => 'sei ore',
@@ -1295,11 +1300,13 @@ Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
  * @author UV
  */
 $messages['la'] = array(
-	'prefstats-factor-hour' => 'hora',
+	'prefstats-xaxis' => 'Tempus (horae)',
+	'prefstats-factors' => 'Videre per: $1',
+	'prefstats-factor-hour' => 'horam',
 	'prefstats-factor-sixhours' => 'sex horas',
-	'prefstats-factor-day' => 'dies',
-	'prefstats-factor-week' => 'hebdomas',
-	'prefstats-factor-twoweeks' => 'duae hebdomades',
+	'prefstats-factor-day' => 'diem',
+	'prefstats-factor-week' => 'hebdomadem',
+	'prefstats-factor-twoweeks' => 'duas hebdomades',
 	'prefstats-factor-fourweeks' => 'quattuor hebdomades',
 );
 

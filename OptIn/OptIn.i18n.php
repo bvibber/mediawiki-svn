@@ -2923,6 +2923,7 @@ $messages['is'] = array(
  * @author Melos
  * @author Nemo bis
  * @author Stefano-c
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'optin' => 'Adesione al progetto usabilità',
@@ -2986,20 +2987,20 @@ Vorremmo sapere cosa ne pensi della nostra nuova interfaccia, quindi apprezzerem
 	'optin-survey-answer-changes-predictability' => 'Migliorare la prevedibilità delle prestazioni.',
 	'optin-survey-answer-changes-custom' => "Consentire una maggiore personalizzazione all'utente.",
 	'optin-survey-answer-changes-other' => 'Altro:',
-	'optin-improvements' => '== Cosa è stato migliorato? ==
-[[File:UsabilityNavigation.png|left|link=|Istantanea nelle nuove linguette di navigazione]]
-;Navigazione potenziata
-Il nuovo sistema di navigazione rende più semplice vedere dove ti trovi e cosa stai facendo, oltre a dove puoi andare e come puoi arrivarci. Con il box di ricerca situato nell\'angolo in alto a destra, la funzione di ricerca è più facile per trovare e più veloce da usare.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Istantanea della barra degli strumenti potenziata]]
-;Miglioramenti della barra degli strumenti
-Le icone nuove e migliorate rendono più chiare le azioni che ciascuno strumento esegue. Le sezioni espandibili riducono l\'ingombro mantenendo gli strumenti usati di rado a un clic di distanza. La sezione di aiuto fornisce un rapido accesso a un riferimento per gli usi comuni della sintassi wiki.
-<div style="clear:both;"></div>
-== Come aiutare ==
-Per saperne di più sul progetto o aiutare, visita il [http://usability.wikimedia.org sito del progetto usabilità]. Lì potrai trovare informazioni sulla nostra sovvenzione, ricerca, progettazione e sviluppo e nuove versioni. Per porre domande o lasciare un commento generale, usa la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype pagina di discussione sui prototipi]. Per discutere di specifici argomenti, usa le pagine di discussione relative. Se trovi degli errori, lascia un commento nella [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco pagina di discussione delle versioni di Babaco] o usa [https://bugzilla.wikimedia.org Bugzilla]. Oppure, [http://it.wikipedia.org/wiki/Progetto:Coordinamento/Usabilit%C3%A0 qui] puoi fare segnalazioni o dare pareri di ogni genere in italiano. 
-
-Grazie; non vediamo l\'ora di sentirti.',
+	'optin-improvements2' => "== Cosa è stato migliorato? ==
+[[File:UsabilityToolbar.png|left|link=|Screenshot della nuova e migliorata toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot delle nuove finestre di dialogo per la generazione del contenuto]]
+;Toolbar migliorata
+La nuova toolbar rende più semplice modificare le voci.
+Le icone nuove e migliorate rendono più chiara quale azione è svolta da ogni strumento.
+Le sezioni espandibili riducono il disordine, mentre mantengono strumenti poco usati a un solo click di distanza.
+;Finestre di dialogo
+Nella creazione di link o tabelle, cliccando l'icona dello strumento adesso si apre una finestra di dialogo che ti aiuta a creare link e tabelle riempendo un semplice modulo.
+;E altro ancora
+Abbiamo introdotto una serie di altri miglioramenti come una navigazione migliorata, le schede a cascata, una ricerca migliorata, e altro ancora.
+== Come partecipare ==
+Per sapere altro sull'Iniziativa per l'Usabilità, visita il nostro [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative sito].
+<div style=\"clear:both\"></div>",
 );
 
 /** Japanese (日本語)
@@ -3463,10 +3464,11 @@ $messages['kw'] = array(
 
 /** Latin (Latina)
  * @author Omnipaedista
+ * @author UV
  */
 $messages['la'] = array(
-	'optin-survey-yes' => 'Sic',
-	'optin-survey-no' => 'Haut',
+	'optin-survey-yes' => 'Ita',
+	'optin-survey-no' => 'Minime',
 	'optin-survey-answer-changes-other' => 'Aliud:',
 );
 

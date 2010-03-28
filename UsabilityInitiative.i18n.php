@@ -336,10 +336,13 @@ $messages['id'] = array(
  * @author Darth Kule
  * @author Gianfranco
  * @author Nemo bis
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'usabilityinitiative' => 'Progetto usabilità',
 	'usabilityinitiative-desc' => "Caratteristiche sviluppate dal progetto usabilità di Wikipedia per migliorare l'usabilità di MediaWiki",
+	'prefs-beta' => 'Funzionalità beta',
+	'prefs-labs' => 'Funzionalità dei laboratori',
 );
 
 /** Japanese (日本語)
@@ -574,11 +577,13 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'usabilityinitiative' => 'Pobuda za uporabnost',
 	'usabilityinitiative-desc' => 'Funkcije, ki jih je razvila Wikipedijina pobuda za uporabnost za povečanje uporabnosti MediaWiki',
+	'prefs-beta' => 'Betafunkcije',
 );
 
 /** Swedish (Svenska)

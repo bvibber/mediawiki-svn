@@ -99,6 +99,7 @@ $messages['cy'] = array(
 	'wikieditor-template-editor-preference' => 'Galluogi golygu nodynnau wici drwy ffurflen',
 	'wikieditor-template-editor-dialog-title' => "Golygu'r nodyn",
 	'wikieditor-template-editor-dialog-submit' => 'Diweddarer',
+	'wikieditor-template-editor-dialog-cancel' => 'Diddymer',
 );
 
 /** Danish (Dansk)

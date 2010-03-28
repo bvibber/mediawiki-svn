@@ -232,6 +232,13 @@ $messages['id'] = array(
 	'vector-desc' => 'Meningkatkan elemen pada antarmuka penguna dari kulit Vector.',
 );
 
+/** Italian (Italiano)
+ * @author Una giornata uggiosa '94
+ */
+$messages['it'] = array(
+	'vector-desc' => "Migliora gli elementi dell'interfaccia utente della skin Vector.",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

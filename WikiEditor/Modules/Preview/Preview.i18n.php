@@ -398,6 +398,13 @@ $messages['ka'] = array(
 	'wikieditor-preview-loading' => 'იტვირთება...',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'wikieditor-preview-tab' => 'ಮುನ್ನೋಟ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -413,6 +420,15 @@ $messages['ksh'] = array(
 	'wikieditor-preview-tab' => '{{int:preview}}',
 	'wikieditor-preview-changes-tab' => 'Änderunge',
 	'wikieditor-preview-loading' => 'Ben aam Laade{{int:ellipsis}}',
+);
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'wikieditor-preview-tab' => 'Praevisum',
+	'wikieditor-preview-changes-tab' => 'Mutata',
+	'wikieditor-preview-loading' => 'Depromens...',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
