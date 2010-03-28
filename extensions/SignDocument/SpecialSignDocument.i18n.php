@@ -2446,11 +2446,13 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'sign-realname' => 'ಹೆಸರು:',
+	'sign-city' => 'ನಗರ:',
 	'sign-state' => 'ರಾಜ್ಯ:',
 	'sign-country' => 'ದೇಶ:',
 	'sign-bday' => 'ವಯಸ್ಸು:',
 	'sign-viewfield-realname' => 'ಹೆಸರು',
 	'sign-viewfield-address' => 'ವಿಳಾಸ',
+	'sign-viewfield-city' => 'ನಗರ',
 	'sign-viewfield-country' => 'ದೇಶ',
 	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
 	'sign-viewfield-age' => 'ವಯಸ್ಸು',

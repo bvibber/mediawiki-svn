@@ -202,11 +202,12 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'spamdifftool' => 'Merañ roll du ar stroboù',
-	'spamdifftool_cantedit' => "Digarezit - n'oc'h ket aotreet kemmañ marilh du ar stroboù",
+	'spamdifftool_cantedit' => "Ho tigarez - n'oc'h ket aotreet kemmañ marilh du ar stroboù",
 	'spamdifftool_notext' => "N'eus testenn ebet da ouzhpennañ da roll du ar stroboù.
 Klikit <a href='$1'>amañ</a> evit kenderc'hel.",
 	'spamdifftool_confirm' => "Kadarnait ho peus c'hoant da ouzhpennañ ar gasadennoù-mañ e roll du ar stroboù.

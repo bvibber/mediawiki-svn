@@ -967,8 +967,8 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'code' => "Adweladenn ar c'hod",
-	'code-rev-title' => "$1 - Adweladenn ar c'hod",
+	'code' => 'Adweladenn god',
+	'code-rev-title' => '$1 - Adweladenn god',
 	'code-comments' => 'Evezhiadennoù',
 	'code-change-status' => "en deus kemmet '''statud''' $1",
 	'code-change-tags' => "en deus kemmet ar '''balizennoù''' evit $1",
@@ -1102,7 +1102,7 @@ $3",
 	'right-codereview-post-comment' => "Ouzhpennañ evezhiadennoù d'an adweladennoù",
 	'right-codereview-set-status' => 'Kemmañ statud an adweladennoù',
 	'right-codereview-link-user' => "Liammañ an oberourien d'an implijerien wiki",
-	'specialpages-group-developer' => 'Ostilhoù an diorroer',
+	'specialpages-group-developer' => 'Ostilhoù diorren',
 );
 
 /** Bosnian (Bosanski)

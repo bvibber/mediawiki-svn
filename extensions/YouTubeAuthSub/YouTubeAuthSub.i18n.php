@@ -215,6 +215,15 @@ $messages['as'] = array(
 	'youtubeauthsub_category' => 'শ্ৰেণী',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'youtubeauthsub_title' => 'Исем',
+	'youtubeauthsub_description' => 'Тасуирлама',
+	'youtubeauthsub_username' => 'YouTube ҡулланыусы исеме',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

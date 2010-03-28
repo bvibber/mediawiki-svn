@@ -85,6 +85,13 @@ $messages['ia'] = array(
 	'vector-collapsiblenav-preference' => 'Activar le menu de navigation plicabile a sinistra',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'vector-collapsiblenav-preference' => 'Zesummeklappbare lénke Navigatiounsmenü aktivéieren',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

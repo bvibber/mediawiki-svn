@@ -662,6 +662,14 @@ $messages['sk'] = array(
 	'assert_edit_message' => 'Uvedený predpoklad ($1) zlyhal.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'assert_edit_title' => 'Uveljavljanje spodletelo',
+	'assert_edit_message' => 'Izbrano dejanje ($1) je spodletelo.',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */

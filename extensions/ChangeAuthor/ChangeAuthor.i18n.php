@@ -344,7 +344,7 @@ $messages['br'] = array(
 	'changeauthor-desc' => "Aotreañ a ra da gemm anv oberour ur c'hemm",
 	'changeauthor-title' => 'Kemmañ aozer un adweladenn',
 	'changeauthor-search-box' => 'Klask adweladennoù',
-	'changeauthor-pagename-or-revid' => 'Anv ar bajenn pe niver an adweladenn :',
+	'changeauthor-pagename-or-revid' => 'Anv ar bajenn pe niverenn an adweladenn :',
 	'changeauthor-pagenameform-go' => 'Mont',
 	'changeauthor-comment' => 'Notenn :',
 	'changeauthor-changeauthors-multi' => 'Kemmañ {{PLURAL:$1|an aozer|an aozerien}}',
@@ -361,7 +361,7 @@ Cheñchit dindan anv an aozer, ouzhpennit un evezhiadenn (diret) ha klikit war a
 Mar plij adklaskit ho reked.
 Ma 'z eus bet meur a wech eus ar fazi-se e talvez ez eo sur a-walc'h torret an diaz roadennoù",
 	'changeauthor-invalidform' => 'Mar plij implijit ar furmskrid krouet gant ar [[Special:ChangeAuthor|bajenn ispisial]], ha ket ur furmskrid hiniennel',
-	'changeauthor-success' => 'Tretet eo bet ho reked.',
+	'changeauthor-success' => 'Kaset eo bet ho reked da benn vat.',
 	'changeauthor-logentry' => 'Kemmoù an aozer $2 da $1 eus $3 davet $4',
 	'changeauthor-logpagename' => "Marilh ar c'hemmoù graet gant an aozer",
 	'right-changeauthor' => 'Kemmañ aozer un adweladenn',

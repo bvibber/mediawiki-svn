@@ -111,13 +111,13 @@ $messages['br'] = array(
 Un evezhiadenn bennak hoc\'h eus d\'ober diwar-benn ar bajenn-mañ ? Ouzhpennit anezhi amañ pe <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} kemmit ar bajenn war-eeun]</span>.',
 	'commentbox-savebutton' => 'Enrollañ an evezhiadenn',
 	'commentbox-name' => 'Anv :',
-	'commentbox-name-explanation' => "<small>(Korvigell: Ma [[Special:UserLogin|lugit amañ]], n'ho po ket da leuniañ gant an dorn ho anv amañ)</small>",
+	'commentbox-name-explanation' => "<small>(Tun : Ma [[Special:UserLogin|kevreit]], n'ho po ket da leuniañ hoc'h anv gant an dorn amañ)</small>",
 	'commentbox-log' => 'Evezhiadennoù nevez',
 	'commentbox-first-comment-heading' => '== Evezhiadennoù ==',
 	'commentbox-regex' => '/\\n==\\s*Evezhiadennoù\\s*==\\s*\\n/i',
 	'commentbox-errorpage-title' => 'Ur fazi zo bet en ur grouiñ an evezhiadenn',
 	'commentbox-error-page-nonexistent' => "N'eus ket eus ar bajenn-se!",
-	'commentbox-error-namespace' => "N'eo ket aotreet an evezhiadennoù el lec'h-mañ !",
+	'commentbox-error-namespace' => "N'eo ket aotreet lakaat evezhiadennoù en esaouenn anv-mañ !",
 	'commentbox-error-empty-comment' => "N'eo ket aotreet an evezhiadennoù goullo !",
 );
 

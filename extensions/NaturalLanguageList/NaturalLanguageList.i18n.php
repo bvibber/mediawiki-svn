@@ -66,6 +66,13 @@ $messages['dsb'] = array(
 	'nll-lastseparator' => '&#32;a&#32;',
 );
 
+/** Spanish (Español)
+ * @author Peter17
+ */
+$messages['es'] = array(
+	'nll-lastseparator' => '&#32;y&#32;',
+);
+
 /** Estonian (Eesti) */
 $messages['et'] = array(
 	'nll-lastseparator' => '&#32;ning&#32;',
@@ -116,6 +123,14 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'nll-desc' => 'Formatation facile de listas in linguas natural',
 	'nll-lastseparator' => '&#32;e&#32;',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'nll-desc' => 'Liicht formatéiere vu Lëschten an natierleche Sproochen',
+	'nll-lastseparator' => '&#32;a(n)&#32;',
 );
 
 /** Macedonian (Македонски)

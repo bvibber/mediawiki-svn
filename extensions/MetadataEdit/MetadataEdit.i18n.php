@@ -91,9 +91,10 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'metadataedit-desc' => 'Colocar categorias, ligações de idiomas e predefinições permitidas em um caixa de texto separada durante a edição de páginas.',
+	'metadataedit-desc' => 'Durante a edição de páginas, colocar as categorias, ligações de línguas e predefinições permitidas numa caixa de texto separada.',
 	'metadata_help' => 'Metadados:',
 );
 

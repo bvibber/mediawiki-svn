@@ -784,6 +784,7 @@ $messages['lb'] = array(
 	'rich_editor_new_window' => 'Editeur mat erweiderte Fonctiounen an enger neier Fënster opmaachen',
 	'tog-riched_start_disabled' => 'Editeur mat erweiderte Fonctiounen beim Start ausgeschalt',
 	'tog-riched_use_popup' => 'Editeur mat erweiderte Fonctiounen an engem Popup opmaachen',
+	'tog-riched_toggle_remember_state' => 'De leschten Ëmschaltzoustand verhalen',
 );
 
 /** Macedonian (Македонски)

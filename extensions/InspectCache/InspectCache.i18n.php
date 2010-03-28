@@ -855,6 +855,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -867,7 +868,7 @@ $messages['pt'] = array(
 	'inspectcache-delete' => 'Apagar',
 	'inspectcache-deleted' => 'Cache Apagada',
 	'inspectcache-list' => 'Listar',
-	'right-inspectcache' => 'Ver e apagar as entradas de cache',
+	'right-inspectcache' => 'Ver e apagar entradas da cache',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

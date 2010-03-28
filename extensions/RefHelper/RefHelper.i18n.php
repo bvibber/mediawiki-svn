@@ -163,6 +163,7 @@ $messages['dsb'] = array(
 	'refhelper-refcreate_autocomment' => 'Awtomatizěrowane napóranje bokow',
 	'refhelper-refcreate_success' => 'Bok [[$1]] njeeksistěrujo a jo se napórał.',
 	'refhelper-refcreate_failure' => 'Bok [[$1]] južo eksistěrujo!',
+	'refhelper-label_workspace' => 'Źěłowy rum (za kopěrowanje a zasunjenje):',
 	'refhelper-label_authorforename' => 'Pśedmě awtora $1:',
 	'refhelper-label_authorsurname' => 'Familijowe mě:',
 	'refhelper-title' => 'Titel:',
@@ -177,6 +178,12 @@ $messages['dsb'] = array(
 	'refhelper-toolbox_link_create' => 'Referencu napóraś',
 	'refhelper-toolbox_link_search' => 'Referencu ze pytanja napóraś',
 	'refhelper-newarticle_nocitation' => 'Tuchylu njejo žeden citat z toś tym mjenim.',
+	'refhelper-newarticle_suggestions' => 'Jolic dołojce jo góźbny citat, móžoš toś ten bok pśez kliknjenje na wótpowědny tłocašk "Napóraś" napóraś.
+
+<h2>Naraźenja</h2>',
+	'refhelper-newarticle_nosuggestions' => '
+Bóžko njamógu žedne reference naraźiś.
+Móžoš [[Special:RefHelper|referencu manuelnje pśidaś]] abo [[Special:RefSearch|za citatom pytaś, kótaryž coš pśidaś]].',
 );
 
 /** Spanish (Español)
@@ -457,6 +464,14 @@ $messages['ja'] = array(
 	'refhelper-category' => 'カテゴリ $1:',
 	'refhelper-create' => '作成',
 	'refhelper-search' => '検索',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'refhelper-pages' => 'ಪುಟಗಳು:',
+	'refhelper-year' => 'ವರ್ಷ:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

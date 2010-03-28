@@ -956,6 +956,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'bookinfo-result-author' => 'ಕರ್ತೃ:',
+	'bookinfo-result-year' => 'ವರ್ಷ:',
 );
 
 /** Korean (한국어)
