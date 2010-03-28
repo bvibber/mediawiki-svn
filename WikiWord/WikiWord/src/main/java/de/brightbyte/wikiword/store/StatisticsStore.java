@@ -21,7 +21,7 @@ public interface StatisticsStore<T extends WikiWordConcept> extends WikiWordStor
 	 *        it's interpreted as a percentage of the total number of concepts.
 	 * @return a random concept from the range specified by the top argument.
 	 */
-	public T pickRandomConcept(int top) 
+	public T pickRandomConcept(int top, WikiWordConceptStore.ConceptQuerySpec spec) 
 		throws PersistenceException;
 	
 }

@@ -124,12 +124,14 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		return sql;
 	}
 
+	/*
 	public DataSet<GlobalConcept> listMeanings(String lang, String term)
 		throws PersistenceException { 
 		
-		String sql = referenceSelect("M.freq") + meaningsSQL(lang, term);
+		String sql = conceptSelect("M.freq") + meaningsSQL(lang, term);
 		return new QueryDataSet<GlobalConcept>(database, getRowConceptFactory(), "listMeanings", sql, false);
 	}
+	*/
 	
 	protected void registerLocalStore(DatabaseLocalConceptStore store) throws PersistenceException {
 		trace("registered local store for "+store.getCorpus().getLanguage());
@@ -210,12 +212,12 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		}
 	}
 	
-	public DataSet<GlobalConcept> getMeanings(String lang, String term) throws PersistenceException {
-		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getMeanings(lang, term);
+	public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec) throws PersistenceException {
+		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getMeanings(lang, term, spec);
 	}
 
-	public List<LocalConcept> getLocalConcepts(int id) throws PersistenceException {
-		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getLocalConcepts(id);
+	public List<LocalConcept> getLocalConcepts(int id, ConceptQuerySpec spec) throws PersistenceException {
+		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getLocalConcepts(id, spec);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -236,23 +238,42 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		}
 		
 		@Override
-		protected String conceptSelect(String card, String relev, boolean useDistrib) {
-			String distribJoin = !useDistrib ? "" : " JOIN " + database.getSQLTableName("degree", true) + " as DT ON DT.concept = C.id";
-
-			return "SELECT C.id as cId, C.name as cName, " +
-					"C.language_bits as cLangBits, C.language_count as cLangCount, " +
-					"C.type as cType, " +
-			" "+card+" as qFreq, "+relev+" as qConf, " +
-			" I.inlinks as rInlinks, I.outlinks as rOutlinks, " +
-			" I.broader as rBroader, I.narrower as rNarrower, " +
-			" I.similar as rSimilar, I.related as rRelated, I.langlinks as rLanglinks " +
-			" FROM "+conceptTable.getSQLName()+" as C "+
-			distribJoin+
-			" LEFT JOIN "+conceptInfoTable.getSQLName()+" as I ON I.concept = C.id ";
+		protected String conceptSelect(ConceptQuerySpec spec, String card, String relev) {
+			boolean useDistrib = (relev!=null || (spec!=null && spec.getIncludeStatistics())) && areStatsComplete();
+			
+			String fields = "C.id as cId, C.name as cName, C.type as cType, " +
+							"C.language_bits as cLangBits, C.language_count as cLangCount ";
+			
+			String tables = ""+conceptTable.getSQLName()+" as C ";
+			
+			if (useDistrib) {
+				tables += " JOIN " + database.getSQLTableName("degree", true) + " as DT ON DT.concept = C.id ";
+				if (relev==null) relev = "DT.idf";
+			}  else {
+				relev = "-1";
+			}
+			
+			if (relev==null) relev = "-1";
+			if (card==null) card = "-1";
+			
+			fields += ", "+card+" as qFreq, "+relev+" as qConf ";
+			
+			if (spec!=null && spec.getIncludeRelations()) {
+				fields += ", I.inlinks as rInlinks, I.outlinks as rOutlinks, " +
+								" I.broader as rBroader, I.narrower as rNarrower, I.langlinks as rLanglinks, " +
+								" I.similar as rSimilar, I.related as rRelated ";
+				
+				tables += " LEFT JOIN "+conceptInfoTable.getSQLName()+" as I ON I.concept = C.id ";
+			}
+			
+			//TODO: include features!
+		
+			String sql =  "SELECT " + fields + " FROM " + tables;
+			return sql;
 		}
 		
 		@Override
-		protected GlobalConcept newConcept(Map<String, Object> m) throws PersistenceException {
+		protected GlobalConcept newConcept(Map<String, Object> m, ConceptQuerySpec spec) throws PersistenceException {
 			try {
 				int id = asInt(m.get("cId"));
 				int langBits = asInt(m.get("cLangBits"));
@@ -266,19 +287,24 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				Corpus[] languages = ((GlobalConceptStoreSchema)DatabaseGlobalConceptStore.this.database).getLanguages(langBits);
 				
 				GlobalConcept concept = new GlobalConcept(getDatasetIdentifier(), id, type);
+				concept.setName(name);
+				concept.setLanguages(languages);
+				concept.setType(type);
 				concept.setCardinality(cardinality);
 				concept.setRelevance(relevance);
 				
-				GlobalConcept[] inlinks = GlobalConcept.parseList( asString(m.get("rInlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
-				GlobalConcept[] outlinks = GlobalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
-				GlobalConcept[] broader = GlobalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
-				GlobalConcept[] narrower = GlobalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
-				GlobalConcept[] langlinks = GlobalConcept.parseList( asString(m.get("rLanglinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
-				GlobalConcept[] similar = GlobalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
-				GlobalConcept[] related = GlobalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
-				
-				ConceptRelations<GlobalConcept> relations = new ConceptRelations<GlobalConcept>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
-				concept.setRelations(relations);
+				if (spec!=null && spec.getIncludeRelations()) {
+					GlobalConcept[] inlinks = GlobalConcept.parseList( asString(m.get("rInlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
+					GlobalConcept[] outlinks = GlobalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
+					GlobalConcept[] broader = GlobalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
+					GlobalConcept[] narrower = GlobalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
+					GlobalConcept[] langlinks = GlobalConcept.parseList( asString(m.get("rLanglinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
+					GlobalConcept[] similar = GlobalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
+					GlobalConcept[] related = GlobalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
+
+					ConceptRelations<GlobalConcept> relations = new ConceptRelations<GlobalConcept>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
+					concept.setRelations(relations);
+				}
 				
 				return concept;
 			} catch (SQLException e) {
@@ -286,7 +312,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 			}
 		}
 		
-		protected LocalConcept getLocalConcept(int id, DatabaseLocalConceptStore store) throws PersistenceException {
+		protected LocalConcept getLocalConcept(int id, ConceptQuerySpec spec, DatabaseLocalConceptStore store) throws PersistenceException {
 			String lang = store.getCorpus().getLanguage();
 			String sql = "select local_concept" 
 					+" from "+originTable.getSQLName()
@@ -297,13 +323,13 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				Integer localId = asInt(database.executeSingleValueQuery("getConceptDescription", sql));
 				if (localId==null) throw new PersistenceException("concept #"+id+" has no description in language "+lang);
 				
-				return store.getConceptInfoStore().getConcept(localId);
+				return store.getConceptInfoStore().getConcept(localId, spec);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
 		}
 		
-		public List<LocalConcept> getLocalConcepts(int id) throws PersistenceException {
+		public List<LocalConcept> getLocalConcepts(int id, ConceptQuerySpec spec) throws PersistenceException {
 			List<LocalConcept> m = new ArrayList<LocalConcept>();
 
 			String sql = "select lang, local_concept" 
@@ -315,7 +341,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				while (res.next()) {
 					String lang = asString(res.getObject("lang"));
 					DatabaseLocalConceptStore store = getLocalConceptStore(lang);
-					LocalConcept c = getLocalConcept(id, store);
+					LocalConcept c = getLocalConcept(id, spec, store);
 					m.add(c);
 				}
 				
@@ -326,11 +352,11 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 			}
 		}
 		
-		public DataSet<GlobalConcept> getMeanings(String lang, String term)
+		public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec)
 			throws PersistenceException {
 		
-			String sql = conceptSelect("M.freq") + meaningsSQL(lang, term);
-			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(), "getMeanings", sql, false);
+			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(lang, term);
+			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(spec), "getMeanings", sql, false);
 		}
 	}
 

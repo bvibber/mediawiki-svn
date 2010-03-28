@@ -35,13 +35,27 @@ import de.brightbyte.wikiword.store.GlobalConceptStore;
 import de.brightbyte.wikiword.store.LocalConceptStore;
 import de.brightbyte.wikiword.store.ProximityStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore;
+import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
 public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 
 	protected Disambiguator disambiguator;
+	protected ConceptQuerySpec minimalConceptSpec;
+	protected ConceptQuerySpec resolvedConceptSpec;
+	protected ConceptQuerySpec detailedConceptSpec;
 	
 	public QueryConsole() {
 		super(true, true);
+		
+		minimalConceptSpec = new ConceptQuerySpec();
+		resolvedConceptSpec = new ConceptQuerySpec();
+		resolvedConceptSpec.setIncludeDefinition(true);
+		resolvedConceptSpec.setIncludeResource(true);
+		
+		detailedConceptSpec = new ConceptQuerySpec();
+		detailedConceptSpec.setIncludeDefinition(true);
+		detailedConceptSpec.setIncludeResource(true);
+		detailedConceptSpec.setIncludeRelations(true);
 	}
 
 	protected static class ConsoleOutput {
@@ -231,7 +245,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 						String n = r.getName();
 						
 						if (n==null && c < maxAutoResolve) {
-							WikiWordConcept x = ((WikiWordConceptStore)conceptStore).getConcept(id);
+							WikiWordConcept x = ((WikiWordConceptStore)conceptStore).getConcept(id, resolvedConceptSpec);
 							r = x;
 							a = r;
 						}
@@ -415,27 +429,27 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}
 	
 	public void listConcepts(ConsoleOutput out) throws PersistenceException {
-		DataSet<? extends LocalConcept> meanings = getLocalConceptStore().getAllConcepts();
+		DataSet<? extends LocalConcept> meanings = getLocalConceptStore().getAllConcepts(minimalConceptSpec);
 		out.writeConcepts(meanings);
 	}		
 	
 	public void listMeaningsLocal(String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConcept> meanings = getLocalConceptStore().getMeanings(term);
+		DataSet<LocalConcept> meanings = getLocalConceptStore().getMeanings(term, resolvedConceptSpec);
 		out.writeConcepts(meanings);
 	}		
 
 	public void listMeaningsGlobal(String lang, String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<GlobalConcept> meanings = getGlobalConceptStore().getMeanings(lang, term);
+		DataSet<GlobalConcept> meanings = getGlobalConceptStore().getMeanings(lang, term, resolvedConceptSpec);
 		out.writeConcepts(meanings);
 	}		
 
 	public void showConcept(int id, ConsoleOutput out) throws PersistenceException {
-		WikiWordConcept c = conceptStore.getConcept(id);
+		WikiWordConcept c = conceptStore.getConcept(id, detailedConceptSpec);
 		out.writeConcept(c);
 	}		
 
 	public void showConcept(int id, String lang, ConsoleOutput out) throws PersistenceException {
-		GlobalConcept c = getGlobalConceptStore().getConcept(id);
+		GlobalConcept c = getGlobalConceptStore().getConcept(id, detailedConceptSpec);
 		out.writeConcept(c);
 		
 		LocalConcept lc = c.getLocalConcept(lang);
@@ -452,7 +466,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	public void showConcept(String lang, int id, ConsoleOutput out) throws PersistenceException {
 		LocalConceptStore lstore = getGlobalConceptStore().getLocalConceptStore(Corpus.forName(getStoreDataset().getCollection(), lang, tweaks));
 		
-		LocalConcept lc = lstore.getConcept(id);
+		LocalConcept lc = lstore.getConcept(id, detailedConceptSpec);
 		if (out.getOutput() instanceof ConceptDumper) {
 			((ConceptDumper)out.getOutput()).setMaxAutoResolve(0);
 		}

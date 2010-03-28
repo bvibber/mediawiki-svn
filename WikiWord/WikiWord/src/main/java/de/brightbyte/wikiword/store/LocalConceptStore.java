@@ -2,9 +2,9 @@ package de.brightbyte.wikiword.store;
 
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermReference;
+import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
 
 /**
@@ -12,14 +12,7 @@ import de.brightbyte.wikiword.model.TermReference;
  */
 public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept>, WikiWordLocalStore {
 	
-	/*
-	public abstract DataSet<ConceptReference> getBroaderConcepts() throws PersistenceException;
-	public abstract DataSet<ConceptReference> getNarrowerConcepts() throws PersistenceException;
-	*/
-
-	public abstract DataSet<LocalConcept> getMeanings(String term, ConceptType t) throws PersistenceException;
-	
-	public abstract DataSet<LocalConcept> getMeanings(String term) throws PersistenceException;
+	public abstract DataSet<LocalConcept> getMeanings(String term, ConceptQuerySpec spec) throws PersistenceException;
 	
 	public int getNumberOfTerms() throws PersistenceException;
 
@@ -41,6 +34,6 @@ public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept>, W
 	public TermReference pickRandomTerm(int top) 
 		throws PersistenceException;
 
-	public LocalConcept getConceptByName(String name) throws PersistenceException;
+	public LocalConcept getConceptByName(String name, ConceptQuerySpec spec) throws PersistenceException;
 	
 }

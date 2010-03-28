@@ -14,10 +14,8 @@ import de.brightbyte.wikiword.model.LocalConcept;
  */
 public interface GlobalConceptStore extends WikiWordConceptStore<GlobalConcept> {
 
-	public DataSet<GlobalConcept> getAllConcepts() throws PersistenceException;
-
 	//TODO: relevance limit? order?
-	public DataSet<GlobalConcept> getMeanings(String lang, String term) throws PersistenceException;
+	public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec) throws PersistenceException;
 	
 	//public abstract ResultSet queryTermRefersTo() throws PersistenceException;
 	
@@ -28,7 +26,7 @@ public interface GlobalConceptStore extends WikiWordConceptStore<GlobalConcept> 
 
 	public LocalConceptStore getLocalConceptStore(Corpus corpus) throws PersistenceException;
 	
-	public List<LocalConcept> getLocalConcepts(int id) throws PersistenceException;
+	public List<LocalConcept> getLocalConcepts(int id, ConceptQuerySpec spec) throws PersistenceException;
 
 	public Corpus[] getLanguages() throws PersistenceException;
 }

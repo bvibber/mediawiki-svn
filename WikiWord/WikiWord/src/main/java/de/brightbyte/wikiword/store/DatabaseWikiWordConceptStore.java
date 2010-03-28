@@ -6,9 +6,7 @@ import static de.brightbyte.db.DatabaseUtil.asString;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.data.cursor.DataSet;
@@ -22,7 +20,6 @@ import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
-import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
@@ -36,8 +33,15 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 
 
 	private class RowConceptFactory implements DatabaseDataSet.Factory<T> {
+		private ConceptQuerySpec spec;
+
+		public RowConceptFactory(ConceptQuerySpec spec) {
+			super();
+			this.spec = spec;
+		}
+
 		public T newInstance(ResultSet row) throws SQLException, PersistenceException {
-			return newConcept(row);
+			return newConcept(row, spec);
 		}
 	}
 	
@@ -56,7 +60,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		}
 	}
 	
-	private RowConceptFactory rowConceptFactory = new RowConceptFactory();
+	private RowConceptFactory rowConceptFactory = new RowConceptFactory(null);
 	private ConceptFactory conceptFactory = new ConceptFactory();
 	
 	protected EntityTable conceptTable;
@@ -91,7 +95,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		return conceptFactory;
 	}
 	
-	protected T newConcept(ResultSet row) throws SQLException, PersistenceException {
+	protected T newConcept(ResultSet row, ConceptQuerySpec spec) throws SQLException, PersistenceException {
 		int id = row.getInt("cId");
 		String name = asString(row.getObject("cName"));
 		int type = row.getInt("cType");
@@ -101,7 +105,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		return newConcept(id, name, getConceptType(type), card, relev);
 	}
 	
-	protected T newConcept(Map m) throws PersistenceException {
+	protected T newConcept(Map m, ConceptQuerySpec spec) throws PersistenceException {
 		int id = asInt(m.get("cId"));
 		String name = asString(m.get("cName"));
 		int type = asInt(m.get("cType"));
@@ -114,12 +118,14 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 	protected abstract T newConcept(int id, String name, ConceptType type, int card, double relevance) throws PersistenceException;
 	protected abstract T[] newConceptArray(int n) ;
 		
-	protected String referenceSelect(String card) {
-		if (areStatsComplete()) return referenceSelect(card, "DT.idf", true);
-		else return referenceSelect(card, "-1", false);
+	protected String conceptSelect(ConceptQuerySpec spec, String card) {
+		if (areStatsComplete()) return conceptSelect(spec, card, "DT.idf");
+		else return conceptSelect(spec, card, null);
 	}
 	
-	protected String referenceSelect(String card, String relev, boolean useDistrib) {
+	protected String conceptSelect(ConceptQuerySpec spec, String card, String relev) {
+		boolean useDistrib = (relev!=null || (spec!=null && spec.getIncludeStatistics())) && areStatsComplete();
+		
 		if (card!=null) card = ", "+card;
 		
 		String sql = "SELECT C.id as cId, C.name as cName, C.type as cType " +
@@ -142,30 +148,26 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		}
 	}
 	
-	public DataSet<? extends T> getConcepts(int[] ids) throws PersistenceException {
-		return getConceptInfoStore().getConcepts(ids);
+	public DataSet<? extends T> getConcepts(int[] ids, ConceptQuerySpec spec) throws PersistenceException {
+		return getConceptInfoStore().getConcepts(ids, spec);
 	}
 	
-	public T getConcept(int id) throws PersistenceException {
-		return getConceptInfoStore().getConcept(id);
+	public T getConcept(int id, ConceptQuerySpec spec) throws PersistenceException {
+		return getConceptInfoStore().getConcept(id, spec);
 	}
 	
-	public T getRandomConcept(int top) throws PersistenceException {
-		T r = pickRandomConcept(top);
-		return getConcept(r.getId());
+	public T getRandomConcept(int top, ConceptQuerySpec spec) throws PersistenceException {
+		T r = getStatisticsStore().pickRandomConcept(top, spec);
+		return getConcept(r.getId(), spec);
 	}
 	
-	public DataSet<T> getAllConcepts() throws PersistenceException { 
+	public DataSet<T> getAllConcepts(ConceptQuerySpec spec) throws PersistenceException { 
 		try {
-			String sql = referenceSelect("-1");
+			String sql = conceptSelect(spec, "-1");
 			return new ChunkedQueryDataSet<T>(database, getRowConceptFactory(), "getAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
-	}
-	
-	public T pickRandomConcept(int top) throws PersistenceException {
-		return getStatisticsStore().pickRandomConcept(top);
 	}
 	
 	public int getNumberOfConcepts() throws PersistenceException {
@@ -344,7 +346,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 			}
 		}
 		
-		public T pickRandomConcept(int top)
+		public T pickRandomConcept(int top, ConceptQuerySpec spec)
 			throws PersistenceException {
 			
 			if (!areStatsComplete()) throw new IllegalStateException("satistics need to be built before accessing node degree!");
@@ -354,13 +356,13 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 			
 			int r = (int)Math.floor(Math.random() * top) +1;
 				
-			String sql = referenceSelect("DT.in_degree", "DT.idf", true)
+			String sql = conceptSelect(spec, "DT.in_degree", "DT.idf")
 						+ " WHERE in_rank = "+r;
 			
 			try {
 				T pick = null;
 				ResultSet rs = executeQuery("pickRandomConcept", sql);
-				if (rs.next()) pick = newConcept(rs); 
+				if (rs.next()) pick = newConcept(rs, spec); 
 				rs.close();
 				return pick;
 			} catch (SQLException e) {
@@ -378,10 +380,17 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 
 
 		protected class ConceptFactory implements DatabaseDataSet.Factory<C> {
+			private ConceptQuerySpec spec;
+
+			public ConceptFactory(ConceptQuerySpec spec) {
+				super();
+				this.spec = spec;
+			}
+
 			public C newInstance(ResultSet row) throws SQLException, PersistenceException {
 				Map<String, Object> m = DatabaseSchema.rowMap(row);
 				
-				return newConcept(m);
+				return newConcept(m, spec);
 			}
 		}
 		
@@ -395,24 +404,24 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 			conceptInfoTable = (EntityTable)database.getTable("concept_info");
 		}	
 		
-		protected String conceptSelect(String card) {
-			if (areStatsComplete()) return conceptSelect(card, "DT.idf", true);
-			else return conceptSelect(card, "-1", false);
+		protected String conceptSelect(ConceptQuerySpec spec, String card) {
+			if (areStatsComplete()) return conceptSelect(spec, card, "DT.idf");
+			else return conceptSelect(spec, card, "-1");
 		}
 
-		protected abstract String conceptSelect(String card, String relev, boolean useDistrib);	
+		protected abstract String conceptSelect(ConceptQuerySpec spec, String card, String relev);	
 		
-		public C getConcept(int id)
+		public C getConcept(int id, ConceptQuerySpec spec)
 			throws PersistenceException {
 		
-			String sql = conceptSelect("-1") + " WHERE C.id = "+id;
+			String sql = conceptSelect(spec, "-1") + " WHERE C.id = "+id;
 			
 			try {
 				ResultSet row = executeQuery("getConcept", sql);
 				if (!row.next()) throw new PersistenceException("no concept found with id = "+id);
 					
 				Map<String, Object> data = DatabaseSchema.rowMap(row); 
-				C c = newConcept(data);
+				C c = newConcept(data, spec);
 				
 				return c;
 			} catch (SQLException e) {
@@ -420,30 +429,30 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 			}
 		}
 
-		public DataSet<C> getAllConcepts()
+		public DataSet<C> getAllConcepts(ConceptQuerySpec spec)
 			throws PersistenceException {
 		
 			try {
-				String sql = conceptSelect("-1");
-				return new ChunkedQueryDataSet<C>(database, new ConceptFactory(), "getAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
+				String sql = conceptSelect(spec, "-1");
+				return new ChunkedQueryDataSet<C>(database, new ConceptFactory(spec), "getAllConcepts", "query",  sql, null, null, conceptTable, "id", queryChunkSize);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
 		}
 		
-		public DataSet<C> getConcepts(int[] ids)
+		public DataSet<C> getConcepts(int[] ids, ConceptQuerySpec spec)
 			throws PersistenceException {
 		
 			try {
-				String sql = conceptSelect("-1");
+				String sql = conceptSelect(spec, "-1");
 				sql += " WHERE C.id IN " + database.encodeSet(ids);
-				return new QueryDataSet<C>(database, new ConceptFactory(), "getConcepts", sql, false);
+				return new QueryDataSet<C>(database, new ConceptFactory(spec), "getConcepts", sql, false);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
 		}
 	
-		protected abstract C newConcept(Map<String, Object> data) throws PersistenceException;
+		protected abstract C newConcept(Map<String, Object> data, ConceptQuerySpec spec) throws PersistenceException;
 		
 	}
 

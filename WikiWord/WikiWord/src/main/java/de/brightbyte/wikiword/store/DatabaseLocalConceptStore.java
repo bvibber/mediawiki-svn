@@ -116,10 +116,10 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		*/
 	}
 		
-	protected String meaningWhere(String term, ConceptType t) {
+	protected String meaningWhere(String term, ConceptQuerySpec spec) {
 		String sql = " JOIN "+meaningTable.getSQLName()+" as M ON C.id = M.concept ";
 		sql += " WHERE M.term_text = "+database.quoteString(term)+" ";
-		if (t!=null) sql += " AND C.type = "+t.getCode()+" ";
+		if (spec!=null && spec.getRequireType()!=null) sql += " AND C.type = "+spec.getRequireType().getCode()+" ";
 		sql += " ORDER BY freq DESC";
 		return sql;
 	}
@@ -145,28 +145,22 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		return corpus;
 	}
 	
-	public DataSet<LocalConcept> listMeanings(String term) throws PersistenceException {
-		return this.listMeanings(term, null);
-	}
-	
+	/*
 	public DataSet<LocalConcept> listMeanings(String term, ConceptType t)
 		throws PersistenceException { 
 			
-		String sql = referenceSelect("M.freq") + meaningWhere(term, t);
+		String sql = conceptSelect("M.freq") + meaningWhere(term, t);
 		
 		return new QueryDataSet<LocalConcept>(database, getRowConceptFactory(), "listMeanings", sql, false);
 	}
-
-	public LocalConcept getConceptByName(String name) throws PersistenceException {
-		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getConceptByName(name);
+    */
+	
+	public LocalConcept getConceptByName(String name, ConceptQuerySpec spec) throws PersistenceException {
+		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getConceptByName(name, spec);
 	}
 
-	public DataSet<LocalConcept> getMeanings(String term) throws PersistenceException {
-		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getMeanings(term);
-	}
-		
-	public DataSet<LocalConcept> getMeanings(String term, ConceptType t) throws PersistenceException {
-		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getMeanings(term, t);
+	public DataSet<LocalConcept> getMeanings(String term, ConceptQuerySpec spec) throws PersistenceException {
+		return ((DatabaseLocalConceptInfoStore)getConceptInfoStore()).getMeanings(term, spec);
 	}
 		
 	public TermReference pickRandomTerm(int top) throws PersistenceException {
@@ -269,30 +263,56 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		}
 	
 		@Override
-		protected String conceptSelect(String card, String relev, boolean useDistrib) {
-			String distribJoin = !useDistrib ? "" : " JOIN " + database.getSQLTableName("degree", true) + " as DT ON DT.concept = C.id";
+		protected String conceptSelect(ConceptQuerySpec spec, String card, String relev) {
+			boolean useDistrib = (relev!=null || (spec!=null && spec.getIncludeStatistics())) && areStatsComplete();
 			
-			String sql =  "SELECT C.id as cId, C.name as cName, C.type as cType, " +
-					" "+card+" as qFreq, "+relev+" as qConf, " +
-					" R.id as rcId, R.name as rcName, R.type as rcType, " +
-					" F.definition as fDefinition, " +
-					" I.inlinks as rInlinks, I.outlinks as rOutlinks, " +
-					" I.broader as rBroader, I.narrower as rNarrower, I.langlinks as rLanglinks, " +
-					" I.similar as rSimilar, I.related as rRelated, " + 
-					" D.terms as dTerms" +
-					" FROM "+conceptTable.getSQLName()+" as C "+
-					distribJoin+
-					" LEFT JOIN "+aboutTable.getSQLName()+" as A ON A.concept = C.id "+
-					" LEFT JOIN "+resourceTable.getSQLName()+" as R ON R.id = A.resource "+
-					" LEFT JOIN "+definitionTable.getSQLName()+" as F ON F.concept = C.id "+
-					" LEFT JOIN "+conceptInfoTable.getSQLName()+" as I ON I.concept = C.id "+
-					" LEFT JOIN "+conceptDescriptionTable.getSQLName()+" as D ON D.concept = C.id ";
+			String fields = "C.id as cId, C.name as cName, C.type as cType";
+			String tables = ""+conceptTable.getSQLName()+" as C ";
 			
+			if (useDistrib) {
+				tables += " JOIN " + database.getSQLTableName("degree", true) + " as DT ON DT.concept = C.id ";
+				if (relev==null) relev = "DT.idf";
+			}  else {
+				relev = "-1";
+			}
+			
+			if (relev==null) relev = "-1";
+			if (card==null) card = "-1";
+			
+			fields += ", "+card+" as qFreq, "+relev+" as qConf ";
+			
+			if (spec!=null && spec.getIncludeResource()) {
+				fields += ", R.id as rcId, R.name as rcName, R.type as rcType ";
+				tables += " LEFT JOIN "+aboutTable.getSQLName()+" as A ON A.concept = C.id "+
+								" LEFT JOIN "+resourceTable.getSQLName()+" as R ON R.id = A.resource ";
+			}
+			
+			if (spec!=null && spec.getIncludeDefinition()) {
+				fields += ", F.definition as fDefinition ";
+				
+				tables += " LEFT JOIN "+definitionTable.getSQLName()+" as F ON F.concept = C.id ";
+			}
+			
+			if (spec!=null && spec.getIncludeRelations()) {
+				fields += ", I.inlinks as rInlinks, I.outlinks as rOutlinks, " +
+								" I.broader as rBroader, I.narrower as rNarrower, I.langlinks as rLanglinks, " +
+								" I.similar as rSimilar, I.related as rRelated ";
+				
+				tables += " LEFT JOIN "+conceptInfoTable.getSQLName()+" as I ON I.concept = C.id ";
+			}
+			
+			if (spec!=null && spec.getIncludeTerms()) {
+				fields += ", D.terms as dTerms";
+				
+				tables += " LEFT JOIN "+conceptDescriptionTable.getSQLName()+" as D ON D.concept = C.id ";
+			}
+			
+			String sql =  "SELECT " + fields + " FROM " + tables;
 			return sql;
 		}
 			
 		@Override
-		protected LocalConcept newConcept(Map<String, Object> m) throws PersistenceException {
+		protected LocalConcept newConcept(Map<String, Object> m, ConceptQuerySpec spec) throws PersistenceException {
 			int id = asInt(m.get("cId"));
 			String name = asString(m.get("cName"));
 			ConceptType type = corpus.getConceptTypes().getType(asInt(m.get("cType")));
@@ -304,60 +324,61 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			String rcName = asString(m.get("rcName"));
 			ResourceType rcType = m.get("rcType") != null ? ResourceType.getType(asInt(m.get("rcType"))) : null;
 
-			String definition = asString(m.get("fDefinition"));
-			
 			LocalConcept concept = new LocalConcept(getCorpus(), id, null, name);
 			concept.setCardinality(cardinality);
 			concept.setRelevance(relevance);
-			
-			LocalConcept[] inlinks = LocalConcept.parseList( asString(m.get("rInlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
-			LocalConcept[] outlinks = LocalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
-			LocalConcept[] broader = LocalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
-			LocalConcept[] narrower = LocalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
-			LocalConcept[] langlinks = LocalConcept.parseList( asString(m.get("rLanglinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
-			LocalConcept[] similar = LocalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
-			LocalConcept[] related = LocalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
-			TermReference[] terms = TermReference.parseList( asString(m.get("dTerms")), getConceptFactory(), ((ConceptInfoStoreSchema)database).termReferenceListEntry );
-			
-			WikiWordResource resource = rcId <= 0 ? null : new WikiWordResource(corpus, rcId, rcName, rcType);
-			
-			concept.setResource(resource);
 			concept.setType(type);
-			concept.setDefinition(definition);
-			concept.setTerms(terms);
 			
-			ConceptRelations<LocalConcept> relations = new ConceptRelations<LocalConcept>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
-			concept.setRelations(relations);
+			if (spec!=null && spec.getIncludeRelations()) {
+				LocalConcept[] inlinks = LocalConcept.parseList( asString(m.get("rInlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).inLinksReferenceListEntry ); 
+				LocalConcept[] outlinks = LocalConcept.parseList( asString(m.get("rOutlinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).outLinksReferenceListEntry ); 
+				LocalConcept[] broader = LocalConcept.parseList( asString(m.get("rBroader")), getConceptFactory(), ((ConceptInfoStoreSchema)database).broaderReferenceListEntry ); 
+				LocalConcept[] narrower = LocalConcept.parseList( asString(m.get("rNarrower")), getConceptFactory(), ((ConceptInfoStoreSchema)database).narrowerReferenceListEntry ); 
+				LocalConcept[] langlinks = LocalConcept.parseList( asString(m.get("rLanglinks")), getConceptFactory(), ((ConceptInfoStoreSchema)database).langlinkReferenceListEntry ); 
+				LocalConcept[] similar = LocalConcept.parseList( asString(m.get("rSimilar")), getConceptFactory(), ((ConceptInfoStoreSchema)database).similarReferenceListEntry ); 
+				LocalConcept[] related = LocalConcept.parseList( asString(m.get("rRelated")), getConceptFactory(), ((ConceptInfoStoreSchema)database).relatedReferenceListEntry ); 
+				
+				ConceptRelations<LocalConcept> relations = new ConceptRelations<LocalConcept>(broader, narrower, inlinks, outlinks, similar, related, langlinks);
+				concept.setRelations(relations);
+			}
+			
+			if (spec!=null && spec.getIncludeResource()) {
+				WikiWordResource resource = rcId <= 0 ? null : new WikiWordResource(corpus, rcId, rcName, rcType);
+				concept.setResource(resource);
+			}
+			
+			if (spec!=null && spec.getIncludeDefinition()) {
+				String definition = asString(m.get("fDefinition"));
+				concept.setDefinition(definition);
+			}
+			
+			if (spec!=null && spec.getIncludeTerms()) {
+				TermReference[] terms = TermReference.parseList( asString(m.get("dTerms")), getConceptFactory(), ((ConceptInfoStoreSchema)database).termReferenceListEntry );
+				concept.setTerms(terms);
+			}
 			
 			return concept;
 		}
 		
 
-		public DataSet<LocalConcept> getMeanings(String term) 
+		public DataSet<LocalConcept> getMeanings(String term, ConceptQuerySpec spec) 
 			throws PersistenceException {
+			String sql = conceptSelect(spec, "M.freq") + meaningWhere(term, spec);
 			
-			return getMeanings(term, null);
-		}
-		
-		public DataSet<LocalConcept> getMeanings(String term, ConceptType t)
-			throws PersistenceException {
-		
-			String sql = conceptSelect("M.freq") + meaningWhere(term, t);
-			
-			return new QueryDataSet<LocalConcept>(database, new ConceptFactory(), "getMeanins", sql, false);
+			return new QueryDataSet<LocalConcept>(database, new ConceptFactory(spec), "getMeanins", sql, false);
 		}
 		
 
-		public LocalConcept getConceptByName(String name) throws PersistenceException {
+		public LocalConcept getConceptByName(String name, ConceptQuerySpec spec) throws PersistenceException {
 			
-			String sql = conceptSelect("-1") + " WHERE C.name = "+database.quoteString(name);
+			String sql = conceptSelect(spec, "-1") + " WHERE C.name = "+database.quoteString(name);
 			
 			try {
 				ResultSet row = executeQuery("getConcept", sql);
 				if (!row.next()) throw new PersistenceException("no concept found with name = "+name);
 					
 				Map<String, Object> data = DatabaseSchema.rowMap(row); 
-				LocalConcept c = newConcept(data);
+				LocalConcept c = newConcept(data, spec);
 				
 				return c;
 			} catch (SQLException e) {
