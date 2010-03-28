@@ -1442,15 +1442,15 @@ $j(document).ready( function() {
 				'wikieditor-toolbar-tool-reference-insert': function() {
 					var insertText = $j( '#wikieditor-toolbar-reference-text' ).val();
 					var whitespace = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace' );
-					if ( whitespace ) insertText = whitespace[0] + insertText + whitespace[1];
+					var attributes = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'attributes' );
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j( this ).data( 'context' ),
 						{
 							type: 'replace',
 							options: {
-								pre: '<ref>',
+								pre: whitespace[0] + '<ref' + attributes + '>',
 								peri: insertText,
-								post: '</ref>'
+								post: '</ref>' + whitespace[1]
 							}
 						},
 						$j( this )
@@ -1472,13 +1472,14 @@ $j(document).ready( function() {
 					.$textarea.textSelection( 'getSelection' ); 
 				// set focus
 				$j( '#wikieditor-toolbar-reference-text' ).focus();
+				$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
 				if ( selection != '' ) {
 					var matches, text;
-					if ( ( matches = selection.match( /^(\s*)(<ref\>)([^\<]+)?(<\/ref\>)(\s*)$/ ) ) ) {
-						// <ref>foo</ref>
+					if ( ( matches = selection.match( /^(\s*)<ref([^\>]*)>([^\<]*)<\/ref\>(\s*)$/ ) ) ) {
 						text = matches[3];
 						// Preserve whitespace when replacing
-						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
+						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace', [ matches[1], matches[4] ] );
+						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'attributes', matches[2] );
 					} else {
 						text = selection;
 					}
