@@ -976,7 +976,10 @@ $j(document).ready( function() {
 				}
 			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
-			function updateExistence() {
+			// accepts parameter internal for bypassing external link detection
+			function updateExistence( internal ) {
+				// ensure the internal parameter is a boolean 
+				if ( internal != true ) internal = false;
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
 				if ( request ) {
@@ -993,7 +996,8 @@ $j(document).ready( function() {
 					updateWidget( false );
 					return;
 				}
-				if ( isExternalLink( target ) ) {
+				// If the forced internal paremter was not true, check if the target is an external link
+				if ( !internal && isExternalLink( target ) ) {
 					updateWidget( 'external' );
 					return;
 				}
@@ -1029,7 +1033,8 @@ $j(document).ready( function() {
 								else if ( typeof page.invalid != 'undefined' )
 									status = 'invalid';
 							}
-							cache[target] = status;
+							// Cache the status of the link target if the force internal parameter was not passed
+							if ( !internal ) cache[target] = status;
 							updateWidget( status );
 						}
 					} )
@@ -1045,7 +1050,7 @@ $j(document).ready( function() {
 					updateWidget( 'external' );
 				}
 				if( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) )
-					updateExistence();
+					updateExistence( true );
 			});
 			// Set labels of tabs based on rel values
 			var u = mw.usability;
