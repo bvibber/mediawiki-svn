@@ -1467,17 +1467,16 @@ $j(document).ready( function() {
 				}
 			},
 			open: function() {
-				// set focus
-				$j( '#wikieditor-toolbar-reference-text' ).focus();
 				// Pre-fill the text fields based on the current selection
 				var selection = $j(this).data( 'context' )
 					.$textarea.textSelection( 'getSelection' ); 
+				// set focus
+				$j( '#wikieditor-toolbar-reference-text' ).focus();
 				if ( selection != '' ) {
 					var matches, text;
 					if ( ( matches = selection.match( /^(\s*)(<ref\>)([^\<]+)?(<\/ref\>)(\s*)$/ ) ) ) {
 						// <ref>foo</ref>
 						text = matches[3];
-						console.log(matches[1].length, matches[5].length)
 						// Preserve whitespace when replacing
 						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else {
