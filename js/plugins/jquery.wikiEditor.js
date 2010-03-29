@@ -365,7 +365,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					break;
 				 case 86: //v
-					 if ( event.ctrlKey && $.browser.msie){
+					 if ( event.ctrlKey && $.browser.msie ) {
 						 //paste, intercepted for IE
 						 context.evt.paste( event );
 					 }
