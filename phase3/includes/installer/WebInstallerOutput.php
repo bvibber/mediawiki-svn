@@ -11,6 +11,7 @@
 class WebInstallerOutput {
 	var $parent;
 	var $contents = '';
+	var $warnings = '';
 	var $headerDone = false;
 	var $redirectTarget;
 	var $debug = true;
@@ -31,6 +32,16 @@ class WebInstallerOutput {
 
 	function addHTMLNoFlush( $html ) {
 		$this->contents .= $html;
+	}
+
+	function addWarning( $msg ) {
+		$this->warnings .= "<p>$msg</p>\n";
+	}
+	
+	function addWarningMsg( $msg /*, ... */ ) {
+		$params = func_get_args();
+		array_shift( $params );
+		$this->addWarning( wfMsg( $msg, $params ) );
 	}
 
 	function redirect( $url ) {
@@ -122,6 +133,8 @@ class WebInstallerOutput {
 	}
 
 	function outputFooter() {
+		$this->outputWarnings();
+
 		if ( $this->useShortHeader ) {
 ?>
 </body></html>
@@ -169,5 +182,10 @@ class WebInstallerOutput {
 
 <body style="background-image: none">
 <?php
+	}
+
+	function outputWarnings() {
+		$this->addHTML( $this->warnings );
+		$this->warnings = '';
 	}
 }

@@ -806,16 +806,15 @@ abstract class Installer {
 		if ( $file ) {
 			$secretKey = bin2hex( fread( $file, 32 ) );
 			fclose( $file );
-			$ret = true;
 		} else {
 			$secretKey = "";
 			for ( $i=0; $i<8; $i++ ) {
 				$secretKey .= dechex(mt_rand(0, 0x7fffffff));
 			}
-			$ret = false;
+			$this->output->addWarningMsg( 'config-insecure-secretkey' );
 		}
 		$this->setVar( 'wgSecretKey', $secretKey );
-		return $ret;
+		return true;
 	}
 
 	public function installSysop() {

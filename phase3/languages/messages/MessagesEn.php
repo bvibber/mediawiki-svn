@@ -4586,8 +4586,10 @@ They may require additional configuration, but you can enable them now',
 'config-install-tables'           => 'Creating tables',
 'config-install-interwiki-sql'    => 'Could not find file interwiki.sql',
 'config-install-secretkey'        => 'Generating secret key',
+'config-insecure-secretkey'       => 'Warning: Unable to create secure $wgSecretKey. Consider changing it manually.',
 'config-install-sysop'            => 'Creating administrator user account',
-'config-install-localsettings'    => 'Writing LocalSettings.php',
+'config-install-localsettings'    => 'Creating LocalSettings.php',
+'config-install-localsettings-unwritable' => 'Warning: could not write LocalSettings.php. Please create it yourself, using the following text:',
 'config-install-done'             => "'''Congratulations''', you have successfully installed MediaWiki.
 
 You will need to move it from <tt>./config/LocalSettings.php</tt> to <tt>./LocalSettings.php</tt> in order

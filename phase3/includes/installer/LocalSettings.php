@@ -4,12 +4,14 @@ class LocalSettings {
 	private $extensions, $values = array();
 	private $configPath, $dbSettings = '';
 	private $safeMode = false;
+	private $installer;
 
 	/**
 	 * Construtor.
 	 * @param $installer Installer subclass
 	 */
 	public function __construct( Installer $installer ) {
+		$this->installer = $installer;
 		$this->configPath = $installer->getVar( 'IP' ) . '/config';
 		$this->extensions = $installer->getVar( '_Extensions' );
 		$db = $installer->getDBInstaller( $installer->getVar( 'wgDBtype' ) );
@@ -65,7 +67,16 @@ class LocalSettings {
 				$localSettings .= "require( 'extensions/$ext/$ext.php' );\n";
 			}
 		}
-		return file_put_contents( $this->configPath . '/LocalSettings.php', $localSettings );
+		wfSuppressWarnings();
+		$ret = file_put_contents( $this->configPath . '/LocalSettings.php', $localSettings );
+		wfRestoreWarnings();
+		if ( !$ret ) {
+			$warn = wfMsg( 'config-install-localsettings-unwritable' ) . '
+<textarea name="LocalSettings" id="LocalSettings" cols="80" rows="25" readonly="readonly">'
+				. htmlspecialchars( $localSettings ) . '</textarea>';
+			$this->installer->output->addWarning( $warn );
+		}
+		return $ret;
 	}
 	
 	private function buildMemcachedServerList() {
