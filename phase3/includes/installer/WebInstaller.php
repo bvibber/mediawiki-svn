@@ -1339,8 +1339,10 @@ class WebInstaller_Options extends WebInstallerPage {
 		);
 
 		$caches = array( 'none', 'anything', 'db' );
+		$selected = 'db';
 		if( count( $this->getVar( '_Caches' ) ) ) {
 			$caches[] = 'accel';
+			$selected = 'accel';
 		}
 		$caches[] = 'memcached';
 
@@ -1353,6 +1355,7 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-cache-options',
 				'itemLabelPrefix' => 'config-cache-',
 				'values' => $caches,
+				'value' => $selected,
 			) ) .
 			$this->parent->getHelpBox( 'config-cache-help' ) .
 			$this->parent->getTextBox( array(
