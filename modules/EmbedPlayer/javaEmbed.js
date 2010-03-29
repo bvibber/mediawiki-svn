@@ -26,10 +26,6 @@ var javaEmbed = {
 	doEmbedHTML: function () {
 		var _this = this;
 		mw.log( "java play url:" + this.getSrc( this.seek_time_sec ) );
-		// get the duration
-		this.getDuration();
-		// if still unset set to an arbitrary time 60 seconds: 
-		if ( !this.duration )this.duration = 60;
 		
 		var applet_loc = this.getAppletLocation();				
 		
@@ -39,21 +35,29 @@ var javaEmbed = {
 		// load directly in the page..
 		// (media must be on the same server or applet must be signed)
 		var appletCode = '' +
-		'<applet id="' + this.pid + '" code="com.fluendo.player.Cortado.class" archive="' + applet_loc + '" width="' + this.getWidth() + '" height="' + this.getHeight() + '">	' + "\n" +
+		'<applet id="' + this.pid + '" code="com.fluendo.player.Cortado.class" ' +
+		'archive="' + applet_loc  + '" width="' + parseInt( this.getWidth() ) + '" ' +
+		'height="' + parseInt( this.getHeight() ) + '">	' + "\n" +
 			'<param name="url" value="' + this.getSrc() + '" /> ' + "\n" +
 			'<param name="local" value="false"/>' + "\n" +
 			'<param name="keepaspect" value="true" />' + "\n" +
 			'<param name="video" value="true" />' + "\n" +
 			'<param name="showStatus" value="hide" />' + "\n" +
 			'<param name="audio" value="true" />' + "\n" +
-			'<param name="seekable" value="true" />' + "\n" +
-			'<param name="duration" value="' + this.duration + '" />' + "\n" +
-			'<param name="bufferSize" value="4096" />' + "\n" +
-		'</applet>';					
+			'<param name="seekable" value="true" />' + "\n";
+		
+		// Add the duration attribute if set:	
+		if( this.getDuration() ){
+			appletCode += '<param name="duration" value="' + parseFloat( this.getDuration() )  + '" />' + "\n";
+		};
+		
+			appletCode += '<param name="bufferSize" value="4096" />' + "\n" +
+		'</applet>';
+		
 		$j( this ).html( appletCode );
 				
 		// Wrap it in an iframe to avoid hanging the event thread in FF 2/3 and similar
-		// NOTE:  This breaks refrence to the applet so disabled for now: 
+		// NOTE:  This breaks reference to the applet so disabled for now: 
 		/*if ( $j.browser.mozilla ) {
 			var iframe = document.createElement( 'iframe' );
 			iframe.setAttribute( 'width', this.getWidth() );
