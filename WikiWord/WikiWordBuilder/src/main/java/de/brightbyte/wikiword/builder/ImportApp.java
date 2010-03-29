@@ -9,10 +9,8 @@ import java.util.List;
 
 import de.brightbyte.application.Agenda;
 import de.brightbyte.application.Agenda.Monitor;
-import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.Prompt;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.WikiWordStore;
