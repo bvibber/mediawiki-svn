@@ -1,13 +1,11 @@
 package de.brightbyte.wikiword.disambig;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
 import de.brightbyte.wikiword.model.LocalConcept;
 
 public abstract class AbstractDisambiguator implements Disambiguator {

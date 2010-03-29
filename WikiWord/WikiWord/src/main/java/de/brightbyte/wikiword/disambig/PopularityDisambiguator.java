@@ -31,7 +31,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator {
 		int pop = 0;
 		for (String t: terms) {
 			List<LocalConcept> m = meanings.get(t);
-			if (m.size()==0) continue;
+			if (m==null || m.size()==0) continue;
 			
 			if (m.size()>0) Collections.sort(m, popularityComparator);
 			
@@ -43,7 +43,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator {
 
 		pop = pop / disambig.size();
 		
-		Result r = new Result(disambig, pop, -1, pop);
+		Result r = new Result(disambig, pop, "pop="+pop);
 		return r;
 	}
 

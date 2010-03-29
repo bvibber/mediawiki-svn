@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.disambig;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		return f;
 	}
 
-	public Map<Integer, ConceptFeatures<C, K>> getFeatures(List<C> concepts) throws PersistenceException {
+	public Map<Integer, ConceptFeatures<C, K>> getFeatures(Collection<C> concepts) throws PersistenceException {
 		Map<Integer, ConceptFeatures<C, K>> features = new HashMap<Integer, ConceptFeatures<C, K>> ();
 		List<C> todo = new ArrayList<C>(concepts.size());
 		for (C c: concepts) {

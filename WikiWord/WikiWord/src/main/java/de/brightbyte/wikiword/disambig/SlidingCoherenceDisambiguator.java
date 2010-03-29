@@ -40,12 +40,17 @@ public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> 
 		if (window < 2 || terms.size()<2 || meanings.size()<2) 
 				return popularityDisambiguator.disambiguate(terms, meanings);
 		
+		pruneMeanings(meanings);
+		
+		if (meanings.size()<2) 
+			return popularityDisambiguator.disambiguate(terms, meanings);
+		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
 		Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>(meanings.size()); 
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureCache<LocalConcept, K> features = new FeatureCache<LocalConcept, K>(featureFetcher); //TODO: keep a chain of n caches, resulting in LRU logic.
+		FeatureCache<LocalConcept, K> features = getFeatureCache(meanings); 
 		
 		for (int i= window; ; i++) {
 			int from = i-window;

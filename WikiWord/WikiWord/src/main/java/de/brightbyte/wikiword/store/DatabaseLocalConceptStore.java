@@ -307,6 +307,8 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 				tables += " LEFT JOIN "+conceptDescriptionTable.getSQLName()+" as D ON D.concept = C.id ";
 			}
 			
+			//TODO: include features!
+			
 			String sql =  "SELECT " + fields + " FROM " + tables;
 			return sql;
 		}

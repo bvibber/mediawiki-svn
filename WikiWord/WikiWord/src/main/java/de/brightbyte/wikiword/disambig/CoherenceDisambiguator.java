@@ -3,9 +3,12 @@ package de.brightbyte.wikiword.disambig;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import de.brightbyte.data.Functor;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
@@ -20,14 +23,30 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 	
-	protected int minPopularity = 2; //FIXME: use complex cutoff specifier! 
-	protected double scoreThreshold = 0.002; //FIXME: magic number
-	protected double popularityBias = 0.01; //FIXME: magic number
+	protected int minPopularity = 2; //FIXME: use complex cutoff specifier!
+	protected int maxMeanings = 8; //FIXME: magic...
+	
+	protected double minScore = 0.1; //FIXME: magic number. should "somehow" match popularityFactor and similarityFactor
+	protected double popularityBias = 0.2; //FIXME: magic number. should "somehow" match popularityFactor and similarityFactor
 	
 	protected Similarity<LabeledVector<K>> similarityMeasure;
 	protected FeatureFetcher<LocalConcept, K> featureFetcher;
 	protected Measure<WikiWordConcept> popularityMeasure;
 	protected PopularityDisambiguator popularityDisambiguator;
+	
+	private Functor.Double popularityFactor = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
+	
+		public double apply(double pop) {
+			return 1 - 1/(Math.sqrt(Math.log(pop))+1);  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+		}
+	
+	};
+	
+	private Functor.Double similarityFactor = new Functor.Double() { //NOTE: must map [0:1] to [0:1] and grow monotonously
+		public double apply(double sim) {
+			return Math.sqrt(Math.sqrt(sim));  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+		}
+	};
 	
 	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, boolean featuresAreNormalized) {
 		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
@@ -80,14 +99,37 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		this.minPopularity = min;
 	}
 
-	public double getScoreThreshold() {
-		return scoreThreshold;
+	public double getMinScore() {
+		return minScore;
 	}
 
-	public void setScoreThreshold(double threshold) {
-		this.scoreThreshold = threshold;
+	public void setMinScore(double threshold) {
+		this.minScore = threshold;
 	}
 
+	public int getMaxMeanings() {
+		return maxMeanings;
+	}
+
+	public void setMaxMeanings(int maxMeanings) {
+		this.maxMeanings = maxMeanings;
+	}
+
+	protected FeatureCache<LocalConcept, K> getFeatureCache(Map<String, List<LocalConcept>> meanings) throws PersistenceException {
+		//TODO: keep a chain of n caches, resulting in LRU logic.
+		FeatureCache<LocalConcept, K> features = new FeatureCache<LocalConcept, K>(featureFetcher);
+		
+		//NOTE: pre-fetch all features in one go
+		List<LocalConcept> concepts = new ArrayList<LocalConcept>(meanings.size()*10);
+		for (List<LocalConcept> m: meanings.values()) {
+			concepts.addAll(m);
+		}
+		
+		features.getFeatures(concepts);
+		
+		return features;
+	}
+	
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
@@ -95,25 +137,64 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		if (terms.size()<2 || meanings.size()<2) 
 				return popularityDisambiguator.disambiguate(terms, meanings);
 		
+		pruneMeanings(meanings);
+		
+		if (meanings.size()<2) 
+			return popularityDisambiguator.disambiguate(terms, meanings);
+		
+		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
+
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureCache<LocalConcept, K> features = new FeatureCache<LocalConcept, K>(featureFetcher); //TODO: keep a chain of n caches, resulting in LRU logic.
+		FeatureCache<LocalConcept, K> features = getFeatureCache(meanings); 
 		
 		List<Map<String, LocalConcept>> interpretations = getInterpretations(terms, meanings);
 
 		return getBestInterpretation(terms, meanings, interpretations, similarities, features);
 	}
 	
+	protected void pruneMeanings(Map<String, List<LocalConcept>> meanings) {
+		if (minPopularity<=1) return; //nothing to do
+		
+		Iterator<Map.Entry<String, List<LocalConcept>>> eit = meanings.entrySet().iterator();
+		while (eit.hasNext()) {
+			Entry<String, List<LocalConcept>> e = eit.next();
+			List<LocalConcept> m = e.getValue();
+			
+			Iterator<LocalConcept> cit = m.iterator();
+			while (cit.hasNext()) {
+				LocalConcept c = cit.next();
+				double p = popularityMeasure.measure(c);
+				
+				if (p<minPopularity) {
+					cit.remove();
+				}
+			}
+			
+			if (m.size()==0) eit.remove();
+			else if (m.size()>maxMeanings) {
+				Collections.sort(m, WikiWordConcept.byCardinality);
+				m = m.subList(0, maxMeanings);
+				e.setValue(m);
+			}
+		}
+	}
+
 	protected Result getBestInterpretation(List<String> terms, Map<String, List<LocalConcept>> meanings, 
 			List<Map<String, LocalConcept>> interpretations, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureCache<LocalConcept, K> features) throws PersistenceException {
 		
 		List<Result> rankings = new ArrayList<Result>();
 		
+		double traceLimit = -1;
 		for (Map<String, LocalConcept> interp: interpretations) {
 			Result r = getScore(interp, similarities, features);
-			if (r.getScore() <= scoreThreshold) continue;
 			
-			rankings.add(r);
+			if (r.getScore() >= minScore) {
+				rankings.add(r);
+
+				if (traceLimit<0) traceLimit = r.getScore() / 2;
+				if (r.getScore() >= traceLimit && rankings.size()<=10) trace(" = "+r);
+			}
 		}
 		
 		if (rankings.size()==0) {
@@ -122,20 +203,6 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		
 		Collections.sort(rankings);
 		Collections.reverse(rankings);
-		
-		if (trace!=null) {
-			int c = 0;
-			double limit = -1;
-			for (Result r: rankings) {
-				if (limit<0) limit = r.getScore() / 2;
-				else if (r.getScore()<limit) break;
-				
-				trace(" = "+r);
-				c++;
-				
-				if (c>10) break;
-			}
-		}
 		
 		//TODO: if result is tight (less than 50% distance), use more popularity score!
 		Result r = rankings.get(0);
@@ -158,9 +225,6 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		
 		for (Map<String, LocalConcept> be: base) {
 			for (LocalConcept c: m) {
-				double p = popularityMeasure.measure(c); 
-				if (p<minPopularity) continue;
-				
 				Map<String, LocalConcept> e = new HashMap<String, LocalConcept>();
 				e.putAll(be);
 				e.put(t, c);
@@ -169,7 +233,7 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 			}
 		}
 		
-		trace("    ~ "+t+": "+interpretations.size()+" combinations");
+		trace("    ~ "+t+": "+m.size()+" meanings; collected "+interpretations.size()+" combinations");
 		return interpretations;
 	}
 
@@ -222,13 +286,17 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		}
 		
 		//normalize
-		sim = sim / n; 
-		pop = pop / c;
+		sim = sim / n; //normalize
+		pop = pop / c; //normalize
 		
-		double popf = 1 - 1/(Math.sqrt(pop)+1);  //converge against 1 //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+		double popf = popularityFactor.apply(pop);
+		double simf = similarityFactor.apply(sim);
 		
-		double score =  popf * popularityBias + sim * ( 1 - popularityBias );
-		return new Result(interp, score, sim, pop);
+		//FIXME: functor!
+		double score =  popf * popularityBias + simf * ( 1 - popularityBias );
+		//double score =  Math.sqrt( popf * simf ); //FIXME: functor!
+		
+		return new Result(interp, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop);
 	}
 	
 }

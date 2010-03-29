@@ -60,8 +60,8 @@ public class TermRelatedness implements Similarity<String> {
 				d = relatedness.similarity(ca, cb);
 			}
 			else {
-				d = r.getCoherence();
-				if (d<0) throw new RuntimeException("disambiguator did not provide a coherence score, and no concept similarity measure was defined!");
+				d = r.getScore();
+				if (d<0) throw new RuntimeException("disambiguator did not provide a score, and no concept similarity measure was defined!");
 			}
 			
 			return new Relatedness(d, ca, cb);

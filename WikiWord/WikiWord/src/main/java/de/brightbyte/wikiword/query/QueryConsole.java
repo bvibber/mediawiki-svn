@@ -13,6 +13,8 @@ import java.util.Map;
 
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.cursor.DataSet;
+import de.brightbyte.db.DatabaseUtil;
+import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConsoleApp;
@@ -312,20 +314,20 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}
 
 	@Override
-	public void runCommand(List<String> params) throws Exception {
-		String cmd = params.get(0);
+	public void runCommand(List<Object> params) throws Exception {
+		String cmd = params.get(0).toString();
 		cmd = cmd.trim().toLowerCase();
 		
 		String format = null;
 		File target = null;
 		
-		if (params.size()>1 && params.get(params.size()-1).startsWith(">")) {
-			target = new File( params.get(params.size()-1).substring(1).trim() );
+		if (params.size()>1 && params.get(params.size()-1).toString().startsWith(">")) {
+			target = new File( params.get(params.size()-1).toString().substring(1).trim() );
 			params = params.subList(0, params.size()-1);
 		}
 		
-		if (params.size()>1 && params.get(params.size()-1).startsWith("|")) {
-			format = params.get(params.size()-1).substring(1).trim();
+		if (params.size()>1 && params.get(params.size()-1).toString().startsWith("|")) {
+			format = params.get(params.size()-1).toString().substring(1).trim();
 			params = params.subList(0, params.size()-1);
 		}
 		
@@ -337,43 +339,47 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			}
 			else if (cmd.equals("m") || cmd.equals("mng") || cmd.equals("meanings")) {
 				if (isGlobalThesaurus()) {
-					String lang = params.get(1);
-					String term = params.get(2);
+					String lang = params.get(1).toString();
+					String term = params.get(2).toString();
 					listMeaningsGlobal(lang, term, out);
 				}
 				else {
-					String term = params.get(1);
+					String term = params.get(1).toString();
 					listMeaningsLocal(term, out);
 				}
 			}
 			else if (cmd.equals("s") || cmd.equals("cat") || cmd.equals("show")) {
 				if (params.size()>2 && isGlobalThesaurus()) {
-					String id = params.get(1);
-					String lang = params.get(2);
-					showConcept(Integer.parseInt(id), lang, out);
+					int id = DatabaseUtil.asInt(params.get(1));
+					String lang = params.get(2).toString();
+					showConcept(id, lang, out);
 				}
 				else {
-					String id = params.get(1);
-					showConcept(Integer.parseInt(id), out);
+					int id = DatabaseUtil.asInt(params.get(1));
+					showConcept(id, out);
 				}
 			}
 			else if (cmd.equals("e") || cmd.equals("env") || cmd.equals("environment")) {
 				if (params.size()>2 ) {
-					String id = params.get(1);
-					String min = params.get(2);
-					showEnvironment(Integer.parseInt(id), Double.parseDouble(min), out);
+					int id = DatabaseUtil.asInt(params.get(1));
+					String min = params.get(2).toString();
+					showEnvironment(id, Double.parseDouble(min), out);
 				}
 				else {
-					String id = params.get(1);
-					showEnvironment(Integer.parseInt(id), 0, out);
+					int id = DatabaseUtil.asInt(params.get(1));
+					showEnvironment(id, 0, out);
 				}
 			}
 			else if (cmd.equals("f") || cmd.equals("feat") || cmd.equals("features")) {
-					String id = params.get(1);
-					showFeatureVector(Integer.parseInt(id), out);
+				int id = DatabaseUtil.asInt(params.get(1));
+					showFeatureVector(id, out);
 			}
 			else if (cmd.equals("d") || cmd.equals("dis") || cmd.equals("disambig")  || cmd.equals("disambiguate")) {
-				List<String> terms = params.subList(1,params.size());
+				List<String> terms = new ArrayList<String>(params.size()-1);
+				for (Object t: params.subList(1,params.size())) {
+					terms.add(t.toString());
+				}
+				
 				showDisambiguation(terms, out);
 		}
 			else if (cmd.equals("ls") || cmd.equals("list")) {
@@ -406,12 +412,16 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}
 
 	protected Disambiguator getDisambiguator() throws PersistenceException {
-		if (disambiguator==null) disambiguator = 
-			new SlidingCoherenceDisambiguator<Integer>(
-					new StoredMeaningFetcher(getLocalConceptStore()), 
-					new StoredFeatureFetcher<LocalConcept, Integer>(getFeatureStore()),
-					true
-					);
+		if (disambiguator==null) {
+			StoredMeaningFetcher meaningFetcher = new StoredMeaningFetcher(getLocalConceptStore());
+			StoredFeatureFetcher<LocalConcept, Integer> featureFetcher = new StoredFeatureFetcher<LocalConcept, Integer>(getFeatureStore());
+			disambiguator = new SlidingCoherenceDisambiguator<Integer>( meaningFetcher, featureFetcher, true );
+			
+			LeveledOutput.Trace trace = new LeveledOutput.Trace(out); 
+			meaningFetcher.setTrace(trace);
+			featureFetcher.setTrace(trace);
+			disambiguator.setTrace(trace);
+		}
 		
 		return disambiguator;
 	}

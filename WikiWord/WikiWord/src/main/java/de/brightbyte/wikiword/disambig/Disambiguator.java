@@ -12,15 +12,13 @@ public interface Disambiguator {
 	public static class Result implements Comparable {
 		private Map<String, ? extends WikiWordConcept> meanings;
 		private double score;
-		private double coherence;
-		private double popularity;
+		private String description;
 		
-		public Result(Map<String, ? extends WikiWordConcept> meanings, double score, double coherence, double popularity) {
+		public Result(Map<String, ? extends WikiWordConcept> meanings, double score, String description) {
 			super();
 			this.meanings = meanings;
 			this.score = score;
-			this.coherence = coherence;
-			this.popularity = popularity;
+			this.description = description;
 		}
 		
 		public Map<String, ? extends WikiWordConcept> getMeanings() {
@@ -31,17 +29,13 @@ public interface Disambiguator {
 			return score;
 		}
 		
-		public double getCoherence() {
-			return coherence;
-		}
-		
-		public double getPopularity() {
-			return popularity;
+		public String getDescription() {
+			return description;
 		}
 		
 		@Override
 		public String toString() {
-			return "("+score+"|"+coherence+"&"+popularity+") "+meanings;
+			return "("+score+"|"+description+") "+meanings;
 		}
 	
 		public int compareTo(Object o) {
