@@ -276,13 +276,13 @@ class ExtTransliterator  {
 		$from = self::forTransliteration( $from, $flags | self::IGNORE_ENDINGS );
 
 		if ( !$noprefix ) {
-			$from = preg_replace( '/^[\^][' . self::LETTER_END . '][' . self::WORD_START . ']/u', '', $from, 1, &$count );
+			$from = preg_replace( '/^[\^][' . self::LETTER_END . '][' . self::WORD_START . ']/u', '', $from, 1, $count );
 			if ( $count ) {
 				$prefix = self::WORD_START;
 			}
 		}
 		if ( !$nosuffix ) {
-			$from = preg_replace( '/[' . self::WORD_END . '][$][' . self::LETTER_END . ']$/u', '', $from, 1, &$count );
+			$from = preg_replace( '/[' . self::WORD_END . '][$][' . self::LETTER_END . ']$/u', '', $from, 1, $count );
 			if ( $count ) {
 				$suffix = self::WORD_END;
 			}
