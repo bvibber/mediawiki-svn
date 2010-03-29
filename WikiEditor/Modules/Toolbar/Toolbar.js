@@ -239,8 +239,8 @@ $j(document).ready( function() {
 					}
 				}
 			},
-			'list': {
-				labelMsg: 'wikieditor-toolbar-group-list',
+			'format': {
+				labelMsg: 'wikieditor-toolbar-group-format',
 				tools: {
 					'ulist': {
 						labelMsg: 'wikieditor-toolbar-tool-ulist',
