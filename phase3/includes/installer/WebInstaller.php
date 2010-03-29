@@ -170,7 +170,7 @@ class WebInstaller extends Installer {
 		}
 
 		# If it was posted, the page can request a continue to the next page
-		if ( $result === 'continue' ) {
+		if ( $result === 'continue' && !$this->output->headerDone() ) {
 			if ( $pageId !== false ) {
 				$this->happyPages[$pageId] = true;
 			}

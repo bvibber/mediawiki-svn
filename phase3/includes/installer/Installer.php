@@ -829,7 +829,6 @@ abstract class Installer {
 
 	public function installLocalsettings() {
 		$localSettings = new LocalSettings( $this );
-		$localSettings->writeLocalSettings();
-		return true;
+		return $localSettings->writeLocalSettings();
 	}
 }

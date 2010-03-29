@@ -34,6 +34,9 @@ class WebInstallerOutput {
 	}
 
 	function redirect( $url ) {
+		if ( $this->headerDone ) {
+			throw new MWException( __METHOD__ . ' called after sending headers' );
+		}
 		$this->redirectTarget = $url;
 	}
 
@@ -63,6 +66,10 @@ class WebInstallerOutput {
 			return 'ltr';
 		else
 			return 'rtl';
+	}
+
+	function headerDone() {
+		return $this->headerDone;
 	}
 
 	function outputHeader() {
