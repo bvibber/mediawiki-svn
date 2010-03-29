@@ -4293,8 +4293,6 @@ This program is distributed in the hope that it will be useful, but <strong>with
 
 You should have received <doclink href=Copying>a copy of the GNU General Public License</doclink> along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. or [http://www.gnu.org/copyleft/gpl.html read it online].',
 'config-sidebar'                  => "* [http://www.mediawiki.org MediaWiki home]
-* <doclink href=Readme>Readme</doclink>
-* <doclink href=ReleaseNotes>Release notes</doclink>
 * [http://www.mediawiki.org/wiki/Help:Contents User's Guide]
 * [http://www.mediawiki.org/wiki/Manual:Contents Administrator's Guide]
 * [http://www.mediawiki.org/wiki/Manual:FAQ FAQ]",
