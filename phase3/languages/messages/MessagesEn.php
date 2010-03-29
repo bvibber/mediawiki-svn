@@ -4447,7 +4447,7 @@ are highly encouraged to enable this, and small sites will see benefits as well.
 commas and specify the port to be used (eg: 1.2.3.4:56, 7.8.9.10:11)',
 
 'config-extensions' => 'Extensions',
-'config-extensions-help' => "The following extensions were automatically detected in your extensions directory.\n
+'config-extensions-help' => "The extensions listed above were automatically detected in your <tt>./extensions</tt> directory.\n
 They may require additional configuration, but you can enable them now",
 
 'config-install-step-done' => 'done',
