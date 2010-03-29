@@ -46,6 +46,7 @@ $messages['ar'] = array(
 	'wikieditor' => 'واجعة تعديل نص ويكي متقدمة',
 	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من العناصر الموفرة للخصائص',
 	'wikieditor-wikitext-tab' => 'نص ويكي',
+	'wikieditor-loading' => 'يُحمّل',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -456,8 +457,8 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'wikieditor' => 'Interface avançada de edição de wikitexto',
-	'wikieditor-desc' => 'Fornece uma interface extensível de edição de wikitexto e vários módulos funcionais',
+	'wikieditor' => 'Interface avançada de edição de texto wiki',
+	'wikieditor-desc' => 'Fornece uma interface extensível de edição de texto wiki e vários módulos funcionais',
 	'wikieditor-wikitext-tab' => 'Texto Wiki',
 	'wikieditor-loading' => 'A carregar',
 );

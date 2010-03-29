@@ -27,9 +27,13 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكي المعتمد على النماذج',
+	'wikieditor-template-editor-dialog-title' => 'عدّل القالب',
+	'wikieditor-template-editor-dialog-submit' => 'حدّث',
+	'wikieditor-template-editor-dialog-cancel' => 'ألغِ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -184,6 +188,9 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'wikieditor-template-editor-preference' => 'Ota käyttöön wikimallineiden lomakepohjainen muokkaus',
+	'wikieditor-template-editor-dialog-title' => 'Muokkaa mallinetta',
+	'wikieditor-template-editor-dialog-submit' => 'Päivitä',
+	'wikieditor-template-editor-dialog-cancel' => 'Peruuta',
 );
 
 /** French (Français)
@@ -404,6 +411,9 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
+	'wikieditor-template-editor-dialog-title' => 'Editar predefinição',
+	'wikieditor-template-editor-dialog-submit' => 'Actualizar',
+	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -497,11 +507,13 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Prima klasy4na
+ * @author Test
  */
 $messages['uk'] = array(
 	'wikieditor-template-editor-preference' => 'Увімкнути редагування шаблонів за допомогою форм',
 	'wikieditor-template-editor-dialog-title' => 'Редагувати шаблон',
 	'wikieditor-template-editor-dialog-submit' => 'Оновити',
+	'wikieditor-template-editor-dialog-cancel' => 'Скасувати',
 );
 
 /** Vèneto (Vèneto)

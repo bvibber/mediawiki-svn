@@ -42,6 +42,8 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'usabilityinitiative' => 'مبادرة الاستخدامية',
 	'usabilityinitiative-desc' => 'مزايا طورتها مبادرة استخدامية ويكيبيديا (Wikipedia Usability Initiative) لتحسين استخدامية ميدياويكي.',
+	'prefs-beta' => 'مزايا بيتا',
+	'prefs-labs' => 'مزايا مُختَبرية',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -190,6 +192,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'usabilityinitiative' => 'Iniciato pri Uzebleco',
 	'usabilityinitiative-desc' => 'Funkcioj disvolvitaj de la Uzebleca Iniciato de Vikipedio por plibonigi la uzeblecon de MediaWiki',
+	'prefs-beta' => 'Ecoj de Beta',
+	'prefs-labs' => 'Ecoj el Laboratorio',
 );
 
 /** Spanish (Español)
@@ -210,6 +214,8 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'usabilityinitiative' => 'Kasutushõlpsuse algatus',
 	'usabilityinitiative-desc' => 'Vikipeedia kasutushõlpsuse algatuse välja töötatud omadused, mis peaks täiustama MediaWiki kasutatavust.',
+	'prefs-beta' => 'Beetafunktsioonid',
+	'prefs-labs' => 'Katsefunktsioonid',
 );
 
 /** Basque (Euskara)
@@ -305,6 +311,8 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => 'A Wikipedia Usability Initiative által kifejlesztett funkciók a MediaWiki használhatóságának javítására.',
+	'prefs-beta' => 'Béta funkciók',
+	'prefs-labs' => 'Kísérleti funkciók',
 );
 
 /** Armenian (Հայերեն)
@@ -510,6 +518,8 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Iniciativa de Usabilidade da Wikipédia, para melhorar a usabilidade do MediaWiki',
+	'prefs-beta' => 'Funcionalidades beta',
+	'prefs-labs' => 'Funcionalidades dos laboratórios',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -1716,7 +1716,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'prefstats' => 'Estatísticas de preferências',
-	'prefstats-desc' => 'Monitorize estatísticas sobre quantos utilizadores têm certas preferências ativadas',
+	'prefstats-desc' => 'Monitorize estatísticas sobre quantos utilizadores têm certas preferências activadas',
 	'prefstats-title' => 'Estatísticas de preferências',
 	'prefstats-list-intro' => 'Neste momento estão a ser monitorizadas as seguintes preferências.
 Clique numa delas para ver as estatísticas dessa preferência.',

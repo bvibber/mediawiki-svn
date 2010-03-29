@@ -333,8 +333,10 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'wikieditor-publish-preference' => 'Kasuta astmelist avaldamist',
 	'wikieditor-publish-button-publish' => 'Avalda',
 	'wikieditor-publish-button-cancel' => 'Loobu',
+	'wikieditor-publish-dialog-title' => '{{GRAMMAR:inessive|{{SITENAME}}}} avaldamine',
 	'wikieditor-publish-dialog-summary' => 'Redaktsiooni kokkuvõte (kirjelda lühidalt tehtud muudatusi):',
 	'wikieditor-publish-dialog-minor' => 'Pisimuudatus',
 	'wikieditor-publish-dialog-watch' => 'Jälgi seda lehekülge',
@@ -758,7 +760,7 @@ $messages['pt'] = array(
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar na {{SITENAME}}',
-	'wikieditor-publish-dialog-summary' => 'Sumário de edição (breve descrição das suas alterações):',
+	'wikieditor-publish-dialog-summary' => 'Resumo de edição (breve descrição das suas alterações):',
 	'wikieditor-publish-dialog-minor' => 'Edição menor',
 	'wikieditor-publish-dialog-watch' => 'Vigiar esta página',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
