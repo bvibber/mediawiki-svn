@@ -100,11 +100,11 @@ class SpecialStory extends IncludableSpecialPage {
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						global $wgParser;
 						
-						$wgOut->addWikiMsg(
-							$wgParser->recursiveTagParse(
+						$wgOut->addWikiMsgArray(
+							//$wgParser->recursiveTagParse(
 								'storyboard-canedit',
 								$this->getTitle()->getLocalURL( 'action=edit' )
-							)
+							//)
 						);
 					}
 				}

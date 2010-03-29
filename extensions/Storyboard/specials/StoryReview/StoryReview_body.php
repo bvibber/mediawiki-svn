@@ -101,19 +101,21 @@ EOT
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );
 		
-		// TODO: htmlspecialchars the messages?
-		
 		$publishAction = $story->story_is_published ? 'unpublish' : 'publish';
 		// Uses storyboard-unpublish or storyboard-publish
-		$publishMsg = wfMsg( "storyboard-$publishAction" );
+		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );
 		
 		$imageAction = $story->story_image_hidden ? 'unhideimage' : 'hideimage';
 		// Uses storyboard-unhideimage or storyboard-hideimage
-		$imageMsg = wfMsg( "storyboard-$imageAction" );
+		$imageMsg = htmlspecialchars(  wfMsg( "storyboard-$imageAction" ) );
 		
-		$editMsg = wfMsg( 'edit' );
-		$hideMsg = wfMsg( 'hide' );
-		$deleteImageMsg = wfMsg( 'storyboard-deleteimage' );
+		$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
+		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );
+		$deleteImageMsg = htmlspecialchars(  wfMsg( 'storyboard-deleteimage' ) );
+		
+		// TODO: add some returnto feature here
+		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit');
+		$editUrl = Xml::escapeJsString( $editUrl );
 		
 		return <<<EOT
 		<table width="100%" border="1" id="story_$story->story_id">
@@ -129,7 +131,7 @@ EOT
 			<tr>
 				<td align="center" height="35">
 					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$publishAction' )">$publishMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="">$editMsg</button>&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="window.location='$editUrl'">$editMsg</button>&nbsp;&nbsp;&nbsp;
 					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>&nbsp;&nbsp;&nbsp;
 					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$imageAction' )">$imageMsg</button>&nbsp;&nbsp;&nbsp;
 					<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>

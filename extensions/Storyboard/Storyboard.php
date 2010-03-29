@@ -98,6 +98,7 @@ function efStoryboardParserFirstCallInit( &$parser ) {
 }
 
 function efStoryboardAddStoryEditAction( &$content_actions ) {
+	// TODO: currently not having any affect on Special:Story for some reason
 	global $wgRequest, $wgRequest, $wgTitle;
 	
 	$action = $wgRequest->getText( 'action' );
