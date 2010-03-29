@@ -106,11 +106,11 @@ abstract class Installer {
 	 */
 	var $envChecks = array( 
 		'envLatestVersion',
-		'envCheckDB', 
-		'envCheckRegisterGlobals', 
-		'envCheckMagicQuotes', 
+		'envCheckDB',
+		'envCheckRegisterGlobals',
+		'envCheckMagicQuotes',
 		'envCheckMagicSybase',
-		'envCheckMbstring', 
+		'envCheckMbstring',
 		'envCheckZE1',
 		'envCheckSafeMode',
 		'envCheckXML',
@@ -120,6 +120,7 @@ abstract class Installer {
 		'envCheckDiff3',
 		'envCheckGraphics',
 		'envCheckPath',
+		'envCheckWriteableDir',
 		'envCheckExtension',
 		'envCheckShellLocale',
 	);
@@ -146,7 +147,7 @@ abstract class Installer {
 	/**
 	 * User rights profiles
 	 */
-	var $rightsProfiles = array(	
+	var $rightsProfiles = array(
 		'wiki' => array(),
 		'no-anon' => array(
 			'*' => array( 'edit' => false )
@@ -603,6 +604,15 @@ abstract class Installer {
 		$uri = preg_replace( '{^(.*)/config.*$}', '$1', $path );
 		$this->setVar( 'wgScriptPath', $uri );
 		$this->showMessage( 'config-uri', $uri );
+	}
+
+	/** Environment check for writable config/ directory */
+	function envCheckWriteableDir() {
+		$configDir = $this->getVar( 'IP' ) . '/config';
+		if( !is_writeable( $configDir ) ) {
+			$this->showMessage( 'config-dir-not-writable', $configDir );
+			return false;
+		}
 	}
 
 	/** Environment check for setting the preferred PHP file extension */
