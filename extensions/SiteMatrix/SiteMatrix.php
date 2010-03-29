@@ -13,6 +13,7 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SiteMatrix',
+	'author'         => array( 'Tim Starling', 'Brion Vibber', 'Victor Vasiliev', 'Alexandre Emsenhuber' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SiteMatrix',
 	'descriptionmsg' => 'sitematrix-desc',
 );
