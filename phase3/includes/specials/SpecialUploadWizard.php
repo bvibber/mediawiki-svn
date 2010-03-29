@@ -110,7 +110,7 @@ class SpecialUploadWizard extends SpecialPage {
 			'wgFileExtensions' => $wgFileExtensions,
 
 			// our edit token
-			'wgEditToken' => $wgUser->editToken(),
+			'wgEditToken' => $wgUser->editToken()
 
 			// in the future, we ought to be telling JS land other things,
 			// like: requirements for publication, acceptable licenses, etc.
@@ -118,42 +118,15 @@ class SpecialUploadWizard extends SpecialPage {
 			) )
 		);
 
-		$wgOut->addScript( $scriptVars );
 
-		$initScript = <<<EOD
-/*
- * This script is run on [[Special:UploadWizard]].
- * Creates an interface for uploading files in multiple steps, hence "wizard"
- */
+//
+//		$initScript = <<<EOD
+//EOD;
+//		$wgOut->addScript( Html::inlineScript( $initScript ) );
+		// not sure why -- can we even load libraries with an included script, or does that cause things to be out of order?
+		global $wgScriptPath;
+		$wgOut->addScriptFile( $wgScriptPath . "/js/specialUploadWizardPage.js" );
 
-mw.ready( function() {
-	mw.load( 'UploadWizard.UploadWizardTest', function () {
-		
-		mw.setConfig( 'debug', true ); 
-
-		mw.setDefaultConfig( 'uploadHandlerClass', null );
-		mw.setConfig( 'userName', wgUserName ); 
-		mw.setConfig( 'userLanguage', wgUserLanguage );
-		mw.setConfig( 'fileExtensions', wgFileExtensions );
-		mw.setConfig( 'token', wgEditToken );
-		mw.setConfig( 'thumbnailWidth', 220 ); // new standard size
-
-		// not for use with all wikis. 
-		// The ISO 639 code for the language tagalog is "tl".
-		// Normally we name templates for languages by the ISO 639 code.
-		// Commons already had a template called 'tl', though.
-		// so, this workaround will cause tagalog descriptions to be saved with this template instead.
-		mw.setConfig( 'languageTemplateFixups', { tl: 'tgl' } );
-
-		var uploadWizard = new mw.UploadWizard();
-		uploadWizard.createInterface( '#upload-wizard' );
-	
-	} );
-} );
-
-EOD;
-		$wgOut->addScript( Html::inlineScript( $initScript ) );
-		
 
 		// XXX unlike other vars this is specific to the file being uploaded -- re-upload context, for instance
 		// Recorded here because we may probably need to
