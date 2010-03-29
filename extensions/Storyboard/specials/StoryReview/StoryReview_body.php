@@ -24,7 +24,7 @@ class SpecialStoryReview extends SpecialPage {
 		
 		global $wgUser, $wgOut;
 		
-		$wgOut->setPageTitle( wfMsg( 'storyboard-storyreview' ) );
+		$wgOut->setPageTitle( wfMsg( 'storyreview' ) );
 		
 		if ( $this->userCanExecute( $wgUser ) ) {
 			// If the user has the storyreview permission and is not blocked, show the regular output.

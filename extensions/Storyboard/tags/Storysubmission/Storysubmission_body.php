@@ -152,16 +152,17 @@ EOT
 	private static function doSubmissionAndGetResult() {
 		global $wgRequest, $wgUser;
 		
+		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
-		
-		// TODO: some sort of validation?
 
+		$title = $wgRequest->getText( 'storytitle' );
+		
 		$story = array(
 			'story_author_name' => $wgRequest->getText( 'name' ),
 			'story_author_location' => $wgRequest->getText( 'location' ),
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
 			'story_author_contact' => $wgRequest->getText( 'contact' ),
-			'story_title' => $wgRequest->getText( 'storytitle' ),
+			'story_title' => $title,
 			'story_text' => $wgRequest->getText( 'storytext' ),
 			'story_created' => $dbw->timestamp( time() ),
 			'story_modified' => $dbw->timestamp( time() ),
@@ -174,7 +175,7 @@ EOT
 		
 		$dbw->insert( 'storyboard', $story );
 		
-		$responseHtml = ''; // TODO: create html response
+		$responseHtml = wfMsgExt( 'storyboard-createdsucessfully', htmlspecialchars( $title ) ); // TODO: create html response
 
 		return $responseHtml;
 	}

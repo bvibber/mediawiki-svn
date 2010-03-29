@@ -17,10 +17,12 @@ $messages['en'] = array(
 	// General
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
-
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
+	'specialpages-group-contribution' => 'Contribution',
 
 	// Special:Story
+	'story' => 'Story',
+	'storyboard-viewstories' => 'View stories',
 	'storyboard-nosuchstory' => 'The story you requested does not exist. It might have been removed.',
 	'storyboard-unpublished' => 'The story you requested has not been published yet.',
 	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
@@ -28,7 +30,7 @@ $messages['en'] = array(
 	'storyboard-canedit' => 'You can [$1 edit] and publish this story.',
 
 	// Story review
-	'storyboard-storyreview' => 'Story review',
+	'storyreview' => 'Story review',
 	'storyboard-publish' => 'Publish',
 	'storyboard-unpublish' => 'Unpublish',
 	'storyboard-reviewed' => 'Reviewed',
@@ -49,7 +51,8 @@ $messages['en'] = array(
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',
 	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} to long!',
 	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
-	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.'
+	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
+	'storyboard-createdsucessfully' => 'Your story titled "$1" has been submitted sucesfully. It will be publicly accessible once it has been reviewed. View my story now.',
 );
 
 /** Afrikaans (Afrikaans)

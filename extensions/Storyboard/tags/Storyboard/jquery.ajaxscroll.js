@@ -111,7 +111,7 @@
 			};
 			
 			function vEnd(){
-				if(ele.scrollTop>0&&ele.scrollHeight-ele.scrollTop<opt.eBound){
+				if(ele.scrollTop > 0 && ele.scrollHeight-ele.scrollTop < opt.eBound){
 					offset=batch($sp,offset,opt);
 					return 1;
 				}
@@ -125,7 +125,7 @@
 			};
 			
 			function monEnd(){
-				if(offset<opt.maxOffset){
+				if(offset < opt.maxOffset){
 					setTimeout(monEnd,fnEnd());
 				}
 			}

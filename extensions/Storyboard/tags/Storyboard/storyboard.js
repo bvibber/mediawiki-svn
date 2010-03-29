@@ -9,8 +9,8 @@
 	$( document ).ready( function() {
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
-			batchSize: 3,
-			batchNum: 2
+			batchSize: 4,
+			batchNum: 1
 		} );
 	} );
 	
@@ -20,11 +20,11 @@
 				'action': 'query',
 				'list': 'stories',
 				'stcontinue': $storyboard.attr( 'offset' ),
-				'stlimit': 5,
+				'stlimit': 4,
 				'format': 'json'
 			},
 			function( data ) {
-				var $div = $( "<div />" );
+				var html = '';
 				for ( var i in data.query.stories ) {
 					var story = data.query.stories[i];
 					var $storyBody = $( "<div />" ).addClass( "storyboard-box" );
@@ -82,9 +82,9 @@
 					
 					// TODO: add delete button that hides the story from the storyboard (=unpublish+hide?)
 					
-					$div.append( $storyBody );
+					html += $storyBody;
 				}
-				$storyboard.html( $div );
+				$storyboard.html( html );
 			}
 		);
 	}

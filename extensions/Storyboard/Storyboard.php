@@ -59,6 +59,8 @@ $wgAPIModules['storyreview'] = 'ApiStoryReview';
 // Hooks
 $wgHooks['ParserFirstCallInit'][] = 'efStoryboardParserFirstCallInit';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
+$wgHooks['SkinTemplateContentActions'][] = 'efStoryboardAddStoryEditAction';
+
 
 /**
  * The 'storyboard' permission key can be given out to users
@@ -94,3 +96,20 @@ function efStoryboardParserFirstCallInit( &$parser ) {
 	$parser->setHook( 'storysubmission', array( 'TagStorysubmission', 'render' ) );
 	return true;
 }
+
+function efStoryboardAddStoryEditAction( &$content_actions ) {
+	global $wgRequest, $wgRequest, $wgTitle;
+	
+	$action = $wgRequest->getText( 'action' );
+
+	if ( $wgTitle->equals( SpecialPage::getTitleFor( 'story' ) ) ) {
+		$content_actions['edit'] = array(
+			'class' => $action == 'edit' ? 'selected' : false,
+			'text' => wfMsg( 'edit' ),
+			'href' => $wgTitle->getLocalUrl( 'action=edit' )
+		);
+	}
+
+	return true;
+}
+

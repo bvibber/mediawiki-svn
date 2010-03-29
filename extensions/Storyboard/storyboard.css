@@ -11,15 +11,15 @@
  * Css for stories
  */
 .story {
-	margin-left: 15px;
-	margin-top: 5px;
+	margin: 5px 10px 0px 0px;
 	float: left;
 	overflow: hidden;	
 }
 .story-title {
 	font: 16px "Lucida Sans", Verdana;
+	margin-left: 15px;
+	margin-top: 5px;	
 	font-weight: bold;
-	float: left;
 	overflow: hidden;	
 }
 .story-image {

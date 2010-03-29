@@ -21,11 +21,9 @@ class SpecialStory extends IncludableSpecialPage {
 
 	public function execute( $title ) {
 		wfProfileIn( __METHOD__ );
-		
 		global $wgOut, $wgRequest, $wgUser;
 		
 		$title = str_replace( '_', ' ', $title );
-		$wgOut->setPageTitle( $title );
 		
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			if ( $wgUser->isAllowed( 'storyreview' ) ) {
@@ -36,8 +34,10 @@ class SpecialStory extends IncludableSpecialPage {
 		}
 		
 		if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
+			$wgOut->setPageTitle( $title );
 			$this->queryAndShowStory( $title );
 		} else {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-viewstories' ) );
 			$wgOut->addWikiMsg( 'storyboard-nostorytitle' );	
 		}
 		
@@ -98,9 +98,13 @@ class SpecialStory extends IncludableSpecialPage {
 					$wgOut->addWikiMsg( 'storyboard-unpublished' );
 					
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
-						$wgOut->addWikiMsg( // TODO: find out how to make the link working
-							'storyboard-canedit',
-							$this->getTitle()->getLocalURL( 'action=edit' )
+						global $wgParser;
+						
+						$wgOut->addWikiMsg(
+							$wgParser->recursiveTagParse(
+								'storyboard-canedit',
+								$this->getTitle()->getLocalURL( 'action=edit' )
+							)
 						);
 					}
 				}
@@ -129,11 +133,8 @@ class SpecialStory extends IncludableSpecialPage {
 		$text = htmlspecialchars( $story->story_text );		
 		
 		$wgOut->addHTML( <<<EOT
-			<div class="story">
-				<img src="$imageSrc" class="story-image">
-				<div class="story-title">$title</div><br />
-				$text
-			</div>		
+			<img src="$imageSrc" class="story-image">
+			$text	
 EOT
 		);
 	}
