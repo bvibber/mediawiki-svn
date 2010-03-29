@@ -11,6 +11,10 @@ function wfInstallerConfig() {
 	$GLOBALS['wgShowExceptionDetails'] = true;
 	// Don't break forms
 	$GLOBALS['wgExternalLinkTarget'] = '_blank';
+
+	// Extended debugging. Maybe disable before release?
+	$GLOBALS['wgShowSQLErrors'] = true;
+	$GLOBALS['wgShowDBErrorBacktrace'] = true;
 }
 
 chdir( ".." );

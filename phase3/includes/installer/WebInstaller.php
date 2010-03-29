@@ -77,10 +77,6 @@ class WebInstaller extends Installer {
 	 * @return array New session array
 	 */
 	function execute( $session ) {
-		//@todo decide if we really need this error handling
-		global $wgShowSQLErrors, $wgShowExceptionDetails, $wgShowDBErrorBacktrace;
-		$wgShowSQLErrors = $wgShowExceptionDetails = $wgShowDBErrorBacktrace = true;
-
 		$this->session = $session;
 		if ( isset( $session['settings'] ) ) {
 			$this->settings = $session['settings'] + $this->settings;
