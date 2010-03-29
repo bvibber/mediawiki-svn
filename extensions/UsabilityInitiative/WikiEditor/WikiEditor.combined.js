@@ -73,6 +73,7 @@ $j(document).ready( function() {
 					'bold': {
 						labelMsg: 'wikieditor-toolbar-tool-bold',
 						type: 'button',
+						offset: [2, -142],
 						icon: {
 							'default': 'format-bold.png',
 							'en': 'format-bold-B.png',
@@ -100,6 +101,7 @@ $j(document).ready( function() {
 						id: 'italic',
 						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
+						offset: [2, -862],
 						icon: {
 							'default': 'format-italic.png',
 							'en': 'format-italic-I.png',
@@ -129,6 +131,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-xlink',
 						type: 'button',
 						icon: 'insert-xlink.png',
+						offset: [-70, 2],
 						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
@@ -143,6 +146,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-ilink',
 						type: 'button',
 						icon: 'insert-ilink.png',
+						offset: [2, -1582],
 						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
@@ -157,6 +161,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-link',
 						type: 'button',
 						icon: 'insert-link.png',
+						offset: [2, -1654],
 						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
@@ -167,6 +172,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-file',
 						type: 'button',
 						icon: 'insert-file.png',
+						offset: [2, -1438],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -181,6 +187,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-reference',
 						type: 'button',
 						icon: 'insert-reference.png',
+						offset: [2, -1798],
 						filters: [ 'body.ns-subject', '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
@@ -191,6 +198,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-reference',
 						filters: [ 'body.ns-subject', '#wpTextbox1:not(.toolbar-dialogs)' ],
 						type: 'button',
+						offset: [2, -1798],
 						icon: 'insert-reference.png',
 						action: {
 							type: 'encapsulate',
@@ -205,6 +213,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-signature',
 						filters: [ 'body:not(.ns-0)' ],
 						type: 'button',
+						offset: [2, -1872],
 						icon: 'insert-signature.png',
 						action: {
 							type: 'encapsulate',
@@ -288,13 +297,14 @@ $j(document).ready( function() {
 					}
 				}
 			},
-			'list': {
-				labelMsg: 'wikieditor-toolbar-group-list',
+			'format': {
+				labelMsg: 'wikieditor-toolbar-group-format',
 				tools: {
 					'ulist': {
 						labelMsg: 'wikieditor-toolbar-tool-ulist',
 						type: 'button',
 						icon: 'format-ulist.png',
+						offset: [2, -1366],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -309,6 +319,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-olist',
 						type: 'button',
 						icon: 'format-olist.png',
+						offset: [2, -1078],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -323,6 +334,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-indent',
 						type: 'button',
 						icon: 'format-indent.png',
+						offset: [2, -646],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -338,6 +350,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-newline',
 						type: 'button',
 						icon: 'insert-newline.png',
+						offset: [2, -1726],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -353,6 +366,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-big',
 						type: 'button',
 						icon: 'format-big.png',
+						offset: [2, 2],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -366,6 +380,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-small',
 						type: 'button',
 						icon: 'format-small.png',
+						offset: [2, -1150],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -379,6 +394,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-superscript',
 						type: 'button',
 						icon: 'format-superscript.png',
+						offset: [2, -1294],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -392,6 +408,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-subscript',
 						type: 'button',
 						icon: 'format-subscript.png',
+						offset: [2, -1222],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -410,6 +427,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-gallery',
 						type: 'button',
 						icon: 'insert-gallery.png',
+						offset: [2, -1510],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -424,6 +442,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
+						offset: [2, -1942],
 						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
@@ -434,6 +453,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
+						offset: [2, -1942],
 						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
@@ -453,6 +473,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-replace',
 						type: 'button',
 						icon: 'search-replace.png',
+						offset: [-70, -214],
 						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',

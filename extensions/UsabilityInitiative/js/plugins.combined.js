@@ -11123,15 +11123,26 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				var $button = $( '<img />' ).attr( {
-					'src' : src,
-					'width' : 22,
-					'height' : 22,
-					'alt' : label,
-					'title' : label,
-					'rel' : id,
-					'class' : 'tool tool-button'
-				} );
+				var $button;
+				if ( 'offset' in tool ) {
+					// TODO: Add support for language specific offsets
+					$button = $( '<a href="#" />' )
+						.text( label )
+						.click( function() { return false; } )
+						.addClass( 'wikiEditor-toolbar-spritedButton' )
+						.css( 'backgroundPosition', tool.offset[0] + 'px ' + tool.offset[1] + 'px' );
+				} else {
+					$button = $( '<img />' )
+						.attr( {
+							'src' : src,
+							'width' : 22,
+							'height' : 22,
+							'alt' : label,
+							'title' : label,
+							'rel' : id,
+							'class' : 'tool tool-button'
+						} );
+				}
 				if ( 'action' in tool ) {
 					$button
 						.data( 'action', tool.action )

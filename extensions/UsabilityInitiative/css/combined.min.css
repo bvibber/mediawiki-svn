@@ -821,6 +821,15 @@ border-right:1px solid #DDDDDD;
 body.rtl .wikiEditor-ui-toolbar .group-insert{
 border-left:none;
 }
+.wikiEditor-toolbar-spritedButton{
+background:url(../images/wikiEditor/toolbar/button-sprite.png) 0 0 no-repeat;
+display:block;
+float:left;
+height:22px;
+text-indent:-9999px;
+width:22px;
+padding:2px;
+}
 .wikiEditor-ui-toolbar .tabs{
 list-style:none;
 margin:3px;
