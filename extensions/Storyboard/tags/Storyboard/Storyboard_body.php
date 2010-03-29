@@ -17,13 +17,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class TagStoryboard {
 
 	public static function render( $input, $args, $parser, $frame ) {
-		global $wgOut, $wgJsMimeType, $wgScriptPath, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
+		global $wgOut, $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
-		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
-		$wgOut->includeJQuery();
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
-		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storyboard/jquery.ajaxscroll.js' );
-		$wgOut->addScriptFile( $egStoryboardScriptPath . '/tags/Storyboard/storyboard.js' );
+		$parser->getOutput()->addHeadItem(
+			<<<EOT
+			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
+			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
+			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/jquery.ajaxscroll.js?$wgStyleVersion"></script>
+			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion"></script
+EOT
+		);
 		
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStoryboardWidth );
 		$height = StoryboardUtils::getDimension( $args, 'height', $egStoryboardHeight );
