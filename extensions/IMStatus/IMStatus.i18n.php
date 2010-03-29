@@ -872,6 +872,13 @@ $messages['km'] = array(
 	'imstatus_yahoo_style' => 'រចនាប័ទ្ម​ប៊ូតុង, ពី $1 (ធំបំផុត) ទៅ $2 (តូចបំផុត), $3 និង $4 គឺ​សម្រាប់​សារជាសំឡេង​។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'imstatus_example' => 'ಉದಾಹರಣೆ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

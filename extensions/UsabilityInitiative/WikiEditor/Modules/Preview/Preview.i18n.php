@@ -232,7 +232,7 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'wikieditor-preview-tab' => 'Eelvaade',
 	'wikieditor-preview-changes-tab' => 'Muudatused',
-	'wikieditor-preview-loading' => 'Laadin...',
+	'wikieditor-preview-loading' => 'Laadimine...',
 );
 
 /** Basque (Euskara)

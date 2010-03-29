@@ -364,10 +364,17 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'lastuserlogin' => 'Última autenticação',
+	'lastuserlogin-desc' => 'Mostra a última vez que um utilizador se autenticou',
+	'lastuserlogin_userid' => 'Utilizador',
 	'lastuserlogin_username' => 'Nome real',
+	'lastuserlogin_useremail' => 'Correio electrónico',
+	'lastuserlogin_lastlogin' => 'Última autenticação',
 	'lastuserlogin_daysago' => 'Dias atrás',
+	'right-lastlogin' => 'Ver a última vez que um utilizador se autenticou',
 );
 
 /** Russian (Русский)

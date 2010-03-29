@@ -744,8 +744,8 @@ $messages['de'] = array(
 	'group-oversight' => 'Oversighter',
 	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Zuvor verborgene Version ansehen',
-	'right-hiderevision' => 'Versionen vor Administratoren verbergen',
+	'right-oversight' => 'Zuvor verborgene Version ansehen (mit Erweiterung „Oversight“)',
+	'right-hiderevision' => 'Versionen vor Administratoren verbergen (mit Erweiterung „Oversight“)',
 	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue' => 'Weiter',
 	'hiderevision-text' => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:
@@ -1230,8 +1230,8 @@ $messages['fr'] = array(
 	'group-oversight' => 'Masqueurs de modifications',
 	'group-oversight-member' => 'Masqueur de modifications',
 	'grouppage-oversight' => '{{ns:project}}:Masqueur de modifications',
-	'right-oversight' => 'Voir les versions cachées par oversight',
-	'right-hiderevision' => 'Masquer des révisions aux administrateurs',
+	'right-oversight' => "Voir les versions précédemment cachées avec l'extension « Oversight »",
+	'right-hiderevision' => "Masquer des révisions aux administrateurs avec l'extension « Oversight »",
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
 	'hiderevision-continue' => 'Continuer',
 	'hiderevision-text' => "Cette fonctionnalité doit être utilisée '''uniquement''' pour les cas suivants :
@@ -2227,7 +2227,7 @@ $messages['ko'] = array(
 	'oversight-offender' => '판 작성자:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -4238,7 +4238,7 @@ $messages['yi'] = array(
 	'oversight-oversighter' => 'אויפֿזעער:',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

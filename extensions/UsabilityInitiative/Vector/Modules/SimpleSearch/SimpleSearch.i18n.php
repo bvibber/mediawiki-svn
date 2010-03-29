@@ -118,6 +118,13 @@ $messages['cs'] = array(
 	'vector-simplesearch-containing' => 'obsahující…',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Kuvaly
+ */
+$messages['csb'] = array(
+	'vector-simplesearch-search' => 'Szëkba',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

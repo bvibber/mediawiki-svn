@@ -411,6 +411,17 @@ $messages['hsb'] = array(
 Móžeš [[Special:RefHelper|referencu manuelnje přidać]] abo [[Special:RefSearch|citat pytać, kotryž ma so přidać]].',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'refhelper-title' => 'Cím:',
+	'refhelper-pages' => 'Oldalszám:',
+	'refhelper-year' => 'Év:',
+	'refhelper-create' => 'Létrehozás',
+	'refhelper-search' => 'Keresés',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -662,6 +673,42 @@ $messages['ps'] = array(
 	'refhelper-year' => 'کال:',
 	'refhelper-create' => 'جوړول',
 	'refhelper-search' => 'پلټل',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'refhelper' => 'Assistente para referências',
+	'refsearch' => 'Pesquisa de referências',
+	'refhelper-desc' => 'Ajuda na criação de páginas para referências',
+	'refhelper-refsearch' => 'Pesquisa de referências',
+	'refhelper-refcreate_legend' => 'Criar referência nova',
+	'refhelper-refsearch_legend' => 'Pesquisar referências na PubMed',
+	'refhelper-refcreate_another' => 'Criar outra referência',
+	'refhelper-refcreate_autocomment' => 'Criação automatizada de páginas.',
+	'refhelper-refcreate_success' => 'A página [[$1]] não existia e foi criada.',
+	'refhelper-refcreate_failure' => 'A página [[$1]] já existe!',
+	'refhelper-label_workspace' => 'Área de trabalho (área para copiar e colar):',
+	'refhelper-label_authorforename' => 'Nome próprio do autor $1:',
+	'refhelper-label_authorsurname' => 'Sobrenome:',
+	'refhelper-title' => 'Título:',
+	'refhelper-journal' => 'Jornal:',
+	'refhelper-volume' => 'Volume:',
+	'refhelper-pages' => 'Páginas citadas:',
+	'refhelper-year' => 'Ano:',
+	'refhelper-refname' => 'Nome da referência:',
+	'refhelper-category' => 'Categoria $1:',
+	'refhelper-create' => 'Criar',
+	'refhelper-search' => 'Pesquisar',
+	'refhelper-toolbox_link_create' => 'Criar referência',
+	'refhelper-toolbox_link_search' => 'Criar referência a partir da pesquisa',
+	'refhelper-newarticle_nocitation' => 'Não existe nenhuma citação com este nome.',
+	'refhelper-newarticle_suggestions' => 'Se existir uma citação coincidente abaixo, pode criar esta página clicando o respectivo botão "Criar".
+
+<h2>Sugestões</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Infelizmente, não é possível sugerir quaisquer referências.
+Pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefSearch|pesquisar a citação a adicionar]].',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

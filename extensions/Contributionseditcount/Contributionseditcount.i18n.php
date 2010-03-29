@@ -349,6 +349,14 @@ $messages['km'] = array(
 	'contributionseditcount-desc' => 'បង្ហាញការរាប់កំណែប្រែនៅ[[Special:Contributions|ការរួមចំណែករបស់អ្នកប្រើប្រាស់]]',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'contributionseditcount' => 'ಈ ಸದಸ್ಯರು {{PLURAL:$1|ಒಂದು ಸಂಪಾದನೆಯನ್ನು|$1 ಸಂಪಾದನೆಗಳನ್ನು}} ಮಾಡಿದ್ದಾರೆ.',
+	'contributionseditcount-desc' => '[[Special:Contributions|ಸದಸ್ಯರ ಕಾಣಿಕೆಗಳ ಪುಟ]]ದಲ್ಲಿ ಸಂಪಾದನಾ ಸಂಖ್ಯೆಯನ್ನು ತೋರಿಸುತ್ತದೆ.',
+);
+
 /** Korean (한국어)
  * @author ITurtle
  */

@@ -117,6 +117,14 @@ $messages['hsb'] = array(
 	'nll-lastseparator' => '&#32;a&#32;',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'nll-desc' => 'Listák könnyű formázása természetes nyelveken',
+	'nll-lastseparator' => '&#32;és&#32;',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -162,6 +170,14 @@ $messages['no'] = array(
  */
 $messages['pms'] = array(
 	'nll-desc' => 'Formatassion bel fé ëd liste an lenghe naturaj',
+	'nll-lastseparator' => '&#32;e&#32;',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'nll-desc' => 'Formatação simples de listas em línguas naturais',
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 

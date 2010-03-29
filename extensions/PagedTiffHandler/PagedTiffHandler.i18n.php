@@ -242,6 +242,19 @@ $messages['hsb'] = array(
 	'tiff-file-info-size' => '(strona $5, $1 × $2 pikselow, wulkosć dataje: $3, MIME-typ: $4)',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'tiff_no_metadata' => 'Nem sikerült lekérni a TIFF metaadatait',
+	'tiff_page_error' => 'Az oldalszám a tartományon kívül esik',
+	'tiff_too_many_embed_files' => 'A kép túl sok beágyazott fájlt tartalmaz.',
+	'tiff_too_much_meta' => 'A metaadatok túl sok helyet foglalnak.',
+	'tiff_script_detected' => 'A feltöltött fájl parancsfájlokat tartalmaz.',
+	'tiff_bad_file' => 'A feltöltött fájl hibákat tartalmaz.',
+	'tiff-file-info-size' => '($5 oldal, $1 × $2 képpont, fájlméret: $3, MIME-típus: $4)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

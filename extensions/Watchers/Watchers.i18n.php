@@ -70,13 +70,13 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'watchers' => 'المراقبون',
-	'watchers-desc' => 'يعرض [[Special:Watchers|أي المستخدمين لديهم صفحة ما في قائمة مراقبتهم]]',
+	'watchers-desc' => 'يعرض [[Special:Watchers|المستخدمين الذين لديهم صفحة ما في قائمة مراقبتهم]]',
 	'watchers_link_title' => 'من يراقب هذه الصفحة؟',
 	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
 	'watchers_header' => '{{PLURAL:$2||المستخدم الذي يراقب|المستخدمان اللذان يراقبان|المستخدمون الذين يراقبون}} "[[:$1]]"',
 	'watchers_noone_watches' => 'لا أحد يراقب الصفحة [[:$1]].',
 	'watchers_x_or_more' => '{{PLURAL:$1|لا مستخدمون|مستخدم واحد أو أكثر لديه|مستخدمان أو أكثر لديهما|$1 مستخدمون أو أكثر لديهم|$1 مستخدمًا أو أكثر لديهم|$1 مستخدم أو أكثر لديهم}} صفحة [[:$2]] في قائمة {{PLURAL:$1|مراقبتهم|مراقبته|مراقبتهما|مراقبتهم}}.',
-	'watchers_less_than_x' => 'أقل من $1 {{PLURAL:$1|مستخدم|مستخدم}} لديهم هذه الصفحة في قائمة مراقبتهم.',
+	'watchers_less_than_x' => 'أقل من {{PLURAL:$1||مستخدم واحد|مستخدمين|$1 مستخدمين|$1 مستخدمًا|$1 مستخدم}} لديهم هذه الصفحة [[:$2]] في قائمة مراقبتهم.',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -494,6 +494,8 @@ $messages['hu'] = array(
 	'watchers_noone_watches' => 'Ezt a lapot nem figyeli senki.',
 	'watchers_x_or_more' => '{{PLURAL:$1|Egy|$1}} vagy több felhasználó figyelőlistáján szerepel a(z) [[:$2]] lap.',
 	'watchers_less_than_x' => 'Kevesebb, mint {{PLURAL:$1|Egy|$1}} szerkesztő figyeli ezt a lapot.',
+	'watchers-num' => 'A(z) [[:$2]] lap $1 felhasználó figyelőlistáján szerepel.',
+	'right-watchers-list' => '[[Special:Watchers|Azon felhasználók listázása, akik figyelnek egy megadott lapot]]',
 );
 
 /** Interlingua (Interlingua)

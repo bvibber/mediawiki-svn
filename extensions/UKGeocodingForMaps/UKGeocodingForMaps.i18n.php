@@ -90,6 +90,15 @@ $messages['hsb'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Jedne póstowe wodźenske čisło abo wjacore póstowe wodźenske čisła njedachu so geokodować a buchu na karće wuwostajene.',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'ukgeocoding_name' => 'Egyesült királysági geokódolás a térképekhez',
+	'ukgeocoding_desc' => 'Kiegészíti a térképeket a Google Térképek implementációval rendelkező display_uk_point elemzőfüggvénnyel',
+	'ukgeocoding_couldNotGeocode' => 'Egy vagy több irányítószám nem geokódolható, és ki lett hagyva a térképről.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -15,11 +15,23 @@ $messages['en'] = array(
 	'vector-collapsiblenav-preference' => 'Enable collapsible left navigation menu',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'vector-collapsiblenav-preference' => 'مكّن قائمة التصفح القابلة للطي التي على اليسار',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
+);
+
+/** German (Deutsch) */
+$messages['de'] = array(
+	'vector-collapsiblenav-preference' => 'Zusammenklappbares Navigationsmenü links aktivieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -78,6 +90,13 @@ $messages['hsb'] = array(
 	'vector-collapsiblenav-preference' => 'Fałdujomny lěwy nawigaciski meni zmóžnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'vector-collapsiblenav-preference' => 'Összecsukható bal oldali navigációs menü engedélyezése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -125,6 +144,13 @@ $messages['no'] = array(
  */
 $messages['pms'] = array(
 	'vector-collapsiblenav-preference' => 'Abìlita ël menu ëd navigassion snist stërmàbil',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'vector-collapsiblenav-preference' => 'Activar o menu de navegação esquerdo',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

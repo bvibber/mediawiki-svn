@@ -2259,6 +2259,7 @@ Siatz pacient.',
  */
 $messages['os'] = array(
 	'youtubeauthsub_title' => 'Сæргонд',
+	'youtubeauthsub_description' => 'Афыст',
 	'youtubeauthsub_password' => 'YouTube-æй пароль',
 	'youtubeauthsub_username' => 'YouTube-æй архайæджы ном',
 	'youtubeauthsub_category' => 'Категори',

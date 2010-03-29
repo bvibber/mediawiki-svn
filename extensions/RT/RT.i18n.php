@@ -353,6 +353,8 @@ A következőt próbáltad: '''$1'''",
 A következőt próbáltad: '''$1'''",
 	'rt-badstatus' => "Érvénytelen status (s) paraméter: standard mezőnek kell lennie (lásd a dokumentációt).
 A következőt próbáltad: '''$1'''",
+	'rt-badcfield' => "Érvénytelen egyedi mező argumentum: egyszerű szónak kell lennie (lásd a dokumentációt).
+A következőt próbáltad: '''$1'''",
 	'rt-badqueue' => "Érvénytelen queue (q) paraméter: egyszerű szónak kell lennie.
 A következőt próbáltad: '''$1'''",
 	'rt-badowner' => "Érvénytelen „owner (o)” argumentum: érvényes felhasználói névnek kell lennie.
@@ -588,6 +590,8 @@ Tentou: '''$1'''",
 	'rt-badorderby' => "Parâmetro ORDER BY (ob) inválido: deve ser um campo padrão (veja a documentação).
 Tentou: '''$1'''",
 	'rt-badstatus' => "Parâmetro status (s) inválido: deve ser um campo padrão (veja a documentação).
+Tentou: '''$1'''",
+	'rt-badcfield' => "Argumento inválido para o campo personalizado: tem de ser uma palavra simples (consulte a documentação).
 Tentou: '''$1'''",
 	'rt-badqueue' => "Parâmetro queue (q) inválido: deve ser uma palavra simples.
 Tentou: '''$1'''",

@@ -114,6 +114,14 @@ $messages['hsb'] = array(
 	'right-editalluserpages' => 'Wužiwarske strony wobdźěłać',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'userpageeditprotection-desc' => 'Szerkesztés korlátozása felhasználólapokon a tulajdonosra és engedélyezett szerkesztőkre',
+	'right-editalluserpages' => 'felhasználólapok szerkesztése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

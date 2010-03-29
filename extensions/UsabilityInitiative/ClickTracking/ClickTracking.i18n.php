@@ -578,8 +578,8 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'clicktracking' => 'Käytettävyyshankkeen klikkausten seuranta',
-	'clicktracking-desc' => 'Klikkausten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
+	'clicktracking' => 'Käytettävyyshankkeen napsautusten seuranta',
+	'clicktracking-desc' => 'Napsautusten seuranta, tarkoituksena seurata tapahtumia, jotka eivät aiheuta sivun uudelleenlataamista.',
 	'ct-title' => 'Käyttäjän napsautuksien yhteenlaskettu määrä',
 	'ct-event-name' => 'Tapahtuman nimi',
 	'ct-expert-header' => '”Asiantuntija”-napsautukset',
@@ -1325,7 +1325,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'clicktracking' => 'Monitorização de cliques da Iniciativa de Usabilidade',
-	'clicktracking-desc' => 'Monitorização de cliques para seguir eventos que não causam refrescamentos de página',
+	'clicktracking-desc' => 'Monitorização de cliques para seguir eventos que não causam refrescamento da página',
 	'ct-title' => 'Cliques de utilizador agregados',
 	'ct-event-name' => 'Nome do evento',
 	'ct-expert-header' => 'Cliques de "Perito"',
