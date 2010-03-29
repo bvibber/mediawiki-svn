@@ -16,14 +16,14 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 76 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 77 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 80 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 81 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 80 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 81 ),
 		),
 	);
 	static $messages = array(
@@ -213,6 +213,8 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-tool-olist-example',
 				'wikieditor-toolbar-tool-indent',
 				'wikieditor-toolbar-tool-indent-example',
+				'wikieditor-toolbar-tool-nowiki-example',
+				'wikieditor-toolbar-tool-redirect-example',
 				'wikieditor-toolbar-tool-big',
 				'wikieditor-toolbar-tool-big-example',
 				'wikieditor-toolbar-tool-small',

@@ -368,6 +368,21 @@ $j(document).ready( function() {
 							}
 						}
 					},
+					'nowiki': {
+						labelMsg: 'wikieditor-toolbar-tool-nowiki',
+						type: 'button',
+						icon: 'insert-nowiki.png',
+						offset: [-70, -70],
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<nowiki>",
+								periMsg: 'wikieditor-toolbar-tool-nowiki-example',
+								post: "</nowiki>",
+								ownline: false
+							}
+						}
+					},
 					'newline': {
 						labelMsg: 'wikieditor-toolbar-tool-newline',
 						type: 'button',
@@ -483,6 +498,21 @@ $j(document).ready( function() {
 								pre: "{| class=\"wikitable\" border=\"1\"\n|",
 								periMsg: 'wikieditor-toolbar-tool-table-example-old',
 								post: "\n|}",
+								ownline: true
+							}
+						}
+					},
+					'redirect': {
+						labelMsg: 'wikieditor-toolbar-tool-redirect',
+						type: 'button',
+						icon: 'insert-redirect.png',
+						offset: [-70, -142],
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "#REDIRECT [[",
+								periMsg: 'wikieditor-toolbar-tool-redirect-example',
+								post: "]]",
 								ownline: true
 							}
 						}
