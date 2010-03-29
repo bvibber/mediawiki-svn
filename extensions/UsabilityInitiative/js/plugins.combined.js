@@ -11125,12 +11125,12 @@ fn: {
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
 				var $button;
 				if ( 'offset' in tool ) {
-					// TODO: Add support for language specific offsets
+					var offset = $.wikiEditor.autoLang( tool.offset );
 					$button = $( '<a href="#" />' )
 						.text( label )
 						.click( function() { return false; } )
 						.addClass( 'wikiEditor-toolbar-spritedButton' )
-						.css( 'backgroundPosition', tool.offset[0] + 'px ' + tool.offset[1] + 'px' );
+						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
 				} else {
 					$button = $( '<img />' )
 						.attr( {

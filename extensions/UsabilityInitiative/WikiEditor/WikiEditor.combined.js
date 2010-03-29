@@ -73,7 +73,18 @@ $j(document).ready( function() {
 					'bold': {
 						labelMsg: 'wikieditor-toolbar-tool-bold',
 						type: 'button',
-						offset: [2, -142],
+						offset: {
+							'default': [2, -574],
+							'en': [2, -142],
+							'de': [2, -214],
+							'fr': [2, -286],
+							'es': [2, -358],
+							'it': [2, -286],
+							'nl': [2, -502],
+							'pt': [2, -358],
+							'pt-br': [2, -358],
+							'pl': [2, -430]
+						},
 						icon: {
 							'default': 'format-bold.png',
 							'en': 'format-bold-B.png',
@@ -101,7 +112,18 @@ $j(document).ready( function() {
 						id: 'italic',
 						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
-						offset: [2, -862],
+						offset: {
+							'default': [2, -862],
+							'en': [2, -862],
+							'de': [2, -934],
+							'fr': [2, -862],
+							'es': [2, -790],
+							'it': [2, -790],
+							'nl': [2, -790],
+							'pt': [2, -862],
+							'pt-br': [2, -862],
+							'pl': [2, -934]
+						},
 						icon: {
 							'default': 'format-italic.png',
 							'en': 'format-italic-I.png',
