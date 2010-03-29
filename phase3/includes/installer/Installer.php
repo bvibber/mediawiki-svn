@@ -178,15 +178,15 @@ abstract class Installer {
 		),
 		'pd' => array(
 			'url' => 'http://creativecommons.org/licenses/publicdomain/',
-			'icon' => '${wgScriptPath}/skins/common/images/public-domain.png',
+			'icon' => '{$wgStylePath}/common/images/public-domain.png',
 		),
 		'gfdl-old' => array(
 			'url' => 'http://www.gnu.org/licenses/old-licenses/fdl-1.2.html',
-			'icon' => '${wgScriptPath}/skins/common/images/gnu-fdl.png',
+			'icon' => '{$wgStylePath}/common/images/gnu-fdl.png',
 		),
 		'gfdl-current' => array(
 			'url' => 'http://www.gnu.org/copyleft/fdl.html',
-			'icon' => '${wgScriptPath}/skins/common/images/gnu-fdl.png',
+			'icon' => '{$wgStylePath}/common/images/gnu-fdl.png',
 		),
 		'cc-choose' => array(
 			// details will be filled in by the selector
