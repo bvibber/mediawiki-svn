@@ -162,7 +162,7 @@ a[disabled=true]:hover {
 }
 
 .mwe-upwiz-thumbnail {
-	width: 220px;  /* should be same as configured thumbnail width in uploadWizard.js */
+	width: 120px;  /* XXX should be same as configured thumbnail width in uploadWizard.js */
 }
 
 .mwe-upwiz-desc-lang-text {
