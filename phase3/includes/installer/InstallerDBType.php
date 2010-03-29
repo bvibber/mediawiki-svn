@@ -294,7 +294,7 @@ abstract class InstallerDBType {
 			$this->getPasswordBox( 'wgDBpassword', 'config-db-password' ) .
 			$this->parent->getHelpBox( 'config-db-web-help' );
 		if ( $noCreateMsg ) {
-			$s .= Xml::element( 'span', array( 'class' => 'error' ), wfMsg( $noCreateMsg ) );
+			$s .= $this->parent->getWarningBox( wfMsgNoTrans( $noCreateMsg ) );
 		} else {
 			$s .= $this->getCheckBox( '_CreateDBAccount', 'config-db-web-create' );
 		}
