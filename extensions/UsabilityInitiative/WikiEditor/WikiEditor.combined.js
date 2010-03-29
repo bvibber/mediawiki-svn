@@ -378,8 +378,7 @@ $j(document).ready( function() {
 							options: {
 								pre: "<nowiki>",
 								periMsg: 'wikieditor-toolbar-tool-nowiki-example',
-								post: "</nowiki>",
-								ownline: false
+								post: "</nowiki>"
 							}
 						}
 					},
