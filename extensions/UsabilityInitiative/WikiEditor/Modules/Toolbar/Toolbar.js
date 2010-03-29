@@ -123,8 +123,8 @@ $j(document).ready( function() {
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "[[",
-								preMsg: 'wikieditor-toolbar-tool-file-pre',
+								// FIXME: Why the hell was this done this way?
+								preMsg: [ 'wikieditor-toolbar-tool-file-pre', '[[' ],
 								periMsg: 'wikieditor-toolbar-tool-file-example',
 								post: "]]"
 							}
