@@ -42,7 +42,7 @@ mw.addMessages( {
 	"mwe-upwiz-date-created": "Date created",
 	"mwe-upwiz-location": "Location",
 	"mwe-upwiz-copyright-info": "Copyright information",
-	"mwe-upwiz-author": "Author",
+	"mwe-upwiz-author": "Author(s)",
 	"mwe-upwiz-license": "License",
 	"mwe-upwiz-about-format": "About the file",
 	"mwe-upwiz-autoconverted": "This file was automatically converted to the $1 format",
@@ -222,7 +222,7 @@ mw.UploadWizardLicenseInput.prototype = {
 		var wikiText = '';
 		$j.each ( _this.licenses, function( key, data ) {
 			if (data.input.checked) {
-				wikiText += "{" + data.template + "}\n";
+				wikiText += "{{" + data.template + "}}\n";
 			}		
 		} );
 		return wikiText;
@@ -265,7 +265,7 @@ mw.UploadWizardLicenseInput.prototype = {
 			values[key] = $j( _this.licenses[key].input ).is( ':checked' ); 
 		} );
 		return values;
-	}
+	},
 
 };
 
@@ -593,6 +593,7 @@ mw.UploadWizardUploadInterface.prototype = {
 
 	/**
 	 * Run this when the value of the file input has changed. Check the file for various forms of goodness.
+	 * If okay, then update the visible filename (due to CSS trickery the real file input is invisible)
 	 */
 	fileChanged: function() {
 		var _this = this;
@@ -756,7 +757,7 @@ mw.UploadWizardDescription.prototype = {
 		if (fix[language]) {
 			language = fix[language];
 		}
-		return '{{' + language + '|' + $j( _this.description ).val().trim() + '}}'	
+		return '{{' + language + '|1=' + $j( _this.description ).val().trim() + '}}'	
 	}
 };
 
@@ -804,7 +805,9 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			.append( _this.descriptionsDiv )
 			.append( $j( '<div class="mwe-upwiz-details-descriptions-add"></div>' )
 					.append( _this.descriptionAdder ) );
-	// title
+	// Commons specific help for titles 
+	//    http://commons.wikimedia.org/wiki/Commons:File_naming
+	//    http://commons.wikimedia.org/wiki/MediaWiki:Filename-prefix-blacklist
 	_this.titleInput = $j( '<input type="text" class="mwe-title" size="40"/>' )
 				.keyup( function() { 
 					_this.setFilenameFromTitle();
@@ -1316,6 +1319,15 @@ mw.UploadWizardDetails.prototype = {
 	},
 
 
+	/**
+	 * 
+	showErrors: function() {
+		var _this = this;
+		$j.each( _this.errors, function() {
+
+		} );
+	},
+	 */
 	
 	/**
 	 * Convert entire details for this file into wikiText, which will then be posted to the file 
@@ -1353,9 +1365,12 @@ mw.UploadWizardDetails.prototype = {
 
 		// XXX add a sanity check here for good date
 		information['date'] = $j( _this.dateInput ).val().trim();
-		
+
+		// we must have all of: source, author, license	
 		information['source'] = $j( _this.sourceInput ).val().trim();
+
 		information['author'] = $j( _this.authorInput ).val().trim();
+		// we could try just auto looking up User and Creator, and asking them every time
 		
 		var info = '';
 		for ( var key in information ) {
@@ -1367,7 +1382,7 @@ mw.UploadWizardDetails.prototype = {
 		wikiText += '{{Information\n' + info + '}}\n';
 
 	
-		wikiText += "=={int:licenses}==\n";
+		wikiText += "=={{int:licenses}}==\n";
 		
 		wikiText += _this.licenseInput.getWikiText();
 
@@ -1376,7 +1391,7 @@ mw.UploadWizardDetails.prototype = {
 		// add an "anything else" template if needed
 		var otherInfoWikiText = $j( _this.otherInformationInput ).val().trim();
 		if ( otherInfoWikiText != '' ) {
-			wikiText += "=={int:otherinfo}==\n";
+			wikiText += "=={{int:otherinfo}}==\n";
 			wikiText += otherInfoWikiText;
 		}
 
@@ -2094,7 +2109,7 @@ mw.UploadWizard.prototype = {
 	setupDeedOwnWork: function() {
 		var _this = this;
 
-		var sourceInput = $j( '<input />').attr( { name: "source", value: "{{ownwork}}" } );
+		var sourceInput = $j( '<input />').attr( { name: "source", value: "{{own}}" } );
 		var authorInput = $j( '<input />').attr( { name: "author" } ); // value set below
 		var licenseInputDiv = $j( '<div></div>' );
 		var licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
@@ -2292,24 +2307,47 @@ mw.UploadWizard.prototype = {
 	 */
 	applyMacroDeed: function( sourceInput, authorInput, licenseInput ) {
 		var _this = this;
+		
+		var source = $j( sourceInput ).val();
+		var author = $j( authorInput ).val(); // switch to an object to deal with creator/username/plaintext cases
+		var licenses = licenseInput.getValues();
+
+		var sourceCustomizable = $j( sourceInput ).data( 'customizable' );
+		var authorCustomizable = $j( authorInput ).data( 'customizable' );
+		var licenseCustomizable = $j( licenseInput ).data( 'customizable' );
+
+
+		// XXX can use action = parse to get a preview, but we'd prefer to avoid that anyway
+	
+		// XXX this is an evil hack -- we should instead have an author object that separates interface from value
+		// also the author field can contain {{Creator: }} as well, need to handle that for 3rd party
+		if ( source == '{{own}}' ) {
+			author = "[[User:" + mw.getConfig('userName') + '|' + author + ']]';
+		}
+		// XXX deal with the case of {{self|cc-by-sa-3.0}} type license -- own work uses {{self}} ?
+		// this is the flickr license -- what does this mean?
+		// {{substr:template 2|cc-by-2.0|flickrreview}}
+
+
+
 		// copy the values from our macro inputs into each upload
 		// if an element has the $j().data() property 'customizable', it is allowed to appear in the details to be changed
 		// otherwise should be unchangeable. We let the details object sort out how a 'locked' interface looks, which could be as simple
 		// as just hiding the input.
 		$j.each( _this.uploads, function( i, upload ) {
 
-			$j( upload.details.sourceInput ).val( $j( sourceInput ).val() );
-			if ( !( $j( sourceInput ).data( 'customizable' ) ) ) {
+			$j( upload.details.sourceInput ).val( source );
+			if ( !sourceCustomizable ) {
 				upload.details.lockSource();
 			} 
 			
-			$j( upload.details.authorInput ).val( $j( authorInput ).val() );
-			if ( !( $j( authorInput ).data( 'customizable' ) ) ) {
+			$j( upload.details.authorInput ).val( author );
+			if ( !authorCustomizable ) {
 				upload.details.lockAuthor();
 			} 
 
-			upload.details.licenseInput.setValues( licenseInput.getValues() );	
-			if ( !( $j( licenseInput ).data( 'customizable' ) ) ) {
+			upload.details.licenseInput.setValues( licenses );	
+			if ( !licenseCustomizable ) {
 				upload.details.lockLicense();
 			} 
 
