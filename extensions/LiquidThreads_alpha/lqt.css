@@ -471,3 +471,7 @@ table.lqt-new-messages {
 	color: #3333ff !important;
 	font-weight: bold !important;
 }
+
+.lqt-new-messages {
+	table-layout: fixed;
+}
