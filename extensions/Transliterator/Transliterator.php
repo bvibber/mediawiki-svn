@@ -36,7 +36,7 @@ $wgParserTestFiles[] = dirname( __FILE__ ) . '/transliteratorParserTests.txt';
 $wgHooks['ParserFirstCallInit'][] = 'ExtTransliterator::setup';
 # Purge the cache for as many cases as I can find.
 $wgHooks['ArticleDeleteComplete'][]  = 'ExtTransliterator::purgeArticle';
-$wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeArticle';
+$wgHooks['NewRevisionFromEditComplete'][]  = 'ExtTransliterator::purgeArticleNewRevision';
 $wgHooks['ArticlePurge'][]  = 'ExtTransliterator::purgeArticle';
 $wgHooks['ArticleUndelete'][]  = 'ExtTransliterator::purgeTitle';
 $wgHooks['TitleMoveComplete'][] = 'ExtTransliterator::purgeNewtitle';

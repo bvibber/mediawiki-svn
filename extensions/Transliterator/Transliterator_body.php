@@ -525,9 +525,18 @@ class ExtTransliterator  {
 
 	/**
 	 * Remove the article from the Transliterator caches.
-	 * (ArticlePurge, ArticleDeleteComplete, NewRevisionFromEditComplete hooks)
+	 * (ArticlePurge, ArticleDeleteComplete)
 	 */
 	static function purgeArticle( &$article ) {
+		$title = $article->getTitle();
+		return self::purgeTitle( $title );
+	}
+
+	/**
+	 * Remove the article from the Transliterator caches.
+	 * (NewRevisionFromEditComplete)
+	 */
+	static function purgeArticleNewRevision( $article ) {
 		$title = $article->getTitle();
 		return self::purgeTitle( $title );
 	}
@@ -536,7 +545,7 @@ class ExtTransliterator  {
 	 * Remove the title from the Transliterator caches.
 	 * (TitleMoveComplete hook)
 	 */
-	static function purgeNewTitle ( &$title, &$newtitle ) {
+	static function purgeNewTitle( &$title, &$newtitle ) {
 		return self::purgeTitle( $newtitle );
 	}
 
@@ -560,7 +569,7 @@ class ExtTransliterator  {
          *
 	 * (EditFilter hook)
 	 */
-	static function validate( &$editPage, $text, $section, &$hookError ) {
+	static function validate( $editPage, $text, $section, &$hookError ) {
 		// FIXME: Should not access private variables
 		$title = $editPage->mTitle;
 		if ( self::isMapPage( $title ) ) {
@@ -576,7 +585,7 @@ class ExtTransliterator  {
 	 * Prepend any error message caused by parsing the text for preview.
 	 * (EditPageGetPreviewText hook)
 	 */
-	static function preview( &$editPage, $text ) {
+	static function preview( $editPage, &$text ) {
 		self::validate( $editPage, $text, null, $hookError );
 		if ( $hookError ) {
 			$text = $hookError . "\n----\n" . $text;

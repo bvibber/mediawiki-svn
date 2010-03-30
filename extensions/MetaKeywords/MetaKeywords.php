@@ -116,7 +116,7 @@ function wfMetaKeywordParse( $params ){
 }
 
 //Updates the cache if [[MediaWiki:Metakeywords]] or [[MediaWiki:Metadescription]] has been edited
-function wfMetaKeywordClearCache( &$article, &$wgUser, &$text ) {
+function wfMetaKeywordClearCache( &$article, &$wgUser, $text ) {
 	global $wgMemc;
 		$title = $article->mTitle;
 
