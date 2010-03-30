@@ -1,7 +1,7 @@
 mw.addMessages( {
-	"mwe-upwiz-tab-file": "Step 1",
-	"mwe-upwiz-tab-details": "Step 2",
-	"mwe-upwiz-tab-thanks": "Step 3",
+	"mwe-upwiz-tab-file": "1. Upload your files",
+	"mwe-upwiz-tab-details": "2. Add licenses and descriptions",
+	"mwe-upwiz-tab-thanks": "3. Use your files",
 	"mwe-upwiz-intro": "Introductory text (short)",
 	"mwe-upwiz-select-files": "Select files:",
 	"mwe-upwiz-add-file-n": "Add another file",
@@ -1598,7 +1598,8 @@ mw.UploadWizard.userAgent = "UploadWizard (alpha) on " + $j.browser.name + " " +
 mw.UploadWizard.prototype = {
 	maxUploads: 10,  // XXX get this from config 
 	maxSimultaneousUploads: 2,   //  XXX get this from config
-	tabs: [ 'file', 'details', 'thanks' ],
+	tabNames: [ 'file', 'details', 'thanks' ],
+	currentTabName: undefined,
 
 	/*
 	// list possible upload handlers in order of preference
@@ -1645,11 +1646,12 @@ mw.UploadWizard.prototype = {
 	
 		       '<div id="mwe-upwiz-tabs">'
 		       + '<ul>'
-		       +   '<li id="mwe-upwiz-tab-file">'     + gM('mwe-upwiz-tab-file')     + '</li>'
-		       +   '<li id="mwe-upwiz-tab-details">'  + gM('mwe-upwiz-tab-details')  + '</li>'
-		       +   '<li id="mwe-upwiz-tab-thanks">'   + gM('mwe-upwiz-tab-thanks')   + '</li>'
+		       +   '<li id="mwe-upwiz-tab-file"><span class="mwe-arrow-text">'     + gM('mwe-upwiz-tab-file')     + '<span class="mwe-arrow"/></span></span></li>'
+		       +   '<li id="mwe-upwiz-tab-details"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-tab-details')  + '<span class="mwe-arrow"/></span></span></li>'
+		       +   '<li id="mwe-upwiz-tab-thanks"><span class="mwe-arrow-text">'   + gM('mwe-upwiz-tab-thanks')   + '<span class="mwe-arrow"/></span></span></li>'
 		       + '</ul>'
 		       + '</div>'
+		       + '<div class="mwe-upwiz-clearing"></div>'
 
 
 		       + '<div id="mwe-upwiz-content">'
@@ -1704,7 +1706,7 @@ mw.UploadWizard.prototype = {
                        +   '</div>'
 		       + '</div>'
 
-		       + '<div id="mwe-upwiz-clearing"></div>';
+		       + '<div class="mwe-upwiz-clearing"></div>';
 
 		// within FILE tab div
 		// select files:
@@ -1746,22 +1748,34 @@ mw.UploadWizard.prototype = {
 
 	/**
 	 * Advance one "step" in the wizard interface.
+	 * It is assumed that the previous tab to the current one was selected.
 	 * @param selectedTabName
 	 */
 	moveToTab: function( selectedTabName ) {
 		var _this = this;
-		for ( var i = 0; i < _this.tabs.length; i++ ) {
-			var tabName = _this.tabs[i];
-			var tabDiv = $j( '#mwe-upwiz-tabdiv-' + tabName );
+		$j.each( _this.tabNames, function(i, tabName) {
+			
+			// the tab indicator	
 			var tab = $j( '#mwe-upwiz-tab-' + tabName );
-			if ( selectedTabName == tabName ) {
+			
+			// the tab's contents
+			var tabDiv = $j( '#mwe-upwiz-tabdiv-' + tabName );
+
+			if ( _this.currentTabName == tabName ) {
+				tabDiv.hide(); 
+				$j( tab ).hide( 1000 );
+			} else if ( selectedTabName == tabName ) {
 				tabDiv.show();
 				tab.addClass( 'mwe-upwiz-tab-highlight' );
 			} else {
+				// it's neither the formerly active nor the newly active one, so hide it.
+				// (all are visible at init..)
 				tabDiv.hide();
-				tab.removeClass( 'mwe-upwiz-tab-highlight' );
 			}
-		}
+		} );
+
+		_this.currentTabName = selectedTabName;
+
 		// XXX possibly select appropriate form field to begin work
 	},
 

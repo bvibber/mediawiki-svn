@@ -54,7 +54,9 @@
 			'$j.ui.dialog',
 			'$j.ui.draggable',			
 			'$j.ui.datepicker',
-			'$j.fn.autocomplete'
+			'$j.effects.core',
+			'$j.effects.slide',
+			'$j.fn.autocomplete',
 		],
 		[
 			'mw.Language',
