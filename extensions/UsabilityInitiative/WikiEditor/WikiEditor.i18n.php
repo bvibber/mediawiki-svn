@@ -320,6 +320,8 @@ $messages['id'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'wikieditor-desc' => "Fornisce un'interfaccia di modifica del wikitesto estensibile e molti moduli che forniscono altre funzionalità",
+	'wikieditor-wikitext-tab' => 'Wikitesto',
 	'wikieditor-loading' => 'Caricamento',
 );
 

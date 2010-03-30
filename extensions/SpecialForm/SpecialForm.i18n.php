@@ -1211,6 +1211,13 @@ Për piasì, {{PLURAL:$2|ch'a lo|ch'a-j}} compila.",
 	'formsaveerrortext' => "A-i é sta-ie n'eror amprevist ën salvand la pàgina '$1'.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'formsave' => 'خوندي کول',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Lijealso

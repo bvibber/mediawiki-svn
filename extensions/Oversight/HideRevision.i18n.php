@@ -384,8 +384,8 @@ $messages['be-tarask'] = array(
 	'group-oversight' => 'Рэвізоры',
 	'group-oversight-member' => 'рэвізор',
 	'grouppage-oversight' => '{{ns:project}}:Рэвізоры',
-	'right-oversight' => 'Прагляд раней схаваных вэрсіяў',
-	'right-hiderevision' => 'хаваньне вэрсіяў ад адміністратараў',
+	'right-oversight' => 'прагляд раней схаваных вэрсіяў праз пашырэньне Oversight',
+	'right-hiderevision' => 'хаваньне вэрсіяў ад адміністратараў праз пашырэньне Oversight',
 	'hiderevision-prompt' => 'Нумар вэрсіі для выдаленьня:',
 	'hiderevision-continue' => 'Працягваць',
 	'hiderevision-text' => "Гэтая функцыя можа выкарыстоўвацца '''выключна''' ў наступных выпадках:
@@ -850,8 +850,8 @@ $messages['dsb'] = array(
 	'group-oversight' => 'Doglědowarje',
 	'group-oversight-member' => 'doglědowaś',
 	'grouppage-oversight' => '{{ns:project}}:Doglêdowanje',
-	'right-oversight' => 'Do togo schowanu wersiju se woglědaś',
-	'right-hiderevision' => 'Wersije pśed administratorami schowaś',
+	'right-oversight' => 'Do togo schowanu wersiju se z pomocu rozšyrjenja Oversight woglědaś',
+	'right-hiderevision' => 'Wersije pśed administratorami z pomocu rozšyrjenja Oversight schowaś',
 	'hiderevision-prompt' => 'Wersijowy numer, kótaryž ma se wótpóraś:',
 	'hiderevision-continue' => 'Dalej',
 	'hiderevision-text' => "To by měło se '''jano''' za slědujuce pady wužywaś:
@@ -997,6 +997,7 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
  * @author Crazymadlover
  * @author Dferg
  * @author Imre
+ * @author Pertile
  * @author Remember the dot
  * @author Sanbec
  * @author Titoxd
@@ -1007,8 +1008,8 @@ $messages['es'] = array(
 	'group-oversight' => 'Oversighters',
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',
-	'right-oversight' => 'Ver una revisión anteriormente escondida',
-	'right-hiderevision' => 'Ocultar revisiones a los administradores',
+	'right-oversight' => 'Ver una revisión oculta con Extension:Oversight',
+	'right-hiderevision' => 'Ocultar revisiones a los administradores con Extension:Oversight',
 	'hiderevision-prompt' => 'Número de revisión a ocultar:',
 	'hiderevision-continue' => 'Seguir',
 	'hiderevision-text' => "Esto '''sólo''' se debería usar en los siguientes casos:
@@ -1347,8 +1348,8 @@ $messages['gl'] = array(
 	'group-oversight' => 'Supervisores',
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',
-	'right-oversight' => 'Ver unha revisión agochada previa',
-	'right-hiderevision' => 'Agochar revisións aos administradores',
+	'right-oversight' => 'Ver revisións previas agochadas coa extensión Oversight',
+	'right-hiderevision' => 'Agochar revisións aos administradores coa extensión Oversight',
 	'hiderevision-prompt' => 'Número de revisión a eliminar:',
 	'hiderevision-continue' => 'Continuar',
 	'hiderevision-text' => "Isto '''só''' se debería usar nos seguintes casos:
@@ -1408,8 +1409,8 @@ $messages['gsw'] = array(
 	'group-oversight' => 'Oversighter',
 	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'E Version aaluege, wu bis jetz verborge gsi sich',
-	'right-hiderevision' => 'Versione vor Ammanne verberge',
+	'right-oversight' => 'E Version mit dr Erwyterig „Oversight“ aaluege, wu bis jetz verborge gsi sich',
+	'right-hiderevision' => 'Versione vor Ammanne verberge (mit dr Erwyterig „Oversight“)',
 	'hiderevision-prompt' => 'Versionsnummere wu sott usegnuh wäre:',
 	'hiderevision-continue' => 'Wyter',
 	'hiderevision-text' => "Des derf '''ussschliessli numme''' in dääne Fäll gschäh:
@@ -1603,8 +1604,8 @@ $messages['hsb'] = array(
 	'group-oversight' => 'Dohladowarjo',
 	'group-oversight-member' => 'Dohladowanje',
 	'grouppage-oversight' => '{{ns:project}}:Dohladowanje',
-	'right-oversight' => 'Prjedy schowanu wersiju wobhladać',
-	'right-hiderevision' => 'Wersije před administratorami schować',
+	'right-oversight' => 'Prjedy schowanu wersiju z rozšěrjenjom Oversight wobhladać',
+	'right-hiderevision' => 'Wersije před administratorami z pomocu rozšěrjenja Oversight schować',
 	'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
 	'hiderevision-continue' => 'Dale',
 	'hiderevision-text' => "To smě '''jeničce''' w slědowacych padach wužić;
@@ -1653,8 +1654,8 @@ $messages['hu'] = array(
 	'group-oversight' => 'adatvédelmi biztosok',
 	'group-oversight-member' => 'adatvédelmi biztos',
 	'grouppage-oversight' => '{{ns:project}}:Adatvédelmi biztosok',
-	'right-oversight' => 'korábban elrejtett változatok megtekintése',
-	'right-hiderevision' => 'változatok elrejtése az adminisztrátorok elől',
+	'right-oversight' => 'korábban elrejtett változat megtekintése az Oversight kiterjesztés segítségével',
+	'right-hiderevision' => 'változatok elrejtése az adminisztrátorok elől az Oversight kiterjesztés segítségével',
 	'hiderevision-prompt' => 'Eltávolítandó változat:',
 	'hiderevision-continue' => 'Folytatás',
 	'hiderevision-text' => "Ez az eszköz '''csak''' az alábbi esetekben használható:
@@ -1703,8 +1704,8 @@ $messages['ia'] = array(
 	'group-oversight' => 'Supervisores',
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',
-	'right-oversight' => 'Vider un version anteriormente celate',
-	'right-hiderevision' => 'Celar versiones al administratores',
+	'right-oversight' => 'Vider un version previemente celate con Extension:Oversight',
+	'right-hiderevision' => 'Celar versiones al administratores con Extension:Oversight',
 	'hiderevision-prompt' => 'Numero del version a deler:',
 	'hiderevision-continue' => 'Continuar',
 	'hiderevision-text' => "Isto debe '''solmente''' esser usate pro le sequente motivos:
@@ -2293,7 +2294,7 @@ $messages['kw'] = array(
  * @author UV
  */
 $messages['la'] = array(
-	'right-hiderevision' => 'Emendationes magistratus celare',
+	'right-hiderevision' => 'Emendationes magistratus celare ope Extension:Oversight',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2305,10 +2306,17 @@ $messages['lb'] = array(
 	'group-oversight' => 'Artikel-Kontrolleren',
 	'group-oversight-member' => 'Artikel-Kontroller',
 	'grouppage-oversight' => '{{ns:project}}:Artikel-Kontroller',
-	'right-oversight' => 'Eng virdru verstoppte Versioun weisen',
-	'right-hiderevision' => 'Versioune virun den Administrateure verstoppen',
+	'right-oversight' => 'Eng virdru verstoppte Versioun mat der Erweiderung:Oversight weisen',
+	'right-hiderevision' => 'Versioune virun den Administrateure mat der Erweiderung:Oversight verstoppen',
 	'hiderevision-prompt' => 'Versiounsnummer déi geläscht gi soll:',
 	'hiderevision-continue' => 'Weider',
+	'hiderevision-text' => "Dëst soll '''nëmmen''' an dëse Fäll benotzt ginn:
+* Net ubruecht perséinlech Informatiounen
+*: ''Privatadressen an Telefonsnummeren, Sozialversécherungsnummeren, etc''
+
+'''Mëssbrauch vun dësem System féiert zum Verloscht vu Privilegien.'''
+
+Objeten déi erausgeholl sinn si fir keen iwwer dësen Internetsite ze gesinn, awer d'kLäschunge kënne manuell restauréiert vun engen Datebank-Administrator gi wann Dir e Feeler maacht.",
 	'hiderevision-reason' => 'Grond (gëtt verstoppt ofgespäichert)',
 	'hiderevision-submit' => 'Dës Daten definitv verstoppen',
 	'hiderevision-tab' => 'Verstopp Versiounen',
@@ -2425,8 +2433,8 @@ $messages['mk'] = array(
 	'group-oversight' => 'Надгледувачи',
 	'group-oversight-member' => 'надгледувач',
 	'grouppage-oversight' => '{{ns:project}}:Надгледувач',
-	'right-oversight' => 'Гледање на претходно сокриена ревизија',
-	'right-hiderevision' => 'Криење на ревизии од администратори',
+	'right-oversight' => 'Гледање на претходно сокриена ревизија со Проширување:Надзор',
+	'right-hiderevision' => 'Прикривање на ревизии од администратори со Проширување:Надзор',
 	'hiderevision-prompt' => 'Број на ревизија за бришење:',
 	'hiderevision-continue' => 'Продолжи',
 	'hiderevision-text' => "Ова треба да се користи '''само''' за следниве случаи:
@@ -2475,8 +2483,8 @@ $messages['ml'] = array(
 	'group-oversight' => 'മേല്‍നോട്ടക്കാര്‍',
 	'group-oversight-member' => 'മേല്‍നോട്ടം',
 	'grouppage-oversight' => '{{ns:project}}:മേല്‍നോട്ടം',
-	'right-oversight' => 'മുന്‍പ് മറയ്ക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
-	'right-hiderevision' => 'കാര്യനിർവാഹകരിൽ നിന്ന് നാൾപ്പതിപ്പുകൾ മറയ്ക്കുക',
+	'right-oversight' => 'അനുബന്ധം:ഓവർസൈറ്റ് ഉപയോഗിച്ച് മുന്‍പ് മറയ്ക്കപ്പെട്ട ഒരു പതിപ്പ് കാണുക',
+	'right-hiderevision' => 'അനുബന്ധം:ഓവർസൈറ്റ് ഉപയോഗിച്ച് കാര്യനിർവാഹകരിൽ നിന്ന് നാൾപ്പതിപ്പുകൾ മറയ്ക്കുക',
 	'hiderevision-prompt' => 'ഒഴിവാക്കാനുള്ള പതിപ്പിന്റെ ഐ.ഡി.',
 	'hiderevision-continue' => 'തുടരുക',
 	'hiderevision-text' => "താഴെ പറയുന്ന സന്ദർഭങ്ങളിൽ '''മാത്രമേ''' ഇതുപയോഗിക്കാവൂ:
@@ -2729,8 +2737,8 @@ $messages['nl'] = array(
 	'group-oversight' => 'toezichthouders',
 	'group-oversight-member' => 'toezichthouder',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Verborgen versies bekijken',
-	'right-hiderevision' => 'Versies verbergen voor beheerders',
+	'right-oversight' => 'Verborgen versies bekijken met de uitbreiding Oversight',
+	'right-hiderevision' => 'Versies verbergen voor beheerders met de uitbreiding Oversight',
 	'hiderevision-prompt' => 'Te verwijderen versienummer:',
 	'hiderevision-continue' => 'Doorgaan',
 	'hiderevision-text' => "Dit dient '''alleen''' gebruikt te worden in de volgende gevallen:
@@ -2944,8 +2952,8 @@ $messages['pl'] = array(
 	'group-oversight' => 'Rewizorzy',
 	'group-oversight-member' => 'rewizor',
 	'grouppage-oversight' => '{{ns:project}}:Rewizorzy',
-	'right-oversight' => 'Podgląd ukrytych wersji',
-	'right-hiderevision' => 'Ukrywanie wersji przed administratorami',
+	'right-oversight' => 'Podgląd wersji ukrytych rozszerzeniem Oversight',
+	'right-hiderevision' => 'Ukrywanie wersji przed administratorami z użyciem rozszerzenia Oversight',
 	'hiderevision-prompt' => 'Numer wersji do ukrycia',
 	'hiderevision-continue' => 'Kontynuuj',
 	'hiderevision-text' => "Funkcja powinna być użyta '''jedynie''' w następujących przypadkach:
@@ -2994,8 +3002,8 @@ $messages['pms'] = array(
 	'group-oversight' => 'Oversighter',
 	'group-oversight-member' => 'oversight',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Varda na vërsion precedenta stërmà',
-	'right-hiderevision' => "Stërma le revision a j'aministrador",
+	'right-oversight' => 'Varda na vërsion precedenta stërmà con Extension:Oversight',
+	'right-hiderevision' => "Stërma le revision a j'aministrador con Extension:Oversight",
 	'hiderevision-prompt' => 'Nùmer ëd revision da gavé:',
 	'hiderevision-continue' => 'Tiré anans',
 	'hiderevision-text' => "Sòn a dovéia dovresse '''mach''' an cas che a-i sia:
@@ -3262,8 +3270,8 @@ $messages['ru'] = array(
 	'group-oversight' => 'Ревизоры',
 	'group-oversight-member' => 'ревизор',
 	'grouppage-oversight' => '{{ns:project}}:Ревизоры',
-	'right-oversight' => 'просмотр ранее скрытой правки',
-	'right-hiderevision' => 'сокрытие версий страниц от администраторов',
+	'right-oversight' => 'просмотр ранее скрытой правки с помощью Extension:Oversight',
+	'right-hiderevision' => 'сокрытие версий страниц от администраторов с помощью Extension:Oversight',
 	'hiderevision-prompt' => 'Номер правки, которую требуется скрыть:',
 	'hiderevision-continue' => 'Продолжить',
 	'hiderevision-text' => "Данная страница должна использоваться '''только''' в следующих случаях:
@@ -4034,6 +4042,7 @@ Bu bilgiyi yaymak, Gözetmen ayrıcalıklarının kalıcı olarak kaybıyla sonu
  * @author Ahonc
  * @author Aleksandrit
  * @author Prima klasy4na
+ * @author Test
  */
 $messages['uk'] = array(
 	'hiderevision' => 'Приховати версії',
@@ -4041,8 +4050,8 @@ $messages['uk'] = array(
 	'group-oversight' => 'Ревізори',
 	'group-oversight-member' => 'ревізор',
 	'grouppage-oversight' => '{{ns:project}}:Ревізори',
-	'right-oversight' => 'Перегляд прихованих версій',
-	'right-hiderevision' => 'Приховування версій сторінок від адміністраторів',
+	'right-oversight' => 'Перегляд раніше прихованих версій за допомогою розширення Oversight',
+	'right-hiderevision' => 'Приховування версій сторінок від адміністраторів за допомогою розширення Oversight',
 	'hiderevision-prompt' => 'Номер версії, яку потрібно приховати',
 	'hiderevision-continue' => 'Продовжити',
 	'hiderevision-text' => "Ця сторінка повинна використовуватися '''тільки''' у випадках:

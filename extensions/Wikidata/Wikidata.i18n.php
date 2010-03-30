@@ -9676,6 +9676,7 @@ $messages['ps'] = array(
 <li>&action=help  Show helpful help.</li>
 </ul></p>',
 	'ow_conceptmapping_no_action_specified' => 'د "$1" کړنې ملاتړ نه کېږي.',
+	'ow_dm_OK' => 'ښه',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
 	'ow_ApproximateMeanings' => 'نژدې ماناګانې',
 	'ow_Class' => 'ټولګی',

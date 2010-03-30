@@ -443,6 +443,26 @@ $messages['arz'] = array(
 </div>',
 );
 
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ */
+$messages['be'] = array(
+	'optin-improvements2' => "== Што было палепшана? ==
+[[File:UsabilityToolbar.png|left|link=|Здымак экрана з палепшанай рэдактарскай стужкай]]
+[[File:UsabilityDialogs.png|left|link=|Здымак экрана з новымі дыялогамі складання зместу]]
+;Палепшаная стужка прылад
+Палепшаная стужка прылад спрашчае рэдагаванне артыкулаў.
+Новыя палепшаныя значкі ясней тлумачаць прызначэнне адпаведных прылад.
+Пашыраныя секцыі спрыяюць парадку на стужцы, прытым трымаюць рэдка ўжыванае непадалёк.
+;Дыялогі
+Пры складанні спасылак ці табліц, націсканне адпаведнага значка адкрывае дыялог з дапаможным фармулярам.
+;І іншае
+Таксама ўведзеныя іншыя паляпшэнні, напрыклад, у руху па вікі, апрацоўцы табуляцый, пошуку і інш.
+== Як запісацца ==
+Каб даведацца больш пра Ініцыятыву за зручнасць (''Usability Initiative''), наведайце [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage уласную старонку праекту].
+<div style=\"clear:both\"></div>",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -4539,22 +4559,21 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-survey-answer-changes-predictability' => 'Poprawienie przewidywalności zmian.',
 	'optin-survey-answer-changes-custom' => 'Umożliwienie lepszego dostosowania do indywidualnych potrzeb użytkownika.',
 	'optin-survey-answer-changes-other' => 'Inne',
-	'optin-improvements' => '== Co poprawiliśmy? ==
-[[File:UsabilityNavigation.png|left|link=|Widok ekranu przedstawiający nowe zakładki nawigacyjne]]
-;Rozbudowana nawigacja
-Nowy sposób nawigacji umożliwia łatwiejsze zorientowanie się w aktualnym położeniu oraz wykonywanej czynności, jak również gdzie można się udać i jak tam dotrzeć. Umieszczenie wyszukiwania w prawym górnym rogu strony ułatwiło i przyspieszyło do niej dostęp.
-<div style="clear:both;"></div> 
+	'optin-improvements2' => '== Co jest lepsze? ==
+[[File:UsabilityToolbar.png|left|link=|Rozszerzony pasek edycji]]
+[[File:UsabilityDialogs.png|left|link=|Dialogi generowania nowej treści]]
+;Rozbudowana belka narzędziowa
+Bogatsza belka narzędziowa ułatwia edytowanie artykułów.
+Nowe ulepszone ikony bardziej intuicyjnie przedstawiają działanie narzędzi.
+Rozszerzalne sekcje zmniejszają bałagan udostępniając po kliknięciu rzadko używane narzędzia.
+;Dialogi
+Tworzenie łącza czy tabeli jest obecnie możliwe poprzez kliknięcie ikony narzędzia, które otwiera w oknie dialogowym prosty formularz.
+;Więcej
+Wprowadziliśmy szereg innych usprawnień takich jak rozszerzona nawigacji, kaskadowe zakładki, lepsze wyszukiwanie i inne.
 
-[[File:UsabilityToolbar.png|left|link=|Widok ekranu przedstawiający nową belkę narzędzi edycyjnych]]
-;Nowe funkcjonalności belki narzędzi edycyjnych
-Nowe ikony, czytelniejsze i lepiej dopasowane do narzędzi. Rozwijana kliknięciem sekcja paska narzędzi zmniejsza bałagan ukrywając ikony rzadko wykorzystywanych narzędzi.
-Narzędzie pomocy  umożliwia szybki dostęp do pomocy kontekstowej dla często wykorzystywanych znaczników wiki.
-<div style="clear:both;"></div>
-
-== Jak możesz pomóc? ==
-Aby dowiedzieć się więcej o projekcie lub wziąć w nim udział odwiedź witrynę [http://usability.wikimedia.org projektu użyteczności wiki]. Odnajdziesz tam informacje o tym jak nas wesprzeć finansowo, w badaniach, projektowaniu, rozwoju oraz wydawaniu wersji. Pytania można zadawać poprzez ogólny system opiniowania, używając [http://usability.wikimedia.org/wiki/Talk:Prototype prototypowej strony dyskusji]. Konkretne problemy należy poruszać na powiązanych stronach dyskusji. Odnalezione błędy należy zgłaszać pozostawiając komentarz na [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco stronie dyskusji wersji Babaco] lub korzystając z [https://bugzilla.wikimedia.org Bugzilli].
-
-Dziękujemy i czekamy na Twoje komentarze!',
+== Jak się przyłączyć == 
+Więcej na temat nowego interfejsu można znaleźć na stronie [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative Inicjatywy Użyteczności].
+<div style="clear:both"></div>',
 );
 
 /** Piedmontese (Piemontèis)

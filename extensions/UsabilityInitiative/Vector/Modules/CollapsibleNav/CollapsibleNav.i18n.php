@@ -139,6 +139,13 @@ $messages['no'] = array(
 	'vector-collapsiblenav-preference' => 'Aktiver sammenleggbar venstre navigeringsmeny',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'vector-collapsiblenav-preference' => 'Włącz po lewej rozwijalne menu nawigacyjne',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

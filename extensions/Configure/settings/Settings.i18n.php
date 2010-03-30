@@ -10884,7 +10884,6 @@ $messages['lb'] = array(
 	'configure-setting-wgActionPaths-key' => 'Aktioun',
 	'configure-setting-wgActionPaths-value' => 'Schabloun vun enger URL',
 	'configure-setting-wgAllDBsAreLocalhost' => "Ouni weider Meldungen all Datebankverbindungen op de ''Localhos'' neischreiwen",
-	'configure-setting-wgCheckDBSchema' => "Kuckt bei all Säitenoffro no op d'Datebank aktualiséiert ass (soll net méi benotzt ginn)",
 	'configure-setting-wgDBerrorLog' => "Fichier fir d'Feeler vun der Datebank ofzespäicheren",
 	'configure-setting-wgDBname' => 'Numm vun der Datebank déi benotzt soll ginn',
 	'configure-setting-wgDBpassword' => 'Passwuert fir $wgDBuser',
@@ -10948,7 +10947,6 @@ $messages['lb'] = array(
 	'configure-setting-wgLegalTitleChars' => 'Buchstawn déi en de Säitentitelen erlaabt sinn (Regex-Zeecheklass)',
 	'configure-setting-wgMaxArticleSize' => 'Maximal Gréisst vun enger Säit (kB)',
 	'configure-setting-wgMaxRedirects' => 'Maximal Zuel vu Viruleedungen, deene nogaang gëtt, wann eng Viruleedung geléist gëtt',
-	'configure-setting-wgMetadataWhitelist' => 'Säit mat der Schabloun vun den erlaabte Metadaten',
 	'configure-setting-wgNoFollowLinks' => 'Den Attribut rel="nofollows" bei externe Linken derbäisetzen',
 	'configure-setting-wgNoFollowDomainExceptions' => 'Extern Linken op dës Domain-Nimm (oder hir Ënnerdomainen) kréien de rel="nofollow" Attribut net',
 	'configure-setting-wgPageShowWatchingUsers' => 'Weis watfir Benotzer eng Säit iwwerwaachen',
@@ -10958,7 +10956,6 @@ $messages['lb'] = array(
 	'configure-setting-wgUniversalEditButton' => 'Den universalen Ännerungs-Knäpchen aschalten',
 	'configure-setting-wgUrlProtocols' => 'Erlaabte Protokoller vun externe Linker',
 	'configure-setting-wgUseExternalEditor' => 'De Gebrauch vun engem externen Editeur erlaben',
-	'configure-setting-wgUseMetadataEdit' => "Erlaabt et Metadaten z'änneren",
 	'configure-setting-wgAjaxLicensePreview' => "AJAX benotze fir d'Lizenz, vun de Fichiere déi eropgeluede ginn, virum Eroplueden ze weisen",
 	'configure-setting-wgAllowCopyUploads' => 'Eroplueden vun URLen zouloossen',
 	'configure-setting-wgCheckFileExtensions' => 'Erweiderung vum Fichier iwwerpréifen',
@@ -11056,6 +11053,7 @@ $messages['lb'] = array(
 	'configure-setting-wgExtensionMessagesFiles' => 'Erweiderung vun de Fichieren vun de Messagen',
 	'configure-setting-wgExternalStores' => 'Astellung vun externe Späicher',
 	'configure-setting-wgHooks' => 'Klameren',
+	'configure-setting-wgSpecialPageCacheUpdates' => 'Zousätzlech Fonctiounen déi mat updateSpecialPages.php ausgeféiert ginn',
 	'configure-setting-wgSpecialPages' => 'Zousätzlech Spezialsäiten',
 	'configure-setting-wgGroupPermissions-value' => 'Zougewise Rechter',
 	'configure-setting-wgRevokePermissions' => 'Rechter, déi de Benotzer an all Grupp ofgeholl goufen',
@@ -11109,6 +11107,7 @@ $messages['lb'] = array(
 	'configure-setting-wgRightsPage' => "Säit déi d'Lizenz vum Site beschreiwt",
 	'configure-setting-wgRightsText' => "Text deen d'Lizenz vum Site beschreiwt",
 	'configure-setting-wgRightsUrl' => "URL déi d'Lizenz vum Site beschreiwt",
+	'configure-setting-wgUseCopyrightUpload' => 'Detailléiert Copyright-Informatioune beim Eropluede benotzen',
 	'configure-setting-wgAllowRealName' => 'Richteg Nimm erlaben',
 	'configure-setting-wgAllowUserSkin' => "De Benotzer erlaben d'Ausgesinn (Skin) z'änneren",
 	'configure-setting-wgAllowPrefChange-key' => 'Benotzerastellung',
@@ -14099,6 +14098,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'configure-setting-wgSitename' => 'د وېبڅي نوم',
+	'configure-setting-wgActionPaths-key' => 'چاره',
 	'configure-setting-wgDebugLogGroups-value' => 'دوتنه',
 );
 

@@ -1091,6 +1091,13 @@ J'archivi carià a dovrìo conten-e ël nòm dla pàgina e na rason opsional, se
 	'right-deletebatch' => 'Scancela le pàgine an partìa',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'deletebatch-delete' => 'ړنګول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

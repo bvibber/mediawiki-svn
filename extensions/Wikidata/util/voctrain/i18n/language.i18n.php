@@ -3178,6 +3178,7 @@ $messages['ps'] = array(
 	'voctrain_logout' => 'وتل',
 	'voctrain_Omegawiki' => 'اومېګاويکي',
 	'voctrain_Exercise_complete' => 'تمرين بشپړ شو',
+	'voctrain_Exercise_terminated' => 'تمرين پای ته ورسېد',
 	'voctrain_Start_a_new_exercise' => 'يو نوی تمرين پيلول',
 	'voctrain_User_name' => 'کارن-نوم',
 	'voctrain_Password' => 'پټنوم',

@@ -302,6 +302,13 @@ $messages['pms'] = array(
 	'categorytests-desc' => 'Funsion për test ëd categorìa',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categorytests-desc' => 'د وېشنيزې د آزمېښت چارې',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  */

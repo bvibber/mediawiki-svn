@@ -236,6 +236,7 @@ $messages['id'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'vector' => "Miglioramenti all'interfaccia utente per Vector",
 	'vector-desc' => "Migliora gli elementi dell'interfaccia utente della skin Vector.",
 );
 

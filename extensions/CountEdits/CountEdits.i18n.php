@@ -1127,6 +1127,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'countedits-username' => 'کارن-نوم:',
+	'countedits-ok' => 'ښه',
 	'countedits-resultheader' => 'د $1 پايلې',
 	'countedits-nocontribs' => 'په همدې ويکي کې هېڅ ونډې نه دي ترسره شوي.',
 );

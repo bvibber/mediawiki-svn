@@ -206,6 +206,7 @@ $messages['el'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Pertile
  * @author Translationista
  */
 $messages['es'] = array(
@@ -218,6 +219,8 @@ Intentaste: '''$1'''",
 Intentaste: '''$1'''",
 	'rt-badstatus' => "status inválido (s) arg: debe ser un campo estándar (ver documentación).
 Intentaste: '''$1'''",
+	'rt-badcfield' => "Argumento de campo personalizado inválido: debe ser una palabra simple (consulte la documentación).
+Ha intentado: '''$1'''.",
 	'rt-badqueue' => "cola inválida (q) arg: debe ser una palabra simple.
 Intentaste: '''$1'''",
 	'rt-badowner' => "propietario inválido (o) arg: debe ser un nombre de usuario.

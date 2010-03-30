@@ -136,6 +136,19 @@ $messages['arz'] = array(
 	'prefstats-legend-in' => 'مشترك',
 );
 
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ */
+$messages['be'] = array(
+	'prefstats-counters' => '* $1 {{PLURAL:$1|удзельнік|удзельнікаў}} уключылі гэтую магчымасць ад пачатку збірання статыстыкі па настаўленнях
+** $2 {{PLURAL:$2|удзельнік пакінуў|удзельнікаў пакінулі}} магчымасць уключанай
+** $3 {{PLURAL:$3|удзельнік адключыў|удзельнікаў адключылі}} яе пасля таго',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|удзельнік|удзельнікаў}} уключылі гэтую магчымасць ад пачатку збірання статыстыкі па настаўленнях
+** $2 {{PLURAL:$2|удзельнік пакінуў|удзельнікаў пакінулі}} магчымасць уключанай
+** $3 {{PLURAL:$3|удзельнік адключыў|удзельнікаў адключылі}} яе пасля таго
+* Разам, $4 {{PLURAL:$4|удзельнік|удзельнікаў}} трымаюць магчымасць уключанай',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1129,6 +1142,7 @@ Fare clic su una per vedere le statistiche su di essa.',
 ** $3 {{PLURAL:$3|utente la ha|utenti la hanno}} disattivata
 * In total, $4 {{PLURAL:$4|utente ha|utenti hanno}} modificato questa preferenza',
 	'prefstats-xaxis' => 'Durata (ore)',
+	'prefstats-factors' => 'Visualizza per: $1',
 	'prefstats-factor-hour' => 'ora',
 	'prefstats-factor-sixhours' => 'sei ore',
 	'prefstats-factor-day' => 'giorno',

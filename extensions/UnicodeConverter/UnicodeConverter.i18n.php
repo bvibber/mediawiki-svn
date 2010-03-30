@@ -588,6 +588,7 @@ $messages['pnb'] = array(
  */
 $messages['ps'] = array(
 	'unicodeconverter' => 'د يونيکوډ اړونکی',
+	'unicodeconverter-ok' => 'ښه',
 	'unicodeconverter-oldtext' => 'آرنی متن:',
 	'unicodeconverter-newtext' => 'اړول شوی متن:',
 );

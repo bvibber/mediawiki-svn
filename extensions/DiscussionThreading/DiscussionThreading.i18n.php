@@ -516,6 +516,14 @@ $messages['pms'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Fa parte un neuv thread',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'discussionthreading-replysection' => 'ځوابول',
+	'discussionthreading-threadnewsection' => 'نوی',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

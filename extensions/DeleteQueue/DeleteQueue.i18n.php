@@ -4825,6 +4825,8 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
 $messages['ps'] = array(
 	'deletequeue-list-status' => 'دريځ:',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
+	'deletequeue-case-page' => 'مخ:',
+	'deletequeue-case-reason' => 'سبب:',
 );
 
 /** Portuguese (Português)

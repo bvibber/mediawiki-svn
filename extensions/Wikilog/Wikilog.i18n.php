@@ -4484,6 +4484,7 @@ $messages['ps'] = array(
 	'wikilog-view-summary' => 'لنډيز',
 	'wikilog-draft-title-mark' => '(مسوده)',
 	'wikilog-anonymous-mark' => '(ورکنومی)',
+	'wikilog-pager-next' => 'راتلونکي',
 	'wikilog-pager-first' => 'لومړني',
 	'wikilog-pager-last' => 'وروستني',
 	'wikilog-has-comments' => '{{PLURAL:$1|يوه تبصره|$1 تبصرې}}',
@@ -4491,6 +4492,16 @@ $messages['ps'] = array(
 	'wikilog-comment-edit' => 'دا تبصره سمول',
 	'wikilog-comment-delete' => 'دا تبصره ړنګول',
 	'wikilog-comment-history' => 'د تبصرې پېښليک کتل',
+	'wikilog-form-category' => 'وېشنيزه:',
+	'wikilog-form-name' => 'نوم:',
+	'wikilog-form-author' => 'ليکوال:',
+	'wikilog-form-date' => 'نېټه:',
+	'wikilog-preview' => 'مخليدنه:',
+	'wikilog-edit-lc' => 'سمول',
+	'wikilog-reply-lc' => 'ځوابول',
+	'wikilog-delete-lc' => 'ړنګول',
+	'wikilog-page-lc' => 'مخ',
+	'wikilog-history-lc' => 'پېښليک',
 );
 
 /** Portuguese (Português)

@@ -1755,6 +1755,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'specialuserstats' => 'د کارولو شمار',
 	'usagestatistics' => 'د کارولو شمار',
+	'usagestatisticsnamespace' => 'نوم-تشيال:',
 	'usagestatisticstype' => 'ډول',
 	'usagestatisticsstart' => 'د پيل نېټه:',
 	'usagestatisticsend' => 'د پای نېټه:',

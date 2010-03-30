@@ -2380,6 +2380,7 @@ $messages['ps'] = array(
 	'youtubeauthsub_password' => 'د يوټيوب پټنوم',
 	'youtubeauthsub_username' => 'د يوټيوب کارن-نوم',
 	'youtubeauthsub_category' => 'وېشنيزه',
+	'youtubeauthsub_submit' => 'سپارل',
 	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
 	'youtubeauthsub_success' => "مبارک مو شه!
 
@@ -2399,6 +2400,7 @@ $messages['ps'] = array(
 	'youtubeauthsub_uploading' => 'ستاسې ويډيو د پورته کېدلو په حال کې ده.
 
 لطفاً لږ صبر وکړی.',
+	'youtubeauthsub_viewpage' => 'په اختياري توګه، تاسې [[$1|خپله ويډيو کتلای شی]].',
 	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',
 	'youtubeauthsub_jserror_nodesc' => 'مهرباني وکړۍ د ويډيو څرګندونه مو وکړۍ.',
 );

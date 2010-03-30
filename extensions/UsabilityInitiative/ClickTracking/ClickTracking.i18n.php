@@ -1318,6 +1318,15 @@ $messages['pms'] = array(
 	'ct-update-table' => 'Modìfica tàula',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ct-start-date' => 'د پيل نېټه (ک.ک.ک.ک.م.م.و.و)',
+	'ct-end-date' => 'د پای نېټه (ک.ک.ک.ک.م.م.و.و)',
+	'ct-and' => 'او',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu

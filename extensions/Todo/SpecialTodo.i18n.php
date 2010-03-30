@@ -87,13 +87,6 @@ $messages['niu'] = array(
 	'todo-list-cancel' => 'Tiaki',
 );
 
-/** Laz (Laz)
- * @author Bombola
- */
-$messages['lzz'] = array(
-	'todo-new-queue' => 'ağani',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1163,6 +1156,13 @@ $messages['lb'] = array(
 	'todo-form-submit' => 'Ufro starten',
 );
 
+/** Laz (Laz)
+ * @author Bombola
+ */
+$messages['lzz'] = array(
+	'todo-new-queue' => 'ağani',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -1534,6 +1534,7 @@ $4",
  */
 $messages['ps'] = array(
 	'todo-new-queue' => 'نوی',
+	'todo-list-change' => 'بدلول',
 );
 
 /** Portuguese (Português)

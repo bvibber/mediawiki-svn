@@ -790,6 +790,7 @@ $messages['pnb'] = array(
  */
 $messages['ps'] = array(
 	'createpage' => 'يو مخ جوړول',
+	'createpage_submitbutton' => 'سپارل',
 	'createpage_instructions' => 'د هغه مخ سرليک وټاپۍ چې تاسې يې جوړول غواړۍ:',
 	'createpage_entertitle' => 'لطفاً خپل مخ ته يو سرليک وټاپۍ.',
 	'createpage_editexisting' => 'هو، زه غواړم چې په همدې مخ کې ونډې ترسره کړم.',
