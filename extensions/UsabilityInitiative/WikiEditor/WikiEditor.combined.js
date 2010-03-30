@@ -726,6 +726,21 @@ $j(document).ready( function() {
 					[ "\u05c3\u25cc", "\u05c3" ]
 				]
 			},
+			'bangla': {
+				'labelMsg': 'wikieditor-toolbar-characters-page-bangla',
+				'language': 'bn',
+				'layout': 'characters',
+				'characters': [
+					"\u0985", "\u0986", "\u0987", "\u0988", "\u0989", "\u098a", "\u098b", "\u098f", "\u0990", "\u0993",
+					"\u0994", "\u09be", "\u09bf", "\u09c0", "\u09c1", "\u09c2", "\u09c3", "\u09c7", "\u09c8", "\u09cb",
+					"\u09cc", "\u0995", "\u0996", "\u0997", "\u0998", "\u0999", "\u099a", "\u099b", "\u099c", "\u099d",
+					"\u099e", "\u099f", "\u09a0", "\u09a1", "\u09a2", "\u09a3", "\u09a4", "\u09a5", "\u09a6", "\u09a7",
+					"\u09a8", "\u09aa", "\u09ab", "\u09ac", "\u09ad", "\u09ae", "\u09af", "\u09b0", "\u09b2", "\u09b6",
+					"\u09b7", "\u09b8", "\u09b9", "\u09a1\u09bc", "\u09a2\u09bc", "\u09af\u09bc", "\u09ce", "\u0982",
+					"\u0983", "\u0981", "\u09cd", "\u09e7", "\u09e8", "\u09e9", "\u09ea", "\u09eb", "\u09ec", "\u09ed",
+					"\u09ee", "\u09ef", "\u09e6"
+				]
+			},
 			'telugu': {
 				'labelMsg': 'wikieditor-toolbar-characters-page-telugu',
 				'language': 'te',

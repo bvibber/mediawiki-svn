@@ -16,14 +16,14 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 79 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 80 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 83 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 84 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 83 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 84 ),
 		),
 	);
 	static $messages = array(
@@ -270,6 +270,7 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-characters-page-cyrillic',
 				'wikieditor-toolbar-characters-page-arabic',
 				'wikieditor-toolbar-characters-page-hebrew',
+				'wikieditor-toolbar-characters-page-bangla',
 				'wikieditor-toolbar-characters-page-telugu',
 				'wikieditor-toolbar-characters-page-sinhala',
 				'wikieditor-toolbar-characters-page-gujarati',
