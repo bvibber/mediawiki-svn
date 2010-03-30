@@ -78,7 +78,7 @@ class SpecialUploadWizard extends SpecialPage {
 		$this->outputHeader();
 
 		$wgOut->addHTML(
-			'<div id="upload-licensing" class="upload-section">Licensing tutorial</div>'
+			'<div id="upload-licensing" class="upload-section" style="display: none;">Licensing tutorial</div>'
 			. '<div id="upload-wizard" class="upload-section"></div>'
 		);
 
