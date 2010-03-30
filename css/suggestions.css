@@ -24,6 +24,18 @@
 	padding: 0.25em 0.25em;
 	line-height: 1.25em;
 }
+.suggestions-special:hover {
+	background-color: #4C59A6;
+	background-color: Highlight;
+}
+.suggestions-special:hover .special-label {
+	color: white;
+	color: HighlightText;
+}
+.suggestions-special:hover .special-query {
+	color: white;
+	color: HighlightText;
+}
 .suggestions-results {
 	background-color: white;
 	background-color: Window;

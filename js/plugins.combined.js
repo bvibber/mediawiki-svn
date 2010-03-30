@@ -5828,6 +5828,12 @@ $.suggestions = {
 			setTimeout( function() {
 				// Render special
 				$special = context.data.$container.find( '.suggestions-special' );
+				// Only hook this up the first time
+				if ( $special.children().length == 0 ) {
+					$special.mousemove( function() {
+						$.suggestions.highlight( context, $(), false );
+					} );
+				}
 				context.config.special.render.call( $special, context.data.$textbox.val() );
 			}, 1 );
 		}
@@ -5851,8 +5857,7 @@ $.suggestions = {
 				context.config[property] = value;
 				// Update suggestions
 				if ( typeof context.data !== 'undefined'  ) {
-					if ( typeof context.config.suggestions == 'undefined' ||
-							context.config.suggestions.length == 0 ) {
+					if ( context.data.$textbox.val().length == 0 ) {
 						// Hide the div when no suggestion exist
 						context.data.$container.hide();
 					} else {
@@ -5874,6 +5879,11 @@ $.suggestions = {
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
+								.mouseover( function( e ) {
+									$.suggestions.highlight(
+										context, $(this).closest( '.suggestions-results div' ), false
+									);
+								} )
 								.appendTo( $results );
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
@@ -5925,7 +5935,6 @@ $.suggestions = {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
-				
 				// .val() doesn't call any event handlers, so
 				// let the world know what happened
 				context.data.$textbox.change();
@@ -6049,15 +6058,15 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
+			context.data.$textbox.mousemove( function() {
+				$.suggestions.highlight( context, $(), false );
+			} );
 			context.data.$container = $( '<div />' )
 				.css( {
 					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
 					'left': Math.round( context.data.$textbox.offset().left ),
 					'width': context.data.$textbox.outerWidth(),
 					'display': 'none'
-				} )
-				.mouseover( function( e ) {
-					$.suggestions.highlight( context, $( e.target ).closest( '.suggestions-results div' ), false );
 				} )
 				.addClass( 'suggestions' )
 				.append(
@@ -6908,7 +6917,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					break;
 				 case 86: //v
-					 if ( event.ctrlKey && $.browser.msie ) {
+					 if ( event.ctrlKey ){
 						 //paste, intercepted for IE
 						 context.evt.paste( event );
 					 }
@@ -6962,6 +6971,7 @@ if ( typeof context == 'undefined' ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
 			var oldLength = context.fn.getContents().length;
+			
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -8975,7 +8985,7 @@ fn: {
 			
 			// Remove this marker
 			var marker = $(this).data( 'marker' );
-			if ( marker && typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
+			if ( typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
 				// Don't remove these either
 				return true;
 			}

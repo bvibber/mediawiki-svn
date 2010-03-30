@@ -318,33 +318,22 @@ $j(document).ready( function() {
 		},
 		special: {
 			render: function( query ) {
-				var perfectMatch = false;
-				$j(this).closest( '.suggestions' ).find( '.suggestions-results div' ).each( function() {
-					if ( $j(this).data( 'text' ) == query ) {
-						perfectMatch = true;
-					}
-				} );
-				if ( perfectMatch ) {
-					if ( $j(this).children().size() == 0  ) {
-						$j(this).show();
-						$label = $j( '<div />' )
-							.addClass( 'special-label' )
-							.text( mw.usability.getMsg( 'vector-simplesearch-containing' ) )
-							.appendTo( $j(this) );
-						$query = $j( '<div />' )
-							.addClass( 'special-query' )
-							.text( query )
-							.appendTo( $j(this) );
-						$query.autoEllipsis();
-					} else {
-						$j(this).find( '.special-query' )
-							.empty()
-							.text( query )
-							.autoEllipsis();
-					}
+				if ( $j(this).children().size() == 0  ) {
+					$j(this).show()
+					$label = $j( '<div />' )
+						.addClass( 'special-label' )
+						.text( mw.usability.getMsg( 'vector-simplesearch-containing' ) )
+						.appendTo( $j(this) );
+					$query = $j( '<div />' )
+						.addClass( 'special-query' )
+						.text( query )
+						.appendTo( $j(this) );
+					$query.autoEllipsis();
 				} else {
-					$j(this).hide();
-					$j(this).empty();
+					$j(this).find( '.special-query' )
+						.empty()
+						.text( query )
+						.autoEllipsis();
 				}
 			},
 			select: function( $textbox ) {
