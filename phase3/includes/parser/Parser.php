@@ -76,7 +76,7 @@ class Parser
 	const COLON_STATE_COMMENTDASHDASH = 7;
 
 	// Flags for preprocessToDom
-	const PTD_FOR_INCLUSION = 1;
+	const PTD_FOR_INCLUSION = 1024;
 
 	// Allowed values for $this->mOutputType
 	// Parameter to startExternalParse().
@@ -95,7 +95,7 @@ class Parser
 	# Persistent:
 	var $mTagHooks, $mTransparentTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables,
 		$mSubsts, $mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerIndex,
-		$mPreprocessor, $mExtLinkBracketedRegex, $mUrlProtocols, $mDefaultStripList,
+		$mParseEngine, $mPreprocessor, $mExtLinkBracketedRegex, $mUrlProtocols, $mDefaultStripList,
 		$mVarCache, $mConf, $mFunctionTagHooks;
 
 
@@ -137,19 +137,10 @@ class Parser
 		$this->mExtLinkBracketedRegex = '/\[(\b(' . wfUrlProtocols() . ')'.
 			'[^][<>"\\x00-\\x20\\x7F]+) *([^\]\\x0a\\x0d]*?)\]/S';
 		$this->mVarCache = array();
-		if ( isset( $conf['preprocessorClass'] ) ) {
-			$this->mPreprocessorClass = $conf['preprocessorClass'];
-		} elseif ( extension_loaded( 'domxml' ) ) {
-			// PECL extension that conflicts with the core DOM extension (bug 13770)
-			wfDebug( "Warning: you have the obsolete domxml extension for PHP. Please remove it!\n" );
-			$this->mPreprocessorClass = 'Preprocessor_Hash';
-		} elseif ( extension_loaded( 'dom' ) ) {
-			$this->mPreprocessorClass = 'Preprocessor_DOM';
-		} else {
-			$this->mPreprocessorClass = 'Preprocessor_Hash';
-		}
 		$this->mMarkerIndex = 0;
 		$this->mFirstCall = true;
+
+		$this->mParseEngine = new ParseEngine("includes/parser/WikiTextGrammar.xml");
 	}
 
 	/**
@@ -512,7 +503,8 @@ class Parser
 
 		list( $text, $title ) = $this->getTemplateDom( $title );
 		$flags = PPFrame::NO_ARGS | PPFrame::NO_TEMPLATES;
-		return $this->getPreprocessor()->newFrame()->expand( $text, $flags );
+		$frame = new PPFrame($this);
+		return $frame->expand( $text, $flags );
 	}
 
 	/**
@@ -547,8 +539,7 @@ class Parser
 	 */
 	function getPreprocessor() {
 		if ( !isset( $this->mPreprocessor ) ) {
-			$class = $this->mPreprocessorClass;
-			$this->mPreprocessor = new $class( $this );
+			$this->mPreprocessor = new Preprocessor( $this->mParseEngine );
 		}
 		return $this->mPreprocessor;
 	}
@@ -922,7 +913,7 @@ class Parser
 			else
 				$flag = Parser::PTD_FOR_INCLUSION;
 			$dom = $this->preprocessToDom( $text, $flag );
-			$text = $frame->expand( $dom );
+			$text = $frame->expand( $dom, $flag );
 		}
 		// if $frame is not provided, then use old-style replaceVariables
 		else {
@@ -2792,7 +2783,7 @@ class Parser
 		wfProfileIn( __METHOD__ );
 
 		if ( $frame === false ) {
-			$frame = $this->getPreprocessor()->newFrame();
+			$frame = new PPFrame($this);
 		} elseif ( !( $frame instanceof PPFrame ) ) {
 			wfDebug( __METHOD__." called using plain parameters instead of a PPFrame instance. Creating custom frame.\n" );
 			$frame = $this->getPreprocessor()->newCustomFrame($frame);
@@ -2859,7 +2850,7 @@ class Parser
 	 * @return string the text of the template
 	 * @private
 	 */
-	function braceSubstitution( $piece, $frame ) {
+	function braceSubstitution( $template, $frame ) {
 		global $wgContLang, $wgNonincludableNamespaces;
 		wfProfileIn( __METHOD__ );
 		wfProfileIn( __METHOD__.'-setup' );
@@ -2873,11 +2864,12 @@ class Parser
 		$isLocalObj = false;        # $text is a DOM node needing expansion in the current frame
 
 		# Title object, where $text came from
+		$xpath = new DOMXPath($template->ownerDocument);
 		$title = null;
 
 		# $part1 is the bit before the first |, and must contain only title characters.
 		# Various prefixes will be stripped from it later.
-		$titleWithSpaces = $frame->expand( $piece['title'] );
+		$titleWithSpaces = $xpath->query("title", $template)->item(0)->textContent;
 		$part1 = trim( $titleWithSpaces );
 		$titleText = false;
 
@@ -2885,7 +2877,10 @@ class Parser
 		$originalTitle = $part1;
 
 		# $args is a list of argument nodes, starting from index 0, not including $part1
-		$args = (null == $piece['parts']) ? array() : $piece['parts'];
+		$args = array();
+		foreach ($xpath->query("part", $template) as $part) {
+			$args[] = $part;
+		}
 		wfProfileOut( __METHOD__.'-setup' );
 
 		# SUBST
@@ -2900,14 +2895,15 @@ class Parser
 			# safesubst || (subst && PST) || (false && !PST) => transclude (skip the if)
 			# (false && PST) || (subst && !PST)  => return input (handled by if)
 			if ( $substMatch != 'safesubst' && ($substMatch == 'subst' xor $this->ot['wiki']) ) {
-				$text = $frame->virtualBracketedImplode( '{{', '|', '}}', $titleWithSpaces, $args );
+				$outText = ParseEngine::unparse($template);
+				$template->parentNode->replaceChild($template->ownerDocument->createTextNode($outText), $template);
 				$isLocalObj = true;
 				$found = true;
 			}
 		}
 
 		# Variables
-		if ( !$found && $args->getLength() == 0 ) {
+		if ( !$found && $args->length == 0 ) {
 			$id = $this->mVariables->matchStartToEnd( $part1 );
 			if ( $id !== false ) {
 				$text = $this->getVariableValue( $id, $frame );
@@ -2964,14 +2960,12 @@ class Parser
 						# Add a frame parameter, and pass the arguments as an array
 						$allArgs = $initialArgs;
 						$allArgs[] = $frame;
-						for ( $i = 0; $i < $args->getLength(); $i++ ) {
-							$funcArgs[] = $args->item( $i );
-						}
+						$funcArgs = array_merge( $funcArgs, $args );
 						$allArgs[] = $funcArgs;
 					} else {
 						# Convert arguments to plain text
-						for ( $i = 0; $i < $args->getLength(); $i++ ) {
-							$funcArgs[] = trim( $frame->expand( $args->item( $i ) ) );
+						foreach ($args as $arg) {
+							$funcArgs[] = substr(ParseEngine::unparse($arg), 1);
 						}
 						$allArgs = array_merge( $initialArgs, $funcArgs );
 					}
@@ -3088,9 +3082,9 @@ class Parser
 		# If we haven't found text to substitute by now, we're done
 		# Recover the source wikitext and return it
 		if ( !$found ) {
-			$text = $frame->virtualBracketedImplode( '{{', '|', '}}', $titleWithSpaces, $args );
+			$outText = ParseEngine::unparse($template);
+			$template->parentNode->replaceChild($template->ownerDocument->createTextNode($outText), $template);
 			wfProfileOut( __METHOD__ );
-			return array( 'object' => $text );
 		}
 
 		# Expand DOM-style return values in a child frame
@@ -3105,7 +3099,7 @@ class Parser
 				if ( isset( $this->mTplExpandCache[$titleText] ) ) {
 					$text = $this->mTplExpandCache[$titleText];
 				} else {
-					$text = $newFrame->expand( $text );
+					$text = $newFrame->expand( $text, self::PTD_FOR_INCLUSION );
 					$this->mTplExpandCache[$titleText] = $text;
 				}
 			} else {
@@ -3141,15 +3135,11 @@ class Parser
 				$this->insertStripItem( '<!-- WARNING: template omitted, post-expand include size too large -->' );
 			$this->limitationWarn( 'post-expand-template-inclusion' );
 		}
-
-		if ( $isLocalObj ) {
-			$ret = array( 'object' => $text );
-		} else {
-			$ret = array( 'text' => $text );
+		if ($template->parentNode != NULL) {
+			$template->parentNode->replaceChild($template->ownerDocument->createTextNode($text), $template);
 		}
 
 		wfProfileOut( __METHOD__ );
-		return $ret;
 	}
 
 	/**
@@ -3314,16 +3304,16 @@ class Parser
 	 * Triple brace replacement -- used for template arguments
 	 * @private
 	 */
-	function argSubstitution( $piece, $frame ) {
+	function argSubstitution( $tplArg, $frame ) {
 		wfProfileIn( __METHOD__ );
 
-		$error = false;
-		$parts = $piece['parts'];
-		$nameWithSpaces = $frame->expand( $piece['title'] );
+		$xpath = new DOMXPath($tplArg->ownerDocument);
+		$parts = $xpath->query("part", $tplArg);
+		$nameWithSpaces = $xpath->query("title", $tplArg)->item(0)->textContent;
 		$argName = trim( $nameWithSpaces );
 		$object = false;
 		$text = $frame->getArgument( $argName );
-		if (  $text === false && $parts->getLength() > 0
+		if (  $text === false && $parts->length > 0
 		  && (
 		    $this->ot['html']
 		    || $this->ot['pre']
@@ -3331,28 +3321,18 @@ class Parser
 		  )
 		) {
 			# No match in frame, use the supplied default
-			$object = $parts->item( 0 )->getChildren();
+			$text = $parts->item( 0 )->firstChild->textContent;
 		}
 		if ( !$this->incrementIncludeSize( 'arg', strlen( $text ) ) ) {
-			$error = '<!-- WARNING: argument omitted, expansion size too large -->';
+			$text .= '<!-- WARNING: argument omitted, expansion size too large -->';
 			$this->limitationWarn( 'post-expand-template-argument' );
 		}
-
-		if ( $text === false && $object === false ) {
-			# No match anywhere
-			$object = $frame->virtualBracketedImplode( '{{{', '|', '}}}', $nameWithSpaces, $parts );
+		if ($text == NULL) {
+			$text = ParseEngine::unparse($tplArg);
 		}
-		if ( $error !== false ) {
-			$text .= $error;
-		}
-		if ( $object !== false ) {
-			$ret = array( 'object' => $object );
-		} else {
-			$ret = array( 'text' => $text );
-		}
+		$tplArg->parentNode->replaceChild($tplArg->ownerDocument->createTextNode($text), $tplArg);
 
 		wfProfileOut( __METHOD__ );
-		return $ret;
 	}
 
 	/**
@@ -3367,12 +3347,14 @@ class Parser
 	 *     noClose    Original text did not have a close tag
 	 * @param PPFrame $frame
 	 */
-	function extensionSubstitution( $params, $frame ) {
+	function extensionSubstitution( $xmltag, $frame ) {
 		global $wgRawHtml, $wgContLang;
 
-		$name = $frame->expand( $params['name'] );
-		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );
-		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );
+		$xpath = new DOMXPath($xmltag->ownerDocument);
+		$name = substr($xmltag->getAttribute("startTag"), 1);
+		$attrText = $xpath->query("attr", $xmltag)->item(0)->textContent;
+		$inner = $xpath->query("inner", $xmltag);
+		$content = $inner->length == 0 ? NULL : $inner->item(0)->textContent;
 		$marker = "{$this->mUniqPrefix}-$name-" . sprintf('%08X', $this->mMarkerIndex++) . self::MARKER_SUFFIX;
 
 		$isFunctionTag = isset( $this->mFunctionTagHooks[strtolower($name)] ) &&
@@ -3416,21 +3398,7 @@ class Parser
 				extract( $flags );
 			}
 		} else {
-			if ( is_null( $attrText ) ) {
-				$attrText = '';
-			}
-			if ( isset( $params['attributes'] ) ) {
-				foreach ( $params['attributes'] as $attrName => $attrValue ) {
-					$attrText .= ' ' . htmlspecialchars( $attrName ) . '="' .
-						htmlspecialchars( $attrValue ) . '"';
-				}
-			}
-			if ( $content === null ) {
-				$output = "<$name$attrText/>";
-			} else {
-				$close = is_null( $params['close'] ) ? '' : $frame->expand( $params['close'] );
-				$output = "<$name$attrText>$content$close";
-			}
+			$output = ParseEngine::unparse($xmltag);
 		}
 
 		if( $markerType === 'none' ) {
@@ -3631,9 +3599,9 @@ class Parser
 		$baseTitleText = $this->mTitle->getPrefixedDBkey();
 		$oldType = $this->mOutputType;
 		$this->setOutputType( self::OT_WIKI );
-		$frame = $this->getPreprocessor()->newFrame();
+		$frame = new PPFrame($this);
 		$root = $this->preprocessToDom( $origText );
-		$node = $root->getFirstChild();
+		$node = $root->firstChild;
 		$byteOffset = 0;
 		$tocraw = array();
 
@@ -3810,14 +3778,14 @@ class Parser
 			# Add the section to the section tree
 			# Find the DOM node for this header
 			while ( $node && !$isTemplate ) {
-				if ( $node->getName() === 'h' ) {
+				if ( $node->nodeName === 'h' ) {
 					$bits = $node->splitHeading();
 					if ( $bits['i'] == $sectionIndex )
 						break;
 				}
 				$byteOffset += mb_strlen( $this->mStripState->unstripBoth(
 					$frame->expand( $node, PPFrame::RECOVER_ORIG ) ) );
-				$node = $node->getNextSibling();
+				$node = $node->nextSibling;
 			}
 			$tocraw[] = array(
 				'toclevel' => $toclevel,
@@ -4196,7 +4164,7 @@ class Parser
 		$text = preg_replace( $substRegex, $substText, $text );
 		$text = $this->cleanSigInSig( $text );
 		$dom = $this->preprocessToDom( $text );
-		$frame = $this->getPreprocessor()->newFrame();
+		$frame = new PPFrame($this);
 		$text = $frame->expand( $dom );
 
 		if ( !$parsing ) {
@@ -4834,7 +4802,7 @@ class Parser
 		$this->mOptions = new ParserOptions;
 		$this->setOutputType( self::OT_WIKI );
 		$outText = '';
-		$frame = $this->getPreprocessor()->newFrame();
+		$frame = new PPFrame($this);
 
 		// Process section extraction flags
 		$flags = 0;
@@ -4847,10 +4815,11 @@ class Parser
 		}
 		// Preprocess the text
 		$root = $this->preprocessToDom( $text, $flags );
+		PPFrame::updateIncTags($root, $flags);
 
 		// <h> nodes indicate section breaks
 		// They can only occur at the top level, so we can find them by iterating the root's children
-		$node = $root->getFirstChild();
+		$node = $root->firstChild->firstChild;
 
 		// Find the target section
 		$ind = 1;
@@ -4859,18 +4828,17 @@ class Parser
 			$targetLevel = 1000;
 		} else {
 			while ( $node ) {
-				if ( $node->getName() === 'h' ) {
+				if ( $node->nodeName === 'h' ) {
 					if ( $ind == $sectionIndex ) {
-						$bits = $node->splitHeading();
-						$targetLevel = $bits['level'];
+						$targetLevel = strlen($node->getAttribute("endTag"));
 						break;
 					}
 					$ind ++;
 				}
 				if ( $mode === 'replace' ) {
-					$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
+					$outText .= ParseEngine::unparse($node);
 				}
-				$node = $node->getNextSibling();
+				$node = $node->nextSibling;
 			}
 		}
 
@@ -4885,18 +4853,17 @@ class Parser
 
 		// Find the end of the section, including nested sections
 		do {
-			if ( $node->getName() === 'h' ) {
-				$bits = $node->splitHeading();
-				$curLevel = $bits['level'];
+			if ( $node->nodeName === 'h' ) {
+				$curLevel = strlen($node->getAttribute("endTag"));
 				if ( $ind != $sectionIndex && $curLevel <= $targetLevel ) {
 					break;
 				}
 				$ind ++;
 			}
 			if ( $mode === 'get' ) {
-				$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
+				$outText .= ParseEngine::unparse($node);
 			}
-			$node = $node->getNextSibling();
+			$node = $node->nextSibling;
 		} while ( $node );
 
 		// Write out the remainder (in replace mode only)
@@ -4911,13 +4878,16 @@ class Parser
 
 			while ( $node ) {
 				$outText .= $frame->expand( $node, PPFrame::RECOVER_ORIG );
-				$node = $node->getNextSibling();
+				$node = $node->nextSibling;
 			}
 		}
 
 		if ( is_string( $outText ) ) {
 			// Re-insert stripped tags
 			$outText = rtrim( $this->mStripState->unstripBoth( $outText ) );
+		}
+		if ($outText[0] == "\n") {
+			$outText = substr($outText, 1);
 		}
 
 		return $outText;

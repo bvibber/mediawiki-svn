@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<Grammar rootTag="root" startRule="start">
+	<Sequence name="start" >
+		<Choice failSafe="true">
+			<Assignment name="h" tag="(={1,6})" regex="true">
+				<Reference name="endText" />
+			</Assignment>
+		</Choice>
+		<Reference name="main" />
+	</Sequence>
+	<Text name="main">
+		<Assignment name="link" tag="[[">
+			<Reference name="endText" var="]]" />
+		</Assignment>
+		<Assignment name="h" tag="\n(={1,6})" regex="true">
+			<Reference name="endText" />
+		</Assignment>
+		<Assignment name="tplarg" tag="{{{(?!{)" regex="true">
+			<Reference name="tplSeq" var="}}}" />
+		</Assignment>
+		<Assignment name="template" tag="{{">
+			<Reference name="tplSeq" var="}}" />
+		</Assignment>
+		<Assignment name="comment" tag="\n?(?:&lt;!--.*?(?:-->\n?|$))+" regex="true" />
+		<Assignment name="xmltag" tag="&lt;(\w+)(?= |>)" regex="true">
+			<Sequence>
+				<Assignment name="attr">
+					<Reference name="main" />
+				</Assignment>
+				<Choice>
+					<EndTag tag="/>" />
+					<Assignment name="inner" tag=">">
+						<Reference name="endText" var="&lt;/~r>" />
+					</Assignment>
+				</Choice>
+			</Sequence>
+		</Assignment>
+	</Text>
+	<Sequence name="endText">
+		<Reference name="main" />
+		<EndTag tag="~r" />
+	</Sequence>
+	<Sequence name="tplSeq">
+		<Assignment name="title">
+			<Reference name="main" />
+		</Assignment>
+		<Reference name="partList" />
+		<EndTag tag="~r" />
+	</Sequence>
+	<Choice name="partList" failSafe="true">
+		<Sequence>
+			<Assignment name="part" tag="|">
+				<Sequence>
+					<Assignment name="first">
+						<Reference name="main" />
+					</Assignment>
+					<Choice failSafe="true">
+						<Assignment name="value" tag="=">
+							<Reference name="main" />
+						</Assignment>
+					</Choice>
+				</Sequence>
+			</Assignment>
+			<Reference name="partList" />
+		</Sequence>
+	</Choice>
+</Grammar>
