@@ -1390,6 +1390,7 @@ $j(document).ready( function() {
 					}
 					// Preserve whitespace in selection when replacing
 					if ( whitespace ) insertText = whitespace[0] + insertText + whitespace[1];
+					$j(this).dialog( 'close' );
 					$j.wikiEditor.modules.toolbar.fn.doAction( $j(this).data( 'context' ), {
 						type: 'replace',
 						options: {
@@ -1400,7 +1401,6 @@ $j(document).ready( function() {
 					// Blank form
 					$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' ).val( '' );
 					$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).attr( 'checked', '' );
-					$j(this).dialog( 'close' );
 				},
 				'wikieditor-toolbar-tool-link-cancel': function() {
 					$j(this).dialog( 'close' );
@@ -1515,6 +1515,8 @@ $j(document).ready( function() {
 					var insertText = $j( '#wikieditor-toolbar-reference-text' ).val();
 					var whitespace = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace' );
 					var attributes = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'attributes' );
+					// Close the dialog
+					$j( this ).dialog( 'close' );
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j( this ).data( 'context' ),
 						{
@@ -1527,12 +1529,8 @@ $j(document).ready( function() {
 						},
 						$j( this )
 					);
-					
 					// Restore form state
 					$j( '#wikieditor-toolbar-reference-text' ).val( "" );
-					// Close the dialog
-					$j( this ).dialog( 'close' );
-
 				},
 				'wikieditor-toolbar-tool-reference-cancel': function() {
 					$j( this ).dialog( 'close' );
@@ -1544,7 +1542,9 @@ $j(document).ready( function() {
 					.$textarea.textSelection( 'getSelection' ); 
 				// set focus
 				$j( '#wikieditor-toolbar-reference-text' ).focus();
-				$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ '', '' ] );
+				$j( '#wikieditor-toolbar-reference-dialog' )
+					.data( 'whitespace', [ '', '' ] )
+					.data( 'attributes', '' );
 				if ( selection != '' ) {
 					var matches, text;
 					if ( ( matches = selection.match( /^(\s*)<ref([^\>]*)>([^\<]*)<\/ref\>(\s*)$/ ) ) ) {
@@ -1761,6 +1761,7 @@ $j(document).ready( function() {
 					if ( $j( '#wikieditor-toolbar-table-sortable' ).is( ':checked' ) )
 						classes.push( 'sortable' );
 					var classStr = classes.length > 0 ? ' class="' + classes.join( ' ' ) + '"' : '';
+					$j(this).dialog( 'close' );
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
@@ -1786,8 +1787,6 @@ $j(document).ready( function() {
 							$j( '#wikieditor-toolbar-table-wikitable' ).click();
 						if ( $j( '#wikieditor-toolbar-table-sortable' ).is( ':checked' ) )
 							$j( '#wikieditor-toolbar-table-sortable' ).click();
-					$j(this).dialog( 'close' );
-
 				},
 				'wikieditor-toolbar-tool-table-cancel': function() {
 					$j(this).dialog( 'close' );
@@ -1965,7 +1964,9 @@ $j(document).ready( function() {
 								'end': newEnd } );
 					}
 					$textarea.textSelection( 'scrollToCaretPosition' );
-					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
+					$textarea.textSelection( 'setSelection', { 'start': start,
+						'end': mode == 'replace' ? newEnd : end } );
+					$j( this ).data( 'offset', mode == 'replace' ? newEnd : end );
 					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe[0].contentWindow : $textarea;
 					textbox.focus();
 				}

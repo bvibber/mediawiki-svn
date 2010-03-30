@@ -227,7 +227,10 @@ setSelection: function( options ) {
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
-			var length = selection.text.length;
+			var length = this.value.length;
+			// IE doesn't count \n when computing the offset, so we won't either
+			var newLines = this.value.match( /\n/g );
+			if ( newLines) length = length - newLines.length;
 			selection.moveStart( 'character', options.start );
 			selection.moveEnd( 'character', -length + options.end );
 			selection.select();
