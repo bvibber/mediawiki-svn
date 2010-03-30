@@ -56,7 +56,7 @@ class PagedTiffHandler extends ImageHandler {
     function isMultiPage($img = false) {
         if (!$img) return true;
         $meta = unserialize($img->metadata);
-        return ($meta['Pages'] > 1);
+        return ($meta['page_amount'] > 1);
     }
 
     /**
@@ -72,7 +72,6 @@ class PagedTiffHandler extends ImageHandler {
     function check( $saveName, $tempName, &$error ) {
         global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, $wgTiffRejectOnError, $wgTiffRejectOnWarning,
                $wgTiffUseTiffReader, $wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
-        if (!(substr($saveName, -5, 5)=='.tiff' || substr($saveName, -4, 4)=='.tif')) return true; ### why? ^DK
         wfLoadExtensionMessages( 'PagedTiffHandler' );
         if($wgTiffUseTiffReader) {
             require_once($wgTiffReaderPath.'/TiffReader.php');
@@ -124,7 +123,7 @@ class PagedTiffHandler extends ImageHandler {
             wfDebug( __METHOD__.": tiff_too_much_meta ($saveName)\n" );
             return false;
         }
-        if($wgTiffMaxEmbedFiles && $meta['Pages'] > $wgTiffMaxEmbedFiles) {
+        if($wgTiffMaxEmbedFiles && $meta['page_amount'] > $wgTiffMaxEmbedFiles) {
             $error = 'tiff_too_much_embed_files';
             wfDebug( __METHOD__.": tiff_too_much_embed_files ($saveName)\n" );
             return false;
@@ -139,8 +138,7 @@ class PagedTiffHandler extends ImageHandler {
     function getParamMap() {
         return array(
         'img_width' => 'width',
-        // @todo check height ### height!! ^DK
-		## Die Methode gibt nur die ParamMap für die MagicWordIDs zurück. Es gibt keine MagicWordID für height. ^SU
+        // @todo check height ## MediaWiki bietet keine MagicWord-ID für height. Dies scheint ein Bug zu sein. ^SU
         'img_page' => 'page',
         'img_lossy' => 'lossy',
         );
@@ -159,10 +157,10 @@ class PagedTiffHandler extends ImageHandler {
                 }
                 return false;
             }
-            if ( $value <= 0 || $value > PHP_INT_MAX ) { ## check against integer overflow ^SU
+            if ( $value <= 0 || $value > 65535 ) { ## ImageMagick läuft bei einer Seitenangabe höher als 65535 in einen Overflow. ^SU
                 return false;
             } else {
-                return true; ## spills at 65536?? ^DK
+                return true;
             }
         } else {
             return false;
@@ -232,8 +230,11 @@ class PagedTiffHandler extends ImageHandler {
         $srcHeight = $size['height'];
 
         if ( isset( $params['height'] ) && $params['height'] != -1 ) {
-			## checks if with the given ratio the image box should be fitted ^SU
-            if ( $params['width'] * $srcHeight > $params['height'] * $srcWidth ) { ## huh?? what does this do? ^DK
+			## Wenn das Bild im Hochformat ist und der Height-Parameter angegeben ist,
+			## wird der Width-Parameter angepasst, sofern width x height die Original-Ratio
+			## zerstören würden. Dies dient der Paging-Vorschau auf der ImagePage,
+			## damit die Seiten-Vorschauen nicht das Seiten-Layout zerstören. ^SU
+            if ( $params['width'] * $srcHeight > $params['height'] * $srcWidth ) {
                 $params['width'] = wfFitBoxWidth( $srcWidth, $srcHeight, $params['height'] );
             }
         }
@@ -258,6 +259,7 @@ class PagedTiffHandler extends ImageHandler {
         if ( !$metadata ) {
             if($metadata == -1) {
                 return $this->doThumbError( @$params['width'], @$params['height'], 'tiff_error_cached' ); ##test this ^DK
+				// $wgCacheType = CACHE_DB
             }
             return $this->doThumbError( @$params['width'], @$params['height'], 'tiff_no_metadata' );
         }
@@ -284,7 +286,7 @@ class PagedTiffHandler extends ImageHandler {
             return new ThumbnailImage( $image, $dstUrl, $width,
             $height, $dstPath, $page );
 
-        if(isset($meta['pages'][$page]['pixels']) && $meta['pages'][$page]['pixels'] > $wgTiffMaxEmbedFileResolution)
+        if(isset($meta['page_data'][$page]['pixels']) && $meta['page_data'][$page]['pixels'] > $wgTiffMaxEmbedFileResolution)
             return $this->doThumbError( $width, $height, 'tiff_sourcefile_too_large' );
 
 		if(($width * $height) > $wgTiffMaxEmbedFileResolution)
@@ -335,7 +337,7 @@ class PagedTiffHandler extends ImageHandler {
     function getThumbExtension( $image, $page, $lossy ) {
         if($lossy === NULL) {
             $data = $this->getMetaArray($image);
-            if((strtolower($data['pages'][$page]['alpha']) == 'true')) {
+            if((strtolower($data['page_data'][$page]['alpha']) == 'true')) {
                 return '.png';
             }
             else {
@@ -358,7 +360,7 @@ class PagedTiffHandler extends ImageHandler {
     function pageCount( $image ) {
         $data = $this->getMetaArray( $image );
         if ( !$data ) return false;
-        return intval( $data['Pages'] );
+        return intval( $data['page_amount'] );
     }
 
     /**
@@ -397,8 +399,8 @@ class PagedTiffHandler extends ImageHandler {
         if( $metadata ) {
             wfLoadExtensionMessages( 'PagedTiffHandler' );
             return wfMsgExt('tiff-file-info-size', 'parseinline',
-            $wgLang->formatNum( $metadata['pages'][$page]['width'] ),
-            $wgLang->formatNum( $metadata['pages'][$page]['height'] ),
+            $wgLang->formatNum( $metadata['page_data'][$page]['width'] ),
+            $wgLang->formatNum( $metadata['page_data'][$page]['height'] ),
             $wgLang->formatSize( $image->getSize() ),
             $image->getMimeType(),
             $page );
@@ -413,8 +415,7 @@ class PagedTiffHandler extends ImageHandler {
     function isMetadataValid( $image, $metadata ) {
         if(!empty( $metadata ) && $metadata != serialize(array())) {
             $meta = unserialize($metadata);
-			## Sollte das wirklich geändert werden, werden bereits bestehende Bilder Fehler produzieren. ^SU
-            if(isset($meta['Pages']) && isset($meta['pages'])) { # ['Pages'] UND ['pages']? wieso das denn? das ist verwirrend... ^DK
+            if(isset($meta['page_amount']) && isset($meta['page_data'])) {
                 return true;
             }
         }
@@ -428,8 +429,7 @@ class PagedTiffHandler extends ImageHandler {
      * @return array of strings
      * @access private
      */
-	## könnte in den ImageHandler ... ist bis jetzt aber nur im BitmapHandler implementiert. ^SU
-    function visibleMetadataFields() { #sieht vollig generisch aus. gehört das nicht in die oberklasse? ^DK
+    function visibleMetadataFields() {
         $fields = array();
         $lines = explode( "\n", wfMsg( 'metadata-fields' ) );
         foreach( $lines as $line ) {
@@ -527,7 +527,7 @@ class PagedTiffHandler extends ImageHandler {
 		## Ist dies nicht der Fall, wird eine Instanz erstellt und im ImageObject gespeichert. ^SU
         if ( !$image )
             $tiffimg = new PagedTiffImage( $path ); 
-        elseif ( !isset( $image->tiffImage ) ) #wo kommt $image her, wofür ist es gut? könnte es evtl schon ein TiffImage sein? ^DK
+        elseif ( !isset( $image->tiffImage ) )
             $tiffimg = $image->tiffImage = new PagedTiffImage( $path );
         else
             $tiffimg = $image->tiffImage;
@@ -539,8 +539,6 @@ class PagedTiffHandler extends ImageHandler {
      * Returns an Array with the Image-Metadata.
      */
     function getMetaArray( $image ) {
-	# gehört das nicht ein einen lazy initializer in TiffImage::getMetaArray() oder so? ^DK
-	# Nein. Die Methode holt die Metadaten aus dem MediaWiki-ImageObject und nicht aus dem TiffImage. ^SU
         if ( isset( $image->tiffMetaArray ) )
             return $image->tiffMetaArray;
 

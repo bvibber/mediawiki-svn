@@ -70,9 +70,9 @@ class PagedTiffImage {
 	* Returns an array with width and height of the tiff page.
 	*/
 	public static function getPageSize( $data, $page ) {
-		if( isset( $data['pages'][$page] ) ) {
-			return array('width'  => $data['pages'][$page]['width'],
-			'height' => $data['pages'][$page]['height']);
+		if( isset( $data['page_data'][$page] ) ) {
+			return array('width'  => $data['page_data'][$page]['width'],
+			'height' => $data['page_data'][$page]['height']);
 		}
 		return false;
 	}
@@ -80,8 +80,8 @@ class PagedTiffImage {
 	/**
 	* Reads metadata of the tiff file via shell command and returns an associative array.
 	* layout:
-	* meta['Pages'] = amount of pages
-	* meta['pages'] = metadata per page
+	* meta['page_amount'] = amount of pages
+	* meta['page_data'] = metadata per page
 	* meta['exif']  = Exif, XMP and IPTC
 	* meta['errors'] = identify-errors
 	* meta['warnings'] = identify-warnings
@@ -99,7 +99,7 @@ class PagedTiffImage {
 		if($this->_meta === NULL) {
 			if ( $wgImageMagickIdentifyCommand ) {
 	
-				wfProfileIn( 'PagedTiffImage' );
+				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
 				/**
 				* ImageMagick is used in order to get the basic metadata of embedded files.
 				* This is not reliable in exiv2m since it is not possible to name a set of required fields.
@@ -122,6 +122,7 @@ class PagedTiffImage {
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
 						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
 						// exiv2-doc @link http://www.exiv2.org/sample.html
+						## In der Linux-Version von exiv2 gibt es einen Bug, sodass diese Parameter dort nicht funktionieren. ^SU
 						wfEscapeShellArg( $this->mFilename );
 	
 					wfRunHooks( "PagedTiffHandlerExivCommand", array( &$cmd, $this->mFilename ) );
@@ -148,7 +149,7 @@ class PagedTiffImage {
 					wfProfileOut( 'identify -verbose' );
 					$this->_meta['exif'] = $this->parseVerbose($dump);
 				}
-				wfProfileOut( 'PagedTiffImage' );
+				wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
 			}
 		}
 		unset($this->_meta['exif']['Image']);
@@ -167,8 +168,8 @@ class PagedTiffImage {
 		$infos = NULL;
 		preg_match_all('/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER);
 		$data = array();
-		$data['Pages'] = count($infos);
-		$data['pages'] = array();
+		$data['page_amount'] = count($infos);
+		$data['page_data'] = array();
 		foreach($infos as $info) {
 			$entry = array();
 			$lines = explode("\n", $info[1]);
@@ -195,7 +196,7 @@ class PagedTiffImage {
 				$entry[trim($parts[0])] = trim($parts[1]);
 			}
 			$entry['pixels'] = $entry['height'] * $entry['width'];
-			$data['pages'][$entry['page']] = $entry;
+			$data['page_data'][$entry['page']] = $entry;
 		}
 	
 		$dump = preg_replace('/\[BEGIN\](.+?)\[END\]/si', '', $dump);
@@ -210,17 +211,18 @@ class PagedTiffImage {
 						break;
 					}
 				}
-				if(!$knownError) {
+				if(!$knownError) { 
+					## BypassMessages werden nicht gespeichert ^SU
 					foreach($wgTiffIdentifyBypassMessages as $msg) {
 						if (preg_match($msg, trim($error))) {
-							$data['warnings'][] = $error;
+							//$data['warnings'][] = $error;
 							$knownError = true;
 							break;
 						}
 					}
 				}
 				if(!$knownError) {
-					$data['unknownErrors'][] = $error;
+					$data['warning'][] = $error;
 				}
 			}
 		}
