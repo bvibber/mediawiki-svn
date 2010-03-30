@@ -3,6 +3,7 @@ package de.brightbyte.wikiword.store;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,6 +84,8 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 		}
 
 		public Map<Integer, ConceptFeatures<T, Integer>> getConceptsFeatures(int[] concepts) throws PersistenceException {
+			if (concepts.length==0) return Collections.emptyMap();
+			
 			try {
 				String sql = "SELECT concept, feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
 				sql += " WHERE concept IN "+database.encodeSet(concepts);

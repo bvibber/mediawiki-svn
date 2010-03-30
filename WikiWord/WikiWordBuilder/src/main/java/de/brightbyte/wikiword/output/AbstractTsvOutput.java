@@ -4,11 +4,13 @@ import java.io.Writer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.brightbyte.data.cursor.DataCursor;
+import de.brightbyte.data.cursor.DataSink;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.DatasetIdentifier;
 
-public abstract class AbstractTsvOutput extends AbstractWriterOutput {
+public abstract class AbstractTsvOutput extends AbstractWriterOutput implements DataSink<String[]> {
 	
 	private CharSequence terminator = "\r\n";
 	private CharSequence separator = "\t";
@@ -33,6 +35,22 @@ public abstract class AbstractTsvOutput extends AbstractWriterOutput {
 	}
 
 	protected StringBuilder buffer = new StringBuilder();
+	
+
+	public int transfer(DataCursor<String[]> cursor) throws PersistenceException {
+		String[] rec;
+		int c = 0;
+		while ((rec = cursor.next()) != null) {
+			commit(rec);
+			c++;
+		}
+		
+		return c;
+	}
+
+	public void commit(String[] values) throws PersistenceException {
+		writeRow(values);
+	}
 	
 	protected void writeRow(String... values) throws PersistenceException {
 		buffer.setLength(0);

@@ -1,22 +1,27 @@
 package de.brightbyte.wikiword.extract;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSink;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.io.OutputSink;
+import de.brightbyte.text.Chunker;
+import de.brightbyte.text.RegularExpressionChunker;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.PlainTextAnalyzer;
 import de.brightbyte.wikiword.disambig.Disambiguator;
 import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
 import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
 import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
+import de.brightbyte.wikiword.disambig.Term;
+import de.brightbyte.wikiword.disambig.Disambiguator.Result;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.model.PhraseOccurance;
-import de.brightbyte.wikiword.model.PhraseOccuranceSequence;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.FeatureStore;
@@ -27,6 +32,8 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 	protected Disambiguator<TermReference, LocalConcept> disambiguator;
 	protected PlainTextAnalyzer analyzer;
 	private int phraseLength;
+	protected Chunker chunker;
+	protected boolean flip = false;
 
 	public WordSenseIndexer() {
 		super(false, true);
@@ -64,15 +71,45 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 			analyzer = PlainTextAnalyzer.getPlainTextAnalyzer(getCorpus(), tweaks);
 			analyzer.initialize();
 			
-			phraseLength = args.getIntOption("phrase-length", tweaks.getTweak("wikiSenseIndexer.phraseLength", 6)); 
+			phraseLength = args.getIntOption("phrase-length", tweaks.getTweak("wikiSenseIndexer.phraseLength", 6));
+			
+			chunker = new RegularExpressionChunker(Pattern.compile("\\s*[,;|]\\s*")); //TODO: configure!
+			flip = true; //FIXME: parameter
+			//TODO: parameter for limiting concept type
 	}
 
 	@Override
-	protected String process(String line) throws PersistenceException {
+	protected String process(String line) throws PersistenceException, ParseException {
+		//TODO: logic for handling overlapping phrases in a PhraseOccuranceSequence
+		/*
 		PhraseOccuranceSequence sequence = analyzer.extractPhrases(line, phraseLength); //TODO: alternative tokenizer/splitter //TODO: split by sentence first.
 		List<PhraseOccurance> phrases = sequence.getDisjointPhraseSequence(null);
 		Disambiguator.Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(phrases);
 		return result.toString(); //FIXME: annotate!
+		*/
+		
+		List<Term> terms =  Term.asTerms(chunker.chunk(line));
+		if (flip) Collections.reverse(terms);
+		
+		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(terms);
+		if (flip) Collections.reverse(terms);
+		
+		return assembleMeanings(terms, result);
+	}
+
+	private String assembleMeanings(List<Term> terms, Result<Term, LocalConcept> result) {
+		StringBuilder s = new StringBuilder();
+		
+		for (Term t: terms) {
+			LocalConcept concept = result.getMeanings().get(t);
+			
+			if (s.length()>0) s.append(';');
+			s.append(t.getTerm()); //FIXME: escape!
+			s.append('=');
+			if (concept!=null) s.append(concept.getName()); //FIXME: escape!
+		}
+		
+		return s.toString();
 	}
 
 	public static void main(String[] argv) throws Exception {

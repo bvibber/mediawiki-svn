@@ -52,7 +52,7 @@ public class Term implements TermReference {
 		return asTerms(Arrays.asList(terms));
 	}
 
-	public static List<Term> asTerms(List<String> terms) {
+	public static List<Term> asTerms(Iterable<String> terms) {
 		List<Term> tt = new ArrayList<Term>();
 		for (String t: terms) {
 			tt.add(new Term(t));
