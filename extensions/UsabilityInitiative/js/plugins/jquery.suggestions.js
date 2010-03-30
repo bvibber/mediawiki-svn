@@ -93,7 +93,7 @@ $.suggestions = {
 				// Only hook this up the first time
 				if ( $special.children().length == 0 ) {
 					$special.mousemove( function() {
-						$.suggestions.highlight( context, $(), false );
+						$.suggestions.highlight( context, $( [] ), false );
 					} );
 				}
 				context.config.special.render.call( $special, context.data.$textbox.val() );
@@ -321,7 +321,7 @@ $.fn.suggestions = function() {
 				'$textbox': $(this)
 			};
 			context.data.$textbox.mousemove( function() {
-				$.suggestions.highlight( context, $(), false );
+				$.suggestions.highlight( context, $( [] ), false );
 			} );
 			context.data.$container = $( '<div />' )
 				.css( {

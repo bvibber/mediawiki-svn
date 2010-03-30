@@ -18,7 +18,7 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'css/suggestions.css', 'version' => 7 ),
+				array( 'src' => 'css/suggestions.css', 'version' => 8 ),
 				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 7 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 12 ),
@@ -29,11 +29,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 81 ),
+				array( 'src' => 'css/combined.css', 'version' => 82 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 81 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 82 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -70,7 +70,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.color.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 8 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 27 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 179 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 52 ),
@@ -82,10 +82,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 368 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 369 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 368 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 369 ),
 			),
 		),
 	);
