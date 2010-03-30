@@ -25,6 +25,7 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.TermMeaning;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordResource;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
@@ -167,7 +168,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		return ((LocalStatisticsStore<LocalConcept>)getStatisticsStore()).pickRandomTerm(top);
 	}
 	
-	public DataSet<TermReference> getAllTerms() throws PersistenceException {
+	public DataSet<TermMeaning> getAllTerms() throws PersistenceException {
 		return ((LocalStatisticsStore<LocalConcept>)getStatisticsStore()).getAllTerms();
 	}
 
@@ -177,20 +178,20 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
-	protected final DatabaseDataSet.Factory<TermReference> termFactory = new DatabaseDataSet.Factory<TermReference>() {
-		public TermReference newInstance(ResultSet row) throws SQLException, PersistenceException {
+	protected final DatabaseDataSet.Factory<TermMeaning> termFactory = new DatabaseDataSet.Factory<TermMeaning>() {
+		public TermMeaning newInstance(ResultSet row) throws SQLException, PersistenceException {
 			return newTerm(row);
 		}
 	};
 	
-	protected TermReference newTerm(ResultSet row) throws SQLException, PersistenceException {
+	protected TermMeaning newTerm(ResultSet row) throws SQLException, PersistenceException {
 		int id = row.getInt("id");
 		String name = asString(row.getObject("name"));
 		int card = row.getInt("cardinality");
 		double relevance = row.getInt("relevance");
 		
 		LocalConcept concept = newConcept(id, name, null, card, relevance);
-		return new TermReference(name, concept, relevance);
+		return new TermMeaning(name, concept, relevance);
 	}
 
 	protected class DatabaseLocalStatisticsStore extends DatabaseStatisticsStore implements LocalStatisticsStore<LocalConcept> {
@@ -202,10 +203,10 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			termTable =   (EntityTable)database.getTable("term"); 
 		}
 
-		public DataSet<TermReference> getAllTerms() throws PersistenceException {
+		public DataSet<TermMeaning> getAllTerms() throws PersistenceException {
 			try {
 				String sql = "SELECT rank as id, term, freq as cardinality, -1 as relevance FROM "+termTable.getSQLName()+" as T";
-				return new ChunkedQueryDataSet<TermReference>(database, termFactory, "getAllTerms", "query", sql, null, null, termTable, "rank", queryChunkSize);
+				return new ChunkedQueryDataSet<TermMeaning>(database, termFactory, "getAllTerms", "query", sql, null, null, termTable, "rank", queryChunkSize);
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -355,7 +356,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			}
 			
 			if (spec!=null && spec.getIncludeTerms()) {
-				TermReference[] terms = TermReference.parseList( asString(m.get("dTerms")), getConceptFactory(), ((ConceptInfoStoreSchema)database).termReferenceListEntry );
+				TermReference[] terms = TermMeaning.parseList( asString(m.get("dTerms")), getConceptFactory(), ((ConceptInfoStoreSchema)database).termReferenceListEntry );
 				concept.setTerms(terms);
 			}
 			

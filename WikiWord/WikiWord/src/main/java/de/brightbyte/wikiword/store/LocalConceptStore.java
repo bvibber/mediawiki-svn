@@ -3,6 +3,7 @@ package de.brightbyte.wikiword.store;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.TermMeaning;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
@@ -16,7 +17,7 @@ public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept>, W
 	
 	public int getNumberOfTerms() throws PersistenceException;
 
-	public abstract DataSet<TermReference> getAllTerms() throws PersistenceException;
+	public abstract DataSet<TermMeaning> getAllTerms() throws PersistenceException;
 	//public abstract DataSet<ResourceReference> getAllResources() throws PersistenceException;
 	
 	//public abstract DataSet<LocalConcept> getLocalConcepts(DataSet<LocalConceptReference> refs) throws PersistenceException ;
@@ -24,7 +25,7 @@ public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept>, W
 	//public abstract LocalConcept getLocalConcept(int id) throws PersistenceException ;
 
 	/**
-	 * Returns a TermReference for a random term from the top-n 
+	 * Returns a TermMeaning for a random term from the top-n 
 	 * terms with repect to the frequency of occurance.
 	 * @param top the maximum rank of the terms to be returned. If top is 0, 
 	 *        any terms from the full range may be returned. If it is negative,

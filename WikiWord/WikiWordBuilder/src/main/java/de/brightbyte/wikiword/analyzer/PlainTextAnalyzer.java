@@ -20,6 +20,8 @@ import de.brightbyte.data.filter.FixedSetFilter;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.model.PhraseOccurance;
+import de.brightbyte.wikiword.model.PhraseOccuranceSequence;
 
 public class PlainTextAnalyzer extends AbstractAnalyzer {
 	private LanguageConfiguration config; 

@@ -34,7 +34,7 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		return f;
 	}
 
-	public Map<Integer, ConceptFeatures<C, K>> getFeatures(Collection<C> concepts) throws PersistenceException {
+	public Map<Integer, ConceptFeatures<C, K>> getFeatures(Collection<? extends C> concepts) throws PersistenceException {
 		Map<Integer, ConceptFeatures<C, K>> features = new HashMap<Integer, ConceptFeatures<C, K>> ();
 		List<C> todo = new ArrayList<C>(concepts.size());
 		for (C c: concepts) {

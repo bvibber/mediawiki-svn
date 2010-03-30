@@ -5,23 +5,24 @@ import java.util.Map;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public interface Disambiguator {
+public interface Disambiguator<T extends TermReference, C extends WikiWordConcept> {
 
-	public static class Result implements Comparable {
-		private Map<String, ? extends WikiWordConcept> meanings;
+	public static class Result<T extends TermReference, C extends WikiWordConcept> implements Comparable {
+		private Map<? extends T, ? extends C> meanings;
 		private double score;
 		private String description;
 		
-		public Result(Map<String, ? extends WikiWordConcept> meanings, double score, String description) {
+		public Result(Map<? extends T, ? extends C> meanings, double score, String description) {
 			super();
 			this.meanings = meanings;
 			this.score = score;
 			this.description = description;
 		}
 		
-		public Map<String, ? extends WikiWordConcept> getMeanings() {
+		public Map<? extends T, ? extends C> getMeanings() {
 			return meanings;
 		}
 		
@@ -51,6 +52,6 @@ public interface Disambiguator {
 
 	public void setTrace(Output trace);
 
-	public Result disambiguate(List<String> terms) throws PersistenceException;
+	public <X extends T>Result<X, C> disambiguate(List<X> terms) throws PersistenceException;
 
 }

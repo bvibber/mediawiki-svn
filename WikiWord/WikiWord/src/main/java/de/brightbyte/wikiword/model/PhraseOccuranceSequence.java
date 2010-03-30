@@ -1,4 +1,4 @@
-package de.brightbyte.wikiword.analyzer;
+package de.brightbyte.wikiword.model;
 
 import java.util.AbstractList;
 import java.util.ArrayList;

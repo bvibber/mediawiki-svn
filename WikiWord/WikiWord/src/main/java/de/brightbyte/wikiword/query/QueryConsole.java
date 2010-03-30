@@ -415,7 +415,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		if (disambiguator==null) {
 			StoredMeaningFetcher meaningFetcher = new StoredMeaningFetcher(getLocalConceptStore());
 			StoredFeatureFetcher<LocalConcept, Integer> featureFetcher = new StoredFeatureFetcher<LocalConcept, Integer>(getFeatureStore());
-			disambiguator = new SlidingCoherenceDisambiguator<Integer>( meaningFetcher, featureFetcher, true );
+			disambiguator = new SlidingCoherenceDisambiguator( meaningFetcher, featureFetcher, true );
 			
 			LeveledOutput.Trace trace = new LeveledOutput.Trace(out); 
 			meaningFetcher.setTrace(trace);

@@ -49,6 +49,6 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 		}
 	}
 
-	protected abstract O process(I rec);
+	protected abstract O process(I rec) throws Exception;
 	
 }

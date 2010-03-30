@@ -1,8 +1,8 @@
-package de.brightbyte.wikiword.analyzer;
+package de.brightbyte.wikiword.model;
 
 import java.io.Serializable;
 
-public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance> {
+public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance>, TermReference {
 
 		private static final long serialVersionUID = 241753475865301115L;
 	
@@ -38,6 +38,10 @@ public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance
 
 		public String getPhrase() {
 			return phrase;
+		}
+
+		public String getTerm() {
+			return getPhrase();
 		}
 
 		public int getWeight() {

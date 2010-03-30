@@ -8,9 +8,10 @@ import java.util.Map;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Measure.Comparator;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class PopularityDisambiguator extends AbstractDisambiguator {
+public class PopularityDisambiguator extends AbstractDisambiguator<TermReference, LocalConcept> {
 	
 	protected Measure<WikiWordConcept> popularityMeasure;
 	protected Comparator<WikiWordConcept> popularityComparator;
@@ -26,11 +27,11 @@ public class PopularityDisambiguator extends AbstractDisambiguator {
 		this.popularityComparator = new Measure.Comparator<WikiWordConcept>(popularityMeasure, true);
 	}
 
-	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) {
-		Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>();
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) {
+		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>();
 		int pop = 0;
-		for (String t: terms) {
-			List<LocalConcept> m = meanings.get(t);
+		for (X t: terms) {
+			List<? extends LocalConcept> m = meanings.get(t);
 			if (m==null || m.size()==0) continue;
 			
 			if (m.size()>0) Collections.sort(m, popularityComparator);
@@ -43,7 +44,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator {
 
 		pop = pop / disambig.size();
 		
-		Result r = new Result(disambig, pop, "pop="+pop);
+		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, pop, "pop="+pop);
 		return r;
 	}
 

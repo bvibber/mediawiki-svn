@@ -15,19 +15,20 @@ import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> {
+public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 
 	protected int window ; 
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, boolean featuresAreNormalized) {
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
 		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
-					featuresAreNormalized ? ScalarVectorSimilarity.<K>getInstance() : CosineVectorSimilarity.<K>getInstance(),  //if pre-normalized, use scalar to calc cosin
+					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(),  //if pre-normalized, use scalar to calc cosin
 					5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<K>> sim, int window) {
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window) {
 		super(meaningFetcher, featureFetcher, popularityMeasure, sim);
 		
 		this.window = window;
@@ -36,7 +37,7 @@ public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> 
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) throws PersistenceException {
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) throws PersistenceException {
 		if (window < 2 || terms.size()<2 || meanings.size()<2) 
 				return popularityDisambiguator.disambiguate(terms, meanings);
 		
@@ -47,10 +48,10 @@ public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> 
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
-		Map<String, LocalConcept> disambig = new HashMap<String, LocalConcept>(meanings.size()); 
+		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>(meanings.size()); 
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureCache<LocalConcept, K> features = getFeatureCache(meanings); 
+		FeatureCache<LocalConcept, Integer> features = getFeatureCache(meanings); 
 		
 		for (int i= window; ; i++) {
 			int from = i-window;
@@ -64,12 +65,12 @@ public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> 
 			if (to-from < 2) {
 				r = popularityDisambiguator.disambiguate(terms.subList(from, to), meanings);
 			} else {
-				List<Map<String, LocalConcept>> interpretations = getInterpretations(from, to, terms,  disambig, meanings);
+				List<Map<X, LocalConcept>> interpretations = getInterpretations(from, to, terms,  disambig, meanings);
 				r = getBestInterpretation(terms, meanings, interpretations, similarities, features);
 			}
 
 			for (int j=from; j<to; j++) {
-				String t = terms.get(j);
+				X t = terms.get(j);
 				if (disambig.containsKey(t)) continue;
 				
 				LocalConcept m;
@@ -84,23 +85,23 @@ public class SlidingCoherenceDisambiguator<K> extends CoherenceDisambiguator<K> 
 		return getScore(disambig, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
-	protected List<Map<String, LocalConcept>> getInterpretations(int from, int to, List<String> terms,  Map<String, LocalConcept> known, Map<String, List<LocalConcept>> meanings) {
+	protected <X extends TermReference>List<Map<X, LocalConcept>> getInterpretations(int from, int to, List<X> terms,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
 		//strip out all terms with no known meaning
 		if (meanings.keySet().size() != terms.size()) {
-			List<String> t = new ArrayList<String>(terms.size());
+			List<X> t = new ArrayList<X>(terms.size());
 			t.addAll(terms);
 			t.retainAll(meanings.keySet());
 			terms = t;
 		}
 		
-		Map<String, List<LocalConcept>> mset = new HashMap<String, List<LocalConcept>>();
+		Map<X, List<? extends LocalConcept>> mset = new HashMap<X, List<? extends LocalConcept>>();
 		
 		if (to>terms.size()) to = terms.size();
 		
 		for (int i=from; i<to; i++) {
-			List<LocalConcept> m;
+			List<? extends LocalConcept> m;
 			
-			String t = terms.get(i);
+			X t = terms.get(i);
 			LocalConcept c = known.get(t);
 
 			if (c!=null) m = Collections.singletonList(c);

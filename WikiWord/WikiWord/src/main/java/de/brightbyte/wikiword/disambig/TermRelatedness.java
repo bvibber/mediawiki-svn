@@ -1,10 +1,9 @@
 package de.brightbyte.wikiword.disambig;
 
-import java.util.Arrays;
-
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
+import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class TermRelatedness implements Similarity<String> {
@@ -28,13 +27,13 @@ public class TermRelatedness implements Similarity<String> {
 	}
 		
 	protected Similarity<WikiWordConcept> relatedness;
-	protected Disambiguator disambig;
+	protected Disambiguator<TermReference, ? extends WikiWordConcept> disambig;
 
-	public TermRelatedness(Disambiguator disambig) {
+	public TermRelatedness(Disambiguator<TermReference, ? extends WikiWordConcept> disambig) {
 		this(disambig, null);
 	}
 	
-	public TermRelatedness(Disambiguator disambig, Similarity<WikiWordConcept> relatedness) {
+	public TermRelatedness(Disambiguator<TermReference, ? extends WikiWordConcept> disambig, Similarity<WikiWordConcept> relatedness) {
 		this.relatedness = relatedness;
 		this.disambig = disambig;
 	}
@@ -48,7 +47,7 @@ public class TermRelatedness implements Similarity<String> {
 	
 	public Relatedness relatedness(String a, String b) {
 		try {
-			Disambiguator.Result r = disambig.disambiguate(Arrays.asList(new String[] {a, b}));
+			Disambiguator.Result<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b));
 			if (r==null || r.getMeanings().size()!=2) return null;
 			
 			double d;

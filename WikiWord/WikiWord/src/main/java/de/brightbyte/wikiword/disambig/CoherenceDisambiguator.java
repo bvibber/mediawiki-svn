@@ -19,9 +19,10 @@ import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
+public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference, LocalConcept> {
 	
 	protected int minPopularity = 2; //FIXME: use complex cutoff specifier!
 	protected int maxMeanings = 8; //FIXME: magic...
@@ -29,8 +30,8 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 	protected double minScore = 0.1; //FIXME: magic number. should "somehow" match popularityFactor and similarityFactor
 	protected double popularityBias = 0.2; //FIXME: magic number. should "somehow" match popularityFactor and similarityFactor
 	
-	protected Similarity<LabeledVector<K>> similarityMeasure;
-	protected FeatureFetcher<LocalConcept, K> featureFetcher;
+	protected Similarity<LabeledVector<Integer>> similarityMeasure;
+	protected FeatureFetcher<LocalConcept, Integer> featureFetcher;
 	protected Measure<WikiWordConcept> popularityMeasure;
 	protected PopularityDisambiguator popularityDisambiguator;
 	
@@ -48,12 +49,12 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		}
 	};
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, boolean featuresAreNormalized) {
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
 		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
-					featuresAreNormalized ? ScalarVectorSimilarity.<K>getInstance() : CosineVectorSimilarity.<K>getInstance());  //if pre-normalized, use scalar to calc cosin
+					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance());  //if pre-normalized, use scalar to calc cosin
 	}
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, K> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<K>> sim) {
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
 		super(meaningFetcher);
 		
 		if (popularityMeasure==null) throw new NullPointerException();
@@ -69,16 +70,16 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		return featureFetcher;
 	}
 
-	public void setFeatureFetcher(FeatureFetcher<LocalConcept, K> featureFetcher) {
+	public void setFeatureFetcher(FeatureFetcher<LocalConcept, Integer> featureFetcher) {
 		this.featureFetcher = featureFetcher;
 	}
 
-	public Similarity<LabeledVector<K>> getSimilarityMeasure() {
+	public Similarity<LabeledVector<Integer>> getSimilarityMeasure() {
 		return similarityMeasure;
 	}
 
 	public void setSimilarityMeasure(
-			Similarity<LabeledVector<K>> similarityMeasure) {
+			Similarity<LabeledVector<Integer>> similarityMeasure) {
 		if (similarityMeasure==null) throw new NullPointerException();
 		this.similarityMeasure = similarityMeasure;
 	}
@@ -115,13 +116,13 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		this.maxMeanings = maxMeanings;
 	}
 
-	protected FeatureCache<LocalConcept, K> getFeatureCache(Map<String, List<LocalConcept>> meanings) throws PersistenceException {
+	protected FeatureCache<LocalConcept, Integer> getFeatureCache(Map<? extends TermReference, List<? extends LocalConcept>> meanings) throws PersistenceException {
 		//TODO: keep a chain of n caches, resulting in LRU logic.
-		FeatureCache<LocalConcept, K> features = new FeatureCache<LocalConcept, K>(featureFetcher);
+		FeatureCache<LocalConcept, Integer> features = new FeatureCache<LocalConcept, Integer>(featureFetcher);
 		
 		//NOTE: pre-fetch all features in one go
 		List<LocalConcept> concepts = new ArrayList<LocalConcept>(meanings.size()*10);
-		for (List<LocalConcept> m: meanings.values()) {
+		for (List<? extends LocalConcept> m: meanings.values()) {
 			concepts.addAll(m);
 		}
 		
@@ -133,7 +134,7 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) throws PersistenceException {
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) throws PersistenceException {
 		if (terms.size()<2 || meanings.size()<2) 
 				return popularityDisambiguator.disambiguate(terms, meanings);
 		
@@ -145,22 +146,22 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureCache<LocalConcept, K> features = getFeatureCache(meanings); 
+		FeatureCache<LocalConcept, Integer> features = getFeatureCache(meanings); 
 		
-		List<Map<String, LocalConcept>> interpretations = getInterpretations(terms, meanings);
+		List<Map<X, LocalConcept>> interpretations = getInterpretations(terms, meanings);
 
 		return getBestInterpretation(terms, meanings, interpretations, similarities, features);
 	}
 	
-	protected void pruneMeanings(Map<String, List<LocalConcept>> meanings) {
+	protected void pruneMeanings(Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
 		if (minPopularity<=1) return; //nothing to do
 		
-		Iterator<Map.Entry<String, List<LocalConcept>>> eit = meanings.entrySet().iterator();
+		Iterator<?> eit = meanings.entrySet().iterator();
 		while (eit.hasNext()) {
-			Entry<String, List<LocalConcept>> e = eit.next();
-			List<LocalConcept> m = e.getValue();
+			Entry<TermReference, List<? extends LocalConcept>> e = (Entry<TermReference, List<? extends LocalConcept>>) eit.next(); //XXX: ugly cast. got confused about generics. ugh.
+			List<? extends LocalConcept> m = e.getValue();
 			
-			Iterator<LocalConcept> cit = m.iterator();
+			Iterator<? extends LocalConcept> cit = m.iterator();
 			while (cit.hasNext()) {
 				LocalConcept c = cit.next();
 				double p = popularityMeasure.measure(c);
@@ -179,15 +180,15 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		}
 	}
 
-	protected Result getBestInterpretation(List<String> terms, Map<String, List<LocalConcept>> meanings, 
-			List<Map<String, LocalConcept>> interpretations, 
-			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureCache<LocalConcept, K> features) throws PersistenceException {
+	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, 
+			List<Map<X, LocalConcept>> interpretations, 
+			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureCache<LocalConcept, Integer> features) throws PersistenceException {
 		
-		List<Result> rankings = new ArrayList<Result>();
+		List<Result<X, LocalConcept>> rankings = new ArrayList<Result<X, LocalConcept>>();
 		
 		double traceLimit = -1;
-		for (Map<String, LocalConcept> interp: interpretations) {
-			Result r = getScore(interp, similarities, features);
+		for (Map<X, LocalConcept> interp: interpretations) {
+			Result<X, LocalConcept> r = getScore(interp, similarities, features);
 			
 			if (r.getScore() >= minScore) {
 				rankings.add(r);
@@ -205,27 +206,27 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		Collections.reverse(rankings);
 		
 		//TODO: if result is tight (less than 50% distance), use more popularity score!
-		Result r = rankings.get(0);
+		Result<X, LocalConcept> r = rankings.get(0);
 		return r;
 	}
 
-	protected List<Map<String, LocalConcept>> getInterpretations(List<String> terms, Map<String, List<LocalConcept>> meanings) {
+	protected <X extends TermReference>List<Map<X, LocalConcept>> getInterpretations(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) {
 		if (terms.size()==0) {
-			return Collections.singletonList(Collections.<String, LocalConcept>emptyMap());
+			return Collections.singletonList(Collections.<X, LocalConcept>emptyMap());
 		}
 		
-		String t = terms.get(0);
-		List<LocalConcept> m = meanings.get(t);
+		X t = terms.get(0);
+		List<? extends LocalConcept> m = meanings.get(t);
 		
-		List<Map<String, LocalConcept>> base = getInterpretations(terms.subList(1, terms.size()), meanings);
+		List<Map<X, LocalConcept>> base = getInterpretations(terms.subList(1, terms.size()), meanings);
 
 		if (m==null || m.size()==0) return base;
 		
-		List<Map<String, LocalConcept>> interpretations = new ArrayList<Map<String, LocalConcept>>();
+		List<Map<X, LocalConcept>> interpretations = new ArrayList<Map<X, LocalConcept>>();
 		
-		for (Map<String, LocalConcept> be: base) {
+		for (Map<X, LocalConcept> be: base) {
 			for (LocalConcept c: m) {
-				Map<String, LocalConcept> e = new HashMap<String, LocalConcept>();
+				Map<X, LocalConcept> e = new HashMap<X, LocalConcept>();
 				e.putAll(be);
 				e.put(t, c);
 
@@ -237,7 +238,7 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		return interpretations;
 	}
 
-	protected Result getScore(Map<String, LocalConcept> interp, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureCache<LocalConcept, K> features) throws PersistenceException {
+	protected <X extends TermReference>Result<X, LocalConcept> getScore(Map<X, LocalConcept> interp, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureCache<LocalConcept, Integer> features) throws PersistenceException {
 		double sim = 0;
 		double pop = 0;
 
@@ -259,8 +260,8 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 						d = similarities.get(a, b);
 					}
 					else {
-						ConceptFeatures<LocalConcept, K> fa = features.getFeatures(a);
-						ConceptFeatures<LocalConcept, K> fb = features.getFeatures(b);
+						ConceptFeatures<LocalConcept, Integer> fa = features.getFeatures(a);
+						ConceptFeatures<LocalConcept, Integer> fb = features.getFeatures(b);
 						
 						//force relevance/cardinality to the figures from the meaning lookup
 						//not strictly necessary, but nice to keep it consistent.
@@ -296,7 +297,7 @@ public class CoherenceDisambiguator<K> extends AbstractDisambiguator {
 		double score =  popf * popularityBias + simf * ( 1 - popularityBias );
 		//double score =  Math.sqrt( popf * simf ); //FIXME: functor!
 		
-		return new Result(interp, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop);
+		return new Result<X, LocalConcept>(interp, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop);
 	}
-	
+
 }

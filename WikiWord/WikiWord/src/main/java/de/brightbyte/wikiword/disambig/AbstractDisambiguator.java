@@ -6,35 +6,36 @@ import java.util.Map;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.TermReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public abstract class AbstractDisambiguator implements Disambiguator {
+public abstract class AbstractDisambiguator<T extends TermReference, C extends WikiWordConcept> implements Disambiguator<T, C> {
 
-	protected MeaningFetcher<LocalConcept> meaningFetcher;
+	protected MeaningFetcher<? extends C> meaningFetcher;
 	protected Output trace;
 	
-	public AbstractDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher) {
+	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher) {
 		if (meaningFetcher==null) throw new NullPointerException();
 		this.meaningFetcher = meaningFetcher;
 	}
 
-	protected Map<String, List<LocalConcept>> fetchMeanings(List<String> terms) throws PersistenceException {
-		Map<String, List<LocalConcept>> meanings = new HashMap<String, List<LocalConcept>>();
+	protected <X extends T>Map<X, List<? extends C>> fetchMeanings(List<X> terms) throws PersistenceException {
+		Map<X, List<? extends C>> meanings = new HashMap<X, List<? extends C>>();
 		
-	   for (String t: terms) {
-		   List<LocalConcept> m = meaningFetcher.getMeanings(t);
+	   for (X t: terms) {
+		   List<? extends C> m = meaningFetcher.getMeanings(t.getTerm());
 		   if (m!=null && m.size()>0) meanings.put(t, m);
 	   }
 	   
 		return meanings;
 	}
 	
-	public Result disambiguate(List<String> terms) throws PersistenceException {
-		Map<String, List<LocalConcept>> meanings = fetchMeanings(terms);
+	public <X extends T>Result<X, C> disambiguate(List<X> terms) throws PersistenceException {
+		Map<X, List<? extends C>> meanings = fetchMeanings(terms);
 		return disambiguate(terms, meanings);
 	}
 	
-	public abstract Result disambiguate(List<String> terms, Map<String, List<LocalConcept>> meanings) throws PersistenceException;
+	public abstract <X extends T>Result<X, C> disambiguate(List<X> terms, Map<X, List<? extends C>> meanings) throws PersistenceException;
 
 	public Output getTrace() {
 		return trace;

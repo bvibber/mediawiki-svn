@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 
+import de.brightbyte.wikiword.model.PhraseOccurance;
+
 public class PhraseAggregator {
 	public class PhraseBuilder {
 			protected StringBuilder phrase;
