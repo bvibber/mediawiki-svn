@@ -26,10 +26,7 @@ line-height:1.25em;
 background-color:#4C59A6;
 background-color:Highlight;
 }
-.suggestions-special:hover .special-label{
-color:white;
-color:HighlightText;
-}
+.suggestions-special:hover .special-label,
 .suggestions-special:hover .special-query{
 color:white;
 color:HighlightText;
