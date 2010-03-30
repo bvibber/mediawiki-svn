@@ -338,13 +338,17 @@ body.rtl .wikiEditor-ui-toolbar .page-table th,
 body.rtl .wikiEditor-ui-toolbar .page-table td {
 	text-align: right;
 }
+.wikiEditor-ui-toolbar .section-help .page-table td.cell-syntax,
 .wikiEditor-ui-toolbar .section-help .page-table td.syntax {
 	font-family: monospace;
 }
 .wikiEditor-ui-toolbar .section-help .page-table td.syntax,
+.wikiEditor-ui-toolbar .section-help .page-table td.cell-syntax,
+.wikiEditor-ui-toolbar .section-help .page-table td.cell-result,
 .wikiEditor-ui-toolbar .section-help .page-table td.result {
 	width: 40%;
 }
+.wikiEditor-ui-toolbar .section-help .page-table td.description,
 .wikiEditor-ui-toolbar .section-help .page-table td.description {
 	width: 20%;
 }

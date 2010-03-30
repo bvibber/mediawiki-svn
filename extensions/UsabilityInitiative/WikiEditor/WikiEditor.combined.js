@@ -1777,7 +1777,7 @@ $j(document).ready( function() {
 					);
 					
 					// Restore form state
-						$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
+						$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 3 );
 						$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
 					// Simulate clicks instead of setting values, so the according
 					// actions are performed
