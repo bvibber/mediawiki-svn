@@ -17,7 +17,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class TagStoryboard {
 
 	public static function render( $input, $args, $parser, $frame ) {
-		global $wgOut, $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
+		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
 		$parser->getOutput()->addHeadItem(
@@ -25,7 +25,7 @@ class TagStoryboard {
 			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
 			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
 			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/jquery.ajaxscroll.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion"></script
+			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion"></script>
 EOT
 		);
 		

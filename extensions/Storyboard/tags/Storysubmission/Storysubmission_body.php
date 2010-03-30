@@ -44,18 +44,18 @@ class TagStorysubmission {
 	 * TODO: any sort of client side validation?
 	 */
 	private static function getFrom( $parser, array $args ) {
-		global $wgOut, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgUser, $wgStyleVersion, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
-		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
-		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
-		$wgOut->addScript( 
+		$parser->getOutput()->addHeadItem(
 			<<<EOT
+			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
+			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"></script>
 			<script type="$wgJsMimeType"> /*<![CDATA[*/
 			addOnloadHook( function() { 
 				document.getElementById( 'storysubmission-button' ).disabled = true;
 			} );
-			/*]]>*/ </script>
+			/*]]>*/ </script>			
 EOT
 		);
 		
