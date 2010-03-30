@@ -1,6 +1,5 @@
 package de.brightbyte.wikiword.disambig;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,27 +10,18 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public abstract class AbstractDisambiguator<T extends TermReference, C extends WikiWordConcept> implements Disambiguator<T, C> {
 
-	protected MeaningFetcher<? extends C> meaningFetcher;
+	protected MeaningCache.Manager<C> meaningCacheManager;
+	
 	protected Output trace;
 	
 	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher) {
 		if (meaningFetcher==null) throw new NullPointerException();
-		this.meaningFetcher = meaningFetcher;
+		this.meaningCacheManager = new MeaningCache.Manager<C>(meaningFetcher, 10);
 	}
 
-	protected <X extends T>Map<X, List<? extends C>> fetchMeanings(List<X> terms) throws PersistenceException {
-		Map<X, List<? extends C>> meanings = new HashMap<X, List<? extends C>>();
-		
-	   for (X t: terms) {
-		   List<? extends C> m = meaningFetcher.getMeanings(t.getTerm());
-		   if (m!=null && m.size()>0) meanings.put(t, m);
-	   }
-	   
-		return meanings;
-	}
-	
 	public <X extends T>Result<X, C> disambiguate(List<X> terms) throws PersistenceException {
-		Map<X, List<? extends C>> meanings = fetchMeanings(terms);
+		MeaningCache<C> mcache = meaningCacheManager.newCache();
+		Map<X, List<? extends C>> meanings = mcache.getMeanings(terms);
 		return disambiguate(terms, meanings);
 	}
 	

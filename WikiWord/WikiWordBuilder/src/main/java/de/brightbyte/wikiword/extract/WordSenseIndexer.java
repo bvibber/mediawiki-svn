@@ -14,7 +14,6 @@ import de.brightbyte.wikiword.disambig.Disambiguator;
 import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
 import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
 import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSequence;
@@ -29,8 +28,8 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 	protected PlainTextAnalyzer analyzer;
 	private int phraseLength;
 
-	public WordSenseIndexer(boolean allowGlobal, boolean allowLocal) {
-		super(allowGlobal, allowLocal);
+	public WordSenseIndexer() {
+		super(false, true);
 	}
 
 	@Override
@@ -63,6 +62,7 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 			disambiguator = new SlidingCoherenceDisambiguator( meaningFetcher, featureFetcher, true );
 			
 			analyzer = PlainTextAnalyzer.getPlainTextAnalyzer(getCorpus(), tweaks);
+			analyzer.initialize();
 			
 			phraseLength = args.getIntOption("phrase-length", tweaks.getTweak("wikiSenseIndexer.phraseLength", 6)); 
 	}
@@ -75,4 +75,9 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 		return result.toString(); //FIXME: annotate!
 	}
 
+	public static void main(String[] argv) throws Exception {
+		WordSenseIndexer q = new WordSenseIndexer();
+		q.launch(argv);
+	}
+	
 }

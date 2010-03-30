@@ -42,7 +42,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 			pop += Math.log(c.getCardinality());
 		}
 
-		pop = pop / disambig.size();
+		if (disambig.size()>0) pop = pop / disambig.size();
 		
 		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, pop, "pop="+pop);
 		return r;

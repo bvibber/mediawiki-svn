@@ -11,6 +11,34 @@ import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetcher<C, K> {
+	
+	protected static class Manager<C extends WikiWordConcept, K> {
+		protected int maxDepth;
+		
+		protected FeatureFetcher<C, K> root;
+		protected List<FeatureCache<C, K>> stack;
+		
+		public Manager(FeatureFetcher<C, K> root, int maxDepth) {
+			this.stack = new ArrayList<FeatureCache<C, K>>(maxDepth+1);
+			this.maxDepth = maxDepth;
+			this.root = root;
+		}
+		
+		private FeatureFetcher<C, K> getTop() {
+			if (stack.isEmpty()) return root;
+			else return stack.get(stack.size()-1);
+		}
+		
+		public synchronized FeatureCache<C, K> newCache() {
+			FeatureCache<C, K> cache = new FeatureCache<C, K>( getTop() );
+			stack.add(cache);
+			
+			if (stack.size()>maxDepth) stack.remove(0);
+			if (!stack.isEmpty()) stack.get(0).setParent(root);
+			
+			return cache;
+		}
+	}
 
 	protected FeatureFetcher<C, K> parent;
 	
@@ -54,11 +82,11 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		return features;
 	}
 	
-	public FeatureFetcher getParent() {
+	public FeatureFetcher<C, K> getParent() {
 		return parent;
 	}
 	
-	public void setParent(FeatureCache<C, K> parent) { 
+	public void setParent(FeatureFetcher<C, K> parent) { 
 		if (parent == null) throw new NullPointerException();
 		if (parent == this) throw new IllegalArgumentException("can't be my own parent");
 		//TODO: prevent cycles

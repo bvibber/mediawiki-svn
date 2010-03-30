@@ -51,7 +51,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>(meanings.size()); 
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureCache<LocalConcept, Integer> features = getFeatureCache(meanings); 
+		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings); 
 		
 		for (int i= window; ; i++) {
 			int from = i-window;

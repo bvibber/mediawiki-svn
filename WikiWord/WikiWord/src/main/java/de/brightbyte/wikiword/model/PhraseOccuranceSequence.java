@@ -70,7 +70,7 @@ public class PhraseOccuranceSequence extends AbstractList<PhraseOccurance> imple
 			
 			for (PhraseOccurance p: candidates) {
 				i = p.getEndOffset();
-				if (filter.matches(p.getPhrase())) {
+				if (filter==null || filter.matches(p.getPhrase())) {
 					phrases.add(p);
 					continue outer;
 				}
