@@ -90,10 +90,12 @@ $messages['bs'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'wikieditor-template-editor-preference' => 'Zapnout formulářovou editaci šablon wiki',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualizovat',
 );
 
 /** Welsh (Cymraeg)
@@ -540,11 +542,14 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Fantasticfears
  * @author Gaoxuewei
  * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'wikieditor-template-editor-preference' => '启用wiki模板的表单式编辑',
+	'wikieditor-template-editor-dialog-title' => '编辑模板',
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

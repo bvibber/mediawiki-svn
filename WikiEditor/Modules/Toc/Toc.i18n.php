@@ -105,8 +105,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor-toc-preference' => 'Habilita la taula de continguts navegable',
 	'wikieditor-toc-show' => 'Mostra el contingut',
 	'wikieditor-toc-hide' => 'Amaga el contingut',
 );
@@ -320,9 +322,11 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Gliu
  * @author PaoloRomano
  */
 $messages['it'] = array(
+	'wikieditor-toc-preference' => 'Abilita indice navigabile',
 	'wikieditor-toc-show' => 'Mostra i contenuti',
 	'wikieditor-toc-hide' => 'Nascondi i contenuti',
 );
