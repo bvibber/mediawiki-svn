@@ -11134,9 +11134,14 @@ fn: {
 				if ( 'offset' in tool ) {
 					var offset = $.wikiEditor.autoLang( tool.offset );
 					$button = $( '<a href="#" />' )
+						.attr( {
+							'alt' : label,
+							'title' : label,
+							'rel' : id,
+							'class' : 'wikiEditor-toolbar-spritedButton'
+						} )
 						.text( label )
 						.click( function() { return false; } )
-						.addClass( 'wikiEditor-toolbar-spritedButton' )
 						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
 				} else {
 					$button = $( '<img />' )
