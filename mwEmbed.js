@@ -38,13 +38,15 @@ var MW_EMBED_VERSION = '1.1e';
 * The global mw object:
 */
 ( function( mw ) {
+	// The version of mwEmbed
+	mw.version = MW_EMBED_VERSION
 	
 	// List valid skins here:
-	mw.valid_skins = [ 'mvpcf', 'kskin' ];
+	mw.valid_skins = [ 'mvpcf', 'kskin' ];		
+		
+	// Storage variable for loaded style sheet keys	
+	mw.style = { };
 	
-	// The version of mwEmbed
-	mw.version = MW_EMBED_VERSION	
-
 	/**
 	* Configuration System:  	
 	*/	
@@ -71,6 +73,7 @@ var MW_EMBED_VERSION = '1.1e';
 			for( var i in name ) {
 				mw.setConfig( i, name[ i ] );
 			}
+			return ;
 		}
 		mwConfig[ name ] = value;
 	}	
@@ -856,14 +859,7 @@ var MW_EMBED_VERSION = '1.1e';
 		* @key Name of class
 		* @value Class file path 
 		*/
-		classPaths : { }, 	
-		
-		/**
-		* Style sheet paths for associated classes
-		* @key Name of the class
-		* @value Style sheet path
-		*/	
-		stylePaths : { },						
+		classPaths : { }, 						
 		
 		/**
 		* Core load function: 
@@ -939,7 +935,7 @@ var MW_EMBED_VERSION = '1.1e';
 				return ;
 			}
 			
-			//possible error? 
+			// Possible error? 
 			mw.log( "Error could not handle load request: " + loadRequest  );			
 		},
 			
@@ -1040,12 +1036,7 @@ var MW_EMBED_VERSION = '1.1e';
 					if ( !mw.isset( loadName ) ) {
 						groupClassKey += coma + loadName
 						coma = ',';
-					}
-					// Issue a request for any dependent style sheets ( won't load if already present )
-					if( typeof this.stylePaths[ loadName ] != 'undefined' ) {
-						mw.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ loadName ] );
-					}
-					
+					}					
 				}else if( this.moduleLoaders[ loadName ] ) {
 					// Module loaders break up grouped script requests ( add the current groupClassKey )
 					if( groupClassKey != '' ) {
@@ -1123,7 +1114,7 @@ var MW_EMBED_VERSION = '1.1e';
 				var baseClassPath = this.getClassPath( className );													
 				// Add the mwEmbed path if not a root path or a full url
 				if( baseClassPath.indexOf( '/' ) !== 0 && 
-					baseClassPath.indexOf('://') === -1 ) {
+					baseClassPath.indexOf( '://' ) === -1 ) {
 					scriptRequest = mw.getMwEmbedPath() + baseClassPath;
 				}else{
 					scriptRequest = baseClassPath;
@@ -1132,11 +1123,6 @@ var MW_EMBED_VERSION = '1.1e';
 					mw.log( "Could not get url for class " + className  );						
 					return ;
 				}	
-			}			
-								
-			// Check for any associated style sheets that should be loaded 
-			if( typeof this.stylePaths[ className ] != 'undefined' ) {
-				mw.getStyleSheet( mw.getMwEmbedPath() + this.stylePaths[ className ] );
 			}
 			
 			// Include class defined check for older browsers
@@ -1211,20 +1197,6 @@ var MW_EMBED_VERSION = '1.1e';
 	 		if( this.classPaths[ className ] )
 	 			return this.classPaths[ className ]
 	 		return false;
-	 	},
-	 	
-		/**
-	 	* Add a style sheet to be loaded the same time as the requested class
-	 	*
-		* NOTE: In general style sheets should be loaded via a module loader function. 
-		*  In some cases a single class has a single sheet dependency which can be set-up using this function
-		* 
-		* @param {Object} sheetSet ClassKey : sheet location key value paris
-	 	*/
-	 	addClassStyleSheets: function( sheetSet ) {
-	 		for(var i in sheetSet ) {
-	 			this.stylePaths[ i ] = sheetSet[ i ];
-	 		}
 	 	}
 	}
 	/**
@@ -1238,6 +1210,8 @@ var MW_EMBED_VERSION = '1.1e';
 			return true;
 		}
 		while( mwLoadDoneCB[ requestName ].length ) {
+			// check if mwLoadDoneCB is already "done" 
+			// the function list is not an object
 			if( typeof mwLoadDoneCB[ requestName ] != 'object' )
 			{
 				break;
@@ -1273,6 +1247,10 @@ var MW_EMBED_VERSION = '1.1e';
 	/**
 	* Shortcut entry points / convenience functions: 
 	* Lets you write mw.load() instead of mw.loader.load()
+	* only these entry points should be used. 
+	*
+	* future closure optimizations could minify internal
+	* function names 
 	*/
 	
 	/**
@@ -1281,7 +1259,6 @@ var MW_EMBED_VERSION = '1.1e';
 	mw.load = function( loadRequest, callback ) {
 		return mw.loader.load( loadRequest, callback );
 	}
-	
 	
 	/**
 	* Add module entry point: Adds a module to the mwLoader object 
@@ -1296,17 +1273,12 @@ var MW_EMBED_VERSION = '1.1e';
 	mw.addClassFilePaths = function ( classSet )	{	
 		return mw.loader.addClassFilePaths( classSet );
 	}
+	
 	/**
 	* Get Class File Path entry point: 
 	*/
 	mw.getClassPath = function( className ) {
 		return mw.loader.getClassPath( className );
-	}
-	/**
-	* Add Class Style Sheet entry point:  	 
-	*/
-	mw.addClassStyleSheets = function( sheetSet ) {
-		return mw.loader.addClassStyleSheets( sheetSet );
 	}
 	
 	
@@ -1914,17 +1886,24 @@ var MW_EMBED_VERSION = '1.1e';
 	* @param {Function} callback Function to call once script is loaded   
 	*/
 	mw.getScript = function( scriptRequest, callback ) {
-	
+		// Setup the local callback 
+		var myCallback = function(){
+			if( callback )
+				callback( scriptRequest );
+		}
 		// Set the base url based scriptLoader availability & type of scriptRequest
 		// ( presently script loader only handles "classes" not relative urls: 
-		var slpath = mw.getScriptLoaderPath();
+		var scriptLoaderPath = mw.getScriptLoaderPath();
 		
 		// Check if its a class name, ( ie does not start with "/" and does not include :// 
 		var isClassName = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
 		
-		if( slpath &&  isClassName ) {
-			url = slpath + '?class=' + scriptRequest;				
-		}else{
+		var ext = scriptRequest.substr( scriptRequest.lastIndexOf( '.' ), 4 ).toLowerCase();
+		var isCssFile = ( ext == '.css') ? true : false ;
+		
+		if( scriptLoaderPath &&  isClassName ) {
+			url = scriptLoaderPath + '?class=' + scriptRequest;				
+		} else {
 			// Add the mwEmbed path if a relative path request
 			url = ( isClassName ) ? mw.getMwEmbedPath() : '';
 			url+= scriptRequest; 
@@ -1936,21 +1915,33 @@ var MW_EMBED_VERSION = '1.1e';
 				
 				
 		mw.log( 'mw.getScript: ' + url );
+		
 		// If jQuery is available and debug is off load the scirpt via jQuery 
 		//( will use XHR if on same domain ) 
-		if( mw.isset( 'window.jQuery' ) && mw.getConfig( 'debug' ) === false ) {		
-			$j.getScript( url, function() {
-				if( callback )
-					callback( scriptRequest );
-			}); 
+		if( mw.isset( 'window.jQuery' ) 
+			&& mw.getConfig( 'debug' ) === false 
+			&& !isCssFile ) 
+		{	
+			$j.getScript( url, myCallback); 		
 			return ;
 		}	
 				
 		/**
 		* No jQuery 
 		*  OR 
-		* In debug mode inject the script instead of doing an XHR eval
+		* In debug mode
+		*  OR
+		* Is css file
+		*
+		* :: inject the script instead of doing an XHR eval
 		*/			
+		
+		// load sytle sheet directly if requested loading css
+		if( isCssFile ){
+			mw.getStyleSheet( url, myCallback);
+			return ;
+		}
+		
 		// Load and bind manually:  ( copied from jQuery ajax function )
 		var head = document.getElementsByTagName("head")[ 0 ];
 		var script = document.createElement("script");
@@ -1959,32 +1950,46 @@ var MW_EMBED_VERSION = '1.1e';
 		// Attach handlers ( if using script loader it issues onDone callback as well )	 		
 		script.onload = script.onreadystatechange = function() {		
 			if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
-				if( callback ) {
-					callback( scriptRequest );
-				}	
+				myCallback();
 			}
 		};
 		//mw.log(" append script: " + script.src );
 		// Append the script to the DOM:
 		head.appendChild( script );			
-	}
+	};
+	
+	/**
+	* Add a style sheet string to the document head
+	*
+	* @param {String} cssClassName Name of style sheet that has been defined
+	* @param {String} cssString Css Payload to be added to head of document
+	*/
+	mw.addStyleString = function( cssClassName,  cssString ) {
+		// Set the style to true ( to not request it again )
+		mw.style[ cssClassName ] = true;
+		// Wait for the DOM to be ready before adding in the css:
+		mw.ready(function(){
+			$j( 'head' ).append(
+				$j( '<style/>' )
+				.attr( {
+					'type' : 'text/css',
+					'media': 'all'
+				})
+				.text(
+					cssString
+				)
+			);
+		});
+	};
 	
 	/**
 	* Get a style sheet and append the style sheet to the DOM
 	*
 	* @param {Mixed}
-	*	{Array} url List of urls to be loaded
 	*	{String} url Url of the style sheet to be loaded
+	* 	{Function} callback Function called once sheet is ready 
 	*/
-	mw.getStyleSheet = function( url ) {
-		// Load a set of style sheets:
-		if ( typeof url == 'object' ) {
-			for ( var i in url ) {
-				mw.getStyleSheet( url[i] );
-			}
-			return ;
-		}
-		
+	mw.getStyleSheet = function( url , callback) {		
 		// Add URL params ( if not already included )
 		if ( url.indexOf( '?' ) == -1 ) {
 			url += '?' + mw.getUrlParam();
@@ -2008,18 +2013,26 @@ var MW_EMBED_VERSION = '1.1e';
 		} );					
 		if( foundSheet ) {
 			mw.log( 'skiped sheet: ' + url);
+			if( callback) { 
+				callback();
+			}
 			return ;
 		}
 		
 		mw.log( ' add css: ' + url );		
 		$j( 'head' ).append( 
-			$j('<link>').attr( {
+			$j('<link />').attr( {
 				'rel' : 'stylesheet',
 				'type' : 'text/css',
 				'href' : url
 			} )
-		);			
-	}
+		);
+		// Precently no easy way to check css "onLoad" attribute 
+		// In genneral sheets are loaded via script-loader. 
+		if( callback ) {
+			callback();
+		}
+	};
 	
 	/**
 	* Get the api url for a given content provider key
@@ -2032,7 +2045,7 @@ var MW_EMBED_VERSION = '1.1e';
 			return mw.getConfig( providerId + '_apiurl');
 		}
 		return mw.getLocalApiUrl(); 
-	},
+	};
 	
 	/** 
 	* Get Api URL from mediaWiki page defined variables
@@ -2045,7 +2058,7 @@ var MW_EMBED_VERSION = '1.1e';
 			return wgServer + wgScriptPath + '/api.php';
 		}
 		return false;
-	}	
+	};
 	
 	// Local mwEmbedPath variable ( for cache of mw.getMwEmbedPath )
 	var mwEmbedPath = null;
@@ -2458,24 +2471,16 @@ var MW_EMBED_VERSION = '1.1e';
 			}
 		}
 	
-		// Make sure we have jQuery: 
+		// Make sure we have jQuery and the common skin
+		// NOTE mw.style.common should be factored out into 
+		// seperate module specifc classes 
 		mw.load( 'window.jQuery', function() {							
-			if ( ! window['$j'] ) {
-				window['$j'] = jQuery.noConflict();				
-			}										
-			mw.setConfig( 'jquery_skin_path', mw.getMwEmbedPath() + 'jquery/jquery.ui/themes/' + mw.getConfig( 'jQueryUISkin' ) + '/' );
+			if ( ! window[ '$j' ] ) {
+				window[ '$j' ] = jQuery.noConflict();				
+			}
 			
-			// Ideally only load jquery ui theme sheet if ui-widget does not exist.
-			// NOTE: disabled as style sheets are cross domain and it behaves differently across browsers  
-			//if( ! mw.styleRuleExists( 'ui-widget' ) ) {				
-			mw.getStyleSheet( mw.getConfig( 'jquery_skin_path' ) + 'jquery-ui-1.7.1.custom.css' );
-			//}
+			mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' );										
 			
-			mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' ); 
-
-			// Get Core skin/style sheets are always available:			
-			mw.getStyleSheet( mw.getMwEmbedPath() + 'skins/common/common.css' );
-
 			// Set up AJAX to not send dynamic URLs for loading scripts
 			$j.ajaxSetup( {
 				cache: true
@@ -2487,18 +2492,24 @@ var MW_EMBED_VERSION = '1.1e';
 			// Set up mvEmbed utility jQuery bindings
 			mw.dojQueryBindings();						
 			
-			// Run all the setup function hooks
-			// Once complete we can run .ready queued functions  
-			function runSetupFunctions() {
-				if( mwSetupFunctions.length ) {
-					mwSetupFunctions.pop()( function() {
-						runSetupFunctions();
-					} );
-				}else{
-					mw.runReadyHooks();
+			// Make sure style sheets are loaded: 
+			mw.load( [
+				'mw.style.common',
+				'mw.style.' + mw.getConfig( 'jQueryUISkin' )				 
+			], function(){	
+				// Run all the setup function hooks
+				// Once complete we can run .ready queued functions  
+				function runSetupFunctions() {
+					if( mwSetupFunctions.length ) {
+						mwSetupFunctions.pop()( function() {
+							runSetupFunctions();
+						} );
+					}else{
+						mw.runReadyHooks();
+					}
 				}
-			}
-			runSetupFunctions();	
+				runSetupFunctions();	
+			});
 		});		
 	};
 	

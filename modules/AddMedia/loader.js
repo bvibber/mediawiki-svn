@@ -51,10 +51,12 @@
 	//Setup the addMediaWizard module
 	mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ) {
 		// Load all the required libs:
+		
 		var request = [
 			[	'mw.RemoteSearchDriver',
 				'$j.cookie',
 				'$j.fn.textSelection',
+				'$j.browserTest', // ( textSelection uses browserTest ) 
 				'$j.ui'
 			], [
 				'$j.ui.resizable',

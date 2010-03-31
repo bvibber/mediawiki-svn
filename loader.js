@@ -43,9 +43,6 @@ mw.setDefaultConfig ( {
 	// Default enabled modules: 
 	"enabledModules" : mwEnabledModuleList, 
 	
-	// Default skin name
-	"skinName" : "mvpcf",
-	
 	// Default jquery ui skin name
 	"jQueryUISkin" : "redmond",	
 	
@@ -118,17 +115,19 @@ mw.setConfig('loaderContext', '' );
  */
 mw.addClassFilePaths( {
 	"mwEmbed"				: "mwEmbed.js",
-	"window.jQuery"			: "jquery/jquery-1.4.2.js",
-	
-	"ctrlBuilder"			: "skins/ctrlBuilder.js",
-	"kskinConfig"			: "skins/kskin/kskinConfig.js",
-	"mvpcfConfig"			: "skins/mvpcf/mvpcfConfig.js",
+	"window.jQuery"			: "jquery/jquery-1.4.2.js",		
 	
 	"$j.fn.pngFix"			: "jquery/plugins/jquery.pngFix.js",
 	"$j.fn.autocomplete"	: "jquery/plugins/jquery.autocomplete.js",
+	"mw.style.autocomplete"	: "jquery/plugins/jquery.autocomplete.css",
+	
 	"$j.fn.hoverIntent"		: "jquery/plugins/jquery.hoverIntent.js",
 	"$j.fn.datePicker"		: "jquery/plugins/jquery.datePicker.js",
 	"$j.ui"					: "jquery/jquery.ui/ui/ui.core.js",	
+	
+	"mw.style.redmond"		: "jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
+	"mw.style.smoothness"	: "jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
+	"mw.style.common"		: "skins/common/common.css",
 	
 	"mw.testLang"			:  "tests/testLang.js",		
 

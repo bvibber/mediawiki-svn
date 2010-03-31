@@ -967,7 +967,8 @@ mw.ClipEdit.prototype = {
 		$j( '.mw_crop_msg_load' ).show();		
 		// load the jcrop library if needed:
 		mw.load( [
-			'$j.Jcrop'
+			'$j.Jcrop',
+			'mw.style.Jcrop'
 		], function() {
 			_this.bindCrop();
 		} );

@@ -9,11 +9,13 @@ mw.addClassFilePaths( {
 	"RemoteMwTimedText" : "modules/TimedText/remotes/RemoteMwTimedText.js"
 });
 
-//Add css dependency: 
-mw.addClassStyleSheets( {
+/*
+Add css dependency: 
+mw.addClassStyleSheetDependency( {
 	"$j.fn.menu" 	: "modules/TimedText/jquery.menu/jquery.menu.css",
 	"mw.TimedTextEdit": "modules/TimedText/mw.TimedTextEdit.css"
 });
+*/
 
 // TimedText module
 mw.addModuleLoader( 'TimedText', function( callback ) {

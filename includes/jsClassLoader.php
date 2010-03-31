@@ -156,8 +156,9 @@ class jsClassLoader {
 	 */
 	private static function preg_classPathLoader( $jsvar ) {
 		global $wgJSAutoloadClasses;
-		if ( !isset( $jsvar[1] ) )
+		if ( !isset( $jsvar[1] ) ) {
 			return false;
+		}
 
 		$jClassSet = FormatJson::decode( '{' . $jsvar[1] . '}', true );
 		foreach ( $jClassSet as $jClass => $jPath ) {

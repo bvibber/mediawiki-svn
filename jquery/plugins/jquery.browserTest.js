@@ -45,6 +45,10 @@ jQuery Browser Plugin
 			if (r.name === 'presto') {
 				r.version = ($.browser.version > 9.27) ? 'futhark' : 'linear_b';
 			}
+
+			if (r.name === 'opera' && $.browser.version >= 9.8) {
+				r.version = i.match( /version\/([0-9\.]*)/i )[1] || 10;
+			}
 			r.versionNumber = parseFloat(r.version, 10) || 0;
 			r.versionX = (r.version !== x) ? (r.version + '').substr(0, 1) : x;
 			r.className = r.name + r.versionX;
@@ -60,7 +64,7 @@ jQuery Browser Plugin
 			['Navigator', 'Netscape']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
