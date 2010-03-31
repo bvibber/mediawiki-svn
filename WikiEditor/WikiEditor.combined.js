@@ -1684,7 +1684,7 @@ $j(document).ready( function() {
 			// Set tabindexes on form fields
 			$j.wikiEditor.modules.dialogs.fn.setTabindexes( $j(this).find( 'input' ).not( '[tabindex]' ) );
 			
-			$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
+			$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 3 );
 			$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
 			$j( '#wikieditor-toolbar-table-wikitable' ).click( function() {
 				$j( '.wikieditor-toolbar-table-preview' ).toggleClass( 'wikitable' );
