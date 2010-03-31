@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'FirefoggChunkedUpload',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FirefoggChunkedUpload',
