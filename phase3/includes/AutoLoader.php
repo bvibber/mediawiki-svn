@@ -443,7 +443,6 @@ $wgAutoloadLocalClasses = array(
 	'LinkHolderArray' => 'includes/parser/LinkHolderArray.php',
 	'LinkMarkerReplacer' => 'includes/parser/Parser_LinkHooks.php',
 	'OnlyIncludeReplacer' => 'includes/parser/Parser.php',
-	'PPCustomFrame' => 'includes/parser/Preprocessor.php',
 	'PPFrame' => 'includes/parser/Preprocessor.php',
 	'PPTemplateFrame' => 'includes/parser/Preprocessor.php',
 	'ParseEngine' => 'includes/parser/ParseEngine.php',
@@ -453,7 +452,6 @@ $wgAutoloadLocalClasses = array(
 	'ParserOutput' => 'includes/parser/ParserOutput.php',
 	'Parser_DiffTest' => 'includes/parser/Parser_DiffTest.php',
 	'Parser_LinkHooks' => 'includes/parser/Parser_LinkHooks.php',
-	'Preprocessor' => 'includes/parser/Preprocessor.php',
 	'StripState' => 'includes/parser/Parser.php',
 	'MWTidy' => 'includes/parser/Tidy.php',
 

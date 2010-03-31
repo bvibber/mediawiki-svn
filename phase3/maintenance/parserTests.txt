@@ -3792,9 +3792,10 @@ Handling of sections up to level 6 and beyond
 <li class="toclevel-5 tocsection-5"><a href="#Level_5_Heading"><span class="tocnumber">1.1.1.1.1</span> <span class="toctext">Level 5 Heading</span></a>
 <ul>
 <li class="toclevel-6 tocsection-6"><a href="#Level_6_Heading"><span class="tocnumber">1.1.1.1.1.1</span> <span class="toctext">Level 6 Heading</span></a></li>
-<li class="toclevel-6 tocsection-7"><a href="#.3D_Level_7_Heading"><span class="tocnumber">1.1.1.1.1.2</span> <span class="toctext">= Level 7 Heading</span></a></li>
-<li class="toclevel-6 tocsection-8"><a href="#.3D.3D_Level_8_Heading"><span class="tocnumber">1.1.1.1.1.3</span> <span class="toctext">== Level 8 Heading</span></a></li>
-<li class="toclevel-6 tocsection-9"><a href="#.3D.3D.3D_Level_9_Heading"><span class="tocnumber">1.1.1.1.1.4</span> <span class="toctext">=== Level 9 Heading</span></a></li>
+<li class="toclevel-6 tocsection-7"><a href="#.3D_Level_7_Heading.3D"><span class="tocnumber">1.1.1.1.1.2</span> <span class="toctext">= Level 7 Heading=</span></a></li>
+<li class="toclevel-6 tocsection-8"><a href="#.3D.3D_Level_8_Heading.3D.3D"><span class="tocnumber">1.1.1.1.1.3</span> <span class="toctext">== Level 8 Heading==</span></a></li>
+<li class="toclevel-6 tocsection-9"><a href="#.3D.3D.3D_Level_9_Heading.3D.3D.3D"><span class="tocnumber">1.1.1.1.1.4</span> <span class="toctext">=== Level 9 Heading===</span></a></li>
+<li class="toclevel-6 tocsection-10"><a href="#.3D.3D.3D.3D_Level_10_Heading.3D.3D.3D.3D"><span class="tocnumber">1.1.1.1.1.5</span> <span class="toctext">==== Level 10 Heading====</span></a></li>
 </ul>
 </li>
 </ul>
@@ -3805,12 +3806,6 @@ Handling of sections up to level 6 and beyond
 </li>
 </ul>
 </li>
-<li class="toclevel-1"><a href="#.3D"><span class="tocnumber">2</span> <span class="toctext">=</span></a>
-<ul>
-<li class="toclevel-2 tocsection-10"><a href="#.3D.3D.3D.3D_Level_10_Heading"><span class="tocnumber">2.1</span> <span class="toctext">==== Level 10 Heading</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1"><a href="#.3D.3D"><span class="tocnumber">3</span> <span class="toctext">==</span></a></li>
 </ul>
 </td></tr></table><script>if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <h1><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: Level 1 Heading">edit</a>]</span> <span class="mw-headline" id="Level_1_Heading"> Level 1 Heading</span></h1>
@@ -3819,16 +3814,10 @@ Handling of sections up to level 6 and beyond
 <h4><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=4" title="Edit section: Level 4 Heading">edit</a>]</span> <span class="mw-headline" id="Level_4_Heading"> Level 4 Heading</span></h4>
 <h5><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=5" title="Edit section: Level 5 Heading">edit</a>]</span> <span class="mw-headline" id="Level_5_Heading"> Level 5 Heading</span></h5>
 <h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=6" title="Edit section: Level 6 Heading">edit</a>]</span> <span class="mw-headline" id="Level_6_Heading"> Level 6 Heading</span></h6>
-<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=7" title="Edit section: = Level 7 Heading">edit</a>]</span> <span class="mw-headline" id=".3D_Level_7_Heading">= Level 7 Heading</span></h6>
-<p>=
-</p>
-<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=8" title="Edit section: == Level 8 Heading">edit</a>]</span> <span class="mw-headline" id=".3D.3D_Level_8_Heading">== Level 8 Heading</span></h6>
-<p>==
-</p>
-<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=9" title="Edit section: === Level 9 Heading">edit</a>]</span> <span class="mw-headline" id=".3D.3D.3D_Level_9_Heading">=== Level 9 Heading</span></h6>
-<h1> <span class="mw-headline" id=".3D">=</span></h1>
-<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=10" title="Edit section: ==== Level 10 Heading">edit</a>]</span> <span class="mw-headline" id=".3D.3D.3D.3D_Level_10_Heading">==== Level 10 Heading</span></h6>
-<h1> <span class="mw-headline" id=".3D.3D">==</span></h1>
+<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=7" title="Edit section: = Level 7 Heading=">edit</a>]</span> <span class="mw-headline" id=".3D_Level_7_Heading.3D">= Level 7 Heading=</span></h6>
+<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=8" title="Edit section: == Level 8 Heading==">edit</a>]</span> <span class="mw-headline" id=".3D.3D_Level_8_Heading.3D.3D">== Level 8 Heading==</span></h6>
+<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=9" title="Edit section: === Level 9 Heading===">edit</a>]</span> <span class="mw-headline" id=".3D.3D.3D_Level_9_Heading.3D.3D.3D">=== Level 9 Heading===</span></h6>
+<h6><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=10" title="Edit section: ==== Level 10 Heading====">edit</a>]</span> <span class="mw-headline" id=".3D.3D.3D.3D_Level_10_Heading.3D.3D.3D.3D">==== Level 10 Heading====</span></h6>
 
 !! end
 
@@ -5505,6 +5494,16 @@ Transclusion of MediaWiki message with space
 !! end
 
 !! test
+Invalid header with following text
+!! input
+= x = y
+!! result
+<p>= x = y
+</p>
+!! end
+
+
+!! test
 Section extraction test (section 0)
 !! options
 section=0
@@ -5753,15 +5752,40 @@ start
 !! end
 
 !! test
+Section extraction test with bogus heading (section 1)
+!! options
+section=1
+!! input
+==a==
+==bogus== not a legal section
+==b==
+!! result
+==a==
+==bogus== not a legal section
+!! end
+
+!! test
 Section extraction test with bogus heading (section 2)
 !! options
 section=2
 !! input
 ==a==
-==b== now a legal section
+==bogus== not a legal section
+==b==
 !! result
 ==b==
- now a legal section
+!! end
+
+!! test
+Section extraction test with comment after heading (section 1)
+!! options
+section=1
+!! input
+==a==
+==b== <!-- -->
+==c==
+!! result
+==a==
 !! end
 
 !! test
@@ -5773,8 +5797,20 @@ section=2
 ==b== <!-- -->
 ==c==
 !! result
+==b== <!-- -->
+!! end
+
+!! test
+Section extraction test with bogus <nowiki> heading (section 1)
+!! options
+section=1
+!! input
+==a==
+==bogus== <nowiki>not a legal section</nowiki>
 ==b==
- <!-- -->
+!! result
+==a==
+==bogus== <nowiki>not a legal section</nowiki>
 !! end
 
 !! test
@@ -5783,10 +5819,10 @@ Section extraction test with bogus <nowiki> heading (section 2)
 section=2
 !! input
 ==a==
-==b== <nowiki>now a legal section</nowiki>
+==bogus== <nowiki>not a legal section</nowiki>
+==b==
 !! result
 ==b==
- <nowiki>now a legal section</nowiki>
 !! end
 
 

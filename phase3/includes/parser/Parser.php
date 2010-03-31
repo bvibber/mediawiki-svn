@@ -95,7 +95,7 @@ class Parser
 	# Persistent:
 	var $mTagHooks, $mTransparentTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables,
 		$mSubsts, $mImageParams, $mImageParamsMagicArray, $mStripList, $mMarkerIndex,
-		$mParseEngine, $mPreprocessor, $mExtLinkBracketedRegex, $mUrlProtocols, $mDefaultStripList,
+		$mParseEngine, $mExtLinkBracketedRegex, $mUrlProtocols, $mDefaultStripList,
 		$mVarCache, $mConf, $mFunctionTagHooks;
 
 
@@ -226,11 +226,6 @@ class Parser
 		$this->mHeadings = array();
 		$this->mDoubleUnderscores = array();
 		$this->mExpensiveFunctionCount = 0;
-
-		# Fix cloning
-		if ( isset( $this->mPreprocessor ) && $this->mPreprocessor->parser !== $this ) {
-			$this->mPreprocessor = null;
-		}
 
 		wfRunHooks( 'ParserClearState', array( &$this ) );
 		wfProfileOut( __METHOD__ );
@@ -532,16 +527,6 @@ class Parser
 		} else {
 			return $this->mOptions->getInterfaceMessage() ? $wgLang : $wgContLang;
 		}
-	}
-
-	/**
-	 * Get a preprocessor object
-	 */
-	function getPreprocessor() {
-		if ( !isset( $this->mPreprocessor ) ) {
-			$this->mPreprocessor = new Preprocessor( $this->mParseEngine );
-		}
-		return $this->mPreprocessor;
 	}
 
 	/**
@@ -912,7 +897,7 @@ class Parser
 				$flag = 0;
 			else
 				$flag = Parser::PTD_FOR_INCLUSION;
-			$dom = $this->preprocessToDom( $text, $flag );
+			$dom = $this->mParseEngine->parse($text);
 			$text = $frame->expand( $dom, $flag );
 		}
 		// if $frame is not provided, then use old-style replaceVariables
@@ -2715,33 +2700,6 @@ class Parser
 		wfProfileOut( __METHOD__ );
 	}
 
-	/**
-	 * Preprocess some wikitext and return the document tree.
-	 * This is the ghost of replace_variables().
-	 *
-	 * @param string $text The text to parse
-	 * @param integer flags Bitwise combination of:
-	 *          self::PTD_FOR_INCLUSION    Handle <noinclude>/<includeonly> as if the text is being
-	 *                                     included. Default is to assume a direct page view.
-	 *
-	 * The generated DOM tree must depend only on the input text and the flags.
-	 * The DOM tree must be the same in OT_HTML and OT_WIKI mode, to avoid a regression of bug 4899.
-	 *
-	 * Any flag added to the $flags parameter here, or any other parameter liable to cause a
-	 * change in the DOM tree for a given text, must be passed through the section identifier
-	 * in the section edit link and thus back to extractSections().
-	 *
-	 * The output of this function is currently only cached in process memory, but a persistent
-	 * cache may be implemented at a later date which takes further advantage of these strict
-	 * dependency requirements.
-	 *
-	 * @private
-	 */
-	function preprocessToDom ( $text, $flags = 0 ) {
-		$dom = $this->getPreprocessor()->preprocessToObj( $text, $flags );
-		return $dom;
-	}
-
 	/*
 	 * Return a three-element array: leading whitespace, string contents, trailing whitespace
 	 */
@@ -2772,26 +2730,18 @@ class Parser
 	 * @param PPFrame $frame Object describing the arguments passed to the template.
 	 *        Arguments may also be provided as an associative array, as was the usual case before MW1.12.
 	 *        Providing arguments this way may be useful for extensions wishing to perform variable replacement explicitly.
-	 * @param bool $argsOnly Only do argument (triple-brace) expansion, not double-brace expansion
 	 * @private
 	 */
-	function replaceVariables( $text, $frame = false, $argsOnly = false ) {
+	function replaceVariables( $text ) {
 		# Is there any text? Also, Prevent too big inclusions!
 		if ( strlen( $text ) < 1 || strlen( $text ) > $this->mOptions->getMaxIncludeSize() ) {
 			return $text;
 		}
 		wfProfileIn( __METHOD__ );
 
-		if ( $frame === false ) {
-			$frame = new PPFrame($this);
-		} elseif ( !( $frame instanceof PPFrame ) ) {
-			wfDebug( __METHOD__." called using plain parameters instead of a PPFrame instance. Creating custom frame.\n" );
-			$frame = $this->getPreprocessor()->newCustomFrame($frame);
-		}
-
-		$dom = $this->preprocessToDom( $text );
-		$flags = $argsOnly ? PPFrame::NO_TEMPLATES : 0;
-		$text = $frame->expand( $dom, $flags );
+		$dom = $this->mParseEngine->parse($text);
+		$frame = new PPFrame($this);
+		$text = $frame->expand($dom);
 
 		wfProfileOut( __METHOD__ );
 		return $text;
@@ -2994,7 +2944,7 @@ class Parser
 						$text = $result;
 					}
 					if ( !$noparse ) {
-						$text = $this->preprocessToDom( $text, $preprocessFlags );
+						$text = $this->mParseEngine->parse($text);
 						$isChildObj = true;
 					}
 				}
@@ -3063,7 +3013,7 @@ class Parser
 				} else {
 					$text = $this->interwikiTransclude( $title, 'raw' );
 					// Preprocess it like a template
-					$text = $this->preprocessToDom( $text, self::PTD_FOR_INCLUSION );
+					$text = $this->mParseEngine->parse($text);
 					$isChildObj = true;
 				}
 				$found = true;
@@ -3167,7 +3117,7 @@ class Parser
 			return array( false, $title );
 		}
 
-		$dom = $this->preprocessToDom( $text, self::PTD_FOR_INCLUSION );
+		$dom = $this->mParseEngine->parse($text);
 		$this->mTplDomCache[ $titleText ] = $dom;
 
 		if (! $title->equals($cacheTitle)) {
@@ -3600,7 +3550,7 @@ class Parser
 		$oldType = $this->mOutputType;
 		$this->setOutputType( self::OT_WIKI );
 		$frame = new PPFrame($this);
-		$root = $this->preprocessToDom( $origText );
+		$root = $this->mParseEngine->parse($origText);
 		$node = $root->firstChild;
 		$byteOffset = 0;
 		$tocraw = array();
@@ -4163,7 +4113,7 @@ class Parser
 
 		$text = preg_replace( $substRegex, $substText, $text );
 		$text = $this->cleanSigInSig( $text );
-		$dom = $this->preprocessToDom( $text );
+		$dom = $this->mParseEngine->parse($text);
 		$frame = new PPFrame($this);
 		$text = $frame->expand( $dom );
 
@@ -4748,7 +4698,7 @@ class Parser
 	 * @private
 	 */
 	function attributeStripCallback( &$text, $frame = false ) {
-		$text = $this->replaceVariables( $text, $frame );
+		$text = $this->replaceVariables( $text );
 		$text = $this->mStripState->unstripBoth( $text );
 		return $text;
 	}
@@ -4814,7 +4764,7 @@ class Parser
 			}
 		}
 		// Preprocess the text
-		$root = $this->preprocessToDom( $text, $flags );
+		$root = $this->mParseEngine->parse($text);
 		PPFrame::updateIncTags($root, $flags);
 
 		// <h> nodes indicate section breaks

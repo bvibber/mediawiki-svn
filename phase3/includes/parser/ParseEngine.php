@@ -22,6 +22,8 @@ class ParseEngine {
 	}
 
 	function parse($text) {
+//print("Text: $text\n");
+//foreach (debug_backtrace() as $func) print("{$func["function"]}:{$func["file"]}:{$func["line"]}\n");
 		global $wgDebugParserLog;
 		if ($wgDebugParserLog != '') {
 			wfErrorLog("==========Start Parsing==========\n", $wgDebugParserLog);
@@ -41,20 +43,6 @@ class ParseEngine {
 			wfErrorLog("XML - {$doc->saveXML()}\n", $wgDebugParserLog);
 		}
 		return $doc;
-	}
-
-	static function unparse($node) {
-		$retStr = "";
-		if ($node instanceof DOMElement) {
-			$retStr .= $node->getAttribute("startTag");
-			foreach ($node->childNodes as $child) {
-				$retStr .= ParseEngine::unparse($child);
-			}
-			$retStr .= $node->getAttribute("endTag");
-		} else {
-			$retStr .= $node->textContent;
-		}
-		return $retStr;
 	}
 
 	private function parseRec($rule, $replaceStr, $saveTags, &$iter, &$text, &$outNode) {
@@ -79,37 +67,29 @@ class ParseEngine {
 		$retCode = FALSE;
 		if ($rule->nodeName == "Assignment") {
 			$startPat = $rule->getAttribute("tag");
-			$startTag = NULL;
+			$tag = NULL;
 			if ($rule->getAttribute("regex") != NULL) {
 				if (preg_match("/^$startPat/s", $text, $matches)) {
-					$startTag = $matches[0];
+					$tag = $matches[0];
 					if (isset($matches[1])) {
 						$replaceStr = $matches[1];
 					}
 				}
 			} elseif ($startPat != NULL && strncmp($startPat, $text, strlen($startPat)) == 0) {
-				$startTag = $startPat;
+				$tag = $startPat;
 			}
-			if ($startTag != NULL || $startPat == NULL) {
+			if ($tag != NULL || $startPat == NULL) {
 				$newText = $text;
-				$newElement = $dom->createElement($rule->getAttribute("name"));
-				if ($startTag != NULL) {
-					$newText = substr($newText, strlen($startTag));
-					$newElement->setAttribute("startTag", $startTag);
+				$newElement = $dom->createElement($rule->getAttribute("tagName"));
+				if ($tag != NULL) {
+					$newText = substr($newText, strlen($tag));
+					$newElement->setAttribute("tag", $tag);
 				}
 				$retCode = $rule->firstChild == NULL || $this->parseRec($rule->firstChild, $replaceStr, $saveTags, $iter, $newText, $newElement);
 				if ($retCode) {
 					$outNode->appendChild($newElement);
 					$text = $newText;
 				}
-			}
-		} elseif ($rule->nodeName == "EndTag") {
-			$tag = str_replace("~r", $replaceStr, $rule->getAttribute("tag"));
-			$tagLength = strlen($tag);
-			if (strncmp($tag, $text, $tagLength) == 0) {
-				$text = substr($text, $tagLength);
-				$outNode->setAttribute("endTag", $tag);
-				$retCode = TRUE;
 			}
 		} elseif ($rule->nodeName == "Sequence") {
 			$saveText = $text;
@@ -195,7 +175,7 @@ class ParseEngine {
 			}
 			$rule->setAttribute("pushInd", $pushInd);
 		} else {
-			if ($rule->nodeName != "Choice" && $rule->nodeName != "EndTag") {
+			if ($rule->nodeName != "Choice") {
 				$rule->setAttribute("saveTags", $tagStr);
 				$tagStr = NULL;
 				if ($rule->nodeName == "Text") {
@@ -223,7 +203,7 @@ class ParseEngine {
 		}
 		$childTags = "";
 		$failSafe = TRUE;
-		if ($rule->nodeName == "EndTag" || $rule->nodeName == "Assignment") {
+		if ($rule->nodeName == "Assignment") {
 			$childTags = $rule->getAttribute("tag");
 			if ($rule->nodeName != "Assignment" || $rule->getAttribute("regex") == NULL) {
 				$childTags = preg_quote($childTags, "/");

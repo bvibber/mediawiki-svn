@@ -2,34 +2,44 @@
 <Grammar rootTag="root" startRule="start">
 	<Sequence name="start" >
 		<Choice failSafe="true">
-			<Assignment name="h" tag="(={1,6})" regex="true">
+			<Assignment tagName="noinclude" tag="(?=.*(&lt;onlyinclude>))" regex="true">
 				<Reference name="endText" />
 			</Assignment>
+			<Reference name="heading" />
 		</Choice>
 		<Reference name="main" />
 	</Sequence>
 	<Text name="main">
-		<Assignment name="link" tag="[[">
+		<Reference name="newLine" />
+		<Assignment tagName="link" tag="[[">
 			<Reference name="endText" var="]]" />
 		</Assignment>
-		<Assignment name="h" tag="\n(={1,6})" regex="true">
-			<Reference name="endText" />
-		</Assignment>
-		<Assignment name="tplarg" tag="{{{(?!{)" regex="true">
+		<Assignment tagName="tplarg" tag="{{{(?!{)" regex="true">
 			<Reference name="tplSeq" var="}}}" />
 		</Assignment>
-		<Assignment name="template" tag="{{">
+		<Assignment tagName="template" tag="{{">
 			<Reference name="tplSeq" var="}}" />
 		</Assignment>
-		<Assignment name="comment" tag="\n?(?:&lt;!--.*?(?:-->\n?|$))+" regex="true" />
-		<Assignment name="xmltag" tag="&lt;(\w+)(?= |>)" regex="true">
+		<Reference name="comment" />
+		<Assignment tagName="onlyinclude" tag="&lt;/onlyinclude>">
 			<Sequence>
-				<Assignment name="attr">
-					<Reference name="main" />
-				</Assignment>
+				<Reference name="main" />
+				<Choice failSafe="true">
+					<Assignment tagName="endtag" tag="&lt;onlyinclude>" />
+				</Choice>
+			</Sequence>
+		</Assignment>
+		<Assignment tagName="xmltag" tag="&lt;(?=(\w+)[\s\/>])" regex="true">
+			<Sequence>
+				<Assignment tagName="name" tag="~r">
+				<Choice failSafe="true">
+					<Assignment tagName="attr" tag="\s+" regex="true">
+						<Reference name="main" />
+					</Assignment>
+				</Choice>
 				<Choice>
-					<EndTag tag="/>" />
-					<Assignment name="inner" tag=">">
+					<Assignment tagName="endtag" tag="/>" />
+					<Assignment tagName="inner" tag=">">
 						<Reference name="endText" var="&lt;/~r>" />
 					</Assignment>
 				</Choice>
@@ -38,24 +48,45 @@
 	</Text>
 	<Sequence name="endText">
 		<Reference name="main" />
-		<EndTag tag="~r" />
+		<Assignment tagName="endtag" tag="~r" />
+	</Sequence>
+	<Choice name="ignoreList" failSafe="true">
+		<Sequence>
+			<Choice>
+				<Assignment name="whitespace" tag="[ \t]+" regex="true" />
+				<Reference name="comment" />
+			</Choice>
+			<Reference name="ignoreList" />
+		</Sequence>
+	</Choice>
+	<Assignment name="newLine" tag="\n">
+		<Choice failSafe="true">
+			<Reference name="heading" />
+		</Choice>
+	</Assignment>
+	<Sequence name="heading">
+		<Assignment tagName="h" tag="(={1,6})" regex="true">
+			<Reference name="endText" />
+		</Assignment>
+		<Reference name="ignoreList" />
+		<Reference name="newLine" />
 	</Sequence>
 	<Sequence name="tplSeq">
-		<Assignment name="title">
+		<Assignment tagName="title">
 			<Reference name="main" />
 		</Assignment>
 		<Reference name="partList" />
-		<EndTag tag="~r" />
+		<Assignment tagName="endtag" tag="~r" />
 	</Sequence>
 	<Choice name="partList" failSafe="true">
 		<Sequence>
-			<Assignment name="part" tag="|">
+			<Assignment tagName="part" tag="|">
 				<Sequence>
-					<Assignment name="first">
+					<Assignment tagName="first">
 						<Reference name="main" />
 					</Assignment>
 					<Choice failSafe="true">
-						<Assignment name="value" tag="=">
+						<Assignment tagName="value" tag="=">
 							<Reference name="main" />
 						</Assignment>
 					</Choice>
@@ -64,4 +95,5 @@
 			<Reference name="partList" />
 		</Sequence>
 	</Choice>
+	<Assignment name="comment" tagName="comment" tag="&lt;!--.*?(?:-->|$)" regex="true" />
 </Grammar>

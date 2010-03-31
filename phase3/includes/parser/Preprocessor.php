@@ -1,116 +1,4 @@
 <?php
-
-/**
- * @ingroup Parser
- */
-class Preprocessor {
-	private $mParser, $memoryLimit;
-
-	const CACHE_VERSION = 1;
-
-	function __construct( $parser ) {
-		$this->mParser = $parser;
-		$mem = ini_get( 'memory_limit' );
-		$this->memoryLimit = false;
-		if ( strval( $mem ) !== '' && $mem != -1 ) {
-			if ( preg_match( '/^\d+$/', $mem ) ) {
-				$this->memoryLimit = $mem;
-			} elseif ( preg_match( '/^(\d+)M$/i', $mem, $m ) ) {
-				$this->memoryLimit = $m[1] * 1048576;
-			}
-		}
-	}
-
-	function memCheck() {
-		if ( $this->memoryLimit === false ) {
-			return;
-		}
-		$usage = memory_get_usage();
-		if ( $usage > $this->memoryLimit * 0.9 ) {
-			$limit = intval( $this->memoryLimit * 0.9 / 1048576 + 0.5 );
-			throw new MWException( "Preprocessor hit 90% memory limit ($limit MB)" );
-		}
-		return $usage <= $this->memoryLimit * 0.8;
-	}
-
-	/**
-	 * Preprocess some wikitext and return the document tree.
-	 * This is the ghost of Parser::replace_variables().
-	 *
-	 * @param string $text The text to parse
-	 * @param integer flags Bitwise combination of:
-	 *          Parser::PTD_FOR_INCLUSION    Handle <noinclude>/<includeonly> as if the text is being
-	 *                                     included. Default is to assume a direct page view.
-	 *
-	 * The generated DOM tree must depend only on the input text and the flags.
-	 * The DOM tree must be the same in OT_HTML and OT_WIKI mode, to avoid a regression of bug 4899.
-	 *
-	 * Any flag added to the $flags parameter here, or any other parameter liable to cause a
-	 * change in the DOM tree for a given text, must be passed through the section identifier
-	 * in the section edit link and thus back to extractSections().
-	 *
-	 * The output of this function is currently only cached in process memory, but a persistent
-	 * cache may be implemented at a later date which takes further advantage of these strict
-	 * dependency requirements.
-	 *
-	 * @private
-	 */
-	function preprocessToObj( $text, $flags = 0 ) {
-		wfProfileIn( __METHOD__ );
-		global $wgMemc, $wgPreprocessorCacheThreshold;
-		
-		$xml = false;
-		$cacheable = strlen( $text ) > $wgPreprocessorCacheThreshold;
-		if ( $cacheable ) {
-			wfProfileIn( __METHOD__.'-cacheable' );
-
-			$cacheKey = wfMemcKey( 'preprocess-xml', md5($text), $flags );
-			$cacheValue = $wgMemc->get( $cacheKey );
-			if ( $cacheValue ) {
-				$version = substr( $cacheValue, 0, 8 );
-				if ( intval( $version ) == self::CACHE_VERSION ) {
-					$xml = substr( $cacheValue, 8 );
-					// From the cache
-					wfDebugLog( "Preprocessor", "Loaded preprocessor XML from memcached (key $cacheKey)" );
-				}
-			}
-		}
-		$dom = false;
-		if ( $xml === false ) {
-			if ( $cacheable ) {
-				wfProfileIn( __METHOD__.'-cache-miss' );
-			}
-			$dom = $this->mParser->parse($text);
-			if ( $cacheable ) {
-				$cacheValue = sprintf( "%08d", self::CACHE_VERSION ) . $dom->saveXML();
-				$wgMemc->set( $cacheKey, $cacheValue, 86400 );
-				wfProfileOut( __METHOD__.'-cache-miss' );
-				wfDebugLog( "Preprocessor", "Saved preprocessor XML to memcached (key $cacheKey)" );
-			}
-		} else {
-			wfProfileIn( __METHOD__.'-loadXML' );
-			$dom = new DOMDocument;
-			wfSuppressWarnings();
-			$result = $dom->loadXML( $xml );
-			wfRestoreWarnings();
-			if ( !$result ) {
-				// Try running the XML through UtfNormal to get rid of invalid characters
-				$xml = UtfNormal::cleanUp( $xml );
-				$result = $dom->loadXML( $xml );
-				if ( !$result ) {
-					throw new MWException( __METHOD__.' generated invalid XML' );
-				}
-			}
-			wfProfileOut( __METHOD__.'-loadXML' );
-		}
-		if ( $cacheable ) {
-			wfProfileOut( __METHOD__.'-cacheable' );
-		}
-		wfProfileOut( __METHOD__ );
-		return $dom;
-	}
-}
-
 /**
  * An expansion frame, used as a context to expand the result of preprocessToObj()
  * @ingroup Parser
@@ -141,7 +29,7 @@ class PPFrame {
 
 	/**
 	 * Construct a new preprocessor frame.
-	 * @param Preprocessor $parser The parent parser
+	 * @param Parser $parser The parent parser
 	 */
 	function __construct( $parser ) {
 		$this->parser = $parser;
@@ -216,11 +104,11 @@ class PPFrame {
 //print("UpdIn - {$root->ownerDocument->saveXML()}\n");
 		PPFrame::updateIncTags($root, $flags);
 
-print("ParseIn - {$root->ownerDocument->saveXML()}\n");
+//print("ParseIn - {$root->ownerDocument->saveXML()}\n");
 		$headingIndex = 1;
 		$this->expandRec($root->childNodes, $flags, $headingIndex);
 		$output = $root->textContent;
-print("ParseOut - {$output}\n");
+//print("ParseOut - {$output}\n");
 
 		--$expansionDepth;
 		wfProfileOut( __METHOD__ );
@@ -228,31 +116,22 @@ print("ParseOut - {$output}\n");
 	}
 
 	private function expandRec($contextNode, $flags, &$headingIndex) {
+		$xpath = new DOMXPath($contextNode->ownerDocument);
 		if ($contextNode instanceof DOMNodeList) {
-			for ($i = 0; $i < $contextNode->length; $i ++) {
-				$child = $contextNode->item($i);
+			$retStr = "";
+			foreach ($contextNode as $child) {
 				if ($child instanceof DOMElement) {
-					$this->expandRec($child, $flags, $headingIndex);
-					$i --;
+					$retStr .= $this->expandRec($child, $flags, $headingIndex);
+				} else {
+					$retstr .= $child->data;
 				}
 			}
 		} else {
-print("ParseRecIn - {$contextNode->nodeName}\n");
-			if (($contextNode->nodeName == 'template' || $contextNode->nodeName == 'tplarg') && ! ($flags & self::NO_ARGS)) {
-				foreach ($contextNode->childNodes as $child) {
-					if ($child->nodeName == "part") {
-						foreach ($child->childNodes as $partChild) {
-							$this->expandRec($partChild->childNodes, $flags, $headingIndex);
-						}
-					} else {
-						$this->expandRec($child->childNodes, $flags, $headingIndex);
-					}
-				}
-				if ( $contextNode->nodeName == 'template' ) {
-					$this->parser->braceSubstitution($contextNode, $this);
-				} else {
-					$this->parser->argSubstitution($contextNode, $this);
-				}
+//print("ParseRecIn - {$contextNode->nodeName}\n");
+			if ($contextNode->nodeName == 'template' && ! ($flags & self::NO_TEMPLATES)) {
+				$retStr = $this->parser->braceSubstitution($contextNode, $this);
+			} elseif ($contextNode->nodeName == 'tplarg' && ! ($flags & self::NO_ARGS)) {
+				$retStr = $this->parser->argSubstitution($contextNode, $this);
 			} elseif ( $contextNode->nodeName == 'comment' ) {
 				$comment = $contextNode->getAttribute("startTag");
 				# HTML-style comment
@@ -277,35 +156,32 @@ print("ParseRecIn - {$contextNode->nodeName}\n");
 				else {
 					$contextNode->parentNode->replaceChild($contextNode->ownerDocument->createTextNode($comment), $contextNode);
 				}
-			} elseif ($contextNode->nodeName == 'ignore') {
-				# Output suppression used by <includeonly> etc.
-				# OT_WIKI will only respect <ignore> in substed templates.
-				# The other output types respect it unless NO_IGNORE is set.
-				# extractSections() sets NO_IGNORE and so never respects it.
-				if (($this instanceof PPTemplateFrame || ! $this->parser->ot['wiki']) && ! ($flags & self::NO_IGNORE)) {
-					$contextNode->parentNode->removeChild($contextNode);
+			} elseif ($contextNode->nodeName == "xmltag" || $contextNode->nodeName == "onlyinclude") {
+				$tagName = $contextNode->nodeName == "xmltag" ? $xpath->query("name", $contextNode)->item(0)->getAttribute("tag") : "noinclude";
+				if ($tagName == "noinclude" || $tagName == "includeonly") {
+					if (((! $this instanceof PPTemplateFrame && $this->parser->ot['wiki']) || ($flags & self::NO_IGNORE)) &&
+							((($flags & Parser::PTD_FOR_INCLUSION) && $tagName == "includeonly") || 
+							(! ($flags & Parser::PTD_FOR_INCLUSION) && $tagName == "noinclude"))) {
+						$retStr = "" . $contextNode->getAttribute("tag") . $this->expandRec($contextNode->childNodes, $flags, $headingIndex);
+					}
 				} else {
-					$outText = ParseEngine::unparse($contextNode);
+					foreach ($contextNode->childNodes as $child) {
+						$this->expandRec($child->childNodes, $flags, $headingIndex);
+					}
+					$isStripTag = false;
+					foreach ($this->parser->getStripList() as $stripTag) {
+						$isStripTag = $tagName == $stripTag;
+						if ($isStripTag) {
+							break;
+						}
+					}
+					if ($isStripTag) {
+						$outText = $this->parser->extensionSubstitution($contextNode, $this);
+					} else {
+						$outText = ParseEngine::unparse($contextNode);
+					}
 					$contextNode->parentNode->replaceChild($contextNode->ownerDocument->createTextNode($outText), $contextNode);
 				}
-			} elseif ( $contextNode->nodeName == 'xmltag' ) {
-				foreach ($contextNode->childNodes as $child) {
-					$this->expandRec($child->childNodes, $flags, $headingIndex);
-				}
-				$tagName = substr($contextNode->getAttribute("startTag"), 1);
-				$isStripTag = false;
-				foreach ($this->parser->getStripList() as $stripTag) {
-					$isStripTag = $tagName == $stripTag;
-					if ($isStripTag) {
-						break;
-					}
-				}
-				if ($isStripTag) {
-					$outText = $this->parser->extensionSubstitution($contextNode, $this);
-				} else {
-					$outText = ParseEngine::unparse($contextNode);
-				}
-				$contextNode->parentNode->replaceChild($contextNode->ownerDocument->createTextNode($outText), $contextNode);
 			} elseif ($contextNode->nodeName == 'h' && $contextNode->parentNode->nodeName == 'root' && $this->parser->ot['html']) {
 				# Insert a heading marker only for <h> children of <root>
 				# This is to stop extractSections from going over multiple tree levels
@@ -325,67 +201,8 @@ print("ParseRecIn - {$contextNode->nodeName}\n");
 				$outText = ParseEngine::unparse($contextNode);
 				$contextNode->parentNode->replaceChild($contextNode->ownerDocument->createTextNode($outText), $contextNode);
 			}
-print("ParseRecOut - {$contextNode->ownerDocument->saveXML()}\n");
-		}
-	}
-
-	static function updateIncTags($root, $flags = 0) {
-		if ( $root instanceof DOMDocument ) {
-			$root = $root->documentElement;
-		}
-		$parent = $root;
-		if ($parent instanceof DOMNodeList) {
-			$parent = $parent->item(0)->parentNode;
-		}
-		$xpath = new DOMXPath( $parent->ownerDocument );
-		$forInclusion = $flags & Parser::PTD_FOR_INCLUSION;
-		$ignoreRest = $forInclusion && $xpath->query("xmltag[@startTag='<onlyinclude']", $parent)->length > 0;
-		$children = array();
-		$ind = -1;
-		while ($parent->hasChildNodes()) {
-			$child = $parent->firstChild;
-			$parent->removeChild($child);
-			$tagName = $child instanceof DOMElement ? substr($child->getAttribute("startTag"), 1) : "";
-			if ($tagName != "onlyinclude" && $ignoreRest) {
-				if ($ind < 0 || $children[$ind]->nodeName != "ignore") {
-					$children[] = $parent->ownerDocument->createElement("ignore");
-					$ind ++;
-				}
-				$children[$ind]->appendChild($child);
-			} elseif ($tagName == "includeonly" || $tagName == "noinclude" || $tagName == "onlyinclude") { 
-				$leftTag = $parent->ownerDocument->createTextNode("<$tagName>");
-				$rightTag = $parent->ownerDocument->createTextNode("</$tagName>");
-				$inner = $child->lastChild;
-				if (($tagName == "includeonly" && ! $forInclusion) || ($tagName == "noinclude" && $forInclusion)) {
-					$children[] = $parent->ownerDocument->createElement("ignore");
-					$ind ++;
-					$children[$ind]->appendChild($leftTag);
-					while ($inner->hasChildNodes()) {
-						$gChild = $inner->firstChild;
-						$inner->removeChild($gChild);
-						$children[$ind]->appendChild($gChild);
-					}
-					$children[$ind]->appendChild($rightTag);
-				} else {
-					$children[] = $parent->ownerDocument->createElement("ignore");
-					$ind ++;
-					$children[$ind]->appendChild($leftTag);
-					while ($inner->hasChildNodes()) {
-						$children[] = $inner->firstChild;
-						$ind ++;
-						$inner->removeChild($inner->firstChild);
-					}
-					$children[] = $parent->ownerDocument->createElement("ignore");
-					$ind ++;
-					$children[$ind]->appendChild($rightTag);
-				}
-			} else {
-				$children[] = $child;
-				$ind ++;
-			}
-		}
-		foreach ($children as $child) {
-			$parent->appendChild($child);
+//print("ParseRecOut - {$contextNode->ownerDocument->saveXML()}\n");
+			return retStr;
 		}
 	}
 
@@ -548,46 +365,6 @@ class PPTemplateFrame extends PPFrame {
 	 */
 	function isTemplate() {
 		return true;
-	}
-}
-
-/**
- * Expansion frame with custom arguments
- * @ingroup Parser
- */
-class PPCustomFrame extends PPFrame {
-	private $args;
-
-	function __construct( $args ) {
-		PPFrame::__construct(  );
-		$this->args = $args;
-	}
-
-	function __toString() {
-		$s = 'cstmframe{';
-		$first = true;
-		foreach ( $this->args as $name => $value ) {
-			if ( $first ) {
-				$first = false;
-			} else {
-				$s .= ', ';
-			}
-			$s .= "\"$name\":\"" .
-				str_replace( '"', '\\"', $value->__toString() ) . '"';
-		}
-		$s .= '}';
-		return $s;
-	}
-
-	function isEmpty() {
-		return !count( $this->args );
-	}
-
-	function getArgument( $index ) {
-		if ( !isset( $this->args[$index] ) ) {
-			return false;
-		}
-		return $this->args[$index];
 	}
 }
 
