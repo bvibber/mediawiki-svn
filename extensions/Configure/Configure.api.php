@@ -357,7 +357,7 @@ class ApiConfigure extends ApiBase {
 		);
 	}
 	
-	protected function getPossibleErrors() {
+	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'noconf', 'info' => 'You need to call efConfigureSetup() to use this module'  ),
 			array( 'code' => 'noversion', 'info' => 'version not found' ),
