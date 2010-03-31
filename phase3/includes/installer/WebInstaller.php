@@ -1087,6 +1087,11 @@ class WebInstaller_Name extends WebInstallerPage {
 		$js = 'enableControlArray("config__NamespaceType_other", ["config_wgMetaNamespace"])';
 		$attribs = array( 'onclick' => $js );
 
+		// Set wgMetaNamespace to something valid before we show the form.
+		// $wgMetaNamespace defaults to $wgSiteName which is 'MediaWiki'
+		$metaNS = $this->getVar( 'wgMetaNamespace' );
+		$this->setVar( 'wgMetaNamespace', wfMsgNoTrans( 'config-ns-other-default' ) );
+
 		$this->addHTML( 
 			$this->parent->getTextBox( array(
 				'var' => 'wgSitename',
@@ -1142,6 +1147,9 @@ class WebInstaller_Name extends WebInstallerPage {
 				'values' => array( 'continue', 'skip' )
 			) )
 		);
+
+		// Restore the default value
+		$this->setVar( 'wgMetaNamespace', $metaNS );
 
 		$this->endForm();
 		return 'output';
