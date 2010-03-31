@@ -415,7 +415,7 @@ fn: {
 			
 			// Remove this marker
 			var marker = $(this).data( 'marker' );
-			if ( typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
+			if ( marker && typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
 				// Don't remove these either
 				return true;
 			}

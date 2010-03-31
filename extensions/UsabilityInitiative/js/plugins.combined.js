@@ -6914,7 +6914,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					break;
 				 case 86: //v
-					 if ( event.ctrlKey ){
+					 if ( event.ctrlKey && $.browser.msie ){
 						 //paste, intercepted for IE
 						 context.evt.paste( event );
 					 }
@@ -8984,7 +8984,7 @@ fn: {
 			
 			// Remove this marker
 			var marker = $(this).data( 'marker' );
-			if ( typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
+			if ( marker && typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
 				// Don't remove these either
 				return true;
 			}

@@ -1375,6 +1375,11 @@ $j(document).ready( function() {
 				);
 				$j( '#wikieditor-toolbar-link-int-target' ).suggestions();
 				
+				//don't overwrite user's text
+				if( selection != '' ){
+					$j( '#wikieditor-toolbar-link-int-text' ).data( 'untouched', false );
+				}
+				
 				$j( '#wikieditor-toolbar-link-int-text, #wikiedit-toolbar-link-int-target' )
 					.each( function() {
 						if ( $j(this).val() == '' )
@@ -1601,7 +1606,7 @@ $j(document).ready( function() {
 					);
 					
 					// Restore form state
-						$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 4 );
+						$j( '#wikieditor-toolbar-table-dimensions-rows' ).val( 3 );
 						$j( '#wikieditor-toolbar-table-dimensions-columns' ).val( 3 );
 					// Simulate clicks instead of setting values, so the according
 					// actions are performed
