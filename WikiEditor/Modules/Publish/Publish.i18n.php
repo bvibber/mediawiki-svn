@@ -539,6 +539,7 @@ $messages['id'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'wikieditor-publish-preference' => 'Abilita pubblicazione passo dopo passo',
 	'wikieditor-publish-button-publish' => 'Pubblica',
 	'wikieditor-publish-button-cancel' => 'Annulla',
 	'wikieditor-publish-dialog-title' => 'Pubblica su {{SITENAME}}',

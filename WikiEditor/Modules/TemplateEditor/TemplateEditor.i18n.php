@@ -286,6 +286,7 @@ $messages['id'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'wikieditor-template-editor-preference' => 'Abilita la modifica dei template attraverso moduli',
 	'wikieditor-template-editor-dialog-title' => 'Modifica template',
 	'wikieditor-template-editor-dialog-submit' => 'Aggiorna',
 	'wikieditor-template-editor-dialog-cancel' => 'Annulla',

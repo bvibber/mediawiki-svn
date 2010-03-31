@@ -104,6 +104,13 @@ $messages['ia'] = array(
 	'vector-collapsiblenav-preference' => 'Activar le menu de navigation plicabile a sinistra',
 );
 
+/** Italian (Italiano)
+ * @author Una giornata uggiosa '94
+ */
+$messages['it'] = array(
+	'vector-collapsiblenav-preference' => 'Abilita menù di navigazione nascondibile a sinistra',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -147,10 +154,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'vector-collapsiblenav-preference' => 'Abìlita ël menu ëd navigassion snist stërmàbil',
+	'vector-collapsiblenav-preference' => 'Abìlita la banda ëd navigassion a snistra stërmàbil',
 );
 
 /** Portuguese (Português)
