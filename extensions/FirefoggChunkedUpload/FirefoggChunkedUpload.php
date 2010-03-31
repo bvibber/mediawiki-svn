@@ -7,12 +7,12 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
-	'name' => 'FirefoggChunkedUploading',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:FirefoggChunkedUploading',
+	'name' => 'FirefoggChunkedUpload',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:FirefoggChunkedUpload',
 	'author' => array( 'Mark A. Hershberger' ),
 	'descriptionmsg' => 'firefoggcu-desc',
 );
 
 
 $dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles['FirefoggChunkedUploading'] = $dir . 'FirefoggChunkedUploading.i18n.php';
+$wgExtensionMessagesFiles['FirefoggChunkedUploading'] = $dir . 'FirefoggChunkedUpload.i18n.php';
