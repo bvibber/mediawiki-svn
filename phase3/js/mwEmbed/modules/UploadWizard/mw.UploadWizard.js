@@ -2,7 +2,7 @@ mw.addMessages( {
 	"mwe-upwiz-tab-file": "1. Upload your files",
 	"mwe-upwiz-tab-details": "2. Add licenses and descriptions",
 	"mwe-upwiz-tab-thanks": "3. Use your files",
-	"mwe-upwiz-intro": "Introductory text (short)",
+	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",
 	//"mwe-upwiz-select-files": "Select files:",
 	"mwe-upwiz-add-file-n": "Add another file",
 	"mwe-upwiz-add-file-0": "Click here to add a file for upload",
@@ -514,7 +514,13 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 	// with this flow
 	_this.filenameCtrl = $j('<input type="hidden" name="filename" value=""/>').get(0); 
 	
+	// this file Ctrl container is placed over other interface elements, intercepts clicks and gives them to the file input control.
+	// however, we want to pass hover events to interface elements that we are over, hence the bindings.
+	// n.b. not using toggleClass because it often gets this event wrong -- relies on previous state to know what to do
 	_this.fileCtrlContainer = $j('<div class="mwe-upwiz-file-ctrl-container">')
+					.bind( 'mouseenter', function(e) { _this.addFileCtrlHover(e) } )
+					.bind( 'mouseleave', function(e) { _this.removeFileCtrlHover(e) } );
+
 	// the css trickery (along with css) 
 	// here creates a giant size file input control which is contained within a div and then
 	// clipped for overflow. The effect is that we have a div (ctrl-container) we can position anywhere
@@ -651,12 +657,39 @@ mw.UploadWizardUploadInterface.prototype = {
 			'margin-top' : '-' + ~~( $j( _this.fileInputCtrl).height() - $covered.outerHeight() - 10 ) + 'px'
 		} );
 
-		// pass hover events to the thing we cover, for interface niceties
-		$j( _this.fileCtrlContainer ).bind( 'mouseenter mouseleave', function() {
-			$j( selector ).toggleClass( 'hover' );
-		} );
+		// we may be passing the file ctrl's hover events to another covered interface element
+		// see toggleFileCtrlHover
+		if ( _this.fileCtrlCovered ) {
+			_this.fileCtrlCovered.removeClass( 'hover' );
+		}
+		_this.fileCtrlCovered = $covered;
 
 	},
+
+	/**
+	 * add class to an interface element covered by the fileCtrlContainer
+	 * we are not using jQuery.toggleClass because it seems to get this wrong too often -- dumbly activates when should deactivate & 
+	 * vice versa.
+	 * @param jquery event
+	 */
+	addFileCtrlHover: function(e) {
+		if ( this.fileCtrlCovered ) {
+			this.fileCtrlCovered.addClass( 'hover' );
+		}
+	},
+
+	/**
+	 * remove class from an jquery-wrapped interface element covered by the fileCtrlContainer
+	 * we are not using jQuery.toggleClass because it seems to get this wrong too often -- dumbly activates when should deactivate & 
+	 * vice versa.
+	 * @param jquery event
+	 */
+	removeFileCtrlHover: function(e) {
+		if ( this.fileCtrlCovered ) {
+			this.fileCtrlCovered.removeClass( 'hover' );
+		}
+	},
+
 
 	/**
 	 * this does two things: 
