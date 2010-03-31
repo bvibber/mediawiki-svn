@@ -13,8 +13,9 @@ $j(document).ready( function() {
 		.show();
 	// Remember which portals to hide and show
 	$j( '#panel > div.portal:not(:first)' )
-		.each( function() {
-			if ( $j.cookie( 'vector-nav-' + $j(this).attr( 'id' ) ) == 'true' ) {
+		.each( function( i ) {
+			var state = $j.cookie( 'vector-nav-' + $j(this).attr( 'id' ) );
+			if ( state == 'true' || ( state == null && i < 1 ) ) {
 				$j(this)
 					.addClass( 'expanded' )
 					.find( 'div.body' )
