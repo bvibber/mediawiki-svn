@@ -1,6 +1,3 @@
-/* XXX all these absolute pixel floats are evil, will bite us when i18n-ized */
-/* XXX mwe-upwiz-add-file jumps to the right when all file inputs are removed */
-
 form.mwe-upwiz-form {
 	display: inline;
 }
@@ -85,10 +82,15 @@ form.mwe-upwiz-form {
 	padding: 1em;
 }
 
-#mwe-upwiz-add-file {
-	margin: 8px;
-	padding: 16px;
+
+.mwe-upwiz-add-files-0 {
+	margin-top: 40px;
+	text-align: center;
 	font-size: 16px;
+}
+
+#mwe-upwiz-add-file {
+	padding-top: 16px;
 }
 
 /* NOT a pseudoclass */
@@ -121,9 +123,7 @@ form.mwe-upwiz-form {
 	z-index: 2; 
 }
 
-}
-
-.mwe-upwiz-file {
+.mwe-upwiz-file.filled {
 	height: 24px;
 }
 
@@ -131,8 +131,6 @@ form.mwe-upwiz-form {
 	width: 300px;
 	height: 18px;
 	float: left;
-	/* top: 0px; */
-	/* left: 0px; */
 	white-space: nowrap;
 	overflow: hidden;
 
@@ -146,13 +144,6 @@ form.mwe-upwiz-form {
 	text-align: center;
 }
 
-
-/*
-#mwe-upwiz-select-files {
-	float: left;
-	width: 100px;
-}
-*/
 
 #mwe-upwiz-files {
 	/* margin-left: 100px; */
@@ -229,4 +220,23 @@ a[disabled=true]:hover {
 	background: yellow;
 }
 
+#mwe-upwiz-tabdiv-file {
+	width: 550px;
+}
+
+
+.proceed {
+	text-align: right; 	
+}
+
+.shim {
+	float:right;
+	width: 1px;
+}
+
+.clearShim {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
 

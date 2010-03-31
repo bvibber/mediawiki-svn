@@ -5,7 +5,7 @@ mw.addMessages( {
 	"mwe-upwiz-intro": "Introductory text (short)",
 	//"mwe-upwiz-select-files": "Select files:",
 	"mwe-upwiz-add-file-n": "Add another file",
-	"mwe-upwiz-add-file-0": "Add a file",
+	"mwe-upwiz-add-file-0": "Click here to add a file for upload",
 	"mwe-upwiz-browse": "Browse...",
 	"mwe-upwiz-transported": "OK",
 	"mwe-upwiz-click-here": "Click here to select a file",
@@ -547,7 +547,7 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 
 	// XXX evil hardcoded
 	// we don't really need filesdiv if we do it this way?
-	$j( _this.div ).insertBefore( '#mwe-upwiz-add-file' ); // append( _this.div );
+	$j( _this.div ).insertBefore( '#mwe-upwiz-add-file-container' ); // append( _this.div );
 
 	// _this.progressBar = ( no progress bar for individual uploads yet )
 	// add a details thing to details
@@ -686,6 +686,7 @@ mw.UploadWizardUploadInterface.prototype = {
 
 		if ( ! _this.isFilled ) {
 			_this.isFilled = true;
+			$j( _this.div ).addClass( 'filled' );
 			$j( _this.visibleFilename ).show();
 			$j( _this.removeCtrl ).show();
 			$j(_this.div ).css( { 
@@ -1722,9 +1723,11 @@ mw.UploadWizard.prototype = {
 		       +   '<div id="mwe-upwiz-tabdiv-file">'
 		       +     '<div id="mwe-upwiz-intro">' + gM('mwe-upwiz-intro') + '</div>'
 		       +     '<div id="mwe-upwiz-files">'
-		       +       '<a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a>'
+		       +       '<div class="shim" style="height: 120px"></div>'
+		       +       '<div id="mwe-upwiz-add-file-container" class="mwe-upwiz-add-files-0"><a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a></div>'
+		       +       '<div class="clearShim"></div>'
 		       +     '</div>'	
-		       +     '<div><button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button></div>'
+		       +     '<div class="proceed"><button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button></div>'
 		       +     '<div id="mwe-upwiz-progress"></div>'
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
@@ -1847,7 +1850,7 @@ mw.UploadWizard.prototype = {
 	 * add an Upload
 	 *   we create the upload interface, a handler to transport it to the server,
 	 *   and UI for the upload itself and the "details" at the second step of the wizard.
-	 *   Finally stuff it into an array of uploads. 
+	 *   we don't yet add it to the list of uploads; that only happens when it gets a real file.
 	 * @return boolean success
 	 */
 	newUpload: function() {
@@ -1863,9 +1866,9 @@ mw.UploadWizard.prototype = {
 		$j( upload ).bind( 'filenameAccepted', function(e) { _this.updateFileCounts();  e.stopPropagation(); } );
 		$j( upload ).bind( 'removeUpload', function(e) { _this.removeUpload( upload ); e.stopPropagation(); } );
 		$j( upload ).bind( 'filled', function(e) { 
+			_this.newUpload(); 
 			_this.uploads.push( upload );
 			_this.updateFileCounts();
-			_this.newUpload(); 
 			e.stopPropagation(); 
 		} );
 		// XXX bind to some error state
@@ -1879,8 +1882,6 @@ mw.UploadWizard.prototype = {
 	 * We can remove the HTML UI directly, as jquery will just get the parent.
          * We need to grep through the array of uploads, since we don't know the current index. 
 	 * We need to update file counts for obvious reasons.
-	 * Finally, there is an uncounted upload, waiting to be used, which has a fileInput which covers the
-	 * "add an upload" button. This is absolutely positioned, so it needs to be moved if another upload was removed.
 	 *
 	 * @param upload
 	 */
@@ -1888,7 +1889,6 @@ mw.UploadWizard.prototype = {
 		var _this = this;
 		mw.UploadWizardUtil.removeItem( _this.uploads, upload );
 		_this.updateFileCounts();
-		_this.uploadToAdd.ui.moveFileInputToCover( '#mwe-upwiz-add-file' );
 	},
 
 	/**
@@ -2019,24 +2019,31 @@ mw.UploadWizard.prototype = {
 	
 	/**
 	 * Occurs whenever we need to update the interface based on how many files there are 
+	 * Thhere is an uncounted upload, waiting to be used, which has a fileInput which covers the
+	 * "add an upload" button. This is absolutely positioned, so it needs to be moved if another upload was removed.
+	 * The uncounted upload is also styled differently between the zero and n files cases
 	 */
 	updateFileCounts: function() {
 		var _this = this;
 
-		$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-' + ( _this.uploads.length === 0 ? '0' : 'n' )) );
-
 		if ( _this.uploads.length ) {
 			$j( '#mwe-upwiz-upload-ctrl' ).removeAttr( 'disabled' ); 
+			$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-n' ) );
+			$j( '#mwe-upwiz-add-file-container' ).removeClass('mwe-upwiz-add-files-0');
 		} else {
 			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
+			$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-0' ) );
+			$j( '#mwe-upwiz-add-file-container' ).addClass('mwe-upwiz-add-files-0');
 		}
 
 		if ( _this.uploads.length < _this.maxUploads ) {
 			$j( '#mwe-upwiz-add-file' ).removeAttr( 'disabled' );
+			$j( _this.uploadToAdd.ui.div ).show();
+			_this.uploadToAdd.ui.moveFileInputToCover( '#mwe-upwiz-add-file' );
 		} else {
 			$j( '#mwe-upwiz-add-file' ).attr( 'disabled', true );
+			$j( _this.uploadToAdd.ui.div ).hide();
 		}
-
 
 
 	},
