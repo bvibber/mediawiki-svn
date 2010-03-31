@@ -20,7 +20,7 @@
 
 // Each module may be configured individually to be globally on/off or user preference based
 $wgVectorModules = array(
-	'collapsiblenav' => array( 'global' => false, 'user' => true ),
+	'collapsiblenav' => array( 'global' => true, 'user' => true ),
 	'collapsibletabs' => array( 'global' => true, 'user' => false ),
 	'editwarning' => array( 'global' => false, 'user' => true ),
 	'footercleanup' => array( 'global' => false, 'user' => false ),
