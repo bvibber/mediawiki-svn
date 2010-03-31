@@ -3,7 +3,7 @@ mw.addMessages( {
 	"mwe-upwiz-tab-details": "2. Add licenses and descriptions",
 	"mwe-upwiz-tab-thanks": "3. Use your files",
 	"mwe-upwiz-intro": "Introductory text (short)",
-	"mwe-upwiz-select-files": "Select files:",
+	//"mwe-upwiz-select-files": "Select files:",
 	"mwe-upwiz-add-file-n": "Add another file",
 	"mwe-upwiz-add-file-0": "Add a file",
 	"mwe-upwiz-browse": "Browse...",
@@ -277,7 +277,7 @@ mw.UploadWizardLicenseInput.prototype = {
  *   'new' 'transporting' 'transported' 'details' 'submitting-details' 'complete'  
  * should fork this into two -- local and remote, e.g. filename
  */
-mw.UploadWizardUpload = function() {
+mw.UploadWizardUpload = function( filesDiv ) {
 	var _this = this;
 	_this.state = 'new';
 	_this.transportWeight = 1;  // default
@@ -292,7 +292,7 @@ mw.UploadWizardUpload = function() {
 		
 	// details 		
 	_this.details = new mw.UploadWizardDetails( _this, $j( '#mwe-upwiz-macro-files' ));
-	_this.ui = new mw.UploadWizardUploadInterface( _this );
+	_this.ui = new mw.UploadWizardUploadInterface( _this, filesDiv );
 
 	// handler -- usually ApiUploadHandler
 	// _this.handler = new ( mw.getConfig( 'uploadHandlerClass' ) )( _this );
@@ -489,54 +489,72 @@ mw.UploadWizardUpload.prototype = {
 /**
  * Create an interface fragment corresponding to a file input, suitable for Upload Wizard.
  * @param upload
+ * @param div to insert file interface
+ * @param addInterface interface to add a new one (assumed that we start out there)
  */
-mw.UploadWizardUploadInterface = function( upload ) {
+mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 	var _this = this;
 
 	_this.upload = upload;
 
 	// may need to collaborate with the particular upload type sometimes
 	// for the interface, as well as the uploadwizard. OY.
-	_this.div = $j('<div></div>').get(0);
+	_this.div = $j('<div class="mwe-upwiz-file"></div>').get(0);
+	_this.isFilled = false;
 
-	_this.fileInputCtrl = $j('<input size=40 class="mwe-upwiz-file" name="file" type="file"/>').get(0);
+	_this.fileInputCtrl = $j('<input size="1" class="mwe-upwiz-file-input" name="file" type="file"/>')
+				.change( function() { _this.fileChanged() } ) 
+				.get(0);
+
 
 	// XXX better class for helper, we probably have a standard already
-	_this.visibleFilename = $j('<div class="mwe-upwiz-visible-file helper">' + gM('mwe-upwiz-click-here') + '</div>');
+	_this.visibleFilename = $j('<div class="mwe-upwiz-visible-file"></div>').hide();
 
 	// XXX not sure if we will have a filename here -- we may want to autogenerate a "stashed" filename, 
 	// with this flow
 	_this.filenameCtrl = $j('<input type="hidden" name="filename" value=""/>').get(0); 
-
+	
+	_this.fileCtrlContainer = $j('<div class="mwe-upwiz-file-ctrl-container">')
+	// the css trickery (along with css) 
+	// here creates a giant size file input control which is contained within a div and then
+	// clipped for overflow. The effect is that we have a div (ctrl-container) we can position anywhere
+	// which works as a file input. It will be set to opacity:0 and then we can do whatever we want with
+	// interface "below".
+	// XXX caution -- if the add file input changes size we won't match, unless we add some sort of event to catch this.
 	_this.form = $j('<form class="mwe-upwiz-form"></form>')
-			.append($j('<div class="mwe-upwiz-file-ctrl-container">')
-				.append( _this.fileInputCtrl )
-				.append( _this.visibleFilename )
-			).append( _this.filenameCtrl ).get( 0 );
+			.append( _this.visibleFilename )
+			.append( _this.fileCtrlContainer
+				.append( _this.fileInputCtrl ) 
+			)
+			.append( _this.filenameCtrl ).get( 0 );
 
 	_this.progressMessage = $j('<span class="mwe-upwiz-status-message" style="display: none"></span>').get(0);
 
-	$j( _this.fileInputCtrl ).change( function() { _this.fileChanged() } );
 
 	_this.errorDiv = $j('<div class="mwe-upwiz-upload-error" style="display: none;"></div>').get(0);
 
 	_this.removeCtrl = $j( '<a title="' + gM( 'mwe-upwiz-remove-upload' ) 
 					+ '" href="#" class="mwe-upwiz-remove">x</a>' )
 				.click( function() { _this.upload.remove() } )
+				.hide()
 				.get( 0 );
-
 
 
 	$j( _this.div ).append( _this.form )
 		    .append( _this.progressMessage )
 		    .append( _this.errorDiv )
-		    .append( _this.removeCtrl );
+		    .append( _this.removeCtrl )
+
+	// XXX evil hardcoded
+	// we don't really need filesdiv if we do it this way?
+	$j( _this.div ).insertBefore( '#mwe-upwiz-add-file' ); // append( _this.div );
 
 	// _this.progressBar = ( no progress bar for individual uploads yet )
 	// add a details thing to details
 	// this should bind only to the FIRST transportProgress
 	$j( upload ).bind( 'transportProgress', function(e) { _this.showTransportProgress(); e.stopPropagation() } );
 	$j( upload ).bind( 'transported', function(e) { _this.showTransported(); e.stopPropagation(); } );
+
 };
 
 
@@ -608,6 +626,39 @@ mw.UploadWizardUploadInterface.prototype = {
 	},
 
 	/**
+	 * Move the file input to cover a certain element on the page. 
+	 * We use invisible file inputs because this is the only way to style a file input
+	 * or otherwise get it to do what you want.
+	 * It is helpful to sometimes move them to cover certain elements on the page, and 
+	 * even to pass events like hover
+	 * @param selector jquery-compatible selector, for a single element
+	 */
+	moveFileInputToCover: function( selector ) {
+		var _this = this;
+	
+		var $covered = $j( selector ); 
+
+		_this.fileCtrlContainer
+			.css( $covered.position() ) 
+			.width( $covered.outerWidth() )
+			.height( $covered.outerHeight() );
+		
+		// shift the file input over with negative margins, 
+		// internal to the overflow-containing div, so the div shows all button
+		// and none of the textfield-like input
+		$j( _this.fileInputCtrl ).css( {
+			'margin-left': '-' + ~~( $j( _this.fileInputCtrl).width() - $covered.outerWidth() - 10 ) + 'px',
+			'margin-top' : '-' + ~~( $j( _this.fileInputCtrl).height() - $covered.outerHeight() - 10 ) + 'px'
+		} );
+
+		// pass hover events to the thing we cover, for interface niceties
+		$j( _this.fileCtrlContainer ).bind( 'mouseenter mouseleave', function() {
+			$j( selector ).toggleClass( 'hover' );
+		} );
+
+	},
+
+	/**
 	 * this does two things: 
 	 *   1 ) since the file input has been hidden with some clever CSS ( to avoid x-browser styling issues ), 
 	 *      update the visible filename
@@ -632,7 +683,20 @@ mw.UploadWizardUploadInterface.prototype = {
 		// this is a hack to get a filename guaranteed unique.
 		uniqueFilename = mw.getConfig( 'userName' ) + "_" + ( new Date() ).getTime() + "_" + filename;
 		$j( _this.filenameCtrl ).attr( 'value', uniqueFilename );
-		$j( _this.upload ).trigger( 'filenameAccepted' );
+
+		if ( ! _this.isFilled ) {
+			_this.isFilled = true;
+			$j( _this.visibleFilename ).show();
+			$j( _this.removeCtrl ).show();
+			$j(_this.div ).css( { 
+				'position': 'relative', // own our own file input; it will move with us now.
+				'height': '24px'
+			} );
+			_this.moveFileInputToCover( _this.visibleFilename );
+			$j( _this.upload ).trigger( 'filled' );
+		} else {	
+			$j( _this.upload ).trigger( 'filenameAccepted' );
+		}
 	},
 
 	/**
@@ -1657,9 +1721,9 @@ mw.UploadWizard.prototype = {
 		       + '<div id="mwe-upwiz-content">'
 		       +   '<div id="mwe-upwiz-tabdiv-file">'
 		       +     '<div id="mwe-upwiz-intro">' + gM('mwe-upwiz-intro') + '</div>'
-		       +     '<div id="mwe-upwiz-select-files">' + gM('mwe-upwiz-select-files') + '</div>'	
-		       +     '<div id="mwe-upwiz-files"></div>'	
-		       +     '<div><a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a></div>'
+		       +     '<div id="mwe-upwiz-files">'
+		       +       '<a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a>'
+		       +     '</div>'	
 		       +     '<div><button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button></div>'
 		       +     '<div id="mwe-upwiz-progress"></div>'
 		       +     '<div style="clear: left;"></div>'
@@ -1711,7 +1775,7 @@ mw.UploadWizard.prototype = {
 		// within FILE tab div
 		// select files:
 		//     place for file interfaces
-		$j('#mwe-upwiz-add-file').click( function() { _this.addUpload() } );
+		// $j('#mwe-upwiz-add-file').click( function() { _this.newUpload() } );
 		$j('#mwe-upwiz-upload-ctrl').click( function() { _this.startUploads() } );
 
 		_this.setupDeedOwnWork();
@@ -1740,7 +1804,7 @@ mw.UploadWizard.prototype = {
 
 	
 		// add one to start
-		_this.addUpload();
+		_this.newUpload( '#mwe-upwiz-add-file' );
 
 		// "select" the first tab - highlight, make it visible, hide all others
 		_this.moveToTab('file');
@@ -1786,25 +1850,27 @@ mw.UploadWizard.prototype = {
 	 *   Finally stuff it into an array of uploads. 
 	 * @return boolean success
 	 */
-	addUpload: function() {
+	newUpload: function() {
 		var _this = this;
 		if ( _this.uploads.length == _this.maxUploads ) {
 			return false;
 		}
 
-		var upload = new mw.UploadWizardUpload();
+		var upload = new mw.UploadWizardUpload( _this, '#mwe-upwiz-files' );
+		_this.uploadToAdd = upload;
+
+		upload.ui.moveFileInputToCover( '#mwe-upwiz-add-file' );
 		$j( upload ).bind( 'filenameAccepted', function(e) { _this.updateFileCounts();  e.stopPropagation(); } );
 		$j( upload ).bind( 'removeUpload', function(e) { _this.removeUpload( upload ); e.stopPropagation(); } );
-		// this is only the UI one, so is the result even going to be there?
+		$j( upload ).bind( 'filled', function(e) { 
+			_this.uploads.push( upload );
+			_this.updateFileCounts();
+			_this.newUpload(); 
+			e.stopPropagation(); 
+		} );
+		// XXX bind to some error state
 
-		// bind to some error state
-
-		_this.uploads.push( upload );
-		
-		$j( "#mwe-upwiz-files" ).append( upload.ui.div );
-
-		_this.updateFileCounts();
-
+	
 		return true;
 	},
 
@@ -1812,6 +1878,9 @@ mw.UploadWizard.prototype = {
 	 * Remove an upload from our array of uploads, and the HTML UI 
 	 * We can remove the HTML UI directly, as jquery will just get the parent.
          * We need to grep through the array of uploads, since we don't know the current index. 
+	 * We need to update file counts for obvious reasons.
+	 * Finally, there is an uncounted upload, waiting to be used, which has a fileInput which covers the
+	 * "add an upload" button. This is absolutely positioned, so it needs to be moved if another upload was removed.
 	 *
 	 * @param upload
 	 */
@@ -1819,6 +1888,7 @@ mw.UploadWizard.prototype = {
 		var _this = this;
 		mw.UploadWizardUtil.removeItem( _this.uploads, upload );
 		_this.updateFileCounts();
+		_this.uploadToAdd.ui.moveFileInputToCover( '#mwe-upwiz-add-file' );
 	},
 
 	/**
@@ -1948,14 +2018,19 @@ mw.UploadWizard.prototype = {
 
 	
 	/**
-	 * Occurs whenever we need to update the interface based on how many files are there or have transported
-	 * Also detects if all uploads have transported and kicks off the process that eventually gets us to Step 2.
+	 * Occurs whenever we need to update the interface based on how many files there are 
 	 */
 	updateFileCounts: function() {
 		var _this = this;
 
-		// Can we enable the "add an upload" button, and what should the text on the button show?
 		$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-' + ( _this.uploads.length === 0 ? '0' : 'n' )) );
+
+		if ( _this.uploads.length ) {
+			$j( '#mwe-upwiz-upload-ctrl' ).removeAttr( 'disabled' ); 
+		} else {
+			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
+		}
+
 		if ( _this.uploads.length < _this.maxUploads ) {
 			$j( '#mwe-upwiz-add-file' ).removeAttr( 'disabled' );
 		} else {
@@ -1963,20 +2038,6 @@ mw.UploadWizard.prototype = {
 		}
 
 
-		// Can we enable the "start uploads" button?
-		var hasFile;
-		$j.each( _this.uploads, function (i, upload) {
-			if ( upload.originalFilename ) {
-				hasFile = true; 
-				return false; // break $j.each
-			}
-		} );
-
-		if ( hasFile ) {
-			$j( '#mwe-upwiz-upload-ctrl' ).removeAttr( 'disabled' ); 
-		} else {
-			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
-		}
 
 	},
 
