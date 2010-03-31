@@ -131,10 +131,16 @@ $wgAutoloadLocalClasses = array(
 	'IndexPager' => 'includes/Pager.php',
 	'Interwiki' => 'includes/Interwiki.php',
 	'IP' => 'includes/IP.php',
+
 	'JSMin' => 'js/mwEmbed/includes/library/JSMin.php',
+	'Minify_CSS' => 'js/mwEmbed/includes/library/CSS.php',
+	'Minify_CommentPreserver' => 'js/mwEmbed/includes/library/CommentPreserver.php',
+	'Minify_CSS_Compressor' => 'js/mwEmbed/includes/library/CSS/Compressor.php',
+	'Minify_CSS_UriRewriter' => 'js/mwEmbed/includes/library/CSS/UriRewriter.php',
 	'JSMinException' => 'js/mwEmbed/includes/minify/JSMin.php',
 	'jsScriptLoader' => 'js/mwEmbed/jsScriptLoader.php',
 	'jsClassLoader' => 'js/mwEmbed/includes/jsClassLoader.php',
+
 	'Job' => 'includes/JobQueue.php',
 	'LCStore_DB' => 'includes/LocalisationCache.php',
 	'LCStore_CDB' => 'includes/LocalisationCache.php',
