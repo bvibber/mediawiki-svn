@@ -897,6 +897,8 @@ $messages['io'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'clicktracking' => "Monitoraggio dei click dell'Iniziativa per l'Usabilità",
+	'clicktracking-desc' => 'Monitoraggio dei click per gli eventi di monitoraggio che non causano un ricaricamento della pagina',
 	'ct-title' => 'Clic utente aggregati',
 	'ct-event-name' => "Nome dell'evento",
 	'ct-expert-header' => 'Click su "esperto"',

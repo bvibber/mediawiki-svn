@@ -164,6 +164,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Jagwar
  * @author Jean-Frédéric
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'tiff-desc' => 'Gestionnaire pour visionner les fichiers TIFF en mode image',
@@ -176,10 +177,10 @@ $messages['fr'] = array(
 	'tiff_out_of_service' => "Le fichier téléversé n'a pas pu être traité. ImageMagick n'est pas disponible.",
 	'tiff_too_much_meta' => "Les métadonnées utilisent trop d'espace.",
 	'tiff_error_cached' => "Ce fichier ne peut être régénéré qu'après l'expiration du cache.",
-	'tiff_size_error' => 'La taille de fichier indiqué ne correspond pas à la taille réelle du fichier.',
+	'tiff_size_error' => 'La taille de fichier indiquée ne correspond pas à la taille réelle du fichier.',
 	'tiff_script_detected' => 'Le fichier téléchargé contient des scripts.',
 	'tiff_bad_file' => 'Le fichier téléchargé contient des erreurs.',
-	'tiff-file-info-size' => '(page $5, $1 × $2 pixel, taille du fichier : $3, Type MIME : $4)',
+	'tiff-file-info-size' => '(page $5, $1 × $2 pixels, taille du fichier : $3, Type MIME : $4)',
 );
 
 /** Galician (Galego)
@@ -359,7 +360,7 @@ $messages['pms'] = array(
 	'tiff_page_error' => "Nùmer ëd pàgina pa ant l'antërval",
 	'tiff_too_many_embed_files' => 'La figura a conten andrinta tròpi archivi.',
 	'tiff_sourcefile_too_large' => "L'arzolussion dl'archivi sorgiss a l'é tròp gròssa. Gnun-e figurin-e a saran generà.",
-	'tiff_targetfile_too_large' => "L'arzolussion dël file ëd destinassion a l'é tròp gròssa. Pa gnun-e figurin-e a saran generà.",
+	'tiff_targetfile_too_large' => "L'arzolussion ëd l'archivi ëd destinassion a l'é tròp gròssa. Gnun-e figurin-e a saran generà.",
 	'tiff_file_too_large' => "L'archivi carià a l'é tròp gròss e a l'é stàit arfudà.",
 	'tiff_out_of_service' => "L'archivi carià a l'ha pa podù esse processà. ImageMagick a l'é nen disponìbil.",
 	'tiff_too_much_meta' => 'Ij Metadat a deuvro tròp dë spassi.',
@@ -368,6 +369,26 @@ $messages['pms'] = array(
 	'tiff_script_detected' => "L'archivi carià a conten ëd senari.",
 	'tiff_bad_file' => "L'archivi carià a conten d'eror.",
 	'tiff-file-info-size' => "(pàgina $5, $1 x $2 pontin, dimension dl'archivi: $3, sòrt MIME: $4)",
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'tiff-desc' => 'Permite o visionamento de ficheiros TIFF em modo de imagem',
+	'tiff_no_metadata' => 'Não foi possível extrair metadados do TIFF',
+	'tiff_page_error' => 'Número de página fora do intervalo',
+	'tiff_too_many_embed_files' => 'A imagem tem demasiados ficheiros embutidos.',
+	'tiff_sourcefile_too_large' => "A resolução do ficheiro de origem é demasiado grande. Não será gerada uma miniatura ''(thumbnail)''.",
+	'tiff_targetfile_too_large' => "A resolução do ficheiro de destino é demasiado grande. Não será gerada uma miniatura ''(thumbnail)''.",
+	'tiff_file_too_large' => 'O ficheiro transferido é demasiado grande e foi rejeitado.',
+	'tiff_out_of_service' => 'Não foi possível processar o ficheiro transferido. O ImageMagick não está disponível.',
+	'tiff_too_much_meta' => 'Os metadados usam demasiado espaço.',
+	'tiff_error_cached' => 'Só será possível voltar a renderizar o ficheiro após o intervalo de caching, porque o erro foi colocado na cache.',
+	'tiff_size_error' => 'O tamanho reportado do ficheiro não corresponde ao tamanho real.',
+	'tiff_script_detected' => "O ficheiro transferido tem ''scripts''.",
+	'tiff_bad_file' => 'O ficheiro transferido tem erros.',
+	'tiff-file-info-size' => '(página $5, $1 × $2 pixels, tamanho do ficheiro: $3, tipo MIME: $4)',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

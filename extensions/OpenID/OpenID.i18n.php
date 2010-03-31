@@ -4002,13 +4002,17 @@ A podrà pa intré sensa n'OpenID.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'openidoptional' => 'ستاسې په خوښه',
+	'openidrequired' => 'اړين مالومات',
 	'openidnickname' => 'کورنی نوم',
 	'openidfullname' => 'بشپړ نوم',
 	'openidemail' => 'برېښليک پته',
 	'openidlanguage' => 'ژبه',
 	'openidtimezone' => 'د وخت سيمه',
+	'openidchooselegend' => 'د کارن-نوم د ټاکلو خوښه',
 	'openidchooseinstructions' => 'ټولو کارنانو ته د يوه کورني نوم اړتيا شته؛
 تاسې يو نوم د لاندينيو خوښنو نه ځانته ټاکلی شی.',
+	'openidchoosenick' => 'ستاسې کورنی نوم ($1)',
 	'openidchoosefull' => 'ستاسې بشپړ نوم ($1)',
 	'openidchoosemanual' => 'ستاسې د خوښې يو نوم:',
 	'openidchooseusername' => 'کارن-نوم:',
@@ -4016,6 +4020,9 @@ $messages['ps'] = array(
 	'openidnousername' => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',
 	'openidbadusername' => 'يو ناسم کارن-نوم مو ځانګړی کړی.',
 	'openid-urls-delete' => 'ړنګول',
+	'openidsigninorcreateaccount' => 'ننوتل او يا نوی کارن-حساب جوړول',
+	'openid-provider-label-google' => 'د Google د کارن-حساب په مرسته ننوتل',
+	'openid-provider-label-yahoo' => 'د Yahoo د کارن-حساب په مرسته ننوتل',
 	'openid-provider-label-other-username' => 'تاسې خپل $1 کارن-نوم وليکۍ',
 );
 

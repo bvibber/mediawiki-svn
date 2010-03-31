@@ -371,8 +371,10 @@ $messages['id'] = array(
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'wikieditor-preview-preference' => 'Abilita anteprima laterale',
 	'wikieditor-preview-tab' => 'Anteprima',
 	'wikieditor-preview-changes-tab' => 'Modifiche',
 	'wikieditor-preview-loading' => 'Caricamento...',

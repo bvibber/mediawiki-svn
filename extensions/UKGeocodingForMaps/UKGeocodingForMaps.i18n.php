@@ -145,6 +145,15 @@ $messages['pms'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Un o pi còdes postaj a peulo pa esse geo-codificà e a son pa stàit butà ant la carta.',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'ukgeocoding_name' => 'Georeferenciação do Reino Unido para Mapas',
+	'ukgeocoding_desc' => 'Expande os Mapas com a função sintáctica display_uk_pointer, implementada no Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Não foi possível georeferenciar um ou mais códigos postais, que foram omitidos do mapa.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

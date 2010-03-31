@@ -223,12 +223,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'pageby-desc' => 'Affiche les contributeurs en ligne sur une page wiki utilisant la balise <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Page créée par $1, $2',
 	'pageby-last' => 'Dernière <a href="$3">modification</a> le $1, $2',
-	'pageby-contributors' => 'Contributeurs:',
+	'pageby-contributors' => 'Contributeurs :',
 	'pageby-anon' => "''anonymes''",
 );
 

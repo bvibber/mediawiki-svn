@@ -712,22 +712,22 @@ $messages['fr'] = array(
 	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Extension permettant d’[[Special:PovWatch|ajouter des pages à la liste de suivi]] d’autres utilisateurs',
 	'povwatch_no_session' => 'Erreur : impossible de soumettre le formulaire par suite d’une perte des données de session.',
-	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur de PovWatch. Vous ne pouvez pas ajouter les pages dans la liste correspondante.',
+	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur de PovWatch. Vous ne pouvez pas ajouter de pages aux listes de suivi d’autres utilisateurs.',
 	'povwatch_already_subscribed' => 'Vous êtes déjà inscrit à PovWatch.',
 	'povwatch_subscribed' => 'Vous êtes maintenant inscrit à PovWatch.',
-	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit à PovWatch, vous ne pouvez donc pas résilier d’inscription.',
+	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit à PovWatch, vous ne pouvez donc pas résilier votre inscription.',
 	'povwatch_unsubscribed' => 'Votre inscription a PovWatch est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
-	'povwatch_pushed' => '[[$1]] a été ajoutée à la liste de suivi {{PLURAL:$2|d’un utilisateur|de $2 utilisateurs}}.',
-	'povwatch_intro' => 'PovWatch est un service qui permet d’ajouter implicitement les pages controversées dans la liste de suivi des administrateurs qui le souhaitent.
+	'povwatch_pushed' => 'La page [[$1]] a été ajoutée à la liste de suivi {{PLURAL:$2|d’un utilisateur|de $2 utilisateurs}}.',
+	'povwatch_intro' => 'PovWatch est un service qui permet d’ajouter discrètement des pages controversées aux listes de suivi des administrateurs qui le souhaitent.
 
-Un journal des pages récemment ajoutées à la liste est disponible sur [[Special:PovWatch/log]].',
+Un journal des pages récemment ajoutées aux listes est disponible sur [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Une [[Special:PovWatch/subscribers|liste des abonnés]] est disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Liste des abonnés</strong>',
 	'povwatch_not_allowed_subscribers' => 'Vous n’êtes pas autorisé à consulter la liste des utilisateurs inscrits à PovWatch.',
 	'povwatch_unknown_subpage' => 'Sous-page inconnue.',
 	'povwatch_push' => 'Inscrire',
-	'povwatch_push_intro' => 'Utilisez le formulaire ci-dessous pour placer des pages dans la liste de suivi des utilisateurs abonnés.
+	'povwatch_push_intro' => 'Utilisez le formulaire ci-dessous pour ajouter des pages aux listes de suivi des utilisateurs abonnés.
 Inscrivez scrupuleusement le titre : une page inexistante peut être spécifiée, et il n’existe aucun moyen de la retirer une fois inscrite.',
 	'povwatch_title' => 'Titre :',
 	'povwatch_comment' => 'Commentaire pour le journal :',

@@ -298,14 +298,14 @@ $messages['fi'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'profiling' => 'Données pour évaluer',
-	'profiling-desc' => '[[Special:Profiling|Page spéciale]] pour rechercher et inspecter des données de profil',
-	'profiling-process' => 'Chaîne de caractères du processus :',
+	'profiling' => 'Données d’évaluation',
+	'profiling-desc' => '[[Special:Profiling|Page spéciale]] pour rechercher et inspecter des données d’évaluation',
+	'profiling-process' => 'Ligne de commande du processus :',
 	'profiling-wildcard' => 'Utiliser un passe-partout',
 	'profiling-ok' => 'Accepter',
 	'profiling-data' => 'Données d’évaluation de « $1 »',
 	'profiling-data-process' => 'Processus',
-	'profiling-data-count' => 'Compter',
+	'profiling-data-count' => 'Décompte',
 	'profiling-data-time' => 'Durée (totale)',
 	'profiling-data-average' => 'Durée (moyenne)',
 	'profiling-no-data' => 'Aucune donnée correspondante trouvée',

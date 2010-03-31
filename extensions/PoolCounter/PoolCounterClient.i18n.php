@@ -109,13 +109,14 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'poolcounter-desc' => 'Client pour MediaWiki du démon de compteur de groupement poolcounter.py',
 	'poolcounter-connection-error' => 'Erreur lors de la connexion au compteur de groupement : $1',
-	'poolcounter-read-error' => 'Erreur lors de la lecture du serveur de compteur de groupement',
+	'poolcounter-read-error' => 'Erreur lors de la lecture du serveur du compteur de groupement',
 	'poolcounter-write-error' => "Erreur lors de l'écriture sur le serveur du compteur de groupement",
-	'poolcounter-remote-error' => 'Erreur du serveur de compteur de groupement : $1',
+	'poolcounter-remote-error' => 'Erreur du serveur du compteur de groupement : $1',
 );
 
 /** Galician (Galego)

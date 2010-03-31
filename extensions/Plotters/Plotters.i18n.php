@@ -253,20 +253,21 @@ Nimeä skripti jonka nimi on enimmiltään 255 merkkiä pitkä.',
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'plotters-desc' => 'Permet aux utilisateurs d’utiliser du javascript personnalisé dans les balises jsplot',
 	'plotters' => 'traceurs',
 	'plotters-title' => 'traceurs',
-	'plotters-pagetext' => 'Ci-dessou s la liste des traceurs spéciaux que les utilisateurs peuvent utiliser dans leurs balises jsplot, comme définies sur [[MediaWiki:Plotters-definition]].
+	'plotters-pagetext' => 'Ci-dessous se trouve la liste des traceurs spéciaux que les utilisateurs peuvent utiliser dans leurs balises jsplot, comme définies sur [[MediaWiki:Plotters-definition]].
 Cette vue d’ensemble permet d’accéder facilement aux messages système qui définissent le code et la description de chaque traceur.',
 	'plotters-uses' => 'Utilise',
 	'plotters-missing-script' => 'Aucun script n’a été défini.',
 	'plotters-missing-arguments' => 'Aucun argument n’a été spécifié.',
-	'plotters-excessively-long-scriptname' => 'Le nom du script est trop long. Veuillez définir un script qui a de moins de 255 caractères.',
-	'plotters-excessively-long-preprocessorname' => 'Le nom du préprocesseur est trop long. Définissez un préprocesseur qui fait moins de 255 caractères.',
-	'plotters-excessively-long-name' => 'Le nom du graphe est trop long. Définissez un nom de graphe qui fait moins de 255 caractères.',
-	'plotters-excessively-long-tableclass' => 'La classe du tableau est trop longue. Définissez une classe de tableau qui fait moins de 255 caractères.',
+	'plotters-excessively-long-scriptname' => 'Le nom du script est trop long. Veuillez spécifier un nom qui soit long de 255 caractères ou moins.',
+	'plotters-excessively-long-preprocessorname' => 'Le nom du préprocesseur est trop long. Définissez un nom qui soit long de 255 caractères ou moins.',
+	'plotters-excessively-long-name' => 'Le nom du graphe est trop long. Définissez un nom qui soit long de 255 caractères ou moins.',
+	'plotters-excessively-long-tableclass' => 'La classe du tableau est trop longue. Définissez un nom de classe qui soit long de 255 caractères ou moins.',
 	'plotters-no-data' => 'Aucune donnée n’a été fournie.',
 	'plotters-invalid-renderer' => 'Un moteur de rendu invalide a été sélectionné.',
 	'plotters-errors' => '{{PLURAL:$1|Erreur|Erreurs}} de traceurs :',
