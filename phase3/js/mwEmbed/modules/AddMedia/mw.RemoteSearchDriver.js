@@ -2216,6 +2216,16 @@ mw.RemoteSearchDriver.prototype = {
 		// (but archive.org has another query for more media meta)
 		resource.pSobj.addResourceInfoCallback( resource, function() {		
 			var runFlag = false;
+			
+			// Embed the video html
+			var embedHtml = resource.pSobj.getEmbedHTML( resource, 
+				{ 
+					'id' : 'embed_vid'						
+				} 
+			);				
+			mw.log( 'append html: ' + embedHtml );
+			$j( '#clip_edit_disp' ).html( embedHtml );	
+				
 			// Make sure we have the 'EmbedPlayer' module:
 			mw.load( 'EmbedPlayer', function() {
 				// Strange concurrency issue with callbacks
@@ -2225,14 +2235,7 @@ mw.RemoteSearchDriver.prototype = {
 				} else {
 					mw.log( 'Error: embedPlayerCheck run twice' );
 					return false;
-				}
-				var embedHtml = resource.pSobj.getEmbedHTML( resource, 
-					{ 
-						'id' : 'embed_vid'						
-					} 
-				);				
-				mw.log( 'append html: ' + embedHtml );
-				$j( '#clip_edit_disp' ).html( embedHtml );								
+				}											
 				
 				mw.log( "about to call $j.embedPlayer::embed_vid" );
 											
@@ -2874,8 +2877,7 @@ mw.RemoteSearchDriver.prototype = {
 	*/	
 	insertResource: function( resource ) {
 		mw.log( 'insertResource: ' + resource.title );
-		var _this = this;
-
+		var _this = this;		
 		// If doing a remote link jump directly to resource output: 
 		if( this.import_url_mode == 'remote_link' ){
 			_this.insertResourceToOutput( resource );

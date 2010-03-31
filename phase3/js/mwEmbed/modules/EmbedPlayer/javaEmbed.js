@@ -1,4 +1,4 @@
-/*
+/**
 * List of domains and hosted location of cortado. Lets clients avoid the security warning for cross domain cortado
 */
 window.cortadoDomainLocations = {

@@ -103,7 +103,7 @@ class jsScriptLoader {
 
 		// Special prepend js var to be added to the top of minification output.
 		// useful for special comment tags in minification output
-		$minificationTopJs = '';
+		$NotMinifiedTopJs = '';
 
 		// Build the output
 		// Swap in the appropriate language per js_file
@@ -117,12 +117,21 @@ class jsScriptLoader {
 
 			// If the core mwEmbed class entry point include all the loader js
 			if( $classKey == 'mwEmbed' ){
+
 				// Output the loaders:
 				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
+
 				// Output the current language class js
 				$this->jsout .= jsClassLoader::getLanguageJs( $this->langCode );
+
+				// Output the "common" css file
+				$filePath = self::getJsPathFromClass( 'mw.style.common' );
+				if( $filePath ) {
+					$this->jsout .= $this->getScriptText( 'mw.style.common', $filePath );
+				}
+
 				// Output special IE comment tag to support special mwEmbed tags.
-				$minificationTopJs.='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
+				$NotMinifiedTopJs.='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
 			}
 		}
 
@@ -136,7 +145,7 @@ class jsScriptLoader {
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
 			$this->jsout = self::getMinifiedJs( $this->jsout , $this->requestKey );
-			$this->jsout = $minificationTopJs . $this->jsout;
+			$this->jsout = $NotMinifiedTopJs . $this->jsout;
 		}
 
 		// Save to the file cache
@@ -160,8 +169,10 @@ class jsScriptLoader {
 	/**
 	 * Get the loadDone javascript callback for a given class list
 	 *
-	 * Enables a done loading callback for browsers like safari
-	 * that don't consistently support the <script>.onload call
+	 * Enables a done loading callback for browsers like older safari
+	 * that did not consistently support the <script>.onload call
+	 * or IE that sometimes gets undefined symbols at onload
+	 * call time for associated script content
 	 *
 	 * @return String javascript to tell mwEmbed that the requested class set is loaded
 	 */
@@ -205,14 +216,16 @@ class jsScriptLoader {
 		if( !is_file( $wgJavaPath ) || ! is_file( $wgClosureCompilerPath ) ){
 			return false;
 		}
+
 		// Update the requestKey with a random value if not provided
 		// requestKey is used for the temporary file
 		// ( There are problems with using standard output and Closure compile )
-		if( $requestKey == '')
+		if( $requestKey == '') {
 			$requestKey = rand() + microtime();
+		}
 
 		// Write the grouped javascript to a temporary file:
-		// ( closure compiler does not support reading from standard in )
+		// ( closure compiler does not support reading from standard in pipe )
 		$td = wfTempDir();
 		$jsFileName = $td . '/' . md5( $requestKey )  . '.tmp.js';
 		file_put_contents( $jsFileName,  $js_string );
@@ -268,14 +281,16 @@ class jsScriptLoader {
 				$skinNames = array_keys( $skinNames );
 				if ( in_array( strtolower( $skin ), $skinNames ) ) {
 					// If in debug mode, add a comment with wiki title and rev:
-					if ( $this->debug )
-					$jsout .= "\n/**\n* GenerateUserJs: \n*/\n";
-					return $jsout . $sk->generateUserJs( $skin ) . "\n";
+					if ( $this->debug ) {
+						$jsout .= "\n/**\n* GenerateUserJs: \n*/\n";
+					}
+					return $sk->generateUserJs( $skin ) . "\n";
 				}
 			} else {
-				// Make sure the wiki title ends with .js
-				if ( substr( $title_block, -3 ) != '.js' ) {
-					$this->errorMsg .= 'WikiTitle includes should end with .js';
+				$ext = substr($title_block, strrpos($title_block, '.') + 1);
+				// Make sure the wiki title ends with .js or .css
+				if ( self::validFileExtension( $ext ) ) {
+					$this->errorMsg .= 'WikiTitle includes should end with .js or .css';
 					return false;
 				}
 				// It's a wiki title, append the output of the wikitext:
@@ -286,21 +301,28 @@ class jsScriptLoader {
 					// If in debug mode, add a comment with wiki title and rev:
 					if ( $this->debug )
 					$jsout .= "\n/**\n* WikiJSPage: " . htmlspecialchars( $title_block ) . " rev: " . $a->getID() . " \n*/\n";
-
-					return $jsout . $a->getContent() . "\n";
+					$fileStr = $a->getContent() . "\n";
+					$jsout.= ( $ext == 'css' ) ?
+						$this->transformCssOutput( $classKey, $fileStr ) :
+						$fileStr;
+					return $jsout;
 				}
 			}
 		}else{
+			$ext = substr($file_name, strrpos($file_name, '.') + 1);
 			// Dealing with files
-
 			if ( trim( $file_name ) != '' ) {
-				if ( $this->debug ){
-					$jsout .= "\n/**\n* File: " . htmlspecialchars( $file_name ) . "\n*/\n";
-				}
+				$fileStr = $this->getFileContents( $file_name ) . "\n";
+				if( $fileStr ){
+					// Add the file name if debug is enabled
+					if ( $this->debug ){
+						$jsout .= "\n/**\n* File: " . htmlspecialchars( $file_name ) . "\n*/\n";
+					}
+					$jsout.= ( $ext == 'css' ) ?
+						$this->transformCssOutput( $classKey, $fileStr, $file_name ) :
+						$fileStr;
 
-				$jsFileStr = $this->getFileContents( $file_name ) . "\n";
-				if( $jsFileStr ){
-					return $jsout . $jsFileStr;
+					return $jsout;
 				}else{
 					$this->errorMsg .= "\nError could not read file: ". htmlspecialchars( $file_name )  ."\n";
 					return false;
@@ -311,6 +333,36 @@ class jsScriptLoader {
 		$this->errorMsg .= "\nUnknown error\n";
 		return false;
 	}
+
+	/**
+	 * Special function to transform css output and wrap in js call
+	 */
+	private function transformCssOutput( $classKey, $cssString , $path ='') {
+		global $wgMwEmbedDirectory;
+
+		// Minify and update paths on cssString:
+		$cssOptions = array();
+		if( ! $this->debug ) {
+			$cssOptions[ 'preserveComments' ] = false;
+		}
+		$serverUri = $_SERVER['SCRIPT_URI'];
+
+		// Check for the two jsScriptLoader entry points:
+		if( strpos( $serverUri, 'mwScriptLoader.php') !== false ){
+			$cssOptions[ 'prependRelativePath' ] =
+				str_replace('mwScriptLoader.php', '', $serverUri)
+				. dirname( $path ) . '/';
+		} else if( strpos( $serverUri, 'jsScriptLoader.php') !== false ){
+			$cssOptions[ 'prependRelativePath' ] =
+				str_replace('jsScriptLoader.php', '', $serverUri)
+				. dirname( $path ) . '/';
+		}
+		$cssString = Minify_CSS::minify( $cssString, $cssOptions);
+
+		return 'mw.addStyleString("' . Xml::escapeJsString( $classKey )
+					. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
+	}
+
 	/**
 	 * Outputs the script headers
 	 */
@@ -574,6 +626,11 @@ class jsScriptLoader {
 		}
 	}
 
+	// Check that the filename ends with .js or .css
+	function validFileExtension( $ext ){
+		return !( $ext == 'js'	 || $ext == 'css');
+	}
+
 	/**
 	 * Retrieve the js file into a string, updates errorMsg if not retrivable.
 	 *
@@ -582,10 +639,9 @@ class jsScriptLoader {
 	 */
 	function getFileContents( $filePath ) {
 		global $IP;
-
-		// Check that the filename ends with .js
-		if ( substr( $filePath, -3 ) != '.js' ) {
-			$this->errorMsg .= "\nError file name must end with .js: " . htmlspecialchars( $filePath ) . " \n ";
+		$ext = substr($filePath, strrpos($filePath, '.') + 1);
+		if ( self::validFileExtension( $ext)  ) {
+			$this->errorMsg .= "\nError file name must end with .js or .css " . htmlspecialchars( $filePath ) . " \n ";
 			return false;
 		}
 

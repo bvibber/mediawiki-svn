@@ -360,7 +360,7 @@ EmbedPlayerManager.prototype = {
 				
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function() {	
-			// set the wait for meta flag
+			// Set the wait for meta flag
 			var waitForMeta = _this.waitForMetaCheck( element );	
 										
 			switch( element.tagName.toLowerCase() ) {
@@ -428,9 +428,16 @@ EmbedPlayerManager.prototype = {
 			&&  $j( element ).css( 'height' ) == '150px'
 		){
 			waitForMeta = true;
-		}else{
-			// Css width height attribute has been set on the element return false
-			return false;
+		} else {			
+			// Check if we should wait for duration: 
+			if( $j( element ).get(0).duration || 
+				$j( element ).get(0).durationHint
+			){
+				// height, width and duration set; do not wait for meta data:
+				return false;
+			} else {
+				waitForMeta = true;
+			}
 		}
 		
 		//Firefox ~ sometimes ~ gives -1 for unloaded media
@@ -454,12 +461,12 @@ EmbedPlayerManager.prototype = {
 				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
 			)
 		){
-			// detect src type ( if no type set ) 
+			// Detect src type ( if no type set ) 
 			return true;
-		}
-		
-		// Element is not likely to update its resolution: 
-		return false; 
+		} else {		
+			// Element is not likely to update its meta data via video loader
+			return false;
+		} 
 	},
 	
 	/**
@@ -869,35 +876,8 @@ mediaElement.prototype = {
 	init: function( videoElement ) {
 		var _this = this;
 		mw.log( 'Initializing mediaElement...' );
-		this.sources = new Array();	
-		
-		if ( $j( videoElement ).attr( 'thumbnail' ) ) {
-			_this.poster = $j( videoElement ).attr( 'thumbnail' );
-		}
-			
-		if ( $j( videoElement ).attr( 'poster' ) ) {
-			_this.poster = $j( videoElement ).attr( 'poster' );
-		}	
-		
-		if ( $j( videoElement ).attr( 'apiTitleKey' ) ) {
-			_this.apiTitleKey = $j( videoElement ).attr( 'apiTitleKey' );
-		}
-		
-		if ( $j( videoElement ).attr( 'apiProvider' ) ) {
-			_this.apiProvider = $j( videoElement ).attr( 'apiTitleKey' );
-		}
-		
-		if ( $j( videoElement ).attr( 'durationHint' ) ) {
-			_this.durationHint = $j( videoElement ).attr( 'durationHint' );
-			// Convert duration hint if needed:
-			_this.duration = mw.npt2seconds(  _this.durationHint );
-		}							
-		
-		// Set by default thumb value if not found
-		if( ! _this.poster  ) {
-			_this.poster = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
-		}
-		
+		this.sources = new Array();			
+										
 		// Process the videoElement as a source element:
 		if ( $j( videoElement ).attr( "src" ) ) {
 			_this.tryAddSource( videoElement );
@@ -1274,8 +1254,20 @@ mw.EmbedPlayer.prototype = {
 			// string -> bollean
 			if( this[attr] == "false" ) this[attr] = false;
 			if( this[attr] == "true" ) this[attr] = true;
-		}		
-		
+		}
+				
+		// Set the poster:
+		if ( $j( element ).attr( 'thumbnail' ) ) {
+			_this.poster = $j( element ).attr( 'thumbnail' );
+		}			
+		if ( $j( element ).attr( 'poster' ) ) {
+			_this.poster = $j( element ).attr( 'poster' );
+		}											
+		// Set by default thumb value if not found
+		if( ! _this.poster ) {
+			_this.poster = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
+		}
+				
 		// Set the skin name from the class  
 		var	sn = $j(element).attr( 'class' );
 		if ( sn && sn != '' ) {
@@ -1288,26 +1280,35 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set the default skin if unset: 
 		if ( !this.skinName ) {
-			this.skinName = mw.getConfig( 'skinName' );
+			this.skinName = mw.getConfig( 'playerSkinName' );
 		}
 			
 		
 		// Make sure startOffset is cast as an float:		   
-		if ( this.startOffset && this.startOffset.split( ':' ).length >= 2 )
+		if ( this.startOffset && this.startOffset.split( ':' ).length >= 2 ) {
 			this.startOffset = parseFloat( mw.npt2seconds( this.startOffset ) );
+		}
 			
 		// Make sure offset is in float: 
 		this.startOffset = parseFloat( this.startOffset );
-		 
-		if ( this.duration && this.duration.split( ':' ).length >= 2 )
-			this.duration = mw.npt2seconds( this.duration );
-			
-		// Make sure duration is in float:  
+		
+		// Set the source duration ( if provided in the element metaData or durationHint )
+		if ( $j( element ).attr( 'duration' ) ) {
+			_this.duration = $j( element ).attr( 'duration' );
+		}		
+		if ( !_this.duration && $j( element ).attr( 'durationHint' ) ) {
+			_this.durationHint = $j( videoElement ).attr( 'durationHint' );
+			// Convert duration hint if needed:
+			_this.duration = mw.npt2seconds(  _this.durationHint );
+		}				 
+		
+		// Make sure duration is a float:  
 		this.duration = parseFloat( this.duration );
 		mw.log( "duration is: " +  this.duration );
 		
-						
-		this.setPlayerSize( element ); 				 			 			
+		// Set the player size attributes based loaded video element:  
+		this.setPlayerSize( element ); 			
+			 			 			
 		// Set the plugin id
 		this.pid = 'pid_' + this.id;
 
@@ -1332,10 +1333,7 @@ mw.EmbedPlayer.prototype = {
 					}
 				}	
 			}
-		} );
-				
-		// Make sure we have the player skin css:
-		mw.getStyleSheet(  mw.getMwEmbedPath() +  'skins/' + this.skinName + '/EmbedPlayer.css' );
+		} );					
 	},
 		
 	
@@ -1708,22 +1706,9 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Get the duration of the selected source media
+	* Get the duration of the embed player
 	*/	
-	getDuration:function() {
-		// Update some local pointers for the selected source:	
-		if ( this.mediaElement && this.mediaElement.selectedSource && this.mediaElement.selectedSource.duration ) {
-			this.duration = parseFloat( this.mediaElement.selectedSource.duration );
-			this.startOffset = parseFloat( this.mediaElement.selectedSource.startOffset );
-			this.start_npt = this.mediaElement.selectedSource.start_npt;
-			this.end_npt = this.mediaElement.selectedSource.end_npt;
-		}
-		// Update start end_npt if duration !=0 (set from plugin) 
-		if ( !this.start_npt )
-			this.start_npt = '0:0:0';
-		if ( !this.end_npt && this.duration )
-			this.end_npt = mw.seconds2npt( this.duration );
-		// Return the duration
+	getDuration: function() {
 		return this.duration;
 	},	
 	

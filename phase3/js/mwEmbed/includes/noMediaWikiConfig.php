@@ -57,11 +57,21 @@ jsClassLoader::loadClassPaths();
 // Get the JSmin class:
 require_once( realpath( dirname( __FILE__ ) ) . '/library/JSMin.php' );
 
+// Get the css class:
+require_once( realpath( dirname( __FILE__ ) ) . '/library/CSS.php' );
+require_once( realpath( dirname( __FILE__ ) ) . '/library/CSS/Compressor.php' );
+require_once( realpath( dirname( __FILE__ ) ) . '/library/CSS/UriRewriter.php' );
+require_once( realpath( dirname( __FILE__ ) ) . '/library/CommentPreserver.php' );
+
 // Get the messages file:
 require_once( realpath( dirname( __FILE__ ) ) . '/../languages/mwEmbed.i18n.php' );
 
 function wfDebug() {
     return false;
+}
+
+function wfTempDir(){
+	return realpath( dirname( __FILE__ ) ) . '/includes/cache';
 }
 
 /**
@@ -131,3 +141,30 @@ function wfSuppressWarnings(){
 };
 function wfRestoreWarnings(){
 };
+class Xml {
+	public static function escapeJsString( $string ) {
+		// See ECMA 262 section 7.8.4 for string literal format
+		$pairs = array(
+			"\\" => "\\\\",
+			"\"" => "\\\"",
+			'\'' => '\\\'',
+			"\n" => "\\n",
+			"\r" => "\\r",
+
+			# To avoid closing the element or CDATA section
+			"<" => "\\x3c",
+			">" => "\\x3e",
+
+			# To avoid any complaints about bad entity refs
+			"&" => "\\x26",
+
+			# Work around https://bugzilla.mozilla.org/show_bug.cgi?id=274152
+			# Encode certain Unicode formatting chars so affected
+			# versions of Gecko don't misinterpret our strings;
+			# this is a common problem with Farsi text.
+			"\xe2\x80\x8c" => "\\u200c", // ZERO WIDTH NON-JOINER
+			"\xe2\x80\x8d" => "\\u200d", // ZERO WIDTH JOINER
+		);
+		return strtr( $string, $pairs );
+	}
+}

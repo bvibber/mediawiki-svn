@@ -13,6 +13,8 @@
 	mw.addClassFilePaths( {
 		"mw.Language"			: "modules/UploadWizard/mw.Language.js",
 		"mw.UploadWizard"		: "modules/UploadWizard/mw.UploadWizard.js",
+		"mw.style.uploadWizard" : "modules/UploadWizard/css/uploadWizard.css",
+		
 		"mw.UploadApiProcessor"		: "modules/UploadWizard/mw.UploadApiProcessor.js",
 		"mw.IframeTransport"		: "modules/UploadWizard/mw.IframeTransport.js",
 		"mw.ApiUploadHandler"		: "modules/UploadWizard/mw.ApiUploadHandler.js",
@@ -21,11 +23,6 @@
 		"mw.MockUploadHandler"		: "modules/UploadWizard/mw.MockUploadHandler.js"			
 		
 	});	
-
-	mw.addClassStyleSheets( {
-		'mw.UploadWizard'		: 'modules/UploadWizard/css/uploadWizard.css',
-		'$j.fn.autocomplete'		: 'jquery/plugins/jquery.autocomplete.css'
-	} );
 	
 	//Set a variable for the base upload interface for easy inclution
 	// 
@@ -57,13 +54,15 @@
 			'$j.effects.core',
 			'$j.effects.slide',
 			'$j.fn.autocomplete',
+			'mw.style.autocomplete'
 		],
 		[
 			'mw.Language',
 			'mw.IframeTransport',
 			'mw.ApiUploadHandler',
 			'mw.DestinationChecker',
-			'mw.UploadWizard'
+			'mw.UploadWizard',
+			'mw.style.uploadWizard'
 		],
 	];
 

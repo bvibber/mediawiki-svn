@@ -43,13 +43,16 @@ mw.setDefaultConfig( {
 	// The default share embed mode ( can be "object" or "videojs" )
 	//
 	// "object" will provide a <object tag pointing to mwEmbedFrame.php
-	// 		Object embeding should be much more compatilbe
+	// 		Object embedding should be much more compatible with sites that
+	//		let users embed flash applets
 	// "videojs" will include the source javascript and video tag to
 	//	 	rewrite the player on the remote page DOM  
-	//		Video tag embeding is much more mash-up friendly but exposes
+	//		Video tag embedding is much more mash-up friendly but exposes
 	//		the remote site to the mwEmbed js. 
-	'shareEmbedMode' : 'object'
+	'shareEmbedMode' : 'object',
 	
+	// Default player skin name
+	"playerSkinName" : "mvpcf"	
 } );
 
 
@@ -63,16 +66,17 @@ mw.addClassFilePaths( {
 	"javaEmbed"			: "modules/EmbedPlayer/javaEmbed.js",
 	"nativeEmbed"		: "modules/EmbedPlayer/nativeEmbed.js",
 	"quicktimeEmbed"	: "modules/EmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "modules/EmbedPlayer/vlcEmbed.js"
+	"vlcEmbed"			: "modules/EmbedPlayer/vlcEmbed.js",
+	
+	"ctrlBuilder"		: "modules/EmbedPlayer/skins/ctrlBuilder.js",
+	
+	"kskinConfig"		: "modules/EmbedPlayer/skins/kskin/kskinConfig.js",
+	"mw.style.kskin" 	: "modules/EmbedPlayer/skins/kskin/EmbedPlayer.css",	
+	
+	"mvpcfConfig"		: "modules/EmbedPlayer/skins/mvpcf/mvpcfConfig.js",
+	"mw.style.mvpcf" 	: "modules/EmbedPlayer/skins/mvpcf/EmbedPlayer.css"	
 } );
 
-
-// Add style sheet dependencies
-mw.addClassStyleSheets( {
-	"kskinConfig" : "skins/kskin/EmbedPlayer.css",
-	"mvpcfConfig" : "skins/mvpcf/EmbedPlayer.css"	
-} );
- 
 /**
 * Check the current DOM for any tags in "rewritePlayerTags"
 * 
@@ -146,37 +150,48 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	if( mw.getConfig( 'textInterface' ) == 'always' ) {		
 		addTimedTextReqFlag = true;	
 	}
-		
+	
+	var playerSkins = {};
 	// Get the class of all embed video elements 
 	// to add the skin to the load request
-	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function() {
+	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function() {	
 		var playerElement = this;		
-		var cName = $j( playerElement ).attr( 'class' );
+		var playerClassName = $j( playerElement ).attr( 'class' );	
+		// Set playerClassName to default	
+		if( ! playerClassName ){
+			playerClassName = mw.getConfig( 'playerSkinName' );
+		}		
 		for( var n=0; n < mw.valid_skins.length ; n++ ) {
 			// Get any other skins that we need to load 
 			// That way skin js can be part of the single script-loader request: 
-			if( cName.indexOf( mw.valid_skins[ n ] ) !== -1) {
-				dependencyRequest[0].push(  mw.valid_skins[n]  + 'Config' );
+			if( playerClassName.indexOf( mw.valid_skins[ n ] ) !== -1) {
+				// Add skin name to playerSkins
+				playerSkins[ mw.valid_skins[ n ] ] = true;	
 			}
-		}
+		}		
+		
 		// If add timed text flag not already set check for itext, and sources
 		if( !addTimedTextReqFlag ) {
 			if( $j( playerElement ).find( 'itext' ).length != 0 ) {
 				// Has an itext child include timed text request
 				addTimedTextReqFlag = true;
-				// break out of the loop
-				return false; 
 			}
 			// Check for ROE pointer or apiTitleKey
 			if ( $j( playerElement ).attr('roe') 
 				|| $j( playerElement ).attr( 'apiTitleKey' ) )
 			{				
 				addTimedTextReqFlag = true;
-				// break out of the loop
-				return false;
 			}			
 		}
-	} );	
+	} );
+	
+	// Add the player skins css and js to the load request:	
+	for( var pSkin in playerSkins ) {
+		// Add skin js
+		dependencyRequest[0].push(  pSkin  + 'Config' );	
+		// Add the skin css 
+		dependencyRequest[0].push( 'mw.style.' + pSkin );
+	}	
 	
 	// Add timed text items if flag set.  	
 	if( addTimedTextReqFlag ) {
