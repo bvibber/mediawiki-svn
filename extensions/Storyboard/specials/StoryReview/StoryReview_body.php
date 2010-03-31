@@ -114,7 +114,8 @@ EOT
 		$deleteImageMsg = htmlspecialchars(  wfMsg( 'storyboard-deleteimage' ) );
 		
 		// TODO: add some returnto feature here
-		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit');
+		global $wgTitle;
+		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit&returnto=' . $wgTitle->getPrefixedText() );
 		$editUrl = Xml::escapeJsString( $editUrl );
 		
 		return <<<EOT

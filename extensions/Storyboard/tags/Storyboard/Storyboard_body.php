@@ -37,7 +37,7 @@ EOT
 				'style' => "height: $height; width: $width;"
 			)
 		);
-		return array( $output, 'noparse' => 'true', 'isHTML' => 'true' );
+		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 	
 }

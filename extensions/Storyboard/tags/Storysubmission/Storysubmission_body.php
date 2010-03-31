@@ -29,7 +29,7 @@ class TagStorysubmission {
 			$output = self::getFrom( $parser, $args );
 		}
 		
-		return $output;
+		return array( $output, 'noparse' => true, 'isHTML' => true );
 		
 		wfProfileOut( __METHOD__ );
 	}

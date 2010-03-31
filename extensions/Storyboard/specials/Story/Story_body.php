@@ -28,6 +28,12 @@ class SpecialStory extends IncludableSpecialPage {
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			if ( $wgUser->isAllowed( 'storyreview' ) ) {
 				$this->saveStory();
+				
+				// Redirect the user when the redirect parameter is set.
+				if ( $wgRequest->getVal( 'returnto' ) ) {
+		 			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
+					$wgOut->redirect( $titleObj->getFullURL() );					
+				}
 			} else {
 				$wgOut->addWikiMsg( 'storyboard-cantedit' );
 			}
@@ -98,13 +104,15 @@ class SpecialStory extends IncludableSpecialPage {
 					$wgOut->addWikiMsg( 'storyboard-unpublished' );
 					
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
-						global $wgParser;
-						
-						$wgOut->addWikiMsgArray(
-							//$wgParser->recursiveTagParse(
+						global $wgTitle;
+						$wgOut->addHTML( // TODO: this still isn't working properly
+							wfMsgHtml(
 								'storyboard-canedit',
-								$this->getTitle()->getLocalURL( 'action=edit' )
-							//)
+								$wgUser->getSkin()->link(
+									$wgTitle,
+									strtolower( wfMsg( 'edit' ) )
+								)
+							)
 						);
 					}
 				}
@@ -222,13 +230,16 @@ EOT
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
 		$formBody .= Html::hidden( 'storyId', $story->story_id );
 		
+		$returnToQuery = $wgRequest->getVal( 'returnto' );
+		if ( $returnToQuery ) $returnToQuery = 'returnto=' . $returnToQuery;
+		
 		$formBody = Html::rawElement(
 			'form',
 			array(
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $this->getTitle( $story->story_title )->getLocalURL(),
+				'action' => $this->getTitle( $story->story_title )->getLocalURL( $returnToQuery ),
 			),
 			$formBody
 		);		

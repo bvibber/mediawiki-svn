@@ -59,7 +59,8 @@ $wgAPIModules['storyreview'] = 'ApiStoryReview';
 // Hooks
 $wgHooks['ParserFirstCallInit'][] = 'efStoryboardParserFirstCallInit';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
-$wgHooks['SkinTemplateContentActions'][] = 'efStoryboardAddStoryEditAction';
+$wgHooks['SkinTemplateTabs'][] = 'efStoryboardAddStoryEditAction';
+$wgHooks['SkinTemplateNavigation'][] = 'efStoryboardAddStoryEditActionVector';
 
 
 /**
@@ -97,10 +98,17 @@ function efStoryboardParserFirstCallInit( &$parser ) {
 	return true;
 }
 
-function efStoryboardAddStoryEditAction( &$content_actions ) {
-	// TODO: currently not having any affect on Special:Story for some reason
+function efStoryboardAddStoryEditActionVector( &$sktemplate, &$links ) {
+	$views_links = $links['views'];
+	efStoryboardAddStoryEditAction( $sktemplate, $views_links );
+	$links['views'] = $views_links;
+
+	return true;	
+}
+
+function efStoryboardAddStoryEditAction( &$sktemplate, &$content_actions ) {
 	global $wgRequest, $wgRequest, $wgTitle;
-	
+
 	$action = $wgRequest->getText( 'action' );
 
 	if ( $wgTitle->equals( SpecialPage::getTitleFor( 'story' ) ) ) {
