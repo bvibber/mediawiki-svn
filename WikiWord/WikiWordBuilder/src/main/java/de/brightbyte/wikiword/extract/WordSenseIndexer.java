@@ -1,6 +1,8 @@
 package de.brightbyte.wikiword.extract;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +13,7 @@ import de.brightbyte.data.cursor.DataSink;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LineCursor;
+import de.brightbyte.io.LineSink;
 import de.brightbyte.io.OutputSink;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.RegularExpressionChunker;
@@ -43,13 +46,21 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 	}
 
 	@Override
-	protected DataSink<String> openSink() {
-		return new OutputSink(ConsoleIO.output); //FIXME: open stream as required
+	protected DataSink<String> openSink() throws PersistenceException {
+		try {
+			return new LineSink(getOutputWriter());
+		} catch (IOException e) {
+			throw new PersistenceException(e);
+		} 
 	}
 
 	@Override
-	protected DataCursor<String> openCursor() {
-		return new LineCursor(ConsoleIO.newReader());  //FIXME: open stream as required
+	protected DataCursor<String> openCursor() throws PersistenceException {
+		try {
+			return new LineCursor(getInputReader());
+		} catch (IOException e) {
+			throw new PersistenceException(e);
+		}  
 	}
 
 	@Override
@@ -98,7 +109,7 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 	}
 
 	@Override
-	protected String process(String line) throws PersistenceException, ParseException {
+	protected void process(String line) throws PersistenceException, ParseException {
 		//TODO: logic for handling overlapping phrases in a PhraseOccuranceSequence
 		/*
 		PhraseOccuranceSequence sequence = analyzer.extractPhrases(line, phraseLength); //TODO: alternative tokenizer/splitter //TODO: split by sentence first.
@@ -113,7 +124,8 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(terms, null);
 		if (flip) Collections.reverse(terms);
 		
-		return assembleMeanings(terms, result);
+		String s = assembleMeanings(terms, result); //TODO: use proper TSV or something
+		commit(s);
 	}
 
 	private String assembleMeanings(List<Term> terms, Result<Term, LocalConcept> result) {

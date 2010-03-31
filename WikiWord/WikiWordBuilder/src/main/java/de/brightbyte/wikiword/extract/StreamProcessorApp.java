@@ -1,20 +1,103 @@
 package de.brightbyte.wikiword.extract;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSink;
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
+import de.brightbyte.wikiword.builder.InputFileHelper;
 import de.brightbyte.wikiword.store.WikiWordConceptStoreBase;
 
 public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBase> extends StoreBackedApp<S> {
 
-	protected DataCursor<I> cursor;
-	protected DataSink<O> sink;
+	protected DataCursor<? extends I> cursor;
+	protected DataSink<? super O> sink;
+	
+	protected InputFileHelper inputHelper;	
 	
 	public StreamProcessorApp(boolean allowGlobal, boolean allowLocal) {
 		super(allowGlobal, allowLocal);
 	}
 
+	
+	protected File getOutputFile() {
+		if (outputFile==null) {
+			if (args.getParameterCount()>2) {
+				outputFile = new File(args.getParameter(2));
+			}
+		}
+		return outputFile;
+	}
+
+	protected String getOutputFileEncoding() {
+		return args.getStringOption("outputencoding", "UTF-8");
+	}
+
+	protected File outputFile;
+	protected Writer outputWriter;
+	protected OutputStream outputStream;
+	private InputStream inputStream;
+	private Reader inputReader;
+	
+	protected Writer getOutputWriter() throws FileNotFoundException, UnsupportedEncodingException {
+		if (outputWriter==null) {
+			File f = getOutputFile();
+			if (f==null) outputWriter = ConsoleIO.writer;
+			else outputWriter = new OutputStreamWriter(getOutputStream(), getOutputFileEncoding());
+		}
+		
+		return outputWriter;
+	}
+	
+	protected OutputStream getOutputStream() throws FileNotFoundException {
+		if (outputStream==null) {
+			File f = getOutputFile();
+			if (f==null) outputStream = System.out;
+			else {
+				outputStream = new BufferedOutputStream(new FileOutputStream(f, args.isSet("append")));
+				info("Writing output to "+f);
+			}
+		}
+		
+		return outputStream;
+	}
+	
+	protected Reader getInputReader() throws IOException {
+		if (inputReader==null) {
+			File f = getOutputFile();
+			if (f==null) inputReader = ConsoleIO.newReader();
+			else inputReader = new InputStreamReader(getInputStream(), getOutputFileEncoding());
+		}
+		
+		return inputReader;
+	}
+	
+	protected InputStream getInputStream() throws IOException {
+		if (inputStream==null) {
+			File f = getOutputFile();
+			if (f==null) inputStream = System.in;
+			else {
+				inputStream = inputHelper.openFile(f);
+				info("Reading input from "+f);
+			}
+		}
+		
+		return inputStream;
+	}
+	
 	@Override
 	public void run() throws Exception {
 		init();
@@ -25,13 +108,13 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 		close();
 	}
 
-	protected void open() {
+	protected void open() throws PersistenceException {
 		cursor = openCursor();
 		sink = openSink();
 	}
 
-	protected abstract DataCursor<I> openCursor();
-	protected abstract DataSink<O> openSink();
+	protected abstract DataCursor<? extends I> openCursor() throws PersistenceException;
+	protected abstract DataSink<? super O> openSink() throws PersistenceException;
 
 	protected void init() throws Exception {
 		// noop
@@ -40,15 +123,18 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 		sink.close();
 	}
 
-	public void runTransfer(DataCursor<I> cursor) throws Exception {
+	public void runTransfer(DataCursor<? extends I> cursor) throws Exception {
 		I rec;
 		while ((rec = cursor.next()) != null) {
 			//TODO: progress tracker
-			O res = process(rec);
-			if (res!=null) sink.commit(res);
+			process(rec);
 		}
 	}
 
-	protected abstract O process(I rec) throws Exception;
+	protected void commit(O rec) throws PersistenceException {
+		sink.commit(rec);
+	}
+	
+	protected abstract void process(I rec) throws Exception;
 	
 }
