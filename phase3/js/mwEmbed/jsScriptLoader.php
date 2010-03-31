@@ -345,8 +345,8 @@ class jsScriptLoader {
 		if( ! $this->debug ) {
 			$cssOptions[ 'preserveComments' ] = false;
 		}
-		$serverUri = $_SERVER['SCRIPT_URI'];
-
+		$serverUri = $this->getScriptLoaderUri();
+		
 		// Check for the two jsScriptLoader entry points:
 		if( strpos( $serverUri, 'mwScriptLoader.php') !== false ){
 			$cssOptions[ 'prependRelativePath' ] =
@@ -362,6 +362,28 @@ class jsScriptLoader {
 		return 'mw.addStyleString("' . Xml::escapeJsString( $classKey )
 					. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
 	}
+
+	/**
+	 * Get the URI of the scriptLoader
+	 */
+	private function getScriptLoaderUri() {
+
+		// protocol is http or https
+		$protocol = 'http';
+		if ($_SERVER['SERVER_PORT'] == 443 || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')) {
+			$protocol .= 's';
+			$protocol_port = $_SERVER['SERVER_PORT'];
+		} else {
+			$protocol_port = 80;
+		}
+
+		// $port will be "" or something like ":8100"
+		$port = ( $_SERVER['SERVER_PORT'] == $protocol_port ) ? '' : ':' . $_SERVER['SERVER_PORT'];
+
+		// php_self is the URL that invoked this script, without CGI parameters or fragment.
+		return $protocol . '://' . $_SERVER['HTTP_HOST'] . $port . $_SERVER['PHP_SELF'];
+	}
+
 
 	/**
 	 * Outputs the script headers
