@@ -8,12 +8,14 @@ import java.util.regex.Pattern;
 
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSink;
+import de.brightbyte.data.measure.Measure;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.io.OutputSink;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.RegularExpressionChunker;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.analyzer.PlainTextAnalyzer;
 import de.brightbyte.wikiword.disambig.Disambiguator;
 import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
@@ -23,6 +25,7 @@ import de.brightbyte.wikiword.disambig.Term;
 import de.brightbyte.wikiword.disambig.Disambiguator.Result;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
 import de.brightbyte.wikiword.store.FeatureStore;
 import de.brightbyte.wikiword.store.LocalConceptStore;
@@ -64,9 +67,25 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 	}
 	
 	protected void init() throws PersistenceException, InstantiationException {
-			StoredMeaningFetcher meaningFetcher = new StoredMeaningFetcher(getLocalConceptStore());
+		WikiWordConceptStore.ConceptQuerySpec spec = new WikiWordConceptStore.ConceptQuerySpec();
+		//spec.setRequireType(ConceptType.PLACE); //FIXME: config! //NOTE: type tags are currently too bad, need to rebuild; use soft boost instead.
+		
+			StoredMeaningFetcher meaningFetcher = new StoredMeaningFetcher(getLocalConceptStore(), spec);
 			StoredFeatureFetcher<LocalConcept, Integer> featureFetcher = new StoredFeatureFetcher<LocalConcept, Integer>(getFeatureStore());
 			disambiguator = new SlidingCoherenceDisambiguator( meaningFetcher, featureFetcher, true );
+			
+			Measure<WikiWordConcept> popularityMeasure = new Measure<WikiWordConcept>(){ //boost locations //FIXME: configure! 
+				public double measure(WikiWordConcept concept) {
+					double score = concept.getCardinality();
+					
+					if (concept.getType().equals(ConceptType.PLACE))
+						score *= 10; //XXX: magic number...
+					
+					return score;
+				}
+			};
+			
+			((SlidingCoherenceDisambiguator)disambiguator).setPopularityMeasure(popularityMeasure);
 			
 			analyzer = PlainTextAnalyzer.getPlainTextAnalyzer(getCorpus(), tweaks);
 			analyzer.initialize();
@@ -88,10 +107,10 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 		return result.toString(); //FIXME: annotate!
 		*/
 		
-		List<Term> terms =  Term.asTerms(chunker.chunk(line));
+		List<Term> terms =  Term.asTerms(chunker.chunk(line.trim()));
 		if (flip) Collections.reverse(terms);
 		
-		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(terms);
+		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(terms, null);
 		if (flip) Collections.reverse(terms);
 		
 		return assembleMeanings(terms, result);

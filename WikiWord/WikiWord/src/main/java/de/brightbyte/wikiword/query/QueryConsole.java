@@ -500,7 +500,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 
 	public void showDisambiguation(List<String> terms, ConsoleOutput out) throws PersistenceException {
-		Disambiguator.Result r = getDisambiguator().disambiguate(terms);
+		Disambiguator.Result r = getDisambiguator().disambiguate(terms, null);
 		out.writeInterpretation(r.getMeanings());
 	}		
 

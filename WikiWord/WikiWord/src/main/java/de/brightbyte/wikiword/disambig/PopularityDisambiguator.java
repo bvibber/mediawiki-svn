@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +15,7 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public class PopularityDisambiguator extends AbstractDisambiguator<TermReference, LocalConcept> {
 	
 	protected Measure<WikiWordConcept> popularityMeasure;
-	protected Comparator<WikiWordConcept> popularityComparator;
+	protected Comparator<LocalConcept> popularityComparator;
 	
 	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher) {
 		this(meaningFetcher, WikiWordConcept.theCardinality);
@@ -23,11 +24,21 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<WikiWordConcept> popularityMeasure) {
 		super(meaningFetcher);
 		
-		this.popularityMeasure = popularityMeasure;
-		this.popularityComparator = new Measure.Comparator<WikiWordConcept>(popularityMeasure, true);
+		this.setPopularityMeasure(popularityMeasure);
 	}
 
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) {
+	public Measure<WikiWordConcept> getPopularityMeasure() {
+		return popularityMeasure;
+	}
+
+	public void setPopularityMeasure(Measure<WikiWordConcept> popularityMeasure) {
+		this.popularityMeasure = popularityMeasure;
+		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
+	}
+
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
+		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
+
 		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>();
 		int pop = 0;
 		for (X t: terms) {

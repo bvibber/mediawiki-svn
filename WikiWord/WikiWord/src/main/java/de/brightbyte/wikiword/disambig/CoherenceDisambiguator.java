@@ -1,7 +1,9 @@
 package de.brightbyte.wikiword.disambig;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -36,6 +38,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	protected Similarity<LabeledVector<Integer>> similarityMeasure;
 	protected Measure<WikiWordConcept> popularityMeasure;
 	protected PopularityDisambiguator popularityDisambiguator;
+	protected Comparator<LocalConcept> popularityComparator;
 	
 	private Functor.Double popularityFactor = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
 	
@@ -71,12 +74,48 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		if (popularityMeasure==null) throw new NullPointerException();
 		if (sim==null) throw new NullPointerException();
 		if (featureFetcher==null) throw new NullPointerException();
-		this.popularityMeasure = popularityMeasure;
-		this.similarityMeasure = sim;
+		
 		this.featureCacheManager = new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, 10); //TODO: depth
 		this.popularityDisambiguator = new PopularityDisambiguator(meaningFetcher, popularityMeasure);
+		
+		this.setPopularityMeasure(popularityMeasure);
+		this.setSimilarityMeasure(sim);
 	}
 	
+	public Functor.Double getPopularityFactor() {
+		return popularityFactor;
+	}
+
+	public void setPopularityFactor(Functor.Double popularityFactor) {
+		this.popularityFactor = popularityFactor;
+	}
+
+	public Measure<WikiWordConcept> getPopularityMeasure() {
+		return popularityMeasure;
+	}
+
+	public void setPopularityMeasure(Measure<WikiWordConcept> popularityMeasure) {
+		this.popularityMeasure = popularityMeasure;
+		this.popularityDisambiguator.setPopularityMeasure(popularityMeasure);
+		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
+	}
+
+	public Functor2.Double getScoreCombiner() {
+		return scoreCombiner;
+	}
+
+	public void setScoreCombiner(Functor2.Double scoreCombiner) {
+		this.scoreCombiner = scoreCombiner;
+	}
+
+	public Functor.Double getSimilarityFactor() {
+		return similarityFactor;
+	}
+
+	public void setSimilarityFactor(Functor.Double similarityFactor) {
+		this.similarityFactor = similarityFactor;
+	}
+
 	public void setFeatureFetcher(FeatureFetcher<LocalConcept, Integer> featureFetcher) {
 		this.featureCacheManager = new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, 10); //FIXME: depth
 	}
@@ -123,7 +162,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		this.maxMeanings = maxMeanings;
 	}
 
-	protected FeatureFetcher<LocalConcept, Integer> getFeatureCache(Map<? extends TermReference, List<? extends LocalConcept>> meanings) throws PersistenceException {
+	protected FeatureFetcher<LocalConcept, Integer> getFeatureCache(Map<? extends TermReference, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
 		FeatureFetcher<LocalConcept, Integer> features = featureCacheManager.newCache();
 		
 		//NOTE: pre-fetch all features in one go
@@ -132,6 +171,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			concepts.addAll(m);
 		}
 		
+		if (context!=null) concepts.addAll(context);
 		features.getFeatures(concepts);
 		
 		return features;
@@ -140,23 +180,32 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) throws PersistenceException {
-		if (terms.size()<2 || meanings.size()<2) 
-				return popularityDisambiguator.disambiguate(terms, meanings);
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
+		
+		int sz = Math.min(terms.size(), meanings.size());
+		if (context!=null) sz += context.size();
+		
+		if (sz<2) { 
+				return popularityDisambiguator.disambiguate(terms, meanings, context);
+		}
 		
 		pruneMeanings(meanings);
 		
-		if (meanings.size()<2) 
-			return popularityDisambiguator.disambiguate(terms, meanings);
+		sz = Math.min(terms.size(), meanings.size());
+		if (context!=null) sz += context.size();
+		if (sz <2) {
+			return popularityDisambiguator.disambiguate(terms, meanings, context);
+		}
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings); 
+		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
 		
 		List<Map<X, LocalConcept>> interpretations = getInterpretations(terms, meanings);
 
-		return getBestInterpretation(terms, meanings, interpretations, similarities, features);
+		return getBestInterpretation(terms, meanings, context, interpretations, similarities, features);
 	}
 	
 	protected void pruneMeanings(Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
@@ -179,7 +228,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			
 			if (m.size()==0) eit.remove();
 			else if (m.size()>maxMeanings) {
-				Collections.sort(m, WikiWordConcept.byCardinality);
+				Collections.sort(m, popularityComparator);
 				m = m.subList(0, maxMeanings);
 				e.setValue(m);
 			}
@@ -187,14 +236,14 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	}
 
 	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, 
-			List<Map<X, LocalConcept>> interpretations, 
+			Collection<LocalConcept> context, List<Map<X, LocalConcept>> interpretations, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		
 		List<Result<X, LocalConcept>> rankings = new ArrayList<Result<X, LocalConcept>>();
 		
 		double traceLimit = -1;
 		for (Map<X, LocalConcept> interp: interpretations) {
-			Result<X, LocalConcept> r = getScore(interp, similarities, features);
+			Result<X, LocalConcept> r = getScore(interp, context, similarities, features);
 			
 			if (r.getScore() >= minScore) {
 				rankings.add(r);
@@ -205,7 +254,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 		
 		if (rankings.size()==0) {
-			return popularityDisambiguator.disambiguate(terms, meanings);
+			return popularityDisambiguator.disambiguate(terms, meanings, context);
 		}
 		
 		Collections.sort(rankings);
@@ -244,15 +293,24 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		return interpretations;
 	}
 
-	protected <X extends TermReference>Result<X, LocalConcept> getScore(Map<X, LocalConcept> interp, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
+	protected <X extends TermReference>Result<X, LocalConcept> getScore(Map<X, LocalConcept> interp, Collection<LocalConcept> context, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		double sim = 0;
 		double pop = 0;
 
+		Collection<LocalConcept> concepts;
+		if (context!=null) {
+			concepts = new ArrayList<LocalConcept>();
+			concepts.addAll(interp.values());
+			concepts.addAll(context);
+		} else {
+			concepts = interp.values();
+		}
+		
 		int i=0, j=0, n=0, c=0;
-		for (LocalConcept a: interp.values()) {
+		for (LocalConcept a: concepts) {
 			i++;
 			j=0;
-			for (LocalConcept b: interp.values()) {
+			for (LocalConcept b: concepts) {
 				j++;
 				if (i==j) break;
 				

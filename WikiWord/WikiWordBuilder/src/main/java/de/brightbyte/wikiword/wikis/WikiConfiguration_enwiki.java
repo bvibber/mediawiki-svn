@@ -144,11 +144,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler("rank\\s*=\\s*\\[\\[List[ _]of[ _][-\\w\\d\\s]+?\\|\\s*Ranked\\s+\\{\\{[-\\w\\d\\s]+?counties\\s*\\|\\s*\\w+=[-\\w\\d\\s]+\\}\\}\\]\\]", "", 0));
 
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PLACE, 
-				"^(Geography_of|Places|Villages|Towns|Cities|Counties|Countries|Municipalities|States|Provinces|Territories|Federal_states|Islands|Regions|Domains|Communes|Districts)" +
-				       "(_|$)|_(places|villages|towns|cities|counties|countries|municipalities|states|provinces|territories|federal_states|islands|regions|domains|communes|districts)$", 0));
+				"^(Geography_of|Places|Villages|Towns|Cities|Captials?|Counties|Countries|Municipalities|Settlements|States|Provinces|Territories|Federal_states|Islands|Regions|Domains|Communes|Districts|Locations)" +
+				       "(_|$)|_(places|villages|towns|cities|capitals|counties|countries|municipalities|settlements|states|provinces|territories|federal_states|islands|regions|domains|communes|districts|locations)$", 0));
 		
-		
-		conceptTypeSensors.add( new HasTemplateSensor<ConceptType>(ConceptType.PLACE, "Geobox"));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PLACE, "^(Geobox|Infobox_([Ss]ettlement|[Cc]ountry|[Ss]tate|[Ll]ocation))$", 0));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|men|women|births|deaths)$", 0));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT|Infobox.*_(person|[aA]rtist|creator|writer|musician|biography|clergy|scientist))$", 0));

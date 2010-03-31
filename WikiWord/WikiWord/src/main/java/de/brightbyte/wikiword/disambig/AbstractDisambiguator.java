@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -19,13 +20,13 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		this.meaningCacheManager = new MeaningCache.Manager<C>(meaningFetcher, 10);
 	}
 
-	public <X extends T>Result<X, C> disambiguate(List<X> terms) throws PersistenceException {
+	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<C> context) throws PersistenceException {
 		MeaningCache<C> mcache = meaningCacheManager.newCache();
 		Map<X, List<? extends C>> meanings = mcache.getMeanings(terms);
-		return disambiguate(terms, meanings);
+		return disambiguate(terms, meanings, context);
 	}
 	
-	public abstract <X extends T>Result<X, C> disambiguate(List<X> terms, Map<X, List<? extends C>> meanings) throws PersistenceException;
+	public abstract <X extends T>Result<X, C> disambiguate(List<X> terms, Map<X, List<? extends C>> meanings, Collection<C> context) throws PersistenceException;
 
 	public Output getTrace() {
 		return trace;

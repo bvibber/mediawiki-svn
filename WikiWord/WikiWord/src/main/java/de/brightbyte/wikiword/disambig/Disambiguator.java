@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +53,6 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 
 	public void setTrace(Output trace);
 
-	public <X extends T>Result<X, C> disambiguate(List<X> terms) throws PersistenceException;
+	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<C> context) throws PersistenceException;
 
 }

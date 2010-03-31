@@ -1,12 +1,14 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.Collection;
+
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.UncheckedPersistenceException;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class TermRelatedness implements Similarity<String> {
+public class TermRelatedness<C extends WikiWordConcept> implements Similarity<String> {
 
 	public static class Relatedness {
 		public final double relatedness;
@@ -27,15 +29,17 @@ public class TermRelatedness implements Similarity<String> {
 	}
 		
 	protected Similarity<WikiWordConcept> relatedness;
-	protected Disambiguator<TermReference, ? extends WikiWordConcept> disambig;
+	protected Disambiguator<TermReference, C> disambig;
+	private Collection<C> context;
 
-	public TermRelatedness(Disambiguator<TermReference, ? extends WikiWordConcept> disambig) {
-		this(disambig, null);
+	public TermRelatedness(Disambiguator<TermReference,C> disambig) {
+		this(disambig, null, null);
 	}
 	
-	public TermRelatedness(Disambiguator<TermReference, ? extends WikiWordConcept> disambig, Similarity<WikiWordConcept> relatedness) {
+	public TermRelatedness(Disambiguator<TermReference, C> disambig, Similarity<WikiWordConcept> relatedness, Collection<C> context) {
 		this.relatedness = relatedness;
 		this.disambig = disambig;
+		this.context = context;
 	}
 
 	public double similarity(String a, String b) {
@@ -47,7 +51,7 @@ public class TermRelatedness implements Similarity<String> {
 	
 	public Relatedness relatedness(String a, String b) {
 		try {
-			Disambiguator.Result<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b));
+			Disambiguator.Result<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b), context);
 			if (r==null || r.getMeanings().size()!=2) return null;
 			
 			double d;

@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.disambig;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -37,21 +38,31 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) throws PersistenceException {
-		if (window < 2 || terms.size()<2 || meanings.size()<2) 
-				return popularityDisambiguator.disambiguate(terms, meanings);
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
+
+		int sz = Math.min(terms.size(), meanings.size());
+		if (context!=null) sz += context.size();
+
+		if (window < 2 || sz<2) { 
+				return popularityDisambiguator.disambiguate(terms, meanings, context);
+		}
 		
 		pruneMeanings(meanings);
 		
-		if (meanings.size()<2) 
-			return popularityDisambiguator.disambiguate(terms, meanings);
+		sz = Math.min(terms.size(), meanings.size());
+		if (context!=null) sz += context.size();
+
+		if (sz<2) { 
+			return popularityDisambiguator.disambiguate(terms, meanings, context);
+		}
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
 		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>(meanings.size()); 
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
-		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings); 
+		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
 		
 		for (int i= window; ; i++) {
 			int from = i-window;
@@ -63,10 +74,10 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			Result r ;
 			
 			if (to-from < 2) {
-				r = popularityDisambiguator.disambiguate(terms.subList(from, to), meanings);
+				r = popularityDisambiguator.disambiguate(terms.subList(from, to), meanings, context);
 			} else {
 				List<Map<X, LocalConcept>> interpretations = getInterpretations(from, to, terms,  disambig, meanings);
-				r = getBestInterpretation(terms, meanings, interpretations, similarities, features);
+				r = getBestInterpretation(terms, meanings, context, interpretations, similarities, features);
 			}
 
 			for (int j=from; j<to; j++) {
@@ -82,7 +93,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			if (to+1>terms.size()) break;
 		}
 		
-		return getScore(disambig, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
+		return getScore(disambig, context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
 	protected <X extends TermReference>List<Map<X, LocalConcept>> getInterpretations(int from, int to, List<X> terms,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
