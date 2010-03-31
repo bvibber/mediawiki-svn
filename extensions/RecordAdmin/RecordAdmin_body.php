@@ -881,6 +881,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * - if type not specified, first template is used
 	 */
 	static function getRecordArgs( &$record, $type = false ) {
+		$values = array();
 		if ( is_object( $record ) ) $title =& $record; else $title = Title::newFromText( $record );
 		if ( is_object( $title ) ) {
 			$article = new Article( $title );
@@ -890,9 +891,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ( $type ) {
 				foreach ( $eb as $brace ) if ( $brace['NAME'] == $type ) $braces = $brace;
 			} elseif ( count( $eb ) >= 0 ) $braces = $eb[0];
-			if ( $braces ) {
-				$values = self::valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
-			}
+			if ( $braces ) $values = self::valuesFromText( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 		}
 		return $values;
 	}
