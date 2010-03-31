@@ -37,19 +37,19 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 		foreach ( array( 'mFilteredName', 'repoPath', 'mFileSize', 'mDesiredDestName' )
 				as $key ) {
 			if ( isset( $this->$key ) ) {
-				$_SESSION[self::SESSION_KEYNAME][$this->sessionKey][$key] = $this->$key;
+				$_SESSION['wsUploadData'][$this->sessionKey][$key] = $this->$key;
 			}
 		}
 		if ( isset( $comment ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['commment'] = $comment;
+			$_SESSION['wsUploadData'][$this->sessionKey]['commment'] = $comment;
 		}
 		if ( isset( $pageText ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['pageText'] = $pageText;
+			$_SESSION['wsUploadData'][$this->sessionKey]['pageText'] = $pageText;
 		}
 		if ( isset( $watch ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['watch'] = $watch;
+			$_SESSION['wsUploadData'][$this->sessionKey]['watch'] = $watch;
 		}
-		$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['version'] = self::SESSION_VERSION;
+		$_SESSION['wsUploadData'][$this->sessionKey]['version'] = self::SESSION_VERSION;
 
 		return $this->sessionKey;
 	}
@@ -125,6 +125,30 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 	}
 
 	/**
+	 * Return the file size
+	 * After 1.16, this function is in UploadBase
+	 *
+	 * @return integer
+	 */
+	public function getFileSize() {
+		return $this->mFileSize;
+	}
+
+	/**
+	 * Append a file to the Repo file
+	 * After 1.16, this function is in UploadBase
+	 *
+	 * @param string $srcPath Path to source file
+	 * @param string $toAppendPath Path to the Repo file that will be appended to.
+	 * @return Status Status
+	 */
+	protected function appendToUploadFile( $srcPath, $toAppendPath ) {
+		$repo = RepoGroup::singleton()->getLocalRepo();
+		$status = $repo->append( $srcPath, $toAppendPath );
+		return $status;
+	}
+
+	/**
 	 * Append a chunk to the temporary file.
 	 *
 	 * @return void
@@ -137,7 +161,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 
 			if ( $this->status->isOK() ) {
 				$this->repoPath = $this->status->value;
-				$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['repoPath'] = $this->repoPath;
+				$_SESSION['wsUploadData'][$this->sessionKey]['repoPath'] = $this->repoPath;
 			}
 			return $this->status;
 		}
@@ -160,5 +184,69 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 	public function finalizeFile() {
 		$this->appendChunk();
 		$this->mTempPath = $this->getRealPath( $this->repoPath );
+	}
+
+	/**
+	 * Check if there's an overwrite conflict and, if so, if restrictions
+	 * forbid this user from performing the upload.
+	 * After 1.16, this function is in UploadBase
+	 *
+	 * @return mixed true on success, error string on failure
+	 */
+	private function checkOverwrite() {
+		global $wgUser;
+		// First check whether the local file can be overwritten
+		$file = $this->getLocalFile();
+		if( $file->exists() ) {
+			if( !self::userCanReUpload( $wgUser, $file ) ) {
+				return 'fileexists-forbidden';
+			} else {
+				return true;
+			}
+		}
+
+		/* Check shared conflicts: if the local file does not exist, but
+		 * wfFindFile finds a file, it exists in a shared repository.
+		 */
+		$file = wfFindFile( $this->getTitle() );
+		if ( $file && !$wgUser->isAllowed( 'reupload-shared' ) ) {
+			return 'fileexists-shared-forbidden';
+		}
+
+		return true;
+	}
+
+	/**
+	 * Verify that the name is valid and, if necessary, that we can overwrite
+	 * After 1.16, this function is in UploadBase
+	 *
+	 * @return mixed true if valid, otherwise and array with 'status'
+	 * and other keys
+	 **/
+	public function validateNameAndOverwrite() {
+		$nt = $this->getTitle();
+		if( is_null( $nt ) ) {
+			$result = array( 'status' => $this->mTitleError );
+			if( $this->mTitleError == self::ILLEGAL_FILENAME ) {
+				$result['filtered'] = $this->mFilteredName;
+			}
+			if ( $this->mTitleError == self::FILETYPE_BADTYPE ) {
+				$result['finalExt'] = $this->mFinalExtension;
+			}
+			return $result;
+		}
+		$this->mDestName = $this->getLocalFile()->getName();
+
+		/**
+		 * In some cases we may forbid overwriting of existing files.
+		 */
+		$overwrite = $this->checkOverwrite();
+		if( $overwrite !== true ) {
+			return array(
+				'status' => self::OVERWRITE_EXISTING_FILE,
+				'overwrite' => $overwrite
+			);
+		}
+		return true;
 	}
 }

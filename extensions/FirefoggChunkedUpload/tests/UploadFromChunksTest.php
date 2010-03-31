@@ -2,8 +2,8 @@
 
 global $IP;
 require_once( "$IP/maintenance/tests/ApiSetup.php" );
-require_once( "$IP/maintenance/deleteArchivedFiles.inc" );
-require_once( "$IP/maintenance/deleteArchivedRevisions.inc" );
+/* require_once( "$IP/maintenance/deleteArchivedFiles.inc" ); */
+/* require_once( "$IP/maintenance/deleteArchivedRevisions.inc" ); */
 require_once( dirname( dirname( __FILE__ ) ) . '/FirefoggChunkedUpload.php' );
 
 class nullClass {
@@ -246,10 +246,10 @@ class UploadFromChunksTest extends ApiSetup {
 		global $wgUser, $wgVerifyMimeType;
 		$wgVerifyMimeType = false;
 
-		$this->markTestIncomplete("Not working yet ... fails every other time b/c we're not dealing with a temporary db");
+#		$this->markTestIncomplete("Not working yet ... fails every other time b/c we're not dealing with a temporary db");
 
-		DeleteArchivedFilesImplementation::doDelete(new nullClass, true);
-		DeleteArchivedRevisionsImplementation::doDelete(new nullClass);
+		/* DeleteArchivedFilesImplementation::doDelete(new nullClass, true); */
+		/* DeleteArchivedRevisionsImplementation::doDelete(new nullClass); */
 
 		$id = Title::newFromText( "Twar.png", NS_FILE )->getArticleID();
 		$oldFile = Article::newFromID( $id );

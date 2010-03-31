@@ -8,7 +8,7 @@
  */
 
 global $wgCommandLineMode, $IP, $optionsWithArgs;
-$IP = dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . "/mw-svn";
+$IP = dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) . "/phase3";
 define( 'MW_PHPUNIT_TEST', true );
 
 require_once( "$IP/maintenance/commandLine.inc" );

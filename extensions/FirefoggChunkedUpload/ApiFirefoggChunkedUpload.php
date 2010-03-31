@@ -31,7 +31,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 			$request->getVal( 'chunksession', null ),
 			$request->getFileTempName( 'chunk' ),
 			$request->getFileSize( 'chunk' ),
-			$request->getSessionData( UploadBase::getSessionKeyname() )
+			$request->getSessionData( 'wsUploadData' )
 		);
 
 		if ( $status !== true ) {
@@ -108,6 +108,56 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		}
 
 		return $ret;
+	}
+
+	/**
+	 * Produce the usage error
+	 * After 1.16, this function is in UploadBase
+	 *
+	 * @param $verification array an associative array with the status
+	 * key
+	 */
+	public function getVerificationError( $verification ) {
+		// TODO: Move them to ApiBase's message map
+		switch( $verification['status'] ) {
+			case UploadBase::EMPTY_FILE:
+				$this->dieUsage( 'The file you submitted was empty', 'empty-file' );
+				break;
+			case UploadBase::FILETYPE_MISSING:
+				$this->dieUsage( 'The file is missing an extension', 'filetype-missing' );
+				break;
+			case UploadBase::FILETYPE_BADTYPE:
+				global $wgFileExtensions;
+				$this->dieUsage( 'This type of file is banned', 'filetype-banned',
+						0, array(
+							'filetype' => $verification['finalExt'],
+							'allowed' => $wgFileExtensions
+						) );
+				break;
+			case UploadBase::MIN_LENGTH_PARTNAME:
+				$this->dieUsage( 'The filename is too short', 'filename-tooshort' );
+				break;
+			case UploadBase::ILLEGAL_FILENAME:
+				$this->dieUsage( 'The filename is not allowed', 'illegal-filename',
+						0, array( 'filename' => $verification['filtered'] ) );
+				break;
+			case UploadBase::OVERWRITE_EXISTING_FILE:
+				$this->dieUsage( 'Overwriting an existing file is not allowed', 'overwrite' );
+				break;
+			case UploadBase::VERIFICATION_ERROR:
+				$this->getResult()->setIndexedTagName( $verification['details'], 'detail' );
+				$this->dieUsage( 'This file did not pass file verification', 'verification-error',
+						0, array( 'details' => $verification['details'] ) );
+				break;
+			case UploadBase::HOOK_ABORTED:
+				$this->dieUsage( "The modification you tried to make was aborted by an extension hook",
+						'hookaborted', 0, array( 'error' => $verification['error'] ) );
+				break;
+			default:
+				$this->dieUsage( 'An unknown error occurred', 'unknown-error',
+						0, array( 'code' =>  $verification['status'] ) );
+				break;
+		}
 	}
 
 	public function mustBePosted() {

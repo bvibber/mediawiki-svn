@@ -13,6 +13,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'firefoggcu-desc',
 );
 
-
 $dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles['FirefoggChunkedUploading'] = $dir . 'FirefoggChunkedUpload.i18n.php';
+$wgExtensionMessagesFiles['FirefoggChunkedUpload'] = $dir . 'FirefoggChunkedUpload.i18n.php';
+$wgAutoloadClasses['ApiFirefoggChunkedUpload'] = $dir . 'ApiFirefoggChunkedUpload.php';
+$wgAutoloadClasses['FirefoggChunkedUploadHandler'] = $dir . 'FirefoggChunkedUploadHandler.php';
+
+$wgAPIModules['firefoggupload'] = 'ApiFirefoggChunkedUpload';
