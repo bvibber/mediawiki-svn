@@ -5,6 +5,9 @@ form.mwe-upwiz-form {
 	display: inline;
 }
 
+#upload-wizard {
+	margin-top: 18px;
+}
 
 /*
 .upload-section {
@@ -82,6 +85,17 @@ form.mwe-upwiz-form {
 	padding: 1em;
 }
 
+#mwe-upwiz-add-file {
+	margin: 8px;
+	padding: 16px;
+	font-size: 16px;
+}
+
+/* NOT a pseudoclass */
+#mwe-upwiz-add-file.hover {
+	text-decoration: underline;
+}
+
 /* perhaps a general class for links that are actually "buttons" */
 #mwe-upwiz-add-file, .mwe-upwiz-remove, .mwe-upwiz-more-options {
 	cursor: pointer;
@@ -89,25 +103,40 @@ form.mwe-upwiz-form {
 
 /* CSS styling hack for file inputs - http://www.quirksmode.org/dom/inputfile.html */
 .mwe-upwiz-file-ctrl-container {
-	position: relative;
-	display: inline;
+	position: absolute;
+	overflow: hidden;
 }
 
-.mwe-upwiz-file, .mwe-upwiz-visible-file {
-	width: 250px;
-	height: 20px;
+.mwe-upwiz-file-input, .mwe-upwiz-visible-file {
 	cursor: pointer;
 }
 
+/* file inputs are freakishly large to overflow the containing div -- we get a div 
+   that can act as a more styleable single-click file input */
+.mwe-upwiz-file-input {
+	font-size: 100px;
+	-moz-opacity: 0.3; 
+	filter:alpha(opacity: 0);
+	opacity: 0; 
+	z-index: 2; 
+}
+
+}
+
+.mwe-upwiz-file {
+	height: 24px;
+}
+
 .mwe-upwiz-visible-file {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 1;
+	width: 300px;
+	height: 18px;
+	float: left;
+	/* top: 0px; */
+	/* left: 0px; */
 	white-space: nowrap;
 	overflow: hidden;
 
-	border: 1px solid blue; /* XXX just to make it visible for now */
+	/* border: 1px solid blue;  XXX just to make it visible for now */
 }
 
 /* XXX we probably have a standard for this */
@@ -118,26 +147,17 @@ form.mwe-upwiz-form {
 }
 
 
-.mwe-upwiz-file {
-	position: relative;
-	-moz-opacity: 0; 
-	filter:alpha(opacity: 0);
-	opacity: 0;
-	z-index: 2;
-}
-
+/*
 #mwe-upwiz-select-files {
 	float: left;
 	width: 100px;
 }
+*/
 
 #mwe-upwiz-files {
-	margin-left: 100px;
+	/* margin-left: 100px; */
 }
 
-#mwe-upwiz-add-file {
-	margin-left: 100px;
-}
 
 .mwe-upwiz-remove {
 	margin-left: 5px;
