@@ -313,7 +313,6 @@ scrollToCaretPosition: function( options ) {
 			 * character back and forth.
 			 */
 			var range = document.body.createTextRange();
-			// store the current selection so we can reselect it later
 			var savedRange = document.selection.createRange();
 			var pos = $(this).textSelection( 'getCaretPosition' );
 			var oldScrollTop = this.scrollTop;
@@ -327,8 +326,8 @@ scrollToCaretPosition: function( options ) {
 				range.move( 'character', -1 );
 				range.select();
 			}
+			savedRange.select();
 		}
-		savedRange.select();
 		$(this).trigger( 'scrollToPosition' );
 	} );
 }
