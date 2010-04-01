@@ -12,7 +12,7 @@ import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.processor.ImportProgressTracker;
+import de.brightbyte.wikiword.processor.ChunkedProgressRateTracker;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 
 public class DatabaseProximityStoreBuilder 
@@ -416,8 +416,8 @@ public class DatabaseProximityStoreBuilder
 			protected int lastId ;
 			protected int level;
 
-			protected ImportProgressTracker conceptTracker;
-			protected ImportProgressTracker featureTracker;
+			protected ChunkedProgressRateTracker conceptTracker;
+			protected ChunkedProgressRateTracker featureTracker;
 			
 			protected FeatureBuilder builder;
 			
@@ -427,8 +427,8 @@ public class DatabaseProximityStoreBuilder
 				this.name = name;
 				this.level = level;
 				this.conceptTable = conceptStore.getDatabaseAccess().getTable("concept");
-				this.conceptTracker = new ImportProgressTracker("concepts");
-				this.featureTracker = new ImportProgressTracker("features");
+				this.conceptTracker = new ChunkedProgressRateTracker("concepts");
+				this.featureTracker = new ChunkedProgressRateTracker("features");
 				this.builder = builder;
 			}
 

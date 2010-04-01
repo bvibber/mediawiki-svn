@@ -16,7 +16,7 @@ import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.processor.ImportProgressTracker;
+import de.brightbyte.wikiword.processor.ChunkedProgressRateTracker;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
@@ -29,9 +29,9 @@ public class ConceptImporter extends AbstractImporter {
 	private boolean storeFlatText = true;
 	private boolean storeRawText = true;
 	
-	protected ImportProgressTracker conceptTracker;
-	protected ImportProgressTracker linkTracker;
-	protected ImportProgressTracker propertyTracker;
+	protected ChunkedProgressRateTracker conceptTracker;
+	protected ChunkedProgressRateTracker linkTracker;
+	protected ChunkedProgressRateTracker propertyTracker;
 	
 	protected LocalConceptStoreBuilder store;
 	protected PropertyStoreBuilder propertyStore;
@@ -178,9 +178,9 @@ public class ConceptImporter extends AbstractImporter {
 	@Override
 	public void reset() {
 		super.reset();
-		conceptTracker = new ImportProgressTracker("concepts");
-		linkTracker = new ImportProgressTracker("links");
-		propertyTracker = new ImportProgressTracker("properties");
+		conceptTracker = new ChunkedProgressRateTracker("concepts");
+		linkTracker = new ChunkedProgressRateTracker("links");
+		propertyTracker = new ChunkedProgressRateTracker("properties");
 	}
 	
 	@Override

@@ -124,7 +124,7 @@ public abstract class WikiWordConcept {
 	}
 
 	public void setType(ConceptType type) {
-		if (this.type!=null) throw new IllegalStateException("property already initialized");
+		if (this.type!=null && !this.type.equals(ConceptType.UNKNOWN)) throw new IllegalStateException("property already initialized");
 		this.type = type;
 	}
 

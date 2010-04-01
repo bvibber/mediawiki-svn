@@ -26,6 +26,9 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	protected DataCursor<? extends I> cursor;
 	protected DataSink<? super O> sink;
 	
+	protected boolean usingStdin;
+	protected boolean usingStdout;
+	
 	protected InputFileHelper inputHelper;	
 	
 	public StreamProcessorApp(boolean allowGlobal, boolean allowLocal) {
@@ -55,8 +58,14 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	protected Writer getOutputWriter() throws FileNotFoundException, UnsupportedEncodingException {
 		if (outputWriter==null) {
 			File f = getOutputFile();
-			if (f==null) outputWriter = ConsoleIO.writer;
-			else outputWriter = new OutputStreamWriter(getOutputStream(), getOutputFileEncoding());
+			if (f==null) {
+				outputWriter = ConsoleIO.writer;
+				usingStdout = true;
+			} else {
+				OutputStream out = getOutputStream();
+				outputWriter = new OutputStreamWriter(out, getOutputFileEncoding());
+				usingStdout = out == System.out;
+			}
 		}
 		
 		return outputWriter;
@@ -65,9 +74,12 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	protected OutputStream getOutputStream() throws FileNotFoundException {
 		if (outputStream==null) {
 			File f = getOutputFile();
-			if (f==null) outputStream = System.out;
-			else {
+			if (f==null) {
+				outputStream = System.out;
+				usingStdout = true;
+			} else {
 				outputStream = new BufferedOutputStream(new FileOutputStream(f, args.isSet("append")));
+				usingStdout = false;
 				info("Writing output to "+f);
 			}
 		}
@@ -78,8 +90,14 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	protected Reader getInputReader() throws IOException {
 		if (inputReader==null) {
 			File f = getOutputFile();
-			if (f==null) inputReader = ConsoleIO.newReader();
-			else inputReader = new InputStreamReader(getInputStream(), getOutputFileEncoding());
+			if (f==null) {
+				inputReader = ConsoleIO.newReader();
+				usingStdin = true;
+			} else {
+				InputStream in = getInputStream();
+				inputReader = new InputStreamReader(in, getOutputFileEncoding());
+				usingStdin = (in == System.in);
+			}
 		}
 		
 		return inputReader;
@@ -88,10 +106,13 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	protected InputStream getInputStream() throws IOException {
 		if (inputStream==null) {
 			File f = getOutputFile();
-			if (f==null) inputStream = System.in;
-			else {
+			if (f==null) {
+				inputStream = System.in;
+				usingStdin = true;
+			} else {
 				inputStream = inputHelper.openFile(f);
 				info("Reading input from "+f);
+				usingStdin = false;
 			}
 		}
 		

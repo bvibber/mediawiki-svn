@@ -29,8 +29,8 @@ public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 	
 	protected WikiTextAnalyzer analyzer;
 	
-	private ImportProgressTracker pageTracker;
-	private ImportProgressTracker bulkTracker;
+	private ChunkedProgressRateTracker pageTracker;
+	private ChunkedProgressRateTracker bulkTracker;
 	private MemoryTracker memoryTracker;
 	
 	private int progressTicks = 0;
@@ -95,8 +95,8 @@ public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 	}
 	
 	public void reset() {
-		pageTracker = new ImportProgressTracker("pages");
-		bulkTracker = new ImportProgressTracker("chars");
+		pageTracker = new ChunkedProgressRateTracker("pages");
+		bulkTracker = new ChunkedProgressRateTracker("chars");
 		memoryTracker = new MemoryTracker();
 		progressTicks = 0;
 	}
