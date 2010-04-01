@@ -135,7 +135,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * TODO: Improve layout, add social sharing stuff, add story meta data and show edit stuff for people with stroyreview permission.
 	 */
 	private function showStory( $story ) {
-		global $wgOut, $egStoryboardScriptPath;
+		global $wgOut, $wgLang, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );		
 		
@@ -144,11 +144,18 @@ class SpecialStory extends IncludableSpecialPage {
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );		
 		
-		$wgOut->addHTML( <<<EOT
-			<img src="$imageSrc" class="story-image">
-			$text	
-EOT
+		$wgOut->addHTML( "<img src='$imageSrc' class='story-image'>" );
+		$wgOut->addHTML( $text );
+		
+		$wgOut->addWikiText( 
+			htmlspecialchars( wfMsgExt(
+				'storyboard-submittedbyon',
+				'parsemag',
+				$story->story_author_name,
+				$wgLang->timeanddate( $story->story_created )
+			) )
 		);
+		
 	}
 	
 	/**
@@ -178,12 +185,12 @@ EOT
 		$formBody = "<table width='$width'>";
 		
 		$formBody .= '<tr><td colspan="2">' . 
-			wfMsgExt(
+			htmlspecialchars( wfMsgExt(
 				'storyboard-createdandmodified',
 				'parsemag',
 				$wgLang->timeanddate( $story->story_created ),
 				$wgLang->timeanddate( $story->story_modified )
-			) . 
+			) ) . 
 			'</td></tr>';		
 		
 		$formBody .= '<tr>' .

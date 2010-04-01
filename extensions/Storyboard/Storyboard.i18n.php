@@ -22,6 +22,7 @@ $messages['en'] = array(
 
 	// Special:Story
 	'story' => 'Story',
+	'storyboard-submittedbyon' => 'Submitted by $1 on $2.',
 	'storyboard-viewstories' => 'View stories',
 	'storyboard-nosuchstory' => 'The story you requested does not exist. It might have been removed.',
 	'storyboard-unpublished' => 'The story you requested has not been published yet.',
