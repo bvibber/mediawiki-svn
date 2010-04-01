@@ -111,6 +111,13 @@ $messages['it'] = array(
 	'vector-collapsiblenav-preference' => 'Abilita menù di navigazione nascondibile a sinistra',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -187,5 +194,12 @@ $messages['ru'] = array(
  */
 $messages['sv'] = array(
 	'vector-collapsiblenav-preference' => 'Gör den vänstra navigeringsmenyn ihopfällbar',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'vector-collapsiblenav-preference' => 'Daraltılabilir sol dolaşım menüsünü etkinleştir',
 );
 

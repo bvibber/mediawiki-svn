@@ -619,6 +619,8 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'usabilityinitiative' => 'వాడుక సౌలభ్యం కోసం ఒక ప్రయత్నం',
 	'usabilityinitiative-desc' => 'వికీపీడియా వాడుక సౌలభ్యాన్ని పెంచేందుకు వీలుగా కొన్ని నూతన ఫీచర్లు',
+	'prefs-beta' => 'బీటా సౌలభ్యాలు',
+	'prefs-labs' => 'ప్రయోగాత్మక సౌలభ్యాలు',
 );
 
 /** Turkmen (Türkmençe)

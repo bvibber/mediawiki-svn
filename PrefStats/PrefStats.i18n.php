@@ -1150,6 +1150,8 @@ Fare clic su una per vedere le statistiche su di essa.',
 	'prefstats-factor-twoweeks' => 'due settimane',
 	'prefstats-factor-fourweeks' => 'quattro settimane',
 	'prefstats-factor-default' => 'ritorna alla scala predefinita',
+	'prefstats-legend-out' => 'Non hai partecipato',
+	'prefstats-legend-in' => 'Hai partecipato',
 );
 
 /** Japanese (日本語)
