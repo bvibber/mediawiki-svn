@@ -82,9 +82,8 @@ form.mwe-upwiz-form {
 	padding: 1em;
 }
 
-
 .mwe-upwiz-add-files-0 {
-	margin-top: 40px;
+	margin-top: 20px;
 	text-align: center;
 	font-size: 16px;
 }
@@ -122,16 +121,36 @@ form.mwe-upwiz-form {
 	z-index: 2; 
 }
 
-.mwe-upwiz-file.filled {
+.mwe-upwiz-file.filled, #mwe-upwiz-upload-ctrls {
 	padding: 4px;
-	height: 24px;
 }
 
-.mwe-upwiz-visible-file {
+.mwe-upwiz-file.filled {
+	height: 24px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.mwe-upwiz-file-indicator {
+	float: left;
+	width: 92px;
+	margin-left: 8px;
+	text-align: center;
+}
+
+.mwe-upwiz-add-files-n {
+	float: left;
+	margin-top: 5px;
+	margin-left: 4px;
+}
+
+#mwe-upwiz-add-file-container.mwe-upwiz-add-files-n, .mwe-upwiz-visible-file {
 	width: 300px;
 	height: 18px;
 	padding-left: 5px;
 	float: left;
+}
+
+.mwe-upwiz-visible-file {
 	white-space: nowrap;
 	overflow: hidden;
 
@@ -160,14 +179,27 @@ form.mwe-upwiz-form {
 
 
 #mwe-upwiz-files {
-	/* margin-left: 100px; */
+	margin-top: 20px;
 }
 
+.mwe-upwiz-file {
+	margin-left: 50px;
+	width: 410px;
+}
+
+#mwe-upwiz-upload-ctrls {
+	margin-top: 15px;
+	
+}
+
+#mwe-upwiz-add-file-container {
+	/* empty; this changes a lot */	
+}
 
 .mwe-upwiz-remove {
-	margin-left: 5px;
 	padding: 5px;
 	cursor: pointer;
+	text-align: center;
 }
 
 a.mwe-upwiz-remove:link, 
@@ -208,6 +240,11 @@ a[disabled=true]:hover {
 	color: #009900;
 }
 
+.mwe-upwiz-progress-bar {
+	margin-left: 50px;
+}
+
+
 .mwe-upwiz-upload-warning {
 	background: #ffffe0;
 }
@@ -239,8 +276,11 @@ a[disabled=true]:hover {
 }
 
 
+/* XXX this has to be 'centered' beneath the 'x's -- this is about right for english but we need a more 
+   robust layout strategy for i18n */
 .proceed {
 	text-align: right; 	
+	width: 410px;
 }
 
 .shim {

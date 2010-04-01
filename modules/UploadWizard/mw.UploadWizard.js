@@ -128,6 +128,9 @@ mw.ProgressBar.prototype = {
 		var _this = this;
 
 		_this.progressBarDiv.progressbar( 'value', parseInt( fraction * 100 ) );
+		if (fraction > 0.5) {
+			debugger;
+		}
 
 		var remainingTime;
 		if (_this.beginTime == null) {
@@ -534,13 +537,13 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 			)
 			.append( _this.filenameCtrl ).get( 0 );
 
-	_this.progressMessage = $j('<span class="mwe-upwiz-status-message" style="display: none"></span>').get(0);
+	_this.progressMessage = $j('<span class="mwe-upwiz-status-message mwe-upwiz-file-indicator" style="display: none"></span>').get(0);
 
 
-	_this.errorDiv = $j('<div class="mwe-upwiz-upload-error" style="display: none;"></div>').get(0);
+	_this.errorDiv = $j('<div class="mwe-upwiz-upload-error mwe-upwiz-file-indicator" style="display: none;"></div>').get(0);
 
-	_this.removeCtrl = $j( '<a title="' + gM( 'mwe-upwiz-remove-upload' ) 
-					+ '" href="#" class="mwe-upwiz-remove">x</a>' )
+	_this.removeCtrl = $j( '<div class="mwe-upwiz-file-indicator"><a title="' + gM( 'mwe-upwiz-remove-upload' ) 
+					+ '" href="#" class="mwe-upwiz-remove">x</a></div>' )
 				.click( function() { _this.upload.remove() } )
 				.hide()
 				.get( 0 );
@@ -553,7 +556,7 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 
 	// XXX evil hardcoded
 	// we don't really need filesdiv if we do it this way?
-	$j( _this.div ).insertBefore( '#mwe-upwiz-add-file-container' ); // append( _this.div );
+	$j( _this.div ).insertBefore( '#mwe-upwiz-upload-ctrls' ); // append( _this.div );
 
 	// _this.progressBar = ( no progress bar for individual uploads yet )
 	// add a details thing to details
@@ -611,7 +614,7 @@ mw.UploadWizardUploadInterface.prototype = {
 	showTransported: function() {
 		var _this = this;
 		$j( _this.progressMessage ).removeClass( 'mwe-upwiz-status-progress' )
-					   .addClass( 'mwe-upwiz-status-transported' )
+					   .addClass( 'mwe-upwiz-status-completed' )
 		   			   .html( gM( 'mwe-upwiz-transported' ) );
 	},
 
@@ -1757,10 +1760,16 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-intro">' + gM('mwe-upwiz-intro') + '</div>'
 		       +     '<div id="mwe-upwiz-files">'
 		       +       '<div class="shim" style="height: 120px"></div>'
-		       +       '<div id="mwe-upwiz-add-file-container" class="mwe-upwiz-add-files-0"><a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a></div>'
+		       +       '<div id="mwe-upwiz-upload-ctrls" class="mwe-upwiz-file">'
+		       +          '<div id="mwe-upwiz-add-file-container" class="mwe-upwiz-add-files-0">'
+		       +            '<a id="mwe-upwiz-add-file">' + gM("mwe-upwiz-add-file-0") + '</a>'
+		       +	  '</div>'
+		       +          '<div id="proceed" class="mwe-upwiz-file-indicator" style="display: none;">'
+		       +            '<button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button>'
+		       +          '</div>'
+		       +       '</div>'
 		       +       '<div class="clearShim"></div>'
 		       +     '</div>'	
-		       +     '<div class="proceed"><button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button></div>'
 		       +     '<div id="mwe-upwiz-progress"></div>'
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
@@ -2061,12 +2070,16 @@ mw.UploadWizard.prototype = {
 
 		if ( _this.uploads.length ) {
 			$j( '#mwe-upwiz-upload-ctrl' ).removeAttr( 'disabled' ); 
+			$j( '#proceed' ).show();
 			$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-n' ) );
 			$j( '#mwe-upwiz-add-file-container' ).removeClass('mwe-upwiz-add-files-0');
+			$j( '#mwe-upwiz-add-file-container' ).addClass('mwe-upwiz-add-files-n');
 		} else {
 			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
+			$j( '#proceed' ).hide();
 			$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-0' ) );
 			$j( '#mwe-upwiz-add-file-container' ).addClass('mwe-upwiz-add-files-0');
+			$j( '#mwe-upwiz-add-file-container' ).removeClass('mwe-upwiz-add-files-n');
 		}
 
 		if ( _this.uploads.length < _this.maxUploads ) {
