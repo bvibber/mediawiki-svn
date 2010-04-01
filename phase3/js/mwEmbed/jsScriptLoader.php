@@ -107,15 +107,16 @@ class jsScriptLoader {
 
 		// Build the output
 		// Swap in the appropriate language per js_file
-		foreach ( $this->jsFileList as $classKey => $file_name ) {
+		foreach ( $this->jsFileList as $classKey => $filePath ) {
 
 			// Get the script content
-			$jstxt = $this->getScriptText( $classKey, $file_name );
+			$jstxt = $this->getScriptText( $classKey, $filePath );
 			if( $jstxt ){
 				$this->jsout .= $this->doProcessJs( $jstxt );
 			}
 
-			// If the core mwEmbed class entry point include all the loader js
+			// If the core mwEmbed class entry point add some
+			// other "core" files:
 			if( $classKey == 'mwEmbed' ){
 
 				// Output the loaders:
@@ -125,10 +126,10 @@ class jsScriptLoader {
 				$this->jsout .= jsClassLoader::getLanguageJs( $this->langCode );
 
 				// Output the "common" css file
-				$filePath = self::getJsPathFromClass( 'mw.style.common' );
-				if( $filePath ) {
-					$this->jsout .= $this->getScriptText( 'mw.style.common', $filePath );
-				}
+				$this->jsout .= $this->getScriptText( 'mw.style.common' );
+
+				// Output the jQuery ui theme css
+				$this->jsout .= $this->getScriptText( 'mw.style.redmond' );
 
 				// Output special IE comment tag to support special mwEmbed tags.
 				$NotMinifiedTopJs.='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
@@ -256,19 +257,20 @@ class jsScriptLoader {
 	 * Get the javascript text content from a given classKey
 	 *
 	 * @param {String} $classKey Class Key to grab text for
-	 * @param {String} [$file_name] Optional file path to get js text
+	 * @param {String} [$filePath] Optional file path to get js text
 	 * @return unknown
 	 */
-	function getScriptText( $classKey, $file_name = '' ){
+	function getScriptText( $classKey ){
 		$jsout = '';
+		$filePath = self::getPathFromClass( $classKey );
 		// Special case: title classes
 		if ( substr( $classKey, 0, 3 ) == 'WT:' ) {
 			global $wgUser;
 			// Get just the title part
-			$title_block = substr( $classKey, 3 );
-			if ( $title_block[0] == '-' && strpos( $title_block, '|' ) !== false ) {
+			$titleBlock = substr( $classKey, 3 );
+			if ( $titleBlock[0] == '-' && strpos( $titleBlock, '|' ) !== false ) {
 				// Special case of "-" title with skin
-				$parts = explode( '|', $title_block );
+				$parts = explode( '|', $titleBlock );
 				$title = array_shift( $parts );
 				foreach ( $parts as $tparam ) {
 					list( $key, $val ) = explode( '=', $tparam );
@@ -288,20 +290,20 @@ class jsScriptLoader {
 					return $sk->generateUserJs( $skin ) . "\n";
 				}
 			} else {
-				$ext = substr($title_block, strrpos($title_block, '.') + 1);
+				$ext = substr($titleBlock, strrpos($titleBlock, '.') + 1);
 				// Make sure the wiki title ends with .js or .css
 				if ( self::validFileExtension( $ext ) ) {
 					$this->errorMsg .= 'WikiTitle includes should end with .js or .css';
 					return false;
 				}
 				// It's a wiki title, append the output of the wikitext:
-				$t = Title::newFromText( $title_block );
+				$t = Title::newFromText( $titleBlock );
 				$a = new Article( $t );
 				// Only get the content if the page is not empty:
 				if ( $a->getID() !== 0 ) {
 					// If in debug mode, add a comment with wiki title and rev:
 					if ( $this->debug )
-					$jsout .= "\n/**\n* WikiJSPage: " . htmlspecialchars( $title_block ) . " rev: " . $a->getID() . " \n*/\n";
+					$jsout .= "\n/**\n* WikiJSPage: " . htmlspecialchars( $titleBlock ) . " rev: " . $a->getID() . " \n*/\n";
 					$fileStr = $a->getContent() . "\n";
 					$jsout.= ( $ext == 'css' ) ?
 						$this->transformCssOutput( $classKey, $fileStr ) :
@@ -310,22 +312,22 @@ class jsScriptLoader {
 				}
 			}
 		}else{
-			$ext = substr($file_name, strrpos($file_name, '.') + 1);
+			$ext = substr($filePath, strrpos($filePath, '.') + 1);
 			// Dealing with files
-			if ( trim( $file_name ) != '' ) {
-				$fileStr = $this->getFileContents( $file_name ) . "\n";
+			if ( trim( $filePath ) != '' ) {
+				$fileStr = $this->getFileContents( $filePath ) . "\n";
 				if( $fileStr ){
 					// Add the file name if debug is enabled
 					if ( $this->debug ){
-						$jsout .= "\n/**\n* File: " . htmlspecialchars( $file_name ) . "\n*/\n";
+						$jsout .= "\n/**\n* File: " . htmlspecialchars( $filePath ) . "\n*/\n";
 					}
 					$jsout.= ( $ext == 'css' ) ?
-						$this->transformCssOutput( $classKey, $fileStr, $file_name ) :
+						$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
 						$fileStr;
 
 					return $jsout;
 				}else{
-					$this->errorMsg .= "\nError could not read file: ". htmlspecialchars( $file_name )  ."\n";
+					$this->errorMsg .= "\nError could not read file: ". htmlspecialchars( $filePath )  ."\n";
 					return false;
 				}
 			}
@@ -347,7 +349,7 @@ class jsScriptLoader {
 			$cssOptions[ 'preserveComments' ] = false;
 		}
 		$serverUri = $this->getScriptLoaderUri();
-		
+
 		// Check for the two jsScriptLoader entry points:
 		if( strpos( $serverUri, 'mwScriptLoader.php') !== false ){
 			$cssOptions[ 'prependRelativePath' ] =
@@ -515,11 +517,11 @@ class jsScriptLoader {
 
 					$reqClass = preg_replace( "/[^A-Za-z0-9_\-\.]/", '', $reqClass );
 
-					$jsFilePath = self::getJsPathFromClass( $reqClass );
+					$filePath = self::getPathFromClass( $reqClass );
 					if( !$jsFilePath ){
 						$this->errorMsg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
 					}else{
-						$this->jsFileList[ $reqClass ] = $jsFilePath;
+						$this->jsFileList[ $reqClass ] = $filePath;
 						$this->requestKey .= $reqClass;
 					}
 				}
@@ -638,7 +640,7 @@ class jsScriptLoader {
 	 * @param {String} $reqClass Class key to get the path for
 	 * @return path of the class or "false"
 	 */
-	public static function getJsPathFromClass( $reqClass ){
+	public static function getPathFromClass( $reqClass ){
 		global $wgJSAutoloadClasses;
 		// Make sure the class is loaded:
 		jsClassLoader::loadClassPaths();
@@ -789,7 +791,7 @@ class jsScriptLoader {
 	 * @return {Array} decoded json array of message key value pairs
 	 */
 	function getMsgKeysFromClass( $class ){
-		$filePath = self::getJsPathFromClass( $class );
+		$filePath = self::getPathFromClass( $class );
 		$str = $this->getScriptText($class,  $filePath);
 
 		$inx = self::getAddMessagesIndex( $str );

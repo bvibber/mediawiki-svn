@@ -2387,8 +2387,12 @@ var MW_EMBED_VERSION = '1.1e';
 	* @param {String} cssString Css Payload to be added to head of document
 	*/
 	mw.addStyleString = function( cssClassName,  cssString ) {
+		if( mw.style[ cssClassName ] ){
+			mw.log(" Style: ( " + cssClassName + ' ) already set' );
+			return true;
+		}
 		// Set the style to true ( to not request it again )
-		mw.style[ cssClassName ] = true;
+		mw.style[ cssClassName ] = true;		
 		mw.log(" Style: " + cssClassName + ' has been set' );
 		// Wait for the DOM to be ready before adding in the css:
 		mw.ready( function() {
