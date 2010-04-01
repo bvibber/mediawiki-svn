@@ -22,6 +22,7 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 
 	protected int window ; 
+	protected boolean runningStart = false;
 	
 	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
 		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
@@ -64,7 +65,9 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
 		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
 		
-		for (int i= window; ; i++) {
+		int start = runningStart ? 0 : window;
+		
+		for (int i= start; ; i++) {
 			int from = i-window;
 			int to = i+1;
 			
@@ -122,5 +125,14 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		}
 		
 		return getInterpretations(terms.subList(from, to), mset);
-	}	
+	}
+
+	public boolean getRunningStart() {
+		return runningStart;
+	}
+
+	public void setRunningStart(boolean runningStart) {
+		this.runningStart = runningStart;
+	}
+
 }

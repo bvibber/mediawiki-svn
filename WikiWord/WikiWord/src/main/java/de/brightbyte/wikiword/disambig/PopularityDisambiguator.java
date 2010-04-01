@@ -45,7 +45,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 			List<? extends LocalConcept> m = meanings.get(t);
 			if (m==null || m.size()==0) continue;
 			
-			if (m.size()>0) Collections.sort(m, popularityComparator);
+			if (m.size()>1) Collections.sort(m, popularityComparator);
 			
 			LocalConcept c = m.get(0);
 			disambig.put(t, c);
