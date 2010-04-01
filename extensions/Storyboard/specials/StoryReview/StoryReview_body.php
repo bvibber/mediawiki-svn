@@ -113,7 +113,6 @@ EOT
 		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );
 		$deleteImageMsg = htmlspecialchars(  wfMsg( 'storyboard-deleteimage' ) );
 		
-		// TODO: add some returnto feature here
 		global $wgTitle;
 		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit&returnto=' . $wgTitle->getPrefixedText() );
 		$editUrl = Xml::escapeJsString( $editUrl );

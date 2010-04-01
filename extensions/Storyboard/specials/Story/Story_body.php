@@ -147,6 +147,12 @@ class SpecialStory extends IncludableSpecialPage {
 		$wgOut->addHTML( "<img src='$imageSrc' class='story-image'>" );
 		$wgOut->addHTML( $text );
 		
+		if ( $story->story_author_id ) {
+			$user = User::newFromId( $story->story_author_id );
+			$userPage = $user->getUserPage();
+			$story->story_author_name = '[[' . $userPage->getFullText() . '|' . $story->story_author_name . ']]';
+		}
+		
 		$wgOut->addWikiText( 
 			htmlspecialchars( wfMsgExt(
 				'storyboard-submittedbyon',
