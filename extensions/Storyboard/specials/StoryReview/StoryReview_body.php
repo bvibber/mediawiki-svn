@@ -56,6 +56,7 @@ class SpecialStoryReview extends SpecialPage {
 				'story_title',
 				'story_text',
 				'story_is_published',
+				'story_author_image',
 				'story_image_hidden'
 			),
 			array( 'story_is_hidden' => 0 )
@@ -96,33 +97,58 @@ EOT
 	 * @return string
 	 */
 	private function getStorySegments( $story ) {
-		$imageSrc = 'http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png'; // TODO: get cropped image here
+		global $wgTitle;
+		
+		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit&returnto=' . $wgTitle->getPrefixedText() );
+		$editUrl = Xml::escapeJsString( $editUrl );
 		
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );
 		
 		$publishAction = $story->story_is_published ? 'unpublish' : 'publish';
-		// Uses storyboard-unpublish or storyboard-publish
-		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );
-		
-		$imageAction = $story->story_image_hidden ? 'unhideimage' : 'hideimage';
-		// Uses storyboard-unhideimage or storyboard-hideimage
-		$imageMsg = htmlspecialchars(  wfMsg( "storyboard-$imageAction" ) );
+		// Uses storyboard-unpublish or storyboard-publish.
+		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );		
 		
 		$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
-		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );
-		$deleteImageMsg = htmlspecialchars(  wfMsg( 'storyboard-deleteimage' ) );
+		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );		
 		
-		global $wgTitle;
-		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit&returnto=' . $wgTitle->getPrefixedText() );
-		$editUrl = Xml::escapeJsString( $editUrl );
+		$imageHtml = '';
+		$imageButtonsHtml = '';
+		
+		if ( $story->story_author_image ) {
+			$imageAction = $story->story_image_hidden ? 'unhideimage' : 'hideimage';
+			// Uses storyboard-unhideimage or storyboard-hideimage.
+			$imageMsg = htmlspecialchars(  wfMsg( "storyboard-$imageAction" ) );
+			
+			$deleteImageMsg = htmlspecialchars(  wfMsg( 'storyboard-deleteimage' ) );
+
+			$imgAttribs = array(
+				'src' => $story->story_author_image,
+				'class' => 'story-image',
+				'id' => "story_image_$story->story_id",
+				'title' => $title,
+				'alt' => $title
+			);
+
+			if ( $story->story_image_hidden ) {
+				$imgAttribs['style'] = 'display:none;';
+			}
+			
+			$imageHtml = Html::element( 'img', $imgAttribs );
+			
+			$imageButtonsHtml = <<<EOT
+				&nbsp;&nbsp;&nbsp;<button type="button" 
+					onclick="stbDoStoryAction( this, $story->story_id, '$imageAction' )" id="image_button_$story->story_id">$imageMsg</button>
+				&nbsp;&nbsp;&nbsp;<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>			
+EOT;
+		}
 		
 		return <<<EOT
 		<table width="100%" border="1" id="story_$story->story_id">
 			<tr>
 				<td>
 					<div class="story">
-						<img src="http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png" class="story-image">
+						$imageHtml
 						<div class="story-title">$title</div><br />
 						$text
 					</div>
@@ -132,9 +158,7 @@ EOT
 				<td align="center" height="35">
 					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$publishAction' )">$publishMsg</button>&nbsp;&nbsp;&nbsp;
 					<button type="button" onclick="window.location='$editUrl'">$editMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$imageAction' )">$imageMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
+					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>$imageButtonsHtml
 				</td>
 			</tr>
 		</table>

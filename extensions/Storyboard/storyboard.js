@@ -98,18 +98,57 @@ function stbDoStoryAction( sender, storyid, action ) {
 			if ( data.storyreview ) {
 				switch( data.storyreview.action ) {
 					case 'publish' : case 'unpublish' : case 'hide' :
+						sender.innerHTML = 'Done'; // TODO: i18n
 						jQuery( '#story_' + data.storyreview.id ).slideUp( 'slow', function () {
 							jQuery( this ).remove();
 						} );
 						// TODO: would be neat to update the other list when doing an (un)publish here
 						break;
-					// TODO: add handling for the other actions
+					case 'hideimage' : case 'unhideimage' :
+						stbToggeShowImage( sender, data.storyreview.id, data.storyreview.action );
+						break;
+					case 'deleteimage' :
+						sender.innerHTML = 'Image deleted'; // TODO: i18n
+						jQuery( '#story_image_' + data.storyreview.id ).slideUp( 'slow', function () {
+							jQuery( this ).remove();
+						} );
+						document.getElementById( 'image_button_' + data.storyreview.id  ).disabled = true;				
+						break;
 				}
 			} else {
 				alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
 			}
 		}
 	);
+}
+
+/**
+ * Updates the show/hide image button after a hideimage/unhideimage
+ * action has completed sucesfully. Also updates the image on the 
+ * page itself accordingly, and hooks up the correct event to the button. 
+ * 
+ * @param sender The button that invoked the completed action.
+ * @param storyId The id of the story that has been affected.
+ * @param completedAction The name ofthe action that has been performed.
+ */
+function stbToggeShowImage( sender, storyId, completedAction ) {
+	if ( completedAction == 'hideimage' ) {
+		jQuery( '#story_image_' + storyId ).slideUp( 'slow', function () {
+			sender.innerHTML = 'Show image'; // TODO: i18n
+			sender.onclick = function() {
+				stbDoStoryAction( sender, storyId, 'unhideimage' );
+			};
+			sender.disabled = false;
+		} );
+	} else {
+		jQuery( '#story_image_' + storyId ).slideDown( 'slow', function () {
+			sender.innerHTML = 'Hide image'; // TODO: i18n
+			sender.onclick = function() {
+				stbDoStoryAction( sender, storyId, 'hideimage' );
+			};
+			sender.disabled = false;
+		} );
+	}
 }
 
 /**
@@ -123,7 +162,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 function stbDeleteStoryImage( sender, storyid ) {
 	var confirmed = confirm( 'Are you sure you want to permanently delete this stories image?' ); // TODO: i18n
 	if ( confirmed ) { 
-		doStoryAction( sender, storyid, 'deleteimage' );
+		stbDoStoryAction( sender, storyid, 'deleteimage' );
 	}
 	return confirmed;
 }
