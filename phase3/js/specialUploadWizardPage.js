@@ -4,7 +4,7 @@
  */
 
 mw.ready( function() {
-	mw.load( 'UploadWizard.UploadWizardTest', function () {
+	mw.load( 'UploadWizard.UploadWizard', function () {
 		
 		mw.setConfig( 'debug', true ); 
 
