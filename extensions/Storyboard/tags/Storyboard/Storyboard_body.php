@@ -16,7 +16,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class TagStoryboard {
 
-	public static function render( $input, $args, $parser, $frame ) {
+	/**
+	 * Renders the storyboard tag.
+	 * 
+	 * @param $input
+	 * @param array $args
+	 * @param Parser $parser
+	 * @param $frame
+	 * 
+	 * @return array
+	 */
+	public static function render( $input, array $args, Parser $parser, $frame ) {
 		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
@@ -37,6 +47,7 @@ EOT
 				'style' => "height: $height; width: $width;"
 			)
 		);
+		
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 	

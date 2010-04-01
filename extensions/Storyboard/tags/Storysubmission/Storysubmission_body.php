@@ -18,7 +18,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class TagStorysubmission {
 	
-	public static function render( $input, $args, $parser, $frame ) {
+	/**
+	 * Renders the storybsubmission tag.
+	 * 
+	 * @param $input
+	 * @param array $args
+	 * @param Parser $parser
+	 * @param $frame
+	 * 
+	 * @return array
+	 */	
+	public static function render( $input, array $args, Parser $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
 
 		global $wgRequest, $wgUser;
@@ -29,21 +39,21 @@ class TagStorysubmission {
 			$output = self::getFrom( $parser, $args );
 		}
 		
-		return array( $output, 'noparse' => true, 'isHTML' => true );
-		
 		wfProfileOut( __METHOD__ );
+		
+		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
 	 * Returns the HTML for a storysubmission form.
 	 * 
-	 * @param $parser
+	 * @param Parser $parser
 	 * @param array $args
 	 * @return HTML
 	 * 
 	 * TODO: any sort of client side validation?
 	 */
-	private static function getFrom( $parser, array $args ) {
+	private static function getFrom( Parser $parser, array $args ) {
 		global $wgUser, $wgStyleVersion, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.

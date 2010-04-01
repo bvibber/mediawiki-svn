@@ -27,7 +27,9 @@ $messages['en'] = array(
 	'storyboard-unpublished' => 'The story you requested has not been published yet.',
 	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
 	'storyboard-cantedit' => 'You are not allowed to edit stories.',
-	'storyboard-canedit' => 'You can [$1 edit] and publish this story.',
+	'storyboard-canedit' => 'You can $1 and publish this story.',
+	'storyboard-ispublished' => 'This story has been published and is publicly visible.',
+	'storyboard-ishidden' => 'This story has been hidden from the story review interface.', 
 
 	// Story review
 	'storyreview' => 'Story review',
