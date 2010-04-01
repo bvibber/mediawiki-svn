@@ -251,6 +251,7 @@ class jsScriptLoader {
 		}
 		return false;
 	}
+
 	/**
 	 * Get the javascript text content from a given classKey
 	 *

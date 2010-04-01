@@ -32,7 +32,7 @@ mw.addMessages( {
 	"filestatus" : "Copyright status:"
 });
 
-var default_bui_options = {
+var default_uh_options = {
 	// Target api to upload to
 	'apiUrl' : null,
 	
@@ -58,7 +58,9 @@ var default_bui_options = {
 	'selectFileCb': null, 
 	
 	// Callback called when an upload completes or is canceld and we want to re-activeate the form
-	'returnToFormCb' : null
+	'returnToFormCb' : null,
+	
+	'uploadDescription' : null
 
 };
 
@@ -121,12 +123,12 @@ mw.UploadHandler.prototype = {
 	
 	/**
 	 * Object initialization
-	 * @param {Object} options BaseUpload options see default_bui_options
+	 * @param {Object} options BaseUpload options see default_uh_options
 	 */
 	init: function( options ) {
 		if ( !options )
 			options = {};
-		$j.extend( this, default_bui_options, options );
+		$j.extend( this, default_uh_options, options );
 		
 		// Set a apiUrl if unset
 		if( !this.apiUrl ) {
@@ -231,6 +233,7 @@ mw.UploadHandler.prototype = {
 				})
 			)
 		}
+		
 		var uploadDesc =  _this.getUploadDescription();
 		if( uploadDesc ) {
 			$form.find("[name='comment']").val( uploadDesc );
@@ -513,7 +516,7 @@ mw.UploadHandler.prototype = {
 	* @return {String} 
 	* 	value of wpUploadDescription 
 	*/
-	getUploadDescription: function() {
+	getUploadDescription: function() { 	
 		//Special case of upload.js commons hack: 
 		var comment_value = $j( '#wpUploadDescription' ).val();
 		if(  comment_value == '' ) {
@@ -533,8 +536,7 @@ mw.UploadHandler.prototype = {
 			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
 			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
 		}
-		mw.log( 'getCommentText:: new val:' + comment_value  );
-		this.uploadDescription = comment_value;
+		mw.log( 'getCommentText:: new val:' + comment_value  );		
 		return comment_value;
 	},
 	
@@ -789,8 +791,11 @@ mw.UploadHandler.prototype = {
 			case 'ignoreWarnings':
 				this.ignoreWarningsSubmit();
 			break;
+			case 'returnToForm':
+				this.rewriteDescriptionText = false;
+			break;
 			case 'disableDirectSubmit':
-				this.formDirectSubmit = false;
+				this.formDirectSubmit = false;				
 			break;
 			default: 
 				mw.log( "Error reciveUploadAction:: unkown action: " + action );

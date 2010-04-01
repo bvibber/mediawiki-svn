@@ -11,8 +11,8 @@ td{
 
 mw.ready( function(){
 	//for just setting one or two to test at a time for debug
-	//var langTestSet = [ 'lt'  ]; //pl
-	var langTestSet = mw.getConfig( 'languageCodeList' );
+	var langTestSet = [ 'es' ]; //pl
+	//var langTestSet = mw.getConfig( 'languageCodeList' );
 	
 	//do mauall script loaders calls to test multiple languages:
 	function doLangTable( langSet ){		
@@ -24,8 +24,12 @@ mw.ready( function(){
 				[0,10], 
 				[1,2], 
 				[3,30] 
-			]			
+			],
+			'contributions-title' : [0,1,2]
 		};
+		// Set-up base convert plural and gender (to restore if no language class is set) 
+		var baseConvertPlural = mw.lang.convertPlural;
+		var baseGender = mw.lang.gender; 
 					
 		var passTest=0;
 		var failTest=0;
@@ -38,9 +42,16 @@ mw.ready( function(){
 			mw.log(" doProcLangKey: " + langKey );
 			// Clear out the old digitTransformTable
 			mw.lang.digitTransformTable = null;
-			//Load the current language js file
-			var langName = 'Language' +	langKey.substr(0,1).toUpperCase() + langKey.substr( 1,langKey.length ); 
-			$j.getScript( '../languages/classes/' + langName + '.js' , function(){
+			// Load the current language js file if it has a langKey 
+			if( mw.hasLangTransform (langKey ) ){
+				var langName = 'Language' +	langKey.substr(0,1).toUpperCase() + langKey.substr( 1,langKey.length ); 
+				$j.getScript( '../languages/classes/' + langName + '.js' , function(){
+					doLangTest();
+				});			
+			} else { 
+				doLangTest();
+			}
+			function doLangTest(){
 				// Get the current language mw.testLang js
 				$j.getScript( '../../../mwScriptLoader.php?class=mw.testLang&debug=true&uselang='+langKey, function(){						
 					var o='';
@@ -133,7 +144,7 @@ mw.ready( function(){
 					//put the output into the page: 
 					$j('#table_out').append( o );								
 				});			
-			});
+			}
 		}//procc lang key:
 		
 		doProcLangKey( langSet.pop() );

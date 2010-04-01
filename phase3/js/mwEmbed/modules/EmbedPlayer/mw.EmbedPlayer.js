@@ -1091,7 +1091,7 @@ mediaElement.prototype = {
 	*	@param {Element} element <video>, <source> or <mediaSource> <text> element.
 	*/
 	tryAddSource: function( element ) {
-		mw.log( 'f:tryAddSource:' + $j( element ).attr( "src" ) );
+		//mw.log( 'f:tryAddSource:' + $j( element ).attr( "src" ) );
 		var newSrc = $j( element ).attr( 'src' );
 		if ( newSrc ) {			
 			// make sure an existing element with the same src does not already exist:		 
@@ -1104,13 +1104,7 @@ mediaElement.prototype = {
 			}
 		}
 		var source = new mediaSource( element );
-		// Inherit some properties from the parent <video> element if unset: 
-		if ( !source.duration && this.duration )
-			source.duration = this.duration;
-			
-		if ( !source.startOffset && this.startOffset )
-			source.startOffset = praserFloat( this.startOffset );
-		
+				
 		mw.log( 'pushed source to stack' + source + 'sl:' + this.sources.length );
 		this.sources.push( source );	
 		return source;
@@ -1297,7 +1291,7 @@ mw.EmbedPlayer.prototype = {
 			_this.duration = $j( element ).attr( 'duration' );
 		}		
 		if ( !_this.duration && $j( element ).attr( 'durationHint' ) ) {
-			_this.durationHint = $j( videoElement ).attr( 'durationHint' );
+			_this.durationHint = $j( element ).attr( 'durationHint' );
 			// Convert duration hint if needed:
 			_this.duration = mw.npt2seconds(  _this.durationHint );
 		}				 
@@ -2287,59 +2281,7 @@ mw.EmbedPlayer.prototype = {
 				this.displayOverlay( gM( 'mwe-could_not_find_linkback' ) );
 			}
 		}
-	},
-		
-	
-	/**
-	* Loads the text interface library and show the text interface near the player. 	 
-	*/
-	showTextInterface: function() {
-		var _this = this;
-		mw.log('showTextInterface:');							
-		
-		var $menu = $j( '#timedTextMenu_' + this.id );			
-		//This may be unnessesary .. we just need to show a spiner somewhere
-		if ( $menu.length != 0 ) {
-			// Hide show the menu:		
-			if( $menu.is( ':visible' ) ) {
-				$menu.hide( "fast" );
-			}else{			 
-				$menu.show("fast");
-			}	
-		}else{			
-			var loc = this.$interface.position();
-			//Setup the menu: 
-			var playerHeight = ( parseInt( this.height ) + this.ctrlBuilder.getHeight() );
-			$j('body').append( 
-				$j('<div>')		
-					.addClass('ui-widget ui-widget-content ui-corner-all')			
-					.attr( 'id', 'timedTextMenu_' + _this.id )
-					.loadingSpinner()			
-					.css( {
-						'position' 	: 'absolute',
-						'z-index' 	: 10,
-						'height'	: '180px',
-						'width' 	: '180px', 	
-						'font-size'	: '12px'					
-					} ).hide()
-			);			
-			// Load text interface ( if not already loaded )
-			mw.load( 'TimedText', function() {
-				$j( '#' + _this.id ).timedText( 'showMenu', '#timedTextMenu_' + _this.id );				
-			});		
-		}			
-	},
-	
-	/**
-	* Close the text interface
-	*/
-	closeTextInterface:function() {
-		mw.log( 'closeTextInterface ' + typeof this.textInterface );
-		if ( typeof this.textInterface !== 'undefined' ) {
-			this.textInterface.close();
-		}
-	},
-		
+	},		
 		
 	/**
 	*  Base Embed Controls

@@ -641,19 +641,14 @@ mw.ApiProxy = { };
 		clientRequest.request[ 'format' ] = 'json';		
 		
 		mw.log(" do post request to: " + wgScriptPath + '/api' + wgScriptExtension );
-		/*
-		for( var i in clientRequest.request ) {
-			mw.log("req: " + i + " = " + clientRequest.request[i] );  
-		} 
-		*/
 		
 		// Process the API request. We don't use mw.getJSON since we need to "post"
 		$j.post( wgScriptPath + '/api' + wgScriptExtension,
 			clientRequest.request,
 			function( data ) {
-				mw.log(" server api request got data: " + data );	
+				mw.log(" server api request got data: " + JSON.stringify( data ) );	
 				// Send the result data to the client 
-				sendClientMsg( JSON.parse( data ) );
+				sendClientMsg( data );
 			}
 		);
 	}

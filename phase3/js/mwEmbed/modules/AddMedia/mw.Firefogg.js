@@ -525,8 +525,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			})
 		); 
 	},
+	
 	/**
-	 * Create controls for showing a transcode/crop/resize preview
+	 * Create controls for showing a transcode preview
 	 */
 	createPreviewControls: function() {
 		var _this = this;
@@ -787,11 +788,10 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			return false;
 		}
 		// Setup the interface progress indicator:
-		_this.ui.setup( { 
+		_this.ui.setup( {
 			'title' : gM( 'fogg-transcoding' ),
 			'statusType' : 'transcode' 
 		} );
-		
 		// Add the preview controls if transcoding:  
 		if ( !_this.getEncoderSettings()[ 'passthrough' ] ) {
 			_this.createPreviewControls();
@@ -952,15 +952,15 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		mw.log( "firefogg: doUpload:: " );
 			
 		// Add the preview controls if transcoding:  
-		if ( !_this.getEncoderSettings()['passthrough'] ) {
-			_this.createPreviewControls();
-			
+		if ( !_this.getEncoderSettings()['passthrough'] ) {						
 			// Setup the firefogg transcode dialog (if not passthrough )
 			_this.ui.setup( { 
 				'title' : gM( 'mwe-upload-transcode-in-progress' ),			
 				'statusType' : 'transcode' 		
 			} );
 			
+			// setup preview controls: 
+			_this.createPreviewControls();
 		}
 		// Update the formData 'comment' per the upload description 
 		$j(this.form).find("[name='comment']").val( _this.getUploadDescription() );
