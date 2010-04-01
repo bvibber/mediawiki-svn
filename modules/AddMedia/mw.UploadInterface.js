@@ -425,8 +425,10 @@ mw.UploadDialogInterface.prototype = {
 	 */
 	returnToForm: function( dialogElement ){
 		$j( dialogElement ).dialog( 'close' );
-		
-		// Dissable direct submit on the transport ( so send via sendUploadAction ) 	
+		//retun to form actions
+		this.sendUploadAction( 'returnToForm' );
+	
+		// Disable direct submit on the transport ( so send via sendUploadAction ) 	
 		this.sendUploadAction( 'disableDirectSubmit' );
 		
 		// returnToFormCb

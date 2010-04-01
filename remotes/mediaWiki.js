@@ -4,7 +4,8 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r117';
+var mwRemoteVersion = 'r118';
+var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
 if( window.console ){
@@ -20,8 +21,6 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 		mwReqParam[ p[0] ] = p[1];
 	}
 }
-
-var mwUseScriptLoader = ( mwReqParam['debug'] != 'true');
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {	
@@ -172,31 +171,30 @@ function mwSetPageToLoading(){
 * ( front-loaded to avoid extra requests )
 */
 function mwLoadPlayer( callback ){
-	//Load the video style sheets:
-	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/common/common.css?' + mwGetReqArgs() );
-	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/kskin/EmbedPlayer.css?' + mwGetReqArgs() );
-			
-	var jsSetVideo = [
+	// the jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
+	var jsPlayerRequest = [
+		'mw.style.common',
 		'mw.EmbedPlayer', 
 		'$j.ui', 
 		'ctrlBuilder', 
 		'$j.cookie', 
 		'$j.ui.slider', 
 		'kskinConfig',
+		'mw.style.kskin',
 		'$j.fn.menu',
 		'mw.TimedText' 
 	];		
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )
 	if (navigator.userAgent.indexOf("MSIE") != -1){
-		jsSetVideo.push( 'javaEmbed' );
+		jsPlayerRequest.push( 'javaEmbed' );
 	}
 		
 	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 ){
-		jsSetVideo.push( 'nativeEmbed' );
+		jsPlayerRequest.push( 'nativeEmbed' );
 	}
 
-	loadMwEmbed( jsSetVideo, function() {
+	loadMwEmbed( jsPlayerRequest, function() {
 		callback();
 	});
 }

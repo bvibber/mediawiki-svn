@@ -76,15 +76,6 @@ mw.setDefaultConfig ( {
 	//If we are in debug mode ( results in fresh debug javascript includes )
 	'debug' : false,
 	
-	// Valid language codes ( has a file in /languages/classes/Language{code}.js )
-	// TODO: mirror the mediaWiki language "fallback" system
-	'languageCodeList': ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
-		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',
-		'hr', 'hsb', 'hy', 'ksh', 'ln', 'lt', 'lv', 'mg', 'mk', 'mo', 'mt',
-		'nso', 'pl', 'pt_br', 'ro', 'ru', 'se', 'sh', 'sk', 'sl', 'sma',
-		'sr_ec', 'sr_el', 'sr', 'ti', 'tl', 'uk', 'wa'
-	],
-	
 	// Default request timeout ( for cases where we inlucde js and normal browser timeout can't be used )
 	// stored in seconds
 	'defaultRequestTimeout' : 30,

@@ -808,6 +808,7 @@ ctrlBuilder.prototype = {
 			if( ! this.supportedMenuItems[ i ] 	) {
 			 	continue;
 			}
+			
 			$optionsMenu.append(
 				this.optionMenuItems[i]( this )
 			);
@@ -1157,6 +1158,48 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
+	* Show the text interface library and show the text interface near the player. 	 
+	*/
+	showTextInterface: function() {
+		var _this = this;
+		var embedPlayer = this.embedPlayer;
+		mw.log('ttt:showTextInterface::');							
+		
+		var $menu = $j( '#timedTextMenu_' + embedPlayer.id );			
+		//This may be unnessesary .. we just need to show a sppiner somewhere
+		if ( $menu.length != 0 ) {
+			// Hide show the menu:		
+			if( $menu.is( ':visible' ) ) {
+				$menu.hide( "fast" );
+			}else{			 
+				$menu.show("fast");
+			}	
+		}else{			
+			var loc = embedPlayer.$interface.find( '.rButton.timed-text' ).offset();
+			//Setup the menu: 		
+			$j('body').append( 
+				$j('<div>')		
+					.addClass('ui-widget ui-widget-content ui-corner-all')			
+					.attr( 'id', 'timedTextMenu_' + embedPlayer.id )	
+					.css( {
+						'position' 	: 'absolute',
+						'z-index' 	: 10,
+						'height'	: '180px',
+						'width' 	: '180px', 	
+						'font-size'	: '12px',
+						'display' : 'none'					
+					} )
+					
+			);			
+			// Load text interface ( if not already loaded )
+			mw.load( 'TimedText', function() {
+				mw.log('ttt:TimedText CB .. do timedText bind::');
+				$j( '#' + embedPlayer.id ).timedText( 'showMenu', '#timedTextMenu_' + embedPlayer.id );				
+			});		
+		}			
+	},
+	
+	/**
 	* Loads sources and calls showDownloadWithSources
 	* @param {Object} $target jQuery target to output to
 	*/
@@ -1428,7 +1471,7 @@ ctrlBuilder.prototype = {
 						// Captions binding:
 						.buttonHover()
 						.click( function() {			
-							ctrlObj.embedPlayer.showTextInterface();
+							ctrlObj.showTextInterface();
 						} )						
 			}
 		},

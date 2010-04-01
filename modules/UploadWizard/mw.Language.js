@@ -18,7 +18,7 @@ mw.Language = {
 	 * List of all languages mediaWiki supports ( Avoid an api call to get this same info )
 	 * http://commons.wikimedia.org/w/api.php?action=query&meta=siteinfo&siprop=languages&format=jsonfm
 	 * 
-         * Languages sorted by name, using tools in $SVNROOT/mediawiki/trunk/tools/langcodes 
+     * Languages sorted by name, using tools in $SVNROOT/mediawiki/trunk/tools/langcodes 
 	 * This is somewhat better than sorting by code (which produces totally bizarre results) but is not
 	 * a true lexicographic sort
 	 */
