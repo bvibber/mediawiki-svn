@@ -10,6 +10,7 @@ mw.addMessages( {
 	"mwe-upwiz-transported": "OK",
 	"mwe-upwiz-click-here": "Click here to select a file",
 	"mwe-upwiz-uploading": "uploading...",
+	"mwe-upwiz-editing": "editing...",
 	"mwe-upwiz-remove-upload": "Remove this file from the list of files to upload",
 	"mwe-upwiz-remove-description": "Remove this description",
 	"mwe-upwiz-upload": "Upload",
@@ -73,8 +74,10 @@ mw.addMessages( {
 
 
 
-mw.ProgressBar = function( selector ) {
+mw.ProgressBar = function( selector, text ) {
 	var _this = this;
+	// XXX need to figure out a way to put something inside text.
+
 	_this.progressBarDiv = $j('<div></div>')
 				.addClass("mwe-upwiz-progress-bar")
 				.progressbar( { value: 0 } );
@@ -88,6 +91,7 @@ mw.ProgressBar = function( selector ) {
 	$j( selector ).html( 
 		$j('<div />').addClass( 'mwe-upwiz-progress' )
 			.append( $j( '<div></div>' )
+				.addClass( 'mwe-upwiz-progress-bar-etr' )
 				.append( _this.progressBarDiv )
 				.append( _this.timeRemainingDiv ) )
 			.append( $j( _this.countDiv ) )
@@ -128,9 +132,6 @@ mw.ProgressBar.prototype = {
 		var _this = this;
 
 		_this.progressBarDiv.progressbar( 'value', parseInt( fraction * 100 ) );
-		if (fraction > 0.5) {
-			debugger;
-		}
 
 		var remainingTime;
 		if (_this.beginTime == null) {
@@ -1768,9 +1769,9 @@ mw.UploadWizard.prototype = {
 		       +            '<button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button>'
 		       +          '</div>'
 		       +       '</div>'
+		       +       '<div id="mwe-upwiz-progress"></div>'
 		       +       '<div class="clearShim"></div>'
 		       +     '</div>'	
-		       +     '<div id="mwe-upwiz-progress"></div>'
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
 		       +   '<div id="mwe-upwiz-tabdiv-details">'
@@ -1972,6 +1973,7 @@ mw.UploadWizard.prototype = {
 				    progressProperty, 
 				    weightProperty, 
 				    progressBarSelector,
+				    progressBarText,	
 				    starter, 
 				    endCallback ) {
 		
@@ -1983,7 +1985,7 @@ mw.UploadWizard.prototype = {
 		} );
 		var totalCount = wizard.uploads.length;
 
-		var progressBar = new mw.ProgressBar( progressBarSelector );
+		var progressBar = new mw.ProgressBar( progressBarSelector, progressBarText );
 		progressBar.setTotal( totalCount );
 
 		transitioner = function() {
@@ -2046,6 +2048,7 @@ mw.UploadWizard.prototype = {
 			'transportProgress', 
 			'transportWeight', 
 			'#mwe-upwiz-progress',
+			gM( 'mwe-upwiz-uploading' ),
 			function( upload ) {
 				upload.start();
 			},
@@ -2121,6 +2124,7 @@ mw.UploadWizard.prototype = {
 			'detailsProgress', 
 			'detailsWeight', 
 			'#mwe-upwiz-macro-progress',
+			gM( 'mwe-upwiz-editing' ),
 			function( upload ) {
 				upload.details.submit();
 			},

@@ -130,7 +130,7 @@ form.mwe-upwiz-form {
 	border-bottom: 1px solid #e0e0e0;
 }
 
-.mwe-upwiz-file-indicator {
+.mwe-upwiz-file-indicator, .mwe-upwiz-count {
 	float: left;
 	width: 92px;
 	margin-left: 8px;
@@ -143,10 +143,13 @@ form.mwe-upwiz-form {
 	margin-left: 4px;
 }
 
-#mwe-upwiz-add-file-container.mwe-upwiz-add-files-n, .mwe-upwiz-visible-file {
+#mwe-upwiz-add-file-container.mwe-upwiz-add-files-n, .mwe-upwiz-visible-file, .mwe-upwiz-progress-bar-etr {
 	width: 300px;
 	height: 18px;
 	padding-left: 5px;
+}
+
+#mwe-upwiz-add-file-container.mwe-upwiz-add-files-n, .mwe-upwiz-visible-file {
 	float: left;
 }
 
@@ -179,11 +182,11 @@ form.mwe-upwiz-form {
 
 
 #mwe-upwiz-files {
+	margin-left: 50px;
 	margin-top: 20px;
 }
 
 .mwe-upwiz-file {
-	margin-left: 50px;
 	width: 410px;
 }
 
@@ -240,8 +243,12 @@ a[disabled=true]:hover {
 	color: #009900;
 }
 
-.mwe-upwiz-progress-bar {
-	margin-left: 50px;
+.mwe-upwiz-progress-bar-etr {
+	float: left;
+}
+
+.mwe-upwiz-etr {
+	text-align: center;
 }
 
 
