@@ -1368,6 +1368,14 @@ As sugeriss che l'espression a dovrìa esse pa tròp curta o tròp comun-a.",
 	'right-spamregex' => 'Blòca fras dë spam con [[Special:SpamRegex]]',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'spamregex-text' => '(متن)',
+	'spamregex-summary-log' => '(لنډيز)',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso

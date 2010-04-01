@@ -804,6 +804,14 @@ $messages['pms'] = array(
 	'nss-db-error' => "Eror an lesend dal database d'autenticassion",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'am-email' => 'برېښليک',
+	'nss-save-changes' => 'بدلونونه خوندي کول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

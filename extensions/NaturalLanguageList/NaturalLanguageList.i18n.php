@@ -67,9 +67,11 @@ $messages['dsb'] = array(
 );
 
 /** Spanish (Español)
+ * @author Pertile
  * @author Peter17
  */
 $messages['es'] = array(
+	'nll-desc' => 'Formateo sencillo de listas en lenguajes naturales',
 	'nll-lastseparator' => '&#32;y&#32;',
 );
 

@@ -1895,6 +1895,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Ferrer
  * @author Innv
  * @author Rubin
@@ -1922,7 +1923,7 @@ $messages['ru'] = array(
 	'usagestatisticsintervalweek' => 'Неделя',
 	'usagestatisticsintervalmonth' => 'Месяц',
 	'usagestatisticsincremental' => 'Возрастающая',
-	'usagestatisticsincremental-text' => 'возростающая',
+	'usagestatisticsincremental-text' => 'возрастающая',
 	'usagestatisticscumulative' => 'Совокупная',
 	'usagestatisticscumulative-text' => 'совокупная',
 	'usagestatisticscalselect' => 'Выбрать',

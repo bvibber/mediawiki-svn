@@ -3085,20 +3085,20 @@ $messages['ja'] = array(
 	'optin-survey-answer-changes-predictability' => '動作の安定性を改善してほしい。',
 	'optin-survey-answer-changes-custom' => 'より強力なカスタマイズを可能にしてほしい。',
 	'optin-survey-answer-changes-other' => 'その他:',
-	'optin-improvements' => '== 何が改良されたのですか？ ==
-[[File:UsabilityNavigation.png|left|link=|新しいナビゲーションタブのスクリーンショット]]
-;ナビゲーションの向上
-新しいナビゲーションシステムでは、現在見ているページがどこか、現在行っている作業なにかがわかりやすくなりました。また、どのページにアクセスでき、どうやってそれらのページにアクセスすればよいかも分かりやすくなりました。画面右上に検索ボックスを置くことで、検索バーを見つけやすく、より素早く利用できるようになりました。
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|改良された編集ツールバーのスクリーンショット]]
-;編集ツールバーの改良
-新しく改良されたアイコンにより、各ツールの機能をより明確に表現できるようになりました。編集ツールバーの各部分について表示・非表示を切り替えられるようにすることで、ツールバーのデザインを簡潔に保ちつつ、散発的に使用される機能にもすぐアクセスできるようにしました。ツールバーにヘルプを組み込むことで、一般的なウィキ・マークアップの説明を素早く参照できるようにしました。
-<div style="clear:both;"></div>
-== 参加するには ==
-このプロジェクトについてより詳しいことが知りたい、あるいは参加したい場合は、[http://usability.wikimedia.org Usability Initiative のウィキ]を訪れてみてください。我々の助成、研究、設計・開発、およびリリースについての情報が得られます。質問をしたり全般的なフィードバックを伝えたい場合は、[http://usability.wikimedia.org/wiki/Talk:Prototype プロトタイプ議論ページ]を使ってください。特定の問題を解決したい場合は、該当する議論ページを使ってください。バグを発見した場合は、[http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco リリース議論ページ]か [https://bugzilla.wikimedia.org Bugzilla]を使ってコメントを伝えてください。
-
-あなたからの意見を楽しみに待っています。',
+	'optin-improvements2' => '==改善点について ==
+[[File:UsabilityToolbar.png|left|link=|拡張編集ツールバーのスクリーンショット]]
+[[File:UsabilityDialogs.png|left|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
+;拡張編集ツールバー
+:拡張ツールバーは記事の編集をより簡単にします。
+:新しく改善されたアイコンによって、各ツールの機能をよりわかりやすく表現しています。
+:表示を開いたり折り畳んだりできるようにしたことで、画面を簡潔に保ちつつ、使用頻度の低い機能にもワンクリックで到達できます。
+;ダイアログ
+:リンクや表を作成するときには、ツールアイコンをクリックすればダイアログボックスが開き、簡単なフォームに記入することでリンクや表が作れます。
+;それだけではありません
+:他にも使いやすくなったナビゲーション、縦方向のタブ、検索機能の強化などなど、多くの改善を行ないました。
+==改善にご協力ください==
+ユーザビリティイニシアティブについて、ぜひ[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative ホームページ]をご覧ください。 
+<div style="clear:both"></div>',
 );
 
 /** Georgian (ქართული)

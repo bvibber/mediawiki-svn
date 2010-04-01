@@ -643,6 +643,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mostrevisors-namespace' => 'نوم-تشيال:',
 	'mostrevisors-submit' => 'ورځه',
 );
 

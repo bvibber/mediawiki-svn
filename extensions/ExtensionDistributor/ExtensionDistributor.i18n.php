@@ -726,15 +726,19 @@ Se vi havas iujn demandojn pri ĉi tiu kromprograma distribuada sistemo, bonvolu
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Pertile
  * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
 	'extensiondistributor' => 'Descargar extensión MediaWiki',
+	'extdist-desc' => 'Extensión para la distribución de archivos de instantáneas de las extensiones',
 	'extdist-not-configured' => 'Por favor configure $wgExtDistTarDir y $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => '¡El directorio de copia en funcionamiento configurado no existe!',
 	'extdist-no-such-extension' => 'No existe la extensión «$1»',
 	'extdist-no-such-version' => 'la extensión "$1" no existe en la versión "$2".',
 	'extdist-choose-extension' => 'Seleccione cual extensión desea descargar:',
+	'extdist-wc-empty' => '¡El directorio configurado de copia en funcionamiento no tiene extensiones distribuibles!',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'versión en desarrollo (principal)',
 	'extdist-choose-version' => '<big>Estás descargando la extensión <b>$1</b>.</big>
@@ -744,8 +748,12 @@ Selecciona tu versión MediaWiki.
 La mayoría de extensiones funcionan a través de múltiples versiones de Mediawiki, entonces si tu versión Mediawiki no está aquí, o si necesitas las últimas características de las extensiones. trata de usar la versión actual.',
 	'extdist-no-versions' => 'La extensión seleccionada ($1) no esta disponible en ninguna versión!',
 	'extdist-submit-version' => 'Continuar',
+	'extdist-no-remote' => 'No se ha podido contactar con el cliente remoto de subversion.',
+	'extdist-remote-error' => 'Error del cliente subversion remoto: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Respuesta inválida del cliente subversion remoto.',
 	'extdist-svn-error' => "''Subversion'' encontró un error: <pre>$1</pre>",
 	'extdist-svn-parse-error' => 'Incapaz de procesar el XML de "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar ha devuelto el código de salida $1:',
 	'extdist-created' => "Una instantánea de la versión <b>$2</b> de la <b>$1</b> extensión para MediaWiki <b>$3</b> ha sido creada. Tu descarga debería comenzar automáticamente en 5 segundos.
 
 El URL para esta instantánea es:

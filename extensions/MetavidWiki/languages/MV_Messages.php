@@ -2462,16 +2462,20 @@ $messages['eo'] = array(
  * @author Imre
  * @author Jatrobat
  * @author Locos epraix
+ * @author Pertile
  * @author Sanbec
  * @author Translationista
  */
 $messages['es'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de metadatos de video y búsqueda de contenidos multimedia]',
 	'metavid' => 'Página MetaVid',
 	'mv_missing_stream' => 'Flujo faltante: $1',
 	'specialpages-group-mv_group' => 'Páginas especiales MetaVidWiki',
+	'mv_warning_wiki' => '<i>Nota: las transcripciones de vídeo MetaVid [[Help:FAQ#How_accurate_is_the_information.3F|pueden contener imprecisiones]], ayúdenos a construir [[Help:Participation#Improving_Archive_Accuracy|un archivo más perfecto]]</i>',
 	'mv_ogg_low_quality' => 'Elemento transmisible Web - Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Calidad alta - Ogg Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Elemento transmisible web - Video Flash',
+	'mv_archive_org_mp4' => 'MP4 de Archive.org encapsuló el flujo H.264',
 	'mv_archive_org_link' => 'Vincula a originales Archive.org MPEG-2',
 	'mv_error_stream_missing' => '<span class="error">Error: No hay video asociado con este stream.</span><br />
 Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del sitio]].',
@@ -2484,6 +2488,7 @@ Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del siti
 	'mvexportstream' => 'Transmisión de exportación MetaVid',
 	'mv_move_delete_msg' => 'movido a $1',
 	'mv_add_stream_page' => 'Transmisión de adición MetaVid',
+	'mv_edit_strea_docu' => '<p>Editar el flujo como <b>administrador</b><br />Para usuarios normales vea o edite la página $1</p>',
 	'mv_add_stream_docu' => '<p>Agregar un nuevo stream con el campo de abajo.</p>
 <p>Más información es brindada en la <a href="$1">página de ayuda para agregar stream</a>.</p>',
 	'mv_add_stream_submit' => 'Agregar stream',
@@ -2491,8 +2496,10 @@ Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del siti
 	'mv_edit_stream_files' => 'Editar archivos stream',
 	'mv_path_type_url_anx' => 'media URL completo',
 	'mv_path_type_wiki_title' => 'wiki media título',
+	'mv_path_type_url_file' => 'URL completa del archivo multimedia utilizando búsqueda local',
 	'mv_path_type_mp4_stream' => 'servidor stream de MP4',
 	'mv_path_type_label' => 'tipo de ruta',
+	'mv_base_offset_label' => 'desplazamiento base',
 	'mv_duration_label' => 'Duración',
 	'mv_file_desc_label' => 'mensaje de descripción de stream',
 	'mv_delete_stream_file' => 'borrar referencia de archivo stream',
@@ -7578,6 +7585,7 @@ $messages['ps'] = array(
 	'mv_remove' => 'غورځول',
 	'mv_start_desc' => 'د پيل وخت',
 	'mv_end_desc' => 'د پای وخت',
+	'mv_viewnext' => 'کتل ($1)',
 	'mediasearch' => 'د رسنيو لټون',
 	'mv_search_match' => 'متن پلټل',
 	'mv_search_categories' => 'وېشنيزې',

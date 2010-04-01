@@ -3611,6 +3611,7 @@ $messages['lb'] = array(
 	'wikilog-form-category' => 'Kategorie:',
 	'wikilog-form-name' => 'Numm:',
 	'wikilog-form-author' => 'Auteur:',
+	'wikilog-form-tag' => 'Markéierung (Tag):',
 	'wikilog-form-date' => 'Datum:',
 	'wikilog-form-status' => 'Status:',
 	'wikilog-form-preview' => 'Kucken ouni ze späicheren:',

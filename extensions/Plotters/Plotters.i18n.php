@@ -221,11 +221,14 @@ $messages['el'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
+ * @author Pertile
  */
 $messages['es'] = array(
 	'plotters-desc' => 'Deja a los usuarios usar JavaScript personalizada en etiquetas jsplot',
 	'plotters' => 'Plotters',
 	'plotters-title' => 'Plotters',
+	'plotters-pagetext' => 'A continuación hay una lista de graficadores especiales que los usuarios pueden usar en sus etiquetas jsplot, tal como fueron definidas en [[MediaWiki:Plotters-definition]].
+Este resumen provee un fácil acceso a las páginas de los mensajes de sistema que definen la descripción y el código de cada graficador.',
 	'plotters-uses' => 'Usos',
 	'plotters-missing-script' => 'No se definió el script.',
 	'plotters-missing-arguments' => 'No se especificaron argumentos.',
@@ -233,8 +236,13 @@ $messages['es'] = array(
 Por favor define un script, cuyo nombre tenga 255 caracteres de longitud como máximo.',
 	'plotters-excessively-long-preprocessorname' => 'El nombre del preprocesador es demasiado largo.
 Por favor define un preprocesador, cuyo nombre tenga 255 caracteres de longitud como máximo.',
+	'plotters-excessively-long-name' => 'El nombre del gráfico es muy largo.
+Por favor defina un nombre de gráfico que no supere los 255 caracteres.',
+	'plotters-excessively-long-tableclass' => 'La clase de tabla es muy larga.
+Por favor defina una clase de tabla que no supere los 255 caracteres.',
 	'plotters-no-data' => 'sin datos proveídos',
 	'plotters-invalid-renderer' => 'Se seleccionó un renderizador inválido.',
+	'plotters-errors' => '{{PLURAL:$1|Error|Errores}} de graficadores:',
 );
 
 /** Finnish (Suomi)
@@ -615,6 +623,13 @@ Për piasì definiss na tableclass che a sia 255 caràter al pì.",
 	'plotters-no-data' => 'Pa gnun dat dàit.',
 	'plotters-invalid-renderer' => "A l'é stàit selessionà un renderer pa bon.",
 	'plotters-errors' => '{{PLURAL:$1|Eror|Eror}} dij plotter:',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'plotters-uses' => 'کاروي',
 );
 
 /** Portuguese (Português)

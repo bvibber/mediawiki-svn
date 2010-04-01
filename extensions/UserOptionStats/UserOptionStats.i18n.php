@@ -548,6 +548,14 @@ $messages['pms'] = array(
 	'uos-title' => "Distribussion ëd valor ëd l'opsion utent $1",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'uos-unknown' => '*تلواليز',
+	'uos-other' => '*بل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso

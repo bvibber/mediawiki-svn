@@ -804,6 +804,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'showprocesslist-user' => 'کارن',
+	'showprocesslist-host' => 'کوربه',
 	'showprocesslist-db' => 'توکبنسټ',
 	'showprocesslist-command' => 'بولۍ',
 	'showprocesslist-time' => 'وخت',

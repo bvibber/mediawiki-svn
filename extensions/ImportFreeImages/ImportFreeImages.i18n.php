@@ -1047,6 +1047,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'importfreeimages_owner' => 'ليکوال',
 	'importfreeimages_next' => 'راتلونکي $1',
+	'importfreeimages_size_thumbnail' => 'بټنوک',
 	'importfreeimages_size_small' => 'وړوکی',
 );
 

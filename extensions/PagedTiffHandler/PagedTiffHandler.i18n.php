@@ -128,6 +128,7 @@ $messages['de'] = array(
 );
 
 /** Spanish (Español)
+ * @author Pertile
  * @author Translationista
  */
 $messages['es'] = array(
@@ -136,6 +137,7 @@ $messages['es'] = array(
 	'tiff_page_error' => 'Número de página fuera de rango',
 	'tiff_too_many_embed_files' => 'La imagen contiene demasiados archivos incrustados.',
 	'tiff_sourcefile_too_large' => 'La resolución del archivo fuente es muy grande. No se generará miniaturas.',
+	'tiff_targetfile_too_large' => 'La resolución del archivo destino es muy grande. No se generará ninguna miniatura.',
 	'tiff_file_too_large' => 'El archivo subido es muy grande y ha sido rechazado.',
 	'tiff_out_of_service' => 'El archivo subido no pudo ser procesado. ImageMagick no está disponible.',
 	'tiff_too_much_meta' => 'Los metadatos utilizan demasiado espacio.',

@@ -187,6 +187,7 @@ Móžoš [[Special:RefHelper|referencu manuelnje pśidaś]] abo [[Special:RefSea
 );
 
 /** Spanish (Español)
+ * @author Pertile
  * @author Peter17
  * @author Translationista
  */
@@ -196,11 +197,13 @@ $messages['es'] = array(
 	'refhelper-desc' => 'Ayuda a crear páginas para las referencias',
 	'refhelper-refsearch' => 'Búsqueda de referencias',
 	'refhelper-refcreate_legend' => 'Crear nueva referencia',
+	'refhelper-refsearch_legend' => 'Búsqueda de las referencias en PubMed',
 	'refhelper-refcreate_another' => 'Crear otra referencia',
 	'refhelper-refcreate_autocomment' => 'Creación de páginas automatizada.',
 	'refhelper-refcreate_success' => 'La página [[$1]] no existía y se ha creado.',
 	'refhelper-refcreate_failure' => '¡La página [[$1]] ya existe!',
 	'refhelper-label_workspace' => 'Área de trabajo (área de copiar y pegar):',
+	'refhelper-label_authorforename' => 'Nombre propio del autor $1:',
 	'refhelper-label_authorsurname' => 'Apellidos:',
 	'refhelper-title' => 'Título:',
 	'refhelper-journal' => 'Diario:',
@@ -214,6 +217,11 @@ $messages['es'] = array(
 	'refhelper-toolbox_link_create' => 'Crear referencia',
 	'refhelper-toolbox_link_search' => 'Crear referencia a partir de búsqueda',
 	'refhelper-newarticle_nocitation' => 'Actualmente no hay citas con este nombre.',
+	'refhelper-newarticle_suggestions' => 'Si a continuación hay una cita que coincide puede crear esta página haciendo clic en el correspondiente botón "Crear".
+
+<h2>Sugerencias</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Desafortunadamente no se pudo sugerir ninguna referencia.
+Puede [[Special:RefHelper|añadir la referencia manualmente]] o [[Special:RefSearch|buscar la cita a agregar]].',
 );
 
 /** Basque (Euskara)
@@ -671,6 +679,7 @@ $messages['ps'] = array(
 	'refhelper-title' => 'سرليک:',
 	'refhelper-pages' => 'مخونه:',
 	'refhelper-year' => 'کال:',
+	'refhelper-category' => 'د $1 وېشنيزه:',
 	'refhelper-create' => 'جوړول',
 	'refhelper-search' => 'پلټل',
 );

@@ -33,11 +33,25 @@ $messages['gl'] = array(
 	'firefoggcu-desc' => 'Protocolo de carga por anacos do Firefogg',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'firefoggcu-desc' => 'Stuckwys-Uffeladigs-Protokoll vu Firefogg',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'firefoggcu-desc' => 'Eropluedprotokoll vu Firefogg dee mat eenzelne Stecker schafft',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'firefoggcu-desc' => 'Firefogg-овиот протокол на подигање дел по дел',
 );
 
 /** Piedmontese (Piemontèis)
@@ -59,5 +73,12 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'firefoggcu-desc' => 'Порционный протокол загрузки Firefogg',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'firefoggcu-desc' => "Firefogg'un Toplu Yükleme iletişim kuralı",
 );
 

@@ -1883,8 +1883,8 @@ $messages['ja'] = array(
 	'group-oversight' => '秘匿者',
 	'group-oversight-member' => '秘匿者',
 	'grouppage-oversight' => '{{ns:project}}:秘匿者',
-	'right-oversight' => '秘匿前の版を閲覧する',
-	'right-hiderevision' => '指定した版を管理者から秘匿する',
+	'right-oversight' => 'Extension:Oversightを使用して前回秘匿された版を閲覧する',
+	'right-hiderevision' => 'Extension:Oversight を使用して指定した版を管理者から秘匿する',
 	'hiderevision-prompt' => '秘匿する特定版ID:',
 	'hiderevision-continue' => '続行',
 	'hiderevision-text' => "これは、'''以下の場合に限って'''使用すべきです：
@@ -2993,6 +2993,7 @@ Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
@@ -3002,8 +3003,8 @@ $messages['pms'] = array(
 	'group-oversight' => 'Oversighter',
 	'group-oversight-member' => 'oversight',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Varda na vërsion precedenta stërmà con Extension:Oversight',
-	'right-hiderevision' => "Stërma le revision a j'aministrador con Extension:Oversight",
+	'right-oversight' => 'Vëdde na version precedenta stërmà con Extension:Oversight',
+	'right-hiderevision' => "Stërmé dle revision a j'aministrator con Extension:Oversight",
 	'hiderevision-prompt' => 'Nùmer ëd revision da gavé:',
 	'hiderevision-continue' => 'Tiré anans',
 	'hiderevision-text' => "Sòn a dovéia dovresse '''mach''' an cas che a-i sia:
@@ -3272,7 +3273,7 @@ $messages['ru'] = array(
 	'grouppage-oversight' => '{{ns:project}}:Ревизоры',
 	'right-oversight' => 'просмотр ранее скрытой правки с помощью Extension:Oversight',
 	'right-hiderevision' => 'сокрытие версий страниц от администраторов с помощью Extension:Oversight',
-	'hiderevision-prompt' => 'Номер правки, которую требуется скрыть:',
+	'hiderevision-prompt' => 'Номер версии для удаления:',
 	'hiderevision-continue' => 'Продолжить',
 	'hiderevision-text' => "Данная страница должна использоваться '''только''' в следующих случаях:
 * разглашение личной информации 
@@ -3285,7 +3286,7 @@ $messages['ru'] = array(
 	'hiderevision-submit' => 'Скрыть данные',
 	'hiderevision-tab' => 'Скрыть правку',
 	'hiderevision-link' => 'скрытый вклад участника',
-	'hiderevision-norevisions' => 'Не были указаны версии, которые следует скрыть.',
+	'hiderevision-norevisions' => 'Не было указано версий для удаления.',
 	'hiderevision-noreason' => 'Вы должны написать причину сокрытия.',
 	'hiderevision-status' => 'Версия №$1: $2',
 	'hiderevision-success' => 'Успешно заархивирована и скрыта.',

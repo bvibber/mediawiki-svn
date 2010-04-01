@@ -438,6 +438,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'whosonline' => 'څوک پرليکه دي؟',
+	'whosonline-desc' => 'غونډال کې د پرليکه شوو کارنانو او ورکنومو کارنانو  [[Special:WhosOnline|يو لړليک]] ښکاره کوي',
 );
 
 /** Portuguese (Português)

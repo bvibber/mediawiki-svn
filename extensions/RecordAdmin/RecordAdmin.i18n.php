@@ -1685,11 +1685,17 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'recordadmin-select' => 'ټاکل',
+	'recordadmin-submit' => 'سپارل',
+	'recordadmin-createsuccess' => '$1 جوړ شو',
 	'recordadmin-buttonsearch' => 'پلټنه',
 	'recordadmin-buttoncreate' => 'جوړول',
+	'recordadmin-searchresult' => 'د پلټنې پايلې',
 	'recordadmin-buttonsave' => 'خوندي کول',
+	'recordadmin-createlink' => 'يو جوړول',
 	'recordadmin-viewlink' => 'کتل',
 	'recordadmin-editlink' => 'سمول',
+	'recordadmin-created' => 'جوړ شوي',
+	'recordadmin-modified' => 'بدلېدلي',
 	'recordadmin-actions' => 'کړنې',
 );
 

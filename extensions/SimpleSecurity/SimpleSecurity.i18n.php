@@ -799,6 +799,14 @@ $messages['pms'] = array(
 	'security-restricttogroup' => 'Vëdde contnù riservà ai mèmber ëd "$1"',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'security-type-category' => 'وېشنيزه',
+	'security-type-namespace' => 'نوم-تشيال',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Indech

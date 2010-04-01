@@ -1900,6 +1900,7 @@ Sgnaca ël boton sota për iscrivte.',
 $messages['ps'] = array(
 	'povwatch_invalid_title' => 'ستاسې ځانګړی شوی سرليک سم نه وو',
 	'povwatch_title' => 'سرليک:',
+	'povwatch_subscribe' => 'ونډه جوړول',
 );
 
 /** Portuguese (Português)

@@ -1753,6 +1753,7 @@ Për salvé un sondagi, ch'a lo spedissa sensa arsponde a gnun-e custion ëd pro
  */
 $messages['ps'] = array(
 	'qp_vote_button' => 'رايه ورکول',
+	'qp_source_link' => 'سرچينه',
 	'qp_users_link' => 'کارنان',
 );
 

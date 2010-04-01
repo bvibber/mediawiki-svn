@@ -2876,6 +2876,10 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'tasks' => 'دندې',
+	'tasks_tab' => 'دندې',
+	'tasks_form_new' => 'يوه نوې دنده پيلول',
+	'tasks_noone' => 'هېڅوک',
 	'tasks_delete' => 'ړنګول',
 	'tasks_here' => 'دلته',
 	'tasks_help_page' => 'دندې',

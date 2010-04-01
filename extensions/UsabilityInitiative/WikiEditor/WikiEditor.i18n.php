@@ -190,10 +190,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikieditor' => 'FUZZY!!! Interfaz avanzada de edición de Wikitexto',
+	'wikieditor' => 'Interfaz avanzada de edición de wikitexto',
 	'wikieditor-desc' => 'Provee de una interfaz extensible de edición de wikitexto y varios módulos que ofrecen características',
 	'wikieditor-wikitext-tab' => 'Wikitexto',
 	'wikieditor-loading' => 'Cargando',

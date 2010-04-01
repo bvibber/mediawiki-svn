@@ -1439,6 +1439,7 @@ $messages['ps'] = array(
 	'createsigndoc-extaddress' => 'ښار، ايالت، هېواد:',
 	'createsigndoc-phone' => 'د ټيليفون شمېره:',
 	'createsigndoc-bday' => 'د زېږون نېټه:',
+	'createsigndoc-introtext' => 'پېژندنه:',
 	'createsigndoc-hidden' => 'پټ',
 	'createsigndoc-create' => 'جوړول',
 );

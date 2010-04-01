@@ -144,11 +144,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
 	'vector' => 'Mejoras de interfaz de usuario para Vector',
-	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del aspecto Vector.',
+	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
 );
 
 /** Finnish (Suomi)

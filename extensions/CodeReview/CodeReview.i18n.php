@@ -2321,6 +2321,7 @@ $3',
  * @author Imre
  * @author McDutchie
  * @author Omnipaedista
+ * @author Pertile
  * @author Remember the dot
  * @author Sanbec
  * @author Translationista
@@ -2339,9 +2340,11 @@ $messages['es'] = array(
 	'code-prop-changes' => 'Registro de estatus y etiquetado',
 	'code-desc' => "[[Special:Code|Herramienta de revisión de código]] con [[Special:RepoAdmin|apoyo de ''Subversion'']]",
 	'code-no-repo' => '¡No está configurado el repositorio!',
+	'code-repo-not-found' => 'Repositorio <b>$1</b> no existe!',
 	'code-load-diff' => 'Cargando diferencias...',
 	'code-notes' => 'comentarios recientes',
 	'code-statuschanges' => 'cambios de status',
+	'code-mycommits' => 'mis publicaciones',
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
@@ -2393,6 +2396,7 @@ $messages['es'] = array(
 	'code-rev-diff-link' => 'dif',
 	'code-rev-diff-too-large' => 'El diff es demasiado grande para ser mostrado.',
 	'code-rev-purge-link' => 'purgar',
+	'code-rev-total' => 'Número total de resultados: $1',
 	'code-status-new' => 'nuevo',
 	'code-status-fixme' => 'arréglame',
 	'code-status-reverted' => 'revertido',
@@ -2402,6 +2406,10 @@ $messages['es'] = array(
 	'code-status-deferred' => 'diferido',
 	'code-pathsearch-legend' => 'Buscar revisiones en este repositorio por ruta',
 	'code-pathsearch-path' => 'Ruta:',
+	'code-pathsearch-filter' => 'Filtro aplicado:',
+	'code-revfilter-cr_status' => 'Status= $1',
+	'code-revfilter-cr_author' => 'Autor= $1',
+	'code-revfilter-clear' => 'Limpiar filtro',
 	'code-rev-submit' => 'Guardar cambios',
 	'code-rev-submit-next' => 'Guardar y siguiente sin resolver',
 	'code-batch-status' => 'Cambiar estado:',

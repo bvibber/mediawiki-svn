@@ -3551,8 +3551,15 @@ $messages['ps'] = array(
 	'sign-viewfield-phone' => 'ټيليفون',
 	'sign-viewfield-email' => 'برېښليک',
 	'sign-viewfield-age' => 'عمر',
+	'sign-viewfield-options' => 'خوښنې',
 	'sign-signatures' => 'لاسليکونه',
+	'sign-viewsignatures' => 'لاسليکونه کتل',
+	'sign-closed' => 'تړل شوی',
 	'sig-anonymous' => '<i>ورکنومی</i>',
+	'sign-uniquequery-similarname' => 'ورته نوم',
+	'sign-uniquequery-similaraddress' => 'ورته پته',
+	'sign-uniquequery-similarphone' => 'ورته ټيليفون',
+	'sign-uniquequery-similaremail' => 'ورته برېښليک',
 );
 
 /** Portuguese (Português)

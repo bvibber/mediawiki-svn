@@ -632,7 +632,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'inspectcache' => 'Tëschespäicher iwwerpréifen',
-	'inspectcache-ok' => 'Lass',
+	'inspectcache-general' => 'Allgemengen Tëschespäicher (cache)',
+	'inspectcache-parser' => 'Parser-Tëschespäicher',
 	'inspectcache-message' => 'Tëschespäicher (Cache) vun de Messagen',
 	'inspectcache-get' => 'Kréien',
 	'inspectcache-delete' => 'Läschen',
