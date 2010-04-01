@@ -49,7 +49,9 @@ class ApiQueryStories extends ApiQueryBase {
 		$this->addTables( 'storyboard' );
 		$this->addFields( array(
 			'story_id',
+			'story_author_id',
 			'story_author_name',
+			'story_author_image',
 			'story_title',
 			'story_text',
 			'story_created'
@@ -91,6 +93,7 @@ class ApiQueryStories extends ApiQueryBase {
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
 				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
+				'imageurl' => $story->story_author_image
 			);
 			ApiResult::setContent( $res, ( is_null( $story->story_text ) ? '' : $story->story_text ) );
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );

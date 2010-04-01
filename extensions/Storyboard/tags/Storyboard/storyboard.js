@@ -83,14 +83,15 @@
 				) //TODO
 				.appendTo( $header );
 			
-			$storyBody.append( $( "<div />" ).addClass( "story-text" )
-				.text( story["*"] )
-				.prepend( $( "<img />" )
-					// TODO: replace by wgScriptPath + path/to/scropped/img
-					.attr( "src", "http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png" )
-					.addClass( "story-image" )
-				)
-			);
+			var textAndImg = $( "<div />" ).addClass( "story-text" ).text( story["*"] );
+			
+			if ( story.imageurl ) {
+				textAndImg.prepend(
+					$( "<img />" ).attr( "src", story.imageurl ).addClass( "story-image" )
+				);
+			}
+			
+			$storyBody.append( textAndImg );
 			
 			// TODO: add delete button that hides the story from the storyboard (=unpublish+hide?)
 			
