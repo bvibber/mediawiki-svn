@@ -115,12 +115,12 @@ class NaturalLanguageList {
 	public $mArgs;	
 	private $mSeparator = null;
 	private $mOptions = array(
-		'fieldsperitem' => -1,		# size of pairs
-		'duplicates' => true,		# allow same elements to appear
-		'blanks' => false,			# allow blank elements to appear
-		'itemoutput' => null,		# the format for each element
-		'outputseparator' => null,	# the separator between output elements
-		'lastseparator' => null,	# the separator between the last two elements
+		'fieldsperitem' => -1,     # size of pairs
+		'duplicates' => true,      # allow same elements to appear
+		'blanks' => false,         # allow blank elements to appear
+		'itemoutput' => null,      # the format for each element
+		'outputseparator' => null, # the separator between output elements
+		'lastseparator' => null,   # the separator between the last two elements
 	);
 	private $mReaditems = array();
 	public $mParams = array();
@@ -169,7 +169,7 @@ class NaturalLanguageList {
 	/**
 	 * Create $this->mParams from $this->mReaditems using $this->mOptions.
 	 *
-	 * @param $separator [default:null] Input separator (e.g. ',')
+	 * @param $separator String [default:null] Input separator (e.g. ',')
 	 */
 	private function readArgs( $separator=null ) {
 		$items = array(); # array of args to include
@@ -202,7 +202,7 @@ class NaturalLanguageList {
 	 * Create $this->mOptions and $this->mReaditems from $this->mArgs using $this->mFrame.
 	 *
 	 * @param $ignorefirst boolean Ignore first element in case of {{#rawlist:}}
-	 * @param $separator [default:null] Input separator
+	 * @param $separator String [default:null] Input separator
 	 */
 	private function readOptions ( $ignorefirst, $separator=null ) {
  		$args = $this->mArgs;
@@ -277,9 +277,9 @@ class NaturalLanguageList {
 	 * If it is, then it handles the option (and applies it).
 	 * If it isn't, then it just returns the string it found. 
 	 *
-	 * @param $arg Argument
-	 * @param $separator Input separator
-	 * @return Return string if element, else return false
+	 * @param $arg String Argument
+	 * @param $separator String [default:null] Input separator
+	 * @return String if element, else return false
 	 */
 	private function handleInputItem( $arg, $separator=null ) {
 		if ( $arg instanceof PPNode_DOM ) {
@@ -334,7 +334,7 @@ class NaturalLanguageList {
 	/**
 	 * Using magic to store all known names for each option
 	 *
-	 * @param $input string
+	 * @param $input String
 	 * @return The option found; otherwise false
 	 */
 	private static function parseOptionName( $value ) {
@@ -360,9 +360,9 @@ class NaturalLanguageList {
 	/**
 	 * Insert a new element into an array.
 	 *
-	 * @param $array The array in question
-	 * @param $value The element to be inserted
-	 * @param $separator [default:null] Input separator
+	 * @param $array Array The array in question
+	 * @param $value Mixed The element to be inserted
+	 * @param $separator String [default:null] Input separator
 	 */
 	private static function parseArrayItem( &$array, $value, $separator=null ) {
 		# if no separator, just assume the value can be appended,
@@ -382,7 +382,7 @@ class NaturalLanguageList {
 	 * Parse numeral
 	 *
 	 * @param $value Integer
-	 * @param $default [default:1] Integer
+	 * @param $default Integer [default:1]
 	 * @return The integer if integer and above 0, otherwise $default
 	 */
 	private static function parseNumeral( $value, $default = 1 ) {
@@ -396,7 +396,7 @@ class NaturalLanguageList {
 	 * Parse string
 	 *
 	 * @param $value String
-	 * @param $default [default:null] String
+	 * @param $default String [default:null]
 	 * @return The string, if none found, return $default
 	 */
 	private static function parseString( $value, $default = null ) {
