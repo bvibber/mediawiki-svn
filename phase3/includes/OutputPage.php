@@ -218,7 +218,7 @@ class OutputPage {
 		global $wgDebugJavaScript, $wgJSAutoloadClasses, $IP,
 				$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath;
 
-		$path = jsScriptLoader::getJsPathFromClass( $jsClass );
+		$path = jsScriptLoader::getPathFromClass( $jsClass );
 
 		if( $path !== false ){
 			if( $wgEnableScriptLoader ) {
@@ -312,7 +312,7 @@ class OutputPage {
 				}else{
 					// Check for file modified time:
 					if( $wgScriptModifiedFileCheck ) {
-						$jsPath =  jsScriptLoader::getJsPathFromClass( $class );
+						$jsPath =  jsScriptLoader::getPathFromClass( $class );
 						if( $jsPath ) {
 							$cur_ftime = filemtime ( $IP ."/". $jsPath );
 							if( $cur_ftime > $ftime )
