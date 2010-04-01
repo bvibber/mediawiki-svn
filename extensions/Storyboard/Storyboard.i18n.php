@@ -29,7 +29,13 @@ $messages['en'] = array(
 	'storyboard-cantedit' => 'You are not allowed to edit stories.',
 	'storyboard-canedit' => 'You can $1 and publish this story.',
 	'storyboard-ispublished' => 'This story has been published and is publicly visible.',
-	'storyboard-ishidden' => 'This story has been hidden from the story review interface.', 
+	'storyboard-ishidden' => 'This story has been hidden from the story review interface.',
+	'storyboard-createdandmodified' => 'Created on $1 and last modified on $2',
+	'storyboard-authorname' => 'Author name',
+	'storyboard-authorlocation' => 'Author location',
+	'storyboard-authoroccupation' => 'Author occupation',
+	'storyboard-authorcontact' => 'Author contact information',
+	'storyboard-thestory' => 'The story',
 
 	// Story review
 	'storyreview' => 'Story review',
@@ -45,7 +51,7 @@ $messages['en'] = array(
 	'storyboard-yourname' => 'Your name',
 	'storyboard-location' => 'Your location',
 	'storyboard-occupation' => 'Your occupation',
-	'storyboard-story' => "Your story",
+	'storyboard-story' => 'Your story',
 	'storyboard-photo' => 'Have a photo of yourself? Why not share it?',
 	'storyboard-contact' => 'Your E-mail address or telephone number',
 	'storyboard-storytitle' => 'A short, descriptive title',

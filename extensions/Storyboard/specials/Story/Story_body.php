@@ -27,6 +27,7 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			if ( $wgUser->isAllowed( 'storyreview' ) ) {
+				// If the user is allowed to actually modify the story, save it.
 				$this->saveStory();
 				
 				// Redirect the user when the redirect parameter is set.
@@ -35,6 +36,7 @@ class SpecialStory extends IncludableSpecialPage {
 					$wgOut->redirect( $titleObj->getFullURL() );					
 				}
 			} else {
+				// If the user is not allowed to modify stories, show an error.
 				$wgOut->addWikiMsg( 'storyboard-cantedit' );
 			}
 		}
@@ -82,6 +84,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'story_title',
 				'story_text',
 				'story_created',
+				'story_modified',
 				'story_is_published',
 				'story_is_hidden',
 			),
@@ -157,7 +160,7 @@ EOT
 	 * TODO: confirm with erik that author info should be editable here
 	 */	
 	private function showStoryForm( $story ) {
-		global $wgOut, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );
@@ -174,26 +177,33 @@ EOT
 		
 		$formBody = "<table width='$width'>";
 		
-		$defaultName = '';
+		$formBody .= '<tr><td colspan="2">' . 
+			wfMsgExt(
+				'storyboard-createdandmodified',
+				'parsemag',
+				$wgLang->timeanddate( $story->story_created ),
+				$wgLang->timeanddate( $story->story_modified )
+			) . 
+			'</td></tr>';		
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-yourname' ) ) .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
 			'<td>' .
 			Html::input( 'name', $story->story_author_name, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-location' ) ) .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorlocation' ) ) .
 			'<td>' . Html::input( 'location', $story->story_author_location, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-occupation' ) ) .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authoroccupation' ) ) .
 			'<td>' . Html::input( 'occupation', $story->story_author_occupation, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-contact' ) ) .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorcontact' ) ) .
 			'<td>' . Html::input( 'contact', $story->story_author_contact, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 			
@@ -203,7 +213,7 @@ EOT
 			) . '</td></tr>';
 		
 		$formBody .= '<tr><td colspan="2">' .
-			wfMsg( 'storyboard-story' ) .
+			wfMsg( 'storyboard-thestory' ) .
 			Html::element(
 				'div',
 				array( 'class' => 'storysubmission-charcount', 'id' => 'storysubmission-charlimitinfo' ),
@@ -255,7 +265,16 @@ EOT
 			$formBody
 		);		
 		
-		$wgOut->addHTML( $formBody );		
+		$wgOut->addHTML( $formBody );
+		
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {		
+		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
+	}
+);
+EOT
+		);
 	}
 	
 	/**
