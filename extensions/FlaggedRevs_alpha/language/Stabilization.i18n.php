@@ -496,7 +496,7 @@ Setu an arventennoù red eus [[:$1|$1]] :",
 	'stabilization-leg' => 'Kadarnaat arventennoù ar stumm embannet',
 	'stabilization-select' => 'kentwir diuzadur ar stumm embannet',
 	'stabilization-select2' => 'An adweladenn ziwezhañ bet gwiriet',
-	'stabilization-def1' => "Ar stumm embannet ; ma n'eus hini ebet, lakaat ar stumm red pe ar brouilhed",
+	'stabilization-def1' => 'Ar stumm embannet ma vez; a-hend-all lakaat ar stumm red pe ar brouilhed',
 	'stabilization-def2' => 'Ar stumm red pe ar brouilhed',
 	'stabilization-restrict' => 'Strishadurioù adlenn/adlenn emgefre',
 	'stabilization-restrict-none' => 'Strishadurioù ouzhpenn ebet',
@@ -848,8 +848,8 @@ $messages['eo'] = array(
 	'stabilization-text' => "'''Ŝanĝu la jenajn agordojn por modifi kiel la publikigita versio de [[:\$1|\$1]] estas elektita kaj montrita.'''
 
 Notu: ŝanĝante la konfiguro ''elekto de stabila versio'' por preferi \"bonkvalita\" aŭ \"netega\" revizioj defaŭlte ne efikos se ne ekzistas tiaj versioj. Ankaŭ, notu ke '''bonkvalita''' versio estas ankaŭ konsiderata kiel '''kontrolita''' versio, ktp.",
-	'stabilization-perm' => 'Via konto ne rajtas ŝanĝi la konfiguron de stabila versio.
-Jen la nunaj preferoj por [[:$1|$1]]:',
+	'stabilization-perm' => 'Via konto ne rajtas ŝanĝi la konfiguron de publikigita versio.
+Jen la nunaj agordoj por [[:$1|$1]]:',
 	'stabilization-page' => 'Paĝnomo:',
 	'stabilization-leg' => 'Konfirmi agordojn de publikigitaj versioj',
 	'stabilization-select' => 'Elektita prioritato de publikigita versio',
@@ -885,31 +885,33 @@ Neniu konfiguro eblas.',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Drini
  * @author Imre
  * @author Kobazulo
+ * @author Manuelt15
+ * @author Peter17
  * @author Sanbec
  * @author Translationista
  */
 $messages['es'] = array(
 	'stabilization-tab' => 'vetar',
 	'stabilization' => 'Estabilización de página',
-	'stabilization-text' => "'''Cambiar las configuraciones de abajo para ajustar como la versión estable de [[:\$1|\$1]] es seleccionada y mostrada.'''
+	'stabilization-text' => "'''Cambiar las configuraciones de abajo para ajustar cómo la versión estable de [[:\$1|\$1]] es seleccionada y mostrada.'''
 
-Cuando cambie la configuración de ''selección de versión publicada'' para usar revisiones de \"calidad\" o \"prístina\" predeterminadamente,
-asegúrese de verificar si hay realmente tales revisiones en la página; de lo contrario, surtirá poco efecto.",
+'''Nota:''' Al cambiar la ''selección de versión publicada'' para usar revisiones de \"calidad\" o \"prístina\" esto no tendrá efecto si no existe tal versión. Además, nota que una versión de \"calidad\" es también considerada una versión \"revisada\" y viceversa.",
 	'stabilization-perm' => 'Su cuenta no tiene permiso para cambiar la configuración de la versión publicada.
 La configuración actual es [[:$1|$1]]:',
 	'stabilization-page' => 'Nombre de la página:',
 	'stabilization-leg' => 'Confirmar la configuración de la versión publicada',
 	'stabilization-select' => 'Precedencia de selección de versión publicada',
 	'stabilization-select1' => 'La última revisión de calidad; si no está presente, entonces la última observada',
-	'stabilization-select2' => 'La última versión verificada, a pesar del nivel de validación',
+	'stabilization-select2' => 'Última versión verificada',
 	'stabilization-select3' => 'La última revisión prístina; si no está presente, entonces la última de calidad u observada',
 	'stabilization-def' => 'Revisión mostrada en la vista de página por defecto',
 	'stabilization-def1' => 'La revisión publicada; si no está presente, entonces la actual/borrador',
 	'stabilization-def2' => 'La revisión actual/borrador',
-	'stabilization-restrict' => 'Restricciones de autorevisión',
+	'stabilization-restrict' => 'Restricciones de revisión/autorevisión',
 	'stabilization-restrict-none' => 'Sin restricciones extra',
 	'stabilization-submit' => 'Confirmar',
 	'stabilization-notexists' => 'No hay una página llamada "[[:$1|$1]]".
@@ -930,7 +932,7 @@ La configuración no es posible.',
 	'stabilize_expiry_invalid' => 'La fecha de caducidad no es válida.',
 	'stabilize_expiry_old' => 'Este tiempo de expiración ya ha pasado',
 	'stabilize-expiring' => 'caduca el $1 (UTC)',
-	'stabilization-review' => 'Revisar la versión actual',
+	'stabilization-review' => 'Marcar la versión actual verificada',
 );
 
 /** Estonian (Eesti)
@@ -2485,21 +2487,21 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'stabilization-tab' => 'Widoczne wersje strony',
 	'stabilization' => 'Widoczna wersja strony',
-	'stabilization-text' => "'''Ustaw poniżej, w jaki sposób ma być wybierana i wyświetlana oznaczona wersja strony [[:$1|$1]].'''
+	'stabilization-text' => "'''Ustaw poniżej, w jaki sposób ma być wybierana i wyświetlana opublikowana wersja strony [[:$1|$1]].'''
 
-Po zmianie sposobu ''wyboru wersji oznaczonej'', aby korzystała domyślnie z wersji „zweryfikowanej” lub „nienaruszonej” należy się upewnić, że strona posiada tego typu wersje, w przeciwnym wypadku zmiana przyniesie niewielki skutek.",
-	'stabilization-perm' => 'Nie masz wystarczających uprawnień, by zmienić konfigurację wersji oznaczonych.
+'''Uwaga''' Po zmianie sposobu ''wyboru wersji opublikowanej'', aby preferowała domyślnie wersję „zweryfikowaną” lub „sprzed zmian” należy się upewnić, że strona posiada tego typu wersje, w przeciwnym wypadku zmiana nie da żadnego efektu. Zauważ, że wersja „zweryfikowana” jest również uznawana za „oznaczoną” itd.",
+	'stabilization-perm' => 'Nie masz wystarczających uprawnień, aby zmienić konfigurację wersji opublikowanej.
 Aktualne ustawienia dla strony [[:$1|$1]]:',
 	'stabilization-page' => 'Nazwa strony:',
 	'stabilization-leg' => 'Zatwierdź konfigurację wersji opublikowanej',
 	'stabilization-select' => 'Pierwszeństwo wyboru wersji opublikowanej',
 	'stabilization-select1' => 'Ostatnia wersja zweryfikowana, a jeśli nie istnieje, to ostatnia wersja przejrzana',
-	'stabilization-select2' => 'Ostatnia wersja oznaczona, niezależnie od poziomu oznaczenia',
+	'stabilization-select2' => 'Ostatnia wersja oznaczona',
 	'stabilization-select3' => 'Ostatnia nienaruszona wersja, a jeśli nie istnieje, to ostatnia wersja zweryfikowana lub przejrzana',
 	'stabilization-def' => 'Wersja strony wyświetlana domyślnie',
-	'stabilization-def1' => 'Wersja oznaczona, a jeśli nie istnieje, to wersja bieżąca lub robocza',
+	'stabilization-def1' => 'Wersja opublikowana, a jeśli nie istnieje, to wersja bieżąca lub robocza',
 	'stabilization-def2' => 'Wersja bieżąca lub robocza',
-	'stabilization-restrict' => 'Ograniczenia automatycznego przeglądania',
+	'stabilization-restrict' => 'Ograniczenia ręcznego i automatycznego przeglądania',
 	'stabilization-restrict-none' => 'Brak dodatkowych ograniczeń',
 	'stabilization-submit' => 'Potwierdź',
 	'stabilization-notexists' => 'Brak strony zatytułowanej „[[:$1|$1]]”. Nie jest możliwa jej konfiguracja.',
@@ -2515,7 +2517,7 @@ Nie jest możliwa jej konfiguracja.',
 	'stabilization-sel-short-2' => 'Nienaruszona',
 	'stabilization-def-short' => 'Domyślna',
 	'stabilization-def-short-0' => 'Bieżąca',
-	'stabilization-def-short-1' => 'Oznaczona',
+	'stabilization-def-short-1' => 'Opublikowana',
 	'stabilize_expiry_invalid' => 'Nieprawidłowa data wygaśnięcia.',
 	'stabilize_expiry_old' => 'Czas wygaśnięcia już upłynął.',
 	'stabilize-expiring' => 'wygasa $1 (UTC)',
@@ -3315,19 +3317,19 @@ $messages['tr'] = array(
 	'stabilization' => 'Sayfa kararlılaştırılması',
 	'stabilization-text' => "'''[[:\$1|\$1]] için yayımlanmış sürümün nasıl seçilip görüntüleneceğini ayarlamak için ayarları değiştirin.'''
 
-Varsayılan olarak \"kalite\" ya da \"asıl\" revizyonlarını kullanmak için ''yayımlanmış sürüm seçimi'' yapılandırmasını değiştirirken, sayfada böyle revizyonların olduğunu kontrol ettiğinize emin olun, aksi halde değişikliğin etkisi küçük olacaktır.",
+'''Not:''' ''yayımlanmış sürüm seçimi'' \"kalite\" ya da \"asıl\" sürüm olarak değiştirmek, böyle bir sürüm yoksa etkisiz olacaktır. Ayrıca, unutmayın ki bir \"kaliteli\" sürüm aynı zamanda \"kontrol edilmiş\" sürüm sayılır, vesaire.",
 	'stabilization-perm' => 'Hesabınızın yayımlanmış sürüm yapılandırmasını değiştirmeye izni yok.
 [[:$1|$1]] için şuanki ayarlar:',
 	'stabilization-page' => 'Sayfa adı:',
 	'stabilization-leg' => 'Yayımlanmış sürüm ayarlarını onayla',
 	'stabilization-select' => 'Yayımlanmış sürüm seçim önceliği',
 	'stabilization-select1' => 'En son kaliteli revizyon; eğer yoksa, en son gözlenmiş olan',
-	'stabilization-select2' => 'En son gözden geçirilmiş revizyon, doğrulama seviyesine bakmaksızın',
+	'stabilization-select2' => 'En son kontrol edilen revizyon',
 	'stabilization-select3' => 'En son bozulmamış revizyon; eğer yoksa, en son kaliteli ya da gözlenmiş olan',
 	'stabilization-def' => 'Varsayılan sayfa görünümünde gösterilen revizyon',
 	'stabilization-def1' => 'Yayımlanmış revizyon; eğer yoksa, halihazırda bulunan/karalama',
 	'stabilization-def2' => 'Şu anki revizyon/karalama',
-	'stabilization-restrict' => 'Oto-inceleme kısıtlamaları',
+	'stabilization-restrict' => 'İnceleme/oto-inceleme kısıtlamaları',
 	'stabilization-restrict-none' => 'Başka ilave kısıtlama yok',
 	'stabilization-submit' => 'Tespit et',
 	'stabilization-notexists' => '"[[:$1|$1]]" adında bir sayfa yok.
@@ -3381,7 +3383,7 @@ $messages['uk'] = array(
 	'stabilization-def' => 'Версія, що показується за умовчанням',
 	'stabilization-def1' => 'Опублікована версія; якщо такої нема, то поточна/чорнова',
 	'stabilization-def2' => 'Поточна/чорнова версія',
-	'stabilization-restrict' => 'Обмеження рецензування/авто-рецензування',
+	'stabilization-restrict' => 'Обмеження рецензування/авторецензування',
 	'stabilization-restrict-none' => 'Без додаткових обмежень',
 	'stabilization-submit' => 'Підтвердити',
 	'stabilization-notexists' => 'Відсутня сторінка з назвою «[[:$1|$1]]».

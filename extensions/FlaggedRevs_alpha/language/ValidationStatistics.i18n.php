@@ -87,9 +87,10 @@ $messages['am'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
-	'validationstatistics' => 'إحصاءات التحقق',
+	'validationstatistics' => 'إحصاءات مراجعة الصفحة',
 	'validationstatistics-users' => "'''{{SITENAME}}''' بها حاليا '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|مستخدم|مستخدمون}} بصلاحية [[{{MediaWiki:Validationpage}}|محرر]].
 
 المحررون هم مستخدمون موثوقون يمكنهم التحقق من المراجعات للصفحات.",
@@ -389,20 +390,19 @@ Kararlı sürümler, sayfaların en az bir belirli kullanıcı tarafından kontr
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'validationstatistics' => 'Pógódnośeńska statistika',
-	'validationstatistics-users' => "'''{{SITENAME}}''' ma tuchylu '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|wužywarja|wužywarjowu|wužywarjow|wužywarjow}} z [[{{MediaWiki:Validationpage}}|pšawami wobźěłowarja]]
-a '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|wužywarja|wužywarjowu|wužywarjow|wužywarjow}} z [[{{MediaWiki:Validationpage}}|pšawami pśeglědowarja]].
+	'validationstatistics' => 'Statistika pśeglědowanja bokow',
+	'validationstatistics-users' => "'''{{SITENAME}}''' ma tuchylu '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|wužywarja|wužywarjowu|wužywarjow|wužywarjow}} z [[{{MediaWiki:Validationpage}}|pšawami wobźěłowarja]].
 
-Wobźěłowarje a pséglědowarje su etablěrowane wužiwarje, kótarež mógu wersije bokow pśeglědaś.",
+Wobźěłowarje su etablěrowane wužiwarje, kótarež mógu wersije bokow pśeglědaś.",
 	'validationstatistics-time' => "''Slědujuce daty su se $5 $6 slědny raz zaktualizěrowali.''
 
 Změny, kótarež su se pśekontrolowali wót etablěrowanych wužywarjow naglědaju se ako pśeglědane.
 
-Pśerězne cakanje za změny wót ''wužywarjow, kótarež njejsu pśizjawjone'', kótarež dej se pśeglědaś, jo '''$1'''; mediana gódnota jo '''$3'''.
+Pśerězne cakanje za změny wót ''njep´sizjawjonych wužywarjow'', kótarež dej se pśeglědaś, jo '''$1'''; mediana gódnota jo '''$3'''.
 $4
 Pśerězne wokomuźenje za [[Special:OldReviewedPages|boki z njepśeglědanymi změnami]] jo '''$2'''.
-Toś te boki maju se za ''zestarjone''. Teke boki maju se za ''synchronizěrowane'', jolic [[{{MediaWiki:Validationpage}}|stabilna wersija]] jo teke aktualna nacerjeńska wersija.
-Stabilna wersija boka jo nejnowša wersija, kótaraž jo se wobkšuśiła ako wersija, kótaraž se pó standarźe wšym cytarjam pokazujo.",
+Toś te boki maju se za ''zestarjone''. Teke boki maju se za ''synchronizěrowane'', jolic zm2ny njejsu, kótarež cakaju na pséglědanje.
+Wózjawjona wersija boka jo nejnowša wersija, kótaraž jo se pśizwóliła, aby se pokazała wšyknym cytarjam.",
 	'validationstatistics-table' => "Slěduju statistiki za kuždy mjenjowy rum, ''bźez'' dalejpósrědnjenjow.",
 	'validationstatistics-ns' => 'Mjenjowy rum',
 	'validationstatistics-total' => 'Boki',
@@ -476,11 +476,12 @@ Publikigita revizio de paĝo estas la plej nova revizio aprobita por montri al �
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  * @author Translationista
  */
 $messages['es'] = array(
-	'validationstatistics' => 'Estadísticas de validación',
+	'validationstatistics' => 'Estadísticas de revisión de páginas',
 	'validationstatistics-users' => "En '''{{SITENAME}}''' actualmente hay '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|usuario|usuarios}} con derechos de [[{{MediaWiki:Validationpage}}|Editor]].
 Los editores son usuarios establecidos que pueden verificar las revisiones de las páginas.",
 	'validationstatistics-time' => "''Los siguientes datos fueron actualizados por última vez en $5 en $6.''
@@ -1048,6 +1049,13 @@ $messages['km'] = array(
 	'validationstatistics-old' => 'ហួសសម័យ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'validationstatistics-total' => 'ಪುಟಗಳು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772
@@ -1382,7 +1390,7 @@ $messages['pdc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'validationstatistics' => 'Statystyki oznaczania',
+	'validationstatistics' => 'Statystyka oznaczania stron',
 	'validationstatistics-users' => "W '''{{GRAMMAR:MS.lp|{{SITENAME}}}}''' zarejestrowanych jest obecnie  '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|użytkownik|użytkowników}} z uprawnieniami [[{{MediaWiki:Validationpage}}|redaktora]].
 
 Redaktorzy są doświadczonymi użytkownikami, którzy mogą oznaczać dowolne wersje stron.",

@@ -115,7 +115,7 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'stablepages' => "Pajennoù oc'h implijout kadarnadur ar c'hemmoù",
 	'stablepages-text' => "A-is ez eus ur roll pajennoù kefluniet gant an dorn evit na vefe diskouezet d'al lennerien nemet ar stumm embannet da bajenn danvez enni, dre ziouer.",
-	'stablepages-none' => "N'eus pajenn ebet er roll-mañ",
+	'stablepages-none' => "N'eus pajenn ebet er roll-mañ.",
 	'stablepages-config' => 'Kefluniañ',
 );
 
@@ -208,11 +208,12 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Translationista
  */
 $messages['es'] = array(
-	'stablepages' => 'Páginas estables',
-	'stablepages-text' => 'Debajo hay una lista de páginas configuradas  manualmente para mostrar a los lectores la versión publicada como la página de contenido predeterminada.',
+	'stablepages' => 'Páginas usando aprobación para la edición',
+	'stablepages-text' => 'Debajo se muestra una lista de páginas que están restringidas de modo que sólo determinados usuarios pueden realizar ediciones que no necesitan revisión posterior. Dichas ediciones no son publicadas hasta que un usuario revisor autorizado las revise.',
 	'stablepages-none' => 'No hay páginas en esta lista',
 	'stablepages-config' => 'Configuración',
 );
@@ -554,8 +555,8 @@ $messages['oc'] = array(
  * @author ToSter
  */
 $messages['pl'] = array(
-	'stablepages' => 'Strony z domyślnie pokazywaną wersją oznaczoną',
-	'stablepages-text' => 'Poniżej znajduje się lista stron skonfigurowanych tak, by domyślnie czytelnikom prezentowana była wersja oznaczona.',
+	'stablepages' => 'Strony wykorzystujące oznaczanie zmian',
+	'stablepages-text' => 'Poniżej znajduje się lista stron, które skonfigurowano tak, że tylko niektórzy użytkownicy mogą je edytować. Zmiany nie zostaną opublikowane do momentu oznaczenia ich przez uprawnionego użytkownika.',
 	'stablepages-none' => 'Brak stron na tej liście',
 	'stablepages-config' => 'Konfiguracja',
 );
@@ -717,8 +718,8 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
-	'stablepages' => 'Kararlı sayfalar',
-	'stablepages-text' => 'Aşağıdaki liste, okuyuculara geçerli sayfa içeriği olarak yayımlanmış sürümü gösterecek şekilde elle yapılandırılmış sayfaların listesidir.',
+	'stablepages' => 'Değişiklik onayı kullanan sayfalar',
+	'stablepages-text' => 'Aşağıdaki liste, sadece belirli kullanıcıların gözden geçirme gerektirmeyen değişiklikler yapabileceği kısıtlı sayfaların bir listesidir. Böyle değişiklikler yetkili bir kullanıcı gözden geçirmeden yayınlanmaz.',
 	'stablepages-none' => 'Bu listede hiç sayfa yok',
 	'stablepages-config' => 'Yapılandırma',
 );
