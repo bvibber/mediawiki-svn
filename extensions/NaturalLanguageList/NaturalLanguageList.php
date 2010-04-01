@@ -55,7 +55,7 @@ $wgHooks['ParserFirstCallInit'][] = 'NaturalLanguageList::onParserFirstCallInit'
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/nllParserTests.txt";
 
 class NaturalLanguageList {
-
+	
 	public static function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 
 			'list', 
@@ -69,7 +69,15 @@ class NaturalLanguageList {
 		);
 		return true;
 	}
-
+	
+	/**
+	 * Render {{#list:}}
+	 *
+	 * @param $parser Parser
+	 * @param $frame PPFrame_DOM
+	 * @param $args Array
+	 * @return wikicode parsed
+	 */
 	public static function render( $parser, $frame, $args ) {
 		if ( count( $args ) == 0 ) {
 			return '';
@@ -80,33 +88,39 @@ class NaturalLanguageList {
 
 		return $obj->outputList();
 	}
-
+	
+	/**
+	 * Render {{#rawlist:}}
+	 *
+	 * @param $parser Parser
+	 * @param $frame PPFrame_DOM
+	 * @param $args Array
+	 * @return wikicode parsed
+	 */
 	public static function renderRaw ( $parser, $frame, $args ) {
 		if ( count( $args ) == 0 ) {
 			return '';
 		}
-
-		$obj = new self( $parser, $frame, $args );
-		
+		$obj = new self( $parser, $frame, $args );	
+		# get separator between data
 		$separator = $obj->mArgs[0];
-		
-		$obj->readOptions( true, $separator );		
-		
+		$obj->readOptions( true, $separator );
 		$obj->readArgs( $separator );
 
 		return $obj->outputList();
 	}
+	
 	private $mParser;
 	private $mFrame;
 	public $mArgs;	
 	private $mSeparator = null;
 	private $mOptions = array(
-		'fieldsperitem' => -1,
-		'duplicates' => true,
-		'blanks' => false,
-		'itemoutput' => null,
-		'outputseparator' => null,
-		'lastseparator' => null,
+		'fieldsperitem' => -1,		# size of pairs
+		'duplicates' => true,		# allow same elements to appear
+		'blanks' => false,			# allow blank elements to appear
+		'itemoutput' => null,		# the format for each element
+		'outputseparator' => null,	# the separator between output elements
+		'lastseparator' => null,	# the separator between the last two elements
 	);
 	private $mReaditems = array();
 	public $mParams = array();
@@ -129,31 +143,41 @@ class NaturalLanguageList {
 	 */
 	private function outputList() {
 
-		// Convert each item from an array into a string according to the format.
+		# Convert each item from an array into a string according to the format.
 		$items = array_map( array( $this, 'formatOutputItem' ), $this->mParams );
 
-		// If there's only one item, there are no separators
+		# If there's only one item, there are no separators
 		if ( count( $items ) === 1 )
 			return $items[0];
 
-		// Otherwise remove the last from the list so that we can implode() the remainder
+		# Otherwise remove the last from the list so that we can implode() the remainder
 		$last = array_pop( $items );
 
 		return implode( $this->mOptions['outputseparator'], $items ) . $this->mOptions['lastseparator'] . $last;
 	}
 
-	// Format the input pairs that make up each output item using the given format
+	/**
+	 * Format the input pairs that make up each output item using the given format
+	 *
+	 * @param $pair array or string
+	 * @return string formatted output
+	 */
 	private function formatOutputItem( $pair ) {
 		return wfMsgReplaceArgs( $this->mOptions['itemoutput'], $pair );
 	}
 
 	/**
 	 * Create $this->mParams from $this->mReaditems using $this->mOptions.
+	 *
+	 * @param $separator [default:null] Input separator (e.g. ',')
 	 */
 	private function readArgs( $separator=null ) {
 		$items = array(); # array of args to include
 
-		$args = $this->mOptions['duplicates'] ? $this->mReaditems : array_unique( $this->mReaditems );
+		# strip read items of duplicate elements if not permitted
+		$args = $this->mOptions['duplicates'] 
+			? $this->mReaditems 
+			: array_unique( $this->mReaditems );
 
 		foreach ( $args as $arg ) {
 			if ( !$this->mOptions['blanks'] && $arg === '' )
@@ -161,13 +185,13 @@ class NaturalLanguageList {
 			self::parseArrayItem( $items, $arg, $separator );
 		}
 		
-		// Remove the ignored elements from the array
+		# Remove the ignored elements from the array
 		$items = array_diff( $items, $this->mIgnores );
 
-		// Split the array into smaller arrays, one for each output item.
+		# Split the array into smaller arrays, one for each output item.
 		$this->mParams = array_chunk( $items, $this->mOptions['fieldsperitem'] );
 
-		// Disgard any leftovers, hrm...
+		# Disgard any leftovers, hrm...
 		if ( count( end( $this->mParams ) ) != $this->mOptions['fieldsperitem'] ) {
 			array_pop( $this->mParams );
 		}
@@ -176,6 +200,9 @@ class NaturalLanguageList {
 
 	/**
 	 * Create $this->mOptions and $this->mReaditems from $this->mArgs using $this->mFrame.
+	 *
+	 * @param $ignorefirst boolean Ignore first element in case of {{#rawlist:}}
+	 * @param $separator [default:null] Input separator
 	 */
 	private function readOptions ( $ignorefirst, $separator=null ) {
  		$args = $this->mArgs;
@@ -206,7 +233,8 @@ class NaturalLanguageList {
 			$this->maxDollar = 1;
 			if ( $this->mOptions['itemoutput'] !== null ) {
 				# set $this->maxDollar to the maxmimum found
-				preg_replace_callback( '/\$([1-9][0-9]*)/', array( $this, 'callbackMaxDollar' ), 
+				preg_replace_callback( '/\$([1-9][0-9]*)/', 
+					array( $this, 'callbackMaxDollar' ), 
 				    $this->mOptions['itemoutput'] );
 			}
 			$this->mOptions['fieldsperitem'] = $this->maxDollar;
@@ -216,21 +244,28 @@ class NaturalLanguageList {
 		if ( $this->mOptions['outputseparator'] === null ) {
 
 			$this->mOptions['outputseparator'] = wfMsgNoTrans( 'nll-separator' );
-
+			
 			if ( $this->mOptions['lastseparator'] === null ) {
 				$this->mOptions['lastseparator'] = wfMsgNoTrans( 'nll-lastseparator' );
 			}
-
+		# set the last separator to the regular separator if the separator is
+		# set and the last separator isn't set specifically
 		} else if ( $this->mOptions['lastseparator'] === null ) {
 			$this->mOptions['lastseparator'] = $this->mOptions['outputseparator'];
 		}
-
+		
+		# use the default format if format not set
 		if ( $this->mOptions['itemoutput'] === null ) {
 			$this->mOptions['itemoutput'] = wfMsgNoTrans( 'nll-itemoutput' );
 		}
 	}
 
-	// Used to find the highest $n in a string
+	/**
+	 * Find the highest $n in a string
+	 *
+	 * @param $m Array (object, number)
+	 * @return object
+	 */
 	private function callbackMaxDollar( $m ) {
 		$this->maxDollar = max( $this->maxDollar, $m[1] );
 		return $m[0];
@@ -241,6 +276,10 @@ class NaturalLanguageList {
 	 * and decides whether it is an option or not.
 	 * If it is, then it handles the option (and applies it).
 	 * If it isn't, then it just returns the string it found. 
+	 *
+	 * @param $arg Argument
+	 * @param $separator Input separator
+	 * @return Return string if element, else return false
 	 */
 	private function handleInputItem( $arg, $separator=null ) {
 		if ( $arg instanceof PPNode_DOM ) {
@@ -292,6 +331,12 @@ class NaturalLanguageList {
 		return false;
 	}
 
+	/**
+	 * Using magic to store all known names for each option
+	 *
+	 * @param $input string
+	 * @return The option found; otherwise false
+	 */
 	private static function parseOptionName( $value ) {
 
 		static $magicWords = null;
@@ -307,20 +352,39 @@ class NaturalLanguageList {
 		if ( $name = $magicWords->matchStartToEnd( trim($value) ) ) {
 			return str_replace( 'nll_', '', $name );
 		}
-
+		
+		# blimey, so not an option!?
 		return false;
 	}
 	
+	/**
+	 * Insert a new element into an array.
+	 *
+	 * @param $array The array in question
+	 * @param $value The element to be inserted
+	 * @param $separator [default:null] Input separator
+	 */
 	private static function parseArrayItem( &$array, $value, $separator=null ) {
+		# if no separator, just assume the value can be appended,
+		# simple as that
 		if ( $separator === null ) {
 			$array[] = $value;
 		} else {
+			# else, let's break the value up and append
+			# each 'subvalue' to the array.
 			$tmp = explode ( $separator, $value );
 			foreach ( $tmp as $v )
 				$array[] = $v;
 		}
 	}
-
+	
+	/**
+	 * Parse numeral
+	 *
+	 * @param $value Integer
+	 * @param $default [default:1] Integer
+	 * @return The integer if integer and above 0, otherwise $default
+	 */
 	private static function parseNumeral( $value, $default = 1 ) {
 		if ( is_numeric( $value ) && $value > 0 ) {
 			return floor( $value ); # only integers
@@ -328,12 +392,25 @@ class NaturalLanguageList {
 		return $default;
 	}
 
+	/**
+	 * Parse string
+	 *
+	 * @param $value String
+	 * @param $default [default:null] String
+	 * @return The string, if none found, return $default
+	 */
 	private static function parseString( $value, $default = null ) {
 		if ( $value !== '' )
 			return $value;
 		return $default;
 	}
 
+	/** 
+	 * Parse boolean
+	 *
+	 * @param $value String
+	 * @return true if truth value found; otherwise false
+	 */
 	private static function parseBoolean( $value ) {
 		return in_array( $value, array( 1, true, '1', 'true' ), true );
 	}
