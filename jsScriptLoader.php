@@ -518,7 +518,7 @@ class jsScriptLoader {
 					$reqClass = preg_replace( "/[^A-Za-z0-9_\-\.]/", '', $reqClass );
 
 					$filePath = self::getPathFromClass( $reqClass );
-					if( !$jsFilePath ){
+					if( !$filePath ){
 						$this->errorMsg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
 					}else{
 						$this->jsFileList[ $reqClass ] = $filePath;
