@@ -48,6 +48,10 @@ $wgGroupPermissions['autoconfirmed']['poll-vote'] = true;
 $wgGroupPermissions['*']['poll-vote'] = false;
 $wgAvailableRights[] = 'poll-vote';
 
+// New right: poll-score
+$wgGroupPermissions['*']['poll-score'] = true;
+$wgAvailableRights[] = 'poll-score';
+
 $dir = dirname( __FILE__ ) . '/';
 
 // Infomation about the Special Page "Poll"
@@ -82,6 +86,9 @@ function efPollSchemaUpdates() {
 		$wgExtNewFields[] = array( 'poll_answer', 'user', "$base/archives/patch-user.sql" ); // Add user
 		$wgExtNewFields[] = array( 'poll_answer', 'vote_other', "$base/archives/patch-vote_other.sql" ); // Add vote_other
 		$wgExtNewFields[] = array( 'poll_answer', 'ip', "$base/archives/patch-answer-ip.sql" ); // Add ip
+		
+		// "poll_start_log"-Table: Time with last run of Poll::start()
+		$wgExtNewTables[] = array( 'poll_start_log', "$base/archives/Poll-start-log.sql" ); // Initial start_log tables
 	}
 	return true;
 }
