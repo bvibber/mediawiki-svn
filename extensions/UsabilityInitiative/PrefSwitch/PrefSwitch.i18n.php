@@ -76,7 +76,7 @@ Here's what we've recently launched:
 * Other new features:  We've also introduced a table wizard to make creating tables easier and find and a replace feature to simplify article editing.",
 	'prefswitch-main-on' => "
 ;Feedback?
-We've love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span>.
+We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span>.
 ;Take me back!
 If you would like to turn off the new features, please <span class=\"plainlinks\">[$2 click here]</span>.",
 	'prefswitch-main-off' => "
