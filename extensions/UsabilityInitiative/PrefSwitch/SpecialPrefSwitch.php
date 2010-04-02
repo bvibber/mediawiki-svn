@@ -101,40 +101,6 @@ class SpecialPrefSwitch extends SpecialPage {
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
-		/*
-		// Set page title
-		if ( self::isSwitchedOn( $wgUser ) ) {
-			switch ( $wgRequest->getVal( 'mode' ) ) {
-				case 'off':
-					// Just switched off
-					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-switched-off' ) );
-					break;
-				case 'feedback':
-					// Giving feedback
-					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-feedback' ) );
-					break;
-				case 'on':
-					// Just switched on, and reloaded... or something
-					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-switched-on' ) );
-					break;
-				default:
-					// About to switch off
-					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-on' ) );
-					break;
-			}
-		} else {
-			switch ( $wgRequest->getVal( 'mode' ) ) {
-				case 'on':
-					// Just switched on
-					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-switched-on' ) );
-					break;
-				default:
-					// About to switch on
-					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-off' ) );
-					break;
-			}
-		}
-		*/
 		// Handle various modes
 		if ( $wgRequest->getCheck( 'mode' ) && $wgUser->isLoggedIn() ) {
 			switch ( $wgRequest->getVal( 'mode' ) ) {
@@ -175,9 +141,46 @@ class SpecialPrefSwitch extends SpecialPage {
 		} else {
 			$this->render( 'main' );
 		}
+		// Always show a way back
 		$wgOut->addWikiMsgArray(
 			'prefswitch-return', array( $this->originFullUrl, $this->originTitle ), array( 'parse' )
 		);
+		// Set page title
+		if ( self::isSwitchedOn( $wgUser ) ) {
+			switch ( $wgRequest->getVal( 'mode' ) ) {
+				case 'off':
+					// About to switch off
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-off' ) );
+					break;
+				case 'feedback':
+					// Giving feedback
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-feedback' ) );
+					break;
+				case 'on':
+					// Just switched on, and reloaded... or something
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-switched-on' ) );
+					break;
+				default:
+					// About to switch off
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-on' ) );
+					break;
+			}
+		} else {
+			switch ( $wgRequest->getVal( 'mode' ) ) {
+				case 'on':
+					// About to switch on
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-switched-on' ) );
+					break;
+				case 'off':
+					// Just switched off
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-switched-off' ) );
+					break;
+				default:
+					// About to switch on
+					$wgOut->setPageTitle( wfMsg( 'prefswitch-title-on' ) );
+					break;
+			}
+		}
 	}
 	
 	/* Private Functions */
