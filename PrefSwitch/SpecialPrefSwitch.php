@@ -201,7 +201,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					'method' => 'post',
 					'action' => $this->getTitle()->getLinkURL( $query ),
 					'class' => 'prefswitch-survey',
-					'id' => "prefswitch-survey-{$name}",
+					'id' => "prefswitch-survey-{$mode}"
 				)
 			);
 			$html .= Xml::hidden( 'mode', $mode );

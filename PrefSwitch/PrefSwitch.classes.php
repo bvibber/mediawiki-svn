@@ -293,7 +293,7 @@ class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 	public static function save( $question, $request ) {
 		$answer = $request->getVal( "prefswitch-survey-{$question}", null );
 		return array(
-			'pss_answer' => $answer
+			'pss_answer' => $answer,
 			'pss_answer_data' => $answer == 'true' || $answer == 'false' ?
 				$request->getVal( "prefswitch-survey-{$question}-if{$answer}", null ) : null,
 		);
