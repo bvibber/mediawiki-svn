@@ -20,10 +20,10 @@
 
 $wgPrefSwitchStyleVersion = 1;
 
-// Preferences to set when users swtich prefs
+// Preferences to set when users switch prefs
 // array(
-//		in => array( pref => value ),
-//		out => array( pref => value ),
+//		'off' => array( pref => value ),
+//		'on' => array( pref => value ),
 //	)
 $wgPrefSwitchPrefs = array(
 	'off' => array(
@@ -41,18 +41,22 @@ $wgPrefSwitchPrefs = array(
 // Survey questions to ask when users switch prefs
 // array(
 //		survey-id => array(
-// 			field-id => array(
-//				question => msg-id,
-//				type => msg-id,
-//				answers => array(
-//					answer => msg-id,
-//					...
+//			'submit-msg' => message key for submit button caption
+//			'updateable' => boolean,
+//			'questions' => array(
+//				field-id => array(
+//					'question' => msg-id,
+//					'type' => msg-id,
+//					'answers' => array(
+//						answer => msg-id,
+//						...
+//					),
+//					'other' => msg-id,
+//					'ifyes' => msg-id
 //				),
-//				other => msg-id,
-//				ifyes => msg-id
+//				...
 //			),
-//			...
-//		),
+//		)
 // )
 $wgPrefSwitchSurveys = array();
 $wgPrefSwitchSurveys['feedback'] = array(
@@ -131,8 +135,8 @@ $wgPrefSwitchSurveys['off'] = array(
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'PrefStat',
-	'author' => 'Roan Kattouw',
+	'name' => 'PrefSwitch',
+	'author' => array( 'Trevor Parscal', 'Roan Kattouw' ),
 	'version' => '0.1.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'prefswitch-desc',
