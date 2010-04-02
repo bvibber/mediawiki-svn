@@ -223,7 +223,7 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addWikiMsg(
 				'prefswitch-main', array( 'parse' )
 			);
-			if ( self::isSwitchedOn( $wgUser ) ) {
+			if ( self::isSwitchedOn( $wgUser ) && !$wgUser->isAnon() ) {
 				$wgOut->addWikiMsgArray(
 					'prefswitch-main-on',
 					array(
@@ -232,7 +232,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					),
 					array( 'parse' )
 				);
-			} else {
+			} else if ( !$wgUser->isAnon() ) {
 				$wgOut->addWikiMsgArray(
 					'prefswitch-main-off',
 					array(
