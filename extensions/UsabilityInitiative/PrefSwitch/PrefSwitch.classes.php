@@ -16,6 +16,13 @@ class PrefSwitchSurvey {
 	
 	/* Static Functions */
 	
+	/**
+	 * Render the HTML for a survey.
+	 * @param $name string Survey name
+	 * @param $questions array Array containing question data
+	 * @param $loadFromDB bool Load previous survey data from the database
+	 * @return string HTML
+	 */
 	public static function render( $name, $questions, $loadFromDB = false ) {
 		global $wgUser, $wgOut;
 		// Load existing data from the database - allowing the user to change their answers
@@ -36,17 +43,23 @@ class PrefSwitchSurvey {
 		foreach ( $questions as $field => $config ) {
 			$answer = isset( $loaded[$field] ) ? $loaded[$field][0] : null;
 			$answerData = isset( $loaded[$field] ) ? $loaded[$field][1] : null;
-			$html .= call_user_func(
-				array( self::$fieldTypes[$config['type']], 'render' ), $field, $config, $answer, $answerData
+			$html .= call_user_func( array( self::$fieldTypes[$config['type']], 'render' ),
+				$field, $config, $answer, $answerData
 			);
 		}
 		$html .= Xml::closeElement( 'dl' );
 		return $html;
 	}
+	
+	/**
+	 * Save a survey to the database
+	 * @param $name string Survey name
+	 * @param $survey array Survey configuration data
+	 */
 	public static function save( $name, $survey ) {
 		global $wgRequest, $wgUser;
 		$dbw = wfGetDb( DB_MASTER );
-		$now = $dbw->timestamp( wfTimestamp() );
+		$now = $dbw->timestamp();
 		foreach ( $survey['questions'] as $question => $config ) {
 			$dbw->insert(
 				'prefswitch_survey',
@@ -68,7 +81,22 @@ interface PrefSwitchSurveyField {
 
 	/* Static Functions */
 	
+	/**
+	 * Render the HTML for a question
+	 * @param $question string Question ID
+	 * @param $config array Configuration array, including answers. See $wgPrefSwitchSurveys for format
+	 * @param $answer string ID of currently selected answer
+	 * @param $answerData string Data for currently selected answer
+	 * @return string HTML
+	 */
 	public static function render( $question, $config, $answer, $answerData );
+	
+	/**
+	 * Get values to insert into the database for a question
+	 * @param $question Question ID
+	 * @param $request WebRequest object containing answer data
+	 * @return array( field => value )
+	 */
 	public static function save( $question, $request );
 }
 class PrefSwitchSurveyFieldSelect implements PrefSwitchSurveyField {
@@ -106,6 +134,7 @@ class PrefSwitchSurveyFieldSelect implements PrefSwitchSurveyField {
 		$html .= Xml::closeElement( 'dd' );
 		return $html;
 	}
+	
 	public static function save( $question, $request ) {
 		$answer = $request->getVal( "prefswitch-survey-{$question}", '' );
 		switch ( $answer ) {
@@ -262,10 +291,11 @@ class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 		return $html;
 	}
 	public static function save( $question, $request ) {
+		$answer = $request->getVal( "prefswitch-survey-{$question}", null );
 		return array(
-			'pss_answer' => $request->getVal( "prefswitch-survey-{$question}", null ),
-			'pss_answer_data' => $insert['pss_answer'] == 'true' || $insert['pss_answer'] == 'false' ?
-				$request->getVal( "prefswitch-survey-{$question}-if{$insert['pss_answer']}", null ) : null,
+			'pss_answer' => $answer
+			'pss_answer_data' => $answer == 'true' || $answer == 'false' ?
+				$request->getVal( "prefswitch-survey-{$question}-if{$answer}", null ) : null,
 		);
 	}
 }
@@ -290,17 +320,10 @@ class PrefSwitchSurveyFieldDimensions implements PrefSwitchSurveyField {
 	public static function save( $question, $request ) {
 		$x = $request->getVal( "prefswitch-survey-{$question}-x" );
 		$y = $request->getVal( "prefswitch-survey-{$question}-y" );
-		if ( $x === '' && $y === '' ) {
-			return array(
-				'pss_answer' => null,
-				'pss_answer_data' => null,
-			);
-		} else {
-			return array(
-				'pss_answer' => null,
-				'pss_answer_data' => $x . 'x' . $y,
-			);
-		}
+		return array(
+			'pss_answer' => null,
+			'pss_answer_data' => ( $x != '' || $y != '' ) ? "{$x}x{$y}" : null,
+		);
 	}
 }
 class PrefSwitchSurveyFieldText implements PrefSwitchSurveyField {
@@ -316,16 +339,9 @@ class PrefSwitchSurveyFieldText implements PrefSwitchSurveyField {
 	}
 	public static function save( $question, $request ) {
 		$answer = $request->getVal( "prefswitch-survey-{$question}" );
-		if ( $answer === '' ) {
-			return array(
-				'pss_answer' => null,
-				'pss_answer_data' => null,
-			);
-		} else {
-			return array(
-				'pss_answer' => null,
-				'pss_answer_data' => $answer,
-			);
-		}
+		return array(
+			'pss_answer' => null,
+			'pss_answer_data' => $answer !== '' ? $answer : null,
+		);
 	}
 }
