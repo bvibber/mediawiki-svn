@@ -32,9 +32,9 @@ $wgPrefSwitchPrefs = array(
 	    'usebetatoolbar-cgd'=> 0,
 	),
 	'on' =>  array(
-	    'skin' => null,
-	    'usebetatoolbar' => null,
-	    'usebetatoolbar-cgd' => null,
+	    'skin' => 'vector',
+	    'usebetatoolbar' => 1,
+	    'usebetatoolbar-cgd' => 1,
 	),
 );
 
