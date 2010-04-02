@@ -207,7 +207,8 @@ class SpecialPrefSwitch extends SpecialPage {
 			// Finish out the form
 			$html .= Xml::openElement( 'dt', array( 'class' => 'prefswitch-survey-submit' ) );
 			$html .= Xml::submitButton(
-				wfMsg( $wgPrefSwitchSurveys[$mode]['submit-msg'] ), array( 'id' => 'prefswitch-survey-submit' )
+				wfMsg( $wgPrefSwitchSurveys[$mode]['submit-msg'] ),
+				array( 'id' => "prefswitch-survey-submit-{$mode}", 'class' => 'prefswitch-survey-submit' )
 			);
 			$html .= Xml::closeElement( 'dt' );
 			$html .= Xml::closeElement( 'form' );

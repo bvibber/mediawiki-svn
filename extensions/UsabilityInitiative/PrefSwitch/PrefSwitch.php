@@ -59,8 +59,8 @@ $wgPrefSwitchSurveys['feedback'] = array(
 	'submit-msg' => 'prefswitch-survey-submit-feedback',
 	'updatable' => true,
 	'questions' => array(
-		'feedback' => array(
-			'question' => 'prefswitch-survey-question-feedback',
+		'likedislike' => array(
+			'question' => 'prefswitch-survey-question-likedislike',
 			'type' => 'text',
 		),
 		'browser' => array(
