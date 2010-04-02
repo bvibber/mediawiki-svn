@@ -301,3 +301,18 @@ a[disabled=true]:hover {
 	overflow: hidden;
 }
 
+.mwe-checkbox-hang-indent {
+	float: left;
+	width: 24px;
+	margin-top: 6px;
+}
+
+.mwe-checkbox-hang-indent-text {
+	margin-left: 24px;
+}
+
+.mwe-small-print {
+	font-size: xx-small;
+}
+
+
