@@ -57,14 +57,16 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 			$this->getVerificationError( $check );
 		}
 
+		$session = $this->mUpload->setupChunkSession( $comment, $pageText, $watch );
 		return array('uploadUrl' =>
 			wfExpandUrl( wfScript( 'api' ) ) . "?" .
 			wfArrayToCGI( array(
 				'action' => 'firefoggupload',
 				'token' => $user->editToken(),
 				'format' => 'json',
-				'filename' => $this->mDesiredDestName,
-				'chunksession' => $this->mUpload->setupChunkSession( $comment, $pageText, $watch ) ) ) );
+				'chunksession' => $session,
+				'filename' => $this->getDesiredName(),
+			) ) ) );
 	}
 
 	public function performUploadChunk() {
@@ -122,8 +124,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		if( $params['done'] ) {
 			$required[] = 'chunksession';
 		}
-		if( $params['chunksession'] !== null ) {
-		} else {
+		if( $params['chunksession'] === null ) {
 			$required[] = 'filename';
 			$required[] = 'comment';
 			$required[] = 'watch';

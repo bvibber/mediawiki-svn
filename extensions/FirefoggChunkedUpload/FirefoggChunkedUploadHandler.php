@@ -21,6 +21,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 
 	public function initializeFromRequest(&$request) {}
 	public function getChunkMode() {return $this->chunkMode;}
+	public function getDesiredName() {return $this->mDesiredDestName;}
 
 	/**
 	 * Set session information for chunked uploads and allocate a unique key.
