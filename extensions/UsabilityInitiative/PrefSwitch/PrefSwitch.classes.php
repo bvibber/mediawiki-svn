@@ -29,7 +29,7 @@ class PrefSwitchSurvey {
 				__METHOD__
 			);
 			foreach( $res as $row ) {
-				$loaded[$row->pss_field] = array( $row->pss_answer, $row->pss_answer_data );
+				$loaded[$row->pss_question] = array( $row->pss_answer, $row->pss_answer_data );
 			}
 		}
 		$html = Xml::openElement( 'dl' );
@@ -45,11 +45,11 @@ class PrefSwitchSurvey {
 		$html .= Xml::closeElement( 'dl' );
 		return $html;
 	}
-	public static function save( $survey, $name ) {
+	public static function save( $name, $survey ) {
 		global $wgRequest, $wgUser;
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp( wfTimestamp() );
-		foreach ( $survey as $question => $config ) {
+		foreach ( $survey['questions'] as $question => $config ) {
 			if ( in_array( 'PrefSwitchSurveyField', class_implements( self::$fieldTypes[$config['type']] ) ) ) {
 				$dbw->insert(
 					'prefswitch_survey',

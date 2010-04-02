@@ -14,7 +14,8 @@ class SpecialPrefSwitch extends SpecialPage {
 	private $originTitle = null;
 	private $originQuery = '';
 	private $originLink = '';
-	private $originUrl = '';
+	private $originLinkUrl = '';
+	private $originFullUrl = '';
 
 	/* Static Functions */
 
@@ -39,7 +40,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		// Swtiched on means any of the preferences in the set are turned on
 		foreach ( $wgPrefSwitchPrefs['on'] as $pref => $value ) {
-			if ( $pref != 'skin' && $user->getOption( $pref ) == $value ) {
+			if ( $user->getOption( $pref ) == $value ) {
 				return true;
 			}
 		}
@@ -75,7 +76,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		wfLoadExtensionMessages( 'PrefSwitch' );
 	}
 	public function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurvey, $wgPrefSwitchStyleVersion;
+		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion;
 		// Get the origin from the request
 		$par = $wgRequest->getVal( 'from', $par );
 		$this->originTitle = Title::newFromText( $par );
@@ -92,7 +93,8 @@ class SpecialPrefSwitch extends SpecialPage {
 			$this->origin = $this->originTitle->getPrefixedDBKey();
 			$this->originQuery = $wgRequest->getVal( 'fromquery' );
 			$this->originLink = $wgUser->getSkin()->link( $this->originTitle, null, array(), $this->originQuery );
-			$this->originUrl = $this->originTitle->getLinkUrl( $this->originQuery );
+			$this->originLinkUrl = $this->originTitle->getLinkUrl( $this->originQuery );
+			$this->originFullUrl = $this->originTitle->getFullUrl( $this->originQuery );
 		}
 		// Begin output
 		$this->setHeaders();
@@ -149,9 +151,9 @@ class SpecialPrefSwitch extends SpecialPage {
 					// Switch off
 					if ( self::checkToken() && self::isSwitchedOn( $wgUser ) && $wgRequest->wasPosted() ) {
 						self::switchOff( $wgUser );
-						PrefSwitchSurvey::save( 'feedback', $wgPrefSwitchSurveys['feedback'] );
+						PrefSwitchSurvey::save( 'off', $wgPrefSwitchSurveys['feedback'] );
 						$wgOut->addWikiMsg( 'prefswitch-success-off' );
-					} else if ( self::isSwitchedOn( $wgUser ) ) {
+					} else if ( !self::isSwitchedOn( $wgUser ) ) {
 						// User is already switched off then reloaded the page or tried to switch off again
 						$wgOut->addWikiMsg( 'prefswitch-success-off' );
 					} else {
@@ -173,6 +175,9 @@ class SpecialPrefSwitch extends SpecialPage {
 		} else {
 			$this->render( 'main' );
 		}
+		$wgOut->addWikiMsgArray(
+			'prefswitch-return', array( $this->originFullUrl, $this->originTitle ), array( 'parse' )
+		);
 	}
 	
 	/* Private Functions */
@@ -212,15 +217,25 @@ class SpecialPrefSwitch extends SpecialPage {
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
 		} else {
-			$wgOut->addWikiMsgArray(
-				'prefswitch-main', array( $this->originUrl, $this->originTitle ), array( 'parse' )
+			$wgOut->addWikiMsg(
+				'prefswitch-main', array( 'parse' )
 			);
 			if ( self::isSwitchedOn( $wgUser ) ) {
 				$wgOut->addWikiMsgArray(
 					'prefswitch-main-on',
 					array(
-						$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'off' ) ) ),
-						$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'feedback' ) ) )
+						$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'feedback' ) ) ),
+						$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'off' ) ) )
+					),
+					array( 'parse' )
+				);
+			} else {
+				$wgOut->addWikiMsgArray(
+					'prefswitch-main-off',
+					array(
+						$this->getTitle()->getFullURL(
+							array_merge( $query, array( 'mode' => 'on', 'token' => $wgUser->editToken() ) )
+						)
 					),
 					array( 'parse' )
 				);

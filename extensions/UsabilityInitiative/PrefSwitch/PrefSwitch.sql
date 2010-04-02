@@ -22,4 +22,4 @@ CREATE TABLE IF NOT EXISTS /*_*/prefswitch_survey (
 	pss_answer_data text NULL
 ) /*$wgDBTableOptions*/;
 
-CREATE UNIQUE INDEX /*i*/pss_user_timestamp_question ON /*_*/prefswitch_survey (pss_user, pss_timestamp, pss_question);
+CREATE UNIQUE INDEX /*i*/pss_user_timestamp_question ON /*_*/prefswitch_survey (pss_user, pss_timestamp, pss_question, pss_name);
