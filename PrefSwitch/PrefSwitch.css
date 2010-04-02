@@ -3,6 +3,7 @@ div.prefswitch-intro {
 	margin-bottom: 1em;
 }
 form.prefswitch-survey {
+	width: 32em;
 	margin: 0;
 	padding: 0;
 }
@@ -50,7 +51,9 @@ form.prefswitch-survey dl dd p {
 	padding: 0;
 	line-height: 2em;
 }
-form.prefswitch-survey dl dt.prefswitch-survey-submit {
+form.prefswitch-survey .prefswitch-survey-submit {
+	margin-top: 1em;
+	margin-bottom: 1em;
 	text-align: right;
 }
 form.prefswitch-survey input.prefswitch-need-other {
