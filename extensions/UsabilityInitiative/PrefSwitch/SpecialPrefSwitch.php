@@ -223,25 +223,27 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addWikiMsg(
 				'prefswitch-main', array( 'parse' )
 			);
-			if ( self::isSwitchedOn( $wgUser ) && !$wgUser->isAnon() ) {
-				$wgOut->addWikiMsgArray(
-					'prefswitch-main-on',
-					array(
-						$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'feedback' ) ) ),
-						$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'off' ) ) )
-					),
-					array( 'parse' )
-				);
-			} else if ( !$wgUser->isAnon() ) {
-				$wgOut->addWikiMsgArray(
-					'prefswitch-main-off',
-					array(
-						$this->getTitle()->getFullURL(
-							array_merge( $query, array( 'mode' => 'on', 'token' => $wgUser->editToken() ) )
-						)
-					),
-					array( 'parse' )
-				);
+			if ( $wgUser->isLoggedIn() ) {
+				if ( self::isSwitchedOn( $wgUser ) ) {
+					$wgOut->addWikiMsgArray(
+						'prefswitch-main-on',
+						array(
+							$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'feedback' ) ) ),
+							$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'off' ) ) )
+						),
+						array( 'parse' )
+					);
+				} else {
+					$wgOut->addWikiMsgArray(
+						'prefswitch-main-off',
+						array(
+							$this->getTitle()->getFullURL(
+								array_merge( $query, array( 'mode' => 'on', 'token' => $wgUser->editToken() ) )
+							)
+						),
+						array( 'parse' )
+					);
+				}
 			}
 		}
 	}
