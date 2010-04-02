@@ -38,7 +38,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		if ( $user->isAnon() ) {
 			return false;
 		}
-		// Swtiched on means any of the preferences in the set are turned on
+		// Switched on means any of the preferences in the set are turned on
 		foreach ( $wgPrefSwitchPrefs['on'] as $pref => $value ) {
 			if ( $user->getOption( $pref ) == $value ) {
 				return true;
@@ -198,7 +198,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					'method' => 'post',
 					'action' => $this->getTitle()->getLinkURL( $query ),
 					'class' => 'prefswitch-survey',
-					'id' => 'prefswitch-survey-{$name}',
+					'id' => "prefswitch-survey-{$name}",
 				)
 			);
 			$html .= Xml::hidden( 'mode', $mode );
