@@ -142,9 +142,11 @@ class SpecialPrefSwitch extends SpecialPage {
 			$this->render( 'main' );
 		}
 		// Always show a way back
-		$wgOut->addWikiMsgArray(
-			'prefswitch-return', array( $this->originFullUrl, $this->originTitle ), array( 'parse' )
-		);
+		if ( $this->originTitle && $this->originFullUrl ) {
+			$wgOut->addWikiMsgArray(
+				'prefswitch-return', array( $this->originFullUrl, $this->originTitle ), array( 'parse' )
+			);
+		}
 		// Set page title
 		if ( self::isSwitchedOn( $wgUser ) ) {
 			switch ( $wgRequest->getVal( 'mode' ) ) {
