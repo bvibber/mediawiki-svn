@@ -103,12 +103,12 @@ $wgPrefSwitchSurveys['feedback'] = array(
 		),
 	),
 );
-$wgPrefSwitchSurveys['off'] = array_merge(
-	$wgPrefSwitchSurveys['feedback'],
-	array(
-		'submit-msg' => 'prefswitch-survey-submit-off',
-		'updatable' => false,
-		'questions' => array(
+$wgPrefSwitchSurveys['off'] = array(
+	'submit-msg' => 'prefswitch-survey-submit-off',
+	'updatable' => false,
+	'questions' => array_merge(
+		$wgPrefSwitchSurveys['feedback']['questions'],
+		array(
 			'whyrevert' => array(
 				'question' => 'prefswitch-survey-question-whyoff',
 				'type' => 'checks',
@@ -123,7 +123,7 @@ $wgPrefSwitchSurveys['off'] = array_merge(
 				'other' => 'prefswitch-survey-answer-whyoff-other',
 			),
 		)
-	)
+	),
 );
 
 /* Setup */

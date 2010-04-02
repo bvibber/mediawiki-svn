@@ -98,6 +98,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		$this->setHeaders();
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
+		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
 		/*
 		// Set page title
 		if ( self::isSwitchedOn( $wgUser ) ) {
@@ -193,8 +194,8 @@ class SpecialPrefSwitch extends SpecialPage {
 				'form', array(
 					'method' => 'post',
 					'action' => $this->getTitle()->getLinkURL( $query ),
-					'class' => 'survey',
-					'id' => 'survey-{$name}',
+					'class' => 'prefswitch-survey',
+					'id' => 'prefswitch-survey-{$name}',
 				)
 			);
 			$html .= Xml::hidden( 'mode', $mode );
