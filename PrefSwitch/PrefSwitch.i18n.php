@@ -17,7 +17,9 @@ $messages['en'] = array(
 	'prefswitch-survey-true' => 'Yes',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Turn New Features Off',
+	'prefswitch-survey-cancel-off' => 'If you would like to continue using the new features, you can return to $1.',
 	'prefswitch-survey-submit-feedback' => 'Send Feedback',
+	'prefswitch-survey-cancel-feedback' => 'If you don\'t want to provide feedback, you can return to $1.',
 	'prefswitch-survey-question-likedislike' => 'What did you like about the new features? What did you dislike about the features?',
 	'prefswitch-survey-question-whyoff' => 'Why are you turning off the new features? (Please select all that apply.)',
 	'prefswitch-survey-answer-whyoff-hard' => 'It was too hard to use.',
@@ -54,4 +56,20 @@ $messages['en'] = array(
 	'prefswitch-survey-answer-os-linux' => 'Linux',
 	'prefswitch-survey-answer-os-other' => 'Other operating system:',
 	'prefswitch-survey-question-res' => 'What is the resolution of your screen?',
+	'prefswitch-main' => 'We\'ve been working hard to make things easier for our users. We\'re excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of the site is an ongoing effort here at Wikimedia and we\'ll be sharing more updates in the future.  
+
+Here\'s what we\'ve recently launched:
+* Navigation: We\'ve improved the navigation for reading and editing articles.  Now, the tabs at the top of each page more clearly define whether you\'re viewing the article page or discussion page, and whether you\'re reading or editing an article. 
+* Editing toolbar improvements:  We\'ve reorganized the editing toolbar to make easier to use.  Now, formatting articles is simpler and more intuitive.
+* Link wizard:  An easy-to-use tool allows you to add links to other Wikipedia articles as well as links to external sites.
+* Search improvements: We\'ve improved search suggestions to get you to the article you\'re looking for more quickly. 
+* Other new features:  We\'ve also introduced a table wizard to make creating tables easier and find and a replace feature to simplify article editing.
+
+Feedback?  We\'ve love to hear from you.  Please visit our <a href="$3">feedback page</a>.
+Take me back.  If you would like to turn off the new features, please <a href="$2">click here</a>.
+	
+	
+	Provide feedback</a>, turn stuff off</a> or return to $1.',
+	'prefswitch-survey-intro-feedback' => 'We\'d love to hear from you. Please fill out the optional survey below.',
+	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features. To help us improve them, please fill out the optional survey below ',
 );
