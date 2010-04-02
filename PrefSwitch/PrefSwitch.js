@@ -68,7 +68,7 @@ $j(document).ready( function() {
 		}
 	} );
 	$j( '.prefswitch-survey-yes, .prefswitch-survey-no' ).change();
-	// Auto-detect borwser, os and screen size
+	// Auto-detect browser, os and screen size
 	var detected = detect();
 	$j( '#prefswitch-survey-browser' ).val( detected['survey-browser'] );
 	$j( '#prefswitch-survey-os' ).val( detected['survey-os'] );
