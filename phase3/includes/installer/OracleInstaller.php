@@ -2,7 +2,7 @@
 
 class OracleInstaller extends InstallerDBType {
 
-	var $globalNames = array(
+	protected $globalNames = array(
 		'wgDBport',
 		'wgDBname',
 		'wgDBuser',
@@ -10,7 +10,7 @@ class OracleInstaller extends InstallerDBType {
 		'wgDBprefix',
 	);
 
-	var $internalDefaults = array(
+	protected $internalDefaults = array(
 		'_InstallUser' => 'sys',
 		'_InstallPassword' => '',
 	);
