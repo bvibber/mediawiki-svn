@@ -145,7 +145,7 @@ class PrefSwitchSurveyFieldRadios extends PrefSwitchSurveyFieldSelect {
 				"prefswitch-survey-{$question}",
 				$answerId,
 				"prefswitch-survey-{$question}-{$answerId}",
-				$answer === $aid
+				$answer === $answerId
 			);
 		}
 		if ( isset( $config['other'] ) ) {
@@ -228,12 +228,12 @@ class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 			"prefswitch-survey-{$question}",
 			'true',
 			"prefswitch-survey-{$question}-true",
-			$answer === 'yes',
+			$answer === 'true',
 			array( 'class' => 'prefswitch-survey-true' )
 		);
 		$html .= Xml::element( 'br' );
 		$html .= Xml::radioLabel(
-			wfMsg( 'prefswitch-survey-no' ),
+			wfMsg( 'prefswitch-survey-false' ),
 			"prefswitch-survey-{$question}",
 			'false',
 			"prefswitch-survey-{$question}-false",
@@ -244,7 +244,7 @@ class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 		if ( isset( $config['iftrue'] ) ) {
 			$html .= Xml::openElement(
 				'blockquote',
-				array( 'id' => "prefswitch-survey-{$question}-ifyes-row", 'class' => 'prefswitch-survey-iftrue' )
+				array( 'id' => "prefswitch-survey-{$question}-iftrue-row", 'class' => 'prefswitch-survey-iftrue' )
 			);
 			$html .= Xml::tags( 'dt', null, wfMsgWikiHtml( $config['iftrue'] ) );
 			$html .= Xml::tags(
@@ -255,7 +255,7 @@ class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 		if ( isset( $config['iffalse'] ) ) {
 			$html .= Xml::openElement(
 				'blockquote',
-				array( 'id' => "prefswitch-survey-{$question}-iffalse-row", 'class' => 'prefswitch-survey-ifno' )
+				array( 'id' => "prefswitch-survey-{$question}-iffalse-row", 'class' => 'prefswitch-survey-iffalse' )
 			);
 			$html .= Xml::tags( 'dt', null, wfMsgWikiHtml( $config['iffalse'] ) );
 			$html .= Xml::tags(
@@ -286,7 +286,7 @@ class PrefSwitchSurveyFieldDimensions implements PrefSwitchSurveyField {
 		);
 		$html .= ' x ';
 		$html .= Xml::input(
-			"prefswitch-survey-{$question}-y", 5, $y, array( 'id' => "prefswitch-survey-{$question}-y", )
+			"prefswitch-survey-{$question}-y", 5, $y, array( 'id' => "prefswitch-survey-{$question}-y" )
 		);
 		$html .= Xml::closeElement( 'dd' );
 		return $html;
