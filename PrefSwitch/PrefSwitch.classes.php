@@ -36,11 +36,9 @@ class PrefSwitchSurvey {
 		foreach ( $questions as $field => $config ) {
 			$answer = isset( $loaded[$field] ) ? $loaded[$field][0] : null;
 			$answerData = isset( $loaded[$field] ) ? $loaded[$field][1] : null;
-			if ( in_array( 'PrefSwitchSurveyField', class_implements( self::$fieldTypes[$config['type']] ) ) ) {
-				$html .= call_user_func(
-					array( self::$fieldTypes[$config['type']], 'render' ), $field, $config, $answer, $answerData
-				);
-			}
+			$html .= call_user_func(
+				array( self::$fieldTypes[$config['type']], 'render' ), $field, $config, $answer, $answerData
+			);
 		}
 		$html .= Xml::closeElement( 'dl' );
 		return $html;
@@ -50,21 +48,19 @@ class PrefSwitchSurvey {
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp( wfTimestamp() );
 		foreach ( $survey['questions'] as $question => $config ) {
-			if ( in_array( 'PrefSwitchSurveyField', class_implements( self::$fieldTypes[$config['type']] ) ) ) {
-				$dbw->insert(
-					'prefswitch_survey',
-					array_merge(
-						array(
-							'pss_user' => $wgUser->getId(),
-							'pss_timestamp' => $now,
-							'pss_name' => $name,
-							'pss_question' => $question,
-						),
-						call_user_func( array( self::$fieldTypes[$config['type']], 'save' ), $question, $wgRequest )
+			$dbw->insert(
+				'prefswitch_survey',
+				array_merge(
+					array(
+						'pss_user' => $wgUser->getId(),
+						'pss_timestamp' => $now,
+						'pss_name' => $name,
+						'pss_question' => $question,
 					),
-					__METHOD__
-				);
-			}
+					call_user_func( array( self::$fieldTypes[$config['type']], 'save' ), $question, $wgRequest )
+				),
+				__METHOD__
+			);
 		}
 	}
 }
