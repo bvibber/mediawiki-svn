@@ -395,7 +395,7 @@ class WebInstaller extends Installer {
 	function endPageWrapper() {
 		$this->output->addHTMLNoFlush( 
 			"</div>\n" . 
-			"<br clear=\"left\"/>\n" .
+			"<br style=\"clear:both\"/>\n" .
 			"</div>" );
 	}
 
