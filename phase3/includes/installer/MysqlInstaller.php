@@ -1,7 +1,7 @@
 <?php
 
 class MysqlInstaller extends InstallerDBType {
-	var $globalNames = array(
+	protected $globalNames = array(
 		'wgDBserver',
 		'wgDBname',
 		'wgDBuser',
@@ -11,7 +11,7 @@ class MysqlInstaller extends InstallerDBType {
 		'wgDBmysql5',
 	);
 
-	var $internalDefaults = array(
+	protected $internalDefaults = array(
 		'_MysqlEngine' => 'InnoDB',
 		'_MysqlCharset' => 'binary',
 	);
@@ -36,16 +36,8 @@ class MysqlInstaller extends InstallerDBType {
 		return $this->checkExtension( 'mysql' );
 	}
 
-	function getGlobalNames() {
-		return $this->globalNames;
-	}
-
 	function getGlobalDefaults() {
 		return array();
-	}
-
-	function getInternalDefaults() {
-		return $this->internalDefaults;
 	}
 
 	function getConnectForm() {

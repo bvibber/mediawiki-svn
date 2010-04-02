@@ -1,7 +1,7 @@
 <?php
 
 class SqliteInstaller extends InstallerDBType {
-	var $globalNames = array(
+	protected $globalNames = array(
 		'wgDBname',
 		'wgSQLiteDataDir',
 	);
@@ -12,10 +12,6 @@ class SqliteInstaller extends InstallerDBType {
 
 	function isCompiled() {
 		return $this->checkExtension( 'pdo_sqlite' );
-	}
-
-	function getGlobalNames() {
-		return $this->globalNames;
 	}
 
 	function getGlobalDefaults() {

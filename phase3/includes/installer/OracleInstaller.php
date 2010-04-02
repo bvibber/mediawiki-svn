@@ -23,14 +23,6 @@ class OracleInstaller extends InstallerDBType {
 		return $this->checkExtension( 'oci8' );
 	}
 
-	function getGlobalNames() {
-		return $this->globalNames;
-	}
-
-	function getInternalDefaults() {
-		return $this->internalDefaults;
-	}
-
 	function getConnectForm() {
 		return
 			Xml::openElement( 'fieldset' ) .

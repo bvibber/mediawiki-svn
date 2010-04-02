@@ -10,6 +10,12 @@ abstract class InstallerDBType {
 	/* Database connection */
 	var $db;
 
+	/** Internal variables for installation */
+	protected $internalDefaults = array();
+
+	/** Array of MW configuration globals this class uses */
+	protected $globalNames = array();
+
 	/**
 	 * Return the internal name, e.g. 'mysql', or 'sqlite'
 	 */
@@ -23,7 +29,9 @@ abstract class InstallerDBType {
 	/**
 	 * Get an array of MW configuration globals that will be configured by this class.
 	 */
-	abstract function getGlobalNames();
+	public function getGlobalNames() {
+		return $this->globalNames;
+	}
 
 	/**
 	 * Get HTML for a web form that configures this database. Configuration
@@ -133,8 +141,8 @@ abstract class InstallerDBType {
 	/**
 	 * Get a name=>value map of internal variables used during installation
 	 */
-	function getInternalDefaults() { 
-		return array();
+	public function getInternalDefaults() {
+		return $this->internalDefaults;
 	}
 
 	/**

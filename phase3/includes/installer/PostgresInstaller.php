@@ -2,7 +2,7 @@
 
 class PostgresInstaller extends InstallerDBType {
 
-	var $globalNames = array(
+	protected $globalNames = array(
 		'wgDBserver',
 		'wgDBport',
 		'wgDBname',
@@ -12,7 +12,7 @@ class PostgresInstaller extends InstallerDBType {
 		'wgDBts2schema',
 	);
 
-	var $internalDefaults = array(
+	protected $internalDefaults = array(
 		'_InstallUser' => 'postgres',
 		'_InstallPassword' => '',
 	);
@@ -27,14 +27,6 @@ class PostgresInstaller extends InstallerDBType {
 
 	function isCompiled() {
 		return $this->checkExtension( 'pgsql' );
-	}
-
-	function getGlobalNames() {
-		return $this->globalNames;
-	}
-
-	function getInternalDefaults() {
-		return $this->internalDefaults;
 	}
 
 	function getConnectForm() {
