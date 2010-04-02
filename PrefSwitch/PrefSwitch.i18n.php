@@ -65,12 +65,12 @@ Here\'s what we\'ve recently launched:
 * Search improvements: We\'ve improved search suggestions to get you to the article you\'re looking for more quickly. 
 * Other new features:  We\'ve also introduced a table wizard to make creating tables easier and find and a replace feature to simplify article editing.
 
+Return to [$1 $2].',
+	'prefswitch-main-on' => '
 ;Feedback?
-We\'ve love to hear from you.  Please visit our [$4 feedback page].
+We\'ve love to hear from you.  Please visit our [$1 feedback page].
 ;Take me back!
-If you would like to turn off the new features, please [$3 click here].
-	
-or return to [$1 $2].',
+If you would like to turn off the new features, please [$2 click here].',
 	'prefswitch-survey-intro-feedback' => 'We\'d love to hear from you. Please fill out the optional survey below.',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features. To help us improve them, please fill out the optional survey below ',
 );

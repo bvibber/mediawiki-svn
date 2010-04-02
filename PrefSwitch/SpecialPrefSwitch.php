@@ -213,15 +213,18 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addHtml( $html );
 		} else {
 			$wgOut->addWikiMsgArray(
-				'prefswitch-main',
-				array(
-					$this->originUrl,
-					$this->originTitle,
-					$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'off' ) ) ),
-					$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'feedback' ) ) )
-				),
-				array( 'parse' )
+				'prefswitch-main', array( $this->originUrl, $this->originTitle ), array( 'parse' )
 			);
+			if ( self::isSwitchedOn( $wgUser ) ) {
+				$wgOut->addWikiMsgArray(
+					'prefswitch-main-on',
+					array(
+						$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'off' ) ) ),
+						$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'feedback' ) ) )
+					),
+					array( 'parse' )
+				);
+			}
 		}
 	}
 }
