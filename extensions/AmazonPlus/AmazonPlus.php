@@ -59,7 +59,7 @@ $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'AmazonPlus',
 	'descriptionmsg' => 'amazonplus-desc',
-	'version'        => '0.5.2',
+	'version'        => '0.5.3',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:AmazonPlus',
 	'author'         => 'Ryan Schmidt',
 );
@@ -360,7 +360,7 @@ class AmazonPlus {
 					$less = wfMsg( 'amazonplus-less' );
 					$internal = "'{$more}', '{$less}', '{$this->src}'";
 					$id = 'shortReviewLink' . $this->src;
-					$html .= '</div> [<a href="#" id="' . $id . '" onclick="javascript:toggleReview(' . $internal . ');">' . $more . '</a>]</div>';
+					$html .= '</div> <span class="shortReviewLink">[<a href="#" id="' . $id . '" onclick="javascript:toggleReview(' . $internal . ');">' . $more . '</a>]</span></div>';
 					$this->shortReview = $html;
 			}
 			return '%' . $this->token['shortReview'] . '%';
