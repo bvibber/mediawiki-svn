@@ -14,7 +14,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	private $originTitle = null;
 	private $originQuery = '';
 	private $originLink = '';
-	private $originURL = '';
+	private $originUrl = '';
 
 	/* Static Functions */
 
@@ -92,7 +92,7 @@ class SpecialPrefSwitch extends SpecialPage {
 			$this->origin = $this->originTitle->getPrefixedDBKey();
 			$this->originQuery = $wgRequest->getVal( 'fromquery' );
 			$this->originLink = $wgUser->getSkin()->link( $this->originTitle, null, array(), $this->originQuery );
-			$this->originURL = $this->originTitle->getLinkUrl( $this->originQuery );
+			$this->originUrl = $this->originTitle->getLinkUrl( $this->originQuery );
 		}
 		// Begin output
 		$this->setHeaders();
@@ -174,7 +174,7 @@ class SpecialPrefSwitch extends SpecialPage {
 			$this->render( 'main' );
 		}
 	}
-
+	
 	/* Private Functions */
 	
 	private function render( $mode = null ) {
@@ -215,11 +215,12 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addWikiMsgArray(
 				'prefswitch-main',
 				array(
-					$this->originLink,
+					$this->originUrl,
+					$this->originTitle,
 					$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'off' ) ) ),
 					$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'feedback' ) ) )
 				),
-				array( 'parse', 'replaceafter' )
+				array( 'parse' )
 			);
 		}
 	}
