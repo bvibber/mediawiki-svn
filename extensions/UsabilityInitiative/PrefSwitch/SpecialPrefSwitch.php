@@ -170,9 +170,6 @@ class SpecialPrefSwitch extends SpecialPage {
 					$this->render( 'main' );
 					break;
 			}
-			if ( $this->originTitle ) {
-				$wgOut->addHTML( wfMsg( 'prefswitch-returnto', $this->originLink ) );
-			}
 		} else {
 			$this->render( 'main' );
 		}
@@ -182,14 +179,15 @@ class SpecialPrefSwitch extends SpecialPage {
 	
 	private function render( $mode = null ) {
 		global $wgUser, $wgOut, $wgPrefSwitchSurveys;
+		// Make sure links will retain the origin
+		$query = array(	'from' => $this->origin, 'fromquery' => $this->originQuery );
 		if ( isset( $wgPrefSwitchSurveys[$mode] ) ) {
-			$wgOut->addWikiMsg( "prefswitch-survey-{$mode}-intro" );
+			$wgOut->addWikiMsg( "prefswitch-survey-intro-{$mode}" );
 			// Provide a "nevermind" link
 			if ( $this->originTitle ) {
-				$wgOut->addHTML( wfMsg( 'prefswitch-survey-cancel', $this->originLink ) );
+				$wgOut->addHTML( wfMsg( "prefswitch-survey-cancel-{$mode}", $this->originLink ) );
 			}
-			// Setup a form that will retain the origin on submission	
-			$query = array(	'from' => $this->origin, 'fromquery' => $this->originQuery );
+			// Setup a form
 			$html = Xml::openElement(
 				'form', array(
 					'method' => 'post',
@@ -214,7 +212,15 @@ class SpecialPrefSwitch extends SpecialPage {
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
 		} else {
-			$wgOut->addWikiMsg( 'prefswitch-main' );
+			$wgOut->addWikiMsgArray(
+				'prefswitch-main',
+				array(
+					$this->originLink,
+					$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'off' ) ) ),
+					$this->getTitle()->getLinkURL( array_merge( $query, array( 'mode' => 'feedback' ) ) )
+				),
+				array( 'parse', 'replaceafter' )
+			);
 		}
 	}
 }
