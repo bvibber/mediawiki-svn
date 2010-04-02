@@ -17,13 +17,13 @@ mw.addMessages( {
 	"mwe-upwiz-upload-count": "$1 of $2 files uploaded",
 	"mwe-upwiz-progressbar-uploading": "uploading",
 	"mwe-upwiz-remaining": "$1 remaining",
-	"mwe-upwiz-intro-details": "Thank you for uploading your works! Now we need some basic information in order to complete your upload.",
+	"mwe-upwiz-intro-details": "Thank you! Now we need some basic information about the files you just uploaded.",
 	"mwe-upwiz-source-ownwork": "They are entirely your own work.",
 	"mwe-upwiz-source-ownwork-assert": "I, $1, the copyright holder of this work, hereby grant anyone the right to use these works for any purpose, as long as they credit me and share derivative work under the same terms.",
 	"mwe-upwiz-source-ownwork-assert-custom": "I, $1, the copyright holder of this work, hereby publish these works under the following license(s):",
 	"mwe-upwiz-source-ownwork-assert-note": "This means you release your work under a double Creative Commons Attribution ShareAlike and GFDL license.",
 	"mwe-upwiz-source-permission": "Their author gave you explicit permission to upload them",
-	"mwe-upwiz-source-thirdparty": "They come from a website",
+	"mwe-upwiz-source-thirdparty": "They are not your own work.",
 	"mwe-upwiz-source-thirdparty-intro" : "Please enter the address where you found each file.",
 	"mwe-upwiz-source-thirdparty-custom-intro" : "If all files have the same source, author, and copyright status, you may enter them only once for all of them.",
 	"mwe-upwiz-source-thirdparty-license" : "The copyright holder of these works published them under the following license(s):",
@@ -76,7 +76,7 @@ mw.addMessages( {
 
 mw.ProgressBar = function( selector, text ) {
 	var _this = this;
-	// XXX need to figure out a way to put something inside text.
+	// XXX need to figure out a way to put text inside bar
 
 	_this.progressBarDiv = $j('<div></div>')
 				.addClass("mwe-upwiz-progress-bar")
@@ -185,7 +185,13 @@ mw.ProgressBar.prototype = {
 // not hardcoded here.
 // but, MediaWiki has no real concept of a License as a first class object -- there are templates and then specially - parsed 
 // texts to create menus -- hack on top of hacks -- a bit too much to deal with ATM
-mw.UploadWizardLicenseInput = function( div, values ) {
+/**
+ * Create a group of checkboxes for licenses
+ * @param div 
+ * @param values  (optional) array of license key names to activate by default
+ * @param change  (optional) function to execute when any value changes
+ */
+mw.UploadWizardLicenseInput = function( div, values, change ) {
 	var _this = this;
 	var c = mw.UploadWizardLicenseInput.prototype.count++;
 
@@ -201,7 +207,15 @@ mw.UploadWizardLicenseInput = function( div, values ) {
 	$div = $j( div );
 	$j.each( _this.licenses, function( key, data ) {
 		var id = 'license_' + key + '_' + c;
-		data.input = $j( '<input />' ).attr( { id: id, type: 'checkbox', value: key } ).get(0);
+		var input = $j( '<input />' ) .attr( { 
+							id: id, 
+							type: 'checkbox', 
+							value: key 
+						} );
+		if (change) {
+			input.change( change );
+		}
+		data.input = input.get(0);
 		$div.append( 
 			data.input,
 			$j( '<label />' ).attr( { 'for': id } ).html( data.text ),
@@ -295,7 +309,6 @@ mw.UploadWizardUpload = function( filesDiv ) {
 	_this.extension = undefined;
 		
 	// details 		
-	_this.details = new mw.UploadWizardDetails( _this, $j( '#mwe-upwiz-macro-files' ));
 	_this.ui = new mw.UploadWizardUploadInterface( _this, filesDiv );
 
 	// handler -- usually ApiUploadHandler
@@ -1778,8 +1791,8 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-macro">'
 		       +       '<div id="mwe-upwiz-macro-choice">' 
 		       +  	'<div>' + gM( 'mwe-upwiz-intro-details' ) + '</div>'
-		       +  	'<div id="mwe-upwiz-macro-deeds">'
-		       +  	  '<div id="mwe-upwiz-macro-deed-ownwork" class="mwe-upwiz-deed">'
+		       +  	'<div id="mwe-upwiz-macro-deeds mwe-upwiz-choice">'
+		       +  	  '<div id="mwe-upwiz-macro-deed-ownwork" class="mwe-upwiz-deed mwe-upwiz-choice">'
 		       +               '<div class="mwe-upwiz-deed-option-title">'
 		       +                 '<span class="mwe-upwiz-deed-header mwe-closed"><a class="mwe-upwiz-deed-header-link">' + gM( 'mwe-upwiz-source-ownwork' ) + '</a></span>'
 		       +                 '<span class="mwe-upwiz-deed-header mwe-open" style="display: none;">' 
@@ -1789,7 +1802,7 @@ mw.UploadWizard.prototype = {
 		       +               '</div>' // more deed stuff set up below
 		       +  	     '<div class="mwe-upwiz-deed-form" style="display: none"></div>'		
 		       +            '</div>'
-		       +  	  '<div id="mwe-upwiz-macro-deed-thirdparty" class="mwe-upwiz-deed">'
+		       +  	  '<div id="mwe-upwiz-macro-deed-thirdparty" class="mwe-upwiz-deed mwe-upwiz-choice">'
 		       +               '<div class="mwe-upwiz-deed-option-title">'
 		       +                 '<span class="mwe-upwiz-deed-header mwe-closed"><a class="mwe-upwiz-deed-header-link">' + gM( 'mwe-upwiz-source-thirdparty' ) + '</a></span>'
 		       +                 '<span class="mwe-upwiz-deed-header mwe-open" style="display: none;">' 
@@ -1801,7 +1814,7 @@ mw.UploadWizard.prototype = {
 		       +  	  '</div>'
 		       +  	'</div>'
 		       +       '</div>'
-		       +       '<div id="mwe-upwiz-macro-edit" style="display: none">'
+		       +       '<div id="mwe-upwiz-macro-edit">'
 		       +  	'<div class="mwe-upwiz-macro-edit-submit">' 
 		       +  	  '<p>' + gM( 'mwe-upwiz-macro-edit-intro' ) + '</p>' 
 		       +          '</div>' // button added below
@@ -1910,8 +1923,7 @@ mw.UploadWizard.prototype = {
 		$j( upload ).bind( 'removeUpload', function(e) { _this.removeUpload( upload ); e.stopPropagation(); } );
 		$j( upload ).bind( 'filled', function(e) { 
 			_this.newUpload(); 
-			_this.uploads.push( upload );
-			_this.updateFileCounts();
+			_this.setUploadFilled(upload);
 			e.stopPropagation(); 
 		} );
 		// XXX bind to some error state
@@ -1919,6 +1931,21 @@ mw.UploadWizard.prototype = {
 	
 		return true;
 	},
+
+	/**
+	 * When an upload is filled with a real file, accept it in the wizard's list of uploads
+	 * and set up some other interfaces
+	 * @param UploadWizardUpload
+	 */
+	setUploadFilled: function( upload ) {
+		var _this = this;
+		// XXX check if it has a file? 
+		_this.uploads.push( upload );
+		_this.updateFileCounts();
+		// maybe it would be better to defer details to later?
+		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-macro-files' ));
+	},
+
 
 	/**
 	 * Remove an upload from our array of uploads, and the HTML UI 
@@ -2235,73 +2262,80 @@ mw.UploadWizard.prototype = {
 	},
 
 	
+	applyOwnWorkMacroDeed: function() {
+		var _this = this;
+		if ( $j( '#mwe-upwiz-deed-accept-ownwork-default' ).is(':checked') || 
+			$j( '#mwe-upwiz-deed-accept-ownwork-custom' ).is(':checked') ) {
+			_this.applyMacroDeed();
+		}
+	},
+	
 	/**
 	 * Set up the form for the deed option that says these uploads are all the user's own work.
 	 */
 	setupDeedOwnWork: function() {
+		mw.log("setupdeed own work");
 		var _this = this;
 
-		var sourceInput = $j( '<input />').attr( { name: "source", value: "{{own}}" } );
-		var authorInput = $j( '<input />').attr( { name: "author" } ); // value set below
+		_this.sourceInput = $j( '<input />').attr( { name: "source", value: "{{own}}" } );
+		_this.authorInput = $j( '<input />').attr( { name: "author" } ) ;
+
 		var licenseInputDiv = $j( '<div></div>' );
-		var licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
-		licenseInput.setDefaultValues();
+		_this.licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv, [], _this.applyOwnWorkMacroDeed() );
+		_this.licenseInput.setDefaultValues();
 
 		// we don't use 'customizable' here, but the applyMacroDeed function will use this to determine
 		// what can and can't be customized for each individual file.
-		$j( authorInput ).data( 'customizable', true );			
-		$j( licenseInput ).data( 'customizable', true );			
+		_this.authorInput.data( 'customizable', true );			
+		$j( _this.licenseInput ).data( 'customizable', true );			
 
 		var standardDiv = $j( '<div />' )
 			.append( 
 				$j( '<input />') 
-					.attr( { id: 'mwe-upwiz-deed-accept-default', type: 'checkbox' } )
+					.attr( { id: 'mwe-upwiz-deed-accept-ownwork-default', type: 'checkbox' } )
 					.click( function() {
 						licenseInput.setDefaultValues();
-						_this.applyMacroDeed( sourceInput, authorInput, licenseInput );
-						_this.showDetailsFiles();
+						_this.applyOwnWorkMacroDeed();
 					} )
 					.addClass( 'mwe-checkbox-hang-indent' ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
 					.html( gM( 'mwe-upwiz-source-ownwork-assert', 
-						$j( authorInput )
-							.addClass( 'mwe-upwiz-sign' ) ) ),
+						$j( '<input />' )
+							.attr( { name: 'author' } )
+							.addClass( 'mwe-upwiz-sign' ) 
+							.blur( function() { _this.applyOwnWorkMacroDeed() } ) ) ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
 					.addClass( 'mwe-small-print' )
 					.html( gM ( 'mwe-upwiz-source-ownwork-assert-note' ) )
 			);
 
-		var toggleCustomDiv = $j( '<div />' )
-	
 		var customDiv = $j('<div/>')
 			.append( 
 				$j( '<input />') 
-					.attr( { id: 'mwe-upwiz-deed-thirdparty-accept', type: 'checkbox' } )
-					.click( function() {
-						_this.applyMacroDeed( sourceInput, authorInput, licenseInput );
-						_this.showDetailsFiles();
-					} )
+					.attr( { id: 'mwe-upwiz-deed-accept-ownwork-custom', type: 'checkbox' } )
+					.click( function() { _this.applyOwnWorkMacroDeed() } )
 					.addClass( 'mwe-checkbox-hang-indent' ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
-					.html( gM( 'mwe-upwiz-source-ownwork-assert-custom', 
-						$j( '<input />' )
-							.attr( { name: 'author' } )
-							.addClass( 'mwe-upwiz-sign' ) ) ),
+					.append( gM( 'mwe-upwiz-source-ownwork-assert-custom', 
+							'<span id="mwe-custom-author-input"></span>' ) ),
 				licenseInputDiv )
 			.hide();
 
-		hiddenInputsDiv = $j( '<span />' ).hide().append( sourceInput );
+		hiddenInputsDiv = $j( '<span />' ).hide().append( _this.sourceInput );
 
 		$j( '#mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-form' ).
 			append( standardDiv, 
-				toggleCustomDiv, 
 				customDiv,
 				hiddenInputsDiv );
 		
-		_this.makeCustomToggler( standardDiv, toggleCustomDiv, customDiv );
+		_this.makeCustomToggler( standardDiv, customDiv );
+
+		// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
+		_this.authorInput.blur( function() { _this.applyOwnWorkMacroDeed() } ).addClass( 'mwe-upwiz-sign' );
+		$j( '#mwe-custom-author-input').append( _this.authorInput );
 
 		// synchronize both username signatures
 		// set initial value to configured username
@@ -2321,31 +2355,36 @@ mw.UploadWizard.prototype = {
 	},
 
 	/**
+	 * No real intermediary required here
+	 */
+	applyThirdPartyMacroDeed: function() {
+		_this.applyMacroDeed();
+	},
+
+	/**
 	 * Set up the deed for when you "found pics on a website", i.e. there's a third party
 	 */
 	setupDeedThirdParty: function() {
+		mw.log("setupdeed third party");
 		var _this = this;
 
-		var sourceInput = $j('<textarea class="mwe-source" name="source" rows="1" cols="40"></textarea>' ).growTextArea();
-		var authorInput = $j('<textarea class="mwe-author" name="author" rows="1" cols="40"></textarea>' ).growTextArea();
-		var licenseInputDiv = $j( '<div></div>' );
-		var licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
-		licenseInput.setDefaultValues();
+		_this.sourceInput = $j('<textarea class="mwe-source" name="source" rows="1" cols="40"></textarea>' ).growTextArea();
+		_this.authorInput = $j('<textarea class="mwe-author" name="author" rows="1" cols="40"></textarea>' ).growTextArea();
+		licenseInputDiv = $j( '<div></div>' );
+		_this.licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv, [], function() { _this.applyThirdPartyMacroDeed() }  );
+		_this.licenseInput.setDefaultValues();
 
 		// we don't use 'customizable' here, but the applyMacroDeed function will use this to determine
 		// what can and can't be customized for each individual file.
-		$j( sourceInput ).data( 'customizable', true );			
-		$j( authorInput ).data( 'customizable', true );			
-		$j( licenseInput ).data( 'customizable', true );
+		_this.sourceInput.data( 'customizable', true );			
+		_this.authorInput.data( 'customizable', true );			
+		$j( _this.licenseInput ).data( 'customizable', true );
 
 		var standardDiv = $j( '<div />' )
 			.append( 
-				$j( '<p />' ).html( gM( 'mwe-upwiz-source-thirdparty-intro' ) ),
-				$j( '<input />' ).attr( { type: 'submit' } ).addClass( "mwe-upwiz-deed-thirdparty-accept" ) 
+				$j( '<p />' ).html( gM( 'mwe-upwiz-source-thirdparty-intro' ) )
 			);
 				 
-		
-		var toggleCustomDiv = $j( '<div />' );
 
 		var customDiv = $j( '<div />' )
 			.append( 
@@ -2355,32 +2394,28 @@ mw.UploadWizard.prototype = {
 					.append( $j( '<label />' )
 							.attr( { 'for' : 'source' } )
 							.text( gM( 'mwe-upwiz-source' ) ) )
-					.append( sourceInput ),
+					.append( _this.sourceInput ),
 				$j( '<div />' )
 					.addClass( "mwe-upwiz-thirdparty-fields" )
 					.append( $j( '<label />' )
 							.attr( { 'for' : 'author' } )
 							.text( gM( 'mwe-upwiz-author' ) ) )
-					.append( authorInput ),
+					.append( _this.authorInput ),
 				$j( '<div />' ).text( gM( 'mwe-upwiz-source-thirdparty-license' ) ),
-				licenseInputDiv,
-				$j( '<input />' ).attr( { type: 'submit' } ).addClass( "mwe-upwiz-deed-thirdparty-accept" ) 
+				licenseInputDiv
 			).hide();
 
 
 		$j( '#mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).
 			append( standardDiv, 
-				toggleCustomDiv, 
 				customDiv );
 		
-		_this.makeCustomToggler( standardDiv, toggleCustomDiv, customDiv );
+		_this.makeCustomToggler( standardDiv, customDiv );
 
-		// upgrade both buttons to take us to the next page with details	
 		$j( '.mwe-upwiz-deed-thirdparty-accept' )
 			.attr( { value: gM( 'mwe-upwiz-source-thirdparty-accept' ) } )
 			.click( function() {
-				_this.applyMacroDeed( sourceInput, authorInput, licenseInput );
-				_this.showDetailsFiles();
+				_this.applyMacroDeed();
 			} );	
 
 
@@ -2391,9 +2426,6 @@ mw.UploadWizard.prototype = {
 	 * There is a common pattern of having standard options, and then a "more options" panel which 
 	 * disables the standard options panel. 
 	 *
-	 * It is assumed that standardDiv, toggleDiv, and customDiv are all contiguous, going vertically
-	 * down the page. 
-	 * 
 	 * We do not do anything to disable the inputs on either panel. So far, we've implemented these 
 	 * in a way that the 'custom' panel is always controlling everything, but the standard panel just
 	 * enters values into the custom one behind the scenes.
@@ -2402,9 +2434,10 @@ mw.UploadWizard.prototype = {
 	 * @param toggleDiv the div which has the control to open and shut custom options
 	 * @param customDiv the div containing the custom options
 	 */
-	makeCustomToggler: function ( standardDiv, toggleDiv, customDiv ) {
-		$j( toggleDiv )
-			.addClass( 'mwe-more-options closed' )
+	makeCustomToggler: function ( standardDiv, customDiv ) {
+	
+		var toggleDiv = $j('<div />')
+			.addClass( 'mwe-more-options' )
 			.append( $j( '<a />' ) 
 				.click( function() { 
 					var open = ! ( $j( this ).data( 'open' ) ) ;
@@ -2412,7 +2445,6 @@ mw.UploadWizard.prototype = {
 					// on toggle:
 					if ( open ) {
 						// set out class to show the "close" message
-						$j( this ).removeClass( "closed" );
 						$j( this ).addClass( "open" );
 						$j( this ).text( gM( 'mwe-upwiz-fewer-options' ) );
 						// show the more options
@@ -2420,7 +2452,6 @@ mw.UploadWizard.prototype = {
 						standardDiv.disableInputsFade();
 					} else {
 						$j( this ).removeClass( "open" );
-						$j( this ).removeClass( "closed" );
 						$j( this ).text( gM( 'mwe-upwiz-more-options' ) );
 						// hide the more options
 						customDiv.hide();
@@ -2429,6 +2460,11 @@ mw.UploadWizard.prototype = {
 				} )
 				.data( 'open', false )
 				.text( gM( 'mwe-upwiz-more-options' ) ) );
+
+		standardDiv.append( toggleDiv );
+		customDiv.remove();
+		toggleDiv.append( customDiv );
+	
 	},
 
 	/**
@@ -2437,12 +2473,21 @@ mw.UploadWizard.prototype = {
 	 * @param authorInput  an HTML text form element input
 	 * @param licenseInput an mw.UploadWizardLicenseInput object
 	 */
-	applyMacroDeed: function( sourceInput, authorInput, licenseInput ) {
+	applyMacroDeed: function() {
+
 		var _this = this;
+	
+		debugger;
+	
+		var source = $j( _this.sourceInput ).val();
+		var author = $j( _this.authorInput ).val(); // switch to an object to deal with creator/username/plaintext cases
+		var licenses = _this.licenseInput.getValues();
 		
-		var source = $j( sourceInput ).val();
-		var author = $j( authorInput ).val(); // switch to an object to deal with creator/username/plaintext cases
-		var licenses = licenseInput.getValues();
+		var licenseTxt = '';
+		for (key in licenses) {
+			licenseTxt += '[' + key + ']=' + licenses[key] + ' ';
+		}	
+		mw.log( "source:" + source + " author:" + author + " licenses:" + licenseTxt );
 
 		var sourceCustomizable = $j( sourceInput ).data( 'customizable' );
 		var authorCustomizable = $j( authorInput ).data( 'customizable' );
@@ -2485,16 +2530,8 @@ mw.UploadWizard.prototype = {
 
 		} );
 
-	},
-		
-	/**
-	 * Transition from fiddling around with the deeds to editing details
-	 */
-	showDetailsFiles: function() {	
-		$j( '#mwe-upwiz-macro-choice' ).fadeOut( 'fast' ); 
-		$j( '#mwe-upwiz-macro-edit' ).fadeIn( 'fast' );
-	},
-
+	}
+	
 };
 
 /**
@@ -2583,6 +2620,7 @@ jQuery.fn.growTextArea = function( options ) {
 	// in MSIE, this makes it possible to know what scrollheight is 
 	// Technically this means text could now dangle over the edge, 
 	// but it shouldn't because it will always grow to accomodate very quickly.
+
 	if ($j.msie) {
 		this.each( function(i, textArea) {
 			textArea.style.overflow = 'visible';
