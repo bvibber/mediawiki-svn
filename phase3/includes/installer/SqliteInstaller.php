@@ -134,7 +134,7 @@ class SqliteInstaller extends InstallerDBType {
 		}
 		//@todo set up searchindex
 		// Create default interwikis
-		return $this->fillInterwikiTable( $this->db );
+		return $this->populateInterwikiTable( $this->db );
 	}
 
 	function getLocalSettings() {

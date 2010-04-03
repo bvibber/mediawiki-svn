@@ -328,7 +328,7 @@ abstract class InstallerDBType {
 	/**
 	 * Common function for databases that don't understand the MySQLish syntax of interwiki.sql
 	 */
-	protected function fillInterwikiTable( $db ) {
+	protected function populateInterwikiTable( $db ) {
 		global $IP;
 		// Originally from DatabasePostgres
 		$f = fopen( "$IP/maintenance/interwiki.sql", 'r' );
