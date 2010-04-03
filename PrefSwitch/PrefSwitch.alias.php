@@ -9,3 +9,4 @@ $aliases = array();
 $aliases['en'] = array(
 	'PrefSwitch' => array( 'UsabilityInitiativePrefSwitch' ),
 );
+
