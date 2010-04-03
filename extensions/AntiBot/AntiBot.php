@@ -15,6 +15,9 @@
  * And then copy the plugins you want into the active directory.
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	exit( 1 );
+}
 
 /** Configuration */
 
