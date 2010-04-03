@@ -84,7 +84,6 @@ class WebInstallerOutput {
 	}
 
 	function outputHeader() {
-		global $wgVersion;
 		$this->headerDone = true;
 		$dbTypes = $this->parent->getDBTypes();
 
@@ -105,7 +104,7 @@ class WebInstallerOutput {
 <head>
 	<meta name="robots" content="noindex, nofollow" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>MediaWiki <?php echo( htmlspecialchars( $wgVersion ) ); ?> Installation</title>
+	<title><?php $this->outputTitle(); ?></title>
 	<link rel="stylesheet" type="text/css" href="../skins/common/shared.css"/>
 	<link rel="stylesheet" type="text/css" href="../skins/monobook/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../skins/common/config.css"/>
@@ -128,7 +127,7 @@ class WebInstallerOutput {
 <div id="content">
 <div id="bodyContent">
 
-<h1>MediaWiki <?php print htmlspecialchars( $wgVersion ); ?> Installation</h1>
+<h1><?php $this->outputTitle(); ?></h1>
 <?php
 	}
 
@@ -168,14 +167,13 @@ class WebInstallerOutput {
 	}
 
 	function outputShortHeader() {
-		global $wgVersion;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="noindex, nofollow" />
-	<title>MediaWiki <?php echo( htmlspecialchars( $wgVersion ) ); ?> Installation</title>
+	<title><?php $this->outputTitle(); ?></title>
 	<link rel="stylesheet" type="text/css" href="../skins/monobook/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../skins/common/config.css"/>
 	<script type="text/javascript" src="../skins/common/config.js"></script>
@@ -183,6 +181,11 @@ class WebInstallerOutput {
 
 <body style="background-image: none">
 <?php
+	}
+
+	function outputTitle() {
+		global $wgVersion;
+		echo htmlspecialchars( wfMsg( 'config-title', $wgVersion ) );
 	}
 
 	function outputWarnings() {

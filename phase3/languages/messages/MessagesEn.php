@@ -4246,6 +4246,7 @@ Click "Save" to save your edit.',
 This usually occurs when the category has been added to the page in a template.',
 
 # Installation/upgrade messages
+'config-title'                    => 'MediaWiki $1 installation',
 'config-information'              => 'Information',
 'config-session-error'            => 'Error starting session: $1',
 'config-session-expired'          => 'Your session data seems to have expired. 
@@ -4582,6 +4583,7 @@ They may require additional configuration, but you can enable them now',
 'config-install-step-failed'      => 'FAILED',
 'config-install-extensions'       => 'Including extensions',
 'config-install-database'         => 'Setting up database',
+'config-install-pg-schema-failed' => 'Tables creation failed. Make sure that the user "$1" can write to the schema "$2".',
 'config-install-tables'           => 'Creating tables',
 'config-install-interwiki-sql'    => 'Could not find file interwiki.sql',
 'config-install-secretkey'        => 'Generating secret key',
