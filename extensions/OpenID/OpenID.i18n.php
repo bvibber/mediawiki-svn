@@ -640,9 +640,11 @@ OpenID позволява влизането в много различни са
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwenn-Ael
  * @author Y-M D
  */
 $messages['br'] = array(
+	'openid-desc' => "Kevreañ ouzh ar wiki gant [http://openid.net/ OpenID] ha kevreañ ouzh lec'hiennoù OpenID all gant ur gont implijer wiki.",
 	'openidlogin' => 'Kevreañ gant OpenID',
 	'openidserver' => 'Servijer OpenID',
 	'openidxrds' => 'Restr Yadis',
@@ -650,12 +652,14 @@ $messages['br'] = array(
 	'openiderror' => 'Fazi gwiriañ',
 	'openiderrortext' => 'Ur fazi a zo bet e-pad gwiriekadenn ar URL OpenID.',
 	'openidconfigerror' => 'Fazi kefluniadur OpenID',
+	'openidconfigerrortext' => "N'eo ket mat stokañ ar c'hefluniañ OpenID evit ar wiki-mañ.
+Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] al lec'hienn-mañ.",
 	'openidpermission' => 'Fazi aotre OpenID',
 	'openidpermissiontext' => "N'eo ket aotreet an OpenID ho peus roet d'en em lugañ war ar servijer-mañ.",
 	'openidcancel' => 'Gwiriekadur nullet',
 	'openidcanceltext' => "Nullet eo bet ar gwiriekadenn eus ar chomlec'h OpenID.",
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
-	'openidfailuretext' => 'C\'huitet eo bet gwiriekadenn ar chomlec\'h OpenID. Kemennadenn fazi : "$1"',
+	'openidfailuretext' => 'C\'hwitet eo bet gwiriekadenn ar chomlec\'h OpenID. Kemennadenn fazi : "$1"',
 	'openidsuccess' => 'Gwiriet pep tra ervat',
 	'openidsuccesstext' => "Gwiriet eo bet chomlec'h an OpenID ervat.",
 	'openidusernameprefix' => 'Implijer OpenID',
@@ -681,7 +685,8 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 	'openidchoosemanual' => "Un anv dibabet ganeoc'h :",
 	'openidchooseexisting' => 'Ur gont zo anezhi war ar wiki-mañ',
 	'openidchooseusername' => 'Anv implijer :',
-	'openidchoosepassword' => 'ger-tremen :',
+	'openidchoosepassword' => 'Ger-tremen :',
+	'openidconvertinstructions' => "Gant ar furmskrid-se e c'hallit kemmañ ho kont implijer evit implijout ur chomlec'h OpenID pe evit ouzhpennañ chomlec'hioù OpenID.",
 	'openidconvertoraddmoreids' => "Amdreiñ da OpenID pe ouzhpennañ ur chomlec'h OpenID all",
 	'openidconvertsuccess' => 'Amdroet eo bet ervat davet OpenID',
 	'openidconvertsuccesstext' => 'Amdroet ho peus ho OpenID davet $1.',
@@ -692,11 +697,25 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 Ma fell deoc'h implijout OpenID da gevreañ diwezhatoc'h, e c'hallit [[Special:OpenIDConvert|amdreiñ ho kont evit implijout OpenID]].",
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
 	'openidbadusername' => 'Un anv implijer fall zo bet lakaet.',
+	'openidautosubmit' => "Er bajenn-mañ ez eus ur furmskrid hag a c'hallfe bezañ kaset emgefre m'ho peus weredekaet JavaScript.
+Ma n'eus ket, gwaskit war ar bouton « Continue » (kenderc'hel).",
+	'openidclientonlytext' => "Ne c'hallit ket implijout kontoù adalek ar wiki-mañ evel OpenID war lec'hiennoù all.",
 	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => "{{SITENAME}} a embreg an [http://openid.net/ OpenID] stantard evit ur sinadur hepken etre al lec'hiennoù Kenrouedad.
+Gant OpenID e c'hallit kevreañ ouzh lec'hiennoù disheñvel hep implijout ur ger-tremen disheñvel evit pep hini anezho.
+(Gwelit [http://br.wikipedia.org/wiki/OpenID pennad Wikipedia] evit gouzout hiroc'h.)
+
+M'ho peus ur gont dija war {{SITENAME}} e c'hallit [[Special:UserLogin|kevreañ]] ouzh ho kont implijer hag ar ger-tremen boas anezhi. Evit implijout OpenID, en dazont, e c'hallit [[Special:OpenIDConvert|amdreiñ ho kont en OpenID]] goude bezañ kevreet ent reizh.
+
+Meur a [http://openid.net/get/ bourchaser OpenID] ; gallout a rit neuze kaout ur gont OpenID gweredekaet war ur servij all dija.",
 	'openidupdateuserinfo' => 'Hizivaat ma zitouroù personel :',
 	'openiddelete' => 'Dilemel an OpenID',
+	'openiddelete-text' => 'En ur glikañ war ar bouton "{{int:openiddelete-button}}" e c\'hallit dilemel an OpenID $1 eus ho kont.
+Ne c\'hallit ket mui kevreañ ouzh an OpenID-mañ.',
 	'openiddelete-button' => 'Kadarnaat',
 	'openiddeleteerrornopassword' => "Ne c'hallit ket dilemel hoc'h holl OpenID abalamour ma n'eus ger-tremen ebet gant ho kont.
+Ne c'hallfec'h ket kevreañ hep OpenID.",
+	'openiddeleteerroropenidonly' => "Ne c'hallit ket dilemel hoc'h holl OpenID abalamour ma ne c'hallit kevreañ nemet gant hoc'h OpenID.
 Ne c'hallfec'h ket kevreañ hep OpenID.",
 	'openiddelete-sucess' => 'Tennet eo bet ervat an OpenID eus ho kont.',
 	'openiddelete-error' => "Ur fazi a zo bet pa oac'h o klask tennañ an OpenID eus ho kont.",
@@ -1319,6 +1338,7 @@ Bonvolu konsulti [[Special:ListUsers/sysop|administranton]].',
 	'openidemail' => 'Retadreso',
 	'openidlanguage' => 'Lingvo',
 	'openidtimezone' => 'Horzono',
+	'openidchooselegend' => 'Elekto de salutnomo',
 	'openidchooseinstructions' => 'Ĉiuj uzantoj bezonas kromnomo;
 vi povas selekti el unu la jenaj opcioj.',
 	'openidchoosenick' => 'Via kromnomo ($1)',
@@ -2125,13 +2145,16 @@ Molimo savjetujte se s [[Special:ListUsers/sysop|administratorom]].',
 	'openidemail' => 'E-pošta',
 	'openidlanguage' => 'Jezik',
 	'openidtimezone' => 'Vremenska zona',
+	'openidchooselegend' => 'Odabir suradničkog imena',
 	'openidchooseinstructions' => 'Svi suradnici trebaju imati nadimak;
 možete odabrati jedan od niže ponuđenih.',
+	'openidchoosenick' => 'Vaš nadimak ($1)',
 	'openidchoosefull' => 'Vaše puno ime ($1)',
 	'openidchooseurl' => 'Ime uzeto s Vašeg OpenID ($1)',
 	'openidchooseauto' => 'Automatski generirano ime ($1)',
 	'openidchoosemanual' => 'Ime po Vašem izboru:',
-	'openidchooseexisting' => 'Postojeći račun na ovom wiki:',
+	'openidchooseexisting' => 'Postojeći račun na ovom wiki',
+	'openidchooseusername' => 'Suradničko ime:',
 	'openidchoosepassword' => 'lozinka:',
 	'openidconvertinstructions' => 'Ovaj obrazac Vam omogućuje da promijenite Vaš suradničkii račun za upotrebu URL OpenID ili da dodate više OpenID URLova',
 	'openidconvertoraddmoreids' => 'Pretvorite u OpenID ili dodajte drugi OpenID URL',
@@ -2155,11 +2178,15 @@ Ako već imate račun na {{SITENAME}}, možete se [[Special:UserLogin|prijaviti]
 Da bi koristili OpenID u buduće, možete [[Special:OpenIDConvert|pretvoriti vaš račun u OpenID]] nakon što se normalno prijavite.
 
 Postoji mnogo [http://wiki.openid.net/Public_OpenID_providers javnih pružatelja usluga za OpenID], i možda već imate neki račun na drugom servisu koji podržava OpenID.',
-	'openidupdateuserinfo' => 'Ažuriraj moje osobne informacije',
+	'openidupdateuserinfo' => 'Ažuriraj moje osobne informacije:',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-text' => 'Klikom na "{{int:openiddelete-button}}" uklonit ćete OpenID $1 s Vašeg računa.
 Nećete više biti u mogućnosti prijaviti se s ovim OpenID.',
 	'openiddelete-button' => 'Potvrdi',
+	'openiddeleteerrornopassword' => 'Ne možete obrisati sve Vaše OpenID jer vaš račun nema lozinke.
+Nećete se moći prijaviti bez OpenID.',
+	'openiddeleteerroropenidonly' => 'Ne možete obrisati sve Vaše OpenID jer Vam je omogućeno da se prijavite samo sa OpenID.
+Bez OpenId nećete se moći prijaviti.',
 	'openiddelete-sucess' => 'OpenID je uspješno uklonjen iz vašeg računa.',
 	'openiddelete-error' => 'Došlo je do pogreška pri uklanjanju OpenID iz Vašeg računa.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] postavke',
@@ -4228,13 +4255,18 @@ Você não poderia entrar sem um OpenID.',
  * @author Misterr
  */
 $messages['ro'] = array(
+	'openid-desc' => 'Loghează-te pe acest wiki cu un [http://openid.net/ OpenID], şi conectaţi-vă la alte site-uri web OpenID cu un cont de utilizator wiki.',
 	'openidlogin' => 'Autentificare cu OpenID',
 	'openidserver' => 'Server OpenID',
+	'openidxrds' => 'Fişier Yadis',
 	'openidconvert' => 'Convertor OpenID',
 	'openiderror' => 'Eroare de verificare',
 	'openiderrortext' => 'A avut loc o eroare în timpul verificării URL-ului OpenID',
 	'openidconfigerror' => 'Eroare de configurare OpenID',
+	'openidconfigerrortext' => 'Configurarea de stocare OpenID pentru acest wiki este nulă.
+Vă rugăm să contactaţi un [[Special:ListUsers/sysop|administrator]].',
 	'openidpermission' => 'Eroare de permisiune OpenID',
+	'openidpermissiontext' => 'OpenID nu este permis de a se loga pe acest server.',
 	'openidcancel' => 'Verificare anulată',
 	'openidcanceltext' => 'Verificarea URL-ului OpenID a fost anulată.',
 	'openidfailure' => 'Verificare eşuată',
@@ -4242,6 +4274,10 @@ $messages['ro'] = array(
 	'openidsuccess' => 'Verificare cu succes',
 	'openidsuccesstext' => 'Verificarea URL-ului OpenID a reuşit.',
 	'openidusernameprefix' => 'Utilizator OpenID',
+	'openidserverlogininstructions' => 'Introduceţi parola mai jos pentru a vă conecta la $3 ca utilizator $2 (pagină de utilizator $1).',
+	'openidtrustinstructions' => 'Verificaţi dacă doriţi să partajaţi datele cu $1.',
+	'openidallowtrust' => '$1 permite să aibă încredere în acest cont de utilizator',
+	'openidnopolicy' => 'Site-ul nu a specificat politica de confidenţialitate.',
 	'openidoptional' => 'Opţional',
 	'openidrequired' => 'Necesar',
 	'openidnickname' => 'Poreclă',
@@ -4251,10 +4287,11 @@ $messages['ro'] = array(
 	'openidtimezone' => 'Fus orar',
 	'openidchooseinstructions' => 'Toţi utilizatorii necesită o poreclă;
 se poate alege una din opţiunile de mai jos.',
+	'openidchoosenick' => 'Porecla dvs. ($1)',
 	'openidchoosefull' => 'Numele întreg ($1)',
 	'openidchooseauto' => 'Un nume generat automat ($1)',
 	'openidchoosemanual' => 'Un nume la alegere:',
-	'openidchooseexisting' => 'Un cont existent pe acest wiki:',
+	'openidchooseexisting' => 'Există un cont pe aces wiki',
 	'openidchooseusername' => 'Nume de utilizator',
 	'openidchoosepassword' => 'parolă:',
 	'openidconvertsuccess' => 'Convertit cu succes la OpenID',

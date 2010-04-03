@@ -173,6 +173,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwenn-Ael
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -183,8 +184,11 @@ $messages['br'] = array(
 	'editmsg-show-list' => 'Diskouez talvoudoù evit anv ar gemenadenn "$1"',
 	'editmsg-get-patch' => 'Krouiñ ur patch',
 	'editmsg-new-search' => 'Klask nevez',
+	'editmsg-warning-parse1' => "N'eo ket bet dinoet jedad red anv ar gemennadenn : $1",
 	'editmsg-warning-parse2' => '* Gortozet e vez un arouezenn arroudenn goude ar bir : $1',
 	'editmsg-warning-parse3' => '* Dibenn an arouezennoù nann-kavet : $1',
+	'editmsg-warning-file' => 'Kavet ez eus bet fazioù pa oa bet lennet ar restr evit {{PLURAL:$2|yezh da-heul|yezhoù da heul}} : $1',
+	'editmsg-warning-mismatch' => "*an destenn orin n'he deus ket kemeret an dalvoudenn gortozet evit {{PLURAL:$2|ar yezh da heul|ar yezhoù da-heul}} : $1",
 	'editmsg-apply-patch' => 'Arloañ ar patch',
 	'editmsg-no-patch' => 'Diposupl eo seveniñ urzhiad ar "patch"',
 	'editmsg-patch-failed' => 'Arvar ar patch gant ar fazi dont er-maez $1',

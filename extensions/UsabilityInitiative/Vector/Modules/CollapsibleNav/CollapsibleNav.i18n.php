@@ -48,6 +48,13 @@ $messages['el'] = array(
 	'vector-collapsiblenav-preference' => 'Ενεργοποίηση πτυσσόμενου αριστερού μενού πλοήγησης',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'vector-collapsiblenav-preference' => 'Ŝalti kaŝablan dekstran navigan menuon',
+);
+
 /** Spanish (Español)
  * @author Manuelt15
  */

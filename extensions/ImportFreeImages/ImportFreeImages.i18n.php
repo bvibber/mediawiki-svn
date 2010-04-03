@@ -158,10 +158,13 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwenn-Ael
  * @author Y-M D
  */
 $messages['br'] = array(
 	'importfreeimages' => 'Enporzhiañ skeudennoù frank a wirioù',
+	'importfreeimages-desc' => "a bourchas un doare da [[Special:ImportFreeImages| ezporzhiañ luc'hskeudennoù dindan aotre a zere]] adalek [http://www.flickr.com flickr]",
+	'importfreeimages_description' => 'Gallout a rit gant ar bajenn-mañ klask skeudennoù dindan aotre a zere adalek flickr hag ezporzhiañ anezho en ho wiki.',
 	'importfreeimages_nophotosfound' => "N'eo bet kavet poltred ebet adal ho dezverkoù klask '$1', mar plij klaskit adarre",
 	'importfreeimages_owner' => 'Aozer',
 	'importfreeimages_importthis' => 'enporzhiañ an dra-se',

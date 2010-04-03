@@ -453,6 +453,13 @@ $messages['sk'] = array(
 	'donationform-submit' => 'Darujte pomocou PayPal',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'donationform-submit' => 'Prispevajte s PayPalom',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

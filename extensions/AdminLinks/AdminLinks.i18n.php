@@ -41,14 +41,6 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
-/** Latgaļu (Latgaļu)
- * @author Dark Eagle
- */
-$messages['ltg'] = array(
-	'adminlinks_users' => 'Lītuotuoji',
-	'adminlinks_createuser' => 'Sataiseit jaunu lītuotuoju',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -751,6 +743,14 @@ $messages['li'] = array(
 	'right-adminlinks' => 'De verwiezing nao [[Special:AdminLinks|verwiezinge veur systeemwèrkers]] betrachte',
 );
 
+/** Latgaļu (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'adminlinks_users' => 'Lītuotuoji',
+	'adminlinks_createuser' => 'Sataiseit jaunu lītuotuoju',
+);
+
 /** Laz (Laz)
  * @author Bombola
  */
@@ -1166,6 +1166,8 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'adminlinks' => 'నిర్వహణా లింకులు',
+	'adminlinks-desc' => 'నిర్వాహకులకు ఉపయుక్తమైన లంకెలతో ఒక [[Special:AdminLinks|ప్రత్యేక పుట]]ని చేరుస్తుంది',
+	'adminlinks_documentation' => '$1 పత్రావళి',
 	'adminlinks_general' => 'సాధారణ',
 	'adminlinks_editsidebar' => 'సైడ్‌బార్ ను మార్చు',
 	'adminlinks_editcss' => 'స్టైల్ షీట్ ను మార్చు',

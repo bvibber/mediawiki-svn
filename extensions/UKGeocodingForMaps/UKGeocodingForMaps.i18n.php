@@ -43,6 +43,15 @@ $messages['br'] = array(
 	'ukgeocoding_couldNotGeocode' => "N'eus ket bet gallet geokodiñ ur c'hod-post pe meur a hini; tennet int bet diwar ar gartenn.",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'ukgeocoding_name' => 'Geokoděrowanje Zjadnośonego kralojstwa za Kórty',
+	'ukgeocoding_desc' => 'Rozšyrja Kórty pśez parserowu funkciju display_uk_point z implementaciju Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Někotare postowe licby njejsu se dali geokoděrowaś a su se na kórśe wuwóstajili.',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */
@@ -85,7 +94,7 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'ukgeocoding_name' => 'UK Geocoding za mapy',
+	'ukgeocoding_name' => 'Geokodowanje Zjednoćeneho kralestwa za Karty',
 	'ukgeocoding_desc' => 'Rozšěrja mapy přez parserowu funkciju display_uk_point z implementaciju Google Maps',
 	'ukgeocoding_couldNotGeocode' => 'Jedne póstowe wodźenske čisło abo wjacore póstowe wodźenske čisła njedachu so geokodować a buchu na karće wuwostajene.',
 );

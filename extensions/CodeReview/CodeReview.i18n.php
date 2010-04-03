@@ -4076,9 +4076,11 @@ $messages['hu'] = array(
 	'code-prop-changes' => 'Állapot & címkézési napló',
 	'code-desc' => '[[Special:Code|Kódellenőrző eszköz]] [[Special:RepoAdmin|Subversion-támogatással]]',
 	'code-no-repo' => 'Nincs kódtárhely beállítva!',
+	'code-repo-not-found' => 'A(z) <b>$1</b> kódtárhely nem létezik!',
 	'code-load-diff' => 'Változtatások betöltése...',
 	'code-notes' => 'legutóbbi hozzászólások',
 	'code-statuschanges' => 'állapotváltoztatások',
+	'code-mycommits' => 'saját commitok',
 	'code-authors' => 'szerzők',
 	'code-status' => 'állapotok',
 	'code-tags' => 'címkék',
@@ -4128,7 +4130,9 @@ $messages['hu'] = array(
 	'code-rev-inline-preview' => 'Előnézet:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => 'A változtatás túl nagy, nem lehet megjeleníteni.',
 	'code-rev-purge-link' => 'frissítés',
+	'code-rev-total' => 'Találatok száma összesen: $1',
 	'code-status-new' => 'új',
 	'code-status-fixme' => 'javítandó',
 	'code-status-reverted' => 'visszaállítva',
@@ -4138,6 +4142,10 @@ $messages['hu'] = array(
 	'code-status-deferred' => 'halasztva',
 	'code-pathsearch-legend' => 'Változatok keresése elérési út alapján',
 	'code-pathsearch-path' => 'Elérési út:',
+	'code-pathsearch-filter' => 'Szűrő alkalmazva:',
+	'code-revfilter-cr_status' => 'Állapot = $1',
+	'code-revfilter-cr_author' => 'Szerző = $1',
+	'code-revfilter-clear' => 'Szűrő törlése',
 	'code-rev-submit' => 'Változások elmentése',
 	'code-rev-submit-next' => 'Mentés & ugrás a következőre',
 	'code-batch-status' => 'Állapot módosítása:',
@@ -4155,6 +4163,7 @@ $messages['hu'] = array(
 	'codereview-tests-failed2' => '$1 sikeres {{PLURAL:$2|teszt|teszt}}, $3 sikertelen {{PLURAL:$4|teszt|teszt}}:',
 	'codereview-tests-running' => 'A tesztesetek futnak…',
 	'codereview-tests-aborted' => 'Tesztfutás megszakítva.',
+	'codereview-tests-failed' => 'Sikertelen',
 	'codereview-email-subj' => '[$1] [$2]: Új hozzászólás',
 	'codereview-email-body' => '„$1” új hozzászólást fűzött az $3 változathoz.
 
@@ -4630,6 +4639,7 @@ $4',
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Naohiro19
  * @author Whym
  * @author 青子守歌
  */
@@ -4647,9 +4657,11 @@ $messages['ja'] = array(
 	'code-prop-changes' => '状態とタグ付けのログ',
 	'code-desc' => '[[Special:RepoAdmin|Subversion サポート]]付きの[[Special:Code|コードレビュー・ツール]]',
 	'code-no-repo' => '設定されたリポジトリはありません！',
+	'code-repo-not-found' => '<b>$1</b>は存在しないレポジトリーです!',
 	'code-load-diff' => '差分を読み込み中…',
 	'code-notes' => '最近のコメント',
 	'code-statuschanges' => '状態の変更',
+	'code-mycommits' => '自分のコミット',
 	'code-authors' => '著者',
 	'code-status' => '状態',
 	'code-tags' => 'タグ',
@@ -4701,6 +4713,7 @@ $messages['ja'] = array(
 	'code-rev-diff-link' => '差分',
 	'code-rev-diff-too-large' => '差分が大きすぎて表示出来ません。',
 	'code-rev-purge-link' => 'パージ',
+	'code-rev-total' => '結果の合計数: $1',
 	'code-status-new' => '新規',
 	'code-status-fixme' => '要修正',
 	'code-status-reverted' => '差し戻し済み',
@@ -4710,6 +4723,10 @@ $messages['ja'] = array(
 	'code-status-deferred' => '保留中',
 	'code-pathsearch-legend' => 'このリポジトリ内のリビジョンをパスで検索する',
 	'code-pathsearch-path' => 'パス:',
+	'code-pathsearch-filter' => 'フィルターの適用',
+	'code-revfilter-cr_status' => '状態 = $1',
+	'code-revfilter-cr_author' => '作者 = $1',
+	'code-revfilter-clear' => 'フィルターのクリア',
 	'code-rev-submit' => '変更を保存',
 	'code-rev-submit-next' => '保存し、次の未解決に移る',
 	'code-batch-status' => '状態を変更:',
@@ -4727,6 +4744,7 @@ $messages['ja'] = array(
 	'codereview-tests-failed2' => '$1件の{{PLURAL:$2|テスト}}が成功し、$3件の{{PLURAL:$4|テスト}}が失敗:',
 	'codereview-tests-running' => 'テストケース実行中…',
 	'codereview-tests-aborted' => 'テスト実行中止。',
+	'codereview-tests-failed' => '失敗した',
 	'codereview-email-subj' => '[$1] [$2]: 新規コメント追加',
 	'codereview-email-body' => '利用者「$1」が $3 にコメントをつけました。
 

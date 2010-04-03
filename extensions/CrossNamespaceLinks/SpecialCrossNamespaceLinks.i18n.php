@@ -912,6 +912,16 @@ $messages['sk'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'crossnamespacelinks' => 'Povezave prek imenskih prostorov',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Navede povezave prek imenskih prostorov]], ki naj ne bi obstajale na {{GRAMMAR:dajalnik|{{SITENAME}}}}',
+	'crossnamespacelinks-summary' => 'Ta stran nudi seznam povezav iz strani glavnega imenskega prostora na stran v drugih imenskih prostorih (z izjemo imenskih prostorov {{ns:special}}, {{ns:talk}}, {{ns:project}} in {{ns:template}}), ki jih ni priporočljivo uporabljati.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|povezava|povezavi|povezave|povezav}} do $3',
+);
+
 /** Albanian (Shqip)
  * @author Dori
  */

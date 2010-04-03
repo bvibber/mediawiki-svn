@@ -693,6 +693,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Fantasticfears
  * @author PhiLiP
  * @author Shinjiman
  * @author Shizhao
@@ -700,6 +701,7 @@ $messages['yue'] = array(
 $messages['zh-hans'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由维基百科可用性小组开发的新功能，用以增强MediaWiki的可用性',
+	'prefs-beta' => 'Beta特性',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

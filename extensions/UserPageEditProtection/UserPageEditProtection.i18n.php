@@ -210,3 +210,11 @@ $messages['ru'] = array(
 	'right-editalluserpages' => 'изменение страниц участников',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wong128hk
+ */
+$messages['zh-hant'] = array(
+	'userpageeditprotection-desc' => '限制用戶及獲授權者編輯用戶頁',
+	'right-editalluserpages' => '編輯用戶頁',
+);
+

@@ -1098,6 +1098,7 @@ Peringkatnya adalah sebagai berikut:
  * @author Darth Kule
  * @author Gianfranco
  * @author Pietrodn
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'ratinghistory' => 'Cronologia dei giudizi delle pagine',
@@ -1120,10 +1121,12 @@ $messages['it'] = array(
 	'ratinghistory-table-rating' => 'Giudizio',
 	'ratinghistory-table-votes' => 'Voti',
 	'ratinghistory-none' => 'Non sono disponibile sufficienti dati di feedback dei lettori per poter rappresentare dei grafici al momento.',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - Insufficiente; '''(2)''' - Mediocre; '''(3)''' - Discreto; '''(4)''' - Buono; '''(5)''' - Ottimo;",
 	'ratinghistory-legend' => "Il '''numero giornaliero di valutazioni''' <font color=\"red\">''(rosso)''</font>, il '''giudizio medio giornaliero''' <font color=\"blue\">''(blu)''</font> ed i '''giudizi medi correnti''' <font color=\"green\">''(verde)''</font> sono rappresentati graficamente di seguito, in ordine di data. I '''giudizi medi correnti''' sono semplicemente la media di tutti i giudizi giornalieri ''all'interno'' di questo arco temporale per ciascun giorno.
 I giudizi sono i seguenti:
 
 Scala: '''[1]''' - Insufficiente; '''[2]''' - Mediocre; '''[3]''' - Discreto; '''[4]''' - Buono; '''[5]''' - Eccellente;",
+	'ratinghistory-graph-scale' => "'''Recensioni per giorno''' <span style=\"color: red\">''(rosso)''</span> mostrate in scala ''1:\$1''.",
 	'right-feedback' => 'Usa il modulo di feedback per giudicare una pagina',
 );
 

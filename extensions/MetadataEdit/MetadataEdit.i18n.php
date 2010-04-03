@@ -48,6 +48,15 @@ $messages['dsb'] = array(
 	'metadata_help' => 'Metadaty:',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ * @author Piolinfax
+ */
+$messages['es'] = array(
+	'metadataedit-desc' => 'Colocar categorías, enlaces de idiomas y plantillas permitidas en un cuadro de texto separado cuando edite páginas',
+	'metadata_help' => 'Metadatos:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

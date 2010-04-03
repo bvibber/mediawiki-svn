@@ -278,6 +278,17 @@ $messages['ia'] = array(
 	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixel, grandor del file: $3, typo MIME: $4)',
 );
 
+/** Japanese (日本語)
+ * @author Naohiro19
+ */
+$messages['ja'] = array(
+	'tiff-desc' => 'TIFFファイルの画像モードを表示するためのハンドラ',
+	'tiff_no_metadata' => 'TIFFからのメタデータが取得できません',
+	'tiff_page_error' => '範囲にないページ番号',
+	'tiff_file_too_large' => 'アップロードされたファイルは容量が大きすぎるために拒否されました。',
+	'tiff-file-info-size' => '(ページ $5、$1 × $2ピクセル、ファイルサイズ:$3、MIME:$4)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

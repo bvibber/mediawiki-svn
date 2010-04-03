@@ -253,7 +253,9 @@ $messages['ia'] = array(
 	'right-lastlogin' => 'Vider le ultime vice que un usator aperiva un session',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
 $messages['ja'] = array(
 	'lastuserlogin' => '利用者の最終ログイン',
 	'lastuserlogin_userid' => '利用者名',
@@ -261,6 +263,7 @@ $messages['ja'] = array(
 	'lastuserlogin_useremail' => 'メールアドレス',
 	'lastuserlogin_lastlogin' => '最終ログイン',
 	'lastuserlogin_daysago' => '経過日数',
+	'right-lastlogin' => '利用者が最後にログインした時刻を表示する',
 );
 
 /** Latin (Latina)

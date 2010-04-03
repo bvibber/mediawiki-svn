@@ -276,7 +276,6 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'inspectcache' => 'Inspeccionar cache',
 	'inspectcache-desc' => 'Una simple herramienta correctora de defectos para inspeccionar los contenidos de los cache compartidos',
-	'inspectcache-ok' => 'Aceptar',
 	'inspectcache-general' => 'Cache general',
 	'inspectcache-parser' => 'Cache del parser',
 	'inspectcache-message' => 'Cache de mensajes',
@@ -284,6 +283,7 @@ $messages['es'] = array(
 	'inspectcache-delete' => 'Borrar',
 	'inspectcache-deleted' => 'cache borrado',
 	'inspectcache-list' => 'Lista',
+	'right-inspectcache' => 'Ver y borrar entradas de cache',
 );
 
 /** Basque (Euskara)

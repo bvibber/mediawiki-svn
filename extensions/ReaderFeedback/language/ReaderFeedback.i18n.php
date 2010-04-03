@@ -1235,6 +1235,7 @@ $messages['io'] = array(
  * @author Gianfranco
  * @author Melos
  * @author Pietrodn
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'readerfeedback' => 'Cosa pensi di questa pagina?',
@@ -1257,7 +1258,13 @@ $messages['it'] = array(
 	'readerfeedback-submitting' => 'Invio in corso...',
 	'readerfeedback-finished' => 'Grazie!',
 	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tierfilter' => 'Valutazione:',
+	'readerfeedback-tier-high' => 'Alto',
+	'readerfeedback-tier-medium' => 'Moderato',
+	'readerfeedback-tier-poor' => 'Povero',
 	'tooltip-ca-ratinghist' => 'Valutazioni dei lettori per questa pagina',
+	'specialpages-group-feedback' => 'Opinione del lettore',
+	'readerfeedback-tt-review' => 'Invia recensione',
 );
 
 /** Japanese (日本語)

@@ -845,6 +845,15 @@ $messages['sk'] = array(
 	'contrib-tracking-button' => 'Pokračovať',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'contrib-tracking-error' => 'Napaka',
+	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
+	'contrib-tracking-button' => 'Nadaljuj',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
  */

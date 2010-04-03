@@ -310,6 +310,13 @@ $messages['ka'] = array(
 	'wikieditor-template-editor-dialog-submit' => 'განახლება',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'wikieditor-template-editor-dialog-cancel' => '취소',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -550,6 +557,7 @@ $messages['yi'] = array(
 $messages['zh-hans'] = array(
 	'wikieditor-template-editor-preference' => '启用wiki模板的表单式编辑',
 	'wikieditor-template-editor-dialog-title' => '编辑模板',
+	'wikieditor-template-editor-dialog-submit' => '更新',
 	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 

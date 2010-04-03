@@ -2504,6 +2504,7 @@ Por favor reporta esto al [[{{MediaWiki:Grouppage-sysop}}|administrator del siti
 	'mv_file_desc_label' => 'mensaje de descripción de stream',
 	'mv_delete_stream_file' => 'borrar referencia de archivo stream',
 	'mv_save_changes' => 'Grabar cambios',
+	'mv_file_with_same_desc' => 'Error: ya existe otro archivo de flujo con la misma clave de descripción <i>$1</i>',
 	'mv_updated_stream_files' => 'Actualizad registro de archivos stream',
 	'mv_removed_file_stream' => 'Archivo stream removido: $1',
 	'mv_missing_stream_text' => 'El stream que has solicitado <b>$1</b> no está disponible.<br />
@@ -2517,6 +2518,7 @@ o puedes desear <a href="$3">Agregar el stream</a>.',
 	'mv_label_stream_desc' => 'Descripción de stream',
 	'add_stream_permission' => 'usted carece de permiso para agregar un nuevo stream',
 	'edit_stream_missing' => 'Nombre de stream perdido',
+	'mv_missing_req_time' => 'Tiempo de solicitud no especificado',
 	'mv_missing_cat' => 'Nombre de categoría perdida',
 	'mv_stream_already_exists' => 'El stream <a href="$2">$1</a> ya existe',
 	'mv_summary_add_stream' => 'Stream agregado por formulario',
@@ -2548,22 +2550,30 @@ o puedes desear <a href="$3">Agregar el stream</a>.',
 	'mv_improve_transcript' => 'Mejorar transcripción',
 	'mv_people_matches' => 'Coincidencias en personas',
 	'mv_category_matches' => 'Coincidencias de título de categoría',
+	'mv_bill_matches' => 'Coincidencias de facturas',
 	'mv_interest_group_matches' => 'Coincidencias en grupos de interés',
 	'mv_click_to_edit' => 'hacer click para editar',
 	'ht_en' => 'Transcribir',
 	'ht_en_desc' => 'Transcripciones en inglés.
 Este tipo de superposición es para texto hablado',
 	'anno_en' => 'Anotaciones y categorías',
+	'anno_en_desc' => 'Clasificaciones y anotaciones en inglés.
+Esta presentación puede ser utilizada para categorizar secciones de vídeo o añadir notas que no se correspondan con texto hablado',
 	'thomas_en' => 'Transcripcion oficial',
 	'thomas_en_desc' => 'Transcripción oficial de Thomas del servicio de grabación de los gobiernos THOMAS.
 Fecha y hora fuente sincronizada por c-spanarchives.org de C-SPAN.',
 	'mvd_default_mismatch' => 'Error en el archivo de preferences',
+	'mvd_default_mismatch_text' => 'Hay un error en su archivo de configuración.
+$mvMVDTypeDefaultDisp debería ser un subconjunto de $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 para $2 de $3',
 	'mv_time_separator' => '$1 a $2',
 	'mv_list_streams' => 'Transmisiones de lista de MetaVid',
 	'mv_list_streams_page' => 'Transmisiones de lista de MetaVid',
 	'mv_list_streams_docu' => 'Los siguientes streams existen:',
 	'mv_list_streams_none' => 'No existe streams',
+	'mvvideofeed' => 'Exportación de flujo de vídeo MetaVid',
+	'mvexportask' => 'Exportación de hilo de vídeo semántico',
+	'video_feed_cat' => 'Hilo de vídeo para categoría:',
 	'mv-category-media-count' => '$1 {{PLURAL:$1|segmento|segmentos}} media en categoría',
 	'mv_mvd_linkback' => 'Parte del flujo $1 <br />
 Saltar a visualización de flujo: $2',
@@ -7566,6 +7576,16 @@ $messages['pl'] = array(
 	'mv_date_last_week' => 'Ostatni tydzień',
 	'mv_most_viewed' => 'Najczęściej oglądane',
 	'mv_category' => 'kategoria',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
+	'metavid' => 'Pàgina MetaVid',
+	'mv_missing_stream' => 'Stream mancant: $1',
+	'specialpages-group-mv_group' => 'Pàgina special MetaVidWiki',
 );
 
 /** Pashto (پښتو)

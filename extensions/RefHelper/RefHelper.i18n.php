@@ -423,9 +423,12 @@ Móžeš [[Special:RefHelper|referencu manuelnje přidać]] abo [[Special:RefSea
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'refhelper-label_authorsurname' => 'Vezetéknév:',
 	'refhelper-title' => 'Cím:',
+	'refhelper-volume' => 'Kötet:',
 	'refhelper-pages' => 'Oldalszám:',
 	'refhelper-year' => 'Év:',
+	'refhelper-category' => '$1 kategória:',
 	'refhelper-create' => 'Létrehozás',
 	'refhelper-search' => 'Keresés',
 );
@@ -468,9 +471,12 @@ Tu pote [[Special:RefHelper|adder le referentia manualmente]] o [[Special:RefSea
 
 /** Japanese (日本語)
  * @author Hosiryuhosi
+ * @author Naohiro19
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'refhelper' => '注釈ヘルパー',
+	'refsearch' => '注釈検索',
 	'refhelper-refcreate_autocomment' => '自動ページ作成。',
 	'refhelper-refcreate_success' => 'ページ[[$1]]は存在しておらず、作成されていません。',
 	'refhelper-refcreate_failure' => 'ページ[[$1]]は既に存在しています！',
@@ -480,9 +486,13 @@ $messages['ja'] = array(
 	'refhelper-title' => 'タイトル:',
 	'refhelper-pages' => 'ページ:',
 	'refhelper-year' => '年:',
+	'refhelper-refname' => '注釈名:',
 	'refhelper-category' => 'カテゴリ $1:',
 	'refhelper-create' => '作成',
 	'refhelper-search' => '検索',
+	'refhelper-toolbox_link_create' => '注釈を作成',
+	'refhelper-toolbox_link_search' => '検索から注釈を作成',
+	'refhelper-newarticle_nocitation' => 'この名前には現在、注釈がありません。',
 );
 
 /** Kannada (ಕನ್ನಡ)

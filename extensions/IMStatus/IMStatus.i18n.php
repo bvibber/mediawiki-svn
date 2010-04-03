@@ -622,6 +622,7 @@ D ID, wu Du bruuchsch, sin d Zahlen un Buechstabe zwische „$2“ un „$3“.'
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -638,7 +639,7 @@ $messages['he'] = array(
 	'imstatus_action' => 'פעולה בעת הלחיצה על הכפתור',
 	'imstatus_details_saa' => 'לפרטים נוספים על כל הסגנונות והפעולות, ראו $1.',
 	'imstatus_your_name' => 'שם ה־$1 שלך',
-	'imstatus_aim_presence' => '$1 מציג את המצב שלך וקישור שיפעיל את AIM לשליחת הודעה, במידה ולמשתמש יש AIM מותקן.',
+	'imstatus_aim_presence' => '$1 מציג את המצב שלך וקישור שיפעיל את AIM לשליחת הודעה אם למשתמש יש AIM מותקן.',
 	'imstatus_aim_api' => '$1 מציג את המצב שלך וקישור שיפעיל את גרסת <b>דפדפן</b> מבוססת JavaScript של AIM לשליחת הודעות אליך.',
 	'imstatus_gtalk_code' => 'קוד ה־Google talk שלך',
 	'imstatus_gtalk_get_code' => 'קוד ה־Google talk שלך: ניתן לקבלו ב־$1.',

@@ -4080,7 +4080,29 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'contributionhistory' => 'Zgodovina prispevkov',
+	'contrib-hist-name' => 'Ime',
+	'contrib-hist-date' => 'Čas in datum',
+	'contrib-hist-amount' => 'Količina',
+	'contrib-hist-next' => 'Starejši prispevki',
+	'contrib-hist-previous' => 'Novejši prispevki',
+	'contrib-hist-anonymous' => 'Brezimnež',
+	'contributionstatistics' => 'Statistika prispevkov',
+	'contribstats-day' => 'Dan',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Znesek (USD)',
+	'contribstats-contributions' => 'Prispevki',
+	'contribstats-total' => 'Skupaj (USD)',
+	'contribstats-avg' => 'Povprečje (USD)',
+	'contribstats-total-ytd' => 'Skupaj (YTD)',
+	'contribstats-value-under' => 'Pod $1',
+	'contribstats-value-from' => 'Od $1–$2',
+	'contribstats-value-over' => 'Nad $1',
+	'contribstats-day-totals' => 'Skupaj za dan',
 	'contribstats-week' => 'Teden',
+	'contribstats-banner' => 'Pasica',
+	'contribstats-clicks' => 'Kliki',
+	'contribstats-average' => 'Povprečje',
+	'contribstats-credit-card' => 'Kreditna kartica',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

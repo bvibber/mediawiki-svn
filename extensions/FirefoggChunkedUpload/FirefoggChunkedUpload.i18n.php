@@ -19,6 +19,20 @@ $messages['be-tarask'] = array(
 	'firefoggcu-desc' => 'Парцыённы пратакол загрузкі Firefogg',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'firefoggcu-desc' => 'Protokol Firefogg za nagraśe pó porcijach',
+);
+
+/** Spanish (Español)
+ * @author Pertile
+ */
+$messages['es'] = array(
+	'firefoggcu-desc' => 'Protocolo de carga por trozos de Firefogg',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -40,6 +54,27 @@ $messages['gsw'] = array(
 	'firefoggcu-desc' => 'Stuckwys-Uffeladigs-Protokoll vu Firefogg',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'firefoggcu-desc' => 'Protokol Firefogg za nahraće po porcijach',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'firefoggcu-desc' => 'A Firefogg daraboló feltöltési protokollja',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'firefoggcu-desc' => 'Protocollo de incargamento in portiones de Firefogg',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -52,6 +87,13 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'firefoggcu-desc' => 'Firefogg-овиот протокол на подигање дел по дел',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'firefoggcu-desc' => 'Firefogg-protocol voor uploaden in delen (Chunked Uploading)',
 );
 
 /** Piedmontese (Piemontèis)

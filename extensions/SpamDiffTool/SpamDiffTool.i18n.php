@@ -212,13 +212,15 @@ $messages['br'] = array(
 	'spamdifftool_cantedit' => "Ho tigarez - n'oc'h ket aotreet kemmañ marilh du ar stroboù",
 	'spamdifftool_notext' => "N'eus testenn ebet da ouzhpennañ da roll du ar stroboù.
 Klikit <a href='$1'>amañ</a> evit kenderc'hel.",
-	'spamdifftool_confirm' => "Kadarnait ho peus c'hoant da ouzhpennañ ar gasadennoù-mañ e roll du ar stroboù.
+	'spamdifftool_confirm' => "Kadarnait ho peus c'hoant da ouzhpennañ ar c'hasadennoù-mañ e roll du ar stroboù.
 (Klikit <a href='$1' target='new'>amañ</a> evit menegiñ neb kudenn.)",
 	'spamdifftool_summary' => 'Ouzhpennañ da roll du ar stroboù',
-	'spamdifftool_urls_detected' => "Diguzhet eo bet an URLoù-mañ er c'hemmoù-mañ.
+	'spamdifftool_urls_detected' => "Dionoet eo bet an URLoù-mañ er c'hemmoù-mañ.
 Pe re ho peus c'hoant da ouzhpennañ da roll du ar stroboù ?
 Renket eo an deskrivoù-se eus ar re strishañ d'ar re laoskañ.
-Pa vez berzet un anv domani klok e vez berzet an holl liammoù o  tont diwarnañ.",
+Pa vez stanket un anv domani klok e vez stanket an holl liammoù o  tont adalek an domani-mañ.
+
+Bezit sur ne vo ket stanket an domanioù klok zo herberc'hiet enno kontoù implijerien zo evel blogspot.com, geocities.com, h.a.",
 	'spamdifftool_no_urls_detected' => "N'eus bet dinoet url ebet.
 Klikit <a href='$1'>amañ</a> evit distreiñ.",
 	'spamdifftool_spam_link_text' => "ouzhpennañ d'ar stroboù",
