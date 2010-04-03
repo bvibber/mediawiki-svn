@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'prefswitch' => 'Usability Initiative Preference Switch',
-	'prefswitch-desc' => 'Allow users to swtich sets of preferences',
+	'prefswitch-desc' => 'Allow users to switch sets of preferences',
 	'prefswitch-survey-true' => 'Yes',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Turn new features off',
@@ -66,12 +66,12 @@ $messages['en'] = array(
 	'prefswitch-success-feedback' => 'Your feedback has been sent.',
 	'prefswitch-return' => '<hr style="clear:both">
 Return to <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "We've been working hard to make things easier for our users. We're excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of the site is an ongoing effort here at Wikimedia and we'll be sharing more updates in the future.  
+	'prefswitch-main' => "We've been working hard to make things easier for our users. We're excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we'll be sharing more updates in the future.  
 
 [[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
 [[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
 [[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
-===Here's what we've recently launched:===
+===Here's what we've changed:===
 * Navigation: We've improved the navigation for reading and editing articles.  Now, the tabs at the top of each page more clearly define whether you're viewing the article page or discussion page, and whether you're reading or editing an article. 
 * Editing toolbar improvements:  We've reorganized the editing toolbar to make easier to use.  Now, formatting articles is simpler and more intuitive.
 * Link wizard:  An easy-to-use tool allows you to add links to other Wikipedia articles as well as links to external sites.
