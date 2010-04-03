@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This is a sample filter plugin which will hit a lot of bots, good and bad.
  *
@@ -19,7 +18,7 @@ class AntiBot_GenericFormEncoding {
 		if ( isset( $headers['Content-Type'] )
 			&& $headers['Content-Type'] == 'application/x-www-form-urlencoded' )
 		{
-			if ( AntiBot::trigger(__CLASS__) == 'fail' ) {
+			if ( AntiBot::trigger( __CLASS__ ) == 'fail' ) {
 				return false;
 			}
 		}
