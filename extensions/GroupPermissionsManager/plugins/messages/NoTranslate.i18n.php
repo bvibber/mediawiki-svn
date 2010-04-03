@@ -1,9 +1,10 @@
 <?php
 
 /**
-* Messages for the GroupPermissionsManager extension that should ''not'' be translated into other languages via Betawiki.
-* Local translations may be done if needed, but global ones aren't
-*/
+ * Messages for the GroupPermissionsManager extension that should ''not'' be
+ * translated into other languages via translatewiki.net. Local translations
+ * may be done if needed, but global ones should not be made.
+ */
 $messages = array();
 
 $messages['en'] = array(
