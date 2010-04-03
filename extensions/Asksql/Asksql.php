@@ -11,7 +11,7 @@
  * @addtogroup SpecialPage
  */
 
-if (!defined('MEDIAWIKI'))
+if ( !defined( 'MEDIAWIKI' ) )
 	exit;
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -36,7 +36,7 @@ $wgAllowSysopQueries = true;
 $wgSqlLogFile = "{$wgUploadDirectory}/sqllog_mFhyRe6";
 $wgAvailableRights[] = 'asksql';
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Asksql'] = $dir . 'Asksql.i18n.php';
 $wgExtensionAliasesFiles['Asksql'] = $dir . 'Asksql.alias.php';
 $wgAutoloadClasses['SpecialAsksql'] = $dir . 'Asksql_body.php';

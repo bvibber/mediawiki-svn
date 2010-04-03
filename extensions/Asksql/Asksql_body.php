@@ -1,6 +1,5 @@
 <?php
-
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
@@ -16,23 +15,23 @@ class SpecialAsksql extends SpecialPage {
 
 		wfLoadExtensionMessages( 'Asksql' );
 
-		if( !$wgAllowSysopQueries ) {
+		if ( !$wgAllowSysopQueries ) {
 			$wgOut->errorpage( 'nosuchspecialpage', 'nospecialpagetext' );
 			return;
 		}
-		if( !$wgUser->isAllowed('asksql') ) {
+		if ( !$wgUser->isAllowed( 'asksql' ) ) {
 			$wgOut->permissionRequired( 'asksql' );
 			return;
 		}
 
-		if( $wgRequest->wasPosted() ) {
+		if ( $wgRequest->wasPosted() ) {
 			$query = $wgRequest->getVal( 'wpSqlQuery' );
 			$action = $wgRequest->getVal( 'action' );
 		} else {
 			$query = '';
 			$action = '';
 		}
-		$f = new SqlQueryForm( $query);
+		$f = new SqlQueryForm( $query );
 
 		if ( "submit" == $action ) {
 			$f->doSubmit();
@@ -59,12 +58,12 @@ class SqlQueryForm {
 
 		$wgOut->setPagetitle( wfMsg( 'asksql' ) );
 		$note = wfMsg( 'asksqltext' );
-		if($wgLogQueries)
+		if ( $wgLogQueries )
 			$note .= ' ' . wfMsg( 'sqlislogged' );
 		$wgOut->addWikiText( $note );
 
 		if ( '' != $err ) {
-			$wgOut->addHTML( '<p><font color="red" size="+1">' . htmlspecialchars($err) . "</font>\n" );
+			$wgOut->addHTML( '<p><font color="red" size="+1">' . htmlspecialchars( $err ) . "</font>\n" );
 		}
 		if ( ! $this->query ) { $this->query = 'SELECT ... FROM ... WHERE ...'; }
 		$q = wfMsg( 'sqlquery' );
@@ -76,7 +75,7 @@ class SqlQueryForm {
 <form id=\"asksql\" method=\"post\" action=\"{$action}\">
 <p>{$q}:</p>
 <textarea name=\"wpSqlQuery\" cols='80' rows='4' tabindex='1' style='width:100%'>"
-. htmlspecialchars($this->query) ."
+. htmlspecialchars( $this->query ) . "
 </textarea>
 <p><input type=submit name=\"wpQueryBtn\" value=\"{$qb}\"></p>
 </form>\n" );
@@ -89,7 +88,7 @@ class SqlQueryForm {
 
 		# Use a limit, folks!
 		$this->query = trim( $this->query );
-		if( preg_match( '/^SELECT/i', $this->query )
+		if ( preg_match( '/^SELECT/i', $this->query )
 			and !preg_match( '/LIMIT/i', $this->query ) ) {
 			$this->query .= ' LIMIT 100';
 		}
@@ -99,9 +98,9 @@ class SqlQueryForm {
 
 		# Start timer, will kill the DB thread in $wgSqlTimeout seconds
 		# FIXME: timer functions needed!
-		#$conn->startTimer( $wgSqlTimeout );
+		# $conn->startTimer( $wgSqlTimeout );
 		$res = $conn->query( $this->query, 'SpecialAsksql::doSubmit' );
-		#$conn->stopTimer();
+		# $conn->stopTimer();
 		$this->logFinishedQuery();
 
 		$n = 0;
@@ -149,10 +148,10 @@ class SqlQueryForm {
 					$r .= '<tr>';
 					foreach ( $k as $x ) {
 						$o = $y->$x ;
-						if ( $x == 'page_title'  or $x == 'rc_title') {
+						if ( $x == 'page_title'  or $x == 'rc_title' ) {
 							$namespace = 0;
-							if( $x == 'page_title' && isset( $y->page_namespace ) ) $namespace = $y->page_namespace;
-							if( $x == 'rc_title' && isset( $y->rc_namespace ) ) $namespace = $y->rc_namespace;
+							if ( $x == 'page_title' && isset( $y->page_namespace ) ) $namespace = $y->page_namespace;
+							if ( $x == 'rc_title' && isset( $y->rc_namespace ) ) $namespace = $y->rc_namespace;
 							$title =& Title::makeTitle( $namespace, $o );
 							$o = "<a href=\"" . $title->escapeLocalUrl() . "\" class='internal'>" .
 							  htmlspecialchars( $y->$x ) . '</a>' ;
@@ -172,7 +171,7 @@ class SqlQueryForm {
 
 	function logQuery( $q ) {
 		global $wgSqlLogFile, $wgLogQueries, $wgUser;
-		if(!$wgLogQueries) return;
+		if ( !$wgLogQueries ) return;
 
 		$f = fopen( $wgSqlLogFile, 'a' );
 		fputs( $f, "\n\n" . wfTimestampNow() .
@@ -184,7 +183,7 @@ class SqlQueryForm {
 
 	function logFinishedQuery() {
 		global $wgSqlLogFile, $wgLogQueries;
-		if(!$wgLogQueries) return;
+		if ( !$wgLogQueries ) return;
 
 		$interval = wfTime() - $this->starttime;
 
