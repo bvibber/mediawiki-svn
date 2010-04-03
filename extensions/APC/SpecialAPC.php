@@ -1,7 +1,6 @@
 <?php
 
 class SpecialAPC extends SpecialPage {
-
 	const GRAPH_SIZE = 200;
 
 	// Stored objects
@@ -25,7 +24,6 @@ class SpecialAPC extends SpecialPage {
 		// Bind to the member variable
 		$this->opts = $opts;
 
-
 		$opts->add( 'mode', self::MODE_STATS );
 		$opts->add( 'image', APCImages::IMG_NONE );
 		$opts->add( 'clearcache', false );
@@ -36,7 +34,7 @@ class SpecialAPC extends SpecialPage {
 		$opts->add( 'sort', 'hits' );
 		$opts->add( 'sortdir', 0 );
 		$opts->add( 'scope', 'active' );
-		$opts->add( 'searchi', ''); // MediaWiki captures search, ARGH!
+		$opts->add( 'searchi', '' ); // MediaWiki captures search, ARGH!
 
 		$opts->fetchValuesFromRequest( $wgRequest );
 		$opts->validateIntBounds( 'limit', 0, 5000 );
@@ -51,31 +49,28 @@ class SpecialAPC extends SpecialPage {
 		$this->setHeaders();
 		$this->setup();
 
-
-		if( !function_exists('apc_cache_info')) {
+		if ( !function_exists( 'apc_cache_info' ) ) {
 			$wgOut->addWikiMsg( 'viewapc-apc-not-available' );
 			return;
 		}
 
-		if ( $this->opts->getValue('image') ) {
+		if ( $this->opts->getValue( 'image' ) ) {
 			$wgOut->disable();
-			header('Content-type: image/png');
-			echo APCImages::generateImage( $this->opts->getValue('image') );
+			header( 'Content-type: image/png' );
+			echo APCImages::generateImage( $this->opts->getValue( 'image' ) );
 			return;
 		}
 
-		if ( $this->opts->getValue('mode') !== self::MODE_STATS ) {
+		if ( $this->opts->getValue( 'mode' ) !== self::MODE_STATS ) {
 			if ( !$wgUser->isAllowed( 'apc' ) ) {
 				$wgOut->permissionRequired( 'apc' );
 				return;
 			}
 		}
 
-
-
 		// clear cache
 		if ( $this->opts->getValue( 'clearcache' ) ) {
-			$this->opts->setValue( 'clearcache', '' ); //TODO: reset
+			$this->opts->setValue( 'clearcache', '' ); // TODO: reset
 			if ( !$wgUser->isAllowed( 'apc' ) ) {
 				$wgOut->permissionRequired( 'apc' );
 				return;
@@ -92,7 +87,7 @@ class SpecialAPC extends SpecialPage {
 
 		$delete = $this->opts->getValue( 'delete' );
 		if ( $delete ) {
-			$this->opts->setValue( 'delete', '' ); //TODO: reset
+			$this->opts->setValue( 'delete', '' ); // TODO: reset
 			if ( !$wgUser->isAllowed( 'apc' ) ) {
 				$wgOut->permissionRequired( 'apc' );
 				return;
@@ -104,7 +99,6 @@ class SpecialAPC extends SpecialPage {
 				$wgOut->addWikiMsg( 'viewapc-delete-failed', $delete );
 			}
 		}
-
 
 		$dir = dirname( __FILE__ );
 		$wgOut->addLink( array( 'rel' => 'stylesheet', 'type' => 'text/css',
@@ -144,7 +138,7 @@ class SpecialAPC extends SpecialPage {
 		global $wgOut;
 
 		$logo =
-			Xml::wrapClass( Xml::element( 'a', array( 'href' => self::APCURL) , 'APC' ), 'mw-apc-logo' ) .
+			Xml::wrapClass( Xml::element( 'a', array( 'href' => self::APCURL ) , 'APC' ), 'mw-apc-logo' ) .
 			Xml::wrapClass( 'Opcode Cache', 'mw-apc-nameinfo' );
 
 		$wgOut->addHTML(
@@ -177,16 +171,14 @@ class SpecialAPC extends SpecialPage {
 			Xml::openElement( 'ol', array( 'class' => 'mw-apc-menu' ) ) .
 			$this->menuItem( self::MODE_STATS, wfMsgExt( 'viewapc-mode-stats', 'escape' ) ) .
 			$this->menuItem( self::MODE_SYSTEM_CACHE, wfMsgExt( 'viewapc-mode-system-cache', 'escape' ) ) .
-			//$this->menuItem( self::MODE_SYSTEM_CACHE_DIR, wfMsgExt( 'viewapc-mode-system-cache-dir', 'escape' )) .
-			$this->menuItem( self::MODE_USER_CACHE, wfMsgExt( 'viewapc-mode-user-cache', 'escape' )).
-			$this->menuItem( self::MODE_VERSION_CHECK, wfMsgExt( 'viewapc-mode-version-check', 'escape' )) .
+			// $this->menuItem( self::MODE_SYSTEM_CACHE_DIR, wfMsgExt( 'viewapc-mode-system-cache-dir', 'escape' )) .
+			$this->menuItem( self::MODE_USER_CACHE, wfMsgExt( 'viewapc-mode-user-cache', 'escape' ) ) .
+			$this->menuItem( self::MODE_VERSION_CHECK, wfMsgExt( 'viewapc-mode-version-check', 'escape' ) ) .
 			Xml::tags( 'li', null,
 				$this->selfLink2( $clearText, $clearParams ) ) .
 			Xml::closeElement( 'ol' )
 		);
 	}
-
-
 
 	protected function doObHostStats() {
 		global $wgOut, $wgLang;
@@ -203,13 +195,12 @@ class SpecialAPC extends SpecialPage {
 			APCHostMode::doGeneralInfoTable( $cache, $mem ) .
 			APCHostMode::doMemoryInfoTable( $cache, $mem, $this->title ) . $clear .
 			APCHostMode::doCacheTable( $cache ) .
-			APCHostMode::doCacheTable( apc_cache_info('user', 1), true ) . $clear .
+			APCHostMode::doCacheTable( apc_cache_info( 'user', 1 ), true ) . $clear .
 			APCHostMode::doRuntimeInfoTable( $mem ) .
 			APCHostMode::doFragmentationTable( $mem, $this->title ) . $clear
 		);
 
 	}
-
 
 	protected function doPage() {
 		global $wgOut;
@@ -217,7 +208,7 @@ class SpecialAPC extends SpecialPage {
 			Xml::openElement( 'div', array( 'class' => 'mw-apc-content' ) )
 		);
 
-		switch ( $this->opts->getValue('mode') ) {
+		switch ( $this->opts->getValue( 'mode' ) ) {
 			case self::MODE_STATS:
 				$this->doObHostStats();
 				break;
@@ -243,13 +234,13 @@ class SpecialAPC extends SpecialPage {
 		);
 
 		$rss = Http::get( 'http://pecl.php.net/feeds/pkg_apc.rss' );
-		if (!$rss) {
+		if ( !$rss ) {
 			$wgOut->addWikiMsg( 'viewapc-version-failed' );
 		} else {
-			$apcversion = phpversion('apc');
+			$apcversion = phpversion( 'apc' );
 
-			preg_match('!<title>APC ([0-9.]+)</title>!', $rss, $match);
-			if (version_compare($apcversion, $match[1], '>=')) {
+			preg_match( '!<title>APC ([0-9.]+)</title>!', $rss, $match );
+			if ( version_compare( $apcversion, $match[1], '>=' ) ) {
 				$wgOut->addWikiMsg( 'viewapc-version-ok', $apcversion );
 				$i = 3;
 			} else {
@@ -262,19 +253,19 @@ class SpecialAPC extends SpecialPage {
 			);
 
 
-			preg_match_all('!<(title|description)>([^<]+)</\\1>!', $rss, $match);
-			next($match[2]); next($match[2]);
+			preg_match_all( '!<(title|description)>([^<]+)</\\1>!', $rss, $match );
+			next( $match[2] ); next( $match[2] );
 
-			while (list(,$v) = each($match[2])) {
-				list(,$ver) = explode(' ', $v, 2);
-				if ($i < 0 && version_compare($apcversion, $ver, '>=')) {
+			while ( list( , $v ) = each( $match[2] ) ) {
+				list( , $ver ) = explode( ' ', $v, 2 );
+				if ( $i < 0 && version_compare( $apcversion, $ver, '>=' ) ) {
 					break;
-				} else if (!$i--) {
+				} else if ( !$i-- ) {
 					break;
 				}
-				$data = current($match[2]);
+				$data = current( $match[2] );
 				$wgOut->addWikiText( "''[http://pecl.php.net/package/APC/$ver $v]''<br /><pre>$data</pre>" );
-				next($match[2]);
+				next( $match[2] );
 			}
 		}
 	}

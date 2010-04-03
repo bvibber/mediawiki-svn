@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * An extension to allow access to APC status with MediaWiki rights
  *
@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:APC',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SpecialAPC'] = $dir . 'SpecialAPC.php';
 $wgAutoloadClasses['APCImages'] = $dir . 'APCImages.php';
 $wgAutoloadClasses['APCUtils'] = $dir . 'APCUtils.php';
