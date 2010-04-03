@@ -25,11 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-if( !function_exists( 'wfIniGetBool' ) ) {
-	#perhaps GlobalFunctions wasn't loaded?
+if ( !function_exists( 'wfIniGetBool' ) ) {
+	# perhaps GlobalFunctions wasn't loaded?
 	require_once( "$IP/includes/GlobalFunctions.php" );
-	if( !function_exists( 'wfIniGetBool' ) ) {
-		#unsupported MediaWiki version, exit early so we don't get fatals or whatnot
+	if ( !function_exists( 'wfIniGetBool' ) ) {
+		# unsupported MediaWiki version, exit early so we don't get fatals or whatnot
 		echo '<html><head><title>Error</title></head><body>The AmazonPlus extension does not support your version of MediaWiki.
 		Please either upgrade MediaWiki or uninstall the AmazonPlus extension.</body></html>';
 		die( 1 );
@@ -38,16 +38,16 @@ if( !function_exists( 'wfIniGetBool' ) ) {
 
 # make sure that everything that needs to be set/loaded is that way
 $err = '';
-if( !wfIniGetBool( 'allow_url_fopen' ) && !extension_loaded( 'curl' ) ) {
+if ( !wfIniGetBool( 'allow_url_fopen' ) && !extension_loaded( 'curl' ) ) {
 	# we need allow_url_fopen or curl to be on in order for the Http::get() call to work on the amazon url
 	$err .= "\n<li>allow_url_fopen or curl must be enabled in php.ini</li>";
 }
-if( !extension_loaded( 'simplexml' ) ) {
+if ( !extension_loaded( 'simplexml' ) ) {
 	# we need the simplexml extension loaded to parse the xml string
 	$err .= "\n<li>The SimpleXML extension for PHP must be loaded</li>";
 }
 # if there were errors found, die with the messages
-if( $err ) {
+if ( $err ) {
 	$html = '<html><head><title>Error</title></head><body>
 	The following errors were discovered with the AmazonPlus extension for MediaWiki:
 	<ul>' . $err . '</ul></body></html>';
@@ -111,7 +111,7 @@ function efAmazonPlusRender( $input, $args, $parser ) {
 
 	# Parse out template parameters only before getting setting up the class so {{{1}}} and the like work
 	$input = $parser->replaceVariables( $input, false, true );
-	foreach( $args as $key => $arg ) {
+	foreach ( $args as $key => $arg ) {
 		$args[$key] = $parser->replaceVariables( $arg, false, true );
 	}
 
@@ -188,7 +188,7 @@ class AmazonPlus {
 			'SearchIndex'   => $si,
 		);
 		$this->doRequest();
-		if( !$this->xml || !$this->xml->Items->TotalResults ) {
+		if ( !$this->xml || !$this->xml->Items->TotalResults ) {
 			return false;
 		}
 		return $this->xml->Items->Item[0]->ASIN;
@@ -206,7 +206,7 @@ class AmazonPlus {
 		ksort( $this->request );
 		$prestr = "GET\necs.amazonaws.{$tld}\n/onca/xml\n";
 		$str = '';
-		foreach( $this->request as $key => $value ) {
+		foreach ( $this->request as $key => $value ) {
 			$str .= $this->encode( $key ) . '=' . $this->encode( $value ) . '&';
 		}
 		$str = rtrim( $str, '&' );
@@ -228,7 +228,7 @@ class AmazonPlus {
 		}
 		return true;
 	}
-	
+
 	function encode( $str ) {
 		return str_ireplace( '%7E', '~', rawurlencode( $str ) );
 	}
@@ -335,10 +335,10 @@ class AmazonPlus {
 		$pieces = explode( '-', $date );
 		return $pieces[$segment];
 	}
-	
+
 	function shortReview( $rev ) {
 		// return the first 3 paragraphs and have a more/less link afterwards
-		if( !$this->shortReview ) {
+		if ( !$this->shortReview ) {
 			$rev = str_replace( '<br>', '<br />', $rev );
 			$paras = explode( '<br />', $rev );
 			switch( count( $paras ) ) {
@@ -353,7 +353,7 @@ class AmazonPlus {
 					$html = '<div class="shortReviewFrame" id="shortReviewFrame' . ++$this->src . '">';
 					$html .= '<div class="shortReviewHead">' . $head . '</div>';
 					$html .= '<div class="shortReviewBody" style="display: none">';
-					for( $i = 3; $i < count( $paras ); $i++ ) {
+					for ( $i = 3; $i < count( $paras ); $i++ ) {
 						$html .= '<br />' . $paras[$i];
 					}
 					$more = wfMsg( 'amazonplus-more' );
