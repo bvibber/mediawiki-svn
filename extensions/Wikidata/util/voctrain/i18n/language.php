@@ -60,9 +60,9 @@ class Language {
 	}
 
 
-	/** safe takes a string and makes it safe for use as a key on betawiki.
-	 * betawiki (http://translatewiki.net/) will translate my i18n for me
-	 * if I do this. So it's a fair trade.
+	/** safe takes a string and makes it safe for use as a key on
+	 * translatewiki. http://translatewiki.net will translate my i18n for
+	 * me if I do this. So it's a fair trade.
 	 */
 	public static function safe( $string ) {
 		if ( substr_count( $string, "voctrain_" ) == 0 ) {

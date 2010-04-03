@@ -7,7 +7,7 @@ $phrase = $argv[1];
 require_once( "language.php" );
 
 print "phrase: $phrase\n";
-print "betawiki key: " . Language::safe( $phrase ) . "\n";
+print "translatewiki.net key: " . Language::safe( $phrase ) . "\n";
 $language = new Language();
 print "translation:\n";
 print "- default: " . $language->translate( $phrase ) . "\n";
