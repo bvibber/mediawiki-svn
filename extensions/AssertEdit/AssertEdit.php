@@ -1,5 +1,4 @@
 <?php
-
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 /**#@+
@@ -25,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AssertEdit'] = $dir . 'AssertEdit.i18n.php';
 $wgAutoloadClasses['AssertEdit'] = $dir . 'AssertEdit_body.php';
 $wgHooks['AlternateEdit'][] = 'efAssertEditHook';
@@ -44,7 +43,7 @@ function efAssertEditHook( $editpage ) {
 		$pass = AssertEdit::callAssert( $assertName, false );
 	}
 
-	//check for negative assert
+	// check for negative assert
 	if ( $pass ) {
 		$assertName = $wgRequest->getVal( 'nassert' );
 		if ( $assertName != '' ) {
@@ -57,7 +56,7 @@ function efAssertEditHook( $editpage ) {
 	} else {
 		wfLoadExtensionMessages( 'AssertEdit' );
 
-		//slightly modified from showErrorPage(), to return back here.
+		// slightly modified from showErrorPage(), to return back here.
 		$wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
 		$wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
@@ -72,6 +71,7 @@ function efAssertEditHook( $editpage ) {
 		return false;
 	}
 }
+
 function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 	global $wgOut, $wgRequest;
 
@@ -80,11 +80,11 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 
 	if ( $assertName != '' ) {
 		$pass = AssertEdit::callAssert( $assertName, false );
-		if ( !$pass ) 
+		if ( !$pass )
 			$result['assert'] = $assertName;
 	}
 
-	//check for negative assert
+	// check for negative assert
 	if ( $pass ) {
 		$assertName = $wgRequest->getVal( 'nassert' );
 		if ( $assertName != '' ) {

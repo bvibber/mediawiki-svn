@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class ApiAssertEdit extends ApiBase {
-	
+
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
 	}
@@ -13,15 +13,15 @@ class ApiAssertEdit extends ApiBase {
 	public function execute() {
 		$this->dieUsage( '', 'assertedit' );
 	}
-	
+
 	public function getDescription() {
 		return 'Allows bots to make assertions. Can only be used during of editing';
 	}
-	
+
 	public function isReadMode() {
 		return false;
 	}
-	
+
 	public function shouldCheckMaxlag() {
 		return false;
 	}
@@ -36,7 +36,7 @@ class ApiAssertEdit extends ApiBase {
 			'test' => 'Verify that this wiki allows random testing. Defaults to false, but can be overridden in LocalSettings.php.'
 		);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array();
 	}

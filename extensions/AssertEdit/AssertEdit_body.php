@@ -24,20 +24,20 @@ class AssertEdit
 	 * List of assertions; can be modified with setAssert
 	 */
 	static private $msAssert = array(
-		//simple constants, i.e. to test if the extension is installed.
+		// simple constants, i.e. to test if the extension is installed.
 		'true' => true,
 		'false' => false,
-		//useful variable tests, to ensure we stay logged in
+		// useful variable tests, to ensure we stay logged in
 		'user' => array( 'AssertEdit', 'assert_user' ),
 		'bot' => array( 'AssertEdit', 'assert_bot' ),
 		'exists' => array( 'AssertEdit', 'assert_exists' ),
-		//override these in LocalSettings.php
-		//'wikimedia' => false, //is this an offical wikimedia site?
-		'test' => false      //Do we allow random tests?
+		// override these in LocalSettings.php
+		// 'wikimedia' => false, //is this an offical wikimedia site?
+		'test' => false      // Do we allow random tests?
 	);
 
 	static function setAssert( $key, $value ) {
-		//Don't confuse things by changing core assertions.
+		// Don't confuse things by changing core assertions.
 		switch ( $key ) {
 			case 'true':
 			case 'false':
@@ -46,7 +46,7 @@ class AssertEdit
 			case 'exists':
 				return false;
 		}
-		//make sure it's useable.
+		// make sure it's useable.
 		if ( is_bool( $value ) || is_callable( $value ) ) {
 			self::$msAssert[$key] = $value;
 			return true;
@@ -55,7 +55,7 @@ class AssertEdit
 		}
 	}
 
-	//call the specified assertion
+	// call the specified assertion
 	static function callAssert( $assertName, $negate ) {
 		if ( isset( self::$msAssert[$assertName] ) ) {
 			if ( is_bool( self::$msAssert[$assertName] ) ) {
@@ -68,10 +68,9 @@ class AssertEdit
 				$pass = !$pass;
 			}
 		} else {
-			//unrecognized assert fails, regardless of negation.
+			// unrecognized assert fails, regardless of negation.
 			$pass = false;
 		}
 		return $pass;
 	}
-
 }
