@@ -81,6 +81,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'story_author_occupation',
 				'story_author_contact',
 				'story_author_image',
+				'story_image_hidden',
 				'story_title',
 				'story_text',
 				'story_created',
@@ -138,15 +139,15 @@ class SpecialStory extends IncludableSpecialPage {
 		global $wgOut, $wgLang, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );		
+
+		if ( $story->story_author_image != '' && $story->story_image_hidden != 1 ) {
+			$story->story_author_image = htmlspecialchars( $story->story_author_image );
+			$wgOut->addHTML( "<img src='$story->story_author_image' class='story-image'>" );
+		}
 		
-		$imageSrc = 'http://upload.wikimedia.org/wikipedia/mediawiki/9/99/SemanticMaps.png'; // TODO: get cropped image here
+		$wgOut->addWikiText( $story->story_text  );
 		
-		$title = htmlspecialchars( $story->story_title );
-		$text = htmlspecialchars( $story->story_text );		
-		
-		$wgOut->addHTML( "<img src='$imageSrc' class='story-image'>" );
-		$wgOut->addHTML( $text );
-		
+		// If the user that submitted the story was logged in, create a link to his/her user page.
 		if ( $story->story_author_id ) {
 			$user = User::newFromId( $story->story_author_id );
 			$userPage = $user->getUserPage();
@@ -168,9 +169,6 @@ class SpecialStory extends IncludableSpecialPage {
 	 * Outputs a form to edit the story with. Code based on <storysubmission>.
 	 * 
 	 * @param $story
-	 * 
-	 * TODO: add options to publish/unpublish, hide/unhide and delete the story
-	 * TODO: confirm with erik that author info should be editable here
 	 */	
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
@@ -197,8 +195,8 @@ class SpecialStory extends IncludableSpecialPage {
 				$wgLang->timeanddate( $story->story_created ),
 				$wgLang->timeanddate( $story->story_modified )
 			) ) . 
-			'</td></tr>';		
-		
+			'</td></tr>';				
+			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
 			'<td>' .

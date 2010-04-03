@@ -85,7 +85,7 @@ class ApiQueryStories extends ApiQueryBase {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'continue', wfTimestamp(TS_MW, $row->story_modified) . '|' . $row->story_id ); // TODO: add some weird stuff here
+				$this->setContinueEnumParameter( 'continue', wfTimestamp(TS_MW, $row->story_modified) . '|' . $row->story_id );
 				break;
 			}
 			$res = array(
@@ -103,7 +103,7 @@ class ApiQueryStories extends ApiQueryBase {
 	}
 	
 	/**
-	 * TODO
+	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getAllowedParams()
 	 */
 	public function getAllowedParams() {

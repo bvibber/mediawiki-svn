@@ -25,8 +25,7 @@ define( 'Storyboard_VERSION', '0' );
 
 define( 'Storyboard_TABLE', 'storyboard' );
 
-// TODO: try to get out the hardcoded path.
-$egStoryboardScriptPath = $wgScriptPath . '/extensions/Storyboard';
+$egStoryboardScriptPath =  ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Storyboard';
 $egStoryboardDir = dirname( __FILE__ ) . '/';
 $egStoryboardStyleVersion = $wgStyleVersion . '-' . Storyboard_VERSION;
 
@@ -59,6 +58,9 @@ $wgAPIModules['storyreview'] = 'ApiStoryReview';
 // Hooks
 $wgHooks['ParserFirstCallInit'][] = 'efStoryboardParserFirstCallInit';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efStoryboardSchemaUpdate';
+// TODO: these hooks for adding an edit 'tab' to the Special:Story page are not working
+// as they should, since they are only getting called for content pages. There is no
+// good reason why they are not called on special pages, sho this should be changed in core.
 $wgHooks['SkinTemplateTabs'][] = 'efStoryboardAddStoryEditAction';
 $wgHooks['SkinTemplateNavigation'][] = 'efStoryboardAddStoryEditActionVector';
 

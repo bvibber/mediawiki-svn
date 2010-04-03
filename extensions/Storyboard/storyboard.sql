@@ -2,6 +2,7 @@
 
 CREATE TABLE /*$wgDBprefix*/storyboard (
   story_id                 INT(8) unsigned   NOT NULL auto_increment PRIMARY KEY,
+  story_lang_code          VARCHAR(6)        NOT NULL,
   story_author_id          INT unsigned          NULL,
   story_author_name        VARCHAR(255)      NOT NULL,
   story_author_location    VARCHAR(255)      NOT NULL,

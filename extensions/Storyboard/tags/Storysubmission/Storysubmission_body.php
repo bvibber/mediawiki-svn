@@ -33,7 +33,7 @@ class TagStorysubmission {
 
 		global $wgRequest, $wgUser;
 		
-		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) ) {
 			$output = self::doSubmissionAndGetResult();
 		} else {
 			$output = self::getFrom( $parser, $args );
@@ -51,7 +51,7 @@ class TagStorysubmission {
 	 * @param array $args
 	 * @return HTML
 	 * 
-	 * TODO: any sort of client side validation?
+	 * TODO: Add live validation for all fields, esp checking if a story title doesn't exist yet.
 	 */
 	private static function getFrom( Parser $parser, array $args ) {
 		global $wgUser, $wgStyleVersion, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
@@ -141,7 +141,14 @@ EOT
 			
 		$formBody .= '</table>';
 		
-		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
+		$formBody .= Html::hidden( 'wpStoryEditToken', $wgUser->editToken() );
+		
+		if ( !array_key_exists( 'language', $args ) ) {
+			$lang = wfGetLangObj( false );
+			$args['language'] = $lang->getCode();
+		}
+
+		$formBody .= Html::hidden( 'lang', $args['language'] );
 		
 		return Html::rawElement(
 			'form',
@@ -162,12 +169,12 @@ EOT
 	private static function doSubmissionAndGetResult() {
 		global $wgRequest, $wgUser;
 		
-		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
 
 		$title = $wgRequest->getText( 'storytitle' );
-		
+
 		$story = array(
+			'story_lang_code' => $wgRequest->getText( 'lang' ),
 			'story_author_name' => $wgRequest->getText( 'name' ),
 			'story_author_location' => $wgRequest->getText( 'location' ),
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
@@ -182,12 +189,14 @@ EOT
 		if ( $wgUser->isLoggedIn() ) {
 			$story[ 'story_author_id' ] = $wgUser->getId();
 		}
+
+		// TODO: email confirmation would be nice
 		
 		$dbw->insert( 'storyboard', $story );
 		
-		$responseHtml = wfMsgExt( 'storyboard-createdsucessfully', htmlspecialchars( $title ) ); // TODO: create html response
+		$storyboardLink = ''; // TODO: create html link to the page containing stories. 
 
-		return $responseHtml;
+		return wfMsgExt( 'storyboard-createdsucessfully', 'parsemag', $storyboardLink ); 
 	}
 	
 }

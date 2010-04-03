@@ -61,7 +61,7 @@ $messages['en'] = array(
 	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} to long!',
 	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
-	'storyboard-createdsucessfully' => 'Your story titled "$1" has been submitted sucesfully. It will be publicly accessible once it has been reviewed. View my story now.',
+	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us! We will review it shortly. Published stories are visible at $1.',
 );
 
 /** Afrikaans (Afrikaans)
