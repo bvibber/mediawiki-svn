@@ -19,7 +19,7 @@
 			{
 				'action': 'query',
 				'list': 'stories', 
-				//'stcontinue': $storyboard.attr( 'offset' ) + '|0', // TODO: get id of last story here to break ties correctly
+				'stcontinue': $storyboard.attr( 'offset' ) + '-0', // TODO: get id of last story here to break ties correctly
 				'stlimit': 4,
 				'format': 'json'
 			},

@@ -1,6 +1,6 @@
 <?php
 /**
- * API extension for Storyboard.
+ * API extension for Storyboard that facilitates story review actions.
  * 
  * @file ApiStoryReview.php
  * @ingroup Storyboard
@@ -29,7 +29,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * This action returns the html for Stories to be displayed in a storyboard.
+ * Api class that facilitates story review actions.
  *
  * @ingroup Storyboard
  */

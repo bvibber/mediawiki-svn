@@ -38,6 +38,9 @@ class SpecialStoryReview extends SpecialPage {
 	}
 
 	private function addOutput() {
+		// TODO: display tabs for unpublished, published and hidden stories
+		// TODO: paging
+		
 		global $wgOut, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );

@@ -1,6 +1,6 @@
 <?php
 /**
- * API extension for Storyboard.
+ * API extension for Storyboard that allows for the querieng of stories.
  * 
  * @file ApiQueryStories.php
  * @ingroup Storyboard
@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * This action returns the html for Stories to be displayed in a storyboard.
+ * API class for the querieng of stories.
  *
  * @ingroup Storyboard
  */
@@ -85,7 +85,7 @@ class ApiQueryStories extends ApiQueryBase {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'continue', wfTimestamp(TS_MW, $row->story_modified) . '|' . $row->story_id );
+				$this->setContinueEnumParameter( 'continue', wfTimestamp(TS_MW, $row->story_modified) . '-' . $row->story_id );
 				break;
 			}
 			$res = array(
