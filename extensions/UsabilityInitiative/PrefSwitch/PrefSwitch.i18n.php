@@ -58,9 +58,9 @@ Please select all that apply.',
 	'prefswitch-survey-answer-os-linux' => 'Linux',
 	'prefswitch-survey-answer-os-other' => 'Other operating system:',
 	'prefswitch-survey-question-res' => 'What is the resolution of your screen?',
-	'prefswitch-title-on' => 'What\'s New?',
+	'prefswitch-title-on' => 'What\'s new?',
 	'prefswitch-title-switched-on' => 'Enjoy!',
-	'prefswitch-title-off' => 'Turn New Features Off',
+	'prefswitch-title-off' => 'Turn new features off',
 	'prefswitch-title-switched-off' => 'Thanks',
 	'prefswitch-title-feedback' => 'Feedback',
 	'prefswitch-success-on' => 'New features are now turned on.',
@@ -68,7 +68,7 @@ Please select all that apply.',
 	'prefswitch-success-feedback' => 'Your feedback has been sent.',
 	'prefswitch-return' => '<hr style="clear:both">
 Return to <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "We have been working hard to make things easier for our users. We're excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future.
+	'prefswitch-main' => "We have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future.
 
 [[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
 [[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
@@ -87,5 +87,6 @@ If you would like to turn off the new features, please <span class=\"plainlinks\
 If you would like to turn on the new features, please <span class=\"plainlinks\">[$1 click here]</span>.",
 	'prefswitch-survey-intro-feedback' => "We would love to hear from you.
 Please fill out the optional survey below.",
-	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features. To help us improve them, please fill out the optional survey below ',
+	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
+To help us improve them, please fill out the optional survey below.',
 );
