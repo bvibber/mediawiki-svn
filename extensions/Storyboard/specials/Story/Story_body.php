@@ -169,6 +169,8 @@ class SpecialStory extends IncludableSpecialPage {
 	 * Outputs a form to edit the story with. Code based on <storysubmission>.
 	 * 
 	 * @param $story
+	 * 
+	 * TODO: Add live validation for all fields, esp checking if a story title doesn't exist yet.
 	 */	
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;

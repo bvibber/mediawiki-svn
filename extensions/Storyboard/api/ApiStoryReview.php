@@ -48,7 +48,7 @@ class ApiStoryReview extends ApiBase {
 		
 		$params = $this->extractRequestParams();
 		
-		// Check required parameters
+		// Check to see if the required parameters are present.
 		if ( !isset( $params['storyid'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'storyid' ) );
 		}

@@ -15,6 +15,7 @@
 	} );
 	
 	function updateStoryboard( $storyboard ) {
+		// TODO: fix eternal load, broken when swicthing from .load to .getJSON.	
 		$.getJSON( wgScriptPath + '/api.php',
 			{
 				'action': 'query',
@@ -44,7 +45,7 @@
 			var $header = $( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
 			$( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
 			
-			// TODO: move social sharing to a pop-up that's triggered by a link above each storyboard-box
+			// TODO: move social sharing to a jQuery UI pop-up that's triggered by a link above each storyboard-box
 			
 			$( "<div />" )
 				.addClass( "story-sharing" )
@@ -93,7 +94,7 @@
 			
 			$storyBody.append( textAndImg );
 			
-			// TODO: add delete button that hides the story from the storyboard (=unpublish+hide?)
+			// TODO: add hide button
 			
 			$storyboard.append( $storyBody );	
 		}

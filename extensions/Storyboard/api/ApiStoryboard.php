@@ -40,7 +40,32 @@ class ApiStoryboard extends ApiBase {
 	}
 
 	public function execute() {
+		$params = $this->extractRequestParams();
 		
+		if ( !isset( $params['action'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'action' ) );
+		}		
+		
+		if ( $params['action'] == 'storyexists' ) {
+			if ( !isset( $params['storyname'] ) ) {
+				$this->dieUsageMsg( array( 'missingparam', 'storyname' ) );
+			}	
+					
+			$dbr = wfGetDB( DB_SLAVE );
+			
+			$story = $dbr->selectRow(
+				'storyboard',
+				array( 'story_id' ),
+				array( 'story_title' => $params['storyname'] )
+			);
+			
+			$result = array(
+				'exists' => isset( $story )
+			);
+			
+			$this->getResult()->setIndexedTagName( $result, 'story' );
+			$this->getResult()->addValue( null, $this->getModuleName(), $result );			
+		}
 	}
 	
 	public function getAllowedParams() {

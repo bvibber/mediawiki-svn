@@ -63,7 +63,7 @@ class ApiQueryStories extends ApiQueryBase {
 		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
 		
 		if ( !is_null( $params['continue'] ) ) {
-			$continueParams = explode( '|', $params['continue'] );
+			$continueParams = explode( '-', $params['continue'] );
 			if ( count( $continueParams ) != 2 ) {
 				$this->dieUsage( 'Invalid continue param. You should pass the ' .
 					'original value returned by the previous query', '_badcontinue' );

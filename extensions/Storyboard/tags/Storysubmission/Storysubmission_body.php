@@ -52,6 +52,7 @@ class TagStorysubmission {
 	 * @return HTML
 	 * 
 	 * TODO: Add live validation for all fields, esp checking if a story title doesn't exist yet.
+	 * TODO: use HTMLForm?
 	 */
 	private static function getFrom( Parser $parser, array $args ) {
 		global $wgUser, $wgStyleVersion, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;

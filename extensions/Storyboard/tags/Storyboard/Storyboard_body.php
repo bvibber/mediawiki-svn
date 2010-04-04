@@ -25,6 +25,8 @@ class TagStoryboard {
 	 * @param $frame
 	 * 
 	 * @return array
+	 * 
+	 * TODO: add language filter
 	 */
 	public static function render( $input, array $args, Parser $parser, $frame ) {
 		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
@@ -34,7 +36,7 @@ class TagStoryboard {
 			<<<EOT
 			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
 			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/jquery.ajaxscroll.js?$wgStyleVersion"></script>
+			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/jquery/jquery.ajaxscroll.js?$wgStyleVersion"></script>
 			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion"></script>
 EOT
 		);

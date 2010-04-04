@@ -38,6 +38,7 @@ class SpecialStoryReview extends SpecialPage {
 	}
 
 	private function addOutput() {
+		// TODO: add language filters
 		// TODO: display tabs for unpublished, published and hidden stories
 		// TODO: paging
 		
