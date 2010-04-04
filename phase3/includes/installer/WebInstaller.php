@@ -81,6 +81,7 @@ class WebInstaller extends Installer {
 		if ( isset( $session['settings'] ) ) {
 			$this->settings = $session['settings'] + $this->settings;
 		}
+		$this->setupLanguage();
 
 		if ( isset( $session['happyPages'] ) ) {
 			$this->happyPages = $session['happyPages'];
@@ -322,6 +323,49 @@ class WebInstaller extends Installer {
 	 */
 	function nextTabIndex() {
 		return $this->tabIndex++;
+	}
+
+	/**
+	 * Initializes language-related variables
+	 */
+	function setupLanguage() {
+		global $wgLang, $wgContLang, $wgLanguageCode;
+		if ( $this->getSession( 'test' ) === null && !$this->request->wasPosted() ) {
+			$wgLanguageCode = $this->getAcceptLanguage();
+			$wgLang = $wgContLang = Language::factory( $wgLanguageCode );
+			$this->setVar( 'wgLanguageCode', $wgLanguageCode );
+			$this->setVar( '_UserLang', $wgLanguageCode );
+		} else {
+			$wgLanguageCode = $this->getVar( 'wgLanguageCode' );
+			$wgLang = Language::factory( $this->getVar( '_UserLang' ) );
+			$wgContLang = Language::factory( $wgLanguageCode );
+		}
+	}
+
+	/**
+	 * Retrieves MediaWiki language from Accept-Language HTTP header
+	 */
+	function getAcceptLanguage() {
+		global $wgLanguageCode;
+
+		$mwLanguages = Language::getLanguageNames();
+		$langs = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+		foreach ( explode( ';', $langs ) as $splitted ) {
+			foreach ( explode( ',', $splitted ) as $lang ) {
+				$lang = trim( strtolower( $lang ) );
+				if ( $lang == '' || $lang[0] == 'q' ) {
+					continue;
+				}
+				if ( isset( $mwLanguages[$lang] ) ) {
+					return $lang;
+				}
+				$lang = preg_replace( '/^(.*?)(?=-[^-]*)$/', '\\1', $lang );
+				if ( $lang != '' && isset( $mwLanguages[$lang] ) ) {
+					return $lang;
+				}
+			}
+		}
+		return $wgLanguageCode;
 	}
 
 	/**
