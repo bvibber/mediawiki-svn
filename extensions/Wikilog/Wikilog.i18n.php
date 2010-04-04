@@ -372,6 +372,13 @@ Part of a list of actions, use lowercase if applicable.
 	'wikilog-doc-import-comment' => 'This is an automatic edit summary for pages imported into the wiki.',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'wikilog-form-category' => 'Акатегориа:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -991,7 +998,7 @@ $messages['br'] = array(
 	'wikilog-auto' => 'Wikilog Aoto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Postañ addisplegoù da bennadoù wikilog',
-	'right-wl-moderation' => 'Merañ kemenadennoù pennadoù ar wikilog',
+	'right-wl-moderation' => 'Merañ kemennadennoù pennadoù ar wikilog',
 	'wikilog-specialwikilog-title' => 'Wikilogoù',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Marilh an oberoù war wikilog',

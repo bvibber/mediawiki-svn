@@ -152,6 +152,7 @@ $messages['br'] = array(
 Diverkañ',
 	'inspectcache-deleted' => 'Krubuilh diverket',
 	'inspectcache-list' => 'Roll',
+	'right-inspectcache' => 'Diskouez ha dilemel ar monedoù krubuilh',
 );
 
 /** Bosnian (Bosanski)

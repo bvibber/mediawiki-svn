@@ -500,7 +500,7 @@ $messages['br'] = array(
 	'tasks_logpage' => 'Marilh an trevelloù',
 	'tasks_logpagetext' => 'Istor kemmoù en trevelloù eo',
 	'tasks_logentry' => 'Evit « [[$1]] »',
-	'tasks-pref-showtaskcomments' => 'Gwelet pajenn ar gemenadennoù diwar-benn an trevelloù.',
+	'tasks-pref-showtaskcomments' => 'Gwelet pajenn ar gemennadennoù diwar-benn an trevelloù.',
 );
 
 /** Bosnian (Bosanski)

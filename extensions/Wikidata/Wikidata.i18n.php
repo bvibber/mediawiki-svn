@@ -381,6 +381,14 @@ $messages['niu'] = array(
 	'ow_history' => 'Liu onoono atu ki tua',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'ow_history' => 'Аҭоурых',
+	'ow_User' => 'Иалахә',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -4875,13 +4883,14 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  * @author דניאל ב.
  */
 $messages['he'] = array(
 	'wikidata-desc' => 'הוספת בסיס נתונים דמוי ויקי למגוון סוגי תוכן',
-	'wikidata-handler-namespace-move-error' => 'דפים במרחבי השם אשר בחסות הרחבות ויקידאטא לא ניתנים להעברה.',
+	'wikidata-handler-namespace-move-error' => 'לא ניתן להעביר דפים במרחבי השם המטופלים בהרחבת ויקי־דאטא.',
 	'languages' => 'ויקי־דאטא: מנהל השפות',
 	'langman-desc' => 'הוספה ושינוי של הגדרות שפה באמצעות [[Special:Languages]]',
 	'langman_title' => 'מנהל השפות',
@@ -4907,15 +4916,32 @@ $messages['he'] = array(
 	'datasearch_ext_identifier' => 'אמצעי זיהוי חיצוני',
 	'datasearch_search_text' => 'חיפוש טקסט:',
 	'datasearch_within_words' => 'בתוך המילים:',
-	'importtsv' => 'ויקידאטא: ייבוא TSV',
+	'datasearch_within_ext_ids' => 'בתוך מזהים חיצוניים:',
+	'datasearch_showing_only' => 'מראה לכל היותר {{PLURAL:$1|$1 תוצאות תואמות|תוצאה מתאימה אחת}} (מתוך $2).',
+	'datasearch_match_ext_ids' => 'מזהים חיצוניים שתואמים את <i>$1</i>.',
+	'datasearch_match_words' => 'מילים שתואמות את <i>$1</i> ואת המשמעויות המשויכות',
+	'datasearch_match_words_lang' => 'מילים מתוך <i>$1</i> שתואמות את <i>$2</i> ואת המשמעויות המשויכות',
+	'importtsv' => 'ויקי־דאטא: ייבוא TSV',
 	'ow_importtsv_title1' => 'ייבוא TSV',
 	'ow_importtsv_title2' => 'ייבוא הגדרות ותרגומים',
+	'ow_importtsv_header' => '<p>אפשר לייבא הגדרות ותרגומים מקובץ טקסט מופרד בטאבים שייצאת מאופן אופיס, אקסל או תוכנת גיליון אלקטרוני אחרת.</p>
+<p>התסדיר של הקובץ צריך להיות זהה של הקבצים המיוצאים בדף [[Special:ExportTSV|ExportTSV]].
+אם שינית את שמות העמודות, הייבוא ייכשל.
+אם שינית את הקוד המזהה או את הביטויים המגדירים של משמעות מוגדרת כלשהי, התוכנה תתעלם מאותה השורה.
+אם הוספת עמודות, הן צריכות להיות בצורת "definitions_iso" או "translations_iso", כאשר iso הוא קוד השפה לפי תקן ISO 639-3.</p>
+<p>אם התיבה "הרצת בדיקה" מסומנת, כל הפעולות תדווחנה, אבל לא ייעשה שום שינוי. מומלץ לבצע הרצת בדיקה לפני ביצוע ייבוא אמתי.</p>',
 	'ow_importtsv_not_allowed' => 'אינכם מורשים לייבא TSV.',
 	'ow_importtsv_importing' => 'ייבוא נתוני TSV',
 	'ow_importtsv_import_failed' => 'הייבוא נכשל',
 	'ow_importtsv_file' => 'קובץ TSV:',
 	'ow_importtsv_test_run' => 'הרצת בדיקה:',
+	'ow_importtsv_not_utf8' => '<p>נראה שזה לא קובץ בקידוד UTF-8. הקובץ <strong>חייב</strong> להיות בקידוד UTF-8.
+נא לוודא שהיישום שלך שמר או ייצא את הקובץ כראוי.</p>',
 	'ow_importtsv_not_tsv' => '<p>קובץ זה לא נראה כקובץ TSV תקין.</p>',
+	'ow_importtsv_bad_columns' => "<p>שם עמודה שגוי '$1'.<br />
+עמודות צריכות להיקרא 'definition_iso' או 'translations_iso',
+כאשר iso הוא קוד השפה.</p>",
+	'ow_importtsv_test_run_title' => 'הרצת בדיקה לייבוא מידע TSV',
 	'ow_importtsv_nothing_added' => 'לא נוסף דבר.',
 	'ow_importtsv_nothing_added_test' => 'לא נוסף דבר (זוהי הרצת בדיקה).',
 	'ow_importtsv_results' => 'נוספו {{PLURAL:$1|הגדרה אחת|$1 הגדרות}} ו{{PLURAL:$2|תרגום אחד|־$2 תרגומים}}.',
@@ -4923,6 +4949,8 @@ $messages['he'] = array(
 על השפות להיות מיוצגות על ידי קוד השפה המתאים ב־ISO 639-3.</p>',
 	'exporttsv' => 'ויקי־דאטא: ייצוא TSV',
 	'ow_exporttsv_title' => 'ייצוא אוסף ל־TSV',
+	'ow_exporttsv_header' => '<p>יש לייצא אוסף לקובץ מופרד טאבים שאפשר לעשות באופן אופיס, אקסל ובתוכנות גיליון אלקטרוני אחרות.<br />
+יש לבחור אוסף  לייצוא. בתיבת הטקסט "שפות" שי להכניס רשימה מופרדת בפסיקים של קודי שפה לפי תקן ISO 639-3. בתחילת הרשימה יש להציב את שפות המקור ובסופה – את השפות היעד. בסיום יש ללחוץ \'Create\' כדי ליצור את הקובץ.</p>',
 	'ow_exporttsv_languages' => 'שפות:',
 	'ow_exporttsv_not_allowed' => 'אינכם מורשים לייצא TSV.',
 	'ow_exporttsv_export_failed' => 'הייצוא נכשל',
@@ -4936,24 +4964,34 @@ $messages['he'] = array(
 	'ow_uipref_datasets' => 'תצוגת ברירת המחדל:',
 	'ow_uiprefs' => 'ויקי־דאטא',
 	'ow_none_selected' => 'לא נבחרו',
+	'transaction' => 'ויקי־דאטא: יומן תנועות',
+	'ow_transaction_from_transaction' => 'מתנועה:',
+	'ow_transaction_count' => 'מספר:',
 	'ow_transaction_user' => 'שם משתמש:',
+	'ow_transaction_show_rollback' => 'הצג פקדי שחזור:',
+	'ow_transaction_rollback_button' => 'שחזור',
+	'ow_transaction_rollback_header' => 'שחזור',
+	'ow_transaction_no_action' => 'לא לעשות כלום',
 	'ow_transaction_previous_version' => 'הגרסה הקודמת',
 	'ow_transaction_restore' => 'שחזור',
 	'ow_transaction_remove' => 'הסרה',
 	'ow_transaction_operation' => 'פעולה',
+	'ow_transaction_is_latest' => 'אחרון',
 	'ow_transaction_class_member' => 'חבר במחלקה',
 	'ow_transaction_object' => 'פריט',
 	'ow_transaction_first_dm' => 'המשמעות המוגדרת הראשונה',
 	'ow_transaction_second_dm' => 'המשמעות המוגדרת השנייה',
 	'ow_transaction_summary' => 'תקציר',
+	'conceptmapping' => 'ויקי־דאטא: מיפוי מושגים',
+	'ow_conceptmapping_title' => 'מיפוי מושגים',
 	'ow_conceptmapping_help' => '<p>פעולות אפשריות: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  הוספת מיפוי</li>
 <li>&action=get&concept=<concept_id>  קריאת מיפוי בחזרה</li>
 <li>&action=list_sets  החזרת רשימה של קידומות הקשר אפשריות ולמה הן מפנות.</li>
-<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> עבור משמעות אחת מוגדרת ברעיון, החזרת כל השאר</li>
-<li>&action=help  הצגת עזרה מועילה.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> עבור משמעות מוגדרת אחת במושג, החזרת כל השאר</li>
+<li>&action=help הצגת עזרה מועילה.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>מיפוי תפיסתי מאפשר לכם לזהות איזו משמעות מוגדרת בערכת נתונים אחת זהה למשמעויות מוגדרות בערכות נתונים אחרות.</p>',
+	'ow_conceptmapping_uitext' => '<p>מיפוי מושגים מאפשר לכם לזהות איזו משמעות מוגדרת בערכת נתונים אחת זהה למשמעויות מוגדרות בערכות נתונים אחרות.</p>',
 	'ow_conceptmapping_no_action_specified' => 'הפעולה "$1" אינה נתמכת.',
 	'ow_dm_OK' => 'מאושר',
 	'ow_dm_not_present' => 'לא הוכנס',
@@ -4961,18 +4999,18 @@ $messages['he'] = array(
 	'ow_mapping_successful' => 'כל השדות שמופו סומנו ב[מאושר]<br />',
 	'ow_mapping_unsuccessful' => 'דרושות לפחות שתי משמעויות מוגדרות לפני שאפשר יהיה לקשר ביניהן.',
 	'ow_will_insert' => 'יוסיף את הנ"ל:',
-	'ow_contents_of_mapping' => 'תכני המיפוי',
+	'ow_contents_of_mapping' => 'תוכן המיפוי',
 	'ow_available_contexts' => 'הקשרים זמינים',
-	'ow_add_concept_link' => 'הוספת קישור לתפיסות אחרות',
-	'ow_concept_panel' => 'חלונית התפיסה',
-	'ow_dm_badtitle' => 'דף זה אינו מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) כלשהי.
-אנא בדקו את כתובת האינטרנט.',
-	'ow_dm_missing' => 'נראה כי דף זה מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) שאינה קיימת.
-אנא בדקו את כתובת האינטרנט.',
+	'ow_add_concept_link' => 'הוספת קישור למושגים אחרים',
+	'ow_concept_panel' => 'חלונית המושג',
+	'ow_dm_badtitle' => 'דף זה אינו מפנה לשום משמעות מוגדרת (מושג).
+אנא בדקו את כתובת.',
+	'ow_dm_missing' => 'נראה כי דף זה מפנה למשמעות מוגדרת (מושג) שאינה קיימת.
+אנא בדקו את הכתובת.',
 	'ow_AddHint' => 'הקלידו שורות חדשות להוספה',
 	'ow_AlternativeDefinition' => 'משמעות חלופית',
 	'ow_AlternativeDefinitions' => 'משמעויות חלופיות',
-	'ow_Annotation' => 'פירוש',
+	'ow_Annotation' => 'מידע נוסף',
 	'ow_ApproximateMeanings' => 'משמעויות משוערכות',
 	'ow_Class' => 'מחלקה',
 	'ow_ClassAttributeAttribute' => 'מאפיין',
@@ -4985,7 +5023,7 @@ $messages['he'] = array(
 	'ow_CollectionMember' => 'חבר באוסף',
 	'ow_CollectionMembership' => 'חברות באוסף',
 	'ow_Definition' => 'הגדרה',
-	'ow_DefinedMeaningAttributes' => 'פירוש',
+	'ow_DefinedMeaningAttributes' => 'מידע נוסף',
 	'ow_DefinedMeaning' => 'משמעות מוגדרת',
 	'ow_DefinedMeaningReference' => 'משמעות מוגדרת',
 	'ow_ExactMeanings' => 'משמעויות מדויקות',
@@ -4996,15 +5034,17 @@ $messages['he'] = array(
 	'ow_IncomingRelations' => 'קשרים נכנסים',
 	'ow_GotoSource' => 'מעבר למקור',
 	'ow_Language' => 'שפה',
-	'ow_LevelAnnotation' => 'פירוש',
-	'ow_Multiple_meanings' => 'מספר משמעויות:',
+	'ow_LevelAnnotation' => 'מידע נוסף',
+	'ow_LinkAttributeHeader' => 'מאפיין של קישור',
+	'ow_Multiple_meanings' => 'הגדרות של "$1"',
 	'ow_NewExactMeaning' => 'משמעות מדויקת חדשה',
 	'ow_OptionAttribute' => 'מאפיין',
+	'ow_OptionAttributeHeader' => 'מאפיין של אפשרות',
 	'ow_OptionAttributeOption' => 'אפשרות',
 	'ow_OptionAttributeOptions' => 'אפשרויות',
 	'ow_OptionAttributeValues' => 'ערכי האפשרות',
 	'ow_OtherDefinedMeaning' => 'משמעות מוגדרת אחרת',
-	'ow_PopupAnnotation' => 'פירוש',
+	'ow_PopupAnnotation' => 'מידע נוסף',
 	'ow_RecordLifeSpan' => 'אורך חיי הרשומה',
 	'ow_Relations' => 'קשרים',
 	'ow_RelationType' => 'סוג הקשר',
@@ -5037,7 +5077,7 @@ $messages['he'] = array(
 	'ow_meaningsoftitle' => 'המשמעויות של "$1"',
 	'ow_meaningsofsubtitle' => '<em>קישור ויקי:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>הגישה נדחתה</h2>',
-	'copy' => 'ויקידאטא: העתקה',
+	'copy' => 'ויקי־דאטא: העתקה',
 	'ow_copy_no_action_specified' => 'אנא הגדירו פעולה',
 	'ow_copy_help' => 'אפשרות העזרה לא פותחה עדיין.',
 	'ow_please_proved_dmid' => 'נראה שלקלט שלכם חסר "<span dir="ltr">?dmid=<ID></span>" (הפירוש של dmid: מספר משמעות מוגדרת)<br />
@@ -5057,12 +5097,14 @@ $messages['he'] = array(
 ישנה בעיית עקביות בבסיס הנתונים. ויקי־דאטא לא הצליחה למצוא נתונים תקפים המקושרים למספר המשמעות המוגדרת הזה.
 ייתכן שהם אבדו.
 אנא צרו קשר עם המפעיל או המנהל של השרת.',
+	'ow_history_transaction' => 'תנועה:',
 	'ow_history_show_life_span' => 'הצגת אורך חיי הרשומה:',
 	'ow_class_attr_type_dm' => 'משמעות מוגדרת',
 	'ow_class_attr_type_xlate' => 'טקסט הניתן לתרגום',
 	'ow_class_attr_type_plain' => 'טקסט פשוט',
 	'ow_class_attr_type_link' => 'קישור',
 	'ow_class_attr_type_option' => 'רשימת אפשרויות',
+	'needstranslation' => 'ויקי־דאטא: ביטויים שדורשים תרגום',
 	'ow_needs_xlation_title' => 'ביטויים הזקוקים לתרגום',
 	'ow_needs_xlation_source_lang' => 'שפת המקור:',
 	'ow_needs_xlation_dest_lang' => 'שפת היעד:',
@@ -5077,6 +5119,7 @@ $messages['he'] = array(
 	'ow_nstab_definedmeaning' => 'משמעות מוגדרת',
 	'ow_nstab_edit_copy' => 'עריכת עותק',
 	'right-addlanguage' => 'הוספת ושינוי הגדרות שפה',
+	'ow_shown_datasets' => 'ערכות נתונים מוצגות',
 );
 
 /** Hindi (हिन्दी)

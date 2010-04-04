@@ -42,6 +42,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'nll-desc' => 'furmaozañ aes eus ar rolloù yezhoù naturel',
 	'nll-lastseparator' => '&#32;ha&#32;',
 );
 
@@ -133,6 +134,13 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'nll-desc' => 'Formatation facile de listas in linguas natural',
 	'nll-lastseparator' => '&#32;e&#32;',
+);
+
+/** Japanese (日本語)
+ * @author Naohiro19
+ */
+$messages['ja'] = array(
+	'nll-desc' => 'ナチュラル言語一覧の簡単な形式',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

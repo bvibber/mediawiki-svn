@@ -720,7 +720,7 @@ Tu 'zo deoc'h amprouiñ anezhañ adarre en ur klikañ war al liamm \"{{int:optin
 	'optin-survey-no' => 'Ket',
 	'optin-survey-intro' => 'Trugarez da amprouiñ ar Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma respontfec\'h d\'ar goulennoù dindan a-raok klikañ war "[[#leave|{{int:optin-submit-out}}]]".',
-	'optin-survey-question-likedislike' => "Petra zo plijet deoc'h er Beta ? Petra n'eus displijet deoc'h ?",
+	'optin-survey-question-likedislike' => "Petra en deus plijet deoc'h er Beta ? Petra n'eus displijet deoc'h ?",
 	'optin-survey-question-whyoptout' => "Perak e fell deoc'h dilezel ar Beta ? (dibabit kement tra a glot gant ho soñj)",
 	'optin-survey-answer-whyoptout-hard' => 'Start e oa da embreger.',
 	'optin-survey-answer-whyoptout-didntwork' => "Ne'z ae ket plaen en-dro.",

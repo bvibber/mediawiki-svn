@@ -343,7 +343,7 @@ Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù gant an 
 	'crosswikiblock-expiry' => 'Termen :',
 	'crosswikiblock-reason' => 'Abeg :',
 	'crosswikiblock-submit' => 'Stankañ an implijer-mañ',
-	'crosswikiblock-anononly' => 'Stankañ an implijerien dianv hepken',
+	'crosswikiblock-anononly' => 'Stankañ an implijerien dizanv hepken',
 	'crosswikiblock-nocreate' => "Nac'hañ a ra krouidigezh ur gont",
 	'crosswikiblock-autoblock' => "Stankañ a ra emgefre ar chomlec'h IP ziwezhañ bet implijet gant an implijer-mañ, hag an holl IPoù da heul ho defe c'hoant kemmañ",
 	'crosswikiblock-noemail' => "Nac'hañ d'an implijer kas posteloù",
@@ -358,7 +358,7 @@ Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù ouzh an 
 Distreiñ da:
 * [[Special:CrosswikiBlock|furmskrid ar stankadennoù]]
 * [[$2]]",
-	'crosswikiblock-nousername' => "N'eo bet roet anv implijer ebet",
+	'crosswikiblock-nousername' => "N'eus bet roet anv implijer ebet",
 	'crosswikiblock-local' => "Ne vez ket degemeret gant an etrefas-mañ an distankadennoù lec'hel. Implijit [[Special:BlockIP|{{int:blockip}}]].",
 	'crosswikiblock-dbnotfound' => "N'eus ket eus an diaz roadennoù $1",
 	'crosswikiblock-noname' => '« $1 » n’eo ket un anv implijer reizh.',

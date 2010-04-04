@@ -496,6 +496,13 @@ $messages['sk'] = array(
 	'poem-desc' => 'Pridáva značku <tt>&lt;poem&gt;</tt> pre formátovanie básní',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'poem-desc' => 'Doda etiketo <tt>&lt;poem&gt;</tt> za oblikovanje pesmi',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Piotron
  */

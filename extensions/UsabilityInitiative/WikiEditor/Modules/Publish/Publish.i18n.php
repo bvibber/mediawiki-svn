@@ -876,6 +876,21 @@ $messages['sk'] = array(
 	'wikieditor-publish-dialog-goback' => 'Prejsť späť',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-publish-preference' => 'Omogoči objavljanje korak-po-koraku',
+	'wikieditor-publish-button-publish' => 'Objavi',
+	'wikieditor-publish-button-cancel' => 'Prekliči',
+	'wikieditor-publish-dialog-title' => 'Objavi na {{GRAMMAR:dajalnik|{{SITENAME}}}}',
+	'wikieditor-publish-dialog-summary' => 'Povzetek urejanja (na kratko opišite narejene spremembe):',
+	'wikieditor-publish-dialog-minor' => 'Manjše urejanje',
+	'wikieditor-publish-dialog-watch' => 'Opazuj stran',
+	'wikieditor-publish-dialog-publish' => 'Objavi',
+	'wikieditor-publish-dialog-goback' => 'Pojdi nazaj',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

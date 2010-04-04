@@ -535,6 +535,13 @@ $messages['sk'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-loading' => 'Nalaganje',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Sertion

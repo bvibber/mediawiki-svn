@@ -582,6 +582,14 @@ $messages['sk'] = array(
 	'newuseredit-summary' => 'Pridanie [[{{int:newusermessage-template}}|uvítacej správy]] na diskusnú stránku nových používateľov',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'newusermessage-desc' => 'Dodaj sporočilo na pogovorno stran novo ustvarjenega uporabnika',
+	'newuseredit-summary' => 'Dodajanje [[{{int:newusermessage-template}}|pozdravnega sporočila]] na pogovorno stran novega uporabnika',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

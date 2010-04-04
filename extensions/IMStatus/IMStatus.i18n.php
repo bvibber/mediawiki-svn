@@ -217,7 +217,7 @@ $messages['br'] = array(
 An ID ho peus da reiñ a zo savet gant sifroù ha lizherennoù etre "$2" ha "$3".',
 	'imstatus_skype_nbstyle' => "Notenn : ma tibaboc'h ur stil hag a zo ivez un obererezh, ho tibab obererezh a vo flastret gant an obererezh a glot gant ar stil ho peus dibabet.",
 	'imstatus_xfire_size' => 'ment ar bouton, eus $1 (an hini vrasañ) da $2 (an hini vihanañ).',
-	'imstatus_yahoo_style' => 'doare ar bouton, eus $1 (an hini vihanañ) da $2 (an hini vrasañ), $3 ha $4 a zo kemenadennoù dre gomz.',
+	'imstatus_yahoo_style' => 'doare ar bouton, eus $1 (an hini vihanañ) da $2 (an hini vrasañ), $3 ha $4 a zo kemennadennoù dre gomz.',
 );
 
 /** Bosnian (Bosanski)

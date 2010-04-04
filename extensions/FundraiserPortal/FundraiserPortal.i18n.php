@@ -950,6 +950,23 @@ $messages['sk'] = array(
 	'fundraiserportal-tourmaline-close' => 'Odteraz nezobrazovať',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'fundraiserportal' => 'Portal zbiralcev sredstev',
+	'fundraiserportal-desc' => 'Doda portal »prosimo, prispevajte« na vrh stranske vrstice.',
+	'fundraiserportal-plain-button' => 'Podprite Wikipedijo!',
+	'fundraiserportal-ruby-button' => 'Prispevajte zdaj',
+	'fundraiserportal-rubytext-button' => 'Prispevajte zdaj',
+	'fundraiserportal-rubytext-message' => 'Vsak prispevek nam pomaga ohranjati Wikipedijo brezplačno za vsakogar.',
+	'fundraiserportal-rubytext-close' => 'Skrij od zdaj naprej',
+	'fundraiserportal-sapphire-button' => 'Prispevajte zdaj',
+	'fundraiserportal-tourmaline-button' => 'Prispevajte zdaj',
+	'fundraiserportal-tourmaline-message' => 'Vsak prispevek nam pomaga ohranjati Wikipedijo brezplačno za vsakogar.',
+	'fundraiserportal-tourmaline-close' => 'Skrij od zdaj naprej',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */
