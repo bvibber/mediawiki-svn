@@ -394,6 +394,14 @@ $messages['sk'] = array(
 	'vector-desc' => 'Vylepšuje prvky používateľského rozhrania témy vzhľady Vector',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'vector' => 'Izboljšave uporabniškega vmesnika za Vector',
+	'vector-desc' => 'Izboljšave elementov uporabniškega vmesnika kože Vector.',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
