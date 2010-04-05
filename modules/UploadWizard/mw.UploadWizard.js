@@ -131,10 +131,10 @@ mw.ProgressBar.prototype = {
 	showProgress: function( fraction ) {
 		var _this = this;
 
-		_this.progressBarDiv.progressbar( 'value', parseInt( fraction * 100 ) );
+		_this.progressBarDiv.progressbar( 'value', parseInt( fraction * 100, 10 ) );
 
 		var remainingTime;
-		if (_this.beginTime == null) {
+		if (_this.beginTime === null) {
 			remainingTime = 0;
 		} else {	
 			remainingTime = _this.getRemainingTime( fraction );
@@ -142,7 +142,7 @@ mw.ProgressBar.prototype = {
 
 		if ( remainingTime !== null ) {
 			_this.timeRemainingDiv
-				.html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000)) ) );
+				.html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000), 10) ) );
 		}
 	},
 
@@ -158,7 +158,7 @@ mw.ProgressBar.prototype = {
 			var elapsedTime = ( new Date() ).getTime() - _this.beginTime;
 			if ( fraction > 0.0 && elapsedTime > 0 ) { // or some other minimums for good data
 				var rate = fraction / elapsedTime;
-				return parseInt( ( 1.0 - fraction ) / rate ); 
+				return parseInt( ( 1.0 - fraction ) / rate, 10 ); 
 			}
 		}
 		return null;
@@ -283,7 +283,7 @@ mw.UploadWizardLicenseInput.prototype = {
 			values[key] = $j( _this.licenses[key].input ).is( ':checked' ); 
 		} );
 		return values;
-	},
+	}
 
 };
 
@@ -474,7 +474,7 @@ mw.UploadWizardUpload.prototype = {
 
 		mw.getJSON( apiUrl, params, function( data ) {
 			if ( !data || !data.query || !data.query.pages ) {
-				mw.log(" No data? ")
+				mw.log(" No data? ");
 				// XXX do something about the thumbnail spinner, maybe call the callback with a broken image.
 				return;
 			}
@@ -493,7 +493,7 @@ mw.UploadWizardUpload.prototype = {
 						width: 	imageInfo.thumbwidth,
 						height: imageInfo.thumbheight,
 						url: 	imageInfo.thumburl
-					}
+					};
 					_this._thumbnails[ "width" + width ] = thumbnail; 
 					callback( thumbnail );
 				}
@@ -520,7 +520,7 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 	_this.isFilled = false;
 
 	_this.fileInputCtrl = $j('<input size="1" class="mwe-upwiz-file-input" name="file" type="file"/>')
-				.change( function() { _this.fileChanged() } ) 
+				.change( function() { _this.fileChanged(); } ) 
 				.get(0);
 
 
@@ -535,8 +535,9 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 	// however, we want to pass hover events to interface elements that we are over, hence the bindings.
 	// n.b. not using toggleClass because it often gets this event wrong -- relies on previous state to know what to do
 	_this.fileCtrlContainer = $j('<div class="mwe-upwiz-file-ctrl-container">')
-					.bind( 'mouseenter', function(e) { _this.addFileCtrlHover(e) } )
-					.bind( 'mouseleave', function(e) { _this.removeFileCtrlHover(e) } );
+					.bind( 'mouseenter', function(e) { _this.addFileCtrlHover(e); } )
+					.bind( 'mouseleave', function(e) { _this.removeFileCtrlHover(e); } );
+
 
 	// the css trickery (along with css) 
 	// here creates a giant size file input control which is contained within a div and then
@@ -556,9 +557,10 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 
 	_this.errorDiv = $j('<div class="mwe-upwiz-upload-error mwe-upwiz-file-indicator" style="display: none;"></div>').get(0);
 
-	_this.removeCtrl = $j( '<div class="mwe-upwiz-file-indicator"><a title="' + gM( 'mwe-upwiz-remove-upload' ) 
+	_this.removeCtrl = $j( '<div class="mwe-upwiz-file-indicator"><a title="' 
+					+ gM( 'mwe-upwiz-remove-upload' ) 
 					+ '" href="#" class="mwe-upwiz-remove">x</a></div>' )
-				.click( function() { _this.upload.remove() } )
+				.click( function() { _this.upload.remove(); } )
 				.hide()
 				.get( 0 );
 
@@ -566,7 +568,7 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 	$j( _this.div ).append( _this.form )
 		    .append( _this.progressMessage )
 		    .append( _this.errorDiv )
-		    .append( _this.removeCtrl )
+		    .append( _this.removeCtrl );
 
 	// XXX evil hardcoded
 	// we don't really need filesdiv if we do it this way?
@@ -575,7 +577,7 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 	// _this.progressBar = ( no progress bar for individual uploads yet )
 	// add a details thing to details
 	// this should bind only to the FIRST transportProgress
-	$j( upload ).bind( 'transportProgress', function(e) { _this.showTransportProgress(); e.stopPropagation() } );
+	$j( upload ).bind( 'transportProgress', function(e) { _this.showTransportProgress(); e.stopPropagation(); } );
 	$j( upload ).bind( 'transported', function(e) { _this.showTransported(); e.stopPropagation(); } );
 
 };
@@ -658,7 +660,7 @@ mw.UploadWizardUploadInterface.prototype = {
 	 */
 	moveFileInputToCover: function( selector ) {
 		var _this = this;
-	
+		//debugger;	
 		var $covered = $j( selector ); 
 
 		_this.fileCtrlContainer
@@ -855,7 +857,7 @@ mw.UploadWizardDescription = function( languageCode ) {
 				.growTextArea().get(0);
 	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append( _this.languageMenu )
-	               .append( _this.description )
+	               .append( _this.description );
 	
 };
 
@@ -872,7 +874,7 @@ mw.UploadWizardDescription.prototype = {
 		if (fix[language]) {
 			language = fix[language];
 		}
-		return '{{' + language + '|1=' + $j( _this.description ).val().trim() + '}}'	
+		return '{{' + language + '|1=' + $j( _this.description ).val().trim() + '}}';
 	}
 };
 
@@ -912,7 +914,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.descriptionAdder = $j( '<a id="mwe-upwiz-desc-add"/>' )
 					.attr( 'href', '#' )
 					.html( gM( 'mwe-upwiz-desc-add-0' ) )
-					.click( function( ) { _this.addDescription( ) } );
+					.click( function( ) { _this.addDescription(); } );
 	
 	_this.descriptionsContainerDiv = 
 		$j( '<div class="mwe-upwiz-details-descriptions-container"></div>' )
@@ -928,9 +930,9 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 					_this.setFilenameFromTitle();
 				} );
 	$j(_this.titleInput).destinationChecked( {
-		spinner: function(bool) { _this.toggleDestinationBusy(bool) },
-		preprocess: function( name ) { return _this.getFilenameFromTitle() }, // XXX this is no longer a pre-process
-		processResult: function( result ) { _this.processDestinationCheck( result ) } 
+		spinner: function(bool) { _this.toggleDestinationBusy(bool); },
+		preprocess: function( name ) { return _this.getFilenameFromTitle(); }, // XXX this is no longer a pre-process
+		processResult: function( result ) { _this.processDestinationCheck( result ); } 
 	} );
 
 	_this.titleErrorDiv = $j('<div></div>');
@@ -1475,7 +1477,7 @@ mw.UploadWizardDetails.prototype = {
 		}
 		$j.each( _this.descriptions, function( i, desc ) {
 			information['description'] += desc.getWikiText();
-		} )
+		} );
 	
 
 		// XXX add a sanity check here for good date
@@ -1497,7 +1499,7 @@ mw.UploadWizardDetails.prototype = {
 		wikiText += '{{Information\n' + info + '}}\n';
 
 	
-		wikiText += "=={{int:licenses}}==\n";
+		wikiText += "=={{int:license-header}}==\n";
 		
 		wikiText += _this.licenseInput.getWikiText();
 
@@ -1572,7 +1574,7 @@ mw.UploadWizardDetails.prototype = {
 			} else {
 				endCallback();
 			}
-		}
+		};
 
 		_this.upload.state = 'submitting-details';
 		_this.showProgress();
@@ -1601,7 +1603,7 @@ mw.UploadWizardDetails.prototype = {
 			reason: "User edited page with " + mw.UploadWizard.userAgent,
 			movetalk: '',
 			noredirect: '', // presume it's too new 
-			token: mw.getConfig('token'),
+			token: mw.getConfig('token')
 		};
 		mw.log(params);
 		// despite the name, getJSON magically changes this into a POST request (it has a list of methods and what they require).
@@ -1694,7 +1696,7 @@ mw.UploadWizardDetails.prototype = {
 	}
 
 		
-}
+};
 
 
 /**
@@ -1729,7 +1731,6 @@ mw.UploadWizard.prototype = {
 		'NullUploadHandler'
 	],
 
-	/*
 	 * We can use various UploadHandlers based on the browser's capabilities. Let's pick one.
 	 * For example, the ApiUploadHandler should work just about everywhere, but XhrUploadHandler
 	 *   allows for more fine-grained upload progress
@@ -1737,7 +1738,6 @@ mw.UploadWizard.prototype = {
 	getUploadHandlerClass: function() {
 		// return mw.MockUploadHandler;
 		return mw.ApiUploadHandler;
-		/*
 		var _this = this;
 		for ( var i = 0; i < uploadHandlers.length; i++ ) {
 			var klass = mw[uploadHandlers[i]];
@@ -1832,10 +1832,7 @@ mw.UploadWizard.prototype = {
 		       + '<div class="mwe-upwiz-clearing"></div>';
 
 		// within FILE tab div
-		// select files:
-		//     place for file interfaces
-		// $j('#mwe-upwiz-add-file').click( function() { _this.newUpload() } );
-		$j('#mwe-upwiz-upload-ctrl').click( function() { _this.startUploads() } );
+		$j('#mwe-upwiz-upload-ctrl').click( function() { _this.startUploads(); } );
 
 		_this.setupDeedOwnWork();
 		_this.setupDeedThirdParty();
@@ -1968,11 +1965,13 @@ mw.UploadWizard.prototype = {
 	removeEmptyUploads: function() {
 		var _this = this;
 		var toRemove = [];
+
 		for ( var i = 0; i < _this.uploads.length; i++ ) {
 			if ( _this.uploads[i].ui.fileInputCtrl.value == "" ) {
 				toRemove.push( _this.uploads[i] );
 			}
-		};
+		}
+
 		for ( var i = 0; i < toRemove.length; i++ ) {
 			toRemove[i].remove();
 		}
@@ -2038,9 +2037,9 @@ mw.UploadWizard.prototype = {
 			progressBar.showCount( endStateCount );
 	
 			// build in a little delay even for the end state, so user can see progress bar in a complete state.	
-			var nextAction = (endStateCount == totalCount) ? endCallback : transitioner
+			var nextAction = (endStateCount == totalCount) ? endCallback : transitioner;
 			setTimeout( nextAction, wizard.transitionerDelay );
-		}
+		};
 
 		progressBar.setBeginTime();
 		transitioner();
@@ -2083,7 +2082,7 @@ mw.UploadWizard.prototype = {
 				$j.each( _this.uploads, function(i, upload) {
 					upload.state = 'details';
 				} );
-				_this.moveToTab('details') 
+				_this.moveToTab('details');
 		  	} 
 		);
 	},
@@ -2239,6 +2238,8 @@ mw.UploadWizard.prototype = {
 	stop: function() {
 
 	},
+
+
 	/**
 	 * Go back to original source choice. 
 	 * Assumed that we are in details mode.
@@ -2274,7 +2275,7 @@ mw.UploadWizard.prototype = {
 	 * Set up the form for the deed option that says these uploads are all the user's own work.
 	 */
 	setupDeedOwnWork: function() {
-		mw.log("setupdeed own work");
+		mw.log("setupdeed own work");	
 		var _this = this;
 
 		_this.sourceInput = $j( '<input />').attr( { name: "source", value: "{{own}}" } );
@@ -2304,7 +2305,7 @@ mw.UploadWizard.prototype = {
 						$j( '<input />' )
 							.attr( { name: 'author' } )
 							.addClass( 'mwe-upwiz-sign' ) 
-							.blur( function() { _this.applyOwnWorkMacroDeed() } ) ) ),
+							.blur( function() { _this.applyOwnWorkMacroDeed(); } ) ) ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
 					.addClass( 'mwe-small-print' )
@@ -2315,7 +2316,7 @@ mw.UploadWizard.prototype = {
 			.append( 
 				$j( '<input />') 
 					.attr( { id: 'mwe-upwiz-deed-accept-ownwork-custom', type: 'checkbox' } )
-					.click( function() { _this.applyOwnWorkMacroDeed() } )
+					.click( function() { _this.applyOwnWorkMacroDeed(); } )
 					.addClass( 'mwe-checkbox-hang-indent' ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
@@ -2371,7 +2372,10 @@ mw.UploadWizard.prototype = {
 		_this.sourceInput = $j('<textarea class="mwe-source" name="source" rows="1" cols="40"></textarea>' ).growTextArea();
 		_this.authorInput = $j('<textarea class="mwe-author" name="author" rows="1" cols="40"></textarea>' ).growTextArea();
 		licenseInputDiv = $j( '<div></div>' );
-		_this.licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv, [], function() { _this.applyThirdPartyMacroDeed() }  );
+		_this.licenseInput = new mw.UploadWizardLicenseInput( 
+			licenseInputDiv, 
+			[], 
+			function() { _this.applyThirdPartyMacroDeed(); }  );
 		_this.licenseInput.setDefaultValues();
 
 		// we don't use 'customizable' here, but the applyMacroDeed function will use this to determine
@@ -2435,7 +2439,6 @@ mw.UploadWizard.prototype = {
 	 * @param customDiv the div containing the custom options
 	 */
 	makeCustomToggler: function ( standardDiv, customDiv ) {
-	
 		var toggleDiv = $j('<div />')
 			.addClass( 'mwe-more-options' )
 			.append( $j( '<a />' ) 
@@ -2476,8 +2479,6 @@ mw.UploadWizard.prototype = {
 	applyMacroDeed: function() {
 
 		var _this = this;
-	
-		debugger;
 	
 		var source = $j( _this.sourceInput ).val();
 		var author = $j( _this.authorInput ).val(); // switch to an object to deal with creator/username/plaintext cases
