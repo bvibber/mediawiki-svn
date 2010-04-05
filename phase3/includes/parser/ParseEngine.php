@@ -22,8 +22,6 @@ class ParseEngine {
 	}
 
 	function parse($text) {
-//print("Text: $text\n");
-//foreach (debug_backtrace() as $func) print("{$func["function"]}:{$func["file"]}:{$func["line"]}\n");
 		global $wgDebugParserLog;
 		if ($wgDebugParserLog != '') {
 			wfErrorLog("==========Start Parsing==========\n", $wgDebugParserLog);
@@ -31,18 +29,39 @@ class ParseEngine {
 		$doc = new DOMDocument();
 		$rule = $this->mGrammar->documentElement;
 		$rootTag = $doc->createElement($rule->getAttribute("rootTag"));
-		$doc->appendChild($rootTag);
 		$xpath = new DOMXPath($this->mGrammar);
 		$startRule = $xpath->query("/Grammar/*[@name='{$rule->getAttribute("startRule")}']")->item(0);
 		$iter = 0;
 		if (! $this->parseRec($startRule, "", $saveTags, $iter, $text, $rootTag)) {
 			throw new MWException("Failed to parse the given text.");
 		}
+		$doc->appendChild($rootTag);
 		$doc->normalizeDocument();
 		if ($wgDebugParserLog != '') {
 			wfErrorLog("XML - {$doc->saveXML()}\n", $wgDebugParserLog);
 		}
 		return $doc;
+	}
+
+	static function expand($nodeList, $callback, $flags = 0) {
+		$retStr = "";
+		foreach ($nodeList as $node) {
+			if ($node instanceof DOMText) {
+				$retStr .= $node->data;
+			} else {
+				$methodName = $node->nodeName . "Substitution";
+				if (method_exists($callback, $methodName) && call_user_func_array(array($callback, $methodName), array($node, &$outStr, $flags))) {
+					$retStr .= $outStr;
+				} else {
+					$retStr .= $node->getAttribute("tag") . self::expand($node->childNodes, $callback, $flags);
+				}
+			}
+		}
+		global $wgDebugParserLog;
+		if ($wgDebugParserLog != '') {
+			wfErrorLog("Expand returned: $retStr\n", $wgDebugParserLog);
+		}
+		return $retStr;
 	}
 
 	private function parseRec($rule, $replaceStr, $saveTags, &$iter, &$text, &$outNode) {
@@ -66,19 +85,24 @@ class ParseEngine {
 		$dom = $outNode->ownerDocument;
 		$retCode = FALSE;
 		if ($rule->nodeName == "Assignment") {
-			$startPat = $rule->getAttribute("tag");
-			$tag = NULL;
-			if ($rule->getAttribute("regex") != NULL) {
-				if (preg_match("/^$startPat/s", $text, $matches)) {
-					$tag = $matches[0];
-					if (isset($matches[1])) {
-						$replaceStr = $matches[1];
+			$tag = $rule->getAttribute("tag");
+			$foundTag = $tag == NULL;
+			if (! $foundTag) {
+				if ($rule->getAttribute("regex") != NULL) {
+					$tag = str_replace("~r", preg_quote($replaceStr, "/"), $tag);
+					$foundTag = preg_match("/^$tag/s", $text, $matches);
+					if ($foundTag) {
+						$tag = $matches[0];
+						if (isset($matches[1])) {
+							$replaceStr = $matches[1];
+						}
 					}
+				} else {
+					$tag = str_replace("~r", $replaceStr, $tag);
+					$foundTag = strncmp($tag, $text, strlen($tag)) == 0;
 				}
-			} elseif ($startPat != NULL && strncmp($startPat, $text, strlen($startPat)) == 0) {
-				$tag = $startPat;
 			}
-			if ($tag != NULL || $startPat == NULL) {
+			if ($foundTag) {
 				$newText = $text;
 				$newElement = $dom->createElement($rule->getAttribute("tagName"));
 				if ($tag != NULL) {
@@ -113,24 +137,19 @@ class ParseEngine {
 			}
 			$retCode |= $rule->getAttribute("failSafe") != NULL;
 		} elseif ($rule->nodeName == "Reference") {
-			$varAttr = $rule->getAttribute("var");
-			$newVar = $varAttr == NULL ? $replaceStr : str_replace("~r", $replaceStr, $varAttr);
+			$newVar = $rule->hasAttribute("var") ? str_replace("~r", $replaceStr, $rule->getAttribute("var")) : $replaceStr;
 			$xpath = new DOMXPath($this->mGrammar);
 			$refRule = $xpath->query("/Grammar/*[@name='{$rule->getAttribute("name")}']")->item(0);
 			$retCode = $this->parseRec($refRule, $newVar, $saveTags, $iter, $text, $outNode);
 		} elseif ($rule->nodeName == "Text") {
 			$tagSearch = $rule->getAttribute("childTags");
-			if ($saveTags != "") {
+			if ($tagSearch == "") {
+				$tagSearch = $saveTags;
+			} elseif ($saveTags != "") {
 				$tagSearch .= "|" . $saveTags;
 			}
 			while ($text != "" && ($saveTags == "" || ! preg_match("/^($saveTags)/s", $text))) {
-				$offset = 1;
-				foreach ($rule->childNodes as $crrnt) {
-					if ($this->parseRec($crrnt, $replaceStr, "", $iter, $text, $outNode)) {
-						$offset = 0;
-						break;
-					}
-				}
+				$offset = $rule->firstChild != NULL && $this->parseRec($rule->firstChild, $replaceStr, "", $iter, $text, $outNode) ? 0 : 1;
 				if (preg_match("/$tagSearch/s", $text, $matches, PREG_OFFSET_CAPTURE, $offset)) {
 					if ($matches[0][1] > 0) {
 						$outNode->appendChild($dom->createTextNode(substr($text, 0, $matches[0][1])));
@@ -205,7 +224,7 @@ class ParseEngine {
 		$failSafe = TRUE;
 		if ($rule->nodeName == "Assignment") {
 			$childTags = $rule->getAttribute("tag");
-			if ($rule->nodeName != "Assignment" || $rule->getAttribute("regex") == NULL) {
+			if ($rule->getAttribute("regex") == NULL) {
 				$childTags = preg_quote($childTags, "/");
 			}
 			$failSafe = FALSE;
