@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class for manipulating the bad_image table
  *
@@ -10,7 +9,6 @@
  */
 
 class BadImageList {
-
 	public static function check( $name ) {
 		wfProfileIn( __METHOD__ );
 		static $titles = array();

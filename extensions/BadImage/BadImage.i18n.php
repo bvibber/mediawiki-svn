@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalisation file for the bad image list extension
  *

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Installation script for the bad image list extension
  *

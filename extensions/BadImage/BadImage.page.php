@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class provides a special page to manage the bad image list
  *
@@ -10,7 +9,6 @@
  */
 
 class BadImageManipulator extends SpecialPage {
-
 	function __construct() {
 		parent::__construct( 'Badimages' );
 	}
