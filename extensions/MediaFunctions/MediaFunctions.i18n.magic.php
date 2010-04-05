@@ -30,6 +30,7 @@ $magicWords['ar'] = array(
 	'mediawidth'        => array( '0', 'عرض_الميديا', 'mediawidth' ),
 	'mediadimensions'   => array( '0', 'أبعاد_الميديا', 'mediadimensions' ),
 	'mediaexif'         => array( '0', 'إكسيف_الميديا', 'mediaexif' ),
+	'mediapages'        => array( '0', 'صفحات_الميديا', 'mediapages' ),
 );
 
 $magicWords['arz'] = array(
