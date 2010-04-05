@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * An example parser hook that defines a new variable, {{AUTOINCREMENT}},
  * useful for maintaining a citation count with {{ref|}} and {{note|}} pairs
@@ -19,7 +19,7 @@ $wgExtensionCredits['variable'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['Autoincrement'] = $dir . 'Autoincrement.i18n.php';
 $wgExtensionMessagesFiles['AutoincrementMagic'] = $dir . 'Autoincrement.i18n.magic.php';
 
