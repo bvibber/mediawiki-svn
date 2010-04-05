@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class file for the BackAndForth extension
  *
@@ -7,7 +6,6 @@
  * @author Rob Church <robchur@gmail.com>
  */
 class BackAndForth {
-
 	/**
 	 * Article::view() hook
 	 *
@@ -17,7 +15,7 @@ class BackAndForth {
 	public static function viewHook( $article ) {
 		global $wgOut, $wgUser;
 		$title = $article->getTitle();
-		if( MWNamespace::isContent( $title->getNamespace() ) ) {
+		if ( MWNamespace::isContent( $title->getNamespace() ) ) {
 			$wgOut->addHTML( self::buildLinks( $title ) );
 			$wgOut->addHeadItem( 'backandforth', self::buildHeadItem() );
 		}
@@ -32,8 +30,8 @@ class BackAndForth {
 	 */
 	private static function buildLinks( $title ) {
 		$links = '';
-		foreach( array( 'prev' => '<', 'next' => '>' ) as $kind => $op ) {
-			if( ( $link = self::buildLink( $title, $op, $kind ) ) !== false )
+		foreach ( array( 'prev' => '<', 'next' => '>' ) as $kind => $op ) {
+			if ( ( $link = self::buildLink( $title, $op, $kind ) ) !== false )
 				$links .= "<div class=\"mw-backforth-{$kind}\">{$link}</div>";
 		}
 		return "{$links}<div style=\"clear: both;\"></div>";
@@ -64,12 +62,12 @@ class BackAndForth {
 				'LIMIT' => 1,
 			)
 		);
-		if( $dbr->numRows( $res ) > 0 ) {
+		if ( $dbr->numRows( $res ) > 0 ) {
 			wfLoadExtensionMessages( 'BackAndForth' );
 			$row = $dbr->fetchObject( $res );
 			$dbr->freeResult( $res );
 			$target = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-			if( $target instanceof Title ) {
+			if ( $target instanceof Title ) {
 				$label = htmlspecialchars( wfMsg( "backforth-{$label}", $target->getPrefixedText() ) );
 				wfProfileOut( __METHOD__ );
 				return $GLOBALS['wgUser']->getSkin()->makeKnownLinkObj( $target, $label );
@@ -95,5 +93,4 @@ class BackAndForth {
 EOT
 		;
 	}
-
 }

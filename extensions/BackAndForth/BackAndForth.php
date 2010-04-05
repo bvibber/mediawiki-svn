@@ -7,7 +7,7 @@
  * @author Rob Church <robchur@gmail.com>
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
@@ -22,4 +22,4 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
 );
 
-$wgExtensionMessagesFiles['BackAndForth'] = dirname(__FILE__) . '/BackAndForth.i18n.php';
+$wgExtensionMessagesFiles['BackAndForth'] = dirname( __FILE__ ) . '/BackAndForth.i18n.php';
