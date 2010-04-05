@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Book information driver interface
  *
@@ -10,6 +9,7 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
+
 interface BookInformationDriver {
 
 	/**
@@ -20,7 +20,5 @@ interface BookInformationDriver {
 	 * @return BookInformationResult
 	 */
 	public function submitRequest( $isbn );
-	
+
 }
-
-
