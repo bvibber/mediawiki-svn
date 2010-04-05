@@ -33,7 +33,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @ingroup Storyboard
  */
-class ApiStoryboard extends ApiBase {
+class ApiStoryExists extends ApiBase {
 	
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
@@ -42,60 +42,59 @@ class ApiStoryboard extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		
-		if ( !isset( $params['action'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'action' ) );
+		if ( !isset( $params['storyname'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'storyname' ) );
 		}		
-		
-		if ( $params['action'] == 'storyexists' ) {
-			if ( !isset( $params['storyname'] ) ) {
-				$this->dieUsageMsg( array( 'missingparam', 'storyname' ) );
-			}	
 					
-			$dbr = wfGetDB( DB_SLAVE );
-			
-			$story = $dbr->selectRow(
-				'storyboard',
-				array( 'story_id' ),
-				array( 'story_title' => $params['storyname'] )
-			);
-			
-			$result = array(
-				'exists' => isset( $story )
-			);
-			
-			$this->getResult()->setIndexedTagName( $result, 'story' );
-			$this->getResult()->addValue( null, $this->getModuleName(), $result );			
-		}
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$story = $dbr->selectRow(
+			'storyboard',
+			array( 'story_id' ),
+			array( 'story_title' => str_replace( '_', ' ', $params['storyname'] ) )
+		);
+		
+		$result = array(
+			'exists' => $story != false
+		);
+		
+		$this->getResult()->setIndexedTagName( $result, 'story' );
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );			
 	}
 	
 	public function getAllowedParams() {
 		return array(
+			'storyname' => array(
+				ApiBase :: PARAM_TYPE => 'string',
+			),
 		);
 	}
 	
 	public function getParamDescription() {
 		return array(
+			'storyname' => 'The name of the story to check for.'
 		);
 	}
 	
 	public function getDescription() {
 		return array(
-			'General storyboard information'
+			'Enables determining if a story exists already'
 		);	
 	}
 		
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'missingparam', 'storyname' ),
 		) );
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=storyboard',
+			'api.php?action=storyexists&storyname=oHai there!',
 		);
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiStoryReview.php 63775 2010-03-15 16:35:22Z jeroendedauw $';
+		return __CLASS__ . ': $Id: ApiStoryExists.php 63775 2010-03-15 16:35:22Z jeroendedauw $';
 	}	
 }

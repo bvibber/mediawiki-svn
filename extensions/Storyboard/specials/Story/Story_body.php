@@ -218,22 +218,51 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorlocation' ) ) .
-			'<td>' . Html::input( 'location', $story->story_author_location, 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input(
+				'location',
+				$story->story_author_location,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'maxlength' => 255
+				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authoroccupation' ) ) .
-			'<td>' . Html::input( 'occupation', $story->story_author_occupation, 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input(
+				'occupation',
+				$story->story_author_occupation,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'maxlength' => 255
+				)
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorcontact' ) ) .
-			'<td>' . Html::input( 'contact', $story->story_author_contact, 'text', array( 'size' => $fieldSize )
+			'<td>' . Html::input(
+				'contact',
+				$story->story_author_contact,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'maxlength' => 255
+				)
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . Html::input( 'storytitle', $story->story_title, 'text', array( 'size' => $fieldSize )
+			'<td>' . 
+			Html::input(
+				'storytitle',
+				$story->story_title,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'maxlength' => 255
+				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr><td colspan="2">' .
@@ -287,7 +316,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'action' => $this->getTitle( $story->story_title )->getLocalURL( $returnToQuery ),
 			),
 			$formBody
-		);		
+		);
 		
 		$wgOut->addHTML( $formBody );
 		
@@ -297,6 +326,9 @@ addOnloadHook(
 		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
 	}
 );
+$(document).ready(function() {
+	$("#storyform").validate();
+});	
 EOT
 		);
 	}

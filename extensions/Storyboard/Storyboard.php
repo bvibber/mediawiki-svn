@@ -50,8 +50,8 @@ $wgSpecialPages['Story'] = 'SpecialStory';
 $wgSpecialPageGroups['Story'] = 'contribution';
 
 // API
-$wgAutoloadClasses['ApiStoryboard'] = "{$egStoryboardDir}api/ApiStoryboard.php";
-$wgAPIModules['storyboard'] = 'ApiStoryboard';
+$wgAutoloadClasses['ApiStoryExists'] = "{$egStoryboardDir}api/ApiStoryExists.php";
+$wgAPIModules['storyexists'] = 'ApiStoryExists';
 $wgAutoloadClasses['ApiQueryStories'] = "{$egStoryboardDir}api/ApiQueryStories.php";
 $wgAPIListModules['stories'] = 'ApiQueryStories';
 $wgAutoloadClasses['ApiStoryReview'] = "{$egStoryboardDir}api/ApiStoryReview.php";

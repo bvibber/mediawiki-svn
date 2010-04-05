@@ -166,3 +166,26 @@ function stbDeleteStoryImage( sender, storyid ) {
 	}
 	return confirmed;
 }
+
+
+/*
+$(function(){
+	$("#storyform").validate({
+		rules: {
+			storytitle: {
+				required: true,
+				// TODO: min lenght
+				remote: wgScriptPath + '/api.php?action=storyexists&storyname=' + '' // TODO
+			}
+		},
+		messages: {
+			storytitle: "" // TODO	
+		},
+		success: function(label) {
+			label.addClass("valid").text("Valid story title!")
+		},
+		onkeyup: false
+	});
+	
+});
+*/
