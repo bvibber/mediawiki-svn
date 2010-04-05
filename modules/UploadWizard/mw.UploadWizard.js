@@ -1064,22 +1064,10 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 		.append( $j( '<div class="mwe-details-title"></div>' ).append( _this.titleInput ) )
 		.append( _this.titleErrorDiv );
 
-	_this.moreDetailsDiv = $j('<div class="mwe-more-details"></div>');
+	_this.moreDetailsDiv = $j('<div class="mwe-more-details"></div>').hide();
 
-	// more details ctrl 
-	// XXX change class of button to have arrow pointing in different directions
-	// XXX standard jQuery "blind" effect seems to cause a jQuery error, why?
-	_this.moreDetailsCtrl = $j('<a class=".mwe-upwiz-more"/>')
-		.append( gM( 'mwe-upwiz-more-options' ) ).click( function() {
-			_this.moreDetailsOpen = !_this.moreDetailsOpen;
-			_this.moreDetailsOpen ? $j( _this.moreDetailsDiv ).show() 
-					      : $j( _this.moreDetailsDiv ).hide();
-		} );
-	_this.moreDetailsOpen = false;
-	_this.moreDetailsDiv.hide();
+	_this.moreDetailsCtrlDiv = $j( '<div class="mwe-details-more-options"></div>' );
 
-	_this.moreDetailsCtrlDiv = $j( '<div class="mwe-details-more-options"></div>' )
-		.append( _this.moreDetailsCtrl );
 
 	
 	_this.dateInput = $j( '<input type="text" class="mwe-date" size="20"/>' );
@@ -1160,6 +1148,8 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				.append( otherInformationDiv )
 			)
 		);
+
+	mw.UploadWizardUtil.makeMoreToggler( _this.moreDetailsCtrlDiv, _this.moreDetailsDiv);	
 
 	_this.addDescription();
 	$j( containerDiv ).append( _this.div );
@@ -2494,7 +2484,7 @@ mw.UploadWizard.prototype = {
 				customDiv,
 				hiddenInputsDiv );
 		
-		_this.makeCustomToggler( standardDiv, toggleDiv, customDiv );
+		mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
 
 		// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
 		authorInput.blur( function() { ownWorkDeed.applyDeed( _this.uploads ) } ).addClass( 'mwe-upwiz-sign' );
@@ -2576,7 +2566,7 @@ mw.UploadWizard.prototype = {
 		$j( '#mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).
 			append( standardDiv, toggleDiv, customDiv );
 		
-		_this.makeCustomToggler( standardDiv, toggleDiv, customDiv );
+		mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
 
 		$j( '.mwe-upwiz-deed-thirdparty-accept' )
 			.attr( { value: gM( 'mwe-upwiz-source-thirdparty-accept' ) } )
@@ -2595,6 +2585,37 @@ mw.UploadWizard.prototype = {
 	},
 
 
+
+
+	
+};
+
+/**
+ * Miscellaneous utilities
+ */
+mw.UploadWizardUtil = {
+
+	/**
+	 * make a "more" options toggle which makes the standard div fade when 'more' is open
+	 * @param standardDiv the div representing the standard options
+	 * @param toggleDiv the div which has the control to open and shut custom options
+	 * @param customDiv the div containing the custom options
+	 */
+	makeFadingToggler: function( standardDiv, toggleDiv, moreDiv ) {
+		return mw.UploadWizardUtil._makeToggler( standardDiv, toggleDiv, moreDiv, true );
+	},
+
+
+	/**
+  	 * make a standard toggler that just opens up a new panel
+	 * @param toggle div -- where to put the 'more/fewer options' button
+	 * @param moreDiv -- the div to hide or show
+	 */
+	makeMoreToggler: function( toggleDiv, moreDiv ) {
+		return mw.UploadWizardUtil._makeToggler( null, toggleDiv, moreDiv, false );
+	},
+
+
 	/**
 	 * There is a common pattern of having standard options, and then a "more options" panel which 
 	 * disables the standard options panel. 
@@ -2605,9 +2626,14 @@ mw.UploadWizard.prototype = {
 	 *
 	 * @param standardDiv the div representing the standard options
 	 * @param toggleDiv the div which has the control to open and shut custom options
-	 * @param customDiv the div containing the custom options
+	 * @param moreDiv the div containing the custom options
+	 * @param fade whether to fade standardDiv when moreDiv is open
 	 */
-	makeCustomToggler: function ( standardDiv, toggleDiv, customDiv ) {
+	_makeToggler: function ( standardDiv, toggleDiv, moreDiv, fade ) {
+		if (fade === undefined) { 
+			fade = false;
+		}
+
 		var icon = $j( '<div class="ui-icon ui-icon-triangle-1-e" style="display: inline-block; margin-top: 3px;">' );
 		var text = $j( '<span>' ).append( gM( 'mwe-upwiz-more-options' ) ); 
 		var toggle = function() { 
@@ -2619,14 +2645,18 @@ mw.UploadWizard.prototype = {
 				text.text( gM( 'mwe-upwiz-fewer-options' ) );
 				icon.removeClass( "ui-icon-triangle-1-e" )
 				    .addClass( "ui-icon-triangle-1-s" );
-				customDiv.show();
-				standardDiv.disableInputsFade();
+				moreDiv.show();
+				if (fade) { 
+					standardDiv.disableInputsFade();
+				}
 			} else {
 				text.text( gM( 'mwe-upwiz-more-options' ) );
 				icon.removeClass( "ui-icon-triangle-1-s" )
 				    .addClass( "ui-icon-triangle-1-e" )
-				customDiv.hide();
-				standardDiv.enableInputsFade();
+				moreDiv.hide();
+				if (fade) {
+					standardDiv.enableInputsFade();
+				}
 			}
 		};
 
@@ -2637,16 +2667,8 @@ mw.UploadWizard.prototype = {
 				.data( 'open', false )
 				.append( icon, text ) );
 	
-	}
+	},
 
-
-	
-};
-
-/**
- * Miscellaneous utilities
- */
-mw.UploadWizardUtil = {
 	/**
 	 * remove an item from an array. Tests for === identity to remove the item
 	 *  XXX the entire rationale for this file may be wrong. 
