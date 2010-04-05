@@ -130,6 +130,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -145,8 +146,8 @@ $messages['br'] = array(
 	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',
 	'onlinestatus-toggle-online' => 'Enlinenn',
-	'onlinestatus-pref-onlineonlogin' => "Kemmañ va statud da en linenn p'en em lugan",
-	'onlinestatus-pref-offlineonlogout' => "Kemmañ va statud da ezlinenn p'en em zilugañ",
+	'onlinestatus-pref-onlineonlogin' => 'Kemmañ ma statud da enlinenn pa gevrean',
+	'onlinestatus-pref-offlineonlogout' => 'Kemmañ ma statud da ezlinenn pa zigevrean',
 );
 
 /** Bosnian (Bosanski)

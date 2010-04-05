@@ -238,13 +238,13 @@ $messages['br'] = array(
 	'patrol-reverting' => 'O tisteuler : $1',
 	'patrol-endorsed-ok' => "Merket eo bet ar c'hemm evel gwiriekaet.",
 	'patrol-endorsed-failed' => "N'eo ket bet merket an embann evel gwiriekaet.",
-	'patrol-reverted-ok' => 'Nullet eo bet an embann-se.',
+	'patrol-reverted-ok' => "Distaolet eo bet ar c'hemm-se.",
 	'patrol-reverted-failed' => "N'eus ket bet tu nulañ ar c'hemm-se",
 	'patrol-skipped-ok' => 'Dianavezout an embann.',
 	'patrol-reasons' => '* Vandalerezh simpl
 * Amprouadennoù tud nevez
 * Gwelet ar bajenn kaozeadenn',
-	'patrol-another' => "Diskouez ur c'hemm all, ma 'z eo posubl.",
+	'patrol-another' => "Diskouez ur c'hemm all, ma 'z eo posupl.",
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',
@@ -1604,6 +1604,14 @@ $messages['sk'] = array(
 	'group-patroller-member' => 'Strážca',
 	'grouppage-patroller' => '{{ns:project}}:Strážca',
 	'right-patroller' => 'Sledovať stránky',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'group-patroller' => 'Nadzorniki',
+	'group-patroller-member' => 'nadzornik',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

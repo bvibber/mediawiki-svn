@@ -233,9 +233,9 @@ $messages['br'] = array(
 	'formbadpagenametext' => 'Ar roadennoù o peus lakaet a grou un anv fall evit ar bajenn,  "$1".',
 	'formrequiredfielderror' => "Ezhomm 'zo eus ar maezienn{{PLURAL:$2||où}} $1 er furmskrid.
 Mar plij leunit {{PLURAL:$2|anezhañ|anezho}}.",
-	'formsavesummary' => "Pajenn nevez oc'h implijout  [[Special:Form/$1|ar furmskrid $1]]",
+	'formsavesummary' => "Pajenn nevez oc'h implijout [[Special:Form/$1|ar furmskrid $1]]",
 	'formsaveerror' => 'Fazi en ur enrollañ ar furmskrid',
-	'formsaveerrortext' => 'Ur fazi a ro bet pa veze enrollet ar bajenn "$1".',
+	'formsaveerrortext' => "Ur fazi zo bet e-ser enrollañ ar bajenn '$1'.",
 );
 
 /** Bosnian (Bosanski)

@@ -539,6 +539,9 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'wikieditor' => 'Napredni vmesnik za urejanje wikibesedila',
+	'wikieditor-desc' => 'Nudi razširjen vmesnik za urejanje wikibesedila in mnogo modulov z dodatnimi funkcijami',
+	'wikieditor-wikitext-tab' => 'Wikibesedilo',
 	'wikieditor-loading' => 'Nalaganje',
 );
 

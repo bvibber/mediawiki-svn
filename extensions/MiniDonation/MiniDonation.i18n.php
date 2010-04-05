@@ -457,6 +457,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'donationform-desc' => 'Doda etiketo <tt>&lt;donateform&gt;</tt> za podporo prispevkov preko PayPala',
 	'donationform-submit' => 'Prispevajte s PayPalom',
 );
 

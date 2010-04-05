@@ -109,9 +109,10 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Yekrats
+ * @author Ziko
  */
 $messages['eo'] = array(
-	'uploadblacklist-desc' => 'Aldonas funkcion por nigralisto de alŝutaĵoj',
+	'uploadblacklist-desc' => 'Aldonas funkcion por nigranlisto de alŝutaĵoj',
 );
 
 /** Spanish (Español)
@@ -359,6 +360,13 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'uploadblacklist-desc' => 'Pridáva funkcionalitu čiernej listiny nahrávaní',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'uploadblacklist-desc' => 'Doda funkcionalnost črne liste nalaganj',
 );
 
 /** Swedish (Svenska)

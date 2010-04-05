@@ -2037,7 +2037,7 @@ Kies een andere gebruikersnaam of [[$1|neem contact met ons op]] over het proble
 	'regexblock-regex-filter' => 'of reguliere expressiewaarde:',
 	'regexblock-view-blocked' => 'Blokkades weergeven door:',
 	'regexblock-view-all' => 'Alles',
-	'regexblock-view-go' => 'Gaan',
+	'regexblock-view-go' => 'OK',
 	'regexblock-view-match' => '(voldoet precies)',
 	'regexblock-view-regex' => '(voldoet aan regex)',
 	'regexblock-view-account' => '(blokkade aanmaken gebruikers)',

@@ -444,14 +444,16 @@ $messages['ru'] = array(
 	'tablemod-error-missingid' => 'В теге отсутствует атрибут «ident».',
 );
 
-/** Slovenian (Slovenščina) */
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
 $messages['sl'] = array(
 	'tablemod' => 'TableMod',
 	'tablemod-desc' => 'Manipulacija wiki-tabel.',
 	'tablemod-msg-remove' => 'Odstrani',
 	'tablemod-error-format' => 'Ta značka podpira samo eno preprosto tabelo, brez besedila pred ali po njej.',
 	'tablemod-error-colcount' => 'Ta značka podpira samo tabele z enakim številom stolpcev v vrstici pri odstranjevanju.',
-	'tablemod-error-headcount' => 'Ta značka podpira samo eno-celične glavne oznake.',
+	'tablemod-error-headcount' => 'Ta etiketa podpira samo razvrščanje tabel, ki imajo glavo v vsakem stolpcu.',
 	'tablemod-error-invalidsort' => 'Neveljavni parametri sortiranja.',
 	'tablemod-error-invalidaction' => 'Neveljavna akcija.',
 	'tablemod-error-missingid' => 'Mankajoč ident atribut v znački.',

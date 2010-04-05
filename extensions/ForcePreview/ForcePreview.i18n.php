@@ -261,11 +261,12 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Ex13
  */
 $messages['hr'] = array(
-	'forcepreview' => 'Spremi stranicu (pogledajte kako će izgledati)',
+	'forcepreview' => 'Sačuvaj stranicu (Prikaži kako će izgledati)',
 	'forcepreview-desc' => "Zahtjeva upotrebu ''prikaži kako će izgledati'' za suradnike bez prava za isključenje",
-	'right-forcepreviewexempt' => "Moguće spremiti stranicu bez upotrebe ''prikaži''",
+	'right-forcepreviewexempt' => "Moguće spremiti stranicu bez uporabe ''prikaži''",
 );
 
 /** Upper Sorbian (Hornjoserbsce)

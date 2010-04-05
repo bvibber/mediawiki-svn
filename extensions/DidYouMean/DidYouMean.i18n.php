@@ -465,6 +465,13 @@ $messages['sk'] = array(
 	'didyoumean-desc' => 'Pridať odkazy na stránky s „podobnými“ názvami',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'didyoumean-desc' => 'Doda povezave na strani s »podobnimi« naslovi',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

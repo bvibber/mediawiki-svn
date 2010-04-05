@@ -528,6 +528,14 @@ $messages['sk'] = array(
 	'nstab-comments' => 'Komentár',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'commentpages-desc' => 'Komentirajte strani v glavnem imenskem prostoru',
+	'nstab-comments' => 'Komentar',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

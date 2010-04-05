@@ -253,6 +253,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -263,7 +264,7 @@ $messages['br'] = array(
 	'imagetagging-canteditothermessage' => "Ne c'helloc'h ket kemmañ ar bajenn-mañ, pe n'oc'h ket aotreet d'en ober pe ez eo gwarezet ar bajenn-mañ evit abegoù all.",
 	'imagetagging-imghistory' => 'Istor',
 	'imagetagging-images' => 'skeudennoù',
-	'imagetagging-inthisimage' => 'Er skeudenn-se : $1',
+	'imagetagging-inthisimage' => 'Er skeudenn-mañ : $1',
 	'imagetagging-logentry' => 'Balizenn bet tennet eus ar bajenn [[$1]] gant $2',
 	'imagetagging-log-tagged' => "Ar skeudenn [[$1|$2]] a zo bet balizennet d'ar bajenn [[$3]] gant $4",
 	'imagetagging-new' => '<sup><span style="color:red">Nevez!</span></sup>',

@@ -361,6 +361,13 @@ $messages['sk'] = array(
 	'stringfunctions-desc' => 'Rozširuje syntaktický analyzátor o funkcie na prácu s reťazcami',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'stringfunctions-desc' => 'Izboljša urejevalnik z funkcijami za nize',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

@@ -565,6 +565,14 @@ $messages['sk'] = array(
 	'contributionseditcount-desc' => 'Zobrazuje počet úprav na stránke [[Special:Contributions|Príspevky používateľa]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'contributionseditcount' => 'Uporabnik je izvedel $1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}.',
+	'contributionseditcount-desc' => 'Prikaže števec urejanj na [[Special:Contributions|strani uporabnikovih prispevkov]]',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

@@ -205,12 +205,13 @@ $messages['el'] = array(
 /** Esperanto (Esperanto)
  * @author Lucas
  * @author Yekrats
+ * @author Ziko
  */
 $messages['eo'] = array(
-	'wikieditor-preview-preference' => 'Ŝalti kolumnecan antaŭvidon',
-	'wikieditor-preview-tab' => 'Antaŭvida',
+	'wikieditor-preview-preference' => 'Enŝaltu antaŭvidon apud la redaktofenestro',
+	'wikieditor-preview-tab' => 'Antaŭvido',
 	'wikieditor-preview-changes-tab' => 'Ŝanĝoj',
-	'wikieditor-preview-loading' => 'Ŝarĝante',
+	'wikieditor-preview-loading' => 'Ŝarĝante...',
 );
 
 /** Spanish (Español)
@@ -622,6 +623,16 @@ $messages['sk'] = array(
 	'wikieditor-preview-tab' => 'Náhľad',
 	'wikieditor-preview-changes-tab' => 'Zmeny',
 	'wikieditor-preview-loading' => 'Načítava sa...',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-preview-preference' => 'Omogoči vzporedni predogled',
+	'wikieditor-preview-tab' => 'Predogled',
+	'wikieditor-preview-changes-tab' => 'Spremembe',
+	'wikieditor-preview-loading' => 'Nalaganje ...',
 );
 
 /** Swedish (Svenska)

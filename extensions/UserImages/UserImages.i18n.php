@@ -635,6 +635,7 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  * @author Yerpo
  */
@@ -642,6 +643,7 @@ $messages['sl'] = array(
 	'userimages-desc' => 'Ustvari galerije uporabnikovih naloženih slik z uporabo <nowiki><userimage /></nowiki>',
 	'userimages-caption' => 'Slike dodal $1',
 	'userimages-noname' => 'Neveljavno ali neznano uporabniško ime.',
+	'userimages-noimages' => '$1 ni naložil(-a) nobene slike.',
 );
 
 /** Lower Silesian (Schläsch)

@@ -96,8 +96,8 @@ $messages['br'] = array(
 	'securepasswords-valid' => 'Direizh pe re verr eo ho ker-tremen.
 Ret eo dezhañ :',
 	'securepasswords-minlength' => "kaout an hirder a $1 arouezenn{{PLURAL:$1||}} d'an nebeutañ",
-	'securepasswords-lowercase' => "kaout ul lizherenn vihan d'an nebeutañ",
-	'securepasswords-uppercase' => "kaout ul lizherenn vras d'an nebeutañ",
+	'securepasswords-lowercase' => 'ennañ ul lizherenn vunut da nebeutañ',
+	'securepasswords-uppercase' => 'ennañ ur bennlizherenn da nebeutañ',
 	'securepasswords-digit' => '1 sifr ennañ da nebeutañ',
 	'securepasswords-special' => "kaout 1 arouezenn arbennik d'an nebeutañ (an arouezennoù arbennik a zo : $1)",
 	'securepasswords-username' => "bezañ disheñvel eus hoc'h anv implijer",

@@ -3492,6 +3492,7 @@ Contacta por favor el operador o el administrador del servicio.',
 );
 
 /** Estonian (Eesti)
+ * @author AivoK
  * @author Avjoska
  * @author Pikne
  * @author Silvar
@@ -3523,12 +3524,17 @@ $messages['et'] = array(
 	'ow_transaction_remove' => 'Eemalda',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ei ole sisestatud',
+	'ow_AddHint' => 'Lisa uusi ridu',
 	'ow_ApproximateMeanings' => 'Ligilähedased tähendused',
 	'ow_ClassAttributeAttribute' => 'Tunnus',
 	'ow_ClassAttributes' => 'Klassi tunnused',
 	'ow_ClassAttributeLevel' => 'Tase',
 	'ow_ClassAttributeType' => 'Tüüp',
 	'ow_ClassMembership' => 'Klassi liikmesus',
+	'ow_Expression' => 'Väljend',
+	'ow_ExpressionMeanings' => 'Väljendi tähendused',
+	'ow_Expressions' => 'Väljendid',
+	'ow_Language' => 'Keel',
 	'ow_Spelling' => 'Õigekiri',
 	'ow_Synonyms' => 'Sünonüümid',
 	'ow_SynonymsAndTranslations' => 'Sünonüümid ja tõlked',
@@ -3543,6 +3549,8 @@ $messages['et'] = array(
 	'ow_Value' => 'Väärtus',
 	'ow_meaningsoftitle' => '"$1" tähendus',
 	'ow_Permission_denied' => '<h2>Õigused puuduvad</h2>',
+	'needstranslation' => 'Wikidata: Tõlget vajavad väljendid',
+	'ow_needs_xlation_title' => 'Tõlget vajavad väljendid',
 	'ow_needs_xlation_source_lang' => 'Lähtekeel:',
 	'ow_needs_xlation_dest_lang' => 'Sihtkeel:',
 	'ow_needs_xlation_no_dest_lang' => 'Määratle sihtkeel.',

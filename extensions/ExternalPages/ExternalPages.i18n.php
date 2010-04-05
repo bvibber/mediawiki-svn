@@ -80,6 +80,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'externalpages' => 'Pajennoù diavaez',
+	'externalpages-desc' => "Adtapout ha diskwel a ra pajennoù adalek lec'hiennoù pell eus Diazezadur Wikimedia",
 	'externalpages-bad-page' => 'Pajenn lakaet direizh',
 	'externalpages-no-page' => "N'eus bet resisaet anv pajenn ebet",
 );

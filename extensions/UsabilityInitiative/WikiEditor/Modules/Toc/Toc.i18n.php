@@ -523,6 +523,15 @@ $messages['sk'] = array(
 	'wikieditor-toc-hide' => 'Skryť obsah',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-toc-preference' => 'Omogoči plovno kazalo vsebine',
+	'wikieditor-toc-show' => 'Prikaži vsebino',
+	'wikieditor-toc-hide' => 'Skrij vsebino',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

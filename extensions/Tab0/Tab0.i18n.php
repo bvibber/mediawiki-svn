@@ -329,6 +329,13 @@ $messages['sk'] = array(
 	'tab0-desc' => 'Pridá záložku „0” vedúcu na úpravu prvej sekcie stránky',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'tab0-desc' => 'Doda »ničto« oznako, ki se povezuje na urejevalno stran prvega razdelka strani',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

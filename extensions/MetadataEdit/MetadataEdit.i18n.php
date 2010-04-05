@@ -115,6 +115,14 @@ $messages['ru'] = array(
 	'metadata_help' => 'Метаданные:',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'metadataedit-desc' => 'Med urejanjem strani postavi kategorije, jezikovne povezave in dovoljene predloge v ločeno besedilno polje',
+	'metadata_help' => 'Metapodatki:',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

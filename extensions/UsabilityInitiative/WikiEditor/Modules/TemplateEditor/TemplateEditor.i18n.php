@@ -485,6 +485,16 @@ $messages['sk'] = array(
 	'wikieditor-template-editor-preference' => 'Povoliť úpravu šablón wiki prostredníctvom formulárov',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-template-editor-preference' => 'Omogoči urejanje wikipredlog s pomočjo obrazca',
+	'wikieditor-template-editor-dialog-title' => 'Uredi predlogo',
+	'wikieditor-template-editor-dialog-submit' => 'Posodobi',
+	'wikieditor-template-editor-dialog-cancel' => 'Prekliči',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Hannibal

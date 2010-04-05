@@ -147,6 +147,9 @@ Aotren an darn vrasañ eus dibarzhioù SmoothGallery',
 	'smoothgallery-gallery-not-found' => "N'eus ket eus ar palier goulennet.",
 	'smoothgallery-not-found' => "N'eus bet ouzhpennet skeudenn ebet d'ar palier.
 Ouzhpennit ur skeudenn da nebeutañ, mar plij.",
+	'smoothgallery-no-images' => "N'eus bet kavet skeudenn ebet er skeudennaoueg-mañ.
+Gwiriit mat ez eus eus {{PLURAL:$3|ar skeudenn|an holl skeudennoù}}-se.
+N'eo ket bet kavet ar {{PLURAL:$2|skeudenn|skeudennoù}} da-heul : $1",
 	'smoothgallery-invalid-images' => 'Ur furmad direizh a oa gant {{PLURAL:$2|ar skeudenn|ar skeudennoù}} da-heul : $1',
 	'smoothgallery-unexpected-error' => "Ur fazi dic'hortoz zo bet.
 Leugnit un danevell draen, mar plij.",

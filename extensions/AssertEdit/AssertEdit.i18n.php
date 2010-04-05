@@ -667,6 +667,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'assert_edit_title' => 'Uveljavljanje spodletelo',
+	'assert_edit_desc' => 'Doda možnost uporabe etiket sprememb za bote',
 	'assert_edit_message' => 'Izbrano dejanje ($1) je spodletelo.',
 );
 

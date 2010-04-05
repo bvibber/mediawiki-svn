@@ -28,6 +28,13 @@ $messages['qqq'] = array(
 	'languageselector-setlang' => 'Part of the "LanguageSelector" extension. This is the text of a submit button to select your user interface language. Mostly the button  is not shown, but sometimes it appears next to the language selector (a dropdown box like in your [[Special:Preferences|user preferences]]).',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'languageselector' => 'Абызшәа',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin

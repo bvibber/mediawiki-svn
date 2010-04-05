@@ -8,5 +8,6 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'RefHelper'   => array( 'مساعد_المراجع' ),
+	'RefHelper' => array( 'مساعد_المراجع' ),
 );
+

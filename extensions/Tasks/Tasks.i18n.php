@@ -444,6 +444,7 @@ $messages['br'] = array(
 	'tasks_ok1' => 'Krouet eo bet an trevell nevez !',
 	'tasks_create_header' => 'Krouiñ un trevell nevez',
 	'tasks_existing_header' => 'Trevelloù zo anezho dija',
+	'tasks_existing_table_header' => 'Labour|Deiziadoù|Evezhiadenn orin|Deverkadur/Oberoù/Pajenn',
 	'tasks_noone' => 'hini ebet',
 	'tasks_assign_me' => 'Va deverkañ me va unan',
 	'tasks_assign_to' => 'Deverkañ da',

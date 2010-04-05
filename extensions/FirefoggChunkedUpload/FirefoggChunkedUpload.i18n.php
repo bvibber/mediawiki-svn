@@ -19,6 +19,13 @@ $messages['be-tarask'] = array(
 	'firefoggcu-desc' => 'Парцыённы пратакол загрузкі Firefogg',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'firefoggcu-desc' => 'Protokol pellgargañ a-dammoù Firefogg',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

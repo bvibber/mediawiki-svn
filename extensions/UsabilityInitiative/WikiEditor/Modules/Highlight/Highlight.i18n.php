@@ -338,6 +338,13 @@ $messages['sk'] = array(
 	'wikieditor-highlight-preference' => 'Zapnúť zvýrazňovanie syntaxe počas úprav',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-highlight-preference' => 'Omogoči označevanje skladnje med urejanjem',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
