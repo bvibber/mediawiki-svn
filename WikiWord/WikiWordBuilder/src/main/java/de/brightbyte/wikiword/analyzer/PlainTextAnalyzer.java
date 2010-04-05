@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 
 import de.brightbyte.application.Arguments;
 import de.brightbyte.audit.DebugUtil;
-import de.brightbyte.data.DefaultLookup;
+import de.brightbyte.data.MapLookup;
 import de.brightbyte.data.Lookup;
 import de.brightbyte.data.filter.Filter;
 import de.brightbyte.data.filter.FixedSetFilter;
@@ -96,7 +96,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 		
 		phraseBreakeMatcher = config.phraseBreakerPattern.matcher("");
 		stopwordFilter = new FixedSetFilter<String>(config.stopwords);
-		bracketLookup = new DefaultLookup<String, String>(config.parentacies);
+		bracketLookup = new MapLookup<String, String>(config.parentacies);
 	}	
 	
 	
