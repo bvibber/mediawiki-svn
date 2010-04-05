@@ -278,6 +278,7 @@ class SpecialStory extends IncludableSpecialPage {
 				array(
 					'size' => $fieldSize,
 					'maxlength' => 255,
+					'minlength' => 2,
 					'id' => 'storytitle',
 					'class' => 'storytitle'
 				)
@@ -359,13 +360,11 @@ jQuery( "#storyform" ).validate({
 	rules: {
 		storytitle: {
 			required: true,
-			minlength: 3,
-			maxlength: 255,
 			remote: wgScriptPath + '/api.php?action=storyexists&storyname=' + '' // TODO
 		}
 	},
 	messages: {
-		storytitle: "The sort title needs to be between 3 and 255 characters long and may not exist yet" // TODO: i18n	
+		storytitle: "This story title already exists" // TODO: i18n	
 	},
 	success: function( label ) {
 		label.addClass( "valid" ).text( "Valid story title!" )
