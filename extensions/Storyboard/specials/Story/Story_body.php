@@ -42,7 +42,6 @@ class SpecialStory extends IncludableSpecialPage {
 		}
 		
 		if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
-			$wgOut->setPageTitle( $title );
 			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-viewstories' ) );
@@ -98,6 +97,8 @@ class SpecialStory extends IncludableSpecialPage {
 			if ( $isEdit && $wgUser->isAllowed( 'storyreview' ) ) {
 				$this->showStoryForm( $story );
 			} else {
+				$wgOut->setPageTitle( $story->story_title );
+				
 				if ( $isEdit ) {
 					$wgOut->addWikiMsg( 'storyboard-cantedit' );
 				}
@@ -184,6 +185,8 @@ class SpecialStory extends IncludableSpecialPage {
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
+		$wgOut->setPageTitle( $story->story_title );
+		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/jquery/jquery.validate.js' );
@@ -200,20 +203,19 @@ class SpecialStory extends IncludableSpecialPage {
 		if ( !is_int( $minLen ) ) $minLen = $egStoryboardMinStoryLen;
 		
 		$formBody = "<table width='$width'>";
-		
-		$formBody .= '<tr><td colspan="2">' . 
-			htmlspecialchars( wfMsgExt(
-				'storyboard-createdandmodified',
-				'parsemag',
-				$wgLang->timeanddate( $story->story_created ),
-				$wgLang->timeanddate( $story->story_modified )
-			) ) . 
-			'</td></tr>';				
 			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
 			'<td>' .
-			Html::input( 'name', $story->story_author_name, 'text', array( 'size' => $fieldSize )
+			Html::input(
+				'name',
+				$story->story_author_name,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'class' => 'required',
+					'minlength' => 2
+				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
@@ -224,7 +226,8 @@ class SpecialStory extends IncludableSpecialPage {
 				'text',
 				array(
 					'size' => $fieldSize,
-					'maxlength' => 255
+					'maxlength' => 255,
+					'minlength' => 2
 				)
 			) . '</td></tr>';
 		
@@ -236,7 +239,8 @@ class SpecialStory extends IncludableSpecialPage {
 				'text',
 				array(
 					'size' => $fieldSize,
-					'maxlength' => 255
+					'maxlength' => 255,
+					'minlength' => 4
 				)
 			) . '</td></tr>';
 
@@ -248,20 +252,24 @@ class SpecialStory extends IncludableSpecialPage {
 				'text',
 				array(
 					'size' => $fieldSize,
-					'maxlength' => 255
+					'maxlength' => 255,
+					'minlength' => 7
 				)
 			) . '</td></tr>';
 			
-		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . 
+		$formBody .= '<tr>' . 
+			'<td width="100%"><label for="storytitle">' . 
+				htmlspecialchars( wfMsg( 'storyboard-storytitle' ) ) . 
+			'</label></td><td>' . 
 			Html::input(
 				'storytitle',
 				$story->story_title,
 				'text',
 				array(
 					'size' => $fieldSize,
-					'maxlength' => 255
+					'maxlength' => 255,
+					'id' => 'storytitle',
+					'class' => 'storytitle'
 				)
 			) . '</td></tr>';
 		
@@ -304,8 +312,19 @@ class SpecialStory extends IncludableSpecialPage {
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
 		$formBody .= Html::hidden( 'storyId', $story->story_id );
 		
-		$returnToQuery = $wgRequest->getVal( 'returnto' );
-		if ( $returnToQuery ) $returnToQuery = 'returnto=' . $returnToQuery;
+		$formBody = '<fieldset><legend>' . 
+			htmlspecialchars( wfMsgExt(
+				'storyboard-createdandmodified',
+				'parsemag',
+				$wgLang->timeanddate( $story->story_created ),
+				$wgLang->timeanddate( $story->story_modified )
+			) ) . 
+		'</legend>' . $formBody . '</fieldset>';
+		
+		$query = "id=$story->story_id";
+			
+		$returnTo = $wgRequest->getVal( 'returnto' );
+		if ( $returnTo ) $query .= '&returnto=' . $returnTo;
 		
 		$formBody = Html::rawElement(
 			'form',
@@ -313,7 +332,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $this->getTitle( $story->story_title )->getLocalURL( $returnToQuery ),
+				'action' => $this->getTitle()->getLocalURL( $query ), // FIXME: this fails when title is changed
 			),
 			$formBody
 		);
@@ -322,13 +341,34 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
-	function() {		
+	function() {	
 		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
 	}
 );
-$(document).ready(function() {
-	$("#storyform").validate();
-});	
+jQuery( document ).ready( function() {
+	jQuery( "#storyform" ).validate();
+});
+jQuery( "#storyform" ).validate({
+	rules: {
+		storytitle: {
+			required: true,
+			minlength: 3,
+			maxlength: 255,
+			remote: wgScriptPath + '/api.php?action=storyexists&storyname=' + '' // TODO
+		}
+	},
+	messages: {
+		storytitle: "The sort title needs to be between 3 and 255 characters long and may not exist yet" // TODO: i18n	
+	},
+	success: function( label ) {
+		label.addClass( "valid" ).text( "Valid story title!" )
+	},
+	submitHandler: function() {
+		
+	},		
+	onkeyup: false
+});
+
 EOT
 		);
 	}
