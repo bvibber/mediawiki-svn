@@ -315,4 +315,27 @@ a[disabled=true]:hover {
 	font-size: xx-small;
 }
 
+.mwe-upwiz-deed {
+	margin-left: 24px;
+}
 
+.mwe-upwiz-deed-name {
+	font-weight: bold;
+}
+
+.mwe-more-options, .mwe-fewer-options, .mwe-upwiz-macro-deeds-return, .mwe-upwiz-deed-header-link {
+	cursor: pointer;
+}
+
+.mwe-more-options, .mwe-fewer-options {
+	padding-bottom: 4px;
+}
+
+.mwe-more-options a:hover, .mwe-fewer-options a:hover {
+	text-decoration: none;
+}
+
+
+.mwe-upwiz-deed-license {
+	margin-left: 24px;
+}
