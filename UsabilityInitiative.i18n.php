@@ -295,6 +295,8 @@ $messages['he'] = array(
 $messages['hr'] = array(
 	'usabilityinitiative' => 'Inicijativa za uporabljivost',
 	'usabilityinitiative-desc' => 'Mogućnosti razvijane od strane Inicijative za uporabljivost Wikipedije kako bi se unaprijedila uporabljivost MediaWikija',
+	'prefs-beta' => 'Beta mogućnosti',
+	'prefs-labs' => 'Labs mogućnosti',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -597,6 +599,7 @@ $messages['sl'] = array(
 	'usabilityinitiative' => 'Pobuda za uporabnost',
 	'usabilityinitiative-desc' => 'Funkcije, ki jih je razvila Wikipedijina pobuda za uporabnost za povečanje uporabnosti MediaWiki',
 	'prefs-beta' => 'Betafunkcije',
+	'prefs-labs' => 'Funkcije laboratorija',
 );
 
 /** Swedish (Svenska)

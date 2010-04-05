@@ -29,6 +29,13 @@ $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'vector-collapsiblenav-preference' => 'Aotren al lañser merdeiñ pak-dispak a-gleiz',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'vector-collapsiblenav-preference' => 'Zusammenklappbares Navigationsmenü links aktivieren',
@@ -88,6 +95,13 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'vector-collapsiblenav-preference' => 'הפעלת תפריט ניווט שמאלי מתקפל',
+);
+
+/** Croatian (Hrvatski)
+ * @author Ex13
+ */
+$messages['hr'] = array(
+	'vector-collapsiblenav-preference' => 'Omogući sklopivi lijevi navigacijski izbornik',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -194,6 +208,13 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'vector-collapsiblenav-preference' => 'Включить скрываемое левое навигационное меню',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'vector-collapsiblenav-preference' => 'Omogoči zložljiv levi navigacijski meni',
 );
 
 /** Swedish (Svenska)

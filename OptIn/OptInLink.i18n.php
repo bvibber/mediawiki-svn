@@ -920,8 +920,11 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'optin-try' => 'Poskusite Beta različico',
+	'tooltip-pt-optin-try' => 'Preizkusite nove funkcije',
 	'optin-leave' => 'Zapusti Beta različico',
+	'tooltip-pt-optin-leave' => 'Izklopite nove funkcije',
 	'optin-feedback' => 'Mnenja o betarazličici',
+	'tooltip-pt-optin-feedback' => 'Nudi povratne informacije o vaših izkušnjah z novimi funkcijami',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

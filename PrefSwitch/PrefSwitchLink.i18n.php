@@ -35,12 +35,58 @@ $messages['br'] = array(
 	'tooltip-pt-prefswitch-link' => 'Esaeañ elfennoù nevez',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'prefswitch-link' => 'Neu',
+	'tooltip-pt-prefswitch-link' => 'Neue Features ausprobieren',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'prefswitch-link' => 'Nowy!',
+	'tooltip-pt-prefswitch-link' => 'Nowe funkcije wopytaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'prefswitch-link' => 'Nova!',
 	'tooltip-pt-prefswitch-link' => 'Provi novajn funkciojn',
+);
+
+/** Spanish (Español)
+ * @author Pertile
+ */
+$messages['es'] = array(
+	'prefswitch-link' => '¡Nuevo!',
+	'tooltip-pt-prefswitch-link' => 'Probar las nuevas características',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'prefswitch-link' => 'Nouveau !',
+	'tooltip-pt-prefswitch-link' => 'Essayer les nouvelles fonctionnalités',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'prefswitch-link' => 'Novo!',
+	'tooltip-pt-prefswitch-link' => 'Probar as novas características',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'prefswitch-link' => 'Nej!',
+	'tooltip-pt-prefswitch-link' => 'Di neje Funktione uusprobiere',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -115,6 +161,14 @@ $messages['pms'] = array(
 	'tooltip-pt-prefswitch-link' => 'Preuva le neuve funsionalità',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'prefswitch-link' => 'Novo!',
+	'tooltip-pt-prefswitch-link' => 'Experimente novas funcionalidades',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -128,6 +182,7 @@ $messages['ru'] = array(
  */
 $messages['sl'] = array(
 	'prefswitch-link' => 'Novo!',
+	'tooltip-pt-prefswitch-link' => 'Preizkusite nove funkcije',
 );
 
 /** Turkish (Türkçe)

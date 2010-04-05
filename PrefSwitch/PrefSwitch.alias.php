@@ -12,5 +12,6 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'PrefSwitch'   => array( 'تغيير_تفضيلات_مبادرة_الاستخدام' ),
+	'PrefSwitch' => array( 'تغيير_تفضيلات_مبادرة_الاستخدام' ),
 );
+

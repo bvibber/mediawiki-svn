@@ -334,6 +334,13 @@ $messages['sk'] = array(
 	'userdailycontribs-desc' => 'Denné príspevky používateľa rozšírenia na sledovanie kliknutí',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'userdailycontribs-desc' => 'Uporabnikovi dnevni prispevki za razširitev sledenja klikom',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

@@ -616,10 +616,12 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'vector-simplesearch-search' => 'Iskanje',
+	'vector-simplesearch-containing' => 'vsebujoč ...',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

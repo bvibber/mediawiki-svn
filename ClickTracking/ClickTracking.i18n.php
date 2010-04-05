@@ -1193,7 +1193,7 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
 	'ct-expert' => 'Ekspert',
-	'ct-date-range' => 'Datoer som visast',
+	'ct-date-range' => 'Datoar som viser',
 	'ct-anon-users' => 'Anonyme brukarar',
 	'ct-and' => 'og',
 );
