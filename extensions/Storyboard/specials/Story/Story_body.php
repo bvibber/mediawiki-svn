@@ -57,40 +57,50 @@ class SpecialStory extends IncludableSpecialPage {
 	private function queryAndShowStory( $title ) {
 		global $wgOut, $wgRequest, $wgUser;
 		
-		if ( trim( $title ) != '' ) {
-			$conds = array(
-				'story_title' => $title
-			);
-		} else {
-			$id = $wgRequest->getIntOrNull( 'id' );
-			$conds = array(
-				'story_id' => $id
-			);		
-		}
+		$hasTitle = trim( $title ) != '';
 		
 		$dbr = wfGetDB( DB_SLAVE );		
 		
-		$story = $dbr->selectRow(
-			'storyboard',
-			array(
-				'story_id',
-				'story_author_id',
-				'story_author_name',
-				'story_author_location',
-				'story_author_occupation',
-				'story_author_contact',
-				'story_author_image',
-				'story_image_hidden',
-				'story_title',
-				'story_text',
-				'story_created',
-				'story_modified',
-				'story_is_published',
-				'story_is_hidden',
-			),
-			$conds
-		);
+		// If an id is provided, query for the story title and redirect to have a nicer url,
+		// or continue with function execution to display an error that there is no such story.
+		if ( !$hasTitle ) {
+			$story = $dbr->selectRow(
+				'storyboard',
+				array(
+					'story_title',
+				),
+				array( 'story_id' => $wgRequest->getIntOrNull( 'id' ) )
+			);	
+			if ( $story ) {
+				$wgOut->redirect( $this->getTitle( $story->story_title )->getFullURL() );
+				return;
+			}
+		} else {
+			// If a title is provided, query the story info.
+			$story = $dbr->selectRow(
+				'storyboard',
+				array(
+					'story_id',
+					'story_author_id',
+					'story_author_name',
+					'story_author_location',
+					'story_author_occupation',
+					'story_author_contact',
+					'story_author_image',
+					'story_image_hidden',
+					'story_title',
+					'story_text',
+					'story_created',
+					'story_modified',
+					'story_is_published',
+					'story_is_hidden',
+				),
+				array( 'story_title' => $title )
+			);
+		}
 
+		// If there is such a story, display it, or the edit form. 
+		// If there isn't, display an error message.
 		if ( $story ) {
 			$isEdit = $wgRequest->getVal( 'action' ) == 'edit';
 			
@@ -332,7 +342,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $this->getTitle()->getLocalURL( $query ), // FIXME: this fails when title is changed
+				'action' => $this->getTitle()->getLocalURL( $query ),
 			),
 			$formBody
 		);
@@ -345,9 +355,6 @@ addOnloadHook(
 		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
 	}
 );
-jQuery( document ).ready( function() {
-	jQuery( "#storyform" ).validate();
-});
 jQuery( "#storyform" ).validate({
 	rules: {
 		storytitle: {
