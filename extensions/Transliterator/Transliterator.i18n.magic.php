@@ -18,7 +18,7 @@ $magicWords['af'] = array(
 
 $magicWords['ar'] = array(
 	'transliterate'   => array( '0', 'ترجمة_حرفية', 'transliterate' ),
-	'tr_prefix' => array( '1', 'مترجم حرفي:' ),
+	'tr_prefix'       => array( '1', 'مترجم حرفي:', 'Transliterator:' ),
 );
 
 $magicWords['arz'] = array(

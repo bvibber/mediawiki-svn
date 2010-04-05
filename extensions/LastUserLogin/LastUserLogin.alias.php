@@ -13,6 +13,11 @@ $aliases['en'] = array(
 	'LastUserLogin' => array( 'LastUserLogin' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'LastUserLogin'   => array( 'آخر_دخول_للمستخدم' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'LastUserLogin' => array( 'Ultime session de usator' ),
