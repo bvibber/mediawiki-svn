@@ -257,7 +257,7 @@ $messages['be-tarask'] = array(
 	'math_CasesRowTooBig' => 'Могуць быць толькі два запісы ў кожным радку блёку «cases»',
 	'math_DoubleSubscript' => 'Выяўленыя два падрадковых элемэнту далучаных да аднолькавай асновы.
 Дазволены толькі адзін.',
-	'math_DoubleSuperscript' => 'Выяўленыя два надрадковых элемэнты далучаных да аднолькавай асновы. 
+	'math_DoubleSuperscript' => 'Выяўленыя два надрадковых элемэнты далучаных да аднолькавай асновы.
 Дазволены толькі адзін.',
 	'math_IllegalCharacter' => 'Няслушны сымбаль ва ўваходных зьвестках',
 	'math_IllegalCommandInMathMode' => 'Каманда «$1» забароненая ў рэжыме math',
@@ -3017,7 +3017,7 @@ hie mout mäd n uumekierden Scheeuwstriek (Backslash) "\\" ounfange un duur bloo
 	'math_MissingOrIllegalParameterCount' => 'Failjende of uungultige Parametertaal in ju Definition fon „$1“.
 Dät mout ne eenpelde Ziffer twiske iensluutend 1 un 9 weese.',
 	'math_MissingOrIllegalParameterIndex' => 'Failjenden of falsken Parameterindex in ju Definition fon „$1“',
-	'math_NonAsciiInMathMode' => 'Sunnerteekene (Nit-ASCII-Teekene) duuren bloot in dän Textmodus ferwoand wäide. 
+	'math_NonAsciiInMathMode' => 'Sunnerteekene (Nit-ASCII-Teekene) duuren bloot in dän Textmodus ferwoand wäide.
 Fersäik do problematiske Teekene in „\\text{…}“ ientousluuten.',
 	'math_NotEnoughArguments' => 'Der wuuden nit genöigend Parametere foar „$1“ uurroat',
 	'math_PngIncompatibleCharacter' => 'PNG mäd dät Teeken $1 kon nit failerfräi generierd wäide',
@@ -3037,7 +3037,7 @@ Fersäik do problematiske Teekene in „\\text{…}“ ientousluuten.',
 	'math_UnmatchedRight' => '„\\right” sunner touheerich „\\left”',
 	'math_UnrecognisedCommand' => 'Uunbekoande Anwiesenge „$1“',
 	'math_WrongFontEncoding' => 'Dät Symbol „$1“ duur in ju Teekenkodierenge „$2“ nit foarkuume',
-	'math_WrongFontEncodingWithHint' => 'Dät Symbol „$1“ duur in ju Teekenkodierenge „$2“ nit foarkuume. 
+	'math_WrongFontEncodingWithHint' => 'Dät Symbol „$1“ duur in ju Teekenkodierenge „$2“ nit foarkuume.
 Probier ju Anwiesenge „$3{…}“ uut.',
 );
 
@@ -3174,7 +3174,7 @@ $messages['te'] = array(
 	'math_CannotRunDvipng' => 'dvipngని నడపలేకున్నాం',
 	'math_CannotRunLatex' => 'latexని నడపలేకున్నాం',
 	'math_CannotWriteTexFile' => 'tex ఫైలు లోకి రాయలేకున్నాము',
-	'math_DoubleSubscript' => 'ఒకే అక్షరానికి రెండు పాదాక్షరాలు చేర్చలేరు. 
+	'math_DoubleSubscript' => 'ఒకే అక్షరానికి రెండు పాదాక్షరాలు చేర్చలేరు.
 కేవలం ఒకటి మాత్రమే చేర్చగలరు.',
 	'math_IllegalCharacter' => 'ఇన్‌పుట్ లో అనుమతిలేని అక్షరాలున్నాయి',
 	'math_IllegalCommandInMathMode' => '"$1" అనే కమాండ్ గణిత సందర్భంలో అనుమతించబడదు.',
