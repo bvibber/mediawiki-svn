@@ -1,5 +1,4 @@
 <?php
-
 /**
  * AuthorProtect extension by Ryan Schmidt
  * See http://www.mediawiki.org/wiki/Extension:AuthorProtect for more details
