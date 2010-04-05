@@ -136,7 +136,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * TODO: Improve layout, add social sharing stuff, add story meta data and show edit stuff for people with stroyreview permission.
 	 */
 	private function showStory( $story ) {
-		global $wgOut, $wgLang, $egStoryboardScriptPath;
+		global $wgOut, $wgLang, $wgUser, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );		
 
@@ -163,6 +163,15 @@ class SpecialStory extends IncludableSpecialPage {
 			) )
 		);
 		
+		// FIXME: this is a temporary solution untill the SkinTemplateNavigation on special pages issue is fixed.
+		if ( $wgUser->isAllowed( 'storyreview' ) ) {
+			$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
+			$editUrl = $this->getTitle( $story->story_title )->getLocalURL( 'action=edit' );
+			$wgOut->addHtml(
+				"<button type='button' onclick=\"window.location='$editUrl'\">$editMsg</button>"
+			);
+		}
+		
 	}
 	
 	/**
@@ -176,6 +185,8 @@ class SpecialStory extends IncludableSpecialPage {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
+		$wgOut->includeJQuery();
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/jquery/jquery.validate.js' );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );
 		
 		$fieldSize = 50;
