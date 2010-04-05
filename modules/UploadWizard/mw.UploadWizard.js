@@ -83,7 +83,7 @@ mw.UploadWizardDeed = function ( inputs ) {
 	_this.authorInput = inputs['author'];
 	_this.licenseInput = inputs['license'];
 	_this.customizable = { 'source': true, 'author': true, 'license': true };
-	_this.readyChecks = [];
+	_this.readyCheck = undefined;
 	_this.isOwn = false;
 };
 
@@ -92,35 +92,29 @@ mw.UploadWizardDeed.prototype = {
 		var _this = this;
 		$j.each( obj, function( key, val ) {
 			if (_this.customizable.hasOwnProperty( key ) ) {
-				_this.customizable.key = !!val;
+				_this.customizable[key] = !!val;
 			}
 		} );
 	},
 
-	addReadyCheck: function( input ) {
+	setReadyCheck: function( callback ) {
 		var _this = this;
-		_this.readyChecks.push(input);
+		_this.readyCheck = callback;
 	},
 
 	isReady: function() {
 		var _this = this;
-		if ( _this.readyChecks.length === 0 ) {
+		if ( _this.readyCheck === undefined ) {
 			return true;
+		} else {
+			return _this.readyCheck();
 		}
-		var ready = false;
-		$j.each( _this.readyChecks, function( i, input ) {
-			if ( input.is( ':checked' ) ) {
-				ready = true;
-				return false; // break from each
-			}
-		} );
-		return ready;
 	},
 
 	applyDeed: function( uploads ) {
 		var _this = this;
 		if ( ! _this.isReady() ) {
-			//error!
+			return;
 		}
 
 		var source;
@@ -140,31 +134,30 @@ mw.UploadWizardDeed.prototype = {
 		}	
 		mw.log( "source:" + source + " author:" + author + " licenses:" + licenseTxt );
 
-		// XXX can use action = parse to get a preview, but we'd prefer to avoid that anyway
-	
-		// XXX this is an evil hack -- we should instead have an author object that separates interface from value
-		// also the author field can contain {{Creator: }} as well, need to handle that for 3rd party
-		if ( _this.isOwn ) {
-			own = true;
-		}
 
 		$j.each( uploads, function( i, upload ) {
-
+			
 			$j( upload.details.sourceInput ).val( source );
-			if ( !_this.customizable['source'] ) {
+			if ( _this.customizable['source'] ) {
+				upload.details.unlockSource();
+			} else {
 				upload.details.lockSource();
 			} 
 			
 			$j( upload.details.authorInput ).val( author );
-			if ( !_this.customizable['author'] ) {
+			if ( _this.customizable['author'] ) {
+				upload.details.unlockAuthor();
+			} else {
 				upload.details.lockAuthor();
 			} 
 
 			upload.details.licenseInput.setValues( licenses );
-			if ( own ) {
+			if ( _this.isOwn ) {
 				upload.details.licenseInput.setOwn( true );
 			}
-			if ( !_this.customizable['license'] ) {
+			if ( _this.customizable['license'] ) {
+				upload.details.unlockLicense();
+			} else {
 				upload.details.lockLicense();
 			} 
 
@@ -295,6 +288,7 @@ mw.UploadWizardLicenseInput = function( div, values ) {
 	var _this = this;
 
 	_this.isOwn = false;
+	_this.change = function() {};
 
 	var c = mw.UploadWizardLicenseInput.prototype.count++;
 
@@ -312,12 +306,9 @@ mw.UploadWizardLicenseInput = function( div, values ) {
 	$div = $j( div );
 	$j.each( _this.licenses, function( key, data ) {
 		var id = 'license_' + key + '_' + c;
-		var input = $j( '<input />' ) .attr( { 
-							id: id, 
-							type: 'checkbox', 
-							value: key 
-						} );
-		_this.inputs.push( input );
+		var input = $j( '<input />' ) 
+			.attr( { id: id, type: 'checkbox', value: key } )
+			.click( function() { _this.change() } );
 		data.input = input.get(0);
 		$div.append( 
 			data.input,
@@ -339,11 +330,9 @@ mw.UploadWizardLicenseInput.prototype = {
 	 */ 
 	setChange: function( callback ) {
 		var _this = this;
-		$j.each( _this.inputs, function( i, input ) {
-			input.change( callback );
-		} );
+		_this.change = callback;
 	},
-	
+
 	/**
 	 * Get wikitext representing the licenses selected in the license object
 	 * @return wikitext of all applicable license templates.
@@ -378,16 +367,16 @@ mw.UploadWizardLicenseInput.prototype = {
 	},
 
 	/**
-	 * Sets the value(s) of a license input. Missing values are set to false
+	 * Sets the value(s) of a license input.
 	 * @param object of license-key to boolean values, e.g. { cc_by_sa_30: true, gfdl: true }
 	 */
 	setValues: function( licenseValues ) {
 		var _this = this;
 		$j.each( _this.licenses, function( key, data ) {
-			if ( !! licenseValues[key] ) {
-				$j( _this.licenses[key].input ).attr( { 'checked' : 1 } );
-			}
-		} );	
+			var checked = ~~!!licenseValues[key];
+			$j( _this.licenses[key].input ).attr( { 'checked' : checked } );
+		} );
+		_this.change();
 	},
 
 	/**
@@ -1810,7 +1799,14 @@ mw.UploadWizardDetails.prototype = {
 		var _this = this;
 		_this.sourceDiv.hide();
 	},
-		
+
+	/**
+	 * If we hopped between deeds, and now this is visible again
+	 */
+	unlockSource: function() {
+		var _this = this;
+		_this.sourceDiv.show();
+	},
 
 	/** 
 	 * Sometimes we wish to lock certain copyright or license info from being changed
@@ -1820,12 +1816,29 @@ mw.UploadWizardDetails.prototype = {
 		_this.authorDiv.hide();
 	},
 
+	/**
+	 * If we hopped between deeds, and now this is visible again
+	 */
+	unlockAuthor: function() {
+		var _this = this;
+		_this.authorDiv.show();
+	},
+
+
 	/** 
 	 * Sometimes we wish to lock certain copyright or license info from being changed
 	 */
 	lockLicense: function() {
 		var _this = this;
 		_this.licenseDiv.hide();
+	},
+
+	/** 
+	 * Sometimes we wish to lock certain copyright or license info from being changed
+	 */
+	unlockLicense: function() {
+		var _this = this;
+		_this.licenseDiv.show();
 	}
 
 		
@@ -1939,7 +1952,7 @@ mw.UploadWizard.prototype = {
 		       +             '<div class="mwe-upwiz-deed-option-title">'
 		       +               '<span class="mwe-upwiz-deed-header mwe-closed"><a class="mwe-upwiz-deed-header-link mwe-upwiz-deed-name">' + gM( 'mwe-upwiz-source-thirdparty' ) + '</a></span>'
 		       +               '<span class="mwe-upwiz-deed-header mwe-open" style="display: none;">' 
-		       +   	         '<span class-="mwe-upwiz-deed-name">' + gM( 'mwe-upwiz-source-thirdparty' ) + '</span>' 
+		       +   	         '<span class="mwe-upwiz-deed-name">' + gM( 'mwe-upwiz-source-thirdparty' ) + '</span>' 
 		       +  	         ' <a class="mwe-upwiz-macro-deeds-return">' + gM( 'mwe-upwiz-change' ) + '</a>'
 		       +  	       '</span>'
 		       +            '</div>' // more deed stuff set up below
@@ -1969,11 +1982,12 @@ mw.UploadWizard.prototype = {
 
 		_this.setupDeedOwnWork();
 		_this.setupDeedThirdParty();
+		_this.setupNullDeed();
 
 		// open and close the various deeds
-		$j( '.mwe-upwiz-deed-header-link' ).click( function() { 
-			_this.showDeed( $j( this ).parents( '.mwe-upwiz-deed' ) ); 
-		} );
+		//$j( '.mwe-upwiz-deed-header-link' ).click( function() { 
+		//	_this.showDeed( $j( this ).parents( '.mwe-upwiz-deed' ) ); 
+		//} );
 		$j( '.mwe-upwiz-macro-deeds-return' ).click( function() { _this.showDeedChoice(); } );
 
 		// buttons to submit all details and go on to the thanks page, at the top and bottom of the page.
@@ -2378,10 +2392,13 @@ mw.UploadWizard.prototype = {
 	 * Assumed that we are in details mode.
 	 */
 	showDeedChoice: function() {
+		var _this = this;
 		$j( '#mwe-upwiz-macro-deeds' ).find( '.mwe-upwiz-deed-header.mwe-open' ).hide();
 		$j( '#mwe-upwiz-macro-deeds' ).find( '.mwe-upwiz-deed-header.mwe-closed' ).show();
 		$j( '#mwe-upwiz-macro-deeds' ).find( '.mwe-upwiz-deed' ).fadeIn( 'fast' );
 		$j( '#mwe-upwiz-macro-deeds' ).find( '.mwe-upwiz-deed-form' ).fadeOut('fast');
+		// reset deed
+		_this.nullDeed.applyDeed( _this.uploads );
 	},
 
 
@@ -2395,6 +2412,16 @@ mw.UploadWizard.prototype = {
 		$j( selector ).find( '.mwe-upwiz-deed-form' ).fadeIn( 'fast' );
 	},
 
+	/**
+	 * Deed to copy values from when no deed is selected 
+	 */
+	setupNullDeed: function() {
+		var _this = this;
+		var sourceInput = $j( '<input />').attr( { name: "source", value: "" } );
+		var authorInput = $j( '<input />').attr( { name: "author", value: "" } );
+		var licenseInput = new mw.UploadWizardLicenseInput( $j('<div/>'), [] );
+		_this.nullDeed = new mw.UploadWizardDeed( { 'source': sourceInput, 'author': authorInput, 'license': licenseInput } );
+	},
 	
 	/**
 	 * Set up the form for the deed option that says these uploads are all the user's own work.
@@ -2414,10 +2441,13 @@ mw.UploadWizard.prototype = {
 		ownWorkDeed.setCustomizable( { 'source': false, 'author': true, 'license' : true } );
 
 		// one or the other of these inputs must be checked to apply the deed.
-		ownWorkDeed.addReadyCheck( $j( '#mwe-upwiz-deed-accept-ownwork-default' ) );
-		ownWorkDeed.addReadyCheck( $j( '#mwe-upwiz-deed-accept-ownwork-custom' ) );
+		ownWorkDeed.setReadyCheck( function() {
+			return      $j( '#mwe-upwiz-deed-accept-ownwork-default' ).is( ':checked' ) 
+				||  $j( '#mwe-upwiz-deed-accept-ownwork-custom'  ).is( ':checked' )
+		} );
 
-		licenseInput.setChange( ownWorkDeed.applyDeed( _this.uploads ) );
+		licenseInput.setChange( function() { ownWorkDeed.applyDeed( _this.uploads ) } );
+
 
 		var standardDiv = $j( '<div />' )
 			.append( 
@@ -2485,6 +2515,13 @@ mw.UploadWizard.prototype = {
 				} );
 			} );
 	
+
+		$j( '#mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-header-link').click( 
+			function() { 
+				_this.showDeed( $j( '#mwe-upwiz-macro-deed-ownwork' ) );
+				ownWorkDeed.applyDeed( _this.uploads ); 
+			}
+		);	
 	},
 
 	/**
@@ -2508,11 +2545,12 @@ mw.UploadWizard.prototype = {
 			
 		licenseInput.setChange( function() { thirdPartyDeed.applyDeed( _this.uploads ); } );
 
-		var standardDiv = $j( '<div />' )
-			.append( 
+		var standardDiv = $j( '<div />' );
+		/*	.append( 
 				$j( '<p />' ).html( gM( 'mwe-upwiz-source-thirdparty-intro' ) )
 			);
-				 
+		*/		
+		 
 		var toggleDiv = $j( '<div />' );
 
 		var customDiv = $j( '<div />' )
@@ -2545,6 +2583,13 @@ mw.UploadWizard.prototype = {
 			.click( function() {
 				thirdPartyDeed.applyDeed( _this.uploads );
 			} );	
+
+		$j( '#mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-header-link').click( 
+			function() { 
+				_this.showDeed( $j( '#mwe-upwiz-macro-deed-thirdparty' ) );
+				thirdPartyDeed.applyDeed( _this.uploads ); 
+			}
+		);	
 
 
 	},
