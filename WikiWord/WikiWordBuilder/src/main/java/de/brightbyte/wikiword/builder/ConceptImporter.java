@@ -482,7 +482,7 @@ public class ConceptImporter extends AbstractImporter {
 				if ( StringUtils.equals(tgtConcept, name) ) {
 						out.debug("ignored redundant inter-namespace redirect "+rcName+" -> "+link);
 				} else {
-						out.debug("processing redirect to category "+rcName+" -> "+link);
+						out.debug("processing inter-namespace redirect "+rcName+" -> "+link);
 						
 						storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, tgtConcept, ExtractionRule.TERM_FROM_REDIRECT );
 						
@@ -504,7 +504,13 @@ public class ConceptImporter extends AbstractImporter {
 			if (StringUtils.equals(name, tgtConcept)) {
 				warn(rcId, "bad redirect (self-link)", "page "+rcName, null);
 			} else {
-				conceptId = store.storeConcept(rcId, name, ConceptType.ALIAS); 
+				//FIXME: situation:
+				//       A is Article about (A) 
+				//       C:B is Category about (A)
+				//       C:A is Redirect to C:B
+				//       in that case, we really just need C:A <about> (A), not C:A <alias> C:B. but how?
+				
+				conceptId = store.storeConcept(rcId, name, ConceptType.ALIAS);  //FIXME: a concept with that name may already exist! if the concept-store doesn't dedupe, this will fail!
 				storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, tgtConcept, ExtractionRule.TERM_FROM_REDIRECT );
 				storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
 				if (link.getSection()!=null) storeSection(rcId, link.getTargetConcept().toString(), link.getTargetConceptPage().toString());

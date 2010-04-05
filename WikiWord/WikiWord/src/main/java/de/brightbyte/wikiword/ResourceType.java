@@ -44,6 +44,12 @@ public enum ResourceType {
 	 * usually each linking to a page describing that concept.
 	 */
 	LIST(40),
+
+	/**
+	 * A page acting as a portal for a specific topic, often including meta-information
+	 * about maintenance activity.
+	 */
+	PORTAL(45),
 	
 	/**
 	 * A category page.

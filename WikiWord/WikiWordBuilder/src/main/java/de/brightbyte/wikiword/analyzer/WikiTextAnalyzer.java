@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URLEncoder;
 import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -2027,6 +2028,11 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		String lang = args.getParameter(0);
 		String name = args.getParameter(1);
 		String file = args.getParameter(2);
+		
+		if (file.endsWith("/") || file.endsWith("=")) {
+			if (file.indexOf("://")>0) file = file + URLEncoder.encode(name, "UTF-8");
+			else file = file + name + ".wiki";
+		}
 		
 		TweakSet tweaks = new TweakSet();
 

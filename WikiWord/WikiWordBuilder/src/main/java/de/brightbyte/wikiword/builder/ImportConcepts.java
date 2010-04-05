@@ -2,16 +2,11 @@ package de.brightbyte.wikiword.builder;
 
 import java.io.IOException;
 
-import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.store.WikiWordStore;
-import de.brightbyte.wikiword.store.builder.DebugLocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
 import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
-import de.brightbyte.wikiword.store.builder.WikiWordStoreBuilder;
 
 /**
  * This is the primary entry point to the first phase of a WikiWord analysis.

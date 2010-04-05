@@ -69,7 +69,8 @@ public class Namespace {
 	}
 	
 	public String getLocalName() {
-		return names.size()>1 ? names.get(1) : names.get(0);
+		if (number>=100) return names.get(0); //custom namespaces don't have a canonical name, so the first name is the local name.
+		else return names.size()>1 ? names.get(1) : names.get(0); 
 	}
 
 	public int getNumber() {

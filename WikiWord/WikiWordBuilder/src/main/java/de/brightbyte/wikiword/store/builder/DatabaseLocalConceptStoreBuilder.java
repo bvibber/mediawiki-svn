@@ -373,6 +373,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 					warning(rcId, "duplicate concept", "id= "+id+", name= "+name+", rc= "+rcId+", type="+ctype, null);
 					return id;
 				}
+				//XXX: throw an exception? should this always be fatal? config var?
 			}
 			
 			if (id>0) {
