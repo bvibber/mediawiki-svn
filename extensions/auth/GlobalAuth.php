@@ -5,17 +5,17 @@
 # Copyright (C) 2004 Brion Vibber <brion@pobox.com>
 # Copyright (C) 2005 Jens Frank <jf@mormo.org>
 # http://www.mediawiki.org/
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or 
+# the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -36,7 +36,7 @@ class GlobalAuth {
 
 	/**
 	 * Initialise a new object
-	 * 
+	 *
 	 * @param string $globaldb	Name of the DB that holds the user table
 	 * @param string $globaltable	Name of the global user table
 	 * @param string $thiswiki	Name of this wiki
@@ -54,20 +54,20 @@ class GlobalAuth {
 	 * @access public
 	 */
 	function userExists( $username ) {
-		$fname='GlobalAuth::userExists';
+		$fname = 'GlobalAuth::userExists';
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $this->tablename, 'user_wiki',
 			array( 'user_name' => $username ),
 			$fname );
-		while( $row = $dbr->fetchObject( $res ) ) {
+		while ( $row = $dbr->fetchObject( $res ) ) {
 			if ( $row->user_wiki == $this->thiswiki || $row->user_wiki == '*' ) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Check if a username+password pair is a valid login.
 	 * The name will be normalized to MediaWiki's requirements, so
@@ -80,17 +80,17 @@ class GlobalAuth {
 	 * @access public
 	 */
 	function authenticate( $username, $password ) {
-		$fname='GlobalAuth::userExists';
+		$fname = 'GlobalAuth::userExists';
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( $this->tablename, array( 'user_wiki',
-				'user_name','user_password',
+				'user_name', 'user_password',
 				'user_email', 'user_email_authenticated',
-				'user_real_name','user_options',
+				'user_real_name', 'user_options',
 				'user_token' ),
 			array( 'user_name' => $username ),
 			$fname );
-		while( $row = $dbr->fetchObject( $res ) ) {
+		while ( $row = $dbr->fetchObject( $res ) ) {
 			if ( $row->user_wiki == $this->thiswiki || $row->user_wiki == '*' ) {
 				if ( $row->user_password == wfEncryptPassword( $row->user_id, $password ) ) {
 					$this->data =& $row;
@@ -100,7 +100,7 @@ class GlobalAuth {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * When a user logs in, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
@@ -123,7 +123,6 @@ class GlobalAuth {
 		return true;
 	}
 
-
 	/**
 	 * Return true if the wiki should create a new local account automatically
 	 * when asked to login a user who doesn't exist locally but does in the
@@ -141,7 +140,7 @@ class GlobalAuth {
 	function autoCreate() {
 		return true;
 	}
-	
+
 	/**
 	 * Set the given password in the authentication database.
 	 * Return true if successful.
@@ -172,7 +171,7 @@ class GlobalAuth {
 		$dbw = wfGetDB( DB_MASTER );
 		$success = $dbw->update( $this->tablename,
 				array( /*SET*/
-					//'user_password' =>,
+					// 'user_password' =>,
 					'user_email' => $user->getEmail(),
 					'user_email_authenticated' => $dbw->timestampOrNull( $user->getEmailAuthenticationTimestamp() ),
 					'user_real_name' => $user->getRealName(),
@@ -181,7 +180,7 @@ class GlobalAuth {
 				array( /*WHERE*/ 'user_id' => $this->data->user_id,
 					'user_wiki' => $this->data->user_wiki ),
 				'GlobalAuth::updateExternalDB' );
-					
+
 		return $success;
 	}
 
@@ -208,13 +207,13 @@ class GlobalAuth {
 		$fname = 'GlobalAuth::addUser';
 
 		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->select( $this->tablename, 
+		$res = $dbw->select( $this->tablename,
 				array( 'user_id', 'user_wiki', 'user_password' ),
 				array( 'user_name' => $user->getName() ),
 				'GlobalAuth::addUser' );
 		$create = true;
 		$first = true;
-		while( $row = $dbr->fetchObject( $res ) ) {
+		while ( $row = $dbr->fetchObject( $res ) ) {
 			if ( $first ) {
 				# Set create to false for now. We've found entries for
 				# this username. Now we have to check whether we allow
@@ -240,25 +239,25 @@ class GlobalAuth {
 
 		$seqVal = $dbw->nextSequenceValue( 'user_user_id_seq' );
 		$wiki = ( $first ? '*' : $this->thiswiki );
-		$dbw->insert( $this->tablename, array( 
+		$dbw->insert( $this->tablename, array(
 				'user_id' => $seqVal,
 				'user_name' => $user->getName(),
 				'user_password' => '',
 				'user_email' => $user->getEmail(),
-				'user_email_authenticated' => $dbw->timestampOrNull( 
-					$user->getEmailAuthenticationTimestamp() ),           
+				'user_email_authenticated' => $dbw->timestampOrNull(
+					$user->getEmailAuthenticationTimestamp() ),
 				'user_real_name' => $user->getRealName(),
 				'user_options' => $user->encodeOptions(),
 				'user_token' => $user->mToken,
 				'user_wiki' => $wiki ),
 				$fname );
-				
+
 		# Query back to get the user_id
 
 		$row = $dbr->selectRow( $this->tablename, array( 'user_wiki',
-				'user_name','user_password',
+				'user_name', 'user_password',
 				'user_email', 'user_email_authenticated',
-				'user_real_name','user_options',
+				'user_real_name', 'user_options',
 				'user_token' ),
 			array( 'user_name' => $user->getName(),
 				'user_wiki' => $wiki ),
@@ -270,7 +269,6 @@ class GlobalAuth {
 
 		return true;
 	}
-
 
 	/**
 	 * Return true to prevent logins that don't authenticate here from being
@@ -284,7 +282,7 @@ class GlobalAuth {
 	function strict() {
 		return true;
 	}
-	
+
 	/**
 	 * When creating a user account, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
@@ -299,5 +297,4 @@ class GlobalAuth {
 	function initUser( &$user ) {
 		# I don't think I need this, do I?
 	}
-	
 }
