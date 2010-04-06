@@ -100,6 +100,13 @@ $messages['dsb'] = array(
 	'wikieditor-highlight-preference' => 'Syntaksowe wuzwignjenje za wobźěłanje zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'wikieditor-highlight-preference' => 'Ενεργοποίηση επισήμανσης σύνταξης κατά την επεξεργασία',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -219,6 +226,13 @@ $messages['lb'] = array(
 	'wikieditor-highlight-preference' => 'Dat faarwlecht Eraushiewe vun der Syntax an der Ännerungsfënster aschalten',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor-highlight-preference' => 'Įjungti sintaksės paryškinimą redaguojant',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -322,6 +336,13 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'wikieditor-highlight-preference' => 'Zapnúť zvýrazňovanie syntaxe počas úprav',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-highlight-preference' => 'Omogoči označevanje skladnje med urejanjem',
 );
 
 /** Swedish (Svenska)

@@ -9,7 +9,6 @@
 	border: none;
 	z-index: 99;
 	padding: 0;
-	margin-top: -1px;
 }
 .suggestions-special {
 	position: relative;
@@ -17,12 +16,21 @@
 	font-size: 0.8em;
 	cursor: pointer;
 	border: solid 1px #aaaaaa;
-	border-top-width: 0;
 	padding: 0;
 	margin: 0;
+	margin-top: -2px;
 	display: none;
 	padding: 0.25em 0.25em;
 	line-height: 1.25em;
+}
+.suggestions-special:hover {
+	background-color: #4C59A6;
+	background-color: Highlight;
+}
+.suggestions-special:hover .special-label,
+.suggestions-special:hover .special-query {
+	color: white;
+	color: HighlightText;
 }
 .suggestions-results {
 	background-color: white;
@@ -30,6 +38,7 @@
 	font-size: 0.8em;
 	cursor: pointer;
 	border: solid 1px #aaaaaa;
+	border-top-width: 0;
 	padding: 0;
 	margin: 0;
 }

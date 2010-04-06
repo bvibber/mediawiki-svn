@@ -26,6 +26,18 @@ $j(document).ready( function() {
 					'bold': {
 						labelMsg: 'wikieditor-toolbar-tool-bold',
 						type: 'button',
+						offset: {
+							'default': [2, -574],
+							'en': [2, -142],
+							'de': [2, -214],
+							'fr': [2, -286],
+							'es': [2, -358],
+							'it': [2, -286],
+							'nl': [2, -502],
+							'pt': [2, -358],
+							'pt-br': [2, -358],
+							'pl': [2, -430]
+						},
 						icon: {
 							'default': 'format-bold.png',
 							'en': 'format-bold-B.png',
@@ -53,6 +65,18 @@ $j(document).ready( function() {
 						id: 'italic',
 						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
+						offset: {
+							'default': [2, -862],
+							'en': [2, -862],
+							'de': [2, -934],
+							'fr': [2, -862],
+							'es': [2, -790],
+							'it': [2, -790],
+							'nl': [2, -790],
+							'pt': [2, -862],
+							'pt-br': [2, -862],
+							'pl': [2, -934]
+						},
 						icon: {
 							'default': 'format-italic.png',
 							'en': 'format-italic-I.png',
@@ -82,6 +106,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-xlink',
 						type: 'button',
 						icon: 'insert-xlink.png',
+						offset: [-70, 2],
 						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
@@ -96,6 +121,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-ilink',
 						type: 'button',
 						icon: 'insert-ilink.png',
+						offset: [2, -1582],
 						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
@@ -110,6 +136,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-link',
 						type: 'button',
 						icon: 'insert-link.png',
+						offset: [2, -1654],
 						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
@@ -120,6 +147,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-file',
 						type: 'button',
 						icon: 'insert-file.png',
+						offset: [2, -1438],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -130,10 +158,22 @@ $j(document).ready( function() {
 							}
 						}
 					},
+					'referenceCGD': {
+						labelMsg: 'wikieditor-toolbar-tool-reference',
+						type: 'button',
+						icon: 'insert-reference.png',
+						offset: [2, -1798],
+						filters: [ 'body.ns-subject', '#wpTextbox1.toolbar-dialogs' ],
+						action: {
+							type: 'dialog',
+							module: 'insert-reference'
+						}
+					},
 					'reference': {
 						labelMsg: 'wikieditor-toolbar-tool-reference',
-						filters: [ 'body.ns-subject' ],
+						filters: [ 'body.ns-subject', '#wpTextbox1:not(.toolbar-dialogs)' ],
 						type: 'button',
+						offset: [2, -1798],
 						icon: 'insert-reference.png',
 						action: {
 							type: 'encapsulate',
@@ -148,6 +188,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-signature',
 						filters: [ 'body:not(.ns-0)' ],
 						type: 'button',
+						offset: [2, -1872],
 						icon: 'insert-signature.png',
 						action: {
 							type: 'encapsulate',
@@ -231,13 +272,14 @@ $j(document).ready( function() {
 					}
 				}
 			},
-			'list': {
-				labelMsg: 'wikieditor-toolbar-group-list',
+			'format': {
+				labelMsg: 'wikieditor-toolbar-group-format',
 				tools: {
 					'ulist': {
 						labelMsg: 'wikieditor-toolbar-tool-ulist',
 						type: 'button',
 						icon: 'format-ulist.png',
+						offset: [2, -1366],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -252,6 +294,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-olist',
 						type: 'button',
 						icon: 'format-olist.png',
+						offset: [2, -1078],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -266,6 +309,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-indent',
 						type: 'button',
 						icon: 'format-indent.png',
+						offset: [2, -646],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -276,16 +320,42 @@ $j(document).ready( function() {
 								splitlines: true
 							}
 						}
+					},
+					'nowiki': {
+						labelMsg: 'wikieditor-toolbar-tool-nowiki',
+						type: 'button',
+						icon: 'insert-nowiki.png',
+						offset: [-70, -70],
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<nowiki>",
+								periMsg: 'wikieditor-toolbar-tool-nowiki-example',
+								post: "</nowiki>"
+							}
+						}
+					},
+					'newline': {
+						labelMsg: 'wikieditor-toolbar-tool-newline',
+						type: 'button',
+						icon: 'insert-newline.png',
+						offset: [2, -1726],
+						action: {
+							type: 'encapsulate',
+							options: {
+								pre: "<br />\n"
+							}
+						}
 					}
 				}
 			},
 			'size': {
-				labelMsg: 'wikieditor-toolbar-group-size',
 				tools: {
 					'big': {
 						labelMsg: 'wikieditor-toolbar-tool-big',
 						type: 'button',
 						icon: 'format-big.png',
+						offset: [2, 2],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -299,6 +369,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-small',
 						type: 'button',
 						icon: 'format-small.png',
+						offset: [2, -1150],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -307,16 +378,12 @@ $j(document).ready( function() {
 								post: "</small>"
 							}
 						}
-					}
-				}
-			},
-			'baseline': {
-				labelMsg: 'wikieditor-toolbar-group-baseline',
-				tools: {
+					},
 					'superscript': {
 						labelMsg: 'wikieditor-toolbar-tool-superscript',
 						type: 'button',
 						icon: 'format-superscript.png',
+						offset: [2, -1294],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -330,6 +397,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-subscript',
 						type: 'button',
 						icon: 'format-subscript.png',
+						offset: [2, -1222],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -348,6 +416,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-gallery',
 						type: 'button',
 						icon: 'insert-gallery.png',
+						offset: [2, -1510],
 						action: {
 							type: 'encapsulate',
 							options: {
@@ -362,6 +431,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
+						offset: [2, -1942],
 						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
@@ -372,6 +442,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-table',
 						type: 'button',
 						icon: 'insert-table.png',
+						offset: [2, -1942],
 						filters: [ '#wpTextbox1:not(.toolbar-dialogs)' ],
 						action: {
 							type: 'encapsulate',
@@ -383,14 +454,18 @@ $j(document).ready( function() {
 							}
 						}
 					},
-					'newline': {
-						labelMsg: 'wikieditor-toolbar-tool-newline',
+					'redirect': {
+						labelMsg: 'wikieditor-toolbar-tool-redirect',
 						type: 'button',
-						icon: 'insert-newline.png',
+						icon: 'insert-redirect.png',
+						offset: [-70, -142],
 						action: {
 							type: 'encapsulate',
 							options: {
-								pre: "<br />\n"
+								pre: "#REDIRECT [[",
+								periMsg: 'wikieditor-toolbar-tool-redirect-example',
+								post: "]]",
+								ownline: true
 							}
 						}
 					}
@@ -402,6 +477,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-replace',
 						type: 'button',
 						icon: 'search-replace.png',
+						offset: [-70, -214],
 						filters: [ '#wpTextbox1.toolbar-dialogs' ],
 						action: {
 							type: 'dialog',
@@ -601,6 +677,21 @@ $j(document).ready( function() {
 					[ "\u05ac\u25cc", "\u05ac" ], [ "\u05ad\u25cc", "\u05ad" ], [ "\u05ae\u25cc", "\u05ae" ],
 					[ "\u05af\u25cc", "\u05af" ], [ "\u05bf\u25cc", "\u05bf" ], [ "\u05c0\u25cc", "\u05c0" ],
 					[ "\u05c3\u25cc", "\u05c3" ]
+				]
+			},
+			'bangla': {
+				'labelMsg': 'wikieditor-toolbar-characters-page-bangla',
+				'language': 'bn',
+				'layout': 'characters',
+				'characters': [
+					"\u0985", "\u0986", "\u0987", "\u0988", "\u0989", "\u098a", "\u098b", "\u098f", "\u0990", "\u0993",
+					"\u0994", "\u09be", "\u09bf", "\u09c0", "\u09c1", "\u09c2", "\u09c3", "\u09c7", "\u09c8", "\u09cb",
+					"\u09cc", "\u0995", "\u0996", "\u0997", "\u0998", "\u0999", "\u099a", "\u099b", "\u099c", "\u099d",
+					"\u099e", "\u099f", "\u09a0", "\u09a1", "\u09a2", "\u09a3", "\u09a4", "\u09a5", "\u09a6", "\u09a7",
+					"\u09a8", "\u09aa", "\u09ab", "\u09ac", "\u09ad", "\u09ae", "\u09af", "\u09b0", "\u09b2", "\u09b6",
+					"\u09b7", "\u09b8", "\u09b9", "\u09a1\u09bc", "\u09a2\u09bc", "\u09af\u09bc", "\u09ce", "\u0982",
+					"\u0983", "\u0981", "\u09cd", "\u09e7", "\u09e8", "\u09e9", "\u09ea", "\u09eb", "\u09ec", "\u09ed",
+					"\u09ee", "\u09ef", "\u09e6"
 				]
 			},
 			'telugu': {
@@ -925,7 +1016,10 @@ $j(document).ready( function() {
 				}
 			}
 			// Updates the UI to show if the page title being inputed by the user exists or not
-			function updateExistence() {
+			// accepts parameter internal for bypassing external link detection
+			function updateExistence( internal ) {
+				// ensure the internal parameter is a boolean 
+				if ( internal != true ) internal = false;
 				// Abort previous request
 				var request = $j( '#wikieditor-toolbar-link-int-target-status' ).data( 'request' );
 				if ( request ) {
@@ -942,7 +1036,8 @@ $j(document).ready( function() {
 					updateWidget( false );
 					return;
 				}
-				if ( isExternalLink( target ) ) {
+				// If the forced internal paremter was not true, check if the target is an external link
+				if ( !internal && isExternalLink( target ) ) {
 					updateWidget( 'external' );
 					return;
 				}
@@ -978,7 +1073,8 @@ $j(document).ready( function() {
 								else if ( typeof page.invalid != 'undefined' )
 									status = 'invalid';
 							}
-							cache[target] = status;
+							// Cache the status of the link target if the force internal parameter was not passed
+							if ( !internal ) cache[target] = status;
 							updateWidget( status );
 						}
 					} )
@@ -994,7 +1090,7 @@ $j(document).ready( function() {
 					updateWidget( 'external' );
 				}
 				if( $j( '#wikieditor-toolbar-link-type-int' ).is( ':checked' ) )
-					updateExistence();
+					updateExistence( true );
 			});
 			// Set labels of tabs based on rel values
 			var u = mw.usability;
@@ -1262,6 +1358,7 @@ $j(document).ready( function() {
 					}
 					// Preserve whitespace in selection when replacing
 					if ( whitespace ) insertText = whitespace[0] + insertText + whitespace[1];
+					$j(this).dialog( 'close' );
 					$j.wikiEditor.modules.toolbar.fn.doAction( $j(this).data( 'context' ), {
 						type: 'replace',
 						options: {
@@ -1272,7 +1369,6 @@ $j(document).ready( function() {
 					// Blank form
 					$j( '#wikieditor-toolbar-link-int-target, #wikieditor-toolbar-link-int-text' ).val( '' );
 					$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).attr( 'checked', '' );
-					$j(this).dialog( 'close' );
 				},
 				'wikieditor-toolbar-tool-link-cancel': function() {
 					$j(this).dialog( 'close' );
@@ -1354,6 +1450,97 @@ $j(document).ready( function() {
 					$j(this).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
 						$j(this).closest( '.ui-dialog' ).data( 'dialogaction', this );
 					});
+				}
+			}
+		}
+	},
+	'insert-reference': {
+		filters: [ '#wpTextbox1.toolbar-dialogs' ],
+		titleMsg: 'wikieditor-toolbar-tool-reference-title',
+		id: 'wikieditor-toolbar-reference-dialog',
+		html: '\
+		<div class="wikieditor-toolbar-dialog-wrapper">\
+		<fieldset><div class="wikieditor-toolbar-table-form">\
+			<div class="wikieditor-toolbar-field-wrapper">\
+				<label for="wikieditor-toolbar-reference-text"\
+					rel="wikieditor-toolbar-tool-reference-text"></label>\
+				<input type="text" id="wikieditor-toolbar-reference-text" />\
+			</div>\
+		</div></fieldset>\
+		</div>',
+		init: function() {
+			// Insert translated strings into labels
+			$j( this ).find( '[rel]' ).each( function() {
+				$j( this ).text( mw.usability.getMsg( $j( this ).attr( 'rel' ) ) );
+			} );
+			
+		},
+		dialog: {
+			dialogClass: 'wikiEditor-toolbar-dialog',
+			width: 590,
+			buttons: {
+				'wikieditor-toolbar-tool-reference-insert': function() {
+					var insertText = $j( '#wikieditor-toolbar-reference-text' ).val();
+					var whitespace = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace' );
+					var attributes = $j( '#wikieditor-toolbar-reference-dialog' ).data( 'attributes' );
+					// Close the dialog
+					$j( this ).dialog( 'close' );
+					$j.wikiEditor.modules.toolbar.fn.doAction(
+						$j( this ).data( 'context' ),
+						{
+							type: 'replace',
+							options: {
+								pre: whitespace[0] + '<ref' + attributes + '>',
+								peri: insertText,
+								post: '</ref>' + whitespace[1]
+							}
+						},
+						$j( this )
+					);
+					// Restore form state
+					$j( '#wikieditor-toolbar-reference-text' ).val( "" );
+				},
+				'wikieditor-toolbar-tool-reference-cancel': function() {
+					$j( this ).dialog( 'close' );
+				}
+			},
+			open: function() {
+				// Pre-fill the text fields based on the current selection
+				var selection = $j(this).data( 'context' )
+					.$textarea.textSelection( 'getSelection' ); 
+				// set focus
+				$j( '#wikieditor-toolbar-reference-text' ).focus();
+				$j( '#wikieditor-toolbar-reference-dialog' )
+					.data( 'whitespace', [ '', '' ] )
+					.data( 'attributes', '' );
+				if ( selection != '' ) {
+					var matches, text;
+					if ( ( matches = selection.match( /^(\s*)<ref([^\>]*)>([^\<]*)<\/ref\>(\s*)$/ ) ) ) {
+						text = matches[3];
+						// Preserve whitespace when replacing
+						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'whitespace', [ matches[1], matches[4] ] );
+						$j( '#wikieditor-toolbar-reference-dialog' ).data( 'attributes', matches[2] );
+					} else {
+						text = selection;
+					}
+					$j( '#wikieditor-toolbar-reference-text' ).val( text );
+				}
+				if ( !( $j( this ).data( 'dialogkeypressset' ) ) ) {
+					$j( this ).data( 'dialogkeypressset', true );
+					// Execute the action associated with the first button
+					// when the user presses Enter
+					$j( this ).closest( '.ui-dialog' ).keypress( function( e ) {
+						if ( ( e.keyCode || e.which ) == 13 ) {
+							var button = $j( this ).data( 'dialogaction' ) || $j( this ).find( 'button:first' );
+							button.click();
+							e.preventDefault();
+						}
+					} );
+					// Make tabbing to a button and pressing
+					// Enter do what people expect
+					$j( this ).closest( '.ui-dialog' ).find( 'button' ).focus( function() {
+						$j( this ).closest( '.ui-dialog' ).data( 'dialogaction', this );
+					} );
 				}
 			}
 		}
@@ -1542,6 +1729,7 @@ $j(document).ready( function() {
 					if ( $j( '#wikieditor-toolbar-table-sortable' ).is( ':checked' ) )
 						classes.push( 'sortable' );
 					var classStr = classes.length > 0 ? ' class="' + classes.join( ' ' ) + '"' : '';
+					$j(this).dialog( 'close' );
 					$j.wikiEditor.modules.toolbar.fn.doAction(
 						$j(this).data( 'context' ),
 						{
@@ -1567,8 +1755,6 @@ $j(document).ready( function() {
 							$j( '#wikieditor-toolbar-table-wikitable' ).click();
 						if ( $j( '#wikieditor-toolbar-table-sortable' ).is( ':checked' ) )
 							$j( '#wikieditor-toolbar-table-sortable' ).click();
-					$j(this).dialog( 'close' );
-
 				},
 				'wikieditor-toolbar-tool-table-cancel': function() {
 					$j(this).dialog( 'close' );
@@ -1746,7 +1932,9 @@ $j(document).ready( function() {
 								'end': newEnd } );
 					}
 					$textarea.textSelection( 'scrollToCaretPosition' );
-					$j(this).data( 'offset', mode == 'replace' ? newEnd : end );
+					$textarea.textSelection( 'setSelection', { 'start': start,
+						'end': mode == 'replace' ? newEnd : end } );
+					$j( this ).data( 'offset', mode == 'replace' ? newEnd : end );
 					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe[0].contentWindow : $textarea;
 					textbox.focus();
 				}

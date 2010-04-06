@@ -131,9 +131,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'userdailycontribs-desc' => "Contributions quotidiennes par utilisateur pour l'extension de suivi des clics",
+	'userdailycontribs-desc' => 'Contributions quotidiennes par utilisateur pour l’extension de suivi des clics',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -331,6 +332,13 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'userdailycontribs-desc' => 'Denné príspevky používateľa rozšírenia na sledovanie kliknutí',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'userdailycontribs-desc' => 'Uporabnikovi dnevni prispevki za razširitev sledenja klikom',
 );
 
 /** Swedish (Svenska)

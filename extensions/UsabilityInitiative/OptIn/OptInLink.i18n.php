@@ -365,12 +365,12 @@ $messages['fi'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'optin-try' => 'Essayer la bêta Açai',
+	'optin-try' => 'Essayer la bêta',
 	'tooltip-pt-optin-try' => 'Essayer les nouvelles fonctionnalités',
-	'optin-leave' => 'Quitter la bêta Açai',
+	'optin-leave' => 'Quitter la bêta',
 	'tooltip-pt-optin-leave' => 'Désactiver les nouvelles fonctionnalités',
 	'optin-feedback' => 'Donnez votre avis',
-	'tooltip-pt-optin-feedback' => "Donnez vos impressions sur l'utilisation des nouvelles fonctionnalités",
+	'tooltip-pt-optin-feedback' => 'Donnez vos impressions sur l’utilisation des nouvelles fonctionnalités',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -632,11 +632,16 @@ $messages['lmo'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Matasg
  */
 $messages['lt'] = array(
 	'optin-try' => 'Pabandyti Beta',
+	'tooltip-pt-optin-try' => 'Išbandykite naujas galimybes',
 	'optin-leave' => 'Palikti Beta',
+	'tooltip-pt-optin-leave' => 'Išjungti naujas funkcijas',
+	'optin-feedback' => 'Atsiliepimai apie beta versiją',
+	'tooltip-pt-optin-feedback' => 'Pateikite atsiliepimų apie savo patirtį su naujomis funkcijomis',
 );
 
 /** Latvian (Latviešu)
@@ -809,12 +814,15 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Everton137
  * @author Hamilton Abreu
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'optin-try' => 'Experimente o Beta',
+	'tooltip-pt-optin-try' => 'Experimente novas funcionalidades',
 	'optin-leave' => 'Sair do Beta',
+	'tooltip-pt-optin-leave' => 'Desativar novas características',
 	'optin-feedback' => 'Enviar comentários',
 	'tooltip-pt-optin-feedback' => 'Dê sua opinião acerca de sua experiência com as novidades',
 );
@@ -907,12 +915,16 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'optin-try' => 'Poskusite Beta različico',
+	'tooltip-pt-optin-try' => 'Preizkusite nove funkcije',
 	'optin-leave' => 'Zapusti Beta različico',
-	'optin-feedback' => 'Povratne informacije Beta različice',
+	'tooltip-pt-optin-leave' => 'Izklopite nove funkcije',
+	'optin-feedback' => 'Mnenja o betarazličici',
+	'tooltip-pt-optin-feedback' => 'Nudi povratne informacije o vaših izkušnjah z novimi funkcijami',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

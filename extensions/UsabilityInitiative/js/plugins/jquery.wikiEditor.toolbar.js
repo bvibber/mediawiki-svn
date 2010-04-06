@@ -308,15 +308,31 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				var $button = $( '<img />' ).attr( {
-					'src' : src,
-					'width' : 22,
-					'height' : 22,
-					'alt' : label,
-					'title' : label,
-					'rel' : id,
-					'class' : 'tool tool-button'
-				} );
+				var $button;
+				if ( 'offset' in tool ) {
+					var offset = $.wikiEditor.autoLang( tool.offset );
+					$button = $( '<a href="#" />' )
+						.attr( {
+							'alt' : label,
+							'title' : label,
+							'rel' : id,
+							'class' : 'wikiEditor-toolbar-spritedButton'
+						} )
+						.text( label )
+						.click( function() { return false; } )
+						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
+				} else {
+					$button = $( '<img />' )
+						.attr( {
+							'src' : src,
+							'width' : 22,
+							'height' : 22,
+							'alt' : label,
+							'title' : label,
+							'rel' : id,
+							'class' : 'tool tool-button'
+						} );
+				}
 				if ( 'action' in tool ) {
 					$button
 						.data( 'action', tool.action )

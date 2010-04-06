@@ -7,7 +7,6 @@ width:0px;
 border:none;
 z-index:99;
 padding:0;
-margin-top:-1px;
 }
 .suggestions-special{
 position:relative;
@@ -15,12 +14,21 @@ background-color:Window;
 font-size:0.8em;
 cursor:pointer;
 border:solid 1px #aaaaaa;
-border-top-width:0;
 padding:0;
 margin:0;
+margin-top:-2px;
 display:none;
 padding:0.25em 0.25em;
 line-height:1.25em;
+}
+.suggestions-special:hover{
+background-color:#4C59A6;
+background-color:Highlight;
+}
+.suggestions-special:hover .special-label,
+.suggestions-special:hover .special-query{
+color:white;
+color:HighlightText;
 }
 .suggestions-results{
 background-color:white;
@@ -28,6 +36,7 @@ background-color:Window;
 font-size:0.8em;
 cursor:pointer;
 border:solid 1px #aaaaaa;
+border-top-width:0;
 padding:0;
 margin:0;
 }
@@ -416,6 +425,13 @@ background-image:url( ../images/wikiEditor/dialogs/insert-link-invalid.png );
 #wikieditor-toolbar-link-int-target-status-external{
 background-image:url( ../images/wikiEditor/dialogs/insert-link-external.png );
 }
+#wikieditor-toolbar-reference-dialog label{
+float:left;
+line-height:1.7em;
+}
+#wikieditor-toolbar-reference-text{
+width:100%;
+}
 body.rtl .wikiEditor-toolbar-dialog .ui-dialog-buttonpane button{
 float:left;
 margin:0.5em 0.4em 0.5em 0 !important;
@@ -796,6 +812,33 @@ padding-left:6px;
 border-right:none;
 border-left:solid 1px #DDDDDD;
 }
+.wikiEditor-ui-toolbar .group-search{
+float:right;
+padding:0 0 0 6px;
+border-right:none;
+border-left:1px solid #DDDDDD;
+}
+.wikiEditor-ui-toolbar .group-insert{
+border-right:none;
+}
+body.rtl .wikiEditor-ui-toolbar .group-search{
+float:left;
+padding:0 6px 0 0;
+border-left:none;
+border-right:1px solid #DDDDDD;
+}
+body.rtl .wikiEditor-ui-toolbar .group-insert{
+border-left:none;
+}
+.wikiEditor-toolbar-spritedButton{
+background:url(../images/wikiEditor/toolbar/button-sprite.png) 0 0 no-repeat;
+display:block;
+float:left;
+height:22px;
+text-indent:-9999px;
+width:22px;
+padding:2px;
+}
 .wikiEditor-ui-toolbar .tabs{
 list-style:none;
 margin:3px;
@@ -1017,7 +1060,7 @@ font-family:monospace;
 .wikiEditor-ui-toolbar .section-help .page-table td.result{
 width:40%;
 }
-.wikiEditor-ui-toolbar .section-help .page-table td.cell-description,
+.wikiEditor-ui-toolbar .section-help .page-table td.description,
 .wikiEditor-ui-toolbar .section-help .page-table td.description{
 width:20%;
 }

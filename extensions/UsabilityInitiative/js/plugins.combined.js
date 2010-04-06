@@ -5828,6 +5828,12 @@ $.suggestions = {
 			setTimeout( function() {
 				// Render special
 				$special = context.data.$container.find( '.suggestions-special' );
+				// Only hook this up the first time
+				if ( $special.children().length == 0 ) {
+					$special.mousemove( function() {
+						$.suggestions.highlight( context, $( [] ), false );
+					} );
+				}
 				context.config.special.render.call( $special, context.data.$textbox.val() );
 			}, 1 );
 		}
@@ -5851,8 +5857,7 @@ $.suggestions = {
 				context.config[property] = value;
 				// Update suggestions
 				if ( typeof context.data !== 'undefined'  ) {
-					if ( typeof context.config.suggestions == 'undefined' ||
-							context.config.suggestions.length == 0 ) {
+					if ( context.data.$textbox.val().length == 0 ) {
 						// Hide the div when no suggestion exist
 						context.data.$container.hide();
 					} else {
@@ -5874,6 +5879,11 @@ $.suggestions = {
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
+								.mouseover( function( e ) {
+									$.suggestions.highlight(
+										context, $(this).closest( '.suggestions-results div' ), false
+									);
+								} )
 								.appendTo( $results );
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
@@ -5925,7 +5935,6 @@ $.suggestions = {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
-				
 				// .val() doesn't call any event handlers, so
 				// let the world know what happened
 				context.data.$textbox.change();
@@ -6049,15 +6058,15 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
+			context.data.$textbox.mousemove( function() {
+				$.suggestions.highlight( context, $( [] ), false );
+			} );
 			context.data.$container = $( '<div />' )
 				.css( {
 					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
 					'left': Math.round( context.data.$textbox.offset().left ),
 					'width': context.data.$textbox.outerWidth(),
 					'display': 'none'
-				} )
-				.mouseover( function( e ) {
-					$.suggestions.highlight( context, $( e.target ).closest( '.suggestions-results div' ), false );
 				} )
 				.addClass( 'suggestions' )
 				.append(
@@ -6385,7 +6394,10 @@ setSelection: function( options ) {
 		} else if ( document.body.createTextRange ) {
 			var selection = document.body.createTextRange();
 			selection.moveToElementText( this );
-			var length = selection.text.length;
+			var length = this.value.length;
+			// IE doesn't count \n when computing the offset, so we won't either
+			var newLines = this.value.match( /\n/g );
+			if ( newLines) length = length - newLines.length;
 			selection.moveStart( 'character', options.start );
 			selection.moveEnd( 'character', -length + options.end );
 			selection.select();
@@ -6467,7 +6479,8 @@ scrollToCaretPosition: function( options ) {
 			 * cover that case, we'll force it to act by moving one
 			 * character back and forth.
 			 */
-			var range = document.selection.createRange();
+			var range = document.body.createTextRange();
+			var savedRange = document.selection.createRange();
 			var pos = $(this).textSelection( 'getCaretPosition' );
 			var oldScrollTop = this.scrollTop;
 			range.moveToElementText( this );
@@ -6480,6 +6493,7 @@ scrollToCaretPosition: function( options ) {
 				range.move( 'character', -1 );
 				range.select();
 			}
+			savedRange.select();
 		}
 		$(this).trigger( 'scrollToPosition' );
 	} );
@@ -6914,7 +6928,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					break;
 				 case 86: //v
-					 if ( event.ctrlKey && $.browser.msie ){
+					 if ( event.ctrlKey && $.browser.msie ) {
 						 //paste, intercepted for IE
 						 context.evt.paste( event );
 					 }
@@ -6969,7 +6983,6 @@ if ( typeof context == 'undefined' ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
 			var oldLength = context.fn.getContents().length;
-			
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -8374,10 +8387,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		// HORRIBLE HACK
-		// Normally we would say ['>=', 7] here, but there's a text selection loss on blur with the textarea
-		'msie': false,
-		// END OF HORRIBLE HACK
+		'msie': [['>=', 7]],
 		// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 		'firefox': [
 			['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
@@ -8388,10 +8398,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 	},
 	// Right-to-left languages
 	'rtl': {
-		// HORRIBLE HACK
-		// Normally we would say ['>=', 7] here, but there's a text selection loss on blur with the textarea
-		'msie': false,
-		// END OF HORRIBLE HACK
+		'msie': [['>=', 7]],
 		// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 		'firefox': [
 			['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
@@ -11132,15 +11139,31 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				var $button = $( '<img />' ).attr( {
-					'src' : src,
-					'width' : 22,
-					'height' : 22,
-					'alt' : label,
-					'title' : label,
-					'rel' : id,
-					'class' : 'tool tool-button'
-				} );
+				var $button;
+				if ( 'offset' in tool ) {
+					var offset = $.wikiEditor.autoLang( tool.offset );
+					$button = $( '<a href="#" />' )
+						.attr( {
+							'alt' : label,
+							'title' : label,
+							'rel' : id,
+							'class' : 'wikiEditor-toolbar-spritedButton'
+						} )
+						.text( label )
+						.click( function() { return false; } )
+						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
+				} else {
+					$button = $( '<img />' )
+						.attr( {
+							'src' : src,
+							'width' : 22,
+							'height' : 22,
+							'alt' : label,
+							'title' : label,
+							'rel' : id,
+							'class' : 'tool tool-button'
+						} );
+				}
 				if ( 'action' in tool ) {
 					$button
 						.data( 'action', tool.action )

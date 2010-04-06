@@ -127,6 +127,14 @@ $messages['dsb'] = array(
 	'vector-desc' => 'Pólěpša elementy wužywarskego pówjercha za suknju Vector.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'vector' => 'βελτιώσεις στο UI για το Vector',
+	'vector-desc' => 'Παρέχει βελτίωση στα στοιχεία διεπαφής χρήστης του skin Vector.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -136,11 +144,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
 	'vector' => 'Mejoras de interfaz de usuario para Vector',
-	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del aspecto Vector.',
+	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
 );
 
 /** Finnish (Suomi)
@@ -153,10 +162,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'vector' => 'Améliorations IU pour Vector',
-	'vector-desc' => "Améliorations des éléments de l'interface utilisateur de l'habillage Vector.",
+	'vector-desc' => 'Améliorations des éléments de l’interface utilisateur de l’habillage Vector.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -221,6 +231,14 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'vector' => 'Meningkatkan UI untuk Vector',
 	'vector-desc' => 'Meningkatkan elemen pada antarmuka penguna dari kulit Vector.',
+);
+
+/** Italian (Italiano)
+ * @author Una giornata uggiosa '94
+ */
+$messages['it'] = array(
+	'vector' => "Miglioramenti all'interfaccia utente per Vector",
+	'vector-desc' => "Migliora gli elementi dell'interfaccia utente della skin Vector.",
 );
 
 /** Japanese (日本語)
@@ -374,6 +392,14 @@ $messages['si'] = array(
 $messages['sk'] = array(
 	'vector' => 'Vylepšenia použ. rozhrania Vector',
 	'vector-desc' => 'Vylepšuje prvky používateľského rozhrania témy vzhľady Vector',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'vector' => 'Izboljšave uporabniškega vmesnika za Vector',
+	'vector-desc' => 'Izboljšave elementov uporabniškega vmesnika kože Vector.',
 );
 
 /** Swedish (Svenska)

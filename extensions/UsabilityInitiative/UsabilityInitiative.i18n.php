@@ -42,6 +42,8 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'usabilityinitiative' => 'مبادرة الاستخدامية',
 	'usabilityinitiative-desc' => 'مزايا طورتها مبادرة استخدامية ويكيبيديا (Wikipedia Usability Initiative) لتحسين استخدامية ميدياويكي.',
+	'prefs-beta' => 'مزايا بيتا',
+	'prefs-labs' => 'مزايا مُختَبرية',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -80,6 +82,8 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'usabilityinitiative' => 'ইউজাবিলিটি ইনিসিয়েটিভ',
 	'usabilityinitiative-desc' => 'মিডিয়াউইকির ব্যবহারযোগ্যতা বাড়াতে উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভের বৈশিষ্ট্যগুলোর উন্নয়ন করেছে',
+	'prefs-beta' => 'বেটা বৈশিষ্টসমূহ',
+	'prefs-labs' => 'পরীক্ষাগার বৈশিষ্টসমূহ',
 );
 
 /** Breton (Brezhoneg)
@@ -104,10 +108,13 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'usabilityinitiative' => "''Usability Initiative''",
 	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
+	'prefs-beta' => 'Característiques beta',
+	'prefs-labs' => 'Característiques de laboratori',
 );
 
 /** Czech (Česky)
@@ -170,12 +177,15 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Dead3y3
  * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'usabilityinitiative' => 'Πρωτοβουλία Χρηστικότητας',
 	'usabilityinitiative-desc' => 'Χαρακτηριστικά που έχουν αναπτυχθεί από την Πρωτοβουλία Χρηστικότητας Wikipedia για να ενισχύσει τη χρηστικότητα του MediaWiki',
+	'prefs-beta' => 'Beta χαρακτηριστικά',
+	'prefs-labs' => 'Labs χαρακτηριστικά',
 );
 
 /** Esperanto (Esperanto)
@@ -185,6 +195,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'usabilityinitiative' => 'Iniciato pri Uzebleco',
 	'usabilityinitiative-desc' => 'Funkcioj disvolvitaj de la Uzebleca Iniciato de Vikipedio por plibonigi la uzeblecon de MediaWiki',
+	'prefs-beta' => 'Ecoj de Beta',
+	'prefs-labs' => 'Ecoj el Laboratorio',
 );
 
 /** Spanish (Español)
@@ -205,6 +217,8 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'usabilityinitiative' => 'Kasutushõlpsuse algatus',
 	'usabilityinitiative-desc' => 'Vikipeedia kasutushõlpsuse algatuse välja töötatud omadused, mis peaks täiustama MediaWiki kasutatavust.',
+	'prefs-beta' => 'Beetafunktsioonid',
+	'prefs-labs' => 'Katsefunktsioonid',
 );
 
 /** Basque (Euskara)
@@ -226,10 +240,11 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author Peter17
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'usabilityinitiative' => "Initiative d'utilisabilité",
-	'usabilityinitiative-desc' => "Fonctionnalités développées par l'initiative d'utilisabilité de Wikipédia pour améliorer l'utilisabilité de MediaWiki",
+	'usabilityinitiative' => 'Initiative d’utilisabilité',
+	'usabilityinitiative-desc' => 'Fonctionnalités développées par l’initiative d’utilisabilité de Wikipédia pour améliorer l’utilisabilité de MediaWiki',
 	'prefs-beta' => 'Fonctionnalités bêta',
 	'prefs-labs' => 'Fonctionnalités « labs »',
 );
@@ -263,12 +278,15 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'usabilityinitiative' => 'יוזמת השימושיות',
-	'usabilityinitiative-desc' => 'תכונות שפותחו על ידי יוזמת השימושית של ויקיפדיה, כדי לשפר את השימושיות של מדיה־ויקי',
+	'usabilityinitiative' => 'מיזם השמישות',
+	'usabilityinitiative-desc' => 'תכונות שפותחו על ידי מיזם השמישות של ויקיפדיה, כדי לשפר את השמישות של מדיה־ויקי',
+	'prefs-beta' => 'אפשרויות בטא',
+	'prefs-labs' => 'אפשרויות מעבדה',
 );
 
 /** Croatian (Hrvatski)
@@ -277,6 +295,8 @@ $messages['he'] = array(
 $messages['hr'] = array(
 	'usabilityinitiative' => 'Inicijativa za uporabljivost',
 	'usabilityinitiative-desc' => 'Mogućnosti razvijane od strane Inicijative za uporabljivost Wikipedije kako bi se unaprijedila uporabljivost MediaWikija',
+	'prefs-beta' => 'Beta mogućnosti',
+	'prefs-labs' => 'Labs mogućnosti',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -296,6 +316,8 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => 'A Wikipedia Usability Initiative által kifejlesztett funkciók a MediaWiki használhatóságának javítására.',
+	'prefs-beta' => 'Béta funkciók',
+	'prefs-labs' => 'Kísérleti funkciók',
 );
 
 /** Armenian (Հայերեն)
@@ -327,10 +349,13 @@ $messages['id'] = array(
  * @author Darth Kule
  * @author Gianfranco
  * @author Nemo bis
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'usabilityinitiative' => 'Progetto usabilità',
 	'usabilityinitiative-desc' => "Caratteristiche sviluppate dal progetto usabilità di Wikipedia per migliorare l'usabilità di MediaWiki",
+	'prefs-beta' => 'Funzionalità beta',
+	'prefs-labs' => 'Funzionalità dei laboratori',
 );
 
 /** Japanese (日本語)
@@ -381,11 +406,14 @@ $messages['lb'] = array(
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Matasg
  */
 $messages['lt'] = array(
 	'usabilityinitiative' => 'Naudojimo iniciatyva',
 	'usabilityinitiative-desc' => 'Priedai, rengiami Wikipedia Naudojimo Iniciatyvos, siekiant padidinti MediaWiki naudojimą.',
+	'prefs-beta' => 'Beta funkcijos',
+	'prefs-labs' => 'Bandomosios funkcijos',
 );
 
 /** Macedonian (Македонски)
@@ -495,14 +523,19 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Iniciativa de Usabilidade da Wikipédia, para melhorar a usabilidade do MediaWiki',
+	'prefs-beta' => 'Funcionalidades beta',
+	'prefs-labs' => 'Funcionalidades dos laboratórios',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Everton137
  */
 $messages['pt-br'] = array(
 	'usabilityinitiative' => 'Iniciativa de Usabilidade',
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
+	'prefs-beta' => 'Características beta',
+	'prefs-labs' => 'Características de laboratório',
 );
 
 /** Romanian (Română)
@@ -559,21 +592,27 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'usabilityinitiative' => 'Pobuda za uporabnost',
 	'usabilityinitiative-desc' => 'Funkcije, ki jih je razvila Wikipedijina pobuda za uporabnost za povečanje uporabnosti MediaWiki',
+	'prefs-beta' => 'Betafunkcije',
+	'prefs-labs' => 'Funkcije laboratorija',
 );
 
 /** Swedish (Svenska)
  * @author Boivie
  * @author Fluff
+ * @author Hannibal
  * @author Rotsee
  */
 $messages['sv'] = array(
 	'usabilityinitiative' => 'Initiativet för användbarhet',
 	'usabilityinitiative-desc' => "Funktioner utvecklade av ''Wikipedias initiativ för användbarhet'', för att förbättra MediaWikis användbarhet",
+	'prefs-beta' => 'Betafunktioner',
+	'prefs-labs' => 'Testfunktioner',
 );
 
 /** Telugu (తెలుగు)
@@ -583,6 +622,8 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'usabilityinitiative' => 'వాడుక సౌలభ్యం కోసం ఒక ప్రయత్నం',
 	'usabilityinitiative-desc' => 'వికీపీడియా వాడుక సౌలభ్యాన్ని పెంచేందుకు వీలుగా కొన్ని నూతన ఫీచర్లు',
+	'prefs-beta' => 'బీటా సౌలభ్యాలు',
+	'prefs-labs' => 'ప్రయోగాత్మక సౌలభ్యాలు',
 );
 
 /** Turkmen (Türkmençe)
@@ -655,6 +696,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Fantasticfears
  * @author PhiLiP
  * @author Shinjiman
  * @author Shizhao
@@ -662,6 +704,7 @@ $messages['yue'] = array(
 $messages['zh-hans'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由维基百科可用性小组开发的新功能，用以增强MediaWiki的可用性',
+	'prefs-beta' => 'Beta特性',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -15,10 +15,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		// HORRIBLE HACK
-		// Normally we would say ['>=', 7] here, but there's a text selection loss on blur with the textarea
-		'msie': false,
-		// END OF HORRIBLE HACK
+		'msie': [['>=', 7]],
 		// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 		'firefox': [
 			['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']
@@ -29,10 +26,7 @@ RegExp.escape = function( s ) { return s.replace(/([.*+?^${}()|\/\\[\]])/g, '\\$
 	},
 	// Right-to-left languages
 	'rtl': {
-		// HORRIBLE HACK
-		// Normally we would say ['>=', 7] here, but there's a text selection loss on blur with the textarea
-		'msie': false,
-		// END OF HORRIBLE HACK
+		'msie': [['>=', 7]],
 		// jQuery UI appears to be broken in FF 2.0 - 2.0.0.4
 		'firefox': [
 			['>=', 2], ['!=', '2.0'], ['!=', '2.0.0.1'], ['!=', '2.0.0.2'], ['!=', '2.0.0.3'], ['!=', '2.0.0.4']

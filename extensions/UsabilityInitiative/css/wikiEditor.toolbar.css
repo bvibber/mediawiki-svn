@@ -88,6 +88,34 @@ body.rtl .wikiEditor-ui-toolbar .group {
 	border-right: none;
 	border-left: solid 1px #DDDDDD;
 }
+.wikiEditor-ui-toolbar .group-search {
+	float: right;
+	padding: 0 0 0 6px;
+	border-right: none;
+	border-left: 1px solid #DDDDDD;
+}
+.wikiEditor-ui-toolbar .group-insert {
+	border-right: none;
+}
+body.rtl .wikiEditor-ui-toolbar .group-search {
+	float: left;
+	padding: 0 6px 0 0;
+	border-left: none;
+	border-right: 1px solid #DDDDDD;
+}
+body.rtl .wikiEditor-ui-toolbar .group-insert {
+	border-left: none;
+}
+/* Sprited Buttons */
+.wikiEditor-toolbar-spritedButton { 
+	background: url(../images/wikiEditor/toolbar/button-sprite.png) 0 0 no-repeat;
+	display:block;
+	float:left;
+	height:22px;
+	text-indent:-9999px;
+	width:22px;
+	padding: 2px;
+}
 /* Tabs */
 .wikiEditor-ui-toolbar .tabs {
 	list-style: none;
@@ -320,7 +348,7 @@ body.rtl .wikiEditor-ui-toolbar .page-table td {
 .wikiEditor-ui-toolbar .section-help .page-table td.result {
 	width: 40%;
 }
-.wikiEditor-ui-toolbar .section-help .page-table td.cell-description,
+.wikiEditor-ui-toolbar .section-help .page-table td.description,
 .wikiEditor-ui-toolbar .section-help .page-table td.description {
 	width: 20%;
 }

@@ -136,6 +136,19 @@ $messages['arz'] = array(
 	'prefstats-legend-in' => 'مشترك',
 );
 
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ */
+$messages['be'] = array(
+	'prefstats-counters' => '* $1 {{PLURAL:$1|удзельнік|удзельнікаў}} уключылі гэтую магчымасць ад пачатку збірання статыстыкі па настаўленнях
+** $2 {{PLURAL:$2|удзельнік пакінуў|удзельнікаў пакінулі}} магчымасць уключанай
+** $3 {{PLURAL:$3|удзельнік адключыў|удзельнікаў адключылі}} яе пасля таго',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|удзельнік|удзельнікаў}} уключылі гэтую магчымасць ад пачатку збірання статыстыкі па настаўленнях
+** $2 {{PLURAL:$2|удзельнік пакінуў|удзельнікаў пакінулі}} магчымасць уключанай
+** $3 {{PLURAL:$3|удзельнік адключыў|удзельнікаў адключылі}} яе пасля таго
+* Разам, $4 {{PLURAL:$4|удзельнік|удзельнікаў}} трымаюць магчымасць уключанай',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -211,6 +224,7 @@ $messages['bn'] = array(
 	'prefstats-factor-week' => 'সপ্তাহ',
 	'prefstats-factor-twoweeks' => 'দুই সপ্তাহ',
 	'prefstats-factor-fourweeks' => 'চার সপ্তাহ',
+	'prefstats-factor-default' => 'পূর্ব নির্ধারিত মাপে ফিরে যাও',
 );
 
 /** Breton (Brezhoneg)
@@ -671,10 +685,12 @@ Eelistuse jälgimiseks redigeeri muutujat $wgPrefStatsTrackPrefs.',
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Theklan
  */
 $messages['eu'] = array(
 	'prefstats' => 'Hobespen estatistikak',
+	'prefstats-desc' => 'Bilatu estatistikak, hobespen zehatzak indarrean dituzten lankideak zenbat diren jasotzen dutenak',
 	'prefstats-title' => 'Hobespen estatistikak',
 	'prefstats-list-intro' => 'Une honetan, ondorengo hobespenak jarraitzen ari dira.
 Klikatu batean bere estatistikak ikusteko.',
@@ -742,15 +758,16 @@ Aseta $wgPrefStatsTrackPrefs asetusten seuraamiseksi.',
  * @author IAlex
  * @author Kropotkine 113
  * @author Omnipaedista
+ * @author Urhixidur
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'prefstats' => 'Statistiques des préférences',
-	'prefstats-desc' => "Statistiques sur le nombre d'utilisateurs ayant certaines préférences activées",
+	'prefstats-desc' => 'Statistiques sur le nombre d’utilisateurs ayant certaines préférences activées',
 	'prefstats-title' => 'Statistiques des préférences',
-	'prefstats-list-intro' => "En ce moment, les préférences suivantes sont suivies.
-Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
-	'prefstats-noprefs' => 'Aucune préférence n\'est actuellement suivie. Configurer $wgPrefStatsTrackPrefs pour suivre des préférences.',
+	'prefstats-list-intro' => 'En ce moment, les préférences suivantes sont suivies.
+Cliquez sur l’une d’entre elles pour voir les statistiques à son propos.',
+	'prefstats-noprefs' => 'Aucune préférence n’est actuellement suivie. Configurer $wgPrefStatsTrackPrefs pour suivre des préférences.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisateur a|utilisateurs ont}} activé cette préférence depuis que les statistiques de préférences ont été activées
 ** $2 {{PLURAL:$2|utilisateur a|utilisateurs ont}} activé cette préférence
 ** $3 {{PLURAL:$3|utilisateur a|utilisateurs ont}} désactivé cette préférence',
@@ -766,7 +783,7 @@ Cliquez sur l'une d'entre elles pour voir les statistiques à son propos.",
 	'prefstats-factor-week' => 'semaine',
 	'prefstats-factor-twoweeks' => 'deux semaines',
 	'prefstats-factor-fourweeks' => 'quatre semaines',
-	'prefstats-factor-default' => "revenir à l'échelle par défaut",
+	'prefstats-factor-default' => 'revenir à l’échelle par défaut',
 	'prefstats-legend-out' => 'Ne veut plus participer',
 	'prefstats-legend-in' => 'Veut participer',
 );
@@ -1108,6 +1125,7 @@ $messages['io'] = array(
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
+ * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'prefstats' => 'Statistiche delle preferenze',
@@ -1119,7 +1137,12 @@ Fare clic su una per vedere le statistiche su di essa.',
 	'prefstats-counters' => "* $1 {{PLURAL:$1|l'utente ha|gli utenti hanno}} attivato questa preferenza dopo che le statistiche sulle preferenze erano state attivate
 ** $2 {{PLURAL:$2|l'utente ce l'ha ancora|gli utenti ce l'hanno ancora}} attivata
 ** $3 {{PLURAL:$3|l'utente la ha|gli utenti la hanno}} disattivata dal",
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utente ha|utenti hanno}} attivato questa preferenza da quando le statistiche per le preferenze vengono registrate
+** $2 {{PLURAL:$2|utente la ha|utenti la hanno}} ancora attivata
+** $3 {{PLURAL:$3|utente la ha|utenti la hanno}} disattivata
+* In total, $4 {{PLURAL:$4|utente ha|utenti hanno}} modificato questa preferenza',
 	'prefstats-xaxis' => 'Durata (ore)',
+	'prefstats-factors' => 'Visualizza per: $1',
 	'prefstats-factor-hour' => 'ora',
 	'prefstats-factor-sixhours' => 'sei ore',
 	'prefstats-factor-day' => 'giorno',
@@ -1127,6 +1150,8 @@ Fare clic su una per vedere le statistiche su di essa.',
 	'prefstats-factor-twoweeks' => 'due settimane',
 	'prefstats-factor-fourweeks' => 'quattro settimane',
 	'prefstats-factor-default' => 'ritorna alla scala predefinita',
+	'prefstats-legend-out' => 'Non hai partecipato',
+	'prefstats-legend-in' => 'Hai partecipato',
 );
 
 /** Japanese (日本語)
@@ -1291,11 +1316,13 @@ Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
  * @author UV
  */
 $messages['la'] = array(
-	'prefstats-factor-hour' => 'hora',
+	'prefstats-xaxis' => 'Tempus (horae)',
+	'prefstats-factors' => 'Videre per: $1',
+	'prefstats-factor-hour' => 'horam',
 	'prefstats-factor-sixhours' => 'sex horas',
-	'prefstats-factor-day' => 'dies',
-	'prefstats-factor-week' => 'hebdomas',
-	'prefstats-factor-twoweeks' => 'duae hebdomades',
+	'prefstats-factor-day' => 'diem',
+	'prefstats-factor-week' => 'hebdomadem',
+	'prefstats-factor-twoweeks' => 'duas hebdomades',
 	'prefstats-factor-fourweeks' => 'quattuor hebdomades',
 );
 
@@ -1361,6 +1388,7 @@ Sjtèl $wgPrefStatsTrackPrefs in óm prifferensies bie te hauwe.',
 );
 
 /** Lithuanian (Lietuvių)
+ * @author Garas
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -1369,6 +1397,7 @@ $messages['lt'] = array(
 	'prefstats-title' => 'Nustatymų statistika',
 	'prefstats-list-intro' => 'Šiuo metu yra sekami šie pasirinkimai.
 Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
+	'prefstats-xaxis' => 'Trukmė (valandomis)',
 );
 
 /** Laz (Laz)
@@ -1703,7 +1732,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'prefstats' => 'Estatísticas de preferências',
-	'prefstats-desc' => 'Monitorize estatísticas sobre quantos utilizadores têm certas preferências ativadas',
+	'prefstats-desc' => 'Monitorizar estatísticas de quantos utilizadores têm certas preferências activadas',
 	'prefstats-title' => 'Estatísticas de preferências',
 	'prefstats-list-intro' => 'Neste momento estão a ser monitorizadas as seguintes preferências.
 Clique numa delas para ver as estatísticas dessa preferência.',

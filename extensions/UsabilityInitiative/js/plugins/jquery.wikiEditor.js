@@ -371,7 +371,7 @@ if ( typeof context == 'undefined' ) {
 						}
 					break;
 				 case 86: //v
-					 if ( event.ctrlKey && $.browser.msie ){
+					 if ( event.ctrlKey && $.browser.msie ) {
 						 //paste, intercepted for IE
 						 context.evt.paste( event );
 					 }
@@ -426,7 +426,6 @@ if ( typeof context == 'undefined' ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
 			var oldLength = context.fn.getContents().length;
-			
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );

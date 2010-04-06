@@ -105,8 +105,10 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor-toc-preference' => 'Habilita la taula de continguts navegable',
 	'wikieditor-toc-show' => 'Mostra el contingut',
 	'wikieditor-toc-hide' => 'Amaga el contingut',
 );
@@ -320,9 +322,11 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Gliu
  * @author PaoloRomano
  */
 $messages['it'] = array(
+	'wikieditor-toc-preference' => 'Abilita indice navigabile',
 	'wikieditor-toc-show' => 'Mostra i contenuti',
 	'wikieditor-toc-hide' => 'Nascondi i contenuti',
 );
@@ -361,6 +365,15 @@ $messages['lb'] = array(
 	'wikieditor-toc-preference' => 'Inhaltsverzeechnes fir ze navigéieren aschalten',
 	'wikieditor-toc-show' => 'Inhalt weisen',
 	'wikieditor-toc-hide' => 'Inhalt verstoppen',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Garas
+ */
+$messages['lt'] = array(
+	'wikieditor-toc-preference' => 'Įjungti naršomą turinį',
+	'wikieditor-toc-show' => 'Rodyti turinį',
+	'wikieditor-toc-hide' => 'Slėpti turinį',
 );
 
 /** Macedonian (Македонски)
@@ -508,6 +521,15 @@ $messages['sk'] = array(
 	'wikieditor-toc-preference' => 'Povoliť obsah s odkazmi na časti',
 	'wikieditor-toc-show' => 'Zobraziť obsah',
 	'wikieditor-toc-hide' => 'Skryť obsah',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-toc-preference' => 'Omogoči plovno kazalo vsebine',
+	'wikieditor-toc-show' => 'Prikaži vsebino',
+	'wikieditor-toc-hide' => 'Skrij vsebino',
 );
 
 /** Swedish (Svenska)
