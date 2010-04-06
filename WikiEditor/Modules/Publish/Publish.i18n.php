@@ -457,6 +457,16 @@ $messages['he'] = array(
 	'wikieditor-publish-dialog-goback' => 'חזרה אחורה',
 );
 
+/** Croatian (Hrvatski)
+ * @author Ex13
+ */
+$messages['hr'] = array(
+	'wikieditor-publish-dialog-title' => 'Objavi na {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Uredi sažetak (kratko opišite promjene koje ste učinili):',
+	'wikieditor-publish-dialog-minor' => 'Manja promjena',
+	'wikieditor-publish-dialog-watch' => 'Prati ovu stranicu',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -91,6 +91,15 @@ Please fill out the optional survey below.",
 To help us improve them, please fill out the optional survey below.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'prefswitch-survey-true' => 'نعم',
+	'prefswitch-survey-false' => 'لا',
+	'prefswitch-survey-answer-whyoff-other' => 'سبب آخر :',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -121,6 +130,36 @@ $messages['be-tarask'] = array(
 	'prefswitch-survey-answer-os-other' => 'Іншая апэрацыйная сыстэма:',
 	'prefswitch-survey-question-res' => 'Якое разрозьненьне Вашага манітора?',
 	'prefswitch-title-on' => 'Што новага?',
+	'prefswitch-title-switched-on' => 'Цешцеся!',
+	'prefswitch-title-off' => 'Выключыць новыя магчымасьці',
+	'prefswitch-title-switched-off' => 'Дзякуй',
+	'prefswitch-title-feedback' => 'Зваротная сувязь',
+	'prefswitch-success-on' => 'Новыя магчымасьці уключаныя.',
+	'prefswitch-success-off' => 'Новыя магчымасьці выключаныя.',
+	'prefswitch-success-feedback' => 'Ваш водгук дасланы.',
+	'prefswitch-return' => '<hr style="clear:both">
+Вярнуцца да <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Мы вельмі стараемся, каб спрасьціць працу нашых удзельнікаў. Мы ўвялі некаторыя паляпшэньні, уключаючы новы зьнешні выгляд і спрошчаныя магчымасьці рэдагаваньня. Паляпшэньне зручнасьці і прастаты выкарыстаньня нашымі праектамі зьяўляецца галоўнай мэтай Фундацыі «Вікімэдыя» і мы працягнем над гэтым працаваць.
+
+[[File:UsabilityNavigation.png|right|link=|Выява новай навігацыі]]
+[[File:UsabilityToolbar.png|right|link=|Выява палепшанай панэлі рэдагаваньня]]
+[[File:UsabilityDialogs.png|right|link=|Выява новых дыялёгаў стварэньня]]
+===Што мы зьнянілі===
+* Навігацыя: Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець ці Вы праглядаеце артыкул ці старонку абмеркаваньня, а таксама ці Вы чытаеце ці рэдагуеце старонку.
+* Паляпшэньні панэлі рэдагаваньня:  Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні.  Цяпер фарматаваньне старонак болей лёгкае і болей інтуітыўнае.
+* Майстар стварэньня спасылак:  Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:родны|{{SITENAME}}}} таксама як і на вонкавыя сайты.
+* Паляпшэньні пошуку: Мы палепшылі пошукавыя падказкі, каб хутчэй паказаць неабходную Вам старонку.
+* Іншыя магчымасьці:  Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня стварэньня табліцаў і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.',
+	'prefswitch-main-on' => '===Зваротная сувязь?===
+Мы жадаем даведацца пра Вашыя меркаваньні. Калі ласка, наведайце нашу <span class="plainlinks">[$1 старонку зваротнай сувязі]</span>.
+===Вярніце ўсё назад!===
+Калі Вы жадаеце выключыць новыя магчымасьці, калі ласка, <span class="plainlinks">[$2 націсьніце тут]</span>.',
+	'prefswitch-main-off' => '===Паспрабуйце іх!===
+Калі Вы жадаеце ўключыць новыя магчымасьці, калі ласка, <span class="plainlinks">[$1 націсьніце тут]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Мы жадаем даведацца пра Вашыя меркаваньні.
+Калі ласка, адкажыце на некалькі пытаньняў ніжэй.',
+	'prefswitch-survey-intro-off' => 'Дзякуй за тое, што паспрабавалі новыя магчымасьці.
+Каб дапамагчы нам іх палепшыць, калі ласка, адкажыце на некалькі пытаньняў ніжэй.',
 );
 
 /** Breton (Brezhoneg)
@@ -186,6 +225,17 @@ Bitte wähle alle zutreffenden Punkte aus.',
 	'prefswitch-success-feedback' => 'Dein Feedback wurde versandt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Zurück zu <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Wir haben hart gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot der neuen Navigation]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot der erweiterten Werkzeugleiste]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot der neuen Dialoge]]
+===Was sich geändert hat===
+* Navigation: Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob du eine Seite oder eine Diskussionsseite liest und ob du eine Seite liest oder bearbeitest.
+* Werkzeugleiste: Wir haben die Werkzeugleiste einfacher bedienbar gemacht. Die Formatierung von Seiten ist nun einfacher und intuitiver.
+* Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wikipedia-Seiten als auch zu externen Seiten.
+* Suche: Wir haben die Suchvorschläge verbessert, damit du schneller zu der von dir gesuchten Seite kommst.
+* Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
 	'prefswitch-main-on' => '=== Feedback? ===
 Wir würden uns freuen, von dir zu hören.
 Bitte besuche unsere <span class="plainlinks">[$1 Feedback-Seite]</span>.
@@ -197,6 +247,100 @@ Wenn du die neuen Features einschalten möchtest, <span class="plainlinks">[$1 k
 Bitte fülle die freiwillige Umfrage aus.',
 	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features
 Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'prefswitch-desc' => 'Wužywarjam dowóliś, sajźby nastajenjow pśešaltowaś',
+	'prefswitch-survey-true' => 'Jo',
+	'prefswitch-survey-false' => 'Ně',
+	'prefswitch-survey-submit-off' => 'Nowe funkcije wótšaltowaś',
+	'prefswitch-survey-cancel-off' => 'Jolic coš nowe funkcije dalej wužywaś, móžoš se k $1 wrośiś.',
+	'prefswitch-survey-question-likedislike' => 'Co se śi spódoba na nowych funkcijach?
+Co se śi njespódoba na nowych funkcijach?',
+	'prefswitch-survey-question-whyoff' => 'Cogodla wótšaltujoš nowe funkcije?
+Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Wužywanje jo było pśekomplicěrowane.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Naglěd se mě njespódoba.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nowe rejtarki a layout se mi njespódobaju.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nowa rědowa kšoma se mi njespódoba.',
+	'prefswitch-survey-answer-whyoff-other' => 'Druga pśicyna:',
+	'prefswitch-survey-question-browser' => 'Kótary wobglědowak wužywaš?',
+	'prefswitch-survey-answer-browser-other' => 'Drugi wobglědowak:',
+	'prefswitch-survey-question-os' => 'Kótary źěłowy system wužywaš?',
+	'prefswitch-survey-answer-os-other' => 'Drugi źěłowy system:',
+	'prefswitch-survey-question-res' => 'Co jo rozeznaśe twójeje wobrazowki?',
+	'prefswitch-title-on' => 'Co jo nowe?',
+	'prefswitch-title-off' => 'Nowe funkcije wótšaltowaś',
+	'prefswitch-title-switched-off' => 'Źěkujomy se',
+	'prefswitch-success-on' => 'Nowe funkcije su něnto zašaltowane.',
+	'prefswitch-success-off' => 'Nowe funkcije su něnto wótšaltowane.',
+	'prefswitch-return' => '<hr style="clear:both">
+Slědk k <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-off' => '===Wopytaj je!===
+Jolic coš nowe funkcije zašaltowaś, <span class="plainlinks">[$1 klikni pšosym how]</span>.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Flyax
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'prefswitch' => 'Πρωτοβουλία για τη Χρηστικότητα αλλαγή προτιμήσεων',
+	'prefswitch-desc' => 'Να επιτρέπεται στους χρήστες να αλλάζουν ομάδες προτιμήσεων',
+	'prefswitch-survey-true' => 'Ναι',
+	'prefswitch-survey-false' => 'Όχι',
+	'prefswitch-survey-submit-off' => 'Απενεργοποίηση καινούριων λειτουργιών',
+	'prefswitch-survey-cancel-off' => 'Αν θέλετε να συνεχίσετε να χρησιμοποιείτε τις καινούριες λειτουργίες, μπορείτε να επιστρέψετε στο $1.',
+	'prefswitch-survey-submit-feedback' => 'Αποστολή σχολίων',
+	'prefswitch-survey-cancel-feedback' => 'Αν δεν θέλετε να δώσετε σχόλια, μπορείτε να επιστρέψετε στο $1.',
+	'prefswitch-survey-question-likedislike' => 'Τι σας άρεσε στις καινούριες λειτουργίες; Τι δεν σας άρεσε στις καινούριες λειτουργίες;',
+	'prefswitch-survey-question-whyoff' => 'Γιατί απενεργοποιείτε τις καινούριες λειτουργίες; Επιλέξτε όλα όσα ισχύουν.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Ήταν πολύ δύσχρηστες.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Δεν λειτουργούσαν σωστά.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Δεν συμπεριφέρονταν προβλέψιμα.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Δεν μου άρεσε η εμφάνισή τους.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Δεν μου άρεσαν οι καινούριες καρτέλες και η διάταξη.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Δεν μου άρεσε η καινούρια εργαλειοθήκη.',
+	'prefswitch-survey-answer-whyoff-other' => 'Άλλος λόγος:',
+	'prefswitch-survey-question-browser' => 'Ποιο φυλλομετρητή ιστοσελίδων χρησιμοποιείτε;',
+	'prefswitch-survey-answer-browser-other' => 'Άλλο φυλλομετρητή:',
+	'prefswitch-survey-question-os' => 'Ποιο λειτουργικό σύστημα χρησιμοποιείτε;',
+	'prefswitch-survey-answer-os-other' => 'Άλλο λειτουργικό σύστημα:',
+	'prefswitch-survey-question-res' => 'Ποια είναι η ανάλυση της οθόνης σας;',
+	'prefswitch-title-on' => 'Νέα',
+	'prefswitch-title-switched-on' => 'Απολαύστε τες!',
+	'prefswitch-title-off' => 'Απενεργοποίηση των καινούριων λειτουργιών',
+	'prefswitch-title-switched-off' => 'Ευχαριστούμε',
+	'prefswitch-title-feedback' => 'Σχόλια',
+	'prefswitch-success-on' => 'Οι καινούριες λειτουργίες είναι τώρα ενεργοποιημένες.',
+	'prefswitch-success-off' => 'Οι καινούριες λειτουργίες απενεργοποιήθηκαν.',
+	'prefswitch-success-feedback' => 'Τα σχόλια σας αποστάλθηκαν.',
+	'prefswitch-return' => '<hr style="clear:both">
+Επιστροφή στο <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Δουλεύουμε σκληρά για να κάνουμε πιο εύκολα τα πράγματα για τους χρήστες μας.  Είμαστε ενθουσιασμένοι που μοιραζόμαστε μαζί σας μερικές βελτιώσεις, που περιλαμβάνουν μια καινούργια εμφάνιση και αίσθηση και απλοποιημένες λειτουργίες επεξεργασίας.  Η βελτίωση της χρηστικότητας των εγχειρημάτων μας είναι προτεραιότητα του Ιδρύματος Wikimedia και θα δημοσιεύσουμε κι άλλες ενημερώσεις στο μέλλον.
+
+[[File:UsabilityNavigation.png|right|link=|Στιγμιότυπο της καινούργιας πλοήγησης]]
+[[File:UsabilityToolbar.png|right|link=|Στιγμιότυπο της εμπλουτισμένης εργαλειοθήκης επεξεργασίας]]
+[[File:UsabilityDialogs.png|right|link=|Στιγμιότυπο των καινούργιων παραθύρων για τη δημιουργία περιεχομένου]]
+===Αυτά που αλλάξαμε===
+* Πλοήγηση: Έχουμε βελτιώσει την πλοήγηση για την ανάγνωση και την επεξεργασία σελίδων. Τώρα οι καρτέλες στο πάνω μέρος της κάθε σελίδας δείχνουν πιο καθαρά αν βλέπετε την ίδια τη σελίδα  ή τη σελίδα συζήτησης, και επίσης αν διαβάζετε ή αν επεξεργάζεστε μια σελίδα.
+* Βελτιώσεις στην εργαλειοθήκη επεξεργασίας: Αναδιοργανώσαμε την εργαλειοθήκη επεξεργασίας ώστε να είναι πιο εύχρηστη.  Τώρα η μορφοποίηση σελίδων είναι πιο απλή και πιο διαισθητική. 
+* Wizard για συνδέσμους:  Ένα εύχρηστο εργαλείο σάς επιτρέπει να προσθέσετε συνδέσμους προς άλλες σελίδες της Βικιπαίδειας καθώς και προς εξωτερικούς ιστότοπους.
+* Βελτιώσεις στην αναζήτηση: Έχουμε βελτιώσει τις συμβουλές αναζήτησης για να οδηγηθείτε στη σελίδα που ψάχνετε πιο γρήγορα. 
+* Άλλες καινούργιες λειτουργίες:  Επιπλέον έχουμε εισαγάγει έναν οδηγό που διευκολύνει τη δημιουργία πινάκων, και μια λειτουργία για αναζήτηση-αντικατάσταση που απλοποιεί την επεξεργασία σελίδων.',
+	'prefswitch-main-on' => '===Σχόλια;===
+Θα χαιρόμασταν να μάθουμε τη γνώμη σας.  Παρακαλούμε, επισκεφτείτε τη <span class="plainlinks">[$1 σελίδα σχολίων]</span> μας.
+===Επιστροφή πίσω===
+Αν θέλετε να απενεργοποιήσετε τις καινούριες λειτουργίες, παρακαλούμε <span class="plainlinks">[$2 πατήστε εδώ]</span>.',
+	'prefswitch-main-off' => '===Δοκιμάστε τες!===
+Αν θέλετε να ενεργοποιήσετε τις καινούριες λειτουργίες, παρακαλούμε <span class="plainlinks">[$1 πατήστε εδώ]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Θα χαιρόμασταν να μάθουμε τη γνώμη σας.
+Σας παρακαλούμε να συμπληρώσετε το παρακάτω προαιρετικό ερωτηματολόγιο.',
+	'prefswitch-survey-intro-off' => 'Ευχαριστούμε που δοκιμάσατε τις καινούριες μας λειτουργίες.
+Για να μας βοηθήσετε να τις βελτιώσουμε, σας παρακαλούμε να συμπληρώσετε το παρακάτω προαιρετικό ερωτηματολόγιο.',
 );
 
 /** Esperanto (Esperanto)
@@ -262,6 +406,7 @@ Helpi nin por plibonigi ilin, bonvolu plenumi la jenan malnepran enketon.',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Pertile
  */
 $messages['es'] = array(
@@ -310,9 +455,65 @@ Volver a <span class="plainlinks">[$1 $2]</span>.',
 * Asistente de enlaces: una sencilla herramienta permite añadir enlaces ya sea a otras páginas de Wikipedia como a otros sitios externos.
 * Mejoras en la búsqueda: hemos mejorado las sugerencias para llegar más rápido a la página que se está buscando.
 * Otras nuevas características: también hemos introducido un asistente de tablas para hacer más sencilla la creación de tablas y una funcionalidad de buscar y reemplazar que simplifica la edición de páginas.',
+	'prefswitch-main-on' => '===Retroalimentar?===
+Nos encantaría escucharte. Por favor visita nuestra <span class="plainlinks">[$1 página de retroalimentación]</span>.
+===Llévenme de vuelta===
+Si deseas desactivar las nuevas características, por favor haz <span class="plainlinks">[$2 click aquí]</span>.',
+	'prefswitch-main-off' => '===Pruébalos!===
+Si deseas activar las nuevas características, por favor haz <span class="plainlinks">[$1 click aquí]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Nos encantaría escucharlo.
+Por favor llene la encuesta opcional de abajo.',
+	'prefswitch-survey-intro-off' => 'Gracias por probar nuestras nuevas características.
+Para ayudarnos a mejorarlas, por favor llena la encuesta opcional de abajo.',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'prefswitch-desc' => 'Mahdollistaa käyttäjille asetussarjan vaihtamisen.',
+	'prefswitch-survey-true' => 'Kyllä',
+	'prefswitch-survey-false' => 'Ei',
+	'prefswitch-survey-submit-off' => 'Poista käytöstä uudet omaisuudet',
+	'prefswitch-survey-cancel-off' => 'Jos haluat jatkaa uusien ominaisuuksien käyttämistä, voit palata sivulle $1.',
+	'prefswitch-survey-submit-feedback' => 'Lähetä palaute',
+	'prefswitch-survey-cancel-feedback' => 'Jos et halua antaa palautetta, voit palata sivulle $1.',
+	'prefswitch-survey-question-likedislike' => 'Mistä pidit uusissa ominaisuuksissa?
+Mistä et pitänyt uusissa ominaisuuksissa?',
+	'prefswitch-survey-question-whyoff' => 'Miksi olet poistamassa käytöstä uusia ominaisuuksia?
+Valitse kaikki sopivat.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Se oli liian vaikeakäyttöinen.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Se ei toiminut kunnolla.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Se ei toiminut odotetusti.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'En pitänyt sen ulkonäöstä.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'En pitänyt uusista välilehdistä ja asettelusta.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'En pitänyt uudesta työkalupalkista.',
+	'prefswitch-survey-answer-whyoff-other' => 'Muu syy',
+	'prefswitch-survey-question-browser' => 'Mitä selainta käytät?',
+	'prefswitch-survey-answer-browser-other' => 'Muu selain',
+	'prefswitch-survey-question-os' => 'Mitä käyttöjärjestelmää käytät?',
+	'prefswitch-survey-answer-os-other' => 'Muu käyttöjärjestelmä',
+	'prefswitch-survey-question-res' => 'Mikä on näyttösi resoluutio?',
+	'prefswitch-title-on' => 'Mitä uutta?',
+	'prefswitch-title-switched-on' => 'Nauti!',
+	'prefswitch-title-off' => 'Poista käytöstä uudet omaisuudet',
+	'prefswitch-title-switched-off' => 'Kiitos',
+	'prefswitch-title-feedback' => 'Palaute',
+	'prefswitch-success-on' => 'Uudet ominaisuudet ovat nyt käytössä.',
+	'prefswitch-success-off' => 'Uudet ominaisuudet ovat nyt poistettu käytöstä.',
+	'prefswitch-success-feedback' => 'Palautteesi on lähetetty.',
+	'prefswitch-return' => '<hr style="clear:both">
+Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-on' => '=== Palautetta? ===
+Kuulisimme mielellämme palautetta sinulta. Käy <span class="plainlinks">[$1 palautesivulla]</span>.
+=== Palaa takaisin ===
+Jos haluat poistaa käytöstä uudet ominaisuudet – <span class="plainlinks">[$2 napsauta tästä]</span>.',
+	'prefswitch-survey-intro-off' => 'Kiitos, kun kokeilit uusia ominaisuuksia.
+Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely.',
 );
 
 /** French (Français)
+ * @author Coyau
  * @author IAlex
  */
 $messages['fr'] = array(
@@ -356,11 +557,11 @@ Revenir à <span class="plainlinks">[$1 $2]</span>.',
 [[File:UsabilityToolbar.png|right|link=|Capture d'écran de la barre d'outils d'édition améliorée]]
 [[File:UsabilityDialogs.png|right|link=|Capture d'écran du contenu des boîtes de dialogue de nouvelle génération]]
 === Voici ce que nous avons changé ===
-* Navigation : Nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page de définissent plus clairement si vous voyez la page ou la page de discussion, et si vous lisez ou modifiez une page.
-* Améliorations de la barre d'outils d'édition : Nous avons réorganisé la barre d'outils d'édition pour la rendre plus facile à utiliser. Maintenant, la mise en pages est plus simple et plus intuitive.
-* Assistant de liens : Un outil simple à poure vous permet d'ajouter des liens vers d'autres pages de Wikipédia ainsi que des liens vers des sites externes.
+* Navigation : Nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous lisez ou modifiez une page.
+* Améliorations de la barre d'outils d'édition : Nous avons réorganisé la barre d'outils d'édition pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
+* Assistant de liens : Un outil simple pour vous permettre d'ajouter des liens vers d'autres pages de Wikipédia ainsi que des liens vers des sites externes.
 * Amélioration de la recherche : Nous avons amélioré les suggestions de recherche pour vous aider à trouvez la page que vous recherchez plus rapidement.
-* Autres nouvelles fonctionnalités : Nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour de simplifier la modification de page.",
+* Autres nouvelles fonctionnalités : Nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.",
 	'prefswitch-main-on' => '=== Commentaires ? ===
 Nous aimerions avoir vos impressions. Visitez notre <span class="plainlinks">[$1 page de commentaires]</span>.
 === Sortez-moi de là ! ===
@@ -493,6 +694,68 @@ Wänn Du di neje Funktione witt yyschalte, <span class="plainlinks">[$1 druck do
 Bitte fill di frejwillig Umfrog uus.',
 	'prefswitch-survey-intro-off' => 'Dankschen fir s Uusprobiere vu unsre neje Funktione.
 Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus.',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'prefswitch' => 'הפעלת מיזם השמישות',
+	'prefswitch-desc' => 'לאפשר למשתמשים להפעיל ערכות של העדפות',
+	'prefswitch-survey-true' => 'כן',
+	'prefswitch-survey-false' => 'לא',
+	'prefswitch-survey-submit-off' => 'ביטול התכונת החדשות',
+	'prefswitch-survey-cancel-off' => 'אם תרצו להמשיך להשתמש בתכונות החדשות, באפשרותכם לחזור אל $1.',
+	'prefswitch-survey-submit-feedback' => 'שליחת משוב',
+	'prefswitch-survey-cancel-feedback' => 'אם אינכם רוצים לתת משוב, תוכלו לחזור אל $1.',
+	'prefswitch-survey-question-likedislike' => 'מה אהבתם בגרסה החדשה?
+מה לא אהבתם בגרסה החדשה?',
+	'prefswitch-survey-question-whyoff' => 'למה אתם מכבים את התכונות החדשות?
+אנא בחרו את כל האפשרויות המתאימות.',
+	'prefswitch-survey-answer-whyoff-hard' => 'היא הייתה קשה מדי לשימוש',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'היא לא פעלה כראוי.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'היא לא פעלה באופן צפוי.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'לא אהבתי את המראה החדש.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'לא אהבתי את השינויים בלשוניות ובעיצוב.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'לא אהבתי את סרגל הכלים החדש.',
+	'prefswitch-survey-answer-whyoff-other' => 'סיבה אחרת:',
+	'prefswitch-survey-question-browser' => 'באיזה דפדפן אתם משתמשים?',
+	'prefswitch-survey-answer-browser-other' => 'דפדפן אחר:',
+	'prefswitch-survey-question-os' => 'באיזו מערכת הפעלה אתם משתמשים?',
+	'prefswitch-survey-answer-os-other' => 'מערכת הפעלה אחרת:',
+	'prefswitch-survey-question-res' => 'מהי רזולוציית המסך שלכם?',
+	'prefswitch-title-on' => 'מה חדש?',
+	'prefswitch-title-switched-on' => 'תיהנו!',
+	'prefswitch-title-off' => 'לבטל את התכונות החדשות',
+	'prefswitch-title-switched-off' => 'תודה',
+	'prefswitch-title-feedback' => 'משוב',
+	'prefswitch-success-on' => 'התכונות החדשות מופעלות עכשיו.',
+	'prefswitch-success-off' => 'התכונות החדשות מבוטלות עכשיו.',
+	'prefswitch-success-feedback' => 'המשוב שלכם נשלח.',
+	'prefswitch-return' => '<hr style="clear:both">
+חזרה אל <span class="plainlinks">[$1 $2].</span>',
+	'prefswitch-main' => 'עבדנו קשה כדי שלמשתמשים שלנו יהיה קל יותר. אנו נרגשים לשתף אתכם במספר שיפורים, בהם מראה חדש ויכולות עריכה פשוטות יותר. שיפור השמישות במיזמים שלנו הוא משימה בעלת עדיפות גבוהה עובר קרן ויקימדיה ואנחנו נשתף אתכם בשיפורים נוספים בעתד.
+
+[[File:UsabilityNavigation.png|left|link=|צילום מסך של דף הניווט החדש]]
+[[File:UsabilityToolbar.png|left|link=|צילום מסך של סרגל העריכה המורחב]]
+[[File:UsabilityDialogs.png|left|link=|צילום מסך של תיבות דו שיח חדשות לעריכת תוכן]]
+
+===אלה הדברים ששינינו===
+* ניווט: שיפרנו את הניווט לקריאה וכתיבה של דפים. עכשיו הלשוניות בראש כל דף מציגות באופן ברור יותר אם אתם צופים בדף או בדף שיחה והאם אתם קוראים או כותבים אותו.
+* שיפורים בסרגל העריכה: סידרנו מחדש את סרגל העריכה כדי שיהיה קל יותר להשתמש בו. עכשיו עיצוב דפים פשוט וצפוי יותר.
+* אשף קישורים: כלי קל לשימוש מאפשר לכם להוסיף קישורים לדפים אחרים בוויקיפדיה וגם קישורים לאתרים חיצוניים.
+* שיפורים בחיפוש: שיפרנו את ההשלמות בתיבת החיפוש כדי שתמצאו את הדף שאותו אתם מחפשים מהר יותר.
+* תכונות חדשות אחרות: הוספנו גם אשף טבלאות כדי שיהיה קל יותר ליצור טבלאות ויכולת חיפוש והחלפה כדי שיהיה קל יותר לערוך דפים.',
+	'prefswitch-main-on' => '===יש לכם מה לספר לנו?===
+נשמח לשמוע מכם. אנא בקרו ב<span class="plainlinks">[$1 דף המשוב שלנו]</span>.
+===תחזירו אותי!===
+אם תרצו לכבות את התכונות החדשות, אנא <span class="plainlinks">[$2 לחצו כאן]</span>.',
+	'prefswitch-main-off' => '===נסו אותן!===
+אם תרצו להפעיל את התכונות החדשות, אנא <span class="plainlinks">[$1 לחצו כאן]</span>.',
+	'prefswitch-survey-intro-feedback' => 'נשמח לשמוע מכם.
+אנא מלאו את הסקר להלן (לא חובה).',
+	'prefswitch-survey-intro-off' => 'תודה שניסיתם את התכונות החדשות שלנו.
+כדי לעזור לנו לשפר אותן, אנא מלאו את הסקר להלן (לא חובה).',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -650,6 +913,67 @@ Per favore riempi il seguente questionario facoltativo.',
 Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltativo.',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'prefswitch' => 'ユーザビリティイニシアティブ設定スイッチ',
+	'prefswitch-desc' => '利用者が個人設定の組み合わせを切り替えられるようにする',
+	'prefswitch-survey-true' => 'はい',
+	'prefswitch-survey-false' => 'いいえ',
+	'prefswitch-survey-submit-off' => '新機能を停止する',
+	'prefswitch-survey-cancel-off' => '新機能の使用を継続したい場合は、$ 1に戻ってください。',
+	'prefswitch-survey-submit-feedback' => 'フィードバックを送る',
+	'prefswitch-survey-cancel-feedback' => 'フィードバックを提供したくない場合は、$ 1に戻ってください。',
+	'prefswitch-survey-question-likedislike' => '新機能のどのような点が気に入りましたか。
+どのような点が気に入りませんでしたか。',
+	'prefswitch-survey-question-whyoff' => '新機能を停止する理由をお聞かせください。
+あてはまるものを全てお選びください。',
+	'prefswitch-survey-answer-whyoff-hard' => '使用方法が難しすぎた。',
+	'prefswitch-survey-answer-whyoff-didntwork' => '正常に機能しなかった。',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '動作が予測不能だった。',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => '見た目が好きではなかった。',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => '新しいタブやレイアウトが好きではなかった。',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '新しいツールバーが好きではなかった。',
+	'prefswitch-survey-answer-whyoff-other' => 'その他の理由:',
+	'prefswitch-survey-question-browser' => 'ご利用のブラウザをお答えください。',
+	'prefswitch-survey-answer-browser-other' => 'その他のブラウザ:',
+	'prefswitch-survey-question-os' => 'ご利用のOSをお答えください。',
+	'prefswitch-survey-answer-os-other' => 'その他のオペレーティングシステム:',
+	'prefswitch-survey-question-res' => 'ご使用中の画面の解像度をお答えください。',
+	'prefswitch-title-on' => '新しくなった点',
+	'prefswitch-title-switched-on' => 'お楽しみください！',
+	'prefswitch-title-off' => '新機能を停止する',
+	'prefswitch-title-switched-off' => 'ありがとうございました',
+	'prefswitch-title-feedback' => 'フィードバック',
+	'prefswitch-success-on' => '新機能を有効にしました。',
+	'prefswitch-success-off' => '新機能を停止しました。',
+	'prefswitch-success-feedback' => 'フィードバックが送信されました。',
+	'prefswitch-return' => '<hr style="clear:both">
+<span class="plainlinks">[$1 $2]</span>に戻る。',
+	'prefswitch-main' => '私たちは、より使いやすいサイトを利用者の皆様にお届けするために日々努力しています。そして新しい外観や雰囲気、わかりやすくなった編集機能などの改善を皆さまと共有できることを大変うれしく思っています。私たちのプロジェクトのユーザビリティを改善することは、ウィキメディア財団の優先課題の一つであり、今後も更なるアップデートを実施していく予定です。
+
+[[File:UsabilityNavigation.png|right|link=|新しいナビゲーションのスクリーンショット]]
+[[File:UsabilityToolbar.png|right|link=|拡張編集ツールバーのスクリーンショット]]
+[[File:UsabilityDialogs.png|right|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
+===今回の変更点は以下の通りです===
+* ナビゲーション: ページの閲覧・編集時のナビゲーションを改善しました。各ページの上部のタブは、閲覧中の画面がページ本体なのかそのノートページなのか、あるいは現在閲覧中なのか編集中なのかをよりはっきりと示すようになりました。
+* 編集ツールバーの改善: 編集ツールバーを再編して、より使いやすくしました。ページの整形がより簡単に、かつ直感的に行なえるようになっています。
+* リンクウィザード: ウィキペディア内の他のページや外部サイトへのリンクを追加できる、使いやすいツールを備えました。
+* 検索機能の改善: 検索結果の候補予想の提示を改善し、お探しのページにより素早くたどり着けるようにしました。
+* その他の新機能: その他にも、ページ編集を簡潔化するために、表の作成を簡単にする表ウィザード、検索・置換機能を追加しました。',
+	'prefswitch-main-on' => '===フィードバック===
+ご意見をぜひお寄せください。私たちの<span class="plainlinks">[$1 フィードバック専用ページ]</span>をぜひご覧ください。
+===もとに戻す===
+新機能を停止したい場合は、<span class="plainlinks">[$2 ここをクリック]</span>してください。',
+	'prefswitch-main-off' => '===お試しください！===
+新機能を有効にしたい場合は、<span class="plainlinks">[$1 ここをクリック]</span>してください。',
+	'prefswitch-survey-intro-feedback' => 'ご意見をぜひお聞かせください。
+下記の任意の調査にぜひご協力ください。',
+	'prefswitch-survey-intro-off' => '新機能をお試しいただきありがとうございます。
+更なる改善のために、ぜひ下記の任意の調査にご協力ください。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -771,6 +1095,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Junaidpv
  * @author Praveenp
  */
 $messages['ml'] = array(
@@ -793,7 +1118,7 @@ $messages['ml'] = array(
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'പുതിയ റ്റാബുകളും ദൃശ്യവിന്യാസവും എനിക്കിഷ്ടപ്പെട്ടില്ല.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'പുതിയ റ്റൂൾബാർ എനിക്കിഷ്ടപ്പെട്ടില്ല.',
 	'prefswitch-survey-answer-whyoff-other' => 'മറ്റ് കാരണം:',
-	'prefswitch-survey-question-browser' => 'ഏതു ബ്രൌസറാണ് താങ്കള്‍ ഉപയോഗിക്കുന്നത്?',
+	'prefswitch-survey-question-browser' => 'ഏതു ബ്രൗസറാണ് താങ്കള്‍ ഉപയോഗിക്കുന്നത്?',
 	'prefswitch-survey-answer-browser-other' => 'മറ്റ് ബ്രൗസർ:',
 	'prefswitch-survey-question-os' => 'ഏത് ഓപറേറ്റിങ്ങ് സിസ്റ്റമാണ് താങ്കള്‍ ഉപയോഗിക്കുന്നത്?',
 	'prefswitch-survey-answer-os-other' => 'മറ്റ് ഓപറേറ്റിങ് സിസ്റ്റം:',
@@ -949,11 +1274,11 @@ Powrót do <span class="plainlinks">[$1 $2]</span>.',
 [[File:UsabilityToolbar.png|right|link=|Roszerzony pasek narzędzi edycyjnych]]
 [[File:UsabilityDialogs.png|right|link=|Nowe dialogi generowania treści]]
 ===Co zostało zmienione===
-* Nawigacja — rozbudowano nawigację służącą do czytania i edycji stron. Obecnie zakładki na górze strony czytelniej określają czy widoczna jest strona czy jest strona dyskusji oraz czy strona jest w trybie odczytu czy edycji.
-* Pasek narzędzi edycyjnych — przeorganizowano pasek narzędzi edycyjnych aby uczynić do prostszym w użyciu. Obecnie formatowanie jest prostsze i bardziej intuicyjne.
-* Kreator linków — proste w użyciu narzędzie pozwala na dodawanie linków do stron {{GRAMMAR:D.lp|{{SITENAME}}}} oraz innych stron w Internecie.
-* Wyszukiwanie — rozbudowano podpowiedzi aby przyspieszyć odnalezienie poszukiwanej strony
-* Inne nowe funkcjonalności — dodano kreatora tabel oraz narzędzie wyszukiwania i zastępowania aby ułatwić edytowanie stron.',
+* Nawigacja – rozbudowano nawigację służącą do czytania i edycji stron. Obecnie zakładki na górze strony czytelniej określają czy widoczna jest strona czy jest strona dyskusji oraz czy strona jest w trybie odczytu czy edycji.
+* Pasek narzędzi edycyjnych – przeorganizowano pasek narzędzi edycyjnych aby uczynić do prostszym w użyciu. Obecnie formatowanie jest prostsze i bardziej intuicyjne.
+* Kreator linków – proste w użyciu narzędzie pozwala na dodawanie linków do stron {{GRAMMAR:D.lp|{{SITENAME}}}} oraz innych stron w Internecie.
+* Wyszukiwanie – rozbudowano podpowiedzi aby przyspieszyć odnalezienie poszukiwanej strony
+* Inne nowe funkcjonalności – dodano kreatora tabel oraz narzędzie wyszukiwania i zastępowania aby ułatwić edytowanie stron.',
 	'prefswitch-main-on' => '===Opinia?===
 Chcielibyśmy poznać Twoją opinię. Odwiedź <span class="plainlinks">[$1 stronę przesyłania opinii]</span>.
 ===Chcę to wyłączyć!===
@@ -977,6 +1302,44 @@ $messages['pms'] = array(
 	'prefswitch-survey-submit-off' => 'Disativa le funsionalità neuve',
 	'prefswitch-survey-cancel-off' => "S'it veule continué a dovré le possibilità neuve, it deuve torné a $1.",
 	'prefswitch-survey-submit-feedback' => 'Manda feedback',
+	'prefswitch-survey-cancel-feedback' => "S'it veule pa dé ëd feedback, it peule torné a $1.",
+	'prefswitch-survey-question-likedislike' => "Lòn ch'a l'é piasuje ëd le possibilità neuve? 
+Lòn ch'a l'é pa piasuje ëd le possibilità?",
+	'prefswitch-survey-question-whyoff' => 'Përchè it të stas disativand le possibilità neuve?
+Për piasì selession-a tute le motivassion.',
+	'prefswitch-survey-answer-whyoff-hard' => "A l'era tròp malfé dovrelo.",
+	'prefswitch-survey-answer-whyoff-didntwork' => 'A marciava nen bin.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'A marciava pa coma previst.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Am piasìa nen sò aspet.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'A son nen piasume ij neuv quàder e la neuva disposission.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "A l'é nen piasume la neuva bara dj'utiss.",
+	'prefswitch-survey-answer-whyoff-other' => 'Àutra rason:',
+	'prefswitch-survey-question-browser' => "Che navigador ch'a deuvra?",
+	'prefswitch-survey-answer-browser-other' => 'Àutr navigador:',
+	'prefswitch-survey-question-os' => "Che sistema operativ ch'a deuvra?",
+	'prefswitch-survey-answer-os-other' => 'Àutr sistem operativ:',
+	'prefswitch-survey-question-res' => "Cola ch'a l'é l'arzolussion ëd tò scren?",
+	'prefswitch-title-on' => "Lòn ch'a-i ven?",
+	'prefswitch-title-switched-on' => 'Fate gòj!',
+	'prefswitch-title-off' => 'Disativa le possibilità neuve',
+	'prefswitch-title-switched-off' => 'Mersì',
+	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-on' => 'Le neuve possibilità a son adess ativà.',
+	'prefswitch-success-off' => 'Le neuve possibilità a son adess disativà.',
+	'prefswitch-success-feedback' => "Tò feedback a l'é stàit mandà.",
+	'prefswitch-return' => '<hr style="clear:both">
+Artorna a <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "I l'oma travajà sech për fé le ròbe belfé për ij nòstr utent. I l'oma gòj ëd condivide cheich mejorament, compèis na presentassion neuva e possibilità ëd modìfica neuve. Mejoré l'usabilità dij nòstr proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma pi modìfiche ant l'avnì.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot ëd la navigassion neuva]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot ëd la toolbar ëd modìfica mejorà]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot dij dialogh neuv ëd generassion ëd contnù]]
+===Ambelessì a-i é lòn ch'i l'oma cangià===
+* Navigassion: I l'oma mejorà la navigassion për lese e modifiché pàgine. Adess, ij test a la sima ëd minca pàgina a definisso pi ciarament s'it të stas vardand na pàgina o na pàgina ëd discussion, e s'it të stas lesend o modificand na pàgina.
+* Mejorament ël la toolbar ëd modìfica: I l'oma riorganisà la toolbar ëd modìfica për ch'a fussa pi belfé dovrela. Adess, formaté pàgine a l'é pi sempi e pi intuitiv.
+* Wizard dij colegament: N'atrass bel ëd dovré at përmëtt ëd gionté colegament a d'àutre pàgine ëd Wikipedia e ëd colegament a d'àutri sit.
+* Mejorament d'arserca: I l'oma mejorà ij sugeriment d'arserca për portete pi an pressa a la pàgina ch'it të stas sercand.
+* Autre possibilità neuve: I stoma ëdcò ansërend un wizard për le tàule për rende pì bel fé creé e trové tàule  e na possibilità ëd rimpiass për semplifiché la modìfica ëd pàgine.",
 );
 
 /** Portuguese (Português)
@@ -1148,6 +1511,26 @@ Vrnitev na <span class="plainlinks">[$1 $2]</span>.',
 Prosimo, izpolnite neobvezno anketo spodaj.',
 	'prefswitch-survey-intro-off' => 'Zahvaljujemo se vam za preizkušanje naših novih funkcij.
 Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'prefswitch-survey-true' => 'అవును',
+	'prefswitch-survey-false' => 'కాదు',
+	'prefswitch-survey-answer-whyoff-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'దీని రూపు నాకు నచ్చలేదు.',
+	'prefswitch-survey-answer-whyoff-other' => 'ఇతర కారణం:',
+	'prefswitch-survey-question-browser' => 'మీరు ఏ విహారిణిని వాడుతున్నారు?',
+	'prefswitch-survey-answer-browser-other' => 'ఇతర విహారిణి:',
+	'prefswitch-survey-question-os' => 'మీరు వాడుతున్న నిర్వాహక వ్యవస్థ ఏది?',
+	'prefswitch-survey-answer-os-other' => 'ఇతర నిర్వాహక వ్యవస్థ:',
+	'prefswitch-title-on' => 'కొత్తవేమిటి?',
+	'prefswitch-title-switched-on' => 'ఆనందించండి!',
+	'prefswitch-title-switched-off' => 'ధన్యవాదాలు',
+	'prefswitch-return' => '<hr style="clear:both">
+తిరిగి <span class="plainlinks">[$1 $2]</span>కి.',
 );
 
 /** Turkish (Türkçe)

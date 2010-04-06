@@ -142,7 +142,7 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
 $messages['de'] = array(
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
 Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
-	'vector-editwarning-preference' => 'Warne mich, wenn ich eine „Bearbeiten“-Seite mit nicht gesicherten Änderungen verlasse',
+	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gesicherte Änderungen enthält',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

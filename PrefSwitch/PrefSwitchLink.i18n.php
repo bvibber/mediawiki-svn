@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'tooltip-pt-prefswitch-link' => 'Try out new features',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'prefswitch-link' => 'جديد!',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -65,6 +72,14 @@ $messages['es'] = array(
 	'tooltip-pt-prefswitch-link' => 'Probar las nuevas características',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'prefswitch-link' => 'Uutta!',
+	'tooltip-pt-prefswitch-link' => 'Kokeile uusia ominaisuuksia',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -89,6 +104,21 @@ $messages['gsw'] = array(
 	'tooltip-pt-prefswitch-link' => 'Di neje Funktione uusprobiere',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'prefswitch-link' => 'חדש!',
+	'tooltip-pt-prefswitch-link' => 'לנסות תכונות חדשות',
+);
+
+/** Croatian (Hrvatski)
+ * @author Ex13
+ */
+$messages['hr'] = array(
+	'prefswitch-link' => 'Novo!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -111,6 +141,15 @@ $messages['ia'] = array(
 $messages['it'] = array(
 	'prefswitch-link' => 'Nuovo!',
 	'tooltip-pt-prefswitch-link' => 'Prova le nuove funzioni',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ * @author Naohiro19
+ */
+$messages['ja'] = array(
+	'prefswitch-link' => '新!',
+	'tooltip-pt-prefswitch-link' => '新機能を試す',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -183,6 +222,13 @@ $messages['ru'] = array(
 $messages['sl'] = array(
 	'prefswitch-link' => 'Novo!',
 	'tooltip-pt-prefswitch-link' => 'Preizkusite nove funkcije',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'prefswitch-link' => 'కొత్తది!',
 );
 
 /** Turkish (Türkçe)
