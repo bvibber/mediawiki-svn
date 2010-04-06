@@ -2788,6 +2788,17 @@ class Parser {
 		$this->addTrackingCategory( "$limitationType-category" );
 	}
 
+	function transformParseDom($inNode) {
+		if ($inNode->nodeName == "newLine") {
+			$inNode->setAttribute("tag", "\n");
+		}
+		foreach ($inNode->childNodes as $child) {
+			if ($child instanceof DOMElement) {
+				$this->transformParseDom($child);
+			}
+		}
+	}
+
 	/**
 	 * Return the text of a template, after recursively
 	 * replacing any variables or templates within the template.
@@ -3965,23 +3976,19 @@ class Parser {
 	 * @param Title &$title the Title object for the current article
 	 * @param User $user the User object describing the current user
 	 * @param ParserOptions $options parsing options
-	 * @param bool $clearState whether to clear the parser state first
 	 * @return string the altered wiki markup
 	 * @public
 	 */
-	function preSaveTransform( $text, Title $title, $user, $options, $clearState = true ) {
+	function preSaveTransform( $text, Title $title, $user, $options ) {
 		$this->mOptions = $options;
 		$this->setTitle( $title );
 		$this->setOutputType( self::OT_WIKI );
+		$this->clearState();
 
-		if ( $clearState ) {
-			$this->clearState();
-		}
-
-		$pairs = array(
-			"\r\n" => "\n",
-		);
-		$text = str_replace( array_keys( $pairs ), array_values( $pairs ), $text );
+		$parser = new ParseEngine("includes/parser/WikiTextGrammar.xml");
+		$dom = $parser->parse($text);
+		$this->transformParseDom($dom->documentElement);
+		$text = ParseEngine::unparse($dom->documentElement);
 		$text = $this->pstPass2( $text, $user );
 		$text = $this->mStripState->unstripBoth( $text );
 		return $text;

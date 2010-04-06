@@ -1,19 +1,14 @@
 <?xml version="1.0"?>
-<Grammar rootTag="root" startRule="start">
+<Grammar rootTag="root" startRule="start" version="1.0">
 	<Sequence name="start" >
-		<Choice failSafe="true">
-			<Assignment tagName="onlyInclude" tag="(?=.*(&lt;onlyinclude>))" regex="true">
-				<Reference name="endText" />
-			</Assignment>
-			<Reference name="postNewline" />
-		</Choice>
+		<Reference name="postNewLine" />
 		<Reference name="main" />
 	</Sequence>
 	<Text name="main">
 		<Choice>
 			<Sequence>
-				<Reference name="newline" />
-				<Reference name="postNewline" />
+				<Reference name="newLine" />
+				<Reference name="postNewLine" />
 			</Sequence>
 			<Assignment tagName="link" tag="[[">
 				<Reference name="endText" var="]]" />
@@ -37,14 +32,6 @@
 				</Sequence>
 			</Assignment>
 			<Reference name="comment" />
-			<Assignment tagName="onlyInclude" tag="&lt;/onlyinclude>">
-				<Sequence>
-					<Reference name="main" />
-					<Choice failSafe="true">
-						<Assignment tagName="endTag" tag="&lt;onlyinclude>" />
-					</Choice>
-				</Sequence>
-			</Assignment>
 			<Assignment tagName="noWiki" tag="&lt;nowiki>">
 				<Sequence>
 					<Text />
@@ -72,7 +59,7 @@
 		<Reference name="main" />
 		<Assignment tagName="endTag" tag="~r" />
 	</Sequence>
-	<Assignment name="newline" tagName="newLine" tag="&#10;" />
+	<Assignment name="newLine" tagName="newLine" tag="\r?\n" regex="true" />
 	<Assignment name="eol" tagName="eol" tag="(?=\n|$)" regex="true" />
 	<Choice name="ignoreList" failSafe="true">
 		<Sequence>
@@ -83,7 +70,7 @@
 			<Reference name="ignoreList" />
 		</Sequence>
 	</Choice>
-	<Choice name="postNewline" failSafe="true">
+	<Choice name="postNewLine" failSafe="true">
 		<Sequence>
 			<Assignment tagName="h" tag="(={1,6})" regex="true">
 				<Reference name="endText" />
@@ -113,7 +100,7 @@
 		</Choice>
 		<Choice failSafe="true">
 			<Sequence>
-				<Reference name="newline" />
+				<Reference name="newLine" />
 				<Reference name="itemList" />
 			</Sequence>
 		</Choice>

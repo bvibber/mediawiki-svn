@@ -8,7 +8,7 @@
  */
 class ParseEngine {
 	const maxIter = 2048;
-	private $mGrammar, $mTextPats;
+	private $mGrammar;
 
 	function __construct($grammarFile) {
 		global $IP;
@@ -43,23 +43,14 @@ class ParseEngine {
 		return $doc;
 	}
 
-	static function expand($nodeList, $callback, $flags = 0) {
-		$retStr = "";
-		foreach ($nodeList as $node) {
-			if ($node instanceof DOMText) {
-				$retStr .= $node->data;
+	static function unparse($inNode) {
+		$retStr = "" . $inNode->getAttribute("tag");
+		foreach ($inNode->childNodes as $child) {
+			if ($child instanceof DOMText) {
+				$retStr .= $child->data;
 			} else {
-				$methodName = $node->nodeName . "Substitution";
-				if (method_exists($callback, $methodName) && call_user_func_array(array($callback, $methodName), array($node, &$outStr, $flags))) {
-					$retStr .= $outStr;
-				} else {
-					$retStr .= $node->getAttribute("tag") . self::expand($node->childNodes, $callback, $flags);
-				}
+				$retStr .= self::unparse($child);
 			}
-		}
-		global $wgDebugParserLog;
-		if ($wgDebugParserLog != '') {
-			wfErrorLog("Expand returned: $retStr\n", $wgDebugParserLog);
 		}
 		return $retStr;
 	}
