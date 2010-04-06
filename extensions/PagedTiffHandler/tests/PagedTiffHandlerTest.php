@@ -19,6 +19,7 @@ require_once( "$IP/maintenance/commandLine.inc" );
 // requires PHPUnit 3.4
 require_once 'PHPUnit/Framework.php';
 
+error_reporting(E_ALL);
 
 class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 
@@ -96,7 +97,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->handler->normaliseParams($this->image, $params );
 		$this->assertEquals($params['height'], 75);
 		// makeParamString
-		$this->assertEquals($this->handler->makeParamString(array('width'=>'100', 'page'=>'4')), "page4-100px");
+		$this->assertEquals($this->handler->makeParamString(array('width'=>'100', 'page'=>'4')), "lossless-page4-100px");
 	
 		// ---- File upload checks and Thumbnail transformation
 		// check
@@ -135,16 +136,16 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		// ---- Metadata handling
 		// getMetadata
 		$metadata =  $this->handler->getMetadata( false, $this->path );
-		$this->assertTrue(strpos($metadata, '"Pages";i:7')!==false);
+		$this->assertTrue(strpos($metadata, '"page_amount";i:7')!==false);
 		// isMetadataValid
 		$this->assertTrue($this->handler->isMetadataValid($this->image, $metadata));
 		// getMetaArray
 		$metaArray = $this->handler->getMetaArray($this->image);
 
-		$this->assertEquals($metaArray['Pages'], 7);
+		$this->assertEquals($metaArray['page_amount'], 7);
 		//this is also strtolower in PagedTiffHandler::getThumbExtension
-		$this->assertEquals(strtolower($metaArray['pages'][1]['alpha']), 'false');
-		$this->assertEquals(strtolower($metaArray['pages'][2]['alpha']), 'true');
+		$this->assertEquals(strtolower($metaArray['page_data'][1]['alpha']), 'false');
+		$this->assertEquals(strtolower($metaArray['page_data'][2]['alpha']), 'true');
 		$this->assertEquals($metaArray['exif']['Endianess'], 'MSB');
 		// formatMetadata
 		$formattedMetadata = $this->handler->formatMetadata($this->image) ;
@@ -157,4 +158,6 @@ $wgShowExceptionDetails = true;
 $t = new PagedTiffHandlerTest();
 $t->setUp(true);
 $t->runTest();
+
+echo "OK.\n";
 ?>
