@@ -975,7 +975,7 @@ mw.UploadWizardDescription = function( languageCode ) {
 
 	_this.languageMenu = mw.Language.getMenu("lang", languageCode);
 	$j(_this.languageMenu).addClass('mwe-upwiz-desc-lang-select');
-	_this.description = $j('<textarea name="desc" rows="3" cols="50" class="mwe-upwiz-desc-lang-text"></textarea>')
+	_this.description = $j('<textarea name="desc" rows="2" cols="36" class="mwe-upwiz-desc-lang-text"></textarea>')
 				.growTextArea().get(0);
 	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append( _this.languageMenu )
@@ -1030,7 +1030,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.dataDiv = $j( '<div class="mwe-upwiz-details-data"></div>' );
 
 	// descriptions
-	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions"></div>' );
+	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions mwe-upwiz-details-input"></div>' );
 	
 
 	_this.descriptionAdder = $j( '<a id="mwe-upwiz-desc-add"/>' )
@@ -1040,28 +1040,29 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 	_this.descriptionsContainerDiv = 
 		$j( '<div class="mwe-upwiz-details-descriptions-container"></div>' )
-			.append( $j( '<div class="mwe-details-label">' + gM( 'mwe-upwiz-desc' ) + '</div>' ) )
+			.append( $j( '<div class="mwe-upwiz-details-label">' + gM( 'mwe-upwiz-desc' ) + '</div>' ) )
 			.append( _this.descriptionsDiv )
 			.append( $j( '<div class="mwe-upwiz-details-descriptions-add"></div>' )
 					.append( _this.descriptionAdder ) );
 	// Commons specific help for titles 
 	//    http://commons.wikimedia.org/wiki/Commons:File_naming
 	//    http://commons.wikimedia.org/wiki/MediaWiki:Filename-prefix-blacklist
-	_this.titleInput = $j( '<input type="text" class="mwe-title" size="40"/>' )
-				.keyup( function() { 
-					_this.setFilenameFromTitle();
-				} );
-	$j(_this.titleInput).destinationChecked( {
-		spinner: function(bool) { _this.toggleDestinationBusy(bool); },
-		preprocess: function( name ) { return _this.getFilenameFromTitle(); }, // XXX this is no longer a pre-process
-		processResult: function( result ) { _this.processDestinationCheck( result ); } 
-	} );
+	_this.titleInput = $j( '<textarea type="text" rows="1" class="mwe-title mwe-long-textarea"></textarea>' )
+		.keyup( function() { 
+			_this.setFilenameFromTitle();
+		} )
+		.growTextArea()
+		.destinationChecked( {
+			spinner: function(bool) { _this.toggleDestinationBusy(bool); },
+			preprocess: function( name ) { return _this.getFilenameFromTitle(); }, // XXX this is no longer a pre-process
+			processResult: function( result ) { _this.processDestinationCheck( result ); } 
+		} );
 
 	_this.titleErrorDiv = $j('<div></div>');
 
-	_this.titleContainerDiv = $j('<div></div>')
-		.append( $j( '<div class="mwe-details-label"></div>' ).append( gM( 'mwe-upwiz-title' ) ) )
-		.append( $j( '<div class="mwe-details-title"></div>' ).append( _this.titleInput ) )
+	_this.titleContainerDiv = $j('<div class="mwe-details-label-input></div>')
+		.append( $j( '<div class="mwe-upwiz-details-label"></div>' ).append( gM( 'mwe-upwiz-title' ) ) )
+		.append( $j( '<div class="mwe-upwiz-details-input"></div>' ).append( _this.titleInput ) )
 		.append( _this.titleErrorDiv );
 
 	_this.moreDetailsDiv = $j('<div class="mwe-more-details"></div>').hide();
@@ -1081,10 +1082,10 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	_this.locationInput = $j( '<input type="text" class="mwe-location" size="20"/>' );
 
-	var aboutThisWorkDiv = $j('<div></div>')
-		.append( $j( '<h5 class="mwe-details-more-subhead">' ).append( gM( 'mwe-upwiz-about-this-work' ) ) )
+	var aboutThisWorkDiv = $j('<fieldset class="mwe-fieldset"></div>')
+		.append( $j( '<legend class="mwe-legend">' ).append( gM( 'mwe-upwiz-about-this-work' ) ) )
 		.append( $j( '<div class="mwe-details-more-subdiv">' )
-			.append( $j( '<div></div>' )
+			.append( $j( '<div class="mwe-upwiz-details-label-input"></div>' )
 				.append( $j( '<div class="mwe-details-more-label"></div>' ).append( gM( 'mwe-upwiz-date-created' ) ) )
 				.append( $j( '<div class="mwe-details-more-input"></div>' ).append( _this.dateInput ) ) 
 			)
@@ -1135,6 +1136,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 
 	$j( _this.div )
+		.addClass( 'ui-helper-clearfix' )
 		.append( _this.thumbnailDiv )
 		.append( _this.errorDiv )
 		.append( $j( _this.dataDiv )
@@ -1951,7 +1953,7 @@ mw.UploadWizard.prototype = {
 		       +  	'</div>'
 		       +       '</div>'
 		       +       '<div id="mwe-upwiz-macro-edit">'
-		       +  	'<div class="mwe-upwiz-macro-edit-submit">' 
+		       +  	'<div>'
 		       +  	  '<p>' + gM( 'mwe-upwiz-macro-edit-intro' ) + '</p>' 
 		       +          '</div>' // button added below
 		       +  	'<div id="mwe-upwiz-macro-progress"></div>'

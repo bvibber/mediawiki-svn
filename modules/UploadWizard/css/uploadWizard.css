@@ -263,15 +263,15 @@ a[disabled=true]:hover {
 
 .mwe-upwiz-thumbnail {
 	width: 120px;  /* XXX should be same as configured thumbnail width in uploadWizard.js */
+	float: left;
+	margin-bottom: 12px;
+	margin-right: 12px;
 }
 
-.mwe-upwiz-desc-lang-text {
-	width: 300px;
+.mwe-upwiz-details-data {
+	float: left;
 }
 
-.mwe-upwiz-desc-lang-select {
-	width: 150px;
-}
 
 /* XXX add spinner gif instead, maybe */
 .busy {
@@ -339,3 +339,60 @@ a[disabled=true]:hover {
 .mwe-upwiz-deed-license {
 	margin-left: 24px;
 }
+
+#mwe-upwiz-macro-deeds {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+.mwe-upwiz-details-file {
+	border-bottom: 1px solid #e0e0e0;
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+}
+
+
+.mwe-upwiz-details-input {
+	width: 400px;
+	float: left;
+}
+
+.mwe-upwiz-desc-lang-select {
+	width: 130px;
+	font-family: sans-serif;
+	font-size: x-small;
+}
+
+.mwe-upwiz-desc-lang-container {
+	float: left;
+}
+
+.mwe-upwiz-desc-lang-text {
+	width: 240px;
+	overflow: hidden;
+	font-family: sans-serif; /* XXX is this right? */
+	font-size: x-small;
+}
+
+.mwe-upwiz-details-descriptions-add {
+	margin-bottom: 12px;
+	margin-left: 100px;
+}
+
+.mwe-long-textarea {
+	overflow: hidden;
+	font-family: sans-serif; /* XXX is this right? */
+	font-size: x-small;
+	width: 370px;
+}
+
+.mwe-upwiz-details-label {
+	width: 100px;
+	float: left;
+}
+
+.mwe-upwiz-details-label-input {
+
+}
+
+.
