@@ -6593,8 +6593,8 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is broken in IE6
-			'msie': [['>=', 7]],
+			// The toolbar layout is broken in IE6, selection is out of control in IE8
+			'msie': [['==', 7]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -11150,7 +11150,6 @@ fn: {
 							'class' : 'wikiEditor-toolbar-spritedButton'
 						} )
 						.text( label )
-						.click( function() { return false; } )
 						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
 				} else {
 					$button = $( '<img />' )
