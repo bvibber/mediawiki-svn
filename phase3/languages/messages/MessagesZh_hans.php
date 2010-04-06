@@ -1,5 +1,5 @@
 <?php
-/** Simplified Chinese (‪中文(简化字)‬)
+/** Simplified Chinese (‪中文(简体)‬)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -8,6 +8,8 @@
  * @file
  *
  * @author Bencmq
+ * @author Biŋhai
+ * @author Fantasticfears
  * @author Franklsf95
  * @author Gaoxuewei
  * @author Gzdavidwong
@@ -16,6 +18,7 @@
  * @author KaiesTse
  * @author Liangent
  * @author Mark85296341
+ * @author MarkAHershberger
  * @author O
  * @author Onecountry
  * @author PhiLiP
@@ -387,9 +390,6 @@ $messages = array(
 'namespaces'                 => '名字空间',
 'variants'                   => '变换',
 
-# Metadata in edit box
-'metadata_help' => '元数据：',
-
 'errorpagetitle'    => '错误',
 'returnto'          => '返回到$1。',
 'tagline'           => '出自{{SITENAME}}',
@@ -548,6 +548,8 @@ $1',
 'readonly_lag'         => '从数据库服务器正在从主服务器上更新，数据库已被自动锁定',
 'internalerror'        => '内部错误',
 'internalerror_info'   => '内部错误：$1',
+'fileappenderrorread'  => '当附加时无法读取"$1"。',
+'fileappenderror'      => '无法将“$1”附加到“$2”。',
 'filecopyerror'        => '无法将文件“$1”复制到“$2”。',
 'filerenameerror'      => '无法将文件“$1”重命名为“$2”。',
 'filedeleteerror'      => '无法删除文件“$1”。',
@@ -666,6 +668,7 @@ $2',
 'login-throttled'            => '您已经尝试多次的登录动作。
 请稍等多一会再试。',
 'loginlanguagelabel'         => '语言：$1',
+'suspicious-userlogout'      => '您登出的要求已经被拒绝，因为它可能是由已损坏的浏览器或者缓存代理传送。',
 
 # Password reset dialog
 'resetpass'                 => '更改密码',
@@ -681,6 +684,7 @@ $2',
 'resetpass_forbidden'       => '无法更改密码',
 'resetpass-no-info'         => '您必须登录后直接进入这个页面。',
 'resetpass-submit-loggedin' => '更改密码',
+'resetpass-submit-cancel'   => '取消',
 'resetpass-wrong-oldpass'   => '无效的临时或现有的密码。
 您可能已成功地更改了您的密码，或者已经请求一个新的临时密码。',
 'resetpass-temp-password'   => '临时密码：',
@@ -716,6 +720,7 @@ $2',
 'showlivepreview'                  => '实时预览',
 'showdiff'                         => '显示差异',
 'anoneditwarning'                  => "'''警告：'''您没有登录，您的IP位址将记录在此页的编辑历史中。",
+'anonpreviewwarning'               => "''您没有登录。您的IP位址将记录在此页的编辑历史中。''",
 'missingsummary'                   => "'''提示：''' 您没有提供一个编辑摘要。如果您再次单击保存，您的编辑将不带编辑摘要保存。",
 'missingcommenttext'               => '请在下面输入评论。',
 'missingcommentheader'             => "'''提示：''' 您没有为此评论提供一个标题。如果您再次单击保存，您的编辑将不带标题保存。",
@@ -767,11 +772,13 @@ $2',
 要创建该页面，请在下面的编辑框中输入内容（详情参见[[{{MediaWiki:Helppage}}|帮助]]）。
 如果您是不小心来到此页面，直接点击您浏览器中的“返回”按钮返回。',
 'anontalkpagetext'                 => "---- ''这是一个还未建立账户的匿名用户的讨论页, 因此我们只能用IP地址来与他或她联络。该IP地址可能由几名用户共享。如果您是一名匿名用户并认为此页上的评语与您无关，请[[Special:UserLogin/signup|创建新账户]]或[[Special:UserLogin|登录]]以避免在未来与其他匿名用户混淆。''",
-'noarticletext'                    => '此页面目前没有内容。您可以在其他页面中[[Special:Search/{{PAGENAME}}|搜索此页标题]]、<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索相关日志]或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑此页]。',
+'noarticletext'                    => '此页面目前没有内容。您可以在其他页面中[[Special:Search/{{PAGENAME}}|搜索此页标题]]、<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索相关日志]或[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑此页]。</span>',
 'noarticletext-nopermission'       => '此页目前没有内容，您可以在其它页[[Special:Search/{{PAGENAME}}|搜索此页标题]]，
 或<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搜索有关日志]</span>。',
 'userpage-userdoesnotexist'        => '用户账户“$1”未曾创建。请在创建／编辑这个页面前先检查一下。',
 'userpage-userdoesnotexist-view'   => '用户账户“$1”未曾创建。',
+'blocked-notice-logextract'        => '这位用户现正被封锁。
+下面有最近的封锁纪录以供参考：',
 'clearyourcache'                   => "'''注意：在保存以后，您必须清除浏览器的缓存才能看到所作出的改变。'''
 '''Mozilla / Firefox / Safari'''：按住''Shift''再点击''刷新''，或按下''Ctrl-F5''或''Ctrl-R''（在Macintosh上按下''Command-R''）；
 '''Konqueror'''：只需点击''刷新''或按下''F5''；
@@ -927,7 +934,7 @@ $2',
 'rev-deleted-user'            => '（用户名已移除）',
 'rev-deleted-event'           => '（日志动作已移除）',
 'rev-deleted-user-contribs'   => '[用户名或IP地址已移除 - 从贡献中隐藏编辑]',
-'rev-deleted-text-permission' => "该页面修订已经被'''删除'''。
+'rev-deleted-text-permission' => "该页面修订已被'''删除'''。
 在[{{fullurl:{{#Special:Log}}/delete|page={{PAGENAMEE}}}} 删除日志]中可以找到详细的信息。",
 'rev-deleted-text-unhide'     => "该页面修订已经被'''删除'''。
 在[{{fullurl:{{#Special:Log}}/delete|page={{PAGENAMEE}}}} 删除日志]中可以找到详细的信息。
@@ -939,7 +946,7 @@ $2',
 在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可以找到详细的信息。",
 'rev-suppressed-text-view'    => "该页面修订已经被'''废止'''。作为管理员，您可以查看它；
 在[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 废止日志]中可以找到详细的信息。",
-'rev-deleted-no-diff'         => "因为其中一次修订'''删除'''，您不可以查看这个差异。
+'rev-deleted-no-diff'         => "因为其中一次修订已被'''删除'''，您不可以查看这个差异。
 在[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 删除日志]中可以找到更多的信息。",
 'rev-suppressed-no-diff'      => "该页面的其中一次修订已经被'''删除'''，你不可以查看这次的修订。",
 'rev-deleted-unhide-diff'     => "该页面的其中一次修订已经被'''删除'''。
@@ -1203,6 +1210,7 @@ $1",
 'prefs-files'                   => '文件',
 'prefs-custom-css'              => '自定义CSS',
 'prefs-custom-js'               => '自定义JS',
+'prefs-common-css-js'           => '共享CSS/JS于所有皮肤中：',
 'prefs-reset-intro'             => '您可以利用这个页面去重设您的参数设置到网站默认值。这个动作无法复原。',
 'prefs-emailconfirm-label'      => '电子邮件确认：',
 'prefs-textboxsize'             => '编辑框大小',
@@ -1296,7 +1304,7 @@ $1",
 'right-createaccount'         => '创建新用户账户',
 'right-minoredit'             => '标示作小编辑',
 'right-move'                  => '移动页面',
-'right-move-subpages'         => '移动页面跟它的字页面',
+'right-move-subpages'         => '移动页面跟它的子页面',
 'right-move-rootuserpages'    => '移动根用户页面',
 'right-movefile'              => '移动文件',
 'right-suppressredirect'      => '当移动页面时不建立来源页面之重定向',
@@ -1314,7 +1322,7 @@ $1",
 'right-delete'                => '删除页面',
 'right-bigdelete'             => '删除大量历史之页面',
 'right-deleterevision'        => '删除及同反删除页面中的指定修订',
-'right-deletedhistory'        => '查看已删除之项目，不含有关的字',
+'right-deletedhistory'        => '查看已删除的历史项目，不含关联的文本',
 'right-deletedtext'           => '查看已删除修订中之已删除的字以及更改',
 'right-browsearchive'         => '搜索已删除之页面',
 'right-undelete'              => '反删除页面',
@@ -1325,6 +1333,7 @@ $1",
 'right-hideuser'              => '封锁用户名，对公众隐藏',
 'right-ipblock-exempt'        => '绕过IP封锁、自动封锁以及范围封锁',
 'right-proxyunbannable'       => '绕过Proxy的自动封锁',
+'right-unblockself'           => '自我解除封禁',
 'right-protect'               => '更改保护等级以及编辑保护页面',
 'right-editprotected'         => '编辑保护页面（无连锁保护）',
 'right-editinterface'         => '编辑用户接口',
@@ -1481,6 +1490,7 @@ $1",
 'minlength1'                  => '文件名字必须至少有一个字母。',
 'illegalfilename'             => '文件名「$1」包含有页面标题所禁止的字符。请改名后重新上传。',
 'badfilename'                 => '文件名已被改为“$1”。',
+'filetype-mime-mismatch'      => '文件扩展名不配MIME类型。',
 'filetype-badmime'            => 'MIME类别"$1"不是容许的文件格式。',
 'filetype-bad-ie-mime'        => '不可以上传这个文件，因为 Internet Explorer 会将它侦测为 "$1"，它是一种不容许以及有潜在危险性之文件类型。',
 'filetype-unwanted-type'      => "'''\".\$1\"'''是一种不需要的文件类型。
@@ -1567,6 +1577,7 @@ $1",
 'http-timed-out'        => 'HTTP请求已过时。',
 'http-curl-error'       => '撷取URL时出错：$1',
 'http-host-unreachable' => '无法到达URL。',
+'http-bad-status'       => '进行HTTP请求时出现问题：$1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '无法访问URL',
@@ -1596,41 +1607,42 @@ $1",
 'listfiles_count'       => '版本',
 
 # File description page
-'file-anchor-link'          => '文件',
-'filehist'                  => '文件历史',
-'filehist-help'             => '点击日期／时间以查看当时出现过的文件。',
-'filehist-deleteall'        => '删除全部',
-'filehist-deleteone'        => '删除',
-'filehist-revert'           => '恢复',
-'filehist-current'          => '当前',
-'filehist-datetime'         => '日期／时间',
-'filehist-thumb'            => '缩图',
-'filehist-thumbtext'        => '于$1的缩图版本',
-'filehist-nothumb'          => '没有缩图',
-'filehist-user'             => '用户',
-'filehist-dimensions'       => '维度',
-'filehist-filesize'         => '文件大小',
-'filehist-comment'          => '注解',
-'filehist-missing'          => '文件遗失',
-'imagelinks'                => '文件链接',
-'linkstoimage'              => '以下的$1个页面链接到本文件：',
-'linkstoimage-more'         => '多于$1个页面连接到这个文件。
+'file-anchor-link'                  => '文件',
+'filehist'                          => '文件历史',
+'filehist-help'                     => '点击日期／时间以查看当时出现过的文件。',
+'filehist-deleteall'                => '删除全部',
+'filehist-deleteone'                => '删除',
+'filehist-revert'                   => '恢复',
+'filehist-current'                  => '当前',
+'filehist-datetime'                 => '日期／时间',
+'filehist-thumb'                    => '缩图',
+'filehist-thumbtext'                => '于$1的缩图版本',
+'filehist-nothumb'                  => '没有缩图',
+'filehist-user'                     => '用户',
+'filehist-dimensions'               => '维度',
+'filehist-filesize'                 => '文件大小',
+'filehist-comment'                  => '注解',
+'filehist-missing'                  => '文件遗失',
+'imagelinks'                        => '文件链接',
+'linkstoimage'                      => '以下的$1个页面链接到本文件：',
+'linkstoimage-more'                 => '多于$1个页面连接到这个文件。
 下面的列表只列示了连去这个文件的最首$1个页面。
 一个[[Special:WhatLinksHere/$2|完整的列表]]可以提供。',
-'nolinkstoimage'            => '没有页面链接到本文件。',
-'morelinkstoimage'          => '查看连接到这个文件的[[Special:WhatLinksHere/$1|更多链接]]。',
-'redirectstofile'           => '以下的$1个文件重新定向到这个文件：',
-'duplicatesoffile'          => '以下的$1个文件跟这个文件重复（[[Special:FileDuplicateSearch/$2|更多细节]]）：',
-'sharedupload'              => '该文件来自于$1，它可能在其它计划项目中被应用。',
-'sharedupload-desc-there'   => '该文件来自于$1，它可能在其它计划项目中被应用。
+'nolinkstoimage'                    => '没有页面链接到本文件。',
+'morelinkstoimage'                  => '查看连接到这个文件的[[Special:WhatLinksHere/$1|更多链接]]。',
+'redirectstofile'                   => '以下的$1个文件重新定向到这个文件：',
+'duplicatesoffile'                  => '以下的$1个文件跟这个文件重复（[[Special:FileDuplicateSearch/$2|更多细节]]）：',
+'sharedupload'                      => '该文件来自于$1，它可能在其它计划项目中被应用。',
+'sharedupload-desc-there'           => '该文件来自于$1，它可能在其它计划项目中被应用。
 请参阅在[$2 文件描述页面]以了解其相关信息。',
-'sharedupload-desc-here'    => '该文件来自于$1，它可能在其它计划项目中被应用。
+'sharedupload-desc-here'            => '该文件来自于$1，它可能在其它计划项目中被应用。
 它在[$2 文件描述页面]那边上的描述于下面显示。',
-'filepage-nofile'           => '不存在此名称的文件。',
-'filepage-nofile-link'      => '不存在此名称的文件，但您可以[$1 上传它]。',
-'uploadnewversion-linktext' => '上传该文件的新版本',
-'shared-repo-from'          => '出自$1',
-'shared-repo'               => '一个共用文件库',
+'filepage-nofile'                   => '不存在此名称的文件。',
+'filepage-nofile-link'              => '不存在此名称的文件，但您可以[$1 上传它]。',
+'uploadnewversion-linktext'         => '上传该文件的新版本',
+'shared-repo-from'                  => '出自$1',
+'shared-repo'                       => '一个共用文件库',
+'shared-repo-name-wikimediacommons' => '维基共享资源',
 
 # File reversion
 'filerevert'                => '恢复$1',
@@ -1933,10 +1945,7 @@ Template:消除歧義',
 'watchnologin'         => '未登录',
 'watchnologintext'     => '您必须先[[Special:UserLogin|登录]]才能更改您的监视列表。',
 'addedwatch'           => '已添加至监视列表',
-'addedwatchtext'       => "页面\"[[:\$1]]\"已经被加入到您的[[Special:Watchlist|监视列表]]中。
-将来有关此页面及其讨论页的任何修改将会在那里列出，
-而且还会在[[Special:RecentChanges|最近更改]]中
-以'''粗体'''形式列出以使起更容易识别。",
+'addedwatchtext'       => "页面“[[:$1]]”已经被加入到您的[[Special:Watchlist|监视列表]]中。将来有关此页面及其讨论页的任何修改将会在那里列出，而且还会在[[Special:RecentChanges|最近更改]]中以'''粗体'''形式列出以使其更容易识别。",
 'removedwatch'         => '已停止监视',
 'removedwatchtext'     => '页面[[:$1]]已经从[[Special:Watchlist|您的监视页面]]中移除。',
 'watch'                => '监视',
@@ -2014,7 +2023,7 @@ $NEWPAGE
 'actioncomplete'         => '操作完成',
 'actionfailed'           => '操作失败',
 'deletedtext'            => '"<nowiki>$1</nowiki>"已经被删除。最近删除的记录请参见$2。',
-'deletedarticle'         => '已删除"[[$1]]"',
+'deletedarticle'         => '已删除“[[$1]]”',
 'suppressedarticle'      => '已废止"[[$1]]"',
 'dellogpage'             => '删除日志',
 'dellogpagetext'         => '以下是最近删除的纪录列表：',
@@ -2041,7 +2050,7 @@ $NEWPAGE
 
 该页最后的编辑者是[[User:$3|$3]]（[[User talk:$3|讨论]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]）。',
 'editcomment'       => '编辑摘要："<i>$1</i>"。',
-'revertpage'        => '已恢复[[Special:Contributions/$2|$2]]（[[User talk:$2|对话]]）的编辑至[[User:$1|$1]]的最后修订版本',
+'revertpage'        => '已恢复[[Special:Contributions/$2|$2]]（[[User talk:$2|对话]]）的编辑至[[User:$1|$1]]的最后一个修订版本',
 'revertpage-nouser' => '恢复由（移除了的用户名）的编辑到[[User:$1|$1]]的最后一个修订版本',
 'rollback-success'  => '已恢复$1的编辑；更改回$2的最后修订版本。',
 'sessionfailure'    => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
@@ -2049,12 +2058,12 @@ $NEWPAGE
 # Protect
 'protectlogpage'              => '保护日志',
 'protectlogtext'              => '下面是页面锁定和取消锁定的列表。请参考[[Special:ProtectedPages|保护页面列表]]以查看当前进行的页面保护。',
-'protectedarticle'            => '已保护"[[$1]]"',
-'modifiedarticleprotection'   => '已经更改 "[[$1]]" 的保护等级',
-'unprotectedarticle'          => '已取消保护"[[$1]]"',
-'movedarticleprotection'      => '已经更改由“[[$2]]”至“[[$1]]”的保护设置',
-'protect-title'               => '正在更改"$1"的保护等级',
-'prot_1movedto2'              => '[[$1]]移动到[[$2]]',
+'protectedarticle'            => '已保护“[[$1]]”',
+'modifiedarticleprotection'   => '已更改“[[$1]]”的保护等级',
+'unprotectedarticle'          => '已取消“[[$1]]”的保护',
+'movedarticleprotection'      => '已将“[[$2]]”的保护设置移动至“[[$1]]”',
+'protect-title'               => '更改“$1”的保护等级',
+'prot_1movedto2'              => '[[$1]]已移动至[[$2]]',
 'protect-legend'              => '确认保护',
 'protectcomment'              => '原因：',
 'protectexpiry'               => '到期：',
@@ -2082,7 +2091,7 @@ $NEWPAGE
 'protect-othertime-op'        => '其它时间',
 'protect-existing-expiry'     => '现时到期之时间：$2 $3',
 'protect-otherreason'         => '其它／附加的理由：',
-'protect-otherreason-op'      => '其它／附加的理由',
+'protect-otherreason-op'      => '其它理由',
 'protect-dropdown'            => '*通用保护理由
 ** 遭到过度破坏
 ** 过度张贴垃圾链接
@@ -2311,6 +2320,8 @@ $1已经被封锁。您是否想更改这个设置？',
 'cant-block-while-blocked'        => '当您被封锁时不可以封锁其他用户。',
 'cant-see-hidden-user'            => '您现正尝试封锁的用户已经被封锁或隐藏。
 您现在没有隐藏用户的权限，您不可以查看或者编辑这位用户的封锁。',
+'ipbblocked'                      => '您无法封禁或解封其他用户，因为您自己已被封禁',
+'ipbnounblockself'                => '您无权自我解除封禁',
 
 # Developer tools
 'lockdb'              => '锁定数据库',
@@ -2355,13 +2366,14 @@ $1已经被封锁。您是否想更改这个设置？',
 
 在这些情况下，您在必要时必须手工移动或合并页面。",
 'movearticle'                  => '移动页面：',
+'moveuserpage-warning'         => "'''警告：'''您将会移动一个用户页面。请留意该页面在移动后该用户的名字是''不会''变更的。",
 'movenologin'                  => '未登录',
 'movenologintext'              => '您必须是一名登记用户并且[[Special:UserLogin|登录]]
 后才可移动一个页面。',
 'movenotallowed'               => '您并没有权限去移动页面。',
 'movenotallowedfile'           => '您并没有权限去移动文件。',
-'cant-move-user-page'          => '您并没有许可权去移动用户页面（它的字页面除外）。',
-'cant-move-to-user-page'       => '您并没有许可权去移动到用户页面（它的字页面除外）。',
+'cant-move-user-page'          => '您并没有许可权去移动用户页面（它的子页面除外）。',
+'cant-move-to-user-page'       => '您并没有许可权去移动到用户页面（它的子页面除外）。',
 'newtitle'                     => '新标题：',
 'move-watch'                   => '监视来源以及目标页',
 'movepagebtn'                  => '移动页面',
@@ -3036,26 +3048,26 @@ Variants for Chinese language
 'limitall'         => '全部',
 
 # E-mail address confirmation
-'confirmemail'             => '确认邮箱地址',
-'confirmemail_noemail'     => '您还没有在您的[[Special:Preferences|参数设置]]中设定一个有效的email地址。',
-'confirmemail_text'        => '{{SITENAME}}要求您在使用邮件功能之前验证您的邮箱地址。
+'confirmemail'              => '确认邮箱地址',
+'confirmemail_noemail'      => '您还没有在您的[[Special:Preferences|参数设置]]中设定一个有效的email地址。',
+'confirmemail_text'         => '{{SITENAME}}要求您在使用邮件功能之前验证您的邮箱地址。
 点击以下按钮可向您的邮箱发送一封确认邮件。该邮件包含有一行代码链接；
 请在您的浏览器中加载此链接以确认您的邮箱地址是有效的。',
-'confirmemail_pending'     => '一个确认代码已经被发送到您的邮箱，您可能需要等几分钟才能收到。如果无法收到，请再申请一个新的确认码。',
-'confirmemail_send'        => '邮发确认代码',
-'confirmemail_sent'        => '确认邮件已发送。',
-'confirmemail_oncreate'    => '一个确认代码已经被发送到您的邮箱。该代码并不要求您进行登录，
+'confirmemail_pending'      => '一个确认码已经被发送到您的邮箱，您可能需要等几分钟才能收到。如果无法收到，请再申请一个新的确认码。',
+'confirmemail_send'         => '邮发确认代码',
+'confirmemail_sent'         => '确认邮件已发送。',
+'confirmemail_oncreate'     => '一个确认代码已经被发送到您的邮箱。该代码并不要求您进行登录，
 但若您要启用在此 wiki 上的任何基于电子邮件的功能，您必须先提交此代码。',
-'confirmemail_sendfailed'  => '{{SITENAME}}不能发送确认邮件，请检查您的邮箱地址是否包含非法字符。
+'confirmemail_sendfailed'   => '{{SITENAME}}不能发送确认邮件，请检查您的邮箱地址是否包含非法字符。
 
 邮件传送员回应：$1',
-'confirmemail_invalid'     => '无效的确认码，该代码可能已经过期。',
-'confirmemail_needlogin'   => '您需要$1以确认您的邮箱地址。',
-'confirmemail_success'     => '您的邮箱已经被确认。您现在可以[[Special:UserLogin|登录]]并使用此网站了。',
-'confirmemail_loggedin'    => '您的邮箱地址现在已被确认。',
-'confirmemail_error'       => '你的确认过程发生错误。',
-'confirmemail_subject'     => '{{SITENAME}}邮箱地址确认',
-'confirmemail_body'        => '来自IP地址$1的用户（可能是您）在{{SITENAME}}上创建了账户“$2”，并提交了您的电子邮箱地址。
+'confirmemail_invalid'      => '无效的确认码，该代码可能已经过期。',
+'confirmemail_needlogin'    => '您需要$1以确认您的邮箱地址。',
+'confirmemail_success'      => '您的邮箱已经被确认。您现在可以[[Special:UserLogin|登录]]并使用此网站了。',
+'confirmemail_loggedin'     => '您的邮箱地址现在已被确认。',
+'confirmemail_error'        => '你的确认过程发生错误。',
+'confirmemail_subject'      => '{{SITENAME}}邮箱地址确认',
+'confirmemail_body'         => '来自IP地址$1的用户（可能是您）在{{SITENAME}}上创建了账户“$2”，并提交了您的电子邮箱地址。
 
 请确认这个账户是属于您的，并同时激活在{{SITENAME}}上的
 电子邮件功能。请在浏览器中打开下面的链接：
@@ -3068,8 +3080,21 @@ $3
 $5
 
 确认码会在$4过期。',
-'confirmemail_invalidated' => '电邮地址确认已取消',
-'invalidateemail'          => '取消电邮确认',
+'confirmemail_body_changed' => '拥有IP地址$1的用户（可能是您）在{{SITENAME}}更改了账户"$2"的电子邮箱地址。
+
+请确认这个账户是属于您的，并同时重新激活在{{SITENAME}}上的
+电子邮件功能。请在浏览器中打开下面的链接：
+
+$3
+
+如果这个账户*不是*属于您的，
+请打开下面的链接去取消电子邮件确认：
+
+$5
+
+确认码会在$4过期。',
+'confirmemail_invalidated'  => '电邮地址确认已取消',
+'invalidateemail'           => '取消电邮确认',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[跨网站的编码转换不可用]',

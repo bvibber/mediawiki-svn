@@ -208,9 +208,6 @@ $messages = array(
 'namespaces'                 => 'Namespace',
 'variants'                   => 'Variande',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Errore',
 'returnto'          => 'Tuerne a $1.',
 'tagline'           => 'Da {{SITENAME}}',
@@ -382,6 +379,8 @@ Pe piacere manne 'na comunicazzione a 'n'[[Special:ListUsers/sysop|amministrator
 'readonly_lag'         => "'U database ha state automaticamende blocchete purcè le server de le database ca depennene da 'u master onne sciute in eccezzione",
 'internalerror'        => 'Errore inderne',
 'internalerror_info'   => 'Errore inderne: $1',
+'fileappenderrorread'  => 'Non ge se pò leggere "$1" mendre ca appende.',
+'fileappenderror'      => 'Non ge se pò \'nzeccà "$1" a "$2".',
 'filecopyerror'        => 'Non ge pozze cupià \'u fail "$1" jndr\'à "$2".',
 'filerenameerror'      => 'Non ge pozze cangià \'u nome d\'u fail "$1" jndr\'à "$2".',
 'filedeleteerror'      => 'Non ge pozze scangillà \'u fail "$1".',
@@ -524,6 +523,7 @@ Tu puè pure cacà stu messagge, ce stu cunde utende ha state ccrejete pe errore
 'login-throttled'            => "Urtemamende tu è pruvate troppe vote a trasè jndr'à Uicchipèdie
 Pe piacere vide c'aspitte 'nu picche de timbe apprime de pruvà 'n'otra vote.",
 'loginlanguagelabel'         => 'Lénga: $1',
+'suspicious-userlogout'      => "'A richiesta toje de assè ha state bloccate purcè pare ca ha state mannate da 'nu browser scuasciate o da 'a cache de 'nu proxy.",
 
 # Password reset dialog
 'resetpass'                 => "Cange 'a password",
@@ -539,6 +539,7 @@ Pe spiccià 'a procedure de collegamende, tu a 'mbostà 'na password nove aqquà
 'resetpass_forbidden'       => 'Le Password non ge ponne cangià',
 'resetpass-no-info'         => 'Tu a essere colleghete pe accedere a sta pàgene direttamende.',
 'resetpass-submit-loggedin' => "Cange 'a password",
+'resetpass-submit-cancel'   => 'Annulle',
 'resetpass-wrong-oldpass'   => "'A password temboranea o quedda corrende jè invalide.
 Pò essere ca tu è già cangete 'a password toje o è richieste una temboranea nove.",
 'resetpass-temp-password'   => 'Password temboranea:',
@@ -647,6 +648,8 @@ o <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}
 'userpage-userdoesnotexist'        => '\'U cunde utende "$1" non g\'è reggistrete.
 Pe piacere, condrolle ce tu vuè cu ccreje/cange sta pàgene.',
 'userpage-userdoesnotexist-view'   => '\'U cunde utende "$1" non g\'è reggistrate.',
+'blocked-notice-logextract'        => "Stu utende jè correndemende bloccate.<br />
+L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 'clearyourcache'                   => "'''Vide Bbuene - Apprisse 'a reggistrazione, tu puè zumbà 'a cache d'u browser tue pe vedè le cangiaminde.'''
 *'''Mozilla / Firefox / Safari:''' cazze 'u ''Shift'' e condemboranemende cazze 'u buttone ''Aggiorna'', o cazze 'nzieme ''Ctrl-F5'' o ''Ctrl-R'' (''Command-R'' sus a 'nu Macintosh);
 *'''Konqueror: '''cazze ''Aggiorna'' o cazze ''F5'';
@@ -1100,6 +1103,7 @@ Aqquà ste 'nu valore generate a uecchije ca tu puè ausà: $1",
 'prefs-files'                   => 'Fails',
 'prefs-custom-css'              => 'CSS Personalizzete',
 'prefs-custom-js'               => 'JS Personalizzete',
+'prefs-common-css-js'           => 'CSS/JS condivise pe tutte le sfonde:',
 'prefs-reset-intro'             => "Tu puè ausà sta pàgene pe azzerà le preferenze tue a quidde de default d'u site.
 Quiste non ge pò essere annullate.",
 'prefs-emailconfirm-label'      => "Conferme de l'e-mail:",
@@ -1381,6 +1385,7 @@ Vide 'a [[Special:NewFiles|gallerie de le file nuève]] pe vedè l'otre andeprim
 'illegalfilename'             => "'U nome d'u file \"\$1\" tène carattere ca non ge sonde conzendite jndr'à le titele de le pàggene.
 Pe piacere vide ce renomene 'u file e pruève a carecarle 'n'otra vote.",
 'badfilename'                 => '\'U nome d\'u file ha state cangete jndr\'à "$1".',
+'filetype-mime-mismatch'      => "L'estenzione d'u file non ge se iacchie cu 'u tipe MIME.",
 'filetype-badmime'            => 'Le file d\'u tipe MIME "$1" non ge se ponne carecà.',
 'filetype-bad-ie-mime'        => 'Non ge pozze carecò stu file purcè Internet Explorer \'u vole cumme "$1", e allore jidde se penze ca jè \'nu tipe de file potenzialmende pericolose.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' ète 'nu tipe de file ca non ge vulime.
@@ -1485,6 +1490,7 @@ Pe 'na securezze a uerre proprie, img_auth.php jè disabbilitate.",
 'http-timed-out'        => 'Richieste HTTP fore timbe.',
 'http-curl-error'       => "Errore analizzanne l'URL: $1",
 'http-host-unreachable' => "Non ge riesche a raggiungere l'URL",
+'http-bad-status'       => "Ha state 'nu probbleme duranne 'a richieste HTTP: $1, $2",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => "Non ge riesche a raggiungere l'URL",
@@ -2016,7 +2022,7 @@ Tu puè cangià 'u levèlle de protezione de sta pàgene ma stu cangiamende non 
 'protect-othertime-op'        => 'otre orarie',
 'protect-existing-expiry'     => "'U timbe de scadenze esistende: $3, $2",
 'protect-otherreason'         => 'Otre mutive:',
-'protect-otherreason-op'      => 'otre mutive',
+'protect-otherreason-op'      => 'Otre mutive',
 'protect-dropdown'            => '*Mutive de protezzione comune
 ** Vandalisme eccessive
 ** Spamming eccessive
@@ -2307,6 +2313,7 @@ pe piacere a essere secure-secure de le conseguenze prime de procedere.",
 
 Jndr'à ste case, 'a pàgene non g'avène spustete e pò t'a cupià a màne 'u codenute sue.",
 'movearticle'                  => 'Spuèste:',
+'moveuserpage-warning'         => "'''Attenziò:''' Tu stè spuèste 'na pàgene utende. Vide bbuène ca sulamende 'a pàgene avène spustate ma l'utende ''non'' g'avene renomenate.",
 'movenologin'                  => 'Non ge sinde colleghete',
 'movenologintext'              => "Tu a essere 'n'utende reggistrete e [[Special:UserLogin|colleghete]] pe spustà 'na pàgene.",
 'movenotallowed'               => "Tu non ge tìne 'u permesse pe spustà le pàggene.",
@@ -2951,31 +2958,31 @@ Otre avènene scunnute pe defolt.
 'limitall'         => 'tutte',
 
 # E-mail address confirmation
-'confirmemail'             => "Conferme l'indirizze e-mail",
-'confirmemail_noemail'     => "Tu non ge tine 'n'indirizze e-mail valide configurate sus a le [[Special:Preferences|preferenze tue]].",
-'confirmemail_text'        => "{{SITENAME}} richiede ca tu ha validà l'indirizze email tue apprime de ausà 'a funzione de l'email.
+'confirmemail'              => "Conferme l'indirizze e-mail",
+'confirmemail_noemail'      => "Tu non ge tine 'n'indirizze e-mail valide configurate sus a le [[Special:Preferences|preferenze tue]].",
+'confirmemail_text'         => "{{SITENAME}} richiede ca tu ha validà l'indirizze email tue apprime de ausà 'a funzione de l'email.
 Cazze 'u buttone de sotte pe mannà 'na email de conferme a l'indirizze tue.
 L'email ca t'arrive tène 'u collegamende cu 'u codece;
 careche 'u collegamende jndr'à 'u browser tue pe confermà ca l'indirizze email tue è valide.",
-'confirmemail_pending'     => "'Nu codece de conferme ha state già mannate a l'email toje;
+'confirmemail_pending'      => "'Nu codece de conferme ha state già mannate a l'email toje;
 Ce tu recendemende è ccrejate 'nu cunde utende, tu puè aspettà quacche minute ca jidde arrive e pò puè pruvà a fà 'n'otra richieste pe 'nu codece nuève.",
-'confirmemail_send'        => "Manne 'nu codece de conferme",
-'confirmemail_sent'        => 'E-mail de conferme mannete.',
-'confirmemail_oncreate'    => "'Nu codece de conferme ha state mannate a l'indirizze e-mail tue.
+'confirmemail_send'         => "Manne 'nu codece de conferme",
+'confirmemail_sent'         => 'E-mail de conferme mannete.',
+'confirmemail_oncreate'     => "'Nu codece de conferme ha state mannate a l'indirizze e-mail tue.
 Stu codece non g'è richieste pe collegarte, ma tu n'è abbesogne de averle apprime ca tu ause quacche cose ca se base sus a l'use de le e-mail sus a Uicchi.",
-'confirmemail_sendfailed'  => "{{SITENAME}} non ge pò mannà l'email toje de conferme.
+'confirmemail_sendfailed'   => "{{SITENAME}} non ge pò mannà l'email toje de conferme.
 Pe piacere condrolle l'indirizze email ce tène carattere invalide.
 
 Destinatarie returnate: $1",
-'confirmemail_invalid'     => "Codece de conferme invalide.
+'confirmemail_invalid'      => "Codece de conferme invalide.
 Pò essere ca 'u codece ha scadute.",
-'confirmemail_needlogin'   => "A confermà $1 l'indirizze email ca è mise.",
-'confirmemail_success'     => "L'indirizze e-mail tue ha state confermate.
+'confirmemail_needlogin'    => "A confermà $1 l'indirizze email ca è mise.",
+'confirmemail_success'      => "L'indirizze e-mail tue ha state confermate.
 Tu, mò te puè [[Special:UserLogin|collegà]] e te puè devertì sus 'a Uicchipèdie.",
-'confirmemail_loggedin'    => "L'indirizze e-mail tue ha state confermate.",
-'confirmemail_error'       => "Quacchedune ha sbagliate reggistranne 'a conferma toje.",
-'confirmemail_subject'     => 'Indirizze email de conferme pe {{SITENAME}}',
-'confirmemail_body'        => "Quacchedune, pò essere tu, fa l'indirizze IP \$1,
+'confirmemail_loggedin'     => "L'indirizze e-mail tue ha state confermate.",
+'confirmemail_error'        => "Quacchedune ha sbagliate reggistranne 'a conferma toje.",
+'confirmemail_subject'      => 'Indirizze email de conferme pe {{SITENAME}}',
+'confirmemail_body'         => "Quacchedune, pò essere tu, fa l'indirizze IP \$1,
 ha reggistrate 'nu cunde utende \"\$2\" cu st'indirizze email sus a {{SITENAME}}.
 
 Pe confermà ca stu cunde ète avveramende 'u tue e pe attivà 'a funzione email de {{SITENAME}}, iapre stu collegamende jndr'à 'u borwser tue:
@@ -2987,8 +2994,20 @@ Ce tu *NON* g'è reggistrate 'u cunde utende, segue stu collegamende pe scangell
 \$5
 
 Stu codece de conferme more 'u \$4.",
-'confirmemail_invalidated' => "Conferme de l'indirizze e-mail scangellete",
-'invalidateemail'          => "Scangille 'a conferme de l'e-mail",
+'confirmemail_body_changed' => "Quacchedune, pò essere tu, da l'indirizze IP \$1,
+ha cangiate l'indirizze e-mail d'u cunde utende \"\$2\" cu st'indirizze e-mail sus a {{SITENAME}}.
+
+Pe confermà ca stu cunde ète avveramende 'u tune e pe reattivà 'a funzione email de {{SITENAME}}, iapre stu collegamende jndr'à 'u borwser tune:
+
+\$3
+
+Ce tu *NON* g'è reggistrate 'u cunde utende, segue stu collegamende pe scangellà l'indirizze email de conferme:
+
+\$5
+
+Stu codece de conferme scade 'u \$4.",
+'confirmemail_invalidated'  => "Conferme de l'indirizze e-mail scangellete",
+'invalidateemail'           => "Scangille 'a conferme de l'e-mail",
 
 # Scary transclusion
 'scarytranscludedisabled' => "[Collegaminde 'mbrà InterUicchi disabbilitate]",

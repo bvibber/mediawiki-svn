@@ -242,9 +242,6 @@ $messages = array(
 'namespaces'                 => 'नामस्थान',
 'variants'                   => 'संस्करण',
 
-# Metadata in edit box
-'metadata_help' => 'मेटाडाटा:',
-
 'errorpagetitle'    => 'त्रुटि',
 'returnto'          => 'लौटें $1.',
 'tagline'           => 'विकिपीडिया, एक मुक्त ज्ञानकोष से',
@@ -413,6 +410,7 @@ $1',
 'readonly_lag'         => 'उपमुख्य डाटाबेस सर्व्हर्‌स मुख्य डाटाबेस सर्व्हर तक पहूंचने से पहले ही मुख्य डाटाबेस सर्व्हर लॉक हो गया है ।',
 'internalerror'        => 'आन्तरिक गलती',
 'internalerror_info'   => 'आन्तरिक गलती: $1',
+'fileappenderror'      => '"$1" के आगे "$2" नहीं जुड़ पाया',
 'filecopyerror'        => '"$1" फ़ाईलकी "$2" यह कापी नहीं बना पायें ।',
 'filerenameerror'      => '"$1" फ़ाईल का नाम बदलकर "$2" नहीं कर पायें ।',
 'filedeleteerror'      => '"$1" फ़ाईलको हटा नहीं सकें ।',

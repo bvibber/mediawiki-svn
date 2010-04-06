@@ -25,7 +25,7 @@
  */
 
 /** */
-$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record'. 'run-disabled' );
+$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record', 'run-disabled' );
 $optionsWithArgs = array( 'regex', 'seed', 'setversion' );
 
 if ( !defined( "NO_COMMAND_LINE" ) ) {
@@ -270,8 +270,8 @@ class ParserTest {
 	 * Prints status updates on stdout and counts up the total
 	 * number and percentage of passed tests.
 	 *
-	 * @param array of strings $filenames
-	 * @return bool True if passed all tests, false if any tests failed.
+	 * @param $filenames Array of strings
+	 * @return Boolean: true if passed all tests, false if any tests failed.
 	 */
 	public function runTestsFromFiles( $filenames ) {
 		$this->recorder->start();
@@ -323,9 +323,12 @@ class ParserTest {
 	 * and compare the output against the expected results.
 	 * Prints status and explanatory messages to stdout.
 	 *
-	 * @param string $input Wikitext to try rendering
-	 * @param string $result Result to output
-	 * @return bool
+	 * @param $desc String: test's description
+	 * @param $input String: wikitext to try rendering
+	 * @param $result String: result to output
+	 * @param $opts Array: test's options
+	 * @param $config String: overrides for global variables, one per line
+	 * @return Boolean
 	 */
 	public function runTest( $desc, $input, $result, $opts, $config ) {
 		if( $this->showProgress ) {
@@ -366,12 +369,15 @@ class ParserTest {
 		} elseif( isset( $opts['comment'] ) ) {
 			$linker = $user->getSkin();
 			$out = $linker->formatComment( $input, $title, $local );
+		} elseif( isset( $opts['preload'] ) ) {
+			$out = $parser->getpreloadText( $input, $title, $options );
 		} else {
 			$output = $parser->parse( $input, $title, $options, true, true, 1337 );
 			$out = $output->getText();
 
 			if ( isset( $opts['showtitle'] ) ) {
-				$out = $output->getTitleText() . "\n$out";
+				if($output->getTitleText()) $title = $output->getTitleText();
+				$out = "$title\n$out";
 			}
 			if (isset( $opts['ill'] ) ) {
 				$out = $this->tidy( implode( ' ', $output->getLanguageLinks() ) );
@@ -402,9 +408,9 @@ class ParserTest {
 
 	/**
 	 * Use a regex to find out the value of an option
-	 * @param $key name of option val to retrieve
+	 * @param $key String: name of option val to retrieve
 	 * @param $opts Options array to look in
-	 * @param $defaults Default value returned if not found
+	 * @param $default Mixed: default value returned if not found
 	 */
 	private static function getOptionValue( $key, $opts, $default ) {
 		$key = strtolower( $key );
@@ -762,7 +768,7 @@ class ParserTest {
 	}
 
 	private function teardownDatabase() {
-		global $wgDBprefix, $wgDBtype;
+		global $wgDBtype;
 		if ( !$this->databaseSetupDone ) {
 			return;
 		}
@@ -788,7 +794,8 @@ class ParserTest {
 	/**
 	 * Create a dummy uploads directory which will contain a couple
 	 * of files in order to pass existence tests.
-	 * @return string The directory
+	 *
+	 * @return String: the directory
 	 */
 	private function setupUploadDir() {
 		global $IP;
@@ -877,7 +884,7 @@ class ParserTest {
 
 	/**
 	 * Delete the specified files, if they exist.
-	 * @param array $files full paths to files to delete.
+	 * @param $files Array: full paths to files to delete.
 	 */
 	private static function deleteFiles( $files ) {
 		foreach( $files as $file ) {
@@ -889,7 +896,7 @@ class ParserTest {
 
 	/**
 	 * Delete the specified directories, if they exist. Must be empty.
-	 * @param array $dirs full paths to directories to delete.
+	 * @param $dirs Array: full paths to directories to delete.
 	 */
 	private static function deleteDirs( $dirs ) {
 		foreach( $dirs as $dir ) {
@@ -909,8 +916,8 @@ class ParserTest {
 	/**
 	 * Print a happy success message.
 	 *
-	 * @param string $desc The test name
-	 * @return bool
+	 * @param $desc String: the test name
+	 * @return Boolean
 	 */
 	protected function showSuccess( $desc ) {
 		if( $this->showProgress ) {
@@ -923,10 +930,10 @@ class ParserTest {
 	 * Print a failure message and provide some explanatory output
 	 * about what went wrong if so configured.
 	 *
-	 * @param string $desc The test name
-	 * @param string $result Expected HTML output
-	 * @param string $html Actual HTML output
-	 * @return bool
+	 * @param $desc String: the test name
+	 * @param $result String: expected HTML output
+	 * @param $html String: actual HTML output
+	 * @return Boolean
 	 */
 	protected function showFailure( $desc, $result, $html ) {
 		if( $this->showFailure ) {
@@ -953,11 +960,11 @@ class ParserTest {
 	 * Run given strings through a diff and return the (colorized) output.
 	 * Requires writable /tmp directory and a 'diff' command in the PATH.
 	 *
-	 * @param string $input
-	 * @param string $output
-	 * @param string $inFileTail Tailing for the input file name
-	 * @param string $outFileTail Tailing for the output file name
-	 * @return string
+	 * @param $input String
+	 * @param $output String
+	 * @param $inFileTail String: tailing for the input file name
+	 * @param $outFileTail String: tailing for the output file name
+	 * @return String
 	 */
 	protected function quickDiff( $input, $output, $inFileTail='expected', $outFileTail='actual' ) {
 		$prefix = wfTempDir() . "/mwParser-" . mt_rand();
@@ -978,8 +985,8 @@ class ParserTest {
 	/**
 	 * Write the given string to a file, adding a final newline.
 	 *
-	 * @param string $data
-	 * @param string $filename
+	 * @param $data String
+	 * @param $filename String
 	 */
 	private function dumpToFile( $data, $filename ) {
 		$file = fopen( $filename, "wt" );
@@ -991,8 +998,8 @@ class ParserTest {
 	 * Colorize unified diff output if set for ANSI color output.
 	 * Subtractions are colored blue, additions red.
 	 *
-	 * @param string $text
-	 * @return string
+	 * @param $text String
+	 * @return String
 	 */
 	protected function colorDiff( $text ) {
 		return preg_replace(
@@ -1005,7 +1012,7 @@ class ParserTest {
 	/**
 	 * Show "Reading tests from ..."
 	 *
-	 * @param String $path
+	 * @param $path String
 	 */
 	public function showRunFile( $path ){
 		print $this->term->color( 1 ) .
@@ -1016,9 +1023,9 @@ class ParserTest {
 
 	/**
 	 * Insert a temporary test article
-	 * @param string $name the title, including any prefix
-	 * @param string $text the article text
-	 * @param int $line the input line number, for reporting errors
+	 * @param $name String: the title, including any prefix
+	 * @param $text String: the article text
+	 * @param $line Integer: the input line number, for reporting errors
 	 */
 	public function addArticle($name, $text, $line) {
 		$this->setupGlobals();
@@ -1029,7 +1036,7 @@ class ParserTest {
 
 		$aid = $title->getArticleID( GAID_FOR_UPDATE );
 		if ($aid != 0) {
-			wfDie( "duplicate article at line $line\n" );
+			wfDie( "duplicate article '$name' at line $line\n" );
 		}
 
 		$art = new Article($title);
@@ -1042,7 +1049,8 @@ class ParserTest {
 	 * Steal a callback function from the primary parser, save it for
 	 * application to our scary parser. If the hook is not installed,
 	 * die a painful dead to warn the others.
-	 * @param string $name
+	 *
+	 * @param $name String
 	 */
 	public function requireHook( $name ) {
 		global $wgParser;
@@ -1058,7 +1066,8 @@ class ParserTest {
 	 * Steal a callback function from the primary parser, save it for
 	 * application to our scary parser. If the hook is not installed,
 	 * die a painful dead to warn the others.
-	 * @param string $name
+	 *
+	 * @param $name String
 	 */
 	private function requireFunctionHook( $name ) {
 		global $wgParser;
@@ -1074,8 +1083,8 @@ class ParserTest {
 	 * Run the "tidy" command on text if the $wgUseTidy
 	 * global is true
 	 *
-	 * @param string $text the text to tidy
-	 * @return string
+	 * @param $text String: the text to tidy
+	 * @return String
 	 * @static
 	 */
 	private function tidy( $text ) {
@@ -1142,8 +1151,8 @@ class AnsiTermColorer {
 	/**
 	 * Return ANSI terminal escape code for changing text attribs/color
 	 *
-	 * @param string $color Semicolon-separated list of attribute/color codes
-	 * @return string
+	 * @param $color String: semicolon-separated list of attribute/color codes
+	 * @return String
 	 */
 	public function color( $color ) {
 		global $wgCommandLineDarkBg;
@@ -1154,7 +1163,7 @@ class AnsiTermColorer {
 	/**
 	 * Return ANSI terminal escape code for restoring default text attributes
 	 *
-	 * @return string
+	 * @return String
 	 */
 	public function reset() {
 		return $this->color( 0 );
@@ -1239,7 +1248,7 @@ class DbTestPreviewer extends TestRecorder  {
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype, $wgDBprefix;
+		global $wgDBtype;
 		parent::start();
 
 		if( ! $this->db->tableExists( 'testrun' )
@@ -1412,7 +1421,7 @@ class DbTestRecorder extends DbTestPreviewer  {
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype, $wgDBprefix, $options;
+		global $wgDBtype, $options;
 		$this->db->begin();
 
 		if( ! $this->db->tableExists( 'testrun' )
@@ -1448,8 +1457,9 @@ class DbTestRecorder extends DbTestPreviewer  {
 
 	/**
 	 * Record an individual test item's success or failure to the db
-	 * @param string $test
-	 * @param bool $result
+	 *
+	 * @param $test String
+	 * @param $result Boolean
 	 */
 	function record( $test, $result ) {
 		parent::record( $test, $result );
@@ -1482,11 +1492,11 @@ class RemoteTestRecorder extends TestRecorder {
 
 	/**
 	 * Inform a CodeReview instance that we've started or completed a test run...
-	 * @param $remote array: info on remote target
+	 *
 	 * @param $status string: "running" - tell it we've started
 	 *                        "complete" - provide test results array
 	 *                        "abort" - something went horribly awry
-	 * @param $data array of test name => true/false
+	 * @param $results array of test name => true/false
 	 */
 	function ping( $status, $results=false ) {
 		global $wgParserTestRemote, $IP;
@@ -1562,7 +1572,7 @@ class TestFileIterator implements Iterator {
 		global $IP;
 
 		$this->file = $file;
-    	$this->fh = fopen($this->file, "r");
+    	$this->fh = fopen($this->file, "rt");
         if( !$this->fh ) {
 			wfDie( "Couldn't open file '$file'\n" );
 		}

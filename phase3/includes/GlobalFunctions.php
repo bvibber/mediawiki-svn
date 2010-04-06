@@ -9,7 +9,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
-require_once dirname(__FILE__) . '/XmlFunctions.php';
 
 // Hide compatibility functions from Doxygen
 /// @cond
@@ -262,15 +261,6 @@ function wfArrayDiff2_cmp( $a, $b ) {
 }
 
 /**
- * Wrapper for clone(), for compatibility with PHP4-friendly extensions.
- * PHP 5 won't let you declare a 'clone' function, even conditionally,
- * so it has to be a wrapper with a different name.
- */
-function wfClone( $object ) {
-	return clone( $object );
-}
-
-/**
  * Seed Mersenne Twister
  * No-op for compatibility; only necessary in PHP < 4.2.0
  */
@@ -308,16 +298,27 @@ function wfRandom() {
  *
  * ;:@$!*(),/
  *
+ * However, IIS7 redirects fail when the url contains a colon (Bug 22709), 
+ * so no fancy : for IIS7.
+ * 
  * %2F in the page titles seems to fatally break for some reason.
  *
  * @param $s String:
  * @return string
 */
 function wfUrlencode( $s ) {
+	static $needle;
+	if ( is_null( $needle ) ) {
+		$needle = array( '%3B','%40','%24','%21','%2A','%28','%29','%2C','%2F' );
+		if (! isset($_SERVER['SERVER_SOFTWARE']) || ( strpos($_SERVER['SERVER_SOFTWARE'], "Microsoft-IIS/7") === false)) {
+			$needle[] = '%3A';
+		}
+	}		
+	
 	$s = urlencode( $s );
 	$s = str_ireplace(
-		array( '%3B','%3A','%40','%24','%21','%2A','%28','%29','%2C','%2F' ),
-		array(   ';',  ':',  '@',  '$',  '!',  '*',  '(',  ')',  ',',  '/' ),
+		$needle,
+		array( ';',  '@',  '$',  '!',  '*',  '(',  ')',  ',',  '/',  ':' ),
 		$s
 	);
 
@@ -505,7 +506,7 @@ function wfLogProfilingData() {
 	global $wgRequestTime, $wgDebugLogFile, $wgDebugRawPage, $wgRequest;
 	global $wgProfiler, $wgProfileLimit, $wgUser;
 	# Profiling must actually be enabled...
-	if( !isset( $wgProfiler ) ) return;
+	if( is_null( $wgProfiler ) ) return;
 	# Get total page request time
 	$now = wfTime();
 	$elapsed = $now - $wgRequestTime;
@@ -749,7 +750,9 @@ function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 	# If $wgMessageCache isn't initialised yet, try to return something sensible.
 	if( is_object( $wgMessageCache ) ) {
 		$message = $wgMessageCache->get( $key, $useDB, $langCode );
-		if ( $transform ) {
+		if( $message === false ){
+			$message = '&lt;' . htmlspecialchars( $key ) . '&gt;';
+		} elseif ( $transform ) {
 			$message = $wgMessageCache->transform( $message );
 		}
 	} else {
@@ -1408,16 +1411,19 @@ function wfAppendQuery( $url, $query ) {
 
 /**
  * Expand a potentially local URL to a fully-qualified URL.  Assumes $wgServer
- * is correct.  Also doesn't handle any type of relative URL except one
- * starting with a single "/": this won't work with current-path-relative URLs
- * like "subdir/foo.html", protocol-relative URLs like
- * "//en.wikipedia.org/wiki/", etc.  TODO: improve this!
+ * and $wgProto are correct.
+ *
+ * @todo this won't work with current-path-relative URLs
+ * like "subdir/foo.html", etc.
  *
  * @param $url String: either fully-qualified or a local path + query
  * @return string Fully-qualified URL
  */
 function wfExpandUrl( $url ) {
-	if( substr( $url, 0, 1 ) == '/' ) {
+	if( substr( $url, 0, 2 ) == '//' ) {
+		global $wgProto;
+		return $wgProto . ':' . $url;
+	} elseif( substr( $url, 0, 1 ) == '/' ) {
 		global $wgServer;
 		return $wgServer . $url;
 	} else {
@@ -1469,13 +1475,17 @@ function wfEscapeShellArg( ) {
 				}
 				$delim = !$delim;
 			}
+			
 			// Double the backslashes before the end of the string, because
 			// we will soon add a quote
 			$m = array();
 			if ( preg_match( '/^(.*?)(\\\\+)$/', $arg, $m ) ) {
 				$arg = $m[1] . str_replace( '\\', '\\\\', $m[2] );
 			}
-
+			
+			// The caret is also an special character
+			$arg = str_replace( "^", "^^", $arg );
+			
 			// Add surrounding quotes
 			$retVal .= '"' . $arg . '"';
 		} else {
@@ -2259,12 +2269,12 @@ function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
  * looked up didn't exist but a XHTML string, this function checks for the
  * nonexistance of messages by looking at wfMsg() output
  *
- * @param $msg      String: the message key looked up
- * @param $wfMsgOut String: the output of wfMsg*()
- * @return Boolean
+ * @param $key      String: the message key looked up
+ * @return Boolean True if the message *doesn't* exist.
  */
-function wfEmptyMsg( $msg, $wfMsgOut ) {
-	return $wfMsgOut === htmlspecialchars( "<$msg>" );
+function wfEmptyMsg( $key ) {
+	global $wgMessageCache;
+	return $wgMessageCache->get( $key, /*useDB*/true, /*content*/false ) === false;
 }
 
 /**
@@ -2575,11 +2585,13 @@ function wfArrayMerge( $array1/* ... */ ) {
  *   		array( 'y' )
  *   	)
  */
-function wfMergeErrorArrays(/*...*/) {
+function wfMergeErrorArrays( /*...*/ ) {
 	$args = func_get_args();
 	$out = array();
 	foreach ( $args as $errors ) {
 		foreach ( $errors as $params ) {
+			# FIXME: sometimes get nested arrays for $params,
+			# which leads to E_NOTICEs
 			$spec = implode( "\t", $params );
 			$out[$spec] = $params;
 		}
@@ -2800,15 +2812,6 @@ function wfCreateObject( $name, $p ){
 		default:
 			throw new MWException( "Too many arguments to construtor in wfCreateObject" );
 	}
-}
-
-/**
- * Alias for modularized function
- * @deprecated Use Http::get() instead
- */
-function wfGetHTTP( $url ) {
-	wfDeprecated(__FUNCTION__);
-	return Http::get( $url );
 }
 
 /**
@@ -3092,7 +3095,7 @@ function wfBoolToStr( $value ) {
 
 /**
  * Load an extension messages file
- * @deprecated
+ * @deprecated in 1.16 (warnings in 1.18, removed in ?)
  */
 function wfLoadExtensionMessages( $extensionName, $langcode = false ) {
 }

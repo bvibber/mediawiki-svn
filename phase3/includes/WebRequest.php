@@ -624,7 +624,8 @@ class WebRequest {
 	public function response() {
 		/* Lazy initialization of response object for this request */
 		if ( !is_object( $this->_response ) ) {
-			$this->_response = new WebResponse;
+			$class = ( $this instanceof FauxRequest ) ? 'FauxResponse' : 'WebResponse';
+			$this->_response = new $class();
 		}
 		return $this->_response;
 	}
@@ -712,6 +713,7 @@ class WebRequest {
 class FauxRequest extends WebRequest {
 	private $wasPosted = false;
 	private $session = array();
+	private $response;
 
 	/**
 	 * @param $data Array of *non*-urlencoded key => value pairs, the
@@ -767,9 +769,8 @@ class FauxRequest extends WebRequest {
 	}
 
 	public function getSessionData( $key ) {
-		if( !isset( $this->session[$key] ) )
-			return null;
-		return $this->session[$key];
+		if( isset( $this->session[$key] ) )
+			return $this->session[$key];
 	}
 
 	public function setSessionData( $key, $data ) {
@@ -779,5 +780,4 @@ class FauxRequest extends WebRequest {
 	public function isPathInfoBad() {
 		return false;
 	}
-
 }

@@ -22,7 +22,7 @@
  
 require_once( dirname( __FILE__ ) . '/Maintenance.php' );
 
-class SyntaxChecker extends Maintenance {
+class CheckSyntax extends Maintenance {
 
 	// List of files we're going to check
 	private $mFiles = array(), $mFailures = array(), $mWarnings = array();
@@ -39,7 +39,7 @@ class SyntaxChecker extends Maintenance {
 		$this->addOption( 'syntax-only', 'Check for syntax validity only, skip code style warnings' );
 	}
 
-	protected function getDbType() {
+	public function getDbType() {
 		return Maintenance::DB_NONE;
 	}
 
@@ -76,7 +76,6 @@ class SyntaxChecker extends Maintenance {
 		$this->mIgnorePaths = array(
 			// Compat stuff, explodes on PHP 5.3
 			"includes/NamespaceCompat.php$",
-			"DiscussionThreading/REV",
 			);
 	
 		$this->mNoStyleCheckPaths = array(
@@ -87,7 +86,7 @@ class SyntaxChecker extends Maintenance {
 			'\bphplot-',
 			"/svggraph/",
 			"\bjsmin.php$",
-			"OggHandler/PEAR/",
+			"PEAR/File_Ogg/",
 			"QPoll/Excel/",
 			"/geshi/",
 			"/smarty/",
@@ -120,7 +119,7 @@ class SyntaxChecker extends Maintenance {
 				$this->output( "done\n" );
 			}
 
-			preg_match_all( '/^\s*[AM]\s+(.*?)\r?$/m', $output, $matches );
+			preg_match_all( '/^\s*[AM].{7}(.*?)\r?$/m', $output, $matches );
 			foreach ( $matches[1] as $file ) {
 				if ( self::isSuitableFile( $file ) && !is_dir( $file ) ) {
 					$this->mFiles[] = $file;
@@ -291,6 +290,6 @@ class SyntaxChecker extends Maintenance {
 	}
 }
 
-$maintClass = "SyntaxChecker";
+$maintClass = "CheckSyntax";
 require_once( DO_MAINTENANCE );
 

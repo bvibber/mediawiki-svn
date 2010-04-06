@@ -12,6 +12,7 @@
  * @author Nick1915
  * @author Omnipaedista
  * @author Urhixidur
+ * @author Vajotwo
  * @author לערי ריינהארט
  */
 
@@ -32,10 +33,10 @@ $namespaceNames = array(
 	NS_FILE_TALK        => 'Discussion_file',
 	NS_MEDIAWIKI        => 'MediaWiki',
 	NS_MEDIAWIKI_TALK   => 'Discussion_MediaWiki',
-	NS_TEMPLATE         => 'Template',
-	NS_TEMPLATE_TALK    => 'Discussion_template',
-	NS_HELP             => 'Aiuto',
-	NS_HELP_TALK        => 'Discussion_aiuto',
+	NS_TEMPLATE         => 'Modèl',
+	NS_TEMPLATE_TALK    => 'Discussion_modèl',
+	NS_HELP             => 'Ajuto',
+	NS_HELP_TALK        => 'Discussion_ajuto',
 	NS_CATEGORY         => 'Categoria',
 	NS_CATEGORY_TALK    => 'Discussion_categoria',
 );
@@ -43,6 +44,9 @@ $namespaceNames = array(
 $namespaceAliases = array(
 	'Imagine' => NS_FILE,
 	'Discussion_imagine' => NS_FILE_TALK,
+	'Discussion_template' => NS_TEMPLATE_TALK,
+	'Aiuto' => NS_HELP,
+	'Discussion_aiuto' => NS_HELP_TALK,
 );
 
 $specialPageAliases = array(
@@ -66,16 +70,16 @@ $specialPageAliases = array(
 	'Uncategorizedpages'        => array( 'PàxeneSensaCategorie' ),
 	'Uncategorizedcategories'   => array( 'CategorieSensaCategorie' ),
 	'Uncategorizedimages'       => array( 'FileSensaCategorie' ),
-	'Uncategorizedtemplates'    => array( 'TemplateMiaCategorizà' ),
+	'Uncategorizedtemplates'    => array( 'ModèiMiaCategorizà' ),
 	'Unusedcategories'          => array( 'CategorieMiaDoparà' ),
 	'Unusedimages'              => array( 'FileMiaDoparà' ),
 	'Wantedpages'               => array( 'PàxeneRichieste' ),
 	'Wantedcategories'          => array( 'CategorieRichieste' ),
 	'Wantedfiles'               => array( 'FileRichiesti' ),
-	'Wantedtemplates'           => array( 'TemplateRichiesti' ),
+	'Wantedtemplates'           => array( 'ModèiRichiesti' ),
 	'Mostlinked'                => array( 'PàxenePiassèRiciamà' ),
 	'Mostlinkedcategories'      => array( 'CategoriePiassèRiciamà' ),
-	'Mostlinkedtemplates'       => array( 'TemplatePiassèDoparà' ),
+	'Mostlinkedtemplates'       => array( 'ModèiPiassèDoparà' ),
 	'Mostimages'                => array( 'FilePiassèRiciamà' ),
 	'Mostcategories'            => array( 'PàxeneConPiassèCategorie' ),
 	'Mostrevisions'             => array( 'PàxeneConPiassèRevision' ),
@@ -114,7 +118,7 @@ $specialPageAliases = array(
 	'Unwatchedpages'            => array( 'PàxeneMiaTegnùDeOcio' ),
 	'Listredirects'             => array( 'Rimandi' ),
 	'Revisiondelete'            => array( 'ScancelaRevision' ),
-	'Unusedtemplates'           => array( 'TemplateMiaDoparà' ),
+	'Unusedtemplates'           => array( 'ModèiMiaDoparà' ),
 	'Randomredirect'            => array( 'RImandoCasuale' ),
 	'Mypage'                    => array( 'LaMePàxenaUtente' ),
 	'Mytalk'                    => array( 'LeMeDiscussion' ),
@@ -324,9 +328,6 @@ I seguenti cołegamenti i xe en lengua inglese:
 'namespaces'                 => 'Namespace',
 'variants'                   => 'Varianti',
 
-# Metadata in edit box
-'metadata_help' => 'Metadati:',
-
 'errorpagetitle'    => 'Erór',
 'returnto'          => 'Torna a $1.',
 'tagline'           => 'Da {{SITENAME}}',
@@ -492,6 +493,8 @@ Se prega de segnalar l\'acaduto a un [[Special:ListUsers/sysop|aministrador]] sp
 'readonly_lag'         => 'El database el xe stà blocà automaticamente par consentirghe ai server coi database slave de sincronizarse col master',
 'internalerror'        => 'Eròr interno',
 'internalerror_info'   => 'Eror interno: $1',
+'fileappenderrorread'  => 'Non xè sta posibiłe lezare "$1" durante l\'agiunta.',
+'fileappenderror'      => 'No se pode zontar "$1" con "$2".',
 'filecopyerror'        => 'No xè stà possibiłe copiare el file "$1" come "$2".',
 'filerenameerror'      => 'No xè stà possibile rinominare el file "$1" in "$2".',
 'filedeleteerror'      => 'No xè stà possibiłe scancełare el file "$1".',
@@ -617,6 +620,7 @@ Se l\'acesso el xe stà creà par sbaglio, se pol ignorar sto messagio.',
 'login-throttled'            => 'Te ghè fato massa tentativi de autenticarte. 
 Spèta un tocheto prima de proàr da novo.',
 'loginlanguagelabel'         => 'Lengua: $1',
+'suspicious-userlogout'      => 'Ła to richiesta de disconesion xè sta negà parché e a senbra invià da on browser non funsionante o on proxy de caching.',
 
 # Password reset dialog
 'resetpass'                 => 'Cànbia la password',
@@ -631,6 +635,7 @@ Spèta un tocheto prima de proàr da novo.',
 'resetpass_forbidden'       => 'No se pol modificar le password',
 'resetpass-no-info'         => "Te ghè da ver fato l'acesso per poder entrar in sta pàxena.",
 'resetpass-submit-loggedin' => 'Cànbia password',
+'resetpass-submit-cancel'   => 'Anùla',
 'resetpass-wrong-oldpass'   => 'Password corente o tenporanea mia valida.
 Forse te ghè zà canbià la to password o te ghè domandà na password tenporanea nova.',
 'resetpass-temp-password'   => 'Password tenporanea:',
@@ -668,6 +673,7 @@ Forse te ghè zà canbià la to password o te ghè domandà na password tenporan
 'showlivepreview'                  => 'Anteprima in tenpo reàl',
 'showdiff'                         => 'Mostra canbiamenti',
 'anoneditwarning'                  => "'''Ocio:''' Acesso mìa efetuà. Ne ła cronołogia de ła pàxena vegnarà registrà el to indirizo IP.",
+'anonpreviewwarning'               => '"No te ghe eseguio el login. Salvando el to indiriso IP sarà rejistrà ne ła cronołosia de sta voxe."',
 'missingsummary'                   => "'''Ocio:''' No te ghè indicà l'ogeto de la modifica. Macando de novo 'Salva la pagina' la modifica la vegnerà con l'ogeto vodo.",
 'missingcommenttext'               => 'Inserissi un comento qua soto.',
 'missingcommentheader'             => "'''Ocio:''' No te ghè specificà l'intestazion de sto commento. Macando de novo '''Salva la pagina''' la modifica la vegnarà salvà senza intestazion.",
@@ -1533,6 +1539,7 @@ Par na major sicuressa, img_auth.php el xe disabilità.',
 'http-timed-out'        => 'Richiesta HTTP scadùa.',
 'http-curl-error'       => "Eror nel recupero de l'URL: $1",
 'http-host-unreachable' => 'URL mìa ragiungibile',
+'http-bad-status'       => 'Ghe xe stà un problema durante la richiesta HTTP: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL mìa ragiungibile',
@@ -2039,7 +2046,7 @@ Le impostazion atuali par la pagina le xe '''$1''':",
 'protect-othertime-op'        => 'altra durata',
 'protect-existing-expiry'     => 'Scadensa de desso: $2, $3',
 'protect-otherreason'         => 'Altri motivi:',
-'protect-otherreason-op'      => 'altri motivi',
+'protect-otherreason-op'      => 'Altra modivasion',
 'protect-dropdown'            => '*Motivi piessè comuni de protession
 ** Guere de modifica (edit war)
 ** Inserimenti ripetùi de spam
@@ -2307,6 +2314,7 @@ Acèrtete de ver ben valutà le conseguenze del spostamento, prima de procédar.
 * In corispondenza del novo titoło ghe xe xà na pàxena de discussion (mìa voda)
 * La caseła chi soto la xè stà desełezionà.",
 'movearticle'                  => 'Sposta la pàxena:',
+'moveuserpage-warning'         => "'''Ocio:''' Te sì drio spostar na pagina utente. Par piaser tien conto che vegnarà spostà solo la pagina e l'utente no'l vegnarà ''mia'' rinominà.",
 'movenologin'                  => 'No te ghè efetuà el login',
 'movenologintext'              => 'Te ghè da èssar un utente registrà ed aver efetuà el [[Special:UserLogin|login]] par poder spostar na pàxena.',
 'movenotallowed'               => 'No te ghè i parmessi necessari al spostamento de le pagine.',
@@ -3090,7 +3098,7 @@ Doparar l\'anteprima standard.',
 # Special:FilePath
 'filepath'         => 'Percorso de un file',
 'filepath-page'    => 'Nome del file:',
-'filepath-submit'  => 'Percorso',
+'filepath-submit'  => 'Va',
 'filepath-summary' => 'Sta pagina speciale la restituìsse el percorso conpleto de un file. Le imagini le vien mostrà a la risoluzion pi granda che se pol, par i altri tipi de file vien avià diretamente el programa associà.
 
 Inserissi el nome del file senza el prefisso "{{ns:file}}:"',

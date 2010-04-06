@@ -337,9 +337,6 @@ $messages = array(
 'namespaces'                 => 'Лемпотмот',
 'variants'                   => 'Вариантт',
 
-# Metadata in edit box
-'metadata_help' => 'Метадата:',
-
 'errorpagetitle'    => 'Ильведькс',
 'returnto'          => 'Велявтомс $1 лопантень.',
 'tagline'           => '{{SITENAME}} -нь пельде',
@@ -628,7 +625,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'blockedoriginalsource'            => "'''$1''' -нть лисьмапрясь ало неяви:",
 'whitelistedittitle'               => 'Витнемань-петнемань теемга эряви совамо лем',
 'whitelistedittext'                => 'Лопанть витнемс - петнемс эряви $1.',
-'nosuchsectiontitle'               => 'Истямо явкс арась',
+'nosuchsectiontitle'               => 'Явксось а муеви',
 'loginreqtitle'                    => 'Совамс эряви',
 'loginreqlink'                     => 'совамс',
 'loginreqpagetext'                 => 'Лия лопань ванномга, эряви $1.',
@@ -660,7 +657,8 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 '''ИЛЯ МАКСО ВАНСТОНЬ ВИДЕЧИСЭ ЛОМАНЕНЬ ВАЖОДЕМАНТЬ АПАК КЕВКСТНЕ!'''",
 'longpagewarning'                  => "'''ВАНОК: Те лопанть сталмозо $1 килобайтт; конат-конат интерчаматнесэ-браузертнэсэ стакасто витнемс-петнемс сёрмадовкс 32-во kб сталмосо али седе стака.
 Инеськеть, паро улевель лопанть явомс вишка пельксекс.'''",
-'titleprotectedwarning'            => "'''ВАНОК:  Те лопась сёлгозь, сонзэ шкамга-теемга [[Special:ListGroupRights|башка видечыть]] эрявить.'''",
+'titleprotectedwarning'            => "'''ВАНОК:  Те лопась сёлгозь, сонзэ шкамга-теемга [[Special:ListGroupRights|башка видечыть]] эрявить.'''
+Журналонь меельсе сёрмадовксось максозь ало, эрявиндеряй сонзэ ваномс.",
 'templatesused'                    => 'Те лопасонть тевс нолдазь {{PLURAL:$1|лопа парцун|лопа парцунт}}:',
 'templatesusedpreview'             => 'Те икелькс вановкссонть тевс нолдазь  {{PLURAL:$1|лопа парцун|лопа парцунт}}:',
 'templatesusedsection'             => 'Те пелькссэнть тевс нолдазь {{PLURAL:$1|лопа парцунось|лопа парцунтнэ}}:',
@@ -1592,7 +1590,9 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'allmessages-filter-unmodified' => 'Апак одкстомто',
 'allmessages-filter-all'        => 'Весе',
 'allmessages-filter-modified'   => 'Одолгавтозь',
+'allmessages-prefix'            => 'Икелькс валпень коряс сувтеме',
 'allmessages-language'          => 'Келесь:',
+'allmessages-filter-submit'     => 'Ютак',
 
 # Thumbnails
 'thumbnail-more'  => 'Покшолгавтомс',
@@ -1865,6 +1865,9 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 
 'exif-sensingmethod-1' => 'Апак путо',
 
+'exif-customrendered-0' => 'Эрьва чинь процесс',
+'exif-customrendered-1' => 'Башка ёнкс марто процесс',
+
 'exif-exposuremode-0' => 'Сонсь тееви экспозициясь',
 
 'exif-scenecapturetype-0' => 'Стандарт',
@@ -1934,6 +1937,9 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'confirmemail_send'     => 'Кучомс е-сёрмасо кемекстамонь код',
 'confirmemail_loggedin' => 'Е-сёрма паргот апак кемекста.',
 'confirmemail_error'    => 'Кемекстамот ванстомсто мезе-бути лиссь.',
+
+# Scary transclusion
+'scarytranscludetoolong' => '[URL пек кувака]',
 
 # Trackbacks
 'trackbackremove' => '([$1 Нардамс])',
@@ -2041,6 +2047,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'ajax-confirm-save'            => 'Ванстомс',
 'ajax-add-category-summary'    => 'Поладомс категориянть "$1"',
 'ajax-remove-category-summary' => 'Нардамс категориянть "$1"',
+'ajax-confirm-actionsummary'   => 'Мезе теемс:',
 'ajax-error-title'             => 'Ильведевкс',
 
 );

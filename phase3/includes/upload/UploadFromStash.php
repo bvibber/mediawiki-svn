@@ -18,16 +18,14 @@ class UploadFromStash extends UploadBase {
 	}
 
 	public static function isValidRequest( $request ) {
-		$sessionData = $request->getSessionData( 'wsUploadData' );
+		$sessionData = $request->getSessionData( self::SESSION_KEYNAME );
 		return self::isValidSessionKey(
 			$request->getInt( 'wpSessionKey' ),
 			$sessionData
 		);
 	}
-	/*
-	 * some $na vars for uploadBase method compatibility.
-	 */
-	public function initialize( $name, $sessionData, $na=false, $na2=false ) {
+
+	public function initialize( $name, $sessionKey, $sessionData ) {
 			/**
 			 * Confirming a temporarily stashed upload.
 			 * We don't want path names to be forged, so we keep
@@ -35,24 +33,25 @@ class UploadFromStash extends UploadBase {
 			 * an opaque key to the user agent.
 			 */
 
-			parent::initialize( $name,
+			$this->initializePathInfo( $name,
 				$this->getRealPath ( $sessionData['mTempPath'] ),
 				$sessionData['mFileSize'],
 				false
 			);
-
+			
+			$this->mSessionKey = $sessionKey;
 			$this->mVirtualTempPath = $sessionData['mTempPath'];
 			$this->mFileProps = $sessionData['mFileProps'];
 	}
 
 	public function initializeFromRequest( &$request ) {
-		$this->mSessionKey = $request->getInt( 'wpSessionKey' );
-		$sessionData = $request->getSessionData('wsUploadData');
+		$sessionKey = $request->getInt( 'wpSessionKey' );
+		$sessionData = $request->getSessionData( self::SESSION_KEYNAME );
 
 		$desiredDestName = $request->getText( 'wpDestFile' );
 		if( !$desiredDestName )
 			$desiredDestName = $request->getText( 'wpUploadFile' );
-		return $this->initialize( $desiredDestName, $sessionData[$this->mSessionKey], false );
+		return $this->initialize( $desiredDestName, $sessionKey, $sessionData[$sessionKey] );
 	}
 
 	/**
@@ -62,7 +61,7 @@ class UploadFromStash extends UploadBase {
 		return true;
 	}
 
-	
+
 	/**
 	 * There is no need to stash the image twice
 	 */

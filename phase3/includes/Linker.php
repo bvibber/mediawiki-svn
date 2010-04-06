@@ -970,7 +970,7 @@ class Linker {
 		$comment = Sanitizer::escapeHtmlAllowEntities( $comment );
 
 		# Render autocomments and make links:
-		$comment = $this->formatAutoComments( $comment, $title, $local );
+		$comment = $this->formatAutocomments( $comment, $title, $local );
 		$comment = $this->formatLinksInComment( $comment, $title, $local );
 
 		wfProfileOut( __METHOD__ );
@@ -1007,11 +1007,11 @@ class Linker {
 		$title = $this->autocommentTitle;
 		$local = $this->autocommentLocal;
 
-		$pre=$match[1];
-		$auto=$match[2];
-		$post=$match[3];
-		$link='';
-		if( $title ) {
+		$pre = $match[1];
+		$auto = $match[2];
+		$post = $match[3];
+		$link = '';
+		if ( $title ) {
 			$section = $auto;
 
 			# Generate a valid anchor name from the section title.

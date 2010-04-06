@@ -572,7 +572,7 @@ class HTMLForm {
 		if( !$hasLeftColumn ) // Avoid strange spacing when no labels exist
 			$classes[] = 'mw-htmlform-nolabel';
 		$attribs = array(
-			'classes' => implode( ' ', $classes ), 
+			'class' => implode( ' ', $classes ), 
 		);
 		if ( $sectionName ) 
 			$attribs['id'] = Sanitizer::escapeId( "mw-htmlform-$sectionName" );
@@ -1362,18 +1362,31 @@ class HTMLHiddenField extends HTMLFormField {
 	public function getInputHTML( $value ){ return ''; }
 }
 
+/**
+ * Add a submit button inline in the form (as opposed to 
+ * HTMLForm::addButton(), which will add it at the end).
+ */
 class HTMLSubmitField extends HTMLFormField {
 	
-	public function getTableRow( $value ){
-		$this->mParent->addButton(
-			$this->mParams['name'],
-			$this->mParams['default'],
-			isset($this->mParams['id']) ? $this->mParams['id'] : null,
-			$this->getTooltipAndAccessKey()
+	function __construct( $info ) {
+		$info['nodata'] = true;
+		parent::__construct( $info );
+	}
+
+	function getInputHTML( $value ) {
+		return Xml::submitButton( 
+			$value, 
+			array( 
+				'class' => 'mw-htmlform-submit',
+				'name' => $this->mName,
+				'id' => $this->mID,
+			) 
 		);
 	}
-	
-	public function getInputHTML( $value ){ return ''; }
+
+	protected function needsLabel() {
+		return false;
+	}
 }
 
 class HTMLEditTools extends HTMLFormField {

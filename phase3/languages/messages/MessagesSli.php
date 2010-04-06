@@ -209,9 +209,6 @@ $messages = array(
 'namespaces'                 => 'Noamensraum:',
 'variants'                   => 'Varianta',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fehler',
 'returnto'          => 'Zurück zur Seite $1.',
 'tagline'           => 'Aus {{SITENAME}}',
@@ -376,6 +373,7 @@ Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software ge
 'readonly_lag'         => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
 'internalerror'        => 'Interner Fehler',
 'internalerror_info'   => 'Interner Fehler: $1',
+'fileappenderror'      => 'Konnte „$1“ ne oa „$2“ oahänga.',
 'filecopyerror'        => 'Die Datei „$1“ konnte nicht nach „$2“ kopiert werden.',
 'filerenameerror'      => 'Die Datei „$1“ konnte nicht nach „$2“ umbenannt werden.',
 'filedeleteerror'      => 'Die Datei „$1“ konnte nicht gelöscht werden.',

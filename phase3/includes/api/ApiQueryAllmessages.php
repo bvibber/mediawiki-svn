@@ -1,11 +1,11 @@
 <?php
 
-/*
+/**
  * Created on Dec 1, 2007
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once ( 'ApiQueryBase.php' );
+	require_once( 'ApiQueryBase.php' );
 }
 
 /**
@@ -36,18 +36,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class ApiQueryAllmessages extends ApiQueryBase {
 
 	public function __construct( $query, $moduleName ) {
-		parent :: __construct( $query, $moduleName, 'am' );
+		parent::__construct( $query, $moduleName, 'am' );
 	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		if ( !is_null( $params['lang'] ) )
-		{
-			global $wgLang;
+		global $wgLang;
+		
+		$oldLang = null;
+		if ( !is_null( $params['lang'] ) && $params['lang'] != $wgLang->getCode() ) {
+			$oldLang = $wgLang; //Keep $wgLang for restore later
 			$wgLang = Language::factory( $params['lang'] );
 		}
-		
+
 		$prop = array_flip( (array)$params['prop'] );
 
 		// Determine which messages should we print
@@ -64,7 +66,8 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		if ( isset( $params['filter'] ) ) {
 			$messages_filtered = array();
 			foreach ( $messages_target as $message ) {
-				if ( strpos( $message, $params['filter'] ) !== false ) {	// !== is used because filter can be at the beginnig of the string
+				// !== is used because filter can be at the beginning of the string
+				if ( strpos( $message, $params['filter'] ) !== false ) {
 					$messages_filtered[] = $message;
 				}
 			}
@@ -77,23 +80,38 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		$result = $this->getResult();
 		foreach ( $messages_target as $message ) {
 			// Skip all messages up to $params['from']
-			if ( $skip && $message === $params['from'] )
+			if ( $skip && $message === $params['from'] ) {
 				$skip = false;
+			}
 
 			if ( !$skip ) {
 				$a = array( 'name' => $message );
-				$msg = wfMsgGetKey( $message, true, false, false );
-				if ( wfEmptyMsg( $message, $msg ) )
+				$args = null;
+				if ( isset( $params['args'] ) && count( $params['args'] ) != 0 ) {
+					$args = $params['args'];
+				}
+				// Check if the parser is enabled:
+				if ( $params['enableparser'] ) {
+					$msg = wfMsgExt( $message, array( 'parsemag' ), $args );
+				} elseif ( $args ) {
+					$msgString = wfMsgGetKey( $message, true, false, false );
+					$msg = wfMsgReplaceArgs( $msgString, $args );
+				} else {
+					$msg = wfMsgGetKey( $message, true, false, false );
+				}
+
+				if ( wfEmptyMsg( $message, $msg ) ) {
 					$a['missing'] = '';
-				else {
+				} else {
 					ApiResult::setContent( $a, $msg );
 					if ( isset( $prop['default'] ) ) {
 						$default = wfMsgGetKey( $message, false, false, false );
 						if ( $default !== $msg ) {
-							if ( wfEmptyMsg( $message, $default ) )
+							if ( wfEmptyMsg( $message, $default ) ) {
 								$a['defaultmissing'] = '';
-							else
+							} else {
 								$a['default'] = $default;
+							}
 						}
 					}
 				}
@@ -105,19 +123,27 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			}
 		}
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'message' );
+		
+		if ( !is_null( $oldLang ) ) {
+			$wgLang = $oldLang; //Restore $oldLang
+		}
 	}
 
 	public function getAllowedParams() {
-		return array (
-			'messages' => array (
-				ApiBase :: PARAM_DFLT => '*',
-				ApiBase :: PARAM_ISMULTI => true,
+		return array(
+			'messages' => array(
+				ApiBase::PARAM_DFLT => '*',
+				ApiBase::PARAM_ISMULTI => true,
 			),
 			'prop' => array(
-				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_TYPE => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => array(
 					'default'
 				)
+			),
+			'enableparser' => false,
+			'args' => array(
+				ApiBase::PARAM_ISMULTI => true
 			),
 			'filter' => array(),
 			'lang' => null,
@@ -126,9 +152,12 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	}
 
 	public function getParamDescription() {
-		return array (
+		return array(
 			'messages' => 'Which messages to output. "*" means all messages',
 			'prop' => 'Which properties to get',
+			'enableparser' => array( 'Set to enable parser, will preprocess the wikitext of message',
+							  'Will substitute magic words, handle templates etc.' ),
+			'args' => 'Arguments to be substituted into message',
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
@@ -143,7 +172,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		return array(
 			'api.php?action=query&meta=allmessages&amfilter=ipb-',
 			'api.php?action=query&meta=allmessages&ammessages=august|mainpage&amlang=de',
-			);
+		);
 	}
 
 	public function getVersion() {

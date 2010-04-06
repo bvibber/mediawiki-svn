@@ -57,6 +57,10 @@ if ( file_exists( "$IP/StartProfiler.php" ) ) {
 	require_once( "$IP/includes/ProfilerStub.php" );
 }
 
+// Some other requires
+require_once( "$IP/includes/AutoLoader.php" );
+require_once( "$IP/includes/Defines.php" );
+
 // Load settings, using wikimedia-mode if needed
 // Fixme: replace this hack with general farm-friendly code
 if( file_exists( "$IP/wmf-config/wikimedia-mode" ) ) {
@@ -65,16 +69,17 @@ if( file_exists( "$IP/wmf-config/wikimedia-mode" ) ) {
 	global $cluster;
 	$wgWikiFarm = true;
 	$cluster = 'pmtpa';
-	require_once( "$IP/includes/AutoLoader.php" );
 	require_once( "$IP/includes/SiteConfiguration.php" );
 	require( "$IP/wmf-config/wgConf.php" );
 	$maintenance->loadWikimediaSettings();
-	require( $IP.'/includes/Defines.php' );
 	require( $IP.'/wmf-config/CommonSettings.php' );
 } else {
-	require_once( "$IP/includes/AutoLoader.php" );
-	require_once( "$IP/includes/Defines.php" );
 	require_once( $maintenance->loadSettings() );
+}
+if ( $maintenance->getDbType() === Maintenance::DB_ADMIN &&
+		is_readable( "$IP/AdminSettings.php" ) )
+{
+	require( "$IP/AdminSettings.php" );
 }
 $maintenance->finalSetup();
 // Some last includes

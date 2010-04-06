@@ -112,7 +112,7 @@ $ourdb['oracle'] = array(
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="noindex,nofollow"/>
@@ -503,11 +503,6 @@ if( $memlimit == -1 ) {
 	print "</li>\n";
 }
 
-$conf->turck = function_exists( 'mmcache_get' );
-if ( $conf->turck ) {
-	print "<li><a href=\"http://turck-mmcache.sourceforge.net/\">Turck MMCache</a> installed</li>\n";
-}
-
 $conf->xcache = function_exists( 'xcache_get' );
 if( $conf->xcache )
 	print "<li><a href=\"http://trac.lighttpd.net/xcache/\">XCache</a> installed</li>\n";
@@ -519,15 +514,13 @@ if ($conf->apc ) {
 
 $conf->eaccel = function_exists( 'eaccelerator_get' );
 if ( $conf->eaccel ) {
-	$conf->turck = 'eaccelerator';
 	print "<li><a href=\"http://eaccelerator.sourceforge.net/\">eAccelerator</a> installed</li>\n";
 }
 
 $conf->dba = function_exists( 'dba_open' );
 
-if( !( $conf->turck || $conf->eaccel || $conf->apc || $conf->xcache ) ) {
-	echo( '<li>Couldn\'t find <a href="http://turck-mmcache.sourceforge.net">Turck MMCache</a>,
-		<a href="http://eaccelerator.sourceforge.net">eAccelerator</a>,
+if( !( $conf->eaccel || $conf->apc || $conf->xcache ) ) {
+	echo( '<li>Couldn\'t find <a href="http://eaccelerator.sourceforge.net">eAccelerator</a>,
 		<a href="http://www.php.net/apc">APC</a> or <a href="http://trac.lighttpd.net/xcache/">XCache</a>;
 		cannot use these for object caching.</li>' );
 }
@@ -620,9 +613,9 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 		$conf->DBtype = $DefaultDBtype;
 	}
 
-	$conf->DBserver = importPost( "DBserver", "localhost" );
-	$conf->DBname = importPost( "DBname", "wikidb" );
-	$conf->DBuser = importPost( "DBuser", "wikiuser" );
+	$conf->DBserver = importPost( "DBserver", $wgDBserver );
+	$conf->DBname = importPost( "DBname", $wgDBname );
+	$conf->DBuser = importPost( "DBuser", $wgDBuser );
 	$conf->DBpassword = importPost( "DBpassword" );
 	$conf->DBpassword2 = importPost( "DBpassword2" );
 	$conf->SysopName = importPost( "SysopName", "WikiSysop" );
@@ -639,7 +632,7 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 		importPost( "DBengine", "InnoDB" ) );
 
 	## Postgres specific:
-	$conf->DBport      = importPost( "DBport",      "5432" );
+	$conf->DBport      = importPost( "DBport",      $wgDBport );
 	$conf->DBts2schema = importPost( "DBts2schema", "public" );
 	$conf->DBpgschema  = importPost( "DBpgschema",  "mediawiki" );
 
@@ -1459,11 +1452,6 @@ if( count( $errs ) ) {
 		<ul class="plain">
 		<li><?php aField( $conf, "Shm", "No caching", "radio", "none" ); ?></li>
 		<?php
-			if ( $conf->turck ) {
-				echo "<li>";
-				aField( $conf, "Shm", "Turck MMCache", "radio", "turck" );
-				echo "</li>\n";
-			}
 			if( $conf->xcache ) {
 				echo "<li>";
 				aField( $conf, 'Shm', 'XCache', 'radio', 'xcache' );
@@ -1493,7 +1481,7 @@ if( count( $errs ) ) {
 		An object caching system such as memcached will provide a significant performance boost,
 		but needs to be installed. Provide the server addresses and ports in a comma-separated list.
 		<br /><br />
-		MediaWiki can also detect and support eAccelerator, Turck MMCache, APC, and XCache, but
+		MediaWiki can also detect and support eAccelerator, APC, and XCache, but
 		these should not be used if the wiki will be running on multiple application servers.
 		<br /><br />
 		DBA (Berkeley-style DB) is generally slower than using no cache at all, and is only
@@ -1788,10 +1776,11 @@ function writeLocalSettings( $conf ) {
 	$convert = ($conf->ImageMagick ? $conf->ImageMagick : "/usr/bin/convert" );
 	$rights = ($conf->RightsUrl) ? "" : "# ";
 	$hashedUploads = $conf->safeMode ? '' : '# ';
-	$sqliteDataDir = escapePhpString( realpath($conf->SQLiteDataDir) );
-	if ( substr_compare( $conf->IP, $sqliteDataDir, 0 ) ) {
-		$sqliteDataDir = substr_replace( $sqliteDataDir, '$IP', 0, strlen($conf->IP) );
+	$dir = realpath( $conf->SQLiteDataDir );
+	if ( !$dir ) {
+		$dir = $conf->SQLiteDataDir; // dumb realpath sometimes fails
 	}
+	$sqliteDataDir = escapePhpString( $dir );
 
 	if ( $conf->ShellLocale ) {
 		$locale = '';
@@ -1805,7 +1794,6 @@ function writeLocalSettings( $conf ) {
 			$cacheType = 'CACHE_MEMCACHED';
 			$mcservers = var_export( $conf->MCServerArray, true );
 			break;
-		case 'turck':
 		case 'xcache':
 		case 'apc':
 		case 'eaccel':
@@ -2012,7 +2000,7 @@ if ( \$wgCommandLineMode ) {
 \$wgSecretKey = \"$secretKey\";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
-## names, ie 'standard', 'nostalgia', 'cologneblue', 'monobook':
+## names, ie 'vector', 'monobook':
 \$wgDefaultSkin = 'monobook';
 
 ## For attaching licensing metadata to pages, and displaying an

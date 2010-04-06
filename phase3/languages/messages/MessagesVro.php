@@ -187,9 +187,6 @@ $messages = array(
 'faq'            => 'Sagõhõhe küsüdüq küsümiseq',
 'faqpage'        => 'Project:KKK',
 
-# Metadata in edit box
-'metadata_help' => 'Metateedüs:',
-
 'errorpagetitle'    => 'Viga',
 'returnto'          => 'Tagasi lehe manoq $1.',
 'tagline'           => 'Läteq: {{SITENAME}}',
@@ -313,9 +310,13 @@ $messages = array(
 
 # Main script and global functions
 'nosuchaction'      => 'Säänest tallitust olõ-i.',
-'nosuchactiontext'  => 'Viki tunnõ-i taa aadrõsi manoq käüvät tallitust.',
+'nosuchactiontext'  => 'Seo aadrõsi manoq käüvä tallitus om viganõ.
+Võimalik, et sa kirotit aadrõsi võlssi vai pruugõt vigast linki.
+Niisama või taa ollaq {{SITENAME}} tarkvara viga.',
 'nosuchspecialpage' => 'Säänest tallituslehekülge olõ-i.',
-'nospecialpagetext' => 'Viki tunnõ-i säänest tallituslehekülge.',
+'nospecialpagetext' => '<strong> Säänest tallituslehekülge olõ-õi.</strong>
+
+Olõmanolõvaq tallitusleheküleq ommaq löüdäq leheküle päält [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Viga',

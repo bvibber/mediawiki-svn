@@ -317,7 +317,6 @@ $magicWords = array(
 	'plural'                 => array( 0,    'PLURAL:'                ),
 	'fullurl'                => array( 0,    'FULLURL:'               ),
 	'fullurle'               => array( 0,    'FULLURLE:'              ),
-	'pipetrick'              => array( 0,    'PIPETRICK:'             ),
 	'lcfirst'                => array( 0,    'LCFIRST:'               ),
 	'ucfirst'                => array( 0,    'UCFIRST:'               ),
 	'lc'                     => array( 0,    'LC:'                    ),
@@ -408,6 +407,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'AllPages' ),
 	'Prefixindex'               => array( 'PrefixIndex' ) ,
 	'Ipblocklist'               => array( 'BlockList', 'ListBlocks', 'IPBlockList' ),
+	'Unblock'                   => array( 'Unblock' ),
 	'Specialpages'              => array( 'SpecialPages' ),
 	'Contributions'             => array( 'Contributions' ),
 	'Emailuser'                 => array( 'EmailUser' ),
@@ -801,9 +801,6 @@ XHTML id names.
 'namespaces'                 => 'Namespaces',
 'variants'                   => 'Variants',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Return to $1.',
 'tagline'           => 'From {{SITENAME}}',
@@ -983,6 +980,8 @@ Please report this to an [[Special:ListUsers/sysop|administrator]], making note 
 'readonly_lag'         => 'The database has been automatically locked while the slave database servers catch up to the master',
 'internalerror'        => 'Internal error',
 'internalerror_info'   => 'Internal error: $1',
+'fileappenderrorread'  => 'Could not read "$1" during append.',
+'fileappenderror'      => 'Could not append "$1" to "$2".',
 'filecopyerror'        => 'Could not copy file "$1" to "$2".',
 'filerenameerror'      => 'Could not rename file "$1" to "$2".',
 'filedeleteerror'      => 'Could not delete file "$1".',
@@ -1136,6 +1135,7 @@ Please wait before trying again.',
 * Español|es
 * Italiano|it
 * Nederlands|nl', # do not translate or duplicate this message to other languages
+'suspicious-userlogout'      => 'Your request to log out was denied because it looks like it was sent by a broken browser or caching proxy.',
 
 # Password reset dialog
 'resetpass'                 => 'Change password',
@@ -1152,6 +1152,7 @@ Now logging you in...',
 'resetpass_forbidden'       => 'Passwords cannot be changed',
 'resetpass-no-info'         => 'You must be logged in to access this page directly.',
 'resetpass-submit-loggedin' => 'Change password',
+'resetpass-submit-cancel'   => 'Cancel',
 'resetpass-wrong-oldpass'   => 'Invalid temporary or current password.
 You may have already successfully changed your password or requested a new temporary password.',
 'resetpass-temp-password'   => 'Temporary password:',
@@ -1190,6 +1191,7 @@ You may have already successfully changed your password or requested a new tempo
 'showdiff'                         => 'Show changes',
 'anoneditwarning'                  => "'''Warning:''' You are not logged in.
 Your IP address will be recorded in this page's edit history.",
+'anonpreviewwarning'               => "''You are not logged in. Saving will record your IP address in this page's edit history.''",
 'missingsummary'                   => "'''Reminder:''' You have not provided an edit summary.
 If you click Save again, your edit will be saved without one.",
 'missingcommenttext'               => 'Please enter a comment below.',
@@ -1264,6 +1266,8 @@ or <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}
 'userpage-userdoesnotexist'        => 'User account "$1" is not registered.
 Please check if you want to create/edit this page.',
 'userpage-userdoesnotexist-view'   => 'User account "$1" is not registered.',
+'blocked-notice-logextract'        => 'This user is currently blocked.
+The latest block log entry is provided below for reference:',
 'clearyourcache'                   => "'''Note: After saving, you may have to bypass your browser's cache to see the changes.'''
 '''Mozilla / Firefox / Safari:''' hold ''Shift'' while clicking ''Reload'', or press either ''Ctrl-F5'' or ''Ctrl-R'' (''Command-R'' on a Macintosh);
 '''Konqueror: '''click ''Reload'' or press ''F5'';
@@ -1747,6 +1751,7 @@ Here's a randomly-generated value you can use: $1",
 'prefs-files'                   => 'Files',
 'prefs-custom-css'              => 'Custom CSS',
 'prefs-custom-js'               => 'Custom JS',
+'prefs-common-css-js'           => 'Shared CSS/JS for all skins:',
 'prefs-reset-intro'             => 'You can use this page to reset your preferences to the site defaults.
 This cannot be undone.',
 'prefs-emailconfirm-label'      => 'E-mail confirmation:',
@@ -1877,6 +1882,7 @@ You can also choose to let others contact you through your user or talk page wit
 'right-hideuser'              => 'Block a username, hiding it from the public',
 'right-ipblock-exempt'        => 'Bypass IP blocks, auto-blocks and range blocks',
 'right-proxyunbannable'       => 'Bypass automatic blocks of proxies',
+'right-unblockself'           => 'Unblock themselves',
 'right-protect'               => 'Change protection levels and edit protected pages',
 'right-editprotected'         => 'Edit protected pages (without cascading protection)',
 'right-editinterface'         => 'Edit the user interface',
@@ -2039,6 +2045,7 @@ See the [[Special:NewFiles|gallery of new files]] for a more visual overview.',
 'illegalfilename'             => 'The filename "$1" contains characters that are not allowed in page titles.
 Please rename the file and try uploading it again.',
 'badfilename'                 => 'File name has been changed to "$1".',
+'filetype-mime-mismatch'      => 'File extension does not match MIME type.',
 'filetype-badmime'            => 'Files of the MIME type "$1" are not allowed to be uploaded.',
 'filetype-bad-ie-mime'        => 'Cannot upload this file because Internet Explorer would detect it as "$1", which is a disallowed and potentially dangerous file type.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' is an unwanted file type.
@@ -2161,6 +2168,7 @@ For optimal security, img_auth.php is disabled.',
 'http-timed-out'        => 'HTTP request timed out.',
 'http-curl-error'       => 'Error fetching URL: $1',
 'http-host-unreachable' => 'Could not reach URL.',
+'http-bad-status'       => 'There was a problem during the HTTP request: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Could not reach URL',
@@ -2194,42 +2202,43 @@ A click on a column header changes the sorting.',
 'listfiles_count'       => 'Versions',
 
 # File description page
-'file-anchor-link'          => 'File',
-'filehist'                  => 'File history',
-'filehist-help'             => 'Click on a date/time to view the file as it appeared at that time.',
-'filehist-deleteall'        => 'delete all',
-'filehist-deleteone'        => 'delete',
-'filehist-revert'           => 'revert',
-'filehist-current'          => 'current',
-'filehist-datetime'         => 'Date/Time',
-'filehist-thumb'            => 'Thumbnail',
-'filehist-thumbtext'        => 'Thumbnail for version as of $1',
-'filehist-nothumb'          => 'No thumbnail',
-'filehist-user'             => 'User',
-'filehist-dimensions'       => 'Dimensions',
-'filehist-filesize'         => 'File size',
-'filehist-comment'          => 'Comment',
-'filehist-missing'          => 'File missing',
-'imagelinks'                => 'File links',
-'linkstoimage'              => 'The following {{PLURAL:$1|page links|$1 pages link}} to this file:',
-'linkstoimage-more'         => 'More than $1 {{PLURAL:$1|page links|pages link}} to this file.
+'file-anchor-link'                  => 'File',
+'filehist'                          => 'File history',
+'filehist-help'                     => 'Click on a date/time to view the file as it appeared at that time.',
+'filehist-deleteall'                => 'delete all',
+'filehist-deleteone'                => 'delete',
+'filehist-revert'                   => 'revert',
+'filehist-current'                  => 'current',
+'filehist-datetime'                 => 'Date/Time',
+'filehist-thumb'                    => 'Thumbnail',
+'filehist-thumbtext'                => 'Thumbnail for version as of $1',
+'filehist-nothumb'                  => 'No thumbnail',
+'filehist-user'                     => 'User',
+'filehist-dimensions'               => 'Dimensions',
+'filehist-filesize'                 => 'File size',
+'filehist-comment'                  => 'Comment',
+'filehist-missing'                  => 'File missing',
+'imagelinks'                        => 'File links',
+'linkstoimage'                      => 'The following {{PLURAL:$1|page links|$1 pages link}} to this file:',
+'linkstoimage-more'                 => 'More than $1 {{PLURAL:$1|page links|pages link}} to this file.
 The following list shows the {{PLURAL:$1|first page link|first $1 page links}} to this file only.
 A [[Special:WhatLinksHere/$2|full list]] is available.',
-'nolinkstoimage'            => 'There are no pages that link to this file.',
-'morelinkstoimage'          => 'View [[Special:WhatLinksHere/$1|more links]] to this file.',
-'redirectstofile'           => 'The following {{PLURAL:$1|file redirects|$1 files redirect}} to this file:',
-'duplicatesoffile'          => 'The following {{PLURAL:$1|file is a duplicate|$1 files are duplicates}} of this file ([[Special:FileDuplicateSearch/$2|more details]]):',
-'sharedupload'              => 'This file is from $1 and may be used by other projects.',
-'sharedupload-desc-there'   => 'This file is from $1 and may be used by other projects.
+'nolinkstoimage'                    => 'There are no pages that link to this file.',
+'morelinkstoimage'                  => 'View [[Special:WhatLinksHere/$1|more links]] to this file.',
+'redirectstofile'                   => 'The following {{PLURAL:$1|file redirects|$1 files redirect}} to this file:',
+'duplicatesoffile'                  => 'The following {{PLURAL:$1|file is a duplicate|$1 files are duplicates}} of this file ([[Special:FileDuplicateSearch/$2|more details]]):',
+'sharedupload'                      => 'This file is from $1 and may be used by other projects.',
+'sharedupload-desc-there'           => 'This file is from $1 and may be used by other projects.
 Please see the [$2 file description page] for further information.',
-'sharedupload-desc-here'    => 'This file is from $1 and may be used by other projects.
+'sharedupload-desc-here'            => 'This file is from $1 and may be used by other projects.
 The description on its [$2 file description page] there is shown below.',
-'shareddescriptionfollows'  => '-', # do not translate or duplicate this message to other languages
-'filepage-nofile'           => 'No file by this name exists.',
-'filepage-nofile-link'      => 'No file by this name exists, but you can [$1 upload it].',
-'uploadnewversion-linktext' => 'Upload a new version of this file',
-'shared-repo-from'          => 'from $1',
-'shared-repo'               => 'a shared repository',
+'shareddescriptionfollows'          => '-', # do not translate or duplicate this message to other languages
+'filepage-nofile'                   => 'No file by this name exists.',
+'filepage-nofile-link'              => 'No file by this name exists, but you can [$1 upload it].',
+'uploadnewversion-linktext'         => 'Upload a new version of this file',
+'shared-repo-from'                  => 'from $1',
+'shared-repo'                       => 'a shared repository',
+'shared-repo-name-wikimediacommons' => 'Wikimedia Commons', # only translate this message to other languages if you have to change it
 
 # File reversion
 'filerevert'                => 'Revert $1',
@@ -2740,7 +2749,7 @@ You can change this page's protection level, but it will not affect the cascadin
 'protect-othertime-op'        => 'other time',
 'protect-existing-expiry'     => 'Existing expiry time: $3, $2',
 'protect-otherreason'         => 'Other/additional reason:',
-'protect-otherreason-op'      => 'other/additional reason',
+'protect-otherreason-op'      => 'Other reason',
 'protect-dropdown'            => '*Common protection reasons
 ** Excessive vandalism
 ** Excessive spamming
@@ -2835,22 +2844,24 @@ $1',
 'month'               => 'From month (and earlier):',
 'year'                => 'From year (and earlier):',
 
-'sp-contributions-newbies'        => 'Show contributions of new accounts only',
-'sp-contributions-newbies-sub'    => 'For new accounts',
-'sp-contributions-newbies-title'  => 'User contributions for new accounts',
-'sp-contributions-blocklog'       => 'block log',
-'sp-contributions-deleted'        => 'deleted user contributions',
-'sp-contributions-logs'           => 'logs',
-'sp-contributions-talk'           => 'talk',
-'sp-contributions-userrights'     => 'user rights management',
-'sp-contributions-blocked-notice' => 'This user is currently blocked.
+'sp-contributions-newbies'             => 'Show contributions of new accounts only',
+'sp-contributions-newbies-sub'         => 'For new accounts',
+'sp-contributions-newbies-title'       => 'User contributions for new accounts',
+'sp-contributions-blocklog'            => 'block log',
+'sp-contributions-deleted'             => 'deleted user contributions',
+'sp-contributions-logs'                => 'logs',
+'sp-contributions-talk'                => 'talk',
+'sp-contributions-userrights'          => 'user rights management',
+'sp-contributions-blocked-notice'      => 'This user is currently blocked.
 The latest block log entry is provided below for reference:',
-'sp-contributions-search'         => 'Search for contributions',
-'sp-contributions-username'       => 'IP address or username:',
-'sp-contributions-submit'         => 'Search',
-'sp-contributions-explain'        => '', # only translate this message to other languages if you have to change it
-'sp-contributions-footer'         => '-', # do not translate or duplicate this message to other languages
-'sp-contributions-footer-anon'    => '-', # do not translate or duplicate this message to other languages
+'sp-contributions-blocked-notice-anon' => 'This IP address is currently blocked.
+The latest block log entry is provided below for reference:',
+'sp-contributions-search'              => 'Search for contributions',
+'sp-contributions-username'            => 'IP address or username:',
+'sp-contributions-submit'              => 'Search',
+'sp-contributions-explain'             => '', # only translate this message to other languages if you have to change it
+'sp-contributions-footer'              => '-', # do not translate or duplicate this message to other languages
+'sp-contributions-footer-anon'         => '-', # do not translate or duplicate this message to other languages
 
 # What links here
 'whatlinkshere'            => 'What links here',
@@ -2993,6 +3004,8 @@ You cannot create an account',
 'cant-block-while-blocked'        => 'You cannot block other users while you are blocked.',
 'cant-see-hidden-user'            => "The user you are trying to block has already been blocked and hidden.
 Since you do not have the hideuser right, you cannot see or edit the user's block.",
+'ipbblocked'                      => 'You cannot block or unblock other users, because you are yourself blocked',
+'ipbnounblockself'                => 'You are not allowed to unblock yourself',
 
 # Developer tools
 'lockdb'              => 'Lock database',
@@ -3037,6 +3050,7 @@ please be sure you understand the consequences of this before proceeding.",
 
 In those cases, you will have to move or merge the page manually if desired.",
 'movearticle'                  => 'Move page:',
+'moveuserpage-warning'         => "'''Warning:''' You are about to move a user page. Please note that only the page will be moved and the user will ''not'' be renamed.",
 'movenologin'                  => 'Not logged in',
 'movenologintext'              => 'You must be a registered user and [[Special:UserLogin|logged in]] to move a page.',
 'movenotallowed'               => 'You do not have permission to move pages.',
@@ -3273,8 +3287,7 @@ Please try again.',
 'tooltip-pt-anonlogin'            => 'You are encouraged to log in; however, it is not mandatory',
 'tooltip-pt-logout'               => 'Log out',
 'tooltip-ca-talk'                 => 'Discussion about the content page',
-'tooltip-ca-edit'                 => 'You can edit this page.
-Please use the preview button before saving',
+'tooltip-ca-edit'                 => 'You can edit this page. Please use the preview button before saving',
 'tooltip-ca-addsection'           => 'Start a new section',
 'tooltip-ca-viewsource'           => 'This page is protected.
 You can view its source',
@@ -3862,31 +3875,31 @@ Others will be hidden by default.
 'limitall'         => 'all',
 
 # E-mail address confirmation
-'confirmemail'             => 'Confirm e-mail address',
-'confirmemail_noemail'     => 'You do not have a valid e-mail address set in your [[Special:Preferences|user preferences]].',
-'confirmemail_text'        => '{{SITENAME}} requires that you validate your e-mail address before using e-mail features.
+'confirmemail'              => 'Confirm e-mail address',
+'confirmemail_noemail'      => 'You do not have a valid e-mail address set in your [[Special:Preferences|user preferences]].',
+'confirmemail_text'         => '{{SITENAME}} requires that you validate your e-mail address before using e-mail features.
 Activate the button below to send a confirmation mail to your address.
 The mail will include a link containing a code;
 load the link in your browser to confirm that your e-mail address is valid.',
-'confirmemail_pending'     => 'A confirmation code has already been e-mailed to you;
+'confirmemail_pending'      => 'A confirmation code has already been e-mailed to you;
 if you recently created your account, you may wish to wait a few minutes for it to arrive before trying to request a new code.',
-'confirmemail_send'        => 'Mail a confirmation code',
-'confirmemail_sent'        => 'Confirmation e-mail sent.',
-'confirmemail_oncreate'    => 'A confirmation code was sent to your e-mail address.
+'confirmemail_send'         => 'Mail a confirmation code',
+'confirmemail_sent'         => 'Confirmation e-mail sent.',
+'confirmemail_oncreate'     => 'A confirmation code was sent to your e-mail address.
 This code is not required to log in, but you will need to provide it before enabling any e-mail-based features in the wiki.',
-'confirmemail_sendfailed'  => '{{SITENAME}} could not send your confirmation mail.
+'confirmemail_sendfailed'   => '{{SITENAME}} could not send your confirmation mail.
 Please check your e-mail address for invalid characters.
 
 Mailer returned: $1',
-'confirmemail_invalid'     => 'Invalid confirmation code.
+'confirmemail_invalid'      => 'Invalid confirmation code.
 The code may have expired.',
-'confirmemail_needlogin'   => 'You need to $1 to confirm your e-mail address.',
-'confirmemail_success'     => 'Your e-mail address has been confirmed.
+'confirmemail_needlogin'    => 'You need to $1 to confirm your e-mail address.',
+'confirmemail_success'      => 'Your e-mail address has been confirmed.
 You may now [[Special:UserLogin|log in]] and enjoy the wiki.',
-'confirmemail_loggedin'    => 'Your e-mail address has now been confirmed.',
-'confirmemail_error'       => 'Something went wrong saving your confirmation.',
-'confirmemail_subject'     => '{{SITENAME}} e-mail address confirmation',
-'confirmemail_body'        => 'Someone, probably you, from IP address $1,
+'confirmemail_loggedin'     => 'Your e-mail address has now been confirmed.',
+'confirmemail_error'        => 'Something went wrong saving your confirmation.',
+'confirmemail_subject'      => '{{SITENAME}} e-mail address confirmation',
+'confirmemail_body'         => 'Someone, probably you, from IP address $1,
 has registered an account "$2" with this e-mail address on {{SITENAME}}.
 
 To confirm that this account really does belong to you and activate
@@ -3900,8 +3913,22 @@ to cancel the e-mail address confirmation:
 $5
 
 This confirmation code will expire at $4.',
-'confirmemail_invalidated' => 'E-mail address confirmation canceled',
-'invalidateemail'          => 'Cancel e-mail confirmation',
+'confirmemail_body_changed' => 'Someone, probably you, from IP address $1,
+has changed the e-mail address of the account "$2" to this address on {{SITENAME}}.
+
+To confirm that this account really does belong to you and reactivate
+e-mail features on {{SITENAME}}, open this link in your browser:
+
+$3
+
+If the account does *not* belong to you, follow this link
+to cancel the e-mail address confirmation:
+
+$5
+
+This confirmation code will expire at $4.',
+'confirmemail_invalidated'  => 'E-mail address confirmation canceled',
+'invalidateemail'           => 'Cancel e-mail confirmation',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki transcluding is disabled]',
@@ -4127,7 +4154,7 @@ You can also [[Special:Watchlist/edit|use the standard editor]].',
 # Special:FilePath
 'filepath'         => 'File path',
 'filepath-page'    => 'File:',
-'filepath-submit'  => 'Path',
+'filepath-submit'  => 'Go',
 'filepath-summary' => 'This special page returns the complete path for a file.
 Images are shown in full resolution, other file types are started with their associated program directly.
 

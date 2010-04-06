@@ -1,5 +1,5 @@
 <?php
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -387,9 +387,6 @@ Dat es och all op Änglesch:
 'namespaces'                 => 'Appachtemangs',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metta-Daate:',
-
 'errorpagetitle'    => 'Fähler',
 'returnto'          => 'Jangk widder noh: „$1“.',
 'tagline'           => 'Us de {{SITENAME}}',
@@ -557,6 +554,7 @@ un doht em och de URL vun dä Sigg heh sage.',
 'readonly_lag'         => 'De Daatebank es för en koote Zigg jesperrt, för de Daate avzejliche.',
 'internalerror'        => 'De Wiki-Soffwär hät ene Fähler jefunge',
 'internalerror_info'   => 'Enne ennere Fäähler en de ßofwäer es opjetrodde: $1',
+'fileappenderror'      => 'Mer kunnte „$1“ nit aan „$2“ aanhange.',
 'filecopyerror'        => 'Kunnt de Datei „$1“ nit noh „$2“ kopeere.',
 'filerenameerror'      => 'Kunnt de Datei „$1“ nit op „$2“ ömdäufe.',
 'filedeleteerror'      => 'Kunnt de Datei „$1“ nit fottschmieße.',

@@ -284,9 +284,6 @@ $messages = array(
 'vector-view-viewsource'     => 'Logön fonäti',
 'namespaces'                 => 'Nemaspads',
 
-# Metadata in edit box
-'metadata_help' => 'Metanünods:',
-
 'errorpagetitle'    => 'Pöl',
 'returnto'          => 'Geikön lü $1.',
 'tagline'           => 'Se {{SITENAME}}',
@@ -506,6 +503,7 @@ No glömolöd ad votükön [[Special:Preferences|buükamis olik in {{SITENAME}}]
 'nav-login-createaccount'    => 'Nunädön oki / jafön kali',
 'loginprompt'                => 'Mutol mögükön „kekilis“ ad kanön nunädön oli in {{SITENAME}}.',
 'userlogin'                  => 'Nunädön oki / jafön kali',
+'userloginnocreate'          => 'Nunädön oki',
 'logout'                     => 'Senunädön oki',
 'userlogout'                 => 'Senunädön oki',
 'notloggedin'                => 'No enunädol oli',
@@ -574,6 +572,7 @@ Kanol nedemön penedi at, üf jafam kala at binon pöl.',
 'resetpass_forbidden'       => 'Letavöds no kanons pavotükön',
 'resetpass-no-info'         => 'Mutol nunädön oli ad logön padi at nemediko.',
 'resetpass-submit-loggedin' => 'Votükön letavödi',
+'resetpass-submit-cancel'   => 'Stöpädön',
 'resetpass-wrong-oldpass'   => 'Letavöd (laidüpik u nelaidüpik) no lonöföl.
 Ba ya evotükol benosekiko letavödi olik, u ya ebegol benosekiko letavödi nelaidüpik nulik.',
 'resetpass-temp-password'   => 'Letavöd nelaidüpik:',
@@ -646,7 +645,7 @@ Ladet-IP olik binon $3, e nüm blokama at binon #$5. Mäniotolös nünis löpik 
 'whitelistedittitle'               => 'Mutol nunädön oli ad redakön',
 'whitelistedittext'                => 'Mutol $1 ad redakön padis.',
 'confirmedittext'                  => 'Mutol fümedön ladeti leäktronik ola büä okanol redakön padis. Pladölos e lonöfükölos ladeti olik in [[Special:Preferences|buükams olik]].',
-'nosuchsectiontitle'               => 'Diläd at no dabinon',
+'nosuchsectiontitle'               => 'Diläd no petuvöl',
 'nosuchsectiontext'                => 'Esteifülol ad redakön dilädi no dabinöli.',
 'loginreqtitle'                    => 'Nunädam Paflagon',
 'loginreqlink'                     => 'ninädolös obi',
@@ -832,6 +831,8 @@ Ninäd peklänedöl at binon ye nog lügolovik guvanes votik vüka: {{SITENAME}}
 'revdelete-hide-comment'      => 'Klänedön redakamaküpeti',
 'revdelete-hide-user'         => 'Klänedön gebananemi u ladeti-IP redakana',
 'revdelete-hide-restricted'   => 'Gebön miedükamis at i demü guvans e lökofärmükön fometi at',
+'revdelete-radio-set'         => 'Si',
+'revdelete-radio-unset'       => 'Nö',
 'revdelete-suppress'          => 'Klänedön moükamakodis i de guvans (äsi de votikans)',
 'revdelete-unsuppress'        => 'Moükön miedükamis fomamas pegegetöl',
 'revdelete-log'               => 'Kod moükama:',
@@ -1059,7 +1060,7 @@ Dalol i dälön votikanes kosikön ko ol yufü gebana- u bespikapad olik nes sä
 * Bügil fulik sinifon, das geban duton lü grup tefik.
 * Bügil vagik sinifon, das geban no duton lü grup tefik.
 * El * sinifon, das no kanol moükön grupi posä iläükol oni, u güo.',
-'userrights-reason'           => 'Kod votükama:',
+'userrights-reason'           => 'Kod:',
 'userrights-no-interwiki'     => 'No labol däli ad votükön gebanagitätis in vüks votik.',
 'userrights-nodatabase'       => 'Nünodem: $1 no dabinon, u no binon topik.',
 'userrights-nologin'          => 'Mutol [[Special:UserLogin|nunädön oli]] me guvanakal ad dalön gevön gitätis gebanes.',
@@ -1810,7 +1811,7 @@ Ekö! parametem anuik pada: '''$1''':",
 'protect-othertime-op'        => 'tim votik',
 'protect-existing-expiry'     => 'Dul dabinöl: jü $3, tü $2',
 'protect-otherreason'         => 'Kod votik/pluik:',
-'protect-otherreason-op'      => 'kod votik/pluik',
+'protect-otherreason-op'      => 'Kod votik',
 'protect-dropdown'            => '* Jelakods suvik
 ** Vandalim tuik
 ** Spam tuik
@@ -1857,6 +1858,7 @@ Ba labol yümi dädik, u ba fomam pegepübon u pemoükon se registar.',
 'undelete-nodiff'              => 'Fomams büik no petuvons.',
 'undeletebtn'                  => 'Sädunön moükami',
 'undeletelink'                 => 'logön/sädunön',
+'undeleteviewlink'             => 'logön',
 'undeletereset'                => 'Vagükolöd vali',
 'undeleteinvert'               => 'Väli güükön',
 'undeletecomment'              => 'Küpet:',
@@ -1932,6 +1934,7 @@ $1',
 
 # Block/unblock
 'blockip'                         => 'Blokön gebani',
+'blockip-title'                   => 'Blokön gebani',
 'blockip-legend'                  => 'Blokön gebani',
 'blockiptext'                     => 'Gebolös padi at ad blokön redakamagitäti gebananema u ladeta-IP semikas. Atos söton padunön teiko ad vitön vandalimi, e bai [[{{MediaWiki:Policy-url}}|dunalesets {{SITENAME}}]]. Penolös dono kodi patik pro blokam (a. s., mäniotolös padis pedobüköl).',
 'ipaddress'                       => 'Ladet-IP',
@@ -2016,6 +2019,7 @@ $1',
 'ipb_already_blocked'             => '"$1" ya peblokon',
 'ipb-needreblock'                 => '== Ya Peblokon ==
 Geban: $1 ya peblokon. Vilol-li votükön parametis?',
+'ipb-otherblocks-header'          => '{{PLURAL:$1|Blokam|Blokams}} votik',
 'ipb_cant_unblock'                => 'Pöl: Bokamadientif: $1 no petuvon. Ba ya pesäblokon.',
 'ipb_blocked_as_range'            => 'Pöl: ladet-IP $1 no peblokon stedöfiko e no kanon pasäblokön.
 Peblokon ye as dil ladetema: $2, kel kanon pasäblokön.',
@@ -2145,6 +2149,7 @@ Ad seveigön padis, penolös tiädis in penamaspad dono, tiädi bal a kedet, e v
 'allmessagestext'           => 'Is binon lised sitanunas valik lonöföl in nemaspad: Sitanuns.
 Gebolös [http://www.mediawiki.org/wiki/Localisation Topükami ela MediaWiki] ed el [http://translatewiki.net translatewiki.net] if vilol keblünön topükame valemik ela MediaWiki.',
 'allmessagesnotsupportedDB' => "Pad at no kanon pagebön bi el '''\$wgUseDatabaseMessages''' penemögükon.",
+'allmessages-filter-legend' => 'Sul',
 'allmessages-filter-all'    => 'Valik',
 'allmessages-language'      => 'Pük:',
 'allmessages-filter-submit' => 'Golön',
@@ -2645,6 +2650,7 @@ Te lisedaliens (liens me * primöl) pabevobons. Yüm balid liena muton binön y�
 'watchlistall2'    => 'valikis',
 'namespacesall'    => 'valik',
 'monthsall'        => 'valik',
+'limitall'         => 'valikis',
 
 # E-mail address confirmation
 'confirmemail'             => 'Fümedolös ladeti leäktronik',

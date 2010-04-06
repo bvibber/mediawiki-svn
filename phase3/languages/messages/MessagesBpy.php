@@ -234,9 +234,6 @@ $messages = array(
 'namespaces'                 => 'নাঙরলাম',
 'variants'                   => 'ভেরিয়েন্টহানি',
 
-# Metadata in edit box
-'metadata_help' => 'মেটাডাটা:',
-
 'errorpagetitle'    => 'লাল',
 'returnto'          => '$1-ত আলথকে যাগা।',
 'tagline'           => 'মুক্ত বিশ্বকোষ উইকিপিডিয়াত্ত',
@@ -404,6 +401,7 @@ $1',
 'readonly_lag'         => 'ডাটাবেজহান তার তুন তাই বন্ধ ইসে, তার তলর ডাটাবেজ অতাই মানক ডাটাবেজহানর লগ দরে পারবাতা বুলিয়া',
 'internalerror'        => 'বিতরর লাল',
 'internalerror_info'   => 'ভিতরর লাল: $1',
+'fileappenderror'      => '"$1" লগে "$2" মিল করানি নাইল।',
 'filecopyerror'        => '"$1" ত্ত "$2" ফাইল কপি করানি নুৱারলাং',
 'filerenameerror'      => '"$1" ফাইলগর নাঙহান সিলকরিয়া "$2" থনা নাইল।',
 'filedeleteerror'      => '"$1" ফাইলগ পুসানি সম্ভব নাইল।',

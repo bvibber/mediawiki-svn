@@ -27,6 +27,7 @@
  * @author Purodha
  * @author Qaqqalik
  * @author Remember the dot
+ * @author Sarrus
  * @author Sir48
  * @author Slomox
  * @author Svip
@@ -347,9 +348,6 @@ $messages = array(
 'namespaces'                 => 'Navnerum',
 'variants'                   => 'Varianter',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fejl',
 'returnto'          => 'Tilbage til $1.',
 'tagline'           => 'Fra {{SITENAME}}',
@@ -516,6 +514,7 @@ Gør venligst en [[Special:ListUsers/sysop|administrator]] opmærksom på det, o
 'readonly_lag'         => 'Databasen er automatisk blevet låst mens slave database serverne synkronisere med master databasen',
 'internalerror'        => 'Intern fejl',
 'internalerror_info'   => 'Internal fejl: $1',
+'fileappenderror'      => 'Kunne ikke tilføje "$1" til "$2".',
 'filecopyerror'        => 'Kunne ikke kopiere filen "$1" til "$2".',
 'filerenameerror'      => 'Kunne ikke omdøbe filen "$1" til "$2".',
 'filedeleteerror'      => 'Kunne ikke slette filen "$1".',
@@ -599,6 +598,7 @@ Der skelnes mellem store og bogstaver i brugernavne.
 Kontrollér stavemåden, eller [[Special:UserLogin/signup|opret en ny konto]].',
 'nosuchusershort'            => 'Der er ingen bruger ved navn "$1". Tjek din stavning.',
 'nouserspecified'            => 'Angiv venligst et brugernavn.',
+'login-userblocked'          => 'Denne bruger er blokeret. Login er ikke tilladt',
 'wrongpassword'              => 'Den indtastede adgangskode var forkert. Prøv igen.',
 'wrongpasswordempty'         => 'Du glemte at indtaste password. Prøv igen.',
 'passwordtooshort'           => 'Adgangskoden skal mindst være på $1 {{PLURAL:$1|tegn|tegn}}.',
@@ -735,8 +735,8 @@ Angiv venligst alle de ovenstående detaljer ved eventuelle henvendelser.',
 'whitelistedittitle'               => 'Log på for at redigere',
 'whitelistedittext'                => 'Du skal $1 for at kunne redigere sider.',
 'confirmedittext'                  => 'Du skal først bekræfte e-mail-adressen, før du kan lave ændringer. Udfyld og bekræft din e-mail-adresse i dine [[Special:Preferences|Indstillinger]].',
-'nosuchsectiontitle'               => 'Afsnit findes ikke',
-'nosuchsectiontext'                => 'Du forsøgte at ændre det ikke eksisterende afsnit $1. Det er dog kun muligt at ændre eksisterende afsnit.',
+'nosuchsectiontitle'               => 'Kan ikke finde afsnittet',
+'nosuchsectiontext'                => 'Du forsøgte at ændre et ikke-eksisterende afsnit. Det kan være flyttet eller slettet, siden du hentede siden.',
 'loginreqtitle'                    => 'Log på nødvendigt',
 'loginreqlink'                     => 'logge på',
 'loginreqpagetext'                 => 'Du skal $1 for at se andre sider.',
@@ -762,6 +762,8 @@ Du kan [[Special:Search/{{PAGENAME}}|søge efter denne sides titel]] på andre s
 eller <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} se de relaterede loglister]</span>.',
 'userpage-userdoesnotexist'        => 'Brugerkontoen "$1" findes ikke. Overvej om du ønsker at oprette eller redigere denne side.',
 'userpage-userdoesnotexist-view'   => 'Brugerkontoen "$1" er ikke oprettet.',
+'blocked-notice-logextract'        => 'Denne bruger er i øjeblikket blokeret. 
+Loggen over den seneste blokering ses nedenfor:',
 'clearyourcache'                   => "'''Bemærk: Efter at have gemt er du nødt til at tømme din browsers cache for at kunne se ændringerne.'''
 '''Mozilla / Firefox / Safari''': Hold ''shifttasten'' nede og klik på ''reload'', eller tryk enten ''Ctrl-F5'' eller ''Ctrl-Shift-r'' (Mac: ''cmd-shift-r'');
 '''Konqueror''': Klik på ''reload'' eller tryk på ''F5'';
@@ -815,10 +817,13 @@ Overvej om siden kan opdeles i mindre dele.'''",
 'readonlywarning'                  => "'''ADVARSEL: Databasen er låst på grund af vedligeholdelse, så du kan ikke gemme dine ændringer lige nu. Det kan godt være en god ide at kopiere din tekst til en tekstfil, så du kan gemme den til senere.'''
 
 Systemadministratoren som låste databasen, gav denne forklaring: $1",
-'protectedpagewarning'             => "'''ADVARSEL: Denne side er skrivebeskyttet, så kun administratorer kan redigere den.'''",
-'semiprotectedpagewarning'         => "'''Bemærk:''' Siden er låst, så kun registrerede brugere kan ændre den.",
+'protectedpagewarning'             => "'''ADVARSEL: Denne side er skrivebeskyttet, så kun administratorer kan redigere den.'''<br />
+Den seneste logpost vises nedenfor:",
+'semiprotectedpagewarning'         => "'''Bemærk: Siden er låst, så kun registrerede brugere kan ændre den.'''
+<br />Den seneste logpost vises nedenfor:",
 'cascadeprotectedwarning'          => "'''BEMÆRK: Denne side er skrivebeskyttet, så den kun kan ændres af brugere med Administratorrettigheder. Den er indeholdt i nedenstående {{PLURAL:$1|side|sider}}, som er skrivebeskyttet med tilvalg af nedarvende sidebeskyttelse:'''",
-'titleprotectedwarning'            => "'''ADVARSEL:  Den side er låst så kun [[Special:ListGroupRights|visse brugere]] kan oprette den.'''",
+'titleprotectedwarning'            => "ADVARSEL:  Den side er låst så kun [[Special:ListGroupRights|visse brugere]] kan oprette den.'''
+<br />Den seneste logpost vises nedenfor:",
 'templatesused'                    => '{{PLURAL:$1|Skabelon|Skabeloner}} der er brugt på denne side:',
 'templatesusedpreview'             => 'Følgende {{PLURAL:$1|Skabelon|Skabeloner}} bruges af denne artikelforhåndsvisning:',
 'templatesusedsection'             => 'Følgende {{PLURAL:$1|skabelon|skabeloner}} bruges af dette afsnit:',
@@ -1552,6 +1557,10 @@ Denne wiki er konfigureret som en offentlig wiki.
 For optimal sikkerhed er img_auth.php deaktiveret.",
 'img-auth-noread'       => 'Brugeren har ikke rettigheder til at læse "$1".',
 
+# HTTP errors
+'http-invalid-url'      => 'Ugyldig webadresse: $1',
+'http-host-unreachable' => 'Webadresse er ikke tilgængelig.',
+
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL er utilgængelig',
 'upload-curl-error6-text'  => 'Den angivne URL er ikke tilgængelig. Kontroller adressen for fejl samt sidens onlinestatus .',
@@ -1858,7 +1867,7 @@ Se også [[Special:WantedCategories|ønskede kategorier]].',
 
 # Special:ListGroupRights
 'listgrouprights'                      => 'Brugergrupperettigheder',
-'listgrouprights-summary'              => 'Denne side vider de brugergrupper der er defineret på denne wiki og de enkelte gruppers rettigheder.
+'listgrouprights-summary'              => 'Denne side viser de brugergrupper der er defineret på denne wiki og de enkelte gruppers rettigheder.
 
 Der findes muligvis [[{{MediaWiki:Listgrouprights-helppage}}|yderligere information]] om de enkelte rettigheder.',
 'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Given rettighed</span>
@@ -2314,6 +2323,7 @@ $1 er allerede blokkeret. Vil du ændre indstillingene?',
 
 I disse tilfælde er du nødt til at flytte eller sammenflette siden manuelt.",
 'movearticle'                  => 'Flyt side',
+'moveuserpage-warning'         => "'''Advarsel:''' Du er ved at flytte en brugerside. Bemærk at det kun er siden, der vil blive flyttet - brugeren bliver ''ikke'' ømdøbt.",
 'movenologin'                  => 'Ikke logget på',
 'movenologintext'              => 'Du skal være registreret bruger og [[Special:UserLogin|logget på]] for at flytte en side.',
 'movenotallowed'               => 'Du har ikke rettigheder til at flytte sider.',
@@ -2366,8 +2376,10 @@ Artiklen "[[:$1]]" eksisterer allerede. Vil du slette den for at gøre plads til
 'imageinvalidfilename'         => 'Destinationsnavnet er ugyldigt',
 'fix-double-redirects'         => 'Opdater henvisninger til det oprindelige navn',
 'move-leave-redirect'          => 'Efterlad en omdirigering',
-'protectedpagemovewarning'     => "'''Bemærk:''' Denne side er låst så kun administratorer kan flytte den.",
-'semiprotectedpagemovewarning' => "'''Bemærk:''' Denne side er låst så kun registrerede brugere kan flytte den.",
+'protectedpagemovewarning'     => "'''Bemærk:''' Denne side er låst så kun administratorer kan flytte den.<br />
+Den seneste logpost vises nedenfor:",
+'semiprotectedpagemovewarning' => "'''Bemærk:''' Denne side er låst så kun registrerede brugere kan flytte den.<br />
+Den seneste logpost vises nedenfor:",
 'move-over-sharedrepo'         => '== Fil findes ==
 [[:$1]] findes på en delt kilde. Ved at flytte en fil til denne titel vil overskrive den eksisterende delte fil.',
 'file-exists-sharedrepo'       => 'Det valgte filnavn er allerede i brug på en delt kilde.
@@ -2608,7 +2620,7 @@ Dette skyldes sandsynligvis en henvisning til et sortlistet eksternt websted.',
 'markaspatrolleddiff'                 => 'Markér som patruljeret',
 'markaspatrolledtext'                 => 'Markér denne artikel som patruljeret',
 'markedaspatrolled'                   => 'Markeret som patruljeret',
-'markedaspatrolledtext'               => 'Den valgte revision er nu markeret som patruljeret.',
+'markedaspatrolledtext'               => 'Den valgte redigering af [[:$1]] er nu markeret som patruljeret.',
 'rcpatroldisabled'                    => 'Seneste ændringer-patruljeringen er slået fra',
 'rcpatroldisabledtext'                => 'Funktionen til seneste ændringer-patruljeringen er pt. slået fra.',
 'markedaspatrollederror'              => 'Markering som „kontrolleret“ ikke mulig.',
@@ -2963,23 +2975,23 @@ Kun indholdet af lister (linjer startende med *) bliver brugt. Den første henvi
 'limitall'         => 'alle',
 
 # E-mail address confirmation
-'confirmemail'             => 'Bekræft e-mail-adressen',
-'confirmemail_noemail'     => 'Du har ikke angivet en gyldig e-mail-adresse i din [[Special:Preferences|brugerprofil]].',
-'confirmemail_text'        => '{{SITENAME}} kræver, at du bekræfter en e-mail-adresse (autentificering), før du kan bruge de udvidede e-mail-funktioner. Med et klik på kontrolfeltet forneden sendes en e-mail til dig. Denne e-mail indeholder et link med en bekræftelseskode. Med et klik på dette link bekræftes, at e-mail-adressen er gyldig.',
-'confirmemail_pending'     => 'En bekræftelsesmail er allerede sendt til dig. Hvis du først for nylig har oprettet brugerkontoen, vent da et par minutter på denne e-mail, før du bestiller en ny kode.',
-'confirmemail_send'        => 'Send bekræftelseskode',
-'confirmemail_sent'        => 'Bekræftelses-e-amil afsendt.',
-'confirmemail_oncreate'    => 'En bekræftelseskode er sendt til din e-mail-adresse. Denne kode skal ikke bruges til anmeldelsen, den kræves dog til aktiveringen af e-mail-funktionerne indenfor Wikien.',
-'confirmemail_sendfailed'  => 'Bekræftelsesmailen kunne ikke afsendes. Kontroller at e-mail-adressen er korrekt.
+'confirmemail'              => 'Bekræft e-mail-adressen',
+'confirmemail_noemail'      => 'Du har ikke angivet en gyldig e-mail-adresse i din [[Special:Preferences|brugerprofil]].',
+'confirmemail_text'         => '{{SITENAME}} kræver, at du bekræfter en e-mail-adresse (autentificering), før du kan bruge de udvidede e-mail-funktioner. Med et klik på kontrolfeltet forneden sendes en e-mail til dig. Denne e-mail indeholder et link med en bekræftelseskode. Med et klik på dette link bekræftes, at e-mail-adressen er gyldig.',
+'confirmemail_pending'      => 'En bekræftelsesmail er allerede sendt til dig. Hvis du først for nylig har oprettet brugerkontoen, vent da et par minutter på denne e-mail, før du bestiller en ny kode.',
+'confirmemail_send'         => 'Send bekræftelseskode',
+'confirmemail_sent'         => 'Bekræftelses-e-amil afsendt.',
+'confirmemail_oncreate'     => 'En bekræftelseskode er sendt til din e-mail-adresse. Denne kode skal ikke bruges til anmeldelsen, den kræves dog til aktiveringen af e-mail-funktionerne indenfor Wikien.',
+'confirmemail_sendfailed'   => 'Bekræftelsesmailen kunne ikke afsendes. Kontroller at e-mail-adressen er korrekt.
 
 Rückmeldung des Mailservers: $1',
-'confirmemail_invalid'     => 'Ugyldig bekræftelseskode. Kodens gyldighed er muligvis udløbet.',
-'confirmemail_needlogin'   => 'Du skal $1 for at bekræfte e-mail-adressen.',
-'confirmemail_success'     => 'E-mail-adressen er nu bekræftet. Du kan nu logge på.',
-'confirmemail_loggedin'    => 'E-mail-adressen er nu bekræftet.',
-'confirmemail_error'       => 'Der skete en fejl ved bekræftelsen af e-mail-adressen.',
-'confirmemail_subject'     => '[{{SITENAME}}] - bekræftelse af e-mail-adressen',
-'confirmemail_body'        => 'Hej,
+'confirmemail_invalid'      => 'Ugyldig bekræftelseskode. Kodens gyldighed er muligvis udløbet.',
+'confirmemail_needlogin'    => 'Du skal $1 for at bekræfte e-mail-adressen.',
+'confirmemail_success'      => 'E-mail-adressen er nu bekræftet. Du kan nu logge på.',
+'confirmemail_loggedin'     => 'E-mail-adressen er nu bekræftet.',
+'confirmemail_error'        => 'Der skete en fejl ved bekræftelsen af e-mail-adressen.',
+'confirmemail_subject'      => '[{{SITENAME}}] - bekræftelse af e-mail-adressen',
+'confirmemail_body'         => 'Hej,
 
 Nogen med IP-adresse $1, sandsynligvis dig, har bestilt en bekræftelse af denne e-mail-adresse til brugerkontoen "$2" på {{SITENAME}}.
 
@@ -2991,8 +3003,19 @@ Hvis denne e-mail-adresse *ikke* hører til den anførte brugerkonto, skal du i 
 
 -- 
 {{SITENAME}}: {{fullurl:{{Mediawiki:mainpage}}}}',
-'confirmemail_invalidated' => 'E-mail-bekræftelse afvist',
-'invalidateemail'          => 'Cancel e-mail confirmation',
+'confirmemail_body_changed' => 'Der er nogen, sandsynligvis dig, fra ip-adressen $1, der har ændret emailadressen for kontoen "$2" til denne adresse på {{SITENAME}}.
+
+For at bekræfte, at denne konto virkeligt tilhører dig og for at genaktivere emailfunktionerne på {{SITENAME}}, bedes du åbne følgende link i en browser:
+
+$3
+
+Hvis denne konto *ikke* tilhører dig, bedes du åbne følgende link, for at afbryde ændringen
+
+$5
+
+Denne bekræftelseskode udløber $4',
+'confirmemail_invalidated'  => 'E-mail-bekræftelse afvist',
+'invalidateemail'           => 'Cancel e-mail confirmation',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki-tilkobling er deaktiveret]',

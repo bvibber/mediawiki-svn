@@ -54,7 +54,7 @@ abstract class BagOStuff {
 	abstract public function get( $key );
 
 	/**
-	 * Set an item. 
+	 * Set an item.
 	 * @param $key string
 	 * @param $value mixed
 	 * @param $exptime int Either an interval in seconds or a unix timestamp for expiry
@@ -87,9 +87,11 @@ abstract class BagOStuff {
 	/* Better performance can likely be got with custom written versions */
 	public function get_multi( $keys ) {
 		$out = array();
+
 		foreach ( $keys as $key ) {
 			$out[$key] = $this->get( $key );
 		}
+
 		return $out;
 	}
 
@@ -140,7 +142,7 @@ abstract class BagOStuff {
 	}
 
 	public function decr( $key, $value = 1 ) {
-		return $this->incr( $key, -$value );
+		return $this->incr( $key, - $value );
 	}
 
 	public function debug( $text ) {
@@ -159,7 +161,6 @@ abstract class BagOStuff {
 		}
 	}
 }
-
 
 /**
  * Functional versions!
@@ -254,10 +255,10 @@ class SqlBagOStuff extends BagOStuff {
 			$this->debug( "get: key has expired, deleting" );
 			try {
 				$db->begin();
-				# Put the expiry time in the WHERE condition to avoid deleting a 
+				# Put the expiry time in the WHERE condition to avoid deleting a
 				# newly-inserted value
-				$db->delete( 'objectcache', 
-					array( 
+				$db->delete( 'objectcache',
+					array(
 						'keyname' => $key,
 						'exptime' => $row->exptime
 					), __METHOD__ );
@@ -284,8 +285,8 @@ class SqlBagOStuff extends BagOStuff {
 		try {
 			$db->begin();
 			$db->delete( 'objectcache', array( 'keyname' => $key ), __METHOD__ );
-			$db->insert( 'objectcache', 
-				array( 
+			$db->insert( 'objectcache',
+				array(
 					'keyname' => $key,
 					'value' => $db->encodeBlob( $this->serialize( $value ) ),
 					'exptime' => $encExpiry
@@ -349,7 +350,7 @@ class SqlBagOStuff extends BagOStuff {
 
 	public function keys() {
 		$db = $this->getDB();
-		$res = $db->select( 'objectcache', array( 'keyname' ), false, __METHOD__ );	
+		$res = $db->select( 'objectcache', array( 'keyname' ), false, __METHOD__ );
 		$result = array();
 		foreach ( $res as $row ) {
 			$result[] = $row->keyname;
@@ -458,52 +459,7 @@ class SqlBagOStuff extends BagOStuff {
 /**
  * Backwards compatibility alias
  */
-class MediaWikiBagOStuff extends SqlBagOStuff {}
-
-/**
- * This is a wrapper for Turck MMCache's shared memory functions.
- *
- * You can store objects with mmcache_put() and mmcache_get(), but Turck seems
- * to use a weird custom serializer that randomly segfaults. So we wrap calls
- * with serialize()/unserialize().
- *
- * The thing I noticed about the Turck serialized data was that unlike ordinary
- * serialize(), it contained the names of methods, and judging by the amount of
- * binary data, perhaps even the bytecode of the methods themselves. It may be
- * that Turck's serializer is faster, so a possible future extension would be
- * to use it for arrays but not for objects.
- *
- * @ingroup Cache
- */
-class TurckBagOStuff extends BagOStuff {
-	public function get( $key ) {
-		$val = mmcache_get( $key );
-		if ( is_string( $val ) ) {
-			$val = unserialize( $val );
-		}
-		return $val;
-	}
-
-	public function set( $key, $value, $exptime = 0 ) {
-		mmcache_put( $key, serialize( $value ), $exptime );
-		return true;
-	}
-
-	public function delete( $key, $time = 0 ) {
-		mmcache_rm( $key );
-		return true;
-	}
-
-	public function lock( $key, $waitTimeout = 0 ) {
-		mmcache_lock( $key );
-		return true;
-	}
-
-	public function unlock( $key ) {
-		mmcache_unlock( $key );
-		return true;
-	}
-}
+class MediaWikiBagOStuff extends SqlBagOStuff { }
 
 /**
  * This is a wrapper for APC's shared memory functions
@@ -528,13 +484,22 @@ class APCBagOStuff extends BagOStuff {
 		apc_delete( $key );
 		return true;
 	}
-}
 
+	public function keys() {
+		$info = apc_cache_info( 'user' );
+		$list = $info['cache_list'];
+		$keys = array();
+		foreach ( $list as $entry ) {
+			$keys[] = $entry['info'];
+		}
+		return $keys;
+	}
+}
 
 /**
  * This is a wrapper for eAccelerator's shared memory functions.
  *
- * This is basically identical to the Turck MMCache version,
+ * This is basically identical to the deceased Turck MMCache version,
  * mostly because eAccelerator is based on Turck MMCache.
  *
  * @ingroup Cache
@@ -614,13 +579,12 @@ class XCacheBagOStuff extends BagOStuff {
 		xcache_unset( $key );
 		return true;
 	}
-
 }
 
 /**
- * Cache that uses DBA as a backend. 
- * Slow due to the need to constantly open and close the file to avoid holding 
- * writer locks. Intended for development use only,  as a memcached workalike 
+ * Cache that uses DBA as a backend.
+ * Slow due to the need to constantly open and close the file to avoid holding
+ * writer locks. Intended for development use only,  as a memcached workalike
  * for systems that don't have it.
  *
  * @ingroup Cache
@@ -659,7 +623,7 @@ class DBABagOStuff extends BagOStuff {
 			return array(
 				unserialize( substr( $blob, 11 ) ),
 				intval( substr( $blob, 0, 10 ) )
-		   	);
+			);
 		}
 	}
 

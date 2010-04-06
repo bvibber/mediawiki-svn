@@ -36,8 +36,8 @@ $messages = array(
 'tog-previewontop'            => 'Zitú ntàkịrị mgbe opuzọr zi igbe orü',
 'tog-previewonfirst'          => 'Zitú nke takírí orü mbu',
 'tog-nocache'                 => 'Kúfù ikạchèrè ihü',
-'tog-enotifwatchlistpages'    => 'Turúm e-mail mgbe ihü nor na ndetu ihem ne lé gbanwere',
-'tog-enotifusertalkpages'     => 'Turúm e-mail ngbe ébé okwu ndi na banife nkem gbanwere',
+'tog-enotifwatchlistpages'    => 'Türüm e-mail mgbe ihü nor na ndetu ihem ne lé gbanwere',
+'tog-enotifusertalkpages'     => 'Türüm e-mail ngbe ébé okwu ndi na banife nkem gbanwere',
 'tog-enotifminoredits'        => 'Türüm e-mail maka orü ntakịrị ihüá',
 'tog-enotifrevealaddr'        => 'Zifór ahaebeibị e-mail m na e-mail okwuókà',
 'tog-shownumberswatching'     => 'Zi onuogụgụ ndi na banife nke ne lé',
@@ -46,6 +46,7 @@ $messages = array(
 'tog-watchlisthidebots'       => 'Zonari orü bot fwuör ndetu ihem ne lé',
 'tog-watchlisthideminor'      => 'Zonari orü ntakịrị fwuör ndetu ihem ne lé',
 'tog-watchlisthideliu'        => 'Zonari orü ndi na banife nke ndi banyèrè a banyé, fwuör ndetu ihem ne lé',
+'tog-ccmeonemails'            => 'Sipu iye e-mail m na sipu ndi ozor',
 'tog-showhiddencats'          => 'Zi ébéonọr zonari a zonari',
 
 'underline-always'  => 'Ngbẹowula',
@@ -123,6 +124,8 @@ $messages = array(
 'index-category'           => 'Ẹdẹle Ihü',
 'noindex-category'         => 'Ihü ẹdẹlebu',
 
+'mainpagetext' => "<big>'''MediaWiki a banyélé nke oma.'''</big>",
+
 'about'         => 'Abwátà',
 'article'       => 'Ihü iheníle',
 'newwindow'     => '(o na mepo na onyonyo ohúrù)',
@@ -171,9 +174,6 @@ $messages = array(
 'actions'                    => 'Mmèmé',
 'namespaces'                 => 'Ámááhà',
 'variants'                   => 'Nke ichè ichè',
-
-# Metadata in edit box
-'metadata_help' => 'Ómárí nso:',
 
 'errorpagetitle'    => 'Nsogbú',
 'returnto'          => 'Ganata na $1.',
@@ -255,6 +255,8 @@ $1',
 'privacypage'          => 'Project:Iwu maka ndi ichi ichie',
 
 'badaccess' => 'Nsogbu ébé ha na nyé ike I bàtá',
+
+'versionrequired' => 'MediaWiki nke $1 gi nọkwạ',
 
 'ok'                      => 'Ngwanu',
 'retrievedfrom'           => "Wefụtàrà ya shí ''$1''",
@@ -362,6 +364,7 @@ Biko meríáríá ya.',
 'wrongpasswordempty'      => 'Mkpurụ okwu ejị a gafẹ á dighi.
 Biko meríáríá ya.',
 'mailmypassword'          => 'Me e-mail mkpurụ okwu ejị a gafẹ nke ohúrù',
+'mailerror'               => 'Nsogbú mẹrẹ mgbe ozi nke chorí gá: $1',
 'emailconfirmlink'        => 'Lé ka I hü ma ihià bu ézíbóté e-mail gi',
 'accountcreated'          => 'Ndoté è mepólé',
 'loginlanguagelabel'      => 'Asụsụ: $1',
@@ -403,6 +406,7 @@ I na á banye...',
 'subject-preview'        => 'Ihe gbasara/Ishi ahiri I hütü ntakịrị:',
 'blockedtitle'           => 'Há gbachiri onye á ezí',
 'blockednoreason'        => 'amaghi ihe omẹrẹ ya maka',
+'blockedoriginalsource'  => "Nkpurụ '''$1''' zịrị na alạ:",
 'whitelistedittitle'     => 'I kweshiri banyé I chori rüwa nga',
 'nosuchsectiontitle'     => 'Aná a hu nkeji',
 'loginreqtitle'          => 'I kweshiri banyé eba',

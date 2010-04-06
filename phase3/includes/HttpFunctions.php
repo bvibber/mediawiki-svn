@@ -27,6 +27,7 @@ class Http {
 	 * @returns mixed (bool)false on failure or a string on success
 	 */
 	public static function request( $method, $url, $options = array() ) {
+		$url = wfExpandUrl( $url );
 		wfDebug( "HTTP: $method: $url" );
 		$options['method'] = strtoupper( $method );
 		if ( !isset( $options['timeout'] ) ) {
@@ -140,7 +141,7 @@ class HttpRequest {
 
 	protected $headerList = array();
 	protected $respVersion = "0.9";
-	protected $respStatus = "0.1";
+	protected $respStatus = "200 Ok";
 	protected $respHeaders = array();
 
 	public $status;
@@ -156,7 +157,7 @@ class HttpRequest {
 		$this->parsedUrl = parse_url( $url );
 
 		if ( !Http::isValidURI( $this->url ) ) {
-			$this->status = Status::newFromFatal('http-invalid-url');
+			$this->status = Status::newFatal('http-invalid-url');
 		} else {
 			$this->status = Status::newGood( 100 ); // continue
 		}
@@ -225,6 +226,8 @@ class HttpRequest {
 			$this->proxy = 'http://localhost:80/';
 		} elseif ( $wgHTTPProxy ) {
 			$this->proxy = $wgHTTPProxy ;
+		} elseif ( getenv( "http_proxy" ) ) {
+			$this->proxy = getenv( "http_proxy" );
 		}
 	}
 
@@ -258,8 +261,8 @@ class HttpRequest {
 
 		if( $this->cookieJar ) {
 			$this->reqHeaders['Cookie'] =
-				$this->cookieJar->serializeToHttpRequest($this->parsedURL['path'],
-														 $this->parsedURL['host']);
+				$this->cookieJar->serializeToHttpRequest($this->parsedUrl['path'],
+														 $this->parsedUrl['host']);
 		}
 		foreach($this->reqHeaders as $name => $value) {
 			$list[] = "$name: $value";
@@ -318,6 +321,12 @@ class HttpRequest {
 		}
 	}
 
+	/**
+	 * Parses the headers, including the HTTP status code and any
+	 * Set-Cookie headers.  This function expectes the headers to be
+	 * found in an array in the member variable headerList.
+	 * @returns nothing
+	 */
 	protected function parseHeader() {
 		$lastname = "";
 		foreach( $this->headerList as $header ) {
@@ -337,6 +346,39 @@ class HttpRequest {
 	}
 
 	/**
+	 * Sets the member variable status to a fatal status if the HTTP
+	 * status code was not 200.
+	 * @returns nothing
+	 */
+	protected function setStatus() {
+		if( !$this->respHeaders ) {
+			$this->parseHeader();
+		}
+
+		if((int)$this->respStatus !== 200) {
+			list( $code, $message ) = explode(" ", $this->respStatus, 2);
+			$this->status->fatal("http-bad-status", $code, $message );
+		}
+	}
+
+
+	/**
+	 * Returns true if the last status code was a redirect.
+	 * @return bool
+	 */
+	public function isRedirect() {
+		if( !$this->respHeaders ) {
+			$this->parseHeader();
+		}
+
+		$status = (int)$this->respStatus;
+		if ( $status >= 300 && $status < 400 ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Returns an associative array of response headers after the
 	 * request has been executed.  Because some headers
 	 * (e.g. Set-Cookie) can appear more than once the, each value of
@@ -348,6 +390,22 @@ class HttpRequest {
 			$this->parseHeader();
 		}
 		return $this->respHeaders;
+	}
+
+	/**
+	 * Returns the value of the given response header.
+	 * @param $header string
+	 * @return string
+	 */
+	public function getResponseHeader($header) {
+		if( !$this->respHeaders ) {
+			$this->parseHeader();
+		}
+		if ( isset( $this->respHeaders[strtolower ( $header ) ] ) ) {
+			$v = $this->respHeaders[strtolower ( $header ) ];
+			return $v[count( $v ) - 1];
+		}
+		return null;
 	}
 
 	/**
@@ -402,13 +460,12 @@ class HttpRequest {
 	 * @returns string
 	 */
 	public function getFinalUrl() {
-		$finalUrl = $this->url;
-		if ( isset( $this->respHeaders['location'] ) ) {
-			$redir = $this->respHeaders['location'];
-			$finalUrl = $redir[count($redir) - 1];
+		$location = $this->getResponseHeader("Location");
+		if ( $location ) {
+			return $location;
 		}
 
-		return $finalUrl;
+		return $this->url;
 	}
 }
 
@@ -453,23 +510,69 @@ class Cookie {
 			$this->path = "/";
 		}
 		if( isset( $attr['domain'] ) ) {
-			$this->domain = self::parseCookieDomain( $attr['domain'] );
+			if( self::validateCookieDomain( $attr['domain'] ) ) {
+				$this->domain = $attr['domain'];
+			}
 		} else {
 			throw new MWException("You must specify a domain.");
 		}
 	}
 
-	public static function parseCookieDomain( $domain ) {
-		/* If domain is given, it has to contain at least two dots */
-		if ( strrpos( $domain, '.' ) === false
-			 || strrpos( $domain, '.' ) === strpos( $domain, '.' ) ) {
-			return;
-		}
-		if ( substr( $domain, 0, 1 ) === '.' ) {
-			$domain = substr( $domain, 1 );
+	/**
+	 * Return the true if the cookie is valid is valid.  Otherwise,
+	 * false.  The uses a method similar to IE cookie security
+	 * described here:
+	 * http://kuza55.blogspot.com/2008/02/understanding-cookie-security.html
+	 * A better method might be to use a blacklist like
+	 * http://publicsuffix.org/
+	 *
+	 * @param $domain string the domain to validate
+	 * @param $originDomain string (optional) the domain the cookie originates from
+	 * @return bool
+	 */
+	public static function validateCookieDomain( $domain, $originDomain = null) {
+		// Don't allow a trailing dot
+		if( substr( $domain, -1 ) == "." ) return false;
+
+		$dc = explode(".", $domain);
+
+		// Don't allow cookies for "localhost", "ls" or other dot-less hosts
+		if( count($dc) < 2 ) return false;
+
+		// Only allow full, valid IP addresses
+		if( preg_match( '/^[0-9.]+$/', $domain ) ) {
+			if( count( $dc ) != 4 ) return false;
+
+			if( ip2long( $domain ) === false ) return false;
+
+			if( $originDomain == null || $originDomain == $domain ) return true;
+
 		}
 
-		return $domain;
+		// Don't allow cookies for "co.uk" or "gov.uk", etc, but allow "supermarket.uk"
+		if( strrpos( $domain, "." ) - strlen( $domain )  == -3 ) {
+			if( (count($dc) == 2 && strlen( $dc[0] ) <= 2 )
+				|| (count($dc) == 3 && strlen( $dc[0] ) == "" && strlen( $dc[1] ) <= 2 ) ) {
+				return false;
+			}
+			if( (count($dc) == 2 || (count($dc) == 3 && $dc[0] == "") )
+				&& preg_match( '/(com|net|org|gov|edu)\...$/', $domain) ) {
+				return false;
+			}
+		}
+
+		if( $originDomain != null ) {
+			if( substr( $domain, 0, 1 ) != "." && $domain != $originDomain ) {
+				return false;
+			}
+			if( substr( $domain, 0, 1 ) == "."
+				&& substr_compare( $originDomain, $domain, -strlen( $domain ),
+								   strlen( $domain ), TRUE ) != 0 ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/**
@@ -491,8 +594,11 @@ class Cookie {
 	}
 
 	protected function canServeDomain( $domain ) {
-		if( $this->domain && substr_compare( $domain, $this->domain, -strlen( $this->domain ),
-											 strlen( $this->domain ), TRUE ) == 0 ) {
+		if( $domain == $this->domain
+			|| ( strlen( $domain) > strlen( $this->domain )
+				 && substr( $this->domain, 0, 1) == "."
+				 && substr_compare( $domain, $this->domain, -strlen( $this->domain ),
+									strlen( $this->domain ), TRUE ) == 0 ) ) {
 			return true;
 		}
 		return false;
@@ -572,13 +678,10 @@ class CookieJar {
 
 			if( !isset( $attr['domain'] ) ) {
 				$attr['domain'] = $domain;
-			} else {
-				if ( strlen( $attr['domain'] ) < strlen( $domain )
-					 && substr_compare( $domain, $attr['domain'], -strlen( $attr['domain'] ),
-										strlen( $attr['domain'] ), TRUE ) != 0 ) {
-					return; /* silently reject a bad cookie */
-				}
+			} elseif ( !Cookie::validateCookieDomain( $attr['domain'], $domain ) ) {
+				return null;
 			}
+
 			$this->setCookie( $name, $value, $attr );
 		}
 	}
@@ -662,11 +765,15 @@ class CurlHttpRequest extends HttpRequest {
 
 		curl_close( $curlHandle );
 
+		$this->parseHeader();
+		$this->setStatus();
 		return $this->status;
 	}
 }
 
 class PhpHttpRequest extends HttpRequest {
+	protected $manuallyRedirect = false;
+
 	protected function urlToTcp( $url ) {
 		$parsedUrl = parse_url( $url );
 
@@ -674,13 +781,16 @@ class PhpHttpRequest extends HttpRequest {
 	}
 
 	public function execute() {
-		if ( $this->parsedUrl['scheme'] != 'http' ) {
-			$this->status->fatal( 'http-invalid-scheme', $this->parsedURL['scheme'] );
+		parent::execute();
+
+		// At least on Centos 4.8 with PHP 5.1.6, using max_redirects to follow redirects
+		// causes a segfault
+		if ( version_compare( '5.1.7', phpversion(), '>' ) ) {
+			$this->manuallyRedirect = true;
 		}
 
-		parent::execute();
-		if ( !$this->status->isOK() ) {
-			return $this->status;
+		if ( $this->parsedUrl['scheme'] != 'http' ) {
+			$this->status->fatal( 'http-invalid-scheme', $this->parsedUrl['scheme'] );
 		}
 
 		$this->reqHeaders['Accept'] = "*/*";
@@ -696,19 +806,22 @@ class PhpHttpRequest extends HttpRequest {
 			$options['request_fulluri'] = true;
 		}
 
-		if ( !$this->followRedirects ) {
+		if ( !$this->followRedirects || $this->manuallyRedirect ) {
 			$options['max_redirects'] = 0;
 		} else {
 			$options['max_redirects'] = $this->maxRedirects;
 		}
 
 		$options['method'] = $this->method;
-		$options['timeout'] = $this->timeout;
 		$options['header'] = implode("\r\n", $this->getHeaderList());
 		// Note that at some future point we may want to support
 		// HTTP/1.1, but we'd have to write support for chunking
 		// in version of PHP < 5.3.1
 		$options['protocol_version'] = "1.0";
+
+		// This is how we tell PHP we want to deal with 404s (for example) ourselves.
+		// Only works on 5.2.10+
+		$options['ignore_errors'] = true;
 
 		if ( $this->postData ) {
 			$options['content'] = $this->postData;
@@ -717,35 +830,56 @@ class PhpHttpRequest extends HttpRequest {
 		$oldTimeout = false;
 		if ( version_compare( '5.2.1', phpversion(), '>' ) ) {
 			$oldTimeout = ini_set('default_socket_timeout', $this->timeout);
+		} else {
+			$options['timeout'] = $this->timeout;
 		}
 
 		$context = stream_context_create( array( 'http' => $options ) );
-		wfSuppressWarnings();
-		$fh = fopen( $this->url, "r", false, $context );
-		wfRestoreWarnings();
+
+		$this->headerList = array();
+		$reqCount = 0;
+		$url = $this->url;
+		do {
+			$again = false;
+			$reqCount++;
+			wfSuppressWarnings();
+			$fh = fopen( $url, "r", false, $context );
+			wfRestoreWarnings();
+			if ( $fh ) {
+				$result = stream_get_meta_data( $fh );
+				$this->headerList = $result['wrapper_data'];
+				$this->parseHeader();
+				$url = $this->getResponseHeader("Location");
+				$again = $this->manuallyRedirect && $this->followRedirects && $url
+					&& $this->isRedirect() && $this->maxRedirects > $reqCount;
+			}
+		} while ( $again );
+
 		if ( $oldTimeout !== false ) {
 			ini_set('default_socket_timeout', $oldTimeout);
 		}
+		$this->setStatus();
+
 		if ( $fh === false ) {
 			$this->status->fatal( 'http-request-error' );
 			return $this->status;
 		}
 
-		$result = stream_get_meta_data( $fh );
 		if ( $result['timed_out'] ) {
 			$this->status->fatal( 'http-timed-out', $this->url );
 			return $this->status;
 		}
-		$this->headerList = $result['wrapper_data'];
 
-		while ( !feof( $fh ) ) {
-			$buf = fread( $fh, 8192 );
-			if ( $buf === false ) {
-				$this->status->fatal( 'http-read-error' );
-				break;
-			}
-			if ( strlen( $buf ) ) {
-				call_user_func( $this->callback, $fh, $buf );
+		if($this->status->isOK()) {
+			while ( !feof( $fh ) ) {
+				$buf = fread( $fh, 8192 );
+				if ( $buf === false ) {
+					$this->status->fatal( 'http-read-error' );
+					break;
+				}
+				if ( strlen( $buf ) ) {
+					call_user_func( $this->callback, $fh, $buf );
+				}
 			}
 		}
 		fclose( $fh );

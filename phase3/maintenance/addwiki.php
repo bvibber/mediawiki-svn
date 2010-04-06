@@ -38,22 +38,23 @@ class AddWiki extends Maintenance {
 		$this->addArg( 'dbname', 'Name of database to create' );
 	}
 
-	protected function getDbType() {
+	public function getDbType() {
 		return Maintenance::DB_ADMIN;
 	}
 
 	public function execute() {
-		global $IP, $wgLanguageNames, $wgDefaultExternalStore, $wgNoDBParam;
+		global $IP, $wgDefaultExternalStore, $wgNoDBParam;
 
 		$wgNoDBParam = true;
 		$lang = $this->getArg(0);
 		$site = $this->getArg(1);
 		$dbName = $this->getArg(2);
+		$languageNames = Language::getLanguageNames();
 
-		if ( !isset( $wgLanguageNames[$lang] ) ) {
+		if ( !isset( $languageNames[$lang] ) ) {
 			$this->error( "Language $lang not found in \$wgLanguageNames", true );
 		}
-		$name = $wgLanguageNames[$lang];
+		$name = $languageNames[$lang];
 
 		$dbw = wfGetDB( DB_MASTER );
 		$common = "/home/wikipedia/common";
@@ -80,6 +81,7 @@ class AddWiki extends Maintenance {
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/ClickTracking/ClickTrackingEvents.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.sql" );
+		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/Optin/OptIn.sql" );
 
 		$dbw->query( "INSERT INTO site_stats(ss_row_id) VALUES (1)" );
 

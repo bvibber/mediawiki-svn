@@ -389,9 +389,6 @@ $messages = array(
 'vector-view-viewsource'     => 'Sýna frumkóða',
 'namespaces'                 => 'Nafnrými',
 
-# Metadata in edit box
-'metadata_help' => 'Lýsigögn:',
-
 'errorpagetitle'    => 'Villa',
 'returnto'          => 'Aftur á: $1.',
 'tagline'           => 'Úr {{SITENAME}}',
@@ -552,6 +549,7 @@ Gjörðu svo vel og tilkynntu atvikið til [[Special:ListUsers/sysop|stjórnanda
 'readonly_lag'         => 'Gagnagrunninum hefur verið læst sjálfkrafa á meðan undirvefþjónarnir reyna að hafa í við aðalvefþjóninn',
 'internalerror'        => 'Kerfisvilla',
 'internalerror_info'   => 'Innri villa: $1',
+'fileappenderror'      => 'Gat ekki bætt „$1“ við „$2“.',
 'filecopyerror'        => 'Gat ekki afritað skjal "$1" á "$2".',
 'filerenameerror'      => 'Gat ekki endurnefnt skrána „$1“ í „$2“.',
 'filedeleteerror'      => 'Gat ekki eytt skránni „$1“.',

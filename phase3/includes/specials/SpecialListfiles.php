@@ -34,7 +34,7 @@ class ImageListPager extends TablePager {
 		}
 		$search = $wgRequest->getText( 'ilsearch' );
 		if ( $search != '' && !$wgMiserMode ) {
-			$nt = Title::newFromUrl( $search );
+			$nt = Title::newFromURL( $search );
 			if( $nt ) {
 				$dbr = wfGetDB( DB_SLAVE );
 				$this->mQueryConds = array( 'LOWER(img_name)' . $dbr->buildLike( $dbr->anyString(), 
@@ -131,7 +131,7 @@ class ImageListPager extends TablePager {
 				if ( $imgfile === null ) $imgfile = wfMsg( 'imgfile' );
 
 				$name = $this->mCurrentRow->img_name;
-				$link = $this->getSkin()->linkKnown( Title::makeTitle( NS_FILE, $name ), $value );
+				$link = $this->getSkin()->linkKnown( Title::makeTitle( NS_FILE, $name ), htmlspecialchars( $value ) );
 				$image = wfLocalFile( $value );
 				$url = $image->getURL();
 				$download = Xml::element('a', array( 'href' => $url ), $imgfile );

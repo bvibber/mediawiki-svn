@@ -134,9 +134,12 @@ class SkinTemplate extends Skin {
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks, $wgUseSiteJs, $wgDebugComments;
-		global $wgArticlePath, $wgScriptPath, $wgServer;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgProfiler;
 
 		wfProfileIn( __METHOD__ );
+		if ( is_object( $wgProfiler ) ) {
+			$wgProfiler->setTemplated( true );
+		}
 
 		$oldid = $wgRequest->getVal( 'oldid' );
 		$diff = $wgRequest->getVal( 'diff' );
@@ -308,72 +311,29 @@ class SkinTemplate extends Skin {
 		// Users can have their language set differently than the
 		// content of the wiki. For these users, tell the web browser
 		// that interface elements are in a different language.
-		$tpl->set( 'userlangattributes', '');
-		$tpl->set( 'specialpageattributes', '');
+		$tpl->set( 'userlangattributes', '' );
+		$tpl->set( 'specialpageattributes', '' );
 
 		$lang = $wgLang->getCode();
 		$dir  = $wgLang->getDir();
 		if ( $lang !== $wgContLang->getCode() || $dir !== $wgContLang->getDir() ) {
-			$attrs = "lang='$lang' xml:lang='$lang' dir='$dir'";
+			$attrs = " lang='$lang' dir='$dir'";
 
 			$tpl->set( 'userlangattributes', $attrs );
 
 			// The content of SpecialPages should be presented in the
 			// user's language. Content of regular pages should not be touched.
-			if($this->mTitle->isSpecialPage()) {
+			if( $this->mTitle->isSpecialPage() ) {
 				$tpl->set( 'specialpageattributes', $attrs );
 			}
 		}
 
-		$newtalks = $wgUser->getNewMessageLinks();
+		$newtalks = $this->getNewtalks();
 
-		if( count( $newtalks ) == 1 && $newtalks[0]['wiki'] === wfWikiID() ) {
-			$usertitle = $this->mUser->getUserPage();
-			$usertalktitle = $usertitle->getTalkPage();
-
-			if( !$usertalktitle->equals( $this->mTitle ) ) {
-				$newmessageslink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessageslink' ),
-					array(),
-					array( 'redirect' => 'no' ),
-					array( 'known', 'noclasses' )
-				);
-
-				$newmessagesdifflink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessagesdifflink' ),
-					array(),
-					array( 'diff' => 'cur' ),
-					array( 'known', 'noclasses' )
-				);
-
-				$ntl = wfMsg(
-					'youhavenewmessages',
-					$newmessageslink,
-					$newmessagesdifflink
-				);
-				# Disable Cache
-				$out->setSquidMaxage( 0 );
-			}
-		} else if( count( $newtalks ) ) {
-			// _>" " for BC <= 1.16
-			$sep = str_replace( '_', ' ', wfMsgHtml( 'newtalkseparator' ) );
-			$msgs = array();
-			foreach( $newtalks as $newtalk ) {
-				$msgs[] = Xml::element('a',
-					array( 'href' => $newtalk['link'] ), $newtalk['wiki'] );
-			}
-			$parts = implode( $sep, $msgs );
-			$ntl = wfMsgHtml( 'youhavenewmessagesmulti', $parts );
-			$out->setSquidMaxage( 0 );
-		} else {
-			$ntl = '';
-		}
 		wfProfileOut( __METHOD__ . '-stuff2' );
 
 		wfProfileIn( __METHOD__ . '-stuff3' );
-		$tpl->setRef( 'newtalk', $ntl );
+		$tpl->setRef( 'newtalk', $newtalks );
 		$tpl->setRef( 'skin', $this );
 		$tpl->set( 'logo', $this->logoText() );
 		if ( $out->isArticle() and ( !isset( $oldid ) or isset( $diff ) ) and
@@ -759,7 +719,7 @@ class SkinTemplate extends Skin {
 						);
 					}
 				}
-			} elseif ( $this->mTitle->isKnown() ) {
+			} elseif ( $this->mTitle->hasSourceText() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
 					'text' => wfMsg( 'viewsource' ),

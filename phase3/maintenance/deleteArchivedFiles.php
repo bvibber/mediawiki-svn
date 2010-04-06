@@ -24,12 +24,18 @@
  */
 
 require_once( dirname(__FILE__) . '/Maintenance.php' );
+require_once( dirname(__FILE__) . '/deleteArchivedFiles.inc' );
 
 class DeleteArchivedFiles extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Deletes all archived images.";
 		$this->addOption( 'delete', 'Perform the deletion' );
+		$this->addOption( 'force', 'Force deletion of rows from filearchive' );
+	}
+
+	public function handleOutput($str) {
+		return $this->output($str);
 	}
 
 	public function execute() {
@@ -37,38 +43,8 @@ class DeleteArchivedFiles extends Maintenance {
 			$this->output( "Use --delete to actually confirm this script\n" );
 			return;
 		}
-		# Data should come off the master, wrapped in a transaction
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
-		$tbl_arch = $dbw->tableName( 'filearchive' );
-		$repo = RepoGroup::singleton()->getLocalRepo();
-		# Get "active" revisions from the filearchive table
-		$this->output( "Searching for and deleting archived files...\n" );
-		$res = $dbw->query( "SELECT fa_id,fa_storage_group,fa_storage_key FROM $tbl_arch" );
-		$count = 0;
-		foreach( $res as $row ) {
-			$key = $row->fa_storage_key;
-			$group = $row->fa_storage_group;
-			$id = $row->fa_id;
-			$path = $repo->getZonePath( 'deleted' ).'/'.$repo->getDeletedHashPath($key).$key;
-			$sha1 = substr( $key, 0, strcspn( $key, '.' ) );
-			// Check if the file is used anywhere...
-			$inuse = $dbw->selectField( 'oldimage', '1',
-				array( 'oi_sha1' => $sha1,
-				'oi_deleted & '.File::DELETED_FILE => File::DELETED_FILE ),
-				__METHOD__,
-				array( 'FOR UPDATE' )
-			);
-			if ( $path && file_exists($path) && !$inuse ) {
-				unlink($path); // delete
-				$count++;
-				$dbw->query( "DELETE FROM $tbl_arch WHERE fa_id = $id" );
-			} else {
-				$this->output( "Notice - file '$key' not found in group '$group'\n" );
-			}
-		}
-		$dbw->commit();
-		$this->output( "Done! [$count file(s)]\n" );
+		$force = $this->hasOption( 'force' );
+		DeleteArchivedFilesImplementation::doDelete($this, $force);
 	}
 }
 

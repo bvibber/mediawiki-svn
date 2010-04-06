@@ -49,7 +49,7 @@ class UserrightsPage extends SpecialPage {
 		// any groups, it's a bit silly to give them the user search prompt.
 		global $wgUser, $wgRequest, $wgOut;
 
-		if( $par ) {
+		if( $par !== null ) {
 			$this->mTarget = $par;
 		} else {
 			$this->mTarget = $wgRequest->getVal( 'user' );
@@ -67,7 +67,7 @@ class UserrightsPage extends SpecialPage {
 
 		$available = $this->changeableGroups();
 
-		if ( !$this->mTarget ) {
+		if ( $this->mTarget === null ) {
 			/*
 			 * If the user specified no target, and they can only
 			 * edit their own groups, automatically set them as the
@@ -82,7 +82,6 @@ class UserrightsPage extends SpecialPage {
 
 		if( !$this->userCanChangeRights( $wgUser, true ) ) {
 			// fixme... there may be intermediate groups we can mention.
-			global $wgOut;
 			$wgOut->showPermissionsErrorPage( array( array(
 				$wgUser->isAnon()
 					? 'userrights-nologin'
@@ -91,7 +90,6 @@ class UserrightsPage extends SpecialPage {
 		}
 
 		if ( wfReadOnly() ) {
-			global $wgOut;
 			$wgOut->readOnlyPage();
 			return;
 		}
@@ -115,8 +113,6 @@ class UserrightsPage extends SpecialPage {
 						$reason
 					);
 
-					global $wgOut;
-
 					$url = $this->getSuccessURL();
 					$wgOut->redirect( $url );
 					return;
@@ -125,7 +121,7 @@ class UserrightsPage extends SpecialPage {
 		}
 
 		// show some more forms
-		if( $this->mTarget ) {
+		if( $this->mTarget !== null ) {
 			$this->editUserGroupsForm( $this->mTarget );
 		}
 	}
@@ -295,7 +291,7 @@ class UserrightsPage extends SpecialPage {
 			}
 		}
 
-		if( $name == '' ) {
+		if( $name === '' ) {
 			return new WikiErrorMsg( 'nouserspecified' );
 		}
 
@@ -315,7 +311,7 @@ class UserrightsPage extends SpecialPage {
 			}
 		} else {
 			$name = User::getCanonicalName( $name );
-			if( !$name ) {
+			if( $name === false ) {
 				// invalid name
 				return new WikiErrorMsg( 'nosuchusershort', $username );
 			}

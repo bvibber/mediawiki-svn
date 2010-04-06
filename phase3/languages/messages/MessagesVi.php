@@ -264,7 +264,7 @@ $messages = array(
 'tog-justify'                 => 'Căn đều hai bên đoạn văn',
 'tog-hideminor'               => 'Ẩn sửa đổi nhỏ trong thay đổi gần đây',
 'tog-hidepatrolled'           => 'Ẩn sửa đổi đã tuần tra trong trang thay đổi gần đây',
-'tog-newpageshidepatrolled'   => 'Ẩn trang đã tuần trang trong danh sách các trang mới',
+'tog-newpageshidepatrolled'   => 'Ẩn trang đã tuần tra trong danh sách các trang mới',
 'tog-extendwatchlist'         => 'Mở rộng danh sách theo dõi để hiển thị tất cả các thay đổi, chứ không chỉ các thay đổi gần đây',
 'tog-usenewrc'                => 'Sử dụng Thay đổi gần đây nâng cao (cần JavaScript)',
 'tog-numberheadings'          => 'Tự động đánh số các đề mục',
@@ -447,9 +447,6 @@ $messages = array(
 'namespaces'                 => 'Không gian tên',
 'variants'                   => 'Biến thể',
 
-# Metadata in edit box
-'metadata_help' => 'Đặc tính hình:',
-
 'errorpagetitle'    => 'Lỗi',
 'returnto'          => 'Quay lại $1.',
 'tagline'           => 'Từ {{SITENAME}}',
@@ -618,6 +615,8 @@ Xin hãy báo nó cho một [[Special:ListUsers/sysop|bảo quản viên]], tron
 'readonly_lag'         => 'Cơ sở dữ liệu bị khóa tự động trong khi các máy chủ cập nhật thông tin của nhau.',
 'internalerror'        => 'Lỗi nội bộ',
 'internalerror_info'   => 'Lỗi nội bộ: $1',
+'fileappenderrorread'  => 'Không đọc được “$1” trong việc bổ sung.',
+'fileappenderror'      => 'Không thể nối “$1” vào “$2”.',
 'filecopyerror'        => 'Không thể chép tập tin “$1” đến “$2”.',
 'filerenameerror'      => 'Không thể đổi tên tập tin “$1” thành “$2”.',
 'filedeleteerror'      => 'Không thể xóa tập tin “$1”.',
@@ -735,6 +734,7 @@ Xin hãy bỏ qua thông báo này nếu tài khoản này không phải do bạ
 'login-throttled'            => 'Bạn đã thử quá nhiều mật khẩu của tài khoản này
 Xin hãy đợi chốc lát rồi thử lại.',
 'loginlanguagelabel'         => 'Ngôn ngữ: $1',
+'suspicious-userlogout'      => 'Đã bỏ qua yêu cầu đăng xuất bạn, hình như được gửi từ trình duyệt hoặc máy proxy nhớ đệm hư.',
 
 # Password reset dialog
 'resetpass'                 => 'Đổi mật khẩu',
@@ -749,6 +749,7 @@ Xin hãy đợi chốc lát rồi thử lại.',
 'resetpass_forbidden'       => 'Không được đổi mật khẩu',
 'resetpass-no-info'         => 'Bạn phải đăng nhập mới có thể truy cập trực tiếp trang này.',
 'resetpass-submit-loggedin' => 'Thay đổi mật khẩu',
+'resetpass-submit-cancel'   => 'Hủy bỏ',
 'resetpass-wrong-oldpass'   => 'Mật khẩu tạm hoặc mật khẩu hiện thời không hợp lệ.
 Có thể bạn đã thay đổi thành công mật khẩu của mình hoặc đã yêu cầu cung cấp một mật khẩu tạm mới.',
 'resetpass-temp-password'   => 'Mật khẩu tạm:',
@@ -851,6 +852,7 @@ Bạn có thể [[Special:Search/{{PAGENAME}}|tìm kiếm tựa trang này]] t�
 hoặc <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tìm kiếm các nhật trình liên quan]</span>.',
 'userpage-userdoesnotexist'        => 'Tài khoản mang tên “$1” chưa được đăng ký. Xin hãy kiểm tra lại nếu bạn muốn tạo/sửa trang này.',
 'userpage-userdoesnotexist-view'   => 'Tài khoản “$1” chưa được đăng ký.',
+'blocked-notice-logextract'        => 'Người dùng này hiện đang bị cấm sửa đổi. Nhật trình cấm gần nhất được ghi ở dưới để tiện theo dõi:',
 'clearyourcache'                   => "'''Ghi chú&nbsp;– Sau khi lưu trang, có thể bạn sẽ phải xóa bộ nhớ đệm của trình duyệt để xem các thay đổi.''' '''Mozilla / Firefox / Safari:''' giữ phím ''Shift'' trong khi nhấn ''Reload'' (''Tải lại''), hoặc nhấn tổ hợp ''Ctrl-F5'' hay ''Ctrl-R'' (<span title=\"Command\">⌘</span>''R'' trên Macintosh); '''Konqueror:''' nhấn nút ''Reload'' hoặc nhấn ''F5''; '''Opera:''' xóa bộ nhớ đệm trong ''Tools → Preferences''; '''Internet Explorer:''' giữ phím ''Ctrl'' trong khi nhấn ''Refresh'', hoặc nhấn tổ hợp ''Ctrl-F5''.",
 'usercssyoucanpreview'             => "'''Mẹo:''' Sử dụng nút “Xem thử” để kiểm thử trang CSS của bạn trước khi lưu trang.",
 'userjsyoucanpreview'              => "'''Mẹo:''' Sử dụng nút “Xem thử” để kiểm thử trang JS của bạn trước khi lưu trang.",
@@ -1284,6 +1286,7 @@ Bất cứ ai biết được khóa trong ô này cũng có thể đọc đượ
 'prefs-files'                   => 'Tập tin',
 'prefs-custom-css'              => 'sửa CSS',
 'prefs-custom-js'               => 'sửa JS',
+'prefs-common-css-js'           => 'CSS/JS chung cho mọi hình dạng:',
 'prefs-reset-intro'             => 'Có thể mặc định lại toàn bộ tùy chọn dùng trang này.
 Không có thể lùi lại tác động này.',
 'prefs-emailconfirm-label'      => 'Xác nhận thư điện tử:',
@@ -1563,6 +1566,7 @@ Xem [[Special:NewFiles|trang trưng bày các tập tin mới]] để xem trực
 'minlength1'                  => 'Tên tập tin phải có ít nhất một ký tự.',
 'illegalfilename'             => 'Tên tập tin “$1” có chứa ký tự không được phép dùng cho tựa trang. Xin hãy đổi tên và tải lên lại.',
 'badfilename'                 => 'Tên tập tin đã được đổi thành “$1”.',
+'filetype-mime-mismatch'      => 'Phần mở rộng của tập tin không phù hợp kiểu MIME.',
 'filetype-badmime'            => 'Không thể tải lên các tập tin có định dạng MIME “$1”.',
 'filetype-bad-ie-mime'        => 'Không thể tải tập tin này lên vì Internet Explorer sẽ nhận diện tập tin này là “$1”, một định dạng tập tin tiềm ẩn nguy hiểm và không được cho phép.',
 'filetype-unwanted-type'      => "'''“.$1”''' là định dạng tập tin không được trông đợi.
@@ -1673,6 +1677,7 @@ Vì lý do bảo mật, img_auth.php đã bị tắt.',
 'http-timed-out'        => 'Hết thời gian yêu cầu HTTP.',
 'http-curl-error'       => 'Có lỗi khi truy xuất URL: $1',
 'http-host-unreachable' => 'Không thể truy cập URL',
+'http-bad-status'       => 'Có vấn đề khi yêu cầu HTTP: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Không thể truy cập URL',
@@ -2186,7 +2191,7 @@ hiện tại của trang '''$1''':",
 'protect-othertime-op'        => 'thời hạn khác',
 'protect-existing-expiry'     => 'Thời hạn hiện thời: $3, $2',
 'protect-otherreason'         => 'Lý do khác/bổ sung:',
-'protect-otherreason-op'      => 'lý do khác/bổ sung',
+'protect-otherreason-op'      => 'Lý do khác',
 'protect-dropdown'            => '*Các lý do thường dùng khi khóa
 ** Bị phá hoại quá mức
 ** Bị spam quá mức
@@ -2464,6 +2469,7 @@ xin hãy chắc chắn rằng bạn đã nhận thức được những hệ l�
 
 Trong những trường hợp đó, bạn phải di chuyển hoặc hợp nhất trang theo kiểu thủ công nếu muốn.",
 'movearticle'                  => 'Di chuyển trang:',
+'moveuserpage-warning'         => "'''Cảnh báo:''' Bạn sắp di chuyển trang cá nhân của người dùng. Xin lưu ý rằng chỉ có trang này sẽ được di chuyển, còn người dùng sẽ ''không'' đổi tên.",
 'movenologin'                  => 'Chưa đăng nhập',
 'movenologintext'              => 'Bạn phải là thành viên đã đăng ký và [[Special:UserLogin|đăng nhập]] mới di chuyển trang được.',
 'movenotallowed'               => 'Bạn không có quyền di chuyển trang.',
@@ -3141,30 +3147,30 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 'limitall'         => 'tất cả',
 
 # E-mail address confirmation
-'confirmemail'             => 'Xác nhận thư điện tử',
-'confirmemail_noemail'     => 'Bạn chưa đưa vào địa chỉ thư điện tử hợp lệ ở [[Special:Preferences|tùy chọn cá nhân]].',
-'confirmemail_text'        => '{{SITENAME}} đòi hỏi bạn xác minh thư điện tử của mình
+'confirmemail'              => 'Xác nhận thư điện tử',
+'confirmemail_noemail'      => 'Bạn chưa đưa vào địa chỉ thư điện tử hợp lệ ở [[Special:Preferences|tùy chọn cá nhân]].',
+'confirmemail_text'         => '{{SITENAME}} đòi hỏi bạn xác minh thư điện tử của mình
 trước khi sử dụng tính năng thư điện tử. Nhấn vào nút bên dưới để gửi thư
 xác nhận đến địa chỉ của bạn. Thư xác nhận sẽ có kèm một liên kết có chứa một mã số;
 tải liên kết đó trong trình duyệt để xác nhận địa chỉ thư điện tử của bạn là đúng.',
-'confirmemail_pending'     => 'Mã xác đã được gửi đến địa chỉ thư điện tử của bạn; nếu bạn
+'confirmemail_pending'      => 'Mã xác đã được gửi đến địa chỉ thư điện tử của bạn; nếu bạn
 mới vừa tạo tài khoản, xin chờ vài phút để thư tới nơi rồi
 hãy cố gắng yêu cầu mã mới.',
-'confirmemail_send'        => 'Gửi thư xác nhận',
-'confirmemail_sent'        => 'Thư xác nhận đã được gửi',
-'confirmemail_oncreate'    => 'Đã gửi mã xác nhận đến địa chỉ thư điện tử của bạn.
+'confirmemail_send'         => 'Gửi thư xác nhận',
+'confirmemail_sent'         => 'Thư xác nhận đã được gửi',
+'confirmemail_oncreate'     => 'Đã gửi mã xác nhận đến địa chỉ thư điện tử của bạn.
 Bạn không cần mã này để đăng nhập, nhưng sẽ cần sử dụng nó để bật các tính năng có dùng thư điện tử của wiki.',
-'confirmemail_sendfailed'  => '{{SITENAME}} không thể gửi thư xác nhận.
+'confirmemail_sendfailed'   => '{{SITENAME}} không thể gửi thư xác nhận.
 Xin kiểm tra lại địa chỉ thư xem có bị nhầm ký tự nào không.
 
 Chương trình thư báo rằng: $1',
-'confirmemail_invalid'     => 'Mã xác nhận sai. Mã này có thể đã hết hạn',
-'confirmemail_needlogin'   => 'Bạn cần phải $1 để xác nhận địa chỉ thư điện tử.',
-'confirmemail_success'     => 'Thư điện tử của bạn đã được xác nhận. Bạn đã có thể đăng nhập và bắt đầu sử dụng wiki.',
-'confirmemail_loggedin'    => 'Địa chỉ thư điện tử của bạn đã được xác nhận',
-'confirmemail_error'       => 'Có trục trặc khi lưu xác nhận của bạn.',
-'confirmemail_subject'     => 'Xác nhận thư điện tử tại {{SITENAME}}',
-'confirmemail_body'        => 'Ai đó, có thể là bạn, từ địa chỉ IP $1,
+'confirmemail_invalid'      => 'Mã xác nhận sai. Mã này có thể đã hết hạn',
+'confirmemail_needlogin'    => 'Bạn cần phải $1 để xác nhận địa chỉ thư điện tử.',
+'confirmemail_success'      => 'Thư điện tử của bạn đã được xác nhận. Bạn đã có thể đăng nhập và bắt đầu sử dụng wiki.',
+'confirmemail_loggedin'     => 'Địa chỉ thư điện tử của bạn đã được xác nhận',
+'confirmemail_error'        => 'Có trục trặc khi lưu xác nhận của bạn.',
+'confirmemail_subject'      => 'Xác nhận thư điện tử tại {{SITENAME}}',
+'confirmemail_body'         => 'Ai đó, có thể là bạn, từ địa chỉ IP $1,
 đã đăng ký tài khoản có tên "$2" với địa chỉ thư điện tử này tại {{SITENAME}}.
 
 Để xác nhận rằng tài khoản này thực sự là của bạn và để kích hoạt tính năng thư điện tử tại {{SITENAME}}, xin mở liên kết này trong trình duyệt:
@@ -3177,8 +3183,22 @@ Nếu bạn *không* đăng ký tài khoản, hãy nhấn vào liên kết này
 $5
 
 Mã xác nhận này sẽ hết hạn vào $4.',
-'confirmemail_invalidated' => 'Đã hủy xác nhận địa chỉ thư điện tử',
-'invalidateemail'          => 'Hủy xác nhận thư điện tử',
+'confirmemail_body_changed' => 'Ai đó, có thể là bạn, từ địa chỉ IP $1, đã đăng ký tài khoản có
+tên "$2" với địa chỉ thư điện tử này tại {{SITENAME}}.
+
+Để xác nhận rằng tài khoản này thực sự là của bạn và để kích hoạt tính năng
+thư điện tử tại {{SITENAME}}, xin mở liên kết này trong trình duyệt:
+
+$3
+
+Nếu tài khoản *không* phải là của bạn, hãy nhấn vào liên kết này để hủy thủ
+tục xác nhận địa chỉ thư điện tử:
+
+$5
+
+Mã xác nhận này sẽ hết hạn vào $4.',
+'confirmemail_invalidated'  => 'Đã hủy xác nhận địa chỉ thư điện tử',
+'invalidateemail'           => 'Hủy xác nhận thư điện tử',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Nhúng giữa các wiki bị tắt]',

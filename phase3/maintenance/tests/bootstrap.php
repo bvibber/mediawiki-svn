@@ -7,20 +7,21 @@
  * @file
  */
 
-global $wgCommandLineMode, $IP;
-$wgCommandLineMode = true;
+global $wgCommandLineMode, $IP, $optionsWithArgs;
 $IP = dirname( dirname( dirname( __FILE__ ) ) );
-
-define( 'MEDIAWIKI', true );
 define( 'MW_PHPUNIT_TEST', true );
 
-require_once( "$IP/includes/Defines.php" );
-require_once( "$IP/includes/AutoLoader.php" );
-require_once( "$IP/LocalSettings.php" );
-require_once( "$IP/includes/ProfilerStub.php" );
-require_once( "$IP/includes/GlobalFunctions.php" );
-require_once( "$IP/includes/Hooks.php" );
-$self = __FILE__;
-require_once( "$IP/includes/Setup.php" );
+require_once( "$IP/maintenance/commandLine.inc" );
 
+if( !version_compare(PHPUnit_Runner_Version::id(), "3.4.1", ">") ) {
+  echo <<<EOF
+************************************************************
 
+These tests run best with version PHPUnit 3.4.2 or better.
+Earlier versions may show failures because earlier versions
+of PHPUnit do not properly implement dependencies.
+
+************************************************************
+
+EOF;
+}

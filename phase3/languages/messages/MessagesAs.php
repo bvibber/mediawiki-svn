@@ -70,6 +70,7 @@ $specialPageAliases = array(
 	'Uncategorizedtemplates'    => array( 'অবিন্যস্ত সাঁচবোৰ' ),
 	'Unusedcategories'          => array( 'অব্যৱহৃত শ্ৰেণীসমূহ' ),
 	'Unusedimages'              => array( 'অব্যৱহৃত চিত্ৰবোৰ' ),
+	'Wantedpages'               => array( 'আকাংক্ষিত পৃষ্ঠাসমূহ' ),
 	'Wantedcategories'          => array( 'আকাংক্ষিত শ্ৰেণীসমূহ' ),
 	'Allpages'                  => array( 'সকলোবোৰ পৃষ্ঠা' ),
 	'Specialpages'              => array( 'বিশেষ পৃষ্ঠাবোৰ' ),
@@ -265,9 +266,6 @@ $messages = array(
 'actions'                    => 'কাৰ্য্যসমূহ',
 'namespaces'                 => 'নামস্থান',
 'variants'                   => 'বিকল্পসমূহ',
-
-# Metadata in edit box
-'metadata_help' => 'মেটাডাটা:',
 
 'errorpagetitle'    => 'ভুল',
 'returnto'          => '$1 লৈ ঘুৰি যাঁওক ।',

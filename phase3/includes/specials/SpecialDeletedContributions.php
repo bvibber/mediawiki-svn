@@ -258,7 +258,7 @@ class DeletedContributionsPage extends SpecialPage {
 			return;
 		}
 
-		global $wgUser, $wgOut, $wgLang, $wgRequest;
+		global $wgOut, $wgLang, $wgRequest;
 
 		$wgOut->setPageTitle( wfMsgExt( 'deletedcontributions-title', array( 'parsemag' ) ) );
 
@@ -328,8 +328,8 @@ class DeletedContributionsPage extends SpecialPage {
 
 	/**
 	 * Generates the subheading with links
-	 * @param Title $nt @see Title object for the target
-	 * @param integer $id User ID for the target
+	 * @param $nt Title object for the target
+	 * @param $id Integer: User ID for the target
 	 * @return String: appropriately-escaped HTML to be output literally
 	 * @todo Fixme: almost the same as contributionsSub in SpecialContributions.php. Could be combined.
 	 */

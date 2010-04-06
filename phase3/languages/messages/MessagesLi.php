@@ -305,9 +305,6 @@ $messages = array(
 'faq'            => 'FAQ (väölgesjtèlde vraoge)',
 'faqpage'        => 'Project:Väölgestjèlde vraoge',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Truuk nao $1.',
 'tagline'           => 'Van {{SITENAME}}',
@@ -1789,7 +1786,8 @@ Kónfermeer hiejónger dat dit inderdaod dien bedoeling is, dats doe de gevolge 
 'deletereason-dropdown'  => '*Väölveurkommende wisree
 ** Op aanvraog van auteur
 ** Sjending van auteursrech
-** Vandalisme',
+** Gebroek es zandjbak
+** Vandalisme/Sjeljerie',
 'delete-edit-reasonlist' => 'Reeje veur verwiedering bewèrke',
 'delete-toobig'          => "Dees pazjena haet 'ne lange bewerkingsgesjiedenis, mieë es $1 {{PLURAL:$1|versie|versies}}. 't Wisse van dit saort pazjena's is mit rech beperk óm 't próngelök versteure van de werking van {{SITENAME}} te veurkómme.",
 'delete-warning-toobig'  => "Dees pazjena haet 'ne lange bewerkingsgesjiedenis, mieë es $1 {{PLURAL:$1|versie|versies}}. 't Wisse van dees pazjena kan de werking van de database van {{SITENAME}} versteure. Bön veurzichtig.",
@@ -2165,8 +2163,8 @@ In 't letste geval kèns te ouch 'ne link gebroeken, bieveurbild [[{{#Special:Ex
 'allmessagesname'           => 'Naam',
 'allmessagesdefault'        => 'Obligaten teks',
 'allmessagescurrent'        => 'Hujige teks',
-'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki:-naamruumde.
-Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWikilokalisaasje] en [http://translatewiki.net translatewiki.net] wense wils biedrage ane lokalisaasje.",
+'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki-naamruumde.
+Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWiki-lokalisatie] en [http://translatewiki.net translatewiki.net] es doe wils biedrage aon lokalisatie.",
 'allmessagesnotsupportedDB' => "Deze pagina kan neet gebroek waere omdet '''\$wgUseDatabaseMessages''' oet steit.",
 
 # Thumbnails

@@ -380,9 +380,6 @@ $messages = array(
 'namespaces'                 => 'Naamruimtes',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Keer terug na $1.',
 'tagline'           => 'Vanuit {{SITENAME}}',
@@ -553,6 +550,8 @@ Indien dit nie die geval is nie, het u moontlik 'n fout in die sagteware ontdek.
 'readonly_lag'         => 'Die databasis is outomaties gesluit terwyl die slaafdatabasisse sinchroniseer met die meester',
 'internalerror'        => 'Interne fout',
 'internalerror_info'   => 'Interne fout: $1',
+'fileappenderrorread'  => 'Kon nie "$1" tydens die "append" lees nie.',
+'fileappenderror'      => 'Kon nie "$1" agteraan "$2" voeg nie.',
 'filecopyerror'        => 'Kon nie lêer van "$1" na "$2" kopieer nie.',
 'filerenameerror'      => 'Kon nie lêernaam van "$1" na "$2" wysig nie.',
 'filedeleteerror'      => 'Kon nie lêer "$1" skrap nie.',
@@ -681,6 +680,7 @@ Indien hierdie rekening foutief geskep is, kan u hierdie boodskap ignoreer.',
 'login-throttled'            => "U het al te veel kere met 'n ongeldige wagwoord probeer aanteken.
 Wag asseblief alvorens u weer probeer.",
 'loginlanguagelabel'         => 'Taal: $1',
+'suspicious-userlogout'      => "U versoek om af te teken is geïgnoreer omdat dit lyk asof dit deur 'n gebreekte webleser of instaanbediener gestuur is.",
 
 # Password reset dialog
 'resetpass'                 => 'Verander wagwoord',
@@ -695,6 +695,7 @@ Om voort te gaan moet u 'n nuwe wagwoord hier kies:",
 'resetpass_forbidden'       => 'Wagwoorde kannie gewysig word nie.',
 'resetpass-no-info'         => 'U moet ingeteken wees om hierdie bladsy direk te kan gebruik.',
 'resetpass-submit-loggedin' => 'Verander wagwoord',
+'resetpass-submit-cancel'   => 'Kanselleer',
 'resetpass-wrong-oldpass'   => "Die huidige of tydelike wagwoord is ongeldig.
 U het moontlik reeds u wagwoord gewysig of 'n nuwe tydelike wagwoord aangevra.",
 'resetpass-temp-password'   => 'Tydelike wagwoord:',
@@ -795,6 +796,8 @@ of [{{fullurl:{{FULLPAGENAME}}|action=edit}} hierdie bladsy wysig]</span>.',
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} die verwante logboeke deursoek]</span>.',
 'userpage-userdoesnotexist'        => 'U is besig om \'n gebruikersblad wat nie bestaan nie te wysig (gebruiker "$1"). Maak asseblief seker of u die bladsy wil skep/ wysig.',
 'userpage-userdoesnotexist-view'   => 'Die gebruiker "$1" is nie geregistreer nie.',
+'blocked-notice-logextract'        => 'Hierdie gebruiker is tans geblokkeer.
+Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
 'clearyourcache'                   => "'''Let wel''': Na die voorkeure gestoor is, moet u blaaier se kasgeheue verfris word om die veranderinge te sien: '''Mozilla:''' klik ''Reload'' (of ''Ctrl-R''), '''IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''.",
 'usercssyoucanpreview'             => "'''Wenk:''' Gebruik die \"Wys voorskou\"-knoppie om u nuwe CSS te toets voor u stoor.",
 'userjsyoucanpreview'              => "'''Wenk:''' Gebruik die \"Wys voorskou\"-knoppie om u nuwe JS te toets voor u stoor.",
@@ -1235,6 +1238,7 @@ Hier volg 'n lukraak gegenereerde waarde wat u kan gebruik: $1",
 'prefs-files'                   => 'Lêers',
 'prefs-custom-css'              => 'Persoonlike CSS',
 'prefs-custom-js'               => 'Persoonlike JS',
+'prefs-common-css-js'           => 'Gedeelde CSS/JS vir al die omslae:',
 'prefs-reset-intro'             => 'U kan die blad gebruik om u voorkeure terug te stel na die webwerf se verstekwaardes.
 Die aksie kan nie ongedaan gemaak word nie.',
 'prefs-emailconfirm-label'      => 'E-posbevestiging:',
@@ -1359,6 +1363,7 @@ U kan ook besluit om e-pos te ontvang as ander gebruikers u gebruikers- of bespr
 'right-hideuser'              => "Blokkeer 'n gebruiker, versteek dit van die publiek",
 'right-ipblock-exempt'        => 'Omseil IP-blokkades',
 'right-proxyunbannable'       => "Blokkades vir instaanbedieners (proxy's) geld nie",
+'right-unblockself'           => 'Eie gebruiker deblokkeer',
 'right-protect'               => 'Verander beskermingsvlakke en wysig beskermde bladsye',
 'right-editprotected'         => 'Wysig beskermde bladsye (sonder kaskade-beskerming)',
 'right-editinterface'         => 'Wysig die gebruikerskoppelvlak',
@@ -1520,6 +1525,7 @@ Om die lêer in 'n artikel te gebruik, plaas 'n skakel in een van die volgende f
 'minlength1'                  => 'Prentname moet ten minste een letter lank wees.',
 'illegalfilename'             => 'Die lêernaam "$1" bevat karakters wat nie toegelaat word in bladsytitels nie. Verander asseblief die naam en probeer die lêer weer laai.',
 'badfilename'                 => 'Prentnaam is verander na "$1".',
+'filetype-mime-mismatch'      => 'Lêer-uitbreiding stem nie met die MIME-tipe ooreen nie.',
 'filetype-badmime'            => 'Lêers met MIME-tipe "$1" word nie toegelaat nie.',
 'filetype-bad-ie-mime'        => 'Die lêer kan nie opgelaai word nie omdat Internet Explorer dit sal identifiseer as "$1", \'n nie toegelate lêertipe wat moontlik skadelik is.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' is 'n ongewenste lêertipe. 
@@ -1626,6 +1632,7 @@ Vir veiligheidsredes is img_auth.php gedeaktiveer.",
 'http-timed-out'        => 'HTTP-versoek se tyd is verstreke.',
 'http-curl-error'       => 'Fout met die ophaal van URL: $1',
 'http-host-unreachable' => 'Die URL is nie bereikbaar nie.',
+'http-bad-status'       => "Daar was 'n probleem tydens die HTTP-versoek: $1 $2",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Kon nie die URL bereik nie',
@@ -2147,7 +2154,7 @@ Hier is die huidige verstellings vir bladsy '''$1''':",
 'protect-othertime-op'        => 'ander tyd',
 'protect-existing-expiry'     => 'Bestaande vervaldatum: $2 om $3',
 'protect-otherreason'         => 'Ander/addisionele rede:',
-'protect-otherreason-op'      => 'ander/addisionele rede',
+'protect-otherreason-op'      => 'Ander rede',
 'protect-dropdown'            => '*Algemene redes vir beveiliging
 ** Vandalisme
 ** Spam
@@ -2388,6 +2395,8 @@ U kan nie 'n rekening skep nie.",
 'cant-block-while-blocked'        => 'U kan nie ander gebruikers blokkeer terwyl u self geblokkeer is nie.',
 'cant-see-hidden-user'            => "Die gebruiker wat u probeer blokkeer is reeds geblokkeer en weggesteek.
 Aangesien u nie die 'hideuser'-reg het nie, kan u nie die blokkade van die gebruiker sien of wysig nie.",
+'ipbblocked'                      => 'U kan nie ander gebruikers (de)blokkeer nie, omdat u self geblokkeer is',
+'ipbnounblockself'                => 'U mag uself nie deblokkeer nie',
 
 # Developer tools
 'lockdb'              => 'Sluit databasis',
@@ -2428,6 +2437,8 @@ maak asseblief seker dat u die gevolge van hierdie aksie verstaan voordat u voor
 
 Indien wel sal u self die blad moet skuif of versmelt (indien nodig).",
 'movearticle'                  => 'Skuif bladsy',
+'moveuserpage-warning'         => "'''Waarskuwing:''' U gaan 'n gebruikersblad skuif.
+Let daarop dat slegs die bladsy geskuif sal word. Die gebruiker self sal ''nie'' hernoem word ''nie''.",
 'movenologin'                  => 'Nie ingeteken nie',
 'movenologintext'              => "U moet 'n geregistreerde gebruiker wees en [[Special:UserLogin|ingeteken]]
 wees om 'n bladsy te skuif.",

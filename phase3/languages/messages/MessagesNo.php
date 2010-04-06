@@ -222,6 +222,7 @@ $magicWords = array(
 	'servername'            => array( '0', 'TJENERNAVN', 'SERVERNAME' ),
 	'grammar'               => array( '0', 'GRAMMATIKK:', 'GRAMMAR:' ),
 	'gender'                => array( '0', 'KJØNN:', 'GENDER:' ),
+	'special'               => array( '0', 'spesial', 'special' ),
 	'filepath'              => array( '0', 'FILSTI:', 'FILEPATH:' ),
 );
 
@@ -413,9 +414,6 @@ $messages = array(
 'namespaces'                 => 'Navnerom',
 'variants'                   => 'Varianter',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Feil',
 'returnto'          => 'Tilbake til $1.',
 'tagline'           => 'Fra {{SITENAME}}',
@@ -581,6 +579,8 @@ Rapporter gjerne problemet til en [[Special:ListUsers/sysop|administrator]], ang
 'readonly_lag'         => 'Databasen er automatisk skrivebeskyttet så slavetjenerne kan ta igjen mestertjeneren',
 'internalerror'        => 'Intern feil',
 'internalerror_info'   => 'Intern feil: $1',
+'fileappenderrorread'  => 'Klarte ikke å lese «$1» når data skulle tilføyes.',
+'fileappenderror'      => 'Kunne ikke legge "$1" til "$2".',
 'filecopyerror'        => 'Klarte ikke å kopiere filen «$1» til «$2».',
 'filerenameerror'      => 'Klarte ikke å døpe om filen «$1» til «$2».',
 'filedeleteerror'      => 'Klarte ikke å slette filen «$1».',
@@ -703,6 +703,7 @@ Du kan ignorere denne beskjeden dersom kontoen ble opprettet ved en feil.',
 'usernamehasherror'          => 'Brukernavn kan ikke inneholde nummertegn.',
 'login-throttled'            => 'Du har prøvd å logge inn med denne kontoen for mange ganger. Vent før du prøver igjen.',
 'loginlanguagelabel'         => 'Språk: $1',
+'suspicious-userlogout'      => 'Din forespørsel om å logge ut ble nektet fordi den så ut til å ha bli sendt av en ødelagt nettleser eller en mellomtjener.',
 
 # Password reset dialog
 'resetpass'                 => 'Endre passord',
@@ -717,6 +718,7 @@ Du kan ignorere denne beskjeden dersom kontoen ble opprettet ved en feil.',
 'resetpass_forbidden'       => 'Passord kan ikke endres',
 'resetpass-no-info'         => 'Du må være logget inn for å gå til denne siden direkte',
 'resetpass-submit-loggedin' => 'Endre passord',
+'resetpass-submit-cancel'   => 'Avbryt',
 'resetpass-wrong-oldpass'   => 'Feil midlertidig eller nåværende passord.
 Du kan ha allerede byttet passordet, eller bedt om et nytt midlertidig passord.',
 'resetpass-temp-password'   => 'Midlertidig passord:',
@@ -754,6 +756,7 @@ Du kan ha allerede byttet passordet, eller bedt om et nytt midlertidig passord.'
 'showlivepreview'                  => 'Levende forhåndsvisning',
 'showdiff'                         => 'Vis endringer',
 'anoneditwarning'                  => "'''Advarsel:''' Du er ikke logget inn. IP-adressen din blir bevart i sidens redigeringshistorikk.",
+'anonpreviewwarning'               => "''Du er ikke logget inn. Lagring vil registrere din IP-adresse i sidens redigeringshistorikk.''",
 'missingsummary'                   => "'''Påminnelse:''' Du har ikke lagt inn en redigeringsforklaring.
 Velger du ''Lagre siden'' en gang til blir endringene lagret uten forklaring.",
 'missingcommenttext'               => 'Vennligst legg inn en kommentar under.',
@@ -817,6 +820,8 @@ Du kan [[Special:Search/{{PAGENAME}}|søke etter siden]] i andre sider, <span cl
 Du kan [[Special:Search/{{PAGENAME}}|søke etter sidens tittel]] i andre sider, eller <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} søke i relevante logger]</span>.',
 'userpage-userdoesnotexist'        => 'Brukerkontoen «$1» er ikke registrert. Sjekk om du ønsker å opprette/redigere denne siden.',
 'userpage-userdoesnotexist-view'   => 'Kontoen «$1» er ikke registrert.',
+'blocked-notice-logextract'        => 'Denne brukeren er for tiden blokkert.
+Siste blokkeringsloggelement kan sees nedenfor.',
 'clearyourcache'                   => "'''Merk:''' Etter lagring vil det kanskje være nødvendig at nettleseren sletter mellomlageret sitt for at endringene skal tre i kraft. '''Mozilla og Firefox:''' trykk ''Ctrl-Shift-R'', '''Internet Explorer:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-Shift-R'' i engelskspråklig versjon, ''Cmd-Alt-E'' i norskspråklig versjon, '''Konqueror og Opera:''' ''F5''.",
 'usercssyoucanpreview'             => "'''Tips:''' Bruk «Forhåndsvisning»-knappen for å teste din nye CSS før du lagrer.",
 'userjsyoucanpreview'              => "'''Tips:''' Bruk «Forhåndsvisning»-knappen for å teste din nye JS før du lagrer.",
@@ -1240,6 +1245,7 @@ Her er et tilfeldig tall du kan bruke: $1',
 'prefs-files'                   => 'Filer',
 'prefs-custom-css'              => 'Personlig CSS',
 'prefs-custom-js'               => 'Personlig Javascript',
+'prefs-common-css-js'           => 'Delt CSS/JS for alle drakter:',
 'prefs-reset-intro'             => 'Du kan bruke denne siden til å tilbakestille innstillingene dine til standardinnstillingene.
 Dette kan ikke tilbakestilles.',
 'prefs-emailconfirm-label'      => 'E-postbekreftelse:',
@@ -1288,6 +1294,7 @@ Du kan også la velge å la andre brukere kontakte deg via brukersiden din uten 
 'userrights-editusergroup'       => 'Rediger brukergrupper',
 'saveusergroups'                 => 'Lagre brukergrupper',
 'userrights-groupsmember'        => 'Medlem av:',
+'userrights-groupsmember-auto'   => 'Implisitt medlem av:',
 'userrights-groups-help'         => 'Du kan endre hvilke grupper denne brukeren er medlem av.
 * En avkrysset boks betyr at brukeren er medlem av gruppen.
 * En uavkrysset boks betyr at brukeren ikke er medlem av gruppen.
@@ -1362,6 +1369,7 @@ Du kan også la velge å la andre brukere kontakte deg via brukersiden din uten 
 'right-hideuser'              => 'Blokkere et brukernavn og skjule det fra det offentlige',
 'right-ipblock-exempt'        => 'Kan redigere fra blokkerte IP-adresser',
 'right-proxyunbannable'       => 'Kan redigere fra blokkerte proxyer',
+'right-unblockself'           => 'Fjern blokkering av seg selv',
 'right-protect'               => 'Endre beskyttelsesnivåer',
 'right-editprotected'         => 'Redigere beskyttede sider',
 'right-editinterface'         => 'Redigere brukergrensesnittet',
@@ -1516,6 +1524,7 @@ Se [[Special:NewFiles|galleriet over nye filer]] for en mer visuell visning',
 'minlength1'                  => 'Filnavn må være på minst én bokstav.',
 'illegalfilename'             => 'Filnavnet «$1» inneholder ugyldige tegn; gi fila et nytt navn og prøv igjen.',
 'badfilename'                 => 'Navnet på filen er blitt endret til «$1».',
+'filetype-mime-mismatch'      => 'Filendelsen samsvarer ikke med noen MIME-type.',
 'filetype-badmime'            => 'Filer av typen «$1» kan ikke lastes opp.',
 'filetype-bad-ie-mime'        => 'Kan ikke laste opp denne filen fordi Internet Explorer ville detektert denne som «$1», noe som er ikke er tillatt, og en potensielt farlig filtype.',
 'filetype-unwanted-type'      => "'''«.$1»''' er en uønsket filtype.
@@ -1617,9 +1626,14 @@ For best mulig sikkerhet er img_auth.php slått av.',
 'img-auth-noread'       => 'Brukeren har ikke tilgang til å lese «$1».',
 
 # HTTP errors
-'http-invalid-url'    => 'Ugyldig internettadresse: $1',
-'http-invalid-scheme' => 'Internettadresser med «$1»-formen støttes ikke',
-'http-request-error'  => 'HTTP-forespørselen feilet på grunn av en ukjent feil.',
+'http-invalid-url'      => 'Ugyldig internettadresse: $1',
+'http-invalid-scheme'   => 'Internettadresser med «$1»-formen støttes ikke',
+'http-request-error'    => 'HTTP-forespørselen feilet på grunn av en ukjent feil.',
+'http-read-error'       => 'HTTP-lesefeil.',
+'http-timed-out'        => 'Tidsavbrudd på HTTP-forespørsel.',
+'http-curl-error'       => 'Feil under henting av adresse: $1',
+'http-host-unreachable' => 'Kunne ikke nå adressen.',
+'http-bad-status'       => 'Det var et problem under HTTP-forespørselen: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Kunne ikke nå adressen',
@@ -2122,7 +2136,7 @@ Den siste redigeringen ble foretatt av [[User:$3|$3]] ([[User talk:$3|diskusjon]
 'protect-othertime-op'        => 'annen tid',
 'protect-existing-expiry'     => 'Gjeldende utløpstid: $3 $2',
 'protect-otherreason'         => 'Annen/utdypende grunn:',
-'protect-otherreason-op'      => 'annen/utdypende grunn',
+'protect-otherreason-op'      => 'Annen grunn',
 'protect-dropdown'            => '*Vanlige låsingsårsaker
 ** Gjentatt hærverk
 ** Gjentatt spam
@@ -2350,6 +2364,8 @@ $1 er blokkert fra før. Vil du endre innstillingene?',
 'sorbs_create_account_reason'     => 'Din IP-adresse angis som en åpen proxy i DNSBL-en brukt av {{SITENAME}}. Du kan ikke opprette en konto',
 'cant-block-while-blocked'        => 'Du kan ikke blokkere andre mens du selv er blokkert.',
 'cant-see-hidden-user'            => 'Brukeren du prøver å blokkere har allerede blitt blokkert og skjult. Ettersom du ikke har rett til å skjule brukere (hideuser), kan du ikke se eller endre brukerens blokkering.',
+'ipbblocked'                      => 'Du kan ikke blokkere eller avblokkere andre brukere, siden du selv er blokkert',
+'ipbnounblockself'                => 'Du har ikke tillatelse til å avblokkere deg selv',
 
 # Developer tools
 'lockdb'              => 'Lås database',
@@ -2396,6 +2412,7 @@ vær sikker på at du forstår konsekvensene av dette før du fortsetter.",
 
 I disse tilfellene er du nødt til å flytte eller flette sammen siden manuelt.",
 'movearticle'                  => 'Flytt side:',
+'moveuserpage-warning'         => "'''Advarsel:''' Du er i ferd med å flytte en brukerside. Merk at kun siden vil bli flyttet; brukernavnet vil ''ikke'' bli endret.",
 'movenologin'                  => 'Ikke logget inn',
 'movenologintext'              => 'Du må være registrert bruker og være [[Special:UserLogin|logget på]] for å flytte en side.',
 'movenotallowed'               => 'Du har ikke tillatelse til å flytte sider.',
@@ -3058,24 +3075,24 @@ Rotert 90° mot klokka og vridd vertikalt',
 'limitall'         => 'alle',
 
 # E-mail address confirmation
-'confirmemail'             => 'Bekreft e-postadresse',
-'confirmemail_noemail'     => 'Du har ikke oppgitt en gyldig e-postadresse i [[Special:Preferences|innstillingene dine]].',
-'confirmemail_text'        => 'Du må bekrefte e-postadressen din før du kan benytte deg av e-posttjenester på {{SITENAME}}. Trykk på knappen under for å sende en bekreftelsesmelding til e-postadressen din. Meldingen vil inneholde en lenke med en kode; følg lenken for å bekrefte at e-postadressen er gyldig.',
-'confirmemail_pending'     => 'En bekreftelseskode har allerede blitt sendt til deg på e-post; om du nylig opprettet kontoen din, kan du ønske å vente noen minutter før du spør om ny kode.',
-'confirmemail_send'        => 'Send en bekreftelseskode.',
-'confirmemail_sent'        => 'Bekreftelsesmelding sendt.',
-'confirmemail_oncreate'    => 'En bekreftelseskode ble sendt til din e-postadresse. Denne koden er ikke nødvendig for å logge inn, men er nødvendig for å slå på e-postbaserte tjenester i denne wikien.',
-'confirmemail_sendfailed'  => '{{SITENAME}} klarte ikke å sende bekreftelseskode.
+'confirmemail'              => 'Bekreft e-postadresse',
+'confirmemail_noemail'      => 'Du har ikke oppgitt en gyldig e-postadresse i [[Special:Preferences|innstillingene dine]].',
+'confirmemail_text'         => 'Du må bekrefte e-postadressen din før du kan benytte deg av e-posttjenester på {{SITENAME}}. Trykk på knappen under for å sende en bekreftelsesmelding til e-postadressen din. Meldingen vil inneholde en lenke med en kode; følg lenken for å bekrefte at e-postadressen er gyldig.',
+'confirmemail_pending'      => 'En bekreftelseskode har allerede blitt sendt til deg på e-post; om du nylig opprettet kontoen din, kan du ønske å vente noen minutter før du spør om ny kode.',
+'confirmemail_send'         => 'Send en bekreftelseskode.',
+'confirmemail_sent'         => 'Bekreftelsesmelding sendt.',
+'confirmemail_oncreate'     => 'En bekreftelseskode ble sendt til din e-postadresse. Denne koden er ikke nødvendig for å logge inn, men er nødvendig for å slå på e-postbaserte tjenester i denne wikien.',
+'confirmemail_sendfailed'   => '{{SITENAME}} klarte ikke å sende bekreftelseskode.
 Sjekk e-postadressen for ugyldige tegn.
 
 E-postsenderen ga følgende melding: $1',
-'confirmemail_invalid'     => 'Ugyldig bekreftelseskode. Koden kan ha utløpt.',
-'confirmemail_needlogin'   => 'Du må $1 for å bekrefte e-postadressen din.',
-'confirmemail_success'     => 'Din e-postadresse er nå bekreftet. Du kan nå logge inn og nyte wikien.',
-'confirmemail_loggedin'    => 'E-postadressen din er bekreftet.',
-'confirmemail_error'       => 'Noe gikk galt under lagringen av din bekreftelse.',
-'confirmemail_subject'     => 'Bekreftelsesmelding fra {{SITENAME}}',
-'confirmemail_body'        => 'Noen, antageligvis deg, har registrert kontoen «$2» på {{SITENAME}}, fra IP-adressen $1.
+'confirmemail_invalid'      => 'Ugyldig bekreftelseskode. Koden kan ha utløpt.',
+'confirmemail_needlogin'    => 'Du må $1 for å bekrefte e-postadressen din.',
+'confirmemail_success'      => 'Din e-postadresse er nå bekreftet. Du kan nå logge inn og nyte wikien.',
+'confirmemail_loggedin'     => 'E-postadressen din er bekreftet.',
+'confirmemail_error'        => 'Noe gikk galt under lagringen av din bekreftelse.',
+'confirmemail_subject'      => 'Bekreftelsesmelding fra {{SITENAME}}',
+'confirmemail_body'         => 'Noen, antageligvis deg, har registrert kontoen «$2» på {{SITENAME}}, fra IP-adressen $1.
 
 For å bekrefte at denne kontoen tilhører deg og for å aktivere e-posttjenester på {{SITENAME}}, åpne følgende lenke i nettleseren din:
 
@@ -3086,8 +3103,21 @@ Om du *ikke* registrerte kontoen, følg denne lenken for å avbryte bekreftelse 
 $5
 
 Denne bekreftelseskoden utgår $4.',
-'confirmemail_invalidated' => 'Bekreftelse av e-postadresse avbrutt',
-'invalidateemail'          => 'Avbryt bekreftelse av e-postadresse',
+'confirmemail_body_changed' => 'Noen, antageligvis deg, fra IP-adresse $1,
+har endret e-postadressen til kontoen «$2» til denne adressen på {{SITENAME}}.
+
+For å bekrefte at denne kontoen virkelig er din og for å reaktivere e-postegenskaper på {{SITENAME}}, åpne denne lenken i nettleseren din:
+
+$3
+
+Dersom denne kontoen *ikke* tilhører deg, følg denne lenken
+for å avbryte e-postbekreftelsen:
+
+$5
+
+Denne bekreftelseskoden vil løpe ut $4.',
+'confirmemail_invalidated'  => 'Bekreftelse av e-postadresse avbrutt',
+'invalidateemail'           => 'Avbryt bekreftelse av e-postadresse',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki-transkludering er slått av]',

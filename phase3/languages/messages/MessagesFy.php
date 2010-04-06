@@ -324,9 +324,6 @@ $messages = array(
 'namespaces'                 => 'Nammeromten',
 'variants'                   => 'Farianten',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Werom nei "$1".',
 'tagline'           => 'Ut {{SITENAME}}',
@@ -490,6 +487,7 @@ Meitsje dêr melding fan by in [[Special:ListUsers/sysop|systeembehearder]] fan 
 'readonly_lag'         => 'De database is automatysk beskoattele wylst de ûndergeskikte databaseservers syngronisearje mei de haadserver.',
 'internalerror'        => 'Ynterne fout',
 'internalerror_info'   => 'Ynterne fout: $1',
+'fileappenderror'      => 'It tafoegjen fan "$1" oan "$2" is mislearre.',
 'filecopyerror'        => 'Koe triem "$1" net kopiearje as "$2".',
 'filerenameerror'      => 'Koe triem "$1" net werneame as "$2".',
 'filedeleteerror'      => 'Koe triem "$1" net wiskje.',

@@ -1,6 +1,8 @@
 <?php
 /**
  * MediaWiki is the to-be base class for this whole project
+ *
+ * @internal documentation reviewed 15 Mar 2010
  */
 class MediaWiki {
 
@@ -29,7 +31,8 @@ class MediaWiki {
 	 * Note that keys are case-insensitive!
 	 *
 	 * @param $key String: key to get
-	 * @param $default Mixed: default value if if the key doesn't exist
+	 * @param $default string default value, defaults to empty string
+	 * @return $default Mixed: default value if if the key doesn't exist
 	 */
 	function getVal( $key, $default = '' ) {
 		$key = strtolower( $key );
@@ -142,6 +145,7 @@ class MediaWiki {
 	 * @param $title Title
 	 * @param $output OutputPage
 	 * @param $request WebRequest
+	 * @return boolean true if successful
 	 */
 	function preliminaryChecks( &$title, &$output, $request ) {
 		if( $request->getCheck( 'search' ) ) {
@@ -315,6 +319,7 @@ class MediaWiki {
 		$file = ($title->getNamespace() == NS_FILE) ? $article->getFile() : null;
 		if( ( $action == 'view' || $action == 'render' ) 	// ... for actions that show content
 			&& !$request->getVal( 'oldid' ) &&    // ... and are not old revisions
+			!$request->getVal( 'diff' ) &&    // ... and not when showing diff
 			$request->getVal( 'redirect' ) != 'no' &&	// ... unless explicitly told not to
 			// ... and the article is not a non-redirect image page with associated file
 			!( is_object( $file ) && $file->exists() && !$file->getRedirected() ) )

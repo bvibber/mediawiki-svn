@@ -33,7 +33,7 @@ if ( !defined( 'MW_PHP4' ) ) {
 }
 
 /** MediaWiki version number */
-$wgVersion = '1.16alpha';
+$wgVersion = '1.17alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -309,6 +309,8 @@ $wgUrlProtocols = array(
 	'mailto:',
 	'news:',
 	'svn://',
+	'git://',
+	'mms://',
 );
 
 /** internal name of virus scanner. This servers as a key to the $wgAntivirusSetup array.
@@ -638,11 +640,6 @@ $wgSQLiteDataDirMode = 0700;
 $wgAllDBsAreLocalhost = false;
 
 /**@}*/
-
-
-/** Live high performance sites should disable this - some checks acquire giant mysql locks */
-$wgCheckDBSchema = true;
-
 
 /**
  * Shared database for multiple wikis. Commonly used for storing a user table
@@ -1126,7 +1123,7 @@ $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxSigChars		= 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 # Maximum number of bytes in username. You want to run the maintenance
-# script ./maintenancecheckUsernames.php once you have changed this value
+# script ./maintenance/checkUsernames.php once you have changed this value
 $wgMaxNameChars		= 255;
 
 $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
@@ -1285,7 +1282,7 @@ $wgDevelopmentWarnings = false;
 $wgUseCategoryBrowser   = false;
 
 /**
- * Keep parsed pages in a cache (objectcache table, turck, or memcached)
+ * Keep parsed pages in a cache (objectcache table or memcached)
  * to speed up output of the same page viewed by another user with the
  * same options.
  *
@@ -1470,6 +1467,7 @@ $wgGroupPermissions['sysop']['browsearchive']    = true;
 $wgGroupPermissions['sysop']['noratelimit']      = true;
 $wgGroupPermissions['sysop']['versiondetail']    = true;
 $wgGroupPermissions['sysop']['movefile']         = true;
+$wgGroupPermissions['sysop']['unblockself']      = true;
 #$wgGroupPermissions['sysop']['mergehistory']     = true;
 
 // Permission to change users' group assignments
@@ -1691,7 +1689,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '265';
+$wgStyleVersion = '269';
 
 
 # Server-side caching:
@@ -2078,6 +2076,11 @@ $wgEnableMWSuggest = false;
  * want reduce load caused by cached scripts pulling suggestions.
  */
 $wgEnableOpenSearchSuggest = true;
+
+/**
+ * Expiry time for search suggestion responses
+ */
+$wgSearchSuggestCacheExpiry = 1200;
 
 /**
  *  Template for internal MediaWiki suggestion engine, defaults to API action=opensearch
@@ -2486,16 +2489,6 @@ $wgRC2UDPOmitBots = false;
  */
 $wgEnableNewpagesUserFilter = true;
 
-/**
- * Whether to use metadata edition
- * This will put categories, language links and allowed templates in a separate text box
- * while editing pages
- * EXPERIMENTAL
- */
-$wgUseMetadataEdit = false;
-/** Full name (including namespace) of the page containing templates names that will be allowed as metadata */
-$wgMetadataWhitelist = '';
-
 #
 # Copyright and credits settings
 #
@@ -2726,72 +2719,72 @@ $wgHandheldForIPhone = false;
  *
  */
 $wgDefaultUserOptions = array(
-	'quickbar'                => 1,
-	'underline'               => 2,
+	'ccmeonemails'            => 0,
 	'cols'                    => 80,
-	'rows'                    => 25,
-	'searchlimit'             => 20,
-	'contextlines'            => 5,
 	'contextchars'            => 50,
+	'contextlines'            => 5,
+	'date'                    => 'default',
+	'diffonly'                => 0,
+	'disablemail'             => 0,
 	'disablesuggest'          => 0,
-	'skin'                    => false,
-	'math'                    => 1,
-	'usenewrc'                => 0,
-	'rcdays'                  => 7,
-	'rclimit'                 => 50,
-	'wllimit'                 => 250,
-	'hideminor'               => 0,
-	'hidepatrolled'           => 0,
-	'newpageshidepatrolled'   => 0,
-	'highlightbroken'         => 1,
-	'stubthreshold'           => 0,
-	'previewontop'            => 1,
-	'previewonfirst'          => 0,
+	'editfont'                => 'default',
+	'editondblclick'          => 0,
 	'editsection'             => 1,
 	'editsectiononrightclick' => 0,
-	'editondblclick'          => 0,
 	'editwidth'               => 0,
-	'showtoc'                 => 1,
-	'showtoolbar'             => 1,
-	'minordefault'            => 0,
-	'date'                    => 'default',
-	'imagesize'               => 2,
-	'thumbsize'               => 2,
-	'rememberpassword'        => 0,
-	'nocache'                 => 0,
-	'diffonly'                => 0,
-	'showhiddencats'          => 0,
-	'norollbackdiff'          => 0,
-	'enotifwatchlistpages'    => 0,
-	'enotifusertalkpages'     => 1,
 	'enotifminoredits'        => 0,
 	'enotifrevealaddr'        => 0,
-	'shownumberswatching'     => 1,
-	'fancysig'                => 0,
-	'externaleditor'          => 0,
-	'externaldiff'            => 0,
-	'forceeditsummary'        => 0,
-	'showjumplinks'           => 1,
-	'justify'                 => 0,
-	'numberheadings'          => 0,
-	'uselivepreview'          => 0,
-	'watchlistdays'           => 3.0,
+	'enotifusertalkpages'     => 1,
+	'enotifwatchlistpages'    => 0,
 	'extendwatchlist'         => 0,
-	'watchlisthideminor'      => 0,
-	'watchlisthidebots'       => 0,
-	'watchlisthideown'        => 0,
-	'watchlisthideanons'      => 0,
-	'watchlisthideliu'        => 0,
-	'watchlisthidepatrolled'  => 0,
+	'externaldiff'            => 0,
+	'externaleditor'          => 0,
+	'fancysig'                => 0,
+	'forceeditsummary'        => 0,
+	'gender'                  => 'unknown',
+	'hideminor'               => 0,
+	'hidepatrolled'           => 0,
+	'highlightbroken'         => 1,
+	'imagesize'               => 2,
+	'justify'                 => 0,
+	'math'                    => 1,
+	'minordefault'            => 0,
+	'newpageshidepatrolled'   => 0,
+	'nocache'                 => 0,
+	'noconvertlink'           => 0,
+	'norollbackdiff'          => 0,
+	'numberheadings'          => 0,
+	'previewonfirst'          => 0,
+	'previewontop'            => 1,
+	'quickbar'                => 1,
+	'rcdays'                  => 7,
+	'rclimit'                 => 50,
+	'rememberpassword'        => 0,
+	'rows'                    => 25,
+	'searchlimit'             => 20,
+	'showhiddencats'          => 0,
+	'showjumplinks'           => 1,
+	'shownumberswatching'     => 1,
+	'showtoc'                 => 1,
+	'showtoolbar'             => 1,
+	'skin'                    => false,
+	'stubthreshold'           => 0,
+	'thumbsize'               => 2,
+	'underline'               => 2,
+	'uselivepreview'          => 0,
+	'usenewrc'                => 0,
 	'watchcreations'          => 0,
 	'watchdefault'            => 0,
-	'watchmoves'              => 0,
 	'watchdeletion'           => 0,
-	'noconvertlink'           => 0,
-	'gender'                  => 'unknown',
-	'ccmeonemails'            => 0,
-	'disablemail'             => 0,
-	'editfont'                => 'default',
+	'watchlistdays'           => 3.0,
+	'watchlisthideanons'      => 0,
+	'watchlisthidebots'       => 0,
+	'watchlisthideliu'        => 0,
+	'watchlisthideminor'      => 0,
+	'watchlisthideown'        => 0,
+	'watchlisthidepatrolled'  => 0,
+	'watchmoves'              => 0,
+	'wllimit'                 => 250,
 );
 
 /**
@@ -2914,6 +2907,13 @@ $wgAllowUserJs = false;
  * increase security risk to users and server load.
  */
 $wgAllowUserCss = false;
+
+/**
+ * Allow user-preferences implemented in CSS?
+ * This allows users to customise the site appearance to a greater
+ * degree; disabling it will improve page load times.
+ */
+$wgAllowUserCssPrefs = true;
 
 /** Use the site's Javascript page? */
 $wgUseSiteJs = true;
@@ -3048,6 +3048,18 @@ $wgThumbLimits = array(
  * by hardcoded px in wiki sourcecode.
  */
 $wgThumbUpright = 0.75;
+
+/**
+ * Default parameters for the <gallery> tag
+ */
+
+$wgGalleryOptions = array (
+	'imagesPerRow' => 4, // Default number of images per-row in the gallery
+	'imageWidth' => 120, // Width of the cells containing images in galleries (in "px")
+	'imageHeight' => 120, // Height of the cells containing images in galleries (in "px")
+	'captionLength' => 20, // Length of caption to truncate (in characters)
+	'showBytes' => true, // Show the filesize in bytes in categories
+);
 
 /**
  *  On  category pages, show thumbnail gallery for images belonging to that
@@ -3306,6 +3318,7 @@ $wgLogActions = array(
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
 	'suppress/reblock'  => 'reblock-logentry',
+	'patrol/patrol' 	=> 'patrol-log-line',
 );
 
 /**
@@ -4152,6 +4165,10 @@ $wgUniversalEditButton = true;
  * Should we allow a broader set of characters in id attributes, per HTML5?  If
  * not, use only HTML 4-compatible IDs.  This option is for testing -- when the
  * functionality is ready, it will be on by default with no option.
+ *
+ * Currently this appears to work fine in Chrome 4 and 5, Firefox 3.5 and 3.6, IE6
+ * and 8, and Opera 10.50, but it fails in Opera 10.10: Unicode IDs don't seem
+ * to work as anchors.  So not quite ready for general use yet.
  */
 $wgExperimentalHtmlIds = false;
 

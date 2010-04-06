@@ -1,5 +1,4 @@
 <?php
-
 /* This defines autoloading handler for whole MediaWiki framework */
 
 # Locations of core classes
@@ -84,6 +83,7 @@ $wgAutoloadLocalClasses = array(
 	'FakeTitle' => 'includes/FakeTitle.php',
 	'FakeMemCachedClient' => 'includes/ObjectCache.php',
 	'FauxRequest' => 'includes/WebRequest.php',
+	'FauxResponse' => 'includes/WebResponse.php',
 	'FeedItem' => 'includes/Feed.php',
 	'FeedUtils' => 'includes/FeedUtils.php',
 	'FileDeleteForm' => 'includes/FileDeleteForm.php',
@@ -157,12 +157,13 @@ $wgAutoloadLocalClasses = array(
 	'MagicWord' => 'includes/MagicWord.php',
 	'MailAddress' => 'includes/UserMailer.php',
 	'MathRenderer' => 'includes/Math.php',
-	'MediaTransformError' => 'includes/MediaTransformOutput.php',
-	'MediaTransformOutput' => 'includes/MediaTransformOutput.php',
+	'MediaTransformError' => 'includes/media/MediaTransformOutput.php',
+	'MediaTransformOutput' => 'includes/media/MediaTransformOutput.php',
 	'MediaWikiBagOStuff' => 'includes/BagOStuff.php',
 	'MediaWiki_I18N' => 'includes/SkinTemplate.php',
 	'MediaWiki' => 'includes/Wiki.php',
 	'MemCachedClientforWiki' => 'includes/memcached-client.php',
+	'Message' => 'includes/Message.php',
 	'MessageCache' => 'includes/MessageCache.php',
 	'MimeMagic' => 'includes/MimeMagic.php',
 	'MWException' => 'includes/Exception.php',
@@ -223,21 +224,19 @@ $wgAutoloadLocalClasses = array(
 	'StubObject' => 'includes/StubObject.php',
 	'StringUtils' => 'includes/StringUtils.php',
 	'TablePager' => 'includes/Pager.php',
-	'ThumbnailImage' => 'includes/MediaTransformOutput.php',
+	'ThumbnailImage' => 'includes/media/MediaTransformOutput.php',
 	'TiffHandler' => 'includes/media/Tiff.php',
 	'TitleDependency' => 'includes/CacheDependency.php',
 	'Title' => 'includes/Title.php',
 	'TitleArray' => 'includes/TitleArray.php',
 	'TitleArrayFromResult' => 'includes/TitleArray.php',
 	'TitleListDependency' => 'includes/CacheDependency.php',
-	'TransformParameterError' => 'includes/MediaTransformOutput.php',
-	'TurckBagOStuff' => 'includes/BagOStuff.php',
+	'TransformParameterError' => 'includes/media/MediaTransformOutput.php',
 	'UnlistedSpecialPage' => 'includes/SpecialPage.php',
 	'UploadBase' => 'includes/upload/UploadBase.php',
 	'UploadFromStash' => 'includes/upload/UploadFromStash.php',
 	'UploadFromFile' => 'includes/upload/UploadFromFile.php',
 	'UploadFromUrl' => 'includes/upload/UploadFromUrl.php',
-	'UploadFromChunks' => 'includes/upload/UploadFromChunks.php',
 	'User' => 'includes/User.php',
 	'UserArray' => 'includes/UserArray.php',
 	'UserArrayFromResult' => 'includes/UserArray.php',
@@ -280,6 +279,7 @@ $wgAutoloadLocalClasses = array(
 	'ApiFormatWddx' => 'includes/api/ApiFormatWddx.php',
 	'ApiFormatXml' => 'includes/api/ApiFormatXml.php',
 	'ApiFormatYaml' => 'includes/api/ApiFormatYaml.php',
+	'ApiGo' => 'includes/api/ApiGo.php',
 	'ApiHelp' => 'includes/api/ApiHelp.php',
 	'ApiImport' => 'includes/api/ApiImport.php',
 	'ApiImportReporter' => 'includes/api/ApiImport.php',
@@ -562,6 +562,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialExport' => 'includes/specials/SpecialExport.php',
 	'SpecialImport' => 'includes/specials/SpecialImport.php',
 	'SpecialListGroupRights' => 'includes/specials/SpecialListgrouprights.php',
+	'SpecialMergeHistory' => 'includes/specials/SpecialMergeHistory.php',
 	'SpecialMostlinkedtemplates' => 'includes/specials/SpecialMostlinkedtemplates.php',
 	'SpecialPreferences' => 'includes/specials/SpecialPreferences.php',
 	'SpecialPrefixindex' => 'includes/specials/SpecialPrefixindex.php',
@@ -618,7 +619,7 @@ class AutoLoader {
 	/**
 	 * autoload - take a class name and attempt to load it
 	 *
-	 * @param string $className Name of class we're looking for.
+	 * @param $className String: name of class we're looking for.
 	 * @return bool Returning false is important on failure as
 	 * it allows Zend to try and look in other registered autoloaders
 	 * as well.
@@ -665,6 +666,17 @@ class AutoLoader {
 				require( $file );
 			}
 		}
+	}
+
+	/**
+	 * Force a class to be run through the autoloader, helpful for things like
+	 * Sanitizer that have define()s outside of their class definition. Of course
+	 * this wouldn't be necessary if everything in MediaWiki was class-based. Sigh.
+	 *
+	 * @return Boolean Return the results of class_exists() so we know if we were successful
+	 */
+	static function loadClass( $class ) {
+		return class_exists( $class );
 	}
 }
 

@@ -17,6 +17,7 @@
  * @author Ragimiri
  * @author Rudko
  * @author Sp5uhe
+ * @author Tchoř
  * @author Urhixidur
  * @author Valasek
  * @author לערי ריינהארט
@@ -462,9 +463,6 @@ $messages = array(
 'namespaces'                 => 'Menné priestory',
 'variants'                   => 'Varianty',
 
-# Metadata in edit box
-'metadata_help' => 'Metadáta:',
-
 'errorpagetitle'    => 'Chyba',
 'returnto'          => 'Späť na $1.',
 'tagline'           => 'Z {{GRAMMAR:genitív|{{SITENAME}}}}',
@@ -632,6 +630,8 @@ Oznámte to prosím [[Special:ListUsers/sysop|správcovi]] a uveďte URL.',
 'readonly_lag'         => 'Databáza bola automaticky zamknutá pokým záložné databázové servery nedoženú hlavný server',
 'internalerror'        => 'Vnútorná chyba',
 'internalerror_info'   => 'Vnútorná chyba: $1',
+'fileappenderrorread'  => 'Počas pridávania sa nepodarilo prečítať „$1“.',
+'fileappenderror'      => 'Nepodarilo sa pridať „$1“ k „$2“.',
 'filecopyerror'        => 'Nebolo možné skopírovať súbor „$1“ na „$2“.',
 'filerenameerror'      => 'Nebolo možné premenovať súbor „$1“ na „$2“.',
 'filedeleteerror'      => 'Nebolo možné vymazať súbor „$1“.',
@@ -761,6 +761,7 @@ Ak bol účet vytvorený omylom, túto správu môžete ignorovať.',
 'login-throttled'            => 'Nedávno ste uskutočnili príliš mnoho neúspešných pokusov o prihlásenie.
 Prosím, počkajte predtým, než to skúsite znova.',
 'loginlanguagelabel'         => 'Jazyk: $1',
+'suspicious-userlogout'      => 'Vaša požiadavka odhlásiť sa bola zamietnutá, pretože to vyzerá, že ju poslal pokazený prehliadač alebo proxy server.',
 
 # Password reset dialog
 'resetpass'                 => 'Zmeniť heslo',
@@ -775,6 +776,7 @@ Prosím, počkajte predtým, než to skúsite znova.',
 'resetpass_forbidden'       => 'Heslá nie je možné zmeniť',
 'resetpass-no-info'         => 'Aby ste mohli priamo pristupovať k tejto stránke, musíte sa prihlásiť.',
 'resetpass-submit-loggedin' => 'Zmeniť heslo',
+'resetpass-submit-cancel'   => 'Zrušiť',
 'resetpass-wrong-oldpass'   => 'Neplatné dočasné alebo aktuálne heslo. 
 Je možné, že sa vám už podarilo úspešne zmeniť svoje heslo alebo ste si vyžiadali nové dočasné heslo.',
 'resetpass-temp-password'   => 'Dočasné heslo:',
@@ -813,6 +815,7 @@ Je možné, že sa vám už podarilo úspešne zmeniť svoje heslo alebo ste si 
 'showdiff'                         => 'Zobraziť rozdiely',
 'anoneditwarning'                  => "'''Upozornenie:''' Nie ste prihlásený.
 Vaša IP adresa bude zaznamenaná v histórii úprav tejto stránky.",
+'anonpreviewwarning'               => "''Nie ste prihlásený. Uložením zaznamenáte svoju IP adresu do histórie úprav tejto stránky.''",
 'missingsummary'                   => "'''Pripomienka:''' Neposkytli ste zhrnutie úprav. Ak kliknete znova na Uložiť, vaše úpravy sa uložia bez zhrnutia úprav.",
 'missingcommenttext'               => 'Prosím, dolu napíšte komentár.',
 'missingcommentheader'             => "'''Pripomienka:''' Neposkytli ste predmet/hlavičku tohto komentára. Ak znova kliknete na tlačidlo Uložiť, vaša úprava sa uloží bez nej.",
@@ -881,6 +884,8 @@ Môžete [[Special:Search/{{PAGENAME}}|hľadať názov tejto stránky]] v texte 
 alebo <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} si pozrieť súvisiace záznamy]</span>.',
 'userpage-userdoesnotexist'        => 'Používateľský účet „$1“ nie je registrovaný. Prosím, zaškrtnite ak chcete vytvoriť/upravovať túto stránku.',
 'userpage-userdoesnotexist-view'   => 'Používateľský účet „$1“ nie je registrovaný.',
+'blocked-notice-logextract'        => 'Tento používateľ je momentálne zablokovaný.
+Dolu je pre informáciu posledná položka zo záznamu blokovaní:',
 'clearyourcache'                   => "'''Poznámka: Aby sa zmeny prejavili, po uložení musíte vymazať vyrovnávaciu pamäť vášho prehliadača.'''
 '''Mozilla / Firefox / Safari:''' držte stlačený ''Shift'' a kliknite na ''Reload'' alebo stlačte buď ''Ctrl-F5'' alebo ''Ctrl-R'' (''Comand-R'' na Macintosh); '''Konqueror:''': kliknite na tlačidlo ''Reload'' alebo stlačte ''F5''; '''Opera''' vymazať vyrovnávaciu pamäť prehliadača v ponuke ''Tools→Preferences''; '''Internet Explorer:''' držte ''Ctrl'' a kliknite na ''Refresh'' alebo stlačte ''Ctrl-F5'';",
 'usercssyoucanpreview'             => "'''Tip:''' Váš nový CSS pred uložením otestujete stlačením tlačidla „Zobraziť náhľad“.",
@@ -988,7 +993,7 @@ Tieto argumenty boli vynechané.',
 'language-converter-depth-warning'        => 'Bolo prekročené obmedzenie hĺbky ($1) jazykového konvertora',
 
 # "Undo" feature
-'undo-success' => 'Úpravu nie je možné vrátiť. Prosím skontrolujte tento rozdiel, čím overíte, že táto úprava je tá, ktorú chcete, a následne uložte zmeny, čím ukončíte vrátenie.',
+'undo-success' => 'Úpravu je možné vrátiť. Prosím skontrolujte tento rozdiel, čím overíte, že táto úprava je tá, ktorú chcete, a následne uložte zmeny, čím ukončíte vrátenie.',
 'undo-failure' => 'Úpravu nie je možné vrátiť kvôli konfliktným medziľahlým úpravám.',
 'undo-norev'   => 'Túto úpravu nie je možné vrátiť, pretože neexistuje alebo bola zmazaná.',
 'undo-summary' => 'Revízia $1 používateľa [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusia]]) bola vrátená',
@@ -1184,7 +1189,7 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 'searchresults'                    => 'Výsledky vyhľadávania',
 'searchresults-title'              => 'Výsledky hľadania „$1“',
 'searchresulttext'                 => 'Viac informácií o vyhľadávaní vo {{GRAMMAR:lokál|{{SITENAME}}}} nájdete na stránke [[{{MediaWiki:Helppage}}|{{int:help}}]].',
-'searchsubtitle'                   => "Hľadali ste „'''[[:$1]]'''“ ([[Special:Prefixindex/$1|všetky stránky začínajúce na „$1”]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|všetky stránky odkazujúce na „$1”]])",
+'searchsubtitle'                   => "Hľadali ste „'''[[:$1]]'''“ ([[Special:Prefixindex/$1|všetky stránky začínajúce na „$1“]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|všetky stránky odkazujúce na „$1“]])",
 'searchsubtitleinvalid'            => 'Na vyhľadávaciu požiadavku „$1“',
 'toomanymatches'                   => 'Hľadanie vrátilo príliš veľa výsledkov. Prosím, skúste inú požiadavku.',
 'titlematches'                     => 'Vyhovujúce názvy stránok',
@@ -1319,6 +1324,7 @@ Tu je náhodne vytvorená hodnota, ktorú môžete použiť: $1',
 'prefs-files'                   => 'Súbory',
 'prefs-custom-css'              => 'Vlastný CSS',
 'prefs-custom-js'               => 'Vlastný JS',
+'prefs-common-css-js'           => 'Spoločné CSS/JS pre všetky témy vzhľadu:',
 'prefs-reset-intro'             => 'Túto stránku môžete použiť na vrátenie predvolených hodnôt vašich nastavení.
 Túto operáciu nemožno vrátiť.',
 'prefs-emailconfirm-label'      => 'Potvrdenie emailu:',
@@ -1441,6 +1447,7 @@ Musí obsahovať menej ako $1 {{PLURAL:$1|znak|znaky|znakov}}.',
 'right-hideuser'              => 'Zablokovať používateľské meno tak, že bude verejnosti skryté',
 'right-ipblock-exempt'        => 'Obchádzať blokovanie IP adries, rozsahov a automatické blokovanie',
 'right-proxyunbannable'       => 'Obchádzať automatické blokovanie proxy serverov',
+'right-unblockself'           => 'Odblokovať samých seba',
 'right-protect'               => 'Meniť úroveň zamknutia a upravovať zamknuté stránky',
 'right-editprotected'         => 'Upravovať zamknuté schránky (bez kaskádovej ochrany)',
 'right-editinterface'         => 'Upravovať správy používateľského rozhrania',
@@ -1595,6 +1602,7 @@ Vizuálny prehľad nájdete v [[Special:NewFiles|galérii novo nahraných súbor
 'minlength1'                  => 'Názvy súborov musia mať aspoň jedno písmeno.',
 'illegalfilename'             => 'Názov súboru „$1“ obsahuje znaky, ktoré nie sú povolené v názvoch stránok. Prosím premenujte súbor a skúste ho nahrať znovu.',
 'badfilename'                 => 'Názov obrázka bol zmenený na „$1“.',
+'filetype-mime-mismatch'      => 'Prípona súboru nezodpovedá typu MIME.',
 'filetype-badmime'            => 'Nie je povolené nahrávať súbory s MIME typom „$1“.',
 'filetype-bad-ie-mime'        => 'Nie je možné nahrať tento typ súboru, pretože Internet Explorer by ho rozpoznal ako „$1“, čo je nepovolený a potenciálne nebezpečný typ súboru.',
 'filetype-unwanted-type'      => "„.$1“''' je nežiadúci typ súboru.
@@ -1706,6 +1714,7 @@ Aby bolo zabezpečenie optimálne, img_auth.php je vypnutý.',
 'http-timed-out'        => 'Vyhradený čas požiadavky HTTP vypršal.',
 'http-curl-error'       => 'Chyba pri sťahovaní URL: $1',
 'http-host-unreachable' => 'URL nie je dostupný',
+'http-bad-status'       => 'Počas požiadavky HTTP nastal problém: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Nedostupný URL',
@@ -2215,7 +2224,7 @@ Tu sú aktuálne nastavenia stránky '''$1''':",
 'protect-othertime-op'        => 'iný čas',
 'protect-existing-expiry'     => 'Súčasný čas ukončenia: $2, $3',
 'protect-otherreason'         => 'Iný/ďalší dôvod:',
-'protect-otherreason-op'      => 'iný/ďalší dôvod',
+'protect-otherreason-op'      => 'Iný/ďalší dôvod',
 'protect-dropdown'            => '* Bežné dôvody zamknutia
 ** Nadmerný vandalizmus
 ** Nadmerný spam
@@ -2320,7 +2329,7 @@ $1',
 
 # What links here
 'whatlinkshere'            => 'Odkazy na túto stránku',
-'whatlinkshere-title'      => 'Stránky odkazujúce na „$1”',
+'whatlinkshere-title'      => 'Stránky odkazujúce na „$1“',
 'whatlinkshere-page'       => 'Page:',
 'linkshere'                => "Nasledujúce stránky odkazujú na '''[[:$1]]''':",
 'nolinkshere'              => "Žiadne stránky neodkazujú na '''[[:$1]]'''.",
@@ -2448,6 +2457,8 @@ $1 je už zablokovaný. Chcete zmeniť voľby blokovania?',
 'sorbs_create_account_reason'     => 'Vaša IP adresa je vedená ako nezabezpečený proxy server v databáze DNSBL, ktorú používa {{SITENAME}}. Nemôžete si vytvoriť účet.',
 'cant-block-while-blocked'        => 'Nemôžete blokovať iných používateľov, kým ste zablokovaný.',
 'cant-see-hidden-user'            => 'Používateľ, ktorého sa pokúšate zablokovať už bol zablokovaný a skrytý. Pretože nemáte právo hideuser, nemôžete vidieť ani upravovať blokovanie používateľa.',
+'ipbblocked'                      => 'Nemôžete zablokovať ani odblokovať iných používateľov, pretože ste sami zablokovaní',
+'ipbnounblockself'                => 'Nie je povolené, aby ste sa sami odblokovali',
 
 # Developer tools
 'lockdb'              => 'Zamknúť databázu',
@@ -2498,6 +2509,7 @@ ubezpečte sa preto, skôr ako budete pokračovať, že chápete dôsledky svojh
 
 V takých prípadoch budete musieť, ak si to želáte, premiestniť alebo zlúčiť stránku ručne.",
 'movearticle'                  => 'Presunúť stránku',
+'moveuserpage-warning'         => "'''Upozornenie:''' Chystáte sa presunúť používateľskú stránku. Pamätajte, že týmto presuniete iba stránku a používateľ ''nebude'' premenovaný.",
 'movenologin'                  => 'Nie ste prihlásený',
 'movenologintext'              => 'Musíte byť registrovaný používateľ a [[Special:UserLogin|prihlásený]], aby ste mohli presunúť stránku.',
 'movenotallowed'               => 'Nemáte povolenie presúvať stránky.',
@@ -3168,31 +3180,31 @@ Každý ďalší odkaz na rovnakom riadku sa považuje za výnimku, t.j. článk
 'limitall'         => 'všetky',
 
 # E-mail address confirmation
-'confirmemail'             => 'Potvrdiť e-mailovú adresu',
-'confirmemail_noemail'     => 'Nenastavili ste platnú emailovú adresu vo svojich [[Special:Preferences|Nastaveniach]].',
-'confirmemail_text'        => '{{SITENAME}} vyžaduje, aby ste potvrdili platnosť vašej e-mailovej adresy
+'confirmemail'              => 'Potvrdiť e-mailovú adresu',
+'confirmemail_noemail'      => 'Nenastavili ste platnú emailovú adresu vo svojich [[Special:Preferences|Nastaveniach]].',
+'confirmemail_text'         => '{{SITENAME}} vyžaduje, aby ste potvrdili platnosť vašej e-mailovej adresy
 pred používaním e-mailových funkcií. Kliknite na tlačidlo dole, aby sa na vašu adresu odoslal potvrdzovací
 e-mail. V e-maili bude aj odkaz obsahujúci kód; otvorte odkaz
 vo vašom prehliadači, čím potvrdíte, že vaša e-mailová adresa je platná.',
-'confirmemail_pending'     => 'Potvrdzovací kód vám už bol zaslaný; ak ste si účet vytvorili len nedávno
+'confirmemail_pending'      => 'Potvrdzovací kód vám už bol zaslaný; ak ste si účet vytvorili len nedávno
 mali by ste počkať niekoľko minút, kým vám bude email doručený, predtým
 než si vyžiadate nový kód.',
-'confirmemail_send'        => 'Odoslať potvrdzovací kód',
-'confirmemail_sent'        => 'Potvrdzovací e-mail odoslaný.',
-'confirmemail_oncreate'    => 'Na vašu emailovú adresu bol odoslaný potvrdzovací kód.
+'confirmemail_send'         => 'Odoslať potvrdzovací kód',
+'confirmemail_sent'         => 'Potvrdzovací e-mail odoslaný.',
+'confirmemail_oncreate'     => 'Na vašu emailovú adresu bol odoslaný potvrdzovací kód.
 Tento kód nie je potrebný na prihlásenie, ale budete ho musieť poskytnúť pred
 zapnutím vlastností wiki využívajcich email.',
-'confirmemail_sendfailed'  => 'Z {{GRAMMAR:genitív|{{SITENAME}}}} nebolo možné odoslať potvrdzovací e-mail.
+'confirmemail_sendfailed'   => 'Z {{GRAMMAR:genitív|{{SITENAME}}}} nebolo možné odoslať potvrdzovací e-mail.
 Skontrolujte neplatné znaky vo vašej emailovej adrese.
 
 Hlásenie programu, ktorý odosielal poštu: $1',
-'confirmemail_invalid'     => 'Neplatný potvrdzovací kód. Kód možno vypršal.',
-'confirmemail_needlogin'   => 'Musíte sa $1 na potvrdenie vašej emailovaj adresy.',
-'confirmemail_success'     => 'Vaša e-mailová adresa bola potvrdená. Môžete sa prihlásiť a využívať wiki.',
-'confirmemail_loggedin'    => 'Vaša e-mailová adresa bola potvrdená.',
-'confirmemail_error'       => 'Niečo sa pokazilo pri ukladaní vášho potvrdenia.',
-'confirmemail_subject'     => '{{SITENAME}} - potvrdenie e-mailovej adresy',
-'confirmemail_body'        => 'Niekto, pravdepodobne vy z IP adresy $1, zaregistroval účet
+'confirmemail_invalid'      => 'Neplatný potvrdzovací kód. Kód možno vypršal.',
+'confirmemail_needlogin'    => 'Musíte sa $1 na potvrdenie vašej emailovaj adresy.',
+'confirmemail_success'      => 'Vaša e-mailová adresa bola potvrdená. Môžete sa prihlásiť a využívať wiki.',
+'confirmemail_loggedin'     => 'Vaša e-mailová adresa bola potvrdená.',
+'confirmemail_error'        => 'Niečo sa pokazilo pri ukladaní vášho potvrdenia.',
+'confirmemail_subject'      => '{{SITENAME}} - potvrdenie e-mailovej adresy',
+'confirmemail_body'         => 'Niekto, pravdepodobne vy z IP adresy $1, zaregistroval účet
 „$2“ s touto e-mailovou adresou na {{GRAMMAR:lokál|{{SITENAME}}}}.
 
 Pre potvrdenie, že tento účet skutočne patrí vám a pre aktivovanie
@@ -3206,8 +3218,23 @@ Ak ste to *neboli* vy, otvorte tento odkaz,
 $5
 
 Tento potvrdzovací kód vyprší $4.',
-'confirmemail_invalidated' => 'Potvrdenie emailovej adresy bolo zrušené',
-'invalidateemail'          => 'Zrušiť potvrdenie emailovej adresy',
+'confirmemail_body_changed' => 'Niekto, pravdepodobne vy, z IP adresy $1,
+zmenil emailovú adresu účtu „$2“ na túto adresu na {{GRAMMAR:lokál|{{SITENAME}}}}.
+
+Aby ste potvrdili, že tento účet skutočne patrí vám a znova
+aktivovali funkcie emailu na{{GRAMMAR:lokál|{{SITENAME}}}},
+otvorte nasledovný odkaz v prehliadači:
+
+$3
+
+Ak vám účet *nepatrí*, otvorte namiesto toho tento odkaz,
+ktorý zruší potvrdenie emailovej adresy:
+
+$5
+
+Platnosť tohto potvrdzovacieho kódu vyprší $4.',
+'confirmemail_invalidated'  => 'Potvrdenie emailovej adresy bolo zrušené',
+'invalidateemail'           => 'Zrušiť potvrdenie emailovej adresy',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Transklúzia interwiki je vypnutá]',

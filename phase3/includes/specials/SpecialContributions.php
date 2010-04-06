@@ -140,8 +140,8 @@ class SpecialContributions extends SpecialPage {
 
 	/**
 	 * Generates the subheading with links
-	 * @param Title $nt @see Title object for the target
-	 * @param integer $id User ID for the target
+	 * @param $nt Title object for the target
+	 * @param $id Integer: User ID for the target
 	 * @return String: appropriately-escaped HTML to be output literally
 	 * @todo Fixme: almost the same as getSubTitle in SpecialDeletedContributions.php. Could be combined.
 	 */
@@ -168,7 +168,7 @@ class SpecialContributions extends SpecialPage {
 							wfMsgHtml( 'change-blocklink' )
 						);
 						$tools[] = $sk->linkKnown( # Unblock link
-							SpecialPage::getTitleFor( 'BlockList' ),
+							SpecialPage::getTitleFor( 'Ipblocklist' ),
 							wfMsgHtml( 'unblocklink' ),
 							array(),
 							array(
@@ -235,7 +235,9 @@ class SpecialContributions extends SpecialPage {
 						'lim' => 1,
 						'showIfEmpty' => false,
 						'msgKey' => array(
-							'sp-contributions-blocked-notice',
+							$userObj->isAnon() ?
+								'sp-contributions-blocked-notice-anon' :
+								'sp-contributions-blocked-notice',
 							$nt->getText() # Support GENDER in 'sp-contributions-blocked-notice'
 						),
 						'offset' => '' # don't use $wgRequest parameter offset
@@ -257,7 +259,7 @@ class SpecialContributions extends SpecialPage {
 
 	/**
 	 * Generates the namespace selector form with hidden attributes.
-	 * @param $this->opts Array: the options to be included.
+	 * @return String: HTML fragment
 	 */
 	protected function getForm() {
 		global $wgScript;
@@ -337,7 +339,7 @@ class SpecialContributions extends SpecialPage {
 	
 	/**
 	 * Output a subscription feed listing recent edits to this page.
-	 * @param string $type
+	 * @param $type String
 	 */
 	protected function feed( $type ) {
 		global $wgRequest, $wgFeed, $wgFeedClasses, $wgFeedLimit;

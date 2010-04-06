@@ -211,9 +211,6 @@ $messages = array(
 'namespaces'                 => 'नेमस्पेस',
 'variants'                   => 'बहुरुपहरु',
 
-# Metadata in edit box
-'metadata_help' => 'मेटाडेटा:',
-
 'errorpagetitle'    => 'त्रुटि',
 'returnto'          => '$1 मा फर्कनुहोस् ।',
 'tagline'           => '{{SITENAME}}बाट',
@@ -372,6 +369,7 @@ $1',
 'missingarticle-diff'  => '(डिफ diff: $1, $2)',
 'internalerror'        => 'आन्तरिक त्रुटि',
 'internalerror_info'   => 'आन्तरिक त्रुटि: $1',
+'fileappenderror'      => ' "$2".लाई"$1" मा जोडन सकिएन ।',
 'filecopyerror'        => 'फाइल  "$1" लाई "$2" मा प्रतिलिपी गर्न सकिएन ।',
 'filerenameerror'      => 'फाइल "$1" को नाम "$2" मा परिवर्तन गर्न सकिएन ।',
 'filedeleteerror'      => 'फाइल "$1"  मेट्न सकिएन ।',

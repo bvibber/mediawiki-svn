@@ -18,13 +18,23 @@ class PHPUnitTestRecorder extends TestRecorder {
 }
 
 class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
-#implements PHPUnit_Framework_SelfDescribing {
 	static private $count;
 	static public $parser;
 	static public $iter;
 
+	public static function addTables(&$tables) {
+		$tables[] = 'user_properties';
+		$tables[] = 'filearchive';
+		$tables[] = 'logging';
+		$tables[] = 'updatelog';
+		return true;
+	}
+
 	public static function suite() {
         $suite = new PHPUnit_Framework_TestSuite();
+
+		global $wgHooks;
+		$wgHooks['ParserTestTables'][] = "MediaWikiParserTestSuite::addTables";
 
 		self::$iter = new TestFileIterator( PARSER_TESTS );
 
@@ -57,12 +67,12 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 		$wgLocalFileRepo = array(
 			'class' => 'LocalRepo',
 			'name' => 'local',
-			'directory' => '',
+			'directory' => 'test-repo',
 			'url' => 'http://example.com/images',
 			'hashLevels' => 2,
 			'transformVia404' => false,
 		);
-                $wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
+		$wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
 		$wgNamespaceAliases['Image'] = NS_FILE;
 		$wgNamespaceAliases['Image_talk'] = NS_FILE_TALK;
 
@@ -89,7 +99,7 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 	}
 
 	public function tearDown() {
-		$this->teardownDatabase();
+		/* $this->teardownDatabase(); */
 		$this->recorder->report();
 		$this->recorder->end();
 		$this->teardownUploadDir($this->uploadDir);
@@ -102,7 +112,6 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 	}
 
 
-	private $db;
 	private $uploadDir;
 	private $keepUploads;
 	/**
@@ -198,11 +207,18 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 	}
 }
 
+/**
+ * @group Stub
+ */
 class ParserUnitTest extends PHPUnit_Framework_TestCase {
 	private $number = 0;
 	private $test = "";
 
-	public function __construct($number, $test) {
+	public function testBogus() {
+		$this->markTestSkipped("This is a stub");
+	}
+
+	public function __construct($number = null, $test = null) {
 		$this->number = $number;
 		$this->test = $test;
 	}

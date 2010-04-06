@@ -9,6 +9,7 @@
  *
  * @author Codex Sinaiticus
  * @author Elfalem
+ * @author Romaine
  * @author Solomon
  * @author Teferra
  */
@@ -198,9 +199,6 @@ $messages = array(
 'vector-namespace-image'    => 'ፋይል',
 'vector-namespace-talk'     => 'ውይይት',
 
-# Metadata in edit box
-'metadata_help' => 'ተጨማሪ መረጃ:',
-
 'errorpagetitle'    => 'ስህተት',
 'returnto'          => '(ወደ $1 ለመመለስ)',
 'tagline'           => 'ከ{{SITENAME}}',
@@ -252,7 +250,7 @@ $messages = array(
 'lastmodifiedat'    => 'ይህ ገጽ መጨረሻ የተቀየረው እ.ኣ.አ በ$2፣ $1 ዓ.ም. ነበር።',
 'viewcount'         => 'ይህ ገጽ {{PLURAL:$1|አንዴ|$1 ጊዜ}} ታይቷል።',
 'protectedpage'     => 'የተቆለፈ ገጽ',
-'jumpto'            => 'ዘልለው ለመሐድ፦',
+'jumpto'            => 'ዘልለው ለመሔድ፦',
 'jumptonavigation'  => 'የማውጫ ቁልፎች',
 'jumptosearch'      => 'ፍለጋ',
 
@@ -833,7 +831,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'yournick'                  => 'ቁልምጫ ስም (ለፊርማ)',
 'badsig'                    => 'ትክክለኛ ያልሆነ ጥሬ ፊርማ፤ HTML ተመልከት።',
 'badsiglength'              => 'ያ ቁልምጫ ስም ከመጠን በላይ ይረዝማል፤ ከ$1 ፊደል በታች መሆን አለበት።',
-'yourgender'                => ' ሥርዓተ ጾታ',
+'yourgender'                => 'ሥርዓተ ጾታ',
 'gender-unknown'            => ' አታምር',
 'gender-male'               => 'ወንድ',
 'gender-female'             => ' ሴት',

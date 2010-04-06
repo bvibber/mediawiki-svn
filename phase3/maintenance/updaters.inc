@@ -169,6 +169,9 @@ $wgUpdates = array(
 		// A field changed name mid-release cycle, so fix it for anyone using
 		// trunk
 		array( 'rename_eu_wiki_id' ),
+		array( 'do_update_mime_minor_field' ),
+		// Should've done this back in 1.10, but better late than never:
+		array( 'do_populate_rev_len' ),
 	),
 
 	'sqlite' => array(
@@ -194,7 +197,6 @@ $wgUpdates = array(
 		array( 'add_index', 'change_tag',    'change_tag_rc_tag', 'patch-change_tag-indexes.sql' ),
 		array( 'add_field', 'redirect',      'rd_interwiki',     'patch-rd_interwiki.sql' ),
 		array( 'do_update_transcache_field' ),
-
 		// version-independent searchindex setup, added in 1.16
 		array( 'sqlite_setup_searchindex' ),
 	),
@@ -1257,12 +1259,13 @@ function do_category_population() {
 		wfOut( "...category table already populated.\n" );
 		return;
 	}
-	require_once( 'populateCategory.inc' );
+	require_once( 'populateCategory.php' );
 	wfOut( "Populating category table, printing progress markers.  " ).
 "For large databases, you\n".
 "may want to hit Ctrl-C and do this manually with maintenance/\n".
 "populateCategory.php.\n";
-	populateCategory( '', 10, 0, true );
+	$task = new PopulateCategory();
+	$task->execute();
 	wfOut( "Done populating category table.\n" );
 }
 
@@ -1271,10 +1274,19 @@ function do_populate_parent_id() {
 		wfOut( "...rev_parent_id column already populated.\n" );
 		return;
 	}
-	require_once( 'populateParentId.inc' );
+	require_once( 'populateParentId.php' );
+	$task = new PopulateParentId();
+	$task->execute();
+}
 
-	global $wgDatabase;
-	populate_rev_parent_id( $wgDatabase );
+function do_populate_rev_len() {
+	if( update_row_exists( 'populate rev_len' ) ) {
+		wfOut( "...rev_len column already populated.\n" );
+		return;
+	}
+	require_once( 'populateRevisionLength.php' );
+	$task = new PopulateRevisionLength();
+	$task->execute();
 }
 
 function sqlite_initial_indexes() {
@@ -1324,12 +1336,13 @@ function do_log_search_population() {
 		wfOut( "...log_search table already populated.\n" );
 		return;
 	}
-	require_once( 'populateLogSearch.inc' );
+	require_once( 'populateLogSearch.php' );
 	wfOut(
 "Populating log_search table, printing progress markers. For large\n" .
 "databases, you may want to hit Ctrl-C and do this manually with\n" .
 "maintenance/populateLogSearch.php.\n" );
-	migrate_log_params( $wgDatabase );
+	$task = new PopulateLogSearch();
+	$task->execute();
 	wfOut( "Done populating log_search table.\n" );
 }
 
@@ -1355,6 +1368,19 @@ function do_update_transcache_field() {
 		wfOut( "ok\n" );
 	}
 }
+
+function do_update_mime_minor_field() {
+	if ( update_row_exists( 'mime_minor_length' ) ) {
+		wfOut( "*_mime_minor fields are already long enough.\n" );
+	} else {
+		global $wgDatabase;
+		wfOut( "Altering all *_mime_minor fields to 100 bytes in size ... " );
+		$wgDatabase->sourceFile( archive( 'patch-mime_minor_length.sql' ) );
+		wfOut( "ok\n" );
+	}
+}
+
+
 
 /***********************************************************************
  * Start PG stuff
@@ -1685,6 +1711,38 @@ function do_postgres_updates() {
 	$newrules = array(
 	);
 
+	## All FK columns should be deferred
+	$deferredcols = array(
+		array("archive",          "ar_user",         "mwuser(user_id) ON DELETE SET NULL"),
+		array("categorylinks",    "cl_from",         "page(page_id) ON DELETE CASCADE"),
+		array("externallinks",    "el_from",         "page(page_id) ON DELETE CASCADE"),
+		array("filearchive",      "fa_deleted_user", "mwuser(user_id) ON DELETE SET NULL"),
+		array("filearchive",      "fa_user",         "mwuser(user_id) ON DELETE SET NULL"),
+		array("image",            "img_user",        "mwuser(user_id) ON DELETE SET NULL"),
+		array("imagelinks",       "il_from",         "page(page_id) ON DELETE CASCADE"),
+		array("ipblocks",         "ipb_by",          "mwuser(user_id) ON DELETE CASCADE"),
+		array("ipblocks",         "ipb_user",        "mwuser(user_id) ON DELETE SET NULL"),
+		array("langlinks",        "ll_from",         "page(page_id) ON DELETE CASCADE"),
+		array("logging",          "log_user",        "mwuser(user_id) ON DELETE SET NULL"),
+		array("oldimage",         "oi_name",         "image(img_name) ON DELETE CASCADE ON UPDATE CASCADE"),
+		array("oldimage",         "oi_user",         "mwuser(user_id) ON DELETE SET NULL"),
+		array("pagelinks",        "pl_from",         "page(page_id) ON DELETE CASCADE"),
+		array("page_props",       "pp_page",         "page (page_id) ON DELETE CASCADE"),
+		array("page_restrictions","pr_page",         "page(page_id) ON DELETE CASCADE"),
+		array("protected_titles", "pt_user",         "mwuser(user_id) ON DELETE SET NULL"),
+		array("recentchanges",    "rc_cur_id",       "page(page_id) ON DELETE SET NULL"),
+		array("recentchanges",    "rc_user",         "mwuser(user_id) ON DELETE SET NULL"),
+		array("redirect",         "rd_from",         "page(page_id) ON DELETE CASCADE"),
+		array("revision",         "rev_page",        "page (page_id) ON DELETE CASCADE"),
+		array("revision",         "rev_user",        "mwuser(user_id) ON DELETE RESTRICT"),
+		array("templatelinks",    "tl_from",         "page(page_id) ON DELETE CASCADE"),
+		array("trackbacks",       "tb_page",         "page(page_id) ON DELETE CASCADE"),
+		array("user_groups",      "ug_user",         "mwuser(user_id) ON DELETE CASCADE"),
+		array("user_newtalk",     "user_id",         "mwuser(user_id) ON DELETE CASCADE"),
+		array("user_properties",  "up_user",         "mwuser(user_id) ON DELETE CASCADE"),
+		array("watchlist",        "wl_user",         "mwuser(user_id) ON DELETE CASCADE"),
+	);
+
 	#Check new sequences, rename if needed
 	foreach ($newsequences as $ns) {
 		if( $wgDatabase->sequenceExists('pr_id_val') ) {
@@ -1939,6 +1997,24 @@ function do_postgres_updates() {
 		else {
 			$wgDatabase->sourceFile($ni[2]);
 		}
+	}
+
+	foreach ( $deferredcols AS $dc ) {
+		$fi = $wgDatabase->fieldInfo($dc[0], $dc[1]);
+		if (is_null($fi)) {
+			wfOut( "WARNING! Column \"$dc[0].$dc[1]\" does not exist but it should! Please report this.\n" );
+			continue;
+		}
+		if ( $fi->is_deferred() && $fi->is_deferrable() ) {
+			continue;
+		}
+		wfOut( "Altering column \"$dc[0].$dc[1]\" to be DEFERRABLE INITTALLY DEFERRED\n" );
+		$conname = $fi->conname();
+		$clause = $dc[2];
+		$command = "ALTER TABLE $dc[0] DROP CONSTRAINT $conname";
+		$wgDatabase->query( $command );
+		$command = "ALTER TABLE $dc[0] ADD CONSTRAINT $conname FOREIGN KEY ($dc[1]) REFERENCES $clause DEFERRABLE INITIALLY DEFERRED";
+		$wgDatabase->query( $command );
 	}
 
 	# Tweak the page_title tsearch2 trigger to filter out slashes

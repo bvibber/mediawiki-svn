@@ -345,7 +345,8 @@ class User {
 	 *    User::getCanonicalName(), except that true is accepted as an alias
 	 *    for 'valid', for BC.
 	 *
-	 * @return \type{User} The User object, or null if the username is invalid. If the
+	 * @return \type{User} The User object, or false if the username is invalid 
+	 *    (e.g. if it contains illegal characters or is an IP address). If the
 	 *    username is not present in the database, the result will be a user object
 	 *    with a name, zero user ID and default settings.
 	 */
@@ -435,7 +436,7 @@ class User {
 	 */
 	static function whoIs( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField( 'user', 'user_name', array( 'user_id' => $id ), 'User::whoIs' );
+		return $dbr->selectField( 'user', 'user_name', array( 'user_id' => $id ), __METHOD__ );
 	}
 
 	/**
@@ -1152,7 +1153,7 @@ class User {
 		if ( $this->mBlock->load( $ip , $this->mId ) ) {
 			wfDebug( __METHOD__ . ": Found block.\n" );
 			$this->mBlockedby = $this->mBlock->mBy;
-			if( $this->mBlockedby == "0" )
+			if( $this->mBlockedby == 0 )
 				$this->mBlockedby = $this->mBlock->mByName;
 			$this->mBlockreason = $this->mBlock->mReason;
 			$this->mHideName = $this->mBlock->mHideName;
@@ -2907,9 +2908,10 @@ class User {
 	 * Generate a new e-mail confirmation token and send a confirmation/invalidation
 	 * mail to the user's given address.
 	 *
+	 * @param $changed Boolean: whether the adress changed
 	 * @return \types{\bool,\type{WikiError}} True on success, a WikiError object on failure.
 	 */
-	function sendConfirmationMail() {
+	function sendConfirmationMail( $changed = false ) {
 		global $wgLang;
 		$expiration = null; // gets passed-by-ref and defined in next line.
 		$token = $this->confirmationToken( $expiration );
@@ -2917,8 +2919,9 @@ class User {
 		$invalidateURL = $this->invalidationTokenUrl( $token );
 		$this->saveSettings();
 
+		$message = $changed ? 'confirmemail_body_changed' : 'confirmemail_body';
 		return $this->sendMail( wfMsg( 'confirmemail_subject' ),
-			wfMsg( 'confirmemail_body',
+			wfMsg( $message,
 				wfGetIP(),
 				$this->getName(),
 				$url,

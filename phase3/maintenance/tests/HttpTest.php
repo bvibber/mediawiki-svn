@@ -109,6 +109,18 @@ class HttpTest extends PhpUnit_Framework_TestCase {
 		$this->assertLessThan($timeout+2, $end_time - $start_time,
 							  "Request took less than {$timeout}s via ".Http::$httpEngine);
 		$this->assertEquals($r, false, "false -- what we get on error from Http::get()");
+
+		$r = HTTP::get( "http://www.example.com/this-file-does-not-exist", $timeout);
+		$this->assertFalse($r, "False on 404s");
+
+
+		$r = HttpRequest::factory( "http://www.example.com/this-file-does-not-exist" );
+		$er = $r->execute();
+		if ( is_a($r, 'PhpHttpRequest') && version_compare( '5.2.10', phpversion(), '>' ) ) {
+			$this->assertRegexp("/HTTP request failed/", $er->getWikiText());
+		} else {
+			$this->assertRegexp("/404 Not Found/", $er->getWikiText());
+		}
 	}
 
 	function testFailureDefault() {
@@ -346,15 +358,56 @@ class HttpTest extends PhpUnit_Framework_TestCase {
 	function testIsValidUrl() {
 	}
 
-	function testSetCookie() {
+	function testValidateCookieDomain() {
+		$this->assertFalse( Cookie::validateCookieDomain( "co.uk" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( ".co.uk" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "gov.uk" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( ".gov.uk" ) );
+		$this->assertTrue( Cookie::validateCookieDomain( "supermarket.uk" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "uk" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( ".uk" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "127.0.0." ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "127." ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "127.0.0.1." ) );
+		$this->assertTrue( Cookie::validateCookieDomain( "127.0.0.1" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "333.0.0.1" ) );
+		$this->assertTrue( Cookie::validateCookieDomain( "example.com" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "example.com." ) );
+		$this->assertTrue( Cookie::validateCookieDomain( ".example.com" ) );
+
+		$this->assertTrue( Cookie::validateCookieDomain( ".example.com", "www.example.com" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "example.com", "www.example.com" ) );
+		$this->assertTrue( Cookie::validateCookieDomain( "127.0.0.1", "127.0.0.1" ) );
+		$this->assertFalse( Cookie::validateCookieDomain( "127.0.0.1", "localhost" ) );
+
+
+	}
+
+	function testSetCooke() {
+		$c = new MockCookie( "name", "value",
+							 array(
+								 "domain" => "ac.th",
+								 "path" => "/path/",
+							 ) );
+		$this->assertFalse($c->canServeDomain("ac.th"));
+
+		$c = new MockCookie( "name", "value",
+							 array(
+								 "domain" => "example.com",
+								 "path" => "/path/",
+							 ) );
+
+		$this->assertTrue($c->canServeDomain("example.com"));
+		$this->assertFalse($c->canServeDomain("www.example.com"));
+
 		$c = new MockCookie( "name", "value",
 							 array(
 								 "domain" => ".example.com",
 								 "path" => "/path/",
 							 ) );
 
-		$this->assertTrue($c->canServeDomain("example.com"));
 		$this->assertFalse($c->canServeDomain("www.example.net"));
+		$this->assertFalse($c->canServeDomain("example.com"));
 		$this->assertTrue($c->canServeDomain("www.example.com"));
 
 		$this->assertFalse($c->canServePath("/"));
@@ -367,6 +420,15 @@ class HttpTest extends PhpUnit_Framework_TestCase {
 		$this->assertEquals("", $c->serializeToHttpRequest("/path/", "www.example.net"));
 		$this->assertEquals("", $c->serializeToHttpRequest("/", "www.example.com"));
 		$this->assertEquals("name=value", $c->serializeToHttpRequest("/path/", "www.example.com"));
+
+		$c = new MockCookie( "name", "value",
+							 array(
+								 "domain" => "www.example.com",
+								 "path" => "/path/",
+							 ) );
+		$this->assertFalse($c->canServeDomain("example.com"));
+		$this->assertFalse($c->canServeDomain("www.example.net"));
+		$this->assertTrue($c->canServeDomain("www.example.com"));
 
 		$c = new MockCookie( "name", "value",
 						 array(
@@ -471,9 +533,14 @@ class HttpTest extends PhpUnit_Framework_TestCase {
 		$r->execute();
 
 		$jar = $r->getCookieJar();
-
 		$this->assertThat( $jar, $this->isInstanceOf( 'CookieJar' ) );
-		$this->assertRegExp( '/^COUNTRY=.*; LAST_LANG=.*$/', $jar->serializeToHttpRequest( "/search?q=test", "www.php.net" ) );
+
+		if ( is_a($r, 'PhpHttpRequest') && version_compare( '5.1.7', phpversion(), '>' ) ) {
+			$this->markTestSkipped( 'Redirection fails or crashes PHP on 5.1.6 and prior' );
+		}
+		$serialized = $jar->serializeToHttpRequest( "/search?q=test", "www.php.net" );
+		$this->assertRegExp( '/\bCOUNTRY=[^=;]+/', $serialized );
+		$this->assertRegExp( '/\bLAST_LANG=[^=;]+/', $serialized );
 		$this->assertEquals( '', $jar->serializeToHttpRequest( "/search?q=test", "www.php.com" ) );
 	}
 
@@ -497,5 +564,4 @@ class HttpTest extends PhpUnit_Framework_TestCase {
 		Http::$httpEngine = 'curl';
 		self::runCookieRequests();
 	}
-
 }

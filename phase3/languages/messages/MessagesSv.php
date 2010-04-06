@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Ainali
  * @author Boivie
  * @author Fluff
  * @author GameOn
@@ -33,6 +34,7 @@
  * @author Skalman
  * @author StefanB
  * @author Steinninn
+ * @author Where next Columbus
  * @author Where next Columbus?
  * @author לערי ריינהארט
  */
@@ -159,7 +161,9 @@ $magicWords = array(
 	'forcetoc'              => array( '0', '__ALLTIDINNEHÅLLSFÖRTECKNING__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__INNEHÅLLSFÖRTECKNING__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__INTEREDIGERASEKTION__', '__NOEDITSECTION__' ),
+	'noheader'              => array( '0', '__INGENRUBRIK__', '__NOHEADER__' ),
 	'currentmonth'          => array( '1', 'NUVARANDEMÅNAD', 'NUMÅNAD', 'CURRENTMONTH', 'CURRENTMONTH2' ),
+	'currentmonth1'         => array( '1', 'NUVARANDEMÅNAD1', 'CURRENTMONTH1' ),
 	'currentmonthname'      => array( '1', 'NUVARANDEMÅNADSNAMN', 'NUMÅNADSNAMN', 'CURRENTMONTHNAME' ),
 	'currentmonthabbrev'    => array( '1', 'NUVARANDEMÅNADKORT', 'NUMÅNADKORT', 'CURRENTMONTHABBREV' ),
 	'currentday'            => array( '1', 'NUVARANDEDAG', 'NUDAG', 'CURRENTDAY' ),
@@ -169,6 +173,7 @@ $magicWords = array(
 	'currenttime'           => array( '1', 'NUVARANDETID', 'NUTID', 'CURRENTTIME' ),
 	'currenthour'           => array( '1', 'NUVARANDETIMME', 'NUTIMME', 'CURRENTHOUR' ),
 	'localmonth'            => array( '1', 'LOKALMÅNAD', 'LOCALMONTH', 'LOCALMONTH2' ),
+	'localmonth1'           => array( '1', 'LOKALMÅNAD1', 'LOCALMONTH1' ),
 	'localmonthname'        => array( '1', 'LOKALMÅNADSNAMN', 'LOCALMONTHNAME' ),
 	'localmonthabbrev'      => array( '1', 'LOKALMÅNADKORT', 'LOCALMONTHABBREV' ),
 	'localday'              => array( '1', 'LOKALDAG', 'LOCALDAY' ),
@@ -265,9 +270,12 @@ $magicWords = array(
 	'hiddencat'             => array( '1', '__DOLDKAT__', '__HIDDENCAT__' ),
 	'pagesincategory'       => array( '1', 'SIDORIKATEGORI', 'PAGESINCATEGORY', 'PAGESINCAT' ),
 	'pagesize'              => array( '1', 'SIDSTORLEK', 'PAGESIZE' ),
+	'index'                 => array( '1', '__INDEXERA__', '__INDEX__' ),
+	'noindex'               => array( '1', '__INTEINDEXERA_', '__NOINDEX__' ),
 	'numberingroup'         => array( '1', 'ANTALIGRUPP', 'NUMBERINGROUP', 'NUMINGROUP' ),
 	'staticredirect'        => array( '1', '__STATISKOMDIRIGERING__', '__STATICREDIRECT__' ),
 	'protectionlevel'       => array( '1', 'SKYDDSNIVÅ', 'PROTECTIONLEVEL' ),
+	'formatdate'            => array( '0', 'formateradatum', 'datumformat', 'formatdate', 'dateformat' ),
 );
 
 $linkTrail = '/^([a-zåäöéÅÄÖÉ]+)(.*)$/sDu';
@@ -480,9 +488,6 @@ $messages = array(
 'namespaces'                 => 'Namnrymder',
 'variants'                   => 'Varianter',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fel',
 'returnto'          => 'Tillbaka till $1.',
 'tagline'           => 'Från {{SITENAME}}',
@@ -650,6 +655,8 @@ Rapportera gärna problemet till någon [[Special:ListUsers/sysop|administratör
 'readonly_lag'         => 'Databasen har automatiskt skrivskyddats medan slavdatabasservrarna synkroniseras med huvudservern.',
 'internalerror'        => 'Internt fel',
 'internalerror_info'   => 'Internt fel: $1',
+'fileappenderrorread'  => 'Kunde inte läsa "$1" medan data skulle tillföras.',
+'fileappenderror'      => 'Kunde inte bifoga "$1" till "$2".',
 'filecopyerror'        => 'Kunde inte kopiera filen "$1" till "$2".',
 'filerenameerror'      => 'Kunde inte byta namn på filen "$1" till "$2".',
 'filedeleteerror'      => 'Kunde inte radera filen "$1".',
@@ -776,6 +783,7 @@ Du kan ignorera detta meddelande om kontot skapats av misstag.',
 'login-throttled'            => 'Du har gjort för många misslyckade inloggningsförsök till det här kontot.
 Vänta innan du försöker igen.',
 'loginlanguagelabel'         => 'Språk: $1',
+'suspicious-userlogout'      => 'Din begäran om att logga ut nekades eftersom det ser ut som det skickades av en trasig webbläsare eller cachande proxy.',
 
 # Password reset dialog
 'resetpass'                 => 'Ändra lösenord',
@@ -790,6 +798,7 @@ Vänta innan du försöker igen.',
 'resetpass_forbidden'       => 'Lösenord kan inte ändras',
 'resetpass-no-info'         => 'Du måste vara inloggad för att komma åt den här sidan direkt.',
 'resetpass-submit-loggedin' => 'Ändra lösenord',
+'resetpass-submit-cancel'   => 'Avbryt',
 'resetpass-wrong-oldpass'   => 'Ogiltigt tillfälligt eller nuvarande lösenord.
 Du kanske redan har lyckats ändra ditt lösenord eller begärt ett nytt tillfälligt lösenord.',
 'resetpass-temp-password'   => 'Tillfälligt lösenord:',
@@ -828,6 +837,7 @@ Du kanske redan har lyckats ändra ditt lösenord eller begärt ett nytt tillfä
 'showdiff'                         => 'Visa ändringar',
 'anoneditwarning'                  => "'''Varning:''' Du är inte inloggad.
 Din IP-adress kommer att sparas i historiken för den här sidan.",
+'anonpreviewwarning'               => "''Du är inte inloggad. Vid spara kommer att din IP-adress registreras på denna sidas redigeringshistorik.''",
 'missingsummary'                   => "'''Påminnelse:''' Du har inte skrivit någon redigeringskommentar. 
 Om du klickar på Spara igen, kommer din redigering att sparas utan en sådan.",
 'missingcommenttext'               => 'Var god och skriv in en kommentar nedan.',
@@ -875,7 +885,7 @@ Det kan ha flyttats eller raderats medan du tittade på sidan.',
 'loginreqtitle'                    => 'Inloggning krävs',
 'loginreqlink'                     => 'logga in',
 'loginreqpagetext'                 => 'Du måste $1 för att visa andra sidor.',
-'accmailtitle'                     => 'Lösenordet är skickat.',
+'accmailtitle'                     => 'Lösenord skickat.',
 'accmailtext'                      => "Ett slumpgenererat lösenord för [[User talk:$1|$1]] har skickats till $2.
 
 Lösenordet för det här nya användarkontot kan ändras på sidan ''[[Special:ChangePassword|ändra lösenord]]'' när du loggar in.",
@@ -892,6 +902,8 @@ Du kan [[Special:Search/{{PAGENAME}}|söka efter denna sidas titel]] i andra sid
 eller <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} söka i relevanta loggar]</span>.',
 'userpage-userdoesnotexist'        => '"$1" är inte ett registrerat användarkonto. Tänk efter om du vill skapa/redigera den här sidan.',
 'userpage-userdoesnotexist-view'   => 'Kontot "$1" är inte registrerat.',
+'blocked-notice-logextract'        => 'Användaren är blockerad.
+Orsaken till senaste blockeringen kan ses nedan:',
 'clearyourcache'                   => "'''Observera: Sedan du sparat sidan kan du behöva tömma din webbläsares cache för att se ändringarna.''' '''Mozilla/Firefox/Safari:''' håll ner ''Skift'' och klicka på ''Reload'' eller tryck antingen ''Ctrl-F5'' eller ''Ctrl-R'' (''Command-R'' på Macintosh); '''Konqueror:''': klicka ''Reload'' eller tryck ''F5;'' '''Opera:''' rensa cachen i ''Tools → Preferences;'' '''Internet Explorer:'''  håll ner ''Ctrl'' och klicka på ''Refresh'' eller tryck ''Ctrl-F5.''",
 'usercssyoucanpreview'             => "'''Tips:''' Använd 'Visa förhandsgranskning' för att testa din nya css/js innan du sparar.",
 'userjsyoucanpreview'              => "'''Tips:''' Använd 'Visa förhandsgranskning' för att testa din nya css/js innan du sparar.",
@@ -1333,8 +1345,9 @@ Här är ett slumpmässigt genererat värde som du kan använda: $1',
 'defaultns'                     => 'Sök annars i dessa namnrymder:',
 'default'                       => 'ursprungsinställning',
 'prefs-files'                   => 'Filer',
-'prefs-custom-css'              => 'Personlig CSS',
-'prefs-custom-js'               => 'Personlig JavaScript',
+'prefs-custom-css'              => 'personlig CSS',
+'prefs-custom-js'               => 'personlig JavaScript',
+'prefs-common-css-js'           => 'Delad CSS/JS för alla teman:',
 'prefs-reset-intro'             => 'Du kan använda den här sidan till att återställa dina inställningar till webbplatsens standardinställningar.
 Detta kan inte återställas.',
 'prefs-emailconfirm-label'      => 'E-postbekräftelse:',
@@ -1376,25 +1389,26 @@ Du kan också välja att låta andra användare kontakta dig genom din användar
 'prefs-diffs'                   => 'Skillnader',
 
 # User rights
-'userrights'                  => 'Hantering av användarrättigheter',
-'userrights-lookup-user'      => 'Hantera användargrupper',
-'userrights-user-editname'    => 'Skriv in ett användarnamn:',
-'editusergroup'               => 'Ändra användargrupper',
-'editinguser'                 => "Ändrar rättigheter för användaren '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Ändra användargrupper',
-'saveusergroups'              => 'Spara användargrupper',
-'userrights-groupsmember'     => 'Medlem i:',
-'userrights-groups-help'      => 'Du kan ändra vilka grupper denna användare är medlem i.
+'userrights'                   => 'Hantering av användarrättigheter',
+'userrights-lookup-user'       => 'Hantera användargrupper',
+'userrights-user-editname'     => 'Skriv in ett användarnamn:',
+'editusergroup'                => 'Ändra användargrupper',
+'editinguser'                  => "Ändrar rättigheter för användaren '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Ändra användargrupper',
+'saveusergroups'               => 'Spara användargrupper',
+'userrights-groupsmember'      => 'Medlem i:',
+'userrights-groupsmember-auto' => 'Implicit medlem av:',
+'userrights-groups-help'       => 'Du kan ändra vilka grupper denna användare är medlem i.
 * En ikryssad ruta betyder användaren är medlem i den gruppen.
 * En okryssad ruta betyder att användaren inte är medlem i den gruppen.
 * En asterisk (*) markerar att du inte kan ta bort gruppen när du har lagt till den, eller vice versa.',
-'userrights-reason'           => 'Anledning:',
-'userrights-no-interwiki'     => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
-'userrights-nodatabase'       => 'Databasen $1 finns inte eller så är den inte lokal.',
-'userrights-nologin'          => 'Du måste [[Special:UserLogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
-'userrights-notallowed'       => 'Ditt konto har inte behörighet till att ändra användarrättigheter.',
-'userrights-changeable-col'   => 'Grupper du kan ändra',
-'userrights-unchangeable-col' => 'Grupper du inte kan ändra',
+'userrights-reason'            => 'Anledning:',
+'userrights-no-interwiki'      => 'Du har inte behörighet att ändra användarrättigheter på andra wikis.',
+'userrights-nodatabase'        => 'Databasen $1 finns inte eller så är den inte lokal.',
+'userrights-nologin'           => 'Du måste [[Special:UserLogin|logga in]] med ett administratörskonto för att ändra användarrättigheter.',
+'userrights-notallowed'        => 'Ditt konto har inte behörighet till att ändra användarrättigheter.',
+'userrights-changeable-col'    => 'Grupper du kan ändra',
+'userrights-unchangeable-col'  => 'Grupper du inte kan ändra',
 
 # Groups
 'group'               => 'Grupp:',
@@ -1457,6 +1471,7 @@ Du kan också välja att låta andra användare kontakta dig genom din användar
 'right-hideuser'              => 'Blockera användarnamn och dölja det från blockeringsloggen',
 'right-ipblock-exempt'        => 'Kan redigera från blockerade IP-adresser',
 'right-proxyunbannable'       => 'Kan redigera från blockerade proxyer',
+'right-unblockself'           => 'Avblockera sig själva',
 'right-protect'               => 'Ändra skyddsnivåer och redigera skyddade sidor',
 'right-editprotected'         => 'Redigera skyddade sidor',
 'right-editinterface'         => 'Redigera användargränssnittet',
@@ -1610,6 +1625,7 @@ Se [[Special:NewFiles|galleriet över nya filer]] för en mer visuell översikt.
 'minlength1'                  => 'Filens namn måste innehålla minst ett tecken.',
 'illegalfilename'             => 'Filnamnet "$1" innehåller tecken som inte är tillåtna i sidtitlar. Byt namn på filen och försök ladda upp igen.',
 'badfilename'                 => 'Filens namn har blivit ändrat till "$1".',
+'filetype-mime-mismatch'      => 'Filnamnsändelse matchar inte MIME-typ.',
 'filetype-badmime'            => 'Uppladdning av filer med MIME-typen "$1" är inte tillåten.',
 'filetype-bad-ie-mime'        => 'Kan inte ladda upp denna fil på grund av att Internet Explorer skulle upptäcka att den är "$1", vilket är en otillåten och möjligtvis farlig filtyp.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' är en oönskad filtyp.
@@ -1716,9 +1732,14 @@ För optimal säkerhet, har img_auth.php blivit avaktiverad.',
 'img-auth-noread'       => 'Användaren har inte tillåtelse att läsa "$1"',
 
 # HTTP errors
-'http-invalid-url'    => 'Ogiltig URL: $1',
-'http-invalid-scheme' => 'URLer med "$1"-formen stöds inte',
-'http-request-error'  => 'HTTP-begäran misslyckades på grund av okänt fel.',
+'http-invalid-url'      => 'Ogiltig URL: $1',
+'http-invalid-scheme'   => 'URLer med "$1"-formen stöds inte',
+'http-request-error'    => 'HTTP-begäran misslyckades på grund av okänt fel.',
+'http-read-error'       => 'HTTP-läsfel.',
+'http-timed-out'        => 'Time out för HTTP-begäran.',
+'http-curl-error'       => 'Fel vid hämtning av URL: $1',
+'http-host-unreachable' => 'URL:en kunde inte nås.',
+'http-bad-status'       => 'Det uppstod ett problem under HTTP-begäran: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL:en kunde inte nås',
@@ -2319,19 +2340,21 @@ $1',
 'month'               => 'Från månad (och tidigare):',
 'year'                => 'Från år (och tidigare):',
 
-'sp-contributions-newbies'        => 'Visa endast bidrag från nya konton',
-'sp-contributions-newbies-sub'    => 'Från nya konton',
-'sp-contributions-newbies-title'  => 'Bidrag från nya konton',
-'sp-contributions-blocklog'       => 'Blockeringslogg',
-'sp-contributions-deleted'        => 'raderade användarbidrag',
-'sp-contributions-logs'           => 'Loggar',
-'sp-contributions-talk'           => 'diskussion',
-'sp-contributions-userrights'     => 'hantering av användarrättigheter',
-'sp-contributions-blocked-notice' => 'Användaren är blockerad.
+'sp-contributions-newbies'             => 'Visa endast bidrag från nya konton',
+'sp-contributions-newbies-sub'         => 'Från nya konton',
+'sp-contributions-newbies-title'       => 'Bidrag från nya konton',
+'sp-contributions-blocklog'            => 'Blockeringslogg',
+'sp-contributions-deleted'             => 'raderade användarbidrag',
+'sp-contributions-logs'                => 'Loggar',
+'sp-contributions-talk'                => 'diskussion',
+'sp-contributions-userrights'          => 'hantering av användarrättigheter',
+'sp-contributions-blocked-notice'      => 'Användaren är blockerad.
 Orsaken till senaste blockeringen kan ses nedan:',
-'sp-contributions-search'         => 'Sök efter användarbidrag',
-'sp-contributions-username'       => 'IP-adress eller användarnamn:',
-'sp-contributions-submit'         => 'Sök',
+'sp-contributions-blocked-notice-anon' => 'Denna IP-adress är för närvarande blockerad.
+Den senaste posten i blockeringsloggen visas nedan som referens:',
+'sp-contributions-search'              => 'Sök efter användarbidrag',
+'sp-contributions-username'            => 'IP-adress eller användarnamn:',
+'sp-contributions-submit'              => 'Sök',
 
 # What links here
 'whatlinkshere'            => 'Vad som länkar hit',
@@ -2465,6 +2488,8 @@ $1 är redan blockerad. Vill du ändra inställningarna?',
 Du får inte skapa ett användarkonto',
 'cant-block-while-blocked'        => 'Du kan inte blockera andra användare medan du är blockerad.',
 'cant-see-hidden-user'            => 'Användaren du försöker blockera är redan blockerad och gömd. Eftersom du inte har hideuser-rättigheter, kan du inte se eller redigera användarens blockering.',
+'ipbblocked'                      => 'Du kan inte blockera eller avblockera andra användare, eftersom du själv är blockerad',
+'ipbnounblockself'                => 'Du har inte tillåtelse att avblockera dig själv',
 
 # Developer tools
 'lockdb'              => 'Lås databas',
@@ -2506,6 +2531,7 @@ därför bör du vara säker på att du förstår konsekvenserna innan du forts�
 
 I de fallen måste du flytta eller sammanfoga sidan manuellt, om det önskas.",
 'movearticle'                  => 'Flytta sidan:',
+'moveuserpage-warning'         => "'''Varning:''' Du håller på att flytta en användarsida. Observera att endast sidan kommer att flyttas och att användaren ''inte'' kommer att byta namn.",
 'movenologin'                  => 'Inte inloggad',
 'movenologintext'              => 'För att flytta en sida måste du vara registrerad användare och [[Special:UserLogin|inloggad]].',
 'movenotallowed'               => 'Du har inte behörighet att flytta sidor på den här wikin.',
@@ -3180,25 +3206,25 @@ Den första länken på en rad måste vara en länk till en otillåten fil.
 'limitall'         => 'alla',
 
 # E-mail address confirmation
-'confirmemail'             => 'Bekräfta e-postadress',
-'confirmemail_noemail'     => 'Du har inte angivit någon giltig e-postadress i dina [[Special:Preferences|inställningar]].',
-'confirmemail_text'        => 'Innan du kan använda {{SITENAME}}s funktioner för e-post måste du bekräfta din e-postadress. Aktivera knappen nedan för att skicka en bekräftelsekod till din e-postadress. Mailet kommer att innehålla en länk, som innehåller en kod. Genom att klicka på den länken eller kopiera den till din webbläsares fönster för webbadresser, bekräftar du att din e-postadress fungerar.',
-'confirmemail_pending'     => 'En bekräftelsekod har redan skickats till din epostadress. Om du skapade ditt konto nyligen, så kanske du vill vänta några minuter innan du begär en ny kod.',
-'confirmemail_send'        => 'Skicka bekräftelsekod',
-'confirmemail_sent'        => 'E-post med bekräftelse skickat.',
-'confirmemail_oncreate'    => 'En bekräftelsekod skickades till din epostadress. Koden behövs inte för att logga in, men du behöver koden för att få tillgång till de epostbaserade funktionerna på wikin.',
-'confirmemail_sendfailed'  => '{{SITENAME}} kunde inte skicka din e-postbekräftelse.
+'confirmemail'              => 'Bekräfta e-postadress',
+'confirmemail_noemail'      => 'Du har inte angivit någon giltig e-postadress i dina [[Special:Preferences|inställningar]].',
+'confirmemail_text'         => 'Innan du kan använda {{SITENAME}}s funktioner för e-post måste du bekräfta din e-postadress. Aktivera knappen nedan för att skicka en bekräftelsekod till din e-postadress. Mailet kommer att innehålla en länk, som innehåller en kod. Genom att klicka på den länken eller kopiera den till din webbläsares fönster för webbadresser, bekräftar du att din e-postadress fungerar.',
+'confirmemail_pending'      => 'En bekräftelsekod har redan skickats till din epostadress. Om du skapade ditt konto nyligen, så kanske du vill vänta några minuter innan du begär en ny kod.',
+'confirmemail_send'         => 'Skicka bekräftelsekod',
+'confirmemail_sent'         => 'E-post med bekräftelse skickat.',
+'confirmemail_oncreate'     => 'En bekräftelsekod skickades till din epostadress. Koden behövs inte för att logga in, men du behöver koden för att få tillgång till de epostbaserade funktionerna på wikin.',
+'confirmemail_sendfailed'   => '{{SITENAME}} kunde inte skicka din e-postbekräftelse.
 Kontrollera om e-postadressen innehåller ogiltiga tecken.
 
 Mailservern svarade: $1',
-'confirmemail_invalid'     => 'Ogiltig bekräftelsekod. Dess giltighetstid kan ha löpt ut.',
-'confirmemail_needlogin'   => 'Du behöver $1 för att bekräfta din e-postadress',
-'confirmemail_success'     => 'Din e-postadress har bekräftats. 
+'confirmemail_invalid'      => 'Ogiltig bekräftelsekod. Dess giltighetstid kan ha löpt ut.',
+'confirmemail_needlogin'    => 'Du behöver $1 för att bekräfta din e-postadress',
+'confirmemail_success'      => 'Din e-postadress har bekräftats. 
 Du kan nu [[Special:UserLogin|logga in]] och använda wikin.',
-'confirmemail_loggedin'    => 'Din e-postadress är nu bekräftad.',
-'confirmemail_error'       => 'Någonting gick fel när din bekräftelse skulle sparas.',
-'confirmemail_subject'     => 'Bekräftelse av e-postadress på {{SITENAME}}',
-'confirmemail_body'        => 'Någon, troligen du, har från IP-adressen $1 registrerat användarkontot "$2" med denna e-postadress på {{SITENAME}}.
+'confirmemail_loggedin'     => 'Din e-postadress är nu bekräftad.',
+'confirmemail_error'        => 'Någonting gick fel när din bekräftelse skulle sparas.',
+'confirmemail_subject'      => 'Bekräftelse av e-postadress på {{SITENAME}}',
+'confirmemail_body'         => 'Någon, troligen du, har från IP-adressen $1 registrerat användarkontot "$2" med denna e-postadress på {{SITENAME}}.
 
 För att bekräfta att detta konto verkligen är ditt, och för att aktivera funktionerna för e-post på {{SITENAME}}, öppna denna länk i din webbläsare:
 
@@ -3209,8 +3235,22 @@ Om det *inte* är du som registrerat kontot, följ denna länk för att avbryta 
 $5
 
 Denna bekräftelsekod kommer inte att fungera efter $4.',
-'confirmemail_invalidated' => 'Bekräftelsen av e-postadressen har ogiltigförklarats',
-'invalidateemail'          => 'Avbryt bekräftelse av e-postadress',
+'confirmemail_body_changed' => 'Någon, troligen du, har från IP-adressen $1
+registrerat användarkontot "$2" med denna e-postadress på {{SITENAME}}.
+
+För att bekräfta att detta konto verkligen är ditt, och för att aktivera
+funktionerna för e-post på {{SITENAME}}, öppna denna länk i din webbläsare:
+
+$3
+
+Om det *inte* är du som registrerat kontot, följ denna länk
+för att avbryta bekräftelsen av e-postadressen:
+
+$5
+
+Denna bekräftelsekod kommer inte att fungera efter $4.',
+'confirmemail_invalidated'  => 'Bekräftelsen av e-postadressen har ogiltigförklarats',
+'invalidateemail'           => 'Avbryt bekräftelse av e-postadress',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki-inklusion är inte aktiverad]',

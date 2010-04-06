@@ -169,6 +169,7 @@ $messages = array(
 'redirectedfrom'    => '(Edlǣded of $1)',
 'redirectpagesub'   => 'Edlǣdungtramet',
 'protectedpage'     => 'Geweardod tramet',
+'jumpto'            => 'Forðgangan on:',
 'jumptosearch'      => 'sēcan',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -241,7 +242,7 @@ Cnāw þæt sume sīdan cunnon gelǣstende ēowod wesan swā þū wǣre gīet in
 'yourdomainname'             => 'Þīn geweald',
 'login'                      => 'Inmeldian',
 'nav-login-createaccount'    => 'Settan nīwne hordcleofan oþþe inmeldian',
-'userlogin'                  => 'Settan nīwne hordcleofan oþþe inmeldian',
+'userlogin'                  => 'Macian nīwne grīman oþþe grīman brūcan',
 'userloginnocreate'          => 'Inmeldian',
 'logout'                     => 'Ūtmeldian',
 'userlogout'                 => 'Ūtmeldian',

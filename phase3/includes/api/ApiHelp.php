@@ -1,11 +1,11 @@
 <?php
 
-/*
+/**
  * Created on Sep 6, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once ( 'ApiBase.php' );
+	require_once( 'ApiBase.php' );
 }
 
 /**
@@ -36,7 +36,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class ApiHelp extends ApiBase {
 
 	public function __construct( $main, $action ) {
-		parent :: __construct( $main, $action );
+		parent::__construct( $main, $action );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class ApiHelp extends ApiBase {
 	}
 
 	public function getDescription() {
-		return array (
+		return array(
 			'Display this help screen.'
 		);
 	}

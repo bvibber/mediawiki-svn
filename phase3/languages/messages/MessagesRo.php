@@ -13,6 +13,7 @@
  * @author Laurap
  * @author Mihai
  * @author Minisarm
+ * @author Misterr
  * @author SCriBu
  * @author Silviubogan
  * @author Stelistcristi
@@ -469,9 +470,6 @@ pe titlul secţiunii (JavaScript)',
 'namespaces'                 => 'Spaţii de nume',
 'variants'                   => 'Variante',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Eroare',
 'returnto'          => 'Înapoi la $1.',
 'tagline'           => 'De la {{SITENAME}}',
@@ -637,6 +635,7 @@ Te rog anunţă acest aspect unui [[Special:ListUsers/sysop|administrator]], ind
 'readonly_lag'         => 'Baza de date a fost închisă automatic în timp ce serverele secundare ale bazei de date îl urmează pe cel principal.',
 'internalerror'        => 'Eroare internă',
 'internalerror_info'   => 'Eroare internă: $1',
+'fileappenderror'      => 'Nu se poate adăuga "$1" în "$2".',
 'filecopyerror'        => 'Fişierul "$1" nu a putut fi copiat la "$2".',
 'filerenameerror'      => 'Fişierul "$1" nu a putut fi mutat la "$2".',
 'filedeleteerror'      => 'Fişierul "$1" nu a putut fi şters.',
@@ -750,14 +749,15 @@ Prin urmare, vizitatorii care folosesc acelaşi IP nu mai pot crea alte conturi 
 'accountcreated'             => 'Contul a fost creat.',
 'accountcreatedtext'         => 'Contul utilizatorului pentru $1 a fost creat.',
 'createaccount-title'        => 'Creare de cont la {{SITENAME}}',
-'createaccount-text'         => 'Cineva a creat un cont cu adresa dvs. de e-mail pe {{SITENAME}} ($4) numit "$2", având parola "$3".
+'createaccount-text'         => 'Cineva a creat un cont cu adresa dumneavoastră de e-mail pe {{SITENAME}} ($4) numit „$2“, având parola „$3“.
 Este de dorit să vă autentificaţi şi să schimbaţi parola cât mai repede.
 
-Ignoraţi acest mesaj, dacă acea creare a fost o greşeală.',
-'usernamehasherror'          => 'Numele de utilizator nu poate conţine caractere diez',
+Ignoraţi acest mesaj dacă aceea creare a fost o greşeală.',
+'usernamehasherror'          => 'Numele de utilizator nu poate conţine caractere diez (#)',
 'login-throttled'            => 'Aţi avut prea multe încercări de a vă autentifica.
 Vă rugăm să aşteptaţi până să mai încercaţi.',
 'loginlanguagelabel'         => 'Limba: $1',
+'suspicious-userlogout'      => 'Cererea dumneavoastră de a vă loga a fost refuzată deoarece se pare că a fost trimisă de un browser rupt sau reîncărcaţi proxy-ul.',
 
 # Password reset dialog
 'resetpass'                 => 'Modifică parola',
@@ -2129,8 +2129,8 @@ Asistenţă şi suport:
 'deleteotherreason'      => 'Motiv diferit/suplimentar:',
 'deletereasonotherlist'  => 'Alt motiv',
 'deletereason-dropdown'  => '*Motive uzuale
-** Cererea autorului
-** Violare drepturi de autor
+** La cererea autorului
+** Violarea drepturilor de autor
 ** Vandalism',
 'delete-edit-reasonlist' => 'Modifică motivele ştergerii',
 'delete-toobig'          => 'Această pagină are un istoric al modificărilor mare, mai mult de $1 {{PLURAL:$1|revizie|revizii}}.

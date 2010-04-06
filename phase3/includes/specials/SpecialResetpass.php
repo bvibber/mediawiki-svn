@@ -19,6 +19,11 @@ class SpecialResetpass extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgAuth, $wgOut, $wgRequest;
 
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+
 		$this->mUserName = $wgRequest->getVal( 'wpName' );
 		$this->mOldpass = $wgRequest->getVal( 'wpPassword' );
 		$this->mNewpass = $wgRequest->getVal( 'wpNewPassword' );
@@ -34,6 +39,11 @@ class SpecialResetpass extends SpecialPage {
 
 		if( !$wgRequest->wasPosted() && !$wgUser->isLoggedIn() ) {
 			$this->error( wfMsg( 'resetpass-no-info' ) );
+			return;
+		}
+
+		if( $wgRequest->wasPosted() && $wgRequest->getBool( 'wpCancel' ) ) {
+			$this->doReturnTo();
 			return;
 		}
 
@@ -54,16 +64,21 @@ class SpecialResetpass extends SpecialPage {
 					$login = new LoginForm( new FauxRequest( $data, true ) );
 					$login->execute();
 				}
-				$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
-				if ( !$titleObj instanceof Title ) {
-					$titleObj = Title::newMainPage();
-				}
-				$wgOut->redirect( $titleObj->getFullURL() );
+				$this->doReturnTo();
 			} catch( PasswordError $e ) {
 				$this->error( $e->getMessage() );
 			}
 		}
 		$this->showForm();
+	}
+	
+	function doReturnTo() {
+		global $wgRequest, $wgOut;
+		$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
+		if ( !$titleObj instanceof Title ) {
+			$titleObj = Title::newMainPage();
+		}
+		$wgOut->redirect( $titleObj->getFullURL() );
 	}
 
 	function error( $msg ) {
@@ -119,6 +134,7 @@ class SpecialResetpass extends SpecialPage {
 				"<td></td>\n" .
 				'<td class="mw-input">' .
 					Xml::submitButton( wfMsg( $submitMsg ) ) .
+					Xml::submitButton( wfMsg( 'resetpass-submit-cancel' ), array( 'name' => 'wpCancel' ) ) .
 				"</td>\n" .
 			"</tr>\n" .
 			Xml::closeElement( 'table' ) .

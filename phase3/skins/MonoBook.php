@@ -35,9 +35,13 @@ class SkinMonoBook extends SkinTemplate {
 			$out->addStyle( $wgHandheldStyle, 'handheld' );
 		}
 
+		$out->addStyle( 'monobook/IE50Fixes.css', 'screen', 'lt IE 5.5000' );
+		$out->addStyle( 'monobook/IE55Fixes.css', 'screen', 'IE 5.5000' );
 		$out->addStyle( 'monobook/IE60Fixes.css', 'screen', 'IE 6' );
 		$out->addStyle( 'monobook/IE70Fixes.css', 'screen', 'IE 7' );
+
 		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
+
 	}
 }
 
@@ -65,33 +69,36 @@ class MonoBookTemplate extends QuickTemplate {
 		wfSuppressWarnings();
 
 		$this->html( 'headelement' );
-?>	<div id="globalWrapper">
-		<div id="column-content">
-	<div id="content" <?php $this->html("specialpageattributes") ?>>
-		<a id="top"></a>
-		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-		<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
-		<div id="bodyContent">
-			<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
-			<div id="contentSub" <?php $this->html('userlangattributes')  ?>><?php $this->html('subtitle') ?></div>
-			<?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
-			<?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
-			<?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
-			<!-- start content -->
-			<?php $this->html('bodytext') ?>
-			<?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
-			<!-- end content -->
-			<?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
-			<div class="visualClear"></div>
-		</div>
+?><div id="globalWrapper">
+<div id="column-content"><div id="content" <?php $this->html("specialpageattributes") ?>>
+	<a id="top"></a>
+	<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
+
+	<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
+	<div id="bodyContent">
+		<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
+		<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html('subtitle') ?></div>
+<?php if($this->data['undelete']) { ?>
+		<div id="contentSub2"><?php $this->html('undelete') ?></div>
+<?php } ?><?php if($this->data['newtalk'] ) { ?>
+		<div class="usermessage"><?php $this->html('newtalk')  ?></div>
+<?php } ?><?php if($this->data['showjumplinks']) { ?>
+		<div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div>
+<?php } ?>
+		<!-- start content -->
+<?php $this->html('bodytext') ?>
+		<?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
+		<!-- end content -->
+		<?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
+		<div class="visualClear"></div>
 	</div>
-		</div>
-		<div id="column-one" <?php $this->html('userlangattributes')  ?>>
+</div></div>
+<div id="column-one"<?php $this->html('userlangattributes')  ?>>
 	<div id="p-cactions" class="portlet">
 		<h5><?php $this->msg('views') ?></h5>
 		<div class="pBody">
-			<ul>
-	<?php		foreach($this->data['content_actions'] as $key => $tab) {
+			<ul><?php
+				foreach($this->data['content_actions'] as $key => $tab) {
 					echo '
 				 <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
 					if( $tab['class'] ) {
@@ -112,13 +119,14 @@ class MonoBookTemplate extends QuickTemplate {
 				 	}
 				 	echo '>'.htmlspecialchars($tab['text']).'</a></li>';
 				} ?>
+
 			</ul>
 		</div>
 	</div>
 	<div class="portlet" id="p-personal">
 		<h5><?php $this->msg('personaltools') ?></h5>
 		<div class="pBody">
-			<ul <?php $this->html('userlangattributes') ?>>
+			<ul<?php $this->html('userlangattributes') ?>>
 <?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
 				<li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
 					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
@@ -153,16 +161,16 @@ class MonoBookTemplate extends QuickTemplate {
 			}
 		}
 ?>
-		</div><!-- end of the left (by default at least) column -->
-			<div class="visualClear"></div>
-			<div id="footer" <?php $this->html('userlangattributes') ?>>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer"<?php $this->html('userlangattributes') ?>>
 <?php
-		if($this->data['poweredbyico']) { ?>
-				<div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div>
-<?php 	}
-		if($this->data['copyrightico']) { ?>
-				<div id="f-copyrightico"><?php $this->html('copyrightico') ?></div>
-<?php	}
+if($this->data['poweredbyico']) { ?>
+	<div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div>
+<?php }
+if($this->data['copyrightico']) { ?>
+	<div id="f-copyrightico"><?php $this->html('copyrightico') ?></div>
+<?php }
 
 		// Generate additional footer links
 		$footerlinks = array(
@@ -176,18 +184,18 @@ class MonoBookTemplate extends QuickTemplate {
 			}
 		}
 		if ( count( $validFooterLinks ) > 0 ) {
-?>			<ul id="f-list">
+?>	<ul id="f-list">
 <?php
 			foreach( $validFooterLinks as $aLink ) {
 				if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-?>					<li id="<?php echo $aLink ?>"><?php $this->html($aLink) ?></li>
+?>		<li id="<?php echo $aLink ?>"><?php $this->html($aLink) ?></li>
 <?php 			}
 			}
 ?>
-			</ul>
+	</ul>
 <?php	}
 ?>
-		</div>
+</div>
 </div>
 <?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
 <?php $this->html('reporttime') ?>
@@ -196,10 +204,11 @@ class MonoBookTemplate extends QuickTemplate {
 <?php $this->text( 'debug' ); ?>
 
 -->
-<?php endif; ?>
-</body></html>
-<?php
-	wfRestoreWarnings();
+<?php endif;
+
+		echo Html::closeElement( 'body' );
+		echo Html::closeElement( 'html' );
+		wfRestoreWarnings();
 	} // end of execute() method
 
 	/*************************************************************************************************/
@@ -296,7 +305,7 @@ class MonoBookTemplate extends QuickTemplate {
 		if( $this->data['language_urls'] ) {
 ?>
 	<div id="p-lang" class="portlet">
-		<h5 <?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
+		<h5<?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
 		<div class="pBody">
 			<ul>
 <?php		foreach($this->data['language_urls'] as $langlink) { ?>

@@ -45,7 +45,6 @@ class EditPage {
 	var $mArticle;
 	var $mTitle;
 	var $action;
-	var $mMetaData = '';
 	var $isConflict = false;
 	var $isCssJsSubpage = false;
 	var $isCssSubpage = false;
@@ -221,110 +220,39 @@ class EditPage {
 	}
 
 	/**
-	 * Get the contents of a page from its title and remove includeonly tags
+	 * Get the contents to be preloaded into the box, either set by
+	 * an earlier setPreloadText() or by loading the given page.
 	 *
-	 * @param $preload String: the title of the page.
-	 * @return string The contents of the page.
+	 * @param $preload String: representing the title to preload from.
+	 * @return String
 	 */
 	protected function getPreloadedText( $preload ) {
-		global $wgParser, $wgUser;
+		global $wgUser, $wgParser;
 		if ( !empty( $this->mPreloadText ) ) {
 			return $this->mPreloadText;
-		} else {
-			$preloadTitle = Title::newFromText( $preload );
-			if ( isset( $preloadTitle ) && $preloadTitle->userCanRead() ) {
-				return $wgParser->getTransclusionText( $preloadTitle, ParserOptions::newFromUser( $wgUser ) );
-			}
-		}
-	}
+		} elseif ( $preload !== '' ) {
+			$title = Title::newFromText( $preload );
+			# Check for existence to avoid getting MediaWiki:Noarticletext
+			if ( isset( $title ) && $title->exists() && $title->userCanRead() ) {
+				$article = new Article( $title );
 
-	/**
-	 * This is the function that extracts metadata from the article body on the first view.
-	 * To turn the feature on, set $wgUseMetadataEdit = true ; in LocalSettings
-	 *  and set $wgMetadataWhitelist to the *full* title of the template whitelist
-	 */
-	function extractMetaDataFromArticle () {
-		global $wgUseMetadataEdit, $wgMetadataWhitelist, $wgContLang;
-		$this->mMetaData = '';
-		if ( !$wgUseMetadataEdit ) return;
-		if ( $wgMetadataWhitelist == '' ) return;
-		$s = '';
-		$t = $this->getContent();
-
-		# MISSING : <nowiki> filtering
-
-		# Categories and language links
-		$t = explode( "\n" , $t );
-		$catlow = strtolower( $wgContLang->getNsText( NS_CATEGORY ) );
-		$cat = $ll = array();
-		foreach ( $t as $key => $x ) {
-			$y = trim( strtolower ( $x ) );
-			while ( substr( $y , 0 , 2 ) == '[[' ) {
-				$y = explode( ']]' , trim ( $x ) );
-				$first = array_shift( $y );
-				$first = explode( ':' , $first );
-				$ns = array_shift( $first );
-				$ns = trim( str_replace( '[' , '' , $ns ) );
-				if ( $wgContLang->getLanguageName( $ns ) || strtolower( $ns ) == $catlow ) {
-					$add = '[[' . $ns . ':' . implode( ':' , $first ) . ']]';
-					if ( strtolower( $ns ) == $catlow ) $cat[] = $add;
-					else $ll[] = $add;
-					$x = implode( ']]', $y );
-					$t[$key] = $x;
-					$y = trim( strtolower( $x ) );
-				} else {
-					$x = implode( ']]' , $y );
-					$y = trim( strtolower( $x ) );
+				if ( $article->isRedirect() ) {
+					$title = Title::newFromRedirectRecurse( $article->getContent() );
+					# Redirects to missing titles are displayed, to hidden pages are followed
+					# Copying observed behaviour from ?action=view
+					if ( $title->exists() ) {
+						if ($title->userCanRead() ) {
+							$article = new Article( $title );
+						} else {
+							return "";
+						}
+					}
 				}
+				$parserOptions = ParserOptions::newFromUser( $wgUser );
+				return $wgParser->getPreloadText( $article->getContent(), $title, $parserOptions );
 			}
 		}
-		if ( count( $cat ) ) $s .= implode( ' ' , $cat ) . "\n";
-		if ( count( $ll ) ) $s .= implode( ' ' , $ll ) . "\n";
-		$t = implode( "\n" , $t );
-
-		# Load whitelist
-		$sat = array () ; # stand-alone-templates; must be lowercase
-		$wl_title = Title::newFromText( $wgMetadataWhitelist );
-		$wl_article = new Article ( $wl_title );
-		$wl = explode ( "\n" , $wl_article->getContent() );
-		foreach ( $wl AS $x ) {
-			$isentry = false;
-			$x = trim ( $x );
-			while ( substr ( $x , 0 , 1 ) == '*' ) {
-				$isentry = true;
-				$x = trim ( substr ( $x , 1 ) );
-			}
-			if ( $isentry ) {
-				$sat[] = strtolower ( $x );
-			}
-
-		}
-
-		# Templates, but only some
-		$t = explode( '{{' , $t );
-		$tl = array() ;
-		foreach ( $t as $key => $x ) {
-			$y = explode( '}}' , $x , 2 );
-			if ( count( $y ) == 2 ) {
-				$z = $y[0];
-				$z = explode( '|' , $z );
-				$tn = array_shift( $z );
-				if ( in_array( strtolower( $tn ) , $sat ) ) {
-					$tl[] = '{{' . $y[0] . '}}';
-					$t[$key] = $y[1];
-					$y = explode( '}}' , $y[1] , 2 );
-				}
-				else $t[$key] = '{{' . $x;
-			}
-			else if ( $key != 0 ) $t[$key] = '{{' . $x;
-			else $t[$key] = $x;
-		}
-		if ( count( $tl ) ) $s .= implode( ' ' , $tl );
-		$t = implode( '' , $t );
-
-		$t = str_replace( "\n\n\n", "\n", $t );
-		$this->mArticle->mContent = $t;
-		$this->mMetaData = $s;
+		return '';
 	}
 
 	/*
@@ -364,7 +292,7 @@ class EditPage {
 	 * the newly-edited page.
 	 */
 	function edit() {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUser;
 		// Allow extensions to modify/prevent this form or submission
 		if ( !wfRunHooks( 'AlternateEdit', array( $this ) ) ) {
 			return;
@@ -392,6 +320,13 @@ class EditPage {
 		}
 
 		$wgOut->addScriptFile( 'edit.js' );
+		
+		if ( $wgUser->getOption( 'uselivepreview', false ) ) {
+			$wgOut->includeJQuery();
+			$wgOut->addScriptFile( 'preview.js' );
+		}
+		// Bug #19334: textarea jumps when editing articles in IE8
+		$wgOut->addStyle( 'common/IE80Fixes.css', 'screen', 'IE 8' );
 
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {
@@ -411,7 +346,6 @@ class EditPage {
 				if ( $this->previewOnOpen() ) {
 					$this->formtype = 'preview';
 				} else {
-					$this->extractMetaDataFromArticle () ;
 					$this->formtype = 'initial';
 				}
 			}
@@ -479,6 +413,8 @@ class EditPage {
 			}
 			if ( !$this->mTitle->getArticleId() )
 				wfRunHooks( 'EditFormPreloadText', array( &$this->textbox1, &$this->mTitle ) );
+			else
+				wfRunHooks( 'EditFormInitialText', array( $this ) );
 		}
 
 		$this->showEditForm();
@@ -570,7 +506,7 @@ class EditPage {
 	 * variable in the constructor is not enough. This can be used when the
 	 * EditPage lives inside of a Special page rather than a custom page action.
 	 * 
-	 * @param Title $title The title for which is being edited (where we go to for &action= links)
+	 * @param $title Title object for which is being edited (where we go to for &action= links)
 	 * @return string
 	 */
 	protected function getActionURL( Title $title ) {
@@ -604,7 +540,7 @@ class EditPage {
 					$this->textbox1 = $textbox1;
 				wfProfileOut( get_class($this)."::importContentFormData" );
 			}
-			$this->mMetaData = rtrim( $request->getText( 'metadata' ) );
+
 			# Truncate for whole multibyte characters. +5 bytes for ellipsis
 			$this->summary = $wgLang->truncate( $request->getText( 'wpSummary' ), 250, '' );
 
@@ -674,7 +610,6 @@ class EditPage {
 			# Not a posted form? Start with nothing.
 			wfDebug( __METHOD__ . ": Not a posted form.\n" );
 			$this->textbox1  = '';
-			$this->mMetaData = '';
 			$this->summary   = '';
 			$this->edittime  = '';
 			$this->starttime = wfTimestampNow();
@@ -721,7 +656,7 @@ class EditPage {
 	 * this method should be overrided and return the page text that will be used
 	 * for saving, preview parsing and so on...
 	 * 
-	 * @praram WebRequest $request
+	 * @param $request WebRequest
 	 */
 	protected function importContentFormData( &$request ) {
 		return; // Don't do anything, EditPage already extracted wpTextbox1
@@ -758,15 +693,31 @@ class EditPage {
 			$wgOut->wrapWikiMsg( "<div class='mw-editinginterface'>\n$1</div>", 'editinginterface' );
 		}
 
-		# Show a warning message when someone creates/edits a user (talk) page but the user does not exists
+		# Show a warning message when someone creates/edits a user (talk) page but the user does not exist
+		# Show log extract when the user is currently blocked
 		if ( $namespace == NS_USER || $namespace == NS_USER_TALK ) {
 			$parts = explode( '/', $this->mTitle->getText(), 2 );
 			$username = $parts[0];
-			$id = User::idFromName( $username );
+			$user = User::newFromName( $username, false /* allow IP users*/ );
 			$ip = User::isIP( $username );
-			if ( $id == 0 && !$ip ) {
+			if ( !$user->isLoggedIn() && !$ip ) { # User does not exist
 				$wgOut->wrapWikiMsg( "<div class=\"mw-userpage-userdoesnotexist error\">\n$1</div>",
 					array( 'userpage-userdoesnotexist', $username ) );
+			} else if ( $user->isBlocked() ) { # Show log extract if the user is currently blocked
+				LogEventsList::showLogExtract(
+					$wgOut,
+					'block',
+					$user->getUserPage()->getPrefixedText(),
+					'',
+					array(
+						'lim' => 1,
+						'showIfEmpty' => false,
+						'msgKey' => array(
+							'blocked-notice-logextract',
+							$user->getName() # Support GENDER in notice
+						)
+					)
+				);
 			}
 		}
 		# Try to add a custom edit intro, or use the standard one if this is not possible.
@@ -820,8 +771,7 @@ class EditPage {
 		wfProfileIn( __METHOD__  );
 		wfProfileIn( __METHOD__ . '-checks' );
 
-		if ( !wfRunHooks( 'EditPage::attemptSave', array( $this ) ) )
-		{
+		if ( !wfRunHooks( 'EditPage::attemptSave', array( $this ) ) ) {
 			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving\n" );
 			return self::AS_HOOK_ERROR;
 		}
@@ -836,10 +786,6 @@ class EditPage {
 					return self::AS_IMAGE_REDIRECT_LOGGED;
 				}
 		}
-
-		# Reintegrate metadata
-		if ( $this->mMetaData != '' ) $this->textbox1 .= "\n" . $this->mMetaData ;
-		$this->mMetaData = '' ;
 
 		# Check for spam
 		$match = self::matchSummarySpamRegex( $this->summary );
@@ -1360,10 +1306,6 @@ HTML
 		if ( isset($this->editFormTextAfterWarn) && $this->editFormTextAfterWarn !== '' )
 			$wgOut->addHTML( $this->editFormTextAfterWarn );
 
-		global $wgUseMetadataEdit;
-		if ( $wgUseMetadataEdit )
-			$this->showMetaData();
-
 		$this->showStandardInputs();
 
 		$this->showFormAfterText();
@@ -1459,8 +1401,12 @@ HTML
 
 		if ( wfReadOnly() ) {
 			$wgOut->wrapWikiMsg( "<div id=\"mw-read-only-warning\">\n$1\n</div>", array( 'readonlywarning', wfReadOnlyReason() ) );
-		} elseif ( $wgUser->isAnon() && $this->formtype != 'preview' ) {
-			$wgOut->wrapWikiMsg( "<div id=\"mw-anon-edit-warning\">\n$1</div>", 'anoneditwarning' );
+		} elseif ( $wgUser->isAnon() ) {
+			if ( $this->formtype != 'preview' ) {
+				$wgOut->wrapWikiMsg( "<div id=\"mw-anon-edit-warning\">\n$1</div>", 'anoneditwarning' );
+			} else {
+				$wgOut->wrapWikiMsg( "<div id=\"mw-anon-preview-warning\">\n$1</div>", 'anonpreviewwarning' );
+			}
 		} else {
 			if ( $this->isCssJsSubpage ) {
 				# Check the skin exists
@@ -1533,8 +1479,8 @@ HTML
 	 * 
 	 * @param $summary The value of the summary input
 	 * @param $labelText The html to place inside the label
-	 * @param $userInputAttrs An array of attrs to use on the input
-	 * @param $userSpanAttrs An array of attrs to use on the span inside the label
+	 * @param $inputAttrs An array of attrs to use on the input
+	 * @param $spanLabelAttrs An array of attrs to use on the span inside the label
 	 * 
 	 * @return array An array in the format array( $label, $input )
 	 */
@@ -1542,7 +1488,7 @@ HTML
 		$inputAttrs = ( is_array($inputAttrs) ? $inputAttrs : array() ) + array(
 			'id' => 'wpSummary',
 			'maxlength' => '200',
-			'tabindex' => '2',
+			'tabindex' => '1',
 			'size' => 60,
 			'spellcheck' => 'true',
 		);
@@ -1564,11 +1510,11 @@ HTML
 	}
 
 	/**
-	 * @param bool $isSubjectPreview true if this is the section subject/title
-	 *                               up top, or false if this is the comment
-	 *                               summary down below the textarea
-	 * @param string $summary The text of the summary to display
-	 * @return string
+	 * @param $isSubjectPreview Boolean: true if this is the section subject/title
+	 *                          up top, or false if this is the comment summary
+	 *                          down below the textarea
+	 * @param $summary String: The text of the summary to display
+	 * @return String
 	 */
 	protected function showSummaryInput( $isSubjectPreview, $summary = "" ) {
 		global $wgOut, $wgContLang;
@@ -1588,11 +1534,11 @@ HTML
 	}
 
 	/**
-	 * @param bool $isSubjectPreview true if this is the section subject/title
-	 *                               up top, or false if this is the comment
-	 *                               summary down below the textarea
-	 * @param string $summary The text of the summary to display
-	 * @return string
+	 * @param $isSubjectPreview Boolean: true if this is the section subject/title
+	 *                          up top, or false if this is the comment summary
+	 *                          down below the textarea
+	 * @param $summary String: the text of the summary to display
+	 * @return String
 	 */
 	protected function getSummaryPreview( $isSubjectPreview, $summary = "" ) {
 		if ( !$summary || ( !$this->preview && !$this->diff ) )
@@ -1648,7 +1594,7 @@ INPUTS
 	 * reverse modified when extracted from the post data.
 	 * Note that this is basically the inverse for importContentFormData
 	 * 
-	 * @praram WebRequest $request
+	 * @param $request WebRequest
 	 */
 	protected function showContentForm() {
 		$this->showTextbox1();
@@ -1659,8 +1605,8 @@ INPUTS
 	 * The $textoverride method can be used by subclasses overriding showContentForm
 	 * to pass back to this method.
 	 * 
-	 * @param array $customAttribs An array of html attributes to use in the textarea
-	 * @param string $textoverride Optional text to override $this->textarea1 with
+	 * @param $customAttribs An array of html attributes to use in the textarea
+	 * @param $textoverride String: optional text to override $this->textarea1 with
 	 */
 	protected function showTextbox1($customAttribs = null, $textoverride = null) {
 		$classes = array(); // Textarea CSS
@@ -1717,15 +1663,6 @@ INPUTS
 
 		$wgOut->addHTML( Html::textarea( $name, $wikitext, $attribs ) );
 	}
-	
-	protected function showMetaData() {
-		global $wgOut, $wgContLang, $wgUser;
-		$metadata = htmlspecialchars( $wgContLang->recodeForEdit( $this->mMetaData ) );
-		$ew = $wgUser->getOption( 'editwidth' ) ? ' style="width:100%"' : '';
-		$cols = $wgUser->getIntOption( 'cols' );
-		$metadata = wfMsgWikiHtml( 'metadata_help' ) . "<textarea name='metadata' rows='3' cols='{$cols}'{$ew}>{$metadata}</textarea>" ;
-		$wgOut->addHTML( $metadata );
-	}
 
 	protected function displayPreviewArea( $previewOutput, $isOnTop = false ) {
 		global $wgOut;
@@ -1755,7 +1692,7 @@ INPUTS
 	 * Append preview output to $wgOut.
 	 * Includes category rendering if this is a category page.
 	 *
-	 * @param string $text The HTML to be output for the preview.
+	 * @param $text String: the HTML to be output for the preview.
 	 */
 	protected function showPreview( $text ) {
 		global $wgOut;
@@ -1771,14 +1708,16 @@ INPUTS
 		}
 	}
 
+	/**
+	 * Give a chance for site and per-namespace customizations of
+	 * terms of service summary link that might exist separately
+	 * from the copyright notice.
+	 * 
+	 * This will display between the save button and the edit tools,
+	 * so should remain short!
+	 */
 	protected function showTosSummary() {
 		$msg = 'editpage-tos-summary';
-		// Give a chance for site and per-namespace customizations of
-		// terms of service summary link that might exist separately
-		// from the copyright notice.
-		//
-		// This will display between the save button and the edit tools,
-		// so should remain short!
 		wfRunHooks( 'EditPageTosSummary', array( $this->mTitle, &$msg ) );
 		$text = wfMsg( $msg );
 		if( !wfEmptyMsg( $msg, $text ) && $text !== '-' ) {
@@ -1937,10 +1876,10 @@ INPUTS
 			# If we're adding a comment, we need to show the
 			# summary as the headline
 			if ( $this->section == "new" && $this->summary != "" ) {
-				$toparse="== {$this->summary} ==\n\n" . $toparse;
+				$toparse = "== {$this->summary} ==\n\n" . $toparse;
 			}
 
-			if ( $this->mMetaData != "" ) $toparse .= "\n" . $this->mMetaData;
+			wfRunHooks( 'EditPageGetPreviewText', array( $this, &$toparse ) );
 
 			// Parse mediawiki messages with correct target language
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
@@ -2148,8 +2087,8 @@ INPUTS
 
 	/**
 	 * Format an anchor fragment as it would appear for a given section name
-	 * @param string $text
-	 * @return string
+	 * @param $text String
+	 * @return String
 	 * @private
 	 */
 	function sectionAnchor( $text ) {
@@ -2464,6 +2403,9 @@ INPUTS
 		$oldtext = $this->mArticle->fetchContent();
 		$newtext = $this->mArticle->replaceSection(
 			$this->section, $this->textbox1, $this->summary, $this->edittime );
+
+		wfRunHooks( 'EditPageGetDiffText', array( $this, &$newtext ) );
+
 		$newtext = $this->mArticle->preSaveTransform( $newtext );
 		$oldtitle = wfMsgExt( 'currentrev', array( 'parseinline' ) );
 		$newtitle = wfMsgExt( 'yourtext', array( 'parseinline' ) );
@@ -2484,9 +2426,9 @@ INPUTS
 	 * Filter an input field through a Unicode de-armoring process if it
 	 * came from an old browser with known broken Unicode editing issues.
 	 *
-	 * @param WebRequest $request
-	 * @param string $field
-	 * @return string
+	 * @param $request WebRequest
+	 * @param $field String
+	 * @return String
 	 * @private
 	 */
 	function safeUnicodeInput( $request, $field ) {
@@ -2507,8 +2449,8 @@ INPUTS
 	 * Filter an output field through a Unicode armoring process if it is
 	 * going to an old browser with known broken Unicode editing issues.
 	 *
-	 * @param string $text
-	 * @return string
+	 * @param $text String
+	 * @return String
 	 * @private
 	 */
 	function safeUnicodeOutput( $text ) {
@@ -2528,8 +2470,8 @@ INPUTS
 	 * Preexisting such character references will have a 0 added to them
 	 * to ensure that round-trips do not alter the original data.
 	 *
-	 * @param string $invalue
-	 * @return string
+	 * @param $invalue String
+	 * @return String
 	 * @private
 	 */
 	function makesafe( $invalue ) {
@@ -2570,8 +2512,8 @@ INPUTS
 	 * back to UTF-8. Used to protect data from corruption by broken web browsers
 	 * as listed in $wgBrowserBlackList.
 	 *
-	 * @param string $invalue
-	 * @return string
+	 * @param $invalue String
+	 * @return String
 	 * @private
 	 */
 	function unmakesafe( $invalue ) {

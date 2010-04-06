@@ -1,5 +1,5 @@
 <?php
-/** Cantonese (粵語/廣東話)
+/** Cantonese (粵語)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -10,6 +10,7 @@
  * @author Horacewai2
  * @author KaiesTse
  * @author William915
+ * @author Wong128hk
  */
 
 $bookstoreList = array(
@@ -286,7 +287,7 @@ $messages = array(
 'cancel'        => '取消',
 'moredotdotdot' => '更多...',
 'mypage'        => '我嘅頁',
-'mytalk'        => '我嘅討論',
+'mytalk'        => '傾偈',
 'anontalk'      => '同呢個 IP 傾偈',
 'navigation'    => '導航',
 'and'           => '同埋',
@@ -328,9 +329,6 @@ $messages = array(
 'actions'                    => '動作',
 'namespaces'                 => '空間名',
 'variants'                   => '變換',
-
-# Metadata in edit box
-'metadata_help' => 'Metadata',
 
 'errorpagetitle'    => '錯誤',
 'returnto'          => '返去$1 。',
@@ -499,6 +497,8 @@ $1',
 'readonly_lag'         => '當從伺服器追緊主伺服器時，資料庫會自動被鎖',
 'internalerror'        => '內部錯誤',
 'internalerror_info'   => '內部錯誤: $1',
+'fileappenderrorread'  => '當附加嗰陣讀唔到 "$1"。',
+'fileappenderror'      => '附加唔到 "$1" 去 "$2"。',
 'filecopyerror'        => '檔案 "$1" 抄唔到去 "$2"。',
 'filerenameerror'      => '檔案 "$1" 唔改得做 "$2"。',
 'filedeleteerror'      => '檔案 "$1" 唔刪得。',
@@ -619,6 +619,7 @@ $1',
 'usernamehasherror'          => '用戶名唔可以包含切細字元',
 'login-throttled'            => '你已經試咗太多次登入動作。請等多一陣再試過。',
 'loginlanguagelabel'         => '語言：$1',
+'suspicious-userlogout'      => '你去登出嘅要求已經拒絕咗，因為佢可能由壞咗嘅瀏覽器或者快取代理傳送。',
 
 # Password reset dialog
 'resetpass'                 => '改密碼',
@@ -634,6 +635,7 @@ $1',
 'resetpass_forbidden'       => '唔可以更改密碼',
 'resetpass-no-info'         => '你一定要登入咗去直接入來呢一版。',
 'resetpass-submit-loggedin' => '改密碼',
+'resetpass-submit-cancel'   => '取消',
 'resetpass-wrong-oldpass'   => '無效嘅臨時或現有嘅密碼。
 你可能已經成功咁更改你嘅密碼，又或者重新請求過一個新嘅臨時密碼。',
 'resetpass-temp-password'   => '臨時密碼:',
@@ -669,6 +671,7 @@ $1',
 'showlivepreview'                  => '實時預覽',
 'showdiff'                         => '顯示差異',
 'anoneditwarning'                  => "'''警告：'''你重未登入。你嘅 IP 位址會喺呢個頁面嘅修訂歷史中記錄落嚟。",
+'anonpreviewwarning'               => "''你重未登入，你嘅 IP 位址會喺呢個頁面嘅修訂歷史中記錄落嚟。''",
 'missingsummary'                   => "'''提醒：''' 你未提供編輯摘要。如果你再撳多一下儲存嘅話，咁你儲存嘅編輯就會無摘要。",
 'missingcommenttext'               => '請輸入一個註解。',
 'missingcommentheader'             => "'''提醒：'''你響呢個註解度並無提供一個主題／標題。如果你再撳一次儲存，你嘅編輯就會無題。",
@@ -729,6 +732,8 @@ $1',
 或者<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 搵有關嘅日誌]</span>。',
 'userpage-userdoesnotexist'        => '用戶戶口"$1"重未開。請響䦒／編輯呢版之前先檢查一下。',
 'userpage-userdoesnotexist-view'   => '用戶戶口"$1"重未開。',
+'blocked-notice-logextract'        => '呢位用戶而家被封鎖緊。
+下面有最近嘅封鎖紀錄以供參考：',
 'clearyourcache'                   => "'''注意：喺儲存之後，你可能要先略過你嘅瀏覽器快取去睇到更改。'''
 '''Mozilla / Firefox / Safari:''' 㩒住''Shift''掣再撳''重新載入''，又或者㩒''Ctrl-F5''或者''Ctrl-R''（喺Macintosh㩒''Command-R''掣）；
 '''Konqueror:''' 就咁以撳個''重載''掣，又或者㩒''F5''；
@@ -1099,7 +1104,7 @@ $1",
 
 # Preferences page
 'preferences'                   => '喜好設定',
-'mypreferences'                 => '我嘅喜好設定',
+'mypreferences'                 => '安排與架生',
 'prefs-edits'                   => '編輯數:',
 'prefsnologin'                  => '重未登入',
 'prefsnologintext'              => '你一定要去<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登入]</span>設定好用戶喜好值先。',
@@ -1166,6 +1171,7 @@ $1",
 'prefs-files'                   => '檔案',
 'prefs-custom-css'              => '自定 CSS',
 'prefs-custom-js'               => '自定 JS',
+'prefs-common-css-js'           => '共有嘅CSS同埋JS畀所有畫面用：',
 'prefs-reset-intro'             => '你可以用呢版去重設你嘅喜好設定到網站預設值。呢個動作無得番轉頭。',
 'prefs-emailconfirm-label'      => '電郵確認:',
 'prefs-textboxsize'             => '編輯窗大細',
@@ -1288,6 +1294,7 @@ $1",
 'right-hideuser'              => '封鎖用戶名，對公眾隱藏',
 'right-ipblock-exempt'        => '繞過IP封鎖、自動封鎖同埋範圍封鎖',
 'right-proxyunbannable'       => '繞過Proxy嘅自動封鎖',
+'right-unblockself'           => '解封佢地',
 'right-protect'               => '改保護等級同埋編輯保護版',
 'right-editprotected'         => '編輯保護版（無連串保護）',
 'right-editinterface'         => '編輯用戶界面',
@@ -1441,6 +1448,7 @@ $1",
 'minlength1'                  => '檔名必須最少要有一個字。',
 'illegalfilename'             => '檔名「$1」含有頁面標題所唔允許嘅字。請試下改檔名再上載。',
 'badfilename'                 => '檔名已經更改成「$1」。',
+'filetype-mime-mismatch'      => '檔案擴展名唔搭MIME類型。',
 'filetype-badmime'            => '「$1」嘅MIME類型檔案係唔容許上載嘅。',
 'filetype-bad-ie-mime'        => '唔可以上載呢個檔案，因為 Internet Explorer 會將佢偵測做 "$1"，佢係一種唔容許同埋有潛在危險性嘅檔案類型。',
 'filetype-unwanted-type'      => "'''\".\$1\"'''係一種唔需要嘅檔案類型。
@@ -1531,6 +1539,7 @@ $1",
 'http-timed-out'        => 'HTTP請求已過時。',
 'http-curl-error'       => '擷取URL嗰陣出錯：$1',
 'http-host-unreachable' => '到唔到URL。',
+'http-bad-status'       => '當做緊HTTP請求嗰陣出現咗問題：$1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => '唔可以到嗰個URL',
@@ -1883,7 +1892,7 @@ Template:搞清楚',
 
 # Watchlist
 'watchlist'            => '監視清單',
-'mywatchlist'          => '我張監視清單',
+'mywatchlist'          => '監視清單',
 'watchlistfor'         => "（用戶「'''$1'''」嘅監視清單）",
 'nowatchlist'          => '你嘅監視清單度並冇任何項目。',
 'watchlistanontext'    => '請先$1去睇或者改響你監視清單度嘅項目。',
@@ -2033,7 +2042,7 @@ wiki: $PAGEEDITOR_WIKI
 'protect-othertime-op'        => '其它時間',
 'protect-existing-expiry'     => '現時到期嘅時間: $2 $3',
 'protect-otherreason'         => '其它／附加嘅原因:',
-'protect-otherreason-op'      => '其它／附加嘅原因',
+'protect-otherreason-op'      => '其它原因',
 'protect-dropdown'            => '*通用保護原因
 ** 過量嘅破壞
 ** 過量嘅灌水
@@ -2113,7 +2122,7 @@ $1',
 # Contributions
 'contributions'       => '用戶貢獻',
 'contributions-title' => '$1嘅用戶貢獻',
-'mycontris'           => '我嘅貢獻',
+'mycontris'           => '個人貢獻',
 'contribsub2'         => '$1嘅貢獻 ($2)',
 'nocontribs'          => '搵唔到符合呢啲條件嘅修改。',
 'uctop'               => '(最頂)',
@@ -2260,6 +2269,9 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'cant-block-while-blocked'        => '當你被封鎖嗰陣唔可以封鎖其他用戶。',
 'cant-see-hidden-user'            => '你試緊封鎖嘅用戶已經封鎖咗或者隱藏咗。
 你而家冇隱藏用戶嘅權限，你唔可以睇或者改呢位用戶嘅封鎖。',
+'ipbblocked'                      => 'You cannot block or unblock other users, because you are yourself blocked
+你唔可以查封或者解封其他人，因為你自己都俾人查封左。',
+'ipbnounblockself'                => '你唔可以封鎖你自己。',
 
 # Developer tools
 'lockdb'              => '鎖定資料庫',
@@ -2300,6 +2312,7 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 
 喺呢啲情況下，需要嘅話你唯有手動搬同合併個頁。",
 'movearticle'                  => '搬頁:',
+'moveuserpage-warning'         => "'''警告：'''你將會搬一個用戶版。請留意嗰版搬咗之後個用戶係''唔會''改名。",
 'movenologin'                  => '未登入',
 'movenologintext'              => '你要係註冊用戶而且要[[Special:UserLogin|登入]]咗先可以搬頁',
 'movenotallowed'               => '你並無權限去搬版。',
@@ -2459,7 +2472,7 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'tooltip-pt-anonuserpage'         => '你編輯呢個IP嘅對應用戶頁',
 'tooltip-pt-mytalk'               => '你嘅對話頁',
 'tooltip-pt-anontalk'             => '對於嚟自呢一個IP地址編輯嘅討論',
-'tooltip-pt-preferences'          => '你嘅喜好設定',
+'tooltip-pt-preferences'          => '安排與架生',
 'tooltip-pt-watchlist'            => '你所監視嘅頁面更改一覽',
 'tooltip-pt-mycontris'            => '你嘅貢獻一覽',
 'tooltip-pt-login'                => '建議你去登入；但係唔係一定嘅',
@@ -2996,24 +3009,24 @@ Variants for Chinese language
 'limitall'         => '全部',
 
 # E-mail address confirmation
-'confirmemail'             => '確認電郵地址',
-'confirmemail_noemail'     => '你唔需要響你嘅[[Special:Preferences|用戶喜好設定]]度設定一個有效嘅電郵地址。',
-'confirmemail_text'        => '{{SITENAME}}需要你喺使用電郵功能之前驗證吓你嘅電郵地址。啟用下邊個掣嚟發封確認信去你個地址度。封信入面會附帶一條包含代碼嘅連結；喺你個瀏覽器度打開條連結嚟確認你嘅電郵地址係有效嘅。',
-'confirmemail_pending'     => '一個確認碼已經電郵咗畀你；如果你係啱啱開咗個新戶口嘅，你可以響請求一個新嘅確認碼之前等多幾分鐘等佢寄畀你。',
-'confirmemail_send'        => '寄出確認碼。',
-'confirmemail_sent'        => '確認電郵已經寄出。',
-'confirmemail_oncreate'    => '一個確認碼已經寄送咗到嘅嘅電郵地址。
+'confirmemail'              => '確認電郵地址',
+'confirmemail_noemail'      => '你唔需要響你嘅[[Special:Preferences|用戶喜好設定]]度設定一個有效嘅電郵地址。',
+'confirmemail_text'         => '{{SITENAME}}需要你喺使用電郵功能之前驗證吓你嘅電郵地址。啟用下邊個掣嚟發封確認信去你個地址度。封信入面會附帶一條包含代碼嘅連結；喺你個瀏覽器度打開條連結嚟確認你嘅電郵地址係有效嘅。',
+'confirmemail_pending'      => '一個確認碼已經電郵咗畀你；如果你係啱啱開咗個新戶口嘅，你可以響請求一個新嘅確認碼之前等多幾分鐘等佢寄畀你。',
+'confirmemail_send'         => '寄出確認碼。',
+'confirmemail_sent'         => '確認電郵已經寄出。',
+'confirmemail_oncreate'     => '一個確認碼已經寄送咗到嘅嘅電郵地址。
 呢個代碼唔係登入嗰陣去用，但係你需要佢去開響呢個wiki度，任何同電郵有關嘅功能。',
-'confirmemail_sendfailed'  => '{{SITENAME}}發唔到確認信。請檢查吓個地址有冇無效嘅字。
+'confirmemail_sendfailed'   => '{{SITENAME}}發唔到確認信。請檢查吓個地址有冇無效嘅字。
 
 郵件遞送員回應咗：$1',
-'confirmemail_invalid'     => '無效嘅確認碼。個代碼可能已經過咗期。',
-'confirmemail_needlogin'   => '你需要先$1去確認你嘅電郵地址。',
-'confirmemail_success'     => '你嘅電郵地址已經得到確認。你而家可以[[Special:UserLogin|登入]]同盡情享受wiki啦。',
-'confirmemail_loggedin'    => '你嘅電郵地址現已得到確認。',
-'confirmemail_error'       => '儲存你嘅確認資料嘅時候有小小嘢發生咗意外。',
-'confirmemail_subject'     => '{{SITENAME}}電郵地址確認',
-'confirmemail_body'        => '有人（好有可能係嚟自你嘅IP地址 $1）已經用呢個電郵地址喺{{SITENAME}}度註冊咗帳戶"$2"
+'confirmemail_invalid'      => '無效嘅確認碼。個代碼可能已經過咗期。',
+'confirmemail_needlogin'    => '你需要先$1去確認你嘅電郵地址。',
+'confirmemail_success'      => '你嘅電郵地址已經得到確認。你而家可以[[Special:UserLogin|登入]]同盡情享受wiki啦。',
+'confirmemail_loggedin'     => '你嘅電郵地址現已得到確認。',
+'confirmemail_error'        => '儲存你嘅確認資料嘅時候有小小嘢發生咗意外。',
+'confirmemail_subject'      => '{{SITENAME}}電郵地址確認',
+'confirmemail_body'         => '有人（好有可能係嚟自你嘅IP地址 $1）已經用呢個電郵地址喺{{SITENAME}}度註冊咗帳戶"$2"。
 
 要確認呢個帳戶的而且確屬於你同埋啟用{{SITENAME}}嘅電郵功能，請喺你嘅瀏覽器度打開呢條連結：
 
@@ -3025,8 +3038,20 @@ $3
 $5
 
 呢個確認代碼會喺$4到期。',
-'confirmemail_invalidated' => '電郵地址確認取消咗',
-'invalidateemail'          => '取消電郵確認',
+'confirmemail_body_changed' => '有人（好有可能係嚟自你嘅IP地址 $1）已經用呢個電郵地址喺{{SITENAME}}度改咗戶口"$2"嘅電郵地址"$2"。
+
+要確認呢個帳戶的而且確屬於你同埋重新啟用{{SITENAME}}嘅電郵功能，請喺你嘅瀏覽器度打開呢條連結：
+
+$3
+
+如果呢個戶口*唔係*屬於你嘅，
+請跟住呢個連結去取消電郵地址確認：
+
+$5
+
+呢個確認代碼會喺$4到期。',
+'confirmemail_invalidated'  => '電郵地址確認取消咗',
+'invalidateemail'           => '取消電郵確認',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[跨 wiki 滲漏正停用]',

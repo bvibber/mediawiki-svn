@@ -57,11 +57,15 @@ function mwSetupToolbar() {
 		// No toolbar if we can't find any textarea
 		return false;
 	}
-	if ( !( document.selection && document.selection.createRange )
-		&& textboxes[0].selectionStart === null ) {
-		return false;
+	// Only check for selection capability if the textarea is visible - errors will occur otherwise - just because
+	// the textarea is not visible, doesn't mean we shouldn't build out the toolbar though - it might have been replaced
+	// with some other kind of control
+	if ( textboxes[0].style.display != 'none' ) {
+		if ( !( document.selection && document.selection.createRange )
+			&& textboxes[0].selectionStart === null ) {
+			return false;
+		}
 	}
-
 	for ( var i = 0; i < mwEditButtons.length; i++ ) {
 		mwInsertEditButton( toolbar, mwEditButtons[i] );
 	}
@@ -74,6 +78,13 @@ function mwSetupToolbar() {
 // apply tagOpen/tagClose to selection in textarea,
 // use sampleText instead of selection if there is none
 function insertTags( tagOpen, tagClose, sampleText ) {
+	if ( typeof $j != 'undefined' && typeof $j.fn.textSelection != 'undefined' &&
+			( currentFocused.nodeName.toLowerCase() == 'iframe' || currentFocused.id == 'wpTextbox1' ) ) {
+		$j( '#wpTextbox1' ).textSelection(
+			'encapsulateSelection', { 'pre': tagOpen, 'peri': sampleText, 'post': tagClose }
+		);
+		return;
+	}
 	var txtarea;
 	if ( document.editform ) {
 		txtarea = currentFocused;
@@ -180,16 +191,16 @@ hookEvent( 'load', function() {
 		return;
 	}
 	function onfocus( e ) {
-		var elm = e.target;
+		var elm = e.target || e.srcElement;
 		if ( !elm ) {
 			return;
 		}
 		var tagName = elm.tagName.toLowerCase();
-		var type = elm.type.toLowerCase();
+		var type = elm.type || '';
 		if ( tagName !== 'textarea' && tagName !== 'input' ) {
 			return;
 		}
-		if ( tagName === 'input' && type && type !== 'text' ) {
+		if ( tagName === 'input' && type.toLowerCase() !== 'text' ) {
 			return;
 		}
 
@@ -202,6 +213,17 @@ hookEvent( 'load', function() {
 	} else if ( editForm.attachEvent ) {
 		// IE needs a specific trick here since it doesn't support the standard
 		editForm.attachEvent( 'onfocusin', function() { onfocus( event ); } );
+	}
+	
+	// HACK: make currentFocused work with the usability iframe
+	// With proper focus detection support (HTML 5!) this'll be much cleaner
+	if ( typeof $j != 'undefined' ) {
+		var iframe = $j( '.wikiEditor-ui-text iframe' );
+		if ( iframe.length > 0 ) {
+			$j( iframe.get( 0 ).contentWindow.document )
+				.add( iframe.get( 0 ).contentWindow.document.body ) // for IE
+				.focus( function() { currentFocused = iframe.get( 0 ); } );
+		}
 	}
 
 	editForm

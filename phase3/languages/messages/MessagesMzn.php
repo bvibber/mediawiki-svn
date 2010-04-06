@@ -10,12 +10,8 @@
  * @author Ali1986
  * @author Firuz
  * @author Spacebirdy
+ * @author محک
  */
-
-$magicWords = array(
-	'redirect'              => array( '0', '#بور', '#تغییرمسیر', '#REDIRECT' ),
-	'numberofpages'         => array( '1', 'تعدادصفحه‌ها', 'تعداد_صفحه‌ها', 'ولگ‌ئون نمره', 'وألگ‌ئون نومره', 'NUMBEROFPAGES' ),
-);
 
 $fallback = 'fa';
 
@@ -39,41 +35,58 @@ $namespaceNames = array(
 	NS_PROJECT_TALK     => '$1 گپ',
 	NS_FILE             => 'پرونده',
 	NS_FILE_TALK        => 'پرونده گپ',
-	NS_MEDIAWIKI        => 'مه‌دیا ویکی',
-	NS_MEDIAWIKI_TALK   => 'مه‌دیا ویکی گپ',
+	NS_MEDIAWIKI        => 'مه‌دیاویکی',
+	NS_MEDIAWIKI_TALK   => 'مه‌دیاویکی گپ',
 	NS_TEMPLATE         => 'شابلون',
 	NS_TEMPLATE_TALK    => 'شابلون گپ',
 	NS_HELP             => 'رانه‌ما',
-	NS_HELP_TALK        => 'رانه‌مای گپ',
+	NS_HELP_TALK        => 'رانه‌مائه گپ',
 	NS_CATEGORY         => 'رج',
 	NS_CATEGORY_TALK    => 'رج گپ',
 );
 
 $namespaceAliases = array(
-	'مدیا' => NS_MEDIA,
-	'ویژه' => NS_SPECIAL,
-	'بحث' => NS_TALK,
-	'کاربر' => NS_USER,
-	'بحث_کاربر' => NS_USER_TALK,
-	'بحث_$1' => NS_PROJECT_TALK,
-	'تصویر' => NS_FILE,
-	'بحث_تصویر' => NS_FILE_TALK,
-	'پرونده' => NS_FILE,
-	'بحث_پرونده' => NS_FILE_TALK,
-	'مدیاویکی' => NS_MEDIAWIKI,
-	'بحث_مدیاویکی' => NS_MEDIAWIKI_TALK,
-	'الگو' => NS_TEMPLATE,
-	'بحث_الگو' => NS_TEMPLATE_TALK,
-	'راهنما' => NS_HELP,
-	'بحث_راهنما' => NS_HELP_TALK,
-	'رده' => NS_CATEGORY,
-	'بحث_رده' => NS_CATEGORY_TALK
+	'مدیا'          => NS_MEDIA,
+	'ویژه'          => NS_SPECIAL,
+	'بحث'            => NS_TALK,
+	'کاربر'         => NS_USER,
+	'بحث_کاربر'      => NS_USER_TALK,
+	'بحث_$1'         => NS_PROJECT_TALK,
+	'تصویر'         => NS_FILE,
+	'پرونده'        => NS_FILE,
+	'بحث_تصویر'      => NS_FILE_TALK,
+	'بحث_پرونده'     => NS_FILE_TALK,
+	'مدیاویکی'      => NS_MEDIAWIKI,
+	'مه‌دیا ویکی'    => NS_MEDIAWIKI,
+	'بحث_مدیاویکی'   => NS_MEDIAWIKI_TALK,
+	'مه‌دیا ویکی گپ' => NS_MEDIAWIKI_TALK,
+	'الگو'          => NS_TEMPLATE,
+	'بحث_الگو'       => NS_TEMPLATE_TALK,
+	'راهنما'        => NS_HELP,
+	'بحث_راهنما'     => NS_HELP_TALK,
+	'رانه‌مای گپ'    => NS_HELP_TALK,
+	'رده'           => NS_CATEGORY,
+	'بحث_رده'        => NS_CATEGORY_TALK,
+);
+
+$magicWords = array(
+	'redirect'              => array( '0', '#بور', '#تغییرمسیر', '#REDIRECT' ),
+	'numberofpages'         => array( '1', 'تعدادصفحه‌ها', 'تعداد_صفحه‌ها', 'ولگ‌ئون نمره', 'وألگ‌ئون نومره', 'NUMBEROFPAGES' ),
 );
 
 $messages = array(
 # User preference toggles
-'tog-underline' => 'پیوندون جیر خط دأکشی بأوو',
-'tog-justify'   => 'بندون ته‌موم چین هاکه‌رده‌ن',
+'tog-underline'               => 'پیوندون جیر خط دأکشی بأوو',
+'tog-highlightbroken'         => 'ناقص پیوندون قالب بندی<a href="" class="new">اینجوری</a>(امکان دیگه:اینجوری<a href="" class="internal">؟</a>).',
+'tog-justify'                 => 'بندون ته‌موم چین هاکه‌رده‌ن',
+'tog-hideminor'               => 'نشون ندائن کچیک تغییرات تازه دگارسه‌ئون دله',
+'tog-hidepatrolled'           => 'جا بدائن دچی ینون پس بخرد تازه دگارسه‌ئون دله',
+'tog-newpageshidepatrolled'   => 'قایم هکردن گشت بخرد ولگون نو ولگون فهرست جا',
+'tog-extendwatchlist'         => 'گت تر هکردن دمبال هکرده‌ئون فهرست تموم دگارسه‌ئون سر، و نا فقط آخرین  موردون',
+'tog-usenewrc'                => 'استفاده از تازه دگارسه‌ئون گت تر بئی (نیازمند جاوااسکریپت)',
+'tog-numberheadings'          => 'شماره بشتن خدکار عناوین',
+'tog-showtoolbar'             => 'نشون هدائن نوار ابزار جعبه دچی ین',
+'tog-editsectiononrightclick' => 'به کار دمبدائن دچیه‌ن قسمت‌ئون با راست کیلیک<br />عناوین قسمت‌ئون ِرو (جاوااسکریپت)',
 
 'underline-default' => 'مه چأرخ‌گأر ده‌لخاء',
 
@@ -303,6 +316,8 @@ $2، $1',
 'showpreview'                      => 'پیش‌هاره‌شا نه‌شون هـه‌دائه‌ن',
 'whitelistedittitle'               => 'جور هکاردن ره وسه ونه سیستم ره دله ئه نین',
 'newarticle'                       => '(ته‌رنه)',
+'blocked-notice-logextract'        => 'دسترسی اینتا کارور الآن دوستوئه.
+آخرین مورد سیاهه قطع دسترسی زیر بموئه:',
 'previewnote'                      => "'''شه‌مه یاد بوئه که اینتا أتا پیش‌نه‌مایه‌ش هأسه.'''
  شه‌مه ده‌گه‌ره‌سه‌ن‌ئون جانأکه‌فته که وه‌نه، جادأکه‌فته‌ن تگمه ره بأزه‌نین!",
 'editing'                          => 'دچیه‌ن => $1',
@@ -635,6 +650,19 @@ $2، $1',
 'watchlistall2' => 'هـأمـه',
 'namespacesall' => 'هأمه',
 'monthsall'     => 'هـأمـه',
+
+# E-mail address confirmation
+'confirmemail_body_changed' => 'ات نفر، احتمالأ خاد شمِا، از نشونی آی‌پی $1 نشونی پوست ایلکتورونیک حیساب «$2» {{SITENAME}} ره تغییر هدائه.
+
+برای تایید این که این حیساب واقعاً شمه شه و فعال هکردن دبارهٔ ویژگی پوست ایلکتورونیک {{SITENAME}}، پیوند زیر دله ره شه مرورگر دله وا هکنین:
+
+$3
+
+اگه این حساب شه مه نی‌یه، پیوند زیر ره دنبال هکنین تا تغییر پوست ایلیکتورونیک ره لغو هکنین:
+
+$5
+
+این تایید یه در $4 منقضی وانه.',
 
 # Multipage image navigation
 'imgmultigo' => 'بور!',

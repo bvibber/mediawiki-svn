@@ -309,9 +309,6 @@ $messages = array(
 'namespaces'                 => 'Izen-tarteak',
 'variants'                   => 'Aldaerak',
 
-# Metadata in edit box
-'metadata_help' => 'Metadatuak:',
-
 'errorpagetitle'    => 'Errorea',
 'returnto'          => '$1(e)ra itzuli.',
 'tagline'           => '{{SITENAME}}(e)tik',
@@ -477,6 +474,7 @@ Mesedez, bidali gertakar hau administradore bati, URLaren izena jarriz.',
 'readonly_lag'         => 'Datu-basea automatikoki blokeatu da menpeko zerbitzariak nagusiarekin sinkronizatu bitartean',
 'internalerror'        => 'Barne errorea',
 'internalerror_info'   => 'Barne errorea: $1',
+'fileappenderror'      => 'Ezin da gehitu "$1" "$2"(e)ra.',
 'filecopyerror'        => 'Ezin izan da "$1" fitxategia "$2"(e)ra kopiatu.',
 'filerenameerror'      => 'Ezin izan zaio "$1" fitxategiari "$2" izen berria eman.',
 'filedeleteerror'      => 'Ezin izan da "$1" fitxategia ezabatu.',
@@ -623,6 +621,7 @@ Berriro saiatu aurretik itxaron ezazu, mesedez.',
 'resetpass_forbidden'       => 'Ezin dira pasahitzak aldatu',
 'resetpass-no-info'         => 'Orrialde honetara zuzenean sartzeko izena eman behar duzu.',
 'resetpass-submit-loggedin' => 'Pasahitza aldatu',
+'resetpass-submit-cancel'   => 'Bertan behera utzi',
 'resetpass-wrong-oldpass'   => 'Behin-behineko edo oraintxuko pasahitza ez da baliagarria. 
 Agian dagoeneko ondo aldatu duzu zure pasahitza edo behin-behineko pasahitza bat eskatu duzu.',
 'resetpass-temp-password'   => 'Behin-behineko pasahitza:',
@@ -815,6 +814,7 @@ Eztabaidak aipatu gabe utzi dira.',
 'post-expand-template-argument-category'  => 'Kontuan hartu ez diren txantiloiak dituzten orrialdeak',
 'parser-template-loop-warning'            => 'Txantiloiaren itzul-biraketa aurkitu da: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Txantiloaren rekurtsio sakoneraren muga gainditu da ($1)',
+'language-converter-depth-warning'        => 'Hizkuntza-bihurgailuaren sakonerak ($1) muga gainditu du',
 
 # "Undo" feature
 'undo-success' => 'Aldaketa desegin daiteke.
@@ -909,6 +909,8 @@ Xehetasunak [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} ezabaket
 'revdelete-logentry'          => '[[$1]](r)entzako berriskupen ikusgaitasuna aldatu da',
 'logdelete-logentry'          => '[[$1]]en gertakarien ikusgarritasuna aldatu da',
 'revdelete-success'           => "'''Berrikuspenen ikusgarritasuna eguneratu da.'''",
+'revdelete-failure'           => "'''Ezin da berrikuspenaren ikuspena eguneratu:'''
+$1",
 'logdelete-success'           => "'''Log ikusgarritasuna ondo ezarri da.'''",
 'revdel-restore'              => 'Ikusgarritasuna aldatu',
 'pagehist'                    => 'Orriaren historia',
@@ -1762,6 +1764,8 @@ Baimendutako protokoloak: <tt>$1</tt>',
 'listgrouprights'                      => 'Erabiltzaile talde eskumenak',
 'listgrouprights-summary'              => 'Ondorengo zerrendak wikian dauden lankide taldeak agertzen dira, beraien eskubideekin.
 Badago [[{{MediaWiki:Listgrouprights-helppage}}|informazio osagarria]] banakako eskubideei buruz.',
+'listgrouprights-key'                  => '* <span class="listgrouprights-granted">Eskubidea emanda</span>
+* <span class="listgrouprights-revoked">Eskubidea kenduta</span>',
 'listgrouprights-group'                => 'Taldea',
 'listgrouprights-rights'               => 'Eskumenak',
 'listgrouprights-helppage'             => 'Help:Talde eskumenak',
@@ -1934,6 +1938,7 @@ beste norbaitek editatu du edo jada desegin du.
 'protectexpiry'               => 'Iraungipena:',
 'protect_expiry_invalid'      => 'Baliogabeko iraungipen-data.',
 'protect_expiry_old'          => 'Iraungipen-data iragan da.',
+'protect-unchain-permissions' => 'Babes aukerak desblokeatu',
 'protect-text'                => "'''<nowiki>$1</nowiki>''' orrialdearen babes maila ikusi eta aldatu egin beharko zenuke.",
 'protect-locked-blocked'      => "Babes-mailak ezin dira aldatu blokeatuta dagoen bitartean.
 Hemen daude '''$1''' orrialdearen egungo ezarpenak:",
@@ -1956,7 +1961,7 @@ Orrialde honen babes maila alda dezakezu, baina ez du eraginik izango kaskada bi
 'protect-othertime-op'        => 'beste denbora',
 'protect-existing-expiry'     => 'Iraungitze ordua: $2, $3',
 'protect-otherreason'         => 'Bestelako arrazoiak (edo gehigarriak):',
-'protect-otherreason-op'      => 'bestelako arrazoiak (edo gehigarriak)',
+'protect-otherreason-op'      => 'Bestelako arrazoiak',
 'protect-dropdown'            => '*Babesteko arrazoi ohikoenak
 ** Gehiegizko bandalismoa
 ** Gehiegizko spama
@@ -2050,17 +2055,19 @@ $1',
 'month'               => 'Hilabetea (eta lehenagokoak):',
 'year'                => 'Urtea (eta lehenagokoak):',
 
-'sp-contributions-newbies'       => 'Soilik kontu berrien ekarpenak erakutsi',
-'sp-contributions-newbies-sub'   => 'Hasiberrientzako',
-'sp-contributions-newbies-title' => 'Lankideen ekarpenak lankide berrietn',
-'sp-contributions-blocklog'      => 'Blokeaketa erregistroa',
-'sp-contributions-deleted'       => 'lankide-ekarpen ezabatuak',
-'sp-contributions-logs'          => 'erregistroak',
-'sp-contributions-talk'          => 'eztabaida',
-'sp-contributions-userrights'    => 'erabiltzaile-baimenen kudeaketa',
-'sp-contributions-search'        => 'Ekarpenentzako bilaketa',
-'sp-contributions-username'      => 'IP helbidea edo erabiltzaile izena:',
-'sp-contributions-submit'        => 'Bilatu',
+'sp-contributions-newbies'        => 'Soilik kontu berrien ekarpenak erakutsi',
+'sp-contributions-newbies-sub'    => 'Hasiberrientzako',
+'sp-contributions-newbies-title'  => 'Lankideen ekarpenak lankide berrietn',
+'sp-contributions-blocklog'       => 'Blokeaketa erregistroa',
+'sp-contributions-deleted'        => 'lankide-ekarpen ezabatuak',
+'sp-contributions-logs'           => 'erregistroak',
+'sp-contributions-talk'           => 'eztabaida',
+'sp-contributions-userrights'     => 'erabiltzaile-baimenen kudeaketa',
+'sp-contributions-blocked-notice' => 'Lankide hau une honetan blokeatuta dago.
+Blokeo erregistroa azken sarrera ematen da azpian erreferentziarako:',
+'sp-contributions-search'         => 'Ekarpenentzako bilaketa',
+'sp-contributions-username'       => 'IP helbidea edo erabiltzaile izena:',
+'sp-contributions-submit'         => 'Bilatu',
 
 # What links here
 'whatlinkshere'            => 'Honekin lotzen diren orriak',
@@ -2152,6 +2159,10 @@ Ikus [[Special:IPBlockList|IP blokeoen zerrenda]] blokeoak aztertzeko.',
 'contribslink'                    => 'ekarpenak',
 'autoblocker'                     => '"[[User:$1|$1]]"(e)k berriki erabili duen IP helbidea duzulako autoblokeatu zaizu. $1(e)k emandako arrazoia zera da: "\'\'\'$2\'\'\'"',
 'blocklogpage'                    => 'Blokeo erregistroa',
+'blocklog-showlog'                => 'Lankide hau aurretik blokeatua izan da.
+Blokeo erregistroa ematen da azpian erreferentziarako:',
+'blocklog-showsuppresslog'        => 'Lankide hau aurretik blokeatua eta ezkutatua izan da.
+Erregistroa ematen da azpian erreferentziarako:',
 'blocklogentry'                   => '"[[$1]]" $2(e)ko iraungipenarekin blokeatu da. $3',
 'reblock-logentry'                => '[[$1]]-entzako blokeo zehaztapenak aldatu dira $2 $3-ko iraungipenarekin',
 'blocklogtext'                    => 'Erabiltzaileen blokeoen ezarpen eta ezabaketen erregistroa da hau. Ez dira automatikoki blokeatutako IP helbideak zerrendatzen. Ikus [[Special:IPBlockList|IP blokeoen zerrenda]] aktibo dauden blokeoak aztertzeko.',
@@ -2170,6 +2181,7 @@ Ikus [[Special:IPBlockList|IP blokeoen zerrenda]] blokeoak aztertzeko.',
 'ipb_already_blocked'             => '"$1" badago blokeatuta',
 'ipb-needreblock'                 => '== Dagoeneko blokeaturik ==
 $1 dagoeneko blokeaturik dago. Ezarpenak aldatu nahi al dituzu?',
+'ipb-otherblocks-header'          => 'Bestelako {{PLURAL:$1|blokeoa|blokeoak}}',
 'ipb_cant_unblock'                => 'Errorea: Ez da $1 IDa duen blokeoa aurkitu. Baliteke blokeoa jada kenduta egotea.',
 'ipb_blocked_as_range'            => 'Akatsa: $1 IPa ez dago zuzenean blokeatuta eta ezin da blokeoa kendu.
 Hala ere, $2-(r)en parte denez, blokeoa kendu daiteke.',
@@ -2221,6 +2233,7 @@ mesedez honen ondorioak ulertzen dituzula ziurta ezazu jarraitu baino lehen.",
 
 Kasu horietan orrialdea eskuz mugitu edo bestearekin bateratu beharko duzu.",
 'movearticle'                  => 'Orrialdea mugitu',
+'moveuserpage-warning'         => "'''Oharra:''' Lankide orrialde bat mugitzera zoaz. Kontutan izan orrialde bakarrik mugituko duzula eta '''ez''' duzula lankide izena aldatuko.",
 'movenologin'                  => 'Saioa hasi gabe',
 'movenologintext'              => 'Orrialde bat mugitzeko erregistratutako lankidea izan behar duzu eta [[Special:UserLogin|saioa hasi]].',
 'movenotallowed'               => 'Ez daukazu orrialdeak mugitzeko baimenik.',
@@ -2275,6 +2288,8 @@ Kasu horietan orrialdea eskuz mugitu edo bestearekin bateratu beharko duzu.",
 'protectedpagemovewarning'     => "'''Oharra:''' Orrialde hau babestua izan da, beraz administratzaile eskumenak dituztenek alda dezakete bakarrik.
 Azken erregistroko sarrera ematen da azpian erreferentzia gisa:",
 'semiprotectedpagemovewarning' => "'''Oharra:''' Orrialde hau blokeatu dute, izena emanda duten erabiltzaileek soilik mugitu ahal dezaten. Erregistroko azken sarrera erakusten da jarraian erreferentzia gisa:",
+'move-over-sharedrepo'         => '== Fitxategia badago ==
+[[:$1]] badago datu-base partekatuan. Izenburu honetara fitxategi bat mugitzean partekatutako fitxategia gainezarriko du.',
 
 # Export
 'export'            => 'Orrialdeak esportatu',
