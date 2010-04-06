@@ -685,11 +685,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
-	'sitenotice-desc' => 'Permite aos utilizadores fecharem a notificação do sítio',
+	'sitenotice-desc' => 'Permite aos utilizadores fecharem a notificação do site',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

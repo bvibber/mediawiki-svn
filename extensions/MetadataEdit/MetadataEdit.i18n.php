@@ -90,6 +90,15 @@ $messages['oc'] = array(
 	'metadata_help' => 'Metadonadas :',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'metadataedit-desc' => 'Umieszcza kategorie, linki językowe i dostępne szablony w oddzielnym polu tekstowym w czasie edycji stron',
+	'metadata_help' => 'Metadane:',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */
@@ -103,7 +112,7 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'metadataedit-desc' => 'Durante a edição de páginas, colocar as categorias, ligações de línguas e predefinições permitidas numa caixa de texto separada.',
+	'metadataedit-desc' => 'Durante a edição de páginas, colocar as categorias, links de línguas e predefinições permitidas numa caixa de texto separada.',
 	'metadata_help' => 'Metadados:',
 );
 

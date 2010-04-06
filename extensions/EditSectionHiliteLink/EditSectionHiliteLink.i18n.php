@@ -260,7 +260,7 @@ $messages['pms'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'editsectionhilitelink-desc' => 'Destacar a respectiva secção da página quando o cursor for colocado sobre a ligação de edição',
+	'editsectionhilitelink-desc' => 'Destacar a respectiva secção da página quando o cursor for colocado sobre o link de edição',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

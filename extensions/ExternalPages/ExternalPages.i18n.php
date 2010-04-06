@@ -412,7 +412,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'externalpages' => 'Páginas Externas',
-	'externalpages-desc' => 'Importa e apresenta páginas de sítios WMF remotos',
+	'externalpages-desc' => 'Importa e apresenta páginas de sites WMF remotos',
 	'externalpages-bad-page' => 'Página incorrecta',
 	'externalpages-no-page' => 'Página não introduzida',
 );

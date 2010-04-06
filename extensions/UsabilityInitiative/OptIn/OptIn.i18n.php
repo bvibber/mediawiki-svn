@@ -4236,7 +4236,7 @@ $messages['nn'] = array(
 	'optin-intro' => 'Wikipedia-brukarvenlegheitsinitiativet har arbeitt hardt for å betra brukarvenlegheita til Wikipedia.
 Ynskjer du å prøva betaversjonen vår?',
 	'optin-feedback-intro' => 'Takk for at du prøver Beta.
-Vi vil gjerne vite kva du meiner om det nye grensesnittet vårt, og ynskjer at du deltek i ut den valfrie undersøkinga under.',
+Me vil gjerne veta kva du meiner om det nye grensesnittet vårt, og ynskjer at du deltek i den valfrie undersøkinga under.',
 	'optin-feedback-back' => 'Om du ikkje ynskjer å fylla ut undersøkinga, kan du gå attende til $1.',
 	'optin-success-in' => 'Du prøver no ut Beta.
 Du kan trekkja deg frå utprøvinga kva tid som helst ved å trykkja på «{{int:optin-leave}}»-lenkja på øvst på sida.',
@@ -4738,8 +4738,8 @@ Gostaríamos de saber o que achou da nossa nova interface, por isso agradecíamo
 	'optin-survey-question-usedtoolbar-ifno' => 'Se não, porque não? Irá usar no futuro? Por favor, elabore.',
 	'optin-survey-question-different' => 'O que é que poderíamos ter feito de forma diferente para que continuasse a usar o Beta?',
 	'optin-survey-question-feedback' => 'Por favor, faça quaisquer outros comentários, críticas ou sugestões que tenha - todas as opiniões são úteis:',
-	'optin-survey-question-browser' => 'Que navegador utiliza?',
-	'optin-survey-answer-browser-other' => 'Outro navegador:',
+	'optin-survey-question-browser' => 'Que browser utiliza?',
+	'optin-survey-answer-browser-other' => 'Outro browser:',
 	'optin-survey-question-os' => 'Que sistema operativo utiliza?',
 	'optin-survey-answer-os-other' => 'Outro sistema operativo:',
 	'optin-survey-question-res' => 'Qual é a resolução do seu ecrã?',
@@ -5728,7 +5728,7 @@ $messages['te'] = array(
 	'optin-survey-question-browser' => 'మీరు ఏ విహారిణిని వాడుతున్నారు?',
 	'optin-survey-answer-browser-other' => 'ఇతర విహారిణి:',
 	'optin-survey-question-os' => 'మీరు వాడుతున్న నిర్వాహక వ్యవస్థ ఏది?',
-	'optin-survey-answer-os-other' => 'ఇతర నిర్వాహక వ్యవస్థలు:',
+	'optin-survey-answer-os-other' => 'ఇతర నిర్వాహక వ్యవస్థ:',
 	'optin-survey-question-res' => 'మీ స్క్రీన్ రిజల్యూషన్ ఎంత?',
 	'optin-survey-question-changes' => 'భవిష్యత్తులో బీటాలో మీరు ఎటువంటి మార్పును చూడదలుచుకుంటున్నారు (మీరు చూడదలుచుకున్నవన్నీ ఎంచుకోండి)?',
 	'optin-survey-answer-changes-nav' => 'మొత్తం నావిగేషన్ సులభంగా వాడుకునేలా తయారు చేయండి.',
@@ -5737,21 +5737,6 @@ $messages['te'] = array(
 	'optin-survey-answer-changes-richtext' => 'రిచ్ టెక్స్ట్ ఎడిటర్ లాంటి ఎడిటింగ్ ఉపకరణాలను రూపొందించండి.',
 	'optin-survey-answer-changes-lookfeel' => 'సైటు యొక్క లుక్ అండ్ ఫీల్ ను మార్చండి.',
 	'optin-survey-answer-changes-other' => 'ఇతర:',
-	'optin-improvements' => '==ఏమి మెరుగైంది?==
-[[File:UsabilityNavigation.png|left|link=|కొత్త మార్గదర్శక ట్యాబుల తెరపట్టు]]
-;మెరుగైన మార్గదర్శకం
-సరికొత్త మార్గదర్శక వ్యవస్థలో మీరు ఎక్కడ ఉన్నారు మరియు ఏంచేస్తున్నారు, అలానే ఎక్కడికి వెళ్ళవచ్చు మరియు ఎలా వెళ్ళవచ్చు మొదలైనవన్నీ సులభంగా తెలుసుకోవచ్చు. ఇప్పుడు వెతుకు పెట్టె కుడివైపు పైన ఉండటం వల్ల సులభంగానూ, వేగంగానూ వెతకవచ్చు.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|మెరుగైన దిద్దుబాటు పనిమట్ల పట్టీ యొక్క తెరపట్టు]]
-;దిద్దుబాటు పనిముట్ల పట్టీకి మెరుగులు
-సరికొత్త మరియు మెరుగైన ప్రతీకాలు ఏ పనిముట్లు ఏ పని చేస్తుందో స్పష్టంగా తెలియజేస్తాయి. ఎక్కువగా అవసరమయ్యే పనిముట్లను మాత్రమే బాగా అందుబాటులో ఉంచి మిగతా వాటిని విస్తరించగలిగే మెనూలో పెట్టడం ద్వారా పనిముట్లపట్టీ సరళంగా కనిపిస్తుంది.
-సహాయ విభాగం వికీ-మార్కప్ యొక్క సామాన్య వాడుకల గురించి తక్షణ సమాచారాన్ని అందజేస్తుంది.
-<div style="clear:both;"></div>
-==ఎలా పాల్గొనాలి==
-ఈ ప్రాజెక్టు గురించి మరింత సమాచారం తెలుసుకొనేందుకు, లేదా పాల్గొనేందుకు, [http://usability.wikimedia.org ఉపయోగశీలత చేపట్టు వికీ]ని సందర్శించండి. అక్కడ మా గ్ర్రాంటు, పరిశోధన, రూపకల్పన, అభివృద్ధి, మరియు విడుదలల గురించి తెలుసుకోవచ్చు. ప్రశ్నలడటానికైనా లేదా మీ అభిప్రాయాలు తెలియజేయాలన్నా [http://usability.wikimedia.org/wiki/Talk:Prototype మా ప్రోటోటైప్ చర్చాపేజీ]ని వాడండి. మీకు తప్పులు కనిపిస్తే, [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco విడుదలపై చర్చా పేజీ] లేదా [https://bugzilla.wikimedia.org బగ్‌జిల్లా]లో తెలియజేయండి.
-
-ధన్యవాదాలు, మీ అమూల్యమైన సలహాల కోసం మేము ఎదురుచూస్తుంటాము.',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

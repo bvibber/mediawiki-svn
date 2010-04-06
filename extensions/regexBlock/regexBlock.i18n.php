@@ -2419,7 +2419,7 @@ $messages['pt'] = array(
 	'regexblock-page-title' => 'Bloqueio de nomes de expressões regulares',
 	'regexblockstats' => 'Estatísticas de bloqueio de expressões regulares',
 	'regexblock-help' => 'Use o formulário abaixo para bloquear o acesso de escrita a um endereço IP ou nome de utilizador específicos.
-Isto deverá ser feito apenas para prevenir vandalismo, e de acordo com as políticas.
+Isto deverá ser feito apenas para prevenir vandalismo, e de acordo com as normas.
 \'\'Esta página permitir-lhe-á bloquear até mesmo utilizadores não existentes, e também bloqueará utilizadores com nomes semelhantes ao dado, isto é, "Teste" será bloqueado juntamente com "Teste 2", etc.
 Também pode bloquear endereços IP completos, significando isto que ninguém proveniente deles poderá editar páginas.
 Nota: endereços IP parciais serão tratados como nomes de utilizador na determinação do bloqueio.

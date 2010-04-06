@@ -326,10 +326,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'contributorsaddon-desc' => 'Adiciona janelas "popup" JS do tipo onMouseOver às ligações de "Principais Contribuidores"',
+	'contributorsaddon-desc' => 'Adiciona janelas "popup" JS do tipo onMouseOver aos links de "Principais Contribuidores"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

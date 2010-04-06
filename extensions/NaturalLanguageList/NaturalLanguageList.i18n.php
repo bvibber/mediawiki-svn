@@ -175,6 +175,14 @@ $messages['no'] = array(
 	'nll-lastseparator' => '&#32;og&#32;',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'nll-desc' => 'Łatwe formatowanie list w językach naturalnych',
+	'nll-lastseparator' => '&#32;i&#32;',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

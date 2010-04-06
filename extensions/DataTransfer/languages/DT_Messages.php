@@ -1440,6 +1440,7 @@ $messages['pl'] = array(
 	'dt_xml_title' => 'Tytuł',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Dowolny tekst',
+	'right-datatransferimport' => 'Importowanie danych',
 );
 
 /** Piedmontese (Piemontèis)

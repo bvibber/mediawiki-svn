@@ -2135,7 +2135,7 @@ $messages['pt'] = array(
 	'crosswikiblock-desc' => '[[Special:Crosswikiblock|Página especial]] que permite bloquear utilizadores noutras wikis',
 	'crosswikiblock' => 'Bloquear utilizador noutra wiki',
 	'crosswikiblock-header' => 'Esta página permite bloquear um utilizador noutra wiki.
-Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as políticas.',
+Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as normas.',
 	'crosswikiblock-target' => 'Endereço IP ou nome de utilizador e wiki destino:',
 	'crosswikiblock-expiry' => 'Expiração:',
 	'crosswikiblock-reason' => 'Motivo:',
@@ -2146,7 +2146,7 @@ Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas ac
 	'crosswikiblock-noemail' => 'Impedir utilizador de enviar correio electrónico',
 	'crosswikiunblock' => 'Desbloquear utilizador noutra wiki',
 	'crosswikiunblock-header' => 'Esta página permite desbloquear um utilizador noutra wiki.
-Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as políticas.',
+Por favor, verifique se tem permissão para agir sobre essa wiki e se as suas acções respeitam todas as normas.',
 	'crosswikiunblock-user' => 'Nome de utilizador, endereço IP ou ID de bloqueio e wiki destino:',
 	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => 'Desbloquear este utilizador',

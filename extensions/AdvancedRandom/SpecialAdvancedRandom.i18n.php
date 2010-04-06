@@ -508,11 +508,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'advancedrandom' => 'Acesso aleatório avançado',
-	'advancedrandom-desc' => 'Obtém uma página aleatória a partir de uma página de discussão ou de ligações de uma página de assunto para uma dada página. Pode ser usado como [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] para obter um artigo em destaque aleatório ou como [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] para obter um ficheiro GFDL aleatório',
+	'advancedrandom-desc' => 'Obtém, de qualquer espaço nominal, uma página aleatória cuja página de discussão ou de conteúdo contêm links para uma dada página.
+Pode ser usado como [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] para obter um artigo em destaque aleatório ou como [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] para obter um ficheiro GFDL aleatório',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

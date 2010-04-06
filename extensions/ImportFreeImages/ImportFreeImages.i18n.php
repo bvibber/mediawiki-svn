@@ -1263,6 +1263,8 @@ $messages['te'] = array(
 	'importfreeimages_nophotosfound' => "'$1' అనే మీ అన్వేషణా ప్రశ్నకి ఫొటోలు ఏమీ దొరకలేదు, మళ్ళీ ప్రయత్నించండి.",
 	'importfreeimages_owner' => 'కృతికర్త',
 	'importfreeimages_next' => 'తర్వాతి $1',
+	'importfreeimages_size_square' => 'చతురస్రం',
+	'importfreeimages_size_thumbnail' => 'నఖచిత్రం',
 	'importfreeimages_size_original' => 'అసలు',
 );
 

@@ -337,6 +337,7 @@ Upassende filer bliver slettet øjeblikkeligt - se [[{{MediaWiki:Multipleupload-
 );
 
 /** German (Deutsch)
+ * @author LWChris
  * @author Purodha
  * @author Raimond Spekking
  * @author Umherirrender
@@ -350,9 +351,10 @@ $messages['de'] = array(
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
-Wähle „Browse“ und wähle jede Datei aus, die du hochladen möchtest. Du kannst gleichzeitig zwischen 1 und $1 Dateien hochladen.
+Klicke auf \"Durchsuchen\" und wähle alle Dateien aus, die du hochladen möchtest.
+Du kannst zwischen 1 und \$1 Dateien gleichzeitig hochladen.
 
-Du kannst wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien.
+Wahlweise kannst du auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien eingeben.
 
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
 	'multiupload-fileuploaded' => 'Datei hochgeladen.',

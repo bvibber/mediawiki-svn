@@ -1108,6 +1108,7 @@ $wgGoogleMapsMessages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author LWChris
  * @author Melancholie
  * @author Pill
  * @author Purodha
@@ -1139,7 +1140,7 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-no-results' => 'Tut mir leid, keine Ergebnisse',
 	'gm-searching' => 'Suche …',
 	'gm-map' => 'Karte',
-	'gm-note' => 'Achtung: Kopiere die Wiki-Syntax in die Seite (unten), bevor du „Karte laden“, „Speichern“ oder „Vorschau“ klickst!',
+	'gm-note' => 'Achtung: Kopiere alles, was du speichern möchtest, in die Seite (unten), bevor du "Karte laden", "Speichern" oder "Vorschau" klickst!',
 	'gm-instructions' => 'Die nötige Wiki-Syntax um diese Karte zu erzeugen:',
 	'gm-are-you-sure' => 'Bist du sicher?',
 	'gm-clear-all-points' => 'Alle Punkte entfernen',
@@ -1156,14 +1157,14 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-no-zoom-control' => 'Aus',
 	'gm-yes' => 'Ja',
 	'gm-no' => 'Nein',
-	'gm-search-preface' => 'Klicke auf die Karte, um einen Punkt hinzuzufügen. Oder springe zu einer Stadt, Land, Adresse oder einem Geschäft:',
-	'gm-geocode-preface' => 'Klicke auf die Karte, um einen Punkt hinzuzufügen. Oder springe zu einer Stadt, Land oder Adresse:',
+	'gm-search-preface' => 'Klicke auf die Karte, um einen Punkt hinzuzufügen, oder springe zu einer Stadt, Land, Adresse oder einem Geschäft:',
+	'gm-geocode-preface' => 'Klicke auf die Karte, um einen Punkt hinzuzufügen, oder springe zu einer Stadt, Land oder Adresse:',
 	'gm-no-search-preface' => 'Klicke auf die Karte, um einen Punkt hinzuzufügen.',
 	'gm-search' => 'Suchen',
 	'gm-clear-search' => 'Suchergebnis löschen',
 	'gm-meters' => 'Meter',
 	'gm-miles' => 'Meilen',
-	'gm-editing-path' => 'Klicke auf die Karte, um diesen Pfad zu verlängern.',
+	'gm-editing-path' => 'Klicke auf die Karte, um mehr Punkte zum Pfad hinzuzufügen.',
 	'gm-save-path' => 'Speichern',
 	'gm-edit-path' => 'Punkte hinzufügen',
 	'gm-show-path' => 'Punkte zeigen',
@@ -4258,12 +4259,12 @@ $wgGoogleMapsMessages['ps'] = array(
  */
 $wgGoogleMapsMessages['pt'] = array(
 	'gm-desc' => 'Crie mapas facilmente com marcadores wikificados',
-	'gm-incompatible-browser' => 'Para ver o mapa que ocuparia este espaço, precisa de usar um navegador compatível.',
-	'gm-incompatible-browser-link' => 'Carregue aqui para ver uma lista de navegadores compatíveis.',
-	'gm-no-editor' => 'Infelizmente, o seu navegador não suporta as funcionalidades interactivas de criação de mapas.
+	'gm-incompatible-browser' => 'Para ver o mapa que ocuparia este espaço, precisa de usar um browser compatível.',
+	'gm-incompatible-browser-link' => 'Carregue aqui para ver uma lista de browsers compatíveis.',
+	'gm-no-editor' => 'Infelizmente, o seu browser não suporta as funcionalidades interactivas de criação de mapas.
 Experimente a última versão do <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) ou do <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac, and Linux).',
 	'gm-balloon-title' => 'Título:',
-	'gm-balloon-link-article' => 'Ligações para esta página (opcional):',
+	'gm-balloon-link-article' => 'Links para esta página (opcional):',
 	'gm-make-marker' => 'Legenda (notação wiki OK):',
 	'gm-remove' => 'remover',
 	'gm-caption' => 'Legenda',

@@ -2069,6 +2069,7 @@ $wgCustomToolbarMessages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -2083,12 +2084,12 @@ $wgCustomToolbarMessages['pt'] = array(
 	'ct_italic_tip_wrap' => 'Tornar este texto itálico',
 	'ct_italic_caption' => 'Itálico',
 	'ct_internal_sample' => 'NomeDaPágina',
-	'ct_internal_tip_ins' => 'Inserir uma ligação interna',
-	'ct_internal_tip_wrap' => 'Tornar este texto uma ligação interna',
-	'ct_internal_caption' => 'Ligação interna',
-	'ct_external_tip_ins' => 'Inserir uma ligação externa',
-	'ct_external_tip_wrap' => 'Tornar este texto uma ligação externa',
-	'ct_external_caption' => 'Ligação externa',
+	'ct_internal_tip_ins' => 'Inserir um link interno',
+	'ct_internal_tip_wrap' => 'Tornar este texto num link interno',
+	'ct_internal_caption' => 'Link interno',
+	'ct_external_tip_ins' => 'Inserir um link externo',
+	'ct_external_tip_wrap' => 'Tornar este texto num link externo',
+	'ct_external_caption' => 'Link externo',
 	'ct_image_tip' => 'Inserir uma imagem',
 	'ct_image_caption' => 'Adicionar imagem',
 	'ct_attachment_tip' => 'Inserir um anexo',
@@ -2106,14 +2107,14 @@ $wgCustomToolbarMessages['pt'] = array(
 	'ct_upload' => 'Carregar $1',
 	'ct_select' => 'Selecione $1 a carregar:',
 	'ct_caption' => 'Adicionar legenda (opcional):',
-	'ct_link' => 'Adicionar nome de ligação (opcional):',
+	'ct_link' => 'Adicionar nome do link (opcional):',
 	'ct_submit' => 'Ir!',
 	'ct_close' => 'Fechar janela',
 	'ct_success' => 'Carregamento do ficheiro com sucesso!',
 	'ct_popupblocked' => 'A janela popup do carregemento foi impedida de abrir. Por favor, verifique o seu bloqueador de janelas popup.',
 	'ct_user_user' => 'Utilizador',
-	'ct_user_tip' => 'Inserir uma ligação para uma página de utilizador',
-	'ct_user_caption' => 'Ligação de utilizador',
+	'ct_user_tip' => 'Inserir um link para uma página de utilizador',
+	'ct_user_caption' => 'Link de utilizador',
 	'ct_user_sample' => 'Nome de utilizador',
 );
 

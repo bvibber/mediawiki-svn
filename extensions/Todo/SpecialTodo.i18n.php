@@ -1487,7 +1487,7 @@ $4',
 	'todo-form-details' => 'Szczegóły:',
 	'todo-form-email' => 'Jeśli chcesz otrzymać powiadomienie pocztą elektroniczna po zamknięciu tej pozycji, wpisz w polu poniżej swój adres e‐mail:',
 	'todo-form-submit' => 'Wyślij zapytanie',
-	'right-todo' => 'Posiada listę zadań',
+	'right-todo' => 'Posiada listę zadań do wykonania',
 	'right-todosubmit' => 'Ograniczanie dostępu użytkowników do listy zadań',
 );
 

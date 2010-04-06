@@ -2636,7 +2636,7 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'whitelistnever' => 'nigdy',
 	'whitelistnummatches' => ' - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
 	'right-editwhitelist' => 'Zmiana białej listy dla istniejących użytkowników',
-	'right-restricttowhitelist' => 'Edytowanie i przeglądanie stron wyłącznie z białej listy',
+	'right-restricttowhitelist' => 'Edycja i przegląd stron wyłącznie z białej listy',
 	'action-editwhitelist' => 'modyfikowania białej listy dla istniejących użytkowników',
 	'action-restricttowhitelist' => 'edytowania i przeglądania wyłącznie białej listy',
 	'group-restricted' => 'Ograniczenie użytkownicy',

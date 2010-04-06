@@ -367,11 +367,14 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pietrodn
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'ratedpages' => 'Leggi le pagine valutate',
+	'ratedpages-leg' => 'Trova le pagine valutate con un numero considerevole di voti',
 	'ratedpages-list' => 'Di seguito è riportato un elenco di pagine ordinate per il loro feedback da parte dei lettori.',
 	'ratedpages-none' => 'Non ci sono pagine in questo elenco',
 	'ratedpages-graphs' => 'dati delle valutazioni',

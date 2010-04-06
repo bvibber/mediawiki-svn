@@ -1364,8 +1364,8 @@ $messages['pl'] = array(
 	'closewikis-log-header' => 'Poniżej znajduje się rejestr wszystkich wiki zamkniętych lub ponownie otwartych przez stewardów',
 	'closewikis-log-close' => 'zamknięta $2',
 	'closewikis-log-reopen' => 'powtórnie otwarta $2',
-	'right-editclosedwikis' => 'Edytuj zamknięte projekty wiki',
-	'right-closewikis' => 'Zamknij projekty wiki',
+	'right-editclosedwikis' => 'Edycja zamkniętych projektów wiki',
+	'right-closewikis' => 'Zamykanie projektów wiki',
 );
 
 /** Piedmontese (Piemontèis)

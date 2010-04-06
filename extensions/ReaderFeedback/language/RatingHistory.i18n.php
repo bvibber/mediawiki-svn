@@ -1590,7 +1590,7 @@ Skala ocen:
 
 '''[1]''' – niedostatecznie, '''[2]''' – słabo, '''[3]''' – zadowalająco, '''[4]''' – dobrze, '''[5]''' – bardzo dobrze.",
 	'ratinghistory-graph-scale' => "'''Liczba przeglądów na dzień''' <font color=\"red\">''(czerwona)''</font> pokazana w skali ''1:\$1''.",
-	'right-feedback' => 'Użyj formularza, aby ocenić stronę',
+	'right-feedback' => 'Korzystanie z formularza opinii do oceniania strony',
 );
 
 /** Piedmontese (Piemontèis)

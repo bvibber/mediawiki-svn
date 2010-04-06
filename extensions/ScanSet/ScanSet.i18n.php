@@ -825,6 +825,7 @@ $messages['kw'] = array(
  */
 $messages['lb'] = array(
 	'scanset-desc' => 'Gescannte Säite weise mat den CD/DVD Astellunge vum Andreas Grosz',
+	'scanset_no_name' => 'Feeler: Dir musst en Numm fir de Set vun de gescannten Dokumenter uginn, z. Bsp. &lt;scanset name="EB1911"  /&gt;.',
 	'scanset_unrecognised_index_format' => 'Feeler: Onbekannten Index-Format',
 	'scanset_opendir_error' => 'Feeler: De Repertoire $1 kann net opgemaach ginn',
 	'scanset_no_files' => 'Feeler: Et gëtt keng Fichieren an dem Repertoire den Dir uginn hutt.',

@@ -271,7 +271,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'interlanguage-desc' => 'Extrai as ligações interlínguas de outra wiki',
+	'interlanguage-desc' => 'Extrai os links interlínguas de outra wiki',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

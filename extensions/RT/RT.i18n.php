@@ -549,6 +549,8 @@ Próbowałeś '''$1'''",
 Próbowałeś '''$1'''",
 	'rt-badstatus' => "Nieprawidłowe status (s) – argument musi być standardowym polem (sprawdź w dokumentacji).
 Próbowałeś '''$1'''",
+	'rt-badcfield' => "Nieprawidłowy argument w niestandardowym polu – musi to być proste słowo (sprawdź w dokumentacji).
+Próbowałeś – '''$1'''",
 	'rt-badqueue' => "Nieprawidłowe queue (s) – argument musi być prostym słowem.
 Próbowałeś '''$1'''",
 	'rt-badowner' => "Nieprawidłowe owner (o) – argument musi być poprawną nazwą użytkownika.

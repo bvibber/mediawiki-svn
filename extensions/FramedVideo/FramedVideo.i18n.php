@@ -710,6 +710,7 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -727,7 +728,7 @@ $messages['pt'] = array(
 	'framedvideo_helppage' => 'Help:Vídeo',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Mais sobre a sintaxe]].',
 	'framedvideo_error_height_and_width_required' => 'Vídeo tipo "$1" requer os parâmetros "height" e "width2" ou "width".',
-	'framedvideo-desc' => 'Permite incorporar vídeos de vários sítios web, usando a marca <tt><nowiki><video></nowiki></tt>',
+	'framedvideo-desc' => 'Permite incorporar vídeos de vários sites web, usando o elemento <tt><nowiki><video></nowiki></tt>',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

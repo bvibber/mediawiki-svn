@@ -1111,16 +1111,16 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'bookinfo-header' => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങള്‍',
-	'bookinfo-desc' => '[[Special:Booksources]] എന്ന പ്രത്യേകതാള്‍ വെബ്ബ് സര്‍‌വീസിലെ വിവരവും ചേര്‍ത്ത് വികസിപ്പിക്കുന്നു.',
-	'bookinfo-result-title' => 'ശീര്‍ഷകം:',
-	'bookinfo-result-author' => 'ഗ്രന്ഥകര്‍ത്താവ്:',
-	'bookinfo-result-publisher' => 'പ്രസാധകന്‍:',
-	'bookinfo-result-year' => 'വര്‍ഷം:',
-	'bookinfo-error-invalidisbn' => 'താങ്കള്‍ രേഖപ്പെടുത്തിയ ISBN സംഖ്യ അസാധുവാണ്‌.',
-	'bookinfo-error-nosuchitem' => 'ഈ ഇനം കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല അല്ലെങ്കില്‍ നിലവിലില്ല.',
-	'bookinfo-error-noresponse' => 'പ്രതികരണമില്ല അല്ലെങ്കില്‍ അപേക്ഷയുടെ സമയപരിധി കഴിഞ്ഞു',
-	'bookinfo-purchase' => 'ഈ പുസ്തകം $1ല്‍ നിന്നു വാങ്ങുക',
+	'bookinfo-header' => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങൾ',
+	'bookinfo-desc' => '[[Special:Booksources]] എന്ന പ്രത്യേകതാൾ വെബ്ബ് സർ‌വീസിലെ വിവരവും ചേർത്ത് വികസിപ്പിക്കുന്നു.',
+	'bookinfo-result-title' => 'ശീർഷകം:',
+	'bookinfo-result-author' => 'ഗ്രന്ഥകർത്താവ്:',
+	'bookinfo-result-publisher' => 'പ്രസാധകൻ:',
+	'bookinfo-result-year' => 'വർഷം:',
+	'bookinfo-error-invalidisbn' => 'താങ്കൾ രേഖപ്പെടുത്തിയ ISBN സംഖ്യ അസാധുവാണ്‌.',
+	'bookinfo-error-nosuchitem' => 'ഈ ഇനം കണ്ടെത്താൻ കഴിഞ്ഞില്ല അല്ലെങ്കിൽ നിലവിലില്ല.',
+	'bookinfo-error-noresponse' => 'പ്രതികരണമില്ല അല്ലെങ്കിൽ അപേക്ഷയുടെ സമയപരിധി കഴിഞ്ഞു',
+	'bookinfo-purchase' => 'ഈ പുസ്തകം $1ൽ നിന്നു വാങ്ങുക',
 	'bookinfo-provider' => 'ഡാറ്റ ദാതാവ്: $1',
 );
 

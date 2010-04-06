@@ -417,10 +417,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'didyoumean-desc' => 'Adiciona ligações a páginas com títulos "semelhantes"',
+	'didyoumean-desc' => 'Adiciona links a páginas com títulos "semelhantes"',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -1711,7 +1711,7 @@ $messages['pl'] = array(
 	'usagestatisticscalselect' => 'Wybierz',
 	'usagestatistics-editindividual' => '$1 statystyki edycji pojedynczego użytkownika',
 	'usagestatistics-editpages' => '$1 statystyki stron pojedynczego użytkownika',
-	'right-viewsystemstats' => 'Podgląd [[Special:UserStats|statystyk wykorzystania wiki]]',
+	'right-viewsystemstats' => 'Przeglądanie [[Special:UserStats|statystyk wykorzystania wiki]]',
 );
 
 /** Piedmontese (Piemontèis)

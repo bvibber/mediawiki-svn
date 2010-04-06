@@ -452,11 +452,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'templatelink' => 'Ligação de predefinição',
+	'templatelink' => 'Link de predefinição',
 	'templatelink_desc' => 'Esta extensão pode mostrar uma predefinição como uma nova página',
 	'templatelink_empty' => 'Deverá fornecer um parâmetro',
 	'templatelink_newtitle' => '$1 (transcluído)',

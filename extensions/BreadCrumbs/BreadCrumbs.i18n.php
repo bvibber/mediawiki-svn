@@ -184,9 +184,10 @@ $messages['fy'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki',
+	'breadcrumbs-desc' => 'Amosa a ligazón das últimas páxinas que o usuario visitou no wiki',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -316,7 +317,7 @@ $messages['ko'] = array(
 	'breadcrumbs-desc' => '사용자의 최근 방문 문서 목록을 표시하는 기능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -747,7 +747,7 @@ $messages['pl'] = array(
 	'findspam-ip' => 'Adres IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nie odnaleziono żadnych edycji',
-	'right-findspam' => 'Wyszukaj ostatnio dodany spam',
+	'right-findspam' => 'Wyszukiwanie ostatnio dodanego spamu',
 );
 
 /** Piedmontese (Piemontèis)

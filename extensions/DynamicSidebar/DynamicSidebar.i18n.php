@@ -152,6 +152,13 @@ $messages['oc'] = array(
 	'dynamicsidebar-desc' => 'Provesís de barras lateralas dinamicas basadas sus las paginas dels utilizaires, lors gropes e las categorias',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'dynamicsidebar-desc' => 'Dostarcza dynamiczne menu w oparciu o strony użytkowników, grupy i kategorie',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

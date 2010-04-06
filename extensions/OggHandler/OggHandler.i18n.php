@@ -2455,8 +2455,8 @@ $messages['pt'] = array(
 	'ogg-no-xiphqt' => "Aparentemente não tem o componente XiphQT do QuickTime.
 O QuickTime não pode reproduzir ficheiros Ogg sem este componente.
 Por favor, faça o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download\">''download'' do XiphQT</a> ou escolha outro leitor.",
-	'ogg-player-videoElement' => 'Suporte nativo do navegador',
-	'ogg-player-oggPlugin' => "''Plugin'' do navegador",
+	'ogg-player-videoElement' => 'Suporte nativo do browser',
+	'ogg-player-oggPlugin' => "''Plugin'' do browser",
 	'ogg-player-thumbnail' => 'Apenas imagem estática',
 	'ogg-player-soundthumb' => 'Sem player',
 	'ogg-player-selected' => '(selecionado)',

@@ -177,6 +177,13 @@ $messages['oc'] = array(
 	'right-editalluserpages' => "Modificar las paginas d'utilizaire",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'right-editalluserpages' => 'Edycja stron użytkowników',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

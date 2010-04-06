@@ -442,7 +442,7 @@ $messages['pl'] = array(
 	'piwik-lastvisits' => 'Ostatnie wizyty',
 	'piwik-countries' => 'Kraje',
 	'piwik-browsers' => 'Przeglądarki',
-	'right-viewpiwik' => 'Dostęp do [[Special:Piwik|statystyk Piwik]]',
+	'right-viewpiwik' => 'Podgląd [[Special:Piwik|statystyk Piwik]]',
 );
 
 /** Piedmontese (Piemontèis)
@@ -473,7 +473,7 @@ $messages['pt'] = array(
 	'piwik-desc' => 'Insere script Piwik em páginas MediaWiki para rastreio e adiciona [[Special:Piwik|algumas estatísticas]]',
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
-	'piwik-browsers' => 'Navegadores',
+	'piwik-browsers' => 'Browsers',
 	'right-viewpiwik' => 'Ver [[Special:Piwik|estatísticas Piwik]]',
 );
 

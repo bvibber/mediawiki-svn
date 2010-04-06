@@ -340,14 +340,18 @@ $messages['no'] = array(
 	'right-lastlogin' => 'Se den siste gangen en bruker logget inn',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'lastuserlogin' => 'Ostatnie zalogowania użytkownika',
+	'lastuserlogin-desc' => 'Wyświetla datę i czas ostatniego zalogowania się przez użytkownika',
 	'lastuserlogin_userid' => 'Login',
 	'lastuserlogin_username' => 'Prawdziwa nazwa',
 	'lastuserlogin_useremail' => 'Adres e-mail',
 	'lastuserlogin_lastlogin' => 'Ostatnie zalogowanie',
 	'lastuserlogin_daysago' => 'dni temu',
+	'right-lastlogin' => 'Podgląd daty i czasu ostatniego zalogowania się użytkownika',
 );
 
 /** Piedmontese (Piemontèis)

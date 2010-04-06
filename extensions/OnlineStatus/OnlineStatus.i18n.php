@@ -582,12 +582,13 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'onlinestatus-desc' => "Aggiungi una preferenza per mostrare se l'utente è al momento presente o meno sul sito",
 	'onlinestatus-js-anon' => "Errore: è necessario effettuare l'accesso per utilizzare questa funzione",
-	'onlinestatus-js-changed' => 'Lo stato è stato cambiato in "$"',
+	'onlinestatus-js-changed' => 'Il tuo stato è stato cambiato in "$1"',
 	'onlinestatus-js-error' => 'Impossibile modificare lo stato, il valore "$1" non è valido',
 	'onlinestatus-subtitle-offline' => 'Questo utente non è attualmente connesso',
 	'onlinestatus-subtitle-online' => 'Questo utente è attualmente connesso',

@@ -1231,6 +1231,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
@@ -1238,6 +1239,7 @@ $messages['io'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'readerfeedback-desc' => 'La valutazione delle pagine permette ai lettori di dare un feedback sotto forma di voti per categorie',
 	'readerfeedback' => 'Cosa pensi di questa pagina?',
 	'readerfeedback-text' => "''Dedica un momento al giudizio della pagina. Il tuo parere è importante e ci aiuta a migliorare il nostro sito.''",
 	'readerfeedback-reliability' => 'Affidabilità',
@@ -1255,9 +1257,10 @@ $messages['it'] = array(
 	'readerfeedback-main' => 'Solo le pagine di contenuto possono essere valutate.',
 	'readerfeedback-success' => "'''Grazie per aver verificato questa pagina!''' ([$2 vedi risultati]) ([$3 commenti o domande?]).",
 	'readerfeedback-voted' => "'''Sembra che tu abbia già valutato questa pagina.''' ([$2 vedi risultati]) ([$3 commenti o domande?]).",
+	'readerfeedback-error' => "'''Si è verificato un errore mentre valutavi questa pagina.''' ([$2 vedi risultati]) ([$3 commenti o domande?]).",
 	'readerfeedback-submitting' => 'Invio in corso...',
 	'readerfeedback-finished' => 'Grazie!',
-	'readerfeedback-tagfilter' => 'Tag:',
+	'readerfeedback-tagfilter' => 'Etichetta:',
 	'readerfeedback-tierfilter' => 'Valutazione:',
 	'readerfeedback-tier-high' => 'Alto',
 	'readerfeedback-tier-medium' => 'Moderato',

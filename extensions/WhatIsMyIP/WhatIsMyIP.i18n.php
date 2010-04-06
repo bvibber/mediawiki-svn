@@ -574,7 +574,7 @@ $messages['pl'] = array(
 	'whatismyip' => 'Jaki jest mój adres IP',
 	'whatismyip-desc' => 'Pokazuje użytkownikowi jego aktualny [[Special:WhatIsMyIP|adres IP]].',
 	'whatismyip-out' => 'Twój adres IP –',
-	'right-whatismyip' => 'Widzi [[Special:WhatIsMyIP|swój własny adres IP]]',
+	'right-whatismyip' => 'Podgląd [[Special:WhatIsMyIP|swojego własnego adresu IP]]',
 );
 
 /** Piedmontese (Piemontèis)

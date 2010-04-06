@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'apisvgproxy-desc'      => 'Proxies SVG files from a (possibly remote) file repository to the local domain',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'apisvgproxy-desc' => 'Замяшчэньне SVG-файлаў са сховішча файлаў (магчыма выдаленага) на лякальным дамэне',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

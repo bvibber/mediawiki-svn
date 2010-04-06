@@ -379,6 +379,7 @@ Për piasì speta un moment e fà 'reload' an tò browser për torna prové.",
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -386,7 +387,7 @@ $messages['pt'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'A criação de contas foi automaticamente suspensa por uns momentos devido ao anormalmente grande número de tentativas recentes de autenticação.
 Por favor, aguarde alguns minutos e tente novamente.',
 	'acct_creation_global_hard_throttle_hit' => "A criação de contas foi automaticamente suspensa por alguns segundos para reduzir os ataques de registo em massa.
-Por favor, aguarde um momento e carregue em 'refrescar' no seu navegador para reenviar os dados.",
+Por favor, aguarde um momento e carregue em 'refrescar' no seu browser para reenviar os dados.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
 );
 

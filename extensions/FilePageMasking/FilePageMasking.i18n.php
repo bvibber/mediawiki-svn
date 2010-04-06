@@ -236,7 +236,7 @@ $messages['pms'] = array(
  * @author Indech
  */
 $messages['pt'] = array(
-	'filepagemasking-desc' => 'Reescreve ".xxx" como "_xxx" nas ligações para páginas de descrição de ficheiros',
+	'filepagemasking-desc' => 'Reescreve ".xxx" como "_xxx" nos links para páginas de descrição de ficheiros',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

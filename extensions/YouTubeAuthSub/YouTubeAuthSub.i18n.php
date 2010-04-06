@@ -59,11 +59,11 @@ $messages['qqq'] = array(
 	'youtubeauthsub_submit' => '{{Identical|Submit}}',
 );
 
-/** Latgaļu (Latgaļu)
- * @author Dark Eagle
+/** Adyghe (Cyrillic) ()
+ * @author Celekan
  */
-$messages['ltg'] = array(
-	'youtubeauthsub_category' => 'Kategoreja',
+$messages['ady-cyrl'] = array(
+	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1827,6 +1827,13 @@ $messages['li'] = array(
 $messages['lt'] = array(
 	'youtubeauthsub' => 'Įkelti YouTube video',
 	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
+);
+
+/** Latgaļu (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'youtubeauthsub_category' => 'Kategoreja',
 );
 
 /** Laz (Laz)

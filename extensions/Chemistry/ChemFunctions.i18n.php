@@ -930,13 +930,14 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'chemicalsources' => 'Fontes de química',
 	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
 	'chemFunctions_ListPage' => 'Fontes de química',
-	'chemFunctions_DataList' => 'Abaixo está uma lista de ligações para sítios que oferecem informação sobre a substância química que procura.<br /><br />
+	'chemFunctions_DataList' => 'Abaixo está uma lista de links para sites que oferecem informação sobre a substância química que procura.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula no NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (Reino Unido) (não pesquisável)</a><br />',
 	'chemFunctions_CAS' => 'Número CAS',

@@ -1398,11 +1398,11 @@ $messages['ps'] = array(
  * @author לערי ריינהארט
  */
 $messages['pt'] = array(
-	'sitematrix' => 'Lista de sítios Wikimedia',
+	'sitematrix' => 'Lista de sites Wikimedia',
 	'sitematrix-summary' => 'Esta página especial lista todas as wikis Wikimedia.',
 	'sitematrix-desc' => 'Apresenta uma [[Special:SiteMatrix|lista de wikis Wikimedia]]',
 	'sitematrix-language' => 'Língua',
-	'sitematrix-project' => 'Nome do projecto, ligação interprojectos e ligação interwikis',
+	'sitematrix-project' => 'Nome do projecto, link interprojectos e link interwikis',
 	'sitematrix-others' => 'Outros projectos da Wikimedia',
 	'sitematrix-total' => "'''Contagem total: $1'''",
 	'sitematrix-sitetotal' => 'Total',

@@ -565,7 +565,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'backforth-next' => 'അടുത്ത ($1)',
-	'backforth-desc' => 'താളുകളുടെ മുകളില്‍ "അടുത്തത്" "മുന്‍പുള്ളത്" എന്നീ നാവിഗേഷണല്‍ കണ്ണികള്‍ ചേര്‍ക്കുന്നു',
+	'backforth-desc' => 'താളുകളുടെ മുകളിൽ "അടുത്തത്" "മുൻപുള്ളത്" എന്നീ നാവിഗേഷണൽ കണ്ണികൾ ചേർക്കുന്നു',
 	'backforth-prev' => 'മുമ്പത്തെ ($1)',
 );
 
@@ -703,11 +703,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'backforth-next' => 'Próximo ($1)',
-	'backforth-desc' => 'Adiciona as ligações de paginação alfabética "Seguinte" e "Anterior" ao topo das páginas',
+	'backforth-desc' => 'Adiciona os links de paginação alfabética "Seguinte" e "Anterior" ao topo das páginas',
 	'backforth-prev' => 'Anterior ($1)',
 );
 

@@ -322,7 +322,7 @@ $messages['pms'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'honeypot-desc' => 'Fornece integração com o [http://projecthoneypot.org/ Projecto Honey Pot] para sítios MediaWiki',
+	'honeypot-desc' => 'Fornece integração com o [http://projecthoneypot.org/ Projecto Honey Pot] para sites MediaWiki',
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recentes que o endereço IP despoletou, segundo Project Honey Pot',
 );
 

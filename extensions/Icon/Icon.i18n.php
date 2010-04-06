@@ -502,12 +502,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'icon-badimage' => 'Imagem Inválida',
 	'icon-badwidth' => 'Largura Inválida',
-	'icon-desc' => 'Permite-lhe usar imagens como ícones e ligações de ícones',
+	'icon-desc' => 'Permite-lhe usar imagens como ícones e links de ícones',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

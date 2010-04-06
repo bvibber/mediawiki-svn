@@ -712,8 +712,8 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'call' => 'വിളിക്കുക',
-	'call-save-success' => 'താഴെ പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്ന ടെക്സ്റ്റ് <big>[[$1]]</big> എന്ന താളിലേക്ക് സേവ് ചെയ്തിരിക്കുന്നു.',
-	'call-save-failed' => 'താഴെ പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്ന ടെക്സ്റ്റ് <big>[[$1]]</big> എന്ന താള്‍ മുന്‍പേ നിലവിലുള്ളതിനാല്‍ സേവ് ചെയ്യുന്നതിനു സാധിച്ചില്ല.',
+	'call-save-success' => 'താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന ടെക്സ്റ്റ് <big>[[$1]]</big> എന്ന താളിലേക്ക് സേവ് ചെയ്തിരിക്കുന്നു.',
+	'call-save-failed' => 'താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന ടെക്സ്റ്റ് <big>[[$1]]</big> എന്ന താൾ മുൻപേ നിലവിലുള്ളതിനാൽ സേവ് ചെയ്യുന്നതിനു സാധിച്ചില്ല.',
 );
 
 /** Marathi (मराठी)
@@ -918,13 +918,13 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'call' => 'Call',
-	'call-desc' => 'Cria uma ligação para uma predefinição (ou para uma página wiki normal) com passagem de parâmetros. Pode ser usada na linha de comando do navegador ou no texto wiki.',
+	'call-desc' => 'Cria um link para uma predefinição (ou para uma página wiki normal) com passagem de parâmetros. Pode ser usada na linha de comando do browser ou no texto wiki.',
 	'call-text' => "A extensão Call espera receber como argumentos uma página wiki e parâmetros opcionais para essa página.<br /><br />
 
 Exemplo 1: &nbsp; <tt>[[{{#special:call}}/Minha Predefinição,parm1=value1]]</tt><br />
 Exemplo 2: &nbsp; <tt>[[{{#special:call}}/Talk:Minha Discussão,parm1=value1]]</tt><br />
 Exemplo 3: &nbsp; <tt>[[{{#special:call}}/:Minha Página,parm1=value1,parm2=value2]]</tt><br /><br />
-Exemplo 4 (URL para navegador): &nbsp; <tt>http://meudominio/minhawiki/index.php?{{#special:call}}/:Minha Página,parm1=value1</tt><br /><br />
+Exemplo 4 (URL para o browser): &nbsp; <tt>http://meudominio/minhawiki/index.php?{{#special:call}}/:Minha Página,parm1=value1</tt><br /><br />
 
 A <i>extensão Call</i> irá realizar uma chamada à página fornecida e passar os parâmetros.<br />
 Verá o conteúdo da página chamada e o seu título, mas o seu 'tipo' será o de uma página especial, isto é, a página não pode ser editada.<br />O conteúdo que verá pode variar dependendo do valor dos parâmetros que passou.<br /><br />

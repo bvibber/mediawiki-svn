@@ -3162,6 +3162,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Melos
  * @author Nemo bis
@@ -3268,6 +3269,8 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-showvotes-restrict-none' => 'Mostra tutti i supporti e le opposizioni',
 	'deletequeue-showvotes-vote-endorse' => "Cancellazione '''supportata''' il $2 alle $1",
 	'deletequeue-showvotes-vote-object' => "'''Opposizione''' alla cancellazione il $2 alle $1",
+	'deletequeue-showvotes-showingonly-endorse' => 'Mostra solo i supporti',
+	'deletequeue-showvotes-showingonly-object' => 'Mostra solo le opposizioni',
 	'deletequeue-showvotes-none' => 'Non ci sono supporti o opposizioni alla cancellazione di questa pagina.',
 	'deletequeue-showvotes-none-endorse' => 'Non ci sono supporti alla cancellazione di questa pagina.',
 	'deletequeue-showvotes-none-object' => 'Non ci sono opposizioni alla cancellazione di questa pagina.',
@@ -4645,8 +4648,13 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
-	'right-speedy-nominate' => 'Oznacz strony do ekspresowego skasowania',
-	'right-speedy-review' => 'Przejrzyj strony do ekspresowego skasowania',
+	'right-speedy-nominate' => 'Oznaczanie stron do ekspresowego skasowania',
+	'right-speedy-review' => 'Przeglądanie stron oznaczonych do ekspresowego skasowania',
+	'right-prod-nominate' => 'Proponowanie usunięcia strony',
+	'right-prod-review' => 'Zatwierdzanie bezspornych propozycji usunięć',
+	'right-deletediscuss-nominate' => 'Rozpoczęcie dyskusji nad usunięciem',
+	'right-deletediscuss-review' => 'Zamknięcie dyskusji nad usunięciem',
+	'right-deletequeue-vote' => 'Wyrażenie poparcia lub sprzeciwu dla usunięcia',
 	'deletequeue-review-delete' => 'Usuń stronę.',
 	'deletequeue-review-newextra' => 'Dodatkowe informacje:',
 	'deletequeue-vote-reason' => 'Komentarze:',
@@ -4910,7 +4918,7 @@ Por favor, assegure-se de que considerou estas objeções antes de eliminar esta
 	'deletequeue-reviewspeedy-tab' => 'Rever eliminação rápida',
 	'deletequeue-reviewspeedy-title' => 'Rever a nomeação para eliminação rápida de "$1"',
 	'deletequeue-reviewspeedy-text' => "Você pode usar este formulário para rever a nomeação de \"'''\$1'''\" para eliminação rápida.
-Por favor, assegure-se de que esta página pode ser eliminada rapidamente de acordo com a política.",
+Por favor, assegure-se de que esta página pode ser eliminada rapidamente de acordo com as normas.",
 	'deletequeue-reviewprod-tab' => 'Rever eliminação proposta',
 	'deletequeue-reviewprod-title' => 'Rever eliminação proposta de "$1"',
 	'deletequeue-reviewprod-text' => "Você pode usar este formulário para rever a proposta incontestada de eliminação de \"'''\$1'''\".",

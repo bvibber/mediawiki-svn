@@ -336,13 +336,14 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'getfamily-desc' => 'Gera um ficheiro de família para o pywikipediabot',
 	'getfamily' => 'Obter família pywikipediabot',
-	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorreta. Contacte o administrador.',
+	'getfamily-interwikierror' => 'Erro: configuração de interwikis incorrecta. Contacte o administrador.',
 	'right-getfamily' => 'Criar um ficheiro de família para o pywikipediabot',
 );
 

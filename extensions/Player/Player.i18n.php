@@ -846,7 +846,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'player' => 'പ്ലെയര്‍',
+	'player' => 'പ്ലെയർ',
 	'player-title' => 'പ്ലെയര്‍',
 	'player-playertitle' => 'പ്ലെയര്‍: $1',
 	'player-file' => 'പ്രമാണത്തിന്റെ പേര്',
@@ -1070,7 +1070,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'player' => 'Reprodutor',
-	'player-desc' => "Reprodução multimédia incorporada usando ''plugins'' comuns do navegador, e uma [[Special:Player|página especial]]",
+	'player-desc' => "Reprodução multimédia incorporada usando ''plugins'' comuns do browser, e uma [[Special:Player|página especial]]",
 	'player-title' => 'Reprodutor',
 	'player-playertitle' => 'Reprodutor: $1',
 	'player-file' => 'Nome do ficheiro',

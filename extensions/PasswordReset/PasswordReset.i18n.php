@@ -1249,7 +1249,7 @@ $messages['pl'] = array(
 	'passwordreset-accountdisabled' => 'Konto zostało wyłączone',
 	'disabledusers' => 'Wyłączone konta użytkowników',
 	'disabledusers-summary' => 'Lista użytkowników, których konta zostały wyłączone przy pomocy funkcji wyczyszczenia hasła.',
-	'right-passwordreset' => 'Wyczyszczenie hasła użytkownika ([[Special:PasswordReset|strona specjalna]])',
+	'right-passwordreset' => 'Czyszczenie hasła użytkownika ([[Special:PasswordReset|na specjalnej stronie]])',
 );
 
 /** Piedmontese (Piemontèis)

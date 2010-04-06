@@ -1140,13 +1140,14 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author MF-Warburg
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'gep-desc' => 'Suplementa a página de edição por forma a ser mais amigável',
 	'gep-emailsubject' => '[$1] Sugestão de categoria: $2',
-	'gep-emailbody' => 'O utilizador "$1" sugeriu a categoria "$2" para o sítio "$3".',
+	'gep-emailbody' => 'O utilizador "$1" sugeriu a categoria "$2" para o site "$3".',
 	'gep-emailfailure' => 'Desculpe, a sua sugestão não pôde ser processada.',
 	'gep-emailsuccess' => 'Obrigado por sugerir a categoria: $1.',
 	'gep-categories' => 'Categorias',

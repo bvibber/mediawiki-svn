@@ -1057,7 +1057,7 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 	'deletebatch-select-script' => 'usuwanie stron skryptem',
 	'deletebatch-select-yourself' => 'Ty',
 	'deletebatch-no-page' => 'Wybierz jedną stronę LUB plik z listą stron do usunięcia.',
-	'right-deletebatch' => 'usuwanie grupy stron',
+	'right-deletebatch' => 'Usuwanie grupy stron',
 );
 
 /** Piedmontese (Piemontèis)

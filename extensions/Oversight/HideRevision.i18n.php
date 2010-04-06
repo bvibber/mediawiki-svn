@@ -611,8 +611,8 @@ Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdo
 $messages['ca'] = array(
 	'hiderevision' => 'Oculta aquestes revisions permanentment',
 	'hiderevision-desc' => 'Oculta revisions individuals de tots els usuaris per raons legals, etc.',
-	'group-oversight' => 'Supervisors',
-	'group-oversight-member' => 'supervisor',
+	'group-oversight' => 'Oversight',
+	'group-oversight-member' => 'oversight',
 	'grouppage-oversight' => '{{ns:project}}:Supervisió',
 	'right-oversight' => 'Vegeu una revisió prèviament ocultada',
 	'right-hiderevision' => 'Oculta revisions dels administradors',
@@ -1230,7 +1230,7 @@ $messages['fr'] = array(
 	'hiderevision' => 'Cacher définitivement les révisions',
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
 	'group-oversight' => 'Masqueurs de modifications',
-	'group-oversight-member' => 'Masqueur de modifications',
+	'group-oversight-member' => 'masqueur de modifications',
 	'grouppage-oversight' => '{{ns:project}}:Masqueur de modifications',
 	'right-oversight' => "Voir les versions précédemment cachées avec l'extension « Oversight »",
 	'right-hiderevision' => "Masquer des révisions aux administrateurs avec l'extension « Oversight »",
@@ -2953,7 +2953,7 @@ $messages['pl'] = array(
 	'group-oversight' => 'Rewizorzy',
 	'group-oversight-member' => 'rewizor',
 	'grouppage-oversight' => '{{ns:project}}:Rewizorzy',
-	'right-oversight' => 'Podgląd wersji ukrytych rozszerzeniem Oversight',
+	'right-oversight' => 'Przeglądanie wersji ukrytych rozszerzeniem Oversight',
 	'right-hiderevision' => 'Ukrywanie wersji przed administratorami z użyciem rozszerzenia Oversight',
 	'hiderevision-prompt' => 'Numer wersji do ukrycia',
 	'hiderevision-continue' => 'Kontynuuj',
@@ -3072,9 +3072,9 @@ $messages['pt'] = array(
 
 '''Abusos com este recurso poderão resultar na perda dos privilégios de acesso.'''
 
-Os itens removidos não estarão mais visíveis a todos neste sítio,
-mas estarão registados e poderão ser restaurados manualmente
-por administrador da base de dados, caso você tenha cometido um engano.",
+Os elementos removidos deixarão de ser visíveis por todos neste site
+mas ficarão registados, e podem ser restaurados manualmente
+por um administrador da base de dados caso tenha cometido um engano.",
 	'hiderevision-reason' => 'Motivo (será registado privadamente):',
 	'hiderevision-submit' => 'Ocultar estes dados permanentemente',
 	'hiderevision-tab' => 'Ocultar revisões',

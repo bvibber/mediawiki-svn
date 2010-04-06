@@ -103,6 +103,13 @@ $messages['nl'] = array(
 	'firefoggcu-desc' => 'Firefogg-protocol voor uploaden in delen (Chunked Uploading)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'firefoggcu-desc' => 'Protokół przesyłania kawałkami Firefogg',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

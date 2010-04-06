@@ -1398,7 +1398,7 @@ riddler|Człowiek-Zagadka',
 	'vote-login' => 'Głosowanie możliwe jest po [$1 zalogowaniu się].',
 	'vote-invalid-choice' => 'Musisz wybrać jedną z dostępnych opcji.',
 	'right-vote' => 'Głosowanie',
-	'right-voteadmin' => 'Zobacz wyniki głosowania',
+	'right-voteadmin' => 'Przeglądanie wyników głosowania',
 );
 
 /** Piedmontese (Piemontèis)

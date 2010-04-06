@@ -4060,7 +4060,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'openid-desc' => 'Autentique-se na wiki com um [http://openid.net/ OpenID] e autentique-se noutros sítios que usem OpenID com uma conta de utilizador wiki',
+	'openid-desc' => 'Autentique-se na wiki com um [http://openid.net/ OpenID] e autentique-se noutros sites que usem OpenID com uma conta de utilizador wiki',
 	'openidlogin' => 'Autenticação com OpenID',
 	'openidserver' => 'Servidor OpenID',
 	'openidxrds' => 'Ficheiro Yadis',
@@ -4082,7 +4082,7 @@ Por favor, consulte um [[Special:ListUsers/sysop|administrador]].',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
 	'openidallowtrust' => 'Permitir que $1 confie nesta conta de utilizador.',
-	'openidnopolicy' => 'O sítio não especificou uma política de privacidade.',
+	'openidnopolicy' => 'O site não especificou uma política de privacidade.',
 	'openidpolicy' => 'Consulte a <a target="_new" href="$1">política de privacidade</a> para mais informações.',
 	'openidoptional' => 'Opcional',
 	'openidrequired' => 'Requerido',
@@ -4115,10 +4115,10 @@ Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConv
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
 Caso contrário, utilize o botão "Continue" (Continuar).',
-	'openidclientonlytext' => 'Pode usar contas desta wiki como OpenIDs noutro sítio.',
+	'openidclientonlytext' => 'Pode usar contas desta wiki como OpenIDs noutro site.',
 	'openidloginlabel' => 'URL do OpenID',
-	'openidlogininstructions' => 'A {{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação unificada entre vários sítios na internet.
-O OpenID permite-lhe autenticar-se em vários sítios sem usar uma palavra-chave diferente em cada um
+	'openidlogininstructions' => 'A {{SITENAME}} suporta o padrão [http://openid.net/ OpenID] para autenticação unificada entre vários sites na internet.
+O OpenID permite-lhe autenticar-se em vários sites sem usar uma palavra-chave diferente em cada um
 (veja [http://pt.wikipedia.org/wiki/OpenID o artigo OpenID na Wikipédia] para mais informações).
 
 Se já possui uma conta na {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]] com o seu nome de utilizador e palavra-chave como habitualmente.

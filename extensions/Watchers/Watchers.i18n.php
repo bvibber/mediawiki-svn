@@ -774,6 +774,7 @@ $messages['pl'] = array(
 	'watchers_noone_watches' => 'Nikt nie obserwuje tej strony',
 	'watchers_x_or_more' => 'Przynajmniej $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
 	'watchers_less_than_x' => 'Mniej niż $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
+	'right-watchers-list' => '[[Special:Watchers|Przeglądanie spisu użytkowników, którzy określoną stronę mają na swojej liście obserwowanych]]',
 );
 
 /** Piedmontese (Piemontèis)

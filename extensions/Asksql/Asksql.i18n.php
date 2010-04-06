@@ -898,7 +898,7 @@ $messages['pl'] = array(
 	'querybtn' => 'Wyślij zapytanie',
 	'selectonly' => 'Dozwolone są tylko zapytania czytające dane.',
 	'querysuccessful' => 'Zapytanie zakończone powodzeniem',
-	'right-asksql' => 'Wykonaj zapytanie SQL',
+	'right-asksql' => 'Wykonywanie zapytań w SQL',
 );
 
 /** Piedmontese (Piemontèis)

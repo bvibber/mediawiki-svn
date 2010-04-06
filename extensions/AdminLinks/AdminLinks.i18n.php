@@ -816,14 +816,14 @@ $messages['mk'] = array(
  * @author Sadik Khalid
  */
 $messages['ml'] = array(
-	'adminlinks' => 'കാര്യനിര്‍വാഹക കണ്ണികള്‍',
-	'adminlinks-desc' => 'കാര്യനിര്‍വാഹകര്‍ക്ക് സഹായകരമായ കണ്ണികളോടു കൂടിയ ഒരു [[Special:AdminLinks|പ്രത്യേക താള്‍]] ചേര്‍ക്കുന്നു',
+	'adminlinks' => 'കാര്യനിർവാഹക കണ്ണികൾ',
+	'adminlinks-desc' => 'കാര്യനിർവാഹകർക്ക് സഹായകരമായ കണ്ണികളോടു കൂടിയ ഒരു [[Special:AdminLinks|പ്രത്യേക താൾ]] ചേർക്കുന്നു',
 	'adminlinks_documentation' => '$1 വിവരണം',
-	'adminlinks_general' => 'സാര്‍വത്രികം',
-	'adminlinks_editsidebar' => 'സൈഡ്ബാര്‍ തിരുത്തുക',
+	'adminlinks_general' => 'സാർവത്രികം',
+	'adminlinks_editsidebar' => 'സൈഡ്ബാർ തിരുത്തുക',
 	'adminlinks_editcss' => 'CSS പ്രമാണം തിരുത്തുക',
 	'adminlinks_editmainpagename' => 'പ്രധാനതാളിന്റെ പേര് തിരുത്തുക',
-	'adminlinks_users' => 'ഉപയോക്താക്കള്‍',
+	'adminlinks_users' => 'ഉപയോക്താക്കൾ',
 	'adminlinks_createuser' => 'ഒരു ഉപയോക്താവിനെ സൃഷ്ടിക്കുക',
 	'adminlinks_browsesearch' => 'തിരച്ചിലും മേച്ചിലും',
 	'adminlinks_importexport' => 'കയറ്റുമതിയും ഇറക്കുമതിയും',
@@ -979,7 +979,7 @@ $messages['pl'] = array(
 	'adminlinks_createuser' => 'Utwórz użytkownika',
 	'adminlinks_browsesearch' => 'Przeglądanie i wyszukiwanie',
 	'adminlinks_importexport' => 'Importowanie i eksportowanie',
-	'right-adminlinks' => 'Zobacz link do [[Special:AdminLinks|Linki dla administratorów]]',
+	'right-adminlinks' => 'Podgląd zawartości strony [[Special:AdminLinks|Linki dla administratorów]]',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1021,8 +1021,8 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'adminlinks' => 'Ligações para administradores',
-	'adminlinks-desc' => 'Adiciona uma [[Special:AdminLinks|página especial]] que contém ligações úteis para administradores',
+	'adminlinks' => 'Links para administradores',
+	'adminlinks-desc' => 'Adiciona uma [[Special:AdminLinks|página especial]] que contém links úteis para administradores',
 	'adminlinks_documentation' => 'Documentação sobre $1',
 	'adminlinks_general' => 'Geral',
 	'adminlinks_editsidebar' => 'Editar barra lateral',
@@ -1032,7 +1032,7 @@ $messages['pt'] = array(
 	'adminlinks_createuser' => 'Criar um utilizador',
 	'adminlinks_browsesearch' => 'Navegação e pesquisa',
 	'adminlinks_importexport' => 'Importação e exportação',
-	'right-adminlinks' => 'Ver a ligação para a página [[Special:AdminLinks|Ligações para administradores]]',
+	'right-adminlinks' => 'Ver o link para a página [[Special:AdminLinks|Links para administradores]]',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
