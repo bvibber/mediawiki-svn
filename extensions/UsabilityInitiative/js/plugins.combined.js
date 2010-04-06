@@ -11141,7 +11141,6 @@ fn: {
 							'class' : 'wikiEditor-toolbar-spritedButton'
 						} )
 						.text( label )
-						.click( function() { return false; } )
 						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
 				} else {
 					$button = $( '<img />' )
