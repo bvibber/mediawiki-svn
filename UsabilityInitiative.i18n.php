@@ -178,14 +178,16 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Dead3y3
+ * @author Flyax
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'usabilityinitiative' => 'Πρωτοβουλία Χρηστικότητας',
-	'usabilityinitiative-desc' => 'Χαρακτηριστικά που έχουν αναπτυχθεί από την Πρωτοβουλία Χρηστικότητας Wikipedia για να ενισχύσει τη χρηστικότητα του MediaWiki',
-	'prefs-beta' => 'Beta χαρακτηριστικά',
-	'prefs-labs' => 'Labs χαρακτηριστικά',
+	'usabilityinitiative-desc' => 'Λειτουργίες που έχουν αναπτυχθεί από την Πρωτοβουλία Χρηστικότητας Wikipedia για να ενισχυθεί η χρηστικότητα του MediaWiki',
+	'prefs-beta' => 'Λειτουργίες της Beta',
+	'prefs-labs' => 'Λειτουργίες των Labs',
 );
 
 /** Esperanto (Esperanto)

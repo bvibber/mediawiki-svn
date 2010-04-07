@@ -170,11 +170,12 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Dead3y3
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
-	'wikieditor' => 'Προηγμένη διεπαφή επεξεργασίας κειμένου wiki',
+	'wikieditor' => 'Προχωρημένη διεπαφή επεξεργασίας κειμένου wiki',
 	'wikieditor-desc' => 'Παρέχει μία επεκτάσιμη διεπαφή επεξεργασίας κειμένου wiki και πολλές μονάδες παροχής χαρακτηριστικών',
-	'wikieditor-wikitext-tab' => 'Βικικείμενο',
+	'wikieditor-wikitext-tab' => 'Κείμενο wiki',
 	'wikieditor-loading' => 'Φόρτωση',
 );
 

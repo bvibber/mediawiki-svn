@@ -56,6 +56,14 @@ $messages['dsb'] = array(
 	'tooltip-pt-prefswitch-link' => 'Nowe funkcije wopytaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'prefswitch-link' => 'Νέο!',
+	'tooltip-pt-prefswitch-link' => 'Δοκιμάστε καινούριες λειτουργίες',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -146,9 +154,10 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Naohiro19
+ * @author 青子守歌
  */
 $messages['ja'] = array(
-	'prefswitch-link' => '新!',
+	'prefswitch-link' => '新機能！',
 	'tooltip-pt-prefswitch-link' => '新機能を試す',
 );
 
@@ -184,11 +193,19 @@ $messages['nl'] = array(
 	'tooltip-pt-prefswitch-link' => 'Nieuwe mogelijkheden uitproberen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'prefswitch-link' => 'Ny',
+	'tooltip-pt-prefswitch-link' => 'Prøv nye funksjoner',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'prefswitch-link' => 'Nowy!',
+	'prefswitch-link' => 'Nowy wygląd!',
 	'tooltip-pt-prefswitch-link' => 'Wypróbuj nowe funkcjonalności',
 );
 
