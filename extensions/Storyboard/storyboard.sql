@@ -14,8 +14,7 @@ CREATE TABLE /*$wgDBprefix*/storyboard (
   story_text               MEDIUMBLOB        NOT NULL,
   story_modified           CHAR(14) binary   NOT NULL default '',
   story_created            CHAR(14) binary   NOT NULL default '',
-  story_is_published       TINYINT           NOT NULL default '0',
-  story_is_hidden          TINYINT           NOT NULL default '0',
+  story_state              TINYINT           NOT NULL default '0',
   story_image_hidden       TINYINT           NOT NULL default '0'
 ) /*$wgDBTableOptions*/;
 

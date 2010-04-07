@@ -41,7 +41,6 @@ $messages['en'] = array(
 	// Story review
 	'storyreview' => 'Story review',
 	'storyboard-publish' => 'Publish',
-	'storyboard-unpublish' => 'Unpublish',
 	'storyboard-reviewed' => 'Reviewed',
 	'storyboard-unreviewed' => 'Unreviewed',
 	'storyboard-hideimage' => 'Hide image',

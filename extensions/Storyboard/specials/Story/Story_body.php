@@ -92,8 +92,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'story_text',
 					'story_created',
 					'story_modified',
-					'story_is_published',
-					'story_is_hidden',
+					'story_state'
 				),
 				array( 'story_title' => $title )
 			);
@@ -113,7 +112,7 @@ class SpecialStory extends IncludableSpecialPage {
 					$wgOut->addWikiMsg( 'storyboard-cantedit' );
 				}
 				
-				if ( $story->story_is_published == 1 ) {
+				if ( $story->story_state == Storyboard_STORY_PUBLISHED ) {
 					$this->showStory( $story );
 				}
 				elseif ( !$isEdit ) {
@@ -304,15 +303,11 @@ class SpecialStory extends IncludableSpecialPage {
 			) .
 			'</td></tr>';
 		
-		$checked = $story->story_is_published ? 'checked ' : '';
+		// TODO: fix this to work with new state field 
+		$checked = $story->story_state = Storyboard_STORY_PUBLISHED ? 'checked ' : '';
 		$formBody .= '<tr><td colspan="2"><input type="checkbox" name="published" ' . $checked . '/>&nbsp;' .
 			htmlspecialchars( wfMsg( 'storyboard-ispublished' ) ) .
-			'</td></tr>';
-
-		$checked = $story->story_is_hidden ? 'checked ' : '';
-		$formBody .= '<tr><td colspan="2"><input type="checkbox" name="hidden" ' . $checked . '/>&nbsp;' .
-			htmlspecialchars( wfMsg( 'storyboard-ishidden' ) ) .
-			'</td></tr>';			
+			'</td></tr>';		
 			
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
@@ -397,8 +392,7 @@ EOT
 				'story_title' => $wgRequest->getText( 'storytitle' ),
 				'story_text' => $wgRequest->getText( 'storytext' ),
 				'story_modified' => $dbw->timestamp( time() ),
-				'story_is_published' => $wgRequest->getCheck( 'published' ) ? 1 : 0,
-				'story_is_hidden' => $wgRequest->getCheck( 'hidden' ) ? 1 : 0,
+				'story_state' => $wgRequest->getIntOrNull( 'state' ),
 			),
 			array(
 				'story_id' => $wgRequest->getText( 'storyId' ),

@@ -25,6 +25,10 @@ define( 'Storyboard_VERSION', '0' );
 
 define( 'Storyboard_TABLE', 'storyboard' );
 
+define( 'Storyboard_STORY_UNPUBLISHED', 0 );
+define( 'Storyboard_STORY_PUBLISHED', 1 );
+define( 'Storyboard_STORY_HIDDEN', 2 );
+
 $egStoryboardScriptPath =  ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Storyboard';
 $egStoryboardDir = dirname( __FILE__ ) . '/';
 $egStoryboardStyleVersion = $wgStyleVersion . '-' . Storyboard_VERSION;

@@ -68,22 +68,17 @@ class ApiStoryReview extends ApiBase {
 			switch( $params['storyaction'] ) {
 				case 'hide' :
 					$values = array(
-						'story_is_hidden' => 1
-					);
-					break;
-				case 'unhide' :
-					$values = array(
-						'story_is_hidden' => 0
+						'story_state' => Storyboard_STORY_HIDDEN
 					);
 					break;
 				case 'publish' :
 					$values = array(
-						'story_is_published' => 1
+						'story_state' => Storyboard_STORY_PUBLISHED
 					);
 					break;
 				case 'unpublish' :
 					$values = array(
-						'story_is_published' => 0
+						'story_state' => Storyboard_STORY_UNPUBLISHED
 					);
 					break;
 				case 'hideimage' :

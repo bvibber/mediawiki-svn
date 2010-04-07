@@ -59,11 +59,11 @@ class SpecialStoryReview extends SpecialPage {
 				'story_author_name',
 				'story_title',
 				'story_text',
-				'story_is_published',
+				'story_state',
 				'story_author_image',
 				'story_image_hidden'
 			),
-			array( 'story_is_hidden' => 0 )
+			array( 'story_state' => $dbr->makeList( array ( 'Storyboard_STORY_UNPUBLISHED', 'Storyboard_STORY_PUBLISHED' ), LIST_OR ) )
 		);
 		
 		// String to hold the html for both the unreviewed and reviewed stories.
@@ -72,7 +72,7 @@ class SpecialStoryReview extends SpecialPage {
 		
 		// Loop through all stories, get their html, and add it to the appropriate string.
 		while ( $story = $dbr->fetchObject( $stories ) ) {
-			if ( $story->story_is_published ) {
+			if ( $story->story_state == Storyboard_STORY_UNPUBLISHED ) {
 				$reviewed .= $this->getStorySegments( $story );
 			}
 			else {
@@ -109,7 +109,7 @@ EOT
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );
 		
-		$publishAction = $story->story_is_published ? 'unpublish' : 'publish';
+		$publishAction = $story->story_state == Storyboard_STORY_PUBLISHED ? 'unpublish' : 'publish';
 		// Uses storyboard-unpublish or storyboard-publish.
 		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );		
 		

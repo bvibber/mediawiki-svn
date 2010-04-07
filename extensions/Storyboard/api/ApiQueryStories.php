@@ -57,7 +57,7 @@ class ApiQueryStories extends ApiQueryBase {
 			'story_created'
 		) );
 		$this->addWhere( array(
-			'story_is_published' => 1
+			'story_state' => Storyboard_STORY_PUBLISHED
 		) );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
