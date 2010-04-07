@@ -11021,7 +11021,7 @@ api : {
  */
 evt: {
 	resize: function( context, event ) {
-		context.$ui.find( '.sections' ).height( context.$ui.find( '.sections .section:visible' ).outerHeight() );
+		context.$ui.find( '.sections' ).height( context.$ui.find( '.sections .section-visible' ).outerHeight() );
 	},
 	tocCollapse: function( context, event ) {
 		$.wikiEditor.modules.toolbar.evt.resize( context, event );
@@ -11416,12 +11416,14 @@ fn: {
 						var $section =
 							$(this).data( 'context' ).$ui.find( '.section-' + $(this).parent().attr( 'rel' ) );
 						var show = $section.css( 'display' ) == 'none';
-						$previousSections = $section.parent().find( '.section:visible' );
+						$previousSections = $section.parent().find( '.section-visible' );
 						$previousSections.css( 'position', 'absolute' );
+						$previousSections.removeClass( 'section-visible' );
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css( 'overflow', 'hidden' );
 						if ( show ) {
+							$section.addClass( 'section-visible' );
 							$section.fadeIn( 'fast' );
 							$sections
 								.css( 'display', 'block' )
@@ -11489,6 +11491,7 @@ fn: {
 		if ( $section !== null && id !== 'main' ) {
 			var show = selected == id;
 			$section.css( 'display', show ? 'block' : 'none' );
+			if ( show ) $section.addClass( 'section-visible' );
 		}
 		return $section;
 	},
