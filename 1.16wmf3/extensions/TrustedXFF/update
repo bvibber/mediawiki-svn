@@ -1,8 +1,0 @@
-#!/bin/bash
-
-cd `dirname $0`
-php generate.php aawiki ../../cache/trusted-xff.cdb
-bzip2 -kf ../../cache/trusted-xff.cdb
-if [ -x /home/wikipedia/bin/sync-common-file ]; then
-	sync-common-file wmf-deployment/cache/trusted-xff.cdb
-fi
