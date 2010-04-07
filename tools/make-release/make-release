@@ -38,7 +38,7 @@ def main():
 			yes = True
 		elif name == '--no-previous':
 			noPrevious = True
-	
+
 	# Snapshot release?
 	if snapshot:
 		makeRelease(
@@ -181,6 +181,12 @@ def makePatch(patchFileName, dir1, dir2, type):
 	return diffStatus == 1
 
 def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
+	if not os.path.exists('build'):
+		os.mkdir('build')
+	if not os.path.exists('uploads'):
+		os.mkdir('uploads')
+	os.chdir('build')
+
 	if not os.path.exists(dir):
 		os.mkdir(dir)
 	
@@ -230,7 +236,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 		uploadFiles.append(dir + '/' + fileName + '.sig')
 	
 	# Generate upload tarball
-	args = ['tar', 'cf', 'upload-' + version + '.tar']
+	args = ['tar', 'cf', '../uploads/upload-' + version + '.tar']
 	args.extend(uploadFiles)
 	proc = subprocess.Popen(args)
 	if proc.wait() != 0:
@@ -268,6 +274,8 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	print 'Public keys:'
 	print 'https://secure.wikimedia.org/keys.html'
 	print
+
+	os.chdir('..')
 
 if __name__ == '__main__':
 	main()
