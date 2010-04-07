@@ -236,7 +236,8 @@ class WebInstaller extends Installer {
 	 */
 	private function getSessionSavePath() {
 		$path = ini_get( 'session.save_path' );
-		$path = substr( $path, strrpos( $path, ';' ) );
+		$path = ltrim( substr( $path, strrpos( $path, ';' ) ), ';');
+		
 		return $path;
 	}
 
