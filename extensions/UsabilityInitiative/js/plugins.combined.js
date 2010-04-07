@@ -5915,16 +5915,32 @@ $.suggestions = {
 		var selected = context.data.$container.find( '.suggestions-result-current' );
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
-				result = selected.prev();
+				if( selected.is( '.suggestions-special' ) ) {
+					result = context.data.$container.find( '.suggestions-results div:last' )
+				} else {
+					result = selected.prev();
+					if ( selected.size() == 0 ) {
+						// we are at the begginning, so lets jump to the last item
+						if ( context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+							result = context.data.$container.find( '.suggestions-special' );
+						} else {
+							result = context.data.$container.find( '.suggestions-results div:last' );
+						}
+						
+					}
+				}
 			} else if ( result == 'next' ) {
 				if ( selected.size() == 0 )
 					// No item selected, go to the first one
 					result = context.data.$container.find( '.suggestions-results div:first' );
 				else {
 					result = selected.next();
-					if ( result.size() == 0 )
-						// We were at the last item, stay there
-						result = selected;
+					if ( selected.is( '.suggestions-special' ) ) {
+						result = [];
+					} else if ( result.size() == 0  && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+						// We were at the last item, jump to the specials!
+						result = context.data.$container.find( '.suggestions-special' );
+					}
 				}
 			}
 			selected.removeClass( 'suggestions-result-current' );
@@ -5953,7 +5969,7 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', true );
+					$.suggestions.highlight( context, 'next', false );
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -5963,7 +5979,7 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', true );
+					$.suggestions.highlight( context, 'prev', false );
 				}
 				context.data.$textbox.trigger( 'change' );
 				preventDefault = wasVisible;
@@ -5980,11 +5996,16 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
-				if ( typeof context.config.result.select == 'function' ) {
-					context.config.result.select.call(
-						context.data.$container.find( '.suggestions-result-current' ),
-						context.data.$textbox
-					);
+				selected = context.data.$container.find( '.suggestions-result-current' )
+				if ( selected.is( '.suggestions-special' ) ) {
+					if ( typeof context.config.special.select == 'function' ) {
+						context.config.special.select.call( selected, context.data.$textbox );
+					}
+				} else {
+					if ( typeof context.config.result.select == 'function' ) {
+						context.data.$textbox.val( selected.text() );
+						context.config.result.select.call( selected, context.data.$textbox );
+					}
 				}
 				break;
 			default:
