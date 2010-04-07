@@ -900,7 +900,7 @@ class WebInstaller_Language extends WebInstallerPage {
 					$this->setVar( 'wgLanguageCode', $contLang );
 					if ( $this->getVar( '_AdminName' ) === null ) {
 						// Load localised sysop username in *content* language
-						$this->setVar( '_AdminName', wfMsgReal( 'config-admin-default-username', array(), false, $contLang ) );
+						$this->setVar( '_AdminName', wfMsgForContent( 'config-admin-default-username' ) );
 					}
 				}
 				return 'continue';
@@ -1134,7 +1134,7 @@ class WebInstaller_Name extends WebInstallerPage {
 		// Set wgMetaNamespace to something valid before we show the form.
 		// $wgMetaNamespace defaults to $wgSiteName which is 'MediaWiki'
 		$metaNS = $this->getVar( 'wgMetaNamespace' );
-		$this->setVar( 'wgMetaNamespace', wfMsgNoTrans( 'config-ns-other-default' ) );
+		$this->setVar( 'wgMetaNamespace', wfMsgForContent( 'config-ns-other-default' ) );
 
 		$this->addHTML( 
 			$this->parent->getTextBox( array(
