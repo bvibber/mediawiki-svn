@@ -11,6 +11,7 @@ $messages['en'] = array(
 	'spamdifftool'                  => 'Manage spam blacklist',
 	'spamdifftool-desc'             => 'Provides a basic way of adding new entries to the spam blacklist from diff pages',
 	'spamdifftool_cantedit'         => 'Sorry - you do not have permission to edit the spam blacklist.',
+	'spamdifftool-no-title'         => "'''Error:''' no page title was specified.",
 	'spamdifftool_notext'           => 'There is no text to add to the spam blacklist.
 Click <a href=\'$1\'>here</a> to continue.',
 	'spamdifftool_confirm'          => 'Confirm that you want to add these entries to the spam blacklist.
