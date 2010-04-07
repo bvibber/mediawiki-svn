@@ -29,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.1',
 	'author' => 'Svip',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PackageForce',
-	'description' => 'Creating a special page to download packages of useful templates/etc.',
+	'description' => 'Special page to download packages of useful templates/etc.',
 	'descriptionmsg' => 'pf-desc',
 );
 
@@ -44,6 +44,8 @@ $wgSpecialPages['PackageForceAdmin'] = 'PackageForceAdminSpecial';
 # New rights
 $wgGroupPermissions['sysop']['packageforce-admin'] = true;
 $wgGroupPermissions['sysop']['packageforce-edit'] = true;
+$wgAvailableRights[] = 'packageforce-admin';
+$wgAvailableRights[] = 'packageforce-edit';
 
 # Create our own namespace
 define( 'NS_PACKAGEFORCE', 1300 );
@@ -55,6 +57,21 @@ $wgExtraNamespaces[NS_PACKAGEFORCE_TALK] = 'PackageForce_talk';
 
 $wgNamespaceProtection[NS_PACKAGEFORCE] =
 	$wgNamespaceProtection[NS_PACKAGEFORCE_TALK] = array( 'packageforce-edit' );
+
+# Database schema changes
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCheckUserSchemaUpdates';
+
+function efCheckUserSchemaUpdates() {
+	global $wgExtNewTables, $wgDBtype;
+
+	$dir = dirname( __FILE__ );
+
+	# DB updates
+	if ( $wgDBtype == 'mysql' ) {
+		$wgExtNewTables[] = array( 'packageforce_packages', "$dir/PackageForce.sql" );
+	}
+	return true;
+}
 
 class PackageForceAdminSpecial extends SpecialPage {
 	var $package = null;
@@ -345,17 +362,6 @@ class PackageForceList extends TablePager {
 		}
 		return $names;
 	}
-
-	/*function getRowClass( $row ) {
-		$classes = array();
-		if ( !$row->vote_current ) {
-			$classes[] = 'securepoll-old-vote';
-		}
-		if ( $row->vote_struck ) {
-			$classes[] = 'securepoll-struck-vote';
-		}
-		return implode( ' ', $classes );
-	}*/
 
 	function getTitle() {
 		return $this->listPage->getTitle();

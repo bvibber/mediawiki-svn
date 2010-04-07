@@ -13,9 +13,9 @@ $messages = array();
  */
 $messages['en'] = array(
 	'packageforce' => 'PackageForce',
-	'packageforceadmin'	=> 'PackageForceAdmin',
-	'pf-desc' => 'Creating a special page to download packages of useful templates/etc.',
-	'pf-only-admins-allowed' => 'This page is only for users with the \'packageforce-admin\'-right.',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-desc' => '[[Special:PackageForce|Download packages]] of useful templates/etc.',
+	'pf-only-admins-allowed' => "This page is only for users with the 'packageforce-admin'-right.",
 
 	/* admin links */
 	'pf-admin-menu-default'	=> 'Default',
@@ -31,4 +31,8 @@ $messages['en'] = array(
 	'pf-header-type' => 'Type of page',
 	'pf-header-page_title' => 'Title',
 	'pf-header-approve' => 'Approve',
+
+	#'right-packageforce-admin' => '', Todo: Add a descriptive message for these
+	#'right-packageforce-edit' => '',  new rights. It is shown at Special:ListGroupRights
 );
+
