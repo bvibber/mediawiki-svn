@@ -743,7 +743,7 @@ class WebInstaller extends Installer {
 	function setVarsFromRequest( $varNames, $prefix = 'config_' ) {
 		$newValues = array();
 		foreach ( $varNames as $name ) {
-			$value = $this->request->getVal( $prefix . $name );
+			$value = trim( $this->request->getVal( $prefix . $name ) );
 			$newValues[$name] = $value;
 			if ( $value === null ) {
 				// Checkbox?
