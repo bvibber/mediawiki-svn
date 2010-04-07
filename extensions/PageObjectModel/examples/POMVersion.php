@@ -1,4 +1,4 @@
-<?
+<?php
 require_once( 'POM.php' );
 
 # Get document from MediaWiki server

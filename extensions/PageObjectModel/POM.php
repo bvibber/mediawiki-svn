@@ -1,4 +1,4 @@
-<?
+<?php
 #
 # PageObjectModel is a set of classes that allow easy manipulation of MediaWiki page source.
 #
