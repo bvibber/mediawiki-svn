@@ -31,12 +31,12 @@ abstract class UKGBaseUkPointMap extends MapsMapFeature implements iDisplayFunct
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @param unknown_type $parser
+	 * @param Parser $parser
 	 * @param array $params
 	 * 
 	 * @return html
 	 */
-	public final function displayMap( &$parser, array $params ) {
+	public final function displayMap( Parser &$parser, array $params ) {
 		$this->setMapSettings();
 		
 		$this->featureParameters = MapsDisplayPoint::$parameters;
@@ -52,7 +52,7 @@ abstract class UKGBaseUkPointMap extends MapsMapFeature implements iDisplayFunct
 			
 			$this->setZoom();
 			
-			$this->addSpecificMapHTML();
+			$this->addSpecificMapHTML( $parser );
 		}
 		
 		return $this->output . $this->errorList;
@@ -88,9 +88,6 @@ abstract class UKGBaseUkPointMap extends MapsMapFeature implements iDisplayFunct
 		
 		foreach ( $this->coordinates as $coordinates ) {
 			$args = explode( '~', $coordinates );
-			
-            $args[0] = str_replace( '″', '"', $args[0] );
-            $args[0] = str_replace( '′', "'", $args[0] );
 			
 			$markerData = array( 'location' => $args[0] );
 			

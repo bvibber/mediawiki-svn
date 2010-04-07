@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'UKG_VERSION', '0.2 a1' );
+define( 'UKG_VERSION', '0.3 a1' );
 
 $ukggScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/UKGeocodingForMaps';
 $ukggDir 			= dirname( __FILE__ ) . '/';

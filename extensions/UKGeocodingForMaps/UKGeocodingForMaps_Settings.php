@@ -27,3 +27,5 @@ include_once $ukggDir . 'GoogleMaps/UKG_GoogleMaps.php'; 	// Google Maps
 
 # Your Google AJAX search API key. Required for displaying Google Maps with the display_uk_point(s) parser function.
 $egGoogleAjaxSearchKey = ''; # http://code.google.com/apis/ajaxsearch/signup.html
+
+$egMapsDefaultServices['display_uk_point'] = 'googlemaps2';

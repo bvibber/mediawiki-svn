@@ -10,4 +10,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps2']['pf']['display_uk_point'] = array( 'class' => 'UKGGoogleMapsDispUkPoint', 'file' => 'UKGeocodingForMaps/GoogleMaps/UKG_GoogleMapsDispUkPoint.php' );
+$egMapsServices[MapsGoogleMaps::SERVICE_NAME]['features']['display_uk_point'] = 'UKGGoogleMapsDispUkPoint';
+
+$wgAutoloadClasses['UKGGoogleMapsDispUkPoint'] = dirname( __FILE__ ) . '/UKG_GoogleMapsDispUkPoint.php';

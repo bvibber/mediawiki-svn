@@ -67,10 +67,10 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML() {
-		global $wgJsMimeType, $egValidatorErrorLevel;
+	public function addSpecificMapHTML( Parser $parser ) {
+		global $egValidatorErrorLevel;
 		
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
+		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
 		if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) {
 			$couldNotGeocodeMsg = Xml::escapeJsString( wfMsg( 'ukgeocoding_couldNotGeocode' ) );
@@ -79,15 +79,21 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 			$showErrorJs = '';
 		}
 		
-		$this->output .= <<<EOT
-<div id="$this->mapName"></div>
-<div id="{$this->mapName}_errors"></div>
-<script type="$wgJsMimeType"> /*<![CDATA[*/
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
+		) . "<div id='{$this->mapName}_errors'></div>";		
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript(
+				<<<EOT
 addOnloadHook( function() {
 	var map = initializeGoogleMap('$this->mapName', 
 		{
-		width: $this->width,
-		height: $this->height,
 		lat: 0,
 		lon: 0,
 		zoom: $this->zoom,
@@ -122,12 +128,10 @@ addOnloadHook( function() {
 	for(i in markers) {
 		usePointFromPostcode(markers[i], updateGoogleMap);
 	}
-});
-/*]]>*/ </script>
-EOT;
-
-	$this->output .= $onloadFunctions;
-
+});				
+EOT
+			)
+		);
 	}
 	
 }

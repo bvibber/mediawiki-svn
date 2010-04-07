@@ -19,7 +19,7 @@ $wgAutoloadClasses['UKGBaseUkPointMap'] 	= $ukggDir . 'ParserFunctions/DisplayUk
 $wgHooks['LanguageGetMagic'][] 				= 'efUKGDisplayUkPointMagic';
 $wgHooks['ParserFirstCallInit'][] 			= 'efUKGRegisterDisplayPoint';
 
-$egMapsAvailableFeatures['pf']['hooks'][]	= 'UKGDisplayUkPoint';
+$egMapsFeatures['pf'][]	= 'UKGDisplayUkPoint::initialize';
 
 /**
  * Adds the magic words for the parser functions.
@@ -94,7 +94,7 @@ final class UKGDisplayUkPoint {
         
 		if ( ! MapsParserFunctions::paramIsPresent( 'service', $map, $paramInfo ) ) $map['service'] = '';
 
-		$map['service'] = MapsMapper::getValidService( $map['service'], 'pf', 'display_uk_point' );
+		$map['service'] = MapsMapper::getValidService( $map['service'], 'display_uk_point' );
 
 		$mapClass = MapsParserFunctions::getParserClassInstance( $map['service'], 'display_uk_point' );
     
@@ -117,7 +117,7 @@ final class UKGDisplayUkPoint {
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
 				),
-				'default' => $egMapsDefaultServices['pf']
+				'default' => $egMapsDefaultServices['display_uk_point']
 			),
 			'coordinates' => array(
 				'aliases' => array( 'coords', 'location', 'locations' ),
