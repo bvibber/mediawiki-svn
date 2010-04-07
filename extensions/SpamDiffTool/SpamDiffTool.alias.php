@@ -14,3 +14,4 @@ $aliases = array();
 $aliases['en'] = array(
 	'SpamDiffTool'  => array( 'SpamDiffTool' ),
 );
+

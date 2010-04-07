@@ -351,8 +351,8 @@ $messages['de'] = array(
 	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
 	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
-Klicke auf \"Durchsuchen\" und wähle alle Dateien aus, die du hochladen möchtest.
-Du kannst zwischen 1 und \$1 Dateien gleichzeitig hochladen.
+Klicke auf „Durchsuchen“ und wähle alle Dateien aus, die du hochladen möchtest.
+Du kannst zwischen 1 und $1 Dateien gleichzeitig hochladen.
 
 Wahlweise kannst du auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für deine Dateien eingeben.
 
@@ -1009,13 +1009,13 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'multipleupload' => 'പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
-	'multipleupload-desc' => '[[Special:MultipleUpload|ഒരേ സമയം നിരവധി പ്രമാണങ്ങള്‍ ഒരുമിച്ച് അപ്‌ലോഡ് ചെയ്യാന്‍]] ഉപയോക്താക്കള്‍ക്ക് അനുമതി നല്‍കുന്നു',
-	'multipleupload-ignoreallwarnings' => "'''എല്ലാ മുന്നറിയിപ്പുകളും''' അവഗണിച്ച് പ്രമാണങ്ങള്‍ സേവ് ചെയ്യുക.",
+	'multipleupload' => 'പ്രമാണങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക',
+	'multipleupload-desc' => '[[Special:MultipleUpload|ഒരേ സമയം നിരവധി പ്രമാണങ്ങൾ ഒരുമിച്ച് അപ്‌ലോഡ് ചെയ്യാൻ]] ഉപയോക്താക്കൾക്ക് അനുമതി നൽകുന്നു',
+	'multipleupload-ignoreallwarnings' => "'''എല്ലാ മുന്നറിയിപ്പുകളും''' അവഗണിച്ച് പ്രമാണങ്ങൾ സേവ് ചെയ്യുക.",
 	'multipleupload-saveallfiles' => 'എല്ലാ പ്രമാണങ്ങളും സൂക്ഷിക്കുക',
-	'multipleupload-page' => '{{ns:project}}:പ്രമാണങ്ങള്‍ മായ്ക്കുന്നതിനെക്കുറിച്ചുള്ള നയം',
+	'multipleupload-page' => '{{ns:project}}:പ്രമാണങ്ങൾ മായ്ക്കുന്നതിനെക്കുറിച്ചുള്ള നയം',
 	'multiupload-fileuploaded' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്തു',
-	'multiupload-toolbox' => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
+	'multiupload-toolbox' => 'ഒന്നിലധികം പ്രമാണങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക',
 );
 
 /** Mongolian (Монгол)
@@ -1272,6 +1272,7 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -1282,12 +1283,12 @@ $messages['pt'] = array(
 	'multipleupload-saveallfiles' => 'Gravar todos os ficheiros',
 	'multipleupload-addresswarnings' => 'Por favor, trate quaisquer avisos antes de carregar novamente os ficheiros.',
 	'multipleupload-page' => '{{ns:project}}:Política de eliminação de ficheiros',
-	'multipleupload-text' => "Carregue múltiplos ficheiros aqui.
+	'multipleupload-text' => "Carregue vários ficheiros aqui.
 
-Escolha 'Procurar' e seleccione cada ficheiro que pretenda carregar.
+Escolha 'Procurar' e seleccione cada ficheiro que pretende carregar.
 Pode carregar entre 1 e $1 ficheiros de cada vez.
 
-Pode opcionalmente introduzir um '''Nome de ficheiro destino''' e fornecer um '''Sumário''' que descreva o seu ficheiro.
+Pode opcionalmente introduzir um '''Nome de ficheiro destino''' e fornecer um '''Resumo''' que descreva o seu ficheiro.
 
 Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multipleupload-page}}|política de eliminação de ficheiros]].",
 	'multiupload-fileuploaded' => 'Ficheiro carregado.',

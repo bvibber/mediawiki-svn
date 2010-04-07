@@ -331,7 +331,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'donationform-submit' => 'പേപാല്‍ വഴി സം‌ഭാവന ചെയ്യുക',
+	'donationform-submit' => 'പേപാൽ വഴി സം‌ഭാവന ചെയ്യുക',
 );
 
 /** Marathi (मराठी)

@@ -607,7 +607,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'findspam' => 'സ്പാം(spam) കണ്ടെത്തുക',
-	'findspam-desc' => 'പുതുതായി ചേര്‍ക്കപ്പെട്ട സ്പാം കണ്ടെത്താനുതകുന്ന [[Special:FindSpam|പ്രത്യേക താള്‍]] ചേര്‍ക്കുന്നു',
+	'findspam-desc' => 'പുതുതായി ചേർക്കപ്പെട്ട സ്പാം കണ്ടെത്താനുതകുന്ന [[Special:FindSpam|പ്രത്യേക താൾ]] ചേർക്കുന്നു',
 	'findspam-ip' => 'ഐ.പി. വിലാസം:',
 	'findspam-ok' => 'ശരി',
 	'findspam-notextfound' => 'സംഭാവനകളൊന്നും കണ്ടെത്താനായില്ല',
@@ -798,12 +798,15 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Misterr
  */
 $messages['ro'] = array(
 	'findspam' => 'Găsiţi spam',
+	'findspam-desc' => 'Adaugă o [[Special:FindSpam|pagină specială]]  care vă permite să găsiţi spam-ul recent adăugat.',
 	'findspam-ip' => 'Adresă IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Nici o contribuţie găsită',
+	'right-findspam' => 'Caută pentru spam-urile adăugate recent.',
 );
 
 /** Tarandíne (Tarandíne)

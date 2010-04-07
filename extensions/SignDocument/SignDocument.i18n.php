@@ -376,9 +376,9 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'signature-desc' => 'പ്രമാണത്തില്‍ [[Special:SignDocument|ഒപ്പിടല്‍]] അനുവദിക്കുക.',
-	'signaturelogpagetext' => '[[Special:SignDocument]] ഉപയോഗിച്ച് പ്രമാണങ്ങളിലേക്ക് ചേര്‍ക്കപ്പെട്ട ഒപ്പിടലിന്റെ പ്രവര്‍ത്തനരേഖയാണ്‌ ഇത്.',
-	'signaturelogentry' => '$1 എന്ന പ്രമാണത്തില്‍ ഒപ്പിട്ടിരിക്കുന്നു',
+	'signature-desc' => 'പ്രമാണത്തിൽ [[Special:SignDocument|ഒപ്പിടൽ]] അനുവദിക്കുക.',
+	'signaturelogpagetext' => '[[Special:SignDocument]] ഉപയോഗിച്ച് പ്രമാണങ്ങളിലേക്ക് ചേർക്കപ്പെട്ട ഒപ്പിടലിന്റെ പ്രവർത്തനരേഖയാണ്‌ ഇത്.',
+	'signaturelogentry' => '$1 എന്ന പ്രമാണത്തിൽ ഒപ്പിട്ടിരിക്കുന്നു',
 );
 
 /** Marathi (मराठी)

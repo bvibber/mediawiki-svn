@@ -6231,36 +6231,36 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'mv_path_type_wiki_title' => 'മീഡിയാവിക്കി ശീര്‍ഷകം',
-	'mv_save_changes' => 'മാറ്റങ്ങള്‍ സേവ് ചെയ്യുക',
-	'mv_missing_req_time' => 'അഭ്യര്‍ത്ഥനാസമയം കാണുന്നില്ല',
-	'mv_redirect_and_delete_reason' => 'തിരിച്ചുവിടല്‍ താള്‍ ഒഴിവാക്കി',
+	'mv_path_type_wiki_title' => 'മീഡിയാവിക്കി ശീർഷകം',
+	'mv_save_changes' => 'മാറ്റങ്ങൾ സേവ് ചെയ്യുക',
+	'mv_missing_req_time' => 'അഭ്യർത്ഥനാസമയം കാണുന്നില്ല',
+	'mv_redirect_and_delete_reason' => 'തിരിച്ചുവിടൽ താൾ ഒഴിവാക്കി',
 	'mv_remove_reason' => 'നീക്കം ചെയ്യാനുള്ള കാരണം:',
-	'mv_metavid_file' => 'സെര്‍‌വറില്‍ നിലവിലുള്ള പ്രമാണം',
+	'mv_metavid_file' => 'സെർ‌വറിൽ നിലവിലുള്ള പ്രമാണം',
 	'mv_upload_file' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'mv_external_file' => 'ബാഹ്യ പ്രമാണം',
 	'mv_tool_search' => 'തിരയൂ',
-	'mv_tool_export' => 'എക്സ്പോര്‍ട്ട്',
+	'mv_tool_export' => 'എക്സ്പോർട്ട്',
 	'mv_watch_clip' => 'ക്ലിപ്പ് കാണുക',
-	'mv_time_separator' => '$1 മുതല്‍ $2 വരെ',
-	'mv_play' => 'പ്രവര്‍ത്തിപ്പിക്കുക',
+	'mv_time_separator' => '$1 മുതൽ $2 വരെ',
+	'mv_play' => 'പ്രവർത്തിപ്പിക്കുക',
 	'mv_edit' => 'തിരുത്തുക',
-	'mv_history' => 'നാള്‍വഴി',
+	'mv_history' => 'നാൾവഴി',
 	'mv_edit_title' => 'ടെക്സ്റ്റ് തിരുത്തുക',
 	'mv_remove' => 'നീക്കം ചെയ്യുക',
 	'mv_adjust_preview_stop' => 'പ്രിവ്യൂ നിറുത്തുക',
-	'mv_adjust_old_title_missing' => 'താങ്കള്‍ ($1)ല്‍ നിന്നു മാറ്റുവാന്‍ ശ്രമിക്കുന്ന താള്‍ നിലവിലില്ല',
+	'mv_adjust_old_title_missing' => 'താങ്കൾ ($1)ൽ നിന്നു മാറ്റുവാൻ ശ്രമിക്കുന്ന താൾ നിലവിലില്ല',
 	'mv_start_desc' => 'തുടങ്ങിയ സമയം',
 	'mv_end_desc' => 'അവസാനിച്ച സമയം',
-	'mediasearch' => 'മീഡിയാപ്രമാണ തിരച്ചില്‍',
-	'mv_search_match' => 'തിരച്ചില്‍ ടെക്സ്റ്റ്',
+	'mediasearch' => 'മീഡിയാപ്രമാണ തിരച്ചിൽ',
+	'mv_search_match' => 'തിരച്ചിൽ ടെക്സ്റ്റ്',
 	'mv_search_category' => 'വർഗ്ഗം',
 	'mv_search_and' => 'ഉം',
 	'mv_category' => 'വർഗ്ഗം',
-	'mv_view_wiki_page' => 'വിക്കി താള്‍ കാണുക',
-	'mv_sequence_add_search' => 'തിരച്ചലിലൂടെ ചേര്‍ക്കുക',
-	'mv_add_clip_by_name' => 'പേരനുസരിച്ച് ക്ലിപ്പ് ചേര്‍ക്കുക',
-	'mv_export_cmml' => 'CMML എക്സ്പോര്‍ട്ട് ചെയ്യുക',
+	'mv_view_wiki_page' => 'വിക്കി താൾ കാണുക',
+	'mv_sequence_add_search' => 'തിരച്ചലിലൂടെ ചേർക്കുക',
+	'mv_add_clip_by_name' => 'പേരനുസരിച്ച് ക്ലിപ്പ് ചേർക്കുക',
+	'mv_export_cmml' => 'CMML എക്സ്പോർട്ട് ചെയ്യുക',
 );
 
 /** Marathi (मराठी)
@@ -7595,13 +7595,18 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Video Metadata Editor & Media Search]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor ëd metadàit filmà e arserca ëd mojen]',
 	'metavid' => 'Pàgina MetaVid',
-	'mv_missing_stream' => 'Stream mancant: $1',
+	'mv_missing_stream' => 'Fluss mancant: $1',
 	'specialpages-group-mv_group' => 'Pàgina special MetaVidWiki',
+	'mv_warning_wiki' => "<i>Nòta: trascrission video MetaVid [[Help:FAQ#How_accurate_is_the_information.3F|a peulo conten-e amprecision]], giutne a fé [[Help:Participation#Improving_Archive_Accuracy|n'archivi pi giust]]</i>",
+	'mv_ogg_low_quality' => 'Trasferìbil via Ragnà - Og. Theora 300kbit/sec',
+	'mv_ogg_high_quality' => 'Auta qualità - Og. Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Trasferìbil via Ragnà - Video flash',
 );
 
 /** Pashto (پښتو)
@@ -7865,11 +7870,11 @@ Saltar para vista de stream: $2',
 	'mv_sequence_timeline' => 'Linha temporal da sequência:',
 	'mv_edit_sequence_desc_help' => 'Descrição da sequência',
 	'mv_edithelpsequence' => 'Help:Edição_de_Sequências',
-	'mv_seq_summary' => 'Sumário de edição da sequência',
+	'mv_seq_summary' => 'Resumo de edição da sequência',
 	'mv_add_clip_by_name' => 'Adicionar clip por nome',
 	'mv_stream_resource_export' => 'Exportação de recursos de stream',
 	'mv_export_cmml' => 'Exportar CMML',
-	'mv_navigate_stream' => 'Navegar stream completa',
+	'mv_navigate_stream' => 'Navegar pelo stream completo',
 	'mv_stream_overview' => 'Resumo de Stream',
 	'mv_edit_time' => 'Editar Tempo',
 	'mv_embed_options' => 'Opções de incorporação',

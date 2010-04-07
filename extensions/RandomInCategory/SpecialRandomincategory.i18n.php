@@ -625,8 +625,8 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'randomincategory-nocategory' => '$1 എന്ന വര്‍ഗ്ഗം നിലവിലില്ല അല്ലെങ്കില്‍ ശൂന്യമാണ്‌',
-	'randomincategory-label' => 'വര്‍ഗ്ഗം:',
+	'randomincategory-nocategory' => '$1 എന്ന വർഗ്ഗം നിലവിലില്ല അല്ലെങ്കിൽ ശൂന്യമാണ്‌',
+	'randomincategory-label' => 'വർഗ്ഗം:',
 	'randomincategory-submit' => 'പോകൂ',
 );
 

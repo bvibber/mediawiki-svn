@@ -317,6 +317,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author LWChris
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -329,9 +330,9 @@ $messages['de'] = array(
 	'imagemap_invalid_title' => '&lt;imagemap&gt;-Fehler: ungültiger Titel im Link in Zeile $1',
 	'imagemap_missing_coord' => '&lt;imagemap&gt;-Fehler: Zu wenige Koordinaten in Zeile $1 für den Umriss',
 	'imagemap_unrecognised_shape' => '&lt;imagemap&gt;-Fehler: Unbekannte Umrissform in Zeile $1. Jede Zeile muss mit einem dieser Parameter beginnen: <tt>default</tt>, <tt>rect</tt>, <tt>circle</tt> oder <tt>poly</tt>',
-	'imagemap_no_areas' => '&lt;imagemap&gt;-Fehler: Es muss mindestens ein Gebiet definiert werden',
+	'imagemap_no_areas' => '&lt;imagemap&gt;-Fehler: Es muss mindestens ein Bereich definiert werden',
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;-Fehler: Ungültige Koordinate in Zeile $1: es sind nur Zahlen erlaubt',
-	'imagemap_invalid_desc' => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: <tt>$1</tt>',
+	'imagemap_invalid_desc' => '&lt;imagemap&gt;-Fehler: Ungültiger "desc"-Parameter, möglich sind: <tt>$1</tt>',
 	'imagemap_description' => 'Über dieses Bild',
 	'imagemap_desc_types' => 'oben rechts, unten rechts, unten links, oben links, keine',
 	'imagemap_poly_odd' => 'Fehler: Polygon mit ungerader Anzahl an Koordinaten in Zeile $1',
@@ -402,15 +403,15 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'imagemap_desc' => 'Permesas klientflankajn klakeblajn bildmapojn uzante etikedon <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Eraro: devas specifi bildon en la unua linio',
-	'imagemap_invalid_image' => 'Eraro: bildo estas aŭ nevalida aŭ neekzista',
+	'imagemap_invalid_image' => 'Eraro: bildo estas aŭ malvalida aŭ neekzista',
 	'imagemap_bad_image' => 'Eraro: bildo estas nigralistigita en ĉi tiu paĝo',
 	'imagemap_no_link' => 'Eraro: neniu valida ligilo estis trovita ĉe fino de linio $1',
-	'imagemap_invalid_title' => 'Eraro: nevalida titolo en ligilo ĉe linio $1',
+	'imagemap_invalid_title' => 'Eraro: malvalida titolo en ligilo ĉe linio $1',
 	'imagemap_missing_coord' => 'Eraro: mankas sufiĉaj koordinatoj por formo ĉe linio $1',
 	'imagemap_unrecognised_shape' => 'Eraro: nekonata formo ĉe linio $1; ĉiu linio devas komenci kun unu el: default, rect, circle aŭ poly',
 	'imagemap_no_areas' => 'Eraro: almenaŭ unu specifado de areo devas esti donata',
-	'imagemap_invalid_coord' => 'Eraro: Nevalida koordinato ĉe linio $1; ĝi nepre estu nombro',
-	'imagemap_invalid_desc' => 'Eraro: nevalida desc deklarado, devas esti unu el: <tt>$1</tt>',
+	'imagemap_invalid_coord' => 'Eraro: Malvalida koordinato ĉe linio $1; ĝi nepre estu nombro',
+	'imagemap_invalid_desc' => 'Eraro: malvalida deklarado de desc, devas esti unu el: <tt>$1</tt>',
 	'imagemap_description' => 'Pri ĉi tiu bildo',
 	'imagemap_poly_odd' => 'Eraro: troviĝis poligono kun malpara nombro de koordinatoj en linio $1',
 );
@@ -1031,16 +1032,16 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt> റ്റാഗ് ഉപയോഗിച്ച് ക്ലയന്റിൽ ക്ലിക്ക് ചെയ്യാവുന്ന ചിത്രസഞ്ചയം അനുവദിക്കുന്നു',
-	'imagemap_no_image' => 'പിഴവ്: ഒന്നാമത്തെ വരിയില്‍ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
-	'imagemap_invalid_image' => 'പിഴവ്: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കില്‍ നിലവിലില്ല',
+	'imagemap_no_image' => 'പിഴവ്: ഒന്നാമത്തെ വരിയിൽ ഒരു ചിത്രത്തിന്റെ പേരു വേണം',
+	'imagemap_invalid_image' => 'പിഴവ്: ചിത്രം അസാധുവാണ്‌ അല്ലെങ്കിൽ നിലവിലില്ല',
 	'imagemap_bad_image' => 'പിഴവ്: ഈ താളിൽ ചിത്രം കരിമ്പട്ടികയിലാണ്',
 	'imagemap_no_link' => 'പിഴവ്: $1-മത്തെ വരിയുടെ അവസാനം സാധുവായ കണ്ണി കാണുന്നില്ല',
-	'imagemap_invalid_title' => 'പിഴവ്: $1 വരിയില്‍ അസാധുവായ തലക്കെട്ട്',
-	'imagemap_missing_coord' => 'പിഴവ്: $1 വരിയില്‍ രൂപത്തിന് ആവശ്യമുള്ളത്ര നിര്‍ദ്ദേശാങ്കങ്ങള്‍ നിര്‍‌വചിച്ചിട്ടില്ല.',
-	'imagemap_unrecognised_shape' => 'പിഴവ്: $1 വരിയില്‍ മനസ്സിലാക്കാന്‍ പറ്റാത്ത രൂപം. ഓരോ വരിയും ഇനി പറയുന്ന ഒന്നു കൊണ്ടു വേണം തുടങ്ങാന്‍: default, rect, circle അഥവാ poly',
-	'imagemap_no_areas' => 'പിഴവ്: കുറഞ്ഞത് ഒരു വിസ്തീര്‍ണ്ണ നിര്‍ദ്ദേശമെങ്കിലും കൊടുത്തിരിക്കണം',
-	'imagemap_invalid_coord' => 'പിഴവ്: $1 വരിയില്‍ അസാധുവായ നിര്‍ദ്ദേശാങ്കം. നിര്‍ബന്ധമായും അത് ഒരു സംഖ്യയായിരിക്കണം.',
-	'imagemap_invalid_desc' => 'പിഴവ്: അസാധുവായ വിവരണ നിര്‍ദ്ദേശം. ഇനി പറയുന്ന ഇനങ്ങളില്‍ ഒന്നായിരിക്കണം: <tt>$1</tt>',
+	'imagemap_invalid_title' => 'പിഴവ്: $1 വരിയിൽ അസാധുവായ തലക്കെട്ട്',
+	'imagemap_missing_coord' => 'പിഴവ്: $1 വരിയിൽ രൂപത്തിന് ആവശ്യമുള്ളത്ര നിർദ്ദേശാങ്കങ്ങൾ നിർ‌വചിച്ചിട്ടില്ല.',
+	'imagemap_unrecognised_shape' => 'പിഴവ്: $1 വരിയിൽ മനസ്സിലാക്കാൻ പറ്റാത്ത രൂപം. ഓരോ വരിയും ഇനി പറയുന്ന ഒന്നു കൊണ്ടു വേണം തുടങ്ങാൻ: default, rect, circle അഥവാ poly',
+	'imagemap_no_areas' => 'പിഴവ്: കുറഞ്ഞത് ഒരു വിസ്തീർണ്ണ നിർദ്ദേശമെങ്കിലും കൊടുത്തിരിക്കണം',
+	'imagemap_invalid_coord' => 'പിഴവ്: $1 വരിയിൽ അസാധുവായ നിർദ്ദേശാങ്കം. നിർബന്ധമായും അത് ഒരു സംഖ്യയായിരിക്കണം.',
+	'imagemap_invalid_desc' => 'പിഴവ്: അസാധുവായ വിവരണ നിർദ്ദേശം. ഇനി പറയുന്ന ഇനങ്ങളിൽ ഒന്നായിരിക്കണം: <tt>$1</tt>',
 	'imagemap_description' => 'ഈ ചിത്രത്തെ കുറിച്ച്',
 );
 

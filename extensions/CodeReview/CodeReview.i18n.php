@@ -7183,7 +7183,7 @@ $4',
 
 URL completa: $3
 
-Sumário da submissão: $4',
+Resumo da submissão: $4',
 	'codereview-email-subj3' => '[$1] [$2]: Testes automáticos detectaram regressão',
 	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em $1.
 

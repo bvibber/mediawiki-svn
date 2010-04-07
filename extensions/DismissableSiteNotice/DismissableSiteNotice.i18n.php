@@ -581,7 +581,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'sitenotice_close' => 'നീക്കം ചെയ്യുക',
-	'sitenotice-desc' => 'സൈറ്റ്നോട്ടീസ് മറയ്ക്കുവാന്‍ ഉപയോക്താക്കളെ അനുവദിക്കുക',
+	'sitenotice-desc' => 'സൈറ്റ്നോട്ടീസ് മറയ്ക്കുവാൻ ഉപയോക്താക്കളെ അനുവദിക്കുക',
 );
 
 /** Marathi (मराठी)

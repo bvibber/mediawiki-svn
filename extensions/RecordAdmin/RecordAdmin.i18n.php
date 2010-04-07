@@ -1626,9 +1626,12 @@ $messages['pl'] = array(
 	'recordadmin-modified' => 'Zmienione',
 	'recordadmin-actions' => 'Operacje',
 	'recordadmin-needscontent' => 'Dodaj zawartość...',
-	'recordadmin-editwithform' => 'Edytuj za pomocą formularza',
+	'recordadmin-editwithform' => 'Właściwości',
 	'recordadmin-typeinfo' => 'Rekord typu $1',
 	'right-recordadmin' => 'Znajdywanie i edycja stron z rekordami danych',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Nie „$1”',
 );
 
 /** Piedmontese (Piemontèis)

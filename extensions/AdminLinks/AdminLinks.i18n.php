@@ -827,7 +827,7 @@ $messages['ml'] = array(
 	'adminlinks_createuser' => 'ഒരു ഉപയോക്താവിനെ സൃഷ്ടിക്കുക',
 	'adminlinks_browsesearch' => 'തിരച്ചിലും മേച്ചിലും',
 	'adminlinks_importexport' => 'കയറ്റുമതിയും ഇറക്കുമതിയും',
-	'right-adminlinks' => '[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികള്‍ കാണുക',
+	'right-adminlinks' => '[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികൾ കാണുക',
 );
 
 /** Erzya (Эрзянь)

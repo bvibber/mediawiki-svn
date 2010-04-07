@@ -670,9 +670,9 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'optin-try' => 'ബീറ്റ പരീക്ഷിക്കുക',
-	'tooltip-pt-optin-try' => 'പുതിയ സവിശേഷതകള്‍ പരിശോധിക്കുക',
+	'tooltip-pt-optin-try' => 'പുതിയ സവിശേഷതകൾ പരിശോധിക്കുക',
 	'optin-leave' => 'ബീറ്റ വിടുക',
-	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകള്‍ വേണ്ട',
+	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകൾ വേണ്ട',
 	'optin-feedback' => 'ബീറ്റയുടെ ഉപയോഗാനുഭവമറിയിക്കുക',
 	'tooltip-pt-optin-feedback' => 'പുതിയ സവിശേഷതകളുമായുള്ള താങ്കളുടെ അനുഭവം പങ്കു വെയ്ക്കുക',
 );

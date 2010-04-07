@@ -727,10 +727,10 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'chemicalsources' => 'രാസ സ്രോതസ്സുകള്‍',
-	'chemicalsource-desc' => 'രാസ ഫോര്‍മുലകള്‍ക്കായി <nowiki><chemform></nowiki> എന്ന ടാഗ് ചേര്‍ക്കുന്നു.',
-	'chemFunctions_ListPage' => 'രാസ സ്രോതസ്സുകള്‍',
-	'chemFunctions_Formula' => 'ഫോര്‍മുല',
+	'chemicalsources' => 'രാസ സ്രോതസ്സുകൾ',
+	'chemicalsource-desc' => 'രാസ ഫോർമുലകൾക്കായി <nowiki><chemform></nowiki> എന്ന ടാഗ് ചേർക്കുന്നു.',
+	'chemFunctions_ListPage' => 'രാസ സ്രോതസ്സുകൾ',
+	'chemFunctions_Formula' => 'ഫോർമുല',
 	'chemFunctions_Name' => 'IUPAC പേര്‌',
 );
 

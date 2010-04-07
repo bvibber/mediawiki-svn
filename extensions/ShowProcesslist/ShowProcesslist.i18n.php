@@ -627,7 +627,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'showprocesslist' => 'പ്രക്രിയകളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുക',
+	'showprocesslist' => 'പ്രക്രിയകളുടെ പട്ടിക പ്രദർശിപ്പിക്കുക',
 	'showprocesslist-id' => 'ഐ.ഡി.',
 	'showprocesslist-user' => 'ഉപയോക്താവ്',
 	'showprocesslist-time' => 'സമയം',

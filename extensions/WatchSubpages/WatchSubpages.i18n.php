@@ -546,11 +546,11 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'watchsubpages' => 'സബ്‌താളുകള്‍ ശ്രദ്ധിക്കുക',
-	'watchsubpages-addedtowatchlist' => 'തഴെ പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്നവ താങ്കള്‍ ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് ചേര്‍ത്തിരിക്കുന്നു.',
-	'watchsubpages-addtitles' => 'താളുകള്‍ ചേര്‍ക്കുക',
-	'watchsubpages-addtitlestowatchlist' => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്കു താളുകള്‍ ചേര്‍ക്കുക',
-	'watchsubpages-desc' => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് [[Special:WatchSubpages|ഒരു താളിന്റെ എല്ലാ ഉപതാളുകളും]] ശീഘ്രമായി ചേര്‍ക്കുക',
+	'watchsubpages' => 'സബ്‌താളുകൾ ശ്രദ്ധിക്കുക',
+	'watchsubpages-addedtowatchlist' => 'തഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്നവ താങ്കൾ ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് ചേർത്തിരിക്കുന്നു.',
+	'watchsubpages-addtitles' => 'താളുകൾ ചേർക്കുക',
+	'watchsubpages-addtitlestowatchlist' => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്കു താളുകൾ ചേർക്കുക',
+	'watchsubpages-desc' => 'ശ്രദ്ധിക്കുന്ന താളുകളുടെ പട്ടികയിലേക്ക് [[Special:WatchSubpages|ഒരു താളിന്റെ എല്ലാ ഉപതാളുകളും]] ശീഘ്രമായി ചേർക്കുക',
 );
 
 /** Marathi (मराठी)

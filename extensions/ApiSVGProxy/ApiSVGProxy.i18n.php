@@ -99,10 +99,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'apisvgproxy-desc' => 'Fé passé file SVG da un (miraco remòt) archivi ëd file al domini local',
+	'apisvgproxy-desc' => "A oten dj'archivi SVG da 'n depòsit (miraco leugn) d'archivi al domini local",
 );
 
 /** Portuguese (Português)
@@ -117,5 +118,12 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'apisvgproxy-desc' => 'Замещение SVG-файлов из хранилища файлов (возможно удаленного), на локальный домен',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'apisvgproxy-desc' => 'Ngaproksi berkas SVG ti gudang (anu sigana paanggang) ka domain lokal',
 );
 

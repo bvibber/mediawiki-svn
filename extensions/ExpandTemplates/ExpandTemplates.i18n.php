@@ -942,6 +942,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author .anaconda
  * @author BrokenArrow
+ * @author Civvì
  */
 $messages['it'] = array(
 	'expandtemplates' => 'Espansione dei template',
@@ -953,6 +954,7 @@ $messages['it'] = array(
 	'expand_templates_xml_output' => 'Output in formato XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Ignora i commenti',
+	'expand_templates_remove_nowiki' => 'Elimina il tag <nowiki> nel risultato',
 	'expand_templates_generate_xml' => 'Mostra albero sintattico XML',
 	'expand_templates_preview' => 'Anteprima',
 );
@@ -1255,20 +1257,20 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'expandtemplates' => 'ഫലകങ്ങള്‍ വിപുലീകരിക്കുക',
+	'expandtemplates' => 'ഫലകങ്ങൾ വിപുലീകരിക്കുക',
 	'expand_templates_intro' => 'ഈ പ്രത്യേക താൾ ചില എഴുത്തുകൾ എടുത്ത് എല്ലാ ഫലകങ്ങളും പുനരാവർത്തിത സ്വഭാവത്തോടെ വികസിപ്പിക്കുന്നു.
 <nowiki>{{</nowiki>#എങ്കിൽ:…}} തുടങ്ങിയ പാഴ്സർ ഫങ്ഷനുകളും
 <nowiki>{{</nowiki>ഈദിവസം}}&mdash; തുടങ്ങിയ ചരങ്ങളും, ഈ താൾ വികസിപ്പിക്കുന്നുണ്ട്.
 ചുരുക്കിപറഞ്ഞാൽ ഇരട്ട കോഷ്ഠകങ്ങളിലുള്ള എന്തിനേയും വികസിപ്പിക്കുന്നുന്റ്.
 മീഡിയവിക്കിയിലെ ബന്ധപ്പെട്ട പാഴ്സർ സൗകര്യം ഉപയോഗിച്ചാണ് ഇത് സാദ്ധ്യമാക്കുന്നത്.',
 	'expand_templates_title' => '{{PAGENAME}} താളിന്റെ ഉള്ളടക്ക തലക്കെട്ട് മുതലായവ.:',
-	'expand_templates_input' => 'ഇന്‍പുട്ട് ടെക്സ്റ്റ്:',
+	'expand_templates_input' => 'ഇൻപുട്ട് ടെക്സ്റ്റ്:',
 	'expand_templates_output' => 'ഫലം',
 	'expand_templates_xml_output' => 'XML ഔട്ട്പുട്ട്',
 	'expand_templates_ok' => 'ശരി',
-	'expand_templates_remove_comments' => 'അഭിപ്രായങ്ങള്‍ ഒഴിവാക്കുക',
+	'expand_templates_remove_comments' => 'അഭിപ്രായങ്ങൾ ഒഴിവാക്കുക',
 	'expand_templates_remove_nowiki' => 'ഫലങ്ങളിലെ <nowiki> റ്റാഗുകൾ ഒതുക്കുക',
-	'expand_templates_generate_xml' => 'XML പാര്‍സര്‍ ട്രീ പ്രദര്‍ശിപ്പിക്കുക',
+	'expand_templates_generate_xml' => 'XML പാർസർ ട്രീ പ്രദർശിപ്പിക്കുക',
 	'expand_templates_preview' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
 );
 

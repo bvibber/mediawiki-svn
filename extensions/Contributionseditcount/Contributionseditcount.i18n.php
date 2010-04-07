@@ -401,7 +401,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'contributionseditcount' => 'ഈ ഉപയോക്താവിനു $1 തിരുത്തലുകളുണ്ട്.',
-	'contributionseditcount-desc' => '[[Special:Contributions]]ല്‍ തിരുത്തലുകളുടെ എണ്ണം പ്രദര്‍ശിപ്പിക്കുന്നു',
+	'contributionseditcount-desc' => '[[Special:Contributions]]ൽ തിരുത്തലുകളുടെ എണ്ണം പ്രദർശിപ്പിക്കുന്നു',
 );
 
 /** Marathi (मराठी)

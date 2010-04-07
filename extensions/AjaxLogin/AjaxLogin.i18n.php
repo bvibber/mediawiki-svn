@@ -480,6 +480,7 @@ Lé otu I dètùrù ihe.',
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -488,6 +489,7 @@ $messages['it'] = array(
 Ciò vi porterà via da questa pagina di modifica e si rischia di perdere la modifica attuale.",
 	'ajaxLogin2' => 'Sicuro? Si potrebbero perdere le modifiche apportate a questa pagina se si lascia la pagina ora.',
 	'ajaxlogin-create' => 'Crea un account',
+	'al-nosuchuser' => "L'utente \"\$1\" non esiste. I nomi utente sono ''case sensitive''. Controlla l'ortografia.",
 );
 
 /** Japanese (日本語)

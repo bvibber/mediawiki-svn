@@ -959,7 +959,7 @@ $messages['ml'] = array(
 	'tasklistunknownproject' => 'അജ്ഞാതമായ സം‌രംഭം',
 	'tasklistincorrectuser' => 'തെറ്റായ ഉപയോക്തൃനാമം',
 	'tasklistemail' => 'നമസ്കാരം %s',
-	'tasklistprojdisp' => 'പ്രദര്‍ശിപ്പിക്കുക',
+	'tasklistprojdisp' => 'പ്രദർശിപ്പിക്കുക',
 );
 
 /** Marathi (मराठी)

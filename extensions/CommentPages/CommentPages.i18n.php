@@ -374,7 +374,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'commentpages-desc' => 'മുഖ്യ നാമമേഖലയിലുള്ള കമെന്റ് താളുകള്‍',
+	'commentpages-desc' => 'മുഖ്യ നാമമേഖലയിലുള്ള കമെന്റ് താളുകൾ',
 );
 
 /** Marathi (मराठी)

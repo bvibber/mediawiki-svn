@@ -797,8 +797,8 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'sqlquery' => 'ചോദ്യം (query) ചേര്‍ക്കുക',
-	'querybtn' => 'ചോദ്യം (query) സമര്‍പ്പിക്കുക',
+	'sqlquery' => 'ചോദ്യം (query) ചേർക്കുക',
+	'querybtn' => 'ചോദ്യം (query) സമർപ്പിക്കുക',
 );
 
 /** Marathi (मराठी)

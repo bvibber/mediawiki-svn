@@ -460,9 +460,9 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'userimages-caption' => '$1 അപ്‌ലോഡ് ചെയ്ത ചിത്രങ്ങള്‍',
-	'userimages-noname' => 'അസാധുവായ ഉപയോക്തൃനാമം അല്ലെങ്കില്‍ ഒന്നും കൊടുത്തിട്ടില്ല.',
-	'userimages-noimages' => '$1 ചിത്രങ്ങള്‍ അപ്‌ലോഡ് ചെയ്തിട്ടില്ല.',
+	'userimages-caption' => '$1 അപ്‌ലോഡ് ചെയ്ത ചിത്രങ്ങൾ',
+	'userimages-noname' => 'അസാധുവായ ഉപയോക്തൃനാമം അല്ലെങ്കിൽ ഒന്നും കൊടുത്തിട്ടില്ല.',
+	'userimages-noimages' => '$1 ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്തിട്ടില്ല.',
 );
 
 /** Marathi (मराठी)

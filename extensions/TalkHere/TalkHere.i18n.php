@@ -701,7 +701,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'talkhere-talkpage' => 'സം‌വാദം താള്‍',
+	'talkhere-talkpage' => 'സം‌വാദം താൾ',
 );
 
 /** Marathi (मराठी)

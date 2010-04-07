@@ -505,10 +505,10 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'whoiswatching' => 'ആരൊക്കെയാണ്‌ വിക്കിതാള്‍ നിരീക്ഷിക്കുന്നത്',
+	'whoiswatching' => 'ആരൊക്കെയാണ്‌ വിക്കിതാൾ നിരീക്ഷിക്കുന്നത്',
 	'specialwhoiswatchingthepage' => 'ആരാണു നിരീക്ഷിക്കുന്നത് %s',
-	'specialwhoiswatchingaddusers' => 'താള്‍ നിരീക്ഷിക്കുവാന്‍ ഉപയോക്താക്കളെ ചേര്‍ക്കുക',
-	'specialwhoiswatchingaddbtn' => 'തിരഞ്ഞെടുത്ത ഉപയോക്താക്കളെ ചേര്‍ക്കുക',
+	'specialwhoiswatchingaddusers' => 'താൾ നിരീക്ഷിക്കുവാൻ ഉപയോക്താക്കളെ ചേർക്കുക',
+	'specialwhoiswatchingaddbtn' => 'തിരഞ്ഞെടുത്ത ഉപയോക്താക്കളെ ചേർക്കുക',
 );
 
 /** Marathi (मराठी)

@@ -693,11 +693,11 @@ Elektu vian MediaWiki-version.
 Pliparto de kromprogramoj funkcias trans pluraj versioj de MediaWiki, do se via MediaWiki-versio ne estas trovebla cxi tie, aux se vi bezonas la plej novajn ecojn, provu uzi la plej lastan version.',
 	'extdist-no-versions' => 'La elektita kromprogramo ($1) ne estas havebla en iu ajn versio!',
 	'extdist-submit-version' => 'Daŭri',
-	'extdist-no-remote' => 'Ne eblas kontakti eksteran klienton de subversion.',
+	'extdist-no-remote' => 'Ne povas kontakti eksteran klienton de subversion.',
 	'extdist-remote-error' => 'Eraro de la ekstera kliento de subversion: <pre>$1</pre>',
-	'extdist-remote-invalid-response' => 'Nevalida respondo de ekstera kliento de Subversion.',
+	'extdist-remote-invalid-response' => 'Malvalida respondo de ekstera kliento de Subversion.',
 	'extdist-svn-error' => 'Subversion renkontis eraron: <pre>$1</pre>',
-	'extdist-svn-parse-error' => 'Ne eblas trakti la XML de "svn info": <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Ne povas trakti la XML de "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 	'extdist-created' => "Statika kopio de versio <b>$2</b> de la <b>$1</b> kromprogramo por MediaWiki <b>$3</b> estis kreita. Via elŝuto komencos aŭtomate post 5 sekundoj.
 

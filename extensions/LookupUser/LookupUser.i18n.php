@@ -231,20 +231,21 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author LWChris
  * @author Melancholie
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'lookupuser' => 'Benutzerinformationen einsehen',
-	'lookupuser-desc' => '[[Special:LookupUser|Informationen]] über Benutzer erhalten, etwa E-Mail-Adresse oder ID.',
+	'lookupuser-desc' => '[[Special:LookupUser|Informationen]] über Benutzer erhalten wie E-Mail-Adresse und ID',
 	'lookupuser-intro' => 'Gib einen Benutzernamen ein, um dir die persönlichen Einstellungen eines Benutzers anzusehen.',
 	'lookupuser-nonexistent' => 'Fehler: Benutzer nicht vorhanden',
 	'lookupuser-authenticated' => 'E-Mail-Bestätigung: $1',
 	'lookupuser-not-authenticated' => 'nicht bestätigt',
-	'lookupuser-id' => 'Benutzer-ID: <tt>$1</tt>',
+	'lookupuser-id' => 'Benutzer-ID: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-Mail: [[Special:EmailUser/$2|$1]]',
-	'lookupuser-no-email' => 'nicht vorhanden',
-	'lookupuser-realname' => 'Wirklicher Name: $1',
+	'lookupuser-no-email' => 'nicht angegeben',
+	'lookupuser-realname' => 'Tatsächlicher Name: $1',
 	'lookupuser-registration' => 'Datum der Registrierung: $1',
 	'lookupuser-no-registration' => 'nicht verzeichnet',
 	'lookupuser-touched' => 'Benutzerkonto zuletzt berührt: $1',
@@ -861,15 +862,15 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'lookupuser' => 'ഉപയോക്താവിന്റെ വിവരം തിരയുക',
 	'lookupuser-nonexistent' => 'തെറ്റ്: ഉപയോക്താവ് നിലവിലില്ല',
-	'lookupuser-authenticated' => 'ഇമെയില്‍ സ്ഥിരീകരണം: $1',
+	'lookupuser-authenticated' => 'ഇമെയിൽ സ്ഥിരീകരണം: $1',
 	'lookupuser-not-authenticated' => 'സ്ഥിരീകരിച്ചിട്ടില്ല',
 	'lookupuser-id' => 'ഉപയോക്തൃ ഐ.ഡി.: <tt>#$1</tt>',
-	'lookupuser-email' => 'ഇമെയില്‍: [[Special:EmailUser/$2|$1]]',
-	'lookupuser-no-email' => 'നല്‍കിയിട്ടില്ല',
+	'lookupuser-email' => 'ഇമെയിൽ: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'നൽകിയിട്ടില്ല',
 	'lookupuser-realname' => 'ശരിയായ പേര്: $1',
-	'lookupuser-registration' => 'രജിസ്റ്റര്‍ ചെയ്ത തീയതി: $1',
-	'lookupuser-no-registration' => 'റെക്കോര്‍ഡ് ചെയ്തിട്ടില്ല',
-	'lookupuser-touched' => 'ഉപയോക്താവിന്റെ വിവരങ്ങള്‍ അവസാനം തിരുത്തിയത്: $1',
+	'lookupuser-registration' => 'രജിസ്റ്റർ ചെയ്ത തീയതി: $1',
+	'lookupuser-no-registration' => 'റെക്കോർഡ് ചെയ്തിട്ടില്ല',
+	'lookupuser-touched' => 'ഉപയോക്താവിന്റെ വിവരങ്ങൾ അവസാനം തിരുത്തിയത്: $1',
 );
 
 /** Marathi (मराठी)

@@ -933,17 +933,17 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'contributors' => 'സംഭാവന ചെയ്തവര്‍',
-	'contributors-desc' => 'ഒരു താളില്‍ സംഭാവന ചെയ്ത മുഖ്യ ലേഖകരുടെ വിവരം',
-	'contributors-toolbox' => 'സംഭാവന ചെയ്ത പ്രമുഖര്‍',
-	'contributors-legend' => 'ഒരു താളിലെ മുഖ്യ സംഭാവനക്കാരെ പ്രദര്‍ശിപ്പിക്കുന്നു',
-	'contributors-target' => 'ശീര്‍ഷകം:',
-	'contributors-submit' => 'പ്രദര്‍ശിപ്പിക്കുക',
-	'contributors-subtitle' => '$1ലെ മുഖ്യ സംഭാവക്കാര്‍',
-	'contributors-others-long' => 'ഈ താളിനു $1 മറ്റു സംഭാവക്കാര്‍ കൂടിയുണ്ട്.',
-	'contributors-others' => '$1 മറ്റുള്ളവര്‍',
-	'contributors-badtitle' => 'അസാധുവായ ശീര്‍ഷകം.',
-	'contributors-nosuchpage' => '$1 എന്ന താള്‍ നിലവിലില്ല.',
+	'contributors' => 'സംഭാവന ചെയ്തവർ',
+	'contributors-desc' => 'ഒരു താളിൽ സംഭാവന ചെയ്ത മുഖ്യ ലേഖകരുടെ വിവരം',
+	'contributors-toolbox' => 'സംഭാവന ചെയ്ത പ്രമുഖർ',
+	'contributors-legend' => 'ഒരു താളിലെ മുഖ്യ സംഭാവനക്കാരെ പ്രദർശിപ്പിക്കുന്നു',
+	'contributors-target' => 'ശീർഷകം:',
+	'contributors-submit' => 'പ്രദർശിപ്പിക്കുക',
+	'contributors-subtitle' => '$1ലെ മുഖ്യ സംഭാവക്കാർ',
+	'contributors-others-long' => 'ഈ താളിനു $1 മറ്റു സംഭാവക്കാർ കൂടിയുണ്ട്.',
+	'contributors-others' => '$1 മറ്റുള്ളവർ',
+	'contributors-badtitle' => 'അസാധുവായ ശീർഷകം.',
+	'contributors-nosuchpage' => '$1 എന്ന താൾ നിലവിലില്ല.',
 );
 
 /** Marathi (मराठी)
@@ -1381,7 +1381,7 @@ $messages['su'] = array(
 	'contributors-subtitle' => 'Kontributor utama $1',
 	'contributors-others-long' => 'Aya {{PLURAL:$1|hiji kontributor séjénna}} pikeun kaca ieu.',
 	'contributors-others' => 'sarta {{PLURAL:$1|hiji lianna|$1 lianna}}',
-	'contributors-badtitle' => 'Judulna teu sah.',
+	'contributors-badtitle' => 'Judulna teu bener.',
 	'contributors-nosuchpage' => 'Kaca $1 euweuh.',
 );
 

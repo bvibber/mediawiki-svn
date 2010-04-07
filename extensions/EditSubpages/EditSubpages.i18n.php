@@ -419,7 +419,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'editsubpages-desc' => 'സിസോപ്പിനു അജ്ഞാതരുടെ തിരുത്തലിനു വേണ്ടി ഒരു താളും അതിന്റെ ഉപതാളുകളും സ്വതന്ത്രക്കുവാന്‍ സാധിക്കുന്നു. [[MediaWiki:Unlockedpages]]',
+	'editsubpages-desc' => 'സിസോപ്പിനു അജ്ഞാതരുടെ തിരുത്തലിനു വേണ്ടി ഒരു താളും അതിന്റെ ഉപതാളുകളും സ്വതന്ത്രക്കുവാൻ സാധിക്കുന്നു. [[MediaWiki:Unlockedpages]]',
 );
 
 /** Marathi (मराठी)

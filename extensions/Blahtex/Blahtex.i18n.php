@@ -870,6 +870,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Drini
+ * @author Pertile
  */
 $messages['es'] = array(
 	'math_noblahtex' => 'No se puede ejecutar blahtex, que deberia estar en $1',
@@ -899,16 +900,40 @@ Sólo se permite uno.',
 	'math_IllegalNestedFontEncodings' => 'Comandos de codificación de fuentes no pueden estar anidados',
 	'math_IllegalRedefinition' => 'El comando "$1" ya ha sido definido; usted no puede redefinirlo',
 	'math_InvalidColour' => 'El color "$1" es inválido',
+	'math_InvalidUtf8Input' => 'La cadena de caracteres ingresada no era una cadena UTF-8 válida',
 	'math_LatexFontNotSpecified' => 'Ninguna fuente LaTeX ha sido especificada para "$1"',
 	'math_LatexPackageUnavailable' => 'Incapaz de representar PNG porque el paquete LaTeX "$1" está indisponible',
 	'math_MismatchedBeginAndEnd' => 'Comandos "$1" y "$2" no coinciden',
 	'math_MisplacedLimits' => 'El comando "$1" solo puede aparecer después de un operador matemático.
 Considera usar "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'El nombre del nuevo comando tras "\\newcommand" es ilegal o bien no fue ingresado.
+Deber haber exactamente un comando definido;
+debe comenzar con una barra invertida "\\" y contener únicamente caracteres alfabéticos.',
+	'math_MissingDelimiter' => 'Falta el delimitador tras "$1"',
+	'math_MissingOpenBraceAfter' => 'Falta la llave de apertura "{" tras "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Falta la llave de apertura "{" al final de la entrada',
+	'math_MissingOpenBraceBefore' => 'Falta la llave de apertura "{" antes de "$1"',
+	'math_MissingOrIllegalParameterCount' => 'No hay parámetros o bien la cantidad de los mismos no es la permitida en la definición de "$1".
+Debe ser un dígito simple entre 1 y 9 inclusive.',
+	'math_MissingOrIllegalParameterIndex' => 'Falta o es incorrecto el índice de parámetro en la definición de "$1"',
+	'math_NonAsciiInMathMode' => 'Los caracteres no ASCII pueden ser únicamente utilizados en el modo texto.
+Intente ingresando los caracteres que ocasionaron el problema utilizando "\\text{...}".',
 	'math_NotEnoughArguments' => 'Insuficientes argumentos fueron dados para "$1"',
 	'math_PngIncompatibleCharacter' => 'Incapaz de generar correctamente PNG conteniendo el caracter $1',
+	'math_ReservedCommand' => 'El comando "$1" está reservado para uso interno por blahtex',
+	'math_SubstackRowTooBig' => 'Solamente puede haber una entrada en cada fila del bloque "subpila"',
 	'math_TooManyMathmlNodes' => 'Hay demasiados nodos en el árbol MathML',
 	'math_TooManyTokens' => 'La entrada es demasiado larga',
 	'math_UnavailableSymbolFontCombination' => 'El símbolo "$1" no está disponible en la fuente "$2"',
+	'math_UnexpectedNextCell' => 'El comando "&" puede únicamente aparecer dentro de un bloque "\\begin ... \\end"',
+	'math_UnexpectedNextRow' => 'El comando "\\\\" puede únicamente aparecer dentro de un bloque "\\begin ... \\end".',
+	'math_UnmatchedBegin' => 'Se encontró un "\\begin" sin su correspondiente "\\end"',
+	'math_UnmatchedCloseBrace' => 'Se encontró una llave de cierre "}" sin su correspondiente llave de apertura "{"',
+	'math_UnmatchedEnd' => 'Se encontró un "\\end" sin su correspondiente "\\begin"',
+	'math_UnmatchedLeft' => 'Se encontró un "\\left" sin su correspondiente "\\right"',
+	'math_UnmatchedOpenBrace' => 'Se encontró una llave de apertura "{" sin su correspondiente llave de cierre "}"',
+	'math_UnmatchedOpenBracket' => 'Se encontró un corchete de apertura "[" sin su correspondiente corchete de cierre "]"',
+	'math_UnmatchedRight' => 'Se encontró un "\\right" sin su correspondiente "\\left"',
 	'math_UnrecognisedCommand' => 'Comando irreconocible "$1"',
 	'math_WrongFontEncoding' => 'El símbolo "$1" puede no aparecer en la codificación de fuente "$2"',
 	'math_WrongFontEncodingWithHint' => 'El símbolo "$1" puede no aparecer en la codificación de fuente "$2".
@@ -2034,34 +2059,34 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'math-desc' => '&lt;math&gt; എന്നീ ടാഗുകള്‍ക്കുള്ള MathML ഔട്ട്പുട്ട്',
-	'math_CannotChangeDirectory' => 'നിലവില്‍ പ്രവര്‍ത്തിക്കുന്ന ഡയറക്ടറി മാറ്റുവാന്‍ പറ്റില്ല',
-	'math_CannotCreateTexFile' => 'tex പ്രമാണം സൃഷ്ടിക്കുവാന്‍ കഴിഞ്ഞില്ല',
-	'math_CannotRunLatex' => 'latex പ്രവര്‍ത്തിപ്പിക്കുവാന്‍ കഴിഞ്ഞില്ല',
-	'math_CannotWriteTexFile' => 'tex പ്രമാണത്തിലേക്ക് എഴുതുവാന്‍ കഴിഞ്ഞില്ല',
-	'math_DoubleSubscript' => 'ഒരേ ബേസില്‍ രണ്ട് സബ്‌സ്ക്രിപ്റ്റുകള്‍ ചേര്‍ത്തിരിക്കുന്നു.
+	'math-desc' => '&lt;math&gt; എന്നീ ടാഗുകൾക്കുള്ള MathML ഔട്ട്പുട്ട്',
+	'math_CannotChangeDirectory' => 'നിലവിൽ പ്രവർത്തിക്കുന്ന ഡയറക്ടറി മാറ്റുവാൻ പറ്റില്ല',
+	'math_CannotCreateTexFile' => 'tex പ്രമാണം സൃഷ്ടിക്കുവാൻ കഴിഞ്ഞില്ല',
+	'math_CannotRunLatex' => 'latex പ്രവർത്തിപ്പിക്കുവാൻ കഴിഞ്ഞില്ല',
+	'math_CannotWriteTexFile' => 'tex പ്രമാണത്തിലേക്ക് എഴുതുവാൻ കഴിഞ്ഞില്ല',
+	'math_DoubleSubscript' => 'ഒരേ ബേസിൽ രണ്ട് സബ്‌സ്ക്രിപ്റ്റുകൾ ചേർത്തിരിക്കുന്നു.
 ഒന്നു മാത്രമേ അനുവദനീയമായുള്ളൂ.',
-	'math_DoubleSuperscript' => 'ഒരേ ബേസില്‍ രണ്ട് സൂപ്പര്‍സ്ക്രിപ്റ്റുകള്‍ ചേര്‍ത്തിരിക്കുന്നു.
+	'math_DoubleSuperscript' => 'ഒരേ ബേസിൽ രണ്ട് സൂപ്പർസ്ക്രിപ്റ്റുകൾ ചേർത്തിരിക്കുന്നു.
 ഒന്നു മാത്രമേ അനുവദനീയമായുള്ളൂ.',
-	'math_IllegalCharacter' => 'ഇന്‍പുട്ടില്‍ അസാധുവായ അക്ഷരം',
-	'math_IllegalCommandInMathMode' => 'മാത്ത് മോഡില്‍ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌',
-	'math_IllegalCommandInMathModeWithHint' => 'മാത്ത് മോഡില്‍ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌. താങ്കള്‍ "$2" എന്ന് ഉപയോഗിക്കാനാണൊ ഉദ്ദേശിച്ചത്?',
-	'math_IllegalCommandInTextMode' => 'ടെക്സ്റ്റ് മോഡില്‍ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌',
-	'math_IllegalCommandInTextModeWithHint' => 'ടെക്സ്റ്റ് മോഡില്‍ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌. താങ്കള്‍ "$2" എന്ന് ഉപയോഗിക്കാനാണൊ ഉദ്ദേശിച്ചത്?',
-	'math_IllegalFinalBackslash' => 'ഇന്‍‌പുട്ടിന്റെ അവസാനത്തില്‍ അനുവദനീയമല്ലാത്ത "\\" (ബാക്ക്സ്ലാഷ്)',
-	'math_IllegalRedefinition' => '"$1" എന്ന ആജ്ഞ ഇതിനകം നിര്‍‌വചിച്ചു കഴിഞ്ഞു. താങ്കള്‍ക്ക് അതു പുനര്‍നിര്‍‌വചനം നടത്തുന്നതിനു സാദ്ധ്യമല്ല.',
+	'math_IllegalCharacter' => 'ഇൻപുട്ടിൽ അസാധുവായ അക്ഷരം',
+	'math_IllegalCommandInMathMode' => 'മാത്ത് മോഡിൽ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌',
+	'math_IllegalCommandInMathModeWithHint' => 'മാത്ത് മോഡിൽ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌. താങ്കൾ "$2" എന്ന് ഉപയോഗിക്കാനാണൊ ഉദ്ദേശിച്ചത്?',
+	'math_IllegalCommandInTextMode' => 'ടെക്സ്റ്റ് മോഡിൽ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌',
+	'math_IllegalCommandInTextModeWithHint' => 'ടെക്സ്റ്റ് മോഡിൽ "$1" എന്നത് അനുവദനീയമല്ലാത്ത ഒരു ആജ്ഞയാണ്‌. താങ്കൾ "$2" എന്ന് ഉപയോഗിക്കാനാണൊ ഉദ്ദേശിച്ചത്?',
+	'math_IllegalFinalBackslash' => 'ഇൻ‌പുട്ടിന്റെ അവസാനത്തിൽ അനുവദനീയമല്ലാത്ത "\\" (ബാക്ക്സ്ലാഷ്)',
+	'math_IllegalRedefinition' => '"$1" എന്ന ആജ്ഞ ഇതിനകം നിർ‌വചിച്ചു കഴിഞ്ഞു. താങ്കൾക്ക് അതു പുനർനിർ‌വചനം നടത്തുന്നതിനു സാദ്ധ്യമല്ല.',
 	'math_InvalidColour' => '"$1" എന്ന നിറം അസാധുവാണ്‌',
-	'math_InvalidUtf8Input' => 'ഇന്‍‌പുട്ട് സ്ട്രിങ്ങ് സാധുവായ UTF-8 അല്ല.',
+	'math_InvalidUtf8Input' => 'ഇൻ‌പുട്ട് സ്ട്രിങ്ങ് സാധുവായ UTF-8 അല്ല.',
 	'math_LatexFontNotSpecified' => '"$1"നു LaTeX ഫോണ്ട് തിരഞ്ഞെടുത്തിട്ടില്ല.',
-	'math_MismatchedBeginAndEnd' => '"$1"  "$2" എന്നീ രണ്ട് നിര്‍ദ്ദേശങ്ങള്‍ തമ്മില്‍ യോജിക്കുന്നില്ല',
-	'math_MisplacedLimits' => '"$1"  എന്ന ആജ്ഞ ഒരു മാത്ത് ഓപ്പറേറ്ററിനു ശേഷം മാത്രമേ വരാവൂ. "\\mathop" എന്ന ഓപ്പറേറ്റര്‍ ഉപയോഗിക്കുന്നതു പരിഗണിക്കൂ.',
-	'math_MissingOpenBraceAfter' => '"$1" നു ശേഷം "{" എന്ന ബ്രാക്കറ്റ് ചേര്‍ത്തിട്ടില്ല',
-	'math_MissingOpenBraceAtEnd' => 'ഇന്‍‌പുട്ടിന്റെ അവസാനം "{" എന്ന ബ്രാക്കറ്റ് ചേര്‍ത്തിട്ടില്ല',
-	'math_MissingOpenBraceBefore' => '"$1" നു മുന്‍പ് "{" എന്ന ബ്രാക്കറ്റ് ചേര്‍ത്തിട്ടില്ല',
-	'math_TooManyTokens' => 'ഇന്‍പുട്ടിനു നീളം വളരെ കൂടുതലാണ്‌',
-	'math_UnavailableSymbolFontCombination' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ടില്‍ ലഭ്യമല്ല',
-	'math_UnexpectedNextCell' => '"&" എന്ന നിര്‍ദ്ദേശം "\\begin ... \\end" എന്നീ ടാഗുകള്‍ക്ക് അകത്തേ അനുവദനീയമായുള്ളൂ',
-	'math_UnexpectedNextRow' => '"\\\\" എന്ന നിര്‍ദ്ദേശം "\\begin ... \\end" എന്നീ ടാഗുകള്‍ക്ക് അകത്തേ അനുവദനീയമായുള്ളൂ',
+	'math_MismatchedBeginAndEnd' => '"$1"  "$2" എന്നീ രണ്ട് നിർദ്ദേശങ്ങൾ തമ്മിൽ യോജിക്കുന്നില്ല',
+	'math_MisplacedLimits' => '"$1"  എന്ന ആജ്ഞ ഒരു മാത്ത് ഓപ്പറേറ്ററിനു ശേഷം മാത്രമേ വരാവൂ. "\\mathop" എന്ന ഓപ്പറേറ്റർ ഉപയോഗിക്കുന്നതു പരിഗണിക്കൂ.',
+	'math_MissingOpenBraceAfter' => '"$1" നു ശേഷം "{" എന്ന ബ്രാക്കറ്റ് ചേർത്തിട്ടില്ല',
+	'math_MissingOpenBraceAtEnd' => 'ഇൻ‌പുട്ടിന്റെ അവസാനം "{" എന്ന ബ്രാക്കറ്റ് ചേർത്തിട്ടില്ല',
+	'math_MissingOpenBraceBefore' => '"$1" നു മുൻപ് "{" എന്ന ബ്രാക്കറ്റ് ചേർത്തിട്ടില്ല',
+	'math_TooManyTokens' => 'ഇൻപുട്ടിനു നീളം വളരെ കൂടുതലാണ്‌',
+	'math_UnavailableSymbolFontCombination' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ടിൽ ലഭ്യമല്ല',
+	'math_UnexpectedNextCell' => '"&" എന്ന നിർദ്ദേശം "\\begin ... \\end" എന്നീ ടാഗുകൾക്ക് അകത്തേ അനുവദനീയമായുള്ളൂ',
+	'math_UnexpectedNextRow' => '"\\\\" എന്ന നിർദ്ദേശം "\\begin ... \\end" എന്നീ ടാഗുകൾക്ക് അകത്തേ അനുവദനീയമായുള്ളൂ',
 	'math_UnmatchedBegin' => '"\\begin"  ടാഗ് "\\end" ടാഗില്ലാതെ കാണുന്നു',
 	'math_UnmatchedCloseBrace' => 'ബ്രാക്കറ്റ് അടയ്ക്കുന്ന ചിഹ്നമായ "}"  ബ്രാക്കറ്റ് തുറക്കുന്ന ചിഹ്നമായ "{" ഇല്ലാതെ കാണുന്നു',
 	'math_UnmatchedEnd' => '"\\end" ടാഗ് "\\begin" ടാഗില്ലാതെ കാണുന്നു',
@@ -2069,9 +2094,9 @@ $messages['ml'] = array(
 	'math_UnmatchedOpenBrace' => 'ബ്രാക്കറ്റ് തുറക്കുന്ന ചിഹ്നമായ "{" ബ്രാക്കറ്റ് അടയ്ക്കുന്ന ചിഹ്നമായ "}" ഇല്ലാതെ കാണുന്നു',
 	'math_UnmatchedOpenBracket' => '"[" എന്ന ബ്രാക്കറ്റ്ചിഹ്നം "]" എന്ന ബ്രാകറ്റ്ചിഹ്നമില്ലാതെ കാണുന്നു',
 	'math_UnmatchedRight' => '"\\right" ടാഗ് "\\left" ടാഗില്ലാതെ കാണുന്നു',
-	'math_UnrecognisedCommand' => 'തിരച്ചറിയാന്‍ പറ്റാഞ്ഞ നിര്‍ദ്ദേശം "$1"',
-	'math_WrongFontEncoding' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ട് എന്‍‌കോഡിങ്ങില്‍ അനുവദനീയമല്ല.',
-	'math_WrongFontEncodingWithHint' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ട് എന്‍‌കോഡിങ്ങില്‍ അനുവദനീയമല്ല. ദയവായി "$3{...}" എന്ന കമാന്റ് പരീക്ഷിക്കുക.',
+	'math_UnrecognisedCommand' => 'തിരച്ചറിയാൻ പറ്റാഞ്ഞ നിർദ്ദേശം "$1"',
+	'math_WrongFontEncoding' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ട് എൻ‌കോഡിങ്ങിൽ അനുവദനീയമല്ല.',
+	'math_WrongFontEncodingWithHint' => '"$1" എന്ന ചിഹ്നം "$2" എന്ന ഫോണ്ട് എൻ‌കോഡിങ്ങിൽ അനുവദനീയമല്ല. ദയവായി "$3{...}" എന്ന കമാന്റ് പരീക്ഷിക്കുക.',
 );
 
 /** Marathi (मराठी)

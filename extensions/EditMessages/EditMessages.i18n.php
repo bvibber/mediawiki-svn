@@ -911,14 +911,14 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'editmessages-desc' => 'എണ്ണത്തില്‍ കൂടുതലുള്ള Messages*.php പ്രമാണങ്ങള്‍ [[Special:EditMessages|വെബ്ബില്‍ കൂടി തിരുത്താനുള്ള സം‌വിധാനം]]',
-	'editmessages' => 'സന്ദേശങ്ങള്‍ തിരുത്തുക',
+	'editmessages-desc' => 'എണ്ണത്തിൽ കൂടുതലുള്ള Messages*.php പ്രമാണങ്ങൾ [[Special:EditMessages|വെബ്ബിൽ കൂടി തിരുത്താനുള്ള സം‌വിധാനം]]',
+	'editmessages' => 'സന്ദേശങ്ങൾ തിരുത്തുക',
 	'editmsg-target' => 'തിരുത്താനുള്ള സന്ദേശം:',
 	'editmsg-search' => 'തിരയൂ',
-	'editmsg-show-list' => '"$1" എന്ന സന്ദേശത്തിന്റെ മൂല്യങ്ങള്‍ കാണിക്കുന്നു.',
-	'editmsg-new-search' => 'പുതിയ തിരച്ചില്‍',
-	'editmsg-warning-file' => '* താഴെ പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്ന ഭാഷകള്‍ക്ക് പ്രമാണം വായിക്കുമ്പോള്‍ പിഴവ് സംഭവിച്ചു: $1',
-	'editmsg-no-patch' => '"patch" കമാന്റ് ഓടിക്കാന്‍ പറ്റിയില്ല',
+	'editmsg-show-list' => '"$1" എന്ന സന്ദേശത്തിന്റെ മൂല്യങ്ങൾ കാണിക്കുന്നു.',
+	'editmsg-new-search' => 'പുതിയ തിരച്ചിൽ',
+	'editmsg-warning-file' => '* താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന ഭാഷകൾക്ക് പ്രമാണം വായിക്കുമ്പോൾ പിഴവ് സംഭവിച്ചു: $1',
+	'editmsg-no-patch' => '"patch" കമാന്റ് ഓടിക്കാൻ പറ്റിയില്ല',
 	'editmsg-patch-success' => 'വിജയകരമായി പാച്ച് ചെയ്തിരിക്കുന്നു.',
 );
 

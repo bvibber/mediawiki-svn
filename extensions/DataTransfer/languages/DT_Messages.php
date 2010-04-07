@@ -1202,14 +1202,14 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'viewxml' => 'XML കാണുക',
-	'dt_viewxml_categories' => 'വർഗ്ഗങ്ങള്‍',
-	'dt_viewxml_namespaces' => 'നാമമേഖലകള്‍',
-	'dt_viewxml_simplifiedformat' => 'ലളിതവത്ക്കരിക്കപ്പെട്ട ഫോര്‍മാറ്റ്',
+	'dt_viewxml_categories' => 'വർഗ്ഗങ്ങൾ',
+	'dt_viewxml_namespaces' => 'നാമമേഖലകൾ',
+	'dt_viewxml_simplifiedformat' => 'ലളിതവത്ക്കരിക്കപ്പെട്ട ഫോർമാറ്റ്',
 	'dt_xml_namespace' => 'നാമമേഖല',
-	'dt_xml_page' => 'താള്‍',
-	'dt_xml_field' => 'ഫീല്‍ഡ്',
+	'dt_xml_page' => 'താൾ',
+	'dt_xml_field' => 'ഫീൽഡ്',
 	'dt_xml_name' => 'പേര്‌',
-	'dt_xml_title' => 'ശീര്‍ഷകം',
+	'dt_xml_title' => 'ശീർഷകം',
 	'dt_xml_id' => 'ഐ.ഡി.',
 );
 

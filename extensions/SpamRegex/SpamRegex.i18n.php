@@ -1073,8 +1073,8 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'spamregex-unblock-success' => 'സ്വതന്ത്രമാക്കല്‍ വിജയിച്ചിരിക്കുന്നു',
-	'spamregex-block-success' => 'തടയല്‍ വിജയിച്ചിരിക്കുന്നു',
+	'spamregex-unblock-success' => 'സ്വതന്ത്രമാക്കൽ വിജയിച്ചിരിക്കുന്നു',
+	'spamregex-block-success' => 'തടയൽ വിജയിച്ചിരിക്കുന്നു',
 	'spamregex-already-blocked' => '"$1" ഇതിനകം തന്നെ തടയപ്പെട്ടിരിക്കുന്നു.',
 	'spamregex-summary-log' => '(ചുരുക്കം)',
 );
@@ -1386,7 +1386,7 @@ $messages['pt'] = array(
 	'spamregex' => 'Expressão regular de spam',
 	'spamregex-desc' => '[[Special:SpamRegex|Filtrar]] frases indesejadas em páginas editadas, com base em expressões regulares',
 	'spamregex-error-unblocking' => 'Erro ao desbloquear "$1". Provavelmente, não existe tal padrão.',
-	'spamregex-summary' => 'O texto foi encontrado no sumário da página.',
+	'spamregex-summary' => 'O texto foi encontrado no resumo da página.',
 	'spamregex-intro' => 'Use este formulário para efetivamente bloquear expressões de serem gravadas no texto de uma página.
 Se o texto contém a dada expressão, as alterações não serão gravadas e uma explicação será apresentada ao utilizador que tentou gravar a página.
 Pede-se atenção: as expressões não deverão ser demasiado curtas ou demasiado comuns.',
@@ -1407,10 +1407,10 @@ Pede-se atenção: as expressões não deverão ser demasiado curtas ou demasiad
 	'spamregex-already-blocked' => '"$1" já está bloqueado',
 	'spamregex-phrase-block' => 'Frase a bloquear:',
 	'spamregex-phrase-block-text' => 'bloquear frase no texto da página',
-	'spamregex-phrase-block-summary' => 'bloquear frase no sumário',
+	'spamregex-phrase-block-summary' => 'bloquear frase no resumo',
 	'spamregex-block-submit' => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text' => '(Texto)',
-	'spamregex-summary-log' => '(Sumário)',
+	'spamregex-summary-log' => '(Resumo)',
 	'right-spamregex' => 'Bloquear frases de spam através de [[Special:SpamRegex]]',
 );
 

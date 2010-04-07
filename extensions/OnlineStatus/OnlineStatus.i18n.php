@@ -728,13 +728,13 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'onlinestatus-subtitle-offline' => 'ഈ ഉപയോക്താവ് നിലവില്‍ ഓഫ്‌ലൈന്‍ ആണ്‌',
-	'onlinestatus-subtitle-online' => 'ഈ ഉപയോക്താവ് നിലവില്‍ ഓഫ്‌ലൈന്‍ ആണ്‌',
+	'onlinestatus-subtitle-offline' => 'ഈ ഉപയോക്താവ് നിലവിൽ ഓഫ്‌ലൈൻ ആണ്‌',
+	'onlinestatus-subtitle-online' => 'ഈ ഉപയോക്താവ് നിലവിൽ ഓഫ്‌ലൈൻ ആണ്‌',
 	'onlinestatus-toggles-desc' => 'താങ്കളുടെ സ്ഥിതി:',
-	'onlinestatus-toggles-explain' => 'താങ്കളുടെ ഉപയോക്തൃതാള്‍ കാണുമ്പോള്‍ താങ്കള്‍ ഓണ്‍ലൈന്‍ ആണോ അല്ലയോ എന്നു മറ്റുള്ളവര്‍ക്ക് മനസ്സിലാക്കാന്‍ ഈ സം‌വിധാനം സഹായിക്കുന്നു.',
-	'onlinestatus-toggles-show' => 'ഓണ്‍‌ലൈന്‍ സ്ഥിതി എന്റെ ഉപയോക്തൃതാളില്‍ പ്രദര്‍ശിപ്പിക്കുക',
-	'onlinestatus-toggle-offline' => 'ഓഫ്‌ലൈന്‍',
-	'onlinestatus-toggle-online' => 'ഓണ്‍ലൈന്‍',
+	'onlinestatus-toggles-explain' => 'താങ്കളുടെ ഉപയോക്തൃതാൾ കാണുമ്പോൾ താങ്കൾ ഓൺലൈൻ ആണോ അല്ലയോ എന്നു മറ്റുള്ളവർക്ക് മനസ്സിലാക്കാൻ ഈ സം‌വിധാനം സഹായിക്കുന്നു.',
+	'onlinestatus-toggles-show' => 'ഓൺ‌ലൈൻ സ്ഥിതി എന്റെ ഉപയോക്തൃതാളിൽ പ്രദർശിപ്പിക്കുക',
+	'onlinestatus-toggle-offline' => 'ഓഫ്‌ലൈൻ',
+	'onlinestatus-toggle-online' => 'ഓൺലൈൻ',
 );
 
 /** Marathi (मराठी)

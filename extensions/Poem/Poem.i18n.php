@@ -360,7 +360,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'poem-desc' => 'പദ്യത്തിന്റെ ഫോര്‍മാറ്റിങ്ങിനു <tt>&lt;poem&gt;</tt>  എന്ന ടാഗ് ചേര്‍ക്കുന്നു',
+	'poem-desc' => 'പദ്യത്തിന്റെ ഫോർമാറ്റിങ്ങിനു <tt>&lt;poem&gt;</tt>  എന്ന ടാഗ് ചേർക്കുന്നു',
 );
 
 /** Marathi (मराठी)

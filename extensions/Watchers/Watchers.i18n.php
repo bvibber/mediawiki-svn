@@ -648,13 +648,13 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'watchers' => 'നിരീക്ഷകര്‍',
-	'watchers_link_title' => 'ഈ താള്‍ ആരൊക്കെ നിരീക്ഷിക്കുന്നു?',
-	'watchers_error_article' => '<b>പിഴവ്:</b> താള്‍ നിലവിലില്ല',
-	'watchers_header' => '"[[:$1]]" ശ്രദ്ധിക്കുന്ന ഉപയോക്താക്കള്‍',
-	'watchers_noone_watches' => 'ഈ താള്‍ ആരും നിരീക്ഷിക്കുന്നില്ല.',
-	'watchers_x_or_more' => '$1 ഓ അതിലധികമോ ഉപയോക്താക്കള്‍ ഈ താള്‍ ശ്രദ്ധിക്കുന്നുണ്ട്.',
-	'watchers_less_than_x' => 'ഈ താള്‍ $1ല്‍ കുറവ് ഉപയോക്താക്കള്‍ മാത്രമേ ശ്രദ്ധിക്കുന്നുള്ളൂ.',
+	'watchers' => 'നിരീക്ഷകർ',
+	'watchers_link_title' => 'ഈ താൾ ആരൊക്കെ നിരീക്ഷിക്കുന്നു?',
+	'watchers_error_article' => '<b>പിഴവ്:</b> താൾ നിലവിലില്ല',
+	'watchers_header' => '"[[:$1]]" ശ്രദ്ധിക്കുന്ന ഉപയോക്താക്കൾ',
+	'watchers_noone_watches' => 'ഈ താൾ ആരും നിരീക്ഷിക്കുന്നില്ല.',
+	'watchers_x_or_more' => '$1 ഓ അതിലധികമോ ഉപയോക്താക്കൾ ഈ താൾ ശ്രദ്ധിക്കുന്നുണ്ട്.',
+	'watchers_less_than_x' => 'ഈ താൾ $1ൽ കുറവ് ഉപയോക്താക്കൾ മാത്രമേ ശ്രദ്ധിക്കുന്നുള്ളൂ.',
 );
 
 /** Marathi (मराठी)
@@ -770,10 +770,12 @@ $messages['pl'] = array(
 	'watchers-desc' => 'Pokazuje [[Special:Watchers|użytkowników, którzy mają stroną w obserwowanych]]',
 	'watchers_link_title' => 'Kto obserwuje tę stronę?',
 	'watchers_error_article' => '<b>Błąd:</b> Strona nie istnieje',
+	'watchers-error-invalid-page' => "'''Błąd''' – „$1” jest nieprawidłowym tytułem strony.",
 	'watchers_header' => '{{PLURAL:$2|Obserwujący|Obserwujący}} „[[:$1]]”',
 	'watchers_noone_watches' => 'Nikt nie obserwuje tej strony',
 	'watchers_x_or_more' => 'Przynajmniej $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
 	'watchers_less_than_x' => 'Mniej niż $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
+	'watchers-num' => '$1 {{PLURAL:$1|użytkownik ma|użytkowników ma}} stronę [[:$2]] na swojej liście obserwowanych.',
 	'right-watchers-list' => '[[Special:Watchers|Przeglądanie spisu użytkowników, którzy określoną stronę mają na swojej liście obserwowanych]]',
 );
 

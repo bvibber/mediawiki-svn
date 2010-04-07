@@ -249,6 +249,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author LWChris
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -256,8 +257,8 @@ $messages['de'] = array(
 	'importfreeimages' => 'Import freier Bilder',
 	'importfreeimages-desc' => 'Ermöglicht den [[Special:ImportFreeImages|Import freier Bilder]] von [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Diese Seite erlaubt dir, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',
-	'importfreeimages_nophotosfound' => 'Es wurden keine Fotos mit den Suchkriterien „$1“ gefunden.',
-	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_nophotosfound' => 'Es wurden keine Fotos mit den Suchkriterien "$1" gefunden, bitte versuche es erneut.',
+	'importfreeimages_owner' => 'Urheber',
 	'importfreeimages_importthis' => 'importieren',
 	'importfreeimages_next' => 'Nächste $1',
 	'importfreeimages_size_square' => 'Quadrat',
@@ -816,13 +817,11 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'importfreeimages' => 'സൗജന്യ ചിത്രങ്ങള്‍ ഇറക്കുമതി ചെയ്യുക',
-	'importfreeimages_nophotosfound' => "'$1' എന്ന തിരച്ചില്‍ ക്രൈറ്റീയ ഉപയോഗിച്ച് ചിത്രങ്ങള്‍ ഒന്നും കണ്ടെത്താന്‍ കഴിഞ്ഞില്ല. ഒന്നു കൂടി ശ്രമിക്കൂ.",
-	'importfreeimages_invalidurl' => '"$1" എന്ന URL സാധുവായ ഒരു ഫ്ലിക്കര്‍ ചിത്രം അല്ല.',
-	'importfreeimages_owner' => 'ലേഖകന്‍',
+	'importfreeimages' => 'സൗജന്യ ചിത്രങ്ങൾ ഇറക്കുമതി ചെയ്യുക',
+	'importfreeimages_nophotosfound' => "'$1' എന്ന തിരച്ചിൽ ക്രൈറ്റീയ ഉപയോഗിച്ച് ചിത്രങ്ങൾ ഒന്നും കണ്ടെത്താൻ കഴിഞ്ഞില്ല. ഒന്നു കൂടി ശ്രമിക്കൂ.",
+	'importfreeimages_owner' => 'ലേഖകൻ',
 	'importfreeimages_importthis' => 'ഇതു ഇറക്കുമതി ചെയ്യുക',
 	'importfreeimages_next' => 'അടുത്ത $1',
-	'importfreeimages_filefromflickr' => '<b>[$2]</b> എന്ന ഉപയോക്താവിന്റെ  ഫ്ലിക്കറില്‍ നിന്നുള്ള $1. ചിത്രത്തിലേക്കുള്ള URL',
 );
 
 /** Marathi (मराठी)
@@ -1012,17 +1011,16 @@ $messages['pl'] = array(
 	'importfreeimages' => 'Import grafik na odpowiednich licencjach',
 	'importfreeimages-desc' => 'Umożliwia [[Special:ImportFreeImages|import grafik z odpowiednią licencją]] z [http://www.flickr.com flickra]',
 	'importfreeimages_description' => 'Ta strona pozwala na wyszukiwanie na serwisie flickr zdjęć z odpowiednią licencją i na ich import do wiki.',
-	'importfreeimages_noapikey' => 'Nie masz skonfigurowanego klucza API Flickr.
-Klucz API można uzyskać [http://www.flickr.com/services/api/misc.api_keys.html tutaj], a następnie należy ustawić $wgFlickrAPIKey  w ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => 'Żadne zdjęcie nie zostało odnalezione na podstawie kryterium „$1”. Spróbuj ponownie.',
-	'importfreeimages_invalidurl' => 'Adres URL „$1” nie jest prawidłowym odwołaniem do obrazka w serwisie Flickr.',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importuj',
 	'importfreeimages_next' => 'Następne $1',
-	'importfreeimages_filefromflickr' => '$1 przez użytkownika <b>[$2]</b> z serwisu flickr. Oryginalny adres URL to',
-	'importfreeimages_promptuserforfilename' => 'Wprowadź nazwę pliku docelowego',
-	'importfreeimages_returntoform' => "Kliknij <a href='$1'>tutaj</a> żeby powrócić do wyników wyszukiwania",
-	'importfreeimages_nophpflickr' => 'Nie masz zainstalowanego phpFlickr, ustaw $wgIFphpFlickr w LocalSettings.php.',
+	'importfreeimages_size_square' => 'Kwadrat',
+	'importfreeimages_size_thumbnail' => 'Miniatura',
+	'importfreeimages_size_small' => 'Mały',
+	'importfreeimages_size_medium' => 'Średni',
+	'importfreeimages_size_large' => 'Duży',
+	'importfreeimages_size_original' => 'Oryginalny',
 );
 
 /** Piedmontese (Piemontèis)

@@ -285,7 +285,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'emailaddressimage-desc' => 'ഇമെയില്‍ വിലാസം ചിത്രമായി കാണിക്കുവാന്‍ വേണ്ടി <tt>&lt;email&gt;</tt> ചേര്‍ക്കുന്നു',
+	'emailaddressimage-desc' => 'ഇമെയിൽ വിലാസം ചിത്രമായി കാണിക്കുവാൻ വേണ്ടി <tt>&lt;email&gt;</tt> ചേർക്കുന്നു',
 );
 
 /** Marathi (मराठी)

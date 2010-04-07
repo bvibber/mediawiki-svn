@@ -1147,11 +1147,11 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'sitematrix' => 'വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക',
-	'sitematrix-summary' => 'ഈ താള്‍ വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുന്നു.',
-	'sitematrix-desc' => '[[Special:SiteMatrix|മീഡിയാവിക്കി വിക്കികളുടെ പട്ടിക]] പ്രദര്‍ശിപ്പിക്കുന്നു',
+	'sitematrix-summary' => 'ഈ താൾ വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക പ്രദർശിപ്പിക്കുന്നു.',
+	'sitematrix-desc' => '[[Special:SiteMatrix|മീഡിയാവിക്കി വിക്കികളുടെ പട്ടിക]] പ്രദർശിപ്പിക്കുന്നു',
 	'sitematrix-language' => 'ഭാഷ',
 	'sitematrix-project' => 'സം‌രംഭത്തിന്റെ പേര്‌, സഹസം‌രംഭങ്ങളിലേക്കുള്ള കണ്ണി, മറ്റ് വിക്കികളിലേക്കുള്ള കണ്ണി',
-	'sitematrix-others' => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങള്‍',
+	'sitematrix-others' => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങൾ',
 	'sitematrix-total' => "'''മൊത്തം എണ്ണം: $1'''",
 	'sitematrix-sitetotal' => 'മൊത്തം',
 	'sitematrix-private' => 'സ്വകാര്യം',

@@ -300,6 +300,13 @@ $messages['sr-el'] = array(
 	'magicnonumberedheadings-desc' => 'Dodaje magičnu reč "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'magicnonumberedheadings-desc' => 'Nambahkeun jajampé "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

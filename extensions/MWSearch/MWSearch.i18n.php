@@ -368,7 +368,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'mwsearch-desc' => 'മീഡിയാവിക്കി തിരച്ചില്‍ പ്ലഗിന്‍',
+	'mwsearch-desc' => 'മീഡിയാവിക്കി തിരച്ചിൽ പ്ലഗിൻ',
 );
 
 /** Marathi (मराठी)

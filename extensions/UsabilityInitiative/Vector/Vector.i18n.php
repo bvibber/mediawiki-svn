@@ -129,10 +129,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'vector' => 'βελτιώσεις στο UI για το Vector',
-	'vector-desc' => 'Παρέχει βελτίωση στα στοιχεία διεπαφής χρήστης του skin Vector.',
+	'vector-desc' => 'Παρέχει βελτίωση στα στοιχεία διεπαφής χρήστη του skin Vector.',
 );
 
 /** Esperanto (Esperanto)

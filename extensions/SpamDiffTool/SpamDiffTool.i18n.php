@@ -967,7 +967,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'spamdifftool_submit_buttom' => 'സമര്‍പ്പിക്കുക',
+	'spamdifftool_submit_buttom' => 'സമർപ്പിക്കുക',
 );
 
 /** Marathi (मराठी)

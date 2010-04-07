@@ -365,14 +365,14 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'scanset-desc' => 'Rigardi bildojn de skanitaj paĝoj de la CD/DVD-kolekto de Andreas Grosz',
 	'scanset_no_name' => 'Eraro: Vi devas specifi nomon de skanitaĵaro, ekz. &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Eraro: Nevalida aŭ mankanta skanita bildaro.',
+	'scanset_invalid_name' => 'Eraro: Malvalida aŭ mankanta skanita bildaro.',
 	'scanset_unrecognised_index_format' => 'Eraro: Nekonata formato de indekso',
 	'scanset_opendir_error' => 'Eraro: Ne povas malfermi dosierujon $1',
 	'scanset_no_files' => 'Eraro: Neniuj dosieroj estas en tiu dosierujo.',
 	'scanset_no_volumes' => 'Eraro: Neniuj dosierujoj de datumportilo estis trovitaj',
 	'scanset_missing_index_file' => 'Eraro: Indeksa dosiero $1 ne estis trovita',
 	'scanset_index_file_error' => 'Earo: Eraro en formato de indeksa dosiero ĉe linio $1',
-	'scanset_invalid_volume' => 'Eraro: Nevalida datumportilo',
+	'scanset_invalid_volume' => 'Eraro: Malvalida datumportilo',
 	'scanset_next' => 'Sekva &gt;',
 	'scanset_prev' => '&lt; Antaŭa',
 );
@@ -886,18 +886,18 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'scanset-desc' => 'ആന്‍ഡ്രാസ് ഗ്രോസ്സിന്റെ സിഡി/ഡിവിഡി സെറ്റുകളില്‍ നിന്നു സ്കാന്‍ ചെയ്ത താളിന്റെ ചിത്രം കാണുക',
-	'scanset_no_name' => 'പിഴവ്: താങ്കള്‍ ഒരു സ്കാന്‍സെറ്റ് നാമം (ഉദാ. &lt;scanset name="EB1911" /&gt;) നിര്‍ബന്ധമായും കൊടുത്തിരിക്കണം.',
-	'scanset_invalid_name' => 'പിഴവ്: അസാധുവായ അല്ലെങ്കില്‍ നഷ്ടപെട്ടുപോയ സ്കാന്‍സെറ്റ്.',
+	'scanset-desc' => 'ആൻഡ്രാസ് ഗ്രോസ്സിന്റെ സിഡി/ഡിവിഡി സെറ്റുകളിൽ നിന്നു സ്കാൻ ചെയ്ത താളിന്റെ ചിത്രം കാണുക',
+	'scanset_no_name' => 'പിഴവ്: താങ്കൾ ഒരു സ്കാൻസെറ്റ് നാമം (ഉദാ. &lt;scanset name="EB1911" /&gt;) നിർബന്ധമായും കൊടുത്തിരിക്കണം.',
+	'scanset_invalid_name' => 'പിഴവ്: അസാധുവായ അല്ലെങ്കിൽ നഷ്ടപെട്ടുപോയ സ്കാൻസെറ്റ്.',
 	'scanset_unrecognised_index_format' => 'പിഴവ്: അറിയപ്പെടാത്ത സൂചിക ഫോർമാറ്റ്',
-	'scanset_opendir_error' => 'പിഴവ്: $1 എന്ന ഡയറക്ടറി തുറക്കാന്‍ പറ്റിയില്ല',
-	'scanset_no_files' => 'പിഴവ്: നിര്‍ദ്ദിഷ്ട ഡയറക്ടറിയില്‍ പ്രമാണങ്ങള്‍ ഒന്നുമില്ല.',
-	'scanset_no_volumes' => 'പിഴവ്: വാല്യം ഡയറക്ടറികള്‍ കണ്ടില്ല',
+	'scanset_opendir_error' => 'പിഴവ്: $1 എന്ന ഡയറക്ടറി തുറക്കാൻ പറ്റിയില്ല',
+	'scanset_no_files' => 'പിഴവ്: നിർദ്ദിഷ്ട ഡയറക്ടറിയിൽ പ്രമാണങ്ങൾ ഒന്നുമില്ല.',
+	'scanset_no_volumes' => 'പിഴവ്: വാല്യം ഡയറക്ടറികൾ കണ്ടില്ല',
 	'scanset_missing_index_file' => 'പിഴവ്: $1 എന്ന സൂചിക പ്രമാണം കണ്ടില്ല',
-	'scanset_index_file_error' => 'പിഴവ്: ഇന്‍ഡെക്സ് ഫയല്‍ ഫോര്‍മാറ്റിന്റെ $1 വരിയില്‍ പിഴവ്',
+	'scanset_index_file_error' => 'പിഴവ്: ഇൻഡെക്സ് ഫയൽ ഫോർമാറ്റിന്റെ $1 വരിയിൽ പിഴവ്',
 	'scanset_invalid_volume' => 'പിഴവ്: അസാധുവായ വാല്യം',
 	'scanset_next' => 'അടുത്തത് &gt;',
-	'scanset_prev' => '&lt; മുന്‍പുള്ളത്',
+	'scanset_prev' => '&lt; മുൻപുള്ളത്',
 );
 
 /** Marathi (मराठी)

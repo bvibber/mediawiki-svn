@@ -847,16 +847,16 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'player' => 'പ്ലെയർ',
-	'player-title' => 'പ്ലെയര്‍',
-	'player-playertitle' => 'പ്ലെയര്‍: $1',
+	'player-title' => 'പ്ലെയർ',
+	'player-playertitle' => 'പ്ലെയർ: $1',
 	'player-file' => 'പ്രമാണത്തിന്റെ പേര്',
-	'player-play' => 'പ്രവര്‍ത്തിപ്പിക്കുക',
-	'player-not-allowed' => 'അനുവദനീയമല്ലാത്ത ഫോര്‍മാറ്റ്',
+	'player-play' => 'പ്രവർത്തിപ്പിക്കുക',
+	'player-not-allowed' => 'അനുവദനീയമല്ലാത്ത ഫോർമാറ്റ്',
 	'player-not-found' => 'പ്രമാണം കണ്ടില്ല.',
-	'player-invalid-title' => 'അസാധുവായ ശീര്‍ഷകം',
-	'player-clicktoplay' => '$1 പ്രവര്‍ത്തിപ്പിക്കുക',
-	'player-goto-player' => 'പ്ലെയര്‍',
-	'player-goto-page' => 'താള്‍',
+	'player-invalid-title' => 'അസാധുവായ ശീർഷകം',
+	'player-clicktoplay' => '$1 പ്രവർത്തിപ്പിക്കുക',
+	'player-goto-player' => 'പ്ലെയർ',
+	'player-goto-page' => 'താൾ',
 	'player-goto-file' => 'പ്രമാണം',
 );
 

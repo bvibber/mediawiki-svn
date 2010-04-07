@@ -1167,6 +1167,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1174,15 +1175,15 @@ $messages['ml'] = array(
 	'importusers-uploadfile' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'importusers-form-replace-present' => 'നിലവിലുള്ള ഉപയോക്താക്കളെ റീപ്ലേസ് ചെയ്യുക',
 	'importusers-form-button' => 'ഇറക്കുമതി',
-	'importusers-log' => 'ഇറക്കുമതി പ്രവര്‍ത്തനരേഖ',
+	'importusers-log' => 'ഉപയോക്തൃ ഇറക്കുമതി രേഖ',
 	'importusers-log-summary' => 'ചുരുക്കം',
 	'importusers-log-summary-all' => 'എല്ലാം',
-	'importusers-log-summary-added' => 'ചേര്‍ത്തു',
+	'importusers-log-summary-added' => 'ചേർത്തു',
 	'importusers-log-summary-updated' => 'പുതുക്കിയിരിക്കുന്നു',
-	'importusers-login-name' => 'ലോഗിന്‍ നാമം',
+	'importusers-login-name' => 'ലോഗിൻ നാമം',
 	'importusers-password' => 'രഹസ്യവാക്ക്',
-	'importusers-email' => 'ഇമെയില്‍',
-	'importusers-realname' => 'യഥാര്‍ത്ഥ പേര്‌',
+	'importusers-email' => 'ഇമെയിൽ',
+	'importusers-realname' => 'യഥാർത്ഥ പേര്‌',
 );
 
 /** Mongolian (Монгол)
@@ -1490,7 +1491,7 @@ $messages['pt'] = array(
 	'importusers-user-present-not-update' => "Utilizador '''$1''' já existe. Não foi actualizado.",
 	'importusers-user-invalid-format' => 'Dados de utilizador na linha #$1 têm um formato inválido ou estão vazios. Passado à frente.',
 	'importusers-log' => 'Registo de importação de utilizadores',
-	'importusers-log-summary' => 'Sumário',
+	'importusers-log-summary' => 'Resumo',
 	'importusers-log-summary-all' => 'Todos',
 	'importusers-log-summary-added' => 'Adicionado',
 	'importusers-log-summary-updated' => 'Actualizado',

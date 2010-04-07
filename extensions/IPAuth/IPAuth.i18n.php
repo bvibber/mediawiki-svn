@@ -163,6 +163,13 @@ $messages['id'] = array(
 	'ipauth-desc' => 'Log masuk otomatis dari alamat IP tertentu',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'ipauth-desc' => 'Login automatico da un indirizzo IP fisso',
+);
+
 /** Japanese (日本語)
  * @author Mizusumashi
  */
@@ -280,6 +287,13 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'ipauth-desc' => 'Automatsko prijavljivanje sa fiksnih IP adresa',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'ipauth-desc' => 'Asup log otomatis ti alamat IP anu maneuh',
 );
 
 /** Swedish (Svenska)

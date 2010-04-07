@@ -547,13 +547,14 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'filelist' => 'പ്രമാണങ്ങളുടെ പട്ടിക',
-	'filelist-desc' => 'അപ്‌ലോഡ് ചെയ്ത പ്രമാണങ്ങള്‍ പ്രദര്‍ശിപ്പിക്കുന്ന പ്രത്യേക താള്‍',
-	'filelist-show-list' => 'പട്ടിക പ്രദര്‍ശിപ്പിക്കുക',
-	'filelist-show-gallery' => 'ചിത്ര ഗാലറി പ്രദര്‍ശിപ്പിക്കുക',
+	'filelist-desc' => 'അപ്‌ലോഡ് ചെയ്ത പ്രമാണങ്ങൾ പ്രദർശിപ്പിക്കുന്ന [[Special:Filelist|പ്രത്യേക താൾ]]',
+	'filelist-show-list' => 'പട്ടിക പ്രദർശിപ്പിക്കുക',
+	'filelist-show-gallery' => 'ചിത്ര ഗാലറി പ്രദർശിപ്പിക്കുക',
 	'filelist-image-desc' => 'കുറിപ്പ്',
 );
 

@@ -1215,8 +1215,8 @@ $messages['ml'] = array(
 	'todo-list-change' => 'മാറ്റം',
 	'todo-list-cancel' => 'റദ്ദാക്കുക',
 	'todo-new-item' => 'പുതിയ ഇനം',
-	'todo-form-details' => 'വിശദാംശങ്ങള്‍:',
-	'todo-form-submit' => 'ചോദ്യം (query) സമര്‍പ്പിക്കുക',
+	'todo-form-details' => 'വിശദാംശങ്ങൾ:',
+	'todo-form-submit' => 'ചോദ്യം (query) സമർപ്പിക്കുക',
 );
 
 /** Marathi (मराठी)
@@ -1568,7 +1568,7 @@ $4",
 	'todo-list-change' => 'Alterar',
 	'todo-list-cancel' => 'Cancelar',
 	'todo-new-item' => 'Novo item',
-	'todo-issue-summary' => 'Sumário do problema:',
+	'todo-issue-summary' => 'Resumo do problema:',
 	'todo-form-details' => 'Detalhes:',
 	'todo-form-email' => 'Para receber uma notificação por correio electrónico quando esta tarefa for finalizada, escreva o seu endereço aqui:',
 	'todo-form-submit' => 'Submeter pesquisa',

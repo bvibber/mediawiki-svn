@@ -130,6 +130,14 @@ $messages['ia'] = array(
 	'right-editalluserpages' => 'Modificar paginas de usator',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'userpageeditprotection-desc' => "Limita la modifica delle pagine utente all'utente e agli utenti autorizzati",
+	'right-editalluserpages' => 'Modifica pagine utente',
+);
+
 /** Japanese (日本語)
  * @author Hosiryuhosi
  */
@@ -181,6 +189,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'userpageeditprotection-desc' => 'Ogranicza edycję stron użytkowników do nich samych i specjalnie uprawnionych',
 	'right-editalluserpages' => 'Edycja stron użytkowników',
 );
 
