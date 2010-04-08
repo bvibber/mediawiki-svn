@@ -232,11 +232,13 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'usabilityinitiative' => 'Käytettävyyshanke',
 	'usabilityinitiative-desc' => 'Wikipedian käytettävyyshankkeen kehittämät MediaWikin helppokäyttöisyyttä parantavat ominaisuudet.',
+	'prefs-labs' => 'Kokeelliset ominaisuudet',
 );
 
 /** French (Français)
@@ -387,6 +389,8 @@ $messages['ka'] = array(
 $messages['ko'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '위키백과 Usability Initiative에서 제작한, 미디어위키 사용성을 높여 주는 기능',
+	'prefs-beta' => '베타 기능',
+	'prefs-labs' => '실험 중인 기능',
 );
 
 /** Ripoarisch (Ripoarisch)
