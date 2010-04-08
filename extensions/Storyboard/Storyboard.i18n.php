@@ -38,6 +38,9 @@ $messages['en'] = array(
 	'storyboard-authorcontact' => 'Author contact information',
 	'storyboard-thestory' => 'The story',
 
+	// Special:StorySubmission
+	'storyboard-submissioncomplete' => 'Submission complete',
+
 	// Story review
 	'storyreview' => 'Story review',
 	'storyboard-publish' => 'Publish',

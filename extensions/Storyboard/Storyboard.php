@@ -43,6 +43,7 @@ $wgExtensionAliasesFiles['Storyboard'] = $egStoryboardDir . 'Storyboard.alias.ph
 // Load classes
 $wgAutoloadClasses['StoryboardUtils'] = $egStoryboardDir . 'Storyboard_Utils.php';
 $wgAutoloadClasses['SpecialStory'] = $egStoryboardDir . 'specials/Story/Story_body.php';
+$wgAutoloadClasses['SpecialStorySubmission'] = $egStoryboardDir . 'specials/StorySubmission/StorySubmission_body.php';
 $wgAutoloadClasses['SpecialStoryReview'] = $egStoryboardDir . 'specials/StoryReview/StoryReview_body.php';
 $wgAutoloadClasses['TagStoryboard'] = $egStoryboardDir . 'tags/Storyboard/Storyboard_body.php';
 $wgAutoloadClasses['TagStorysubmission'] = $egStoryboardDir . 'tags/Storysubmission/Storysubmission_body.php';
@@ -52,6 +53,7 @@ $wgSpecialPages['StoryReview'] = 'SpecialStoryReview';
 $wgSpecialPageGroups['StoryReview'] = 'contribution';
 $wgSpecialPages['Story'] = 'SpecialStory';
 $wgSpecialPageGroups['Story'] = 'contribution';
+$wgSpecialPages['StorySubmission'] = 'SpecialStorySubmission';
 
 // API
 $wgAutoloadClasses['ApiStoryExists'] = "{$egStoryboardDir}api/ApiStoryExists.php";

@@ -33,11 +33,7 @@ class TagStorysubmission {
 
 		global $wgRequest, $wgUser;
 		
-		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) ) {
-			$output = self::doSubmissionAndGetResult();
-		} else {
-			$output = self::getFrom( $parser, $args );
-		}
+		$output = self::getFrom( $parser, $args );
 		
 		wfProfileOut( __METHOD__ );
 		
@@ -75,8 +71,6 @@ EOT
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStorysubmissionWidth );
 		$maxLen = array_key_exists( 'maxlength', $args ) && is_int( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
 		$minLen = array_key_exists( 'minlength', $args ) && is_int( $args['minlength'] ) ? $args['minlength'] : $egStoryboardMinStoryLen;
-		
-		$submissionUrl = $parser->getTitle()->getLocalURL( 'action=purge' );
 		
 		$formBody = "<table width='$width'>";
 		
@@ -151,6 +145,8 @@ EOT
 
 		$formBody .= Html::hidden( 'lang', $args['language'] );
 		
+		$submissionUrl = SpecialPage::getTitleFor( 'StorySubmission' )->getFullURL();
+		
 		return Html::rawElement(
 			'form',
 			array(
@@ -164,40 +160,6 @@ EOT
 		);
 	}
 	
-	/**
-	 * Store the submitted story in the database, and return a page telling the user his story has been submitted.
-	 */
-	private static function doSubmissionAndGetResult() {
-		global $wgRequest, $wgUser;
-		
-		$dbw = wfGetDB( DB_MASTER );
 
-		$title = $wgRequest->getText( 'storytitle' );
-
-		$story = array(
-			'story_lang_code' => $wgRequest->getText( 'lang' ),
-			'story_author_name' => $wgRequest->getText( 'name' ),
-			'story_author_location' => $wgRequest->getText( 'location' ),
-			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
-			'story_author_contact' => $wgRequest->getText( 'contact' ),
-			'story_title' => $title,
-			'story_text' => $wgRequest->getText( 'storytext' ),
-			'story_created' => $dbw->timestamp( time() ),
-			'story_modified' => $dbw->timestamp( time() ),
-		);
-
-		// If the user is logged in, also store his user id.
-		if ( $wgUser->isLoggedIn() ) {
-			$story[ 'story_author_id' ] = $wgUser->getId();
-		}
-
-		// TODO: email confirmation would be nice
-		
-		$dbw->insert( 'storyboard', $story );
-		
-		$storyboardLink = ''; // TODO: create html link to the page containing stories. 
-
-		return wfMsgExt( 'storyboard-createdsucessfully', 'parsemag', $storyboardLink ); 
-	}
 	
 }
