@@ -54,6 +54,10 @@ $wgHooks['ParserFirstCallInit'][] = 'NaturalLanguageList::onParserFirstCallInit'
 
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/nllParserTests.txt";
 
+/* global variables */
+
+$wgNllMaxListLength = 500; # the maximum allowed length of a list.
+
 class NaturalLanguageList {
 	
 	public static function onParserFirstCallInit( $parser ) {
@@ -174,6 +178,7 @@ class NaturalLanguageList {
 	 * @param $separator String [default:null] Input separator (e.g. ',')
 	 */
 	private function readArgs( $separator=null ) {
+		global $wgNllMaxListLength;
 		$items = array(); # array of args to include
 
 		# strip read items of duplicate elements if not permitted
@@ -204,6 +209,11 @@ class NaturalLanguageList {
 			while ( count( $this->mParams ) > $this->mOptions['length'] )
 				array_pop ( $this->mParams );
 		}
+		
+		# Remove anything over the allowed limit
+		while ( count( $this->mParams ) > $wgNllMaxListLength ) {
+			array_pop( $this->mParams );
+		}
 	}
 
 	/**
@@ -213,6 +223,7 @@ class NaturalLanguageList {
 	 * @param $separator String [default:null] Input separator
 	 */
 	private function readOptions ( $ignorefirst, $separator=null ) {
+		global $wgNllMaxListLength;
  		$args = $this->mArgs;
  
 		# an array of items not options
@@ -265,6 +276,12 @@ class NaturalLanguageList {
 		# use the default format if format not set
 		if ( $this->mOptions['itemoutput'] === null ) {
 			$this->mOptions['itemoutput'] = wfMsgNoTrans( 'nll-itemoutput' );
+		}
+		
+		# don't permit a length larger than the allowed
+		if ( $this->mOptions['length'] != -1
+			&& $this->mOptions['length'] > $wgNllMaxListLength ) {
+			$this->mOptions['length'] = -1;
 		}
 	}
 
@@ -325,7 +342,7 @@ class NaturalLanguageList {
 				$this->mOptions[$name] = self::parseNumeral( $value );
 				break;
 			case 'ignore':
-				self::parseArrayItem( $this->mIgnores, $value, $separator );
+				self::parseArrayItem( $this->mIgnores, $value, $separator, false, true );
 				break;
 			case 'data':
 				# just strip the parameter and make the $arg
@@ -377,14 +394,18 @@ class NaturalLanguageList {
 	 * @param $value Mixed The element to be verified.
 	 */
 	private static function handle_interval ( &$array, $intervals, $value ) {
+		global $wgNllMaxListLength;
 		if ( !$intervals )
 			return false;
-		if ( preg_match("@[0-9]+\.\.[1-9][0-9]*@is", $value ) ) {
-			$tmp = explode ( "|", preg_replace("@([0-9]+)\.\.([1-9][0-9]*)@is", "$1|$2", $value) );
+		$tmp = explode ( "..", $value );
+		if ( count( $tmp ) == 2 ) {
 			if ( is_numeric($tmp[0])===false or is_numeric($tmp[1])===false or ($tmp[0] > $tmp[1]) )
 				return false;
-			for ( $i = $tmp[0]; $i <= $tmp[1]; $i++ )
+			for ( $i = $tmp[0]; $i <= $tmp[1]; $i++ ) {
 				$array[] = $i;
+				if ( count( $array ) > $wgNllMaxListLength )
+					break;
+			}
 			return true;
 		} else {
 			return false;
@@ -398,8 +419,14 @@ class NaturalLanguageList {
 	 * @param $value Mixed The element to be inserted
 	 * @param $separator String [default:null] Input separator
 	 * @param $intervals Boolean [default:false] Whether intervals are allowed
+	 * @param $ignorelength Boolean [default:false] Whether to ignore the limit
+	 *                                              on the length.  Be careful!
 	 */
-	private static function parseArrayItem( &$array, $value, $separator=null, $intervals = false ) {
+	private static function parseArrayItem( &$array, $value, $separator=null, $intervals = false, $ignorelength = false ) {
+		global $wgNllMaxListLength;
+		# if the maximum length has been reached; don't bother.
+		if ( count( $array ) > $wgNllMaxListLength && !$ignorelength )
+			return;
 		# if no separator, just assume the value can be appended,
 		# simple as that
 		if ( $separator === null ) {
@@ -409,9 +436,12 @@ class NaturalLanguageList {
 			# else, let's break the value up and append
 			# each 'subvalue' to the array.
 			$tmp = explode ( $separator, $value );
-			foreach ( $tmp as $v )
+			foreach ( $tmp as $v ) {
 				if ( ! self::handle_interval( $array, $intervals, $v ) ) 
 					$array[] = $v;
+				if ( count( $array ) > $wgNllMaxListLength )
+					break;
+			}
 		}
 	}
 	
