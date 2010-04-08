@@ -199,7 +199,7 @@ class SeleniumDisplayInCategoryTest extends SeleniumTiffPageTest
 
         //Ergebnis chekcen
         $source = $this->getAttribute("//div[@class='gallerybox']//a[@class='image']//img@src");
-        $correct = strstr($source, "/page1-");
+        $correct = strstr($source, "-page1-");
         $this->assertEquals($correct, true);
 
        }
@@ -219,7 +219,7 @@ class SeleniumDisplayInGalleryTest extends SeleniumEmbedTiffTest
         //Ergebnis chekcen
         //$source = $this->getAttribute("//div[@class='gallerybox']//a[@title='Multipage.tiff']//img@src");
         $source = $this->getAttribute("//div[@class='gallerybox']//a[@class='image']//img@src");
-        $correct = strstr($source, "/page1-");
+        $correct = strstr($source, "-page1-");
         $this->assertEquals($correct, true);
 
        }
@@ -315,7 +315,7 @@ class SeleniumEmbedTiffNegativePageParameterTest extends SeleniumEmbedTiffTest
         $this->preparePage("[[Image:Multipage.tiff|page=-1]]\n");
 
         $source = $this->getAttribute("//div[@id='bodyContent']//img@src");
-        $correct = strstr($source, "/page1-");
+        $correct = strstr($source, "-page1-");
         $this->assertEquals($correct, true);
     }
 }
@@ -329,7 +329,7 @@ class SeleniumEmbedTiffPageParameterTooHighTest extends SeleniumEmbedTiffTest
         $this->preparePage("[[Image:Multipage.tiff|page=8]]\n");
 
         $source = $this->getAttribute("//div[@id='bodyContent']//img@src");
-        $correct = strstr($source, "/page7-");
+        $correct = strstr($source, "-page7-");
         $this->assertEquals($correct, true);
     }
 }
