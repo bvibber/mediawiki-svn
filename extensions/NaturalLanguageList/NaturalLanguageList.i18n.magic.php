@@ -13,4 +13,6 @@ $magicWords['en'] = array(
 	'nll_outputseparator' => array( 0, 'outputseparator', 'comma', 'separator' ),
 	'nll_ignore' => array( 0, 'ignore' ),
 	'nll_data' => array( 0, 'data' ),
+	'nll_intervals' => array( 0, 'intervals' ),
+	'nll_length' => array( 0, 'length' ),
 );

@@ -43,7 +43,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
 	'description' => 'Easy formatting of lists in natural languages.',
 	'descriptionmsg' => 'nll-desc',
-	'version'     => '2.3'
+	'version'     => '2.4'
 );
 
 $dir = dirname(__FILE__);
@@ -118,6 +118,8 @@ class NaturalLanguageList {
 		'fieldsperitem' => -1,     # size of pairs
 		'duplicates' => true,      # allow same elements to appear
 		'blanks' => false,         # allow blank elements to appear
+		'intervals' => true,       # let 'num..num' be parsed as intervals
+		'length' => -1,            # length, default no limit
 		'itemoutput' => null,      # the format for each element
 		'outputseparator' => null, # the separator between output elements
 		'lastseparator' => null,   # the separator between the last two elements
@@ -182,7 +184,7 @@ class NaturalLanguageList {
 		foreach ( $args as $arg ) {
 			if ( !$this->mOptions['blanks'] && $arg === '' )
 				continue;
-			self::parseArrayItem( $items, $arg, $separator );
+			self::parseArrayItem( $items, $arg, $separator, $this->mOptions['intervals'] );
 		}
 		
 		# Remove the ignored elements from the array
@@ -195,7 +197,13 @@ class NaturalLanguageList {
 		if ( count( end( $this->mParams ) ) != $this->mOptions['fieldsperitem'] ) {
 			array_pop( $this->mParams );
 		}
-
+		
+		# Remove anything over the set length, if set
+		if ( $this->mOptions['length'] != -1 
+			&& count( $this->mParams ) > $this->mOptions['length'] ) {
+			while ( count( $this->mParams ) > $this->mOptions['length'] )
+				array_pop ( $this->mParams );
+		}
 	}
 
 	/**
@@ -304,6 +312,7 @@ class NaturalLanguageList {
 		switch ( $name = self::parseOptionName( $var ) ) {
 			case 'duplicates':
 			case 'blanks':
+			case 'intervals':
 				$this->mOptions[$name] = self::parseBoolean( $value );
 				break;
 			case 'outputseparator':
@@ -312,6 +321,7 @@ class NaturalLanguageList {
 				$this->mOptions[$name] = self::parseString( $value );
 				break;
 			case 'fieldsperitem':
+			case 'length':
 				$this->mOptions[$name] = self::parseNumeral( $value );
 				break;
 			case 'ignore':
@@ -345,7 +355,8 @@ class NaturalLanguageList {
 				'nll_blanks', 'nll_duplicates', 
 				'nll_fieldsperitem', 'nll_itemoutput',
 				'nll_lastseparator', 'nll_outputseparator',
-				'nll_ignore', 'nll_data'
+				'nll_ignore', 'nll_data', 'nll_length',
+				'nll_intervals',
 			) );
 		}
 
@@ -358,23 +369,49 @@ class NaturalLanguageList {
 	}
 	
 	/**
+	 * Check if a value is an interval (e.g. 0..10) and if it is allowed,
+	 * if so, then insert them into the $array, otherwise bail.
+	 *
+	 * @param $array Array The array with values.
+	 * @param $intervals Boolean Whether intervals are allowed.
+	 * @param $value Mixed The element to be verified.
+	 */
+	private static function handle_interval ( &$array, $intervals, $value ) {
+		if ( !$intervals )
+			return false;
+		if ( preg_match("@[1-9][0-9]*\.\.[1-9][0-9]*@is", $value ) ) {
+			$tmp = explode ( "|", preg_replace("@([1-9][0-9]*)\.\.([1-9][0-9]*)@is", "$1|$2", $value);
+			if ( !is_numeric($tmp[0]) or !is_numeric($tmp[1]) or $tmp[0] > $tmp[1] )
+				return false;
+			for ( $i = $tmp[0]; $i <= $tmp[1]; $i++ )
+				$array[] = $i;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * Insert a new element into an array.
 	 *
 	 * @param $array Array The array in question
 	 * @param $value Mixed The element to be inserted
 	 * @param $separator String [default:null] Input separator
+	 * @param $intervals Boolean [default:false] Whether intervals are allowed
 	 */
-	private static function parseArrayItem( &$array, $value, $separator=null ) {
+	private static function parseArrayItem( &$array, $value, $separator=null, $intervals = false ) {
 		# if no separator, just assume the value can be appended,
 		# simple as that
 		if ( $separator === null ) {
-			$array[] = $value;
+			if ( ! self::handle_interval( $array, $intervals, $value ) ) 
+				$array[] = $value;
 		} else {
 			# else, let's break the value up and append
 			# each 'subvalue' to the array.
 			$tmp = explode ( $separator, $value );
 			foreach ( $tmp as $v )
-				$array[] = $v;
+				if ( ! self::handle_interval( $array, $intervals, $v ) ) 
+					$array[] = $v;
 		}
 	}
 	
