@@ -83,7 +83,7 @@ class OpenIDProvider {
 # wordpress.com doesn't work for some reason
 #			new self('wordpress', 'Wordpress.com', wfMsg('openid-provider-label-other-username', 'Wordpress.com'),
 #						'http://{username}.wordpress.com/'),
-			new self( 'blogger', 'Bloggger', wfMsg( 'openid-provider-label-other-username', 'Bloggger' ),
+			new self( 'blogger', 'Blogger', wfMsg( 'openid-provider-label-other-username', 'Blogger' ),
 						'http://{username}.blogspot.com/' ),
 			new self( 'flickr', 'Flickr', wfMsg( 'openid-provider-label-other-username', 'Flickr' ),
 						'http://flickr.com/photos/{username}/' ),
