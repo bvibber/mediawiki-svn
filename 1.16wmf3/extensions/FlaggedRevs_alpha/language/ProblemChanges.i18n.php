@@ -21,13 +21,6 @@ $messages['qqq'] = array(
 	'problemchanges-category' => '{{Identical|Category}}',
 );
 
-/** русиньскый язык (русиньскый язык)
- * @author Gazeb
- */
-$messages['rue'] = array(
-	'problemchanges-category' => 'Катеґорія:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -80,7 +73,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'problemchanges' => "Kemmoù balizennet o c'hortoz",
-	'problemchanges-legend' => "Rollañ ar pajennoù adwelet gant kemmoù balizennet a c'hortoz bezañ adlennet",
+	'problemchanges-legend' => 'Rollañ ar pajennoù warno kemmoù balizennet da vezañ adlennet',
 	'problemchanges-none' => "N'eus pajenn ebet diouzh an dezverkoù-mañ evit poent",
 	'problemchanges-category' => 'Rummad :',
 );
@@ -289,7 +282,7 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'problemchanges' => 'Felcímkézett ellenőrizetlen szerkesztések',
 	'problemchanges-legend' => 'Ellenőrizetlen felcímkézett változtatásokat tartalmazó lapok listája',
-	'problemchanges-none' => 'Jelenleg nincs a a feltételeknek megfelelő lap',
+	'problemchanges-none' => 'Jelenleg nincs a feltételeknek megfelelő lap',
 	'problemchanges-category' => 'Kategória:',
 );
 
@@ -331,11 +324,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'problemchanges' => 'タグ付き編集を査読する',
+	'problemchanges' => 'タグ付けされた保留中の編集',
 	'problemchanges-legend' => '査読待ちのタグ付き編集のあるページの一覧',
 	'problemchanges-none' => '現時点でこれらの基準に合致するページはありません',
 	'problemchanges-category' => 'カテゴリ:',
@@ -538,6 +532,13 @@ $messages['ru'] = array(
 	'problemchanges-category' => 'Категория:',
 );
 
+/** русиньскый язык (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'problemchanges-category' => 'Катеґорія:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -553,6 +554,13 @@ $messages['sk'] = array(
 	'problemchanges-legend' => 'Vypísať zoznam stránok s označenými úpravami čakajúcimi na kontrolu',
 	'problemchanges-none' => 'Momentálne neexistujú žiadne stránky zodpovedajúce týmto požiadavkám',
 	'problemchanges-category' => 'Kategória:',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'problemchanges-category' => 'Kategorija:',
 );
 
 /** Sundanese (Basa Sunda)

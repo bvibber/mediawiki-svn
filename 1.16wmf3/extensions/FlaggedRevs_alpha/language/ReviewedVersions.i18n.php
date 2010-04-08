@@ -534,7 +534,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'reviewedversions' => '査読済みの版を表示',
+	'reviewedversions' => '査読済みの版',
 	'reviewedversions-leg1' => 'ページの査読済み版を一覧表示する',
 	'reviewedversions-page' => 'ページ名:',
 	'reviewedversions-none' => '「[[:$1]]」には査読済みの版がありません。',
@@ -920,6 +920,18 @@ $messages['sk'] = array(
 	'reviewedversions-none' => '[[:$1]] nemá skontrolované verzie.',
 	'reviewedversions-list' => 'Nasleduje zoznam {{PLURAL:$2|s jedinou revíziou|revízií}} stránky [[:$1]], {{PLURAL:$2|ktorá bola skontrolovaná|ktoré boli skontrolované}}:',
 	'reviewedversions-review' => 'Skontroloval <i>$1</i> $2',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'reviewedversions' => 'Pregledane različice',
+	'reviewedversions-leg1' => 'Navedi pregledane redakcije za stran',
+	'reviewedversions-page' => 'Naslov strani:',
+	'reviewedversions-none' => '»[[:$1]]« nima pregledanih redakcij.',
+	'reviewedversions-list' => 'Sledi seznam {{PLURAL:$2|redakcije|redakcij}} strani [[:$1]], ki {{PLURAL:$2|je bila pregledana|sta bili pregledani|so bile pregledane}}:',
+	'reviewedversions-review' => 'Pregledano <i>$1</i> s strani $2',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

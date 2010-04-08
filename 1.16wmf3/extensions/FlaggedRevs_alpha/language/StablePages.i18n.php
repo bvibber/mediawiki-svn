@@ -114,7 +114,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'stablepages' => "Pajennoù oc'h implijout kadarnadur ar c'hemmoù",
-	'stablepages-text' => "A-is ez eus ur roll pajennoù kefluniet gant an dorn evit na vefe diskouezet d'al lennerien nemet ar stumm embannet da bajenn danvez enni, dre ziouer.",
+	'stablepages-text' => "A-is ez eus ur roll pajennoù strishaet o implij a c'hall bezañ kemmet gant implijerien zo hepken hep na vije ezhomm d'o adlenn. Ne vo embannet ar c'hemmoù-se nemet pa vint bet adlennet gant un aozer aotreet evit se.",
 	'stablepages-none' => "N'eus pajenn ebet er roll-mañ.",
 	'stablepages-config' => 'Kefluniañ',
 );
@@ -357,7 +357,7 @@ $messages['hsb'] = array(
  * @author Samat
  */
 $messages['hu'] = array(
-	'stablepages' => 'Szerkesztési jóváhagyást alkalmazó lapok',
+	'stablepages' => 'Szerkesztések ellenőrzését megkövetelő',
 	'stablepages-text' => 'Ez a lista azokat a korlátozott lapokat tartalmazza, amelyeknél csak meghatározott felhasználók szerkeszthetnek ellenőrzés nélkül. Az ilyen szerkesztések nincsenek közzétéve, amíg egy járőr nem ellenőrzi őket.',
 	'stablepages-none' => 'Nem található egyetlen lap sem a listában',
 	'stablepages-config' => 'beállítás',
@@ -401,8 +401,8 @@ $messages['it'] = array(
  * @author Whym
  */
 $messages['ja'] = array(
-	'stablepages' => '固定ページ',
-	'stablepages-text' => '下記に示したページは、公開版が未設定状態で閲覧者に提示される版となるように手動で設定されています。',
+	'stablepages' => '編集承認を使用しているページ',
+	'stablepages-text' => '下記に示したページは、査読なしに編集を公開できる利用者が限定されています。編集は認証された利用者が査読するまで公開されません。',
 	'stablepages-none' => '表示すべきページはありません',
 	'stablepages-config' => '設定',
 );
@@ -472,7 +472,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'stablepages' => 'തിരുത്തൽ അംഗീകരണം ഉപയോഗിക്കുന്ന താളുകൾ',
 	'stablepages-text' => 'സംശോധനം ആവശ്യമില്ലാത്ത വിധം ചില പ്രത്യേക ഉപയോക്താക്കൾക്ക് മാത്രം തിരുത്തുവാൻ കഴിയുന്ന താളുകളുടെ പട്ടികയാണ് താഴെ നൽകിയിരിക്കുന്നത്. അത്തരത്തിലുള്ള തിരുത്തലുകൾ അംഗീകരിക്കപ്പെട്ട ഒരു ഉപയോക്താവ് സംശോധനം ചെയ്യുന്നതു വരെ പ്രസിദ്ധീകരിക്കുന്നതല്ല.',
-	'stablepages-none' => 'ഈ പട്ടികയില്‍ താളുകള്‍ ഒന്നും ഇല്ല',
+	'stablepages-none' => 'ഈ പട്ടികയിൽ താളുകൾ ഒന്നും ഇല്ല',
 	'stablepages-config' => 'ക്രമീകരണം',
 );
 
@@ -650,6 +650,13 @@ $messages['sk'] = array(
 	'stablepages-text' => 'Toto je zoznam stránok, ktoré boli ručne nastavené, aby sa ako ich štandardný obsah zobrazovala čitateľom stabilná verzia.',
 	'stablepages-none' => 'Tento zoznam neobsahuje žiadne stránky.',
 	'stablepages-config' => 'Nastavenie',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'stablepages-none' => 'Na tem seznamu ni strani.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

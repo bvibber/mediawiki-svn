@@ -1091,7 +1091,7 @@ class FlaggedRevsHooks {
 		if ( $fa->isReviewable( FR_MASTER ) ) {
 			$revId = $rc->mAttribs['rc_this_oldid'];
 			$quality = FlaggedRevs::getRevQuality( $rc->mAttribs['rc_cur_id'], $revId, FR_MASTER );
-			if ( $quality !== false && $quality >= FlaggedRevs::getPatrolLevel() ) {
+			if ( $quality !== false && $quality >= FR_SIGHTED ) {
 				RevisionReview::updateRecentChanges( $rc->getTitle(), $revId );
 				$rc->mAttribs['rc_patrolled'] = 1; // make sure irc/email notifs know status
 			}
@@ -1610,7 +1610,7 @@ class FlaggedRevsHooks {
 			return true; // nothing to do
 		// Stability log
 		} else if ( $type == 'stable' ) {
-			$rv .= FlaggedRevsLogs::stabilityLogLinks( $title, $ts );
+			$rv .= FlaggedRevsLogs::stabilityLogLinks( $title, $ts, $params );
 		// Review log
 		} else if ( $type == 'review' && FlaggedRevsLogs::isReviewAction( $action ) ) {
 			$rv .= FlaggedRevsLogs::reviewLogLinks( $action, $title, $params );
@@ -1786,7 +1786,7 @@ class FlaggedRevsHooks {
 		if ( $wgUser->isAllowed( 'review' ) ) {
 			$tables[] = 'flaggedpage_pending';
 			$join_conds['flaggedpage_pending'] = array( 'LEFT JOIN',
-				'fpp_page_id = rc_cur_id AND fpp_quality = ' . FlaggedRevs::getPatrolLevel() );
+				'fpp_page_id = rc_cur_id AND fpp_quality = ' . FR_SIGHTED );
 		}
 		return true;
 	}
@@ -1797,7 +1797,7 @@ class FlaggedRevsHooks {
 			$fields[] = 'fpp_rev_id';
 			$tables[] = 'flaggedpage_pending';
 			$join_conds['flaggedpage_pending'] = array( 'LEFT JOIN',
-				'fpp_page_id = rc_cur_id AND fpp_quality = ' . FlaggedRevs::getPatrolLevel() );
+				'fpp_page_id = rc_cur_id AND fpp_quality = ' . FR_SIGHTED );
 		}
 		return true;
 	}
@@ -1822,7 +1822,7 @@ class FlaggedRevsHooks {
 		$link = $class = '';
 		if ( !isset( $row->fr_quality ) ) {
 			if ( $revId > $history->fr_stableRevId ) {
-				$class = 'flaggedrevs-unreviewed';
+				$class = 'flaggedrevs-pending';
 				$link = wfMsgExt( 'revreview-hist-pending', 'parseinline',
 					$title->getPrefixedText(), $history->fr_stableRevId, $revId );
 				$link = '<span class="plainlinks">' . $link . '</span>';
@@ -1910,9 +1910,9 @@ class FlaggedRevsHooks {
 			$ret = '<span class="' . FlaggedRevsXML::getQualityColor( $row->fr_quality ) .
 				'">' . $ret . '</span>';
 		} elseif ( isset( $row->fp_stable ) && $row->rev_id > $row->fp_stable ) {
-			$ret = '<span class="flaggedrevs-unreviewed">' . $ret . '</span>';
+			$ret = '<span class="flaggedrevs-pending">' . $ret . '</span>';
 		} elseif ( !isset( $row->fp_stable ) ) {
-			$ret = '<span class="flaggedrevs-unreviewed2">' . $ret . '</span>';
+			$ret = '<span class="flaggedrevs-unreviewed">' . $ret . '</span>';
 		}
 		return true;
 	}
@@ -1920,13 +1920,20 @@ class FlaggedRevsHooks {
 	public static function addToChangeListLine(
 		&$list, &$articlelink, &$s, &$rc, $unpatrolled, $watched
 	) {
-		if ( empty( $rc->mAttribs['fpp_rev_id'] ) )
+		if ( empty( $rc->mAttribs['fpp_rev_id'] ) ) {
 			return true; // page is not listed in pending edit table
-		if ( !FlaggedRevs::inReviewNamespace( $rc->getTitle() ) )
+		}
+		if ( !FlaggedRevs::inReviewNamespace( $rc->getTitle() ) ) {
 			return true; // confirm that page is in reviewable namespace
-		$rlink = $list->skin->makeKnownLinkObj( $rc->getTitle(), wfMsg( 'revreview-reviewlink' ),
-			'oldid=' . intval( $rc->mAttribs['fpp_rev_id'] ) . '&diff=cur' );
-		$articlelink .= " <span class='mw-fr-reviewlink'>($rlink)</span>";
+		}
+		$rlink = $list->skin->link(
+			$rc->getTitle(),
+			wfMsgHtml( 'revreview-reviewlink' ),
+			array( 'title' => wfMsg( 'revreview-reviewlink-title' ) ),
+			array( 'oldid' => $rc->mAttribs['fpp_rev_id'], 'diff' => 'cur' )
+		);
+		$rlink = wfMsgHtml( 'parentheses', $rlink );
+		$articlelink .= " <span class=\"mw-fr-reviewlink\">$rlink</span>";
 		return true;
 	}
 	

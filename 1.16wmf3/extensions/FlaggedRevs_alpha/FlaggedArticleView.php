@@ -63,17 +63,21 @@ class FlaggedArticleView {
 		$this->load();
 		# This only applies to viewing content pages
 		$action = $wgRequest->getVal( 'action', 'view' );
-		if ( !self::isViewAction( $action ) || !$this->article->isReviewable() )
+		if ( !self::isViewAction( $action ) || !$this->article->isReviewable() ) {
 			return false;
+		}
 		# Does not apply to diffs/old revision...
-		if ( $wgRequest->getVal( 'oldid' ) || $wgRequest->getVal( 'diff' ) )
+		if ( $wgRequest->getVal( 'oldid' ) || $wgRequest->getVal( 'diff' ) ) {
 			return false;
+		}
 		# Explicit requests  for a certain stable version handled elsewhere...
-		if ( $wgRequest->getVal( 'stableid' ) )
+		if ( $wgRequest->getVal( 'stableid' ) ) {
 			return false;
+		}
 		# Check user preferences
-		if ( $wgUser->getOption( 'flaggedrevsstable' ) )
+		if ( $wgUser->getOption( 'flaggedrevsstable' ) ) {
 			return !( $wgRequest->getIntOrNull( 'stable' ) === 0 );
+		}
 		# Get page configuration
 		$config = $this->article->getVisibilitySettings();
 		# Does the stable version override the current one?
@@ -775,7 +779,6 @@ class FlaggedArticleView {
 			# Find out revision id of base version
 			$latestId = $this->article->getLatest();
 			$revId = $editPage->oldid ? $editPage->oldid : $latestId;
-			$isOld = ( $revId != $latestId ); // not the current rev?
 			# Let new users know about review procedure a tag.
 			# If the log excerpt was shown this is redundant.
 			if ( !$log && !$wgUser->getId() && $this->article->isStableShownByDefault() ) {
@@ -791,14 +794,10 @@ class FlaggedArticleView {
 			if ( $frev->getRevId() < $latestId // changes were made
 				&& $this->isDiffShownOnEdit() // stable default and user cannot review
 				&& $wgUser->getBoolOption( 'flaggedrevseditdiffs' ) // not disable via prefs
+				&& $revId == $latestId // only for current rev
+				&& $editPage->section != "new" // not for new sections
+				&& !in_array( $editPage->formtype, array( 'diff', 'preview' ) ) // not preview/"show changes"
 			) {
-				# Don't show for old revisions, diff, preview, or undo
-				if ( $isOld || $editPage->section === "new"
-					|| in_array( $editPage->formtype, array( 'diff', 'preview' ) ) )
-				{
-					return true; // nothing to show here
-				}
-				
 				# Conditions are met to show diff...
 				$leftNote = $quality
 					? 'revreview-hist-quality'
@@ -1271,7 +1270,8 @@ class FlaggedArticleView {
 				wfMsgHtml( 'review-diff2stable' ),
 				'oldid='.$frev->getRevId().'&diff=cur&diffonly=0'
 			);
-			$review = "<div class='fr-diff-to-stable' align='center'>($review)</div>";
+			$review = wfMsgHtml( 'parentheses', $review );
+			$review = "<div class='fr-diff-to-stable' align='center'>$review</div>";
 		}
 		return $review;
 	}

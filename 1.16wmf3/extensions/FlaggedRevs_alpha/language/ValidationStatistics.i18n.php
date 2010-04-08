@@ -787,11 +787,10 @@ $messages['hil'] = array(
  * @author Ex13
  */
 $messages['hr'] = array(
-	'validationstatistics' => 'Statistika pregledavanja',
-	'validationstatistics-users' => "'''{{SITENAME}}''' trenutačno ima '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|suradnika|suradnika}} s [[{{MediaWiki:Validationpage}}|uredničkim]] pravima
-i '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|suradnika|suradnika}} s [[{{MediaWiki:Validationpage}}|ocjenjivačkim]] pravima.
+	'validationstatistics' => 'Statistike pregledavanja stranice',
+	'validationstatistics-users' => "{{SITENAME}}''' trenutačno ima '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|suradnika|suradnika}} s [[{{MediaWiki:Validationpage}}|uredničkim]] pravima.
 
-Urednici i ocjenjivači su dokazani suradnici koji mogu provjeriti inačice stranice.",
+Urednici su dokazani suradnici koji mogu provjeriti inačice stranice.",
 	'validationstatistics-time' => "''Sljedeći podaci su iz međuspremnika i možda nisu ažurirani.''
 
 Izmjene koje su provjerili dokazani suradnici smatraju se ocijenjenima.
@@ -856,15 +855,15 @@ $messages['hu'] = array(
 	'validationstatistics-users' => "A(z) '''{{SITENAME}}''' wikinek jelenleg '''[[Special:ListUsers/editor|$1]]''' [[{{MediaWiki:Validationpage}}|járőrjoggal]]  rendelkező szerkesztője van.
 
 A járőrök olyan tapasztalt szerkesztők, akik ellenőrizhetik a lapok változatait.",
-	'validationstatistics-time' => "''Az alábbi adatok utolsó frissítése: $5 $6''
+	'validationstatistics-time' => "''Az alábbi adatok utolsó frissítése: $5 $6.''
 
-Azok a szerkesztések, amelyeket tapasztalt szerkesztők átnéztek, ellenőrzöttnek tekinthetőek.
+Ellenőrzöttnek tekintettek azok a szerkesztések, amelyeket tapasztalt felhasználók átnéztek.
 
-Az átlagos várakozási idő ''nem bejelentkezett szerkesztők'' szerkesztéseinek ellenőrzésére '''$1''', a medián '''$3'''.
+Az átlagos várakozási idő ''nem bejelentkezett felhasználók'' szerkesztéseinek ellenőrzésére '''$1''', a medián '''$3'''.
 $4
-Az átlagos átfutási idő [[Special:OldReviewedPages|megtekintésre váró szerkesztésekkel rendelkező lapoknál]] '''$2'''.
+Az átlagos átfutási idő [[Special:OldReviewedPages|ellenőrzésre váró szerkesztésekkel rendelkező lapoknál]] '''$2'''.
 Ezek a lapok ''elavultnak'' tekintendőek. Hasonlóképpen, a lapok ''szinkronizáltnak'' tekintendőek, ha nincsenek ellenőrzésre váró szerkesztések.
-A lap publikált változata a legújabb elfogadott változat, amit alapértelmezetten látnak az olvasók.",
+A lap közzétett változata a legújabb jelölt változat, amit alapértelmezetten látnak az olvasók.",
 	'validationstatistics-table' => "Ezen az oldalon a névterekre bontott statisztika látható, az átirányítások ''nélkül''.",
 	'validationstatistics-ns' => 'Névtér',
 	'validationstatistics-total' => 'Lapok',
@@ -872,8 +871,8 @@ A lap publikált változata a legújabb elfogadott változat, amit alapértelmez
 	'validationstatistics-latest' => 'Szinkronizálva',
 	'validationstatistics-synced' => 'Szinkronizálva/ellenőrizve',
 	'validationstatistics-old' => 'Elavult',
-	'validationstatistics-utable' => 'Az alábbi lista az elmúlt óra öt legtöbbet ellenőrző szerkesztőjét mutatja.',
-	'validationstatistics-user' => 'Szerkesztő',
+	'validationstatistics-utable' => 'Az alábbi lista az elmúlt óra öt legtöbbet ellenőrző felhasználóját mutatja.',
+	'validationstatistics-user' => 'Felhasználó',
 	'validationstatistics-reviews' => 'Ellenőrzések',
 );
 
@@ -1199,12 +1198,12 @@ $4
  */
 $messages['ml'] = array(
 	'validationstatistics' => 'താൾ സംശോധനത്തിന്റെ സ്ഥിതിവിവരം',
-	'validationstatistics-users' => "{{SITENAME}}''' പദ്ധതിയില്‍ '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|ഉപയോക്താവിന്|ഉപയോക്താക്കള്‍ക്ക്}} [[{{MediaWiki:Validationpage}}|എഡിറ്റർ]] പദവിയുണ്ട്.
+	'validationstatistics-users' => "{{SITENAME}}''' പദ്ധതിയിൽ '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|ഉപയോക്താവിന്|ഉപയോക്താക്കൾക്ക്}} [[{{MediaWiki:Validationpage}}|എഡിറ്റർ]] പദവിയുണ്ട്.
 
 താളുകളുടെ നാൾവഴികൾ പരിശോധിച്ച് തെറ്റുതിരുത്താൻ കഴിയുന്ന സ്ഥാപിത ഉപയോക്താക്കളാണ് എഡിറ്റർമാർ.",
 	'validationstatistics-table' => "ഓരോ നാമമേഖലയിലേയും സ്ഥിതിവിവരക്കണക്കുകൾ താഴെ കൊടുക്കുന്നു, തിരിച്ചുവിടൽ താളുകൾ ''ഒഴിവാക്കുന്നു''.",
 	'validationstatistics-ns' => 'നാമമേഖല',
-	'validationstatistics-total' => 'താളുകള്‍',
+	'validationstatistics-total' => 'താളുകൾ',
 	'validationstatistics-stable' => 'പരിശോധിച്ചവ',
 	'validationstatistics-latest' => 'ഏകതാനമാക്കിയിരിക്കുന്നു',
 	'validationstatistics-synced' => 'ഏകകാലികമാക്കിയവ/പരിശോധിച്ചവ',
@@ -1645,6 +1644,22 @@ Stabilná verzia je revízia stránky, ktorú skontroloval aspoň jeden zo zaved
 	'validationstatistics-reviews' => 'Kontroly',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'validationstatistics' => 'Statistika pregledov strani',
+	'validationstatistics-ns' => 'Imenski prostor',
+	'validationstatistics-total' => 'Strani',
+	'validationstatistics-stable' => 'Pregledano',
+	'validationstatistics-latest' => 'Usklajeno',
+	'validationstatistics-synced' => 'Usklajeno/Pregledano',
+	'validationstatistics-old' => 'Zastarelo',
+	'validationstatistics-utable' => 'Spodaj se nahaja seznam 5 najbolj aktivnih pregledovalcev v zadnji uri.',
+	'validationstatistics-user' => 'Uporabnik',
+	'validationstatistics-reviews' => 'Pregledi',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */
@@ -1720,7 +1735,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'validationstatistics' => 'సరిచూత గణాంకాలు',
+	'validationstatistics' => 'పేజీ సమీక్షల గణాంకాలు',
 	'validationstatistics-users' => "'''{{SITENAME}}'''లో ప్రస్తుతం '''[[Special:ListUsers/editor|$1]]'''{{PLURAL:$1| వాడుకరి|గురు వాడుకరులు}} [[{{MediaWiki:Validationpage}}|సంపాదకుల]] హక్కులతోనూ మరియు '''[[Special:ListUsers/reviewer|$2]]'''{{PLURAL:$2| వాడుకరి|గురు వాడుకరులు}}  [[{{MediaWiki:Validationpage}}|సమీక్షకుల]] హక్కులతోనూ ఉన్నారు.
 
 సంపాదకులు మరియు సమీక్షకులు అంటే పేజీలకు కూర్పులను ఎప్పటికప్పుడు సరిచూడగలిగిన నిర్ధారిత వాడుకరులు.",

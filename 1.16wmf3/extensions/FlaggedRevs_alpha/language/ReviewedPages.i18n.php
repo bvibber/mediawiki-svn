@@ -200,9 +200,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Paucabot
  */
 $messages['ca'] = array(
 	'reviewedpages-none' => 'No hi ha pàgines a la llista',
+	'reviewedpages-best' => 'millor revisió',
 );
 
 /** Czech (Česky)
@@ -594,8 +596,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'reviewedpages' => '査読済みページ',
-	'reviewedpages-leg' => '査読でもっとも高い評価を受けたページを一覧する',
-	'reviewedpages-list' => 'このページは査読結果が(最高で)指定した水準にあるページを一覧しています。',
+	'reviewedpages-leg' => '査読済みのページを一覧する',
+	'reviewedpages-list' => 'このページは[[{{MediaWiki:Validationpage}}|査読]]結果の最高値が指定した水準にあるページを一覧しています。水準に達している中で最新の版にリンクしています。',
 	'reviewedpages-none' => '表示すべきページはありません',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
@@ -744,15 +746,15 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'reviewedpages' => 'സംശോധനം നടന്ന താളുകള്‍',
+	'reviewedpages' => 'സംശോധനം നടന്ന താളുകൾ',
 	'reviewedpages-leg' => 'സംശോധനം ചെയ്യപ്പെട്ട താളുകളുടെ പട്ടിക',
 	'reviewedpages-list' => "വ്യക്തമാക്കപ്പെട്ടിട്ടുള്ള തലത്തിന്റെ ''സാദ്ധ്യമായതിൽ ഉന്നതമായ'' സംശോധന തലത്തിൽ (ഒരു നാൾപ്പതിപ്പിന്റെ) എത്തിച്ചേരാൻ കഴിഞ്ഞ [[{{MediaWiki:Validationpage}}|സംശോധനം ചെയ്ത]] താളുകൾ ഈ പട്ടികയിൽ നൽകിയിരിക്കുന്നു.
 ആ തലത്തിലെ ഏറ്റവും പുതിയ നാൾപ്പതിപ്പിലേയ്ക്കുള്ള കണ്ണിയും നൽകിയിരിക്കുന്നു.",
-	'reviewedpages-none' => 'ഈ പട്ടികയില്‍ താളുകള്‍ ഒന്നും ഇല്ല',
+	'reviewedpages-none' => 'ഈ പട്ടികയിൽ താളുകൾ ഒന്നും ഇല്ല',
 	'reviewedpages-lev-0' => 'സൈറ്റഡ്',
 	'reviewedpages-lev-1' => 'ഉന്നത നിലവാരം',
 	'reviewedpages-lev-2' => 'തിരഞ്ഞെടുക്കപ്പെട്ടത്',
-	'reviewedpages-all' => 'സംശോധനം ചെയ്ത പതിപ്പുകള്‍',
+	'reviewedpages-all' => 'സംശോധനം ചെയ്ത പതിപ്പുകൾ',
 	'reviewedpages-best' => 'ഏറ്റവും നല്ല നാൾപ്പതിപ്പ്',
 );
 
@@ -1016,6 +1018,14 @@ $messages['sk'] = array(
 	'reviewedpages-lev-2' => 'Odporúčané',
 	'reviewedpages-all' => 'skontrolované verzie',
 	'reviewedpages-best' => 'primárna revízia',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'reviewedpages' => 'Pregledane strani',
+	'reviewedpages-leg' => 'Navede strani, ki so bile pregledane',
 );
 
 /** Albanian (Shqip)

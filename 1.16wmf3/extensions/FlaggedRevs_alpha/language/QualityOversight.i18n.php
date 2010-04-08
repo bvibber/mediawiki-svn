@@ -274,7 +274,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'qualityoversight' => 'Haladó ellenőrzési napló',
-	'qualityoversight-list' => 'Ez a lap a legutóbb végzett értékeléseket listázza.',
+	'qualityoversight-list' => 'A lapváltozatok legutóbb végzett ellenőrzöttnek jelöléseit és ellenőrzöttnek jelölések megvonásait listázza.',
 	'qualityoversight-legend' => 'Keresés a legutóbbi ellenőrzések naplójában',
 );
 
@@ -307,11 +307,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'qualityoversight' => '品質監督',
+	'qualityoversight' => '詳細な査読記録',
 	'qualityoversight-list' => 'このページでは最近の特定版承認および棄却を一覧しています。',
 	'qualityoversight-legend' => '最近の査読記録を検索',
 );
@@ -486,6 +487,15 @@ $messages['sk'] = array(
 	'qualityoversight' => 'kvalitný dozor',
 	'qualityoversight-list' => 'Táto stránka obsahuje zoznam všetkých posledných schválení kvalitných verzií ako aj zavrhnutí revízií.',
 	'qualityoversight-legend' => 'Hľadať v posledných záznamoch kontrol',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'qualityoversight' => 'Dnevnik naprednih pregledov',
+	'qualityoversight-list' => 'Ta stran navaja najnovejše odobritve in zavrnitve redakcij.',
+	'qualityoversight-legend' => 'Iskanje nedavnih dnevnikov pregledov',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
