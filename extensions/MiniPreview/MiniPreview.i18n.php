@@ -154,6 +154,16 @@ Na primjer, "* PD-" neće prikazivati nijednu kategoriju koja počinje sa "PD-",
 * Self',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'minipreview-files_in_category' => "Aquesta galeria conté '''$1''' {{PLURAL:$1|arxiu|arxius}}.",
+	'minipreview-files_in_gallery' => "Aquesta galeria conté '''$1''' {{PLURAL:$1|arxiu|arxius}}.",
+	'minipreview-no_more_files_here' => 'No hi ha més arxius en aquesta direcció.',
+	'minipreview-no_category_gallery' => "No s'han trobat categories ni galeries!",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Imre

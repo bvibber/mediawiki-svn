@@ -259,8 +259,11 @@ $messages['hu'] = array(
 	'tablemod-desc' => 'Wikitáblázat szerkesztő',
 	'tablemod-msg-remove' => 'Eltávolítás',
 	'tablemod-error-format' => 'Ez a tag csak egy egyszerű táblázatot támogat tag-enként, ami előtt és mögött nem lehet szöveg.',
+	'tablemod-error-colcount' => 'Ez a tag eltávolításkor csak olyan táblázatoknál használható, melyeknek soronként egyenlő számú oszlopa van.',
+	'tablemod-error-headcount' => 'Ez a tag csak olyan táblázatok rendezését támogatja, melyek minden oszlopának van fejléce.',
 	'tablemod-error-invalidsort' => 'Érvénytelen rendezési paraméterek.',
 	'tablemod-error-invalidaction' => 'Érvénytelen művelet.',
+	'tablemod-error-missingid' => 'Hiányzó ident attribútum a tag-ben.',
 );
 
 /** Interlingua (Interlingua)

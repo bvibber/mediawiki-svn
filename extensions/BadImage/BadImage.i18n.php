@@ -382,14 +382,31 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'badimages' => "Llista d'imatges dolentes",
+	'badimages-desc' => "Amplia les capacitats de la llista d'imatges defectuoses de MediaWiki",
+	'badimages-add-btn' => 'Afegeix',
+	'badimages-added' => '$1 ha estat afegit a la llista.',
+	'badimages-count' => "Hi {{PLURAL:$1|ha|ha}} '''$1''' {{PLURAL:$1|imatge|imatges}} a la llista d'imatges defectuoses.",
 	'badimages-name' => 'Nom:',
+	'badimages-not-added' => "No s'ha pogut afegir la imatge.",
+	'badimages-not-removed' => "No s'ha pogut eliminar la imatge.",
 	'badimages-reason' => 'Motiu:',
 	'badimages-remove' => '(elimina)',
 	'badimages-remove-btn' => 'Elimina',
+	'badimages-remove-confirm' => 'Si us plau, confirmeu que voleu eliminar $1 de la llista:',
+	'badimages-removed' => "S'ha eliminat $1 de la llista.",
+	'badimages-subheading' => 'Ítems actuals',
+	'badimages-unprivileged' => '(No teniu permisos suficients per modificar la llista)',
+	'badimages-log-name' => "Llista d'imatges defectuoses",
+	'badimages-log-header' => "Això és un registre dels canvis de la [[{{MediaWiki:Badimages-page}}|Llista d'imatges defectuoses]].",
+	'badimages-log-add' => "s'ha afegit [[$1]] a la llista d'imatges defectuoses",
+	'badimages-log-remove' => "s'ha eliminat [[$1]] de la llista d'imatges defectuoses",
+	'badimages-page' => "{{ns:help}}:Llista d'imatges defectuoses",
+	'right-badimages' => "Actualitza la llista d'imatges defectuoses",
 );
 
 /** Czech (Česky)

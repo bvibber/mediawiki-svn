@@ -76,6 +76,14 @@ $messages['bs'] = array(
 	'tog-microid' => 'Objavite <a href="http://microid.org/">MicroID</a> da bi ste potvrdili račun sa vanjskim uslugama',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'microid-desc' => "Afegeix un [http://www.microid.org/ MicroID] a les pàgines d'usuari per confirmar el compte amb serveis externs",
+	'tog-microid' => 'Publica un <a href="http://microid.org/">MicroID</a> per confirmar el compte amb serveis externs',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

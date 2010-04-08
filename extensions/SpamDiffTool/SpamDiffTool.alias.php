@@ -15,6 +15,8 @@ $aliases['en'] = array(
 	'SpamDiffTool'  => array( 'SpamDiffTool' ),
 );
 
+/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'SpamDiffTool'   => array( 'أداة_فرق_السبام' ),
+	'SpamDiffTool' => array( 'أداة_فرق_السبام' ),
 );
+

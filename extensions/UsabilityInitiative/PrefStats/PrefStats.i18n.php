@@ -726,9 +726,9 @@ $messages['fa'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'prefstats' => 'Asetusten tilastot',
+	'prefstats' => 'Asetustilastot',
 	'prefstats-desc' => 'Kerää tilastoja siitä, kuinka moni käyttäjä on ottanut käyttöön erinäiset asetukset.',
-	'prefstats-title' => 'Asetusten tilastot',
+	'prefstats-title' => 'Asetustilastot',
 	'prefstats-list-intro' => 'Tällä hetkellä seuraavia asetuksia seurataan.
 Tilastot näkyvät painamalla asetusta.',
 	'prefstats-noprefs' => 'Yhtään asetusta ei seurata tällä hetkellä.

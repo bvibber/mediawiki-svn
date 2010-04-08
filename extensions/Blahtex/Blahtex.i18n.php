@@ -563,7 +563,13 @@ Pokušajte koristiti komandu "$3{...}".',
 $messages['ca'] = array(
 	'math_CannotCreateTexFile' => "No s'ha pogut crear el fitxer tex",
 	'math_CannotRunLatex' => 'No es pot executar latex',
+	'math_CannotWriteTexFile' => "No s'ha pogut escriure al fitxer tex",
 	'math_InvalidColour' => 'El color "$1" és invàlid',
+	'math_LatexFontNotSpecified' => 'No s\'ha especificat cap font LaTeX per "$1"',
+	'math_MissingDelimiter' => 'Falta un delimitador després de "$1"',
+	'math_MissingOpenBraceAfter' => 'Falta obrir un claudàtor "{" després de "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Falta obrir un claudàtor "{" al final de l\'entrada',
+	'math_MissingOpenBraceBefore' => 'Falta obrir un claudàtor "{" abans de "$1"',
 );
 
 /** Czech (Česky)

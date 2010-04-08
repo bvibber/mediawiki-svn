@@ -572,6 +572,7 @@ $messages['sw'] = array(
 $messages['te'] = array(
 	'wikieditor' => 'ఉన్నత వికీపాఠ్య దిద్దుబాటు ముఖాంతరం',
 	'wikieditor-wikitext-tab' => 'వికీపాఠ్యం',
+	'wikieditor-loading' => 'లోడవుతూంది',
 );
 
 /** Turkmen (Türkmençe)

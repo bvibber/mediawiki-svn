@@ -140,6 +140,24 @@ $messages['bs'] = array(
 	'commentbox-error-empty-comment' => 'Prazni komentari nisu dozvoljeni!',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'commentbox-desc' => 'Afegeix una capsa de comentaris a certes pàgines',
+	'commentbox-intro' => '== Afegiu un comentari ... == Voleu comentar res en aquesta pàgina? Afegiu-lo aquí o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} editeu la pàgina directament]</span>.',
+	'commentbox-savebutton' => 'Desa el comentari',
+	'commentbox-name' => 'Nom:',
+	'commentbox-name-explanation' => "<small>(Consell: Si [[Special:Userlogin|us registreu]], no haureu d'omplir manualment el nom aquí)</small>",
+	'commentbox-log' => 'Nous comentaris',
+	'commentbox-first-comment-heading' => '== Comentaris ==',
+	'commentbox-regex' => '/\\n==\\s*Comentaris\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Error en crear el comentari',
+	'commentbox-error-page-nonexistent' => 'Aquesta pàgina no existeix!',
+	'commentbox-error-namespace' => 'Els comentaris no estan permesos en aquest espai de noms!',
+	'commentbox-error-empty-comment' => 'No estan permesos els comentaris buits!',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

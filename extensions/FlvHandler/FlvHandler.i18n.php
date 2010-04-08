@@ -55,6 +55,14 @@ $messages['bs'] = array(
 	'flv-long-desc' => '(Flash video, $1 × $2 piksela, veličina datoteke: $3)',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'flvhandler_desc' => "Permet afegir fitxers de vídeo en Flash (.flv) que s'afegiran com arxius estàndard (per exemple, <nowiki>[[</nowiki>{{ns:file}}:Film.flv<nowiki>]]</nowiki>)",
+	'flv-long-desc' => '(Vídeo en Flash, $1 × $2 píxels, mida del fitxer: $3)',
+);
+
 /** German (Deutsch)
  * @author PasO
  */

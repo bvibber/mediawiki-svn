@@ -58,6 +58,13 @@ $messages['bs'] = array(
 	'ipauth-desc' => 'Automatska prijava sa stalnih IP adresa',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'ipauth-desc' => "Inici de sessió automàtic des d'adreces IP fixes",
+);
+
 /** German (Deutsch)
  * @author PasO
  */

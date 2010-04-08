@@ -257,7 +257,7 @@ $messages['de'] = array(
 	'importfreeimages' => 'Import freier Bilder',
 	'importfreeimages-desc' => 'Ermöglicht den [[Special:ImportFreeImages|Import freier Bilder]] von [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Diese Seite erlaubt dir, in Flickr nach Bildern unter einer freien Lizenz zu suchen und diese in dein Wiki zu importieren.',
-	'importfreeimages_nophotosfound' => 'Es wurden keine Fotos mit den Suchkriterien "$1" gefunden, bitte versuche es erneut.',
+	'importfreeimages_nophotosfound' => 'Es wurden keine Fotos mit den Suchkriterien „$1“ gefunden, bitte versuche es erneut.',
 	'importfreeimages_owner' => 'Urheber',
 	'importfreeimages_importthis' => 'importieren',
 	'importfreeimages_next' => 'Nächste $1',
@@ -316,6 +316,7 @@ $messages['el'] = array(
 	'importfreeimages_size_small' => 'Μικρός',
 	'importfreeimages_size_medium' => 'Μέσος',
 	'importfreeimages_size_large' => 'Μεγάλος',
+	'importfreeimages_size_original' => 'Αρχικός',
 );
 
 /** Esperanto (Esperanto)

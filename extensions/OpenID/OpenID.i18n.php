@@ -968,6 +968,7 @@ $messages['da'] = array(
  * @author ChrisiPK
  * @author Church of emacs
  * @author DaSch
+ * @author LWChris
  * @author Leithian
  * @author Tbleher
  * @author Umherirrender
@@ -1004,6 +1005,7 @@ Bitte benachrichtige einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidemail' => 'E-Mail-Adresse:',
 	'openidlanguage' => 'Sprache',
 	'openidtimezone' => 'Zeitzone',
+	'openidchooselegend' => 'Wahl des Benutzernamens',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 du kannst einen aus der untenstehenden Liste auswählen.',
 	'openidchoosenick' => 'Dein Spitzname ($1)',
@@ -1042,6 +1044,8 @@ Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise hast 
 Du wirst dich nicht mehr mit dieser OpenID anmelden können.',
 	'openiddelete-button' => 'Bestätigen',
 	'openiddeleteerrornopassword' => 'Du kannst nicht alle deine OpenIDs löschen, da du kein Passwort gesetzt hast.
+Ohne OpenID könntest du dich nicht mehr anmelden.',
+	'openiddeleteerroropenidonly' => 'Du kannst nicht alle deiner OpenIDs löschen, weil du dich nur mit OpenID einloggen darfst.
 Ohne OpenID könntest du dich nicht mehr anmelden.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von deinem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von deinem Benutzerkonto ist ein Fehler aufgetreten.',
@@ -1246,14 +1250,15 @@ $messages['el'] = array(
 	'openidemail' => 'Διεύθυνση ηλεκτρονικού ταχυδρομείου',
 	'openidlanguage' => 'Γλώσσα',
 	'openidtimezone' => 'Ζώνη ώρας:',
+	'openidchooselegend' => 'Επιλογή ονόματος χρήστη',
 	'openidchooseinstructions' => 'Όλοι οι χρήστες χρειάζονται ένα nickname,
 για να επιλέξετε μια από τις παρακάτω επιλογές.',
-	'openidchoosenick' => 'Το ψευδώνυμό σας ($ 1)',
+	'openidchoosenick' => 'Το ψευδώνυμό σας ($1)',
 	'openidchoosefull' => 'Το πλήρες όνομά σας ($1)',
 	'openidchooseurl' => 'Ένα όνομα διαλεγμένο από το OpenID σας ($1)',
 	'openidchooseauto' => 'Ένα αυτο-δημιουργημένο όνομα ($1)',
 	'openidchoosemanual' => 'Ένα όνομα της επιλογής σας:',
-	'openidchooseexisting' => 'Ένας υπάρχων λογαριασμός σε αυτό το βίκι:',
+	'openidchooseexisting' => 'Ένας υπάρχων λογαριασμός σε αυτό το βίκι',
 	'openidchooseusername' => 'Όνομα χρήστη:',
 	'openidchoosepassword' => 'κωδικός:',
 	'openidconvertinstructions' => 'Αυτή η φόρμα σας επιτρέπει να αλλάξετε το λογαριασμό χρήστη σας για να χρησιμοποιήσετε ένα ή περισσόττερα URL OpenID',

@@ -589,6 +589,7 @@ Vær tålmodig.',
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author LWChris
  * @author Purodha
  * @author Revolus
  * @author Umherirrender

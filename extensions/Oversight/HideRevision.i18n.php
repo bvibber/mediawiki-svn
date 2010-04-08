@@ -1819,6 +1819,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Civvì
  * @author Cruccone
  * @author Darth Kule
  */
@@ -1828,8 +1829,8 @@ $messages['it'] = array(
 	'group-oversight' => 'Oversighter',
 	'group-oversight-member' => 'oversight',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Visualizza una revisione precedentemente nascosta',
-	'right-hiderevision' => 'Nasconde versioni agli amministratori',
+	'right-oversight' => "Visualizza una versione precedentemente nascosta con l'estensione:Oversight",
+	'right-hiderevision' => "Nascondi versioni agli amministratori con l'estensione:Oversight",
 	'hiderevision-prompt' => 'Numero della revisione da oscurare:',
 	'hiderevision-continue' => 'Continua',
 	'hiderevision-text' => "Questa funzione deve essere usata '''unicamente''' nei seguenti casi:

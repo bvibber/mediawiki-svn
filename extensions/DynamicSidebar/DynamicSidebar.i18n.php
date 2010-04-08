@@ -33,6 +33,13 @@ $messages['bs'] = array(
 	'dynamicsidebar-desc' => 'Omogućava dinamičke alatne trake zasnovane na korisničkim stranicama, grupama i kategorijama',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'dynamicsidebar-desc' => "Proporciona barres dinàmiques laterals basades en les pàgines d'usuari, grups i categories",
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */
@@ -101,6 +108,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'dynamicsidebar-desc' => 'Provide barras lateral dynamic a base de paginas de usator, gruppos e categorias',
+);
+
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'dynamicsidebar-desc' => 'Fornisce barre laterali dinamiche basati su pagine utente, gruppi e categorie',
 );
 
 /** Japanese (日本語)

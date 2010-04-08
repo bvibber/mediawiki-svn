@@ -78,6 +78,14 @@ $messages['bs'] = array(
 	'right-getfamily' => 'Pravljenje datoteke porodice za pywikipediabot',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'getfamily-desc' => 'Genera un arxiu de família per a pywikipediabot',
+	'right-getfamily' => 'Crea un arxiu de família per pywikipediabot',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

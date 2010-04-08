@@ -95,6 +95,16 @@ $messages['bs'] = array(
 	'externalpages-no-page' => 'Nije navedena stranica',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'externalpages' => 'Pàgines externes',
+	'externalpages-desc' => 'Recupera i mostra pàgines de llocs externs de la WMF',
+	'externalpages-bad-page' => 'Error en la pàgina especificada',
+	'externalpages-no-page' => "No s'ha especificat la pàgina",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

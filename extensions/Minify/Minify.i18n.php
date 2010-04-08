@@ -52,6 +52,13 @@ $messages['bs'] = array(
 	'minify-desc' => 'Smanjuje CSS i JavaScript izlaz od action=raw',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'minify-desc' => 'Comprimeix la sortida del CSS i del JavaScript de action=raw',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

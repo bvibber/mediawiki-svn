@@ -135,6 +135,14 @@ $messages['hsb'] = array(
 	'tooltip-pt-prefswitch-link' => 'Nowe funkcije wupruwować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'prefswitch-link' => 'Újdonság!',
+	'tooltip-pt-prefswitch-link' => 'Próbáld ki az új funkciókat',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -246,6 +254,7 @@ $messages['sl'] = array(
  */
 $messages['te'] = array(
 	'prefswitch-link' => 'కొత్తది!',
+	'tooltip-pt-prefswitch-link' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
 );
 
 /** Turkish (Türkçe)

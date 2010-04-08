@@ -525,9 +525,13 @@ Valitse kaikki sopivat.',
 	'prefswitch-return' => '<hr style="clear:both">
 Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-on' => '=== Palautetta? ===
-Kuulisimme mielellämme palautetta sinulta. Käy <span class="plainlinks">[$1 palautesivulla]</span>.
+Otamme mielellämme palautetta vastaan. Käy <span class="plainlinks">[$1 palautesivulla]</span>.
 === Palaa takaisin ===
 Jos haluat poistaa käytöstä uudet ominaisuudet – <span class="plainlinks">[$2 napsauta tästä]</span>.',
+	'prefswitch-main-off' => '=== Kokeile ominaisuuksia ===
+Jos haluat ottaa uudet ominaisuudet käyttöön – <span class="plainlinks">[$1 napsauta tästä]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Otamme mielellämme palautetta vastaan.
+Täytä alla oleva valinnainen kysely.',
 	'prefswitch-survey-intro-off' => 'Kiitos, kun kokeilit uusia ominaisuuksia.
 Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely.',
 );
@@ -718,10 +722,11 @@ Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus.',
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'prefswitch' => 'הפעלת מיזם השמישות',
-	'prefswitch-desc' => 'לאפשר למשתמשים להפעיל ערכות של העדפות',
+	'prefswitch' => 'שינוי העדפות במיזם השמישות',
+	'prefswitch-desc' => 'הוספת אפשרות למשתמשים לשנות קבוצות של העדפות',
 	'prefswitch-survey-true' => 'כן',
 	'prefswitch-survey-false' => 'לא',
 	'prefswitch-survey-submit-off' => 'ביטול המראה החדש',
@@ -734,7 +739,7 @@ $messages['he'] = array(
 אנא בחרו את כל האפשרויות המתאימות.',
 	'prefswitch-survey-answer-whyoff-hard' => 'היא הייתה קשה מדי לשימוש',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'היא לא פעלה כראוי.',
-	'prefswitch-survey-answer-whyoff-notpredictable' => 'היא לא פעלה באופן צפוי.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'היא פעלה באופן בלתי צפוי.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'לא אהבתי את המראה החדש.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'לא אהבתי את השינויים בלשוניות ובעיצוב.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'לא אהבתי את סרגל הכלים החדש.',
@@ -754,18 +759,18 @@ $messages['he'] = array(
 	'prefswitch-success-feedback' => 'המשוב שלכם נשלח.',
 	'prefswitch-return' => '<hr style="clear:both">
 חזרה אל <span class="plainlinks">[$1 $2].</span>',
-	'prefswitch-main' => 'עבדנו קשה כדי שלמשתמשים שלנו יהיה קל יותר. אנו נרגשים לשתף אתכם במספר שיפורים, בהם מראה חדש ויכולות עריכה פשוטות יותר. שיפור השמישות במיזמים שלנו הוא משימה בעלת עדיפות גבוהה עובר קרן ויקימדיה ואנחנו נשתף אתכם בשיפורים נוספים בעתד.
+	'prefswitch-main' => 'עבדנו קשה כדי שלמשתמשים שלנו יהיה קל יותר. אנו נרגשים לשתף אתכם במספר שיפורים, בהם מראה חדש ויכולות עריכה פשוטות יותר. שיפור השמישות במיזמים שלנו הוא משימה בעלת עדיפות גבוהה עבור קרן ויקימדיה ואנחנו נשתף אתכם בעדכונים נוספים בעתיד.
 
 [[File:UsabilityNavigation.png|left|link=|צילום מסך של דף הניווט החדש]]
 [[File:UsabilityToolbar.png|left|link=|צילום מסך של סרגל העריכה המורחב]]
-[[File:UsabilityDialogs.png|left|link=|צילום מסך של תיבות דו שיח חדשות לעריכת תוכן]]
+[[File:UsabilityDialogs.png|left|link=|צילום מסך של תיבות דו שיח חדשות ליצירת תוכן]]
 
 ===אלה הדברים ששינינו===
-* ניווט: שיפרנו את הניווט לקריאה וכתיבה של דפים. עכשיו הלשוניות בראש כל דף מציגות באופן ברור יותר אם אתם צופים בדף או בדף שיחה והאם אתם קוראים או כותבים אותו.
-* שיפורים בסרגל העריכה: סידרנו מחדש את סרגל העריכה כדי שיהיה קל יותר להשתמש בו. עכשיו עיצוב דפים פשוט וצפוי יותר.
-* אשף קישורים: כלי קל לשימוש מאפשר לכם להוסיף קישורים לדפים אחרים בוויקיפדיה וגם קישורים לאתרים חיצוניים.
+* ניווט: שיפרנו את הניווט לקריאה ולעריכה של דפים. עכשיו הלשוניות בראש כל דף מציגות באופן ברור יותר האם אתם צופים בדף או בדף שיחה והאם אתם קוראים או עורכים אותו.
+* שיפורים בסרגל העריכה: סידרנו מחדש את סרגל העריכה כדי שיהיה קל יותר להשתמש בו. עכשיו עיצוב דפים פשוט ואינטואיטיבי יותר.
+* אשף קישורים: כלי קל לשימוש שמאפשר לכם להוסיף קישורים לדפים אחרים בוויקיפדיה וגם קישורים לאתרים חיצוניים.
 * שיפורים בחיפוש: שיפרנו את ההשלמות בתיבת החיפוש כדי שתמצאו את הדף שאותו אתם מחפשים מהר יותר.
-* תכונות חדשות אחרות: הוספנו גם אשף טבלאות כדי שיהיה קל יותר ליצור טבלאות ויכולת חיפוש והחלפה כדי שיהיה קל יותר לערוך דפים.',
+* תכונות חדשות אחרות: הוספנו גם אשף טבלאות כדי שיהיה קל יותר ליצור טבלאות ויכולת חיפוש והחלפה כדי להקל על עריכת דפים.',
 	'prefswitch-main-on' => '===יש לכם מה לספר לנו?===
 נשמח לשמוע מכם. אנא בקרו ב<span class="plainlinks">[$1 דף המשוב שלנו]</span>.
 ===תחזירו אותי!===
@@ -773,9 +778,9 @@ $messages['he'] = array(
 	'prefswitch-main-off' => '===נסו אותן!===
 אם תרצו להפעיל את התכונות החדשות, אנא <span class="plainlinks">[$1 לחצו כאן]</span>.',
 	'prefswitch-survey-intro-feedback' => 'נשמח לשמוע מכם.
-אנא מלאו את הסקר להלן (לא חובה).',
+אנא מלאו את הסקר שלהלן (לא חובה).',
 	'prefswitch-survey-intro-off' => 'תודה שניסיתם את התכונות החדשות שלנו.
-כדי לעזור לנו לשפר אותן, אנא מלאו את הסקר להלן (לא חובה).',
+כדי לעזור לנו לשפר אותן, אנא מלאו את הסקר שלהלן (לא חובה).',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -809,6 +814,30 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 Wróćo do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-off' => '===Wupruwuj je!===
 Jeli chceš nowe funkcije zapinyć,  <span class="plainlinks">[$1 klikń prošu tu]</span>.',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'prefswitch-survey-true' => 'Igen',
+	'prefswitch-survey-false' => 'Nem',
+	'prefswitch-survey-submit-off' => 'Új funkciók kikapcsolása',
+	'prefswitch-survey-submit-feedback' => 'Visszajelzés küldése',
+	'prefswitch-survey-answer-whyoff-hard' => 'Túl nehéz volt használni.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Nem működött megfelelően.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nem működött kiszámíthatóan.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Nem tetszik, ahogy kinéz.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nem tetszenek az új fülek és az elrendezés.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nem tetszik az új szerkesztő-eszköztár.',
+	'prefswitch-survey-answer-whyoff-other' => 'Egyéb indok:',
+	'prefswitch-survey-question-browser' => 'Melyik böngészőt használod?',
+	'prefswitch-survey-answer-browser-other' => 'Más böngésző:',
+	'prefswitch-survey-question-os' => 'Melyik operációs rendszert használod?',
+	'prefswitch-survey-answer-os-other' => 'Más operációs rendszer:',
+	'prefswitch-title-switched-off' => 'Köszönjük',
+	'prefswitch-title-feedback' => 'Visszajelzés',
+	'prefswitch-success-feedback' => 'A visszajelzésed el lett küldve.',
 );
 
 /** Interlingua (Interlingua)
@@ -1611,18 +1640,34 @@ Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj.',
 $messages['te'] = array(
 	'prefswitch-survey-true' => 'అవును',
 	'prefswitch-survey-false' => 'కాదు',
+	'prefswitch-survey-question-likedislike' => 'కొత్త సౌలభ్యాలలో మీకు ఏమేం నచ్చాయి?
+ఏవి నచ్చలేదు?',
 	'prefswitch-survey-answer-whyoff-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'ఇది సరిగ్గా పనిచేయడం లేదు.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'ఇది అనుకున్నట్లుగా పనిచేయడం లేదు',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'దీని రూపు నాకు నచ్చలేదు.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'కొత్త ట్యాబులు మరియు అమరిక నాకు నచ్చలేదు.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'కొత్త పనిముట్లపట్టీ నాకు నచ్చలేదు',
 	'prefswitch-survey-answer-whyoff-other' => 'ఇతర కారణం:',
 	'prefswitch-survey-question-browser' => 'మీరు ఏ విహారిణిని వాడుతున్నారు?',
 	'prefswitch-survey-answer-browser-other' => 'ఇతర విహారిణి:',
 	'prefswitch-survey-question-os' => 'మీరు వాడుతున్న నిర్వాహక వ్యవస్థ ఏది?',
 	'prefswitch-survey-answer-os-other' => 'ఇతర నిర్వాహక వ్యవస్థ:',
+	'prefswitch-survey-question-res' => 'మీ తెర వైశాల్యం ఎంత?',
 	'prefswitch-title-on' => 'కొత్తవేమిటి?',
 	'prefswitch-title-switched-on' => 'ఆనందించండి!',
+	'prefswitch-title-off' => 'కొత్త సౌలభ్యాలని నిలిపివేయి',
 	'prefswitch-title-switched-off' => 'ధన్యవాదాలు',
+	'prefswitch-success-off' => 'కొత్త సౌలభ్యాలని ఇప్పుడు నిలిపివేశాం.',
+	'prefswitch-success-feedback' => 'మీ ప్రతిస్పందనని పంపించాం.',
 	'prefswitch-return' => '<hr style="clear:both">
 తిరిగి <span class="plainlinks">[$1 $2]</span>కి.',
+	'prefswitch-main-on' => '===సలహాలూ, సూచనలూ?===
+మేం మీ నుండి వినాలనుకుంటున్నాం.  దయచేసి మా <span class="plainlinks">[$1 ప్రతిస్పందన పుట]ని సందర్శించండి</span>.
+===నన్ను వెనక్కి తీసుకెళ్ళు!===
+ఒకవేళ మీరు కొత్త సౌలభ్యాలని నిలిపివేసుకోవాలనుకుంటే, దయచేసి <span class="plainlinks">[$2 ఇక్కడ నొక్కండి]</span>.',
+	'prefswitch-main-off' => '===వాటిని ఉపయోగించి చూడండి!===
+మీరు కొత్త సౌలభ్యాలని చూడాలనుకుంటే, దయచేసి <span class="plainlinks">[$1 ఇక్కడ నొక్కండి]</span>.',
 );
 
 /** Turkish (Türkçe)

@@ -55,6 +55,13 @@ $messages['ca'] = array(
 	'autoincrement-desc' => 'Una variable de connexió que agrega la variable autoincrementativa <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** German (Deutsch)
+ * @author LWChris
+ */
+$messages['de'] = array(
+	'autoincrement-desc' => 'Ein Variablen-Hook, der die automatisch heraufzählende Variable <nowiki>{{AUTOINCREMENT}}</nowiki> hinzufügt',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

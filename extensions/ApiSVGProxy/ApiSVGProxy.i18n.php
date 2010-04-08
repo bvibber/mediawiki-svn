@@ -28,6 +28,13 @@ $messages['br'] = array(
 	'apisvgproxy-desc' => "Kas a ra restroù SVG adalek ur sanailh restroù (a-bell diouzh ret) war-du an domani lec'hel.",
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'apisvgproxy-desc' => 'Fa de servidor intermediari de fitxers SVG per a dipòsits de fitxers (probablement remots) al domini local',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -70,11 +77,25 @@ $messages['hsb'] = array(
 	'apisvgproxy-desc' => 'Funguje jako proksy za SVG dataje mjez  datajowym repozitorijom (snano zdalenym) a lokalnej domenu',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'apisvgproxy-desc' => 'SVG fájlok proxizása egy (feltehetőleg távoli) fájltárolóból a helyi tartományba',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'apisvgproxy-desc' => 'Face un proxy in le dominio local pro files SVG ex un deposito de files (possibilemente remote)',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'apisvgproxy-desc' => 'Liwwert SVG-Fichiere vun engem (méiglecherweis net lokalem) Depot vum Fichieren an de lokalen Domain',
 );
 
 /** Macedonian (Македонски)
@@ -89,6 +110,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'apisvgproxy-desc' => 'Geeft SVG-bestanden door vanaf een (mogelijke elders bestaande) bestandsrepository naar het lokale domein',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'apisvgproxy-desc' => 'Sender SVG-filer via en mellomtjener fra et (muligens eksternt) fillager til det lokale domenet',
 );
 
 /** Polish (Polski)

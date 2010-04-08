@@ -1387,6 +1387,10 @@ $messages['pl'] = array(
 	'createsigndoc-create' => 'Utwórz',
 	'createsigndoc-error-generic' => 'Błąd: $1',
 	'createsigndoc-error-pagenoexist' => 'Błąd: Strona [[$1]] nie istnieje',
+	'createsigndoc-success' => 'Mechanizm podpisywania dokumentów został włączony na  [[$1]].
+Możesz [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} go przetestować].',
+	'createsigndoc-error-alreadycreated' => 'Dokument „$1” został już podpisany.
+Nie można go podpisać dwukrotnie.',
 );
 
 /** Piedmontese (Piemontèis)

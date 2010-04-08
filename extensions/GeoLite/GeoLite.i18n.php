@@ -61,6 +61,13 @@ $messages['bs'] = array(
 	'geolite-desc' => 'Pojednostavljeno GeoIp preusmjerenje',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'geolite-desc' => 'Redirecció lleugera a GeoIP',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

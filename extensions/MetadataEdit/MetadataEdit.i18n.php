@@ -39,6 +39,14 @@ $messages['cy'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
+/** German (Deutsch)
+ * @author LWChris
+ */
+$messages['de'] = array(
+	'metadataedit-desc' => 'Kategorien, Sprachlinks und erlaubte Vorlagen während der Bearbeitung von Seiten in einem separaten Textfeld anzeigen',
+	'metadata_help' => 'Metadaten:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  * @author Qualia

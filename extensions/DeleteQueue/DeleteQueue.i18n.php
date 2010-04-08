@@ -990,14 +990,18 @@ Ako, nakon pet dana, niko ne bude imao sugestija za brisanje ove stranice, ona �
  */
 $messages['ca'] = array(
 	'deletequeue-desc' => "Crea un [[Special:DeleteQueue|sistema de coa per gestionar l'eliminació de pàgines]]",
+	'deletequeue-action-queued' => 'Supressió',
 	'deletequeue-generic-reasons' => '* Motius genèrics
 ** Vandalisme
 ** Publicitat
 ** Manteniment
 ** Fora dels objectius del projecte',
+	'deletequeue-speedy-title' => 'Marqueu "$1" per a supressió ràpida',
 	'deletequeue-delnom-otherreason' => 'Un altre motiu',
 	'deletequeue-delnom-extra' => 'Informació addicional:',
+	'deletequeue-delnom-submit' => 'Presentar candidatura',
 	'deletequeue-queue-speedy' => 'Supressió ràpida',
+	'deletequeue-queue-deletediscuss' => "Discussió d'esborrat",
 	'deletequeue-review-reason' => 'Comentaris:',
 	'deletequeue-vote-reason' => 'Comentaris:',
 	'deletequeue-vote-submit' => 'Tramet',

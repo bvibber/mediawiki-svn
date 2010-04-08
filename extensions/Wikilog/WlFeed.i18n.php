@@ -71,6 +71,13 @@ $messages['cs'] = array(
 	'wlfeed-desc' => 'Vylepšené třídy pro vytváření kanálů',
 );
 
+/** German (Deutsch)
+ * @author LWChris
+ */
+$messages['de'] = array(
+	'wlfeed-desc' => 'Erweiterte Klassen zur Feed-Generierung',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

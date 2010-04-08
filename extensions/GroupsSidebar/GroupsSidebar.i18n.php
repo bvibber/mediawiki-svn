@@ -39,6 +39,13 @@ $messages['bs'] = array(
 	'groupssidebar-desc' => 'Ovo proširenje omoguće administratorima stranice da uključe elemente sa alatne trake za određene grupe korisnika',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'groupssidebar-desc' => "Aquesta extensió permet als administradors del lloc incloure elements a la barra lateral per a grups específics d'usuaris",
+);
+
 /** German (Deutsch)
  * @author Imre
  */

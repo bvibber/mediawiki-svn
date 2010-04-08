@@ -124,6 +124,15 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'editsubpages-desc' => 'Permet als administradors desbloquejar una pàgina i totes les seves subpàgines per a les edicions anònimes a través de [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- deixau aquesta línia --><pre>
+# Posau les pàgines que voleu desbloquejar a continuació, utilitzant
+# * Nom de la pàgina
+# Les pàgines a desbloquejar han de començar amb un pic per ser computades,
+# qualsevol altra cosa serà considerada un comentari
+# Els noms de les pàgines han de ser [[enllaços]] i es distingeix entre majúscules i minúscules
+# Addicionalment, les pàgines de discussió seran automàticament desbloquejades amb la pàgina
+# Vegeu http://www.mediawiki.org/wiki/Extension:EditSubpages per a més informació
+ #</pre><!-- deixau aquesta línia -->',
 );
 
 /** German (Deutsch)

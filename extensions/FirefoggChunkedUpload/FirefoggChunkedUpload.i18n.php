@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'firefoggcu-desc' => 'Protokol pellgargañ a-dammoù Firefogg',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'firefoggcu-desc' => 'Protocol de Càrrega Fragmentada de Firefogg',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

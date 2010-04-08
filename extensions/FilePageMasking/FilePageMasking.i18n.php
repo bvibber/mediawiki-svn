@@ -53,6 +53,13 @@ $messages['bs'] = array(
 	'filepagemasking-desc' => 'Mijenja ".xxx" u "_xxx" u linkovima stranica opisa datoteke',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'filepagemasking-desc' => 'Substitueix ".xxx" per "_xxx" als enllaços de les pàgines de descripció d\'arxius',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

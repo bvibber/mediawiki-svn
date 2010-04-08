@@ -3380,6 +3380,14 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-list-hidebday' => 'Nie pokazuj wieku',
 	'sign-list-hideemail' => 'Nie pokazuj adresu e‐mail',
 	'sign-submit' => 'Podpisz dokument',
+	'sign-information' => '<div class="noarticletext">Dziękujemy za poświęcenie czasu na przeczytanie tego dokumentu.
+Jeśli zgadzasz się z jego treścią, wyraź swoje poparcie, wypełniając wymagane pola poniżej, a następnie kliknij „Podpisz dokument”.
+Upewnij się, że Twoje dane osobowe są poprawne i że mamy metodę na skontaktowanie się z Tobą w celu zweryfikowania tożsamości.
+Zauważ, że adres IP i inne dane identyfikacyjne będą rejestrowane w czasie zapisywania formularza, a następnie zostaną wykorzystane przez administratora do wyeliminowania wielu głosów oddanych przez jedną osobę oraz do potwierdzenia poprawności danych osobowych.
+Ponieważ stosowanie anonimizujących serwerów proxy uniemożliwia nam weryfikację, podpisy złożone przez proxy nie być liczone.
+Jeśli jesteś obecnie połączony przez serwer proxy, rozłącz się, a następnie użyj standardowego połączenia aby się podpisać.</div>
+
+$1',
 	'sig-success' => 'Dokument został podpisany.',
 	'sign-view-selectfields' => '<b>Pola do wyświetlenia:</b>',
 	'sign-viewfield-entryid' => 'Identyfikator wpisu',
@@ -3396,6 +3404,7 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-viewfield-email' => 'E‐mail',
 	'sign-viewfield-age' => 'Wiek',
 	'sign-viewfield-options' => 'Opcje',
+	'sign-viewsigs-intro' => 'Poniżej pokazano zarejestrowane podpisy <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen' => 'Podpisanie tego dokumentu jest obecnie włączone.',
 	'sign-sigadmin-close' => 'Wyłącz podpisywanie',
 	'sign-sigadmin-currentlyclosed' => 'Podpisanie tego dokumentu jest obecnie wyłączone.',
@@ -3432,6 +3441,7 @@ Przeczytaj cały dokument dokładnie i jeśli uznasz, że chcesz go poprzeć, w 
 	'sign-uniquequery-similaraddress' => 'Podobny adres',
 	'sign-uniquequery-similarphone' => 'Podobny numer telefonu',
 	'sign-uniquequery-similaremail' => 'Podobny adres e‐mail',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] podpisał [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Piedmontese (Piemontèis)

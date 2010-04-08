@@ -200,12 +200,12 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author LWChris
  * @author Melancholie
  */
 $messages['de'] = array(
 	'inspectcache' => 'Cache ansehen',
 	'inspectcache-desc' => 'Ein einfaches Diagnosewerkzeug für Inhalte des geteilten Zwischenspeichers',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Allgemeiner Cache',
 	'inspectcache-parser' => 'Parser-Cache',
 	'inspectcache-message' => 'Nachrichten-Cache',
@@ -213,6 +213,7 @@ $messages['de'] = array(
 	'inspectcache-delete' => 'Löschen',
 	'inspectcache-deleted' => 'Gelöschter Cache',
 	'inspectcache-list' => 'Liste',
+	'right-inspectcache' => 'Anzeigen und Löschen von Cache-Einträgen',
 );
 
 /** Lower Sorbian (Dolnoserbski)

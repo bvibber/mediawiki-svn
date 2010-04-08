@@ -279,14 +279,30 @@ $messages['bs'] = array(
 	'masseditregex-tooltip-execute' => 'Primijeni ove izmjene na svaku stranicu',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'masseditregex' => 'Edició massiva utilitzant expressions regulars',
+	'masseditregex-matchtxt' => 'Cerca:',
+	'masseditregex-replacetxt' => 'Reemplaça per:',
+	'masseditregex-before' => 'Abans',
+	'masseditregex-after' => 'Després',
+	'masseditregex-hint-headreplace' => 'Reemplaça',
+	'masseditregex-listtype-intro' => 'Això és una llista de:',
+	'masseditregex-listtype-pagenames' => 'Noms de les pàgines (editeu aquestes pàgines)',
+);
+
 /** German (Deutsch)
  * @author Imre
+ * @author LWChris
  * @author Pill
  * @author Tbleher
  */
 $messages['de'] = array(
 	'masseditregex' => 'Massenbearbeitung mithilfe von regulärem Ausdruck',
 	'masseditregex-desc' => 'Reguläre Ausdrücke benutzen, um [[Special:MassEditRegex|viele Seiten auf einmal zu bearbeiten]]',
+	'masseditregextext' => 'Gib einen oder mehrere reguläre Ausdrücke (eine pro Zeile) für die Suche an, und einen oder mehrere Ausdrücke um einen jeweiligen Treffer zu ersetzen. Der erste Such-Ausdruck wird bei Übereinstimmung durch den ersten Ersatz-Ausdruck ersetzt, und so weiter. Siehe [ http://php.net/manual/de/function.preg-replace.php der PHP-Funktion preg_replace ()] für Details.',
 	'masseditregex-pagelisttxt' => 'Zu bearbeitende Seiten (kein Namensraum-Prefix benutzen):',
 	'masseditregex-matchtxt' => 'Suchen nach:',
 	'masseditregex-replacetxt' => 'Ersetzen durch:',

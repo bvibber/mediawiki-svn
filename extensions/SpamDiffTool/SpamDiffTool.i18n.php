@@ -150,6 +150,7 @@ $messages['be-tarask'] = array(
 	'spamdifftool' => 'Кіраваньне чорным сьпісам спаму',
 	'spamdifftool-desc' => 'Дазваляе лёгка дадаваць новыя запісы ў чорны сьпіс спаму з параўнаньня вэрсіяў старонак',
 	'spamdifftool_cantedit' => 'Прабачце, Вы ня маеце правоў на рэдагаваньне чорнага сьпісу спаму.',
+	'spamdifftool-no-title' => "'''Памылка:''' назва старонкі не пазначаная.",
 	'spamdifftool_notext' => "Няма тэксту для даданьня ў чорны сьпіс спаму.
 Націсьніце <a href='$1'>тут</a>, каб працягваць.",
 	'spamdifftool_confirm' => "Пацьвердзіце, што Вы жадаеце дадаць гэтыя запісы ў чорны сьпіс спаму.
@@ -310,6 +311,7 @@ $messages['cy'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Consta
+ * @author LWChris
  * @author Michawiki
  * @author Umherirrender
  */
@@ -317,6 +319,7 @@ $messages['de'] = array(
 	'spamdifftool' => 'Spam-Blacklist bearbeiten',
 	'spamdifftool-desc' => 'Ermöglicht das Hinzufügen neuer Einträge zur Spamblacklist aus Versionsunterschieden',
 	'spamdifftool_cantedit' => 'Du hast keine Berechtigung zur Bearbeitung der Spam-Blacklist.',
+	'spamdifftool-no-title' => "'''Fehler:''' es wurde kein Seitentitel angegeben.",
 	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a>, um fortzufahren.",
 	'spamdifftool_confirm' => "Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest.
 (Klicke <a href='$1' target='new'>hier</a>, um ein Problem zu melden.)",
@@ -436,12 +439,14 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
  * @author Crazymadlover
  * @author Drini
  * @author Imre
+ * @author Pertile
  * @author Sanbec
  */
 $messages['es'] = array(
 	'spamdifftool' => 'Administrar lista negra de spam',
 	'spamdifftool-desc' => 'Provee una manera básica de agregar entradas a la lista negra de spam desde diferentes páginas',
 	'spamdifftool_cantedit' => 'Disculpe - usted no tiene permiso para editar la lista negra de spam.',
+	'spamdifftool-no-title' => "'''Error:''' no se especificó ningún título de página.",
 	'spamdifftool_notext' => "No hay texto para agregar en la lista negra de spam.
 Click <a href='$1'>aquí</a> para continuar.",
 	'spamdifftool_confirm' => "Confirme que desea añadir estas entradas a la lista negra de Spam.
@@ -524,6 +529,7 @@ Napsauta <a href='$1'>palataksesi</a>.",
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -531,6 +537,7 @@ $messages['fr'] = array(
 	'spamdifftool' => 'Gestion de la Liste noire des pourriels',
 	'spamdifftool-desc' => 'Fournit une méthode simple pour ajouter des entrées dans la liste noire des pourriels à partir des diff',
 	'spamdifftool_cantedit' => 'Désolé - Vous n’avez pas la permission d’éditer la Liste noire des pourriels.',
+	'spamdifftool-no-title' => "'''Erreur :''' pas de titre de page spécifié.",
 	'spamdifftool_notext' => "Il n’y a pas de texte à ajouter à la Liste noire des pourriels. Cliquez <a href='$1'>ici</a> pour continuer.",
 	'spamdifftool_confirm' => "Confirmez que vous voulez ajouter ces entrées dans la Liste noire des pourriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
 	'spamdifftool_summary' => 'Ajouté à la Liste noire des pourriels',
@@ -565,24 +572,28 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'spamdifftool' => 'Administrar a Lista Negra de Spam',
-	'spamdifftool-desc' => 'Proporciona un camiño básico para engadir novas entradas á lista negra de spam (spam blacklist) das diferenzas das páxinas',
-	'spamdifftool_cantedit' => 'Sentímolo - vostede non ten permisos para editar na Lista Negra de Spam.',
-	'spamdifftool_notext' => "Non hai texto para engadir a Lista negra de Spam. Prema <a href='$1'>aquí</a> para continuar.",
-	'spamdifftool_confirm' => "Confirme que quere engadir estas entradas á lista negra de <i>spam</i>.
+	'spamdifftool' => 'Administrar a lista negra de spam',
+	'spamdifftool-desc' => 'Proporciona un xeito básico para engadir novas entradas á lista negra de spam a partir das páxinas de diferenzas',
+	'spamdifftool_cantedit' => 'Sentímolo, non ten os permisos necesarios para editar a lista negra de spam.',
+	'spamdifftool-no-title' => "'''Erro:''' non se especificou ningún título de páxina.",
+	'spamdifftool_notext' => "Non hai texto que engadir á lista negra de spam.
+Prema <a href='$1'>aquí</a> para continuar.",
+	'spamdifftool_confirm' => "Confirme que quere engadir estas entradas á lista negra de spam.
 (Faga clic <a href='$1' target='new'>aquí</a> para informar de calquera problema.)",
-	'spamdifftool_summary' => 'Engadindo a Lista Negra de Spam',
-	'spamdifftool_urls_detected' => 'Os seguintes enderezos URL foron detectados na(s) edición(s); cales quere engadir á lista negra de spam?
+	'spamdifftool_summary' => 'Engadindo á lista negra de spam',
+	'spamdifftool_urls_detected' => 'Os seguintes enderezos URL detectáronse na(s) edición(s).
+Cales quere engadir á lista negra de spam?
 Estas opcións van das máis restritivas ás menos, bloqueando o dominio enteiro bloquearanse todas as ligazóns que veñan dese dominio.
 
-Asegúrese de non bloquear dominios enteiros que bloqueen contas de usuario; como blogspot.com, geocities.com, etc.',
-	'spamdifftool_no_urls_detected' => "Ningunhas urls foron detectadas. Prema <a href='$1'>aquí</a> para voltar.",
-	'spamdifftool_spam_link_text' => 'engadir a spam',
-	'spamdifftool_option_domain' => 'todo desde este dominio',
-	'spamdifftool_option_subdomain' => 'todo desde este subdominio',
+Asegúrese de non bloquear dominios enteiros que alberguen contas de usuario, como blogspot.com, geocities.com etc.',
+	'spamdifftool_no_urls_detected' => "Non se detectou ningún enderezo URL.
+Prema <a href='$1'>aquí</a> para voltar.",
+	'spamdifftool_spam_link_text' => 'engadir ao spam',
+	'spamdifftool_option_domain' => 'todo o deste dominio',
+	'spamdifftool_option_subdomain' => 'todo o deste subdominio',
 	'spamdifftool_option_directory' => 'este subdominio e directorio',
 	'spamdifftool_option_none' => 'nada',
-	'spamdifftool_block' => 'Bloqueo:',
+	'spamdifftool_block' => 'Bloquear:',
 	'spamdifftool_submit_buttom' => 'Enviar',
 );
 
@@ -660,6 +671,7 @@ $messages['hsb'] = array(
 	'spamdifftool' => 'Spamowu čornu lisćinu zrjadować',
 	'spamdifftool-desc' => 'Skići zakładne wašnje přidawanja nowych zapiskow spamowej čornej lisćinje ze stronow z rozdźělemi wersijow',
 	'spamdifftool_cantedit' => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
+	'spamdifftool-no-title' => "'''Zmylk:''' žadyn titul podaty.",
 	'spamdifftool_notext' => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
 	'spamdifftool_confirm' => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",
 	'spamdifftool_summary' => 'Spamowej čornej lisćinje přidać',
@@ -713,6 +725,7 @@ $messages['ia'] = array(
 	'spamdifftool' => 'Gerer le lista nigre antispam',
 	'spamdifftool-desc' => 'Forni un modo simple de adder nove entratas al lista nigre antispam ab le comparation inter versiones',
 	'spamdifftool_cantedit' => 'Pardono - tu non ha le permission de modificar le lista nigre antispam.',
+	'spamdifftool-no-title' => "'''Error:''' nulle titulo de pagina specificate.",
 	'spamdifftool_notext' => "Il non ha texto a adder al lista nigre antispam.
 Clicca <a href='$1'>hic</a> pro continuar.",
 	'spamdifftool_confirm' => "Confirma que tu vole adder iste entratas al lista nigre antispam.
@@ -942,6 +955,7 @@ $messages['mk'] = array(
 	'spamdifftool' => 'Раководење со црната листа на спам',
 	'spamdifftool-desc' => 'Овозможува лесен начин на додавање на нови ставки во црната листа на спам од споредени страници (верзии)',
 	'spamdifftool_cantedit' => 'Жалам - немате дозвола да ја уредувате црната листа на спам.',
+	'spamdifftool-no-title' => "'''Грешка:''' не беше назначен наслов на страницата.",
 	'spamdifftool_notext' => "Нема текст за додавање на црната листа на спам.
 Кликнете <a href='$1'>тука</a> за да продолжите.",
 	'spamdifftool_confirm' => "Потврдете дека сакате да ги додадете овие ставки во црната листа на спам.
@@ -1035,6 +1049,7 @@ $messages['nl'] = array(
 	'spamdifftool' => 'Zwarte lijst tegen spam beheren',
 	'spamdifftool-desc' => 'Maakt het mogelijk nieuwe regels aan de zwarte lijst voor spam toe te voegen op basis van verschillen',
 	'spamdifftool_cantedit' => 'U hebt geen rechten om de zwarte lijst tegen spam te bewerken.',
+	'spamdifftool-no-title' => "'''Fout:''' er is geen paginanaam opgegeven.",
 	'spamdifftool_notext' => "Er is geen tekst om toe te voegen aan de zwarte lijst tegen spam. Klik <a href='$1'>hier</a> om door te gaan.",
 	'spamdifftool_confirm' => "Bevestig dat u deze namen aan de zwarte lijst tegen spam wil toevoegen (klik <a href='$1' target='new'>hier</a> om een probleem te melden).",
 	'spamdifftool_summary' => 'Toevoegen aan de zwarte lijst tegen spam',
@@ -1221,6 +1236,7 @@ $messages['pt'] = array(
 	'spamdifftool' => 'Gerir a lista negra de spam',
 	'spamdifftool-desc' => 'Fornece uma forma básica de adicionar novas entradas à lista negra de spam a partir de páginas de diferenças',
 	'spamdifftool_cantedit' => "Desculpe, mas não tem permissão para editar a lista negra de ''spam''.",
+	'spamdifftool-no-title' => "'''Erro:''' não foi especificado nenhum título de página.",
 	'spamdifftool_notext' => "Não há qualquer texto para adicionar à lista negra de spam.
 Clique <a href='$1'>aqui</a> para continuar.",
 	'spamdifftool_confirm' => "Confirme que pretende adicionar estas entradas à lista negra de spam.
@@ -1299,6 +1315,7 @@ $messages['ru'] = array(
 	'spamdifftool' => 'Управление чёрным списком спама',
 	'spamdifftool-desc' => 'Позволяет легко добавлять новые записи в чёрный список спама со страниц сравнения версий',
 	'spamdifftool_cantedit' => 'Извините, у вас нет разрешения изменять чёрный список спама.',
+	'spamdifftool-no-title' => "'''Ошибка.''' Не указано название страницы.",
 	'spamdifftool_notext' => "Нет текста для добавления в чёрный список спама.
 Нажмите <a href='$1'>здесь</a>, чтобы продолжить.",
 	'spamdifftool_confirm' => "Подтвердите, что вы хотите добавить эти записи в чёрный список спама.

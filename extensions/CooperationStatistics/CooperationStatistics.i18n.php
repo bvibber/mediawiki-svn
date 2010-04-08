@@ -419,14 +419,15 @@ Lihat juga  [[Special:MostRevisors|'''halaman dengan paling banyak pengubah''']]
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'cooperationstatistics' => 'Statistiche di cooperazione',
 	'cooperationstatistics-desc' => 'Mostra [[Special:CooperationStatistics|statistiche di cooperazione nel namespace principale]].',
-	'cooperationstatistics-text' => "Mostra statistiche di cooperazione nel namespace principale.
-Da [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisori)<br />
-Consultare anche le [[Special:MostRevisors|'''pagine con più revisori''']] e le [[Special:MostRevisions|pagine con più revisioni]].",
+	'cooperationstatistics-text' => "Mostra le statistiche di cooperazione nel namespace principale.
+Da [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] a [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]] revisori<br />
+Consulta anche le [[Special:MostRevisors|'''pagine con più revisori''']] e le [[Special:MostRevisions|pagine con più revisioni]].",
 	'cooperationstatistics-tablearticle' => 'Numero di pagine',
 	'cooperationstatistics-tablevalue' => 'Numero di autori',
 	'cooperationstatistics-articles' => '$1 pagine',

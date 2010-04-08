@@ -54,9 +54,12 @@ $messages['da'] = array(
 	'nll-lastseparator' => '&#32;og&#32;',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author LWChris
+ */
 $messages['de'] = array(
-	'nll-lastseparator' => '&#32;und&#32;'
+	'nll-desc' => 'Einfache Formatierung von Listen in natürlicher Sprache',
+	'nll-lastseparator' => ' und',
 );
 
 /** Lower Sorbian (Dolnoserbski)

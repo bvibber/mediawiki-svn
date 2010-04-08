@@ -143,6 +143,7 @@ Vi ste pokušali: '''$1'''",
 
 /** German (Deutsch)
  * @author Imre
+ * @author LWChris
  * @author Pill
  */
 $messages['de'] = array(
@@ -154,6 +155,8 @@ Deine Eingabe: '''$1'''",
 	'rt-badorderby' => "Ungültiger ORDER BY (ob)-Parameter: muss ein Standardfeld sein (siehe Dokumentation).
 Versuchte Eingabe: '''$1'''",
 	'rt-badstatus' => "Ungültiger status (s)-Parameter: muss ein Standardfeld sein (siehe Dokumentation).
+Versuchte Eingabe: '''$1'''",
+	'rt-badcfield' => "Ungültiger Parameter für benutzerdefiniertes Feld: muss ein einfaches Wort sein (siehe Dokumentation).
 Versuchte Eingabe: '''$1'''",
 	'rt-badqueue' => "Parameter „queue (q)“ ungültig: Muss ein einfaches Wort sein.
 Deine Eingabe: '''$1'''",
@@ -508,6 +511,8 @@ Du prøvde: '''$1'''",
 	'rt-badorderby' => "Ugyldig ORDER BY (ob) argument: må være et standardfelt (se dokumentasjonen).
 Du prøvde: '''$1'''",
 	'rt-badstatus' => "Ugyldig status (s) argument: må være et standardfelt (se dokumentasjonen).
+Du prøvde: '''$1'''",
+	'rt-badcfield' => "Ugyldig egendefinert feltargument: må være et enkelt ord (se dokumentasjonen).
 Du prøvde: '''$1'''",
 	'rt-badqueue' => "Ugyldig queue (q) argument: må være et enkelt ord.
 Du prøvde: '''$1'''",
