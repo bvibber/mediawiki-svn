@@ -379,9 +379,9 @@ class NaturalLanguageList {
 	private static function handle_interval ( &$array, $intervals, $value ) {
 		if ( !$intervals )
 			return false;
-		if ( preg_match("@[1-9][0-9]*\.\.[1-9][0-9]*@is", $value ) ) {
-			$tmp = explode ( "|", preg_replace("@([1-9][0-9]*)\.\.([1-9][0-9]*)@is", "$1|$2", $value);
-			if ( !is_numeric($tmp[0]) or !is_numeric($tmp[1]) or $tmp[0] > $tmp[1] )
+		if ( preg_match("@[0-9]+\.\.[1-9][0-9]*@is", $value ) ) {
+			$tmp = explode ( "|", preg_replace("@([0-9]+)\.\.([1-9][0-9]*)@is", "$1|$2", $value) );
+			if ( is_numeric($tmp[0])===false or is_numeric($tmp[1])===false or ($tmp[0] > $tmp[1]) )
 				return false;
 			for ( $i = $tmp[0]; $i <= $tmp[1]; $i++ )
 				$array[] = $i;
