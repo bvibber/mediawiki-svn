@@ -15,3 +15,6 @@ $aliases['en'] = array(
 	'SpamDiffTool'  => array( 'SpamDiffTool' ),
 );
 
+$aliases['ar'] = array(
+	'SpamDiffTool'   => array( 'أداة_فرق_السبام' ),
+);
