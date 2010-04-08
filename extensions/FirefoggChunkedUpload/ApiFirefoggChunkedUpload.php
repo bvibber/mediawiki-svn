@@ -66,7 +66,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 				'format' => 'json',
 				'chunksession' => $session,
 				'filename' => $this->getDesiredName(),
-			) ) ) );
+			) ) );
 	}
 
 	public function performUploadChunk() {
