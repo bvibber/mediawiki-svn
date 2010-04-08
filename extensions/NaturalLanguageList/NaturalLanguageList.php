@@ -205,15 +205,11 @@ class NaturalLanguageList {
 		
 		# Remove anything over the set length, if set
 		if ( $this->mOptions['length'] != -1 
-			&& count( $this->mParams ) > $this->mOptions['length'] ) {
-			while ( count( $this->mParams ) > $this->mOptions['length'] )
-				array_pop ( $this->mParams );
-		}
+			&& count( $this->mParams ) > $this->mOptions['length'] )
+			$this->mParams = array_slice( $this->mParams, 0, $this->mOptions['length'] );
 		
 		# Remove anything over the allowed limit
-		while ( count( $this->mParams ) > $wgNllMaxListLength ) {
-			array_pop( $this->mParams );
-		}
+		$this->mParams = array_slice( $this->mParams, 0, $wgNllMaxListLength );
 	}
 
 	/**
