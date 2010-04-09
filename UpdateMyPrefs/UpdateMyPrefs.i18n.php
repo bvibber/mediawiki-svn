@@ -21,11 +21,46 @@ $messages['qqq'] = array(
 	'prefs-updates' => 'In the context of software updates',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'prefs-updates' => 'Абнаўленьні',
+	'updatemyprefs-desc' => 'Устаноўкі для ўдзельнікаў, якія дазваляюць вызначыць ці жадаюць яны абнаўляць інтэрфэйс удзельніка, калі зьяўляюцца новыя магчымасьці',
+	'updatemyprefs-label-message' => 'Аўтаматычна абнаўляць мае устаноўкі новымі устаноўкамі па змоўчваньні і інструмэнтамі, калі яны зьяўляюцца',
+);
+
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'prefs-updates' => 'Hizivadennoù',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefs-updates' => 'Aktualisierungen',
 	'updatemyprefs-desc' => 'Einstellung für Benutzer um festzulegen, ob neue Funktionen der Benutzeroberfläche bei Verfügbarkeit automatisch aktiviert werden sollen',
 	'updatemyprefs-label-message' => 'Automatisches aktualisieren meiner Einstellungen mit neuen Standardwerten und Funktionen, sobald sie verfügbar sind',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'prefs-updates' => 'Aktualizacije',
+	'updatemyprefs-desc' => 'Nastajenja za wužywarjow, aby se pódało, lěc kśě periodiske aktualizacije wužywarskego pówjercha, gaž su k dispoziciji stajone',
+	'updatemyprefs-label-message' => 'Móje nastajenja awtomatiski z nowymi standardnymi nastajenjami a rědami aktualizěrowaś, gaž su k dispoziciji',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'prefs-updates' => 'Ĝisdatigoj',
+	'updatemyprefs-desc' => 'Agordo por uzantoj elekti se ili volas iufojajn ĝisdatigojn kiam ili iĝas haveblaj.',
+	'updatemyprefs-label-message' => 'Aŭtomate ĝisdatigi miajn agordojn kun novaj defaŭltaj agordoj kaj iloj kiam ili iĝas havebla.',
 );
 
 /** Spanish (Español)
@@ -62,6 +97,15 @@ $messages['gl'] = array(
 	'updatemyprefs-label-message' => 'Actualizar automaticamente as miñas preferencias coas novas características e ferramentas en canto estas estean dispoñibles',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'prefs-updates' => 'Aktualizacije',
+	'updatemyprefs-desc' => 'Nastajenje za wužiwarjow, zo by so podało, hač chcedźa periodiske aktualizacije wužywarskeho powjercha, hdyž su k dispoziciji stajene',
+	'updatemyprefs-label-message' => 'Moje nastajenja awtomatisce z nowymi standardnymi nastajenjemi a nastrojemi aktualizować, hdyž su k dispoziciji',
+);
+
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */
@@ -69,6 +113,15 @@ $messages['hu'] = array(
 	'prefs-updates' => 'Frissítések',
 	'updatemyprefs-desc' => 'Felhasználói preferencia annak megadására, hogy szeretnék-e megkapni a rendszeres felhasználói felület frissítéseket amint elérhetővé válnak',
 	'updatemyprefs-label-message' => 'A beállításaim automatikus frissítése az új alapértelmezett értékekkel és eszközökkel amint elérhetővé válnak',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'prefs-updates' => 'Actualisationes',
+	'updatemyprefs-desc' => 'Preferentia pro usatores pro specificar si illes vole actualisationes periodic del interfacie de usator quando illos es disponibile',
+	'updatemyprefs-label-message' => 'Automaticamente actualisar mi preferentias con nove configurationes predefinite e utensiles quando illes es disponibile',
 );
 
 /** Italian (Italiano)
@@ -133,6 +186,25 @@ $messages['pl'] = array(
 	'prefs-updates' => 'Aktualizacje',
 	'updatemyprefs-desc' => 'Preferencja dla użytkowników, pozwalająca określić, czy chcą okresowej aktualizacji interfejsu użytkownika, gdy zostanie ona udostępniona',
 	'updatemyprefs-label-message' => 'Automatycznie aktualizuj moje preferencje nowymi domyślnymi ustawieniami oraz narzędziami w miarę ich udostępniania',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'prefs-updates' => 'Modìfiche',
+	'updatemyprefs-desc' => "Gust ëd j'utent për specifiché se a veulo le modìfiche periòdiche dl'antërfacia utent pen-a ch'a son disponìbij",
+	'updatemyprefs-label-message' => "Modìfica automaticament ij mè gust con le neuve ampostassion e utiss ëstàndard pen-a ch'a son disponìbij",
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'prefs-updates' => 'Actualizações',
+	'updatemyprefs-desc' => 'Preferência para os utilizadores especificarem se desejam actualizações periódicas da interface à medida que estas estejam disponíveis',
+	'updatemyprefs-label-message' => 'Actualizar automaticamente as minhas preferências com novas configurações predefinidas e ferramentas, à medida que estas estejam disponíveis',
 );
 
 /** Russian (Русский)

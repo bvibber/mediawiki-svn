@@ -204,6 +204,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Lucas
+ * @author Marcos
  * @author Yekrats
  * @author Ziko
  */
@@ -211,7 +212,7 @@ $messages['eo'] = array(
 	'wikieditor-preview-preference' => 'Enŝaltu antaŭvidon apud la redaktofenestro',
 	'wikieditor-preview-tab' => 'Antaŭvido',
 	'wikieditor-preview-changes-tab' => 'Ŝanĝoj',
-	'wikieditor-preview-loading' => 'Ŝarĝante...',
+	'wikieditor-preview-loading' => 'Ŝargante...',
 );
 
 /** Spanish (Español)
