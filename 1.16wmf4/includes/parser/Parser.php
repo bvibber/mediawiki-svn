@@ -349,8 +349,8 @@ class Parser
 		/**
 		 * The page doesn't get language converted if
 		 * a) It's disabled
-         * c) Content isn't converted
-         * d) It's a conversion table
+		 * b) Content isn't converted
+		 * c) It's a conversion table
 		 */
 		if ( !( $wgDisableLangConversion
 				|| isset( $this->mDoubleUnderscores['nocontentconvert'] )
@@ -389,7 +389,7 @@ class Parser
 				$this->mOutput->setTitleText( $convruletitle );
 			}
 			else {
-				$this->mOutput->setTitleText( $wgContLang->convert( $title->getText() ) );
+				$this->mOutput->setTitleText( $wgContLang->convert( $title->getPrefixedText() ) );
 			}
 		}
 
