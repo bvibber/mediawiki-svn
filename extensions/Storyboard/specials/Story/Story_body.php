@@ -257,7 +257,7 @@ class SpecialStory extends IncludableSpecialPage {
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authoremail' ) ) .
 			'<td>' . Html::input(
 				'email',
-				$story->story_author_contact,
+				$story->story_author_email,
 				'text',
 				array(
 					'size' => $fieldSize,
