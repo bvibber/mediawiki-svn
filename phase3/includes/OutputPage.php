@@ -2860,6 +2860,23 @@ class OutputPage {
 	}
 
 	/**
+	 * Get the latest title revision from a title
+	 * update the tRev if larger than the current
+	 * @param {Number} $currentTitleRev Current latest revision
+	 * @param {String} $titleString String of title to check
+	 * @return {Number} Latest revision number
+	 */
+	public static function getLatestTitleRev( $titleRev, $titleString ){
+		$t = Title::newFromText( $titleString );
+		if( $t && $t->exists() ) {
+			if( $t->getLatestRevID() > $titleRev  ){
+				return $t->getLatestRevID();
+			}
+		}
+		return $titleRev;
+	}
+
+	/**
 	 * Get the unique request ID parameter for the script-loader request
 	 * @param $classAry Array of classes
 	 * @return String The unique url id per cache version of js
@@ -2899,7 +2916,7 @@ class OutputPage {
 				}else{
 					// Check for file modified time:
 					if( $wgScriptModifiedFileCheck ) {
-						$jsPath =  jsScriptLoader::getJsPathFromClass( $class );
+						$jsPath =  jsScriptLoader::getPathFromClass( $class );
 						if( $jsPath ) {
 							$cur_ftime = filemtime ( $IP ."/". $jsPath );
 							if( $cur_ftime > $ftime )
