@@ -58,6 +58,7 @@ class TagStorysubmission {
 			<<<EOT
 			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
 			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"></script>
+			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion"></script>
 			<script type="$wgJsMimeType"> /*<![CDATA[*/
 			addOnloadHook( function() { 
 				document.getElementById( 'storysubmission-button' ).disabled = true;
@@ -85,27 +86,74 @@ EOT
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' .
-			Html::input( 'name', $defaultName, 'text', array( 'size' => $fieldSize )
+			Html::input(
+				'name', 
+				$defaultName,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'class' => 'required',
+					'maxlength' => 255,
+					'minlength' => 2
+				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-location' ) ) .
-			'<td>' . Html::input( 'location', '', 'text', array( 'size' => $fieldSize )
+			'<td>' .
+			Html::input(
+				'location',
+				'',
+				'text',
+				array(
+					'size' => $fieldSize,
+					'maxlength' => 255,
+					'minlength' => 2				
+				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-occupation' ) ) .
-			'<td>' . Html::input( 'occupation', '', 'text', array( 'size' => $fieldSize )
+			'<td>' . 
+			Html::input(
+				'occupation',
+				'',
+				'text',
+				array(
+					'size' => $fieldSize,
+					'maxlength' => 255,
+					'minlength' => 4				
+				)
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-email' ) ) .
-			'<td>' . Html::input( 'email', $defaultEmail, 'text', array( 'size' => $fieldSize )
+			'<td>' .
+			Html::input(
+				'email',
+				$defaultEmail,
+				'text',
+				array(
+					'size' => $fieldSize,
+					'class' => 'required email',
+					'size' => $fieldSize,
+					'maxlength' => 255				
+				)
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . Html::input( 'storytitle', '', 'text', array( 'size' => $fieldSize )
+			'<td>' . 
+			Html::input(
+				'storytitle',
+				'',
+				'text',
+				array(
+					'size' => $fieldSize,
+					'class' => 'required',
+					'maxlength' => 255,
+					'minlength' => 2
+				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr><td colspan="2">' .
@@ -122,6 +170,7 @@ EOT
 					'id' => 'storytext',
 					'name' => 'storytext',
 					'rows' => 7,
+					'class' => 'required',
 					'onkeyup' => "stbValidateStory( this, $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )",
 				),
 				null
@@ -142,9 +191,9 @@ EOT
 		
 		$formBody .= Html::hidden( 'wpStoryEditToken', $wgUser->editToken() );
 		
-		if ( !array_key_exists( 'language', $args ) ) {
-			$lang = wfGetLangObj( false );
-			$args['language'] = $lang->getCode();
+		if ( !array_key_exists( 'language', $args )
+			|| !array_key_exists( $args['language'], Language::getLanguageNames() ) ) {
+			$args['language'] = $wgContLanguageCode;
 		}
 
 		$formBody .= Html::hidden( 'lang', $args['language'] );

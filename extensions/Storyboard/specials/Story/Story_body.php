@@ -224,7 +224,8 @@ class SpecialStory extends IncludableSpecialPage {
 				array(
 					'size' => $fieldSize,
 					'class' => 'required',
-					'minlength' => 2
+					'minlength' => 2,
+					'maxlength' => 255
 				)
 			) . '</td></tr>';
 		
@@ -263,7 +264,6 @@ class SpecialStory extends IncludableSpecialPage {
 				array(
 					'size' => $fieldSize,
 					'maxlength' => 255,
-					'minlength' => 7,
 					'class' => 'required email'
 				)
 			) . '</td></tr>';
@@ -281,7 +281,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'maxlength' => 255,
 					'minlength' => 2,
 					'id' => 'storytitle',
-					'class' => 'storytitle'
+					'class' => 'required storytitle'
 				)
 			) . '</td></tr>';
 		
@@ -299,6 +299,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'id' => 'storytext',
 					'name' => 'storytext',
 					'rows' => 7,
+					'class' => 'required',
 					'onkeyup' => "stbValidateStory( this, $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )",
 				),
 				$story->story_text
