@@ -176,7 +176,7 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'uploadblacklist-desc' => 'אפשרות להעלאת רשימה שחורה',
+	'uploadblacklist-desc' => 'הוספת אפשרות ליצירת רשימה שחורה של קבצים שאסור להעלות',
 );
 
 /** Croatian (Hrvatski)

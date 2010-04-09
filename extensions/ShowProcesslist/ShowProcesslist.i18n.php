@@ -514,6 +514,8 @@ $messages['ig'] = array(
  */
 $messages['it'] = array(
 	'showprocesslist-user' => 'Utente',
+	'showprocesslist-db' => 'Database',
+	'showprocesslist-info' => 'Informazioni',
 );
 
 /** Japanese (日本語)

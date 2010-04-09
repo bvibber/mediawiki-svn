@@ -348,6 +348,11 @@ $messages['is'] = array(
 	'multiboilerplate-submit' => 'Hlaða',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'multiboilerplate-submit' => 'Carica',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

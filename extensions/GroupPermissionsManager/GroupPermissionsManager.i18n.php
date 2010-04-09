@@ -389,6 +389,7 @@ $messages['bg'] = array(
 	'grouppermissions-desc-nsm' => 'Управление на именните пространства през специална страница',
 	'grouppermissions-search' => 'Група:',
 	'grouppermissions-dologin' => 'Влизане',
+	'grouppermissions-dosearch' => 'Отваряне',
 	'grouppermissions-searchlabel' => 'Търсене за група',
 	'grouppermissions-deletelabel' => 'Изтриване на група',
 	'grouppermissions-error' => 'Възникна непозната грешка. Натиснете бутона за връщане на браузъра си и опитайте отново!',

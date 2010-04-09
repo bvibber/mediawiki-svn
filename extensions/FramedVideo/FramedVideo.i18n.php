@@ -487,6 +487,12 @@ $messages['id'] = array(
 	'framedvideo-desc' => 'Mengijinkan memasang video dari berbagai situs web dengan menggunakan tag <tt><nowiki><video></nowiki></tt>',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'framedvideo_error' => 'Si è verificato un errore!',
+	'framedvideo_helppage' => 'Help:Video',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

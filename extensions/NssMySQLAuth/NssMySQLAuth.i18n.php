@@ -547,6 +547,17 @@ $messages['id'] = array(
 	'nss-db-error' => 'Terjadi kesalahan saat membaca basis data yang terotentikasi',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'am-username' => 'nome utente',
+	'am-email' => 'indirizzo e-mail',
+	'am-active' => 'attivo',
+	'nss-rights' => 'diritti',
+	'nss-save-changes' => 'Salva le modifiche',
+	'nss-create-account-header' => 'Crea un nuovo utente',
+	'nss-create-account' => 'Crea un nuovo utente',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi

@@ -381,6 +381,7 @@ $messages['bg'] = array(
 Вероятно не съществува такъв потребител.',
 	'regexblock-view-blocked' => 'Преглед на блокираните по:',
 	'regexblock-view-all' => 'Всички',
+	'regexblock-view-go' => 'Отваряне',
 	'regexblock-view-match' => '(пълно съвпадение)',
 	'regexblock-view-reason' => 'причина: $1',
 	'regexblock-view-block-infinite' => 'перманентно блокиране',
@@ -1524,9 +1525,13 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'regexblock-form-username' => 'Indirizzo IP o nome utente:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Scadenza del blocco:',
+	'regexblock-form-submit' => "Blocca l'utente",
+	'regexblock-view-all' => 'Tutti',
 	'regexblock-view-go' => 'Vai',
+	'regexblock-view-reason' => 'motivo: $1',
 );
 
 /** Japanese (日本語)

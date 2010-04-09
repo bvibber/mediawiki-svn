@@ -5066,14 +5066,23 @@ $messages['is'] = array(
  * @author Melos
  */
 $messages['it'] = array(
+	'mv_duration_label' => 'Periodo',
 	'mv_remove_reason' => 'Motivo della cancellazione:',
 	'mv_upload_file' => 'Carica un file',
 	'mv_tool_search' => 'Ricerca',
 	'mv_play' => 'Riproduci',
 	'mv_edit' => 'Modifica',
 	'mv_history' => 'Cronologia',
+	'mv_remove' => 'rimuovi',
+	'mv_search_categories' => 'Categorie',
 	'mv_search_category' => 'Categoria',
+	'mv_search_and' => 'e',
+	'mv_search_or' => 'o',
 	'mv_category' => 'categoria',
+	'mv_other_options' => 'Altre opzioni',
+	'mv_hours_singular' => '1 ora',
+	'mv_minutes_singular' => '1 minuto',
+	'mv_seconds_singular' => '1 secondo',
 );
 
 /** Japanese (日本語)
@@ -7609,9 +7618,9 @@ $messages['pms'] = array(
 	'metavid' => 'Pàgina MetaVid',
 	'mv_missing_stream' => 'Fluss mancant: $1',
 	'specialpages-group-mv_group' => 'Pàgina special MetaVidWiki',
-	'mv_warning_wiki' => "<i>Nòta: trascrission video MetaVid [[Help:FAQ#How_accurate_is_the_information.3F|a peulo conten-e amprecision]], giutne a fé [[Help:Participation#Improving_Archive_Accuracy|n'archivi pi giust]]</i>",
+	'mv_warning_wiki' => "<i>Nòta: le trascrission video MetaVid [[Help:FAQ#How_accurate_is_the_information.3F|a peulo conten-e d'amprecision]], ch'an giuta a fé [[Help:Participation#Improving_Archive_Accuracy|dij mej archivi]]</i>",
 	'mv_ogg_low_quality' => 'Trasferìbil via Ragnà - Og. Theora 300kbit/sec',
-	'mv_ogg_high_quality' => 'Auta qualità - Og. Theora 900 kbit/s',
+	'mv_ogg_high_quality' => 'Àuta qualità - Og. Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Trasferìbil via Ragnà - Video flash',
 );
 

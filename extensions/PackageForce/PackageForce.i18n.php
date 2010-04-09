@@ -216,6 +216,15 @@ $messages['ia'] = array(
 	'pf-header-approve' => 'Approbar',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'pf-admin-menu-default' => 'Default',
+	'pf-admin-link-editlink-page' => 'Modifica pagina',
+	'pf-header-documentation' => 'Documentazione',
+	'pf-header-page_title' => 'Titolo',
+	'pf-header-approve' => 'Approva',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -258,6 +267,8 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForce-beheer',
 	'pf-desc' => '[[Special:PackageForce|Pakketten downloaden]] met handige sjablonen, enzovoort.',
 	'pf-only-admins-allowed' => 'Deze pagina is alleen bedoeld voor gebruikers met het recht "packageforce-admin".',
 	'pf-admin-menu-default' => 'Standaard',
@@ -292,6 +303,28 @@ $messages['no'] = array(
 	'pf-header-type' => 'Sidetype',
 	'pf-header-page_title' => 'Tittel',
 	'pf-header-approve' => 'Godkjenn',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-desc' => '[[Special:PackageForce|Dëscarié dij pachet]] dë stamp ùtij e via fòrt.',
+	'pf-only-admins-allowed' => "Sta pàgina-sì a l'é mach për utent con ël drit 'packageforce-admin'",
+	'pf-admin-menu-default' => 'Për sòlit',
+	'pf-admin-menu-unsortedtemplates' => "Stamp pa anco' ordinà",
+	'pf-admin-link-view-documentation' => 'Varda documentassion gropà a pàgina.',
+	'pf-admin-link-editlink-page' => 'Modìfica pàgina',
+	'pf-admin-link-approve' => 'Apreuva pàgina',
+	'pf-header-documentation' => 'Documentassion',
+	'pf-header-in_packages' => 'Pachet',
+	'pf-header-edit' => 'Modìfica colegament',
+	'pf-header-type' => 'Sòrt ëd pàgina',
+	'pf-header-page_title' => 'Tìtol',
+	'pf-header-approve' => 'Apreuva',
 );
 
 /** Portuguese (Português)

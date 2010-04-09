@@ -967,6 +967,7 @@ $messages['bg'] = array(
 	'wikilog-edit-lc' => 'редактиране',
 	'wikilog-reply-lc' => 'отговаряне',
 	'wikilog-delete-lc' => 'изтриване',
+	'wikilog-approve-lc' => 'одобри',
 	'wikilog-reject-lc' => 'отказване',
 	'wikilog-page-lc' => 'страница',
 	'wikilog-history-lc' => 'история',

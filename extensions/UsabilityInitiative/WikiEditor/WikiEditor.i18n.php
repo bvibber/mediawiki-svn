@@ -180,13 +180,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Marcos
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'wikieditor' => 'Progresa redaktilo por vikiteksto',
 	'wikieditor-desc' => 'Ebligas redaktan interfacon por etendebla vikiteksto kaj multaj utilaj moduloj',
 	'wikieditor-wikitext-tab' => 'Vikiteksto',
-	'wikieditor-loading' => 'Ŝarĝante',
+	'wikieditor-loading' => 'Ŝargante',
 );
 
 /** Spanish (Español)

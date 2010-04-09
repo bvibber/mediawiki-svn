@@ -59,6 +59,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'wikieditor-template-editor-preference' => 'Разрешено редактирането на уикишаблони чрез формуляр',
+	'wikieditor-template-editor-dialog-submit' => 'Обновяване',
+	'wikieditor-template-editor-dialog-cancel' => 'Отказване',
 );
 
 /** Bengali (বাংলা)

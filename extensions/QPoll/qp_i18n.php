@@ -1266,6 +1266,15 @@ ID pemilihan hanya boleh berisi huruf, angka dan spasi',
 	'qp_error_no_answer' => 'Proposal belum terjawab',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'qp_result_error' => 'Errore di sintassi',
+	'qp_vote_button' => 'Vota',
+	'qp_source_link' => 'Fonte',
+	'qp_stats_link' => 'Statistiche',
+	'qp_users_link' => 'Utenti',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

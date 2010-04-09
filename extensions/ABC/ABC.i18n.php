@@ -818,6 +818,14 @@ $messages['tr'] = array(
 	'abcdownload' => 'İndir:',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Рашат Якупов
+ */
+$messages['tt-cyrl'] = array(
+	'abc-desc' => 'ABC музыкасын төзәтүе өчен <tt>&lt;abc&gt;</tt> тэгын куша',
+	'abcdownload' => 'Йөкләргә:',
+);
+
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Sahran
  */

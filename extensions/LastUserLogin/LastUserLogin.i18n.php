@@ -253,6 +253,12 @@ $messages['ia'] = array(
 	'right-lastlogin' => 'Vider le ultime vice que un usator aperiva un session',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'lastuserlogin_userid' => 'Nome utente',
+	'lastuserlogin_username' => 'Nome vero',
+);
+
 /** Japanese (日本語)
  * @author Hosiryuhosi
  */

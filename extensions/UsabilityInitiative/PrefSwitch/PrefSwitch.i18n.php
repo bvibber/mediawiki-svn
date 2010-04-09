@@ -162,6 +162,12 @@ $messages['be-tarask'] = array(
 Каб дапамагчы нам іх палепшыць, калі ласка, адкажыце на некалькі пытаньняў ніжэй.',
 );
 
+/** Bulgarian (Български) */
+$messages['bg'] = array(
+	'prefswitch-survey-true' => 'Да',
+	'prefswitch-survey-false' => 'Не',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -485,6 +491,20 @@ Si deseas activar las nuevas características, por favor haz <span class="plainl
 Por favor llene la encuesta opcional de abajo.',
 	'prefswitch-survey-intro-off' => 'Gracias por probar nuestras nuevas características.
 Para ayudarnos a mejorarlas, por favor llena la encuesta opcional de abajo.',
+);
+
+/** Estonian (Eesti)
+ * @author AivoK
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'prefswitch-survey-submit-feedback' => 'Saada tagasiside',
+	'prefswitch-survey-question-browser' => 'Millist internetilehitsejat sa kasutad?',
+	'prefswitch-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
+	'prefswitch-survey-question-res' => 'Milline on su kuvari eraldusvõime?',
+	'prefswitch-title-feedback' => 'Tagasiside',
+	'prefswitch-survey-intro-feedback' => 'Meile meeldiks teada saada sinu arvamust.
+Palun täida alljärgnev vabatahtlik küsitlus.',
 );
 
 /** Finnish (Suomi)
@@ -1023,6 +1043,14 @@ $messages['ja'] = array(
 更なる改善のために、ぜひ下記の任意の調査にご協力ください。',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'prefswitch-survey-true' => '예',
+	'prefswitch-survey-false' => '아니오',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1451,16 +1479,16 @@ Artorna a <span class="plainlinks">[$1 $2]</span>.',
 * Assistent dij colegament: N'utiss bel da dovré a-j përmët ëd gionté d'anliure a d'àutre pàgine ëd Wikipedia e ëd colegament a d'àutri sit.
 * Ameliorament ëd l'arserca: I l'oma ameliorà ij sugeriment d'arserca për portelo pi an pressa a la pàgina ch'a sërca.
 * Àutre possibilità neuve: I l'oma ëdcò giontà n'assistent për le tàule për rende pì bel fé creé e trové le tàule e na possibilità ëd rimpiass për semplifiché la modìfica ëd le pàgine.",
-	'prefswitch-main-on' => '===Feedback?===
-An piasrìa sentilo da ti. Për piasì vìsita nòstra <span class="plainlinks">[$1 pàgina dij feedback]</span>.
-===Pòrtme andré===
-S\'it veule disativé le possibilità neuve, për piasì <span class="plainlinks">[$2 sgnaca ambelessì]</span>.',
+	'prefswitch-main-on' => '===Sugeriment?===
+An piasrìa sente soa opinion. Për piasì, ch\'a vìsita nòstra <span class="plainlinks">[$1 pàgina dij coment]</span>.
+===Porteme andré===
+S\'a veul disativé le possibilità neuve, për piasì <span class="plainlinks">[$2 ch\'a sgnaca ambelessì]</span>.',
 	'prefswitch-main-off' => '===Preuvje!===
 S\'it veule ativé le possibilità neuve, për piasì <span class="plainlinks">[$1 sgnaca ambelessì]</span>.',
-	'prefswitch-survey-intro-feedback' => 'An piasrìa sentilo da ti.
-Për piasì vemp la survey opsional sì sota.',
-	'prefswitch-survey-intro-off' => 'Mersì për prové nòstre possibilità neuve.
-Për giutene a mejoreje, për piasì vemp la survey opsional sì sota.',
+	'prefswitch-survey-intro-feedback' => "An piasrìa sente soa opinion.
+Për piasì, ch'a ampinissa ël sondagi opsional sì-sota.",
+	'prefswitch-survey-intro-off' => "Mersì ëd prové nòstre neuve fonsionalità.
+Për giutene a amelioreje, për piasì ch'a ampinissa ël sondagi opsional sì-sota.",
 );
 
 /** Portuguese (Português)
@@ -1525,6 +1553,7 @@ Para ajudar-nos a melhorar, preencha por favor o questionário opcional abaixo.'
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1562,17 +1591,17 @@ $messages['ru'] = array(
 	'prefswitch-success-feedback' => 'Ваш отзыв отправлен.',
 	'prefswitch-return' => '<hr style="clear:both">
 Вернуться к <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => 'Мы прилагаем все усилия, чтобы упростить работу наших пользователей. Мы рады поделиться некоторыми улучшениями, в том числе новым внешним видом и упрощенными функциями редактирования. Улучшение удобства использования наших проектов является приоритетным для Фонда Викимедиа, в будущем мы продолжим делиться обновлениями.
+	'prefswitch-main' => 'Мы прилагаем все усилия, чтобы упростить работу участников и посетителей наших проектов. Мы рады поделиться некоторыми улучшениями, в том числе новым внешним видом и упрощёнными функциями редактирования. Задача улучшения удобства использования наших проектов рассматривается Фондом Викимедиа как приоритетная, мы продолжим делиться обновлениями и в дальнейшем.
 
-[[File:UsabilityNavigation.png|right|link=|Снимок новой навигации]]
-[[File:UsabilityToolbar.png|right|link=|Снимок улучшенной панели редактирования]]
-[[File:UsabilityDialogs.png|right|link=|Снимог нового диалога создания]]
+[[File:UsabilityNavigation.png|right|link=|Пример того, как выглядит новая навигации]]
+[[File:UsabilityToolbar.png|right|link=|Вид улучшенной панели редактирования]]
+[[File:UsabilityDialogs.png|right|link=|Вид нового диалога создания контента]]
 === Что мы изменили === 
-* Навигация. Мы улучшили навигацию для чтения и редактирования страниц. Теперь вкладки в верхней части каждой страницы, позволяют более чётко определить чем вы сейчас занимаетесь: просматриваете страницу или её обсуждение, читаете или правите страницу.
-* Улучшение панели редактирования. Мы переделали панель инструментов редактирования, чтобы сделать её проще в использовании. Форматирование страниц стало более простым и интуитивным.
-* Мастер ссылок. Простой в использовании инструмент позволяет добавлять ссылки как на страницы Википедии, так и на внешние сайты.
+* Навигация. Мы улучшили навигацию для чтения и редактирования страниц. Теперь вкладки в верхней части каждой страницы позволяют более чётко определить чем вы сейчас занимаетесь: просматриваете страницу или её обсуждение, читаете или редактируете страницу.
+* Улучшение панели редактирования. Мы переделали панель инструментов редактирования, чтобы упростить её использование. Форматирование страниц стало более проще и интуитивно понятнее.
+* Мастер ссылок. Простой в использовании инструмент позволяет добавлять ссылки, ведущие как на страницы Википедии, так и на внешние сайты.
 * Улучшение поиска. Мы улучшили поисковые подсказки, чтобы быстрее показать вам требуемую страницу.
-* Другие новые функции. Мы также сделали мастер таблиц, позволяющий легко создавать таблицы, и функцию поиска и замены, упрощающую редактирование.',
+* Другие новые функции. Мы также сделали мастер таблиц, позволяющий легко создавать таблицы, а также функцию поиска и замены, упрощающую редактирование.',
 	'prefswitch-main-on' => '=== Обратная связь? ===
 Мы хотели бы услышать ваши отзывы. Пожалуйста, посетите нашу <span class="plainlinks">[$1 страницу обратной связи].</span>
 === Верните всё обратно! ===

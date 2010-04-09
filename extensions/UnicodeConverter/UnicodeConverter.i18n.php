@@ -93,6 +93,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'unicodeconverter-ok' => 'Добре',
 	'unicodeconverter-oldtext' => 'Оригинален текст:',
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );

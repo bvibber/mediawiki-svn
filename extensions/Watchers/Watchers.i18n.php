@@ -387,7 +387,7 @@ $messages['fi'] = array(
 	'watchers_error_article' => "'''Virhe:''' Sivua ei ole olemassa.",
 	'watchers_header' => '{{PLURAL:$2|Käyttäjä, joka tarkkailee|Käyttäjät, jotka tarkkailevat}} sivua ”[[:$1]]”',
 	'watchers_noone_watches' => 'Kukaan ei tarkkaile sivua [[:$1]].',
-	'watchers_x_or_more' => '$1 tai useampi {{PLURAL:$1|käyttäjä|käyttäjä}} tarkkailee tätä sivua.',
+	'watchers_x_or_more' => '$1 tai useampi {{PLURAL:$1|käyttäjä|käyttäjä}} tarkkailee sivua [[:$2]] tarkkailulistallaan.',
 	'watchers_less_than_x' => 'Vähemmän kuin $1 {{PLURAL:$1|käyttäjä|käyttäjää}} tarkkailee tätä sivua.',
 );
 

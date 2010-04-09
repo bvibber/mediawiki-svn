@@ -1124,14 +1124,19 @@ $messages['it'] = array(
 	'recordadmin-select' => 'Seleziona',
 	'recordadmin-submit' => 'Invia',
 	'recordadmin-badtitle' => 'Titolo non corretto',
+	'recordadmin-invert' => 'Inverti selezione',
 	'recordadmin-buttonsearch' => 'Ricerca',
 	'recordadmin-buttoncreate' => 'Crea',
 	'recordadmin-buttonreset' => 'Reimposta',
 	'recordadmin-searchresult' => 'Risultati della ricerca',
 	'recordadmin-buttonsave' => 'Salva',
+	'recordadmin-viewlink' => 'visualizza',
 	'recordadmin-editlink' => 'modifica',
 	'recordadmin-created' => 'Creata',
+	'recordadmin-modified' => 'Modificati',
 	'recordadmin-actions' => 'Azioni',
+	'recordadmin-editwithform' => 'Proprietà',
+	'recordadmin-export-csv' => 'CSV',
 );
 
 /** Japanese (日本語)

@@ -924,8 +924,15 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
+	'createsigndoc-pagename' => 'Pagina:',
+	'createsigndoc-email' => 'Indirizzo e-mail:',
+	'createsigndoc-bday' => 'Data di nascita:',
+	'createsigndoc-minage' => 'Anzianità minima:',
+	'createsigndoc-introtext' => 'Introduzione:',
+	'createsigndoc-hidden' => 'Nascosto',
 	'createsigndoc-optional' => 'Opzionale',
 	'createsigndoc-create' => 'Crea',
+	'createsigndoc-error-generic' => 'Errore: $1',
 );
 
 /** Japanese (日本語)

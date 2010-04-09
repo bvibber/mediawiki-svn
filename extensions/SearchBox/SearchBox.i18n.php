@@ -114,6 +114,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'searchbox-desc' => 'Позволява включването на формулчри за търсене',
 	'searchbox-search' => 'Търсене',
+	'searchbox-go' => 'Отваряне',
 	'searchbox-namespaces' => 'Именни пространства:',
 );
 

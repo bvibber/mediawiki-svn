@@ -2440,6 +2440,7 @@ $messages['it'] = array(
 	'contribstats-donations' => 'Donazioni',
 	'contribstats-conversion' => 'Tasso di conversione (%)',
 	'contribstats-template' => 'Template',
+	'contribstats-average' => 'Media',
 	'fundraiserstatistics' => 'Statistiche della raccolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Giorno $1 di $2',

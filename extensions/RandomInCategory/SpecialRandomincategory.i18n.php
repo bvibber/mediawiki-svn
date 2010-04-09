@@ -116,6 +116,7 @@ $messages['bg'] = array(
 	'randomincategory-toolbox' => 'Случайна страница',
 	'randomincategory-nocategory' => 'Категорията $1 не съществува или е празна',
 	'randomincategory-label' => 'Категория:',
+	'randomincategory-submit' => 'Отваряне',
 );
 
 /** Bengali (বাংলা)

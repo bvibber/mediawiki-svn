@@ -543,6 +543,7 @@ $messages['bg'] = array(
 	'sign-list-hidebday' => 'Без показване на възраст',
 	'sign-list-hideemail' => 'Без показване на е-поща',
 	'sign-view-selectfields' => '<b>Полета за показване:</b>',
+	'sign-viewfield-timestamp' => 'Време на запис на действието',
 	'sign-viewfield-realname' => 'Име',
 	'sign-viewfield-address' => 'Адрес',
 	'sign-viewfield-city' => 'Град',
@@ -553,6 +554,7 @@ $messages['bg'] = array(
 	'sign-viewfield-email' => 'Е-поща',
 	'sign-viewfield-age' => 'Възраст',
 	'sign-viewfield-options' => 'Настройки',
+	'sign-closed' => 'затворени',
 	'sign-error-closed' => 'В момента подписването на този документ не е позволено.',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
@@ -2216,10 +2218,18 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'sign-realname' => 'Nome:',
+	'sign-zip' => 'Codice postale:',
+	'sign-bday' => 'Età:',
+	'sign-email' => 'Indirizzo e-mail:',
 	'sign-viewfield-realname' => 'Nome',
+	'sign-viewfield-zip' => 'Codice postale',
 	'sign-viewfield-ip' => 'Indirizzo IP',
 	'sign-viewfield-email' => 'Indirizzo e-mail',
+	'sign-viewfield-age' => 'Età',
 	'sign-viewfield-options' => 'Opzioni',
+	'sign-closed' => 'chiusa',
+	'sign-viewfield-reviewcomment' => 'Commento',
+	'sign-review-comment' => 'Commento',
 );
 
 /** Japanese (日本語)

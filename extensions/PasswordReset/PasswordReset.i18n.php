@@ -1712,7 +1712,12 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'passwordreset-invalidusername' => 'אומגילטיקער באַניצער נאָמען',
+	'passwordreset-emptyusername' => 'ליידיגער באַניצער נאָמען',
+	'passwordreset-nopassmatch' => 'פאַסווערטער שטימען נישט',
 	'passwordreset-username' => 'באַניצער נאָמען:',
+	'passwordreset-newpass' => 'ניי פּאסוואָרט:',
+	'passwordreset-confirmpass' => 'באַשטעטיקן פאַסוואָרט:',
 );
 
 /** Yue (粵語) */

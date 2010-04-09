@@ -91,6 +91,11 @@ $messages['be-tarask'] = array(
 	'mostrevisors-viewcontributors' => 'Паказаць асноўных аўтараў',
 );
 
+/** Bulgarian (Български) */
+$messages['bg'] = array(
+	'mostrevisors-submit' => 'Отваряне',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

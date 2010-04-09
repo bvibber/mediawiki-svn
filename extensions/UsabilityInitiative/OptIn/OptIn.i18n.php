@@ -5876,13 +5876,14 @@ Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "
 );
 
 /** Turkish (Türkçe)
+ * @author Bekiroflaz
  * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'optin' => 'Kullanılabilirlik Girişimi katılım',
 	'optin-desc' => "Kullanıcıların Beta'yı, Kullanılabilirlik Girişimi'nin en son kullanılabilirlik geliştirmelerini, denemelerine izin verir",
-	'optin-title-optedout' => 'Beta Deneyin',
+	'optin-title-optedout' => "Beta'yı Deneyin",
 	'optin-title-optedin' => "Beta'dan Çık",
 	'optin-title-justoptedin' => "Beta'ya Hoşgeldiniz",
 	'optin-title-justoptedout' => "Beta'yı denediğiniz için teşekkür ederiz",
@@ -5941,22 +5942,20 @@ Yeni arayüzümüz konusunda ne düşündüğünüzü bilmek isteriz, o yüzden 
 	'optin-survey-answer-changes-predictability' => 'Öngörülebilirlik performansını geliştirin.',
 	'optin-survey-answer-changes-custom' => 'Daha fazla kullanıcı özelleştirmesine izin ver.',
 	'optin-survey-answer-changes-other' => 'Diğer:',
-	'optin-improvements' => '== Neler geliştirildi? ==
-[[File:UsabilityNavigation.png|left|link=|Yeni dolaşım sekmelerinin ekran görüntüsü]]
-;Geliştirilmiş dolaşım
-Yeni dolaşım sistemi, nerede olduğunuzu ve ne yaptığınızı görmenizi, ayrıca nereye gidebileceğinizi ve oraya nasıl ulaşacağınızı kolaylaştırır. Sağ üst köşede yer alan yeni arama kutusu ile bulmak daha kolay ve kullanmak daha hızlı.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Gelişmiş değiştirme araç çubuğunun ekran görüntüsü]]
-;Değiştirme araç çubuğu geliştirmeleri
-Yeni-ve-geliştirilmiş simgeler her aracın ne eylemi yaptığını daha netleştirir. Genişletilebilir bölümler dağınıklığı azaltırken az kullanılan araçları sadece bir tık ötesinde saklar.
-Yardım bölümü, viki-biçimlendirmesinin genel kullanımı için bir referansa kolay erişim sağlar.
-<div style="clear:both;"></div>
-
-== Nasıl dahil olunur ==
-Proje hakkında daha fazla bilgi edinmek ya da dahil olmak için lütfen [http://usability.wikimedia.org Kullanılabilirlik Girşimi\'nin vikisini] ziyaret edin. Orada, araştırmamız, tasarım + geliştirmemiz, ve yayınlarımız hakkında bilgi bulabilirsiniz. Soru sormak veya genel geridönüt bırakmak için, lütfen [http://usability.wikimedia.org/wiki/Talk:Prototype prototip tartışma sayfamızı] kullanın. Belirli konulardan bahsetmek için, lütfen ilgili tartışma sayfalarını kullanın. Eğer hata bulursanız, lütfen yorumlarınızı [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco sürüm tartışma sayfasına] bırakın ya da [https://bugzilla.wikimedia.org Bugzilla]\'yı kullanın.
-
-Teşekkürler, sizden haber bekliyoruz!',
+	'optin-improvements2' => '==Ne gibi gelişmeler var? ==
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+;Geliştirilmiş Araç Çubuğu
+Geliştirilmiş araç çubuğu maddeleri düzenlemeyi kolaylaştırır.
+Yeni ve iyileştirilmiş simgeler her simgenin ne yaptığının anlaşılmasını kolaylaştırır.
+Genişletilmiş bölümler, sık kullanılmayan araçları bir tık uzakta tutarak dağınıklığı azaltır.
+;Diyalog kutusu
+Bağlantı veya tablo oluşturmak için önce ilgili simgeye tıklarsınız. Açılan diyalog kutusu aracılığıyla kolay bir şekilde, formlar kullanarak sayfaya bağlantı veya tablo ekleyebilirsiniz.
+;Ve Fazlası
+Ayrıca bunların dışında; geliştirilmiş navigasyon, basamaklanmış sekmeler ve geliştirilmiş arama gibi yeni özellikler sizi bekliyor.
+== Nasıl katkıda bulunurum? ==
+Kullanışlılığı geliştirme çalışmalarına katılma hakkında bilgi için  [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative burayı] ziyaret edin.
+<div style="clear:both"></div>',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

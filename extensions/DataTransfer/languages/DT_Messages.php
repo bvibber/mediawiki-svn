@@ -974,6 +974,7 @@ $messages['it'] = array(
 	'dt_viewxml_namespaces' => 'Namespace',
 	'dt_viewxml_simplifiedformat' => 'Formato semplificato',
 	'dt_xml_namespace' => 'Namespace',
+	'dt_xml_pages' => 'Pagine',
 	'dt_xml_page' => 'Pagina',
 	'dt_xml_template' => 'Template',
 	'dt_xml_field' => 'Campo',
@@ -981,6 +982,7 @@ $messages['it'] = array(
 	'dt_xml_title' => 'Titolo',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Testo libero',
+	'right-datatransferimport' => 'Importa dati',
 );
 
 /** Japanese (日本語)

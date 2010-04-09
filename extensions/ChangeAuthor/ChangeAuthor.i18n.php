@@ -294,6 +294,7 @@ $messages['bg'] = array(
 	'changeauthor-title' => 'Промяна на автора на редакция',
 	'changeauthor-search-box' => 'Търсене на редакция',
 	'changeauthor-pagename-or-revid' => 'Име на страница или номер на редакция:',
+	'changeauthor-pagenameform-go' => 'Отваряне',
 	'changeauthor-comment' => 'Коментар:',
 	'changeauthor-changeauthors-multi' => 'Промяна на {{PLURAL:$1|автора|авторите}}',
 	'changeauthor-explanation-multi' => "Формулярът по-долу служи за промяна на авторите на отделни редакции. Необходимо е да се промени едно или повече потребителско име от списъка по-долу, да се въведе коментар (незадължително) и натисне бутона 'Промяна на автор(ите)'.",

@@ -236,6 +236,17 @@ $messages['nl'] = array(
 	'poolcounter-remote-error' => 'Poolcounter serverfout: $1',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'poolcounter-desc' => 'MediaWiki-klient for sammenslutningsskrankenissen poolcounter.py',
+	'poolcounter-connection-error' => 'Feil ved tilkobling til sammenslutningsskranketjener: $1',
+	'poolcounter-read-error' => 'Feil ved lesing fra sammenslutningsskranketjener',
+	'poolcounter-write-error' => 'Feil ved skriving til sammenslutningsskranketjeneren',
+	'poolcounter-remote-error' => 'Sammenslutningsskranketjenerfeil: $1',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

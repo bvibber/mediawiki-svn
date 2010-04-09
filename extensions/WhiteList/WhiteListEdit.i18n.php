@@ -427,6 +427,7 @@ $messages['bg'] = array(
 	'whitelisttablechangedate' => 'Промяна срока на валидност',
 	'whitelisttableremove' => 'Премахване',
 	'whitelistnewtabledate' => 'Дата на изтичане:',
+	'whitelistnewtablereview' => 'Преглеждане',
 	'whitelistpagelist' => 'Страници за $1 в {{SITENAME}}',
 	'whitelistnocalendar' => "<font color='red' size=3>Изглежда разширението [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], което е необходимо, не е инсталирано както трябва!</font>",
 	'whitelistoverviewcd' => "* Промяна на датата за [[:$2|$2]] на '''$1'''",

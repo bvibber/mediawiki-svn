@@ -469,6 +469,14 @@ $messages['ia'] = array(
 Tu pote [[Special:RefHelper|adder le referentia manualmente]] o [[Special:RefSearch|cercar le citation a adder]].',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'refhelper-title' => 'Titolo:',
+	'refhelper-category' => 'Categoria $1:',
+	'refhelper-create' => 'Crea',
+	'refhelper-search' => 'Ricerca',
+);
+
 /** Japanese (日本語)
  * @author Hosiryuhosi
  * @author Naohiro19

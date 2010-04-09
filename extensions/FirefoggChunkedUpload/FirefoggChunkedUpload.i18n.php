@@ -110,6 +110,13 @@ $messages['nl'] = array(
 	'firefoggcu-desc' => 'Firefogg-protocol voor uploaden in delen (Chunked Uploading)',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'firefoggcu-desc' => 'Firefoggs bulkopplastingsprotokoll',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

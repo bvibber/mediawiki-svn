@@ -785,6 +785,15 @@ Nilai pengganti tidak boleh diloloskan.',
 	'masseditregex-tooltip-execute' => 'Terapkan perubahan ini ke setiap halaman',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'masseditregex-matchtxt' => 'Cerca per:',
+	'masseditregex-replacetxt' => 'Sostituisci con:',
+	'masseditregex-before' => 'Prima del',
+	'masseditregex-after' => 'Dopo il',
+	'masseditregex-hint-headreplace' => 'Sostituisci',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

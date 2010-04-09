@@ -431,6 +431,11 @@ Cantumkan sebuah kelas tabel yang panjangnya maksimal 255 karakter.',
 	'plotters-errors' => '{{PLURAL:$1||}}Kesalahan Plotter:',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'plotters-uses' => 'Usi',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

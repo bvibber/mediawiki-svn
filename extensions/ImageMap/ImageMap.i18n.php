@@ -609,10 +609,11 @@ $messages['gu'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  */
 $messages['he'] = array(
-	'imagemap_desc' => 'אפשרות למפות תמונה עם קישורים בצד הלקוח באמצעות התגית <tt><nowiki><imagemap></nowiki></tt> tag',
+	'imagemap_desc' => 'אפשרות למפות תמונה עם קישורים בצד הלקוח באמצעות התגית <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'שגיאה: יש לציין תמונה בשורה הראשונה',
 	'imagemap_invalid_image' => 'שגיאה: התמונה שגויה או שאינה קיימת',
 	'imagemap_bad_image' => 'שגיאה: התמונה אסורה לשימוש בדף זה',

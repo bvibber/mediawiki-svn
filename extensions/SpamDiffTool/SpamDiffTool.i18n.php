@@ -1097,11 +1097,13 @@ Ikkje blokker heile domene til sider som er vert for mange brukarar, som blogspo
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'spamdifftool' => 'Håndtering av spamsvartelisten',
 	'spamdifftool-desc' => 'Gir en enkel måte å legge til nye elementer i spamsvartelisten fra diffsider',
 	'spamdifftool_cantedit' => 'Du har dessverre ikke rettighet til å redigere spamsvartelisten.',
+	'spamdifftool-no-title' => "'''Feil:''' ingen sidetittel ble oppgitt.",
 	'spamdifftool_notext' => 'Ingen tekst ble lagt til i spamsvartelisten. Klikk <a href=\'$1\'">her</a> for å fortsette.',
 	'spamdifftool_confirm' => "Bekreft at du vil legge til følgende poster i spamsvartelisten. (Rapporter et problem <a href='$1' target='new'>her</a>.)",
 	'spamdifftool_summary' => 'Legger til i spamsvartelisten',

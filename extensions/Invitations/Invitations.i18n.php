@@ -733,6 +733,11 @@ Untuk mengelola undangan untuk setiap fitur, klik pada namanya.',
 	'invitations-invite-success' => 'Anda berhasil mengundang $1 untuk menggunakan fitur ini!',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'invitations-inviteform-submit' => 'Invita',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

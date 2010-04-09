@@ -4851,6 +4851,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  * @author Gianfranco
@@ -4876,7 +4877,7 @@ $messages['it'] = array(
 	'configure-ext-settings-dep-error' => '$1: valore richiesto: $2, valore attuale: $3',
 	'configure-ext-use-extension' => 'Usa questa estensione',
 	'configure-ext-use' => 'Usa',
-	'configure-form-reason' => 'Motivo della variazione:',
+	'configure-form-reason' => 'Motivo:',
 	'configure-customised' => "''Questa impostazione è stata personalizzata''",
 	'configure-arrayinput-oneperline' => "''(uno per riga)''",
 	'configure-summary' => 'Questa pagina speciale permette di configurare il sito wiki; leggere le [http://www.mediawiki.org/wiki/Manual:Configuration_settings impostazioni di configurazione] per maggiori informazioni.',
@@ -4938,6 +4939,7 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
 	'configure-section-namespaces' => 'Namespace',
 	'configure-section-stats' => 'Statistiche del sito',
 	'configure-section-skin' => 'Skin',
+	'configure-section-vector' => 'Skin Vector',
 	'configure-section-category' => 'Categorie',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Cache del parser',
@@ -4959,6 +4961,7 @@ Assegnare a PHP il diritto di scrittura su di essa per utilizzare questa estensi
 	'configure-section-specialpages' => 'Pagine speciali',
 	'configure-section-recentchanges' => 'Ultime modifiche',
 	'configure-section-users' => 'Utenti',
+	'configure-section-externalauth' => 'Autenticazione esterna',
 	'configure-section-feed' => 'Feed',
 	'configure-section-job' => 'Lavori',
 	'configure-section-extension' => 'Estensioni',

@@ -488,7 +488,7 @@ $messages['it'] = array(
 	'ajaxLogin1' => "Per completare l'accesso è necessario inserire inserire una nuova password.
 Ciò vi porterà via da questa pagina di modifica e si rischia di perdere la modifica attuale.",
 	'ajaxLogin2' => 'Sicuro? Si potrebbero perdere le modifiche apportate a questa pagina se si lascia la pagina ora.',
-	'ajaxlogin-create' => 'Crea un account',
+	'ajaxlogin-create' => 'Crealo ora',
 	'al-nosuchuser' => "L'utente \"\$1\" non esiste. I nomi utente sono ''case sensitive''. Controlla l'ortografia.",
 );
 
@@ -930,6 +930,13 @@ Eğer bu sayfadan şimdi çıkarsanız sayfaya yaptığınız değişiklikleri k
 	'al-nosuchuser' => '"$1" adında bir kullanıcı yok.
 Kullanıcı adları büyük-küçük harf duyarlıdır.
 Yazımınızı kontrol edin.',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Рашат Якупов
+ */
+$messages['tt-cyrl'] = array(
+	'ajaxlogin-create' => 'Хисап язмасын төзергә',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

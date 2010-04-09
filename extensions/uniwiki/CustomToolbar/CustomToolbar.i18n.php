@@ -322,6 +322,7 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_nowiki_tip_wrap' => 'Пренебрегване на уики форматирането за този текст',
 	'ct_horizontal_tip' => 'Вмъкване на хоризонтална линия (използва се пестеливо)',
 	'ct_horizontal_caption' => 'Хоризонтална линия',
+	'ct_submit' => 'Отваряне',
 	'ct_close' => 'Затваряне на прозореца',
 	'ct_success' => 'Качването беше успешно!',
 	'ct_user_user' => 'Потребител',
