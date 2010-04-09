@@ -6,7 +6,6 @@
  * @author Niklas Laxström
  */
 class LanguageAr extends Language {
-
 	function convertPlural( $count, $forms ) {
 		if ( !count($forms) ) { return ''; }
 		$forms = $this->preConvertPlural( $forms, 6 );
@@ -25,5 +24,21 @@ class LanguageAr extends Language {
 			$index = 5;
 		}
 		return $forms[$index];
+	}
+
+	/**
+	 * Temporary hack for bug 9413: replace Arabic presentation forms with their 
+	 * standard equivalents. 
+	 *
+	 * FIXME: This is language-specific for now only to avoid the negative 
+	 * performance impact of enabling it for all languages.
+	 */
+	function normalize( $s ) {
+		global $wgFixArabicUnicode;
+		$s = parent::normalize( $s );
+		if ( $wgFixArabicUnicode ) {
+			$s = $this->transformUsingPairFile( 'normalize-ar.ser', $s );
+		}
+		return $s;
 	}
 }

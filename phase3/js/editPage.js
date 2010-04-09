@@ -1,13 +1,9 @@
-/**
- * JS2-style replacement for MediaWiki edit.js
- * (right now it just supports the toolbar)
- */
-
 // Setup configuration vars (if not set already)
-if ( !mwAddMediaConfig )
+if ( !mwAddMediaConfig ) {
 	var mwAddMediaConfig = { };
+}
 
-// The default editPage AMW config
+// The default editPage AMW config ( should move to mw.setConfig mw.getConfig )
 var defaultAddMediaConfig = {
 		'profile': 'mediawiki_edit',
 		'target_textbox': '#wpTextbox1',
@@ -78,15 +74,16 @@ mw.ready( function() {
 			// Make sure the wikieditor got binded: 
 			if ( !didWikiEditorBind ) {
 				mw.log( 'Failed to bind via build section bind via target:' );
+				var $targetFileButton = $j( ".toolbar [rel='file']" );
 				
-				$j( ".tool[rel='file']" )
+				$targetFileButton
 				.attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );
 				
 				mw.load( 'AddMedia.addMediaWizard', function() {
-					if( $j( ".tool[rel='file']" ).size() != 0 ) {
-						$j( ".tool[rel='file']" ).unbind().addMediaWizard( amwConf );
+					if( $targetFileButton.length != 0 ) {
+						$targetFileButton.unbind().addMediaWizard( amwConf );
 					}
-				});
+				} );
 			}
 		}
 	}, 120 )

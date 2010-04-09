@@ -147,9 +147,6 @@ $messages = array(
 'faq'            => 'Sòng-kien mun-thì kié-tap',
 'faqpage'        => 'Project:Sòng-kien mun-thì kié-tap',
 
-# Metadata in edit box
-'metadata_help' => 'Ngièn sṳ-kí:',
-
 'errorpagetitle'    => 'Chho-ngu',
 'returnto'          => 'Fán-fì to $1.',
 'tagline'           => 'Chhut-chhṳ {{SITENAME}}',
@@ -317,7 +314,8 @@ Chhà-khon: $2',
 'virus-unknownscanner' => 'vù-tî ke fòng phiang-thu̍k:',
 
 # Login and logout pages
-'logouttext'                 => "'''Ngì hien-chhai yí-kîn thui-chhut.'''<br />
+'logouttext'                 => "'''Ngì hien-chhai yí-kîn thui-chhut.'''
+
 Ngì khó-yî ki-siu̍k yî ngia̍k-miàng fông-sṳt sṳ́-yung {{SITENAME}}, fe̍t-chá chai-chhṳ yî siông-thùng fe̍t-he mò-thùng yung-fu sṳ̂n-fun tên-ngi̍p.",
 'welcomecreation'            => '<h2>Fôn-ngiàng, $1!</h2><p>Ngì-ke chong-ho yí-kîn kien-li̍p, put-yeu mong-ki sat-chṳ {{SITENAME}} ke-ngìn chhâm-sṳ.</p>',
 'yourname'                   => 'Yung-fu-miàng',
@@ -432,7 +430,7 @@ Liá-chhṳ chhà-fûng he yù $1 só fûng ke. Tông-chûng ke ngièn-yîn he '
 'whitelistedittext'         => 'Ngì pit-sî siên $1 chhòi-nèn phiên-siá vùn-chông.',
 'confirmedittext'           => 'Chhai phiên-cho chhṳ́-chông chṳ̂-chhièn pit-sî khok-ngin ngì-ke email thi-tiám. Chhiáng theu-ko [[Special:Preferences|chhâm-su sat-thin]] sat-thin pin ngiam-chṳn ngì-ke email thi-tiám.',
 'nosuchsectiontitle'        => 'Mò-yû liá-ke thon-lo̍k',
-'nosuchsectiontext'         => 'Ngì sòng-chhṳ phiên-cho ke thon-lo̍k pin-put chhùn-chhai. Chhai liá-piên he mò thi-$1-ke thon-lo̍k,  só-yî he mò-yû yit-ke thi-fông tú-chhùn ngì-ke phiên-cho.',
+'nosuchsectiontext'         => 'Ngì sòng-chhṳ phiên-cho ke thon-lo̍k pin-put chhùn-chhai.',
 'loginreqtitle'             => 'Sî-yeu Tên-ngi̍p',
 'loginreqlink'              => 'tên-ngi̍p',
 'loginreqpagetext'          => 'Ngì pit-sî $1 chhòi-nèn kiám-sṳ khì-thâ vùn-chông.',
@@ -555,12 +553,12 @@ Tông-tsûng pûn $3 fûng-só ke ngièn-yîn he ''$2''",
 'revdelete-text'              => "'''Chhù-thet ke siû-thin yìn-yèn chiông-voi hién-sṳ chhai vùn-chông li̍t-sṳ́ chûng, than vùn-sṳ nui-yùng yí-kîn put-nèn pûn chung-ngìn fóng-mun.''' Chhai chhṳ́ miong-chham ke khì-thâ kón-lî-yèn chiông chhòi-nèn fóng-mun yún-chhòng ke nui-yùng pin theu-ko siông-thùng ke kie-mien fî-fu̍k chhù-hi, chhù-fî miong-chham kûng-chok-chá chin-hàng han-chṳ.",
 'revdelete-legend'            => 'Sat-thin siû-thin han-chṳ:',
 'revdelete-hide-text'         => 'Yún-chhòng siû-thin vùn-sṳ',
+'revdelete-hide-image'        => 'Yún-chhòng tóng-on nui-yùng',
 'revdelete-hide-name'         => 'Yún-chhòng thung-chok khi̍p muk-phêu',
 'revdelete-hide-comment'      => 'Yún-chhòng phiên-chho sot-mìn',
 'revdelete-hide-user'         => 'Yún-chhòng phiên-siá-chá ke yung-fu-miàng/IP',
 'revdelete-hide-restricted'   => 'Chiông han-chṳ khiung-thùng yin-yung yî kón-lî-yèn',
 'revdelete-suppress'          => 'Thùng-sṳ̀ ap-chṳ chhâu-chok-yèn yî-khi̍p khì-thâ yung-fu ke chṳ̂-liau',
-'revdelete-hide-image'        => 'Yún-chhòng tóng-on nui-yùng',
 'revdelete-unsuppress'        => 'Chhai yí-kîn fî-fu̍k ke siû-thin chûng yì-chhù han-chṳ',
 'revdelete-log'               => 'Ngit-ki chu-sṳt:',
 'revdelete-submit'            => 'Yin-yung chhut-yì sién-chhí ke siû-thin',
@@ -789,7 +787,6 @@ Kó-yèn ngì yû liá-ke thù-hìn ke vàn-cháng thai-séu.",
 'uploaddisabled'              => 'Mò-fap song-chhòn',
 'uploaddisabledtext'          => 'Tóng-on song-chhòn chhai chhṳ́ miong-chham put hí-khó yung.',
 'uploadscripted'              => 'Ke tóng-on pâu-hàm khó-nèn pûn mióng-lu-hi chho-ngu kié-sṳt ke HTML fe̍t-chá kiok-pún thoi-me̍t.',
-'uploadcorrupt'               => 'Ke tóng-on pâu-hàm fe̍t-chá khí-yû yit-ke put chṳn-khok ke khóng-chán-miàng. Chhiáng kiám-chhà chhṳ́ tóng-on pin chhùng-sîn song-chhòn.',
 'uploadvirus'                 => 'Ke-tóng-on yû pâu-hàm phiang-thu̍k! Siòng-se chhìn-khóng: $1',
 'sourcefilename'              => 'Kòi-ngièn ke tóng-on miàng',
 'destfilename'                => 'Muk-phêu tóng-on miàng',

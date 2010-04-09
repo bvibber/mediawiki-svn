@@ -8,6 +8,22 @@
 */
 
 /**
+* Core js components 
+* 
+* These components are pieces of the core mwEmbed lib
+* They are in separate files to keep the code easier to maintain. 
+*
+* All mwEmbed core classes are loaded on every mwEmbed request
+* 
+* NOTE: All user / application module code should go into /modules
+* and enabled in mwEnabledModuleList below.
+*/
+var mwCoreComponentList = [	
+	'mw.Language'
+];
+
+
+/**
 * The default set of enabled modules
 * 
 * Each enabledModules array value should be a name
@@ -34,12 +50,15 @@ var mwEnabledModuleList = [
 	'Sequencer',
 	'TimedText',
 	'UploadWizard'	
-]; 
+];  
 
 /**
 * mwEmbed default config values.  
 */  	
 mw.setDefaultConfig ( {
+	// Default coreComponents: 
+	"coreComponents" : mwCoreComponentList,
+
 	// Default enabled modules: 
 	"enabledModules" : mwEnabledModuleList, 
 	
@@ -76,7 +95,7 @@ mw.setDefaultConfig ( {
 	//If we are in debug mode ( results in fresh debug javascript includes )
 	'debug' : false,
 	
-	// Default request timeout ( for cases where we inlucde js and normal browser timeout can't be used )
+	// Default request timeout ( for cases where we include js and normal browser timeout can't be used )
 	// stored in seconds
 	'defaultRequestTimeout' : 30,
 	
@@ -93,7 +112,7 @@ mw.setDefaultConfig ( {
 * --  Load Class Paths --
 * 
 * PHP AutoLoader reads this loader.js file along with 
-* all the "loader.js" files to determin script-loader 
+* all the "loader.js" files to determine script-loader 
 * class paths
 * 
 */
@@ -107,6 +126,10 @@ mw.setConfig('loaderContext', '' );
 mw.addClassFilePaths( {
 	"mwEmbed"				: "mwEmbed.js",
 	"window.jQuery"			: "jquery/jquery-1.4.2.js",		
+	
+	"mw.Language"			: "languages/mw.Language.js",
+	"$j.replaceText.js"		: "jquery/plugins/jquery.replaceText.js",
+	
 	
 	"$j.fn.pngFix"			: "jquery/plugins/jquery.pngFix.js",
 	"$j.fn.autocomplete"	: "jquery/plugins/jquery.autocomplete.js",

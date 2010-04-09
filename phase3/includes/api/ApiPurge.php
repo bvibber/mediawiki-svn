@@ -1,11 +1,11 @@
 <?php
 
-/*
+/**
  * Created on Sep 2, 2008
  *
  * API for MediaWiki 1.14+
  *
- * Copyright (C) 2008 Chad Horohoe
+ * Copyright © 2008 Chad Horohoe
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if (!defined('MEDIAWIKI')) {
-	require_once ('ApiBase.php');
+if ( !defined( 'MEDIAWIKI' ) ) {
+	require_once( 'ApiBase.php' );
 }
 
 /**
@@ -33,8 +33,8 @@ if (!defined('MEDIAWIKI')) {
  */
 class ApiPurge extends ApiBase {
 
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	/**
@@ -43,24 +43,24 @@ class ApiPurge extends ApiBase {
 	public function execute() {
 		global $wgUser;
 		$params = $this->extractRequestParams();
-		if(!$wgUser->isAllowed('purge'))
-			$this->dieUsageMsg(array('cantpurge'));
-		if(!isset($params['titles']))
-			$this->dieUsageMsg(array('missingparam', 'titles'));
+		if ( !$wgUser->isAllowed( 'purge' ) ) {
+			$this->dieUsageMsg( array( 'cantpurge' ) );
+		}
+		if ( !isset( $params['titles'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'titles' ) );
+		}
 		$result = array();
-		foreach($params['titles'] as $t) {
+		foreach ( $params['titles'] as $t ) {
 			$r = array();
-			$title = Title::newFromText($t);
-			if(!$title instanceof Title)
-			{
+			$title = Title::newFromText( $t );
+			if ( !$title instanceof Title ) {
 				$r['title'] = $t;
 				$r['invalid'] = '';
 				$result[] = $r;
 				continue;
 			}
-			ApiQueryBase::addTitleInfo($r, $title);
-			if(!$title->exists())
-			{
+			ApiQueryBase::addTitleInfo( $r, $title );
+			if ( !$title->exists() ) {
 				$r['missing'] = '';
 				$result[] = $r;
 				continue;
@@ -70,8 +70,8 @@ class ApiPurge extends ApiBase {
 			$r['purged'] = '';
 			$result[] = $r;
 		}
-		$this->getResult()->setIndexedTagName($result, 'page');
-		$this->getResult()->addValue(null, $this->getModuleName(), $result);
+		$this->getResult()->setIndexedTagName( $result, 'page' );
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
 	public function mustBePosted() {
@@ -84,23 +84,30 @@ class ApiPurge extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array (
+		return array(
 			'titles' => array(
-				ApiBase :: PARAM_ISMULTI => true
+				ApiBase::PARAM_ISMULTI => true
 			)
 		);
 	}
 
 	public function getParamDescription() {
-		return array (
+		return array(
 			'titles' => 'A list of titles',
 		);
 	}
 
 	public function getDescription() {
-		return array (
+		return array(
 			'Purge the cache for the given titles.'
 		);
+	}
+
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'cantpurge' ),
+			array( 'missingparam', 'titles' ),
+		) );
 	}
 
 	protected function getExamples() {

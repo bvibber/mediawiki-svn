@@ -24,6 +24,14 @@ function wfSpecialBlockip( $par ) {
 	}
 
 	$ipb = new IPBlockForm( $par );
+	
+	# bug 15810: blocked admins should have limited access here
+	if ( $wgUser->isBlocked() ) {
+		$status = IPBlockForm::checkUnblockSelf( $ipb->BlockAddress );
+		if ( $status !== true ) {
+			throw new ErrorPageError( 'badaccess', $status );
+		}
+	}
 
 	$action = $wgRequest->getVal( 'action' );
 	if( 'success' == $action ) {
@@ -82,7 +90,7 @@ class IPBlockForm {
 	public function showForm( $err ) {
 		global $wgOut, $wgUser, $wgSysopUserBans;
 
-		$wgOut->setPageTitle( wfMsg( 'blockip' ) );
+		$wgOut->setPageTitle( wfMsg( 'blockip-title' ) );
 		$wgOut->addWikiMsg( 'blockiptext' );
 
 		if( $wgSysopUserBans ) {
@@ -105,9 +113,9 @@ class IPBlockForm {
 			$msg = wfMsgReal( $key, $err );
 			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
 			$wgOut->addHTML( Xml::tags( 'p', array( 'class' => 'error' ), $msg ) );
-		} elseif( $this->BlockAddress ) {
+		} elseif( $this->BlockAddress !== null ) {
 			# Get other blocks, i.e. from GlobalBlocking or TorBlock extension
-			wfRunHooks( 'getOtherBlockLogLink', array( &$otherBlockedMsgs, $this->BlockAddress ) );
+			wfRunHooks( 'OtherBlockLogLink', array( &$otherBlockedMsgs, $this->BlockAddress ) );
 
 			$userId = is_object( $user ) ? $user->getId() : 0;
 			$currentBlock = Block::newFromDB( $this->BlockAddress, $userId );
@@ -360,6 +368,32 @@ class IPBlockForm {
 		global $wgEnableUserEmail, $wgSysopEmailBans;
 		return ( $wgEnableUserEmail && $wgSysopEmailBans && $user->isAllowed( 'blockemail' ) );
 	}
+	
+	/**
+	 * bug 15810: blocked admins should not be able to block/unblock
+	 * others, and probably shouldn't be able to unblock themselves
+	 * either.
+	 * @param $user User, Int or String
+	 */
+	public static function checkUnblockSelf( $user ) {
+		global $wgUser;
+		if ( is_int( $user ) ) {
+			$user = User::newFromId( $user );
+		} elseif ( is_string( $user ) ) {
+			$user = User::newFromName( $user );
+		}
+		if( $user instanceof User && $user->getId() == $wgUser->getId() ) {
+			# User is trying to unblock themselves
+			if ( $wgUser->isAllowed( 'unblockself' ) ) {
+				return true;
+			} else {
+				return 'ipbnounblockself';
+			}
+		} else {
+			# User is trying to block/unblock someone else
+			return 'ipbblocked';
+		}
+	}
 
 	/**
 	 * Backend block code.
@@ -383,8 +417,10 @@ class IPBlockForm {
 		  	if( preg_match( "/^($rxIP4)\\/(\\d{1,2})$/", $this->BlockAddress, $matches ) ) {
 		  		# IPv4
 				if( $wgSysopRangeBans ) {
-					if( !IP::isIPv4( $this->BlockAddress ) || $matches[2] < $wgBlockCIDRLimit || $matches[2] > 32 ) {
+					if( !IP::isIPv4( $this->BlockAddress ) || $matches[2] > 32 ) {
 						return array( 'ip_range_invalid' );
+					} elseif ( $matches[2] < $wgBlockCIDRLimit['IPv4'] ) {
+						return array( 'ip_range_toolarge', $wgBlockCIDRLimit['IPv4'] );
 					}
 					$this->BlockAddress = Block::normaliseRange( $this->BlockAddress );
 				} else {
@@ -394,8 +430,10 @@ class IPBlockForm {
 			} elseif( preg_match( "/^($rxIP6)\\/(\\d{1,3})$/", $this->BlockAddress, $matches ) ) {
 		  		# IPv6
 				if( $wgSysopRangeBans ) {
-					if( !IP::isIPv6( $this->BlockAddress ) || $matches[2] < 64 || $matches[2] > 128 ) {
+					if( !IP::isIPv6( $this->BlockAddress ) || $matches[2] > 128 ) {
 						return array( 'ip_range_invalid' );
+					} elseif( $matches[2] < $wgBlockCIDRLimit['IPv6'] ) {
+						return array( 'ip_range_toolarge', $wgBlockCIDRLimit['IPv6'] );
 					}
 					$this->BlockAddress = Block::normaliseRange( $this->BlockAddress );
 				} else {
@@ -406,7 +444,7 @@ class IPBlockForm {
 				# Username block
 				if( $wgSysopUserBans ) {
 					$user = User::newFromName( $this->BlockAddress );
-					if( !is_null( $user ) && $user->getId() ) {
+					if( $user instanceof User && $user->getId() ) {
 						# Use canonical name
 						$userId = $user->getId();
 						$this->BlockAddress = $user->getName();
@@ -535,19 +573,20 @@ class IPBlockForm {
 		}
 	}
 
-	public static function suppressUserName( $name, $userId ) {
+	public static function suppressUserName( $name, $userId, $dbw = null ) {
 		$op = '|'; // bitwise OR
-		return self::setUsernameBitfields( $name, $userId, $op );
+		return self::setUsernameBitfields( $name, $userId, $op, $dbw );
 	}
 
-	public static function unsuppressUserName( $name, $userId ) {
+	public static function unsuppressUserName( $name, $userId, $dbw = null ) {
 		$op = '&'; // bitwise AND
-		return self::setUsernameBitfields( $name, $userId, $op );
+		return self::setUsernameBitfields( $name, $userId, $op, $dbw );
 	}
 
-	private static function setUsernameBitfields( $name, $userId, $op ) {
+	private static function setUsernameBitfields( $name, $userId, $op, $dbw ) {
 		if( $op !== '|' && $op !== '&' ) return false; // sanity check
-		$dbw = wfGetDB( DB_MASTER );
+		if( !$dbw )
+			$dbw = wfGetDB( DB_MASTER );
 		$delUser = Revision::DELETED_USER | Revision::DELETED_RESTRICTED;
 		$delAction = LogPage::DELETED_ACTION | Revision::DELETED_RESTRICTED;
 		# Normalize user name
@@ -609,7 +648,7 @@ class IPBlockForm {
 	public function showSuccess() {
 		global $wgOut;
 
-		$wgOut->setPageTitle( wfMsg( 'blockip' ) );
+		$wgOut->setPageTitle( wfMsg( 'blockip-title' ) );
 		$wgOut->setSubtitle( wfMsg( 'blockipsuccesssub' ) );
 		$text = wfMsgExt( 'blockipsuccesstext', array( 'parse' ), $this->BlockAddress );
 		$wgOut->addHTML( $text );
@@ -637,7 +676,7 @@ class IPBlockForm {
 		);
 
 		// Add suppression block entries if allowed
-		if( $wgUser->isAllowed( 'hideuser' ) ) {
+		if( $wgUser->isAllowed( 'suppressionlog' ) ) {
 			LogEventsList::showLogExtract( $out, 'suppress', $title->getPrefixedText(), '',
 				array(
 					'lim' => 10,
@@ -696,13 +735,15 @@ class IPBlockForm {
 			$links[] = $this->getContribsLink( $skin );
 		$links[] = $this->getUnblockLink( $skin );
 		$links[] = $this->getBlockListLink( $skin );
-		$title = Title::makeTitle( NS_MEDIAWIKI, 'Ipbreason-dropdown' );
-		$links[] = $skin->link(
-			$title,
-			wfMsgHtml( 'ipb-edit-dropdown' ),
-			array(),
-			array( 'action' => 'edit' )
-		);
+		if ( $wgUser->isAllowed( 'editinterface' ) ) {
+			$title = Title::makeTitle( NS_MEDIAWIKI, 'Ipbreason-dropdown' );
+			$links[] = $skin->link(
+				$title,
+				wfMsgHtml( 'ipb-edit-dropdown' ),
+				array(),
+				array( 'action' => 'edit' )
+			);
+		}
 		return '<p class="mw-ipb-conveniencelinks">' . $wgLang->pipeList( $links ) . '</p>';
 	}
 

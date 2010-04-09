@@ -143,9 +143,6 @@ $messages = array(
 'faq'            => 'Cocmíiit cmaa',
 'faqpage'        => 'Project:Cocmíiit cmaa',
 
-# Metadata in edit box
-'metadata_help' => 'Datade Meta:',
-
 'errorpagetitle'    => 'Römj',
 'returnto'          => 'Jumpöx $1.',
 'tagline'           => "{{SITENAME}} iti'ab",
@@ -324,8 +321,10 @@ $2',
 'ns-specialprotected'  => 'Páhinámde {{ns:special}} zo iti neticpatlöx.',
 
 # Login and logout pages
-'logouttext'                 => "'''Me cuípo.'''<br />
-Mecontinudad usadad {{SITENAME}} anon jïx me caápo dajcaitom ö jömcaitom. Páhinám pac continudad displayom dajme caápo, jánclearom mecachede browser.",
+'logouttext'                 => "'''Me cuípo.'''
+
+Mecontinudad usadad {{SITENAME}} anon jïx me caápo dajcaitom ö jömcaitom.
+Páhinám pac continudad displayom dajme caápo, jánclearom mecachede browser.",
 'welcomecreation'            => "== Q'$1! ==
 
 Mecaitom coccebj creatöx. Quiix hequáatlaácde {{SITENAME}} pos-poop.",
@@ -468,7 +467,7 @@ Me IDde block coccebj $5. Includam 1 jöx 2 pac querinám iti.",
 'whitelistedittext'         => 'Mecoccebj $1 ticpatlöx páhinám.',
 'confirmedittext'           => "Me confirmöx menadressade de e-iitom ticpatlöx 'depre. Set' ö validatenan menadressade IP [[Special:Preferences|hequáatlaác]] mii.",
 'nosuchsectiontitle'        => "Ne'dáár partam",
-'nosuchsectiontext'         => "Me pos-xuniim ticpatlöx ne'dáár partam.  Zo necoccebj ne'dáár partam $1, meticpatlöx necoccebj xuniim.",
+'nosuchsectiontext'         => "Me pos-xuniim ticpatlöx ne'dáár partam.",
 'loginreqtitle'             => 'Caápo Neces',
 'loginreqlink'              => 'caápo',
 'loginreqpagetext'          => 'Zo coccebj Neces $1 cohuatlöx jömde páhinám.',
@@ -576,10 +575,10 @@ Informacion: (curt) = quiíxde vercion currentua,
 'revdelete-selected'      => "'''{{PLURAL:$2|Revicion selectonde|Revición selectónde}} $1:'''",
 'revdelete-legend'        => 'Xuniim restricción',
 'revdelete-hide-text'     => 'Camaát textuade revicion',
+'revdelete-hide-image'    => 'Cohuatlöx contentua ciúchan',
 'revdelete-hide-name'     => 'Camaát accion öjaim',
 'revdelete-hide-comment'  => 'Camaát commentuade ticpatlöx',
 'revdelete-hide-user'     => 'Camaát IDde caitom/IDde IP',
-'revdelete-hide-image'    => 'Cohuatlöx contentua ciúchan',
 'revdelete-log'           => 'Commentuade log:',
 'revdelete-logentry'      => 'quiixöx revicion visibilitiitde [[$1]]',
 'logdelete-logentry'      => 'quiixöx eventua visibilitiitde [[$1]]',

@@ -10,9 +10,9 @@
 	/**
 	 * Handle cases of (1, other, 0) or (1, other)
 	 */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
-		forms = mw.lang.preConvertPlural( forms, 3 );
+		forms = mw.Language.preConvertPlural( forms, 3 );
 
 		if ( count == 1 ) {
 			return forms[0];

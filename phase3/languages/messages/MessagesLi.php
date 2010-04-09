@@ -305,9 +305,6 @@ $messages = array(
 'faq'            => 'FAQ (väölgesjtèlde vraoge)',
 'faqpage'        => 'Project:Väölgestjèlde vraoge',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Truuk nao $1.',
 'tagline'           => 'Van {{SITENAME}}',
@@ -512,7 +509,10 @@ De gegaeve ree is ''$2''.",
 'virus-unknownscanner' => 'onbekeng antivirus:',
 
 # Login and logout pages
-'logouttext'                 => 'De bis noe aafgemèld. De kins {{SITENAME}} noe anoniem (mit vermèlding van IP adres) gebroeke, of opnuui aanmèlde onger dezelfde of ein anger naam.',
+'logouttext'                 => "'''De bis noe aafgemeld.'''
+
+De kèns {{SITENAME}} noe anoniem (mit vermeljing van IP-adres) gebroeke, of [[Special:UserLogin|opnuuj aanmelde]] ónger dezelfde of 'ne angere naam.
+Mäögelik waere nog 'n deil pazjena's getuind esofs te nog aangemeld bis pès te de cache van diene browser laeg maaks.",
 'welcomecreation'            => '<h2>Wilkóm, $1!</h2><p>Dien gebroekersprofiel is vaerdig. De kins noe dien persuunlike veurkäöre insjtèlle.',
 'yourname'                   => 'Diene gebroekersnaam',
 'yourpassword'               => 'Die wachwaord',
@@ -521,7 +521,7 @@ De gegaeve ree is ''$2''.",
 'yourdomainname'             => 'Die domein',
 'externaldberror'            => "d'r Is 'n fout opgetraoje biej 't aanmelje biej de database of doe höbs gén toesjtömming diene externe gebroeker biej te wèrke.",
 'login'                      => 'Aanmèlde',
-'nav-login-createaccount'    => 'Aanmèlje / registrere',
+'nav-login-createaccount'    => 'Aanmelje / registrere',
 'loginprompt'                => "Diene browser mót ''cookies'' acceptere óm in te logge op {{SITENAME}}.",
 'userlogin'                  => 'Aanmelde / registrere',
 'logout'                     => 'Aafmèlde',
@@ -667,7 +667,7 @@ Vermeld det esse örges euver deze blokkaasj reageers.",
 'confirmedittext'                  => "De mós dien e-mailadres bevestige veurdats te kèns bewirke.
 Veur dien e-mailadres in en bevestig 'm bie [[Special:Preferences|dien veurkäöre]].",
 'nosuchsectiontitle'               => 'Deze subkop bestuit neet',
-'nosuchsectiontext'                => "Doe probeers 'ne subkop te bewirke dae neet besjtuit. Ómdet subkop $1 neet besjtuit, kin dien bewirking ouch neet waere opgesjlage.",
+'nosuchsectiontext'                => "Doe probeers 'ne subkop te bewirke dae neet besjtuit.",
 'loginreqtitle'                    => 'Aanmelje verplich',
 'loginreqlink'                     => 'inglogge',
 'loginreqpagetext'                 => "De mos $1 om anger pazjena's te bekieke.",
@@ -684,7 +684,7 @@ Daoveur gebroeke v'r 't IP-adres óm de gebroeker te identificere.
 Det adres kan waere gedeild door mierdere gebroekers. 
 Es te 'ne anonieme gebroeker bis en de höbs 't geveul dat 'r ónrelevante commentare aan dich gerich zeen, kèns te 't bèste [[Special:UserLogin/signup|'n account crëere]] of [[Special:UserLogin|inlogge]] óm toekomstige verwarring mit anger anoniem gebroekers te veurkomme.''",
 'noarticletext'                    => 'Dees pagina bevat gein teks.
-De kèns [[Special:Search/{{PAGENAME}}|nao deze term zeuke]] in anger pagina\'s, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} de logbeuk doorzeuke] of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} dees pagina bewirke]</span>.',
+De kèns [[Special:Search/{{PAGENAME}}|nao deze term zeuke]] in anger pagina\'s, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} de logbeuk doorzeuke] of <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} dees pagina bewirke]</span>.',
 'userpage-userdoesnotexist'        => 'Doe bewirks \'n gebroekerspazjena van \'ne gebroeker dae neet besjteit (gebroeker "$1"). Controlere ofs doe dees pazjena waal wils aanmake/bewirke.',
 'clearyourcache'                   => "'''Lèt op:''' Nao 't opsjlaon mós te diene browserbuffer wisse óm de verangeringe te zeen: '''Mozilla:''' klik ''Reload'' (of ''Ctrl-R''), '''Firefox / IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''.",
 'usercssyoucanpreview'             => "'''Tip:''' Gebroek de knóp 'Bekiek dees bewirking' om dien nuuj CSS te teste veurdets te opsjleis.",
@@ -848,12 +848,12 @@ Anger beheerders van {{SITENAME}} kinne de verborge inhoud benäöjere en de ver
 *: ''woonadres, telefoonnummers, Burger Service Nummers, enzovoors.''",
 'revdelete-legend'            => 'Stel zichbaarheidsbeperkinge in',
 'revdelete-hide-text'         => 'Verberg de bewerkte teks',
+'revdelete-hide-image'        => 'Verberg bestandjsinhoud',
 'revdelete-hide-name'         => 'Actie en doel verberge',
 'revdelete-hide-comment'      => 'De bewerkingssamevatting verberge',
 'revdelete-hide-user'         => 'Verberg gebroekersnaam/IP van de gebroeker',
 'revdelete-hide-restricted'   => 'Pas deze beperkinge toe op zowaal beheerders es angere',
 'revdelete-suppress'          => 'Ongerdruk gegaeves veur zowaal admins es angere',
-'revdelete-hide-image'        => 'Verberg bestandjsinhoud',
 'revdelete-unsuppress'        => 'Verwijder beperkinge op truuk gezatte wieziginge',
 'revdelete-log'               => 'Opmerking in logbook:',
 'revdelete-submit'            => 'Pas toe op de geselecteerde bewèrking',
@@ -1224,6 +1224,15 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'recentchanges-legend'              => 'Opties veur recènte verangeringe',
 'recentchangestext'                 => 'op dees pazjena kins doe de recènte verangeringe in deze wiki betrachte.',
 'recentchanges-feed-description'    => 'Volg de meis recente bewerkinge in deze wiki via deze feed.',
+'recentchanges-label-legend'        => 'Legenda: $1.',
+'recentchanges-legend-newpage'      => '$1 - Nuuj pagina',
+'recentchanges-label-newpage'       => "Mit dees verangering is 'n nuuj pagina aangemaak",
+'recentchanges-legend-minor'        => '$1 - klein verangering',
+'recentchanges-label-minor'         => "Dit is 'n klein bewirking",
+'recentchanges-legend-bot'          => '$1 - botbewirking',
+'recentchanges-label-bot'           => "Dees bewirking is oetgeveurd door 'ne bot",
+'recentchanges-legend-unpatrolled'  => '$1 - ongekónterleerde bewirking',
+'recentchanges-label-unpatrolled'   => 'Dees bewirking is nog neet gekónterleerd',
 'rcnote'                            => "Hiejónger {{PLURAL:$1|steit de lètste bewirking|staon de lètste '''$1''' bewirkinge}} van de aafgeloupe {{PLURAL:$2|daag|'''$2''' daag}}, op $4, um $5.",
 'rcnotefrom'                        => "Verangeringe sins <b>$2</b> (mit 'n maximum van <b>$1</b> verangeringe).",
 'rclistfrom'                        => 'Tuin de verangeringe vanaaf $1',
@@ -1334,7 +1343,6 @@ Raodpleeg t verwiederingslogbook veurdet se wiejer geis.',
 'uploaddisabledtext'          => "'t uploade van bestenj is oetgesjakeld.",
 'php-uploaddisabledtext'      => 'PHP-bestanduploads zeen oetgesjakeld. Controleer a.u.b. de file_uploads-instelling.',
 'uploadscripted'              => 'Dit bestandj bevat HTML- of scriptcode die foutief door diene browser weergegaeve kinne waere.',
-'uploadcorrupt'               => "'t bestand is corrup of haet 'n onzjuste extensie. Controleer 't bestand en upload 't opnuuj.",
 'uploadvirus'                 => "'t Bestand bevat 'n virus! Details: $1",
 'sourcefilename'              => 'Oorspronkelike bestandsnaam:',
 'destfilename'                => 'Doeltitel:',
@@ -1778,7 +1786,8 @@ Kónfermeer hiejónger dat dit inderdaod dien bedoeling is, dats doe de gevolge 
 'deletereason-dropdown'  => '*Väölveurkommende wisree
 ** Op aanvraog van auteur
 ** Sjending van auteursrech
-** Vandalisme',
+** Gebroek es zandjbak
+** Vandalisme/Sjeljerie',
 'delete-edit-reasonlist' => 'Reeje veur verwiedering bewèrke',
 'delete-toobig'          => "Dees pazjena haet 'ne lange bewerkingsgesjiedenis, mieë es $1 {{PLURAL:$1|versie|versies}}. 't Wisse van dit saort pazjena's is mit rech beperk óm 't próngelök versteure van de werking van {{SITENAME}} te veurkómme.",
 'delete-warning-toobig'  => "Dees pazjena haet 'ne lange bewerkingsgesjiedenis, mieë es $1 {{PLURAL:$1|versie|versies}}. 't Wisse van dees pazjena kan de werking van de database van {{SITENAME}} versteure. Bön veurzichtig.",
@@ -2154,8 +2163,8 @@ In 't letste geval kèns te ouch 'ne link gebroeken, bieveurbild [[{{#Special:Ex
 'allmessagesname'           => 'Naam',
 'allmessagesdefault'        => 'Obligaten teks',
 'allmessagescurrent'        => 'Hujige teks',
-'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki:-naamruumde.
-Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWikilokalisaasje] en [http://translatewiki.net translatewiki.net] wense wils biedrage ane lokalisaasje.",
+'allmessagestext'           => "Dit is 'n lies van alle systeemberichte besjikbaar in de MediaWiki-naamruumde.
+Bezeuk [http://www.mediawiki.org/wiki/Localisation MediaWiki-lokalisatie] en [http://translatewiki.net translatewiki.net] es doe wils biedrage aon lokalisatie.",
 'allmessagesnotsupportedDB' => "Deze pagina kan neet gebroek waere omdet '''\$wgUseDatabaseMessages''' oet steit.",
 
 # Thumbnails

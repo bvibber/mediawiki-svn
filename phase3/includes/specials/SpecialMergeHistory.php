@@ -3,32 +3,18 @@
  * Special page allowing users with the appropriate permissions to
  * merge article histories, with some restrictions
  *
- * @file
  * @ingroup SpecialPage
  */
-
-/**
- * Constructor
- */
-function wfSpecialMergehistory( $par ) {
-	global $wgRequest;
-
-	$form = new MergehistoryForm( $wgRequest, $par );
-	$form->execute();
-}
-
-/**
- * The HTML form for Special:MergeHistory, which allows users with the appropriate
- * permissions to view and restore deleted content.
- * @ingroup SpecialPage
- */
-class MergehistoryForm {
+class SpecialMergeHistory extends SpecialPage {
 	var $mAction, $mTarget, $mDest, $mTimestamp, $mTargetID, $mDestID, $mComment;
 	var $mTargetObj, $mDestObj;
 
-	function MergehistoryForm( $request, $par = "" ) {
-		global $wgUser;
+	public function __construct() {
+		parent::__construct( 'MergeHistory', 'mergehistory' );
+	}
 
+	private function loadRequestParams( $request ) {
+		global $wgUser;
 		$this->mAction = $request->getVal( 'action' );
 		$this->mTarget = $request->getVal( 'target' );
 		$this->mDest = $request->getVal( 'dest' );
@@ -51,7 +37,6 @@ class MergehistoryForm {
 			$this->mTargetObj = null;
 			$this->mDestObj = null;
 		}
-
 		$this->preCacheMessages();
 	}
 
@@ -62,14 +47,27 @@ class MergehistoryForm {
 	function preCacheMessages() {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
-			$this->message['last'] = wfMsgExt( 'last', array( 'escape') );
+			$this->message['last'] = wfMsgExt( 'last', array( 'escape' ) );
 		}
 	}
 
-	function execute() {
-		global $wgOut;
+	function execute( $par ) {
+		global $wgOut, $wgRequest, $wgUser;
 
-		$wgOut->setPagetitle( wfMsgHtml( "mergehistory" ) );
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+
+		if( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
+
+		$this->loadRequestParams( $wgRequest );
+
+		$this->setHeaders();
+		$this->outputHeader();
 
 		if( $this->mTargetID && $this->mDestID && $this->mAction=="submit" && $this->mMerge ) {
 			return $this->merge();
@@ -122,8 +120,7 @@ class MergehistoryForm {
 			'<fieldset>' .
 			Xml::element( 'legend', array(),
 				wfMsg( 'mergehistory-box' ) ) .
-			Xml::hidden( 'title',
-				SpecialPage::getTitleFor( 'Mergehistory' )->getPrefixedDbKey() ) .
+			Xml::hidden( 'title', $this->getTitle()->getPrefixedDbKey() ) .
 			Xml::hidden( 'submitted', '1' ) .
 			Xml::hidden( 'mergepoint', $this->mTimestamp ) .
 			Xml::openElement( 'table' ) .
@@ -154,7 +151,7 @@ class MergehistoryForm {
 		$revisions = new MergeHistoryPager( $this, array(), $this->mTargetObj, $this->mDestObj );
 		$haveRevisions = $revisions && $revisions->getNumRows() > 0;
 
-		$titleObj = SpecialPage::getTitleFor( "Mergehistory" );
+		$titleObj = $this->getTitle();
 		$action = $titleObj->getLocalURL( array( 'action' => 'submit' ) );
 		# Start the form here
 		$top = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'merge' ) );

@@ -500,10 +500,12 @@ class MessageCache {
 
 		if ( strval( $key ) === '' ) {
 			# Shortcut: the empty key is always missing
-			return '&lt;&gt;';
+			return false;
 		}
+
 		$lang = wfGetLangObj( $langcode );
 		$langcode = $lang->getCode();
+
 		$message = false;
 
 		# Normalise title-case input (with some inlining)
@@ -556,7 +558,7 @@ class MessageCache {
 
 		# Final fallback
 		if( $message === false ) {
-			return '&lt;' . htmlspecialchars($key) . '&gt;';
+			return false;
 		}
 
 		# Fix whitespace
@@ -633,7 +635,7 @@ class MessageCache {
 			$message = $revision->getText();
 			if ($this->mUseCache) {
 				$this->mCache[$code][$title] = ' ' . $message;
-				$this->mMemc->set( $titleKey, $message, $this->mExpiry );
+				$this->mMemc->set( $titleKey, ' ' . $message, $this->mExpiry );
 			}
 		} else {
 			# Negative caching

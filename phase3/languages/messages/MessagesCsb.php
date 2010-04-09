@@ -161,9 +161,6 @@ $messages = array(
 'qbmyoptions'    => 'Mòje òptacëje',
 'qbspecialpages' => 'Specjalné starnë',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Brida',
 'returnto'          => 'Wôrcë sã do starnë: $1.',
 'tagline'           => 'Z {{SITENAME}}',
@@ -304,7 +301,8 @@ Mòże to zgłoszëc [[Special:ListUsers/sysop|sprôwnikòwi]], pòdając adres�
 Przemëszlë dolmaczënié na [http://translatewiki.net/wiki/Main_Page?setlang=csb translatewiki.net], ekstra ùdbie lokalizacëji softwôrë MediaWiki.",
 
 # Login and logout pages
-'logouttext'                 => 'Të jes ju wëlogòwóny. Mòżesz prôcowac z {{SITENAME}} jakno anonimòwi brëkòwnik abò wlogòwac sã jakno zaregistrowóny brëkòwnik.',
+'logouttext'                 => 'Të jes ju wëlogòwóny.
+Mòżesz prôcowac z {{SITENAME}} jakno anonimòwi brëkòwnik abò wlogòwac sã jakno zaregistrowóny brëkòwnik.',
 'yourname'                   => 'Miono brëkòwnika',
 'yourpassword'               => 'Twòja parola',
 'yourpasswordagain'          => 'Pòwtórzë parolã',

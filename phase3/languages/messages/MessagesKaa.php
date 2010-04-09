@@ -297,9 +297,6 @@ $messages = array(
 'faq'            => 'KBS',
 'faqpage'        => 'Project:KBS',
 
-# Metadata in edit box
-'metadata_help' => "Metamag'lıwmat:",
-
 'errorpagetitle'    => 'Qatelik',
 'returnto'          => '$1 betine qaytıw.',
 'tagline'           => "{{SITENAME}} mag'lıwmatı",
@@ -501,8 +498,11 @@ Keltirilgen sebep: ''$2''.",
 'virus-unknownscanner' => 'belgisiz antivirus:',
 
 # Login and logout pages
-'logouttext'                 => "'''Siz endi sayttan shıqtın'ız.'''<br />
-Siz {{SITENAME}} saytınan anonim halda paydalanıwın'ız mu'mkin. Yamasa siz ja'ne ha'zirgi yaki basqa paydalanıwshı atı menen [[Special:UserLogin|qaytadan sistemag'a kiriwin'izge]] boladı. Sonı este saqlan', ayrım betler sizin' brauzerin'izdin' keshi tazalanbag'anlıg'ı sebebli sistemada kirgenin'izdey ko'riniste dawam ettire beriwi mu'mkin.",
+'logouttext'                 => "'''Siz endi sayttan shıqtın'ız.'''
+
+Siz {{SITENAME}} saytınan anonim halda paydalanıwın'ız mu'mkin.
+Yamasa siz ja'ne ha'zirgi yaki basqa paydalanıwshı atı menen [[Special:UserLogin|qaytadan sistemag'a kiriwin'izge]] boladı.
+Sonı este saqlan', ayrım betler sizin' brauzerin'izdin' keshi tazalanbag'anlıg'ı sebebli sistemada kirgenin'izdey ko'riniste dawam ettire beriwi mu'mkin.",
 'welcomecreation'            => "== Xosh keldin'iz, $1! ==
 
 Akkauntın'ız jaratıldı. 
@@ -660,8 +660,7 @@ to'mende ko'rsetilgen:",
 'confirmedittext'                  => "Betlerge o'zgeris kiritiwin'iz ushın aldın E-pochta adresin'izdi tastıyıqlawın'ız kerek.
 E-pochta adresin'izdi [[Special:Preferences|paydalanıwshı sazlawları bo'limi]] arqalı ko'rsetin' ha'm jaramlılıg'ın tekserin'.",
 'nosuchsectiontitle'               => "Bunday bo'lim joq",
-'nosuchsectiontext'                => "Ele jaratılmag'an bo'limdi o'zgerpekshisiz.
-$1 bo'limi joq bolg'anlıg'ı sebepli sizin' o'zgertiwin'izdi saqlawg'a orın joq.",
+'nosuchsectiontext'                => "Ele jaratılmag'an bo'limdi o'zgerpekshisiz.",
 'loginreqtitle'                    => "Sistemag'a kiriw kerek",
 'loginreqlink'                     => 'kiriw',
 'loginreqpagetext'                 => "Basqa betlerdi ko'riw ushın sizge $1 kerek.",
@@ -673,7 +672,7 @@ Betti jaratıw ushın to'mendegi aynada tekstin'izdi kiritin' (qosımsha mag'lı
 Eger bul jerge aljasıp o'tken bolsan'ız, brauzerin'izdin' «Arqag'a» knopkasın basın'.",
 'noarticletext'                    => "Ha'zirgi waqıtta bul bette hesh qanday mag'lıwmat joq. 
 Basqa betlerden usı bet atamasın [[Special:Search/{{PAGENAME}}|izlep ko'riwin'izge]],
-<span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} tiyisli jurnallardı izlewin'izge],
+<span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tiyisli jurnallardı izlewin'izge],
 yamasa usı betti [{{fullurl:{{FULLPAGENAME}}|action=edit}} jaratıwin'ızga'] boladi.",
 'userpage-userdoesnotexist'        => "\"\$1\" paydalanıwshı akkauntı registratsiya qılınbag'an. Bul betti jaratqın'ız yamasa o'zgertkin'iz kelse tekserip ko'rin'.",
 'updated'                          => "(Jan'alang'an)",
@@ -760,12 +759,12 @@ Sha'rtli belgiler: (ha'z.) = ha'zirgi nusqasi menen parqı,
 'revdelete-selected'        => "'''[[:$1]] {{PLURAL:$2|saylang'an nusqası|saylang'an nusqaları}}:'''",
 'revdelete-legend'          => "Ko'rinis sheklewlerin belgilew",
 'revdelete-hide-text'       => 'Nusqa tekstin jasır',
+'revdelete-hide-image'      => "Fayl mag'lıwmatın jasır",
 'revdelete-hide-name'       => "Ha'reket ha'm onın' obyektin jasır",
 'revdelete-hide-comment'    => "O'zgertiw kommentariyin jasır",
 'revdelete-hide-user'       => "O'zgeriwshi atın/IP jasır",
 'revdelete-hide-restricted' => "Usı sheklewlerdi administratorlarg'a qollaw ha'mde bul interfeysti qulıplaw",
 'revdelete-suppress'        => "Mag'lıwmatlardı administratorlar menen basqalardan da jasırıw",
-'revdelete-hide-image'      => "Fayl mag'lıwmatın jasır",
 'revdelete-unsuppress'      => 'Qayta tiklengen nusqalardan sheklewlerdi alıp taslaw',
 'revdelete-log'             => 'Jurnal kommentariyi:',
 'revdelete-submit'          => "Saylang'an nusqag'a qollanıw",

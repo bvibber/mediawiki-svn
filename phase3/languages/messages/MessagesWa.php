@@ -199,9 +199,6 @@ $messages = array(
 'qbmyoptions'    => 'Mes pådjes',
 'qbspecialpages' => 'Pådjes sipeciåles',
 
-# Metadata in edit box
-'metadata_help' => 'Meta-dnêyes :',
-
 'errorpagetitle'    => 'Aroke',
 'returnto'          => 'Rivni al pådje «$1».',
 'tagline'           => 'Èn årtike di {{SITENAME}}.',
@@ -348,11 +345,10 @@ Cweraedje: $2',
 'editinginterface'     => "'''Asteme:''' Vos candjîz ene pådje k' est eployeye po dner on tecse d' eterface pol programe. Les candjmints a cisse pådje ci vont-st aveur èn efet so l' eterface d' uzeu des ôtes uzeus.",
 
 # Login and logout pages
-'logouttext'                 => "'''Vos vs avoz dislodjî.'''<br />
-Vos ploz continouwer a naivyî so {{SITENAME}} anonimmint, oudonbén
-vos relodjî dizo l' minme uzeu ou dizo èn uzeu diferin. Notez ki des
-pådjes k' i gn a si pôrént continowuer a vey come si vos estîz elodjî,
-disk' a tant ki vos vudrîz l' muchete di vosse betchteu waibe.",
+'logouttext'                 => "'''Vos vs avoz dislodjî.'''
+
+Vos ploz continouwer a naivyî so {{SITENAME}} anonimmint, oudonbén vos relodjî dizo l' minme uzeu ou dizo èn uzeu diferin.
+Notez ki des pådjes k' i gn a si pôrént continowuer a vey come si vos estîz elodjî, disk' a tant ki vos vudrîz l' muchete di vosse betchteu waibe.",
 'welcomecreation'            => '== Bénvnowe, $1! ==
 
 Vosse conte a stî ahivé.
@@ -796,7 +792,6 @@ ou co po les sons
 'uploaddisabled'              => 'Eberwetaedje di fitchîs dismetou',
 'uploaddisabledtext'          => "Mande escuzes, mins l' eberwetaedje di fitchîs a stî dismetou pol moumint.",
 'uploadscripted'              => 'Ci fitchî ci a-st å dvins do côde HTML ou on scripe ki pôreut esse må comprin pa on betchteu waibe.',
-'uploadcorrupt'               => "Li fitchî est cron oudonbén il a-st ene mwaijhe cawete. Verifyîz l' fitchî eyet l' reberweter s' i vs plait.",
 'uploadvirus'                 => 'Li fitchî a-st on virusse! Detays: $1',
 'sourcefilename'              => "No d' fitchî so vosse copiutrece:",
 'destfilename'                => "No d' fitchî a eployî so {{SITENAME}}:",

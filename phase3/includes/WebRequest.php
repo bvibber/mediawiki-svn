@@ -39,7 +39,7 @@ if ( !function_exists( '__autoload' ) ) {
  * not create a second WebRequest object; make a FauxRequest object if
  * you want to pass arbitrary data to some function in place of the web
  * input.
- * 
+ *
  * @ingroup HTTP
  */
 class WebRequest {
@@ -47,7 +47,7 @@ class WebRequest {
 	private $_response;
 
 	public function __construct() {
-		/// @fixme This preemptive de-quoting can interfere with other web libraries
+		/// @todo Fixme: this preemptive de-quoting can interfere with other web libraries
 		///        and increases our memory footprint. It would be cleaner to do on
 		///        demand; but currently we have no wrapper for $_SERVER etc.
 		$this->checkMagicQuotes();
@@ -66,11 +66,13 @@ class WebRequest {
 	 */
 	public function interpolateTitle() {
 		global $wgUsePathInfo;
+
 		if ( $wgUsePathInfo ) {
 			// PATH_INFO is mangled due to http://bugs.php.net/bug.php?id=31892
 			// And also by Apache 2.x, double slashes are converted to single slashes.
 			// So we will use REQUEST_URI if possible.
 			$matches = array();
+
 			if ( !empty( $_SERVER['REQUEST_URI'] ) ) {
 				// Slurp out the path portion to examine...
 				$url = $_SERVER['REQUEST_URI'];
@@ -180,7 +182,7 @@ class WebRequest {
 	 */
 	private function checkMagicQuotes() {
 		$mustFixQuotes = function_exists( 'get_magic_quotes_gpc' )
-			&& get_magic_quotes_gpc();		
+			&& get_magic_quotes_gpc();
 		if( $mustFixQuotes ) {
 			$this->fix_magic_quotes( $_COOKIE );
 			$this->fix_magic_quotes( $_ENV );
@@ -203,7 +205,8 @@ class WebRequest {
 				$data[$key] = $this->normalizeUnicode( $val );
 			}
 		} else {
-			$data = UtfNormal::cleanUp( $data );
+			global $wgContLang;
+			$data = $wgContLang->normalize( $data );
 		}
 		return $data;
 	}
@@ -248,7 +251,7 @@ class WebRequest {
 	 * @param $default string: optional default (or NULL)
 	 * @return string
 	 */
-	public function getVal( $name, $default = NULL ) {
+	public function getVal( $name, $default = null ) {
 		$val = $this->getGPCVal( $this->data, $name, $default );
 		if( is_array( $val ) ) {
 			$val = $default;
@@ -259,7 +262,7 @@ class WebRequest {
 			return (string)$val;
 		}
 	}
-	
+
 	/**
 	 * Set an aribtrary value into our get/post data.
 	 * @param $key string Key name to use
@@ -281,7 +284,7 @@ class WebRequest {
 	 * @param $default array: optional default (or NULL)
 	 * @return array
 	 */
-	public function getArray( $name, $default = NULL ) {
+	public function getArray( $name, $default = null ) {
 		$val = $this->getGPCVal( $this->data, $name, $default );
 		if( is_null( $val ) ) {
 			return null;
@@ -300,7 +303,7 @@ class WebRequest {
 	 * @param $default array: option default (or NULL)
 	 * @return array of ints
 	 */
-	public function getIntArray( $name, $default = NULL ) {
+	public function getIntArray( $name, $default = null ) {
 		$val = $this->getArray( $name, $default );
 		if( is_array( $val ) ) {
 			$val = array_map( 'intval', $val );
@@ -356,7 +359,7 @@ class WebRequest {
 	public function getCheck( $name ) {
 		# Checkboxes and buttons are only present when clicked
 		# Presence connotes truth, abscense false
-		$val = $this->getVal( $name, NULL );
+		$val = $this->getVal( $name, null );
 		return isset( $val );
 	}
 
@@ -559,7 +562,7 @@ class WebRequest {
 	 */
 	public function getFileTempname( $key ) {
 		if( !isset( $_FILES[$key] ) ) {
-			return NULL;
+			return null;
 		}
 		return $_FILES[$key]['tmp_name'];
 	}
@@ -600,15 +603,16 @@ class WebRequest {
 	 * @return string or NULL if no such file.
 	 */
 	public function getFileName( $key ) {
+		global $wgContLang;
 		if( !isset( $_FILES[$key] ) ) {
-			return NULL;
+			return null;
 		}
 		$name = $_FILES[$key]['name'];
 
 		# Safari sends filenames in HTML-encoded Unicode form D...
 		# Horrid and evil! Let's try to make some kind of sense of it.
 		$name = Sanitizer::decodeCharReferences( $name );
-		$name = UtfNormal::cleanUp( $name );
+		$name = $wgContLang->normalize( $name );
 		wfDebug( "WebRequest::getFileName() '" . $_FILES[$key]['name'] . "' normalized to '$name'\n" );
 		return $name;
 	}
@@ -620,7 +624,8 @@ class WebRequest {
 	public function response() {
 		/* Lazy initialization of response object for this request */
 		if ( !is_object( $this->_response ) ) {
-			$this->_response = new WebResponse;
+			$class = ( $this instanceof FauxRequest ) ? 'FauxResponse' : 'WebResponse';
+			$this->_response = new $class();
 		}
 		return $this->_response;
 	}
@@ -651,7 +656,7 @@ class WebRequest {
 			}
 		}
 	}
-	
+
 	/*
 	 * Get data from $_SESSION
 	 * @param $key String Name of key in $_SESSION
@@ -662,7 +667,7 @@ class WebRequest {
 			return null;
 		return $_SESSION[$key];
 	}
-	
+
 	/**
 	 * Set session data
 	 * @param $key String Name of key in $_SESSION
@@ -673,20 +678,20 @@ class WebRequest {
 	}
 
 	/**
-	 * Returns true if the PATH_INFO ends with an extension other than a script 
+	 * Returns true if the PATH_INFO ends with an extension other than a script
 	 * extension. This could confuse IE for scripts that send arbitrary data which
 	 * is not HTML but may be detected as such.
 	 *
-	 * Various past attempts to use the URL to make this check have generally 
-	 * run up against the fact that CGI does not provide a standard method to 
-	 * determine the URL. PATH_INFO may be mangled (e.g. if cgi.fix_pathinfo=0), 
-	 * but only by prefixing it with the script name and maybe some other stuff, 
-	 * the extension is not mangled. So this should be a reasonably portable 
+	 * Various past attempts to use the URL to make this check have generally
+	 * run up against the fact that CGI does not provide a standard method to
+	 * determine the URL. PATH_INFO may be mangled (e.g. if cgi.fix_pathinfo=0),
+	 * but only by prefixing it with the script name and maybe some other stuff,
+	 * the extension is not mangled. So this should be a reasonably portable
 	 * way to perform this security check.
 	 */
 	public function isPathInfoBad() {
 		global $wgScriptExtension;
-		
+
 		if ( !isset( $_SERVER['PATH_INFO'] ) ) {
 			return false;
 		}
@@ -708,6 +713,7 @@ class WebRequest {
 class FauxRequest extends WebRequest {
 	private $wasPosted = false;
 	private $session = array();
+	private $response;
 
 	/**
 	 * @param $data Array of *non*-urlencoded key => value pairs, the
@@ -758,10 +764,13 @@ class FauxRequest extends WebRequest {
 		return isset( $this->headers[$name] ) ? $this->headers[$name] : false;
 	}
 
+	public function setHeader( $name, $val ) {
+		$this->headers[$name] = $val;
+	}
+
 	public function getSessionData( $key ) {
-		if( !isset( $this->session[$key] ) )
-			return null;
-		return $this->session[$key];
+		if( isset( $this->session[$key] ) )
+			return $this->session[$key];
 	}
 
 	public function setSessionData( $key, $data ) {
@@ -771,5 +780,4 @@ class FauxRequest extends WebRequest {
 	public function isPathInfoBad() {
 		return false;
 	}
-
 }

@@ -8,6 +8,7 @@
  * @file
  *
  * @author JeanVoisin
+ * @author Peter17
  * @author PieRRoMaN
  * @author RoyAlcatraz
  * @author Urhixidur
@@ -147,9 +148,6 @@ $messages = array(
 'qbspecialpages' => 'Pages espéciales',
 'faq'            => 'Questions Communes',
 'faqpage'        => 'Project:Questions Communes',
-
-# Metadata in edit box
-'metadata_help' => 'Meta-information:',
 
 'errorpagetitle'    => 'Erreur',
 'returnto'          => 'Retourner back à la page $1.',
@@ -318,7 +316,10 @@ Demande: $2',
 'ns-specialprotected'  => "Vous pouvez pas changer les pages dans l'espace de noms {{ns:special}}.",
 
 # Login and logout pages
-'logouttext'                 => "'''Vous êtes déconnecté asteur.'''<br /> Vous pouvez continuer à user {{SITENAME}} sans nom ou vous pouvez connecter encore une fois avec le même nom ou un autre nom.<br />Notez: certaines pages pourriont être vues comme si vous êtes connecté, jusqu'à vous videz l'information de votre navigateur.",
+'logouttext'                 => "'''Vous êtes déconnecté asteur.'''
+
+Vous pouvez continuer à user {{SITENAME}} sans nom ou vous pouvez connecter encore une fois avec le même nom ou un autre nom.
+Notez: certaines pages pourriont être vues comme si vous êtes connecté, jusqu'à vous videz l'information de votre navigateur.",
 'welcomecreation'            => '== Bonjour, $1! ==
 
 Votre compte a été créé.  Oubliez pas de changer votre réglage sus {{SITENAME}}.',
@@ -451,7 +452,7 @@ Votre numéro de blocage est #$5.  Mettez donc cette information dans toutes vos
 'whitelistedittext'          => 'Il faut $1 pour faire des changements.',
 'confirmedittext'            => "Il faut confirmer votre adresse e-mail pour faire des changements.  Mettez et confirmez un adresse e-mail dans votre [[Special:Preferences|réglage de compte]], s'il vous plaît.",
 'nosuchsectiontitle'         => 'Aucune section pareille',
-'nosuchsectiontext'          => "Vous avez assayé de faire des changements dans une section qu'existe pas.  Le système peut pas sauver des changements dans une section qu'existe pas.",
+'nosuchsectiontext'          => "Vous avez assayé de faire des changements dans une section qu'existe pas.",
 'loginreqtitle'              => 'Il faut connecter.',
 'loginreqlink'               => 'connecter',
 'loginreqpagetext'           => 'Il faut $1 pour voir des autres pages.',
@@ -463,7 +464,7 @@ Pour créer la page, mettez des mots dans la boëte en bas (voyez la [[{{MediaWi
 Si vous êtes ici par erreur, cliquez le bouton \"back\" sus votre navigateur.",
 'anontalkpagetext'           => "----''Ça ici, c'est la page de discussion pour un useur sans nom qu'a pas encore créé un compte ou qui l'use pas.  Ça fait, il faut user l'adresse IP numérique pour l'identifier.  Une adresse comme ça pourrait être usée par plusieurs useurs.  Si vous êtes un useur sans nom et vous croyez que des messages sans rapport ont été envoyés à vous, [[Special:UserLogin|créer un compte ou connecter]] pour empêcher la confusion avec des autres useurs sans nom dans l'avenir.''",
 'noarticletext'              => 'À présent, y a pas de texte sus cette page.
-Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} charcher dans les notes parents], ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page]</span>.',
+Vous pouvez [[Special:Search/{{PAGENAME}}|charcher pour le titre de cette page]] dans des autres pages, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} charcher dans les notes parents], ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} changer cette page]</span>.',
 'clearyourcache'             => "'''Notez:''' Après que vous avez sauvé votres changements, il foudra peut-être dépasser le cache de votre navigateur pour voir les changements.  '''Mozilla / Firefox / Safari:''' Tenez le bouton ''Shift'' en pèsant ''Reload'', ou pèsez ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sus Apple Mac); '''IE:''' Tenez ''Ctrl'' en pèsant ''Refresh'', ou pèsez ''Ctrl-F5''; '''Konqueror:''' Simplement pèsez le bouton ''Reload'', ou pèsez ''F5''; Pour les useurs de '''Opera''', il foudra peut-être vider complètement le cache dans ''Tools→Preferences''.",
 'usercssyoucanpreview'       => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille CSS avant de la sauver.",
 'userjsyoucanpreview'        => "'''Conseil:''' Usez le bouton \"Vue d'avance\" pour tester votre nouvelle feuille JS avant de la sauver.",
@@ -512,7 +513,7 @@ Il foudra que vous mettez vos changements dans le texte qu'est là asteur.
 'edittools'                  => "<!-- Le texte que vous mettez ici va être montré sous les boëttes de changements ou d'import de dossier. -->",
 'nocreatetitle'              => 'Création de page limitée',
 'nocreatetext'               => "La création des pages est limitée.  Vous pouvez changer une page qu'a été déjà créée ou [[Special:UserLogin|connecter ou créer un compte]].",
-'nocreate-loggedin'          => 'Vous avez pas la permission de créer des nouvelles pages sus ce wiki.',
+'nocreate-loggedin'          => 'Vous avez pas la permission de créer des nouvelles pages.',
 'permissionserrors'          => 'Erreur de permissions',
 'permissionserrorstext'      => 'Vous avez pas la permission de faire ça pour {{PLURAL:$1|cette raison|ces raisons}}:',
 'recreate-moveddeleted-warn' => "'''Attention: Vous êtes après recréer une page qu'a déjà été ôtée.'''  
@@ -573,12 +574,12 @@ Assayez de [[Special:Search|charcher dans le wiki]] pour des nouvelles pages.',
 Des autres administrateurs sus ce wiki ont la permission de voir et de rétablir les morceaux cachés hormis qu'y aye des restrictions.",
 'revdelete-legend'            => 'Mettre des restrictions',
 'revdelete-hide-text'         => 'Cacher le texte de la version',
+'revdelete-hide-image'        => "Cacher l'information du dossier",
 'revdelete-hide-name'         => "Cacher l'action et l'objet",
 'revdelete-hide-comment'      => 'Cacher la remarque du changement',
 'revdelete-hide-user'         => "Cacher le nom ou l'adresse IP de l'useur",
 'revdelete-hide-restricted'   => 'Appliquer ces restrictions aux administrateurs et les autres useurs',
 'revdelete-suppress'          => "Ôter de l'information des administrateurs et les autres useurs",
-'revdelete-hide-image'        => "Cacher l'information du dossier",
 'revdelete-unsuppress'        => 'Ôter les restrictions des versions rétablies',
 'revdelete-log'               => 'Remarque de notes:',
 'revdelete-submit'            => 'Appliquer à la version choisie',

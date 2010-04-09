@@ -218,20 +218,40 @@ class LocalisationCache {
 		if ( isset( $this->legacyData[$code][$key][$subkey] ) ) {
 			return $this->legacyData[$code][$key][$subkey];
 		}
-		if ( !isset( $this->loadedSubitems[$code][$key][$subkey] ) ) {
-			if ( isset( $this->loadedItems[$code][$key] ) ) {
-				if ( isset( $this->data[$code][$key][$subkey] ) ) {
-					return $this->data[$code][$key][$subkey];
-				} else {
-					return null;
-				}
+		if ( !isset( $this->loadedSubitems[$code][$key][$subkey] ) 
+			&& !isset( $this->loadedItems[$code][$key] ) ) 
+		{
+			wfProfileIn( __METHOD__.'-load' );
+			$this->loadSubitem( $code, $key, $subkey );
+			wfProfileOut( __METHOD__.'-load' );
+		}
+		if ( isset( $this->data[$code][$key][$subkey] ) ) {
+			return $this->data[$code][$key][$subkey];
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * Get the list of subitem keys for a given item.
+	 *
+	 * This is faster than array_keys($lc->getItem(...)) for the items listed in 
+	 * self::$splitKeys.
+	 *
+	 * Will return null if the item is not found, or false if the item is not an 
+	 * array.
+	 */
+	public function getSubitemList( $code, $key ) {
+		if ( in_array( $key, self::$splitKeys ) ) {
+			return $this->getSubitem( $code, 'list', $key );
+		} else {
+			$item = $this->getItem( $code, $key );
+			if ( is_array( $item ) ) {
+				return array_keys( $item );
 			} else {
-				wfProfileIn( __METHOD__.'-load' );
-				$this->loadSubitem( $code, $key, $subkey );
-				wfProfileOut( __METHOD__.'-load' );
+				return false;
 			}
 		}
-		return $this->data[$code][$key][$subkey];
 	}
 
 	/**
@@ -566,9 +586,6 @@ class LocalisationCache {
 			$allData['defaultUserOptionOverrides'] = array();
 		}
 
-		# Set the preload key
-		$allData['preload'] = $this->buildPreload( $allData );
-
 		# Set the list keys
 		$allData['list'] = array();
 		foreach ( self::$splitKeys as $key ) {
@@ -582,6 +599,9 @@ class LocalisationCache {
 			throw new MWException( __METHOD__.': Localisation data failed sanity check! ' . 
 				'Check that your languages/messages/MessagesEn.php file is intact.' );
 		}
+
+		# Set the preload key
+		$allData['preload'] = $this->buildPreload( $allData );
 
 		# Save to the process cache and register the items loaded
 		$this->data[$code] = $allData;

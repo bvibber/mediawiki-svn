@@ -34,7 +34,7 @@ $wgCaches = array();
 
 /**
  * Get a cache object.
- * @param int $inputType cache type, one the the CACHE_* constants. 
+ * @param $inputType Integer: cache type, one the the CACHE_* constants. 
  */
 function &wfGetCache( $inputType ) {
 	global $wgCaches, $wgMemCachedServers, $wgMemCachedDebug, $wgMemCachedPersistent;
@@ -66,8 +66,6 @@ function &wfGetCache( $inputType ) {
 				$wgCaches[CACHE_ACCEL] = new APCBagOStuff;
 			} elseif( function_exists( 'xcache_get' ) ) {
 				$wgCaches[CACHE_ACCEL] = new XCacheBagOStuff();
-			} elseif ( function_exists( 'mmcache_get' ) ) {
-				$wgCaches[CACHE_ACCEL] = new TurckBagOStuff;
 			} else {
 				$wgCaches[CACHE_ACCEL] = false;
 			}

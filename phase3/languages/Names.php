@@ -59,6 +59,7 @@
 	'ckb-latn' => "\xE2\x80\xAASoranî (latînî)\xE2\x80\xAC", # Central Kurdish Latin script
 	'ckb-arab' => "\xE2\x80\xABکوردی (عەرەبی)\xE2\x80\xAC", # Central Kurdish Arabic script
 	'co' => 'Corsu',		# Corsican
+	'cps' => 'Capiceño', # Capiznon
 	'cr' => 'Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ',		# Cree
 	'crh' => 'Qırımtatarca',   # Crimean Tatar
 	'crh-latn' => "\xE2\x80\xAAQırımtatarca (Latin)\xE2\x80\xAC",       # Crimean Tatar (Latin)
@@ -167,6 +168,7 @@
 	'kn' => 'ಕನ್ನಡ',	# Kannada
 	'ko' => '한국어',	# Korean
 	'ko-kp' => '한국어 (조선)',	# Korean (DPRK)
+	'koi' => 'Перем Коми', # Komi-Permyak
 	'kr' => 'Kanuri',		# Kanuri, Central
 	'krc' => 'Къарачай-Малкъар', # Karachay-Balkar
 	'kri' => 'Krio', # Krio
@@ -177,7 +179,7 @@
 	'ku-latn' => "\xE2\x80\xAAKurdî (latînî)\xE2\x80\xAC",	# Northern Kurdish Latin script
 	'ku-arab' => "\xE2\x80\xABكوردي (عەرەبی)\xE2\x80\xAC",	# Northern Kurdish Arabic script
 	'kv' => 'Коми',	# Komi-Zyrian, cyrillic is common script but also written in latin script
-	'kw' => 'Kernowek',		# Cornish
+	'kw' => 'Kernewek',		# Cornish
 	'ky' => 'Кыргызча',	# Kirghiz
 	'la' => 'Latina',		# Latin
 	'lad' => 'Ladino',	# Ladino
@@ -195,6 +197,7 @@
 	'lt' => 'Lietuvių',	# Lithuanian
 	'lv' => 'Latviešu',	# Latvian
 	'lzh' => '文言',	# Literary Chinese -- (bug 8217) lzh instead of zh-classical, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=l
+	'lzz' => 'Lazuri',	# Laz
 	'mai' => 'मैथिली', # Maithili
 	'map-bms' => 'Basa Banyumasan', # Banyumasan 
 	'mdf' => 'Мокшень',		# Moksha
@@ -341,6 +344,7 @@
 	'vep' => 'Vepsan kel\'',	# Veps
 	'vi' => 'Tiếng Việt',	# Vietnamese
 	'vls' => 'West-Vlams', # West Flemish
+	'vmf' => 'Mainfränkisch', # Upper Franconian, Main-Franconian
 	'vo' => 'Volapük',	# Volapük
 	'vot' => 'Vaďďa',	# Vod/Votian
 	'vro' => 'Võro',    # Võro

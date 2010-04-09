@@ -216,6 +216,7 @@ $messages = array(
 
 # Font style option in Special:Preferences
 'editfont-style' => 'Витнема-петнема уминенть фонт стилезэ',
+'editfont-serif' => 'Сериф шрифтэсь',
 
 # Dates
 'sunday'        => 'Таргочи',
@@ -335,9 +336,6 @@ $messages = array(
 'actions'                    => 'Тев теемат',
 'namespaces'                 => 'Лемпотмот',
 'variants'                   => 'Вариантт',
-
-# Metadata in edit box
-'metadata_help' => 'Метадата:',
 
 'errorpagetitle'    => 'Ильведькс',
 'returnto'          => 'Велявтомс $1 лопантень.',
@@ -529,6 +527,7 @@ $messages = array(
 'badretype'                  => 'Сёрмадыть совамо валот кавксть, сынь аволь вейкеть.',
 'userexists'                 => 'Те лемесь уш саезь. Арсека эсеть лия, инеськеть.',
 'loginerror'                 => 'Совамсто ильведькс',
+'createaccounterror'         => 'Совамо тарка эзь теевть: $1',
 'noname'                     => 'Зярс эзить максо кемекстазь теицянь лем.',
 'loginsuccesstitle'          => 'Совавить',
 'loginsuccess'               => "'''Тон совить {{SITENAME}}-с кода \"\$1\".'''",
@@ -626,7 +625,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'blockedoriginalsource'            => "'''$1''' -нть лисьмапрясь ало неяви:",
 'whitelistedittitle'               => 'Витнемань-петнемань теемга эряви совамо лем',
 'whitelistedittext'                => 'Лопанть витнемс - петнемс эряви $1.',
-'nosuchsectiontitle'               => 'Истямо явкс арась',
+'nosuchsectiontitle'               => 'Явксось а муеви',
 'loginreqtitle'                    => 'Совамс эряви',
 'loginreqlink'                     => 'совамс',
 'loginreqpagetext'                 => 'Лия лопань ванномга, эряви $1.',
@@ -640,7 +639,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 Лисиндеряй тесэ ильведькс, лепштик браузерсэ '''back''' повнэнть.",
 'noarticletext'                    => 'Неень шкасто те лопасонть сёрмадовкс арась. Мусак [[Special:Search/{{PAGENAME}}|вешнемс  файлань те конякс]] лия сёрмадовкстнэстэ 
 <span class="plainlinks">
-[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} вешнемс малавикс журналтнэстэ],
+[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} вешнемс малавикс журналтнэстэ],
 эли [{{fullurl:
 {{FULLPAGENAME}}|action=edit}} витнемс-петнемс те лопанть]</span>.',
 'updated'                          => '(Одолгавтозь)',
@@ -658,10 +657,11 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 '''ИЛЯ МАКСО ВАНСТОНЬ ВИДЕЧИСЭ ЛОМАНЕНЬ ВАЖОДЕМАНТЬ АПАК КЕВКСТНЕ!'''",
 'longpagewarning'                  => "'''ВАНОК: Те лопанть сталмозо $1 килобайтт; конат-конат интерчаматнесэ-браузертнэсэ стакасто витнемс-петнемс сёрмадовкс 32-во kб сталмосо али седе стака.
 Инеськеть, паро улевель лопанть явомс вишка пельксекс.'''",
-'titleprotectedwarning'            => "'''ВАНОК:  Те лопась сёлгозь, сонзэ шкамга-теемга [[Special:ListGroupRights|башка видечыть]] эрявить.'''",
+'titleprotectedwarning'            => "'''ВАНОК:  Те лопась сёлгозь, сонзэ шкамга-теемга [[Special:ListGroupRights|башка видечыть]] эрявить.'''
+Журналонь меельсе сёрмадовксось максозь ало, эрявиндеряй сонзэ ваномс.",
 'templatesused'                    => 'Те лопасонть тевс нолдазь {{PLURAL:$1|лопа парцун|лопа парцунт}}:',
 'templatesusedpreview'             => 'Те икелькс вановкссонть тевс нолдазь  {{PLURAL:$1|лопа парцун|лопа парцунт}}:',
-'templatesusedsection'             => 'Те пелькссэнть тевс нолдазь лопа парцунт:',
+'templatesusedsection'             => 'Те пелькссэнть тевс нолдазь {{PLURAL:$1|лопа парцунось|лопа парцунтнэ}}:',
 'template-protected'               => '(ванстозь)',
 'template-semiprotected'           => '(пельс ванстозь)',
 'hiddencategories'                 => 'Те лопась совавтови {{PLURAL:$1|кекшень 1 категорияс|кекшень $1 категорияс}}:',
@@ -704,6 +704,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'histlegend'             => "Версиняь кочкамось: тешксты невтезь верисятнень,  али лепштик Enter повнэнть.<br />
 Чарькодевтемат: (молиц.) = редямось молиця версиястонть; (и. молиц.) = редямось икеле молиця версиястонть; '''а''' = аволь седе ламо лиякстомтома.",
 'history-fieldset-title' => 'Ваномс лопанть юронзо-путовксонзо',
+'history-show-deleted'   => 'Ансяк нардазь',
 'histfirst'              => 'Васенце',
 'histlast'               => 'Меельсе',
 'historysize'            => '({{PLURAL:$1|1 байт|$1 байтт}})',
@@ -719,17 +720,18 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'rev-deleted-user'          => '(теицянь лемесь нардазь)',
 'rev-deleted-event'         => '(сёрмадсткэсь нардазь)',
 'rev-delundel'              => 'невтемс/кекшемс',
+'rev-showdeleted'           => 'невтемс',
 'revisiondelete'            => 'Нардамс/вельмевтемс лиякстомтоматнень',
 'revdelete-nologtype-title' => 'Журнал типесь апак максо',
 'revdelete-selected'        => "'''[[:$1]]-нь {{PLURAL:$2|Кочкань лиякстомтомась|Кочкань лиякстомтоматне}}:'''",
 'revdelete-legend'          => 'Аравтомс неявомачынь петне',
 'revdelete-hide-text'       => 'Кекшемс лиякстомтомань текстэнть',
+'revdelete-hide-image'      => 'Кекшемс мезе файлатнесэ',
 'revdelete-hide-name'       => 'Кекшемс тев тееманть ды норовамо тарканзо',
 'revdelete-hide-comment'    => 'Кекшемс витнемадо-петнемадо арсематнень',
 'revdelete-hide-user'       => 'Кекшемс витницянть-петницянть теиця лемензэ/IP-нзэ',
-'revdelete-hide-image'      => 'Кекшемс мезе файлатнесэ',
 'revdelete-log'             => 'Нардамонть тувталозо:',
-'revdelete-submit'          => 'Аравтомс кочказь лиякстомтонть',
+'revdelete-submit'          => 'Аравтомс кочказь {{PLURAL:$1|лиякстомтомантень|лиякстомтоматненень}}',
 'revdelete-logentry'        => '[[$1]]-нть лиякстомтоманть неявомазо полавтовсь',
 'revdel-restore'            => 'Полавтомс неявомачынзэ',
 'pagehist'                  => 'Лопанть икелькс умазо',
@@ -851,6 +853,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'searchresultshead'         => 'Вешнэма',
 'resultsperpage'            => 'Зяроксть вастневи ве лопасо:',
 'contextlines'              => 'Зяро рисьметь эрьва муевкссэ:',
+'recentchangesdays-max'     => '(максимумось $1 {{PLURAL:$1|чи|чить}})',
 'timezonelegend'            => 'Шкань зонась:',
 'localtime'                 => 'Теицянь шкась:',
 'servertime'                => 'Серверэнь шкась:',
@@ -884,13 +887,14 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'prefs-help-realname'       => 'Алкуксонь леметь (арась мелеть, иляк путо): путсак, ды сон карми неявомо не таркатнесэ, косо тон тев теят.',
 'prefs-help-email-required' => 'Е-сёрмань адресэть эряви.',
 'prefs-signature'           => 'Кедь путовкс',
+'prefs-dateformat'          => 'Ков чинь форматозо',
 
 # User rights
 'userrights-lookup-user'      => 'Сови куротнень ветямось',
 'userrights-user-editname'    => 'Сёрмадт теицянь лем:',
 'editusergroup'               => 'Витнемс-петнемс сови куротнень',
 'saveusergroups'              => 'Ванстомс сови куротнень',
-'userrights-reason'           => 'Полавтомань тувтал:',
+'userrights-reason'           => 'Тувталось:',
 'userrights-changeable-col'   => 'Курот, конат тонеть полавтовить',
 'userrights-unchangeable-col' => 'Курот, конат тонеть а полавтовить',
 
@@ -1037,15 +1041,23 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'overwroteimage'        => 'Ёвкстамс "[[$1]]" файлань од версия',
 'uploaddisabled'        => 'Совавтомась лоткавтозь',
 'uploadvirus'           => 'Те файласонть вирус програм! Информация: $1',
+'upload-source'         => 'Лисьмапрякс файла',
 'sourcefilename'        => 'Лисьмапря файланть лемезэ',
+'sourceurl'             => 'Лисьмапрянть "URL" адресэзэ:',
 'destfilename'          => 'Теевиця файланть лемезэ',
 'upload-maxfilesize'    => 'Файлань покшолмазо иляссо юта: $1',
+'upload-description'    => 'Файланть йовтамозо',
+'upload-options'        => 'Йовкстамонь параметрат',
 'watchthisupload'       => 'Ваномс те лопанть мельга',
 
-'upload-proto-error'  => 'Аволь истямо протокол',
-'upload-file-error'   => 'Потмонь ильведькс',
-'upload-misc-error'   => 'Файлань ёвкстамонь апак содань ильведевкс',
-'upload-unknown-size' => 'Апак содань покшолмазо',
+'upload-proto-error'        => 'Аволь истямо протокол',
+'upload-file-error'         => 'Потмонь ильведькс',
+'upload-misc-error'         => 'Файлань ёвкстамонь апак содань ильведевкс',
+'upload-too-many-redirects' => 'URL адрессэнть пек ламо печтевтемат',
+'upload-unknown-size'       => 'Апак содань покшолмазо',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'Совамось кардазь',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'  => 'URL-эсь а кундави',
@@ -1091,6 +1103,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'sharedupload'              => 'Те файлась саезь "$1" файлань пусмосто, сон нолдави тевс лия проектсэяк.',
 'uploadnewversion-linktext' => 'Тонгодо од версия те файланть',
 'shared-repo-from'          => 'вана теньстэ $1',
+'shared-repo'               => 'вейтьсэнь ванстома тарка',
 
 # File reversion
 'filerevert'         => 'Велявтомс $1 мекев',
@@ -1149,7 +1162,8 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'disambiguations'     => 'Лопат, конат сёрмадстовтовить ламосмустев терминтт',
 'disambiguationspage' => 'Template:смустень коряс явома',
 
-'doubleredirects' => 'Кавксть ютавтозь',
+'doubleredirects'       => 'Кавксть ютавтозь',
+'double-redirect-fixer' => 'Печтевтемс витнема-петнема пель',
 
 'brokenredirects'        => 'Сезезь ёнксось',
 'brokenredirects-edit'   => 'витнеме-петнеме',
@@ -1332,7 +1346,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'exblank'                => 'лопась чаволь',
 'delete-confirm'         => 'Нардамс "$1"',
 'delete-legend'          => 'Нардамс',
-'historywarning'         => 'Ванок: Лопанть, конань пурнат нардамонзо улить лиякстомтомань икелькс уманзо:',
+'historywarning'         => 'Ванок: Лопанть, конань нардамонзо пурнат,  лиякстомтомань икелькс $1 {{PLURAL:$1|умазо|уманзо}}:',
 'confirmdeletetext'      => 'Кундыть нардамо лопа (эли невтевкс-артовкс) вейтьсэ лиякстомтоматнеде икелькс уманзо марто.<br />
 Инеськеть,  кемекстык, эсеть мелеть коряс тень тейсак, алкукс содат, мезе лияды теде мейле, ды алкукс теят тень видечинть (правилатьнень) коряс, конат сёрмадозь [[{{MediaWiki:Policy-url}}]].',
 'actioncomplete'         => 'Тевень теемась топавтовсь',
@@ -1459,6 +1473,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 
 # Block/unblock
 'blockip'                    => 'Пекстамондо теицянть',
+'blockip-title'              => 'Совицянть саймас саемс',
 'blockip-legend'             => 'Аравтомс теицянть саймас',
 'ipaddress'                  => 'IP адрес:',
 'ipadressorusername'         => 'IP адрес эли теицянь лем:',
@@ -1568,13 +1583,16 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'export-templates'  => 'Поладомс лопа парцунонтень',
 
 # Namespace 8 related
-'allmessages'                 => 'Систэмань вишка сёрмадовкс',
-'allmessagesname'             => 'Лемезэ',
-'allmessagescurrent'          => 'Тевате текстэсь',
-'allmessages-filter-legend'   => 'Сувтеме',
-'allmessages-filter-all'      => 'Весе',
-'allmessages-filter-modified' => 'Одолгавтозь',
-'allmessages-language'        => 'Келесь:',
+'allmessages'                   => 'Систэмань вишка сёрмадовкс',
+'allmessagesname'               => 'Лемезэ',
+'allmessagescurrent'            => 'Тевате текстэсь',
+'allmessages-filter-legend'     => 'Сувтеме',
+'allmessages-filter-unmodified' => 'Апак одкстомто',
+'allmessages-filter-all'        => 'Весе',
+'allmessages-filter-modified'   => 'Одолгавтозь',
+'allmessages-prefix'            => 'Икелькс валпень коряс сувтеме',
+'allmessages-language'          => 'Келесь:',
+'allmessages-filter-submit'     => 'Ютак',
 
 # Thumbnails
 'thumbnail-more'  => 'Покшолгавтомс',
@@ -1583,6 +1601,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 
 # Special:Import
 'import'                     => 'Таргамс лопатнень',
+'import-interwiki-source'    => 'Вики лисьмапрякс/лопась:',
 'import-interwiki-templates' => 'Совавтомс весе лопа парцунтнэнь',
 'import-interwiki-submit'    => 'Таргамс',
 'import-interwiki-namespace' => 'Норовазь лемпотмось:',
@@ -1846,6 +1865,9 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 
 'exif-sensingmethod-1' => 'Апак путо',
 
+'exif-customrendered-0' => 'Эрьва чинь процесс',
+'exif-customrendered-1' => 'Башка ёнкс марто процесс',
+
 'exif-exposuremode-0' => 'Сонсь тееви экспозициясь',
 
 'exif-scenecapturetype-0' => 'Стандарт',
@@ -1915,6 +1937,9 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'confirmemail_send'     => 'Кучомс е-сёрмасо кемекстамонь код',
 'confirmemail_loggedin' => 'Е-сёрма паргот апак кемекста.',
 'confirmemail_error'    => 'Кемекстамот ванстомсто мезе-бути лиссь.',
+
+# Scary transclusion
+'scarytranscludetoolong' => '[URL пек кувака]',
 
 # Trackbacks
 'trackbackremove' => '([$1 Нардамс])',
@@ -2022,6 +2047,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'ajax-confirm-save'            => 'Ванстомс',
 'ajax-add-category-summary'    => 'Поладомс категориянть "$1"',
 'ajax-remove-category-summary' => 'Нардамс категориянть "$1"',
+'ajax-confirm-actionsummary'   => 'Мезе теемс:',
 'ajax-error-title'             => 'Ильведевкс',
 
 );

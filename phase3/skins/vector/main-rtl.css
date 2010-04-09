@@ -70,6 +70,7 @@ body {
 	#p-personal {
 		position: absolute;
 		top: 0;
+		margin-right: 10em;
 		left: 0.75em;
 	}
 	#p-personal h5 {
@@ -205,6 +206,7 @@ body {
 		background-position: center center;
 		background-repeat: no-repeat;
 	}
+	/* @noflip */
 	body.rtl div.vectorMenu {
 		direction: rtl;
 	}
@@ -247,17 +249,20 @@ body {
 		text-align: right;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
+	/* @noflip */
 	body.rtl div.vectorMenu div.menu {
 		margin-left: 24px;
 	}
 	/* IGNORED BY IE6 */
+	/* @noflip */
 	body.rtl div.vectorMenu > div.menu {
 		margin-left: auto;
 	}
 	/* Fixes old versions of FireFox */
+	/* @noflip */
 	body.rtl div.vectorMenu > div.menu,
 	x:-moz-any-link {
-		margin-left: 24px;
+		margin-left: 23px;
 	}
 	div.vectorMenu:hover div.menu {
 		display: block;
@@ -404,7 +409,7 @@ body {
 		margin: 0;
 		padding-top: 0.5em;
 		margin-right: 1.25em;
-		background-image: url(images/portal-break-rtl.png);
+		background-image: url(images/portal-break.png);
 		background-repeat: no-repeat;
 		background-position: top right;
 	}
@@ -456,8 +461,9 @@ body {
 #footer #footer-icons {
 	float: left;
 }
-#footer #footer-places {
-	float: right;
+/* @noflip */
+body.ltr #footer #footer-places {
+	float: left;
 }
 #footer #footer-info li {
 	line-height: 1.4em;

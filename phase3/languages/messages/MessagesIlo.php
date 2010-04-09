@@ -157,9 +157,6 @@ $messages = array(
 'vector-action-protect' => 'Saluadan',
 'vector-view-create'    => 'Parnuayen',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Biddut',
 'returnto'          => 'Agsubli iti $1.',
 'tagline'           => 'Manipud iti {{SITENAME}}',
@@ -471,8 +468,7 @@ Ti agdama nga IP addressmo ket $3, ket ti block ID ket #$5. Pangngaasim ta irama
 'whitelistedittitle'               => 'Masapul a nakastrekka tapno makaeditka',
 'whitelistedittext'                => 'Nasken a $1 ka tapno makaeditka iti pampanid.',
 'nosuchsectiontitle'               => 'Awan ti kasta a benneg',
-'nosuchsectiontext'                => 'Pinadasmo nga editen ti maysa a benneg nga awan pay.
-Ket agsipud ta awan ti $1 a benneg, awan ti pangidulinan iti editmo.',
+'nosuchsectiontext'                => 'Pinadasmo nga editen ti maysa a benneg nga awan pay.',
 'loginreqtitle'                    => 'Masapul ti panag-login',
 'loginreqlink'                     => 'sumrek',
 'loginreqpagetext'                 => 'Nasken a $1 ka tapno makakitaka iti sabsabali a pampanid.',
@@ -575,10 +571,10 @@ Legend: (agdama) = paggidiatan iti agdama a version,
 'revdelete-selected'      => "'''{{PLURAL:$2|Napili a revision|Napili a revisions}} ti [[:$1]]:'''",
 'revdelete-legend'        => 'Iplastar ti visibility restrictions',
 'revdelete-hide-text'     => 'Ilemmeng ti texto ti revision',
+'revdelete-hide-image'    => 'Ilemmeng ti linaon ti file',
 'revdelete-hide-name'     => 'Ilemmeng ti action ken target',
 'revdelete-hide-comment'  => 'Ilemmeng ti komento ti edit',
 'revdelete-hide-user'     => 'Ilemmeng ti nagan-agaramat/IP ti editor',
-'revdelete-hide-image'    => 'Ilemmeng ti linaon ti file',
 'revdelete-unsuppress'    => 'Ikkaten dagiti pannakaiparit kadagiti naisubli a revisions',
 'revdelete-log'           => 'Komento ti log:',
 'revdelete-submit'        => 'Ipakat iti napili a panamalbaliw',

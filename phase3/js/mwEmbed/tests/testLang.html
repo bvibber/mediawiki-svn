@@ -28,8 +28,8 @@ mw.ready( function(){
 			'contributions-title' : [0,1,2]
 		};
 		// Set-up base convert plural and gender (to restore if no language class is set) 
-		var baseConvertPlural = mw.lang.convertPlural;
-		var baseGender = mw.lang.gender; 
+		var baseConvertPlural = mw.Language.convertPlural;
+		var baseGender = mw.Language.gender; 
 					
 		var passTest=0;
 		var failTest=0;
@@ -41,7 +41,7 @@ mw.ready( function(){
 		function doProcLangKey( langKey ){
 			mw.log(" doProcLangKey: " + langKey );
 			// Clear out the old digitTransformTable
-			mw.lang.digitTransformTable = null;
+			mw.Language.digitTransformTable = null;
 			// Load the current language js file if it has a langKey 
 			if( mw.hasLangTransform (langKey ) ){
 				var langName = 'Language' +	langKey.substr(0,1).toUpperCase() + langKey.substr( 1,langKey.length ); 
@@ -75,7 +75,7 @@ mw.ready( function(){
 							o+='<tr>'+
 									'<td>' + numVal + '</td>' + 
 									'<td>' + mKey + '</td>' + 
-									'<td>' + mw.lang.msgNoTrans( mKey ) + '</td>' + 
+									'<td>' + mw.Language.msgNoTrans( mKey ) + '</td>' + 
 									'<td id="' + tkey + '_js">' + gM( mKey, numVal ) + '</td>';
 							//show mw col:						
 							if( mKey.substr(0, 5) == 'test_' ){

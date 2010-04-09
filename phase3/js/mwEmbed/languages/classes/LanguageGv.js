@@ -7,10 +7,10 @@
  * @author Niklas Laxström
  */
 
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
 
-		forms = mw.lang.preConvertPlural( forms, 4 );
+		forms = mw.Language.preConvertPlural( forms, 4 );
 
 		if (count > 0 && (count % 20) === 0 ) {
 			return forms[0];

@@ -176,7 +176,7 @@ mw.UploadForm = { };
 				'apiUrl' : options.apiUrl,
 									
 				// MediaWiki API supports chunk uploads: 
-				'enable_chunks' : false,
+				'enableChunks' : false,
 				// We manually rewrite our description text
 				'rewriteDescriptionText' : false,
 									

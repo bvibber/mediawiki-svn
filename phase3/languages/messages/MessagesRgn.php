@@ -13,6 +13,16 @@
 $fallback = 'it';
 
 $messages = array(
+# User preference toggles
+'tog-underline'             => 'Link cun la sotliniadura',
+'tog-highlightbroken'       => 'Fa avdé i link sbajé <a href="" class="new">scrètt acsè</a> (alternativa: scrètt acsè<a href="" class="internal">?</a>)',
+'tog-justify'               => 'Paràgraf: giustifiché',
+'tog-hideminor'             => 'Nascond al mudefghi znini int la pàgina "Ultum mudèfghi"',
+'tog-hidepatrolled'         => "Nascònd j cambiamént verifichèdi int'aglj ultum mudèfigh",
+'tog-newpageshidepatrolled' => 'Nascònd al pàgin verifichèdi da la lèsta dal pàgin növi',
+'tog-extendwatchlist'       => "Slèrga la funziòn \"tènn sot occ\" d'mod ch'us pòsa avdé toti al mudefchi, no sol l'ultma.",
+'tog-usenewrc'              => "Drova agl'j ultmi mudèfchi avanzëdi (u j vô JavaScript)",
+
 # Dates
 'january'       => 'Znèr',
 'february'      => 'Febrér',
@@ -202,7 +212,7 @@ Par piasé, fa raport a un [[Special:ListUsers/sysop|aministrador]] cun la nota 
 S't'vu fèla te, tàca scrivar int'e' spazi a què sotta (guèrda la [[{{MediaWiki:Helppage}}|pàgina d'servezi]] s't'vu saven piò).
 S'cì arìv a que par sbaj, sciàza e butòn \"Indrì\" e t'ci a post.",
 'noarticletext'                    => "In 'ste mumént un gn'è gnito in sta pàgina: l'è vuta.
-Magari t'pù provè a [[Special:Search/{{PAGENAME}}|zirchè ste nòm]] in t'j ètar pàgin, <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} zirchè i regèstr relativ], o [{{fullurl:{{FULLPAGENAME}}|action=edit}} scrivj indentar adès].",
+Magari t'pù provè a [[Special:Search/{{PAGENAME}}|zirchè ste nòm]] in t'j ètar pàgin, <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} zirchè i regèstr relativ], o [{{fullurl:{{FULLPAGENAME}}|action=edit}} scrivj indentar adès].",
 'previewnote'                      => "'''Òci! Lezz prèma cus t'e' fat; e' tu scrètt U N' è stè ancora registrè!'''",
 'editing'                          => 'Cambiamént de $1',
 'editingsection'                   => 'Mudèfiga $1 (seziòn)',

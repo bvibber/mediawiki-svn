@@ -20,9 +20,9 @@ class LoadBalancer {
 	/* private */ var $mLoadMonitorClass, $mLoadMonitor;
 
 	/**
-	 * @param array $params Array with keys:
+	 * @param $params Array with keys:
 	 *    servers           Required. Array of server info structures.
-	 *    failFunction	    Deprecated, use exceptions instead.
+	 *    failFunction      Deprecated, use exceptions instead.
 	 *    masterWaitTimeout Replication lag wait timeout
 	 *    loadMonitor       Name of a class used to fetch server lag and load.
 	 */
@@ -398,9 +398,9 @@ class LoadBalancer {
 	/**
 	 * Get a connection by index
 	 * This is the main entry point for this class.
-	 * @param int $i Database
-	 * @param array $groups Query groups
-	 * @param string $wiki Wiki ID
+	 * @param $i Integer: server index
+	 * @param $groups Array: query groups
+	 * @param $wiki String: wiki ID
 	 */
 	public function &getConnection( $i, $groups = array(), $wiki = false ) {
 		global $wgDBtype;
@@ -509,9 +509,9 @@ class LoadBalancer {
 	 * On error, returns false, and the connection which caused the
 	 * error will be available via $this->mErrorConnection.
 	 *
-	 * @param integer $i Server index
-	 * @param string $wiki Wiki ID to open
-	 * @return Database
+	 * @param $i Integer: server index
+	 * @param $wiki String: wiki ID to open
+	 * @return DatabaseBase
 	 *
 	 * @access private
 	 */
@@ -554,9 +554,9 @@ class LoadBalancer {
 	 * On error, returns false, and the connection which caused the
 	 * error will be available via $this->mErrorConnection.
 	 *
-	 * @param integer $i Server index
-	 * @param string $wiki Wiki ID to open
-	 * @return Database
+	 * @param $i Integer: server index
+	 * @param $wiki String: wiki ID to open
+	 * @return DatabaseBase
 	 */
 	function openForeignConnection( $i, $wiki ) {
 		wfProfileIn(__METHOD__);
@@ -615,6 +615,8 @@ class LoadBalancer {
 
 	/**
 	 * Test if the specified index represents an open connection
+	 *
+	 * @param $index Integer: server index
 	 * @access private
 	 */
 	function isOpen( $index ) {
@@ -809,7 +811,7 @@ class LoadBalancer {
 		foreach ( $this->mConns as $conns2 ) {
 			foreach ( $conns2 as $conns3 ) {
 				foreach ( $conns3 as $conn ) {
-					$conn->immediateCommit();
+					$conn->commit();
 				}
 			}
 		}
@@ -831,7 +833,7 @@ class LoadBalancer {
 		}
 	}
 
-	function waitTimeout( $value = NULL ) {
+	function waitTimeout( $value = null ) {
 		return wfSetVar( $this->mWaitTimeout, $value );
 	}
 
@@ -878,14 +880,18 @@ class LoadBalancer {
 	 * Get the hostname and lag time of the most-lagged slave.
 	 * This is useful for maintenance scripts that need to throttle their updates.
 	 * May attempt to open connections to slaves on the default DB.
+	 * @param $wiki string Wiki ID, or false for the default database
 	 */
-	function getMaxLag() {
+	function getMaxLag( $wiki = false ) {
 		$maxLag = -1;
 		$host = '';
 		foreach ( $this->mServers as $i => $conn ) {
-			$conn = $this->getAnyOpenConnection( $i );
+			$conn = false;
+			if ( $wiki === false ) {
+				$conn = $this->getAnyOpenConnection( $i );
+			}
 			if ( !$conn ) {
-				$conn = $this->openConnection( $i );
+				$conn = $this->openConnection( $i, $wiki );
 			}
 			if ( !$conn ) {
 				continue;
@@ -897,27 +903,6 @@ class LoadBalancer {
 			}
 		}
 		return array( $host, $maxLag );
-	}
-	
-	/**
-	 * Gets the average lag of slaves.
-	 * May attempt to open connections to slaves on the default DB.
-	 */
-	function getAvgLag() {
-		$lag = 0;
-		$count = 0;
-		foreach ( $this->mServers as $i => $conn ) {
-			$conn = $this->getAnyOpenConnection( $i );
-			if ( !$conn ) {
-				$conn = $this->openConnection( $i );
-			}
-			if ( !$conn ) {
-				continue;
-			}
-			$lag += $conn->getLag();
-			$count++;
-		}
-		return ($count > 1) ? $lag / $count : $lag;
 	}
 
 	/**
@@ -932,5 +917,12 @@ class LoadBalancer {
 		# No, send the request to the load monitor
 		$this->mLagTimes = $this->getLoadMonitor()->getLagTimes( array_keys( $this->mServers ), $wiki );
 		return $this->mLagTimes;
+	}
+
+	/**
+	 * Clear the cache for getLagTimes
+	 */
+	function clearLagTimeCache() {
+		$this->mLagTimes = null;
 	}
 }

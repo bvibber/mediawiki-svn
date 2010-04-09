@@ -59,11 +59,11 @@ class SpecialListGroupRights extends SpecialPage {
 
 			if( $group == '*' ) {
 				// Do not make a link for the generic * group
-				$grouppage = htmlspecialchars($groupnameLocalized);
+				$grouppage = htmlspecialchars( $groupnameLocalized );
 			} else {
 				$grouppage = $this->skin->link(
 					Title::newFromText( $grouppageLocalized ),
-					htmlspecialchars($groupnameLocalized)
+					htmlspecialchars( $groupnameLocalized )
 				);
 			}
 
@@ -95,16 +95,15 @@ class SpecialListGroupRights extends SpecialPage {
 			$addgroupsSelf = isset( $wgGroupsAddToSelf[$group] ) ? $wgGroupsAddToSelf[$group] : array();
 			$removegroupsSelf = isset( $wgGroupsRemoveFromSelf[$group] ) ? $wgGroupsRemoveFromSelf[$group] : array();
 
-			$wgOut->addHTML(
-				'<tr>
-					<td>' .
-						$grouppage . $grouplink .
-					'</td>
-					<td>' .
+			$id = $group == '*' ? false : Sanitizer::escapeId( $group );
+			$wgOut->addHTML( Html::rawElement( 'tr', array( 'id' => $id ),
+				"
+				<td>$grouppage$grouplink</td>
+					<td>" .
 						self::formatPermissions( $permissions, $revoke, $addgroups, $removegroups, $addgroupsSelf, $removegroupsSelf ) .
 					'</td>
-				</tr>'
-			);
+				'
+			) );
 		}
 		$wgOut->addHTML(
 			Xml::closeElement( 'table' ) . "\n<br /><hr />\n"
@@ -150,25 +149,25 @@ class SpecialListGroupRights extends SpecialPage {
 		if( $add === true ){
 			$r[] = wfMsgExt( 'listgrouprights-addgroup-all', array( 'escape' ) );
 		} else if( is_array( $add ) && count( $add ) ) {
-			$add = array_unique( $add );
+			$add = array_values( array_unique( $add ) );
 			$r[] = wfMsgExt( 'listgrouprights-addgroup', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $add ) ), count( $add ) );
 		}
 		if( $remove === true ){
 			$r[] = wfMsgExt( 'listgrouprights-removegroup-all', array( 'escape' ) );
 		} else if( is_array( $remove ) && count( $remove ) ) {
-			$remove = array_unique( $remove );
+			$remove = array_values( array_unique( $remove ) );
 			$r[] = wfMsgExt( 'listgrouprights-removegroup', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $remove ) ), count( $remove ) );
 		}
 		if( $addSelf === true ){
 			$r[] = wfMsgExt( 'listgrouprights-addgroup-self-all', array( 'escape' ) );
 		} else if( is_array( $addSelf ) && count( $addSelf ) ) {
-			$addSelf = array_unique( $addSelf );
+			$addSelf = array_values( array_unique( $addSelf ) );
 			$r[] = wfMsgExt( 'listgrouprights-addgroup-self', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $addSelf ) ), count( $addSelf ) );
 		}
 		if( $removeSelf === true ){
 			$r[] = wfMsgExt( 'listgrouprights-removegroup-self-all', array( 'escape' ) );
 		} else if( is_array( $removeSelf ) && count( $removeSelf ) ) {
-			$removeSelf = array_unique( $removeSelf );
+			$removeSelf = array_values( array_unique( $removeSelf ) );
 			$r[] = wfMsgExt( 'listgrouprights-removegroup-self', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $removeSelf ) ), count( $removeSelf ) );
 		}
 		if( empty( $r ) ) {

@@ -6,28 +6,31 @@
  *
  */
 class PostgresField {
-	private $name, $tablename, $type, $nullable, $max_length;
+	private $name, $tablename, $type, $nullable, $max_length, $deferred, $deferrable, $conname;
 
 	static function fromText($db, $table, $field) {
 	global $wgDBmwschema;
 
-		$q = <<<END
-SELECT
-CASE WHEN typname = 'int2' THEN 'smallint'
-WHEN typname = 'int4' THEN 'integer'
-WHEN typname = 'int8' THEN 'bigint'
-WHEN typname = 'bpchar' THEN 'char'
-ELSE typname END AS typname,
-attnotnull, attlen
-FROM pg_class, pg_namespace, pg_attribute, pg_type
-WHERE relnamespace=pg_namespace.oid
-AND relkind='r'
-AND attrelid=pg_class.oid
-AND atttypid=pg_type.oid
+		$q = <<<SQL
+SELECT 
+ attnotnull, attlen, COALESCE(conname, '') AS conname,
+ COALESCE(condeferred, 'f') AS deferred,
+ COALESCE(condeferrable, 'f') AS deferrable,
+ CASE WHEN typname = 'int2' THEN 'smallint'
+  WHEN typname = 'int4' THEN 'integer'
+  WHEN typname = 'int8' THEN 'bigint'
+  WHEN typname = 'bpchar' THEN 'char'
+ ELSE typname END AS typname
+FROM pg_class c
+JOIN pg_namespace n ON (n.oid = c.relnamespace)
+JOIN pg_attribute a ON (a.attrelid = c.oid)
+JOIN pg_type t ON (t.oid = a.atttypid)
+LEFT JOIN pg_constraint o ON (o.conrelid = c.oid AND a.attnum = ANY(o.conkey) AND o.contype = 'f')
+WHERE relkind = 'r'
 AND nspname=%s
 AND relname=%s
 AND attname=%s;
-END;
+SQL;
 		$res = $db->query(sprintf($q,
 				$db->addQuotes($wgDBmwschema),
 				$db->addQuotes($table),
@@ -41,6 +44,9 @@ END;
 		$n->name = $field;
 		$n->tablename = $table;
 		$n->max_length = $row->attlen;
+		$n->deferrable = ($row->deferrable == 't');
+		$n->deferred = ($row->deferred == 't');
+		$n->conname = $row->conname;
 		return $n;
 	}
 
@@ -63,16 +69,29 @@ END;
 	function maxLength() {
 		return $this->max_length;
 	}
+
+	function is_deferrable() {
+		return $this->deferrable;
+	}
+
+	function is_deferred() {
+		return $this->deferred;
+	}
+
+	function conname() {
+		return $this->conname;
+	}
+
 }
 
 /**
  * @ingroup Database
  */
 class DatabasePostgres extends DatabaseBase {
-	var $mInsertId = NULL;
-	var $mLastResult = NULL;
-	var $numeric_version = NULL;
-	var $mAffectedRows = NULL;
+	var $mInsertId = null;
+	var $mLastResult = null;
+	var $numeric_version = null;
+	var $mAffectedRows = null;
 
 	function DatabasePostgres($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0 )
@@ -82,6 +101,10 @@ class DatabasePostgres extends DatabaseBase {
 		$this->mFlags = $flags;
 		$this->open( $server, $user, $password, $dbName);
 
+	}
+
+	function getType() {
+		return 'postgres';
 	}
 
 	function cascadingDeletes() {
@@ -132,8 +155,8 @@ class DatabasePostgres extends DatabaseBase {
 
 		global $wgDBport;
 
-		if (!strlen($user)) { ## e.g. the class is being loaded  
-			return;  
+		if (!strlen($user)) { ## e.g. the class is being loaded
+			return;
 		}
 		$this->close();
 		$this->mServer = $server;
@@ -152,7 +175,7 @@ class DatabasePostgres extends DatabaseBase {
 		if ($port!=false && $port!="") {
 			$connectVars['port'] = $port;
 		}
-		$connectString = $this->makeConnectionString( $connectVars );
+		$connectString = $this->makeConnectionString( $connectVars, PGSQL_CONNECT_FORCE_NEW );
 
 		$this->installErrorHandler();
 		$this->mConn = pg_connect( $connectString );
@@ -578,7 +601,7 @@ class DatabasePostgres extends DatabaseBase {
 			$sql = mb_convert_encoding($sql,'UTF-8');
 		}
 		$this->mLastResult = pg_query( $this->mConn, $sql);
-		$this->mAffectedRows = NULL; // use pg_affected_rows(mLastResult)
+		$this->mAffectedRows = null; // use pg_affected_rows(mLastResult)
 		return $this->mLastResult;
 	}
 
@@ -713,7 +736,7 @@ class DatabasePostgres extends DatabaseBase {
 		$sql = "SELECT indexname FROM pg_indexes WHERE tablename='$table'";
 		$res = $this->query( $sql, $fname );
 		if ( !$res ) {
-			return NULL;
+			return null;
 		}
 		while ( $row = $this->fetchObject( $res ) ) {
 			if ( $row->indexname == $this->indexName( $index ) ) {
@@ -730,7 +753,7 @@ class DatabasePostgres extends DatabaseBase {
 			")'";
 		$res = $this->query( $sql, $fname );
 		if ( !$res )
-			return NULL;
+			return null;
 		while ($row = $this->fetchObject( $res ))
 			return true;
 		return false;
@@ -973,7 +996,7 @@ class DatabasePostgres extends DatabaseBase {
 	}
 
 	/**
-	 * Return the current value of a sequence. Assumes it has ben nextval'ed in this session.
+	 * Return the current value of a sequence. Assumes it has been nextval'ed in this session.
 	 */
 	function currentSequenceValue( $seqName ) {
 		$safeseq = preg_replace( "/'/", "''", $seqName );
@@ -1181,18 +1204,18 @@ class DatabasePostgres extends DatabaseBase {
 	function triggerExists( $table, $trigger ) {
 		global $wgDBmwschema;
 
-		$q = <<<END
+		$q = <<<SQL
 	SELECT 1 FROM pg_class, pg_namespace, pg_trigger
 		WHERE relnamespace=pg_namespace.oid AND relkind='r'
 		      AND tgrelid=pg_class.oid
 		      AND nspname=%s AND relname=%s AND tgname=%s
-END;
+SQL;
 		$res = $this->query(sprintf($q,
 				$this->addQuotes($wgDBmwschema),
 				$this->addQuotes($table),
 				$this->addQuotes($trigger)));
 		if (!$res)
-			return NULL;
+			return null;
 		$rows = $res->numRows();
 		$this->freeResult( $res );
 		return $rows;
@@ -1216,7 +1239,7 @@ END;
 			$this->addQuotes($constraint));
 		$res = $this->query($SQL);
 		if (!$res)
-			return NULL;
+			return null;
 		$rows = $res->numRows();
 		$this->freeResult($res);
 		return $rows;

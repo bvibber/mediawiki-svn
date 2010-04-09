@@ -534,7 +534,7 @@ mw.addMessages( {
 				var langKey = source.lang.toLowerCase();
 				_this.getLanguageName ( langKey );
 				return $j.getLineItem( 
-					gM('mwe-key-language', [langKey, unescape( mw.lang.names[ source.lang ] )	] ), 
+					gM('mwe-key-language', [langKey, unescape( mw.Language.names[ source.lang ] )	] ), 
 					source_icon,
 					function() {
 						mw.log(" call selectTextSource");
@@ -549,8 +549,8 @@ mw.addMessages( {
 	 	 * @param {String} lang_key Language key
 	 	 */
 	 	getLanguageName: function( lang_key ) {
-	 		if( mw.lang.names[ lang_key ]) {
-	 			return mw.lang.names[ lang_key ];
+	 		if( mw.Language.names[ lang_key ]) {
+	 			return mw.Language.names[ lang_key ];
 	 		}
 	 		return false
 	 	},
@@ -1322,7 +1322,7 @@ mw.addMessages( {
 	 	 * Check if the language is supported
 	 	 */
 	 	isSuportedLang: function( lang_key ) {
-	 		if( mw.lang.names[ lang_key ]) {
+	 		if( mw.Language.names[ lang_key ]) {
 	 			return true;
 	 		}
 	 		return false;

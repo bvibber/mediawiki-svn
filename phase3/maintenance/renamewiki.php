@@ -18,6 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  * @ingroup Wikimedia
  */
@@ -32,7 +33,7 @@ class RenameWiki extends Maintenance {
 		$this->addArg( 'newdb', 'New DB name' );
 	}
 	
-	protected function getDbType() {
+	public function getDbType() {
 		return Maintenance::DB_ADMIN;
 	}
 
@@ -77,7 +78,7 @@ class RenameWiki extends Maintenance {
 				$extdb->query( "ALTER TABLE {$from}.blobs RENAME TO {$to}.blobs" );
 				$extdb->selectDB( $from );
 				$extdb->sourceFile( $this->getDir() . '/storage/blobs.sql' );
-				$extdb->immediateCommit();
+				$extdb->commit();
 			}
 		}
 		$this->output( "done.\n" );

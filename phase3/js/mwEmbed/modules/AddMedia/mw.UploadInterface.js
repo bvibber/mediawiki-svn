@@ -175,8 +175,8 @@ mw.UploadDialogInterface.prototype = {
 			$j( '#up-status-container' ).text(
 				gM( 'mwe-upload-stats-fileprogress',
 					[
-						mw.lang.formatSize( data.upload['loaded'] ),
-						mw.lang.formatSize( data.upload['content_length'] )
+						mw.Language.formatSize( data.upload['loaded'] ),
+						mw.Language.formatSize( data.upload['content_length'] )
 					]
 				)
 			);
@@ -184,7 +184,7 @@ mw.UploadDialogInterface.prototype = {
 			$j( '#up-status-container' ).text(
 				gM( 'mwe-upload-stats-fileprogress',
 					[
-						mw.lang.formatSize( data.upload['loaded'] ),
+						mw.Language.formatSize( data.upload['loaded'] ),
 						gM( 'mwe-upload-unknown-size' )
 					]
 				)

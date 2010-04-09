@@ -247,9 +247,6 @@ $messages = array(
 'namespaces'                 => 'Mga ngalang espasyo',
 'variants'                   => 'Mga baryant',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Sayop',
 'returnto'          => 'Balik sa $1.',
 'tagline'           => 'Gikan sa {{SITENAME}}',
@@ -415,7 +412,6 @@ Palihog ireport kini sa usa ka [[Special:ListUsers/sysop|administrador]], hinumd
 'readonly_lag'         => 'Ang database awtomatikong na-lock samtang ang mga slave database server mo-catch up sa master',
 'internalerror'        => 'Internal nga sayop',
 'internalerror_info'   => 'Internal nga sayop: $1',
-'fileappenderror'      => 'Dili ma-append ang "$1" ngadto sa "$2".',
 'filecopyerror'        => 'Dili makopya ang payl nga "$1" ngadto sa "$2".',
 'filerenameerror'      => 'Dili mailisag ngalan ang payl "$1" ngadto sa "$2".',
 'filedeleteerror'      => 'Dili mapapas ang payl "$1".',
@@ -464,6 +460,7 @@ Ang rason nga gihatag mao ang "\'\'$2\'\'".',
 
 # Login and logout pages
 'logouttext'              => "'''Nakabiya ka na.'''
+
 Mahimo kang magpadayon sa paggamit sa {{SITENAME}} bisan wala ka magpaila o puyde usab nga [[Special:UserLogin|mag-log in ka'g usab]] o isip laing gumagamit. Palihog hinumdomi nga may ubang mga panid nga magpakita sama nga ikaw naka-log in pa; kini tungod kay wala pa nimo malimpiyohi ang cache sa imong brawser.",
 'welcomecreation'         => '== Maayong pag-abot, $1! ==
 Nahimo na ang imong akawnt.
@@ -549,7 +546,7 @@ Ang imong ''IP address'' maoy itala sa kaagi niini nga panid.",
 Aron mahimo ang maong panid, pagtayp sa kahon sa ubos (tan-awa ang [[{{MediaWiki:Helppage}}|panid sa tabang]] alang sa dugang impormasyon).
 Kon miabot ka dinhi pinaagi sa usa ka sayop, palihog tuploka ang back nga tuplokanan sa imong brawser.',
 'noarticletext'                    => 'Sa kasamtangan walay sulod nga teksto ang kining panid.
-Puyde nimong  [[Special:Search/{{PAGENAME}}|pangitaon kining titulo sa panid]] sa ubang mga panid, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} pangitaa ang related nga mga log],
+Puyde nimong  [[Special:Search/{{PAGENAME}}|pangitaon kining titulo sa panid]] sa ubang mga panid, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} pangitaa ang related nga mga log],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} usba kining panid].',
 'userpage-userdoesnotexist'        => 'Ang akawnt sa tiggamit nga "$1" wala marehistro. Palihug tan-awa kon buot nimong himoon/usbon ang kining panid.',
 'previewnote'                      => "'''Hinumdomi nga kini usa lang ka paunang tan-aw; wala pa matipigi ang imong giusab!'''",
@@ -669,12 +666,12 @@ Isip tagdumala, puyde nimo [$1 tan-awon ang diff] kon gusto ka magpadayon.",
 *: ''adres sa panimalay ug numero sa telepono, social security number, ubp.''",
 'revdelete-legend'            => 'I-set ang restriksyon sa bisibilidad',
 'revdelete-hide-text'         => 'Tagoa ang teksto sa rebisyon',
+'revdelete-hide-image'        => 'Tagoa ang sulod sa payl',
 'revdelete-hide-name'         => 'Tagoa ang lihok ug target',
 'revdelete-hide-comment'      => 'Tagoa ang komento sa pag-usab',
 'revdelete-hide-user'         => 'Tagoa ang username/IP sa tag-usab',
 'revdelete-hide-restricted'   => 'I-suppress ang data gikan sa mga tagdumala ug sa uban pa',
 'revdelete-suppress'          => 'I-suppress ang data gikan sa mga tagdumala ug sa uban pa',
-'revdelete-hide-image'        => 'Tagoa ang sulod sa payl',
 'revdelete-unsuppress'        => 'Tangtanga ang mga restriksyon sa nabalik nga mga rebisyon',
 'revdelete-log'               => 'Komento sa log:',
 'revdelete-submit'            => 'I-aplay sa napiling rebisyon',

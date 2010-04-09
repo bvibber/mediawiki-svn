@@ -158,8 +158,8 @@ $wgIgnoredMessages = array(
 	'activeusers-summary',
 	'search-summary',
 	'editpage-tos-summary',
-	'talk-addsection-preload',
-	'talk-addsection-editintro',
+	'addsection-preload',
+	'addsection-editintro',
 );
 
 /** Optional messages, which may be translated only if changed in the target language. */
@@ -352,6 +352,7 @@ $wgOptionalMessages = array(
 	'trackbackexcerpt',
 	'prefs-registration-date-time',
 	'prefs-memberingroups-type',
+	'shared-repo-name-wikimediacommons',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

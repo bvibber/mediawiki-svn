@@ -291,7 +291,7 @@ $messages = array(
 'site-atom-feed'          => 'Hulu Atom o $1',
 'page-rss-feed'           => 'Hulu RSS o "$1"',
 'page-atom-feed'          => 'Hulu Atom o "$1"',
-'red-link-title'          => '$1 (‘a‘ole kākau ‘ia)',
+'red-link-title'          => '$1 (ʻaʻole i kākau ʻia)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ʻaoʻao',
@@ -395,7 +395,7 @@ hō‘ike ‘ia i lalo:",
 Hiki i kekahi mau mea hoʻohana ke hoʻokaʻana i kēia wahi noho IP.
 Inā he mea ho‘ohana ʻoe a ua haʻi ʻia kekahi manaʻo iā ʻoe, [[Special:UserLogin/signup|e hoʻokumu ʻia kekahi moʻokāki]] a i ʻole [[Special:UserLogin|e ʻeʻe]].''",
 'noarticletext'                    => 'ʻAʻohe kikokikona a kēia ʻaoʻao.
-Hiki iā ʻoe ke [[Special:Search/{{PAGENAME}}|huli no kēia inoa ʻaoʻao]] i nā ʻaoʻao ʻē aʻe, <span class="plainlinks">[{{fullurl:SpecialLog|page={{urlencode:{{FULLPAGENAME}}}}}} huli i nā moʻolelo pili], a i ʻole [{{fullurl:{{FULLPAGENAME}}|action=edit}} hoʻololi i kēia ʻaoʻao]</span>.',
+Hiki iā ʻoe ke [[Special:Search/{{PAGENAME}}|huli no kēia inoa ʻaoʻao]] i nā ʻaoʻao ʻē aʻe, <span class="plainlinks">[{{fullurl:SpecialLog|page={{FULLPAGENAMEE}}}} huli i nā moʻolelo pili], a i ʻole [{{fullurl:{{FULLPAGENAME}}|action=edit}} hoʻololi i kēia ʻaoʻao]</span>.',
 'previewnote'                      => "'''‘O keia ka nāmua;
 ‘a‘ole i mālama ‘ia ka ho‘ololi!'''",
 'editing'                          => 'Ke ho‘ololi nei iā $1',
@@ -752,10 +752,10 @@ Hiki iā ʻoe ke ʻikena i kāna molekumu.',
 'tooltip-p-logo'                 => 'Kele i ka papa kinohi',
 'tooltip-n-mainpage'             => 'Kele i ka papa kinohi',
 'tooltip-n-mainpage-description' => 'Kele i ka papa kinohi',
-'tooltip-n-portal'               => 'E pili ana i ka pāhana, he aha kāu hana, nā wahi no ka loaʻa ʻana',
+'tooltip-n-portal'               => 'E pili ana ka pāhana, nā hana hiki, nā wahi no ka loaʻa ʻana',
 'tooltip-n-currentevents'        => 'ʻIke i nā nū hou',
 'tooltip-n-recentchanges'        => 'Nā loli hou ma ka wiki',
-'tooltip-n-randompage'           => 'Hōʻike he ʻaoʻao kaulele',
+'tooltip-n-randompage'           => 'Hōʻike kekahi ʻaoʻao kaulele',
 'tooltip-n-help'                 => 'Ka wahi e kōkua ai iā ‘oe',
 'tooltip-t-whatlinkshere'        => 'Nā ‘ao‘ao a pau i loulou mai ai',
 'tooltip-t-emailuser'            => 'Leka uila i kēia mea hoʻohana',

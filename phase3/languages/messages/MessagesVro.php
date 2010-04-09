@@ -8,6 +8,7 @@
  * @file
  *
  * @author Niklas Laxström
+ * @author Pikne
  * @author Sulev Iva (Võrok)
  * @author Võrok
  */
@@ -186,9 +187,6 @@ $messages = array(
 'faq'            => 'Sagõhõhe küsüdüq küsümiseq',
 'faqpage'        => 'Project:KKK',
 
-# Metadata in edit box
-'metadata_help' => 'Metateedüs:',
-
 'errorpagetitle'    => 'Viga',
 'returnto'          => 'Tagasi lehe manoq $1.',
 'tagline'           => 'Läteq: {{SITENAME}}',
@@ -312,9 +310,13 @@ $messages = array(
 
 # Main script and global functions
 'nosuchaction'      => 'Säänest tallitust olõ-i.',
-'nosuchactiontext'  => 'Viki tunnõ-i taa aadrõsi manoq käüvät tallitust.',
+'nosuchactiontext'  => 'Seo aadrõsi manoq käüvä tallitus om viganõ.
+Võimalik, et sa kirotit aadrõsi võlssi vai pruugõt vigast linki.
+Niisama või taa ollaq {{SITENAME}} tarkvara viga.',
 'nosuchspecialpage' => 'Säänest tallituslehekülge olõ-i.',
-'nospecialpagetext' => 'Viki tunnõ-i säänest tallituslehekülge.',
+'nospecialpagetext' => '<strong> Säänest tallituslehekülge olõ-õi.</strong>
+
+Olõmanolõvaq tallitusleheküleq ommaq löüdäq leheküle päält [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'                => 'Viga',
@@ -565,7 +567,7 @@ Ku sa johtuq siiäq kogõmaldaq, sis klõpsaq võrgokaeja '''Tagasi'''-nuppi.",
 'anontalkpagetext'                 => "---- ''Taa om arotusleht nimeldä pruukja kotsilõ, kiä olõ-i loonuq pruukjanimme vai pruugi-i tuud. Tuuperäst tulõ meil pruukja kimmästegemises pruukiq timä puutri võrgoaadrõssit. Taa aadrõs või ollaq mitmõ pruukja pääle ütine. Ku olõt nimeldä pruukja ja lövvät, et taa leheküle pääle kirotõt jutt käü suq kotsilõ, sis olõq hää, [[Special:UserLogin/signup|luuq konto]] vai [[Special:UserLogin|mineq nimega sisse]], et edespiten segähüisi ärq hoitaq.''",
 'noarticletext'                    => 'Seo leht om parlaq tühi.
 Võit [[Special:Search/{{PAGENAME}}|otsiq soe lehe nimme]]  tõisi lehti päält vai
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} uuriq muutmisnimekirjo] vai [{{fullurl:{{FULLPAGENAME}}|action=edit}} puuduolõva leheküle esiq luvvaq]</span>.',
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} uuriq muutmisnimekirjo] vai [{{fullurl:{{FULLPAGENAME}}|action=edit}} puuduolõva leheküle esiq luvvaq]</span>.',
 'userpage-userdoesnotexist'        => 'Pruukjanimme "$1" olõ-i kirjä pant. Kaeq perrä, kas olõt iks kimmäs, et tahat taad lehte toimõndaq.',
 'clearyourcache'                   => "'''Panõq tähele:''' perän pästmist piät muutmiisi nägemises uma võrgokaeja vaihõmälo tühäs tegemä. '''Mozillal / Firofoxil / Safaril''' hoiaq all nõstmisnuppi ''Shift'' ja vaodaq ''Reload'' vai ''Ctrl-R'' (Macintoshil ''Command-R''); Konqueroril vaodaq ''Reload'' vai ''F5''. Operal puhastaq vaihõmälo ja võtaq valikust ''Tools → Preferences''. Internet Exploreril hoiaq ''Ctrl'' ja vaodaq ''Refresh'' vai vaodaq  ''ctrl-f5''.",
 'usercssyoucanpreview'             => "'''Nõvvoannõq:''' Pruugiq nuppi 'Näütäq proovikaehust' uma vahtsõ CCS-i vai JavaScripti ülekaemisõs, inne ku taa ärq pästät.",
@@ -681,12 +683,12 @@ Lisateedüst või ollaq [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAME
 'revdelete-text'              => "'''Kistudõduq kujoq ommaq olõman lehe aoluun, a näide sissu saa-i avaligult nätäq.''' Seo viki tõõsõq kõrraldajaq saavaq taad käkitüt teksti lukõq ja taa tagasi avaligult nättäväs tetäq, ku olõ-i säet muid piirdmiisi.",
 'revdelete-legend'            => 'Nättävüse piirdmiseq',
 'revdelete-hide-text'         => 'Käkiq kujo sisu',
+'revdelete-hide-image'        => 'Käkiq teedüstü sissu',
 'revdelete-hide-name'         => 'Käkiq kujo nimi',
 'revdelete-hide-comment'      => 'Käkiq kokkovõtõq',
 'revdelete-hide-user'         => 'Käkiq toimõndaja pruukjanimi vai puutri võrgoaadrõs',
 'revdelete-hide-restricted'   => 'Panõq naaq piirdmiseq pääle ka kõrraldajilõ',
 'revdelete-suppress'          => 'Panõq teedüs lukku ka kõrraldajilõ',
-'revdelete-hide-image'        => 'Käkiq teedüstü sissu',
 'revdelete-unsuppress'        => 'Võtaq tagasitettüisi kujjõ päält piirdmisõq maaha',
 'revdelete-log'               => 'Muutmisnimekirä märgüs:',
 'revdelete-submit'            => 'Võtaq käüki valitulõ kujolõ',
@@ -1002,7 +1004,6 @@ Ku ülekaet teedüstü om sama pilt alguperälidsen suurusõn, sis olõ-i vaia e
 'uploaddisabled'              => 'Üleslaatminõ lää-s kõrda',
 'uploaddisabledtext'          => '{{SITENAME}} lupa-i parhilla teedüstüid üles laatiq.',
 'uploadscripted'              => 'Seol teedüstül om HTML-kuud vai skripte, minkast võrgokaeja või võlssi arvo saiaq.',
-'uploadcorrupt'               => 'Teedüstü om viganõ vai om täl võlss laendus. Olõq hää, kaeq tä üle ja laadiq vahtsõst üles.',
 'uploadvirus'                 => 'Teedüstül om viirus man! Kaeq: $1',
 'sourcefilename'              => 'Teedüstü nimi:',
 'destfilename'                => 'Teedüstü nimi vikin:',

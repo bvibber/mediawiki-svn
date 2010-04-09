@@ -51,11 +51,11 @@ class SpecialExport extends SpecialPage {
 			$page = $wgRequest->getText( 'pages' );
 			$catname = $wgRequest->getText( 'catname' );
 			
-			if ( $catname !== '' && $catname !== NULL && $catname !== false ) {
+			if ( $catname !== '' && $catname !== null && $catname !== false ) {
 				$t = Title::makeTitleSafe( NS_MAIN, $catname );
 				if ( $t ) {
 					/**
-					 * @fixme This can lead to hitting memory limit for very large
+					 * @todo Fixme: this can lead to hitting memory limit for very large
 					 * categories. Ideally we would do the lookup synchronously
 					 * during the export in a single query.
 					 */
@@ -70,7 +70,7 @@ class SpecialExport extends SpecialPage {
 			
 			if ( strval( $nsindex ) !== ''  ) {
 				/**
-				 * Same implementation as above, so same @fixme
+				 * Same implementation as above, so same @todo
 				 */
 				$nspages = $this->getPagesFromNamespace( $nsindex );
 				if ( $nspages ) $page .= "\n" . implode( "\n", $nspages );
@@ -275,8 +275,7 @@ class SpecialExport extends SpecialPage {
 			$lb->closeAll();
 		}
 	}
-	
-	
+
 	private function getPagesFromCategory( $title ) {
 		global $wgContLang;
 		
@@ -393,7 +392,7 @@ class SpecialExport extends SpecialPage {
 			$title = Title::newFromText( $page );
 			if( $title ) {
 				$pageSet[$title->getPrefixedText()] = true;
-				/// @fixme May or may not be more efficient to batch these
+				/// @todo Fixme: May or may not be more efficient to batch these
 				///        by namespace when given multiple input pages.
 				$result = $dbr->select(
 									   array( 'page', $table ),
@@ -410,13 +409,6 @@ class SpecialExport extends SpecialPage {
 			}
 		}
 		return $pageSet;
-	}
-	
-	/**
-	 * Callback function to remove empty strings from the pages array.
-	 */
-	private function filterPage( $page ) {
-		return $page !== '' && $page !== null;
 	}
 }
 

@@ -12,6 +12,25 @@
 
 $fallback = 'ru';
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Медиа',
+	NS_SPECIAL          => 'Спецӹлӹштӓш',
+	NS_TALK             => 'Кӓнгӓшӹмӓш',
+	NS_USER             => 'Сирӹшӹ',
+	NS_USER_TALK        => 'Сирӹшӹн кӓнгӓшӹмӓшӹжӹ',
+	NS_PROJECT_TALK     => '$1 кӓнгӓшӹмӓш',
+	NS_FILE             => 'Файл',
+	NS_FILE_TALK        => 'Файл кӓнгӓшӹмӓш',
+	NS_MEDIAWIKI        => 'MediaWiki',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki кӓнгӓшӹмӓш',
+	NS_TEMPLATE         => 'Шаблон',
+	NS_TEMPLATE_TALK    => 'Шаблон кӓнгӓшӹмӓш',
+	NS_HELP             => 'Палшык',
+	NS_HELP_TALK        => 'Палшыкын кӓнгӓшӹмӓш',
+	NS_CATEGORY         => 'Категори',
+	NS_CATEGORY_TALK    => 'Категори кӓнгӓшӹмӓш',
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Ажедмäшвлäм ыдыралаш',
@@ -271,7 +290,7 @@ $messages = array(
 'newarticle'                       => '(У)',
 'newarticletext'                   => "Ажедмӹ доно тӓ эче ӹштӹмӹ агыл ӹлӹшташӹш вӓрештӹндӓ. Тӹдӹм ӹштӓш манын,  ӱлнӹрӓк ылшы окняэш лӹмӹм сирӓлтӹдӓ. (шукыракым пӓлен нӓлаш, анжал. [[{{MediaWiki:Helppage}}|палшыкын ӹлӹштӓшӹм]]) 
 Самынь тишкӹ вӓрештӹндӓ гӹнь лач браузердӓн '''мӹнгеш''' кнопкыжым веле темдӓлдӓ.",
-'noarticletext'                    => "Кӹзӹт ти ӹлӹштӓшӹштӹ текст уке. Ти лӹмӹм [[Special:Search/{{PAGENAME}}|тӓ вес лӹм доно вес ӹлӹштӓшвлӓштӹ мон кердӹдӓ<span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} тӓ вес лӹм доно вес ӹлӹштӓшвлӓштӹ мон кердӹда -]] журналвлӓн вес сирмӓшвлӓштӓт моаш лиэш], ӓль 
+'noarticletext'                    => "Кӹзӹт ти ӹлӹштӓшӹштӹ текст уке. Ти лӹмӹм [[Special:Search/{{PAGENAME}}|тӓ вес лӹм доно вес ӹлӹштӓшвлӓштӹ мон кердӹдӓ<span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} тӓ вес лӹм доно вес ӹлӹштӓшвлӓштӹ мон кердӹда -]] журналвлӓн вес сирмӓшвлӓштӓт моаш лиэш], ӓль 
 '''[{{fullurl:{{FULLPAGENAME}}|action=edit}}  техень лӹм доно ӹлӹштӓшӹм пачаш лиэш]'''</span>.",
 'previewnote'                      => "'''Тидӹ анзыц анжымаш веле, текстӹм эче сирӹмӹ агыл!'''",
 'editing'                          => 'Редактируйымаш: $1',

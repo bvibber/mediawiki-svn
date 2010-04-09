@@ -185,6 +185,13 @@ CREATE INDEX &mw_prefix.externallinks_i01 ON &mw_prefix.externallinks (el_from, 
 CREATE INDEX &mw_prefix.externallinks_i02 ON &mw_prefix.externallinks (el_to, el_from);
 CREATE INDEX &mw_prefix.externallinks_i03 ON &mw_prefix.externallinks (el_index);
 
+CREATE TABLE &mw_prefix.external_user (
+  eu_local_id NUMBER NOT NULL,
+  eu_external_id varchar2(255) NOT NULL
+);
+ALTER TABLE &mw_prefix.external_user ADD CONSTRAINT &mw_prefix.external_user_pk PRIMARY KEY (eu_local_id);
+CREATE UNIQUE INDEX &mw_prefix.external_user_u01 ON &mw_prefix.external_user (eu_external_id);
+
 CREATE TABLE &mw_prefix.langlinks (
   ll_from    NUMBER  NOT NULL  REFERENCES &mw_prefix.page (page_id) ON DELETE CASCADE,
   ll_lang    VARCHAR2(20),
@@ -246,7 +253,7 @@ CREATE TABLE &mw_prefix.image (
   img_bits         NUMBER,
   img_media_type   VARCHAR2(32),
   img_major_mime   VARCHAR2(32) DEFAULT 'unknown',
-  img_minor_mime   VARCHAR2(32) DEFAULT 'unknown',
+  img_minor_mime   VARCHAR2(100) DEFAULT 'unknown',
   img_description  VARCHAR2(255),
   img_user         NUMBER       NULL  REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL,
   img_user_text    VARCHAR2(255)      NOT NULL,
@@ -274,7 +281,7 @@ CREATE TABLE &mw_prefix.oldimage (
   oi_metadata      CLOB,
   oi_media_type    VARCHAR2(32) DEFAULT NULL,
   oi_major_mime    VARCHAR2(32) DEFAULT 'unknown',
-  oi_minor_mime    VARCHAR2(32) DEFAULT 'unknown',
+  oi_minor_mime    VARCHAR2(100) DEFAULT 'unknown',
   oi_deleted       NUMBER DEFAULT 0 NOT NULL,
   oi_sha1          VARCHAR2(32)
 );
@@ -301,8 +308,8 @@ CREATE TABLE &mw_prefix.filearchive (
   fa_bits               NUMBER,
   fa_media_type         VARCHAR2(32) DEFAULT NULL,
   fa_major_mime         VARCHAR2(32) DEFAULT 'unknown',
-  fa_minor_mime         VARCHAR2(32) DEFAULT 'unknown',
-  fa_description        VARCHAR2(255)         NOT NULL,
+  fa_minor_mime         VARCHAR2(100) DEFAULT 'unknown',
+  fa_description        VARCHAR2(255),
   fa_user               NUMBER          NULL  REFERENCES &mw_prefix.mwuser(user_id) ON DELETE SET NULL,
   fa_user_text          VARCHAR2(255)         NOT NULL,
   fa_timestamp          TIMESTAMP(6) WITH TIME ZONE,
@@ -435,7 +442,7 @@ CREATE TABLE &mw_prefix.log_search (
   ls_value VARCHAR2(255) NOT NULL,
   ls_log_id NuMBER DEFAULT 0 NOT NULL
 );
-ALTER TABLE log_search ADD CONSTRAINT log_search_pk PRIMARY KEY (ls_field,ls_value,ls_log_id);
+ALTER TABLE &mw_prefix.log_search ADD CONSTRAINT log_search_pk PRIMARY KEY (ls_field,ls_value,ls_log_id);
 CREATE INDEX &mw_prefix.log_search_i01 ON &mw_prefix.log_search (ls_log_id);
 
 CREATE SEQUENCE trackbacks_tb_id_seq;

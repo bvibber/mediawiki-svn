@@ -5,12 +5,12 @@
  *
  * @author Niklas Laxström
  */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
 
 		// FIXME: CLDR defines 4 plural forms; very different, actually.
 		// See http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#cy
-		forms = mw.lang.preConvertPlural( forms, 6 );
+		forms = mw.Language.preConvertPlural( forms, 6 );
 		count = Math.abs( count );
 		if ( count >= 0 && count <= 3 ) {
 			return forms[count];

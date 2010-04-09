@@ -106,7 +106,7 @@ $messages = array(
 'category_header'          => 'Artitgels en la categoria "$1"',
 'subcategories'            => 'sutcategorias',
 'category-media-header'    => 'Datotecas en la categoria "$1"',
-'category-empty'           => "''Questa categoria cuntegna actualmain naigns artitgels ed naginas datotecas.''",
+'category-empty'           => "''Questa categoria cuntegna actualmain nagins artitgels e naginas datotecas.''",
 'hidden-categories'        => '{{PLURAL:$1|Categoria zuppentada|Categorias zuppentadas}}',
 'hidden-category-category' => 'Zuppa categorias',
 'category-subcat-count'    => '{{PLURAL:$2|Questa categoria cuntegna be suandanta sutcategoria.|Questa categoria cuntegna {{PLURAL:$1|la suandanta sutcategoria|las $1 suandantas sutcategorias}} da totalmain $2 sutcategoria.}}',
@@ -161,9 +161,6 @@ $messages = array(
 'actions'                    => 'Acziuns',
 'namespaces'                 => 'Tip da pagina',
 'variants'                   => 'Variantas',
-
-# Metadata in edit box
-'metadata_help' => 'Datas da meta:',
 
 'errorpagetitle'    => 'Errur',
 'returnto'          => 'Enavos tar $1.',
@@ -349,6 +346,7 @@ Betg emblida da midar tias [[Special:Preferences|preferenzas da {{SITENAME}}]].'
 'nav-login-createaccount'    => "T'annunziar / registrar",
 'loginprompt'                => "Ti stos avair '''activà ils cookies''' per pudair t'annunziar tar {{SITENAME}}.",
 'userlogin'                  => "T'annunziar / registrar",
+'userloginnocreate'          => "T'annunziar",
 'logout'                     => 'Sortir',
 'userlogout'                 => 'Sortir',
 'notloggedin'                => "Betg s'annunzià",
@@ -476,7 +474,7 @@ Ina tala adressa d'IP po vegnir utilisada da differents utilisaders.
 Sche ti es in utilisaders anonim e pensas che commentaris che na pertutgan betg tai vegnan adressads a tai, lura [[Special:UserLogin/signup|creescha in conto]] u [[Special:UserLogin|s'annunzia]] per evitar en futur che ti vegns sbaglià cun auters utilisaders.''",
 'noarticletext'                    => 'Quest artitgel cuntegna actualmain nagin text. 
 Ti pos [[Special:Search/{{PAGENAME}}|tschertgar il term]] sin in\'autra pagina, 
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} tschertgar en ils logs],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} tschertgar en ils logs],
 u [{{fullurl:{{FULLPAGENAME}}|action=edit}} crear questa pagina]</span>.',
 'userpage-userdoesnotexist'        => 'Il conto d\'utilisader "$1" n\'èxista betg. 
 Controllescha sch ti vuls propi crear/modiftgar questa pagina.',
@@ -500,7 +498,8 @@ Ti garanteschas che ti has scrit tez quai u copià dad ina funtauna ch'è 'publi
 han forsa problems cun editar artitgels da la grondezza 32 kb u pli grond. 
 Ponderai per plaschair da divider quest artitgel en pli pitschnas parts. '''",
 'longpageerror'                    => "'''SBAGL: Il text che ti has tramess è $1 kilobytes gronds. Quei ei pli grond ch'il maximum da $2 kilobytes. Il text na sa betg vegnir memorisà. '''",
-'protectedpagewarning'             => "'''ATTENZIUN: Questa pagina è vegnida bloccada, uschè che be utilisaders cun dretgs dad administraturs pon editar ella. '''",
+'protectedpagewarning'             => "'''ATTENZIUN: Questa pagina è vegnida bloccada, uschè che be utilisaders cun dretgs dad administraturs pon editar ella. '''
+Sco infurmaziun vegn mussada sutvart l'ultima endataziun dal cudesch da log:",
 'templatesused'                    => '{{PLURAL:$1|In model utilisà|Models utilisads}} sin questa pagina:',
 'templatesusedpreview'             => '{{PLURAL:$1|In model utilisà|Models utilisads}} per questa prevista:',
 'templatesusedsection'             => '{{PLURAL:$1|In model|Models}} utilisads en quest chapitel:',
@@ -1113,7 +1112,7 @@ Midadas futuras vid quai artitgel e la pagina da discussiun appertegnenta vegnan
 # Delete
 'deletepage'            => 'Stizzar la pagina',
 'confirm'               => 'Confermar',
-'historywarning'        => "'''Attenziun:''' L'artitgel che ti vuls stizzar ha ina cronologia cun {{PLURAL:$1|ina versiun|$1 versiuns}}:",
+'historywarning'        => "'''Attenziun:''' L'artitgel che ti vuls stizzar ha ina cronologia cun circa {{PLURAL:$1|ina versiun|$1 versiuns}}:",
 'confirmdeletetext'     => 'Ti es vidlonder da stizzar permanentamain in artitgel u in maletg e tut las versiuns pli veglias ord la datoteca. <br /> 
 Conferma per plaschair che ti ta es conscient da las consequenzas e che ti ageschas tenor las [[{{MediaWiki:Policy-url}}|directivas da {{SITENAME}}]].',
 'actioncomplete'        => "L' acziun è terminada.",
@@ -1512,6 +1511,10 @@ Conferma per plaschair che ti vuls propi crear danovamain quest artitgel.",
 'confirm_purge_button' => 'ok',
 'confirm-purge-top'    => 'Stizzar il cache da questa pagina?',
 
+# Multipage image navigation
+'imgmultipageprev' => '← ultima pagina',
+'imgmultipagenext' => 'proxima pagina →',
+
 # Table pager
 'table_pager_next'         => 'Proxima pagina',
 'table_pager_prev'         => 'Ultima pagina',
@@ -1534,6 +1537,11 @@ Conferma per plaschair che ti vuls propi crear danovamain quest artitgel.",
 'version-extensions'   => 'Extensiuns installadas',
 'version-specialpages' => 'Paginas spezialas',
 
+# Special:FilePath
+'filepath'        => 'Percurs da la datoteca',
+'filepath-page'   => 'Datoteca:',
+'filepath-submit' => 'Percurs',
+
 # Special:FileDuplicateSearch
 'fileduplicatesearch-filename' => 'Num da datoteca:',
 'fileduplicatesearch-submit'   => 'Tschertgar',
@@ -1546,19 +1554,25 @@ Conferma per plaschair che ti vuls propi crear danovamain quest artitgel.",
 'specialpages-group-pages'     => 'Glistas da paginas',
 'specialpages-group-redirects' => 'Paginas specialas che renvieschan',
 
+# Database error messages
+'dberr-problems' => 'Stgisa!
+Questa pagina ha actualmain difficultads tecnicas.',
+
 # HTML forms
 'htmlform-submit'              => 'Trametter',
 'htmlform-selectorother-other' => 'Auters',
 
 # Add categories per AJAX
-'ajax-add-category'          => 'Agiuntar categoria',
-'ajax-add-category-submit'   => 'Agiuntar',
-'ajax-confirm-prompt'        => 'Ti pos inditgar sutvart ina resumaziun da la midada. 
+'ajax-add-category'            => 'Agiuntar categoria',
+'ajax-add-category-submit'     => 'Agiuntar',
+'ajax-confirm-prompt'          => 'Ti pos inditgar sutvart ina resumaziun da la midada. 
 Clicca sin "memorisar" per memorisar tias modificaziuns.',
-'ajax-confirm-save'          => 'Memorisar',
-'ajax-error-title'           => 'Errur',
-'ajax-error-dismiss'         => 'OK',
-'ajax-remove-category-error' => "I n'era betg pussaivel da stizzar questa categoria. 
+'ajax-confirm-save'            => 'Memorisar',
+'ajax-add-category-summary'    => 'Agiuntar la categoria "$1"',
+'ajax-remove-category-summary' => 'Allontanar la categoria "$1"',
+'ajax-error-title'             => 'Errur',
+'ajax-error-dismiss'           => 'OK',
+'ajax-remove-category-error'   => "I n'era betg pussaivel da stizzar questa categoria. 
 Quai capita normalmain sche la categoria è vegnida integrada en in model.",
 
 );

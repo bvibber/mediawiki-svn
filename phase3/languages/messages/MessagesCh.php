@@ -10,6 +10,7 @@
  * @author Gadao01
  * @author Jatrobat
  * @author Magalahi
+ * @author MisterWiki
  */
 
 $namespaceNames = array(
@@ -149,8 +150,8 @@ $messages = array(
 'qbmyoptions'    => 'Påhina-hu siha',
 'qbspecialpages' => 'Manespesiat na påhina',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
+# Vector skin
+'vector-namespace-template' => 'Plantiya',
 
 'errorpagetitle'    => 'Linachi',
 'returnto'          => 'Hånao tåtte para $1.',
@@ -261,7 +262,7 @@ $messages = array(
 'nstab-main'      => 'Påhina',
 'nstab-user'      => "Påhina muna'sesetbi",
 'nstab-media'     => 'Påhinan media',
-'nstab-special'   => 'Espesiat na påhina',
+'nstab-special'   => 'Påhina espesiat',
 'nstab-project'   => 'Påhinan proyekto',
 'nstab-image'     => 'Atkibu',
 'nstab-mediawiki' => 'Mensahe',
@@ -344,7 +345,7 @@ Chek fan i dineletrea.',
 'wrongpasswordempty'         => "Ti mamo'lu hao password. Pot fabot, chagi fan ta'lo.",
 'passwordtooshort'           => "Lachi pat mampos kadada' iyo-mu password.
 Na'seguro na mas ki {{PLURAL:$1|1 na letra|$1 na letras}} ha' ya ti parehu ha' yan i na'an-mu muna'setbi.",
-'mailmypassword'             => "Na'e-mail password",
+'mailmypassword'             => 'E-mail password neu',
 'passwordremindertitle'      => 'I nuebu na password temporårio para {{SITENAME}}',
 'passwordremindertext'       => 'Guåha na mamaisen (hågu ha\' buente, ginen i IP $1)
 na para in na\'hanague hao ni password nuebu para {{SITENAME}} ($4).
@@ -449,8 +450,7 @@ Pot fabot, na'hålom i ID gi todus i finaisen-mu siha.",
 'confirmedittext'                  => "Un nesisita un konfotme iyo-mu email åntes di tumulaika påhina.
 Pot fabot po'lo yan konfotme iyo-mu e-mail gi [[Special:Preferences|prifirensia muna'sesetbi]].",
 'nosuchsectiontitle'               => "Tåya' na påtte",
-'nosuchsectiontext'                => "Tåya' na påtte ni un chagi tumulaika.
-Sa' tåya' na påtten $1, tåya' na lugåt para u såtba i tinilaika-mu.",
+'nosuchsectiontext'                => "Tåya' na påtte ni un chagi tumulaika.",
 'loginreqtitle'                    => 'Manesita login',
 'loginreqlink'                     => 'log in',
 'loginreqpagetext'                 => "Debi di un $1 para manli'e' påhina.",
@@ -496,7 +496,7 @@ Yanggen munga hao na matulaika i tinige'-mu yan malamaña ya mana'apåttao ta'lo
 Un promette ham lokkue' na hågu ha' i tituge', pat un kopia ha' gi un lugat publika pat otru na lugat dibåtde (atan $1 para i attikulu siha).
 '''MUNGA MANFA'BURESI NA GAIDIRECHU I MANTITUGE'!'''",
 'templatesused'                    => "I plantiyas siha ni ma'usa gi påhina:",
-'templatesusedpreview'             => "I plantiyas ni ma'usa gi ripasu:",
+'templatesusedpreview'             => "I {{PLURAL:$1|plantiya|plantiyas}} ni ma'usa gi ripasu:",
 'templatesusedsection'             => "Plantiyas siha ni ma'usa gi este na seksion:",
 'template-protected'               => '(maprotehi)',
 'hiddencategories'                 => "Miembron {{PLURAL:$1|1 manå'na' na kategoria|$1 na mannå'na' na kategoria}} este na påhina:",
@@ -571,9 +571,9 @@ fana'an guåha attikulo gi [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGEN
 'logdelete-selected'          => "'''{{PLURAL:$1|Kasun log ni ma'ayek|Kasun log ni manma'ayek}}:'''",
 'revdelete-legend'            => "Po'lo i chinemma' lini'e'on siha",
 'revdelete-hide-text'         => "Nå'na' i tinige' ribision",
+'revdelete-hide-image'        => "Nå'na' i sinahguan atkibu",
 'revdelete-hide-comment'      => "Nå'na' i kommentun tinilaika",
 'revdelete-hide-user'         => "Nå'na' i na'an muna'sesetbi/IP i editot",
-'revdelete-hide-image'        => "Nå'na' i sinahguan atkibu",
 'revdelete-unsuppress'        => "Na'suha i chinemma' siha gi tinilaika manmana'lo siha",
 'revdelete-log'               => 'Kommentun log:',
 'revdelete-submit'            => "Na'aplika gi tinilaika ni ma'ayek",
@@ -1060,6 +1060,7 @@ Ayek fan otru nå'an-ña.",
 'tooltip-ca-watch'                => "Po'lu i påhina este gi listan pinilan-hu",
 'tooltip-ca-unwatch'              => "Na'suha i påhina gi i listan pinilan-mu",
 'tooltip-search'                  => 'Aligao gi {{SITENAME}}',
+'tooltip-search-go'               => "Ir na páhina'i e ma'nome si cumplido",
 'tooltip-p-logo'                  => 'Fanhaluman',
 'tooltip-n-mainpage'              => 'Bisita i Fanhaluman',
 'tooltip-n-portal'                => "Pot i proyektu, håfa siña hao chumo'gue, månu na siña masodda' kosas",

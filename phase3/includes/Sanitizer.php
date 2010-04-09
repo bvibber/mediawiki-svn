@@ -410,37 +410,43 @@ class Sanitizer {
 		$text = Sanitizer::removeHTMLcomments( $text );
 		$bits = explode( '<', $text );
 		$text = str_replace( '>', '&gt;', array_shift( $bits ) );
-		if(!$wgUseTidy) {
+		if ( !$wgUseTidy ) {
 			$tagstack = $tablestack = array();
 			foreach ( $bits as $x ) {
 				$regs = array();
+				# $slash: Does the current element start with a '/'?
+				# $t: Current element name
+				# $params: String between element name and >
+				# $brace: Ending '>' or '/>'
+				# $rest: Everything until the next element of $bits
 				if( preg_match( '!^(/?)(\\w+)([^>]*?)(/{0,1}>)([^<]*)$!', $x, $regs ) ) {
 					list( /* $qbar */, $slash, $t, $params, $brace, $rest ) = $regs;
 				} else {
 					$slash = $t = $params = $brace = $rest = null;
 				}
 
-				$badtag = 0 ;
+				$badtag = false;
 				if ( isset( $htmlelements[$t = strtolower( $t )] ) ) {
 					# Check our stack
-					if ( $slash ) {
-						# Closing a tag...
-						if( isset( $htmlsingleonly[$t] ) ) {
-							$badtag = 1;
-						} elseif ( ( $ot = @array_pop( $tagstack ) ) != $t ) {
+					if ( $slash && isset( $htmlsingleonly[$t] ) ) {
+						$badtag = true;
+					} elseif ( $slash ) {
+						# Closing a tag... is it the one we just opened?
+						$ot = @array_pop( $tagstack );
+						if ( $ot != $t ) {
 							if ( isset( $htmlsingleallowed[$ot] ) ) {
 								# Pop all elements with an optional close tag
 								# and see if we find a match below them
 								$optstack = array();
-								array_push ($optstack, $ot);
-								while ( ( ( $ot = @array_pop( $tagstack ) ) != $t ) &&
-										isset( $htmlsingleallowed[$ot] ) )
-								{
-									array_push ($optstack, $ot);
+								array_push( $optstack, $ot );
+								$ot = @array_pop( $tagstack );
+								while ( $ot != $t && isset( $htmlsingleallowed[$ot] ) ) {
+									array_push( $optstack, $ot );
+									$ot = @array_pop( $tagstack );
 								}
 								if ( $t != $ot ) {
-									# No match. Push the optinal elements back again
-									$badtag = 1;
+									# No match. Push the optional elements back again
+									$badtag = true;
 									while ( $ot = @array_pop( $optstack ) ) {
 										array_push( $tagstack, $ot );
 									}
@@ -448,8 +454,8 @@ class Sanitizer {
 							} else {
 								@array_push( $tagstack, $ot );
 								# <li> can be nested in <ul> or <ol>, skip those cases:
-								if(!(isset( $htmllist[$ot] ) && isset( $listtags[$t] ) )) {
-									$badtag = 1;
+								if ( !isset( $htmllist[$ot] ) || !isset( $listtags[$t] ) ) {
+									$badtag = true;
 								}
 							}
 						} else {
@@ -461,23 +467,23 @@ class Sanitizer {
 					} else {
 						# Keep track for later
 						if ( isset( $tabletags[$t] ) &&
-						! in_array( 'table', $tagstack ) ) {
-							$badtag = 1;
-						} else if ( in_array( $t, $tagstack ) &&
-						! isset( $htmlnest [$t ] ) ) {
-							$badtag = 1 ;
+						!in_array( 'table', $tagstack ) ) {
+							$badtag = true;
+						} elseif ( in_array( $t, $tagstack ) &&
+						!isset( $htmlnest [$t ] ) ) {
+							$badtag = true;
 						# Is it a self closed htmlpair ? (bug 5487)
-						} else if( $brace == '/>' &&
+						} elseif ( $brace == '/>' &&
 						isset( $htmlpairs[$t] ) ) {
-							$badtag = 1;
-						} elseif( isset( $htmlsingleonly[$t] ) ) {
+							$badtag = true;
+						} elseif ( isset( $htmlsingleonly[$t] ) ) {
 							# Hack to force empty tag for uncloseable elements
 							$brace = '/>';
-						} else if( isset( $htmlsingle[$t] ) ) {
+						} elseif ( isset( $htmlsingle[$t] ) ) {
 							# Hack to not close $htmlsingle tags
-							$brace = NULL;
-						} else if( isset( $tabletags[$t] )
-						&&  in_array($t ,$tagstack) ) {
+							$brace = null;
+						} elseif ( isset( $tabletags[$t] )
+						&& in_array( $t, $tagstack ) ) {
 							// New table tag but forgot to close the previous one
 							$text .= "</$t>";
 						} else {
@@ -497,7 +503,7 @@ class Sanitizer {
 						# Strip non-approved attributes from the tag
 						$newparams = Sanitizer::fixTagAttributes( $params, $t );
 					}
-					if ( ! $badtag ) {
+					if ( !$badtag ) {
 						$rest = str_replace( '>', '&gt;', $rest );
 						$close = ( $brace == '/>' && !$slash ) ? ' /' : '';
 						$text .= "<$slash$t$newparams$close>$rest";
@@ -614,7 +620,7 @@ class Sanitizer {
 	 * @todo Check for unique id attribute :P
 	 */
 	static function validateAttributes( $attribs, $whitelist ) {
-		global $wgAllowRdfaAttributes;
+		global $wgAllowRdfaAttributes, $wgAllowMicrodataAttributes;
 
 		$whitelist = array_flip( $whitelist );
 		$hrefExp = '/^(' . wfUrlProtocols() . ')[^\s]+$/';
@@ -645,9 +651,7 @@ class Sanitizer {
 			}
 
 			if ( $attribute === 'id' ) {
-				global $wgEnforceHtmlIds;
-				$value = Sanitizer::escapeId( $value,
-					$wgEnforceHtmlIds ? 'noninitial' : 'xml' );
+				$value = Sanitizer::escapeId( $value, 'noninitial' );
 			}
 
 			//RDFa and microdata properties allow URLs, URIs and/or CURIs. check them for sanity
@@ -675,6 +679,29 @@ class Sanitizer {
 			// If this attribute was previously set, override it.
 			// Output should only have one attribute of each name.
 			$out[$attribute] = $value;
+		}
+
+		if ( $wgAllowMicrodataAttributes ) {
+			# There are some complicated validity constraints we need to
+			# enforce here.  First of all, we don't want to allow non-standard
+			# itemtypes.
+			$allowedTypes = array(
+				'http://microformats.org/profile/hcard',
+				'http://microformats.org/profile/hcalendar#vevent',
+				'http://n.whatwg.org/work',
+			);
+			if ( isset( $out['itemtype'] ) && !in_array( $out['itemtype'],
+			$allowedTypes ) ) {
+				# Kill everything
+				unset( $out['itemscope'] );
+			}
+			# itemtype, itemid, itemref don't make sense without itemscope
+			if ( !array_key_exists( 'itemscope', $out ) ) {
+				unset( $out['itemtype'] );
+				unset( $out['itemid'] );
+				unset( $out['itemref'] );
+			}
+			# TODO: Strip itemprop if we aren't descendants of an itemscope.
 		}
 		return $out;
 	}
@@ -711,24 +738,48 @@ class Sanitizer {
 	 * @return Mixed
 	 */
 	static function checkCss( $value ) {
-		$stripped = Sanitizer::decodeCharReferences( $value );
+		$value = Sanitizer::decodeCharReferences( $value );
 
 		// Remove any comments; IE gets token splitting wrong
-		$stripped = StringUtils::delimiterReplace( '/*', '*/', ' ', $stripped );
+		$value = StringUtils::delimiterReplace( '/*', '*/', ' ', $value );
 
-		$value = $stripped;
-
-		// ... and continue checks
-		$stripped = preg_replace( '!\\\\([0-9A-Fa-f]{1,6})[ \\n\\r\\t\\f]?!e',
-			'codepointToUtf8(hexdec("$1"))', $stripped );
-		$stripped = str_replace( '\\', '', $stripped );
-		if( preg_match( '/(?:expression|tps*:\/\/|url\\s*\().*/is',
-				$stripped ) ) {
-			# haxx0r
-			return false;
+		// Decode escape sequences and line continuation
+		// See the grammar in the CSS 2 spec, appendix D, Mozilla implements it accurately.
+		// IE 8 doesn't implement it at all, but there's no way to introduce url() into
+		// IE that doesn't hit Mozilla also.
+		static $decodeRegex;
+		if ( !$decodeRegex ) {
+			$space = '[\\x20\\t\\r\\n\\f]';
+			$nl = '(?:\\n|\\r\\n|\\r|\\f)';
+			$backslash = '\\\\';
+			$decodeRegex = "/ $backslash 
+				(?:
+					($nl) |  # 1. Line continuation
+					([0-9A-Fa-f]{1,6})$space? |  # 2. character number
+					(.) # 3. backslash cancelling special meaning
+				)/xu";
 		}
+		$decoded = preg_replace_callback( $decodeRegex, 
+			array( __CLASS__, 'cssDecodeCallback' ), $value );
+		if ( preg_match( '!expression|https?://|url\s*\(!i', $decoded ) ) {
+			// Not allowed
+			return false;
+		} else {
+			// Allowed, return CSS with comments stripped
+			return $value;
+		}
+	}
 
-		return $value;
+	static function cssDecodeCallback( $matches ) {
+		if ( $matches[1] !== '' ) {
+			return '';
+		} elseif ( $matches[2] !== '' ) {
+			return codepointToUtf8( hexdec( $matches[2] ) );
+		} elseif ( $matches[3] !== '' ) {
+			return $matches[3];
+		} else {
+			throw new MWException( __METHOD__.': invalid match' );
+		}
 	}
 
 	/**
@@ -822,63 +873,64 @@ class Sanitizer {
 	}
 
 	/**
-	 * Given a value escape it so that it can be used in an id attribute and
-	 * return it, this does not validate the value however (see first link)
+	 * Given a value, escape it so that it can be used in an id attribute and
+	 * return it.  This will use HTML5 validation if $wgExperimentalHtmlIds is
+	 * true, allowing anything but ASCII whitespace.  Otherwise it will use
+	 * HTML 4 rules, which means a narrow subset of ASCII, with bad characters
+	 * escaped with lots of dots.
+	 *
+	 * To ensure we don't have to bother escaping anything, we also strip ', ",
+	 * & even if $wgExperimentalIds is true.  TODO: Is this the best tactic?
+	 * We also strip # because it upsets IE6.
 	 *
 	 * @see http://www.w3.org/TR/html401/types.html#type-name Valid characters
 	 *                                                          in the id and
 	 *                                                          name attributes
 	 * @see http://www.w3.org/TR/html401/struct/links.html#h-12.2.3 Anchors with the id attribute
+	 * @see http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#the-id-attribute
+	 *   HTML5 definition of id attribute
 	 *
-	 * @param $id String: id to validate
+	 * @param $id String: id to escape
 	 * @param $options Mixed: string or array of strings (default is array()):
 	 *   'noninitial': This is a non-initial fragment of an id, not a full id,
 	 *       so don't pay attention if the first character isn't valid at the
-	 *       beginning of an id.
-	 *   'xml': Don't restrict the id to be HTML4-compatible.  This option
-	 *       allows any alphabetic character to be used, per the XML standard.
-	 *       Therefore, it also completely changes the type of escaping: instead
-	 *       of weird dot-encoding, runs of invalid characters (mostly
-	 *       whitespace) are just compressed into a single underscore.
+	 *       beginning of an id.  Only matters if $wgExperimentalHtmlIds is
+	 *       false.
+	 *   'legacy': Behave the way the old HTML 4-based ID escaping worked even
+	 *       if $wgExperimentalHtmlIds is used, so we can generate extra
+	 *       anchors and links won't break.
 	 * @return String
 	 */
 	static function escapeId( $id, $options = array() ) {
+		global $wgHtml5, $wgExperimentalHtmlIds;
 		$options = (array)$options;
 
-		if ( !in_array( 'xml', $options ) ) {
-			# HTML4-style escaping
-			static $replace = array(
-				'%3A' => ':',
-				'%' => '.'
-			);
-
-			$id = urlencode( Sanitizer::decodeCharReferences( strtr( $id, ' ', '_' ) ) );
-			$id = str_replace( array_keys( $replace ), array_values( $replace ), $id );
-
-			if ( !preg_match( '/^[a-zA-Z]/', $id )
-			&& !in_array( 'noninitial', $options ) )  {
-				// Initial character must be a letter!
-				$id = "x$id";
+		if ( $wgHtml5 && $wgExperimentalHtmlIds && !in_array( 'legacy', $options ) ) {
+			$id = Sanitizer::decodeCharReferences( $id );
+			$id = preg_replace( '/[ \t\n\r\f_\'"&#]+/', '_', $id );
+			$id = trim( $id, '_' );
+			if ( $id === '' ) {
+				# Must have been all whitespace to start with.
+				return '_';
+			} else {
+				return $id;
 			}
-			return $id;
 		}
 
-		# XML-style escaping.  For the patterns used, see the XML 1.0 standard,
-		# 5th edition, NameStartChar and NameChar: <http://www.w3.org/TR/REC-xml/>
-		$nameStartChar = ':a-zA-Z_\xC0-\xD6\xD8-\xF6\xF8-\x{2FF}\x{370}-\x{37D}'
-			. '\x{37F}-\x{1FFF}\x{200C}-\x{200D}\x{2070}-\x{218F}\x{2C00}-\x{2FEF}'
-			. '\x{3001}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFFD}\x{10000}-\x{EFFFF}';
-		$nameChar = $nameStartChar . '.\-0-9\xB7\x{0300}-\x{036F}'
-			. '\x{203F}-\x{2040}';
-		# Replace _ as well so we don't get multiple consecutive underscores
-		$id = preg_replace( "/([^$nameChar]|_)+/u", '_', $id );
-		$id = trim( $id, '_' );
+		# HTML4-style escaping
+		static $replace = array(
+			'%3A' => ':',
+			'%' => '.'
+		);
 
-		if ( !preg_match( "/^[$nameStartChar]/u", $id )
-		&& !in_array( 'noninitial', $options ) ) {
-			$id = "_$id";
+		$id = urlencode( Sanitizer::decodeCharReferences( strtr( $id, ' ', '_' ) ) );
+		$id = str_replace( array_keys( $replace ), array_values( $replace ), $id );
+
+		if ( !preg_match( '/^[a-zA-Z]/', $id )
+		&& !in_array( 'noninitial', $options ) )  {
+			// Initial character must be a letter!
+			$id = "x$id";
 		}
-
 		return $id;
 	}
 
@@ -935,12 +987,11 @@ class Sanitizer {
 	 * @return Array
 	 */
 	public static function decodeTagAttributes( $text ) {
-		$attribs = array();
-
 		if( trim( $text ) == '' ) {
-			return $attribs;
+			return array();
 		}
 
+		$attribs = array();
 		$pairs = array();
 		if( !preg_match_all(
 			MW_ATTRIBS_REGEX,
@@ -1126,6 +1177,30 @@ class Sanitizer {
 	}
 
 	/**
+	 * Decode any character references, numeric or named entities,
+	 * in the next and normalize the resulting string. (bug 14952)
+	 *
+	 * This is useful for page titles, not for text to be displayed,
+	 * MediaWiki allows HTML entities to escape normalization as a feature.
+	 *
+	 * @param $text String (already normalized, containing entities)
+	 * @return String (still normalized, without entities)
+	 */
+	public static function decodeCharReferencesAndNormalize( $text ) {
+		global $wgContLang;
+		$text = preg_replace_callback(
+			MW_CHAR_REFS_REGEX,
+			array( 'Sanitizer', 'decodeCharReferencesCallback' ),
+			$text, /* limit */ -1, $count );
+
+		if ( $count ) {
+			return $wgContLang->normalize( $text );
+		} else {
+			return $text;
+		}
+	}
+
+	/**
 	 * @param $matches String
 	 * @return String
 	 */
@@ -1202,7 +1277,7 @@ class Sanitizer {
 	static function setupAttributeWhitelist() {
 		global $wgAllowRdfaAttributes, $wgHtml5, $wgAllowMicrodataAttributes;
 
-		$common = array( 'id', 'class', 'lang', 'dir', 'title', 'style', 'xml:lang' );
+		$common = array( 'id', 'class', 'lang', 'dir', 'title', 'style' );
 
 		if ( $wgAllowRdfaAttributes ) {
 			#RDFa attributes as specified in section 9 of http://www.w3.org/TR/2008/REC-rdfa-syntax-20081014
@@ -1439,7 +1514,7 @@ class Sanitizer {
 
 			$host = preg_replace( $strip, '', $host );
 
-			// @fixme: validate hostnames here
+			// @todo Fixme: validate hostnames here
 
 			return $protocol . $host . $rest;
 		} else {

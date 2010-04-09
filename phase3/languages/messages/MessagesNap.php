@@ -144,9 +144,6 @@ $messages = array(
 'qbmyoptions'    => "'E ppaggene mie",
 'qbspecialpages' => 'Pàggene speciàle',
 
-# Metadata in edit box
-'metadata_help' => 'Metadate:',
-
 'errorpagetitle'    => 'Sbaglio',
 'returnto'          => 'Torna a $1.',
 'help'              => 'Ajùto',
@@ -220,7 +217,8 @@ $messages = array(
 'badtitle'        => "'O nnomme nun è jùsto",
 
 # Login and logout pages
-'logouttext'                 => "'''Site asciùte.'''<br />
+'logouttext'                 => "'''Site asciùte.'''
+
 Putite cuntinuà a ausà {{SITENAME}} comme n'utente senza nomme, o si nò putite trasì n'ata vota, cu 'o stesso nomme o cu n'ato nomme.",
 'welcomecreation'            => "== Bemmenuto, $1! ==
 

@@ -191,9 +191,6 @@ $messages = array(
 'faq'            => 'DOK',
 'faqpage'        => 'Project:DOK',
 
-# Metadata in edit box
-'metadata_help' => 'Metadoumenīs:',
-
 'errorpagetitle'    => 'Klaida',
 'returnto'          => 'Grīžtė i $1.',
 'tagline'           => 'Straipsnis ėš {{SITENAME}}.',
@@ -523,7 +520,7 @@ Tas IP adresos gal būtė dalinams keletō nauduotuoju.
 Jēgo Tamsta esat anonimėnis nauduotuos ėr veizėt, kū kuomentarā nier skėrtė Tamstā, [[Special:UserLogin/signup|sokorkėt paskīra]] aba [[Special:UserLogin|prisėjonkėt]], ė nebūsėt maišuoms so kėtās anonimėnēs nauduotuojās.''",
 'noarticletext'                    => 'Tuo čiesu tamė poslapī nier juokė teksta.
 Tamsta galėt [[Special:Search/{{PAGENAME}}|ėiškuotė šėta poslapė pavadėnėma]] kėtūs poslapiūs,
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} ėiškuotė sosėjosiu regėstru], 
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} ėiškuotė sosėjosiu regėstru], 
 aba [{{fullurl:{{FULLPAGENAME}}|action=edit}} keistė ta poslapi].',
 'userpage-userdoesnotexist'        => 'Nauduotuojė paskīra „$1“ nier ožregėstrouta. Prašuom patikrėntė, a Tamsta nuorėt kortė/keistė ta poslapi.',
 'clearyourcache'                   => "'''Diemesė:''' ėšsauguojus Tamstā gal prireiktė ėšvalītė Tamstas naršīklės rėnktovė, kū paveizėtomėt pakeitėmus. '''Mozilla / Safari / Konqueror:''' laikīdami ''Shift'' pasėrinkėt ''Atsiōstė ėš nauja'', a paspauskėt ''Ctrl-Shift-R'' (sėstemuo Apple Mac ''Cmd-Shift-R''); '''IE:''' laikīdamė ''Ctrl'' paspauskėt ''Atnaujėntė'', o paspauskėt ''Ctrl-F5''; '''Konqueror:''' paprastiausē paspauskėt ''Perkrautė'' mīgtoka, o paspauskėt ''F5''; '''Opera''' nauduotuojam gal prireiktė pėlnā ėšvalītė anū rėnktovė ''Rakondā→Nustatīmā''.",
@@ -927,7 +924,6 @@ Prašuom ėšsėrėnktė kėta varda.",
 'overwroteimage'             => 'ikruovė nauja „[[$1]]“ versėjė',
 'uploaddisabledtext'         => 'Failu ikielėmā oždraustė īr.',
 'uploadscripted'             => 'Šėts failos tor HTML a programėni kuoda, katros gal būtė klaidėngā soprasts interneta naršīklės.',
-'uploadcorrupt'              => 'Fails īr pažeists a tor neteisėnga galūne. Prašuom patėkrėntė faila ėr ikeltė ana par naujė.',
 'uploadvirus'                => 'Šėtom faile īr virosas! Ėšsamiau: $1',
 'sourcefilename'             => 'Ikeliams fails',
 'destfilename'               => 'Nuorims faila pavadinims',

@@ -181,6 +181,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 		} else {
 			$this->showForm();
 		}
+		
 		$qc = $this->getLogQueryCond();
 		# Show relevant lines from the deletion log
 		$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
@@ -330,7 +331,6 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 				$this->targetObj->getPrefixedText(), count( $this->ids ) );
 		}
 
-		$bitfields = 0;
 		$wgOut->addHTML( "<ul>" );
 
 		$where = $revObjs = array();
@@ -348,7 +348,6 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 				$UserAllowed = false;
 			}
 			$numRevisions++;
-			$bitfields |= $item->getBits();
 			$wgOut->addHTML( $item->getHTML() );
 		}
 
@@ -370,7 +369,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 					'action' => $this->getTitle()->getLocalUrl( array( 'action' => 'submit' ) ), 
 					'id' => 'mw-revdel-form-revisions' ) ) .
 				Xml::fieldset( wfMsg( 'revdelete-legend' ) ) .
-				$this->buildCheckBoxes( $bitfields ) .
+				$this->buildCheckBoxes() .
 				Xml::openElement( 'table' ) .
 				"<tr>\n" .
 					'<td class="mw-label">' .
@@ -438,20 +437,55 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	}
 	
 	/**
-	* @param $bitfields Interger: aggregate bitfield of all the bitfields
 	* @return String: HTML
 	*/
-	protected function buildCheckBoxes( $bitfields ) {
+	protected function buildCheckBoxes() {
+		global $wgRequest;
+
 		$html = '<table>';
-		// FIXME: all items checked for just one rev are checked, even if not set for the others
-		foreach( $this->checks as $item ) {
-			list( $message, $name, $field ) = $item;
-			$innerHTML = Xml::checkLabel( wfMsg($message), $name, $name, $bitfields & $field );
-			if( $field == Revision::DELETED_RESTRICTED )
-				$innerHTML = "<b>$innerHTML</b>";
-			$line = Xml::tags( 'td', array( 'class' => 'mw-input' ), $innerHTML );
-			$html .= '<tr>' . $line . "</tr>\n";
+		// If there is just one item, use checkboxes
+		$list = $this->getList();
+		if( $list->length() == 1 ) {
+			$list->reset();
+			$bitfield = $list->current()->getBits(); // existing field
+			if( $this->submitClicked ) {
+				$bitfield = $this->extractBitfield( $this->extractBitParams($wgRequest), $bitfield );
+			}
+			foreach( $this->checks as $item ) {
+				list( $message, $name, $field ) = $item;
+				$innerHTML = Xml::checkLabel( wfMsg($message), $name, $name, $bitfield & $field );
+				if( $field == Revision::DELETED_RESTRICTED )
+					$innerHTML = "<b>$innerHTML</b>";
+				$line = Xml::tags( 'td', array( 'class' => 'mw-input' ), $innerHTML );
+				$html .= "<tr>$line</tr>\n";
+			}
+		// Otherwise, use tri-state radios
+		} else {
+			$html .= '<tr>';
+			$html .= '<th class="mw-revdel-checkbox">'.wfMsgHtml('revdelete-radio-same').'</th>';
+			$html .= '<th class="mw-revdel-checkbox">'.wfMsgHtml('revdelete-radio-unset').'</th>';
+			$html .= '<th class="mw-revdel-checkbox">'.wfMsgHtml('revdelete-radio-set').'</th>';
+			$html .= "<th></th></tr>\n";
+			foreach( $this->checks as $item ) {
+				list( $message, $name, $field ) = $item;
+				// If there are several items, use third state by default...
+				if( $this->submitClicked ) {
+					$selected = $wgRequest->getInt( $name, 0 /* unchecked */ );
+				} else {
+					$selected = -1; // use existing field
+				}
+				$line = '<td class="mw-revdel-checkbox">' . Xml::radio( $name, -1, $selected == -1 ) . '</td>';
+				$line .= '<td class="mw-revdel-checkbox">' . Xml::radio( $name, 0, $selected == 0 ) . '</td>';
+				$line .= '<td class="mw-revdel-checkbox">' . Xml::radio( $name, 1, $selected == 1 ) . '</td>';
+				$label = wfMsgHtml($message);
+				if( $field == Revision::DELETED_RESTRICTED ) {
+					$label = "<b>$label</b>";
+				}
+				$line .= "<td>$label</td>";
+				$html .= "<tr>$line</tr>\n";
+			}
 		}
+		
 		$html .= '</table>';
 		return $html;
 	}
@@ -467,7 +501,7 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			$wgOut->addWikiMsg( 'sessionfailure' );
 			return false;
 		}
-		$bitfield = $this->extractBitfield( $request );
+		$bitParams = $this->extractBitParams( $request );
 		$listReason = $request->getText( 'wpRevDeleteReasonList', 'other' ); // from dropdown
 		$comment = $listReason;
 		if( $comment != 'other' && $this->otherReason != '' ) {
@@ -477,12 +511,12 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 			$comment = $this->otherReason;
 		}
 		# Can the user set this field?
-		if( $bitfield & Revision::DELETED_RESTRICTED && !$wgUser->isAllowed('suppressrevision') ) {
+		if( $bitParams[Revision::DELETED_RESTRICTED]==1 && !$wgUser->isAllowed('suppressrevision') ) {
 			$wgOut->permissionRequired( 'suppressrevision' );
 			return false;
 		}
 		# If the save went through, go to success message...
-		$status = $this->save( $bitfield, $comment, $this->targetObj );
+		$status = $this->save( $bitParams, $comment, $this->targetObj );
 		if ( $status->isGood() ) {
 			$this->success();
 			return true;
@@ -515,32 +549,52 @@ class SpecialRevisionDelete extends UnlistedSpecialPage {
 	}
 
 	/**
-	 * Put together a rev_deleted bitfield from the submitted checkboxes
+	 * Put together an array that contains -1, 0, or the *_deleted const for each bit
 	 * @param $request WebRequest
-	 * @return Integer
+	 * @return array
 	 */
-	protected function extractBitfield( $request ) {
-		$bitfield = 0;
+	protected function extractBitParams( $request ) {
+		$bitfield = array();
 		foreach( $this->checks as $item ) {
 			list( /* message */ , $name, $field ) = $item;
-			if( $request->getCheck( $name ) ) {
-				$bitfield |= $field;
+			$val = $request->getInt( $name, 0 /* unchecked */ );
+			if( $val < -1 || $val > 1) {
+				$val = -1; // -1 for existing value
 			}
+			$bitfield[$field] = $val;
+		}
+		if( !isset($bitfield[Revision::DELETED_RESTRICTED]) ) {
+			$bitfield[Revision::DELETED_RESTRICTED] = 0;
 		}
 		return $bitfield;
+	}
+	
+	/**
+	 * Put together a rev_deleted bitfield
+	 * @param $bitPars array extractBitParams() params
+	 * @param $oldfield int current bitfield
+	 * @return array
+	 */
+	public static function extractBitfield( $bitPars, $oldfield ) {
+		// Build the actual new rev_deleted bitfield
+		$newBits = 0;
+		foreach( $bitPars as $const => $val ) {
+			if( $val == 1 ) {
+				$newBits |= $const; // $const is the *_deleted const
+			} else if( $val == -1 ) {
+				$newBits |= ($oldfield & $const); // use existing
+			}
+		}
+		return $newBits;
 	}
 
 	/**
 	 * Do the write operations. Simple wrapper for RevDel_*List::setVisibility().
 	 */
 	protected function save( $bitfield, $reason, $title ) {
-		// Don't allow simply locking the interface for no reason
-		if( $bitfield == Revision::DELETED_RESTRICTED ) {
-			return Status::newFatal( 'revdelete-only-restricted' );
-		}
-		return $this->getList()->setVisibility( array(
-			'value' => $bitfield,
-			'comment' => $reason ) );
+		return $this->getList()->setVisibility(
+			array( 'value' => $bitfield, 'comment' => $reason )
+		);
 	}
 }
 
@@ -567,12 +621,12 @@ class RevisionDeleter {
 	}
 
 	/**
-	 * Gets an array describing the changes made to the visibilit of the revision.
-	 * If the resulting array is $arr, then $arr[0] will contain an array of strings
-	 * describing the items that were hidden, $arr[2] will contain an array of strings
-	 * describing the items that were unhidden, and $arr[3] will contain an array with
-	 * a single string, which can be one of "applied restrictions to sysops",
-	 * "removed restrictions from sysops", or null.
+	 * Gets an array of message keys describing the changes made to the visibility
+	 * of the revision. If the resulting array is $arr, then $arr[0] will contain an 
+	 * array of strings describing the items that were hidden, $arr[2] will contain 
+	 * an array of strings describing the items that were unhidden, and $arr[3] will 
+	 * contain an array with a single string, which can be one of "applied 
+	 * restrictions to sysops", "removed restrictions from sysops", or null.
 	 *
 	 * @param $n Integer: the new bitfield.
 	 * @param $o Integer: the old bitfield.
@@ -582,18 +636,18 @@ class RevisionDeleter {
 		$diff = $n ^ $o;
 		$ret = array( 0 => array(), 1 => array(), 2 => array() );
 		// Build bitfield changes in language
-		self::checkItem( wfMsgForContent( 'revdelete-content' ),
+		self::checkItem( 'revdelete-content',
 			Revision::DELETED_TEXT, $diff, $n, $ret );
-		self::checkItem( wfMsgForContent( 'revdelete-summary' ),
+		self::checkItem( 'revdelete-summary',
 			Revision::DELETED_COMMENT, $diff, $n, $ret );
-		self::checkItem( wfMsgForContent( 'revdelete-uname' ),
+		self::checkItem( 'revdelete-uname',
 			Revision::DELETED_USER, $diff, $n, $ret );
 		// Restriction application to sysops
 		if( $diff & Revision::DELETED_RESTRICTED ) {
 			if( $n & Revision::DELETED_RESTRICTED )
-				$ret[2][] = wfMsgForContent( 'revdelete-restricted' );
+				$ret[2][] = 'revdelete-restricted';
 			else
-				$ret[2][] = wfMsgForContent( 'revdelete-unrestricted' );
+				$ret[2][] = 'revdelete-unrestricted';
 		}
 		return $ret;
 	}
@@ -607,24 +661,46 @@ class RevisionDeleter {
 	 * @param $nbitfield Integer: The new bitfield for the revision.
 	 * @param $obitfield Integer: The old bitfield for the revision.
 	 * @param $isForLog Boolean
+	 * @param $forContent Boolean
 	 */
-	public static function getLogMessage( $count, $nbitfield, $obitfield, $isForLog = false ) {
-		global $wgLang;
+	public static function getLogMessage( $count, $nbitfield, $obitfield, $isForLog = false, $forContent = false ) {
+		global $wgLang, $wgContLang;
+		
+		$lang = $forContent ? $wgContLang : $wgLang;
+		$msgFunc = $forContent ? "wfMsgForContent" : "wfMsg";
+		
 		$s = '';
 		$changes = self::getChanges( $nbitfield, $obitfield );
+		array_walk($changes, 'RevisionDeleter::expandMessageArray', $forContent);
+		
+		$changesText = array();
+		
 		if( count( $changes[0] ) ) {
-			$s .= wfMsgForContent( 'revdelete-hid', implode( ', ', $changes[0] ) );
+			$changesText[] = $msgFunc( 'revdelete-hid', $lang->commaList( $changes[0] ) );
 		}
 		if( count( $changes[1] ) ) {
-			if ($s) $s .= '; ';
-			$s .= wfMsgForContent( 'revdelete-unhid', implode( ', ', $changes[1] ) );
+			$changesText[] = $msgFunc( 'revdelete-unhid', $lang->commaList( $changes[1] ) );
 		}
+		
+		$s = $lang->semicolonList( $changesText );
 		if( count( $changes[2] ) ) {
-			$s .= $s ? ' (' . $changes[2][0] . ')' : $changes[2][0];
+			$s .= $s ? ' (' . $changes[2][0] . ')' : ' ' . $changes[2][0];
 		}
+		
 		$msg = $isForLog ? 'logdelete-log-message' : 'revdelete-log-message';
-		return wfMsgExt( $msg, array( 'parsemag', 'content' ), $s, $wgLang->formatNum($count) );
-
+		return wfMsgExt( $msg, $forContent ? array( 'parsemag', 'content' ) : array( 'parsemag' ), $s, $lang->formatNum($count) );
+	}
+	
+	private static function expandMessageArray(& $msg, $key, $forContent) {
+		if ( is_array ($msg) ) {
+			array_walk($msg, 'RevisionDeleter::expandMessageArray', $forContent);
+		} else {
+			if ( $forContent ) {
+				$msg = wfMsgForContent($msg);
+			} else {
+				$msg = wfMsg($msg);
+			}
+		}
 	}
 	
 	// Get DB field name for URL param...
@@ -711,7 +787,7 @@ abstract class RevDel_List {
 	 * @return Status
 	 */
 	public function setVisibility( $params ) {
-		$newBits = $params['value'];
+		$bitPars = $params['value'];
 		$comment = $params['comment'];
 
 		$this->res = false;
@@ -728,8 +804,10 @@ abstract class RevDel_List {
 			$item = $this->current();
 			unset( $missing[ $item->getId() ] );
 
-			// Make error messages less vague
 			$oldBits = $item->getBits();
+			// Build the actual new rev_deleted bitfield
+			$newBits = SpecialRevisionDelete::extractBitfield( $bitPars, $oldBits );
+
 			if ( $oldBits == $newBits ) {
 				$status->warning( 'revdelete-no-change', $item->formatDate(), $item->formatTime() );
 				$status->failCount++;
@@ -750,11 +828,18 @@ abstract class RevDel_List {
 			}
 			if ( !$item->canView() ) {
 				// Cannot access this revision
-				$msg = $opType == 'show' ? 'revdelete-show-no-access' : 'revdelete-modify-no-access';
+				$msg = ($opType == 'show') ?
+					'revdelete-show-no-access' : 'revdelete-modify-no-access';
 				$status->error( $msg, $item->formatDate(), $item->formatTime() );
 				$status->failCount++;
 				continue;
 			}
+			// Cannot just "hide from Sysops" without hiding any fields
+			if( $newBits == Revision::DELETED_RESTRICTED ) {
+				$status->warning( 'revdelete-only-restricted', $item->formatDate(), $item->formatTime() );
+				$status->failCount++;
+				continue;
+			} 
 
 			// Update the revision
 			$ok = $item->setBits( $newBits );
@@ -919,6 +1004,17 @@ abstract class RevDel_List {
 		$this->res->next();
 		$this->initCurrent();
 		return $this->current;
+	}
+	
+	/**
+	 * Get the number of items in the list.
+	 */
+	public function length() {
+		if( !$this->res ) {
+			return 0;
+		} else {
+			return $this->res->numRows();
+		}
 	}
 
 	/**

@@ -291,9 +291,6 @@ $messages = array(
 'vector-namespace-category' => 'Kategori',
 'vector-namespace-help'     => 'Èd',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Erè',
 'returnto'          => 'Ritounen nan paj $1.',
 'tagline'           => 'Yon atik de {{SITENAME}}.',
@@ -650,8 +647,7 @@ Adrès IP ou an kounye a se $3. Idantifyan, non ou an nan kilès ou bloke a se $
 'whitelistedittext'                => 'Ou dwèt gen fonksyon sa $1 pou ou kapab genyen dwa pou modifye kontni sa.',
 'confirmedittext'                  => 'Ou dwèt konfime adrès imèl ou an anvan ou modifye paj {{SITENAME}} sa. Antre epi valide adrès elektwonik ou an ak èd ou kapab twouve nan paj sa [[Special:Preferences|preferans]].',
 'nosuchsectiontitle'               => 'Seksyon sa pa gen anyen sou li',
-'nosuchsectiontext'                => 'Ou eseye modifye yon seksyon ki pa egziste nan sitèm an.
-Paske sistèm an pa gen seksyon $1 sa, nou pa twouve pyès lòt kote pou pibliye modifikasyon ou fè nan paj sa.',
+'nosuchsectiontext'                => 'Ou eseye modifye yon seksyon ki pa egziste nan sitèm an.',
 'loginreqtitle'                    => 'Koneksyon an nesesè',
 'loginreqlink'                     => 'konekete ou',
 'loginreqpagetext'                 => 'Ou dwèt $1 pou ou kapab wè lòt paj yo.',
@@ -663,7 +659,7 @@ Pou ou kapab kreye paj sa a, komanse ap ekri nan bwat sa a ki anba (gade [[{{Med
 
 Si se paske ou komèt yon erè ke ou ap twouve ou nan paj sa a, klike anlè bouton '''ritounen''' nan bwozè ou a.",
 'anontalkpagetext'                 => "---- ''Ou nan paj diskisyon yon itilizatè anonim, ki pa gen non, ki poko kreye yon kont oubyen ki pa itilize pyès kont nan sistèm sa. Pou rezon sa, nou dwèt itilize adrès IP l pou nou kapab lokalize l, sitye l, montre kote l rete, idantifye l. Yon adrès IP kapab pataje ant plizyè moun, plizyè itilizatè. Si ou se yon itilizatè anonim e si ou wè ke ou resevwa komantè ki pa te pou ou, ou mèt [[Special:UserLogin|kreye yon kont oubyen konekte w]] pou ou kapab anpeche difikilte sa yo, move bagay sa yo ant lòt itilizatè yo, kontribitè anonim yo.''",
-'noarticletext'                    => 'Poko genyen tèks nan paj sa a, ou mèt [[Special:Search/{{PAGENAME}}|fè yon rechèch, fouye ak non paj sa a]] nan lòt paj, oubyen [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifye li].',
+'noarticletext'                    => 'Poko genyen tèks nan paj sa a, ou mèt [[Special:Search/{{PAGENAME}}|fè yon rechèch, fouye ak non paj sa a]] nan lòt paj yo, oubyen <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} chache jounal modifikasyon yo ki an relasyon ak paj sa] oubyen tou [{{fullurl:{{FULLPAGENAME}}|action=edit}} modifye paj sa]</span>.',
 'userpage-userdoesnotexist'        => 'Kont itilizatè « $1 » sa pa anrejistre. Verifye toutbon ke ou vle kreye paj sa.',
 'clearyourcache'                   => "'''Note bagay sa:''' depi ou pibliye paj sa, ou dwèt fòse chajman, rafrechi paj an; ou mèt bliye kontni kach sistèm bwozè (navigatè entènèt ou an) kounye a pou ou kapab wè chanjman yo : '''Mozilla / Firefox / Konqueror / Safari :''' mentni touch ''lèt kapital'' ak klike sou bouton ''Rafrechi/Aktyalize'' oubyen peze ''Maj-Ctrl-R'' (''Maj-Cmd-R'' sou sistèm Apple Mac) ; '''Internet Explorer / Opera :''' mentni touch ''Ctrl'' pandan ou ap prese bouton ''Rafrechi/Aktyalize'' oubyen peze ''Ctrl-F5''.",
 'usercssyoucanpreview'             => "'''Bagay ki ap sèvi w :''' Itilize bouton « Voye kout zye » pou teste nouvo fèy CSS anvan ou anrejistre l.",
@@ -698,8 +694,8 @@ Kèk bwozè (firefox,ie,opera,safari...) pa kapab afiche byen byen modifikasyon 
 'longpageerror'                    => "'''ERÈ : Tèks ou anrejistre a ap fè $1 Ko, tay sa a depase kapasite limit nou kapab aksepte kounye a: $2 Ko. Nou pa kapab anrejistre tèks sa. Eseye ritounen nan paj ou te ye anvan pou kopye modifikasyon ou yo.'''",
 'protectedpagewarning'             => "'''Pote atansyon : paj sa a pwoteje.
 Sèl itilizatè yo ki genyen estati administratè kapab modifye l.'''",
-'templatesused'                    => 'Modèl ki itilize nan paj sa a :',
-'templatesusedpreview'             => 'Modèl ki itilize nan kout zye sa a (previzyalizasyon):',
+'templatesused'                    => '{{PLURAL:$1|Modèl|Modèl yo}} ki itilize nan paj sa a :',
+'templatesusedpreview'             => '{{PLURAL:$1|Modèl|Modèl yo}}ki itilize nan kout zye sa a (previzyalizasyon):',
 'templatesusedsection'             => 'Modèl yo ki itilize nan seksyon sa :',
 'template-protected'               => '(pwoteje)',
 'template-semiprotected'           => '(semi-pwoteje)',
@@ -759,12 +755,12 @@ Sistèm an ap montre, anba paj sa, jounal tout vèsyon paj an ki efase pou sèvi
 'revdelete-selected'        => "'''{{PLURAL:$2|Vèsyon ou seleksyone|Vèsyon ou seleksyone yo}} de $1 :'''",
 'revdelete-legend'          => 'Mete restriksyon nan vizibilite yo :',
 'revdelete-hide-text'       => 'Kache tèks anba vèsyon sa',
+'revdelete-hide-image'      => 'Kache kontni fichye a',
 'revdelete-hide-name'       => 'Kache aksyon an ak sib li',
 'revdelete-hide-comment'    => 'Kache komantè sou modifikasyon an',
 'revdelete-hide-user'       => 'Kache idantifyan, non itilizatè oubyen adrès IP kontribitè an.',
 'revdelete-hide-restricted' => 'Aplike restriksyon sa yo pou administratè yo epi lòt itilizatè yo',
 'revdelete-suppress'        => 'Kache revizyon yo tou pou administratè yo',
-'revdelete-hide-image'      => 'Kache kontni fichye a',
 'revdelete-unsuppress'      => 'Anlve restriksyon yo sou vèsyon yo ki restore',
 'revdelete-log'             => 'Komantè pou istorik paj sa :',
 'revdelete-submit'          => 'Aplike sou vèsyon ki seleksyone a',

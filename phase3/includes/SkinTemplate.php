@@ -134,9 +134,12 @@ class SkinTemplate extends Skin {
 		global $wgMaxCredits, $wgShowCreditsIfMax;
 		global $wgPageShowWatchingUsers;
 		global $wgUseTrackbacks, $wgUseSiteJs, $wgDebugComments;
-		global $wgArticlePath, $wgScriptPath, $wgServer;
+		global $wgArticlePath, $wgScriptPath, $wgServer, $wgProfiler;
 
 		wfProfileIn( __METHOD__ );
+		if ( is_object( $wgProfiler ) ) {
+			$wgProfiler->setTemplated( true );
+		}
 
 		$oldid = $wgRequest->getVal( 'oldid' );
 		$diff = $wgRequest->getVal( 'diff' );
@@ -300,61 +303,37 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
-		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
+		$tpl->set( 'username', $wgUser->isAnon() ? null : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href'] );
 		$tpl->set( 'userlang', $wgLang->getCode() );
-		$tpl->set( 'userlangattributes', 'lang="' . $wgLang->getCode() . '" xml:lang="' . $wgLang->getCode() . '"' );
 
-		$newtalks = $wgUser->getNewMessageLinks();
+		// Users can have their language set differently than the
+		// content of the wiki. For these users, tell the web browser
+		// that interface elements are in a different language.
+		$tpl->set( 'userlangattributes', '' );
+		$tpl->set( 'specialpageattributes', '' );
 
-		if( count( $newtalks ) == 1 && $newtalks[0]['wiki'] === wfWikiID() ) {
-			$usertitle = $this->mUser->getUserPage();
-			$usertalktitle = $usertitle->getTalkPage();
+		$lang = $wgLang->getCode();
+		$dir  = $wgLang->getDir();
+		if ( $lang !== $wgContLang->getCode() || $dir !== $wgContLang->getDir() ) {
+			$attrs = " lang='$lang' dir='$dir'";
 
-			if( !$usertalktitle->equals( $this->mTitle ) ) {
-				$newmessageslink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessageslink' ),
-					array(),
-					array( 'redirect' => 'no' ),
-					array( 'known', 'noclasses' )
-				);
+			$tpl->set( 'userlangattributes', $attrs );
 
-				$newmessagesdifflink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessagesdifflink' ),
-					array(),
-					array( 'diff' => 'cur' ),
-					array( 'known', 'noclasses' )
-				);
-
-				$ntl = wfMsg(
-					'youhavenewmessages',
-					$newmessageslink,
-					$newmessagesdifflink
-				);
-				# Disable Cache
-				$out->setSquidMaxage( 0 );
+			// The content of SpecialPages should be presented in the
+			// user's language. Content of regular pages should not be touched.
+			if( $this->mTitle->isSpecialPage() ) {
+				$tpl->set( 'specialpageattributes', $attrs );
 			}
-		} else if( count( $newtalks ) ) {
-			// _>" " for BC <= 1.16
-			$sep = str_replace( '_', ' ', wfMsgHtml( 'newtalkseparator' ) );
-			$msgs = array();
-			foreach( $newtalks as $newtalk ) {
-				$msgs[] = Xml::element('a',
-					array( 'href' => $newtalk['link'] ), $newtalk['wiki'] );
-			}
-			$parts = implode( $sep, $msgs );
-			$ntl = wfMsgHtml( 'youhavenewmessagesmulti', $parts );
-			$out->setSquidMaxage( 0 );
-		} else {
-			$ntl = '';
 		}
+
+		$newtalks = $this->getNewtalks();
+
 		wfProfileOut( __METHOD__ . '-stuff2' );
 
 		wfProfileIn( __METHOD__ . '-stuff3' );
-		$tpl->setRef( 'newtalk', $ntl );
+		$tpl->setRef( 'newtalk', $newtalks );
 		$tpl->setRef( 'skin', $this );
 		$tpl->set( 'logo', $this->logoText() );
 		if ( $out->isArticle() and ( !isset( $oldid ) or isset( $diff ) ) and
@@ -472,14 +451,6 @@ class SkinTemplate extends Skin {
 		$content_actions = $this->buildContentActionUrls();
 		$tpl->setRef( 'content_actions', $content_actions );
 
-		// XXX: attach this from javascript, same with section editing
-		if( $this->iseditable && $wgUser->getOption( 'editondblclick' ) ){
-			$encEditUrl = Xml::escapeJsString( $this->mTitle->getLocalUrl( $this->editUrlOptions() ) );
-			$tpl->set( 'body_ondblclick', 'document.location = "' . $encEditUrl . '";' );
-		} else {
-			$tpl->set( 'body_ondblclick', false );
-		}
-		$tpl->set( 'body_onload', false );
 		$tpl->set( 'sidebar', $this->buildSidebar() );
 		$tpl->set( 'nav_urls', $this->buildNavUrls() );
 
@@ -741,19 +712,10 @@ class SkinTemplate extends Skin {
 				// adds new section link if page is a current revision of a talk page or
 				if ( ( $wgArticle && $wgArticle->isCurrent() && $istalk ) || $wgOut->showNewSectionLink() ) {
 					if ( !$wgOut->forceHideNewSectionLink() ) {
-						$urlArgs = 'action=edit&section=new';
-						$preloadMsg = wfMsg( 'talk-addsection-preload' );
-						$editintroMsg = wfMsg( 'talk-addsection-editintro' );
-						if( '' != $preloadMsg  ) {
-							$urlArgs .= '&preload=' . urlencode( $preloadMsg );
-						}
-						if( '' != $editintroMsg ) {
-							$urlArgs .= '&editintro=' . urlencode( $editintroMsg );
-						}
 						$content_actions['addsection'] = array(
 							'class' => $section == 'new' ? 'selected' : false,
 							'text' => wfMsg( 'addsection' ),
-							'href' => $this->mTitle->getLocalUrl( $urlArgs )
+							'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
 						);
 					}
 				}
@@ -859,7 +821,7 @@ class SkinTemplate extends Skin {
 			}
 
 
-			wfRunHooks( 'SkinTemplateTabs', array( &$this, &$content_actions ) );
+			wfRunHooks( 'SkinTemplateTabs', array( $this, &$content_actions ) );
 		} else {
 			/* show special page tab */
 

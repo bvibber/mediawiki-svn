@@ -30,7 +30,7 @@ class RefreshLinks extends Maintenance {
 		$this->addOption( 'old-redirects-only', 'Only fix redirects with no redirect table entry' );
 		$this->addOption( 'm', 'Maximum replication lag', false, true );
 		$this->addOption( 'e', 'Last page id to refresh', false, true );
-		$this->addArg( 'start', 'Page_id to start from, default 1' );
+		$this->addArg( 'start', 'Page_id to start from, default 1', false );
 		$this->setBatchSize( 100 );
 	}
 
@@ -122,10 +122,12 @@ class RefreshLinks extends Maintenance {
 					$this->fixLinksFromArticle( $row->page_id );
 			}
 		} else {
-			$this->output( "Refreshing $what table.\n" );
 			if ( !$end ) {
-				$end = $dbr->selectField( 'page', 'max(page_id)', false );
+				$maxPage = $dbr->selectField( 'page', 'max(page_id)', false );
+				$maxRD = $dbr->selectField( 'redirect', 'max(rd_from)', false );
+				$end = max( $maxPage, $maxRD );
 			}
+			$this->output( "Refreshing redirects table.\n" );
 			$this->output( "Starting from page_id $start of $end.\n" );
 	
 			for ($id = $start; $id <= $end; $id++) {
@@ -134,10 +136,21 @@ class RefreshLinks extends Maintenance {
 					$this->output( "$id\n" );
 					wfWaitForSlaves( $maxLag );
 				}
-				if($redirectsOnly)
-					$this->fixRedirect( $id );
-				else
+				$this->fixRedirect( $id );
+			}
+
+			if(!$redirectsOnly) {
+				$this->output( "Refreshing links table.\n" );
+				$this->output( "Starting from page_id $start of $end.\n" );
+
+				for ($id = $start; $id <= $end; $id++) {
+	
+					if ( !($id % $reportingInterval) ) {
+						$this->output( "$id\n" );
+						wfWaitForSlaves( $maxLag );
+					}
 					$this->fixLinksFromArticle( $id );
+				}
 			}
 		}
 	}
@@ -153,16 +166,24 @@ class RefreshLinks extends Maintenance {
 		$dbw = wfGetDB( DB_MASTER );
 	
 		if ( is_null( $wgTitle ) ) {
+			// This page doesn't exist (any more)
+			// Delete any redirect table entry for it
+			$dbw->delete( 'redirect', array( 'rd_from' => $id ),
+				__METHOD__ );
 			return;
 		}
 		$wgArticle = new Article($wgTitle);
 	
 		$rt = $wgArticle->followRedirect();
 	
-		if($rt == false || !is_object($rt))
-			return;
-	
-		$wgArticle->updateRedirectOn($dbw,$rt);
+		if($rt == false || !is_object($rt)) {
+			// $wgTitle is not a redirect
+			// Delete any redirect table entry for it
+			$dbw->delete( 'redirect', array( 'rd_from' => $id ),
+				__METHOD__ );
+		} else {
+			$wgArticle->updateRedirectOn($dbw,$rt);
+		}
 	}
 
 	/**
@@ -192,7 +213,7 @@ class RefreshLinks extends Maintenance {
 		$parserOutput = $wgParser->parse( $revision->getText(), $wgTitle, $options, true, true, $revision->getId() );
 		$update = new LinksUpdate( $wgTitle, $parserOutput, false );
 		$update->doUpdate();
-		$dbw->immediateCommit();
+		$dbw->commit();
 	}
 
 	/*

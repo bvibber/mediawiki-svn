@@ -12,7 +12,7 @@ $wgProfiling = true;
 
 /**
  * Begin profiling of a function
- * @param $functioname name of the function we will profile
+ * @param $functionname name of the function we will profile
  */
 function wfProfileIn( $functionname ) {
 	global $wgProfiler;
@@ -21,7 +21,7 @@ function wfProfileIn( $functionname ) {
 
 /**
  * Stop profiling of a function
- * @param $functioname name of the function we have profiled
+ * @param $functionname name of the function we have profiled
  */
 function wfProfileOut( $functionname = 'missing' ) {
 	global $wgProfiler;
@@ -31,8 +31,8 @@ function wfProfileOut( $functionname = 'missing' ) {
 /**
  * Returns a profiling output to be stored in debug file
  *
- * @param float $start
- * @param float $elapsed time elapsed since the beginning of the request
+ * @param $start Float
+ * @param $elapsed Float: time elapsed since the beginning of the request
  */
 function wfGetProfilingOutput( $start, $elapsed ) {
 	global $wgProfiler;
@@ -61,6 +61,7 @@ if (!function_exists('memory_get_usage')) {
 class Profiler {
 	var $mStack = array (), $mWorkStack = array (), $mCollated = array ();
 	var $mCalls = array (), $mTotals = array ();
+	var $mTemplated = false;
 
 	function __construct() {
 		// Push an entry for the pre-profile setup time onto the stack
@@ -137,6 +138,14 @@ class Profiler {
 		while( count( $this->mWorkStack ) ){
 			$this->profileOut( 'close' );
 		}
+	}
+
+	/**
+	 * Mark this call as templated or not
+	 * @param $t Boolean
+	 */
+	function setTemplated( $t ) {
+		$this->mTemplated = $t;
 	}
 
 	/**
@@ -259,6 +268,7 @@ class Profiler {
 		wfProfileOut( '-overhead-total' );
 
 		# First, subtract the overhead!
+		$overheadTotal = $overheadMemory = $overheadInternal = array();
 		foreach( $this->mStack as $entry ){
 			$fname = $entry[0];
 			$start = $entry[2];

@@ -21,21 +21,21 @@ class IBM_DB2Field {
 
 	/**
 	 * Builder method for the class 
-	 * @param DatabaseIbm_db2 $db Database interface
-	 * @param string $table table name
-	 * @param string $field column name
+	 * @param $db DatabaseIbm_db2: Database interface
+	 * @param $table String: table name
+	 * @param $field String: column name
 	 * @return IBM_DB2Field
 	 */
 	static function fromText($db, $table, $field) {
 		global $wgDBmwschema;
 
-		$q = <<<END
+		$q = <<<SQL
 SELECT
 lcase(coltype) AS typname,
 nulls AS attnotnull, length AS attlen
 FROM sysibm.syscolumns
 WHERE tbcreator=%s AND tbname=%s AND name=%s;
-END;
+SQL;
 		$res = $db->query(sprintf($q,
 				$db->addQuotes($wgDBmwschema),
 				$db->addQuotes($table),
@@ -123,19 +123,19 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 */
 	
 	/// Server port for uncataloged connections
-	protected $mPort = NULL;
+	protected $mPort = null;
 	/// Whether connection is cataloged
-	protected $mCataloged = NULL;
+	protected $mCataloged = null;
 	/// Schema for tables, stored procedures, triggers
-	protected $mSchema = NULL;
+	protected $mSchema = null;
 	/// Whether the schema has been applied in this session
 	protected $mSchemaSet = false;
 	/// Result of last query
-	protected $mLastResult = NULL;
+	protected $mLastResult = null;
 	/// Number of rows affected by last INSERT/UPDATE/DELETE
-	protected $mAffectedRows = NULL;
+	protected $mAffectedRows = null;
 	/// Number of rows returned by last SELECT
-	protected $mNumRows = NULL;
+	protected $mNumRows = null;
 	
 	/// Connection config options - see constructor
 	public $mConnOptions = array();
@@ -158,7 +158,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	protected $mMode = self::REGULAR_MODE;
 	
 	/// Last sequence value used for a primary key
-	protected $mInsertId = NULL;
+	protected $mInsertId = null;
 	
 	/*
 	 * These can be safely inherited
@@ -391,7 +391,10 @@ class DatabaseIbm_db2 extends DatabaseBase {
 			return $this->mDBname;
 		}
 	}
-	
+
+	function getType() {
+		return 'ibm_db2';
+	}
 	
 	######################################
 	# Setup
@@ -400,12 +403,13 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	
 	/**
 	 * 
-	 * @param string $server hostname of database server
-	 * @param string $user username
-	 * @param string $password
-	 * @param string $dbName database name on the server
-	 * @param function $failFunction (optional)
-	 * @param integer $flags database behaviour flags (optional, unused)
+	 * @param $server String: hostname of database server
+	 * @param $user String: username
+	 * @param $password String: password
+	 * @param $dbName String: database name on the server
+	 * @param $failFunction Callback (optional)
+	 * @param $flags Integer: database behaviour flags (optional, unused)
+	 * @param $schema String
 	 */
 	public function DatabaseIbm_db2($server = false, $user = false, $password = false,
 							$dbName = false, $failFunction = false, $flags = 0,
@@ -415,7 +419,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		global $wgOut, $wgDBmwschema;
 		# Can't get a reference if it hasn't been set yet
 		if ( !isset( $wgOut ) ) {
-			$wgOut = NULL;
+			$wgOut = null;
 		}
 		$this->mOut =& $wgOut;
 		$this->mFailFunction = $failFunction;
@@ -438,9 +442,9 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	
 	/**
 	 * Enables options only if the ibm_db2 extension version supports them
-	 * @param string $name Name of the option in the options array
-	 * @param string $const Name of the constant holding the right option value
-	 * @param int $type Whether this is a Connection or Statement otion
+	 * @param $name String: name of the option in the options array
+	 * @param $const String: name of the constant holding the right option value
+	 * @param $type Integer: whether this is a Connection or Statement otion
 	 */
 	private function setDB2Option($name, $const, $type) {
 		if (defined($const)) {
@@ -454,7 +458,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	
 	/**
 	 * Outputs debug information in the appropriate place
-	 * @param string $string The relevant debug message
+	 * @param $string String: the relevant debug message
 	 */
 	private function installPrint($string) {
 		wfDebug("$string");
@@ -468,10 +472,10 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 * Opens a database connection and returns it
 	 * Closes any existing connection
 	 * @return a fresh connection
-	 * @param string $server hostname
-	 * @param string $user
-	 * @param string $password
-	 * @param string $dbName database name
+	 * @param $server String: hostname
+	 * @param $user String
+	 * @param $password String
+	 * @param $dbName String: database name
 	 */
 	public function open( $server, $user, $password, $dbName )
 	{
@@ -573,14 +577,14 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	
 	/**
 	 * Returns a fresh instance of this class
-	 * @static
-	 * @return 
-	 * @param string $server hostname of database server
-	 * @param string $user username
-	 * @param string $password
-	 * @param string $dbName database name on the server
-	 * @param function $failFunction (optional)
-	 * @param integer $flags database behaviour flags (optional, unused)
+	 *
+	 * @param $server String: hostname of database server
+	 * @param $user String: username
+	 * @param $password String
+	 * @param $dbName String: database name on the server
+	 * @param $failFunction Callback (optional)
+	 * @param $flags Integer: database behaviour flags (optional, unused)
+	 * @return DatabaseIbm_db2 object
 	 */
 	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0)
 	{
@@ -646,7 +650,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 			throw new DBUnexpectedError($this,  'SQL error: ' . htmlspecialchars( $error ) );
 		}
 		$this->mLastResult = $ret;
-		$this->mAffectedRows = NULL;	// Not calculated until asked for
+		$this->mAffectedRows = null;	// Not calculated until asked for
 		return $ret;
 	}
 	
@@ -766,7 +770,7 @@ EOF;
 	/**
 	 * Escapes strings
 	 * Doesn't escape numbers
-	 * @param string s string to escape
+	 * @param $s String: string to escape
 	 * @return escaped string
 	 */
 	public function addQuotes( $s ) {
@@ -790,7 +794,7 @@ EOF;
 	/**
 	 * Verifies that a DB2 column/field type is numeric
 	 * @return bool true if numeric
-	 * @param string $type DB2 column type
+	 * @param $type String: DB2 column type
 	 */
 	public function is_numeric_type( $type ) {
 		switch (strtoupper($type)) {
@@ -809,7 +813,7 @@ EOF;
 	
 	/**
 	 * Alias for addQuotes()
-	 * @param string s string to escape
+	 * @param $s String: string to escape
 	 * @return escaped string
 	 */
 	public function strencode( $s ) {
@@ -943,9 +947,9 @@ EOF;
 	/**
 	 * Construct a LIMIT query with optional offset
 	 * This is used for query pages
-	 * $sql string SQL query we will append the limit too
-	 * $limit integer the SQL limit
-	 * $offset integer the SQL offset (default false)
+	 * @param $sql string SQL query we will append the limit too
+	 * @param $limit integer the SQL limit
+	 * @param $offset integer the SQL offset (default false)
 	 */
 	public function limitResult($sql, $limit, $offset=false) {
 		if( !is_numeric($limit) ) {
@@ -981,7 +985,7 @@ EOF;
 	/**
 	 * Generates a timestamp in an insertable format
 	 * @return string timestamp value
-	 * @param timestamp $ts
+	 * @param $ts timestamp
 	 */
 	public function timestamp( $ts=0 ) {
 		// TS_MW cannot be easily distinguished from an integer
@@ -990,7 +994,7 @@ EOF;
 
 	/**
 	 * Return the next in a sequence, save the value for retrieval via insertId()
-	 * @param string seqName Name of a defined sequence in the database
+	 * @param $seqName String: name of a defined sequence in the database
 	 * @return next value in that sequence
 	 */
 	public function nextSequenceValue( $seqName ) {
@@ -1004,7 +1008,7 @@ EOF;
 		$this->freeResult( $res );
 		return $this->mInsertId;
 		*/
-		return NULL;
+		return null;
 	}
 	
 	/**
@@ -1017,9 +1021,9 @@ EOF;
 	
 	/**
 	 * Updates the mInsertId property with the value of the last insert into a generated column
-	 * @param string	$table		Sanitized table name
-	 * @param mixed		$primaryKey	String name of the primary key or a bool if this call is a do-nothing
-	 * @param resource	$stmt		Prepared statement resource
+	 * @param $table      String: sanitized table name
+	 * @param $primaryKey Mixed: string name of the primary key or a bool if this call is a do-nothing
+	 * @param $stmt       Resource: prepared statement resource
 	 *  of the SELECT primary_key FROM FINAL TABLE ( INSERT ... ) form
 	 */
 	private function calcInsertId($table, $primaryKey, $stmt) {
@@ -1035,10 +1039,10 @@ EOF;
 	 * $args may be a single associative array, or an array of these with numeric keys,
 	 * for multi-row insert
 	 *
-	 * @param array $table   String: Name of the table to insert to.
-	 * @param array $args    Array: Items to insert into the table.
-	 * @param array $fname   String: Name of the function, for profiling
-	 * @param mixed $options String or Array. Valid options: IGNORE
+	 * @param $table   String: Name of the table to insert to.
+	 * @param $args    Array: Items to insert into the table.
+	 * @param $fname   String: Name of the function, for profiling
+	 * @param $options String or Array. Valid options: IGNORE
 	 *
 	 * @return bool Success of insert operation. IGNORE always returns true.
 	 */
@@ -1147,9 +1151,9 @@ EOF;
 	 * Given a table name and a hash of columns with values
 	 * Removes primary key columns from the hash where the value is NULL
 	 * 
-	 * @param string $table Name of the table
-	 * @param array $args Array of hashes of column names with values
-	 * @return array Tuple containing filtered array of columns, array of primary keys
+	 * @param $table String: name of the table
+	 * @param $args Array of hashes of column names with values
+	 * @return Array: tuple containing filtered array of columns, array of primary keys
 	 */
 	private function removeNullPrimaryKeys($table, $args) {
 		$schema = $this->mSchema;
@@ -1162,7 +1166,7 @@ EOF;
 		// remove primary keys
 		foreach ($args as $ai => $row) {
 			foreach ($keys as $ki => $key) {
-				if ($row[$key] == NULL) {
+				if ($row[$key] == null) {
 					unset($row[$key]);
 				}
 			}
@@ -1175,14 +1179,14 @@ EOF;
 	/**
 	 * UPDATE wrapper, takes a condition array and a SET array
 	 *
-	 * @param string $table  The table to UPDATE
-	 * @param array  $values An array of values to SET
-	 * @param array  $conds  An array of conditions (WHERE). Use '*' to update all rows.
-	 * @param string $fname  The Class::Function calling this function
-	 *                       (for the log)
-	 * @param array  $options An array of UPDATE options, can be one or
-	 *                        more of IGNORE, LOW_PRIORITY
-	 * @return bool
+	 * @param $table  String: The table to UPDATE
+	 * @param $values An array of values to SET
+	 * @param $conds  An array of conditions (WHERE). Use '*' to update all rows.
+	 * @param $fname  String: The Class::Function calling this function
+	 *                (for the log)
+	 * @param $options An array of UPDATE options, can be one or
+	 *                 more of IGNORE, LOW_PRIORITY
+	 * @return Boolean
 	 */
 	public function update( $table, $values, $conds, $fname = 'Database::update', $options = array() ) {
 		$table = $this->tableName( $table );
@@ -1213,7 +1217,7 @@ EOF;
 	
 	/**
 	 * Returns the number of rows affected by the last query or 0
-	 * @return int the number of rows affected by the last query
+	 * @return Integer: the number of rows affected by the last query
 	 */
 	public function affectedRows() {
 		if ( !is_null( $this->mAffectedRows ) ) {
@@ -1228,9 +1232,9 @@ EOF;
 	/**
 	 * Simulates REPLACE with a DELETE followed by INSERT
 	 * @param $table Object
-	 * @param array $uniqueIndexes array consisting of indexes and arrays of indexes
-	 * @param array $rows Rows to insert
-	 * @param string $fname Name of the function for profiling
+	 * @param $uniqueIndexes Array consisting of indexes and arrays of indexes
+	 * @param $rows Array: rows to insert
+	 * @param $fname String: name of the function for profiling
 	 * @return nothing
 	 */
 	function replace( $table, $uniqueIndexes, $rows, $fname = 'DatabaseIbm_db2::replace' ) {
@@ -1285,8 +1289,8 @@ EOF;
 	/**
 	 * Returns the number of rows in the result set
 	 * Has to be called right after the corresponding select query
-	 * @param object $res result set
-	 * @return int number of rows
+	 * @param $res Object result set
+	 * @return Integer: number of rows
 	 */
 	public function numRows( $res ) {
 		if ( $res instanceof ResultWrapper ) {
@@ -1302,8 +1306,8 @@ EOF;
 	
 	/**
 	 * Moves the row pointer of the result set
-	 * @param object $res result set
-	 * @param int $row row number
+	 * @param $res Object: result set
+	 * @param $row Integer: row number
 	 * @return success or failure
 	 */
 	public function dataSeek( $res, $row ) {
@@ -1319,8 +1323,8 @@ EOF;
 	
 	/**
 	 * Frees memory associated with a statement resource
-	 * @param object $res Statement resource to free
-	 * @return bool success or failure
+	 * @param $res Object: statement resource to free
+	 * @return Boolean success or failure
 	 */
 	public function freeResult( $res ) {
 		if ( $res instanceof ResultWrapper ) {
@@ -1333,7 +1337,7 @@ EOF;
 	
 	/**
 	 * Returns the number of columns in a resource
-	 * @param object $res Statement resource
+	 * @param $res Object: statement resource
 	 * @return Number of fields/columns in resource
 	 */
 	public function numFields( $res ) {
@@ -1345,9 +1349,9 @@ EOF;
 	
 	/**
 	 * Returns the nth column name
-	 * @param object $res Statement resource
-	 * @param int $n Index of field or column
-	 * @return string name of nth column
+	 * @param $res Object: statement resource
+	 * @param $n Integer: Index of field or column
+	 * @return String name of nth column
 	 */
 	public function fieldName( $res, $n ) {
 		if ( $res instanceof ResultWrapper ) {
@@ -1359,15 +1363,15 @@ EOF;
 	/**
 	 * SELECT wrapper
 	 *
-	 * @param mixed  $table   Array or string, table name(s) (prefix auto-added)
-	 * @param mixed  $vars    Array or string, field name(s) to be retrieved
-	 * @param mixed  $conds   Array or string, condition(s) for WHERE
-	 * @param string $fname   Calling function name (use __METHOD__) for logs/profiling
-	 * @param array  $options Associative array of options (e.g. array('GROUP BY' => 'page_title')),
-	 *                        see Database::makeSelectOptions code for list of supported stuff
-	 * @param array $join_conds Associative array of table join conditions (optional)
-	 *                        (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
-	 * @return mixed Database result resource (feed to Database::fetchObject or whatever), or false on failure
+	 * @param $table   Array or string, table name(s) (prefix auto-added)
+	 * @param $vars    Array or string, field name(s) to be retrieved
+	 * @param $conds   Array or string, condition(s) for WHERE
+	 * @param $fname   String: calling function name (use __METHOD__) for logs/profiling
+	 * @param $options Associative array of options (e.g. array('GROUP BY' => 'page_title')),
+	 *                 see Database::makeSelectOptions code for list of supported stuff
+	 * @param $join_conds Associative array of table join conditions (optional)
+	 *                    (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
+	 * @return Mixed: database result resource (feed to Database::fetchObject or whatever), or false on failure
 	 */
 	public function select( $table, $vars, $conds='', $fname = 'DatabaseIbm_db2::select', $options = array(), $join_conds = array() )
 	{
@@ -1408,9 +1412,9 @@ EOF;
 	 * 
 	 * @private
 	 *
-	 * @param array $options an associative array of options to be turned into
+	 * @param $options Associative array of options to be turned into
 	 *              an SQL query, valid keys are listed in the function.
-	 * @return array
+	 * @return Array
 	 */
 	function makeSelectOptions( $options ) {
 		$preLimitTail = $postLimitTail = '';
@@ -1444,7 +1448,7 @@ EOF;
 	 * Get search engine class. All subclasses of this
 	 * need to implement this if they wish to use searching.
 	 * 
-	 * @return string
+	 * @return String
 	 */
 	public function getSearchEngine() {
 		return "SearchIBM_DB2";
@@ -1452,7 +1456,7 @@ EOF;
 
 	/**
 	 * Did the last database access fail because of deadlock?
-	 * @return bool
+	 * @return Boolean
 	 */
 	public function wasDeadlock() {
 		// get SQLSTATE
@@ -1470,13 +1474,13 @@ EOF;
 	/**
 	 * Ping the server and try to reconnect if it there is no connection
 	 * The connection may be closed and reopened while this happens
-	 * @return bool whether the connection exists
+	 * @return Boolean: whether the connection exists
 	 */
 	public function ping() {
 		// db2_ping() doesn't exist
 		// Emulate
 		$this->close();
-		if ($this->mCataloged == NULL) {
+		if ($this->mCataloged == null) {
 			return false;
 		}
 		else if ($this->mCataloged) {
@@ -1530,9 +1534,9 @@ EOF;
 	
 	/**
 	 * Query whether a given column exists in the mediawiki schema
-	 * @param string $table name of the table
-	 * @param string $field name of the column
-	 * @param string $fname function name for logging and profiling
+	 * @param $table String: name of the table
+	 * @param $field String: name of the column
+	 * @param $fname String: function name for logging and profiling
 	 */
 	public function fieldExists( $table, $field, $fname = 'DatabaseIbm_db2::fieldExists' ) {
 		$table = $this->tableName( $table );
@@ -1555,10 +1559,10 @@ SQL;
 	/**
 	 * Returns information about an index
 	 * If errors are explicitly ignored, returns NULL on failure
-	 * @param string $table table name
-	 * @param string $index index name
-	 * @param string
-	 * @return object query row in object form
+	 * @param $table String: table name
+	 * @param $index String: index name
+	 * @param $fname String: function name for logging and profiling
+	 * @return Object query row in object form
 	 */
 	public function indexInfo( $table, $index, $fname = 'DatabaseIbm_db2::indexExists' ) {
 		$table = $this->tableName( $table );
@@ -1569,17 +1573,17 @@ WHERE si.name='$index' AND si.tbname='$table' AND sc.tbcreator='$this->mSchema'
 SQL;
 		$res = $this->query( $sql, $fname );
 		if ( !$res ) {
-			return NULL;
+			return null;
 		}
 		$row = $this->fetchObject( $res );
-		if ($row != NULL) return $row;
+		if ($row != null) return $row;
 		else return false;
 	}
 	
 	/**
 	 * Returns an information object on a table column
-	 * @param string $table table name
-	 * @param string $field column name
+	 * @param $table String: table name
+	 * @param $field String: column name
 	 * @return IBM_DB2Field
 	 */
 	public function fieldInfo( $table, $field ) {
@@ -1588,9 +1592,9 @@ SQL;
 	
 	/**
 	 * db2_field_type() wrapper
-	 * @param object $res Result of executed statement
-	 * @param mixed $index number or name of the column
-	 * @return string column type
+	 * @param $res Object: result of executed statement
+	 * @param $index Mixed: number or name of the column
+	 * @return String column type
 	 */
 	public function fieldType( $res, $index ) {
 		if ( $res instanceof ResultWrapper ) {
@@ -1601,10 +1605,10 @@ SQL;
 	
 	/**
 	 * Verifies that an index was created as unique
-	 * @param string $table table name
-	 * @param string $index index name
-	 * @param string $fnam function name for profiling
-	 * @return bool
+	 * @param $table String: table name
+	 * @param $index String: index name
+	 * @param $fname function name for profiling
+	 * @return Bool
 	 */
 	public function indexUnique ($table, $index, $fname = 'Database::indexUnique' ) {
 		$table = $this->tableName( $table );
@@ -1627,9 +1631,9 @@ SQL;
 	
 	/**
 	 * Returns the size of a text field, or -1 for "unlimited"
-	 * @param string $table table name
-	 * @param string $field column name
-	 * @return int length or -1 for unlimited
+	 * @param $table String: table name
+	 * @param $field String: column name
+	 * @return Integer: length or -1 for unlimited
 	 */
 	public function textFieldSize( $table, $field ) {
 		$table = $this->tableName( $table );
@@ -1647,12 +1651,12 @@ SQL;
 	
 	/**
 	 * DELETE where the condition is a join
-	 * @param string $delTable deleting from this table
-	 * @param string $joinTable using data from this table
-	 * @param string $delVar variable in deleteable table
-	 * @param string $joinVar variable in data table
-	 * @param array $conds conditionals for join table
-	 * @param string $fname function name for profiling
+	 * @param $delTable String: deleting from this table
+	 * @param $joinTable String: using data from this table
+	 * @param $delVar String: variable in deleteable table
+	 * @param $joinVar String: variable in data table
+	 * @param $conds Array: conditionals for join table
+	 * @param $fname String: function name for profiling
 	 */
 	public function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = "DatabaseIbm_db2::deleteJoin" ) {
 		if ( !$conds ) {
@@ -1672,7 +1676,7 @@ SQL;
 
 	/**
 	 * Description is left as an exercise for the reader
-	 * @param mixed $b data to be encoded
+	 * @param $b Mixed: data to be encoded
 	 * @return IBM_DB2Blob
 	 */
 	public function encodeBlob($b) {
@@ -1681,7 +1685,7 @@ SQL;
 	
 	/**
 	 * Description is left as an exercise for the reader
-	 * @param IBM_DB2Blob $b data to be decoded
+	 * @param $b IBM_DB2Blob: data to be decoded
 	 * @return mixed
 	 */
 	public function decodeBlob($b) {
@@ -1690,8 +1694,8 @@ SQL;
 	
 	/**
 	 * Convert into a list of string being concatenated
-	 * @param array $stringList strings that need to be joined together by the SQL engine
-	 * @return string joined by the concatenation operator
+	 * @param $stringList Array: strings that need to be joined together by the SQL engine
+	 * @return String: joined by the concatenation operator
 	 */
 	public function buildConcat( $stringList ) {
 		// || is equivalent to CONCAT
@@ -1701,8 +1705,8 @@ SQL;
 	
 	/**
 	 * Generates the SQL required to convert a DB2 timestamp into a Unix epoch
-	 * @param string $column name of timestamp column
-	 * @return string SQL code
+	 * @param $column String: name of timestamp column
+	 * @return String: SQL code
 	 */
 	public function extractUnixEpoch( $column ) {
 		// TODO
@@ -1721,7 +1725,8 @@ SQL;
 	 * ! = raw SQL bit (a function for instance)
 	 * & = filename; reads the file and inserts as a blob
 	 *     (we don't use this though...)
-	 * @param string $sql SQL statement with appropriate markers
+	 * @param $sql String: SQL statement with appropriate markers
+	 * @param $func String: Name of the function, for profiling
 	 * @return resource a prepared DB2 SQL statement
 	 */
 	public function prepare( $sql, $func = 'DB2::prepare' ) {
@@ -1731,7 +1736,7 @@ SQL;
 
 	/**
 	 * Frees resources associated with a prepared statement
-	 * @return bool success or failure
+	 * @return Boolean success or failure
 	 */
 	public function freePrepared( $prepared ) {
 		return db2_free_stmt($prepared);
@@ -1739,9 +1744,9 @@ SQL;
 
 	/**
 	 * Execute a prepared query with the various arguments
-	 * @param	string		$prepared	the prepared sql
-	 * @param	mixed		$args		Either an array here, or put scalars as varargs
-	 * @return	resource				Results object
+	 * @param $prepared String: the prepared sql
+	 * @param $args Mixed: either an array here, or put scalars as varargs
+	 * @return Resource: results object
 	 */
 	public function execute( $prepared, $args = null ) {
 		if( !is_array( $args ) ) {
@@ -1775,9 +1780,9 @@ SQL;
 	/**
 	 * For faking prepared SQL statements on DBs that don't support
 	 * it directly.
-	 * @param	resource	$preparedQuery	String: a 'preparable' SQL statement
-	 * @param	array		$args			Array of arguments to fill it with
-	 * @return	string 						executable statement
+	 * @param $preparedQuery String: a 'preparable' SQL statement
+	 * @param $args Array of arguments to fill it with
+	 * @return String: executable statement
 	 */
 	public function fillPrepared( $preparedQuery, $args ) {
 		reset( $args );
@@ -1802,8 +1807,8 @@ SQL;
 	/**
 	 * Bitwise negation of a column or value in SQL
 	 * Same as (~field) in C
-	 * @param	string	$field
-	 * @return	string
+	 * @param $field String
+	 * @return String
 	 */
 	function bitNot($field) {
 		//expecting bit-fields smaller than 4bytes
@@ -1813,9 +1818,9 @@ SQL;
 	/**
 	 * Bitwise AND of two columns or values in SQL
 	 * Same as (fieldLeft & fieldRight) in C
-	 * @param	string	$fieldLeft
-	 * @param	string	$fieldRight
-	 * @return	string
+	 * @param $fieldLeft String
+	 * @param $fieldRight String
+	 * @return String
 	 */
 	function bitAnd($fieldLeft, $fieldRight) {
 		return 'BITAND('.$fieldLeft.', '.$fieldRight.')';
@@ -1824,9 +1829,9 @@ SQL;
 	/**
 	 * Bitwise OR of two columns or values in SQL
 	 * Same as (fieldLeft | fieldRight) in C
-	 * @param	string	$fieldLeft
-	 * @param	string	$fieldRight
-	 * @return	string
+	 * @param $fieldLeft String
+	 * @param $fieldRight String
+	 * @return String
 	 */
 	function bitOr($fieldLeft, $fieldRight) {
 		return 'BITOR('.$fieldLeft.', '.$fieldRight.')';

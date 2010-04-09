@@ -1,11 +1,11 @@
 <?php
 
-/*
+/**
  * Created on Sep 25, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if( !defined('MEDIAWIKI') ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
 	require_once( 'ApiQueryBase.php' );
 }
@@ -36,16 +36,14 @@ if( !defined('MEDIAWIKI') ) {
 class ApiQuerySiteinfo extends ApiQueryBase {
 
 	public function __construct( $query, $moduleName ) {
-		parent :: __construct( $query, $moduleName, 'si' );
+		parent::__construct( $query, $moduleName, 'si' );
 	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$done = array();
-		foreach( $params['prop'] as $p )
-		{
-			switch ( $p )
-			{
+		foreach ( $params['prop'] as $p ) {
+			switch ( $p ) {
 				case 'general':
 					$fit = $this->appendGeneralInfo( $p );
 					break;
@@ -86,15 +84,14 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				case 'languages':
 					$fit = $this->appendLanguages( $p );
 					break;
-				default :
-					ApiBase :: dieDebug( __METHOD__, "Unknown prop=$p" );
+				default:
+					ApiBase::dieDebug( __METHOD__, "Unknown prop=$p" );
 			}
-			if(!$fit)
-			{
-				# Abuse siprop as a query-continue parameter
-				# and set it to all unprocessed props
-				$this->setContinueEnumParameter('prop', implode('|',
-						array_diff($params['prop'], $done)));
+			if ( !$fit ) {
+				// Abuse siprop as a query-continue parameter
+				// and set it to all unprocessed props
+				$this->setContinueEnumParameter( 'prop', implode( '|',
+						array_diff( $params['prop'], $done ) ) );
 				break;
 			}
 			$done[] = $p;
@@ -102,11 +99,10 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendGeneralInfo( $property ) {
-		global $wgContLang;
-		global $wgLang;
+		global $wgContLang, $wgLang;
 
 		$data = array();
-		$mainPage = Title :: newFromText(wfMsgForContent('mainpage'));
+		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
 		$data['mainpage'] = $mainPage->getPrefixedText();
 		$data['base'] = $mainPage->getFullUrl();
 		$data['sitename'] = $GLOBALS['wgSitename'];
@@ -117,43 +113,48 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$data['dbversion'] = $this->getDB()->getServerVersion();
 
 		$svn = SpecialVersion::getSvnRevision( $GLOBALS['IP'] );
-		if( $svn )
+		if ( $svn ) {
 			$data['rev'] = $svn;
+		}
 
 		// 'case-insensitive' option is reserved for future
-		$data['case'] = $GLOBALS['wgCapitalLinks'] ? 'first-letter' : 'case-sensitive'; 
+		$data['case'] = $GLOBALS['wgCapitalLinks'] ? 'first-letter' : 'case-sensitive';
 
-		if( isset( $GLOBALS['wgRightsCode'] ) )
+		if ( isset( $GLOBALS['wgRightsCode'] ) ) {
 			$data['rightscode'] = $GLOBALS['wgRightsCode'];
+		}
 		$data['rights'] = $GLOBALS['wgRightsText'];
 		$data['lang'] = $GLOBALS['wgLanguageCode'];
-		if( $wgContLang->isRTL() ) 
+		if ( $wgContLang->isRTL() ) {
 			$data['rtl'] = '';
+		}
 		$data['fallback8bitEncoding'] = $wgLang->fallback8bitEncoding();
-		
-		if( wfReadOnly() ) {
+
+		if ( wfReadOnly() ) {
 			$data['readonly'] = '';
 			$data['readonlyreason'] = wfReadOnlyReason();
 		}
-		if( $GLOBALS['wgEnableWriteAPI'] )
+		if ( $GLOBALS['wgEnableWriteAPI'] ) {
 			$data['writeapi'] = '';
+		}
 
 		$tz = $GLOBALS['wgLocaltimezone'];
 		$offset = $GLOBALS['wgLocalTZoffset'];
-		if( is_null( $tz ) ) {
+		if ( is_null( $tz ) ) {
 			$tz = 'UTC';
 			$offset = 0;
-		} elseif( is_null( $offset ) ) {
+		} elseif ( is_null( $offset ) ) {
 			$offset = 0;
 		}
 		$data['timezone'] = $tz;
-		$data['timeoffset'] = intval($offset);
+		$data['timeoffset'] = intval( $offset );
 		$data['articlepath'] = $GLOBALS['wgArticlePath'];
 		$data['scriptpath'] = $GLOBALS['wgScriptPath'];
 		$data['script'] = $GLOBALS['wgScript'];
 		$data['variantarticlepath'] = $GLOBALS['wgVariantArticlePath'];
 		$data['server'] = $GLOBALS['wgServer'];
 		$data['wikiid'] = wfWikiID();
+		$data['time'] = wfTimestamp( TS_ISO_8601, time() );
 
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
@@ -161,23 +162,25 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	protected function appendNamespaces( $property ) {
 		global $wgContLang;
 		$data = array();
-		foreach( $wgContLang->getFormattedNamespaces() as $ns => $title )
-		{
+		foreach ( $wgContLang->getFormattedNamespaces() as $ns => $title ) {
 			$data[$ns] = array(
-				'id' => intval($ns),
+				'id' => intval( $ns ),
 				'case' => MWNamespace::isCapitalized( $ns ) ? 'first-letter' : 'case-sensitive',
 			);
-			ApiResult :: setContent( $data[$ns], $title );
+			ApiResult::setContent( $data[$ns], $title );
 			$canonical = MWNamespace::getCanonicalName( $ns );
-			
-			if( MWNamespace::hasSubpages( $ns ) )
+
+			if ( MWNamespace::hasSubpages( $ns ) ) {
 				$data[$ns]['subpages'] = '';
-			
-			if( $canonical ) 
-				$data[$ns]['canonical'] = strtr($canonical, '_', ' ');
-			
-			if( MWNamespace::isContent( $ns ) )
+			}
+
+			if ( $canonical ) {
+				$data[$ns]['canonical'] = strtr( $canonical, '_', ' ' );
+			}
+
+			if ( MWNamespace::isContent( $ns ) ) {
 				$data[$ns]['content'] = '';
+			}
 		}
 
 		$this->getResult()->setIndexedTagName( $data, 'ns' );
@@ -189,15 +192,15 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$aliases = array_merge( $wgNamespaceAliases, $wgContLang->getNamespaceAliases() );
 		$namespaces = $wgContLang->getNamespaces();
 		$data = array();
-		foreach( $aliases as $title => $ns ) {
-			if( $namespaces[$ns] == $title ) {
+		foreach ( $aliases as $title => $ns ) {
+			if ( $namespaces[$ns] == $title ) {
 				// Don't list duplicates
 				continue;
 			}
 			$item = array(
-				'id' => intval($ns)
+				'id' => intval( $ns )
 			);
-			ApiResult :: setContent( $item, strtr( $title, '_', ' ' ) );
+			ApiResult::setContent( $item, strtr( $title, '_', ' ' ) );
 			$data[] = $item;
 		}
 
@@ -208,7 +211,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	protected function appendSpecialPageAliases( $property ) {
 		global $wgLang;
 		$data = array();
-		foreach( $wgLang->getSpecialPageAliases() as $specialpage => $aliases )
+		foreach ( $wgLang->getSpecialPageAliases() as $specialpage => $aliases )
 		{
 			$arr = array( 'realname' => $specialpage, 'aliases' => $aliases );
 			$this->getResult()->setIndexedTagName( $arr['aliases'], 'alias' );
@@ -217,20 +220,20 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$this->getResult()->setIndexedTagName( $data, 'specialpage' );
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
-	
+
 	protected function appendMagicWords( $property ) {
 		global $wgContLang;
 		$data = array();
-		foreach($wgContLang->getMagicWords() as $magicword => $aliases)
-		{
-			$caseSensitive = array_shift($aliases);
-			$arr = array('name' => $magicword, 'aliases' => $aliases);
-			if($caseSensitive)
+		foreach ( $wgContLang->getMagicWords() as $magicword => $aliases ) {
+			$caseSensitive = array_shift( $aliases );
+			$arr = array( 'name' => $magicword, 'aliases' => $aliases );
+			if ( $caseSensitive ) {
 				$arr['case-sensitive'] = '';
-			$this->getResult()->setIndexedTagName($arr['aliases'], 'alias');
+			}
+			$this->getResult()->setIndexedTagName( $arr['aliases'], 'alias' );
 			$data[] = $arr;
 		}
-		$this->getResult()->setIndexedTagName($data, 'magicword');
+		$this->getResult()->setIndexedTagName( $data, 'magicword' );
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
@@ -239,12 +242,13 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$this->addTables( 'interwiki' );
 		$this->addFields( array( 'iw_prefix', 'iw_local', 'iw_url' ) );
 
-		if( $filter === 'local' )
+		if ( $filter === 'local' ) {
 			$this->addWhere( 'iw_local = 1' );
-		elseif( $filter === '!local' )
+		} elseif ( $filter === '!local' ) {
 			$this->addWhere( 'iw_local = 0' );
-		elseif( $filter )
-			ApiBase :: dieDebug( __METHOD__, "Unknown filter=$filter" );
+		} elseif ( $filter ) {
+			ApiBase::dieDebug( __METHOD__, "Unknown filter=$filter" );
+		}
 
 		$this->addOption( 'ORDER BY', 'iw_prefix' );
 
@@ -253,15 +257,16 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 		$data = array();
 		$langNames = Language::getLanguageNames();
-		while( $row = $db->fetchObject($res) )
-		{
+		while ( $row = $db->fetchObject( $res ) ) {
 			$val = array();
 			$val['prefix'] = $row->iw_prefix;
-			if( $row->iw_local == '1' )
+			if ( $row->iw_local == '1' ) {
 				$val['local'] = '';
-//			$val['trans'] = intval($row->iw_trans);	// should this be exposed?
-			if( isset( $langNames[$row->iw_prefix] ) )
+			}
+//			$val['trans'] = intval( $row->iw_trans ); // should this be exposed?
+			if ( isset( $langNames[$row->iw_prefix] ) ) {
 				$val['language'] = $langNames[$row->iw_prefix];
+			}
 			$val['url'] = $row->iw_url;
 
 			$data[] = $val;
@@ -275,13 +280,14 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	protected function appendDbReplLagInfo( $property, $includeAll ) {
 		global $wgShowHostnames;
 		$data = array();
-		if( $includeAll ) {
-			if ( !$wgShowHostnames )
-				$this->dieUsage('Cannot view all servers info unless $wgShowHostnames is true', 'includeAllDenied');
+		if ( $includeAll ) {
+			if ( !$wgShowHostnames ) {
+				$this->dieUsage( 'Cannot view all servers info unless $wgShowHostnames is true', 'includeAllDenied' );
+			}
 
 			$lb = wfGetLB();
 			$lags = $lb->getLagTimes();
-			foreach( $lags as $i => $lag ) {
+			foreach ( $lags as $i => $lag ) {
 				$data[] = array(
 					'host' => $lb->getServerName( $i ),
 					'lag' => $lag
@@ -295,7 +301,6 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			);
 		}
 
-		$data['avglag'] = wfGetLB()->getAvgLag();
 		$result = $this->getResult();
 		$result->setIndexedTagName( $data, 'db' );
 		return $this->getResult()->addValue( 'query', $property, $data );
@@ -313,7 +318,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$data['images'] = intval( SiteStats::images() );
 		$data['users'] = intval( SiteStats::users() );
 		$data['activeusers'] = intval( SiteStats::activeUsers() );
-		$data['admins'] = intval( SiteStats::numberingroup('sysop') );
+		$data['admins'] = intval( SiteStats::numberingroup( 'sysop' ) );
 		$data['jobs'] = intval( SiteStats::jobs() );
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
@@ -321,14 +326,15 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	protected function appendUserGroups( $property, $numberInGroup ) {
 		global $wgGroupPermissions;
 		$data = array();
-		foreach( $wgGroupPermissions as $group => $permissions ) {
-			$arr = array( 
-				'name' => $group, 
+		foreach ( $wgGroupPermissions as $group => $permissions ) {
+			$arr = array(
+				'name' => $group,
 				'rights' => array_keys( $permissions, true ),
 			);
-			if ( $numberInGroup )
+			if ( $numberInGroup ) {
 				$arr['number'] = SiteStats::numberInGroup( $group );
-			
+			}
+
 			$this->getResult()->setIndexedTagName( $arr['rights'], 'permission' );
 			$data[] = $arr;
 		}
@@ -336,12 +342,12 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$this->getResult()->setIndexedTagName( $data, 'group' );
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
-	
+
 	protected function appendFileExtensions( $property ) {
 		global $wgFileExtensions;
-		
+
 		$data = array();
-		foreach( $wgFileExtensions as $ext ) {
+		foreach ( $wgFileExtensions as $ext ) {
 			$data[] = array( 'ext' => $ext );
 		}
 		$this->getResult()->setIndexedTagName( $data, 'fe' );
@@ -355,21 +361,34 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			foreach ( $extensions as $ext ) {
 				$ret = array();
 				$ret['type'] = $type;
-				if ( isset( $ext['name'] ) ) 
+				if ( isset( $ext['name'] ) ) {
 					$ret['name'] = $ext['name'];
-				if ( isset( $ext['description'] ) ) 
+				}
+				if ( isset( $ext['description'] ) ) {
 					$ret['description'] = $ext['description'];
-				if ( isset( $ext['descriptionmsg'] ) ) 
-					$ret['descriptionmsg'] = $ext['descriptionmsg'];
+				}
+				if ( isset( $ext['descriptionmsg'] ) ) {
+					// Can be a string or array( key, param1, param2, ... )
+					if ( is_array( $ext['descriptionmsg'] ) ) {
+						$ret['descriptionmsg'] = $ext['descriptionmsg'][0];
+						$ret['descriptionmsgparams'] = array_slice( $ext['descriptionmsg'], 1 );
+						$this->getResult()->setIndexedTagName( $ret['descriptionmsgparams'], 'param' );
+					} else {
+						$ret['descriptionmsg'] = $ext['descriptionmsg'];
+					}
+				}
 				if ( isset( $ext['author'] ) ) {
-					$ret['author'] = is_array( $ext['author'] ) ? 
+					$ret['author'] = is_array( $ext['author'] ) ?
 						implode( ', ', $ext['author' ] ) : $ext['author'];
+				}
+				if ( isset( $ext['url'] ) ) {
+					$ret['url'] = $ext['url'];
 				}
 				if ( isset( $ext['version'] ) ) {
 						$ret['version'] = $ext['version'];
-				} elseif ( isset( $ext['svn-revision'] ) && 
-					preg_match( '/\$(?:Rev|LastChangedRevision|Revision): *(\d+)/', 
-						$ext['svn-revision'], $m ) )  
+				} elseif ( isset( $ext['svn-revision'] ) &&
+					preg_match( '/\$(?:Rev|LastChangedRevision|Revision): *(\d+)/',
+						$ext['svn-revision'], $m ) )
 				{
 						$ret['version'] = 'r' . $m[1];
 				}
@@ -387,7 +406,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$title = Title::newFromText( $wgRightsPage );
 		$url = $title ? $title->getFullURL() : $wgRightsUrl;
 		$text = $wgRightsText;
-		if( !$text && $title ) {
+		if ( !$text && $title ) {
 			$text = $title->getPrefixedText();
 		}
 
@@ -401,7 +420,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 	public function appendLanguages( $property ) {
 		$data = array();
-		foreach( Language::getLanguageNames() as $code => $name ) {
+		foreach ( Language::getLanguageNames() as $code => $name ) {
 			$lang = array( 'code' => $code );
 			ApiResult::setContent( $lang, $name );
 			$data[] = $lang;
@@ -410,13 +429,12 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}
 
-
 	public function getAllowedParams() {
 		return array(
 			'prop' => array(
-				ApiBase :: PARAM_DFLT => 'general',
-				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_TYPE => array(
+				ApiBase::PARAM_DFLT => 'general',
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => array(
 					'general',
 					'namespaces',
 					'namespacealiases',
@@ -433,7 +451,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				)
 			),
 			'filteriw' => array(
-				ApiBase :: PARAM_TYPE => array(
+				ApiBase::PARAM_TYPE => array(
 					'local',
 					'!local',
 				)
@@ -471,12 +489,18 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		return 'Return general information about the site.';
 	}
 
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'includeAllDenied', 'info' => 'Cannot view all servers info unless $wgShowHostnames is true' ),
+		) );
+	}
+
 	protected function getExamples() {
 		return array(
 			'api.php?action=query&meta=siteinfo&siprop=general|namespaces|namespacealiases|statistics',
 			'api.php?action=query&meta=siteinfo&siprop=interwikimap&sifilteriw=local',
 			'api.php?action=query&meta=siteinfo&siprop=dbrepllag&sishowalldb',
-			);
+		);
 	}
 
 	public function getVersion() {

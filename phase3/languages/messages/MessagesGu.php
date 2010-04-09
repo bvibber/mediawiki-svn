@@ -315,9 +315,6 @@ $messages = array(
 'namespaces'                 => 'નામાવકાશો',
 'variants'                   => 'ભિન્ન રૂપો',
 
-# Metadata in edit box
-'metadata_help' => 'મેટાડેટા:',
-
 'errorpagetitle'    => 'ત્રુટિ',
 'returnto'          => '$1 પર પાછા જાઓ.',
 'tagline'           => '{{SITENAME}} થી',
@@ -478,7 +475,6 @@ $1',
 'missingarticle-diff'  => '(ભેદ: $1, $2)',
 'internalerror'        => 'આંતરિક ત્રુટિ',
 'internalerror_info'   => 'આંતરિક ત્રુટિ: $1',
-'fileappenderror'      => '"$1" ને "$2" શાથે જોડી શકાશે નહીં.',
 'filecopyerror'        => '"$1" થી "$2"માં નકલ નાકામયાબ.',
 'filerenameerror'      => '"$1" નું નામ બદલીને "$2" કરવામાં નાકામયાબ.',
 'filedeleteerror'      => '"$1" ફાઇલ હટાવી ન શકાઇ.',
@@ -523,7 +519,6 @@ $1',
 'logouttext'              => "'''તમે (લોગ આઉટ કરીને) બહાર નિકળી ચુક્યા છો.'''
 
 તમે અનામી તરીકે {{SITENAME}} વાપરવાનું ચાલુ રાખી શકો છો, કે પછી તેના તેજ કે અલગ સભ્ય તરીકે [[Special:UserLogin|ફરી પ્રવેશ]] કરી શકો છો.
-
 ધ્યાન રાખો કે જ્યાં સુધી તમે તમારા બ્રાઉઝરનો  કૅશ સાફ નહીં કરો ત્યાં સુધી કેટલાક પાનાં તમે પ્રવેશી ચુક્યા છો તેમ બતાવશે.",
 'welcomecreation'         => '== તમારૂં સ્વાગત છે $1! ==
 તમારૂં ખાતું બની ગયું છે.
@@ -683,8 +678,7 @@ Please log in again after you receive it.
 'confirmedittext'                  => 'પાનાંમાં ફેરફાર કરવા માટે તમારે તમારા ઇમેલની પુષ્ટિ કરવી પડશે.
 મહેરબાની કરી [[Special:Preferences|મારી પસંદ]]માં જઇને તમારું ઇમેલ આપવું પડશે અને પ્રમાણિત કરવું પડશે.',
 'nosuchsectiontitle'               => 'આવો કોઇ વિભાગ નથી',
-'nosuchsectiontext'                => 'તમે અસ્તિત્વ ન ધરાવતો વિભાગ સંપાદિત કરવાની કોશિશ કરી.</br>
-કેમકે કોઇ વિભાગ $1 અસ્તિત્વમાં નથી, અહીં તમારૂં સંપાદન સચવાશે નહીં.',
+'nosuchsectiontext'                => 'તમે અસ્તિત્વ ન ધરાવતો વિભાગ સંપાદિત કરવાની કોશિશ કરી.',
 'loginreqtitle'                    => 'પ્રવેશ (લોગ ઇન) જરૂરી',
 'loginreqlink'                     => 'લોગીન',
 'loginreqpagetext'                 => 'બીજા પાનાં જોવા માટે તમારે $1 કરવું પડશે.',
@@ -694,7 +688,7 @@ Please log in again after you receive it.
 <br />નવું પાનું બનાવવા માટે નીચે આપેલા ખાનામાં લખવાનું શરૂ કરો (વધુ માહિતિ માટે [[{{MediaWiki:Helppage}}|મદદ]] જુઓ).
 <br />જો આપ ભુલમાં અહીં આવી ગયા હોવ તો, આપનાં બ્રાઉઝર નાં '''બેક''' બટન પર ક્લિક કરીને પાછા વળો.",
 'noarticletext'                    => 'આ પાનામાં હાલમાં કોઇ માહિતિ નથી.
-તમે  [[Special:Search/{{PAGENAME}}|આ શબ્દ]] ધરાવતાં અન્ય લેખો શોધી શકો છો, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} સંલગ્ન માહિતિ પત્રકોમાં શોધી શકો છો],
+તમે  [[Special:Search/{{PAGENAME}}|આ શબ્દ]] ધરાવતાં અન્ય લેખો શોધી શકો છો, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} સંલગ્ન માહિતિ પત્રકોમાં શોધી શકો છો],
 અથવા  [{{fullurl:{{FULLPAGENAME}}|action=edit}} આ પાનામાં ફેરફાર કરી] માહિતિ ઉમેરવાનું શરૂ કરી શકો છો</span>.',
 'note'                             => "'''નોંધ:'''",
 'previewnote'                      => "'''આ ફક્ત પૂર્વાવલોકન છે;'''

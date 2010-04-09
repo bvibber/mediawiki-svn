@@ -5,9 +5,9 @@
  * @ingroup Language
  */
 
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
-		forms = mw.lang.preConvertPlural( forms, 5 );
+		forms = mw.Language.preConvertPlural( forms, 5 );
 
 		if ( count % 100 == 1 ) {
 			$index = 0;

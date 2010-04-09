@@ -56,7 +56,7 @@ class Xml {
 
 	/**
 	 * Format an XML element as with self::element(), but run text through the
-	 * UtfNormal::cleanUp() validator first to ensure that no invalid UTF-8
+	 * $wgContLang->normalize() validator first to ensure that no invalid UTF-8
 	 * is passed.
 	 *
 	 * @param $element String:
@@ -65,12 +65,13 @@ class Xml {
 	 * @return string
 	 */
 	public static function elementClean( $element, $attribs = array(), $contents = '') {
+		global $wgContLang;
 		if( $attribs ) {
 			$attribs = array_map( array( 'UtfNormal', 'cleanUp' ), $attribs );
 		}
 		if( $contents ) {
 			wfProfileIn( __METHOD__ . '-norm' );
-			$contents = UtfNormal::cleanUp( $contents );
+			$contents = $wgContLang->normalize( $contents );
 			wfProfileOut( __METHOD__ . '-norm' );
 		}
 		return self::element( $element, $attribs, $contents );
@@ -335,11 +336,16 @@ class Xml {
 	/**
 	 * Convenience function to build an HTML form label
 	 * @param $label text of the label
-	 * @param $id 
+	 * @param $id
+	 * @param $attribs Array, other attributes 
 	 * @return string HTML
 	 */
-	public static function label( $label, $id ) {
-		return self::element( 'label', array( 'for' => $id ), $label );
+	public static function label( $label, $id, $attribs=array() ) {
+		$a = array( 'for' => $id );
+		if( isset( $attribs['class'] ) ){
+				$a['class'] = $attribs['class'];
+		}
+		return self::element( 'label', $a, $label );
 	}
 
 	/**
@@ -362,7 +368,7 @@ class Xml {
 	 */
 	public static function inputLabelSep( $label, $name, $id, $size=false, $value=false, $attribs=array() ) {
 		return array(
-			Xml::label( $label, $id ),
+			Xml::label( $label, $id, $attribs ),
 			self::input( $name, $size, $value, array( 'id' => $id ) + $attribs )
 		);
 	}
@@ -374,7 +380,7 @@ class Xml {
 	public static function checkLabel( $label, $name, $id, $checked=false, $attribs=array() ) {
 		return self::check( $name, $checked, array( 'id' => $id ) + $attribs ) .
 			'&nbsp;' .
-			self::label( $label, $id );
+			self::label( $label, $id, $attribs );
 	}
 
 	/**
@@ -384,7 +390,7 @@ class Xml {
 	public static function radioLabel( $label, $name, $value, $id, $checked=false, $attribs=array() ) {
 		return self::radio( $name, $value, $checked, array( 'id' => $id ) + $attribs ) .
 			'&nbsp;' .
-			self::label( $label, $id );
+			self::label( $label, $id, $attribs );
 	}
 
 	/**
@@ -394,7 +400,7 @@ class Xml {
 	 * @return string HTML
 	 */
 	public static function submitButton( $value, $attribs=array() ) {
-		return self::element( 'input', array( 'type' => 'submit', 'value' => $value ) + $attribs );
+		return Html::element( 'input', array( 'type' => 'submit', 'value' => $value ) + $attribs );
 	}
 
 	/**
@@ -738,7 +744,7 @@ class XmlSelect {
 	public function __construct( $name = false, $id = false, $default = false ) {
 		if ( $name ) $this->setAttribute( 'name', $name );
 		if ( $id ) $this->setAttribute( 'id', $id );
-		if ( $default ) $this->default = $default;
+		if ( $default !== false ) $this->default = $default;
 	}
 
 	public function setDefault( $default ) {

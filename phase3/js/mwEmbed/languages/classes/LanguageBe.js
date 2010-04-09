@@ -14,10 +14,10 @@
   * ported to js by mdale
   */
 
-	mw.lang.convertPlural = function convertPlural( count, forms ) {		
+	mw.Language.convertPlural = function convertPlural( count, forms ) {		
 		// FIXME: CLDR defines 4 plural forms instead of 3
 		//        http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
-		forms =  mw.lang.preConvertPlural( forms, 3 );
+		forms =  mw.Language.preConvertPlural( forms, 3 );
 
 		if (count > 10 && Math.floor((count % 100) / 10) == 1) {
 			return forms[2];

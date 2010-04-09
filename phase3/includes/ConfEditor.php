@@ -72,7 +72,7 @@ class ConfEditor {
 	var $pathInfo;
 
 	/**
-	 * Next serial number for whitespace placeholder paths (@extra-N)
+	 * Next serial number for whitespace placeholder paths (\@extra-N)
 	 */
 	var $serial;
 
@@ -104,7 +104,7 @@ class ConfEditor {
 
 	/**
 	 * Edit the text. Returns the edited text. 
-	 * @param array $ops Array of operations.
+	 * @param $ops Array of operations.
 	 *
 	 * Operations are given as an associative array, with members:
 	 *    type:     One of delete, set, append or insert (required)
@@ -306,14 +306,14 @@ class ConfEditor {
 	function parseScalar( $str ) {
 		if ( $str !== '' && $str[0] == '\'' )
 			// Single-quoted string
-			// @fixme trim() call is due to mystery bug where whitespace gets
+			// @todo Fixme: trim() call is due to mystery bug where whitespace gets
 			// appended to the token; without it we ended up reading in the
 			// extra quote on the end!
 			return strtr( substr( trim( $str ), 1, -1 ),
 				array( '\\\'' => '\'', '\\\\' => '\\' ) );
 		if ( $str !== '' && @$str[0] == '"' )
 			// Double-quoted string
-			// @fixme trim() call is due to mystery bug where whitespace gets
+			// @todo Fixme: trim() call is due to mystery bug where whitespace gets
 			// appended to the token; without it we ended up reading in the
 			// extra quote on the end!
 			return stripcslashes( substr( trim( $str ), 1, -1 ) );
@@ -438,7 +438,7 @@ class ConfEditor {
 
 	/**
 	 * Find the path name of the last element in the array.
-	 * If the array is empty, this will return the @extra interstitial element.
+	 * If the array is empty, this will return the \@extra interstitial element.
 	 * If the specified path is not found or is not an array, it will return false.
 	 */
 	function findLastArrayElement( $path ) {
@@ -474,7 +474,7 @@ class ConfEditor {
 
 	/*
 	 * Find the path name of first element in the array.
-	 * If the array is empty, this will return the @extra interstitial element.
+	 * If the array is empty, this will return the \@extra interstitial element.
 	 * If the specified path is not found or is not an array, it will return false.
 	 */
 	function findFirstArrayElement( $path ) {
@@ -878,7 +878,7 @@ class ConfEditor {
 
 	/**
 	 * Go to the next path on the same level. This ends the current path and 
-	 * starts a new one. If $path is @next, the new path is set to the next
+	 * starts a new one. If $path is \@next, the new path is set to the next
 	 * numeric array element.
 	 */
 	function nextPath( $path ) {

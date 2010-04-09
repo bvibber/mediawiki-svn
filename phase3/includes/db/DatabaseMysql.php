@@ -7,6 +7,10 @@
  * @see Database
  */
 class DatabaseMysql extends DatabaseBase {
+	function getType() {
+		return 'mysql';
+	}
+
 	/*private*/ function doQuery( $sql ) {
 		if( $this->bufferResults() ) {
 			$ret = mysql_query( $sql, $this->mConn );
@@ -129,7 +133,7 @@ class DatabaseMysql extends DatabaseBase {
 		$this->mOpened = false;
 		if ( $this->mConn ) {
 			if ( $this->trxLevel() ) {
-				$this->immediateCommit();
+				$this->commit();
 			}
 			return mysql_close( $this->mConn );
 		} else {
@@ -362,7 +366,7 @@ class DatabaseMysql extends DatabaseBase {
 	public function unlockTables( $method ) {
 		$this->query( "UNLOCK TABLES", $method );
 	}
-	
+
 	public function setBigSelects( $value = true ) {
 		if ( $value === 'default' ) {
 			if ( $this->mDefaultBigSelects === null ) {
@@ -403,6 +407,7 @@ class DatabaseMysql extends DatabaseBase {
 	}
 
 	function duplicateTableStructure( $oldName, $newName, $temporary = false, $fname = 'DatabaseMysql::duplicateTableStructure' ) {
+		$tmp = $temporary ? 'TEMPORARY ' : '';
 		if ( strcmp( $this->getServerVersion(), '4.1' ) < 0 ) {
 			# Hack for MySQL versions < 4.1, which don't support
 			# "CREATE TABLE ... LIKE". Note that
@@ -414,17 +419,17 @@ class DatabaseMysql extends DatabaseBase {
 
 			$res = $this->query( "SHOW CREATE TABLE $oldName" );
 			$row = $this->fetchRow( $res );
-			$create = $row[1];
-			$create_tmp = preg_replace( '/CREATE TABLE `(.*?)`/', 
-				'CREATE ' . ( $temporary ? 'TEMPORARY ' : '' ) . "TABLE `$newName`", $create );
-			if ($create === $create_tmp) {
+			$oldQuery = $row[1];
+			$query = preg_replace( '/CREATE TABLE `(.*?)`/', 
+				"CREATE $tmp TABLE `$newName`", $oldQuery );
+			if ($oldQuery === $query) {
 				# Couldn't do replacement
 				throw new MWException( "could not create temporary table $newName" );
 			}
-			$this->query( $create_tmp, $fname );
 		} else {
-			return parent::duplicateTableStructure( $oldName, $newName, $temporary );
+			$query = "CREATE $tmp TABLE $newName (LIKE $oldName)";
 		}
+		$this->query( $query, $fname );
 	}
 
 }

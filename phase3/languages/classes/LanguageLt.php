@@ -9,14 +9,12 @@ class LanguageLt extends Language {
 		1 - vienas (1) lapas, dvidešimt vienas (21) lapas
 		2 - trys (3) lapai
 		3 - penkiolika (15) lapų
-
-does not seem to match : http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#lt
 	*/
 	function convertPlural( $count, $forms ) {
 		if ( !count($forms) ) { return ''; }
 
 		//if no number with word, then use $form[0] for singular and $form[1] for plural or zero
-		if( count($forms) == 2 ) return $count == 1 ? $forms[0] : $forms[1];
+		if( count($forms) === 2 ) return $count == 1 ? $forms[0] : $forms[1];
 
 		$forms = $this->preConvertPlural( $forms, 3 );
 

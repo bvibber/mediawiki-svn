@@ -114,7 +114,7 @@ class Preferences {
 	}
 
 	static function profilePreferences( $user, &$defaultPreferences ) {
-		global $wgLang;
+		global $wgLang, $wgUser;
 		## User info #####################################
 		// Information panel
 		$defaultPreferences['username'] =
@@ -209,7 +209,6 @@ class Preferences {
 				);
 
 		if( $wgAuth->allowPasswordChange() ) {
-			global $wgUser; // For skin.
 			$link = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Resetpass' ),
 				wfMsgHtml( 'prefs-resetpass' ), array(),
 				array( 'returnto' => SpecialPage::getTitleFor( 'Preferences' ) ) );
@@ -362,7 +361,6 @@ class Preferences {
 						$disableEmailPrefs = false;
 					} else {
 						$disableEmailPrefs = true;
-						global $wgUser; // wgUser is okay here, it's for display
 						$skin = $wgUser->getSkin();
 						$emailauthenticated = wfMsgExt( 'emailnotauthenticated', 'parseinline' ) . '<br />' .
 							$skin->link(
@@ -435,19 +433,24 @@ class Preferences {
 							'label-message' => 'tog-enotifminoredits',
 							'disabled' => $disableEmailPrefs,
 						);
+				global $wgEnotifRevealEditorAddress;
+				if ( $wgEnotifRevealEditorAddress ) {
+					$defaultPreferences['enotifrevealaddr'] =
+							array(
+								'type' => 'toggle',
+								'section' => 'personal/email',
+								'label-message' => 'tog-enotifrevealaddr',
+								'disabled' => $disableEmailPrefs,
+							);
+				}
 			}
-			$defaultPreferences['enotifrevealaddr'] =
-					array(
-						'type' => 'toggle',
-						'section' => 'personal/email',
-						'label-message' => 'tog-enotifrevealaddr',
-						'disabled' => $disableEmailPrefs,
-					);
 		}
 	}
 
 	static function skinPreferences( $user, &$defaultPreferences ) {
 		## Skin #####################################
+		global $wgLang, $wgAllowUserCss, $wgAllowUserJs;
+
 		$defaultPreferences['skin'] =
 				array(
 					'type' => 'radio',
@@ -455,6 +458,30 @@ class Preferences {
 					'label' => '&nbsp;',
 					'section' => 'rendering/skin',
 				);
+
+		# Create links to user CSS/JS pages for all skins
+		# This code is basically copied from generateSkinOptions().  It'd
+		# be nice to somehow merge this back in there to avoid redundancy. 
+		if( $wgAllowUserCss || $wgAllowUserJs ) {
+			$sk = $user->getSkin();
+			$linkTools = array();
+			if( $wgAllowUserCss ) {
+				$cssPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/common.css' );
+				$linkTools[] = $sk->link( $cssPage, wfMsgHtml( 'prefs-custom-css' ) );
+			}
+			if( $wgAllowUserJs ) {
+				$jsPage = Title::makeTitleSafe( NS_USER, $user->getName() . '/common.js' );
+				$linkTools[] = $sk->link( $jsPage, wfMsgHtml( 'prefs-custom-js' ) );
+			}
+			$defaultPreferences['commoncssjs'] =
+				array(
+					'type' => 'info',
+					'raw' => true,
+					'default' => $wgLang->pipeList( $linkTools ),
+					'label-message' => 'prefs-common-css-js',
+					'section' => 'rendering/skin',
+				);
+		}
 
 		$selectedSkin = $user->getOption( 'skin' );
 		if ( in_array( $selectedSkin, array( 'cologneblue', 'standard' ) ) ) {
@@ -566,17 +593,20 @@ class Preferences {
 
 	static function renderingPreferences( $user, &$defaultPreferences ) {
 		## Page Rendering ##############################
-		$defaultPreferences['underline'] =
-				array(
-					'type' => 'select',
-					'options' => array(
-						wfMsg( 'underline-never' ) => 0,
-						wfMsg( 'underline-always' ) => 1,
-						wfMsg( 'underline-default' ) => 2,
-					),
-					'label-message' => 'tog-underline',
-					'section' => 'rendering/advancedrendering',
-				);
+		global $wgAllowUserCssPrefs;
+		if( $wgAllowUserCssPrefs ){
+			$defaultPreferences['underline'] =
+					array(
+						'type' => 'select',
+						'options' => array(
+							wfMsg( 'underline-never' ) => 0,
+							wfMsg( 'underline-always' ) => 1,
+							wfMsg( 'underline-default' ) => 2,
+						),
+						'label-message' => 'tog-underline',
+						'section' => 'rendering/advancedrendering',
+					);
+		}
 
 		$stubThresholdValues = array( 0, 50, 100, 500, 1000, 2000, 5000, 10000 );
 		$stubThresholdOptions = array();
@@ -592,18 +622,20 @@ class Preferences {
 					'size' => 20,
 					'label' => wfMsg( 'stub-threshold' ), // Raw HTML message. Yay?
 				);
-		$defaultPreferences['highlightbroken'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'rendering/advancedrendering',
-					'label' => wfMsg( 'tog-highlightbroken' ), // Raw HTML
-				);
-		$defaultPreferences['showtoc'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'rendering/advancedrendering',
-					'label-message' => 'tog-showtoc',
-				);
+		if( $wgAllowUserCssPrefs ){
+			$defaultPreferences['highlightbroken'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'rendering/advancedrendering',
+						'label' => wfMsg( 'tog-highlightbroken' ), // Raw HTML
+					);
+			$defaultPreferences['showtoc'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'rendering/advancedrendering',
+						'label-message' => 'tog-showtoc',
+					);
+		}
 		$defaultPreferences['nocache'] =
 				array(
 					'type' => 'toggle',
@@ -622,12 +654,14 @@ class Preferences {
 					'section' => 'rendering/advancedrendering',
 					'label-message' => 'tog-showjumplinks',
 				);
-		$defaultPreferences['justify'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'rendering/advancedrendering',
-					'label-message' => 'tog-justify',
-				);
+		if( $wgAllowUserCssPrefs ){
+			$defaultPreferences['justify'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'rendering/advancedrendering',
+						'label-message' => 'tog-justify',
+					);
+		}
 		$defaultPreferences['numberheadings'] =
 				array(
 					'type' => 'toggle',
@@ -637,7 +671,7 @@ class Preferences {
 	}
 
 	static function editingPreferences( $user, &$defaultPreferences ) {
-		global $wgUseExternalEditor, $wgLivePreview;
+		global $wgUseExternalEditor, $wgLivePreview, $wgAllowUserCssPrefs;
 
 		## Editing #####################################
 		$defaultPreferences['cols'] =
@@ -656,19 +690,20 @@ class Preferences {
 					'min' => 4,
 					'max' => 1000,
 				);
-
-		$defaultPreferences['editfont'] =
-				array(
-					'type' => 'select',
-					'section' => 'editing/advancedediting',
-					'label-message' => 'editfont-style',
-					'options' => array(
-						wfMsg( 'editfont-default' ) => 'default',
-						wfMsg( 'editfont-monospace' ) => 'monospace',
-						wfMsg( 'editfont-sansserif' ) => 'sans-serif',
-						wfMsg( 'editfont-serif' ) => 'serif',
-					)
-				);
+		if( $wgAllowUserCssPrefs ){
+			$defaultPreferences['editfont'] =
+					array(
+						'type' => 'select',
+						'section' => 'editing/advancedediting',
+						'label-message' => 'editfont-style',
+						'options' => array(
+							wfMsg( 'editfont-default' ) => 'default',
+							wfMsg( 'editfont-monospace' ) => 'monospace',
+							wfMsg( 'editfont-sansserif' ) => 'sans-serif',
+							wfMsg( 'editfont-serif' ) => 'serif',
+						)
+					);
+		}
 		$defaultPreferences['previewontop'] =
 				array(
 					'type' => 'toggle',
@@ -681,12 +716,14 @@ class Preferences {
 					'section' => 'editing/advancedediting',
 					'label-message' => 'tog-previewonfirst',
 				);
-		$defaultPreferences['editsection'] =
-				array(
-					'type' => 'toggle',
-					'section' => 'editing/advancedediting',
-					'label-message' => 'tog-editsection',
-				);
+		if( $wgAllowUserCssPrefs ){
+			$defaultPreferences['editsection'] =
+					array(
+						'type' => 'toggle',
+						'section' => 'editing/advancedediting',
+						'label-message' => 'tog-editsection',
+					);
+		}
 		$defaultPreferences['editsectiononrightclick'] =
 				array(
 					'type' => 'toggle',
@@ -781,7 +818,6 @@ class Preferences {
 					'section' => 'rc/advancedrc',
 				);
 
-		global $wgUseRCPatrol;
 		if( $wgUseRCPatrol ) {
 			$defaultPreferences['hidepatrolled'] =
 					array(
@@ -1071,7 +1107,7 @@ class Preferences {
 			}
 
 			$idCnt = 0;
-			$epoch = '20010115161234'; # Wikipedia day
+			$epoch = wfTimestampNow();
 			foreach( $dateopts as $key ) {
 				if( $key == 'default' ) {
 					$formatted = wfMsgHtml( 'datedefault' );
@@ -1264,18 +1300,18 @@ class Preferences {
 		);
 
 		if( $wgEnableEmail ) {
-			$newadr = $formData['emailaddress'];
-			$oldadr = $wgUser->getEmail();
-			if( ( $newadr != '' ) && ( $newadr != $oldadr ) ) {
+			$newaddr = $formData['emailaddress'];
+			$oldaddr = $wgUser->getEmail();
+			if( ( $newaddr != '' ) && ( $newaddr != $oldaddr ) ) {
 				# the user has supplied a new email address on the login page
 				# new behaviour: set this new emailaddr from login-page into user database record
-				$wgUser->setEmail( $newadr );
+				$wgUser->setEmail( $newaddr );
 				# but flag as "dirty" = unauthenticated
 				$wgUser->invalidateEmail();
 				if( $wgEmailAuthentication ) {
 					# Mail a temporary password to the dirty address.
 					# User can come back through the confirmation URL to re-enable email.
-					$result = $wgUser->sendConfirmationMail();
+					$result = $wgUser->sendConfirmationMail( $oldaddr != '' );
 					if( WikiError::isError( $result ) ) {
 						return wfMsg( 'mailerror', htmlspecialchars( $result->getMessage() ) );
 					} elseif( $entryPoint == 'ui' ) {
@@ -1283,10 +1319,10 @@ class Preferences {
 					}
 				}
 			} else {
-				$wgUser->setEmail( $newadr );
+				$wgUser->setEmail( $newaddr );
 			}
-			if( $oldadr != $newadr ) {
-				wfRunHooks( 'PrefsEmailAudit', array( $wgUser, $oldadr, $newadr ) );
+			if( $oldaddr != $newaddr ) {
+				wfRunHooks( 'PrefsEmailAudit', array( $wgUser, $oldaddr, $newaddr ) );
 			}
 		}
 

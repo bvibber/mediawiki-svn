@@ -186,9 +186,6 @@ $messages = array(
 'faq'            => 'FAQ (veehestelde vraehen)',
 'faqpage'        => 'Project:Veehestelde vraehen',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Trug nae $1.',
 'tagline'           => 'Uut {{SITENAME}}',
@@ -377,7 +374,8 @@ $2",
 De heheven reeën is ''$2''.",
 
 # Login and logout pages
-'logouttext'                 => "'''Je bin noe ofemeld.'''<br />
+'logouttext'                 => "'''Je bin noe ofemeld.'''
+
 Je kan {{SITENAME}} noe anoniem gebruken of wee anmelden as dezelven of een aore gebruker.
 Meuhlijk worn nog een antal pagina's weereheven asof a je anemeld bin totda je de cache van je browser leeg.",
 'welcomecreation'            => '== Welkom, $1! ==
@@ -532,7 +530,7 @@ Vermeld dat a je erhens over deêze blokkaode wil reaheern.",
 'confirmedittext'            => "Je mò jen e-mailadres bevestihen voe da je kan bewerken.
 Voer jen e-mailadres in en bevestig 't via [[Special:Preferences|je vòkeuren]].",
 'nosuchsectiontitle'         => 'Deêze subkop besti nie',
-'nosuchsectiontext'          => 'Je probeern een subkop te bewerken die a nie besti. Omda subkop $1 nie besti, kan je bewerkieng ok nie worn opeslogen.',
+'nosuchsectiontext'          => 'Je probeern een subkop te bewerken die a nie besti.',
 'loginreqtitle'              => 'Anmelden verplicht',
 'loginreqlink'               => 'anmelden',
 'loginreqpagetext'           => "$1 is verplicht om aore pagina's te kunn'n ziene.",
@@ -695,12 +693,12 @@ der kunn'n details anwezig zien in 't [{{fullurl:{{#Special:Log}}/suppress|page=
 Aore opzichters van {{SITENAME}} kunn'n de verborhen inoud benadern en de verwiederieng onedaene maeken mie de ulpe van dit scherm, tenzie an der anvull'nde beperkiengen heln die an zien inesteld deur de systeembeheêrder.",
 'revdelete-legend'            => "Zichbaereidsbeperkiengen instell'n",
 'revdelete-hide-text'         => 'De bewerkte tekst verberhen',
+'revdelete-hide-image'        => 'Bestandsinoud verberhen',
 'revdelete-hide-name'         => 'Actie en doel verberhen',
 'revdelete-hide-comment'      => 'De bewerkiengssaemenvattieng verberhen',
 'revdelete-hide-user'         => 'Gebrukersnaem/IP van de gebruker verberhen',
 'revdelete-hide-restricted'   => 'Deêze beperkiengen toepassen op opzichters en dezen interface ofsluten',
 'revdelete-suppress'          => "Hehevens voe zòwè opzichters as aore onderdrukk'n",
-'revdelete-hide-image'        => 'Bestandsinoud verberhen',
 'revdelete-unsuppress'        => 'Beperkiengen op terugezette wiezigiengen verwiederen',
 'revdelete-log'               => 'Opmerkieng in logboek:',
 'revdelete-submit'            => 'Toepassen op de hesillecteerde bewerkieng',

@@ -261,6 +261,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Sta catigurìa cunteni nu sulu file, ndicatu ccà sutta.|Sta catigurìa cunteni {{PLURAL:$1|nu file, ndicatu|$1 file, ndicati}} ccà sutta, su nu totali di $2.}}',
 'category-file-count-limited'    => 'Sta catigurìa cunteni {{PLURAL:$1|lu file ndicatu|li $1 file ndicati}} ccà sutta.',
 'listingcontinuesabbrev'         => ' cunt.',
+'index-category'                 => 'Pàggini nnicizzati',
+'noindex-category'               => 'Pàggini nun nnicizzati',
 
 'mainpagetext'      => "<big>'''Nstallazzioni di MediaWiki cumplitata currettamenti.'''</big>",
 'mainpagedocfooter' => "Pi favuri taliari [http://meta.wikimedia.org/wiki/Help:Contents Guida utenti] pi aiutu supra l'usu e la cunfigurazzioni di stu software wiki. 
@@ -318,9 +320,6 @@ $messages = array(
 'actions'                    => 'Azzioni',
 'namespaces'                 => 'Namespace',
 'variants'                   => 'Varianti',
-
-# Metadata in edit box
-'metadata_help' => 'Metadati:',
 
 'errorpagetitle'    => 'Erruri',
 'returnto'          => 'Ritorna a $1.',
@@ -527,8 +526,10 @@ La mutivazzioni è chista: ''$2''.",
 'virus-unknownscanner' => 'antivirus scanusciutu:',
 
 # Login and logout pages
-'logouttext'                 => "'''Ora tu niscisti.'''<br />
-Poi cuntinuari a usari {{SITENAME}} di manera anònima, o poi tràsiri n'àutra vota cu lu stissu o cu n'àutru nomu d'utenti. Accura chi quarchi pàggina pò cuntinuari a èssiri ammustrata comu si nun avissi nisciutu nzinu a quannu tu nun scancelli tutta la mimoria dû tò browser.",
+'logouttext'                 => "'''Ora tu niscisti.'''
+
+Poi cuntinuari a usari {{SITENAME}} di manera anònima, o poi tràsiri n'àutra vota cu lu stissu o cu n'àutru nomu d'utenti.
+Accura chi quarchi pàggina pò cuntinuari a èssiri ammustrata comu si nun avissi nisciutu nzinu a quannu tu nun scancelli tutta la mimoria dû tò browser.",
 'welcomecreation'            => "== Bonvinutu, $1! ==
 
 L'account hà statu criatu currettamenti. Nun ti scurdari di pirsunalizzari li [[Special:Preferences|prifirenzi di {{SITENAME}}]].",
@@ -542,6 +543,7 @@ L'account hà statu criatu currettamenti. Nun ti scurdari di pirsunalizzari li [
 'nav-login-createaccount'    => 'Riggìstrati o trasi',
 'loginprompt'                => "Tu hai a abbilitari li ''cookies'' pi tràsiri ntâ {{SITENAME}}.",
 'userlogin'                  => 'Riggìstrati o trasi',
+'userloginnocreate'          => 'Trasi',
 'logout'                     => 'Nesci',
 'userlogout'                 => 'Nesci',
 'notloggedin'                => "Nun v'aviti riggistratu",
@@ -554,6 +556,7 @@ L'account hà statu criatu currettamenti. Nun ti scurdari di pirsunalizzari li [
 'badretype'                  => "La ''password'' chi mittisti nun è bona.",
 'userexists'                 => 'Lu nomu utenti nzeritu è già usatu. Ti prijamu pirciò di vuliri scègghiri nu nomu utenti diversu.',
 'loginerror'                 => "Erruri nta l'accessu",
+'createaccounterror'         => "Mpussibbili di criari l'account",
 'nocookiesnew'               => 'Lu nomu utenti pi tràsiri fu criatu, ma nun hai effittuatu lu log in. {{SITENAME}} usa li cookies pi gistiri li log in. Lu tò browser havi li cookies disabbilitati. Abbìlita li cookies, appoi effèttua lu login cu li tò username e password novi.',
 'nocookieslogin'             => '{{SITENAME}} usa li cookies pi gistiri lu log in. Lu tò browser havi li cookies disabbilitati. Abbìlita li cookies, appoi effèttua lu login cu li tò username e password.',
 'noname'                     => 'Lu nomu utenti innicatu nun è vàlidu, nun è pussìbbili criari un account a stu nomu.',
@@ -564,6 +567,7 @@ Li nnomi utenti sunu sinsitivi ê maiusculi.
 Virificari lu nomu nziritu o [[Special:UserLogin/signup|criari un novu accessu]].',
 'nosuchusershort'            => 'Nun c\'è nuddu utenti di nomu "<nowiki>$1</nowiki>". Cuntrolla l\'ortugrafìa.',
 'nouserspecified'            => 'È nicissariu spicificari un nomu utenti.',
+'login-userblocked'          => "St'utilizzaturi è bluccatu. Nun è pussibbili di tràsiri",
 'wrongpassword'              => "La ''password'' chi mittisti nun è giusta. Prova n'àutra vota.",
 'wrongpasswordempty'         => 'Nun hà statu nzirita arcuna password. Ripruvari.',
 'passwordtooshort'           => 'La tò password è troppu brivi. Havi a cuntèniri armenu {{PLURAL:$1|1 caràttiri|$1 caràttiri}}.',
@@ -689,7 +693,7 @@ Pi favuri nclùdilu nta tutti li dumanni chi fai.",
 'whitelistedittext'                => "Hai a $1 pi canciari l'artìculi.",
 'confirmedittext'                  => "P'èssiri abbilitati a lu canciamentu dî pàggini è nicissariu cunfirmari lu propiu ndirizzu e-mail. Pi mpustari e cunfirmari lu ndirizzu sirvìrisi dî [[Special:Preferences|prifirenzi]].",
 'nosuchsectiontitle'               => 'Sta sezzioni nun esisti',
-'nosuchsectiontext'                => 'Pruvasti a canciari na sezzioni chi nun esisti. Li tò canciamenti nun ponnu èssiri sarvati, picchì nun esisti la sezzioni $1.',
+'nosuchsectiontext'                => 'Pruvasti a canciari na sezzioni chi nun esisti.',
 'loginreqtitle'                    => 'Login nicissariu',
 'loginreqlink'                     => "esèquiri l'accessu",
 'loginreqpagetext'                 => 'Pi vìdiri àutri pàggini è nicissariu $1.',
@@ -868,12 +872,12 @@ L'àutri amministratura dû situ ponnu accèdiri comu è gghiè a li cuntinuti a
 *: ''ndirizzi, nnummara di telefunu, codici fiscali, ecc.''",
 'revdelete-legend'            => 'Mposta li limitazzioni siquenti supra li virsioni cancillati:',
 'revdelete-hide-text'         => 'Ammuccia lu testu dâ virsioni',
+'revdelete-hide-image'        => 'Ammuccia lu cuntinutu dû file',
 'revdelete-hide-name'         => 'Ammuccia azione e uggettu dâ stissa',
 'revdelete-hide-comment'      => "Ammuccia l'uggettu dû canciamentu",
 'revdelete-hide-user'         => "Ammuccia lu nomu o lu ndirizzu IP di l'auturi",
 'revdelete-hide-restricted'   => "Ammuccia l'informazioni innicati macari a li amministratura",
 'revdelete-suppress'          => "Ammuccia nformazioni puru all'amministratura",
-'revdelete-hide-image'        => 'Ammuccia lu cuntinutu dû file',
 'revdelete-unsuppress'        => 'Elìmina le limitazzioni su li rivisioni ripristinati',
 'revdelete-log'               => 'Cummentu pi lu log:',
 'revdelete-submit'            => 'Àpplica â rivisioni silizziunata',
@@ -1279,9 +1283,9 @@ L'operazioni nun pò èssiri annullata.",
 'recentchangestext'                 => 'Chista pàggina prisenta li canci cchiù ricenti ê cuntinuti dô situ.',
 'recentchanges-feed-description'    => 'Stu feed riporta li canciamenti cchiù ricenti a li cuntinuti dû situ.',
 'recentchanges-label-legend'        => 'Liggenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova pàggina',
+'recentchanges-legend-newpage'      => '$1 - pàggina nova',
 'recentchanges-label-newpage'       => 'This edit havi creatu na nova pàggina',
-'recentchanges-legend-minor'        => '$1 - cancuamentu nnicu',
+'recentchanges-legend-minor'        => '$1 - canciamentu nicu',
 'recentchanges-label-minor'         => 'Chista è nu canciamentu nnicu',
 'recentchanges-legend-bot'          => '$1 - canciamentu dô bot',
 'recentchanges-label-bot'           => 'Stu canciamentu fu fattu dû bot',
@@ -1389,7 +1393,6 @@ Siddu si disponi dâ mmàggini ntâ risuluzzioni urigginali, si prega di carric�
 'uploaddisabledtext'          => 'Lu carricamentu dî file nun è attivu supra a stu situ.',
 'php-uploaddisabledtext'      => 'Li file PHP non sunnu abbilitati. Pi favuri cuntrolla li mpustazzioni dû file_uploads.',
 'uploadscripted'              => "Stu file cunteni còdici HTML o di script, ca putissi èssiri nterpritato erroniamenti d'un browser web.",
-'uploadcorrupt'               => 'Lu file è currumputu o hà na stinzioni nun curretta. Pi favuri cuntrolla lu file e esequi di novu lu carricamentu.',
 'uploadvirus'                 => 'Lu file cunteni un virus! Ultiriuri nfurmazzioni: $1',
 'sourcefilename'              => "Nomu dû file d'orìggini:",
 'destfilename'                => 'Nomu dû file di distinazzioni:',

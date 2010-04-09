@@ -9,7 +9,7 @@
  * @author Ashar Voultoiz <thoane@altern.org>
  *
  * Output is posted from time to time on:
- * http://meta.wikimedia.org/wiki/Localization_statistics
+ * http://www.mediawiki.org/wiki/Localisation_statistics
  */
 $optionsWithArgs = array( 'output' );
 
@@ -29,17 +29,16 @@ if ( !isset( $options['output'] ) ) {
 
 /** Print a usage message*/
 function showUsage() {
-	print <<<END
+	print <<<TEXT
 Usage: php transstat.php [--help] [--output=csv|text|wiki]
 	--help : this helpful message
 	--output : select an output engine one of:
 		* 'csv'      : Comma Separated Values.
 		* 'wiki'     : MediaWiki syntax (default).
-		* 'metawiki' : MediaWiki syntax used for Meta-Wiki.
 		* 'text'     : Text with tabs.
 Example: php maintenance/transstat.php --output=text
 
-END;
+TEXT;
 	exit(1);
 }
 
@@ -49,9 +48,6 @@ END;
 switch ( $options['output'] ) {
 	case 'wiki':
 		$output = new wikiStatsOutput();
-		break;
-	case 'metawiki':
-		$output = new metawikiStatsOutput();
 		break;
 	case 'text':
 		$output = new textStatsOutput();

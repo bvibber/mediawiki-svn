@@ -131,9 +131,6 @@ $messages = array(
 'qbmyoptions'    => 'Ásahusat',
 'qbspecialpages' => 'Doaibmasiiddut',
 
-# Metadata in edit box
-'metadata_help' => 'Sisdoallogovvádusat:',
-
 'errorpagetitle'    => 'Feaila',
 'returnto'          => 'Máhcat siidui $1.',
 'tagline'           => '{{SITENAME}}',
@@ -266,7 +263,9 @@ $messages = array(
 'sqlhidden'            => '(SQL-jierahallan lea čihkojuvvon)',
 
 # Login and logout pages
-'logouttext'                 => 'Leat dál čálligoahtán olggos {{GRAMMAR:elative|{{SITENAME}}}}. Sáhtat joatkit {{GRAMMAR:genitive|{{SITENAME}}}} geavaheami anonyman, dahje čálligoahtit ođđasit sisa.',
+'logouttext'                 => "'''Leat dál čálligoahtán olggos {{GRAMMAR:elative|{{SITENAME}}}}.'''
+
+Sáhtat joatkit {{GRAMMAR:genitive|{{SITENAME}}}} geavaheami anonyman, dahje čálligoahtit ođđasit sisa.",
 'welcomecreation'            => '== Bures boahtin, $1! ==
 Du geavaheaddjidovddaldat lea dál anus.
 Ále vajáldahte rievdadit {{GRAMMAR:genitive|{{SITENAME}}}} iežat ásahusaid.',
@@ -375,7 +374,7 @@ Du geavaheaddjidovddaldat lea dál anus.
 'whitelistedittext'        => 'Don fertet $1, ovdalgo sáhtat rievdadit siidduid.',
 'confirmedittext'          => 'It sáhte rievdadit siiddu ovdalgo leat sihkarastan iežat e-poastačujuhusa. Sáhtat sihkarastit [[Special:Preferences|ásahussiidduin]].',
 'nosuchsectiontitle'       => 'Diekkár oassi ii dihtto',
-'nosuchsectiontext'        => 'Isket rievdadit oasi, mii ii dihtto. Daningo oassi $1 ii dihtto, rievdadusa ii sáhte vurket.',
+'nosuchsectiontext'        => 'Isket rievdadit oasi, mii ii dihtto.',
 'loginreqtitle'            => 'Sisačállin gáibiduvvo',
 'loginreqlink'             => 'čálligoahtit sisa',
 'loginreqpagetext'         => 'Don fertet $1, ovdalgo oainnat eará siidduid.',
@@ -442,11 +441,11 @@ Du geavaheaddjidovddaldat lea dál anus.
 Eará bajasdoallit sáhtet lohkat čihkojuvvon sisdoalu ja máhcahit dan.",
 'revdelete-legend'        => 'Veršuvnna rádjehusat',
 'revdelete-hide-text'     => 'Čiega veršuvnna sisdoalu',
+'revdelete-hide-image'    => 'Čiega fiilla sisdoalu',
 'revdelete-hide-name'     => 'Čiega doaibma ja mearri',
 'revdelete-hide-comment'  => 'Čiega čoahkkáigeasu',
 'revdelete-hide-user'     => 'Čiega dahkki dovddaldaga dahje IP-čujuhusa',
 'revdelete-suppress'      => 'Čiega maid bajasdolliin',
-'revdelete-hide-image'    => 'Čiega fiilla sisdoalu',
 'revdelete-unsuppress'    => 'Sihko máhcahuvvon veršuvnnaid rádjehusaid',
 'revdelete-log'           => 'Logmearkkastat:',
 'revdelete-submit'        => 'Daga',
@@ -621,7 +620,6 @@ $1 {{int:pipe-separator}} $2',
 'uploaddisabled'     => '{{GRAMMAR:genitive|{{SITENAME}}}} ii sáhte lasihit fiillaid.',
 'uploaddisabledtext' => 'Fiillaid vurken lea váldojuvvon eret anus.',
 'uploadscripted'     => 'Dát fiila sisdisdoalla HTML-koda dahje skriptaid, maid neahttabláđejeaddji sáhttá vahagis dahkat.',
-'uploadcorrupt'      => 'Fiila lea billahuvvan dahje das lea boasto fiilageažus. Dárkis fiilla ja sádde dan ođđasit.',
 'uploadvirus'        => 'Fiila sisdoalla virusa. Dárkilut dieđut: $1',
 'sourcefilename'     => 'Gáldonamma',
 'destfilename'       => 'Mearrenamma',

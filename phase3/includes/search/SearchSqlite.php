@@ -26,10 +26,8 @@
  * @ingroup Search
  */
 class SearchSqlite extends SearchEngine {
-	var $strictMatching = true;
-
 	// Cached because SearchUpdate keeps recreating our class
-	private static $fulltextSupported = NULL;
+	private static $fulltextSupported = null;
 
 	/**
 	 * Creates an instance of this class
@@ -44,9 +42,12 @@ class SearchSqlite extends SearchEngine {
 	 * @return Boolean
 	 */
 	function fulltextSearchSupported() {
-		if ( self::$fulltextSupported === NULL ) {
-			$res = $this->db->selectField( 'updatelog', 'ul_key', array( 'ul_key' => 'fts3' ), __METHOD__ );
-			self::$fulltextSupported = $res && $this->db->numRows( $res ) > 0;
+		if ( self::$fulltextSupported === null ) {
+			self::$fulltextSupported = $this->db->selectField( 
+				'updatelog', 
+				'ul_key', 
+				array( 'ul_key' => 'fts3' ), 
+				__METHOD__ ) !== false;
 		}
 		return self::$fulltextSupported;
 	}
@@ -61,7 +62,6 @@ class SearchSqlite extends SearchEngine {
 		$searchon = '';
 		$this->searchTerms = array();
 
-		# FIXME: This doesn't handle parenthetical expressions.
 		$m = array();
 		if( preg_match_all( '/([-+<>~]?)(([' . $lc . ']+)(\*?)|"[^"]*")/',
 			  $filteredText, $m, PREG_SET_ORDER ) ) {
@@ -75,13 +75,9 @@ class SearchSqlite extends SearchEngine {
 					$term = str_replace( '"', '', $term );
 					$quote = '"';
 				}
-			
+
 				if( $searchon !== '' ) $searchon .= ' ';
-				if( $this->strictMatching && ($modifier == '') ) {
-					// If we leave this out, boolean op defaults to OR which is rarely helpful.
-					$modifier = '+';
-				}
-				
+
 				// Some languages such as Serbian store the input form in the search index,
 				// so we may need to search for matches in multiple writing system variants.
 				$convertedVariants = $wgContLang->autoConvertToAllVariants( $term );
@@ -96,7 +92,7 @@ class SearchSqlite extends SearchEngine {
 				// fulltext engine.
 				// For Chinese this also inserts spaces between adjacent Han characters.
 				$strippedVariants = array_map(
-					array( $wgContLang, 'stripForSearch' ),
+					array( $wgContLang, 'normalizeForSearch' ),
 					$variants );
 				
 				// Some languages such as Chinese force all variants to a canonical
@@ -110,7 +106,7 @@ class SearchSqlite extends SearchEngine {
 				foreach( $strippedVariants as $stripped ) {
 					if( $nonQuoted && strpos( $stripped, ' ' ) !== false ) {
 						// Hack for Chinese: we need to toss in quotes for
-						// multiple-character phrases since stripForSearch()
+						// multiple-character phrases since normalizeForSearch()
 						// added spaces between them to make word breaks.
 						$stripped = '"' . trim( $stripped ) . '"';
 					}
@@ -124,8 +120,7 @@ class SearchSqlite extends SearchEngine {
 				$regexp = $this->regexTerm( $term, $wildcard );
 				$this->searchTerms[] = $regexp;
 			}
-			wfDebug( __METHOD__ . ": Would search with '$searchon'\n" );
-			wfDebug( __METHOD__ . ': Match with /' . implode( '|', $this->searchTerms ) . "/\n" );
+
 		} else {
 			wfDebug( __METHOD__ . ": Can't understand search query '{$filteredText}'\n" );
 		}
@@ -179,7 +174,7 @@ class SearchSqlite extends SearchEngine {
 	}
 	
 	protected function searchInternal( $term, $fulltext ) {
-		global $wgSearchMySQLTotalHits, $wgContLang;
+		global $wgCountTotalSearchHits, $wgContLang;
 
 		if ( !$this->fulltextSearchSupported() ) {
 			return null;
@@ -189,7 +184,7 @@ class SearchSqlite extends SearchEngine {
 		$resultSet = $this->db->query( $this->getQuery( $filteredTerm, $fulltext ) );
 		
 		$total = null;
-		if( $wgSearchMySQLTotalHits ) {
+		if( $wgCountTotalSearchHits ) {
 			$totalResult = $this->db->query( $this->getCountQuery( $filteredTerm, $fulltext ) );
 			$row = $totalResult->fetchObject();
 			if( $row ) {
@@ -239,15 +234,6 @@ class SearchSqlite extends SearchEngine {
 	}
 
 	/**
-	 * Does not do anything for generic search engine
-	 * subclasses may define this though
-	 * @return String
-	 */
-	function queryRanking( $filteredTerm, $fulltext ) {
-		return '';
-	}
-
-	/**
 	 * Construct the full SQL query to do the search.
 	 * The guts shoulds be constructed in queryMain()
 	 * @param $filteredTerm String
@@ -257,8 +243,7 @@ class SearchSqlite extends SearchEngine {
 		return $this->limitResult(
 			$this->queryMain( $filteredTerm, $fulltext ) . ' ' .
 			$this->queryRedirect() . ' ' .
-			$this->queryNamespaces() . ' ' .
-			$this->queryRanking( $filteredTerm, $fulltext )
+			$this->queryNamespaces()
 		);
 	}
 	
@@ -347,35 +332,12 @@ class SearchSqlite extends SearchEngine {
 /**
  * @ingroup Search
  */
-class SqliteSearchResultSet extends SearchResultSet {
+class SqliteSearchResultSet extends SqlSearchResultSet {
 	function SqliteSearchResultSet( $resultSet, $terms, $totalHits=null ) {
-		$this->mResultSet = $resultSet;
-		$this->mTerms = $terms;
+		parent::__construct( $resultSet, $terms );
 		$this->mTotalHits = $totalHits;
 	}
 
-	function termMatches() {
-		return $this->mTerms;
-	}
-
-	function numRows() {
-		return $this->mResultSet->numRows();
-	}
-
-	function next() {
-		$row = $this->mResultSet->fetchObject();
-		if( $row === false ) {
-			return false;
-		} else {
-			return new SearchResult( $row );
-		}
-	}
-
-	function free() {
-		$this->mResultSet->free();
-	}
-
-	
 	function getTotalHits() {
 		return $this->mTotalHits;
 	}

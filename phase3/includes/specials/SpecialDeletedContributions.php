@@ -258,7 +258,7 @@ class DeletedContributionsPage extends SpecialPage {
 			return;
 		}
 
-		global $wgUser, $wgOut, $wgLang, $wgRequest;
+		global $wgOut, $wgLang, $wgRequest;
 
 		$wgOut->setPageTitle( wfMsgExt( 'deletedcontributions-title', array( 'parsemag' ) ) );
 
@@ -328,17 +328,17 @@ class DeletedContributionsPage extends SpecialPage {
 
 	/**
 	 * Generates the subheading with links
-	 * @param Title $nt @see Title object for the target
-	 * @param integer $id User ID for the target
+	 * @param $nt Title object for the target
+	 * @param $id Integer: User ID for the target
 	 * @return String: appropriately-escaped HTML to be output literally
-	 * @fixme Almost the same as contributionsSub in SpecialContributions.php. Could be combined.
+	 * @todo Fixme: almost the same as contributionsSub in SpecialContributions.php. Could be combined.
 	 */
 	function getSubTitle( $nt, $id ) {
 		global $wgSysopUserBans, $wgLang, $wgUser, $wgOut;
 
 		$sk = $wgUser->getSkin();
 
-		if ( 0 == $id ) {
+		if ( $id === null ) {
 			$user = htmlspecialchars( $nt->getText() );
 		} else {
 			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
@@ -348,7 +348,7 @@ class DeletedContributionsPage extends SpecialPage {
 		if( $talk ) {
 			# Talk page link
 			$tools[] = $sk->link( $talk, wfMsgHtml( 'sp-contributions-talk' ) );
-			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && IP::isIPAddress( $nt->getText() ) ) ) {
+			if( ( $id !== null && $wgSysopUserBans ) || ( $id === null && IP::isIPAddress( $nt->getText() ) ) ) {
 				if( $wgUser->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
 					if ( $userObj->isBlocked() ) {
 						$tools[] = $sk->linkKnown( # Change block link
@@ -398,7 +398,7 @@ class DeletedContributionsPage extends SpecialPage {
 
 			# Add a link to change user rights for privileged users
 			$userrightsPage = new UserrightsPage();
-			if( 0 !== $id && $userrightsPage->userCanChangeRights( User::newFromId( $id ) ) ) {
+			if( $id !== null && $userrightsPage->userCanChangeRights( User::newFromId( $id ) ) ) {
 				$tools[] = $sk->linkKnown(
 					SpecialPage::getTitleFor( 'Userrights', $nt->getDBkey() ),
 					wfMsgHtml( 'sp-contributions-userrights' )

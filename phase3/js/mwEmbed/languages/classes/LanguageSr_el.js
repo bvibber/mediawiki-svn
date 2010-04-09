@@ -3,9 +3,9 @@
 /**
  * @ingroup Language
  */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 	
-		forms = mw.lang.preConvertPlural( forms, 3 );
+		forms = mw.Language.preConvertPlural( forms, 3 );
 
 		if (count > 10 && Math.floor((count % 100) / 10) == 1) {
 			return forms[2];

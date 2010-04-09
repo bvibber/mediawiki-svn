@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Andejkendej
  * @author Cradel
  * @author Dori
  * @author Eagleal
@@ -322,9 +323,6 @@ $messages = array(
 'faq'            => 'Pyetje e Përgjigje',
 'faqpage'        => 'Project:Pyetje e Përgjigje',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Gabim',
 'returnto'          => 'Kthehu tek $1.',
 'tagline'           => 'Nga {{SITENAME}}',
@@ -379,6 +377,11 @@ $messages = array(
 'jumpto'            => 'Shko te:',
 'jumptonavigation'  => 'navigacion',
 'jumptosearch'      => 'kërko',
+'view-pool-error'   => 'Na falni, serverat janë të mbingarkuar momentalisht.
+Shumë përdorues po përpiqen të shikojnë këtë faqe.
+Ju lutem prisni disa momente përpara se të hapni sërish këtë faqe.
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Rreth {{SITENAME}}',
@@ -528,7 +531,9 @@ Arsyeja e dhënë është ''$2''.",
 'virus-unknownscanner' => 'antivirus i pa njohur:',
 
 # Login and logout pages
-'logouttext'                 => 'Keni dalë jashtë {{SITENAME}}-s. Mund të vazhdoni të përdorni {{SITENAME}}-n anonimisht, ose mund të hyni brënda përsëri.',
+'logouttext'                 => "'''Keni dalë jashtë {{SITENAME}}-s.'''
+
+Mund të vazhdoni të përdorni {{SITENAME}}-n anonimisht, ose mund të hyni brënda përsëri.",
 'welcomecreation'            => '== Mirëserdhët, $1! ==
 Llogaria juaj është hapur. Mos harroni të ndryshoni parapëlqimet e {{SITENAME}}-s suaj.',
 'yourname'                   => 'Fusni nofkën tuaj',
@@ -684,8 +689,7 @@ Ju lutemi përfshini këto detaje në të gjitha kërkesat që i bëni.',
 'whitelistedittext'                => 'Duhet të $1 për të redaktuar artikuj.',
 'confirmedittext'                  => 'Ju duhet së pari ta vërtetoni e-mail adresen para se të redaktoni. Ju lutem plotësoni dhe vërtetoni e-mailin tuaj  te [[Special:Preferences|parapëlqimet]] e juaja.',
 'nosuchsectiontitle'               => 'Asnjë seksion i tillë nuk ekziston',
-'nosuchsectiontext'                => "Keni provuar të redaktoni një seksion që s'ekziston.
-Përderisa nuk ka seksion $1 nuk ka vend për të ruajtur ndryshimet tuaja.",
+'nosuchsectiontext'                => "Keni provuar të redaktoni një seksion që s'ekziston.",
 'loginreqtitle'                    => 'Detyrohet hyrja',
 'loginreqlink'                     => 'hyni',
 'loginreqpagetext'                 => 'Ju duhet $1 për të parë faqe e tjera.',
@@ -836,22 +840,24 @@ Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistr
 'rev-deleted-text-view'       => 'Ky version i faqes është shlyer nga arkivi publik i faqes. Ju si Administrator mund ta shikoni akoma këtë. 
 Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistri i grisjeve], ndoshta gjenden atje më shumë informacione rreth kësaj.',
 'rev-delundel'                => 'trego/fshih',
+'rev-showdeleted'             => 'Trego',
 'revisiondelete'              => 'Shlyj/Reparo versionet',
 'revdelete-nooldid-title'     => 'Version i dëshiruar i pavfleshëm',
 'revdelete-nooldid-text'      => 'Ose nuk keni përcaktuar një version(e) të dëshiruar për veprimin, ose versioni nuk ekziston, ose po mundoheni të fshihni versionin e tanishëm.',
 'revdelete-nologtype-title'   => 'Nuk është dhënë asnjë lloj i të dhënave',
 'revdelete-nologtype-text'    => 'Nuk keni caktuar llojin e të dhënave për të realizuar veprimin.',
+'revdelete-no-file'           => 'Skeda e dhënë nuk ekziston.',
 'revdelete-selected'          => "'''{{PLURAL:$2|Versioni i zgjedhur i|Versionet e zgjedhura të}} [[:$1]]:'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Veprimi i zgjedhur në regjistër|Veprimet e zgjedhura në regjistër}}:'''",
 'revdelete-text'              => "'''Përmbajtja dhe pjesët e tjera nuk janë të dukshme për të gjithë, por figurojnë në historikun e versioneve.''' Administratorët munden përmbajtjen e larguar ta shikojnë dhe restaurojnë, përveç në rastet kur një gjë e tillë është ndaluar ekstra.",
 'revdelete-legend'            => 'Vendosni kufizimet për versionin:',
 'revdelete-hide-text'         => 'Fshihe tekstin e versionit',
+'revdelete-hide-image'        => 'Fshih përmbajtjen skedare',
 'revdelete-hide-name'         => 'Fshihe veprimin dhe shënjestrën',
 'revdelete-hide-comment'      => 'fshih komentin e redaktimit',
 'revdelete-hide-user'         => 'Fshihe emrin/IP-në të redaktuesit',
 'revdelete-hide-restricted'   => 'Këto përkufizme vlejnë edhe për Admintratorët (jo vetëm për përdoruesit "normal")',
 'revdelete-suppress'          => 'Ndalo të dhëna nga administrues si dhe të tjerë',
-'revdelete-hide-image'        => 'Fshih përmbajtjen skedare',
 'revdelete-unsuppress'        => 'Hiq kufizimet nga versionet e restauruara',
 'revdelete-log'               => 'Arsyeja:',
 'revdelete-submit'            => 'Apliko te versionet e zgjedhura',
@@ -1020,6 +1026,10 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'timezoneoffset'            => 'Ofset¹:',
 'servertime'                => 'Ora e shërbyesit:',
 'guesstimezone'             => 'Gjeje nga shfletuesi',
+'timezoneregion-atlantic'   => 'Oqeani Atlantik',
+'timezoneregion-pacific'    => 'Pacific Ocean
+
+Oqeani Paqësor',
 'allowemail'                => 'Lejo përdoruesit të më dërgojnë email',
 'prefs-searchoptions'       => 'Mundësi kërkimi',
 'prefs-namespaces'          => 'Hapësirat',
@@ -1044,6 +1054,7 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'prefs-help-realname'       => '* Emri i vërtetë (opsion): Për të përmendur emrin tuaj si kontribuues në varësi nga puna juaj këtu.',
 'prefs-help-email'          => "Posta elektronike është zgjedhore, por ju mundëson që fjalëkalimi i ri të ju dërgohet nëse e harroni atë. Gjithashtu mund të zgjidhni nëse doni të tjerët t'ju shkruajnë ose jo përmes faqes suaj të diskutimit pa patur nevojë të zbulojnë identitetin tuaj.",
 'prefs-help-email-required' => 'Kërkohet e-mail adresa .',
+'prefs-signature'           => 'Firma',
 
 # User rights
 'userrights'                  => 'Ndrysho privilegjet e përdoruesve',
@@ -1169,6 +1180,7 @@ Kini kujdes se përdorimi i lidhjeve të shfletimit do të ndryshojë përzgjedh
 'recentchanges-legend'              => 'Zgjedhjet e ndryshimeve momentale',
 'recentchangestext'                 => 'Ndiqni ndryshime së fundmi tek kjo faqe.',
 'recentchanges-feed-description'    => 'Ndjek ndryshimet më të fundit në wiki tek kjo fushë.',
+'recentchanges-label-newpage'       => 'Ky redaktim krijoi një faqe të re',
 'rcnote'                            => "Më poshtë {{PLURAL:$1|është '''1''' ndryshim| janë '''$1''' ndryshime}} së fundmi gjatë <strong>$2</strong> ditëve sipas të dhënave nga $4, $5.",
 'rcnotefrom'                        => 'Më poshtë janë ndryshime së fundmi nga <b>$2</b> (treguar deri në <b>$1</b>).',
 'rclistfrom'                        => 'Tregon ndryshime së fundmi duke filluar nga $1',
@@ -1274,7 +1286,6 @@ Nëse keni këtë figurë me madhësi të plotë ju lutem të ngarkoni atë, pë
 'uploaddisabled'              => 'Ndjesë, dhëniet janë bllokuar në këtë shërbyes dhe nuk është gabimi juaj.',
 'uploaddisabledtext'          => 'Ngarkimi i skedave është i ndaluar.',
 'uploadscripted'              => 'Skeda përmban HTML ose kode të tjera që mund të interpretohen gabimisht nga një shfletues.',
-'uploadcorrupt'               => 'Skeda është e dëmtuar ose ka emër të gabuar. Ju lutemi kontrolloni skedën dhe ngarkoni atë përsëri.',
 'uploadvirus'                 => 'Skeda përmban një virus! Detaje: $1',
 'sourcefilename'              => 'Emri i skedës:',
 'destfilename'                => 'Emri mbas dhënies:',
@@ -1297,6 +1308,7 @@ Ju lutem lidhuni me administruesin e sistemit tuaj.',
 'upload-misc-error-text'  => 'Një gabim i panjohur ka ndodhur gjatë ngarkimit.
 Ju lutem kontrolloni që adresa URL të jetë e vlefshme dhe e kapshme dhe provoni përsëri.
 Nëse problemi vazhdon atëherë duhet të lidheni me administruesin e sistemit.',
+'upload-unknown-size'     => 'Madhësia e panjohur',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => "S'munda të lidhem me adresën URL",
@@ -2038,11 +2050,12 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'export-templates'  => 'Përfshinë stampa',
 
 # Namespace 8 related
-'allmessages'        => 'Mesazhet e sistemit',
-'allmessagesname'    => 'Emri',
-'allmessagesdefault' => 'Teksti i parazgjedhur',
-'allmessagescurrent' => 'Teksti i tanishëshm',
-'allmessagestext'    => 'Kjo është një listë e të gjitha faqeve në hapësirën MediaWiki:',
+'allmessages'               => 'Mesazhet e sistemit',
+'allmessagesname'           => 'Emri',
+'allmessagesdefault'        => 'Teksti i parazgjedhur',
+'allmessagescurrent'        => 'Teksti i tanishëshm',
+'allmessagestext'           => 'Kjo është një listë e të gjitha faqeve në hapësirën MediaWiki:',
+'allmessages-filter-submit' => 'Shko',
 
 # Thumbnails
 'thumbnail-more'  => 'Zmadho',
@@ -2052,6 +2065,7 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 # Special:Import
 'import'                   => 'Importoni faqe',
 'importinterwiki'          => 'Import ndër-wiki',
+'import-interwiki-source'  => 'Burimi wiki/faqe',
 'import-interwiki-history' => 'Kopjo të gjitha versionet e historisë për këtë faqe',
 'import-interwiki-submit'  => 'Importo',
 'import-comment'           => 'Arsyeja:',
@@ -2100,6 +2114,7 @@ Për të eksportuar faqe, thjesht shtypni një emër për çdo rresht, ose krijo
 'tooltip-search-fulltext'         => 'Kërko faqet me këtë tekst',
 'tooltip-p-logo'                  => 'Figura e Faqes Kryesore',
 'tooltip-n-mainpage'              => 'Vizitoni Faqen kryesore',
+'tooltip-n-mainpage-description'  => 'Vizito faqen kryesore',
 'tooltip-n-portal'                => 'Mbi projektin, çka mund të bëni për të dhe ku gjenden faqet.',
 'tooltip-n-currentevents'         => 'Informacion rreth ngjarjeve aktuale.',
 'tooltip-n-recentchanges'         => 'Lista e ndryshimeve së fundmi në projekt',

@@ -243,9 +243,6 @@ $messages = array(
 'vector-view-edit'      => 'Liwatón',
 'vector-view-view'      => 'Basáhon',
 
-# Metadata in edit box
-'metadata_help' => 'Mga Metadatos:',
-
 'errorpagetitle'    => 'Salâ',
 'returnto'          => 'Magbwelta sa $1.',
 'tagline'           => 'Halì sa {{SITENAME}}',
@@ -437,7 +434,8 @@ $2',
 'virus-unknownscanner' => 'dai aram an antivirus:',
 
 # Login and logout pages
-'logouttext'                 => "'''Nakaluwas ka na.'''<br />
+'logouttext'                 => "'''Nakaluwas ka na.'''
+
 Pwede mo pang gamiton an {{SITENAME}} na dai nagpapabisto, o pwede ka giraray lumaog
 bilang pareho o ibang parágamit. Giromdomon tabî na an ibang mga páhina pwedeng mahiling pa na garo nakalaog ka pa, hasta limpyarón mo an abang kan ''browser'' mo.",
 'welcomecreation'            => "== Maogmang Pagdagos, $1! ==
@@ -592,7 +590,7 @@ Giromdomon tabî na pwede mo sanang gamiton an \"''e''-suratan ining parágamit\
 'whitelistedittext'          => 'Kaipuhan mong $1 tangarig makahirá nin mga páhina.',
 'confirmedittext'            => "Kaipuhan mong kompirmaron an saimong ''e''-surat. Ipwesto tabî asin patunayan an saimong ''e''-surat sa [[Special:Preferences|mga kabôtan kan parágamit]].",
 'nosuchsectiontitle'         => 'Mayong siring na seksyón',
-'nosuchsectiontext'          => 'Mayo man an seksyón an pighihira mo. Nin huli ta mayô nin seksyón na $1, mayong lugar na pwedeng tagamahan kan hirá mo.',
+'nosuchsectiontext'          => 'Mayo man an seksyón an pighihira mo.',
 'loginreqtitle'              => 'Kaipuhan Maglaog',
 'loginreqlink'               => 'maglaog',
 'loginreqpagetext'           => 'Kaipuhan kang $1 tangarig makahilíng nin ibang pahina.',
@@ -733,12 +731,12 @@ Pwedeng igwang mga detalye sa [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPA
 An ibang mga administrador sa ining wiki pwede pang maghiling kan mga nakatagong laog asin pwede pa nindang bawîon an pagparâ kaini sa paggamit kan parehong ''interface'', kun mayô pang mga ibang restriksyón.",
 'revdelete-legend'            => 'Ipwesto an mga restriksyón',
 'revdelete-hide-text'         => 'Tagoon an teksto kan pagpakaraháy',
+'revdelete-hide-image'        => 'Tagoon an laog kan file',
 'revdelete-hide-name'         => 'Tagoon an aksyon asin target',
 'revdelete-hide-comment'      => 'Tagoon an komento sa paghirá',
 'revdelete-hide-user'         => 'Tagoon an pangaran kan editor/IP',
 'revdelete-hide-restricted'   => 'Ibali sa mga restriksyón na ini an mga sysops asin iba pa',
 'revdelete-suppress'          => 'Dai ipahilíng an mga datos sa mga sysops asin sa mga iba pa',
-'revdelete-hide-image'        => 'Tagoon an laog kan file',
 'revdelete-unsuppress'        => 'Halîon an mga restriksyón sa mga ibinalík na pagpakarhay',
 'revdelete-log'               => 'Historial na komento:',
 'revdelete-submit'            => 'Ibílang sa piniling pagpakarhay',
@@ -979,7 +977,6 @@ Kun igwa ka nin ladawan na may resolusyón na maximo ikarga tabî ini, kun dai, 
 'uploaddisabled'              => 'Pigpopondó an mga pagkargá',
 'uploaddisabledtext'          => "Pigpopogolan an pagkarga nin mga ''file'' o sa ining wiki.",
 'uploadscripted'              => "Ining ''file'' igwang HTML o kodang eskritura na pwede ser na salang mainterpretar kan ''browser''.",
-'uploadcorrupt'               => "Raot ining ''file'' o igwang ekstensyón na salâ. Sosogon tabî an ''file'' asin ikarga giraray.",
 'uploadvirus'                 => "May virus an ''file''! Mga detalye: $1",
 'sourcefilename'              => 'Ginikanan kan pangaran kan dokumento',
 'destfilename'                => "''Filename'' kan destinasyón",

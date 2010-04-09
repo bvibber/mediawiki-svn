@@ -8,6 +8,7 @@
  * @file
  *
  * @author Amikeco
+ * @author Bouron
  * @author HalanTul
  * @author לערי ריינהארט
  */
@@ -678,6 +679,9 @@ $3',
 # Special:ListUsers
 'listusers-submit' => 'Равдис',
 
+# Special:Log/newusers
+'newuserlog-create-entry' => 'Ног архайæджы аккаунт',
+
 # Special:ListGroupRights
 'listgrouprights-group'   => 'Къорд',
 'listgrouprights-members' => '(уæнгты номхыгъд)',
@@ -695,7 +699,7 @@ $3',
 'watchnologintext'  => 'Ацы номхыгъд ивынмæ [[Special:UserLogin|хъуамæ дæхи бацамонай системæйæн]].',
 'addedwatch'        => 'Дæ цæст кæмæ дарыс, уыцы статьятæм бафтыд.',
 'removedwatch'      => 'Нал дарыс дæ цæст',
-'removedwatchtext'  => 'Фарсмæ «[[:$1]]» нал дарыс дæ цæст.',
+'removedwatchtext'  => 'Фарсмæ «[[:$1]]» нал [[Special:Watchlist|дарыс дæ цæст]].',
 'watch'             => 'Дæ цæст æрдар',
 'watchthispage'     => 'Ацы фарсмæ дæ цæст æрдар',
 'unwatch'           => 'Мауал дæ цæст дар',
@@ -742,7 +746,7 @@ $3',
 'uctop'               => '(уæле баззад)',
 
 'sp-contributions-blocklog' => 'Хъодыты лог',
-'sp-contributions-talk'     => 'Дискусси',
+'sp-contributions-talk'     => 'Ныхас',
 
 # What links here
 'whatlinkshere'            => 'Цавæр æрвитæнтæ цæуынц ардæм',
@@ -764,9 +768,11 @@ $3',
 'ipbotherreason'         => 'Æндæр кæнæ уæлæмхасæн аххос:',
 'ipb-blocklist'          => 'Актуалон хъоды равдис',
 'ipb-blocklist-contribs' => '$1, зæгъгæ, уыцы архайæджы бавæрд',
+'ipblocklist'            => 'Хъодыгонд IP-адристæ æмæ архайджыты нæмттæ',
 'ipblocklist-legend'     => 'Хъодыгонд архайæджы ацагур',
 'ipblocklist-empty'      => 'Хъодыгæндты номхыгъд афтид у.',
 'blocklink'              => 'бахъоды кæн',
+'unblocklink'            => 'хъоды айс',
 'contribslink'           => 'бавæрд',
 'blocklogpage'           => 'Хъодыты лог',
 

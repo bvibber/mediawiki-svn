@@ -24,7 +24,7 @@ class SkinMonoBook extends SkinTemplate {
 		$template = 'MonoBookTemplate', $useHeadElement = true;
 
 	function setupSkinUserCss( OutputPage $out ) {
-		global $wgHandheldStyle, $wgStyleVersion, $wgJsMimeType, $wgStylePath;
+		global $wgHandheldStyle;
 
 		parent::setupSkinUserCss( $out );
 
@@ -42,13 +42,6 @@ class SkinMonoBook extends SkinTemplate {
 
 		$out->addStyle( 'monobook/rtl.css', 'screen', '', 'rtl' );
 
-		# FIXME: What is this?  Should it apply to all skins?
-		$path = htmlspecialchars( $wgStylePath );
-		$out->addScript( <<<HTML
-<!--[if lt IE 7]><script type="$wgJsMimeType" src="$path/common/IEFixes.js?$wgStyleVersion"></script>
-	<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-HTML
-		);
 	}
 }
 
@@ -76,36 +69,36 @@ class MonoBookTemplate extends QuickTemplate {
 		wfSuppressWarnings();
 
 		$this->html( 'headelement' );
-?><body<?php if($this->data['body_ondblclick']) { ?> ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
-<?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
- class="mediawiki <?php $this->text('dir'); $this->text('capitalizeallnouns') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
-	<div id="globalWrapper">
-		<div id="column-content">
-	<div id="content">
-		<a id="top"></a>
-		<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-		<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
-		<div id="bodyContent">
-			<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
-			<div id="contentSub"><?php $this->html('subtitle') ?></div>
-			<?php if($this->data['undelete']) { ?><div id="contentSub2"><?php     $this->html('undelete') ?></div><?php } ?>
-			<?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
-			<?php if($this->data['showjumplinks']) { ?><div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div><?php } ?>
-			<!-- start content -->
-			<?php $this->html('bodytext') ?>
-			<?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
-			<!-- end content -->
-			<?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
-			<div class="visualClear"></div>
-		</div>
+?><div id="globalWrapper">
+<div id="column-content"><div id="content" <?php $this->html("specialpageattributes") ?>>
+	<a id="top"></a>
+	<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
+
+	<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
+	<div id="bodyContent">
+		<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
+		<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html('subtitle') ?></div>
+<?php if($this->data['undelete']) { ?>
+		<div id="contentSub2"><?php $this->html('undelete') ?></div>
+<?php } ?><?php if($this->data['newtalk'] ) { ?>
+		<div class="usermessage"><?php $this->html('newtalk')  ?></div>
+<?php } ?><?php if($this->data['showjumplinks']) { ?>
+		<div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div>
+<?php } ?>
+		<!-- start content -->
+<?php $this->html('bodytext') ?>
+		<?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
+		<!-- end content -->
+		<?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
+		<div class="visualClear"></div>
 	</div>
-		</div>
-		<div id="column-one">
+</div></div>
+<div id="column-one"<?php $this->html('userlangattributes')  ?>>
 	<div id="p-cactions" class="portlet">
 		<h5><?php $this->msg('views') ?></h5>
 		<div class="pBody">
-			<ul <?php $this->html('userlangattributes') ?>>
-	<?php		foreach($this->data['content_actions'] as $key => $tab) {
+			<ul><?php
+				foreach($this->data['content_actions'] as $key => $tab) {
 					echo '
 				 <li id="' . Sanitizer::escapeId( "ca-$key" ) . '"';
 					if( $tab['class'] ) {
@@ -126,13 +119,14 @@ class MonoBookTemplate extends QuickTemplate {
 				 	}
 				 	echo '>'.htmlspecialchars($tab['text']).'</a></li>';
 				} ?>
+
 			</ul>
 		</div>
 	</div>
 	<div class="portlet" id="p-personal">
 		<h5><?php $this->msg('personaltools') ?></h5>
 		<div class="pBody">
-			<ul <?php $this->html('userlangattributes') ?>>
+			<ul<?php $this->html('userlangattributes') ?>>
 <?php 			foreach($this->data['personal_urls'] as $key => $item) { ?>
 				<li id="<?php echo Sanitizer::escapeId( "pt-$key" ) ?>"<?php
 					if ($item['active']) { ?> class="active"<?php } ?>><a href="<?php
@@ -167,16 +161,16 @@ class MonoBookTemplate extends QuickTemplate {
 			}
 		}
 ?>
-		</div><!-- end of the left (by default at least) column -->
-			<div class="visualClear"></div>
-			<div id="footer">
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer"<?php $this->html('userlangattributes') ?>>
 <?php
-		if($this->data['poweredbyico']) { ?>
-				<div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div>
-<?php 	}
-		if($this->data['copyrightico']) { ?>
-				<div id="f-copyrightico"><?php $this->html('copyrightico') ?></div>
-<?php	}
+if($this->data['poweredbyico']) { ?>
+	<div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div>
+<?php }
+if($this->data['copyrightico']) { ?>
+	<div id="f-copyrightico"><?php $this->html('copyrightico') ?></div>
+<?php }
 
 		// Generate additional footer links
 		$footerlinks = array(
@@ -190,18 +184,18 @@ class MonoBookTemplate extends QuickTemplate {
 			}
 		}
 		if ( count( $validFooterLinks ) > 0 ) {
-?>			<ul id="f-list">
+?>	<ul id="f-list">
 <?php
 			foreach( $validFooterLinks as $aLink ) {
 				if( isset( $this->data[$aLink] ) && $this->data[$aLink] ) {
-?>					<li id="<?php echo $aLink ?>"><?php $this->html($aLink) ?></li>
+?>		<li id="<?php echo $aLink ?>"><?php $this->html($aLink) ?></li>
 <?php 			}
 			}
 ?>
-			</ul>
+	</ul>
 <?php	}
 ?>
-		</div>
+</div>
 </div>
 <?php $this->html('bottomscripts'); /* JS call to runBodyOnloadHook */ ?>
 <?php $this->html('reporttime') ?>
@@ -210,10 +204,11 @@ class MonoBookTemplate extends QuickTemplate {
 <?php $this->text( 'debug' ); ?>
 
 -->
-<?php endif; ?>
-</body></html>
-<?php
-	wfRestoreWarnings();
+<?php endif;
+
+		echo Html::closeElement( 'body' );
+		echo Html::closeElement( 'html' );
+		wfRestoreWarnings();
 	} // end of execute() method
 
 	/*************************************************************************************************/
@@ -221,7 +216,7 @@ class MonoBookTemplate extends QuickTemplate {
 		global $wgUseTwoButtonsSearchForm;
 ?>
 	<div id="p-search" class="portlet">
-		<h5 <?php $this->html('userlangattributes') ?>><label for="searchInput"><?php $this->msg('search') ?></label></h5>
+		<h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 		<div id="searchBody" class="pBody">
 			<form action="<?php $this->text('wgScript') ?>" id="searchform">
 				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
@@ -249,7 +244,7 @@ class MonoBookTemplate extends QuickTemplate {
 	function toolbox() {
 ?>
 	<div class="portlet" id="p-tb">
-		<h5 <?php $this->html('userlangattributes')?>><?php $this->msg('toolbox') ?></h5>
+		<h5><?php $this->msg('toolbox') ?></h5>
 		<div class="pBody">
 			<ul>
 <?php
@@ -310,7 +305,7 @@ class MonoBookTemplate extends QuickTemplate {
 		if( $this->data['language_urls'] ) {
 ?>
 	<div id="p-lang" class="portlet">
-		<h5 <?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
+		<h5<?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
 		<div class="pBody">
 			<ul>
 <?php		foreach($this->data['language_urls'] as $langlink) { ?>
@@ -328,7 +323,7 @@ class MonoBookTemplate extends QuickTemplate {
 	function customBox( $bar, $cont ) {
 ?>
 	<div class='generated-sidebar portlet' id='<?php echo Sanitizer::escapeId( "p-$bar" ) ?>'<?php echo $this->skin->tooltip('p-'.$bar) ?>>
-		<h5 <?php $this->html('userlangattributes') ?>><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo htmlspecialchars($bar); else echo htmlspecialchars($out); ?></h5>
+		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo htmlspecialchars($bar); else echo htmlspecialchars($out); ?></h5>
 		<div class='pBody'>
 <?php   if ( is_array( $cont ) ) { ?>
 			<ul>

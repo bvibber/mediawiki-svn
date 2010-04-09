@@ -174,9 +174,6 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:FAQ',
 
-# Metadata in edit box
-'metadata_help' => 'Metadane:',
-
 'errorpagetitle'    => 'Feler',
 'returnto'          => 'Nazod do zajty $1.',
 'tagline'           => 'S {{GRAMMAR:D.lp|{{SITENAME}}}}',
@@ -375,7 +372,10 @@ Powůd zawarćo: ''$2''.",
 'virus-unknownscanner' => 'ńyznajůmy průgram antywirusowy',
 
 # Login and logout pages
-'logouttext'                 => "'''Terozki ježeś wylůgowany'''.<br />Možeš dali sam sprowjać zajty we {{SITENAME}} kej ńyzalůgowany užytkowńik, abo [[Special:UserLogin|zalůgować śe nazod]] kej tyn som abo inkšy užytkowńik. Dej pozůr, co na ńykerych zajtach přeglůndarka može dali pokozywać co ježeś zalůgowany, a bydźe tak aže uodśwjyžyš jeij cache.",
+'logouttext'                 => "'''Terozki ježeś wylůgowany'''.
+
+Možeš dali sam sprowjać zajty we {{SITENAME}} kej ńyzalůgowany užytkowńik, abo [[Special:UserLogin|zalůgować śe nazod]] kej tyn som abo inkšy užytkowńik.
+Dej pozůr, co na ńykerych zajtach přeglůndarka može dali pokozywać co ježeś zalůgowany, a bydźe tak aže uodśwjyžyš jeij cache.",
 'welcomecreation'            => '== Witej, $1! ==
 Uotwarli my sam lo Ćebje kůnto.
 Ńy zapomńij poštalować [[Special:Preferences|preferencyji lo {{GRAMMAR:D.lp|{{SITENAME}}}}]].',
@@ -529,7 +529,7 @@ Twůj adres IP je terozki $3. Idyntyfikator Twojij blokady to $5. Zanotuj śe go
 'confirmedittext'                  => 'Muśiš podać a potwjerdźić swůj e-brif, coby můc sam sprowjać.
 Možeš to zrobić we [[Special:Preferences|swojich štalowańach]].',
 'nosuchsectiontitle'               => 'Ńy mo takij tajli',
-'nosuchsectiontext'                => 'Průbowoužeś sprowjać tajla kero ńy istńeje. Jak sam ńy ma tajli $1, ńy ma tyž kaj naškryflać twojigo sprowjyńo.',
+'nosuchsectiontext'                => 'Průbowoužeś sprowjać tajla kero ńy istńeje.',
 'loginreqtitle'                    => 'Muśiš śe zalůgować',
 'loginreqlink'                     => 'zalůguj śe',
 'loginreqpagetext'                 => 'Muśiš $1 coby můc přeglůndać inkše zajty.',
@@ -689,12 +689,12 @@ Powody wyćepańo idźe znejść we [{{fullurl:{{#Special:Log}}/suppress|page={{
 Inkśi admińistratoři {{GRAMMAR:D.lp|{{SITENAME}}}} dali bydům mjeć dostymp do schrůńůnych wersyji a bydům můgli je wćepać nazod, chyba aže uoperator serwisu nouožůu dodatkowe uograńičyńo.",
 'revdelete-legend'            => 'Naštaluj uograńičyńo lo wersyji:',
 'revdelete-hide-text'         => 'Schrůń tekst wersyji',
+'revdelete-hide-image'        => 'Schrůń zawartość plika',
 'revdelete-hide-name'         => 'Schrůń akcyjo a cyl',
 'revdelete-hide-comment'      => 'Schrůń kůmyntoř sprowjyńo',
 'revdelete-hide-user'         => 'Schrůń mjano užytkowńika/adres IP',
 'revdelete-hide-restricted'   => 'Wprowadź te uograńičyńo zarůwno lo admińistratorůw jak i lo inkšych',
 'revdelete-suppress'          => 'Schrůń informacyje zarůwno před admińistratorůma jak i před inkšymi',
-'revdelete-hide-image'        => 'Schrůń zawartość plika',
 'revdelete-unsuppress'        => 'Usůń uograńičyńo lo wćepanej nazod historyje pomjyńań',
 'revdelete-log'               => 'Kůmyntoř:',
 'revdelete-submit'            => 'Zaakceptuj do wybranych wersyji',
@@ -1137,7 +1137,6 @@ Idź nazod i wćepej tyn plik pod inkšym mjanym. [[File:$1|thumb|center|$1]]',
 'uploaddisabled'              => 'Wćepywanie sam plikůw je zawarte',
 'uploaddisabledtext'          => 'Wćepywańe plikůw je zawarte.',
 'uploadscripted'              => 'Tyn plik zawjyro kod HTML abo skrypt kery može zostać felerńe zinterpretowany bez přyglůndarka internetowo.',
-'uploadcorrupt'               => 'Tyn plik je uškodzůny abo mo felerne rozšeřyńy. Proša sprawdźić plik i wćepać sam poprawno wersja.',
 'uploadvirus'                 => 'W tym pliku je wirus! Ščygůuy: $1',
 'sourcefilename'              => 'Mjano oryginalne:',
 'destfilename'                => 'Mjano docylowe:',

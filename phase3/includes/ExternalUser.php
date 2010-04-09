@@ -18,6 +18,10 @@
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
+ * @defgroup ExternalUser ExternalUser
+ */
+
+/**
  * A class intended to supplement, and perhaps eventually replace, AuthPlugin.
  * See: http://www.mediawiki.org/wiki/ExternalAuth
  *
@@ -26,6 +30,8 @@
  * assumed to at least support the concept of a user id (possibly not an
  * integer), a user name (possibly not meeting MediaWiki's username
  * requirements), and a password.
+ *
+ * @ingroup ExternalUser
  */
 abstract class ExternalUser {
 	protected function __construct() {}
@@ -43,8 +49,7 @@ abstract class ExternalUser {
 		if ( is_null( $wgExternalAuthType ) ) {
 			return false;
 		}
-		$class = "ExternalUser_$wgExternalAuthType";
-		$obj = new $class;
+		$obj = new $wgExternalAuthType;
 		if ( !$obj->initFromName( $name ) ) {
 			return false;
 		}
@@ -60,8 +65,7 @@ abstract class ExternalUser {
 		if ( is_null( $wgExternalAuthType ) ) {
 			return false;
 		}
-		$class = "ExternalUser_$wgExternalAuthType";
-		$obj = new $class;
+		$obj = new $wgExternalAuthType;
 		if ( !$obj->initFromId( $id ) ) {
 			return false;
 		}
@@ -69,17 +73,15 @@ abstract class ExternalUser {
 	}
 
 	/**
-	 * @param $cookie string
 	 * @return mixed ExternalUser, or false on failure
 	 */
-	public static function newFromCookie( $cookie ) {
+	public static function newFromCookie() {
 		global $wgExternalAuthType;
 		if ( is_null( $wgExternalAuthType ) ) {
 			return false;
 		}
-		$class = "ExternalUser_$wgExternalAuthType";
-		$obj = new $class;
-		if ( !$obj->initFromCookie( $cookie ) ) {
+		$obj = new $wgExternalAuthType;
+		if ( !$obj->initFromCookie() ) {
 			return false;
 		}
 		return $obj;
@@ -105,7 +107,7 @@ abstract class ExternalUser {
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$id = $dbr->selectField( 'external_user', 'eu_external_id',
-			array( 'eu_wiki_id' => $user->getId() ), __METHOD__ );
+			array( 'eu_local_id' => $user->getId() ), __METHOD__ );
 		if ( $id === false ) {
 			return false;
 		}
@@ -134,18 +136,15 @@ abstract class ExternalUser {
 	protected abstract function initFromId( $id );
 
 	/**
-	 * Given the user's cookie, initialize this object to the correct user if
-	 * the cookie indicates that the user is logged into the external database.
-	 * If successful, return true.  If the external database doesn't support
-	 * cookie-based authentication, or if the cookies don't belong to a
-	 * logged-in user, return false.
+	 * Try to magically initialize the user from cookies or similar information
+	 * so he or she can be logged in on just viewing the wiki.  If this is
+	 * impossible to do, just return false.
 	 *
 	 * TODO: Actually use this.
 	 *
-	 * @param $cookie string
 	 * @return bool Success?
 	 */
-	protected function initFromCookie( $cookie ) {
+	protected function initFromCookie() {
 		return false;
 	}
 
@@ -180,8 +179,7 @@ abstract class ExternalUser {
 
 	/**
 	 * Is the given password valid for the external user?  The password is
-	 * provided in plaintext, with whitespace stripped but not otherwise
-	 * modified.
+	 * provided in plaintext.
 	 *
 	 * @param $password string
 	 * @return bool
@@ -242,7 +240,7 @@ abstract class ExternalUser {
 	 * @param $pref string
 	 * @return mixed String or false
 	 */
-	public static function prefMessage( $pref ) {
+	public static function getPrefMessage( $pref ) {
 		return false;
 	}
 
@@ -277,11 +275,11 @@ abstract class ExternalUser {
 	 *
 	 * @param $id int user_id
 	 */
-	public final function link( $id ) {
+	public final function linkToLocal( $id ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->replace( 'external_user',
-			array( 'eu_wiki_id', 'eu_external_id' ),
-			array( 'eu_wiki_id' => $id,
+			array( 'eu_local_id', 'eu_external_id' ),
+			array( 'eu_local_id' => $id,
 				   'eu_external_id' => $this->getId() ),
 			__METHOD__ );
 	}
@@ -299,7 +297,7 @@ abstract class ExternalUser {
 			array( 'eu_external_id' => $this->getId() )
 		);
 		return $row
-			? User::newFromId( $row->eu_wiki_id )
+			? User::newFromId( $row->eu_local_id )
 			: null;
 	}
 	

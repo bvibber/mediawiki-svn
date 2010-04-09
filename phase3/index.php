@@ -13,7 +13,7 @@
  *
  * ----------
  *
- * Copyright (C) 2001-2009 Magnus Manske, Brion Vibber, Lee Daniel Crocker,
+ * Copyright (C) 2001-2010 Magnus Manske, Brion Vibber, Lee Daniel Crocker,
  * Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason,
  * Niklas Laxström, Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor,
  * Aaron Schulz and others.
@@ -36,7 +36,6 @@
  * @file
  */
 
-
 # Initialise common code
 $preIP = dirname( __FILE__ );
 require_once( "$preIP/includes/WebStart.php" );
@@ -53,18 +52,13 @@ if( !is_null( $maxLag ) && !$mediaWiki->checkMaxLag( $maxLag ) ) {
 	exit;
 }
 
-$avgLag = $wgRequest->getVal( 'avglag' );
-if( !is_null( $avgLag ) && !$mediaWiki->checkAvgLag( $avgLag ) ) {
-	exit;
-}
-
 # Query string fields
 $action = $wgRequest->getVal( 'action', 'view' );
 $title = $wgRequest->getVal( 'title' );
 
 # Set title from request parameters
 $wgTitle = $mediaWiki->checkInitialQueries( $title, $action );
-if( $wgTitle === NULL ) {
+if( $wgTitle === null ) {
 	unset( $wgTitle );
 }
 

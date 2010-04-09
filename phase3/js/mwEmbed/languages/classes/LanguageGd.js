@@ -16,9 +16,9 @@
 	 * forms[3] - plural form 2 (for >= 11)
 	 *
 	 */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
-		forms = mw.lang.preConvertPlural( forms, 4 );
+		forms = mw.Language.preConvertPlural( forms, 4 );
 
 		count = Math.abs( count );
 		if ( count === 1 ) {

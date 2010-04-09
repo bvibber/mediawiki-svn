@@ -10,10 +10,12 @@
  * @author Alexsh
  * @author Aotake
  * @author Broad-Sky
+ * @author Chinneeb
  * @author Emk
  * @author Fievarsty
  * @author Fryed-peach
  * @author Hatukanezumi
+ * @author Hijiri
  * @author Hisagi
  * @author Hosiryuhosi
  * @author Iwai.masaharu
@@ -198,27 +200,27 @@ $magicWords = array(
 	'numberofarticles'      => array( '1', '記事数', 'NUMBEROFARTICLES' ),
 	'numberoffiles'         => array( '1', 'ファイル数', 'NUMBEROFFILES' ),
 	'numberofusers'         => array( '1', '利用者数', 'NUMBEROFUSERS' ),
-	'numberofactiveusers'   => array( '1', '有効な利用者', '有効な利用者数', '有効利用者数', 'NUMBEROFACTIVEUSERS' ),
+	'numberofactiveusers'   => array( '1', '活動利用者数', '有効な利用者数', '有効利用者数', 'NUMBEROFACTIVEUSERS' ),
 	'numberofedits'         => array( '1', '編集回数', 'NUMBEROFEDITS' ),
 	'numberofviews'         => array( '1', '閲覧回数', 'NUMBEROFVIEWS' ),
 	'pagename'              => array( '1', 'ページ名', 'PAGENAME' ),
-	'pagenamee'             => array( '1', 'ページ名E', 'ページ名エンコード', 'PAGENAMEE' ),
+	'pagenamee'             => array( '1', 'ページ名E', 'ページ名Ｅ', 'PAGENAMEE' ),
 	'namespace'             => array( '1', '名前空間', 'NAMESPACE' ),
-	'namespacee'            => array( '1', '名前空間E', '名前空間エンコード', 'NAMESPACEE' ),
+	'namespacee'            => array( '1', '名前空間E', '名前空間Ｅ', 'NAMESPACEE' ),
 	'talkspace'             => array( '1', 'ノート空間', '会話空間', 'トークスペース', 'TALKSPACE' ),
-	'talkspacee'            => array( '1', 'ノート空間E', '会話空間E', 'トークスペースE', 'トークスペースＥ', 'TALKSPACEE' ),
-	'subjectspace'          => array( '1', '標準空間', 'SUBJECTSPACE', 'ARTICLESPACE' ),
-	'subjectspacee'         => array( '1', '標準空間E', '名前空間Ｅ', 'SUBJECTSPACEE', 'ARTICLESPACEE' ),
+	'talkspacee'            => array( '1', 'ノート空間E', '会話空間E', 'ノート空間Ｅ', '会話空間Ｅ', 'トークスペースE', 'トークスペースＥ', 'TALKSPACEE' ),
+	'subjectspace'          => array( '1', '標準空間', '記事空間', 'SUBJECTSPACE', 'ARTICLESPACE' ),
+	'subjectspacee'         => array( '1', '標準空間E', '標準空間Ｅ', '記事空間E', '記事空間Ｅ', 'SUBJECTSPACEE', 'ARTICLESPACEE' ),
 	'fullpagename'          => array( '1', 'フルページ名', '完全なページ名', '完全な記事名', '完全ページ名', '完全記事名', 'FULLPAGENAME' ),
-	'fullpagenamee'         => array( '1', 'フルページ名E', '完全なページ名E', '完全なページ名エンコード', 'FULLPAGENAMEE' ),
+	'fullpagenamee'         => array( '1', 'フルページ名E', '完全なページ名E', 'フルページ名Ｅ', '完全なページ名Ｅ', 'FULLPAGENAMEE' ),
 	'subpagename'           => array( '1', 'サブページ名', 'SUBPAGENAME' ),
-	'subpagenamee'          => array( '1', 'サブページ名E', 'サブページ名エンコード', 'SUBPAGENAMEE' ),
+	'subpagenamee'          => array( '1', 'サブページ名E', 'サブページ名Ｅ', 'SUBPAGENAMEE' ),
 	'basepagename'          => array( '1', '親ページ名', 'BASEPAGENAME' ),
-	'basepagenamee'         => array( '1', '親ページ名E', 'BASEPAGENAMEE' ),
+	'basepagenamee'         => array( '1', '親ページ名E', '親ページ名Ｅ', 'BASEPAGENAMEE' ),
 	'talkpagename'          => array( '1', '会話ページ名', 'トークページ名', 'TALKPAGENAME' ),
-	'talkpagenamee'         => array( '1', '会話ページ名E', '会話ページ名エンコード', 'トークページ名E', 'トークページ名エンコード', 'TALKPAGENAMEE' ),
+	'talkpagenamee'         => array( '1', '会話ページ名E', 'トークページ名E', '会話ページ名Ｅ', 'トークページ名Ｅ', 'TALKPAGENAMEE' ),
 	'subjectpagename'       => array( '1', '主ページ名', '記事ページ名', 'SUBJECTPAGENAME', 'ARTICLEPAGENAME' ),
-	'subjectpagenamee'      => array( '1', '主ページ名E', '記事ページ名E', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
+	'subjectpagenamee'      => array( '1', '主ページ名E', '記事ページ名E', '主ページ名Ｅ', '記事ページ名Ｅ', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	'subst'                 => array( '0', '展開:', '展開：', 'SUBST:' ),
 	'img_thumbnail'         => array( '1', 'サムネイル', 'thumbnail', 'thumb' ),
 	'img_manualthumb'       => array( '1', '代替画像=$1', 'サムネイル=$1', 'thumbnail=$1', 'thumb=$1' ),
@@ -236,42 +238,43 @@ $magicWords = array(
 	'img_super'             => array( '1', '上付き', 'super', 'sup' ),
 	'img_link'              => array( '1', 'リンク=$1', 'link=$1' ),
 	'img_alt'               => array( '1', '代替文=$1', 'alt=$1' ),
-	'int'                   => array( '0', 'インターフェース:', 'インタ:', 'INT:' ),
+	'int'                   => array( '0', 'インターフェース:', 'インタ:', 'インターフェース：', 'インタ：', 'INT:' ),
 	'sitename'              => array( '1', 'サイト名', 'サイトネーム', 'SITENAME' ),
-	'ns'                    => array( '0', '名前空間:', '名空:', 'NS:' ),
-	'localurl'              => array( '0', 'ローカルURL:', 'LOCALURL:' ),
-	'localurle'             => array( '0', 'ローカルURLE:', 'ローカルURLエンコード:', 'LOCALURLE:' ),
+	'ns'                    => array( '0', '名前空間:', '名前空間：', '名空:', '名空：', 'NS:' ),
+	'localurl'              => array( '0', 'ローカルURL:', 'ローカルＵＲＬ：', 'LOCALURL:' ),
+	'localurle'             => array( '0', 'ローカルURLE:', 'ローカルＵＲＬＥ：', 'LOCALURLE:' ),
 	'server'                => array( '0', 'サーバー', 'サーバ', 'SERVER' ),
 	'servername'            => array( '0', 'サーバー名', 'サーバーネーム', 'サーバ名', 'サーバネーム', 'SERVERNAME' ),
 	'scriptpath'            => array( '0', 'スクリプトパス', 'SCRIPTPATH' ),
+	'stylepath'             => array( '0', 'スタイルパス', 'STYLEPATH' ),
 	'gender'                => array( '0', '性別:', '性別：', 'GENDER:' ),
 	'notitleconvert'        => array( '0', '__タイトルコンバート拒否__', '＿＿タイトルコンバート拒否＿＿', '__タイトル非表示__', '__NOTITLECONVERT__', '__NOTC__' ),
 	'nocontentconvert'      => array( '0', '__内容変換抑制__', '＿＿内容変換抑制＿＿', '__NOCONTENTCONVERT__', '__NOCC__' ),
 	'currentweek'           => array( '1', '協定週', 'CURRENTWEEK' ),
 	'localweek'             => array( '1', '現地週', 'ローカルウィーク', 'LOCALWEEK' ),
-	'revisionid'            => array( '1', 'リビジョンID', '差分ID', 'REVISIONID' ),
+	'revisionid'            => array( '1', 'リビジョンID', '差分ID', 'リビジョンＩＤ', '差分ＩＤ', 'REVISIONID' ),
 	'revisionday'           => array( '1', 'リビジョン日', '差分日', 'REVISIONDAY' ),
-	'revisionday2'          => array( '1', 'リビジョン日2', '差分日2', 'REVISIONDAY2' ),
+	'revisionday2'          => array( '1', 'リビジョン日2', '差分日2', 'リビジョン日２', '差分日２', 'REVISIONDAY2' ),
 	'revisionmonth'         => array( '1', 'リビジョン月', '差分月', 'REVISIONMONTH' ),
 	'revisionyear'          => array( '1', 'リビジョン年', '差分年', 'REVISIONYEAR' ),
 	'revisiontimestamp'     => array( '1', 'リビジョンタイムスタンプ', 'REVISIONTIMESTAMP' ),
 	'revisionuser'          => array( '1', 'リビジョンユーザー', 'リビジョンユーザ', 'リビジョン利用者', '差分利用者', 'REVISIONUSER' ),
-	'plural'                => array( '0', '複数:', 'PLURAL:' ),
-	'fullurl'               => array( '0', '完全なURL:', 'フルURL:', 'FULLURL:' ),
-	'fullurle'              => array( '0', '完全なURLE:', 'フルURLE:', 'FULLURLE:' ),
-	'newsectionlink'        => array( '1', '__新しいセクションリンク__', '__新セクションリンク__', '__NEWSECTIONLINK__' ),
+	'plural'                => array( '0', '複数:', '複数：', 'PLURAL:' ),
+	'fullurl'               => array( '0', '完全なURL:', 'フルURL:', '完全なＵＲＬ：', 'フルＵＲＬ：', 'FULLURL:' ),
+	'fullurle'              => array( '0', '完全なURLE:', 'フルURLE:', '完全なＵＲＬＥ：', 'フルＵＲＬＥ：', 'FULLURLE:' ),
+	'newsectionlink'        => array( '1', '__新しいセクションリンク__', '__新セクションリンク__', '＿＿新しいセクションリンク＿＿', '＿＿新セクションリンク＿＿', '__NEWSECTIONLINK__' ),
 	'nonewsectionlink'      => array( '1', '__新しいセクションリンク非表示__', '＿＿新しいセクションリンク非表示＿＿', '__新セクションリンク非表示__', '＿＿新セクションリンク非表示＿＿', '__NONEWSECTIONLINK__' ),
 	'currentversion'        => array( '1', 'ウィキバージョン', 'MediaWikiバージョン', 'メディアウィキバージョン', 'CURRENTVERSION' ),
-	'urlencode'             => array( '0', 'URLエンコード:', 'ＵＲＬエンコード:', 'URLENCODE:' ),
+	'urlencode'             => array( '0', 'URLエンコード:', 'ＵＲＬエンコード：', 'URLENCODE:' ),
 	'currenttimestamp'      => array( '1', '協定タイムスタンプ', 'CURRENTTIMESTAMP' ),
 	'localtimestamp'        => array( '1', '現地タイムスタンプ', 'ローカルタイムスタンプ', 'LOCALTIMESTAMP' ),
-	'language'              => array( '0', '#言語:', '＃言語:', '#LANGUAGE:' ),
+	'language'              => array( '0', '#言語:', '＃言語：', '#LANGUAGE:' ),
 	'contentlanguage'       => array( '1', '内容言語', '記事言語', 'プロジェクト言語', 'CONTENTLANGUAGE', 'CONTENTLANG' ),
 	'pagesinnamespace'      => array( '1', '名前空間内ページ数', 'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'        => array( '1', '管理者数', 'NUMBEROFADMINS' ),
 	'special'               => array( '0', '特別', 'special' ),
-	'defaultsort'           => array( '1', 'デフォルトソート:', 'デフォルトソートキー:', 'デフォルトカテゴリソート:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
-	'filepath'              => array( '0', 'ファイルパス:', 'FILEPATH:' ),
+	'defaultsort'           => array( '1', 'デフォルトソート:', 'デフォルトソート：', 'デフォルトソートキー:', 'デフォルトカテゴリソート:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
+	'filepath'              => array( '0', 'ファイルパス:', 'ファイルパス：', 'FILEPATH:' ),
 	'tag'                   => array( '0', 'タグ', 'tag' ),
 	'hiddencat'             => array( '1', '__カテゴリ非表示__', '__カテ非表示__', '__非表示カテ__', '__HIDDENCAT__' ),
 	'pagesincategory'       => array( '1', 'カテゴリ内ページ数', 'PAGESINCATEGORY', 'PAGESINCAT' ),
@@ -474,9 +477,6 @@ $messages = array(
 'namespaces'                 => '名前空間',
 'variants'                   => '変種',
 
-# Metadata in edit box
-'metadata_help' => 'メタデータ:',
-
 'errorpagetitle'    => 'エラー',
 'returnto'          => '$1 に戻る。',
 'tagline'           => '提供: {{SITENAME}}',
@@ -639,6 +639,7 @@ $1',
 'readonly_lag'         => 'データベースはスレーブ・サーバーがマスター・サーバーに同期するまで自動的にロックされています',
 'internalerror'        => '内部処理エラー',
 'internalerror_info'   => '内部処理エラー: $1',
+'fileappenderrorread'  => '追加中に、「$1」を読み取れませんでした。',
 'fileappenderror'      => '「$1」を「$2」に追加できませんでした。',
 'filecopyerror'        => 'ファイル "$1" を "$2" へコピーできませんでした。',
 'filerenameerror'      => 'ファイル名を "$1" から "$2" へ変更できませんでした。',
@@ -682,8 +683,8 @@ $2',
 # Login and logout pages
 'logouttext'                 => "'''ログアウトしました。'''
 
-このまま匿名で{{SITENAME}}を使い続けることができます。もう一度元の、あるいは別の利用者としてログインすることもできます。
-なお、ブラウザのキャッシュをクリアするまで、ログインしているかのように表示されることがあります。",
+このまま匿名で{{SITENAME}}を使い続けることができます。もう一度元の、あるいは別の利用者として[[Special:UserLogin|ログイン]]することもできます。
+なお、ブラウザのキャッシュをクリアするまで、ページによってはログインしているかのように表示され続けることがあります。",
 'welcomecreation'            => '== $1 さん、ようこそ！ ==
 あなたのアカウントができました。
 お好みに合わせて{{SITENAME}}内での[[Special:Preferences|個人設定]]を変更することができます。',
@@ -697,11 +698,12 @@ $2',
 'nav-login-createaccount'    => 'ログインまたはアカウント作成',
 'loginprompt'                => '{{SITENAME}}にログインするにはクッキーを有効にする必要があります。',
 'userlogin'                  => 'ログインまたはアカウント作成',
+'userloginnocreate'          => 'ログイン',
 'logout'                     => 'ログアウト',
 'userlogout'                 => 'ログアウト',
 'notloggedin'                => 'ログインしていません',
-'nologin'                    => "アカウントをお持ちではありませんか？'''$1'''。",
-'nologinlink'                => 'アカウントを作成',
+'nologin'                    => "まだアカウントをお持ちでないのですか？'''$1'''。",
+'nologinlink'                => 'アカウントを作成してください',
 'createaccount'              => 'アカウント作成',
 'gotaccount'                 => "すでにアカウントをお持ちですか？'''$1'''。",
 'gotaccountlink'             => 'ログイン',
@@ -718,6 +720,7 @@ $2',
 'nosuchuser'                 => '「$1」という名前の利用者は見当たりません。利用者名では大文字と小文字を区別します。綴りが正しいことを確認するか、[[Special:UserLogin/signup|新たにアカウントを作成してください]]。',
 'nosuchusershort'            => '「<nowiki>$1</nowiki>」という利用者は見当たりません。綴りが正しいことを再度確認してください。',
 'nouserspecified'            => '利用者名を指定してください。',
+'login-userblocked'          => 'この利用者はブロックされています。ログインは拒否されます。',
 'wrongpassword'              => 'パスワードが間違っています。再度入力してください。',
 'wrongpasswordempty'         => 'パスワードを空にすることはできません。再度入力してください。',
 'passwordtooshort'           => 'パスワードは{{PLURAL:$1|$1文字}}以上でなければなりません。',
@@ -749,6 +752,7 @@ $2',
 'usernamehasherror'          => '利用者名には番号記号を含むことができません',
 'login-throttled'            => 'ログインの失敗が制限回数を超えました。しばらく時間をおいてから再度お試しください。',
 'loginlanguagelabel'         => '言語: $1',
+'suspicious-userlogout'      => 'あなたのログアウトは拒否されました。送信されたリクエストが、壊れたブラウザもしくはキャッシュ・プロキシによって送信された可能性があるからです。',
 
 # Password reset dialog
 'resetpass'                 => 'パスワードの変更',
@@ -763,6 +767,7 @@ $2',
 'resetpass_forbidden'       => 'パスワードの変更は許可されていません',
 'resetpass-no-info'         => 'このページに直接アクセスするためにはログインしている必要があります。',
 'resetpass-submit-loggedin' => 'パスワードを変更',
+'resetpass-submit-cancel'   => '中止',
 'resetpass-wrong-oldpass'   => '仮パスワードまたは現在のパスワードが無効です。
 すでにパスワード変更を行っているか、新しい仮パスワードの発行を依頼していませんか。',
 'resetpass-temp-password'   => '仮パスワード:',
@@ -837,7 +842,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'whitelistedittext'                => 'このページを編集するには $1 する必要があります。',
 'confirmedittext'                  => 'ページの編集を始める前にメールアドレスの確認をする必要があります。[[Special:Preferences|個人設定]]でメールアドレスを設定し、確認を行ってください。',
 'nosuchsectiontitle'               => 'セクションが存在しません',
-'nosuchsectiontext'                => '指定されたセクションはありません。セクション $1 はありませんでしたので、セクション編集は無効となります。編集内容は保存されません。',
+'nosuchsectiontext'                => 'あなたは存在しないセクションを編集しようとしました。ページを閲覧している間に移動あるいは削除された可能性があります。',
 'loginreqtitle'                    => 'ログインが必要',
 'loginreqlink'                     => 'ログイン',
 'loginreqpagetext'                 => '他のページを閲覧するには$1する必要があります。',
@@ -847,12 +852,13 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 この新アカウントのパスワードはログインした際に[[Special:ChangePassword|パスワード変更]]ページで変更できます。',
 'newarticle'                       => '(新規)',
 'newarticletext'                   => 'あなたがクリックしたリンク先のページはまだ存在していません。このページを新規に作成するには、下のボックスに内容を書き込んでください (詳しくは[[{{MediaWiki:Helppage}}|ヘルプページ]]を参照してください)。ページを作成するつもりがない場合には、ブラウザの「戻る」ボタンを使って前のページに戻ってください。',
-'anontalkpagetext'                 => "----
-''これはアカウントをまだ作成していないか、あるいは使っていない匿名利用者のための会話ページです。匿名利用者の識別は利用者名のかわりにIPアドレスを用います。IPアドレスは何人かで共有されることがあります。もしあなたが匿名利用者で無関係なコメントが寄せられているとお考えの場合は、[[Special:UserLogin/signup|アカウントを作成する]]か[[Special:UserLogin|ログインして]]他の匿名利用者と間違えられないようにしてくださるようお願いします。''",
-'noarticletext'                    => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 関連記録を検索する]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを作成]</span>することができます。',
-'noarticletext-nopermission'       => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} 関連記録を検索する]</span>ことができます。',
+'anontalkpagetext'                 => "----''このページはアカウントをまだ作成していないか、あるいは使っていない匿名利用者のための会話ページです。匿名利用者を識別する際には、利用者名のかわりにIPアドレスを用いる必要があります。IPアドレスは複数の利用者の間で共有されていることがあります。もしあなたが匿名利用者であり、自分に関係のないコメントが寄せられているとお考えの場合は、[[Special:UserLogin/signup|アカウントを作成する]]か[[Special:UserLogin|ログインして]]他の匿名利用者と間違えられないようにしてくださるようお願いします。''",
+'noarticletext'                    => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 関連記録を検索する]か、[{{fullurl:{{FULLPAGENAME}}|action=edit}} このページを作成]</span>することができます。',
+'noarticletext-nopermission'       => '現在このページには内容がありません。他のページに含まれる[[Special:Search/{{PAGENAME}}|このページ名を検索する]]か、もしくは<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} 関連記録を検索する]</span>ことができます。',
 'userpage-userdoesnotexist'        => '「$1」という名前のアカウントは登録されていません。このページを編集することが適切かどうか確認してください。',
 'userpage-userdoesnotexist-view'   => '利用者アカウント「$1」は登録されていません。',
+'blocked-notice-logextract'        => 'この利用者は現在ブロックされています。
+参考のために最新のブロック記録を以下に表示します。',
 'clearyourcache'                   => "'''注意:''' 保存した後、ブラウザのキャッシュをクリアする必要があります。
 * '''Mozilla / Firefox / Safari:''' [Shift] を押しながら [再読み込み] をクリック、または [Ctrl]-[F5] か [Ctrl]-[R] (Macintoshでは [Cmd]-[Shift]-[R])
 * '''IE:''' [Ctrl] を押しながら [更新] をクリック、または [Ctrl]-[F5]
@@ -893,10 +899,13 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'readonlywarning'                  => "'''警告: データベースがメンテナンスのためにロックされているため、現在は編集を保存できません。'''必要であれば文章をカットアンドペーストしてローカルファイルとして保存し、後ほど保存をやり直してください。
 
 データベースをロックした管理者による説明は以下の通りです: $1",
-'protectedpagewarning'             => "'''警告:このページは保護されています。{{int:group-sysop}}しか編集できません。'''",
-'semiprotectedpagewarning'         => "'''お知らせ:''' このページは登録利用者のみが編集できるよう保護されています。",
+'protectedpagewarning'             => "'''警告:このページは保護されています。{{int:group-sysop}}しか編集できません。'''
+参考として以下に一番最後のログを表示します:",
+'semiprotectedpagewarning'         => "'''お知らせ:''' このページは登録利用者のみが編集できるよう保護されています。
+参考として以下に一番最後のログを表示します:",
 'cascadeprotectedwarning'          => "'''警告:''' このページはカスケード保護されている以下の{{PLURAL:$1|ページ}}から呼び出されているため、{{int:group-sysop}}しか編集できません。",
-'titleprotectedwarning'            => "'''警告: このページは保護されているため、作成には[[Special:ListGroupRights|一定の権限]]が必要です。'''",
+'titleprotectedwarning'            => "'''警告: このページは保護されているため、作成には[[Special:ListGroupRights|一定の権限]]が必要です。'''
+参考として以下に一番最後のログを表示します:",
 'templatesused'                    => 'このページで使われている{{PLURAL:$1|テンプレート}}:',
 'templatesusedpreview'             => 'このプレビューで使われている{{PLURAL:$1|テンプレート}}:',
 'templatesusedsection'             => 'このセクションで使われている{{PLURAL:$1|テンプレート}}:',
@@ -905,8 +914,10 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'hiddencategories'                 => 'このページは{{PLURAL:$1|$1個}}の隠しカテゴリに属しています:',
 'edittools'                        => '<!-- ここに書いたテキストは編集及びアップロードのフォームの下に表示されます。 -->',
 'nocreatetitle'                    => 'ページの作成が制限されています',
-'nocreatetext'                     => '{{SITENAME}} ではページの新規作成を制限しています。元のページに戻って既存のページを編集するか、[[Special:UserLogin|ログインまたはアカウントを作成]]してください。',
+'nocreatetext'                     => '{{SITENAME}} ではページの新規作成を制限しています。元のページに戻って既存のページを編集するか、[[Special:UserLogin|ログインまたはアカウントの作成]]をしてください。',
 'nocreate-loggedin'                => 'あなたには新しいページを作成する権限がありません。',
+'sectioneditnotsupported-title'    => 'セクション単位編集はサポートされていません',
+'sectioneditnotsupported-text'     => 'このページではセクション単位編集はサポートされません。',
 'permissionserrors'                => '認証エラー',
 'permissionserrorstext'            => 'あなたにはこのページの編集権限がありません。{{PLURAL:$1|理由}}は以下の通りです:',
 'permissionserrorstext-withaction' => '以下に示された{{PLURAL:$1|理由}}により、$2を行うことができません:',
@@ -934,6 +945,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'post-expand-template-argument-category'  => '無視されたテンプレート引数を含むページ',
 'parser-template-loop-warning'            => 'テンプレートのループが検出されました: [[$1]]',
 'parser-template-recursion-depth-warning' => 'テンプレートの再帰回数が上限値を超えました ($1)',
+'language-converter-depth-warning'        => '言語変換器の深度制限を超えました ($1)',
 
 # "Undo" feature
 'undo-success' => '編集の取り消しが可能です。これがあなたの意図した編集であるか、下に表示されている差分を確認してください。保存ボタンを押すと取り消しが確定されます。',
@@ -988,6 +1000,7 @@ $3による理由は以下の通りです: ''$2''",
 'rev-deleted-text-view'       => "この版は'''削除されています'''。あなたは管理者であるため内容を見ることができます。[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 削除記録]に詳細情報があるかもしれません。",
 'rev-suppressed-text-view'    => "この版は'''秘匿されています'''。あなたは管理者であるため内容を見ることができます。[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 秘匿記録]に詳細情報があるかもしれません。",
 'rev-deleted-no-diff'         => "どちらかの版が'''削除されているため'''、差分表示できません。[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 削除記録]に詳細情報があるかもしれません。",
+'rev-suppressed-no-diff'      => "指定された差分は'''削除された'''版を含んでいるため表示出来ません。",
 'rev-deleted-unhide-diff'     => "この差分の一方の版は'''削除されています'''。[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 削除記録]に詳細情報があるかもしれません。あなたは管理者であるため、このまま[$1 この差分を見る]ことができます。",
 'rev-suppressed-unhide-diff'  => "この差分の一方の版は'''秘匿されています'''。[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 秘匿記録]に詳細情報があるかもしれません。あなたは管理者であるため、このまま[$1 この差分を見る]ことができます。",
 'rev-deleted-diff-view'       => "この差分の一方の版は'''削除されています'''。あなたは管理者であるため、この差分を見ることができます。[{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} 削除記録]に詳細情報があるかもしれません。",
@@ -1014,12 +1027,15 @@ $3による理由は以下の通りです: ''$2''",
 *: ''個人の住所や電話番号、社会保障番号、その他''",
 'revdelete-legend'            => '閲覧制限を設定',
 'revdelete-hide-text'         => '版のテキストを隠す',
+'revdelete-hide-image'        => 'ファイル内容を隠す',
 'revdelete-hide-name'         => '操作および対象を隠す',
 'revdelete-hide-comment'      => '編集の要約を隠す',
 'revdelete-hide-user'         => '投稿者の利用者名またはIPを隠す',
 'revdelete-hide-restricted'   => '他の利用者と同様に管理者からもデータを隠す',
+'revdelete-radio-same'        => '(そのまま)',
+'revdelete-radio-set'         => 'はい',
+'revdelete-radio-unset'       => 'いいえ',
 'revdelete-suppress'          => '他の利用者と同様に管理者からもデータを隠す',
-'revdelete-hide-image'        => 'ファイル内容を隠す',
 'revdelete-unsuppress'        => '復帰版に対する制限を外す',
 'revdelete-log'               => '削除の理由:',
 'revdelete-submit'            => '選択した{{PLURAL:$1|版}}に適用',
@@ -1049,7 +1065,7 @@ $1",
 'revdelete-modify-missing'    => 'ID $1 の項目の変更に失敗しました: データベースに見当たりません！',
 'revdelete-no-change'         => "'''警告:''' $1$2の項目には既に要求された閲覧レベルが設定されています。",
 'revdelete-concurrent-change' => '$1$2の項目の変更に失敗しました: あなたが変更を加えている間に他の利用者によって設定が変更されたようです。ログを確認してください。',
-'revdelete-only-restricted'   => '管理者から項目を秘匿するには、他の秘匿設定のうちどれかをさらに選択しなければなりません。',
+'revdelete-only-restricted'   => '日付 $1 $2 の項目の秘匿に失敗: 管理者から項目を秘匿するには、他の可視性設定のうちどれかをさらに選択しなければなりません。',
 'revdelete-reason-dropdown'   => '*よくある削除理由
 ** 著作権侵害
 ** 不適切な個人情報',
@@ -1211,7 +1227,7 @@ $1",
 'recentchangesdays-max'         => '(最大$1 {{PLURAL:$1|日|日間}})',
 'recentchangescount'            => '既定で表示する件数:',
 'prefs-help-recentchangescount' => 'この設定は{{int:recentchanges}}、ページ履歴、およびログに適用されます。',
-'prefs-help-watchlist-token'    => 'この欄に秘密鍵を入力すると、あなたのウォッチリストの RSS フィードを生成します。この欄に入力した鍵を知っている人は誰でもあなたのウォッチリストを閲覧できるようになります。よって、他人に分からない値を選んでください。次の無作為に生成した値を使うことができます: $1',
+'prefs-help-watchlist-token'    => 'この欄に秘密鍵を入力すると、あなたのウォッチリストの RSS フィードが生成されます。この欄に入力されている鍵を知っている人は誰でもあなたのウォッチリストを閲覧できるようになります。よって、他人に分からない値を選んでください。無作為に生成された次の値を使うこともできます: $1',
 'savedprefs'                    => '個人設定を保存しました。',
 'timezonelegend'                => 'タイムゾーン:',
 'localtime'                     => 'ローカル・タイム:',
@@ -1238,6 +1254,7 @@ $1",
 'prefs-files'                   => 'ファイル',
 'prefs-custom-css'              => 'カスタムCSS',
 'prefs-custom-js'               => 'カスタムJS',
+'prefs-common-css-js'           => 'すべてのスキンに共通の CSS と JavaScript:',
 'prefs-reset-intro'             => 'このページを使うと、あなたの個人設定をこのサイトの既定のものに再設定することができます。この操作は取り消しができません。',
 'prefs-emailconfirm-label'      => 'メール確認:',
 'prefs-textboxsize'             => '編集画面の大きさ',
@@ -1277,25 +1294,26 @@ $1",
 'prefs-diffs'                   => '差分',
 
 # User rights
-'userrights'                  => '利用者権限の管理',
-'userrights-lookup-user'      => '利用者グループを管理',
-'userrights-user-editname'    => '利用者名を入力:',
-'editusergroup'               => '利用者グループを編集',
-'editinguser'                 => "利用者 '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) の権限を変更中",
-'userrights-editusergroup'    => '利用者グループを編集',
-'saveusergroups'              => '利用者グループを保存',
-'userrights-groupsmember'     => '所属グループ:',
-'userrights-groups-help'      => 'この利用者が属するグループを変更することができます。
+'userrights'                   => '利用者権限の管理',
+'userrights-lookup-user'       => '利用者グループを管理',
+'userrights-user-editname'     => '利用者名を入力:',
+'editusergroup'                => '利用者グループを編集',
+'editinguser'                  => "利用者 '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) の権限を変更中",
+'userrights-editusergroup'     => '利用者グループを編集',
+'saveusergroups'               => '利用者グループを保存',
+'userrights-groupsmember'      => '所属グループ:',
+'userrights-groupsmember-auto' => '暗黙で追加されるメンバー:',
+'userrights-groups-help'       => 'この利用者が属するグループを変更することができます。
 * ボックスのチェックはこの利用者がそのグループに属していることを意味します。
 * チェックが入っていないボックスはこの利用者がそのグループに属していないことを意味します。
 * * は一旦グループへ登録または登録解除した場合、その決定を変更できないことを意味します。',
-'userrights-reason'           => '変更理由:',
-'userrights-no-interwiki'     => '他ウィキ上における利用者権限の編集権限はありません。',
-'userrights-nodatabase'       => 'データベース $1は存在しないか、ローカル上にありません。',
-'userrights-nologin'          => '利用者権限を変更するには管理者権限を持つアカウントに[[Special:UserLogin|ログイン]]する必要があります。',
-'userrights-notallowed'       => '利用者権限を変更する権限がありません。',
-'userrights-changeable-col'   => '変更可能なグループ',
-'userrights-unchangeable-col' => '変更できないグループ',
+'userrights-reason'            => '理由:',
+'userrights-no-interwiki'      => '他ウィキ上における利用者権限の編集権限はありません。',
+'userrights-nodatabase'        => 'データベース $1は存在しないか、ローカル上にありません。',
+'userrights-nologin'           => '利用者権限を変更するには管理者権限を持つアカウントに[[Special:UserLogin|ログイン]]する必要があります。',
+'userrights-notallowed'        => '利用者権限を変更する権限がありません。',
+'userrights-changeable-col'    => '変更可能なグループ',
+'userrights-unchangeable-col'  => '変更できないグループ',
 
 # Groups
 'group'               => 'グループ:',
@@ -1358,6 +1376,7 @@ $1",
 'right-hideuser'              => '利用者名のブロックおよび一般の閲覧からの秘匿',
 'right-ipblock-exempt'        => 'IPブロック、自動ブロック、広域ブロックのバイパス',
 'right-proxyunbannable'       => 'プロキシの自動ブロックのバイパス',
+'right-unblockself'           => '自分自身に対するブロックを解除する',
 'right-protect'               => '保護レベルの変更と保護されたページの編集',
 'right-editprotected'         => '保護ページの編集 (カスケード保護を除く)',
 'right-editinterface'         => 'ユーザーインターフェースの編集',
@@ -1509,6 +1528,7 @@ $1",
 'minlength1'                  => 'ファイル名は1文字以上である必要があります。',
 'illegalfilename'             => 'ファイル名 "$1" にページ名として使えない文字が含まれています。ファイル名を変更してからもう一度アップロードしてください。',
 'badfilename'                 => 'ファイル名は "$1" へ変更されました。',
+'filetype-mime-mismatch'      => 'ファイルの拡張子がMIMEタイプと一致しません。',
 'filetype-badmime'            => 'MIME タイプ "$1" のファイルのアップロードは許可されていません。',
 'filetype-bad-ie-mime'        => 'このファイルは、禁止されている潜在的に危険なファイル形式 "$1" であるとInternet Explorer が認識してしまうためアップロードできません。',
 'filetype-unwanted-type'      => "'''\".\$1\"''' は好ましくないファイル形式です。次の{{PLURAL:\$3|ファイル形式}}を推奨します: \$2",
@@ -1543,7 +1563,6 @@ $1",
 'uploaddisabledtext'          => 'ファイルのアップロードは停止しています。',
 'php-uploaddisabledtext'      => 'ファイルアップロードがPHPで有効になっていません。file_uploads の設定を確認してください。',
 'uploadscripted'              => 'このファイルはウェブブラウザが誤って解釈してしまうおそれのあるHTMLまたはスクリプトコードを含んでいます。',
-'uploadcorrupt'               => '指定したファイルは壊れているか拡張子が正しくありません。ファイルを確認の上再度アップロードをしてください。',
 'uploadvirus'                 => 'このファイルにはウイルスが含まれています！詳細: $1',
 'upload-source'               => '元ファイル',
 'sourcefilename'              => 'ファイル名:',
@@ -1595,6 +1614,16 @@ PICT # その他
 'img-auth-public'       => 'img_auth.php の機能は非公開ウィキからファイルを出力することです。このウィキは公開ウィキとして構成されています。最適なセキュリティーのため、img_auth.php は無効化されています。',
 'img-auth-noread'       => '利用者は「$1」を読む権限を持っていません。',
 
+# HTTP errors
+'http-invalid-url'      => '無効なURL: $1',
+'http-invalid-scheme'   => '"$1"のスキームを含むURLはサポートされていません',
+'http-request-error'    => '不明なエラーによりHTTPリクエストに失敗しました。',
+'http-read-error'       => 'HTTP読み込みエラー。',
+'http-timed-out'        => 'HTTPリクエストにタイムアウトしました。',
+'http-curl-error'       => 'フェッチに失敗したURL: $1',
+'http-host-unreachable' => 'URLに到達できません',
+'http-bad-status'       => 'HTTPリクエスト時に問題が発生しました: $1 $2',
+
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URLに到達できませんでした',
 'upload-curl-error6-text'  => '指定したURLに到達できませんでした。URLが正しいものであるか、指定したサイトが現在使用可能かを再度確認してください。',
@@ -1621,37 +1650,38 @@ PICT # その他
 'listfiles_count'       => '版数',
 
 # File description page
-'file-anchor-link'          => 'ファイル',
-'filehist'                  => 'ファイルの履歴',
-'filehist-help'             => '過去の版のファイルを表示するには、表示したい版の日付/時刻をクリックしてください。',
-'filehist-deleteall'        => 'すべて削除',
-'filehist-deleteone'        => '削除',
-'filehist-revert'           => '差し戻す',
-'filehist-current'          => '現在の版',
-'filehist-datetime'         => '日付/時刻',
-'filehist-thumb'            => 'サムネイル',
-'filehist-thumbtext'        => '$1時点における版のサムネイル',
-'filehist-nothumb'          => 'サムネイルなし',
-'filehist-user'             => '利用者',
-'filehist-dimensions'       => '解像度',
-'filehist-filesize'         => 'ファイルサイズ',
-'filehist-comment'          => 'コメント',
-'filehist-missing'          => 'ファイルがみつかりません',
-'imagelinks'                => 'ファイルリンク',
-'linkstoimage'              => 'このファイルは以下の{{PLURAL:$1|ページ|$1ページ}}で使用されています:',
-'linkstoimage-more'         => '$1 以上の{{PLURAL:$1|ページ}}がこのファイルにリンクしています。以下の一覧はこのファイルにリンクしている最初の$1{{PLURAL:$1|ページ}}のみを表示しています。[[Special:WhatLinksHere/$2|完全な一覧]]も参照してください。',
-'nolinkstoimage'            => 'このファイルを使用しているページはありません。',
-'morelinkstoimage'          => 'このファイルの[[Special:WhatLinksHere/$1|リンク元]]を表示する。',
-'redirectstofile'           => 'このファイルは以下の{{PLURAL:$1|ファイル|$1ファイル}}からリダイレクトされています:',
-'duplicatesoffile'          => '以下の$1{{PLURAL:$1|件}}のファイルは、このファイルと内容が同一です ([[Special:FileDuplicateSearch/$2|詳細]]):',
-'sharedupload'              => 'このファイルは$1のものであり、他のプロジェクトで使用されている可能性があります。',
-'sharedupload-desc-there'   => 'このファイルは$1のものであり、他のプロジェクトで使用されている可能性があります。詳細は[$2 ファイル解説ページ]を参照してください。',
-'sharedupload-desc-here'    => 'このファイルは$1のものであり、他のプロジェクトで使用されている可能性があります。その[$2 ファイル解説ページ]にある説明を以下に表示しています。',
-'filepage-nofile'           => 'この名前のファイルは存在しません。',
-'filepage-nofile-link'      => 'この名前のファイルは存在しませんが、[$1 アップロード]することができます。',
-'uploadnewversion-linktext' => 'このファイルの新しいバージョンをアップロードする',
-'shared-repo-from'          => '$1より',
-'shared-repo'               => '共有リポジトリ',
+'file-anchor-link'                  => 'ファイル',
+'filehist'                          => 'ファイルの履歴',
+'filehist-help'                     => '過去の版のファイルを表示するには、表示したい版の日付/時刻をクリックしてください。',
+'filehist-deleteall'                => 'すべて削除',
+'filehist-deleteone'                => '削除',
+'filehist-revert'                   => '差し戻す',
+'filehist-current'                  => '現在の版',
+'filehist-datetime'                 => '日付/時刻',
+'filehist-thumb'                    => 'サムネイル',
+'filehist-thumbtext'                => '$1時点における版のサムネイル',
+'filehist-nothumb'                  => 'サムネイルなし',
+'filehist-user'                     => '利用者',
+'filehist-dimensions'               => '解像度',
+'filehist-filesize'                 => 'ファイルサイズ',
+'filehist-comment'                  => 'コメント',
+'filehist-missing'                  => 'ファイルがみつかりません',
+'imagelinks'                        => 'ファイルリンク',
+'linkstoimage'                      => 'このファイルは以下の{{PLURAL:$1|ページ|$1ページ}}で使用されています:',
+'linkstoimage-more'                 => '$1 以上の{{PLURAL:$1|ページ}}がこのファイルにリンクしています。以下の一覧はこのファイルにリンクしている最初の$1{{PLURAL:$1|ページ}}のみを表示しています。[[Special:WhatLinksHere/$2|完全な一覧]]も参照してください。',
+'nolinkstoimage'                    => 'このファイルを使用しているページはありません。',
+'morelinkstoimage'                  => 'このファイルの[[Special:WhatLinksHere/$1|リンク元]]を表示する。',
+'redirectstofile'                   => 'このファイルは以下の{{PLURAL:$1|ファイル|$1ファイル}}からリダイレクトされています:',
+'duplicatesoffile'                  => '以下の$1{{PLURAL:$1|件}}のファイルは、このファイルと内容が同一です ([[Special:FileDuplicateSearch/$2|詳細]]):',
+'sharedupload'                      => 'このファイルは$1のものであり、他のプロジェクトで使用されている可能性があります。',
+'sharedupload-desc-there'           => 'このファイルは$1のものであり、他のプロジェクトで使用されている可能性があります。詳細は[$2 ファイル解説ページ]を参照してください。',
+'sharedupload-desc-here'            => 'このファイルは$1のものであり、他のプロジェクトで使用されている可能性があります。その[$2 ファイル解説ページ]にある説明を以下に表示しています。',
+'filepage-nofile'                   => 'この名前のファイルは存在しません。',
+'filepage-nofile-link'              => 'この名前のファイルは存在しませんが、[$1 アップロード]することができます。',
+'uploadnewversion-linktext'         => 'このファイルの新しいバージョンをアップロードする',
+'shared-repo-from'                  => '$1より',
+'shared-repo'                       => '共有リポジトリ',
+'shared-repo-name-wikimediacommons' => 'ウィキメディア・コモンズ',
 
 # File reversion
 'filerevert'                => '$1 を差し戻す',
@@ -1674,7 +1704,7 @@ PICT # その他
 'filedelete-success-old'      => "'''[[Media:$1|$1]]''' の $2 $3 版は削除されています。",
 'filedelete-nofile'           => "'''$1''' は存在しません。",
 'filedelete-nofile-old'       => "指定された属性を持つ'''$1'''の古い版は存在しません。",
-'filedelete-otherreason'      => 'その他の理由・追加の理由:',
+'filedelete-otherreason'      => '他の、または追加の理由:',
 'filedelete-reason-otherlist' => 'その他の理由',
 'filedelete-reason-dropdown'  => '*よくある削除理由
 ** 著作権侵害
@@ -1802,7 +1832,7 @@ PICT # その他
 'ancientpages'            => '更新されていないページ',
 'move'                    => '移動',
 'movethispage'            => 'このページを移動',
-'unusedimagestext'        => '他のウェブサイトがURLを直接用いてファイルにリンクしている場合もあります。以下のファイル一覧には、そのような形で利用されているファイルが含まれている可能性があります。',
+'unusedimagestext'        => '以下のファイルは存在していますが、どのページにも埋め込まれていません。他のウェブサイトが URL を直接用いてファイルにリンクしている場合もあります。以下のファイル一覧には、そのような形で利用されているファイルが含まれている可能性があります。',
 'unusedcategoriestext'    => '以下のカテゴリはページが存在しますが、他のどのページおよびカテゴリからも使われていません。',
 'notargettitle'           => '対象となるページが存在しません',
 'notargettext'            => '対象となるページまたは利用者が指定されていません。',
@@ -1873,11 +1903,13 @@ PICT # その他
 'listusers-blocked'  => '(ブロック中)',
 
 # Special:ActiveUsers
-'activeusers'          => '活動中の利用者一覧',
-'activeusers-intro'    => 'これは過去$1{{PLURAL:$1|日|日間}}になんらかの活動をした利用者の一覧です。',
-'activeusers-count'    => '過去{{PLURAL:$3|$3日}}に$1件の{{PLURAL:$1|編集}}',
-'activeusers-from'     => '最初に表示する利用者:',
-'activeusers-noresult' => '利用者が見つかりませんでした。',
+'activeusers'            => '活動中の利用者一覧',
+'activeusers-intro'      => 'これは過去$1{{PLURAL:$1|日|日間}}になんらかの活動をした利用者の一覧です。',
+'activeusers-count'      => '過去{{PLURAL:$3|$3日}}に$1件の{{PLURAL:$1|編集}}',
+'activeusers-from'       => '最初に表示する利用者:',
+'activeusers-hidebots'   => 'ボットを隠す',
+'activeusers-hidesysops' => '管理者を隠す',
+'activeusers-noresult'   => '利用者が見つかりませんでした。',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'アカウント作成記録',
@@ -1995,6 +2027,9 @@ $NEWPAGE
 ウォッチリストの設定を変更する:
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+あなたのウォッチリストからこのページを除去する:
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+
 ご意見・お問い合わせ:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2007,7 +2042,7 @@ $NEWPAGE
 'exblank'                => '白紙ページ',
 'delete-confirm'         => '「$1」の削除',
 'delete-legend'          => '削除',
-'historywarning'         => "'''警告:''' 削除しようとしているページには$1{{PLURAL:$1|版}}の履歴があります:",
+'historywarning'         => "'''警告:''' 削除しようとしているページには約$1{{PLURAL:$1|版}}の履歴があります:",
 'confirmdeletetext'      => 'ページをすべての履歴とともに削除しようとしています。本当にこの操作を行いたいか、操作の結果を理解しているか、およびこの操作が[[{{MediaWiki:Policy-url}}|方針]]に従っているかどうか、確認をしてください。',
 'actioncomplete'         => '完了しました',
 'actionfailed'           => '操作失敗',
@@ -2019,7 +2054,7 @@ $NEWPAGE
 'deletionlog'            => '削除記録',
 'reverted'               => '以前の版への差し戻し',
 'deletecomment'          => '削除理由:',
-'deleteotherreason'      => 'その他の理由・追加の理由:',
+'deleteotherreason'      => '他の、または追加の理由:',
 'deletereasonotherlist'  => 'その他の理由',
 'deletereason-dropdown'  => '*よくある削除理由
 ** 投稿者依頼
@@ -2039,7 +2074,7 @@ $NEWPAGE
 
 このページの最後の編集は [[User:$3|$3]] ([[User talk:$3|会話]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]) によるものです。',
 'editcomment'       => "編集内容の要約: 「''$1''」",
-'revertpage'        => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) による編集を [[User:$1|$1]] による最後の版へ差し戻し',
+'revertpage'        => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) による編集を [[User:$1|$1]] による直前の版へ差し戻し',
 'revertpage-nouser' => '(利用者名削除) による編集を [[User:$1|$1]] による版へ差し戻し',
 'rollback-success'  => '$1 による編集を取り消して $2 による最後の版へ差し戻しました。',
 'sessionfailure'    => 'ログイン・セッションに問題が発生しました。セッションハイジャックを防ぐために操作は取り消されました。ブラウザの「戻る」を押して直前のページを再度読み込んだ後に、もう一度操作を行ってください。',
@@ -2077,7 +2112,7 @@ $NEWPAGE
 'protect-othertime-op'        => 'その他の期間',
 'protect-existing-expiry'     => '現在の保護期限: $2 $3',
 'protect-otherreason'         => 'その他の理由・追加の理由:',
-'protect-otherreason-op'      => 'その他の理由・追加の理由:',
+'protect-otherreason-op'      => 'その他の理由',
 'protect-dropdown'            => '*よくある保護理由
 ** 度重なる荒らし
 ** 度重なるスパム投稿
@@ -2196,6 +2231,7 @@ $1',
 
 # Block/unblock
 'blockip'                         => '利用者をブロック',
+'blockip-title'                   => '利用者のブロック',
 'blockip-legend'                  => '利用者をブロック',
 'blockiptext'                     => '以下のフォームを使用して指定した利用者やIPアドレスからの投稿をブロックすることができます。このような措置は荒らしからの防御のためにのみ行われるべきであり、また[[{{MediaWiki:Policy-url}}|方針]]に沿ったものであるべきです。以下にブロックの理由を具体的に書いてください (荒らされたページへの言及など)。',
 'ipaddress'                       => 'IPアドレス:',
@@ -2288,6 +2324,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'ipb_cant_unblock'                => 'エラー: ブロックされた ID $1 が見つかりません。おそらく既にブロック解除されています。',
 'ipb_blocked_as_range'            => 'エラー: IPアドレス $1 は直接的なブロック対象となっていませんが、ブロックを解除できませんでした。これは恐らく、ブロック解除できないIPアドレス空間 $2 の範囲に含まれているためです。',
 'ip_range_invalid'                => '不正なIPアドレス範囲です。',
+'ip_range_toolarge'               => '/$1よりサイズの大きい広域ブロックは許可されていません。',
 'blockme'                         => 'ブロックする',
 'proxyblocker'                    => 'プロキシブロッカー',
 'proxyblocker-disabled'           => 'この機能は無効になっています。',
@@ -2297,6 +2334,8 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'sorbs_create_account_reason'     => 'あなたのIPアドレスは、{{SITENAME}}の使用しているDNSブラックリストに公開プロキシとして登録されています。アカウントは作成できません。',
 'cant-block-while-blocked'        => 'ブロックされているため、他の利用者をブロックできません。',
 'cant-see-hidden-user'            => '投稿ブロックしようとした利用者は、既にブロックされ秘匿されています。秘匿者権限を持っていないため、この利用者の投稿ブロックを変更出来ません。',
+'ipbblocked'                      => 'あなた自身がブロックされているため、他の利用者のブロックやブロック解除をすることはできません',
+'ipbnounblockself'                => 'あなたは自分自身に対するブロックを解除することはできません',
 
 # Developer tools
 'lockdb'              => 'データベースのロック',
@@ -2337,6 +2376,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 
 これらの場合、ノートページを移動する場合には、別に作業する必要があります。',
 'movearticle'                  => '移動するページ',
+'moveuserpage-warning'         => "'''警告:''' あなたは利用者ページを移動させようとしています。移動を行った場合、ページだけが移動され、利用者名は''変更されない''点に注意してください。",
 'movenologin'                  => 'ログインしていません',
 'movenologintext'              => 'ページを移動するためには、アカウント作成の上、[[Special:UserLogin|ログイン]]している必要があります。',
 'movenotallowed'               => 'あなたにはページを移動する権限がありません。',
@@ -2387,8 +2427,10 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'imageinvalidfilename'         => '指定したファイル名が無効です',
 'fix-double-redirects'         => 'このページへのリダイレクトがあればそのリダイレクトを修正する',
 'move-leave-redirect'          => '移動元にリダイレクトを作成する',
-'protectedpagemovewarning'     => "'''警告:''' このページは管理者権限をもつ利用者のみが移動できるように保護されています。",
-'semiprotectedpagemovewarning' => "'''注意:''' このページは登録利用者のみが移動できるように保護されています。",
+'protectedpagemovewarning'     => "'''警告:''' このページは管理者権限をもつ利用者のみが移動できるように保護されています。
+参考として以下に一番最後のログを表示します:",
+'semiprotectedpagemovewarning' => "'''注意:''' このページは登録利用者のみが移動できるように保護されています。
+参考として以下に一番最後のログを表示します:",
 'move-over-sharedrepo'         => '== ファイルが存在します ==
 [[:$1]] は共有リポジトリー上に存在します。ファイルをこの名前に移動すると共有ファイルを無効にします。',
 'file-exists-sharedrepo'       => '選ばれたファイル名は既に共有リポジトリー上で使われています。別の名前を選んでください。',
@@ -2641,7 +2683,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'markaspatrolleddiff'                 => 'パトロール済みにする',
 'markaspatrolledtext'                 => 'このページをパトロール済みにする',
 'markedaspatrolled'                   => 'パトロール済みにしました。',
-'markedaspatrolledtext'               => '選択された編集をパトロール済みにしました。',
+'markedaspatrolledtext'               => '選択された [[:$1|$1]] の特定版をパトロール済みにマークしました。',
 'rcpatroldisabled'                    => '最近の更新のパトロールは無効',
 'rcpatroldisabledtext'                => '最近の更新のパトロール機能は現在無効になっています。',
 'markedaspatrollederror'              => 'パトロール済みにできません。',
@@ -3010,23 +3052,23 @@ Variants for Chinese language
 'limitall'         => 'すべて',
 
 # E-mail address confirmation
-'confirmemail'             => 'メールアドレスの確認',
-'confirmemail_noemail'     => '[[Special:Preferences|個人設定]]で有効なメールアドレスが指定されていません。',
-'confirmemail_text'        => '{{SITENAME}} ではメール機能を利用する前にメールアドレスの確認が必要です。以下のボタンを押すとあなたのメールアドレスに確認メールが送られます。メールには確認用コードを含むリンクが書かれています。そのリンクを開くことによってメールアドレスの正当性が確認されます。',
-'confirmemail_pending'     => '確認メールは既に送信されています。あなたがこのアカウントを作成したばかりであれば、メールが届くまで数分ほど待たなければならないかもしれません。',
-'confirmemail_send'        => '確認用コードを送信する',
-'confirmemail_sent'        => '確認メールを送信しました。',
-'confirmemail_oncreate'    => 'メールアドレスの正当性を確認するためのコードを含んだメールを送信しました。この確認を行わなくてもログインはできますが、確認するまでメール通知の機能は無効化されます。',
-'confirmemail_sendfailed'  => '{{SITENAME}}からの確認メールを送信できませんでした。メールアドレスに不正な文字が含まれていないかどうか確認してください。
+'confirmemail'              => 'メールアドレスの確認',
+'confirmemail_noemail'      => '[[Special:Preferences|個人設定]]で有効なメールアドレスが指定されていません。',
+'confirmemail_text'         => '{{SITENAME}} ではメール機能を利用する前にメールアドレスの確認が必要です。以下のボタンを押すとあなたのメールアドレスに確認メールが送られます。メールには確認用コードを含むリンクが書かれています。そのリンクを開くことによってメールアドレスの正当性が確認されます。',
+'confirmemail_pending'      => '確認メールは既に送信されています。あなたがこのアカウントを作成したばかりであれば、メールが届くまで数分ほど待たなければならないかもしれません。',
+'confirmemail_send'         => '確認用コードを送信する',
+'confirmemail_sent'         => '確認メールを送信しました。',
+'confirmemail_oncreate'     => 'メールアドレスの正当性を確認するためのコードを含んだメールを送信しました。この確認を行わなくてもログインはできますが、確認するまでメール通知の機能は無効化されます。',
+'confirmemail_sendfailed'   => '{{SITENAME}}からの確認メールを送信できませんでした。メールアドレスに不正な文字が含まれていないかどうか確認してください。
 
 メールサーバーからの返答: $1',
-'confirmemail_invalid'     => '確認用コードが正しくありません。このコードは期限切れです。',
-'confirmemail_needlogin'   => 'メールアドレスを確認するために$1が必要です。',
-'confirmemail_success'     => 'あなたのメールアドレスは確認されました。[[Special:UserLogin|ログイン]]してウィキを使用できます。',
-'confirmemail_loggedin'    => 'あなたのメールアドレスは確認されました。',
-'confirmemail_error'       => 'あなたの確認を保存する際に内部エラーが発生しました。',
-'confirmemail_subject'     => '{{SITENAME}} メールアドレスの確認',
-'confirmemail_body'        => 'どなたか (IPアドレス $1 の使用者) がこのメールアドレスで
+'confirmemail_invalid'      => '確認用コードが正しくありません。このコードは期限切れです。',
+'confirmemail_needlogin'    => 'メールアドレスを確認するために$1が必要です。',
+'confirmemail_success'      => 'あなたのメールアドレスは確認されました。[[Special:UserLogin|ログイン]]してウィキを使用できます。',
+'confirmemail_loggedin'     => 'あなたのメールアドレスは確認されました。',
+'confirmemail_error'        => 'あなたの確認を保存する際に内部エラーが発生しました。',
+'confirmemail_subject'      => '{{SITENAME}} メールアドレスの確認',
+'confirmemail_body'         => 'どなたか (IPアドレス $1 の使用者) がこのメールアドレスで
 {{SITENAME}} のアカウント「$2」を登録しました。
 
 このアカウントがあなたのものであるか確認してください。
@@ -3041,8 +3083,21 @@ $3
 $5
 
 この確認用コードは $4 に期限切れになります。',
-'confirmemail_invalidated' => 'メールアドレスの確認が中止されました',
-'invalidateemail'          => 'メールアドレスの認証中止',
+'confirmemail_body_changed' => 'IPアドレス$1の使用者である誰か（もしかすると、あなた）が、
+このメールアドレスで{{SITENAME}}のアカウント「$2」を登録しました。
+
+
+このアカウントがあなたのものであるならば、{{SITENAME}}のメール通知機能を有効にするために、以下のURLにアクセスしてください。
+
+$3
+
+もしアカウントの登録をした覚えがない場合は、次のURLにアクセスしてメール登録を解除してください。
+
+$5
+
+この確認用コードは $4 に期限切れになります。',
+'confirmemail_invalidated'  => 'メールアドレスの確認が中止されました',
+'invalidateemail'           => 'メールアドレスの認証中止',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[ウィキ間トランスクルージョンは無効になっています]',

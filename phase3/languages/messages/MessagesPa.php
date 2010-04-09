@@ -276,11 +276,10 @@ A list of valid special pages can be found at [[Special:SpecialPages]].',
 'viewsourcefor'      => '$1 ਲਈ',
 
 # Login and logout pages
-'logouttext'                 => "'''ਹੁਣ ਤੁਸੀਂ ਲਾਗਆਉਟ ਹੋ ਗਏ ਹੋ।'''<br />
-You can continue to use {{SITENAME}} anonymously, or you can log in
-again as the same or as a different user. Note that some pages may
-continue to be displayed as if you were still logged in, until you clear
-your browser cache.",
+'logouttext'                 => "'''ਹੁਣ ਤੁਸੀਂ ਲਾਗਆਉਟ ਹੋ ਗਏ ਹੋ।'''
+
+You can continue to use {{SITENAME}} anonymously, or you can log in again as the same or as a different user.
+Note that some pages may continue to be displayed as if you were still logged in, until you clear your browser cache.",
 'welcomecreation'            => "== ਜੀ ਆਇਆਂ ਨੂੰ, $1! ==
 
 Your account has been created. Don't forget to change your {{SITENAME}} preferences.",
@@ -440,8 +439,8 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'revdelete-nooldid-title' => 'ਕੋਈ ਟਾਰਗੇਟ ਰੀਵਿਜ਼ਨ ਨਹੀਂ',
 'revdelete-legend'        => 'ਪਾਬੰਦੀਆਂ ਸੈੱਟ ਕਰੋ:',
 'revdelete-hide-text'     => 'ਰੀਵਿਜ਼ਨ ਟੈਕਸਟ ਓਹਲੇ',
-'revdelete-hide-name'     => 'ਐਕਸ਼ਨ ਅਤੇ ਟਾਰਗੇਟ ਓਹਲੇ',
 'revdelete-hide-image'    => 'ਫਾਇਲ ਸਮੱਗਰੀ ਓਹਲੇ',
+'revdelete-hide-name'     => 'ਐਕਸ਼ਨ ਅਤੇ ਟਾਰਗੇਟ ਓਹਲੇ',
 'revdelete-log'           => 'ਲਾਗ ਟਿੱਪਣੀ:',
 'revdelete-submit'        => 'ਚੁਣੇ ਰੀਵਿਜ਼ਨ ਉੱਤੇ ਲਾਗੂ ਕਰੋ',
 'pagehist'                => 'ਪੇਜ ਦਾ ਅਤੀਤ',
@@ -523,7 +522,7 @@ $1 ਘੰਟੇ ਵਿੱਚ। ਨੁਕਸਾਨ ਤੋਂ ਬਚਣ ਲਈ, $
 'userrights-editusergroup' => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਸੋਧ',
 'saveusergroups'           => 'ਯੂਜ਼ਰ ਗਰੁੱਪ ਸੰਭਾਲੋ',
 'userrights-groupsmember'  => 'ਇਸ ਦਾ ਮੈਂਬਰ:',
-'userrights-reason'        => 'ਬਦਲਣ ਦੇ ਕਾਰਨ:',
+'userrights-reason'        => 'ਕਾਰਨ:',
 
 # Groups
 'group'      => 'ਗਰੁੱਪ:',

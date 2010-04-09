@@ -28,11 +28,6 @@ class ParserOutput
 		$mTOCHTML = '';	              # HTML of the TOC
 	private $mIndexPolicy = '';	      # 'index' or 'noindex'?  Any other value will result in no change.
 
-	/**
-	 * Overridden title for display
-	 */
-	private $displayTitle = false;
-
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
 		$containsOldMagic = false, $titletext = '' )
 	{
@@ -55,6 +50,7 @@ class ParserOutput
 	function &getImages()                { return $this->mImages; }
 	function &getExternalLinks()         { return $this->mExternalLinks; }
 	function getNoGallery()              { return $this->mNoGallery; }
+	function getHeadItems()              { return $this->mHeadItems; }
 	function getSubtitle()               { return $this->mSubtitle; }
 	function getOutputHooks()            { return (array)$this->mOutputHooks; }
 	function getWarnings()               { return array_keys( $this->mWarnings ); }
@@ -183,7 +179,7 @@ class ParserOutput
 	 * @param string $text Desired title text
 	 */
 	public function setDisplayTitle( $text ) {
-		$this->displayTitle = $text;
+		$this->setTitleText( $text );
 	}
 
 	/**
@@ -192,7 +188,11 @@ class ParserOutput
 	 * @return string
 	 */
 	public function getDisplayTitle() {
-		return $this->displayTitle;
+		$t = $this->getTitleText( );
+		if( $t === '' ) {
+			return false;
+		}
+		return $t;
 	}
 
 	/**

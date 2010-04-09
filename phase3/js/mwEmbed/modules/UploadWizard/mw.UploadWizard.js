@@ -973,7 +973,7 @@ mw.UploadWizardDescription = function( languageCode ) {
 		languageCode = 'en';
 	}
 
-	_this.languageMenu = mw.Language.getMenu("lang", languageCode);
+	_this.languageMenu = mw.LanguageUpWiz.getMenu("lang", languageCode);
 	$j(_this.languageMenu).addClass('mwe-upwiz-desc-lang-select');
 	_this.description = $j('<textarea name="desc" rows="2" cols="36" class="mwe-upwiz-desc-lang-text"></textarea>')
 				.growTextArea().get(0);
@@ -1309,7 +1309,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	addDescription: function() {
 		var _this = this;
-		var languageCode = _this.descriptions.length ? mw.Language.UNKNOWN : mw.getConfig('userLanguage' );
+		var languageCode = _this.descriptions.length ? mw.LanguageUpWiz.UNKNOWN : mw.getConfig('userLanguage' );
 		var description = new mw.UploadWizardDescription( languageCode  );
 
 		description.removeCtrl = $j('<a title="' + gM( 'mwe-upwiz-remove-description' ) + '" href="#">x</a>' )

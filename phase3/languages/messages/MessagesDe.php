@@ -10,7 +10,9 @@
  * @author Als-Holder
  * @author ChrisiPK
  * @author Church of emacs
+ * @author DaSch
  * @author Duesentrieb
+ * @author Imre
  * @author Jan Luca
  * @author Jens Liebenau
  * @author Jimmy Collins <jimmy.collins@web.de>
@@ -23,6 +25,7 @@
  * @author Merlissimo
  * @author Metalhead64
  * @author MichaelFrey
+ * @author MtaÄ
  * @author Omnipaedista
  * @author Pill
  * @author Purodha
@@ -33,6 +36,7 @@
  * @author Spacebirdy
  * @author Srhat
  * @author Tbleher
+ * @author The Evil IP address
  * @author Tim Bartel (avatar) <wikipedistik@computerkultur.org> small changes
  * @author UV
  * @author Umherirrender
@@ -69,8 +73,8 @@ $namespaceAliases = array(
 
 $bookstoreList = array(
 	'abebooks.de' => 'http://www.abebooks.de/servlet/BookSearchPL?ph=2&isbn=$1',
-	'amazon.de' => 'http://www.amazon.de/exec/obidos/ISBN=$1',
-	'buch.de' => 'http://www.buch.de/de.buch.shop/shop/1/home/schnellsuche/buch/?fqbi=$1',
+	'amazon.de' => 'http://www.amazon.de/gp/search/field-isbn=$1',
+	'buch.de' => 'http://www.buch.de/shop/home/suche/?sswg=BUCH&sq=$1',
 	'Karlsruher Virtueller Katalog (KVK)' => 'http://www.ubka.uni-karlsruhe.de/kvk.html?SB=$1',
 	'Lehmanns Fachbuchhandlung' => 'http://www.lob.de/cgi-bin/work/suche?flag=new&stich1=$1'
 );
@@ -522,9 +526,6 @@ $messages = array(
 'namespaces'                 => 'Namensräume',
 'variants'                   => 'Varianten',
 
-# Metadata in edit box
-'metadata_help' => 'Metadaten:',
-
 'errorpagetitle'    => 'Fehler',
 'returnto'          => 'Zurück zur Seite $1.',
 'tagline'           => 'Aus {{SITENAME}}',
@@ -691,6 +692,7 @@ Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software ge
 'readonly_lag'         => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
 'internalerror'        => 'Interner Fehler',
 'internalerror_info'   => 'Interner Fehler: $1',
+'fileappenderrorread'  => '„$1“ konnte während des Hinzufügens nicht gelesen werden.',
 'fileappenderror'      => 'Konnte „$1“ nicht an „$2“ anhängen.',
 'filecopyerror'        => 'Die Datei „$1“ konnte nicht nach „$2“ kopiert werden.',
 'filerenameerror'      => 'Die Datei „$1“ konnte nicht nach „$2“ umbenannt werden.',
@@ -738,7 +740,8 @@ Die Sperre wurde durch [[User:$1|$1]] mit der Begründung ''„$2“'' eingerich
 # Login and logout pages
 'logouttext'                 => "'''Du bist nun abgemeldet.'''
 
-Du kannst {{SITENAME}} jetzt anonym weiter benutzen, oder dich erneut unter dem selben oder einem anderen Benutzernamen [[Special:UserLogin|anmelden]].",
+Du kannst {{SITENAME}} jetzt anonym weiter benutzen, oder dich erneut unter dem selben oder einem anderen Benutzernamen [[Special:UserLogin|anmelden]].
+Beachte, das einige Seiten noch anzeigen können, das du angemeldet bist, solange du nicht deinen Browsercache geleert hast.",
 'welcomecreation'            => '== Willkommen, $1! ==
 
 Dein Benutzerkonto wurde eingerichtet.
@@ -746,13 +749,14 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 'yourname'                   => 'Benutzername:',
 'yourpassword'               => 'Passwort:',
 'yourpasswordagain'          => 'Passwort wiederholen:',
-'remembermypassword'         => 'auf diesem Computer dauerhaft anmelden',
+'remembermypassword'         => 'dauerhaft anmelden',
 'yourdomainname'             => 'Deine Domain:',
 'externaldberror'            => 'Entweder es liegt ein Fehler bei der externen Authentifizierung vor, oder du darfst dein externes Benutzerkonto nicht aktualisieren.',
 'login'                      => 'Anmelden',
 'nav-login-createaccount'    => 'Anmelden',
 'loginprompt'                => 'Zur Anmeldung müssen Cookies aktiviert sein.',
 'userlogin'                  => 'Anmelden / Benutzerkonto erstellen',
+'userloginnocreate'          => 'Anmelden',
 'logout'                     => 'Abmelden',
 'userlogout'                 => 'Abmelden',
 'notloggedin'                => 'Nicht angemeldet',
@@ -775,6 +779,7 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 Überprüfe die Schreibweise (Groß-/Kleinschreibung beachten) oder [[Special:UserLogin/signup|melde dich als neuer Benutzer an]].',
 'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfe die Schreibweise.',
 'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
+'login-userblocked'          => 'Dieser Benutzer ist gesperrt. Anmeldung nicht erlaubt.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuche es erneut.',
 'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuche es erneut.',
 'passwordtooshort'           => 'Passwörter müssen mindestens {{PLURAL:$1|1 Zeichen|$1 Zeichen}} lang sein.',
@@ -817,6 +822,7 @@ Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ig
 'login-throttled'            => 'Du hast zu oft versucht, dich anzumelden.
 Bitte warte, bevor du es erneut probierst.',
 'loginlanguagelabel'         => 'Sprache: $1',
+'suspicious-userlogout'      => 'Deine Abmeldeanfrage wurde verweigert, da sie vermutlich von einem defekten Browser oder einem Cache-Proxy gesendet wurde.',
 
 # Password reset dialog
 'resetpass'                 => 'Passwort ändern',
@@ -831,6 +837,7 @@ Bitte warte, bevor du es erneut probierst.',
 'resetpass_forbidden'       => 'Das Passwort kann nicht geändert werden.',
 'resetpass-no-info'         => 'Du musst dich anmelden, um auf diese Seite direkt zuzugreifen.',
 'resetpass-submit-loggedin' => 'Passwort ändern',
+'resetpass-submit-cancel'   => 'Abbrechen',
 'resetpass-wrong-oldpass'   => 'Ungültiges temporäres oder aktuelles Passwort.
 Möglicherweise hast du dein Passwort bereits erfolgreich geändert oder ein neues temporäres Passwort beantragt.',
 'resetpass-temp-password'   => 'Temporäres Passwort:',
@@ -844,8 +851,8 @@ Möglicherweise hast du dein Passwort bereits erfolgreich geändert oder ein neu
 'link_tip'        => 'Interner Link',
 'extlink_sample'  => 'http://www.example.com Link-Text',
 'extlink_tip'     => 'Externer Link (http:// beachten)',
-'headline_sample' => 'Ebene 2 Überschrift',
-'headline_tip'    => 'Ebene 2 Überschrift',
+'headline_sample' => 'Ebene-2-Überschrift',
+'headline_tip'    => 'Ebene-2-Überschrift',
 'math_sample'     => 'Formel hier einfügen',
 'math_tip'        => 'Mathematische Formel (LaTeX)',
 'nowiki_sample'   => 'Unformatierten Text hier einfügen',
@@ -908,8 +915,9 @@ Bitte füge alle Informationen jeder Anfrage hinzu, die du stellt.",
 'whitelistedittitle'               => 'Zum Bearbeiten ist es erforderlich, angemeldet zu sein',
 'whitelistedittext'                => 'Du musst dich $1, um Seiten bearbeiten zu können.',
 'confirmedittext'                  => 'Du musst deine E-Mail-Adresse erst bestätigen, bevor du Bearbeitungen durchführen kannst. Bitte ergänze und bestätige Deine E-Mail in den [[Special:Preferences|Einstellungen]].',
-'nosuchsectiontitle'               => 'Abschnitt nicht vorhanden',
-'nosuchsectiontext'                => 'Du versuchst den nicht vorhandenen Abschnitt $1 zu bearbeiten. Es können jedoch nur bereits vorhandene Abschnitte bearbeitet werden.',
+'nosuchsectiontitle'               => 'Abschnitt nicht gefunden',
+'nosuchsectiontext'                => 'Du hast versucht, einen Abschnitt zu bearbeiten, der nicht existiert.
+Vermutlich wurde er verschoben oder gelöscht, nachdem du die Seite aufgerufen hast.',
 'loginreqtitle'                    => 'Anmeldung erforderlich',
 'loginreqlink'                     => 'anmelden',
 'loginreqpagetext'                 => 'Du musst dich $1, um Seiten lesen zu können.',
@@ -930,6 +938,8 @@ Du kannst diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|such
 oder in den zugehörigen <span class="plainlinks">[{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbüchern suchen].</span>',
 'userpage-userdoesnotexist'        => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfe, ob du diese Seite wirklich erstellen/bearbeiten willst.',
 'userpage-userdoesnotexist-view'   => 'Benutzerkonto „$1“ existiert nicht.',
+'blocked-notice-logextract'        => 'Dieser Benutzer ist zur Zeit gesperrt.
+Zur Information folgt ein aktueller Auszug aus dem Benutzersperr-Logbuch:',
 'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutze den Vorschau-Button, um dein neues CSS vor dem Speichern zu testen.",
 'userjsyoucanpreview'              => "'''Tipp:''' Benutze den Vorschau-Button, um dein neues JS vor dem Speichern zu testen.",
@@ -982,10 +992,10 @@ Du bestätigst hiermit auch, dass du diese Texte selbst geschrieben hast oder di
 Sichere den Text bitte lokal auf deinem Computer und versuche zu einem späteren Zeitpunkt, die Änderungen zu übertragen.'''
 
 Grund für die Sperre: $1",
-'protectedpagewarning'             => "'''ACHTUNG: Diese Seite wurde gesperrt. Nur Benutzer mit Administratorrechten können die Seite bearbeiten.'''",
-'semiprotectedpagewarning'         => "'''Halbsperrung:''' Die Seite wurde so gesperrt, dass nur registrierte Benutzer diese ändern können.",
+'protectedpagewarning'             => "'''ACHTUNG: Diese Seite wurde gesperrt. Nur Benutzer mit Administratorrechten können die Seite bearbeiten.''' Zur Information folgt der aktuelle Logbucheintrag:",
+'semiprotectedpagewarning'         => "'''Halbsperrung:''' Die Seite wurde so gesperrt, dass nur registrierte Benutzer diese ändern können. Zur Information folgt der aktuelle Logbucheintrag:",
 'cascadeprotectedwarning'          => "'''ACHTUNG: Diese Seite wurde gesperrt, so dass sie nur durch Benutzer mit Administratorrechten bearbeitet werden kann. Sie ist in die {{PLURAL:$1|folgende Seite|folgenden Seiten}} eingebunden, die mittels der Kaskadensperroption geschützt {{PLURAL:$1|ist|sind}}:'''",
-'titleprotectedwarning'            => "'''ACHTUNG: Die Seitenerstellung wurde gesperrt. Nur Benutzer mit [[Special:ListGroupRights|speziellen Rechten]] können die Seite erstellen.'''",
+'titleprotectedwarning'            => "'''ACHTUNG: Die Seitenerstellung wurde gesperrt. Nur Benutzer mit [[Special:ListGroupRights|speziellen Rechten]] können die Seite erstellen.''' Zur Information folgt der aktuelle Logbucheintrag:",
 'templatesused'                    => '{{PLURAL:$1|Die folgende Vorlage wird|Folgende Vorlagen werden}} von dieser Seite verwendet:',
 'templatesusedpreview'             => '{{PLURAL:$1|Die folgende Vorlage wird|Folgende Vorlagen werden}} von dieser Seitenvorschau verwendet:',
 'templatesusedsection'             => '{{PLURAL:$1|Die folgende Vorlage wird|Folgende Vorlagen werden}} von diesem Abschnitt verwendet:',
@@ -996,6 +1006,8 @@ Grund für die Sperre: $1",
 'nocreatetitle'                    => 'Die Erstellung neuer Seiten ist eingeschränkt.',
 'nocreatetext'                     => 'Auf {{SITENAME}} wurde das Erstellen neuer Seiten eingeschränkt. Du kannst bestehende Seiten ändern oder dich [[Special:UserLogin|anmelden]].',
 'nocreate-loggedin'                => 'Du hast keine Berechtigung, neue Seiten zu erstellen.',
+'sectioneditnotsupported-title'    => 'Die Bearbeitung von Abschnitten wird nicht unterstützt',
+'sectioneditnotsupported-text'     => 'Die Bearbeitung von Abschnitten wird auf dieser Bearbeitungsseite nicht unterstützt.',
 'permissionserrors'                => 'Berechtigungsfehler',
 'permissionserrorstext'            => 'Du bist nicht berechtigt, die Aktion auszuführen. {{PLURAL:$1|Grund|Gründe}}:',
 'permissionserrorstext-withaction' => 'Du bist nicht berechtigt, $2.
@@ -1024,6 +1036,7 @@ Es {{PLURAL:$2|darf nicht mehr als 1 Aufruf|dürfen nicht mehr als $1 Aufrufe}} 
 'post-expand-template-argument-category'  => 'Seiten, die ignorierte Vorlagenargumente enthalten',
 'parser-template-loop-warning'            => 'Vorlagenschleife entdeckt: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Vorlagenrekursionstiefengrenze überschritten ($1)',
+'language-converter-depth-warning'        => 'Sprachkonvertertiefenlimit überschritten ($1)',
 
 # "Undo" feature
 'undo-success' => 'Um die Änderung rückgängig zu machen, bitte die Bearbeitung in der Vergleichsansicht kontrollieren und dann auf „Seite speichern“ klicken.',
@@ -1072,6 +1085,7 @@ Grund der Sperre: ''$2''",
 'rev-deleted-comment'         => '(Bearbeitungskommentar entfernt)',
 'rev-deleted-user'            => '(Benutzername entfernt)',
 'rev-deleted-event'           => '(Logbuchaktion entfernt)',
+'rev-deleted-user-contribs'   => '[Benutzername oder IP-Adresse entfernt – Bearbeitung aus Beiträgen versteckt]',
 'rev-deleted-text-permission' => "Diese Version wurde '''gelöscht'''.
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
 'rev-deleted-text-unhide'     => "Diese Version wurde '''gelöscht'''.
@@ -1079,7 +1093,7 @@ Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} L�
 Einem Administrator kannst du [$1 diesen Link zur Version] nennen.",
 'rev-suppressed-text-unhide'  => "Diese Version wurde '''unterdrückt'''.
 Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].
-Du als Administrator kannst [$1 diese Version einsehen], wenn du es wünscht.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-deleted-text-view'       => "Diese Version wurde '''gelöscht'''.
 Als Administrator kannst du sie weiterhin einsehen.
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
@@ -1087,6 +1101,7 @@ Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullu
 Administratoren können sie einsehen; Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].",
 'rev-deleted-no-diff'         => "Du kannst diesen Unterschied nicht betrachten, da eine der Versionen '''gelöscht''' wurde.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
+'rev-suppressed-no-diff'      => "Du kannst diesen Versionsunterschied nicht betrachten, da eine der Versionen '''gelöscht''' wurde.",
 'rev-deleted-unhide-diff'     => "Eine der Versionen dieses Unterschieds wurde '''gelöscht'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
 Einem Administrator kannst du [$1 diesen Link zum Versionsunterschied] nennen.",
@@ -1119,12 +1134,15 @@ Andere Administratoren auf {{SITENAME}} haben Zugriff auf den versteckten Inhalt
 *: ''Adressen, Telefonnummern, Sozialversicherungsnummern etc.''",
 'revdelete-legend'            => 'Setzen der Sichtbarkeits-Einschränkungen',
 'revdelete-hide-text'         => 'Text der Version verstecken',
+'revdelete-hide-image'        => 'Dateiinhalt verstecken',
 'revdelete-hide-name'         => 'Logbuch-Aktion verstecken',
 'revdelete-hide-comment'      => 'Bearbeitungskommentar verstecken',
 'revdelete-hide-user'         => 'Benutzername/IP-Adresse des Bearbeiters verstecken',
 'revdelete-hide-restricted'   => 'Daten auch vor Administratoren und anderen unterdrücken',
+'revdelete-radio-same'        => '(nicht ändern)',
+'revdelete-radio-set'         => 'Ja',
+'revdelete-radio-unset'       => 'Nein',
 'revdelete-suppress'          => 'Grund der Löschung auch vor Administratoren verstecken',
-'revdelete-hide-image'        => 'Bildinhalt verstecken',
 'revdelete-unsuppress'        => 'Einschränkungen für wiederhergestellte Versionen aufheben',
 'revdelete-log'               => 'Grund der Löschung:',
 'revdelete-submit'            => 'Auf ausgewählte {{PLURAL:$1|Version|Versionen}} anwenden',
@@ -1158,12 +1176,12 @@ Du hast darauf keinen Zugriff.',
 'revdelete-no-change'         => "'''Warnung:''' Der Eintrag vom $1, $2 Uhr besitzt bereits die gewünschten Sichtbarkeitseinstellungen.",
 'revdelete-concurrent-change' => 'Fehler beim Bearbeiten des Eintrags vom $1, $2 Uhr: Es scheint, als ob der Status von jemandem geändert wurde, bevor du vorhattest, ihn zu bearbeiten.
 Bitte prüfe die Logbücher.',
-'revdelete-only-restricted'   => 'Du kannst keine Einträge vor Administratoren unterdrücken, ohne dass du auch eine der anderen Unterdrückungsoptionen ausgewählt hast.',
+'revdelete-only-restricted'   => 'Fehler beim Verstecken des Eintrags vom $1, $2 Uhr: Du kannst keinen Eintrag vor Administratoren verstecken, ohne eine der anderen Ansichtsoptionen gewählt zu haben.',
 'revdelete-reason-dropdown'   => '*Allgemeine Löschgründe
 ** Urheberrechtsverletzung
 ** Unangebrachte persönliche Informationen',
-'revdelete-otherreason'       => 'Andere/zusätzliche Begründung:',
-'revdelete-reasonotherlist'   => 'Andere Begründung',
+'revdelete-otherreason'       => 'Anderer/ergänzender Grund:',
+'revdelete-reasonotherlist'   => 'Anderer Grund',
 'revdelete-edit-reasonlist'   => 'Löschgründe bearbeiten',
 'revdelete-offender'          => 'Autor der Version:',
 
@@ -1350,6 +1368,7 @@ Hier ein zufällig generierter Wert, den du verwenden kannst: $1',
 'prefs-files'                   => 'Dateien',
 'prefs-custom-css'              => 'Benutzerdefinierte CSS',
 'prefs-custom-js'               => 'Benutzerdefiniertes JS',
+'prefs-common-css-js'           => 'Gemeinsames CSS/JS für alle Skins:',
 'prefs-reset-intro'             => 'Du kannst diese Seite verwenden, um die Einstellungen auf die Standards zurückzusetzen.
 Dies kann nicht mehr rückgängig gemacht werden.',
 'prefs-emailconfirm-label'      => 'E-Mail-Bestätigung:',
@@ -1392,24 +1411,25 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'prefs-diffs'                   => 'Versionsvergleich',
 
 # User rights
-'userrights'                  => 'Benutzerrechteverwaltung',
-'userrights-lookup-user'      => 'Gruppenzugehörigkeit verwalten',
-'userrights-user-editname'    => 'Benutzername:',
-'editusergroup'               => 'Benutzerrechte bearbeiten',
-'editinguser'                 => "Ändere Benutzerrechte von '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'    => 'Benutzer-Gruppenzugehörigkeit bearbeiten',
-'saveusergroups'              => 'Gruppenzugehörigkeit ändern',
-'userrights-groupsmember'     => 'Mitglied von:',
-'userrights-groups-help'      => 'Du kannst die Gruppenzugehörigkeit für diesen Benutzer ändern:
+'userrights'                   => 'Benutzerrechteverwaltung',
+'userrights-lookup-user'       => 'Gruppenzugehörigkeit verwalten',
+'userrights-user-editname'     => 'Benutzername:',
+'editusergroup'                => 'Benutzerrechte bearbeiten',
+'editinguser'                  => "Ändere Benutzerrechte von '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'     => 'Benutzer-Gruppenzugehörigkeit bearbeiten',
+'saveusergroups'               => 'Gruppenzugehörigkeit ändern',
+'userrights-groupsmember'      => 'Mitglied von:',
+'userrights-groupsmember-auto' => 'Einschließlich Mitglied von:',
+'userrights-groups-help'       => 'Du kannst die Gruppenzugehörigkeit für diesen Benutzer ändern:
 * Ein markiertes Kästchen bedeutet, dass der Benutzer Mitglied dieser Gruppe ist
 * Ein * bedeutet, dass du das Benutzerrecht nach Erteilung nicht wieder zurücknehmen kannst (oder umgekehrt).',
-'userrights-reason'           => 'Grund:',
-'userrights-no-interwiki'     => 'Du hast keine Berechtigung, Benutzerrechte in anderen Wikis zu ändern.',
-'userrights-nodatabase'       => 'Die Datenbank $1 ist nicht vorhanden oder nicht lokal.',
-'userrights-nologin'          => 'Du musst dich mit einem Administrator-Benutzerkonto [[Special:UserLogin|anmelden]], um Benutzerrechte zu ändern.',
-'userrights-notallowed'       => 'Du besitzt nicht die erforderlichen Berechtigungen, um Benutzerrechte zu vergeben.',
-'userrights-changeable-col'   => 'Gruppenzugehörigkeit, die du ändern kannst',
-'userrights-unchangeable-col' => 'Gruppenzugehörigkeit, die du nicht ändern kannst',
+'userrights-reason'            => 'Grund:',
+'userrights-no-interwiki'      => 'Du hast keine Berechtigung, Benutzerrechte in anderen Wikis zu ändern.',
+'userrights-nodatabase'        => 'Die Datenbank $1 ist nicht vorhanden oder nicht lokal.',
+'userrights-nologin'           => 'Du musst dich mit einem Administrator-Benutzerkonto [[Special:UserLogin|anmelden]], um Benutzerrechte zu ändern.',
+'userrights-notallowed'        => 'Du besitzt nicht die erforderlichen Berechtigungen, um Benutzerrechte zu vergeben.',
+'userrights-changeable-col'    => 'Gruppenzugehörigkeit, die du ändern kannst',
+'userrights-unchangeable-col'  => 'Gruppenzugehörigkeit, die du nicht ändern kannst',
 
 # Groups
 'group'               => 'Gruppe:',
@@ -1472,6 +1492,7 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'right-hideuser'              => 'Benutzernamen sperren und verbergen',
 'right-ipblock-exempt'        => 'Ausnahme von IP-Sperren, Autoblocks und Rangesperren',
 'right-proxyunbannable'       => 'Ausnahme von automatischen Proxysperren',
+'right-unblockself'           => 'Sich selbst entsperren',
 'right-protect'               => 'Seitenschutzstatus ändern',
 'right-editprotected'         => 'Geschützte Seiten bearbeiten (ohne Kaskadenschutz)',
 'right-editinterface'         => 'Benutzeroberfläche bearbeiten',
@@ -1554,7 +1575,8 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'recentchanges-label-bot'           => 'Änderung durch einen Bot',
 'recentchanges-legend-unpatrolled'  => '$1 - nicht-kontrollierte Änderung',
 'recentchanges-label-unpatrolled'   => 'Nicht-kontrollierte Änderung',
-'rcnote'                            => "Angezeigt {{PLURAL:$1|wird '''1''' Änderung|werden die letzten '''$1''' Änderungen}} {{PLURAL:$2|des letzten Tages|der letzten '''$2''' Tage}}. Stand: $4, $5 Uhr.",
+'rcnote'                            => "{{PLURAL:$1|'''1''' Änderung|'''$1''' Änderungen}} in den {{PLURAL:$2|letzten 24 Stunden|letzten '''$2''' Tagen}}.
+Stand: $4, $5 Uhr.",
 'rcnotefrom'                        => "Angezeigt werden die Änderungen seit '''$2''' (max. '''$1''' Einträge).",
 'rclistfrom'                        => 'Nur Änderungen seit $1 zeigen.',
 'rcshowhideminor'                   => 'Kleine Änderungen $1',
@@ -1625,6 +1647,7 @@ Um ein '''Bild''' in einer Seite zu verwenden, nutze einen Link in der folgenden
 'minlength1'                  => 'Dateinamen müssen mindestens einen Buchstaben lang sein.',
 'illegalfilename'             => 'Der Dateiname „$1“ enthält mindestens ein nicht erlaubtes Zeichen. Bitte benenne die Datei um und versuche sie erneut hochzuladen.',
 'badfilename'                 => 'Der Dateiname wurde in „$1“ geändert.',
+'filetype-mime-mismatch'      => 'Dateierweiterung stimmt nicht mit dem MIME-Typ überein.',
 'filetype-badmime'            => 'Dateien mit dem MIME-Typ „$1“ dürfen nicht hochgeladen werden.',
 'filetype-bad-ie-mime'        => 'Diese Datei kann nicht hochgeladen werden, da der Internet Explorer sie als „$1“ erkennt, welcher ein nicht erlaubter potentiell gefährlicher Dateityp ist.',
 'filetype-unwanted-type'      => "'''„.$1“''' ist ein unerwünschtes Dateiformat. Erlaubt {{PLURAL:$3|ist das Dateiformat|sind die Dateiformate}}: $2.",
@@ -1666,7 +1689,6 @@ Wenn du diese Datei trotzdem hochladen möchtest, gehe bitte zurück und ändere
 'php-uploaddisabledtext'      => 'Das Hochladen von Dateien wurde in PHP deaktiviert.
 Bitte überprüfe die <code>file_uploads</code>-Einstellung.',
 'uploadscripted'              => 'Diese Datei enthält HTML- oder Scriptcode, der irrtümlich von einem Webbrowser ausgeführt werden könnte.',
-'uploadcorrupt'               => 'Die Datei ist beschädigt oder hat eine falsche Datei-Erweiterung. Bitte überprüfe die Datei und wiederhole den Hochlade-Vorgang.',
 'uploadvirus'                 => 'Diese Datei enthält einen Virus! Details: $1',
 'upload-source'               => 'Quelldatei',
 'sourcefilename'              => 'Quelldatei:',
@@ -1728,6 +1750,16 @@ Nur Dateizugriff ist erlaubt.',
 Dieses Wiki wurde als ein öffentliches Wiki konfiguriert.
 Aus Sicherheitsgründen ist img_auth.php deaktiviert.',
 'img-auth-noread'       => 'Benutzer hat keine Berechtigung, „$1“ zu lesen.',
+
+# HTTP errors
+'http-invalid-url'      => 'Ungültige URL: $1',
+'http-invalid-scheme'   => 'URLs mit dem Schema „$1“ werden nicht unterstützt',
+'http-request-error'    => 'Fehler beim Senden der Anfrage.',
+'http-read-error'       => 'HTTP-Lesefehler.',
+'http-timed-out'        => 'Zeitüberschreitung bei der HTTP-Anfrage.',
+'http-curl-error'       => 'Fehler beim Abruf der URL: $1',
+'http-host-unreachable' => 'URL konnte nicht erreicht werden.',
+'http-bad-status'       => 'Während der HTTP-Anfrage ist ein Fehler aufgetreten: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL ist nicht erreichbar',
@@ -1868,7 +1900,10 @@ Eine [[Special:WhatLinksHere/$2|vollständige Liste]] ist verfügbar.',
 
 'disambiguations'      => 'Begriffsklärungsseiten',
 'disambiguationspage'  => 'Template:Begriffsklärung',
-'disambiguations-text' => 'Die folgenden Seiten verlinken auf eine Seite zur Begriffsklärung. Sie sollten statt dessen auf die eigentlich gemeinte Seite verlinken.<br />Eine Seite wird als Begriffsklärungsseite behandelt, wenn [[MediaWiki:Disambiguationspage]] auf sie verlinkt.<br />Links aus Namensräumen werden hier nicht aufgelistet.',
+'disambiguations-text' => 'Die folgenden Seiten verlinken auf eine Seite zur Begriffsklärung. Sie sollten statt dessen auf die eigentlich gemeinte Seite verlinken.
+
+Eine Seite gilt als Begriffsklärungsseite, wenn sie eine der in [[MediaWiki:Disambiguationspage]] aufgeführte(n) Vorlage(n) einbindet.<br />
+Links aus Namensräumen werden hier nicht aufgelistet.',
 
 'doubleredirects'            => 'Doppelte Weiterleitungen',
 'doubleredirectstext'        => 'Diese Liste enthält Weiterleitungen, die auf weitere Weiterleitungen verlinken.
@@ -1921,7 +1956,7 @@ Jede Zeile enthält Links zu der ersten und zweiten Weiterleitung sowie das Ziel
 'shortpages'              => 'Kurze Seiten',
 'longpages'               => 'Lange Seiten',
 'deadendpages'            => 'Sackgassenseiten',
-'deadendpagestext'        => 'Aus den folgenden Seiten wird nicht aus {{SITENAME}} verwiesen.',
+'deadendpagestext'        => 'Die folgenden Seiten verweisen nicht auf andere Seiten von {{SITENAME}}.',
 'protectedpages'          => 'Geschützte Seiten',
 'protectedpages-indef'    => 'Nur unbeschränkt geschützte Seiten zeigen',
 'protectedpages-cascade'  => 'Nur Seiten mit Kaskadenschutz',
@@ -1940,7 +1975,7 @@ Jede Zeile enthält Links zu der ersten und zweiten Weiterleitung sowie das Ziel
 'ancientpages'            => 'Seit längerem unbearbeitete Seiten',
 'move'                    => 'Verschieben',
 'movethispage'            => 'Seite verschieben',
-'unusedimagestext'        => 'Bitte beachte, dass andere Webseiten diese Datei mit einer direkten URL verlinken können. Diese wird nicht als Verwendung erkannt, so dass die Datei hier aufgeführt wird.',
+'unusedimagestext'        => 'Bitte beachte, dass andere Webseiten eine Datei mit einer direkten URL verlinken können. Sie könnte daher hier aufgelistet sein, obwohl sie in aktiver Verwendung ist.',
 'unusedcategoriestext'    => 'Diese Spezialseite zeigt alle Kategorien, die leer sind, also selbst keine Kategorien oder Seiten enthalten.',
 'notargettitle'           => 'Keine Seite angegeben',
 'notargettext'            => 'Du hast nicht angegeben, auf welche Seite diese Funktion angewendet werden soll.',
@@ -2015,11 +2050,13 @@ Siehe auch die Liste der [[Special:WantedCategories|gewünschten Kategorien]].',
 'listusers-blocked'  => '(gesperrt)',
 
 # Special:ActiveUsers
-'activeusers'          => 'Liste aktiver Benutzer',
-'activeusers-intro'    => 'Dies ist eine Liste von Benutzern, die innerhalb {{PLURAL:$1|des letzten Tages|der letzten $1 Tage}} Aktivitäten aufwiesen.',
-'activeusers-count'    => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} in den {{PLURAL:$3|letzten 24 Stunden|vergangenen $3 Tagen}}',
-'activeusers-from'     => 'Zeige Benutzer ab:',
-'activeusers-noresult' => 'Keine Benutzer gefunden.',
+'activeusers'            => 'Liste aktiver Benutzer',
+'activeusers-intro'      => 'Dies ist eine Liste von Benutzern, die innerhalb {{PLURAL:$1|des letzten Tages|der letzten $1 Tage}} Aktivitäten aufwiesen.',
+'activeusers-count'      => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} in den {{PLURAL:$3|letzten 24 Stunden|vergangenen $3 Tagen}}',
+'activeusers-from'       => 'Zeige Benutzer ab:',
+'activeusers-hidebots'   => 'Bots ausblenden',
+'activeusers-hidesysops' => 'Administratoren ausblenden',
+'activeusers-noresult'   => 'Keine Benutzer gefunden.',
 
 # Special:Log/newusers
 'newuserlogpage'              => 'Neuanmeldungs-Logbuch',
@@ -2118,7 +2155,7 @@ Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klick
 'enotif_impersonal_salutation' => '{{SITENAME}}-Benutzer',
 'changed'                      => 'geändert',
 'created'                      => 'erstellt',
-'enotif_subject'               => '[{{SITENAME}}] Die Seite "$PAGETITLE" wurde von $PAGEEDITOR $CHANGEDORCREATED',
+'enotif_subject'               => '[{{SITENAME}}] Die Seite „$PAGETITLE“ wurde von $PAGEEDITOR $CHANGEDORCREATED',
 'enotif_lastvisited'           => 'Alle Änderungen auf einen Blick: $1',
 'enotif_lastdiff'              => 'Siehe $1 nach dieser Änderung.',
 'enotif_anon_editor'           => 'Anonymer Benutzer $1',
@@ -2141,7 +2178,9 @@ Es werden solange keine weiteren Benachrichtigungs-E-Mails gesendet, bis du die 
              Dein freundliches {{SITENAME}}-Benachrichtigungssystem
 
 --
-Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:{{#special:Watchlist}}/edit}}
+Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche {{fullurl:{{#special:Watchlist}}/edit}}
+
+Um die Seite von deiner Beobachtungsliste herunterzunehmen, besuche {{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
 
 Rückmeldungen und weitere Hilfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2154,7 +2193,7 @@ Rückmeldungen und weitere Hilfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 'exblank'                => 'Seite war leer',
 'delete-confirm'         => 'Löschen von „$1“',
 'delete-legend'          => 'Löschen',
-'historywarning'         => "'''Achtung:''' Die Seite, die du löschen möchtest, hat eine Versionsgeschichte mit $1 {{PLURAL:$1|Version|Versionen}}:",
+'historywarning'         => "'''Achtung:''' Die Seite, die du löschen möchtest, hat eine Versionsgeschichte mit ungefähr $1 {{PLURAL:$1|Version|Versionen}}:",
 'confirmdeletetext'      => 'Du bist dabei, eine Seite mit allen zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass du in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]] handelst.',
 'actioncomplete'         => 'Aktion beendet',
 'actionfailed'           => 'Aktion fehlgeschlagen',
@@ -2227,7 +2266,7 @@ Siehe die [[Special:ProtectedPages|Liste der geschützten Seiten]] für alle akt
 'protect-othertime-op'        => 'andere Sperrdauer',
 'protect-existing-expiry'     => 'Aktuelles Seitenschutzende: $2, $3 Uhr',
 'protect-otherreason'         => 'Anderer/ergänzender Grund:',
-'protect-otherreason-op'      => 'anderer/ergänzender Grund',
+'protect-otherreason-op'      => 'Anderer Grund',
 'protect-dropdown'            => '*Allgemeine Schutzgründe
 ** Weblink-Spam
 ** Editwar
@@ -2352,6 +2391,7 @@ $1',
 
 # Block/unblock
 'blockip'                         => 'IP-Adresse/Benutzer sperren',
+'blockip-title'                   => 'Benutzer sperren',
 'blockip-legend'                  => 'IP-Adresse/Benutzer sperren',
 'blockiptext'                     => 'Mit diesem Formular sperrst du eine IP-Adresse oder einen Benutzernamen, so dass von dort keine Änderungen mehr vorgenommen werden können.
 Dies sollte nur erfolgen, um Vandalismus zu verhindern und in Übereinstimmung mit den [[{{MediaWiki:Policy-url}}|Richtlinien]].
@@ -2360,7 +2400,7 @@ Bitte gib den Grund für die Sperre an.',
 'ipadressorusername'              => 'IP-Adresse oder Benutzername:',
 'ipbexpiry'                       => 'Sperrdauer:',
 'ipbreason'                       => 'Grund:',
-'ipbreasonotherlist'              => 'Andere Begründung',
+'ipbreasonotherlist'              => 'Anderer Grund',
 'ipbreason-dropdown'              => '* Allgemeine Sperrgründe
 ** Einfügen falscher Informationen
 ** Leeren von Seiten
@@ -2377,7 +2417,7 @@ Bitte gib den Grund für die Sperre an.',
 'ipbother'                        => 'Andere Dauer (englisch):',
 'ipboptions'                      => '2 Stunden:2 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,6 Monate:6 months,1 Jahr:1 year,Unbeschränkt:infinite',
 'ipbotheroption'                  => 'Andere Dauer',
-'ipbotherreason'                  => 'Andere/ergänzende Begründung:',
+'ipbotherreason'                  => 'Anderer/ergänzender Grund:',
 'ipbhidename'                     => 'Benutzername in Bearbeitungen und Listen verstecken',
 'ipbwatchuser'                    => 'Benutzer(diskussions)seite beobachten',
 'ipballowusertalk'                => 'Benutzer darf eigene Diskussionsseiten während seiner Sperre bearbeiten',
@@ -2440,7 +2480,7 @@ Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernam
 'block-log-flags-hiddenname'      => 'Benutzername versteckt',
 'range_block_disabled'            => 'Die Möglichkeit, ganze Adressräume zu sperren, ist nicht aktiviert.',
 'ipb_expiry_invalid'              => 'Die eingegebene Dauer ist ungültig.',
-'ipb_expiry_temp'                 => 'Versteckte Benutzernamens-Sperren sollen permanent sein.',
+'ipb_expiry_temp'                 => 'Benutzernamens-Sperren mit der Verstecken-Option müssen permanent sein.',
 'ipb_hide_invalid'                => 'Dieses Konto kann nicht unterdrückt werden, da es zu viele Bearbeitungen aufweist.',
 'ipb_already_blocked'             => '„$1“ wurde bereits gesperrt.',
 'ipb-needreblock'                 => '== Sperre vorhanden ==
@@ -2449,6 +2489,7 @@ Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernam
 'ipb_cant_unblock'                => 'Fehler: Sperr-ID $1 nicht gefunden. Die Sperre wurde bereits aufgehoben.',
 'ipb_blocked_as_range'            => 'Fehler: Die IP-Adresse $1 wurde als Teil der Bereichssperre $2 indirekt gesperrt. Eine Entsperrung von $1 alleine ist nicht möglich.',
 'ip_range_invalid'                => 'Ungültiger IP-Adressbereich.',
+'ip_range_toolarge'               => 'Adressbereiche, die größer sind als /$1, sind nicht erlaubt.',
 'blockme'                         => 'Sperre mich',
 'proxyblocker'                    => 'Proxy blocker',
 'proxyblocker-disabled'           => 'Diese Funktion ist deaktiviert.',
@@ -2458,6 +2499,8 @@ Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernam
 'sorbs_create_account_reason'     => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet. Das Anlegen neuer Benutzer ist nicht möglich.',
 'cant-block-while-blocked'        => 'Du kannst keine anderen Benutzer sperren, während du selbst gesperrt bist.',
 'cant-see-hidden-user'            => 'Der Benutzer, den du versuchst zu sperren, wurde bereits gesperrt und verborgen. Da du das „hideuser“-Recht nicht hast, kannst du die Benutzersperre nicht sehen und nicht bearbeiten.',
+'ipbblocked'                      => 'Du kannst keine anderen Benutzer sperren oder entsperren, da du selbst gesperrt bist',
+'ipbnounblockself'                => 'Du hast nicht die Berechtigung, dich selbst zu entsperren',
 
 # Developer tools
 'lockdb'              => 'Datenbank sperren',
@@ -2498,6 +2541,7 @@ In diesen Fällen musst du, falls gewünscht, den Inhalt der Seite von Hand vers
 
 Bitte den '''neuen''' Titel unter '''Ziel''' eintragen, darunter die Umbenennung bitte '''begründen.'''",
 'movearticle'                  => 'Seite verschieben:',
+'moveuserpage-warning'         => "'''Warnung:''' Du bist dabei, eine Benutzerseite zu verschieben. Bitte bedenke, dass dadurch nur die Benutzerseite verschoben, '''nicht''' aber der Benutzer umbenannt wird.",
 'movenologin'                  => 'Du bist nicht angemeldet',
 'movenologintext'              => 'Du musst ein registrierter Benutzer und [[Special:UserLogin|angemeldet]] sein, um eine Seite zu verschieben.',
 'movenotallowed'               => 'Du hast keine Berechtigung, Seiten zu verschieben.',
@@ -2505,7 +2549,7 @@ Bitte den '''neuen''' Titel unter '''Ziel''' eintragen, darunter die Umbenennung
 'cant-move-user-page'          => 'Du hast keine Berechtigung, Benutzerhauptseiten zu verschieben.',
 'cant-move-to-user-page'       => 'Du hast nicht die Berechtigung, Seiten auf eine Benutzerseite zu verschieben (mit Ausnahme von Benutzerunterseiten).',
 'newtitle'                     => 'Ziel:',
-'move-watch'                   => 'Diese Seite beobachten',
+'move-watch'                   => 'Quell- und Zielseite beobachten',
 'movepagebtn'                  => 'Seite verschieben',
 'pagemovedsub'                 => 'Verschiebung erfolgreich',
 'movepage-moved'               => "<big>'''Die Seite „$1“ wurde nach „$2“ verschoben.'''</big>",
@@ -2549,8 +2593,8 @@ Die Seite „[[:$1]]“ existiert bereits. Möchtest du diese löschen, um die S
 'imageinvalidfilename'         => 'Der Ziel-Dateiname ist ungültig',
 'fix-double-redirects'         => 'Nach dem Verschieben doppelte Weiterleitungen auflösen',
 'move-leave-redirect'          => 'Weiterleitung erstellen',
-'protectedpagemovewarning'     => "'''Warnung:''' Diese Seite wurde gesperrt, so dass sie nur von Benutzern mit Administratorenrechten verschoben werden kann.",
-'semiprotectedpagemovewarning' => "'''Hinweis:''' Diese Seite wurde gesperrt, so dass sie nur von angemeldeten Benutzern verschoben werden kann.",
+'protectedpagemovewarning'     => "'''Warnung:''' Diese Seite wurde gesperrt, so dass sie nur von Benutzern mit Administratorenrechten verschoben werden kann. Zur Information folgt der aktuelle Logbucheintrag:",
+'semiprotectedpagemovewarning' => "'''Hinweis:''' Diese Seite wurde gesperrt, so dass sie nur von angemeldeten Benutzern verschoben werden kann. Zur Information folgt der aktuelle Logbucheintrag:",
 'move-over-sharedrepo'         => '==Datei existiert==
 [[:$1]] existiert in einem gemeinsam genutzten Repositorium. Das Verschieben einer Datei zu diesem Titel überschreibt die gemeinsam genutzte Datei.',
 'file-exists-sharedrepo'       => 'Der gewählte Dateiname wird bereits in einem gemeinsam genutzten Repositorium verwendet.
@@ -2817,7 +2861,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'markaspatrolleddiff'                 => 'Als kontrolliert markieren',
 'markaspatrolledtext'                 => 'Diese Seite als kontrolliert markieren',
 'markedaspatrolled'                   => 'Als kontrolliert markiert',
-'markedaspatrolledtext'               => 'Die ausgewählte Seitenänderung wurde als kontrolliert markiert.',
+'markedaspatrolledtext'               => 'Die ausgewählte Version von [[:$1]] wurde als kontrolliert markiert.',
 'rcpatroldisabled'                    => 'Kontrolle der letzten Änderungen gesperrt',
 'rcpatroldisabledtext'                => 'Die Kontrolle der letzten Änderungen ist zurzeit gesperrt.',
 'markedaspatrollederror'              => 'Markierung als „kontrolliert“ nicht möglich.',
@@ -3170,25 +3214,25 @@ Darauf folgende Seitenlinks in derselben Zeile definieren Ausnahmen, in deren Ko
 'limitall'         => 'alle',
 
 # E-mail address confirmation
-'confirmemail'             => 'E-Mail-Adresse bestätigen (Authentifizierung)',
-'confirmemail_noemail'     => 'Du hast keine gültige E-Mail-Adresse in deinen [[Special:Preferences|persönlichen Einstellungen]] eingetragen.',
-'confirmemail_text'        => '{{SITENAME}} erfordert, dass du deine E-Mail-Adresse bestätigst (authentifizieren), bevor du die erweiterten E-Mail-Funktionen benutzen kannst. Klicke bitte auf die unten stehende, mit „Bestätigungscode zuschicken“ beschriftete Schaltfläche, damit eine automatisch erstellte E-Mail an die angegebene Adresse geschickt wird. Diese E-Mail enthält eine Web-Adresse mit einem Bestätigungscode. Indem du diese Webseite in deinem Webbrowser öffnest, bestätigst du, dass die angegebene E-Mail-Adresse korrekt und gültig ist.',
-'confirmemail_pending'     => 'Es wurde dir bereits ein Bestätigungscode per E-Mail zugeschickt.
+'confirmemail'              => 'E-Mail-Adresse bestätigen (Authentifizierung)',
+'confirmemail_noemail'      => 'Du hast keine gültige E-Mail-Adresse in deinen [[Special:Preferences|persönlichen Einstellungen]] eingetragen.',
+'confirmemail_text'         => '{{SITENAME}} erfordert, dass du deine E-Mail-Adresse bestätigst (authentifizieren), bevor du die erweiterten E-Mail-Funktionen benutzen kannst. Klicke bitte auf die unten stehende, mit „Bestätigungscode zuschicken“ beschriftete Schaltfläche, damit eine automatisch erstellte E-Mail an die angegebene Adresse geschickt wird. Diese E-Mail enthält eine Web-Adresse mit einem Bestätigungscode. Indem du diese Webseite in deinem Webbrowser öffnest, bestätigst du, dass die angegebene E-Mail-Adresse korrekt und gültig ist.',
+'confirmemail_pending'      => 'Es wurde dir bereits ein Bestätigungscode per E-Mail zugeschickt.
 Wenn du dein Benutzerkonto erst vor kurzem erstellt hast, warte bitte noch ein paar Minuten auf die E-Mail, bevor du einen neuen Code anforderst.',
-'confirmemail_send'        => 'Bestätigungscode zuschicken',
-'confirmemail_sent'        => 'Bestätigungs-E-Mail wurde verschickt.',
-'confirmemail_oncreate'    => 'Ein Bestätigungs-Code wurde an deine E-Mail-Adresse gesandt. Dieser Code wird für die Anmeldung nicht benötigt, jedoch wird er zur Aktivierung der E-Mail-Funktionen innerhalb des Wikis gebraucht.',
-'confirmemail_sendfailed'  => '{{SITENAME}} konnte die Bestätigungs-E-Mail nicht an dich versenden.
+'confirmemail_send'         => 'Bestätigungscode zuschicken',
+'confirmemail_sent'         => 'Bestätigungs-E-Mail wurde verschickt.',
+'confirmemail_oncreate'     => 'Ein Bestätigungs-Code wurde an deine E-Mail-Adresse gesandt. Dieser Code wird für die Anmeldung nicht benötigt, jedoch wird er zur Aktivierung der E-Mail-Funktionen innerhalb des Wikis gebraucht.',
+'confirmemail_sendfailed'   => '{{SITENAME}} konnte die Bestätigungs-E-Mail nicht an dich versenden.
 Bitte prüfe die E-Mail-Adresse auf ungültige Zeichen.
 
 Rückmeldung des Mailservers: $1',
-'confirmemail_invalid'     => 'Ungültiger Bestätigungscode. Möglicherweise ist der Bestätigungszeitraum verstrichen. Versuche bitte, die Bestätigung zu wiederholen.',
-'confirmemail_needlogin'   => 'Du musst dich $1, um deine E-Mail-Adresse zu bestätigen.',
-'confirmemail_success'     => 'Deine E-Mail-Adresse wurde erfolgreich bestätigt. Du kannst dich jetzt [[Special:UserLogin|anmelden]].',
-'confirmemail_loggedin'    => 'Deine E-Mail-Adresse wurde erfolgreich bestätigt.',
-'confirmemail_error'       => 'Es gab einen Fehler bei der Bestätigung deiner E-Mail-Adresse.',
-'confirmemail_subject'     => '[{{SITENAME}}] - Bestätigung der E-Mail-Adresse',
-'confirmemail_body'        => 'Hallo,
+'confirmemail_invalid'      => 'Ungültiger Bestätigungscode. Möglicherweise ist der Bestätigungszeitraum verstrichen. Versuche bitte, die Bestätigung zu wiederholen.',
+'confirmemail_needlogin'    => 'Du musst dich $1, um deine E-Mail-Adresse zu bestätigen.',
+'confirmemail_success'      => 'Deine E-Mail-Adresse wurde erfolgreich bestätigt. Du kannst dich jetzt [[Special:UserLogin|anmelden]].',
+'confirmemail_loggedin'     => 'Deine E-Mail-Adresse wurde erfolgreich bestätigt.',
+'confirmemail_error'        => 'Es gab einen Fehler bei der Bestätigung deiner E-Mail-Adresse.',
+'confirmemail_subject'      => '[{{SITENAME}}] - Bestätigung der E-Mail-Adresse',
+'confirmemail_body'         => 'Hallo,
 
 jemand mit der IP-Adresse $1, wahrscheinlich du selbst, hat das Benutzerkonto „$2“ in {{SITENAME}} registriert.
 
@@ -3204,8 +3248,22 @@ Wenn du das genannte Benutzerkonto *nicht* registriert hast, folge diesem Link, 
 $5
 
 Dieser Bestätigungscode ist gültig bis $6, $7 Uhr.',
-'confirmemail_invalidated' => 'E-Mail-Adressbestätigung abbrechen',
-'invalidateemail'          => 'E-Mail-Adressbestätigung abbrechen',
+'confirmemail_body_changed' => 'Jemand mit der IP-Adresse $1, wahrscheinlich du selbst,
+hat die E-Mail-Adresse des Benutzerkontos „$2“ zu dieser Adresse auf {{SITENAME}} geändert.
+
+Um zu bestätigen, dass dieses Benutzerkonto wirklich dir gehört
+und um die E-Mail-Features auf {{SITENAME}} zu reaktivieren, öffne diesen Link in deinem Browser:
+
+$3
+
+Falls das Konto *nicht* dir gehört, folge diesem Link,
+um die E-Mail-Adress-Bestätigung abzubrechen:
+
+$5
+
+Dieser Bestätigungscode ist gültig bis $4.',
+'confirmemail_invalidated'  => 'E-Mail-Adressbestätigung abbrechen',
+'invalidateemail'           => 'E-Mail-Adressbestätigung abbrechen',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki-Einbindung ist deaktiviert]',

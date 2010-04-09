@@ -309,6 +309,8 @@ $wgUrlProtocols = array(
 	'mailto:',
 	'news:',
 	'svn://',
+	'git://',
+	'mms://',
 );
 
 /** internal name of virus scanner. This servers as a key to the $wgAntivirusSetup array.
@@ -467,20 +469,6 @@ $wgAllowCopyUploads = false;
  * normal uploads is currently to edit php.ini.
  */
 $wgMaxUploadSize = 1024*1024*100; # 100MB
-
-
-/**
- * Enable Firefogg support. Adds support for in-browser transcoding to Ogg
- * Theora, chunked uploads for large image files and client side hash checks.
- *
- */
-$wgEnableFirefogg = true;
-
-/**
- * Enable add-media-wizard. Adds support for add-media-wizard for the edit page
- */
-$wgEnableAddMediaWizard = true;
-
 
 /**
  * Point the upload navigation link to an external URL
@@ -653,11 +641,6 @@ $wgAllDBsAreLocalhost = false;
 
 /**@}*/
 
-
-/** Live high performance sites should disable this - some checks acquire giant mysql locks */
-$wgCheckDBSchema = true;
-
-
 /**
  * Shared database for multiple wikis. Commonly used for storing a user table
  * for single sign-on. The server for this database must be the same as for the
@@ -807,6 +790,7 @@ $wgUseMemCached     = false;
 $wgMemCachedDebug   = false; ///< Will be set to false in Setup.php, if the server isn't working
 $wgMemCachedServers = array( '127.0.0.1:11000' );
 $wgMemCachedPersistent = false;
+$wgMemCachedTimeout = 100000; //Data timeout in microseconds
 /**@}*/
 
 /**
@@ -884,17 +868,25 @@ $wgOutputEncoding = 'UTF-8';
 $wgEditEncoding   = '';
 
 /**
- * Set this to true to clean up archaic Unicode sequences in Arabic and
- * Malayalam text. Currently only works if $wgLanguageCode is set to Arabic
- * or Malayalam.
+ * Set this to true to replace Arabic presentation forms with their standard 
+ * forms in the U+0600-U+06FF block. This only works if $wgLanguageCode is
+ * set to "ar".
  *
- * Enabling this is generally a good idea for new wikis, since it fixes a few
- * technical problems to do with editing these languages. However, if it's
- * enabled on an existing wiki, pages which contain the problematic characters
- * in their page titles may become inaccessible. Running maintenance/cleanupTitles.php
- * after enabling it may fix this.
+ * Note that pages with titles containing presentation forms will become 
+ * inaccessible, run maintenance/cleanupTitles.php to fix this.
  */
-$wgFixArchaicUnicode = false;
+$wgFixArabicUnicode = true;
+
+/**
+ * Set this to true to replace ZWJ-based chillu sequences in Malayalam text
+ * with their Unicode 5.1 equivalents. This only works if $wgLanguageCode is 
+ * set to "ml". Note that some clients (even new clients as of 2010) do not 
+ * support these characters. 
+ *
+ * If you enable this on an existing wiki, run maintenance/cleanupTitles.php to
+ * fix any ZWJ sequences in existing page titles.
+ */
+$wgFixMalayalamUnicode = true;
 
 /**
  * Locale for LC_CTYPE, to work around http://bugs.php.net/bug.php?id=45132
@@ -956,12 +948,12 @@ $wgHtml5Version = null;
  * Enabled RDFa attributes for use in wikitext.
  * NOTE: Interaction with HTML5 is somewhat underspecified.
  */
-$wgAllowRdfaAttributes = true;
+$wgAllowRdfaAttributes = false;
 
 /**
  * Enabled HTML5 microdata attributes for use in wikitext, if $wgHtml5 is also true.
  */
-$wgAllowMicrodataAttributes = true;
+$wgAllowMicrodataAttributes = false;
 
 /**
  * Should we try to make our HTML output well-formed XML?  If set to false,
@@ -1131,7 +1123,7 @@ $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxSigChars		= 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 # Maximum number of bytes in username. You want to run the maintenance
-# script ./maintenancecheckUsernames.php once you have changed this value
+# script ./maintenance/checkUsernames.php once you have changed this value
 $wgMaxNameChars		= 255;
 
 $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
@@ -1227,6 +1219,16 @@ $wgDebugLogGroups       = array();
 $wgShowDebug            = false;
 
 /**
+ * Prefix debug messages with relative timestamp. Very-poor man's profiler.
+ */
+$wgDebugTimestamps = false;
+
+/**
+ * Print HTTP headers for every request in the debug information.
+ */
+$wgDebugPrintHttpHeaders = true;
+
+/**
  * Show the contents of $wgHooks in Special:Version
  */
 $wgSpecialVersionShowHooks =  false;
@@ -1275,7 +1277,7 @@ $wgDevelopmentWarnings = false;
 $wgUseCategoryBrowser   = false;
 
 /**
- * Keep parsed pages in a cache (objectcache table, turck, or memcached)
+ * Keep parsed pages in a cache (objectcache table or memcached)
  * to speed up output of the same page viewed by another user with the
  * same options.
  *
@@ -1338,6 +1340,15 @@ $wgBlockCIDRLimit = array(
 	'IPv4' => 16, # Blocks larger than a /16 (64k addresses) will not be allowed
 	'IPv6' => 64, # 2^64 = ~1.8x10^19 addresses
 );
+
+/**
+ * If true, blocked users will not be allowed to login. When using this with
+ * a public wiki, the effect of logging out blocked users may actually be
+ * avers: unless the user's address is also blocked (e.g. auto-block),
+ * logging the user out will again allow reading and editing, just as for
+ * anonymous visitors.
+ */
+$wgBlockDisablesLogin = false; #
 
 # Pages anonymous user may see as an array, e.g.:
 # array ( "Main Page", "Wikipedia:Help");
@@ -1451,6 +1462,7 @@ $wgGroupPermissions['sysop']['browsearchive']    = true;
 $wgGroupPermissions['sysop']['noratelimit']      = true;
 $wgGroupPermissions['sysop']['versiondetail']    = true;
 $wgGroupPermissions['sysop']['movefile']         = true;
+$wgGroupPermissions['sysop']['unblockself']      = true;
 #$wgGroupPermissions['sysop']['mergehistory']     = true;
 
 // Permission to change users' group assignments
@@ -1672,7 +1684,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '260';
+$wgStyleVersion = '269';
 
 
 # Server-side caching:
@@ -1819,11 +1831,6 @@ $wgSquidServers = array();
  * list of trusted proxies, etc.
  */
 $wgSquidServersNoPurge = array();
-
-/**
- * Default character limit for squid purge responses
- */
-$wgSquidResponseLimit = 250;
 
 /** Maximum number of titles to purge in any one client operation */
 $wgMaxSquidPurgeTitles = 400;
@@ -1997,8 +2004,6 @@ $wgUDPProfilerPort = '3811';
 $wgDebugProfiling = false;
 /** Output debug message on every wfProfileIn/wfProfileOut */
 $wgDebugFunctionEntry = 0;
-/** Lots of debugging output from SquidUpdate.php */
-$wgDebugSquid = false;
 
 /*
  * Destination for wfIncrStats() data...
@@ -2031,15 +2036,16 @@ $wgSearchHighlightBoundaries = version_compare("5.1", PHP_VERSION, "<")? '[\p{Z}
 	: '[ ,.;:!?~!@#$%\^&*\(\)+=\-\\|\[\]"\'<>\n\r\/{}]'; // PHP 5.0 workaround
 
 /**
- * Set to true to have the default MySQL search engine count total
+ * Set to true to have the search engine count total
  * search matches to present in the Special:Search UI.
+ * Not supported by every search engine shipped with MW.
  *
  * This could however be slow on larger wikis, and is pretty flaky
  * with the current title vs content split. Recommend avoiding until
  * that's been worked out cleanly; but this may aid in testing the
  * search UI and API to confirm that the result count works.
  */
-$wgSearchMySQLTotalHits = false;
+$wgCountTotalSearchHits = false;
 
 /**
  * Template for OpenSearch suggestions, defaults to API action=opensearch
@@ -2065,6 +2071,11 @@ $wgEnableMWSuggest = false;
  * want reduce load caused by cached scripts pulling suggestions.
  */
 $wgEnableOpenSearchSuggest = true;
+
+/**
+ * Expiry time for search suggestion responses
+ */
+$wgSearchSuggestCacheExpiry = 1200;
 
 /**
  *  Template for internal MediaWiki suggestion engine, defaults to API action=opensearch
@@ -2473,16 +2484,6 @@ $wgRC2UDPOmitBots = false;
  */
 $wgEnableNewpagesUserFilter = true;
 
-/**
- * Whether to use metadata edition
- * This will put categories, language links and allowed templates in a separate text box
- * while editing pages
- * EXPERIMENTAL
- */
-$wgUseMetadataEdit = false;
-/** Full name (including namespace) of the page containing templates names that will be allowed as metadata */
-$wgMetadataWhitelist = '';
-
 #
 # Copyright and credits settings
 #
@@ -2713,72 +2714,72 @@ $wgHandheldForIPhone = false;
  *
  */
 $wgDefaultUserOptions = array(
-	'quickbar'                => 1,
-	'underline'               => 2,
+	'ccmeonemails'            => 0,
 	'cols'                    => 80,
-	'rows'                    => 25,
-	'searchlimit'             => 20,
-	'contextlines'            => 5,
 	'contextchars'            => 50,
+	'contextlines'            => 5,
+	'date'                    => 'default',
+	'diffonly'                => 0,
+	'disablemail'             => 0,
 	'disablesuggest'          => 0,
-	'skin'                    => false,
-	'math'                    => 1,
-	'usenewrc'                => 0,
-	'rcdays'                  => 7,
-	'rclimit'                 => 50,
-	'wllimit'                 => 250,
-	'hideminor'               => 0,
-	'hidepatrolled'           => 0,
-	'newpageshidepatrolled'   => 0,
-	'highlightbroken'         => 1,
-	'stubthreshold'           => 0,
-	'previewontop'            => 1,
-	'previewonfirst'          => 0,
+	'editfont'                => 'default',
+	'editondblclick'          => 0,
 	'editsection'             => 1,
 	'editsectiononrightclick' => 0,
-	'editondblclick'          => 0,
 	'editwidth'               => 0,
-	'showtoc'                 => 1,
-	'showtoolbar'             => 1,
-	'minordefault'            => 0,
-	'date'                    => 'default',
-	'imagesize'               => 2,
-	'thumbsize'               => 2,
-	'rememberpassword'        => 0,
-	'nocache'                 => 0,
-	'diffonly'                => 0,
-	'showhiddencats'          => 0,
-	'norollbackdiff'          => 0,
-	'enotifwatchlistpages'    => 0,
-	'enotifusertalkpages'     => 1,
 	'enotifminoredits'        => 0,
 	'enotifrevealaddr'        => 0,
-	'shownumberswatching'     => 1,
-	'fancysig'                => 0,
-	'externaleditor'          => 0,
-	'externaldiff'            => 0,
-	'forceeditsummary'        => 0,
-	'showjumplinks'           => 1,
-	'justify'                 => 0,
-	'numberheadings'          => 0,
-	'uselivepreview'          => 0,
-	'watchlistdays'           => 3.0,
+	'enotifusertalkpages'     => 1,
+	'enotifwatchlistpages'    => 0,
 	'extendwatchlist'         => 0,
-	'watchlisthideminor'      => 0,
-	'watchlisthidebots'       => 0,
-	'watchlisthideown'        => 0,
-	'watchlisthideanons'      => 0,
-	'watchlisthideliu'        => 0,
-	'watchlisthidepatrolled'  => 0,
+	'externaldiff'            => 0,
+	'externaleditor'          => 0,
+	'fancysig'                => 0,
+	'forceeditsummary'        => 0,
+	'gender'                  => 'unknown',
+	'hideminor'               => 0,
+	'hidepatrolled'           => 0,
+	'highlightbroken'         => 1,
+	'imagesize'               => 2,
+	'justify'                 => 0,
+	'math'                    => 1,
+	'minordefault'            => 0,
+	'newpageshidepatrolled'   => 0,
+	'nocache'                 => 0,
+	'noconvertlink'           => 0,
+	'norollbackdiff'          => 0,
+	'numberheadings'          => 0,
+	'previewonfirst'          => 0,
+	'previewontop'            => 1,
+	'quickbar'                => 1,
+	'rcdays'                  => 7,
+	'rclimit'                 => 50,
+	'rememberpassword'        => 0,
+	'rows'                    => 25,
+	'searchlimit'             => 20,
+	'showhiddencats'          => 0,
+	'showjumplinks'           => 1,
+	'shownumberswatching'     => 1,
+	'showtoc'                 => 1,
+	'showtoolbar'             => 1,
+	'skin'                    => false,
+	'stubthreshold'           => 0,
+	'thumbsize'               => 2,
+	'underline'               => 2,
+	'uselivepreview'          => 0,
+	'usenewrc'                => 0,
 	'watchcreations'          => 0,
 	'watchdefault'            => 0,
-	'watchmoves'              => 0,
 	'watchdeletion'           => 0,
-	'noconvertlink'           => 0,
-	'gender'                  => 'unknown',
-	'ccmeonemails'            => 0,
-	'disablemail'             => 0,
-	'editfont'                => 'default',
+	'watchlistdays'           => 3.0,
+	'watchlisthideanons'      => 0,
+	'watchlisthidebots'       => 0,
+	'watchlisthideliu'        => 0,
+	'watchlisthideminor'      => 0,
+	'watchlisthideown'        => 0,
+	'watchlisthidepatrolled'  => 0,
+	'watchmoves'              => 0,
+	'wllimit'                 => 250,
 );
 
 /**
@@ -2861,6 +2862,8 @@ $wgSpecialPages = array();
  * Array mapping class names to filenames, for autoloading.
  */
 $wgAutoloadClasses = array();
+
+
 /*
  * Array mapping JavaScript class to web path for use by the script loader.
  * This is populated in AutoLoader.php.
@@ -2941,6 +2944,8 @@ $wgMwEmbedDirectory = "js/mwEmbed/";
  */
 $wgDebugJavaScript = false;
 
+
+
 /**
  * An array of extension types and inside that their names, versions, authors,
  * urls, descriptions and pointers to localized description msgs. Note that
@@ -2980,6 +2985,13 @@ $wgAllowUserJs = false;
  * increase security risk to users and server load.
  */
 $wgAllowUserCss = false;
+
+/**
+ * Allow user-preferences implemented in CSS?
+ * This allows users to customise the site appearance to a greater
+ * degree; disabling it will improve page load times.
+ */
+$wgAllowUserCssPrefs = true;
 
 /** Use the site's Javascript page? */
 $wgUseSiteJs = true;
@@ -3036,6 +3048,12 @@ $wgFeedDiffCutoff = 32768;
  * of either 'rss' or 'atom'.
  */
 $wgOverrideSiteFeed = array();
+
+/**
+ * Which feed types should we provide by default?  This can include 'rss',
+ * 'atom', neither, or both.
+ */
+$wgAdvertisedFeedTypes = array( 'atom' );
 
 /**
  * Additional namespaces. If the namespaces defined in Language.php and
@@ -3108,6 +3126,18 @@ $wgThumbLimits = array(
  * by hardcoded px in wiki sourcecode.
  */
 $wgThumbUpright = 0.75;
+
+/**
+ * Default parameters for the <gallery> tag
+ */
+
+$wgGalleryOptions = array (
+	'imagesPerRow' => 4, // Default number of images per-row in the gallery
+	'imageWidth' => 120, // Width of the cells containing images in galleries (in "px")
+	'imageHeight' => 120, // Height of the cells containing images in galleries (in "px")
+	'captionLength' => 20, // Length of caption to truncate (in characters)
+	'showBytes' => true, // Show the filesize in bytes in categories
+);
 
 /**
  *  On  category pages, show thumbnail gallery for images belonging to that
@@ -3366,6 +3396,7 @@ $wgLogActions = array(
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
 	'suppress/reblock'  => 'reblock-logentry',
+	'patrol/patrol' 	=> 'patrol-log-line',
 );
 
 /**
@@ -3775,9 +3806,14 @@ $wgTrustedMediaFormats= array(
 $wgAllowSpecialInclusion = true;
 
 /**
- * Timeout for HTTP requests done via CURL
+ * Timeout for HTTP requests done internally
  */
 $wgHTTPTimeout = 25;
+
+/**
+ * Timeout for Asynchronous (background) HTTP requests
+ */
+$wgAsyncHTTPTimeout = 25;
 
 /**
  * Proxy to use for CURL requests.
@@ -3846,7 +3882,7 @@ $wgAjaxWatch = true;
 $wgAjaxUploadDestCheck = true;
 
 /**
- * Enable previewing licences via AJAX
+ * Enable previewing licences via AJAX. Also requires $wgEnableAPI to be true.
  */
 $wgAjaxLicensePreview = true;
 
@@ -4204,12 +4240,15 @@ $wgEdititis = false;
 $wgUniversalEditButton = true;
 
 /**
- * Allow id's that don't conform to HTML4 backward compatibility requirements.
- * This is purely experimental, has multiple known flaws, and will likely be
- * renamed and reconcepted based on HTML5 in the future, so should not be used
- * except for testing.
+ * Should we allow a broader set of characters in id attributes, per HTML5?  If
+ * not, use only HTML 4-compatible IDs.  This option is for testing -- when the
+ * functionality is ready, it will be on by default with no option.
+ *
+ * Currently this appears to work fine in Chrome 4 and 5, Firefox 3.5 and 3.6, IE6
+ * and 8, and Opera 10.50, but it fails in Opera 10.10: Unicode IDs don't seem
+ * to work as anchors.  So not quite ready for general use yet.
  */
-$wgEnforceHtmlIds = true;
+$wgExperimentalHtmlIds = false;
 
 /**
  * Search form behavior
@@ -4392,3 +4431,4 @@ $wgUploadMaintenance = false;
  * Use old names for change_tags indices.
  */
 $wgOldChangeTagsIndex = false;
+

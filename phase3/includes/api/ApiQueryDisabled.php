@@ -1,10 +1,10 @@
 <?php
 
-/*
+/**
  * Created on Sep 25, 2008
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
+ * Copyright © 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,14 +22,13 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once( "ApiBase.php" );
 }
 
-
 /**
- * API module that does nothing 
+ * API module that does nothing
  *
  * Use this to disable core modules with e.g.
  * $wgAPIPropModules['modulename'] = 'ApiQueryDisabled';
@@ -40,20 +39,20 @@ if (!defined('MEDIAWIKI')) {
  */
 class ApiQueryDisabled extends ApiQueryBase {
 
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	public function execute() {
-		$this->setWarning("The ``{$this->getModuleName()}'' module has been disabled.");
+		$this->setWarning( "The ``{$this->getModuleName()}'' module has been disabled." );
 	}
 
 	public function getAllowedParams() {
-		return array ();
+		return array();
 	}
 
 	public function getParamDescription() {
-		return array ();
+		return array();
 	}
 
 	public function getDescription() {
@@ -63,7 +62,7 @@ class ApiQueryDisabled extends ApiQueryBase {
 	}
 
 	protected function getExamples() {
-		return array ();
+		return array();
 	}
 
 	public function getVersion() {

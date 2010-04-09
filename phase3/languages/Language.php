@@ -37,9 +37,9 @@ class FakeConverter {
 	function FakeConverter($langobj) {$this->mLang = $langobj;}
 	function autoConvertToAllVariants($text) {return $text;}
 	function convert($t, $i) {return $t;}
-	function parserConvert($t, $p) {return $t;}
 	function getVariants() { return array( $this->mLang->getCode() ); }
-	function getPreferredVariant() {return $this->mLang->getCode(); }
+	function getPreferredVariant() { return $this->mLang->getCode(); }
+	function getConvRuleTitle() { return false; }
 	function findVariantLink(&$l, &$n, $ignoreOtherCond = false) {}
 	function getExtraHashOptions() {return '';}
 	function getParsedTitle() {return '';}
@@ -59,8 +59,12 @@ class Language {
 
 	var $mNamespaceIds, $namespaceNames, $namespaceAliases;
 	var $dateFormatStrings = array();
-	var $minSearchLength;
 	var $mExtendedSpecialPageAliases;
+
+	/**
+	 * ReplacementArray object caches
+	 */
+	var $transformData = array();
 
 	static public $dataCache;
 	static public $mLangObjCache = array();
@@ -165,8 +169,6 @@ class Language {
 		} else {
 			$lang = new $class;
 		}
-		//var_dump(debug_backtrace());
-		//die("return lang $code :: $class");
 		return $lang;
 	}
 
@@ -462,12 +464,9 @@ class Language {
 		$names = array();
 		$dir = opendir( "$IP/languages/messages" );
 		while( false !== ( $file = readdir( $dir ) ) ) {
-			$m = array();
-			if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $file, $m ) ) {
-				$code = str_replace( '_', '-', strtolower( $m[1] ) );
-				if ( isset( $allNames[$code] ) ) {
-					$names[$code] = $allNames[$code];
-				}
+			$code = self::getCodeFromFileName( $file, 'Messages' );
+			if ( $code && isset( $allNames[$code] ) ) {
+				$names[$code] = $allNames[$code];
 			}
 		}
 		closedir( $dir );
@@ -1199,8 +1198,9 @@ class Language {
 	 *       http://en.wikipedia.org/wiki/Minguo_calendar
 	 *       http://en.wikipedia.org/wiki/Japanese_era_name
 	 *
-	 * @param $ts String: 14-character timestamp, calender name
-	 * @return array converted year, month, day
+	 * @param $ts String: 14-character timestamp
+	 * @param $cName String: calender name
+	 * @return Array: converted year, month, day
 	 */
 	private static function tsToYear( $ts, $cName ) {
 		$gy = substr( $ts, 0, 4 );
@@ -1367,8 +1367,7 @@ class Language {
 			if( $usePrefs ) {
 				$datePreference = $wgUser->getDatePreference();
 			} else {
-				$options = User::getDefaultOptions();
-				$datePreference = (string)$options['date'];
+				$datePreference = (string)User::getDefaultOption( 'date' );
 			}
 		} else {
 			$datePreference = (string)$usePrefs;
@@ -1687,86 +1686,52 @@ class Language {
 	function hasWordBreaks() {
 		return true;
 	}
+	
+	/**
+	 * Some languages such as Chinese require word segmentation,
+	 * Specify such segmentation when overridden in derived class.
+	 * 
+	 * @param $string String
+	 * @return String
+	 */
+	function segmentByWord( $string ) {
+		return $string;
+	}
 
 	/**
-	 * Some languages have special punctuation to strip out
-	 * or characters which need to be converted for MySQL's
-	 * indexing to grok it correctly. Make such changes here.
+	 * Some languages have special punctuation need to be normalized.
+	 * Make such changes here.
 	 *
 	 * @param $string String
 	 * @return String
 	 */
-	function stripForSearch( $string ) {
-		global $wgDBtype;
-		if ( $wgDBtype != 'mysql' ) {
-			return $string;
-		}
-
-
-		wfProfileIn( __METHOD__ );
-
-		// MySQL fulltext index doesn't grok utf-8, so we
-		// need to fold cases and convert to hex
-		$out = preg_replace_callback(
-			"/([\\xc0-\\xff][\\x80-\\xbf]*)/",
-			array( $this, 'stripForSearchCallback' ),
-			$this->lc( $string ) );
-
-		// And to add insult to injury, the default indexing
-		// ignores short words... Pad them so we can pass them
-		// through without reconfiguring the server...
-		$minLength = $this->minSearchLength();
-		if( $minLength > 1 ) {
-			$n = $minLength-1;
-			$out = preg_replace(
-				"/\b(\w{1,$n})\b/",
-				"$1u800",
-				$out );
-		}
-
-		// Periods within things like hostnames and IP addresses
-		// are also important -- we want a search for "example.com"
-		// or "192.168.1.1" to work sanely.
-		//
-		// MySQL's search seems to ignore them, so you'd match on
-		// "example.wikipedia.com" and "192.168.83.1" as well.
-		$out = preg_replace(
-			"/(\w)\.(\w|\*)/u",
-			"$1u82e$2",
-			$out );
-
-		wfProfileOut( __METHOD__ );
-		return $out;
+	function normalizeForSearch( $string ) {
+		return self::convertDoubleWidth($string);
 	}
 
 	/**
-	 * Armor a case-folded UTF-8 string to get through MySQL's
-	 * fulltext search without being mucked up by funny charset
-	 * settings or anything else of the sort.
+	 * convert double-width roman characters to single-width.
+	 * range: ff00-ff5f ~= 0020-007f
 	 */
-	protected function stripForSearchCallback( $matches ) {
-		return 'u8' . bin2hex( $matches[1] );
+	protected static function convertDoubleWidth( $string ) {
+		static $full = null;
+		static $half = null;
+
+		if( $full === null ) {
+			$fullWidth = "０１２３４５６７８９ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ";
+			$halfWidth = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+			$full = str_split( $fullWidth, 3 );
+			$half = str_split( $halfWidth );
+		}
+
+		$string = str_replace( $full, $half, $string );
+		return $string;
 	}
 
-	/**
-	 * Check MySQL server's ft_min_word_len setting so we know
-	 * if we need to pad short words...
-	 */
-	protected function minSearchLength() {
-		if( is_null( $this->minSearchLength ) ) {
-			$sql = "show global variables like 'ft\\_min\\_word\\_len'";
-			$dbr = wfGetDB( DB_SLAVE );
-			$result = $dbr->query( $sql );
-			$row = $result->fetchObject();
-			$result->free();
-
-			if( $row && $row->Variable_name == 'ft_min_word_len' ) {
-				$this->minSearchLength = intval( $row->Value );
-			} else {
-				$this->minSearchLength = 0;
-			}
-		}
-		return $this->minSearchLength;
+	protected static function insertSpace( $string, $pattern ) {
+		$string = preg_replace( $pattern, " $1 ", $string );
+		$string = preg_replace( '/ +/', ' ', $string );
+		return $string;
 	}
 
 	function convertForSearchResult( $termsArray ) {
@@ -1865,6 +1830,36 @@ class Language {
 		} else {
 			return $this->iconv( $enc, 'UTF-8', $s );
 		}
+	}
+
+	/**
+	 * Convert a UTF-8 string to normal form C. In Malayalam and Arabic, this
+	 * also cleans up certain backwards-compatible sequences, converting them
+	 * to the modern Unicode equivalent.
+	 *
+	 * This is language-specific for performance reasons only.
+	 */
+	function normalize( $s ) {
+		return UtfNormal::cleanUp( $s );
+	}
+
+	/**
+	 * Transform a string using serialized data stored in the given file (which
+	 * must be in the serialized subdirectory of $IP). The file contains pairs
+	 * mapping source characters to destination characters.
+	 *
+	 * The data is cached in process memory. This will go faster if you have the
+	 * FastStringSearch extension.
+	 */
+	function transformUsingPairFile( $file, $string ) {
+		if ( !isset( $this->transformData[$file] ) ) {
+			$data = wfGetPrecompiledData( $file );
+			if ( $data === false ) {
+				throw new MWException( __METHOD__.": The transformation file $file is missing" );
+			}
+			$this->transformData[$file] = new ReplacementArray( $data );
+		}
+		return $this->transformData[$file]->replace( $string );
 	}
 
 	/**
@@ -2168,38 +2163,205 @@ class Language {
 	 */
 	function truncate( $string, $length, $ellipsis = '...' ) {
 		# Use the localized ellipsis character
-		if( $ellipsis == '...' ) {
+		if ( $ellipsis == '...' ) {
 			$ellipsis = wfMsgExt( 'ellipsis', array( 'escapenoentities', 'language' => $this ) );
 		}
-
-		if( $length == 0 ) {
+		# Check if there is no need to truncate
+		if ( $length == 0 ) {
 			return $ellipsis;
-		}
-		if ( strlen( $string ) <= abs( $length ) ) {
+		} elseif ( strlen( $string ) <= abs( $length ) ) {
 			return $string;
 		}
-		if( $length > 0 ) {
-			$string = substr( $string, 0, $length );
-			$char = ord( $string[strlen( $string ) - 1] );
-			$m = array();
-			if ($char >= 0xc0) {
-				# We got the first byte only of a multibyte char; remove it.
-				$string = substr( $string, 0, -1 );
-			} elseif( $char >= 0x80 &&
-			          preg_match( '/^(.*)(?:[\xe0-\xef][\x80-\xbf]|' .
-			                      '[\xf0-\xf7][\x80-\xbf]{1,2})$/', $string, $m ) ) {
-				# We chopped in the middle of a character; remove it
-				$string = $m[1];
-			}
-			return $string . $ellipsis;
+		$stringOriginal = $string;
+		if ( $length > 0 ) {
+			$string = substr( $string, 0, $length ); // xyz...
+			$string = $this->removeBadCharLast( $string );
+			$string = $string . $ellipsis;
 		} else {
-			$string = substr( $string, $length );
-			$char = ord( $string[0] );
-			if( $char >= 0x80 && $char < 0xc0 ) {
-				# We chopped in the middle of a character; remove the whole thing
-				$string = preg_replace( '/^[\x80-\xbf]+/', '', $string );
+			$string = substr( $string, $length ); // ...xyz
+			$string = $this->removeBadCharFirst( $string );
+			$string = $ellipsis . $string;
+		}
+		# Do not truncate if the ellipsis makes the string longer/equal (bug 22181)
+		if ( strlen( $string ) < strlen( $stringOriginal ) ) {
+			return $string;
+		} else {
+			return $stringOriginal;
+		}
+	}
+
+	/**
+	 * Remove bytes that represent an incomplete Unicode character
+	 * at the end of string (e.g. bytes of the char are missing)
+	 *
+	 * @param $string String
+	 * @return string
+	 */
+	protected function removeBadCharLast( $string ) {
+		$char = ord( $string[strlen( $string ) - 1] );
+		$m = array();
+		if ( $char >= 0xc0 ) {
+			# We got the first byte only of a multibyte char; remove it.
+			$string = substr( $string, 0, -1 );
+		} elseif ( $char >= 0x80 &&
+		      preg_match( '/^(.*)(?:[\xe0-\xef][\x80-\xbf]|' .
+		                  '[\xf0-\xf7][\x80-\xbf]{1,2})$/', $string, $m ) )
+		{
+			# We chopped in the middle of a character; remove it
+			$string = $m[1];
+		}
+		return $string;
+	}
+
+	/**
+	 * Remove bytes that represent an incomplete Unicode character
+	 * at the start of string (e.g. bytes of the char are missing)
+	 *
+	 * @param $string String
+	 * @return string
+	 */
+	protected function removeBadCharFirst( $string ) {
+		$char = ord( $string[0] );
+		if ( $char >= 0x80 && $char < 0xc0 ) {
+			# We chopped in the middle of a character; remove the whole thing
+			$string = preg_replace( '/^[\x80-\xbf]+/', '', $string );
+		}
+		return $string;
+	}
+
+	/*
+	 * Truncate a string of valid HTML to a specified length in bytes,
+	 * appending an optional string (e.g. for ellipses), and return valid HTML
+	 *
+	 * This is only intended for styled/linked text, such as HTML with
+	 * tags like <span> and <a>, were the tags are self-contained (valid HTML)
+	 *
+	 * Note: tries to fix broken HTML with MWTidy
+	 *
+	 * @param string $text String to truncate
+	 * @param int $length (zero/positive) Maximum length (excluding ellipses)
+	 * @param string $ellipsis String to append to the truncated text
+	 * @returns string
+	 */
+	function truncateHtml( $text, $length, $ellipsis = '...' ) {
+		# Use the localized ellipsis character
+		if ( $ellipsis == '...' ) {
+			$ellipsis = wfMsgExt( 'ellipsis', array( 'escapenoentities', 'language' => $this ) );
+		}
+		# Check if there is no need to truncate
+		if ( $length <= 0 ) {
+			return $ellipsis; // no text shown, nothing to format
+		} elseif ( strlen($text) <= $length ) {
+			return $text; // string short enough even *with* HTML
+		}
+		$text = MWTidy::tidy( $text ); // fix tags
+		$displayLen = 0; // innerHTML legth so far
+		$testingEllipsis = false; // checking if ellipses will make string longer/equal?
+		$tagType = 0; // 0-open, 1-close
+		$bracketState = 0; // 1-tag start, 2-tag name, 0-neither
+		$entityState = 0; // 0-not entity, 1-entity
+		$tag = $ret = $ch = '';
+		$openTags = array();
+		$textLen = strlen($text);
+		for( $pos = 0; $pos < $textLen; ++$pos ) {
+			$ch = $text[$pos];
+			$lastCh = $pos ? $text[$pos-1] : '';
+			$ret .= $ch; // add to result string
+			if ( $ch == '<' ) {
+				$this->truncate_endBracket( $tag, $tagType, $lastCh, $openTags ); // for bad HTML
+				$entityState = 0; // for bad HTML
+				$bracketState = 1; // tag started (checking for backslash)
+			} elseif ( $ch == '>' ) {
+				$this->truncate_endBracket( $tag, $tagType, $lastCh, $openTags );
+				$entityState = 0; // for bad HTML
+				$bracketState = 0; // out of brackets
+			} elseif ( $bracketState == 1 ) {
+				if ( $ch == '/' ) {
+					$tagType = 1; // close tag (e.g. "</span>")
+				} else {
+					$tagType = 0; // open tag (e.g. "<span>")
+					$tag .= $ch;
+				}
+				$bracketState = 2; // building tag name
+			} elseif ( $bracketState == 2 ) {
+				if ( $ch != ' ' ) {
+					$tag .= $ch;
+				} else {
+					// Name found (e.g. "<a href=..."), add on tag attributes...
+					$pos += $this->truncate_skip( $ret, $text, "<>", $pos + 1 );
+				}
+			} elseif ( $bracketState == 0 ) {
+				if ( $entityState ) {
+					if ( $ch == ';' ) {
+						$entityState = 0;
+						$displayLen++; // entity is one displayed char
+					}
+				} else {
+					if ( $ch == '&' ) {
+						$entityState = 1; // entity found, (e.g. "&nbsp;")
+					} else {
+						$displayLen++; // this char is displayed
+						// Add on the other display text after this...
+						$skipped = $this->truncate_skip(
+							$ret, $text, "<>&", $pos + 1, $length - $displayLen );
+						$displayLen += $skipped;
+						$pos += $skipped;
+					}
+				}
 			}
-			return $ellipsis . $string;
+			# Consider truncation once the display length has reached the maximim.
+			# Double-check that we're not in the middle of a bracket/entity...
+			if ( $displayLen >= $length && $bracketState == 0 && $entityState == 0 ) {
+				if ( !$testingEllipsis ) {
+					$testingEllipsis = true;
+					# Save where we are; we will truncate here unless
+					# the ellipsis actually makes the string longer.
+					$pOpenTags = $openTags; // save state
+					$pRet = $ret; // save state
+				} elseif ( $displayLen > ($length + strlen($ellipsis)) ) {
+					# Ellipsis won't make string longer/equal, the truncation point was OK.
+					$openTags = $pOpenTags; // reload state
+					$ret = $this->removeBadCharLast( $pRet ); // reload state, multi-byte char fix
+					$ret .= $ellipsis; // add ellipsis
+					break;
+				}
+			}
+		}
+		if ( $displayLen == 0 ) {
+			return ''; // no text shown, nothing to format
+		}
+		$this->truncate_endBracket( $tag, $text[$textLen-1], $tagType, $openTags ); // for bad HTML
+		while ( count( $openTags ) > 0 ) {
+			$ret .= '</' . array_pop( $openTags ) . '>'; // close open tags
+		}
+		return $ret;
+	}
+
+	// truncateHtml() helper function
+	// like strcspn() but adds the skipped chars to $ret
+	private function truncate_skip( &$ret, $text, $search, $start, $len = -1 ) {
+		$skipCount = 0;
+		if( $start < strlen($text) ) {
+			$skipCount = strcspn( $text, $search, $start, $len );
+			$ret .= substr( $text, $start, $skipCount );
+		}
+		return $skipCount;
+	}
+
+	// truncateHtml() helper function
+	// (a) push or pop $tag from $openTags as needed
+	// (b) clear $tag value
+	private function truncate_endBracket( &$tag, $tagType, $lastCh, &$openTags ) {
+		$tag = ltrim( $tag );
+		if( $tag != '' ) {
+			if( $tagType == 0 && $lastCh != '/' ) {
+				$openTags[] = $tag; // tag opened (didn't close itself)
+			} else if( $tagType == 1 ) {
+				if( $openTags && $tag == $openTags[count($openTags)-1] ) {
+					array_pop( $openTags ); // tag closed
+				}
+			}
+			$tag = '';
 		}
 	}
 
@@ -2329,11 +2491,6 @@ class Language {
 		return $this->mConverter->convert($text, $isTitle);
 	}
 
-	# Convert text from within Parser
-	function parserConvert( $text, &$parser ) {
-		return $this->mConverter->parserConvert( $text, $parser );
-	}
-
 	# Check if this is a language with variants
 	function hasVariants(){
 		return sizeof($this->getVariants())>1;
@@ -2371,8 +2528,8 @@ class Language {
 	}
 
 
-	function getPreferredVariant( $fromUser = true ) {
-		return $this->mConverter->getPreferredVariant( $fromUser );
+	function getPreferredVariant( $fromUser = true, $fromHeader = false ) {
+		return $this->mConverter->getPreferredVariant( $fromUser, $fromHeader );
 	}
 
 	/**
@@ -2383,7 +2540,7 @@ class Language {
 	 *
 	 * @param $link String: the name of the link
 	 * @param $nt Mixed: the title object of the link
-	 * @param boolean $ignoreOtherCond: to disable other conditions when
+	 * @param $ignoreOtherCond Boolean: to disable other conditions when
 	 *      we need to transclude a template or update a category's link
 	 * @return null the input parameters may be modified upon return
 	 */
@@ -2459,8 +2616,32 @@ class Language {
 		$this->mCode = $code;
 	}
 
+	/**
+	 * Get the name of a file for a certain language code
+	 * @param $prefix string Prepend this to the filename
+	 * @param $code string Language code
+	 * @param $suffix string Append this to the filename
+	 * @return string $prefix . $mangledCode . $suffix
+	 */
 	static function getFileName( $prefix = 'Language', $code, $suffix = '.php' ) {
 		return $prefix . str_replace( '-', '_', ucfirst( $code ) ) . $suffix;
+	}
+
+	/**
+	 * Get the language code from a file name. Inverse of getFileName()
+	 * @param $filename string $prefix . $languageCode . $suffix
+	 * @param $prefix string Prefix before the language code
+	 * @param $suffix string Suffix after the language code
+	 * @return Language code, or false if $prefix or $suffix isn't found
+	 */
+	static function getCodeFromFileName( $filename, $prefix = 'Language', $suffix = '.php' ) {
+		$m = null;
+		preg_match( '/' . preg_quote( $prefix, '/' ) . '([A-Z][a-z_]+)' .
+			preg_quote( $suffix, '/' ) . '/', $filename, $m );
+		if ( !count( $m ) ) {
+			return false;
+		}
+		return str_replace( '_', '-', strtolower( $m[1] ) );
 	}
 
 	static function getMessagesFileName( $code ) {
@@ -2538,19 +2719,19 @@ class Language {
 
 	function formatTimePeriod( $seconds ) {
 		if ( $seconds < 10 ) {
-			return $this->formatNum( sprintf( "%.1f", $seconds ) ) . wfMsg( 'seconds-abbrev' );
+			return $this->formatNum( sprintf( "%.1f", $seconds ) ) . ' ' . wfMsg( 'seconds-abbrev' );
 		} elseif ( $seconds < 60 ) {
-			return $this->formatNum( round( $seconds ) ) . wfMsg( 'seconds-abbrev' );
+			return $this->formatNum( round( $seconds ) ) . ' ' . wfMsg( 'seconds-abbrev' );
 		} elseif ( $seconds < 3600 ) {
-			return $this->formatNum( floor( $seconds / 60 ) ) . wfMsg( 'minutes-abbrev' ) .
-				$this->formatNum( round( fmod( $seconds, 60 ) ) ) . wfMsg( 'seconds-abbrev' );
+			return $this->formatNum( floor( $seconds / 60 ) ) . ' ' . wfMsg( 'minutes-abbrev' ) . ' ' .
+				$this->formatNum( round( fmod( $seconds, 60 ) ) ) . ' ' . wfMsg( 'seconds-abbrev' );
 		} else {
 			$hours = floor( $seconds / 3600 );
 			$minutes = floor( ( $seconds - $hours * 3600 ) / 60 );
 			$secondsPart = round( $seconds - $hours * 3600 - $minutes * 60 );
-			return $this->formatNum( $hours ) . wfMsg( 'hours-abbrev' ) .
-				$this->formatNum( $minutes ) . wfMsg( 'minutes-abbrev' ) .
-				$this->formatNum( $secondsPart ) . wfMsg( 'seconds-abbrev' );
+			return $this->formatNum( $hours ) . ' ' . wfMsg( 'hours-abbrev' ) . ' ' .
+				$this->formatNum( $minutes ) . ' ' . wfMsg( 'minutes-abbrev' ) . ' ' .
+				$this->formatNum( $secondsPart ) . ' ' . wfMsg( 'seconds-abbrev' );
 		}
 	}
 
@@ -2600,5 +2781,12 @@ class Language {
 		$size = round( $size, $round );
 		$text = $this->getMessageFromDB( $msg );
 		return str_replace( '$1', $this->formatNum( $size ), $text );
+	}
+
+	/**
+	 * Get the conversion rule title, if any.
+	 */
+	function getConvRuleTitle() {
+		return $this->mConverter->getConvRuleTitle();
 	}
 }

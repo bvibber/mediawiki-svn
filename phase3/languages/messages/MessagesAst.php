@@ -200,9 +200,6 @@ $messages = array(
 'faq'            => 'FAQ',
 'faqpage'        => 'Project:Entrugues más frecuentes',
 
-# Metadata in edit box
-'metadata_help' => 'Metadatos:',
-
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Vuelve a $1.',
 'tagline'           => 'De {{SITENAME}}',
@@ -406,7 +403,7 @@ $2',
 'virus-unknownscanner' => 'antivirus desconocíu:',
 
 # Login and logout pages
-'logouttext'                 => "'''Yá tas desconectáu.'''<br />
+'logouttext'                 => "'''Yá tas desconectáu.'''
 
 Pues siguir usando {{SITENAME}} de forma anónima, o pues [[Special:UserLogin|volver a entrar]] como'l mesmu o como otru usuariu.
 Ten en cuenta que dalgunes páxines van continuar saliendo como si tovía tuvieres coneutáu, hasta que llimpies la caché del navegador.",
@@ -423,6 +420,7 @@ Nun t'escaezas d'escoyer les tos [[Special:Preferences|preferencies de {{SITENAM
 'nav-login-createaccount'    => 'Entrar / Crear cuenta',
 'loginprompt'                => "Has tener les ''cookies'' activaes pa entrar en {{SITENAME}}.",
 'userlogin'                  => 'Entrar / Crear cuenta',
+'userloginnocreate'          => 'Entrar',
 'logout'                     => 'Salir',
 'userlogout'                 => 'Salir',
 'notloggedin'                => 'Non identificáu',
@@ -578,7 +576,7 @@ Por favor, amiesta toos estos detalles nes consultes que faigas.',
 'whitelistedittext'                => 'Tienes que $1 pa editar páxines.',
 'confirmedittext'                  => "Has confirmar la to direición de corréu electrónicu enantes d'editar páxines. Por favor, configúrala y valídala nes tos [[Special:Preferences|preferencies d'usuariu]].",
 'nosuchsectiontitle'               => 'Nun esiste tala seición',
-'nosuchsectiontext'                => 'Intentasti editar una seición que nun esiste.  Como nun hai seición $1, nun hai sitiu pa guardar la to edición.',
+'nosuchsectiontext'                => 'Intentasti editar una seición que nun esiste.',
 'loginreqtitle'                    => 'Identificación Requerida',
 'loginreqlink'                     => 'identificase',
 'loginreqpagetext'                 => 'Has $1 pa ver otres páxines.',
@@ -591,7 +589,7 @@ La clave pa esta cuenta nueva pue camudase na páxina ''[[Special:ChangePassword
 'anontalkpagetext'                 => "----''Esta ye la páxina de'alderique pa un usuariu anónimu qu'inda nun creó una cuenta o que nun la usa. Pola mor d'ello ha usase la direición numérica IP pa identificalu/la. Tala IP pue ser compartida por varios usuarios. Si yes un usuariu anónimu y notes qu'hai comentarios irrelevantes empobinaos pa ti, por favor [[Special:UserLogin/signup|crea una cuenta]] o [[Special:UserLogin/signup|rexístrate]] pa evitar futures confusiones con otros usuarios anónimos.''",
 'noarticletext'                    => 'Anguaño nun hai testu nesta páxina.
 Pues [[Special:Search/{{PAGENAME}}|buscar esti títulu de páxina]] n\'otres páxines,
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} buscar los rexistros rellacionaos],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} buscar los rexistros rellacionaos],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} editar ésta equí]</span>.',
 'userpage-userdoesnotexist'        => 'La cuenta d\'usuariu "$1" nun ta rexistrada. Por favor asegúrate de que quies crear/editar esta páxina.',
 'clearyourcache'                   => "'''Nota:''' Llueu de salvar, seique tengas que llimpiar la caché del navegador pa ver los cambeos.
@@ -759,12 +757,12 @@ y puen restauralu de nuevo al traviés d'esta mesma interfaz, a nun ser que s'es
 restricciones adicionales.",
 'revdelete-legend'            => 'Establecer restricciones de visibilidá',
 'revdelete-hide-text'         => 'Esconder testu de revisión',
+'revdelete-hide-image'        => 'Esconder el conteníu del archivu',
 'revdelete-hide-name'         => 'Esconder aición y oxetivu',
 'revdelete-hide-comment'      => "Esconder comentariu d'edición",
 'revdelete-hide-user'         => "Esconder el nome d'usuariu/IP del editor",
 'revdelete-hide-restricted'   => 'Aplicar estes restricciones a los alministradores y candar la so interfaz',
 'revdelete-suppress'          => 'Eliminar datos de los alministradores lo mesmo que los de los demás',
-'revdelete-hide-image'        => 'Esconder el conteníu del archivu',
 'revdelete-unsuppress'        => 'Eliminar restricciones de revisiones restauraes',
 'revdelete-log'               => 'Comentariu de rexistru:',
 'revdelete-submit'            => 'Aplicar a la revisión seleicionada',
@@ -925,7 +923,7 @@ Asegúrate de qu'esti cambéu caltenga la continuidá del históricu de la páxi
 'recentchangesdays-max'     => '(máximo $1 {{PLURAL:$1|día|díes}})',
 'recentchangescount'        => "Númberu d'ediciones amosaes nes páxines de cambeos recientes, historiales de páxines y rexistros, por defeutu:",
 'savedprefs'                => 'Les tos preferencies quedaron grabaes.',
-'timezonelegend'            => 'Zona horaria',
+'timezonelegend'            => 'Zona horaria:',
 'localtime'                 => 'Hora llocal:',
 'timezoneuseserverdefault'  => 'Usar el sirvidor preferíu',
 'timezoneuseoffset'         => 'Otru (especificar diferencia)',
@@ -1226,12 +1224,11 @@ Si tovía asina quies xubir l'archivu, por favor vuelvi atrás y usa otru nome. 
 'uploaddisabled'              => 'Deshabilitaes les xubíes',
 'uploaddisabledtext'          => "Les xubíes d'archivos tán desactivaes.",
 'uploadscripted'              => 'Esti archivu contién códigu HTML o scripts que puen ser interpretaos erróneamente por un navegador.',
-'uploadcorrupt'               => "L'archivu ta corruptu o tien una estensión incorreuta. Por favor comprueba l'archivu y vuelve a xubilu.",
 'uploadvirus'                 => "¡L'archivu tien un virus! Detalles: $1",
 'sourcefilename'              => "Nome d'orixe:",
 'destfilename'                => 'Nome de destín:',
 'upload-maxfilesize'          => "Máximu tamañu d'archivu: $1",
-'watchthisupload'             => 'Vixilar esta páxina',
+'watchthisupload'             => 'Vixilar esti ficheru',
 'filewasdeleted'              => 'Yá foi xubíu y depués esborráu un archivu con esti nome. Habríes comprobar el $1 enantes de volver a xubilu.',
 'upload-wasdeleted'           => "'''Avisu: Tas xubiendo un archivu que yá foi esborráu anteriormente.'''
 

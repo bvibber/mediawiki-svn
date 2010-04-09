@@ -20,12 +20,12 @@
 	 * @param string $wordform3 (not used)
 	 * @return string
 	 */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
 
 		// FIXME: CLDR defines 3 plural forms instead of 2.  Form for 0 is missing.
 		//        http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#lv
-		forms = mw.lang.preConvertPlural( forms, 2 );
+		forms = mw.Language.preConvertPlural( forms, 2 );
 
 		return ( ( count % 10 == 1 ) && ( count % 100 != 11 ) ) ? forms[0] : forms[1];
 	}

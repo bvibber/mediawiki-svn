@@ -13,6 +13,10 @@ html .thumbimage,
 }
 
 /* Framework */
+#page-base {
+	background-color: inherit !important;
+	background-image: none !important;
+}
 body {
 	background-color: #f9f9f9 !important;
 	background-image:url(images/page-base-updated.png);
@@ -20,7 +24,7 @@ body {
 
 /* Links */
 a {
-	color: #0066cc;
+	color: #0000cc;
 }
 a:visited {
 	color: #004d99;
@@ -63,6 +67,9 @@ h2 .editsection,
 }
 body #panel div.portal div.body {
 	background-image:url(images/new-portal-break-ltr.png);
+}
+body.rtl #panel div.portal div.body {
+	background-image:url(images/new-portal-break-rtl.png);
 }
 body div.vectorTabs li a, div.vectorTabs li a span{
 	color:#4d4d4d;

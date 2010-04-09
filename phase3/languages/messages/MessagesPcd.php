@@ -155,9 +155,6 @@ $messages = array(
 'vector-view-view'           => 'Lire',
 'vector-view-viewsource'     => "Vir l'source",
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Bérlure',
 'returnto'          => 'Értrouve $1.',
 'tagline'           => 'Cha vient éd {{SITENAME}}',
@@ -289,6 +286,7 @@ Si s'n'est poin ch'cas-lo, pététe éq ch'est un bogue din ch'businkillache. <b
 'filenotfound'         => 'Éj pux poin trouvoér ch\'fichié "$1".',
 'fileexistserror'      => 'Éj pux poin écrire su ch\'fichié "$1": ech fichié écsiste',
 'unexpected'           => 'Valeur poin prévue: "$1"="$2".',
+'badarticleerror'      => "Os n'povez poin foaire cha su l'pache-lo.",
 'badtitle'             => 'Méchant tite',
 'badtitletext'         => "Ch'tite del pache écmindée n'est poin valabe, est vide, ou bin ch'est un tite inter-langue ou inter-proujé aveuc des méchands loïens. Pététe qu'il y o un ou des caractére(s) éq i feut poin mette din chés tites.",
 'viewsource'           => "Vir l'source",
@@ -369,12 +367,16 @@ Vote adrèche IP, ale sro inrégistrée din l'historique éd chol pache.",
 'newarticletext'                   => "Os avez sui un loïen vers eune pache qui n’essiste poin coère ou qu' o té [{{fullurl:Special:Log|type=delete&page={{FULLPAGENAMEE}}}} défacée].
 Pou créer chol pache, intrez vote teske din l'boéte édsou (vir [[{{MediaWiki:Helppage}}|l'pache d’aïude]] ). <br />
 Si vos ètes ichi par bérlure, bukez su l'bouton '''értour''' du navigateu.",
-'noarticletext'                    => 'Achteure i n’y o nu teske su l\'pache-lo.<br /> Os povez [[Special:Search/{{PAGENAME}}|foaire eune érchérche du tite del pache]] din chés eutes paches, <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} érchércher din chés érliées opéracions ] <br /> ou [{{fullurl:{{urlencode:{{FULLPAGENAME}}}}|action=edit}} créer chol pache]</span>.',
+'noarticletext'                    => 'Achteure i n’y o nu teske su l\'pache-lo.
+Os povez [[Special:Search/{{PAGENAME}}|foaire eune érchérche du tite del pache]] din chés eutes paches,
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} érchércher din chés érliées opéracions]
+ou [{{fullurl:{{FULLPAGENAME}}|action=edit}} créer chol pache]</span>.',
 'previewnote'                      => "'''Afute! ch'teske-lo ch'est seulemint eune prévue.'''
 
 Vos cangemints, is sont poin coèr inrégistrés!",
 'editing'                          => 'Éditer $1',
 'editingsection'                   => '$1 éditée (sekchon)',
+'yourtext'                         => 'Vote teske',
 'copyrightwarning'                 => "Toutes chés contérbuchons su {{SITENAME}} ont érbéyées conme publiées dsou chés térmes del $2 (vir $1 pou pus d'détals). Si vos n'volez poin éq vos écrivures euchette canjés pi départis à volontè, mérci éd n'poin les soumétte ichi.<br />
 Os prométtez auchi éq vos avez écrit ch'teske vous-méme, ou éq vos l’avez ércopié d’eune source din ch'donmène public, ou d’eune libe érsource.<br /> '''N’IMPLOÉYEZ POIN D'TRAVAUX ÉDSOU DROÉ D’AUTEU SINS ACOR ÉSPRÉSSE !'''",
 'templatesused'                    => '{{PLURAL:$1|Modéle imploïé|Modéles imploïés}} pou chol pache:',
@@ -398,7 +400,7 @@ Os prométtez auchi éq vos avez écrit ch'teske vous-méme, ou éq vos l’avez
 'histlegend'             => "Diff séléccion: buke chés boétes d'chés canjemints à comparète pi détriquer intrer ou ch'bouton édsou.<br />
 Léginde : ({{MediaWiki:Cur}}) = différinches aveuc el vérchon à ch'momint-chi, ({{MediaWiki:Last}}) = différinches aveuc el vérchon édvant, <b>m</b> = tiot canjemint.",
 'history-fieldset-title' => "S'déplacher din l'historique",
-'histfirst'              => "L'pu neu",
+'histfirst'              => 'preumières paches',
 'histlast'               => 'Darin',
 
 # Revision deletion
@@ -448,6 +450,7 @@ Léginde : ({{MediaWiki:Cur}}) = différinches aveuc el vérchon à ch'momint-ch
 # Preferences page
 'preferences'               => 'Préférinches',
 'mypreferences'             => 'Mes préférinches',
+'timezoneregion-europe'     => 'Urope',
 'youremail'                 => 'Imèle:',
 'username'                  => "Nom d'uzeu:",
 'uid'                       => 'ID dech uzeu:',
@@ -461,9 +464,15 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'email'                     => 'Imèle',
 'prefs-help-email-required' => 'I feut eune iméle adérche',
 
+# User rights
+'userrights-groupsmember' => 'Mimbe éd:',
+
 # Groups
 'group-sysop'      => 'Aménistrateus',
 'group-bureaucrat' => 'Buroécrates',
+
+'group-sysop-member'      => 'Aménistrateu',
+'group-bureaucrat-member' => 'Buroécrate',
 
 'grouppage-sysop' => '{{ns:project}}:Aménistrateus',
 
@@ -471,6 +480,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'rightslog' => "Jornal d'chés droés dechl uzeu",
 
 # Associated actions - in the sentence "You do not have permission to X"
+'action-read' => "Vir l'pache-lo",
 'action-edit' => "édite l'pache-lo",
 
 # Recent changes
@@ -494,7 +504,7 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'newpageletter'                  => 'N',
 'boteditletter'                  => 'b',
 'rc-enhanced-expand'             => 'Montrer chés détals (i feut avoér JavaScript)',
-'rc-enhanced-hide'               => 'Mucher chés détails',
+'rc-enhanced-hide'               => 'Mucher chés détals',
 
 # Recent changes linked
 'recentchangeslinked'         => 'Darins canjemints érliés',
@@ -522,6 +532,9 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 'linkstoimage'              => "{{PLURAL:$1|L'pache d'apreu est liée|Chés $1 paches d'apreu sont liées}} à ch'fichié-lo :",
 'sharedupload'              => "Cht'fichié vient éd $1 pi i put ète imploïé par d'eutes proujés.",
 'uploadnewversion-linktext' => 'Quértcher eune novèle vérchion del pache-lo',
+
+# Random page
+'randompage' => "Pache à l'bérlure",
 
 # Statistics
 'statistics' => 'Éstatistikes',

@@ -19,7 +19,7 @@ function wfSpecialIpblocklist( $ip = '' ) {
 
 	$ipu = new IPUnblockForm( $ip, $id, $reason );
 
-	if( $action == 'unblock' ) {
+	if( $action == 'unblock' || $action == 'submit' && $wgRequest->wasPosted() ) {
 		# Check permissions
 		if( !$wgUser->isAllowed( 'block' ) ) {
 			$wgOut->permissionRequired( 'block' );
@@ -30,22 +30,34 @@ function wfSpecialIpblocklist( $ip = '' ) {
 			$wgOut->readOnlyPage();
 			return;
 		}
-		# Show unblock form
-		$ipu->showForm( '' );
-	} elseif( $action == 'submit' && $wgRequest->wasPosted()
-		&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-		# Check permissions
-		if( !$wgUser->isAllowed( 'block' ) ) {
-			$wgOut->permissionRequired( 'block' );
-			return;
+	
+		# bug 15810: blocked admins should have limited access here
+		if ( $wgUser->isBlocked() ) {
+			if ( $id ) {
+				# This doesn't pick up on autoblocks, but admins
+				# should have the ipblock-exempt permission anyway
+				$block = Block::newFromID( $id );
+				$user = User::newFromName( $block->mAddress );
+			} else {
+				$user = User::newFromName( $ip );
+			}
+			$status = IPBlockForm::checkUnblockSelf( $user );
+			if ( $status !== true ) {
+				throw new ErrorPageError( 'badaccess', $status );
+			}
 		}
-		# Check for database lock
-		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
+		
+		if( $action == 'unblock' ){
+			# Show unblock form
+			$ipu->showForm( '' );
+		} elseif( $action == 'submit' 
+			&& $wgRequest->wasPosted()
+			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) 
+		{
+			# Remove blocks and redirect user to success page
+			$ipu->doSubmit();
 		}
-		# Remove blocks and redirect user to success page
-		$ipu->doSubmit();
+		
 	} elseif( $action == 'success' ) {
 		# Inform the user of a successful unblock
 		# (No need to check permissions or locks here,
@@ -95,7 +107,7 @@ class IPUnblockForm {
 		$titleObj = SpecialPage::getTitleFor( "Ipblocklist" );
 		$action = $titleObj->getLocalURL( "action=submit" );
 
-		if ( "" != $err ) {
+		if ( $err != "" ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
 			$wgOut->addWikiText( Xml::tags( 'span', array( 'class' => 'error' ), $err ) . "\n" );
 		}
@@ -236,7 +248,7 @@ class IPUnblockForm {
 		global $wgOut, $wgUser;
 
 		$wgOut->setPagetitle( wfMsg( "ipblocklist" ) );
-		if ( "" != $msg ) {
+		if ( $msg != "" ) {
 			$wgOut->setSubtitle( $msg );
 		}
 
@@ -302,7 +314,7 @@ class IPUnblockForm {
 
 		// Check for other blocks, i.e. global/tor blocks
 		$otherBlockLink = array();
-		wfRunHooks( 'getOtherBlockLogLink', array( &$otherBlockLink, $this->ip ) );
+		wfRunHooks( 'OtherBlockLogLink', array( &$otherBlockLink, $this->ip ) );
 
 		// Show additional header for the local block only when other blocks exists.
 		// Not necessary in a standard installation without such extensions enabled

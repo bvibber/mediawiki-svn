@@ -168,7 +168,7 @@ class SpecialSearch {
 			# mirror Go/Search behaviour of original request ..
 			$didYouMeanParams = array( 'search' => $textMatches->getSuggestionQuery() );
 
-			if($this->fulltext != NULL)
+			if($this->fulltext != null)
 				$didYouMeanParams['fulltext'] = $this->fulltext;
 
 			$stParams = array_merge(
@@ -219,7 +219,7 @@ class SpecialSearch {
 		}
 
 		$filePrefix = $wgContLang->getFormattedNsText(NS_FILE).':';
-		if( '' === trim( $term ) || $filePrefix === trim( $term ) ) {
+		if( trim( $term ) === '' || $filePrefix === trim( $term ) ) {
 			$wgOut->addHTML( $this->searchFocus() );
 			$wgOut->addHTML( $this->formHeader($term, 0, 0));
 			if( $this->searchAdvanced ) {
@@ -319,16 +319,20 @@ class SpecialSearch {
 	protected function showCreateLink( $t ) {
 		global $wgOut;
 		
-		// show direct page/create link
+		// show direct page/create link if applicable
+		$messageName = null;
 		if( !is_null($t) ) {
-			if( !$t->isKnown() ) {
-				$wgOut->addWikiMsg( 'searchmenu-new', wfEscapeWikiText( $t->getPrefixedText() ) );
-			} else {
-				$wgOut->addWikiMsg( 'searchmenu-exists', wfEscapeWikiText( $t->getPrefixedText() ) );
+			if( $t->isKnown() ) {
+				$messageName = 'searchmenu-exists';
+			} elseif( $t->userCan( 'create' ) ) {
+				$messageName = 'searchmenu-new';
 			}
+		} 
+		if( $messageName ) {
+			$wgOut->addWikiMsg( $messageName, wfEscapeWikiText( $t->getPrefixedText() ) );
 		} else {
 			// preserve the paragraph for margins etc...
-			$wgOut->addHTML('<p></p>');
+			$wgOut->addHtml( '<p></p>' );
 		}
 	}
 
@@ -811,9 +815,10 @@ class SpecialSearch {
 	}
 
 	protected function searchFocus() {
+		$id = $this->searchAdvanced ? 'powerSearchText' : 'searchText';
 		return Html::inlineScript(
 			"hookEvent(\"load\", function() {" .
-				"document.getElementById('searchText').focus();" .
+				"document.getElementById('$id').focus();" .
 			"});" );
 	}
 	
@@ -943,7 +948,7 @@ class SpecialSearch {
 		$out .= Html::hidden( "redirs", (int)$this->searchRedirects ) . "\n";
 		// Term box
 		$out .= Html::input( 'search', $term, 'search', array(
-			'id' => 'searchText',
+			'id' => $this->searchAdvanced ? 'powerSearchText' : 'searchText',
 			'size' => '50',
 			'autofocus'
 		) ) . "\n";

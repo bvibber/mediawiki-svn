@@ -33,7 +33,7 @@ class LinkCache {
 	/**
 	 * General accessor to get/set whether SELECT FOR UPDATE should be used
 	 */
-	public function forUpdate( $update = NULL ) {
+	public function forUpdate( $update = null ) {
 		return wfSetVar( $this->mForUpdate, $update );
 	}
 
@@ -48,8 +48,8 @@ class LinkCache {
 	/**
 	 * Get a field of a title object from cache.
 	 * If this link is not good, it will return NULL.
-	 * @param Title $title
-	 * @param string $field ('length','redirect')
+	 * @param $title Title
+	 * @param $field String: ('length','redirect')
 	 * @return mixed
 	 */
 	public function getGoodLinkFieldObj( $title, $field ) {
@@ -57,7 +57,7 @@ class LinkCache {
 		if ( array_key_exists( $dbkey, $this->mGoodLinkFields ) ) {
 			return $this->mGoodLinkFields[$dbkey][$field];
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -67,12 +67,12 @@ class LinkCache {
 
 	/**
 	 * Add a link for the title to the link cache
-	 * @param int $id
-	 * @param Title $title
-	 * @param int $len
-	 * @param int $redir
+	 * @param $id Integer
+	 * @param $title Title
+	 * @param $len Integer
+	 * @param $redir Integer
 	 */
-	public function addGoodLinkObj( $id, $title, $len = -1, $redir = NULL ) {
+	public function addGoodLinkObj( $id, $title, $len = -1, $redir = null ) {
 		$dbkey = $title->getPrefixedDbKey();
 		$this->mGoodLinks[$dbkey] = intval( $id );
 		$this->mGoodLinkFields[$dbkey] = array(
@@ -114,7 +114,7 @@ class LinkCache {
 	 * @param $redir bool, is redirect?
 	 * @return integer
 	 */
-	public function addLink( $title, $len = -1, $redir = NULL ) {
+	public function addLink( $title, $len = -1, $redir = null ) {
 		$nt = Title::newFromDBkey( $title );
 		if( $nt ) {
 			return $this->addLinkObj( $nt, $len, $redir );
@@ -127,10 +127,10 @@ class LinkCache {
 	 * Add a title to the link cache, return the page_id or zero if non-existent
 	 * @param $nt Title to add.
 	 * @param $len int, page size
-	 * @param $redir bool, is redirect?
+	 * @param $redirect bool, is redirect?
 	 * @return integer
 	 */
-	public function addLinkObj( &$nt, $len = -1, $redirect = NULL ) {
+	public function addLinkObj( &$nt, $len = -1, $redirect = null ) {
 		global $wgAntiLockFlags, $wgProfiler;
 		wfProfileIn( __METHOD__ );
 

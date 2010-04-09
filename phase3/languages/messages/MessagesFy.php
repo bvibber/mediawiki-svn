@@ -324,9 +324,6 @@ $messages = array(
 'namespaces'                 => 'Nammeromten',
 'variants'                   => 'Farianten',
 
-# Metadata in edit box
-'metadata_help' => 'Metadata:',
-
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Werom nei "$1".',
 'tagline'           => 'Ut {{SITENAME}}',
@@ -490,7 +487,6 @@ Meitsje dêr melding fan by in [[Special:ListUsers/sysop|systeembehearder]] fan 
 'readonly_lag'         => 'De database is automatysk beskoattele wylst de ûndergeskikte databaseservers syngronisearje mei de haadserver.',
 'internalerror'        => 'Ynterne fout',
 'internalerror_info'   => 'Ynterne fout: $1',
-'fileappenderror'      => 'It tafoegjen fan "$1" oan "$2" is mislearre.',
 'filecopyerror'        => 'Koe triem "$1" net kopiearje as "$2".',
 'filerenameerror'      => 'Koe triem "$1" net werneame as "$2".',
 'filedeleteerror'      => 'Koe triem "$1" net wiskje.',
@@ -533,8 +529,7 @@ De oanfierde reden is ''$2''.",
 # Login and logout pages
 'logouttext'                 => "'''Jo binne no ôfmeld.'''
 
-Jo kinne de {{SITENAME}} fierders anonym brûke,
-of jo op 'e [[Special:UserLogin|nij oanmelde]] ûnder deselde of in oare namme.
+Jo kinne de {{SITENAME}} fierders anonym brûke, of jo op 'e [[Special:UserLogin|nij oanmelde]] ûnder deselde of in oare namme.
 Mûglik wurdt noch in tal siden werjûn as wiene Jo oanmeld, oant Jo de cache fan Jo browser leegje.",
 'welcomecreation'            => '<h2>Wolkom, $1!</h2><p>Jo ynstellings binne oanmakke.
 Ferjit net se oan jo foarkar oan te passen.',
@@ -693,7 +688,7 @@ Jo tsjintwurdich e-postadres is $3 en it útsletnûmer is #$5. Neam beide gegeve
 'whitelistedittext'                => 'Jo moatte $1 om siden te bewurkjen.',
 'confirmedittext'                  => "Jo moatte jo e-mailadres befêstichje foar't jo siden feroarje kinne. Fier in e-mailedres yn by jo [[Special:Preferences|ynstellings]] en befêstichje it.",
 'nosuchsectiontitle'               => 'Dizze subkop bestiet net',
-'nosuchsectiontext'                => "Jo besochten in subkop te bewurkjen dy't net bestiet. Om't subkop $1 net bestiet, kin jo bewurking ek net opslein wurde.",
+'nosuchsectiontext'                => "Jo besochten in subkop te bewurkjen dy't net bestiet.",
 'loginreqtitle'                    => 'Oanmelding frege',
 'loginreqlink'                     => 'Oanmelde',
 'loginreqpagetext'                 => 'Jo moatte jo $1 om oare siden besjen te kinnen.',
@@ -874,12 +869,12 @@ der kinne details wêze yn it [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPA
 Oare behearders fan {{SITENAME}} kinne de ferburgen ynhâld benaderje en it fuortheljen ûngedien meitsje mei help fan dit skerm, of der moatte oanfoljende beheinings jilde dy't ynsteld binne troch de systeembehearder.",
 'revdelete-legend'            => 'Sichtberensbeheinings ynstelle.',
 'revdelete-hide-text'         => 'De bewurke tekst ferskûlje',
+'revdelete-hide-image'        => 'Triem ynhâld ferskûlje',
 'revdelete-hide-name'         => 'Aksje en doel ferskûlje',
 'revdelete-hide-comment'      => 'De bewurkingsgearfetting ferskûlje',
 'revdelete-hide-user'         => 'Meidoggernamme/IP fan de meidogger ferskûlje',
 'revdelete-hide-restricted'   => 'Dizze beheinings tapasse op behearders en dizze ynterface ôfslute',
 'revdelete-suppress'          => 'Gegevens foar behearders likegoed as oaren ûnderdrukke',
-'revdelete-hide-image'        => 'Triem ynhâld ferskûlje',
 'revdelete-unsuppress'        => 'Beheinings op tebeksette feroarings fuorthelje',
 'revdelete-log'               => 'Opmerking yn logboek:',
 'revdelete-submit'            => 'Tapasse op selektearre bewurking',
@@ -1381,8 +1376,6 @@ Rieplachtsje it fuorthel-logboek foar't jo fierder geane.",
 'uploaddisabledtext'          => 'It oanbieden fan triemmen is útskeakele.',
 'php-uploaddisabledtext'      => 'PHP-triemuploads binne útskeakele. Kontrolearje a.j.w. de triem_uploads-ynstelling.',
 'uploadscripted'              => "Dizze triem befettet HTML- of scriptkoade dy't ferkeard troch jo browser werjûn wurde kin.",
-'uploadcorrupt'               => 'De triem is net ynoarder of hat de ferkearde útgong.  
-Kontrolearje de triem en bied dy wer oan.',
 'uploadvirus'                 => 'De triem befettet in firus! Details: $1',
 'sourcefilename'              => 'Triemnamme boarne:',
 'destfilename'                => 'Triemnamme om op te slaan:',

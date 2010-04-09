@@ -17,7 +17,7 @@ class FileDeleteForm {
 	/**
 	 * Constructor
 	 *
-	 * @param File $file File we're deleting
+	 * @param $file File object we're deleting
 	 */
 	public function __construct( $file ) {
 		$this->title = $file->getTitle();
@@ -90,8 +90,20 @@ class FileDeleteForm {
 		$this->showLogEntries();
 	}
 
+	/**
+	 * Really delete the file
+	 *
+	 * @param $title Title object
+	 * @param $file File object
+	 * @param $oldimage String: archive name
+	 * @param $reason String: reason of the deletion
+	 * @param $suppress Boolean: whether to mark all deleted versions as restricted
+	 */
 	public static function doDelete( &$title, &$file, &$oldimage, $reason, $suppress ) {
+		global $wgUser;
 		$article = null;
+		$status = Status::newFatal( 'error' );
+
 		if( $oldimage ) {
 			$status = $file->deleteOld( $oldimage, $reason, $suppress );
 			if( $status->ok ) {
@@ -103,23 +115,33 @@ class FileDeleteForm {
 					$log->addEntry( 'delete', $title, $logComment );
 			}
 		} else {
-			$status = $file->delete( $reason, $suppress );
-			if( $status->ok ) {
-				$id = $title->getArticleID( GAID_FOR_UPDATE );
-				// Need to delete the associated article
-				$article = new Article( $title );
-				$error = '';
-				if( wfRunHooks('ArticleDelete', array(&$article, &$wgUser, &$reason, &$error)) ) {
-					if( $article->doDeleteArticle( $reason, $suppress, $id ) ) {
+			$id = $title->getArticleID( GAID_FOR_UPDATE );
+			$article = new Article( $title );
+			$error = '';
+			$dbw = wfGetDB( DB_MASTER );
+			try {
+				if( wfRunHooks( 'ArticleDelete', array( &$article, &$wgUser, &$reason, &$error ) ) ) {
+					// delete the associated article first
+					if( $article->doDeleteArticle( $reason, $suppress, $id, false ) ) {
 						global $wgRequest;
 						if( $wgRequest->getCheck( 'wpWatch' ) && $wgUser->isLoggedIn() ) {
 							$article->doWatch();
 						} elseif( $title->userIsWatching() ) {
 							$article->doUnwatch();
 						}
-						wfRunHooks('ArticleDeleteComplete', array(&$article, &$wgUser, $reason, $id));
+						$status = $file->delete( $reason, $suppress );
+						if( $status->ok ) {
+							$dbw->commit();
+							wfRunHooks( 'ArticleDeleteComplete', array( &$article, &$wgUser, $reason, $id ) );
+						} else {
+							$dbw->rollback();
+						}
 					}
 				}
+			} catch ( MWException $e ) {
+				// rollback before returning to prevent UI from displaying incorrect "View or restore N deleted edits?"
+				$dbw->rollback();
+				throw $e;
 			}
 		}
 		if( $status->isGood() ) 
@@ -225,8 +247,8 @@ class FileDeleteForm {
 	 * showing an appropriate message depending upon whether
 	 * it's a current file or an old version
 	 *
-	 * @param string $message Message base
-	 * @return string
+	 * @param $message String: message base
+	 * @return String
 	 */
 	private function prepareMessage( $message ) {
 		global $wgLang;

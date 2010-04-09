@@ -1,11 +1,11 @@
 <?php
 
-/*
+/**
  * Created on Oct 13, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,9 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
+	require_once( "ApiBase.php" );
 }
 
 /**
@@ -37,15 +37,15 @@ if (!defined('MEDIAWIKI')) {
  */
 class ApiFeedWatchlist extends ApiBase {
 
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	/**
 	 * This module uses a custom feed wrapper printer.
 	 */
 	public function getCustomPrinter() {
-		return new ApiFormatFeedWrapper($this->getMain());
+		return new ApiFormatFeedWrapper( $this->getMain() );
 	}
 
 	/**
@@ -53,71 +53,73 @@ class ApiFeedWatchlist extends ApiBase {
 	 * Wrap the result as an RSS/Atom feed.
 	 */
 	public function execute() {
-
 		global $wgFeedClasses, $wgFeedLimit, $wgSitename, $wgContLanguageCode;
 
 		try {
 			$params = $this->extractRequestParams();
 
 			// limit to the number of hours going from now back
-			$endTime = wfTimestamp(TS_MW, time() - intval($params['hours'] * 60 * 60));
+			$endTime = wfTimestamp( TS_MW, time() - intval( $params['hours'] * 60 * 60 ) );
 
 			$dbr = wfGetDB( DB_SLAVE );
 			// Prepare parameters for nested request
-			$fauxReqArr = array (
+			$fauxReqArr = array(
 				'action' => 'query',
 				'meta' => 'siteinfo',
 				'siprop' => 'general',
 				'list' => 'watchlist',
 				'wlprop' => 'title|user|comment|timestamp',
-				'wldir' => 'older',		// reverse order - from newest to oldest
-				'wlend' => $dbr->timestamp($endTime),	// stop at this time
-				'wllimit' => (50 > $wgFeedLimit) ? $wgFeedLimit : 50
+				'wldir' => 'older', // reverse order - from newest to oldest
+				'wlend' => $dbr->timestamp( $endTime ),	// stop at this time
+				'wllimit' => ( 50 > $wgFeedLimit ) ? $wgFeedLimit : 50
 			);
 
-			if (!is_null($params['wlowner']))
+			if ( !is_null( $params['wlowner'] ) ) {
 				$fauxReqArr['wlowner'] = $params['wlowner'];
-			if (!is_null($params['wltoken']))
+			}
+			if ( !is_null( $params['wltoken'] ) ) {
 				$fauxReqArr['wltoken'] = $params['wltoken'];
+			}
 
 			// Check for 'allrev' parameter, and if found, show all revisions to each page on wl.
-			if ( ! is_null ( $params['allrev'] ) )  $fauxReqArr['wlallrev'] = '';
+			if ( !is_null( $params['allrev'] ) ) {
+				$fauxReqArr['wlallrev'] = '';
+			}
 
 			// Create the request
-			$fauxReq = new FauxRequest ( $fauxReqArr );
+			$fauxReq = new FauxRequest( $fauxReqArr );
 
 			// Execute
-			$module = new ApiMain($fauxReq);
+			$module = new ApiMain( $fauxReq );
 			$module->execute();
 
 			// Get data array
 			$data = $module->getResultData();
 
-			$feedItems = array ();
-			foreach ((array)$data['query']['watchlist'] as $info) {
-				$feedItems[] = $this->createFeedItem($info);
+			$feedItems = array();
+			foreach ( (array)$data['query']['watchlist'] as $info ) {
+				$feedItems[] = $this->createFeedItem( $info );
 			}
 
-			$feedTitle = $wgSitename . ' - ' . wfMsgForContent('watchlist') . ' [' . $wgContLanguageCode . ']';
-			$feedUrl = SpecialPage::getTitleFor( 'Watchlist' )->getFullUrl();
+			$feedTitle = $wgSitename . ' - ' . wfMsgForContent( 'watchlist' ) . ' [' . $wgContLanguageCode . ']';
+			$feedUrl = SpecialPage::getTitleFor( 'Watchlist' )->getFullURL();
 
-			$feed = new $wgFeedClasses[$params['feedformat']] ($feedTitle, htmlspecialchars(wfMsgForContent('watchlist')), $feedUrl);
+			$feed = new $wgFeedClasses[$params['feedformat']] ( $feedTitle, htmlspecialchars( wfMsgForContent( 'watchlist' ) ), $feedUrl );
 
-			ApiFormatFeedWrapper :: setResult($this->getResult(), $feed, $feedItems);
+			ApiFormatFeedWrapper::setResult( $this->getResult(), $feed, $feedItems );
 
-		} catch (Exception $e) {
+		} catch ( Exception $e ) {
 
 			// Error results should not be cached
-			$this->getMain()->setCacheMaxAge(0);
+			$this->getMain()->setCacheMaxAge( 0 );
 
-			$feedTitle = $wgSitename . ' - Error - ' . wfMsgForContent('watchlist') . ' [' . $wgContLanguageCode . ']';
-			$feedUrl = SpecialPage::getTitleFor( 'Watchlist' )->getFullUrl();
+			$feedTitle = $wgSitename . ' - Error - ' . wfMsgForContent( 'watchlist' ) . ' [' . $wgContLanguageCode . ']';
+			$feedUrl = SpecialPage::getTitleFor( 'Watchlist' )->getFullURL();
 
-			$feedFormat = isset($params['feedformat']) ? $params['feedformat'] : 'rss';
-			$feed = new $wgFeedClasses[$feedFormat] ($feedTitle, htmlspecialchars(wfMsgForContent('watchlist')), $feedUrl);
+			$feedFormat = isset( $params['feedformat'] ) ? $params['feedformat'] : 'rss';
+			$feed = new $wgFeedClasses[$feedFormat] ( $feedTitle, htmlspecialchars( wfMsgForContent( 'watchlist' ) ), $feedUrl );
 
-
-			if ($e instanceof UsageException) {
+			if ( $e instanceof UsageException ) {
 				$errorCode = $e->getCodeString();
 			} else {
 				// Something is seriously wrong
@@ -125,50 +127,50 @@ class ApiFeedWatchlist extends ApiBase {
 			}
 
 			$errorText = $e->getMessage();
-			$feedItems[] = new FeedItem("Error ($errorCode)", $errorText, "", "", "");
-			ApiFormatFeedWrapper :: setResult($this->getResult(), $feed, $feedItems);
+			$feedItems[] = new FeedItem( "Error ($errorCode)", $errorText, '', '', '' );
+			ApiFormatFeedWrapper::setResult( $this->getResult(), $feed, $feedItems );
 		}
 	}
 
-	private function createFeedItem($info) {
+	private function createFeedItem( $info ) {
 		$titleStr = $info['title'];
-		$title = Title :: newFromText($titleStr);
-		$titleUrl = $title->getFullUrl();
+		$title = Title::newFromText( $titleStr );
+		$titleUrl = $title->getFullURL();
 		$comment = isset( $info['comment'] ) ? $info['comment'] : null;
 		$timestamp = $info['timestamp'];
 		$user = $info['user'];
 
 		$completeText = "$comment ($user)";
 
-		return new FeedItem($titleStr, $completeText, $titleUrl, $timestamp, $user);
+		return new FeedItem( $titleStr, $completeText, $titleUrl, $timestamp, $user );
 	}
 
 	public function getAllowedParams() {
 		global $wgFeedClasses;
-		$feedFormatNames = array_keys($wgFeedClasses);
+		$feedFormatNames = array_keys( $wgFeedClasses );
 		return array (
-			'feedformat' => array (
-				ApiBase :: PARAM_DFLT => 'rss',
-				ApiBase :: PARAM_TYPE => $feedFormatNames
+			'feedformat' => array(
+				ApiBase::PARAM_DFLT => 'rss',
+				ApiBase::PARAM_TYPE => $feedFormatNames
 			),
-			'hours' => array (
-				ApiBase :: PARAM_DFLT => 24,
-				ApiBase :: PARAM_TYPE => 'integer',
-				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => 72,
+			'hours' => array(
+				ApiBase::PARAM_DFLT => 24,
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_MAX => 72,
 			),
 			'allrev' => null,
-			'wlowner' => array (
-				ApiBase :: PARAM_TYPE => 'user'
+			'wlowner' => array(
+				ApiBase::PARAM_TYPE => 'user'
 			),
-			'wltoken' => array (
-				ApiBase :: PARAM_TYPE => 'string'
+			'wltoken' => array(
+				ApiBase::PARAM_TYPE => 'string'
 			)
 		);
 	}
 
 	public function getParamDescription() {
-		return array (
+		return array(
 			'feedformat' => 'The format of the feed',
 			'hours'      => 'List pages modified within this many hours from now',
 			'allrev'     => 'Include multiple revisions of the same page within given timeframe.',
@@ -182,7 +184,7 @@ class ApiFeedWatchlist extends ApiBase {
 	}
 
 	protected function getExamples() {
-		return array (
+		return array(
 			'api.php?action=feedwatchlist'
 		);
 	}

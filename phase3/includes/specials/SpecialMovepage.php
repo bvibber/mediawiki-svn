@@ -131,6 +131,9 @@ class MovePageForm {
 				</tr>";
 			$err = '';
 		} else {
+			if ($this->oldTitle->getNamespace() == NS_USER && !$this->oldTitle->isSubpage() ) {
+				$wgOut->wrapWikiMsg( "<div class=\"error mw-moveuserpage-warning\">\n$1\n</div>", 'moveuserpage-warning' );
+			}
 			$wgOut->addWikiMsg( 'movepagetext' );
 			$movepagebtn = wfMsg( 'movepagebtn' );
 			$submitVar = 'wpMove';
@@ -218,7 +221,8 @@ class MovePageForm {
 					Xml::label( wfMsg( 'movereason' ), 'wpReason' ) .
 				"</td>
 				<td class='mw-input'>" .
-					Xml::tags( 'textarea', array( 'name' => 'wpReason', 'id' => 'wpReason', 'cols' => 60, 'rows' => 2 ), htmlspecialchars( $this->reason ) ) .
+					Html::element( 'textarea', array( 'name' => 'wpReason', 'id' => 'wpReason', 'cols' => 60, 'rows' => 2,
+					'maxlength' => 200 ), $this->reason ) .
 				"</td>
 			</tr>"
 		);
@@ -481,7 +485,7 @@ class MovePageForm {
 
 			$newPageName = preg_replace(
 				'#^'.preg_quote( $ot->getDBkey(), '#' ).'#',
-				str_replace( '\\', '\\\\', $nt->getDBkey() ), # bug 21234
+				StringUtils::escapeRegexReplacement( $nt->getDBkey() ), # bug 21234
 				$oldSubpage->getDBkey()
 			);
 			if( $oldSubpage->isTalkPage() ) {
@@ -543,10 +547,17 @@ class MovePageForm {
 			$wgUser->removeWatch( $ot );
 			$wgUser->removeWatch( $nt );
 		}
+		
+		# Re-clear the file redirect cache, which may have been polluted by 
+		# parsing in messages above. See CR r56745.
+		# FIXME: needs a more robust solution inside FileRepo.
+		if( $ot->getNamespace() == NS_FILE ) {
+			RepoGroup::singleton()->getLocalRepo()->invalidateImageRedirect( $ot );
+		}
 	}
 
 	function showLogFragment( $title, &$out ) {
-		$out->addHTML( Xml::element( 'h2', NULL, LogPage::logName( 'move' ) ) );
+		$out->addHTML( Xml::element( 'h2', null, LogPage::logName( 'move' ) ) );
 		LogEventsList::showLogExtract( $out, 'move', $title->getPrefixedText() );
 	}
 

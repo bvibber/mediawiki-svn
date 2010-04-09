@@ -286,9 +286,6 @@ $messages = array(
 'namespaces'                 => 'İsim fezaları',
 'variants'                   => 'Variantlar',
 
-# Metadata in edit box
-'metadata_help' => 'Meta malümatı:',
-
 'errorpagetitle'    => 'Hata',
 'returnto'          => '$1.',
 'tagline'           => '{{GRAMMAR:ablative|{{SITENAME}}}}',
@@ -453,7 +450,6 @@ Lütfen, URL yazıp bundan [[Special:ListUsers/sysop|idarecige]] haber beriñiz.
 'readonly_lag'         => 'Malümat bazasınıñ ekilemci serveri birlemci serverinen sinhronizirlengence malümat bazası deñiştirilmemesi içün avtomatik olaraq blok etildi.',
 'internalerror'        => 'İçki hata',
 'internalerror_info'   => 'İçki hata: $1',
-'fileappenderror'      => '"$1" faylı "$2" faylına qoşulıp olamay.',
 'filecopyerror'        => '"$1" faylı "$2" faylına kopiyalanıp olamay.',
 'filerenameerror'      => 'faylnıñ "$1" degen adı "$2" olaraq deñiştirilip olamay.',
 'filedeleteerror'      => '"$1" faylı yoq etilip olamay.',
@@ -503,7 +499,7 @@ Esabıñız açıldı.
 Bu saytnıñ [[Special:Preferences|sazlamalarını]] şahsıñızğa köre deñiştirmege unutmañız.',
 'yourname'                   => 'Qullanıcı adıñız',
 'yourpassword'               => 'Paroliñiz',
-'yourpasswordagain'          => 'Parolni yañıdan yaz',
+'yourpasswordagain'          => 'Parolni bir daa yazıñız:',
 'remembermypassword'         => 'Bu kompyuterde meni hatırla',
 'yourdomainname'             => 'Domen adıñız',
 'externaldberror'            => 'Oturımıñız açılğanda bir hata oldı. Bu tış esabıñızğa deñişiklik yapmağa aqqıñız olmayuvından meydanğa kelip ola.',
@@ -659,7 +655,7 @@ IP adresiñiz — $3, blok etüv identifikatorı — #$5. Lütfen, idarecilerge 
 'whitelistedittext'                => 'Saifeni deñiştirmek içün $1 kereksiñiz.',
 'confirmedittext'                  => 'Saifeni deñiştirmeden evel e-mail adresiñizni tasdıqlamalısıñız. Lütfen, [[Special:Preferences|sazlamalar saifesinde]] e-mail adresiñizni kirsetiñiz ve tasdıqlañız.',
 'nosuchsectiontitle'               => 'Öyle bölük yoq',
-'nosuchsectiontext'                => 'Bar olmağan bölükni deñiştirip baqtıñız. $1 bölügi yoq olğanı içün metniñiz saqlanacaq yeri yoq.',
+'nosuchsectiontext'                => 'Bar olmağan bölükni deñiştirip baqtıñız.',
 'loginreqtitle'                    => 'Oturım açmalısıñız',
 'loginreqlink'                     => 'kiriş',
 'loginreqpagetext'                 => 'Başqa saifelerni baqmaq içün $1 borclusıñız.',
@@ -672,8 +668,8 @@ Bu yañı esap içün parol, kiriş yapqandan soñ ''[[Special:ChangePassword|pa
 'anontalkpagetext'                 => "----''Bu muzakere saifesi şimdilik qayd olunmağan ya da oturımını açmağan adsız (anonim) qullanıcığa mensüptir. İdentifikatsiya içün IP adres işletile. 
 Bir IP adresinden bir qaç qullanıcı faydalanıp ola.
 Eger siz anonim qullanıcı olsañız ve sizge kelgen beyanatlarnı yañlıştan kelgenini belleseñiz, lütfen, artıq bunıñ kibi qarışıqlıq olmasın dep [[Special:UserLogin|oturım açıñız]].''",
-'noarticletext'                    => 'Bu saife şimdi boştır. Bu serlevanı başqa saifelerde [[Special:Search/{{PAGENAME}}|qıdırıp olasıñız]], <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} bağlı jurnal qaydlarını qıdırıp olasıñız] ya da bu saifeni özüñiz [{{fullurl:{{FULLPAGENAME}}|action=edit}} yazıp olasıñız]</span>.',
-'noarticletext-nopermission'       => 'Bu saife şimdi boştır. Bu serlevanı başqa saifelerde [[Special:Search/{{PAGENAME}}|qıdıra bile]] ya da <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} bağlı jurnallarnı közden keçire bilesiñiz]</span>.',
+'noarticletext'                    => 'Bu saife şimdi boştır. Bu serlevanı başqa saifelerde [[Special:Search/{{PAGENAME}}|qıdırıp olasıñız]], <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} bağlı jurnal qaydlarını qıdırıp olasıñız] ya da bu saifeni özüñiz [{{fullurl:{{FULLPAGENAME}}|action=edit}} yazıp olasıñız]</span>.',
+'noarticletext-nopermission'       => 'Bu saife şimdi boştır. Bu serlevanı başqa saifelerde [[Special:Search/{{PAGENAME}}|qıdıra bile]] ya da <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} bağlı jurnallarnı közden keçire bilesiñiz]</span>.',
 'userpage-userdoesnotexist'        => '"$1" adlı qullanıcı yoqtır. Tamam bu saifeni deñiştirmege istegeniñizni teşkeriñiz.',
 'userpage-userdoesnotexist-view'   => '"$1" adlı qullanıcı esabı yoq.',
 'clearyourcache'                   => "'''İhtar:''' Sazlamalarıñıznı saqlağandan soñ deñişikliklerni körmek içün brauzeriñizniñ keşini temizlemek kereksiñiz.
@@ -1135,7 +1131,6 @@ Eger bu faylnı ep bir yüklemege isteseñiz, keri qaytıñız ve fayl ismini de
 'uploaddisabled'              => 'Yükleme yasaqlıdır.',
 'uploaddisabledtext'          => 'Fayl yükleme yasaqlıdır.',
 'uploadscripted'              => 'Bu faylda brauzer tarafından yañlışnen işlenip olur HTML kodu ya da skript bar.',
-'uploadcorrupt'               => 'Bu fayl ya zararlandı, ya da yañlış uzantılı. Lütfen, faylnı teşkerip yañıdan yüklep baqıñız.',
 'uploadvirus'                 => 'Bu fayl viruslıdır! $1 baqıñız',
 'sourcefilename'              => 'Yüklemege istegen faylıñız:',
 'destfilename'                => 'Faylnıñ istenilgen adı:',

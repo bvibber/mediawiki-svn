@@ -268,9 +268,6 @@ $messages = array(
 'vector-view-viewsource'     => 'Vidar fonto',
 'namespaces'                 => 'Nomari',
 
-# Metadata in edit box
-'metadata_help' => 'Metadonaji:',
-
 'errorpagetitle'    => 'Eroro',
 'returnto'          => 'Retrovenar a $1.',
 'tagline'           => 'De {{SITENAME}}',
@@ -547,7 +544,7 @@ Por krear ica pagino, voluntez startar skribar en la infra buxo.
 Se vu esas hike erore, kliktez sur la butono por retrovenar en vua navigilo.',
 'noarticletext'                    => 'Prezente, ne esas texto en ica pagino.
 Vu povas [[Special:Search/{{PAGENAME}}|serchar ica titulo]] en altra pagini,
-<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{urlencode:{{FULLPAGENAME}}}}}} serchar en la relata registri],
+<span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} serchar en la relata registri],
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} redaktar ica pagino]</span>.',
 'clearyourcache'                   => "'''Atencez: Pos registragar, vu probable mustas renovigar la tempala-magazino di vua navigilo por vidar la chanji.'''
 '''Mozilla / Firefox / Safari:''' tenez ''Shift'' kliktante ''Reload'', o presez sive  ''Ctrl-F5'' sive ''Ctrl-R'' (''Command-R'' ye Macintosh);
@@ -628,9 +625,9 @@ Surskriburo: '''({{int:cur}})''' = diferi kun l'aktuala versiono,
 'rev-delundel'               => 'montrar/celar',
 'rev-showdeleted'            => 'montrar',
 'revdelete-show-file-submit' => 'Yes',
+'revdelete-hide-image'       => 'Celar kontenajo dil arkivo',
 'revdelete-hide-comment'     => 'Celar komento pri redakto',
 'revdelete-hide-user'        => 'Celar uzantonomo od IP di redaktanto',
-'revdelete-hide-image'       => 'Celar kontenajo dil arkivo',
 'revdel-restore'             => 'chanjar videbleso',
 'pagehist'                   => 'Pagino-versionaro',
 'deletedhist'                => 'Efacita versionaro',
@@ -996,8 +993,9 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 'pager-older-n'           => '{{PLURAL:$1|plu anciena 1|plu anciena $1}}',
 
 # Book sources
-'booksources'    => 'Fonti di libri',
-'booksources-go' => 'Irar',
+'booksources'               => 'Fonti di libri',
+'booksources-search-legend' => 'Serchez librala fonti',
+'booksources-go'            => 'Irar',
 
 # Special:Log
 'specialloguserlabel'  => 'Uzero:',

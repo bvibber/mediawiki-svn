@@ -552,11 +552,6 @@ $user: the user who did the block (not the one being blocked)
 'BookInformation': Before information output on Special:Booksources
 $isbn: ISBN to show information for
 $output: OutputPage object in use
-
-'CacheHeadersAfterSet': after cache headers have been set in 
-OutputPage::sendCacheControl, so they can be overridden without 
-disabling output method
-$out: OutputPage instance
  
 'CategoryPageView': before viewing a categorypage in CategoryPage::view
 $catpage: CategoryPage instance
@@ -643,6 +638,10 @@ new pages
 &$text: Text to preload with
 &$title: Title object representing the page being created
 
+'EditFormInitialText': Allows modifying the edit form when editing existing
+pages
+$editPage: EditPage	object
+
 'EditPage::attemptSave': called before an article is
 saved, that is before insertNewArticle() is called
 $editpage_Obj: the current EditPage object
@@ -693,6 +692,19 @@ textarea in the edit form
 'EditPageCopyrightWarning': Allow for site and per-namespace customization of contribution/copyright notice.
 $title: title of page being edited
 &$msg: localization message name, overridable. Default is either 'copyrightwarning' or 'copyrightwarning2'
+
+'EditPageGetDiffText': Allow modifying the wikitext that will be used in
+"Show changes"
+$editPage: EditPage object
+&$newtext: wikitext that will be used as "your version"
+
+'EditPageGetPreviewText': Allow modifying the wikitext that will be previewed
+$editPage: EditPage object
+&$toparse: wikitext that will be parsed
+
+'EditPageNoSuchSection': When a section edit request is given for an non-existent section
+&$editpage: The current EditPage object
+&$res: the HTML of the error text
 
 'EditPageTosSummary':  Give a chance for site and per-namespace customizations
 of terms of service summary link that might exist separately from the copyright
@@ -786,11 +798,6 @@ $linkcolour_ids: array of prefixed DB keys of the pages linked to,
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getLocalURL()
-
-'getOtherBlockLogLink': Get links to the block log from extensions which blocks
-	users and/or IP addresses too
-$otherBlockLink: An array with links to other block logs
-$ip: The requested IP address or username
 
 'GetPreferences': modify user preferences
 $user: User whose preferences are being modified.
@@ -957,14 +964,14 @@ $linkType: The external link type
 
 'LinksUpdate': At the beginning of LinksUpdate::doUpdate() just before the
 actual update
-&$linksUpdate: the LinkUpdate object
+&$linksUpdate: the LinksUpdate object
 
 'LinksUpdateComplete': At the end of LinksUpdate::doUpdate() when updating has
 completed
-&$linksUpdate: the LinkUpdate object
+&$linksUpdate: the LinksUpdate object
 
 'LinksUpdateConstructed': At the end of LinksUpdate() is contruction.
-&$linksUpdate: the LinkUpdate object
+&$linksUpdate: the LinksUpdate object
 
 'ListDefinedTags': When trying to find all defined tags.
 &$tags: The list of tags.
@@ -1112,6 +1119,11 @@ displayed
 Hooks can alter or append to the array of URLs for search & suggestion formats.
 &$urls: array of associative arrays with Url element attributes
 
+'OtherBlockLogLink': Get links to the block log from extensions which blocks
+	users and/or IP addresses too
+$otherBlockLink: An array with links to other block logs
+$ip: The requested IP address or username
+
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.
 $parserOutput: the parserOutput (object) that corresponds to the page
@@ -1141,6 +1153,7 @@ $article: the article that the history is loading for
 'PageHistoryLineEnding' : right before the end <li> is added to a history line
 $row: the revision row for this line
 $s: the string representing this parsed line
+$classes: array containing the <li> element classes
 
 'PageHistoryPager::getQueryInfo': when a history pager query parameter set
 is constructed
@@ -1282,9 +1295,26 @@ $namespace : Page namespace
 $title : Page title
 $text : Current text being indexed
 
-'SearchGetNearMatch': An extra chance for exact-title-matches in "go" searches
+'SearchGetNearMatchBefore': Perform exact-title-matches in "go" searches before the normal operations
+$allSearchTerms : Array of the search terms in all content languages
+&$titleResult : Outparam; the value to return. A Title object or null.
+
+'SearchGetNearMatch': An extra chance for exact-title-matches in "go" searches if nothing was found
 $term : Search term string
 &$title : Outparam; set to $title object and return false for a match
+
+'SearchGetNearMatchComplete': A chance to modify exact-title-matches in "go" searches
+$term : Search term string
+&$title : Current Title object that is being returned (null if none found).
+
+'SearchEngineReplacePrefixesComplete': Run after SearchEngine::replacePrefixes().
+$searchEngine : The SearchEngine object. Users of this hooks will be interested 
+in the $searchEngine->namespaces array.
+$query : Original query.
+&$parsed : Resultant query with the prefixes stripped.
+
+'SearchableNamespaces': An option to modify which namespaces are searchable.
+&$arr : Array of namespaces ($nsId => $name) which will be used.
 
 'SetupAfterCache': Called in Setup.php, after cache objects are set
 
@@ -1457,6 +1487,7 @@ SpecialRecentChanges
 &$tables: array of tables to be queried
 &$join_conds: join conditions for the tables
 $opts: FormOptions for this request
+&$query_options: array of options for the database request
 
 'SpecialSearchNogomatch': called when user clicked the "Go" button but the
 target doesn't exist
@@ -1530,6 +1561,17 @@ $article: article object removed
 'UnwatchArticleComplete': after a watch is removed from an article
 $user: user that watched
 $article: article object that was watched
+
+'UploadForm:initial': before the upload form is generated
+$form: UploadForm object
+You might set the member-variables $uploadFormTextTop and
+$uploadFormTextAfterSummary to inject text (HTML) either before
+or after the editform.
+
+'UploadForm:BeforeProcessing': DEPRECATED! at the beginning of processUpload()
+$form: UploadForm object
+Lets you poke at member variables like $mUploadDescription before the
+file is saved.
 
 'UploadCreateFromRequest': when UploadBase::createFromRequest has been called
 $type: (string) the requested upload type
@@ -1722,13 +1764,6 @@ authentification timestamp
 'UserToggles': called when initialising User::$mToggles, use this to add
 new toggles
 $toggles: array of toggles to add
-
-'VectorTemplateToolboxEnd': Called by Vector skin after toolbox links have
-been rendered (useful for adding more)
-Note: this is only run for the Vector skin.  To add items to the toolbox
-for all 'SkinTemplate'-type skins, use the SkinTemplateToolboxEnd hook
-instead.
-$tools: array of tools
 
 'WantedPages::getSQL': called in WantedPagesPage::getSQL(), can be used to
 alter the SQL query which gets the list of wanted pages

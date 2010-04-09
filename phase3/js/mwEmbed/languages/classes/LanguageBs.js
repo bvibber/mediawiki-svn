@@ -3,9 +3,9 @@
  * @ingroup Language
  */
 
-mw.lang.convertPlural = function( count, forms ) {
+mw.Language.convertPlural = function( count, forms ) {
 	
-	forms = mw.lang.preConvertPlural( forms, 3 );
+	forms = mw.Language.preConvertPlural( forms, 3 );
 
 	// FIXME: CLDR defines 4 plural forms instead of 3. Plural for decimals is missing.
 	//        http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html

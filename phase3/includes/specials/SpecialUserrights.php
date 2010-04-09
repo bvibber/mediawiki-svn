@@ -49,7 +49,7 @@ class UserrightsPage extends SpecialPage {
 		// any groups, it's a bit silly to give them the user search prompt.
 		global $wgUser, $wgRequest, $wgOut;
 
-		if( $par ) {
+		if( $par !== null ) {
 			$this->mTarget = $par;
 		} else {
 			$this->mTarget = $wgRequest->getVal( 'user' );
@@ -65,14 +65,15 @@ class UserrightsPage extends SpecialPage {
 			return;
 		}
 
-		if ( !$this->mTarget ) {
+		$available = $this->changeableGroups();
+
+		if ( $this->mTarget === null ) {
 			/*
 			 * If the user specified no target, and they can only
 			 * edit their own groups, automatically set them as the
 			 * target.
 			 */
-			$available = $this->changeableGroups();
-			if ( empty( $available['add'] ) && empty( $available['remove'] ) )
+			if ( !count( $available['add'] ) && !count( $available['remove'] ) )
 				$this->mTarget = $wgUser->getName();
 		}
 
@@ -81,7 +82,6 @@ class UserrightsPage extends SpecialPage {
 
 		if( !$this->userCanChangeRights( $wgUser, true ) ) {
 			// fixme... there may be intermediate groups we can mention.
-			global $wgOut;
 			$wgOut->showPermissionsErrorPage( array( array(
 				$wgUser->isAnon()
 					? 'userrights-nologin'
@@ -90,7 +90,6 @@ class UserrightsPage extends SpecialPage {
 		}
 
 		if ( wfReadOnly() ) {
-			global $wgOut;
 			$wgOut->readOnlyPage();
 			return;
 		}
@@ -100,7 +99,8 @@ class UserrightsPage extends SpecialPage {
 		$this->setHeaders();
 
 		// show the general form
-		$this->switchForm();
+		if ( count( $available['add'] ) || count( $available['remove'] ) )
+			$this->switchForm();
 
 		if( $wgRequest->wasPosted() ) {
 			// save settings
@@ -113,8 +113,6 @@ class UserrightsPage extends SpecialPage {
 						$reason
 					);
 
-					global $wgOut;
-
 					$url = $this->getSuccessURL();
 					$wgOut->redirect( $url );
 					return;
@@ -123,7 +121,7 @@ class UserrightsPage extends SpecialPage {
 		}
 
 		// show some more forms
-		if( $this->mTarget ) {
+		if( $this->mTarget !== null ) {
 			$this->editUserGroupsForm( $this->mTarget );
 		}
 	}
@@ -293,7 +291,7 @@ class UserrightsPage extends SpecialPage {
 			}
 		}
 
-		if( $name == '' ) {
+		if( $name === '' ) {
 			return new WikiErrorMsg( 'nouserspecified' );
 		}
 
@@ -313,7 +311,7 @@ class UserrightsPage extends SpecialPage {
 			}
 		} else {
 			$name = User::getCanonicalName( $name );
-			if( !$name ) {
+			if( $name === false ) {
 				// invalid name
 				return new WikiErrorMsg( 'nosuchusershort', $username );
 			}
@@ -401,10 +399,21 @@ class UserrightsPage extends SpecialPage {
 		foreach( $groups as $group )
 			$list[] = self::buildGroupLink( $group );
 
+		$autolist = array();
+		if ( $user instanceof User ) {
+			foreach( Autopromote::getAutopromoteGroups( $user ) as $group ) {
+				$autolist[] = self::buildGroupLink( $group );
+			}
+		}
+
 		$grouplist = '';
 		if( count( $list ) > 0 ) {
 			$grouplist = wfMsgHtml( 'userrights-groupsmember' );
-			$grouplist = '<p>' . $grouplist  . ' ' . $wgLang->listToText( $list ) . '</p>';
+			$grouplist = '<p>' . $grouplist  . ' ' . $wgLang->listToText( $list ) . "</p>\n";
+		}
+		if( count( $autolist ) > 0 ) {
+			$autogrouplistintro = wfMsgHtml( 'userrights-groupsmember-auto' );
+			$grouplist .= '<p>' . $autogrouplistintro  . ' ' . $wgLang->listToText( $autolist ) . "</p>\n";
 		}
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalURL(), 'name' => 'editGroup', 'id' => 'mw-userrights-form2' ) ) .

@@ -3,12 +3,12 @@
  *
  * @ingroup Language
  */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		// Plural rules per
 		// http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#mo
 		
 
-		forms = mw.lang.preConvertPlural( forms, 3 );
+		forms = mw.Language.preConvertPlural( forms, 3 );
 
 		if ( count == 1 ) {
 			$index = 0;

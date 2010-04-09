@@ -326,8 +326,10 @@ Query: $2',
 'cascadeprotected'     => 'Asebter-agi yettwaḥrez seg ubeddil, axaṭer yettusekcem deg isebtar i ttwaḥerzen ula d nutni (acercur), ahaten:',
 
 # Login and logout pages
-'logouttext'                 => "'''Tura teffɣeḍ.'''<br />
-Tzemreḍ ad tesseqdceḍ {{SITENAME}} d udrig, neɣ tzemreḍ ad tkecmeḍ daɣen s yisem n wemseqdac inek (neɣ nniḍen). Kra n isebtar zemren ad sskanen belli mazal-ik s yisem n wemseqdac inek armi temḥuḍ lkac.",
+'logouttext'                 => "'''Tura teffɣeḍ.'''
+
+Tzemreḍ ad tesseqdceḍ {{SITENAME}} d udrig, neɣ tzemreḍ ad tkecmeḍ daɣen s yisem n wemseqdac inek (neɣ nniḍen).
+Kra n isebtar zemren ad sskanen belli mazal-ik s yisem n wemseqdac inek armi temḥuḍ lkac.",
 'welcomecreation'            => '== Anṣuf yis-k, $1! ==
 
 Isem n wemseqdac inek yettwaxleq. Ur tettuḍ ara ad tbeddleḍ Isemyifiyen n {{SITENAME}} inek.',
@@ -455,7 +457,7 @@ Lukan ur tefkiḍ ara email saḥih deg [[Special:Preferences|isemyifiyen n wems
 'whitelistedittext'         => 'Yessefk ad $1 iwakken ad tbeddleḍ isebtar.',
 'confirmedittext'           => 'Yessefk ad tsentmeḍ tansa e-mail inek uqbel abeddel. Xtar tansa e-mail di [[Special:Preferences|isemyifiyen n wemseqdac]].',
 'nosuchsectiontitle'        => 'Amur ulac-it',
-'nosuchsectiontext'         => 'Tɛerḍeḍ ad tbeddleḍ amur ulac-it. Ulac amur am akka deg usebter $1.',
+'nosuchsectiontext'         => 'Tɛerḍeḍ ad tbeddleḍ amur ulac-it.',
 'loginreqtitle'             => 'Yessefk ad tkecmeḍ',
 'loginreqlink'              => 'Kcem',
 'loginreqpagetext'          => 'Yessefk $1 iwakken ad teẓriḍ isebtar wiyaḍ.',
@@ -584,12 +586,12 @@ meɛna imuren seg-sen zemren imdanen a ten-ẓren.'''
 Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a ten-mḥan, ḥaca ma llan icekkilen.",
 'revdelete-legend'            => 'Eg icekkilen',
 'revdelete-hide-text'         => 'Ffer aḍris n tsiwelt',
+'revdelete-hide-image'        => 'Ffer ayen yellan deg ufaylu',
 'revdelete-hide-name'         => 'Ffer tigawt d nnican',
 'revdelete-hide-comment'      => 'Ffer abeddel n uwennit',
 'revdelete-hide-user'         => 'Ffer Isem n wemseqdac/IP n umeskar',
 'revdelete-hide-restricted'   => 'Eg icekkilen i inedbalen d yimdanen wiyaḍ',
 'revdelete-suppress'          => 'Kkes talɣut seg inedbalen d yimdanen wiyaḍ',
-'revdelete-hide-image'        => 'Ffer ayen yellan deg ufaylu',
 'revdelete-unsuppress'        => 'Kkes icekkilen ɣef tisiwal i yuɣalen-d',
 'revdelete-log'               => 'Awennit n uɣmis:',
 'revdelete-submit'            => 'Eg-it i tasiwelt tettwafren',
@@ -790,7 +792,6 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'uploaddisabled'              => 'Suref-aɣ, azen n ufayluwen yettwakkes',
 'uploaddisabledtext'          => 'Azen n ufayluwen yettwakkes deg wiki-yagi',
 'uploadscripted'              => 'Afaylu-yagi yesɛa angal n HTML/script i yexdem agula deg browser/explorateur.',
-'uploadcorrupt'               => 'Afaylu-yagi yexser neɣ yesɛa taseggiwit (am ".jpg") mačči ṣaḥiḥ. G leɛnayek ssenqed-it.',
 'uploadvirus'                 => 'Afaylu-nni yesɛa anfafad asenselkim (virus)! Ẓer kter: $1',
 'sourcefilename'              => 'And yella afyalu',
 'destfilename'                => 'Anda iruḥ afaylu',

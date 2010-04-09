@@ -1,14 +1,31 @@
 <?php
 
+/**
+ * Feed to Special:RecentChanges and Special:RecentChangesLiked
+ *
+ * @ingroup Feed
+ */
 class ChangesFeed {
-
 	public $format, $type, $titleMsg, $descMsg;
 
+	/**
+	 * Constructor
+	 *
+	 * @param $format String: feed's format (either 'rss' or 'atom')
+	 * @param $type String: type of feed (for cache keys)
+	 */
 	public function __construct( $format, $type ) {
 		$this->format = $format;
 		$this->type = $type;
 	}
 
+	/**
+	 * Get a ChannelFeed subclass object to use
+	 *
+	 * @param $title String: feed's title
+	 * @param $description String: feed's description
+	 * @return ChannelFeed subclass or false on failure
+	 */
 	public function getFeedObject( $title, $description ) {
 		global $wgSitename, $wgContLanguageCode, $wgFeedClasses, $wgTitle;
 		$feedTitle = "$wgSitename  - {$title} [$wgContLanguageCode]";
@@ -18,7 +35,16 @@ class ChangesFeed {
 			$feedTitle, htmlspecialchars( $description ), $wgTitle->getFullUrl() );
 	}
 
-	public function execute( $feed, $rows, $limit=0, $hideminor=false, $lastmod=false, $target='' ) {
+	/**
+	 * Generates feed's content
+	 *
+	 * @param $feed ChannelFeed subclass object (generally the one returned by getFeedObject())
+	 * @param $rows ResultWrapper object with rows in recentchanges table
+	 * @param $lastmod Integer: timestamp of the last item in the recentchanges table (only used for the cache key)
+	 * @param $opts FormOptions as in SpecialRecentChanges::getDefaultOptions()
+	 * @return null or true
+	 */
+	public function execute( $feed, $rows, $lastmod, $opts ) {
 		global $messageMemc, $wgFeedCacheTimeout;
 		global $wgSitename, $wgLang;
 
@@ -27,7 +53,8 @@ class ChangesFeed {
 		}
 
 		$timekey = wfMemcKey( $this->type, $this->format, 'timestamp' );
-		$key = wfMemcKey( $this->type, $this->format, $limit, $hideminor, $target, $wgLang->getCode() );
+		$optionsHash = md5( serialize( $opts->getAllValues() ) );
+		$key = wfMemcKey( $this->type, $this->format, $wgLang->getCode(), $optionsHash );
 
 		FeedUtils::checkPurge($timekey, $key);
 
@@ -52,6 +79,13 @@ class ChangesFeed {
 		return true;
 	}
 
+	/**
+	 * Save to feed result to $messageMemc
+	 *
+	 * @param $feed String: feed's content
+	 * @param $timekey String: memcached key of the last modification
+	 * @param $key String: memcached key of the content
+	 */
 	public function saveToCache( $feed, $timekey, $key ) {
 		global $messageMemc;
 		$expire = 3600 * 24; # One day
@@ -59,6 +93,14 @@ class ChangesFeed {
 		$messageMemc->set( $timekey, wfTimestamp( TS_MW ), $expire );
 	}
 
+	/**
+	 * Try to load the feed result from $messageMemc
+	 *
+	 * @param $lastmod Integer: timestamp of the last item in the recentchanges table
+	 * @param $timekey String: memcached key of the last modification
+	 * @param $key String: memcached key of the content
+	 * @return feed's content on cache hit or false on cache miss
+	 */
 	public function loadFromCache( $lastmod, $timekey, $key ) {
 		global $wgFeedCacheTimeout, $messageMemc;
 		$feedLastmod = $messageMemc->get( $timekey );
@@ -86,10 +128,10 @@ class ChangesFeed {
 	}
 
 	/**
-	* Generate the feed items given a row from the database.
-	* @param $rows Database resource with recentchanges rows
-	* @param $feed Feed object
-	*/
+	 * Generate the feed items given a row from the database.
+	 * @param $rows DatabaseBase resource with recentchanges rows
+	 * @param $feed Feed object
+	 */
 	public static function generateFeed( $rows, &$feed ) {
 		wfProfileIn( __METHOD__ );
 

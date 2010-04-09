@@ -259,8 +259,10 @@ Eke: $2",
 'namespaceprotected'   => "ʻOku ʻikai ngofua ke ke fatu ʻa e ngaahi kupu ʻi he vā hingoa '''$1'''.",
 
 # Login and logout pages
-'logouttext'                 => "'''Kuo ʻalu mamaʻo koe he taimí ni.'''<br />
-E lava te ke hoko atu ʻo ngāueʻaki he {{SITENAME}} tatau mo e ʻetita taʻehingoa, pe te ke kau-ki-ai mo e hingoa tatau pe hingoa kehe. Tokanga, mahalo pē ʻe ʻi ai ha ngaahi peesi ʻoku ʻasi ko koe kei kau-ki-ai aʻu ki he taimi te ke fakaʻatā ʻa e fafaʻo fakapalausa.",
+'logouttext'                 => "'''Kuo ʻalu mamaʻo koe he taimí ni.'''
+
+E lava te ke hoko atu ʻo ngāueʻaki he {{SITENAME}} tatau mo e ʻetita taʻehingoa, pe te ke kau-ki-ai mo e hingoa tatau pe hingoa kehe.
+Tokanga, mahalo pē ʻe ʻi ai ha ngaahi peesi ʻoku ʻasi ko koe kei kau-ki-ai aʻu ki he taimi te ke fakaʻatā ʻa e fafaʻo fakapalausa.",
 'welcomecreation'            => '== Tali fiefia, $1! ==
 
 Kuo fakatupu hoʻo tohi kau-ki-ai. ʻOua ʻe ngalo ke liliu hoʻo faʻiteliha {{SITENAME}}.',
@@ -571,7 +573,6 @@ Ko e ʻuhinga loka ko e $1 ia.",
 'uploadedimage'               => '"[[$1]]" ʻosi hiki hake',
 'uploaddisabled'              => 'ʻOku fakataʻeʻaongaʻi ʻa e ngaahi hiki hake',
 'uploaddisabledtext'          => 'ʻOku fakataʻeʻaongaʻi ha ngaahi hiki hake ʻi heni.',
-'uploadcorrupt'               => 'ʻOku kovi ʻa e failé ni pe ʻoku halaʻi hono fakalōloa. Kātaki, sivi ia pea foki hiki hake ia.',
 'uploadvirus'                 => 'ʻOku ʻi ai ha vailasi ʻi he failé ni! ʻŪ kiʻi meʻa: $1',
 'sourcefilename'              => 'Hingoa ʻo e faile tupunga:',
 'destfilename'                => 'Hingoa ʻo e faile ʻe ʻalu ki ai:',

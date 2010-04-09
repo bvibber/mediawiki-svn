@@ -89,44 +89,45 @@ class SpecialContributions extends SpecialPage {
 			return $this->feed( $feedType );
 		}
 
-		wfRunHooks( 'SpecialContributionsBeforeMainOutput', $id );
+		if ( wfRunHooks( 'SpecialContributionsBeforeMainOutput', array( $id ) ) ) {
 
-		$wgOut->addHTML( $this->getForm() );
+			$wgOut->addHTML( $this->getForm() );
 
-		$pager = new ContribsPager( $target, $this->opts['namespace'], $this->opts['year'], $this->opts['month'] );
-		if( !$pager->getNumRows() ) {
-			$wgOut->addWikiMsg( 'nocontribs', $target );
-		} else {
-			# Show a message about slave lag, if applicable
-			if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
-				$wgOut->showLagWarning( $lag );
-
-			$wgOut->addHTML(
-				'<p>' . $pager->getNavigationBar() . '</p>' .
-				$pager->getBody() .
-				'<p>' . $pager->getNavigationBar() . '</p>'
-			);
-		}
-
-
-		# Show the appropriate "footer" message - WHOIS tools, etc.
-		if( $target != 'newbies' ) {
-			$message = 'sp-contributions-footer';
-			if ( IP::isIPAddress( $target ) ) {
-				$message = 'sp-contributions-footer-anon';
+			$pager = new ContribsPager( $target, $this->opts['namespace'], $this->opts['year'], $this->opts['month'] );
+			if( !$pager->getNumRows() ) {
+				$wgOut->addWikiMsg( 'nocontribs', $target );
 			} else {
-				$user = User::newFromName( $target );
-				if ( !$user || $user->isAnon() ) {
-					// No message for non-existing users
-					return;
-				}
+				# Show a message about slave lag, if applicable
+				if( ( $lag = $pager->getDatabase()->getLag() ) > 0 )
+					$wgOut->showLagWarning( $lag );
+
+				$wgOut->addHTML(
+					'<p>' . $pager->getNavigationBar() . '</p>' .
+					$pager->getBody() .
+					'<p>' . $pager->getNavigationBar() . '</p>'
+				);
 			}
 
-			$text = wfMsgNoTrans( $message, $target );
-			if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
-				$wgOut->wrapWikiMsg(
-					"<div class='mw-contributions-footer'>\n$1\n</div>",
-					array( $message, $target ) );
+
+			# Show the appropriate "footer" message - WHOIS tools, etc.
+			if( $target != 'newbies' ) {
+				$message = 'sp-contributions-footer';
+				if ( IP::isIPAddress( $target ) ) {
+					$message = 'sp-contributions-footer-anon';
+				} else {
+					$user = User::newFromName( $target );
+					if ( !$user || $user->isAnon() ) {
+						// No message for non-existing users
+						return;
+					}
+				}
+
+				$text = wfMsgNoTrans( $message, $target );
+				if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
+					$wgOut->wrapWikiMsg(
+						"<div class='mw-contributions-footer'>\n$1\n</div>",
+						array( $message, $target ) );
+				}
 			}
 		}
 	}
@@ -139,17 +140,17 @@ class SpecialContributions extends SpecialPage {
 
 	/**
 	 * Generates the subheading with links
-	 * @param Title $nt @see Title object for the target
-	 * @param integer $id User ID for the target
+	 * @param $nt Title object for the target
+	 * @param $id Integer: User ID for the target
 	 * @return String: appropriately-escaped HTML to be output literally
-	 * @fixme Almost the same as getSubTitle in SpecialDeletedContributions.php. Could be combined.
+	 * @todo Fixme: almost the same as getSubTitle in SpecialDeletedContributions.php. Could be combined.
 	 */
 	protected function contributionsSub( $nt, $id ) {
 		global $wgSysopUserBans, $wgLang, $wgUser, $wgOut;
 
 		$sk = $wgUser->getSkin();
 
-		if ( 0 == $id ) {
+		if ( $id === null ) {
 			$user = htmlspecialchars( $nt->getText() );
 		} else {
 			$user = $sk->link( $nt, htmlspecialchars( $nt->getText() ) );
@@ -159,7 +160,7 @@ class SpecialContributions extends SpecialPage {
 		if( $talk ) {
 			# Talk page link
 			$tools[] = $sk->link( $talk, wfMsgHtml( 'sp-contributions-talk' ) );
-			if( ( $id != 0 && $wgSysopUserBans ) || ( $id == 0 && IP::isIPAddress( $nt->getText() ) ) ) {
+			if( ( $id !== null && $wgSysopUserBans ) || ( $id === null && IP::isIPAddress( $nt->getText() ) ) ) {
 				if( $wgUser->isAllowed( 'block' ) ) { # Block / Change block / Unblock links
 					if ( $userObj->isBlocked() ) {
 						$tools[] = $sk->linkKnown( # Change block link
@@ -212,7 +213,7 @@ class SpecialContributions extends SpecialPage {
 
 			# Add a link to change user rights for privileged users
 			$userrightsPage = new UserrightsPage();
-			if( 0 !== $id && $userrightsPage->userCanChangeRights( User::newFromId( $id ) ) ) {
+			if( $id !== null && $userrightsPage->userCanChangeRights( User::newFromId( $id ) ) ) {
 				$tools[] = $sk->linkKnown(
 					SpecialPage::getTitleFor( 'Userrights', $nt->getDBkey() ),
 					wfMsgHtml( 'sp-contributions-userrights' )
@@ -256,7 +257,7 @@ class SpecialContributions extends SpecialPage {
 
 	/**
 	 * Generates the namespace selector form with hidden attributes.
-	 * @param $this->opts Array: the options to be included.
+	 * @return String: HTML fragment
 	 */
 	protected function getForm() {
 		global $wgScript;
@@ -336,7 +337,7 @@ class SpecialContributions extends SpecialPage {
 	
 	/**
 	 * Output a subscription feed listing recent edits to this page.
-	 * @param string $type
+	 * @param $type String
 	 */
 	protected function feed( $type ) {
 		global $wgRequest, $wgFeed, $wgFeedClasses, $wgFeedLimit;
@@ -400,7 +401,7 @@ class SpecialContributions extends SpecialPage {
 				$comments
 			);
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -434,7 +435,7 @@ class ContribsPager extends ReverseChronologicalPager {
 		$msgs = array( 'uctop', 'diff', 'newarticle', 'rollbacklink', 'diff', 'hist', 'rev-delundel', 'pipe-separator' );
 
 		foreach( $msgs as $msg ) {
-			$this->messages[$msg] = wfMsgExt( $msg, array( 'escape' ) );
+			$this->messages[$msg] = wfMsgExt( $msg, array( 'escapenoentities' ) );
 		}
 
 		$this->target = $target;
@@ -561,13 +562,15 @@ class ContribsPager extends ReverseChronologicalPager {
 		if( $row->rev_id == $row->page_latest ) {
 			$topmarktext .= '<span class="mw-uctop">' . $this->messages['uctop'] . '</span>';
 			# Add rollback link
-			if( !$row->page_is_new && $page->quickUserCan( 'rollback' ) && $page->quickUserCan( 'edit' ) ) {
+			if( !$row->page_is_new && $page->quickUserCan( 'rollback' )
+				&& $page->quickUserCan( 'edit' ) )
+			{
 				$topmarktext .= ' '.$sk->generateRollback( $rev );
 			}
 		}
 		# Is there a visible previous revision?
-		if( !$rev->isDeleted( Revision::DELETED_TEXT ) && $rev->getParentId() !== 0 ) {
-			$difftext = $this->messages['pipe-separator'] . $sk->linkKnown(
+		if( $rev->userCan( Revision::DELETED_TEXT ) && $rev->getParentId() !== 0 ) {
+			$difftext = $sk->linkKnown(
 				$page,
 				$this->messages['diff'],
 				array(),
@@ -575,11 +578,11 @@ class ContribsPager extends ReverseChronologicalPager {
 					'diff' => 'prev',
 					'oldid' => $row->rev_id
 				)
-			) . ')';
+			);
 		} else {
-			$difftext = $this->messages['pipe-separator'] . $this->messages['diff'] . ')';
+			$difftext = $this->messages['diff'];
 		}
-		$histlink = '('.$sk->linkKnown(
+		$histlink = $sk->linkKnown(
 			$page,
 			$this->messages['hist'],
 			array(),
@@ -637,7 +640,8 @@ class ContribsPager extends ReverseChronologicalPager {
 			$del = '';
 		}
 
-		$ret = "{$del}{$d} {$histlink}{$difftext} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
+		$diffHistLinks = '(' . $difftext . $this->messages['pipe-separator'] . $histlink . ')';
+		$ret = "{$del}{$d} {$diffHistLinks} {$nflag}{$mflag} {$link}{$userlink} {$comment} {$topmarktext}";
 		
 		# Denote if username is redacted for this edit
 		if( $rev->isDeleted( Revision::DELETED_USER ) ) {

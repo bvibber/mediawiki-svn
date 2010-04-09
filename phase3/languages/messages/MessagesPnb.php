@@ -125,9 +125,6 @@ $messages = array(
 'qbmyoptions'    => 'میرے صفحے',
 'qbspecialpages' => 'خاص صفحے',
 
-# Metadata in edit box
-'metadata_help' => 'میٹا ڈیٹا:',
-
 'errorpagetitle'    => 'مسئلہ',
 'returnto'          => 'واپس $1 چلو',
 'tagline'           => 'سے {{SITENAME}}',
@@ -440,10 +437,10 @@ $messages = array(
 'rev-delundel'              => 'وکھاؤ/لکاؤ',
 'revisiondelete'            => 'ریوژن مٹاؤ یا واپس کرو',
 'revdelete-hide-text'       => 'ریوژن ٹیکسٹ لکاؤ',
+'revdelete-hide-image'      => 'فائل دا مواد لکاؤ',
 'revdelete-hide-name'       => 'کم تے نشانہ چھپاؤ',
 'revdelete-hide-comment'    => 'لکھن دے بارے چ صلاع لکاؤ',
 'revdelete-hide-user'       => 'لکھن آلے دا ناں/آئی پی پتہ لکاؤ',
-'revdelete-hide-image'      => 'فائل دا مواد لکاؤ',
 'revdel-restore'            => 'وکھالا بدلو',
 'pagehist'                  => 'صفحے دی تاریخ',
 'deletedhist'               => 'مٹائی گئی تاریخ',

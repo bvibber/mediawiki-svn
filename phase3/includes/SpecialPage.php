@@ -70,6 +70,10 @@ class SpecialPage {
 	 */
 	var $mAllowedRedirectParams = array();
 	/**
+	 * Query parameteres added by redirects
+	 */
+	var $mAddedRedirectParams = array();
+	/**
 	 * List of special pages, followed by parameters.
 	 * If the only parameter is a string, that is the page name.
 	 * Otherwise, it is an array. The format is one of:
@@ -89,46 +93,47 @@ class SpecialPage {
 		'Fewestrevisions'           => array( 'SpecialPage', 'Fewestrevisions' ),
 		'Withoutinterwiki'          => array( 'SpecialPage', 'Withoutinterwiki' ),
 		'Protectedpages'            => array( 'SpecialPage', 'Protectedpages' ),
-		'Protectedtitles'           => array( 'SpecialPage', 'Protectedtitles' ),	
-		'Shortpages'                => array( 'SpecialPage', 'Shortpages' ),	
-		'Uncategorizedcategories'   => array( 'SpecialPage', 'Uncategorizedcategories' ),	
-		'Uncategorizedimages'       => array( 'SpecialPage', 'Uncategorizedimages' ),	
-		'Uncategorizedpages'        => array( 'SpecialPage', 'Uncategorizedpages' ),	
+		'Protectedtitles'           => array( 'SpecialPage', 'Protectedtitles' ),
+		'Shortpages'                => array( 'SpecialPage', 'Shortpages' ),
+		'Uncategorizedcategories'   => array( 'SpecialPage', 'Uncategorizedcategories' ),
+		'Uncategorizedimages'       => array( 'SpecialPage', 'Uncategorizedimages' ),
+		'Uncategorizedpages'        => array( 'SpecialPage', 'Uncategorizedpages' ),
 		'Uncategorizedtemplates'    => array( 'SpecialPage', 'Uncategorizedtemplates' ),
 		'Unusedcategories'          => array( 'SpecialPage', 'Unusedcategories' ),
-		'Unusedimages'              => array( 'SpecialPage', 'Unusedimages' ),		
+		'Unusedimages'              => array( 'SpecialPage', 'Unusedimages' ),
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),
-		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),	
+		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),
 		'Wantedcategories'          => array( 'SpecialPage', 'Wantedcategories' ),
 		'Wantedfiles'               => array( 'SpecialPage', 'Wantedfiles' ),
 		'Wantedpages'               => array( 'IncludableSpecialPage', 'Wantedpages' ),
 		'Wantedtemplates'           => array( 'SpecialPage', 'Wantedtemplates' ),
 
 		# List of pages
-		'Allpages'                  => 'SpecialAllpages',		
-		'Prefixindex'               => 'SpecialPrefixindex',		
+		'Allpages'                  => 'SpecialAllpages',
+		'Prefixindex'               => 'SpecialPrefixindex',
 		'Categories'                => array( 'SpecialPage', 'Categories' ),
 		'Disambiguations'           => array( 'SpecialPage', 'Disambiguations' ),
-		'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),	
+		'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),
 
 		# Login/create account
-		'Userlogin'                 => array( 'SpecialPage', 'Userlogin' ),		
+		'Userlogin'                 => array( 'SpecialPage', 'Userlogin' ),
 		'CreateAccount'             => array( 'SpecialRedirectToSpecial', 'CreateAccount', 'Userlogin', 'signup', array( 'uselang' ) ),
 
 		# Users and rights
 		'Blockip'                   => array( 'SpecialPage', 'Blockip', 'block' ),
 		'Ipblocklist'               => array( 'SpecialPage', 'Ipblocklist' ),
+		'Unblock'                   => array( 'SpecialRedirectToSpecial', 'Unblock', 'Ipblocklist', false, array( 'uselang', 'ip', 'id' ), array( 'action' => 'unblock' ) ),
 		'Resetpass'                 => 'SpecialResetpass',
 		'DeletedContributions'      => 'DeletedContributionsPage',
-		'Preferences'               => 'SpecialPreferences',	
-		'Contributions'             => 'SpecialContributions',	
+		'Preferences'               => 'SpecialPreferences',
+		'Contributions'             => 'SpecialContributions',
 		'Listgrouprights'           => 'SpecialListGroupRights',
 		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),
 		'Activeusers'               => 'SpecialActiveUsers',
 		'Userrights'                => 'UserrightsPage',
 
 		# Recent changes and logs
-		'Newimages'                 => array( 'IncludableSpecialPage', 'Newimages' ),	
+		'Newimages'                 => array( 'IncludableSpecialPage', 'Newimages' ),
 		'Log'                       => array( 'SpecialPage', 'Log' ),
 		'Watchlist'                 => array( 'SpecialPage', 'Watchlist' ),
 		'Newpages'                  => 'SpecialNewpages',
@@ -145,7 +150,7 @@ class SpecialPage {
 		'UploadWizard'              => 'SpecialUploadWizard',
 
 		# Wiki data and tools
-		'Statistics'				=> 'SpecialStatistics',
+		'Statistics'                => 'SpecialStatistics',
 		'Allmessages'               => 'SpecialAllmessages',
 		'Version'                   => 'SpecialVersion',
 		'Lockdb'                    => array( 'SpecialPage', 'Lockdb', 'siteadmin' ),
@@ -169,14 +174,14 @@ class SpecialPage {
 		'Import'                    => 'SpecialImport',
 		'Undelete'                  => array( 'SpecialPage', 'Undelete', 'deletedhistory' ),
 		'Whatlinkshere'             => 'SpecialWhatlinkshere',
-		'MergeHistory'              => array( 'SpecialPage', 'MergeHistory', 'mergehistory' ),	
-		
+		'MergeHistory'              => 'SpecialMergeHistory',
+
 		# Other
 		'Booksources'               => 'SpecialBookSources',
-		
+
 		# Unlisted / redirects
 		'Blankpage'                 => 'SpecialBlankpage',
-		'Blockme'                   => array( 'UnlistedSpecialPage', 'Blockme' ),	
+		'Blockme'                   => array( 'UnlistedSpecialPage', 'Blockme' ),
 		'Emailuser'                 => array( 'UnlistedSpecialPage', 'Emailuser' ),
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
 		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
@@ -255,6 +260,9 @@ class SpecialPage {
 	/**
 	 * Given a special page alias, return the special page name.
 	 * Returns false if there is no such alias.
+	 *
+	 * @param $alias String
+	 * @return String or false
 	 */
 	static function resolveAlias( $alias ) {
 		global $wgContLang;
@@ -273,12 +281,15 @@ class SpecialPage {
 	 * Given a special page name with a possible subpage, return an array
 	 * where the first element is the special page name and the second is the
 	 * subpage.
+	 *
+	 * @param $alias String
+	 * @return Array
 	 */
 	static function resolveAliasWithSubpage( $alias ) {
 		$bits = explode( '/', $alias, 2 );
 		$name = self::resolveAlias( $bits[0] );
 		if( !isset( $bits[1] ) ) { // bug 2087
-			$par = NULL;
+			$par = null;
 		} else {
 			$par = $bits[1];
 		}
@@ -290,8 +301,7 @@ class SpecialPage {
 	 * method for adding special pages in extensions. It's now suggested that you add
 	 * an associative record to $wgSpecialPages. This avoids autoloading SpecialPage.
 	 *
-	 * @param SpecialPage $page
-	 * @static
+	 * @param $page SpecialPage
 	 */
 	static function addPage( &$page ) {
 		if ( !self::$mListInitialised ) {
@@ -303,9 +313,8 @@ class SpecialPage {
 	/**
 	 * Add a page to a certain display group for Special:SpecialPages
 	 *
-	 * @param mixed $page (SpecialPage or string)
-	 * @param string $group
-	 * @static
+	 * @param $page Mixed: SpecialPage or string
+	 * @param $group String
 	 */
 	static function setGroup( $page, $group ) {
 		global $wgSpecialPageGroups;
@@ -316,8 +325,7 @@ class SpecialPage {
 	/**
 	 * Add a page to a certain display group for Special:SpecialPages
 	 *
-	 * @param SpecialPage $page
-	 * @static
+	 * @param $page SpecialPage
 	 */
 	static function getGroup( &$page ) {
 		global $wgSpecialPageGroups;
@@ -341,8 +349,6 @@ class SpecialPage {
 	 * Remove a special page from the list
 	 * Formerly used to disable expensive or dangerous special pages. The
 	 * preferred method is now to add a SpecialPage_initList hook.
-	 *
-	 * @static
 	 */
 	static function removePage( $name ) {
 		if ( !self::$mListInitialised ) {
@@ -353,8 +359,9 @@ class SpecialPage {
 
 	/**
 	 * Check if a given name exist as a special page or as a special page alias
-	 * @param $name string: name of a special page
-	 * @return boolean: true if a special page exists with this name
+	 *
+	 * @param $name String: name of a special page
+	 * @return Boolean: true if a special page exists with this name
 	 */
 	static function exists( $name ) {
 		global $wgContLang;
@@ -377,8 +384,9 @@ class SpecialPage {
 
 	/**
 	 * Find the object with a given name and return it (or NULL)
-	 * @static
-	 * @param string $name
+	 *
+	 * @param $name String
+	 * @return SpecialPage object or null if the page doesn't exist
 	 */
 	static function getPage( $name ) {
 		if ( !self::$mListInitialised ) {
@@ -395,27 +403,30 @@ class SpecialPage {
 			}
 			return self::$mList[$name];
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
 	/**
 	 * Get a special page with a given localised name, or NULL if there
 	 * is no such special page.
+	 *
+	 * @return SpecialPage object or null if the page doesn't exist
 	 */
 	static function getPageByAlias( $alias ) {
 		$realName = self::resolveAlias( $alias );
 		if ( $realName ) {
 			return self::getPage( $realName );
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
 	/**
 	 * Return categorised listable special pages which are available
 	 * for the current user, and everyone.
-	 * @static
+	 *
+	 * @return Associative array mapping page's name to its SpecialPage object
 	 */
 	static function getUsablePages() {
 		global $wgUser;
@@ -440,7 +451,8 @@ class SpecialPage {
 
 	/**
 	 * Return categorised listable special pages for all users
-	 * @static
+	 *
+	 * @return Associative array mapping page's name to its SpecialPage object
 	 */
 	static function getRegularPages() {
 		if ( !self::$mListInitialised ) {
@@ -460,7 +472,8 @@ class SpecialPage {
 	/**
 	 * Return categorised listable special pages which are available
 	 * for the current user, but not for everyone
-	 * @static
+	 *
+	 * @return Associative array mapping page's name to its SpecialPage object
 	 */
 	static function getRestrictedPages() {
 		global $wgUser;
@@ -501,7 +514,7 @@ class SpecialPage {
 		$bits = explode( '/', $title->getDBkey(), 2 );
 		$name = $bits[0];
 		if( !isset( $bits[1] ) ) { // bug 2087
-			$par = NULL;
+			$par = null;
 		} else {
 			$par = $bits[1];
 		}
@@ -567,7 +580,8 @@ class SpecialPage {
 	 * Just like executePath() except it returns the HTML instead of outputting it
 	 * Returns false if there was no such special page, or a title object if it was
 	 * a redirect.
-	 * @static
+	 *
+	 * @return String: HTML fragment
 	 */
 	static function capturePath( &$title ) {
 		global $wgOut, $wgTitle;
@@ -589,10 +603,10 @@ class SpecialPage {
 	/**
 	 * Get the local name for a specified canonical name
 	 *
-	 * @param $name
-	 * @param mixed $subpage Boolean false, or string
+	 * @param $name String
+	 * @param $subpage Mixed: boolean false, or string
 	 *
-	 * @return string
+	 * @return String
 	 */
 	static function getLocalNameFor( $name, $subpage = false ) {
 		global $wgContLang;
@@ -617,11 +631,13 @@ Perhaps no page aliases are defined for it?" );
 		if ( $subpage !== false && !is_null( $subpage ) ) {
 			$name = "$name/$subpage";
 		}
-		return ucfirst( $name );
+		return $wgContLang->ucfirst( $name );
 	}
 
 	/**
 	 * Get a localised Title object for a specified special page name
+	 *
+	 * @return Title object
 	 */
 	static function getTitleFor( $name, $subpage = false ) {
 		$name = self::getLocalNameFor( $name, $subpage );
@@ -634,6 +650,8 @@ Perhaps no page aliases are defined for it?" );
 
 	/**
 	 * Get a localised Title object for a page name with a possibly unvalidated subpage
+	 *
+	 * @return Title object or null if the page doesn't exist
 	 */
 	static function getSafeTitleFor( $name, $subpage = false ) {
 		$name = self::getLocalNameFor( $name, $subpage );
@@ -646,6 +664,7 @@ Perhaps no page aliases are defined for it?" );
 
 	/**
 	 * Get a title for a given alias
+	 *
 	 * @return Title or null if there is no such alias
 	 */
 	static function getTitleForAlias( $alias ) {
@@ -667,11 +686,12 @@ Perhaps no page aliases are defined for it?" );
 	 *     If you override execute(), you can recover the default behaviour with userCanExecute()
 	 *     and displayRestrictionError()
 	 *
-	 * @param string $name Name of the special page, as seen in links and URLs
-	 * @param string $restriction User right required, e.g. "block" or "delete"
-	 * @param boolean $listed Whether the page is listed in Special:Specialpages
-	 * @param string $function Function called by execute(). By default it is constructed from $name
-	 * @param string $file File which is included by execute(). It is also constructed from $name by default
+	 * @param $name String: name of the special page, as seen in links and URLs
+	 * @param $restriction String: user right required, e.g. "block" or "delete"
+	 * @param $listed Boolean: whether the page is listed in Special:Specialpages
+	 * @param $function Callback: function called by execute(). By default it is constructed from $name
+	 * @param $file String: file which is included by execute(). It is also constructed from $name by default
+	 * @param $includable Boolean: whether the page can be included in normal pages
 	 */
 	function SpecialPage( $name = '', $restriction = '', $listed = true, $function = false, $file = 'default', $includable = false ) {
 		$this->mName = $name;
@@ -704,18 +724,18 @@ Perhaps no page aliases are defined for it?" );
 	/**#@+
 	  * Accessor and mutator
 	  */
-	function name( $x = NULL ) { return wfSetVar( $this->mName, $x ); }
-	function restrictions( $x = NULL) {
+	function name( $x = null ) { return wfSetVar( $this->mName, $x ); }
+	function restrictions( $x = null) {
 		# Use the one below this
 		wfDeprecated( __METHOD__ );
 		return wfSetVar( $this->mRestriction, $x );
 	}
-	function restriction( $x = NULL) { return wfSetVar( $this->mRestriction, $x ); }
-	function listed( $x = NULL) { return wfSetVar( $this->mListed, $x ); }
-	function func( $x = NULL) { return wfSetVar( $this->mFunction, $x ); }
-	function file( $x = NULL) { return wfSetVar( $this->mFile, $x ); }
-	function includable( $x = NULL ) { return wfSetVar( $this->mIncludable, $x ); }
-	function including( $x = NULL ) { return wfSetVar( $this->mIncluding, $x ); }
+	function restriction( $x = null) { return wfSetVar( $this->mRestriction, $x ); }
+	function listed( $x = null) { return wfSetVar( $this->mListed, $x ); }
+	function func( $x = null) { return wfSetVar( $this->mFunction, $x ); }
+	function file( $x = null) { return wfSetVar( $this->mFile, $x ); }
+	function includable( $x = null ) { return wfSetVar( $this->mIncludable, $x ); }
+	function including( $x = null ) { return wfSetVar( $this->mIncluding, $x ); }
 	/**#@-*/
 
 	/**
@@ -732,7 +752,7 @@ Perhaps no page aliases are defined for it?" );
 	 * Can be overridden by subclasses with more complicated permissions
 	 * schemes.
 	 *
-	 * @return bool Should the page be displayed with the restricted-access
+	 * @return Boolean: should the page be displayed with the restricted-access
 	 *   pages?
 	 */
 	public function isRestricted() {
@@ -746,8 +766,8 @@ Perhaps no page aliases are defined for it?" );
 	 * special page (as defined by $mRestriction).  Can be overridden by sub-
 	 * classes with more complicated permissions schemes.
 	 *
-	 * @param User $user The user to check
-	 * @return bool Does the user have permission to view the page?
+	 * @param $user User: the user to check
+	 * @return Boolean: does the user have permission to view the page?
 	 */
 	public function userCanExecute( $user ) {
 		return $user->isAllowed( $this->mRestriction );
@@ -799,9 +819,9 @@ Perhaps no page aliases are defined for it?" );
 	 * Outputs a summary message on top of special pages
 	 * Per default the message key is the canonical name of the special page
 	 * May be overriden, i.e. by extensions to stick with the naming conventions
-	 * for message keys: 'extensionname-xxx' 
+	 * for message keys: 'extensionname-xxx'
 	 *
-	 * @param string message key of the summary
+	 * @param $summaryMessageKey String: message key of the summary
 	 */
 	function outputHeader( $summaryMessageKey = '' ) {
 		global $wgOut, $wgContLang;
@@ -818,17 +838,24 @@ Perhaps no page aliases are defined for it?" );
 
 	}
 
-	# Returns the name that goes in the <h1> in the special page itself, and also the name that
-	# will be listed in Special:Specialpages
-	#
-	# Derived classes can override this, but usually it is easier to keep the default behaviour.
-	# Messages can be added at run-time, see MessageCache.php
+	/**
+	 * Returns the name that goes in the \<h1\> in the special page itself, and
+	 * also the name that will be listed in Special:Specialpages
+	 *
+	 * Derived classes can override this, but usually it is easier to keep the
+	 * default behaviour. Messages can be added at run-time, see
+	 * MessageCache.php.
+	 *
+	 * @return String
+	 */
 	function getDescription() {
 		return wfMsg( strtolower( $this->mName ) );
 	}
 
 	/**
 	 * Get a self-referential title object
+	 *
+	 * @return Title object
 	 */
 	function getTitle( $subpage = false ) {
 		return self::getTitleFor( $this->mName, $subpage );
@@ -853,16 +880,20 @@ Perhaps no page aliases are defined for it?" );
 	 * Return part of the request string for a special redirect page
 	 * This allows passing, e.g. action=history to Special:Mypage, etc.
 	 *
-	 * @return string
+	 * @return String
 	 */
 	function getRedirectQuery() {
 		global $wgRequest;
 		$params = array();
 		foreach( $this->mAllowedRedirectParams as $arg ) {
-			if( $val = $wgRequest->getVal( $arg, false ) )
+			if( ( $val = $wgRequest->getVal( $arg, null ) ) !== null )
 				$params[] = $arg . '=' . $val;
 		}
-
+		
+		foreach( $this->mAddedRedirectParams as $arg => $val ) {
+			$params[] = $arg . '=' . $val;
+		}
+		
 		return count( $params ) ? implode( '&', $params ) : false;
 	}
 }
@@ -896,11 +927,12 @@ class IncludableSpecialPage extends SpecialPage
 class SpecialRedirectToSpecial extends UnlistedSpecialPage {
 	var $redirName, $redirSubpage;
 
-	function __construct( $name, $redirName, $redirSubpage = false, $redirectParams = array() ) {
+	function __construct( $name, $redirName, $redirSubpage = false, $allowedRedirectParams = array(), $addedRedirectParams = array() ) {
 		parent::__construct( $name );
 		$this->redirName = $redirName;
 		$this->redirSubpage = $redirSubpage;
-		$this->mAllowedRedirectParams = $redirectParams;
+		$this->mAllowedRedirectParams = $allowedRedirectParams;
+		$this->mAddedRedirectParams = $addedRedirectParams;
 	}
 
 	function getRedirect( $subpage ) {
@@ -966,6 +998,8 @@ class SpecialMytalk extends UnlistedSpecialPage {
 class SpecialMycontributions extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct(  'Mycontributions' );
+		$this->mAllowedRedirectParams = array( 'limit', 'namespace', 'tagfilter',
+			'offset', 'dir', 'year', 'month', 'feed' );
 	}
 
 	function getRedirect( $subpage ) {

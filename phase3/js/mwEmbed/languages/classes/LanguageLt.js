@@ -9,7 +9,7 @@
 		2 - trys (3) lapai
 		3 - penkiolika (15) lapų
 	*/
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
 
 		//if no number with word, then use $form[0] for singular and $form[1] for plural or zero
@@ -17,7 +17,7 @@
 			return count == 1 ? forms[0] : forms[1];
 		}
 
-		forms = mw.lang.preConvertPlural( forms, 3 );
+		forms = mw.Language.preConvertPlural( forms, 3 );
 		mw.log( 'Count: ' + count + ' mod 10: ' + (count % 10 ) + ' mod 100: ' + (count % 100) ); 
 		if (count % 10 == 1 && count % 100 != 11 ) {
 			mw.log('return form 0 for count:' + count ); 
