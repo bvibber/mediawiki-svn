@@ -189,7 +189,8 @@ class SpecialStory extends IncludableSpecialPage {
 	 * 
 	 * @param $story
 	 * 
-	 * TODO: Add live validation for all fields, esp checking if a story title doesn't exist yet.
+	 * TODO: Fix the validation for the story title
+	 * TODO: use HTMLForm
 	 */	
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
@@ -262,7 +263,8 @@ class SpecialStory extends IncludableSpecialPage {
 				array(
 					'size' => $fieldSize,
 					'maxlength' => 255,
-					'minlength' => 7
+					'minlength' => 7,
+					'class' => 'required email'
 				)
 			) . '</td></tr>';
 			
@@ -351,6 +353,9 @@ addOnloadHook(
 		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
 	}
 );
+jQuery(document).ready(function(){
+	jQuery("#storyform").validate();
+});
 jQuery( "#storyform" ).validate({
 	rules: {
 		storytitle: {
