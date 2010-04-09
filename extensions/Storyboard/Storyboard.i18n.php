@@ -22,20 +22,21 @@ $messages['en'] = array(
 
 	// Special:Story
 	'story' => 'Story',
-	'storyboard-submittedbyon' => 'Submitted by $1 on $2.',
+	'storyboard-submittedbyon' => 'Submitted by $1 on $2.', // FIXME: split $2 in a para for date and time
 	'storyboard-viewstories' => 'View stories',
-	'storyboard-nosuchstory' => 'The story you requested does not exist. It might have been removed.',
+	'storyboard-nosuchstory' => 'The story you requested does not exist.
+It might have been removed.',
 	'storyboard-unpublished' => 'The story you requested has not been published yet.',
 	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
 	'storyboard-cantedit' => 'You are not allowed to edit stories.',
 	'storyboard-canedit' => 'You can $1 and publish this story.',
 	'storyboard-ispublished' => 'This story has been published and is publicly visible.',
 	'storyboard-ishidden' => 'This story has been hidden from the story review interface.',
-	'storyboard-createdandmodified' => 'Created on $1 and last modified on $2',
+	'storyboard-createdandmodified' => 'Created on $1 and last modified on $2', // FIXME: split $2 in a para for date and time
 	'storyboard-authorname' => 'Author name',
 	'storyboard-authorlocation' => 'Author location',
 	'storyboard-authoroccupation' => 'Author occupation',
-	'storyboard-authoremail' => 'Author email address',
+	'storyboard-authoremail' => 'Author e-mail address',
 	'storyboard-thestory' => 'The story',
 
 	// Special:StorySubmission
@@ -55,15 +56,17 @@ $messages['en'] = array(
 	'storyboard-location' => 'Your location',
 	'storyboard-occupation' => 'Your occupation',
 	'storyboard-story' => 'Your story',
-	'storyboard-photo' => 'Have a photo of yourself? Why not share it?',
-	'storyboard-email' => 'Your E-mail address',
+	'storyboard-photo' => 'Have a photo of yourself?
+Why not share it?',
+	'storyboard-email' => 'Your e-mail address',
 	'storyboard-storytitle' => 'A short, descriptive title',
 	'storyboard-agreement' => 'I agree with the publication and use of this story under the terms of the [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License].',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',
-	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} to long!',
+	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} too long!',
 	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
-	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us! We will review it shortly. Published stories are visible at $1.',
+	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us! We will review it shortly.
+Published stories are visible at $1.',
 );
 
 /** Afrikaans (Afrikaans)
