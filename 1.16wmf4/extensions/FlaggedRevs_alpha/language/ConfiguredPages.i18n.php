@@ -42,9 +42,14 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'configuredpages' => 'Pajennoù gant an arventennoù adlenn',
+	'configuredpages-text' => "Dindan ez eus ur roll pajennoù dezho arventennoù aprouiñ disheñvel diouzh arvezntennoù dre ziouer al lec'hienn-mañ.
+
+Arventennoù zo a c'hall lakaat da cheñch ar stumm diskwelet d'al lennerien pe strishaat roll ar re a c'hall degas kemmoù n'emaint ket da vezañ gwiriet dre ret.",
 	'configuredpages-none' => "N'eus pajenn ebet er roll-mañ.",
 	'configuredpages-config' => 'Kefluniadur',
 	'configuredpages-precedence' => 'Kentwir :',
@@ -53,6 +58,16 @@ $messages['br'] = array(
 	'configuredpages-prec-pristine' => "kentwir gwerc'h ziwezhañ",
 	'configuredpages-def-draft' => 'stumm diwezhañ',
 	'configuredpages-def-stable' => 'stumm embannet',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'configuredpages-config' => 'Configuració',
+	'configuredpages-precedence' => 'Precedència:',
+	'configuredpages-def-draft' => 'última versió',
+	'configuredpages-def-stable' => 'versió publicada',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -164,6 +179,16 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
 	'configuredpages-def-stable' => 'vereffentligti Version',
 );
 
+/** Croatian (Hrvatski)
+ * @author Ex13
+ */
+$messages['hr'] = array(
+	'configuredpages-config' => 'Konfiguracija',
+	'configuredpages-prec-none' => 'bez prvenstva',
+	'configuredpages-prec-quality' => 'prvenstvo kvalitete',
+	'configuredpages-prec-pristine' => 'zastarjelo prvenstvo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -219,9 +244,11 @@ Alcun configurationes pote cambiar le version que es monstrate al lectores o lim
 );
 
 /** Japanese (日本語)
+ * @author Naohiro19
  * @author Whym
  */
 $messages['ja'] = array(
+	'configuredpages-none' => 'この一覧にはページがありません。',
 	'configuredpages-prec-none' => '優先なし',
 	'configuredpages-prec-quality' => '{{int:revreview-lev-quality}}優先',
 	'configuredpages-prec-pristine' => '{{int:revreview-lev-pristine}}優先',
@@ -323,6 +350,9 @@ Enkelte innstillinger kan endre hvilken versjon som vises til lesere eller ytter
  */
 $messages['pl'] = array(
 	'configuredpages' => 'Strony ze skonfigurowanym oznaczaniem',
+	'configuredpages-text' => 'Poniżej znajduje się lista stron, których ustawienia zatwierdzania są inne niż domyślne.
+
+Niektóre ustawienia można zmieniać jak wersja widoczna dla czytelników czy dodatkowe ograniczenie osób, których edycje nie wymagają sprawdzania.',
 	'configuredpages-none' => 'Brak stron na tej liście.',
 	'configuredpages-config' => 'Konfiguracja',
 	'configuredpages-precedence' => 'Kolejność',

@@ -708,14 +708,13 @@ $messages['hsb'] = array(
  * @author Samat
  */
 $messages['hu'] = array(
-	'right-unreviewedpages' => '[[Special:UnreviewedPages|Ellenőrizetlen lapok listájának]] megtekintése',
 	'unreviewedpages' => 'Ellenőrizetlen lapok',
-	'unreviewed-legend' => 'Nem ellenőrzött tartalmú lapok listája',
+	'unreviewed-legend' => 'Nem ellenőrzött lapok listája',
 	'unreviewed-category' => 'Kategória:',
 	'unreviewed-diff' => 'ellenőrzés',
 	'unreviewed-unwatched' => '(nem figyelt)',
 	'unreviewed-watched' => '({{PLURAL:$1|egy|$1}} aktív szerkesztő figyeli)',
-	'unreviewed-list' => 'Ez az oldal azokat a lapokat tartalmazza, amelyek még nem lettek ellenőrizve egy megadott ellenőrzöttségi szintre.',
+	'unreviewed-list' => 'Azon lapok, amelyek még nem lettek ellenőrizve a megadott szinten.',
 	'unreviewed-none' => 'Jelenleg nincs ezeknek a feltételeknek megfelelő oldal.',
 	'unreviewed-viewing' => '(ellenőrzés alatt)',
 	'unreviewed-hours' => '({{PLURAL:$1|egy|$1}} óra)',
@@ -1034,13 +1033,12 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'right-unreviewedpages' => '[[Special:UnreviewedPages|സം‌ശോധനം ചെയ്തിട്ടില്ലാത്ത താളുകളുടെ പട്ടിക]] കാണുക',
-	'unreviewedpages' => 'സംശോധനം ചെയ്യാത്ത താളുകള്‍',
-	'unreviewed-legend' => 'ഉള്ളടക്കം സം‌ശോധനം ചെയ്തിട്ടില്ലാത്ത താളുകളുടെ പട്ടിക പ്രദര്‍ശിപ്പിക്കുക',
-	'unreviewed-category' => 'വര്‍ഗ്ഗം:',
+	'unreviewedpages' => 'സംശോധനം ചെയ്യാത്ത താളുകൾ',
+	'unreviewed-legend' => 'ഉള്ളടക്കം സം‌ശോധനം ചെയ്തിട്ടില്ലാത്ത താളുകളുടെ പട്ടിക പ്രദർശിപ്പിക്കുക',
+	'unreviewed-category' => 'വർഗ്ഗം:',
 	'unreviewed-diff' => 'പരിശോധന',
 	'unreviewed-unwatched' => '(ശ്രദ്ധിക്കാത്തവ)',
-	'unreviewed-watched' => '({{PLURAL:$1|ഒരു സജീവ ഉപയോക്താവ്|$1 സജീവ ഉപയോക്താക്കള്‍}} ശ്രദ്ധിക്കുന്നുണ്ട്)',
+	'unreviewed-watched' => '({{PLURAL:$1|ഒരു സജീവ ഉപയോക്താവ്|$1 സജീവ ഉപയോക്താക്കൾ}} ശ്രദ്ധിക്കുന്നുണ്ട്)',
 	'unreviewed-list' => 'പ്രത്യേക തലം വരെ സംശോധനം ചെയ്യാത്ത ഉള്ളടക്ക താളുകളുടെ പട്ടികയാണ് ഈ താളിൽ ഉള്ളത്.',
 	'unreviewed-none' => 'ഈ മാനദണ്ഡം പാലിക്കുന്ന താളുകളൊന്നും നിലവിലില്ല',
 	'unreviewed-viewing' => '(സംശോധനം ചെയ്യപ്പെടുന്നു)',
@@ -1400,6 +1398,21 @@ $messages['sk'] = array(
 	'unreviewed-hours' => '($1 {{PLURAL:$1|hodina|hodiny|hodín}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|deň|dni|dní}})',
 	'unreviewed-recent' => '(menej ako 1 hodina)',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'unreviewedpages' => 'Nepregledane strani',
+	'unreviewed-category' => 'Kategorija:',
+	'unreviewed-diff' => 'preglej',
+	'unreviewed-unwatched' => '(nespremljano)',
+	'unreviewed-none' => 'Trenutno ni nobene strani, ki bi ustrezala izbranim merilom',
+	'unreviewed-viewing' => '(v pregledu)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|ura|uri|ure|ur}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|dan|dneva|dnevi|dni}})',
+	'unreviewed-recent' => '(manj kot 1 ura)',
 );
 
 /** Albanian (Shqip)

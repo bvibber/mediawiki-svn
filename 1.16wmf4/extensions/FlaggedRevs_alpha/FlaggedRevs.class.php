@@ -448,15 +448,6 @@ class FlaggedRevs {
 	}
 	
 	/**
-	 * Get minimum tier for a revision to count as patrolled
-	 * @return int
-	 */
-	public static function getPatrolLevel() {
-		global $wgFlaggedRevsPatrolLevel;
-		return (int)$wgFlaggedRevsPatrolLevel;
-	}
-	
-	/**
 	 * Get minimum level tags for a tier
 	 * @return array
 	 */
@@ -1177,8 +1168,12 @@ class FlaggedRevs {
 				'expiry'	 => Block::decodeExpiry( $row->fpc_expiry ) // TS_MW
 			);
 			# If there are protection levels defined check if this is valid...
-			if ( self::useProtectionLevels() && self::getProtectionLevel( $config ) == 'invalid' ) {
-				$config = self::getDefaultVisibilitySettings(); // revert to default (none)
+			if ( self::useProtectionLevels() ) {
+				$level = self::getProtectionLevel( $config );
+				if ( $level == 'invalid' || $level == 'none' ) {
+					// If 'none', make sure expiry is 'infinity'
+					$config = self::getDefaultVisibilitySettings(); // revert to default (none)
+				}
 			}
 		} else {
 			# Return the default config if this page doesn't have its own

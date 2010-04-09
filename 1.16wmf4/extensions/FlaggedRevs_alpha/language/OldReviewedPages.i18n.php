@@ -752,7 +752,7 @@ $messages['hu'] = array(
 	'oldreviewedpages-recent' => '(kevesebb, mint egy órája)',
 	'oldreviewed-category' => 'Kategória:',
 	'oldreviewed-watched' => 'Lapok a figyelőlistámon',
-	'oldreviewed-stable' => 'Stabil változat',
+	'oldreviewed-stable' => 'Jelölt lapok',
 	'oldreviewed-diff' => 'ellenőriz',
 	'oldreviewed-size' => 'Változás legfeljebb (bájtban):',
 	'oldreviewedpages-unwatched' => '(nem figyelt)',
@@ -854,7 +854,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'oldreviewedpages' => '古くなった査読済みページ',
+	'oldreviewedpages' => '編集が保留されているページ',
 	'oldreviewedpages-legend' => '査読待ちの版のある査読済みページを一覧',
 	'oldreviewedpages-list' => 'このページは以前の査読以降に査読待ちの編集がなされた{{PLURAL:$1|ページ}}を一覧します。',
 	'oldreviewedpages-none' => '現在、この基準に合うページはありません',
@@ -862,7 +862,7 @@ $messages['ja'] = array(
 	'oldreviewedpages-days' => '($1{{PLURAL:$1|日}})',
 	'oldreviewedpages-recent' => '(1時間未満)',
 	'oldreviewed-category' => 'カテゴリ:',
-	'oldreviewed-watched' => '自分のウォッチリストに含まれるもの',
+	'oldreviewed-watched' => '自分のウォッチリストに含まれるページ',
 	'oldreviewed-stable' => '固定済み',
 	'oldreviewed-diff' => '査読',
 	'oldreviewed-size' => '変更量の上限 (バイト):',
@@ -996,19 +996,19 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'oldreviewedpages' => 'സംശോധനം ചെയ്യൽ അവശേഷിക്കുന്ന താളുകൾ',
-	'oldreviewedpages-legend' => 'സംശോധനം ചെയ്ത താളുകളൂടെ പട്ടികയോടൊപ്പം സം‌ശോധനം ചെയ്തിട്ടില്ലാത്ത പതിപ്പുകള്‍ പ്രദര്‍ശിപ്പിക്കുക',
+	'oldreviewedpages-legend' => 'സംശോധനം ചെയ്ത താളുകളൂടെ പട്ടികയോടൊപ്പം സം‌ശോധനം ചെയ്തിട്ടില്ലാത്ത പതിപ്പുകൾ പ്രദർശിപ്പിക്കുക',
 	'oldreviewedpages-list' => 'ഈ താളിൽ പരിശോധിക്കേണ്ട തിരുത്തലുകളവശേഷിക്കുന്ന {{PLURAL:$1|സംശോധനം ചെയ്ത താൾ|സംശോധനം ചെയ്ത താളുകൾ}} നൽകിയിരിക്കുന്നു.',
 	'oldreviewedpages-none' => 'ഈ മാനദണ്ഡം പാലിക്കുന്ന താളുകളൊന്നും നിലവിലില്ല',
-	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|മണിക്കൂര്‍|മണിക്കൂറുകള്‍}})',
-	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ദിവസം|ദിവസങ്ങള്‍}})',
-	'oldreviewedpages-recent' => '(1 മണിക്കൂറില്‍ താഴെ)',
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|മണിക്കൂർ|മണിക്കൂറുകൾ}})',
+	'oldreviewedpages-days' => '({{PLURAL:$1|ഒരു ദിവസം|$1 ദിവസങ്ങൾ}})',
+	'oldreviewedpages-recent' => '(1 മണിക്കൂറിൽ താഴെ)',
 	'oldreviewed-category' => 'വർഗ്ഗം:',
 	'oldreviewed-watched' => 'ഞാൻ ശ്രദ്ധിക്കുന്ന താളുകൾ',
 	'oldreviewed-stable' => 'സ്ഥിരതയുള്ളതാക്കിയിരിക്കുന്നു',
 	'oldreviewed-diff' => 'സംശോധനം',
 	'oldreviewed-size' => 'പരമാവധി മാറ്റങ്ങൾ (ബൈറ്റുകൾ):',
 	'oldreviewedpages-unwatched' => '(ശ്രദ്ധിക്കുന്നില്ല)',
-	'oldreviewedpages-watched' => '($1 സജീവ {{PLURAL:$1|ഉപയോക്താവ്|ഉപയോക്താക്കള്‍}} ശ്രദ്ധിക്കുന്നു)',
+	'oldreviewedpages-watched' => '($1 സജീവ {{PLURAL:$1|ഉപയോക്താവ്|ഉപയോക്താക്കൾ}} ശ്രദ്ധിക്കുന്നു)',
 	'oldreviewedpages-viewing' => '(സംശോധനം ചെയ്യുന്നു)',
 );
 
@@ -1372,6 +1372,23 @@ $messages['sk'] = array(
 	'oldreviewedpages-unwatched' => '(nesledovaná)',
 	'oldreviewedpages-watched' => '({{PLURAL:$1|sleduje $1 aktívny používateľ|sledujú $1 aktívni používatelia|sleduje $1 aktívnych používateľov}})',
 	'oldreviewedpages-viewing' => '(kontroluje sa)',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'oldreviewedpages-legend' => 'Seznam pregledanih strani z urejanji na čakanju',
+	'oldreviewedpages-none' => 'Trenutno ni nobene strani, ki bi ustrezala izbranim merilom',
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ura|uri|ure|ur}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|dan|dneva|dnevi|dni}})',
+	'oldreviewedpages-recent' => '(manj kot 1 ura)',
+	'oldreviewed-category' => 'Kategorija:',
+	'oldreviewed-watched' => 'Strani na mojem spisku nadzorov',
+	'oldreviewed-diff' => 'preglej',
+	'oldreviewed-size' => 'Največja sprememba (bajtov):',
+	'oldreviewedpages-unwatched' => '(nespremljano)',
+	'oldreviewedpages-viewing' => '(v pregledu)',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
