@@ -255,31 +255,11 @@ function printConcept($concept, $langs, $terse = true) {
     if (is_array($definition)) $definition = $utils->pickLocal($definition, $langs);
 
     ?>
-    <tr class="row_top">
-      <td colspan="3">&nbsp;</td>
-    </tr>
-
     <tr class="row_head">
-      <td colspan="1" class="cell_name">
-	<h3 class="<?php print "weight_$wclass"; ?>">
-	<?php print getConceptDetailsLink($langs, $concept); ?>
-	</h3>
-      </td>
-      <td colspan="2" class="cell_pages">
-	<?php printConceptPageList($langs, $concept, $lclass) ?>
-      </td>
-    </tr>
-
-    <tr class="row_def">
-      <td colspan="3"><?php print htmlspecialchars($definition); ?></td>
-    </tr>
-
-    <tr class="row_related">
-      <td class="cell_related" colspan="3">
-      Related: 
-      <?php 
-	  printRelatedConceptList( $langs, $concept, $lclass ); 
-      ?>
+      <td colspan="3">
+	  <h1 class="name <?php print "weight_$wclass"; ?>"><?php print getConceptDetailsLink($langs, $concept); ?>:</h1>
+	  <p class="definition"><?php print htmlspecialchars($definition); ?></p>
+	  <div class="wikipages">Pages: <?php printConceptPageList($langs, $concept, $lclass) ?></div>
       </td>
     </tr>
 
@@ -292,21 +272,24 @@ function printConcept($concept, $langs, $terse = true) {
       </td>
     </tr>
 
+    <tr class="row_related">
+      <td class="cell_related" colspan="3">
+      Related: 
+      <?php 
+	  printRelatedConceptList( $langs, $concept, $lclass ); 
+      ?>
+      <p>more...<!-- TODO --></p>
+      </td>
+    </tr>
+
     <tr class="row_category">
       <td class="cell_related" colspan="3">
       Broader:
       <?php 
 	  printConceptCategoryList( $langs, $concept, $lclass ); 
       ?>
+      <p>more...<!-- TODO --></p>
       </td>
-    </tr>
-
-    <tr class="row_bottom">
-      <td colspan="3">&nbsp;</td>
-    </tr>
-
-    <tr class="row_blank">
-      <td colspan="3">&nbsp;</td>
     </tr>
 
     <?php
@@ -375,11 +358,17 @@ if (!$error) {
 
     <style type="text/css">
 	body { font-family: verdana, helvetica, arial, sans-serif; }
-	td { text-align: left; vertical-align: top; }
-	th { text-align: left; vertical-align: top; font-weight:bold; }
 
-	a:link, a:visited, a:active {
+	a, a:link, a:visited, a:active, a:hover {
 	  color:#2200CC;
+	}
+
+	a, a:link, a:visited {
+	  text-decoration: none;
+	}
+
+	a:active, a:hover {
+	  text-decoration: underline;
 	}
 
 	.error { color: red; font-weight: bold; }
@@ -389,14 +378,34 @@ if (!$error) {
 	.weight_some { font-size: 100%; font-weight:bold; }
 	.weight_little { font-size: 90%; font-weight:bold; }
 	.weight_unknown { font-size: 100%; font-weight:bold; }
+
+	/*
 	.row_def td { font-size: small; font-style:italic; }
 	.row_details td { font-size: small; }
+	*/
+
+	.row_head td { font-size: small; }
+
+	.row_head td { border-top: 1px solid #6B90DA; background-color: #F0F7F9; padding: 0.5ex; }
+	.row_head h1, .row_head h2, .row_head h3 { padding: 0; margin: 0; font-size: inherit; font-weight: inherit; }
+	.row_head p { padding: 0; margin: 0; font-size: inherit;  }
+	.row_head .name { font-weight: bold; display:inline; font-size: large; }
+	.row_head .definition { font-style: italic; display:inline; }
+	.row_head .wikipages { font-style: inherit; display:inline; }
+
 	.row_related td { font-size: small; }
-	.row_category td { font-size: small; font-weight: bold; }
+	.row_category td { font-size: small; }
 	.cell_weight { text-align: right; }
 	.cell_label { text-align: right; }
-	.header { text-align: left; }
-	.inputform { text-align: center; margin:1ex auto; padding:1ex; width:80%; border:1px solid #666666; background-color:#DDDDDD; }
+
+	.header { text-align: left; margin:0; padding: 0; border-bottom: 1px solid #C9D7F1; }
+
+	.inputform { text-align: left; margin:0 1ex; }
+	.inputform td { text-align: left; vertical-align: bottom; padding: 0.5ex; }
+	.inputform td.note { font-size:small; }
+	.inputform th { text-align: left; vertical-align: bottom; }
+
+
 	.footer { font-size:80%; text-align: center; border-top: 1px solid #666666; }
 	.note { font-size:80%; }
 
@@ -405,7 +414,10 @@ if (!$error) {
 	.terselist li:first-child:before { content:"" }
 
 	.gallery li { display: inline; padding:0.5ex; margin:0.5ex; }
+
 	.results { margin: 1em; }
+	.results td { text-align: left; vertical-align: top; }
+	.results th { text-align: left; vertical-align: top; font-weight:bold; }
 
 	.imageCell { 
 	    vertical-align: bottom; 
@@ -421,10 +433,10 @@ if (!$error) {
 </head>
 <body>
     <div class="header">
-      <h1>WikiWord Navigator</h1>
+    <!--   <h1>WikiWord Navigator</h1>
       <p>Experimental semantic navigator and thesaurus interface for Wikipedia.</p>
       <p>The WikiWord Navigator was created as part of the WikiWord project run by <a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a>.
-      It is based on a <a href="http://brightbyte.de/page/WikiWord">diploma thesis</a> by Daniel Kinzler, and runs on the <a href="http://toolserver.org/">Wikimedia Toolserver</a>. WikiWord is an ongoing research project. Please contact <a href="http://brightbyte.de/page/Special:Contact">Daniel Kinzler</a> for more information.</p>
+      It is based on a <a href="http://brightbyte.de/page/WikiWord">diploma thesis</a> by Daniel Kinzler, and runs on the <a href="http://toolserver.org/">Wikimedia Toolserver</a>. WikiWord is an ongoing research project. Please contact <a href="http://brightbyte.de/page/Special:Contact">Daniel Kinzler</a> for more information.</p>  --> &nbsp;
     </div>
 
     <div class="inputform" >
@@ -432,7 +444,13 @@ if (!$error) {
       <table border="0" class="inputgrid">
 	<tr>
 	  <td>
-	    <label for="term">Term: </label><input type="text" name="term" id="term" size="24" value="<?php print htmlspecialchars($term); ?>"/>
+	    <?php 
+	      $u = $utils->getThumbnailURL("Commons_logo_optimized.svg", 60); 
+	      print "<img class=\"logo\" src=\"".htmlspecialchars($u)."\" title=\"Search Wikimedia Commons\" valign=\"bottom\"/>";
+	    ?>
+	  </td>
+	  <td>
+	    <label for="term" style="display:none">Term: </label><input type="text" name="term" id="term" size="24" value="<?php print htmlspecialchars($term); ?>"/>
 	  </td>
 	  <td>
 	    <label for="term" style="display:none">Language: </label>
@@ -441,9 +459,12 @@ if (!$error) {
 	  <td>
 	    <input type="submit" name="go" value="go"/>
 	  </td>
+	  <td class="note">
+	    Note: this is a thesaurus lookup, not a full text search. Multiple words are handeled as a single phrase. Only exact matches of complete phrases will be found. 
+	  </td>
 	</tr>
       </table>
-      <p class="note">Note: this is a thesaurus lookup, not a full text search. Only exact matches are considered.</p>
+      
       <?php
       if ($utils->debug) {
 	      print '<input type="hidden" name="debug" value="true"/>';
