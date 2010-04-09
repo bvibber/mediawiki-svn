@@ -29,7 +29,8 @@ class TagStoryboard {
 	 * TODO: add language filter
 	 */
 	public static function render( $input, array $args, Parser $parser, $frame ) {
-		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
+		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $wgContLanguageCode;
+		global $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
 		$parser->getOutput()->addHeadItem(
@@ -44,6 +45,13 @@ EOT
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStoryboardWidth );
 		$height = StoryboardUtils::getDimension( $args, 'height', $egStoryboardHeight );
 
+		$languages = Language::getLanguageNames();
+		if ( array_key_exists( 'language', $args ) && array_key_exists( $args['language'], $languages )  ) {
+			$language = $args['language'];		
+		} else {
+			$language = $wgContLanguageCode;
+		}
+		
 		$output = Html::element( 'div', array(
 				'class' => 'storyboard',
 				'style' => "height: $height; width: $width;"
