@@ -16,8 +16,11 @@ $wwThesaurusDataset = "thesaurus";
 
 #error_reporting(E_ALL);
 
-$wwMaxPreviewImages = 8;
+$wwMaxPreviewImages = 5;
+$wwMaxPreviewLinks = 20;
+$wwGalleryColumns = 5;
 $wwMaxGalleryImages = 200;
+$wwMaxDetailLinks = 1000;
 $wwThumbSize = 120;
 $wwThumbnailURL = "http://toolserver.org/tsthumb/tsthumb?f={name}&domain=commons.wikimedia.org&w={width}&h={height}";
 $wwImagePageURL = "http://commons.wikimedia.org/wiki/File:{name}";

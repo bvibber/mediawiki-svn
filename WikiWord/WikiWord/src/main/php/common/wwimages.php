@@ -511,12 +511,16 @@ class WWFakeImages extends WWImages {
 		"Carrots_of_many_colors.jpg",
 		"Infantryman_in_1942_with_M1_Garand,_Fort_Knox,_KY.jpg",
 		"Wilhelmshaven_Meerjungfrau.jpg",
+		"Sunrise_over_Veterans_Park_2420.jpg",
+		"Halde_Rheinpreußen,_Grubenlampe,_III_retouched.jpg",
 	);
 
 	$this->morePics = array(
 		"Yellow_Tiger_Moth_Góraszka.JPG",
 		"Mauritania_boy1.jpg",
 		"Mavericks_Surf_Contest_2010b.jpg",
+		"Sellers_translating_along_truss_during_EVA-3_on_STS-121.jpg",
+		"Fruitbowlwithmelons.jpg",
 	);
 
 	$this->fewPics = array(
