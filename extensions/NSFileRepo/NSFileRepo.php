@@ -35,7 +35,7 @@ $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
-	'version' => '1.3',
+	'version' => '1.4alpha',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
 	'descriptionmsg' => 'nsfilerepo-desc'
 );
@@ -113,6 +113,86 @@ class NSLocalFile extends LocalFile
 		$filename = $bits[count($bits)-1];
 		return $this->getHashPath() . rawurlencode( $filename );
 	}
+
+	/** Get the URL of the thumbnail directory, or a particular file if $suffix is specified */
+	function getThumbUrl( $suffix = false ) {
+		$path = $this->repo->getZoneUrl('thumb') . '/' . $this->getUrlRel();
+		if ( $suffix !== false ) {
+			$path .= '/' . rawurlencode( $this->getFileNameStripped($suffix) );
+		}
+		return $path;
+	}
+
+	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
+	function getThumbPath( $suffix = false ) {
+		$path = $this->repo->getZonePath('thumb') . '/' . $this->getRel();
+		if ( $suffix !== false ) {
+			$path .= '/' . $this->getFileNameStripped($suffix);
+		}
+		return $path;
+	}
+
+	/** Get the relative path for an archive file */
+	function getArchiveRel( $suffix = false ) {
+		$path = 'archive/' . $this->getHashPath();
+		if ( $suffix === false ) {
+			$path = substr( $path, 0, -1 );
+		} else {
+			$path .= $this->getFileNameStripped($suffix);
+		}
+		return $path;
+	}
+
+	/** Get the URL of the archive directory, or a particular file if $suffix is specified */
+	function getArchiveUrl( $suffix = false ) {
+		$path = $this->repo->getZoneUrl('public') . '/archive/' . $this->getHashPath();
+		if ( $suffix === false ) {
+			$path = substr( $path, 0, -1 );
+		} else {
+			$path .= rawurlencode( $this->getFileNameStripped($suffix) );
+		}
+		return $path;
+	}
+
+	/** Get the virtual URL for an archive file or directory */
+	function getArchiveVirtualUrl( $suffix = false ) {
+		$path = $this->repo->getVirtualUrl() . '/public/archive/' . $this->getHashPath();
+		if ( $suffix === false ) {
+			$path = substr( $path, 0, -1 );
+		} else {
+			$path .= rawurlencode( $this->getFileNameStripped($suffix) );
+		}
+		return $path;
+	}
+
+	/** Get the virtual URL for a thumbnail file or directory */
+	function getThumbVirtualUrl( $suffix = false ) {
+		$path = $this->repo->getVirtualUrl() . '/thumb/' . $this->getUrlRel();
+		if ( $suffix !== false ) {
+			$path .= '/' . rawurlencode( $this->getFileNameStripped($suffix) );
+		}
+		return $path;
+	}
+
+	/** Get the virtual URL for the file itself */
+	function getVirtualUrl( $suffix = false ) {
+		$path = $this->repo->getVirtualUrl() . '/public/' . $this->getUrlRel();
+		if ( $suffix !== false ) {
+			$path .= '/' . rawurlencode( $this->getFileNameStripped($suffix) );
+		}
+		return $path;
+	}
+
+	/** Strip namespace (if any) from file name */
+	function getFileNameStripped($suffix) {
+		$bits=explode(':',$suffix);
+		$filename = $bits[count($bits)-1];
+		$pxpos = strpos($suffix,"px-");
+		if (count($bits) > 1 && $pxpos) $filename= substr($suffix,0,$pxpos+3).$filename;
+		return $filename;
+	}
+
+
 	/**
 	 * This function overrides the LocalFile because the archive name should not contain the namespace in the
 	 * filename.  Otherwise the function would have worked.  This only affects reuploads
@@ -136,8 +216,7 @@ class NSLocalFile extends LocalFile
 		$this->lock();
 		$dstRel = $this->getRel();
 /* This is the part that changed from LocalFile */
-		$bits=explode(':',$this->getName());
-		$archiveName = gmdate( 'YmdHis' ) . '!'.$bits[count($bits)-1];
+		$archiveName = gmdate( 'YmdHis' ) . '!'.$this->getFileNameStripped($this->getName());
 /* End of changes */
 		$archiveRel = 'archive/' . $this->getHashPath() . $archiveName;
 		$flags = $flags & File::DELETE_SOURCE ? LocalRepo::DELETE_SOURCE : 0;
@@ -151,6 +230,44 @@ class NSLocalFile extends LocalFile
 		return $status;
 	}
 
+	/**
+	 * The only thing changed here is that the array needs to strip the NS from the file name for the has (oldname is already fixed)
+	 * Add the old versions of the image to the batch
+	 */
+	function addOlds() {
+		$archiveBase = 'archive';
+		$this->olds = array();
+		$this->oldCount = 0;
+
+		$result = $this->db->select( 'oldimage',
+			array( 'oi_archive_name', 'oi_deleted' ),
+			array( 'oi_name' => $this->oldName ),
+			__METHOD__
+		);
+		while( $row = $this->db->fetchObject( $result ) ) {
+			$oldName = $row->oi_archive_name;
+			$bits = explode( '!', $oldName, 2 );
+			if( count( $bits ) != 2 ) {
+				wfDebug( "Invalid old file name: $oldName \n" );
+				continue;
+			}
+			list( $timestamp, $filename ) = $bits;
+			if( $this->oldName != $filename ) {
+				wfDebug( "Invalid old file name: $oldName \n" );
+				continue;
+			}
+			$this->oldCount++;
+			// Do we want to add those to oldCount?
+			if( $row->oi_deleted & File::DELETED_FILE ) {
+				continue;
+			}
+			$this->olds[] = array(
+				"{$archiveBase}/{$this->oldHash}{$oldName}",
+				"{$archiveBase}/{$this->newHash}{$timestamp}!".$this->getFileNameStripped($this->newName)
+			);
+		}
+		$this->db->freeResult( $result );
+	}
 
 
 	/** Instantiating this class using "self"
@@ -178,7 +295,7 @@ class NSLocalFile extends LocalFile
 	 */
 
 	static function newFromRow( $row, $repo ) {
-		$title = Title::makeTitle( NS_FILE, $row->img_name );
+		$title = Title::makeTitle( NS_IMAGE, $row->img_name );
 		$file = new self( $title, $repo );
 		$file->loadFromRow( $row );
 		return $file;
@@ -195,6 +312,33 @@ class NSOldLocalFile extends OldLocalFile
 	function publish( $srcPath, $flags = 0 ) {
 		return NSLocalFile::publish( $srcPath, $flags );
 	}
+	function getThumbUrl( $suffix = false ) {
+		return(NSLocalFile::getThumbUrl( $suffix ) );
+	}
+	function getThumbPath( $suffix = false ) {
+		return(NSLocalFile::getThumbPath( $suffix ));
+	}
+	function getArchiveRel( $suffix = false ) {
+		return(NSLocalFile::getArchiveRel( $suffix ));
+	}
+	function getArchiveUrl( $suffix = false ) {
+		return(NSLocalFile::getArchiveUrl( $suffix ));
+	}
+	function getArchiveVirtualUrl( $suffix = false ) {
+		return(NSLocalFile::getArchiveVirtualUrl( $suffix ));
+	}
+	function getThumbVirtualUrl( $suffix = false ) {
+		return(NSLocalFile::getArchiveVirtualUrl( $suffix ));
+	}
+	function getVirtualUrl( $suffix = false ) {
+		return(NSLocalFile::getVirtualUrl( $suffix ));
+	}
+	function getThumbStripped($suffix) {
+		return(NSLocalFile::getThumbStripped($suffix));
+	}
+	function addOlds() {
+		return(NSLocalFile::addOlds());
+	}
 
 	/** See comment about Instantiating this class using "self", above */
 
@@ -210,7 +354,7 @@ class NSOldLocalFile extends OldLocalFile
 	}
 
 	static function newFromRow( $row, $repo ) {
-		$title = Title::makeTitle( NS_FILE, $row->oi_name );
+		$title = Title::makeTitle( NS_IMAGE, $row->oi_name );
 		$file = new self( $title, $repo, null, $row->oi_archive_name );
 		$file->loadFromRow( $row, 'oi_' );
 		return $file;
@@ -251,7 +395,7 @@ function NSFileRepolockdownUserCan($title, $user, $action, &$result) {
 	global $wgWhitelistRead;
 	if (in_array($title->getPrefixedText(), $wgWhitelistRead)) return true;
 	if (function_exists('lockdownUserCan')){
-		if($title->getNamespace() == NS_FILE) {
+		if($title->getNamespace() == NS_IMAGE) {
 			$ntitle = Title::newFromText($title->mDbkeyform);
 			return ($ntitle->mNamespace < 100) ? true : lockdownUserCan($ntitle, $user, $action, $result);
 		}
@@ -265,9 +409,10 @@ function NSFileRepoImgAuthCheck($title, $path, $name, $result) {
 # See if stored in a NS path
 
 	$subdirs = explode('/',$path);
-	$x = (strlen($subdirs[1]) <> 3 && ($subdirs[1] == "archive" || $subdirs[1] == "deleted" || $subdirs[1] == "thumb")) ? 2 : 1;
-	if (strlen($subdirs[$x]) == 3 && is_numeric($subdirs[$x]) && $subdirs[$x] >= 100)  {
-		$title = Title::makeTitleSafe( NS_FILE, $wgContLang->getNsText($subdirs[$x]).":".$name );
+	$x = (!is_numeric($subdirs[1]) && ($subdirs[1] == "archive" || $subdirs[1] == "deleted" || $subdirs[1] == "thumb")) ? 2 : 1;
+	$x = ($x == 2 && $subdirs[1] == "thumb" && $subdirs[2] == "archive") ? 3 : $x;
+	if (strlen($subdirs[$x]) >= 3 && is_numeric($subdirs[$x]) && $subdirs[$x] >= 100)  {
+		$title = Title::makeTitleSafe( NS_IMAGE, $wgContLang->getNsText($subdirs[$x]).":".$name );
 		if( !$title instanceof Title ) {
 			$result = array('img-auth-accessdenied','img-auth-badtitle',$name);
 			return false;
