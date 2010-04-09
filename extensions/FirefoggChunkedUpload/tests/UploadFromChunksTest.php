@@ -83,6 +83,16 @@ class UploadFromChunksTest extends ApiSetup {
 			'action' => 'login',
 			'lgname' => self::$userName,
 			'lgpassword' => self::$passWord ) );
+		$this->assertArrayHasKey( "login", $data[0] );
+		$this->assertArrayHasKey( "result", $data[0]['login'] );
+		$this->assertEquals( "NeedToken", $data[0]['login']['result'] );
+		$token = $data[0]['login']['token'];
+
+		$data = $this->doApiRequest( array(
+			'action' => 'login',
+			"lgtoken" => $token,
+			"lgname" => self::$userName,
+			"lgpassword" => self::$passWord ) );
 
 		$this->assertArrayHasKey( "login", $data[0] );
 		$this->assertArrayHasKey( "result", $data[0]['login'] );
