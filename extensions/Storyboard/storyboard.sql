@@ -8,7 +8,7 @@ CREATE TABLE /*$wgDBprefix*/storyboard (
   story_author_location    VARCHAR(255)      NOT NULL,
   story_author_occupation  VARCHAR(255)      NOT NULL,
   story_author_image       VARCHAR(255)          NULL,  -- TODO: find out if this is an acceptible way to refer to an image
-  story_author_contact     VARCHAR(255)      NOT NULL,  -- TODO: confirm with erik this is a mandatory field
+  story_author_email       VARCHAR(255)      NOT NULL,
   story_hit_count          INT(8) unsigned   NOT NULL default '0',
   story_title              VARCHAR(255)      NOT NULL,
   story_text               MEDIUMBLOB        NOT NULL,

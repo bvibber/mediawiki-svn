@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'storyboard-authorname' => 'Author name',
 	'storyboard-authorlocation' => 'Author location',
 	'storyboard-authoroccupation' => 'Author occupation',
-	'storyboard-authorcontact' => 'Author contact information',
+	'storyboard-authoremail' => 'Author email address',
 	'storyboard-thestory' => 'The story',
 
 	// Special:StorySubmission
@@ -56,7 +56,7 @@ $messages['en'] = array(
 	'storyboard-occupation' => 'Your occupation',
 	'storyboard-story' => 'Your story',
 	'storyboard-photo' => 'Have a photo of yourself? Why not share it?',
-	'storyboard-contact' => 'Your E-mail address or telephone number',
+	'storyboard-email' => 'Your E-mail address',
 	'storyboard-storytitle' => 'A short, descriptive title',
 	'storyboard-agreement' => 'I agree with the publication and use of this story under the terms of the [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License].',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',

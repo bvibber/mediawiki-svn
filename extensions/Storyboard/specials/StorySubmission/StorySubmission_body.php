@@ -45,7 +45,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			'story_author_name' => $wgRequest->getText( 'name' ),
 			'story_author_location' => $wgRequest->getText( 'location' ),
 			'story_author_occupation' => $wgRequest->getText( 'occupation' ),
-			'story_author_contact' => $wgRequest->getText( 'contact' ),
+			'story_author_email' => $wgRequest->getText( 'email' ),
 			'story_title' => $title,
 			'story_text' => $wgRequest->getText( 'storytext' ),
 			'story_created' => $dbw->timestamp( time() ),

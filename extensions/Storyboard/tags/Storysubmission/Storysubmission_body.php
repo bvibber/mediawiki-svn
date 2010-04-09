@@ -75,9 +75,13 @@ EOT
 		$formBody = "<table width='$width'>";
 		
 		$defaultName = '';
+		$defaultEmail = '';
+		
 		if ( $wgUser->isLoggedIn() ) {
 			$defaultName = $wgUser->getRealName() !== '' ? $wgUser->getRealName() : $wgUser->getName();
+			$defaultEmail = $wgUser->getEmail();
 		}
+		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' .
@@ -95,8 +99,8 @@ EOT
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-contact' ) ) .
-			'<td>' . Html::input( 'contact', '', 'text', array( 'size' => $fieldSize )
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-email' ) ) .
+			'<td>' . Html::input( 'email', $defaultEmail, 'text', array( 'size' => $fieldSize )
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .

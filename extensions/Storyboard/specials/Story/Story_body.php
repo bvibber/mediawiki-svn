@@ -85,7 +85,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'story_author_name',
 					'story_author_location',
 					'story_author_occupation',
-					'story_author_contact',
+					'story_author_email',
 					'story_author_image',
 					'story_image_hidden',
 					'story_title',
@@ -254,9 +254,9 @@ class SpecialStory extends IncludableSpecialPage {
 			) . '</td></tr>';
 
 		$formBody .= '<tr>' .
-			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorcontact' ) ) .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authoremail' ) ) .
 			'<td>' . Html::input(
-				'contact',
+				'email',
 				$story->story_author_contact,
 				'text',
 				array(
@@ -388,7 +388,7 @@ EOT
 				'story_author_name' => $wgRequest->getText( 'name' ),
 				'story_author_location' => $wgRequest->getText( 'location' ),
 				'story_author_occupation' => $wgRequest->getText( 'occupation' ),
-				'story_author_contact' => $wgRequest->getText( 'contact' ),
+				'story_author_email' => $wgRequest->getText( 'email' ),
 				'story_title' => $wgRequest->getText( 'storytitle' ),
 				'story_text' => $wgRequest->getText( 'storytext' ),
 				'story_modified' => $dbw->timestamp( time() ),
