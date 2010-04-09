@@ -3122,7 +3122,7 @@ mw.RemoteSearchDriver.prototype = {
 		if ( search.num_results != 0 ) {
 			if ( search.num_results  >  provider.limit ) {
 				resultEnumeration = gM( 'rsd_results_desc_total', [( provider.offset + 1 ), to_num, 
-					mw.lang.formatNumber( search.num_results )] );
+					mw.Language.formatNumber( search.num_results )] );
 			} else {
 				resultEnumeration = gM( 'rsd_results_desc', [( provider.offset + 1 ), to_num] );
 			}

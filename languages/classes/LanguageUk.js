@@ -5,7 +5,7 @@
  * @ingroup Language
  */
 
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
 
 		//if no number with word, then use $form[0] for singular and $form[1] for plural or zero
@@ -13,7 +13,7 @@
 
 		// FIXME: CLDR defines 4 plural forms. Form for decimals is missing/
 		// See http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html#uk
-		forms = mw.lang.preConvertPlural( forms, 3 );
+		forms = mw.Language.preConvertPlural( forms, 3 );
 
 		if (count > 10 && Math.floor((count % 100) / 10) == 1) {
 			return forms[2];

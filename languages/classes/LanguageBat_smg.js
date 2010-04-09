@@ -5,9 +5,9 @@
  * @author Niklas Laxström
  * ported to js by mdale
  */
-mw.lang.convertPlural = function( count, forms ) {
+mw.Language.convertPlural = function( count, forms ) {
 	
-	forms = mw.lang.preConvertPlural( forms, 4 );
+	forms = mw.Language.preConvertPlural( forms, 4 );
 
 	count = Math.abs( count );
 	if ( count === 0 || (count % 100 === 0 || (count % 100 >= 10 && count % 100 < 20)) ) {

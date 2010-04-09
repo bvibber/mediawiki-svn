@@ -6,7 +6,7 @@ mw.addMessages({
  * Utility class which knows about languages, and how to construct HTML to select them
  * TODO: make this a more common library, used by this and TimedText
  */
-mw.Language = {
+mw.LanguageUpWiz = {
 
 	defaultCode: 'en',  // when we absolutely have no idea what language to preselect
 
@@ -387,21 +387,21 @@ mw.Language = {
 	 * 2) dict of language code to name -- useful for testing for existence, maybe other things.
 	 */
 	initialize: function() {
-		if ( mw.Language.initialized ) {
+		if ( mw.LanguageUpWiz.initialized ) {
 			return;	
 		}
-		mw.Language._codes = {};
+		mw.LanguageUpWiz._codes = {};
 		var select = $j( '<select/>' );
-		$j.each( mw.Language.languages, function( i, language ) {
+		$j.each( mw.LanguageUpWiz.languages, function( i, language ) {
 			select.append(
 				$j( '<option>' )
 					.attr( 'value', language.code )
 					.append( language.text )
 			);
-			mw.Language._codes[language.code] = language.text;
+			mw.LanguageUpWiz._codes[language.code] = language.text;
 		} );
-		mw.Language.$_select = select;
-		mw.Language.initialized = true;
+		mw.LanguageUpWiz.$_select = select;
+		mw.LanguageUpWiz.initialized = true;
 	},
 
 	/**
@@ -411,15 +411,15 @@ mw.Language = {
 	 * @return HTML	select element configured as desired
 	 */
 	getMenu: function( name, code ) {
-		mw.Language.initialize();
-		var $select = mw.Language.$_select.clone();
+		mw.LanguageUpWiz.initialize();
+		var $select = mw.LanguageUpWiz.$_select.clone();
 		$select.attr( 'name', name );
-		if ( code === mw.Language.UNKNOWN ) {
+		if ( code === mw.LanguageUpWiz.UNKNOWN ) {
 			// n.b. MediaWiki LanguageHandler has ability to add custom label for 'Unknown'; possibly as pseudo-label
-			$select.prepend( $j( '<option>' ).attr( 'value', mw.Language.UNKNOWN ).append( gM( 'mwe-code-unknown' )) );
-			$select.val( mw.Language.UNKNOWN );
+			$select.prepend( $j( '<option>' ).attr( 'value', mw.LanguageUpWiz.UNKNOWN ).append( gM( 'mwe-code-unknown' )) );
+			$select.val( mw.LanguageUpWiz.UNKNOWN );
 		} else if ( code !== undefined ) {
-			$select.val( mw.Language.getClosest( code ));
+			$select.val( mw.LanguageUpWiz.getClosest( code ));
 		}
 		return $select.get( 0 );
 	},
@@ -436,19 +436,19 @@ mw.Language = {
 	 *
 	 * @param code 	A string representing a language code, which we may or may not have. 
 	 *		Expected to be separated with dashes as codes from ISO 639, e.g. "zh-tw" for Chinese ( Traditional )
-	 * @return a language code which is close to the supplied parameter, or fall back to mw.Language.defaultCode
+	 * @return a language code which is close to the supplied parameter, or fall back to mw.LanguageUpWiz.defaultCode
 	 */
 	getClosest: function( code ) {
-		mw.Language.initialize();
+		mw.LanguageUpWiz.initialize();
 		if ( typeof ( code ) != 'string' || code === null || code.length === 0 ) {
-			return mw.Language.defaultCode;
+			return mw.LanguageUpWiz.defaultCode;
 		}
     		if ( code == 'nan' || code == 'minnan' ) {
 			return 'zh-min-nan';
-		} else if ( mw.Language._codes[code] !== undefined ) {
+		} else if ( mw.LanguageUpWiz._codes[code] !== undefined ) {
 			return code;					
 		} 
-		return mw.Language.getClosest( code.substring( 0, code.indexOf( '-' )) );
+		return mw.LanguageUpWiz.getClosest( code.substring( 0, code.indexOf( '-' )) );
 	},
 
 
@@ -477,7 +477,7 @@ mw.Language = {
 			formatResult: function( row ) {
 				return row.code;
 			}
-		}, mw.languages );
+		}, mw.Languages );
 
 		// and add a dropdown so we can see the thingy, too 
 		return _this;

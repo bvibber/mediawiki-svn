@@ -7,6 +7,9 @@
 if ( !defined( 'MEDIAWIKI' ) ) die( 1 );
 
 class jsClassLoader {
+	// The list of mwEmbed core components that make up the base mwEmbed class
+	private static $coreComponentsList = array();
+
 	// The list of mwEmbed modules that are enabled
 	private static $moduleList = array();
 
@@ -38,9 +41,9 @@ class jsClassLoader {
 		$wgJSAutoloadClasses = array_merge( $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses );
 
 		// Load javascript classes from mwEmbed.js
-		if ( !is_file( $wgMwEmbedDirectory . 'mwEmbed.js' ) ) {
+		if ( !is_file( $wgMwEmbedDirectory . 'loader.js' ) ) {
 			// throw error no mwEmbed found
-			throw new MWException( "mwEmbed.js missing check \$wgMwEmbedDirectory path\n" );
+			throw new MWException( "mwEmbed loader.js missing check \$wgMwEmbedDirectory path\n" );
 			return false;
 		}
 
@@ -51,7 +54,14 @@ class jsClassLoader {
 		self::$directoryContext = $wgMwEmbedDirectory;
 		self::proccessLoaderContent( $fileContent );
 
-		// Get the list of enabled modules into $wgJSModuleList
+		// Get the list of core component into self::$coreComponentsList
+		preg_replace_callback(
+			'/mwCoreComponentList\s*\=\s*\[(.*)\]/siU',
+			'jsClassLoader::preg_buildComponentList',
+			$fileContent
+		);
+
+		// Get the list of enabled modules into $moduleList
 		preg_replace_callback(
 			'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
 			'jsClassLoader::preg_buildModuleList',
@@ -74,7 +84,6 @@ class jsClassLoader {
 			self::proccessLoaderPath( $IP . '/extensions/' .  $loaderPath );
 		}
 	}
-
 	/**
 	 * Process a loader path, passes off to proccessLoaderContent
 	 *
@@ -116,6 +125,26 @@ class jsClassLoader {
 		}
 		return '';
 	}
+
+	/**
+	 * Get combined core component javascript
+	 *
+	 * NOTE: Component JS is javascript that is part of the
+	 * core mwEmbed javascript lib but in a separate file
+	 * for core library maintainability
+	 *
+	 * @return String combined component javascript
+	 */
+	public static function getCombinedComponentJs( $scriptLoader ){
+		self::loadClassPaths();
+		$jsOut = '';
+		foreach(  self::$coreComponentsList as $componentClassName ) {
+			// Output the core component via the script loader:
+			$jsOut .= $scriptLoader->getLocalizedScriptText( $componentClassName );
+		}
+		return $jsOut;
+	}
+
 	/**
 	 * Get the combined loader javascript
 	 *
@@ -124,6 +153,24 @@ class jsClassLoader {
 	public static function getCombinedLoaderJs(){
 		self::loadClassPaths();
 		return self::$combinedLoadersJs;
+	}
+
+	/**
+	 * Build a list of components to be included with mwEmbed
+	 */
+	private static function preg_buildComponentList( $jsvar ){
+		global $wgMwEmbedDirectory;
+		if(! isset( $jsvar[1] )){
+			return false;
+		}
+		$componentSet = explode(',', $jsvar[1] );
+		foreach( $componentSet as $na => $componentName ) {
+			$componentName = str_replace( array( '../', '\'', '"'), '', trim( $componentName ));
+			// Add the component to the $coreComponentsList
+			if( trim( $componentName ) != '' ) {
+				array_push( self::$coreComponentsList, trim( $componentName ) );
+			}
+		}
 	}
 
 	/**
@@ -137,8 +184,8 @@ class jsClassLoader {
 		}
 		$moduleSet = explode(',', $jsvar[1] );
 
-		foreach( $moduleSet as $na => $module ){
-			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $module ));
+		foreach( $moduleSet as $na => $moduleName ){
+			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $moduleName ));
 			// Check if there is there are module loader files
 			if( is_file( $wgMwEmbedDirectory . 'modules/' . $moduleName . '/loader.js' )){
 				array_push( self::$moduleList, $moduleName );
@@ -147,7 +194,6 @@ class jsClassLoader {
 		// Enabled modules is not reused.
 		return '';
 	}
-
 	/**
 	 * Adds javascript autoloader class names and paths
 	 * to $wgJSAutoloadClasses global

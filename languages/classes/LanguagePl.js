@@ -4,9 +4,9 @@
  *
  * @ingroup Language
  */
-	mw.lang.convertPlural = function( count, forms ) {
+	mw.Language.convertPlural = function( count, forms ) {
 		
-		forms = mw.lang.preConvertPlural( forms, 3 );
+		forms = mw.Language.preConvertPlural( forms, 3 );
 		count = Math.abs( count );
 		if ( count == 1 )
 			return forms[0];     // singular

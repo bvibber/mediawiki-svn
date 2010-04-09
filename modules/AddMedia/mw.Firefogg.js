@@ -92,7 +92,7 @@ var default_firefogg_options = {
 	'show_preview': true,
 	
 	//If we should enable chunk uploads ( mediaWiki api supports chunk uploads) 
-	'enable_chunks' : false
+	'enableChunks' : false
 };
 
 /**
@@ -1011,7 +1011,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	doUploadWithFormData: function() {
 		var _this = this;
 		// We can do a chunk upload
-		if(  _this.upload_mode == 'post'  && _this.enable_chunks ) {
+		if(  _this.upload_mode == 'post'  && _this.enableChunks ) {
 			_this.doChunkUpload();
 		} else if ( _this.upload_mode == 'post' ) {
 			// Encode and then do a post upload
@@ -1079,7 +1079,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			'filename': _this.formData['filename'],
 			'comment': _this.formData['comment']
 		};
-		if( options && options.enable_chunks == true ) {
+		if( options && options.enableChunks == true ) {
 			request[ 'enablechunks' ] = 'true';
 		}
 
@@ -1105,7 +1105,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 		var _this = this;
 		mw.log( "firefogg::doChunkUploadWithFormData: "  + _this.editToken );
 		// get the upload api request; 
-		var uploadRequest = this.getUploadApiRequest( { 'enable_chunks' : true } );
+		var uploadRequest = this.getUploadApiRequest( { 'enableChunks' : true } );
 
 		var encoderSettings = this.getEncoderSettings();
 		mw.log( 'do fogg upload/encode call: ' + _this.apiUrl + ' :: ' + JSON.stringify( uploadRequest ) );
@@ -1233,7 +1233,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 
 			// Upload done?
 			if ( -1 == $j.inArray( _this.fogg.state, [ 'upload done', 'done', 'encoding done' ] ) ) {
-				mw.log( 'Error:firefogg upload error: ' + _this.fogg.state );
+				mw.log( 'Error:firefogg upload error: ' + _this.fogg.state + ' \nresponse text: ' +response_text );
 				return ;
 			}
 			// Chunk upload mode:

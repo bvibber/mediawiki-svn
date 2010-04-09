@@ -109,15 +109,14 @@ class jsScriptLoader {
 		// Swap in the appropriate language per js_file
 		foreach ( $this->jsFileList as $classKey => $filePath ) {
 
-			// Get the script content
-			$jstxt = $this->getScriptText( $classKey, $filePath );
-			if( $jstxt ){
-				$this->jsout .= $this->doProcessJs( $jstxt );
-			}
+			// Get the localized script content
+			$this->jsout .= $this->getLocalizedScriptText( $classKey );
 
 			// If the core mwEmbed class entry point add some
 			// other "core" files:
 			if( $classKey == 'mwEmbed' ){
+				// Output core components ( parts of mwEmbed that are in different files )
+				$this->jsout .= jsClassLoader::getCombinedComponentJs( $this );
 
 				// Output the loaders:
 				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
@@ -254,7 +253,22 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Get the javascript text content from a given classKey
+	 * Get loclized ScriptText from a classKey
+	 *
+	 * @param String $classKey
+	 * @return String javascript to be included.
+	 */
+	function getLocalizedScriptText( $classKey ){
+		$jstxt = $this->getScriptText( $classKey );
+		if( $jstxt ){
+			return $this->doProcessJs( $jstxt );
+		}
+		// Return an empty string ( error is put into $this->errorMsg  )
+		return '';
+	}
+
+	/**
+	 * Get the javascript or css text content from a given classKey
 	 *
 	 * @param {String} $classKey Class Key to grab text for
 	 * @param {String} [$filePath] Optional file path to get js text
@@ -262,7 +276,7 @@ class jsScriptLoader {
 	 */
 	function getScriptText( $classKey ){
 		$jsout = '';
-		$filePath = self::getPathFromClass( $classKey );
+
 		// Special case: title classes
 		if ( substr( $classKey, 0, 3 ) == 'WT:' ) {
 			global $wgUser;
@@ -303,7 +317,7 @@ class jsScriptLoader {
 				if ( $a->getID() !== 0 ) {
 					// If in debug mode, add a comment with wiki title and rev:
 					if ( $this->debug )
-					$jsout .= "\n/**\n* WikiJSPage: " . htmlspecialchars( $titleBlock ) . " rev: " . $a->getID() . " \n*/\n";
+					$jsout .= "\n/**\n* WikiJSPage: " . xml::escapeJsString( $titleBlock ) . " rev: " . $a->getID() . " \n*/\n";
 					$fileStr = $a->getContent() . "\n";
 					$jsout.= ( $ext == 'css' ) ?
 						$this->transformCssOutput( $classKey, $fileStr ) :
@@ -311,29 +325,39 @@ class jsScriptLoader {
 					return $jsout;
 				}
 			}
-		}else{
-			$ext = substr($filePath, strrpos($filePath, '.') + 1);
-			// Dealing with files
-			if ( trim( $filePath ) != '' ) {
-				$fileStr = $this->getFileContents( $filePath ) . "\n";
-				if( $fileStr ){
-					// Add the file name if debug is enabled
-					if ( $this->debug ){
-						$jsout .= "\n/**\n* File: " . htmlspecialchars( $filePath ) . "\n*/\n";
-					}
-					$jsout.= ( $ext == 'css' ) ?
-						$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
-						$fileStr;
+		}
 
-					return $jsout;
-				}else{
-					$this->errorMsg .= "\nError could not read file: ". htmlspecialchars( $filePath )  ."\n";
-					return false;
+		// Deal with the classKey as a file:
+		$filePath = self::getPathFromClass( $classKey );
+
+		if( ! $filePath ) {
+			$this->errorMsg .= "\nError could not get file path: ". xml::escapeJsString( $classKey )  ."\n";
+			return false;
+		}
+
+		// Get the file extension:
+		$ext = substr( $filePath, strrpos( $filePath, '.' ) + 1 );
+
+		// Dealing with files
+		if ( trim( $filePath ) != '' ) {
+			$fileStr = $this->getFileContents( $filePath ) . "\n";
+			if( $fileStr ){
+				// Add the file name if debug is enabled
+				if ( $this->debug ){
+					$jsout .= "\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
 				}
+				$jsout.= ( $ext == 'css' ) ?
+					$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
+					$fileStr;
+
+				return $jsout;
+			}else{
+				$this->errorMsg .= "\nError could not read file: ". xml::escapeJsString( $filePath )  ."\n";
+				return false;
 			}
 		}
 		// If we did not return some js
-		$this->errorMsg .= "\nUnknown error\n";
+		$this->errorMsg .= "\nUnknown error in getting scriptText for key: " . xml::escapeJsString( $classKey ) . "\n";
 		return false;
 	}
 
@@ -361,8 +385,9 @@ class jsScriptLoader {
 				. dirname( $path ) . '/';
 		}
 		$cssString = Minify_CSS::minify( $cssString, $cssOptions);
-
-		return 'mw.addStyleString("' . Xml::escapeJsString( $classKey )
+		// css classes should be of form mw.style.{className}
+		$cssStyleName = str_replace('mw.style.', '', $classKey );
+		return 'mw.addStyleString("' . Xml::escapeJsString( $cssStyleName )
 					. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
 	}
 
@@ -519,7 +544,7 @@ class jsScriptLoader {
 
 					$filePath = self::getPathFromClass( $reqClass );
 					if( !$filePath ){
-						$this->errorMsg .= 'Requested class: ' . htmlspecialchars( $reqClass ) . ' not found' . "\n";
+						$this->errorMsg .= 'Requested class: ' . xml::escapeJsString( $reqClass ) . ' not found' . "\n";
 					}else{
 						$this->jsFileList[ $reqClass ] = $filePath;
 						$this->requestKey .= $reqClass;
@@ -644,8 +669,8 @@ class jsScriptLoader {
 		global $wgJSAutoloadClasses;
 		// Make sure the class is loaded:
 		jsClassLoader::loadClassPaths();
-		if ( isset( $wgJSAutoloadClasses[$reqClass] ) ) {
-			return $wgJSAutoloadClasses[$reqClass];
+		if ( isset( $wgJSAutoloadClasses[ $reqClass ] ) ) {
+			return $wgJSAutoloadClasses[ $reqClass ];
 		} else {
 			return false;
 		}
@@ -791,12 +816,12 @@ class jsScriptLoader {
 	 * @return {Array} decoded json array of message key value pairs
 	 */
 	function getMsgKeysFromClass( $class ){
-		$filePath = self::getPathFromClass( $class );
-		$str = $this->getScriptText($class,  $filePath);
+		$str = $this->getScriptText( $class );
 
 		$inx = self::getAddMessagesIndex( $str );
-		if(!$inx)
+		if( ! $inx ) {
 			return false;
+		}
 
 		return FormatJson::decode( '{' . substr($str, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
 	}

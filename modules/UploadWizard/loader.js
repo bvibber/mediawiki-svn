@@ -11,7 +11,7 @@
 	
 	// Add class file paths ( From ROOT )
 	mw.addClassFilePaths( {
-		"mw.Language"			: "modules/UploadWizard/mw.Language.js",
+		"mw.LanguageUpWiz"			: "modules/UploadWizard/mw.LanguageUpWiz.js",
 		"mw.UploadWizard"		: "modules/UploadWizard/mw.UploadWizard.js",
 		"mw.style.uploadWizard" : "modules/UploadWizard/css/uploadWizard.css",
 		
@@ -57,7 +57,7 @@
 			'mw.style.autocomplete'
 		],
 		[
-			'mw.Language',
+			'mw.LanguageUpWiz',
 			'mw.IframeTransport',
 			'mw.ApiUploadHandler',
 			'mw.DestinationChecker',

@@ -3,8 +3,8 @@
  * @ingroup Language
  *
  */
-mw.lang.convertPlural = function( count, forms ){		
-	forms = mw.lang.preConvertPlural( forms, 6 );	
+mw.Language.convertPlural = function( count, forms ){		
+	forms = mw.Language.preConvertPlural( forms, 6 );	
 	
 	if ( count == 0 ) {
 		index = 0;
@@ -24,7 +24,7 @@ mw.lang.convertPlural = function( count, forms ){
 }
 
 // Update the digitTransformTable for ar language key
-mw.lang.digitTransformTable = {
+mw.Language.digitTransformTable = {
 	'0' : '٠', // &#x0660;
 	'1' : '١', // &#x0661;
 	'2' : '٢', // &#x0662;
