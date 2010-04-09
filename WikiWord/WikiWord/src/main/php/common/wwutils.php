@@ -23,7 +23,8 @@ class WWUtils {
 	if ($db == NULL && isset($this)) $db = $this->db;
 
 	if ($this->debug) {
-	    print "\n<br/>" .  htmlspecialchars($sql) . "<br/>\n";
+	    print "\n<pre>" .  htmlspecialchars($sql) . "</pre>\n";
+	    flush();
 	}
 
 	if (!$db) {

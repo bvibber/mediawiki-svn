@@ -23,25 +23,80 @@ function printConceptList($langs, $concepts, $class) {
     <?php
 }
 
-function printConceptImageList($concept, $class = "terselist") {
+function getImagesAbout($concept, $max) {
+    global $utils, $profiling;
+
+    $t = microtime(true);
+    $pics = $utils->getImagesAbout($concept, $max);
+    $profiling['pics'] += (microtime(true) - $t);
+
+    return $pics;
+}
+
+function printConceptImageList($concept, $class = "tersetable", $columns = 5) {
     global $utils, $wwThumbSize, $wwMaxPreviewImages;
 
     if (!$concept) return false;
 
     if (is_array($concept) && !isset($concept['id'])) $images = $concept; #XXX: HACK
-    else $images = $utils->getImagesAbout($concept, $wwMaxPreviewImages);
+    else $images = getImagesAbout($concept, $wwMaxPreviewImages);
+
+    if (!$images) return;
+
+    $imgList = array_values($images);
 
     ?>
-    <ul class="<?php print $class; ?>">
+    <table class="imageTable <?php print $class; ?>">
+    <tbody>
       <?php
-	foreach ($images as $img) {
-	  ?><li><?php
-	  print $utils->getThumbnailHTML($img, $wwThumbSize, $wwThumbSize);
-	  ?></li><?php
+	$i = 0;
+	$c = count($images);
+	while ($i < $c) {
+	  $i = printConceptImageRow($imgList, $i, $columns);
 	}
       ?>
-    </ul>
+      </tr>
+    </tbody>
+    </table>
     <?php
+}
+
+function printConceptImageRow($images, $from, $columns = 5) {
+	global $wwThumbSize, $utils;
+
+	$cw = $wwThumbSize + 20;
+	$cwcss = $cw . "px";
+
+	$c = count($images);
+
+	$to = $from + $columns;
+	if ( $to > $c ) $to = $c;
+
+	print "\t<tr class=\"imageRow\">\n";
+	
+	for ($i = $from; $i<$to; $i += 1) {
+	  $img = $images[$i];
+	  print "\t\t<td class=\"imageCell\" width=\"$cw\" align=\"left\" valign=\"bottom\" nowrap=\"nowrap\" style=\"width: $cwcss\">";
+	  print $utils->getThumbnailHTML($img, $wwThumbSize, $wwThumbSize);
+	  print "</td>\n";
+	}
+	
+	print "\n\t</tr>\n";
+
+	print "\t<tr class=\"imageMetaRow\">\n";
+	
+	for ($i = $from; $i<$to; $i += 1) {
+	  $img = $images[$i];
+	  $title = str_replace("_", " ", $img['name']);
+
+	  print "\t\t<td class=\"imageMetaCell\" width=\"$cw\" align=\"left\" valign=\"top\" style=\"width: $cwcss\">";
+	  print "<div class=\"imageTitle\">" . htmlspecialchars( $title ) . "</div>";
+	  print "</td>\n";
+	}
+	
+	print "\n\t</tr>\n";
+
+	return $to;
 }
 
 function getConceptDetailsURL($langs, $concept) {
@@ -55,6 +110,7 @@ function getConceptDetailsURL($langs, $concept) {
 function getConceptDetailsLink($langs, $concept) {
     global $utils;
     $name = $utils->pickLocal($concept['name'], $langs);
+    $name = str_replace("_", " ", $name);
     $score = @$concept['score'];
   
     $u = getConceptDetailsURL($langs, $concept);
@@ -194,7 +250,7 @@ function printConcept($concept, $langs, $terse = true) {
     extract( $concept );
     $wclass = getWeightClass($score);
     $lclass = $terse ? "terselist" : "list";
-    $gallery = $utils->getImagesAbout($concept, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages );
+    $gallery = getImagesAbout($concept, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages );
 
     if (is_array($definition)) $definition = $utils->pickLocal($definition, $langs);
 
@@ -228,12 +284,11 @@ function printConcept($concept, $langs, $terse = true) {
     </tr>
 
     <tr class="row_images">
-      <td></td>
       <td class="cell_images" colspan="3">
       <?php 
 	  printConceptImageList( $gallery, $terse ? "tersegallery" : "gallery" ); 
       ?>
-      more...<!-- TODO -->
+      <p>more...<!-- TODO --></p>
       </td>
     </tr>
 
@@ -278,7 +333,10 @@ else {
   $thesaurus->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
 }
 
-$utils = new WWImages( $thesaurus );
+if (@$wwFakeImages) $utils = new WWFakeImages( $thesaurus );
+else $utils = new WWImages( $thesaurus );
+
+
 if ( !$utils->db ) $utils->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
 
 if (@$_REQUEST['debug']) $utils->debug = true;
@@ -290,7 +348,11 @@ $result = NULL;
 
 $languages = array( $lang, "en", "commons" ); #TODO: make the user define this list
 
+$profiling['thesaurus'] = 0;
+$profiling['pics'] = 0;
+
 if (!$error) {
+  $t = microtime(true);
   try {
       if ($lang && $conceptId) {
 	  $result = $thesaurus->getConceptInfo($conceptId, $lang);
@@ -301,6 +363,7 @@ if (!$error) {
   } catch (Exception $e) {
       $error = $e->getMessage();
   }
+  $profiling['thesaurus'] += (microtime(true) - $t);
 }
 
 
@@ -314,6 +377,11 @@ if (!$error) {
 	body { font-family: verdana, helvetica, arial, sans-serif; }
 	td { text-align: left; vertical-align: top; }
 	th { text-align: left; vertical-align: top; font-weight:bold; }
+
+	a:link, a:visited, a:active {
+	  color:#2200CC;
+	}
+
 	.error { color: red; font-weight: bold; }
 	.weight_huge { font-size: 140%; font-weight:bold; }
 	.weight_big { font-size: 120%; font-weight:bold; }
@@ -321,8 +389,10 @@ if (!$error) {
 	.weight_some { font-size: 100%; font-weight:bold; }
 	.weight_little { font-size: 90%; font-weight:bold; }
 	.weight_unknown { font-size: 100%; font-weight:bold; }
-	.row_def td { font-size: 80%; font-style:italic; }
-	.row_details td { font-size: 80%; }
+	.row_def td { font-size: small; font-style:italic; }
+	.row_details td { font-size: small; }
+	.row_related td { font-size: small; }
+	.row_category td { font-size: small; font-weight: bold; }
 	.cell_weight { text-align: right; }
 	.cell_label { text-align: right; }
 	.header { text-align: left; }
@@ -331,10 +401,22 @@ if (!$error) {
 	.note { font-size:80%; }
 
 	.tersegallery, .tersegallery li, .terselist, .terselist li { display: inline; margin:0; padding:0; }
-	.terselist li:before { content:" - " }
+	.terselist li:before { content:", " }
 	.terselist li:first-child:before { content:"" }
 
 	.gallery li { display: inline; padding:0.5ex; margin:0.5ex; }
+	.results { margin: 1em; }
+
+	.imageCell { 
+	    vertical-align: bottom; 
+	    padding-top: 1em;
+	}
+	.imageCell img { border: 1px solid; }
+	.imageCell, .imageMetaCell { 
+	    font-size:small; 
+	    border-spacing: 1em 0;
+	    margin: 1em;
+	}
     </style>
 </head>
 <body>
@@ -362,6 +444,13 @@ if (!$error) {
 	</tr>
       </table>
       <p class="note">Note: this is a thesaurus lookup, not a full text search. Only exact matches are considered.</p>
+      <?php
+      if ($utils->debug) {
+	      print '<input type="hidden" name="debug" value="true"/>';
+	      print "<p>debug mode enabled!</p>";
+	      flush();                           
+      }
+      ?>
     </form>
     </div>
 <?php
@@ -401,6 +490,11 @@ if ($result) {
 The WikiWord Navigator is part of the <a href="http://wikimedia.de">Wikimedia</a> project <a href="http://brightbyte.de/page/WikiWord">WikiWord</a>
 <p>
 </body>
+<?php
+foreach ( $profiling as $key => $value ) {
+  print "<!-- $key: $value sec -->\n";
+}
+?>
 </html>
 <?php
 $utils->close();

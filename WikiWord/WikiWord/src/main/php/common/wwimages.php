@@ -501,3 +501,104 @@ class WWImages extends WWWikis {
 	return $html;
     }
 }
+
+class WWFakeImages extends WWImages {
+
+    function __construct($thesaurus) {
+	WWImages::__construct($thesaurus);
+	
+	$this->somePics = array(
+		"Carrots_of_many_colors.jpg",
+		"Infantryman_in_1942_with_M1_Garand,_Fort_Knox,_KY.jpg",
+		"Wilhelmshaven_Meerjungfrau.jpg",
+	);
+
+	$this->morePics = array(
+		"Yellow_Tiger_Moth_Góraszka.JPG",
+		"Mauritania_boy1.jpg",
+		"Mavericks_Surf_Contest_2010b.jpg",
+	);
+
+	$this->fewPics = array(
+		$this->somePics[0],
+		$this->morePics[0],
+	);
+
+	$this->allPics = array_merge($this->somePics, $this->morePics);
+    }
+
+    function queryImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
+	return $this->somePics;
+    }
+
+    function queryImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false) {
+	return $this->fewPics;
+    }
+
+    function queryImagesInCategory($lang, $title) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getImagesInCategory($lang, $title) {
+	return $this->allPics;
+    }
+
+    function queryTagsForImages($lang, $images, $tagTable) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getTagsForImages($lang, $images, $tagTable) {
+	return array("Quux", "Xyzzy");
+    }
+
+    function queryTemplatesOnImagePage($lang, $image) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getTemplatesOnImagePage($lang, $image) {
+	return array("Quux", "Xyzzy");
+    }
+
+    function queryCategoriesOfImagePage($lang, $image) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getCategoriesOfImagePage($lang, $image) {
+	return array("Splorg", "Snork");
+    }
+
+    function queryImagesOnPagesGlobally( $concepts ) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getImagesOnPagesGlobally( $concepts ) {
+	return $this->allPics;
+    }
+
+    function queryGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+	throw new Exception( __METHOD__ . " not implemented" );
+    }
+
+    function getGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+	if (!$images) return array();
+
+	foreach ($images as $current) {
+	    $imageUsage[$current] = array(
+		"xx" => 2,
+		"yy" => 3,
+		"zz" => 6,
+		"*max*" => 6 
+	    );
+	}
+
+	return $imageUsage;
+    }
+}
