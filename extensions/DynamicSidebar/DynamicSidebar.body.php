@@ -26,16 +26,20 @@ class DynamicSidebar {
 		global $wgDynamicSidebarUseGroups, $wgDynamicSidebarUseUserpages;
 		global $wgDynamicSidebarUseCategories;
 
+		self::printDebug( "Entering modifySidebar" );
 		$groupSB = array();
 		$userSB = array();
 		$catSB = array();
 		if ( $wgDynamicSidebarUseGroups && isset( $sidebar['GROUP-SIDEBAR'] ) ) {
+			self::printDebug( "Using group sidebar" );
 			$skin->addToSidebarPlain( $groupSB, self::doGroupSidebar() );
 		}
 		if ( $wgDynamicSidebarUseUserpages && isset( $sidebar['USER-SIDEBAR'] ) ) {
+			self::printDebug( "Using user sidebar" );
 			$skin->addToSidebarPlain( $userSB, self::doUserSidebar() );
 		}
 		if ( $wgDynamicSidebarUseCategories && isset( $sidebar['CATEGORY-SIDEBAR'] ) ) {
+			self::printDebug( "Using category sidebar" );
 			$skin->addToSidebarPlain( $catSB, self::doCategorySidebar() );
 		}
 
@@ -85,7 +89,8 @@ class DynamicSidebar {
 			return '';
 		}
 
-		$a = new Article( $title );
+		$revid = $title->getLatestRevID();
+		$a = new Article( $title, $revid );
 		return $a->getContent();
 	}
 
@@ -114,7 +119,8 @@ class DynamicSidebar {
 			if ( !$title->exists() ) {
 				continue;
 			}
-			$a = new Article( $title );
+			$revid = $title->getLatestRevID();
+			$a = new Article( $title, $revid );
 			$text .= $a->getContent() . "\n";
 
 		}
@@ -157,7 +163,8 @@ class DynamicSidebar {
 				self::printDebug( "$category category page doesn't exist." );
 				continue;
 			}
-			$a = new Article( $title );
+			$revid = $title->getLatestRevID();
+			$a = new Article( $title, $revid );
 			$text .= $a->getContent() . "\n";
 			self::printDebug( "$category text output is: $text" );
 		}
