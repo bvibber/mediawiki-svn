@@ -20,33 +20,37 @@ $messages['en'] = array(
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
 	'specialpages-group-contribution' => 'Contribution',
 
+	// Story states
+	'storyboard-unpublished' => 'Unpublished',
+	'storyboard-published' => 'Published',
+	'storyboard-hidden' => 'Hidden',
+	'storyboard-unpublish' => 'Unpublish',
+	'storyboard-publish' => 'Publish',
+	'storyboard-hide' => 'Hide',
+		
 	// Special:Story
 	'story' => 'Story',
-	'storyboard-submittedbyon' => 'Submitted by $1 on $2.', // FIXME: split $2 in a para for date and time
+	'storyboard-submittedbyon' => 'Submitted by $1 on $2, $3.',
 	'storyboard-viewstories' => 'View stories',
 	'storyboard-nosuchstory' => 'The story you requested does not exist.
 It might have been removed.',
-	'storyboard-unpublished' => 'The story you requested has not been published yet.',
+	'storyboard-storyunpublished' => 'The story you requested has not been published yet.',
 	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
 	'storyboard-cantedit' => 'You are not allowed to edit stories.',
 	'storyboard-canedit' => 'You can $1 and publish this story.',
-	'storyboard-ispublished' => 'This story has been published and is publicly visible.',
-	'storyboard-ishidden' => 'This story has been hidden from the story review interface.',
-	'storyboard-createdandmodified' => 'Created on $1 and last modified on $2', // FIXME: split $2 in a para for date and time
+	'storyboard-createdandmodified' => 'Created on $1, $2 and last modified on $3, $4',
 	'storyboard-authorname' => 'Author name',
 	'storyboard-authorlocation' => 'Author location',
 	'storyboard-authoroccupation' => 'Author occupation',
 	'storyboard-authoremail' => 'Author e-mail address',
 	'storyboard-thestory' => 'The story',
+	'storyboard-storystate' => 'Story state',
 
 	// Special:StorySubmission
 	'storyboard-submissioncomplete' => 'Submission complete',
 
 	// Story review
-	'storyreview' => 'Story review',
-	'storyboard-publish' => 'Publish',
-	'storyboard-reviewed' => 'Reviewed',
-	'storyboard-unreviewed' => 'Unreviewed',
+	'storyreview' => 'Story review',	
 	'storyboard-hideimage' => 'Hide image',
 	'storyboard-unhideimage' => 'Show image',
 	'storyboard-deleteimage' => 'Delete image',

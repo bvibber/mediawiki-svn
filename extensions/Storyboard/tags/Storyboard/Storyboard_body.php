@@ -45,6 +45,7 @@ EOT
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStoryboardWidth );
 		$height = StoryboardUtils::getDimension( $args, 'height', $egStoryboardHeight );
 
+		// TODO: use this value in the js
 		$languages = Language::getLanguageNames();
 		if ( array_key_exists( 'language', $args ) && array_key_exists( $args['language'], $languages )  ) {
 			$language = $args['language'];		

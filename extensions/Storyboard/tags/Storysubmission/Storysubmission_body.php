@@ -48,7 +48,6 @@ class TagStorysubmission {
 	 * @return HTML
 	 * 
 	 * TODO: Fix the validation for the story title
-	 * TODO: use HTMLForm
 	 */
 	private static function getFrom( Parser $parser, array $args ) {
 		global $wgUser, $wgStyleVersion, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;

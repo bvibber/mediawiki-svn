@@ -116,7 +116,7 @@ class SpecialStory extends IncludableSpecialPage {
 					$this->showStory( $story );
 				}
 				elseif ( !$isEdit ) {
-					$wgOut->addWikiMsg( 'storyboard-unpublished' );
+					$wgOut->addWikiMsg( 'storyboard-storyunpublished' );
 					
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						global $wgTitle;
@@ -169,7 +169,8 @@ class SpecialStory extends IncludableSpecialPage {
 				'storyboard-submittedbyon',
 				'parsemag',
 				$story->story_author_name,
-				$wgLang->timeanddate( $story->story_created )
+				$wgLang->time( $story->story_created ),
+				$wgLang->date( $story->story_created )
 			) )
 		);
 		
@@ -190,10 +191,10 @@ class SpecialStory extends IncludableSpecialPage {
 	 * @param $story
 	 * 
 	 * TODO: Fix the validation for the story title
-	 * TODO: use HTMLForm
 	 */	
 	private function showStoryForm( $story ) {
-		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType;
+		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->setPageTitle( $story->story_title );
 		
@@ -214,6 +215,23 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$formBody = "<table width='$width'>";
 			
+		// The current value will be selected on page load with jQuery.
+		$formBody .= '<tr>' .
+			'<td width="100%"><label for="storystate">' . 
+				htmlspecialchars( wfMsg( 'storyboard-storystate' ) ) . 
+			'</label></td><td>' . 		
+			Html::rawElement(
+				'select',
+				array(
+					'name' => 'storystate',
+					'id' => 'storystate'
+				),
+				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . wfMsg( 'storyboard-unpublished' ) . '</option>' .
+				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . wfMsg( 'storyboard-published' ) . '</option>' .
+				'<option value="' . Storyboard_STORY_HIDDEN . '">' . wfMsg( 'storyboard-hidden' ) . '</option>'
+			) .
+		'</td></tr>';		
+		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
 			'<td>' .
@@ -305,15 +323,15 @@ class SpecialStory extends IncludableSpecialPage {
 				$story->story_text
 			) .
 			'</td></tr>';
-		
-		// TODO: fix this to work with new state field 
-		$checked = $story->story_state = Storyboard_STORY_PUBLISHED ? 'checked ' : '';
-		$formBody .= '<tr><td colspan="2"><input type="checkbox" name="published" ' . $checked . '/>&nbsp;' .
-			htmlspecialchars( wfMsg( 'storyboard-ispublished' ) ) .
-			'</td></tr>';		
+
+		$cancelLink = $wgUser->getSkin()->makeKnownLink( 
+			$this->getTitle( $story->story_title )->getPrefixedText(),
+			wfMsgExt( 'cancel', array('parseinline') )
+		);		
 			
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
+			"&nbsp;&nbsp;<span class='editHelp'>$cancelLink</span>" .
 			'</td></tr>';
 			
 		$formBody .= '</table>';
@@ -325,11 +343,13 @@ class SpecialStory extends IncludableSpecialPage {
 			htmlspecialchars( wfMsgExt(
 				'storyboard-createdandmodified',
 				'parsemag',
-				$wgLang->timeanddate( $story->story_created ),
-				$wgLang->timeanddate( $story->story_modified )
+				$wgLang->time( $story->story_created ),
+				$wgLang->date( $story->story_created ),
+				$wgLang->time( $story->story_modified ),
+				$wgLang->date( $story->story_modified )
 			) ) . 
 		'</legend>' . $formBody . '</fieldset>';
-		
+			
 		$query = "id=$story->story_id";
 			
 		$returnTo = $wgRequest->getVal( 'returnto' );
@@ -349,6 +369,10 @@ class SpecialStory extends IncludableSpecialPage {
 		$wgOut->addHTML( $formBody );
 		
 		$wgOut->addInlineScript( <<<EOT
+jQuery(document).ready(function() {
+	jQuery("#storystate option[value='$story->story_state']").attr('selected', 'selected');
+});
+		
 addOnloadHook(
 	function() {	
 		stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
@@ -398,7 +422,7 @@ EOT
 				'story_title' => $wgRequest->getText( 'storytitle' ),
 				'story_text' => $wgRequest->getText( 'storytext' ),
 				'story_modified' => $dbw->timestamp( time() ),
-				'story_state' => $wgRequest->getIntOrNull( 'state' ),
+				'story_state' => $wgRequest->getIntOrNull( 'storystate' ),
 			),
 			array(
 				'story_id' => $wgRequest->getText( 'storyId' ),
