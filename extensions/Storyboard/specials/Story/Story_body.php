@@ -193,7 +193,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * TODO: Fix the validation for the story title
 	 */	
 	private function showStoryForm( $story ) {
-		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType;
+		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->setPageTitle( $story->story_title );
@@ -285,7 +285,9 @@ class SpecialStory extends IncludableSpecialPage {
 					'class' => 'required email'
 				)
 			) . '</td></tr>';
-			
+		
+		// TODO: further fix this
+		// Need to extend the validator plugin to work with api results, and also send over the current srory id to exclude it.
 		$formBody .= '<tr>' . 
 			'<td width="100%"><label for="storytitle">' . 
 				htmlspecialchars( wfMsg( 'storyboard-storytitle' ) ) . 
@@ -299,7 +301,8 @@ class SpecialStory extends IncludableSpecialPage {
 					'maxlength' => 255,
 					'minlength' => 2,
 					'id' => 'storytitle',
-					'class' => 'required storytitle'
+					'class' => 'required storytitle',
+					'remote' => "$wgScriptPath/api.php?format=json&action=storyexists"
 				)
 			) . '</td></tr>';
 		
@@ -381,25 +384,14 @@ addOnloadHook(
 jQuery(document).ready(function(){
 	jQuery("#storyform").validate();
 });
-jQuery( "#storyform" ).validate({
-	rules: {
-		storytitle: {
-			required: true,
-			remote: wgScriptPath + '/api.php?action=storyexists&storyname=' + '' // TODO
-		}
-	},
+jQuery("#storyform").validate({
 	messages: {
-		storytitle: "This story title already exists" // TODO: i18n	
-	},
-	success: function( label ) {
-		label.addClass( "valid" ).text( "Valid story title!" )
-	},
-	submitHandler: function() {
-		
-	},		
-	onkeyup: false
+		storytitle: {
+			required: " ",
+			remote: jQuery.validator.format("{0} is already taken, please choose a different title.")	
+		}
+	}
 });
-
 EOT
 		);
 	}

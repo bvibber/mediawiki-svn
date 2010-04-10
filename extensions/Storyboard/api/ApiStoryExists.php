@@ -42,21 +42,24 @@ class ApiStoryExists extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		
-		if ( !isset( $params['storyname'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'storyname' ) );
+		if ( !isset( $params['storytitle'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'storytitle' ) );
 		}		
-					
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		$story = $dbr->selectRow(
 			'storyboard',
 			array( 'story_id' ),
-			array( 'story_title' => str_replace( '_', ' ', $params['storyname'] ) )
+			array( 'story_title' => str_replace( array( '_', '+' ), ' ', $params['storytitle'] ) )
 		);
 		
 		$result = array(
 			'exists' => $story != false
 		);
+
+		// Just return true or false untill a better solution here is found.
+		die( $story == false ? 'true' : 'false' );
 		
 		$this->getResult()->setIndexedTagName( $result, 'story' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );			
@@ -64,7 +67,7 @@ class ApiStoryExists extends ApiBase {
 	
 	public function getAllowedParams() {
 		return array(
-			'storyname' => array(
+			'storytitle' => array(
 				ApiBase :: PARAM_TYPE => 'string',
 			),
 		);
@@ -72,7 +75,7 @@ class ApiStoryExists extends ApiBase {
 	
 	public function getParamDescription() {
 		return array(
-			'storyname' => 'The name of the story to check for.'
+			'storytitle' => 'The name of the story to check for.'
 		);
 	}
 	
@@ -84,13 +87,13 @@ class ApiStoryExists extends ApiBase {
 		
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'storyname' ),
+			array( 'missingparam', 'storytitle' ),
 		) );
 	}
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=storyexists&storyname=oHai there!',
+			'api.php?action=storyexists&storytitle=oHai there!',
 		);
 	}
 
