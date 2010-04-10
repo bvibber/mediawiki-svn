@@ -646,32 +646,34 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->formClass = strtolower( $type ) . '-record recordadmin';
 		$this->formAtts = '';
 		$title = Title::newFromText( $type, NS_FORM );
-		if ( $title->exists() ) {
+		if ( is_object( $title ) {
+			if ( $title->exists() ) {
 
-			# Get the form content
-			$form = new Article( $title );
-			$form = $form->getContent();
-			
-			# Extract form's class and other attributes (except method and action)
-			if ( preg_match( "|<form\s*([^>]+)\s*>.+</form>|is", $form, $atts )) {
-				if ( preg_match( "|class\s*=\s*[\"'](.+?)['\"]|", $atts[1], $m ) ) $this->formClass .= ' ' . $m[1];
-				$this->formAtts = ' ' . trim( preg_replace( "/(class|action|method)\s*=\s*[\"'](.*?)['\"]/", "", $atts[1] ) );
+				# Get the form content
+				$form = new Article( $title );
+				$form = $form->getContent();
+				
+				# Extract form's class and other attributes (except method and action)
+				if ( preg_match( "|<form\s*([^>]+)\s*>.+</form>|is", $form, $atts )) {
+					if ( preg_match( "|class\s*=\s*[\"'](.+?)['\"]|", $atts[1], $m ) ) $this->formClass .= ' ' . $m[1];
+					$this->formAtts = ' ' . trim( preg_replace( "/(class|action|method)\s*=\s*[\"'](.*?)['\"]/", "", $atts[1] ) );
+				}
+				
+				# Process content
+				$form = preg_replace( '#<input.+?type=[\'"]?submit["\']?.+?/(input| *)>#i', '', $form );    # remove submits
+				$form = preg_replace( '#^.+?<form.*?>#is', '', $form );                                     # remove up to and including form open
+				$form = preg_replace( '#</form>.+?$#is', '', $form );                                       # remove form close and everything after
+				$form = preg_replace( '#name\s*=\s*([\'"])(.*?)\\1#is', 'name="ra_$2"', $form );            # prefix input names with ra_
+				$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#is', '$1<option selected/>', $form ); # ensure all select lists have default blank
 			}
-			
-			# Process content
-			$form = preg_replace( '#<input.+?type=[\'"]?submit["\']?.+?/(input| *)>#i', '', $form );    # remove submits
-			$form = preg_replace( '#^.+?<form.*?>#is', '', $form );                                     # remove up to and including form open
-			$form = preg_replace( '#</form>.+?$#is', '', $form );                                       # remove form close and everything after
-			$form = preg_replace( '#name\s*=\s*([\'"])(.*?)\\1#is', 'name="ra_$2"', $form );            # prefix input names with ra_
-			$form = preg_replace( '#(<select.+?>)\s*(?!<option/>)#is', '$1<option selected/>', $form ); # ensure all select lists have default blank
-		}
-		else {
+			else {
 
-			# Create a red link to the form if it doesn't exist
-			$form = '<b>' . wfMsg( 'recordadmin-noform', $type ) . '</b>'
-				. '<br /><a href="' . $title->getLocalURL( 'action=edit' )
-				. '">(' . wfMsg( 'recordadmin-createlink' ) . ')</a><br />';
-		}
+				# Create a red link to the form if it doesn't exist
+				$form = '<b>' . wfMsg( 'recordadmin-noform', $type ) . '</b>'
+					. '<br /><a href="' . $title->getLocalURL( 'action=edit' )
+					. '">(' . wfMsg( 'recordadmin-createlink' ) . ')</a><br />';
+			}
+		} else $form = '';
 		$this->form = $form;
 	}
 
