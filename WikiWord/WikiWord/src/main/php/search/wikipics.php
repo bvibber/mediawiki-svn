@@ -147,7 +147,7 @@ function getImageInfo($img) {
 	    $info[] = htmlspecialchars("{$img_width}x{$img_height}");
 	}
 
-	if ( $img_size > 1024*1024 ) $info[] = htmlspecialchars(sprintf("%1.0fM", $img_size / 1024.0*1024.0));
+	if ( $img_size > 1024*1024 ) $info[] = htmlspecialchars(sprintf("%1.0fM", $img_size / (1024.0*1024.0)));
 	else if ( $img_size > 1024 ) $info[] = htmlspecialchars(sprintf("%1.0fK", $img_size / 1024.0));
 	else $info[] = htmlspecialchars(sprintf("%dB", $img_size));
 
