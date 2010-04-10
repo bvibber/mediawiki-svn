@@ -15,13 +15,7 @@ $.fn.collapsibleTabs = function( $$options ) {
 		$this.data( 'collapsibleTabsSettings', $settings );
 		// attach data to our collapsible elements
 		$this.children( $settings.collapsible ).each( function() {
-			var $collapsible = $( this );
-			$collapsible.data( 'collapsibleTabsSettings', {
-				'expandedContainer': $settings.expandedContainer,
-				'collapsedContainer': $settings.collapsedContainer,
-				'expandedWidth': $collapsible.width(),
-				'prevElement': $collapsible.prev()
-			} );
+			$.collapsibleTabs.addData( $( this ) );
 		} );
 	} );
 	
@@ -52,9 +46,26 @@ $.collapsibleTabs = {
 				> $( '#right-navigation' ).position().left;
 		}
 	},
+	addData: function( $collapsible ) {
+		var $settings = $collapsible.parent().data( 'collapsibleTabsSettings' );
+		$collapsible.data( 'collapsibleTabsSettings', {
+			'expandedContainer': $settings.expandedContainer,
+			'collapsedContainer': $settings.collapsedContainer,
+			'expandedWidth': $collapsible.width(),
+			'prevElement': $collapsible.prev()
+		} );
+	},
+	getSettings: function( $collapsible ) {
+		var $settings = $collapsible.data( 'collapsibleTabsSettings' );
+		if ( typeof $settings == 'undefined' ) {
+			$.collapsibleTabs.addData( $collapsible );
+			$settings = $collapsible.data( 'collapsibleTabsSettings' );
+		}
+		return $settings;
+	},
 	handleResize: function( e ){
 		$.collapsibleTabs.instances.each( function() {
-			var $this = $( this ), data = $this.data( 'collapsibleTabsSettings' );
+			var $this = $( this ), data = $.collapsibleTabs.getSettings( $this );
 			if( data.shifting ) return;
 
 			// if the two navigations are colliding
@@ -68,8 +79,8 @@ $.collapsibleTabs = {
 			// if there are still moveable items in the dropdown menu,
 			// and there is sufficient space to place them in the tab container
 			if( $( data.collapsedContainer + ' ' + data.collapsible ).length > 0
-					&& data.expandCondition( $( data.collapsedContainer ).children(
-							data.collapsible+":first" ).data( 'collapsibleTabsSettings' ).expandedWidth ) ) {
+					&& data.expandCondition( $.collapsibleTabs.getSettings( $( data.collapsedContainer ).children(
+							data.collapsible+":first" ) ).expandedWidth ) ) {
 				//move the element from the dropdown to the tab
 				$this.trigger( "beforeTabExpand" );
 				$.collapsibleTabs
@@ -79,22 +90,24 @@ $.collapsibleTabs = {
 	},
 	moveToCollapsed: function( ele ) {
 		var $moving = $( ele );
-		var data = $moving.data( 'collapsibleTabsSettings' );
-		$( data.expandedContainer ).data( 'collapsibleTabsSettings' ).shifting = true;
+		var data = $.collapsibleTabs.getSettings( $moving );
+		var dataExp = $.collapsibleTabs.getSettings( data.expandedContainer );
+		dataExp.shifting = true;
 		$moving
 			.remove()
 			.prependTo( data.collapsedContainer )
 			.data( 'collapsibleTabsSettings', data );
-		$( data.expandedContainer ).data( 'collapsibleTabsSettings' ).shifting = false;
+		dataExp.shifting = false;
 		$.collapsibleTabs.handleResize();
 	},
 	moveToExpanded: function( ele ) {
 		var $moving = $( ele );
-		var data = $moving.data( 'collapsibleTabsSettings' );
-		$( data.expandedContainer ).data( 'collapsibleTabsSettings' ).shifting = true;
+		var data = $.collapsibleTabs.getSettings( $moving );
+		var dataExp = $.collapsibleTabs.getSettings( data.expandedContainer );
+		dataExp.shifting = true;
 		// remove this element from where it's at and put it in the dropdown menu
 		$moving.remove().insertAfter( data.prevElement ).data( 'collapsibleTabsSettings', data );
-		$( data.expandedContainer ).data( 'collapsibleTabsSettings' ).shifting = false;
+		dataExp.shifting = false;
 		$.collapsibleTabs.handleResize();
 	}
 };
