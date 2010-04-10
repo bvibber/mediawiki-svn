@@ -121,10 +121,11 @@ class ApiRollback extends ApiBase {
 			array( 'invaliduser', 'user' ),
 		) );
 	}
-	
-	public function getTokenSalt() {
-		return '';
-	}
+
+// LIVE HACK: Disable, causes breakage	
+//	public function getTokenSalt() {
+//		return '';
+//	}
 
 	protected function getExamples() {
 		return array (
