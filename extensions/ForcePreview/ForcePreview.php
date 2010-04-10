@@ -11,7 +11,7 @@ if(!defined('MEDIAWIKI')) {
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Force Preview',
-	'version' => '1.1',
+	'version' => '1.2',
 	'author' => 'Ryan Schmidt',
 	#'description' => 'Force preview for unprivelaged users',
 	'descriptionmsg' => 'forcepreview-desc',
@@ -29,7 +29,7 @@ $wgGPManagerSort['edit'][] = 'forcepreviewexempt';
 
 function efForcePreview( &$editpage, &$buttons ) {
 	global $wgUser;
-	if( !$wgUser->isAllowed( 'forcepreviewexempt' ) && !$editpage->preview ) {
+	if( !$wgUser->isAllowed( 'forcepreviewexempt' ) && !$editpage->preview && empty($editpage->save) ) {
 		wfLoadExtensionMessages( 'ForcePreview' );
 		$buttons['save'] = str_replace( '/>', 'disabled="disabled" />', $buttons['save'] );
 		$buttons['save'] = preg_replace(  '/value="' . wfMsg('savearticle') . '"/i', 'value="' . wfMsg('forcepreview') . '"', $buttons['save'] );
