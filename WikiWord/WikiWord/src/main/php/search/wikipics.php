@@ -42,7 +42,7 @@ function getImagesAbout($concept, $max) {
     return $pics;
 }
 
-function printConceptImageList($concept, $class = "tersetable", $columns = 5, $limit = false ) {
+function printConceptImageList($concept, $terse = false, $columns = 5, $limit = false ) {
     global $utils, $wwThumbSize;
 
     if (!$concept) return false;
@@ -52,17 +52,24 @@ function printConceptImageList($concept, $class = "tersetable", $columns = 5, $l
 
     if (!$images) return;
 
+    $class = $terse ? "terseImageTable" : "";
+
     $imgList = array_values($images);
 
+    $cw = $wwThumbSize + 32; //FIXME: magic number, use config!
+
     ?>
-    <table class="imageTable <?php print $class; ?>" summary="images">
+    <table class="imageTable <?php print $class; ?>" summary="images" width="<?php print $columns*$cw; ?>">
+      <colgroup span="<?php print $columns; ?>" width="<?php print $cw; ?>">
+      </colgroup>
+
       <?php
 	$i = 0;
 	$c = count($images);
 	if (!$limit || $limit > $c) $limit = $c;
 
 	while ($i < $limit) {
-	  $i = printConceptImageRow($imgList, $i, $limit, $columns);
+	  $i = printConceptImageRow($imgList, $i, $terse, $columns, $limit);
 	}
       ?>
     </table>
@@ -71,10 +78,10 @@ function printConceptImageList($concept, $class = "tersetable", $columns = 5, $l
     return $i < $c;
 }
 
-function printConceptImageRow($images, $from, $limit, $columns = 5) {
+function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = false) {
 	global $wwThumbSize, $utils;
 
-	$cw = $wwThumbSize + 20;
+	$cw = $wwThumbSize + 32; //FIXME: magic number, use config!
 	$cwcss = $cw . "px";
 
 	$to = $from + $columns;
@@ -91,23 +98,80 @@ function printConceptImageRow($images, $from, $limit, $columns = 5) {
 	
 	print "\n\t</tr>\n";
 
-	print "\t<tr class=\"imageMetaRow\">\n";
-	
-	for ($i = $from; $i<$to; $i += 1) {
-	  $img = $images[$i];
+	if (!$terse) {
+	    print "\t<tr class=\"imageMetaRow\">\n";
+	    
+	    for ($i = $from; $i<$to; $i += 1) {
+	      $img = $images[$i];
 
-	  $title = $img['name'];
-	  $title = str_replace("_", " ", $title);
-	  $title = preg_replace("/\\.[^.]+$/", "", $title);
+	      $title = $img['name'];
+	      $title = str_replace("_", " ", $title);
+	      $title = preg_replace("/\\.[^.]+$/", "", $title);
 
-	  print "\t\t<td class=\"imageMetaCell\" width=\"$cw\" align=\"left\" valign=\"top\" style=\"width: $cwcss\">";
-	  print "<div class=\"imageTitle\">" . htmlspecialchars( $title ) . "</div>";
-	  print "</td>\n";
+	      $info = getImageInfo($img);
+	      $labels = getImageLabels($img);
+
+	      print "\t\t<td class=\"imageMetaCell\" width=\"$cw\" align=\"left\" valign=\"top\" style=\"width: $cwcss\">";
+	      print "<div class=\"imageTitle\">" . htmlspecialchars( $title ) . "</div>";
+
+	      if ($info) {
+		  print "<div class=\"imageInfo\">";
+		  printList($info, false, "terselist");
+		  print "</div>";
+	      }
+
+	      if ($labels) {
+		  print "<div class=\"imageLabels\">";
+		  printList($labels, false, "terselist");
+		  print "</div>";
+	      }
+
+	      print "</td>\n";
+	    }
+	    
+	    print "\n\t</tr>\n";
 	}
-	
-	print "\n\t</tr>\n";
 
 	return $to;
+}
+
+function getImageInfo($img) {
+	if (empty($img['meta'])) return false;
+
+	$info = array();
+	extract($img['meta']);
+
+	$info[] = htmlspecialchars("$img_minor_mime");
+
+	if ( $img_media_type == "BITMAP" ) {
+	    $info[] = htmlspecialchars("{$img_width}x{$img_height}");
+	}
+
+	if ( $img_size > 1024*1024 ) $info[] = htmlspecialchars(sprintf("%1.0fM", $img_size / 1024.0*1024.0));
+	else if ( $img_size > 1024 ) $info[] = htmlspecialchars(sprintf("%1.0fK", $img_size / 1024.0));
+	else $info[] = htmlspecialchars(sprintf("%dB", $img_size));
+
+	return $info;
+}
+
+function getImageLabels($img) {
+	global $wwLabelPatterns;
+
+	if (!$wwLabelPatterns || empty($img['tags'])) return false;
+
+	$labels = array();
+
+	foreach ( $img['tags'] as $tag ) {
+	    foreach ( $wwLabelPatterns as $pattern => $label ) {
+		if ( preg_match($pattern, $tag) ) {
+		    $labels[$label] = 1;
+		    break;
+		}
+	    }
+	}
+
+	$labels = array_keys($labels);
+	return $labels;
 }
 
 function getConceptDetailsURL($langs, $concept) {
@@ -184,7 +248,7 @@ function printList($items, $escape = true, $class = "list") {
       <?php
 	foreach ($items as $item) {
 	    if ( $escape ) $item = htmlspecialchars($item);
-	    print "\t\t<li>" . $item . "</li>\n";
+	    print "<li>" . trim($item) . "</li>";
 	}
       ?>
     </ul>
@@ -232,10 +296,11 @@ function getRelatedConceptList( $concept ) {
     $related = array();
     if ( @$concept['similar'] ) $related += $concept['similar'];
     if ( @$concept['related'] ) $related += $concept['related'];
-    if ( @$concept['narrower'] ) $related += $concept['narrower'];
 
     if (isset($concept['broader'])) $related = array_key_diff($related, $concept['broader']);
+    if (isset($concept['narrower'])) $related = array_key_diff($related, $concept['narrower']);
 
+    sortConceptList($related);
     return $related;
 }
 
@@ -267,12 +332,55 @@ function getWeightClass($weight) {
     else return "little";
 }
 
+function stripSections(&$concepts) {
+    foreach ($concepts as $k => $c) {
+	  foreach ($c['name'] as $l => $n) {
+		if (preg_match('/#/', $n)) {
+			unset($concepts[$k]);
+			break;
+		}
+	  }
+    }
+}
+
+function compareConceptScoreAndName($a, $b) {
+    if (isset($a['score']) && isset($b['score']) && $a['score'] != $b['score']) {
+	if ( $a['score'] > $b['score'] ) return 1;
+	else return -1;
+    } else {
+	if ( $a['name'] > $b['name'] ) return 1; //XXX: unicode collation??
+	else return -1;
+    }
+
+    return 0;
+}
+
+function sortConceptList(&$concepts) {
+    usort($concepts, 'compareConceptScoreAndName');
+}
+
+function mangleConcept(&$concept) {
+    stripSections($concept['narrower']);
+
+    sortConceptList($concept['narrower']);
+    sortConceptList($concept['related']);
+    sortConceptList($concept['similar']);
+    sortConceptList($concept['broader']);
+}
+
 function printConcept($concept, $langs, $terse = true) {
-    global $utils, $wwMaxPreviewImages, $wwMaxGalleryImages, $wwMaxPreviewLinks, $wwGalleryColumns;
+    global $utils, $wwMaxPreviewImages, $wwMaxGalleryImages, $wwMaxPreviewLinks, $wwMaxDetailLinks, $wwGalleryColumns;
 
     extract( $concept );
-    $wclass = getWeightClass($score);
-    $lclass = $terse ? "terselist" : "list";
+    if (@$score) $wclass = getWeightClass($score);
+    else $wclass = "";
+
+    #$lclass = $terse ? "terselist" : "list";
+    $lclass = "terselist";
+
+    $name = $utils->pickLocal($concept['name'], $langs);
+    $name = str_replace("_", " ", $name);
+
     $gallery = getImagesAbout($concept, $terse ? $wwMaxPreviewImages*2 : $wwMaxGalleryImages+1 );
 
     if (is_array($definition)) $definition = $utils->pickLocal($definition, $langs);
@@ -289,13 +397,28 @@ function printConcept($concept, $langs, $terse = true) {
     <tr class="row_images">
       <td class="cell_images" colspan="2">
       <?php 
-	  $more = printConceptImageList( $gallery, $terse ? "tersegallery" : "gallery", $wwGalleryColumns, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages ); 
+	  if (!$gallery) print "<p class=\"notice\">No images found for concept <em>".htmlspecialchars($name)."</em>.</p>";
+	  else $more = printConceptImageList( $gallery, $terse, $wwGalleryColumns, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages ); 
       ?>
       </td>
+      <?php if ($gallery) { ?>
       <td class="cell_more_images" colspan="1" width="100%" style="vertical-align:bottom; padding: 1ex; font-size:normal;">
-      <?php if ($terse && $more) print " <div><strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more...") . "]</strong></div>"; ?>
+      <?php if ($terse) print " <div><strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more/details...") . "]</strong></div>"; ?>
+      </td>
+      <?php } ?>
+    </tr>
+
+    <?php if (@$concept['narrower']) { ?>
+    <tr class="row_narrower">
+      <td class="cell_related" colspan="3">
+      <strong class="label">Narrower:</strong>
+      <?php 
+	  $more = printConceptList( $langs, $concept['narrower'], $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ); 
+      ?>
+      <?php if ($terse && $more) print " <strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more...") . "]</strong>"; ?>
       </td>
     </tr>
+    <?php } ?>
 
     <?php 
       $related = getRelatedConceptList($concept);
@@ -339,13 +462,23 @@ $conceptId = @$_REQUEST['id'];
 $term = @$_REQUEST['term'];
 $lang = @$_REQUEST['lang'];
 
+if ($term!==NULL && preg_match('/^\s*#(\d+)\s*$/', $term, $m)) {
+    $conceptId = $m[1];
+    $term = NULL;
+}
+
 if (!isset($wwSelf)) $wwSelf = @$_SERVER["PHP_SELF"];
 
 $error = NULL;
 
-if ($lang && !isset($wwLanguages[$lang])) {
-    $lang = NULL;
-    $error = "bad language code: $lang";
+if ($lang) {
+    $ll = preg_split('![,;/|+]!', $lang);
+    foreach ($ll as $l) {
+	if (!isset($wwLanguages[$l]) && $l != "commons") {
+	    $error = "bad language code: $l";
+	    $lang = NULL;
+	}
+    }
 }
 
 if ($wwAPI) $thesaurus = new WWClient($wwAPI);
@@ -365,6 +498,7 @@ if (@$_REQUEST['debug']) $utils->debug = true;
 $limit = 20;
 $norm = 1;
 
+$mode = NULL;
 $result = NULL;
 
 $languages = array( $lang, "en", "commons" ); #TODO: make the user define this list
@@ -376,9 +510,11 @@ if (!$error) {
   $t = microtime(true);
   try {
       if ($lang && $conceptId) {
+	  $mode = "concept";
 	  $result = $thesaurus->getConceptInfo($conceptId, $lang);
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
+	  $mode = "term";
 	  $result = $thesaurus->getConceptsForTerm($lang, $term, $languages, $norm, $limit);
       } 
   } catch (Exception $e) {
@@ -433,8 +569,7 @@ if (!$error) {
 
 	.row_images td { vertical-align: bottom; }
 
-	.row_related td { font-size: small; background-color: #F0F7F9; }
-	.row_category td { font-size: small; background-color: #F0F7F9; }
+	.row_related td, .row_category, .row_narrower { font-size: small; background-color: #F0F7F9; }
 	.row_blank td { font-size: small;  }
 
 	/*
@@ -467,14 +602,21 @@ if (!$error) {
 
 	.imageTable td.imageCell { 
 	    vertical-align: bottom; 
-	    padding-top: 1em;
+	    padding-top: 0.5em;
+	    padding-right: 1em;
+	    font-size:33%; 
 	}
-	.imageTable td.imageCell img { border: 1px solid; }
-	.imageTable td.imageCell, .imageTable td.imageMetaCell { 
+
+	.imageTable td.imageMetaCell { 
+	    vertical-align: top; 
+	    padding-bottom: 0.5em;
+	    padding-right: 1em;
 	    font-size:small; 
-	    border-spacing: 1em 0;
-	    margin: 1em;
 	}
+
+	.imageTable td.imageCell img { border: 1px solid; }
+
+	.imageInfo { color: #676767 }
     </style>
 </head>
 <body>
@@ -524,12 +666,17 @@ if (!$error) {
 if ($error) {
   print "<p class=\"error\">".htmlspecialchars($error)."</p>";
 }
+
+if (!$result && $mode) {
+  if ($mode=="concept") print "<p class=\"error\">".htmlspecialchars($error)."</p>";
+  else if ($mode=="term") print "<p class=\"notice\">No meanings found for term <em>".htmlspecialchars($term)."</em>.</p>";
+}
 ?>    
 
 <?php
-if ($result) {
-    if ( $conceptId ) $terse = false;
-    else $terse = true;
+if ($result && $mode) {
+    if ( $mode == 'concept' ) $terse = false;
+    else if ( $mode == 'term' ) $terse = true;
 ?>
     <table  border="0" class="results" cellspacing="0" summary="search results">
 <?php
@@ -540,6 +687,7 @@ if ($result) {
 
 ?>    
     <?php 
+	  mangleConcept($row);
 	  $continue= printConcept($row, $languages, $terse);
 
 	  if (!$continue) break;

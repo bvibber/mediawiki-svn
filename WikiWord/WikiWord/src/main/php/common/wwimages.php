@@ -74,6 +74,12 @@ class ImageCollection {
 	}
     }
 
+    function addMeta($image, $meta) {
+	if (isset($this->images[$image])) {
+	    $this->images[$image]['meta'] = $meta;
+	}
+    }
+
 }
 
 class WWImages extends WWWikis {
@@ -187,6 +193,29 @@ class WWImages extends WWWikis {
 
 	$rs = $this->queryTagsForImages($lang, $images, $tagTable);
 	$list = WWUtils::slurpAssoc($rs, "image", "tags");
+	mysql_free_result($rs);
+	return $list;
+    }
+
+    function queryMetaForImages($lang, $images) {
+	if (!$images) return false;
+
+	$image_table = $this->getWikiTableName($lang, "image");
+
+	$sql = "/* queryMetaForImages(" . $this->quote($lang) . ", " . $this->quoteSet($images) . ") */ ";
+
+	$sql .= " SELECT img_name, img_size, img_width, img_height, img_media_type, img_major_mime, img_minor_mime, img_timestamp, img_sha1 ";
+ 	$sql .= " FROM $image_table as T ";
+	$sql .= " WHERE T.img_name IN " . $this->quoteSet($images);
+
+	return $this->queryWiki($lang, $sql);
+    }
+
+    function getMetaForImages($lang, $images) {
+	if (!$images) return array();
+
+	$rs = $this->queryMetaForImages($lang, $images);
+	$list = WWUtils::slurpRows($rs, "img_name");
 	mysql_free_result($rs);
 	return $list;
     }
@@ -394,6 +423,7 @@ class WWImages extends WWWikis {
 	}
 
 	if ($max && $images->size()>$max) { //short-cirquit, if we already reached the max
+	    $this->addImageMeta($images);
 	    $this->addImageTags($images);
 	    return $images->listImages($max);
 	}
@@ -411,6 +441,7 @@ class WWImages extends WWWikis {
 	    }
 	}
 
+	$this->addImageMeta($images);
 	$this->addImageTags($images);
 	return $images->listImages($max);
     }
@@ -442,6 +473,18 @@ class WWImages extends WWWikis {
 			$cats = $this->getCategoriesOfImagePage('commons', $image);
 			if ($cats) $images->addTags($image, $cats, "Category:");
 		}
+	}
+    }
+
+    function addImageMeta($images) {
+	$img = array();
+	foreach ($images->images as $image) {
+		$img[] = $image['name'];
+	}
+
+	$infoMap = $this->getMetaForImages('commons', $img);
+	foreach ($infoMap as $image => $meta) {
+		$images->addMeta($image, $meta, "");
 	}
     }
 
@@ -484,6 +527,8 @@ class WWImages extends WWWikis {
 
 	if (!@$title) $title = $name;
 
+	$alt = str_replace('_', ' ', $name);
+
 	$tags = "";
 	if (isset($image['tags'])) {
 	    foreach ($image['tags'] as $tag) {
@@ -491,7 +536,7 @@ class WWImages extends WWWikis {
 	    }
 	}
 
-	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($title) . "\" border=\"0\"/>";
+	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($alt) . "\" border=\"0\"/>";
 	$html= "<a href=\"" . htmlspecialchars($page) . "\" title=\"" . htmlspecialchars($title) . " (score " . htmlspecialchars($image['score']) . ")\" class=\"thumb-link $tags\">$html</a>";
 
 	if (is_array($image)) {
@@ -560,15 +605,39 @@ class WWFakeImages extends WWImages {
     }
 
     function getTagsForImages($lang, $images, $tagTable) {
-	return array("Quux", "Xyzzy");
+	$r = array();
+	foreach ($images as $img) {
+		$r[$img] = array("assessment:Featured_picture", "license:Cc-by-sa");
+	}
+	
+	return $r;
     }
+
+    function getMetaForImages($lang, $images) {
+	$r = array();
+	foreach ($images as $img) {
+		$r[$img] = array(
+			'img_name' => $img,
+			'img_size' => 123456,
+			'img_width' => 300,
+			'img_height' => 200,
+			'img_media_type' => 'BITMAP',
+			'img_major_mime' => 'image',
+			'img_minor_mime' => 'jpeg',
+			'img_timestamp' => '20090808132422',
+		);
+	}
+	
+	return $r;
+    }
+
 
     function queryTemplatesOnImagePage($lang, $image) {
 	throw new Exception( __METHOD__ . " not implemented" );
     }
 
     function getTemplatesOnImagePage($lang, $image) {
-	return array("Quux", "Xyzzy");
+	return array("Cc-by-sa", "Featured_picture");
     }
 
     function queryCategoriesOfImagePage($lang, $image) {

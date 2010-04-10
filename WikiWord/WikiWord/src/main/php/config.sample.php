@@ -61,3 +61,14 @@ $wwTagScores = array(
   'assessment:Quality_image' => 2.0,
   'assessment:Featured_picture' => 3.0,
 );
+
+$wwLabelPatterns = array(
+  '/^assessment:.*_of_the_day([-_].*|$)/' => "PotD",
+  '/^assessment:(Featured|Former_featured_picture).*/' => 'FP',
+  '/^assessment:Quiality.*/' => 'QI',
+  '/^assessment:(Valued|Former_valued_images|Images_used_in_valued_image_sets).*/' => 'VI',
+  '/^license:PD([-_].*|$)/' => 'PD',
+  '/^license:GFDL([-_].*|$)/' => 'GFDL',
+  '/^license:CC-BY-SA([-_].*|$)/i' => 'CC-BY-SA',
+  '/^license:CC-BY([-_].*|$)/i' => 'BY',
+);

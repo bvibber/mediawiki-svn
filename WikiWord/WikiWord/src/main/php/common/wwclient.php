@@ -103,6 +103,11 @@ class WWClient {
 
 	$rs = $this->query( $param );
 
+	if (!$rs) return $rs;
+	if (!isset($rs['concept'])) throw new Exception("bad response, missing concept");
+
+	$rs = $rs['concept'];
+
 	if (!isset($rs['id'])) $rs['id'] = $id;
 	if (!isset($rs['lang'])) $rs['lang'] = $lang;
 
