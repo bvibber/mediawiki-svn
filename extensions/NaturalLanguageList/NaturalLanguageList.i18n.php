@@ -141,9 +141,11 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Naohiro19
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'nll-desc' => 'ナチュラル言語一覧の簡単な形式',
+	'nll-lastseparator' => '&#32;と&#32;',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

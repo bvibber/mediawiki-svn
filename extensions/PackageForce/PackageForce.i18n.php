@@ -164,6 +164,27 @@ $messages['gl'] = array(
 	'pf-header-approve' => 'Aprobar',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForce-Ammann',
+	'pf-desc' => '[[Special:PackageForce|Paket abelade]] mit nitzlige Vorlage usw.',
+	'pf-only-admins-allowed' => 'Die Syte isch nume fir Benutzer mit em „packageforce-admin“-Rächt.',
+	'pf-admin-menu-default' => 'Standard',
+	'pf-admin-menu-unsortedtemplates' => 'Vorlage sin nonig sortiert',
+	'pf-admin-link-view-documentation' => 'Dokumäntazion zue dr Syte aaluege.',
+	'pf-admin-link-editlink-page' => 'Syte bearbeite',
+	'pf-admin-link-approve' => 'Syte gnähmige',
+	'pf-header-documentation' => 'Dokumäntazion',
+	'pf-header-in_packages' => 'Paket',
+	'pf-header-edit' => 'Gleich bearbeite',
+	'pf-header-type' => 'Sytetyp',
+	'pf-header-page_title' => 'Titel',
+	'pf-header-approve' => 'Gnähmige',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -223,6 +244,15 @@ $messages['it'] = array(
 	'pf-header-documentation' => 'Documentazione',
 	'pf-header-page_title' => 'Titolo',
 	'pf-header-approve' => 'Approva',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'pf-admin-menu-default' => '規定',
+	'pf-admin-link-editlink-page' => 'ページを編集',
+	'pf-header-type' => 'ページの種類',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

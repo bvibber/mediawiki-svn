@@ -91,6 +91,16 @@ $messages['bs'] = array(
 	'wikieditor-template-editor-preference' => 'Omogućava uređivanje wiki šablon putem obrazaca',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'wikieditor-template-editor-preference' => "Permetre l'edició basada en formularis de plantilles",
+	'wikieditor-template-editor-dialog-title' => 'Edita la plantilla',
+	'wikieditor-template-editor-dialog-submit' => 'Actualitza',
+	'wikieditor-template-editor-dialog-cancel' => 'Cancel·la',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil

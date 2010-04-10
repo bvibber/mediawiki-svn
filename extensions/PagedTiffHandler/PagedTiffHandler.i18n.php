@@ -280,12 +280,15 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Naohiro19
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'tiff-desc' => 'TIFFファイルの画像モードを表示するためのハンドラ',
 	'tiff_no_metadata' => 'TIFFからのメタデータが取得できません',
 	'tiff_page_error' => '範囲にないページ番号',
 	'tiff_file_too_large' => 'アップロードされたファイルは容量が大きすぎるために拒否されました。',
+	'tiff_script_detected' => 'アップロードされたファイルに、スクリプトが含まれます。',
+	'tiff_bad_file' => 'アップロードされたファイルに、エラーが含まれます。',
 	'tiff-file-info-size' => '(ページ $5、$1 × $2ピクセル、ファイルサイズ:$3、MIME:$4)',
 );
 

@@ -229,8 +229,8 @@ $messages['ca'] = array(
 	'watchers_link_title' => 'Qui vigila aquesta pàgina?',
 	'watchers_error_article' => "'''Error:''' La pàgina no existeix.",
 	'watchers_header' => '{{PLURAL:$2|usuari està|usuaris estan}} vigilant "[[:$1]]"',
-	'watchers_noone_watches' => 'Ningú vigila aquesta pàgina.',
-	'watchers_x_or_more' => '$1 o més {{PLURAL:$1|usuaris|usuaris}} tenen aquesta pàgina a la seva llista de seguiment.',
+	'watchers_noone_watches' => 'Ningú vigila la pàgina [[:$1]].',
+	'watchers_x_or_more' => '$1 o més {{PLURAL:$1|usuaris|usuaris}} tenen la pàgina [[:$2]] a la seva llista de seguiment.',
 	'watchers_less_than_x' => 'Menys de $1 {{PLURAL:$1|usuaris|usuaris}} tenen aquesta pàgina a la seva llista de seguiment.',
 );
 
@@ -549,6 +549,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Naohiro19
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'watchers' => 'ウォッチしている利用者',
@@ -560,6 +561,8 @@ $messages['ja'] = array(
 	'watchers_noone_watches' => '誰もこのページをウォッチしていません。',
 	'watchers_x_or_more' => '$1人以上の{{PLURAL:$1|利用者}}がこのページをウォッチリストに入れています。',
 	'watchers_less_than_x' => '$1人未満の{{PLURAL:$1|利用者}}がこのページをウォッチリストに入れています。',
+	'watchers-num' => '$1{{PLURAL:$1|人の利用者}}が[[:$2]]を、{{PLURAL:$1|ウォッチリスト}}に入れています。',
+	'right-watchers-list' => '[[Special:Watchers|特定のページをウォッチしている利用者一覧]]',
 );
 
 /** Javanese (Basa Jawa)

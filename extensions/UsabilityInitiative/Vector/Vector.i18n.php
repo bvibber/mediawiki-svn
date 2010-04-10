@@ -87,6 +87,14 @@ $messages['bs'] = array(
 	'vector-desc' => 'Poboljšava elemente korisničkog interfejsa u koži Vector.',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'vector' => 'Millores de la interfície per a Vector',
+	'vector-desc' => "Millores en els elements d'interfície d'usuari de l'aparença Vector.",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

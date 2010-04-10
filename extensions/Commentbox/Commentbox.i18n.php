@@ -148,7 +148,7 @@ $messages['ca'] = array(
 	'commentbox-intro' => '== Afegiu un comentari ... == Voleu comentar res en aquesta pàgina? Afegiu-lo aquí o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} editeu la pàgina directament]</span>.',
 	'commentbox-savebutton' => 'Desa el comentari',
 	'commentbox-name' => 'Nom:',
-	'commentbox-name-explanation' => "<small>(Consell: Si [[Special:Userlogin|us registreu]], no haureu d'omplir manualment el nom aquí)</small>",
+	'commentbox-name-explanation' => "<small>(Consell: Si [[Special:UserLogin|us registreu]], no haureu d'omplir manualment el nom aquí)</small>",
 	'commentbox-log' => 'Nous comentaris',
 	'commentbox-first-comment-heading' => '== Comentaris ==',
 	'commentbox-regex' => '/\\n==\\s*Comentaris\\s*==\\s*\\n/i',

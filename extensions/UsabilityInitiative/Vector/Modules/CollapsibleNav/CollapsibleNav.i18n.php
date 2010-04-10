@@ -36,6 +36,13 @@ $messages['br'] = array(
 	'vector-collapsiblenav-preference' => 'Aotren al lañser merdeiñ pak-dispak a-gleiz',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'vector-collapsiblenav-preference' => "Activa l'opció de reduir el menú de navegació esquerre",
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'vector-collapsiblenav-preference' => 'Zusammenklappbares Navigationsmenü links aktivieren',

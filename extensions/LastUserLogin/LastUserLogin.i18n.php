@@ -261,9 +261,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Hosiryuhosi
+ * @author Naohiro19
  */
 $messages['ja'] = array(
 	'lastuserlogin' => '利用者の最終ログイン',
+	'lastuserlogin-desc' => '利用者が最後にログインした時刻を表示する',
 	'lastuserlogin_userid' => '利用者名',
 	'lastuserlogin_username' => '本名',
 	'lastuserlogin_useremail' => 'メールアドレス',

@@ -1142,6 +1142,7 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'recordadmin' => '記録管理',
@@ -1180,9 +1181,11 @@ $messages['ja'] = array(
 	'recordadmin-modified' => '変更',
 	'recordadmin-actions' => '操作',
 	'recordadmin-needscontent' => '内容の追加...',
-	'recordadmin-editwithform' => 'フォームを用いて編集',
+	'recordadmin-editwithform' => 'プロパティ',
 	'recordadmin-typeinfo' => '$1記録',
 	'right-recordadmin' => '記録ページを検索および編集する',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -5036,6 +5036,7 @@ $messages['ko'] = array(
 	'code-prop-changes' => '상태 및 태그 변경 기록',
 	'code-desc' => '[[Special:RepoAdmin|서브버전을 지원]]하는 [[Special:Code|코드 검토 도구]]',
 	'code-no-repo' => '저장소가 설정되지 않았습니다!',
+	'code-repo-not-found' => '<b>$1</b> 저장소가 존재하지 않습니다!',
 	'code-load-diff' => '차이를 불러오는 중…',
 	'code-notes' => '최근 의견',
 	'code-statuschanges' => '상태 변경',

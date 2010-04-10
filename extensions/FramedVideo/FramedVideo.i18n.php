@@ -170,7 +170,7 @@ $messages['ca'] = array(
 	'framedvideo_error' => 'Hi ha hagut un error!',
 	'framedvideo_error_no_id_given' => 'Manca el paràmetre "id".',
 	'framedvideo_error_limit' => 'El valor màxim permès és $1.',
-	'framedvideo_helppage' => 'Ajuda:Vídeo',
+	'framedvideo_helppage' => 'Help:Vídeo',
 	'framedvideo-desc' => "Permet incrustar vídeos de diversos llocs web mitjançant l'etiqueta <tt><nowiki><video></nowiki></tt>",
 );
 

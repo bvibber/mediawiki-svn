@@ -829,6 +829,7 @@ Bez OpenId nećete moći da se prijavite.',
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author SMP
  * @author Solde
  * @author Toniher
@@ -852,7 +853,7 @@ $messages['ca'] = array(
 	'openidchooseinstructions' => 'Tots els usuaris cal que tinguin un sobrenom;
 podeu triar-ne un de les opcions a continuació.',
 	'openidchoosefull' => 'El vostre nom complet ($1)',
-	'openidchooseexisting' => 'Un compte existent en aquest wiki:',
+	'openidchooseexisting' => 'Un compte existent en aquesta wiki',
 	'openidchoosepassword' => 'contrasenya:',
 	'openid-urls-action' => 'Acció',
 	'openid-urls-delete' => 'Elimina',

@@ -611,6 +611,7 @@ $messages['gsw'] = array(
 	'spamdifftool' => 'Spam-Blacklist bearbeite',
 	'spamdifftool-desc' => 'Macht s megli neiji Yyträg zue dr Spamblacklist us Versionsunterschiid zuezfiege',
 	'spamdifftool_cantedit' => 'Excusez! Du derfsch d Spam-Blacklist nit bearbeite.',
+	'spamdifftool-no-title' => "'''Fähler:''' s isch kei Sytetitel aagee wore.",
 	'spamdifftool_notext' => "S git kei Täxt, wu mer zue dr Spam-Blacklist chennt zuefiege. Druck <a href='$1'>do</a> zum wyter mache.",
 	'spamdifftool_confirm' => "Bstätig, ass Du die Yyträg zue dr Spam-Blacklist wetsch zuefiege.
 (Druck <a href='$1' target='new'>do</a> go ne Probläm mälde.)",

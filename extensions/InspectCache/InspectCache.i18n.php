@@ -552,11 +552,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'inspectcache' => 'キャッシュの点検',
 	'inspectcache-desc' => '共有キャッシュの中身を点検するための簡素なデバッグツール',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => '一般キャッシュ',
 	'inspectcache-parser' => 'パーサーキャッシュ',
 	'inspectcache-message' => 'メッセージキャッシュ',
@@ -564,6 +564,7 @@ $messages['ja'] = array(
 	'inspectcache-delete' => '削除',
 	'inspectcache-deleted' => '削除済みキャッシュ',
 	'inspectcache-list' => '一覧',
+	'right-inspectcache' => 'キャッシュエントリの表示と削除',
 );
 
 /** Javanese (Basa Jawa)

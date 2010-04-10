@@ -109,13 +109,14 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author SMP
  */
 $messages['ca'] = array(
 	'transliterator-desc' => 'Proporciona una funció configurable per a fer transliteració',
 	'transliterator-error-ambiguous' => 'Regla ambigua <code>$1</code> a [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Sintaxi incorrecta <code>$1</code> a [[MediaWiki:$2]]',
-	'transliterator-error-rulecount' => 'Més {{PLURAL:$1|d\'una regla|de $3 regles}} a [[MediaWiki: $ 2]]',
+	'transliterator-error-rulecount' => 'Més de $1 {{PLURAL:$1|regla|regles}} a [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "La regla <code>$1</code> té més {{PLURAL:$3|d'un caràcter|de $3 caràcters}} a l'esquerra a [[MediaWiki:$2]]",
 );
 
