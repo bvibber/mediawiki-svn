@@ -130,6 +130,8 @@ mw.addClassFilePaths( {
 	"mw.Language"			: "languages/mw.Language.js",
 	"$j.replaceText.js"		: "jquery/plugins/jquery.replaceText.js",
 	
+	"$j.fn.menu" 			: "jquery/plugins/jquery.menu/jquery.menu.js",
+	"mw.style.jquerymenu" 	: "jquery/plugins/jquery.menu/jquery.menu.css",
 	
 	"$j.fn.pngFix"			: "jquery/plugins/jquery.pngFix.js",
 	"$j.fn.autocomplete"	: "jquery/plugins/jquery.autocomplete.js",

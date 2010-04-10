@@ -47,7 +47,7 @@ mw.addMessages( {
 	"mwe-textcat-cue" : "Cue points"
 } );
 
-// Bind to mw (for uncluttered global namespace) 
+// Bind to mw ( for uncluttered global namespace ) 
 ( function( $ ) {
 	
 	/** 
@@ -313,7 +313,7 @@ mw.addMessages( {
 					// ( in case other interfaces want to access them )
 					var embedSource = _this.embedPlayer.mediaElement.tryAddSource( textElm );	
 					// Get a "textSource" object:
-					var source = new TextSource( embedSource, _this.textProvider);
+					var source = new TextSource( embedSource, _this.textProvider );
 					_this.textSources.push( source );
 				}
 				// All sources loaded run callback: 
@@ -417,7 +417,8 @@ mw.addMessages( {
 			}	
 			return false;
 		},
-		/*
+		
+		/**
 		* Get a source object by language, returns "false" if not found
 		*/
 		getSourceByLanguage: function ( langKey ) {
@@ -797,10 +798,7 @@ mw.addMessages( {
 						'text-align':'center'
 					})
 					.append(
-						$j('<span>').css({
-							'color':'white',
-							'background-color':'#333'
-						})
+						$j('<span \>')
 					)									
 				
 				// If in fullscreen mode update the text size: 
