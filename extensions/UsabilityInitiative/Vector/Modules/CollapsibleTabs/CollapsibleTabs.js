@@ -9,11 +9,10 @@ $j(document).ready( function() {
 	// Overloading the moveToCollapsed function to animate the transition 
 	$j.collapsibleTabs.moveToCollapsed = function( ele ) {
 		var $moving = $j( ele );
-		$j( $moving.data( 'collapsibleTabsSettings' ).expandedContainer )
-			.data( 'collapsibleTabsSettings' ).shifting = true;
-		var data = $moving.data( 'collapsibleTabsSettings' );
+		$j.collapsibleTabs.getSettings( $j( $j.collapsibleTabs.getSettings( $moving ).expandedContainer ) ).shifting = true;
+		var data = $j.collapsibleTabs.getSettings( $moving );
 		// Remove the element from where it's at and put it in the dropdown menu
-		var target = $moving.data( 'collapsibleTabsSettings' ).collapsedContainer;
+		var target = data.collapsedContainer;
 		$moving.css( "position", "relative" )
 			.css( ( rtl ? 'left' : 'right' ), 0 )
 			.animate( { width: '1px' }, "normal", function() {
@@ -22,8 +21,8 @@ $j(document).ready( function() {
 				$j( '<span class="placeholder" style="display:none;"></span>' ).insertAfter( this );
 				$j( this ).remove().prependTo( target ).data( 'collapsibleTabsSettings', data );
 				$j( this ).attr( 'style', 'display:list-item;' );
-				$j( $j( ele ).data( 'collapsibleTabsSettings' ).expandedContainer )
-					.data( 'collapsibleTabsSettings' ).shifting = false;
+				$j.collapsibleTabs.getSettings( $j( $j.collapsibleTabs.getSettings( $j( ele ) ).expandedContainer ) )
+					.shifting = false;
 				$j.collapsibleTabs.handleResize();
 			} );
 	};
@@ -31,19 +30,17 @@ $j(document).ready( function() {
 	// Overloading the moveToExpanded function to animate the transition
 	$j.collapsibleTabs.moveToExpanded = function( ele ) {
 		var $moving = $j( ele );
-		$j( $moving.data( 'collapsibleTabsSettings' ).expandedContainer )
-			.data( 'collapsibleTabsSettings' ).shifting = true;
-		var data = $moving.data( 'collapsibleTabsSettings' );
+		$j.collapsibleTabs.getSettings( $j( $j.collapsibleTabs.getSettings( $moving ).expandedContainer ) ).shifting = true;
+		var data = $j.collapsibleTabs.getSettings( $moving );
 		// grab the next appearing placeholder so we can use it for replacing
-		var $target = $j( $moving.data( 'collapsibleTabsSettings' ).expandedContainer )
-			.find( 'span.placeholder:first' );
-		var expandedWidth = $moving.data( 'collapsibleTabsSettings' ).expandedWidth;
+		var $target = $j( data.expandedContainer ).find( 'span.placeholder:first' );
+		var expandedWidth = data.expandedWidth;
 		$moving.css( "position", "relative" ).css( ( rtl ? 'right' : 'left' ), 0 ).css( 'width', '1px' );
 		$target.replaceWith( $moving.remove().css( 'width', '1px' ).data( 'collapsibleTabsSettings', data )
 			.animate( { width: expandedWidth+"px" }, "normal", function() {
 				$j( this ).attr( 'style', 'display:block;' );
-				$j( $moving.data( 'collapsibleTabsSettings' ).expandedContainer )
-					.data( 'collapsibleTabsSettings' ).shifting = false;
+				$j.collapsibleTabs.getSettings( $j( $j.collapsibleTabs.getSettings( $moving ).expandedContainer ) )
+					.shifting = false;
 				$j.collapsibleTabs.handleResize();
 			} ) );
 	};
