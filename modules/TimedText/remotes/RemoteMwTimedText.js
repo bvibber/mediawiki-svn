@@ -1,10 +1,8 @@
 /**
-* Stop-gap for mediaWiki timed text support 
+* Stop-gap for mediaWiki php based timed text support 
 *
 * Does some transformations to normal wiki timed Text pages to make them look
 * like the php output that we will eventually want to have 
-
-wgArticleId
 */
 mw.addMessages( {
 	"mwe-language-subtitles-for-clip": "$1 subtitles for clip: $2",

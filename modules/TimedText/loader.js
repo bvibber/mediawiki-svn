@@ -2,13 +2,11 @@
 * TimedText loader.    
 */
 mw.addClassFilePaths( {
-	"mw.TimedText" : "modules/TimedText/mw.TimedText.js",	
+	"mw.TimedText" : "modules/TimedText/mw.TimedText.js",
+	"mw.style.TimedText" : "modules/TimedText/css/mw.style.TimedText.css",
+		
 	"mw.TimedTextEdit" : "modules/TimedText/mw.TimedTextEdit.js",
-	"mw.style.TimedTextEdit" : "modules/TimedText/css/mw.TimedTextEdit.css",
-	
-	"$j.fn.menu" : "modules/TimedText/jquery.menu/jquery.menu.js",
-	"mw.style.jquerymenu" : "modules/TimedText/jquery.menu/jquery.menu.css",
-	
+	"mw.style.TimedTextEdit" : "modules/TimedText/css/mw.style.TimedTextEdit.css",
 	
 	"RemoteMwTimedText" : "modules/TimedText/remotes/RemoteMwTimedText.js"
 });
@@ -18,7 +16,8 @@ mw.addModuleLoader( 'TimedText', function( callback ) {
 	mw.load( [ 
 		'$j.fn.menu', 
 		'mw.TimedText',
-		"mw.style.jquerymenu"
+		'mw.style.TimedText',
+		'mw.style.jquerymenu'
 	], function() {
 		callback( 'TimedText' );
 	} );
@@ -31,7 +30,10 @@ mw.addModuleLoader( 'TimedText.Edit', function( callback ) {
 			'$j.ui',
 			'$j.fn.menu', 
 			"mw.style.jquerymenu",
+			
 			'mw.TimedText',
+			'mw.style.TimedText',
+			
 			'mw.TimedTextEdit',
 			'mw.style.TimedTextEdit'
 		],

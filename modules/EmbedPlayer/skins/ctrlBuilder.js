@@ -571,12 +571,17 @@ ctrlBuilder.prototype = {
 	* Hide the control bar. 
 	*/
 	hideControlBar : function(){
-		var animateDuration = 'slow'		
+		var animateDuration = 'slow';	
 		// Else hide the control bar ( if checkOverlayControls is still true ) 	
-		this.embedPlayer.$interface.find( '.control-bar').fadeOut( animateDuration );		
-		this.embedPlayer.$interface.find( '.itext' ).animate( { 
+		this.embedPlayer.$interface.find( '.control-bar')
+			.stop()
+			.fadeOut( animateDuration );
+					
+		this.embedPlayer.$interface.find( '.itext' )
+			.stop()
+			.animate( { 
 				'bottom' : 10 
-		}, animateDuration );
+			}, 'slow' );
 		
 	},
 	
@@ -584,14 +589,19 @@ ctrlBuilder.prototype = {
 	* Show the control bar
 	*/
 	showControlBar : function(){
-		var animateDuration = 'slow'
-		// Show controls
-		this.embedPlayer.$interface.find( '.control-bar').fadeIn( animateDuration );
-		// Move up itext if present
-		this.embedPlayer.$interface.find( '.itext' ).animate( { 
-			'bottom' : this.getHeight() + 10 
-		}, animateDuration );		
+		var animateDuration = 'slow';
 		
+		// Move up itext if present
+		this.embedPlayer.$interface.find( '.itext' )
+			.animate( 
+				{ 
+					'bottom' : this.getHeight() + 10 
+				}, 
+				animateDuration
+			); 
+		// Show controls
+		this.embedPlayer.$interface.find( '.control-bar')
+			.fadeIn( animateDuration );
 	},
 	
 	/**
