@@ -101,6 +101,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'vector-simplesearch-search' => 'Cerca',
+	'vector-simplesearch-containing' => 'que conté ...',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)

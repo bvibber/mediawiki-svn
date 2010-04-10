@@ -180,11 +180,19 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'wikieditor-publish-preference' => 'Habilita la publicació pas a pas',
 	'wikieditor-publish-button-publish' => 'Publica',
 	'wikieditor-publish-button-cancel' => 'Cancel·la',
+	'wikieditor-publish-dialog-title' => 'Publicar a {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => "Resum d'edició (descriviu breument els canvis realitzats):",
+	'wikieditor-publish-dialog-minor' => 'Edició menor',
+	'wikieditor-publish-dialog-watch' => 'Vigila aquesta pàgina',
+	'wikieditor-publish-dialog-publish' => 'Publica',
+	'wikieditor-publish-dialog-goback' => 'Torna',
 );
 
 /** Czech (Česky)

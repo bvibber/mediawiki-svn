@@ -213,8 +213,38 @@ MAr fell deoc\'h ober gant ar barregezhioù nevez, <span class="plainlinks">[$1 
 Mar fell deoc'h e c'hallit respont d'an tamm sontadeg a-is.",
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'prefswitch-desc' => 'Permet als usuaris canviar conjunts de preferències',
+	'prefswitch-survey-true' => 'Sí',
+	'prefswitch-survey-false' => 'No',
+	'prefswitch-survey-submit-off' => 'Deshabiliteu les noves característiques',
+	'prefswitch-survey-submit-feedback' => 'Donau la vostra opinió',
+	'prefswitch-survey-answer-whyoff-hard' => "Ha estat massa difícil d'usar.",
+	'prefswitch-survey-answer-whyoff-didntwork' => 'No funcionava correctament.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'No funcionava de manera predictible.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "No m'ha agradat el seu aspecte.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "No m'han agradat les noves pestanyes ni el nou format.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "No m'ha agradat la nova barra d'eines.",
+	'prefswitch-survey-answer-whyoff-other' => 'Una altra raó:',
+	'prefswitch-survey-question-browser' => 'Quin navegador emprau?',
+	'prefswitch-survey-answer-browser-other' => 'Un altre navegador:',
+	'prefswitch-survey-question-os' => 'Quin sistema operatiu usau?',
+	'prefswitch-survey-answer-os-other' => 'Un altre sistema operatiu:',
+	'prefswitch-survey-question-res' => 'Quina és la resolució de la vostra pantalla?',
+	'prefswitch-title-on' => 'Què hi ha de nou?',
+	'prefswitch-title-switched-on' => 'Gaudiu!',
+	'prefswitch-title-off' => 'Deshabiliteu les noves característiques',
+	'prefswitch-title-switched-off' => 'Gràcies',
+	'prefswitch-success-on' => "S'han habilitat les noves característiques.",
+	'prefswitch-success-off' => "S'han deshabilitat les noves característiques.",
+);
+
 /** German (Deutsch)
  * @author Als-Holder
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'prefswitch' => 'Umschalter für die Usability Initiative-Einstellungen',
@@ -259,7 +289,7 @@ Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 ===Was sich geändert hat===
 * Navigation: Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob du eine Seite oder eine Diskussionsseite liest und ob du eine Seite liest oder bearbeitest.
 * Werkzeugleiste: Wir haben die Werkzeugleiste einfacher bedienbar gemacht. Die Formatierung von Seiten ist nun einfacher und intuitiver.
-* Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wikipedia-Seiten als auch zu externen Seiten.
+* Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
 * Suche: Wir haben die Suchvorschläge verbessert, damit du schneller zu der von dir gesuchten Seite kommst.
 * Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
 	'prefswitch-main-on' => '=== Feedback? ===

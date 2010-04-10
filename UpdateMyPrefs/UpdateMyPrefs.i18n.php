@@ -38,6 +38,13 @@ $messages['br'] = array(
 	'prefs-updates' => 'Hizivadennoù',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'prefs-updates' => 'Actualitzacions',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefs-updates' => 'Aktualisierungen',
@@ -97,6 +104,15 @@ $messages['gl'] = array(
 	'updatemyprefs-label-message' => 'Actualizar automaticamente as miñas preferencias coas novas características e ferramentas en canto estas estean dispoñibles',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'prefs-updates' => 'Aktualisierige',
+	'updatemyprefs-desc' => 'Yystellig fir Benutzer zum Feschtlege, eb neji Funktione vu dr Benutzeroberflechi bi automatisch aktiviert wäre, wänn si verfiegbar sin',
+	'updatemyprefs-label-message' => 'Myy Yystellige automatisch aktualisiere mit neje Standardwärt un Funktione, wänn si verfiegbar sin',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -141,6 +157,15 @@ $messages['ja'] = array(
 	'prefs-updates' => '更新',
 	'updatemyprefs-desc' => '定期的に更新されるユーザーインターフェイスが利用可能になるたびに適用されるのを利用者が望むかどうかの設定',
 	'updatemyprefs-label-message' => '新しいツールや未設定値が利用可能になるたび、それに合わせて自分の設定を自動的に更新する',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'prefs-updates' => 'Aktualiséierungen',
+	'updatemyprefs-desc' => 'Astellung fir Benotzer fir unzeginn ob de Benotzer Aktualisatioune vum Benotzerinterface benotze wëllt esoubal wéi se disponibel sinn',
+	'updatemyprefs-label-message' => 'Meng Astellungen automatesch mat den neie Standard-Astellungen aktualiséieren esoubal wéi se disponibel sinn',
 );
 
 /** Macedonian (Македонски)

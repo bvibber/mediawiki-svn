@@ -2154,7 +2154,7 @@ $messages['ca'] = array(
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Element de la llista<br /># Element de la llista',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Element de la llista</li><li>Element de la llista</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Fitxer incrustat',
-	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Exemple.png|thumb|Text descriptiu de la imatge]]',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Text descriptiu de la imatge]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Caption text' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>Llegenda</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Referències',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Text de la pàgina.&lt;ref name="test"&gt;[http://www.exemple.cat Nom de l\'enllaç], text addicional.&lt;/ref&gt;',

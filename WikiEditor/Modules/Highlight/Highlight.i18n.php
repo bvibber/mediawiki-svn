@@ -64,6 +64,13 @@ $messages['bs'] = array(
 	'wikieditor-highlight-preference' => 'Omogući označavanje sintakse pri uređivanju',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'wikieditor-highlight-preference' => "Activa el ressaltat de sintaxi durant l'edició",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

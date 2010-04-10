@@ -914,22 +914,19 @@ Volem saber què n'opinau de la nova interfície, així que us agrairíem que re
 	'optin-survey-answer-changes-predictability' => 'Millorar la predictabilitat del rendiment.',
 	'optin-survey-answer-changes-custom' => 'Permet una major personalització.',
 	'optin-survey-answer-changes-other' => 'Altres:',
-	'optin-improvements' => "== Què s'ha millorat? ==
-[[File:UsabilityNavigation.png|left|link=|Noves pestanyes de navegació]]
-;Navegació millorada
-El nou sistema de navegació fa més fàcil veure on sou i què estau fent, així com on podeu anar i com arribar-hi. Amb la caixa de cerques situada al cantó superior dret, l'opció de cercar és més fàcil de trobar i més ràpida d'usar.
-<div style=\"clear:both;\"></div>
-
-[[File:UsabilityToolbar.png|left|link=|barra d'eines d'edició millorada]]
-;Millores a la barra d'edició
-Noves icones fan més clar quina acció realitza cada eina. Les seccions desplegables redueixen els ecos paràsits i a la vegada mantenen les eines poc usades a només un clic.
-La secció d'ajuda dóna un ràpid accés a una guia dels usos més comuns del marcatge wiki.
-<div style=\"clear:both;\"></div>
-
-== Com podeu col·laborar ==
-Per a saber més o col·laborar amb el projecte, visiteu [http://usability.wikimedia.org la wiki de la ''Usability Initiative'']. Allà trobareu informació sobre el nostre projecte, recerca, disseny i desenvolupament i llançaments .  Per fer preguntes o deixar comentaris generals, per favor, usau la nostra [http://usability.wikimedia.org/wiki/Talk:Prototype Pàgina de discussió del prototipus].  Per demanar temes concrets, per favor, usau les pàgines de discussió associades. Si trobau errors en el programari, deixau els vostres comentaris a [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco la pàgina de discussió del llançament Babaco] o usau [https://bugzilla.wikimedia.org Bugzilla].
-
-Moltes gràcies!",
+	'optin-improvements2' => "== Què ha millorat? ==
+[[File:UsabilityToolbar.png|left|link=|Imatge de la barra d'edició millorada]]
+[[File:UsabilityDialogs.png|left|link=|Imatge dels nous quadres de diàleg]]
+; Barra d'eines millorada
+La nova barra d'eines fa que sigui més fàcil d'editar articles.
+Icones noves i millorades fan més clar veure les accions que cada eina realitza.
+Les opcions desplegables redueixen el desordre a la vegada que es mantenen eines poc usades només un clic de distància.
+; Diàleg
+En crear enllaços o taules, fent clic a la icona de l'eina, ara s'obre un quadre de diàleg que us ajuda a crear enllaços i taules omplint un senzill formulari.
+; I més
+Hem introduït una sèrie d'altres millores com la navegació, les pestanyes en cascada, la cerca millorada i molt més.
+== Com col·laborar-hi ==
+Per saber més sobre la Iniciativa d'Usabilitat, si us plau, visitau el nostre [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative web].<div style=\"clear:both\"></div>",
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)

@@ -42,6 +42,14 @@ $messages['br'] = array(
 	'tooltip-pt-prefswitch-link' => 'Esaeañ elfennoù nevez',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'prefswitch-link' => 'Nou!',
+	'tooltip-pt-prefswitch-link' => 'Proveu les noves funcions',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefswitch-link' => 'Neu',
@@ -189,7 +197,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'prefswitch-link' => 'പുതിയവ!',
+	'prefswitch-link' => 'നൂതനം!',
 	'tooltip-pt-prefswitch-link' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിക്കുക',
 );
 
