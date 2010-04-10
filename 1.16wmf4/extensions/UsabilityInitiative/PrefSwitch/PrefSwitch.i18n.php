@@ -76,7 +76,7 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 ===Here's what we have changed===
 * Navigation: We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
 * Editing toolbar improvements:  We have reorganized the editing toolbar to make easier to use.  Now, formatting pages is simpler and more intuitive.
-* Link wizard:  An easy-to-use tool allows you to add links to other Wikipedia pages as well as links to external sites.
+* Link wizard:  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * Search improvements: We have improved search suggestions to get you to the page you are looking for more quickly.
 * Other new features:  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.",
 	'prefswitch-main-on' => "===Feedback?===
