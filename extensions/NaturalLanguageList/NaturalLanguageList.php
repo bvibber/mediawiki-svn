@@ -56,7 +56,7 @@ $wgParserTestFiles[] = dirname( __FILE__ ) . "/nllParserTests.txt";
 
 /* global variables */
 
-$wgNllMaxListLength = 500; # the maximum allowed length of a list.
+$wgNllMaxListLength = 1000; # the maximum allowed length of a list.
 
 class NaturalLanguageList {
 	
