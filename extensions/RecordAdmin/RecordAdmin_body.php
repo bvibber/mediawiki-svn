@@ -646,7 +646,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->formClass = strtolower( $type ) . '-record recordadmin';
 		$this->formAtts = '';
 		$title = Title::newFromText( $type, NS_FORM );
-		if ( is_object( $title ) {
+		if ( is_object( $title ) ) {
 			if ( $title->exists() ) {
 
 				# Get the form content
