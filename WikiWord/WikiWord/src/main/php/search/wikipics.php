@@ -91,9 +91,9 @@ function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = fal
 	
 	for ($i = $from; $i<$to; $i += 1) {
 	  $img = $images[$i];
-	  print "\t\t<td class=\"imageCell\" width=\"$cw\" align=\"left\" valign=\"bottom\" nowrap=\"nowrap\" style=\"width: $cwcss\">";
+	  print "\t\t<td class=\"imageCell\" width=\"$cw\" align=\"left\" valign=\"bottom\" nowrap=\"nowrap\" style=\"width: $cwcss\"><div class=\"clipBox\" style=\"width:$cwcss; max-width:$cwcss;\">";
 	  print $utils->getThumbnailHTML($img, $wwThumbSize, $wwThumbSize);
-	  print "</td>\n";
+	  print "</div></td>\n";
 	}
 	
 	print "\n\t</tr>\n";
@@ -111,8 +111,8 @@ function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = fal
 	      $info = getImageInfo($img);
 	      $labels = getImageLabels($img);
 
-	      print "\t\t<td class=\"imageMetaCell\" width=\"$cw\" align=\"left\" valign=\"top\" style=\"width: $cwcss\">";
-	      print "<div class=\"imageTitle\">" . htmlspecialchars( $title ) . "</div>";
+	      print "\t\t<td class=\"imageMetaCell\" width=\"$cw\" align=\"left\" valign=\"top\" style=\"width: $cwcss\"><div class=\"clipBox\" style=\"width:$cwcss; max-width:$cwcss;\">";
+	      print "<div class=\"imageTitle\" title=\"" . htmlspecialchars( $img['name'] ) . "\">" . htmlspecialchars( $title ) . "</div>";
 
 	      if ($info) {
 		  print "<div class=\"imageInfo\">";
@@ -126,7 +126,7 @@ function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = fal
 		  print "</div>";
 	      }
 
-	      print "</td>\n";
+	      print "</div></td>\n";
 	    }
 	    
 	    print "\n\t</tr>\n";
@@ -265,7 +265,7 @@ function printConceptPageList( $langs, $concept, $class, $limit = false ) {
       <?php
 	foreach ( $linksByLanguage as $lang => $links ) {
 	    foreach ($links as $link ) {
-		print "\t\t<li>" . $link . "</li>\n";
+		print "<li>" . trim($link) . "</li>";
 	    
 		$i += 1;
 		if ($limit && $i >= $limit) break;
@@ -383,13 +383,14 @@ function printConcept($concept, $langs, $terse = true) {
 
     $gallery = getImagesAbout($concept, $terse ? $wwMaxPreviewImages*2 : $wwMaxGalleryImages+1 );
 
-    if (is_array($definition)) $definition = $utils->pickLocal($definition, $langs);
+    if (empty($definition)) $definition = "";
+    else if (is_array($definition)) $definition = $utils->pickLocal($definition, $langs);
 
     ?>
     <tr class="row_head">
       <td colspan="3">
 	  <h1 class="name <?php print "weight_$wclass"; ?>"><?php print getConceptDetailsLink($langs, $concept); ?>:</h1>
-	  <p class="definition"><?php print htmlspecialchars($definition); ?></p>
+	   <p class="definition"><?php print htmlspecialchars($definition); ?></p> 
 	  <div class="wikipages"><strong class="label">Pages:</strong> <?php printConceptPageList( $langs, $concept, $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ) ?></div>
       </td>
     </tr>
@@ -501,7 +502,17 @@ $norm = 1;
 $mode = NULL;
 $result = NULL;
 
-$languages = array( $lang, "en", "commons" ); #TODO: make the user define this list
+$fallback_languages = array( "en", "commons" ); #TODO: make the user define this list
+
+if ( $lang ) {
+    $languages = explode( '|', $lang );
+    $languages = array_merge( $languages, $fallback_languages ); 
+    $languages = array_unique( $languages );
+} else {
+    $languages = $fallback_languages;
+}
+
+$lang = $languages[0];
 
 $profiling['thesaurus'] = 0;
 $profiling['pics'] = 0;
@@ -511,7 +522,7 @@ if (!$error) {
   try {
       if ($lang && $conceptId) {
 	  $mode = "concept";
-	  $result = $thesaurus->getConceptInfo($conceptId, $lang);
+	  $result = $thesaurus->getConceptInfo($conceptId, $languages);
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
 	  $mode = "term";
@@ -531,7 +542,7 @@ if (!$error) {
     <title>WikiPics: multilingual search for Wikimedia Commons</title>
 
     <style type="text/css">
-	body { font-family: verdana, helvetica, arial, sans-serif; }
+	html, body { font-family: verdana, helvetica, arial, sans-serif; font-size:10pt; margin: 0; padding: 0; }
 
 	a, a:link, a:visited, a:active, a:hover {
 	  color:#2200CC;
@@ -580,7 +591,7 @@ if (!$error) {
 	.label { font-weight: bold; }
 	.note { font-size:small; }
 
-	.header { font-size:small; text-align: left; margin:0 0 1ex 0; padding: 0; border-bottom: 1px solid #C9D7F1; }
+	.header { font-size:small; text-align: left; margin:0 0 1ex 0; padding:0.5ex; border-bottom: 1px solid #C9D7F1; }
 
 	.inputform { text-align: left; margin:0 1ex; }
 	.inputform td { text-align: left; vertical-align: bottom; padding: 0.5ex; }
@@ -604,7 +615,11 @@ if (!$error) {
 	    vertical-align: bottom; 
 	    padding-top: 0.5em;
 	    padding-right: 1em;
-	    font-size:33%; 
+	    font-size: small;
+	}
+
+	.imageTable td.imageCell img { 
+	    font-size:50%; 
 	}
 
 	.imageTable td.imageMetaCell { 
@@ -614,13 +629,20 @@ if (!$error) {
 	    font-size:small; 
 	}
 
+	.clipBox {
+	    overflow: hidden;
+	}
+
 	.imageTable td.imageCell img { border: 1px solid; }
 
 	.imageInfo { color: #676767 }
+	.imageLabels { color: #676767; font-size:80%; }
     </style>
 </head>
 <body>
     <div class="header">
+      <div style="float:left">Wikipics 0.1&alpha; (experimental)</div>
+      <div style="float:right"><a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a></div>
     <!--   <h1>WikiWord Navigator</h1>
       <p>Experimental semantic navigator and thesaurus interface for Wikipedia.</p>
       <p>The WikiWord Navigator was created as part of the WikiWord project run by <a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a>.
@@ -648,7 +670,7 @@ if (!$error) {
 	    <input type="submit" name="go" value="go"/>
 	  </td>
 	  <td class="note">
-	    Note: this is a thesaurus lookup, not a full text search. Multiple words are handeled as a single phrase. Only exact matches of complete phrases will be found. 
+	    <small>Note: this is a thesaurus lookup, not a full text search. Multiple words are handeled as a single phrase. Only exact matches of complete phrases will be found. </small>
 	  </td>
 	</tr>
       </table>
@@ -699,14 +721,11 @@ if ($result && $mode) {
 ?>
     </table>
 <?php
-
-    if ($term) { ?>
-	<p>Found <?php print $count; ?> items.</p>
-    <?php }
-} ?>
+} #if results
+?>
 
 <div class="footer">
-<p>The WikiWord Navigator is part of the <a href="http://wikimedia.de">Wikimedia</a> project <a href="http://brightbyte.de/page/WikiWord">WikiWord</a></p>
+<p>Wikipics is provided by <a href="http://wikimedia.de">Wikimedia Deutschland</a> as part of the <a href="http://brightbyte.de/page/WikiWord">WikiWord</a> project.</p>
 
 </div>
 </body>
