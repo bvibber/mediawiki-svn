@@ -536,7 +536,17 @@ class WWImages extends WWWikis {
 	    }
 	}
 
-	$html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($alt) . "\" border=\"0\"/>";
+	$isImage = true;
+
+	if (isset($image['meta']['img_media_type'])) {
+	    if ($image['meta']['img_media_type'] != "BITMAP" && $image['meta']['img_media_type'] != "DRAWING") $isImage = false;
+	} else {
+	    if (!preg_match('/\.(png|jpe?g|gif|bmp|tiff?|svg|djvu?)$/i', $name)) $isImage = false;
+	}
+
+	if ($isImage) $html= "<img src=\"" . htmlspecialchars($thumb) . "\" alt=\"" . htmlspecialchars($alt) . "\" border=\"0\"/>";
+	else $html= htmlspecialchars($alt); //TODO: use icon!
+
 	$html= "<a href=\"" . htmlspecialchars($page) . "\" title=\"" . htmlspecialchars($title) . " (score " . htmlspecialchars($image['score']) . ")\" class=\"thumb-link $tags\">$html</a>";
 
 	if (is_array($image)) {
