@@ -798,7 +798,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		while ( preg_match( "/\\{\\{\\s*([#a-z0-9_]*)|\\}\\}/is", $content, $match, PREG_OFFSET_CAPTURE, $index ) ) {
 			$index = $match[0][1] + 2;
 			if ( $match[0][0] == '}}' ) {
-				if ( $depth > 0 ) {
+				if ( $depth > 0 && array_key_exists( $depth - 1, $depths ) ) {
 					$brace =& $braces[$depths[$depth - 1]];
 					$brace['LENGTH'] = $match[0][1] - $brace['OFFSET'] + 2;
 					$brace['DEPTH']  = $depth--;
