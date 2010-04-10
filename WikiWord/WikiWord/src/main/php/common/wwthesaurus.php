@@ -315,6 +315,11 @@ class WWThesaurus extends WWUTils {
 	    $buff[] = $row;
 	}
 
+	if ($buff) {
+		$concepts[$id] = $this->buildConcept($buff);
+		$buff = array();
+	}
+
 	usort($concepts, array('WWThesaurus', 'byScore'));
 	return $concepts;
     }
