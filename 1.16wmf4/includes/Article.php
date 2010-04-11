@@ -815,6 +815,7 @@ class Article {
 		# Keep going until $outputDone is set, or we run out of things to do.
 		$pass = 0;
 		$outputDone = false;
+		$this->mParserOutput = false;
 		while ( !$outputDone && ++$pass ) {
 			switch( $pass ) {
 				case 1:
@@ -920,6 +921,14 @@ class Article {
 				# Should be unreachable, but just in case...
 				default:
 					break 2;
+			}
+		}
+
+		# Adjust the title if it was set by displaytitle, -{T|}- or language conversion
+		if ( $this->mParserOutput ) {
+			$titleText = $this->mParserOutput->getTitleText();
+			if ( strval( $titleText ) !== '' ) {
+				$wgOut->setPageTitle( $titleText );
 			}
 		}
 

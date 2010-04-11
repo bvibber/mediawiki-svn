@@ -435,7 +435,8 @@ class OutputPage {
 	}
 
 	/**
-	 * "HTML title" means the contents of <title>. It is stored as plain, unescaped text and will be run through htmlspecialchars in the skin file.
+	 * "HTML title" means the contents of <title>.
+	 * It is stored as plain, unescaped text and will be run through htmlspecialchars in the skin file.
 	 */
 	public function setHTMLTitle( $name ) {
 		$this->mHTMLtitle = $name;
@@ -1084,11 +1085,6 @@ class OutputPage {
 			} else {
 				$this->mTemplateIds[$ns] = $dbks;
 			}
-		}
-		// Page title
-		$title = $parserOutput->getTitleText();
-		if ( $title != '' ) {
-			$this->setPageTitle( $title );
 		}
 
 		// Hooks registered in the object
