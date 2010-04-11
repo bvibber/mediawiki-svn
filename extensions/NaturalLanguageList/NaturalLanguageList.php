@@ -419,12 +419,13 @@ class NaturalLanguageList {
 	 * @param $array Array The array with values.
 	 * @param $value Mixed The element to be verified.
 	 * @param $intervals Boolean Whether intervals are allowed.
+	 * @return Boolean True on interval was A-OK, otherwise false.
 	 */
 	private static function handle_interval ( &$array, $value, $intervals ) {
 		global $wgNllMaxListLength;
 		if ( !$intervals )
 			return false;
-		$tmp = explode ( "..", $value );
+		$tmp = explode ( "..", preg_replace( "/([0-9]+)\.\.+([0-9]+)/", '$1..$2', $value ) );
 		if ( count( $tmp ) == 2 ) {
 			if ( is_numeric($tmp[0])===false or is_numeric($tmp[1])===false or ($tmp[0] > $tmp[1]) )
 				return false;
