@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r118';
+var mwRemoteVersion = 'r119';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
@@ -145,7 +145,7 @@ function doPageSpecificRewrite() {
 	if ( vidIdList.length > 0 ) {
 		// Reverse order the array so videos at the "top" get swapped first:
 		vidIdList = vidIdList.reverse();
-		mwLoadPlayer(function(){
+		mwLoadPlayer( function(){
 			//Load the "EmbedPlayer" module: 
 			// All the actual code was requested in our single script-loader call 
 			//  but the "load" request applies the setup.
@@ -210,7 +210,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			return ;
 		}
 		
-		
+			
 		tag_type = 'video';
 				
 		// Check type:
@@ -243,14 +243,12 @@ function rewrite_for_OggHandler( vidIdList ) {
 		apiTitleKey = unescape( apiTitleKey[ apiTitleKey.length - 1 ] );
 
 		var re = new RegExp( /length(&quot;:?\s*)*([^,]*)/ );
-		var dv = re.exec( rewriteHTML )[2];
-		if ( dv ) {
-			duration_attr = 'durationHint="' + dv + '" ';
-		}
+		var dv = parseFloat( re.exec( rewriteHTML )[2] );
+		duration_attr = ( dv )? 'durationHint="' + dv + '" ': '';
 
 		var re = new RegExp( /offset(&quot;:?\s*)*([^,&]*)/ );
-		offset = re.exec( rewriteHTML )[2];
-		var offset_attr = offset ? 'startOffset="' + offset + '"' : '';
+		offset = re.exec( rewriteHTML );
+		var offset_attr = ( offset && offset[2] )? 'startOffset="' + offset[2] + '" ' : '';
 		
 		// Check if file is from commons and therefore should explictly set apiProvider to commons: 
 		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		

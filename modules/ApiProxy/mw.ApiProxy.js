@@ -290,8 +290,9 @@ mw.ApiProxy = { };
 		} catch ( e ) {
 			mw.log( "Error could not parse hashResult" );
 		}
+		
 		// Check for the contextKey
-		if( ! resultObject.contextKey ) {			
+		if ( ! resultObject.contextKey ) {
 			mw.log( "Error missing context key in nested callback" );
 			return false;
 		}
@@ -363,7 +364,7 @@ mw.ApiProxy = { };
 	* @param {Object} contextVars Initial contextVars
 	*/ 
 	function createContext ( contextVars ) {		
-		// Create a ~ sufficently ~ unique context key 
+		// Create a ~ sufficiently ~ unique context key 
 		var contextKey = new Date().getTime() * Math.random();
 		proxyContext [ contextKey ] = contextVars;
 						
@@ -427,8 +428,8 @@ mw.ApiProxy = { };
 	* @param {URL} apiUrl The url of the api server
 	*/
 	// Include gadget js ( in case the user has not enabled the gadget on that domain )
-	var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
-	//var gadgetWithJS = '';
+	//var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
+	var gadgetWithJS = '';
 	function getServerFrame( context ) {
 		if( ! context || ! context.apiUrl ){
 			mw.log( "Error no context api url " );
@@ -646,6 +647,10 @@ mw.ApiProxy = { };
 		$j.post( wgScriptPath + '/api' + wgScriptExtension,
 			clientRequest.request,
 			function( data ) {
+				// Make sure data is in JSON data format ( not a string )
+				if( typeof data != 'object' ){
+					data = JSON.parse( data );
+				}
 				mw.log(" server api request got data: " + JSON.stringify( data ) );	
 				// Send the result data to the client 
 				sendClientMsg( data );
@@ -872,7 +877,7 @@ mw.ApiProxy = { };
 		var clientRequest = getClientRequest();
 		
 		// Get a local reference to the client request		
-		var clientFrame = getClientRequest()['clientFrame'];
+		var clientFrame = clientRequest[ 'clientFrame' ];
 		
 		// Double check that the client is an approved domain before outputting the iframe
 		if( ! isAllowedClientFrame ( clientFrame ) ) {
@@ -932,7 +937,7 @@ mw.ApiProxy = { };
 		
 		// Check for frame name:
 		if( ! options[ 'name' ] ) {
-			options[ 'name' ] = 'mwApiProxyFrame_' + $j('iframe').length;	
+			options[ 'name' ] = 'mwApiProxyFrame_' + $j( 'iframe' ).length;	
 		}
 				
 		// Add the frame name / id:
@@ -970,7 +975,7 @@ mw.ApiProxy = { };
 		}
 		var targetName = ( typeof options[ 'target' ] == 'string') ? options[ 'target' ] : $j( options[ 'target' ]).length ;
 		
-		mw.log( "Append iframe:" + options[ 'src' ] + ' to: ' + targetName + " \n WITH REQUEST: " + JSON.stringify(  options.request ) );  		
+		mw.log( "Append iframe:" + options[ 'src' ] + ' to: ' + targetName + " \n with data: " + JSON.stringify(  options.request ) );  		
 		
 		// Append to target
 		$j( options[ 'target' ] ).append( s );
