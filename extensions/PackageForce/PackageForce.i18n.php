@@ -121,6 +121,14 @@ $messages['es'] = array(
 	'pf-header-approve' => 'Aprobar',
 );
 
+/** Finnish (Suomi) */
+$messages['fi'] = array(
+	'pf-admin-menu-default' => 'Oletus',
+	'pf-header-documentation' => 'Dokumentaatio',
+	'pf-header-page_title' => 'Otsikko',
+	'pf-header-approve' => 'Hyväksy',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Peter17
@@ -247,12 +255,23 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'pf-desc' => '便利なテンプレートなどの[[Special:PackageForce|パッケージをダウンロード]]',
+	'pf-only-admins-allowed' => "このページを利用するには 'packageforce-admin' 権限が必要です。",
 	'pf-admin-menu-default' => '規定',
+	'pf-admin-menu-unsortedtemplates' => 'テンプレートが並べ替えられていません',
+	'pf-admin-link-view-documentation' => 'ページに連結している説明書を読む。',
 	'pf-admin-link-editlink-page' => 'ページを編集',
+	'pf-admin-link-approve' => 'ページを承認',
+	'pf-header-documentation' => '説明書',
+	'pf-header-in_packages' => 'パッケージ',
+	'pf-header-edit' => 'リンクを編集',
 	'pf-header-type' => 'ページの種類',
+	'pf-header-page_title' => 'ページ名',
+	'pf-header-approve' => '承認',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -333,6 +352,12 @@ $messages['no'] = array(
 	'pf-header-type' => 'Sidetype',
 	'pf-header-page_title' => 'Tittel',
 	'pf-header-approve' => 'Godkjenn',
+);
+
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'pf-header-page_title' => 'Tytuł',
+	'pf-header-approve' => 'Akceptuj',
 );
 
 /** Piedmontese (Piemontèis)

@@ -149,6 +149,17 @@ $messages['br'] = array(
 Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'refhelper-refcreate_failure' => 'Die Seite „[[$1]]“ ist bereits vorhanden.',
+	'refhelper-title' => 'Titel:',
+	'refhelper-pages' => 'Seiten:',
+	'refhelper-year' => 'Jahr:',
+	'refhelper-category' => 'Kategorie $1:',
+	'refhelper-create' => 'Erstellen',
+	'refhelper-search' => 'Suchen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -264,6 +275,7 @@ $messages['fi'] = array(
 	'refhelper-label_authorforename' => 'Tekijän $1 etunimi:',
 	'refhelper-label_authorsurname' => 'Sukunimi:',
 	'refhelper-title' => 'Otsikko:',
+	'refhelper-pages' => 'Sivuja:',
 	'refhelper-year' => 'Vuosi:',
 	'refhelper-refname' => 'Viitenimi:',
 	'refhelper-category' => 'Luokka $1:',
@@ -478,6 +490,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Hosiryuhosi
  * @author Naohiro19
  * @author 青子守歌
@@ -486,6 +499,10 @@ $messages['ja'] = array(
 	'refhelper' => '注釈ヘルパー',
 	'refsearch' => '注釈検索',
 	'refhelper-desc' => '参考文献のためのページ作成の補助',
+	'refhelper-refsearch' => '注釈の検索',
+	'refhelper-refcreate_legend' => '新しい注釈を作成',
+	'refhelper-refsearch_legend' => 'PubMedで参考文献を検索する',
+	'refhelper-refcreate_another' => '別の注釈を作成する',
 	'refhelper-refcreate_autocomment' => '自動ページ作成。',
 	'refhelper-refcreate_success' => 'ページ[[$1]]は存在しておらず、作成されていません。',
 	'refhelper-refcreate_failure' => 'ページ[[$1]]は既に存在しています！',
@@ -504,6 +521,11 @@ $messages['ja'] = array(
 	'refhelper-toolbox_link_create' => '注釈を作成',
 	'refhelper-toolbox_link_search' => '検索から注釈を作成',
 	'refhelper-newarticle_nocitation' => 'この名前には現在、注釈がありません。',
+	'refhelper-newarticle_suggestions' => '以下に一致する文献がある場合、対応する「作成」ボタンをクリックすればそのページを作成できます。
+
+<h2>検索結果</h2>',
+	'refhelper-newarticle_nosuggestions' => '残念ながら、関連する参考文献を提示できませんでした。
+[[Special:RefHelper|参考文献を手動で追加]]するか、または[[Special:RefSearch|追加する引用を検索]]できます。',
 );
 
 /** Kannada (ಕನ್ನಡ)
@@ -654,6 +676,16 @@ $messages['no'] = array(
 <h2>Forslag</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Dessverre kunne jeg ikke foreslå noen referanser.
 Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
+);
+
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'refhelper-title' => 'Tytuł:',
+	'refhelper-pages' => 'Strony:',
+	'refhelper-year' => 'Rok:',
+	'refhelper-category' => 'Kategoria $1:',
+	'refhelper-create' => 'Utwórz',
+	'refhelper-search' => 'Szukaj',
 );
 
 /** Piedmontese (Piemontèis)

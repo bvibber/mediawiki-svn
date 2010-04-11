@@ -823,10 +823,19 @@ $messages['jv'] = array(
 /** Georgian (ქართული)
  * @author BRUTE
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'imagemap_no_image' => 'შეცდომა: პირველ ხაზზე უნდა მიუთითოთ სურათი',
+	'imagemap_no_link' => 'შეცდომა: არასწორი ბმული $1 ხაზის ბოლოს',
+	'imagemap_invalid_title' => 'შეცდომა: არასწორი სათაური ბმულში ხაზზე $1',
+	'imagemap_missing_coord' => 'შეცდომა: ხაზ $1 არ არის საკმარისი რაოდენობის კოორდინატები',
+	'imagemap_unrecognised_shape' => 'შეცდომა: გაურკვეველი ფიგურა ხაზ $1-ში, ყველა ახალი ხაზი უნდა იწყებოდეს ერთ-ერთი ძირითადი სიტყვით: default, rect, circle ან  poly',
+	'imagemap_no_areas' => 'შეცდომა:უნდა მუთითოთ მხოლოდ ერთი მხარე',
+	'imagemap_invalid_coord' => 'შეცდომა:არასწორი კოორდინატი ხაზ $1-ში, მოლოდინშია ციფრი',
+	'imagemap_invalid_desc' => 'შეცდომა: არასწორი მნიშვნელობა desc,  მოლოდინშია ერთ-ერთი მნიშვნელობა  <tt>$1</tt>.',
 	'imagemap_description' => 'ამ სურათის შესახებ',
+	'imagemap_poly_odd' => 'შეცდომა: $1 ხაზში არის შეცდომით აღწერილი მრავალკუთხედით ზედმეტი კორდინატებით.',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)

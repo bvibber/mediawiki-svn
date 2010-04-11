@@ -237,6 +237,14 @@ $messages['ja'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'そのIPアドレスが引き起こした最近の出来事の数(Project Honey Pot 調べ)',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'honeypot-desc' => 'ახორციელებს მედიავიკი საიტების MediaWiki ინტეგრაციას [http://projecthoneypot.org/ Honey Pot პროექტზე]',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'ბოლო მოვლენების სია, რომელმაც გამოიწვია IP-მისამართუს მოხვედრა Honey Pot პროექტთან შესაბამისობაში',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

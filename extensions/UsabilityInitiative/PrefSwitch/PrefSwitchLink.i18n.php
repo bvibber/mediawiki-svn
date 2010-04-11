@@ -50,6 +50,14 @@ $messages['ca'] = array(
 	'tooltip-pt-prefswitch-link' => 'Proveu les noves funcions',
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'prefswitch-link' => 'Novinky!',
+	'tooltip-pt-prefswitch-link' => 'Vyzkoušejte nové funkce',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefswitch-link' => 'Neu',
@@ -175,6 +183,14 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'prefswitch-link' => '新機能！',
 	'tooltip-pt-prefswitch-link' => '新機能を試す',
+);
+
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'prefswitch-link' => 'ახალი',
+	'tooltip-pt-prefswitch-link' => 'სცადეთ ახალი ხელსაწყოები',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

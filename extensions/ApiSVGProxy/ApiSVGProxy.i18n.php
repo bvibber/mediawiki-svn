@@ -91,6 +91,20 @@ $messages['ia'] = array(
 	'apisvgproxy-desc' => 'Face un proxy in le dominio local pro files SVG ex un deposito de files (possibilemente remote)',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'apisvgproxy-desc' => 'SVGファイルを（リモート含む）ファイル・リポジトリからローカルのドメインにプロキシする',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'apisvgproxy-desc' => '(원격) 파일 저장소에서 로컬 도메인으로 SVG 파일을 프록시 전송',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

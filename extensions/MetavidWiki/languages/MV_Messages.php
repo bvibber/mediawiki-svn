@@ -7580,6 +7580,7 @@ $messages['pl'] = array(
 	'mv_ogg_high_quality' => 'Wysoka jakość – Ogg Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Niska jakość (internetowa) – wideo we Flashu',
 	'mv_add_stream_submit' => 'Dodaj strumień',
+	'mv_duration_label' => 'Okres',
 	'mv_save_changes' => 'Zapisz zmiany',
 	'mv_removed_file_stream' => 'Usunięto plik strumienia: $1',
 	'mv_file_list' => 'Pliki strumienia',

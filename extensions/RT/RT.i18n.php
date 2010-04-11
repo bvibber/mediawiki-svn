@@ -411,6 +411,7 @@ Anda mencoba: '''$1'''",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
@@ -422,6 +423,8 @@ $messages['ja'] = array(
 	'rt-badorderby' => "ORDER BY (ob) の引数が不正: 標準のフィールドでなくてはなりません(ドキュメントを参照)。
 与えられた値: '''$1'''",
 	'rt-badstatus' => "status (s) の引数が不正: 標準のフィールドでなくてはなりません(ドキュメントを参照)。
+与えられた値: '''$1'''",
+	'rt-badcfield' => "カスタムフィールドの引数が不正: 単純な単語である必要があります（説明書を参照）。
 与えられた値: '''$1'''",
 	'rt-badqueue' => "queue (q) の引数が不正: 単純な語でなくてはなりません。
 与えられた値: '''$1'''",

@@ -840,6 +840,7 @@ $messages['fi'] = array(
 	'readerfeedback-tier-poor' => 'Heikko',
 	'tooltip-ca-ratinghist' => 'Lukijoiden arviot tästä sivusta',
 	'specialpages-group-feedback' => 'Katsojan mielipide',
+	'readerfeedback-tt-review' => 'Lähetä arvio',
 );
 
 /** French (Français)

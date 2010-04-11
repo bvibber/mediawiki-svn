@@ -229,6 +229,13 @@ $messages['ja'] = array(
 	'uploadblacklist-desc' => 'アップロード・ブラックリスト機能を追加する',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'uploadblacklist-desc' => 'გაძლევთ შესალებლობას გამოიყენოთ ატვირთვის შავი სია',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

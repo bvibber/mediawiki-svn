@@ -1586,6 +1586,7 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidchooseauto' => 'Automaattisesti luotu nimi ($1)',
 	'openidchoosemanual' => 'Omavalintainen nimi',
 	'openidchooseexisting' => 'Olemassa oleva tunnus tässä wikissä',
+	'openidchooseusername' => 'Käyttäjätunnus:',
 	'openidchoosepassword' => 'salasana:',
 	'openidconvertinstructions' => 'Tällä lomakkeella voit muuttaa käyttäjätilisi käyttämään OpenID-osoitetta tai lisätä OpenID-osoitteita.',
 	'openidconvertoraddmoreids' => 'Siirry OpenID:hen tai lisää uusi OpenID-osoite.',
@@ -2589,6 +2590,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Civvì
  * @author Darth Kule
  * @author McDutchie
  * @author Nemo bis
@@ -2627,8 +2629,10 @@ Per favore consulta un [[Special:ListUsers/sysop|amministratore]].',
 	'openidemail' => 'Indirizzo e-mail',
 	'openidlanguage' => 'Lingua',
 	'openidtimezone' => 'Fuso orario',
+	'openidchooselegend' => 'Scelta del nome utente',
 	'openidchooseinstructions' => 'Tutti gli utenti hanno bisogno di un nickname;
 puoi sceglierne uno dalle opzioni seguenti.',
+	'openidchoosenick' => 'Il tuo nickname ($1)',
 	'openidchoosefull' => 'Il tuo nome completo ($1)',
 	'openidchooseurl' => 'Un nome scelto dal tuo OpenID ($1)',
 	'openidchooseauto' => 'Un nome auto-generato ($1)',
@@ -2657,7 +2661,7 @@ OpenID consente di effettuare la registrazione su molti siti web senza dover uti
 Chi possiede già un account su {{SITENAME}} può effettuare il [[Special:UserLogin|login]] con il proprio nome utente e la propria password come al solito. Per utilizzare OpenID in futuro, si può [[Special:OpenIDConvert|convertire il proprio account a OpenID]] dopo aver effettuato normalmente il login.
 
 Esistono molti [http://openid.net/get/ Provider OpenID]; è possibile che tu abbia già un account abilitato a OpenID su un altro servizio.',
-	'openidupdateuserinfo' => 'Aggiorna le mie informazioni personali',
+	'openidupdateuserinfo' => 'Aggiorna i miei dati personali:',
 	'openiddelete' => 'Cancella OpenID',
 	'openiddelete-text' => 'Facendo clic sul pulsante "{{int:openiddelete-button}}" verrà rimosso l\'OpenID $1 dal proprio account.
 Non si potrà più effettuare il login con questo OpenID.',

@@ -81,6 +81,14 @@ $messages['hu'] = array(
 	'metadata_help' => 'Metaadatok:',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'metadataedit-desc' => '編集の際に、カテゴリ、言語間リンク、許可されたテンプレートを独立のテキストボックスに入れる',
+	'metadata_help' => 'メタデータ:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Nghtwlkr

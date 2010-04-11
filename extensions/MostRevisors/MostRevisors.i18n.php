@@ -621,6 +621,7 @@ $messages['pl'] = array(
 	'mostrevisors' => 'Strony z największą liczbą odwiedzających',
 	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|stron z największą liczbą odwiedzających]]',
 	'mostrevisors-header' => "'''Ta strona zawiera {{PLURAL:$1|stronę|listę $1 stron}} z największa liczbą odwiedzających na tej wiki.'''",
+	'mostrevisors-namespace' => 'Przestrzeń nazw:',
 	'mostrevisors-showredir' => 'Pokaż przekierowania',
 	'mostrevisors-hideredir' => 'Ukryj przekierowania',
 );

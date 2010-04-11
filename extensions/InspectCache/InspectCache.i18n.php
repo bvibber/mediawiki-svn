@@ -304,8 +304,7 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'inspectcache' => 'Tutki välimuistia',
-	'inspectcache-desc' => 'Yksinkertainen virheenjäljitys ja toiminnantarkastus -väline, joka mahdollistaa tutustumisen jaetun välimuistin sisältöön.',
-	'inspectcache-ok' => 'OK',
+	'inspectcache-desc' => 'Yksinkertainen virheenjäljitystyökalu, joka mahdollistaa jaetun välimuistin sisällön tutkimisen.',
 	'inspectcache-general' => 'Yleinen välimuisti',
 	'inspectcache-parser' => 'Jäsentimen välimuisti',
 	'inspectcache-message' => 'Viestivälimuisti',
@@ -827,6 +826,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'inspectcache-parser' => 'Pamięć podręczna parsera',
 	'inspectcache-delete' => 'Usuń',
 	'inspectcache-list' => 'Lista',
 	'right-inspectcache' => 'Podgląd i usuwanie danych z pamięci podręcznej',

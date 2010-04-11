@@ -425,6 +425,14 @@ $messages['km'] = array(
 	'whatismyip-out' => 'អសយដ្ឋានIP របស់អ្នក៖',
 );
 
+/** Korean (한국어)
+ * @author ITurtle
+ */
+$messages['ko'] = array(
+	'whatismyip' => 'What is my IP',
+	'whatismyip-desc' => '사용자의 [[Special:WhatIsMyIP|IP 주소]]를 표시합니다.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

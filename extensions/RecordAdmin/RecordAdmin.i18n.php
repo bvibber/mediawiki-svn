@@ -440,6 +440,7 @@ $messages['de'] = array(
 	'recordadmin-editwithform' => 'Eigenschaften',
 	'recordadmin-typeinfo' => '$1-Aufnahme',
 	'right-recordadmin' => 'Aufzeichnungsseiten finden und bearbeiten',
+	'recordadmin-export-csv' => 'CSV',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -1140,6 +1141,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  * @author 青子守歌
@@ -1186,6 +1188,7 @@ $messages['ja'] = array(
 	'right-recordadmin' => '記録ページを検索および編集する',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => '"$1"なし',
 );
 
 /** Khmer (ភាសាខ្មែរ)

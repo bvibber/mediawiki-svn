@@ -279,6 +279,7 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Naohiro19
  * @author 青子守歌
  */
@@ -286,7 +287,14 @@ $messages['ja'] = array(
 	'tiff-desc' => 'TIFFファイルの画像モードを表示するためのハンドラ',
 	'tiff_no_metadata' => 'TIFFからのメタデータが取得できません',
 	'tiff_page_error' => '範囲にないページ番号',
+	'tiff_too_many_embed_files' => 'この画像には埋め込みファイルが多すぎます。',
+	'tiff_sourcefile_too_large' => 'ソースファイルの解像度が大きすぎます。サムネイルは生成されません。',
+	'tiff_targetfile_too_large' => 'ターゲットファイルの解像度が大きすぎます。サムネイルは生成されません。',
 	'tiff_file_too_large' => 'アップロードされたファイルは容量が大きすぎるために拒否されました。',
+	'tiff_out_of_service' => 'アップロードされたファイルを処理できませんでした。ImageMagick が利用できません。',
+	'tiff_too_much_meta' => 'メタデータが使用する容量が大きすぎます。',
+	'tiff_error_cached' => 'このファイルはキャッシュの有効期限が切れてからでなければレンダリングできません。',
+	'tiff_size_error' => '報告されたファイルサイズが実際のサイズと一致しません。',
 	'tiff_script_detected' => 'アップロードされたファイルに、スクリプトが含まれます。',
 	'tiff_bad_file' => 'アップロードされたファイルに、エラーが含まれます。',
 	'tiff-file-info-size' => '(ページ $5、$1 × $2ピクセル、ファイルサイズ:$3、MIME:$4)',

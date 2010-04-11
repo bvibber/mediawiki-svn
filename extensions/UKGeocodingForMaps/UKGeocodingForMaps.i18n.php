@@ -117,6 +117,15 @@ $messages['ia'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Un o plus codices postal non poteva esser geocodificate e ha essite omittite del carta.',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'ukgeocoding_name' => '英国地図用ジオコーディング',
+	'ukgeocoding_desc' => '地図をグーグルマップを利用した display_uk_point 変数で拡張する',
+	'ukgeocoding_couldNotGeocode' => '郵便番号のジオコードを認識できなかったため、地図から省略されています。',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

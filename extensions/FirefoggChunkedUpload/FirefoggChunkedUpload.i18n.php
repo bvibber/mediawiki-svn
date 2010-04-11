@@ -89,6 +89,13 @@ $messages['ia'] = array(
 	'firefoggcu-desc' => 'Protocollo de incargamento in portiones de Firefogg',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'firefoggcu-desc' => 'Firefogg 一括アップロードプロトコル',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

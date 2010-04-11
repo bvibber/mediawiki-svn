@@ -256,7 +256,7 @@ $messages['fi'] = array(
 	'wikieditor-preview-preference' => 'Ota käyttöön vierekkäinen esikatselu',
 	'wikieditor-preview-tab' => 'Esikatselu',
 	'wikieditor-preview-changes-tab' => 'Muutokset',
-	'wikieditor-preview-loading' => 'Ladataan...',
+	'wikieditor-preview-loading' => 'Ladataan…',
 );
 
 /** French (Français)
@@ -395,8 +395,10 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor-preview-preference' => 'ჩართეთ გვერდითი გადახედვა',
 	'wikieditor-preview-tab' => 'წინასწარ',
 	'wikieditor-preview-changes-tab' => 'ცვლილებები',
 	'wikieditor-preview-loading' => 'იტვირთება...',

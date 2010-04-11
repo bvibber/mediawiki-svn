@@ -1276,6 +1276,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
@@ -1313,6 +1314,7 @@ $messages['ja'] = array(
 	'qp_func_invalid_proposal_id' => '投票 $1、質問 $2 に対して無効な提案 ID ($3 は数値ではありません)',
 	'qp_error_no_such_poll' => 'そのような投票はありません ($1)。
 その投票が宣言され保存されていること、およびアドレス区切り記号 # を使っていることを確認してください。',
+	'qp_error_in_question_header' => '無効な質問見出し: $1',
 	'qp_error_id_in_stats_mode' => '統計モードでは投票の ID を宣言できません',
 	'qp_error_dependance_in_stats_mode' => '統計モードでは投票の依存性チェーンを宣言できません',
 	'qp_error_no_stats' => 'まだ誰もこの投票に投票していないので、統計データはありません (アドレス $1)',
@@ -1686,6 +1688,7 @@ For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen fors
 $messages['pl'] = array(
 	'qp_source_link' => 'Źródło',
 	'qp_stats_link' => 'Statystyki',
+	'qp_users_link' => 'Użytkownicy',
 );
 
 /** Piedmontese (Piemontèis)

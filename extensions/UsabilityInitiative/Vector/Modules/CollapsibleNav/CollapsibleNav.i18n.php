@@ -43,6 +43,13 @@ $messages['ca'] = array(
 	'vector-collapsiblenav-preference' => "Activa l'opció de reduir el menú de navegació esquerre",
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'vector-collapsiblenav-preference' => 'Povolit levé skládací menu',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'vector-collapsiblenav-preference' => 'Zusammenklappbares Navigationsmenü links aktivieren',

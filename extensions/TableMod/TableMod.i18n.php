@@ -383,6 +383,11 @@ $messages['oc'] = array(
 	'tablemod-error-missingid' => 'Atribut ident mancant dins la balisa.',
 );
 
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'tablemod-msg-remove' => 'Usuń',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

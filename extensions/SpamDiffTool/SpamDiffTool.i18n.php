@@ -814,6 +814,7 @@ Fai click <a href='$1'>qui</a> per tornare.",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -821,6 +822,7 @@ $messages['ja'] = array(
 	'spamdifftool' => 'スパム用ブラックリストの管理',
 	'spamdifftool-desc' => 'スパム用ブラックリストに差分ページから新規項目を追加するための基本手段を提供する',
 	'spamdifftool_cantedit' => 'あなたにはスパム用ブラックリストを編集する権限がありません。',
+	'spamdifftool-no-title' => "'''エラー:''' ページ名が指定されていません。",
 	'spamdifftool_notext' => "スパム用ブラックリストに追加する文字列はありません。<a href='$1'>ここ</a>をクリックして続行します。",
 	'spamdifftool_confirm' => "これらの項目をスパム用ブラックリストに追加したいか確認してください。(問題を報告するには<a href='$1' target='new'>ここ</a>をクリックします)",
 	'spamdifftool_summary' => 'スパム用ブラックリストに追加中',

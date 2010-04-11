@@ -895,6 +895,7 @@ $messages['lb'] = array(
 	'masseditregex-hint-remove' => 'Text vun alle Säiten op der Lëscht erofhuelen',
 	'masseditregex-listtype-intro' => 'Dëst ass eng Lëscht vun:',
 	'masseditregex-listtype-pagenames' => 'Numm vun de Säiten (dës Säiten änneren)',
+	'masseditregex-listtype-categories' => "Kategoriennimm (all Säit an dëse Kategorien änneren;d'Wiel vum Nummraum gëtt ignoréiert)",
 	'masseditregex-listtype-backlinks' => 'Linken heihinn (Säiten änneren déi op dës linken)',
 	'masseditregex-namespace-intro' => 'All dës Säite sinn an dësem Nummraum:',
 	'masseditregex-exprnomatch' => 'Den Ausdrock "$1" huet keng Resultater erginn.',
@@ -1064,6 +1065,15 @@ $messages['oc'] = array(
 	'masseditregex-badregex' => 'Regex invalid :',
 	'masseditregex-editfailed' => "Error al moment de l'edicion :",
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
+);
+
+/** Polish (Polski) */
+$messages['pl'] = array(
+	'masseditregex-matchtxt' => 'Szukaj:',
+	'masseditregex-replacetxt' => 'Zamień na:',
+	'masseditregex-before' => 'Przed',
+	'masseditregex-after' => 'Później',
+	'masseditregex-hint-headreplace' => 'Zastąp',
 );
 
 /** Piedmontese (Piemontèis)

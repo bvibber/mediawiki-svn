@@ -688,6 +688,19 @@ $messages['km'] = array(
 	'adminlinks_importexport' => 'កំពុង​នាំ​ចូល ​និងកំពុង​នាំ​ចេញ​',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'adminlinks' => '괸리용 링크 모음',
+	'adminlinks_general' => '일반',
+	'adminlinks_editsidebar' => '사이드바 편집',
+	'adminlinks_editcss' => 'CSS 파일 편집',
+	'adminlinks_editmainpagename' => '대문 이름 편집',
+	'adminlinks_users' => '사용자',
+	'adminlinks_createuser' => '계정 만들기',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

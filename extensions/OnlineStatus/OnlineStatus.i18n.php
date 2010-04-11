@@ -846,6 +846,7 @@ $messages['pl'] = array(
 	'onlinestatus-desc' => 'Umożliwia prezentację czy użytkownik jest w tej chwili dostępny na wiki.',
 	'onlinestatus-subtitle-offline' => 'Użytkownik jest w tej chwili nieobecny',
 	'onlinestatus-subtitle-online' => 'Użytkownik jest w tej chwili obecny',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Twój status:',
 	'onlinestatus-toggles-explain' => 'Umożliwia Ci prezentowanie innym użytkownikom na Twojej stronie użytkownika czy jesteś aktualnie dostępny.',
 	'onlinestatus-toggles-show' => 'Pokaż moją obecność na mojej stronie użytkownika',

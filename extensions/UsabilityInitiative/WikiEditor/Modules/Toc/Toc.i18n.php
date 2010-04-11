@@ -341,6 +341,15 @@ $messages['ja'] = array(
 	'wikieditor-toc-hide' => '目次を非表示',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'wikieditor-toc-preference' => 'ჩართეთ სარჩევი ნავიგაციის შესაძლებლობით',
+	'wikieditor-toc-show' => 'აჩვენეთ სარჩევი',
+	'wikieditor-toc-hide' => 'სარჩევის დამალვა',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

@@ -45,6 +45,13 @@ $messages['ca'] = array(
 	'prefs-updates' => 'Actualitzacions',
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'prefs-updates' => 'Aktualizace',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefs-updates' => 'Aktualisierungen',
@@ -157,6 +164,15 @@ $messages['ja'] = array(
 	'prefs-updates' => '更新',
 	'updatemyprefs-desc' => '定期的に更新されるユーザーインターフェイスが利用可能になるたびに適用されるのを利用者が望むかどうかの設定',
 	'updatemyprefs-label-message' => '新しいツールや未設定値が利用可能になるたび、それに合わせて自分の設定を自動的に更新する',
+);
+
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'prefs-updates' => 'განახლება',
+	'updatemyprefs-desc' => 'კონფიგურაცია მომხმარებლებისთვის, რომელიც ნებართვას აძლევ მომხმარებელს განაახლოს ინტერფეისი ახალი ფუნქციების ჩამატებისას',
+	'updatemyprefs-label-message' => 'ავტომატურად განაახლოთ ჩემი კონფიგურაცია ახალი ხელსაწყოების გაჩენისთანავე',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -139,9 +139,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'userpageeditprotection-desc' => '利用者ページの編集を利用者本人と許可された編集者だけに制限する',
 	'right-editalluserpages' => '利用者ページを編集',
 );
 
