@@ -520,24 +520,6 @@ class LanguageConverter {
 	}
 
 	/**
-	 * Convert namespace.
-	 * @param string $title the title included namespace
-	 * @return array of string
-	 * @private
-	 */
-	function convertNamespace( $title, $variant ) {
-		$splittitle = explode( ':', $title, 2 );
-		if ( count( $splittitle ) < 2 ) {
-			return $title;
-		}
-		if ( isset( $this->mNamespaceTables[$variant][$splittitle[0]] ) ) {
-			$splittitle[0] = $this->mNamespaceTables[$variant][$splittitle[0]];
-		}
-		$ret = implode( ':', $splittitle );
-		return $ret;
-	}
-
-	/**
 	 * Convert text to different variants of a language. The automatic
 	 * conversion is done in autoConvert(). Here we parse the text
 	 * marked with -{}-, which specifies special conversions of the
@@ -552,13 +534,32 @@ class LanguageConverter {
 	 * @return string converted text
 	 * @public
 	 */
-	function convert( $text ) {
+	public function convert( $text ) {
 		global $wgDisableLangConversion;
 		if ( $wgDisableLangConversion ) return $text;
 
 		$variant = $this->getPreferredVariant();
 
 		return $this->recursiveConvertTopLevel( $text, $variant );
+	}
+
+	/**
+	 * Convert a Title object to a readable string in the preferred variant
+	 */
+	public function convertTitle( $title ) {
+		$variant = $this->getPreferredVariant();
+		if ( $title->getNamespace() === NS_MAIN ) {
+			$text = '';
+		} else {
+			$text = $title->getNsText();
+			if ( isset( $this->mNamespaceTables[$variant][$text] ) ) {
+				$text = $this->mNamespaceTables[$variant][$text];
+			}
+			$text .= ':';
+		}
+		$text .= $title->getText();
+		$text = $this->autoConvert( $text, $variant );
+		return $text;
 	}
 
 	protected function recursiveConvertTopLevel( $text, $variant, $depth = 0 ) {
