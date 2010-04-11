@@ -170,7 +170,7 @@ mw.UploadHandler.prototype = {
 			this.orig_onsubmit = this.form.onsubmit;
 		}
 		
-		if( this.selectFileCb ){			
+		if( this.selectFileCb ) {			
 			this.bindSelectFileCb();
 		}
 		
@@ -186,9 +186,11 @@ mw.UploadHandler.prototype = {
 	 */
 	bindSelectFileCb: function(){
 		var _this = this;		
+		
 		// Grab the select file input from the form		
 		var $target = $j( this.form ).find( "input[type='file']" );
 		$target.change( function() {
+		
 			var path = $j( this ).val();
 			// Find trailing part
 			var slash = path.lastIndexOf( '/' );

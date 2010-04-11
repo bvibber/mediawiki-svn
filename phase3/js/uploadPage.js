@@ -33,6 +33,11 @@ var mwUploadHelper = {
 					
 					// Set the select file callback:
 					'selectFileCb': function( fileName ) {
+						// Check if we are on upload to new version page and don't update target
+						// ( bug 23069 )
+						if( mw.parseUri( document.URL ).queryKey['wpDestFile'] ){				
+							return false;
+						}
 						$j( '#wpDestFile' ).val( fileName );
 					}
 				} );

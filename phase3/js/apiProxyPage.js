@@ -28,11 +28,11 @@ mw.ready( function() {
 	mw.setConfig( 'apiProxyConfig',  mwApiProxyConfig);
 	 
 	// Do a setTimeout to 0 to call after other zero delay async events 
-	// ( once everyone is doing buildout withthin mwsetup priror to .ready this won't be needed. ) 
+	// ( once everyone is doing buildout within mwsetup prior to .ready this won't be needed. ) 
 	mw.log( 'load ApiProxy' );
-	mw.load( 'ApiProxy', function(){	
+	mw.load( 'ApiProxy', function() {
 		//Clear out the page content ( not needed for iframe proxy ) 
 		$j( 'body' ).html( '' );
 		mw.ApiProxy.server();
-	});
+	} );
 } );
