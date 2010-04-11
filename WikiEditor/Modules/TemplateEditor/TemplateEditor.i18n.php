@@ -107,7 +107,9 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'wikieditor-template-editor-preference' => 'Zapnout formulářovou editaci šablon wiki',
+	'wikieditor-template-editor-dialog-title' => 'Upravit šablonu',
 	'wikieditor-template-editor-dialog-submit' => 'Aktualizovat',
+	'wikieditor-template-editor-dialog-cancel' => 'Storno',
 );
 
 /** Welsh (Cymraeg)
@@ -317,9 +319,13 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor-template-editor-preference' => 'თარგების რედაქტირება ფორმების მეშვეობით - ჩართვა',
+	'wikieditor-template-editor-dialog-title' => 'თარგის რედაქტირება',
 	'wikieditor-template-editor-dialog-submit' => 'განახლება',
+	'wikieditor-template-editor-dialog-cancel' => 'გაუქმება',
 );
 
 /** Korean (한국어)

@@ -242,6 +242,57 @@ $messages['ca'] = array(
 	'prefswitch-success-off' => "S'han deshabilitat les noves característiques.",
 );
 
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'prefswitch-survey-true' => 'Ano',
+	'prefswitch-survey-false' => 'Ne',
+	'prefswitch-survey-submit-off' => 'Vypnout nové funkce',
+	'prefswitch-survey-submit-feedback' => 'Odeslat zpětnou vazbu',
+	'prefswitch-survey-cancel-feedback' => 'Pokud nechcete poskytnout zpětnou vazbu, můžete se vrátit na $1.',
+	'prefswitch-survey-question-likedislike' => 'Co se vám na Betě líbilo? Co se vám na Betě nelíbilo?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Byla příliš složitá na používání.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Nefungovala správně.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nechovala se předvídatelně.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Nelíbil se mi její vzhled.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nelíbily se mi nové záložky a rozvržení.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nelíbil se mi nový panel nástrojů.',
+	'prefswitch-survey-answer-whyoff-other' => 'Jiný důvod:',
+	'prefswitch-survey-question-browser' => 'Jaký prohlížeč používáte?',
+	'prefswitch-survey-answer-browser-other' => 'Jiný prohlížeč:',
+	'prefswitch-survey-question-os' => 'Jaký operační systém používáte?',
+	'prefswitch-survey-answer-os-other' => 'Jiný operační systém:',
+	'prefswitch-survey-question-res' => 'Jaké je rozlišení vaší obrazovky?',
+	'prefswitch-title-on' => 'Co je nového?',
+	'prefswitch-title-switched-on' => 'Užijte si to!',
+	'prefswitch-title-off' => 'Vypnout nové funkce',
+	'prefswitch-title-switched-off' => 'Děkujeme',
+	'prefswitch-title-feedback' => 'Zpětná vazba',
+	'prefswitch-success-on' => 'Nové funkce jsou nyní zapnuté.',
+	'prefswitch-success-off' => 'Nové funkce jsou nyní vypnuty.',
+	'prefswitch-success-feedback' => 'Vaše zpětná vazba byla odeslána.',
+	'prefswitch-return' => '<hr style="clear:both"> 
+Zpět na <span class="plainlinks">[$1 $2].</span>',
+	'prefswitch-main' => 'Tvrdě jsme pracovali, aby se uživatelům snadněji pracovalo. Jsme rádi, že s vámi můžeme sdílet nový vzhled a úpravy rozhraní. Zlepšení použitelnosti našich projektů je prioritou Wikimedia Foundation a nadále budeme betu vyvíjet. 
+
+[[File:UsabilityNavigation.png|right|link=|Nová navigace]] 
+[[File:UsabilityToolbar.png|right|link=|Rozšířený panel nástrojů]]
+[[File:UsabilityDialogs.png|right|link=|Dialogy nové generace]] 
+=== Seznam změn a vylepšení === 
+* Navigace: Máme lepší navigaci pro čtení a editaci stránek. Nyní, záložky v horní části každé stránky jasněji definují, zda si prohlížíte stránky, diskutujete či editujete. 
+* Editace: Vytvořili jsme nové úpravy panelu nástrojů, aby se snadněji používal. Nyní je formátování stránek jednodušší a intuitivnější. 
+* Průvodce: Jednoduše použilelný nástroj vám pomůže přidávat odkazy na interní a na externí stránky. 
+* Vyhledávání: Zlepšili jsme návrhy vyhledávání, takže nyní se jako první ukazují ty, co nejčastěji hledáte. 
+* Další nové vlastnosti: Zavedli jsme také průvodce tabulkou, aby bylo vytváření tabulek snadnější a také vytváříme jednodušší editaci.',
+	'prefswitch-main-on' => '=== Zpětná vazba? === 
+Byli bychom rádi, když nám poskytnete zpětnou vazbu. Prosím navštivte naši <span class="plainlinks">[$1 stránku pro zpětnou vazbu]</span> 
+=== Jít zpět! === 
+Pokud chcete vypnout nové funkce, prosím <span class="plainlinks">[$2 klikněte sem].</span>',
+	'prefswitch-main-off' => '=== Vyzkoušejte ji! === 
+Pokud si chcete vyzkoušet nové funkce, prosím <span class="plainlinks">[$1 klikněte zde].</span>',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author The Evil IP address
@@ -868,8 +919,11 @@ Jeli chceš nowe funkcije zapinyć,  <span class="plainlinks">[$1 klikń prošu 
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
+ * @author Tgr
  */
 $messages['hu'] = array(
+	'prefswitch' => 'Usability Initiative beállítás-váltó',
+	'prefswitch-desc' => 'Lehetővé teszi a felhasználóknak a különböző beállítások közötti váltást',
 	'prefswitch-survey-true' => 'Igen',
 	'prefswitch-survey-false' => 'Nem',
 	'prefswitch-survey-submit-off' => 'Új funkciók kikapcsolása',
@@ -1071,6 +1125,38 @@ $messages['ja'] = array(
 下記の任意の調査にぜひご協力ください。',
 	'prefswitch-survey-intro-off' => '新機能をお試しいただきありがとうございます。
 更なる改善のために、ぜひ下記の任意の調査にご協力ください。',
+);
+
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'prefswitch' => 'გამოყენებადობის ინიციატივის კონფიგურაციის გადართვა',
+	'prefswitch-desc' => 'აძლევს ნებართვას მომხმარებლებს გადართონ კონფიგურაცია',
+	'prefswitch-survey-true' => 'ჰო',
+	'prefswitch-survey-false' => 'არა',
+	'prefswitch-survey-submit-off' => 'გათიშეთ ახალი შესაძლებლობები',
+	'prefswitch-survey-cancel-off' => 'თუ გსურთ გააგრძელოთ ბეტას გამოყენება, შეგიძლიათ დაბრუნდეთ  $1-ზე.',
+	'prefswitch-survey-submit-feedback' => 'გამოხმაურება',
+	'prefswitch-survey-cancel-feedback' => 'თუ არ გსურთ პროტოტიპზე გამოხმაურების დატოვება, უბრალოდ დაბრუნდით $1.',
+	'prefswitch-survey-question-likedislike' => 'რა მოგეწონათ ახალი შესაძლებლობებიდან? 
+რა არ მოგეწონათ ახალი შესაძლებლობებიდან?',
+	'prefswitch-survey-question-whyoff' => 'რატომ თიშავთ ახალ შესაძლებლობებს? 
+გთხოვთ აირჩიოთ პასუხი.',
+	'prefswitch-survey-answer-whyoff-other' => 'სხვა მიზეზი:',
+	'prefswitch-survey-question-browser' => 'რომელ ბრაუზერს იყენებთ?',
+	'prefswitch-survey-answer-browser-other' => 'სხვა ბრაუზერი:',
+	'prefswitch-survey-question-os' => 'რომელ ოპერაციულ სისტემას იყენებთ?',
+	'prefswitch-survey-answer-os-other' => 'სხვა ოპერაციული სისტემა:',
+	'prefswitch-survey-question-res' => 'თქვენი მონიტორის გაფართოება:',
+	'prefswitch-title-on' => 'რა არის ახალი?',
+	'prefswitch-title-switched-on' => 'ისიამოვნეთ!',
+	'prefswitch-title-off' => 'გათიშეთ ახალი შესაძლებლობები',
+	'prefswitch-title-switched-off' => 'მადლობა',
+	'prefswitch-title-feedback' => 'კონტაქტი',
+	'prefswitch-success-on' => 'ახალი შესაძლებლობები ჩართულია.',
+	'prefswitch-success-off' => 'ახალი შესაძლებლობები გათიშულია.',
+	'prefswitch-success-feedback' => 'თქვენი გამოხმაურება გაგზავნილია.',
 );
 
 /** Korean (한국어)
@@ -1420,7 +1506,7 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Nie podoba mi się wygląd.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nie podobają mi się nowe zakładki i układ.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nie podoba mi się nowy pasek narzędzi.',
-	'prefswitch-survey-answer-whyoff-other' => 'Inna przyczyna',
+	'prefswitch-survey-answer-whyoff-other' => 'Inny powód:',
 	'prefswitch-survey-question-browser' => 'Z jakiej korzystasz przeglądarki?',
 	'prefswitch-survey-answer-browser-other' => 'Inna przeglądarka',
 	'prefswitch-survey-question-os' => 'Z jakiego systemu operacyjnego korzystasz?',

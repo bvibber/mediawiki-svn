@@ -585,10 +585,17 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor-publish-preference' => 'ჩართეთ ნაბიჯ-ნაბიჯი პუბლიკაცია',
+	'wikieditor-publish-button-publish' => 'გამოქვეყნება',
+	'wikieditor-publish-button-cancel' => 'გაუქმება',
+	'wikieditor-publish-dialog-title' => 'გამოქვეყნება {{SITENAME}}-ში.',
+	'wikieditor-publish-dialog-summary' => 'ცვლილების მოკლე აღწერა (წერილობით აღწერეთ, თუ რა ცვლილება შეიტანეთ):',
 	'wikieditor-publish-dialog-minor' => 'მცირე შესწორება',
 	'wikieditor-publish-dialog-watch' => 'ამ გვერდის თვალთვალი',
+	'wikieditor-publish-dialog-publish' => 'გამოქვეყნება',
 	'wikieditor-publish-dialog-goback' => 'უკან',
 );
 

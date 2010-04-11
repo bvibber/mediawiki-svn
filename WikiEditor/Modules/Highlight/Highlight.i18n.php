@@ -219,6 +219,13 @@ $messages['ja'] = array(
 	'wikieditor-highlight-preference' => '編集時の構文ハイライトを有効化する',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'wikieditor-highlight-preference' => 'ჩართეთ სინტაქსის გაფერადება რედაქტირებისას',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

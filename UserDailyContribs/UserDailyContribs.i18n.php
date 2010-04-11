@@ -207,6 +207,13 @@ $messages['ja'] = array(
 	'userdailycontribs-desc' => 'クリック追跡拡張機能のための利用者の一日あたりの投稿',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'userdailycontribs-desc' => 'დაჭერის გაფართოების გამოყენების ყოველდღიური წვლილი.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

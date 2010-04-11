@@ -342,8 +342,11 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor' => 'ვიკიტექსტის რედაქტირების გაფართოებული ინტერფეისი',
+	'wikieditor-desc' => 'ვიკიტექსტის რედაქტირების გაფართოებული ინტერფეისისა და სხვა ფუნქციებს უზრუნველყოფს',
 	'wikieditor-wikitext-tab' => 'ვიკიტექსტი',
 	'wikieditor-loading' => 'იტვირთება',
 );
