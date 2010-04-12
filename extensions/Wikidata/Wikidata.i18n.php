@@ -48,10 +48,6 @@ $messages['en'] = array(
 	'datasearch_match_words' => 'Words matching <i>$1</i> and associated meanings',
 	'datasearch_match_words_lang' => 'Words in <i>$1</i> matching <i>$2</i> and associated meanings',
 
-	'searchmenu-new' => "<p>You may:<br />
-* '''Create the expression \"[[Expression:\$1]]\"''' (and add a definition)<br />
-* '''Create the page \"[[:\$1]]\"''' (a standard wiki page)</p>",
-
 	'importtsv' => 'Wikidata: Import TSV',
 	'ow_importtsv_title1' => 'Import TSV',
 	'ow_importtsv_title2' => 'Import definitions and translations',
