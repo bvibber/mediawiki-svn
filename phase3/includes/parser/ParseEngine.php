@@ -43,13 +43,13 @@ class ParseEngine {
 		return $doc;
 	}
 
-	static function unparse($inNode) {
-		$retStr = "" . $inNode->getAttribute("tag");
-		foreach ($inNode->childNodes as $child) {
+	static function unparse($inNodes) {
+		$retStr = "";
+		foreach ($inNodes as $child) {
 			if ($child instanceof DOMText) {
 				$retStr .= $child->data;
 			} else {
-				$retStr .= self::unparse($child);
+				$retStr .= $child->getAttribute("tag") . self::unparse($child->childNodes);
 			}
 		}
 		return $retStr;

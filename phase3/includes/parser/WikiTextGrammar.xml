@@ -27,6 +27,11 @@
 			<Assignment tagName="template" tag="{{">
 				<Sequence>
 					<Reference name="name" />
+					<Choice failSafe="true">
+						<Assignment tagName="name2" tag=":">
+							<Reference name="main" />
+						</Assignment>
+					</Choice>
 					<Reference name="partList" />
 					<Assignment tagName="endTag" tag="}}" />
 				</Sequence>

@@ -463,7 +463,6 @@ $wgAutoloadLocalClasses = array(
 	'PPNode_Hash_Tree' => 'includes/parser/Preprocessor_Hash.php',
 	'PPTemplateFrame_DOM' => 'includes/parser/Preprocessor_DOM.php',
 	'PPTemplateFrame_Hash' => 'includes/parser/Preprocessor_Hash.php',
-	'ParseEngine' => 'includes/parser/ParseEngine.php',
 	'Parser' => 'includes/parser/Parser.php',
 	'ParserCache' => 'includes/parser/ParserCache.php',
 	'ParserOptions' => 'includes/parser/ParserOptions.php',

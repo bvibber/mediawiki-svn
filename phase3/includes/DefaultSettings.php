@@ -1229,11 +1229,6 @@ $wgDebugTimestamps = false;
 $wgDebugPrintHttpHeaders = true;
 
 /**
- * Log file for debugging the parser, if not set log won't be created
- */
-$wgDebugParserLog = '';
-
-/**
  * Show the contents of $wgHooks in Special:Version
  */
 $wgSpecialVersionShowHooks =  false;
