@@ -410,6 +410,7 @@ class WWImages extends WWWikis {
 	$images = new ImageCollection();
 
 	$globalImageList = $this->getImagesOnPagesGlobally($pages); //use wikis for $wwLanguages only
+
 	//TODO: sanity limit on number of images. $max * 5 ?
 	$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, ".*wiki"); //use all wikipedias
 
@@ -417,7 +418,7 @@ class WWImages extends WWWikis {
 	    $m = @$usage['*max*'];
 	    if ( $m >= $wwFrequentImageThreshold ) continue;
 
-	    foreach ($usage as $wiki => $c) {
+	    foreach ($usage as $wiki => $c) { //FIXME: only count usage on *RELEVANT* pages.
 		$images->addImageUsage($image, $wiki.":*", "article", 1);
 	    }
 	}

@@ -18,8 +18,11 @@ function printConceptList($langs, $concepts, $class, $limit = false) {
     <ul class="<?php print $class; ?>">
       <?php
 	foreach ($concepts as $c) {
+	    $link = getConceptDetailsLink($langs, $c);
+	    if (!$link) continue;
+
 	    ?><li><?php
-	    print getConceptDetailsLink($langs, $c);
+	    print $link;
 	    
 	    $i += 1;
 	    if ($i >= $limit) break;
@@ -164,13 +167,13 @@ function getImageLabels($img) {
 	foreach ( $img['tags'] as $tag ) {
 	    foreach ( $wwLabelPatterns as $pattern => $label ) {
 		if ( preg_match($pattern, $tag) ) {
-		    $labels[$label] = 1;
+		    $labels[$label] = "<span title=\"".htmlspecialchars($tag)."\">".htmlspecialchars($label)."</span>";
 		    break;
 		}
 	    }
 	}
 
-	$labels = array_keys($labels);
+	$labels = array_values($labels);
 	return $labels;
 }
 
@@ -186,6 +189,8 @@ function getConceptDetailsLink($langs, $concept, $text = NULL) {
     global $utils;
 
     $name = $utils->pickLocal($concept['name'], $langs);
+    if ( $name === false || $name === null) return false;
+
     $name = str_replace("_", " ", $name);
     $score = @$concept['score'];
 
@@ -247,6 +252,7 @@ function printList($items, $escape = true, $class = "list") {
     <ul class="<?php print htmlspecialchars($class); ?>">
       <?php
 	foreach ($items as $item) {
+	    if ( !$item ) continue;
 	    if ( $escape ) $item = htmlspecialchars($item);
 	    print "<li>" . trim($item) . "</li>";
 	}
@@ -391,7 +397,6 @@ function printConcept($concept, $langs, $terse = true) {
       <td colspan="3">
 	  <h1 class="name <?php print "weight_$wclass"; ?>"><?php print getConceptDetailsLink($langs, $concept); ?>:</h1>
 	   <p class="definition"><?php print htmlspecialchars($definition); ?></p> 
-	  <div class="wikipages"><strong class="label">Pages:</strong> <?php printConceptPageList( $langs, $concept, $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ) ?></div>
       </td>
     </tr>
 
@@ -443,6 +448,15 @@ function printConcept($concept, $langs, $terse = true) {
       <?php 
 	  $more = printConceptList( $langs, $concept['broader'], $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ); 
       ?>
+      <?php if ($terse && $more) print " <strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more...") . "]</strong>"; ?>
+      </td>
+    </tr>
+    <?php } ?>
+
+    <?php if (!$terse && @$concept['pages']) { ?>
+    <tr class="row_pages">
+      <td class="cell_pages wikipages" colspan="3">
+      <strong class="label">Wiki pages:</strong> <?php $more = printConceptPageList( $langs, $concept, $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ); ?>
       <?php if ($terse && $more) print " <strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more...") . "]</strong>"; ?>
       </td>
     </tr>
@@ -514,6 +528,8 @@ if ( $lang ) {
 
 $lang = $languages[0];
 
+$allLanguages = array_keys($wwLanguages);
+
 $profiling['thesaurus'] = 0;
 $profiling['pics'] = 0;
 
@@ -522,11 +538,11 @@ if (!$error) {
   try {
       if ($lang && $conceptId) {
 	  $mode = "concept";
-	  $result = $thesaurus->getConceptInfo($conceptId, $languages);
+	  $result = $thesaurus->getConceptInfo($conceptId, $allLanguages);
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
 	  $mode = "term";
-	  $result = $thesaurus->getConceptsForTerm($lang, $term, $languages, $norm, $limit);
+	  $result = $thesaurus->getConceptsForTerm($lang, $term, $allLanguages, $norm, $limit);
       } 
   } catch (Exception $e) {
       $error = $e->getMessage();
@@ -580,7 +596,7 @@ if (!$error) {
 
 	.row_images td { vertical-align: bottom; }
 
-	.row_related td, .row_category, .row_narrower { font-size: small; background-color: #F0F7F9; }
+	.row_related td, .row_category, .row_narrower, .row_pages { font-size: small; background-color: #F0F7F9; }
 	.row_blank td { font-size: small;  }
 
 	/*

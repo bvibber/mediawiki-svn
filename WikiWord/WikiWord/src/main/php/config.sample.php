@@ -42,28 +42,35 @@ $wwTagsTable = null;
 $wwFrequentImageThreshold = 10;
 
 $wwTagScores = array(
-  'Category:Featured_pictures_on_Wikimedia_Commons' => 3, 
-  'Category:Featured_pictures_on_Wikipedia,_German' => 3,
+  'Category:Featured_pictures_on_Wikimedia_Commons' => 10,
+  'Category:Featured_pictures_on_Wikipedia,_German' => 10,
 
-  'Template:Former_featured_picture' => 2.8,
+  'Template:Former_featured_picture' => 6,
 
-  'Template:Media_of_the_day' => 2.5,
-  'Template:Picture_of_the_day' => 2.5,
+  'Template:Media_of_the_day' => 10,
+  'Template:Picture_of_the_day' => 10,
 
-  'Category:Quality_images' => 2.0,
+  'Category:Quality_images' => 8,
 
-  'Category:Valued_image' => 1.4,
-  'Category:Former_valued_images' => 1.3,
-  'Category:Images_used_in_valued_image_sets' => 1.2,
+  'Category:Valued_image' => 8,
+  'Category:Former_valued_images' => 6,
+  'Category:Images_used_in_valued_image_sets' => 7,
 
-  'assessment:Media_of_the_day' => 2.5,
-  'assessment:Picture_of_the_day' => 2.5,
-  'assessment:Quality_image' => 2.0,
-  'assessment:Featured_picture' => 3.0,
+  'assessment:Media_of_the_day' => 10,
+  'assessment:Picture_of_the_day' => 10,
+  'assessment:Picture_of_the_week' => 15,
+  'assessment:Picture_of_the_month' => 20,
+  'assessment:Picture_of_the_year' => 25,
+  'assessment:Quality_image' => 8,
+  'assessment:Featured_picture' => 15,
 );
+
 
 $wwLabelPatterns = array(
   '/^assessment:.*_of_the_day([-_].*|$)/' => "PotD",
+  '/^assessment:.*_of_the_week([-_].*|$)/' => "PotW",
+  '/^assessment:.*_of_the_month([-_].*|$)/' => "PotM",
+  '/^assessment:.*_of_the_year([-_].*|$)/' => "PotY",
   '/^assessment:(Featured|Former_featured_picture).*/' => 'FP',
   '/^assessment:Quiality.*/' => 'QI',
   '/^assessment:(Valued|Former_valued_images|Images_used_in_valued_image_sets).*/' => 'VI',
