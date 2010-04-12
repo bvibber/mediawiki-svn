@@ -281,9 +281,11 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Dada
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'onlinestatus-js-anon' => 'Σφάλμα: πρέπει να είστε συνδεδεμένοι για να χρησιμοποιήσετε αυτή τη δυνατότητα',
 	'onlinestatus-js-changed' => 'Η κατάστασή σας έχει αλλάξει σε "$1"',
 	'onlinestatus-subtitle-offline' => 'Αυτός ο χρήστης είναι τώρα εκτός σύνδεσης',
 	'onlinestatus-subtitle-online' => 'Αυτός ο χρηστής είναι εντός σύνδεσης',

@@ -560,6 +560,7 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -572,6 +573,8 @@ $messages['el'] = array(
 	'usagestatisticsinterval' => 'Διάστημα:',
 	'usagestatisticsnamespace' => 'Περιοχή ονομάτων:',
 	'usagestatisticsexcluderedirects' => 'Εξαίρεση ανακατευθύνσεων',
+	'usagestatistics-namespace' => 'Στατιστικά για την ομάδα σελίδων [[Ειδικό: Allpages / $ 1 | $ 2]].',
+	'usagestatistics-noredirects' => '[[Ειδικό: ListRedirects | Aνακατευθύνσεις]] δε λαμβάνονται υπόψη.',
 	'usagestatisticstype' => 'Τύπος',
 	'usagestatisticsstart' => 'Ημερομηνία έναρξης:',
 	'usagestatisticsend' => 'Ημερομηνία λήξης:',
@@ -1690,7 +1693,7 @@ $messages['pl'] = array(
 	'usagestatisticsfor' => '<h2>Statystyki użytkownika [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statystyki wykorzystania dla wszystkich użytkowników</h2>',
 	'usagestatisticsinterval' => 'Okres',
-	'usagestatisticsnamespace' => 'Przestrzeń nazw:',
+	'usagestatisticsnamespace' => 'Przestrzeń nazw',
 	'usagestatisticsexcluderedirects' => 'Wyklucz przekierowania',
 	'usagestatistics-namespace' => 'Dane statystyczne dotyczą przestrzeni nazw „[[Special:Allpages/$1|$2]]”.',
 	'usagestatistics-noredirects' => '[[Special:ListRedirects|Przekierowania]] nie są brane pod uwagę.',

@@ -40,6 +40,13 @@ $messages['dsb'] = array(
 	'firefoggcu-desc' => 'Protokol Firefogg za nagraśe pó porcijach',
 );
 
+/** Greek (Ελληνικά)
+ * @author Περίεργος
+ */
+$messages['el'] = array(
+	'firefoggcu-desc' => 'πρωτόκολλο Κατατεμνόμενης Φόρτωσης της Firefogg',
+);
+
 /** Spanish (Español)
  * @author Pertile
  */

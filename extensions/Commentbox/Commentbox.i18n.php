@@ -207,12 +207,16 @@ Maš komentar na toś tom boku? Pśidaj jen sem abo <span class="plainlinks">[{{
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Dada
  * @author Omnipaedista
+ * @author Περίεργος
  */
 $messages['el'] = array(
 	'commentbox-desc' => 'Προσθέτει ένα κουτί σχολίων σε συγκεκριμένες σελίδες',
+	'commentbox-intro' => '== Προσθέστε ένα σχόλιο ... == Έχετε ένα σχόλιο για τη σελίδα? Προσθέστε το εδώ ή στο <span class="plainlinks">[((fullurl: ((FULLPAGENAME)) | action = edit)) επεξεργαστείτε τη σελίδα άμεσα].</span>',
 	'commentbox-savebutton' => 'Αποθήκευση σχολίου',
 	'commentbox-name' => 'Όνομα:',
+	'commentbox-name-explanation' => '<small>(Συμβουλή: Εάν [[Ειδικό:UserLogin|συνδεθείτε]], δε χρειάζεται να συμπληρώσετε το όνομά σας εδώ πληκρολογώντας)</small>',
 	'commentbox-log' => 'Νέα σχόλια',
 	'commentbox-first-comment-heading' => '== Σχόλια ==',
 	'commentbox-regex' => '/\\n==\\s*Σχόλια\\s*==\\s*\\n/i',

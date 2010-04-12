@@ -1067,10 +1067,12 @@ $messages['oc'] = array(
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'masseditregex-matchtxt' => 'Szukaj:',
-	'masseditregex-replacetxt' => 'Zamień na:',
+	'masseditregex-matchtxt' => 'Szukaj',
+	'masseditregex-replacetxt' => 'Zastąp przez',
 	'masseditregex-before' => 'Przed',
 	'masseditregex-after' => 'Później',
 	'masseditregex-hint-headreplace' => 'Zastąp',

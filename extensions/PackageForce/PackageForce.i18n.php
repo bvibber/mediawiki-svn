@@ -100,6 +100,16 @@ $messages['dsb'] = array(
 	'pf-header-approve' => 'Pśizwóliś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dada
+ */
+$messages['el'] = array(
+	'pf-admin-link-editlink-page' => 'Επεξεργασία σελίδας',
+	'pf-admin-link-approve' => 'Έγκριση σελίδας',
+	'pf-header-edit' => 'Επεξεργασία συνδέσμου',
+	'pf-header-approve' => 'Έγκριση',
+);
+
 /** Spanish (Español)
  * @author Pertile
  */
@@ -422,5 +432,13 @@ $messages['ru'] = array(
 	'pf-header-type' => 'Тип страницы',
 	'pf-header-page_title' => 'Название',
 	'pf-header-approve' => 'Утверждение',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'pf-admin-link-editlink-page' => 'רעדאַקטירן בלאַט',
+	'pf-header-documentation' => 'דאָקומענטאַציע',
 );
 

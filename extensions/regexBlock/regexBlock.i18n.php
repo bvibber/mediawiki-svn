@@ -682,6 +682,7 @@ Nejskerjej taki wužywaŕ njejo.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -699,6 +700,7 @@ $messages['el'] = array(
 	'regexblock-form-account-block' => 'Φραγή δημιουργίας νέων λογαριασμών',
 	'regexblock-form-submit' => 'Φραγή αυτού του χρήστη',
 	'regexblock-form-submit-regex' => 'Μη έγκυρη τακτική έκφραση',
+	'regexblock-form-submit-expiry' => 'Παρακαλούμε ορίστε μια περίοδο λήξης.',
 	'regexblock-nodata-found' => 'Δεν βρέθηκαν δεδομένα',
 	'regexblock-unblock-success' => 'Η άρση φραγής ολοκληρώθηκε επιτυχώς',
 	'regexblock-regex-filter' => ' ή τιμή τακτικής έκφρασης:',

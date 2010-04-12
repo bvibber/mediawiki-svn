@@ -42,6 +42,13 @@ $messages['dsb'] = array(
 	'apisvgproxy-desc' => 'Funkcioněrujo ako proksy za SVG-dataje mjazy datajowym repozitoriumom (snaź zdalonym) a lokalneju domenu',
 );
 
+/** Greek (Ελληνικά)
+ * @author Περίεργος
+ */
+$messages['el'] = array(
+	'apisvgproxy-desc' => 'Αντιπροσωπευτικά αρχεία SVG από μία (πιθανώς απομακρυσμένη) αποθήκη αρχείων στον τοπικό τομέα',
+);
+
 /** Spanish (Español)
  * @author Pertile
  */

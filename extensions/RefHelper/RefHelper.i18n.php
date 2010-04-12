@@ -678,12 +678,14 @@ $messages['no'] = array(
 Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'refhelper-title' => 'Tytuł:',
+	'refhelper-title' => 'Tytuł',
 	'refhelper-pages' => 'Strony:',
-	'refhelper-year' => 'Rok:',
-	'refhelper-category' => 'Kategoria $1:',
+	'refhelper-year' => 'Rok',
+	'refhelper-category' => 'Kategoria $1',
 	'refhelper-create' => 'Utwórz',
 	'refhelper-search' => 'Szukaj',
 );

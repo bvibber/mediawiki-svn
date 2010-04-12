@@ -363,9 +363,14 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Wikitabellmanipulasjon',
 	'tablemod-msg-remove' => 'Fjern',
+	'tablemod-error-format' => 'Denne merkelappen støtter kun en enkel tabell per merkelapp, uten tekst før eller etter den.',
+	'tablemod-error-colcount' => 'Denne merkelappen støtter kun fjerning av tabeller med likt antall kolonner per rad.',
+	'tablemod-error-headcount' => 'Denne merkelappen støtter kun sortering i tabeller med enkle kolonneoverskrifter.',
 	'tablemod-error-invalidsort' => 'Ugyldige sorteringsparametre.',
 	'tablemod-error-invalidaction' => 'Ugyldig handling.',
+	'tablemod-error-missingid' => 'Manglende ident-attributt i merkelapp.',
 );
 
 /** Occitan (Occitan)

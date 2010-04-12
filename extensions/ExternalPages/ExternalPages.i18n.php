@@ -146,10 +146,12 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Dada
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'externalpages' => 'Εξωτερικές Σελίδες',
+	'externalpages-desc' => 'Ανακτά και εμφανίζει σελίδες από απομακρυσμένες τοποθεσίες του WMF',
 	'externalpages-bad-page' => 'Λανθασμένη σελίδα',
 	'externalpages-no-page' => 'Δεν διευκρινίζεται κάποια σελίδα',
 );

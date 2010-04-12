@@ -7623,6 +7623,19 @@ $messages['pms'] = array(
 	'mv_ogg_low_quality' => 'Trasferìbil via Ragnà - Og. Theora 300kbit/sec',
 	'mv_ogg_high_quality' => 'Àuta qualità - Og. Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Trasferìbil via Ragnà - Video flash',
+	'mv_archive_org_mp4' => "Archive.org MP4 a l'ha ancapsulà un fluss H.264",
+	'mv_archive_org_link' => "A colega an Archive.org j'originaj MPEG-2",
+	'mv_error_stream_missing' => '<span class="error">Eror: A-i é pa gnun file video assossià con sto fluss-sì.</span><br />
+Për piasì arpòrta son sì a l\'[[{{MediaWiki:Grouppage-sysop}}|aministrador dël sit]].',
+	'mv_stream_added' => "It l'has giontà ël fluss $1",
+	'mv_stream_meta' => 'Pàgina ëd fluss',
+	'mv_add_stream' => 'Gionta fluss ëd MetaVid',
+	'mv_edit_stream' => 'Modìfica fluss ëd MetaVid',
+	'mvexportsearch' => 'Espòrta ëde MetaVid',
+	'mvexportsequence' => 'Espòrta sequensa ëd MetaVid',
+	'mvexportstream' => 'Espòrta fluss ëd MetaVid',
+	'mv_move_delete_msg' => 'tramudà a $1',
+	'mv_add_stream_page' => 'Gionta fluss ëd MetaVid',
 );
 
 /** Pashto (پښتو)

@@ -361,6 +361,7 @@ $messages['dsb'] = array(
 	'spamdifftool' => 'Corna lisćina spama zastojaś',
 	'spamdifftool-desc' => 'Zmóžnja pśidawanje nowych zapiskow k cornej lisćinje spama z rozdźělowych bokow.',
 	'spamdifftool_cantedit' => 'Wódaj - njamaš pšawo cornu lisćinu spama wobźěłaś.',
+	'spamdifftool-no-title' => "'''Zmólka:''' žeden bokowy titel pódany.",
 	'spamdifftool_notext' => "Njejo tekst, kótaryž dajo se k cornej lisćinje spama pśidaś.
 Klikni <a href='$1'>sem</a>, aby pókšacował.",
 	'spamdifftool_confirm' => "Wobkšuś, až coš toś te zapiski k cornej lisćinje spama pśidaś.
@@ -384,6 +385,7 @@ Klikni <a href='$1'>sem</a>, aby se wróśił.",
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -391,6 +393,7 @@ $messages['el'] = array(
 	'spamdifftool' => 'Διαχείριση μαύρης λίστας των σπαμ',
 	'spamdifftool-desc' => 'Παρέχει έναν βασικό τρόπο για να προστίθενται νέες καταχωρήσεις στη μαύρη λίστα των σπαμ ξεκινώντας από τις σελίδες διαφορών',
 	'spamdifftool_cantedit' => 'Συγνώμη - δεν έχετε άδεια να επεξεργαστείτε τη μαύρη λίστα των σπαμ.',
+	'spamdifftool-no-title' => "Σφάλμα''':''' Δεν καθορίστηκε ο τίτλος της σελίδας.",
 	'spamdifftool_notext' => "Δεν υπάρχει κείμενο για προσθήκη στην μαύρη λίστα spam.
 Πατήστε <a href='$1'>εδώ</a> για να συνεχίσετε.",
 	'spamdifftool_confirm' => "Επιβεβαιώστε ότι θέλετε να προσθέσετε αυτές τις καταχωρήσεις στην μαύρη λίστα spam.
@@ -1175,6 +1178,7 @@ $messages['pl'] = array(
 	'spamdifftool' => 'Zarządzaj czarną listą dla spamu',
 	'spamdifftool-desc' => 'Umożliwia na stronie porównania wersji dodawanie nowych wpisów do czarnej listy spamu',
 	'spamdifftool_cantedit' => 'Nie masz uprawnień do edytowania tej strony.',
+	'spamdifftool-no-title' => "'''Błąd –''' nie określono tytułu strony.",
 	'spamdifftool_notext' => "Brak tekstu do dodania do czarnej listy spamu.
 Kliknij <a href='$1'>tutaj,</a> aby kontynuować.",
 	'spamdifftool_confirm' => "Potwierdź, że chcesz dodać wpisy do czarnej listy spam.

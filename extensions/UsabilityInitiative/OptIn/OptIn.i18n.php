@@ -4525,7 +4525,7 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Nie podoba mi się wygląd.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Nie podobają mi się nowe zakładki i układ.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nie podoba mi się nowy pasek narzędzi.',
-	'optin-survey-answer-whyoptout-other' => 'Inny powód:',
+	'optin-survey-answer-whyoptout-other' => 'Inny powód',
 	'optin-survey-question-explain' => 'Wyjaśnij lub omów swoją powyższą odpowiedź',
 	'optin-survey-question-techfail' => 'Czy napotkałeś jakąś awarię techniczną podczas korzystania z wersji testowej?',
 	'optin-survey-question-techfail-ifyes' => 'Jeśli tak, opowiedz o tym.',

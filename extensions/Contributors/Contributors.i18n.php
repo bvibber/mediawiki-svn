@@ -308,12 +308,15 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dada
  * @author Dead3y3
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'contributors' => 'Συνεισφέροντες',
+	'contributors-desc' => 'Συνοψίζει τους βασικούς συνεισφέροντες σε μια σελίδα',
 	'contributors-toolbox' => 'Κύριοι συνεισφέροντες',
+	'contributors-legend' => 'Κατάλογος με τους βασικούς συνεισφέροντες σε μια σελίδα',
 	'contributors-target' => 'Τίτλος:',
 	'contributors-submit' => 'Εμφάνιση',
 	'contributors-subtitle' => 'Κύριες συνεισφορές στο $1',

@@ -177,21 +177,22 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Purodha
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'security' => 'Sicherheits-Logbuch',
-	'security-desc' => 'Erweitert den MediaWiki-Seitenschutz, um das Ansehen von Seiteninhalt zu begrenzen',
+	'security-desc' => 'Erweitert den MediaWiki-Seitenschutz, um das Betrachten von Seiten zu begrenzen',
 	'security-logpage' => 'Sicherheits-Logbuch',
-	'security-logpagetext' => 'Dies ist ein Logbuch von geblockten Aktionen der [http://www.mediawiki.org/wiki/Extension:SimpleSecurity Extension „SimpleSecurity“].',
+	'security-logpagetext' => 'Dies ist das Logbuch der von [http://www.mediawiki.org/wiki/Extension:SimpleSecurity Extension „SimpleSecurity“] blockierten Aktionen.',
 	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber du hast keine ausreichende Berechtigung um die Seite zu sehen.',
 	'security-info' => 'Auf dieser Seite sind $1',
-	'security-info-toggle' => 'Sicherheitsbegrenzungen',
-	'security-inforestrict' => '$1 ist begrenzt auf $2',
+	'security-info-toggle' => 'Sicherheitseinschränkungen',
+	'security-inforestrict' => '$1 ist beschränkt auf $2',
 	'security-desc-LS' => '(gilt, weil diese Seite $2 „$1“ ist)',
 	'security-desc-PR' => '(gesetzt über den Tab „Seitenschutz“-Tab)',
-	'security-infosysops' => 'Für dich sind keine Begrenzungen aktiv, weil du der Gruppe „Administratoren“ angehörst',
+	'security-infosysops' => 'Für dich sind keine Einschränkungen aktiv, weil du der Gruppe „Administratoren“ angehörst.',
 	'security-manygroups' => 'Gruppen $1 und $2',
 	'security-unchain' => 'Ändere Aktionen einzeln',
 	'security-type-category' => 'in der Kategorie',

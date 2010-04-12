@@ -481,6 +481,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Dada
  * @author Lou
  * @author ZaDiak
  * @author Περίεργος
@@ -502,6 +503,7 @@ $messages['el'] = array(
 	'wah-notoken-login' => 'Είστε συνδεδεμένος (-η); Εάν όχι, παρακαλούμε συνδεθείτε πρώτα.',
 	'wah-downloading' => 'Η μεταφόρτωση του αρχείου <i>$1</i> ολοκληρώθηκε',
 	'wah-uploadfail' => 'Η φόρτωση απέτυχε',
+	'wah-doneuploading' => 'Η επιφόρτωση ολοκληρώθηκε. Ευχαριστούμε για τη συνεισφορά σας.',
 	'wah-api-error' => 'Υπήρξε ένα λάθος με το API. Παρακαλώ δοκιμάστε αργότερα.',
 );
 

@@ -54,6 +54,13 @@ $messages['dsb'] = array(
 	'dynamicsidebar-desc' => 'Stoj dynamiske bocnice na zakłaźe wužywarskich bokow, kupkow a kategorijow k dispoziciji',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dada
+ */
+$messages['el'] = array(
+	'dynamicsidebar-desc' => 'Παρέχει δυναμική πλευρική μπάρα που βασίζεται σε σελίδες χρηστών, ομάδες και κατηγορίες',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

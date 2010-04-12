@@ -400,6 +400,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dada
  * @author Konsnos
  * @author ZaDiak
  */
@@ -415,6 +416,9 @@ $messages['el'] = array(
 	'patrol-reverted-ok' => 'Η επεξεργασία αναστράφηκε.',
 	'patrol-reverted-failed' => 'Η επεξεργασία δεν μπορούσε να αναστραφεί.',
 	'patrol-skipped-ok' => 'Αγνόηση επεξεργασίας.',
+	'patrol-reasons' => '* Βανδαλισμός 
+* Δοκιμή νέου χρήστη 
+* Βλέπε σελίδα συζήτησης',
 	'patrol-another' => 'Προβολή άλλης επεξεργασίας, εάν είναι διαθέσιμη.',
 	'patrol-resume' => 'Πατήστε εδώ για συνέχεια.',
 	'group-patroller' => 'Περιπολητές',

@@ -826,7 +826,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'inspectcache-parser' => 'Pamięć podręczna parsera',
+	'inspectcache-parser' => 'Pamięć podręczna analizatora składni',
 	'inspectcache-delete' => 'Usuń',
 	'inspectcache-list' => 'Lista',
 	'right-inspectcache' => 'Podgląd i usuwanie danych z pamięci podręcznej',

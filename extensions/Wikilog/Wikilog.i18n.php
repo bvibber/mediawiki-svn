@@ -1659,6 +1659,7 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Dada
  * @author Lou
  * @author ZaDiak
  */
@@ -1705,6 +1706,7 @@ $messages['el'] = array(
 	'wikilog-summary-categories' => 'Αρχειοποιημένο κάτω από $2',
 	'wikilog-summary-more' => '[[$3|→ συνέχεια ανάγνωσης...]]',
 	'wikilog-edit-fieldset-legend' => 'Επιλογές Βικιαρχείου:',
+	'wikilog-comment-anonsig' => '$ 3 (ανώνυμος)',
 	'wikilog-comment-pending' => 'Αυτό το σχόλιο αναμένει έγκριση.',
 	'wikilog-comment-deleted' => 'Αυτό το σχόλιο διαγράφηκε.',
 	'wikilog-comment-omitted-x' => 'Το σχόλιο παραλείπεται (#$1).',
@@ -1714,6 +1716,7 @@ $messages['el'] = array(
 	'wikilog-comment-edit' => 'Επεξεργασία αυτού του σχολίου',
 	'wikilog-comment-delete' => 'Διαγραφή αυτού του σχολίου',
 	'wikilog-comment-history' => 'Προβολή ιστορικού του σχολίου',
+	'wikilog-comment-feed-title1' => 'Σχόλιο από $ 2 (# $ 1)',
 	'wikilog-title-comments' => 'Σχόλια - $1',
 	'wikilog-error-msg' => 'Βικιαρχείο: $1',
 	'wikilog-error-title' => 'Σφάλμα Βικιαρχείου',
@@ -1724,6 +1727,7 @@ $messages['el'] = array(
 	'wikilog-invalid-file' => 'Μη έγκυρο αρχείο: $1.',
 	'wikilog-file-not-found' => 'Ανύπαρκτο αρχείο: $1',
 	'wikilog-not-an-image' => 'Το αρχείο δεν είναι μια εικόνα: $1.',
+	'wikilog-post-comment' => 'Ανάρτηση νέου σχολίου',
 	'wikilog-post-reply' => 'Δημοσίευση μια νέας απάντησης',
 	'wikilog-form-wikilog' => 'Βικιαρχείο:',
 	'wikilog-form-category' => 'Κατηγορία:',
@@ -4450,7 +4454,7 @@ Pojawi się dopiero po przejrzeniu go przez moderatora.',
 	'wikilog-form-date' => 'Data',
 	'wikilog-form-status' => 'Status',
 	'wikilog-form-preview' => 'Podgląd',
-	'wikilog-form-comment' => 'Komentarz:',
+	'wikilog-form-comment' => 'Komentarz',
 	'wikilog-show-all' => 'Wszystkie komentarze',
 	'wikilog-show-published' => 'Opublikowane',
 	'wikilog-show-drafts' => 'Wersje robocze',

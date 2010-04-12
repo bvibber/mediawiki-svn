@@ -369,6 +369,7 @@ Pšosym wupołń {{PLURAL:$2|jo|jej|je|je}}.',
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -388,6 +389,7 @@ $messages['el'] = array(
 	'formbadpagename' => 'Κακό όνομα σελίδας',
 	'formsavesummary' => 'Νέα σελίδα που χρησιμοποιεί τη [[Special:Form/$1|φόρμα $1]]',
 	'formsaveerror' => 'Σφάλμα στην αποθήκευση της φόρμας',
+	'formsaveerrortext' => 'Παρουσιάστηκε άγνωστο σφάλμα κατά την αποθήκευση της σελίδας $ 1.',
 );
 
 /** Esperanto (Esperanto)

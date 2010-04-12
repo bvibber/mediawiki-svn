@@ -199,10 +199,13 @@ Pšosym wužyj bok [[MediaWiki:Number_of_watching_users_pageview]], aby zastupny
 
 /** Greek (Ελληνικά)
  * @author ZaDiak
+ * @author Περίεργος
  */
 $messages['el'] = array(
 	'whoiswatching' => 'Ποιος βλέπει μια σελίδα βίκι',
+	'whoiswatching-desc' => 'Παρέχει μία λίστα με τους χρήστες που παρακολουθούν μια βικισελίδα',
 	'specialwhoiswatchingthepage' => 'Ποιος βλέπει %s',
+	'specialwhoiswatchingusage' => 'Αυτή η ειδική σελίδα δεν μπορεί να χρησιμοποιηθεί μόνη της. Παρακαλούμε χρησιμοποιήστε τη σελίδα [[MediaWiki:Number_of_watching_users_pageview]] να καθορίσει ένα σημείο εισόδου για την ειδική αυτή σελίδα.',
 	'specialwhoiswatchingaddusers' => 'Προσθήκη χρηστών για παρακολούθηση της σελίδας',
 	'specialwhoiswatchingaddbtn' => 'Προσθήκη επιλεγμένων χρηστών',
 );

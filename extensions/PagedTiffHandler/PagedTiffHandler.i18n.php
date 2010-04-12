@@ -127,6 +127,15 @@ $messages['de'] = array(
 	'tiff-file-info-size' => '(Seite $5, $1 × $2 Pixel, Dateigröße: $3, MIME-Typ: $4)',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dada
+ */
+$messages['el'] = array(
+	'tiff_no_metadata' => 'Αδύνατη η ανάκτηση μεταδεδομένων από το TIFF',
+	'tiff_page_error' => 'Αριθμός σελίδας εκτός ορίου',
+	'tiff_file_too_large' => 'Το μεταφορτωμένο αρχείο είναι πολύ μεγάλο και απορρίφθηκε.',
+);
+
 /** Spanish (Español)
  * @author Pertile
  * @author Translationista

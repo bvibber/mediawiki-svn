@@ -1380,6 +1380,14 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'createsigndocument' => 'Włącz podpisywanie dokumentów',
+	'createsigndoc-head' => "Formularz służy do tworzenia dokumentu, który użytkownicy będą mogli [[Special:SignDocument|podpisać]].
+Podaj nazwę strony na której chcesz włączyć podpisy elektroniczne, grupę której członkowie będą upoważnieni do podpisywania, które pola mają być widoczne, a które są opcjonalne, wymagany minimalny wiek użytkownika uprawniający do podpisywania dokumentu (brak ograniczenia jeśli pominięte),
+a także krótki tekst wprowadzający opisujący dokument oraz zawierający instrukcję dla użytkowników.
+
+<b>Brak jest możliwości usunięcia lub zmiany podpisanych dokumentów po ich utworzeniu</b> bez bezpośredniego dostępu do bazy danych.
+Na podpisywanej stronie wyświetlany będzie zawsze ''obecny'' tekst strony, bez względu na zmiany wprowadzone do niej później.
+Należy się upewnić, że dokument jest w pełni gotowy do podpisywania.
+''Przed zapisaniem tego formularza'' należy również upewnić się, że wszystkie pola zostały określone, tak jak powinny.",
 	'createsigndoc-pagename' => 'Strona:',
 	'createsigndoc-allowedgroup' => 'Dozwolone grupy:',
 	'createsigndoc-email' => 'Adres e‐mail:',

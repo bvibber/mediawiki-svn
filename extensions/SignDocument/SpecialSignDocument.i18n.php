@@ -4863,6 +4863,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'sign-realname' => 'נאמען:',
 	'sign-viewfield-realname' => 'נאָמען',
+	'sign-viewfield-address' => 'אַדרעס',
 	'sign-closed' => 'פֿאַרמאַכט',
 	'sig-private' => '<i>פריוואַט</i>',
 );

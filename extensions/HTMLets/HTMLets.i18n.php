@@ -61,10 +61,11 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'htmlets-desc' => 'Ergänzt das <tt><nowiki><htmlet></nowiki></tt>-Tag zum Einfügen von HTML-Schnippseln hinzu',
+	'htmlets-desc' => 'Ergänzt das <tt><nowiki><htmlet></nowiki></tt>-Tag zum Einfügen von HTML-Schnipseln',
 );
 
 /** Lower Sorbian (Dolnoserbski)

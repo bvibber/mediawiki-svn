@@ -152,11 +152,13 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Dada
  * @author Omnipaedista
  */
 $messages['el'] = array(
 	'categoryintersection' => 'Διατομή κατηγοριών',
 	'categoryintersection-doit' => 'Λίστα σελίδων σε όλες αυτές τις κατηγορίες',
+	'categoryintersection-results' => 'Η αναζήτηση έδωσε $ 1 ((PLURAL: $ 1 | αποτέλεσμα | αποτελέσματα)).',
 );
 
 /** Esperanto (Esperanto)

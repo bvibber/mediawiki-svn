@@ -1513,7 +1513,7 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'imagetagging-article' => 'Artykuł:',
 	'imagetagging-imghistory' => 'Historia',
-	'imagetagging-images' => 'grafika',
+	'imagetagging-images' => 'grafiki',
 	'imagetagging-tagcancel-button' => 'Anuluj',
 );
 

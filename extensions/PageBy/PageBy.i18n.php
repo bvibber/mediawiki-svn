@@ -719,6 +719,14 @@ $messages['vo'] = array(
 	'pageby-anon' => '<i>nennemik</i>',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'pageby-first' => 'בלאַט באַשאַפֿן דורך $1, $2',
+	'pageby-contributors' => 'בײַשטײַערער:',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */
