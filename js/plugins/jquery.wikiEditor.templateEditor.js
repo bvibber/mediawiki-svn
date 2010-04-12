@@ -15,7 +15,7 @@
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': false,
+		'msie': [['>=', 8]],
 		'firefox': [['>=', 3]],
 		'opera': [['>=', 10]],
 		'safari': [['>=', 4]]
@@ -146,9 +146,11 @@ evt: {
 			switch ( event.which ) {
 				case 13: // Enter
 					$evtElem.click();
+					event.preventDefault();
 					return false;
 				case 32: // Space
 					$evtElem.parent().siblings( '.wikiEditor-template-expand' ).click();
+					event.preventDefault();
 					return false;
 				case 37:// Left
 				case 38:// Up
@@ -159,6 +161,7 @@ evt: {
 					// Set the ignroreKeypress variable so we don't allow typing if the key is held
 					context.$iframe.data( 'ignoreKeypress', true );
 					// Can't type in a template name
+					event.preventDefault();
 					return false;
 			}
 		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
@@ -168,6 +171,7 @@ evt: {
 					context.$iframe.data( 'ignoreKeypress', true );
 					// FIXME: May be a more elegant way to do this, but this works too
 					context.fn.encapsulateSelection( { 'pre': '\n', 'peri': '', 'post': '' } );
+					event.preventDefault();
 					return false;
 				default: return true;
 			}
@@ -244,12 +248,25 @@ fn: {
 	 */
 	bindTemplateEvents: function( $wrapper ) {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
+
+		$template.parent().attr('contentEditable', 'false');
+		
+		$template.click( function(event) {event.preventDefault(); return false;} )
+		
 		$template.find( '.wikiEditor-template-name' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.click( function( event ) { 
+				$.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); 
+				event.stopPropagation(); 
+				return false; 
+				} )
+			.mousedown( function( event ) { event.stopPropagation(); return false; } );
 		$template.find( '.wikiEditor-template-expand' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.click( function( event ) { 
+				$.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); 
+				event.stopPropagation();
+				return false; 
+				} )
+			.mousedown( function( event ) { event.stopPropagation(); return false; } );
 	},
 	/**
 	 * Toggle the visisbilty of the wikitext for a given template
