@@ -1,6 +1,9 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.19 - 11 April 2010
+  Updated Collection and FlaggedRevs extensions.
+
 0.15.18 - 31 March 2010
   Fixed API module to work with current version of MediaWiki.
 
