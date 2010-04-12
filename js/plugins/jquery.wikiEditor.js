@@ -212,7 +212,7 @@ if ( !$j.wikiEditor.isSupported() ) {
 // where we left off
 var context = $(this).data( 'wikiEditor-context' );
 // On first call, we need to set things up, but on all following calls we can skip right to the API handling
-if ( typeof context == 'undefined' ) {
+if ( !context || typeof context == 'undefined' ) {
 	
 	// Star filling the context with useful data - any jQuery selections, as usual should be named with a preceding $
 	context = {
