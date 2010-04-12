@@ -541,6 +541,9 @@ $mediaWiki: Mediawiki object
 &$parser: Parser object
 &$ig: ImageGallery object
 
+'BeforePreSaveTransform': before wikitext is prepared for saving
+&$text: Text that will be transformed
+
 'BlockIp': before an IP address or user is blocked
 $block: the Block object about to be saved
 $user: the user _doing_ the block (not the one being blocked)

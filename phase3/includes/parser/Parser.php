@@ -3978,6 +3978,8 @@ class Parser {
 			$this->clearState();
 		}
 
+		wfRunHooks( 'BeforePreSaveTransform', array( &$text ) );
+
 		$pairs = array(
 			"\r\n" => "\n",
 		);
