@@ -314,6 +314,15 @@ Forced length
 !! end
 
 !! test
+No range
+!! input
+{{#rangelist:5|5}}
+!! result
+<p>5
+</p>
+!! end
+
+!! test
 Don't reach higher than capped length
 !! input
 {{#rangelist:0|2000}}
