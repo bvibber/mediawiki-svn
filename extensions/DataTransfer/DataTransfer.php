@@ -7,7 +7,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'DT_VERSION', '0.3.4' );
+define( 'DATA_TRANSFER_VERSION', '0.3.5' );
 
 // constants for special properties
 define( 'DT_SP_HAS_XML_GROUPING', 1 );
@@ -16,7 +16,7 @@ define( 'DT_SP_IS_EXCLUDED_FROM_XML', 2 );
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Data Transfer',
-	'version'        => DT_VERSION,
+	'version'        => DATA_TRANSFER_VERSION,
 	'author'         => 'Yaron Koren',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Data_Transfer',
 	'descriptionmsg' => 'dt-desc',
