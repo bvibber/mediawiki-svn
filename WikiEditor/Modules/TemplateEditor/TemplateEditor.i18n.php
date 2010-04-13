@@ -112,6 +112,14 @@ $messages['cs'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Storno',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Kuvaly
+ */
+$messages['csb'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Aktualizacëjô',
+	'wikieditor-template-editor-dialog-cancel' => 'Anulujë',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -329,9 +337,12 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-template-editor-dialog-title' => '틀 편집하기',
+	'wikieditor-template-editor-dialog-submit' => '업데이트',
 	'wikieditor-template-editor-dialog-cancel' => '취소',
 );
 

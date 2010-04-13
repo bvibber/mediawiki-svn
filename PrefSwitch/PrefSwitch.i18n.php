@@ -93,11 +93,64 @@ To help us improve them, please fill out the optional survey below.',
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
+	'prefswitch' => 'مُبدّل تفضيلات مبادرة الاستخدامية',
+	'prefswitch-desc' => 'اسمح للمستخدمين بتبديل أجزاء من تفضيلاتهم',
 	'prefswitch-survey-true' => 'نعم',
 	'prefswitch-survey-false' => 'لا',
+	'prefswitch-survey-submit-off' => 'عطّل المزايا الجديدة',
+	'prefswitch-survey-cancel-off' => 'إذا أردت الاستمرار في استخدام المزايا الجديدة، فإمكانك الرجوع إلى $1.',
+	'prefswitch-survey-submit-feedback' => 'أرسل ملاحظات',
+	'prefswitch-survey-cancel-feedback' => 'إذا لم ترغب في تقديم الملاحظات، فبإمكانك الرجوع إلى $1.',
+	'prefswitch-survey-question-likedislike' => 'ماذا أعجبك في المزايا الجديدة؟
+ماذا لم يعجبك فيها؟',
+	'prefswitch-survey-question-whyoff' => 'لماذا ستعطل المزايا الجديدة؟
+من فضلك اختر كل ما يناسب.',
+	'prefswitch-survey-answer-whyoff-hard' => 'كان استخدامها صعبًا جدًا.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'لم تؤدِ مهمتها كما ينبغي.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'لم تعمل كما توقّعت.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'لم يعجبني شكلها.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'لم تعجبني الألسنة الجديدة ولا التصميم الجديد.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'لم يعجبني شريط الأدوات الجديد.',
 	'prefswitch-survey-answer-whyoff-other' => 'سبب آخر :',
+	'prefswitch-survey-question-browser' => 'ما المتصفح الذي تستخدمه؟',
+	'prefswitch-survey-answer-browser-other' => 'متصفح آخر:',
+	'prefswitch-survey-question-os' => 'ما نظام التشغيل الذي تستخدمه؟',
+	'prefswitch-survey-answer-os-other' => 'نظام تشغيل آخر:',
+	'prefswitch-survey-question-res' => 'ما أبعاد شاشتك؟',
+	'prefswitch-title-on' => 'ما الجديد؟',
+	'prefswitch-title-switched-on' => 'استمتع!',
+	'prefswitch-title-off' => 'عطّل المزايا الجديدة.',
+	'prefswitch-title-switched-off' => 'شكرًا',
+	'prefswitch-title-feedback' => 'ملاحظات',
+	'prefswitch-success-on' => 'المزايا الجديدة مُفعّلة.',
+	'prefswitch-success-off' => 'المزايا الجديد مُعطّلة.',
+	'prefswitch-success-feedback' => 'لقد أُرسلت ملاحظاتك.',
+	'prefswitch-return' => '<hr style="clear:both">
+عُد إلى <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'لقد عملنا بجد على جعل الأمور أسهل لمستخدمينا، وإننا لنسعد بمشاركة بعض التحسينات بما فيها شكل جديد ومزايا تُبسّط التحرير. إن تسهيل استخدامية مشاريع ويكيميديا من أولويات المؤسسة وسوف نشارككم التطورات في المستقبل.
+
+[[File:UsabilityNavigation.png|right|link=|لقطة شاشة للتصفح الجديد]]
+[[File:UsabilityToolbar.png|right|link=|لقطة شاشة لشريط أدوات التحرير المُحسّن]]
+[[File:UsabilityDialogs.png|right|link=|لقطة شاشة لحوارات توليد المحتويات الجديدة]]
+=== أدناه ما غيرنا ===
+* التصفح: لقد حسّنا التصفح عند قراءة وتحرير الصفحات. إن الألسنة الجديدة في أعلى كل صفحة توُضّح بشكل أفضل ما إذا كنت تشاهد الصفحة أو صفحة نقاشها؛ أو تقرؤها أو تحررها.
+* تحسينات شريط أدوات التحرير: لقد أعدنا ترتيب شريط أدوات التحرير ليسهل استخدامه. أصبح تحرير الصفحات الآن أسهل وأوضح.
+* معالج الوصلات: أداة سهلة الاستخدام تمكنك من إضافة وصلات إلى صفحات ويكي أخرى ووصلات إلى مواقع خارجية.
+* تحسين البحث: لقد حسنا اقتراحات البحث لتصل إلى الصفحة التي تبحث عنها بشكل أسرع.
+* مزايا أخرى جديدة: أضفنا أيضًا معالج جداول لتسهيل إنشاء الجداول وميزة بحث واستبدال تُسهّل تحرير الصفحات.',
+	'prefswitch-main-on' => '=== ألديك ملاحظات؟ ===
+يسعدنا سماع صوتك. من فضلك زُر  <span class="plainlinks">[$1 صفحة الملاحظات]</span>.
+=== أرجعني! ===
+إذا أردت تعطيل المزايا الجديدة، <span class="plainlinks">[$2 فانقر هنا]</span> من فضلك.',
+	'prefswitch-main-off' => '=== جرّبها! ===
+إذا أردت تفعيل المزايا الجديدة، <span class="plainlinks">[$1 فانقر هنا]</span> من فضلك.',
+	'prefswitch-survey-intro-feedback' => 'سوف يستعدنا سماع صوتك.
+من فضلك عبّئ الاستبيان الاختياري أدناه.',
+	'prefswitch-survey-intro-off' => 'شكرا لك على تجربة المزايا الجديدة.
+لتساعدنا في تحسين هذه المزايا، من فضلك عبّئ الاستبيان الاختياري أدناه.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -166,6 +219,51 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'prefswitch-survey-true' => 'হ্যাঁ',
+	'prefswitch-survey-false' => 'না',
+	'prefswitch-survey-submit-off' => 'নতুন বৈশিষ্ট্য বন্ধ করো',
+	'prefswitch-survey-submit-feedback' => 'প্রতিক্রিয়া পাঠান',
+	'prefswitch-survey-cancel-feedback' => 'আপনি যদি প্রতিক্রিয়া দিতে না চান, তাহলে আপনি $1 -এ ফিরে যেতে পারেন।',
+	'prefswitch-survey-question-likedislike' => 'নতুন বৈশিষ্ট্যাবলীতে আপনার কি পছন্দ হয়েছে? 
+নতুন বৈশিষ্ট্যাবলীতে আপনার কি পছন্দ হয় নাই?',
+	'prefswitch-survey-question-whyoff' => 'আপনি কেন নতুন বৈশিষ্ট্যাবলী বন্ধ করছেন?
+অনুগ্রহ করে যা প্রযোজ্য তা নির্বাচন করুন।',
+	'prefswitch-survey-answer-whyoff-hard' => 'এতে কাজ করা কঠিন।',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'এটি ঠিক মত কাজ করে না।',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'এটি আন্দাজ মত কাজ করে না।',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'এটা দেখতে যেমন তা আমার পছন্দ নয়।',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'নতুন ট্যাব এবং বিন্যাস আমার পছন্দ হয়নি।',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'নতুন টুলবার আমার পছন্দ হয়নি।',
+	'prefswitch-survey-answer-whyoff-other' => 'অন্য কারণ:',
+	'prefswitch-survey-question-browser' => 'আপনি কোন ব্রাউজার ব্যবহার করেন?',
+	'prefswitch-survey-answer-browser-other' => 'অন্য ব্রাউজার:',
+	'prefswitch-survey-question-os' => 'আপনি কোন অপারেটিং সিস্টেম ব্যবহার করেন?',
+	'prefswitch-survey-answer-os-other' => 'অন্য অপারেটিং সিস্টেম:',
+	'prefswitch-survey-question-res' => 'আপনার পর্দার রেজ্যুলেশন কত?',
+	'prefswitch-title-on' => 'নতুন কি আছে?',
+	'prefswitch-title-switched-on' => 'উপভোগ করুন!',
+	'prefswitch-title-off' => 'নতুন বৈশিষ্ট্যাবলী বন্ধ করো',
+	'prefswitch-title-switched-off' => 'ধন্যবাদ',
+	'prefswitch-title-feedback' => 'প্রতিক্রিয়া',
+	'prefswitch-success-on' => 'নতুন বৈশিষ্ট্যাবলী চালু করো',
+	'prefswitch-success-off' => 'নতুন বৈশিষ্ট্যাবলী বন্ধ করো',
+	'prefswitch-success-feedback' => 'আপনার প্রতিক্রিয়া পাঠানো হয়েছে।',
+	'prefswitch-return' => '<hr style="clear:both">
+ফিরে যান <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-on' => '===প্রতিক্রিয়া?===
+আমরা আপনার কাছ থেকে শুনতে চাই। অনুগ্রহ করে আমাদের <span class="plainlinks">[$1 প্রতিক্রিয়া পাতা] দেখুন</span>।
+===আমাকে ফেরত নাও!===
+আপনি নতুন বৈশিষ্ট্যাবলী বন্ধ করতে, অনুগ্রহ করে <span class="plainlinks">[$2 এখানে ক্লিক করুন]</span>।',
+	'prefswitch-main-off' => '===সেগুলো ব্যবহার করুন!===
+আপনি যদি নতুন বৈশিষ্ট্যাবলী চালু করতে চান, অনুগ্রহ করে <span class="plainlinks">[$1 এখানে ক্লিক করুন]</span>।',
+	'prefswitch-survey-intro-feedback' => 'আমরা আপনার কাছ থেকে জানতে চাই।
+অনুগ্রহ করে নিচের ঐচ্ছিক জরিপ ফরমটি পূরণ করুন।',
 );
 
 /** Breton (Brezhoneg)
@@ -252,6 +350,8 @@ $messages['cs'] = array(
 	'prefswitch-survey-submit-feedback' => 'Odeslat zpětnou vazbu',
 	'prefswitch-survey-cancel-feedback' => 'Pokud nechcete poskytnout zpětnou vazbu, můžete se vrátit na $1.',
 	'prefswitch-survey-question-likedislike' => 'Co se vám na Betě líbilo? Co se vám na Betě nelíbilo?',
+	'prefswitch-survey-question-whyoff' => 'Proč jste vypnuli nové funkce? 
+Vyberte všechny relevantní možnosti.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Byla příliš složitá na používání.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nefungovala správně.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nechovala se předvídatelně.',
@@ -291,6 +391,24 @@ Byli bychom rádi, když nám poskytnete zpětnou vazbu. Prosím navštivte naš
 Pokud chcete vypnout nové funkce, prosím <span class="plainlinks">[$2 klikněte sem].</span>',
 	'prefswitch-main-off' => '=== Vyzkoušejte ji! === 
 Pokud si chcete vyzkoušet nové funkce, prosím <span class="plainlinks">[$1 klikněte zde].</span>',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'prefswitch-survey-submit-off' => 'Diffodd y nodweddion newydd',
+	'prefswitch-survey-submit-feedback' => 'Anfon adborth',
+	'prefswitch-survey-cancel-feedback' => 'Os nad ydych am anfon adborth atom, gallwch ddychwelyd i $1.',
+	'prefswitch-survey-answer-whyoff-hard' => "Yr oedd yn rhy anodd i'w ddefnyddio.",
+	'prefswitch-survey-answer-whyoff-notpredictable' => "Roedd yn gweithredu'n fympwyol.",
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "Doeddwn i ddim yn hoffi'r golwg newydd.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "Doeddwn i ddim yn hoffi'r tabiau a'r gosodiad newydd.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "Doeddwn i ddim yn hoffi'r bar offer newydd.",
+	'prefswitch-title-switched-on' => 'Mwynhewch!',
+	'prefswitch-title-switched-off' => 'Diolch',
+	'prefswitch-title-feedback' => 'Adborth',
+	'prefswitch-success-feedback' => 'Anfonwyd eich adborth.',
 );
 
 /** German (Deutsch)
@@ -586,6 +704,22 @@ $messages['et'] = array(
 	'prefswitch-title-feedback' => 'Tagasiside',
 	'prefswitch-survey-intro-feedback' => 'Meile meeldiks teada saada sinu arvamust.
 Palun täida alljärgnev vabatahtlik küsitlus.',
+);
+
+/** Basque (Euskara)
+ * @author Joxemai
+ */
+$messages['eu'] = array(
+	'prefswitch-survey-true' => 'Bai',
+	'prefswitch-survey-false' => 'Ez',
+	'prefswitch-survey-question-browser' => 'Zer nabigatzaile erabiltzen duzu?',
+	'prefswitch-survey-answer-browser-other' => 'Beste nabigatzaile bat:',
+	'prefswitch-survey-question-os' => 'Zer sistema eragile erabiltzen duzu?',
+	'prefswitch-survey-answer-os-other' => 'Beste sistema eragile bat:',
+	'prefswitch-survey-question-res' => 'Zein da zure pantailaren erresoluzioa?',
+	'prefswitch-title-on' => 'Zer berri?',
+	'prefswitch-title-switched-on' => 'Ongi pasa!',
+	'prefswitch-title-switched-off' => 'Eskerrik asko',
 );
 
 /** Finnish (Suomi)
@@ -928,6 +1062,8 @@ $messages['hu'] = array(
 	'prefswitch-survey-false' => 'Nem',
 	'prefswitch-survey-submit-off' => 'Új funkciók kikapcsolása',
 	'prefswitch-survey-submit-feedback' => 'Visszajelzés küldése',
+	'prefswitch-survey-question-whyoff' => 'Miért kapcsolod ki az új funkciókat?
+Jelöld be az összes indokodat.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Túl nehéz volt használni.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nem működött megfelelően.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nem működött kiszámíthatóan.',
@@ -939,8 +1075,13 @@ $messages['hu'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Más böngésző:',
 	'prefswitch-survey-question-os' => 'Melyik operációs rendszert használod?',
 	'prefswitch-survey-answer-os-other' => 'Más operációs rendszer:',
+	'prefswitch-survey-question-res' => 'Milyen felbontású a képernyőd?',
+	'prefswitch-title-on' => 'Mik az újdonságok?',
+	'prefswitch-title-off' => 'Új funkciók kikapcsolása',
 	'prefswitch-title-switched-off' => 'Köszönjük',
 	'prefswitch-title-feedback' => 'Visszajelzés',
+	'prefswitch-success-on' => 'Új funkciók bekapcsolva.',
+	'prefswitch-success-off' => 'Új funkciók kikapcsolva.',
 	'prefswitch-success-feedback' => 'A visszajelzésed el lett küldve.',
 );
 
@@ -1160,11 +1301,21 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'prefswitch-survey-true' => '예',
 	'prefswitch-survey-false' => '아니오',
+	'prefswitch-survey-submit-feedback' => '피드백 남기기',
+	'prefswitch-survey-question-likedislike' => '어떤 부분이 마음에 들었나요? 그리고 어떤 부분이 마음에 들지 않았나요?',
+	'prefswitch-survey-answer-whyoff-hard' => '사용하기에 너무 어렵다.',
+	'prefswitch-survey-answer-whyoff-other' => '다른 이유:',
+	'prefswitch-survey-question-browser' => '어떤 웹 브라우저를 사용하고 있나요?',
+	'prefswitch-survey-answer-browser-other' => '다른 브라우저:',
+	'prefswitch-survey-question-os' => '어떤 운영 체제(OS)를 사용하고 있나요?',
+	'prefswitch-survey-answer-os-other' => '다른 운영 체제:',
+	'prefswitch-survey-question-res' => '어느 정도의 모니터 해상도를 사용하고 있나요?',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
