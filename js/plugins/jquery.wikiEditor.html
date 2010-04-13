@@ -38,6 +38,23 @@
 			padding: 0;
 		}
 		/* Wikitext that's folded away and shouldn't be displayed */
+		
+		.wikiEditor-template-text-shrunken{
+			height: 1px !important;
+			width: 1px !important;
+			overflow: hidden;
+			float: right;
+		}
+		.wikiEditor-template-text-visible{
+			padding: 0.5em 4px;
+			padding-top: 1.25em;
+			margin-top: -0.95em;
+			background: #F3F3F3 url(../../images/wikiEditor/templateEditor/text-base.png) repeat-x scroll center top;
+			display: block;
+			width: 100%;
+			border-bottom: solid 1px #cccccc;
+		}
+		
 		.wikiEditor-nodisplay {
 			display: none !important;
 		}
@@ -107,16 +124,7 @@
 			display: block;
 		}
 		.wikiEditor-template .wikiEditor-template-text {
-			display: block;
-			width: 100%;
-			background: #f3f3f3;
-			border-bottom: solid 1px #cccccc;
-			padding: 0.5em 4px;
-			padding-top: 1.25em;
-			margin-top: -0.9em;
-			background-image: url(../../images/wikiEditor/templateEditor/text-base.png);
-			background-position: top;
-			background-repeat: repeat-x;
+			
 		}
 		.wikiEditor-template-end, .wikiEditor-template-start {
 			color: blue;
