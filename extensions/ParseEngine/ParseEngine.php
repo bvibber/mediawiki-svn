@@ -1,10 +1,10 @@
 <?php
 /**
- * Allows people to define a grammar in a wiki format then use that grammar to input information to the wiki
+ * Allows people to define a grammar in a wiki then use that grammar to input information to the same wiki
  * @file
  * @ingroup Extensions
  * @author Nathanael Thompson <than4213@gmail.com>
- * @copyright Copyright © 2009 Nathanael Thompson
+ * @copyright Copyright © 2010 Nathanael Thompson
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  */
 if ( !defined( "MEDIAWIKI" ) ) {
@@ -22,5 +22,17 @@ $wgExtensionCredits["other"][] = array(
 
 $dir = dirname( __FILE__ );
 $wgAutoloadClasses["ParseEngine"] = "$dir/ParseEngine.body.php";
-$wgHooks["BeforePreSaveTransform"][] = array(new ParseEngine(), "parse", $wgParseEngineGrammar);
 
+$wgTheParseEngine = new ParseEngine();
+$wgHooks["BeforePreSaveTransform"][] = array($wgTheParseEngine, "parse", $wgParseEngineGrammar);
+$wgHooks["ParserBeforeStrip"][] = "wfParseEngineCallFromParse";
+
+define ( "NS_GRAMMAR" , 91628);
+define ( "NS_GRAMMAR_TALK" , 91629);
+$wgExtraNamespaces[NS_GRAMMAR] = "Grammar";
+$wgExtraNamespaces[NS_GRAMMAR_TALK] = "Grammar_talk";
+
+function wfParseEngineCallFromParse($unUsed, $text) {
+	global $wgTheParseEngine, $wgParseEngineGrammar;
+	return $wgTheParseEngine->parse($wgParseEngineGrammar, $text);
+}

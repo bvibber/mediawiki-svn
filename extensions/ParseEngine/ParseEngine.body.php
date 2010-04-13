@@ -19,8 +19,9 @@ class ParseEngine {
 		wfDebugLog("ParseEngine", "==========Start Parse Engine==========\n");
 		$grammar = isset($this->mGrammars[$grammarName]) ? $this->mGrammars[$grammarName] : NULL;
 		if ($grammar == NULL) {
+			$revision = Revision::newFromTitle(Title::newFromText($grammarName, NS_GRAMMAR));
 			$grammar = new DOMDocument();
-			if (! $grammar->load("$IP/extensions/ParseEngine/$grammarName.xml", LIBXML_NOBLANKS)) {
+			if ($revision == NULL || ! $grammar->loadXML($revision->getText(), LIBXML_NOBLANKS)) {
 				return TRUE;
 			}
 			$this->pushTags($grammar->documentElement, NULL);
