@@ -43,7 +43,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
 	'description' => 'Easy formatting of lists in natural languages.',
 	'descriptionmsg' => 'nll-desc',
-	'version'     => '2.4.5'
+	'version'     => '2.5'
 );
 
 $dir = dirname(__FILE__);
@@ -72,8 +72,8 @@ class NaturalLanguageList {
 			SFH_OBJECT_ARGS 
 		);
 		$parser->setFunctionHook( 
-			'intlist', 
-			array ( __CLASS__, 'renderIntervals' ), 
+			'rangelist', 
+			array ( __CLASS__, 'renderRange' ), 
 			SFH_OBJECT_ARGS 
 		);
 		return true;
@@ -118,20 +118,19 @@ class NaturalLanguageList {
 	}
 	
 	/**
-	 * Render {{#intlist:}}
+	 * Render {{#rangelist:}}
 	 *
 	 * @param $parser Parser
 	 * @param $frame PPFrame_DOM
 	 * @param $args Array
 	 * @return wikicode parsed
 	 */
-	public static function renderIntervals ( $parser, $frame, $args ) {
+	public static function renderRange ( $parser, $frame, $args ) {
 		if ( count( $args ) == 0 )
 			return '';
-		$obj = new self( $parser, $frame, $args );	
-		$obj->setIntervals( true );
+		$obj = new self( $parser, $frame, $args );
 		$obj->readOptions( false );
-		$obj->readArgs();
+		$obj->readRange();
 
 		return $obj->outputList();
 	}
@@ -140,9 +139,6 @@ class NaturalLanguageList {
 	private $mFrame;
 	public $mArgs;	
 	private $mSeparator = null;
-	private $mInterval = false;    # whether to allow intervals
-	                               # it is not part of mOptions, as it cannot
-	                               # be set in a similar fashion
 	private $mOptions = array(
 		'fieldsperitem' => -1,     # size of pairs
 		'duplicates' => true,      # allow same elements to appear
@@ -166,15 +162,6 @@ class NaturalLanguageList {
 		$this->mParser = $parser;
 		$this->mFrame = $frame;
 		$this->mArgs = $args;
-	}
-	
-	/**
-	 * Set whether to allow intervals
-	 *
-	 * @param $intervals Boolean
-	 */
-	public function setIntervals ( $intervals ) {
-		$this->mIntervals = $intervals;
 	}
 
 	/**
@@ -204,6 +191,63 @@ class NaturalLanguageList {
 	private function formatOutputItem( $pair ) {
 		return wfMsgReplaceArgs( $this->mOptions['itemoutput'], $pair );
 	}
+	
+	/**
+	 * Create $this->mParams from $this->mReaditems using $this->mOptions,
+	 * but treating it as a range.
+	 */
+	private function readRange() {
+		global $wgNllMaxListLength;
+		
+		# now this system follows a basic syntax:
+		# Element 1 is the start
+		# Element 2 is the end
+		# Element 3 is the optional step, if not set, guess either 1 or -1
+		#   depending on the difference between start and end.
+		# If they are the same (start and end) just assume no range.
+		
+		if ( !isset($this->mReaditems[0]) || !is_numeric($this->mReaditems[0]) )
+			return; # bail if the syntax is not upheld
+		$start = $this->mReaditems[0];
+		if ( !isset($this->mReaditems[1]) || !is_numeric($this->mReaditems[1]) )
+			return; # bail if the syntax is not upheld
+		$end = $this->mReaditems[1];
+		if ( isset($this->mReaditems[2]) && is_numeric($this->mReaditems[2]) ) {
+			$step = $this->mReaditems[2];
+			if ( $start < $end && $step < 0 ) # a postive list with a 
+		        $step = 1;                    # negative step; overwite
+			elseif ( $start > $end && $step > 0 ) # the reverse!  Overwite
+				$step = -1;
+			# otherwise fine
+		} else {
+			if ( $start > $end ) # negative range
+				$step = -1;
+			elseif ( $start < $end ) # positive range
+				$step = 1;
+			else # no range, 0 indicates just to bail
+				$step = 0;
+		}
+		
+		$items = array(); # array of args to include
+		if ( $step != 0 ) {
+			# eh, might could be done prettier, I guess.
+			if ( $step < 0 ) {
+				for($i = $start; $i >= $end; $i+=$step) {
+					if ( !self::parseArrayItem( $items, $i ) )
+						break;
+				}
+			} else {
+				for($i = $start; $i <= $end; $i+=$step) {
+					if ( !self::parseArrayItem( $items, $i ) )
+						break;
+				}
+			}
+		} else {
+			$items = array ( $start );
+		}
+		
+		$this->treatParams( $items );
+	}
 
 	/**
 	 * Create $this->mParams from $this->mReaditems using $this->mOptions.
@@ -211,7 +255,6 @@ class NaturalLanguageList {
 	 * @param $separator String [default:null] Input separator (e.g. ',')
 	 */
 	private function readArgs( $separator=null ) {
-		global $wgNllMaxListLength;
 		$items = array(); # array of args to include
 
 		# strip read items of duplicate elements if not permitted
@@ -222,11 +265,24 @@ class NaturalLanguageList {
 		foreach ( $args as $arg ) {
 			if ( !$this->mOptions['blanks'] && $arg === '' )
 				continue;
-			self::parseArrayItem( $items, $arg, $separator, $this->mIntervals );
+			if ( !self::parseArrayItem( $items, $arg, $separator ) )
+				break;
 		}
 		
 		# Remove the ignored elements from the array
 		$items = array_diff( $items, $this->mIgnores );
+		
+		$this->treatParams( $items );
+	}
+	
+	/**
+	 * Treat certain features in $this->mParams after it has been created,
+	 * as a help function for not to rewrite the same things in two functions.
+	 *
+	 * @param $items Array The items
+	 */
+	private function treatParams ( $items ) {
+		global $wgNllMaxListLength;
 
 		# Split the array into smaller arrays, one for each output item.
 		$this->mParams = array_chunk( $items, $this->mOptions['fieldsperitem'] );
@@ -242,7 +298,7 @@ class NaturalLanguageList {
 			$this->mParams = array_slice( $this->mParams, 0, $this->mOptions['length'] );
 		
 		# Remove anything over the allowed limit
-		$this->mParams = array_slice( $this->mParams, 0, $wgNllMaxListLength );
+		$this->mParams = array_slice( $this->mParams, 0, $wgNllMaxListLength );	
 	}
 
 	/**
@@ -370,7 +426,7 @@ class NaturalLanguageList {
 				$this->mOptions[$name] = self::parseNumeral( $value );
 				break;
 			case 'ignore':
-				self::parseArrayItem( $this->mIgnores, $value, $separator, false, true );
+				self::parseArrayItem( $this->mIgnores, $value, $separator, true );
 				break;
 			case 'data':
 				# just strip the parameter and make the $arg
@@ -413,64 +469,35 @@ class NaturalLanguageList {
 	}
 	
 	/**
-	 * Check if a value is an interval (e.g. 0..10) and if it is allowed,
-	 * if so, then insert them into the $array, otherwise bail.
-	 *
-	 * @param $array Array The array with values.
-	 * @param $value Mixed The element to be verified.
-	 * @param $intervals Boolean Whether intervals are allowed.
-	 * @return Boolean True on interval was A-OK, otherwise false.
-	 */
-	private static function handle_interval ( &$array, $value, $intervals ) {
-		global $wgNllMaxListLength;
-		if ( !$intervals )
-			return false;
-		$tmp = explode ( "..", preg_replace( "/([0-9]+)\.\.+([0-9]+)/", '$1..$2', $value ) );
-		if ( count( $tmp ) == 2 ) {
-			if ( is_numeric($tmp[0])===false or is_numeric($tmp[1])===false or ($tmp[0] > $tmp[1]) )
-				return false;
-			for ( $i = $tmp[0]; $i <= $tmp[1]; $i++ ) {
-				$array[] = $i;
-				if ( count( $array ) > $wgNllMaxListLength )
-					break;
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/**
 	 * Insert a new element into an array.
 	 *
 	 * @param $array Array The array in question
 	 * @param $value Mixed The element to be inserted
 	 * @param $separator String [default:null] Input separator
-	 * @param $intervals Boolean [default:false] Whether intervals are allowed
 	 * @param $ignorelength Boolean [default:false] Whether to ignore the limit
 	 *                                              on the length.  Be careful!
+	 * @return Boolean True on success, false on failure.
 	 */
-	private static function parseArrayItem( &$array, $value, $separator=null, $intervals = false, $ignorelength = false ) {
+	private static function parseArrayItem( &$array, $value, $separator=null, $ignorelength = false ) {
 		global $wgNllMaxListLength;
 		# if the maximum length has been reached; don't bother.
 		if ( count( $array ) > $wgNllMaxListLength && !$ignorelength )
-			return;
+			return false;
 		# if no separator, just assume the value can be appended,
 		# simple as that
 		if ( $separator === null ) {
-			if ( ! self::handle_interval( $array, $value, $intervals ) ) 
-				$array[] = $value;
+			$array[] = (string)$value;
 		} else {
 			# else, let's break the value up and append
 			# each 'subvalue' to the array.
 			$tmp = explode ( $separator, $value );
 			foreach ( $tmp as $v ) {
-				if ( ! self::handle_interval( $array, $v, $intervals ) ) 
-					$array[] = $v;
+				$array[] = (string)$v;
 				if ( count( $array ) > $wgNllMaxListLength )
 					break;
 			}
 		}
+		return true;
 	}
 	
 	/**
