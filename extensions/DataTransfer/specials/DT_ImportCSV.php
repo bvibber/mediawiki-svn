@@ -169,6 +169,10 @@ END;
 		$job_params['edit_summary'] = wfMsgForContent( 'dt_import_editsummary', 'CSV' );
 		foreach ( $pages as $page ) {
 			$title = Title::newFromText( $page->getName() );
+			if ( is_null( $title ) ) {
+				$text .= '<p>' . wfMsg( 'img-auth-badtitle', $page->getName() ) . "</p>\n";
+				continue;
+			}
 			$job_params['text'] = $page->createText();
 			$jobs[] = new DTImportJob( $title, $job_params );
 		}
