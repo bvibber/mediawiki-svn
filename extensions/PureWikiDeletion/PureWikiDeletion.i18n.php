@@ -23,3 +23,24 @@ $messages['en'] = array(
         'blanknologintext' => 'You must be a registered user and '
         .'[[Special:UserLogin|logged in]] to blank or unblank a page.'
 );
+
+$messages['ar'] = array( 
+	'purewikideletion' => 'حذف الويكي النقي',
+        'randomexcludeblank' => 'صفحة عشوائية (لا يشمل ذلك الفارغة)',
+        'populateblankedpagestable' => 'املأ جدول الصفحات الفارغة',
+        'purewikideletion-desc' => 'من ضمن أشياء أخرى، يؤدي إلى أن تكون الصفحات الفارغة ذات وصلات حمراء',
+        'purewikideletion-pref-watchblank' => 'أضف الفصفحات التي أفرغها إلى قائمة مراقبتي',
+        'purewikideletion-pref-watchunblank' => 'أضف الصفحات التي أملؤها إلى قائمة مراقبتي',
+        'purewikideletion-blanked' => "نسخة سابقة من هذه الصفحة تم إفراغها بواسطة [[User:$1|$1]] ([[User talk:$1|نقاش]]) "
+            ."([[Special:Contributions/$1|مساهمات]]) في $2 <br /> السبب المعطى للإفراغ كان: "
+            ."''<nowiki>$3</nowiki>''.<br /> يمكنك [{{fullurl:{{FULLPAGENAMEE}}|action=history}} رؤية تاريخ المقالة "
+            ."], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} تعديل آخر نسخة]، أو كتابة صفحة جديدة في الفراغ الأبيض بالأسفل.",
+        'blank'         =>  'فارغة',
+        'blank-log-name' => 'سجل الإفراغ',
+        'blank-log-header' => 'بالأسفل قائمة بعمليات إفراغ وملأ الصفحات.',
+        'blank-log-entry-blank' => 'أفرغ $1',
+        'blank-log-entry-unblank' => 'ملأ $1',
+        'blanknologin' => 'غير مسجل الدخول',
+        'blanknologintext' => 'يجب أن تكون مستخدما مسجلا و '
+        .'[[Special:UserLogin|تسجل الدخول]] لإفراغ أو ملأ صفحة.'
+);
