@@ -9579,7 +9579,7 @@ fn: {
 		var context = $wrapper.data( 'marker' ).context;
 		var $template = $wrapper
 			.wrap( '<span class="wikiEditor-template"></span>' )
-			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
+			.addClass( 'wikiEditor-template-text wikiEditor-template-text-shrunken' )
 			.parent()
 			.addClass( 'wikiEditor-template-collapsed' )
 			.prepend(
@@ -9637,8 +9637,9 @@ fn: {
 			.toggleClass( 'wikiEditor-template-collapsed' ) ;
 		
 		var $templateText = $template.find( '.wikiEditor-template-text' );		
-		$templateText.toggleClass( 'wikiEditor-nodisplay' );
-		if( $templateText.hasClass('wikiEditor-nodisplay') ){
+		$templateText.toggleClass( 'wikiEditor-template-text-shrunken' );
+		$templateText.toggleClass( 'wikiEditor-template-text-visible' );
+		if( $templateText.hasClass('wikiEditor-template-text-shrunken') ){
 			//we just closed the template
 		
 			// Update the model if we need to
