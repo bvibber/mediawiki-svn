@@ -22,7 +22,13 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'dt-desc',
 );
 
-$dtgIP = $IP . '/extensions/DataTransfer';
+###
+# This is the path to your installation of Semantic Forms as
+# seen on your local filesystem. Used against some PHP file path
+# issues.
+##
+$dtgIP = dirname( __FILE__ );
+##
 
 // register all special pages and other classes
 $wgSpecialPages['ViewXML'] = 'DTViewXML';
@@ -37,7 +43,25 @@ $wgAutoloadClasses['DTXMLParser'] = $dtgIP . '/includes/DT_XMLParser.php';
 $wgHooks['AdminLinks'][] = 'dtfAddToAdminLinks';
 $wgHooks['smwInitProperties'][] = 'dtfInitProperties';
 
-require_once( $dtgIP . '/languages/DT_Language.php' );
+###
+# This is the path to your installation of the Data Transfer extension as
+# seen from the web. Change it if required ($wgScriptPath is the
+# path to the base directory of your wiki). No final slash.
+##
+$dtgScriptPath = $wgScriptPath . '/extensions/DataTransfer';
+##
+
+###
+# Permission to import files
+###
+$wgGroupPermissions['sysop']['datatransferimport'] = true;
+$wgAvailableRights[] = 'datatransferimport';
+
+// initialize content language
+require_once($dtgIP . '/languages/DT_Language.php');
+global $wgLanguageCode;
+dtfInitContentLanguage($wgLanguageCode);
+
 $wgExtensionMessagesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Messages.php';
 $wgExtensionAliasesFiles['DataTransfer'] = $dtgIP . '/languages/DT_Aliases.php';
 
