@@ -4862,6 +4862,15 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'sign-realname' => 'נאמען:',
+	'sign-list-hideaddress' => 'נישט ווײַזן אַדרעס',
+	'sign-list-hideextaddress' => 'נישט ווײַזן שטאָט, שטאַט, פאסטקאד אדער לאַנד',
+	'sign-list-hidephone' => 'נישט ווײַזן פֿאן נומער',
+	'sign-list-hidebday' => 'נישט ווײַזן עלטער',
+	'sign-list-hideemail' => 'נישט ווײַזן ע־פאסט אַדרעס',
+	'sign-submit' => 'אונטערשרײַבן דאקומענט',
+	'sig-success' => 'איר האט דערפֿאלגרייך אונטערגעשריבן דעם דאקומענט.',
+	'sign-view-selectfields' => '<b>פֿעלדער צו ווייַזן:</b>',
+	'sign-viewfield-timestamp' => 'צײַטשטעמפל',
 	'sign-viewfield-realname' => 'נאָמען',
 	'sign-viewfield-address' => 'אַדרעס',
 	'sign-closed' => 'פֿאַרמאַכט',

@@ -183,7 +183,7 @@ $messages['ca'] = array(
  */
 $messages['de'] = array(
 	'security' => 'Sicherheits-Logbuch',
-	'security-desc' => 'Erweitert den MediaWiki-Seitenschutz, um das Betrachten von Seiten zu begrenzen',
+	'security-desc' => 'Erweitert den Seitenschutz um die Möglichkeit das Betrachten von Seiten zu einzuschränken.',
 	'security-logpage' => 'Sicherheits-Logbuch',
 	'security-logpagetext' => 'Dies ist das Logbuch der von [http://www.mediawiki.org/wiki/Extension:SimpleSecurity Extension „SimpleSecurity“] blockierten Aktionen.',
 	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber du hast keine ausreichende Berechtigung um die Seite zu sehen.',

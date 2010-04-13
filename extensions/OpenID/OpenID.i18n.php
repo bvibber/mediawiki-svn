@@ -2869,6 +2869,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Ficell
  * @author Kwj2772
  * @author happyday19c
@@ -2891,6 +2892,7 @@ $messages['ko'] = array(
 	'openidfailuretext' => 'OpenID 인증이 실패하였습니다. 오류 메시지 : "$1"',
 	'openidsuccess' => '인증 성공',
 	'openidsuccesstext' => '성공적으로 OpenID URL이 인증되었습니다.',
+	'openidusernameprefix' => '오픈ID 사용자',
 	'openidserverlogininstructions' => '유저 $2로서 $3에 로그인하기 위한 암호를 입력하십시오. (사용자 페이지 $1)',
 	'openidtrustinstructions' => '$1과 데이터를 공유하려면 체크하십시오.',
 	'openidallowtrust' => '$1이 이 사용자 계정을 신뢰함.',
@@ -2903,13 +2905,16 @@ $messages['ko'] = array(
 	'openidemail' => '메일 주소',
 	'openidlanguage' => '언어',
 	'openidtimezone' => '시간대',
+	'openidchooselegend' => '사용자 이름 선택',
 	'openidchooseinstructions' => '모든 사용자는 별명을 가져야 합니다.
 아래의 옵션 중 하나를 선택할 수 있습니다..',
+	'openidchoosenick' => '당신의 별명 ($1)',
 	'openidchoosefull' => '전체 이름은 ($1)',
 	'openidchooseurl' => 'OpenID로 부터 선택한 이름 ($1)',
 	'openidchooseauto' => '자동 생성된 이름 ($1)',
 	'openidchoosemanual' => '선택하신 이름:',
-	'openidchooseexisting' => '위키에 이미 존재하는 계정입니다:',
+	'openidchooseexisting' => '이 위키에 이미 존재하는 계정입니다',
+	'openidchooseusername' => '사용자 이름:',
 	'openidchoosepassword' => '암호:',
 	'openidconvertinstructions' => '이 양식은 OpenID URL을 통한 로그인을 설정하거나 OpenID URL을 추가하기 위한 곳입니다.',
 	'openidconvertoraddmoreids' => 'OpenID로 변환하거나 OpenID URL을 추가합니다.',
@@ -2934,7 +2939,7 @@ OpenID는 다른 많은 웹사이트에서 서로 다른 암호나 사용자명�
 추후 OpenID를 사용하고자 하신다면, 일반적인 방법으로 로그인 하신 후 [[Special:OpenIDConvert|사용자 계정을 OpenID로 변환]]할 수 있습니다.
 
 다양한 사이트에서 [http://openid.net/get/ OpenID 서비스]를 제공하며, 이미 사용중인 다른 서비스가 OpenID 서비스를 제공할 수도 있습니다.',
-	'openidupdateuserinfo' => '내 사용자 정보를 갱신하기',
+	'openidupdateuserinfo' => '내 개인 정보를 갱신:',
 	'openiddelete' => 'OpenID 삭제',
 	'openiddelete-text' => '"{{int:openiddelete-button}}" 버튼을 누르시면, [$1 OpenID 정보]를 당신의 사용자 계정으로부터 삭제할 것입니다.
 이후 OpenID를 통한 현재 사용자 계정으로의 로그인이 불가능하게 될 것입니다.',

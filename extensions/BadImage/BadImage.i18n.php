@@ -2105,6 +2105,24 @@ $messages['sk'] = array(
 	'right-badimages' => 'Aktualizovať zoznam zlých obrázkov.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'badimages-add-btn' => 'Dodaj',
+	'badimages-added' => '$1 je bila dodana na seznam.',
+	'badimages-name' => 'Ime:',
+	'badimages-not-added' => 'Slike ni bilo mogoče dodati.',
+	'badimages-not-removed' => 'Slike ni bilo mogoče odstraniti.',
+	'badimages-reason' => 'Razlog:',
+	'badimages-remove' => '(odstrani)',
+	'badimages-remove-btn' => 'Odstrani',
+	'badimages-remove-confirm' => 'Prosimo, potrdite, da želite odstraniti $1 iz seznama:',
+	'badimages-removed' => '$1 je bila odstranjena iz seznama.',
+	'badimages-subheading' => 'Trenutni predmeti',
+	'badimages-unprivileged' => '(Nimate ustreznih dovoljenj za spreminjanje seznama)',
+);
+
 /** Serbian (Српски / Srpski) */
 $messages['sr'] = array(
 	'badimages' => 'Списак лоших слика',

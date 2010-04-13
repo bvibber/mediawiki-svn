@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'apisvgproxy-desc'      => 'Proxies SVG files from a (possibly remote) file repository to the local domain',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'apisvgproxy-desc' => 'يُمرّر ملفات SVG من مستودع ملفات (يمكن أن يكون بعيدًا) إلى النطاق المحلي',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -174,5 +181,12 @@ $messages['ru'] = array(
  */
 $messages['su'] = array(
 	'apisvgproxy-desc' => 'Ngaproksi berkas SVG ti gudang (anu sigana paanggang) ka domain lokal',
+);
+
+/** Swedish (Svenska)
+ * @author Sertion
+ */
+$messages['sv'] = array(
+	'apisvgproxy-desc' => 'Skickar SVG-filer via en (möjligtvis extern) filserver till den lokala domänen',
 );
 

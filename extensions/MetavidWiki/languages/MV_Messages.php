@@ -7625,17 +7625,21 @@ $messages['pms'] = array(
 	'mv_flash_low_quality' => 'Trasferìbil via Ragnà - Video flash',
 	'mv_archive_org_mp4' => "Archive.org MP4 a l'ha ancapsulà un fluss H.264",
 	'mv_archive_org_link' => "A colega an Archive.org j'originaj MPEG-2",
-	'mv_error_stream_missing' => '<span class="error">Eror: A-i é pa gnun file video assossià con sto fluss-sì.</span><br />
-Për piasì arpòrta son sì a l\'[[{{MediaWiki:Grouppage-sysop}}|aministrador dël sit]].',
+	'mv_error_stream_missing' => '<span class="error">Eror: A-i é pa gnun archivi ëd filmà assossià con sto fluss-sì.</span><br />
+Për piasì, ch\'a arpòrta son a l\'[[{{MediaWiki:Grouppage-sysop}}|aministrator dël sit]].',
 	'mv_stream_added' => "It l'has giontà ël fluss $1",
 	'mv_stream_meta' => 'Pàgina ëd fluss',
-	'mv_add_stream' => 'Gionta fluss ëd MetaVid',
-	'mv_edit_stream' => 'Modìfica fluss ëd MetaVid',
-	'mvexportsearch' => 'Espòrta ëde MetaVid',
-	'mvexportsequence' => 'Espòrta sequensa ëd MetaVid',
-	'mvexportstream' => 'Espòrta fluss ëd MetaVid',
+	'mv_add_stream' => "Gionta d'un fluss MetaVid",
+	'mv_edit_stream' => 'Modifiché un fluss ëd MetaVid',
+	'mvexportsearch' => 'Esportassion ëd MetaVid',
+	'mvexportsequence' => 'Esporté na sequensa ëd MetaVid',
+	'mvexportstream' => 'Esporté un fluss ëd MetaVid',
 	'mv_move_delete_msg' => 'tramudà a $1',
-	'mv_add_stream_page' => 'Gionta fluss ëd MetaVid',
+	'mv_add_stream_page' => "Gionta d'un fluss ëd MetaVid",
+	'mv_edit_strea_docu' => '<p>Modìfica <b>aministrador</b> ëd fluss<br />per vardé/modifiché utent normal varda pàgina $1</p>',
+	'mv_add_stream_docu' => '<p>Gionta un fluss neuv con ël camp sota.</p>
+<p>Pi anformassion a son dàite an sla <a href="$1">pàgina d\'agiut për gionté fluss</a>.</p>',
+	'mv_add_stream_submit' => 'Gionta fluss',
 );
 
 /** Pashto (پښتو)

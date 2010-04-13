@@ -1075,6 +1075,23 @@ používajte túto funkciu s rozmyslom.",
 	'right-asksql' => 'Zadávanie SQL požiadaviek',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'asksql' => 'Poizvedba SQL',
+	'asksql-desc' => 'Pošlje poizvedbe SQL preko [[Special:Asksql|posebne strani]]',
+	'asksqltext' => "Uporabite spodnji obrazec za pošiljanje neposrednih poizvedb podatkovne zbirke.
+Uporabite enojne narekovaje ('kot to') za označevanje znakovnih nizov.
+Ta funkcija lahko pogosto precej obremeni strežnik, zato jo uporabljajte varčno.",
+	'sqlislogged' => 'Pomnite, da so vse poizvedbe zabeležene.',
+	'sqlquery' => 'Vnesite poizvedbo',
+	'querybtn' => 'Pošlji poizvedbo',
+	'selectonly' => 'Dovoljene so samo bralne poizvedbe.',
+	'querysuccessful' => 'Poizvedba uspešna',
+	'right-asksql' => 'Pošiljanje poizvedb SQL',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */

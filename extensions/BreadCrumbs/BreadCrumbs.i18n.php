@@ -508,6 +508,13 @@ $messages['sk'] = array(
 	'breadcrumbs-desc' => 'Zobrazí cestu používateľa vo wiki',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'breadcrumbs-desc' => 'Prikaže uporabnikovo pot skozi wiki',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

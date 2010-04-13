@@ -21,6 +21,15 @@ $messages['qqq'] = array(
 	'prefs-updates' => 'In the context of software updates',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'prefs-updates' => 'تحديثات',
+	'updatemyprefs-desc' => 'تفضيل يسمح للمستخدمين بتوضيح رغبتهم في استخدام تحديثات واجهة المستخدم كلما توفرت.',
+	'updatemyprefs-label-message' => 'حدّث تفضيلاتي تلقائيًا بالإعدادات الجديدة الافتراضيةوالأدوات التي تتوفّر',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -29,6 +38,14 @@ $messages['be-tarask'] = array(
 	'prefs-updates' => 'Абнаўленьні',
 	'updatemyprefs-desc' => 'Устаноўкі для ўдзельнікаў, якія дазваляюць вызначыць ці жадаюць яны абнаўляць інтэрфэйс удзельніка, калі зьяўляюцца новыя магчымасьці',
 	'updatemyprefs-label-message' => 'Аўтаматычна абнаўляць мае устаноўкі новымі устаноўкамі па змоўчваньні і інструмэнтамі, калі яны зьяўляюцца',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'prefs-updates' => 'হালনাগাদ',
+	'updatemyprefs-label-message' => 'নতুন সেটিং এবং টুল আসা মাত্রই স্বয়ংক্রিয়ভাবে আমার পছন্দ হালনাগাদ করো',
 );
 
 /** Breton (Brezhoneg)
@@ -173,6 +190,13 @@ $messages['ka'] = array(
 	'prefs-updates' => 'განახლება',
 	'updatemyprefs-desc' => 'კონფიგურაცია მომხმარებლებისთვის, რომელიც ნებართვას აძლევ მომხმარებელს განაახლოს ინტერფეისი ახალი ფუნქციების ჩამატებისას',
 	'updatemyprefs-label-message' => 'ავტომატურად განაახლოთ ჩემი კონფიგურაცია ახალი ხელსაწყოების გაჩენისთანავე',
+);
+
+/** Korean (한국어)
+ * @author Devunt
+ */
+$messages['ko'] = array(
+	'prefs-updates' => '업데이트',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

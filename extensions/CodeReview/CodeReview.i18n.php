@@ -5017,6 +5017,7 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Albamhandae
+ * @author Devunt
  * @author Ilovesabbath
  * @author Klutzy
  * @author Kwj2772
@@ -5040,6 +5041,7 @@ $messages['ko'] = array(
 	'code-load-diff' => '차이를 불러오는 중…',
 	'code-notes' => '최근 의견',
 	'code-statuschanges' => '상태 변경',
+	'code-mycommits' => '내 커밋',
 	'code-authors' => '만든이',
 	'code-status' => '상태',
 	'code-tags' => '태그',
@@ -5055,6 +5057,7 @@ $messages['ko'] = array(
 	'code-author-link' => '링크하시겠습니까?',
 	'code-author-unlink' => '링크를 해제하시겠습니까?',
 	'code-author-unlinksuccess' => '저자 $1(으)로의 링크가 제거돼 있습니다.',
+	'code-browsing-path' => "'''$1'''에서 판 보기",
 	'code-field-id' => '버전',
 	'code-field-author' => '작성자',
 	'code-field-user' => '의견 작성자',
@@ -5085,9 +5088,12 @@ $messages['ko'] = array(
 	'code-rev-tag-remove' => '태그 제거:',
 	'code-rev-comment-by' => '$1의 의견',
 	'code-rev-comment-preview' => '미리 보기',
+	'code-rev-inline-preview' => '미리보기:',
 	'code-rev-diff' => '차이',
 	'code-rev-diff-link' => '차이',
+	'code-rev-diff-too-large' => '이 비교는 너무 커 출력하지 못합니다',
 	'code-rev-purge-link' => '새로 고침',
+	'code-rev-total' => '결과의 총 개수: $1',
 	'code-status-new' => '신규',
 	'code-status-fixme' => '수정 필요',
 	'code-status-reverted' => '되돌려짐',
@@ -5097,6 +5103,10 @@ $messages['ko'] = array(
 	'code-status-deferred' => '보류됨',
 	'code-pathsearch-legend' => '이 보관소(repo)에서 있었던 수정 사항을 경로로 검색하기',
 	'code-pathsearch-path' => '경로:',
+	'code-pathsearch-filter' => '필터 적용됨:',
+	'code-revfilter-cr_status' => '상태 = $1',
+	'code-revfilter-cr_author' => '프로그래머 = $1',
+	'code-revfilter-clear' => '클리어 필터',
 	'code-rev-submit' => '저장',
 	'code-rev-submit-next' => '저장 및 다음 미해결된 문서로 이동',
 	'code-batch-status' => '상태 변경:',
@@ -5110,6 +5120,11 @@ $messages['ko'] = array(
 	'code-release-badrange' => '범위가 너무 넓습니다!',
 	'codereview-subtitle' => '$1',
 	'codereview-reply-link' => '답변',
+	'codereview-tests-succeeded2' => '$1 성공한 테스트',
+	'codereview-tests-failed2' => '$1 성공한 테스트, $3 실패한 테스트:',
+	'codereview-tests-running' => '테스트가 실행중입니다...',
+	'codereview-tests-aborted' => '테스트 실행 중단됨.',
+	'codereview-tests-failed' => '실패함',
 	'codereview-email-subj' => '[$1] [$2판]: 새 의견이 추가되었습니다.',
 	'codereview-email-body' => '"$1" 사용자가 $3판에 대해 의견을 올렸습니다.
 

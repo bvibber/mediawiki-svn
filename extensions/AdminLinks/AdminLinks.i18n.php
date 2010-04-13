@@ -689,10 +689,12 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'adminlinks' => '괸리용 링크 모음',
+	'adminlinks-desc' => '관리자들에게 유용한 링크들이 있는 [[Special:AdminLinks|특수 문서]]를 추가합니다',
 	'adminlinks_general' => '일반',
 	'adminlinks_editsidebar' => '사이드바 편집',
 	'adminlinks_editcss' => 'CSS 파일 편집',
@@ -1153,6 +1155,24 @@ $messages['sk'] = array(
 	'adminlinks_browsesearch' => 'Prehliadanie a vyhľadávanie',
 	'adminlinks_importexport' => 'Import a export',
 	'right-adminlinks' => 'Pozri odkaz na [[Special:AdminLinks|Odkazy správcu]]',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'adminlinks' => 'Skrbniške povezave',
+	'adminlinks-desc' => 'Doda [[Special:AdminLinks|posebno stran]], ki vsebuje uporabne povezave za administratorje',
+	'adminlinks_documentation' => 'Dokumentacija $1',
+	'adminlinks_general' => 'Splošno',
+	'adminlinks_editsidebar' => 'Uredi stransko vrstico',
+	'adminlinks_editcss' => 'Uredi datoteko CSS',
+	'adminlinks_editmainpagename' => 'Uredi ime glavne strani',
+	'adminlinks_users' => 'Uporabniki',
+	'adminlinks_createuser' => 'Ustvari uporabnika',
+	'adminlinks_browsesearch' => 'Brskanje in iskanje',
+	'adminlinks_importexport' => 'Uvoz in izvoz',
+	'right-adminlinks' => 'Ogled povezav na [[Special:AdminLinks|Skrbniških povezavah]]',
 );
 
 /** Swedish (Svenska)

@@ -374,12 +374,13 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Kghbln
  * @author Krabina
  * @author Revolus
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'dt-desc' => 'Ermöglicht den Import und Export von Daten, die in Aufrufen von Vorlagen verwendet werden',
+	'dt-desc' => 'Ermöglicht den Export von Daten im XML-Format sowie den Import von Daten im XML- und CSV-Format.',
 	'viewxml' => 'XML ansehen',
 	'dt_viewxml_docu' => 'Bitte wähle aus, welche Kategorien und Namensräume im XML-Format angezeigt werden sollen.',
 	'dt_viewxml_categories' => 'Kategorien',

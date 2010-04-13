@@ -1400,6 +1400,7 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  */
 $messages['eu'] = array(
 	'contributiontotal' => 'Dohaintzak guztira',
@@ -1425,10 +1426,13 @@ $messages['eu'] = array(
 	'contribstats-value-under' => '$1 azpitik',
 	'contribstats-value-over' => '$1 baino gehiago',
 	'contribstats-week' => 'Astea',
+	'contribstats-payment-type' => 'Ordainketa-modua',
 	'contribstats-banner' => 'Bannerra',
 	'contribstats-clicks' => 'Klikak',
 	'contribstats-donations' => 'Dohaintzak',
+	'contribstats-conversion' => 'Bihurketa-erlazioa (%)',
 	'contribstats-template' => 'Txantiloia',
+	'contribstats-nodata' => 'Daturik ez da sartu',
 	'contribstats-average' => 'Bataz bestekoa',
 	'contribstats-credit-card' => 'Kreditu txartela',
 	'fundraiserstats-date' => 'Data',
@@ -2202,6 +2206,7 @@ $messages['hu'] = array(
 	'contribstats-week' => 'Hét',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Heti összesítés|Heti összesítések az elmúlt $1 hetet is beleértve}}',
 	'contribstats-payment-type' => 'Fizetés típusa',
+	'contribstats-payment-type-hits' => 'Fizetési módok gyakorisága',
 	'contribstats-clicks' => 'Kattintások',
 	'contribstats-donations' => 'Adományok',
 	'contribstats-conversion' => 'Konverziós ráta (%)',
@@ -2210,6 +2215,8 @@ $messages['hu'] = array(
 	'contribstats-landingpage' => 'Érkezési oldal',
 	'contribstats-donatepage' => 'Adományoldal',
 	'contribstats-average' => 'Átlag',
+	'contribstats-paypal-donations' => 'PayPal adományok',
+	'contribstats-credit-card' => 'Hitelkártya',
 	'fundraiserstatistics' => 'Adományozási statisztikák',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => '$2, $1. nap',

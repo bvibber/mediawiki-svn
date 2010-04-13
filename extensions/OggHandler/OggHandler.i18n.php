@@ -884,6 +884,7 @@ Palun <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downloa
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -898,7 +899,9 @@ $messages['eu'] = array(
 	'ogg-stop' => 'Gelditu',
 	'ogg-play-video' => 'Bideoa hasi',
 	'ogg-play-sound' => 'Soinua hasi',
+	'ogg-player-soundthumb' => 'Erreproduktorerik ez',
 	'ogg-player-selected' => '(aukeratua)',
+	'ogg-use-player' => 'Erabili erreproduktore hau:',
 	'ogg-more' => 'Gehiago...',
 	'ogg-dismiss' => 'Itxi',
 	'ogg-download' => 'Fitxategia jaitsi',

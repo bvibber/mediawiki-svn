@@ -810,6 +810,13 @@ V používateľských menách sa rozlišuje veľkosť písmen.
 Skontrolujte, či ste ho napísali správne.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ajaxlogin-create' => 'Ustvarite račun',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

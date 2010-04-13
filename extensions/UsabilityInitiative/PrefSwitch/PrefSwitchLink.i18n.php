@@ -20,9 +20,11 @@ $messages['en'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'prefswitch-link' => 'جديد!',
+	'tooltip-pt-prefswitch-link' => 'جرّب المزايا الجديدة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -32,6 +34,14 @@ $messages['ar'] = array(
 $messages['be-tarask'] = array(
 	'prefswitch-link' => 'Новае!',
 	'tooltip-pt-prefswitch-link' => 'Паспрабуйце нашыя новыя магчымасьці',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'prefswitch-link' => 'নতুন!',
+	'tooltip-pt-prefswitch-link' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
 );
 
 /** Breton (Brezhoneg)
@@ -94,6 +104,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'prefswitch-link' => '¡Nuevo!',
 	'tooltip-pt-prefswitch-link' => 'Probar las nuevas características',
+);
+
+/** Basque (Euskara)
+ * @author Joxemai
+ */
+$messages['eu'] = array(
+	'prefswitch-link' => 'Berria!',
 );
 
 /** Finnish (Suomi)
@@ -191,6 +208,14 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'prefswitch-link' => 'ახალი',
 	'tooltip-pt-prefswitch-link' => 'სცადეთ ახალი ხელსაწყოები',
+);
+
+/** Korean (한국어)
+ * @author Devunt
+ */
+$messages['ko'] = array(
+	'prefswitch-link' => '새 기능!',
+	'tooltip-pt-prefswitch-link' => '새 기능 체험하기',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

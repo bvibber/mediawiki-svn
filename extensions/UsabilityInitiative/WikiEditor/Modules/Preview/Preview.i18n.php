@@ -55,8 +55,8 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'wikieditor-preview-preference' => 'مكّن المعاينة جنبًا لجنب',
 	'wikieditor-preview-tab' => 'عاين',
-	'wikieditor-preview-changes-tab' => 'تغييرات',
-	'wikieditor-preview-loading' => 'يحمّل...',
+	'wikieditor-preview-changes-tab' => 'التغييرات',
+	'wikieditor-preview-loading' => 'يُحمّل...',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -138,6 +138,13 @@ $messages['cs'] = array(
 	'wikieditor-preview-tab' => 'Náhled',
 	'wikieditor-preview-changes-tab' => 'Změny',
 	'wikieditor-preview-loading' => 'Načítá se…',
+);
+
+/** Kashubian (Kaszëbsczi)
+ * @author Kuvaly
+ */
+$messages['csb'] = array(
+	'wikieditor-preview-loading' => 'Ladowanié...',
 );
 
 /** Welsh (Cymraeg)
@@ -412,9 +419,12 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-preview-tab' => '미리 보기',
+	'wikieditor-preview-changes-tab' => '차이',
 	'wikieditor-preview-loading' => '불러오는 중...',
 );
 

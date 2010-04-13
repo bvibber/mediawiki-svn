@@ -1077,7 +1077,9 @@ Kõigepealt eemalda see.',
 	'oversight-offender' => 'Redaktsiooni tegija:',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author Joxemai
+ */
 $messages['eu'] = array(
 	'hiderevision' => 'Berrikuspenak mugagabe ezkutatu',
 	'hiderevision-prompt' => 'Ezabatzeko berrikuspen zenbakia:',
@@ -1103,6 +1105,7 @@ Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak go
 	'oversight-log-hiderev' => '$1(e)tik aldaketa bat ezabatu da',
 	'oversight' => 'Oharkabetasuna',
 	'oversight-view' => 'xehetasunak',
+	'oversight-hidden' => 'Ezkutuko berrikuspena',
 );
 
 /** Persian (فارسی)

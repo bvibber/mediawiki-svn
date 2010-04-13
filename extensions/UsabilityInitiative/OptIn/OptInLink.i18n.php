@@ -121,7 +121,7 @@ $messages['bn'] = array(
 	'tooltip-pt-optin-try' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
 	'optin-leave' => 'বেটা ছেড়ে যাও',
 	'tooltip-pt-optin-leave' => 'নতুন বৈশিষ্ট্যগুলো বন্ধ করো',
-	'optin-feedback' => 'বেটা ফিডব্যাক',
+	'optin-feedback' => 'বেটা প্রতিক্রিয়া',
 	'tooltip-pt-optin-feedback' => 'নতুন বৈশিষ্ট্যগুলোতে আপনার অভিজ্ঞতার কথা ফিডব্যাকে পাঠান',
 );
 

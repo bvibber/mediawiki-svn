@@ -600,12 +600,19 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-publish-preference' => '한 단계씩 게시 활성화',
+	'wikieditor-publish-button-publish' => '게시',
 	'wikieditor-publish-button-cancel' => '취소',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}}에 게시',
+	'wikieditor-publish-dialog-summary' => '편집 요약 (무엇을 편집했는지 간략하게 설명합니다):',
 	'wikieditor-publish-dialog-minor' => '사소한 편집',
 	'wikieditor-publish-dialog-watch' => '이 문서 주시하기',
+	'wikieditor-publish-dialog-publish' => '게시',
+	'wikieditor-publish-dialog-goback' => '돌아가기',
 );
 
 /** Ripoarisch (Ripoarisch)

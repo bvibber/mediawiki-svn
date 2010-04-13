@@ -351,10 +351,13 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'wikieditor-toc-preference' => '편집용 목차를 활성화',
+	'wikieditor-toc-show' => '내용 보기',
+	'wikieditor-toc-hide' => '내용 숨김',
 );
 
 /** Ripoarisch (Ripoarisch)

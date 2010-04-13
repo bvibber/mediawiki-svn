@@ -229,6 +229,14 @@ $messages['he'] = array(
 	'categoryonupload-label' => 'קטגוריה:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Ex13
+ */
+$messages['hr'] = array(
+	'categoryonupload-desc' => 'Traži od suradnika odabir kategorije prilikom postavljanja datoteke',
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -518,10 +526,11 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
-	'categoryonupload-desc' => 'Pozove, da uporabnik izbere kategorijo med nalaganjem',
+	'categoryonupload-desc' => 'Pozove uporabnika, da med nalaganjem datoteke izbere kategorijo',
 	'categoryonupload-label' => 'Kategorija:',
 );
 

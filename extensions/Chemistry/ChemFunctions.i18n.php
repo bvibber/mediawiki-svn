@@ -1058,6 +1058,19 @@ $messages['sk'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Chybný vstup!',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'chemicalsources' => 'Kemijski viri',
+	'chemicalsource-desc' => 'Doda etiketo <nowiki><chemform></nowiki> za prikaz kemijskih formul',
+	'chemFunctions_ListPage' => 'Kemijski viri',
+	'chemFunctions_CAS' => 'Število CAS',
+	'chemFunctions_Formula' => 'Formula',
+	'chemFunctions_Name' => 'Ime po IUPAC',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Napaka pri vnosu!',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

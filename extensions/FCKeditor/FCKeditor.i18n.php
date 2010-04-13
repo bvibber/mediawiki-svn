@@ -697,9 +697,11 @@ $messages['ja'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Klutzy
  */
 $messages['ko'] = array(
+	'fckeditor-desc' => '위지윅 편집기 FCKeditor를 이용하여 편집하는것을 허용',
 	'textrichditor' => '리치 에디터',
 	'prefs-fckeditor' => '리치 에디터',
 	'tog-riched_disable' => '리치 에디터 사용하지 않기',

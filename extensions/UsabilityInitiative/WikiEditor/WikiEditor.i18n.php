@@ -44,8 +44,8 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'wikieditor' => 'واجعة تعديل نص ويكي متقدمة',
-	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من العناصر الموفرة للخصائص',
-	'wikieditor-wikitext-tab' => 'نص ويكي',
+	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من الوحدات التي توفر المزايا',
+	'wikieditor-wikitext-tab' => 'نص الويكي',
 	'wikieditor-loading' => 'يُحمّل',
 );
 
@@ -349,6 +349,15 @@ $messages['ka'] = array(
 	'wikieditor-desc' => 'ვიკიტექსტის რედაქტირების გაფართოებული ინტერფეისისა და სხვა ფუნქციებს უზრუნველყოფს',
 	'wikieditor-wikitext-tab' => 'ვიკიტექსტი',
 	'wikieditor-loading' => 'იტვირთება',
+);
+
+/** Korean (한국어)
+ * @author Devunt
+ */
+$messages['ko'] = array(
+	'wikieditor' => '확장된 위키텍스트 편집 인터페이스',
+	'wikieditor-wikitext-tab' => '위키텍스트',
+	'wikieditor-loading' => '로딩중',
 );
 
 /** Ripoarisch (Ripoarisch)

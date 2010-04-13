@@ -779,6 +779,15 @@ $messages['sk'] = array(
 	'backforth-prev' => 'Predošlé ($1)',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'backforth-next' => 'Naslednja ($1)',
+	'backforth-desc' => 'Doda povezave »Naslednja« in »Prejšnja« na strani, razvrščene po abecedi, na vrh strani',
+	'backforth-prev' => 'Prejšnja ($1)',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

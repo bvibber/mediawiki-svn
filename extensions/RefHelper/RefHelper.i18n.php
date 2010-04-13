@@ -435,8 +435,12 @@ Móžeš [[Special:RefHelper|referencu manuelnje přidać]] abo [[Special:RefSea
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'refhelper-refcreate_failure' => 'A(z) [[$1]] lap már létezik!',
+	'refhelper-label_workspace' => 'Munkaterület (másolás és beillesztés):',
+	'refhelper-label_authorforename' => 'Szerző ($1) keresztneve:',
 	'refhelper-label_authorsurname' => 'Vezetéknév:',
 	'refhelper-title' => 'Cím:',
+	'refhelper-journal' => 'Folyóirat:',
 	'refhelper-volume' => 'Kötet:',
 	'refhelper-pages' => 'Oldalszám:',
 	'refhelper-year' => 'Év:',

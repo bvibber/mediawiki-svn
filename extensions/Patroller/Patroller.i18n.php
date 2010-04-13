@@ -998,6 +998,14 @@ $messages['kn'] = array(
 	'patrol-revert-reason' => 'ಕಾರಣ:',
 );
 
+/** Korean (한국어)
+ * @author Devunt
+ */
+$messages['ko'] = array(
+	'group-patroller' => '검토자',
+	'group-patroller-member' => '검토자',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

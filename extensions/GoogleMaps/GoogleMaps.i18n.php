@@ -6021,6 +6021,8 @@ $wgGoogleMapsMessages['yi'] = array(
 	'gm-balloon-title' => 'טיטל:',
 	'gm-searching' => 'זוכנדיג…',
 	'gm-no-zoom-control' => 'קיין',
+	'gm-yes' => 'יאָ',
+	'gm-no' => 'ניין',
 	'gm-search' => 'זוכן',
 	'gm-save-path' => 'אויפֿהיטן',
 );

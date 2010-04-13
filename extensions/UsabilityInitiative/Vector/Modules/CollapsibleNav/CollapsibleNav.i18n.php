@@ -29,6 +29,13 @@ $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'vector-collapsiblenav-preference' => 'ভাঁজযোগ্য বাম নেভিগেশন মেনু সক্রিয় করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

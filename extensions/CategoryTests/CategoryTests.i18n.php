@@ -358,6 +358,13 @@ $messages['sk'] = array(
 	'categorytests-desc' => 'Funkcie na testovanie kategórie',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'categorytests-desc' => 'Funkcije za testiranje kategorij',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
