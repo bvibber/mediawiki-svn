@@ -15,7 +15,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 	protected $comment;
 	protected $repoPath;
 	protected $pageText;
-	protected $watch;
+	protected $watchlist;
 
 	public $status;
 
@@ -27,11 +27,11 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 	 * Set session information for chunked uploads and allocate a unique key.
 	 * @param $comment string
 	 * @param $pageText string
-	 * @param $watch bodolean
+	 * @param $watchlist bodolean
 	 *
 	 * @returns string the session key for this chunked upload
 	 */
-	public function setupChunkSession( $comment, $pageText, $watch ) {
+	public function setupChunkSession( $comment, $pageText, $watchlist ) {
 		if ( !isset( $this->sessionKey ) ) {
 			$this->sessionKey = $this->getSessionKey();
 		}
@@ -47,8 +47,8 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 		if ( isset( $pageText ) ) {
 			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['pageText'] = $pageText;
 		}
-		if ( isset( $watch ) ) {
-			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['watch'] = $watch;
+		if ( isset( $watchlist ) ) {
+			$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['watchlist'] = $watchlist;
 		}
 		$_SESSION[self::SESSION_KEYNAME][$this->sessionKey]['version'] = self::SESSION_VERSION;
 
@@ -110,7 +110,7 @@ class FirefoggChunkedUploadHandler extends UploadBase {
 		if ( isset( $sessionData[$this->sessionKey]['version'] )
 			&& $sessionData[$this->sessionKey]['version'] == self::SESSION_VERSION )
 		{
-			foreach ( array( 'comment', 'pageText', 'watch', 'mFilteredName', 'repoPath', 'mFileSize', 'mDesiredDestName' )
+			foreach ( array( 'comment', 'pageText', 'watchlist', 'mFilteredName', 'repoPath', 'mFileSize', 'mDesiredDestName' )
 					as $key ) {
 				if ( isset( $sessionData[$this->sessionKey][$key] ) ) {
 					$this->$key = $sessionData[$this->sessionKey][$key];

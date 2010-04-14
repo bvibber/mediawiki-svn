@@ -117,7 +117,7 @@ class UploadFromChunksTest extends ApiSetup {
 			$this->doApiRequest( array(
 				'action' => 'firefoggupload',
 				'comment' => 'test',
-				'watch' => true,
+				'watchlist' => 'watch',
 				'filename' => 'tmp.txt',
 				'token' => $token ), $data );
 		} catch ( UsageException $e ) {
@@ -141,7 +141,7 @@ class UploadFromChunksTest extends ApiSetup {
 		$data = $this->doApiRequest( array(
 			'action' => 'firefoggupload',
 			'comment' => 'test',
-			'watch' => true,
+			'watchlist' => 'watch',
 			'filename' => 'TestPic.png',
 			'token' => $token ), $data );
 
@@ -216,7 +216,7 @@ class UploadFromChunksTest extends ApiSetup {
 		$data = $this->doApiRequest( array(
 			'action' => 'firefoggupload',
 			'comment' => 'test',
-			'watch' => true,
+			'watchlist' => 'watch',
 			'filename' => 'tmp.png',
 			'token' => $token ), $data );
 		return $data;
@@ -284,7 +284,7 @@ class UploadFromChunksTest extends ApiSetup {
 		$data = $this->doApiRequest( array(
 			'action' => 'firefoggupload',
 			'comment' => 'test',
-			'watch' => true,
+			'watchlist' => 'watch',
 			'filename' => 'twar.png',
 			'token' => $token ), $data );
 

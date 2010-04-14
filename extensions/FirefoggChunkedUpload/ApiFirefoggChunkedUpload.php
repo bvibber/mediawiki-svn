@@ -6,10 +6,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 class ApiFirefoggChunkedUpload extends ApiUpload {
-	/* public function __construct( $main, $action ) { */
-	/* 	parent::__construct( $main, $action ); */
-	/* } */
-
 	public function execute() {
 		global $wgUser;
 
@@ -51,13 +47,13 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 
 	public function getUpload() { return $this->mUpload; }
 
-	public function performUploadInit($comment, $pageText, $watch, $user) {
+	public function performUploadInit($comment, $pageText, $watchlist, $user) {
 		$check = $this->mUpload->validateNameAndOverwrite();
 		if( $check !== true ) {
 			$this->getVerificationError( $check );
 		}
 
-		$session = $this->mUpload->setupChunkSession( $comment, $pageText, $watch );
+		$session = $this->mUpload->setupChunkSession( $comment, $pageText, $watchlist );
 		return array('uploadUrl' =>
 			wfExpandUrl( wfScript( 'api' ) ) . "?" .
 			wfArrayToCGI( array(
@@ -80,7 +76,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 
 	public function performUploadDone($user) {
 		$this->mUpload->finalizeFile();
-		$status = parent::performUpload( $this->comment, $this->pageText, $this->watch, $user );
+		$status = parent::performUpload( $this->comment, $this->pageText, $this->watchlist, $user );
 
 		if ( $status['result'] !== 'Success' ) {
 			return $status;
@@ -97,12 +93,12 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 	 */
 	public function performUpload( ) {
 		wfDebug( "\n\n\performUpload(chunked): comment: " . $this->comment .
-				 ' pageText: ' . $this->pageText . ' watch: ' . $this->watch );
+				 ' pageText: ' . $this->pageText . ' watch: ' . $this->watchlist );
 		$ret = "unknown error";
 
 		global $wgUser;
 		if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::INIT ) {
-			$ret = $this->performUploadInit($this->comment, $this->pageText, $this->watch, $wgUser);
+			$ret = $this->performUploadInit($this->comment, $this->pageText, $this->watchlist, $wgUser);
 		} else if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::CHUNK ) {
 			$ret = $this->performUploadChunk();
 		} else if ( $this->mUpload->getChunkMode() == FirefoggChunkedUploadHandler::DONE ) {
@@ -127,7 +123,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 		if( $params['chunksession'] === null ) {
 			$required[] = 'filename';
 			$required[] = 'comment';
-			$required[] = 'watch';
+			$required[] = 'watchlist';
 			$required[] = 'ignorewarnings';
 		}
 
@@ -143,11 +139,19 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 			'filename' => null,
 			'token' => null,
 			'comment' => null,
-			'watch' => false,
 			'ignorewarnings' => false,
 			'chunksession' => null,
 			'chunk' => null,
 			'done' => false,
+			'watchlist' => array(
+				ApiBase::PARAM_DFLT => 'preferences',
+				ApiBase::PARAM_TYPE => array(
+					'watch',
+					'unwatch',
+					'preferences',
+					'nochange'
+				),
+			),
 		);
 	}
 
@@ -156,7 +160,7 @@ class ApiFirefoggChunkedUpload extends ApiUpload {
 			'filename' => 'Target filename',
 			'token' => 'Edit token. You can get one of these through prop=info',
 			'comment' => 'Upload comment',
-			'watch' => 'Watch the page',
+			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 			'ignorewarnings' => 'Ignore any warnings',
 			'chunksession' => 'The session key, established on the first contact during the chunked upload',
 			'chunk' => 'The data in this chunk of a chunked upload',
