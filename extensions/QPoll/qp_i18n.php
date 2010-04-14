@@ -488,6 +488,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author The Evil IP address
  */
 $messages['de'] = array(
@@ -525,6 +526,7 @@ $messages['de'] = array(
 	'qp_func_invalid_proposal_id' => 'Ungültige Vorschlagskennung id=$3 (keine Nummer) für die Abstimmung $1, Frage $2',
 	'qp_error_no_such_poll' => 'Abstimmung nicht vorhanden ($1).
 Stelle sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als Trennsymbol für Adressen verwendet wird',
+	'qp_error_in_question_header' => 'Ungültige Bezeichnung: $1',
 	'qp_error_id_in_stats_mode' => 'Kann keine Kennung für diese Abstimmung im Statistik-Modus festlegen.',
 	'qp_error_dependance_in_stats_mode' => 'Kann Abhängigkeitskette der Abstimmung im statistischen Modus nicht festlegen',
 	'qp_error_no_stats' => 'Es sind keine statistischen Daten verfügbar, da noch niemand für diese Abstimmung gestimmt hat (Adresse=$1)',
@@ -532,6 +534,7 @@ Stelle sicher, dass die Abstimmung festgelegt und gespeichert ist und dass # als
 	'qp_error_question_not_implemented' => 'Fragen diesen Typs sind nicht implementiert: $1',
 	'qp_error_invalid_question_type' => 'Ungültiger Fragetyp: $1',
 	'qp_error_type_in_stats_mode' => 'Der Fragetyp kann im statistischen Anzeigemodus nicht definiert werden: $1',
+	'qp_error_no_poll_id' => 'Für das Abstimmungs-Tag wurde keine Abstimmungskennung definiert.',
 	'qp_error_invalid_poll_id' => 'Ungültige Abstimmungskennung (id=$1).
 Abstimmungskennung darf nur Buchstaben, Zahlen und Leerstellen enthalten.',
 	'qp_error_already_used_poll_id' => 'Die Abstimmungskennung wurde bereits auf dieser Seite benutzt (id=$1).',

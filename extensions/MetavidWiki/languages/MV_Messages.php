@@ -7636,10 +7636,15 @@ Për piasì, ch\'a arpòrta son a l\'[[{{MediaWiki:Grouppage-sysop}}|aministrato
 	'mvexportstream' => 'Esporté un fluss ëd MetaVid',
 	'mv_move_delete_msg' => 'tramudà a $1',
 	'mv_add_stream_page' => "Gionta d'un fluss ëd MetaVid",
-	'mv_edit_strea_docu' => '<p>Modìfica <b>aministrador</b> ëd fluss<br />per vardé/modifiché utent normal varda pàgina $1</p>',
-	'mv_add_stream_docu' => '<p>Gionta un fluss neuv con ël camp sota.</p>
-<p>Pi anformassion a son dàite an sla <a href="$1">pàgina d\'agiut për gionté fluss</a>.</p>',
-	'mv_add_stream_submit' => 'Gionta fluss',
+	'mv_edit_strea_docu' => "<p>Modìfica ëd n'<b>aministrator</b> d'un fluss<br />per la visualisassion/modìfica da part ëd n'utent normal, vardé la pàgina $1</p>",
+	'mv_add_stream_docu' => '<p>Gionté un fluss neuv con ël camp sì-sota.</p>
+<p>Pi d\'anformassion a son dàite an sla <a href="$1">pàgina d\'agiut për gionté un fluss</a>.</p>',
+	'mv_add_stream_submit' => 'Gionté un fluss',
+	'mv_no_stream_files' => 'Gnun archivi ëd fluss esistent',
+	'mv_edit_stream_files' => "Modifiché j'archivi ëd fluss",
+	'mv_path_type_url_anx' => "Adrëssa dl'aragnà antrega dël mojen",
+	'mv_path_type_wiki_title' => 'tìtol wiki dël mojen',
+	'mv_path_type_url_file' => "Adrëssa dl'aragnà completa dël mojen ch'a deuvra n'arserca local",
 );
 
 /** Pashto (پښتو)

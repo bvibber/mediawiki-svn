@@ -149,15 +149,40 @@ $messages['br'] = array(
 Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
+	'refhelper' => 'Literaturhinweishilfe',
+	'refsearch' => 'Literaturhinweissuche',
+	'refhelper-desc' => 'Hilft beim Erstellen von Literaturhinweisen',
+	'refhelper-refsearch' => 'Literaturhinweissuche',
+	'refhelper-refcreate_legend' => 'Einen neuen Literaturhinweis erstellen',
+	'refhelper-refsearch_legend' => 'Durchsucht pubmed nach Literaturhinweisen',
+	'refhelper-refcreate_another' => 'Erstelle einen weiteren Literaturhinweis',
+	'refhelper-refcreate_autocomment' => 'Automatisierte Seitenerstellung',
+	'refhelper-refcreate_success' => 'Die Seite [[$1]] war nicht vorhanden und wurde daher erstellt.',
 	'refhelper-refcreate_failure' => 'Die Seite „[[$1]]“ ist bereits vorhanden.',
+	'refhelper-label_workspace' => 'Ablagefläche zur Zwischenablage von Eingaben:',
+	'refhelper-label_authorforename' => '$1. Autor - Vorname:',
+	'refhelper-label_authorsurname' => 'Nachname:',
 	'refhelper-title' => 'Titel:',
+	'refhelper-journal' => 'Journal:',
+	'refhelper-volume' => 'Band:',
 	'refhelper-pages' => 'Seiten:',
 	'refhelper-year' => 'Jahr:',
+	'refhelper-refname' => 'Bezeichnung:',
 	'refhelper-category' => 'Kategorie $1:',
 	'refhelper-create' => 'Erstellen',
 	'refhelper-search' => 'Suchen',
+	'refhelper-toolbox_link_create' => 'Literaturhinweis erstellen',
+	'refhelper-toolbox_link_search' => 'Literaturhinweis aus der Suche heraus erstellen',
+	'refhelper-newarticle_nocitation' => 'Momentan gibt es kein Autorenzitat mit diesem Namen.',
+	'refhelper-newarticle_suggestions' => 'Sofern ein zutreffendes Autorenzitat verfügbar ist, kannst Du den Literaturhinweis durch Klicken auf die zugehörige Schaltfläche "Erstellen" erzeugen.
+
+<h2>Vorschläge</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Es war leider nicht möglich einen Literaturhinweis vorzuschlagen.
+Du kannst [[Special:RefHelper|den Literaturhinweis selbst erstellen]] oder [[Special:RefSearch|nach dem hinzuzufügenden Autorenzitat suchen]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -41,10 +41,11 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'dynamicsidebar-desc' => 'Bietet dynamische Sidebars an, basierend auf Benutzerseiten, Gruppen und Kategorien',
+	'dynamicsidebar-desc' => 'Ermöglicht dynamische Seitenleisten, die benutzer-, benutzergruppen- oder benutzerkategorienspezifisch sein können.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

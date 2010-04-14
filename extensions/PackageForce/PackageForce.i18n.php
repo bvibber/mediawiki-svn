@@ -289,6 +289,7 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'pf-desc' => '[[Special:PackageForce|Erofluede vu Fichieren]] mat nëtzleche Schablounen asw.',
 	'pf-admin-menu-default' => 'Standard',
 	'pf-admin-menu-unsortedtemplates' => 'Schablounen nach net zortéiert',
 	'pf-admin-link-view-documentation' => "D'Dokumentatioun déi mat dëser Säit verbonn ass weisen.",

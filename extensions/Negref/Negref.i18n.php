@@ -51,6 +51,13 @@ $messages['bs'] = array(
 	'negref-desc' => 'Omogućuje oznaku za pronalazak mjesta neke <nowiki><ref/></nowiki> oznake unutar teksta unosa zbog ispravljanja korištenja nekih šablona',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'negref-desc' => 'Stellt einen Tag bereit mit dem die Position jeglicher <nowiki><ref/></nowiki>-Tags innerhalb einer Texteingabe verändert werden kann, um damit Probleme beim Verwenden von Vorlagen zu beheben.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

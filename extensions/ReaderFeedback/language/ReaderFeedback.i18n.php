@@ -1316,6 +1316,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
+	'readerfeedback-npov' => 'ნეიტრალობა',
 	'readerfeedback-level-none' => '(არაა არჩეული)',
 	'readerfeedback-level-1' => 'დაბალი',
 	'readerfeedback-level-3' => 'მაღალი',

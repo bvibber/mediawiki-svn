@@ -5935,7 +5935,7 @@ $messages['id'] = array(
 	'languages' => 'Wikidata: Pengelola bahasa',
 	'langman-desc' => 'Tambahkan dan ubah seting bahasa dengan [[Special:Languages]]',
 	'langman_title' => 'Pengelola bahasa',
-	'langman_not_allowed' => 'Anda tidak memiliki ijin untuk mengganti seting bahasa.',
+	'langman_not_allowed' => 'Anda tidak memiliki kewenangan untuk mengubah pengaturan bahasa.',
 	'langman_header' => 'Ketikkan kode bahasa dan nama bahasa Inggrisnya di bawah:',
 	'langman_req_fields' => 'Nama bahasa dan kode ISO 639-3 dua-duanya dibutuhkan!',
 	'langman_adding' => 'Menambahkan bahasa $1 dengan kunci $2.',
@@ -13579,6 +13579,8 @@ $messages['yi'] = array(
 	'ow_transaction_rollback_header' => 'צוריקדרייען',
 	'ow_transaction_previous_version' => 'פֿריערדיגע ווערסיע',
 	'ow_transaction_restore' => 'אויפֿריכטן',
+	'ow_SuggestHint' => 'קליקט צו ענדערן אויסקלויב',
+	'ow_Source' => 'מקור',
 	'ow_User' => 'באַניצער',
 	'ow_suggest_previous' => 'פֿריערדיקער',
 );

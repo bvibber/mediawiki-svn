@@ -46,8 +46,8 @@ $messages['af'] = array(
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
-	'newusermessage-desc' => 'Ēacaþ ȝeƿrit tō þǣm mōtungtramete þæs nīƿes brūcendes',
-	'newuseredit-summary' => 'Ēacende [[{{int:newusermessage-template}}|ƿilcumenǣrende]] tō þǣm mōtungtramete þæs nīƿes brūcendes',
+	'newusermessage-desc' => 'Ēacaþ ȝeƿrit to þǣre ȝespreċsīdan þæs nīƿes brūcendes',
+	'newuseredit-summary' => 'Ēacende [[{{int:newusermessage-template}}|ƿilcumenǣrende]] tō þǣre ȝespreċsīdan þæs nīƿes brūcendes',
 );
 
 /** Arabic (العربية)

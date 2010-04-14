@@ -122,6 +122,35 @@ $messages['an'] = array(
 	'youtubeauthsub_submit' => 'Nimbiar',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'youtubeauthsub' => 'YouTube scēaƿe forþsendan',
+	'youtubeauthsub_title' => 'Nama',
+	'youtubeauthsub_description' => 'Mearcung',
+	'youtubeauthsub_password' => 'YouTube þafungƿord',
+	'youtubeauthsub_username' => 'YouTube brūcendnama',
+	'youtubeauthsub_keywords' => 'Cǣȝƿord',
+	'youtubeauthsub_category' => 'Flocc',
+	'youtubeauthsub_submit' => 'Forþsendan',
+	'youtubeauthsub_clickhere' => 'Hēr cnæppan to inmeldian to YouTube',
+	'youtubeauthsub_tokenerror' => 'Ƿōh scieppende þafunge tācn, fande nīƿian.',
+	'youtubeauthsub_authsubinstructions' => 'To forþsendenne scēaƿe, þū scealt formest to YouTube inmeldian.',
+	'youtubeauthsub_uploadhere' => 'Þīnu scēaƿe forþsendan fram hēr:',
+	'youtubeauthsub_uploadbutton' => 'Forþsendan',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Þās scēaƿe sēon]',
+	'youtubeauthsub_summary' => 'Forþsendende YouTube scēaƿe',
+	'youtubeauthsub_uploading' => 'Þīnu scēaƿe forþsendþ.
+Bidde þole.',
+	'youtubeauthsub_viewpage' => 'Bȳ ōðrum ȝescēadum, þū meaht [[$1|þīne scēaƿe sēon]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Bidde ƿrīt 1 oþþe mā cǣȝƿord.',
+	'youtubeauthsub_jserror_notitle' => 'Bidde ƿrīt nama for þǣre scēaƿe.',
+	'youtubeauthsub_jserror_nodesc' => 'Bidde ƿrīt mearcunge for þǣre scēaƿe.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -3485,14 +3514,21 @@ $messages['war'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'youtubeauthsub' => 'אַרויפֿלאָדן YouTube ווידעא',
+	'youtubeauthsub-desc' => ' ערמעגלעכט באַניצער צו [[Special:YouTubeAuthSub|אַרויפֿלאָדן ווידעאס]] גלײַך צו  YouTube',
 	'youtubeauthsub_title' => 'קעפל',
 	'youtubeauthsub_description' => 'שילדערונג',
 	'youtubeauthsub_password' => 'יוטוב פאַסווארט',
+	'youtubeauthsub_username' => 'YouTube באַניצער נאָמען',
 	'youtubeauthsub_keywords' => 'שליסלווערטער',
 	'youtubeauthsub_category' => 'קאַטעגאריע',
 	'youtubeauthsub_submit' => 'אײַנגעבן',
+	'youtubeauthsub_clickhere' => 'דרוקט דאָ ארײַנלאגירן צו YouTube',
 	'youtubeauthsub_uploadhere' => 'לאָדט אַרויף אייער ווידעא פֿון דאַנעט:',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 זען דעם ווידעא]',
 	'youtubeauthsub_summary' => 'אַרויפֿלאָדן יוטוב ווידעא',
 );
 

@@ -205,6 +205,13 @@ $messages['ja'] = array(
 	'mwreleases-desc' => 'サポートされているリリースの[[Mediawiki:Mwreleases-list|リスト]]を追加し、API からアクセス可能にする',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'mwreleases-desc' => '지원하는 [[MediaWiki:Mwrelease-list|릴리즈 목록]]을 추가함 (API로 접근 가능)',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

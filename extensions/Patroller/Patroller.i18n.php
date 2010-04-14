@@ -89,6 +89,14 @@ $messages['an'] = array(
 	'patrol-revert-reason' => 'Razón:',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'group-patroller' => 'Ƿeardmenn',
+	'group-patroller-member' => 'ƿeard',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

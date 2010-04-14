@@ -462,6 +462,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'emergencydesysop' => 'Pemecatan Admin Darurat',
@@ -476,7 +477,7 @@ $messages['id'] = array(
 	'emergencydesysop-done' => 'Proses selesai, ANda dan [[$1]] telah dikeluarkan dari daftar pengurus.',
 	'emergencydesysop-invalidtarget' => 'Pengguna yang dituju tidak ada.',
 	'emergencydesysop-blocked' => 'Anda tidak dapat mengakses halaman ini ketika sedang diblok',
-	'emergencydesysop-noright' => 'Anda tidak memiliki ijin yang cukup untuk mengakses halaman ini',
+	'emergencydesysop-noright' => 'Anda tidak memiliki izin yang memadai untuk mengakses halaman ini',
 	'right-emergencydesysop' => 'Mampu untuk memecat seorang pengurus lain, bersama-sama',
 );
 

@@ -11425,6 +11425,7 @@ $messages['lb'] = array(
 	'configure-setting-wgAjaxExportList' => 'AJAX-Fonctiounen déi kënnen opgeruff ginn',
 	'configure-setting-wgLivePreview' => 'Live-Preview aschalten',
 	'configure-setting-wgVerifyMimeType' => 'MIME-Typ vu Fichieren déi eropgeluede ginn iwwerpréifen',
+	'configure-setting-wgArticlePath' => 'Basis-URL fir intern Linken bannen a MediaWiki',
 	'configure-setting-wgFavicon' => 'URL vum Favicon vum Site',
 	'configure-setting-wgLogo' => 'URL vum Logo vum Site',
 	'configure-setting-wgScript' => 'URL vun index.php',

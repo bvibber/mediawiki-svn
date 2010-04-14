@@ -42,6 +42,13 @@ $messages['ca'] = array(
 	'apisvgproxy-desc' => 'Fa de servidor intermediari de fitxers SVG per a dipòsits de fitxers (probablement remots) al domini local',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'apisvgproxy-desc' => 'Überträgt SVG-Dateien per Proxy von einem möglicherweise entfernt liegenden Dateienrepositorium zur eigenen Domain.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -103,6 +110,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'apisvgproxy-desc' => 'Face un proxy in le dominio local pro files SVG ex un deposito de files (possibilemente remote)',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Iwan Novirion
+ */
+$messages['id'] = array(
+	'apisvgproxy-desc' => 'File Proxy SVG dari gudang file (mungkin remote) ke domain lokal',
 );
 
 /** Japanese (日本語)

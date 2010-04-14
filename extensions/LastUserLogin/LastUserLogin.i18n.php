@@ -90,14 +90,18 @@ $messages['ca'] = array(
 	'right-lastlogin' => 'Veure la darrera vegada que un usuari va iniciar sessió',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
 	'lastuserlogin' => 'Letzte Anmeldungen',
+	'lastuserlogin-desc' => 'Zeigt an, wann sich ein Benutzer letztmalig angemeldet hat.',
 	'lastuserlogin_userid' => 'Benutzername',
 	'lastuserlogin_username' => 'Echter Name',
 	'lastuserlogin_useremail' => 'E-Mail-Adresse',
 	'lastuserlogin_lastlogin' => 'Letzte Anmeldung',
 	'lastuserlogin_daysago' => 'Tage',
+	'right-lastlogin' => 'Ansehen wann sich ein Benutzer letztmalig angemeldet hat.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

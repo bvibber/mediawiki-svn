@@ -393,6 +393,7 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author Melancholie
  * @author Purodha
  * @author Revolus
@@ -441,6 +442,8 @@ $messages['de'] = array(
 	'recordadmin-typeinfo' => '$1-Aufnahme',
 	'right-recordadmin' => 'Aufzeichnungsseiten finden und bearbeiten',
 	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Keine "$1"',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

@@ -38,6 +38,13 @@ $messages['aln'] = array(
 Mundet me u përdorë si [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] për me gjetë nji artikull të rastit të diskutimit, apo si [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] për me gjetë nji skedë GFDL',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'advancedrandom' => 'Forþliċ hlīete',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

@@ -743,6 +743,7 @@ Sistem notifikasi %s Anda yang bersahabat',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -762,6 +763,7 @@ Per un elenco dei progetti validi consultare [[MediaWiki:TodoTasksValidProjects]
 	'tasklistchooseproj' => 'Seleziona progetto:',
 	'tasklistprojdisp' => 'Visualizzare',
 	'tasklistbyname' => '== Elenco delle cose da fare per %s ==',
+	'tasklistnowguseprojects' => 'È stata impostata $wgUseProjects a "false" e non è possibile utilizzare questa pagina.',
 	'tasklistnoprojects' => "Errore: sembra che sia stato attivato '''\$wgUseProjects''' ma non è stato creato [[MediaWiki:TodoTasksValidProjects]]. Consultare le [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 istruzioni di installazione] per maggiori dettagli.",
 	'tasklistemailbody' => ",
 
