@@ -48,7 +48,7 @@ $wgInlineScriptsLimits = array(
 	 */
 	'tokens' => 25000,
 	/**
-	 * Maximal amount of operations (multiplications, comarsionss, function
+	 * Maximal amount of operations (multiplications, comarsions, function
 	 * calls) to be done.
 	 */
 	'evaluations' => 10000,
@@ -114,12 +114,11 @@ class InlineScriptsHooks {
 	}
 
 	public static function reportLimits( &$parser, &$report ) {
-		global $wgInlineScriptsParserParams;
-		$limits = $wgInlineScriptsParserParams['limits'];
+		global $wgInlineScriptsLimits;
 		$report .=
-			"Inline scripts parser evaluations: {$parser->is_evalsCount}/{$limits['evaluations']}\n" .
-			"Inline scripts tokens: {$parser->is_tokensCount}/{$limits['tokens']}\n" .
-			"Inline scripts AST maximal depth: {$parser->is_maxDepth}/{$limits['depth']}\n";
+			"Inline scripts parser evaluations: {$parser->is_evalsCount}/{$wgInlineScriptsLimits['evaluations']}\n" .
+			"Inline scripts tokens: {$parser->is_tokensCount}/{$wgInlineScriptsLimits['tokens']}\n" .
+			"Inline scripts AST maximal depth: {$parser->is_maxDepth}/{$wgInlineScriptsLimits['depth']}\n";
 		return true;
 	}
 

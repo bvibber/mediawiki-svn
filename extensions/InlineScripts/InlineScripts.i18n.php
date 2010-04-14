@@ -27,6 +27,7 @@ $messages['en'] = array(
 	'inlinescripts-exception-continue' => '"continue" called outside of foreach at line $1',
 	'inlinescripts-exception-emptyidx' => 'Trying to get a value of an empty index at line $1',
 	'inlinescripts-exception-unknownvar' => 'Trying to use an undeclared variable at line $1',
+	'inlinescripts-exception-unknownfunction' => 'Trying to use an unnknown function at line $1',
 );
 
 // == Magic words ==

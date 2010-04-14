@@ -10,8 +10,90 @@ require_once( 'Data.php' );
 
 class InlineScriptInterpreter {
 	const ParserVersion = 1;
+	
+	var $mCodeParser, $mMaxRecursion, $mEvaluations, $mTokens;
 
-	var $mVars, $mOut, $mParser, $mFrame, $mCodeParser;
+	public function __construct() {
+		global $wgInlineScriptsParserClass;
+		$this->mCodeParser = new $wgInlineScriptsParserClass( $this );
+	}
+
+	public function checkRecursionLimit( $rec ) {
+		global $wgInlineScriptsLimits;
+		if( $rec > $this->mMaxRecursion )
+			$this->mMaxRecursion = $rec;
+		return $rec <= $wgInlineScriptsLimits['depth'];
+	}
+
+	public function increaseEvaluationsCount() {
+		global $wgInlineScriptsLimits;
+		$this->mEvaluations++;
+		return $this->mEvaluations <= $wgInlineScriptsLimits['evaluations'];
+	}
+
+	public function getMaxTokensLeft() {
+		global $wgInlineScriptsLimits;
+		return $wgInlineScriptsLimits['tokens'] - $this->mTokens;
+	}
+
+	public function execute( $code, $parser, $frame ) {
+		wfProfileIn( __METHOD__ );
+		$context = new InlineScriptEvaluationContext( $this, $parser, $frame );
+		$ast = $this->parseCode( $code );
+		$context->evaluateNode( $ast, 0 )->toString();
+		wfProfileOut( __METHOD__ );
+		return $context->mOut;
+	}
+
+	public function evaluate( $code, $parser, $frame ) {
+		wfProfileIn( __METHOD__ );
+		$context = new InlineScriptEvaluationContext( $this, $parser, $frame );
+		$ast = $this->parseCode( $code );
+		$result = $context->evaluateNode( $ast, 0 )->toString();
+		wfProfileOut( __METHOD__ );
+		return $result;
+	}
+
+	public function parseCode( $code ) {
+		global $parserMemc;
+		static $parserCache;	// Unserializing can be expensive as well
+
+		wfProfileIn( __METHOD__ );
+		$code = trim( $code );
+
+		$memcKey = 'isparser:ast:' . md5( $code );
+
+		if( isset( $parserCache[$memcKey] ) ) {
+			wfProfileOut( __METHOD__ );
+			return $parserCache[$memcKey];
+		}
+
+		$cached = $parserMemc->get( $memcKey );
+		if( @$cached instanceof ISParserOutput && !$cached->isOutOfDate() ) {
+			$cached->appendTokenCount( $this );
+			$parserCache[$memcKey] = $cached->getParserTree();
+			wfProfileOut( __METHOD__ );
+			return $cached->getParserTree();
+		}
+
+		$scanner = new ISScanner( $code );
+		$out = $this->mCodeParser->parse( $scanner, $this->getMaxTokensLeft() );
+
+		$out->appendTokenCount( $this );
+		$parserMemc->set( $memcKey, $out );
+		$parserCache[$memcKey] = $out->getParserTree();
+
+		wfProfileOut( __METHOD__ );
+		return $out->getParserTree();
+	}
+}
+
+/**
+ * An internal class used by InlineScript. Used to evaluate a parsed code
+ * in a sepereate context with its own output, variables and parser frame.
+ */
+class InlineScriptEvaluationContext {
+	var $mVars, $mOut, $mParser, $mFrame, $mInterpteter;
 
 	static $mFunctions = array(
 		'out' => 'funcOut',
@@ -46,91 +128,12 @@ class InlineScriptInterpreter {
 		'bool' => 'castBool',
 	);
 
-	public function __construct() {
-		global $wgInlineScriptsParserClass;
-		$this->resetState();
-		$this->mCodeParser = new $wgInlineScriptsParserClass( $this );
-	}
-
-	public function resetState() {
+	public function __construct( $interpreter, $parser, $frame ) {
 		$this->mVars = array();
 		$this->mOut = '';
-	}
-
-	protected function checkRecursionLimit( $rec ) {
-		global $wgInlineScriptsLimits;
-		if( $rec > $this->mParser->is_maxDepth )
-			$this->mParser->is_maxDepth = $rec;
-		return $rec <= $wgInlineScriptsLimits['depth'];
-	}
-
-	protected function increaseEvaluationsCount() {
-		global $wgInlineScriptsLimits;
-		$this->mParser->is_evalsCount++;
-		return $this->mParser->is_evalsCount <= $wgInlineScriptsLimits['evaluations'];
-	}
-
-	public function getMaxTokensLeft() {
-		global $wgInlineScriptsLimits;
-		return $wgInlineScriptsLimits['tokens'] - $this->mParser->is_tokensCount;
-	}
-
-	public function execute( $code, $parser, $frame, $resetState = true ) {
-		wfProfileIn( __METHOD__ );
-		if( $resetState )
-			$this->resetState();
+		$this->mInterpteter = $interpreter;
 		$this->mParser = $parser;
 		$this->mFrame = $frame;
-
-		$ast = $this->parseCode( $code );
-		$this->evaluateNode( $ast, 0 );
-		wfProfileOut( __METHOD__ );
-		return $this->mOut;
-	}
-
-	public function evaluate( $code, $parser, $frame, $resetState = true ) {
-		wfProfileIn( __METHOD__ );
-		if( $resetState )
-			$this->resetState();
-		$this->mParser = $parser;
-		$this->mFrame = $frame;
-
-		$ast = $this->parseCode( $code );
-		wfProfileOut( __METHOD__ );
-		return $this->evaluateNode( $ast, 0 )->toString();
-	}
-
-	public function parseCode( $code ) {
-		global $parserMemc;
-		static $parserCache;	// Unserializing can be expensive as well
-
-		wfProfileIn( __METHOD__ );
-		$code = trim( $code );
-
-		$memcKey = 'isparser:ast:' . md5( $code );
-
-		if( isset( $parserCache[$memcKey] ) ) {
-			wfProfileOut( __METHOD__ );
-			return $parserCache[$memcKey];
-		}
-
-		$cached = $parserMemc->get( $memcKey );
-		if( @$cached instanceof ISParserOutput && !$cached->isOutOfDate() ) {
-			$cached->appendTokenCount( $this );
-			$parserCache[$memcKey] = $cached->getParserTree();
-			wfProfileOut( __METHOD__ );
-			return $cached->getParserTree();
-		}
-
-		$scanner = new ISScanner( $code );
-		$out = $this->mCodeParser->parse( $scanner, $this->getMaxTokensLeft() );
-
-		$out->appendTokenCount( $this );
-		$parserMemc->set( $memcKey, $out );
-		$parserCache[$memcKey] = $out->getParserTree();
-
-		wfProfileOut( __METHOD__ );
-		return $out->getParserTree();
 	}
 
 	public function evaluateNode( $node, $rec ) {
