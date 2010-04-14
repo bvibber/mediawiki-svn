@@ -64,7 +64,7 @@ $j(document).ready( function() {
 						labelMsg: 'wikieditor-toolbar-tool-italic',
 						type: 'button',
 						offset: {
-							'default': [2, -862],
+							'default': [2, -718],
 							'en': [2, -862],
 							'de': [2, -934],
 							'fr': [2, -862],
