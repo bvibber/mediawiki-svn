@@ -208,7 +208,7 @@ class ISData {
 		if( $this->type == self::DNull && $indices[0] === null ) {
 			$this->type = self::DList;
 			$this->value = array();
-			$this->setValueByIndices( $val, $indices );
+			$this->setValueByIndices( $val, $indices, $line );
 		} elseif( $this->type == self::DList ) {
 			if( $indices[0] === null ) {
 				$this->data[] = $val;
@@ -217,7 +217,7 @@ class ISData {
 				if( $idx < 0 || $idx >= count( $this->data ) )
 					throw new ISUserVisibleException( 'outofbounds', $line, array( count( $this->data ), $idx ) );
 				if( count( $indices ) > 1 )
-					$this->data[$idx]->setValueByIndices( $val, array_slice( $indices, 1 ) );
+					$this->data[$idx]->setValueByIndices( $val, array_slice( $indices, 1 ), $line );
 				else
 					$this->data[$idx] = $val;
 			}
