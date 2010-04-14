@@ -1061,6 +1061,7 @@ $messages['hu'] = array(
 	'prefswitch-survey-true' => 'Igen',
 	'prefswitch-survey-false' => 'Nem',
 	'prefswitch-survey-submit-off' => 'Új funkciók kikapcsolása',
+	'prefswitch-survey-cancel-off' => 'Ha továbbra is szeretnéd használni az új funkciókat, akkor visszatérhetsz a(z) $1 lapra.',
 	'prefswitch-survey-submit-feedback' => 'Visszajelzés küldése',
 	'prefswitch-survey-question-whyoff' => 'Miért kapcsolod ki az új funkciókat?
 Jelöld be az összes indokodat.',
@@ -1083,6 +1084,15 @@ Jelöld be az összes indokodat.',
 	'prefswitch-success-on' => 'Új funkciók bekapcsolva.',
 	'prefswitch-success-off' => 'Új funkciók kikapcsolva.',
 	'prefswitch-success-feedback' => 'A visszajelzésed el lett küldve.',
+	'prefswitch-return' => '<hr style="clear:both">
+Vissza a(z) <span class="plainlinks">[$1 $2]</span> lapra.',
+	'prefswitch-main-off' => '=== Próbáld ki! ===
+
+Ha szeretnéd bekapcsolni az új funkciókat, <span class="plainlinks">[$1 kattints ide]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Örülnénk, ha elmondanád a véleményed.
+Légyszíves töltsd ki az alábbi önkéntes kérdőívet.',
+	'prefswitch-survey-intro-off' => 'Köszönjük, hogy kipróbáltad az új funkciókat.
+Légyszíves segíts a továbbfejlesztésükben az alábbi önkéntes kérdőív kitöltésével.',
 );
 
 /** Interlingua (Interlingua)
@@ -1269,6 +1279,7 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -1284,6 +1295,12 @@ $messages['ka'] = array(
 რა არ მოგეწონათ ახალი შესაძლებლობებიდან?',
 	'prefswitch-survey-question-whyoff' => 'რატომ თიშავთ ახალ შესაძლებლობებს? 
 გთხოვთ აირჩიოთ პასუხი.',
+	'prefswitch-survey-answer-whyoff-hard' => 'ძალიან რთული იყო გამოსაყენებლად.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'ის გაუმართავი იყო.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'იგი გაუთვალისწინებლად მოქმედებდა.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'არ მომწონდა მისი გარეგნობა.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'არ მომეწონა ახალი ყუები და განლაგება.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'მე არ მომეწონა რედაქტირების პანელი.',
 	'prefswitch-survey-answer-whyoff-other' => 'სხვა მიზეზი:',
 	'prefswitch-survey-question-browser' => 'რომელ ბრაუზერს იყენებთ?',
 	'prefswitch-survey-answer-browser-other' => 'სხვა ბრაუზერი:',
@@ -1298,6 +1315,8 @@ $messages['ka'] = array(
 	'prefswitch-success-on' => 'ახალი შესაძლებლობები ჩართულია.',
 	'prefswitch-success-off' => 'ახალი შესაძლებლობები გათიშულია.',
 	'prefswitch-success-feedback' => 'თქვენი გამოხმაურება გაგზავნილია.',
+	'prefswitch-return' => '<hr style="clear:both">
+დაბრუნება <span class="plainlinks">[$1 $2]</span>.',
 );
 
 /** Korean (한국어)
