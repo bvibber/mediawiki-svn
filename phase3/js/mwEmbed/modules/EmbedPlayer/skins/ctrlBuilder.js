@@ -78,8 +78,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Get the controls html
-	* @return {String} html output of controls
+	* Add the controls html to palyer interface
 	*/
 	addControls: function() {
 		// Set up local pointer to the embedPlayer
@@ -129,8 +128,7 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Builds the interface controls
-	* @return the interface html string
+	* Add control components as defined per this.components
 	*/ 
 	addControlComponents: function( ) {
 		var _this = this;			
@@ -571,10 +569,8 @@ ctrlBuilder.prototype = {
 	* Hide the control bar. 
 	*/
 	hideControlBar : function(){
-		var animateDuration = 'slow';	
-		// Else hide the control bar ( if checkOverlayControls is still true ) 	
+		var animateDuration = 'slow';	 	
 		this.embedPlayer.$interface.find( '.control-bar')
-			.stop()
 			.fadeOut( animateDuration );
 					
 		this.embedPlayer.$interface.find( '.itext' )
@@ -589,8 +585,7 @@ ctrlBuilder.prototype = {
 	* Show the control bar
 	*/
 	showControlBar : function(){
-		var animateDuration = 'slow';
-		
+		var animateDuration = 'slow';		
 		// Move up itext if present
 		this.embedPlayer.$interface.find( '.itext' )
 			.animate( 

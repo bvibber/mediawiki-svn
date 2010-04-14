@@ -653,7 +653,13 @@ $wgJSAutoloadLocalClasses = array(
 	'uploadPage' => 'js/uploadPage.js',
 	'editPage' => 'js/editPage.js',
 	'ajaxCategories' => 'js/ajaxcategories.js',
-	'apiProxyPage'	=> 'js/apiProxyPage.js'
+	'apiProxyPage'	=> 'js/apiProxyPage.js',
+
+	// Css bindings
+	'mw.style.shared' => 'skins/common/shared.css',
+	'mw.style.commonPrint' => 'skins/common/commonPrint.css',
+	'mw.style.vectorMainLTR' => 'skins/vector/main-ltr.css',
+
 );
 
 

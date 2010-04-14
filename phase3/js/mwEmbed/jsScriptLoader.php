@@ -32,14 +32,21 @@ class jsScriptLoader {
 	// The language code for the script-loader request
 	var $langCode = '';
 
-	// The javascript output string
-	var $jsout = '';
+	// The output string
+	var $output = '';
+
+	// Special prepend js var to be added to the top of minification output.
+	// useful for special comment tags in minification output
+	var $notMinifiedTopOutput = '';
 
 	// The request Key for the js
 	var $requestKey = '';
 
 	// Error msg
 	var $errorMsg = '';
+
+	// Output format is either 'js' or 'css';
+	var $outputFormat = 'js';
 
 	// Debug flag
 	var $debug = false;
@@ -59,7 +66,7 @@ class jsScriptLoader {
 		$this->sFileCache = new simpleFileCache( $this->requestKey );
 		if ( $this->sFileCache->isFileCached() ) {
 			// Output headers
-			$this->outputJsHeaders();
+			$this->outputHeaders();
 			// Output cached file
 			$this->sFileCache->outputFile();
 			return true;
@@ -91,66 +98,67 @@ class jsScriptLoader {
 
 		// Reset the requestKey:
 		$this->requestKey = '';
+
 		// Do the post proc request with configuration vars:
 		$this->postProcRequestVars();
-		//update the filename (if gzip is on)
+
+		// Update the filename (if gzip is on)
 		$this->sFileCache->getCacheFileName();
 
-		// Setup script loader header:
-		$this->jsout .= 'var mwScriptLoaderDate = "' . date( 'c' ) . '";'  . "\n";
-		$this->jsout .= 'var mwScriptLoaderRequestKey = "' . htmlspecialchars( $this->requestKey ) . '";'  . "\n";
-		$this->jsout .= 'var mwLang = "' . htmlspecialchars( $this->langCode ) . '";' . "\n";
-
-		// Special prepend js var to be added to the top of minification output.
-		// useful for special comment tags in minification output
-		$NotMinifiedTopJs = '';
+		// Setup script loader header ( to easy identify file data )
+		if( $this->outputFormat == 'js' ) {
+			$this->output .= 'var mwScriptLoaderDate = "' .
+				xml::escapeJsString( date( 'c' ) ) . '";'  . "\n";
+			$this->output .= 'var mwScriptLoaderRequestKey = "' .
+				xml::escapeJsString( $this->requestKey ) . '";'  . "\n";
+		}
 
 		// Build the output
 		// Swap in the appropriate language per js_file
 		foreach ( $this->jsFileList as $classKey => $filePath ) {
 
 			// Get the localized script content
-			$this->jsout .= $this->getLocalizedScriptText( $classKey );
+			$this->output .= $this->getLocalizedScriptText( $classKey );
 
 			// If the core mwEmbed class entry point add some
 			// other "core" files:
 			if( $classKey == 'mwEmbed' ){
 				// Output core components ( parts of mwEmbed that are in different files )
-				$this->jsout .= jsClassLoader::getCombinedComponentJs( $this );
+				$this->output .= jsClassLoader::getCombinedComponentJs( $this );
 
 				// Output the loaders:
-				$this->jsout .= jsClassLoader::getCombinedLoaderJs();
+				$this->output .= jsClassLoader::getCombinedLoaderJs();
 
 				// Output the current language class js
-				$this->jsout .= jsClassLoader::getLanguageJs( $this->langCode );
+				$this->output .= jsClassLoader::getLanguageJs( $this->langCode );
 
 				// Output the "common" css file
-				$this->jsout .= $this->getScriptText( 'mw.style.common' );
+				$this->output .= $this->getScriptText( 'mw.style.common' );
 
 				// Output the jQuery ui theme css
-				$this->jsout .= $this->getScriptText( 'mw.style.redmond' );
+				$this->output .= $this->getScriptText( 'mw.style.redmond' );
 
 				// Output special IE comment tag to support special mwEmbed tags.
-				$NotMinifiedTopJs.='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
+				$this->notMinifiedTopOutput .='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
 			}
 		}
 
 		/*
 		 * Add a mw.loadDone class callback if there was no "error" in getting any of the classes
 		 */
-		if ( $this->errorMsg == '' ){
-			$this->jsout .= self::getOnDoneCallback( );
+		if ( $this->errorMsg == '' && $this->outputFormat == 'js' ){
+			$this->output .= self::getOnDoneCallback( );
 		}
 
 		// Check if we should minify the whole thing:
 		if ( !$this->debug ) {
-			$this->jsout = self::getMinifiedJs( $this->jsout , $this->requestKey );
-			$this->jsout = $NotMinifiedTopJs . $this->jsout;
+			$this->output = self::getMinifiedJs( $this->output , $this->requestKey );
+			$this->output = $this->notMinifiedTopOutput . $this->output;
 		}
 
 		// Save to the file cache
 		if ( $wgUseFileCache && !$this->debug ) {
-			$status = $this->sFileCache->saveToFileCache( $this->jsout );
+			$status = $this->sFileCache->saveToFileCache( $this->output );
 			if ( $status !== true )
 			$this->errorMsg .= $status;
 		}
@@ -160,7 +168,7 @@ class jsScriptLoader {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
 			echo 'alert(\'Error With ScriptLoader ::' . str_replace( "\n", '\'+"\n"+' . "\n'", $this->errorMsg ) . '\');';
-			echo trim( $this->jsout );
+			echo trim( $this->output );
 		} else {
 			// All good, let's output "cache" headers
 			$this->outputJsWithHeaders();
@@ -259,9 +267,9 @@ class jsScriptLoader {
 	 * @return String javascript to be included.
 	 */
 	function getLocalizedScriptText( $classKey ){
-		$jstxt = $this->getScriptText( $classKey );
-		if( $jstxt ){
-			return $this->doProcessJs( $jstxt );
+		$scriptText = $this->getScriptText( $classKey );
+		if( $scriptText ){
+			return $this->doProcessJs( $scriptText );
 		}
 		// Return an empty string ( error is put into $this->errorMsg  )
 		return '';
@@ -275,33 +283,44 @@ class jsScriptLoader {
 	 * @return unknown
 	 */
 	function getScriptText( $classKey ){
-		$jsout = '';
-
+		$output = '';
 		// Special case: title classes
 		if ( substr( $classKey, 0, 3 ) == 'WT:' ) {
 			global $wgUser;
 			// Get just the title part
 			$titleBlock = substr( $classKey, 3 );
-			if ( $titleBlock[0] == '-' && strpos( $titleBlock, '|' ) !== false ) {
-				// Special case of "-" title with skin
+			if ( $titleBlock[0] == '-' ) {
+				// Special case of "-" title
 				$parts = explode( '|', $titleBlock );
 				$title = array_shift( $parts );
-				foreach ( $parts as $tparam ) {
-					list( $key, $val ) = explode( '=', $tparam );
-					if ( $key == 'useskin' ) {
-						$skin = $val;
-					}
+				$titleParams = array ();
+				foreach ( $parts as $titleParam ) {
+					list( $key, $val ) = explode( '=', $titleParam );
+					$titleParams[ $key ] = $val;
 				}
+				/*
+				 * The "-" is a special key to user / site js system sucks
+				 * here is some code to handle it ... but it really
+				 * should be depreciated for some more logical system
+				 * like directly referencing the titles that we have a script-loader
+				 */
 				$sk = $wgUser->getSkin();
-				// Make sure the skin name is valid
-				$skinNames = Skin::getSkinNames();
-				$skinNames = array_keys( $skinNames );
-				if ( in_array( strtolower( $skin ), $skinNames ) ) {
-					// If in debug mode, add a comment with wiki title and rev:
-					if ( $this->debug ) {
-						$jsout .= "\n/**\n* GenerateUserJs: \n*/\n";
+				if( isset( $titleParams[ 'useskin' ] ) ) {
+					// Make sure the skin name is valid
+					$skinNames = Skin::getSkinNames();
+					$skinNames = array_keys( $skinNames );
+					if ( in_array( strtolower( $titleParams[ 'useskin' ] ), $skinNames ) ) {
+						if( $titleParams['gen' ] == 'css' ){
+							return $sk->generateUserStylesheet();
+						}
+						// If in debug mode, add a comment with wiki title and rev:
+						if ( $this->debug ) {
+							$output .= "\n/**\n* GenerateUserJs: \n*/\n";
+						}
+						return $sk->generateUserJs( $titleParams[ 'useskin' ] ) . "\n";
 					}
-					return $sk->generateUserJs( $skin ) . "\n";
+				} else if(  isset( $titleParams['gen' ] ) && $titleParams['gen' ] == 'css' ) {
+					return $sk->generateUserStylesheet();
 				}
 			} else {
 				$ext = substr($titleBlock, strrpos($titleBlock, '.') + 1);
@@ -316,13 +335,14 @@ class jsScriptLoader {
 				// Only get the content if the page is not empty:
 				if ( $a->getID() !== 0 ) {
 					// If in debug mode, add a comment with wiki title and rev:
-					if ( $this->debug )
-					$jsout .= "\n/**\n* WikiJSPage: " . xml::escapeJsString( $titleBlock ) . " rev: " . $a->getID() . " \n*/\n";
+					if ( $this->debug ) {
+						$output .= "\n/**\n* ScriptLoader WikiPage: " . xml::escapeJsString( $titleBlock ) . " rev: " . $a->getID() . " \n*/\n";
+					}
 					$fileStr = $a->getContent() . "\n";
-					$jsout.= ( $ext == 'css' ) ?
+					$output.= ( $ext == 'css' ) ?
 						$this->transformCssOutput( $classKey, $fileStr ) :
 						$fileStr;
-					return $jsout;
+					return $output;
 				}
 			}
 		}
@@ -344,13 +364,13 @@ class jsScriptLoader {
 			if( $fileStr ){
 				// Add the file name if debug is enabled
 				if ( $this->debug ){
-					$jsout .= "\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
+					$output .= "\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
 				}
-				$jsout.= ( $ext == 'css' ) ?
+				$output.= ( $ext == 'css' ) ?
 					$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
 					$fileStr;
 
-				return $jsout;
+				return $output;
 			}else{
 				$this->errorMsg .= "\nError could not read file: ". xml::escapeJsString( $filePath )  ."\n";
 				return false;
@@ -384,8 +404,16 @@ class jsScriptLoader {
 				str_replace('jsScriptLoader.php', '', $serverUri)
 				. dirname( $path ) . '/';
 		}
+		// We always run minify to update css urls
 		$cssString = Minify_CSS::minify( $cssString, $cssOptions);
-		// css classes should be of form mw.style.{className}
+
+		// Check output format ( if format is "css" ) return the css string directly
+		if( $this->outputFormat == 'css' ) {
+			return $cssString;
+		}
+
+		// Format is "javascript" return the string in an addStyleString call
+		// CSS classes should be of form mw.style.{className}
 		$cssStyleName = str_replace('mw.style.', '', $classKey );
 		return 'mw.addStyleString("' . Xml::escapeJsString( $cssStyleName )
 					. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
@@ -416,9 +444,13 @@ class jsScriptLoader {
 	/**
 	 * Outputs the script headers
 	 */
-	function outputJsHeaders() {
-		// Output JS MIME type:
-		header( 'Content-Type: text/javascript' );
+	function outputHeaders() {
+		// Output MIME type:
+		if( $this->outputFormat == 'css' ){
+			header( 'Content-Type: text/css' );
+		} else if ( $this->outputFormat == 'js' ) {
+			header( 'Content-Type: text/javascript' );
+		}
 		header( 'Pragma: public' );
 		if( $this->debug ){
 			header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
@@ -435,16 +467,16 @@ class jsScriptLoader {
 	 */
 	function outputJsWithHeaders() {
 		global $wgUseGzip;
-		$this->outputJsHeaders();
+		$this->outputHeaders();
 		if ( $wgUseGzip ) {
 			if ( $this->clientAcceptsGzip() ) {
 				header( 'Content-Encoding: gzip' );
-				echo gzencode( $this->jsout );
+				echo gzencode( $this->output );
 			} else {
-				echo $this->jsout;
+				echo $this->output;
 			}
 		} else {
-			echo $this->jsout;
+			echo $this->output;
 		}
 	}
 
@@ -502,8 +534,14 @@ class jsScriptLoader {
 			//set English as default
 			$this->langCode = 'en';
 		}
-
 		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );
+
+		// Check if the outupt format is "css" or "js"
+		if( isset( $_GET['ctype'] ) && $_GET['ctype'] == 'css' ){
+			$this->outputFormat = 'css';
+		} else {
+			$this->outputFormat = 'js';
+		}
 
 		$reqClassList = false;
 		if ( isset( $_GET['class'] ) && $_GET['class'] != '' ) {
@@ -572,7 +610,7 @@ class jsScriptLoader {
 	 */
 	function preProcRequestVars() {
 		$requestKey = '';
-		// Check for debug (won't use the cache)
+		// Check for debug ( won't use the cache)
 		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' ) ) {
 			// We are going to have to run postProcRequest
 			return false;
@@ -595,7 +633,6 @@ class jsScriptLoader {
 			// Set English as default
 			$langCode = 'en';
 		}
-
 		$langCode = self::checkForCommonsLanguageFormHack( $langCode );
 
 		$reqClassList = false;
@@ -622,11 +659,21 @@ class jsScriptLoader {
 				}
 			}
 		}
+		// Check if the outupt format is "css" or "js"
+		if( isset( $_GET['ctype'] ) && $_GET['ctype'] == 'css' ){
+			$outputFormat = 'css';
+		} else {
+			$outputFormat = 'js';
+		}
+
 		// Add the language code to the requestKey:
 		$requestKey .= '_' . $langCode;
 
+		// Add the format to the requestKey:
+		$requestKey .= '_' . $outputFormat;
+
 		// Add the unique rid
-		$requestKey .= $urid;
+		$requestKey .= '_' . $urid;
 
 		return $requestKey;
 	}
