@@ -33,8 +33,9 @@ class jsClassLoader {
 			$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP;
 
 		// Only run once
-		if( self::$classesLoaded )
+		if( self::$classesLoaded ) {
 			return false;
+		}
 		self::$classesLoaded = true;
 
 		// Load classes from mediaWiki $wgJSAutoloadLocalClasses var:

@@ -3076,19 +3076,21 @@ mw.EmbedTypes = {
 			// Test what codecs the native player supports: 
 			try {
 				var dummyvid = document.createElement( "video" );
-				// Test for h264:				
-				if ( dummyvid.canPlayType && dummyvid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ) == "probably" ){
-					this.players.addPlayer( h264NativePlayer );
-				}
-				//	 Test for ogg 
-				if ( dummyvid.canPlayType && dummyvid.canPlayType( "video/ogg;codecs=\"theora,vorbis\"" ) == "probably" )
-				{
-					this.players.addPlayer( oggNativePlayer );
-					
-				// older versions of safari do not support canPlayType,
-			   	// but xiph qt registers mimetype via quicktime plugin
-				} else if ( this.supportedMimeType( 'video/ogg' ) ) {									
-					this.players.addPlayer( oggNativePlayer );
+				if( dummyvid.canPlayType ) {
+					var canPlayH264 = dummyvid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"' );
+					var canPlayOgg = dummyvid.canPlayType && dummyvid.canPlayType( "video/ogg;codecs=\"theora,vorbis\"" );
+					// Test for h264:				
+					if ( canPlayH264 == "probably" || canPlayH264 == "maybe" ) {
+						this.players.addPlayer( h264NativePlayer );
+					}
+					//	 Test for ogg 
+					if (  canPlayOgg == "probably" || canPlayOgg == "maybe" ) {
+						this.players.addPlayer( oggNativePlayer );						
+					// older versions of safari do not support canPlayType,
+				   	// but xiph qt registers mimetype via quicktime plugin
+					} else if ( this.supportedMimeType( 'video/ogg' ) ) {									
+						this.players.addPlayer( oggNativePlayer );
+					}
 				}
 			} catch ( e ) {
 				mw.log( 'could not run canPlayType ' + e );
