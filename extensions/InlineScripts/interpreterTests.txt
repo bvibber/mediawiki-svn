@@ -209,6 +209,25 @@ out( '{{numberofsomething}}: ' + numofsmth );
 </p>
 !! end
 
+!! article
+Template:123
+!! text
+<wikiscript>
+out( 123 );
+</wikiscript>
+!! endarticle
+
+!! test
+Nested wikiscripts via parse()
+!! input
+<wikiscript>
+out( parse( '{{123}}' ) );
+</wikiscript>
+!! result
+<p>123
+</p>
+!! end
+
 !! test
 String functions 1
 !! input

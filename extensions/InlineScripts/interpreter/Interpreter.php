@@ -16,6 +16,10 @@ class InlineScriptInterpreter {
 	public function __construct() {
 		global $wgInlineScriptsParserClass;
 		$this->mCodeParser = new $wgInlineScriptsParserClass( $this );
+		$this->mMaxRecursion =
+			$this->mEvaluations =
+			$this->mTokens =
+			0;
 	}
 
 	public function checkRecursionLimit( $rec ) {
@@ -28,7 +32,8 @@ class InlineScriptInterpreter {
 	public function increaseEvaluationsCount() {
 		global $wgInlineScriptsLimits;
 		$this->mEvaluations++;
-		return $this->mEvaluations <= $wgInlineScriptsLimits['evaluations'];
+		if( $this->mEvaluations > $wgInlineScriptsLimits['evaluations'] )
+			throw new ISUserVisibleException( 'toomanyevals', 0 );
 	}
 
 	public function getMaxTokensLeft() {
@@ -93,7 +98,7 @@ class InlineScriptInterpreter {
  * in a sepereate context with its own output, variables and parser frame.
  */
 class InlineScriptEvaluationContext {
-	var $mVars, $mOut, $mParser, $mFrame, $mInterpteter;
+	var $mVars, $mOut, $mParser, $mFrame, $mInterpreter;
 
 	static $mFunctions = array(
 		'out' => 'funcOut',
@@ -131,7 +136,7 @@ class InlineScriptEvaluationContext {
 	public function __construct( $interpreter, $parser, $frame ) {
 		$this->mVars = array();
 		$this->mOut = '';
-		$this->mInterpteter = $interpreter;
+		$this->mInterpreter = $interpreter;
 		$this->mParser = $parser;
 		$this->mFrame = $frame;
 	}
@@ -139,6 +144,10 @@ class InlineScriptEvaluationContext {
 	public function evaluateNode( $node, $rec ) {
 		if( !$node instanceof ISParserTreeNode ) {
 			throw new ISException( 'evaluateNode() accepts only nonterminals' );
+		}
+
+		if( !$this->mInterpreter->checkRecursionLimit( $rec ) ) {
+			throw new ISUserVisibleException( 'recoverflow', 0 );
 		}
 
 		$c = $node->getChildren();
@@ -172,7 +181,7 @@ class InlineScriptEvaluationContext {
 						case 'foreach':
 							$array = $this->evaluateNode( $c[4], $rec + 1 );
 							if( $array->type != ISData::DList )
-								throw new ISException( 'invalidforeach', $c[0]->type );
+								throw new ISUserVisibleException( 'invalidforeach', $c[0]->type );
 							$last = new ISData();
 							foreach( $array->data as $item ) {
 								$this->setVar( $c[2], $item, $rec );
@@ -206,6 +215,7 @@ class InlineScriptEvaluationContext {
 					return $this->evaluateNode( $c[0], $rec + 1 );
 				}
 			case 'exprset':
+				$this->mInterpreter->increaseEvaluationsCount();
 				if( $c[1]->value == '=' ) {
 					$new = $this->evaluateNode( $c[2], $rec + 1 );
 					$this->setVar( $c[0], $new, $rec );
@@ -226,6 +236,7 @@ class InlineScriptEvaluationContext {
 					return $this->evaluateNode( $c[4], $rec + 1 );
 				}
 			case 'exprlogical':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
 				switch( $c[1]->value ) {
 					case '&':
@@ -246,10 +257,12 @@ class InlineScriptEvaluationContext {
 				}
 			case 'exprequals':
 			case 'exprcompare':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
 				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
 				return ISData::compareOp( $arg1, $arg2, $c[1]->value );
 			case 'exprsum':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
 				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
 				switch( $c[1]->value ) {
@@ -259,14 +272,17 @@ class InlineScriptEvaluationContext {
 						return ISData::sub( $arg1, $arg2 );
 				}
 			case 'exprmul':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
 				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
 				return ISData::mulRel( $arg1, $arg2, $c[1]->value, $c[1]->line );
 			case 'exprpow':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
 				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
 				return ISData::pow( $arg1, $arg2 );
 			case 'exprkeyword':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg1 = $this->evaluateNode( $c[0], $rec + 1 );
 				$arg2 = $this->evaluateNode( $c[2], $rec + 1 );
 				switch( $c[1]->value ) {
@@ -278,15 +294,18 @@ class InlineScriptEvaluationContext {
 						throw new ISException( "Invalid keyword: {$c[1]->value}" );
 				}
 			case 'exprinvert':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg = $this->evaluateNode( $c[1], $rec + 1 );
 				return ISData::boolInvert( $arg );
 			case 'exprunary':
+				$this->mInterpreter->increaseEvaluationsCount();
 				$arg = $this->evaluateNode( $c[1], $rec + 1 );
 				if( $c[0]->value == '-' )
 					return ISData::unaryMinus( $arg );
 				else
 					return $arg;
 			case 'exprfunction':
+				$this->mInterpreter->increaseEvaluationsCount();
 				if( $c[0] instanceof ISToken ) {
 					$funcname = $c[0]->value;
 					if( !isset( self::$mFunctions[$funcname] ) ) 

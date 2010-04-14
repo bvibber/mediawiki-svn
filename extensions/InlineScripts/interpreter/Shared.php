@@ -164,7 +164,7 @@ class ISParserOutput {
 
 	public function appendTokenCount( &$interpr ) {
 		global $wgInlineScriptsLimits;
-		$interpr->mTokens += $this->mTokensCount;
+		$interpr->mTokens += $this->mTokens;
 		if( $interpr->mTokens > $wgInlineScriptsLimits['tokens'] )
 			throw new ISUserVisibleException( 'toomanytokens', 0 );
 	}
