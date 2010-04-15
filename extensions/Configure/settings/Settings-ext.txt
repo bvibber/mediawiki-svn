@@ -48,7 +48,6 @@ AjaxQueryPages
 url = http://www.mediawiki.org/wiki/Extension:AjaxQueryPages
 
 AjaxShowEditors
-file = Load.php
 settings[] = wgAjaxShowEditorsTimeout: int
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:AjaxShowEditors
