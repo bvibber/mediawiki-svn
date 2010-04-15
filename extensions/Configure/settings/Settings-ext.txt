@@ -311,7 +311,6 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:CommunityVoice
 
 ConfirmAccount
-file = SpecialConfirmAccount.php
 settings[] = wgMakeUserPageFromBio: bool, wgAutoUserBioText: text
 settings[] = wgAutoWelcomeNewUsers: bool, wgUseRealNamesOnly: bool
 settings[] = wgRejectedAccountMaxAge: int, wgConfirmAccountRejectAge: int
