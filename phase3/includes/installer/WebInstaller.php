@@ -205,9 +205,14 @@ class WebInstaller extends Installer {
 	 */
 	function startSession() {
 		$sessPath = $this->getSessionSavePath();
-		if( !is_dir( $sessPath ) || !is_writeable( $sessPath ) ) {
-			$this->showError( 'config-session-path-bad', $sessPath );
-			return false;
+		if( $sessPath != '' ) {
+			if( !is_dir( $sessPath ) || !is_writeable( $sessPath ) ) {
+				$this->showError( 'config-session-path-bad', $sessPath );
+				return false;
+			}
+		} else {
+			// If the path is unset it'll default to some system bit, which *probably* is ok...
+			// not sure how to actually get what will be used.
 		}
 		if( wfIniGetBool( 'session.auto_start' ) || session_id() ) {
 			// Done already
