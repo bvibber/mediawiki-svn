@@ -45,7 +45,6 @@ url = http://www.mediawiki.org/wiki/Extension:AjaxLogin
 array[] = wgEnableAjaxLogin: assoc
 
 AjaxQueryPages
-file = Load.php
 url = http://www.mediawiki.org/wiki/Extension:AjaxQueryPages
 
 AjaxShowEditors
