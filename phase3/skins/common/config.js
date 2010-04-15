@@ -16,6 +16,8 @@
 		
 		// Show/hide code for DB-specific options
 		// FIXME: Do we want slow, fast, or even non-animated (instantaneous) showing/hiding here?
+		$( '.dbRadio' ).each( function() { $( '#' + $(this).attr( 'rel' ) ).hide(); } );
+		$( '#' + $( '.dbRadio:checked' ).attr( 'rel' ) ).show();
 		$( '.dbRadio' ).click( function() {
 			var $checked = $( '.dbRadio:checked' );
 			var $wrapper = $( '#' + $checked.attr( 'rel' ) );
@@ -59,10 +61,9 @@
 		$label = $( 'label[for=config__NamespaceType_site-name]' );
 		labelText = $label.text();
 		$label.text( labelText.replace( '$1', '' ) );
-		$( '#config_wgSitename' ).bind( 'keyup change', function() { sync( $(this) ); } );
-		sync( $( '#config_wgSitename' ) );
-		function sync( $e ) {
-			var value = $e.val()
+		$( '#config_wgSitename' ).bind( 'keyup change', syncText ).each( syncText );
+		function syncText() {
+			var value = $(this).val()
 				.replace( /[\[\]\{\}|#<>%+? ]/g, '_' )
 				.replace( /&/, '&amp;' )
 				.replace( /__+/g, '_' )
