@@ -19,9 +19,9 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['Eval'] = $dir . 'SpecialEval.i18n.php';
-$wgExtensionAliasesFiles['Eval'] = $dir . 'SpecialEval.alias.php';
+$wgExtensionMessagesFiles['Eval'] = $dir . 'Eval.i18n.php';
+$wgExtensionAliasesFiles['Eval'] = $dir . 'Eval.alias.php';
 
 $wgSpecialPages['Eval'] = 'SpecialEval';
-$wgAutoloadClasses['SpecialEval'] = $dir . 'SpecialEval.class.php';
+$wgAutoloadClasses['SpecialEval'] = $dir . 'Eval.class.php';
 
