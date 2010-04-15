@@ -4365,6 +4365,9 @@ chmod a+w config
 </pre>",
 'config-file-extension'           => 'Installing MediaWiki with <tt>$1</tt> file extensions',
 'config-shell-locale'             => 'Detected shell locale, $1',
+'config-uploads-safe'             => 'Default uploads directory is safe from arbitrary scripts execution.',
+'config-uploads-not-safe'         => '<strong>Warning:</strong> Your default uploads directory <tt>$1</tt> is vulnerable to arbitrary scripts execution.
+Uploads will be disabled.',
 'config-db-type'                  => 'Database type:',
 'config-db-host'                  => 'Database host:',
 'config-db-host-help'             => 'If your database server is on different server, enter the host name or IP address here.
@@ -4552,6 +4555,7 @@ Many mail servers require at least the domain name part to be valid.',
 For more information, read the [http://www.mediawiki.org/wiki/Manual:Security security section] in the manual.
 
 To enable file uploads, change the mode on the <tt>images</tt> subdirectory under MediaWiki's root directory so that the web server can write to it. Then enable this option.",
+'config-upload-disabled'          => 'Because your web server is configured to execute scripts from the default uploads directory, uploads will be disabled.',
 'config-upload-deleted'           => 'Directory for deleted files :',
 'config-upload-deleted-help'      => 'Choose a directory in which to archive deleted files.
 Ideally, this should not be accessible from the web.',

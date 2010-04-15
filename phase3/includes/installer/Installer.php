@@ -70,6 +70,7 @@ abstract class Installer {
 		'_CCDone' => false,
 		'_Extensions' => array(),
 		'_MemCachedServers' => '',
+		'_UploadsAreSafe' => false,
 	);
 
 	/**
@@ -123,6 +124,7 @@ abstract class Installer {
 		'envCheckWriteableDir',
 		'envCheckExtension',
 		'envCheckShellLocale',
+		'envCheckUploadsDirectory',
 	);
 
 	var $installSteps = array(
@@ -698,6 +700,50 @@ abstract class Installer {
 
 		# Give up
 		return true;
+	}
+	
+	function envCheckUploadsDirectory() {
+		global $IP, $wgServer;
+		$dir = $IP . '/images/';
+		$url = $wgServer . $this->getVar( 'wgScriptPath' ) . '/images/';
+		$safe = !$this->dirIsExecutable( $dir, $url );
+		if ( $safe ) {
+			$this->showMessage( 'config-uploads-safe' );
+		} else {
+			$this->showMessage( 'config-uploads-not-safe', $dir );
+		}
+		$this->setVar( '_UploadsAreSafe', $safe );
+	}
+
+	/**
+	 * Checks if scripts located in the given directory can be executed via the given URL
+	 */
+	function dirIsExecutable( $dir, $url ) {
+		$scriptTypes = array(
+			'php' => array(
+				"<?php echo 'ex' . 'ec';",
+				"#!/var/env php5\n<?php echo 'ex' . 'ec';",
+			),
+		);
+		// it would be good to check other popular languages here, but it'll be slow
+
+		wfSuppressWarnings();
+		foreach ( $scriptTypes as $ext => $contents ) {
+			foreach ( $contents as $source ) {
+				$file = 'exectest.' . $ext;
+				if ( !file_put_contents( $dir . $file, $source ) ) {
+					break;
+				}
+				$text = Http::get( $url . $file );
+				unlink( $dir . $file );
+				if ( $text == 'exec' ) {
+					wfRestoreWarnings();
+					return $ext;
+				}
+			}
+		}
+		wfRestoreWarnings();
+		return false;
 	}
 
 	/**
