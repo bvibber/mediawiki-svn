@@ -5841,12 +5841,6 @@ $.suggestions = {
 			setTimeout( function() {
 				// Render special
 				$special = context.data.$container.find( '.suggestions-special' );
-				// Only hook this up the first time
-				if ( $special.children().length == 0 ) {
-					$special.mousemove( function() {
-						$.suggestions.highlight( context, $( [] ), false );
-					} );
-				}
 				context.config.special.render.call( $special, context.data.$textbox.val() );
 			}, 1 );
 		}
@@ -5939,7 +5933,6 @@ $.suggestions = {
 						} else {
 							result = context.data.$container.find( '.suggestions-results div:last' );
 						}
-						
 					}
 				}
 			} else if ( result == 'next' ) {
@@ -5949,7 +5942,7 @@ $.suggestions = {
 				else {
 					result = selected.next();
 					if ( selected.is( '.suggestions-special' ) ) {
-						result = [];
+						result = $( [] );
 					} else if ( result.size() == 0  && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
 						// We were at the last item, jump to the specials!
 						result = context.data.$container.find( '.suggestions-special' );
@@ -5968,6 +5961,7 @@ $.suggestions = {
 				// let the world know what happened
 				context.data.$textbox.change();
 			}
+			context.data.$textbox.trigger( 'change' );
 		}
 		$.suggestions.special( context );
 	},
@@ -5986,7 +5980,6 @@ $.suggestions = {
 				} else {
 					$.suggestions.update( context, false );
 				}
-				context.data.$textbox.trigger( 'change' );
 				preventDefault = true;
 				break;
 			// Arrow up
@@ -5994,7 +5987,6 @@ $.suggestions = {
 				if ( wasVisible ) {
 					$.suggestions.highlight( context, 'prev', false );
 				}
-				context.data.$textbox.trigger( 'change' );
 				preventDefault = wasVisible;
 				break;
 			// Escape
@@ -6016,7 +6008,7 @@ $.suggestions = {
 					}
 				} else {
 					if ( typeof context.config.result.select == 'function' ) {
-						context.data.$textbox.val( selected.text() );
+						$.suggestions.highlight( context, selected, true );
 						context.config.result.select.call( selected, context.data.$textbox );
 					}
 				}
@@ -6092,9 +6084,6 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
-			context.data.$textbox.mousemove( function() {
-				$.suggestions.highlight( context, $( [] ), false );
-			} );
 			context.data.$container = $( '<div />' )
 				.css( {
 					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
@@ -6144,6 +6133,11 @@ $.fn.suggestions = function() {
 								context.config.special.select.call( $special, context.data.$textbox );
 							}
 							context.data.$textbox.focus();
+						} )
+						.mouseover( function( e ) {
+							$.suggestions.highlight(
+								context, $( e.target ).closest( '.suggestions-special' ), false
+							);
 						} )
 				)
 				.appendTo( $( 'body' ) );
