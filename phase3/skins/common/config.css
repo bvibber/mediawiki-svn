@@ -85,6 +85,7 @@
 .config-show-help, .config-hide-help {
 	margin-left: 14em;
 }
+.config-hide-help { display: none; }
 .config-show-help a, .config-hide-help a {
 	background-image: url(images/help-22.png);
 	background-position: 0 0;
@@ -93,11 +94,10 @@
 	height: 26px;
 	padding-left: 26px;
 }
-.config-help-message { display: none; }
-.config-hide-help { display: none; }
 
 .config-help-message {
 	font-size: 85%;
+	display: none;
 }
 
 .config-message {

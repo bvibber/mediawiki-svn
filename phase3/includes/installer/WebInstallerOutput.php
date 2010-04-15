@@ -112,6 +112,7 @@ class WebInstallerOutput {
 <?php echo "var dbTypes = " . Xml::encodeJsVar( $dbTypes ) . ";\n"; ?>
 	// -->
 	</script>
+	<script type="text/javascript" src="../skins/common/jquery.min.js"></script>
 	<script type="text/javascript" src="../skins/common/config.js"></script>
 </head>
 
@@ -176,6 +177,7 @@ class WebInstallerOutput {
 	<title><?php $this->outputTitle(); ?></title>
 	<link rel="stylesheet" type="text/css" href="../skins/monobook/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../skins/common/config.css"/>
+	<script type="text/javascript" src="../skins/common/jquery.min.js"></script>
 	<script type="text/javascript" src="../skins/common/config.js"></script>
 </head>
 

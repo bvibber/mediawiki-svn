@@ -505,15 +505,15 @@ class WebInstaller extends Installer {
 
 		return 
 			"<div class=\"config-help-wrapper\">\n" . 
-			"<div class=\"config-show-help\" id=\"config-show-help-$id\">\n" .
-			Xml::openElement( 'a', array( 'href' => "javascript:showHelp($id,true)" ) ) .
+			"<div class=\"config-help-message\">\n" .
+			 $html .
+			"</div>\n" .
+			"<div class=\"config-show-help\">\n" .
+			"<a href=\"#\">" .
 			wfMsgHtml( 'config-show-help' ) .
 			"</a></div>\n" .
-			"<div class=\"config-help-message\" id=\"config-help-message-$id\">\n" .
-			 $html. 
-			"</div>\n" .
-			"<div class=\"config-hide-help\" id=\"config-hide-help-$id\">\n" .
-			Xml::openElement( 'a', array( 'href' => "javascript:showHelp($id,false)" ) ) .
+			"<div class=\"config-hide-help\">\n" .
+			"<a href=\"#\">" .
 			wfMsgHtml( 'config-hide-help' ) .
 			"</a></div>\n</div>\n";
 	}
@@ -994,32 +994,29 @@ class WebInstaller_DBConnect extends WebInstallerPage {
 		$defaultType = $this->getVar( 'wgDBtype' );
 		foreach ( $this->parent->getVar( '_CompiledDBs' ) as $type ) {
 			$installer = $this->parent->getDBInstaller( $type );
-			$encType = Xml::encodeJsVar( $type );
 			$types .= 
 				'<li>' .
 				Xml::radioLabel(
 					$installer->getReadableName(),
 					'DBType',
 					$type,
-					'DBType_' . $type,
+					"DBType_$type",
 					$type == $defaultType,
-					array( 'onclick' => "showDBArea($encType);" )
+					array( 'class' => 'dbRadio', 'rel' => "DB_wrapper_$type" )
 				) .
 				"</li>\n";
 
 			$settings .= 
-				Xml::openElement( 'div', array( 'id' => 'DB_wrapper_' . $type ) ) .
+				Xml::openElement( 'div', array( 'id' => 'DB_wrapper_' . $type, 'class' => 'dbWrapper' ) ) .
 				Xml::element( 'h3', array(), wfMsg( 'config-header-' . $type ) ) .
 				$installer->getConnectForm() .
 				"</div>\n";
 		}
 		$types .= "</ul><br clear=\"left\"/>\n";
-		$encType = Xml::encodeJsVar( $defaultType );
 
 		$this->addHTML( 
 			$this->parent->label( 'config-db-type', false, $types ) .
-			$settings .
-			"<script type=\"text/javascript\">resetDBArea();</script>\n"
+			$settings
 		);
 
 		$this->endForm();
@@ -1132,8 +1129,6 @@ class WebInstaller_Name extends WebInstallerPage {
 		if ( $this->getVar( 'wgSitename' ) == $GLOBALS['wgSitename'] ) {
 			$this->setVar( 'wgSitename', '' );
 		}
-		$js = 'enableControlArray("config__NamespaceType_other", ["config_wgMetaNamespace"])';
-		$attribs = array( 'onclick' => $js );
 
 		// Set wgMetaNamespace to something valid before we show the form.
 		// $wgMetaNamespace defaults to $wgSiteName which is 'MediaWiki'
@@ -1144,10 +1139,6 @@ class WebInstaller_Name extends WebInstallerPage {
 			$this->parent->getTextBox( array(
 				'var' => 'wgSitename',
 				'label' => 'config-site-name',
-				'attribs' => array(
-					'onkeyup' => 'setProjectNamespace();',
-					'onchange' => 'setProjectNamespace();'
-				)
 			) ) .
 			$this->parent->getHelpBox( 'config-site-name-help' ) .
 			$this->parent->getRadioSet( array(
@@ -1155,13 +1146,13 @@ class WebInstaller_Name extends WebInstallerPage {
 				'label' => 'config-project-namespace',
 				'itemLabelPrefix' => 'config-ns-',
 				'values' => array( 'site-name', 'generic', 'other' ),
-				'commonAttribs' => $attribs,
+				'commonAttribs' => array( 'class' => 'enableForOther', 'rel' => 'config_wgMetaNamespace' ),
 			) ) .
 			$this->parent->getTextBox( array(
 				'var' => 'wgMetaNamespace',
 				'label' => '',
+				'attribs' => array( 'disabled' => '' ),
 			) ) .
-			"<script type=\"text/javascript\">\nsetProjectNamespace();\n$js\n</script>\n" .
 			$this->parent->getHelpBox( 'config-project-namespace-help' ) .
 			$this->parent->getFieldsetStart( 'config-admin-box' ) .
 			$this->parent->getTextBox( array(
@@ -1297,10 +1288,6 @@ class WebInstaller_Options extends WebInstallerPage {
 			}
 		}
 
-		$licenseJs = 'showControlArray("config__LicenseCode_cc-choose", ["config-cc-wrapper"]);';
-		$emailJs = 'enableControlArray("config_wgEnableEmail", ["config_wgPasswordSender", "config_wgEnableUserEmail", "config_wgEnotifUserTalk", "config_wgEnotifWatchlist", "config_wgEmailAuthentication"]);';
-		$uploadJs = 'enableControlArray("config_wgEnableUploads", ["config_wgDeletedDirectory"]);';
-
 		$this->startForm();
 		$this->addHTML(
 			# User Rights
@@ -1318,7 +1305,7 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-license',
 				'itemLabelPrefix' => 'config-license-',
 				'values' => array_keys( $this->parent->licenses ),
-				'commonAttribs' => array( 'onclick' => $licenseJs )
+				'commonAttribs' => array( 'class' => 'licenseRadio' ),
 			) ) .
 			$this->getCCChooser() .
 			$this->parent->getHelpBox( 'config-license-help' ) .
@@ -1328,9 +1315,10 @@ class WebInstaller_Options extends WebInstallerPage {
 			$this->parent->getCheckBox( array(
 				'var' => 'wgEnableEmail',
 				'label' => 'config-enable-email',
-				'attribs' => array( 'onclick' => $emailJs ),
+				'attribs' => array( 'class' => 'showHideRadio', 'rel' => 'emailwrapper' ),
 			) ) .
 			$this->parent->getHelpBox( 'config-enable-email-help' ) .
+			"<div id=\"emailwrapper\">" .
 			$this->parent->getTextBox( array(
 				'var' => 'wgPasswordSender',
 				'label' => 'config-email-sender'
@@ -1356,6 +1344,7 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-email-auth',
 			) ) .
 			$this->parent->getHelpBox( 'config-email-auth-help' ) .
+			"</div>" .
 			$this->parent->getFieldsetEnd()
 		);
 
@@ -1379,9 +1368,10 @@ class WebInstaller_Options extends WebInstallerPage {
 			$this->parent->getCheckBox( array( 
 				'var' => 'wgEnableUploads',
 				'label' => 'config-upload-enable',
-				'attribs' => array( 'onclick' => $uploadJs ), 
+				'attribs' => array( 'class' => 'showHideRadio', 'rel' => 'uploadwrapper' ),
 			) ) .
 			$this->parent->getHelpBox( 'config-upload-help' ) .
+			'<div id="uploadwrapper" style="display: none;">' .
 			$this->parent->getTextBox( array( 
 				'var' => 'wgDeletedDirectory',
 				'label' => 'config-upload-deleted',
@@ -1392,6 +1382,7 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-logo'
 			) ) .
 			$this->parent->getHelpBox( 'config-logo-help' ) .
+			'</div>' .
 			$this->parent->getFieldsetEnd()
 		);
 
@@ -1420,10 +1411,7 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-memcached-servers',
 			) ) .
 			$this->parent->getHelpBox( 'config-memcached-help' ) .
-			$this->parent->getFieldsetEnd() .
-
-			"<script type=\"text/javascript\">$licenseJs $emailJs $uploadJs</script>\n"
-
+			$this->parent->getFieldsetEnd()
 		);
 		$this->endForm();
 	}
@@ -1466,7 +1454,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		}
 
 		return
-			"<div class=\"config-cc-wrapper\" id=\"config-cc-wrapper\">\n" .
+			"<div class=\"config-cc-wrapper\" id=\"config-cc-wrapper\" style=\"display: none;\">\n" .
 			Xml::element( 'iframe', $iframeAttribs, '', false /* not short */ ) .
 			"</div>\n";
 	}
