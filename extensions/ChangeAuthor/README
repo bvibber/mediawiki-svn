@@ -24,7 +24,7 @@ You can download a tarball at http://www.mediawiki.org/wiki/Special:ExtensionDis
 3. INSTALLATION
 Download the tarball mentioned in section 2, and extract it in /path/to/your/wiki/extensions . Open LocalSettings.php and add the following line at the end:
 
-require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php");
+require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.php");
 
 You should now see the ChangeAuthor extension listed on the Special:Version special page.
 

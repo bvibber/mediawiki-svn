@@ -212,7 +212,6 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:CentralNotice
 
 ChangeAuthor
-file = ChangeAuthor.setup.php
 url = http://www.mediawiki.org/wiki/Extension:ChangeAuthor
 
 CharInsert
