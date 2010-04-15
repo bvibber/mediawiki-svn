@@ -12,7 +12,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Apc',
-	'version'        => '2008-09-04',
+	'version'        => '2010-04-15',
 	'author'         => 'Niklas Laxström',
 	'descriptionmsg' => 'viewapc-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:APC',
@@ -26,9 +26,9 @@ $wgAutoloadClasses['APCUtils'] = $dir . 'APCUtils.php';
 $wgAutoloadClasses['APCHostMode'] = $dir . 'APCHostMode.php';
 $wgAutoloadClasses['APCCacheMode'] = $dir . 'APCCacheMode.php';
 
-$wgExtensionMessagesFiles['ViewAPC'] = $dir . 'ViewAPC.i18n.php';
-$wgExtensionAliasesFiles['ViewAPC'] = $dir . 'ViewAPC.alias.php';
-$wgSpecialPages['ViewAPC'] = 'SpecialAPC';
-$wgSpecialPageGroups['ViewAPC'] = 'wiki';
+$wgExtensionMessagesFiles['APC'] = $dir . 'APC.i18n.php';
+$wgExtensionAliasesFiles['APC'] = $dir . 'APC.alias.php';
+$wgSpecialPages['APC'] = 'SpecialAPC';
+$wgSpecialPageGroups['APC'] = 'wiki';
 
 $wgAvailableRights[] = 'apc';
