@@ -85,6 +85,9 @@ Languages must be ISO 639-3 language codes.</p>',
 	'ow_exporttsv_export_failed' => 'Export failed',
 
 	'addcollection' => 'Wikidata: Add collection',
+	'ow_searchnoresult' => "<p>You may:<br />
+* '''Create the expression \"[[Expression:\$1]]\"''' (and add a definition)<br />
+* '''Create the page \"[[:\$1]]\"''' (a standard wiki page)</p>",
 	'ow_save' => 'Save',
 	'ow_history' => 'History',
 	'ow_datasets' => 'Data-set selection',

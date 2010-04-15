@@ -131,4 +131,20 @@ global
  * 
  */
 $wgPropertyToColumnFilters = array();
+
+// Hook: replace the proposition to "create new page" by a custom, allowing to create new expression as well
+$wgHooks[ 'SpecialSearchNogomatch' ][] = 'owNoGoMatchHook';
+
+function owNoGoMatchHook( &$title ) {
+	global $wgOut,$wgDisableTextSearch;
+	$wgOut->addWikiMsg( 'search-nonefound' );
+	$wgOut->addWikiMsg( 'ow_searchnoresult', wfEscapeWikiText( $title ) );
+//	$wgOut->addWikiMsg( 'ow_searchnoresult', $title );
+
+	$wgDisableTextSearch = true ;
+	return true;
+}
+
+
+
 ?>
