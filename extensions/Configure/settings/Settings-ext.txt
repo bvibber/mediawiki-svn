@@ -244,8 +244,7 @@ SpecialCite
 dir = Cite
 url = http://www.mediawiki.org/wiki/Extension:Cite/Special:Cite.php
 
-CLDR
-file = LanguageNames.php
+cldr
 url = http://unicode.org/cldr/repository_access.html
 
 CleanChanges
