@@ -1600,6 +1600,7 @@ $messages['te'] = array(
 	'ct-total-header' => 'మొత్తం నొక్కులు',
 	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',
 	'ct-end-date' => 'ముగింపు తేదీ (YYYYMMDD)',
+	'ct-increment-by' => 'ప్రతీ దత్తాంశ బిందువు ప్రతిబింబించే రోజుల సంఖ్య',
 	'ct-change-graph' => 'గ్రాఫుని మార్చు',
 	'ct-beginner' => 'ప్రారంభీకులు',
 	'ct-expert' => 'నిపుణులు',

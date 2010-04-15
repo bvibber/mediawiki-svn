@@ -398,17 +398,27 @@ Pokud si chcete vyzkoušet nové funkce, prosím <span class="plainlinks">[$1 kl
  */
 $messages['cy'] = array(
 	'prefswitch-survey-submit-off' => 'Diffodd y nodweddion newydd',
+	'prefswitch-survey-cancel-off' => "Os ydych am barhau i ddefnyddio'r nodweddion newydd, gallwch ddychwelyd at y dudalen $1.",
 	'prefswitch-survey-submit-feedback' => 'Anfon adborth',
 	'prefswitch-survey-cancel-feedback' => 'Os nad ydych am anfon adborth atom, gallwch ddychwelyd i $1.',
 	'prefswitch-survey-answer-whyoff-hard' => "Yr oedd yn rhy anodd i'w ddefnyddio.",
+	'prefswitch-survey-answer-whyoff-didntwork' => "Nid oedd yn gweithio'n iawn.",
 	'prefswitch-survey-answer-whyoff-notpredictable' => "Roedd yn gweithredu'n fympwyol.",
 	'prefswitch-survey-answer-whyoff-didntlike-look' => "Doeddwn i ddim yn hoffi'r golwg newydd.",
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => "Doeddwn i ddim yn hoffi'r tabiau a'r gosodiad newydd.",
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "Doeddwn i ddim yn hoffi'r bar offer newydd.",
+	'prefswitch-survey-question-browser' => "Pa borwr gwe ydych chi'n ei ddefnyddio?",
+	'prefswitch-survey-answer-browser-other' => 'Porwr arall:',
+	'prefswitch-title-on' => "Beth sy'n newydd?",
 	'prefswitch-title-switched-on' => 'Mwynhewch!',
+	'prefswitch-title-off' => 'Diffodd y nodweddion newydd',
 	'prefswitch-title-switched-off' => 'Diolch',
 	'prefswitch-title-feedback' => 'Adborth',
 	'prefswitch-success-feedback' => 'Anfonwyd eich adborth.',
+	'prefswitch-survey-intro-feedback' => 'Byddem wrth ein bodd cael clywed gennych. 
+Llenwch yr arolwg dewisol isod.',
+	'prefswitch-survey-intro-off' => "Diolch am roi cynnig ar ein nodweddion newydd. 
+I'n helpu ni i'w gwella, cwblhewch yr arolwg dewisol isod.",
 );
 
 /** German (Deutsch)
