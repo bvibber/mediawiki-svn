@@ -422,7 +422,6 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:Duplicator
 
 EditCount
-file = SpecialEditcount.php
 url = http://www.mediawiki.org/wiki/Extension:Editcount
 
 EditOwn
