@@ -507,7 +507,6 @@ class WebInstaller extends Installer {
 			"<div class=\"config-help-wrapper\">\n" . 
 			"<div class=\"config-show-help\" id=\"config-show-help-$id\">\n" .
 			Xml::openElement( 'a', array( 'href' => "javascript:showHelp($id,true)" ) ) .
-			"<img src=\"../skins/common/images/help-22.png\" alt=\"$alt\" />&nbsp;&nbsp;" .
 			wfMsgHtml( 'config-show-help' ) .
 			"</a></div>\n" .
 			"<div class=\"config-help-message\" id=\"config-help-message-$id\">\n" .

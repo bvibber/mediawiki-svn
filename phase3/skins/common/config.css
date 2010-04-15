@@ -83,7 +83,12 @@
 	padding-top: 1em;
 }
 .config-show-help, .config-hide-help {
+	background-image: url(images/help-22.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	line-height: 26px;
 	margin-left: 14em;
+	padding-left: 2em;
 }
 .config-help-message { display: none; }
 .config-hide-help { display: none; }
