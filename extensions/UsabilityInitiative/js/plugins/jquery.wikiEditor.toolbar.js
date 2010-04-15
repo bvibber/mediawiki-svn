@@ -690,8 +690,9 @@ fn: {
 			'end' : function() {
 				// HACK: Opera doesn't seem to want to redraw after these bits
 				// are added to the DOM, so we can just FORCE it!
+				var oldValue = $( 'body' ).css( 'position' );
 				$( 'body' ).css( 'position', 'static' );
-				$( 'body' ).css( 'position', 'relative' );
+				$( 'body' ).css( 'position', oldValue );
 			},
 			'loop' : function( i, s ) {
 				s.$sections.append( $.wikiEditor.modules.toolbar.fn.buildSection( s.context, s.id, s.config ) );
