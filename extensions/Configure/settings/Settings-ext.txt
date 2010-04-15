@@ -377,7 +377,6 @@ CreateBox
 url = http://www.mediawiki.org/wiki/Extension:CreateBox
 
 CrossNamespaceLinks
-file = SpecialCrossNamespaceLinks.php
 url = http://www.mediawiki.org/wiki/Extension:CrossNamespaceLinks
 
 Crosswiki
