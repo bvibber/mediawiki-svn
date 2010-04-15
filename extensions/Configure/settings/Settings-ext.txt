@@ -37,7 +37,6 @@ AdminLinks
 url = http://www.mediawiki.org/wiki/Extension:Admin_Links
 
 AdvancedRandom
-file = SpecialAdvancedRandom.php
 url = http://www.mediawiki.org/wiki/Extension:AdvancedRandom
 
 AjaxLogin
