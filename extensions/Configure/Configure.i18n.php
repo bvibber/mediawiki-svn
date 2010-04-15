@@ -4643,6 +4643,7 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
  * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
+ * @author Iwan Novirion
  * @author Kandar
  * @author Rex
  */
@@ -4729,6 +4730,7 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-section-namespaces' => 'Ruang nama',
 	'configure-section-stats' => 'Statistik situs',
 	'configure-section-skin' => 'Kulit',
+	'configure-section-vector' => 'Kulit vektor',
 	'configure-section-category' => 'Kategori',
 	'configure-section-cache' => 'Singgahan',
 	'configure-section-pcache' => 'Singgahan pilahan',
@@ -4749,6 +4751,7 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-section-specialpages' => 'Halaman istimewa',
 	'configure-section-recentchanges' => 'Perubahan terbaru',
 	'configure-section-users' => 'Pengguna',
+	'configure-section-externalauth' => 'Pembuktian keaslian dari luar',
 	'configure-section-feed' => 'Umpan',
 	'configure-section-job' => 'Pekerjaan',
 	'configure-section-extension' => 'Ekstensi',

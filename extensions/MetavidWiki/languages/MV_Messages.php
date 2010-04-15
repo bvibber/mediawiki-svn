@@ -7645,6 +7645,16 @@ Për piasì, ch\'a arpòrta son a l\'[[{{MediaWiki:Grouppage-sysop}}|aministrato
 	'mv_path_type_url_anx' => "Adrëssa dl'aragnà antrega dël mojen",
 	'mv_path_type_wiki_title' => 'tìtol wiki dël mojen',
 	'mv_path_type_url_file' => "Adrëssa dl'aragnà completa dël mojen ch'a deuvra n'arserca local",
+	'mv_path_type_mp4_stream' => 'Sërvent ëd fluss MP4',
+	'mv_path_type_label' => 'sòrt ëd përcors',
+	'mv_base_offset_label' => 'dëstach base',
+	'mv_duration_label' => 'Durà',
+	'mv_file_desc_label' => 'mëssagi ëd descrission ëd fluss',
+	'mv_delete_stream_file' => 'scansela arferiment ëd file ëd fluss',
+	'mv_save_changes' => 'Salvé ij cangiament',
+	'mv_file_with_same_desc' => 'Eror: file ëd fluss con midema ciav ëd descrission <i>$1</i> già present',
+	'mv_updated_stream_files' => 'Modificà memorisassion ëd file ëd fluss',
+	'mv_removed_file_stream' => 'Gavà file ëd fluss: $1',
 );
 
 /** Pashto (پښتو)

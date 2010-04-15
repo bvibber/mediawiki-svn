@@ -443,7 +443,7 @@ $messages['de'] = array(
 	'right-recordadmin' => 'Aufzeichnungsseiten finden und bearbeiten',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
-	'recordadmin-notset' => 'Keine "$1"',
+	'recordadmin-notset' => 'Keine „$1“',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

@@ -95,13 +95,13 @@ $messages['ca'] = array(
  */
 $messages['de'] = array(
 	'lastuserlogin' => 'Letzte Anmeldungen',
-	'lastuserlogin-desc' => 'Zeigt an, wann sich ein Benutzer letztmalig angemeldet hat.',
+	'lastuserlogin-desc' => 'Zeigt an, wann sich ein Benutzer letztmalig angemeldet hat',
 	'lastuserlogin_userid' => 'Benutzername',
 	'lastuserlogin_username' => 'Echter Name',
 	'lastuserlogin_useremail' => 'E-Mail-Adresse',
 	'lastuserlogin_lastlogin' => 'Letzte Anmeldung',
 	'lastuserlogin_daysago' => 'Tage',
-	'right-lastlogin' => 'Ansehen wann sich ein Benutzer letztmalig angemeldet hat.',
+	'right-lastlogin' => 'Ansehen, wann sich ein Benutzer letztmalig angemeldet hat',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -255,6 +255,20 @@ $messages['ia'] = array(
 	'lastuserlogin_lastlogin' => 'Ultime apertura de session',
 	'lastuserlogin_daysago' => 'Dies retro',
 	'right-lastlogin' => 'Vider le ultime vice que un usator aperiva un session',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Iwan Novirion
+ */
+$messages['id'] = array(
+	'lastuserlogin' => 'Masuklog  terakhir pengguna',
+	'lastuserlogin-desc' => 'Menampilkan waktu terakhir pengguna masuklog',
+	'lastuserlogin_userid' => 'Nama pengguna',
+	'lastuserlogin_username' => 'Nama asli',
+	'lastuserlogin_useremail' => 'Surel pengguna',
+	'lastuserlogin_lastlogin' => 'Terakhir masuklog',
+	'lastuserlogin_daysago' => 'Beberapa hari yang lalu',
+	'right-lastlogin' => 'Lihat terakhir kali pengguna masuklog',
 );
 
 /** Italian (Italiano) */

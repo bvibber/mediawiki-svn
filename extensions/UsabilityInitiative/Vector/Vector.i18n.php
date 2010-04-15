@@ -116,7 +116,7 @@ $messages['cy'] = array(
  */
 $messages['de'] = array(
 	'vector' => 'Benutzeroberflächenverbesserungen für den Vektor-Skin',
-	'vector-desc' => 'Verbesserungen an den Benutzeroberflächenelementen des Vektor-Skins.',
+	'vector-desc' => 'Verbesserungen an den Benutzeroberflächenelementen des Vektor-Skins',
 );
 
 /** Zazaki (Zazaki)

@@ -4364,6 +4364,7 @@ $3',
  * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
+ * @author Iwan Novirion
  */
 $messages['id'] = array(
 	'code' => 'Kode Tinjauan',
@@ -4379,9 +4380,11 @@ $messages['id'] = array(
 	'code-prop-changes' => 'Log Status & penandaan',
 	'code-desc' => '[[Special:Code|Alat kode peninjauan]] dengan [[Special:RepoAdmin|dukungan Subversi]]',
 	'code-no-repo' => 'Tidak ada konfiguras tempat penyimpanan!',
+	'code-repo-not-found' => 'Gudang data <b>$1</b> tidak ada!',
 	'code-load-diff' => 'Memuat perbedaan...',
 	'code-notes' => 'komentar terbaru',
 	'code-statuschanges' => 'perubahan status',
+	'code-mycommits' => 'komitmen saya',
 	'code-authors' => 'penulis',
 	'code-status' => 'keadaan',
 	'code-tags' => 'Penanda',
@@ -4431,7 +4434,9 @@ $messages['id'] = array(
 	'code-rev-inline-preview' => 'Pratayang:',
 	'code-rev-diff' => 'Beda',
 	'code-rev-diff-link' => 'beda',
+	'code-rev-diff-too-large' => 'Perbedaan sangat besar untuk ditampilkan',
 	'code-rev-purge-link' => 'pembersihan',
+	'code-rev-total' => 'Jumlah hasil: $1',
 	'code-status-new' => 'baru',
 	'code-status-fixme' => 'perbaiki',
 	'code-status-reverted' => 'telah dikembalikan',
@@ -4441,6 +4446,10 @@ $messages['id'] = array(
 	'code-status-deferred' => 'ditangguhkan',
 	'code-pathsearch-legend' => 'Cari revisi di jejak penyimpanan ini:',
 	'code-pathsearch-path' => 'Jalan:',
+	'code-pathsearch-filter' => 'Penerapan filter:',
+	'code-revfilter-cr_status' => 'Status = $1',
+	'code-revfilter-cr_author' => 'Penulis = $1',
+	'code-revfilter-clear' => 'Hapus filter',
 	'code-rev-submit' => 'Simpan perubahan',
 	'code-rev-submit-next' => 'Simpan & belum selesai selanjutnya',
 	'code-batch-status' => 'Ubah status:',
@@ -4458,6 +4467,7 @@ $messages['id'] = array(
 	'codereview-tests-failed2' => '$1 berhasil {{PLURAL:$2|tes|tes}}, $3 gagal {{PLURAL:$4|tes|tes}}:',
 	'codereview-tests-running' => 'Kasus pengujian sedang dijalankan...',
 	'codereview-tests-aborted' => 'Pelaksaan pengujian dibatalkan.',
+	'codereview-tests-failed' => 'Gagal',
 	'codereview-email-subj' => '[$1] [$2]: Komenter baru ditambahkan',
 	'codereview-email-body' => 'Pengguna "$1" berkomentar pada $3.
 
@@ -6437,9 +6447,11 @@ $messages['no'] = array(
 	'code-prop-changes' => 'Logg for status og tagging',
 	'code-desc' => '[[Special:Code|Kodegjennomgangsverktøy]] med [[Special:RepoAdmin|støtte for Subversion]]',
 	'code-no-repo' => 'Ingen database konfigurert!',
+	'code-repo-not-found' => 'Lageret <b>$1</b> finnes ikke!',
 	'code-load-diff' => 'Laster diff...',
 	'code-notes' => 'Siste kommentarer',
 	'code-statuschanges' => 'statusendringer',
+	'code-mycommits' => 'mine innsendinger',
 	'code-authors' => 'forfattere',
 	'code-status' => 'tilstander',
 	'code-tags' => 'tagger',
@@ -8493,6 +8505,13 @@ $messages['te'] = array(
 	'code-batch-status' => 'మార్పు స్థితి:',
 	'codereview-batch-submit' => 'దాఖలుచెయ్యి',
 	'codereview-reply-link' => 'స్పందించు',
+	'codereview-email-body' => 'వాడుకరి "$1" $3పై ఒక వ్యాఖ్య రాసారు.
+
+పూర్తి చిరునామా: $2
+
+వ్యాఖ్య:
+
+$4',
 	'repoadmin-new-button' => 'సృష్టించు',
 	'repoadmin-edit-button' => 'సరే',
 	'right-codereview-post-comment' => 'కూర్పులపై వ్యాఖ్యలు చేర్చగలగడం',

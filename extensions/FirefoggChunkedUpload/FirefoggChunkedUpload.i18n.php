@@ -96,6 +96,13 @@ $messages['ia'] = array(
 	'firefoggcu-desc' => 'Protocollo de incargamento in portiones de Firefogg',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Iwan Novirion
+ */
+$messages['id'] = array(
+	'firefoggcu-desc' => 'Protokol mengunggah berkas Firefogg',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */

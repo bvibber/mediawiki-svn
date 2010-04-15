@@ -1733,12 +1733,15 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Marco 27
  * @author Melos
  */
 $messages['it'] = array(
 	'whitelistedit' => 'Editor della whitelist di accesso',
+	'whitelist' => 'Pagine nella whitelist',
+	'mywhitelistpages' => 'Le mie pagine',
 	'whitelistfor' => '<center>Informazioni correnti per <b>$1</b> </center>',
 	'whitelisttablemodify' => 'Modifica',
 	'whitelisttablemodifyall' => 'Tutti',
@@ -1763,6 +1766,8 @@ Utilizza * o % come carattere jolly',
 	'whitelistnowhitelistedusers' => 'Non ci sono utenti nel gruppo "{{MediaWiki:Group-restricted}}".
 Devi [[Special:UserRights|aggiungere utenti al gruppo]] prima di poter aggiungere pagine alla whitelist di un utente.',
 	'whitelistnewtablereview' => 'Cambia',
+	'whitelistpagelist' => '{{SITENAME}} pagine per $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Sembra che [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], un prerequisito per questa estensione, non è stata installata correttamente!</font>",
 	'whitelistoverview' => '== Descrizione delle modifiche per $1 ==',
 	'whitelistoverviewcd' => "* Modificata la data di scadenza a '''$1''' per [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Impostato l'accesso a '''$1''' per [[:$2|$2]]",

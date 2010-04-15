@@ -627,23 +627,23 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
 	'importfreeimages' => 'Impor gambar bebas',
 	'importfreeimages-desc' => 'Menambahkan halaman istimewa untuk [[Special:ImportFreeImages|mengimpor foto-foto dengan lisensi yang benar]] dari [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Halaman ini mengizinkan Anda untuk mencari foto-foto dengan lisensi yang benar dan mengimpornya ke wiki Anda.',
-	'importfreeimages_noapikey' => 'Anda belum mengkonfigurasi Kunci API Flickr Anda.
-Untuk melakukannya, Anda harus mendapatkan sebuah kunci API dari [http://www.flickr.com/services/api/misc.api_keys.html sini] dan mengeset $wgFlickrAPIKey  di ImportFreeImages.php.',
 	'importfreeimages_nophotosfound' => "Tidak ditemukan foto yang memenuhi kriteria pencarian '$1', silakan coba lagi.",
-	'importfreeimages_invalidurl' => 'URL "$1" bukanlah gambar Flickr yang valid.',
 	'importfreeimages_owner' => 'Pembuat',
 	'importfreeimages_importthis' => 'impor',
 	'importfreeimages_next' => '$1 selanjutnya',
-	'importfreeimages_filefromflickr' => '$1 oleh pengguna <b>[$2]</b> dari flickr. URL asli',
-	'importfreeimages_promptuserforfilename' => 'Harap masukkan nama berkas tujuan:',
-	'importfreeimages_returntoform' => "Atau, klik <a href='$1'>di sini</a> untuk kembali ke hasil pencarian Anda",
-	'importfreeimages_nophpflickr' => 'Anda belum memasang phpFlickr, mohon set $wgIFphpFlickr di LocalSettings.php Anda.',
+	'importfreeimages_size_square' => 'Bujursangkar',
+	'importfreeimages_size_thumbnail' => 'Miniatur',
+	'importfreeimages_size_small' => 'Kecil',
+	'importfreeimages_size_medium' => 'Sedang',
+	'importfreeimages_size_large' => 'Besar',
+	'importfreeimages_size_original' => 'Asli',
 );
 
 /** Ido (Ido)

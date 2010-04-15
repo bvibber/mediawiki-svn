@@ -2551,12 +2551,13 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Audun
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'tasks' => 'Oppgaver',
 	'tasks_desc' => 'Et programtillegg for å håndtere oppgaver',
 	'tasks_tab' => 'Oppgaver',
-	'tasks_title' => 'Oppgaver for "$1"',
+	'tasks_title' => 'Oppgaver for «$1»',
 	'tasks_form_new' => 'Opprett ny oppgave',
 	'tasks_form_comment' => 'Kommentar',
 	'tasks_error1' => 'Oppgave ble ikke opprettet: det finnes allerede en slik oppgave!',
@@ -2580,8 +2581,8 @@ $messages['no'] = array(
 	'tasks_created_by' => 'Opprettet av $1',
 	'tasks_discussion_page_link' => 'Diskusjonsside for oppgave',
 	'tasks_closedby' => 'Lukka av $1',
-	'tasks_assigned_myself_log' => 'Selvtildeling av oppgave "$1"',
-	'tasks_discussion_page_for' => 'Denne oppgaven gjelder for siden "$1". Listen over all oppgaver for den siden er $2.',
+	'tasks_assigned_myself_log' => 'Selvtildeling av oppgave «$1»',
+	'tasks_discussion_page_for' => 'Denne oppgaven gjelder for siden «$1». Listen over all oppgaver for den siden er $2.',
 	'tasks_sidebar_title' => 'Åpne oppgaver',
 	'tasks_here' => 'her',
 	'tasks_returnto' => 'Du vil bli omdirigert nå. Hvis du ikke har blitt omdirigert innen få sekunder, klikk $1.',
@@ -2612,14 +2613,14 @@ $messages['no'] = array(
 	'tasks_status_assigned' => 'Tildelt',
 	'tasks_status_closed' => 'Lukka',
 	'tasks_status_wontfix' => 'Vil ikke ordnes',
-	'tasks_action_open' => 'Oppgave "$1" åpnet.',
-	'tasks_action_assigned' => 'Oppgave "$1" tildelt.',
-	'tasks_action_closed' => 'Oppgave "$1" lukka.',
-	'tasks_action_wontfix' => 'Kan ikke ordne oppgave "$1".',
+	'tasks_action_open' => 'Oppgave «$1» åpnet.',
+	'tasks_action_assigned' => 'Oppgave «$1» tildelt.',
+	'tasks_action_closed' => 'Oppgave «$1» lukka.',
+	'tasks_action_wontfix' => 'Kommer ikke til å ordne oppgave «$1».',
 	'tasks_sign_delete' => '<b>Det har blitt forespurt en sletting av denne siden!</b>',
 	'tasks_logpage' => 'Oppgavelogg',
 	'tasks_logpagetext' => 'Dette er en logg over endringer av oppgaver',
-	'tasks_logentry' => 'For "[[$1]]"',
+	'tasks_logentry' => 'For «[[$1]]»',
 	'tasks-pref-showtaskcomments' => 'Inkluder kommentarside for oppgaver.',
 );
 

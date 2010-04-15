@@ -1212,7 +1212,7 @@ Tak, vi ser frem til at høre fra dig!',
  */
 $messages['de'] = array(
 	'optin' => 'Anmeldung bei der Benutzerfreundlichkeitsinitiative',
-	'optin-desc' => 'Erlaubt Benutzern, Beta auszuprobieren, aktuellste Benutzerfreundlichkeitsverbesserungen der Benutzerfreundlichkeitsinitiative.',
+	'optin-desc' => 'Erlaubt Benutzern, Beta auszuprobieren, aktuellste Benutzerfreundlichkeitsverbesserungen der Benutzerfreundlichkeitsinitiative',
 	'optin-title-optedout' => 'Beta ausprobieren',
 	'optin-title-optedin' => 'Beta verlassen',
 	'optin-title-justoptedin' => 'Willkommen bei Beta',

@@ -784,10 +784,11 @@ $2',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'userrightsnotifysubject' => 'Endring av gruppemedlemskap på $1',
-	'userrightsnotifybody' => 'Hei, $1.
+	'userrightsnotifybody' => 'Hei $1.
 
 Du informeres herved at dine gruppemedlemskap på $2 ble endret av $3 $4.
 
@@ -795,6 +796,7 @@ Lagt til: $5
 Fjernet: $6
 
 Hilsen
+
 $2',
 	'userrightsnotif-desc' => 'Sender e-postmelding til brukere ved rettighetsendringer',
 );

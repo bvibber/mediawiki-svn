@@ -28,6 +28,18 @@ $messages['be-tarask'] = array(
 	'peoplecategories-desc' => 'Зьмяняе назвы старонак, якія паказваюцца, з «Імя Фамілія» на «Фамілія, Імя» для вызначаных катэгорыяў',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'peoplecategories-desc' => 'Ermöglicht es, die Anzeige von Seitennamen in angegebenen Kategorien von „Vorname Familienname“ in „Familienname, Vorname“ zu ändern',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'peoplecategories-desc' => 'Su se změnili zwobraznjone bokowe mjenja wót: "prědne mě slědny mě" do "slědne mě, prědne mě" na pódanych kategorijowych bokach',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -35,11 +47,25 @@ $messages['es'] = array(
 	'peoplecategories-desc' => 'Los cambios mostraron nombres de páginas de "Nombre Apellido" a "Apellido, Nombre" en las páginas de categoría especificadas',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'peoplecategories-desc' => 'Change les noms de page affichés de « Prénom Nom » à « Nom, Prénom » dans les catégories spécifiées.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
 	'peoplecategories-desc' => 'Cambiar o xeito en que se mostran os nomes das páxinas de "Nome Apelido" a "Apelido, Nome" en determinadas categorías',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'peoplecategories-desc' => 'Změnichu so zwobraznjene mjena stronow wot: "prěnje mjeno poslednje mjeno" do "poslednje mjeno, prěnje mjeno" na podatych kategorijowych stronach',
 );
 
 /** Hungarian (Magyar)
@@ -56,6 +82,13 @@ $messages['ia'] = array(
 	'peoplecategories-desc' => 'Cambia le presentation del nomines de paginas de "Prenomine Nomine de familia" a "Nomine de familia, Prenomine" in paginas de categoria specificate',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'peoplecategories-desc' => 'Ännert den ugewisenen Numm vu Säite vu "Virnumm Faniljennumm" op "Familjennumm, Virnumm" op de spezifizéierte Säitekategorien',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -68,6 +101,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'peoplecategories-desc' => 'Wijzigt weergegeven paginanamen van "Voornaam Achternaam" naar "Achternaam, Voornaam" op aangegeven categoriepagina\'s',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'peoplecategories-desc' => 'Endrer vist sidenavn fra «Fornavn Etternavn» til «Etternavn, Fornavn» på spesifiserte kategorisider',
 );
 
 /** Piedmontese (Piemontèis)

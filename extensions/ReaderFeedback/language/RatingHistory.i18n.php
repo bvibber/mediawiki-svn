@@ -1214,6 +1214,7 @@ $messages['ko'] = array(
 	'ratinghistory-year' => '지난 1년',
 	'ratinghistory-3years' => '지난 3년',
 	'ratinghistory-ave' => '평균: $1',
+	'ratinghistory-purge' => '캐시 갱신하기',
 	'ratinghistory-svg' => 'SVG로 보기',
 	'ratinghistory-ratings' => "'''범례:''' '''(1)''' - 최하, '''(2)''' - 낮음, '''(3)''' - 양호, '''(4)''' - 높음, '''(5)''' - 우수",
 	'right-feedback' => '문서를 평가하는 피드백 양식을 이용',
@@ -1990,6 +1991,7 @@ $messages['te'] = array(
 	'ratinghistory-ave' => 'సగటు: $1',
 	'ratinghistory-graph' => '"$3" యొక్క $2 ($1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}})',
 	'ratinghistory-svg' => 'SVGగా చూడండి',
+	'ratinghistory-table-rating' => 'మూల్యాంకనం',
 	'ratinghistory-table-votes' => 'వోట్లు',
 	'ratinghistory-ratings' => "'''సూచిక:''' '''(1)''' - అత్యల్పం; '''(2)''' - అల్పం; '''(3)''' - పర్లేదు; '''(4)''' - ఉత్తమం; '''(5)''' - అత్యుత్తమం;",
 );

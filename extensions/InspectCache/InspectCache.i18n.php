@@ -519,18 +519,19 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Iwan Novirion
  */
 $messages['id'] = array(
-	'inspectcache' => 'Inspeksi kas',
-	'inspectcache-desc' => 'Alat debug sederhana untuk melakukan inspeksi terhadap isi kas yang terbagi',
-	'inspectcache-ok' => 'OK',
-	'inspectcache-general' => 'Kas umum',
-	'inspectcache-parser' => 'Kas parser',
-	'inspectcache-message' => 'Kas pesan',
+	'inspectcache' => 'Periksa tembolok',
+	'inspectcache-desc' => 'Alat debug sederhana untuk melakukan inspeksi terhadap isi tembolok yang terbagi',
+	'inspectcache-general' => 'Tembolok umum',
+	'inspectcache-parser' => 'Pengurai tembolok',
+	'inspectcache-message' => 'Tembolok pesan',
 	'inspectcache-get' => 'Ambil',
 	'inspectcache-delete' => 'Hapus',
-	'inspectcache-deleted' => 'Kas yang dihapus',
+	'inspectcache-deleted' => 'Tembolok yang dihapus',
 	'inspectcache-list' => 'Daftar',
+	'right-inspectcache' => 'Lihat dan hapus entri tembolok',
 );
 
 /** Italian (Italiano)

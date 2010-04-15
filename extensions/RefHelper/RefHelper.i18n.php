@@ -158,7 +158,7 @@ $messages['de'] = array(
 	'refhelper-desc' => 'Hilft beim Erstellen von Literaturhinweisen',
 	'refhelper-refsearch' => 'Literaturhinweissuche',
 	'refhelper-refcreate_legend' => 'Einen neuen Literaturhinweis erstellen',
-	'refhelper-refsearch_legend' => 'Durchsucht pubmed nach Literaturhinweisen',
+	'refhelper-refsearch_legend' => 'Durchsucht PubMed nach Literaturhinweisen',
 	'refhelper-refcreate_another' => 'Erstelle einen weiteren Literaturhinweis',
 	'refhelper-refcreate_autocomment' => 'Automatisierte Seitenerstellung',
 	'refhelper-refcreate_success' => 'Die Seite [[$1]] war nicht vorhanden und wurde daher erstellt.',
@@ -178,7 +178,7 @@ $messages['de'] = array(
 	'refhelper-toolbox_link_create' => 'Literaturhinweis erstellen',
 	'refhelper-toolbox_link_search' => 'Literaturhinweis aus der Suche heraus erstellen',
 	'refhelper-newarticle_nocitation' => 'Momentan gibt es kein Autorenzitat mit diesem Namen.',
-	'refhelper-newarticle_suggestions' => 'Sofern ein zutreffendes Autorenzitat verfügbar ist, kannst Du den Literaturhinweis durch Klicken auf die zugehörige Schaltfläche "Erstellen" erzeugen.
+	'refhelper-newarticle_suggestions' => 'Sofern ein zutreffendes Autorenzitat verfügbar ist, kannst du den Literaturhinweis durch Klicken auf die zugehörige Schaltfläche „Erstellen“ erzeugen.
 
 <h2>Vorschläge</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Es war leider nicht möglich einen Literaturhinweis vorzuschlagen.

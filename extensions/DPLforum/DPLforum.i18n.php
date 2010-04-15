@@ -400,6 +400,7 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -407,7 +408,7 @@ $messages['it'] = array(
 	'dplforum-by' => 'da $1',
 	'dplforum-edited' => '- Modificato ultima volta',
 	'dplforum-never' => 'Mai',
-	'dplforum-toofew' => 'DPL Forum: Troppo poche categorie!',
+	'dplforum-toofew' => 'DPL Forum: Troppe poche categorie!',
 	'dplforum-toomany' => 'DPL Forum: Troppe categorie!',
 );
 
