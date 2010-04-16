@@ -463,8 +463,9 @@ var MW_EMBED_VERSION = '1.1e';
 		* @param {Function} hookFunction Function to be called at hook time
 		*/
 		targetObj.addHook = function( hookName, hookFunction ) {
-			if( ! this.hooks[ hookName ] )
+			if( ! this.hooks[ hookName ] ) {
 				this.hooks[ hookName ] = [ ];
+			}
 			this.hooks[ hookName ].push( hookFunction )
 		}
 		
@@ -775,8 +776,8 @@ var MW_EMBED_VERSION = '1.1e';
 					scriptRequest = baseClassPath;
 				}				
 				if( ! scriptRequest ) {
-					mw.log( "Could not get url for class " + className  );						
-					return ;
+					mw.log( "Error Could not get url for class " + className  );						
+					return false;
 				}	
 			}
 			
@@ -785,15 +786,23 @@ var MW_EMBED_VERSION = '1.1e';
 			
 			// Set the top level load done to the callback				
 			mw.setLoadDoneCB( className, callback );
+						
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
+				// If its a "syle sheet" manually set its class to true
+				if( scriptRequest.substr( scriptRequest.lastIndexOf( '.' ), 4 ).toLowerCase() == 'css' &&
+					className.substr(0,8) == 'mw.style' ){
+					window [ className ] = true;
+				}
+				
 				// Debug output				
 				if(! mw.isset( className )  
 					&& mwLoadDoneCB[ className ] != 'done' ) {
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
 				}
 				// Call load done (incase the script did not include a loadDone callback ) 
+				// if the script loader (did call loadDone this loadDone will be ignored
 				mw.loadDone( className );
 			} );	
 			//mw.log( 'done with running getScript request ' );
@@ -852,7 +861,7 @@ var MW_EMBED_VERSION = '1.1e';
 	 		if( this.classPaths[ className ] )
 	 			return this.classPaths[ className ]
 	 		return false;
-	 	}
+	 	}	 	
 	}
 	/**
 	* Load done callback for script loader
@@ -1541,10 +1550,11 @@ var MW_EMBED_VERSION = '1.1e';
 	* @param {Function} callback Function to call once script is loaded   
 	*/
 	mw.getScript = function( scriptRequest, callback ) {
-		// Setup the local callback 
+		// Setup the local scope callback instace 
 		var myCallback = function(){
-			if( callback )
+			if( callback ) {
 				callback( scriptRequest );
+			}
 		}
 		// Set the base url based scriptLoader availability & type of scriptRequest
 		// ( presently script loader only handles "classes" not relative urls: 
@@ -1552,7 +1562,7 @@ var MW_EMBED_VERSION = '1.1e';
 		
 		// Check if its a class name, ( ie does not start with "/" and does not include :// 
 		var isClassName = ( scriptRequest.indexOf('://') == -1 && scriptRequest.indexOf('/') !== 0 )? true : false; 
-		
+	
 		var ext = scriptRequest.substr( scriptRequest.lastIndexOf( '.' ), 4 ).toLowerCase();
 		var isCssFile = ( ext == '.css') ? true : false ;
 		

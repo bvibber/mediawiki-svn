@@ -333,18 +333,14 @@ EmbedPlayerManager.prototype = {
 	*/
 	addElement: function( element,  attributes ) {	
 		var _this = this;
-		
-		// Assign id if unset					
-		var element_id = $j( element ).attr( "id" );	
-		if ( element_id == '' ) {
-			element_id = 'v' + this.playerList.length;
-			$j( element ).attr( "id",  element_id);
-		}
-		
+			
+		if ( !element.id || element.id == '' ) {
+			mw.log("Error: element is missing id ");
+		}					
 		mw.log('EmbedPlayerManager: addElement:: ' + element.id );
 				
 		// Add the element id to playerList
-		this.playerList.push( element_id );		
+		this.playerList.push( element.id );		
 		
 		// Check for class based player skin 			
 		var skinClassRequest = [ ];
@@ -372,8 +368,8 @@ EmbedPlayerManager.prototype = {
 						var playlistPlayer = new mw.PlayList( element, attributes );
 						
 						// Swap in playlist player interface
-						_this.swapEmbedPlayerElement( element, playlistPlayer );												
-						
+						_this.swapEmbedPlayerElement( element, playlistPlayer );
+											
 						// Issue the checkPlayerSources call to the new playlist interface: 				
 						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
 					} );
@@ -381,26 +377,27 @@ EmbedPlayerManager.prototype = {
 				case 'video':
 				case 'audio':
 				// By default treat the rewrite request as "video"
-				default:		
-					var ranPlayerSwapFlag = false;
-					
+				default:												
+					var ranPlayerSwapFlag = false;					
 					// Local callback to runPlayer swap once element has metadata
-					function runPlayerSwap() {						
-						if( ranPlayerSwapFlag )
+					function runPlayerSwap() {											
+						if( ranPlayerSwapFlag ){
 							return ;	
+						}
 						mw.log("runPlayerSwap::" + $j( element ).attr('id') );
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( element , attributes);
-						_this.swapEmbedPlayerElement( element, playerInterface );	
+						_this.swapEmbedPlayerElement( element, playerInterface );								
 						// Issue the checkPlayerSources call to the new player interface:
-						// make sure to use the element that is in the DOM: 										
-						$j( '#' + $j( element ).attr('id') ).get(0).checkPlayerSources();						
+						// make sure to use the element that is in the DOM:						
+						$j( '#' + playerInterface.id ).get(0).checkPlayerSources();						
 					}
 									
 					if( waitForMeta ) {						
 						mw.log(' WaitForMeta ( video missing height (' + $j( element ).attr('height') + '), width (' + $j( element ).attr('width') + ') or duration' );
 						element.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						element.addEventListener( "loadedmetadata", runPlayerSwap, true );
+					
 						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
 						setTimeout( runPlayerSwap, 5000 );
 					}else{ 
@@ -497,8 +494,15 @@ EmbedPlayerManager.prototype = {
 		$j( swapPlayerElement ).css( {			
 			'width' : playerInterface.width + 'px',
 			'height' : playerInterface.height + 'px'
-		} ).loadingSpinner();
-		
+		} )
+		//if we don't already have a loadSpiner add one: 
+		if( ! $j('#loadSpiner_' + playerInterface.id ).length ){
+			$j( swapPlayerElement ).append( 
+				$j('<div style="margin:auto;top:35%;position:relative;width:32px;height:32px;"/>')
+				.loadingSpinner()
+				.addClass( "loadingSpinner" )
+			);
+		}
 		return true;
 	},
 	
@@ -515,6 +519,9 @@ EmbedPlayerManager.prototype = {
 		var _this = this;
 		mw.log( 'ReadyToPlay callback player:' +  player.id );
 		player.readyToPlay = true;
+		
+		// Remove the player loader spiner:
+		$j('#loadSpiner_' + player.id ).remove();
 		
 		var is_ready = true; 
 		for ( var i = 0; i < this.playerList.length; i++ ) {
@@ -1256,11 +1263,7 @@ mw.EmbedPlayer.prototype = {
 		}			
 		if ( $j( element ).attr( 'poster' ) ) {
 			_this.poster = $j( element ).attr( 'poster' );
-		}											
-		// Set by default thumb value if not found
-		if( ! _this.poster ) {
-			_this.poster = mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg' ;
-		}
+		}	
 				
 		// Set the skin name from the class  
 		var	sn = $j(element).attr( 'class' );
@@ -1329,7 +1332,13 @@ mw.EmbedPlayer.prototype = {
 			}
 		} );					
 	},
-		
+	
+	/**
+	 * for plugin-players to update supported features 
+	 */
+	updateFeatureSupport: function(){
+		return ;
+	},
 	
 	/**
 	* Set the width & height from css style attribute, element attribute, or by default value
@@ -1644,8 +1653,8 @@ mw.EmbedPlayer.prototype = {
 		
 		// Load the selected player
 		this.selected_player.load( function() {		
-			// Get the selected player Interface
-			var playerInterface = window[ _this.selected_player.library + 'Embed' ];
+			// Get embed library player Interface
+			var playerInterface = window[ _this.selected_player.library + 'Embed' ];			
 			
 			for ( var method in playerInterface ) {  
 				if ( _this[method] && !_this['parent_' + method] ) {
@@ -1653,6 +1662,9 @@ mw.EmbedPlayer.prototype = {
 				}
 				_this[ method ] = playerInterface[method];
 			}											
+			// Run any constructor code: 
+			_this.updateFeatureSupport();
+			
 			_this.getDuration();
 			_this.showPlayer();
 			// Call the global player mannager to inform this video interface is 100% ready: 
@@ -1730,14 +1742,14 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* Get the plugin embed html ( should be implemented by embed player interface )
 	*/
-	doEmbedHTML : function() {
+	doEmbedHTML: function() {
 		return 'Error: function doEmbedHTML should be implemented by embed player interface ';
 	},
 	
 	/**
 	* Seek function (should be implemented by embed player interface )
 	*/ 
-	doSeek : function( percent ) {
+	doSeek: function( percent ) {
 		var _this = this;
 		if ( this.supportsURLTimeEncoding() ) {
 			// Make sure this.seek_time_sec is up-to-date:
@@ -1854,8 +1866,7 @@ mw.EmbedPlayer.prototype = {
 	* Show the player
 	*/
 	showPlayer : function () {	
-		mw.log( 'Show player: ' + this.id );	
-		
+		mw.log( 'Show player: ' + this.id );			
 		// Set-up the local ctrlBuilder instance: 
 		this.ctrlBuilder = new ctrlBuilder( this );
 						
@@ -2094,9 +2105,21 @@ mw.EmbedPlayer.prototype = {
 		var thumb_html = '';
 		var class_atr = '';
 		var style_atr = '';
-				
+		
+		// Set by default thumb value if not found
+		var posterSrc = ( this.poster ) ? this.poster : 
+						mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg';
+		
+		// Remove any old thumbnail items: 
+		$j( this ).find( '.playerPoster,.loadingSpinner,.play-btn-large' ).remove();
+		
+		var dummyvid = document.createElement( "video" );
 		// put it all in the div container dc_id
-		$j( this ).html(
+		
+		// Poster support is not very consistant in browsers
+		// use a jpg poster image: 
+		// use a jpg thumbnail: 
+		$j( this ).append(
 			$j( '<img />' )
 			.css({
 				'position' : 'relative',				
@@ -2105,9 +2128,10 @@ mw.EmbedPlayer.prototype = {
 			})
 			.attr({
 				'id' : 'img_thumb_' + this.id,
-				'src' : this.poster 
+				'src' : posterSrc
 			})
-		);		
+			.addClass( 'playerPoster' )
+		);
 				
 		if ( this.controls 
 			&& this.height > this.ctrlBuilder.getComponentHeight( 'playButtonLarge' ) 
@@ -2148,11 +2172,16 @@ mw.EmbedPlayer.prototype = {
 			}
 		} else {			
 			// Output all the video sources:
-			for( var i=0; i < this.mediaElement.length; i++ ){
+			for( var i=0; i < this.mediaElement.sources.length; i++ ){
+				var source = this.mediaElement.sources[i];
 				if( source.src ) {
-					iframeUrl +='src[]=' + escape( mw.absoluteUrl( source.src ) ) + '&';
+					iframeUrl += 'src[]=' + escape( mw.absoluteUrl( source.src ) ) + '&';
 				}
-			}					
+			}
+			// Output the poster attr
+			if( this.poster ){
+				iframeUrl += 'poster=' + escape( this.poster ) + '&';
+			}
 		}
 		
 		// Set the skin if set to something other than default
@@ -2247,7 +2276,8 @@ mw.EmbedPlayer.prototype = {
 			embedCode += '&gt;';
 			
 			// Output all the video sources:
-			for( var i=0; i < this.mediaElement.length; i++ ){
+			for( var i=0; i < this.mediaElement.sources.length; i++ ){
+				var source = this.mediaElement.sources[i];
 				if( source.src ) {
 					embedCode +='&lt;source src=&quot;' + 
 						mw.absoluteUrl( source.src ) + 
@@ -2831,7 +2861,7 @@ mediaPlayers.prototype =
 	preference : { },
 	
 	// Stores the default set of players for a given mime type
-	default_players : { },
+	default_players : { },	
 	
 	/**
 	* Initializartion function sets the default order for players for
@@ -2872,6 +2902,18 @@ mediaPlayers.prototype =
 		}
 		// Add the player:
 		this.players.push( player );
+	},
+	
+	/**
+	 * Checks if a player is supported by id
+	 */
+	isSupportedPlayer: function( player_id ){
+		for( var i=0; i < this.players.length; i++ ){
+			if( this.players[i].id == player_id ){
+				return true;
+			}
+		}
+		return false;
 	},
 	
 	/**

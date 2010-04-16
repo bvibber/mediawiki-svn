@@ -380,7 +380,7 @@ ctrlBuilder.prototype = {
 					_this.showControlBar();
 					// Once we move the mouse keep displayed for 4 seconds
 					setTimeout(checkMovedMouse, 4000);
-				}else{
+				} else {
 					// Check for mouse movement every 250ms
 					_this.hideControlBar();
 					setTimeout(checkMovedMouse, 250 );
@@ -508,15 +508,25 @@ ctrlBuilder.prototype = {
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
 		var _this = this;		
+		var $interface = embedPlayer.$interface;
 		
 		// Setup target shortcut to	control-bar
-		$target = embedPlayer.$interface;			
+		$target = embedPlayer.$interface;	
 		var mouseIn = false;
 		// Add hide show bindings for control overlay (if overlay is enabled ) 
-		if( _this.checkOverlayControls() ) {			
+		if( ! _this.checkOverlayControls() ) {
+			$interface.unbind().show();		
+		} else { // hide show controls: 
+			//$interface.css({'background-color': 'red'});
+			// Bind a startTouch to show controls
+			$interface.bind( 'touchstart', function() {
+				_this.showControlBar();
+				// ( once the user touched the video "don't hide" ) 
+			} );
 			// Add a special absolute overlay for hover ( to keep menu displayed 
-			$j( embedPlayer.$interface ).hover(
+			$interface.hover(
 				function(){	
+					mw.log("CALL HOVER");
 					// Show controls with a set timeout ( avoid fade in fade out on short mouse over )				
 					setTimeout( function() {
 						if( mouseIn ){
@@ -529,7 +539,7 @@ ctrlBuilder.prototype = {
 					mouseIn = false;
 					// Hide controls ( delay hide if menu is visible )
 					function hideCheck(){					
-						if ( embedPlayer.$interface.find( '.overlay-win' ).length != 0 
+						if ( $interface.find( '.overlay-win' ).length != 0 
 						||  $j('.menuPositionHelper').is(':visible' ) ) {
 							setTimeout( hideCheck, 250 );
 							return ;
@@ -543,8 +553,6 @@ ctrlBuilder.prototype = {
 					setTimeout( hideCheck, 1000 );
 				}
 			);
-		} else {
-			$j( embedPlayer.$interface ).unbind().show();
 		}
 				
 		// Add recommend firefox if we have non-native playback:
@@ -585,7 +593,8 @@ ctrlBuilder.prototype = {
 	* Show the control bar
 	*/
 	showControlBar : function(){
-		var animateDuration = 'slow';		
+		var animateDuration = 'slow';	
+		$j( this.embedPlayer.getPlayerElement() ).css('z-index', '1')	
 		// Move up itext if present
 		this.embedPlayer.$interface.find( '.itext' )
 			.animate( 
