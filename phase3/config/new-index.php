@@ -24,6 +24,9 @@ require( './includes/WebStart.php' );
 Language::getLocalisationCache()->disableBackend();
 LBFactory::disableBackend();
 
+// Load the installer's i18n file
+$wgExtensionMessagesFiles['MediawikiInstaller'] = './includes/installer/Installer.i18n.php';
+
 $installer = new WebInstaller( $wgRequest );
 $wgParser->setHook( 'doclink', array( $installer, 'docLink' ) );
 
