@@ -73,26 +73,30 @@ You cannot install MediaWiki.',
 	'config-env-latest-new'           => "'''Note:''' You are installing a development version of Mediawiki.",
 	'config-env-latest-old'           => "'''Warning:''' You are installing an outdated version of Mediawiki.",
 	'config-env-latest-help'          => 'You are installing version $1, but the latest version is $2.
-You are advised to use the latest release, which can be downloaded from [http://www.mediawiki.org/wiki/Download Mediawiki.org]',
+You are advised to use the latest release, which can be downloaded from [http://www.mediawiki.org/wiki/Download mediawiki.org]',
 	'config-no-db'                    => 'Could not find a suitable database driver!',
 	'config-no-db-help'               => 'You need to install a database driver for PHP.
 The following database types are supported: $1.
 
 If you are on shared hosting, ask your hosting provider to install a suitable database driver.
-If you compiled PHP yourself, reconfigure it with a database client enabled, for example using the ./configure --with-mysql.
+If you compiled PHP yourself, reconfigure it with a database client enabled, for example using <code>./configure --with-mysql</code>.
 If you installed PHP from a Debian or Ubuntu package, then you also need install the php5-mysql module.',
-	'config-have-db'                  => 'Found database drivers for: $1',
-	'config-register-globals'         => "'''Warning: PHP\'s <code>[http://php.net/register_globals register_globals]</code> option is enabled.'''
+	'config-have-db'                  => 'Found database drivers: $1',
+	'config-register-globals'         => "'''Warning: PHP's <code>[http://php.net/register_globals register_globals]</code> option is enabled.'''
 '''Disable it if you can.'''
 MediaWiki will work, but your server is exposed to potential security vulnerabilities.",
 	'config-magic-quotes-runtime'     => "'''Fatal: [http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-runtime magic_quotes_runtime] is active!'''
-This option corrupts data input unpredictably; you cannot install or use MediaWiki unless this option is disabled.",
+This option corrupts data input unpredictably.
+You cannot install or use MediaWiki unless this option is disabled.",
 	'config-magic-quotes-sybase'      => "'''Fatal: [http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-sybase magic_quotes_sybase] is active!'''
-This option corrupts data input unpredictably; you cannot install or use MediaWiki unless this option is disabled.",
+This option corrupts data input unpredictably.
+You cannot install or use MediaWiki unless this option is disabled.",
 	'config-mbstring'                 => "'''Fatal: [http://www.php.net/manual/en/ref.mbstring.php#mbstring.overload mbstring.func_overload] is active!'''
-This option causes errors and may corrupt data unpredictably; you cannot install or use MediaWiki unless this option is disabled.",
+This option causes errors and may corrupt data unpredictably.
+You cannot install or use MediaWiki unless this option is disabled.",
 	'config-ze1'                      => "'''Fatal: [http://www.php.net/manual/en/ini.core.php zend.ze1_compatibility_mode] is active!'''
-This option causes horrible bugs with MediaWiki; you cannot install or use MediaWiki unless this option is disabled.",
+This option causes horrible bugs with MediaWiki.
+You cannot install or use MediaWiki unless this option is disabled.",
 	'config-safe-mode'                => "'''Warning:'''
 '''PHP's [http://www.php.net/features.safe-mode safe mode] is active.'''
 It may cause problems, particularly if using image uploads and math support.",
