@@ -37,6 +37,17 @@ mw.setDefaultConfig( {
 	// If fullscreen is global enabled. 
 	'enableFullscreen' : true,
 	
+	// If mwEmbed should use the Native player controls
+	// this will prevent video tag rewriting and skinning
+	// usefull for devices such as iPad / iPod that
+	// don't fully support DOM overlays or don't expose full-screen 
+	// functionality to javascript  
+	'nativePlayerControls': false,
+	
+	// If mwembed should use native controls on mobile safari
+	'nativePlayerControlsMobileSafari' : false,
+	
+	
 	// The z-index given to the player interface during full screen ( high z-index )  
 	'fullScreenIndex' : 999998,
 	

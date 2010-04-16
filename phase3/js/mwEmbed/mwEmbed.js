@@ -1278,13 +1278,17 @@ var MW_EMBED_VERSION = '1.1e';
 	mw.addLoaderDialog = function( msg_txt ) {
 		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
 	}
-		
-	/*mw.status = function( status )
-	
-	
-	var Status = function() {
-		
-	}*/
+	/**
+	 * NOTE: should be moved to browser detection script
+	 */
+	mw.isMobileSafari = function(){
+		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
+			(navigator.userAgent.indexOf('iPod') != -1) || 
+			(navigator.userAgent.indexOf('iPad') != -1)) {
+			return true;
+		}
+		return false;
+	},
 	
 	/**
 	* Add a (temporary) dialog window:

@@ -378,7 +378,24 @@ EmbedPlayerManager.prototype = {
 				case 'audio':
 				// By default treat the rewrite request as "video"
 				default:												
-					var ranPlayerSwapFlag = false;					
+					var ranPlayerSwapFlag = false;
+					// Skip the video if we are using native controls		
+					if( _this.useNativeControls( element ) ){
+						// Remove the player loader spiner:
+						$j('#loadSpiner_' + element.id ).remove();
+						// Unhide 
+						$j( element ).css({
+							'opacity' : 1,
+							'position': null
+						} )
+						.attr('controls', 'true')
+						// iPad needs the video to be hidden then shown
+						// for control attribute update to take effect
+						.hide() 
+						.show()
+						
+						return ;
+					}						
 					// Local callback to runPlayer swap once element has metadata
 					function runPlayerSwap() {											
 						if( ranPlayerSwapFlag ){
@@ -486,17 +503,18 @@ EmbedPlayerManager.prototype = {
 				swapPlayerElement[ method ] = playerInterface[ method ];
 			}
 		}
-		
-		// Remove the targetElement
+				
 		$j( targetElement ).replaceWith( swapPlayerElement );
+		
 		
 		// Set swapPlayerElement has height / width set and set to loading:		
 		$j( swapPlayerElement ).css( {			
 			'width' : playerInterface.width + 'px',
 			'height' : playerInterface.height + 'px'
-		} )
-		//if we don't already have a loadSpiner add one: 
-		if( ! $j('#loadSpiner_' + playerInterface.id ).length ){
+		} );
+		
+		// If we don't already have a loadSpiner add one: 
+		if( $j('#loadSpiner_' + playerInterface.id ).length == 0 ){
 			$j( swapPlayerElement ).append( 
 				$j('<div style="margin:auto;top:35%;position:relative;width:32px;height:32px;"/>')
 				.loadingSpinner()
@@ -504,6 +522,25 @@ EmbedPlayerManager.prototype = {
 			);
 		}
 		return true;
+	},
+	
+	/**
+	 * Checks configuration options 
+	 *
+	 * @param [player] Object Optional player object to check controlls attirbute 
+	 * @returns bollean true if the mwEmbed player interface should be used
+	 * 					false if the mwEmbed player interace should not be used
+	 */
+	useNativeControls: function( player ) {
+		if( mw.getConfig('nativePlayerControls') == true ) {
+			return true;
+		}
+		if( mw.getConfig('nativePlayerControlsMobileSafari' ) &&
+		 	mw.isMobileSafari()
+		){
+			return true;
+		} 
+		return false;
 	},
 	
 	/**
@@ -2108,18 +2145,11 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set by default thumb value if not found
 		var posterSrc = ( this.poster ) ? this.poster : 
-						mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg';
-		
-		// Remove any old thumbnail items: 
-		$j( this ).find( '.playerPoster,.loadingSpinner,.play-btn-large' ).remove();
-		
-		var dummyvid = document.createElement( "video" );
-		// put it all in the div container dc_id
+						mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg';				
 		
 		// Poster support is not very consistant in browsers
-		// use a jpg poster image: 
-		// use a jpg thumbnail: 
-		$j( this ).append(
+		// use a jpg poster image:  
+		$j( this ).html(
 			$j( '<img />' )
 			.css({
 				'position' : 'relative',				
