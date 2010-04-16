@@ -479,6 +479,45 @@ U kunt MediaWiki niet installeren tenzij deze instelling is uitgeschakeld.",
 	'config-safe-mode' => "'''Waarschuwing:'''
 '''PHP's [http://www.php.net/features.safe-mode veilige modus] actief is.'''
 Dit kan problemen veroorzaken, vooral bij het uploaden van bestanden en ondersteuning van <code>math</code>.",
+	'config-xml-bad' => 'De XML-module van PHP ontbreekt.
+MediaWiki heeft de functies van deze module nodig en werkt niet zonder deze module.',
+	'config-pcre' => 'De ondersteuningsmodule PCRE lijkt te missen.
+MediaWiki vereist dat de met Perl compatibele reguliere expressies werken.',
+	'config-memory-none' => 'PHP is ingesteld zonder <code>memory_limit</code>',
+	'config-memory-ok' => "PHP's <code>memory_limit</code> is $1. OK.",
+	'config-memory-raised' => "PHP's <code>memory_limit</code> is $1. Verhoogd tot $2.",
+	'config-memory-bad' => "'''Waarschuwing:''' PHP's <code>memory_limit</code> is $1.
+Dit is waarschijnlijk te laag.
+De installatie kan mislukken!",
+	'config-xcache' => '[http://trac.lighttpd.net/xcache/ XCache] geïnstalleerd',
+	'config-apc' => '[http://www.php.net/apc APC] geïnstalleerd',
+	'config-eaccel' => '[http://eaccelerator.sourceforge.net/ eAccelerator] geïnstalleerd',
+	'config-no-cache' => "'''Waarschuwing:'''
+[http://eaccelerator.sourceforge.net eAccelerator], [http://www.php.net/apc APC] of [http://trac.lighttpd.net/ xcache / XCache] is niet aangetroffen.
+Het cachen van objecten is niet ingeschakeld.",
+	'config-diff3-good' => 'GNU diff3 aangetroffen: <code>$1</code>.',
+	'config-diff3-bad' => 'GNU diff3 niet aangetroffen.',
+	'config-imagemagick' => 'ImageMagick aangetroffen: <code>$1</code>.
+Het aanmaken van miniaturen van afbeeldingen wordt ingeschakeld als u uploaden inschakelt.',
+	'config-gd' => 'Ingebouwde GD grafische bibliotheek aangetroffen.
+Het aanmaken van miniaturen van afbeeldingen wordt ingeschakeld als u uploaden inschakelt.',
+	'config-no-scaling' => 'De GD-bibliotheek en ImageMagick zijn niet aangetroffen.
+Het maken van miniaturen van afbeeldingen wordt uitgeschakeld.',
+	'config-dir' => 'Installatiemap: <code>$1</code>',
+	'config-uri' => 'Script URI-pad: <code>$1</code>',
+	'config-no-uri' => "'''Fout:''' de huidige URI kon niet vastgesteld worden.
+De installatie is afgebroken.",
+	'config-dir-not-writable' => "'''Fout:''' het bestand met instellingen kon niet weggeschreven worden.
+De installatie is afgebroken.
+
+Om de map beschrijfbaar te maken op een Unix/Linux-systeem:
+<pre>cd $1
+chmod a+w config</pre>",
+	'config-file-extension' => 'MediaWiki wordt geinstalleerd met <code>$1</code> als bestandsextensie.',
+	'config-shell-locale' => 'Als shelllocale is "$1" herkend',
+	'config-uploads-safe' => 'De uploadmap is beveiligd tegen het arbitrair uitvoeren van scripts.',
+	'config-uploads-not-safe' => "'''Waarschuwing:''' uw uploadmap <code>$1</code> kan gebruikt worden voor het arbitrair uitvoeren van scripts.
+Uploadmogelijkheden worden uitgeschakeld.",
 	'config-db-type' => 'Databasetype:',
 	'config-db-host' => 'Databasehost:',
 	'config-db-host-help' => 'Als uw databaseserver een andere server is, voer dan de hostnaam of het IP-adres hier in.
@@ -535,9 +574,49 @@ Dit mag alleen cijfers, letters en liggende streepjes bevatten.',
 Controleer de host, gebruikersnaam en wachtwoord hieronder in en probeer het opnieuw.',
 	'config-invalid-schema' => 'Ongeldige schema voor MediaWiki "$1".
 Gebruik alleen letters, cijfers en liggende streepjes.',
+	'config-invalid-ts2schema' => 'Ongeldig schema voor tsearch "$1".
+Gebruik alleen letters, cijfers en liggende streepjes.',
+	'config-postgres-old' => 'PostgreSQL $1 of hoger is vereist.
+U gebruikt $2.',
+	'config-sqlite-name-help' => 'Kies een naam die uw wiki identificeert.
+Gebruik geen spaties of koppeltekens.
+Deze naam wordt gebruikt voor het gegevensbestands van SQLite.',
+	'config-sqlite-parent-unwritable' => 'Het was niet mogelijk de gegevensmap "$1" aan te maken omdat in de bovenliggende map "$2" niet geschreven kan worden door de webserver.
+Maak deze map aan, zorg dat de webserver erin kan schrijven en probeer het opnieuw.',
+	'config-sqlite-mkdir-error' => 'Er is een fout opgetreden bij het aanmaken van de gegevensmap "$1".
+Controleer de locatie en probeer het opnieuw.',
+	'config-sqlite-dir-unwritable' => 'Het was niet mogelijk in de map "$1" te schrijven.
+Wijzig de rechten zodat de webserver erin kan schrijven en probeer het opnieuw.',
+	'config-sqlite-connection-error' => '$1.
+
+Controleer de map voor gegevens en de databasenaam hieronder en probeer het opnieuw.',
+	'config-sqlite-readonly' => 'Het bestand <code>$1</code> kan niet geschreven worden.',
+	'config-sqlite-cant-create-db' => 'Het was niet mogelijk het databasebestand <code>$1</code> aan te maken.',
+	'config-can-upgrade' => "Er staan al tabellen voor MediaWiki in deze database.
+Klik op '''Doorgaan''' om ze bij te werken naar MediaWiki $1.",
+	'config-upgrade-done' => "Het bijwerken is afgerond.
+
+Uw kunt [$1 uw wiki gebruiken].
+
+Als u uw <code>LocalSettings.php</code> opnieuw wilt aanmaken, klik dan op de knop hieronder.
+Dit is '''niet aan te raden''' tenzij u problemen hebt met uw wiki.",
+	'config-regenerate' => 'LocalSettings.php opnieuw aanmaken →',
+	'config-show-table-status' => 'Het uitvoeren van SHOW TABLE STATUS is mislukt!',
+	'config-unknown-collation' => "'''Waarschiwing:''' de database gebruikt een collatie die niet wordt herkend.",
+	'config-db-web-account' => 'Databasegebruiker voor webtoegang',
+	'config-db-web-help' => 'Selecteer de gebruikersnaam en het wachtwoord dat de webserver gebruikt om verbinding te maken met de databaseserver na de installatie.',
+	'config-db-web-account-same' => 'Dezelfde gebruiker gebruiken als voor de installatie',
+	'config-db-web-create' => 'Maak de gebruiker aan als deze nog niet bestaat',
+	'config-db-web-no-create-privs' => 'De gebruiker die u hebt opgegeven voor de installatie heeft niet voldoende rechten om een gebruiker aan te maken.
+De gebruiker die u hier opgeeft moet al bestaan.',
 	'config-mysql-engine' => 'Opslagmethode',
 	'config-mysql-innodb' => 'InnoDB',
 	'config-mysql-myisam' => 'MyISAM',
+	'config-mysql-engine-help' => "'''InnoDB''' is vrijwel altijd de beste instelling, omdat deze goed omgaat met meerdere verzoeken tegelijkertijd.
+
+'''MyISAM''' is bij een zeer beperkt aantal gebruikers mogelijk sneller, of als de wiki alleen-lezen is.
+MyISAM-databases raken vaker corrupt dan InnoDB-databases.",
+	'config-mysql-charset' => 'Tekenset voor de database',
 	'config-mysql-binary' => 'Binair',
 	'config-mysql-utf8' => 'UTF-8',
 	'config-site-name' => 'Naam van de wiki:',
@@ -545,7 +624,14 @@ Gebruik alleen letters, cijfers en liggende streepjes.',
 	'config-site-name-blank' => 'Geef een naam op voor de site.',
 	'config-project-namespace' => 'Projectnaamruimte',
 	'config-ns-generic' => 'Project',
+	'config-ns-site-name' => 'Zelfde als de wiki: $1',
+	'config-ns-other' => 'Andere (geen aan welke)',
 	'config-ns-other-default' => 'MijnWiki',
+	'config-project-namespace-help' => "In het kielzog van Wikipedia beheren veel wiki's hun beleidspagina's apart van hun inhoudelijke pagina's in een \"'''projectnaamruimte'''\".
+Alle paginanamen in deze naamruimte beginnen met een bepaald voorvoegsel dat u hier kunt aangeven.
+Dit voorvoegsel wordt meestal afgeleid van de naam van de wiki, maar het kan geen bijzondere tekens bevatten als \"#\" of \":\".",
+	'config-ns-invalid' => 'De aangegeven naamruimte "<nowiki>$1</nowiki>" is ongeldig.
+Geef een andere naamruimte op.',
 	'config-admin-default-username' => 'WikiBeheerder',
 	'config-admin-box' => 'Beheerdersaccount',
 	'config-admin-name' => 'Uw naam:',
@@ -561,8 +647,14 @@ Kies een andere gebruikersnaam.',
 	'config-admin-password-mismatch' => 'De twee door u ingevoerde wachtwoorden komen niet overeen.',
 	'config-admin-email' => 'E-mailadres:',
 	'config-admin-email-help' => "Voer hier een e-mail adres in om e-mail te kunnen ontvangen van andere gebruikers op de wiki, uw wachtwoord opnieuw in te stellen en op de hoogte te worden gehouden van wijzigingen van pagina's op uw volglijst.",
+	'config-subscribe' => 'Abonneren op de [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce mailinglijst releaseaankondigen].',
+	'config-subscribe-help' => 'Dit is een mailinglijst met een laag volume voor aankondigingen van releases, inclusief belangrijke aankondigingen met betrekking tot beveiliging.
+Abonneer uzelf erop en werk uw MediaWiki bij als er nieuwe versies uitkomen.',
+	'config-almost-done' => 'U bent bijna klaar!
+Als u wilt kunt u de overige instellingen overslaan en de wiki nu installeren.',
 	'config-optional-continue' => 'Meer vragen',
 	'config-optional-skip' => 'Installeer de wiki',
+	'config-profile' => 'Gebruikersrechtenprofiel',
 	'config-profile-wiki' => 'Traditionele wiki',
 	'config-profile-no-anon' => 'Gebruiker aanmaken verplicht',
 	'config-profile-private' => 'Privéwiki',
@@ -573,16 +665,54 @@ Kies een andere gebruikersnaam.',
 	'config-license-pd' => 'Publiek domein',
 	'config-license-cc-choose' => 'Een Creative Commons-licentie',
 	'config-email-settings' => 'E-mailinstellingen',
+	'config-enable-email' => 'Uitgaande e-mail inschakelen',
+	'config-enable-email-help' => "Als u wilt dat e-mailen mogelijk is, dan moeten [http://www.php.net/manual/en/mail.configuration.php PHP's e-mailinstellingen] correct zijn.
+Als u niet wilt dat e-mailen mogelijk is, dan kunt u de instellingen hier uitschakelen.",
 	'config-email-user' => 'E-mail tussen gebruikers inschakelen',
+	'config-email-user-help' => 'Gebruikers toestaan e-mail aan elkaar te verzenden als dit in de voorkeuren is ingesteld',
 	'config-email-usertalk' => 'Gebruikersoverlegnotificatie inschakelen',
+	'config-email-usertalk-help' => 'Gebruikers toestaan notificaties te ontvangen bij wijzigingen op de eigen overlegpagina als dit in de voorkeuren is ingesteld',
 	'config-email-watchlist' => 'Volglijstnotificatie inschakelen',
+	'config-email-watchlist-help' => "Gebruikers toestaan notificaties te ontvangen bij wijzigingen van pagina's op hun volglijst als dit in de voorkeuren is ingesteld",
 	'config-email-auth' => 'E-mailbevestiging inschakelen',
+	'config-email-auth-help' => "Als deze instelling actief is, moeten gebruikers hun e-mailadres bevestigen via een verwijziging die ze per e-mail wordt toegezonden.
+Alleen bevestigde e-mailadressen kunnen e-mail ontvangen van andere gebruikers of wijzigingsnotificaties ontvangen.
+Het inschakelen van deze instelling is '''aan te raden''' voor openbare wiki's vanwege de mogelijkheden voor misbruik van e-mailmogelijkheden.",
+	'config-email-sender' => 'E-mailadres voor antwoorden:',
+	'config-email-sender-help' => 'Voer het e-mailadres in dat u wilt gebruiken als antwoordadres voor uitgaande e-mail.
+Als een e-mail niet bezorgd kan worden, wordt dat op dit e-mailadres gemeld.
+Veel mailservers vereisen dat tenminste het domein bestaat.',
 	'config-upload-settings' => 'Afbeeldingen en bestanden uploaden',
 	'config-upload-enable' => 'Uploaden van bestanden inschakelen',
+	'config-upload-disabled' => 'Omdat uw webserver is ingesteld om scripts uit te voeren die in de uploadmap staan, wordt uploaden uitgeschakeld.',
+	'config-upload-deleted' => 'Map voor verwijderde bestanden:',
+	'config-upload-deleted-help' => 'Kies een map waarin verwijderde bestanden gearchiveerd kunnen worden.
+Idealiter is deze map niet via het web te benaderen.',
 	'config-logo' => 'URL voor logo:',
+	'config-logo-help' => 'Het standaarduiterlijk van MediaWiki bevat ruimte voor een logo van 135x135 pixels in de linker bovenhoek.
+Upload een afbeelding met de juiste afmetingen en voer de URL hier in.
+
+Als u geen logo wilt gebruiken, kunt u dit veld leeg laten.',
+	'config-cc-error' => 'De licentiekiezer van Creative Commons heeft geen resultaat opgeleverd.
+Voer de licentie handmatig in.',
+	'config-cc-not-chosen' => 'Kies alstublieft de Creative Commons-licentie die u wilt gebruiken en klik op "doorgaan".',
 	'config-advanced-settings' => 'Gevorderde instellingen',
+	'config-cache-options' => 'Instellingen voor het cachen van objecten',
+	'config-cache-help' => 'Het cachen van objecten wordt gebruikt om de snelheid van MediaWiki te verbeteren door vaak gebruikte gegevens te bewaren.
+Middelgrote tot grote websites wordt geadviseerd dit in te schakelen en ook kleine sites merken de voordelen.',
+	'config-cache-none' => 'Niets cachen.
+Er gaat geen functionaliteit verloren, maar dit kan invloed hebben op de snelheid.',
+	'config-cache-accel' => 'Cachen van objecten via PHP (APC, eAccelerator or XCache)',
+	'config-cache-memcached' => 'Memcached gebruiken (dit vereist aanvullende instellingen)',
+	'config-cache-db' => 'Gegevens cachen in de database',
+	'config-cache-anything' => 'MediaWiki zal proberen de gegevens te cachen waar mogelijk, behalve in Memcached, tenzij expliciet aangegeven.',
 	'config-memcached-servers' => 'Memcachedservers',
+	'config-memcached-help' => "Lijst met IP-adressen te gebruiken voor Memcached.
+Deze moeten worden gescheiden met komma's en geef de poort op die moet worden gebruikt (bijvoorbeeld: 1.2.3.4:56, 7.8.9.10:11).",
 	'config-extensions' => 'Uitbreidingen',
+	'config-extensions-help' => 'De bovenstaande uitbreidingen zijn aangetroffen in de map <code>./extensions</code>.
+
+Mogelijk moet u aanvullende instellingen maken, maar u kunt deze uitbreidingen nu inschakelen.',
 	'config-install-step-done' => 'Afgerond',
 	'config-install-step-failed' => 'Mislukt',
 	'config-install-extensions' => 'Inclusief uitbreidingen',
@@ -596,6 +726,8 @@ Zorg dat de gebruiker "$1" in het schema "$2" mag schrijven.',
 Overweeg deze handmatig te wijzigen.',
 	'config-install-sysop' => 'Gebruiker voor beheerder aanmaken',
 	'config-install-localsettings' => '<code>LocalSettings.php</code> aanmaken',
+	'config-install-localsettings-unwritable' => "'''Waarschuwing:''' het was niet mogelijk <code>LocalSettings.php</code> weg te schrijven.
+Maak dit bestand zelf aan met de volgende inhoud:",
 	'config-install-done' => "'''Gefeliciteerd!'''
 U hebt MediaWiki geïnstalleerd.
 
