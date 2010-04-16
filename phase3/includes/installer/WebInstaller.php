@@ -1579,7 +1579,7 @@ class WebInstaller_Install extends WebInstallerPage {
 
 	private function endStage( $success = true ) {
 		$msg = $success ? 'config-install-step-done' : 'config-install-step-failed';
-		$html = wfMsfHtml( 'word-separator' ) . wfMsgHtml( $msg );
+		$html = wfMsgHtml( 'word-separator' ) . wfMsgHtml( $msg );
 		if ( !$success ) {
 			$html = "<span class=\"error\">$html</span>";
 		}
