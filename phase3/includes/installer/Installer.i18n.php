@@ -99,7 +99,7 @@ This option causes horrible bugs with MediaWiki.
 You cannot install or use MediaWiki unless this option is disabled.",
 	'config-safe-mode'                => "'''Warning:'''
 '''PHP's [http://www.php.net/features.safe-mode safe mode] is active.'''
-It may cause problems, particularly if using image uploads and math support.",
+It may cause problems, particularly if using file uploads and <code>math</code> support.",
 	'config-xml-good'                 => 'Have XML / Latin1-UTF-8 conversion support.',
 	'config-xml-bad'                  => "PHP's XML module is missing;
 the wiki requires functions in this module and will not work in this configuration.
@@ -155,10 +155,10 @@ If you are using shared web hosting, your hosting provider will either give you 
 	'config-db-install-account'       => 'User account for installation',
 	'config-db-username'              => 'Database username:',
 	'config-db-password'              => 'Database password:',
-	'config-db-install-help'          => 'Select the username and password that will be used to connect to the database during the installation process.',
+	'config-db-install-help'          => 'Enter the username and password that will be used to connect to the database during the installation process.',
 	'config-db-account-lock'          => 'Use the same username and password during normal operation',
 	'config-db-wiki-account'          => 'User account for normal operation',
-	'config-db-wiki-help'             => 'Select the username and password that will be used to connect to the database during normal wiki operation.
+	'config-db-wiki-help'             => 'Enter the username and password that will be used to connect to the database during normal wiki operation.
 If the account does not exist, and the installation account has sufficient privileges, this user account will be created with the minimum privileges required to operate the wiki.',
 	'config-db-prefix'                => 'Database table prefix:',
 	'config-db-prefix-help'           => 'If you need to share one database between multiple wikis, or between MediaWiki and another web application, you may choose to add a prefix to all the table names to avoid conflicts.
