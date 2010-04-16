@@ -30,7 +30,7 @@ Check your php.ini and make sure <code>session.save_path</code> is set to an app
 	'config-back'                     => '← Back',
 	'config-continue'                 => 'Continue →',
 	'config-page-language'            => 'Language',
-	'config-page-welcome'             => 'Welcome',
+	'config-page-welcome'             => 'Welcome to MediaWiki!',
 	'config-page-dbconnect'           => 'Connect to database',
 	'config-page-upgrade'             => 'Upgrade existing',
 	'config-page-dbsettings'          => 'Database settings',
@@ -45,9 +45,7 @@ Check your php.ini and make sure <code>session.save_path</code> is set to an app
 	'config-page-upgradedoc'          => 'Upgrading',
 	'config-help-restart'             => 'Do you want to clear all saved data that you have entered and restart the installation process?',
 	'config-restart'                  => 'Yes, restart it',
-	'config-welcome'                  => 'Welcome to MediaWiki!
-
-=== Technical data ===
+	'config-welcome'                  => '=== Technical data ===
 Below is some technical data that you can provide if you need help during installation.',
 	'config-copyright'                => "=== Copyright and Terms ===
 
@@ -68,7 +66,7 @@ You should have received <doclink href=Copying>a copy of the GNU General Public 
 You can install MediaWiki.</span>', // FIXME: take span out of message.
 	'config-env-bad'                  => 'The environment has been checked.
 You cannot install MediaWiki.',
-	'config-env-php'                  => 'PHP $1 installed',
+	'config-env-php'                  => 'PHP $1 installed.',
 	'config-env-latest-ok'            => 'You are installing the latest version of Mediawiki.',
 	'config-env-latest-new'           => "'''Note:''' You are installing a development version of Mediawiki.",
 	'config-env-latest-old'           => "'''Warning:''' You are installing an outdated version of Mediawiki.",
@@ -81,7 +79,7 @@ The following database types are supported: $1.
 If you are on shared hosting, ask your hosting provider to install a suitable database driver.
 If you compiled PHP yourself, reconfigure it with a database client enabled, for example using <code>./configure --with-mysql</code>.
 If you installed PHP from a Debian or Ubuntu package, then you also need install the php5-mysql module.',
-	'config-have-db'                  => 'Found database drivers: $1',
+	'config-have-db'                  => 'Found database drivers: $1.',
 	'config-register-globals'         => "'''Warning: PHP's <code>[http://php.net/register_globals register_globals]</code> option is enabled.'''
 '''Disable it if you can.'''
 MediaWiki will work, but your server is exposed to potential security vulnerabilities.",
@@ -126,8 +124,8 @@ Image thumbnailing will be enabled if you enable uploads.',
 Image thumbnailing will be enabled if you enable uploads.',
 	'config-no-scaling'               => 'Could not find GD library or ImageMagick.
 Image thumbnailing will be disabled.',
-	'config-dir'                      => 'Installation directory: <code>$1</code>',
-	'config-uri'                      => 'Script URI path: <code>$1</code>',
+	'config-dir'                      => 'Installation directory: <code>$1</code>.',
+	'config-uri'                      => 'Script URI path: <code>$1</code>.',
 	'config-no-uri'                   => "'''Error:''' Could not determine the current URI.
 Installation aborted.",
 	'config-dir-not-writable'         => "'''Error:''' Cannot write config file.
@@ -136,7 +134,7 @@ Installation aborted.
 To make the directory writable on a Unix/Linux system:
 <pre>cd $1
 chmod a+w config</pre>",
-	'config-file-extension'           => 'Installing MediaWiki with <code>$1</code> file extensions',
+	'config-file-extension'           => 'Installing MediaWiki with <code>$1</code> file extensions.',
 	'config-shell-locale'             => 'Detected shell locale "$1"',
 	'config-uploads-safe'             => 'Default uploads directory is safe from arbitrary scripts execution.',
 	'config-uploads-not-safe'         => "'''Warning:''' Your default uploads directory <code>$1</code> is vulnerable to arbitrary scripts execution.
@@ -238,14 +236,14 @@ This is '''not recommended''' unless you are having problems with your wiki.",
 	'config-db-web-create'            => 'Create the account if it does not already exist',
 	'config-db-web-no-create-privs'   => 'The account you specified for installation does not have enough privileges to create an account.
 The account you specify here must already exist.',
-	'config-mysql-engine'             => 'Storage engine',
+	'config-mysql-engine'             => 'Storage engine:',
 	'config-mysql-innodb'             => 'InnoDB',
 	'config-mysql-myisam'             => 'MyISAM',
 	'config-mysql-engine-help'        => "'''InnoDB''' is almost always the best option, since it has good concurrency support.
 
 '''MyISAM''' may be faster in single-user or read-only installations.
 MyISAM databases tend to get corrupted more often than InnoDB databases.",
-	'config-mysql-charset'            => 'Database character set',
+	'config-mysql-charset'            => 'Database character set:',
 	'config-mysql-binary'             => 'Binary',
 	'config-mysql-utf8'               => 'UTF-8',
 	'config-mysql-charset-help'       => "In '''binary mode''', MediaWiki stores UTF-8 text to the database in binary fields.
@@ -255,7 +253,7 @@ In '''UTF-8 mode''', MySQL will know what character set your data is in, and can
 	'config-site-name'                => 'Name of wiki:',
 	'config-site-name-help'           => "This will appear in the browser's title bar and various other places.",
 	'config-site-name-blank'          => 'Enter a site name.',
-	'config-project-namespace'        => 'Project namespace',
+	'config-project-namespace'        => 'Project namespace:',
 	'config-ns-generic'               => 'Project',
 	'config-ns-site-name'             => 'Same as the wiki name: $1',
 	'config-ns-other'                 => 'Other (specify)',
@@ -287,25 +285,25 @@ You should subscribe to it and update your copy of MediaWiki when new versions c
 You can now skip the remaining configuration and install the wiki right now.',
 	'config-optional-continue'        => 'Ask me more questions.',
 	'config-optional-skip'            => "I'm bored already, just install the wiki.",
-	'config-profile'                  => 'User rights profile',
+	'config-profile'                  => 'User rights profile:',
 	'config-profile-wiki'             => 'Traditional wiki',
 	'config-profile-no-anon'          => 'Account creation required',
-	'config-profile-fishbowl'         => 'Fishbowl',
+	'config-profile-fishbowl'         => 'Authorized editors only',
 	'config-profile-private'          => 'Private wiki',
 	'config-profile-help'             => "Wikis work best when you let as many people edit them as possible.
-In MediaWiki, it's easy to review the recent changes, and to revert any damage that is done by naïve or malicious users.
+In MediaWiki, it is easy to review the recent changes, and to revert any damage that is done by naive or malicious users.
 
-However, many people have found MediaWiki to be useful in a wide variety of roles, and sometimes it's not easy to convince everyone around you of the benefits of the wiki way.
-So we give you the choice.
+However, many have found MediaWiki to be useful in a wide variety of roles, and sometimes it is not easy to convince everyone of the benefits of the wiki way.
+So you have the the choice.
 
 A '''traditional wiki''' allows anyone to edit, without even logging in.
-Some people prefer a wiki with '''account creation required''', since this provides extra accountability (but may deter casual contributors).
+A wiki with '''account creation required''' provides extra accountability, but may deter casual contributors.
 
-A '''fishbowl''' only allows approved users to edit, but the public can view the pages, including history.
+The '''authorized editors only''' scenario allows approved users to edit, but the public can view the pages, including history.
 A '''private wiki''' only allows approved users to view pages, with the same group allowed to edit.
 
 More complex user rights configurations are available after installation, see the [http://www.mediawiki.org/wiki/Manual:User_rights relevant manual entry].",
-	'config-license'                  => 'Copyright and license',
+	'config-license'                  => 'Copyright and license:',
 	'config-license-none'             => 'No license footer',
 	'config-license-gfdl-old'         => 'GNU Free Documentation License 1.2 or later',
 	'config-license-gfdl-current'     => 'GNU Free Documentation License 1.3 or later',
@@ -358,7 +356,7 @@ Enter the license name manually.',
 	'config-cc-again'                 => 'Pick again...',
 	'config-cc-not-chosen'            => 'Choose which Creative Commons license you want and click "proceed".',
 	'config-advanced-settings'        => 'Advanced configuration',
-	'config-cache-options'            => 'Settings for object caching',
+	'config-cache-options'            => 'Settings for object caching:',
 	'config-cache-help'               => 'Object caching is used to improve the speed of MediaWiki by caching frequently used data.
 Medium to large sites are highly encouraged to enable this, and small sites will see benefits as well.',
 	'config-cache-none'               => 'No caching.
@@ -366,8 +364,8 @@ No functionality is removed, but speed may be impacted.',
 	'config-cache-accel'              => 'PHP object caching (APC, eAccelerator or XCache)',
 	'config-cache-memcached'          => 'Use Memcached (requires additional setup and configuration)',
 	'config-cache-db'                 => 'Cache data into the database',
-	'config-cache-anything'           => 'MediaWiki will attempt to cache data anywhere possible, except in Memcached, unless indicated explicitely.',
-	'config-memcached-servers'        => 'Memcached servers',
+	'config-cache-anything'           => 'MediaWiki will attempt to cache data anywhere possible, except in Memcached, unless indicated explicitely',
+	'config-memcached-servers'        => 'Memcached servers:',
 	'config-memcached-help'           => 'List of IP addresses to use for Memcached.
 Should be separated with commas and specify the port to be used (for example: 1.2.3.4:56, 7.8.9.10:11).',
 	'config-extensions'               => 'Extensions',
@@ -424,7 +422,7 @@ Controleer uw php.ini en zorg dat er een juiste map is ingesteld voor <code>sess
 	'config-back' => '← Terug',
 	'config-continue' => 'Doorgaan →',
 	'config-page-language' => 'Taal',
-	'config-page-welcome' => 'Welkom',
+	'config-page-welcome' => 'Welkom bij MediaWiki!',
 	'config-page-dbconnect' => 'Verbinding maken met database',
 	'config-page-upgrade' => 'Bestaande bijwerken',
 	'config-page-dbsettings' => 'Databaseinstellingen',
@@ -439,16 +437,14 @@ Controleer uw php.ini en zorg dat er een juiste map is ingesteld voor <code>sess
 	'config-page-upgradedoc' => 'Bijwerken',
 	'config-help-restart' => 'Wilt u alle opgeslagen gegevens die u hebt ingevoerd wissen en het installatieproces opnieuw starten?',
 	'config-restart' => 'Ja, opnieuw starten',
-	'config-welcome' => 'Welkom bij MediaWiki!
-
-===Technische gegevens===
+	'config-welcome' => '===Technische gegevens===
 Hieronder staan een aantal technische gegevens die u kunt aanleveren als u ondersteuning nodig hebt bij de installatie.',
 	'config-authors' => 'MediaWiki is Copyright © 2001-2010 door Magnus Manske, Brion Vibber, Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström, Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz, Andrew Garrett, Raimond Spekking, Alexandre Emsenhuber, Siebrand Mazeland, Chad Horohoe en anderen.',
 	'config-env-good' => 'De omgeving is gecontroleerd.
 U kunt MediaWiki installeren.',
 	'config-env-bad' => 'De omgeving is gecontroleerd.
 U kunt MediaWiki niet installeren.',
-	'config-env-php' => 'PHP $1 is geïnstalleerd',
+	'config-env-php' => 'PHP $1 is geïnstalleerd.',
 	'config-env-latest-ok' => 'U bent bezig de meest recente versie van MediaWiki te installeren.',
 	'config-env-latest-new' => "'''Let op:''' U bent bezig een ontwikkelversie van MediaWiki te installeren.",
 	'config-env-latest-old' => "'''Waarschuwing:''' U bent bezig een verouderde versie van MediaWiki te installeren.",
@@ -460,7 +456,7 @@ De volgende databases worden ondersteund: $1.
 
 Als u op een gedeelde omgeving zit, vraag dan uw hostingprovider een geschikte databasedriver te installeren.
 Als u PHP zelf hebt gecompileerd, wijzig dan uw instellingen zodat een databasedriver wordt geactiveerd, bijvoorbeeld via <code>./configure --with-mysql</code>.',
-	'config-have-db' => 'Gevonden databasedrivers: $1',
+	'config-have-db' => 'Gevonden databasedrivers: $1.',
 	'config-register-globals' => "'''Waarschuwing: De PHP-optie <code>[http://php.net/register_globals register_globals]</code> is ingeschakeld.'''
 '''Schakel deze uit als dat mogelijk is.'''
 MediaWiki kan ermee werken, maar uw server is dan meer kwetsbaar voor beveiligingslekken.",
@@ -503,8 +499,8 @@ Het aanmaken van miniaturen van afbeeldingen wordt ingeschakeld als u uploaden i
 Het aanmaken van miniaturen van afbeeldingen wordt ingeschakeld als u uploaden inschakelt.',
 	'config-no-scaling' => 'De GD-bibliotheek en ImageMagick zijn niet aangetroffen.
 Het maken van miniaturen van afbeeldingen wordt uitgeschakeld.',
-	'config-dir' => 'Installatiemap: <code>$1</code>',
-	'config-uri' => 'Script URI-pad: <code>$1</code>',
+	'config-dir' => 'Installatiemap: <code>$1</code>.',
+	'config-uri' => 'Script URI-pad: <code>$1</code>.',
 	'config-no-uri' => "'''Fout:''' de huidige URI kon niet vastgesteld worden.
 De installatie is afgebroken.",
 	'config-dir-not-writable' => "'''Fout:''' het bestand met instellingen kon niet weggeschreven worden.
@@ -609,20 +605,20 @@ Dit is '''niet aan te raden''' tenzij u problemen hebt met uw wiki.",
 	'config-db-web-create' => 'Maak de gebruiker aan als deze nog niet bestaat',
 	'config-db-web-no-create-privs' => 'De gebruiker die u hebt opgegeven voor de installatie heeft niet voldoende rechten om een gebruiker aan te maken.
 De gebruiker die u hier opgeeft moet al bestaan.',
-	'config-mysql-engine' => 'Opslagmethode',
+	'config-mysql-engine' => 'Opslagmethode:',
 	'config-mysql-innodb' => 'InnoDB',
 	'config-mysql-myisam' => 'MyISAM',
 	'config-mysql-engine-help' => "'''InnoDB''' is vrijwel altijd de beste instelling, omdat deze goed omgaat met meerdere verzoeken tegelijkertijd.
 
 '''MyISAM''' is bij een zeer beperkt aantal gebruikers mogelijk sneller, of als de wiki alleen-lezen is.
 MyISAM-databases raken vaker corrupt dan InnoDB-databases.",
-	'config-mysql-charset' => 'Tekenset voor de database',
+	'config-mysql-charset' => 'Tekenset voor de database:',
 	'config-mysql-binary' => 'Binair',
 	'config-mysql-utf8' => 'UTF-8',
 	'config-site-name' => 'Naam van de wiki:',
 	'config-site-name-help' => 'Deze naam verschijnt in de titelbalk van browsers en op andere plaatsen.',
 	'config-site-name-blank' => 'Geef een naam op voor de site.',
-	'config-project-namespace' => 'Projectnaamruimte',
+	'config-project-namespace' => 'Projectnaamruimte:',
 	'config-ns-generic' => 'Project',
 	'config-ns-site-name' => 'Zelfde als de wiki: $1',
 	'config-ns-other' => 'Andere (geen aan welke)',
@@ -654,11 +650,11 @@ Abonneer uzelf erop en werk uw MediaWiki bij als er nieuwe versies uitkomen.',
 Als u wilt kunt u de overige instellingen overslaan en de wiki nu installeren.',
 	'config-optional-continue' => 'Meer vragen',
 	'config-optional-skip' => 'Installeer de wiki',
-	'config-profile' => 'Gebruikersrechtenprofiel',
+	'config-profile' => 'Gebruikersrechtenprofiel:',
 	'config-profile-wiki' => 'Traditionele wiki',
 	'config-profile-no-anon' => 'Gebruiker aanmaken verplicht',
 	'config-profile-private' => 'Privéwiki',
-	'config-license' => 'Auteursrechten en licentie',
+	'config-license' => 'Auteursrechten en licentie:',
 	'config-license-none' => 'Geen licentie in de voettekst',
 	'config-license-gfdl-old' => 'GNU Free Documentation License 1.2 of hoger',
 	'config-license-gfdl-current' => 'GNU Free Documentation License 1.3 of hoger',
@@ -697,7 +693,7 @@ Als u geen logo wilt gebruiken, kunt u dit veld leeg laten.',
 Voer de licentie handmatig in.',
 	'config-cc-not-chosen' => 'Kies alstublieft de Creative Commons-licentie die u wilt gebruiken en klik op "doorgaan".',
 	'config-advanced-settings' => 'Gevorderde instellingen',
-	'config-cache-options' => 'Instellingen voor het cachen van objecten',
+	'config-cache-options' => 'Instellingen voor het cachen van objecten:',
 	'config-cache-help' => 'Het cachen van objecten wordt gebruikt om de snelheid van MediaWiki te verbeteren door vaak gebruikte gegevens te bewaren.
 Middelgrote tot grote websites wordt geadviseerd dit in te schakelen en ook kleine sites merken de voordelen.',
 	'config-cache-none' => 'Niets cachen.
@@ -705,8 +701,8 @@ Er gaat geen functionaliteit verloren, maar dit kan invloed hebben op de snelhei
 	'config-cache-accel' => 'Cachen van objecten via PHP (APC, eAccelerator or XCache)',
 	'config-cache-memcached' => 'Memcached gebruiken (dit vereist aanvullende instellingen)',
 	'config-cache-db' => 'Gegevens cachen in de database',
-	'config-cache-anything' => 'MediaWiki zal proberen de gegevens te cachen waar mogelijk, behalve in Memcached, tenzij expliciet aangegeven.',
-	'config-memcached-servers' => 'Memcachedservers',
+	'config-cache-anything' => 'MediaWiki zal proberen de gegevens te cachen waar mogelijk, behalve in Memcached, tenzij expliciet aangegeven',
+	'config-memcached-servers' => 'Memcachedservers:',
 	'config-memcached-help' => "Lijst met IP-adressen te gebruiken voor Memcached.
 Deze moeten worden gescheiden met komma's en geef de poort op die moet worden gebruikt (bijvoorbeeld: 1.2.3.4:56, 7.8.9.10:11).",
 	'config-extensions' => 'Uitbreidingen',
