@@ -16,11 +16,11 @@ $messages['en'] = array(
 	'config-session-error'            => 'Error starting session: $1',
 	'config-session-expired'          => 'Your session data seems to have expired.
 Sessions are configured for a lifetime of $1.
-You can increase this by setting session.gc_maxlifetime in php.ini.
+You can increase this by setting <code>session.gc_maxlifetime</code> in php.ini.
 Please restart the installation process.',
 	'config-no-session'               => 'Your session data was lost!
-Please check your php.ini and make sure session.save_path is set to an appropriate directory.',
-	'config-session-path-bad'         => 'Your session.save_path ($1) seems to be invalid or unwritable.',
+Please check your php.ini and make sure <code>session.save_path</code> is set to an appropriate directory.',
+	'config-session-path-bad'         => 'Your <code>session.save_path</code> (<code>$1</code>) seems to be invalid or unwritable.',
 	'config-show-help'                => 'Help',
 	'config-hide-help'                => 'Hide help',
 	'config-your-language'            => 'Your language:',
@@ -48,7 +48,7 @@ Please check your php.ini and make sure session.save_path is set to an appropria
 	'config-welcome'                  => 'Welcome to MediaWiki!
 
 === Technical data ===
-Below is some technical data that you can provide to us if you need help during installation.',
+Below is some technical data that you can provide if you need help during installation.',
 	'config-copyright'                => "=== Copyright and Terms ===
 
 $1
