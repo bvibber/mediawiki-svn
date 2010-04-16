@@ -230,10 +230,21 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Reaperman
  */
 $messages['cs'] = array(
+	'adminlinks' => 'Odkazy pro správce',
 	'adminlinks-desc' => 'Přidává [[Special:AdminLinks|speciální stránku]] s užitečnými odkazy pro správce',
+	'adminlinks_documentation' => 'Dokumentace pro $1',
+	'adminlinks_general' => 'Obecné',
+	'adminlinks_editsidebar' => 'Upravit postranní panel',
+	'adminlinks_editcss' => 'Upravit globální CSS',
+	'adminlinks_editmainpagename' => 'Upravit název hlavní stránky',
 	'adminlinks_users' => 'Uživatelé',
+	'adminlinks_createuser' => 'Vytvořit uživatelský účet',
+	'adminlinks_browsesearch' => 'Prohlížení a vyhledávání',
+	'adminlinks_importexport' => 'Import a export stránek',
+	'right-adminlinks' => 'Viditelný odkaz na stránku [[Special:AdminLinks|Odkazy pro správce]]',
 );
 
 /** Welsh (Cymraeg)

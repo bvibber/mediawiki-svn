@@ -785,11 +785,12 @@ Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multi
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
 	'multipleupload' => 'Muatkan lebih dari satu berkas',
-	'multipleupload-desc' => 'Mengijinkan pengguna untuk [[Special:MultipleUpload|memuatkan beberapa berkas sekaligus]]',
+	'multipleupload-desc' => 'Mengizinkan pengguna untuk [[Special:MultipleUpload|mengunggah beberapa berkas sekaligus]]',
 	'multipleupload-ignoreallwarnings' => "Abaikan '''semua peringatan''' dan langsung simpan semua berkas.",
 	'multipleupload-saveallfiles' => 'Simpan semua berkas',
 	'multipleupload-addresswarnings' => 'Silakan periksa terlebih dahulu pesan-pesan peringatan yang ditampilkan sebelum memuat ulang berkas.',

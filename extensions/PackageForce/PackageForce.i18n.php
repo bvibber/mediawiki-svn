@@ -36,6 +36,15 @@ $messages['en'] = array(
 	#'right-packageforce-edit' => '',  new rights. It is shown at Special:ListGroupRights
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'pf-admin-menu-default' => '{{Identical|Default}}',
+	'pf-header-documentation' => '{{Identical|Documentation}}',
+	'pf-header-page_title' => '{{Identical|Title}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

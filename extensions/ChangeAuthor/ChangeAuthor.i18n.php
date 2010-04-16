@@ -443,6 +443,7 @@ $messages['ch'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Reaperman
  */
 $messages['cs'] = array(
 	'changeauthor' => 'Změnit autora revize',
@@ -465,6 +466,7 @@ $messages['cs'] = array(
 	'changeauthor-success' => 'Vaše požadavky byly úspěšně zpracovány.',
 	'changeauthor-logentry' => 'Autor $2 z $1 byl změněn z $3 na $4',
 	'changeauthor-logpagename' => 'Záznam změn autorů',
+	'right-changeauthor' => 'Měnit autora revize',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)

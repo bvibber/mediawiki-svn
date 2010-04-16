@@ -275,6 +275,7 @@ Please contact the server operator or administrator.",
  * @author Lloffiwr
  * @author Malafaya
  * @author Meno25
+ * @author Michawiki
  * @author Purodha
  * @author Siebrand
  * @author Umherirrender
@@ -301,6 +302,7 @@ $messages['qqq'] = array(
 	'ow_importtsv_bad_columns' => "Do not translate 'definition_iso' and 'translations_iso'.",
 	'ow_exporttsv_languages' => '{{Identical|Language}}',
 	'addcollection' => 'Name of special page (see [http://www.omegawiki.org/Special:Specialpages http://www.omegawiki.org/Special:Specialpages])',
+	'ow_searchnoresult' => "Don't translate the word ''Expression'' in ''<nowiki>[[Expression:$1]]</nowiki>''",
 	'ow_save' => '{{Identical|Save}}',
 	'ow_history' => '{{Identical|History}}',
 	'ow_none_selected' => '{{Identical|None selected}}',
@@ -321,6 +323,7 @@ $messages['qqq'] = array(
 	'ow_ClassAttributeType' => '{{Identical|Type}}',
 	'ow_Collection' => '{{Identical|Collection}}',
 	'ow_Collection_colon' => '{{Identical|Collection}}',
+	'ow_Definition' => '{{Identical|Definition}}',
 	'ow_DefinedMeaningAttributes' => '{{Identical|Annotation}}',
 	'ow_DefinedMeaning' => '{{Identical|Defined meaning}}',
 	'ow_DefinedMeaningReference' => '{{Identical|Defined meaning}}',
@@ -1212,6 +1215,9 @@ $messages['be-tarask'] = array(
 	'ow_exporttsv_not_allowed' => 'Вы ня маеце правоў для экспартаваньня TSV.',
 	'ow_exporttsv_export_failed' => 'Экспарт не адбыўся',
 	'addcollection' => 'ВікіЗьвесткі: Дадаць калекцыю',
+	'ow_searchnoresult' => "<p>Вы можаце:<br />
+* '''Стварыць выраз «[[Expression:$1]]»''' (і дадаць апісаньне)<br />
+* '''Стварыць старонку «[[:$1]]»''' (стандартную вікі-старонку)</p>",
 	'ow_save' => 'Захаваць',
 	'ow_history' => 'Гісторыя',
 	'ow_datasets' => 'Выбар набору зьвестак',
@@ -2741,6 +2747,9 @@ Wubjeŕ zběrku za eksport. W tekstowem kašćiku za rěce, zapódaj lisćinu r�
 	'ow_exporttsv_not_allowed' => 'Njamaš pšawo TSV eksportěrowaś.',
 	'ow_exporttsv_export_failed' => 'Eksport jo se njeraźił.',
 	'addcollection' => 'Wikidata: Zběrku pśidaś',
+	'ow_searchnoresult' => "<p>Móžoš:<br />
+* '''Napóraj wuraz \"[[Expression:\$1]]\"''' (a pśidaj definiciju)<br />
+* '''Napóraj bok \"[[:\$1]]\"''' (standardny wikibok)</p>",
 	'ow_save' => 'Składowaś',
 	'ow_history' => 'Wersije/Awtory',
 	'ow_datasets' => 'Wuběrk datoweje sajźby',
@@ -4019,6 +4028,7 @@ Tulit tälle sivulle ehkä suoraan? Normaalisti sinun ei pitäisi olla täällä
  * @author IAlex
  * @author Korrigan
  * @author Meithal
+ * @author Peter17
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
@@ -4088,6 +4098,9 @@ Sélectionnez une collection à exporter. Dans la boîte de texte de langues, en
 	'ow_exporttsv_not_allowed' => 'Vous n’avez pas la permission d’effectuer une exportation de données TSV.',
 	'ow_exporttsv_export_failed' => 'L’exportation de données TSV a échoué',
 	'addcollection' => 'Wikidata : ajouter une collection',
+	'ow_searchnoresult' => "<p>Vous pouvez :<br />
+* '''Créer l’expression « [[Expression:$1]] »''' (et ajouter une définition)<br />
+* '''Créer la page « [[:$1]] »''' (une page wiki standard)</p>",
 	'ow_save' => 'Sauvegarder',
 	'ow_history' => 'Historique',
 	'ow_datasets' => 'Sélection des ensembles de données',
@@ -4404,6 +4417,9 @@ Seleccione unha colección a exportar. Na caixa de texto das linguas, insira unh
 	'ow_exporttsv_not_allowed' => 'Non ten os permisos necesarios para facer unha exportación TSV.',
 	'ow_exporttsv_export_failed' => 'Fallou a exportación',
 	'addcollection' => 'Wikidata: Engadir unha colección',
+	'ow_searchnoresult' => "<p>Pode:<br />
+* '''Crear a expresión \"[[Expression:\$1]]\"''' (e engadir unha definición)<br />
+* '''Crear a páxina \"[[:\$1]]\"''' (unha páxina wiki normal)</p>",
 	'ow_save' => 'Gardar',
 	'ow_history' => 'Historial',
 	'ow_datasets' => 'Selección de datos fixados',
@@ -4727,6 +4743,9 @@ Wehl e Sammlig zum Export uus. Gib im Sprochechäschtli e Lischt vu ISO 639-3 Sp
 	'ow_exporttsv_not_allowed' => 'Du derfsch kei TSV-Export mache',
 	'ow_exporttsv_export_failed' => 'Export fählgschla',
 	'addcollection' => 'Wikidata: Sammlig zuefiege',
+	'ow_searchnoresult' => "<p>Du chasch:<br />
+* '''D Erwyterig „[[Expression:$1]]“ aalege''' (un e Definition zuefiege)<br />
+* '''D Syte „[[:$1]]“ aalege''' (e Standardwikisyte)</p>",
 	'ow_save' => 'Spychere',
 	'ow_history' => 'Versione/Autore',
 	'ow_datasets' => 'Uswahl vum Dataset',
@@ -5298,6 +5317,9 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'ow_exporttsv_not_allowed' => 'Nimaš prawo TSV eksportować.',
 	'ow_exporttsv_export_failed' => 'Eksport je so njeporadźił',
 	'addcollection' => 'Wikidata: Zběrku přidać',
+	'ow_searchnoresult' => "<p>Móžeš:<br />
+* '''Wutwor wuraz \"[[Expression:\$1]]\"''' (a přidaj definiciju)<br />
+* '''Wutwor stronu \"[[:\$1]]\"''' (standardna wikistrona)</p>",
 	'ow_save' => 'Składować',
 	'ow_history' => 'Stawizny',
 	'ow_datasets' => 'Mnóstwo datow wubrać',
@@ -5757,6 +5779,9 @@ Selige un collection a exportar. In le quadro de texto a linguas, entra un lista
 	'ow_exporttsv_not_allowed' => 'Tu non ha le permission de facer un exportation in TSV.',
 	'ow_exporttsv_export_failed' => 'Exportation fallite',
 	'addcollection' => 'Wikidatos: Adder collection',
+	'ow_searchnoresult' => "<p>Tu pote:<br />
+* '''Crear le expression \"[[Expression:\$1]]\"''' (e adder un definition)<br />
+* '''Crear le pagina \"[[:\$1]]\"''' (un pagina wiki standard)</p>",
 	'ow_save' => 'Salveguardar',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Selection de collection de datos',
@@ -8374,6 +8399,9 @@ Klik daarna op 'Aanmaken' om het bestand aan te laten maken.</p>",
 	'ow_exporttsv_not_allowed' => 'U hebt geen rechten om naar een TSV te exporteren.',
 	'ow_exporttsv_export_failed' => 'Er is iets verkeerd gegaan tijdens het exporteren',
 	'addcollection' => 'Wikidata: Collectie toevoegen',
+	'ow_searchnoresult' => "<p>U mag:<br />
+* '''De expressie \"[[Expression:\$1]]\"''' aanmaken (en een definitie toevoegen)<br />
+* '''De pagina \"[[:\$1]]\"''' aanmaken (een standaard wikipagina)</p>",
 	'ow_save' => 'Opslaan',
 	'ow_history' => 'Geschiedenis',
 	'ow_datasets' => 'Gegevenssetselectie',
@@ -9562,6 +9590,9 @@ Ch'a selession-a na colession da esporté. Ant la casela ëd test dle lenghe, ch
 	'ow_exporttsv_not_allowed' => "A l'ha nen ël përmess ëd fé n'esportassion TSV.",
 	'ow_exporttsv_export_failed' => 'Esportassion falìa',
 	'addcollection' => 'Wikidata: gionté na colession',
+	'ow_searchnoresult' => "<p>A peul:<br />
+* '''Creé l'espression «[[Expression:$1]]»''' (e gionté na definission)<br />
+* '''Creé la pàgina «[[:$1]]»''' (na pàgina wiki normal)</p>",
 	'ow_save' => 'Salvé',
 	'ow_history' => 'Stòria',
 	'ow_datasets' => 'Base dat',
@@ -9876,6 +9907,9 @@ Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza 
 	'ow_exporttsv_not_allowed' => 'Não tem permissões para fazer uma exportação para TSV.',
 	'ow_exporttsv_export_failed' => 'A exportação falhou',
 	'addcollection' => 'Wikidata: Adicionar colecção',
+	'ow_searchnoresult' => "<p>Pode:<br />
+* '''Criar a expressão \"[[Expression:\$1]]\"''' (e adicionar uma definição)<br />
+* '''Criar a página \"[[:\$1]]\"''' (uma página wiki normal)</p>",
 	'ow_save' => 'Gravar',
 	'ow_history' => 'História',
 	'ow_datasets' => 'Selecção do conjunto de dados',

@@ -296,11 +296,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'icon-badimage' => 'Gambar salah',
 	'icon-badwidth' => 'Lebar salah',
-	'icon-desc' => 'Mengijinkan Anda untuk menggunakan gambar sebagai ikon dan pranala ikon',
+	'icon-desc' => 'Memungkinkan Anda untuk menggunakan gambar sebagai ikon dan pranala ikon',
 );
 
 /** Ido (Ido)

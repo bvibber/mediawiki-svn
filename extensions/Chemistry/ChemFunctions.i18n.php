@@ -653,7 +653,9 @@ $messages['ko'] = array(
 	'chemicalsource-desc' => '화학식 표현을 위해 <nowiki><chemform></nowiki> 태그를 추가',
 	'chemFunctions_CAS' => 'CAS 등록 번호',
 	'chemFunctions_ATCCode' => 'ATC 코드',
+	'chemFunctions_ECNumber' => '효소 번호',
 	'chemFunctions_Formula' => '식',
+	'chemFunctions_Name' => 'IUPAC 이름',
 	'chemFunctions_ChemFormInputError' => '화학식: 입력 오류!',
 );
 

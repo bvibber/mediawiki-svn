@@ -675,6 +675,8 @@ $messages['ko'] = array(
 	'fundraiserportal-plain-button' => '위키백과를 지원해주세요!',
 	'fundraiserportal-ruby-button' => '지금 기부하기',
 	'fundraiserportal-rubytext-button' => '지금 기부하기',
+	'fundraiserportal-sapphire-button' => '지금 기부하기',
+	'fundraiserportal-tourmaline-button' => '지금 기부하기',
 );
 
 /** Ripoarisch (Ripoarisch)

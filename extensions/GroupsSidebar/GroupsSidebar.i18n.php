@@ -46,6 +46,13 @@ $messages['ca'] = array(
 	'groupssidebar-desc' => "Aquesta extensió permet als administradors del lloc incloure elements a la barra lateral per a grups específics d'usuaris",
 );
 
+/** Czech (Česky)
+ * @author Reaperman
+ */
+$messages['cs'] = array(
+	'groupssidebar-desc' => 'Tato extenze umožňuje správcům přidávat do postranního panelu prvky jen pro určité uživatelské skupiny',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

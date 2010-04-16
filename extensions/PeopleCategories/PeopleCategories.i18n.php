@@ -61,6 +61,13 @@ $messages['gl'] = array(
 	'peoplecategories-desc' => 'Cambiar o xeito en que se mostran os nomes das páxinas de "Nome Apelido" a "Apelido, Nome" en determinadas categorías',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'peoplecategories-desc' => 'Änderet di aazeigte Sytenäme vu „Vorname Zuename“ uf „Zuename, Vorname“ uf Kategoriesyte, wu aagee sin',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

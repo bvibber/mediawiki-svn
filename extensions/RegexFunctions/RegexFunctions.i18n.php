@@ -186,6 +186,13 @@ $messages['ja'] = array(
 	'regexfunctions-desc' => '正規表現パーサー関数',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'regexfunctions-desc' => '정규 표현식 파서 함수',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

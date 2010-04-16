@@ -2214,10 +2214,12 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'sign-realname' => 'Nome:',
+	'sign-address' => 'Via:',
 	'sign-zip' => 'Codice postale:',
 	'sign-bday' => 'Età:',
 	'sign-email' => 'Indirizzo e-mail:',

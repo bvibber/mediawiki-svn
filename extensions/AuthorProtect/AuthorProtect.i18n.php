@@ -243,6 +243,7 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Reaperman
  */
 $messages['cs'] = array(
 	'authorprotect' => 'Zabránit neautorským úpravám',
@@ -258,6 +259,7 @@ $messages['cs'] = array(
 	'authorprotect-failure' => 'Zamknutí neproběhlo úspěšně',
 	'protect-level-author' => 'Ochránit před neautorskými úpravami',
 	'restriction-level-author' => 'Jen pro autory',
+	'right-authorprotect' => 'Nastavení omezení editace pro uživatele, kteří nejsou autory stránky',
 );
 
 /** Welsh (Cymraeg)

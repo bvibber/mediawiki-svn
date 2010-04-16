@@ -206,10 +206,11 @@ $messages['ja'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'mwreleases-desc' => '지원하는 [[Mediawiki:Mwrelease-list|릴리즈 목록]]을 추가함, API로 접근 가능',
+	'mwreleases-desc' => '지원하는 [[Mediawiki:Mwreleases-list|릴리즈 목록]]을 추가함, API로 접근 가능',
 );
 
 /** Ripoarisch (Ripoarisch)

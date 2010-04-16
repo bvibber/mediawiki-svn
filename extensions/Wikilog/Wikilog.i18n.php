@@ -5758,6 +5758,7 @@ Yorum, bir moderatör tarafından incelendikten sonra görülecek.',
 /** Ukrainian (Українська)
  * @author Aleksandrit
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'wikilog-desc' => 'Додає можливість ведення блоґів, створення гібрида вікі та блоґу',
@@ -5796,6 +5797,7 @@ $messages['uk'] = array(
 	'wikilog-summary-more' => '[[$3|→ продовжити читання…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|обговорення]])',
 	'wikilog-edit-signpub' => 'Підписати та опублікувати цю статтю',
+	'wikilog-comment-permalink' => '$1 о $2',
 	'wikilog-comment-pending' => 'Цей коментар чекає на розгляд.',
 	'wikilog-comment-deleted' => 'Цей коментар був вилучений.',
 	'wikilog-comment-autosumm' => 'Новий коментар від $1: $2',

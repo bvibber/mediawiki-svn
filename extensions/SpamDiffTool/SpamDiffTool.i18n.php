@@ -1200,13 +1200,14 @@ Kliknij <a href='$1'>tutaj</a>, żeby wrócić do poprzedniej strony.",
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'spamdifftool' => 'Gëstiss la blacklist dë spam',
 	'spamdifftool-desc' => 'A dà na manera base ëd gionté neuve intrade a la blacklist dë spam da pàgine diferente',
 	'spamdifftool_cantedit' => "Spasent - it l'has pa ël përmess ëd modifiché la blacklist dë spam.",
-	'spamdifftool-no-title' => "'''Eror:''' pa gnun tìtoj pàagina a l'é stàit specificà.",
+	'spamdifftool-no-title' => "'''Eror:''' gnun tìtol ëd pàgina a l'é stàit specificà.",
 	'spamdifftool_notext' => "A-i é pa ëd test da gionté a la blacklist dë spam.
 Sgnaca <a href='$1'>here</a> për continué.",
 	'spamdifftool_confirm' => "Conferma ch'it veule gionté ste intrade-sì a la blacklist dë spam.

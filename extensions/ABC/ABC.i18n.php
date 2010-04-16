@@ -139,6 +139,14 @@ $messages['ca'] = array(
 	'abcdownload' => 'Descarrega:',
 );
 
+/** Czech (Česky)
+ * @author Reaperman
+ */
+$messages['cs'] = array(
+	'abc-desc' => 'Přidává značku <tt>&lt;abc&gt;</tt> pro práci s hudební notací',
+	'abcdownload' => 'Stáhnout:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */

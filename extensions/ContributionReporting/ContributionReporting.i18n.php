@@ -2402,6 +2402,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -2440,20 +2441,27 @@ $messages['it'] = array(
 	'contribstats-value-from' => 'Fra $1 - $2',
 	'contribstats-value-over' => 'Più di $1',
 	'contributiontrackingstatistics' => 'Monitoraggio statistiche dei contributi',
-	'contribstats-day-totals' => 'Totale per oggi',
+	'contribstats-day-totals' => 'Totale per giorno',
 	'contribstats-week' => 'Settimana',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totale per questa settimana|Totali settimanali per le ultime $1 settimane}}',
+	'contribstats-payment-type' => 'Tipo di pagamento',
+	'contribstats-banner' => 'Banner',
 	'contribstats-clicks' => 'Clic',
 	'contribstats-donations' => 'Donazioni',
 	'contribstats-conversion' => 'Tasso di conversione (%)',
 	'contribstats-template' => 'Template',
+	'contribstats-nodata' => 'Nessun dato fornito',
+	'contribstats-donatepage' => 'Pagina di donazione',
 	'contribstats-average' => 'Media',
+	'contribstats-paypal-donations' => 'PayPal',
+	'contribstats-credit-card' => 'Carta di credito',
 	'fundraiserstatistics' => 'Statistiche della raccolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Giorno $1 di $2',
 	'fundraiserstats-contributions' => 'Contributi',
 	'fundraiserstats-total' => 'Totale (USD)',
 	'fundraiserstats-avg' => 'Media (USD)',
+	'fundraiserstats-ytd' => 'Totale cumulativo (USD)',
 	'fundraiserstats-max' => 'Massimo (USD)',
 	'fundraiserstats-tab-totals' => 'Totali (USD)',
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',

@@ -218,6 +218,13 @@ $messages['ja'] = array(
 	'categorytests-desc' => 'カテゴリに関する試験のための関数群',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'categorytests-desc' => '분류 테스트를 위한 기능',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

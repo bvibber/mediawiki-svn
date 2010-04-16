@@ -252,14 +252,20 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Reaperman
  */
 $messages['cs'] = array(
 	'countedits' => 'Počítadlo editací',
+	'countedits-desc' => '[[Special:CountEdits|Speciální stránka]], která zobrazuje počet editací jednotlivých uživatelů seznam deseti nejaktivnějších editorů',
+	'countedits-warning' => "'''Varování:''' Nesuďte knihu podle obálky.
+Nesuďte uživatele podle počtu editací.",
 	'countedits-username' => 'Uživatelské jméno:',
 	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Uživatelský účet se jménem $1 neexistuje.',
 	'countedits-resultheader' => 'Výsledky pro $1',
-	'countedits-resulttext' => '$1 má $2 editac{{PLURAL:$2|i|e|í}}',
+	'countedits-resulttext' => '$1 {{gender:$1|provedl|provedla|provedl}} $2 {{PLURAL:$2|editaci|editace|editací}}',
 	'countedits-mostactive' => 'Nejaktivnější přispěvatelé',
+	'countedits-nocontribs' => 'Na této wiki zatím nebyly provedeny žádné editace.',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
