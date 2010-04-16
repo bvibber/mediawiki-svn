@@ -372,27 +372,29 @@ Should be separated with commas and specify the port to be used (eg: 1.2.3.4:56,
 	'config-extensions-help'          => 'The extensions listed above were automatically detected in your <code>./extensions</code> directory.
 
 They may require additional configuration, but you can enable them now',
-	'config-install-step-done'        => 'done',
+	'config-install-step-done'        => 'Done',
 	'config-install-step-failed'      => 'Failed',
 	'config-install-extensions'       => 'Including extensions',
 	'config-install-database'         => 'Setting up database',
 	'config-install-pg-schema-failed' => 'Tables creation failed.
 Make sure that the user "$1" can write to the schema "$2".',
 	'config-install-tables'           => 'Creating tables',
-	'config-install-interwiki-sql'    => 'Could not find file interwiki.sql',
+	'config-install-interwiki-sql'    => 'Could not find file <code>interwiki.sql</code>',
 	'config-install-secretkey'        => 'Generating secret key',
-	'config-insecure-secretkey'       => 'Warning: Unable to create secure $wgSecretKey.
+	'config-insecure-secretkey'       => 'Warning: Unable to create secure <code>$wgSecretKey</code>.
 Consider changing it manually.',
 	'config-install-sysop'            => 'Creating administrator user account',
-	'config-install-localsettings'    => 'Creating LocalSettings.php',
-	'config-install-localsettings-unwritable' => 'Warning: could not write LocalSettings.php.
+	'config-install-localsettings'    => 'Creating <code>LocalSettings.php</code>',
+	'config-install-localsettings-unwritable' => 'Warning: Could not write <code>LocalSettings.php</code>.
 Please create it yourself, using the following text:',
-	'config-install-done'             => "'''Congratulations''', you have successfully installed MediaWiki.
+	'config-install-done'             => "'''Congratulations!'''
+You have successfully installed MediaWiki.
 
-You will need to move it from <code>./config/LocalSettings.php</code> to <code>./LocalSettings.php</code> in order for MediaWiki to begin working.
+You will need to move it from <code>./config/LocalSettings.php</code> to <code>./LocalSettings.php</code> in order for MediaWiki to work.
 
-[$1 Link to your wiki]",
-	'config-install-done-moved'       => "'''Congratulations''', you have successfully installed MediaWiki.
+[$1 Enter your wiki]",
+	'config-install-done-moved'       => "'''Congratulations!'''
+You have successfully installed MediaWiki.
 
-[$1 Link to your wiki]",
+[$1 Enter your wiki]",
 );
