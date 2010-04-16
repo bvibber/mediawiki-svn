@@ -374,7 +374,7 @@ Vyberte všechny relevantní možnosti.',
 	'prefswitch-success-feedback' => 'Vaše zpětná vazba byla odeslána.',
 	'prefswitch-return' => '<hr style="clear:both"> 
 Zpět na <span class="plainlinks">[$1 $2].</span>',
-	'prefswitch-main' => 'Tvrdě jsme pracovali, aby se uživatelům snadněji pracovalo. Jsme rádi, že s vámi můžeme sdílet nový vzhled a úpravy rozhraní. Zlepšení použitelnosti našich projektů je prioritou Wikimedia Foundation a nadále budeme betu vyvíjet. 
+	'prefswitch-main' => 'Tvrdě jsme pracovali, aby měli uživatelé vše snadnější. Jsme rádi, že s vámi můžeme sdílet nový vzhled a úpravy rozhraní. Zlepšení použitelnosti našich projektů je prioritou Wikimedia Foundation a nadále budeme Betu vyvíjet. 
 
 [[File:UsabilityNavigation.png|right|link=|Nová navigace]] 
 [[File:UsabilityToolbar.png|right|link=|Rozšířený panel nástrojů]]
@@ -386,11 +386,15 @@ Zpět na <span class="plainlinks">[$1 $2].</span>',
 * Vyhledávání: Zlepšili jsme návrhy vyhledávání, takže nyní se jako první ukazují ty, co nejčastěji hledáte. 
 * Další nové vlastnosti: Zavedli jsme také průvodce tabulkou, aby bylo vytváření tabulek snadnější a také vytváříme jednodušší editaci.',
 	'prefswitch-main-on' => '=== Zpětná vazba? === 
-Byli bychom rádi, když nám poskytnete zpětnou vazbu. Prosím navštivte naši <span class="plainlinks">[$1 stránku pro zpětnou vazbu]</span> 
+Budeme rádi, když nám poskytnete zpětnou vazbu. Prosím navštivte naši <span class="plainlinks">[$1 stránku pro zpětnou vazbu].</span> 
 === Jít zpět! === 
 Pokud chcete vypnout nové funkce, prosím <span class="plainlinks">[$2 klikněte sem].</span>',
 	'prefswitch-main-off' => '=== Vyzkoušejte ji! === 
 Pokud si chcete vyzkoušet nové funkce, prosím <span class="plainlinks">[$1 klikněte zde].</span>',
+	'prefswitch-survey-intro-feedback' => 'Budeme rádi, když uslyšíme váš názor. 
+Vyplňte prosím dotazník níže.',
+	'prefswitch-survey-intro-off' => 'Děkujeme za vyzkoušení našich nových funkcí. 
+Chcete-li nám pomoci zlepšit je, prosím, vyplňte dotazník níže.',
 );
 
 /** Welsh (Cymraeg)
@@ -414,7 +418,15 @@ $messages['cy'] = array(
 	'prefswitch-title-off' => 'Diffodd y nodweddion newydd',
 	'prefswitch-title-switched-off' => 'Diolch',
 	'prefswitch-title-feedback' => 'Adborth',
+	'prefswitch-success-on' => "Mae'r nodweddion newydd ar waith.",
+	'prefswitch-success-off' => 'Diffoddwyd y nodweddion newydd.',
 	'prefswitch-success-feedback' => 'Anfonwyd eich adborth.',
+	'prefswitch-return' => '<hr style="clear:both">
+Dychwelyd i <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-on' => '===Adborth?===
+Hoffen glywed gennych yn fawr.  Ymwelwch â\'n <span class="plainlinks">[$1 tudalen adborth]</span>.
+===Ewch â fi am nôl!===
+Os hoffech ddiffodd y nodweddion newydd, cliciwch <span class="plainlinks">[$2 fan hyn]</span>.',
 	'prefswitch-survey-intro-feedback' => 'Byddem wrth ein bodd cael clywed gennych. 
 Llenwch yr arolwg dewisol isod.',
 	'prefswitch-survey-intro-off' => "Diolch am roi cynnig ar ein nodweddion newydd. 
@@ -1032,15 +1044,22 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'prefswitch' => 'Přepinanje za nastajenja iniciatiwy wužiwajomnosće',
+	'prefswitch-desc' => 'Wužiwarjam dowolić, sadźby nastajenjow přepinać',
 	'prefswitch-survey-true' => 'Haj',
 	'prefswitch-survey-false' => 'Ně',
 	'prefswitch-survey-submit-off' => 'Nowe funkcije wupinyć',
 	'prefswitch-survey-cancel-off' => 'Jeli by rady nowe funkcije dale wužiwał, móžeš so k $1 wróćić.',
+	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłać',
+	'prefswitch-survey-cancel-feedback' => 'Jeli nochceš měnjenje dodać, móžeš so do $1 wróćić.',
 	'prefswitch-survey-question-likedislike' => 'Što so ći na nowych funkcijach lubi?
 Što so ći na nowych funkcijach njelubi?',
 	'prefswitch-survey-question-whyoff' => 'Čehodla wupinaš nowe funkcije?
 Prošu wubjer wšě, kotrež maja so nałožić.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Njeda so lochko wužiwać.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Njeje porjadnje fungowało.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Njefunguje na předwidźomne wašnje.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Napohlad so mi njespodoba.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nowe rajtarki a wuhotowanje njejsu so mi lubili.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nowa gratowa lajsta njeje so mi njespodobała.',
 	'prefswitch-survey-answer-whyoff-other' => 'Druha přičina:',
@@ -1053,10 +1072,16 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 	'prefswitch-title-switched-on' => 'Wjesel so!',
 	'prefswitch-title-off' => 'Nowe funkcije wupinyć',
 	'prefswitch-title-switched-off' => 'Dźakujemy so',
+	'prefswitch-title-feedback' => 'Rezonanca',
 	'prefswitch-success-on' => 'Nowe funkcije su nětko zapinjene.',
 	'prefswitch-success-off' => 'Nowe funkcije su wupinjene.',
+	'prefswitch-success-feedback' => 'Twoje měnjenje je so pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Wróćo do <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-on' => '===Rezonanca?===
+Bychmy so wjeselili, wote tebje słyšeć. Prošu wopytaj našu <span class="plainlinks">[$1 stronu měnjenjow]</span>.
+===Wjedź mje wróćo!===
+Jeli by rady nowe funkcije wupinył, prošu <span class="plainlinks">[$2 klikń tu]</span>.',
 	'prefswitch-main-off' => '===Wupruwuj je!===
 Jeli chceš nowe funkcije zapinyć,  <span class="plainlinks">[$1 klikń prošu tu]</span>.',
 );

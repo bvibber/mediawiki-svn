@@ -112,11 +112,12 @@ $messages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'vector-simplesearch-search' => 'Hledat',
-	'vector-simplesearch-containing' => 'obsahující…',
+	'vector-simplesearch-containing' => 'přidává se do obsahu…',
 );
 
 /** Kashubian (Kaszëbsczi)

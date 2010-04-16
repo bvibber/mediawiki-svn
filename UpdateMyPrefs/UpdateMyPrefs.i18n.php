@@ -17,8 +17,12 @@ $messages['en'] = array(
 	'updatemyprefs-label-message' => 'Automatically update my preferences with new default settings and tools as they become available',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
 $messages['qqq'] = array(
-	'prefs-updates' => 'In the context of software updates',
+	'prefs-updates' => 'In the context of software updates
+{{Identical|Update}}',
 );
 
 /** Arabic (العربية)
