@@ -398,3 +398,210 @@ You have successfully installed MediaWiki.
 
 [$1 Enter your wiki]",
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'config-title' => 'MediaWiki $1 installatie',
+	'config-information' => 'Informatie',
+	'config-session-error' => 'Fout bij het begin van de sessie: $1',
+	'config-session-expired' => 'Uw sessiegegevens zijn verlopen.
+Sessies zijn ingesteld om een levensduur van $1 te hebben.
+U kunt deze wijzigen via de instelling <code>session.gc_maxlifetime</code> in php.ini.
+Begin het installatieproces opnieuw.',
+	'config-no-session' => 'Uw sessiegegevens zijn verloren gegaan.
+Controleer uw php.ini en zorg dat er een juiste map is ingesteld voor <code>session.save_path</code>.',
+	'config-session-path-bad' => 'Uw <code>session.save_path</code> (<code>$1</code>) lijkt onjuist of er kan niet in geschreven worden.',
+	'config-show-help' => 'Hulp',
+	'config-hide-help' => 'Hulp verbergen',
+	'config-your-language' => 'Uw taal:',
+	'config-your-language-help' => 'Selecteer een taal om tijdens het installatieproces te gebruiken.',
+	'config-wiki-language' => 'Wikitaal:',
+	'config-wiki-language-help' => 'Selecteer de taal die de wiki voornamelijk zal worden geschreven.',
+	'config-back' => '← Terug',
+	'config-continue' => 'Doorgaan →',
+	'config-page-language' => 'Taal',
+	'config-page-welcome' => 'Welkom',
+	'config-page-dbconnect' => 'Verbinding maken met database',
+	'config-page-upgrade' => 'Bestaande bijwerken',
+	'config-page-dbsettings' => 'Databaseinstellingen',
+	'config-page-name' => 'Naam',
+	'config-page-options' => 'Opties',
+	'config-page-install' => 'Installeren',
+	'config-page-complete' => 'Afgerond!',
+	'config-page-restart' => 'Installatie herstarten',
+	'config-page-readme' => 'Lees mij',
+	'config-page-releasenotes' => 'Release notes',
+	'config-page-copying' => 'Kopiëren',
+	'config-page-upgradedoc' => 'Bijwerken',
+	'config-help-restart' => 'Wilt u alle opgeslagen gegevens die u hebt ingevoerd wissen en het installatieproces opnieuw starten?',
+	'config-restart' => 'Ja, opnieuw starten',
+	'config-welcome' => 'Welkom bij MediaWiki!
+
+===Technische gegevens===
+Hieronder staan een aantal technische gegevens die u kunt aanleveren als u ondersteuning nodig hebt bij de installatie.',
+	'config-authors' => 'MediaWiki is Copyright © 2001-2010 door Magnus Manske, Brion Vibber, Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström, Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz, Andrew Garrett, Raimond Spekking, Alexandre Emsenhuber, Siebrand Mazeland, Chad Horohoe en anderen.',
+	'config-env-good' => 'De omgeving is gecontroleerd.
+U kunt MediaWiki installeren.',
+	'config-env-bad' => 'De omgeving is gecontroleerd.
+U kunt MediaWiki niet installeren.',
+	'config-env-php' => 'PHP $1 is geïnstalleerd',
+	'config-env-latest-ok' => 'U bent bezig de meest recente versie van MediaWiki te installeren.',
+	'config-env-latest-new' => "'''Let op:''' U bent bezig een ontwikkelversie van MediaWiki te installeren.",
+	'config-env-latest-old' => "'''Waarschuwing:''' U bent bezig een verouderde versie van MediaWiki te installeren.",
+	'config-env-latest-help' => 'U bent bezig versie $1 te installeren, maar de meest recente versie is $2.
+U wordt aangeraden de meest recente versie te gebruiken die u kunt downloaden van [http://www.mediawiki.org/wiki/Download mediawiki.org].',
+	'config-no-db' => 'Er kon geen geschikte databasedriver geladen worden!',
+	'config-no-db-help' => 'U moet een databasedriver installeren voor PHP.
+De volgende databases worden ondersteund: $1.
+
+Als u op een gedeelde omgeving zit, vraag dan uw hostingprovider een geschikte databasedriver te installeren.
+Als u PHP zelf hebt gecompileerd, wijzig dan uw instellingen zodat een databasedriver wordt geactiveerd, bijvoorbeeld via <code>./configure --with-mysql</code>.',
+	'config-have-db' => 'Gevonden databasedrivers: $1',
+	'config-register-globals' => "'''Waarschuwing: De PHP-optie <code>[http://php.net/register_globals register_globals]</code> is ingeschakeld.'''
+'''Schakel deze uit als dat mogelijk is.'''
+MediaWiki kan ermee werken, maar uw server is dan meer kwetsbaar voor beveiligingslekken.",
+	'config-magic-quotes-runtime' => "'''Onherstelbare fout: [http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-runtime magic_quotes_runtime] is actief!'''
+Deze instelling zorgt voor gegevenscorruptie.
+U kunt MediaWiki niet installeren tenzij deze instelling is uitgeschakeld.",
+	'config-magic-quotes-sybase' => "'''Onherstelbare fout: [http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-runtime magic_quotes_sybase] is actief!'''
+Deze instelling zorgt voor gegevenscorruptie.
+U kunt MediaWiki niet installeren tenzij deze instelling is uitgeschakeld.",
+	'config-mbstring' => "'''Onherstelbare fout: [http://www.php.net/manual/en/ref.mbstring.php#mbstring.overload mbstring.func_overload] is actief!'''
+Deze instelling zorgt voor gegevenscorruptie.
+U kunt MediaWiki niet installeren tenzij deze instelling is uitgeschakeld.",
+	'config-ze1' => "'''Onherstelbare fout: [http://www.php.net/manual/en/ini.core.php zend.ze1_compatibility_mode] is actief!'''
+Deze instelling zorgt voor grote problemen in MediaWiki.
+U kunt MediaWiki niet installeren tenzij deze instelling is uitgeschakeld.",
+	'config-safe-mode' => "'''Waarschuwing:'''
+'''PHP's [http://www.php.net/features.safe-mode veilige modus] actief is.'''
+Dit kan problemen veroorzaken, vooral bij het uploaden van bestanden en ondersteuning van <code>math</code>.",
+	'config-db-type' => 'Databasetype:',
+	'config-db-host' => 'Databasehost:',
+	'config-db-host-help' => 'Als uw databaseserver een andere server is, voer dan de hostnaam of het IP-adres hier in.
+Als u gebruik maakt van gedeelde webhosting, hoort uw provider u de juiste hostnaam te hebben verstrekt.',
+	'config-db-wiki-settings' => 'Identificeer deze wiki',
+	'config-db-name' => 'Databasenaam:',
+	'config-db-name-help' => 'Kies een naam die uw wiki identificeert.
+Er mogen geen spaties of koppeltekens gebruikt worden.
+Als u gebruik maakt van gedeelde webhosting, dan hoort uw provider ofwel u een te gebruiken databasenaam gegeven te hebben, of u aangegeven te hebben hoe u databases kunt aanmaken.',
+	'config-db-install-account' => 'Gebruiker voor installatie',
+	'config-db-username' => 'Gebruikersnaam voor database:',
+	'config-db-password' => 'Wachtwoord voor database:',
+	'config-db-install-help' => 'Voer de gebruikersnaam en het wachtwoord in die worden gebruikt voor de databaseverbinding tijdens het installatieproces.',
+	'config-db-account-lock' => 'Dezelfde gebruiker en wachwoord gebruiken na de installatie',
+	'config-db-wiki-account' => 'Gebruiker voor na de installatie',
+	'config-db-wiki-help' => 'Selecteer de gebruikersnaam en het wachtwoord die gebruikt worden om verbinding te maken met de database na de installatie.
+Als de gebruiker niet bestaat en de gebruiker die tijdens de installatie gebruikt wordt voldoende rechten heeft, wordt deze gebruiker aangemaakt met de minimaal benodigde rechten voor het laten werken van de wiki.',
+	'config-db-prefix' => 'Databasetabelvoorvoegsel:',
+	'config-db-prefix-help' => "Als u een database moet gebruiken voor meerdere wiki's, of voor MediaWiki en een andere applicatie, dan kunt u ervoor kiezen om een voorvoegsel toe te voegen aan de tabelnamen om conflicten te voorkomen.
+Gebruik geen spaties of koppeltekens.
+
+Dit veld wordt meestal leeg gelaten.",
+	'config-db-charset' => 'Tekenset voor de database',
+	'config-charset-mysql5-binary' => 'MySQL 4.1/5.0 binair',
+	'config-charset-mysql5' => 'MySQL 4.1/5.0 UTF-8',
+	'config-charset-mysql4' => 'MySQL 4.0 UTF-8-compatibel',
+	'config-mysql-old' => 'U moet MySQL $1 of later gebruiken.
+U gebruikt $2.',
+	'config-db-port' => 'Databasepoort:',
+	'config-db-schema' => 'Schema voor MediaWiki',
+	'config-db-ts2-schema' => 'Schema voor tsearch2',
+	'config-db-schema-help' => "De bovenstaande schema's kloppen meestal.
+Wijzig ze alleen als u weet dat u ze nodig hebt.",
+	'config-sqlite-dir' => 'Gegevensmap voor SQLite:',
+	'config-sqlite-dir-help' => "SQLite slaat gegevens op in een bestand op het bestandssysteem.
+Deze map moet beschrijfbaar zijn door de webserver.
+De map mag '''niet''' via het web toegankelijk zijn.",
+	'config-type-mysql' => 'MySQL',
+	'config-type-postgres' => 'PostgreSQL',
+	'config-type-sqlite' => 'SQLite',
+	'config-type-oracle' => 'Oracle',
+	'config-header-mysql' => 'MySQL-instellingen',
+	'config-header-postgres' => 'PostgreSQL-instellingen',
+	'config-header-sqlite' => 'SQLite-instellingen',
+	'config-header-oracle' => 'Oracle-instellingen',
+	'config-invalid-db-type' => 'Ongeldig databasetype',
+	'config-missing-db-name' => 'U moet een waarde ingeven voor "Databasenaam"',
+	'config-invalid-db-name' => 'Ongeldige database naam "$1".
+Deze mag alleen cijfers, letters en liggende streepjes bevatten.',
+	'config-invalid-db-prefix' => 'Ongeldig databasevoorvoegsel "$1".
+Dit mag alleen cijfers, letters en liggende streepjes bevatten.',
+	'config-connection-error' => '$1.
+
+Controleer de host, gebruikersnaam en wachtwoord hieronder in en probeer het opnieuw.',
+	'config-invalid-schema' => 'Ongeldige schema voor MediaWiki "$1".
+Gebruik alleen letters, cijfers en liggende streepjes.',
+	'config-mysql-engine' => 'Opslagmethode',
+	'config-mysql-innodb' => 'InnoDB',
+	'config-mysql-myisam' => 'MyISAM',
+	'config-mysql-binary' => 'Binair',
+	'config-mysql-utf8' => 'UTF-8',
+	'config-site-name' => 'Naam van de wiki:',
+	'config-site-name-help' => 'Deze naam verschijnt in de titelbalk van browsers en op andere plaatsen.',
+	'config-site-name-blank' => 'Geef een naam op voor de site.',
+	'config-project-namespace' => 'Projectnaamruimte',
+	'config-ns-generic' => 'Project',
+	'config-ns-other-default' => 'MijnWiki',
+	'config-admin-default-username' => 'WikiBeheerder',
+	'config-admin-box' => 'Beheerdersaccount',
+	'config-admin-name' => 'Uw naam:',
+	'config-admin-password' => 'Wachtwoord:',
+	'config-admin-password-confirm' => 'Wachtwoord opnieuw:',
+	'config-admin-help' => 'Voor de gebruikersnaam hier in, bijvoorbeeld "Jan Jansen".
+Dit is de naam die wordt gebruikt om aan de melden bij de wiki.',
+	'config-admin-name-blank' => 'Geef een gebruikersnaam op voor de beheerder.',
+	'config-admin-name-invalid' => 'De opgegeven gebruikersnaam "<nowiki>$1</nowiki>" is ongeldig.
+Kies een andere gebruikersnaam.',
+	'config-admin-password-blank' => 'Voer een wachtwoord voor de beheerder in.',
+	'config-admin-password-same' => 'Het wachtwoord mag niet hetzelfde zijn als de gebruikersnaam.',
+	'config-admin-password-mismatch' => 'De twee door u ingevoerde wachtwoorden komen niet overeen.',
+	'config-admin-email' => 'E-mailadres:',
+	'config-admin-email-help' => "Voer hier een e-mail adres in om e-mail te kunnen ontvangen van andere gebruikers op de wiki, uw wachtwoord opnieuw in te stellen en op de hoogte te worden gehouden van wijzigingen van pagina's op uw volglijst.",
+	'config-optional-continue' => 'Meer vragen',
+	'config-optional-skip' => 'Installeer de wiki',
+	'config-profile-wiki' => 'Traditionele wiki',
+	'config-profile-no-anon' => 'Gebruiker aanmaken verplicht',
+	'config-profile-private' => 'Privéwiki',
+	'config-license' => 'Auteursrechten en licentie',
+	'config-license-none' => 'Geen licentie in de voettekst',
+	'config-license-gfdl-old' => 'GNU Free Documentation License 1.2 of hoger',
+	'config-license-gfdl-current' => 'GNU Free Documentation License 1.3 of hoger',
+	'config-license-pd' => 'Publiek domein',
+	'config-license-cc-choose' => 'Een Creative Commons-licentie',
+	'config-email-settings' => 'E-mailinstellingen',
+	'config-email-user' => 'E-mail tussen gebruikers inschakelen',
+	'config-email-usertalk' => 'Gebruikersoverlegnotificatie inschakelen',
+	'config-email-watchlist' => 'Volglijstnotificatie inschakelen',
+	'config-email-auth' => 'E-mailbevestiging inschakelen',
+	'config-upload-settings' => 'Afbeeldingen en bestanden uploaden',
+	'config-upload-enable' => 'Uploaden van bestanden inschakelen',
+	'config-logo' => 'URL voor logo:',
+	'config-advanced-settings' => 'Gevorderde instellingen',
+	'config-memcached-servers' => 'Memcachedservers',
+	'config-extensions' => 'Uitbreidingen',
+	'config-install-step-done' => 'Afgerond',
+	'config-install-step-failed' => 'Mislukt',
+	'config-install-extensions' => 'Inclusief uitbreidingen',
+	'config-install-database' => 'Database inrichten',
+	'config-install-pg-schema-failed' => 'Het aanmaken van de tabellen is mislukt.
+Zorg dat de gebruiker "$1" in het schema "$2" mag schrijven.',
+	'config-install-tables' => 'Tabellen aanmaken',
+	'config-install-interwiki-sql' => 'Het bestand <code>interwiki.sql</code> is niet aangetroffen',
+	'config-install-secretkey' => 'Geheime sleutel aanmaken',
+	'config-insecure-secretkey' => 'Waarschuwing: het was niet mogelijk een veilige <code>$wgSecretKey</code> aan te maken.
+Overweeg deze handmatig te wijzigen.',
+	'config-install-sysop' => 'Gebruiker voor beheerder aanmaken',
+	'config-install-localsettings' => '<code>LocalSettings.php</code> aanmaken',
+	'config-install-done' => "'''Gefeliciteerd!'''
+U hebt MediaWiki geïnstalleerd.
+
+U moet <code>./config/LocalSettings.php</code>  naar <code>./LocalSettings.php</code> verplaatsen voordat MediaWiki werkt.
+
+[$1 Naar uw wiki]",
+	'config-install-done-moved' => "'''Gefeliciteerd!'''
+U hebt MediaWiki geïnstalleerd.
+
+[$1 Naar uw wiki]",
+);
