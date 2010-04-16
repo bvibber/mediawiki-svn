@@ -3344,11 +3344,6 @@ $1',
 'unknown_extension_tag' => 'Неизвестный тег дополнения «$1»',
 'duplicate-defaultsort' => 'Внимание. Ключ сортировки по умолчанию «$2» переопределяет прежний ключ сортировки по умолчанию «$1».',
 
-# Installer
-'config-title'                  => 'Установка MediaWiki $1',
-'config-page-language'          => 'Язык',
-'config-admin-default-username' => 'ВикиАдминистратор',
-
 # Special:Version
 'version'                          => 'Версия MediaWiki',
 'version-extensions'               => 'Установленные расширения',

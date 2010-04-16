@@ -735,3 +735,13 @@ U hebt MediaWiki geïnstalleerd.
 
 [$1 Naar uw wiki]",
 );
+
+/**
+ * Russian (Русский)
+ * @author MaxSem
+ */
+$messages['ru'] = array(
+	'config-title'                  => 'Установка MediaWiki $1',
+	'config-page-language'          => 'Язык',
+	'config-admin-default-username' => 'ВикиАдминистратор',
+);
