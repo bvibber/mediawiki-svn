@@ -43,9 +43,7 @@ var nativeEmbed = {
 	updateFeatureSupport: function(){
 		// iWhatever devices appear to have a broken
 		// dom overlay implementation of video atm. (hopefully iphone OS 4 fixes this )
-		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
-			(navigator.userAgent.indexOf('iPod') != -1) || 
-			(navigator.userAgent.indexOf('iPad') != -1)) {
+		if( mw.isMobileSafari() ) {
 			this.supports.overlays = false;
 		}				
 	},
@@ -66,12 +64,12 @@ var nativeEmbed = {
 			} )
 			.css( {
 				'width' : '100%',
-				'height' : '100%'
-			} )
+				'height' : '100%'				
+			} )			
 		)		
 		mw.log( "Embed code: " + $j( this ).html() );		
 		// directly run postEmbedJS ( if playerElement is not avaliable it will retry ) 
-		_this.postEmbedJS();		
+		_this.postEmbedJS();
 	},
 	
 	/**
@@ -101,6 +99,7 @@ var nativeEmbed = {
 				// Issue play request				
 				vid.play();
 			}
+			
 			
 			// Run the "hook" for any extensions that need to bind things to the actual video elemnt
 			this.runHook( 'postEmbedJS' )

@@ -13,7 +13,7 @@ var kplayerEmbed = {
 		'stop' : true,
 		'timeDisplay' : true,
 		'volumeControl' : true,
-		'overlay' : true,
+		'overlays' : true,
 		'fullscreen' : false
 	},
 	
