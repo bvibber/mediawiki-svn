@@ -30,7 +30,7 @@ class WikiAcaiSearchTC extends WikiCommonTC {
     }
 
     // Search for a text. Search result should display links which contain the search text
-    function testSearchText(){
+    function testSearchText(){  
         parent::doOpenLink();
         parent::doLogin();
         $this->click("link=Main page");

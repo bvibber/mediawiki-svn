@@ -13,6 +13,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
 
     // Mark text Bold and verify output
      function testMakeTextBold(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -32,10 +33,12 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
      // Mark text Italic and verify output
     function testMakeTextItalic(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->click("link=Random article");
@@ -49,17 +52,20 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->assertEquals("Italian", $this->getText("//div[@id='wikiPreview']/p/i"));
         parent::doLogout();
+
     }
 
     // Use Bullet Item function and verify output
     function testBulletItem(){
-       parent::doOpenLink();
+
+        parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
         $this->click("link=Random article");
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Bulleted list");
         $this->click("link=Bulleted list");
@@ -84,10 +90,12 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     // Use Numbered Item function and verify output
     function testNumberedItem(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -95,6 +103,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Numbered list");
         $this->click("link=Numbered list");
@@ -118,10 +127,12 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
             array_push($this->verificationErrors, $e->toString());
         }
        parent::doLogout();
+
     }
 
       // Mark text as Nowiki and verify output
     function testNoWiki(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -129,6 +140,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->type("wpTextbox1", "<nowiki>==Heading text==</nowiki>");
         $this->click("wpPreview");
@@ -138,13 +150,13 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
-       
-        
          parent::doLogout();
+
     }
 
      // Create a line break and verify output
     function testLineBreak(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -152,6 +164,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->type("wpTextbox1", "this is a test text to check the line\n break.");
         $this->click("wpPreview");
@@ -162,10 +175,12 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
             array_push($this->verificationErrors, $e->toString());
         }
         parent::doLogout();
+
     }
 
      // Mark text as Big and verify output
     function testTextBig(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -173,6 +188,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Big");
         $this->type("wpTextbox1", "<big>This</big> text");
@@ -185,10 +201,12 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
      // Mark text as Small and verify output
     function testTextSmall(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -196,6 +214,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Small");
         $this->type("wpTextbox1", "<small>This</small> text\n");
@@ -208,17 +227,20 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         }
 
          parent::doLogout();
+
     }
 
      // Mark text as Super Script and verify output
      function testTextSuperscript(){
-       parent::doOpenLink();
-         parent::doLogin();
+
+        parent::doOpenLink();
+        parent::doLogin();
         $this->open("/deployment-en/Main_Page");
         $this->click("link=Random article");
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Superscript");
         $this->type("wpTextbox1", "<sup>This</sup> text\n");
@@ -231,10 +253,12 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         }
 
          parent::doLogout();
+
     }
 
      // Mark text as Sub Script and verify output
      function testTextSubscript(){
+
         parent::doOpenLink();
          parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -242,6 +266,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Subscript");
         $this->type("wpTextbox1", "<sub>This</sub> text\n");
@@ -254,6 +279,7 @@ class WikiToolBarTextFormatTC extends WikiCommonTC {
         }
 
          parent::doLogout();
+
     }
     
 }

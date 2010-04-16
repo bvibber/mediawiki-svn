@@ -14,6 +14,7 @@ class WikiToolBarNTOC extends WikiCommonTC {
 
     // Add header level 2 and verify Header output
      function testHeaderLevel2(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -22,6 +23,7 @@ class WikiToolBarNTOC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->click("link=Heading");
         $this->click("link=Heading");
         $this->click("link=Level 2");
@@ -35,10 +37,12 @@ class WikiToolBarNTOC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     // Add header level 3 and verify Header output
     function testHeaderLevel3(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -47,6 +51,7 @@ class WikiToolBarNTOC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->click("link=Heading");
         $this->click("link=Heading");
         $this->click("link=Level 3");
@@ -60,10 +65,12 @@ class WikiToolBarNTOC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     // Add header level 4 and verify Header output
     function testHeaderLevel4(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -72,6 +79,7 @@ class WikiToolBarNTOC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->click("link=Heading");
         $this->click("link=Heading");
         $this->click("link=Level 4");
@@ -85,10 +93,12 @@ class WikiToolBarNTOC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     // Add header level 5 and verify Header output
     function testHeaderLevel5(){
+ 
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -97,6 +107,7 @@ class WikiToolBarNTOC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->click("link=Heading");
         $this->click("link=Heading");
         $this->click("link=Level 5");
@@ -110,6 +121,7 @@ class WikiToolBarNTOC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 }
 ?>

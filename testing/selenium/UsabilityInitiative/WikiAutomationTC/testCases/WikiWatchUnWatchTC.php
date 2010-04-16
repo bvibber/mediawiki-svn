@@ -13,6 +13,7 @@ class WikiWatchUnWatchTC  extends WikiCommonTC {
 
     // Mark a page as watch and verify the My Watch list
     function testWatch(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->click("link=Random article");      
@@ -26,11 +27,13 @@ class WikiWatchUnWatchTC  extends WikiCommonTC {
         
         $this->assertTrue($this->isTextPresent($randompage));
         parent::doLogout();
+
     }
 
 
     // Mark a page as watch and mark the same page as unwatch and verify the My Watch list
     function testUnWatch(){
+
        parent::doOpenLink();
         parent::doLogin();
         $this->click("link=Random article");
@@ -55,6 +58,7 @@ class WikiWatchUnWatchTC  extends WikiCommonTC {
             array_push($this->verificationErrors, $e->toString());
         }
         parent::doLogout();
+
     }
 
    /** function testEditWatch(){

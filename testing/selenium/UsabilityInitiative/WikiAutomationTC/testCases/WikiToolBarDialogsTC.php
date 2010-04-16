@@ -13,6 +13,7 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
 
     // Add a internal link and verify
     function testInternalLink(){
+ 
         parent::doOpenLink();
         parent::doLogin();
         $this->click("link=Random article");
@@ -30,10 +31,12 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         $this->assertEquals("Daimler-Chrysler", $this->getText("link=Daimler-Chrysler"));
 
         parent::doLogout();
+
     }
 
     // Add external link and verify
     function testExternalLink(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->click("link=Random article");
@@ -55,10 +58,12 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         $this->assertEquals("www.google.com", $this->getText("link=www.google.com"));
 
         parent::doLogout();
+
     }
 
     // Add a table and verify
     function testCreateTable(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -66,6 +71,7 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Table");
         $this->type("wpTextbox1", "");
@@ -81,10 +87,12 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     // Verify the replace all function on Search and Replace
      function testTextSearchReplaceAll(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -92,6 +100,7 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Search and replace");
         $this->type("wpTextbox1", "calcey qa\n\ncalcey qa\n\ncalcey qa");
@@ -119,10 +128,12 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     // Verify the replace next function on Search and Replace
     function testTextSearchReplaceNext(){
+
         parent::doOpenLink();
         parent::doLogin();
         $this->open("/deployment-en/Main_Page");
@@ -130,6 +141,7 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Search and replace");
         $this->type("wpTextbox1", "calcey qa\n\ncalcey qa\n\ncalcey qa");
@@ -158,6 +170,7 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
             array_push($this->verificationErrors, $e->toString());
         }
         parent::doLogout();
+
     }
 
     /** When user click on find, text highlight on back which is not captured in Selenium directly. 
@@ -168,6 +181,7 @@ class WikiToolBarDialogsTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Search and replace");
 

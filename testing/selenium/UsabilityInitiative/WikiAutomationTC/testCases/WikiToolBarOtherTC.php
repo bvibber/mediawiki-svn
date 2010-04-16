@@ -13,9 +13,9 @@ class WikiToolBarOtherTC extends WikiCommonTC {
 
     // Click on Embedded file function and verify the output
     function testEmbeddedFile(){
+
         parent::doOpenLink();
         parent::doLogin();
-        
         $this->click("link=Random article");
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
@@ -31,6 +31,7 @@ class WikiToolBarOtherTC extends WikiCommonTC {
             array_push($this->verificationErrors, $e->toString());
         }
         parent::doLogout();
+
     }
 
     /** Reference link is not directing to the given link.
@@ -57,6 +58,7 @@ class WikiToolBarOtherTC extends WikiCommonTC {
 
     // Click on Picture Gallery function and verify the output
     function testPictureGallery(){
+
         parent::doOpenLink();
         parent::doLogin();
 
@@ -65,6 +67,7 @@ class WikiToolBarOtherTC extends WikiCommonTC {
         $this->waitForPageToLoad("30000");
         $this->click("//li[@id='ca-edit']/a/span");
         $this->waitForPageToLoad("30000");
+        parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Picture gallery");
         $this->click("wpPreview");
@@ -76,6 +79,7 @@ class WikiToolBarOtherTC extends WikiCommonTC {
         }
 
         parent::doLogout();
+
     }
 
     

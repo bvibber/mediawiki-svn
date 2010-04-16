@@ -7,7 +7,7 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
  */
 class WikiCommonTC extends PHPUnit_Extensions_SeleniumTestCase {
     /** Wiki server environment details.This array should be commented if the test
-     * run on local browsers.  **/
+     * run on local browsers.  
     
      public static $browsers = array(
      array(
@@ -17,12 +17,12 @@ class WikiCommonTC extends PHPUnit_Extensions_SeleniumTestCase {
         'port'    => 4444,
         'timeout' => 30000,
           )
-        ); 
+        ); **/
 
     // Setup the browser URL and local browser
     function setUp() {
         // Setting the local browser. this should be disabled if the test run in Wiki environment.
-       //  $this->setBrowser("*firefox");
+        $this->setBrowser("*firefox");
         // Main link to be connected
          $this->setBrowserUrl("http://prototype.wikimedia.org");
     }
@@ -30,6 +30,7 @@ class WikiCommonTC extends PHPUnit_Extensions_SeleniumTestCase {
     // Open the page.
     function doOpenLink(){
         $this->open("/deployment-en/Main_Page");
+        $this->waitForPageToLoad("30000");
     }
 
     // Login to the application
@@ -61,6 +62,13 @@ class WikiCommonTC extends PHPUnit_Extensions_SeleniumTestCase {
                 array_push($this->verificationErrors, $e->toString());
             }
          }
+    }
+
+    //Expand advance tool bar section if its not
+    function doExpandAdvanceSection() {
+        if (!$this->isTextPresent("Heading")){
+            $this->click("link=Advanced");
+        }
     }
 }
 ?>
