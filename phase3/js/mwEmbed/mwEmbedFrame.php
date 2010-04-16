@@ -158,7 +158,7 @@ class mwEmbedFrame {
     if( $this->apiTitleKey || count( $this->sources ) != 0 ) {
 		echo $this->getVideoTag();
     } else {
-    	echo "Error: mwEmbedFrame missing required parameter";
+    	echo "Error: mwEmbedFrame missing required parameter ( src or apiTitleKey )";
     }
     ?>
     </body>

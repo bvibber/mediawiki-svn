@@ -37,6 +37,18 @@ var nativeEmbed = {
 		// if the object supports playlist functions
 		'playlist_swap_loader' : true 		
 	},	
+	/** 
+	 * updates the supported features given the "type of player" 
+	 */
+	updateFeatureSupport: function(){
+		// iWhatever devices appear to have a broken
+		// dom overlay implementation of video atm. (hopefully iphone OS 4 fixes this )
+		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
+			(navigator.userAgent.indexOf('iPod') != -1) || 
+			(navigator.userAgent.indexOf('iPad') != -1)) {
+			this.supports.overlays = false;
+		}				
+	},
 	
 	/**
 	* Return the embed code
@@ -57,11 +69,9 @@ var nativeEmbed = {
 				'height' : '100%'
 			} )
 		)		
-		mw.log( "Embed code: " + $j( this ).html() )
-		
-		setTimeout( function() {
-			_this.postEmbedJS();
-		}, 150 );		
+		mw.log( "Embed code: " + $j( this ).html() );		
+		// directly run postEmbedJS ( if playerElement is not avaliable it will retry ) 
+		_this.postEmbedJS();		
 	},
 	
 	/**
@@ -70,14 +80,13 @@ var nativeEmbed = {
 	postEmbedJS: function() {
 		var _this = this;
 		mw.log( "f:native:postEmbedJS:" );
-		this.getPlayerElement();
-		if ( typeof this.playerElement != 'undefined' ) {
-		
-			// Setup some bindings:
-			var vid = $j( this.playerElement ).get(0);
-			
+
+		// Setup local pointer: 
+		var vid = this.getPlayerElement();
+		if ( typeof this.playerElement != 'undefined' ) {					
+			// Setup some bindings: 			
 			// Bind events to local js methods:			
-			vid.addEventListener( 'canplaythrough',  function() { _this.canplaythrough }, true);			 
+			vid.addEventListener( 'canplaythrogh',  function() { _this.canplaythrough }, true);			 
 			vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
 			vid.addEventListener( 'progress', function( e ) {  _this.onprogress( e )  }, true);
 			vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
@@ -86,11 +95,16 @@ var nativeEmbed = {
 		
 			// Check for load flag
 			if ( this.onlyLoadFlag ) {
-				this.playerElement.load();
+				vid.pause();
+				vid.load();
 			} else {
 				// Issue play request				
-				this.playerElement.play();
+				vid.play();
 			}
+			
+			// Run the "hook" for any extensions that need to bind things to the actual video elemnt
+			this.runHook( 'postEmbedJS' )
+			
 			setTimeout( function() {
 				_this.monitor();
 			}, 100 );
@@ -99,16 +113,16 @@ var nativeEmbed = {
 			// False inserts don't seem to be as much of a problem as before: 
 			mw.log( 'Could not grab vid obj trying again:' + typeof this.playerElement );
 			this.grab_try_count++;
-			if (	this.grab_count == 20 ) {
+			if ( this.grab_count == 20 ) {
 				mw.log( 'Could not get vid object after 20 tries re-run: getEmbedObj() ?' ) ;
 			} else {
 				setTimeout( function() {
 					_this.postEmbedJS();
-				}, 200 );
+				}, 150 );
 			}
 			
 		}
-	},		
+	},
 	
 	/**
 	* Issue a seeking request. 
@@ -219,6 +233,7 @@ var nativeEmbed = {
 	*/
 	monitor: function() {		
 		this.getPlayerElement(); // make sure we have .vid obj
+		
 		if ( !this.playerElement ) {
 			mw.log( 'could not find video embed: ' + this.id + ' stop monitor' );
 			return false;
@@ -226,7 +241,8 @@ var nativeEmbed = {
 				
 		// update currentTime				
 		this.currentTime = this.playerElement.currentTime;		
-				
+		
+		//mw.log( 'ns: ' + this.playerElement.networkState + ' error:' + this.playerElement.error);		
 		//mw.log('currentTime:' + this.currentTime);		
 		// once currentTime is updated call parent_monitor
 		this.parent_monitor();
@@ -294,8 +310,9 @@ var nativeEmbed = {
 	*/	
 	updateVolumen: function( percentage ) {
 		this.getPlayerElement();
-		if ( this.playerElement )
+		if ( this.playerElement ) {
 			this.playerElement.volume = percentage;
+		}
 	},
 	
 	/**
@@ -342,7 +359,7 @@ var nativeEmbed = {
 	/**
 	* Get /update the playerElement value 
 	*/ 
-	getPlayerElement : function () {
+	getPlayerElement: function () {
 		this.playerElement = $j( '#' + this.pid ).get( 0 );
 		return this.playerElement;
 	},
@@ -377,8 +394,9 @@ var nativeEmbed = {
 	oncanplaythrough: function() {
 		mw.log('f:oncanplaythrough');
 		this.getPlayerElement();
-		if ( ! this.paused )
-			this.playerElement.play();		
+		if ( ! this.paused ) {
+			this.playerElement.play();
+		}		
 	},
 	
 	/**

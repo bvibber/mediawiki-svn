@@ -26,7 +26,6 @@ mw.addMessages( {
 	"mwe-please-login" : "The request failed. Are you logged in on $1 ? Please $2 and try again",
 	"mwe-log-in-link" : "log in",
 	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."	
-	
 } );
 
 
@@ -406,8 +405,7 @@ mw.ApiProxy = { };
 			nestedServerFrame = getServerFrame( {
 				'apiUrl' :  mw.getLocalApiUrl(),
 				'pageName' : 'ApiProxyNestedCb'
-			} ); 
-						
+			} ); 						
 			// Update the context to include the nestedCallbackFlag flag in the request			
 			return nestedServerFrame;
 		}

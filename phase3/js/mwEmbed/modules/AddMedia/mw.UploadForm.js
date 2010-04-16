@@ -382,7 +382,7 @@ mw.UploadForm = { };
 					$j( uploadMenuTarget ).empty().loadingSpinner();	
 									
 					// if selectUploadProviderCb is set run the callback
-					if( selectUploadProviderCb ){
+					if( selectUploadProviderCb ) {
 						selectUploadProviderCb( uploadProvider )			
 					}
 					

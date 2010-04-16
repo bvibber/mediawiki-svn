@@ -182,6 +182,7 @@ function mwLoadPlayer( callback ){
 		'kskinConfig',
 		'mw.style.kskin',
 		'$j.fn.menu',
+		'mw.style.jquerymenu',
 		'mw.TimedText' 
 	];		
 	// Quick sniff use java if IE and native if firefox 

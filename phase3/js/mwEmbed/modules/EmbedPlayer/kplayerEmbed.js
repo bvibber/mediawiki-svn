@@ -155,7 +155,7 @@ var kplayerEmbed = {
 	/**
 	* Issues a seek to the playerElement	
 	*/ 
-	doSeek:function( prec ) {
+	doSeek: function( prec ) {
 		var _this = this;
 		if( this.playerElement ) {
 			var seek_time = prec * this.getDuration(); 

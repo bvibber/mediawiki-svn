@@ -103,8 +103,39 @@ mw.documentHasPlayerTags = function() {
 */
 mw.addDOMReadyHook( function() {
 	if( mw.documentHasPlayerTags() ) {
+		var  rewriteElementCount = 0;
+		
 		// Add the setup hook since we have player tags
-		mw.addSetupHook( function( callback ) {
+		mw.addSetupHook( function( callback ) {		
+		
+			// Set each player to loading ( as early on as possible ) 
+			$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function( index, element ){
+								
+				// Assign an the element an ID (if its missing one)			
+				if ( $j( element ).attr( "id" ) == '' ) {
+					$j( element ).attr( "id",  'v' + ( rewriteElementCount++ ) );
+				}
+								
+				// Hide the video tag and add a loader:
+				var pos = $j( element ).offset();						
+				$j( element ).css({
+					'opacity' : 0,
+					'position': 'absolute'
+				} )
+				
+				$j('body').append(
+					$j('<div />')
+					.loadingSpinner()
+					.attr('id', 'loadSpiner_' + $j( element ).attr('id') )
+					.css({
+						'width' : 32,
+						'height' : 32,
+						'position': 'absolute',
+						'top' : pos.top + 30,
+						'left' : pos.left + 30, 
+					})						
+				)	
+			});						
 			// Load the embedPlayer module ( then run queued hooks )
 			mw.load( 'EmbedPlayer', function ( ) {
 				// Rewrite the rewritePlayerTags with the 
@@ -139,7 +170,8 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			'JSON'
 		],
 		[
-			'$j.fn.menu',
+			'$j.fn.menu',			
+			'mw.style.jquerymenu',
 			'$j.ui.slider'
 		]
 	];
