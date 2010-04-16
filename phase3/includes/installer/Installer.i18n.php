@@ -17,9 +17,9 @@ $messages['en'] = array(
 	'config-session-expired'          => 'Your session data seems to have expired.
 Sessions are configured for a lifetime of $1.
 You can increase this by setting <code>session.gc_maxlifetime</code> in php.ini.
-Please restart the installation process.',
+Restart the installation process.',
 	'config-no-session'               => 'Your session data was lost!
-Please check your php.ini and make sure <code>session.save_path</code> is set to an appropriate directory.',
+Check your php.ini and make sure <code>session.save_path</code> is set to an appropriate directory.',
 	'config-session-path-bad'         => 'Your <code>session.save_path</code> (<code>$1</code>) seems to be invalid or unwritable.',
 	'config-show-help'                => 'Help',
 	'config-hide-help'                => 'Hide help',
@@ -97,12 +97,11 @@ You cannot install or use MediaWiki unless this option is disabled.",
 	'config-ze1'                      => "'''Fatal: [http://www.php.net/manual/en/ini.core.php zend.ze1_compatibility_mode] is active!'''
 This option causes horrible bugs with MediaWiki.
 You cannot install or use MediaWiki unless this option is disabled.",
-	'config-safe-mode'                => "'''Warning:'''
-'''PHP's [http://www.php.net/features.safe-mode safe mode] is active.'''
+	'config-safe-mode'                => "'''Warning:''' PHP's [http://www.php.net/features.safe-mode safe mode] is active.
 It may cause problems, particularly if using file uploads and <code>math</code> support.",
 	'config-xml-good'                 => 'Have XML / Latin1-UTF-8 conversion support.',
-	'config-xml-bad'                  => "PHP's XML module is missing;
-the wiki requires functions in this module and will not work in this configuration.
+	'config-xml-bad'                  => "PHP's XML module is missing.
+MediaWiki requires functions in this module and will not work in this configuration.
 If you're running Mandrake, install the php-xml package.",
 	'config-pcre'                     => 'The PCRE support module appears to be missing.
 MediaWiki requires the Perl-compatible regular expression functions to work.',
@@ -110,7 +109,8 @@ MediaWiki requires the Perl-compatible regular expression functions to work.',
 	'config-memory-ok'                => "PHP's <code>memory_limit</code> is $1, ok.",
 	'config-memory-raised'            => "PHP's <code>memory_limit</code> is $1, raised to $2.",
 	'config-memory-bad'               => "'''Warning:''' PHP's <code>memory_limit</code> is $1.
-This is probably too low, the installation may fail!",
+This is probably too low.
+The installation may fail!",
 	'config-xcache'                   => '[http://trac.lighttpd.net/xcache/ XCache] installed',
 	'config-apc'                      => '[http://www.php.net/apc APC] installed',
 	'config-eaccel'                   => '[http://eaccelerator.sourceforge.net/ eAccelerator] installed',
@@ -128,16 +128,16 @@ Image thumbnailing will be enabled if you enable uploads.',
 Image thumbnailing will be disabled.',
 	'config-dir'                      => 'Installation directory: <code>$1</code>',
 	'config-uri'                      => 'Script URI path: <code>$1</code>',
-	'config-no-uri'                   => "'''Error:''' Could not determine the current URI.'''
-'''Installation aborted.'''",
+	'config-no-uri'                   => "'''Error:''' Could not determine the current URI.
+Installation aborted.",
 	'config-dir-not-writable'         => "'''Error:''' Cannot write config file.
 Installation aborted.
 
 To make the directory writable on a Unix/Linux system:
 <pre>cd $1
 chmod a+w config</pre>",
-	'config-file-extension'           => 'Installing MediaWiki with <tt>$1</tt> file extensions',
-	'config-shell-locale'             => 'Detected shell locale, $1',
+	'config-file-extension'           => 'Installing MediaWiki with <code>$1</code> file extensions',
+	'config-shell-locale'             => 'Detected shell locale "$1"',
 	'config-uploads-safe'             => 'Default uploads directory is safe from arbitrary scripts execution.',
 	'config-uploads-not-safe'         => "'''Warning:''' Your default uploads directory <code>$1</code> is vulnerable to arbitrary scripts execution.
 Uploads will be disabled.",
@@ -203,31 +203,31 @@ It may only contain numbers, letters and underscores.',
 
 Check the host, username and password below and try again.',
 	'config-invalid-schema'           => 'Invalid schema for MediaWiki "$1".
-Please use only letters, numbers and underscores.',
+Use only letters, numbers and underscores.',
 	'config-invalid-ts2schema'        => 'Invalid schema for tsearch2 "$1".
-Please use only letters, numbers and underscores.',
+Use only letters, numbers and underscores.',
 	'config-postgres-old'             => 'PostgreSQL $1 or later is required, you have $2.',
 	'config-sqlite-name-help'         => 'Choose a name that identifies your wiki.
 Do not use spaces or hyphens.
 This will be used for the SQLite data file name.',
 	'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1", because the parent directory "$2" is not writable by the webserver.
-Please create this directory yourself, make it writable, and try again.',
+Create this directory yourself, make it writable, and try again.',
 	'config-sqlite-mkdir-error'       => 'Error creating the data directory "$1".
-Please check the location and try again.',
-	'config-sqlite-dir-unwritable'    => 'Unable to write to the given directory: $1.
-Please change its permissions so that the webserver can write to it, and try again.',
+Check the location and try again.',
+	'config-sqlite-dir-unwritable'    => 'Unable to write to the directory "$1".
+Change its permissions so that the webserver can write to it, and try again.',
 	'config-sqlite-connection-error'  => '$1.
 
 Check the data directory and database name below and try again.',
-	'config-sqlite-readonly'          => 'File $1 is not writeable.',
-	'config-sqlite-cant-create-db'    => 'Could not create database file $1.',
+	'config-sqlite-readonly'          => 'File <code>$1</code> is not writeable.',
+	'config-sqlite-cant-create-db'    => 'Could not create database file <code>$1</code>.',
 	'config-can-upgrade'              => "There are MediaWiki tables in this database.
 To upgrade them to MediaWiki $1, click '''Continue'''.",
 	'config-upgrade-done'             => "Upgrade complete.
 
 You can now [$1 start using your wiki].
 
-If you want to regenerate your LocalSettings.php file, click the button below.
+If you want to regenerate your <code>LocalSettings.php</code> file, click the button below.
 This is '''not recommended''' unless you are having problems with your wiki.",
 	'config-regenerate'               => 'Regenerate LocalSettings.php →',
 	'config-show-table-status'        => 'SHOW TABLE STATUS query failed!',
@@ -254,17 +254,17 @@ This is more efficient than MySQL's UTF-8 mode, and allows you to use the full r
 In '''UTF-8 mode''', MySQL will know what character set your data is in, and can present and convert it appropriately, but it will not let you store characters above the [http://en.wikipedia.org/wiki/Mapping_of_Unicode_character_planes Basic Multilingual Plane].",
 	'config-site-name'                => 'Name of wiki:',
 	'config-site-name-help'           => "This will appear in the browser's title bar and various other places.",
-	'config-site-name-blank'          => 'Please enter a site name.',
+	'config-site-name-blank'          => 'Enter a site name.',
 	'config-project-namespace'        => 'Project namespace',
 	'config-ns-generic'               => 'Project',
 	'config-ns-site-name'             => 'Same as the wiki name: $1',
-	'config-ns-other'                 => 'Other (please specify)',
+	'config-ns-other'                 => 'Other (specify)',
 	'config-ns-other-default'         => 'MyWiki',
-	'config-project-namespace-help'   => 'Following Wikipedia\'s example, many wikis keep their policy and help pages separate from their content pages, in a "\'\'\'project namespace\'\'\'".
+	'config-project-namespace-help'   => 'Following Wikipedia\'s example, many wikis keep their policy pages separate from their content pages, in a "\'\'\'project namespace\'\'\'".
 All page titles in this namespace start with a certain prefix, which you can specify here.
 Traditionally, this prefix is derived from the name of the wiki, but it cannot contain punctuation characters such as "#" or ":".',
 	'config-ns-invalid'               => 'The specified namespace "<nowiki>$1</nowiki>" is invalid.
-Please specify a different project namespace',
+Specify a different project namespace',
 	'config-admin-default-username'   => 'WikiSysop',
 	'config-admin-box'                => 'Administrator account',
 	'config-admin-name'               => 'Your name:',
@@ -272,10 +272,10 @@ Please specify a different project namespace',
 	'config-admin-password-confirm'   => 'Password again:',
 	'config-admin-help'               => 'Enter your preferred username here, for example "Joe Bloggs".
 This is the name you will use to log in to the wiki.',
-	'config-admin-name-blank'         => 'Please enter an administrator username.',
+	'config-admin-name-blank'         => 'Enter an administrator username.',
 	'config-admin-name-invalid'       => 'The specified username "<nowiki>$1</nowiki>" is invalid.
-Please specify a different username.',
-	'config-admin-password-blank'     => 'Please enter a password for administrator account.',
+Specify a different username.',
+	'config-admin-password-blank'     => 'Enter a password for administrator account.',
 	'config-admin-password-same'      => 'The password must not be the same as the username.',
 	'config-admin-password-mismatch'  => 'The two passwords you entered do not match.',
 	'config-admin-email'              => 'E-mail address:',
@@ -283,7 +283,8 @@ Please specify a different username.',
 	'config-subscribe'                => 'Subscribe to the [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce release announcements mailing list].',
 	'config-subscribe-help'           => 'This is a low-volume mailing list used for release announcements, including important security announcements.
 You should subscribe to it and update your copy of MediaWiki when new versions come out.',
-	'config-almost-done'              => 'You are almost done! You can now skip the remaining configuration and install the wiki right now.',
+	'config-almost-done'              => 'You are almost done!
+You can now skip the remaining configuration and install the wiki right now.',
 	'config-optional-continue'        => 'Ask me more questions.',
 	'config-optional-skip'            => "I'm bored already, just install the wiki.",
 	'config-profile'                  => 'User rights profile',
@@ -329,7 +330,8 @@ If you do not want any e-mail features, you can disable them here.",
 	'config-email-watchlist'          => 'Enable watchlist notification',
 	'config-email-watchlist-help'     => 'Allow users to receive notifications to their watched pages, if they have enabled it in their preferences',
 	'config-email-auth'               => 'Enable e-mail authentication',
-	'config-email-auth-help'          => "If this option is enabled, users have to confirm their e-mail address using a magic link sent to them whenever they set or change it, and only authenticated e-mail addresses can receive mails from other users or change notification mails.
+	'config-email-auth-help'          => "If this option is enabled, users have to confirm their e-mail address using a link sent to them whenever they set or change it.
+Only authenticated e-mail addresses can receive e-mails from other users or change notification e-mails.
 Setting this option is '''recommended''' for public wikis because of potential abuse of the e-mail features.",
 	'config-email-sender'             => 'Return e-mail address:',
 	'config-email-sender-help'        => 'Enter the e-mail address to use as the return address on outbound e-mail.
@@ -343,7 +345,7 @@ For more information, read the [http://www.mediawiki.org/wiki/Manual:Security se
 To enable file uploads, change the mode on the <code>images</code> subdirectory under MediaWiki's root directory so that the web server can write to it.
 Then enable this option.",
 	'config-upload-disabled'          => 'Because your web server is configured to execute scripts from the default uploads directory, uploads will be disabled.',
-	'config-upload-deleted'           => 'Directory for deleted files :',
+	'config-upload-deleted'           => 'Directory for deleted files:',
 	'config-upload-deleted-help'      => 'Choose a directory in which to archive deleted files.
 Ideally, this should not be accessible from the web.',
 	'config-logo'                     => 'Logo URL:',
@@ -352,9 +354,9 @@ Upload an image of the appropriate size, and enter the URL here.
 
 If you do not want a logo, leave this box blank.",
 	'config-cc-error'                 => 'The Creative Commons license chooser gave no result.
-Please enter the license name manually.',
+Enter the license name manually.',
 	'config-cc-again'                 => 'Pick again...',
-	'config-cc-not-chosen'            => 'Please choose which Creative Commons license you want and click "proceed".',
+	'config-cc-not-chosen'            => 'Choose which Creative Commons license you want and click "proceed".',
 	'config-advanced-settings'        => 'Advanced configuration',
 	'config-cache-options'            => 'Settings for object caching',
 	'config-cache-help'               => 'Object caching is used to improve the speed of MediaWiki by caching frequently used data.
@@ -364,12 +366,12 @@ No functionality is removed, but speed may be impacted.',
 	'config-cache-accel'              => 'PHP object caching (APC, eAccelerator or XCache)',
 	'config-cache-memcached'          => 'Use Memcached (requires additional setup and configuration)',
 	'config-cache-db'                 => 'Cache data into the database',
-	'config-cache-anything'           => 'MediaWiki will attempt to cache data anywhere possible, except Memcached',
+	'config-cache-anything'           => 'MediaWiki will attempt to cache data anywhere possible, except in Memcached, unless indicated explicitely.',
 	'config-memcached-servers'        => 'Memcached servers',
 	'config-memcached-help'           => 'List of IP addresses to use for Memcached.
-Should be separated with commas and specify the port to be used (eg: 1.2.3.4:56, 7.8.9.10:11)',
+Should be separated with commas and specify the port to be used (for example: 1.2.3.4:56, 7.8.9.10:11).',
 	'config-extensions'               => 'Extensions',
-	'config-extensions-help'          => 'The extensions listed above were automatically detected in your <code>./extensions</code> directory.
+	'config-extensions-help'          => 'The extensions listed above were detected in your <code>./extensions</code> directory.
 
 They may require additional configuration, but you can enable them now',
 	'config-install-step-done'        => 'Done',
@@ -381,12 +383,12 @@ Make sure that the user "$1" can write to the schema "$2".',
 	'config-install-tables'           => 'Creating tables',
 	'config-install-interwiki-sql'    => 'Could not find file <code>interwiki.sql</code>',
 	'config-install-secretkey'        => 'Generating secret key',
-	'config-insecure-secretkey'       => 'Warning: Unable to create secure <code>$wgSecretKey</code>.
-Consider changing it manually.',
+	'config-insecure-secretkey'       => "'''Warning:''' Unable to create secure <code>\$wgSecretKey</code>.
+Consider changing it manually.",
 	'config-install-sysop'            => 'Creating administrator user account',
 	'config-install-localsettings'    => 'Creating <code>LocalSettings.php</code>',
 	'config-install-localsettings-unwritable' => 'Warning: Could not write <code>LocalSettings.php</code>.
-Please create it yourself, using the following text:',
+Create it yourself, using the following text:',
 	'config-install-done'             => "'''Congratulations!'''
 You have successfully installed MediaWiki.
 
