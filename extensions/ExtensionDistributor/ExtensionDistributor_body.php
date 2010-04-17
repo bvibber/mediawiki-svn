@@ -164,9 +164,13 @@ class ExtensionDistributorPage extends SpecialPage {
 			Xml::element( 'input' , array( 'type' => 'hidden', 
 				'name' => 'extdist_extension', 'value' => $extensionName ) ) .
 			"<select name=\"extdist_version\">\n" );
+		
+		$selected = 0;
+		
 		foreach ( $versions as $branchPath => $branchName ) {
 			$wgOut->addHTML( Xml::element( 'option', 
-				array( 'value' => $branchPath ), $branchName ) . "\n" );
+				array( 'value' => $branchPath, 'selected' => ( ( $selected == 1 ) ? 'selected' : '' ) ), $branchName ) . "\n" );
+			$selected++;
 		}
 		$wgOut->addHTML(
 			Xml::closeElement( 'select' ) . ' ' .
