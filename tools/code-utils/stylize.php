@@ -118,7 +118,6 @@ class Stylizer {
 		'^',
 		// '&', can be unary, we have a special case for =&
 		'*',
-		'-',
 		'=',
 		'+',
 		'|',
@@ -130,7 +129,8 @@ class Stylizer {
 		'?',
 	);
 	static $spaceBefore = array(
-		')'
+		')',
+		'-', // $foo = -1; shouldn't change to $foo = - 1; 
 	);
 	static $spaceAfter = array(
 		'(',
