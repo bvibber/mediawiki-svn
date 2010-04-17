@@ -215,7 +215,7 @@ class OggHandler extends MediaHandler {
 			return new OggVideoDisplay( $file, $targetFileUrl, $dstUrl, $width, $height, $length, $dstPath, $noIcon );
 		}
 
-		$thumbStatus = $this->gennerateThumb($file, $dstPath,$params, $width, $height);
+		$thumbStatus = $this->generateThumb($file, $dstPath, $params, $width, $height);
 		if( $thumbStatus !== true ) {
 			return $thumbStatus;
 		}
@@ -230,7 +230,7 @@ class OggHandler extends MediaHandler {
 	 * @param $width The target output width
 	 * @param $height The target output height
 	 */
-	function gennerateThumb($file, $dstPath, $params, $width, $height){
+	function generateThumb($file, $dstPath, $params, $width, $height){
 		global $wgFFmpegLocation, $wgOggThumbLocation;
 
 		$length = $this->getLength( $file );
@@ -316,6 +316,7 @@ class OggHandler extends MediaHandler {
 		// If we did not return an error return true to continue media thum display
 		return true;
 	}
+
 	function canRender( $file ) { return true; }
 	function mustRender( $file ) { return true; }
 
