@@ -112,9 +112,7 @@ The installation may fail!",
 	'config-xcache'                   => '[http://trac.lighttpd.net/xcache/ XCache] installed',
 	'config-apc'                      => '[http://www.php.net/apc APC] installed',
 	'config-eaccel'                   => '[http://eaccelerator.sourceforge.net/ eAccelerator] installed',
-	'config-no-cache'                 => "'''Warning:'''
-Could not find [http://eaccelerator.sourceforge.net eAccelerator],
-[http://www.php.net/apc APC] or [http://trac.lighttpd.net/xcache/ XCache].
+	'config-no-cache'                 => "'''Warning:''' Could not find [http://eaccelerator.sourceforge.net eAccelerator], [http://www.php.net/apc APC] or [http://trac.lighttpd.net/xcache/ XCache].
 Object caching is not enabled.",
 	'config-diff3-good'               => 'Found GNU diff3: <code>$1</code>.',
 	'config-diff3-bad'                => 'GNU diff3 not found.',
@@ -280,7 +278,7 @@ Specify a different username.',
 	'config-admin-email-help'         => 'Enter an e-mail address here to allow you to receive e-mail from other users on the wiki, reset your password, and be notified of changes to pages on your watchlist.',
 	'config-subscribe'                => 'Subscribe to the [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce release announcements mailing list].',
 	'config-subscribe-help'           => 'This is a low-volume mailing list used for release announcements, including important security announcements.
-You should subscribe to it and update your copy of MediaWiki when new versions come out.',
+You should subscribe to it and update your MediaWiki installation when new versions come out.',
 	'config-almost-done'              => 'You are almost done!
 You can now skip the remaining configuration and install the wiki right now.',
 	'config-optional-continue'        => 'Ask me more questions.',
@@ -403,7 +401,7 @@ You have successfully installed MediaWiki.
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'config-title' => 'MediaWiki $1 installatie',
+	'config-title' => 'Installatie MediaWiki $1',
 	'config-information' => 'Informatie',
 	'config-session-error' => 'Fout bij het begin van de sessie: $1',
 	'config-session-expired' => 'Uw sessiegegevens zijn verlopen.
@@ -418,7 +416,7 @@ Controleer uw php.ini en zorg dat er een juiste map is ingesteld voor <code>sess
 	'config-your-language' => 'Uw taal:',
 	'config-your-language-help' => 'Selecteer een taal om tijdens het installatieproces te gebruiken.',
 	'config-wiki-language' => 'Wikitaal:',
-	'config-wiki-language-help' => 'Selecteer de taal die de wiki voornamelijk zal worden geschreven.',
+	'config-wiki-language-help' => 'Selecteer de taal waar de wiki voornamelijk in wordt geschreven.',
 	'config-back' => '← Terug',
 	'config-continue' => 'Doorgaan →',
 	'config-page-language' => 'Taal',
@@ -480,7 +478,7 @@ MediaWiki heeft de functies van deze module nodig en werkt niet zonder deze modu
 	'config-pcre' => 'De ondersteuningsmodule PCRE lijkt te missen.
 MediaWiki vereist dat de met Perl compatibele reguliere expressies werken.',
 	'config-memory-none' => 'PHP is ingesteld zonder <code>memory_limit</code>',
-	'config-memory-ok' => "PHP's <code>memory_limit</code> is $1. OK.",
+	'config-memory-ok' => "PHP's <code>memory_limit</code> is $1. In orde.",
 	'config-memory-raised' => "PHP's <code>memory_limit</code> is $1. Verhoogd tot $2.",
 	'config-memory-bad' => "'''Waarschuwing:''' PHP's <code>memory_limit</code> is $1.
 Dit is waarschijnlijk te laag.
@@ -488,8 +486,7 @@ De installatie kan mislukken!",
 	'config-xcache' => '[http://trac.lighttpd.net/xcache/ XCache] geïnstalleerd',
 	'config-apc' => '[http://www.php.net/apc APC] geïnstalleerd',
 	'config-eaccel' => '[http://eaccelerator.sourceforge.net/ eAccelerator] geïnstalleerd',
-	'config-no-cache' => "'''Waarschuwing:'''
-[http://eaccelerator.sourceforge.net eAccelerator], [http://www.php.net/apc APC] of [http://trac.lighttpd.net/ xcache / XCache] is niet aangetroffen.
+	'config-no-cache' => "'''Waarschuwing:''' [http://eaccelerator.sourceforge.net eAccelerator], [http://www.php.net/apc APC] of [http://trac.lighttpd.net/ xcache / XCache] is niet aangetroffen.
 Het cachen van objecten is niet ingeschakeld.",
 	'config-diff3-good' => 'GNU diff3 aangetroffen: <code>$1</code>.',
 	'config-diff3-bad' => 'GNU diff3 niet aangetroffen.',
@@ -600,7 +597,7 @@ Dit is '''niet aan te raden''' tenzij u problemen hebt met uw wiki.",
 	'config-show-table-status' => 'Het uitvoeren van SHOW TABLE STATUS is mislukt!',
 	'config-unknown-collation' => "'''Waarschiwing:''' de database gebruikt een collatie die niet wordt herkend.",
 	'config-db-web-account' => 'Databasegebruiker voor webtoegang',
-	'config-db-web-help' => 'Selecteer de gebruikersnaam en het wachtwoord dat de webserver gebruikt om verbinding te maken met de databaseserver na de installatie.',
+	'config-db-web-help' => 'Selecteer de gebruikersnaam en het wachtwoord die de webserver gebruikt om verbinding te maken met de databaseserver na de installatie.',
 	'config-db-web-account-same' => 'Dezelfde gebruiker gebruiken als voor de installatie',
 	'config-db-web-create' => 'Maak de gebruiker aan als deze nog niet bestaat',
 	'config-db-web-no-create-privs' => 'De gebruiker die u hebt opgegeven voor de installatie heeft niet voldoende rechten om een gebruiker aan te maken.
@@ -642,10 +639,10 @@ Kies een andere gebruikersnaam.',
 	'config-admin-password-same' => 'Het wachtwoord mag niet hetzelfde zijn als de gebruikersnaam.',
 	'config-admin-password-mismatch' => 'De twee door u ingevoerde wachtwoorden komen niet overeen.',
 	'config-admin-email' => 'E-mailadres:',
-	'config-admin-email-help' => "Voer hier een e-mail adres in om e-mail te kunnen ontvangen van andere gebruikers op de wiki, uw wachtwoord opnieuw in te stellen en op de hoogte te worden gehouden van wijzigingen van pagina's op uw volglijst.",
+	'config-admin-email-help' => "Voer hier een e-mailadres in om e-mail te kunnen ontvangen van andere gebruikers op de wiki, uw wachtwoord opnieuw in te stellen en op de hoogte te worden gehouden van wijzigingen van pagina's op uw volglijst.",
 	'config-subscribe' => 'Abonneren op de [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce mailinglijst releaseaankondigen].',
-	'config-subscribe-help' => 'Dit is een mailinglijst met een laag volume voor aankondigingen van releases, inclusief belangrijke aankondigingen met betrekking tot beveiliging.
-Abonneer uzelf erop en werk uw MediaWiki bij als er nieuwe versies uitkomen.',
+	'config-subscribe-help' => 'Dit is een mailinglijst met een laag volume voor aankondigingen van nieuwe versies, inclusief belangrijke aankondigingen met betrekking tot beveiliging.
+Abonneer uzelf erop en werk uw MediaWiki-installatie bij als er nieuwe versies uitkomen.',
 	'config-almost-done' => 'U bent bijna klaar!
 Als u wilt kunt u de overige instellingen overslaan en de wiki nu installeren.',
 	'config-optional-continue' => 'Meer vragen',
