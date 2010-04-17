@@ -567,7 +567,6 @@ settings[] = wgDLPAllowUnlimitedResults: bool, wgDLPAllowUnlimitedCategories: bo
 url = http://www.mediawiki.org/wiki/Extension:Intersection
 
 Interwiki
-file = SpecialInterwiki.php
 url = http://mediawiki.org/wiki/Extension:SpecialInterwiki
 
 InterwikiList
