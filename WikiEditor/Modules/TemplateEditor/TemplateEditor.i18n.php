@@ -341,6 +341,7 @@ $messages['ka'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-template-editor-preference' => '위키 틀의 폼 기반 편집을 활성화하기',
 	'wikieditor-template-editor-dialog-title' => '틀 편집하기',
 	'wikieditor-template-editor-dialog-submit' => '업데이트',
 	'wikieditor-template-editor-dialog-cancel' => '취소',
