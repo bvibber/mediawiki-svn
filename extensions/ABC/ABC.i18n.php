@@ -52,6 +52,13 @@ $messages['aln'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'abcdownload' => 'Niðerhlādan:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

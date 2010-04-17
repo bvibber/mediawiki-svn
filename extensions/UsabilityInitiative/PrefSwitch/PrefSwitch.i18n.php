@@ -1084,6 +1084,10 @@ Bychmy so wjeselili, wote tebje słyšeć. Prošu wopytaj našu <span class="pla
 Jeli by rady nowe funkcije wupinył, prošu <span class="plainlinks">[$2 klikń tu]</span>.',
 	'prefswitch-main-off' => '===Wupruwuj je!===
 Jeli chceš nowe funkcije zapinyć,  <span class="plainlinks">[$1 klikń prošu tu]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Bychmy so wjesleli, wot tebje słyšeć.
+Prošu wupjelń slědowace opcionelne poszudźenje.',
+	'prefswitch-survey-intro-off' => 'Dźakujemy so za wupruwowanje našich nowych funkcijow.
+Zo by nam pomhał, je polěpšić, wupjelń prošu slědowace opcionelne posudźenje.',
 );
 
 /** Hungarian (Magyar)
@@ -1098,6 +1102,9 @@ $messages['hu'] = array(
 	'prefswitch-survey-submit-off' => 'Új funkciók kikapcsolása',
 	'prefswitch-survey-cancel-off' => 'Ha továbbra is szeretnéd használni az új funkciókat, akkor visszatérhetsz a(z) $1 lapra.',
 	'prefswitch-survey-submit-feedback' => 'Visszajelzés küldése',
+	'prefswitch-survey-cancel-feedback' => 'Ha nem akarod megosztani a tapasztalataidat, visszatérhetsz a(z) $1 lapra.',
+	'prefswitch-survey-question-likedislike' => 'Mi tetszett az új funkciókban?
+Mi nem tetszett az új funkciókban?',
 	'prefswitch-survey-question-whyoff' => 'Miért kapcsolod ki az új funkciókat?
 Jelöld be az összes indokodat.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Túl nehéz volt használni.',
@@ -1113,6 +1120,7 @@ Jelöld be az összes indokodat.',
 	'prefswitch-survey-answer-os-other' => 'Más operációs rendszer:',
 	'prefswitch-survey-question-res' => 'Milyen felbontású a képernyőd?',
 	'prefswitch-title-on' => 'Mik az újdonságok?',
+	'prefswitch-title-switched-on' => 'Jó szórakozást!',
 	'prefswitch-title-off' => 'Új funkciók kikapcsolása',
 	'prefswitch-title-switched-off' => 'Köszönjük',
 	'prefswitch-title-feedback' => 'Visszajelzés',
@@ -1370,6 +1378,8 @@ $messages['ko'] = array(
 	'prefswitch-survey-question-os' => '어떤 운영 체제(OS)를 사용하고 있나요?',
 	'prefswitch-survey-answer-os-other' => '다른 운영 체제:',
 	'prefswitch-survey-question-res' => '어느 정도의 모니터 해상도를 사용하고 있나요?',
+	'prefswitch-return' => '<hr style="clear:both">
+<span class="plainlinks">[$1 $2]</span>로 돌아갑니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

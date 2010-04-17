@@ -101,10 +101,25 @@ $messages['an'] = array(
 	'badimages-reason' => 'Razón:',
 );
 
-/** Old English (Anglo-Saxon) */
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
 $messages['ang'] = array(
+	'badimages' => 'Yfela biliða ȝetalu',
+	'badimages-add-btn' => 'Ēacian',
+	'badimages-added' => '$1 ƿæs to þǣre ȝetale ēaced.',
 	'badimages-name' => 'Nama:',
 	'badimages-reason' => 'Racu:',
+	'badimages-remove' => '(forniman)',
+	'badimages-remove-btn' => 'Forniman',
+	'badimages-removed' => '$1 ƿæs ƿiþ þā ȝetale fornumen.',
+	'badimages-subheading' => 'Nū þing',
+	'badimages-unprivileged' => '(Þū ne hæfþ ȝenug þafunge to hƿeorfenne þā ȝetale)',
+	'badimages-log-name' => 'Yfela biliða ȝetalu',
+	'badimages-log-add' => 'ēacode [[$1]] to þǣre yfela biliða ȝetale',
+	'badimages-log-remove' => 'fornōm [[$1]] ƿiþ þā yfela biliða ȝetale',
+	'badimages-page' => '{{ns:help}}:Yfela biliða ȝetalu',
+	'right-badimages' => 'Þā yfela biliða ȝetale nīƿian',
 );
 
 /** Arabic (العربية)

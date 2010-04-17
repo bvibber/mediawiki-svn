@@ -388,6 +388,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'msfunc_desc' => '수학 및 통계 함수 모음',
 	'msfunc_nan' => '결과값이 숫자가 아닙니다.',
 	'msfunc_inf' => '경과값이 무한대입니다.',
 	'msfunc_div_zero' => '0으로 나눔',

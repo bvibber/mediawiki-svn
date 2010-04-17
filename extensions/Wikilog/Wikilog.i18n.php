@@ -1376,6 +1376,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Erkan Yilmaz
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author Tbleher
  * @author The Evil IP address
@@ -1442,8 +1443,12 @@ Um Artikel zu veröffentlichen und andere Wikilog-Funktionen freizuschalten muss
 	'wikilog-edit-signpub-tooltip' => 'Signiert und veröffentlicht den Artikel in seinem Wikilog beim Speichern.
 Haken entfernen, um den Artikel als Entwurf zu speichern.',
 	'wikilog-comment-permalink' => '$1 um $2 Uhr',
+	'wikilog-comment-note-item' => 'hat $1 kommentiert',
+	'wikilog-comment-note-edited' => 'zuletzt am $1 um $2 bearbeitet',
+	'wikilog-comment-anonsig' => '$3 (anonymer Bearbeiter)',
 	'wikilog-comment-pending' => 'Dieser Kommentar muss noch zugelassen werden.',
 	'wikilog-comment-deleted' => 'Dieser Kommentar wurde gelöscht.',
+	'wikilog-comment-omitted-x' => 'Kommentar zurückgenommen (#$1).',
 	'wikilog-comment-autosumm' => 'Neuer Kommentar von $1: $2',
 	'wikilog-reply-to-comment' => 'Poste eine Antwort auf diesen Kommentar',
 	'wikilog-comment-page' => 'Zur Seite dieses Kommentars wechseln',
@@ -1456,6 +1461,9 @@ Haken entfernen, um den Artikel als Entwurf zu speichern.',
 	'wikilog-newtalk-summary' => 'automatisch erzeugt durch Wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]',
 	'wikilog-feed-description' => 'Lese die neuesten Beiträge in diesem Feed.',
+	'wikilog-comment-feed-title1' => 'Kommentar von $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Kommentar von $2 zu $3 (#$1)',
+	'wikilog-comment-feed-description' => 'Lesen Sie die neuesten Kommentare dieses Feeds.',
 	'wikilog-title-item-full' => '$1 - $2',
 	'wikilog-title-comments' => 'Kommentare - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',

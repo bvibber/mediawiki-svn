@@ -706,12 +706,16 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'adminlinks' => '괸리용 링크 모음',
 	'adminlinks-desc' => '관리자들에게 유용한 링크들이 있는 [[Special:AdminLinks|특수 문서]]를 추가합니다',
+	'adminlinks_documentation' => '$1 설명문서',
 	'adminlinks_general' => '일반',
 	'adminlinks_editsidebar' => '사이드바 편집',
 	'adminlinks_editcss' => 'CSS 파일 편집',
 	'adminlinks_editmainpagename' => '대문 이름 편집',
 	'adminlinks_users' => '사용자',
 	'adminlinks_createuser' => '계정 만들기',
+	'adminlinks_browsesearch' => '둘러보기 및 찾기',
+	'adminlinks_importexport' => '가져오기 및 내보내기',
+	'right-adminlinks' => '[[Special:AdminLinks|관리자용 링크]]를 보기',
 );
 
 /** Ripoarisch (Ripoarisch)

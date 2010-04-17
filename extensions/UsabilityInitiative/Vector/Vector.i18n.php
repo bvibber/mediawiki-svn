@@ -271,6 +271,7 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'vector' => '벡터 스킨의 인터페이스 향상',
+	'vector-desc' => '벡터 스킨의 사용자 인터페이스를 향상',
 );
 
 /** Ripoarisch (Ripoarisch)

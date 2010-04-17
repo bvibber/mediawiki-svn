@@ -1368,6 +1368,7 @@ $messages['ko'] = array(
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',
 	'readerfeedback-tagfilter' => '태그:',
+	'readerfeedback-tierfilter' => '평가:',
 	'readerfeedback-tier-high' => '높음',
 	'readerfeedback-tier-medium' => '보통',
 	'readerfeedback-tier-poor' => '낮음',

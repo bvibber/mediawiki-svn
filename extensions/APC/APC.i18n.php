@@ -3309,6 +3309,13 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'viewapc' => 'APC 정보',
+	'viewapc-desc' => '미디어위키의 [[Special:ViewAPC|APC 캐시를 보거나 관리]]',
+	'right-apc' => '[[Special:ViewAPC|APC 정보]]와 관련된 모든 기능 사용하기',
+	'viewapc-apc-not-available' => '캐시 정보가 없습니다.
+APC가 작동하지 않는 것으로 추정됩니다.',
+	'viewapc-clear-confirm' => '캐시를 갱신하시겠습니까?',
+	'viewapc-clear-user-cache' => '사용자 캐시 지우기',
 	'viewapc-php-version' => 'PHP 버전',
 	'viewapc-display-filename' => '파일 이름',
 );

@@ -68,6 +68,7 @@ $messages['am'] = array(
  */
 $messages['ang'] = array(
 	'editmessages' => 'Ǣrendu ādihtan',
+	'editmsg-target' => 'Gōlȝeƿrit:',
 	'editmsg-search' => 'Sēċan',
 	'editmsg-new-search' => 'Nīƿu sēċung',
 );

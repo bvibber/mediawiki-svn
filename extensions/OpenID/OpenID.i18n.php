@@ -2666,6 +2666,10 @@ Esistono molti [http://openid.net/get/ Provider OpenID]; è possibile che tu abb
 	'openiddelete-text' => 'Facendo clic sul pulsante "{{int:openiddelete-button}}" verrà rimosso l\'OpenID $1 dal proprio account.
 Non si potrà più effettuare il login con questo OpenID.',
 	'openiddelete-button' => 'Conferma',
+	'openiddeleteerrornopassword' => 'Non è possibile eliminare tutti i tuoi OpenID perché il tuo account non ha password. 
+Non saresti in grado di accedere senza un OpenID.',
+	'openiddeleteerroropenidonly' => 'Non puoi eliminare tutti i tuoi OpenID perché è permesso collegarsi sono tramite OpenID. 
+Non saresti in grado di accedere senza un OpenID.',
 	'openiddelete-sucess' => "L'OpenID è stato rimosso con successo dall'account.",
 	'openiddelete-error' => "Si è verificato un errore durante la rimozione dell'account OpenID.",
 	'openid-prefstext' => 'Preferenze [http://openid.net/ OpenID]',

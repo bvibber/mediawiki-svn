@@ -5130,8 +5130,8 @@ $messages['ko'] = array(
 	'code-release-badrange' => '범위가 너무 넓습니다!',
 	'codereview-subtitle' => '$1',
 	'codereview-reply-link' => '답변',
-	'codereview-tests-succeeded2' => '$1 성공한 테스트',
-	'codereview-tests-failed2' => '$1 성공한 테스트, $3 실패한 테스트:',
+	'codereview-tests-succeeded2' => '$1 성공한 {{PLURAL:$2|테스트|테스트들}}',
+	'codereview-tests-failed2' => '$1 성공한 {{PLURAL:$2|테스트|테스트들}}, $3 실패한 {{PLURAL:$4|테스트|테스트들}}:',
 	'codereview-tests-running' => '테스트가 실행중입니다...',
 	'codereview-tests-aborted' => '테스트 실행 중단됨.',
 	'codereview-tests-failed' => '실패함',
@@ -5151,6 +5151,7 @@ $4',
 변경 요약:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: 자동 회귀 테스트를 감지',
 	'repoadmin' => '저장소 관리',
 	'repoadmin-new-legend' => '새 저장소 만들기',
 	'repoadmin-new-label' => '저장소 이름:',

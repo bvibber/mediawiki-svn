@@ -160,6 +160,13 @@ $messages['ja'] = array(
 	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'vector-collapsiblenav-preference' => '왼쪽 사이드바 메뉴 접기를 활성화하기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

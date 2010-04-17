@@ -88,6 +88,27 @@ $messages['br'] = array(
 	'pf-header-approve' => 'Aprouiñ',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Administrationsseite von PackageForce',
+	'pf-desc' => 'Ermöglicht es, auf einer [[Special:PackageForce|Spezialseite]] nützliche Vorlagen, usw. zusammenzustellen und zu herunterladbaren sowie weiterverwendbaren Paketen zu bündeln',
+	'pf-only-admins-allowed' => 'Diese Seite kann nur von Benutzern verwendet werden, die über das Recht zur Administration von PackageForce (‚packageforce-admin‘) verfügen.',
+	'pf-admin-menu-default' => 'Standard',
+	'pf-admin-menu-unsortedtemplates' => 'Die Vorlagen wurden noch nicht sortiert',
+	'pf-admin-link-view-documentation' => 'Siehe hierzu die mit dieser Seite verknüpfte Dokumentation.',
+	'pf-admin-link-editlink-page' => 'Bearbeitungsseite',
+	'pf-admin-link-approve' => 'Bestätigungsseite',
+	'pf-header-documentation' => 'Dokumentation',
+	'pf-header-in_packages' => 'Pakete',
+	'pf-header-edit' => 'Bearbeitungslink',
+	'pf-header-type' => 'Seitentyp',
+	'pf-header-page_title' => 'Titel',
+	'pf-header-approve' => 'Bestätigen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -698,6 +698,9 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'asksql' => 'SQL 쿼리',
 	'asksql-desc' => '[[Special:Asksql|특수 문서]]를 통해 SQL 쿼리를 제출',
+	'asksqltext' => "데이터베이스의 쿼리를 직접 보낼 때 이 양식을 사용할 수 있습니다.
+문자열의 범위를 정할 때는 작은따옴표('~')를 사용하십시오.
+이 기능은 서버에 상당한 부담을 줄 수 있으므로 이 기능을 적당히 사용하십시오.",
 	'sqlislogged' => '모든 쿼리는 기록이 남습니다.',
 	'sqlquery' => '쿼리를 입력하십시오.',
 	'querybtn' => '쿼리 제출',

@@ -303,6 +303,13 @@ $messages['km'] = array(
 	'ajaxquerypages-desc' => 'បន្ថែម AJAX ខ្លះៗ​ទៅកាន់​ទំព័រ​សំនួរ ដូចជា [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'ajaxquerypages-desc' => '[[Special:Shortpages|{{int:shortpages}}]]과 같은 특수 문서의 쿼리를 불러올 때 AJAX를 사용',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -38,6 +38,18 @@ $messages['af'] = array(
 	'interwikilist-prefix' => 'Interwikivoorvoegsel:',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'interwikilist' => 'Betƿuxƿiki ȝetalu',
+	'interwikilist-desc' => 'Ēacaþ [[Special:Interwikilist|syndriȝe ȝetale]] to sēonne oftrǣde betƿuxƿiki hlenċan',
+	'interwikilist-linkname' => 'Betƿuxƿiki hlenċe',
+	'interwikilist-target' => 'Gōl URL',
+	'interwikilist-filter' => 'Seohhunge ȝetalu',
+	'interwikilist-prefix' => 'Betƿuxƿiki foredǣl:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

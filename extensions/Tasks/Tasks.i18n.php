@@ -3209,6 +3209,13 @@ $messages['ru'] = array(
 	'tasks-pref-showtaskcomments' => 'Включить страницу примечаний задачи.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'tasks_here' => 'гев',
+);
+
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
  * @author OC Ripper
  */
