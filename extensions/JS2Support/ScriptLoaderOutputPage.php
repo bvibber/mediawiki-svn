@@ -10,6 +10,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 	// Flag javascript Classes loaded
 	var $mLoadedJavascriptClasses = false;
 
+	// The path to the script-loader
+	static $mScriptLoaderPath = 'extensions/JS2Support/mwScriptLoader';
 	/**
 	 * $Script Loader Class List
 	 *
@@ -327,7 +329,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		global $wgRequest, $wgDebugJavaScript;
 		$stylesString = implode( ',', $stylesAry );
 
-		$url = wfScript( 'extensions/JS2Support/mwScriptLoader' ) .
+		$url = wfScript( self::$mScriptLoaderPath ) .
 			"?class={$stylesString}&" . $this->getURIDparam( $stylesAry ). "&ctype=css";
 
 		// Check for the media option:
@@ -368,7 +370,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		global $wgRequest, $wgDebugJavaScript;
 		$classListString = implode( ',', $classAry );
 
-		return Html::linkedScript( wfScript( 'mwScriptLoader' ) .
+		return Html::linkedScript( wfScript( self::$mScriptLoaderPath ) .
 			"?class={$classListString}&" . $this->getURIDparam( $classAry) ) . "\n";
 	}
 

@@ -101,7 +101,7 @@ $wgEnableScriptLocalization = true;
 /**
  * Path for mwEmbed normally js/mwEmbed/
  */
-$wgMwEmbedDirectory = "extensions/JS2Support/mwEmbed/";
+$wgMwEmbedDirectory = "extensions/JS2Support/js/mwEmbed/";
 
 /**
  * Enables javascript on debugging

@@ -5,15 +5,15 @@
 *****************************/
 $wgAutoloadClasses = array_merge( $wgAutoloadClasses,  
 	 array(
-		'JSMin' => $dir . 'mwEmbed/includes/library/JSMin.php',
-		'Minify_CSS' => $dir . 'mwEmbed/includes/library/CSS.php',
-		'Minify_CommentPreserver' => $dir . 'mwEmbed/includes/library/CommentPreserver.php',
-		'Minify_CSS_Compressor' => $dir . 'mwEmbed/includes/library/CSS/Compressor.php',
-		'Minify_CSS_UriRewriter' => $dir . 'mwEmbed/includes/library/CSS/UriRewriter.php',
-		'JSMinException' => $dir . 'mwEmbed/includes/minify/JSMin.php',
-		'jsScriptLoader' => $dir . 'mwEmbed/jsScriptLoader.php',
-		'jsClassLoader' => $dir . 'mwEmbed/includes/jsClassLoader.php',
-		'simpleFileCache' => $dir . 'mwEmbed/jsScriptLoader.php',
+		'JSMin' => $dir . 'js/mwEmbed/includes/library/JSMin.php',
+		'Minify_CSS' => $dir . 'js/mwEmbed/includes/library/CSS.php',
+		'Minify_CommentPreserver' => $dir . 'js/mwEmbed/includes/library/CommentPreserver.php',
+		'Minify_CSS_Compressor' => $dir . 'js/mwEmbed/includes/library/CSS/Compressor.php',
+		'Minify_CSS_UriRewriter' => $dir . 'js/mwEmbed/includes/library/CSS/UriRewriter.php',
+		'JSMinException' => $dir . 'js/mwEmbed/includes/minify/JSMin.php',
+		'jsScriptLoader' => $dir . 'js/mwEmbed/jsScriptLoader.php',
+		'jsClassLoader' => $dir . 'js/mwEmbed/includes/jsClassLoader.php',
+		'simpleFileCache' => $dir . 'js/mwEmbed/jsScriptLoader.php',
 	)
 );
 

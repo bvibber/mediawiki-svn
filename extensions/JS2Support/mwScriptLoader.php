@@ -27,7 +27,7 @@
 // First do a quick check for the cached file
 define('MW_CACHE_SCRIPT_CHECK', true);
 
-require_once( dirname(__FILE__) . '/mwEmbed/jsScriptLoader.php');
+require_once( dirname(__FILE__) . '/js/mwEmbed/jsScriptLoader.php');
 // Do quick cache check via jsScriptLoader
 $myScriptLoader = new jsScriptLoader();
 if( $myScriptLoader->outputFromCache() ){
