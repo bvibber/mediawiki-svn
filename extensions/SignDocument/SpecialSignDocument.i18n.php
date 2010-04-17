@@ -21,7 +21,7 @@ Read through the entire document, and if you wish to indicate your support for i
 	'sign-phone'           => 'Phone number:',
 	'sign-bday'            => 'Age:',
 	'sign-email'           => 'E-mail address:',
-	'sign-indicates-req'   => '<small><i><font color="red">*</font> indicates required field.</i></small>',
+	'sign-indicates-req'   => '<small><i><font color="red">*</font> Indicates required field.</i></small>',
 	'sign-hide-note'       => '<small><i><font color="red">**</font> Note: Unlisted information will still be visible to moderators.</i></small>',
 	'sign-list-anonymous'  => 'List anonymously',
 	'sign-list-hideaddress' => 'Do not list address',
