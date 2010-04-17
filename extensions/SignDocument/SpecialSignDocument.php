@@ -620,7 +620,7 @@ class SignatureViewer {
 
 	private function getDetailTableRow( $fieldid, $val, $priv = false ) {
 		return '<tr><td><strong>' . wfMsg( "sign-viewfield-$fieldid" ) . ':</strong></td><td>'
-				. $val . ( ( $priv ) ? ( ' (' . wfMsg( 'sig-private' ) . ')' ):'' ) . '</td></tr>';
+				. $val . ( ( $priv ) ? wfMsg( 'parentheses', wfMsgExt( 'sig-private', 'parseinline' ) ) : '' ) . '</td></tr>';
 	}
 
 	private function runDetailUniqueQuery( $sig ) {
