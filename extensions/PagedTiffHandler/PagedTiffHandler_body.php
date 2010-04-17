@@ -113,7 +113,7 @@ class PagedTiffHandler extends ImageHandler {
 
 			// NOTE: in future, it will become possible to pass parameters
 			// $error = array( 'tiff_bad_file' , join('<br />', $meta['errors']) );
-		// does that work now? ^DK
+			// does that work now? ^DK
 
 			wfDebug( __METHOD__ . ": $error ($saveName) " . join( '; ', $meta['errors'] ) . "\n" );
 			return false;

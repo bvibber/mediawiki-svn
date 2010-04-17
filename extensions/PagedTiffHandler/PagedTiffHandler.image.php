@@ -1,7 +1,7 @@
 <?php
  /**
   *
-  * Copyright (C) Wikimedia Deuschland, 2009
+  * Copyright (C) Wikimedia Deutschland, 2009
   * Authors Hallo Welt! Medienwerkstatt GmbH
   * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
   *
@@ -47,7 +47,7 @@ class PagedTiffImage {
 	* Called by MimeMagick functions.
 	*/
 	public function isValid() {
-		return count($this->retrieveMetaData());
+		return count( $this->retrieveMetaData() );
 	}
 	
 	/**
@@ -57,7 +57,7 @@ class PagedTiffImage {
 		$data = $this->retrieveMetaData();
 		$size = $this->getPageSize( $data, 1 );
 	
-		if( $size ) {
+		if ( $size ) {
 			$width = $size['width'];
 			$height = $size['height'];
 			return array( $width, $height, 'Tiff',
@@ -70,9 +70,9 @@ class PagedTiffImage {
 	* Returns an array with width and height of the tiff page.
 	*/
 	public static function getPageSize( $data, $page ) {
-		if( isset( $data['page_data'][$page] ) ) {
-			return array('width'  => $data['page_data'][$page]['width'],
-			'height' => $data['page_data'][$page]['height']);
+		if ( isset( $data['page_data'][$page] ) ) {
+			return array( 'width'  => $data['page_data'][$page]['width'],
+			'height' => $data['page_data'][$page]['height'] );
 		}
 		return false;
 	}
@@ -89,14 +89,14 @@ class PagedTiffImage {
 	public function retrieveMetaData() {
 		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv, $wgMemc, $wgTiffErrorCacheTTL;
 	
-		$imgKey = wfMemcKey('PagedTiffHandler-ThumbnailGeneration', $this->mFilename);
-		$isCached = $wgMemc->get($imgKey);
-		if($isCached) {
-			return -1;
+		$imgKey = wfMemcKey( 'PagedTiffHandler-ThumbnailGeneration', $this->mFilename );
+		$isCached = $wgMemc->get( $imgKey );
+		if ( $isCached ) {
+			return - 1;
 		}
-		$wgMemc->add($imgKey, 1, $wgTiffErrorCacheTTL);
+		$wgMemc->add( $imgKey, 1, $wgTiffErrorCacheTTL );
 	
-		if($this->_meta === NULL) {
+		if ( $this->_meta === NULL ) {
 			if ( $wgImageMagickIdentifyCommand ) {
 	
 				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
@@ -109,52 +109,52 @@ class PagedTiffImage {
 					wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
 				
 				wfProfileIn( 'identify' );
-				wfDebug( __METHOD__.": $cmd\n" );
+				wfDebug( __METHOD__ . ": $cmd\n" );
 				$dump = wfShellExec( $cmd, $retval );
 				wfProfileOut( 'identify' );
-				if($retval) {
+				if ( $retval ) {
 					return false;
 				}
 				$this->_meta = $this->convertDumpToArray( $dump );
 				$this->_meta['exif'] = array();
 				
-				if($wgTiffUseExiv) {
+				if ( $wgTiffUseExiv ) {
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
 						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
 						// exiv2-doc @link http://www.exiv2.org/sample.html
-						## In der Linux-Version von exiv2 gibt es einen Bug, sodass diese Parameter dort nicht funktionieren. ^SU
+						# # In der Linux-Version von exiv2 gibt es einen Bug, sodass diese Parameter dort nicht funktionieren. ^SU
 						wfEscapeShellArg( $this->mFilename );
 	
 					wfRunHooks( "PagedTiffHandlerExivCommand", array( &$cmd, $this->mFilename ) );
 	
 					wfProfileIn( 'exiv2' );
-					wfDebug( __METHOD__.": $cmd\n" );
+					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'exiv2' );
 					$result = array();
-					preg_match_all('/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER);
+					preg_match_all( '/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER );
 	
-					foreach($result as $data) {
+					foreach ( $result as $data ) {
 						$this->_meta['exif'][$data[1]] = $data[2];
 					}
 				}
 				else {
 					$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 						' -verbose ' .
-						wfEscapeShellArg( $this->mFilename )."[0]";
+						wfEscapeShellArg( $this->mFilename ) . "[0]";
 	
 					wfProfileIn( 'identify -verbose' );
-					wfDebug( __METHOD__.": $cmd\n" );
+					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'identify -verbose' );
-					$this->_meta['exif'] = $this->parseVerbose($dump);
+					$this->_meta['exif'] = $this->parseVerbose( $dump );
 				}
 				wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
 			}
 		}
-		unset($this->_meta['exif']['Image']);
-		unset($this->_meta['exif']['filename']);
-		unset($this->_meta['exif']['Base filename']);
+		unset( $this->_meta['exif']['Image'] );
+		unset( $this->_meta['exif']['filename'] );
+		unset( $this->_meta['exif']['Base filename'] );
 		return $this->_meta;
 	}
 	
@@ -166,23 +166,23 @@ class PagedTiffImage {
 		global $wgTiffIdentifyRejectMessages, $wgTiffIdentifyBypassMessages;
 		if ( strval( $dump ) == '' ) return false;
 		$infos = NULL;
-		preg_match_all('/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER);
+		preg_match_all( '/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER );
 		$data = array();
-		$data['page_amount'] = count($infos);
+		$data['page_amount'] = count( $infos );
 		$data['page_data'] = array();
-		foreach($infos as $info) {
+		foreach ( $infos as $info ) {
 			$entry = array();
-			$lines = explode("\n", $info[1]);
-			foreach($lines as $line) {
-				if(trim($line) == '') {
+			$lines = explode( "\n", $info[1] );
+			foreach ( $lines as $line ) {
+				if ( trim( $line ) == '' ) {
 					continue;
 				}
-				$parts = explode('=', $line);
-				if(trim($parts[0]) == 'alpha' && trim($parts[1]) == '%A') {
+				$parts = explode( '=', $line );
+				if ( trim( $parts[0] ) == 'alpha' && trim( $parts[1] ) == '%A' ) {
 					continue;
 				}
-				if(trim($parts[0]) == 'alpha2' && !isset($entry['alpha'])) {
-					switch(trim($parts[1])) {
+				if ( trim( $parts[0] ) == 'alpha2' && !isset( $entry['alpha'] ) ) {
+					switch( trim( $parts[1] ) ) {
 						case 'DirectClassRGBMatte':
 						case 'DirectClassRGBA':
 							$entry['alpha'] = 'true';
@@ -193,35 +193,35 @@ class PagedTiffImage {
 					}
 					continue;
 				}
-				$entry[trim($parts[0])] = trim($parts[1]);
+				$entry[trim( $parts[0] )] = trim( $parts[1] );
 			}
 			$entry['pixels'] = $entry['height'] * $entry['width'];
 			$data['page_data'][$entry['page']] = $entry;
 		}
 	
-		$dump = preg_replace('/\[BEGIN\](.+?)\[END\]/si', '', $dump);
-		if(strlen($dump)) {
-			$errors = explode("\n", $dump);
-			foreach($errors as $error) {
+		$dump = preg_replace( '/\[BEGIN\](.+?)\[END\]/si', '', $dump );
+		if ( strlen( $dump ) ) {
+			$errors = explode( "\n", $dump );
+			foreach ( $errors as $error ) {
 				$knownError = false;
-				foreach($wgTiffIdentifyRejectMessages as $msg) {
-					if (preg_match($msg, trim($error))) {
+				foreach ( $wgTiffIdentifyRejectMessages as $msg ) {
+					if ( preg_match( $msg, trim( $error ) ) ) {
 						$data['errors'][] = $error;
 						$knownError = true;
 						break;
 					}
 				}
-				if(!$knownError) { 
-					## BypassMessages werden nicht gespeichert ^SU
-					foreach($wgTiffIdentifyBypassMessages as $msg) {
-						if (preg_match($msg, trim($error))) {
-							//$data['warnings'][] = $error;
+				if ( !$knownError ) {
+					# # BypassMessages werden nicht gespeichert ^SU
+					foreach ( $wgTiffIdentifyBypassMessages as $msg ) {
+						if ( preg_match( $msg, trim( $error ) ) ) {
+							// $data['warnings'][] = $error;
 							$knownError = true;
 							break;
 						}
 					}
 				}
-				if(!$knownError) {
+				if ( !$knownError ) {
 					$data['warning'][] = $error;
 				}
 			}
@@ -233,25 +233,25 @@ class PagedTiffImage {
 	* helper function of retrieveMetaData().
 	* parses shell return from identify-verbose-command into an array.
 	*/
-	protected function parseVerbose($dump) {
+	protected function parseVerbose( $dump ) {
 		$data = array();
-		$dump = explode("\n", $dump);
+		$dump = explode( "\n", $dump );
 		$lastwhite = 0;
 		$lastkey   = false;
-		foreach($dump as $line) {
-			if(preg_match('/^(\s*?)(\w([\w\s]+?)?):(.*?)$/sim', $line, $res)) {
-				if($lastwhite == 0 || strlen($res[1]) == $lastwhite) {
-					if(strlen(trim($res[4]))) {
-						$data[trim($res[2])] = trim($res[4]);
+		foreach ( $dump as $line ) {
+			if ( preg_match( '/^(\s*?)(\w([\w\s]+?)?):(.*?)$/sim', $line, $res ) ) {
+				if ( $lastwhite == 0 || strlen( $res[1] ) == $lastwhite ) {
+					if ( strlen( trim( $res[4] ) ) ) {
+						$data[trim( $res[2] )] = trim( $res[4] );
 					}
 					else {
-						$data[trim($res[2])] = "  Data:\n";
+						$data[trim( $res[2] )] = "  Data:\n";
 					}
-					$lastkey = trim($res[2]);
-					$lastwhite = strlen($res[1]);
+					$lastkey = trim( $res[2] );
+					$lastwhite = strlen( $res[1] );
 				}
 				else {
-					$data[$lastkey] .= $line."\n";
+					$data[$lastkey] .= $line . "\n";
 				}
 			}
 		}
