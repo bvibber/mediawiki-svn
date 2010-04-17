@@ -40,6 +40,9 @@ $wgExtensionCredits['media'][] = array(
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
+//Location of oggThumb binary
+$wgOggThumbLocation = '/usr/bin/oggThumb';
+
 // Set the supported ogg codecs:
 $wgOggVideoTypes = array( 'Theora' );
 $wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
