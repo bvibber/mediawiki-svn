@@ -1,5 +1,4 @@
 <?php
-
 /* Messages for Special:SignDocument.
  * @addtogroup Extensions
  */
@@ -10,8 +9,8 @@ $messages['en'] = array(
 	'signdocument'         => 'Sign document',
 	'sign-nodocselected'   => 'Please select the document you wish to sign.',
 	'sign-selectdoc'       => 'Document:',
-	'sign-docheader'       => '<div class="noarticletext">Please use this form to sign the document "[[$1]]," shown below.
-Read through the entire document, and if you wish to indicate your support for it, fill in the required fields to sign it.</div>',
+	'sign-docheader'       => 'Please use this form to sign the document "[[$1]]," shown below.
+Read through the entire document, and if you wish to indicate your support for it, fill in the required fields to sign it.',
 	'sign-error-nosuchdoc' => 'The document you requested ($1) does not exist.',
 	'sign-realname'        => 'Name:',
 	'sign-address'         => 'Street address:',
@@ -40,7 +39,7 @@ If you are currently connected through a proxy server, please disconnect from it
 
 $1',
 	'sig-success'               => 'You have successfully signed the document.',
-	'sign-view-selectfields'    => '<b>Fields to display:</b>',
+	'sign-view-selectfields'    => '\'\'\'Fields to display:\'\'\'',
 	'sign-viewfield-entryid'    => 'Entry ID',
 	'sign-viewfield-timestamp'  => 'Timestamp',
 	'sign-viewfield-realname'   => 'Name',
@@ -244,7 +243,7 @@ $messages['ar'] = array(
 
 $1',
 	'sig-success' => 'لقد وقعت الوثيقة بنجاح.',
-	'sign-view-selectfields' => '<b>الحقول للعرض:</b>',
+	'sign-view-selectfields' => '\'\'\'الحقول للعرض:\'\'\'',
 	'sign-viewfield-entryid' => 'رقم المدخلة',
 	'sign-viewfield-timestamp' => 'طابع الزمن',
 	'sign-viewfield-realname' => 'اسم',
@@ -345,7 +344,7 @@ $messages['arz'] = array(
 
 $1',
 	'sig-success' => 'لقد وقعت الوثيقة بنجاح.',
-	'sign-view-selectfields' => '<b>الحقول للعرض:</b>',
+	'sign-view-selectfields' => '\'\'\'الحقول للعرض:\'\'\'',
 	'sign-viewfield-entryid' => 'رقم المدخلة',
 	'sign-viewfield-timestamp' => 'طابع الزمن',
 	'sign-viewfield-realname' => 'اسم',
@@ -466,7 +465,7 @@ $messages['be-tarask'] = array(
 
 $1',
 	'sig-success' => 'Вы пасьпяхова падпісалі дакумэнт.',
-	'sign-view-selectfields' => '<b>Палі для паказу:</b>',
+	'sign-view-selectfields' => '\'\'\'Палі для паказу:\'\'\'',
 	'sign-viewfield-entryid' => 'Ідэнтыфікатар запісу',
 	'sign-viewfield-timestamp' => 'Дата/час',
 	'sign-viewfield-realname' => 'Імя',
@@ -542,7 +541,7 @@ $messages['bg'] = array(
 	'sign-list-hidephone' => 'Без показване на телефон',
 	'sign-list-hidebday' => 'Без показване на възраст',
 	'sign-list-hideemail' => 'Без показване на е-поща',
-	'sign-view-selectfields' => '<b>Полета за показване:</b>',
+	'sign-view-selectfields' => '\'\'\'Полета за показване:\'\'\'',
 	'sign-viewfield-timestamp' => 'Време на запис на действието',
 	'sign-viewfield-realname' => 'Име',
 	'sign-viewfield-address' => 'Адрес',
@@ -604,7 +603,7 @@ $messages['br'] = array(
 	'sign-list-hideemail' => "Chom hep menegiñ ar chomlec'h postel",
 	'sign-submit' => 'Sinañ an teul',
 	'sig-success' => "Sinet hoc'h eus an teul.",
-	'sign-view-selectfields' => '<b>Maeziennoù da ziskwel :</b>',
+	'sign-view-selectfields' => '\'\'\'Maeziennoù da ziskwel :\'\'\'',
 	'sign-viewfield-entryid' => 'Id ar gasadenn',
 	'sign-viewfield-timestamp' => 'Deiziad hag eur',
 	'sign-viewfield-realname' => 'Anv',
@@ -685,7 +684,7 @@ $messages['bs'] = array(
 	'sign-list-hideemail' => 'Ne prikazuj e-mail',
 	'sign-submit' => 'Potpiši dokument',
 	'sig-success' => 'Uspješno ste potpisali dokument.',
-	'sign-view-selectfields' => '<b>Polja za prikaz:</b>',
+	'sign-view-selectfields' => '\'\'\'Polja za prikaz:\'\'\'',
 	'sign-viewfield-timestamp' => 'Vremenska oznaka',
 	'sign-viewfield-realname' => 'Ime',
 	'sign-viewfield-address' => 'Adresa',
@@ -808,7 +807,7 @@ Solltest du gerade über einen solchen Server verbunden sein, trenne bitte die V
 
 $1',
 	'sig-success' => 'Du hast das Dokument erfolgreich unterschrieben.',
-	'sign-view-selectfields' => '<b>Anzuzeigende Felder:</b>',
+	'sign-view-selectfields' => '\'\'\'Anzuzeigende Felder:\'\'\'',
 	'sign-viewfield-entryid' => 'Eintragskennung',
 	'sign-viewfield-timestamp' => 'Zeitstempel',
 	'sign-viewfield-realname' => 'Name',
@@ -918,7 +917,7 @@ Jolic sy tuchylu pśez serwer proksy zwězany, pśetergni pšosym zwisk a wužyj
 
 $1',
 	'sig-success' => 'Sy wuspěšnje signěrował dokument.',
-	'sign-view-selectfields' => '<b>Póla, kótarež maju se zwobrazniś:</b>',
+	'sign-view-selectfields' => '\'\'\'Póla, kótarež maju se zwobrazniś:\'\'\'',
 	'sign-viewfield-entryid' => 'ID zapiska',
 	'sign-viewfield-timestamp' => 'Casowy kołk',
 	'sign-viewfield-realname' => 'Mě',
@@ -1003,7 +1002,7 @@ $messages['el'] = array(
 	'sign-list-hideemail' => 'Μην περιλαμβάνετε την ηλεκτρονική διεύθυνση',
 	'sign-submit' => 'Πιστοποίηση εγγράφου',
 	'sig-success' => 'Έχεις επιτυχώς υπογράψει το έγγραφο.',
-	'sign-view-selectfields' => '<b>Πεδία προς προβολή:</b>',
+	'sign-view-selectfields' => '\'\'\'Πεδία προς προβολή:\'\'\'',
 	'sign-viewfield-entryid' => 'Καταχώρηση ταυτότητας',
 	'sign-viewfield-timestamp' => 'Ημερομηνία',
 	'sign-viewfield-realname' => 'Όνομα',
@@ -1073,7 +1072,7 @@ $messages['eo'] = array(
 	'sign-list-hideemail' => 'Ne listigu retadreson',
 	'sign-submit' => 'Subskribi dokumenton',
 	'sig-success' => 'Vi sukcese subskribis la dokumenton.',
-	'sign-view-selectfields' => '<b>Kampoj montri:</b>',
+	'sign-view-selectfields' => '\'\'\'Kampoj montri:\'\'\'',
 	'sign-viewfield-realname' => 'Nomo',
 	'sign-viewfield-address' => 'Adreso',
 	'sign-viewfield-city' => 'Urbo',
@@ -1148,7 +1147,7 @@ Si estás actualmente conectado a través de un servidor proxy, por favor descon
 
 $1',
 	'sig-success' => 'Ha firmado exitosamente el documento.',
-	'sign-view-selectfields' => '<b>Campos a mostrar:</b>',
+	'sign-view-selectfields' => '\'\'\'Campos a mostrar:\'\'\'',
 	'sign-viewfield-entryid' => 'Ingresar ID',
 	'sign-viewfield-timestamp' => 'Fechador',
 	'sign-viewfield-realname' => 'Nombre',
@@ -1297,7 +1296,7 @@ $messages['fi'] = array(
 	'sign-list-hideemail' => 'Älä listaa sähköpostiosoitetta',
 	'sign-submit' => 'Allekirjoita dokumentti',
 	'sig-success' => 'Onnistuneesti allekirjoitit asiakirjan.',
-	'sign-view-selectfields' => '<b>Näytettävät kentät:</b>',
+	'sign-view-selectfields' => '\'\'\'Näytettävät kentät:\'\'\'',
 	'sign-viewfield-timestamp' => 'Aikaleima',
 	'sign-viewfield-realname' => 'Nimi',
 	'sign-viewfield-address' => 'Osoite',
@@ -1490,7 +1489,7 @@ $messages['gl'] = array(
 
 $1',
 	'sig-success' => 'Asinou o documento sen problemas.',
-	'sign-view-selectfields' => '<b>Campos a mostrar:</b>',
+	'sign-view-selectfields' => '\'\'\'Campos a mostrar:\'\'\'',
 	'sign-viewfield-entryid' => 'ID da entrada',
 	'sign-viewfield-timestamp' => 'Data e hora',
 	'sign-viewfield-realname' => 'Nome',
@@ -1608,7 +1607,7 @@ Wänn Du grad iber eso ne Server verbunde bisch, no tränn bitte d Verbindig vun
 
 $1',
 	'sig-success' => 'Du hesch s Dokumänt erfolgryych unterschribe.',
-	'sign-view-selectfields' => '<b>Fälder, wu aazeigt wäre:</b>',
+	'sign-view-selectfields' => '\'\'\'Fälder, wu aazeigt wäre:\'\'\'',
 	'sign-viewfield-entryid' => 'Yytragskännig',
 	'sign-viewfield-timestamp' => 'Zytstämpfel',
 	'sign-viewfield-realname' => 'Name',
@@ -1724,7 +1723,7 @@ $messages['he'] = array(
 
 $1',
 	'sig-success' => 'החתימה על המסמך נרשמה בהצלחה.',
-	'sign-view-selectfields' => '<b>שדות להצגה:</b>',
+	'sign-view-selectfields' => '\'\'\'שדות להצגה:\'\'\'',
 	'sign-viewfield-entryid' => 'מספר הרשומה',
 	'sign-viewfield-timestamp' => 'תאריך ושעה',
 	'sign-viewfield-realname' => 'שם',
@@ -1839,7 +1838,7 @@ $messages['hsb'] = array(
 
 $1',
 	'sig-success' => 'Sy dokument wuspěšnje podpisał.',
-	'sign-view-selectfields' => '<b>Pola, kotrež maja so zwobraznić:</b>',
+	'sign-view-selectfields' => '\'\'\'Pola, kotrež maja so zwobraznić:\'\'\'',
 	'sign-viewfield-entryid' => 'ID zapiska',
 	'sign-viewfield-timestamp' => 'Časowy kołk',
 	'sign-viewfield-realname' => 'Mjeno',
@@ -1933,7 +1932,7 @@ Ha jelenleg egy proxyszerveren keresztül csatlakozol, kapcsolódj le róla, és
 
 $1',
 	'sig-success' => 'Sikeresen aláírtad a dokumentumot.',
-	'sign-view-selectfields' => '<b>Megjelenített mezők:</b>',
+	'sign-view-selectfields' => '\'\'\'Megjelenített mezők:\'\'\'',
 	'sign-viewfield-entryid' => 'Bejegyzés azonosítója',
 	'sign-viewfield-timestamp' => 'Időbélyeg',
 	'sign-viewfield-realname' => 'Név',
@@ -2032,7 +2031,7 @@ Si tu es actualmente connectite via un servitor proxy, per favor disconnecte te 
 
 $1',
 	'sig-success' => 'Tu ha signate le documento con successo.',
-	'sign-view-selectfields' => '<b>Campos a monstrar:</b>',
+	'sign-view-selectfields' => '\'\'\'Campos a monstrar:\'\'\'',
 	'sign-viewfield-entryid' => 'ID del entrata',
 	'sign-viewfield-timestamp' => 'Data e hora',
 	'sign-viewfield-realname' => 'Nomine',
@@ -2127,7 +2126,7 @@ Jika Anda sedang tersambung melalui server proksi, silakan putuskan koneksi ters
 
 $1',
 	'sig-success' => 'Anda berhasil menandatangani dokumen.',
-	'sign-view-selectfields' => '<b>Isian yang akan ditampilkan:</b>',
+	'sign-view-selectfields' => '\'\'\'Isian yang akan ditampilkan:\'\'\'',
 	'sign-viewfield-entryid' => 'ID Masukan',
 	'sign-viewfield-timestamp' => 'Stempel waktu',
 	'sign-viewfield-realname' => 'Nama',
@@ -2267,7 +2266,7 @@ $messages['ja'] = array(
 
 $1',
 	'sig-success' => '文書の署名に成功しました。',
-	'sign-view-selectfields' => '<b>表示する欄:</b>',
+	'sign-view-selectfields' => '\'\'\'表示する欄:\'\'\'',
 	'sign-viewfield-entryid' => 'ID',
 	'sign-viewfield-timestamp' => '時刻',
 	'sign-viewfield-realname' => '名前',
@@ -2348,7 +2347,7 @@ $messages['jv'] = array(
 	'sign-list-hideemail' => 'Aja nuduhaké e-mail',
 	'sign-submit' => 'Napak astani dokumèn',
 	'sig-success' => 'Panjenengan bisa sacara suksès napak tangani dokumèn.',
-	'sign-view-selectfields' => '<b>Lapangan-lapangan sing dituduhaké:</b>',
+	'sign-view-selectfields' => '\'\'\'Lapangan-lapangan sing dituduhaké:\'\'\'',
 	'sign-viewfield-realname' => 'Jeneng',
 	'sign-viewfield-address' => 'Alamat',
 	'sign-viewfield-city' => 'Kutha',
@@ -2413,7 +2412,7 @@ $messages['km'] = array(
 	'sign-list-hideemail' => 'សូមកុំដាក់ក្នុងបញ្ជីអ៊ីមែល',
 	'sign-submit' => 'ចុះហត្ថលេខា​លើ​ឯកសារ',
 	'sig-success' => 'អ្នក​បាន​ចុះហត្ថលេខា​លើ​អត្ថបទ ដោយជោគជ័យ​ហើយ​។',
-	'sign-view-selectfields' => '<b>វាល​ត្រូវ​បង្ហាញ:</b>',
+	'sign-view-selectfields' => '\'\'\'វាល​ត្រូវ​បង្ហាញ:\'\'\'',
 	'sign-viewfield-entryid' => 'អត្តលេខ​ធាតុបញ្ចូល',
 	'sign-viewfield-realname' => 'ឈ្មោះ',
 	'sign-viewfield-address' => 'អាសយដ្ឋាន',
@@ -2515,7 +2514,7 @@ Wann de jrad övver ene <i lang="en">proxy</i> am Netz am hange bes, dann bes es
 
 $1',
 	'sig-success' => 'De häs dat Dokkemänt jäz eläktroonesch ungerschrevve.',
-	'sign-view-selectfields' => '<b>De Felder för Aanzezeije:</b>',
+	'sign-view-selectfields' => '\'\'\'De Felder för Aanzezeije:\'\'\'',
 	'sign-viewfield-entryid' => 'De Kennong odder Nommer för dä Enndraach',
 	'sign-viewfield-timestamp' => 'Däm Dattum un dä Zick iere Stempel',
 	'sign-viewfield-realname' => 'Name',
@@ -2612,7 +2611,7 @@ Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt d
 	'sign-list-hideemail' => "D'E-Mailadress net weisen",
 	'sign-submit' => 'Dokument ënnerschreiwen',
 	'sig-success' => "Dir hutt d'Dokument ënnerschriwwen",
-	'sign-view-selectfields' => '<b>Felder déi gewise solle ginn:</b>',
+	'sign-view-selectfields' => '\'\'\'Felder déi gewise solle ginn:\'\'\'',
 	'sign-viewfield-timestamp' => 'Datum an Auerzäit',
 	'sign-viewfield-realname' => 'Numm',
 	'sign-viewfield-address' => 'Adress',
@@ -2704,7 +2703,7 @@ $messages['mk'] = array(
 
 $1',
 	'sig-success' => 'Успешно го потпишавте документот.',
-	'sign-view-selectfields' => '<b>Полиња за прикажување:</b>',
+	'sign-view-selectfields' => '\'\'\'Полиња за прикажување:\'\'\'',
 	'sign-viewfield-entryid' => 'ID на записот',
 	'sign-viewfield-timestamp' => 'Датум и време',
 	'sign-viewfield-realname' => 'Име',
@@ -2785,7 +2784,7 @@ $messages['ml'] = array(
 	'sign-list-hideemail' => 'ഇമെയിൽ വിലാസം പ്രദർശിപ്പിക്കരുത്',
 	'sign-submit' => 'പ്രമാണത്തിൽ ഒപ്പിടുക',
 	'sig-success' => 'താങ്കൾ പ്രമാണത്തിൽ വിജയകരമായി ഒപ്പിട്ടിരിക്കുന്നു.',
-	'sign-view-selectfields' => '<b>പ്രദർശിപ്പിക്കേണ്ട ഫീൽഡുകൾ:</b>',
+	'sign-view-selectfields' => '\'\'\'പ്രദർശിപ്പിക്കേണ്ട ഫീൽഡുകൾ:\'\'\'',
 	'sign-viewfield-realname' => 'പേര്‌',
 	'sign-viewfield-address' => 'വിലാസം',
 	'sign-viewfield-city' => 'പട്ടണം',
@@ -2867,7 +2866,7 @@ $messages['mr'] = array(
 
 $1',
 	'sig-success' => 'तुम्ही यशस्वीरित्या डॉक्यूमेंटवर सही केलेली आहे.',
-	'sign-view-selectfields' => '<b>हे रकाने दाखवा:</b>',
+	'sign-view-selectfields' => '\'\'\'हे रकाने दाखवा:\'\'\'',
 	'sign-viewfield-entryid' => 'नोंद क्र',
 	'sign-viewfield-timestamp' => 'वेळशिक्का',
 	'sign-viewfield-realname' => 'नाव',
@@ -3014,7 +3013,7 @@ Als u op dit moment verbonden bent via een proxyserver, maak dan voor het ondert
 
 $1',
 	'sig-success' => 'U hebt het document ondertekend.',
-	'sign-view-selectfields' => '<b>Weer te geven velden:</b>',
+	'sign-view-selectfields' => '\'\'\'Weer te geven velden:\'\'\'',
 	'sign-viewfield-entryid' => 'ID-nummer',
 	'sign-viewfield-timestamp' => 'Tijdstip',
 	'sign-viewfield-realname' => 'Naam',
@@ -3101,7 +3100,7 @@ $messages['nn'] = array(
 
 $1',
 	'sig-success' => 'Du har signert dokumentet.',
-	'sign-view-selectfields' => '<b>Felt som skal bli viste:</b>',
+	'sign-view-selectfields' => '\'\'\'Felt som skal bli viste:\'\'\'',
 	'sign-viewfield-entryid' => 'Innskrifts-ID',
 	'sign-viewfield-timestamp' => 'Tidsmerke',
 	'sign-viewfield-realname' => 'Namn',
@@ -3187,7 +3186,7 @@ $messages['no'] = array(
 
 $1',
 	'sig-success' => 'Du har signert dokumentet.',
-	'sign-view-selectfields' => '<b>Felter som vises:</b>',
+	'sign-view-selectfields' => '\'\'\'Felter som vises:\'\'\'',
 	'sign-viewfield-entryid' => 'Innskrifts-ID',
 	'sign-viewfield-timestamp' => 'Tidsmerke',
 	'sign-viewfield-realname' => 'Navn',
@@ -3401,7 +3400,7 @@ Jeśli jesteś obecnie połączony przez serwer proxy, rozłącz się, a następ
 
 $1',
 	'sig-success' => 'Dokument został podpisany.',
-	'sign-view-selectfields' => '<b>Pola do wyświetlenia:</b>',
+	'sign-view-selectfields' => '\'\'\'Pola do wyświetlenia:\'\'\'',
 	'sign-viewfield-entryid' => 'Identyfikator wpisu',
 	'sign-viewfield-timestamp' => 'Znacznik czasu',
 	'sign-viewfield-realname' => 'Nazwa',
@@ -3491,7 +3490,7 @@ Ch'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa 
 
 \$1",
 	'sig-success' => "La firma dël document a l'é andaita a bonfin.",
-	'sign-view-selectfields' => '<b>Camp da smon-e:</b>',
+	'sign-view-selectfields' => '\'\'\'Camp da smon-e:\'\'\'',
 	'sign-viewfield-entryid' => "Id dl'element",
 	'sign-viewfield-timestamp' => 'Tìmber data e ora',
 	'sign-viewfield-realname' => 'Nòm',
@@ -3623,7 +3622,7 @@ Se está presentemente ligado através de um servidor proxy, por favor, desligue
 
 $1',
 	'sig-success' => 'O documento foi assinado com sucesso.',
-	'sign-view-selectfields' => '<b>Campos a apresentar:</b>',
+	'sign-view-selectfields' => '\'\'\'Campos a apresentar:\'\'\'',
 	'sign-viewfield-entryid' => 'ID da entrada',
 	'sign-viewfield-timestamp' => 'Tempo',
 	'sign-viewfield-realname' => 'Nome',
@@ -3715,7 +3714,7 @@ Se está atualmente ligado através de um servidor proxy, por favor, desligue-se
 
 $1',
 	'sig-success' => 'O documento foi assinado com sucesso.',
-	'sign-view-selectfields' => '<b>Campos a apresentar:</b>',
+	'sign-view-selectfields' => '\'\'\'Campos a apresentar:\'\'\'',
 	'sign-viewfield-entryid' => 'ID da entrada',
 	'sign-viewfield-timestamp' => 'Tempo',
 	'sign-viewfield-realname' => 'Nome',
@@ -3854,7 +3853,7 @@ $messages['roa-tara'] = array(
 	'sign-bday' => 'Età:',
 	'sign-email' => 'Indirizze e-mail:',
 	'sign-indicates-req' => '<small><i><font color="red">*</font> indichesce le cambe obbligatorije.</i></small>',
-	'sign-view-selectfields' => '<b>Cambe ca a fà vedè:</b>',
+	'sign-view-selectfields' => '\'\'\'Cambe ca a fà vedè:\'\'\'',
 	'sign-viewfield-entryid' => "ID de l'inzerimende",
 	'sign-viewfield-timestamp' => 'Orarie de stambe',
 	'sign-viewfield-realname' => 'Nome',
@@ -3913,7 +3912,7 @@ $messages['ru'] = array(
 
 $1',
 	'sig-success' => 'Подписание документа прошло успешно.',
-	'sign-view-selectfields' => '<b>Поля для оображения:</b>',
+	'sign-view-selectfields' => '\'\'\'Поля для оображения:\'\'\'',
 	'sign-viewfield-entryid' => 'ID записи',
 	'sign-viewfield-timestamp' => 'Дата/время',
 	'sign-viewfield-realname' => 'Имя',
@@ -3999,7 +3998,7 @@ $messages['sk'] = array(
 
 $1',
 	'sig-success' => 'Úspešne ste podpísali dokument',
-	'sign-view-selectfields' => '<b>Zobrazované polia:</b>',
+	'sign-view-selectfields' => '\'\'\'Zobrazované polia:\'\'\'',
 	'sign-viewfield-entryid' => 'ID záznamu',
 	'sign-viewfield-timestamp' => 'Časová známka',
 	'sign-viewfield-realname' => 'Meno',
@@ -4093,7 +4092,7 @@ $messages['sr-ec'] = array(
 
 $1',
 	'sig-success' => 'Успешно сте потписали документ.',
-	'sign-view-selectfields' => '<b>Поља за приказ:</b>',
+	'sign-view-selectfields' => '\'\'\'Поља за приказ:\'\'\'',
 	'sign-viewfield-entryid' => 'ID уноса',
 	'sign-viewfield-timestamp' => 'Временска марка',
 	'sign-viewfield-realname' => 'Име',
@@ -4182,7 +4181,7 @@ Ako ste trenutno povezani na internet preko proksi servera, molimo Vas da se dis
 
 $1',
 	'sig-success' => 'Uspešno ste potpisali dokument.',
-	'sign-view-selectfields' => '<b>Polja za prikaz:</b>',
+	'sign-view-selectfields' => '\'\'\'Polja za prikaz:\'\'\'',
 	'sign-viewfield-entryid' => 'ID unosa',
 	'sign-viewfield-timestamp' => 'Vremenska marka',
 	'sign-viewfield-realname' => 'Ime',
@@ -4278,7 +4277,7 @@ Om du är ansluten via en proxyserver, koppla från den och använd en vanlig up
 
 $1',
 	'sig-success' => 'Du har signerat dokumentet lyckat.',
-	'sign-view-selectfields' => '<b>Fält som visas:</b>',
+	'sign-view-selectfields' => '\'\'\'Fält som visas:\'\'\'',
 	'sign-viewfield-entryid' => 'Inskrifts-ID',
 	'sign-viewfield-timestamp' => 'Tidssttämpel',
 	'sign-viewfield-realname' => 'Namn',
@@ -4368,7 +4367,7 @@ $messages['te'] = array(
 	'sign-list-hideemail' => 'ఈ-మెయిలుని చూపించకు',
 	'sign-submit' => 'సంతకం చేయండి',
 	'sig-success' => 'ఈ పత్రంపై మీరు విజయవంతంగా సంతకం చేసారు.',
-	'sign-view-selectfields' => '<b>చూపించాల్సిన ఖాళీలు:</b>',
+	'sign-view-selectfields' => '\'\'\'చూపించాల్సిన ఖాళీలు:\'\'\'',
 	'sign-viewfield-timestamp' => 'కాలముద్ర',
 	'sign-viewfield-realname' => 'పేరు',
 	'sign-viewfield-address' => 'చిరునామా',
@@ -4524,7 +4523,7 @@ Kung pangkasalukuyan kang nakaugnay sa pamamagitan ng isang serbidor na pamalit,
 
 $1',
 	'sig-success' => 'Matagumpay mo nang nalagdaan ang kasulatan/dokumento.',
-	'sign-view-selectfields' => '<b>Mga kahanayang ipapakita/palilitawin:</b>',
+	'sign-view-selectfields' => '\'\'\'Mga kahanayang ipapakita/palilitawin:\'\'\'',
 	'sign-viewfield-entryid' => 'ID na pampasok:',
 	'sign-viewfield-timestamp' => 'Tatak ng oras',
 	'sign-viewfield-realname' => 'Pangalan',
@@ -4744,7 +4743,7 @@ Nếu hiện nay bạn đang kết nối thông qua máy chủ proxy, xin hãy t
 
 $1',
 	'sig-success' => 'Bạn đã ký tài liệu thành công.',
-	'sign-view-selectfields' => '<b>Các vùng sẽ hiển thị:</b>',
+	'sign-view-selectfields' => '\'\'\'Các vùng sẽ hiển thị:\'\'\'',
 	'sign-viewfield-entryid' => 'Mã số nhập',
 	'sign-viewfield-timestamp' => 'Thời gian',
 	'sign-viewfield-realname' => 'Tên',
@@ -4827,7 +4826,7 @@ $messages['vo'] = array(
 	'sign-list-hideemail' => 'No lisedön ladeti leäktronik',
 	'sign-submit' => 'Dispenön dokümi',
 	'sig-success' => 'Edispenol dokümi benosekiko.',
-	'sign-view-selectfields' => '<b>Fels jonabik:</b>',
+	'sign-view-selectfields' => '\'\'\'Fels jonabik:\'\'\'',
 	'sign-viewfield-realname' => 'Nem',
 	'sign-viewfield-address' => 'Ladet',
 	'sign-viewfield-city' => 'Zif',
@@ -4871,7 +4870,7 @@ $messages['yi'] = array(
 	'sign-list-hideemail' => 'נישט ווײַזן ע־פאסט אַדרעס',
 	'sign-submit' => 'אונטערשרײַבן דאקומענט',
 	'sig-success' => 'איר האט דערפֿאלגרייך אונטערגעשריבן דעם דאקומענט.',
-	'sign-view-selectfields' => '<b>פֿעלדער צו ווייַזן:</b>',
+	'sign-view-selectfields' => '\'\'\'פֿעלדער צו ווייַזן:\'\'\'',
 	'sign-viewfield-timestamp' => 'צײַטשטעמפל',
 	'sign-viewfield-realname' => 'נאָמען',
 	'sign-viewfield-address' => 'אַדרעס',

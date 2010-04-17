@@ -1,8 +1,7 @@
 <?php
-
 /*Intersationalizaton file for Signdocument extension
-/* @MessagesGroups SignDocument
-*/
+ * @MessagesGroups SignDocument
+ */
 
 $messages = array();
 $messages['en'] = array(

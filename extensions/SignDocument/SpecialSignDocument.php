@@ -142,7 +142,7 @@ class SpecialSignDocument extends SpecialPage {
 			return;
 		}
 
-		$wgOut->addWikiText( wfMsg( 'sign-docheader', $this->mForm->mPagename ) );
+		$wgOut->wrapWikiMsg( '<div class="noarticletext">$1</div>', array( 'sign-docheader', $this->mForm->mPagename ) );
 
 		$wgOut->addHTML( '<h1>' . $this->mForm->mPagename . '</h1>' );
 		$wgOut->addWikiText( $this->mForm->mArticle->getContent() );
@@ -413,7 +413,7 @@ class SignatureViewer {
 			'action' => $wgTitle->escapeLocalUrl(),
 			'method' => 'get' ) );
 
-		$out .= wfMsg( 'sign-view-selectfields' );
+		$out .= wfMsgExt( 'sign-view-selectfields', 'parseinline' );
 
 		$out .= Xml::element( 'input', array(
 			'type' => 'hidden', 'name' => 'doc',
