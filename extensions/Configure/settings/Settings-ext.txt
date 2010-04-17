@@ -552,7 +552,6 @@ ImageMap
 url = http://www.mediawiki.org/wiki/Extension:ImageMap
 
 ImportUsers
-file = SpecialImportUsers.php
 url = http://www.mediawiki.org/wiki/Extension:ImportUsers
 
 Inputbox
