@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for extension FirefoggChunkedUploading.
+ * Internationalisation file for extension JS2 support.
  *
  * @file
  * @ingroup Extensions
@@ -9,5 +9,6 @@
 $messages = array();
 
 $messages['en'] = array(
-	'js2support-desc' => "JS2 support as an extension",
+	'js2support-desc' => 'JS2 support as an extension',
 );
+
