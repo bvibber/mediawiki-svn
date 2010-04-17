@@ -35,7 +35,7 @@ class ExtensionDistributorPage extends SpecialPage {
 		}
 
 		$extensions = $this->getExtensionList();
-		if( !in_array( $extension, $extensions['trunk'] ) ) {
+		if ( !in_array( $extension, $extensions['trunk'] ) ) {
 			$wgOut->addWikiMsg( 'extdist-no-such-extension', $extension );
 			$this->showExtensionSelector();
 			return;
@@ -70,7 +70,7 @@ class ExtensionDistributorPage extends SpecialPage {
 			}
 
 			$this->extensionList[$branchPath] = array();
-			while ( false !== ($file = readdir( $dir )) ) {
+			while ( false !== ( $file = readdir( $dir ) ) ) {
 				if ( substr( $file, 0, 1 ) == '.' ) {
 					continue;
 				}
@@ -113,8 +113,8 @@ class ExtensionDistributorPage extends SpecialPage {
 		}
 
 		$wgOut->addWikiMsg( 'extdist-choose-extension' );
-		$wgOut->addHTML( 
-			Xml::openElement( 'form', array( 
+		$wgOut->addHTML(
+			Xml::openElement( 'form', array(
 				'action' => $this->getTitle()->getLocalUrl(),
 				'method' => 'POST' ) ) .
 			"<select name=\"extdist_extension\">\n" .
@@ -157,18 +157,18 @@ class ExtensionDistributorPage extends SpecialPage {
 		}
 
 		$wgOut->addWikiMsg( 'extdist-choose-version', $extensionName );
-		$wgOut->addHTML( 
+		$wgOut->addHTML(
 			Xml::openElement( 'form', array(
 				'action' => $this->getTitle()->getLocalUrl(),
 				'method' => 'POST' ) ) .
-			Xml::element( 'input' , array( 'type' => 'hidden', 
+			Xml::element( 'input' , array( 'type' => 'hidden',
 				'name' => 'extdist_extension', 'value' => $extensionName ) ) .
 			"<select name=\"extdist_version\">\n" );
 		
 		$selected = 0;
 		
 		foreach ( $versions as $branchPath => $branchName ) {
-			$wgOut->addHTML( Xml::element( 'option', 
+			$wgOut->addHTML( Xml::element( 'option',
 				array( 'value' => $branchPath, 'selected' => ( ( $selected == 1 ) ? 'selected' : '' ) ), $branchName ) . "\n" );
 			$selected++;
 		}
@@ -180,7 +180,7 @@ class ExtensionDistributorPage extends SpecialPage {
 	}
 
 	function doDownload( $extension, $version ) {
-		global $wgExtDistWorkingCopy, $wgExtDistTarDir, $wgExtDistBranches, 
+		global $wgExtDistWorkingCopy, $wgExtDistTarDir, $wgExtDistBranches,
 			$wgOut, $wgExtDistTarUrl, $wgExtDistRemoteClient;
 
 		if ( $wgExtDistRemoteClient ) {
@@ -203,7 +203,7 @@ class ExtensionDistributorPage extends SpecialPage {
 		if ( !file_exists( $tarFile ) ) {
 			// Does the tar file need ExtensionFunctions.php?
 			$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
-			$retval = -1;
+			$retval = - 1;
 			$files = call_user_func_array( 'wfEscapeShellArg', glob( "$dir/*.php" ) );
 			wfShellExec( "grep -q '\bExtensionFunctions' " . $files, $retval );
 			$needEF = !$retval;
@@ -215,7 +215,7 @@ class ExtensionDistributorPage extends SpecialPage {
 				' ' . wfEscapeShellArg( $extension ) .
 				( $needEF ? ' ExtensionFunctions.php' : '' ) .
 				' 2>&1';
-			$retval = -1;
+			$retval = - 1;
 			$result = wfShellExec( $cmd, $retval );
 			if ( $retval ) {
 				$wgOut->addWikiMsg( 'extdist-tar-error', $retval );
@@ -227,10 +227,10 @@ class ExtensionDistributorPage extends SpecialPage {
 		$url = "$wgExtDistTarUrl/$tarName";
 
 		// Show a message
-		$wgOut->addWikiMsg( 'extdist-created', $extension, "r$rev", 
+		$wgOut->addWikiMsg( 'extdist-created', $extension, "r$rev",
 			$this->getBranchName( $version ), $url, $tarName );
 		$wgOut->addHTML( '<p><br /><big>' .
-			'<a href="' . $this->getTitle()->escapeLocalUrl() . '">' . 
+			'<a href="' . $this->getTitle()->escapeLocalUrl() . '">' .
 			htmlspecialchars( wfMsg( 'extdist-want-more' ) ) . '</a></big></p>' );
 
 		// Redirect to the file
@@ -242,7 +242,7 @@ class ExtensionDistributorPage extends SpecialPage {
 		// svn up
 		$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
 		$cmd = "svn up --non-interactive " . wfEscapeShellArg( $dir ) . " 2>&1";
-		$retval = -1;
+		$retval = - 1;
 		$result = wfShellExec( $cmd, $retval );
 		if ( $retval ) {
 			$wgOut->addWikiMsg( 'extdist-svn-error', $result );
@@ -251,7 +251,7 @@ class ExtensionDistributorPage extends SpecialPage {
 
 		// Determine last changed revision
 		$cmd = "svn info --non-interactive --xml " . wfEscapeShellArg( $dir );
-		$retval = -1;
+		$retval = - 1;
 		$result = wfShellExec( $cmd, $retval );
 		if ( $retval ) {
 			$wgOut->addWikiMsg( 'extdist-svn-error', $result );

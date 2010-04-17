@@ -75,7 +75,7 @@ class ApiQueryStories extends ApiQueryBase {
 			$this->addWhere(
 				"story_modified < $storyModified OR " .
 				"(story_modified = $storyId AND story_id <= $storyModified)"
-			);			
+			);
 		}
 		
 		$stories = $this->select( __METHOD__ );
@@ -85,7 +85,7 @@ class ApiQueryStories extends ApiQueryBase {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'continue', wfTimestamp(TS_MW, $row->story_modified) . '-' . $row->story_id );
+				$this->setContinueEnumParameter( 'continue', wfTimestamp( TS_MW, $row->story_modified ) . '-' . $row->story_id );
 				break;
 			}
 			$res = array(

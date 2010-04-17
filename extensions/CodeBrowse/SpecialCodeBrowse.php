@@ -8,7 +8,7 @@ class SpecialCodeBrowse extends SpecialPage {
 		wfLoadExtensionMessages( 'CodeReview' );
 		wfLoadExtensionMessages( 'CodeBrowse' );
 		
-		$this->setHeaders();		
+		$this->setHeaders();
 		
 		global $wgRequest;
 		$path = $wgRequest->getText( 'path', $par );
@@ -16,9 +16,9 @@ class SpecialCodeBrowse extends SpecialPage {
 		$view = CodeBrowseView::newFromPath( $path, $wgRequest );
 		
 		global $wgOut;
-		$wgOut->addHTML( 
-			$view->getHeader().
-			$view->getContent().
+		$wgOut->addHTML(
+			$view->getHeader() .
+			$view->getContent() .
 			$view->getFooter()
 		);
 	}

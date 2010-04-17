@@ -46,12 +46,12 @@ class CodeRevisionListView extends CodeView {
 			'<table><tr><td>' .
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() .
-			'</td><td style="padding-left: 2em;">' . 
-			'&nbsp;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' . 
-			'</td></tr></table>' .  
+			'</td><td style="padding-left: 2em;">' .
+			'&nbsp;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' .
+			'</td></tr></table>' .
 			Xml::openElement( 'form',
 				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
-			) . 
+			) .
 			$pager->getBody() .
 			$pager->getNavigationBar() .
 			( $this->batchForm ? $this->buildBatchInterface( $pager ) : "" ) .
@@ -148,15 +148,15 @@ class CodeRevisionListView extends CodeView {
 			"<fieldset><legend>" . wfMsgHtml( 'code-pathsearch-legend' ) . "</legend>" .
 				'<table width="100%"><tr><td>' .
 				Xml::inputlabel( wfMsg( "code-pathsearch-path" ), 'path', 'path', 55, $this->mPath ) .
-				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . 
+				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 				'</td>'
 		);
-		if ( strlen( $this->mAppliedFilter) ) {
+		if ( strlen( $this->mAppliedFilter ) ) {
 			$wgOut->addHTML(
-				'<td>' .  
-				Xml::label(wfMsg( 'code-pathsearch-filter' ), 'revFilter' ) . '<strong>' .
-				Xml::span( $this->mAppliedFilter, '') . '</strong>&nbsp;' .
-				Xml::submitButton( wfMsg( 'code-revfilter-clear' ) ) . 
+				'<td>' .
+				Xml::label( wfMsg( 'code-pathsearch-filter' ), 'revFilter' ) . '<strong>' .
+				Xml::span( $this->mAppliedFilter, '' ) . '</strong>&nbsp;' .
+				Xml::submitButton( wfMsg( 'code-revfilter-clear' ) ) .
 				'</td>' .
 				Xml::hidden( 'title', SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ) )
 			);
@@ -183,7 +183,7 @@ class CodeRevisionListView extends CodeView {
 			$tables[] = 'code_paths';
 			$whereCond = array(
 							'cr_repo_id' => $this->mRepo->getId(),
-							'cr_id = cp_rev_id', 
+							'cr_id = cp_rev_id',
 							' cp_path' . $dbr->buildLike( $this->mPath, $dbr->anyString() ),
 							// Performance
 							' cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 )
@@ -331,23 +331,23 @@ class SvnRevTablePager extends SvnTablePager {
 			// fixme -- this still isn't too efficient...
 			$rev = CodeRevision::newFromRow( $this->mRepo, $row );
 			$runs = $rev->getTestRuns();
-			if( empty( $runs ) ) {
+			if ( empty( $runs ) ) {
 				return '&nbsp;';
 			} else {
 				$total = 0;
 				$success = 0;
 				$progress = false;
 				$aborted = false;
-				foreach( $runs as $run ) {
+				foreach ( $runs as $run ) {
 					$total += $run->countTotal;
 					$success += $run->countSuccess;
-					if( $run->status == 'running' ) {
+					if ( $run->status == 'running' ) {
 						$progress = true;
 					} elseif ( $run->status == 'abort' ) {
 						$aborted = true;
 					}
 				}
-				if( $progress ) {
+				if ( $progress ) {
 					global $wgStylePath;
 					return Xml::element( 'img', array(
 						'src' => "$wgStylePath/common/images/spinner.gif",
@@ -355,11 +355,11 @@ class SvnRevTablePager extends SvnTablePager {
 						'height' => 20,
 						'alt' => "...",
 						'title' => wfMsg( 'codereview-tests-running' ),
-					));
+					) );
 				} elseif ( $aborted ) {
 					return "<span class='mw-codereview-fail'><strong>" . wfMsg( 'codereview-tests-failed' ) . "</strong></span>";
 				}
-				if( $success == $total ) {
+				if ( $success == $total ) {
 					$class = 'mw-codereview-success';
 				} else {
 					$class = 'mw-codereview-fail';

@@ -15,8 +15,8 @@ class CodeAuthorListView extends CodeView {
 		foreach ( $authors as $committer ) {
 			if ( $committer ) {
 				$text .= "* [[Special:Code/$repo/author/$committer|$committer]]";
-				$user = $this->mRepo->authorWikiUser($committer);
-				if( $user ) {
+				$user = $this->mRepo->authorWikiUser( $committer );
+				if ( $user ) {
 					$title = htmlspecialchars( $user->getUserPage()->getPrefixedText() );
 					$name = htmlspecialchars( $user->getName() );
 					$text .= " ([[$title|$name]])";

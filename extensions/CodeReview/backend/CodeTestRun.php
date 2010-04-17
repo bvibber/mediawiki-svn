@@ -2,7 +2,7 @@
 
 class CodeTestRun {
 	public function __construct( CodeTestSuite $suite, $row ) {
-		if( is_object( $row ) ) {
+		if ( is_object( $row ) ) {
 			$row = wfObjectToArray( $row );
 		}
 		$this->suite = $suite;
@@ -15,13 +15,13 @@ class CodeTestRun {
 		$this->mCaseMap = null; // Lazy-initialize...
 	}
 	
-	public function getResults( $success=null ) {
+	public function getResults( $success = null ) {
 		$dbr = wfGetDB( DB_MASTER );
 		$conds = array(
 			'ctresult_run_id' => $this->id,
 			'ctresult_case_id=ctcase_id',
 		);
-		if( $success !== null ) {
+		if ( $success !== null ) {
 			$conds['ctresult_success'] = $success ? 1 : 0;
 		}
 		
@@ -35,7 +35,7 @@ class CodeTestRun {
 			__METHOD__ );
 		
 		$out = array();
-		foreach( $result as $row ) {
+		foreach ( $result as $row ) {
 			$out[] = new CodeTestResult( $this, $row );
 		}
 		return $out;
@@ -50,7 +50,7 @@ class CodeTestRun {
 				'ctrun_rev_id' => $revId,
 			),
 			__METHOD__ );
-		if( $row ) {
+		if ( $row ) {
 			return new CodeTestRun( $suite, $row );
 		} else {
 			return null;
@@ -71,7 +71,7 @@ class CodeTestRun {
 			__METHOD__ );
 	}
 	
-	public static function insertRun( CodeTestSuite $suite, $revId, $status, $results=array() ) {
+	public static function insertRun( CodeTestSuite $suite, $revId, $status, $results = array() ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$countTotal = count( $results );
 		$countSucceeded = count( array_filter( $results ) );
@@ -89,7 +89,7 @@ class CodeTestRun {
 
 		$insertData['ctrun_id'] = $dbw->insertId();
 		$run = new CodeTestRun( $suite, $insertData );
-		if( $status == 'complete' && $results ) {
+		if ( $status == 'complete' && $results ) {
 			$run->insertResults( $results );
 		}
 		return $run;
@@ -97,7 +97,7 @@ class CodeTestRun {
 	
 	public function getCaseId( $caseName ) {
 		$this->loadCaseMap();
-		if( isset( $this->mCaseMap[$caseName] ) ) {
+		if ( isset( $this->mCaseMap[$caseName] ) ) {
 			return $this->mCaseMap[$caseName];
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
@@ -114,7 +114,7 @@ class CodeTestRun {
 	}
 	
 	protected function loadCaseMap() {
-		if( is_null( $this->mCaseMap ) ) {
+		if ( is_null( $this->mCaseMap ) ) {
 			$this->mCaseMap = array();
 			$dbw = wfGetDB( DB_MASTER );
 			$result = $dbw->select( 'code_test_case',
@@ -127,8 +127,8 @@ class CodeTestRun {
 				),
 				__METHOD__
 			);
-			foreach( $result as $row ) {
-				$this->mCaseMap[$row->ctcase_name] = intval( $row->ctcase_id );	
+			foreach ( $result as $row ) {
+				$this->mCaseMap[$row->ctcase_name] = intval( $row->ctcase_id );
 			}
 		}
 	}
@@ -154,9 +154,9 @@ class CodeTestRun {
 		$dbw = wfGetDB( DB_MASTER );
 		$this->countTotal = 0;
 		$this->countSuccess = 0;
-		foreach( $results as $caseName => $result ) {
+		foreach ( $results as $caseName => $result ) {
 			$this->countTotal++;
-			if( $result ) {
+			if ( $result ) {
 				$this->countSuccess++;
 			}
 			$insertData[] = array(

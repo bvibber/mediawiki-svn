@@ -113,7 +113,7 @@ function efStoryboardAddStoryEditActionVector( &$sktemplate, &$links ) {
 	efStoryboardAddStoryEditAction( $sktemplate, $views_links );
 	$links['views'] = $views_links;
 
-	return true;	
+	return true;
 }
 
 function efStoryboardAddStoryEditAction( &$sktemplate, &$content_actions ) {

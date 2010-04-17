@@ -41,7 +41,7 @@ class SpecialStoryReview extends SpecialPage {
 		// TODO: add language filters
 		// TODO: display tabs for unpublished, published and hidden stories
 		// TODO: paging
-		
+
 		global $wgOut, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
@@ -103,7 +103,7 @@ EOT
 	private function getStorySegments( $story ) {
 		global $wgTitle;
 		
-		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL('action=edit&returnto=' . $wgTitle->getPrefixedText() );
+		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL( 'action=edit&returnto=' . $wgTitle->getPrefixedText() );
 		$editUrl = Xml::escapeJsString( $editUrl );
 		
 		$title = htmlspecialchars( $story->story_title );
@@ -111,10 +111,10 @@ EOT
 		
 		$publishAction = $story->story_state == Storyboard_STORY_PUBLISHED ? 'unpublish' : 'publish';
 		// Uses storyboard-unpublish or storyboard-publish.
-		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );		
+		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );
 		
 		$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
-		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );		
+		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );
 		
 		$imageHtml = '';
 		$imageButtonsHtml = '';

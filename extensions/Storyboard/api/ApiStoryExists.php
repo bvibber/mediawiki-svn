@@ -44,7 +44,7 @@ class ApiStoryExists extends ApiBase {
 		
 		if ( !isset( $params['storytitle'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'storytitle' ) );
-		}		
+		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		
@@ -62,7 +62,7 @@ class ApiStoryExists extends ApiBase {
 		die( $story == false ? 'true' : 'false' );
 		
 		$this->getResult()->setIndexedTagName( $result, 'story' );
-		$this->getResult()->addValue( null, $this->getModuleName(), $result );			
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	
 	public function getAllowedParams() {
@@ -82,7 +82,7 @@ class ApiStoryExists extends ApiBase {
 	public function getDescription() {
 		return array(
 			'Enables determining if a story exists already'
-		);	
+		);
 	}
 		
 	public function getPossibleErrors() {
@@ -99,5 +99,5 @@ class ApiStoryExists extends ApiBase {
 
 	public function getVersion() {
 		return __CLASS__ . ': $Id: ApiStoryExists.php 63775 2010-03-15 16:35:22Z jeroendedauw $';
-	}	
+	}
 }

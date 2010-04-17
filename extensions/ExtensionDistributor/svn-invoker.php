@@ -75,7 +75,7 @@ function svnExecute() {
 	// svn up
 	$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
 	$cmd = "svn up --non-interactive " . escapeshellarg( $dir ) . " 2>&1";
-	$retval = -1;
+	$retval = - 1;
 	$result = svnShellExec( $cmd, $retval );
 	if ( $retval ) {
 		svnError( 'extdist-svn-error', $result );
@@ -84,7 +84,7 @@ function svnExecute() {
 
 	// Determine last changed revision
 	$cmd = "svn info --non-interactive --xml " . escapeshellarg( $dir );
-	$retval = -1;
+	$retval = - 1;
 	$result = svnShellExec( $cmd, $retval );
 	if ( $retval ) {
 		svnError( 'extdist-svn-error', $result );

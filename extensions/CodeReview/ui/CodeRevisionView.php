@@ -41,7 +41,7 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
-		if( $this->mStatus == '' )
+		if ( $this->mStatus == '' )
 			$this->mStatus = $this->mRev->getStatus();
 
 		$redirectOnPost = $this->checkPostings();
@@ -81,7 +81,7 @@ class CodeRevisionView extends CodeView {
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mRev->getId() );
 
 		$html = '';
-		if( $this->mPath != '' ) {
+		if ( $this->mPath != '' ) {
 			$html .= wfMsgExt( 'code-browsing-path', 'parse', $this->mPath );
 		}
 		# Output form
@@ -94,7 +94,7 @@ class CodeRevisionView extends CodeView {
 		$html .= $this->formatMetaData( $fields );
 		# Show test case info
 		$tests = $this->formatTests();
-		if( $tests ) {
+		if ( $tests ) {
 			$html .= "<h2 id='code-tests'>" . wfMsgHtml( 'code-tests' ) .
 				"</h2>\n" . $tests;
 		}
@@ -154,7 +154,7 @@ class CodeRevisionView extends CodeView {
 		if ( $prev ) {
 			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
 			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, $this->mRev->getIdString( $prev ),
-				array(), array('path' => $this->mPath) );
+				array(), array( 'path' => $this->mPath ) );
 		}
 
 		$revText = "<b>" . $this->mRev->getIdString( $rev ) . "</b>";
@@ -169,7 +169,7 @@ class CodeRevisionView extends CodeView {
 		if ( $next ) {
 			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
 			$links[] = $this->mSkin->link( $nextTarget, $this->mRev->getIdString( $next ),
-				array(), array('path' => $this->mPath) ) . '&nbsp;&gt;';
+				array(), array( 'path' => $this->mPath ) ) . '&nbsp;&gt;';
 		}
 
 		return $wgLang->pipeList( $links );
@@ -307,17 +307,17 @@ class CodeRevisionView extends CodeView {
 	protected function formatTests() {
 		$runs = $this->mRev->getTestRuns();
 		$html = '';
-		if( count( $runs ) ) {
-			foreach( $runs as $run ) {
+		if ( count( $runs ) ) {
+			foreach ( $runs as $run ) {
 				$html .= "<h3>" . htmlspecialchars( $run->suite->name ) . "</h3>\n";
-				if( $run->status == 'complete' ) {
+				if ( $run->status == 'complete' ) {
 					global $wgLang;
 
 					$total = $run->countTotal;
 					$success = $run->countSuccess;
 					$failed = $total - $success;
 					$success_tests = "<span class='mw-codereview-success'>" . $wgLang->formatNum( $success ) . "</span>";
-					if( $failed ) {
+					if ( $failed ) {
 						$failed_tests = "<span class='mw-codereview-fail'>" . $wgLang->formatNum( $failed ) . "</span>";
 						$html .= wfMsgExt(
 							'codereview-tests-failed2',
@@ -330,7 +330,7 @@ class CodeRevisionView extends CodeView {
 
 						$tests = $run->getResults( false );
 						$html .= "<ul>\n";
-						foreach( $tests as $test ) {
+						foreach ( $tests as $test ) {
 							$html .= "<li>" . htmlspecialchars( $test->caseName ) . "</li>\n";
 						}
 						$html .= "</ul>\n";
@@ -342,10 +342,10 @@ class CodeRevisionView extends CodeView {
 							$success
 						);
 					}
-				} elseif( $run->status == "running" ) {
-					$html .= wfMsgExt('codereview-tests-running','parse');
-				} elseif( $run->status == "abort" ) {
-					$html .= wfMsgExt('codereview-tests-aborted','parse');
+				} elseif ( $run->status == "running" ) {
+					$html .= wfMsgExt( 'codereview-tests-running', 'parse' );
+				} elseif ( $run->status == "abort" ) {
+					$html .= wfMsgExt( 'codereview-tests-aborted', 'parse' );
 				} else {
 					// Err, this shouldn't happen?
 				}
@@ -393,16 +393,16 @@ class CodeRevisionView extends CodeView {
 		$modifiedPaths = $this->mRev->getModifiedPaths();
 		foreach ( $modifiedPaths as $row ) {
 			// Typical image file?
-			if( preg_match($wgCodeReviewImgRegex,$row->cp_path) ) {
-				$imgDiffs .= 'Index: '.htmlspecialchars( $row->cp_path )."\n";
+			if ( preg_match( $wgCodeReviewImgRegex, $row->cp_path ) ) {
+				$imgDiffs .= 'Index: ' . htmlspecialchars( $row->cp_path ) . "\n";
 				$imgDiffs .= '<table border="1px" style="background:white;"><tr>';
-				if( $row->cp_action !== 'A' ) { // old
+				if ( $row->cp_action !== 'A' ) { // old
 					// What was done to it?
 					$action = $row->cp_action == 'D' ? 'code-rev-modified-d' : 'code-rev-modified-r';
 					// Link to old image
 					$imgDiffs .= $this->formatImgCell( $row->cp_path, $this->mRev->getPrevious(), $action );
 				}
-				if( $row->cp_action !== 'D' ) { // new
+				if ( $row->cp_action !== 'D' ) { // new
 					// What was done to it?
 					$action = $row->cp_action == 'A' ? 'code-rev-modified-a' : 'code-rev-modified-m';
 					// Link to new image
@@ -411,8 +411,8 @@ class CodeRevisionView extends CodeView {
 				$imgDiffs .= "</tr></table>\n";
 			}
 		}
-		if( $imgDiffs ) {
-			$html = '<h2>'.wfMsgHtml('code-rev-imagediff').'</h2>';
+		if ( $imgDiffs ) {
+			$html = '<h2>' . wfMsgHtml( 'code-rev-imagediff' ) . '</h2>';
 			$html .= "<div class='mw-codereview-imgdiff'>$imgDiffs</div>\n";
 		}
 		return $html;
@@ -481,10 +481,10 @@ class CodeRevisionView extends CodeView {
 		if ( !$refs ) {
 			return false;
 		}
-		$header = '<th>'.wfMsg( 'code-field-id' ).'</th>';
-		$header .= '<th>'.wfMsg( 'code-field-message' ) .'</th>';
-		$header .= '<th>'.wfMsg( 'code-field-author' ).'</th>';
-		$header .= '<th>'.wfMsg( 'code-field-timestamp' ).'</th>';
+		$header = '<th>' . wfMsg( 'code-field-id' ) . '</th>';
+		$header .= '<th>' . wfMsg( 'code-field-message' ) . '</th>';
+		$header .= '<th>' . wfMsg( 'code-field-author' ) . '</th>';
+		$header .= '<th>' . wfMsg( 'code-field-timestamp' ) . '</th>';
 		return "<table border='1' class='TablePager'><tr>{$header}</tr>{$refs}</table>";
 	}
 
@@ -510,11 +510,11 @@ class CodeRevisionView extends CodeView {
 		if ( $change->removed ) {
 			$line .= '<b>' . wfMsg( 'code-change-removed' ) . '</b> ';
 			// Status changes...
-			if( $change->attrib == 'status' ) {
-				$line .= wfMsgHtml( 'code-status-'.$change->removed );
+			if ( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-' . $change->removed );
 				$line .= $change->added ? "&nbsp;" : ""; // spacing
 			// Tag changes
-			} else if( $change->attrib == 'tags' ) {
+			} else if ( $change->attrib == 'tags' ) {
 				$line .= htmlspecialchars( $change->removed );
 				$line .= $change->added ? "&nbsp;" : ""; // spacing
 			}
@@ -523,8 +523,8 @@ class CodeRevisionView extends CodeView {
 		if ( $change->added ) {
 			$line .= '<b>' . wfMsg( 'code-change-added' ) . '</b> ';
 			// Status changes...
-			if( $change->attrib == 'status' ) {
-				$line .= wfMsgHtml( 'code-status-'.$change->added );
+			if ( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-' . $change->added );
 			// Tag changes...
 			} else {
 				$line .= htmlspecialchars( $change->added );
@@ -574,7 +574,7 @@ class CodeRevisionView extends CodeView {
 
 		if ( $comment->id === 0 ) {
 			$linkId = 'cpreview';
-			$permaLink = '<strong>'.wfMsgHtml('code-rev-inline-preview').'</strong> ';
+			$permaLink = '<strong>' . wfMsgHtml( 'code-rev-inline-preview' ) . '</strong> ';
 		} else {
 			$linkId = 'c' . intval( $comment->id );
 			$permaLink = $this->mSkin->link( $this->commentLink( $comment->id ), "#" );

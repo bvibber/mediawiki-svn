@@ -67,7 +67,7 @@ class CodeRevisionCommitter extends CodeRevisionView {
 				$redirTarget = $this->revLink();
 			}
 		}
-		$wgOut->redirect( $redirTarget->getFullUrl( array('path' => $this->mPath) ) );
+		$wgOut->redirect( $redirTarget->getFullUrl( array( 'path' => $this->mPath ) ) );
 	}
 
 	public function validPost( $permission ) {

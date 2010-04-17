@@ -103,7 +103,7 @@ class ApiStoryReview extends ApiBase {
 		
 		$result = array(
 			'action' => $params['storyaction'],
-			'id' => $params['storyid'],	
+			'id' => $params['storyid'],
 		);
 		
 		$this->getResult()->setIndexedTagName( $result, 'story' );

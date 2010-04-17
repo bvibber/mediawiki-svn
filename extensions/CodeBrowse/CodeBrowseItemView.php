@@ -5,7 +5,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 		parent::__construct( $path, $request );
 		$parts = explode( '/', $path, 2 );
 		$this->mRepoName = $parts[0];
-		$this->mBasePath = '/'.@$parts[1];
+		$this->mBasePath = '/' . @$parts[1];
 		$this->mRepository = CodeRepository::newFromName( $this->mRepoName );
 	}
 	
@@ -20,7 +20,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 		if ( count( $contents ) == 1 && $contents[0]['type'] == 'file' ) {
 			return $this->showFile();
 		} else {
-			if ( substr( $this->mPath, -1 ) !== '/' ) {
+			if ( substr( $this->mPath, - 1 ) !== '/' ) {
 				$this->mPath .= '/';
 				$this->mBasePath .= '/';
 			}
@@ -31,12 +31,12 @@ class CodeBrowseItemView extends CodeBrowseView {
 	
 	function listDir( $contents ) {
 
-		$html = "<h2>".wfMsgHtml( 'codebrowse-dir-listing', $this->mPath )."</h2>\n".
-			"<table id=\"codebrowse-dir-listing\">\n". 
-			"<tr><th>".wfMsgHtml( 'codebrowse-name' )."</th><th>".
-			wfMsgHtml( 'codebrowse-revision' )."</th><th>".wfMsgHtml( 'codebrowse-lastmodifier' ).
-			"</th><th>".wfMsgHtml( 'codebrowse-lastchange' )."</th><th>".
-			wfMsgHtml( 'codebrowse-size' )."</th></tr>\n";
+		$html = "<h2>" . wfMsgHtml( 'codebrowse-dir-listing', $this->mPath ) . "</h2>\n" .
+			"<table id=\"codebrowse-dir-listing\">\n" .
+			"<tr><th>" . wfMsgHtml( 'codebrowse-name' ) . "</th><th>" .
+			wfMsgHtml( 'codebrowse-revision' ) . "</th><th>" . wfMsgHtml( 'codebrowse-lastmodifier' ) .
+			"</th><th>" . wfMsgHtml( 'codebrowse-lastchange' ) . "</th><th>" .
+			wfMsgHtml( 'codebrowse-size' ) . "</th></tr>\n";
 		
 		$dirs = array();
 		$files = array();
@@ -63,18 +63,18 @@ class CodeBrowseItemView extends CodeBrowseView {
 		$sk = $wgUser->getSkin();
 		
 		$name = $item['name'];
-		if ( $item['type'] == 'dir' && substr( $name, -1 ) != '/' )
-			$name .= '/'; 
+		if ( $item['type'] == 'dir' && substr( $name, - 1 ) != '/' )
+			$name .= '/';
 		
-		return 
-			"\t<tr><td>".$sk->link( SpecialPage::getTitleFor( 'CodeBrowse'  ), 
-				$name, array(), array( 'path' => $this->mPath.$name )
-				 ).
-			"</td><td>".$item['created_rev'].
-			"</td><td>".$sk->link( SpecialPage::getTitleFor( 
-				'Code', "{$this->mRepoName}/author/{$item['last_author']}" ), $item['last_author'] ).
-			"</td><td>".$wgLang->timeanddate( $item['time_t'] ).
-			"</td><td>". ( isset( $item['size'] ) ? $wgLang->formatSize( $item['size'] ) : '' ) .
+		return
+			"\t<tr><td>" . $sk->link( SpecialPage::getTitleFor( 'CodeBrowse'  ),
+				$name, array(), array( 'path' => $this->mPath . $name )
+				 ) .
+			"</td><td>" . $item['created_rev'] .
+			"</td><td>" . $sk->link( SpecialPage::getTitleFor(
+				'Code', "{$this->mRepoName}/author/{$item['last_author']}" ), $item['last_author'] ) .
+			"</td><td>" . $wgLang->timeanddate( $item['time_t'] ) .
+			"</td><td>" . ( isset( $item['size'] ) ? $wgLang->formatSize( $item['size'] ) : '' ) .
 			"</td></tr>\n";
 			
 	}
@@ -87,7 +87,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 		if ( $i !== false ) {
 			$ext = substr( $filename, $i + 1 );
 			$mime = MimeMagic::singleton();
-			$ctype = $mime->guessTypesForExtension( $ext ); 
+			$ctype = $mime->guessTypesForExtension( $ext );
 		} else {
 			$ctype = 'application/octet-stream';
 		}
@@ -98,10 +98,10 @@ class CodeBrowseItemView extends CodeBrowseView {
 			$wgOut->disable();
 			
 			if ( $this->mAction == 'raw' )
-				header( 'Content-Type: '.$ctype );
+				header( 'Content-Type: ' . $ctype );
 			else
 				header( 'Content-Type: application/octet-stream' );
-			header( 'Content-Length: '.strlen( $contents ) );
+			header( 'Content-Length: ' . strlen( $contents ) );
 			print $contents;
 			return;
 		}
@@ -109,6 +109,6 @@ class CodeBrowseItemView extends CodeBrowseView {
 		if ( substr( $ctype, 0, 5 ) == 'text/' )
 			return Xml::element( 'pre', array( 'style' => 'overflow: auto;' ), $contents );
 		else
-			return wfMsgHTML( 'codebrowse-binary-file' );			
+			return wfMsgHTML( 'codebrowse-binary-file' );
 	}
 }

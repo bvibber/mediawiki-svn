@@ -27,7 +27,7 @@ class TagStorysubmission {
 	 * @param $frame
 	 * 
 	 * @return array
-	 */	
+	 */
 	public static function render( $input, array $args, Parser $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
 
@@ -86,7 +86,7 @@ EOT
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-yourname' ) ) .
 			'<td>' .
 			Html::input(
-				'name', 
+				'name',
 				$defaultName,
 				'text',
 				array(
@@ -107,13 +107,13 @@ EOT
 				array(
 					'size' => $fieldSize,
 					'maxlength' => 255,
-					'minlength' => 2				
+					'minlength' => 2
 				)
 			) . '</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-occupation' ) ) .
-			'<td>' . 
+			'<td>' .
 			Html::input(
 				'occupation',
 				'',
@@ -121,7 +121,7 @@ EOT
 				array(
 					'size' => $fieldSize,
 					'maxlength' => 255,
-					'minlength' => 4				
+					'minlength' => 4
 				)
 			) . '</td></tr>';
 
@@ -136,13 +136,13 @@ EOT
 					'size' => $fieldSize,
 					'class' => 'required email',
 					'size' => $fieldSize,
-					'maxlength' => 255				
+					'maxlength' => 255
 				)
 			) . '</td></tr>';
 			
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-storytitle' ) ) .
-			'<td>' . 
+			'<td>' .
 			Html::input(
 				'storytitle',
 				'',

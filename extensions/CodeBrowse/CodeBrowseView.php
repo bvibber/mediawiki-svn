@@ -15,7 +15,7 @@ class CodeBrowseView {
 	}
 	
 	function getHeader() {
-		return '';		
+		return '';
 	}
 	
 	function getContent() {

@@ -216,7 +216,7 @@ class CodeRepository {
 			),
 			__METHOD__
 		);
-		if( $row ) {
+		if ( $row ) {
 			return CodeTestSuite::newFromRow( $this, $row );
 		} else {
 			return null;
@@ -293,7 +293,7 @@ class CodeRepository {
 	/**
 	 * Set diff cache (for import operations)
 	 * @param $codeRev CodeRevision
-	 */	
+	 */
 	public function setDiffCache( CodeRevision $codeRev ) {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );

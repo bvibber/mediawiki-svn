@@ -44,8 +44,8 @@ class CodeRevision {
 
 		// Check for ignored paths
 		global $wgCodeReviewDeferredPaths;
-		foreach( $wgCodeReviewDeferredPaths as $defer ) {
-			if( preg_match( $defer, $rev->mCommonPath ) ) {
+		foreach ( $wgCodeReviewDeferredPaths as $defer ) {
+			if ( preg_match( $defer, $rev->mCommonPath ) ) {
 				$rev->mStatus = 'deferred';
 				break;
 			}
@@ -181,9 +181,9 @@ class CodeRevision {
 	/**
 	 * Quickie protection against huuuuuuuuge batch inserts
 	 */
-	protected function insertChunks( $db, $table, $data, $method, $options=array() ) {
+	protected function insertChunks( $db, $table, $data, $method, $options = array() ) {
 		$chunkSize = 100;
-		for( $i = 0; $i < count( $data ); $i += $chunkSize ) {
+		for ( $i = 0; $i < count( $data ); $i += $chunkSize ) {
 			$db->insert( 'code_paths',
 				array_slice( $data, $i, $chunkSize ),
 				__METHOD__,
@@ -238,67 +238,67 @@ class CodeRevision {
 		$affectedBugs = array();
 		if ( preg_match_all( '/\bbug (\d+)\b/', $this->mMessage, $m ) ) {
 			$data = array();
-			foreach( $m[1] as $bug ) {
+			foreach ( $m[1] as $bug ) {
 				$data[] = array(
 					'cb_repo_id' => $this->mRepoId,
 					'cb_from'    => $this->mId,
 					'cb_bug'     => $bug
 				);
-				$affectedBugs[] = intval($bug);
+				$affectedBugs[] = intval( $bug );
 			}
 			$dbw->insert( 'code_bugs', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 		// Get the revisions this commit references...
 		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
-			foreach( $m[1] as $rev ) {
-				$affectedRevs[] = intval($rev);
+			foreach ( $m[1] as $rev ) {
+				$affectedRevs[] = intval( $rev );
 			}
 		}
 		// Also, get previous revisions that have bugs in common...
-		if( count($affectedBugs) ) {
+		if ( count( $affectedBugs ) ) {
 			$res = $dbw->select( 'code_bugs',
 				array( 'cb_from' ),
 				array(
 					'cb_repo_id' => $this->mRepoId,
 					'cb_bug'     => $affectedBugs,
-					'cb_from < '.intval($this->mId), # just in case
+					'cb_from < ' . intval( $this->mId ), # just in case
 				),
 				__METHOD__,
 				array( 'USE INDEX' => 'cb_repo_id' )
 			);
-			foreach( $res as $row ) {
-				$affectedRevs[] = intval($row->cb_from);
+			foreach ( $res as $row ) {
+				$affectedRevs[] = intval( $row->cb_from );
 			}
 		}
 		// Filter any duplicate revisions
-		if( count($affectedRevs) ) {
+		if ( count( $affectedRevs ) ) {
 			$data = array();
-			$affectedRevs = array_unique($affectedRevs);
-			foreach( $affectedRevs as $rev ) {
+			$affectedRevs = array_unique( $affectedRevs );
+			foreach ( $affectedRevs as $rev ) {
 				$data[] = array(
 					'cf_repo_id' => $this->mRepoId,
 					'cf_from'    => $this->mId,
 					'cf_to'      => $rev
 				);
-				$affectedRevs[] = intval($rev);
+				$affectedRevs[] = intval( $rev );
 			}
 			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 		// Email the authors of revisions that this follows up on
-		if( $newRevision && count($affectedRevs) > 0 ) {
+		if ( $newRevision && count( $affectedRevs ) > 0 ) {
 			// Get committer wiki user name, or repo name at least
 			$user = $this->mRepo->authorWikiUser( $this->mAuthor );
-			$committer = $user ? $user->getName() : htmlspecialchars($this->mAuthor);
+			$committer = $user ? $user->getName() : htmlspecialchars( $this->mAuthor );
 			// Get the authors of these revisions
 			$res = $dbw->select( 'code_rev',
 				array( 'cr_author', 'cr_id' ),
 				array(
 					'cr_repo_id' => $this->mRepoId,
 					'cr_id'      => $affectedRevs,
-					'cr_id < '.intval($this->mId), # just in case
+					'cr_id < ' . intval( $this->mId ), # just in case
 					// No sense in notifying if it's the same person
-					'cr_author != '.$dbw->addQuotes($this->mAuthor)
+					'cr_author != ' . $dbw->addQuotes( $this->mAuthor )
 				),
 				__METHOD__,
 				array( 'USE INDEX' => 'PRIMARY' )
@@ -307,10 +307,10 @@ class CodeRevision {
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
 			$url = $title->getFullUrl();
 			wfLoadExtensionMessages( 'CodeReview' );
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$user = $this->mRepo->authorWikiUser( $row->cr_author );
 				// User must exist on wiki and have a valid email addy
-				if( !$user || !$user->canReceiveEmail() ) continue;
+				if ( !$user || !$user->canReceiveEmail() ) continue;
 				// Send message in receiver's language
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				$user->sendMail(
@@ -369,7 +369,7 @@ class CodeRevision {
 				$users[$user->getId()] = $user;
 			}
 			// If we've got a spam list, send e-mails to it too
-			if( $wgCodeReviewCommentWatcher ) {
+			if ( $wgCodeReviewCommentWatcher ) {
 				$watcher = new User();
 				$watcher->setEmail( $wgCodeReviewCommentWatcher );
 				$users[0] = $watcher; // We don't have any anons, so using 0 is safe
@@ -597,7 +597,7 @@ class CodeRevision {
 	protected function tagData( $tags ) {
 		$data = array();
 		foreach ( $tags as $tag ) {
-			if( $tag == '' ) continue;
+			if ( $tag == '' ) continue;
 			$data[] = array(
 				'ct_repo_id' => $this->mRepoId,
 				'ct_rev_id'  => $this->mId,
@@ -639,8 +639,8 @@ class CodeRevision {
 			),
 			__METHOD__ );
 		$runs = array();
-		$timedOut = time() > ( wfTimestamp( TS_UNIX, $this->mTimestamp) + $wgCodeReviewTestsTimeout );
-		foreach( $result as $row ) {
+		$timedOut = time() > ( wfTimestamp( TS_UNIX, $this->mTimestamp ) + $wgCodeReviewTestsTimeout );
+		foreach ( $result as $row ) {
 			$suite = CodeTestSuite::newFromRow( $this->mRepo, $row );
 			$run = new CodeTestRun( $suite, $row );
 			if ( $timedOut ) {
@@ -658,9 +658,9 @@ class CodeRevision {
 			'ctr_rev_id' => $this->mId,
 			'ctr_case_id=ctc_id',
 			'ctc_suite_id=cts_id' );
-		if( $success === true ) {
+		if ( $success === true ) {
 			$conds['ctr_result'] = 1;
-		} elseif( $success === false ) {
+		} elseif ( $success === false ) {
 			$conds['ctr_result'] = 0;
 		}
 		$results = $dbr->select(
@@ -673,7 +673,7 @@ class CodeRevision {
 			$conds,
 			__METHOD__ );
 		$out = array();
-		foreach( $results as $row ) {
+		foreach ( $results as $row ) {
 			$out[] = new CodeTestResult( $row );
 		}
 		return $out;

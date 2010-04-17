@@ -72,7 +72,7 @@ class CodeCommentsTablePager extends SvnTablePager {
 					$this->mRepo->getName() . '/status/' . $value ),
 				htmlspecialchars( $this->mView->statusDesc( $value ) ) );
 		case 'cc_user_text':
-			return $this->mView->mSkin->userLink( -1, $value );
+			return $this->mView->mSkin->userLink( - 1, $value );
 		case 'cr_message':
 			return $this->mView->messageFragment( $value );
 		case 'cc_text':

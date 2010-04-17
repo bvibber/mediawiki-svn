@@ -5,8 +5,8 @@ class ApiCodeTestUpload extends ApiBase {
 	public function execute() {
 		global $wgUser;
 		// Before doing anything at all, let's check permissions
-		if( !$wgUser->isAllowed('codereview-use') ) {
-			$this->dieUsage('You don\'t have permission to upload test results', 'permissiondenied');
+		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
+			$this->dieUsage( 'You don\'t have permission to upload test results', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
 		
@@ -14,12 +14,12 @@ class ApiCodeTestUpload extends ApiBase {
 		$this->validateHmac( $params );
 
 		$repo = CodeRepository::newFromName( $params['repo'] );
-		if( !$repo ) {
+		if ( !$repo ) {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		}
 		
 		$suite = $repo->getTestSuite( $params['suite'] );
-		if( !$suite ) {
+		if ( !$suite ) {
 			$this->dieUsage( "Invalid test suite ``{$params['suite']}''", 'invalidsuite' );
 		}
 		
@@ -28,13 +28,13 @@ class ApiCodeTestUpload extends ApiBase {
 		$revId = intval( $params['rev'] );
 		
 		$status = $params['status'];
-		if( $status == 'running' || $status == 'aborted' ) {
+		if ( $status == 'running' || $status == 'aborted' ) {
 			// Set the 'tests running' flag so we can mark it...
 			$suite->setStatus( $revId, $status );
-		} elseif( $status == 'complete' ) {
+		} elseif ( $status == 'complete' ) {
 			// Save data and mark running test as completed.
 			$results = json_decode( $params['results'], true );
-			if( !is_array( $results ) ) {
+			if ( !is_array( $results ) ) {
 				$this->dieUsage( "Invalid test result data", 'invalidresults' );
 			}
 			$suite->saveResults( $revId, $results );
@@ -43,10 +43,10 @@ class ApiCodeTestUpload extends ApiBase {
 	
 	protected function validateParams( $params ) {
 		$required = array( 'repo', 'suite', 'rev', 'status', 'hmac' );
-		if( isset( $params['status'] ) && $params['status'] == 'complete' ) {
+		if ( isset( $params['status'] ) && $params['status'] == 'complete' ) {
 			$required[] = 'results';
 		}
-		foreach( $required as $arg ) {
+		foreach ( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
 				$this->dieUsageMsg( array( 'missingparam', $arg ) );
 			}
@@ -63,11 +63,11 @@ class ApiCodeTestUpload extends ApiBase {
 			$params['rev'],
 			$params['status'],
 		);
-		if( $params['status'] == "complete" ) {
+		if ( $params['status'] == "complete" ) {
 			$message[] = $params['results'];
 		}
 		$hmac = hash_hmac( "sha1", implode( "|", $message ), $wgCodeReviewSharedSecret );
-		if( $hmac != $params['hmac'] ) {
+		if ( $hmac != $params['hmac'] ) {
 			$this->dieUsageMsg( array( 'invalidhmac', $params['hmac'] ) );
 		}
 	}

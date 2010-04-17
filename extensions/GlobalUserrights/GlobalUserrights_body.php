@@ -6,7 +6,7 @@
  * @ingroup Extensions
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class GlobalUserrights extends UserrightsPage {
 
@@ -25,7 +25,7 @@ class GlobalUserrights extends UserrightsPage {
 	function saveUserGroups( $username, $reason = '' ) {
 		global $wgRequest;
 		$user = $this->fetchUser( $username );
-		if( !$user ) {
+		if ( !$user ) {
 			return;
 		}
 
@@ -45,19 +45,19 @@ class GlobalUserrights extends UserrightsPage {
 		$newGroups = $oldGroups;
 
 		if ( $removegroups ) {
-			$newGroups = array_diff($newGroups, $removegroups);
+			$newGroups = array_diff( $newGroups, $removegroups );
 			$dbw = wfGetDB( DB_MASTER );
 			$uid = $user->getId();
-			foreach( $removegroups as $group ) 
+			foreach ( $removegroups as $group )
 				// whole reason we're redefining this function is to make it use
 				// $this->removeGroup instead of $user->removeGroup, etc.
 				$this->removeGroup( $uid, $group, $dbw );
 		}
 		if ( $addgroups ) {
-			$newGroups = array_merge($newGroups, $addgroups);
+			$newGroups = array_merge( $newGroups, $addgroups );
 			$dbw = wfGetDB( DB_MASTER );
 			$uid = $user->getId();
-			foreach( $addgroups as $group )
+			foreach ( $addgroups as $group )
 				$this->addGroup( $uid, $group, $dbw );
 		}
 		// get rid of duplicate groups there might be
@@ -66,14 +66,14 @@ class GlobalUserrights extends UserrightsPage {
 		$user->invalidateCache(); // clear cache
 
 		// if anything changed, log it
-		if( $newGroups != $oldGroups )
+		if ( $newGroups != $oldGroups )
 			$this->addLogEntry( $user, $oldGroups, $newGroups );
 	}
 
 	function addGroup( $uid, $group, $dbw ) {
 		$dbw->insert( 'global_user_groups', array(
 			'gug_user' => $uid,
-			'gug_group' => $group),
+			'gug_group' => $group ),
 			__METHOD__,
 			'IGNORE'
 		);
@@ -83,7 +83,7 @@ class GlobalUserrights extends UserrightsPage {
 	function removeGroup( $uid, $group, $dbw ) {
 		$dbw->delete( 'global_user_groups', array(
 			'gug_user' => $uid,
-			'gug_group' => $group),
+			'gug_group' => $group ),
 			__METHOD__
 		);
 		$dbw->commit();
@@ -108,7 +108,7 @@ class GlobalUserrights extends UserrightsPage {
 	function fetchUser( $username ) {
 		global $wgOut;
 		$user = User::newFromName( $username );
-		if( !$user || $user->isAnon() ) {
+		if ( !$user || $user->isAnon() ) {
 			$wgOut->addWikiMsg( 'nosuchusershort', $username );
 			return null;
 		}

@@ -32,7 +32,7 @@ $wgExtDistRemoteClient = false;
 /********************
  * Registration
  */
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgSpecialPages['ExtensionDistributor'] = 'ExtensionDistributorPage';
 $wgSpecialPageGroups['ExtensionDistributor'] = 'developer';
 $wgAutoloadClasses['ExtensionDistributorPage'] = $dir . 'ExtensionDistributor_body.php';

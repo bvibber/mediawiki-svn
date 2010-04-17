@@ -33,7 +33,7 @@ class SpecialStory extends IncludableSpecialPage {
 				// Redirect the user when the redirect parameter is set.
 				if ( $wgRequest->getVal( 'returnto' ) ) {
 		 			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
-					$wgOut->redirect( $titleObj->getFullURL() );					
+					$wgOut->redirect( $titleObj->getFullURL() );
 				}
 			} else {
 				// If the user is not allowed to modify stories, show an error.
@@ -45,7 +45,7 @@ class SpecialStory extends IncludableSpecialPage {
 			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-viewstories' ) );
-			$wgOut->addWikiMsg( 'storyboard-nostorytitle' );	
+			$wgOut->addWikiMsg( 'storyboard-nostorytitle' );
 		}
 		
 		wfProfileOut( __METHOD__ );
@@ -59,7 +59,7 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$hasTitle = trim( $title ) != '';
 		
-		$dbr = wfGetDB( DB_SLAVE );		
+		$dbr = wfGetDB( DB_SLAVE );
 		
 		// If an id is provided, query for the story title and redirect to have a nicer url,
 		// or continue with function execution to display an error that there is no such story.
@@ -70,7 +70,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'story_title',
 				),
 				array( 'story_id' => $wgRequest->getIntOrNull( 'id' ) )
-			);	
+			);
 			if ( $story ) {
 				$wgOut->redirect( $this->getTitle( $story->story_title )->getFullURL() );
 				return;
@@ -135,7 +135,7 @@ class SpecialStory extends IncludableSpecialPage {
 		}
 		else {
 			$wgOut->addWikiMsg( 'storyboard-nosuchstory' );
-		}		
+		}
 	}
 	
 	/**
@@ -148,7 +148,7 @@ class SpecialStory extends IncludableSpecialPage {
 	private function showStory( $story ) {
 		global $wgOut, $wgLang, $wgUser, $egStoryboardScriptPath;
 		
-		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );		
+		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 
 		if ( $story->story_author_image != '' && $story->story_image_hidden != 1 ) {
 			$story->story_author_image = htmlspecialchars( $story->story_author_image );
@@ -164,7 +164,7 @@ class SpecialStory extends IncludableSpecialPage {
 			$story->story_author_name = '[[' . $userPage->getFullText() . '|' . $story->story_author_name . ']]';
 		}
 		
-		$wgOut->addWikiText( 
+		$wgOut->addWikiText(
 			htmlspecialchars( wfMsgExt(
 				'storyboard-submittedbyon',
 				'parsemag',
@@ -191,7 +191,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * @param $story
 	 * 
 	 * TODO: Fix the validation for the story title
-	 */	
+	 */
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
@@ -217,9 +217,9 @@ class SpecialStory extends IncludableSpecialPage {
 			
 		// The current value will be selected on page load with jQuery.
 		$formBody .= '<tr>' .
-			'<td width="100%"><label for="storystate">' . 
-				htmlspecialchars( wfMsg( 'storyboard-storystate' ) ) . 
-			'</label></td><td>' . 		
+			'<td width="100%"><label for="storystate">' .
+				htmlspecialchars( wfMsg( 'storyboard-storystate' ) ) .
+			'</label></td><td>' .
 			Html::rawElement(
 				'select',
 				array(
@@ -230,7 +230,7 @@ class SpecialStory extends IncludableSpecialPage {
 				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . wfMsg( 'storyboard-published' ) . '</option>' .
 				'<option value="' . Storyboard_STORY_HIDDEN . '">' . wfMsg( 'storyboard-hidden' ) . '</option>'
 			) .
-		'</td></tr>';		
+		'</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
@@ -288,10 +288,10 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		// TODO: further fix this
 		// Need to extend the validator plugin to work with api results, and also send over the current srory id to exclude it.
-		$formBody .= '<tr>' . 
-			'<td width="100%"><label for="storytitle">' . 
-				htmlspecialchars( wfMsg( 'storyboard-storytitle' ) ) . 
-			'</label></td><td>' . 
+		$formBody .= '<tr>' .
+			'<td width="100%"><label for="storytitle">' .
+				htmlspecialchars( wfMsg( 'storyboard-storytitle' ) ) .
+			'</label></td><td>' .
 			Html::input(
 				'storytitle',
 				$story->story_title,
@@ -327,10 +327,10 @@ class SpecialStory extends IncludableSpecialPage {
 			) .
 			'</td></tr>';
 
-		$cancelLink = $wgUser->getSkin()->makeKnownLink( 
+		$cancelLink = $wgUser->getSkin()->makeKnownLink(
 			$this->getTitle( $story->story_title )->getPrefixedText(),
-			wfMsgExt( 'cancel', array('parseinline') )
-		);		
+			wfMsgExt( 'cancel', array( 'parseinline' ) )
+		);
 			
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
@@ -342,7 +342,7 @@ class SpecialStory extends IncludableSpecialPage {
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
 		$formBody .= Html::hidden( 'storyId', $story->story_id );
 		
-		$formBody = '<fieldset><legend>' . 
+		$formBody = '<fieldset><legend>' .
 			htmlspecialchars( wfMsgExt(
 				'storyboard-createdandmodified',
 				'parsemag',
@@ -350,7 +350,7 @@ class SpecialStory extends IncludableSpecialPage {
 				$wgLang->date( $story->story_created ),
 				$wgLang->time( $story->story_modified ),
 				$wgLang->date( $story->story_modified )
-			) ) . 
+			) ) .
 		'</legend>' . $formBody . '</fieldset>';
 			
 		$query = "id=$story->story_id";

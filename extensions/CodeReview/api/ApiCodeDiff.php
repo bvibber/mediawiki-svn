@@ -5,8 +5,8 @@ class ApiCodeDiff extends ApiBase {
 	public function execute() {
 		global $wgUser, $wgCodeReviewMaxDiffSize;
 		// Before doing anything at all, let's check permissions
-		if( !$wgUser->isAllowed('codereview-use') ) {
-			$this->dieUsage('You don\'t have permission to view code diffs','permissiondenied');
+		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
+			$this->dieUsage( 'You don\'t have permission to view code diffs', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
 

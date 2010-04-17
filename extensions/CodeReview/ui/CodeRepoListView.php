@@ -24,9 +24,9 @@ class CodeRepoListView {
 		$text = "'''[[Special:Code/$name|$name]]''' (";
 		$links[] = "[[Special:Code/$name/comments|" . wfMsgHtml( 'code-notes' ) . "]]";
 		$links[] = "[[Special:Code/$name/statuschanges|" . wfMsgHtml( 'code-statuschanges' ) . "]]";
-		if( $wgUser->getId() ) {
+		if ( $wgUser->getId() ) {
 			$author = $repo->wikiUserAuthor( $wgUser->getName() );
-			if( $author !== false ) {
+			if ( $author !== false ) {
 				$links[] = "[[Special:Code/$name/author/$author|" . wfMsgHtml( 'code-mycommits' ) . "]]";
 			}
 		}

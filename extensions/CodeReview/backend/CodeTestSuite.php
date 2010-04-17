@@ -18,7 +18,7 @@ class CodeTestSuite {
 
 	function setStatus( $revId, $status ) {
 		$run = $this->getRun( $revId );
-		if( $run ) {
+		if ( $run ) {
 			$run->setStatus( $status );
 		} else {
 			$run = CodeTestRun::insertRun( $this, $revId, $status );
@@ -28,7 +28,7 @@ class CodeTestSuite {
 	
 	function saveResults( $revId, $results ) {
 		$run = $this->getRun( $revId );
-		if( $run ) {
+		if ( $run ) {
 			$run->saveResults( $results );
 		} else {
 			$run = CodeTestRun::insertRun( $this, $revId, "complete", $results );
@@ -36,23 +36,23 @@ class CodeTestSuite {
 		$breakage = false;
 		// Email test case breakers
 		$runPrev = $this->getRun( $revId - 1 ); // previous results
-		if( $runPrev ) {
+		if ( $runPrev ) {
 			$oldPassed = $runPrev->getResults( true ); // tests that passed before
-			foreach( $oldPassed as $test ) {
+			foreach ( $oldPassed as $test ) {
 				// If this test is still there, worked before, and failed now...we have a problem
-				if( array_key_exists($test->caseName,$results) && !$results[$test->caseName] ) {
+				if ( array_key_exists( $test->caseName, $results ) && !$results[$test->caseName] ) {
 					$breakage = true;
 					break;
 				}
 			}
 		}
 		// Email the committer of the broken revision
-		if( $breakage ) {
+		if ( $breakage ) {
 			$codeRev = $this->repo->getRevision( $revId );
-			if( !$codeRev ) return $run; // wtf?
+			if ( !$codeRev ) return $run; // wtf?
 			$user = $codeRev->getWikiUser();
 			// User must exist on wiki and have a valid email addy
-			if( $user && $user->canReceiveEmail() ) {
+			if ( $user && $user->canReceiveEmail() ) {
 				wfLoadExtensionMessages( 'CodeReview' );
 				// Send message in receiver's language
 				// Get repo and build comment title (for url)

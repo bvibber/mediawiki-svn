@@ -50,7 +50,7 @@ It might have been removed.',
 	'storyboard-submissioncomplete' => 'Submission complete',
 
 	// Story review
-	'storyreview' => 'Story review',	
+	'storyreview' => 'Story review',
 	'storyboard-hideimage' => 'Hide image',
 	'storyboard-unhideimage' => 'Show image',
 	'storyboard-deleteimage' => 'Delete image',

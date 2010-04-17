@@ -58,7 +58,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		}
 
 		// TODO: email confirmation would be nice
-		
+
 		$dbw->insert( 'storyboard', $story );
 	}
 	
@@ -69,7 +69,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		
 		$storyboardLink = ''; // TODO: create html link to the page containing stories. 
 
-		$wgOut->addWikiText( wfMsgExt( 'storyboard-createdsucessfully', 'parsemag', $storyboardLink ) ); 		
+		$wgOut->addWikiText( wfMsgExt( 'storyboard-createdsucessfully', 'parsemag', $storyboardLink ) );
 	}
 	
 }

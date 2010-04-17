@@ -10,7 +10,7 @@
  * @note Some of the code based on stuff by Lukasz 'TOR' Garczewski, as well as SpecialUserrights.php and CentralAuth
  */
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 // Extension credits
 $wgExtensionCredits['specialpage'][] = array(
@@ -66,7 +66,7 @@ function efGURgetGroups( $user ) {
 		array( 'gug_user' => $uid )
 	);
 
-	while( $row = $dbr->fetchObject( $res ) ) {
+	while ( $row = $dbr->fetchObject( $res ) ) {
 		$groups[] = $row->gug_group;
 	}
 
@@ -107,8 +107,8 @@ function efGURUpdateQueryInfo( $that, &$query ) {
 	$query['fields'][4] = 'GREATEST(COALESCE(ug_group, gug_group), COALESCE(gug_group, ug_group)) AS singlegroup';
 
 	// if there's a $query['conds']['ug_group'], destroy it and make one that accounts for gug_group
-	if( isset( $query['conds']['ug_group'] ) ) {
-		unset($query['conds']['ug_group']);
+	if ( isset( $query['conds']['ug_group'] ) ) {
+		unset( $query['conds']['ug_group'] );
 		$reqgrp = $dbr->addQuotes( $that->requestedGroup );
 		$query['conds'][] = 'ug_group = ' . $reqgrp . 'OR gug_group = ' . $reqgrp;
 	}

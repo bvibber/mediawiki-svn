@@ -1,6 +1,6 @@
 <?php
 
-class CodeBrowseRepoListView extends CodeBrowseView { 
+class CodeBrowseRepoListView extends CodeBrowseView {
 	function getContent() {
 		global $wgOut;
 		return $wgOut->parse( self::reallyGetContent() );
@@ -8,11 +8,11 @@ class CodeBrowseRepoListView extends CodeBrowseView {
 	}
 	static function reallyGetContent() {
 		$repos = CodeRepository::getRepoList();
-		if( !count( $repos ) )
+		if ( !count( $repos ) )
 			return wfMsg( 'code-no-repo' );
 		
 		$text = '';
-		foreach( $repos as $repo ){
+		foreach ( $repos as $repo ) {
 			global $wgLang;
 
 			$name = $repo->getName();
