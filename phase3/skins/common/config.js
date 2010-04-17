@@ -27,6 +27,9 @@
 			}
 		} );
 		
+		// Scroll to the bottom of upgrade log
+		$( "#config-update-log" ).each( function() { this.scrollTop = this.scrollHeight; } );
+		
 		// Show/hide Creative Commons thingy
 		$( '.licenseRadio' ).click( function() {
 			var $wrapper = $( '#config-cc-wrapper' );

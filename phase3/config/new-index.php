@@ -19,6 +19,7 @@ function wfInstallerConfig() {
 
 chdir( ".." );
 require( './includes/WebStart.php' );
+require_once( './maintenance/updaters.inc' ); // sigh...
 
 // Disable the i18n cache and LoadBalancer
 Language::getLocalisationCache()->disableBackend();

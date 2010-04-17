@@ -89,6 +89,14 @@ abstract class InstallerDBType {
 	abstract function createTables();
 
 	/**
+	 * Perform database upgrades
+	 * @todo make abstract
+	 */
+	/*abstract*/ function doUpgrade() {
+		return false;
+	}
+
+	/**
 	 * Return any table options to be applied to all tables that don't
 	 * override them
 	 * @return Array

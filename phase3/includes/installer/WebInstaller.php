@@ -81,6 +81,7 @@ class WebInstaller extends Installer {
 		if ( isset( $session['settings'] ) ) {
 			$this->settings = $session['settings'] + $this->settings;
 		}
+		$this->exportVars();
 		$this->setupLanguage();
 
 		if ( isset( $session['happyPages'] ) ) {
@@ -1058,7 +1059,17 @@ class WebInstaller_Upgrade extends WebInstallerPage {
 		}
 
 		if ( $this->parent->request->wasPosted() ) {
-			if ( true || $installer->doUpgrade() ) {
+			$this->addHTML(
+				'<div id="config-spinner" style="display:none;"><img src="../skins/common/images/ajax-loader.gif" /></div>' .
+				'<script>jQuery( "#config-spinner" )[0].style.display = "block";</script>' .
+				'<textarea id="config-update-log" name="UpdateLog" rows="10" readonly="readonly">'
+			);
+			$this->parent->output->flush();
+			$result = $installer->doUpgrade();
+			$this->addHTML( '</textarea>
+<script>jQuery( "#config-spinner" )[0].style.display = "none";</script>' );
+			$this->parent->output->flush();
+			if ( $result ) {
 				$this->setVar( '_UpgradeDone', true );
 				$this->showDoneMessage();
 				return 'output';
@@ -1559,7 +1570,6 @@ class WebInstaller_Install extends WebInstallerPage {
 			return 'continue';
 		}
 		$this->startForm();
-		$this->parent->exportVars();
 		$this->addHTML("<ul>");
 		foreach( $this->parent->getInstallSteps() as $step ) {
 			$this->startStage( "config-install-$step" );

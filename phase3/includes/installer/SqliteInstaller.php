@@ -137,6 +137,20 @@ class SqliteInstaller extends InstallerDBType {
 		return $this->populateInterwikiTable( $this->db );
 	}
 
+	function doUpgrade() {
+		global $wgDatabase;
+		LBFactory::enableBackend();
+		$wgDatabase = wfGetDB( DB_MASTER );
+		ob_start( array( 'SqliteInstaller', 'outputHandler' ) );
+		do_all_updates( false, true );
+		ob_end_flush();
+		return true;
+	}
+
+	static function outputHandler( $string ) {
+		return htmlspecialchars( $string );
+	}
+
 	function getLocalSettings() {
 		$dir = LocalSettings::escapePhpString( $this->getVar( 'wgSQLiteDataDir' ) );
 		return
