@@ -1,6 +1,6 @@
 <?php
  /**
-  * Copyright (C) Wikimedia Deuschland, 2009
+  * Copyright (C) Wikimedia Deutschland, 2009
   * Authors Hallo Welt! Medienwerkstatt GmbH
   * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
   *
@@ -21,14 +21,13 @@
   *
   */
 
-//error_reporting(E_ALL);
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
 	echo "PagedTiffHandler extension";
 	exit(1);
 }
 
-/** Add to LocalSettings.php
+/* Add to LocalSettings.php
 require_once("$IP/extensions/PagedTiffHandler/PagedTiffHandler.php");
 
 $wgUseImageMagick = true;
@@ -36,9 +35,7 @@ $wgImageMagickConvertCommand = "C:\Program Files\ImageMagick-6.5.6-Q8\convert";
 $wgImageMagickIdentifyCommand = "C:\Program Files\ImageMagick-6.5.6-Q8\identify";
 $wgTiffExivCommand = "C:\Program Files\Exiv2\exiv2";
 $wgMaxUploadSize = 1073741824;
-
-
- */
+*/
 
 $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
@@ -92,9 +89,9 @@ $wgTiffUseVips = false;
 $wgTiffMaxEmbedFiles = 10000;
 // Maximum resolution of embedded images (product of width x height pixels)
 $wgTiffMaxEmbedFileResolution = 25600000; // max. Resolution 1600 x 1600 pixels
-// Maximum size of meta data
+// Maximum size of metadata
 $wgTiffMaxMetaSize = 67108864; // 64kB
-// TTL of Cacheentries for Errors
+// TTL of cache entries for errors
 $wgTiffErrorCacheTTL = 84600;
 
 $wgFileExtensions[] = 'tiff';
@@ -102,9 +99,9 @@ $wgFileExtensions[] = 'tif';
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['PagedTiffHandler'] = $dir . 'PagedTiffHandler.i18n.php';
-$wgExtensionMessagesFiles['PagedTiffImage'] = $dir . 'PagedTiffHandler.i18n.php';
 $wgAutoloadClasses['PagedTiffImage'] = $dir . 'PagedTiffHandler.image.php';
 $wgAutoloadClasses['PagedTiffHandler'] = $dir . 'PagedTiffHandler_body.php';
+$wgAutoloadClasses['TiffReader'] = $dir . 'TiffReader.php';
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
