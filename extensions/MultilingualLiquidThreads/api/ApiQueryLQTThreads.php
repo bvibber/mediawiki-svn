@@ -17,27 +17,26 @@
  */
 
 class ApiQueryLQTThreads extends ApiQueryBase {
-
 	// Property definitions
 	static $propRelations = array(
-			'id' => 'thread_id',
-			'subject' => 'thread_subject',
-			'page' => array(
-				'namespace' => 'thread_article_namespace',
-				'title' => 'thread_article_title'
-			),
-			'parent' => 'thread_parent',
-			'ancestor' => 'thread_ancestor',
-			'created' => 'thread_created',
-			'modified' => 'thread_modified',
-			'author' => array(
-				'id' => 'thread_author_id',
-				'name' => 'thread_author_name'
-			),
-			'summaryid' => 'thread_summary_page',
-			'rootid' => 'thread_root',
-			'type' => 'thread_type',
-		);
+		'id' => 'thread_id',
+		'subject' => 'thread_subject',
+		'page' => array(
+			'namespace' => 'thread_article_namespace',
+			'title' => 'thread_article_title'
+		),
+		'parent' => 'thread_parent',
+		'ancestor' => 'thread_ancestor',
+		'created' => 'thread_created',
+		'modified' => 'thread_modified',
+		'author' => array(
+			'id' => 'thread_author_id',
+			'name' => 'thread_author_name'
+		),
+		'summaryid' => 'thread_summary_page',
+		'rootid' => 'thread_root',
+		'type' => 'thread_type',
+	);
 
 	public function __construct( $query, $moduleName ) {
 		parent :: __construct( $query, $moduleName, 'th' );
@@ -83,18 +82,18 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 				'thread_article_title', 'thread_summary_page', 'thread_ancestor',
 				'thread_parent', 'thread_modified', 'thread_created', 'thread_type',
 				'thread_editedness', 'thread_subject', 'thread_author_id',
-				'thread_author_name',
+				'thread_author_name', 'thread_signature'
 			);
 
 			$this->addFields( $allFields );
 		}
 
 		$res = $this->select( __METHOD__ );
-		
+
 		if ( $params['render'] ) {
 			$threads = Threads::loadFromResult( $res, $this->getDB() );
 		}
-		
+
 		$count = 0;
 		foreach ( $res as $row )
 		{
@@ -350,6 +349,6 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . '$Id: ApiQueryLQTThreads.php 58150 2009-10-26 17:38:38Z werdna $';
+		return __CLASS__ . ': $Id: ApiQueryLQTThreads.php 62609 2010-02-16 22:36:05Z reedy $';
 	}
 }

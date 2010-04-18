@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +27,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup API
  */
 class ApiFeedLQTThreads extends ApiBase {
-
 	public function __construct( $main, $action ) {
 		parent :: __construct( $main, $action );
 	}
@@ -41,7 +39,7 @@ class ApiFeedLQTThreads extends ApiBase {
 	}
 
 	/**
-	 * Make a nested call to the API to request watchlist items in the last $hours.
+	 * Make a nested call to the API to request items in the last $hours.
 	 * Wrap the result as an RSS/Atom feed.
 	 */
 	public function execute() {
@@ -54,7 +52,7 @@ class ApiFeedLQTThreads extends ApiBase {
 		$feedTitle = self::createFeedTitle( $params );
 		$feedClass = $wgFeedClasses[$params['feedformat']];
 		$feedItems = array();
-		
+
 		$feedUrl = Title::newMainPage()->getFullURL();
 
 		$tables = array( 'thread' );
@@ -180,6 +178,10 @@ class ApiFeedLQTThreads extends ApiBase {
 		foreach ( $threads as $thread ) {
 			$root = new Article( Title::newFromText( $thread ) );
 			$thread = Threads::withRoot( $root );
+
+			if ( ! $thread ) {
+				continue;
+			}
 
 			$threadCond = array(
 				'thread_ancestor' => $thread->id(),
