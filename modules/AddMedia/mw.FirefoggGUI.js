@@ -913,7 +913,11 @@ mw.FirefoggGUI.prototype = {
 			}
 			setValues( k, val, maxVal );
 		}
-		
+		if( fileInfo.code && fileInfo.code == 'badfile') {
+			// Can't read file info ( but maybe can still encode it?) 
+			this.updateValuesInHtml();
+			return ;
+		}
 		// Video stream settings
 		for ( var i in fileInfo.video[0] ) {
 			var val = fileInfo.video[0][i];
