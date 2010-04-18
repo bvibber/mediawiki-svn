@@ -41,21 +41,21 @@ $wgExtensionCredits['parserhook'][]    = array(
 
 $wgUseProjects = true;
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['TaskList'] = $dir . 'SpecialTaskList_body.php';
-$wgExtensionMessagesFiles['TaskList'] = $dir . 'SpecialTaskList.i18n.php';
+$wgAutoloadClasses['TaskList'] = $dir . 'TodoTasks_body.php';
+$wgExtensionMessagesFiles['TaskList'] = $dir . 'TodoTasks.i18n.php';
 $wgExtensionMessagesFiles['TaskListMagic'] = $dir . 'TodoTasks.i18n.magic.php';
-$wgExtensionAliasesFiles['TaskList'] = $dir . 'SpecialTaskList.alias.php';
+$wgExtensionAliasesFiles['TaskList'] = $dir . 'TodoTasks.alias.php';
 $wgSpecialPages['TaskList'] = 'TaskList';
 
 if ($wgUseProjects) {
-	$wgAutoloadClasses['TaskListByProject'] = $dir . 'SpecialTaskList_body.php';
+	$wgAutoloadClasses['TaskListByProject'] = $dir . 'TodoTasks_body.php';
 	$wgSpecialPages['TaskListByProject']   = 'TaskListByProject';
 }
 $wgHooks['LoadAllMessages'][] = 'TaskList::loadMessages';
 $wgHooks['LoadAllMessages'][] = 'TaskListByProject::loadMessages';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efTodoTasksSchemaUpdates';
 
-require_once($dir . 'SpecialTaskList_body.php');
+require_once($dir . 'TodoTasks_body.php');
 
 $wgHooks['PersonalUrls'][]             = 'addPersonalUrl';
 $wgHooks['AlternateEdit'][]            = 'todoPreviewAction';
