@@ -7,6 +7,7 @@ Critical (to be done before merge to trunk)
 * Do not create the main page, but just display the message in user language on
   it if it does not yet exist using a hook.
 * Better/more JS (Roan)
+** Fix non-JS behavior, refactor stuff in <noscript><style> to use hiding by JS
 * ...
 
 Other todo
