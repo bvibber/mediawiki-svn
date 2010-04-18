@@ -1571,7 +1571,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 	'extdist-want-more' => '다른 확장 기능 내려받기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2901,7 +2901,7 @@ Nếu bạn có câu hỏi nào về hệ thống phân phối bộ mở rộng 
 	'extdist-want-more' => 'Lấy một bộ mở rộng khác',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

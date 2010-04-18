@@ -500,16 +500,20 @@ Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus.',
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'prefswitch' => 'Pśešaltowanje nastajenjow iniciatiwy wužywajobnosći',
 	'prefswitch-desc' => 'Wužywarjam dowóliś, sajźby nastajenjow pśešaltowaś',
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Ně',
 	'prefswitch-survey-submit-off' => 'Nowe funkcije wótšaltowaś',
 	'prefswitch-survey-cancel-off' => 'Jolic coš nowe funkcije dalej wužywaś, móžoš se k $1 wrośiś.',
+	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłaś',
+	'prefswitch-survey-cancel-feedback' => 'Jolic njocoš měnjenje pósłaś, móžoš se do $1 wrośiś.',
 	'prefswitch-survey-question-likedislike' => 'Co se śi spódoba na nowych funkcijach?
 Co se śi njespódoba na nowych funkcijach?',
 	'prefswitch-survey-question-whyoff' => 'Cogodla wótšaltujoš nowe funkcije?
 Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Wužywanje jo było pśekomplicěrowane.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Njejo pórědnje funkcioněrowało.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Naglěd se mě njespódoba.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nowe rejtarki a layout se mi njespódobaju.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nowa rědowa kšoma se mi njespódoba.',
@@ -520,10 +524,13 @@ Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-survey-answer-os-other' => 'Drugi źěłowy system:',
 	'prefswitch-survey-question-res' => 'Co jo rozeznaśe twójeje wobrazowki?',
 	'prefswitch-title-on' => 'Co jo nowe?',
+	'prefswitch-title-switched-on' => 'Wjele wjasela!',
 	'prefswitch-title-off' => 'Nowe funkcije wótšaltowaś',
 	'prefswitch-title-switched-off' => 'Źěkujomy se',
+	'prefswitch-title-feedback' => 'Rezonanca',
 	'prefswitch-success-on' => 'Nowe funkcije su něnto zašaltowane.',
 	'prefswitch-success-off' => 'Nowe funkcije su něnto wótšaltowane.',
+	'prefswitch-success-feedback' => 'Twójo měnjenje jo se pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Slědk k <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-off' => '===Wopytaj je!===
@@ -1367,17 +1374,33 @@ $messages['ka'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'prefswitch-desc' => '사용자가 여러 설정을 한번에 바꿀 수 있도록 함',
 	'prefswitch-survey-true' => '예',
 	'prefswitch-survey-false' => '아니오',
+	'prefswitch-survey-submit-off' => '새로운 기능 끄기',
+	'prefswitch-survey-cancel-off' => '새 기능을 계속 사용하시려면, $1로 돌아가실 수 있습니다.',
 	'prefswitch-survey-submit-feedback' => '피드백 남기기',
+	'prefswitch-survey-cancel-feedback' => '피드백을 제공하고 싶지 않다면 $1로 돌아가시면 됩니다.',
 	'prefswitch-survey-question-likedislike' => '어떤 부분이 마음에 들었나요? 그리고 어떤 부분이 마음에 들지 않았나요?',
+	'prefswitch-survey-question-whyoff' => '새로운 기능을 끄는 이유가 무엇인가요?
+해당하는 모든 항목을 선택해주세요.',
 	'prefswitch-survey-answer-whyoff-hard' => '사용하기에 너무 어렵다.',
+	'prefswitch-survey-answer-whyoff-didntwork' => '기능이 제대로 작동하지 않는다.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '기능이 예상한 대로 동작하지 않는다.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => '전체적인 모양이 마음에 들지 않는다.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => '새 탭과 레이아웃이 마음에 들지 않는다.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '새 툴바가 마음에 들지 않는다.',
 	'prefswitch-survey-answer-whyoff-other' => '다른 이유:',
 	'prefswitch-survey-question-browser' => '어떤 웹 브라우저를 사용하고 있나요?',
 	'prefswitch-survey-answer-browser-other' => '다른 브라우저:',
 	'prefswitch-survey-question-os' => '어떤 운영 체제(OS)를 사용하고 있나요?',
 	'prefswitch-survey-answer-os-other' => '다른 운영 체제:',
 	'prefswitch-survey-question-res' => '어느 정도의 모니터 해상도를 사용하고 있나요?',
+	'prefswitch-title-on' => '무엇이 새로워졌나요?',
+	'prefswitch-title-switched-on' => '즐겁게 이용하십시오!',
+	'prefswitch-title-off' => '새 기능 끄기',
+	'prefswitch-title-switched-off' => '감사합니다.',
+	'prefswitch-title-feedback' => '피드백',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>로 돌아갑니다.',
 );
@@ -2068,5 +2091,31 @@ Lütfen uygun olanları seçin.',
 	'prefswitch-success-feedback' => 'Geribildiriminiz gönderildi.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span> sayfasına geri dön.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'prefswitch-desc' => 'Cho phép những người dùng đổi qua lại giữa các bộ tùy chọn.',
+	'prefswitch-survey-true' => 'Có',
+	'prefswitch-survey-false' => 'Không',
+	'prefswitch-survey-submit-off' => 'Tắt các tính năng mới',
+	'prefswitch-survey-cancel-off' => 'Để tiếp tục sử dụng các tính năng mới, hãy trở về $1.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Nó khó sử dụng quá.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Nó không hoạt động tốt.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Tôi không thích thanh công cụ mới.',
+	'prefswitch-survey-answer-whyoff-other' => 'Lý do khác:',
+	'prefswitch-survey-question-browser' => 'Bạn hay sử dụng trình duyệt nào?',
+	'prefswitch-survey-answer-browser-other' => 'Trình duyệt khác:',
+	'prefswitch-survey-question-os' => 'Bạn hay sử dụng hệ điều hành nào?',
+	'prefswitch-survey-answer-os-other' => 'Hệ điều hành khác:',
+	'prefswitch-title-on' => 'Có gì mới?',
+	'prefswitch-title-off' => 'Tắt các tính năng mới',
+	'prefswitch-title-switched-off' => 'Cám ơn',
+	'prefswitch-success-on' => 'Các tính năng mới đang bật.',
+	'prefswitch-success-off' => 'Các tính năng mới đang tắt.',
+	'prefswitch-return' => '<hr style="clear:both">
+Trở về <span class="plainlinks">[$1 $2]</span>.',
 );
 

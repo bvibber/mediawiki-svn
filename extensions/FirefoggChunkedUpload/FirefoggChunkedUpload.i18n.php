@@ -103,6 +103,13 @@ $messages['id'] = array(
 	'firefoggcu-desc' => 'Protokol mengunggah berkas Firefogg',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'firefoggcu-desc' => 'Protocollo di caricamento di Firefogg Chunked',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */

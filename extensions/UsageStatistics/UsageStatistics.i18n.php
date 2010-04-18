@@ -563,6 +563,7 @@ $messages['dsb'] = array(
  * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'specialuserstats' => 'Στατιστικά χρήσης',
@@ -573,8 +574,8 @@ $messages['el'] = array(
 	'usagestatisticsinterval' => 'Διάστημα:',
 	'usagestatisticsnamespace' => 'Περιοχή ονομάτων:',
 	'usagestatisticsexcluderedirects' => 'Εξαίρεση ανακατευθύνσεων',
-	'usagestatistics-namespace' => 'Στατιστικά για την ομάδα σελίδων [[Ειδικό: Allpages / $ 1 | $ 2]].',
-	'usagestatistics-noredirects' => '[[Ειδικό: ListRedirects | Aνακατευθύνσεις]] δε λαμβάνονται υπόψη.',
+	'usagestatistics-namespace' => 'Στατιστικά για την περιοχή [[Ειδικό:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Οι [[Ειδικό:ListRedirects|ανακατευθύνσεις]] δε λαμβάνονται υπόψη.',
 	'usagestatisticstype' => 'Τύπος',
 	'usagestatisticsstart' => 'Ημερομηνία έναρξης:',
 	'usagestatisticsend' => 'Ημερομηνία λήξης:',

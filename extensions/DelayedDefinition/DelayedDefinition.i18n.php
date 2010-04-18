@@ -225,7 +225,7 @@ $messages['ja'] = array(
 	'delaydef-error-redef' => 'エラー: $1 の再定義を試みました。',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

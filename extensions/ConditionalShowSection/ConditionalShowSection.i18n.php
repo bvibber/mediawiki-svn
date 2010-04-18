@@ -162,6 +162,13 @@ $messages['id'] = array(
 	'conditionalshowsection-desc' => 'Menambahkan penanda cshow untuk kondisi tampil/sembunyi seksi dari tekswiki',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'conditionalshowsection-desc' => 'Aggiunge il tag cshow per mostrare o nascondere una sezione di wikitesto in maniera condizionata',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

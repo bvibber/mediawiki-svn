@@ -26,11 +26,9 @@ $messages['qqq'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'userthrottle-desc' => 'إنشاء الحسابات تم تعليقه تلقائيا لعدة لحظات نتيجة لوجود عدد كبير غير معتاد من محاولات الدخول الحديثة.
-من فضلك انتظر عدة دقائق وحاول مرة ثانية.',
+	'userthrottle-desc' => 'حد إنشاء المستخدم',
 	'acct_creation_global_hard_throttle_hit' => "إنشاء الحسابات تم تعليقه لعدة ثواني لتقليل هجوم التسجيل.
 من فضلك انتظر لحظة واضغط 'reload' في متصفحك لإعادة التنفيذ.",
-	'userthrottle-desc' => 'حد إنشاء المستخدم',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -38,11 +36,9 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'userthrottle-desc' => 'إنشاء الحسابات تم تعليقه تلقائيا لعدة لحظات نتيجة لوجود عدد كبير غير معتاد من محاولات الدخول الحديثة.
-من فضلك انتظر عدة دقائق وحاول مرة ثانية.',
+	'userthrottle-desc' => 'حد إنشاء اليوزر',
 	'acct_creation_global_hard_throttle_hit' => "إنشاء الحسابات تم تعليقه لعدة ثوانى لتقليل هجوم التسجيل.
 من فضلك انتظر لحظة واضغط 'reload' فى متصفحك لإعادة التنفيذ.",
-	'userthrottle-desc' => 'حد إنشاء اليوزر',
 );
 
 /** Bavarian (Boarisch)
@@ -58,11 +54,9 @@ $messages['bar'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'userthrottle-desc' => 'Магчымасьць стварэньня новых рахункаў была аўтаматычна прыпыненая на некаторы час з прычыны вялікай колькасьці спробаў уваходу ў сыстэму.
-Калі ласка, пачакайце некалькі хвілінаў і паспрабуйце ізноў.',
+	'userthrottle-desc' => 'Абмежаваньне частаты стварэньня новых рахункаў',
 	'acct_creation_global_hard_throttle_hit' => 'Магчымасьць стварэньня новых рахункаў была аўтаматычна прыпыненая на некалькі сэкундаў, каб абараніцца ад атакі на сэрвэр, зьдзейсьненай праз спробы стварэньня рахункаў.
 Калі ласка, пачакайце і націсьніце кнопку «Абнавіць» у Вашым браўзэры, каб паспрабаваць ізноў.',
-	'userthrottle-desc' => 'Абмежаваньне частаты стварэньня новых рахункаў',
 );
 
 /** Bulgarian (Български)
@@ -76,40 +70,34 @@ $messages['bg'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'userthrottle-desc' => "Diweredekaet eo bet ent emgefre ar c'hrouiñ kontoù e-pad ur frapadig abalamour d'un niver iskis a dizhadennoù a-vras.
-Gortozit un nebeud munutennoù ha klaskit en-dro.",
+	'userthrottle-desc' => "Bevenniñ a ra ar c'hrouiñ kontoù implijer",
 	'acct_creation_global_hard_throttle_hit' => 'Diweredekaet eo bet ar c\'hrouiñ kontoù e-pad un nebeud eilennoù ent emgefre a-benn talañ ouzh an tagadennoù stlenn a sav kontoù nevez a-vloc\'h.
 Gortozit un tamm ha klikit war "adkargañ" en ho merdeer evit gellout goulenn en-dro.',
-	'userthrottle-desc' => "Bevenniñ a ra ar c'hrouiñ kontoù implijer",
 );
 
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
-	'userthrottle-desc' => 'Pravljenje računa je automatski onemogućeno na nekoliko trenutaka zbog neuobičajeno velikog broja nedavno pokušanih prijava. 
-Molimo sačekajte nekoliko minuta i pokušajte ponovno.',
+	'userthrottle-desc' => 'Ograničavanje pravljenja korisničkog računa',
 	'acct_creation_global_hard_throttle_hit' => "Pravljenje računa je automatski onemogućeno na nekoliko sekundi kako bi se smanjili napadi na registraciju. 
 Molimo sačekajte trenutak i kliknite 'Reload' u pregledniku kako bi poslali ponovno.",
-	'userthrottle-desc' => 'Ograničavanje pravljenja korisničkog računa',
 );
 
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'userthrottle-desc' => 'Vytváření účtů bylo na chvíli automaticky vypnuto z důvodů neobyčejně vysokého počtu pokusů o přihlášení v poslední době. Prosím, chvíli počkejte a zkuste to znovu později.',
-	'acct_creation_global_hard_throttle_hit' => 'Tvorba účtů byla na několik sekund automaticky vypnuta z důvodů zabránění útoku hromadné registrace. Prosím, chvíli počkejte a znovu odešlete formulář kliknutím na tlačítko „Znovu načíst“ ve vašem prohlížeči.',
 	'userthrottle-desc' => 'Omezí rychlost vytváření uživatelských účtů',
+	'acct_creation_global_hard_throttle_hit' => 'Tvorba účtů byla na několik sekund automaticky vypnuta z důvodů zabránění útoku hromadné registrace. Prosím, chvíli počkejte a znovu odešlete formulář kliknutím na tlačítko „Znovu načíst“ ve vašem prohlížeči.',
 );
 
 /** German (Deutsch)
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'userthrottle-desc' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte warte einige Minuten und versuche es dann erneut.',
-	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warte einen Moment und drücke dann die Neuladen-Schaltfläche an deinem Browser.',
 	'userthrottle-desc' => 'Drosselung der Neuanmeldungen',
+	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warte einen Moment und drücke dann die Neuladen-Schaltfläche an deinem Browser.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -125,11 +113,9 @@ Bitte warten Sie einige Minuten und versuchen Sie es dann erneut.',
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'userthrottle-desc' => 'Załoženje kontow jo se awtomatiski wopśestało na někotare wokognuśa dla mimoměry licby aktualnych pśizjawjeńskich wopytow.
-Pšosym pócakaj někotare minuty a wopytaj hyšći raz.',
+	'userthrottle-desc' => 'Załoženje wužywarskich kontow wobgranicowaś',
 	'acct_creation_global_hard_throttle_hit' => "Załoženje kontow jo se awtomatiski wopśestało na někotare sekundy, aby se kopica zregistrěrowanjow reducěrowała.
 Pšosym pócakaj wokognuśe a klikni pótom na 'Znowego' we swójom wobglědowaku.",
-	'userthrottle-desc' => 'Załoženje wužywarskich kontow wobgranicowaś',
 );
 
 /** Greek (Ελληνικά)
@@ -143,8 +129,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'acct_creation_global_hard_throttle_hit' => "Konto-kreado estas aŭtomate haltigita momente por malkreski atakojn de registrado-inundo. Bonvolu atenti momenton kaj klaki 'reŝarĝu' en via retumilo por resendi.",
 	'userthrottle-desc' => 'Limigu kreadon de uzantoj',
+	'acct_creation_global_hard_throttle_hit' => "Konto-kreado estas aŭtomate haltigita momente por malkreski atakojn de registrado-inundo. Bonvolu atenti momenton kaj klaki 'reŝarĝu' en via retumilo por resendi.",
 );
 
 /** Spanish (Español)
@@ -152,11 +138,9 @@ $messages['eo'] = array(
  * @author Manuelt15
  */
 $messages['es'] = array(
-	'userthrottle-desc' => 'La creación de cuentas ha sido suspendida automáticamente por unos momentos debido a un inusual gran número intentos de inicio de sesión.
-Por favor, espere unos pocos minutos y trate nuevamente.',
+	'userthrottle-desc' => 'Impedir creación de usuario',
 	'acct_creation_global_hard_throttle_hit' => "La creación de cuentas ha sido suspendida automáticamente por unos segundos para reducir un desbordamiento de registros.
 Por favor espere un momento y presione 'Recargar' en su navegador para reenviar.",
-	'userthrottle-desc' => 'Impedir creación de usuario',
 );
 
 /** Finnish (Suomi)
@@ -164,11 +148,9 @@ Por favor espere un momento y presione 'Recargar' en su navegador para reenviar.
  * @author Nike
  */
 $messages['fi'] = array(
-	'userthrottle-desc' => 'Käyttäjien luonti on automaattisesti keskeytetty joksikin aikaa johtuen viimeaikaisista poikkeuksellisen lukuisista kirjautumisyrityksistä.
-Odota muutama minuutti ja yritä uudelleen.',
+	'userthrottle-desc' => 'Rajoita käyttäjien luontia',
 	'acct_creation_global_hard_throttle_hit' => 'Käyttäjätunnusten rekisteröitymishyökkäysten torjumiseksi tunnusten luominen on automaattisesti estetty muutamaksi sekunniksi.
 Ole hyvä ja odota hetki. Päivitä avoin sivu selaimessa ja lähetä lomake uudelleen.',
-	'userthrottle-desc' => 'Rajoita käyttäjien luontia',
 );
 
 /** French (Français)
@@ -176,29 +158,25 @@ Ole hyvä ja odota hetki. Päivitä avoin sivu selaimessa ja lähetä lomake uud
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'userthrottle-desc' => 'La création du compte a été automatiquement suspendue pour un certain temps. Ceci est dû à un fort nombre de créations de comptes. Patientez pendant quelques minutes puis essayez à nouveau.',
-	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger » ou « actualiser » dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
 	'userthrottle-desc' => 'Limite la création d’utilisateurs',
+	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger » ou « actualiser » dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'userthrottle-desc' => 'A creación de contas foi suspendida automaticamente por uns minutos debido ao gran número inusual de intentos de rexistro.
-Por favor, agarde uns minutos e ténteo de novo.',
+	'userthrottle-desc' => 'Acelerador de creación de usuarios',
 	'acct_creation_global_hard_throttle_hit' => 'A creación de contas foi suspendida automaticamente por uns segundos para reducir os ataques masivos de rexistro.
 Por favor, agarde uns minutos e prema "recargar" no seu navegador para volver intentalo.',
-	'userthrottle-desc' => 'Acelerador de creación de usuarios',
 );
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'userthrottle-desc' => 'D Megligkeit e Benutzerkonto aazlege isch fir e Momänt ufghobe wore, wel s e uugwehnli hochi Aazahl vu Aamäldversuech gee het. Bitte wart e paar Minute un versuech s deno nomol.',
-	'acct_creation_global_hard_throttle_hit' => 'D Megligkeit Benutzerkonte aazlege isch fir e paar Sekunde unterbroche wore go ne Fluet vu Regischtrierige reduziere. Bitte wart e Momänt un druck deno dr Nejlade-Chnopf in Dyynem Browser.',
 	'userthrottle-desc' => 'Nejaamäldige drossle',
+	'acct_creation_global_hard_throttle_hit' => 'D Megligkeit Benutzerkonte aazlege isch fir e paar Sekunde unterbroche wore go ne Fluet vu Regischtrierige reduziere. Bitte wart e Momänt un druck deno dr Nejlade-Chnopf in Dyynem Browser.',
 );
 
 /** Hebrew (עברית)
@@ -206,117 +184,97 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'userthrottle-desc' => 'אפשרות יצירת החשבונות הושהתה אוטומטית למספר רגעים עקב מספר גבוה מהרגיל של נסיונות כניסה לחשבון.
-אנא המתינו מספר דקות ונסו שנית.',
+	'userthrottle-desc' => 'הגבלת יצירת משתמשים',
 	'acct_creation_global_hard_throttle_hit' => 'אפשרות יצירת החשבונות הושהתה אוטומטית למספר שניות כדי להפחית התקפות הצפה בהרשמת חשבונות.
 אנא המתינו רגע ולחצו על "רענן" בדפדפן שלכם כדי לנסות שנית.',
-	'userthrottle-desc' => 'הגבלת יצירת משתמשים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'userthrottle-desc' => 'Wutworjenje wužiwarskich kontow bu za něšto wokomikow dla přewšo wysokeje ličby přizjewjenskich pospytow zastajene. Prošu počakaj něšto mjeńšin a spytaj hišće raz.',
-	'acct_creation_global_hard_throttle_hit' => "Wutworjenje wužiwarskich kontow bu za něšto sekundow zastajene, zo by so nawal registrowanjow redukował. Prošu počakaj wokomik a klikń na 'Znowa' we swojim wobhladowaku, zo by hišće raz spytał.",
 	'userthrottle-desc' => 'Haćenje wutworjenja wužiwarskich kontow',
+	'acct_creation_global_hard_throttle_hit' => "Wutworjenje wužiwarskich kontow bu za něšto sekundow zastajene, zo by so nawal registrowanjow redukował. Prošu počakaj wokomik a klikń na 'Znowa' we swojim wobhladowaku, zo by hišće raz spytał.",
 );
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'userthrottle-desc' => 'A felhasználói fiókok létrehozása automatikusan szüneteltetve pár percig, a szokatlanul nagy számú hibás bejelentkezési kísérlet miatt.
-Légyszíves várj pár percet, majd próbáld újra.',
+	'userthrottle-desc' => 'Felhasználói fiókok készítésének szabályozása',
 	'acct_creation_global_hard_throttle_hit' => 'Felhasználói fiókok készítése automatikusan szüneteltetve pár másodpercig, hogy csökkentsük a tömeges regisztrációs támadásokat.
 Kérlek várj egy percet, majd nyomd meg az „újratöltés” gombot a böngésződben az újbóli elküldéshez.',
-	'userthrottle-desc' => 'Felhasználói fiókok készítésének szabályozása',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'userthrottle-desc' => 'Le creation de contos ha essite automaticamente suspendite durante alcun momentos, debite a un numero abnormal de tentativas recente de apertura de session.
-Per favor attende alcun minutas e reproba.',
+	'userthrottle-desc' => 'Limita le frequentia de creation de usatores',
 	'acct_creation_global_hard_throttle_hit' => "Le creation de contos ha essite automaticamente suspendite durante alcun secundas pro reducer le attaccos de registration in massa.
 Per favor attende un momento e preme 'recargar' in tu navigator pro resubmitter tu requesta.",
-	'userthrottle-desc' => 'Limita le frequentia de creation de usatores',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
 $messages['id'] = array(
-	'userthrottle-desc' => 'Pembuatan akun telah dinon-aktifkan untuk beberapa saat karena terdapat usaha untuk log masuk dalam jumlah yang sangat besar.
-Coba lagi setelah beberapa menit.',
+	'userthrottle-desc' => 'Memblokir sesaat pembuatan akun',
 	'acct_creation_global_hard_throttle_hit' => "Pembuatan akun telah dinon-aktifkan untuk beberapa detik untuk mengurangi serangan banjir pendaftaran.
 Coba lagi setelah beberapa saat dan klik 'reload' di penjelajah Anda untuk mengirim ulang.",
-	'userthrottle-desc' => 'Memblokir sesaat pembuatan akun',
 );
 
 /** Japanese (日本語)
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'userthrottle-desc' => '最近のログイン要求が異常に多かったため、アカウント作成は自動的にしばらく停止されています。しばらく待ってから、再度試行してください。',
-	'acct_creation_global_hard_throttle_hit' => '登録サービス不能攻撃を減少させるため、アカウント作成は自動的にしばらく停止されています。しばらく待ってから、ブラウザの再読み込みボタンを押して再送信してください。',
 	'userthrottle-desc' => 'アカウント作成数を制限する',
+	'acct_creation_global_hard_throttle_hit' => '登録サービス不能攻撃を減少させるため、アカウント作成は自動的にしばらく停止されています。しばらく待ってから、ブラウザの再読み込みボタンを押して再送信してください。',
 );
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'userthrottle-desc' => 'Panggawéyan rékening anyar dipenggak sacara otomatis kanggo sawetara wektu amerga ana panyoban log mlebu anyar sing cacahé luar biasa akèhé. Tulung ditunggu pirang menit lan cobanen manèh.',
-	'acct_creation_global_hard_throttle_hit' => "Panggawéyan rékening anyar dipenggak sacara otomatis kanggo sawetara detik kanggo ngurangi serangan banjiran régistrasi. Tulung ditunggu sawetara dhisik lan pencèten tombol 'reload' ing panjlajah wèb panjenengan kanggo ngirim manèh.",
 	'userthrottle-desc' => 'Watesana panggawéyan panganggo',
+	'acct_creation_global_hard_throttle_hit' => "Panggawéyan rékening anyar dipenggak sacara otomatis kanggo sawetara detik kanggo ngurangi serangan banjiran régistrasi. Tulung ditunggu sawetara dhisik lan pencèten tombol 'reload' ing panjlajah wèb panjenengan kanggo ngirim manèh.",
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'userthrottle-desc' => 'För der Momänt künne mer jrad kei neu Metmaacher Aanmelldunge aannämme,
-allderwiel_er zovill op eijmool dobei jekumme sen, en de letzte Menutte.
-Waat e koot Momäntsche beß mer widder jet Luff han, un versök et dann noch ens.',
+	'userthrottle-desc' => 'Neu Metmaacher Aanmelldunge bejrenze.',
 	'acct_creation_global_hard_throttle_hit' => 'För der Momänt künne mer jrad kei neu Metmaacher Aanmelldunge aannämme, allderwiel_er zovill op eijmool dobei jekumme sen, en de letzte Sekunde. Waat e koot Momäntsche beß mer widder jet Luff han, un versök
 et dann noch ens.
 De kanns Dingem Brauser singe Knopp för „de Sigg neu lade“ doför nämme.',
-	'userthrottle-desc' => 'Neu Metmaacher Aanmelldunge bejrenze.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'userthrottle-desc' => "d'Ulleë vu Ventzerkonte gouf automatesch fir kuerz Zäit ausgeschalt, wéint enger ongewéinlech grousser Zuel vu rezente Versich fir sech anzeloggen.
-Waart w.e.g. ep uer Minutten a probéiert dannnach emol.",
+	'userthrottle-desc' => 'Bremsen vun dem Uleeën vu Benotzerkonten',
 	'acct_creation_global_hard_throttle_hit' => "D'Ulleë vu Benotzerkonte gouf fir e puer Sekonnen ausgeschalt fir Ugrëffer duerch massiv Umellungen ze reduzéieren.
 Waart w.e.g. een Ament an dréckt da 'reload' an ärem Browser fir et nach eml ze schécken.",
-	'userthrottle-desc' => 'Bremsen vun dem Uleeën vu Benotzerkonten',
 );
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'userthrottle-desc' => 'Создавањето на сметки е беше автоматски запрено за кратко време заради необично големиот број на скорешни обиди за најава.
-Почекајте неколку минути, па обидете се повторно.',
+	'userthrottle-desc' => 'Ограничување на создавањето на корисници',
 	'acct_creation_global_hard_throttle_hit' => 'Создавањето на сметки е беше автоматски запрено за неколку секунди за да се намалат нападите од масовни регистрации
 Почекајте малку, па притиснете го копчето за превчитување во прелистувачот за да се обидете повторно.',
-	'userthrottle-desc' => 'Ограничување на создавањето на корисници',
 );
 
 /** Marathi (मराठी)
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'userthrottle-desc' => 'अलीकडील काळात वारंवार झालेल्या काही प्रवेशाच्या प्रयत्नांमुळे, खाते तयार करण्यापासून काही काळासाठी आपोआप रोखण्यात आलेले आहे.
-कृपया थोडा वेळ वाट पाहून पुन्हा प्रयत्न करा.',
+	'userthrottle-desc' => 'सदस्य निर्मिती प्रतिबंधित करा',
 	'acct_creation_global_hard_throttle_hit' => "प्रवेश नोंदणीच्या जास्त संख्येमुळे खाते तयार करण्यापासून काही काळासाठी आपोआप रोखण्यात आलेले आहे.
 कृपया थोडावेळ वाट पाहून आपल्या ब्राउझरमधील 'reload' या कळीवर टिचकी द्या.",
-	'userthrottle-desc' => 'सदस्य निर्मिती प्रतिबंधित करा',
 );
 
 /** Dutch (Nederlands)
@@ -324,58 +282,50 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'userthrottle-desc' => 'Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele ogenblikken door een ongebruikelijk hoog aantal recente aanmeldingen. Gelieve even te wachten en probeer dan opnieuw.',
-	'acct_creation_global_hard_throttle_hit' => "Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele seconden om een overvoed aan registraties te verminderen. Gelieve even te wachten en klik dan op 'herladen' in uw browser om u opnieuw proberen te registreren.",
 	'userthrottle-desc' => 'Aanmaken gebruikers beperken',
+	'acct_creation_global_hard_throttle_hit' => "Het aanmaken van gebruikers is automatisch geblokkeerd voor enkele seconden om een overvoed aan registraties te verminderen. Gelieve even te wachten en klik dan op 'herladen' in uw browser om u opnieuw proberen te registreren.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
  */
 $messages['nn'] = array(
-	'userthrottle-desc' => 'Kontoopretting er slått av automatisk for ei lita stund på grunn av uvanleg mange innloggingsforsøk. Vent nokre minutt og prøv igjen.',
-	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting er slått av automatisk i nokre sekund for å redusere masseregistreringsåtak. Vent ei lita stund og trykk «oppdater» i nettlesaren din for å prøve igjen.',
 	'userthrottle-desc' => 'Avgrensar talet på kontoar som kan opprettast i ein tidsperiode',
+	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting er slått av automatisk i nokre sekund for å redusere masseregistreringsåtak. Vent ei lita stund og trykk «oppdater» i nettlesaren din for å prøve igjen.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'userthrottle-desc' => 'Kontoopretting har blitt slått av automatisk for et øyeblikk på grunn av et uvanlig høyt antall innloggingsforsøk. Vent noen minutter for å prøve igjen.',
-	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting har blitt slått av automatisk i noen sekunder for å redusere masseregistreringsangrep. Vent en liten stund og trykk «oppdater» i nettleseren din for å prøve igjen.',
 	'userthrottle-desc' => 'Begrenser antall kontoer som kan opprettes i en tidsperiode',
+	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting har blitt slått av automatisk i noen sekunder for å redusere masseregistreringsangrep. Vent en liten stund og trykk «oppdater» i nettleseren din for å prøve igjen.',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'userthrottle-desc' => 'La creacion del compte es estada suspenduda automaticament per un cèrt temps. Aquò es degut a un fòrt nombre de creacions de comptes. Pacientatz pendent qualques minutas puèi ensajatz tornamai.',
-	'acct_creation_global_hard_throttle_hit' => "La creacion es estada suspendida automaticament pendent qualques segondas per limitar los atacs informatics per l'enregistrament en massa de comptes novèls. Pacientatz un moment e clicatz sus « recargar » dins vòstre navigador per sometre, un còp de mai, la demanda.",
 	'userthrottle-desc' => 'Limita la creacion d’utilizaires',
+	'acct_creation_global_hard_throttle_hit' => "La creacion es estada suspendida automaticament pendent qualques segondas per limitar los atacs informatics per l'enregistrament en massa de comptes novèls. Pacientatz un moment e clicatz sus « recargar » dins vòstre navigador per sometre, un còp de mai, la demanda.",
 );
 
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'userthrottle-desc' => 'Możliwość utworzenia nowego konta została automatycznie zawieszona na pewien czas z uwagi na niezwykle dużą liczbę prób zalogowania.
-Poczekaj kilka minut i spróbuj ponownie.',
+	'userthrottle-desc' => 'Ogranicza częstotliwość rejestracji nowych użytkowników',
 	'acct_creation_global_hard_throttle_hit' => 'Możliwość utworzenia nowego konta została automatycznie zawieszona na kilka sekund by uniemożliwić atak polegający na przeciążeniu serwera próbami rejestracji.
 Poczekaj chwilę i wciśnij „odśwież” w przeglądarce by ponowić operację.',
-	'userthrottle-desc' => 'Ogranicza częstotliwość rejestracji nowych użytkowników',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'userthrottle-desc' => "La creassion ëd cont a l'é stàita automaticament sospèisa për cheich moment a motiv ëd n'insolit gròss nùmer ëd tentativ ëd login.
-Për piasì speta cheich minute e preuva torna.",
+	'userthrottle-desc' => 'Throttle user creation',
 	'acct_creation_global_hard_throttle_hit' => "la creassion ëd cont a l'é stàita automaticament sospèisa për cheich second për bassé l'atach d'inondassion ëd registrassion.
 Për piasì speta un moment e fà 'reload' an tò browser për torna prové.",
-	'userthrottle-desc' => 'Throttle user creation',
 );
 
 /** Portuguese (Português)
@@ -384,127 +334,106 @@ Për piasì speta un moment e fà 'reload' an tò browser për torna prové.",
  * @author Waldir
  */
 $messages['pt'] = array(
-	'userthrottle-desc' => 'A criação de contas foi automaticamente suspensa por uns momentos devido ao anormalmente grande número de tentativas recentes de autenticação.
-Por favor, aguarde alguns minutos e tente novamente.',
+	'userthrottle-desc' => 'Restringir a criação de utilizadores',
 	'acct_creation_global_hard_throttle_hit' => "A criação de contas foi automaticamente suspensa por alguns segundos para reduzir os ataques de registo em massa.
 Por favor, aguarde um momento e carregue em 'refrescar' no seu browser para reenviar os dados.",
-	'userthrottle-desc' => 'Restringir a criação de utilizadores',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'userthrottle-desc' => 'A criação de contas foi automaticamente suspensa por alguns momentos devido a um número anormalmente grande de tentativas recentes de autenticação.
-Por favor, aguarde alguns minutos e tente novamente.',
+	'userthrottle-desc' => 'Restringir a criação de utilizadores',
 	'acct_creation_global_hard_throttle_hit' => "A criação de contas foi automaticamente suspensa por alguns segundos para reduzir os ataques de registro em massa.
 Por favor, aguarde um momento e clique em 'atualizar' no seu navegador para reenviar os dados.",
-	'userthrottle-desc' => 'Restringir a criação de utilizadores',
 );
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'userthrottle-desc' => "'A ccrejazione de cunde utinde ha state sospese automaticamende pe quacche mumende purcé è strane ca 'nu sbuenne de richieste de ccreazione utende onne state fatte.
-Pe piacere aspitte quacche menute e pruève 'notra vote.",
+	'userthrottle-desc' => "Ccrejazione de l'utinde limitate",
 	'acct_creation_global_hard_throttle_hit' => "'A ccrejazione de cunde utinde ha state sospese automaticamende pe quacche seconde purcé ha state 'n'attacche de ''flood''.
 Pe piacere aspitte 'nu mumende e cazze 'recareche' sus a 'u browser tue pe risottomettere.",
-	'userthrottle-desc' => "Ccrejazione de l'utinde limitate",
 );
 
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'userthrottle-desc' => 'Возможность создания учётных записей была автоматически приостановлена на некоторое время из-за необычно большого числа попыток представиться системе.
-Пожалуйста, подождите несколько минут и попробуйте снова.',
+	'userthrottle-desc' => 'Ограничение регистрации участников',
 	'acct_creation_global_hard_throttle_hit' => 'Возможность создания учётных записей была автоматически приостановлена на несколько секунд, что снизить возможность атаки, основанной на массовых регистрациях.
 Пожалуйста, подождите немного и попробуйте нажать кнопку «Обновить» вашего браузера.',
-	'userthrottle-desc' => 'Ограничение регистрации участников',
 );
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'userthrottle-desc' => 'Tvorba účtov bola na chvíľu automaticky vypnutá z dôvodu nezvyčajne vysokého počtu pokusov o prihlásenie v poslednej dobe. Prosím, chvíľu počkajte a skúste to znova.',
-	'acct_creation_global_hard_throttle_hit' => 'Tvorba účtov bola na niekoľko sekúnd automaticky vypnutá z dôvodu zabránenia útokom hromadnej registrácie. Prosím, chvíľu počkajte a znovu odošlite formulár stlačením tlačidla „Znovu načítať“ vo vašom prehliadači.',
 	'userthrottle-desc' => 'Obmedzí rýchlosť vytvárania používateľských účtov',
+	'acct_creation_global_hard_throttle_hit' => 'Tvorba účtov bola na niekoľko sekúnd automaticky vypnutá z dôvodu zabránenia útokom hromadnej registrácie. Prosím, chvíľu počkajte a znovu odošlite formulár stlačením tlačidla „Znovu načítať“ vo vašom prehliadači.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'userthrottle-desc' => 'Прављење налога је било аутоматски суспендовано на пар момената због необично великог броја скорашњих покушаја логовања.
-Молимо Вас да одчекате неколико минута и покушате опет.',
+	'userthrottle-desc' => 'Ограничава учесталост корисничких регистрација',
 	'acct_creation_global_hard_throttle_hit' => 'Прављење налога је аутоматски суспендовано на неколико секунди, да би умањило број напада бројним регистрацијама.
 Молимо Вас да мало сачекате и притиснете дугме за освежавање у вашем браузеру, да бисте опет послали податке.',
-	'userthrottle-desc' => 'Ограничава учесталост корисничких регистрација',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'userthrottle-desc' => 'Pravljenje naloga je bilo automatski suspendovano na par momenata zbog neobično velikog broja skorašnjih pokušaja logovanja.
-Molimo Vas da odčekate nekoliko minuta i pokušate opet.',
+	'userthrottle-desc' => 'Ograničava učestalost korisničkih registracija',
 	'acct_creation_global_hard_throttle_hit' => 'Pravljenje naloga je automatski suspendovano na nekoliko sekundi, da bi umanjilo broj napada brojnim registracijama.
 Molimo Vas da malo sačekate i pritisnete dugme za osvežavanje u vašem brauzeru, da biste opet poslali podatke.',
-	'userthrottle-desc' => 'Ograničava učestalost korisničkih registracija',
 );
 
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */
 $messages['stq'] = array(
-	'userthrottle-desc' => 'Ju Muugelkhaid tou dät Moakjen fon Benutserkonten wuude foar n Sät aphieuwed, deer et ne uungewöönelk hooge Antaal an Anmäldefersäike roate. Täiw n poor Minuten un fersäik et dan fonnäien.',
-	'acct_creation_global_hard_throttle_hit' => 'Ju Muugelkhaid tou dät Moakjen fon Benutserkonten wuude foar eenige Sekonden unnerbreeken, uum ne Floud fon Registrierengen tou reduzierjen. Täiw n Sät un tai dan dän Näileede-Knoop an dien Browser.',
 	'userthrottle-desc' => 'Dröiselenge fon do Näianmäldengen',
+	'acct_creation_global_hard_throttle_hit' => 'Ju Muugelkhaid tou dät Moakjen fon Benutserkonten wuude foar eenige Sekonden unnerbreeken, uum ne Floud fon Registrierengen tou reduzierjen. Täiw n Sät un tai dan dän Näileede-Knoop an dien Browser.',
 );
 
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'userthrottle-desc' => 'Skapande av konton har automatiskt stängts av under ett ögonblick på grund av ett ovanligt högt antal inloggningsförsök.
-Var god vänta några minuter och pröva igen.',
+	'userthrottle-desc' => 'Begränsar antal konton som kan skapas under en tidsperiod',
 	'acct_creation_global_hard_throttle_hit' => 'Skapande av konton har automatiskt stängts av under några sekunder för att reducera massregistreringsangrepp.
 Var god vänta en liten stund och tryck på "uppdatera" i webbläsaren för att pröva igen.',
-	'userthrottle-desc' => 'Begränsar antal konton som kan skapas under en tidsperiod',
 );
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'userthrottle-desc' => 'Kusang itinigil muna ng ilang mga sandali ang paglikha ng akawnt dahil sa isang hindi pangkaraniwang malaking bilang ng kamakailang mga pagsubok sa paglagda ng pagpasok.
-Maghintay lamang po ng ilang mga minuto at subuking muli.',
+	'userthrottle-desc' => 'Paglikha ng pagsiil ng tagagamit',
 	'acct_creation_global_hard_throttle_hit' => "Kusang itinigil muna ng ilang mga segundo ang paglikha ng akawnt upang mabawasan ang padagsang pagbugso ng mga pagpapatala.
 Maghintay lamang po ng isang sandali at pindutin ang 'muling ikarga' na nasa pantingin-tingin mo (''browser'') upang maipasang muli.",
-	'userthrottle-desc' => 'Paglikha ng pagsiil ng tagagamit',
 );
 
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'userthrottle-desc' => 'Olağandışı ölçüde çok sayıda yakın zamanlı oturum açma denemesi nedeniyle bir süre için hesap oluşturma otomatik olarak askıya alındı.
-Lütfen birkaç dakika bekleyin ve tekrar deneyin.',
+	'userthrottle-desc' => 'Kullanıcı oluşturmayı önler',
 	'acct_creation_global_hard_throttle_hit' => "Kayıt flood saldırılarını azaltmak için hesap oluşturma bir süre için otomatik olarak askıya alındı.
 Lütfen birkaç dakika bekleyin ve yeniden göndermek için tarayıcınızdaki 'yeniden yükle' seçeneğine tıklayın.",
-	'userthrottle-desc' => 'Kullanıcı oluşturmayı önler',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'userthrottle-desc' => 'Việc tạo tài khoản đã được tự động tạm ngưng trong giây lát do có một lượng lớn yêu cầu đăng nhập vừa xảy ra một cách bất thường. Xin hãy đợi trong ít phút rồi thử lại.',
+	'userthrottle-desc' => 'Nút cổ chai khi tạo tài khoản',
 	'acct_creation_global_hard_throttle_hit' => "Việc tạo tài khoản đã được tự động tạm ngưng trong giây lát để giảm sự tấn công gây tràn qua việc đăng ký tài khoản.
 Xin hãy đợi trong ít phút rồi nhấn 'reload' trong trình duyệt để đăng lên lại.",
-	'userthrottle-desc' => 'Nút cổ chai khi tạo tài khoản',
 );
 
 /** Volapük (Volapük)

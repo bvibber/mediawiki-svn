@@ -686,6 +686,8 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'usabilityinitiative' => 'Sáng kiến Khả dụng',
 	'usabilityinitiative-desc' => 'Các tính năng do Sáng kiến Khả dụng Wikipedia phát triển để tăng cường tính khả dụng của MediaWiki',
+	'prefs-beta' => 'Tính năng beta',
+	'prefs-labs' => 'Tính năng phòng thí nghiệm',
 );
 
 /** Yiddish (ייִדיש)

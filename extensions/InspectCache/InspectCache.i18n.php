@@ -535,12 +535,12 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'inspectcache' => 'Ispezionare cache',
 	'inspectcache-desc' => 'Un semplice strumento di debug per ispezionare il contenuto della cache condivisa',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Cache generale',
 	'inspectcache-parser' => 'Cache del parser',
 	'inspectcache-message' => 'Cache dei messaggi',
@@ -548,6 +548,7 @@ $messages['it'] = array(
 	'inspectcache-delete' => 'Cancella',
 	'inspectcache-deleted' => 'Cache cancellata',
 	'inspectcache-list' => 'Elenco',
+	'right-inspectcache' => 'Visualizza e cancella le voci della cache',
 );
 
 /** Japanese (日本語)

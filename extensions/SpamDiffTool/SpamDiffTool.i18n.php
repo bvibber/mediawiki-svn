@@ -790,12 +790,14 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'spamdifftool' => 'Gestisci la spam blacklist',
 	'spamdifftool-desc' => 'Fornisce un semplice modo per aggiungere nuovi valori alla spam blacklist dalle pagine del confronto fra versioni',
 	'spamdifftool_cantedit' => 'Spiacente - non hai i permessi per modificare la spam blacklist.',
+	'spamdifftool-no-title' => "'''Errore:''' non è stato specificato il titolo della pagina.",
 	'spamdifftool_notext' => "Non c'è alcun testo da aggiungere alla spam blacklist.
 Fai clic <a href='$1'>qui</a> per continuare.",
 	'spamdifftool_confirm' => "Conferma che hai intenzione di aggiungere questi valori alla spam blacklist.
@@ -1569,6 +1571,7 @@ $messages['tr'] = array(
 	'spamdifftool' => 'Spam kara listesini yönet',
 	'spamdifftool-desc' => 'Spam karalistesine fark sayfalarından yeni girdiler eklemek için basit bir yol sağlar',
 	'spamdifftool_cantedit' => 'Üzgünüz - spam karalistesini değiştirmek için izniniz yok.',
+	'spamdifftool-no-title' => "'''Hata:''' sayfa başlığı belirtilmemiş.",
 	'spamdifftool_notext' => "Spam karalistesine eklenecek metin yok.
 Devam etmek için <a href='$1'>buraya</a> tıklayın.",
 	'spamdifftool_confirm' => "Bu girdileri spam karalistesine eklemek istediğinizi onaylayın.
@@ -1659,6 +1662,7 @@ $messages['vi'] = array(
 	'spamdifftool' => 'Quản lý danh sách đen spam',
 	'spamdifftool-desc' => 'Cung cấp một cách đơn giản để thêm khoản vào danh sách đen spam từ các trang so sánh',
 	'spamdifftool_cantedit' => 'Xin lỗi, bạn không có quyền sửa đổi danh sách đen spam.',
+	'spamdifftool-no-title' => "'''Lỗi:''' Chưa đặt tên của trang.",
 	'spamdifftool_notext' => "Chưa cho vào văn bản để thêm vào danh sách đen spam. <a href='$1'>Tiếp tục</a>.",
 	'spamdifftool_confirm' => "Hãy xác nhận rằng muốn thêm các khoản này vào danh sách đen spam. (<a href='$1' target='new'>Báo cáo lỗi</a>.)",
 	'spamdifftool_summary' => 'Thêm vào danh sách đen spam',

@@ -89,6 +89,13 @@ $messages['ia'] = array(
 	'peoplecategories-desc' => 'Cambia le presentation del nomines de paginas de "Prenomine Nomine de familia" a "Nomine de familia, Prenomine" in paginas de categoria specificate',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'peoplecategories-desc' => 'Modifica la visualizzazione dei nomi da "Nome Cognome" a "Cognome, Nome" in alcune pagine di categoria.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -115,6 +122,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'peoplecategories-desc' => 'Endrer vist sidenavn fra «Fornavn Etternavn» til «Etternavn, Fornavn» på spesifiserte kategorisider',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'peoplecategories-desc' => 'Zmienia sposób wyświetlania z „Imię Nazwisko” na „Nazwisko, Imię” na określonych stronach kategorii',
 );
 
 /** Piedmontese (Piemontèis)

@@ -140,10 +140,11 @@ Nalistujo wšykne boki w kategoriji "$1" a wšykne pódkategorije kategorije "$1
  * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'autocreatecategorypages-desc' => 'Δημιουργία ζητούμενων σελίδων κατηγοριών αυτόματα στην αποθήκευση',
-	'autocreatecategorypages-stub' => 'Αυτή είναι μια σελίδα κατηγορίας. Παραθέτει όλες τις σελίδες στην κατηγορία "$ 1", καθώς και όλες τις υποκατηγορίες της κατηγορίας "$ 1", εάν τυχόν υπάρχουν.',
+	'autocreatecategorypages-stub' => 'Αυτή είναι μια σελίδα κατηγορίας. Παραθέτει όλες τις σελίδες στην κατηγορία "$1", καθώς και όλες τις υποκατηγορίες της κατηγορίας "$1", εάν τυχόν υπάρχουν.',
 	'autocreatecategorypages-createdby' => 'Δημιουργήθηκε αυτόματα από την επέκταση AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Αυτόματος δημιουργός κατηγοριών',
 );

@@ -2882,6 +2882,7 @@ Geikön lü:
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'crosswikiblock-expiry' => 'אויסגיין:',
 	'crosswikiblock-reason' => 'אורזאַך:',
 	'crosswikiunblock-reason' => 'אורזאַך:',
 );

@@ -579,6 +579,9 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-template-editor-preference' => 'Sửa đổi bản mẫu wiki trong biểu mẫu',
+	'wikieditor-template-editor-dialog-title' => 'Sửa đổi bản mẫu',
+	'wikieditor-template-editor-dialog-submit' => 'Cập nhật',
+	'wikieditor-template-editor-dialog-cancel' => 'Hủy bỏ',
 );
 
 /** Yiddish (ייִדיש)

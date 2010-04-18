@@ -1467,8 +1467,8 @@ $messages['gl'] = array(
 	'signdocument' => 'Asine o Documento',
 	'sign-nodocselected' => 'Seleccione o documento que vostede quere asinar.',
 	'sign-selectdoc' => 'Documento:',
-	'sign-docheader' => 'Use este formulario para asinar o documento "[[$1]],", amosado a continuación.
-Lea o documento enteiro, e se desexa indicar o seu apoio o mesmo, encha os campos necesarios para asinalo.',
+	'sign-docheader' => 'Use este formulario para asinar o documento "[[$1]]", amosado a continuación.
+Lea o documento enteiro, e se desexa indicar o seu apoio ao mesmo, encha os campos necesarios para asinalo.',
 	'sign-error-nosuchdoc' => 'O documento que vostede pediu ($1) non existe.',
 	'sign-realname' => 'Nome:',
 	'sign-address' => 'Enderezo postal:',

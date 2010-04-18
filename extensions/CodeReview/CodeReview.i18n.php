@@ -185,6 +185,7 @@ $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
 	'code-change-added' => '{{Identical|Added}}',
 	'codereview-desc' => '{{desc}}',
+	'code-repo-not-found' => "Message displayed when the requested repository does not exist in the wiki's repo definitions.  $1 is the name that was requested, and will be fully escaped before output.",
 	'code-tags' => '{{Identical|Tag}}',
 	'code-field-id' => '{{Identical|Revision}}',
 	'code-field-author' => '{{Identical|Author}}',
@@ -194,7 +195,6 @@ $messages['qqq'] = array(
 	'code-field-comments' => '{{Identical|Notes}}',
 	'code-field-path' => '{{Identical|Path}}',
 	'code-field-select' => '{{Identical|Select}}',
-	'code-rev-id' => 'Modify the raw numeric revision ID (which is in $1) to the standard display format (rNNN).  This probably shouldn\'t be localised as the hot-linking within comments only recognises rNNN and having another representation of this in the interface will cause confusion.  In all other messages which take a revision ID as a parameter, the revision ID will already have been expanded using this message, so you should not include the \'r\' in the message itself.',
 	'code-rev-author' => '{{Identical|Author}}',
 	'code-rev-date' => '{{Identical|Date}}',
 	'code-rev-message' => '{{Identical|Comment}}',
@@ -208,6 +208,8 @@ $messages['qqq'] = array(
 	'code-status-reverted' => '{{Identical|Revert}}',
 	'code-status-ok' => '{{Identical|OK}}',
 	'code-pathsearch-path' => '{{Identical|Path}}',
+	'code-revfilter-cr_status' => '{{Identical|Status}}',
+	'code-revfilter-cr_author' => '{{Identical|Author}}',
 	'code-rev-submit' => 'Caption of the button used to Save changes when viewing a revision.',
 	'code-rev-submit-next' => 'Caption of the button used when viewing a revision to Save changes moving to next unresolved revision.',
 	'codereview-batch-submit' => '{{Identical|Submit}}',
@@ -236,7 +238,6 @@ $1 = Repository name',
 	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
 * <code>$2</code> – URL to the revision
 * <code>$3</code> – Commit message for the revision',
-	'code-repo-not-found' => 'Message displayed when the requested repository does not exist in the wiki\'s repo definitions.  $1 is the name that was requested, and will be fully escaped before output.',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -5172,7 +5173,7 @@ $4',
 	'specialpages-group-developer' => '개발자 도구',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -9718,7 +9719,7 @@ $messages['yi'] = array(
 	'codereview-subtitle' => 'פֿאַר $1',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'code' => '代碼複查',
 	'code-rev-title' => '$1 - 代碼複查',

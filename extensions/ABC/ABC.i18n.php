@@ -89,6 +89,13 @@ $messages['arz'] = array(
 	'abcdownload' => 'تنزيل:',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'abc-desc' => 'ABC музыка форматлауы өсөн <tt>&lt;abc&gt;</tt> тэге ҡулланыла',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Red Winged Duck

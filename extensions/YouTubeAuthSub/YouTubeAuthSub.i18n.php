@@ -250,6 +250,7 @@ $messages['as'] = array(
 $messages['ba'] = array(
 	'youtubeauthsub_title' => 'Исем',
 	'youtubeauthsub_description' => 'Тасуирлама',
+	'youtubeauthsub_password' => 'YouTube-тәге паролегеҙ',
 	'youtubeauthsub_username' => 'YouTube ҡулланыусы исеме',
 );
 

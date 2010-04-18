@@ -81,6 +81,14 @@ $messages['hu'] = array(
 	'metadata_help' => 'Metaadatok:',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'metadataedit-desc' => 'Inserire le categorie, i collegamenti alle lingue e template permessi in una casella di testo separata durante la modifica delle pagine',
+	'metadata_help' => 'Metadati:',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */

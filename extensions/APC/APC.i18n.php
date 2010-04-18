@@ -178,6 +178,7 @@ No markup is supported in this message!",
 	'viewapc-ls-header-created' => '{{Identical|Created}}',
 	'viewapc-ls-header-deleted' => '{{Identical|Deleted}}',
 	'viewapc-ls-header-timeout' => '{{Identical|Timeout}}',
+	'viewapc-ls-scope-active' => '{{Identical|Active}}',
 	'viewapc-ls-scope-deleted' => '{{Identical|Deleted}}',
 	'viewapc-ls-sort-hits' => '{{Identical|Hits}}',
 	'viewapc-ls-sort-size' => '{{Identical|Size}}',
@@ -3327,7 +3328,7 @@ $messages['kri'] = array(
 	'viewapc-ls-submit' => 'Go to am!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

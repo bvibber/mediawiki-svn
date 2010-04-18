@@ -406,7 +406,7 @@ $messages['ko'] = array(
 	'block_title_error' => '죄송합니다. 현재 문서의 제목은 저장이 금지되어 있습니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -806,7 +806,7 @@ $messages['vo'] = array(
 	'block_title_error' => 'Pidö! Tiäd pada at no dalon padakipön.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

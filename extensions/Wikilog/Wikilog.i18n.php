@@ -995,7 +995,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'wikilog-desc' => "Ouzhpennañ arc'hweladurioù blog, o krouiñ ur wiki-blog gwellaet",
+	'wikilog-desc' => 'Ouzhpennañ a ra perzhioù blog evit sevel ur wiki hag ur blog kemmesk',
 	'wikilog-auto' => 'Wikilog Aoto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Postañ addisplegoù da bennadoù wikilog',
@@ -1016,7 +1016,7 @@ Ret eo e vefe krouet da gentañ evit ma vefe posubl embann pennadoù hag implijo
 
 * <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Krouiñ ar wikilog-mañ].</span>',
 	'wikilog-information' => 'Titouroù war wikilog',
-	'wikilog-post-count-published' => 'Bez ez eus {{PLURAL:$1|ur pennad|$1 pennad}} war ar wikilog-mañ.',
+	'wikilog-post-count-published' => 'Embannet ez eus {{PLURAL:$1|ur pennad|$1 pennad}} er wikilog-mañ.',
 	'wikilog-post-count-drafts' => 'Bez ez eus {{PLURAL:$1|ur pennad (brouilhoñs) nann-embannet |$1 pennad (brouilhoñs) nann-embannet}}',
 	'wikilog-post-count-all' => 'En holl ez eus {{PLURAL:$1|ur pennad|$1 pennad}}.',
 	'wikilog-new-item' => 'Krouiñ ur pennad wikilog nevez',
@@ -1111,7 +1111,7 @@ Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",
 	'wikilog-form-status' => 'Statud :',
 	'wikilog-form-preview' => 'Rakwelet :',
 	'wikilog-form-comment' => 'Addispleg :',
-	'wikilog-show-all' => 'An holl postoù',
+	'wikilog-show-all' => 'An holl bennadoù',
 	'wikilog-show-published' => 'Embannet',
 	'wikilog-show-drafts' => 'Brouilhedoù',
 	'wikilog-submit' => 'Kas',
@@ -1463,7 +1463,7 @@ Haken entfernen, um den Artikel als Entwurf zu speichern.',
 	'wikilog-feed-description' => 'Lese die neuesten Beiträge in diesem Feed.',
 	'wikilog-comment-feed-title1' => 'Kommentar von $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Kommentar von $2 zu $3 (#$1)',
-	'wikilog-comment-feed-description' => 'Lesen Sie die neuesten Kommentare dieses Feeds.',
+	'wikilog-comment-feed-description' => 'Lese die neuesten Kommentare dieses Feeds.',
 	'wikilog-title-item-full' => '$1 - $2',
 	'wikilog-title-comments' => 'Kommentare - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',
@@ -1670,6 +1670,7 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
  * @author Dada
  * @author Lou
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'wikilog-help' => '{{ns:Help}}:Βικιαρχείο',
@@ -1714,7 +1715,7 @@ $messages['el'] = array(
 	'wikilog-summary-categories' => 'Αρχειοποιημένο κάτω από $2',
 	'wikilog-summary-more' => '[[$3|→ συνέχεια ανάγνωσης...]]',
 	'wikilog-edit-fieldset-legend' => 'Επιλογές Βικιαρχείου:',
-	'wikilog-comment-anonsig' => '$ 3 (ανώνυμος)',
+	'wikilog-comment-anonsig' => '$3 (ανώνυμος)',
 	'wikilog-comment-pending' => 'Αυτό το σχόλιο αναμένει έγκριση.',
 	'wikilog-comment-deleted' => 'Αυτό το σχόλιο διαγράφηκε.',
 	'wikilog-comment-omitted-x' => 'Το σχόλιο παραλείπεται (#$1).',
@@ -1724,7 +1725,7 @@ $messages['el'] = array(
 	'wikilog-comment-edit' => 'Επεξεργασία αυτού του σχολίου',
 	'wikilog-comment-delete' => 'Διαγραφή αυτού του σχολίου',
 	'wikilog-comment-history' => 'Προβολή ιστορικού του σχολίου',
-	'wikilog-comment-feed-title1' => 'Σχόλιο από $ 2 (# $ 1)',
+	'wikilog-comment-feed-title1' => 'Σχόλιο από $2 (#$1)',
 	'wikilog-title-comments' => 'Σχόλια - $1',
 	'wikilog-error-msg' => 'Βικιαρχείο: $1',
 	'wikilog-error-title' => 'Σφάλμα Βικιαρχείου',

@@ -1894,7 +1894,7 @@ $messages['ko'] = array(
 	'math_CannotWriteTexFile' => 'tex 파일에 내용을 쓸 수 없습니다',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

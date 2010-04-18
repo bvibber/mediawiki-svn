@@ -6400,7 +6400,9 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'deletequeue-list-search' => 'זוכן',
+	'deletequeue-list-header-expiry' => 'אויסגיין',
 	'deletequeue-case-reason' => 'אורזאַך:',
+	'deletequeue-case-expiry' => 'אויסגיין:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

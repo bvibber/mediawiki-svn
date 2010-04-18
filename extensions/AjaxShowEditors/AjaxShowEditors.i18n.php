@@ -651,7 +651,7 @@ $messages['km'] = array(
 	'ajax-se-usernotfound' => 'កំហុស៖ អ្នកប្រើប្រាស់មិនត្រូវបានរកឃើញទេ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1227,7 +1227,7 @@ $messages['yi'] = array(
 	'ajax-se-userinvalid' => 'גרייז: באַניצער אומגילטיק',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

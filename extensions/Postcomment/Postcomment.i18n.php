@@ -575,7 +575,7 @@ $messages['km'] = array(
 	'postcomment_nopostingtoadd' => 'គ្មានប្រកាសសម្រាប់បន្ថែមទេ។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

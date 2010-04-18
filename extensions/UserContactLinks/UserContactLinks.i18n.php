@@ -309,7 +309,7 @@ $messages['km'] = array(
 	'usercontactlinks-desc' => 'ផ្ដល់​លទ្ធភាព​ក្នុងការ​សម្រួល​និង​បន្ថែមឲ្យ​ត្រឹម​ត្រូវ​​ឈ្មោះ​អ្នក​ប្រើ​ប្រាស់​ផ្សេង​ៗទៀត​ ដោយ​ប្រើ​ប្រាស់​វាក្យ​សម្ពន្ធ ^^^user^^^',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

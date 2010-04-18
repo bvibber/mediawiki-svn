@@ -688,7 +688,7 @@ Pro gerer le invitationes a un function particular, clicca super le nomine de il
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Un invitation|$1 invitationes}} disponibile)',
 	'invitations-pagetitle' => 'Functiones del software restringite a invitatos',
 	'invitations-uninvitedlist-description' => 'Tu non ha accesso a iste altere functiones del software restringite al invitatos.',
-	'invitations-uninvitedlist-none' => 'A iste tempore, nulle altere functiones del software es restringite al invitatos.',
+	'invitations-uninvitedlist-none' => 'In iste momento, nulle altere functionalitate del software es designate solo per invitation.',
 	'invitations-feature-pagetitle' => 'Gestion de invitationes - $1',
 	'invitations-feature-access' => 'Tu ha ora accesso pro usar <i>$1</i>.',
 	'invitations-feature-numleft' => 'Te resta ancora {{PLURAL:$2|un invitation|<b>$1</b> de tu $2 invitationes}}.',
@@ -959,6 +959,7 @@ $messages['mr'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
  */
@@ -973,7 +974,7 @@ $messages['nl'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eén uitnodiging|$1 uitnodiging}} beschikbaar)',
 	'invitations-pagetitle' => 'Functionaliteit alleen op uitnodiging beschikbaar',
 	'invitations-uninvitedlist-description' => 'U hebt geen toegang tot deze andere alleen op uitnodiging beschikbare functionaliteit.',
-	'invitations-uninvitedlist-none' => 'Er is op dit moment geen functionaliteit aangewezen die alleen op uitnodiging beschikbaar is.',
+	'invitations-uninvitedlist-none' => 'Er is op dit moment geen andere functionaliteit aangewezen die alleen op uitnodiging beschikbaar is.',
 	'invitations-feature-pagetitle' => 'Uitnodigingenbeheer - $1',
 	'invitations-feature-access' => 'U hebt op dit moment toestemming om <i>$1</i> te gebruiken.',
 	'invitations-feature-numleft' => 'U hebt nog {{PLURAL:$2|één uitnodiging|<b>$1</b> van uw $2 uitnodigingen}} over.',
@@ -1303,6 +1304,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author McDutchie
  */
 $messages['sv'] = array(
 	'invite-logpage' => 'Invitationslogg',
@@ -1315,7 +1317,7 @@ $messages['sv'] = array(
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|En inbjudning är tillgänglig|$1 inbjudningar är tillgängliga}})',
 	'invitations-pagetitle' => 'Funktioner som kräver inbjudning',
 	'invitations-uninvitedlist-description' => 'Du har inte tillgång till dessa funktioner som kräver inbjudan.',
-	'invitations-uninvitedlist-none' => 'Inga programvarefunktioner kräver inbjudan.',
+	'invitations-uninvitedlist-none' => 'Inga andra programvarefunktioner kräver inbjudan.',
 	'invitations-feature-pagetitle' => 'Inbjudningsbehandling - $1',
 	'invitations-feature-access' => 'Du har tillgång att använda <i>$1</i>.',
 	'invitations-feature-numleft' => 'Du har fortfarande {{PLURAL:$2|en inbjudning kvar|<b>$1</b> av dina $2 inbjudningar kvar}}.',

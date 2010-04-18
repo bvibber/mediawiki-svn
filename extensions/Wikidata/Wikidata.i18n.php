@@ -3352,6 +3352,9 @@ Seleccionar una colección a exportar. En la tabla de textos de idiomas, ingresa
 	'ow_exporttsv_not_allowed' => 'No tiene permiso para hacer un exporte de TVS',
 	'ow_exporttsv_export_failed' => 'Falló la exportación',
 	'addcollection' => 'Wikidata: Añadir colección',
+	'ow_searchnoresult' => "<p>Puedes:<br />
+* '''Crear la expresión \"[[Expression:\$1]]\"''' (y agregar una definición)<br />
+* '''Crear la página \"[[:\$1]]\"''' (una página wiki estándar)</p>",
 	'ow_save' => 'Guardar',
 	'ow_history' => 'Historial',
 	'ow_datasets' => 'Selección de la base',
@@ -3533,6 +3536,9 @@ $messages['et'] = array(
 	'datasearch_meaning' => 'Tähendus',
 	'ow_importtsv_nothing_added' => 'Ei lisatud midagi.',
 	'ow_exporttsv_languages' => 'Keeled:',
+	'ow_searchnoresult' => "<p>Sa võid:<br />
+* '''Luua uue väljendi \"[[Expression:\$1]]\"''' (ja lisada määratluse)<br />
+* '''Luua uue lehekülje \"[[:\$1]]\"''' (tavaline viki lehekülg)</p>",
 	'ow_save' => 'Salvesta',
 	'ow_history' => 'Ajalugu',
 	'ow_noedit_title' => 'Toimetamiseks puuduvad õigused.',
@@ -7867,6 +7873,9 @@ $messages['mk'] = array(
 	'ow_exporttsv_not_allowed' => 'Немате дозвола да вршите TSV извоз.',
 	'ow_exporttsv_export_failed' => 'Извозот не успеа',
 	'addcollection' => 'Википодатоци: Додај збирка',
+	'ow_searchnoresult' => "<p>Можете да:<br />
+* '''Го создадете изразот „[[Expression:$1]]“''' (и додадете дефиниција)<br />
+* '''Ја создадете страницата „[[:$1]]“''' (стандардна вики-страница)</p>",
 	'ow_save' => 'Зачувај',
 	'ow_history' => 'Историја',
 	'ow_datasets' => 'Избор на збир податоци',
@@ -8853,6 +8862,9 @@ Velg en samlign for eksportering. Skriv inn en kommaseparert liste av ISO 639-3-
 	'ow_exporttsv_not_allowed' => 'Du har ikke rettigheter til å utføre en TSV-eksportering.',
 	'ow_exporttsv_export_failed' => 'Eskportering mislyktes',
 	'addcollection' => 'Wikidata: Legg til samling',
+	'ow_searchnoresult' => "<p>Du kan:<br />
+* '''Opprette uttrykket «[[Expression:$1]]»''' (og legge til en definisjon)<br />
+* '''Opprette siden «[[:$1]]»''' (en standard wikiside)</p>",
 	'ow_save' => 'Lagre',
 	'ow_history' => 'Historikk',
 	'ow_datasets' => 'Valg av datasett',
@@ -9366,6 +9378,9 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'ow_exporttsv_not_allowed' => 'Nie masz uprawnień do wykonania eksportu TSV.',
 	'ow_exporttsv_export_failed' => 'Eksport nieudany',
 	'addcollection' => 'Wikidata: Dodawanie kolekcji',
+	'ow_searchnoresult' => "<p>Możesz:<br />
+* '''utworzyć wyrażenie „[[Expression:$1]]”''' (następnie dodać definicję)<br />
+* '''utworzyć stronę „[[:$1]]”''' (typową stronę wiki)</p>",
 	'ow_save' => 'Zapisz',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Wybór zbioru danych',
@@ -10744,6 +10759,9 @@ $messages['ru'] = array(
 	'ow_exporttsv_not_allowed' => 'У вас нет разрешения делать экспорт TSV.',
 	'ow_exporttsv_export_failed' => 'Ошибка экспорта',
 	'addcollection' => 'Викиданные: Добавление коллекции',
+	'ow_searchnoresult' => "<p>Вы можете:<br />
+*'''Создать выражение «[[Expression:$1]]»''' (и добавить определение)<br />
+*'''Создать страницу «[[:$1]]»''' (обычную вики-страницу)</p>",
 	'ow_save' => 'Сохранить',
 	'ow_history' => 'История',
 	'ow_datasets' => 'Выбор набора данных',

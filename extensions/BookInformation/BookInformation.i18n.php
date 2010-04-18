@@ -979,7 +979,7 @@ $messages['ko'] = array(
 	'bookinfo-provider' => '데이터 제공자: $1',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1796,7 +1796,7 @@ $messages['yi'] = array(
 	'bookinfo-result-title' => 'טיטל:',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'bookinfo-header' => '書籍資料',
 	'bookinformation-desc' => '擴充[[Special:Booksources]]嘅功能由一個網站服務囉到信息',

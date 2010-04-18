@@ -1079,7 +1079,7 @@ $messages['krj'] = array(
 	'dt_xml_page' => 'Pahina',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

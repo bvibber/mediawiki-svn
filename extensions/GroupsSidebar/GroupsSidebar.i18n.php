@@ -130,6 +130,13 @@ $messages['id'] = array(
 	'groupssidebar-desc' => 'Memungkinkan admin situs untuk menyediakan bilah sisi spesifik per kelompok pengguna',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'groupssidebar-desc' => 'Questa estensione permette agli amministratori del sito di inserire nella barra laterale (sidebar) elementi specifici a seconda dei gruppi utente',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

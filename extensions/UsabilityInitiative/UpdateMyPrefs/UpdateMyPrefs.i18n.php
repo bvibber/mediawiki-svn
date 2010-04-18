@@ -89,6 +89,16 @@ $messages['dsb'] = array(
 	'updatemyprefs-label-message' => 'Móje nastajenja awtomatiski z nowymi standardnymi nastajenjami a rědami aktualizěrowaś, gaž su k dispoziciji',
 );
 
+/** Greek (Ελληνικά)
+ * @author Flyax
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'prefs-updates' => 'Ενημερώσεις',
+	'updatemyprefs-desc' => 'Ρύθμιση για να διαλέξουν οι χρήστες αν θέλουν τακτικές ενημερώσεις της διεπαφής, όταν αυτές είναι διαθέσιμες',
+	'updatemyprefs-label-message' => 'Αυτόματη ενημέρωση των προτιμήσεών μου με καινούριες προεπιλεγμένες ρυθμίσεις και εργαλεία, όταν είναι διαθέσιμα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -283,5 +293,21 @@ $messages['ru'] = array(
 	'prefs-updates' => 'Обновления',
 	'updatemyprefs-desc' => 'Настройка для участников, позволяющая периодически обновлять пользовательский интерфейс по мере доступности новых функций',
 	'updatemyprefs-label-message' => 'Автоматически обновлять мои настройки новыми настройками по умолчанию и инструментами, по мере их появления',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'prefs-updates' => 'Güncellemeler',
+	'updatemyprefs-desc' => 'Kullanıcılar için periyodik kullanıcı arayüz güncellemelerini var olduklarında isteyip istemediklerini belirten tercih',
+	'updatemyprefs-label-message' => 'Yeni varsayılan ayarlar ve araçlar var oldukça tercihlerimi otomatik olarak güncelle',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'prefs-updates' => 'Các cập nhật',
 );
 

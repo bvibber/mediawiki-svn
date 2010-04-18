@@ -1995,7 +1995,7 @@ $messages['krj'] = array(
 	'whitelistnever' => 'Indi gid',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

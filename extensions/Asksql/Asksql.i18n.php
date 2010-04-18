@@ -123,6 +123,23 @@ $messages['avk'] = array(
 	'querysuccessful' => 'Kucilanhara',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'asksql' => 'SQL һорауы',
+	'asksql-desc' => 'SQL һорауҙарығыҙҙы [[Special:Asksql|махсус бит]] тарафынан эшләгеҙ',
+	'asksqltext' => "Аҫтағы форманы ҡулланып, Һеҙ мәғлүмәт базаһы өсөн SQL һорауы яҙа алаһығыҙ.
+Символ эҙмә-эҙлелеге яҙып '' тамғаларҙы ҡулланығыҙ ('улай')
+SQL һораныу серверҙәргә биҡ ҙур нагрузка эшләй. Шуның өсөн, был функцияны йыш ҡулланмағыҙ.",
+	'sqlislogged' => 'Иғтибар: Бөтә SQL һорауҙары яҙмаларҙа күрһәтелә.',
+	'sqlquery' => 'Һорауығыҙҙы индерегеҙ',
+	'querybtn' => 'Һорауығыҙҙы ебәрегеҙ',
+	'selectonly' => '"Read-only" (мәғлүмәт уҡыу өсөн) тибендәге SQL һорауҙары ғына эшләргә мөмкин.',
+	'querysuccessful' => 'Һорау уңышлы үтте',
+	'right-asksql' => 'SQL һорауҙарҙы эшләү',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */

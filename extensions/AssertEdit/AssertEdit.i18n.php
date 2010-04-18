@@ -420,7 +420,7 @@ $messages['kk-latn'] = array(
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -797,7 +797,7 @@ $messages['vo'] = array(
 	'assert_edit_message' => 'Fümedam peflagöl ($1) no eplöpon.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

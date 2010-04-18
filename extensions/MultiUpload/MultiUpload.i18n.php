@@ -340,6 +340,7 @@ Upassende filer bliver slettet øjeblikkeligt - se [[{{MediaWiki:Multipleupload-
  * @author LWChris
  * @author Purodha
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -348,7 +349,7 @@ $messages['de'] = array(
 	'multipleupload-ignoreallwarnings' => "Ignoriere '''alle Warnungen''' und speichere die Dateien.",
 	'multipleupload-saveallfiles' => 'Alle Dateien speichern',
 	'multipleupload-addresswarnings' => 'Bitte vor dem erneuten Hochladen dieser Dateien jede Warnung bearbeiten und ausräumen.',
-	'multipleupload-page' => '{{ns:project}}:Löschrichtlinien',
+	'multipleupload-page' => '{{ns:project}}:Dateilöschrichtlinien',
 	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
 Klicke auf „Durchsuchen“ und wähle alle Dateien aus, die du hochladen möchtest.
@@ -920,7 +921,7 @@ $messages['ko'] = array(
 	'multiupload-toolbox' => '파일 다중 올리기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

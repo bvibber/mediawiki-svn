@@ -495,7 +495,7 @@ $messages['kn'] = array(
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -958,7 +958,7 @@ $messages['vo'] = array(
 	'backforth-prev' => 'Büik ($1)',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'backforth-next' => '下一篇 ($1)',
 	'backandforth-desc' => '響頁嘅最頂度加入「上一篇」同埋「下一篇」嘅連結',

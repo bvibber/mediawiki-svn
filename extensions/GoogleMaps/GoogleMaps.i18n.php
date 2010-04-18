@@ -6025,6 +6025,11 @@ $wgGoogleMapsMessages['yi'] = array(
 	'gm-no' => 'ניין',
 	'gm-search' => 'זוכן',
 	'gm-save-path' => 'אויפֿהיטן',
+	'gm-color-path' => 'ענדערן קאליר',
+	'gm-line-width' => 'ברייט',
+	'gm-earth' => 'ערד',
+	'gm-moon' => 'לבנה',
+	'gm-mars' => 'מאַרס',
 );
 
 /** Yue (粵語)

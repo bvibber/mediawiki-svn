@@ -1334,7 +1334,7 @@ $messages['ko'] = array(
 	'right-badimages' => '파일 금지 필터 목록을 변경할 수 있음',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2610,7 +2610,7 @@ $messages['yi'] = array(
 	'badimages-reason' => 'אורזאַך:',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Hillgentleman
  * @author Shinjiman
  */

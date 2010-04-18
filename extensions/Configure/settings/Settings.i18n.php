@@ -6854,8 +6854,8 @@ $messages['gl'] = array(
 	'configure-setting-wgProfileCallTree' => 'Imprimir unha árbore de chamadas no canto dun informe de funcións',
 	'configure-setting-wgProfileLimit' => 'Rexistrar só a información do perfil das páxinas que sexan máis grandes que esta',
 	'configure-setting-wgProfileOnly' => 'Non poñer información que non sexa do perfil no ficheiro de rexistros',
-	'configure-setting-wgProfilePerHost' => 'Escribir o host do servidor da aplicación na táboa de perfiles',
-	'configure-setting-wgProfileToDatabase' => 'Rexistrar os resumos dos perfiles na táboa da base de datos',
+	'configure-setting-wgProfilePerHost' => 'Escribir o host do servidor da aplicación na táboa de perfís',
+	'configure-setting-wgProfileToDatabase' => 'Rexistrar os resumos dos perfís na táboa da base de datos',
 	'configure-setting-wgUDPProfilerHost' => 'Host para a análise de rendemento UDP',
 	'configure-setting-wgUDPProfilerPort' => 'Porto para a análise de rendemento UDP',
 );

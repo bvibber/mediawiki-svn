@@ -3161,7 +3161,9 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'regexblock-already-blocked' => '$1 איז שוין בלאקירט.',
 	'regexblock-form-reason' => 'אורזאַך:',
+	'regexblock-form-expiry' => 'אויסלאז:',
 	'regexblock-view-all' => 'אַלע',
+	'regexblock-view-go' => 'גיין',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

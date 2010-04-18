@@ -208,6 +208,7 @@ $messages['ca'] = array(
 /** German (Deutsch)
  * @author Imre
  * @author MF-Warburg
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'indexfunc-desc' => 'Parserfunktion, um automatische Weiterleitungen und Begriffsklärungsseiten zu erstellen',
@@ -219,9 +220,9 @@ Stelle sicher, dass die Seite, die du erstellst, nicht bereits unter einem ander
 Wenn du diese Seite erstellst, entferne diesen Titel vom <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$2|der obigen Seite|den obigen Seiten}}.',
 	'indexfunc-index-exists' => 'Die Seite „$1“ ist bereits vorhanden',
 	'indexfunc-movewarn' => 'Achtung:
-"$1" ist ein Indextitel für die {{PLURAL:$3|folgende Seite|folgenden Seiten}}:
+„$1” ist ein Indextitel für die {{PLURAL:$3|folgende Seite|folgenden Seiten}}:
 $2
-Bitte entferne "$1" von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|obiger Seite|obigen Seiten}}.',
+Bitte entferne „$1” von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|der obiger Seite|den obigen Seiten}}.',
 	'index' => 'Indexsuche',
 	'index-legend' => 'Den Index durchsuchen',
 	'index-search' => 'Suche:',
@@ -639,6 +640,7 @@ Clik panah untuk melihat semua halaman indek dibawah judul itu.',
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -648,6 +650,7 @@ $messages['it'] = array(
 Se si crea questa pagina, rimuovere questo titolo dal <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|nella pagina precedente|nelle pagine precedenti}}.',
 	'indexfunc-index-exists' => 'La pagina "$1" esiste già',
 	'indexfunc-movewarn' => 'Attenzione: "$1" è un titolo di un indice per {{PLURAL:$3|la seguente pagina|le seguenti pagine}}: $2. Rimuovere "$1" dal <nowiki>{{#index:}}</nowiki> {{PLURAL:$2|nella pagina precedente|nelle pagine precedenti}}.',
+	'index' => 'Ricerca indici',
 	'index-legend' => "Cerca l'indice",
 	'index-search' => 'Ricerca:',
 	'index-submit' => 'Invia',

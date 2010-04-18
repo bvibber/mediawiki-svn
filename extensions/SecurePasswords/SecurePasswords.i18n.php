@@ -178,14 +178,15 @@ $messages['dsb'] = array(
  * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'securepasswords-valid' => 'Ο κωδικός σας είναι ακατάλληλος ή πολύ μικρός. Πρέπει:',
-	'securepasswords-minlength' => 'να έχει τουλάχιστον $ 1 ((PLURAL: $ 1 | χαρακτήρα | χαρακτήρες))',
+	'securepasswords-minlength' => 'να έχει τουλάχιστον $1 ((PLURAL:$1|χαρακτήρα|χαρακτήρες))',
 	'securepasswords-lowercase' => 'να περιλαμβάνει τουλάχιστον 1 πεζό γράμμα',
 	'securepasswords-uppercase' => 'να περιλαμβάνει τουλάχιστον 1 κεφαλαίο γράμμα',
 	'securepasswords-digit' => 'περίληψη τουλάχιστον 1 ψηφίου',
-	'securepasswords-special' => 'να περιλαμβάνει τουλάχιστον 1 ειδικό χαρακτήρα (ειδικοί χαρακτήρες είναι: $ 1)',
+	'securepasswords-special' => 'να περιλαμβάνει τουλάχιστον 1 ειδικό χαρακτήρα (οι ειδικοί χαρακτήρες είναι: $1)',
 	'securepasswords-username' => 'να είναι διαφορετικός από το όνομα χρήστη',
 	'securepasswords-word' => 'να μην είναι μία λέξη',
 );
