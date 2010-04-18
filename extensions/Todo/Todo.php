@@ -30,7 +30,7 @@ $wgExtensionFunctions[] = 'todoSetup';
 $wgHooks['SkinTemplateTabs'][] = 'todoAddTab';
 
 $dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles['todoAddTab'] = $dir . 'SpecialTodo.i18n.php';
+$wgExtensionMessagesFiles['todoAddTab'] = $dir . 'Todo.i18n.php';
 
 // Creates a group of users who can have todo lists
 $wgGroupPermissions['todo']['todo'] = true;
