@@ -3,9 +3,10 @@ through translatewiki.net and are not listed here.
 
 0.15.20 - 18 April 2010
   * Removed BoardVote and Click extensions
-  * Updated AdvancedRandom, AjaxQueryPages, AjaxShowEditors, APC, ChangeAuthor,
-    cldr, ConfirmAccount, CrossNamespaceLinks, EditCount, ImportUsers,
-    Interwiki, Nuke, UsageStatistics and UserRightsNotif extensions
+  * Updated AdvancedRandom, AjaxQueryPages, AjaxShowEditors, APC, CategoryFeed,
+    ChangeAuthor, cldr, ConfirmAccount, CrossNamespaceLinks, EditCount,
+    ImportUsers, Interwiki, Nuke, Renameuser, UsageStatistics, UserContactLinks,
+    UserRightsNotif and WhoIsWatching extensions
   * Updated scripts/findSettings.php to display extensions that aren't installed
 
 0.15.19 - 11 April 2010
