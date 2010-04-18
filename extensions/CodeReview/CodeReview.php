@@ -32,7 +32,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'CodeReview',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CodeReview',
 	'author' => array( 'Brion Vibber', 'Aaron Schulz', 'Alexandre Emsenhuber', 'Chad Horohoe' ),
-	'descriptionmsg' => 'code-desc',
+	'descriptionmsg' => 'codereview-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';

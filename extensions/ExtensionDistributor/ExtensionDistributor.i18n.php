@@ -4,7 +4,7 @@ $messages = array();
 
 $messages['en'] = array(
 		'extensiondistributor' => 'Download MediaWiki extension',
-		'extdist-desc' => 'Extension for distributing snapshot archives of extensions',
+		'extensiondistributor-desc' => 'Extension for distributing snapshot archives of extensions',
 		'extdist-not-configured' => 'Please configure $wgExtDistTarDir and $wgExtDistWorkingCopy',
 		'extdist-wc-missing' => 'The configured working copy directory does not exist!',
 		'extdist-no-such-extension' => 'No such extension "$1"',
@@ -59,7 +59,7 @@ If you have any questions about this extension distribution system, please go to
  */
 $messages['qqq'] = array(
 	'extensiondistributor' => '{{Identical|Download}}',
-	'extdist-desc' => 'Short description of the Extdist extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'extensiondistributor-desc' => 'Short description of the Extdist extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'extdist-submit-extension' => '{{Identical|Continue}}',
 	'extdist-submit-version' => '{{Identical|Continue}}',
 	'extdist-created' => '* $1 - extension
@@ -89,7 +89,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'extensiondistributor' => 'تنزيل امتداد ميدياويكي',
-	'extdist-desc' => 'امتداد لتوزيع أرشيفات ملتقطة للامتدادات',
+	'extensiondistributor-desc' => 'امتداد لتوزيع أرشيفات ملتقطة للامتدادات',
 	'extdist-not-configured' => 'من فضلك اضبط $wgExtDistTarDir و $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'مجلد نسخة العمل المحدد غير موجود!',
 	'extdist-no-such-extension' => 'لا امتداد كهذا "$1"',
@@ -140,7 +140,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['arz'] = array(
 	'extensiondistributor' => 'تنزيل امتداد ميدياويكي',
-	'extdist-desc' => 'امتداد لتوزيع أرشيفات ملتقطة للامتدادات',
+	'extensiondistributor-desc' => 'امتداد لتوزيع أرشيفات ملتقطة للامتدادات',
 	'extdist-not-configured' => 'من فضلك اضبط $wgExtDistTarDir و $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'مجلد نسخة العمل المحدد غير موجود!',
 	'extdist-no-such-extension' => 'لا امتداد كهذا "$1"',
@@ -193,7 +193,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['be-tarask'] = array(
 	'extensiondistributor' => 'Загрузіць пашырэньне MediaWiki',
-	'extdist-desc' => 'Пашырэньне для распаўсюджваньня архіваў пашырэньняў',
+	'extensiondistributor-desc' => 'Пашырэньне для распаўсюджваньня архіваў пашырэньняў',
 	'extdist-not-configured' => 'Калі ласка, задайце $wgExtDistTarDir і $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Зададзеная працоўная копія дырэкторыі не існуе!',
 	'extdist-no-such-extension' => 'Пашырэньне «$1» не існуе',
@@ -299,7 +299,7 @@ Al lod vrasañ eus an astennoù a  ya en-dro war stumm disheñvel MediaWiki. Neu
  */
 $messages['bs'] = array(
 	'extensiondistributor' => 'Učitaj MediaWiki proširenje',
-	'extdist-desc' => 'Proširenja za raspodjelu snapshot arhiva za ekstenzije',
+	'extensiondistributor-desc' => 'Proširenja za raspodjelu snapshot arhiva za ekstenzije',
 	'extdist-not-configured' => 'Molimo da podesite $wgExtDistTarDir i $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Podešeni radni direktorijum za kopije ne postoji!',
 	'extdist-no-such-extension' => 'Nema takve ekstenzije "$1"',
@@ -351,7 +351,7 @@ Ako imate nekih pitanja oko ovog sistema distribucije proširenja, molimo pogled
  */
 $messages['ca'] = array(
 	'extensiondistributor' => 'Descarrega una extensió de Mediawiki',
-	'extdist-desc' => 'Extensió per distribuir arxius actualitzats de les extensions',
+	'extensiondistributor-desc' => 'Extensió per distribuir arxius actualitzats de les extensions',
 	'extdist-not-configured' => 'Per favor, configurau $wgExtDistTarDir i $wgExtDistWorkingCopy',
 	'extdist-no-such-extension' => 'No existeix l\'extensió "$1"',
 	'extdist-no-such-version' => 'L\'extensió "$1" no existeix en la versió "$2"',
@@ -380,7 +380,7 @@ La majoria d'extensions funcionen a les diferents versions de Mediawiki, així q
  */
 $messages['cs'] = array(
 	'extensiondistributor' => 'Stáhnout rozšíření MediaWiki',
-	'extdist-desc' => 'Rozšíření pro distribuci archivů rozšíření',
+	'extensiondistributor-desc' => 'Rozšíření pro distribuci archivů rozšíření',
 	'extdist-not-configured' => 'Prosím, nastavte $wgExtDistTarDir a $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Adresář nastavený pro pracovní kopii neexistuje!',
 	'extdist-no-such-extension' => 'Rozšíření „$1” neexistuje',
@@ -434,7 +434,7 @@ Případné dotazy k tomuto systému distribuce rozšíření můžete klást na
  */
 $messages['de'] = array(
 	'extensiondistributor' => 'MediaWiki-Erweiterungen herunterladen',
-	'extdist-desc' => 'Erweiterung für die Verteilung von Schnappschuss-Archiven von Erweiterungen',
+	'extensiondistributor-desc' => 'Erweiterung für die Verteilung von Schnappschuss-Archiven von Erweiterungen',
 	'extdist-not-configured' => 'Bitte konfiguriere $wgExtDistTarDir und $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Das konfigurierte Kopien-Arbeitsverzeichnis ist nicht vorhanden!',
 	'extdist-no-such-extension' => 'Erweiterung „$1“ ist nicht vorhanden',
@@ -522,7 +522,7 @@ Wenn Sie Fragen zu diesem Erweiterungs-Verteil-System haben, gehen Sie bitte zur
  */
 $messages['diq'] = array(
 	'extensiondistributor' => 'Extensiyonê MediyaWikiyî bar bike',
-	'extdist-desc' => 'Ekstensiyon ke ser ekstesiyonê vila kerdişî arşivê snapshotî',
+	'extensiondistributor-desc' => 'Ekstensiyon ke ser ekstesiyonê vila kerdişî arşivê snapshotî',
 	'extdist-not-configured' => 'Ma rica keno ke $wgExtDistTarDir u $wgExtDistWorkingCopy konfigure bike',
 	'extdist-wc-missing' => 'Direktorê kopyayî yê konfigure çini yo!',
 	'extdist-no-such-extension' => 'Ekstensiyonê "$1"î çini yo',
@@ -573,7 +573,7 @@ Eke no sistem de yew problemê şıma bıbo, kerem kerê şêrê [[Extension tal
  */
 $messages['dsb'] = array(
 	'extensiondistributor' => 'Rozšyrjenje MediaWiki ześěgnuś',
-	'extdist-desc' => 'Rozšyrjenje za rozdźělowanje archiwow rozšyrjenjow',
+	'extensiondistributor-desc' => 'Rozšyrjenje za rozdźělowanje archiwow rozšyrjenjow',
 	'extdist-not-configured' => 'Pšosym konfigurěruj $wgExtDistTarDir a $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Konfigurěrowany zapis źěłoweje kopije njeeksistěrujo!',
 	'extdist-no-such-extension' => 'Rozšyrjenje "$1" njeeksistěrujo',
@@ -626,7 +626,7 @@ Jolic maš pšašanja wo toś tom systemje rozdźělowanja rozšyrjenjow, źi p�
  */
 $messages['el'] = array(
 	'extensiondistributor' => 'Κατέβασμα επέκτασης Mediawiki',
-	'extdist-desc' => 'Επέκταση για τη διανομή στιγμιοτύπων επεκτάσεων',
+	'extensiondistributor-desc' => 'Επέκταση για τη διανομή στιγμιοτύπων επεκτάσεων',
 	'extdist-not-configured' => 'Παρακαλώ ρυθμίστε τα $wgExtDistTarDir και $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Ο καθορισμένος πηγαίος κατάλογος εργασίας δεν υπάρχει!',
 	'extdist-no-such-extension' => 'Δεν υπάρχει επέκταση "$1"',
@@ -677,7 +677,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['eo'] = array(
 	'extensiondistributor' => 'Elŝuti kromprogramon por MediaWiki',
-	'extdist-desc' => 'Kromprogramo por distribui statikajn arkivojn de kromprogramoj',
+	'extensiondistributor-desc' => 'Kromprogramo por distribui statikajn arkivojn de kromprogramoj',
 	'extdist-not-configured' => 'Bonvolu konfiguri $wgExtDistTarDir kaj $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'La konfigurita laborspaca dosierujo ne ekzistas!',
 	'extdist-no-such-extension' => 'Kromprogramo "$1" ne ekzistas',
@@ -732,7 +732,7 @@ Se vi havas iujn demandojn pri ĉi tiu kromprograma distribuada sistemo, bonvolu
  */
 $messages['es'] = array(
 	'extensiondistributor' => 'Descargar extensión MediaWiki',
-	'extdist-desc' => 'Extensión para la distribución de archivos de instantáneas de las extensiones',
+	'extensiondistributor-desc' => 'Extensión para la distribución de archivos de instantáneas de las extensiones',
 	'extdist-not-configured' => 'Por favor configure $wgExtDistTarDir y $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => '¡El directorio de copia en funcionamiento configurado no existe!',
 	'extdist-no-such-extension' => 'No existe la extensión «$1»',
@@ -785,7 +785,7 @@ Si tienes algunas preguntas acerca de éste sistema de distribución de extensio
  */
 $messages['et'] = array(
 	'extensiondistributor' => 'MediaWiki-laienduse allalaadimine',
-	'extdist-desc' => 'Võimaldab jagada laienduste hetktõmmiste arhiivi.',
+	'extensiondistributor-desc' => 'Võimaldab jagada laienduste hetktõmmiste arhiivi.',
 	'extdist-no-such-extension' => 'Laiendus "$1" puudub',
 	'extdist-no-such-version' => 'Versioonis "$2" puudub laiendus "$1".',
 	'extdist-choose-extension' => 'Vali laiendus, mida soovid alla laadida:',
@@ -816,7 +816,7 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'extensiondistributor' => 'بارگیری افزونهٔ مدیاویکی',
-	'extdist-desc' => 'افزونه‌ای برای انتشار بایگانی‌های لحظه‌ای از افزونه‌ها',
+	'extensiondistributor-desc' => 'افزونه‌ای برای انتشار بایگانی‌های لحظه‌ای از افزونه‌ها',
 	'extdist-not-configured' => 'لطفاً ‎$‎wgExtDistTarDir و ‎$wgExtDistWorkingCopy را تنظیم کنید',
 	'extdist-wc-missing' => 'شاخهٔ کپی کاری تنظیم شده وجود ندارد!',
 	'extdist-no-such-extension' => 'افزونه‌ای به نام «$1» وجود ندارد',
@@ -848,7 +848,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'extensiondistributor' => 'Lataa MediaWikin laajennus',
-	'extdist-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
+	'extensiondistributor-desc' => 'Laajennus laajennusten tilannevedosarkistojen jakelulle.',
 	'extdist-not-configured' => 'Aseta $wgExtDistTarDir ja $wgExtDistWorkingCopy.',
 	'extdist-wc-missing' => 'Määritettyä työkopiohakemistoa ei ole olemassa.',
 	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
@@ -903,7 +903,7 @@ Jos sinulla on kysymyksiä tähän jakelujärjestelmään liittyen, sivulla [[Ex
  */
 $messages['fr'] = array(
 	'extensiondistributor' => 'Télécharger l’extension MediaWiki',
-	'extdist-desc' => 'Extension pour la distribution des archives photographiques des extensions',
+	'extensiondistributor-desc' => 'Extension pour la distribution des archives photographiques des extensions',
 	'extdist-not-configured' => 'Veuillez configurer $wgExtDistTarDir et $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'La répertoire de copies de travail spécifié n’existe pas !',
 	'extdist-no-such-extension' => 'Aucune extension « $1 »',
@@ -954,7 +954,7 @@ Si vous avez des questions concernant ce système de distribution des extensions
  */
 $messages['frp'] = array(
 	'extensiondistributor' => 'Tèlèchargiér l’èxtension MediaWiki',
-	'extdist-desc' => 'Èxtension por la distribucion de les arch·ives fotografiques de les èxtensions.',
+	'extensiondistributor-desc' => 'Èxtension por la distribucion de les arch·ives fotografiques de les èxtensions.',
 	'extdist-not-configured' => 'Volyéd configurar $wgExtDistTarDir et $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Lo rèpèrtouèro por copies d’ôvra configurâ ègziste pas !',
 	'extdist-no-such-extension' => 'Gins d’èxtension « $1 »',
@@ -979,7 +979,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'extensiondistributor' => 'Descargar a extensión MediaWiki',
-	'extdist-desc' => 'Extensión para distribuír arquivos fotográficos de extensións',
+	'extensiondistributor-desc' => 'Extensión para distribuír arquivos fotográficos de extensións',
 	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'O directorio da copia en funcionamento configurada non existe!',
 	'extdist-no-such-extension' => 'Non existe a extensión "$1"',
@@ -1039,7 +1039,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'extensiondistributor' => 'MediaWiki-Erwyterige abelade',
-	'extdist-desc' => 'Erwyterig fir d Verteilig vu Schnappschuss-Archiv vu Erwyterige',
+	'extensiondistributor-desc' => 'Erwyterig fir d Verteilig vu Schnappschuss-Archiv vu Erwyterige',
 	'extdist-not-configured' => 'Bitte konfigurier $wgExtDistTarDir un $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'S konfiguriert Kopie-Arbetsverzeichnis git s nit!',
 	'extdist-no-such-extension' => 'D Erwyterig „$1“ git s nit',
@@ -1090,7 +1090,7 @@ Wänn Du Froge hesch zue däm Erwyterigs-Verteil-Syschtem, no gang bitte uf d Sy
  */
 $messages['he'] = array(
 	'extensiondistributor' => 'הורדת הרחבה של מדיה־ויקי',
-	'extdist-desc' => 'הרחבה להפצת קבצים מכווצים של הרחבות',
+	'extensiondistributor-desc' => 'הרחבה להפצת קבצים מכווצים של הרחבות',
 	'extdist-not-configured' => 'אנא הגדירו את $wgExtDistTarDir ואת $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'התיקייה שהוגדרה כתיקיית ההרחבות אינה קיימת!',
 	'extdist-no-such-extension' => 'אין הרחבה בשם "$1"',
@@ -1143,7 +1143,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['hr'] = array(
 	'extensiondistributor' => 'Snimi MediaWiki ekstenziju',
-	'extdist-desc' => 'Ekstenzija za distribuciju inačica arhiva ekstenzija',
+	'extensiondistributor-desc' => 'Ekstenzija za distribuciju inačica arhiva ekstenzija',
 	'extdist-not-configured' => 'Molimo konfigurirajte $wgExtDistTarDir i $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Konfigurirani radni direktorij za kopiranje ne postoji!',
 	'extdist-no-such-extension' => 'Nema takve ekstenziju "$1"',
@@ -1195,7 +1195,7 @@ Ukoliko imate pitanja u svezi sustava distribucije ekstenzija, pogledajte ovu st
  */
 $messages['hsb'] = array(
 	'extensiondistributor' => 'Rožsěrjenje za MediaWiki sćahnyć',
-	'extdist-desc' => 'Rozšěrjenje za rozdźělenje archiwow njejapkich fotow rozšěrjenjow',
+	'extensiondistributor-desc' => 'Rozšěrjenje za rozdźělenje archiwow njejapkich fotow rozšěrjenjow',
 	'extdist-not-configured' => 'Prošu konfiguruj $wgExtDistTarDir a $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Konfigurowany zapis dźěłoweje kopije njeeksistuje!',
 	'extdist-no-such-extension' => 'Rozšěrjenje "$1" njeeksistuje',
@@ -1247,7 +1247,7 @@ Jeli maš prašenja wo systemje rozdźělowanja rozšěrjenjow, prošu dźi k [[
  */
 $messages['hu'] = array(
 	'extensiondistributor' => 'MediaWiki-kigészítők letöltése',
-	'extdist-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
+	'extensiondistributor-desc' => 'Kiegészítő kiegészítőcsomagok terjesztéséhez',
 	'extdist-not-configured' => 'Kérlek állítsd be a $wgExtDistTarDir és a $wgExtDistWorkingCopy értékeit',
 	'extdist-wc-missing' => 'A beállított másolat munkakönyvtár nem létezik!',
 	'extdist-no-such-extension' => 'Nincs „$1” nevű kiegészítő',
@@ -1299,7 +1299,7 @@ Ha bármi kérdésed van a kiterjesztésterjesztő rendszerrel kapcsolatban, ker
  */
 $messages['ia'] = array(
 	'extensiondistributor' => 'Discargar extension MediaWiki',
-	'extdist-desc' => 'Extension pro le distribution de archivos de instantaneos de extensiones',
+	'extensiondistributor-desc' => 'Extension pro le distribution de archivos de instantaneos de extensiones',
 	'extdist-not-configured' => 'Per favor configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Le directorio pro copias de travalio configurate non existe!',
 	'extdist-no-such-extension' => 'Non existe un extension "$1"',
@@ -1352,7 +1352,7 @@ Si tu ha alcun questiones super iste systema de distribution de extensiones, per
  */
 $messages['id'] = array(
 	'extensiondistributor' => 'Unduh pengaya MediaWiki',
-	'extdist-desc' => 'Ekstensi untuk mendistribusikan arsip snapshot ekstensi',
+	'extensiondistributor-desc' => 'Ekstensi untuk mendistribusikan arsip snapshot ekstensi',
 	'extdist-not-configured' => 'Silakan mengkonfigurasi $wgExtDistTarDir dan $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Konfigurasi direktori Copy pekerjaan tidak ada!',
 	'extdist-no-such-extension' => 'Tidak ada ekstensi "$1"',
@@ -1411,7 +1411,7 @@ Dapatkan ekstensi lain',
  */
 $messages['it'] = array(
 	'extensiondistributor' => 'Scarica estensione MediaWiki',
-	'extdist-desc' => 'Estensione per distribuire archivi snapshot delle estensioni',
+	'extensiondistributor-desc' => 'Estensione per distribuire archivi snapshot delle estensioni',
 	'extdist-not-configured' => 'Configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'La directory per copie di lavoro configurata non esiste!',
 	'extdist-no-such-extension' => 'Nessuna estensione "$1"',
@@ -1464,7 +1464,7 @@ Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione
  */
 $messages['ja'] = array(
 	'extensiondistributor' => 'MediaWiki 拡張機能のダウンロード',
-	'extdist-desc' => '拡張機能のスナップショットのアーカイブを配布するための拡張機能',
+	'extensiondistributor-desc' => '拡張機能のスナップショットのアーカイブを配布するための拡張機能',
 	'extdist-not-configured' => '$wgExtDistTarDirと$wgExtDistWorkingCopyの設定を行ってください',
 	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません！',
 	'extdist-no-such-extension' => '"$1"という拡張機能は存在しません',
@@ -1576,7 +1576,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['ksh'] = array(
 	'extensiondistributor' => 'MediaWiki Zosatzprojramm erunger lade',
-	'extdist-desc' => 'Zosazprojramm för Arschive met Zosazprojramme ze verteile.',
+	'extensiondistributor-desc' => 'Zosazprojramm för Arschive met Zosazprojramme ze verteile.',
 	'extdist-not-configured' => 'Bes esu joot un donn <code>$wgExtDistTarDir</code> un <code>$wgExtDistWorkingCopy</code> setze.',
 	'extdist-wc-missing' => 'Dat Ärbeitsverzeischnes för de Kopije es nit do.',
 	'extdist-no-such-extension' => 'Ene Zosatz „$1“ es nit do.',
@@ -1628,7 +1628,7 @@ Wann De Frore övver dat Süßteem zom Zosätz erunger Lade haß, da jangk noh [
  */
 $messages['lb'] = array(
 	'extensiondistributor' => 'MediaWiki Erweiderung eroflueden',
-	'extdist-desc' => "Erweiderung fir d'Verdeele vu Schnappschoss-Archive vun Erweiderungen",
+	'extensiondistributor-desc' => "Erweiderung fir d'Verdeele vu Schnappschoss-Archive vun Erweiderungen",
 	'extdist-not-configured' => 'Konfiguréiert w.e.g. $wgExtDistTarDir an $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Den agestallten Arbechts-Kopien-Repertoire gëtt et net!',
 	'extdist-no-such-extension' => 'Et gëtt keng Erweiderung "$1"',
@@ -1653,7 +1653,7 @@ Déi meescht Erweiderunge fonctionnéiere mat verschiddene Versioune vu MediaWik
  */
 $messages['li'] = array(
 	'extensiondistributor' => 'Download MediaWiki extension',
-	'extdist-desc' => 'Extension veur distributere snapshot archieve óf extensions',
+	'extensiondistributor-desc' => 'Extension veur distributere snapshot archieve óf extensions',
 	'extdist-not-configured' => 'Maak de instellinge veur $wgExtDistTarDir en $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'De instelde werkmap besteit neet!',
 	'extdist-no-such-extension' => 'De uitbreiding "$1" besteit neet',
@@ -1705,7 +1705,7 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
  */
 $messages['mk'] = array(
 	'extensiondistributor' => 'Преземи го проширувањето за MediaWiki',
-	'extdist-desc' => 'Проширување за дистрибуција на приказни архиви на проширувања',
+	'extensiondistributor-desc' => 'Проширување за дистрибуција на приказни архиви на проширувања',
 	'extdist-not-configured' => 'Задајте $wgExtDistTarDir и $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Зададениот директориум со работниот примерок не постои!',
 	'extdist-no-such-extension' => 'Нема проширување со име „$1“',
@@ -1754,7 +1754,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['ml'] = array(
 	'extensiondistributor' => 'മീഡിയവിക്കി അനുബന്ധം ഡൗൺലോഡ് ചെയ്യുക',
-	'extdist-desc' => 'അനുബന്ധങ്ങളുടെ തത്സമയ സഞ്ചയങ്ങൾ വിതരണം ചെയ്യാനുള്ള അനുബന്ധം',
+	'extensiondistributor-desc' => 'അനുബന്ധങ്ങളുടെ തത്സമയ സഞ്ചയങ്ങൾ വിതരണം ചെയ്യാനുള്ള അനുബന്ധം',
 	'extdist-not-configured' => 'ദയവായി $wgExtDistTarDir, $wgExtDistWorkingCopy എന്നിവ ക്രമീകരിക്കുക',
 	'extdist-wc-missing' => 'പ്രവർത്തനം പകർത്താനായി ക്രമീകരിക്കപ്പെട്ട ഡയറക്റ്ററി നിലവിലില്ല!',
 	'extdist-no-such-extension' => '"$1" എന്നൊരു അനുബന്ധം ഇല്ല',
@@ -1807,7 +1807,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['ms'] = array(
 	'extensiondistributor' => 'Muat turun penyambung MediaWiki',
-	'extdist-desc' => 'Penyambung khas untuk pengedaran arkib petikan penyambung',
+	'extensiondistributor-desc' => 'Penyambung khas untuk pengedaran arkib petikan penyambung',
 	'extdist-not-configured' => 'Sila tetapkan konfigurasi $wgExtDistTarDir dan $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Direktori salinan kerja yang ditetapkan tidak wujud!',
 	'extdist-no-such-extension' => 'Penyambung "$1" tidak wujud',
@@ -1866,7 +1866,7 @@ $messages['myv'] = array(
  */
 $messages['nds'] = array(
 	'extensiondistributor' => 'MediaWiki-Extension dalladen',
-	'extdist-desc' => 'Extension för dat Bereidstellen vun Snappschuss-Archiven von Extensions',
+	'extensiondistributor-desc' => 'Extension för dat Bereidstellen vun Snappschuss-Archiven von Extensions',
 	'extdist-not-configured' => 'Stell $wgExtDistTarDir un $wgExtDistWorkingCopy in',
 	'extdist-wc-missing' => 'De instellt Warkmapp för Kopien gifft dat gornich!',
 	'extdist-no-such-extension' => 'Extension „$1“ gifft dat nich',
@@ -1919,7 +1919,7 @@ Wenn du Fragen to dit Extensions-Verdeel-System hest, gah man na de Sied [[Exten
  */
 $messages['nl'] = array(
 	'extensiondistributor' => 'MediaWiki-uitbreiding downloaden',
-	'extdist-desc' => 'Uitbreiding voor het distribueren van uitbreidingen',
+	'extensiondistributor-desc' => 'Uitbreiding voor het distribueren van uitbreidingen',
 	'extdist-not-configured' => 'Maak de instellingen voor $wgExtDistTarDir en $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'De instelde werkmap bestaat niet!',
 	'extdist-no-such-extension' => 'De uitbreiding "$1" bestaat niet',
@@ -1970,7 +1970,7 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
  */
 $messages['nn'] = array(
 	'extensiondistributor' => 'Last ned utvidingar til MediaWiki',
-	'extdist-desc' => 'Utviding for distribuering av andre utvidingar',
+	'extensiondistributor-desc' => 'Utviding for distribuering av andre utvidingar',
 	'extdist-not-configured' => 'Still inn $wgExtDistTarDir og $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Mappa med arbeidskopien finst ikkje!',
 	'extdist-no-such-extension' => 'Inga utviding med namnet "$1"',
@@ -2023,7 +2023,7 @@ Om du har spørsmål om dette distribusjonssytemet for utvidingar, gå til [http
  */
 $messages['no'] = array(
 	'extensiondistributor' => 'Last ned utvidelser til MediaWiki',
-	'extdist-desc' => 'Utvidelse for distribusjon av andre utvidelser',
+	'extensiondistributor-desc' => 'Utvidelse for distribusjon av andre utvidelser',
 	'extdist-not-configured' => 'Still inn $wgExtDistTarDir og $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Mappen med arbeidskopien finnes ikke.',
 	'extdist-no-such-extension' => 'Ingen utvidelse ved navn «$1»',
@@ -2074,7 +2074,7 @@ Om du har spørsmål om dette distribusjonssytemet for utvidelser, gå til [http
  */
 $messages['oc'] = array(
 	'extensiondistributor' => 'Telecargar l’extension MediaWiki',
-	'extdist-desc' => 'Extension per la distribucion dels archius fotografics de las extensions',
+	'extensiondistributor-desc' => 'Extension per la distribucion dels archius fotografics de las extensions',
 	'extdist-not-configured' => 'Configuratz $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Lo repertòri de la còpia de trabalh configurada existís pas !',
 	'extdist-no-such-extension' => "Pas cap d'extension « $1 »",
@@ -2146,7 +2146,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'extensiondistributor' => 'Pobierz rozszerzenie MediaWiki',
-	'extdist-desc' => 'Rozszerzenie odpowiedzialne za dystrybucję zarchiwizowanych rozszerzeń gotowych do pobrania',
+	'extensiondistributor-desc' => 'Rozszerzenie odpowiedzialne za dystrybucję zarchiwizowanych rozszerzeń gotowych do pobrania',
 	'extdist-not-configured' => 'Proszę skonfigurować zmienne $wgExtDistTarDir i $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Skonfigurowany katalog z kopią roboczą nie istnieje!',
 	'extdist-no-such-extension' => 'Brak rozszerzenia „$1”',
@@ -2198,7 +2198,7 @@ Jeśli masz jakieś pytania na temat systemu dystrybuującego rozszerzenia, zada
  */
 $messages['pms'] = array(
 	'extensiondistributor' => "Dëscaria l'estension MediaWiki",
-	'extdist-desc' => "Estension për distribuì j'archivi snapshot ëd j'estension",
+	'extensiondistributor-desc' => "Estension për distribuì j'archivi snapshot ëd j'estension",
 	'extdist-not-configured' => 'Për piasì configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Ël dossié configurà për còpie ëd travaj a esist pa!',
 	'extdist-no-such-extension' => 'Pa gnun-e estension "$1"',
@@ -2250,7 +2250,7 @@ S'it l'has chèiche chestion su sto sistema ëd distribuì j'estension, për pia
  */
 $messages['pt'] = array(
 	'extensiondistributor' => 'Descarregar extensão MediaWiki',
-	'extdist-desc' => "Extensão para distribuir instantâneos arquivados ''(snapshot archives)'' de extensões",
+	'extensiondistributor-desc' => "Extensão para distribuir instantâneos arquivados ''(snapshot archives)'' de extensões",
 	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'A directoria de cópia de trabalho configurada não existe!',
 	'extdist-no-such-extension' => 'A extensão "$1" não existe',
@@ -2301,7 +2301,7 @@ Se tiver alguma questão sobre este sistema de distribuição de extensões, por
  */
 $messages['pt-br'] = array(
 	'extensiondistributor' => 'Descarregar extensão MediaWiki',
-	'extdist-desc' => 'Extensão para distribuir arquivos snapshot de extensões',
+	'extensiondistributor-desc' => 'Extensão para distribuir arquivos snapshot de extensões',
 	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'O diretório de cópia de trabalho configurado não existe!',
 	'extdist-no-such-extension' => 'A extensão "$1" não existe',
@@ -2382,7 +2382,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'extensiondistributor' => 'Скачать расширения MediaWiki',
-	'extdist-desc' => 'Расширение для скачивания дистрибутивов с расширениями',
+	'extensiondistributor-desc' => 'Расширение для скачивания дистрибутивов с расширениями',
 	'extdist-not-configured' => 'Пожалуйста, задайте $wgExtDistTarDir и $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Заданная в настройках директория с рабочей копией не существует!',
 	'extdist-no-such-extension' => 'Расширение «$1» не найдено',
@@ -2433,7 +2433,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['sah'] = array(
 	'extensiondistributor' => 'МедиаВики тупсарыыларын хачайдааһын',
-	'extdist-desc' => 'Тупсарыылары хачайдыыр тупсарыы',
+	'extensiondistributor-desc' => 'Тупсарыылары хачайдыыр тупсарыы',
 	'extdist-not-configured' => 'Бука диэн балары туруор: $wgExtDistTarDir уонна $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Туруорууга бэриллибит үлэлиир копиялаах паапка суох!',
 	'extdist-no-such-extension' => '"$1" тупсарыы булуллубата',
@@ -2484,7 +2484,7 @@ Windows-ка билэлэри туттарга [http://www.7-zip.org/ 7-zip] б�
  */
 $messages['sk'] = array(
 	'extensiondistributor' => 'Stiahnuť rozšírenie MediaWiki',
-	'extdist-desc' => 'Rozšírenie na distribúciu archívov rozšírení',
+	'extensiondistributor-desc' => 'Rozšírenie na distribúciu archívov rozšírení',
 	'extdist-not-configured' => 'Prosím, nastavte $wgExtDistTarDir a $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Nastavený adresár pre pracovnú kópiu neexistuje!',
 	'extdist-no-such-extension' => 'Rozšírenie „$1” neexistuje',
@@ -2536,7 +2536,7 @@ Ak máte otázky týkajúce sa tohto systému distribúcie rozšírení, navšt�
  */
 $messages['sv'] = array(
 	'extensiondistributor' => 'Ladda ner tillägg till MediaWiki',
-	'extdist-desc' => 'Tillägg för distribution av övriga tillägg',
+	'extensiondistributor-desc' => 'Tillägg för distribution av övriga tillägg',
 	'extdist-not-configured' => 'Var god bekräfta $wgExtDistTarDir och $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Mappen med arbetskopian finns inte!',
 	'extdist-no-such-extension' => 'Ingen sådant tillägg "$1"',
@@ -2638,7 +2638,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['tk'] = array(
 	'extensiondistributor' => 'MediaWiki giňeltmesini düşür',
-	'extdist-desc' => 'Giňeltmeleriň pursatlyk görnüş arhiwlerini paýlamak üçin giňeltme',
+	'extensiondistributor-desc' => 'Giňeltmeleriň pursatlyk görnüş arhiwlerini paýlamak üçin giňeltme',
 	'extdist-not-configured' => 'Konfigurirläň: $wgExtDistTarDir we $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Konfigurirlenen iş nusgasy direktoriýasy ýok!',
 	'extdist-no-such-extension' => '"$1" diýip giňeltme ýok.',
@@ -2663,7 +2663,7 @@ $messages['tk'] = array(
  */
 $messages['tl'] = array(
 	'extensiondistributor' => 'Ikarga pababa ang karugtong na pang-MediaWiki',
-	'extdist-desc' => 'Karugtong para sa pagpapamahagi ng sinupan/arkibo ng mga karugtong na para sa mga kuha ng larawan/litrato',
+	'extensiondistributor-desc' => 'Karugtong para sa pagpapamahagi ng sinupan/arkibo ng mga karugtong na para sa mga kuha ng larawan/litrato',
 	'extdist-not-configured' => 'Paki-isaayos ang $wgExtDistTarDir at $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Hindi umiiral ang naisaayos nang direktoryo ng siping panggawain!',
 	'extdist-no-such-extension' => 'Walang ganyang karugtong na "$1"',
@@ -2714,7 +2714,7 @@ Kung mayroon kang anumang katanungan hinggil sa sistemang ito ng pagpapamahagi n
  */
 $messages['tr'] = array(
 	'extensiondistributor' => 'MedyaViki eklentisini indir',
-	'extdist-desc' => 'Eklentilerin anlık görüntü arşivlerini dağıtmak için eklenti',
+	'extensiondistributor-desc' => 'Eklentilerin anlık görüntü arşivlerini dağıtmak için eklenti',
 	'extdist-not-configured' => 'Lütfen $wgExtDistTarDir ve $wgExtDistWorkingCopy ayarlayın',
 	'extdist-wc-missing' => 'Ayarlanan çalışma kopyası dizini mevcut değil!',
 	'extdist-no-such-extension' => '"$1" adında bir eklenti yok',
@@ -2766,7 +2766,7 @@ Eğer bu eklenti dağıtım sistemi ile herhangi bir sorunuz varsa, lütfen [[Ex
  */
 $messages['uk'] = array(
 	'extensiondistributor' => 'Завантажити розширення MediaWiki',
-	'extdist-desc' => 'Розширення для завантаження дистрибутивів розширень',
+	'extensiondistributor-desc' => 'Розширення для завантаження дистрибутивів розширень',
 	'extdist-not-configured' => 'Будь ласка, налаштуйте $wgExtDistTarDir і $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Зазначеного в налаштуваннях каталогу робочої копії не існує!',
 	'extdist-no-such-extension' => 'Розширення «$1» не знайдено',
@@ -2796,7 +2796,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'extensiondistributor' => 'Descarga na estension MediaWiki',
-	'extdist-desc' => 'Estension par distribuir archivi snapshot de le estension',
+	'extensiondistributor-desc' => 'Estension par distribuir archivi snapshot de le estension',
 	'extdist-not-configured' => 'Par piaser configura $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'La cartèla par copie de laoro configurà no la esiste!',
 	'extdist-no-such-extension' => 'L\'estension "$1" no la esiste',
@@ -2855,7 +2855,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'extensiondistributor' => 'Tải bộ mở rộng MediaWiki về',
-	'extdist-desc' => 'Bộ mở rộng để phân phối các bản lưu trữ ảnh của các bộ mở rộng',
+	'extensiondistributor-desc' => 'Bộ mở rộng để phân phối các bản lưu trữ ảnh của các bộ mở rộng',
 	'extdist-not-configured' => 'Xin hãy cấu hình $wgExtDistTarDir và $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Không tồn tại thư mục sao chép hiện hành đã được cấu hình!',
 	'extdist-no-such-extension' => 'Không có bộ mở rộng "$1"',
@@ -2906,7 +2906,7 @@ Nếu bạn có câu hỏi nào về hệ thống phân phối bộ mở rộng 
  */
 $messages['yue'] = array(
 	'extensiondistributor' => '下載MediaWiki擴展',
-	'extdist-desc' => '發佈擴展歸檔映像嘅擴展',
+	'extensiondistributor-desc' => '發佈擴展歸檔映像嘅擴展',
 	'extdist-not-configured' => '請設定 $wgExtDistTarDir 同 $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => '已經設定咗嘅工作複本目錄唔存在！',
 	'extdist-no-such-extension' => '無呢個擴展 "$1"',
@@ -2960,7 +2960,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['zh-hans'] = array(
 	'extensiondistributor' => '下载MediaWiki扩展',
-	'extdist-desc' => '发布扩展存档映像的扩展',
+	'extensiondistributor-desc' => '发布扩展存档映像的扩展',
 	'extdist-not-configured' => '请设置 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => '已经设置的工作复本目录不存在！',
 	'extdist-no-such-extension' => '没有这个扩展 "$1"',
@@ -3013,7 +3013,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
  */
 $messages['zh-hant'] = array(
 	'extensiondistributor' => '下載MediaWiki擴展',
-	'extdist-desc' => '發佈擴展存檔映像的擴展',
+	'extensiondistributor-desc' => '發佈擴展存檔映像的擴展',
 	'extdist-not-configured' => '請設定 $wgExtDistTarDir 和 $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => '已經設定的工作複本目錄不存在！',
 	'extdist-no-such-extension' => '沒有這個擴展 "$1"',

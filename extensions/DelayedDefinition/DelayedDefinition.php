@@ -19,7 +19,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version'        => '0.5.0',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:DelayedDefinition',
 	'author'         => 'Robert Rohde',
-	'descriptionmsg' => 'delaydef-desc',
+	'descriptionmsg' => 'delayeddefinition-desc',
 );
 $dir = dirname( __FILE__ );
 $wgAutoloadClasses['ExtDelayedDefinition'] = $dir . '/DelayedDefinition_body.php';

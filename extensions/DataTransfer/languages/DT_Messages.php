@@ -11,7 +11,7 @@ $messages = array();
  * @author Yaron Koren
  */
 $messages['en'] = array(
-	'dt-desc'                     => 'Allows for importing and exporting data contained in template calls',
+	'datatransfer-desc'           => 'Allows for importing and exporting data contained in template calls',
 	'viewxml'                     => 'View XML',
 	'dt_viewxml_docu'             => 'Please select among the following categories and namespaces to view in XML format.',
 	'dt_viewxml_categories'       => 'Categories',
@@ -46,7 +46,7 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'dt-desc' => 'Extension description displayed on [[Special:Version]].',
+	'datatransfer-desc' => 'Extension description displayed on [[Special:Version]].',
 	'dt_viewxml_categories' => '{{Identical|Categories}}',
 	'dt_viewxml_namespaces' => '{{Identical|Namespaces}}',
 	'dt_xml_namespace' => '{{Identical|Namespace}}
@@ -96,7 +96,7 @@ $messages['rtm'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'dt-desc' => 'Maak die laai en ontlaai van gestruktureerde gegewens in sjabloonaanroepe moontlik',
+	'datatransfer-desc' => 'Maak die laai en ontlaai van gestruktureerde gegewens in sjabloonaanroepe moontlik',
 	'viewxml' => 'Sien XML',
 	'dt_viewxml_docu' => 'Kies een van die volgende kategorieë en naamruimtes om in XML-formaat te sien.',
 	'dt_viewxml_categories' => 'Ketagorieë',
@@ -148,7 +148,7 @@ $messages['an'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'dt-desc' => 'يسمح باستيراد وتصدير بيانات محتواة في استدعاءات قالب',
+	'datatransfer-desc' => 'يسمح باستيراد وتصدير بيانات محتواة في استدعاءات قالب',
 	'viewxml' => 'عرض XML',
 	'dt_viewxml_docu' => 'من فضلك اختر من بين التصنيفات والنطاقات التالية للعرض في صيغة XML.',
 	'dt_viewxml_categories' => 'تصنيفات',
@@ -187,7 +187,7 @@ $messages['arn'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'dt-desc' => 'بيسمح بـ import و export للداتا اللى جوّا القالب',
+	'datatransfer-desc' => 'بيسمح بـ import و export للداتا اللى جوّا القالب',
 	'viewxml' => 'شوف XML',
 	'dt_viewxml_docu' => 'لو سمحت اختار من التصانيف و اسامى المساحات الجايه علشان العرض فى XML format.',
 	'dt_viewxml_categories' => 'تصانيف',
@@ -212,7 +212,7 @@ $messages['arz'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'dt-desc' => 'Дазваляе імпартаваць і экспартаваць зьвесткі, якія ўтрымліваюцца ў выкліках шаблёнах',
+	'datatransfer-desc' => 'Дазваляе імпартаваць і экспартаваць зьвесткі, якія ўтрымліваюцца ў выкліках шаблёнах',
 	'viewxml' => 'Паказаць XML',
 	'dt_viewxml_docu' => 'Калі ласка, выберыце што праглядаць у фармаце XML сярод наступных катэгорыяў і прастораў назваў.',
 	'dt_viewxml_categories' => 'Катэгорыі',
@@ -267,7 +267,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'dt-desc' => 'Aotreañ a ra da enporzhiañ hag ezporzhiañ roadennoù eus galvoù patromoù',
+	'datatransfer-desc' => 'Aotreañ a ra da enporzhiañ hag ezporzhiañ roadennoù eus galvoù patromoù',
 	'viewxml' => 'Gwelet XML',
 	'dt_viewxml_docu' => 'Mar plij dibabit e-barzh ar rummadoù hag an esaouennoù anv da heul evit gwelet er furmad XML.',
 	'dt_viewxml_categories' => 'Rummadoù',
@@ -297,7 +297,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'dt-desc' => 'Omogućuje uvoz i izvoz podataka koji su sadržani u pozivima šablona',
+	'datatransfer-desc' => 'Omogućuje uvoz i izvoz podataka koji su sadržani u pozivima šablona',
 	'viewxml' => 'Pregledaj XML',
 	'dt_viewxml_docu' => 'Molimo Vas odaberite unutar slijedećih kategorija i imenskih prostora za pregled u XML formatu.',
 	'dt_viewxml_categories' => 'Kategorije',
@@ -329,7 +329,7 @@ $messages['bs'] = array(
  * @author Solde
  */
 $messages['ca'] = array(
-	'dt-desc' => 'Permet importar i exportar les dades que contenen les crides de les plantilles',
+	'datatransfer-desc' => 'Permet importar i exportar les dades que contenen les crides de les plantilles',
 	'viewxml' => 'Veure XML',
 	'dt_viewxml_docu' => "Si us plau, seleccioneu d'entre les següents categories i espais de noms, per a veure-ho en format XML.",
 	'dt_viewxml_categories' => 'Categories',
@@ -357,7 +357,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'dt-desc' => 'Umožňuje import a export strukturovaných údajů v buňkách šablon.',
+	'datatransfer-desc' => 'Umožňuje import a export strukturovaných údajů v buňkách šablon.',
 );
 
 /** Danish (Dansk)
@@ -380,7 +380,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'dt-desc' => 'Ermöglicht den Export von Daten im XML-Format sowie den Import von Daten im XML- und CSV-Format.',
+	'datatransfer-desc' => 'Ermöglicht den Export von Daten im XML-Format sowie den Import von Daten im XML- und CSV-Format.',
 	'viewxml' => 'XML ansehen',
 	'dt_viewxml_docu' => 'Bitte wähle aus, welche Kategorien und Namensräume im XML-Format angezeigt werden sollen.',
 	'dt_viewxml_categories' => 'Kategorien',
@@ -417,7 +417,7 @@ $messages['de-formal'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'dt-desc' => 'Zmóžnja importěrowanje a eksportěrowanje datow w zawołanjach pśedłogow',
+	'datatransfer-desc' => 'Zmóžnja importěrowanje a eksportěrowanje datow w zawołanjach pśedłogow',
 	'viewxml' => 'XML se woglědaś',
 	'dt_viewxml_docu' => 'Pšosym wubjeŕ, kótare slědujucych kategorijow a mjenjowych rumow maju se pokazaś w formaśe XML.',
 	'dt_viewxml_categories' => 'Kategorije',
@@ -474,7 +474,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'dt-desc' => 'Permesas importadon kaj eksportadon de datumoj enhave en ŝablonaj vokoj',
+	'datatransfer-desc' => 'Permesas importadon kaj eksportadon de datumoj enhave en ŝablonaj vokoj',
 	'viewxml' => 'Rigardu XML-on',
 	'dt_viewxml_docu' => 'Bonvolu elekti inter la subaj kategorioj kaj nomspacoj por rigardi en XML-formato.',
 	'dt_viewxml_categories' => 'Kategorioj',
@@ -504,7 +504,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'dt-desc' => 'Permite importar y exportar datos contenidos en llamadas de plantilla',
+	'datatransfer-desc' => 'Permite importar y exportar datos contenidos en llamadas de plantilla',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor seleccionar entre las siguientes categorías y nombres de espacio para ver en formato XML.',
 	'dt_viewxml_categories' => 'Categorías',
@@ -572,7 +572,7 @@ $messages['eu'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'dt-desc' => 'Mahdollistaa tuoda ja viedä dataa, joka on mallinekutsuissa.',
+	'datatransfer-desc' => 'Mahdollistaa tuoda ja viedä dataa, joka on mallinekutsuissa.',
 	'viewxml' => 'Näytä XML',
 	'dt_viewxml_docu' => 'Valitse yksi seuraavista luokista ja nimiavaruuksista tarkasteltavaksi XML-muodossa.',
 	'dt_viewxml_categories' => 'Luokat',
@@ -606,7 +606,7 @@ $messages['fi'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
-	'dt-desc' => 'Permet l’import et l’export de données contenues dans des appels de modèles',
+	'datatransfer-desc' => 'Permet l’import et l’export de données contenues dans des appels de modèles',
 	'viewxml' => 'Voir XML',
 	'dt_viewxml_docu' => 'Veuillez sélectionner parmi les catégories et les espaces de noms suivants afin de visionner au format XML.',
 	'dt_viewxml_categories' => 'Catégories',
@@ -665,7 +665,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'dt-desc' => 'Permite importar e exportar datos contidos en chamadas de modelos',
+	'datatransfer-desc' => 'Permite importar e exportar datos contidos en chamadas de modelos',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor seleccione entre as seguintes categorías e espazos de nomes para ver en formato XML.',
 	'dt_viewxml_categories' => 'Categorías',
@@ -720,7 +720,7 @@ $messages['grc'] = array(
  * @author J. 'mach' wust
  */
 $messages['gsw'] = array(
-	'dt-desc' => 'Macht dr Import un dr Export vu strukturierte Date megli, wu in Ufrief vu Vorlage bruucht wäre.',
+	'datatransfer-desc' => 'Macht dr Import un dr Export vu strukturierte Date megli, wu in Ufrief vu Vorlage bruucht wäre.',
 	'viewxml' => 'XML aaluege',
 	'dt_viewxml_docu' => 'Bitte wehl uus, weli Kategorien un Namensryym im XML-Format solle aazeigt wäre.',
 	'dt_viewxml_categories' => 'Kategorie',
@@ -771,7 +771,7 @@ $messages['haw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'dt-desc' => 'אפשרות לייבוא ולייצוא נתונים מבניים הנכללים בהכללות של תבניות',
+	'datatransfer-desc' => 'אפשרות לייבוא ולייצוא נתונים מבניים הנכללים בהכללות של תבניות',
 	'viewxml' => 'הצגת XML',
 	'dt_viewxml_docu' => 'אנא בחרו את מרחבי השם והקטגוריות אותם תרצו להציג בפורמט XML.',
 	'dt_viewxml_categories' => 'קטגוריות',
@@ -801,7 +801,7 @@ $messages['he'] = array(
  * @author Kaustubh
  */
 $messages['hi'] = array(
-	'dt-desc' => 'टेम्प्लेट कॉल में उपलब्ध डाटाकी आयात-निर्यात करने की अनुमति देता हैं',
+	'datatransfer-desc' => 'टेम्प्लेट कॉल में उपलब्ध डाटाकी आयात-निर्यात करने की अनुमति देता हैं',
 	'viewxml' => 'XML देखें',
 	'dt_viewxml_docu' => 'कॄपया XML में देखने के लिये श्रेणीयाँ और नामस्थान चुनें।',
 	'dt_viewxml_categories' => 'श्रेणीयाँ',
@@ -829,7 +829,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'dt-desc' => 'Dowola importowanje a eksportowanje datow, kotrež su we wołanjach předłohow wobsahowane',
+	'datatransfer-desc' => 'Dowola importowanje a eksportowanje datow, kotrež su we wołanjach předłohow wobsahowane',
 	'viewxml' => 'XML wobhladać',
 	'dt_viewxml_docu' => 'Prošu wubjer ze slědowacych kategorijow a mjenowych rumow, zo by w XML-formaće wobhladał.',
 	'dt_viewxml_categories' => 'Kategorije',
@@ -860,7 +860,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'dt-desc' => 'Lehetővé teszi a sablonhívásokban található adatok importálását és exportálását',
+	'datatransfer-desc' => 'Lehetővé teszi a sablonhívásokban található adatok importálását és exportálását',
 	'viewxml' => 'XML megtekintése',
 	'dt_viewxml_docu' => 'Válaszd ki a kategóriák és a névterek közül azt, amelyiket meg akarod tekinteni XML formátumban.',
 	'dt_viewxml_categories' => 'Kategóriák',
@@ -890,7 +890,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'dt-desc' => 'Permitte importar e exportar datos continite in appellos a patronos',
+	'datatransfer-desc' => 'Permitte importar e exportar datos continite in appellos a patronos',
 	'viewxml' => 'Vider XML',
 	'dt_viewxml_docu' => 'Per favor selige inter le sequente categorias e spatios de nomines pro vider in formato XML.',
 	'dt_viewxml_categories' => 'Categorias',
@@ -922,7 +922,7 @@ $messages['ia'] = array(
  * @author Rex
  */
 $messages['id'] = array(
-	'dt-desc' => 'Membolehkan untuk impor dan ekspor data diisikan pada pemangilan templat',
+	'datatransfer-desc' => 'Membolehkan untuk impor dan ekspor data diisikan pada pemangilan templat',
 	'viewxml' => 'Tilik XML',
 	'dt_viewxml_docu' => 'Silakan pilih di antara kategori dan ruang nama berikut untuk melihat dalam format XML',
 	'dt_viewxml_categories' => 'Kategori',
@@ -969,7 +969,7 @@ $messages['is'] = array(
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'dt-desc' => "Permette l'importazione e l'esportazione di dati strutturati contenuti in chiamate a template",
+	'datatransfer-desc' => "Permette l'importazione e l'esportazione di dati strutturati contenuti in chiamate a template",
 	'viewxml' => 'Vedi XML',
 	'dt_viewxml_docu' => 'Selezionare tra le categorie e namespace indicati di seguito quelli da visualizzare in formato XML.',
 	'dt_viewxml_categories' => 'Categorie',
@@ -993,7 +993,7 @@ $messages['it'] = array(
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'dt-desc' => 'テンプレート呼び出しに関わるデータのインポートおよびエクスポートを可能にする',
+	'datatransfer-desc' => 'テンプレート呼び出しに関わるデータのインポートおよびエクスポートを可能にする',
 	'viewxml' => 'XML表示',
 	'dt_viewxml_docu' => 'XML形式で表示するカテゴリや名前空間を以下から選択してください。',
 	'dt_viewxml_categories' => 'カテゴリ',
@@ -1083,7 +1083,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'dt-desc' => 'Määt et müjjelesch, Date uß Schabloone ier Oproofe ze emporteere un ze exporteere.',
+	'datatransfer-desc' => 'Määt et müjjelesch, Date uß Schabloone ier Oproofe ze emporteere un ze exporteere.',
 	'viewxml' => '<i lang="en">XML</i> beloore',
 	'dt_viewxml_docu' => 'Don ußsöke, wat fö_n Saachjruppe un Appachtemangs De em <i lang="en">XML</i> Fommaat aanloore wells.',
 	'dt_viewxml_categories' => 'Saachjroppe',
@@ -1122,7 +1122,7 @@ $messages['kw'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'dt-desc' => "Erlaabt et Daten déi an Opruffer vu schabloune benotzt ginn z'importéieren an z'exportéieren",
+	'datatransfer-desc' => "Erlaabt et Daten déi an Opruffer vu schabloune benotzt ginn z'importéieren an z'exportéieren",
 	'viewxml' => 'XML weisen',
 	'dt_viewxml_docu' => 'Wielt w.e.g. ënnert dëse Kategorien an Nimmraim fir am XML-Format unzeweisen.',
 	'dt_viewxml_categories' => 'Kategorien',
@@ -1175,7 +1175,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'dt-desc' => 'Овозможува увоз и извоз на податоци содржани во повикувањата на шаблоните',
+	'datatransfer-desc' => 'Овозможува увоз и извоз на податоци содржани во повикувањата на шаблоните',
 	'viewxml' => 'Преглед на XML',
 	'dt_viewxml_docu' => 'Одберете од следиве категории и именски простори за преглед во XML формат.',
 	'dt_viewxml_categories' => 'Категории',
@@ -1229,7 +1229,7 @@ $messages['mn'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'dt-desc' => 'साचा कॉल मध्ये असणार्‍या डाटाची आयात निर्यात करण्याची परवानगी देतो',
+	'datatransfer-desc' => 'साचा कॉल मध्ये असणार्‍या डाटाची आयात निर्यात करण्याची परवानगी देतो',
 	'viewxml' => 'XML पहा',
 	'dt_viewxml_docu' => 'कॄपया XML मध्ये पाहण्यासाठी खालीलपैकी वर्ग व नामविश्वे निवडा.',
 	'dt_viewxml_categories' => 'वर्ग',
@@ -1287,7 +1287,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'dt-desc' => 'Maakt het importeren en exporteren van gestructureerde gegevens in sjabloonaanroepen mogelijk',
+	'datatransfer-desc' => 'Maakt het importeren en exporteren van gestructureerde gegevens in sjabloonaanroepen mogelijk',
 	'viewxml' => 'XML bekijken',
 	'dt_viewxml_docu' => 'Selecteer uit de volgende categorieën en naamruimten om in XML-formaat te bekijken.',
 	'dt_viewxml_categories' => 'Categorieën',
@@ -1319,7 +1319,7 @@ $messages['nl'] = array(
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'dt-desc' => 'Gjer det mogleg å importera og eksportera data i maloppkallingar',
+	'datatransfer-desc' => 'Gjer det mogleg å importera og eksportera data i maloppkallingar',
 	'viewxml' => 'Syn XML',
 	'dt_viewxml_docu' => 'Vel mellom følgjande kategoriar og namnerom for å syna dei i XML-format.',
 	'dt_viewxml_categories' => 'Kategoriar',
@@ -1350,7 +1350,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'dt-desc' => 'Gjør det mulig å importere og eksportere data som finnes i maloppkallinger',
+	'datatransfer-desc' => 'Gjør det mulig å importere og eksportere data som finnes i maloppkallinger',
 	'viewxml' => 'Se XML',
 	'dt_viewxml_docu' => 'Velg blant følgende kategorier og navnerom for å se dem i XML-format',
 	'dt_viewxml_categories' => 'Kategorier',
@@ -1380,7 +1380,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'dt-desc' => "Permet l’impòrt e l’expòrt de donadas contengudas dins d'apèls de modèls",
+	'datatransfer-desc' => "Permet l’impòrt e l’expòrt de donadas contengudas dins d'apèls de modèls",
 	'viewxml' => 'Veire XML',
 	'dt_viewxml_docu' => 'Seleccionatz demest las categorias e los espacis de nomenatges per visionar en format XML.',
 	'dt_viewxml_categories' => 'Categorias',
@@ -1431,7 +1431,7 @@ $messages['pdc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'dt-desc' => 'Pozwala na importowanie i eksportowanie danych zawartych w wywołaniach szablonu',
+	'datatransfer-desc' => 'Pozwala na importowanie i eksportowanie danych zawartych w wywołaniach szablonu',
 	'viewxml' => 'Podgląd XML',
 	'dt_viewxml_docu' => 'Wybierz, które spośród następujących kategorii i przestrzeni nazw chcesz podejrzeć w formacie XML.',
 	'dt_viewxml_categories' => 'Kategorie',
@@ -1454,7 +1454,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'dt-desc' => "A përmëtt d'amporté e esporté ij dat contnù ant le ciamà a stamp",
+	'datatransfer-desc' => "A përmëtt d'amporté e esporté ij dat contnù ant le ciamà a stamp",
 	'viewxml' => 'Varda XML',
 	'dt_viewxml_docu' => 'Për piasì selession-a an tra le categorìe sota e jë spassi nominaj për vëdde an formà XLM.',
 	'dt_viewxml_categories' => 'Categorìe',
@@ -1501,7 +1501,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'dt-desc' => 'Permite importação e exportação de dados contidos em chamadas de predefinições',
+	'datatransfer-desc' => 'Permite importação e exportação de dados contidos em chamadas de predefinições',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor, seleccione de entre as categorias e espaços nominais seguintes para ver em formato XML.',
 	'dt_viewxml_categories' => 'Categorias',
@@ -1531,7 +1531,7 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'dt-desc' => 'Permite a importação e exportação de dados contidos em chamadas de predefinições',
+	'datatransfer-desc' => 'Permite a importação e exportação de dados contidos em chamadas de predefinições',
 	'viewxml' => 'Ver XML',
 	'dt_viewxml_docu' => 'Por favor, selecione dentre as categorias e espaços nominais seguintes para ver em formato XML.',
 	'dt_viewxml_categories' => 'Categorias',
@@ -1582,7 +1582,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'dt-desc' => "Permètte de 'mbortà e esportà date strutturate ca stonne jndr'à le chiamate a le template",
+	'datatransfer-desc' => "Permètte de 'mbortà e esportà date strutturate ca stonne jndr'à le chiamate a le template",
 	'viewxml' => "Vide l'XML",
 	'dt_viewxml_docu' => "Pe piacere scacchie ìmbrà le categorije seguende e le namespace seguende pe vedè 'u formate XML.",
 	'dt_viewxml_categories' => 'Categorije',
@@ -1606,7 +1606,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'dt-desc' => 'Позволяет импортировать и экспортировать данные, содержащиеся в вызовах шаблонов',
+	'datatransfer-desc' => 'Позволяет импортировать и экспортировать данные, содержащиеся в вызовах шаблонов',
 	'viewxml' => 'Просмотр XML',
 	'dt_viewxml_docu' => 'Пожалуйста, выберите категории и пространства имён для просмотра в формате XML.',
 	'dt_viewxml_categories' => 'Категории',
@@ -1636,7 +1636,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'dt-desc' => 'Umožňuje import a export údajov obsiahnutých v bunkách šablón',
+	'datatransfer-desc' => 'Umožňuje import a export údajov obsiahnutých v bunkách šablón',
 	'viewxml' => 'Zobraziť XML',
 	'dt_viewxml_docu' => 'Prosím, vyberte ktorý spomedzi nasledovných kategórií a menných priestorov zobraziť vo formáte XML.',
 	'dt_viewxml_categories' => 'Kategórie',
@@ -1703,7 +1703,7 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'dt-desc' => 'Ferlööwet dän Import un Export fon strukturierde Doaten, do der in Aproupen un Foarloagen ferwoand wäide.',
+	'datatransfer-desc' => 'Ferlööwet dän Import un Export fon strukturierde Doaten, do der in Aproupen un Foarloagen ferwoand wäide.',
 	'viewxml' => 'XML ankiekje',
 	'dt_viewxml_docu' => 'Wääl uut, wäkke Kategorien in dät XML-Formoat anwiesd wäide schällen.',
 	'dt_viewxml_categories' => 'Kategorien',
@@ -1731,7 +1731,7 @@ $messages['su'] = array(
  * @author Per
  */
 $messages['sv'] = array(
-	'dt-desc' => 'Tillåter import och export av data som finns i mallanrop',
+	'datatransfer-desc' => 'Tillåter import och export av data som finns i mallanrop',
 	'viewxml' => 'Visa XML',
 	'dt_viewxml_docu' => 'Välj vilka av följande kategorier och namnrymder som ska visas i XML-format.',
 	'dt_viewxml_categories' => 'Kategorier',
@@ -1850,7 +1850,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'dt-desc' => 'Nagpapahintulot sa pag-aangkat at pagluluwas ng mga datong nasa loob ng mga pagtawag sa suleras',
+	'datatransfer-desc' => 'Nagpapahintulot sa pag-aangkat at pagluluwas ng mga datong nasa loob ng mga pagtawag sa suleras',
 	'viewxml' => 'Tingnan ang XML',
 	'dt_viewxml_docu' => 'Pumili po lamang mula sa sumusunod na mga kaurian at mga espasyo ng pangalan upang makita ang anyong XML.',
 	'dt_viewxml_categories' => 'Mga kaurian',
@@ -1879,7 +1879,7 @@ $messages['tl'] = array(
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'dt-desc' => 'Şablon çağrılarında içerilen verilerin içe ve dışa aktarımına izin verir',
+	'datatransfer-desc' => 'Şablon çağrılarında içerilen verilerin içe ve dışa aktarımına izin verir',
 	'viewxml' => "XML'i gör",
 	'dt_viewxml_docu' => 'Lütfen, XML formatında görüntülemek için aşağıdaki kategori ve ad alanları arasından seçin.',
 	'dt_viewxml_categories' => 'Kategoriler',
@@ -1927,7 +1927,7 @@ $messages['uk'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'dt-desc' => 'Cho phép nhập xuất dữ liệu có cấu trúc được chứa trong lời gọi bản mẫu',
+	'datatransfer-desc' => 'Cho phép nhập xuất dữ liệu có cấu trúc được chứa trong lời gọi bản mẫu',
 	'viewxml' => 'Xem XML',
 	'dt_viewxml_docu' => 'Xin hãy chọn trong những thể loại và không gian tên dưới đây để xem ở dạng XML.',
 	'dt_viewxml_categories' => 'Thể loại',
@@ -1958,7 +1958,7 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'dt-desc' => 'Dälon nüveigi e seveigi nünodas peleodüköl in samafomotilüvoks paninädöls',
+	'datatransfer-desc' => 'Dälon nüveigi e seveigi nünodas peleodüköl in samafomotilüvoks paninädöls',
 	'viewxml' => 'Logön eli XML',
 	'dt_viewxml_docu' => 'Välolös bevü klads e nemaspads foviks utosi, kelosi vilol logön fomätü XML.',
 	'dt_viewxml_categories' => 'Klads',
@@ -1985,7 +1985,7 @@ $messages['yi'] = array(
  * @author Gaoxuewei
  */
 $messages['zh-hans'] = array(
-	'dt-desc' => '允许根据模板的要求导入导出结构化的数据',
+	'datatransfer-desc' => '允许根据模板的要求导入导出结构化的数据',
 	'viewxml' => '查看XML',
 	'dt_viewxml_docu' => '请在下列分类、名称空间中选择，以使用XML格式查看。',
 	'dt_viewxml_categories' => '分类',
@@ -2003,7 +2003,7 @@ $messages['zh-hans'] = array(
  * @author Liangent
  */
 $messages['zh-hant'] = array(
-	'dt-desc' => '允許根據模板的要求導入導出結構化的數據',
+	'datatransfer-desc' => '允許根據模板的要求導入導出結構化的數據',
 	'viewxml' => '查看XML',
 	'dt_viewxml_docu' => '請在下列分類、名稱空間中選擇，以使用XML格式查看。',
 	'dt_viewxml_categories' => '分類',
@@ -2021,7 +2021,7 @@ $messages['zh-hant'] = array(
  * @author Roc michael
  */
 $messages['zh-tw'] = array(
-	'dt-desc' => '允許匯入及匯出引用樣板(template calls)的結構性資料',
+	'datatransfer-desc' => '允許匯入及匯出引用樣板(template calls)的結構性資料',
 	'viewxml' => '查看 XML',
 	'dt_viewxml_docu' => '請選取以下的分類及名字空間以查看其XML格式的資料',
 	'dt_viewxml_categories' => '分類',
