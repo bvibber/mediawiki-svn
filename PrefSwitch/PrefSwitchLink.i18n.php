@@ -314,3 +314,11 @@ $messages['tr'] = array(
 	'tooltip-pt-prefswitch-link' => 'Yeni özellikleri dene',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'prefswitch-link' => 'Mới!',
+	'tooltip-pt-prefswitch-link' => 'Hãy thử các tính năng mới',
+);
+

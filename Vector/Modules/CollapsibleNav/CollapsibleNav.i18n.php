@@ -259,3 +259,10 @@ $messages['tr'] = array(
 	'vector-collapsiblenav-preference' => 'Daraltılabilir sol dolaşım menüsünü etkinleştir',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
+);
+
