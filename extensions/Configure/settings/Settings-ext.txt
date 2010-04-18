@@ -653,7 +653,6 @@ Redirect
 url = http://www.mediawiki.org/wiki/Extension:Redirect
 
 Renameuser
-file = SpecialRenameuser.php
 url = http://www.mediawiki.org/wiki/Extension:Renameuser
 
 ReplaceSet
