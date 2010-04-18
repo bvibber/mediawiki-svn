@@ -35,7 +35,7 @@ $messages = array();
  * @author Siebrand Mazeland
  */
 $messages['en'] = array(
-	'whitelist-desc' => 'Edit the access permissions of restricted users',
+	'whitelistedit-desc' => 'Edit the access permissions of restricted users',
 	'whitelistedit' => 'White list access editor',
 	'whitelist' => 'White list pages',
 	'mywhitelistpages' => 'My pages',
@@ -104,7 +104,7 @@ This page is only applicable to restricted users",
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'whitelist-desc' => '{{desc}}',
+	'whitelistedit-desc' => '{{desc}}',
 	'mywhitelistpages' => '{{Identical|My pages}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
 	'whitelisttablemodifynone' => '{{Identical|None}}',
@@ -201,7 +201,7 @@ $messages['an'] = array(
  * @author Ouda
  */
 $messages['ar'] = array(
-	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
+	'whitelistedit-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
 	'whitelistedit' => 'محرر وصول القائمة البيضاء',
 	'whitelist' => 'صفحات القائمة البيضاء',
 	'mywhitelistpages' => 'صفحاتي',
@@ -281,7 +281,7 @@ $messages['arc'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'whitelist-desc' => 'عدل سماحات الوصول لليوزرز المحددين',
+	'whitelistedit-desc' => 'عدل سماحات الوصول لليوزرز المحددين',
 	'whitelistedit' => 'محرر وصول القائمة البيضاء',
 	'whitelist' => 'صفحات القائمة البيضاء',
 	'mywhitelistpages' => 'صفحاتي',
@@ -351,7 +351,7 @@ $messages['ay'] = array(
  * @author Александр Сигачёв
  */
 $messages['be-tarask'] = array(
-	'whitelist-desc' => 'Рэдагаваць правы доступу ўдзельнікаў з абмежаваньнямі',
+	'whitelistedit-desc' => 'Рэдагаваць правы доступу ўдзельнікаў з абмежаваньнямі',
 	'whitelistedit' => 'Рэдактар сьпісу агульнадаступных старонак',
 	'whitelist' => 'Агульнадаступныя старонкі',
 	'mywhitelistpages' => 'Мае старонкі',
@@ -456,7 +456,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'whitelist-desc' => 'Kemmañ a ra aotreoù moned an implijerien ganto gwirioù bevennet',
+	'whitelistedit-desc' => 'Kemmañ a ra aotreoù moned an implijerien ganto gwirioù bevennet',
 	'whitelistedit' => 'Aozer roll gwenn ar moned',
 	'whitelist' => 'Pajennoù rolloù gwenn',
 	'mywhitelistpages' => 'Ma fajennoù',
@@ -517,7 +517,7 @@ Ar bajenn-mañ ne dalvez nemet evit an implijerien zo bevennet o gwirioù.",
  * @author Smooth O
  */
 $messages['bs'] = array(
-	'whitelist-desc' => 'Uređivanje dopuštenja pristupa za ograničene korisnike',
+	'whitelistedit-desc' => 'Uređivanje dopuštenja pristupa za ograničene korisnike',
 	'whitelistedit' => 'Uređivač pristupa dopuštenom spisku',
 	'whitelist' => 'Spisak bijelih stranica',
 	'mywhitelistpages' => 'Moje stranice',
@@ -606,7 +606,7 @@ $messages['ch'] = array(
  * @author رزگار
  */
 $messages['ckb-arab'] = array(
-	'whitelist-desc' => 'دەستکاری‌کردنی ڕێگەدان بۆ دەست‌پێ‌گەیشتنی بەکارهێنەرانی سنووردار کراو',
+	'whitelistedit-desc' => 'دەستکاری‌کردنی ڕێگەدان بۆ دەست‌پێ‌گەیشتنی بەکارهێنەرانی سنووردار کراو',
 	'mywhitelistpages' => 'پەڕەکانی من',
 	'whitelisttablemodify' => 'پێداچوونەوە',
 	'whitelisttablemodifyall' => 'ھەموو',
@@ -637,7 +637,7 @@ $messages['ckb-arab'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'whitelist-desc' => 'Upravit oprávnění přístupu uživatelů',
+	'whitelistedit-desc' => 'Upravit oprávnění přístupu uživatelů',
 	'whitelistedit' => 'Editor bílé listiny přístupu',
 	'whitelist' => 'Dát stránky na bílou listinu',
 	'mywhitelistpages' => 'Moje stránky',
@@ -723,7 +723,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'whitelist-desc' => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
+	'whitelistedit-desc' => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
 	'whitelistedit' => 'Whitelist-Zugriff-Editor',
 	'whitelist' => 'Whitelist-Seiten',
 	'mywhitelistpages' => 'Meine Seiten',
@@ -798,7 +798,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'whitelist-desc' => 'Pśistupne pšawa wobgranicowanych wužywarjow wobźěłaś',
+	'whitelistedit-desc' => 'Pśistupne pšawa wobgranicowanych wužywarjow wobźěłaś',
 	'whitelistedit' => 'Editor zapśimka pśez běłu lisćinu',
 	'whitelist' => 'Boki běłeje lisćiny',
 	'mywhitelistpages' => 'Móje boki',
@@ -868,7 +868,7 @@ $messages['ee'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'whitelist-desc' => 'Αλλαγή των αδειών πρόσβασης των περιορισμένων χρηστών',
+	'whitelistedit-desc' => 'Αλλαγή των αδειών πρόσβασης των περιορισμένων χρηστών',
 	'whitelistedit' => 'Επεξεργαστής πρόσβασης της άσπρης λίστας',
 	'whitelist' => 'Σελίδες άσπρης λίστας',
 	'mywhitelistpages' => 'Οι Σελίδες μου',
@@ -928,7 +928,7 @@ $2',
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'whitelist-desc' => 'Redakti la atingo-permesojn de limigitaj uzantoj',
+	'whitelistedit-desc' => 'Redakti la atingo-permesojn de limigitaj uzantoj',
 	'whitelistedit' => 'Redaktilo por atingo per blankalisto',
 	'whitelist' => 'Blanklisto Paĝoj',
 	'mywhitelistpages' => 'Miaj Paĝoj',
@@ -979,7 +979,7 @@ $2',
  * @author Sanbec
  */
 $messages['es'] = array(
-	'whitelist-desc' => 'Editar los permisos de acceso de usuarios restringidos',
+	'whitelistedit-desc' => 'Editar los permisos de acceso de usuarios restringidos',
 	'whitelistedit' => 'Editor de acceso de la lista blanca',
 	'whitelist' => 'Páginas de la lista blanca',
 	'mywhitelistpages' => 'Mis páginas',
@@ -1089,7 +1089,7 @@ $messages['eu'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'whitelist-desc' => 'Muokkaa rajoituksenalaisten käyttäjien käyttöoikeuksia',
+	'whitelistedit-desc' => 'Muokkaa rajoituksenalaisten käyttäjien käyttöoikeuksia',
 	'whitelist' => 'Sallitut sivut',
 	'mywhitelistpages' => 'Omat sivu',
 	'whitelisttablemodify' => 'Muokkaa',
@@ -1135,7 +1135,7 @@ Tätä sivua sovelletaan ainoastaan rajoituksenalaisiin käyttäjiin",
  * @author Zetud
  */
 $messages['fr'] = array(
-	'whitelist-desc' => 'Modifie les permissions d’accès des utilisateurs à pouvoirs restreints',
+	'whitelistedit-desc' => 'Modifie les permissions d’accès des utilisateurs à pouvoirs restreints',
 	'whitelistedit' => 'Modificateur de la liste blanche des accès',
 	'whitelist' => 'Pages de listes blanches',
 	'mywhitelistpages' => 'Mes pages',
@@ -1231,7 +1231,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'whitelist-desc' => 'Editar os permisos de acceso dos usuarios restrinxidos',
+	'whitelistedit-desc' => 'Editar os permisos de acceso dos usuarios restrinxidos',
 	'whitelistedit' => 'Editor de acceso da lista branca (whitelist)',
 	'whitelist' => 'Páxinas da lista branca',
 	'mywhitelistpages' => 'As miñas páxinas',
@@ -1316,7 +1316,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'whitelist-desc' => 'Zuegriffsrächt vu bschränkte Benutzer bearbeite',
+	'whitelistedit-desc' => 'Zuegriffsrächt vu bschränkte Benutzer bearbeite',
 	'whitelistedit' => 'Wyssi Lischt-Zuegriff-Editor',
 	'whitelist' => 'Wyssi Lischt-Syte',
 	'mywhitelistpages' => 'Myy Syte',
@@ -1395,7 +1395,7 @@ $messages['haw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'whitelist-desc' => 'עריכת הרשאות הגישה של משתמשים מוגבלים',
+	'whitelistedit-desc' => 'עריכת הרשאות הגישה של משתמשים מוגבלים',
 	'whitelistedit' => 'עורך הגישה לרשימה הלבנה',
 	'whitelist' => 'דפי הרשימה הלבנה',
 	'mywhitelistpages' => 'הדפים שלי',
@@ -1484,7 +1484,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'whitelist-desc' => 'Přistupne prawa wobmjezowanych wužiwarjow wobdźěłać',
+	'whitelistedit-desc' => 'Přistupne prawa wobmjezowanych wužiwarjow wobdźěłać',
 	'whitelistedit' => 'Přistupny editor běłeje lisćiny',
 	'whitelist' => 'Strony běłeje lisćiny',
 	'mywhitelistpages' => 'Moje strony',
@@ -1545,7 +1545,7 @@ Tuta strona je jenož na wobmjezowanych wužiwarjow nałožujomna.",
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'whitelist-desc' => 'Korlátozott felhasználók hozzáférési jogosultságainak szerkesztése',
+	'whitelistedit-desc' => 'Korlátozott felhasználók hozzáférési jogosultságainak szerkesztése',
 	'whitelistedit' => 'Engedélylista-hozzáférés szerkesztő',
 	'whitelist' => 'Engedélylista-lapok',
 	'mywhitelistpages' => 'Lapjaim',
@@ -1605,7 +1605,7 @@ Ez a lap csak korlátozott felhasználókra vonatkozik",
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'whitelist-desc' => 'Modificar le permissiones de accesso de usatores restringite',
+	'whitelistedit-desc' => 'Modificar le permissiones de accesso de usatores restringite',
 	'whitelistedit' => 'Editor de accesso al lista blanc',
 	'whitelist' => 'Adder paginas al lista blanc',
 	'mywhitelistpages' => 'Mi paginas',
@@ -1669,7 +1669,7 @@ Iste pagina es solmente applicabile al usatores restringite",
  * @author Rex
  */
 $messages['id'] = array(
-	'whitelist-desc' => 'Sunting hak akses untuk pengguna terbatas',
+	'whitelistedit-desc' => 'Sunting hak akses untuk pengguna terbatas',
 	'whitelistedit' => 'Penyunting hak akses daftar putih',
 	'whitelist' => 'Halaman daftar putih',
 	'mywhitelistpages' => 'Halaman saya',
@@ -1792,7 +1792,7 @@ $2",
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'whitelist-desc' => '制限付利用者のアクセス権限を編集する',
+	'whitelistedit-desc' => '制限付利用者のアクセス権限を編集する',
 	'whitelistedit' => 'ホワイトリストの編集',
 	'whitelist' => 'ホワイトリスト掲載ページ',
 	'mywhitelistpages' => '自分のページ',
@@ -1851,7 +1851,7 @@ $2',
  * @author Pras
  */
 $messages['jv'] = array(
-	'whitelist-desc' => "Sunting idin aksès saka panganggo kawates (''restricted'')",
+	'whitelistedit-desc' => "Sunting idin aksès saka panganggo kawates (''restricted'')",
 	'whitelistedit' => 'Editor Aksès Daftar Putih',
 	'whitelist' => 'Kaca-kaca Daftar Putih',
 	'mywhitelistpages' => 'Kaca-kacaku',
@@ -1920,7 +1920,7 @@ $messages['ka'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'whitelist-desc' => 'កែប្រែ​សិទ្ធិចូលដំណើរការ​នៃ​អ្នកប្រើប្រាស់​ដែល​ត្រូវ​បាន​កម្រិត​។',
+	'whitelistedit-desc' => 'កែប្រែ​សិទ្ធិចូលដំណើរការ​នៃ​អ្នកប្រើប្រាស់​ដែល​ត្រូវ​បាន​កម្រិត​។',
 	'whitelist' => 'ទំព័រ​បញ្ជី​ស',
 	'mywhitelistpages' => 'ទំព័ររបស់ខ្ញុំ',
 	'whitelistfor' => '<center>ព័ត៌មាន​បច្ចុប្បន្ន​សម្រាប់ <b>$1</b></center>',
@@ -1999,7 +1999,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'whitelist-desc' => 'De Zohjangs-Rääschte fun beschrängkte Metmaachere Ändere.',
+	'whitelistedit-desc' => 'De Zohjangs-Rääschte fun beschrängkte Metmaachere Ändere.',
 	'whitelistedit' => '<i lang="en">whitelist</i> Zohjang Ändere',
 	'whitelist' => '<i lang="en">whitelist</i> Sigge',
 	'mywhitelistpages' => 'Ming Sigge',
@@ -2060,7 +2060,7 @@ Di Sigg hee is nor för beschränkte Metmaacher ze bruche.",
  * @author Robby
  */
 $messages['lb'] = array(
-	'whitelist-desc' => "Ännert d'Rechter vu Benotzer mat limitéierte Rechter",
+	'whitelistedit-desc' => "Ännert d'Rechter vu Benotzer mat limitéierte Rechter",
 	'whitelist' => "''Whiteliste''-Säiten",
 	'mywhitelistpages' => 'Meng Säiten',
 	'whitelistfor' => '<center>Aktuell Informatioun fir <b>$1</b></center>',
@@ -2130,7 +2130,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'whitelist-desc' => 'Менување на дозволите за пристап на ограничени корисници',
+	'whitelistedit-desc' => 'Менување на дозволите за пристап на ограничени корисници',
 	'whitelistedit' => 'Уредник на пристап на белата листа',
 	'whitelist' => 'Страници на белата листа',
 	'mywhitelistpages' => 'Мои страници',
@@ -2315,7 +2315,7 @@ $messages['nds-nl'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'whitelist-desc' => 'Toegangsrechten voor gebruikers met beperkte rechten bewerken',
+	'whitelistedit-desc' => 'Toegangsrechten voor gebruikers met beperkte rechten bewerken',
 	'whitelistedit' => 'Toegang via witte lijst',
 	'whitelist' => "Pagina's op de witte lijst",
 	'mywhitelistpages' => "Mijn pagina's",
@@ -2377,7 +2377,7 @@ Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'whitelist-desc' => 'Endring tilgangsrettar for avgrensa brukarar',
+	'whitelistedit-desc' => 'Endring tilgangsrettar for avgrensa brukarar',
 	'whitelistedit' => 'Endring av rettar for kvitliste',
 	'whitelist' => 'Kvitelista sider',
 	'mywhitelistpages' => 'Mine sider',
@@ -2438,7 +2438,7 @@ Denne sida kan berre nyttast på avgrensa brukarar.",
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'whitelist-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
+	'whitelistedit-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
 	'whitelistedit' => 'Rettighetsredigering for hvitliste',
 	'whitelist' => 'Hvitelistede sider',
 	'mywhitelistpages' => 'Mine sider',
@@ -2497,7 +2497,7 @@ Denne siden kan kun brukes på begrensede brukere.",
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'whitelist-desc' => 'Modifica las permissions d’accès dels utilizaires de poders restrenches',
+	'whitelistedit-desc' => 'Modifica las permissions d’accès dels utilizaires de poders restrenches',
 	'whitelistedit' => 'Editor de la lista blanca dels accèsses',
 	'whitelist' => 'Paginas de listas blancas',
 	'mywhitelistpages' => 'Mas paginas',
@@ -2595,7 +2595,7 @@ $messages['pdc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'whitelist-desc' => 'Umożliwianie dostępu użytkownikom z ograniczeniami',
+	'whitelistedit-desc' => 'Umożliwianie dostępu użytkownikom z ograniczeniami',
 	'whitelistedit' => 'Edytor listy stron ogólnie dostępnych',
 	'whitelist' => 'Strony z listy ogólnie dostępnych',
 	'mywhitelistpages' => 'Strony użytkownika',
@@ -2656,7 +2656,7 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'whitelist-desc' => "Modìfica ij përmess d'intrada dj'utent a fonsionalità limità",
+	'whitelistedit-desc' => "Modìfica ij përmess d'intrada dj'utent a fonsionalità limità",
 	'whitelistedit' => "Modificator dla lista bianca dj'intrade",
 	'whitelist' => 'Pàgine dle liste bianche',
 	'mywhitelistpages' => 'Mie pàgine',
@@ -2738,7 +2738,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'whitelist-desc' => 'Edite as permissões de acesso de utilizadores restritos',
+	'whitelistedit-desc' => 'Edite as permissões de acesso de utilizadores restritos',
 	'whitelistedit' => 'Editor de acessos da lista branca',
 	'whitelist' => 'Páginas na lista branca',
 	'mywhitelistpages' => 'Minhas Páginas',
@@ -2799,7 +2799,7 @@ Esta página só se aplica a utilizadores restritos.",
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
-	'whitelist-desc' => 'Edita as permissões de acesso de usuários restritos',
+	'whitelistedit-desc' => 'Edita as permissões de acesso de usuários restritos',
 	'whitelistedit' => 'Editor de acessos da lista branca',
 	'whitelist' => 'Páginas na lista branca',
 	'mywhitelistpages' => 'Minhas páginas',
@@ -2937,7 +2937,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'whitelist-desc' => 'Редактировать права доступа участников',
+	'whitelistedit-desc' => 'Редактировать права доступа участников',
 	'whitelistedit' => 'Редактор доступа белого списка',
 	'whitelist' => 'Страницы белого списка',
 	'mywhitelistpages' => 'Мои страницы',
@@ -2997,7 +2997,7 @@ $2',
  * @author Calcey
  */
 $messages['si'] = array(
-	'whitelist-desc' => 'සීමා කරනු ලැබ ඇති පරිශීලකයන්ගේ ප්‍රවේශ අවසරය සංස්කරණය කරන්න',
+	'whitelistedit-desc' => 'සීමා කරනු ලැබ ඇති පරිශීලකයන්ගේ ප්‍රවේශ අවසරය සංස්කරණය කරන්න',
 	'whitelistedit' => 'ධවල ලැයිස්තු ප්‍රවේශ සංස්කාරක',
 	'whitelist' => 'ධවල ලැයිස්තු පිටු',
 	'mywhitelistpages' => 'මගේ පිටු',
@@ -3057,7 +3057,7 @@ $2',
  * @author Helix84
  */
 $messages['sk'] = array(
-	'whitelist-desc' => 'Upraviť oprávnenia prístupu používateľov',
+	'whitelistedit-desc' => 'Upraviť oprávnenia prístupu používateľov',
 	'whitelistedit' => 'Editor bielej listiny prístupu',
 	'whitelist' => 'Dať stránky na bielu listinu',
 	'mywhitelistpages' => 'Moje stránky',
@@ -3178,7 +3178,7 @@ $2',
  * @author Pyt
  */
 $messages['stq'] = array(
-	'whitelist-desc' => 'Tougriepsgjuchte fon betuunde Benutsere beoarbaidje',
+	'whitelistedit-desc' => 'Tougriepsgjuchte fon betuunde Benutsere beoarbaidje',
 	'whitelistedit' => 'Whitelist-Tougriep-Editor',
 	'whitelist' => 'Whitelist-Sieden',
 	'mywhitelistpages' => 'Mien Sieden',
@@ -3247,7 +3247,7 @@ $messages['su'] = array(
  * @author Sannab
  */
 $messages['sv'] = array(
-	'whitelist-desc' => 'Redigera åtkomsträttigheter för begränsade användare',
+	'whitelistedit-desc' => 'Redigera åtkomsträttigheter för begränsade användare',
 	'whitelistedit' => 'Rättighetsredigerare för vitlista',
 	'whitelist' => 'Vitlistade sidor',
 	'mywhitelistpages' => 'Mina sidor',
@@ -3309,7 +3309,7 @@ Denna sida är endast tillämpbar på begränsade användare",
  * @author Pimke
  */
 $messages['szl'] = array(
-	'whitelist-desc' => 'Dozwalańy na dostymp użytkowńikům s uograńiczyńami',
+	'whitelistedit-desc' => 'Dozwalańy na dostymp użytkowńikům s uograńiczyńami',
 	'whitelistedit' => 'Edytor listy zajtůw uogůlńy dostympnych',
 	'whitelist' => 'Zajty s listy uogůlńy dostympnych',
 	'mywhitelistpages' => 'Zajty użytkowńika',
@@ -3377,7 +3377,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'whitelist-desc' => 'నియంత్రిత వాడుకరుల అందుబాటు అనుమతులను మార్చండి',
+	'whitelistedit-desc' => 'నియంత్రిత వాడుకరుల అందుబాటు అనుమతులను మార్చండి',
 	'mywhitelistpages' => 'నా పేజీలు',
 	'whitelistfor' => '<center><b>$1</b> కొరకు ప్రస్తుత సమాచారం</center>',
 	'whitelisttablemodify' => 'మార్చు',
@@ -3425,7 +3425,7 @@ $messages['tet'] = array(
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
-	'whitelist-desc' => 'Иҷозаҳои дастрасии корбарони маҳдудшударо вироиш кунед',
+	'whitelistedit-desc' => 'Иҷозаҳои дастрасии корбарони маҳдудшударо вироиш кунед',
 	'whitelist' => 'Саҳифаҳои Феҳристи сафед',
 	'mywhitelistpages' => 'Саҳифаҳои Ман',
 	'whitelistfor' => '<center>Иттилооти кунунӣ барои <b>$1</b></center>',
@@ -3458,7 +3458,7 @@ $2',
  * @author Liangent
  */
 $messages['tg-latn'] = array(
-	'whitelist-desc' => 'Içozahoi dastrasiji korbaroni mahdudşudaro viroiş kuned',
+	'whitelistedit-desc' => 'Içozahoi dastrasiji korbaroni mahdudşudaro viroiş kuned',
 	'whitelist' => 'Sahifahoi Fehristi safed',
 	'mywhitelistpages' => 'Sahifahoi Man',
 	'whitelistfor' => '<center>Ittilooti kununī baroi <b>$1</b></center>',
@@ -3531,7 +3531,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'whitelist-desc' => 'Baguhin ang mga pahintulot na pangakseso ng pinagbabawalang mga tagagamit',
+	'whitelistedit-desc' => 'Baguhin ang mga pahintulot na pangakseso ng pinagbabawalang mga tagagamit',
 	'whitelistedit' => 'Patnugot na may akseso sa "puting talaan"',
 	'whitelist' => 'Mga pahina ng "puting talaan"',
 	'mywhitelistpages' => 'Mga pahina ko',
@@ -3623,7 +3623,7 @@ $messages['tr'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'whitelist-desc' => 'Редагування прав доступу користувачів',
+	'whitelistedit-desc' => 'Редагування прав доступу користувачів',
 	'whitelistedit' => 'Редактор доступу до білого списку',
 	'whitelist' => 'Сторінки білого списку',
 	'mywhitelistpages' => 'Мої сторінки',
@@ -3831,7 +3831,7 @@ $2',
  * @author Roc michael
  */
 $messages['zh-tw'] = array(
-	'whitelist-desc' => '設定受限制用戶的存取權',
+	'whitelistedit-desc' => '設定受限制用戶的存取權',
 	'whitelistedit' => '授權名單內的編輯用戶',
 	'whitelist' => '授權清單頁面',
 	'mywhitelistpages' => '我的頁面',
