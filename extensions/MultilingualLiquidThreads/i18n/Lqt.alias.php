@@ -18,30 +18,42 @@ $aliases['en'] = array(
 	'MergeThread' => array( 'MergeThread' ),
 );
 
-/** Arabic (العربية)
- * @author Meno25
- */
+/** Arabic (العربية) */
 $aliases['ar'] = array(
 	'DeleteThread' => array( 'حذف_الخيط' ),
+	'HotTopics' => array( 'مواضيع_ساخنة' ),
 	'MoveThread' => array( 'نقل_الخيط' ),
 	'NewMessages' => array( 'رسائل_جديدة' ),
 	'SplitThread' => array( 'فصل_الخيط' ),
+	'MergeThread' => array( 'دمج_الخيط' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى)
- * @author Meno25
- */
+/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
 	'DeleteThread' => array( 'حذف_مجموعة_الرسائل' ),
 	'MoveThread' => array( 'نقل_مجموعة_الرسائل' ),
 	'NewMessages' => array( 'رسائل_جديدة' ),
+	'SplitThread' => array( 'فصل_الخيط' ),
+	'MergeThread' => array( 'دمج_الخيط' ),
 );
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'DeleteThread' => array( 'ObrisiTok' ),
+	'HotTopics' => array( 'VruceTeme' ),
 	'MoveThread' => array( 'PremjestiTok' ),
 	'NewMessages' => array( 'NovePoruke' ),
+	'SplitThread' => array( 'RazdvojiTok' ),
+	'MergeThread' => array( 'SpojiTok' ),
+);
+
+/** Czech (Česky) */
+$aliases['cs'] = array(
+	'DeleteThread' => array( 'Smazat vlákno', 'Smazat vlakno' ),
+	'MoveThread' => array( 'Přesunout vlákno', 'Presunout vlakno' ),
+	'NewMessages' => array( 'Nové zprávy', 'Nove zpravy' ),
+	'SplitThread' => array( 'Oddělit vlákno', 'Oddelit vlakno' ),
+	'MergeThread' => array( 'Sloučit vlákno', 'Sloucit vlakno' ),
 );
 
 /** German (Deutsch) */
@@ -65,6 +77,15 @@ $aliases['el'] = array(
 	'NewMessages' => array( 'ΝέαΜηνύματα' ),
 );
 
+/** Estonian (Eesti) */
+$aliases['et'] = array(
+	'DeleteThread' => array( 'Lõime_kustutamine' ),
+	'MoveThread' => array( 'Lõime_teisaldamine' ),
+	'NewMessages' => array( 'Uued_sõnumid' ),
+	'SplitThread' => array( 'Lõime_jagamine' ),
+	'MergeThread' => array( 'Lõime_liitmine' ),
+);
+
 /** Basque (Euskara) */
 $aliases['eu'] = array(
 	'NewMessages' => array( 'MezuBerriak' ),
@@ -73,8 +94,11 @@ $aliases['eu'] = array(
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'DeleteThread' => array( 'حذف_رشته' ),
+	'HotTopics' => array( 'عناوین_داغ' ),
 	'MoveThread' => array( 'انتقال_رشته' ),
 	'NewMessages' => array( 'پیام‌های_جدید' ),
+	'SplitThread' => array( 'گسستن_رشته' ),
+	'MergeThread' => array( 'ادغام_رشته' ),
 );
 
 /** Finnish (Suomi) */
@@ -107,9 +131,7 @@ $aliases['gsw'] = array(
 	'NewMessages' => array( 'Neji Nochrichte' ),
 );
 
-/** Hebrew (עברית)
- * @author Rotem Liss
- */
+/** Hebrew (עברית) */
 $aliases['he'] = array(
 	'DeleteThread' => array( 'מחיקת_שרשור' ),
 	'MoveThread' => array( 'העברת_שרשור' ),
@@ -132,31 +154,40 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'DeleteThread' => array( 'Deler discussion' ),
-	'MoveThread' => array( 'Displaciar discussion' ),
+	'DeleteThread' => array( 'Deler filo' ),
+	'HotTopics' => array( 'Topicos active' ),
+	'MoveThread' => array( 'Displaciar filo' ),
 	'NewMessages' => array( 'Nove messages' ),
+	'SplitThread' => array( 'Separar filo' ),
+	'MergeThread' => array( 'Fusionar filo' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'DeleteThread' => array( 'Hapus topik', 'HapusTopik' ),
-	'MoveThread' => array( 'Pindahkan topik', 'PindahkanTopik' ),
+	'DeleteThread' => array( 'Hapus topik', 'HapusTopik', 'Hapus utas', 'HapusUtas' ),
+	'HotTopics' => array( 'Topik hangat', 'TopikHangat' ),
+	'MoveThread' => array( 'Pindahkan topik', 'PindahkanTopik', 'Pindahkan utas', 'PindahkanUtas' ),
 	'NewMessages' => array( 'Pesan baru', 'PesanBaru' ),
+	'SplitThread' => array( 'Pisah topik', 'PisahTopik', 'Pisah utas', 'PisahUtas' ),
+	'MergeThread' => array( 'Gabung topik', 'GabungTopik', 'Gabung utas', 'GabungUtas' ),
 );
 
 /** Italian (Italiano) */
 $aliases['it'] = array(
-	'DeleteThread' => array( 'CancellaThread' ),
-	'MoveThread' => array( 'SpostaThread' ),
+	'DeleteThread' => array( 'CancellaDiscussione' ),
+	'MoveThread' => array( 'SpostaDiscussione' ),
 	'NewMessages' => array( 'NuoviMessaggi' ),
+	'SplitThread' => array( 'DividiDiscussione' ),
 );
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'DeleteThread' => array( 'スレッド削除' ),
+	'HotTopics' => array( 'ホットな話題' ),
 	'MoveThread' => array( 'スレッド移動' ),
 	'NewMessages' => array( '新規投稿', '新しい伝言' ),
 	'SplitThread' => array( 'スレッド分割' ),
+	'MergeThread' => array( 'スレッド統合' ),
 );
 
 /** Georgian (ქართული) */
@@ -169,7 +200,12 @@ $aliases['km'] = array(
 	'NewMessages' => array( 'សារថ្មីៗ' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'NewMessages' => array( '새 메시지' ),
+);
+
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'DeleteThread' => array( 'JeschprääschßfäddemFottschmiiße' ),
 	'MoveThread' => array( 'JeschprääschßfäddemÖmträke' ),
@@ -177,7 +213,7 @@ $aliases['ksh'] = array(
 	'SplitThread' => array( 'JeschprääschßfäddemOpdeile' ),
 );
 
-/** Cornish (Kernowek) */
+/** Cornish (Kernewek) */
 $aliases['kw'] = array(
 	'NewMessages' => array( 'MessajowNowyth' ),
 );
@@ -185,9 +221,11 @@ $aliases['kw'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'DeleteThread' => array( 'Rubrik läschen' ),
+	'HotTopics' => array( 'Waarm Sujeten' ),
 	'MoveThread' => array( 'Rubrik réckelen' ),
 	'NewMessages' => array( 'Nei Messagen' ),
 	'SplitThread' => array( 'Rubrik opdeelen' ),
+	'MergeThread' => array( 'Rubrike fusionéieren' ),
 );
 
 /** Macedonian (Македонски) */
@@ -195,6 +233,23 @@ $aliases['mk'] = array(
 	'DeleteThread' => array( 'НишкаНаБришење' ),
 	'MoveThread' => array( 'НишкаНаПреместување' ),
 	'NewMessages' => array( 'НовиПораки' ),
+	'SplitThread' => array( 'РазделенаНишка' ),
+	'MergeThread' => array( 'СпоенаНишка' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'DeleteThread' => array( 'ചരട്‌ മായ്ക്കുക' ),
+	'HotTopics' => array( 'ചൂടൻവിഷയങ്ങൾ' ),
+	'MoveThread' => array( 'ചരട്‌ മാറ്റുക' ),
+	'NewMessages' => array( 'പുതുസന്ദേശങ്ങൾ' ),
+	'SplitThread' => array( 'ചരട് വിഘടിപ്പിക്കുക' ),
+	'MergeThread' => array( 'ചരട് സംയോജിപ്പിക്കുക' ),
+);
+
+/** Marathi (मराठी) */
+$aliases['mr'] = array(
+	'NewMessages' => array( 'नवीनसंदेश' ),
 );
 
 /** Maltese (Malti) */
@@ -207,14 +262,18 @@ $aliases['nds-nl'] = array(
 	'DeleteThread' => array( 'Draod_vortdoon' ),
 	'MoveThread' => array( 'Draod_verplaosen' ),
 	'NewMessages' => array( 'Nieje_berichen' ),
+	'SplitThread' => array( 'Onderwarp_splitsen' ),
+	'MergeThread' => array( 'Draod_samenvoegen' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'DeleteThread' => array( 'OnderwerpVerwijderen' ),
+	'HotTopics' => array( 'PopulaireOnderwerpen' ),
 	'MoveThread' => array( 'OnderwerpVerplaatsen' ),
 	'NewMessages' => array( 'NieuweBerichten' ),
 	'SplitThread' => array( 'OnderwerpSplitsen' ),
+	'MergeThread' => array( 'OnderwerpSamenvoegen' ),
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
@@ -227,8 +286,11 @@ $aliases['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'DeleteThread' => array( 'Slett tråd' ),
+	'HotTopics' => array( 'Aktuelle saker' ),
 	'MoveThread' => array( 'Flytt tråd' ),
 	'NewMessages' => array( 'Nye beskjeder' ),
+	'SplitThread' => array( 'Splitt tråd' ),
+	'MergeThread' => array( 'Slå sammen tråd' ),
 );
 
 /** Occitan (Occitan) */
@@ -239,6 +301,16 @@ $aliases['oc'] = array(
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'NewMessages' => array( 'نوي پيغامونه' ),
+);
+
+/** Portuguese (Português) */
+$aliases['pt'] = array(
+	'DeleteThread' => array( 'Eliminar tópico' ),
+	'HotTopics' => array( 'Tópicos populares' ),
+	'MoveThread' => array( 'Mover tópico' ),
+	'NewMessages' => array( 'Mensagens novas' ),
+	'SplitThread' => array( 'Dividir tópico' ),
+	'MergeThread' => array( 'Fundir tópico' ),
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -266,6 +338,7 @@ $aliases['sv'] = array(
 	'DeleteThread' => array( 'Radera tråd' ),
 	'MoveThread' => array( 'Flytta tråd' ),
 	'NewMessages' => array( 'Nya meddelanden' ),
+	'SplitThread' => array( 'Dela tråd' ),
 );
 
 /** Swahili (Kiswahili) */
@@ -287,17 +360,24 @@ $aliases['tl'] = array(
 
 /** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'NewMessages' => array( 'YeniMesajlar' ),
+	'DeleteThread' => array( 'BaşlıkSil' ),
+	'HotTopics' => array( 'AktifKonular' ),
+	'MoveThread' => array( 'BaşlıkTaşı' ),
+	'NewMessages' => array( 'YeniMesajlar', 'Yeniİletiler' ),
+	'SplitThread' => array( 'BaşlıkBöl' ),
+	'MergeThread' => array( 'BaşlıkBirleştir' ),
 );
 
 /** Vèneto (Vèneto) */
 $aliases['vec'] = array(
+	'DeleteThread' => array( 'ScancelaArgomento' ),
+	'MoveThread' => array( 'SpostaArgomento' ),
 	'NewMessages' => array( 'MessajiNovi' ),
+	'SplitThread' => array( 'DividiArgomento' ),
+	'MergeThread' => array( 'UnissiArgomento' ),
 );
 
-/** Chinese (中文)
- * @author PhiLiP
- */
+/** Chinese (中文) */
 $aliases['zh'] = array(
 	'DeleteThread' => array( '删除话题', '刪除話題' ),
 	'MoveThread' => array( '移动话题', '移動話題' ),
@@ -306,9 +386,7 @@ $aliases['zh'] = array(
 	'MergeThread' => array( '合并话题', '合併話題' ),
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
- * @author PhiLiP
- */
+/** Simplified Chinese (‪中文(简体)‬) */
 $aliases['zh-hans'] = array(
 	'DeleteThread' => array( '删除话题' ),
 	'MoveThread' => array( '移动话题' ),
@@ -317,13 +395,11 @@ $aliases['zh-hans'] = array(
 	'MergeThread' => array( '合并话题' ),
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
- * @author PhiLiP
- */
+/** Traditional Chinese (‪中文(繁體)‬) */
 $aliases['zh-hant'] = array(
 	'DeleteThread' => array( '刪除話題' ),
 	'MoveThread' => array( '移動話題' ),
-	'NewMessages' => array( '新訊息' ),
+	'NewMessages' => array( '新消息' ),
 	'SplitThread' => array( '分割話題' ),
 	'MergeThread' => array( '合併話題' ),
 );

@@ -79,7 +79,7 @@
 	font-weight: bold;
 }
 
-.lqt_thread_permalink_summary_edit {
+.lqt_thread_permalink_summary_actions {
 	float:        right;
 	margin-right: 1em;
 	font-weight:  normal;
@@ -207,12 +207,11 @@ body.skin-monobook li#ca-nstab-thread {
 }
 
 .lqt-thread-toolbar-edited-author {
-	font-weight: bold;
+	font-size: 80%;
 }
 
 .lqt-thread-toolbar-edited-others {
-	font-weight: bold;
-	color: #aa8800;
+	font-size: 80%;
 }
 
 .lqt-command-icon {
@@ -221,10 +220,6 @@ body.skin-monobook li#ca-nstab-thread {
 	background-position: center left;
 	background-repeat: no-repeat;
 	display: inline;
-}
-
-li.lqt-command-reply {
-	text-align: right;
 }
 
 .lqt-thread-actions-trigger {
@@ -303,51 +298,26 @@ li.lqt-command-reply {
 	padding-right: 0.5em;
 }
 
-div.lqt-post-sep {
-	padding: 0;
-	margin: 0;
-	margin-left: 1em;
-	margin-bottom: -1px;
-	background-image: url(images/break.png);
-	background-position: bottom;
-	background-repeat: repeat-x;
-	clear: both;
-	line-height: 1em;
-}
-
-.lqt-thread-first > .lqt-post-wrapper {
-	background-image: url(images/vertical-fade.png) !important;
-	background-repeat: no-repeat !important;
-	background-position: top left;
-}
-
 .lqt-thread-replies {
-	margin-left: 1em;
+	padding-left: 1em;
+	
 }
 
-.lqt-thread-topmost,
-.lqt-thread-replies {
-	background-image: url(images/edge.png);
-	background-repeat: repeat-y;
-	background-position: left;
-}
-
-.lqt-replies-finish {
-	background-image: url(images/edge.png);
-	background-position: bottom;
-	background-repeat: repeat-x;
-}
-
-.lqt-replies-finish > div {
-	background-image: url(images/corner.png);
-	background-repeat: no-repeat;
-	background-position: bottom left;
-	/* The space is caused by the use of a non-breaking space, so we need to use line-height here */
-	line-height: 1em;
+.lqt-thread-replies-interruption {
+	border-left: 0.2em solid #efefef;
 }
 
 .lqt-post-wrapper {
 	padding: 0.5em 1em;
+	padding-bottom: 1em;
+	padding-right: 1em;
+	overflow: auto;
+	border: 0.2em solid silver;
+	border-top: none;
+}
+
+.lqt-thread-topmost > .lqt-post-wrapper {
+	border-top: 0.2em solid silver;
 }
 
 .lqt-thread-info-panel {
@@ -355,13 +325,21 @@ div.lqt-post-sep {
 }
 
 .lqt-thread-toolbar-timestamp {
-	color: silver;
+	color: #778899;
 }
 
 .lqt-thread-toolbar {
-	right: 0.5em;
+	right: 1.5em;
 	position: absolute;
 	
+}
+
+.lqt-post-sep {
+	height: 0;
+}
+
+.lqt-replies-finish {
+	height: 0;
 }
 
 .lqt-command {
@@ -372,25 +350,19 @@ div.lqt-post-sep {
 	display: block;
 }
 
-.lqt-command-link a {
-	margin-left: 1em;
-	height: 2em;
-	padding-left: 26px;
-	background-image: url(icons/link.png) !important;
-	background-repeat: no-repeat;
-	background-position: left center !important;
-	line-height: 2em;
-	overflow: hidden;
-}
 .lqt-command-reply a {
-	margin-left: 1em;
-	height: 2em;
-	background-image: url(icons/reply.png);
-	background-position: left center !important;
-	background-repeat: no-repeat;
 	padding-left: 26px;
+	background-image: url(icons/reply.png) !important;
+	background-repeat: no-repeat;
+	background-position: left center !important;
+}
+
+.lqt-thread-toolbar-commands > li.lqt-command {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 	line-height: 2em;
 }
+
 .lqt-command-quote a {
 	margin-left: 1em;
 	height: 2em;
@@ -468,4 +440,42 @@ table.lqt-new-messages {
 
 .lqt-command {
 	line-height: 2em;
+}
+
+.lqt-add-reply {
+	margin-left: 1em;
+	margin-right: 1em;
+	margin-top: 0.2em;
+	font-size: 120%;
+}
+
+.lqt-reply-form {
+	padding: 0.5em 1em;
+}
+
+.lqt-drop-zone {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding: 0.5em 1em;
+	border: 1px solid #999999;
+	text-align: center;
+	color: #999999;
+}
+
+.lqt-drop-zone.lqt-drop-zone-active {
+	border: 1px solid #3333ff !important;
+}
+
+.lqt-drop-zone.lqt-drop-zone-hover {
+	border: 2px solid #3333ff !important;
+	color: #3333ff !important;
+	font-weight: bold !important;
+}
+
+.lqt-new-messages {
+	table-layout: fixed;
+}
+
+.lqt-source-form {
+	background: lightgray;
 }

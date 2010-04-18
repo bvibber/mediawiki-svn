@@ -1,10 +1,10 @@
 <?php
 /**
  * Internationalisation file for Multilingual Liquid Threads extension.
- * 
+ *
  * @author Daisuke Morita
  */
- 
+
 require_once( dirname( __FILE__ ) . '/../i18n/Lqt.i18n.php' );
 
 /** English
@@ -29,6 +29,9 @@ $messages['en']['multilang_lqt_language_name_pt'] = "Portuguese";
 $messages['en']['multilang_lqt_language_name_ru'] = "Russian";
 $messages['en']['multilang_lqt_language_name_th'] = "Thai";
 $messages['en']['multilang_lqt_language_name_vi'] = "Vietnamese";
+$messages['en']['multilang_lqt_show_original'] = 'Original';
+$messages['en']['multilang_lqt_hide_original'] = 'Hide';
+
 
 /** Japanese
  * @author Daisuke Morita
@@ -52,6 +55,8 @@ $messages['ja']['multilang_lqt_language_name_pt'] = "ポルトガル語";
 $messages['ja']['multilang_lqt_language_name_ru'] = "ロシア語";
 $messages['ja']['multilang_lqt_language_name_th'] = "タイ語";
 $messages['ja']['multilang_lqt_language_name_vi'] = "ベトナム語";
+$messages['ja']['multilang_lqt_show_original'] = '原文表示';
+$messages['ja']['multilang_lqt_hide_original'] = '隠す';
 
 /** Chinese
  * @author Kohei Kadowaki

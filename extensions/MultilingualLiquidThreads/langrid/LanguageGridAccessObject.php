@@ -5,137 +5,233 @@
  */
 
 define('LQT_BINDING_SET_NAME', 'LIQUID_THREADS');
+require('MetaTranslator.php');
 
 class LanguageGridAccessObject {
-	
+
 	private $translationClient;
-	
+
 	function __construct() {
 		$this->translationClient = new LangridAccessClient();
 	}
-	
+
 	/**
 	 * Translate a distinct subject in Multilanguage by Language Grid.
 	 * Translated subjects will be stored in DB and be reused.
 	 */
-	public function translateSubject($sourceSubject, $thread) {
-		$threadId = $thread->id();
-		$threadArticleTitle = $thread->articleTitle();
-		
+
+	public function needsNoTranslation($threadId) {
 		$sourceLang = $this->getSourceLanguage($threadId);
 		$targetLang = $this->getTargetLanguage();
-		
-		if ($sourceLang == $targetLang) {
-			return $sourceSubject;
-		}
-		
-		$obj = TranslatedSubject::loadTranslatedSubject($threadId, $targetLang);
-		if (!is_null($obj)) { 
-			// Translated subject already exists in DB. 
-			$translatedSubject = $obj->subject();
-		} else { 
-			$sourceSubject = htmlspecialchars_decode($sourceSubject);
-			$response = $this->translationClient->translate($sourceLang, $targetLang, $sourceSubject, $threadArticleTitle);
-			
-			if ($response['status'] == 'OK') {
-				$translatedSubject = htmlspecialchars($response['contents']->result);
-				
-				// Insert translated subject into DB.
-				TranslatedSubject::create($threadId, $translatedSubject, $targetLang);
-			} else { 
-				// If error in translation
-				$translatedSubject = htmlspecialchars($sourceSubject).' <font color="#f00">(Translation Failed)</font> ';
-			}
-		}
-		
-		return $translatedSubject;
+		return ($sourceLang == $targetLang);
 	}
-	
+
+	function translatedRootByThreadId($threadId) {
+		if ($this->needsNoTranslation($threadId)) {
+			return Threads::$cache_by_id[$threadId]->root();
+		}
+		else{
+			 $title = Title::newFromID(TranslatedThread::rootPageIdByThreadIdAndLang($threadId, $this->getTargetLanguage()) );
+			 return $title ? new Article_LQT_Compat( $title ) : null;
+		}
+	}
+
+
 	/**
 	 * Translate posted body in Multilanguage by Language Grid.
 	 * Translated posted body will be stored in DB and be reused.
 	 */
-	public function translateBody($sourceBody, $thread) {
+	function translatedRootByThread($thread) {
+		$dbr = wfGetDB( DB_SLAVE );
 		$threadId = $thread->id();
-		$threadArticleTitle = $thread->articleTitle();
-		
-		$sourceLang = $this->getSourceLanguage($threadId);
 		$targetLang = $this->getTargetLanguage();
-		
-		if ($sourceLang == $targetLang) {
-			return $sourceBody;
+		$root = $this->translatedRootByThreadId($threadId);
+		if (is_null($root)) {
+			$this->translateBody($thread);
+			$root = $this->translatedRootByThreadId($threadId);
 		}
-		
-		$obj = TranslatedBody::loadTranslatedBody($threadId, $targetLang);
-		if (!is_null($obj)) { 
+		return $root;
+	}
+
+	function translatedRootByRootId( $rootId ) {
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$res = $dbr->select( 'thread', '*',
+					array( 'thread_root' => $rootId ),
+					__METHOD__);
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$thread = Thread::newFromRow( $row );
+		}
+		if ( is_null( $thread ) )
+			return null;
+		else
+			return $this->translatedRootByThread( $thread );
+	}
+
+	function translatedRootByRoot( $root ) {
+		return $this->translatedRootByRootId( $root->getID() );
+	}
+
+	function originalRootbyRoot( $root ){
+		$dbr = wfGetDB( DB_SLAVE );
+
+		$res = $dbr->select( 'translated_thread', '*',
+					array( 'tt_root' => $root->getID() ),
+					__METHOD__);
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			$originalThreadId = $row->tt_original;
+		}
+		if( is_null( $originalThreadId ) )
+			return null;
+		else {
+			$thread = Threads::withId( $originalThreadId );
+			return $thread->root();
+		}
+	}
+
+	function getLatestBody($page) {
+		return LqtView::showPostBody($page);
+	}
+
+	public function parseFromRootId($root_id) {
+		$title = Title::newFromID($root_id);
+		$post = new Article_LQT_Compat($title);
+		global $wgRequest;
+		$oldid = $wgRequest->getVal('oldid', null);
+		$parserOutput = $post->getParserOutput($oldid);
+		return $parserOutput->getText();
+	}
+
+	public function translateBody($thread, $sourceBody = null) {
+		if(!$sourceBody) $sourceBody = $this->getLatestBody($thread->root());
+
+		$threadId = $thread->id();
+		if ($this->needsNoTranslation($threadId)) return $sourceBody;
+		$targetLang = $this->getTargetLanguage();
+		$obj = TranslatedThread::loadTranslatedThread($threadId, $targetLang);
+		if (!is_null($obj)) {
 			// Translated body already exists in DB
-			$translatedBody = $obj->body();
+			$translatedBody = $this->parseFromRootId($obj->ttRoot());
 		} else {
-			/**
-			 *  (1) Analyze HTML structure using a regular expression and remove HTML tags.
-			 *  (2) Translate only posted body (without HTML tags).
-			 *  (3) Restructure HTML
-			 */
-			
 			$translatedBody = "";
-			// Analyze HTML structure
-			preg_match_all("/(<[^>]+>)+([^<]*)(<\/[^>]+>)+/", $sourceBody, $matches, PREG_OFFSET_CAPTURE); 
-			if (! empty($matches) && ! empty($matches[1])) {
-        		for ($i = 0; $i < count($matches[1]); $i++) {
-        			// Translate posted body
-        			$sourceIncludingTags = $matches[0][$i][0];
-        			$source = $matches[2][$i][0];
-        			
-					$source = htmlspecialchars_decode($source);
-                    $source = trim($source);
 
-					if ( empty($source)) {
-						$translatedBody .= $matches[0][$i][0];
-						continue ;
-                    }
-
-					$response = $this->translationClient->translate($sourceLang, $targetLang, $source, $threadArticleTitle);
-        			if ($response['status'] == 'OK') {
-                        $result = htmlspecialchars($response['contents']->result);
-                        $translatedBody .= str_replace($source, $result, $sourceIncludingTags);
-                    } else { //if error occurred
-                        return $sourceBody . ' <font color="#f00">(Translation Failed)</font> ';
-					}
-				}
+			if (is_null(MultilangLqtHooks::$translatedSubject)) {
+				return $sourceBody . ' <font color="#f00">(Translation Failed)</font> ';
 			}
-            
-	        // If no error in translation, insert translated body into DB.
-			TranslatedBody::create($threadId, $translatedBody, $targetLang);
-			// Message for first viewer
-			$translatedBody .=  ' <div style="color:#f00; font-size:80%">'.wfMsg( 'multilang_lqt_thanks' ).'</div>';
-			$translatedBody .=  ' <div style="color:#f00; font-size:80%">'.wfMsg( 'multilang_lqt_thanks_detail' , $this->convertLanguageCodeIntoLanguageName($targetLang) ).'</div>';
+			else {
+				/**
+				 * MetaTranslate
+				 */
+				$source = $sourceBody;
+				$source = trim($source);
+
+
+				$sourceLang = $this->getSourceLanguage($threadId);
+				$meta = new MetaTranslator($sourceLang);
+
+				/* parameters */
+				$translationFunc = array($this->translationClient, 'translate');
+				$translationParam = array($sourceLang, $targetLang, $source, $thread->article()->getTitle());
+				$parameterOrder = array(0,1,2);
+				$resultFunc = array($this, 'getResult');
+				$statusFunc = array($this, 'getStatus');
+
+				$translatedBody = $meta->metaTranslate($translationFunc, $translationParam, $parameterOrder, true, true, $resultFunc, $statusFunc);
+
+				if($translatedBody==null) {
+    			  return $sourceBody . ' <font color="#f00">(Translation Failed)</font> ';
+				}
+
+				$translatedBody='<p>'.$translatedBody.'</p>';
+
+				// If no error in translation, insert translated body into DB.
+				$text = $translatedBody;
+				$summary = 'translation';
+				$t = $thread->title()->getPrefixedText().'/'.$targetLang;
+				$namespace = $thread->root()->getTitle()->getNamespace();
+
+				$title = Title::newFromText($t, $namespace);
+				$a = new Article($title);
+				$a->doEdit($text,$summary);
+
+				$articleId = $a->getID();
+				$ttSubject = $this->getSubject();
+				TranslatedThread::create( $articleId, $threadId,  MultilangLqtHooks::$translatedSubject, $targetLang );
+			}
 		}
-		
+
 		return $translatedBody;
 	}
-	
+
+	public function translateSubject($thread, $sourceSubject) {
+		$threadId = $thread->id();
+		if ($this->needsNoTranslation($threadId)) {
+			MultilangLqtHooks::$translatedSubject = $sourceSubject;
+			return $sourceSubject;
+		}
+		$targetLang = $this->getTargetLanguage();
+		$obj = TranslatedThread::loadTranslatedThread($threadId, $targetLang);
+		if (!is_null($obj)) {
+			// Translated subject already exists in DB.
+			$translatedSubject = $obj->ttSubject();
+			MultilangLqtHooks::$translatedSubject = $translatedSubject;
+		} else {
+			$sourceSubject = htmlspecialchars_decode($sourceSubject);
+			$response = $this->translationClient->translate($this->getSourceLanguage($threadId), $targetLang, $sourceSubject, $thread->article()->getTitle());
+
+			if ($response['status'] == 'OK') {
+				$translatedSubject = htmlspecialchars($response['contents']->result);
+				MultilangLqtHooks::$translatedSubject = $translatedSubject;
+			} else {
+				// If error in translation
+				$translatedSubject = null;
+				//htmlspecialchars($sourceSubject);//.' <font color="#f00">(Translation Failed)</font> ';
+				MultilangLqtHooks::$translatedSubject = null;
+			}
+		}
+
+		return $translatedSubject;
+	}
+
+	public function getResult($response) {
+		return $response['contents']->result;
+	}
+
+	public function getStatus($response) {
+		return $response['status'];
+	}
+
+	public function getSubject() {
+		return "SomeSubject"; // temporary
+	}
+	public function getRoot() {
+		return 10; // temporary
+	}
+
 	public function getSourceLanguage($threadId) {
 		return ThreadLanguage::loadThreadLanguage($threadId);
 	}
-	
+
 	public function getTargetLanguage() {
 		global $wgLanguageSelectorRequestedLanguage, $wgLanguageCode, $wgLanguageSelectorDetectLanguage;
-		
+
 		if ($wgLanguageSelectorRequestedLanguage) {
 			$targetLang =  $wgLanguageSelectorRequestedLanguage;
 		} else {
 			$targetLang = wfLanguageSelectorDetectLanguage( $wgLanguageSelectorDetectLanguage );
 		}
-		
+
 		if ($targetLang == 'zh-hans') {
 			$targetLang = 'zh-CN';
 		} else if ($targetLang == 'pt') {
 			$targetLang = 'pt-PT';
 		}
-		
+
 		return $targetLang;
 	}
-	
+
+
+
 	static function convertLanguageCodeIntoLanguageName( $languageCode ) {
 		switch ( $languageCode ) {
 			case 'ja':
