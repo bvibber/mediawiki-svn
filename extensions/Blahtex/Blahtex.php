@@ -29,7 +29,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Blahtex',
 	'author' => 'David Harvey and Jitse Niesen',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Blahtex',
-	'descriptionmsg' => 'math-desc',
+	'descriptionmsg' => 'blahtex-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';

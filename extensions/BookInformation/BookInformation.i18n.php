@@ -11,7 +11,7 @@ $messages = array();
 /* English (Rob Church) */
 $messages['en'] = array(
 	'bookinfo-header'            => 'Book information',
-	'bookinfo-desc'              => 'Expands the [[Special:Booksources|book sources special page]] with information from a web service',
+	'bookinformation-desc'              => 'Expands the [[Special:Booksources|book sources special page]] with information from a web service',
 	'bookinfo-result-title'      => 'Title:',
 	'bookinfo-result-author'     => 'Author:',
 	'bookinfo-result-publisher'  => 'Publisher:',
@@ -29,7 +29,7 @@ $messages['en'] = array(
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'bookinfo-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'bookinformation-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'bookinfo-result-title' => '{{Identical|Title}}',
 	'bookinfo-result-author' => '{{Identical|Author}}',
 	'bookinfo-result-year' => '{{Identical|Year}}',
@@ -42,7 +42,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'bookinfo-header' => 'Boek inligting',
-	'bookinfo-desc' => "Brei [[Special:Booksources]] uit met inligting van 'n webdiens",
+	'bookinformation-desc' => "Brei [[Special:Booksources]] uit met inligting van 'n webdiens",
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Outeur:',
 	'bookinfo-result-publisher' => 'Uitgewer:',
@@ -67,7 +67,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'bookinfo-header' => "Informazión d'o libro",
-	'bookinfo-desc' => 'Estendilla [[Special:Booksources]] con informazión sobre un serbizio web',
+	'bookinformation-desc' => 'Estendilla [[Special:Booksources]] con informazión sobre un serbizio web',
 	'bookinfo-result-title' => 'Títol:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editorial:',
@@ -85,7 +85,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'bookinfo-header' => 'معلومات كتاب',
-	'bookinfo-desc' => 'يمد [[Special:Booksources|صفحة مصادر الكتب الخاصة]] بمعلومات من خدمة ويب',
+	'bookinformation-desc' => 'يمد [[Special:Booksources|صفحة مصادر الكتب الخاصة]] بمعلومات من خدمة ويب',
 	'bookinfo-result-title' => 'العنوان:',
 	'bookinfo-result-author' => 'المؤلف:',
 	'bookinfo-result-publisher' => 'الناشر:',
@@ -112,7 +112,7 @@ $messages['arc'] = array(
  */
 $messages['arz'] = array(
 	'bookinfo-header' => 'معلومات كتاب',
-	'bookinfo-desc' => 'يمد [[Special:Booksources|صفحة مصادر الكتب الخاصة]] بمعلومات من خدمة ويب',
+	'bookinformation-desc' => 'يمد [[Special:Booksources|صفحة مصادر الكتب الخاصة]] بمعلومات من خدمة ويب',
 	'bookinfo-result-title' => 'العنوان:',
 	'bookinfo-result-author' => 'المؤلف:',
 	'bookinfo-result-publisher' => 'الناشر:',
@@ -130,7 +130,7 @@ $messages['arz'] = array(
  */
 $messages['ast'] = array(
 	'bookinfo-header' => 'Información de llibros',
-	'bookinfo-desc' => "Espande la [[Special:Booksources|páxina especial de fontes de llibros]] con información proviniente d'un serviciu web",
+	'bookinformation-desc' => "Espande la [[Special:Booksources|páxina especial de fontes de llibros]] con información proviniente d'un serviciu web",
 	'bookinfo-result-title' => 'Títulu:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editor:',
@@ -169,7 +169,7 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'bookinfo-header' => 'Інфармацыя пра кнігу',
-	'bookinfo-desc' => 'Пашырае [[Special:Booksources|спэцыяльную старонку пошуку кніг]] інфармацыяй з ўэб-сэрвісу',
+	'bookinformation-desc' => 'Пашырае [[Special:Booksources|спэцыяльную старонку пошуку кніг]] інфармацыяй з ўэб-сэрвісу',
 	'bookinfo-result-title' => 'Назва:',
 	'bookinfo-result-author' => 'Аўтар:',
 	'bookinfo-result-publisher' => 'Выдавецтва:',
@@ -188,7 +188,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'bookinfo-header' => 'Информация за книга',
-	'bookinfo-desc' => 'Разширява [[Special:Booksources|специалната страница с източници за книги]] с информация от уеб услуга',
+	'bookinformation-desc' => 'Разширява [[Special:Booksources|специалната страница с източници за книги]] с информация от уеб услуга',
 	'bookinfo-result-title' => 'Заглавие:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издател:',
@@ -206,7 +206,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'bookinfo-header' => 'বই বিষয়ক তথ্য',
-	'bookinfo-desc' => 'ওয়েব সেবার থেকে তথ্য দিয়ে [[Special:Booksources|বইয়ের উৎস সম্পর্কিত বিশেষ পাতাকে]] সম্প্রসারিত করে',
+	'bookinformation-desc' => 'ওয়েব সেবার থেকে তথ্য দিয়ে [[Special:Booksources|বইয়ের উৎস সম্পর্কিত বিশেষ পাতাকে]] সম্প্রসারিত করে',
 	'bookinfo-result-title' => 'শিরোনাম:',
 	'bookinfo-result-author' => 'লেখক:',
 	'bookinfo-result-publisher' => 'প্রকাশক:',
@@ -224,7 +224,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'bookinfo-header' => 'Titouroù war al levr',
-	'bookinfo-desc' => 'Astenn a ra [[Special:Booksources|pajenn dibar mammennoù al levr]] gant titouroù adal ur servij Kenrouedad',
+	'bookinformation-desc' => 'Astenn a ra [[Special:Booksources|pajenn dibar mammennoù al levr]] gant titouroù adal ur servij Kenrouedad',
 	'bookinfo-result-title' => 'Titl :',
 	'bookinfo-result-author' => 'Aozer :',
 	'bookinfo-result-publisher' => 'Embanner :',
@@ -242,7 +242,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'bookinfo-header' => 'Informacije o knjizi',
-	'bookinfo-desc' => 'Proširuje [[Special:Booksources|posebnu stranicu književnih izvora]] sa podacima sa web servisa',
+	'bookinformation-desc' => 'Proširuje [[Special:Booksources|posebnu stranicu književnih izvora]] sa podacima sa web servisa',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Izdavač:',
@@ -262,7 +262,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'bookinfo-header' => 'Informació del llibre',
-	'bookinfo-desc' => "Expandeix la [[Special:Booksources|pàgina especial de fonts del llibre]] amb informació d'un servei web",
+	'bookinformation-desc' => "Expandeix la [[Special:Booksources|pàgina especial de fonts del llibre]] amb informació d'un servei web",
 	'bookinfo-result-title' => 'Títol:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editor:',
@@ -280,7 +280,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'bookinfo-header' => 'Informace o knihách',
-	'bookinfo-desc' => 'Rozšiřuje speciální stránku [[Special:Booksources|Zdroje knih]] o informace z internetových služeb',
+	'bookinformation-desc' => 'Rozšiřuje speciální stránku [[Special:Booksources|Zdroje knih]] o informace z internetových služeb',
 	'bookinfo-result-title' => 'Název:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Vydavatel:',
@@ -322,7 +322,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'bookinfo-header' => 'Informationen über Bücher',
-	'bookinfo-desc' => 'Ergänzt die [[Special:Booksources|Buchquellen-Spezialseite]] um Informationen von einem Webangebot',
+	'bookinformation-desc' => 'Ergänzt die [[Special:Booksources|Buchquellen-Spezialseite]] um Informationen von einem Webangebot',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Verlag:',
@@ -340,7 +340,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'bookinfo-header' => 'Informacije wó knigłach',
-	'bookinfo-desc' => 'Wudopołnjujo [[Special:Booksources|specialny bok žrědłow knigłow ]] wó informacije z websłužby',
+	'bookinformation-desc' => 'Wudopołnjujo [[Special:Booksources|specialny bok žrědłow knigłow ]] wó informacije z websłužby',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Awtor:',
 	'bookinfo-result-publisher' => 'Wudawaŕ:',
@@ -361,7 +361,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'bookinfo-header' => 'Βιβλίο πληροφοριών',
-	'bookinfo-desc' => 'Επεκτείνει [[Special:Booksources|την ειδική σελίδα πηγών για βιβλία]] με πληροφορίες από μια διαδικτυακή υπηρεσία',
+	'bookinformation-desc' => 'Επεκτείνει [[Special:Booksources|την ειδική σελίδα πηγών για βιβλία]] με πληροφορίες από μια διαδικτυακή υπηρεσία',
 	'bookinfo-result-title' => 'Τίτλος:',
 	'bookinfo-result-author' => 'Συντάκτης:',
 	'bookinfo-result-publisher' => 'Εκδότης:',
@@ -379,7 +379,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'bookinfo-header' => 'Libra informo',
-	'bookinfo-desc' => 'Pligrandigas [[Special:Booksources|paĝon pri libraj fontoj]] kun informo de Interreta-servo.',
+	'bookinformation-desc' => 'Pligrandigas [[Special:Booksources|paĝon pri libraj fontoj]] kun informo de Interreta-servo.',
 	'bookinfo-result-title' => 'Titolo:',
 	'bookinfo-result-author' => 'Aŭtoro:',
 	'bookinfo-result-publisher' => 'Eldonejo:',
@@ -398,7 +398,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'bookinfo-header' => 'Información de libro',
-	'bookinfo-desc' => 'Ampliar la [[Special:Booksources|página especial de fuentes de libros]] con información de un servicio web',
+	'bookinformation-desc' => 'Ampliar la [[Special:Booksources|página especial de fuentes de libros]] con información de un servicio web',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editorial:',
@@ -431,7 +431,7 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'bookinfo-header' => 'Liburuaren informazioa',
-	'bookinfo-desc' => '[[Special:Booksources|Liburuen jatorriaren orrialde berezia]] hedatzen du web serbitzu bateko informazioarekin',
+	'bookinformation-desc' => '[[Special:Booksources|Liburuen jatorriaren orrialde berezia]] hedatzen du web serbitzu bateko informazioarekin',
 	'bookinfo-result-title' => 'Izenburua:',
 	'bookinfo-result-author' => 'Egilea:',
 	'bookinfo-result-publisher' => 'Argitaletxea:',
@@ -462,7 +462,7 @@ $messages['ext'] = array(
  */
 $messages['fa'] = array(
 	'bookinfo-header' => 'اطلاعات کتاب',
-	'bookinfo-desc' => '[[Special:Booksources]] را با استفاده از اطلاعات یک سرویس اینترنتی گسترش می‌دهد',
+	'bookinformation-desc' => '[[Special:Booksources]] را با استفاده از اطلاعات یک سرویس اینترنتی گسترش می‌دهد',
 	'bookinfo-result-title' => 'عنوان:',
 	'bookinfo-result-author' => 'نویسنده:',
 	'bookinfo-result-publisher' => 'ناشر:',
@@ -481,7 +481,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'bookinfo-header' => 'Kirjan tiedot',
-	'bookinfo-desc' => 'Laajentaa [[Special:Booksources|kirjalähdesivun]] tietoja verkkopalveluista.',
+	'bookinformation-desc' => 'Laajentaa [[Special:Booksources|kirjalähdesivun]] tietoja verkkopalveluista.',
 	'bookinfo-result-title' => 'Nimi:',
 	'bookinfo-result-author' => 'Tekijä:',
 	'bookinfo-result-publisher' => 'Kustantaja:',
@@ -501,7 +501,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'bookinfo-header' => 'Informations sur les ouvrages',
-	'bookinfo-desc' => 'Complète la [[Special:Booksources|page spéciale des sources d’ouvrages de références]] à l’aide d’informations provenant de services Internet',
+	'bookinformation-desc' => 'Complète la [[Special:Booksources|page spéciale des sources d’ouvrages de références]] à l’aide d’informations provenant de services Internet',
 	'bookinfo-result-title' => 'Titre :',
 	'bookinfo-result-author' => 'Auteur :',
 	'bookinfo-result-publisher' => 'Éditeur :',
@@ -519,7 +519,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'bookinfo-header' => 'Enformacions sur les ôvres',
-	'bookinfo-desc' => 'Complète la [[Special:Booksources|pâge spèciâla de les sôrses d’ôvres de refèrence]] avouéc des enformacions dês un sèrviço vouèbe.',
+	'bookinformation-desc' => 'Complète la [[Special:Booksources|pâge spèciâla de les sôrses d’ôvres de refèrence]] avouéc des enformacions dês un sèrviço vouèbe.',
 	'bookinfo-result-title' => 'Titro :',
 	'bookinfo-result-author' => 'Ôtor :',
 	'bookinfo-result-publisher' => 'Èditor :',
@@ -556,7 +556,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'bookinfo-header' => 'Información do libro',
-	'bookinfo-desc' => 'Amplía a [[Special:Booksources|páxina especial de fontes bibliográficas]] con información dun servizo web',
+	'bookinformation-desc' => 'Amplía a [[Special:Booksources|páxina especial de fontes bibliográficas]] con información dun servizo web',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Publicación:',
@@ -586,7 +586,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'bookinfo-header' => 'Informatione iber Biecher',
-	'bookinfo-desc' => 'Ergänzt d [[Special:Booksources|Buechquälle-Spezialsyte]] mit Informatione vun eme Netzaagebot',
+	'bookinformation-desc' => 'Ergänzt d [[Special:Booksources|Buechquälle-Spezialsyte]] mit Informatione vun eme Netzaagebot',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Verlag:',
@@ -604,7 +604,7 @@ $messages['gsw'] = array(
  */
 $messages['gv'] = array(
 	'bookinfo-header' => 'Oayllys lioar',
-	'bookinfo-desc' => 'Mooadaghey [[Special:Booksources|yn duillag er lheh ry hoi farraneyn-fys lioar]] lesh oayllys veih shirveish voggyl.',
+	'bookinformation-desc' => 'Mooadaghey [[Special:Booksources|yn duillag er lheh ry hoi farraneyn-fys lioar]] lesh oayllys veih shirveish voggyl.',
 	'bookinfo-result-title' => 'Ennym:',
 	'bookinfo-result-author' => 'Ughtar:',
 	'bookinfo-result-publisher' => 'Soilsheyder:',
@@ -624,7 +624,7 @@ $messages['gv'] = array(
  */
 $messages['he'] = array(
 	'bookinfo-header' => 'נתוני הספר',
-	'bookinfo-desc' => 'הרחבת [[Special:Booksources|הדף המיוחד משאבי ספרות חיצוניים]] באמצעות מידע משירות אינטרנטי',
+	'bookinformation-desc' => 'הרחבת [[Special:Booksources|הדף המיוחד משאבי ספרות חיצוניים]] באמצעות מידע משירות אינטרנטי',
 	'bookinfo-result-title' => 'כותרת:',
 	'bookinfo-result-author' => 'מחבר:',
 	'bookinfo-result-publisher' => 'מוציא לאור:',
@@ -642,7 +642,7 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'bookinfo-header' => 'किताब ज़ानकारी',
-	'bookinfo-desc' => 'इंटरनेट से ज़ानकारी लेकर [[Special:Booksources]] बढायें',
+	'bookinformation-desc' => 'इंटरनेट से ज़ानकारी लेकर [[Special:Booksources]] बढायें',
 	'bookinfo-result-title' => 'शीर्षक:',
 	'bookinfo-result-author' => 'लेखक:',
 	'bookinfo-result-publisher' => 'प्रकाशक:',
@@ -660,7 +660,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'bookinfo-header' => 'Informacije o knjizi',
-	'bookinfo-desc' => 'Proširuje [[Special:Booksources|posebnu stranicu izvora knjiga]] s podacima dobivenim putem web usluge (servisa)',
+	'bookinformation-desc' => 'Proširuje [[Special:Booksources|posebnu stranicu izvora knjiga]] s podacima dobivenim putem web usluge (servisa)',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Izdavač:',
@@ -678,7 +678,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'bookinfo-header' => 'Informacije wo knihach',
-	'bookinfo-desc' => 'Rozšěrja [[Special:Booksources|specialnu stronu z knižnych žórłow]] přez informacije z websłužby',
+	'bookinformation-desc' => 'Rozšěrja [[Special:Booksources|specialnu stronu z knižnych žórłow]] přez informacije z websłužby',
 	'bookinfo-result-title' => 'Titul:',
 	'bookinfo-result-author' => 'Awtor:',
 	'bookinfo-result-publisher' => 'Nakładnistwo:',
@@ -696,7 +696,7 @@ $messages['hsb'] = array(
  */
 $messages['ht'] = array(
 	'bookinfo-header' => 'Enfòmasyon anlè liv yo',
-	'bookinfo-desc' => 'Ap etann [[Special:Booksources]] ak enfòmasyon twouve nan sèvis wèb, entènèt',
+	'bookinformation-desc' => 'Ap etann [[Special:Booksources]] ak enfòmasyon twouve nan sèvis wèb, entènèt',
 	'bookinfo-result-title' => 'Tit, non l:',
 	'bookinfo-result-publisher' => 'Editè :',
 	'bookinfo-result-year' => 'Lane :',
@@ -714,7 +714,7 @@ $messages['ht'] = array(
  */
 $messages['hu'] = array(
 	'bookinfo-header' => 'Könyv információ',
-	'bookinfo-desc' => 'Kiegészíti a [[Special:Booksources|könyvforrások speciális lapot]] információkkal egy webkiszolgálóról',
+	'bookinformation-desc' => 'Kiegészíti a [[Special:Booksources|könyvforrások speciális lapot]] információkkal egy webkiszolgálóról',
 	'bookinfo-result-title' => 'Cím:',
 	'bookinfo-result-author' => 'Szerző:',
 	'bookinfo-result-publisher' => 'Kiadó:',
@@ -733,7 +733,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'bookinfo-header' => 'Informationes de libros',
-	'bookinfo-desc' => 'Extende le [[Special:Booksources|pagina special con fontes de libros]] con informationes proveniente de un servicio web',
+	'bookinformation-desc' => 'Extende le [[Special:Booksources|pagina special con fontes de libros]] con informationes proveniente de un servicio web',
 	'bookinfo-result-title' => 'Titulo:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editor:',
@@ -752,7 +752,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'bookinfo-header' => 'Informasi buku',
-	'bookinfo-desc' => 'Mengembangkan [[Special:Booksources]] dengan informasi dari sumber-sumber buku',
+	'bookinformation-desc' => 'Mengembangkan [[Special:Booksources]] dengan informasi dari sumber-sumber buku',
 	'bookinfo-result-title' => 'Judul:',
 	'bookinfo-result-author' => 'Pengarang:',
 	'bookinfo-result-publisher' => 'Penerbit:',
@@ -796,7 +796,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'bookinfo-header' => 'Informazioni sui libri',
-	'bookinfo-desc' => 'Espande la [[Special:Booksources|pagina speciale per la ricerca di fonti librarie]] con informazioni provenienti da un servizio Web',
+	'bookinformation-desc' => 'Espande la [[Special:Booksources|pagina speciale per la ricerca di fonti librarie]] con informazioni provenienti da un servizio Web',
 	'bookinfo-result-title' => 'Titolo:',
 	'bookinfo-result-author' => 'Autore:',
 	'bookinfo-result-publisher' => 'Editore:',
@@ -815,7 +815,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'bookinfo-header' => '書籍情報',
-	'bookinfo-desc' => '[[Special:Booksources|{{int:booksources}}]]の機能を拡張し、ウェブサービスから情報を取得する',
+	'bookinformation-desc' => '[[Special:Booksources|{{int:booksources}}]]の機能を拡張し、ウェブサービスから情報を取得する',
 	'bookinfo-result-title' => 'タイトル:',
 	'bookinfo-result-author' => '著者:',
 	'bookinfo-result-publisher' => '出版:',
@@ -833,7 +833,7 @@ $messages['ja'] = array(
  */
 $messages['jut'] = array(
 	'bookinfo-header' => 'Båĝinformåsje',
-	'bookinfo-desc' => 'Expands [[Special:Booksources]] with information from a web service',
+	'bookinformation-desc' => 'Expands [[Special:Booksources]] with information from a web service',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Førfatter:',
 	'bookinfo-result-publisher' => 'Udgæver:',
@@ -852,7 +852,7 @@ $messages['jut'] = array(
  */
 $messages['jv'] = array(
 	'bookinfo-header' => 'Informasi buku',
-	'bookinfo-desc' => 'Kembangna [[Special:Booksources|kaca mligi sumber buku]] mawa informasi saka sawijining peladèn wèb',
+	'bookinformation-desc' => 'Kembangna [[Special:Booksources|kaca mligi sumber buku]] mawa informasi saka sawijining peladèn wèb',
 	'bookinfo-result-title' => 'Irah-irahan (judhul):',
 	'bookinfo-result-author' => 'Pangripta:',
 	'bookinfo-result-publisher' => 'Panerbit:',
@@ -939,7 +939,7 @@ $messages['kl'] = array(
  */
 $messages['km'] = array(
 	'bookinfo-header' => 'ព័ត៌មានអំពីសៀវភៅ',
-	'bookinfo-desc' => 'ពង្រីក [[Special:Booksources|ទំព័រ​ពិសេស​អំពី​ប្រភព​សៀវភៅ]] ជាមួយព័ត៌មាន​ពីសេវាវិប',
+	'bookinformation-desc' => 'ពង្រីក [[Special:Booksources|ទំព័រ​ពិសេស​អំពី​ប្រភព​សៀវភៅ]] ជាមួយព័ត៌មាន​ពីសេវាវិប',
 	'bookinfo-result-title' => 'ចំណងជើង៖',
 	'bookinfo-result-author' => 'អ្នកនិពន្ធ៖',
 	'bookinfo-result-publisher' => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',
@@ -966,7 +966,7 @@ $messages['kn'] = array(
  */
 $messages['ko'] = array(
 	'bookinfo-header' => '책 정보',
-	'bookinfo-desc' => '웹 서비스의 정보를 바탕으로 [[Special:Booksources|책 찾기 특수 문서]]를 확장',
+	'bookinformation-desc' => '웹 서비스의 정보를 바탕으로 [[Special:Booksources|책 찾기 특수 문서]]를 확장',
 	'bookinfo-result-title' => '제목:',
 	'bookinfo-result-author' => '저자:',
 	'bookinfo-result-publisher' => '출판사:',
@@ -984,7 +984,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'bookinfo-header' => 'Enfomazjuhne övver Böhsher.',
-	'bookinfo-desc' => 'Deit de [[Special:Booksources|Söndersigg drövver, woh mer Bööscher herkritt]] öm de Enfomazjuhne fun enem Deens em Web verjrüßere.',
+	'bookinformation-desc' => 'Deit de [[Special:Booksources|Söndersigg drövver, woh mer Bööscher herkritt]] öm de Enfomazjuhne fun enem Deens em Web verjrüßere.',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Schriver:',
 	'bookinfo-result-publisher' => 'Verläjer:',
@@ -1011,7 +1011,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'bookinfo-header' => 'Informatiounen iwwer Bicher',
-	'bookinfo-desc' => "Erweidert [[Special:Booksources|d'Spezialsäit vun de Bicherreferenzen]] mat Informatiounen vun enger Offer um Internet",
+	'bookinformation-desc' => "Erweidert [[Special:Booksources|d'Spezialsäit vun de Bicherreferenzen]] mat Informatiounen vun enger Offer um Internet",
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Auteur:',
 	'bookinfo-result-publisher' => 'Editeur:',
@@ -1044,7 +1044,7 @@ $messages['lfn'] = array(
  */
 $messages['li'] = array(
 	'bookinfo-header' => 'Boke informatie',
-	'bookinfo-desc' => "Oetbreijing veur [[Special:Booksources|speciaal pazjena Bookinformatie]] mit informatie van 'n webservice",
+	'bookinformation-desc' => "Oetbreijing veur [[Special:Booksources|speciaal pazjena Bookinformatie]] mit informatie van 'n webservice",
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Auteur:',
 	'bookinfo-result-publisher' => 'Oetgaever:',
@@ -1075,7 +1075,7 @@ $messages['lt'] = array(
  */
 $messages['mg'] = array(
 	'bookinfo-header' => 'Antsipirihany momba ny boky',
-	'bookinfo-desc' => "Mameno ny [[Special:Booksources|pejy manokana momba ny foto-boky]] avy amin'ny servisy Internet",
+	'bookinformation-desc' => "Mameno ny [[Special:Booksources|pejy manokana momba ny foto-boky]] avy amin'ny servisy Internet",
 	'bookinfo-result-title' => 'lohateny:',
 	'bookinfo-result-author' => 'Mpanoratra azy:',
 	'bookinfo-result-publisher' => 'Mpamoaka azy:',
@@ -1093,7 +1093,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'bookinfo-header' => 'Информации за книга',
-	'bookinfo-desc' => 'Проширување на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
+	'bookinformation-desc' => 'Проширување на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',
@@ -1112,7 +1112,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'bookinfo-header' => 'പുസ്തകത്തെക്കുറിച്ചുള്ള വിവരങ്ങൾ',
-	'bookinfo-desc' => '[[Special:Booksources]] എന്ന പ്രത്യേകതാൾ വെബ്ബ് സർ‌വീസിലെ വിവരവും ചേർത്ത് വികസിപ്പിക്കുന്നു.',
+	'bookinformation-desc' => '[[Special:Booksources]] എന്ന പ്രത്യേകതാൾ വെബ്ബ് സർ‌വീസിലെ വിവരവും ചേർത്ത് വികസിപ്പിക്കുന്നു.',
 	'bookinfo-result-title' => 'ശീർഷകം:',
 	'bookinfo-result-author' => 'ഗ്രന്ഥകർത്താവ്:',
 	'bookinfo-result-publisher' => 'പ്രസാധകൻ:',
@@ -1130,7 +1130,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'bookinfo-header' => 'ग्रंथ माहिती',
-	'bookinfo-desc' => 'जालावरील माहिती घेवून [[Special:Booksources]] वाढवा',
+	'bookinformation-desc' => 'जालावरील माहिती घेवून [[Special:Booksources]] वाढवा',
 	'bookinfo-result-title' => 'शीर्षक:',
 	'bookinfo-result-author' => 'लेखक:',
 	'bookinfo-result-publisher' => 'प्रकाशक:',
@@ -1182,7 +1182,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'bookinfo-header' => 'Boekinformatie',
-	'bookinfo-desc' => 'Uitbreiding voor de [[Special:Booksources|speciale pagina Boekinformatie]] met informatie van een webservice',
+	'bookinformation-desc' => 'Uitbreiding voor de [[Special:Booksources|speciale pagina Boekinformatie]] met informatie van een webservice',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Auteur:',
 	'bookinfo-result-publisher' => 'Uitgever:',
@@ -1201,7 +1201,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'bookinfo-header' => 'Bokinformasjon',
-	'bookinfo-desc' => 'Utvider [[Special:Booksources|sida med bokkjelder]] med informasjon frå ei nettenesta',
+	'bookinformation-desc' => 'Utvider [[Special:Booksources|sida med bokkjelder]] med informasjon frå ei nettenesta',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Forfattar:',
 	'bookinfo-result-publisher' => 'Utgjevar:',
@@ -1219,7 +1219,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'bookinfo-header' => 'Bokinformasjon',
-	'bookinfo-desc' => 'Utvider [[Special:Booksources|siden med bokkilder]] med informasjon fra en nettjeneste',
+	'bookinformation-desc' => 'Utvider [[Special:Booksources|siden med bokkilder]] med informasjon fra en nettjeneste',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Forfatter:',
 	'bookinfo-result-publisher' => 'Utgiver:',
@@ -1249,7 +1249,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'bookinfo-header' => 'Entresenhas suls obratges',
-	'bookinfo-desc' => "Espandís [[Special:Booksources|la pagina especiala de las fonts del libre]] amb d'entresenhas a partir d’un servici internet",
+	'bookinformation-desc' => "Espandís [[Special:Booksources|la pagina especiala de las fonts del libre]] amb d'entresenhas a partir d’un servici internet",
 	'bookinfo-result-title' => 'Títol :',
 	'bookinfo-result-author' => 'Autor :',
 	'bookinfo-result-publisher' => 'Editor :',
@@ -1277,7 +1277,7 @@ $messages['os'] = array(
  * @author Katimawan2005
  */
 $messages['pam'] = array(
-	'bookinfo-desc' => 'Miragdagan ya [[Special:Booksources]] kapamilatan ning impormasiun ibat king metung a web service',
+	'bookinformation-desc' => 'Miragdagan ya [[Special:Booksources]] kapamilatan ning impormasiun ibat king metung a web service',
 	'bookinfo-result-title' => 'Bansag:',
 	'bookinfo-result-author' => 'Talasulat',
 	'bookinfo-result-publisher' => 'Talabulalag (Publisher):',
@@ -1299,7 +1299,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'bookinfo-header' => 'Informacja o książce',
-	'bookinfo-desc' => 'Rozszerza [[Special:Booksources|informacje o źródłach]] korzystając z serwisów internetowych o książkach',
+	'bookinformation-desc' => 'Rozszerza [[Special:Booksources|informacje o źródłach]] korzystając z serwisów internetowych o książkach',
 	'bookinfo-result-title' => 'Tytuł:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Wydawca:',
@@ -1318,7 +1318,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'bookinfo-header' => 'Anformassion ant sëj lìber',
-	'bookinfo-desc' => 'A espand la [[Special:Booksources|pàgina special dle sorziss sij lìber]] con anformassion pijà da un sërvissi Web',
+	'bookinformation-desc' => 'A espand la [[Special:Booksources|pàgina special dle sorziss sij lìber]] con anformassion pijà da un sërvissi Web',
 	'bookinfo-result-title' => 'Tìtol:',
 	'bookinfo-result-author' => 'Aotor:',
 	'bookinfo-result-publisher' => 'Editor:',
@@ -1352,7 +1352,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'bookinfo-header' => 'Informação de livro',
-	'bookinfo-desc' => 'Expande a [[Special:Booksources|página especial de fontes de livros]] com informação proveniente de um web service',
+	'bookinformation-desc' => 'Expande a [[Special:Booksources|página especial de fontes de livros]] com informação proveniente de um web service',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editora:',
@@ -1370,7 +1370,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'bookinfo-header' => 'Informações do livro',
-	'bookinfo-desc' => 'Expande a [[Special:Booksources|página especial de fontes de livros]] com informação proveniente de um serviço web',
+	'bookinformation-desc' => 'Expande a [[Special:Booksources|página especial de fontes de livros]] com informação proveniente de um serviço web',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editora:',
@@ -1402,7 +1402,7 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'bookinfo-header' => 'Informaţii despre carte',
-	'bookinfo-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărţi]] cu informaţii de la un serviciu web',
+	'bookinformation-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărţi]] cu informaţii de la un serviciu web',
 	'bookinfo-result-title' => 'Titlu:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editură:',
@@ -1434,7 +1434,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'bookinfo-header' => 'Информация о книге',
-	'bookinfo-desc' => 'Расширяет [[Special:Booksources|служебную страницу «Источники книг»]] сведениями из веб-служб',
+	'bookinformation-desc' => 'Расширяет [[Special:Booksources|служебную страницу «Источники книг»]] сведениями из веб-служб',
 	'bookinfo-result-title' => 'Название:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издательство:',
@@ -1452,7 +1452,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'bookinfo-header' => 'Кинигэ туһунан',
-	'bookinfo-desc' => 'Ситим (Веб) сулууспаларын сибидиэнньэлэринэн [[Special:Booksources|кинигэлэр источниктарын туһунан анал сирэйи]] кэҥэтэр',
+	'bookinformation-desc' => 'Ситим (Веб) сулууспаларын сибидиэнньэлэринэн [[Special:Booksources|кинигэлэр источниктарын туһунан анал сирэйи]] кэҥэтэр',
 	'bookinfo-result-title' => 'Аата:',
 	'bookinfo-result-author' => 'Суруйааччы:',
 	'bookinfo-result-publisher' => 'Кинигэ кыһата:',
@@ -1470,7 +1470,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'bookinfo-header' => 'Informácie o knihách',
-	'bookinfo-desc' => 'Rozširuje špeciálnu stránku [[Special:Booksources|Knižné zdroje]] o informácie z webovej služby',
+	'bookinformation-desc' => 'Rozširuje špeciálnu stránku [[Special:Booksources|Knižné zdroje]] o informácie z webovej služby',
 	'bookinfo-result-title' => 'Názov:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Vydavateľ:',
@@ -1516,7 +1516,7 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'bookinfo-header' => 'Informatione uur Bouke',
-	'bookinfo-desc' => 'Föiget [[Special:Booksources|Boukwällen-Spezioalsiede]] bietou mäd Informatione fon n Webanboad',
+	'bookinformation-desc' => 'Föiget [[Special:Booksources|Boukwällen-Spezioalsiede]] bietou mäd Informatione fon n Webanboad',
 	'bookinfo-result-title' => 'Tittel:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Ferlaach:',
@@ -1534,7 +1534,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'bookinfo-header' => 'Émbaran buku',
-	'bookinfo-desc' => 'Legaan [[Special:Booksources]] ngawengku émbaran ti layanan loka',
+	'bookinformation-desc' => 'Legaan [[Special:Booksources]] ngawengku émbaran ti layanan loka',
 	'bookinfo-result-title' => 'Judul:',
 	'bookinfo-result-author' => 'Pangarang:',
 	'bookinfo-result-publisher' => 'Pamedal:',
@@ -1552,7 +1552,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'bookinfo-header' => 'Bokinformation',
-	'bookinfo-desc' => 'Utökar [[Special:Booksources|specialsidan med bokkällor]] med information från en webbservice',
+	'bookinformation-desc' => 'Utökar [[Special:Booksources|specialsidan med bokkällor]] med information från en webbservice',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Författare:',
 	'bookinfo-result-publisher' => 'Utgivare:',
@@ -1589,7 +1589,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'bookinfo-header' => 'పుస్తకపు సమాచారం',
-	'bookinfo-desc' => 'ఏదైనా వెబ్ సేవ నుండి వచ్చిన సమాచారంతో [[Special:Booksources|పుస్తక మూలాల ప్రత్యేక పేజీ]]ని విస్తరిస్తుంది',
+	'bookinformation-desc' => 'ఏదైనా వెబ్ సేవ నుండి వచ్చిన సమాచారంతో [[Special:Booksources|పుస్తక మూలాల ప్రత్యేక పేజీ]]ని విస్తరిస్తుంది',
 	'bookinfo-result-title' => 'శీర్షిక:',
 	'bookinfo-result-author' => 'రచయిత:',
 	'bookinfo-result-publisher' => 'ప్రచురణకర్త:',
@@ -1617,7 +1617,7 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'bookinfo-header' => 'Иттилооти китоб',
-	'bookinfo-desc' => '[[Special:Booksources]]ро бо истифода аз иттилооти як вебхидмати Интернетӣ густариш медиҳад',
+	'bookinformation-desc' => '[[Special:Booksources]]ро бо истифода аз иттилооти як вебхидмати Интернетӣ густариш медиҳад',
 	'bookinfo-result-title' => 'Унвон:',
 	'bookinfo-result-author' => 'Муаллиф:',
 	'bookinfo-result-publisher' => 'Нашриёт:',
@@ -1654,7 +1654,7 @@ $messages['tg-latn'] = array(
  */
 $messages['th'] = array(
 	'bookinfo-header' => 'ข้อมูลหนังสือ',
-	'bookinfo-desc' => 'ข้อมูลเพิ่มเติม[[Special:Booksources|หน้าพิเศษเกี่ยวกับข้อมูลหนังสือ]]จากบริการบนเว็บไซต์',
+	'bookinformation-desc' => 'ข้อมูลเพิ่มเติม[[Special:Booksources|หน้าพิเศษเกี่ยวกับข้อมูลหนังสือ]]จากบริการบนเว็บไซต์',
 	'bookinfo-result-title' => 'ชื่อหนังสือ:',
 	'bookinfo-result-author' => 'ผู้แต่ง:',
 	'bookinfo-result-publisher' => 'ผู้ตีพิมพ์:',
@@ -1672,7 +1672,7 @@ $messages['th'] = array(
  */
 $messages['tl'] = array(
 	'bookinfo-header' => 'Kabatiran sa aklat',
-	'bookinfo-desc' => 'Nagpapalawak sa [[Special:Booksources|natatanging pahina ng mga pinagmulan ng mga aklat]] na may kabatiran mula sa isang palingkurang pang-web',
+	'bookinformation-desc' => 'Nagpapalawak sa [[Special:Booksources|natatanging pahina ng mga pinagmulan ng mga aklat]] na may kabatiran mula sa isang palingkurang pang-web',
 	'bookinfo-result-title' => 'Pamagat:',
 	'bookinfo-result-author' => 'May-akda:',
 	'bookinfo-result-publisher' => 'Tagapaglathala:',
@@ -1692,7 +1692,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'bookinfo-header' => 'Kitap bilgisi',
-	'bookinfo-desc' => '[[Special:Booksources|Kitap kaynakları özel sayfasını]], bir web servisinden bilgilerle genişletir',
+	'bookinformation-desc' => '[[Special:Booksources|Kitap kaynakları özel sayfasını]], bir web servisinden bilgilerle genişletir',
 	'bookinfo-result-title' => 'Başlık:',
 	'bookinfo-result-author' => 'Yazar:',
 	'bookinfo-result-publisher' => 'Yayımcı:',
@@ -1710,7 +1710,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'bookinfo-header' => 'Інформація про книгу',
-	'bookinfo-desc' => 'Розширює [[Special:Booksources|спеціальну сторінку «Джерела книг»]] відомостями з веб-служб',
+	'bookinformation-desc' => 'Розширює [[Special:Booksources|спеціальну сторінку «Джерела книг»]] відомостями з веб-служб',
 	'bookinfo-result-title' => 'Назва:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Видавництво:',
@@ -1728,7 +1728,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'bookinfo-header' => 'Informazion sui libri',
-	'bookinfo-desc' => 'Espande la [[Special:Booksources|pàxena speciale par sercar le fonti librarie]] con informazion provenienti da un servizio web',
+	'bookinformation-desc' => 'Espande la [[Special:Booksources|pàxena speciale par sercar le fonti librarie]] con informazion provenienti da un servizio web',
 	'bookinfo-result-title' => 'Titolo:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editor:',
@@ -1759,7 +1759,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'bookinfo-header' => 'Thông tin về sách',
-	'bookinfo-desc' => 'Mở rộng [[Special:Booksources|trang đặc biệt về tìm kiếm sách]] để cung cấp thông tin từ một dịch vụ trên web',
+	'bookinformation-desc' => 'Mở rộng [[Special:Booksources|trang đặc biệt về tìm kiếm sách]] để cung cấp thông tin từ một dịch vụ trên web',
 	'bookinfo-result-title' => 'Tên:',
 	'bookinfo-result-author' => 'Tác giả:',
 	'bookinfo-result-publisher' => 'Nhà xuất bản:',
@@ -1799,7 +1799,7 @@ $messages['yi'] = array(
 /** Yue (粵語) */
 $messages['yue'] = array(
 	'bookinfo-header' => '書籍資料',
-	'bookinfo-desc' => '擴充[[Special:Booksources]]嘅功能由一個網站服務囉到信息',
+	'bookinformation-desc' => '擴充[[Special:Booksources]]嘅功能由一個網站服務囉到信息',
 	'bookinfo-result-title' => '標題:',
 	'bookinfo-result-author' => '作者:',
 	'bookinfo-result-publisher' => '出版者:',
@@ -1817,7 +1817,7 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'bookinfo-header' => '书籍资料',
-	'bookinfo-desc' => '扩展[[Special:Booksources|{{int:booksources}}]]的功能以们外部网站取得信息',
+	'bookinformation-desc' => '扩展[[Special:Booksources|{{int:booksources}}]]的功能以们外部网站取得信息',
 	'bookinfo-result-title' => '标题：',
 	'bookinfo-result-author' => '作者:',
 	'bookinfo-result-publisher' => '出版者:',
@@ -1833,7 +1833,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'bookinfo-header' => '書籍資料',
-	'bookinfo-desc' => '擴充[[Special:Booksources|{{int:booksources}}]]的功能得以從外部網站取得資訊',
+	'bookinformation-desc' => '擴充[[Special:Booksources|{{int:booksources}}]]的功能得以從外部網站取得資訊',
 	'bookinfo-result-title' => '標題:',
 	'bookinfo-result-author' => '作者:',
 	'bookinfo-result-publisher' => '出版者:',

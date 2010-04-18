@@ -9,7 +9,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Ajax Show Editors',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AjaxShowEditors',
 	'author' => 'Ashar Voultoiz',
-	'descriptionmsg' => 'ajax-se-desc',
+	'descriptionmsg' => 'ajaxshoweditors-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';

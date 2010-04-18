@@ -18,7 +18,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Back and Forth',
 	'author' => 'Rob Church',
-	'descriptionmsg' => 'backforth-desc',
+	'descriptionmsg' => 'backandforth-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
 );
 

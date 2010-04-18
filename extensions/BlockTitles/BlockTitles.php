@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'BlockTitles',
 	'author' => 'Travis Derouin',
-	'descriptionmsg' => 'block_title_error-desc',
+	'descriptionmsg' => 'blocktitles-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BlockTitles',
 );
 

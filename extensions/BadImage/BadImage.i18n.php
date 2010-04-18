@@ -13,7 +13,7 @@ $messages = array();
 /* English (Rob Church) */
 $messages['en'] = array(
 	'badimages'                => 'Bad image list',
-	'badimages-desc'           => 'Extend the bad image list capabilities of MediaWiki',
+	'badimage-desc'           => 'Extend the bad image list capabilities of MediaWiki',
 	'badimages-add-btn'        => 'Add',
 	'badimages-added'          => '$1 was added to the list.',
 	'badimages-count'          => "There {{PLURAL:$1|is|are}} '''$1''' {{PLURAL:$1|image|images}} on the bad image list.",
@@ -41,7 +41,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'badimages' => '{{Identical|Bad image list}}',
-	'badimages-desc' => 'Shown in [[Special:Version]]',
+	'badimage-desc' => 'Shown in [[Special:Version]]',
 	'badimages-add-btn' => '{{Identical|Add}}',
 	'badimages-name' => '{{Identical|Name}}',
 	'badimages-reason' => '{{Identical|Reason}}',
@@ -128,7 +128,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'badimages' => 'قائمة الصور السيئة',
-	'badimages-desc' => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
+	'badimage-desc' => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
 	'badimages-add-btn' => 'أضف',
 	'badimages-added' => '$1 تمت إضافتها للقائمة.',
 	'badimages-count' => "{{PLURAL:$1|توجد|توجد}} '''$1''' {{PLURAL:$1|صورة|صورة}} في قائمة الصور السيئة.",
@@ -162,7 +162,7 @@ $messages['arc'] = array(
  */
 $messages['arz'] = array(
 	'badimages' => 'قائمة الصور السيئة',
-	'badimages-desc' => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
+	'badimage-desc' => 'يمد قدرات قائمة الصور السيئة لميدياويكي',
 	'badimages-add-btn' => 'إضافة',
 	'badimages-added' => '$1 تمت إضافتها للقائمة.',
 	'badimages-count' => "{{PLURAL:$1|توجد|توجد}} '''$1''' {{PLURAL:$1|صورة|صورة}} فى قائمة الصور السيئة.",
@@ -188,7 +188,7 @@ $messages['arz'] = array(
  */
 $messages['ast'] = array(
 	'badimages' => "Llista d'imáxenes non válides",
-	'badimages-desc' => "Esparde les capacidaes de la llista d'imáxenes non válides de MediaWiki",
+	'badimage-desc' => "Esparde les capacidaes de la llista d'imáxenes non válides de MediaWiki",
 	'badimages-add-btn' => 'Añader',
 	'badimages-added' => 'Añadióse $1 a la llista.',
 	'badimages-count' => "Hai '''$1''' imáxenes na llista d'imáxenes non válides.",
@@ -267,7 +267,7 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'badimages' => 'Сьпіс забароненых выяваў',
-	'badimages-desc' => 'Пашырае магчымасьці сьпісу забароненых выяваў MediaWiki',
+	'badimage-desc' => 'Пашырае магчымасьці сьпісу забароненых выяваў MediaWiki',
 	'badimages-add-btn' => 'Дадаць',
 	'badimages-added' => '$1 даданая ў сьпіс.',
 	'badimages-count' => "Усяго ў сьпісе '''$1''' {{PLURAL:$1|забароненая выява|забароненыя выявы|забароненых выяваў}}.",
@@ -295,7 +295,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'badimages' => 'Списък с неприемливи файлове',
-	'badimages-desc' => 'Разширява възможностите на МедияУики за управление на списъка с непозволени файлове',
+	'badimage-desc' => 'Разширява възможностите на МедияУики за управление на списъка с непозволени файлове',
 	'badimages-add-btn' => 'Добавяне',
 	'badimages-added' => 'Файлът $1 беше добавен към списъка.',
 	'badimages-count' => "Списъкът съдържа '''$1''' {{PLURAL:$1|неприемлив файл|неприемливи файла}}.",
@@ -321,7 +321,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'badimages' => 'অচল ছবির তালিকা',
-	'badimages-desc' => 'মিডিয়াউইকির অচল ছবির তালিকা তৈরির ক্ষমতা সম্প্রসারণ করা হবে',
+	'badimage-desc' => 'মিডিয়াউইকির অচল ছবির তালিকা তৈরির ক্ষমতা সম্প্রসারণ করা হবে',
 	'badimages-add-btn' => 'যোগ করা হোক',
 	'badimages-added' => '$1-কে তালিকাতে যোগ করা হয়েছে।',
 	'badimages-count' => "অচল ছবির তালিকায় '''$1'''টি ছবি আছে।",
@@ -347,7 +347,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'badimages' => 'Roll ar skeudennoù fall',
-	'badimages-desc' => 'Kreskiñ a ra barregezh ar roll skeudennoù da argas evit MediaWiki',
+	'badimage-desc' => 'Kreskiñ a ra barregezh ar roll skeudennoù da argas evit MediaWiki',
 	'badimages-add-btn' => 'Ouzhpennañ',
 	'badimages-added' => "Ouzhpennet eo bet $1 d'ar roll.",
 	'badimages-count' => "'''$1''' {{PLURAL:$1|skeudenn|skeudenn}} {{PLURAL:$1|zo|zo}} war roll ar skeudennoù fall.",
@@ -374,7 +374,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'badimages' => 'Spisak pogrešnih slika',
-	'badimages-desc' => 'Proširuje mogućnosti spiska loših slika na MediaWiki',
+	'badimage-desc' => 'Proširuje mogućnosti spiska loših slika na MediaWiki',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je dodan na spisak.',
 	'badimages-count' => "{{PLURAL:$1|Postoji|Postoje|Postoji}} '''$1''' {{PLURAL:$1|slika|slike|slika}} na spisku loših slika.",
@@ -402,7 +402,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'badimages' => "Llista d'imatges dolentes",
-	'badimages-desc' => "Amplia les capacitats de la llista d'imatges defectuoses de MediaWiki",
+	'badimage-desc' => "Amplia les capacitats de la llista d'imatges defectuoses de MediaWiki",
 	'badimages-add-btn' => 'Afegeix',
 	'badimages-added' => '$1 ha estat afegit a la llista.',
 	'badimages-count' => "Hi {{PLURAL:$1|ha|ha}} '''$1''' {{PLURAL:$1|imatge|imatges}} a la llista d'imatges defectuoses.",
@@ -432,7 +432,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'badimages' => 'Seznam špatných souborů',
-	'badimages-desc' => 'Rozšiřuje schopnosti seznamu špatných souborů MediaWiki',
+	'badimage-desc' => 'Rozšiřuje schopnosti seznamu špatných souborů MediaWiki',
 	'badimages-add-btn' => 'Přidat',
 	'badimages-added' => '$1 byl přidán do seznamu',
 	'badimages-count' => "Na seznamu špatných souborů {{PLURAL:$1|je|jsou|je}} '''$1''' {{PLURAL:$1|soubor|soubory|souborů}}.",
@@ -471,7 +471,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'badimages' => 'Liste unerwünschter Bilder',
-	'badimages-desc' => 'Erweitert die Einsatzmöglichkeiten der Liste unerwünschter Bilder in MediaWiki',
+	'badimage-desc' => 'Erweitert die Einsatzmöglichkeiten der Liste unerwünschter Bilder in MediaWiki',
 	'badimages-add-btn' => 'Füge hinzu',
 	'badimages-added' => '$1 wurde der Liste hinzugefügt',
 	'badimages-count' => "Die Liste unerwünschter Bilder enthält '''$1''' {{PLURAL:$1|Eintrag|Einträge}}",
@@ -506,7 +506,7 @@ $messages['de-formal'] = array(
  */
 $messages['dsb'] = array(
 	'badimages' => 'Lisćina špatnych wobrazow',
-	'badimages-desc' => 'Móžnosći lisćiny špatnych wobrazow w MediaWiki rozšyriś',
+	'badimage-desc' => 'Móžnosći lisćiny špatnych wobrazow w MediaWiki rozšyriś',
 	'badimages-add-btn' => 'Pśidaś',
 	'badimages-added' => '$1 bu lisćinje pśidany.',
 	'badimages-count' => "{{PLURAL:$1|Jo|Stej|Su|Jo}} '''$1''' {{PLURAL:$1||wobraz|wobrazej|wobraze|wobrazow}} na lisćinje špatnych wobrazow.",
@@ -536,7 +536,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'badimages' => 'Κατάλογος κακών εικόνων',
-	'badimages-desc' => 'Επεκτείνει τις δυνατότηες της λίστας κακών εικόνων του MediaWiki',
+	'badimage-desc' => 'Επεκτείνει τις δυνατότηες της λίστας κακών εικόνων του MediaWiki',
 	'badimages-add-btn' => 'Πρόσθεσε',
 	'badimages-added' => '$1 έχει προστεθεί στη λίστα.',
 	'badimages-count' => "{{PLURAL:$1|Υπάρχει|Υπάρχουν}} '''$1''' {{PLURAL:$1|εικόνα|εικόνες}} στον κατάλογο κακών εικόνων.",
@@ -564,7 +564,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'badimages' => 'Nevalida bildo-listo',
-	'badimages-desc' => 'Etendu la kapablojn pri la malbona bildolisto de MediaWiki',
+	'badimage-desc' => 'Etendu la kapablojn pri la malbona bildolisto de MediaWiki',
 	'badimages-add-btn' => 'Aldoni',
 	'badimages-added' => '$1 estis enlistigita.',
 	'badimages-count' => "Estas '''$1''' {{PLURAL:$1|bildo|bildoj}} en la listo de nevalidaj bildoj.",
@@ -594,7 +594,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'badimages' => 'Lista de malas imágenes',
-	'badimages-desc' => 'Lista de imágenes malas de las capacibilodades de MediaWiki',
+	'badimage-desc' => 'Lista de imágenes malas de las capacibilodades de MediaWiki',
 	'badimages-add-btn' => 'Agregar',
 	'badimages-added' => '$1 fue agregada satisfactoriamente a la lista.',
 	'badimages-count' => "Ya hay '''$1''' {{PLURAL:$1|imagen|imágenes}} en la lista de imágenes malas.",
@@ -623,7 +623,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'badimages' => 'Irudi txarren zerrenda',
-	'badimages-desc' => 'MediaWikiren irudi txarren zerrend gaitasuna hedatu',
+	'badimage-desc' => 'MediaWikiren irudi txarren zerrend gaitasuna hedatu',
 	'badimages-add-btn' => 'Gehitu',
 	'badimages-added' => '$1 zerrendara gehitu da.',
 	'badimages-count' => "{{PLURAL:$1|Irudi '''$1'''|'''$1''' irudi}} {{PLURAL:$1|dago|daude}} irudi txarren zerrendan.",
@@ -679,7 +679,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'badimages' => 'Kiellettyjen kuvien luettelo',
-	'badimages-desc' => 'Kehittää MediaWikin ominaisuuksia huonojen kuvatiedostojen listaamisen suhteen',
+	'badimage-desc' => 'Kehittää MediaWikin ominaisuuksia huonojen kuvatiedostojen listaamisen suhteen',
 	'badimages-add-btn' => 'Lisää',
 	'badimages-added' => '”$1” lisättiin luetteloon.',
 	'badimages-count' => "Luettelossa on '''$1''' {{PLURAL:$1|kuva|kuvaa}}.",
@@ -709,7 +709,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'badimages' => 'Liste des images indésirables',
-	'badimages-desc' => 'Augmente la capacité de la liste des images indésirables de MediaWiki',
+	'badimage-desc' => 'Augmente la capacité de la liste des images indésirables de MediaWiki',
 	'badimages-add-btn' => 'Ajouter',
 	'badimages-added' => '$1 a été ajoutée à la liste.',
 	'badimages-count' => "Il y a '''$1''' image{{PLURAL:$1||s}} dans la liste des images indésirables.",
@@ -761,7 +761,7 @@ $messages['frc'] = array(
  */
 $messages['frp'] = array(
 	'badimages' => 'Lista de les crouyes émâges',
-	'badimages-desc' => 'Ôgmente la capacitât de la lista de les crouyes émâges de MediaWiki.',
+	'badimage-desc' => 'Ôgmente la capacitât de la lista de les crouyes émâges de MediaWiki.',
 	'badimages-add-btn' => 'Apondre',
 	'badimages-added' => '$1 at étâ apondua a la lista.',
 	'badimages-count' => "Y at '''$1''' émâge{{PLURAL:$1||s}} dens la lista de les crouyes émâges.",
@@ -805,7 +805,7 @@ $messages['gag'] = array(
  */
 $messages['gl'] = array(
 	'badimages' => 'Lista de imaxes con fallas',
-	'badimages-desc' => 'Incluír a lista de imaxes con fallas as habilidades de MediaWiki',
+	'badimage-desc' => 'Incluír a lista de imaxes con fallas as habilidades de MediaWiki',
 	'badimages-add-btn' => 'Engadir',
 	'badimages-added' => '$1 foi engadida á lista.',
 	'badimages-count' => "Hai '''$1''' {{PLURAL:$1|imaxe|imaxes}} na lista de imaxes con fallas.",
@@ -851,7 +851,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'badimages' => 'Lischt vu nit gwinschte Bilder',
-	'badimages-desc' => 'Erwyteret d Yysatzmegligkeite vu dr Lischt vu nit gwinschte Bilder in MediaWiki',
+	'badimage-desc' => 'Erwyteret d Yysatzmegligkeite vu dr Lischt vu nit gwinschte Bilder in MediaWiki',
 	'badimages-add-btn' => 'Fieg dezue',
 	'badimages-added' => '$1 isch in d Lischt dryygsetzt wore',
 	'badimages-count' => "In dr Lischt vu nit gwinschte Bilder het s '''$1''' {{PLURAL:$1|Yytrag|Yyträg}}",
@@ -886,7 +886,7 @@ $messages['gv'] = array(
  */
 $messages['haw'] = array(
 	'badimages' => 'Papa o nā ki‘i ‘ino',
-	'badimages-desc' => 'Holomua i ka mākaukau o ka papa o nā ki‘i ‘ino o MediaWiki',
+	'badimage-desc' => 'Holomua i ka mākaukau o ka papa o nā ki‘i ‘ino o MediaWiki',
 	'badimages-add-btn' => 'Ho‘ohui',
 	'badimages-added' => 'Hō‘ulu‘ulu ‘ia ‘o $1 i ka papa.',
 	'badimages-count' => "Aia {{PLURAL:$1||}} {{PLURAL:$1|ke ki‘i|nā ki‘i}} '''$1'''  ma ka papa o nā ki‘i ‘ino.",
@@ -913,7 +913,7 @@ $messages['haw'] = array(
  */
 $messages['he'] = array(
 	'badimages' => 'רשימת תמונות אסורות',
-	'badimages-desc' => 'הרחבת היכולות של רשימת התמונות האסורות של מדיה ויקי',
+	'badimage-desc' => 'הרחבת היכולות של רשימת התמונות האסורות של מדיה ויקי',
 	'badimages-add-btn' => 'הוספה',
 	'badimages-added' => '$1 נוסף לרשימה.',
 	'badimages-count' => "יש {{PLURAL:$1|תמונה '''אחת'''|'''$1''' תמונות}}  ברשימת התמונות האסורות.",
@@ -940,7 +940,7 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'badimages' => 'गलत चित्र सूची',
-	'badimages-desc' => 'मीडियाविकिकी गलत चित्र सूची दर्शाने की क्षमता बढायें',
+	'badimage-desc' => 'मीडियाविकिकी गलत चित्र सूची दर्शाने की क्षमता बढायें',
 	'badimages-add-btn' => 'बढायें',
 	'badimages-added' => '$1 को सूची में डाला गया हैं।',
 	'badimages-count' => "गलत चित्र सूची में कुल '''$1''' {{PLURAL:$1|चित्र|चित्र}} हैं।",
@@ -975,7 +975,7 @@ $messages['hil'] = array(
  */
 $messages['hr'] = array(
 	'badimages' => 'Popis loših slika',
-	'badimages-desc' => 'Proširi popis mogućnosti MedijaWikija u svezi loših slika',
+	'badimage-desc' => 'Proširi popis mogućnosti MedijaWikija u svezi loših slika',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je dodana na popis.',
 	'badimages-count' => "Na popisu loših slika {{PLURAL:$1|je|su}} '''$1''' {{PLURAL:$1|slika|slike}}.",
@@ -1002,7 +1002,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'badimages' => 'Lisćina njewitanych wobrazow',
-	'badimages-desc' => 'Móžnosće lisćiny njepožadanych wobrazow w MediaWiki rozšěrić',
+	'badimage-desc' => 'Móžnosće lisćiny njepožadanych wobrazow w MediaWiki rozšěrić',
 	'badimages-add-btn' => 'Přidać',
 	'badimages-added' => '$1 bu k lisćinje přidaty.',
 	'badimages-count' => "Lisćina njewitanych wobrazow '''$1''' {{PLURAL:$1|zapisk|zapiskaj|zapiski|zapiskow}} wobsahuje.",
@@ -1030,7 +1030,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'badimages' => 'Hibás képek listája',
-	'badimages-desc' => 'Kibővíti a MediaWiki hibás kép listájának képességeit',
+	'badimage-desc' => 'Kibővíti a MediaWiki hibás kép listájának képességeit',
 	'badimages-add-btn' => 'Hozzáadás',
 	'badimages-added' => '$1 hozzá lett adva a listához',
 	'badimages-count' => "'''{{PLURAL:$1|egy|$1}}''' kép található a hibás képek listáján.",
@@ -1057,7 +1057,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'badimages' => 'Lista de imagines problematic',
-	'badimages-desc' => 'Extende le capabilitates de listar imagines problematic de MediaWiki',
+	'badimage-desc' => 'Extende le capabilitates de listar imagines problematic de MediaWiki',
 	'badimages-add-btn' => 'Adder',
 	'badimages-added' => '$1 ha essite addite al lista.',
 	'badimages-count' => "Il ha '''$1''' {{PLURAL:$1|imagine|imagines}} in le lista de imagines problematic.",
@@ -1087,7 +1087,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'badimages' => 'Daftar gambar buruk',
-	'badimages-desc' => 'Memperkaya kemampuan daftar gambar buruk MediaWiki',
+	'badimage-desc' => 'Memperkaya kemampuan daftar gambar buruk MediaWiki',
 	'badimages-add-btn' => 'Tambahkan',
 	'badimages-added' => '$1 telah ditambahkan ke dalam daftar.',
 	'badimages-count' => "{{PLURAL:$1|Terdapat|Terdapat}} '''$1''' {{PLURAL:$1|gambar|gambar}} di dalam daftar gambar buruk.",
@@ -1143,7 +1143,7 @@ $messages['io'] = array(
  */
 $messages['is'] = array(
 	'badimages' => 'Slæmur myndalisti',
-	'badimages-desc' => 'Lengja slæma myndalistann á MediaWiki',
+	'badimage-desc' => 'Lengja slæma myndalistann á MediaWiki',
 	'badimages-add-btn' => 'Bæta við',
 	'badimages-added' => '$1 var bætt við listann.',
 	'badimages-count' => "Það eru '''$1''' myndir á slæma myndalistanum.",
@@ -1172,7 +1172,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'badimages' => 'Elenco dei file discutibili',
-	'badimages-desc' => 'Estende le funzioni di MediaWiki per gestire le immagini discutibili',
+	'badimage-desc' => 'Estende le funzioni di MediaWiki per gestire le immagini discutibili',
 	'badimages-add-btn' => 'Aggiungi',
 	'badimages-added' => "Il file $1 è stato aggiunto all'elenco.",
 	'badimages-count' => "{{PLURAL:$1|C'è|Ci sono}} '''$1''' {{PLURAL:$1|immagine|immagini}} nella lista delle immagini discutibili.",
@@ -1201,7 +1201,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'badimages' => '好ましくない画像の一覧',
-	'badimages-desc' => 'MediaWiki に「好ましくない画像一覧」機能を追加する',
+	'badimage-desc' => 'MediaWiki に「好ましくない画像一覧」機能を追加する',
 	'badimages-add-btn' => '追加',
 	'badimages-added' => '$1 を一覧に追加しました。',
 	'badimages-count' => "この問題のある画像一覧には '''$1''' {{PLURAL:$1|個}}の画像が登録されています。",
@@ -1228,7 +1228,7 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'badimages' => 'Daftar gambar ala',
-	'badimages-desc' => 'Ambakna kapabilitas daftar gambar ala MediaWiki',
+	'badimage-desc' => 'Ambakna kapabilitas daftar gambar ala MediaWiki',
 	'badimages-add-btn' => 'Tambahna',
 	'badimages-added' => '$1 wis ditambahaké ing daftar.',
 	'badimages-count' => "{{PLURAL:$1|Ana|Ana}} '''$1''' {{PLURAL:$1|gambar|gambar-gambar}} ing daftar gambar ala.",
@@ -1274,7 +1274,7 @@ $messages['ka'] = array(
  */
 $messages['km'] = array(
 	'badimages' => 'បញ្ជីរូបភាពមិនល្អ',
-	'badimages-desc' => 'បន្ថែមសមត្ថភាពនៃបញ្ជីរូបភាពមិនល្អរបស់មេឌាវិគី',
+	'badimage-desc' => 'បន្ថែមសមត្ថភាពនៃបញ្ជីរូបភាពមិនល្អរបស់មេឌាវិគី',
 	'badimages-add-btn' => 'បន្ថែម',
 	'badimages-added' => '$1ត្រូវបានបន្ថែមទៅក្នុងបញ្ជីហើយ។',
 	'badimages-count' => "{{PLURAL:$1|មាន|មាន}} '''$1''' {{PLURAL:$1|រូបភាព|រូបភាព}} ក្នុងបញ្ជីរូបភាពមិនល្អ។",
@@ -1312,7 +1312,7 @@ $messages['kn'] = array(
  */
 $messages['ko'] = array(
 	'badimages' => '파일 금지 목록',
-	'badimages-desc' => '미디어위키의 파일 금지 기능을 확장',
+	'badimage-desc' => '미디어위키의 파일 금지 기능을 확장',
 	'badimages-add-btn' => '추가',
 	'badimages-added' => '$1 파일이 목록에 추가되었습니다.',
 	'badimages-count' => "현재 금지된 파일이 '''$1'''개 있습니다.",
@@ -1339,7 +1339,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'badimages' => 'Leß met unjewollte Belder',
-	'badimages-desc' => '<span class="plainlinks">Verjüßert de Müjjescheite fun de Leß met [{{fullurl:Special:ProtectedTitles|namespace=6}} verbodde Belder] em MediaWiki.</span>',
+	'badimage-desc' => '<span class="plainlinks">Verjüßert de Müjjescheite fun de Leß met [{{fullurl:Special:ProtectedTitles|namespace=6}} verbodde Belder] em MediaWiki.</span>',
 	'badimages-add-btn' => 'Donn dobei',
 	'badimages-added' => '$1 es en de Leß opjenomme.',
 	'badimages-count' => 'De Leß met verbodde Belder hät {{PLURAL:$1|eine Endraach|$1 Endrääsch|kei Endrääsch|keine Endraach}}.',
@@ -1400,7 +1400,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'badimages' => 'Lëscht vun onerwënschte Biller',
-	'badimages-desc' => "Erweidert d'Méiglechkeete vun der Lëscht vun den onerwënschte Biller op MediaWiki",
+	'badimage-desc' => "Erweidert d'Méiglechkeete vun der Lëscht vun den onerwënschte Biller op MediaWiki",
 	'badimages-add-btn' => 'Derbäisetzen',
 	'badimages-added' => "$1 gouf op d'Lëscht derbäigesat.",
 	'badimages-count' => "Et gëtt '''$1''' {{PLURAL:$1|Bild|Biller}} op der Lëscht vun den onerwënschte Biller.",
@@ -1427,7 +1427,7 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'badimages' => 'Ewegsjaflies plaetjes',
-	'badimages-desc' => 'Oetbreijing veur de lies mit oongewunsjde plaetjes in MediaWiki',
+	'badimage-desc' => 'Oetbreijing veur de lies mit oongewunsjde plaetjes in MediaWiki',
 	'badimages-add-btn' => 'Toevoege',
 	'badimages-added' => '$1 is toegevoeg aon de lies.',
 	'badimages-count' => "Dao {{PLURAL:$1|sjteit|sjtoon}} '''$1''' {{PLURAL:$1|plaetje|plaetjes}} op de ewegsjaflies veur plaetjes.",
@@ -1495,7 +1495,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'badimages' => 'Листа на лоши слики',
-	'badimages-desc' => 'Проширување на можностите на МедијаВики во работата со листата на лоши слики',
+	'badimage-desc' => 'Проширување на можностите на МедијаВики во работата со листата на лоши слики',
 	'badimages-add-btn' => 'Додај',
 	'badimages-added' => '$1 беше додадена во листата',
 	'badimages-count' => "Има {{PLURAL:$1| | }} '''$1''' {{PLURAL:$1|слика|слики}} во листата на лоши слики.",
@@ -1524,7 +1524,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'badimages' => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക',
-	'badimages-desc' => 'മീഡിയവിക്കിയിലെ മോശം ചിത്രങ്ങളുടെ പട്ടികയുടെ കഴിവുകൾ വികസിപ്പിക്കുക',
+	'badimage-desc' => 'മീഡിയവിക്കിയിലെ മോശം ചിത്രങ്ങളുടെ പട്ടികയുടെ കഴിവുകൾ വികസിപ്പിക്കുക',
 	'badimages-add-btn' => 'ചേർക്കുക',
 	'badimages-added' => '$1 പട്ടികയിലേക്കു ചേർത്തിരിക്കുന്നു',
 	'badimages-count' => "മോശം ചിത്രങ്ങളുടെ പട്ടികയിൽ '''$1''' {{PLURAL:$1|ചിത്രം|ചിത്രങ്ങൾ}} ഉണ്ട്.",
@@ -1552,7 +1552,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'badimages' => 'चुकीच्या चित्रांची यादी',
-	'badimages-desc' => 'मीडियावकीची चुकीच्या चित्रांची यादी दाखविण्याची क्षमता वाढवा',
+	'badimage-desc' => 'मीडियावकीची चुकीच्या चित्रांची यादी दाखविण्याची क्षमता वाढवा',
 	'badimages-add-btn' => 'वाढवा',
 	'badimages-added' => '$1 चा यादीत समावेश केलेला आहे.',
 	'badimages-count' => "चुकीच्या चित्रांच्या यादीत '''$1''' {{PLURAL:$1|चित्र आहे|चित्रे आहेत}}.",
@@ -1585,7 +1585,7 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'badimages' => "Lista ta' stampi ħżiena",
-	'badimages-desc' => "Estendi l-kapaċitá għal lista ta' stampi hżiena ta' MedjaWiki",
+	'badimage-desc' => "Estendi l-kapaċitá għal lista ta' stampi hżiena ta' MedjaWiki",
 	'badimages-add-btn' => 'Żid',
 	'badimages-added' => '$1 ġie miżjud fil-lista',
 	'badimages-count' => "{{PLURAL:$1|hemm|Hemm}} '''$1''' {{PLURAL:$1|stampa|stampi}} fuq il-lista ta' stampi ħżiena.",
@@ -1629,7 +1629,7 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'badimages' => 'List mit lege Biller',
-	'badimages-desc' => 'Verbetert de Fähigkeiten vun de List mit lege Biller vun MediaWiki',
+	'badimage-desc' => 'Verbetert de Fähigkeiten vun de List mit lege Biller vun MediaWiki',
 	'badimages-add-btn' => 'Tofögen',
 	'badimages-added' => '$1 to de List toföögt.',
 	'badimages-count' => "Dor {{PLURAL:$1|is|sünd}} '''$1''' {{PLURAL:$1|Bild|Biller}} op de List mit lege Biller.",
@@ -1663,7 +1663,7 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'badimages' => 'Verwijderlijst afbeeldingen',
-	'badimages-desc' => 'Uitbreiding voor de lijst met ongewenste afbeeldingen in MediaWiki',
+	'badimage-desc' => 'Uitbreiding voor de lijst met ongewenste afbeeldingen in MediaWiki',
 	'badimages-add-btn' => 'Toevoegen',
 	'badimages-added' => '$1 is toegevoegd.',
 	'badimages-count' => "Er {{PLURAL:$1|staat|staan}} '''$1''' {{PLURAL:$1|afbeelding|afbeeldingen}} op de verwijderlijst van afbeeldingen.",
@@ -1692,7 +1692,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'badimages' => 'Lista over blokkerte bilete',
-	'badimages-desc' => 'Vidar ut funksjonaliteten til lista over blokkerte bilete i MediaWiki',
+	'badimage-desc' => 'Vidar ut funksjonaliteten til lista over blokkerte bilete i MediaWiki',
 	'badimages-add-btn' => 'Legg til',
 	'badimages-added' => '$1 vart lagt til i lista.',
 	'badimages-count' => "Det finst {{PLURAL:$1|'''eitt'''|'''$1'''}} bilete på lista over blokkerte bilete.",
@@ -1720,7 +1720,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'badimages' => 'Liste over blokkerte bilder',
-	'badimages-desc' => 'Utvider funksjonaliteten til listen over dårlige bilder i MediaWiki',
+	'badimage-desc' => 'Utvider funksjonaliteten til listen over dårlige bilder i MediaWiki',
 	'badimages-add-btn' => 'Legg til',
 	'badimages-added' => '$1 ble lagt til i listen.',
 	'badimages-count' => "Det er {{PLURAL:$1|'''ett''' bilde|'''$1''' bilder}} på lista over blokkerte bilder.",
@@ -1777,7 +1777,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'badimages' => 'Lista dels imatges indesirables',
-	'badimages-desc' => 'Augmenta la capacitat de la lista dels imatges indesirables de MediaWiki',
+	'badimage-desc' => 'Augmenta la capacitat de la lista dels imatges indesirables de MediaWiki',
 	'badimages-add-btn' => 'Apondre',
 	'badimages-added' => '$1 es estat apondut a la tièra.',
 	'badimages-count' => "I a '''$1''' {{PLURAL:$1|imatge|imatges}} dins la lista dels imatges indesirables.",
@@ -1822,7 +1822,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'badimages' => 'Lista złych grafik',
-	'badimages-desc' => 'Rozszerzenie MediaWiki – lista złych plików graficznych',
+	'badimage-desc' => 'Rozszerzenie MediaWiki – lista złych plików graficznych',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => 'dodano $1 do listy.',
 	'badimages-count' => "{{PLURAL:$1|Jest|Są|Jest}} '''$1''' {{PLURAL:$1|pozycja|pozycje|pozycji}} na liście złych grafik.",
@@ -1850,7 +1850,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'badimages' => 'Lista dle figure da deje deuit',
-	'badimages-desc' => 'Estend le possibilità ëd MediaWiki ëd listé le figure grame',
+	'badimage-desc' => 'Estend le possibilità ëd MediaWiki ëd listé le figure grame',
 	'badimages-add-btn' => 'Gionta',
 	'badimages-added' => "$1 a l'é stait giontà a la lista.",
 	'badimages-count' => "A-i {{PLURAL:$1|é|son}} '''$1''' {{PLURAL:$1|figura|figure}} marcà ch'a venta deje deuit.",
@@ -1877,7 +1877,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'badimages' => 'د بدو انځورونو لړليک',
-	'badimages-desc' => 'د ميډياويکي د بدو انځورونو د لړليک اسانتياوې غځول',
+	'badimage-desc' => 'د ميډياويکي د بدو انځورونو د لړليک اسانتياوې غځول',
 	'badimages-add-btn' => 'ورګډول',
 	'badimages-added' => '$1 په لړليک کې ورګډ شو.',
 	'badimages-name' => 'نوم:',
@@ -1897,7 +1897,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'badimages' => 'Lista de imagens problemáticas',
-	'badimages-desc' => 'Estenda as capacidades de listagem de imagens problemáticas do MediaWiki',
+	'badimage-desc' => 'Estenda as capacidades de listagem de imagens problemáticas do MediaWiki',
 	'badimages-add-btn' => 'Adicionar',
 	'badimages-added' => '$1 foi adicionado à lista.',
 	'badimages-count' => "Actualmente {{PLURAL:$1|existe|existem}} '''$1''' {{PLURAL:$1|imagem|imagens}} na lista de imagens problemáticas.",
@@ -1925,7 +1925,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'badimages' => 'Listagem de imagens ruins',
-	'badimages-desc' => 'Estenda as capacidades de listagem de imagens problemáticas do MediaWiki',
+	'badimage-desc' => 'Estenda as capacidades de listagem de imagens problemáticas do MediaWiki',
 	'badimages-add-btn' => 'Adicionar',
 	'badimages-added' => '$1 foi adicionado à lista.',
 	'badimages-count' => "Atualmente {{PLURAL:$1|existe|existem}} '''$1''' {{PLURAL:$1|imagem|imagens}} na lista de imagens problemáticas.",
@@ -1959,7 +1959,7 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'badimages' => 'Listă de imagini indezirabile',
-	'badimages-desc' => 'Extinde capacitatea listei imaginilor indezirabile ale MediaWiki',
+	'badimage-desc' => 'Extinde capacitatea listei imaginilor indezirabile ale MediaWiki',
 	'badimages-add-btn' => 'Adaugă',
 	'badimages-added' => '$1 a fost adăugat în listă.',
 	'badimages-count' => "Există '''$1''' {{PLURAL:$1|imagine|imagini}} în lista imaginilor indezirabile.",
@@ -1986,7 +1986,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'badimages' => 'Liste de le immaggine no bbuene',
-	'badimages-desc' => "Estende 'a funzione d'a liste de le immaggine cattive de MediaUicchi",
+	'badimage-desc' => "Estende 'a funzione d'a liste de le immaggine cattive de MediaUicchi",
 	'badimages-add-btn' => 'Aggiunge',
 	'badimages-added' => "$1 ha state aggiunde a 'a liste.",
 	'badimages-count' => "There {{PLURAL:$1|Stè|Stonne}} '''$1''' {{PLURAL:$1|immaggine|immaggine}} sus 'a liste de le immaggine cattive.",
@@ -2015,7 +2015,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'badimages' => 'Список нежелательных изображений',
-	'badimages-desc' => 'Расширяет возможности списка запрещённых изображений MediaWiki',
+	'badimage-desc' => 'Расширяет возможности списка запрещённых изображений MediaWiki',
 	'badimages-add-btn' => 'Добавить',
 	'badimages-added' => '$1 добавлено в список.',
 	'badimages-count' => "Всего в списке '''$1''' {{PLURAL:$1|нежелательное изображение|нежелательных изображения|нежелательных изображений}}.",
@@ -2042,7 +2042,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'badimages' => 'Көҥүллэммэт ойуулар испииһэктэрэ',
-	'badimages-desc' => 'MediaWiki бырайыакка көҥүллэммэт ойуулар тиһиктэрин кытта үлэни тупсарар',
+	'badimage-desc' => 'MediaWiki бырайыакка көҥүллэммэт ойуулар тиһиктэрин кытта үлэни тупсарар',
 	'badimages-add-btn' => 'Эбэн биэр',
 	'badimages-added' => 'Испииһэккэ $1 эбилиннэ.',
 	'badimages-count' => "Көҥүллэммэт ойуулар тиһиктэригэр '''$1''' {{PLURAL:$1|соҕотох ойуу|ойуу}} киирэ сылдьар.",
@@ -2100,7 +2100,7 @@ $messages['shi'] = array(
  */
 $messages['sk'] = array(
 	'badimages' => 'Zoznam zlých obrázkov',
-	'badimages-desc' => 'Rozširuje schopnosti Zoznamu zlých obrázkov MediaWiki',
+	'badimage-desc' => 'Rozširuje schopnosti Zoznamu zlých obrázkov MediaWiki',
 	'badimages-add-btn' => 'Pridať',
 	'badimages-added' => '$1 bol pridaný do zoznamu.',
 	'badimages-count' => "V zozname zlých obrázkov {{PLURAL:$1|je|sú|je}} '''$1''' {{PLURAL:$1|obrázkok|obrázky|obrázkov}}.",
@@ -2169,7 +2169,7 @@ $messages['sr'] = array(
  */
 $messages['sr-ec'] = array(
 	'badimages' => 'Списак лоших слика',
-	'badimages-desc' => 'Проширује могућности списка лоших слика МедијаВикија',
+	'badimage-desc' => 'Проширује могућности списка лоших слика МедијаВикија',
 	'badimages-add-btn' => 'додај',
 	'badimages-added' => '$1 је додата у списак.',
 	'badimages-count' => "Тренутно {{PLURAL:$1|је|су}} '''$1''' {{PLURAL:$1|слика|слике|слика}} на списку лоших слика.",
@@ -2195,7 +2195,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'badimages' => 'Spisak loših slika',
-	'badimages-desc' => 'Proširuje mogućnosti spiska loših slika MedijaVikija',
+	'badimage-desc' => 'Proširuje mogućnosti spiska loših slika MedijaVikija',
 	'badimages-add-btn' => 'dodaj',
 	'badimages-added' => '$1 je dodata u spisak.',
 	'badimages-count' => "Trenutno se '''$1''' slika nalazi na spisku loših slika.",
@@ -2221,7 +2221,7 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'badimages' => 'Lieste fon nit wonskede Bielden.',
-	'badimages-desc' => 'Ärwiedert do Iensatsmuugelkhaide fon ju Lieste fon do nit-wonskede Bielden in MediaWiki',
+	'badimage-desc' => 'Ärwiedert do Iensatsmuugelkhaide fon ju Lieste fon do nit-wonskede Bielden in MediaWiki',
 	'badimages-add-btn' => 'Föigje bietou',
 	'badimages-added' => '$1 wuude an ju Lieste bietouföiged',
 	'badimages-count' => "Ju Lieste fon nit wonskede Bielden änthaalt '''$1''' {{PLURAL:$1|Iendraach|Iendraage}}.",
@@ -2248,7 +2248,7 @@ $messages['stq'] = array(
  */
 $messages['su'] = array(
 	'badimages' => 'Daptar gambar rusak',
-	'badimages-desc' => 'Legaan kabisa MediaWiki pikeun ngadaptar gambar butut',
+	'badimage-desc' => 'Legaan kabisa MediaWiki pikeun ngadaptar gambar butut',
 	'badimages-add-btn' => 'Tambahkeun',
 	'badimages-added' => '$1 ditambahkeun ka daptar.',
 	'badimages-count' => "{{PLURAL:$1|Aya|Aya}} '''$1''' {{PLURAL:$1|Gambar|Gambar}} dina daptar gambar rusak.",
@@ -2278,7 +2278,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'badimages' => 'Lista över dåliga bilder',
-	'badimages-desc' => 'Utökar funktionaliteten hos listan över dåliga bilder i MediaWiki',
+	'badimage-desc' => 'Utökar funktionaliteten hos listan över dåliga bilder i MediaWiki',
 	'badimages-add-btn' => 'Lägg till',
 	'badimages-added' => '$1 las till på listan.',
 	'badimages-count' => "Det finns '''$1''' {{PLURAL:$1|bild|bilder}} på listan över dåliga bilder.",
@@ -2342,7 +2342,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'badimages' => 'పాడైన బొమ్మల జాబితా',
-	'badimages-desc' => 'మీడియావికీ యొక్క చెడు బొమ్మల జాబితాను తయారుచేసే సామర్ధ్యాన్ని పొడిగించు',
+	'badimage-desc' => 'మీడియావికీ యొక్క చెడు బొమ్మల జాబితాను తయారుచేసే సామర్ధ్యాన్ని పొడిగించు',
 	'badimages-add-btn' => 'చేర్చు',
 	'badimages-added' => '$1ని జాబితాలో చేర్చాం.',
 	'badimages-count' => "చెడు బొమ్మల జాబితాలో '''$1''' {{PLURAL:$1|బొమ్మ ఉన్నది|బొమ్మలున్నాయి}}.",
@@ -2378,7 +2378,7 @@ $messages['tet'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'badimages' => 'Феҳристи акси номусоид',
-	'badimages-desc' => 'Қобилиятҳои феҳристи акси номусоиди МедиаВикиро васеъ кунед',
+	'badimage-desc' => 'Қобилиятҳои феҳристи акси номусоиди МедиаВикиро васеъ кунед',
 	'badimages-add-btn' => 'Илова',
 	'badimages-added' => '$1 ба феҳрист илова шуда буд.',
 	'badimages-count' => "Феҳристи аксҳои номусоид дорои '''$1''' {{PLURAL:$1|акс|аксҳо}} мебошад.",
@@ -2404,7 +2404,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tg-latn'] = array(
 	'badimages' => 'Fehristi aksi nomusoid',
-	'badimages-desc' => "Qobilijathoi fehristi aksi nomusoidi MediaVikiro vase' kuned",
+	'badimage-desc' => "Qobilijathoi fehristi aksi nomusoidi MediaVikiro vase' kuned",
 	'badimages-add-btn' => 'Ilova',
 	'badimages-added' => '$1 ba fehrist ilova şuda bud.',
 	'badimages-count' => "Fehristi akshoi nomusoid doroi '''$1''' {{PLURAL:$1|aks|aksho}} meboşad.",
@@ -2456,7 +2456,7 @@ $messages['tk'] = array(
  */
 $messages['tl'] = array(
 	'badimages' => 'Talaan ng masamang larawan',
-	'badimages-desc' => 'Dugtungan ang mga kakayanan ng talaan ng masamang larawan ng MediaWiki',
+	'badimage-desc' => 'Dugtungan ang mga kakayanan ng talaan ng masamang larawan ng MediaWiki',
 	'badimages-add-btn' => 'Idagdag',
 	'badimages-added' => 'Idinagdag ang $1 sa talaan.',
 	'badimages-count' => "{{PLURAL:$1|May|Mayroong}} '''$1''' {{PLURAL:$1|larawan|mga larawan}} sa talaan ng masamang larawan.",
@@ -2485,7 +2485,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'badimages' => 'Kötü resim listesi',
-	'badimages-desc' => 'MedyaVikinin kötü resim listesi yeteneklerini genişlet',
+	'badimage-desc' => 'MedyaVikinin kötü resim listesi yeteneklerini genişlet',
 	'badimages-add-btn' => 'Ekle',
 	'badimages-added' => '$1 listeye eklendi.',
 	'badimages-count' => "Kötü resim listesinde '''$1''' {{PLURAL:$1|resim|resim}} bulunmaktadır.",
@@ -2513,7 +2513,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'badimages' => 'Список небажаних зображень',
-	'badimages-desc' => 'Розширює можливості списку заборонених зображень MediaWiki',
+	'badimage-desc' => 'Розширює можливості списку заборонених зображень MediaWiki',
 	'badimages-add-btn' => 'Додати',
 	'badimages-added' => '$1 додано до списку.',
 	'badimages-count' => "Усього в списку '''$1''' {{PLURAL:$1|небажане зображення|небажаних зображення|небажаних зображень}}.",
@@ -2552,7 +2552,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'badimages' => 'Danh sách hình phản cảm',
-	'badimages-desc' => 'Mở rộng tính tương thích danh sách hình phản cảm của MediaWiki',
+	'badimage-desc' => 'Mở rộng tính tương thích danh sách hình phản cảm của MediaWiki',
 	'badimages-add-btn' => 'Thêm',
 	'badimages-added' => 'Đã thêm $1 vào danh sách.',
 	'badimages-count' => "{{PLURAL:$1|Có|Có}} '''$1''' hình trong danh sách hình phản cảm.",
@@ -2580,7 +2580,7 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'badimages' => 'Lised magodas badik',
-	'badimages-desc' => 'Veitükumön fägis ela MediaWiki tefü liseds magodas badik',
+	'badimage-desc' => 'Veitükumön fägis ela MediaWiki tefü liseds magodas badik',
 	'badimages-add-btn' => 'Läükön',
 	'badimages-added' => '$1 peläükon lisede.',
 	'badimages-count' => "{{PLURAL:$1|Dabinon magod|Dabinons magods}} '''$1''' in lised magodas badik.",
@@ -2616,7 +2616,7 @@ $messages['yi'] = array(
  */
 $messages['yue'] = array(
 	'badimages' => '壞圖清單',
-	'badimages-desc' => '延伸MediaWiki嘅壞圖清單可用性',
+	'badimage-desc' => '延伸MediaWiki嘅壞圖清單可用性',
 	'badimages-add-btn' => '加',
 	'badimages-added' => '加咗$1入壞圖列表度。',
 	'badimages-count' => "壞圖清單有 '''$1'''幅圖。",
@@ -2644,7 +2644,7 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'badimages' => '不雅图像列表',
-	'badimages-desc' => '为MediaWiki增扩{{int:badimages}}功能',
+	'badimage-desc' => '为MediaWiki增扩{{int:badimages}}功能',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已经加入 $1 到列表中。',
 	'badimages-count' => "共有'''$1'''张图像被列入不雅图像列表。",
@@ -2672,7 +2672,7 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'badimages' => '損壞圖像列表',
-	'badimages-desc' => '增加{{int:badimages}}的[[Special:Badimages|特殊頁面]]',
+	'badimage-desc' => '增加{{int:badimages}}的[[Special:Badimages|特殊頁面]]',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已經加入 $1 到列表中。',
 	'badimages-count' => "在損壞圖像列表中共有 '''$1''' 幅圖像。",

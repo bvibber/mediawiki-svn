@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'AssertEdit',
 	'author' => 'Steve Sanbeg',
-	'descriptionmsg' => 'assert_edit_desc',
+	'descriptionmsg' => 'assertedit-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Assert_Edit',
 );
 

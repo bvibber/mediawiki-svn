@@ -14,9 +14,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'BadImages',
-	'version' => '1.2',
+	'version' => '1.3',
 	'author' => 'Rob Church',
-	'descriptionmsg' => 'badimages-desc',
+	'descriptionmsg' => 'badimage-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Bad_Image_List',
 );
 

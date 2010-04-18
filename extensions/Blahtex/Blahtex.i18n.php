@@ -9,7 +9,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'math_noblahtex'                        => 'Cannot execute blahtex, which should be at $1',
-	'math-desc'				=> 'MathML output for &lt;math&gt; tags',
+	'blahtext-desc'				=> 'MathML output for &lt;math&gt; tags',
 	'math_AmbiguousInfix'                   => 'Ambiguous placement of "$1".
 Try using additional braces "{ ... }" to disambiguate.',
 	'math_CannotChangeDirectory'            => 'Cannot change working directory',
@@ -80,7 +80,7 @@ Try using the "$3{...}" command.',
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'math-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'blahtext-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'math_NotEnoughArguments' => 'Parameter $1 can be something like: <tt>\\sqrt</tt>, <tt>\\newcommand</tt> or some other token.',
 );
 
@@ -99,7 +99,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'math_noblahtex' => 'لم يمكن تنفيذ بلاه تك، والتي ينبغي أن تكون في $1',
-	'math-desc' => 'خرج MathML لوسوم &lt;math&gt;',
+	'blahtext-desc' => 'خرج MathML لوسوم &lt;math&gt;',
 	'math_AmbiguousInfix' => 'وضع غير مريح ل"$1".
 حاول استخدام أقواس إضافية "{ ... }" للتوضيح',
 	'math_CannotChangeDirectory' => 'لا يمكن تغيير مجلد العمل',
@@ -168,7 +168,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'math_noblahtex' => 'لم يمكن تنفيذ بلاه تك، والتى ينبغى أن تكون فى $1',
-	'math-desc' => 'خرج MathML لوسوم &lt;math&gt;',
+	'blahtext-desc' => 'خرج MathML لوسوم &lt;math&gt;',
 	'math_AmbiguousInfix' => 'وضع غير مريح ل"$1".
 حاول استخدام أقواس إضافية "{ ... }" للتوضيح',
 	'math_CannotChangeDirectory' => 'لا يمكن تغيير مجلد العمل',
@@ -245,7 +245,7 @@ $messages['avk'] = array(
  */
 $messages['be-tarask'] = array(
 	'math_noblahtex' => 'Немагчыма выканаць праграму blahtex, якая павінна знаходзіцца на $1',
-	'math-desc' => 'MathML-вывад для тэгаў &lt;math&gt;',
+	'blahtext-desc' => 'MathML-вывад для тэгаў &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Неадназначнае разьмяшчэньне «$1».
 Паспрабуйце выкарыстоўваць дадатковыя дужкі «{ … }» для пазбаўленьня неадназначнасьці.',
 	'math_CannotChangeDirectory' => 'Немагчыма зьмяніць працоўную дырэкторыю',
@@ -370,7 +370,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'math_noblahtex' => 'blahtex চালানো গেল না, যেটি $1-এ থাকার কথা',
-	'math-desc' => '&lt;math&gt; ট্যাগের জন্য ম্যাথএমএল আউটপুট',
+	'blahtext-desc' => '&lt;math&gt; ট্যাগের জন্য ম্যাথএমএল আউটপুট',
 	'math_AmbiguousInfix' => '"$1"-এর অবস্থান দ্ব্যর্থবোধক (অতিরিক্ত দ্বিতীয় বন্ধনী "{ ... }" ব্যবহার করে দ্ব্যর্থতা নিরসনের চেষ্টা করুন)',
 	'math_CannotChangeDirectory' => 'সক্রিয় ডিরেক্টরি পরিবর্তন করা যাচ্ছে না',
 	'math_CannotCreateTexFile' => 'টেক ফাইল সৃষ্টি করা যাচ্ছে না',
@@ -430,7 +430,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'math_noblahtex' => 'Dibosupl erounit Blahtex, a zlefe bezañ e $1',
-	'math-desc' => 'Ezvont MathML evit ar balizennoù &lt;math&gt;',
+	'blahtext-desc' => 'Ezvont MathML evit ar balizennoù &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Amjestr eo lec\'hiadur "$1" (klaskit ouzhpennañ balizennoù "{ ... }" evit sevel an amjestregezh)',
 	'math_CannotChangeDirectory' => 'Dibosupl cheñch teuliad labour',
 	'math_CannotCreateTexFile' => 'Dibosupl krouiñ ur restr tex',
@@ -490,7 +490,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'math_noblahtex' => 'Ne može se izvršiti blahtex, koji bi trebao biti na $1',
-	'math-desc' => 'MathML izlaz za &lt;math&gt; oznake',
+	'blahtext-desc' => 'MathML izlaz za &lt;math&gt; oznake',
 	'math_AmbiguousInfix' => 'Na ovom mjestu "$1" je dvosmisleno.
 Pokušajte staviti dodatne zagrade "{ ... }" radi jasnoće.',
 	'math_CannotChangeDirectory' => 'Ne mogu promijeniti radni direktorijum',
@@ -578,7 +578,7 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'math_noblahtex' => 'Nelze spustit blahtex, který by měl být v $1',
-	'math-desc' => 'MathML výstup značek &lt;math&gt;',
+	'blahtext-desc' => 'MathML výstup značek &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Nejednoznačné umístění „$1“ (zkuste použít další závorky „{ ... }“ pro rozlišení)',
 	'math_CannotChangeDirectory' => 'Nelze změnit pracovní adresář',
 	'math_CannotCreateTexFile' => 'Nelze vytvořit tex soubor',
@@ -641,7 +641,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'math_noblahtex' => 'blahtex konnte in $1 nicht ausgeführt werden.',
-	'math-desc' => 'MathML-Ausgabe für &lt;math&gt;-Tags',
+	'blahtext-desc' => 'MathML-Ausgabe für &lt;math&gt;-Tags',
 	'math_AmbiguousInfix' => 'An dieser Stelle ist „$1“ mehrdeutig.
 Versuche weitere geschwungene Klammern „{ … }“ einzufügen, um die Eingabe eindeutig zu machen.',
 	'math_CannotChangeDirectory' => 'Arbeitsverzeichnis konnte nicht gewechselt werden',
@@ -729,7 +729,7 @@ Probieren Sie die Anweisung „$3{…}“ aus.',
  */
 $messages['dsb'] = array(
 	'math_noblahtex' => 'blahtex njedajo se wuwjesć, kótaryž by  měła pla $1 byś',
-	'math-desc' => 'Wudaśe MathML za toflicki &lt;math&gt;',
+	'blahtext-desc' => 'Wudaśe MathML za toflicki &lt;math&gt;',
 	'math_AmbiguousInfix' => '"$1" jo how wěcej zmysłowy.
 Wopytaj pśidatne wugibnjone spinki "{ ... }" wužywaś, aby wótpórał wěcejzmysłowosć.',
 	'math_CannotChangeDirectory' => 'Źěłowy zapis njedajo se změniś',
@@ -802,7 +802,7 @@ Wopytaj pśikaz "$3{...}" wužywaś.',
  */
 $messages['el'] = array(
 	'math_noblahtex' => 'Δεν μπορεί να εκτελεθεί το blahtex, που θα έπρεπε να είναι στο $1',
-	'math-desc' => 'Έξοδος MathML για &lt;math&gt; ετικέτες',
+	'blahtext-desc' => 'Έξοδος MathML για &lt;math&gt; ετικέτες',
 	'math_CannotChangeDirectory' => 'Δεν μπορεί να αλλάξει την διαδρομή εργασίας',
 	'math_CannotCreateTexFile' => 'Δεν μπορείτε να δημιουργήσετε ένα αρχείο tex',
 	'math_CannotRunDvipng' => 'Δεν μπορεί να τρέξει το dvipng',
@@ -827,7 +827,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'math_noblahtex' => 'Ne povas voki blahtex-on, kiu estu ĉe $1',
-	'math-desc' => 'MathML-eligo por &lt;math&gt; etikedoj',
+	'blahtext-desc' => 'MathML-eligo por &lt;math&gt; etikedoj',
 	'math_AmbiguousInfix' => 'Malklara loko de "$1" (Provu uzi pliajn krampojn "{ ... }" por apartigi)',
 	'math_CannotChangeDirectory' => 'Ne povas ŝanĝi labor-dosierujon',
 	'math_CannotCreateTexFile' => 'Ne povas krei tex-dosieron',
@@ -880,7 +880,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'math_noblahtex' => 'No se puede ejecutar blahtex, que deberia estar en $1',
-	'math-desc' => 'Salida MathML para etiquetas &lt;math&gt;',
+	'blahtext-desc' => 'Salida MathML para etiquetas &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Colocación ambigua de "$1".
 Intenta usar llaves adicionales "{ ... }" para precisar.',
 	'math_CannotChangeDirectory' => 'No se puede cambiar directorio actual',
@@ -980,7 +980,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'math_noblahtex' => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
-	'math-desc' => 'MathML-ulostulo &lt;math&gt;-elementeille.',
+	'blahtext-desc' => 'MathML-ulostulo &lt;math&gt;-elementeille.',
 	'math_CannotChangeDirectory' => 'Työhakemiston vaihtaminen epäonnistui.',
 	'math_CannotCreateTexFile' => 'Tex-tiedoston luominen epäonnistui.',
 	'math_CannotRunDvipng' => 'Ei voida suorittaa ohjelmaa dvipng',
@@ -1024,7 +1024,7 @@ Ehkä sinun piti käyttää komentoa ”$2”?',
  */
 $messages['fr'] = array(
 	'math_noblahtex' => 'Ne peut exécuter blahtex, qui devrait être à $1',
-	'math-desc' => 'Rendu MathML du contenu des balises &lt;math&gt;',
+	'blahtext-desc' => 'Rendu MathML du contenu des balises &lt;math&gt;',
 	'math_AmbiguousInfix' => "La position de « $1 » est ambiguë (ajouter des balises additionnelles « { ... } » peut lever l'ambiguïté)",
 	'math_CannotChangeDirectory' => 'Ne peut changer de dossier de travail',
 	'math_CannotCreateTexFile' => 'Ne peut créer un fichier tex',
@@ -1151,7 +1151,7 @@ dêt comenciér per « \\ » et pués contegnir ren que des caractèros alfabèt
  */
 $messages['gl'] = array(
 	'math_noblahtex' => 'Non se pode executar blahtex, que debe estar en $1',
-	'math-desc' => 'Saída MathML para as etiquetas &lt;math&gt;',
+	'blahtext-desc' => 'Saída MathML para as etiquetas &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Colocación ambigua de "$1" (tente usar chaves adicionais "{ ... }" para que fique claro)',
 	'math_CannotChangeDirectory' => 'Non se pode mudar o directorio de traballo',
 	'math_CannotCreateTexFile' => 'Non se pode crear unha fila de texto',
@@ -1220,7 +1220,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'math_noblahtex' => 'blahtex het nit chenne uusgfiert wäre in $1',
-	'math-desc' => 'MathML-Uusgab fir &lt;math&gt;-Tag',
+	'blahtext-desc' => 'MathML-Uusgab fir &lt;math&gt;-Tag',
 	'math_AmbiguousInfix' => 'An däre Stell isch „$1“ mehdytig.
 Versuech wyteri gschwungeni Chlammere „{ … }“ yyzfiege go d Yygab eidytig z mache.',
 	'math_CannotChangeDirectory' => 'Arbetsverzeichnis het nit chenne gwägslet wäre',
@@ -1292,7 +1292,7 @@ Versuech d Aawyysig „$3{…}“.',
  */
 $messages['he'] = array(
 	'math_noblahtex' => 'לא ניתן להפעיל את blahtex, האמור להיות ב־$1',
-	'math-desc' => 'פלט MathML עבור תגיות &lt;math&gt;',
+	'blahtext-desc' => 'פלט MathML עבור תגיות &lt;math&gt;',
 	'math_AmbiguousInfix' => 'הצבה דו־משמעית של "$1".
 נסו להשתמש בסוגריים נוספים "{ ... }" להתרת כפל המשמעות.',
 	'math_CannotChangeDirectory' => 'לא ניתן לשנות את תיקיית העבודה',
@@ -1363,7 +1363,7 @@ $messages['he'] = array(
  */
 $messages['hi'] = array(
 	'math_noblahtex' => '$1 की जगह पाये जाने वाले blahtex को शुरू नहीं कर सकतें हैं',
-	'math-desc' => '&lt;math&gt; चिन्होंका MathML आउटपुट',
+	'blahtext-desc' => '&lt;math&gt; चिन्होंका MathML आउटपुट',
 	'math_AmbiguousInfix' => '"$1" की गलत जगह।
 ज्यादा "{ ... }" का इस्तेमाल करके ठीक करने की कोशीश करें।',
 	'math_CannotChangeDirectory' => 'जिस डाइरेक्टरीमें काम चल रहा हैं उसे बदल नहीं सकतें',
@@ -1435,7 +1435,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'math_noblahtex' => 'Ne mogu izvršiti blahtex, koji bi trebao biti na $1',
-	'math-desc' => "MathML izlaz za &lt;math&gt; ''tagove''",
+	'blahtext-desc' => "MathML izlaz za &lt;math&gt; ''tagove''",
 	'math_AmbiguousInfix' => 'Dvosmisleno smješten "$1" (probajte koristiti dodatne zagrade "{ ... }" da pojasnite)',
 	'math_CannotChangeDirectory' => 'Ne mogu promijeniti direktorij (folder)',
 	'math_CannotCreateTexFile' => 'Ne mogu kreirati tex-datoteku',
@@ -1495,7 +1495,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'math_noblahtex' => 'Njeje móžno blahtex wuwjesć, kotryž měł pola $1 być',
-	'math-desc' => 'Wudaće MathML za taflički &lt;math&gt;',
+	'blahtext-desc' => 'Wudaće MathML za taflički &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Wjacezmyslne zaměstnjenje "$1" (spytaj přidatne zhibowane spinki wužiwać "{ ... }", zo by jednozmyslnosć wutworił)',
 	'math_CannotChangeDirectory' => 'Dźěłowy zapis njeda so změnić',
 	'math_CannotCreateTexFile' => 'Njeje móžno tex-dataju wutworić',
@@ -1555,7 +1555,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'math_noblahtex' => 'A blahtex nem futtatható, itt kellene lennie: $1',
-	'math-desc' => 'MathML kimenet a &lt;math&gt; tagekhez',
+	'blahtext-desc' => 'MathML kimenet a &lt;math&gt; tagekhez',
 	'math_AmbiguousInfix' => '„$1” kétértelműen van elhelyezve (próbálj meg egyértelműsíteni újabb „{ ... }” zárójelek használatával)',
 	'math_CannotChangeDirectory' => 'Nem sikerült megváltoztatni a munkakönyvtárat',
 	'math_CannotCreateTexFile' => 'Nem sikerült elkészíteni a tex fájlt',
@@ -1615,7 +1615,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'math_noblahtex' => 'Impossibile executar blahtex, que deberea trovar se in $1',
-	'math-desc' => 'Output de MathML pro le etiquettas &lt;math&gt;',
+	'blahtext-desc' => 'Output de MathML pro le etiquettas &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Position ambigue de "$1".
 Proba usar accolladas additional "{ ... }" pro disambiguar.',
 	'math_CannotChangeDirectory' => 'Non pote cambiar de directorio de labor',
@@ -1712,7 +1712,7 @@ Mungkin anda ingin menggunakan "$2"?',
  */
 $messages['it'] = array(
 	'math_noblahtex' => 'Impossibile eseguire blahtex, che dovrebbe trovarsi in $1',
-	'math-desc' => 'Output MathML per i tag &lt;math&gt;',
+	'blahtext-desc' => 'Output MathML per i tag &lt;math&gt;',
 	'math_AmbiguousInfix' => 'La posizione di "$1" è ambigua; aggiungere delle parentesi graffe "{ ... }" per risolvere l\'ambiguità',
 	'math_CannotChangeDirectory' => 'Impossibile modificare la directory di lavoro',
 	'math_CannotCreateTexFile' => 'Impossibile creare il file tex',
@@ -1773,7 +1773,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'math_noblahtex' => '$1にあるべきblahtexを実行できません',
-	'math-desc' => '&lt;math&gt;タグを用いたMathML出力',
+	'blahtext-desc' => '&lt;math&gt;タグを用いたMathML出力',
 	'math_AmbiguousInfix' => '"$1"が曖昧な場所にあります(修正するには、"{ ... }"のくくりを追加するなどしてください)',
 	'math_CannotChangeDirectory' => '作業用ディレクトリに移動できません',
 	'math_CannotCreateTexFile' => 'texファイルを作成できません',
@@ -1864,7 +1864,7 @@ Coba dokoken karakter sing problematis iki antara "\\text{...}".',
  */
 $messages['km'] = array(
 	'math_noblahtex' => 'មិនអាចប្រើប្រាស់ blahtex, ដែលគួរតែ នៅ $1',
-	'math-desc' => 'ឱ្យចេញជា អក្សរកូដ MathML កាលបើ ជួប ប្លាក &lt;math&gt;',
+	'blahtext-desc' => 'ឱ្យចេញជា អក្សរកូដ MathML កាលបើ ជួប ប្លាក &lt;math&gt;',
 	'math_CannotChangeDirectory' => 'មិនអាចផ្លាស់ប្តូរ​ថតឯកសារកំពុងធ្វើការ',
 	'math_CannotCreateTexFile' => 'មិនអាច​បង្កើត​ឯកសារ​អក្សរសុទ្ធ',
 	'math_CannotRunDvipng' => 'មិនអាចដំណើរការ dvipng',
@@ -1899,7 +1899,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'math_noblahtex' => 'Kunnt en $1 <code>blahtex</code> nit ußföhre.',
-	'math-desc' => 'MathML Ußjaaf för de <code>&lt;math&gt;</code> Befäähle.',
+	'blahtext-desc' => 'MathML Ußjaaf för de <code>&lt;math&gt;</code> Befäähle.',
 	'math_AmbiguousInfix' => 'Dat „<code>$1</code>“ kann hee aan dämm Plaz mieh wie eine Senn han.
 Versök enß, met mieh jeschwunge Klammere „{…}“ dat Dinge kloh ze krijje.',
 	'math_CannotChangeDirectory' => 'Kunnt et Verzeichnes för ze Ärbeide nit wahßelle.',
@@ -1969,7 +1969,7 @@ Versöhk ens dat Kommando „<code>$3{…}</code>“.',
  * @author Robby
  */
 $messages['lb'] = array(
-	'math-desc' => 'MathML Resultat fir &lt;math&gt; Taggen',
+	'blahtext-desc' => 'MathML Resultat fir &lt;math&gt; Taggen',
 	'math_CannotChangeDirectory' => 'Den Aarbechtsrepertoire kann net geännert ginn',
 	'math_CannotCreateTexFile' => 'tex-Fichier kann net ugeluecht ginn',
 	'math_CannotWritePngDirectory' => 'Kann net an de PNG-Repertoire schreiwen',
@@ -1995,7 +1995,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'math_noblahtex' => 'Не можам да го пуштам blahtex, кој треба да се наоѓа во $1',
-	'math-desc' => 'MathML извод за &lt;math&gt; ознаки',
+	'blahtext-desc' => 'MathML извод за &lt;math&gt; ознаки',
 	'math_AmbiguousInfix' => 'Местото на „$1“ е недоволно јасно.
 Обидете се со употреба на дополнителни загради „{ ... }“ за појаснување.',
 	'math_CannotChangeDirectory' => 'Не можам да го сменам работниот директориум',
@@ -2065,7 +2065,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'math-desc' => '&lt;math&gt; എന്നീ ടാഗുകൾക്കുള്ള MathML ഔട്ട്പുട്ട്',
+	'blahtext-desc' => '&lt;math&gt; എന്നീ ടാഗുകൾക്കുള്ള MathML ഔട്ട്പുട്ട്',
 	'math_CannotChangeDirectory' => 'നിലവിൽ പ്രവർത്തിക്കുന്ന ഡയറക്ടറി മാറ്റുവാൻ പറ്റില്ല',
 	'math_CannotCreateTexFile' => 'tex പ്രമാണം സൃഷ്ടിക്കുവാൻ കഴിഞ്ഞില്ല',
 	'math_CannotRunLatex' => 'latex പ്രവർത്തിപ്പിക്കുവാൻ കഴിഞ്ഞില്ല',
@@ -2110,7 +2110,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'math_noblahtex' => '$1 ठिकाणी जे असायला हवे ते ब्लाहटेक्स (blahtex) चालू करू शकत नाही',
-	'math-desc' => '&lt;math&gt; खूणांचे MathML आउटपुट',
+	'blahtext-desc' => '&lt;math&gt; खूणांचे MathML आउटपुट',
 	'math_AmbiguousInfix' => '"$1" ची संदिग्ध जागा (अधिक "{ ... }" कंस वापरून नि:संदिग्धीकरण करण्याचा प्रयत्न करा)',
 	'math_CannotChangeDirectory' => 'काम चालू असलेली डिरेक्टरी बदलू शकत नाही',
 	'math_CannotCreateTexFile' => 'tex संचिका तयार करू शकत नाही',
@@ -2180,7 +2180,7 @@ $messages['nds'] = array(
  */
 $messages['nl'] = array(
 	'math_noblahtex' => 'Blahtex kan niet uitgevoerd worden. Het programma zou hier moeten staan: $1',
-	'math-desc' => 'MathML-uitvoer voor &lt;math&gt; tags',
+	'blahtext-desc' => 'MathML-uitvoer voor &lt;math&gt; tags',
 	'math_AmbiguousInfix' => 'Ambigue plaatsing van "$1" (probeer het op te lossen met accolades "{ … }" om te disambigueren)',
 	'math_CannotChangeDirectory' => 'Kan de werkmap niet wijzigen',
 	'math_CannotCreateTexFile' => 'Kan geen tex-bestand aanmaken',
@@ -2241,7 +2241,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'math_noblahtex' => 'Kan ikkje køyra blahtex, som burde vera på $1',
-	'math-desc' => 'MathML-resultat for &lt;math&gt;-merke',
+	'blahtext-desc' => 'MathML-resultat for &lt;math&gt;-merke',
 	'math_AmbiguousInfix' => 'Tvetydig plassering av «$1» (prøv å nytta ekstra parentesar «{ ... }» for å gjera eintydig)',
 	'math_CannotChangeDirectory' => 'Kan ikkje endra arbeidsmappa',
 	'math_CannotCreateTexFile' => 'Kan ikkje oppretta tex-fil',
@@ -2301,7 +2301,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'math_noblahtex' => 'Kan ikke kjøre blahtex, som burde være på $1',
-	'math-desc' => 'MathML-resultat for &lt;math&gt;-tagger',
+	'blahtext-desc' => 'MathML-resultat for &lt;math&gt;-tagger',
 	'math_AmbiguousInfix' => 'Tvetydig plassering av «$1» (prøv å bruke ekstra parenteser «{ ... }» for å gjøre entydig)',
 	'math_CannotChangeDirectory' => 'Kan ikke endre arbeidsmappe',
 	'math_CannotCreateTexFile' => 'Kan ikke opprette tex-fil',
@@ -2361,7 +2361,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'math_noblahtex' => 'Pòt pas executar blahtex, que deuriá èsser a $1',
-	'math-desc' => 'Sortida MathML per las balisas &lt;math&gt;',
+	'blahtext-desc' => 'Sortida MathML per las balisas &lt;math&gt;',
 	'math_AmbiguousInfix' => "La posicion de « $1 » es ambigua (apondre de balisas adicionalas « { ... } » pòt levar l'ambigüitat)",
 	'math_CannotChangeDirectory' => 'Pòt pas cambiar de dorsièr de trabalh',
 	'math_CannotCreateTexFile' => 'Pòt pas crear un fichièr tex',
@@ -2426,7 +2426,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'math_noblahtex' => 'Nie udało sie uruchomić rozszerzenia blahtex, które powinno znajdować się w $1',
-	'math-desc' => 'Informacje wyjściowe znaczników &lt;math&gt; w MathML',
+	'blahtext-desc' => 'Informacje wyjściowe znaczników &lt;math&gt; w MathML',
 	'math_AmbiguousInfix' => 'Niejednoznaczne ustawienie „$1” (spróbuj użyć dodatkowych nawiasów „{ ... }” by ujednoznacznić)',
 	'math_CannotChangeDirectory' => 'Nie można zmienić katalogu roboczego',
 	'math_CannotCreateTexFile' => 'Nie udało się stworzyć pliku tex',
@@ -2495,7 +2495,7 @@ Spróbuj użyć polecenia „$3{...}”.',
  */
 $messages['pms'] = array(
 	'math_noblahtex' => "A peul pa fé giré blahtex, ch'a dovrìa esse a $1",
-	'math-desc' => "MathML arzultà për l'etichëtta &lt;math&gt;",
+	'blahtext-desc' => "MathML arzultà për l'etichëtta &lt;math&gt;",
 	'math_AmbiguousInfix' => 'La posission ëd "$1" a l\'é nen ciàira.
 Preuva an dovrand paréntesi adissionaj "( ... )" për ës-ciairì.',
 	'math_CannotChangeDirectory' => 'As peul pa cambié dossié ëd travaj',
@@ -2566,7 +2566,7 @@ Preuva a dovré ël comand "$3{...}".',
  */
 $messages['pt'] = array(
 	'math_noblahtex' => 'Não é possível executar blahtex, que deveria estar em $1',
-	'math-desc' => 'Resultado MathML para marcas &lt;math&gt;',
+	'blahtext-desc' => 'Resultado MathML para marcas &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Posicionamento ambígua de "$1" (experimente usar chavetas adicionais "{ ... }" para desfazer a ambiguidade)',
 	'math_CannotChangeDirectory' => 'Não foi possível mudar directoria de trabalho',
 	'math_CannotCreateTexFile' => 'Não foi possível criar ficheiro tex',
@@ -2626,7 +2626,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'math_noblahtex' => 'Não é possível executar blahtex, que deveria estar em $1',
-	'math-desc' => 'Resultado MathML para marcas &lt;math&gt;',
+	'blahtext-desc' => 'Resultado MathML para marcas &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Posicionamento ambíguo de "$1" (experimente usar chaves adicionais "{ ... }" para desfazer a ambiguidade)',
 	'math_CannotChangeDirectory' => 'Não foi possível mudar diretório de trabalho',
 	'math_CannotCreateTexFile' => 'Não foi possível criar arquivo tex',
@@ -2688,7 +2688,7 @@ Apenas um é permitido',
  */
 $messages['ro'] = array(
 	'math_noblahtex' => 'Nu se poate executa blahtex, care ar trebui să fie la $1',
-	'math-desc' => 'Date de ieşire MathML pentru tag-ul &lt;math&gt;',
+	'blahtext-desc' => 'Date de ieşire MathML pentru tag-ul &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Amplasare ambiguă pentru "$1" (încercaţi folosirea acoladelor "{ ... }" pentru dezambiguizare)',
 	'math_CannotChangeDirectory' => 'Nu se poate schmba directorul în lucru',
 	'math_CannotCreateTexFile' => 'Nu se poate crea fişierul tex',
@@ -2758,7 +2758,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'math_noblahtex' => 'Невозможно запустить blahtex, его ожидаемое расположение: $1',
-	'math-desc' => 'MathML-вывод для тега &lt;math&gt;',
+	'blahtext-desc' => 'MathML-вывод для тега &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Неоднозначное расположение «$1» (попробуйте использовать дополнительные скобки «{ ... }» для разрешения неоднозначности)',
 	'math_CannotChangeDirectory' => 'Невозможно изменить рабочую директорию',
 	'math_CannotCreateTexFile' => 'Невозможно создать tex-файл',
@@ -2821,7 +2821,7 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'math_noblahtex' => 'blahtex-ы сатаан ыытар кыах суох, манна баар буолуон сөп: $1',
-	'math-desc' => '&lt;math&gt; тиэги MathML таһаарыы',
+	'blahtext-desc' => '&lt;math&gt; тиэги MathML таһаарыы',
 );
 
 /** Slovak (Slovenčina)
@@ -2829,7 +2829,7 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'math_noblahtex' => 'Nedá sa spustiť blahtex, ktorý by mal byť v $1',
-	'math-desc' => 'MathML výstup značiek &lt;math&gt;',
+	'blahtext-desc' => 'MathML výstup značiek &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Nejednoznačné umiestnenie „$1“ (skúste použiť ďalšie zátvorky „{ ... }“ na rozlíšenie)',
 	'math_CannotChangeDirectory' => 'Nedá sa zmeniť pracovný adresár',
 	'math_CannotCreateTexFile' => 'Nedá sa vytvoriť tex súbor',
@@ -2890,7 +2890,7 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'math_noblahtex' => 'Не може да се изврши blatex, што је на $1',
-	'math-desc' => 'MathML излаз за &lt;math&gt; тагове',
+	'blahtext-desc' => 'MathML излаз за &lt;math&gt; тагове',
 	'math_AmbiguousInfix' => 'Вишезначна употреба "$1".
 Покушајте да користите додатне велике заграде "{ ... }" да бисте га додатно одредили.',
 	'math_CannotChangeDirectory' => 'Не може да се промени радни директоријум',
@@ -2948,7 +2948,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'math_noblahtex' => 'Ne može da se izvrši blatex, što je na $1',
-	'math-desc' => 'MathML izlaz za &lt;math&gt; tagove',
+	'blahtext-desc' => 'MathML izlaz za &lt;math&gt; tagove',
 	'math_AmbiguousInfix' => 'Višeznačna upotreba "$1".
 Pokušajte da koristite dodatne velike zagrade "{ ... }" da biste ga dodatno odredili.',
 	'math_CannotChangeDirectory' => 'Ne može da se promeni radni direktorijum',
@@ -3006,7 +3006,7 @@ Pokušajte da upotrebite komandu "$3{...}".',
  */
 $messages['stq'] = array(
 	'math_noblahtex' => 'Kon nit uutfiere blahtex, ju der ap $1 weese schuul',
-	'math-desc' => 'MathML-Uutgoawe foar &lt;math&gt;-Tags',
+	'blahtext-desc' => 'MathML-Uutgoawe foar &lt;math&gt;-Tags',
 	'math_AmbiguousInfix' => 'An disse Steede is „$1“ moortjuudich.
 Fersäik wiedere swoangene Klammere „{ … }“ ientouföigjen, uum ju Iengoawe eentjuudich tou moakjen.',
 	'math_CannotChangeDirectory' => 'Oarbaidsferteeknis kuud nit wikseld wäide',
@@ -3077,7 +3077,7 @@ Probier ju Anwiesenge „$3{…}“ uut.',
  */
 $messages['su'] = array(
 	'math_noblahtex' => 'Teu bisa maréntah blahtex nu kuduna di $1',
-	'math-desc' => 'Output MathML pikeun tag &lt;math&gt;',
+	'blahtext-desc' => 'Output MathML pikeun tag &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Tempat “$1” teu merenah.
 Coba paké tambahan “{ ... }” pikeun disambiguasi.',
 	'math_CannotChangeDirectory' => 'Teu bisa ngarobah diréktori nu dipaké',
@@ -3140,7 +3140,7 @@ Coba maké paréntah “$3{...}”.',
  */
 $messages['sv'] = array(
 	'math_noblahtex' => 'Kan inte köra blahtex, som borde finnas på $1',
-	'math-desc' => 'MathML-resultat för &lt;math&gt;-taggar',
+	'blahtext-desc' => 'MathML-resultat för &lt;math&gt;-taggar',
 	'math_AmbiguousInfix' => 'Tvetydig placering av "$1" (försök att förtydliga genom att använda extra paranteser "{ ... }")',
 	'math_CannotChangeDirectory' => 'Kan inte byta arbetskatalog',
 	'math_CannotCreateTexFile' => 'Kan inte skapa tex-fil',
@@ -3224,7 +3224,7 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'math_noblahtex' => 'Наметавон blahtex иҷро кард, чун он бояд дар $1 бошад',
-	'math-desc' => 'Додаҳои хуруҷии MathML барои барчасбҳои &lt;math&gt;',
+	'blahtext-desc' => 'Додаҳои хуруҷии MathML барои барчасбҳои &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Ҷойгиркунии нофаҳмои "$1".
 Барои ибҳомзудоӣ кӯшиш кунед аз қафсҳои иловагии "{ ... }" истифода баред.',
 	'math_CannotChangeDirectory' => 'Пӯшаи дар ҳоли корро наметавон тағйир дод',
@@ -3295,7 +3295,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tg-latn'] = array(
 	'math_noblahtex' => 'Nametavon blahtex içro kard, cun on bojad dar $1 boşad',
-	'math-desc' => 'Dodahoi xuruçiji MathML baroi barcasbhoi &lt;math&gt;',
+	'blahtext-desc' => 'Dodahoi xuruçiji MathML baroi barcasbhoi &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Çojgirkuniji nofahmoi "$1".
 Baroi ibhomzudoī kūşiş kuned az qafshoi ilovagiji "{ ... }" istifoda bared.',
 	'math_CannotChangeDirectory' => 'Pūşai dar holi korro nametavon taƣjir dod',
@@ -3371,7 +3371,7 @@ $messages['th'] = array(
  */
 $messages['tl'] = array(
 	'math_noblahtex' => 'Hindi maisakatuparan ang blahtex, na dapat na nasa $1',
-	'math-desc' => 'Kinalabasang MathML para sa mga tatak na &lt;math&gt;',
+	'blahtext-desc' => 'Kinalabasang MathML para sa mga tatak na &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Alanganin ang pagkakalagay ng "$1".
 Subuking gumamit ng dagdag na mga brakete "{ ... }" upang maging malinaw.',
 	'math_CannotChangeDirectory' => 'Hindi mabago ang direktoryong panggawain',
@@ -3459,7 +3459,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'math_noblahtex' => 'Неможливо запустити blahtex, його очікуване розташування: $1',
-	'math-desc' => 'MathML-виведення для тегу &lt;math&gt;',
+	'blahtext-desc' => 'MathML-виведення для тегу &lt;math&gt;',
 	'math_AmbiguousInfix' => "Неоднозначне розташування «$1» (спробуйте використати додаткові дужки «{ ... }» для розв'язання неоднозначності)",
 	'math_CannotChangeDirectory' => 'Неможливо змінити робочу директорію',
 	'math_CannotCreateTexFile' => 'Неможливо створити tex-файл',
@@ -3530,7 +3530,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'math_noblahtex' => 'Không thể thực thi blahtex, đáng ra phải ở $1',
-	'math-desc' => 'Cho ra mã MathML khi gặp những thẻ &lt;math&gt;',
+	'blahtext-desc' => 'Cho ra mã MathML khi gặp những thẻ &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Dùng "$1" gây khó hiểu (hãy thử dùng thêm dấu ngoặc móc "{ ... }" để rõ ràng hơn)',
 	'math_CannotChangeDirectory' => 'Không thể thay đổi thư mục hiện hành',
 	'math_CannotCreateTexFile' => 'Không thể tạo được tập tin tex',

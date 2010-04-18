@@ -12,9 +12,9 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Apc',
-	'version'        => '2010-04-15',
+	'version'        => '2010-04-18',
 	'author'         => 'Niklas Laxström',
-	'descriptionmsg' => 'viewapc-desc',
+	'descriptionmsg' => 'apc-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:APC',
 );
 
