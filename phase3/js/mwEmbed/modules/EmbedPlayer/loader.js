@@ -32,7 +32,7 @@ mw.setDefaultConfig( {
 	 "kalturaAttribution" : true,
 	 
 	 // Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
-	'show_player_warning' : true,
+	'showNativePlayerWarning' : true,
 	
 	// If fullscreen is global enabled. 
 	'enableFullscreen' : true,
@@ -45,7 +45,7 @@ mw.setDefaultConfig( {
 	'nativePlayerControls': false,
 	
 	// If mwembed should use native controls on mobile safari
-	'nativePlayerControlsMobileSafari' : false,
+	'nativePlayerControlsMobileSafari' : true,
 	
 	
 	// The z-index given to the player interface during full screen ( high z-index )  
@@ -128,12 +128,7 @@ mw.addDOMReadyHook( function() {
 				}
 								
 				// Hide the video tag and add a loader:
-				var pos = $j( element ).offset();						
-				$j( element ).css({
-					'opacity' : 0,
-					'position': 'absolute'
-				} )
-				
+				var pos = $j( element ).offset();										
 				$j('body').append(
 					$j('<div />')
 					.loadingSpinner()
@@ -145,7 +140,8 @@ mw.addDOMReadyHook( function() {
 						'top' : pos.top + 30,
 						'left' : pos.left + 30, 
 					})						
-				)	
+				)
+				//$j( element ).hide();
 			});						
 			// Load the embedPlayer module ( then run queued hooks )
 			mw.load( 'EmbedPlayer', function ( ) {
@@ -257,7 +253,6 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 		dependencyRequest[0].push( 'nativeEmbed' )
 	}
 	
-
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {
 		// Setup userConfig 
@@ -271,8 +266,9 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			//mw.log(" run callback: " + callback );
 						
 			// Run the callback with name of the module  
-			if( typeof callback == 'function' )		
+			if( typeof callback == 'function' )	{
 				callback( 'EmbedPlayer' );		
+			}
 			
 		} ); // setupUserConfig
 	} );

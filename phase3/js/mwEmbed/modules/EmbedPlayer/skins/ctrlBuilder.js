@@ -640,7 +640,7 @@ ctrlBuilder.prototype = {
 	*/ 
 	checkNativeWarning: function( ) {		
 		// Check cookie to see if user requested to hide it
-		if ( $j.cookie( 'show_player_warning' ) == 'false' ) {
+		if ( $j.cookie( 'showNativePlayerWarning' ) == 'false' ) {
 			return false;
 		}		
 		
@@ -717,13 +717,13 @@ ctrlBuilder.prototype = {
 						.click( function() {
 							if ( $j( this ).is( ':checked' ) ) {
 								// Set up a cookie for 7 days:
-								$j.cookie( 'show_player_warning', false, { expires: 7 } );
+								$j.cookie( 'showNativePlayerWarning', false, { expires: 7 } );
 								// Set the current instance
-								mw.setConfig( 'show_player_warning', false );
+								mw.setConfig( 'showNativePlayerWarning', false );
 								$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
 							} else {
-								mw.setConfig( 'show_player_warning', true );
-								$j.cookie( 'show_player_warning', true );
+								mw.setConfig( 'showNativePlayerWarning', true );
+								$j.cookie( 'showNativePlayerWarning', true );
 							}
 						} )							
 					);
@@ -734,7 +734,7 @@ ctrlBuilder.prototype = {
 				}				
 															
 				// Only show the warning if cookie and config are true
-				if ( mw.getConfig( 'show_player_warning' ) === true  ){
+				if ( mw.getConfig( 'showNativePlayerWarning' ) === true  ){
 					$j( '#gnp_' + embedPlayer.id ).fadeIn( 'slow' );
 				}
 			},

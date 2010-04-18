@@ -378,24 +378,7 @@ EmbedPlayerManager.prototype = {
 				case 'audio':
 				// By default treat the rewrite request as "video"
 				default:												
-					var ranPlayerSwapFlag = false;
-					// Skip the video if we are using native controls		
-					if( _this.useNativeControls( element ) ){
-						// Remove the player loader spiner:
-						$j('#loadSpiner_' + element.id ).remove();
-						// Unhide 
-						$j( element ).css({
-							'opacity' : 1,
-							'position': null
-						} )
-						.attr('controls', 'true')
-						// iPad needs the video to be hidden then shown
-						// for control attribute update to take effect
-						.hide() 
-						.show()
-						
-						return ;
-					}						
+					var ranPlayerSwapFlag = false;												
 					// Local callback to runPlayer swap once element has metadata
 					function runPlayerSwap() {											
 						if( ranPlayerSwapFlag ){
@@ -503,8 +486,17 @@ EmbedPlayerManager.prototype = {
 				swapPlayerElement[ method ] = playerInterface[ method ];
 			}
 		}
-				
-		$j( targetElement ).replaceWith( swapPlayerElement );
+		// Check if we are using native controls ( should keep the video embed around )
+		// "wrap" the player interface
+		if( playerInterface.useNativeControls() ) {
+			$j( targetElement )
+			.attr('id', playerInterface.pid )
+			.after( 
+				swapPlayerElement
+			)
+		} else {
+			$j( targetElement ).replaceWith( swapPlayerElement );
+		}
 		
 		
 		// Set swapPlayerElement has height / width set and set to loading:		
@@ -524,24 +516,6 @@ EmbedPlayerManager.prototype = {
 		return true;
 	},
 	
-	/**
-	 * Checks configuration options 
-	 *
-	 * @param [player] Object Optional player object to check controlls attirbute 
-	 * @returns bollean true if the mwEmbed player interface should be used
-	 * 					false if the mwEmbed player interace should not be used
-	 */
-	useNativeControls: function( player ) {
-		if( mw.getConfig('nativePlayerControls') == true ) {
-			return true;
-		}
-		if( mw.getConfig('nativePlayerControlsMobileSafari' ) &&
-		 	mw.isMobileSafari()
-		){
-			return true;
-		} 
-		return false;
-	},
 	
 	/**
 	* Player ready will run the global callbacks 
@@ -1294,6 +1268,11 @@ mw.EmbedPlayer.prototype = {
 			if( this[attr] == "true" ) this[attr] = true;
 		}
 				
+		// Hide "controls" if using native player controls: 
+		if( this.useNativeControls() ){
+			_this.controls = false;
+		}
+		
 		// Set the poster:
 		if ( $j( element ).attr( 'thumbnail' ) ) {
 			_this.poster = $j( element ).attr( 'thumbnail' );
@@ -1933,6 +1912,10 @@ mw.EmbedPlayer.prototype = {
 		if ( this.controls ) {			
 			mw.log( "embedPlayer:showPlayer::AddControls" );
 			this.ctrlBuilder.addControls();
+		} else {
+			// Need to think about this some more... 
+			// Interface is hidden if controls are "off" 
+			this.$interface.hide();	
 		}
 				
 		if ( this.autoplay ) {
@@ -2143,6 +2126,12 @@ mw.EmbedPlayer.prototype = {
 		var class_atr = '';
 		var style_atr = '';
 		
+		
+		if( this.useNativeControls() ){	
+			this.showNativePlayer();
+			return ;
+		}		
+		
 		// Set by default thumb value if not found
 		var posterSrc = ( this.poster ) ? this.poster : 
 						mw.getConfig( 'images_path' ) + 'vid_default_thumb.jpg';				
@@ -2170,7 +2159,76 @@ mw.EmbedPlayer.prototype = {
 				this.ctrlBuilder.getComponent( 'playButtonLarge' )
 			);
 		}		
-	},	
+	},
+	
+	/**
+	 * Checks if native controls should be used  
+	 *
+	 * @param [player] Object Optional player object to check controlls attirbute 
+	 * @returns bollean true if the mwEmbed player interface should be used
+	 * 					false if the mwEmbed player interace should not be used
+	 */
+	useNativeControls: function() {
+		if( mw.getConfig('nativePlayerControls') == true ) {
+			return true;
+		}
+		if( mw.getConfig('nativePlayerControlsMobileSafari' ) &&
+		 	mw.isMobileSafari()
+		){
+			return true;
+		} 
+		return false;
+	},
+	
+	
+	/*
+	 * Show the native player embed code 
+	 *
+	 * This is for cases where the main library needs to "get out of the way" 
+	 * since the device only supports a limited subset of the html5 and 
+	 * won't work with an html javascirpt interface
+	 */
+	showNativePlayer: function(){		
+		// Remove the player loader spiner if it exists
+		$j('#loadSpiner_' + this.id ).remove();		
+		// Check if we need to refresh mobile safari
+		var mobileSafairNeedsRefresh = false;
+		if( $j( '#' + this.pid ).attr('controls') === false ){
+			mobileSafairNeedsRefresh = true;
+		}		
+		// Unhide the original video element
+		$j( '#' + this.pid )
+		.css({
+			'position' : 'absolute'
+		})
+		.show()
+		.attr('controls', 'true');
+		
+		// iPad does not handle video tag update for attributes like "controls" 
+		// so we have to do a full replace ( if controls are not included innitialy ) 		
+		if( mw.isMobileSafari() && mobileSafairNeedsRefresh ) {
+			var source = this.mediaElement.getSources( 'video/h264' )[0];
+			if( ! source.src ){
+				this.showPluginMissingHTML();
+				return ;
+			}			
+			$j( '#' + this.pid ).replaceWith( 
+				$j( '<video />' )
+				.css( {
+					'width' : $j( '#' + this.pid ).css( 'width' ),
+					'height' :  $j( '#' + this.pid ).css( 'height' ),
+					'position' : 'absolute'
+				})
+				.attr( {
+					'id' : this.pid,
+					'poster': this.poster,
+					'src' : source.src,
+					'controls' : 'true'			
+				} )								
+			)			
+		}
+		return ;
+	},
 	
 	/**
 	* Gets code to embed the player remotely for "share" this player links
