@@ -929,7 +929,6 @@ settings[] = wgUserStatsGoogleCharts: int
 url = http://www.mediawiki.org/wiki/Extension:Usage_Statistics
 
 UserContactLinks
-file = UserSignature.php
 url = http://www.mediawiki.org/wiki/Extension:User_Contact_Links
 
 UserImages

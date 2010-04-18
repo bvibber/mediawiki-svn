@@ -20,16 +20,16 @@ global $wgHooks, $wgOut;
 $wgHooks['ParserAfterStrip'][]      = 'parseUserSignatures';
 $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
-	'version'     => '0.4.1',
-	'name'        => 'UserSignature',
+	'version'     => '0.5.0',
+	'name'        => 'UserContactLinks',
 	'author'      => 'Paul Grinberg',
 	'email'       => 'gri6507 at yahoo dot com',
 	'url'         => 'http://www.mediawiki.org/wiki/Extension:User_Contact_Links',
-	'descriptionmsg' => 'usercontactlink-desc',
+	'descriptionmsg' => 'usercontactlinks-desc',
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['UserContactLinks'] = $dir . 'UserSignature.i18n.php';
+$wgExtensionMessagesFiles['UserContactLinks'] = $dir . 'UserContactLinks.i18n.php';
 
 function parseUserSignatures(&$parser, &$text, &$strip_state) {
 	wfLoadExtensionMessages( 'UserContactLinks' );
