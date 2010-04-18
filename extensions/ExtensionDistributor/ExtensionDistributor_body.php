@@ -168,8 +168,8 @@ class ExtensionDistributorPage extends SpecialPage {
 		$selected = 0;
 		
 		foreach ( $versions as $branchPath => $branchName ) {
-			$wgOut->addHTML( Xml::element( 'option',
-				array( 'value' => $branchPath, 'selected' => ( ( $selected == 1 ) ? 'selected' : '' ) ), $branchName ) . "\n" );
+			$wgOut->addHTML( Xml::option( $branchName, $branchPath, ($selected == 1) ) );
+				
 			$selected++;
 		}
 		$wgOut->addHTML(
