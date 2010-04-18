@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['PostComment'] = $dir . 'SpecialPostcomment.i18n.php';
+$wgExtensionMessagesFiles['PostComment'] = $dir . 'Postcomment.i18n.php';
 
 function wfPostcomment( ) {
 	wfLoadExtensionMessages( 'PostComment' );
