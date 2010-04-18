@@ -6,6 +6,7 @@ through translatewiki.net and are not listed here.
   * Updated AdvancedRandom, AjaxQueryPages, AjaxShowEditors, APC, ChangeAuthor,
     cldr, ConfirmAccount, CrossNamespaceLinks, EditCount, ImportUsers,
     Interwiki, Nuke, UsageStatistics and UserRightsNotif extensions
+  * Updated scripts/findSettings.php to display extensions that aren't installed
 
 0.15.19 - 11 April 2010
   Updated Collection and FlaggedRevs extensions.

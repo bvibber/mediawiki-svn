@@ -97,7 +97,10 @@ class FindSettings extends Maintenance {
 				'qp_enable_showresults',
 			);
 			foreach ( $exts as $ext ) {
-				if( !$ext->isInstalled() ) continue; // must exist
+				if( !$ext->isInstalled() ) {
+					$this->output( "Extension $name is not installed\n" );
+					continue;
+				}
 				$file = file_get_contents( $ext->getSettingsFile() );
 				$name = $ext->getName();
 				$m = array();
