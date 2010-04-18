@@ -27,10 +27,10 @@ $wgExtensionCredits['specialpage'][] = array(
 
 // Set up the new special page
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['MultipleUpload'] = $dir . 'SpecialMultipleUpload.body.php';
-$wgAutoloadClasses['MultipleUploadForm'] = $dir . 'SpecialMultipleUpload.body.php';
-$wgExtensionMessagesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.i18n.php';
-$wgExtensionAliasesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.alias.php';
+$wgAutoloadClasses['MultipleUpload'] = $dir . 'MultiUpload.body.php';
+$wgAutoloadClasses['MultipleUploadForm'] = $dir . 'MultiUpload.body.php';
+$wgExtensionMessagesFiles['MultiUpload'] = $dir . 'MultiUpload.i18n.php';
+$wgExtensionAliasesFiles['MultiUpload'] = $dir . 'MultiUpload.alias.php';
 $wgSpecialPages['MultipleUpload'] = 'MultipleUpload';
 $wgSpecialPageGroups['MultipleUpload'] = 'media';
 
