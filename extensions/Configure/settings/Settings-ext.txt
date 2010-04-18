@@ -588,7 +588,6 @@ settings[] = wgNewUserMessageOnAutoCreate: bool
 url = http://www.mediawiki.org/wiki/Extension:NewUserMessage
 
 Nuke
-file = SpecialNuke.php
 url = http://www.mediawiki.org/wiki/Extension:Nuke
 
 OggHandler
