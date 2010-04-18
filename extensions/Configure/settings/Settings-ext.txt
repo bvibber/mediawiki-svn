@@ -115,16 +115,6 @@ settings[] = wgBlockTitlePatterns: array
 array[] = wgBlockTitlePatterns: simple
 url = http://www.mediawiki.org/wiki/Extension:BlockTitles
 
-BoardVote
-settings[] = wgBoardVoteDB: text, wgBoardCandidates: array, wgGPGCommand: text
-settings[] = wgGPGRecipient: text, wgGPGHomedir: text, wgGPGPubKey: text
-settings[] = wgBoardVoteEditCount: int, wgBoardVoteRecentEditCount: int, wgBoardVoteCountDate: text
-settings[] = wgBoardVoteRecentFirstCountDate: text, wgBoardVoteRecentCountDate: text,
-settings[] = wgBoardVoteStartDate: text, wgBoardVoteEndDate: text, wgBoardVoteDBServer: text
-array[] = wgBoardCandidates: simple
-schema = true
-url = http://www.mediawiki.org/wiki/Extension:BoardVote
-
 BookInformation
 settings[] = wgBookInformationCache: bool, wgBookInformationDriver: text
 settings[] = wgBookInformationService: array
@@ -250,9 +240,6 @@ url = http://unicode.org/cldr/repository_access.html
 CleanChanges
 settings[] = wgCCUserFilter: bool, wgCCTrailerFilter: bool
 url = http://www.mediawiki.org/wiki/Extension:CleanChanges
-
-Click
-url = http://www.mediawiki.org/wiki/Extension:Click
 
 ClientSide
 url = http://www.mediawiki.org/wiki/Extension:ClientSide
@@ -939,6 +926,7 @@ empty[] = ubUploadBlacklist: array
 url = http://www.mediawiki.org/wiki/Extension:UploadBlacklist
 
 UsageStatistics
+file = SpecialUserStats.php
 settings[] = wgUserStatsGoogleCharts: int
 url = http://www.mediawiki.org/wiki/Extension:Usage_Statistics
 
@@ -957,7 +945,7 @@ url = http://www.mediawiki.org/wiki/Extension:User_Merge_and_Delete
 
 UserOptionStats
 
-UserRightsNotification
+UserRightsNotif
 url = http://www.mediawiki.org/wiki/Extension:User_Rights_Email_Notification
 
 Validator

@@ -1,6 +1,12 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.20 - 18 April 2010
+  * Removed BoardVote and Click extensions
+  * Updated AdvancedRandom, AjaxQueryPages, AjaxShowEditors, APC, ChangeAuthor,
+    cldr, ConfirmAccount, CrossNamespaceLinks, EditCount, ImportUsers,
+    Interwiki, Nuke, UsageStatistics and UserRightsNotif extensions
+
 0.15.19 - 11 April 2010
   Updated Collection and FlaggedRevs extensions.
 
