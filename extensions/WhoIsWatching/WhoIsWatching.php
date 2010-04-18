@@ -4,14 +4,14 @@
 if (!defined('MEDIAWIKI')) {
         echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/WhoIsWatching/SpecialWhoIsWatching.php" );
+require_once( "\$IP/extensions/WhoIsWatching/WhoIsWatching.php" );
 EOT;
         exit( 1 );
 }
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
-	'version'        => '0.9',
+	'version'        => '0.10',
 	'name'           => 'WhoIsWatching',
 	'author'         => 'Paul Grinberg, Siebrand Mazeland',
 	'email'          => 'gri6507 at yahoo dot com',
@@ -20,13 +20,13 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['WhoIsWatching'] = $dir . 'SpecialWhoIsWatching_body.php';
-$wgExtensionMessagesFiles['WhoIsWatching'] = $dir . 'SpecialWhoIsWatching.i18n.php';
-$wgExtensionAliasesFiles['WhoIsWatching'] = $dir . 'SpecialWhoIsWatching.alias.php';
+$wgAutoloadClasses['WhoIsWatching'] = $dir . 'WhoIsWatching_body.php';
+$wgExtensionMessagesFiles['WhoIsWatching'] = $dir . 'WhoIsWatching.i18n.php';
+$wgExtensionAliasesFiles['WhoIsWatching'] = $dir . 'WhoIsWatching.alias.php';
 $wgSpecialPages['WhoIsWatching'] = 'WhoIsWatching';
 
 require_once( "$IP/includes/SpecialPage.php" );
-require_once($dir . 'SpecialWhoIsWatching_body.php');
+require_once($dir . 'WhoIsWatching_body.php');
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'fnShowWatchingCount';
 
 # Set the following to either 'UserName' or 'RealName' to display the list of watching users as such.

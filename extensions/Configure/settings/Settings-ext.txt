@@ -971,7 +971,6 @@ url = http://www.mediawiki.org/wiki/Extension:WhatIsMyIP
 WhoIsWatching
 settings[] = whoiswatching_nametype: text
 settings[] = whoiswatching_allowaddingpeople: bool, whoiswatching_showifzero: bool
-file = SpecialWhoIsWatching.php
 url = http://www.mediawiki.org/wiki/Extension:WhoIsWatching
 
 WhosOnline
