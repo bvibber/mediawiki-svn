@@ -1,6 +1,6 @@
 <?php
 /**
- * SpecialForm.php -- Use a form-based interface to start new articles
+ * Form.php -- Use a form-based interface to start new articles
  * Copyright 2007 Vinismo, Inc. (http://vinismo.com/)
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -22,11 +22,11 @@
  * @author Evan Prodromou <evan@vinismo.com>
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-require_once('XmlFunctions.php');
+require_once( 'XmlFunctions.php' );
 
 class SpecialForm extends SpecialPage {
 
@@ -49,7 +49,7 @@ class SpecialForm extends SpecialPage {
 
 		# Must have a name, like Special:Form/Nameofform
 		# XXX: instead of an error, show a list of available forms
-		if( !$par ) {
+		if ( !$par ) {
 			$wgOut->showErrorPage( 'formnoname', 'formnonametext' );
 			return;
 		}
@@ -57,12 +57,12 @@ class SpecialForm extends SpecialPage {
 		$form = $this->loadForm( $par );
 
 		# Bad form
-		if( !$form ) {
+		if ( !$form ) {
 			$wgOut->showErrorPage( 'formbadname', 'formbadnametext' );
 			return;
 		}
 
-		if( $wgRequest->wasPosted() ) {
+		if ( $wgRequest->wasPosted() ) {
 			# POST is to create an article
 			$this->createArticle( $form );
 		} else {
@@ -76,7 +76,7 @@ class SpecialForm extends SpecialPage {
 		$nt = Title::makeTitleSafe( NS_MEDIAWIKI, wfMsgForContent( 'formpattern', $name ) );
 
 		# article exists?
-		if( !$nt || $nt->getArticleID() == 0 ) {
+		if ( !$nt || $nt->getArticleID() == 0 ) {
 			return null;
 		}
 
@@ -97,7 +97,7 @@ class SpecialForm extends SpecialPage {
 
 		$wgOut->setPageTitle( $form->title );
 
-		if( !is_null( $form->instructions ) ) {
+		if ( !is_null( $form->instructions ) ) {
 
 			$wgOut->addHTML( Xml::openElement( 'div', array( 'class' => 'instructions' ) ) .
 							$wgOut->parse( $form->instructions ) .
@@ -105,7 +105,7 @@ class SpecialForm extends SpecialPage {
 							Xml::element( 'br' ) );
 		}
 
-		if( !is_null( $errmsg ) ) {
+		if ( !is_null( $errmsg ) ) {
 			$wgOut->addHTML( Xml::openElement( 'div', array( 'class' => 'error' ) ) .
 							$wgOut->parse( $errmsg ) .
 							Xml::closeElement( 'div' ) .
@@ -120,12 +120,12 @@ class SpecialForm extends SpecialPage {
 			)
 		);
 
-		foreach( $form->fields as $field ) {
+		foreach ( $form->fields as $field ) {
 			$wgOut->addHTML( $field->render( $wgRequest->getText( $field->name ) ) . Xml::element( 'br' ) . "\n" );
 		}
 
 		# Anonymous user, use recaptcha
-		if( $wgUser->getId() == 0 && $wgSpecialFormRecaptcha ) {
+		if ( $wgUser->getId() == 0 && $wgSpecialFormRecaptcha ) {
 			require_once( 'recaptchalib.php' );
 			global $recaptcha_public_key; # same as used by Recaptcha plugin
 			$wgOut->addHTML( recaptcha_get_html( $recaptcha_public_key ) );
@@ -141,7 +141,7 @@ class SpecialForm extends SpecialPage {
 		global $wgOut, $wgRequest, $wgLang, $wgUser, $wgSpecialFormRecaptcha;
 
 		# Check recaptcha
-		if( $wgUser->getId() == 0 && $wgSpecialFormRecaptcha ) {
+		if ( $wgUser->getId() == 0 && $wgSpecialFormRecaptcha ) {
 			require_once( 'recaptchalib.php' );
 			global $recaptcha_private_key; # same as used by Recaptcha plugin
 			$resp = recaptcha_check_answer(
@@ -151,7 +151,7 @@ class SpecialForm extends SpecialPage {
 				$wgRequest->getText( 'recaptcha_response_field' )
 			);
 
-			if( !$resp->is_valid ) {
+			if ( !$resp->is_valid ) {
 				$this->showForm( $form, wfMsg( 'formbadrecaptcha' ) );
 				return;
 			}
@@ -160,9 +160,9 @@ class SpecialForm extends SpecialPage {
 		# Check for required fields
 		$missedFields = array();
 
-		foreach( $form->fields as $name => $field ) {
+		foreach ( $form->fields as $name => $field ) {
 			$value = $wgRequest->getText( $name );
-			if( $field->isOptionTrue( 'required' ) && ( is_null( $value ) || strlen( $value ) == 0 ) ) {
+			if ( $field->isOptionTrue( 'required' ) && ( is_null( $value ) || strlen( $value ) == 0 ) ) {
 				$missedFields[] = $field->label;
 			}
 		}
@@ -178,12 +178,12 @@ class SpecialForm extends SpecialPage {
 		# First, we make sure we have all the titles
 		$nt = array();
 
-		for( $i = 0; $i < count( $form->template ); $i++ ) {
+		for ( $i = 0; $i < count( $form->template ); $i++ ) {
 
 			$namePattern = $form->namePattern[$i];
 			$template = $form->template[$i];
 
-			if( !$namePattern || !$template ) {
+			if ( !$namePattern || !$template ) {
 				$wgOut->showErrorPage( 'formindexmismatch-title', 'formindexmismatch', array( $i ) );
 				return;
 			}
@@ -194,32 +194,32 @@ class SpecialForm extends SpecialPage {
 
 			$nt[$i] = Title::newFromText( $title );
 
-			if( !$nt[$i] ) {
+			if ( !$nt[$i] ) {
 				$wgOut->showErrorPage( 'formbadpagename', 'formbadpagenametext', array( $title ) );
 				return;
 			}
 
-			if( $nt[$i]->getArticleID() != 0 ) {
+			if ( $nt[$i]->getArticleID() != 0 ) {
 				$wgOut->showErrorPage( 'formarticleexists', 'formarticleexists', array( $title ) );
 				return;
 			}
 		}
 
 		# At this point, all $nt titles should be valid, although we're subject to race conditions.
-		for( $i = 0; $i < count( $form->template ); $i++ ) {
+		for ( $i = 0; $i < count( $form->template ); $i++ ) {
 
 			$template = $form->template[$i];
 
 			$text = "{{subst:$template";
 
-			foreach( $form->fields as $name => $field ) {
+			foreach ( $form->fields as $name => $field ) {
 				# FIXME: strip/escape template-related chars (|, =, }})
 				$text .= "|$name=" . $wgRequest->getText( $name );
 			}
 
 			$text .= '}}';
 
-			if( !$this->checkSave( $nt[$i], $text ) ) {
+			if ( !$this->checkSave( $nt[$i], $text ) ) {
 				# Just break here; output already sent
 				return;
 			}
@@ -238,7 +238,7 @@ class SpecialForm extends SpecialPage {
 		}
 
 		# Redirect to the first article
-		if( $nt && $nt[0] ) {
+		if ( $nt && $nt[0] ) {
 			$wgOut->redirect( $nt[0]->getFullURL() );
 		}
 	}
@@ -248,7 +248,7 @@ class SpecialForm extends SpecialPage {
 
 		$title = $pattern;
 
-		foreach( $form->fields as $name => $field ) {
+		foreach ( $form->fields as $name => $field ) {
 			$title = preg_replace( "/{{\{$name\}}}/", $wgRequest->getText( $name ), $title );
 		}
 
@@ -265,31 +265,31 @@ class SpecialForm extends SpecialPage {
 		$editPage = new FakeEditPage( $nt );
 
 		# FIXME: more specific errors, copied from EditPage.php
-		if( $wgSpamRegex && preg_match( $wgSpamRegex, $text, $matches ) ) {
+		if ( $wgSpamRegex && preg_match( $wgSpamRegex, $text, $matches ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( $wgFilterCallback && $wgFilterCallback( $nt, $text, 0 ) ) {
+		} else if ( $wgFilterCallback && $wgFilterCallback( $nt, $text, 0 ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( !wfRunHooks( 'EditFilter', array( $editPage, $text, 0, &$errortext ) ) ) {
+		} else if ( !wfRunHooks( 'EditFilter', array( $editPage, $text, 0, &$errortext ) ) ) {
 			# Hooks usually print their own error
 			return false;
-		} else if( $errortext != '' ) {
+		} else if ( $errortext != '' ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( $wgUser->isBlockedFrom( $nt, false ) ) {
+		} else if ( $wgUser->isBlockedFrom( $nt, false ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( (int)(strlen($text) / 1024) > $wgMaxArticleSize ) {
+		} else if ( (int)( strlen( $text ) / 1024 ) > $wgMaxArticleSize ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( !$wgUser->isAllowed( 'edit' ) ) {
+		} else if ( !$wgUser->isAllowed( 'edit' ) ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( wfReadOnly() ) {
+		} else if ( wfReadOnly() ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
-		} else if( $wgUser->pingLimiter() ) {
+		} else if ( $wgUser->pingLimiter() ) {
 			$wgOut->showErrorPage( 'formsaveerror', 'formsaveerrortext' );
 			return false;
 		}
@@ -328,37 +328,37 @@ class Form {
 		# XXX: may be some faster ways to do this
 		$lines = explode( "\n", $text );
 
-		foreach( $lines as $line ) {
+		foreach ( $lines as $line ) {
 
-			if( preg_match( '/^(\w+)=(.*)$/', $line, $matches ) ) {
-				if( strcasecmp( $matches[1], 'template' ) == 0 ) {
+			if ( preg_match( '/^(\w+)=(.*)$/', $line, $matches ) ) {
+				if ( strcasecmp( $matches[1], 'template' ) == 0 ) {
 					$this->template[0] = $matches[2];
-				} else if( preg_match( '/template(\d+)/i', $matches[1], $tmatches ) ) {
-					$this->template[intval($tmatches[1])] = $matches[2];
-				} else if( strcasecmp( $matches[1], 'namePattern' ) == 0 ) {
+				} else if ( preg_match( '/template(\d+)/i', $matches[1], $tmatches ) ) {
+					$this->template[intval( $tmatches[1] )] = $matches[2];
+				} else if ( strcasecmp( $matches[1], 'namePattern' ) == 0 ) {
 					$this->namePattern[0] = $matches[2];
-				} else if( preg_match( '/namePattern(\d+)/i', $matches[1], $tmatches ) ) {
-					$this->namePattern[intval($tmatches[1])] = $matches[2];
-				} else if( strcasecmp( $matches[1], 'title' ) == 0 ) {
+				} else if ( preg_match( '/namePattern(\d+)/i', $matches[1], $tmatches ) ) {
+					$this->namePattern[intval( $tmatches[1] )] = $matches[2];
+				} else if ( strcasecmp( $matches[1], 'title' ) == 0 ) {
 					$this->title = $matches[2];
-				} else if( strcasecmp( $matches[1], 'instructions' ) == 0 ) {
+				} else if ( strcasecmp( $matches[1], 'instructions' ) == 0 ) {
 					$this->instructions = $matches[2];
 					wfDebug( __METHOD__ . ": Got instructions: '" . $this->instructions . "'.\n" );
 				} else {
 					wfDebug( __METHOD__ . ": unknown form attribute '$matches[1]'; skipping.\n" );
 				}
-			} else if( preg_match( '/^(\w+)\|([^\|]+)\|(\w+)(\|([^\|]+)(\|(.*))?)?$/', $line, $matches ) ) {
+			} else if ( preg_match( '/^(\w+)\|([^\|]+)\|(\w+)(\|([^\|]+)(\|(.*))?)?$/', $line, $matches ) ) {
 				# XXX: build an inheritance tree for different kinds of fields
 				$field = new FormField();
 				$field->setName( $matches[1] );
 				$field->setLabel( $matches[2] );
 				$field->setFieldType( $matches[3] );
-				if( count( $matches ) > 4 && $matches[4] ) {
+				if ( count( $matches ) > 4 && $matches[4] ) {
 					$field->setDescription( $matches[5] );
-					if( count( $matches ) > 6 && $matches[6] ) {
+					if ( count( $matches ) > 6 && $matches[6] ) {
 						$rawOptions = explode( ',', $matches[7] );
-						foreach( $rawOptions as $rawOption ) {
-							if( preg_match( '/^(\w+)=(.+)/', $rawOption, $optMatches ) ) {
+						foreach ( $rawOptions as $rawOption ) {
+							if ( preg_match( '/^(\w+)=(.+)/', $rawOption, $optMatches ) ) {
 								$field->setOption( $optMatches[1], $optMatches[2] );
 							} else {
 								wfDebug( __METHOD__ . ": unrecognized form field option: '$rawOption'; skipping.\n" );
@@ -410,7 +410,7 @@ class FormField {
 	}
 
 	function getOption( $key, $default = null ) {
-		if( array_key_exists( $key, $this->options ) ) {
+		if ( array_key_exists( $key, $this->options ) ) {
 			return $this->options[$key];
 		} else {
 			return $default;
@@ -433,7 +433,7 @@ class FormField {
 				return Xml::openElement( 'h2' ) .
 					Xml::element( 'label', array( 'for' => $this->name ), $this->label ) .
 					Xml::closeElement( 'h2' ) .
-					( ( $this->description) ?
+					( ( $this->description ) ?
 					( Xml::openElement( 'div' ) . $wgOut->parse( $this->description ) . Xml::closeElement( 'div' ) ) : '' ) .
 					Xml::openElement( 'textarea',
 						array(
@@ -464,7 +464,7 @@ class FormField {
 					'name' => $this->name,
 					'id' => $this->name
 				);
-				if( $def == 'checked' ) {
+				if ( $def == 'checked' ) {
 					$attrs['checked'] = 'checked';
 				}
 				return Xml::element( 'label', array( 'for' => $this->name ), $this->label ) . wfMsg( 'colon-separator' ) .
@@ -473,13 +473,13 @@ class FormField {
 			case 'radio':
 				$items = array();
 				$rawitems = explode( ';', $this->getOption( 'items' ) );
-				foreach( $rawitems as $item ) {
+				foreach ( $rawitems as $item ) {
 					$attrs = array(
 						'type' => 'radio',
 						'name' => $this->name,
 						'value' => $item
 					);
-					if( $item == $def ) {
+					if ( $item == $def ) {
 						$attrs['checked'] = 'checked';
 					}
 					$items[] = Xml::openElement( 'input', $attrs ) .
@@ -491,7 +491,7 @@ class FormField {
 			case 'select':
 				$items = array();
 				$rawitems = explode( ';', $this->getOption( 'items' ) );
-				foreach( $rawitems as $item ) {
+				foreach ( $rawitems as $item ) {
 					$items[] = Xml::element( 'option',
 									 ( $item == $def ) ? array( 'selected' => 'selected' ) : null,
 									 $item );

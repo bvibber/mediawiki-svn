@@ -1,6 +1,6 @@
 <?php
 /**
- * SpecialForm.i18n.php -- I18N for form-based interface to start new pages
+ * Form.i18n.php -- I18N for form-based interface to start new pages
  * Copyright 2007 Vinismo, Inc. (http://vinismo.com/)
  *
  *  This program is free software; you can redistribute it and/or modify

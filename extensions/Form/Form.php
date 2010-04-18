@@ -1,6 +1,6 @@
 <?php
 /**
- * SpecialForm.php -- Use a form-based interface to start new articles
+ * Form.php -- Use a form-based interface to start new articles
  * Copyright 2007 Vinismo, Inc. (http://vinismo.com/)
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -22,22 +22,22 @@
  * @author Evan Prodromou <evan@vinismo.com>
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
 // Set up the new special page
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['SpecialForm'] = $dir . 'SpecialForm.body.php'; # Tell MediaWiki to load the extension body.
-$wgExtensionMessagesFiles['Form'] = $dir . 'SpecialForm.i18n.php'; #Load internationalization file
-$wgExtensionAliasesFiles['Form'] = $dir . 'SpecialForm.alias.php';
+$wgAutoloadClasses['SpecialForm'] = $dir . 'Form.body.php'; # Tell MediaWiki to load the extension body.
+$wgExtensionMessagesFiles['Form'] = $dir . 'Form.i18n.php'; # Load internationalization file
+$wgExtensionAliasesFiles['Form'] = $dir . 'Form.alias.php';
 $wgSpecialPages['Form'] = 'SpecialForm'; # Let MediaWiki know about your new special page.
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'Form',
-	'version' => '0.4.1',
+	'version' => '0.5.0',
 	'author' => 'Evan Prodromou',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Form',
 	'descriptionmsg' => 'form-desc',
