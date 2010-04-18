@@ -1,8 +1,15 @@
 <?php
+/**
+ * Internationalisation file for the RPED extension
+ * @addtogroup Extensions
+ */
+
 $messages = array();
- 
-$messages['en'] = array( 
-	'rped' => 'Remote Page Existence Detection',
-        'rped-desc' => 'Links wikilinks to Wikipedia if the page is nonexistent on '
-        .'the local wiki but exists on Wikipedia',
+
+/* English
+ * @author Tisane
+ */
+$messages['en'] = array(
+	'rped' => 'Remote page existence detection',
+	'rped-desc' => 'Links wikilinks to Wikipedia if the page is does not exist on the local wiki but exists on Wikipedia',
 );

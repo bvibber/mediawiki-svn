@@ -18,25 +18,24 @@
 /* Alert the user that this is not a valid entry point to MediaWiki if they try to access the
 special pages file directly.*/
 
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 		To install the RPED extension, put the following line in LocalSettings.php:
 		require( "extensions/RPED/RPED.php" );
 EOT;
-    exit( 1 );
+	exit( 1 );
 }
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Remote Page Existence Detection',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RemotePageExistenceDetection',
-	'description' => 'Remote Page Existence Detection',
 	'descriptionmsg' => 'rped-desc',
-	'version' => '1.0.0',
+	'version' => '1.0.1',
 );
  
-$dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['RPEDHooks'] = $dir.'RPED.hooks.php';
+$dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['RPEDHooks'] = $dir . 'RPED.hooks.php';
 $wgExtensionMessagesFiles['RPED'] = $dir . 'RPED.i18n.php';
 $wgExtensionAliasesFiles['RPED'] = $dir . 'RPED.alias.php';
 

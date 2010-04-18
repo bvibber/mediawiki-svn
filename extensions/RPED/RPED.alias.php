@@ -1,7 +1,13 @@
 <?php
+/**
+ * Aliases for special pages of RPED extension.
+ */
+
 $aliases = array();
- 
-/** English */
+
+/** English
+ * @author Tisane
+ */
 $aliases['en'] = array(
-    'RPED' => array( 'RPED' ),
+	'RPED' => array( 'RPED' ),
 );
