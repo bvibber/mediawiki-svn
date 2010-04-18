@@ -30,13 +30,12 @@ $wgExtensionCredits['other'][] = array(
 	'version'     => '0.2',
 	'name' => 'Throttle',
 	'author' => 'Brion Vibber',
-	'descriptionmsg' => 'acct_creation_global_soft_throttle_hit-desc',
+	'descriptionmsg' => 'userthrottle-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Throttle',
 );
 
-$wgExtensionFunctions[] = 'throttleSetup';
 $wgHooks['AbortNewAccount'][] = 'throttleGlobalHit';
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AbortNewAccount'] = $dir . 'UserThrottle.i18n.php';
 
 $wgGlobalAccountCreationThrottle = array(
@@ -44,10 +43,6 @@ $wgGlobalAccountCreationThrottle = array(
 	'soft_time'    => 300, // Timeout for rolling count
 	'soft_limit'   => 10,  // 10 registrations in five minutes
 );
-
-function throttleSetup() {
-	wfLoadExtensionMessages( 'AbortNewAccount' );
-}
 
 /**
  * Hook function
@@ -59,10 +54,10 @@ function throttleGlobalHit( $user ) {
 	global $wgMemc, $wgDBname, $wgGlobalAccountCreationThrottle;
 	extract( $wgGlobalAccountCreationThrottle );
 
-	if( $min_interval > 0 ) {
+	if ( $min_interval > 0 ) {
 		$key = "$wgDBname:acctcreate:global:hard";
 		$value = $wgMemc->incr( $key );
-		if( !$value ) {
+		if ( !$value ) {
 			$wgMemc->set( $key, 1, $min_interval );
 		} else {
 			// Key should have expired, or we're too close
@@ -71,12 +66,12 @@ function throttleGlobalHit( $user ) {
 		throttleDebug( "hard limit ok (min_interval $min_interval)" );
 	}
 
-	if( $soft_limit > 0 ) {
+	if ( $soft_limit > 0 ) {
 		$key = "$wgDBname:acctcreate:global:soft";
 		$value = $wgMemc->incr( $key );
-		if( !$value ) {
+		if ( !$value ) {
 			$wgMemc->set( $key, 1, $soft_time );
-		} elseif( $value > $soft_limit ) {
+		} elseif ( $value > $soft_limit ) {
 			// All registrations block until the limit rolls out
 			return throttleSoftAbort( $soft_time, $soft_limit );
 		}
@@ -101,9 +96,9 @@ function throttleHardAbort( $interval ) {
 	return false;
 }
 
-function throttleDebug( $text, $full=false ) {
+function throttleDebug( $text, $full = false ) {
 	$info = '[IP: ' . wfGetIP() . ']';
-	if( function_exists( 'getallheaders' ) ) {
+	if ( function_exists( 'getallheaders' ) ) {
 		$info .= '[headers: ' . implode( ' | ', array_map( 'urlencode', getallheaders() ) ) . ']';
 	}
 	wfDebugLog( 'UserThrottle', "UserThrottle: $text $info" );
