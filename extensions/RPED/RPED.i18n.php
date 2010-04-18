@@ -11,5 +11,5 @@ $messages = array();
  */
 $messages['en'] = array(
 	'rped' => 'Remote page existence detection',
-	'rped-desc' => 'Links wikilinks to Wikipedia if the page is does not exist on the local wiki but exists on Wikipedia',
+	'rped-desc' => 'Links wikilinks to Wikipedia if the page does not exist on the local wiki but exists on Wikipedia',
 );
