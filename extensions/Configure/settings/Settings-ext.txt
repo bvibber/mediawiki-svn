@@ -925,7 +925,6 @@ empty[] = ubUploadBlacklist: array
 url = http://www.mediawiki.org/wiki/Extension:UploadBlacklist
 
 UsageStatistics
-file = SpecialUserStats.php
 settings[] = wgUserStatsGoogleCharts: int
 url = http://www.mediawiki.org/wiki/Extension:Usage_Statistics
 
