@@ -31,12 +31,12 @@ $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Category Feed',
 	'author' => 'Gabriel Wicke',
-	'descriptionmsg' => 'catfeed-desc',
+	'descriptionmsg' => 'categoryfeed-desc',
 	'url' => 'http://wikidev.net',
 );
 
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['catfeed'] = $dir . 'catfeed.i18n.php';
+$wgExtensionMessagesFiles['catfeed'] = $dir . 'Categoryfeed.i18n.php';
 
 if( $wgCategoryMagicGallery ) 
 	require_once('ImageGallery.php');
