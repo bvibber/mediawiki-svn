@@ -11,7 +11,8 @@ td{
 
 mw.ready( function(){
 	//for just setting one or two to test at a time for debug
-	//var langTestSet = [ 'es' ]; //pl
+	//var langTestSet = [ 'tk', 'tt', 'sr-el', 'sr-ec', 'sr', 'shi', 'se', 'shi'];	
+	//doLangTable ( langTestSet );
 	
 	// Setup bindings: 
 	$j('#runLang').click(function(){
@@ -38,6 +39,7 @@ mw.ready( function(){
 	 	
 	// Do mauall script loaders calls to test multiple languages:
 	function doLangTable( langSet ){		
+		$j('#table_out').loadingSpinner();
 		//build table output: 
 		var msgTestSet = { 												
 			'undelete_short' : [ 0, 1, 2, 5, 21, 101 ],			
@@ -60,10 +62,11 @@ mw.ready( function(){
 			mw.log(" doProcLangKey: " + langKey );
 			// Clear out the old digitTransformTable
 			mw.Language.digitTransformTable = null;
-			// Load the current language js file if it has a langKey			
-			if( mw.hasLangTransform ( langKey ) ){
+			// Load the current language js file if it has a langKey		
+			var transformLangKey = mw.getLangTransformKey ( langKey );	
+			if( transformLangKey != 'en' ){
 				mw.log( langKey + " load msg transform" );
-				var langName = 'Language' +	langKey.substr(0,1).toUpperCase() + langKey.substr( 1,langKey.length ); 
+				var langName = 'Language' +	transformLangKey.substr(0,1).toUpperCase() + transformLangKey.substr( 1, transformLangKey.length ); 
 				$j.getScript( '../languages/classes/' + langName + '.js' , function(){
 					doLangTest();
 				});			
@@ -164,6 +167,8 @@ mw.ready( function(){
 						//output a spacer:
 						o+='<tr><td colspan="6" height="20"> </td></tr>';			
 					});
+					// remove the spiner
+					$j( '.loading_spinner').remove();
 					//put the output into the page: 
 					$j('#table_out').append( o );								
 				});			
@@ -178,7 +183,7 @@ mw.ready( function(){
 </head>
 <body>
 <h3>Test Javascript plural msg transformations ( note this is a very resource intensive test )</h3>
-<a id="runAll" href="#">Run Test all<a> ( takes a few minutes ) <br>
+<a id="runAll" href="#">Run Test all<a> ( takes a while ) <br>
 <a id="runLang" href="#">Run Language Key</a>:<input size="5" id="testLangKey" name = "testLangKey" value="en"/>
 
 <div id="score_card" style="font-size:large"></div>
