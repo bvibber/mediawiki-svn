@@ -249,7 +249,9 @@ fn: {
 	bindTemplateEvents: function( $wrapper ) {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
 
-		$template.parent().attr('contentEditable', 'false');
+		if ( !opera ) {
+			$template.parent().attr('contentEditable', 'false');
+		}
 		
 		$template.click( function(event) {event.preventDefault(); return false;} )
 		
