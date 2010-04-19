@@ -54,10 +54,7 @@ var MW_EMBED_VERSION = '1.1e';
 	// Local scope configuration var:
 	var mwConfig = { };
 	
-	// Stores global callbacks for script-loader loading
-	var mwLoadDoneCB = { };
-	
-	//Local scope mwUserConfig var. Stores user configuration 
+	// Local scope mwUserConfig var. Stores user configuration 
 	var mwUserConfig = { };
 	
 	/**
@@ -365,7 +362,7 @@ var MW_EMBED_VERSION = '1.1e';
 		* getTemplateVars
 		* returns a set of template values in a given wikitext page
 		* 
-		* NOTE: should be integrated with the parser
+		* NOTE: should be integrated with the usability wikitext parser
 		*/
 		getTemplateVars: function() {
 			//mw.log('matching against: ' + wikiText);
@@ -490,6 +487,8 @@ var MW_EMBED_VERSION = '1.1e';
 		}
 	} 
 	
+	// Stores callbacks for script-loader loading
+	var mwLoadDoneCB = { };
 	
 	
 	/**
@@ -862,6 +861,7 @@ var MW_EMBED_VERSION = '1.1e';
 	 		return false;
 	 	}	 	
 	}
+	
 	/**
 	* Load done callback for script loader
 	*  this enables webkit browsers don't have to check if variables are "ready"

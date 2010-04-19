@@ -1930,12 +1930,18 @@ mw.EmbedPlayer.prototype = {
 	* @param {String} [misssingType] missing type mime
 	*/
 	showPluginMissingHTML : function( misssingType ) {
+		//if the native video is already displayed hide it: 
+		if( $j( '#' + this.pid ).length != 0 ){
+			$j('#loadSpiner_' + this.id ).remove();
+			$j( '#' + this.pid ).hide()
+		}
+		var source = this.mediaElement.sources[0];		
 		// Check if we have user defined missing html msg: 		
 		if ( this.user_missing_plugin_html ) {
 		  $j( this ).html(  this.user_missing_plugin_html );
 		} else {
 		  if ( !misssingType ){
-		  	misssingType = '';
+			  misssingType = '';
 		  }		   		 
 		  $j( this ).html(
 		  	$j('<div />').append(
@@ -1944,7 +1950,7 @@ mw.EmbedPlayer.prototype = {
 		  		$j( '<a />' )
 		  		.attr( {
 		  			'title' : gM( 'mwe-download_clip' ),
-		  			'href' : this.getSrc()
+		  			'href' : source.src
 		  		})
 		  		.text( gM( 'mwe-download_clip' ) )
 		  	)
@@ -2191,17 +2197,21 @@ mw.EmbedPlayer.prototype = {
 	 */
 	showNativePlayer: function(){		
 		// Remove the player loader spiner if it exists
-		$j('#loadSpiner_' + this.id ).remove();		
+		$j('#loadSpiner_' + this.id ).remove();
+		
 		// Check if we need to refresh mobile safari
-		var mobileSafairNeedsRefresh = false;
+		/*var mobileSafairNeedsRefresh = false;
 		if( $j( '#' + this.pid ).attr('controls') === false ){
 			mobileSafairNeedsRefresh = true;
-		}		
+		}*/		
+		// For now always refersh ( buggy display control behavior in iPad ) 
+		mobileSafairNeedsRefresh = true;
+		
 		// Unhide the original video element
 		$j( '#' + this.pid )
-		.css({
+		.css( {
 			'position' : 'absolute'
-		})
+		} )
 		.show()
 		.attr('controls', 'true');
 		
@@ -2210,8 +2220,7 @@ mw.EmbedPlayer.prototype = {
 		if( mw.isMobileSafari() && mobileSafairNeedsRefresh ) {
 			var source = this.mediaElement.getSources( 'video/h264' )[0];
 			if( ! source.src ){
-				this.showPluginMissingHTML();
-				return ;
+				mw.log( 'Error: should have caught no plyable sources for mobile safari earlier' );
 			}			
 			$j( '#' + this.pid ).replaceWith( 
 				$j( '<video />' )
@@ -2422,7 +2431,7 @@ mw.EmbedPlayer.prototype = {
 		// check if thumbnail is being displayed and embed html
 		if ( this.thumbnail_disp ) {
 			if ( !this.selected_player ) {
-				mw.log( 'no selected_player' );				
+				mw.log( 'no selected_player' );					
 				this.showPluginMissingHTML();
 			} else {
 				this.thumbnail_disp = false;
