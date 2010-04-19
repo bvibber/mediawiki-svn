@@ -264,8 +264,7 @@ var default_source_attributes = [
 		//Add the embedPlayer ready callback 
 		if( typeof callback == 'function' ){  
 			mw.playerManager.addCallback( callback );
-		} 
-		mw.log("about to run jQuery select on : " + player_select);
+		} 		
 		// Add each selected element to the player manager:		
 		$j( player_select ).each( function(na, playerElement) {			
 			mw.playerManager.addElement( playerElement, attributes);
@@ -352,13 +351,11 @@ EmbedPlayerManager.prototype = {
 				// ( Only one skin per plyer )		
 				break;
 			}
-		}			
-				
+		}					
 		// Load any skins we need then swap in the interface
-		mw.load( skinClassRequest, function() {	
+		mw.load( skinClassRequest, function() {				
 			// Set the wait for meta flag
-			var waitForMeta = _this.waitForMetaCheck( element );	
-										
+			var waitForMeta = _this.waitForMetaCheck( element );				
 			switch( element.tagName.toLowerCase() ) {
 				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
@@ -416,7 +413,15 @@ EmbedPlayerManager.prototype = {
 	* 	false if the resolution has been set via an attribute or is already loaded
 	*/			 
 	waitForMetaCheck: function( element ){
-		var waitForMeta = false;
+		var waitForMeta = false;		
+		
+		// If we don't have a native player don't wait for metadata
+		if( !mw.EmbedTypes.players.isSupportedPlayer( 'oggNative') &&
+			!mw.EmbedTypes.players.isSupportedPlayer( 'h264Native' ) ){
+			return false;
+		}
+		
+		
 		var width = $j( element ).css( 'width' );
 		var height = $j( element ).css( 'height' );
 	
@@ -427,12 +432,12 @@ EmbedPlayerManager.prototype = {
 			waitForMeta = true;
 		} else {			
 			// Check if we should wait for duration: 
-			if( $j( element ).get(0).duration || 
-				$j( element ).get(0).durationHint
+			if( $j( element ).attr( 'duration') || 
+				$j( element ).attr('durationHint')
 			){
 				// height, width and duration set; do not wait for meta data:
 				return false;
-			} else {
+			} else {				
 				waitForMeta = true;
 			}
 		}
@@ -455,13 +460,13 @@ EmbedPlayerManager.prototype = {
 		if( waitForMeta 
 			&& ( 
 				$j(element).attr('src') ||
-				$j(element).find("source[src]").filter('[type^=video],[type^=audio]').length != 0
+				$j(element).find("source[src]").length != 0
 			)
 		){
 			// Detect src type ( if no type set ) 
 			return true;
 		} else {		
-			// Element is not likely to update its meta data via video loader
+			// Element is not likely to update its meta data ( no src )
 			return false;
 		} 
 	},
@@ -610,10 +615,6 @@ mediaSource.prototype = {
 		// mw.log('adding mediaSource: ' + element);
 		this.src = $j( element ).attr( 'src' );
 		this.marked_default = false;
-		
-		// If the top level "video" tag mark as default: 
-		if ( element.tagName.toLowerCase() == 'video' )
-			this.marked_default = true;
 		
 		// Set default URLTimeEncoding if we have a time  url:
 		// not ideal way to discover if content is on an oggz_chop server. 
@@ -893,7 +894,7 @@ mediaElement.prototype = {
 	*/
 	init: function( videoElement ) {
 		var _this = this;
-		mw.log( 'Initializing mediaElement...' );
+		mw.log( videoElement.id + ' Initializing mediaElement...' );
 		this.sources = new Array();			
 										
 		// Process the videoElement as a source element:
@@ -1317,7 +1318,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Make sure duration is a float:  
 		this.duration = parseFloat( this.duration );
-		mw.log( "duration is: " +  this.duration );
+		mw.log( this.id + " duration is: " +  this.duration );
 		
 		// Set the player size attributes based loaded video element:  
 		this.setPlayerSize( element ); 			
