@@ -406,7 +406,7 @@ $messages['ga'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'ajaxshoweditors-desc' => 'Amosar aos usuarios que están editando na mesma páxina',
+	'ajaxshoweditors-desc' => 'Amosar os usuarios que están editando a mesma páxina',
 	'ajax-se-title' => 'Neste momento está a editar:',
 	'ajax-se-pending' => 'pendente de refresco... (faga clic nesta caixa ou comece a editar)',
 	'ajax-se-idling' => '(hai $1s)',

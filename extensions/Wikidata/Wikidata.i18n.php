@@ -2411,6 +2411,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
+ * @author Kghbln
  * @author Kipcool
  * @author Lyzzy
  * @author Ortografix
@@ -2482,6 +2483,9 @@ Wähle eine Sammlung aus, die du exportieren willst. Gib im Sprachen-Textfeld ei
 	'ow_exporttsv_not_allowed' => 'Du hast nicht die Berechtigung, einen TSV-Export durchzuführen.',
 	'ow_exporttsv_export_failed' => 'Export fehlgeschlagen',
 	'addcollection' => 'Wikidata: Sammlung hinzufügen',
+	'ow_searchnoresult' => "<p>Du kannst...:<br />
+* '''...einen Ausdruck erstellen „[[Ausdruck:$1]]“''' (und eine Definition hinzufügen) oder<br />
+* '''...eine Seite erstellen „[[:$1]]“''' (eine reguläre Seite)</p>",
 	'ow_save' => 'Speichern',
 	'ow_history' => 'Versionen/Autoren',
 	'ow_datasets' => 'Auswahl des Datasets',
@@ -3534,6 +3538,7 @@ $messages['et'] = array(
 	'datasearch_language' => 'Keel:',
 	'datasearch_found_word' => 'Leitud sõna',
 	'datasearch_meaning' => 'Tähendus',
+	'datasearch_search_text' => 'Otsitav tekst:',
 	'ow_importtsv_nothing_added' => 'Ei lisatud midagi.',
 	'ow_exporttsv_languages' => 'Keeled:',
 	'ow_searchnoresult' => "<p>Sa võid:<br />
@@ -3583,6 +3588,7 @@ $messages['et'] = array(
 	'ow_NewExactMeaning' => 'Uus täpne tähendus',
 	'ow_OtherDefinedMeaning' => 'Teised määratletud tähendused',
 	'ow_PopupAnnotation' => 'Märkus',
+	'ow_RecordLifeSpan' => 'Kirje eluiga',
 	'ow_Relations' => 'Suhted',
 	'ow_RelationType' => 'Suhte tüüp',
 	'ow_Remove' => 'Eemalda',
@@ -3592,15 +3598,20 @@ $messages['et'] = array(
 	'ow_SynonymsAndTranslations' => 'Sünonüümid ja tõlked',
 	'ow_Source' => 'Allikas',
 	'ow_Text' => 'Tekst',
+	'ow_Time' => 'Aeg',
 	'ow_TranslatedText' => 'Tõlgitud tekst',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
 	'ow_TranslatedTextAttributeValues' => 'Tõlgitavad tekstid',
 	'ow_LinkAttribute' => 'Omand',
 	'ow_LinkAttributeValues' => 'Lingid',
+	'ow_User' => 'Kasutaja',
 	'ow_Property' => 'Omand',
 	'ow_Value' => 'Väärtus',
+	'ow_added' => 'Lisatud',
+	'ow_removed' => 'Eemaldatud',
 	'ow_meaningsoftitle' => '"$1" tähendus',
 	'ow_Permission_denied' => '<h2>Õigused puuduvad</h2>',
+	'ow_history_show_life_span' => 'Näita kirje eluiga:',
 	'needstranslation' => 'Wikidata: Tõlget vajavad väljendid',
 	'ow_needs_xlation_title' => 'Tõlget vajavad väljendid',
 	'ow_needs_xlation_source_lang' => 'Lähtekeel:',
@@ -5026,6 +5037,9 @@ $messages['he'] = array(
 	'ow_exporttsv_not_allowed' => 'אינכם מורשים לייצא TSV.',
 	'ow_exporttsv_export_failed' => 'הייצוא נכשל',
 	'addcollection' => 'ויקי־דאטא: הוספת אוסף',
+	'ow_searchnoresult' => "<p>אתם יכולים:<br />
+* '''ליצור את הביטוי '''\"[[Expression:\$1]]\"''' (ולהוסיף לו הגדרה)<br />
+* '''ליצור את הדף '''\"[[:\$1]]\"''' (דף ויקי רגיל)</p>",
 	'ow_save' => 'שמירה',
 	'ow_history' => 'היסטוריה',
 	'ow_datasets' => 'בחירת ערכת נתונים',

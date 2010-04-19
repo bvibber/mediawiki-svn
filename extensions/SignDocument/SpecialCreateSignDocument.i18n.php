@@ -355,7 +355,7 @@ $messages['de'] = array(
 	'createsigndoc-head' => "Benutze dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
 Bitte gib den Namen der Seite an, auf welcher du digitales Signieren erlauben willst, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleitungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
 
-<b>Derzeit ist es nicht möglich, einmal gegebene Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
+'''Derzeit ist es nicht möglich, einmal gegebene Signaturen zu modifizieren oder zu entfernen''' ohne direkt die Datenbank zu bearbeiten.
 Zusätzlich wird der angezeigte Text beim Signieren der Seite der ''derzeitige'' Text sein, egal welche Änderungen danach noch vorgenommen wurden.
 Bitte sei dir absolut sicher, dass das Dokument in einem ausreichend stabilen Zustand zum Signieren ist.
 Bitte sei dir ebenfalls sicher, dass du alle nötigen Felder angegeben hast, ''bevor du dieses Formular übersendest''.",

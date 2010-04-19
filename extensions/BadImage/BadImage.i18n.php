@@ -805,7 +805,7 @@ $messages['gag'] = array(
  */
 $messages['gl'] = array(
 	'badimages' => 'Lista de imaxes con fallas',
-	'badimage-desc' => 'Incluír a lista de imaxes con fallas as habilidades de MediaWiki',
+	'badimage-desc' => 'Aumenta a capacidade da lista de imaxes indesexables de MediaWiki',
 	'badimages-add-btn' => 'Engadir',
 	'badimages-added' => '$1 foi engadida á lista.',
 	'badimages-count' => "Hai '''$1''' {{PLURAL:$1|imaxe|imaxes}} na lista de imaxes con fallas.",

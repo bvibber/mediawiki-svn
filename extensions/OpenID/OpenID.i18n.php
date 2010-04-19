@@ -2948,13 +2948,17 @@ OpenID는 다른 많은 웹사이트에서 서로 다른 암호나 사용자명�
 	'openiddelete-text' => '"{{int:openiddelete-button}}" 버튼을 누르시면, [$1 OpenID 정보]를 당신의 사용자 계정으로부터 삭제할 것입니다.
 이후 OpenID를 통한 현재 사용자 계정으로의 로그인이 불가능하게 될 것입니다.',
 	'openiddelete-button' => '확인',
+	'openiddeleteerrornopassword' => '계정에 비밀번호를 설정 안했기 때문에 모든 OpenID 계정을 삭제 할 수 없습니다.
+OpenID 없이 로그인 할 수 없습니다.',
+	'openiddeleteerroropenidonly' => 'OpenID를 이용해서만 로그인 할 수 있기 때문에 모든 OpenID 계정을 삭제 할 수 없습니다.
+OpenID 없이 로그인 할 수 없습니다.',
 	'openiddelete-sucess' => '사용자 계정으로부터 OpenID 정보가 삭제되었습니다. [[특수기능:OpenIDConvert|OpenID 변환]] 페이지로 돌아갑니다.',
 	'openiddelete-error' => '사용자 계정으로부터 OpenID 정보를 삭제하는 과정에 오류가 발생하였습니다.',
 	'prefs-openid' => 'OpenID 설정',
-	'openid-prefstext' => '[http://openid.net/ OpenID] 사용사 설정',
+	'openid-prefstext' => '[http://openid.net/ OpenID] 사용자 설정',
 	'openid-pref-hide' => 'OpenID로 로그인한 경우, 사용자 페이지에서 OpenID 정보를 보여주지 않습니다.',
 	'openid-pref-update-userinfo-on-login' => '로그인 시 업데이트 할 OpenID 정보 :',
-	'openid-urls-desc' => '현재 열결된 OpenID 계정 목록 :',
+	'openid-urls-desc' => '현재 연결된 OpenID 계정 목록 :',
 	'openid-urls-url' => 'URL 주소',
 	'openid-urls-action' => '동작',
 	'openid-urls-delete' => '삭제',
@@ -2963,7 +2967,7 @@ OpenID는 다른 많은 웹사이트에서 서로 다른 암호나 사용자명�
 	'openid-provider-label-openid' => 'OpenID URL을 입력하십시오',
 	'openid-provider-label-google' => '구글 계정을 통해 로그인하기',
 	'openid-provider-label-yahoo' => '야후 계정을 통해 로그인하기',
-	'openid-provider-label-aol' => 'AOL 사용자명 을입력하십시오',
+	'openid-provider-label-aol' => 'AOL 사용자명을 입력하십시오',
 	'openid-provider-label-other-username' => '$1 사용자명을 입력하십시오',
 );
 

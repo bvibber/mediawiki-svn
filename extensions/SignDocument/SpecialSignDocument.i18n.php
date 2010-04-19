@@ -595,7 +595,7 @@ $messages['br'] = array(
 	'sign-bday' => 'Oad :',
 	'sign-email' => "Chomlec'h postel :",
 	'sign-indicates-req' => '<small><i><font color="red">*</font> diskouez a ra ar maeziennoù ret.</i></small>',
-	'sign-list-anonymous' => 'Listennañ en un doare dianv',
+	'sign-list-anonymous' => 'Rollañ en un doare dianv',
 	'sign-list-hideaddress' => "Chom hep menegiñ ar chomlec'h",
 	'sign-list-hideextaddress' => "Arabat menegiñ ar gêr, ar stad (departamant), ar c'hod post pe ar vro",
 	'sign-list-hidephone' => 'chom hep menegiñ an niverenn bellgomz',
@@ -613,7 +613,7 @@ $messages['br'] = array(
 	'sign-viewfield-country' => 'Bro',
 	'sign-viewfield-zip' => 'Kod-post',
 	'sign-viewfield-ip' => "Chomlec'h IP",
-	'sign-viewfield-agent' => 'Graer implijer',
+	'sign-viewfield-agent' => 'Dileuriad an implijer',
 	'sign-viewfield-phone' => 'Pellgomz',
 	'sign-viewfield-email' => 'Postel',
 	'sign-viewfield-age' => 'Oad',
@@ -3462,14 +3462,15 @@ $1',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  */
 $messages['pms'] = array(
 	'signdocument' => "Firma digital d'un document",
 	'sign-nodocselected' => "Për piasì, ch'a sërna ël document ch'a veul firmé.",
 	'sign-selectdoc' => 'Document:',
-	'sign-docheader' => "Për piasì, ch'a dòvra ës mòdulo-sì për firmé an manera digital ël document \"[[\$1]],\" che i-j ësmonoma ambelessì sota.
-Ch'a sia gentil, ch'a lesa tut ël document e '''ch'a firma mach s'a l'é d'acòrdi an manera completa'''. Për firmé ch'a buta sò dat ant ij camp a pòsta.",
+	'sign-docheader' => "Për piasì, ch'a deuvra ës mòdulo-sì për firmé an manera digital ël document \"[[\$1]],\" che ijë smonoma ambelessì-sota.
+Ch'a sia gentil, ch'a lesa tut ël papé e '''ch'a firma mach s'a l'é d'acòrdi an manera completa'''. Për firmé ch'a buta sò dat ant ij camp a pòsta.",
 	'sign-error-nosuchdoc' => "A l'ha ciamane un document ($1) ch'a-i é pa.",
 	'sign-realname' => 'Nòm e cognòm:',
 	'sign-address' => 'Abitant an via:',
@@ -4649,6 +4650,13 @@ $messages['tr'] = array(
 	'sign-uniquequery-similaraddress' => 'Benzer adres',
 	'sign-uniquequery-similarphone' => 'Benzer telefon',
 	'sign-uniquequery-similaremail' => 'Benzer e-posta',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Рашат Якупов
+ */
+$messages['tt-cyrl'] = array(
+	'sign-city' => 'Шәһәр:',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

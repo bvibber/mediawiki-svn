@@ -321,10 +321,11 @@ $messages['gag'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'backforth-next' => 'Seguinte ($1)',
-	'backandforth-desc' => 'Engade "Seguinte" e "Anterior" ao buscar as ligazóns alfabéticas na cabeceira das páxinas',
+	'backandforth-desc' => 'Engade as ligazóns de navegación alfabética "Seguinte" e "Anterior" no canto superior das páxinas',
 	'backforth-prev' => 'Anterior ($1)',
 );
 

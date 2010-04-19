@@ -79,6 +79,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -89,7 +90,7 @@ $messages['br'] = array(
 	'tablemod-error-colcount' => 'Ne tegemer nemetken ar balizenn-mañ an taolennoù gant un niver kevatal a golonennoù dre linenn e-pad an dilamadenn.',
 	'tablemod-error-headcount' => 'Ne tegemer nemetken ar balizenn-mañ an taolennoù gant talbennoù war ur golonenn hepken e-pad ar rummañ.',
 	'tablemod-error-invalidsort' => "N'eo ket mat an arventennoù rummañ.",
-	'tablemod-error-invalidaction' => "Ne c'heller ket ober an oberezh-se.",
+	'tablemod-error-invalidaction' => "N'haller ket ober an dra-se.",
 	'tablemod-error-missingid' => 'Mankout a ra an doareenn ident er balizenn.',
 );
 

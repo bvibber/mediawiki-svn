@@ -272,7 +272,7 @@ $messages['br'] = array(
 	'ratinghistory-leg' => 'Roadennoù istor ar priziadennoù evit [[:$1|$1]]',
 	'ratinghistory-tab' => 'istimadur',
 	'ratinghistory-link' => 'Priziadenn ar bajenn',
-	'ratinghistory-thanks' => "''<font color=\"darkred\">Trugarez da vezañ kemmeret amzer evit adlenn ar bajenn !</font>''",
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Trugarez da vezañ kemeret amzer da adlenn ar bajenn-mañ !</font>''",
 	'ratinghistory-period' => 'Prantad :',
 	'ratinghistory-month' => 'miz diwezhañ',
 	'ratinghistory-3months' => '3 miz diwezhañ',

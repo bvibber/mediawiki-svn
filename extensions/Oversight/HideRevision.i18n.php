@@ -896,15 +896,16 @@ Anulěruj do togo toś tu změnu.',
  * @author Dead3y3
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
-	'hiderevision' => 'Μόνιμα κρύψε τις αναθεωρήσεις',
+	'hiderevision' => 'Μόνιμη απόκρυψη αναθεωρήσεων',
 	'hiderevision-desc' => 'Κρύψε τις μεμονωμένες αναθεωρήσεις από όλους τους χρήστες για νομικούς λόγους, κ.τ.λ.',
 	'group-oversight' => 'Επιτηρητές',
-	'group-oversight-member' => 'επιτηρητής',
+	'group-oversight-member' => 'Επιτηρητής',
 	'grouppage-oversight' => '{{ns:project}}:Επιτήρηση',
-	'right-oversight' => 'Δείτε μια προηγουμένως κρυφή αναθεώρηση',
-	'right-hiderevision' => 'Απόκρυψη αναθεωρήσεων από τους διαχειριστές',
+	'right-oversight' => 'Εμφάνιση αναθεωρήσεων που αποκρύφτηκαν προηγουμένως μέσω της επέκτασης «Επιτήρηση» (Oversight)',
+	'right-hiderevision' => 'Απόκρυψη αναθεωρήσεων από τους διαχειριστές μέσω της επέκτασης «Επιτήρηση» (Oversight)',
 	'hiderevision-prompt' => 'Αριθμός αναθεώρησης προς αφαίρεση:',
 	'hiderevision-continue' => 'Συνέχεια',
 	'hiderevision-text' => "Αυτό πρέπει να χρησιμοποιηθεί '''μόνο''' για τις ακόλουθες περιπτώσεις:

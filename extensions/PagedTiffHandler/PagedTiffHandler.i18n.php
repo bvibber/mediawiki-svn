@@ -127,6 +127,19 @@ $messages['de'] = array(
 	'tiff-file-info-size' => '(Seite $5, $1 × $2 Pixel, Dateigröße: $3, MIME-Typ: $4)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'tiff_too_many_embed_files' => 'Wobraz wopśimujo pśewjele zasajźonych datajow.',
+	'tiff_file_too_large' => 'Nagrata dataja jo pśewjelika a jo se wótpokazała.',
+	'tiff_out_of_service' => 'Nagrata dataja njedajo se pśeźěłaś. ImageMagick njestoj k dispoziciji.',
+	'tiff_too_much_meta' => 'Metadaty wužywa pśewjele ruma.',
+	'tiff_script_detected' => 'Nagrata dataja wopśimujo skripty.',
+	'tiff_bad_file' => 'Nagrata dataja wopśimujo zmólki.',
+	'tiff-file-info-size' => '(bok $5, $1 × $2 pikselow, datajowa wjelikosć: $3, typ MIME: $4)',
+);
+
 /** Greek (Ελληνικά)
  * @author Dada
  */

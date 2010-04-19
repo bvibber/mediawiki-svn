@@ -93,6 +93,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'securepasswords-desc' => "Sevel a ra hacherezh gerioù-tremen suroc'h hag ouzhpennañ a ra ur gwirier kemplezhder ar gerioù-tremen.",
 	'securepasswords-valid' => 'Direizh pe re verr eo ho ker-tremen.
 Ret eo dezhañ :',
 	'securepasswords-minlength' => "kaout an hirder a $1 arouezenn{{PLURAL:$1||}} d'an nebeutañ",

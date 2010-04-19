@@ -12,6 +12,27 @@ $messages['en'] = array(
 	'js2support-desc' => 'JS2 support as an extension',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'js2support-desc' => 'Падтрымка JS2 у форме пашырэньня',
+);
+
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'js2support-desc' => 'Embreg eus JS2 evel un astenn',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'js2support-desc' => 'JS2-Unterstützung durch eine Softwareerweiterung',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -80,6 +101,13 @@ $messages['no'] = array(
  */
 $messages['pl'] = array(
 	'js2support-desc' => 'Wsparcie JS2 w formie rozszerzenia',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'js2support-desc' => "Manten ëd JS2 com n'estension",
 );
 
 /** Portuguese (Português)

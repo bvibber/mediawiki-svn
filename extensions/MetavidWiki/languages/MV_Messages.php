@@ -1377,7 +1377,7 @@ $messages['br'] = array(
 	'mv_tool_navigate' => 'Merdeiñ',
 	'mv_tool_export' => 'Ezporzhiañ',
 	'mv_tool_export_title' => 'Ezporzhiañ ar froudad metaroadennoù',
-	'mv_tool_embed' => 'Enklozañ',
+	'mv_tool_embed' => 'Enframmañ',
 	'mv_tool_overlay' => 'Kinnig ar patrom',
 	'mv_results_found' => "Disoc'hoù video evit <b>$1</b> war <b>$2</b> eus <b>$3</b>",
 	'mv_tool_mang_layers' => 'Merañ ar gwiskadoù',
@@ -7655,6 +7655,25 @@ Për piasì, ch\'a arpòrta son a l\'[[{{MediaWiki:Grouppage-sysop}}|aministrato
 	'mv_file_with_same_desc' => 'Eror: archivi ëd fluss con la midema ciav ëd descrission <i>$1</i> già presenta',
 	'mv_updated_stream_files' => "Modificà la memorisassion dj'archivi ëd fluss",
 	'mv_removed_file_stream' => "Gavà l'archivi ëd fluss: $1",
+	'mv_missing_stream_text' => 'Ël fluss ch\'a l\'ha ciamà <b>$1</b> a l\'é nen disponìbil.<br />
+A peul vorèj dé n\'ociada a la <a href="$2">Lista dij fluss</a><br />
+opura a peul vorèj <a href="$3">Gionté ël fluss</a>.',
+	'mv_user_cant_edit' => 'A podrìa avèj damanca ëd [$1 rintré ant ël sistema] për fé dle modìfiche, $2',
+	'mv_add_stream_file' => "Gionté n'archivi ëd fluss",
+	'mv_media_path' => 'senté dël mojen',
+	'mv_file_list' => 'Archivi ëd fluss',
+	'mv_label_stream_name' => 'Nòm dël fluss',
+	'mv_label_stream_desc' => 'Descrission dël fluss',
+	'add_stream_permission' => "A l'ha nen ël përmess ëd gionté un fluss neuv",
+	'edit_stream_missing' => 'A-i manca ël nòm dël fluss',
+	'mv_missing_req_time' => "A-i manca ël temp ëd l'arcesta",
+	'mv_missing_cat' => 'A-i manca ël nòm ëd la categorìa',
+	'mv_stream_already_exists' => 'Ël fluss <a href="$2">$1</a> a esist già',
+	'mv_summary_add_stream' => 'fluss giontà con un formolari',
+	'mv_error_stream_insert' => "faliment ëd l'anseriment dël fluss",
+	'mv_redirect_and_delete_reason' => 'gavà la pàgina ëd ridiression',
+	'mv_remove_reason' => 'Rason ëd la scancelassion:',
+	'mv_stream_delete_warrning' => "'''Gavand cost fluss as gavran ëdcò $1 {{PLURAL:$1|tòch|tòch}} dij metadàit assossià'''<br />",
 );
 
 /** Pashto (پښتو)

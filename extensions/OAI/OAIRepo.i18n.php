@@ -94,10 +94,11 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Juan de Vojníkov
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'oai-desc' => 'Posktuje rozhraní k [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] úložišti',
+	'oai-desc' => 'Poskytuje rozhraní k [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] úložišti',
 );
 
 /** German (Deutsch)

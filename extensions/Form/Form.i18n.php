@@ -372,6 +372,7 @@ Pšosym wupołń {{PLURAL:$2|jo|jej|je|je}}.',
  * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'form-desc' => 'Μια [[Special:Form|φόρμα επιφάνειας]] για έναρξη νέων σελίδων',
@@ -389,7 +390,7 @@ $messages['el'] = array(
 	'formbadpagename' => 'Κακό όνομα σελίδας',
 	'formsavesummary' => 'Νέα σελίδα που χρησιμοποιεί τη [[Special:Form/$1|φόρμα $1]]',
 	'formsaveerror' => 'Σφάλμα στην αποθήκευση της φόρμας',
-	'formsaveerrortext' => 'Παρουσιάστηκε άγνωστο σφάλμα κατά την αποθήκευση της σελίδας $ 1.',
+	'formsaveerrortext' => 'Παρουσιάστηκε άγνωστο σφάλμα κατά την αποθήκευση της σελίδας $1.',
 );
 
 /** Esperanto (Esperanto)

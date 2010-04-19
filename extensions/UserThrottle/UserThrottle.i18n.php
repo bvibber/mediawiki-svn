@@ -166,9 +166,9 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'userthrottle-desc' => 'Acelerador de creación de usuarios',
-	'acct_creation_global_hard_throttle_hit' => 'A creación de contas foi suspendida automaticamente por uns segundos para reducir os ataques masivos de rexistro.
-Por favor, agarde uns minutos e prema "recargar" no seu navegador para volver intentalo.',
+	'userthrottle-desc' => 'Limitar a creación de usuarios',
+	'acct_creation_global_hard_throttle_hit' => 'A creación de contas suspendeuse automaticamente durante uns segundos para reducir os ataques masivos de rexistro.
+Por favor, agarde uns minutos e prema sobre o botón "Recargar" do seu navegador para volver intentalo.',
 );
 
 /** Swiss German (Alemannisch)

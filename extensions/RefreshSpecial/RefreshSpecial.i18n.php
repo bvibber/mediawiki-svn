@@ -209,7 +209,7 @@ P'ho peus dibabet an holl pajennoù ho peus c'hoant freskaat klikit war \"Freska
 	'refreshspecial-slave-lagged' => 'Dale war ar servijer sklav, o gortoz...',
 	'refreshspecial-reconnected' => 'Adkevreet.',
 	'refreshspecial-reconnecting' => "N'oc'h ket bet kevreadet, adkevreadenn a-benn 10 eilenn...",
-	'refreshspecial-page-result' => 'Kaout $1 {{PLURAL:$1|linenn |linenn}} e',
+	'refreshspecial-page-result' => 'bet $1 linenn{{PLURAL:$1||}} e',
 	'refreshspecial-total-display' => '$1 pajenn freskaet{{PLURAL:$1||}} evit un hollad a $2 linenn{{PLURAL:$2||}} e-pad $3 (sevenadur hollek ar skript en deus padet $4)',
 	'right-refreshspecial' => 'Freskaat ar pajennoù arbennik',
 );

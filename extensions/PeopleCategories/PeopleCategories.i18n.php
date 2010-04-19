@@ -28,6 +28,13 @@ $messages['be-tarask'] = array(
 	'peoplecategories-desc' => 'Зьмяняе назвы старонак, якія паказваюцца, з «Імя Фамілія» на «Фамілія, Імя» для вызначаных катэгорыяў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'peoplecategories-desc' => 'Cheñch a ra mod kinnig anvioù ar pajennoù diskouezet eus "Anv-bihan Anv" da "Anv Anv-bihan" er rummadoù spisaet.',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'peoplecategories-desc' => 'Ermöglicht es, die Anzeige von Seitennamen in angegebenen Kategorien von „Vorname Familienname“ in „Familienname, Vorname“ zu ändern',

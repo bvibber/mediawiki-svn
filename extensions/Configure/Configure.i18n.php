@@ -5768,6 +5768,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-timezone' => 'Zäitzon',
 	'configure-section-zh-conversion' => 'Chinesesch Konversioun',
 	'configure-section-debug' => 'Debugging',
+	'configure-section-profiling' => 'Profiléieren',
 	'configure-section-site' => 'Personalisatioun vum Site',
 	'configure-section-css-js' => 'CSS a JavaScript',
 	'configure-section-namespaces' => 'Nummraim',
@@ -9704,6 +9705,13 @@ Lütfen bu eklentiyi kullanmak için PHP ile dizini yazılabilir hale getirin.',
 	'configure-farmer-settings' => '[[Special:Configure|Bu vikiyi konfigüre et]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Bu viki için eklentileri konfigüre et]].',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Bu viki için kullanılabilir olan eklentileri listele]].',
+);
+
+/** Udmurt (Удмурт)
+ * @author Kaganer
+ */
+$messages['udm'] = array(
+	'configure-ext-settings' => 'Настройкаос',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

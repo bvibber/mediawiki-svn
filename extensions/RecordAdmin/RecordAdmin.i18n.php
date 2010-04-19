@@ -293,6 +293,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -313,16 +314,16 @@ $messages['br'] = array(
 	'recordadmin-buttonsearch' => 'Klask',
 	'recordadmin-buttoncreate' => 'Krouiñ',
 	'recordadmin-buttonreset' => 'Adderaouekaat',
-	'recordadmin-searchresult' => "Disoc'hoù ar c'hlask",
+	'recordadmin-searchresult' => "Disoc'hoù klask",
 	'recordadmin-nomatch' => "N'eo bet kavet enrolladenn klotaus ebet !",
-	'recordadmin-edit' => 'Ho kemmañ $2 enrolladenn "$1"',
+	'recordadmin-edit' => 'O kemmañ $2 enrolladenn "$1"',
 	'recordadmin-typeupdated' => 'hizivaet eo perzhioù $1',
 	'recordadmin-updatesuccess' => 'Hizivaet eo $1',
 	'recordadmin-updateerror' => "C'hoarvezet ez eus ur fazi e-pad an hizivadenn",
 	'recordadmin-buttonsave' => 'Enrollañ',
 	'recordadmin-noform' => 'N\'eus furmskrid ebet stag ouzh an enrolladennoù "$1" !',
 	'recordadmin-createlink' => 'krouiñ unan',
-	'recordadmin-newcreated' => '$1 nevez, krouet adalek ur furmskrid publik',
+	'recordadmin-newcreated' => '$1 nevez krouet adalek ur furmskrid foran',
 	'recordadmin-summary-typecreated' => 'Krouet ez eus bet un $1 nevez',
 	'recordadmin-viewlink' => 'gwelet',
 	'recordadmin-editlink' => 'aozañ',

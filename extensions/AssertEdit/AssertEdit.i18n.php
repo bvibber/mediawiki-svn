@@ -260,10 +260,11 @@ $messages['fy'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  */
 $messages['gl'] = array(
 	'assert_edit_title' => 'Afirmación fracasada',
-	'assertedit-desc' => 'Engade edición das afirmacións para o uso por bots.',
+	'assertedit-desc' => 'Engade afirmacións de edición para o uso mediante bots.',
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 

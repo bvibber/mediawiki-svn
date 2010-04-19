@@ -248,10 +248,10 @@ $messages['br'] = array(
 	'patrol-endorsed-failed' => "N'eo ket bet merket an embann evel gwiriekaet.",
 	'patrol-reverted-ok' => "Distaolet eo bet ar c'hemm-se.",
 	'patrol-reverted-failed' => "N'eus ket bet tu nulañ ar c'hemm-se",
-	'patrol-skipped-ok' => 'Dianavezout an embann.',
-	'patrol-reasons' => '* Vandalerezh simpl
-* Amprouadennoù tud nevez
-* Gwelet ar bajenn kaozeadenn',
+	'patrol-skipped-ok' => "O lezel ar c'hemm a-gostez.",
+	'patrol-reasons' => '* Vandalerezh eeun
+* Taol esae un den nevez
+* Gwelet ar bajenn gaozeal',
 	'patrol-another' => "Diskouez ur c'hemm all, ma 'z eo posupl.",
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
@@ -1895,6 +1895,13 @@ $messages['tr'] = array(
 	'group-patroller-member' => 'Devriye',
 	'grouppage-patroller' => '{{ns:project}}:Devriye',
 	'right-patroller' => 'Sayfaları gözle',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Рашат Якупов
+ */
+$messages['tt-cyrl'] = array(
+	'group-patroller-member' => 'тикшерүче',
 );
 
 /** Ukrainian (Українська)
