@@ -779,20 +779,19 @@ var MW_EMBED_VERSION = '1.1e';
 					mw.log( "Error Could not get url for class " + className  );						
 					return false;
 				}	
-			}
-			
+			}			
 			// Include class defined check for older browsers
 			var classDone = false;
 			
-			// Set the top level load done to the callback				
+			// Set the loadDone callback per the provided className				
 			mw.setLoadDoneCB( className, callback );
-						
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
+				
 				// If its a "syle sheet" manually set its class to true
-				if( scriptRequest.substr( scriptRequest.lastIndexOf( '.' ), 4 ).toLowerCase() == 'css' &&
-					className.substr(0,8) == 'mw.style' ){
+				var ext = scriptRequest.substr( scriptRequest.lastIndexOf( '.' ), 4 ).toLowerCase();
+				if( ext == '.css' &&	className.substr(0,8) == 'mw.style' ){				
 					window [ className ] = true;
 				}
 				
