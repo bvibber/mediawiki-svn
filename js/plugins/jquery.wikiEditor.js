@@ -418,7 +418,7 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var oldLength = context.fn.getContents().length;
+			var oldLength = context.fn.getContents().length - ( cursorPos[1] - cursorPos[0] );
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -433,26 +433,6 @@ if ( !context || typeof context == 'undefined' ) {
 						$(this).text( $(this).text() );
 					}
 				} );
-				// Remove newlines from all text nodes
-				var t = context.fn.traverser( context.$content );
-				while ( t ) {
-					if ( t.node.nodeName == '#text' ) {
-						// Text nodes that are nothing but blank lines need to be converted to full line breaks
-						if ( t.node.nodeValue === '\n' ) {
-							$( '<p><br></p>' ).insertAfter( $( t.node ) );
-							var oldNode = t.node;
-							t = t.next();
-							$( oldNode ).remove();
-							// We already advanced, so let's finish now
-							continue;
-						}
-						// Text nodes containing new lines just need conversion to spaces
-						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
-						}
-					}
-					t = t.next();
-				}
 				// MS Word + webkit
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
@@ -463,6 +443,23 @@ if ( !context || typeof context == 'undefined' ) {
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$(this).replaceWith( this.childNodes );
 				} );
+				
+				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
+				var removeNextBR = false
+				while ( pasteContent != null && ! $( pasteContent ).hasClass( 'wikiEditor' ) ) {
+					var currentNode = pasteContent;
+					pasteContent = pasteContent.nextSibling;
+					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {				
+						$( currentNode ).wrap( $( '<p></p>' ) );
+						removeNextBR = true;
+					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
+						$( currentNode ).remove();
+						removeNextBR = false;
+					} else {
+						removeNextBR = false;
+					}
+				}
+				
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
@@ -499,7 +496,7 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[1] + context.fn.getContents().length - oldLength;
+				var restoreTo = cursorPos[0] + context.fn.getContents().length - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
