@@ -249,7 +249,7 @@ fn: {
 	bindTemplateEvents: function( $wrapper ) {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
 
-		if ( !opera ) {
+		if ( typeof ( opera ) == "undefined" ) {
 			$template.parent().attr('contentEditable', 'false');
 		}
 		
