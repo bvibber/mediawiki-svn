@@ -1085,6 +1085,17 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 	'prefswitch-success-feedback' => 'Twoje měnjenje je so pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Wróćo do <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Dźěłamy ćežko, zo bychmy wěcy za swojich wužiwarjow wosnadnili. Bychmy so wjeselili, so wo polěpšenjach wuměnić, inkluziwnje nowy napohlad a zjednorjene wobdźěkowanske funkcije. Polěpšenje wužiwajomnosće našich projektow je priorita załožby Wikimedia Foundation a rozdźělimy wjace aktualizacijow w přichodźe.
+
+[[File:UsabilityNavigation.png|right|link=|Foto wobrazowki noweje nawigacije]]
+[[File:UsabilityToolbar.png|right|link=|Foto wobrazowki polěpšeneje wobdźěłowanskeje lajsty]]
+[[File:UsabilityDialogs.png|right|link=|Foto wobrazowki nowych dialogow wutworjenja wobsaha]]
+===Tole smy změnili===
+* Nawigacija: Smy nawigaciju za čitanje a wobdźěłowanje stronow polěpšili. Nětko rajtarki horjeka na stronje móžeja jasnišo definować, hač sej nastawk abo diskusijnu stronu wobhladuješ, a hač čitaš abo wobdźěłuješ stronu.
+* Polěpšenja wobdźěłowanskeje lajsty: Sym spóznali, zo dyrbimy wužiwanje wosnadnić. Nětko je formatowanje stronow lóše a bóle intuitiwne.
+* Wotkazowy asistent: Nastroj, kotryž da so lochko wužiwać a ći dowola, wotkazy druhim wikistronam  kaž tež wotkazy eksternym sydłam přidać.
+* Pytanske polěpšenja: Smy pytanske namjety polěpšili, zo bychmy će spěšnišo k tej stronje wjedli, kotruž pytaš.
+* Druhe nowe funkcije: Smy tež tabelowy asistent zawjedli, zo bychmy wutworjenje tabelow wosnadnili a funkciju za pytanje a narunanje, zo bychmy wobdźěkowanje strony zjednorili.',
 	'prefswitch-main-on' => '===Rezonanca?===
 Bychmy so wjeselili, wote tebje słyšeć. Prošu wopytaj našu <span class="plainlinks">[$1 stronu měnjenjow]</span>.
 ===Wjedź mje wróćo!===

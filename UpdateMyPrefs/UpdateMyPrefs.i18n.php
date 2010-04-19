@@ -151,6 +151,16 @@ $messages['gsw'] = array(
 	'updatemyprefs-label-message' => 'Myy Yystellige automatisch aktualisiere mit neje Standardwärt un Funktione, wänn si verfiegbar sin',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'prefs-updates' => 'עדכונים',
+	'updatemyprefs-desc' => 'העדפה למשתמשים שמגדירה האם הם רוצים לקבל עדכונים תקופתיים לממשק המשתמש כאשר הם נהיים זמינים',
+	'updatemyprefs-label-message' => 'עדכון אוטומטי של ההעדפות שלי עם הגדרות ברירת מחדל וכלים חדשים כאשר הם נהיים זמינים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

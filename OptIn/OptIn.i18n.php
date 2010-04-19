@@ -739,8 +739,8 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-question-techfail' => 'Ha kudennoù teknikel o peus bet en ur implijout ar Beta ?',
 	'optin-survey-question-techfail-ifyes' => 'Ma ya, displegit pe diorroit mar plij :',
 	'optin-survey-question-usedtoolbar' => 'Hag implijet ho peus ar barenn ostilhoù nevez evit kemmañ ur bajenn ?',
-	'optin-survey-question-usedtoolbar-ifyes' => "Ma ya, petra en deus plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
-	'optin-survey-question-usedtoolbar-ifno' => "Ma nann, perak ? Hag implij a reoc'h anezhañ en dazont ? Displegit.",
+	'optin-survey-question-usedtoolbar-ifyes' => "Mard eo ya ar respont, petra en deus plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
+	'optin-survey-question-usedtoolbar-ifno' => "Ma n'oc'h ket bet plijet, perak ? Hag implijout a reot anezhañ en dazont ? Displegit un tamm mar plij.",
 	'optin-survey-question-different' => "Petra en defe ranket bezañ disheñvel evit ma vefec'h chomet gant Beta.",
 	'optin-survey-question-feedback' => 'Mar plij roit deomp ho ali, pep evezhiadenn a zo dedennus :',
 	'optin-survey-question-browser' => 'Peseurt merdeer a rit gantañ ?',
@@ -5971,6 +5971,13 @@ $messages['tt-cyrl'] = array(
 	'optin-survey-no' => 'Юк',
 	'optin-survey-answer-whyoptout-other' => 'Башка сәбәп:',
 	'optin-survey-answer-browser-other' => 'Башка браузер:',
+);
+
+/** Udmurt (Удмурт)
+ * @author Kaganer
+ */
+$messages['udm'] = array(
+	'optin-accept-long' => 'Бета-версиен ужаны',
 );
 
 /** Ukrainian (Українська)

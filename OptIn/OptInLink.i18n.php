@@ -1051,6 +1051,13 @@ $messages['tt-cyrl'] = array(
 	'optin-try' => 'Бета-версияне эшләтеп карау',
 );
 
+/** Udmurt (Удмурт)
+ * @author Kaganer
+ */
+$messages['udm'] = array(
+	'optin-try' => 'Бета-версиен ужаны',
+);
+
 /** Ukrainian (Українська)
  * @author A1
  * @author AS
