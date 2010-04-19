@@ -8,9 +8,9 @@
    PHPUnit_Util_Filter::addFileToFilter(__FILE__, "PHPUNIT");
 
    class WikiListener extends PHPUnit_Util_Printer implements PHPUnit_Framework_TestListener {
-	  protected $currentTestSuiteName = "";
+        protected $currentTestSuiteName = "";
         protected $currentTestName = "";
-       protected $currentTestPass = TRUE;
+        protected $currentTestPass = TRUE;
       /**
         * Triggered when an error occurs on the test case
         */
@@ -54,7 +54,7 @@
        public function startTestSuite(PHPUnit_Framework_TestSuite $suite) {
            $this->currentTestSuiteName = $suite->getName();
            $this->currentTestName      = '';
-           $this->write("Started Suite: " . $this->currentTestSuiteName . " (" . count($suite) . " tests)n");
+           $this->write("Started Suite: " . $this->currentTestSuiteName . " (" . count($suite) . " tests)\n");
        }
        /**
         * Triggered when a test suite ends.
@@ -82,7 +82,7 @@
         * To avoide duplicity
         */
        protected function writeCase($status, $time, $message = '') {
-           $m = "Test: " . $this->currentTestName . " - Status: " . $status . " - Time: " . $time . ($message ? " - Message: " . $message: "") . "n";
+           $m = "Test: " . $this->currentTestName . " - Status: " . $status . " - Time: " . $time . ($message ? " - Message: " . $message: "") . "\n";
            $this->write($m);
        }
    }
