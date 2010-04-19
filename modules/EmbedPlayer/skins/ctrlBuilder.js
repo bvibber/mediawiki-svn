@@ -647,8 +647,8 @@ ctrlBuilder.prototype = {
 		// If the resolution is too small don't display the warning
 		if( this.embedPlayer.getPlayerHeight() < 199 ){
 			return false;
-		}
-
+		}				
+		
 		// See if we have native support for ogg: 
 		var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
 		for ( var i = 0; i < supportingPlayers.length; i++ ) {
