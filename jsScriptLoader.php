@@ -396,14 +396,16 @@ class jsScriptLoader {
 
 		// Check for the two jsScriptLoader entry points:
 		if( strpos( $serverUri, 'mwScriptLoader.php') !== false ){
-			$cssOptions[ 'prependRelativePath' ] =
-				str_replace('mwScriptLoader.php', '', $serverUri)
-				. dirname( $path ) . '/';
+			// Using the local mediaWiki entry point we should have our $wgScriptPath global
+			global $wgScriptPath;
+			$cssOptions[ 'prependRelativePath' ] = $wgScriptPath . '/' . dirname( $path ) . '/';
 		} else if( strpos( $serverUri, 'jsScriptLoader.php') !== false ){
+			// We should use an absolute url to jsScriptLoader.php
 			$cssOptions[ 'prependRelativePath' ] =
 				str_replace('jsScriptLoader.php', '', $serverUri)
 				. dirname( $path ) . '/';
 		}
+
 		// We always run minify to update css urls
 		$cssString = Minify_CSS::minify( $cssString, $cssOptions);
 

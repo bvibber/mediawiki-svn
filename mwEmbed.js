@@ -1745,7 +1745,7 @@ var MW_EMBED_VERSION = '1.1e';
 		}	
 			
 		// Get mwEmbed src:
-		var src = mw.getMwEmbedSrc();		
+		var src = mw.getMwEmbedSrc();
 		var mwpath = null;
 		
 		// Check for direct include of the mwEmbed.js
@@ -2237,7 +2237,6 @@ var MW_EMBED_VERSION = '1.1e';
 						langCode + '.js' );
 				}
 			}
-								 
 			mw.setConfig('loaderContext', '' );
 			mw.load( loaderRequest, function() {
 				mw.log( 'Done moduleLoaderCheck request' );
