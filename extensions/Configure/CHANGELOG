@@ -1,6 +1,9 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.21 - 19 April 2010
+  Updated OggHandler, SemanticDrilldown, UsageStatistics and Widgets extensions.
+
 0.15.20 - 18 April 2010
   * Removed BoardVote and Click extensions
   * Updated AdvancedRandom, AjaxQueryPages, AjaxShowEditors, APC, CategoryFeed,

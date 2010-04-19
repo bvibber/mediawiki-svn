@@ -578,6 +578,7 @@ Nuke
 url = http://www.mediawiki.org/wiki/Extension:Nuke
 
 OggHandler
+settings[] = wgOggThumbLocation: text
 settings[] = wgFFmpegLocation: text, wgCortadoJarFile: text
 settings[] = wgOggAudioTypes: array, wgOggVideoTypes: array
 array[] = wgOggAudioTypes: simple, wgOggVideoTypes: simple
@@ -677,6 +678,7 @@ settings[] = sdgListSeparator: text
 settings[] = sdgNumResultsPerPage: int
 settings[] = sdgFiltersSmallestFontSize: int
 settings[] = sdgFiltersLargestFontSize: int
+settings[] = sdgShowCategoriesAsTabs: bool
 extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Drilldown
 
@@ -925,7 +927,7 @@ empty[] = ubUploadBlacklist: array
 url = http://www.mediawiki.org/wiki/Extension:UploadBlacklist
 
 UsageStatistics
-settings[] = wgUserStatsGoogleCharts: int
+settings[] = wgUserStatsGoogleCharts: int, wgUserStatsGlobalRight: text
 url = http://www.mediawiki.org/wiki/Extension:Usage_Statistics
 
 UserContactLinks
@@ -1033,6 +1035,7 @@ settings[] = wgYTAS_DefaultCategory: bool, wgYTAS_EnableLogging: bool, wgYTAS_Us
 url = http://www.mediawiki.org/wiki/Extension:YouTubeAuthSub
 
 Widgets
+settings[] = wgWidgetsUseFlaggedRevs: bool
 url = http://www.mediawiki.org/wiki/Extension:Widgets
 
 WikiArticleFeeds
