@@ -11,46 +11,69 @@ td{
 
 mw.ready( function(){
 	//for just setting one or two to test at a time for debug
-	var langTestSet = [ 'es' ]; //pl
-	//var langTestSet = mw.getConfig( 'languageCodeList' );
+	//var langTestSet = [ 'es' ]; //pl
 	
-	//do mauall script loaders calls to test multiple languages:
+	// Setup bindings: 
+	$j('#runLang').click(function(){
+		$j('#table_out,#score_card').empty();
+		if(  !mw.Language.names[ $j('#testLangKey').val() ] ){
+			alert( escape( $j('#testLangKey').val() ) + ' does not appear to be a valid language key' );
+		} else {
+			doLangTable( new Array( $j('#testLangKey').val() ) )
+		} 
+	});
+	$j('#runAll').click(function(){
+		$j('#table_out,#score_card').empty();
+		// Build the langTestSet from mw.Language.names
+		var langTestSet = []
+		for( var i in mw.Language.names ) {
+			langTestSet.push( i ) ;
+		}
+		doLangTable( langTestSet );
+	});
+	
+	// Set-up base convert plural and gender (to restore for non-transofrm languages ) 
+	var baseConvertPlural = mw.Language.convertPlural;
+	var baseGender = mw.Language.gender.prototype;
+	 	
+	// Do mauall script loaders calls to test multiple languages:
 	function doLangTable( langSet ){		
 		//build table output: 
 		var msgTestSet = { 												
-			'undelete_short' : [ 0, 1, 2, 5, 21, 30 ],			
+			'undelete_short' : [ 0, 1, 2, 5, 21, 101 ],			
 			//category-subcat-count' has two params:
 			'category-subcat-count' : [ 
 				[0,10], 
-				[1,2], 
+				[1,2],
 				[3,30] 
-			],
-			'contributions-title' : [0,1,2]
-		};
-		// Set-up base convert plural and gender (to restore if no language class is set) 
-		var baseConvertPlural = mw.Language.convertPlural;
-		var baseGender = mw.Language.gender; 
+			]
+		};		
 					
 		var passTest=0;
 		var failTest=0;
 		var testCount=0;	
 
 		/**
-		* proccess a language key test set
+		* Proccess a language key test set
 		*/
 		function doProcLangKey( langKey ){
 			mw.log(" doProcLangKey: " + langKey );
 			// Clear out the old digitTransformTable
 			mw.Language.digitTransformTable = null;
-			// Load the current language js file if it has a langKey 
-			if( mw.hasLangTransform (langKey ) ){
+			// Load the current language js file if it has a langKey			
+			if( mw.hasLangTransform ( langKey ) ){
+				mw.log( langKey + " load msg transform" );
 				var langName = 'Language' +	langKey.substr(0,1).toUpperCase() + langKey.substr( 1,langKey.length ); 
 				$j.getScript( '../languages/classes/' + langName + '.js' , function(){
 					doLangTest();
 				});			
 			} else { 
+				mw.log( langKey + " no msg transform restore base" );				
+				//If no transform, restore base plural
+				mw.Language.convertPlural = baseConvertPlural;
 				doLangTest();
 			}
+			
 			function doLangTest(){
 				// Get the current language mw.testLang js
 				$j.getScript( '../../../mwScriptLoader.php?class=mw.testLang&debug=true&uselang='+langKey, function(){						
@@ -149,14 +172,15 @@ mw.ready( function(){
 		
 		doProcLangKey( langSet.pop() );
 	}
-	//by default run the "debug" set:
-	doLangTable( langTestSet );
 });
 
 </script>
 </head>
 <body>
-<h3>Test Javascript plural msg transformations</h3>
+<h3>Test Javascript plural msg transformations ( note this is a very resource intensive test )</h3>
+<a id="runAll" href="#">Run Test all<a> ( takes a few minutes ) <br>
+<a id="runLang" href="#">Run Language Key</a>:<input size="5" id="testLangKey" name = "testLangKey" value="en"/>
+
 <div id="score_card" style="font-size:large"></div>
 <table id="table_out"></table>
 

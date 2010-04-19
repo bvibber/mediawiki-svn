@@ -28,20 +28,29 @@
 		}
 	}
 	
+	var messageKeyQueue = [];
 	/**
 	* mw.addMessagesKey function
 	* Adds a msgKey to be pulled in remotely.
 	* 
 	* NOTE the script-loader should replace this with localized addMessages calls
-	* if addMessagesKey is called then we are running in raw file debug mode. 
+	*
+	* If addMessagesKey is called then we are running in raw file debug mode.
+	* it populates the messegeKeyQueue and loads the values in a separate request callback
 	*
 	* @param {Array} msgSet The set of msgs to be loaded
 	*/
-	mw.addMessageKeys = function( msgSet ) {
-		/*for ( var i in msgSet ) {
-			messageCache[ i ] = msgSet[i];
-		}*/
-		// FLAG loader to wait for remote msg keys
+	mw.addMessageKeys = function( msgSet ) {		
+		messageKeyQueue.concat( msgSet );
+	}
+	
+	/**
+	* NOTE: this is somewhat of a hack. But its only used in debug mode since
+	* normal msg loading happens via script-loader
+	*/ 
+	mw.loadQueuedMessages = function( classSet, callback ){		
+		// Load the queued msgs ( requires access to the mediaWiki entry point )
+		
 	}
 	
 	
@@ -531,8 +540,8 @@
 	};	
 	
 	// Language classes ( has a file in /languages/classes/Language{code}.js )
-	// ( for languages that overide default transforms ) 
-	mw.Language.transformClass = ['en', 'am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
+	// ( for languages that override default transforms ) 
+	mw.Language.transformClass = ['am', 'ar', 'bat_smg', 'be_tarak', 'be', 'bh',
 		'bs', 'cs', 'cu', 'cy', 'dsb', 'fr', 'ga', 'gd', 'gv', 'he', 'hi',
 		'hr', 'hsb', 'hy', 'ksh', 'ln', 'lt', 'lv', 'mg', 'mk', 'mo', 'mt',
 		'nso', 'pl', 'pt_br', 'ro', 'ru', 'se', 'sh', 'sk', 'sl', 'sma',
@@ -674,14 +683,14 @@
 		return ( mw.Language.names[ langKey ] )? true : false;
 	}
 	/**
-	* Checks if a language key has a transform class file
+	* Checks if a language key has a transform class file	
 	*/
 	mw.hasLangTransform = function( langKey ) {
-		for( var i =0; i < mw.Language.transformClass; i++) {
+		for( var i =0; i < mw.Language.transformClass.length; i++ ) {
 			if( langKey == mw.Language.transformClass[i] ){
 				return true;
 			}
-		} 
+		}
 		return false;
 	}
 	
