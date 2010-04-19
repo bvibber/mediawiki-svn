@@ -2223,26 +2223,32 @@ var MW_EMBED_VERSION = '1.1e';
 			for(var i=0; i < enabledModules.length; i++ ) {
 				loaderRequest.push( 'modules/' + enabledModules[ i ] + '/loader.js' );
 			};	
-			
-			// Add the language ( if set )
-			if( mw.getConfig( 'userLanguage' ) ) {
-				var langCode = mw.getConfig( 'userLanguage' );
-				
-				// Grab the language if language class if not default 'en' and 
-				// the langCode has a transform Class 
-				if( langCode != 'en' && mw.hasLangTransform( langCode ) ){				
-					// Upper case the first letter:
-					langCode = langCode.substr(0,1).toUpperCase() + langCode.substr( 1, langCode.length );
-					loaderRequest.push( 'languages/classes/Language' +
-						langCode + '.js' );
-				}
-			}
+					
 			mw.setConfig('loaderContext', '' );
 			mw.load( loaderRequest, function() {
-				mw.log( 'Done moduleLoaderCheck request' );
-				// Set the mwModuleLoaderCheckFlag flag to true
-				mwModuleLoaderCheckFlag = true;
-				callback();
+				// Add the language file
+				var langLoaderRequest = [];
+				
+				if( mw.getConfig( 'userLanguage' ) ) {
+					var langCode = mw.getConfig( 'userLanguage' );
+										
+					// Load the language class if not default 'en' 
+					var transformKey = mw.getLangTransformKey( langCode ); 
+					if( transformKey != 'en' ){				
+						// Upper case the first letter:
+						langCode = langCode.substr(0,1).toUpperCase() + langCode.substr( 1, langCode.length );
+						loaderRequest.push( 'languages/classes/Language' +
+							langCode + '.js' );
+					}
+					
+				}
+				// Load the launage if set
+				mw.load( langLoaderRequest, function(){			
+					mw.log( 'Done moduleLoaderCheck request' );
+					// Set the mwModuleLoaderCheckFlag flag to true
+					mwModuleLoaderCheckFlag = true;
+					callback();
+				} );
 			} );
 		} );				
 	}
