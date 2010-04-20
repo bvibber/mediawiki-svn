@@ -16,6 +16,7 @@
 class UnwatchedpagesPage extends QueryPage {
 
 	function getName() { return 'Unwatchedpages'; }
+	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
@@ -36,6 +37,9 @@ class UnwatchedpagesPage extends QueryPage {
 	}
 
 	function sortDescending() { return false; }
+	
+	function getOrderFields() {
+		return array( 'page_namespace', 'page_title' );
 
 	function formatResult( $skin, $result ) {
 		global $wgContLang;

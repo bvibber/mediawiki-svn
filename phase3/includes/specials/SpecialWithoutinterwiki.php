@@ -41,7 +41,12 @@ class WithoutInterwikiPage extends PageQueryPage {
 	function sortDescending() {
 		return false;
 	}
+	
+	function getOrderFields() {
+		return array( 'page_namespace', 'page_title' );
+	}
 
+	// inexpensive?
 	function isExpensive() {
 		return true;
 	}

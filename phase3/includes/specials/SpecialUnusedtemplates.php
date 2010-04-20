@@ -14,6 +14,7 @@
 class UnusedtemplatesPage extends QueryPage {
 
 	function getName() { return( 'Unusedtemplates' ); }
+	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 	function sortDescending() { return false; }
@@ -23,7 +24,7 @@ class UnusedtemplatesPage extends QueryPage {
 			'tables' => array ( 'page', 'templatelinks' ),
 			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
-					'0 AS value' ),
+					'page_title AS value' ),
 			'conds' => array ( 'page_namespace' => NS_TEMPLATE,
 					'tl_from IS NULL',
 					'page_is_redirect' => 0 ),
@@ -32,7 +33,7 @@ class UnusedtemplatesPage extends QueryPage {
 					'tl_namespace = page_namespace' ) ) )
 		);
 	}
-
+	
 	function formatResult( $skin, $result ) {
 		$title = Title::makeTitle( NS_TEMPLATE, $result->title );
 		$pageLink = $skin->linkKnown(

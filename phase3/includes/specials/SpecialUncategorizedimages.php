@@ -21,23 +21,13 @@ class UncategorizedImagesPage extends ImageQueryPage {
 		return false;
 	}
 
+	// inexpensive?
 	function isExpensive() {
 		return true;
 	}
 
 	function isSyndicated() {
 		return false;
-	}
-
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $page, $categorylinks ) = $dbr->tableNamesN( 'page', 'categorylinks' );
-		$ns = NS_FILE;
-
-		return "SELECT 'Uncategorizedimages' AS type, page_namespace AS namespace,
-				page_title AS title, page_title AS value
-				FROM {$page} LEFT JOIN {$categorylinks} ON page_id = cl_from
-				WHERE cl_from IS NULL AND page_namespace = {$ns} AND page_is_redirect = 0";
 	}
 	
 	function getQueryInfo() {

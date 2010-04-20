@@ -15,9 +15,9 @@ class ShortPagesPage extends QueryPage {
 		return 'Shortpages';
 	}
 
+	// inexpensive?
 	/**
 	 * This query is indexed as of 1.5
-	 * FIXME: Mark as inexpensive
 	 */
 	function isExpensive() {
 		return true;
@@ -60,7 +60,7 @@ class ShortPagesPage extends QueryPage {
 		global $wgLang, $wgContLang;
 		$dm = $wgContLang->getDirMark();
 
-		$title = Title::makeTitleSafe( $result->namespace, $result->title );
+		$title = Title::makeTitle( $result->namespace, $result->title );
 		if ( !$title ) {
 			return '<!-- Invalid title ' .  htmlspecialchars( "{$result->namespace}:{$result->title}" ). '-->';
 		}
@@ -75,9 +75,9 @@ class ShortPagesPage extends QueryPage {
 					: $skin->linkKnown( $title );
 		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ), $wgLang->formatNum( htmlspecialchars( $result->value ) ) );
 
-		return $title->exists()
-				? "({$hlink}) {$dm}{$plink} {$dm}[{$size}]"
-				: "<s>({$hlink}) {$dm}{$plink} {$dm}[{$size}]</s>";
+		return ($this->isCached() && !$title->exists())
+				? "<s>({$hlink}) {$dm}{$plink} {$dm}[{$size}]</s>"
+				: "({$hlink}) {$dm}{$plink} {$dm}[{$size}]";
 	}
 }
 

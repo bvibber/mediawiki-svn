@@ -15,14 +15,16 @@ class DoubleRedirectsPage extends PageQueryPage {
 		return 'DoubleRedirects';
 	}
 
-	function isExpensive( ) { return true; }
+	// inexpensive?
+	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
+	function sortDescending() { return false; }
 
-	function getPageHeader( ) {
+	function getPageHeader() {
 		return wfMsgExt( 'doubleredirectstext', array( 'parse' ) );
 	}
 
-	function reallyGetQueryInfo($namespace = null, $title = null) {
+	function reallyGetQueryInfo( $namespace = null, $title = null ) {
 		$limitToTitle = !( $namespace === null && $title === null );
 		$retval = array (
 			'tables' => array ( 'redirect AS ra', 'redirect AS rb',
@@ -36,7 +38,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 					'pc.page_title AS tc' ),
 			'conds' => array ( 'ra.rd_from = pa.page_id',
 					'pb.page_namespace = ra.rd_namespace',
-					'pb.page_title = rb.rd_title',
+					'pb.page_title = ra.rd_title',
 					'rb.rd_from = pb.page_id',
 					'pc.page_namespace = rb.rd_namespace',
 					'pc.page_title = rb.rd_title' )
@@ -53,8 +55,7 @@ class DoubleRedirectsPage extends PageQueryPage {
 	}
 
 	function getOrderFields() {
-		// FIXME: really?
-		return array ();
+		return array ( 'ra.rd_namespace', 'ra.rd_title' );
 	}
 
 	function formatResult( $skin, $result ) {

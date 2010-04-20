@@ -147,6 +147,22 @@ class DisambiguationsPage extends PageQueryPage {
 	function sortDescending() {
 		return false;
 	}
+	
+	/**
+	 * Fetch  links and cache their existence
+	 */
+	function preprocessResults( $db, $res ) {
+		$batch = new LinkBatch;
+		while ( $row = $db->fetchObject( $res ) )
+			$batch->add( $row->namespace, $row->title );
+		$batch->execute();
+
+		// Back to start for display
+		if ( $db->numRows( $res ) > 0 )
+			// If there are no rows we get an error seeking.
+			$db->dataSeek( $res, 0 );
+	}
+
 
 	function formatResult( $skin, $result ) {
 		global $wgContLang;

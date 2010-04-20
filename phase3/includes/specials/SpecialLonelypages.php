@@ -22,6 +22,7 @@ class LonelyPagesPage extends PageQueryPage {
 		return false;
 	}
 
+	// inexpensive?
 	function isExpensive() {
 		return true;
 	}
@@ -48,6 +49,15 @@ class LonelyPagesPage extends PageQueryPage {
 						'tl_namespace = page_namespace',
 						'tl_title = page_title' ) ) )
 		);
+	}
+	
+	function getOrderFields() {
+		// For some crazy reason ordering by a constant
+		// causes a filesort
+		if( count( MWNamespace::getContentNamespaces() ) > 1 )
+			return array( 'page_namespace', 'page_title' );
+		else
+			return array( 'page_title' );
 	}
 }
 

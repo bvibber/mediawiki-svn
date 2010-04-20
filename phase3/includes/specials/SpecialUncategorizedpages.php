@@ -20,6 +20,7 @@ class UncategorizedPagesPage extends PageQueryPage {
 		return false;
 	}
 
+	// inexpensive?
 	function isExpensive() {
 		return true;
 	}
@@ -39,6 +40,14 @@ class UncategorizedPagesPage extends PageQueryPage {
 			'join_conds' => array ( 'categorylinks' => array (
 					'LEFT JOIN', 'cl_from = page_id' ) )
 		);
+	}
+	
+	function getOrderFields() {
+		// For some crazy reason ordering by a constant
+		// causes a filesort
+		if( $this->requestedNamespace === false && count( MWNamespace::getContentNamespaces() ) > 1 )
+			return array( 'page_namespace', 'page_title' );
+		return array( 'page_title' );
 	}
 }
 
