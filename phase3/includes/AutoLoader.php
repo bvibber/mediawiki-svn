@@ -654,6 +654,7 @@ $wgJSAutoloadLocalClasses = array(
 	'editPage' => 'js/editPage.js',
 	'ajaxCategories' => 'js/ajaxcategories.js',
 	'apiProxyPage'	=> 'js/apiProxyPage.js',
+	'specialUploadWizardPage' => 'js/specialUploadWizardPage.js',
 
 	// Css bindings
 	'mw.style.shared' => 'skins/common/shared.css',
