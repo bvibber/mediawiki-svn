@@ -298,14 +298,13 @@ abstract class InstallerDBType {
 	 */
 	function getWebUserBox( $noCreateMsg = false ) {
 		$name = $this->getName();
-		$js = "disableControlArray( \"{$name}__SameAccount\", " .
-			"[\"{$name}_wgDBuser\", \"{$name}_wgDBpassword\", \"{$name}__CreateDBAccount\"] )";
-		$s = Xml::openElement( 'fieldset' ) . 
+		$s = Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'config-db-web-account' ) ) .
 			$this->getCheckBox( 
-				'_SameAccount', 'config-db-web-account-same', array( 'onclick' => $js )
+				'_SameAccount', 'config-db-web-account-same',
+				array( 'class' => 'hideShowRadio', 'rel' => 'dbOtherAccount' )
 			) .
-			"<br/>\n" .
+			Xml::openElement( 'div', array( 'id' => 'dbOtherAccount', 'style' => 'display: none;' ) ) .
 			$this->getTextBox( 'wgDBuser', 'config-db-username' ) .
 			$this->getPasswordBox( 'wgDBpassword', 'config-db-password' ) .
 			$this->parent->getHelpBox( 'config-db-web-help' );
@@ -314,8 +313,7 @@ abstract class InstallerDBType {
 		} else {
 			$s .= $this->getCheckBox( '_CreateDBAccount', 'config-db-web-create' );
 		}
-		$s .= Xml::closeElement( 'fieldset' ) .
-			"<script type=\"text/javascript\">$js</script>";
+		$s .= Xml::closeElement( 'div' ) . Xml::closeElement( 'fieldset' );
 		return $s;
 	}
 

@@ -49,6 +49,14 @@
 				$wrapper.hide( 'slow' );
 			}
 		} );
+		$( '.hideShowRadio' ).click( function() {
+			var $wrapper = $( '#' + $(this).attr( 'rel' ) );
+			if ( $(this).is( ':checked' ) ) {
+				$wrapper.hide( 'slow' );
+			} else {
+				$wrapper.show( 'slow' );
+			}
+		} );
 		
 		// Enable/disable "other" textboxes
 		$( '.enableForOther' ).click( function() {
