@@ -9,7 +9,7 @@
  */
 class DeadendPagesPage extends PageQueryPage {
 
-	function getName( ) {
+	function getName() {
 		return "Deadendpages";
 	}
 
@@ -22,7 +22,7 @@ class DeadendPagesPage extends PageQueryPage {
 	 *
 	 * @return true
 	 */
-	function isExpensive( ) {
+	function isExpensive() {
 		return 1;
 	}
 
@@ -35,19 +35,6 @@ class DeadendPagesPage extends PageQueryPage {
 		return false;
 	}
 
-	/**
-	 * @return string an sqlquery
-	 */
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $page, $pagelinks ) = $dbr->tableNamesN( 'page', 'pagelinks' );
-		return "SELECT 'Deadendpages' as type, page_namespace AS namespace, page_title as title, page_title AS value " .
-	"FROM $page LEFT JOIN $pagelinks ON page_id = pl_from " .
-	"WHERE pl_from IS NULL " .
-	"AND page_namespace = 0 " .
-	"AND page_is_redirect = 0";
-	}
-	
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'page', 'pagelinks' ),
