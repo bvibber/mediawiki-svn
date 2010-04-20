@@ -3,7 +3,7 @@
  * Internationalization file for the CategoryTests extension
  */
 
-require_once( dirname(__FILE__) . '/CategoryTests.i18n.magic.php' );
+require_once( dirname( __FILE__ ) . '/CategoryTests.i18n.magic.php' );
 
 $messages = array();
 
