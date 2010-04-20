@@ -128,7 +128,6 @@ abstract class Installer {
 	);
 
 	var $installSteps = array(
-		'extensions',
 		'database',
 		'tables',
 		'secretkey',
@@ -808,11 +807,12 @@ abstract class Installer {
 		return $exts;
 	}
 
-
-
 	public function getInstallSteps() {
-		if( !count( $this->getVar( '_Extensions' ) ) ) {
-			unset( $this->installSteps['extensions'] );
+		if( $this->getVar( '_UpgradeDone' ) ) {
+			$this->installSteps = array( 'localsettings' );
+		}
+		if( count( $this->getVar( '_Extensions' ) ) ) {
+			$this->installSteps = array_unshift( $this->installSteps, 'extensions' );
 		}
 		return $this->installSteps;
 	}
