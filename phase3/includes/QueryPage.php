@@ -97,8 +97,8 @@ abstract class QueryPage extends SpecialPage {
 	 *
 	 * @return String
 	 */
-	abstract function getName();
-	}
+//	abstract function getName();
+//	}
 
 	/**
 	 * Return title object representing this page

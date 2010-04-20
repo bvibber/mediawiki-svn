@@ -11,7 +11,7 @@
  * @ingroup SpecialPage
  * @author Rob Church <robchur@gmail.com>
  */
-class SpecialMostlinkedtemplates extends QueryPage {
+class MostlinkedTemplatesPage extends QueryPage {
 
 	/**
 	 * Name of the report
