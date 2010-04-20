@@ -324,7 +324,7 @@ abstract class QueryPage {
 				$field .= ' DESC';
 			}
 		}
-		if( !is_array( $query['options'] ) ) {
+		if( !is_array( @$query['options'] ) ) {
 			$options = array ();
 		}
 		if( count( $order ) ) {
@@ -338,10 +338,10 @@ abstract class QueryPage {
 		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( (array)$query['tables'],
-				(array)$query['fields'],
-				(array)$query['conds'], $fname,
-				$query['options'], (array)$query['join_conds']
+		$res = $dbr->select( (array)@$query['tables'],
+				(array)@$query['fields'],
+				(array)@$query['conds'], $fname,
+				$query['options'], (array)@$query['join_conds']
 		);
 		return $dbr->resultObject( $res );
 	}

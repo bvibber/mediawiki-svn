@@ -38,7 +38,6 @@ class LonelyPagesPage extends PageQueryPage {
 					'page_namespace' => MWNamespace::getContentNamespaces(),
 					'page_is_redirect' => 0,
 					'tl_namespace IS NULL' ),
-			// TODO: test this JOIN
 			'join_conds' => array (
 					'pagelinks' => array (
 						'LEFT JOIN', array (

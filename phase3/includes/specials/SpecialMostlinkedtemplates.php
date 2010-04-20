@@ -55,7 +55,7 @@ class SpecialMostlinkedtemplates extends QueryPage {
 			'fields' => array ( 'tl_namespace AS namespace',
 					'tl_title AS title',
 					'COUNT(*) AS value' ),
-			'conds' => array ( 'tl_namespace' => NS_TEMPLATE' ),
+			'conds' => array ( 'tl_namespace' => NS_TEMPLATE ),
 			'options' => array( 'GROUP BY' => 'tl_title' )
 		);
 	}
