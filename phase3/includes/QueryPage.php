@@ -60,7 +60,7 @@ if ( !$wgDisableCounters )
  * subclasses derive from it.
  * @ingroup SpecialPage
  */
-class QueryPage {
+abstract class QueryPage {
 	/**
 	 * Whether or not we want plain listoutput rather than an ordered list
 	 *
@@ -106,8 +106,14 @@ class QueryPage {
 	}
 
 	/**
-	 * Subclasses return an SQL query here.
-	 *
+	 * Subclasses return an SQL query here, formatted as an array with the
+	 * following keys:
+	 *    tables => Table(s) for passing to Database::select()
+	 *    fields => Field(s) for passing to Database::select(), may be *
+	 *    conds => WHERE conditions
+	 *    options => options
+	 *    join_conds => JOIN conditions
+	 * 
 	 * Note that the query itself should return the following four columns:
 	 * 'type' (your special page's name), 'namespace', 'title', and 'value'
 	 * *in that order*. 'value' is used for sorting.
@@ -118,10 +124,19 @@ class QueryPage {
 	 * an integer; non-numeric values are useful only for sorting the initial
 	 * query.
 	 *
-	 * Don't include an ORDER or LIMIT clause, this will be added.
+	 * Don't include an ORDER or LIMIT clause, they will be added
+	 * @return array
 	 */
-	function getSQL() {
-		return "SELECT 'sample' as type, 0 as namespace, 'Sample result' as title, 42 as value";
+	abstract function getQueryInfo();
+	
+	/**
+	 * Subclasses return an array of fields to order by here. Don't append
+	 * DESC to the field names, that'll be done automatically if
+	 * sortDescending() returns true
+	 * @return array
+	 */
+	function getOrderFields() {
+		return array('value');
 	}
 
 	/**
@@ -131,11 +146,6 @@ class QueryPage {
 	 */
 	function sortDescending() {
 		return true;
-	}
-
-	function getOrder() {
-		return ' ORDER BY value ' .
-			($this->sortDescending() ? 'DESC' : '');
 	}
 
 	/**
@@ -151,7 +161,7 @@ class QueryPage {
 	}
 
 	/**
-	 * Whether or not the output of the page in question is retrived from
+	 * Whether or not the output of the page in question is retrieved from
 	 * the database cache.
 	 *
 	 * @return Boolean
@@ -175,14 +185,15 @@ class QueryPage {
 	 * Formats the results of the query for display. The skin is the current
 	 * skin; you can use it for making links. The result is a single row of
 	 * result data. You should be able to grab SQL results off of it.
-	 * If the function return "false", the line output will be skipped.
+	 * If the function returns false, the line output will be skipped.
+	 * @param $skin Skin
+	 * @param $result object Result row
+	 * @return mixed String or false to skip
 	 *
 	 * @param $skin Skin object
 	 * @param $result Object: database row
 	 */
-	function formatResult( $skin, $result ) {
-		return '';
-	}
+	abstract function formatResult( $skin, $result );
 
 	/**
 	 * The content returned by this function will be output before any result
@@ -207,8 +218,9 @@ class QueryPage {
 	/**
 	 * Some special pages (for example SpecialListusers) might not return the
 	 * current object formatted, but return the previous one instead.
-	 * Setting this to return true, will call one more time wfFormatResult to
-	 * be sure that the very last result is formatted and shown.
+	 * Setting this to return true will ensure formatResult() is called
+	 * one more time to make sure that the very last result is formatted
+	 * as well.
 	 */
 	function tryLastResult() {
 		return false;
@@ -228,8 +240,6 @@ class QueryPage {
 			return false;
 		}
 
-		$querycache = $dbr->tableName( 'querycache' );
-
 		if ( $ignoreErrors ) {
 			$ignoreW = $dbw->ignoreErrors( true );
 			$ignoreR = $dbr->ignoreErrors( true );
@@ -238,10 +248,7 @@ class QueryPage {
 		# Clear out any old cached data
 		$dbw->delete( 'querycache', array( 'qc_type' => $this->getName() ), $fname );
 		# Do query
-		$sql = $this->getSQL() . $this->getOrder();
-		if ( $limit !== false )
-			$sql = $dbr->limitResult( $sql, $limit, 0 );
-		$res = $dbr->query( $sql, $fname );
+		$res = $this->reallyDoQuery( $limit, false );
 		$num = false;
 		if ( $res ) {
 			$num = $dbr->numRows( $res );
@@ -265,7 +272,7 @@ class QueryPage {
 				if ( !$dbw->insert( 'querycache', $vals, __METHOD__ ) ) {
 					// Set result to false to indicate error
 					$dbr->freeResult( $res );
-					$res = false;
+					$num = false;
 				}
 			}
 			if ( $res ) {
@@ -282,6 +289,68 @@ class QueryPage {
 
 		}
 		return $num;
+	}
+	
+	/**
+	 * Run the query and return the result
+	 * @param $limit mixed Numerical limit or false for no limit
+	 * @param $offset mixed Numerical offset or false for no offset
+	 * @return ResultWrapper
+	 */
+	function reallyDoQuery( $limit, $offset = false ) {
+		$fname = get_class( $this ) . "::reallyDoQuery";
+		$query = $this->getQueryInfo();
+		$order = $this->getOrderFields();
+		if( $this->sortDescending() ) {
+			foreach( $order as &$field ) {
+				$field .= ' DESC';
+			}
+		}
+		if( !is_array( $query['options'] ) ) {
+			$options = array ();
+		}
+		if( count( $order ) ) {
+			$query['options']['ORDER BY'] = implode( ', ', $order );
+		}
+		if( $limit !== false) {
+			$query['options']['LIMIT'] = intval( $limit );
+		}
+		if( $offset !== false) {
+			$query['options']['OFFSET'] = intval( $offset );
+		}
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( (array)$query['tables'],
+				(array)$query['fields'],
+				(array)$query['conds'], $fname,
+				$query['options'], (array)$query['join_conds']
+		);
+		return $dbr->resultObject( $res );
+	}
+	
+	/**
+	 * Fetch the query results from the query cache
+	 * @param $limit mixed Numerical limit or false for no limit
+	 * @param $offset mixed Numerical offset or false for no offset
+	 * @return ResultWrapper
+	 */
+	function fetchFromCache( $limit, $offset = false ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$options = array ();
+		if( $limit !== false ) {
+			$options['LIMIT'] = intval( $limit );
+		}
+		if( $offset !== false) {
+			$options['OFFSET'] = intval( $offset );
+		}
+		$res = $dbr->select( 'querycache', array( 'qc_type',
+				'qc_namespace AS namespace',
+				'qc_title AS title',
+				'qc_value AS value' ),
+				array( 'qc_type' => $this->getName() ),
+				__METHOD__, $options
+		);
+		return $dbr->resultObject( $res );
 	}
 
 	/**
@@ -304,16 +373,12 @@ class QueryPage {
 
 		$wgOut->setSyndicated( $this->isSyndicated() );
 
+		//$res = null;
 		if ( !$this->isCached() ) {
-			$sql = $this->getSQL();
+			$res = $this->reallyDoQuery( $limit, $offset );
 		} else {
 			# Get the cached result
-			$querycache = $dbr->tableName( 'querycache' );
-			$type = $dbr->strencode( $sname );
-			$sql =
-				"SELECT qc_type as type, qc_namespace as namespace,qc_title as title, qc_value as value
-				 FROM $querycache WHERE qc_type='$type'";
-
+			$res = $this->fetchFromCache( $limit, $offset );
 			if( !$this->listoutput ) {
 
 				# Fetch the timestamp of this update
@@ -342,9 +407,6 @@ class QueryPage {
 
 		}
 
-		$sql .= $this->getOrder();
-		$sql = $dbr->limitResult($sql, $limit, $offset);
-		$res = $dbr->query( $sql );
 		$num = $dbr->numRows($res);
 
 		$this->preprocessResults( $dbr, $res );
@@ -485,9 +547,7 @@ class QueryPage {
 			$feed->outHeader();
 
 			$dbr = wfGetDB( DB_SLAVE );
-			$sql = $this->getSQL() . $this->getOrder();
-			$sql = $dbr->limitResult( $sql, $limit, 0 );
-			$res = $dbr->query( $sql, 'QueryPage::doFeed' );
+			$res = $this->reallyDoQuery( $limit, 0 );
 			while( $obj = $dbr->fetchObject( $res ) ) {
 				$item = $this->feedResult( $obj );
 				if( $item ) $feed->outItem( $item );

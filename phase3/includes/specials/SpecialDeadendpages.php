@@ -47,6 +47,24 @@ class DeadendPagesPage extends PageQueryPage {
 	"AND page_namespace = 0 " .
 	"AND page_is_redirect = 0";
 	}
+	
+	function getQueryInfo() {
+		return array(
+			'tables' => array( 'page', 'pagelinks' ),
+			'fields' => array( "'{$this->getName()} AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'page_title AS value'
+			),
+			'conds' => array( 'pl_from IS NULL',
+					'page_namespace' => NS_MAIN,
+					'page_is_redirect' => 0
+			),
+			'join_conds' => array( 'pagelinks' => array( 'LEFT JOIN', array(
+					'page_id=pl_from'
+			) ) )
+		);
+	}
 }
 
 /**
