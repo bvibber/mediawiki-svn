@@ -5,7 +5,9 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-
+/**
+ * ScriptLoaderOutputPage extends OutputPage with script-loader calls 
+ */
 class ScriptLoaderOutputPage extends OutputPage {
 	// Flag javascript Classes loaded
 	var $mLoadedJavascriptClasses = false;
@@ -272,7 +274,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$wgJSAutoloadClasses, $wgScriptPath;
 
 		// Set core Classes ( note wikibits will be phased out )
-		$coreClasses = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
+		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed' );
 
 		// Merge in any scripts that have been set as "core"
 		if( isset( $this->mScriptLoaderClassList[ 'js' ][ 'core' ] ) ) {
