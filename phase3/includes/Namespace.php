@@ -199,6 +199,25 @@ class MWNamespace {
 	}
 
 	/**
+	 * Get a list of all namespace indices which are considered to contain content
+	 *
+	 * If only one content namespace exists, returns that single index (Int)
+	 * If multiple content namespaces exist, it returns an array of indices
+	 *
+	 * @return mixed
+	 */
+	public static function getContentNamespaces() {
+		global $wgContentNamespaces;
+		if( empty( $wgContentNamespaces ) )
+			return NS_MAIN;
+		// always force NS_MAIN to be part of array (to match the algorithm used by isContent)
+		elseif ( !in_array( NS_MAIN, $wgContentNamespaces ) )
+			return array( NS_MAIN ) + $wgContentNamespaces;
+		else
+			return $wgContentNamespaces;
+
+	}
+	/**
 	 * Is the namespace first-letter capitalized?
 	 *
 	 * @param $index int Index to check

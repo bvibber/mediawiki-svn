@@ -137,7 +137,7 @@ class DisambiguationsPage extends PageQueryPage {
 					'pl_namespace = p1.page_namespace',
 					'pl_title = p1.page_title',
 					'p2.page_id = pl_from',
-					'p2.page_namespace' => NS_MAIN )
+					'p2.page_namespace' => MWNamespace::getContentNamespaces() )
 		);
 	}
 

@@ -32,7 +32,7 @@ class FewestrevisionsPage extends QueryPage {
 					'page_title AS title',
 					'COUNT(*) AS value',
 					'page_is_redirect AS redirect' ),
-			'conds' => array ( 'page_namespace' => NS_MAIN,
+			'conds' => array ( 'page_namespace' => MWNamespace::getContentNamespaces(),
 					'page_id = rev_page' ),
 			'options' => array ( 'HAVING' => 'COUNT(*) > 1',
 			// ^^^ This was probably here to weed out redirects.
