@@ -37,6 +37,18 @@ class NewUserMessage {
 			if ( !$editor->isLoggedIn() ) {
 				$editor->addToDatabase();
 			}
+			
+			$signatures = wfMsgForContent( 'newusermessage-signatures' );
+			$signature = null;
+
+			if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
+				$pattern = '/^\* ?(.*?)$/m';
+				preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
+				if ( count( $signatureList ) > 0 ) {
+					$rand = rand( 0, count( $signatureList ) - 1 );
+					$signature = $signatureList[$rand][1];
+				}
+			}
 
 			// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the welcome template.
 			$substitute = wfMsgForContent( 'newusermessage-substitute' );
@@ -112,6 +124,7 @@ class NewUserMessage {
 						'summary' => $editSummary,
 						'root' => $threadArticle,
 						'subject' => $threadSubject,
+						'signature' => $signature,
 					)
 				);
 
@@ -134,17 +147,9 @@ class NewUserMessage {
 				} else {
 					$text = "{{{$templateTitleText}|$name|$realName}}";
 				}
-
-				$signatures = wfMsgForContent( 'newusermessage-signatures' );
-
-				if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
-					$pattern = '/^\* ?(.*?)$/m';
-					preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
-					if ( count( $signatureList ) > 0 ) {
-						$rand = rand( 0, count( $signatureList ) - 1 );
-						$signature = $signatureList[$rand][1];
-						$text .= "\n-- {$signature} ~~~~~";
-					}
+				
+				if ( $signature ) {
+					$text .= "\n-- {$signature} ~~~~~";
 				}
 
 				self::writeWelcomeMessage( $user, $article,  $text, $editSummary, $editor );
