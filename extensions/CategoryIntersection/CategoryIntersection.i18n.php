@@ -24,6 +24,8 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'categoryintersection-desc' => 'Shown in [[Special:Version]]. Do not translate links.',
+	'categoryintersection-maxcategories' => 'Parameters:
+* $1 is the maximum allowed number of intersecting categories. Supports plural.',
 );
 
 /** Afrikaans (Afrikaans)

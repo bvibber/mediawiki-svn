@@ -10,7 +10,7 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-	'CategoryIntersection'=> array( 'Category intersection', 'CategoryIntersection' ),
+	'CategoryIntersection' => array( 'Category intersection', 'CategoryIntersection' ),
 );
 
 /** Arabic (العربية) */

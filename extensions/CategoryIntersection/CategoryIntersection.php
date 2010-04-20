@@ -6,6 +6,7 @@
  * @copyright (c) 2008 by Magnus Manske
  * @license Released under GPL
 
+  // FIXME: creation of table should be done through hook.
   SQL for creating categoryintersections table:
 
   CREATE TABLE `categoryintersections` (
@@ -17,12 +18,12 @@
 **/
 
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the skin file directly.
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
 require_once("\$IP/extensions/CategoryIntersection/CategoryIntersection.php");
 EOT;
-	exit(1);
+	exit( 1 );
 }
 
 $wgExtensionCredits['other'][] = array(
@@ -33,7 +34,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'categoryintersection-desc',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
 $wgHooks['LinksUpdate'][] = 'CategoryIntersectionLinksUpdate';
 $wgHooks['ArticleDelete'][] = 'CategoryIntersectionArticleDelete';
@@ -43,23 +44,23 @@ $wgExtensionMessagesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection
 $wgExtensionAliasesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection.alias.php';
 $wgSpecialPages['CategoryIntersection'] = 'CategoryIntersection'; # Let MediaWiki know about your new special page.
 
-function CategoryIntersectionGetHashValues ($categories) {
-	sort ($categories);
+function CategoryIntersectionGetHashValues ( $categories ) {
+	sort ( $categories );
 	$hash = array ();
 	$hv = array ();
-	foreach ($categories AS $k => $c1) {
-		foreach ($categories AS $c2) {
-			if ($c1 == $c2) continue;
-			if ($c1 < $c2) $key = $c1 . '|' . $c2;
+	foreach ( $categories AS $k => $c1 ) {
+		foreach ( $categories AS $c2 ) {
+			if ( $c1 == $c2 ) continue;
+			if ( $c1 < $c2 ) $key = $c1 . '|' . $c2;
 			else $key = $c2 . '|' . $c1;
-			if (isset ($hash[$key])) continue; // This combination was already done
-			$m = md5 ($key);
+			if ( isset ( $hash[$key] ) ) continue; // This combination was already done
+			$m = md5 ( $key );
 			$m = hexdec ( substr ( $m , 0 , 8 ) ) ;
-			if (isset ($hv[$m])) continue; // This hash value is already in there, prevent unique index conflict
+			if ( isset ( $hv[$m] ) ) continue; // This hash value is already in there, prevent unique index conflict
 			$hash[$key] = $m;
 			$hv[$m] = 1;
 		}
-		unset ($categories[$k]); // No more combinations with this
+		unset ( $categories[$k] ); // No more combinations with this
 	}
 	return $hash;
 }
@@ -68,16 +69,15 @@ function CategoryIntersectionGetHashValues ($categories) {
  * Updates the category intersection table for a page.
  * Called by LinksUpdate hook.
  */
-function CategoryIntersectionLinksUpdate (&$linksUpdate) {
-
+function CategoryIntersectionLinksUpdate ( &$linksUpdate ) {
 	// Get categories
 	$categories = $linksUpdate->mCategories; // The keys of this array are the categories of this page, without cateogry prefix, ucfirst, underscores
-	$categories = array_keys ($categories);
-	$hash = CategoryIntersectionGetHashValues ($categories);
+	$categories = array_keys ( $categories );
+	$hash = CategoryIntersectionGetHashValues ( $categories );
 
 	// Prepare new hash values for table insertion
 	$arr = array ();
-	foreach ($hash AS $k => $v) {
+	foreach ( $hash AS $k => $v ) {
 		$arr[] = array (
 		'ci_page' => $linksUpdate->mId ,
 		'ci_hash' => $v
@@ -85,13 +85,13 @@ function CategoryIntersectionLinksUpdate (&$linksUpdate) {
 	}
 
 	// Update hash table
-	$linksUpdate->dumbTableUpdate ('categoryintersections', $arr, 'ci_page');
+	$linksUpdate->dumbTableUpdate ( 'categoryintersections', $arr, 'ci_page' );
 
 	return true; // My work here is done
 }
 
-function CategoryIntersectionArticleDelete (&$article, &$user, &$reason) {
-  $dbw = wfGetDB( DB_MASTER );
-  $dbw->delete ( 'categoryintersections' , array ( "ci_page" => $article->getID() ) ) ;
-  return true ;
+function CategoryIntersectionArticleDelete ( &$article, &$user, &$reason ) {
+	$dbw = wfGetDB( DB_MASTER );
+	$dbw->delete ( 'categoryintersections' , array ( "ci_page" => $article->getID() ) ) ;
+	return true ;
 }
