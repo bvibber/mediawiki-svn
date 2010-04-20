@@ -351,6 +351,17 @@ www.example.org is not a real website, but it has been reserved to use in softwa
 	'wikieditor-toolbar-help-content-signature-description' => '{{Identical|Signature}}',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'wikieditor-toolbar-characters-page-greek' => 'Аберзен',
+	'wikieditor-toolbar-characters-page-cyrillic' => 'Акирилица',
+	'wikieditor-toolbar-section-help' => 'Ацхыраара',
+	'wikieditor-toolbar-help-page-file' => 'Афаилқәа',
+	'wikieditor-toolbar-help-page-discussion' => 'Ахцәажәара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author Omnipaedista

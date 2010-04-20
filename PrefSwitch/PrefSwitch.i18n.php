@@ -215,10 +215,17 @@ $messages['be-tarask'] = array(
 Каб дапамагчы нам іх палепшыць, калі ласка, адкажыце на некалькі пытаньняў ніжэй.',
 );
 
-/** Bulgarian (Български) */
+/** Bulgarian (Български)
+ * @author Stanqo
+ */
 $messages['bg'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
+	'prefswitch-survey-question-browser' => 'Кой браузър използвате?',
+	'prefswitch-title-on' => 'Какво е новото?',
+	'prefswitch-title-switched-on' => 'Наслаждавайте се!',
+	'prefswitch-title-switched-off' => 'Благодаря',
+	'prefswitch-success-off' => 'Новите функции са изключени.',
 );
 
 /** Bengali (বাংলা)
@@ -514,6 +521,7 @@ Co se śi njespódoba na nowych funkcijach?',
 Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Wužywanje jo było pśekomplicěrowane.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Njejo pórědnje funkcioněrowało.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Njejo ako pśedwiźone funkcioněrowało.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Naglěd se mě njespódoba.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nowe rejtarki a layout se mi njespódobaju.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nowa rědowa kšoma se mi njespódoba.',
@@ -533,8 +541,27 @@ Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-success-feedback' => 'Twójo měnjenje jo se pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Slědk k <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Źěłamy śežko, aby my wólažcyli wěcy za swójich wužywarjow. My by se wjaselili, se wó pólěpšenjach wuměniś, inkluziwnje nowy naglěd a zjadnorjone wobźěłowańske funkcije. Pólěpšenje wužywajobnosći našych projektow jo priorita załožby Wikimedia foundation a rozdźělijomy wěcej aktualizacijow w pśichoźe.
+
+[[File:UsabilityNavigation.png|right|link=|Wobrazowkowe foto noweje nawigacije]]
+[[File:UsabilityToolbar.png|right|link=|Wobrazowkowe foto pólěpšoneje wobźěłowańskeje lejstwy]]
+[[File:UsabilityDialogs.png|right|link=|Wobrazowkowe foto nowych dialogow napóranja wopśimjeśa]]
+===Tole smy změnili===
+* Nawigacija: Smy pólěpšyli nawigaciju za cytanje a wobźěłowanje bokow.´Něnto ejtarki górjejce na boku mógu jasnjej definěrowaś, lěc woglědujoš se nastawk abo diskusijny bok, a lěc cytaš abo wobźěłujoš bok.
+* Pólěpšenja wobźěkowańskeje lejstwy: Smy spóznali, až musymy wužywanje wólažcyś. Něnto jo formatěrowanje bokow lažčejše a intuitiwnjejše.
+* Wótkazowy asistent: Rěd, kótaryž dajo se wužywaś a śi dowólujo, wótkaze drugim wikibokam ako teke wótkaze eksternym sedłam pśidaś.
+* Pytańske pólěpšenja: Smy pytańske naraźenja pólěpšyli, aby my śi wjadli malsnjej k tomu bokoju, kótaryž pytaš.
+* Druge nowe funkcije: Smy teke zawjadli tabelowy asistent, aby my wólažcyli napóranje tabelow a funkciju za pytanje a wuměnjenje, aby my zjadnorili wobźěłowanje bokow.',
+	'prefswitch-main-on' => '===Rezonanca?===
+My by se wjaselili, wót tebje słyšaś. Pšosym woglědaj se naš <span class="plainlinks">[$1 rezonancowy bok]</span>.
+===Spóraj mě slědk!===
+Jolic coš nowe funkcije wótšaltowaś, <span class="plainlinks">[$2 klikni pšosym how]</span>.',
 	'prefswitch-main-off' => '===Wopytaj je!===
 Jolic coš nowe funkcije zašaltowaś, <span class="plainlinks">[$1 klikni pšosym how]</span>.',
+	'prefswitch-survey-intro-feedback' => 'My by se wjaselili, wót tebje słyšaś.
+Pšosym wupołni slědujuce opcionalne napšašowanje.',
+	'prefswitch-survey-intro-off' => 'Źěkujom se, až sy wopytał naše nowe funkcije.
+Aby nam pomogał, je pólěpšyś, wupołni pšosym slědujuce opcionalne napšašowanje.',
 );
 
 /** Greek (Ελληνικά)
@@ -1085,21 +1112,21 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 	'prefswitch-success-feedback' => 'Twoje měnjenje je so pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Wróćo do <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => 'Dźěłamy ćežko, zo bychmy wěcy za swojich wužiwarjow wosnadnili. Bychmy so wjeselili, so wo polěpšenjach wuměnić, inkluziwnje nowy napohlad a zjednorjene wobdźěkowanske funkcije. Polěpšenje wužiwajomnosće našich projektow je priorita załožby Wikimedia Foundation a rozdźělimy wjace aktualizacijow w přichodźe.
+	'prefswitch-main' => 'Dźěłamy ćežko, zo bychmy wěcy za swojich wužiwarjow wosnadnili. Bychmy so wjeselili, so wo polěpšenjach wuměnić, inkluziwnje nowy napohlad a zjednorjene wobdźěłowanske funkcije. Polěpšenje wužiwajomnosće našich projektow je priorita załožby Wikimedia Foundation a rozdźělimy wjace aktualizacijow w přichodźe.
 
-[[File:UsabilityNavigation.png|right|link=|Foto wobrazowki noweje nawigacije]]
-[[File:UsabilityToolbar.png|right|link=|Foto wobrazowki polěpšeneje wobdźěłowanskeje lajsty]]
-[[File:UsabilityDialogs.png|right|link=|Foto wobrazowki nowych dialogow wutworjenja wobsaha]]
+[[File:UsabilityNavigation.png|right|link=|Wobrazowkowe foto wobrazowki noweje nawigacije]]
+[[File:UsabilityToolbar.png|right|link=|Wobrazowkowe foto polěpšeneje wobdźěłowanskeje lajsty]]
+[[File:UsabilityDialogs.png|right|link=|Wobrazowkowe foto nowych dialogow wutworjenja wobsaha]]
 ===Tole smy změnili===
 * Nawigacija: Smy nawigaciju za čitanje a wobdźěłowanje stronow polěpšili. Nětko rajtarki horjeka na stronje móžeja jasnišo definować, hač sej nastawk abo diskusijnu stronu wobhladuješ, a hač čitaš abo wobdźěłuješ stronu.
-* Polěpšenja wobdźěłowanskeje lajsty: Sym spóznali, zo dyrbimy wužiwanje wosnadnić. Nětko je formatowanje stronow lóše a bóle intuitiwne.
+* Polěpšenja wobdźěłowanskeje lajsty: Smy spóznali, zo dyrbimy wužiwanje wosnadnić. Nětko je formatowanje stronow lóše a bóle intuitiwne.
 * Wotkazowy asistent: Nastroj, kotryž da so lochko wužiwać a ći dowola, wotkazy druhim wikistronam  kaž tež wotkazy eksternym sydłam přidać.
 * Pytanske polěpšenja: Smy pytanske namjety polěpšili, zo bychmy će spěšnišo k tej stronje wjedli, kotruž pytaš.
-* Druhe nowe funkcije: Smy tež tabelowy asistent zawjedli, zo bychmy wutworjenje tabelow wosnadnili a funkciju za pytanje a narunanje, zo bychmy wobdźěkowanje strony zjednorili.',
+* Druhe nowe funkcije: Smy tež tabelowy asistent zawjedli, zo bychmy wutworjenje tabelow wosnadnili a funkciju za pytanje a narunanje, zo bychmy wobdźěłowanje strony zjednorili.',
 	'prefswitch-main-on' => '===Rezonanca?===
-Bychmy so wjeselili, wote tebje słyšeć. Prošu wopytaj našu <span class="plainlinks">[$1 stronu měnjenjow]</span>.
+Bychmy so wjeselili, wote tebje słyšeć. Prošu wopytaj našu <span class="plainlinks">[$1 rezonancnu stronu]</span>.
 ===Wjedź mje wróćo!===
-Jeli by rady nowe funkcije wupinył, prošu <span class="plainlinks">[$2 klikń tu]</span>.',
+Jeli by rady nowe funkcije wupinył, <span class="plainlinks">[$2 klikń prošu tu]</span>.',
 	'prefswitch-main-off' => '===Wupruwuj je!===
 Jeli chceš nowe funkcije zapinyć,  <span class="plainlinks">[$1 klikń prošu tu]</span>.',
 	'prefswitch-survey-intro-feedback' => 'Bychmy so wjesleli, wot tebje słyšeć.
