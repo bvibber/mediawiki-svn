@@ -1,6 +1,6 @@
 <?php
 /* Internationalization file for CategoryFeed extension
-*/
+ */
 
 $messages = array();
 
