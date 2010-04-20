@@ -3655,6 +3655,14 @@ $messages['lb'] = array(
 	'wikilog-doc-import-comment' => 'Importéiert Wikilog-Dokumentatioun',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'wikilog-form-preview' => 'Kulagako:',
+	'wikilog-preview' => 'Lingiza',
+);
+
 /** Laz (Laz)
  * @author Bombola
  */

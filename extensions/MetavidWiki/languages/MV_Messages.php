@@ -7674,6 +7674,8 @@ opura a peul vorèj <a href="$3">Gionté ël fluss</a>.',
 	'mv_redirect_and_delete_reason' => 'gavà la pàgina ëd ridiression',
 	'mv_remove_reason' => 'Rason ëd la scancelassion:',
 	'mv_stream_delete_warrning' => "'''Gavand cost fluss as gavran ëdcò $1 {{PLURAL:$1|tòch|tòch}} dij metadàit assossià'''<br />",
+	'mv_label_stream_type' => 'Sòrt ëd fluss',
+	'mv_metavid_file' => 'File esistent dzora al sërvent',
 );
 
 /** Pashto (پښتو)

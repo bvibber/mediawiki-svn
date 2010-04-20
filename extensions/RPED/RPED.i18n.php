@@ -28,7 +28,7 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'rped' => 'Ermittlung websitefremder Webseiten',
-	'rped-desc' => 'Leitet Wikilinks zur Wikipedia sofern die betreffende Seite nicht im lokalen Wiki, aber in der Wikipedia vorhanden sind',
+	'rped-desc' => 'Leitet Wikilinks zur Wikipedia, sofern die betreffende Seite nicht im lokalen Wiki, aber in der Wikipedia vorhanden ist',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -69,6 +69,14 @@ $messages['gl'] = array(
 $messages['hsb'] = array(
 	'rped' => 'Wotkryće eksistency zdaleneje strony',
 	'rped-desc' => 'Wotkazuje wikiwotkazy do Wikipedije, jeli strona njeeksistuje w lokalnym wikiju, ale eksistuje we Wikipediji',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'rped' => 'Ellenőrzi, hogy egy távoli lap létezik-e',
+	'rped-desc' => 'A wikilinkeket a Wikipédiára irányítja, ha a lap nem létezik a helyi wikiben, de a Wikipédián igen',
 );
 
 /** Interlingua (Interlingua)

@@ -5457,6 +5457,14 @@ $messages['lfn'] = array(
 	'repoadmin-edit-button' => 'Oce',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'code-rev-comment-preview' => 'Gezesa',
+	'code-rev-inline-preview' => 'Kugezesa',
+);
+
 /** Limburgish (Limburgs)
  * @author Aelske
  * @author Ooswesthoesbes

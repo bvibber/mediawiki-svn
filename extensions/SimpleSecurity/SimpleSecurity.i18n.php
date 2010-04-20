@@ -618,6 +618,13 @@ $messages['lb'] = array(
 	'security-restricttogroup' => 'Zougang zum Inhalt limitéiert fir Membere vu(n) "$1"',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'security-type-namespace' => 'kuŋaanyizo',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

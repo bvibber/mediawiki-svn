@@ -5883,6 +5883,13 @@ $messages['lfn'] = array(
 	'configure-section-search' => 'Xerca',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'configure-throttle-action-rollback' => 'Jjulula nkyukakyuka',
+);
+
 /** Limburgish (Limburgs)
  * @author Aelske
  * @author Pahles

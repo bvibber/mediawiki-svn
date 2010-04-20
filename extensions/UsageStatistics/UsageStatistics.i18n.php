@@ -1383,6 +1383,13 @@ $messages['lb'] = array(
 	'right-viewsystemstats' => '[[Special:UserStats|Wiki Benotzerstatistike]] weisen',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'usagestatisticsnamespace' => 'Kuŋaanyizo:',
+);
+
 /** Laz (Laz)
  * @author Bombola
  */

@@ -76,6 +76,13 @@ $wgCustomToolbarMessages['qqq'] = array(
 	'ct_user_sample' => '{{Identical|Username}}',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$wgCustomToolbarMessages['ab'] = array(
+	'ct_user_user' => 'Иалахә',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

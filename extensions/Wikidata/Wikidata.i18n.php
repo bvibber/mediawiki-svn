@@ -2483,9 +2483,9 @@ Wähle eine Sammlung aus, die du exportieren willst. Gib im Sprachen-Textfeld ei
 	'ow_exporttsv_not_allowed' => 'Du hast nicht die Berechtigung, einen TSV-Export durchzuführen.',
 	'ow_exporttsv_export_failed' => 'Export fehlgeschlagen',
 	'addcollection' => 'Wikidata: Sammlung hinzufügen',
-	'ow_searchnoresult' => "<p>Du kannst...:<br />
-* '''...einen Ausdruck erstellen „[[Ausdruck:$1]]“''' (und eine Definition hinzufügen) oder<br />
-* '''...eine Seite erstellen „[[:$1]]“''' (eine reguläre Seite)</p>",
+	'ow_searchnoresult' => "<p>Du kannst …<br />
+* '''… einen Ausdruck erstellen „[[Expression:$1]]“''' (und eine Definition hinzufügen) oder<br />
+* '''… eine Seite erstellen „[[:$1]]“''' (eine reguläre Seite)</p>",
 	'ow_save' => 'Speichern',
 	'ow_history' => 'Versionen/Autoren',
 	'ow_datasets' => 'Auswahl des Datasets',
@@ -3586,6 +3586,9 @@ $messages['et'] = array(
 	'ow_LevelAnnotation' => 'Märkus',
 	'ow_Multiple_meanings' => 'Mõiste "$1" määratlused',
 	'ow_NewExactMeaning' => 'Uus täpne tähendus',
+	'ow_OptionAttribute' => 'Omadus',
+	'ow_OptionAttributeOption' => 'Valik',
+	'ow_OptionAttributeValues' => 'Valikväärtused',
 	'ow_OtherDefinedMeaning' => 'Teised määratletud tähendused',
 	'ow_PopupAnnotation' => 'Märkus',
 	'ow_RecordLifeSpan' => 'Kirje eluiga',
@@ -3594,14 +3597,18 @@ $messages['et'] = array(
 	'ow_Remove' => 'Eemalda',
 	'ow_RemoveHint' => 'Märgi eemaldatavad read',
 	'ow_Spelling' => 'Kirjapilt',
+	'ow_SuggestHint' => 'Klõpsa valiku muutmiseks',
 	'ow_Synonyms' => 'Sünonüümid',
 	'ow_SynonymsAndTranslations' => 'Sünonüümid ja tõlked',
 	'ow_Source' => 'Allikas',
 	'ow_Text' => 'Tekst',
+	'ow_TextAttributeValues' => 'Lihttekstid',
 	'ow_Time' => 'Aeg',
+	'ow_TranslatedTextAttribute' => 'Omadus',
 	'ow_TranslatedText' => 'Tõlgitud tekst',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
 	'ow_TranslatedTextAttributeValues' => 'Tõlgitavad tekstid',
+	'ow_Link' => 'Link',
 	'ow_LinkAttribute' => 'Omand',
 	'ow_LinkAttributeValues' => 'Lingid',
 	'ow_User' => 'Kasutaja',
@@ -3622,6 +3629,7 @@ $messages['et'] = array(
 	'ow_create' => 'Loo',
 	'ow_suggest_previous' => 'Eelmine',
 	'ow_suggest_next' => 'Järgmine',
+	'ow_suggest_clear' => 'Puhasta',
 );
 
 /** Basque (Euskara)

@@ -68,11 +68,25 @@ $messages['hsb'] = array(
 	'js2support-desc' => 'Podpěra JS2 jako rozšěrjenje',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'js2support-desc' => 'JS2 támogatás kiterjesztésként',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'js2support-desc' => 'Supporto de JS2 in forma de un extension',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'js2support-desc' => 'J2S Ënnerstëtzung als Erweiderung',
 );
 
 /** Macedonian (Македонски)

@@ -530,6 +530,13 @@ $messages['lb'] = array(
 	'mostrevisors-viewcontributors' => 'Weis déi Haaptmataarbechter',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'mostrevisors-namespace' => 'Kuŋaanyizo:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
