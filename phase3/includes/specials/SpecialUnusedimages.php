@@ -37,6 +37,7 @@ class UnusedimagesPage extends ImageQueryPage {
 		);
 		if ( $wgCountCategorizedImagesAsUsed ) {
 			// Order is significant
+			// TODO: Revise query to LEFT JOIN page instead
 			$retval['tables'] = array ( 'page', 'categorylinks',
 					'imagelinks', 'image' );
 			$retval['conds']['page_namespace'] = NS_FILE;

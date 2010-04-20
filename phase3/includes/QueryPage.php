@@ -60,7 +60,7 @@ if ( !$wgDisableCounters )
  * subclasses derive from it.
  * @ingroup SpecialPage
  */
-abstract class QueryPage {
+abstract class QueryPage extends SpecialPage {
 	/**
 	 * Whether or not we want plain listoutput rather than an ordered list
 	 *
@@ -75,6 +75,18 @@ abstract class QueryPage {
 	 */
 	var $offset = 0;
 	var $limit = 0;
+
+	/**
+	 * Wheter to show prev/next links
+	 */
+	var $shownavigation = true;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		parent::__construct( $this->getName() );
+	}
 
 	/**
 	 * A mutator for $this->listoutput;
@@ -92,8 +104,7 @@ abstract class QueryPage {
 	 *
 	 * @return String
 	 */
-	function getName() {
-		return '';
+	abstract function getName();
 	}
 
 	/**
@@ -345,6 +356,13 @@ abstract class QueryPage {
 		);
 		return $dbr->resultObject( $res );
 	}
+
+	function doQuery( $limit, $offset = false ) {
+		if( $this->isCached() )
+			return $this->fetchFromCache( $limit, $offset );
+		else
+			return $this->reallyDoQuery( $limit, $offset );
+	}
 	
 	/**
 	 * Fetch the query results from the query cache
@@ -374,16 +392,11 @@ abstract class QueryPage {
 	/**
 	 * This is the actual workhorse. It does everything needed to make a
 	 * real, honest-to-gosh query page.
-	 *
-	 * @param $offset database query offset
-	 * @param $limit database query limit
-	 * @param $shownavigation show navigation like "next 200"?
 	 */
-	function doQuery( $offset, $limit, $shownavigation=true ) {
+	function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang, $wgContLang;
 
-		$this->offset = $offset;
-		$this->limit = $limit;
+		list( $this->offset, $this->limit ) = wfCheckLimits();
 
 		$sname = $this->getName();
 		$fname = get_class($this) . '::doQuery';
@@ -391,6 +404,7 @@ abstract class QueryPage {
 
 		$wgOut->setSyndicated( $this->isSyndicated() );
 
+		// TODO: Use doQuery()
 		//$res = null;
 		if ( !$this->isCached() ) {
 			$res = $this->reallyDoQuery( $limit, $offset );
@@ -432,7 +446,7 @@ abstract class QueryPage {
 		$wgOut->addHTML( XML::openElement( 'div', array('class' => 'mw-spcontent') ) );
 
 		# Top header and navigation
-		if( $shownavigation ) {
+		if( $this->shownavigation ) {
 			$wgOut->addHTML( $this->getPageHeader() );
 			if( $num > 0 ) {
 				$wgOut->addHTML( '<p>' . wfShowingResults( $offset, $num ) . '</p>' );

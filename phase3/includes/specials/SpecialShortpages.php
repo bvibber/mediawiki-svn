@@ -39,6 +39,15 @@ class ShortPagesPage extends QueryPage {
 		);
 	}
 
+	function getOrderFields() {
+		// For some crazy reason ordering by a constant
+		// causes a filesort
+		if( count( MWNamespace::getContentNamespaces() ) > 1 )
+			return array( 'page_namespace', 'page_title' );
+		else
+			return array( 'page_title' );
+	}
+
 	function preprocessResults( $db, $res ) {
 		# There's no point doing a batch check if we aren't caching results;
 		# the page must exist for it to have been pulled out of the table

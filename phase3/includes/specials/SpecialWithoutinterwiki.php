@@ -66,6 +66,7 @@ class WithoutInterwikiPage extends PageQueryPage {
 					'LEFT JOIN', 'll_from = page_id' ) )
 		);
 		if ( $this->prefix ) {
+			// TODO: Include namespace so this is indexed
 			$dbr = wfGetDb( DB_SLAVE );
 			$encPrefix = $dbr->escapeLike( $this->prefix );
 			$query['conds'][] = "page_title LIKE '{$encPrefix}%'";
