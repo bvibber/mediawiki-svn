@@ -372,6 +372,14 @@ class SpecialStory extends IncludableSpecialPage {
 		$wgOut->addInlineScript( <<<EOT
 jQuery(document).ready(function() {
 	jQuery("#storystate option[value='$story->story_state']").attr('selected', 'selected');
+	
+	jQuery("#storyform").validate({
+		messages: {
+			storytitle: {
+				remote: jQuery.validator.format("<b>{0}</b> is already taken, please choose a different title.") // TODO: i18n
+			}
+		}
+	});		
 });
 		
 addOnloadHook(
@@ -381,14 +389,6 @@ addOnloadHook(
 );
 jQuery(document).ready(function(){
 	jQuery("#storyform").validate();
-});
-jQuery("#storyform").validate({
-	messages: {
-		storytitle: {
-			required: " ",
-			remote: jQuery.validator.format("{0} is already taken, please choose a different title.")	
-		}
-	}
 });
 EOT
 		);
