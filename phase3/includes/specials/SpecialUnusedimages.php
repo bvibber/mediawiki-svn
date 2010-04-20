@@ -21,40 +21,39 @@ class UnusedimagesPage extends ImageQueryPage {
 	}
 	function isSyndicated() { return false; }
 
-	function getSQL() {
-		global $wgCountCategorizedImagesAsUsed, $wgDBtype;
-		$dbr = wfGetDB( DB_SLAVE );
-
-		switch ($wgDBtype) {
-			case 'mysql': 
-				$epoch = 'UNIX_TIMESTAMP(img_timestamp)'; 
-				break;
-			case 'oracle': 
-				$epoch = '((trunc(img_timestamp) - to_date(\'19700101\',\'YYYYMMDD\')) * 86400)'; 
-				break;
-			case 'sqlite':
-				$epoch = 'img_timestamp';
-				break;
-			default:
-				$epoch = 'EXTRACT(epoch FROM img_timestamp)';
-		}
-
+	function getQueryInfo() {
+		global $wgCountCategorizedImagesAsUsed;
+		$retval = array (
+			'tables' => array ( 'image', 'imagelinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					"'" . NS_FILE . "' AS namespace",
+					'img_name AS title',
+					'img_timestamp AS value',
+					'img_user', 'img_user_text',
+					'img_description' ),
+			'conds' => array ( 'il_to IS NULL' ),
+			'join_conds' => array ( 'imagelinks' => array (
+					'LEFT JOIN', 'il_to = img_name' ) )
+		);
 		if ( $wgCountCategorizedImagesAsUsed ) {
-			list( $page, $image, $imagelinks, $categorylinks ) = $dbr->tableNamesN( 'page', 'image', 'imagelinks', 'categorylinks' );
-
-			return "SELECT 'Unusedimages' as type, 6 as namespace, img_name as title, $epoch as value,
-						img_user, img_user_text,  img_description
-					FROM ((($page AS I LEFT JOIN $categorylinks AS L ON I.page_id = L.cl_from)
-						LEFT JOIN $imagelinks AS P ON I.page_title = P.il_to)
-						INNER JOIN $image AS G ON I.page_title = G.img_name)
-					WHERE I.page_namespace = ".NS_FILE." AND L.cl_from IS NULL AND P.il_to IS NULL";
-		} else {
-			list( $image, $imagelinks ) = $dbr->tableNamesN( 'image','imagelinks' );
-
-			return "SELECT 'Unusedimages' as type, 6 as namespace, img_name as title, $epoch as value,
-				img_user, img_user_text,  img_description
-				FROM $image LEFT JOIN $imagelinks ON img_name=il_to WHERE il_to IS NULL ";
+			// Order is significant
+			$retval['tables'] = array ( 'page', 'categorylinks',
+					'imagelinks', 'image' );
+			$retval['conds']['page_namespace'] = NS_FILE;
+			$retval['conds'][] = 'cl_from IS NULL';
+			$retval['join_conds']['categorylinks'] = array (
+					'LEFT JOIN', 'cl_from = page_id' );
+			$retval['join_conds']['imagelinks'] = array (
+					'LEFT JOIN', 'il_to = page_title' );
+			// TODO: Make this one implicit?
+			$retval['join_conds']['image'] = array (
+					'INNER JOIN', 'img_name = page_title' );
 		}
+		return $retval;
+	}
+
+	function usesTimestamps() {
+		return true;
 	}
 
 	function getPageHeader() {

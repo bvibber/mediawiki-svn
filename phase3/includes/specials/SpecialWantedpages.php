@@ -44,6 +44,37 @@ class WantedPagesPage extends WantedQueryPage {
 		wfRunHooks( 'WantedPages::getSQL', array( &$this, &$sql ) );
 		return $sql;
 	}
+
+	function getQueryInfo() {
+		global $wgWantedPagesThreshold;
+		$count = $wgWantedPagesThreshold - 1;
+		$query = array (
+			'tables' => array ( 'pagelinks', 'page AS pg1',
+					'page AS pg2' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'pl_namespace AS namespace',
+					'pl_title AS title',
+					'COUNT(*) AS value' ),
+			'conds' => array ( 'pg1.page_namespace IS NULL',
+					"pl_namespace NOT IN ( '" . NS_USER .
+						"', '" . NS_USER_TALK . "' )",
+					"pg2.page_namespace != '" .
+						NS_MEDIAWIKI . "'" ),
+			'options' => array ( 'HAVING' => "COUNT(*) > $count",
+				'GROUP BY' => 'pl_namespace, pl_title' ),
+			// TODO: test this join
+			'join_conds' => array ( 'page AS pg1' => array (
+					'LEFT JOIN', array (
+					'pg1.page_namespace = pl_namespace',
+					'pg2.page_title = pl_title' ) ),
+				'page AS pg2' => array ( 'LEFT JOIN',
+					'pg2.page_id = pl_from' ) )
+		);
+		// TODO: find and migrate WantedPages::getSQL hook usage
+		wfRunHooks( 'WantedPages::getQueryInfo',
+				array( &$this, &$query ) );
+		return $query;
+	} 	
 }
 
 /**

@@ -50,22 +50,23 @@ class WithoutInterwikiPage extends PageQueryPage {
 		return false;
 	}
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $page, $langlinks ) = $dbr->tableNamesN( 'page', 'langlinks' );
-		$prefix = $this->prefix ? 'AND page_title' . $dbr->buildLike( $this->prefix , $dbr->anyString() ) : '';
-		return
-		  "SELECT 'Withoutinterwiki'  AS type,
-		          page_namespace AS namespace,
-		          page_title     AS title,
-		          page_title     AS value
-		     FROM $page
-		LEFT JOIN $langlinks
-		       ON ll_from = page_id
-		    WHERE ll_title IS NULL
-		      AND page_namespace=" . NS_MAIN . "
-		      AND page_is_redirect = 0
-			  {$prefix}";
+	function getQueryInfo() {
+		$query = array (
+			'tables' => array ( 'page', 'langlinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'page_title AS value' ),
+			'conds' => array ( 'll_title IS NULL' ),
+			'join_conds' => array ( 'langlinks' => array (
+					'LEFT JOIN', 'll_from = page_id' ) )
+		);
+		if ( $this->prefix ) {
+			$dbr = wfGetDb( DB_SLAVE );
+			$encPrefix = $dbr->escapeLike( $this->prefix );
+			$query['conds'][] = "page_title LIKE '{$encPrefix}%'";
+		}
+		return $query;
 	}
 
 	function setPrefix( $prefix = '' ) {

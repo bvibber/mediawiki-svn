@@ -1,0 +1,12 @@
+* Test JOINs using table aliases
+* Make INNER JOIN implicit in Unusedimages?
+* Find and migrate code using WantedPages::getSQL hook
+* Check sorting sanity
+** Check whether sorts are efficient and page right
+** Check whether sorting by nothing is really what we want
+** Check whether selecting title or ns AS value is really what we want
+* Replace $result->type with getName(), remove type from queries
+* Mark ShortPages as inexpensive
+* Reuse UncategorizedPages code in UncategorizedImages somehow
+* Make UncategorizedPages parameterized by namespace
+

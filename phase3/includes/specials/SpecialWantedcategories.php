@@ -19,22 +19,19 @@ class WantedCategoriesPage extends WantedQueryPage {
 		return 'Wantedcategories';
 	}
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
-		$name = $dbr->addQuotes( $this->getName() );
-		return
-			"
-			SELECT
-				$name as type,
-				" . NS_CATEGORY . " as namespace,
-				cl_to as title,
-				COUNT(*) as value
-			FROM $categorylinks
-			LEFT JOIN $page ON cl_to = page_title AND page_namespace = ". NS_CATEGORY ."
-			WHERE page_title IS NULL
-			GROUP BY cl_to
-			";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'categorylinks', 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					"'" . NS_CATEGORY . "' AS namespace",
+					'cl_to AS title',
+					'COUNT(*) AS value' ),
+			'conds' => array ( 'page_title IS NULL' ),
+			'options' => array ( 'GROUP BY' => 'cl_to' ),
+			'join_conds' => array ( 'page' => array ( 'LEFT JOIN',
+				array ( 'page_title = cl_to',
+					'page_namespace' => NS_CATEGORY ) ) )
+		);
 	}
 
 	function formatResult( $skin, $result ) {

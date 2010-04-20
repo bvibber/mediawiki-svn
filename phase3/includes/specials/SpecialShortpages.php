@@ -17,6 +17,7 @@ class ShortPagesPage extends QueryPage {
 
 	/**
 	 * This query is indexed as of 1.5
+	 * FIXME: Mark as inexpensive
 	 */
 	function isExpensive() {
 		return true;
@@ -26,27 +27,19 @@ class ShortPagesPage extends QueryPage {
 		return false;
 	}
 
-	function getSQL() {
+	function getQueryInfo() {
 		global $wgContentNamespaces;
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$page = $dbr->tableName( 'page' );
-		$name = $dbr->addQuotes( $this->getName() );
-
-		$forceindex = $dbr->useIndexClause("page_len");
-
-		if ($wgContentNamespaces)
-			$nsclause = "page_namespace IN (" . $dbr->makeList($wgContentNamespaces) . ")";
-		else
-			$nsclause = "page_namespace = " . NS_MAIN;
-
-		return
-			"SELECT $name as type,
-				page_namespace as namespace,
-			        page_title as title,
-			        page_len AS value
-			FROM $page $forceindex
-			WHERE $nsclause AND page_is_redirect=0";
+		$ns = ( $wgContentNamespaces ? $wgContentNamespaces : NS_MAIN );
+		return array (
+			'tables' => array ( 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'page_namespace AS namespace',
+					'page_title AS title',
+					'page_len AS value' ),
+			'conds' => array ( 'page_namespace' => $ns,
+					'page_is_redirect' => 0 ),
+			'options' => array ( 'USE INDEX' => 'page_len' )
+		);
 	}
 
 	function preprocessResults( $db, $res ) {

@@ -7,7 +7,6 @@
 /**
  * A querypage to list the most wanted templates - implements Special:Wantedtemplates
  * based on SpecialWantedcategories.php by Ævar Arnfjörð Bjarmason <avarab@gmail.com>
- * makeWlhLink() taken from SpecialMostlinkedtemplates by Rob Church <robchur@gmail.com>
  *
  * @ingroup SpecialPage
  *
@@ -21,22 +20,21 @@ class WantedTemplatesPage extends WantedQueryPage {
 		return 'Wantedtemplates';
 	}
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $templatelinks, $page ) = $dbr->tableNamesN( 'templatelinks', 'page' );
-		$name = $dbr->addQuotes( $this->getName() );
-		return
-			"
-			  SELECT $name as type, 
-			         tl_namespace as namespace,
-			         tl_title as title,
-			         COUNT(*) as value
-			    FROM $templatelinks LEFT JOIN
-			         $page ON tl_title = page_title AND tl_namespace = page_namespace
-			   WHERE page_title IS NULL AND tl_namespace = ". NS_TEMPLATE ."
-			GROUP BY tl_namespace, tl_title
-			";
-	}
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'templatelinks', 'page' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'tl_namespace AS namespace',
+					'tl_title AS title',
+					'COUNT(*) AS value' ),
+			'conds' => array ( 'page_title IS NULL',
+					'tl_namespace' => NS_TEMPLATE ),
+			'options' => array (
+				'GROUP BY' => 'tl_namespace, tl_title' ),
+			'join_conds' => array ( 'page' => array ( 'LEFT JOIN',
+					array ( 'page_namespace = tl_namespace',
+						'page_title = tl_title' ) ) )
+		); 
 }
 
 /**

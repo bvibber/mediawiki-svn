@@ -87,8 +87,8 @@ abstract class QueryPage {
 
 	/**
 	 * Subclasses return their name here. Make sure the name is also
-	 * specified in SpecialPage.php and in Language.php as a language message
-	 * param.
+	 * specified in SpecialPage.php and in Language.php as a language 
+	 * message param.
 	 *
 	 * @return String
 	 */
@@ -121,8 +121,8 @@ abstract class QueryPage {
 	 * These may be stored in the querycache table for expensive queries,
 	 * and that cached data will be returned sometimes, so the presence of
 	 * extra fields can't be relied upon. The cached 'value' column will be
-	 * an integer; non-numeric values are useful only for sorting the initial
-	 * query.
+	 * an integer; non-numeric values are useful only for sorting the
+	 * initial query (except if they're timestamps, see usesTimestamps()).
 	 *
 	 * Don't include an ORDER or LIMIT clause, they will be added
 	 * @return array
@@ -137,6 +137,19 @@ abstract class QueryPage {
 	 */
 	function getOrderFields() {
 		return array('value');
+	}
+
+	/**
+	 * Does this query return timestamps rather than integers in its
+	 * 'value' field? If true, this class will convert 'value' to a
+	 * UNIX timestamp for caching.
+	 * NOTE: formatRow() may get timestamps in TS_MW (mysql), TS_DB (pgsql)
+	 *       or TS_UNIX (querycache) format, so be sure to always run them
+	 *       through wfTimestamp()
+	 * @return bool
+	 */
+	function usesTimestamps() {
+		return false;
 	}
 
 	/**
@@ -256,7 +269,12 @@ abstract class QueryPage {
 			$vals = array();
 			while ( $res && $row = $dbr->fetchObject( $res ) ) {
 				if ( isset( $row->value ) ) {
-					$value = intval( $row->value ); // @bug 14414
+					if ( $this->usesTimestamps() ) {
+						$value = wfTimestamp( TS_UNIX,
+							$row->value );
+					} else {
+						$value = intval( $row->value ); // @bug 14414
+					}
 				} else {
 					$value = 0;
 				}

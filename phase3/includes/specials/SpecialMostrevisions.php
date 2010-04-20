@@ -12,48 +12,9 @@
 /**
  * @ingroup SpecialPage
  */
-class MostrevisionsPage extends QueryPage {
-
-	function getName() { return 'Mostrevisions'; }
-	function isExpensive() { return true; }
-	function isSyndicated() { return false; }
-
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $revision, $page ) = $dbr->tableNamesN( 'revision', 'page' );
-		return
-			"
-			SELECT
-				'Mostrevisions' as type,
-				page_namespace as namespace,
-				page_title as title,
-				COUNT(*) as value
-			FROM $revision
-			JOIN $page ON page_id = rev_page
-			WHERE page_namespace = " . NS_MAIN . "
-			GROUP BY page_namespace, page_title
-			HAVING COUNT(*) > 1
-			";
-	}
-
-	function formatResult( $skin, $result ) {
-		global $wgLang, $wgContLang;
-
-		$nt = Title::makeTitle( $result->namespace, $result->title );
-		$text = $wgContLang->convert( $nt->getPrefixedText() );
-
-		$plink = $skin->linkKnown( $nt, $text );
-
-		$nl = wfMsgExt( 'nrevisions', array( 'parsemag', 'escape'),
-			$wgLang->formatNum( $result->value ) );
-		$nlink = $skin->linkKnown(
-			$nt,
-			$nl,
-			array(),
-			array( 'action' => 'history' )
-		);
-
-		return wfSpecialList($plink, $nlink);
+class MostrevisionsPage extends FewestrevisionsPage {
+	function sortDescending() {
+		return true;
 	}
 }
 

@@ -19,20 +19,15 @@ class MostlinkedCategoriesPage extends QueryPage {
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
-	function getSQL() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$categorylinks = $dbr->tableName( 'categorylinks' );
-		$name = $dbr->addQuotes( $this->getName() );
-		return
-			"
-			SELECT
-				$name as type,
-				" . NS_CATEGORY . " as namespace,
-				cl_to as title,
-				COUNT(*) as value
-			FROM $categorylinks
-			GROUP BY cl_to
-			";
+	function getQueryInfo() {
+		return array (
+			'tables' => array ( 'categorylinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					"'" . NS_CATEGORY . "' AS namespace",
+					'cl_to AS title',
+					'COUNT(*) AS value' ),
+			'options' => array ( 'GROUP BY' => 'cl_to' )
+		);
 	}
 
 	function sortDescending() { return true; }

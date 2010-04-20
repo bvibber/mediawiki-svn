@@ -49,22 +49,16 @@ class SpecialMostlinkedtemplates extends QueryPage {
 		return true;
 	}
 
-	/**
-	 * Generate SQL for the report
-	 *
-	 * @return String
-	 */
-	public function getSql() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$templatelinks = $dbr->tableName( 'templatelinks' );
-		$name = $dbr->addQuotes( $this->getName() );
-		return "SELECT {$name} AS type,
-			" . NS_TEMPLATE . " AS namespace,
-			tl_title AS title,
-			COUNT(*) AS value
-			FROM {$templatelinks}
-			WHERE tl_namespace = " . NS_TEMPLATE . "
-			GROUP BY tl_title";
+	public function getQueryInfo() {
+		return array (
+			'tables' => array ( 'templatelinks' ),
+			'fields' => array ( "'{$this->getName()}' AS type",
+					'tl_namespace AS namespace',
+					'tl_title AS title',
+					'COUNT(*) AS value' ),
+			'conds' => array ( 'tl_namespace' => NS_TEMPLATE' ),
+			'options' => array( 'GROUP BY' => 'tl_title' )
+		);
 	}
 
 	/**

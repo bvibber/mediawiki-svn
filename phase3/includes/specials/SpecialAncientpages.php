@@ -21,22 +21,21 @@ class AncientPagesPage extends QueryPage {
 	function isSyndicated() { return false; }
 
 	function getQueryInfo() {
-		// FIXME convert timestamps elsewhere
-		// Possibly add bool returnsTimestamps()
 		// FIXME standardize 'name' AS type ?
-		global $wgDBtype;
-		$epoch = $wgDBtype == 'mysql' ? 'UNIX_TIMESTAMP(rev_timestamp)' :
-				'EXTRACT(epoch FROM rev_timestamp)';
 		return array(
 			'tables' => array( 'page', 'revision' ),
 			'fields' => array( "'{$this->getName()}' AS type",
 					'page_namespace AS namespace',
 					'page_title AS title',
-					"$epoch AS value" ),
+					'rev_timestamp AS value' ),
 			'conds' => array( 'page_namespace' => NS_MAIN,
 					'page_is_redirect' => 0,
 					'page_latest=rev_id' )
 		);
+	}
+
+	function usesTimestamps() {
+		return true;
 	}
 
 	function sortDescending() {
