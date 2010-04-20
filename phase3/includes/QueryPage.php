@@ -82,13 +82,6 @@ abstract class QueryPage extends SpecialPage {
 	var $shownavigation = true;
 
 	/**
-	 * Constructor
-	 */
-	public function __construct() {
-		parent::__construct( $this->getName() );
-	}
-
-	/**
 	 * A mutator for $this->listoutput;
 	 *
 	 * @param $bool Boolean
@@ -394,23 +387,23 @@ abstract class QueryPage extends SpecialPage {
 	 * real, honest-to-gosh query page.
 	 */
 	function execute( $par ) {
-		global $wgUser, $wgOut, $wgLang, $wgContLang;
-
-		list( $this->offset, $this->limit ) = wfCheckLimits();
-
+		global $wgUser, $wgOut, $wgLang;
+		
+		list( $this->limit, $this->offset ) = wfCheckLimits();
 		$sname = $this->getName();
-		$fname = get_class($this) . '::doQuery';
+		$fname = get_class( $this ) . '::doQuery';
 		$dbr = wfGetDB( DB_SLAVE );
 
+		$this->setHeaders();
 		$wgOut->setSyndicated( $this->isSyndicated() );
 
 		// TODO: Use doQuery()
 		//$res = null;
 		if ( !$this->isCached() ) {
-			$res = $this->reallyDoQuery( $limit, $offset );
+			$res = $this->reallyDoQuery( $this->limit, $this->offset );
 		} else {
 			# Get the cached result
-			$res = $this->fetchFromCache( $limit, $offset );
+			$res = $this->fetchFromCache( $this->limit, $this->offset );
 			if( !$this->listoutput ) {
 
 				# Fetch the timestamp of this update
@@ -449,10 +442,11 @@ abstract class QueryPage extends SpecialPage {
 		if( $this->shownavigation ) {
 			$wgOut->addHTML( $this->getPageHeader() );
 			if( $num > 0 ) {
-				$wgOut->addHTML( '<p>' . wfShowingResults( $offset, $num ) . '</p>' );
+				$wgOut->addHTML( '<p>' . wfShowingResults( $this->offset, $num ) . '</p>' );
 				# Disable the "next" link when we reach the end
-				$paging = wfViewPrevNext( $offset, $limit, $wgContLang->specialPage( $sname ),
-					wfArrayToCGI( $this->linkParameters() ), ( $num < $limit ) );
+				$paging = wfViewPrevNext( $this->offset, $this->limit,
+					$this->getTitle( $par ),
+					wfArrayToCGI( $this->linkParameters() ), ( $num < $this->limit ) );
 				$wgOut->addHTML( '<p>' . $paging . '</p>' );
 			} else {
 				# No results to show, so don't bother with "showing X of Y" etc.
@@ -471,10 +465,10 @@ abstract class QueryPage extends SpecialPage {
 			$dbr, # Should use a ResultWrapper for this
 			$res,
 			$dbr->numRows( $res ),
-			$offset );
+			$this->offset );
 
 		# Repeat the paging links at the bottom
-		if( $shownavigation ) {
+		if( $this->shownavigation ) {
 			$wgOut->addHTML( '<p>' . $paging . '</p>' );
 		}
 
