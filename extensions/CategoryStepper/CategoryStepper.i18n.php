@@ -1,8 +1,7 @@
 <?php
-
 /**
  * Internationalisation file for CategoryStepper extension.
- * 
+ *
  * @addtogroup Extensions
  */
 
