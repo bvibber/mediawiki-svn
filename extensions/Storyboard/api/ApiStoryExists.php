@@ -48,10 +48,18 @@ class ApiStoryExists extends ApiBase {
 		
 		$dbr = wfGetDB( DB_SLAVE );
 		
+		$conditions = array(
+			'story_title' => str_replace( array( '_', '+' ), ' ', $params['storytitle'] ),
+		);
+		
+		if ( array_key_exists( 'currentid', $params ) && is_integer( $params['currentid'] ) ) {
+			$conditions[] = "story_id != $params[currentid]";
+		}
+		
 		$story = $dbr->selectRow(
 			'storyboard',
 			array( 'story_id' ),
-			array( 'story_title' => str_replace( array( '_', '+' ), ' ', $params['storytitle'] ) )
+			$conditions
 		);
 		
 		$result = array(
@@ -70,6 +78,9 @@ class ApiStoryExists extends ApiBase {
 			'storytitle' => array(
 				ApiBase :: PARAM_TYPE => 'string',
 			),
+			'currentid' => array(
+				ApiBase :: PARAM_TYPE => 'integer',
+			),			
 		);
 	}
 	
@@ -94,6 +105,7 @@ class ApiStoryExists extends ApiBase {
 	protected function getExamples() {
 		return array(
 			'api.php?action=storyexists&storytitle=oHai there!',
+			'api.php?action=storyexists&storytitle=oHai there!&currentid=42',
 		);
 	}
 

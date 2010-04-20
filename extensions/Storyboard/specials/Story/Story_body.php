@@ -286,8 +286,6 @@ class SpecialStory extends IncludableSpecialPage {
 				)
 			) . '</td></tr>';
 		
-		// TODO: further fix this
-		// Need to extend the validator plugin to work with api results, and also send over the current srory id to exclude it.
 		$formBody .= '<tr>' .
 			'<td width="100%"><label for="storytitle">' .
 				htmlspecialchars( wfMsg( 'storyboard-storytitle' ) ) .
@@ -302,7 +300,7 @@ class SpecialStory extends IncludableSpecialPage {
 					'minlength' => 2,
 					'id' => 'storytitle',
 					'class' => 'required storytitle',
-					'remote' => "$wgScriptPath/api.php?format=json&action=storyexists"
+					'remote' => "$wgScriptPath/api.php?format=json&action=storyexists&currentid=$story->story_id"
 				)
 			) . '</td></tr>';
 		
