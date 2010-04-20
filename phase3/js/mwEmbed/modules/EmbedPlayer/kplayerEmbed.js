@@ -49,6 +49,7 @@ var kplayerEmbed = {
 		attributes.id = this.pid;
 		attributes.name = this.pid;
 		
+		mw.log(" about to add the pid container");
 		$j( this ).html(
 			$j('<div />')
 			.attr( 'id', this.pid + '_container' )
@@ -69,7 +70,7 @@ var kplayerEmbed = {
 		
 		setTimeout( function() {
 			_this.postEmbedJS();
-		}, 250 );
+		}, 100 );
 						
 	},	
 	

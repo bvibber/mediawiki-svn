@@ -1668,8 +1668,9 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'f: inheritEmbedPlayer: embedding with ' + this.selected_player.library );
 		var _this = this;
 		
-		// Load the selected player
-		this.selected_player.load( function() {		
+		// Load the selected player		
+		this.selected_player.load( function() {
+			mw.log( _this.selected_player.library + " player loaded" );
 			// Get embed library player Interface
 			var playerInterface = window[ _this.selected_player.library + 'Embed' ];			
 			
@@ -2466,9 +2467,9 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Maps the html5 load request. 
-	* There is no genneral way to "load" clips so underling plugin-player libs should overide. 
-	*/
+	 * Maps the html5 load request. There is no general way to "load" clips so
+	 * underling plugin-player libs should override.
+	 */
 	load: function() {
 		// should be done by child (no base way to pre-buffer video)
 		mw.log( 'baseEmbed:load call' );
@@ -2476,7 +2477,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Base embed pause
-	* Updaets the play/pause button state.
+	* Updates the play/pause button state.
 	*
 	*	There is no general way to pause the video
 	*  must be overwritten by embed object to support this functionality.
