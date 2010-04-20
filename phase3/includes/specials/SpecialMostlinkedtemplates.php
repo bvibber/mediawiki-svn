@@ -13,6 +13,10 @@
  */
 class MostlinkedTemplatesPage extends QueryPage {
 
+	function __construct() {
+			SpecialPage::__construct( 'MostlinkedTemplatesPage' );
+	}
+
 	/**
 	 * Name of the report
 	 *
