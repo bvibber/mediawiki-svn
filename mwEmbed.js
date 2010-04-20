@@ -1638,20 +1638,20 @@ var MW_EMBED_VERSION = '1.1e';
 			return true;
 		}
 		// Set the style to true ( to not request it again )
-		mw.style[ cssClassName ] = true;		
-		mw.log(" Style: " + cssClassName + ' has been set' );
+		mw.style[ cssClassName ] = true;
 		// Wait for the DOM to be ready before adding in the css:
 		mw.ready( function() {
-			$j( 'head' ).append(
-				$j( '<style/>' )
-				.attr( {
-					'type' : 'text/css',
-					'media': 'all'
-				})
-				.text(
-					cssString
-				)
-			);
+			mw.log('Adding style:' + cssClassName +" to dom");
+			var styleNode = document.createElement('style');
+			styleNode.type = "text/css";
+			// Use cssText or createTextNode depending on browser: 
+			if( ( window.attachEvent && !window.opera ) ) {
+				styleNode.styleSheet.cssText = cssString;
+			} else {
+				var styleText = document.createTextNode( cssString );
+				styleNode.appendChild( styleText );
+			}
+			$j( 'head' ).append( styleNode );		
 		} );
 	};
 	

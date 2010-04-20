@@ -138,7 +138,7 @@ mw.addDOMReadyHook( function() {
 						'height' : 32,
 						'position': 'absolute',
 						'top' : pos.top + 30,
-						'left' : pos.left + 30, 
+						'left' : pos.left + 30
 					})						
 				)
 				//$j( element ).hide();
