@@ -15,7 +15,10 @@
  */
 class UnwatchedpagesPage extends QueryPage {
 
-	function getName() { return 'Unwatchedpages'; }
+	function __construct() {
+		SpecialPage::__construct( 'Unwatchedpages' );
+	}
+	
 	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
@@ -40,6 +43,7 @@ class UnwatchedpagesPage extends QueryPage {
 	
 	function getOrderFields() {
 		return array( 'page_namespace', 'page_title' );
+	}
 
 	function formatResult( $skin, $result ) {
 		global $wgContLang;
@@ -60,20 +64,4 @@ class UnwatchedpagesPage extends QueryPage {
 
 		return wfSpecialList( $plink, $wlink );
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialUnwatchedpages() {
-	global $wgUser, $wgOut;
-
-	if ( ! $wgUser->isAllowed( 'unwatchedpages' ) )
-		return $wgOut->permissionRequired( 'unwatchedpages' );
-
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new UnwatchedpagesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

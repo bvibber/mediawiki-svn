@@ -11,9 +11,10 @@
  */
 class LonelyPagesPage extends PageQueryPage {
 
-	function getName() {
-		return "Lonelypages";
+	function __construct() {
+		SpecialPage::__construct( 'Lonelypages' );
 	}
+	
 	function getPageHeader() {
 		return wfMsgExt( 'lonelypagestext', array( 'parse' ) );
 	}
@@ -59,15 +60,4 @@ class LonelyPagesPage extends PageQueryPage {
 		else
 			return array( 'page_title' );
 	}
-}
-
-/**
- * Constructor
- */
-function wfSpecialLonelypages() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$lpp = new LonelyPagesPage();
-
-	return $lpp->doQuery( $offset, $limit );
 }

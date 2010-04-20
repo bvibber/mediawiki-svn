@@ -13,10 +13,10 @@ class UnusedimagesPage extends ImageQueryPage {
 	// inexpensive?
 	function isExpensive() { return true; }
 
-	function getName() {
-		return 'Unusedimages';
+	function __construct() {
+		SpecialPage::__construct( 'Unusedimages' );
 	}
-
+	
 	function sortDescending() {
 		return false;
 	}
@@ -61,14 +61,4 @@ class UnusedimagesPage extends ImageQueryPage {
 		return wfMsgExt( 'unusedimagestext', array( 'parse' ) );
 	}
 
-}
-
-/**
- * Entry point
- */
-function wfSpecialUnusedimages() {
-	list( $limit, $offset ) = wfCheckLimits();
-	$uip = new UnusedimagesPage();
-
-	return $uip->doQuery( $offset, $limit );
 }

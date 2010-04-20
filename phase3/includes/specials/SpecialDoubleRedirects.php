@@ -11,10 +11,10 @@
  */
 class DoubleRedirectsPage extends PageQueryPage {
 
-	function getName() {
-		return 'DoubleRedirects';
+	function __construct() {
+		SpecialPage::__construct( 'DoubleRedirects' );
 	}
-
+	
 	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
@@ -107,16 +107,4 @@ class DoubleRedirectsPage extends PageQueryPage {
 
 		return( "{$linkA} {$edit} {$arr} {$linkB} {$arr} {$linkC}" );
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialDoubleRedirects() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$sdr = new DoubleRedirectsPage();
-
-	return $sdr->doQuery( $offset, $limit );
-
 }

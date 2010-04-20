@@ -13,7 +13,10 @@
  */
 class UnusedtemplatesPage extends QueryPage {
 
-	function getName() { return( 'Unusedtemplates' ); }
+	function __construct() {
+		SpecialPage::__construct( 'Unusedtemplates' );
+	}
+	
 	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
@@ -57,8 +60,3 @@ class UnusedtemplatesPage extends QueryPage {
 
 }
 
-function wfSpecialUnusedtemplates() {
-	list( $limit, $offset ) = wfCheckLimits();
-	$utp = new UnusedtemplatesPage();
-	$utp->doQuery( $offset, $limit );
-}

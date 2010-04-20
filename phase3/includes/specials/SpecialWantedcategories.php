@@ -15,8 +15,8 @@
  */
 class WantedCategoriesPage extends WantedQueryPage {
 
-	function getName() {
-		return 'Wantedcategories';
+	function __construct() {
+		SpecialPage::__construct( 'Wantedcategories' );
 	}
 
 	function getQueryInfo() {
@@ -53,15 +53,4 @@ class WantedCategoriesPage extends WantedQueryPage {
 			$wgLang->formatNum( $result->value ) );
 		return wfSpecialList($plink, $nlinks);
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialWantedCategories() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new WantedCategoriesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

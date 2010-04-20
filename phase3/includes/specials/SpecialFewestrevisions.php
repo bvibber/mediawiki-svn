@@ -12,10 +12,10 @@
  */
 class FewestrevisionsPage extends QueryPage {
 
-	function getName() {
-		return 'Fewestrevisions';
+	function __construct() {
+		SpecialPage::__construct( 'Fewestrevisions' );
 	}
-
+	
 	function isExpensive() {
 		return true;
 	}
@@ -76,10 +76,4 @@ class FewestrevisionsPage extends QueryPage {
 
 		return wfSpecialList( $plink, $nlink );
 	}
-}
-
-function wfSpecialFewestrevisions() {
-	list( $limit, $offset ) = wfCheckLimits();
-	$frp = new FewestrevisionsPage();
-	$frp->doQuery( $offset, $limit );
 }

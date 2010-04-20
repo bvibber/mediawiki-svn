@@ -84,14 +84,14 @@ class SpecialPage {
 	 */
 	static public $mList = array(
 		# Maintenance Reports
-		'BrokenRedirects'           => array( 'SpecialPage', 'BrokenRedirects' ),
-		'Deadendpages'              => array( 'SpecialPage', 'Deadendpages' ),
-		'DoubleRedirects'           => array( 'SpecialPage', 'DoubleRedirects' ),
-		'Longpages'                 => array( 'SpecialPage', 'Longpages' ),
-		'Ancientpages'              => array( 'SpecialPage', 'Ancientpages' ),
-		'Lonelypages'               => array( 'SpecialPage', 'Lonelypages' ),
-		'Fewestrevisions'           => array( 'SpecialPage', 'Fewestrevisions' ),
-		'Withoutinterwiki'          => array( 'SpecialPage', 'Withoutinterwiki' ),
+		'BrokenRedirects'           => array( 'BrokenRedirectsPage' ),
+		'Deadendpages'              => array( 'DeadendpagesPage' ),
+		'DoubleRedirects'           => array( 'DoubleRedirectsPage' ),
+		'Longpages'                 => array( 'LongpagesPage' ),
+		'Ancientpages'              => array( 'AncientpagesPage' ),
+		'Lonelypages'               => array( 'LonelypagesPage' ),
+		'Fewestrevisions'           => array( 'FewestrevisionsPage' ),
+		'Withoutinterwiki'          => array( 'WithoutinterwikiPage' ),
 		'Protectedpages'            => array( 'SpecialPage', 'Protectedpages' ),
 		'Protectedtitles'           => array( 'SpecialPage', 'Protectedtitles' ),
 		'Shortpages'                => array( 'SpecialPage', 'Shortpages' ),
@@ -161,12 +161,12 @@ class SpecialPage {
 		'Randomredirect'            => 'SpecialRandomredirect',
 
 		# High use pages
-		'Mostlinkedcategories'      => array( 'SpecialPage', 'Mostlinkedcategories' ),
-		'Mostimages'                => array( 'SpecialPage', 'Mostimages' ),
-		'Mostlinked'                => array( 'SpecialPage', 'Mostlinked' ),
-		'Mostlinkedtemplates'       => array( 'SpecialPage', 'Mostlinkedtemplates' ),
-		'Mostcategories'            => array( 'SpecialPage', 'Mostcategories' ),
-		'Mostrevisions'             => array( 'SpecialPage', 'Mostrevisions' ),
+		'Mostlinkedcategories'      => array( 'MostlinkedCategoriesPage' ),
+		'Mostimages'                => array( 'MostimagesPage' ),
+		'Mostlinked'                => array( 'MostlinkedPage' ),
+		'Mostlinkedtemplates'       => array( 'MostlinkedTemplatesPage' ),
+		'Mostcategories'            => array( 'MostcategoriesPage' ),
+		'Mostrevisions'             => array( 'MostrevisionsPage' ),
 
 		# Page tools
 		'Export'                    => 'SpecialExport',
@@ -215,7 +215,7 @@ class SpecialPage {
 		self::$mListInitialised = true;
 
 		if( !$wgDisableCounters ) {
-			self::$mList['Popularpages'] = array( 'SpecialPage', 'Popularpages' );
+			self::$mList['Popularpages'] = array( 'PopularpagesPage' );
 		}
 
 		if( !$wgDisableInternalSearch ) {

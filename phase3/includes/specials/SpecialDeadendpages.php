@@ -9,8 +9,8 @@
  */
 class DeadendPagesPage extends PageQueryPage {
 
-	function getName() {
-		return "Deadendpages";
+	function __construct() {
+		SpecialPage::__construct( 'Deadendpages' );
 	}
 
 	function getPageHeader() {
@@ -61,16 +61,4 @@ class DeadendPagesPage extends PageQueryPage {
 		else
 			return array( 'page_title' );
 	}
-}
-
-/**
- * Constructor
- */
-function wfSpecialDeadendpages() {
-
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$depp = new DeadendPagesPage();
-
-	return $depp->doQuery( $offset, $limit );
 }

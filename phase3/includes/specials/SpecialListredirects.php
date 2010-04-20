@@ -14,7 +14,10 @@
  */
 class ListredirectsPage extends QueryPage {
 
-	function getName() { return 'Listredirects'; }
+	function __construct() {
+		SpecialPage::__construct( 'Listredirects' );
+	}
+	
 	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
@@ -77,10 +80,4 @@ class ListredirectsPage extends QueryPage {
 			return "<s>$rd_link</s>";
 		}
 	}
-}
-
-function wfSpecialListredirects() {
-	list( $limit, $offset ) = wfCheckLimits();
-	$lrp = new ListredirectsPage();
-	$lrp->doQuery( $offset, $limit );
 }

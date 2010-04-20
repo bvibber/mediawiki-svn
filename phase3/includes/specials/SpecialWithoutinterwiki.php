@@ -13,8 +13,18 @@
 class WithoutInterwikiPage extends PageQueryPage {
 	private $prefix = '';
 
-	function getName() {
-		return 'Withoutinterwiki';
+	function __construct() {
+		SpecialPage::__construct( 'Withoutinterwiki' );
+	}
+	
+	function execute( $par ) {
+		global $wgRequest, $wgContLang, $wgCapitalLinks;
+		$prefix = $wgRequest->getVal( 'prefix', $par );
+		if( $wgCapitalLinks ) {
+			$prefix = $wgContLang->ucfirst( $prefix );
+		}
+		$this->prefix = $prefix;
+		parent::execute( $par );
 	}
 
 	function getPageHeader() {
@@ -85,7 +95,4 @@ function wfSpecialWithoutinterwiki() {
 	list( $limit, $offset ) = wfCheckLimits();
 	// Only searching the mainspace anyway
 	$prefix = Title::capitalize( $wgRequest->getVal( 'prefix' ), NS_MAIN );
-	$wip = new WithoutInterwikiPage();
-	$wip->setPrefix( $prefix );
-	$wip->doQuery( $offset, $limit );
 }

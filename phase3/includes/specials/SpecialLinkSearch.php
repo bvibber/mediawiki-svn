@@ -11,68 +11,6 @@
  * Special:LinkSearch to search the external-links table.
  * @ingroup SpecialPage
  */
-
-function wfSpecialLinkSearch( $par ) {
-
-	list( $limit, $offset ) = wfCheckLimits();
-	global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode, $wgLang;
-	$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
-	$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', null );
-
-	$protocols_list[] = '';
-	foreach( $wgUrlProtocols as $prot ) {
-		$protocols_list[] = $prot;
-	}
-
-	$target2 = $target;
-	$protocol = '';
-	$pr_sl = strpos($target2, '//' );
-	$pr_cl = strpos($target2, ':' );
-	if ( $pr_sl ) {
-		// For protocols with '//'
-		$protocol = substr( $target2, 0 , $pr_sl+2 );
-		$target2 = substr( $target2, $pr_sl+2 );
-	} elseif ( !$pr_sl && $pr_cl ) {
-		// For protocols without '//' like 'mailto:'
-		$protocol = substr( $target2, 0 , $pr_cl+1 );
-		$target2 = substr( $target2, $pr_cl+1 );
-	} elseif ( $protocol == '' && $target2 != '' ) {
-		// default
-		$protocol = 'http://';
-	}
-	if ( !in_array( $protocol, $protocols_list ) ) {
-		// unsupported protocol, show original search request
-		$target2 = $target;
-		$protocol = '';
-	}
-
-	$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
-
-	$wgOut->addWikiText( wfMsg( 'linksearch-text', '<nowiki>' . $wgLang->commaList( $wgUrlProtocols) . '</nowiki>' ) );
-	$s =	Xml::openElement( 'form', array( 'id' => 'mw-linksearch-form', 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
-		Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
-		'<fieldset>' .
-		Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
-		Xml::inputLabel( wfMsg( 'linksearch-pat' ), 'target', 'target', 50, $target ) . ' ';
-	if ( !$wgMiserMode ) {
-		$s .= Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) . ' ' .
-			XML::namespaceSelector( $namespace, '' );
-	}
-	$s .=	Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
-		'</fieldset>' .
-		Xml::closeElement( 'form' );
-	$wgOut->addHTML( $s );
-
-	if( $target != '' ) {
-		$searcher = new LinkSearchPage;
-		$searcher->setParams( array( 
-			'query' => $target2, 
-			'namespace' => $namespace, 
-			'protocol' => $protocol ) );
-		$searcher->doQuery( $offset, $limit );
-	}
-}
-
 class LinkSearchPage extends QueryPage {
 	function setParams( $params ) {
 		$this->mQuery = $params['query'];
@@ -80,8 +18,68 @@ class LinkSearchPage extends QueryPage {
 		$this->mProt = $params['protocol'];
 	}
 
-	function getName() {
-		return 'LinkSearch';
+	function __construct() {
+		SpecialPage::__construct( 'LinkSearch' );
+	}
+	
+	function execute( $par ) {
+		global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode, $wgLang, $wgScript;
+		$target = $wgRequest->getVal( 'target', $par );
+		$namespace = $wgRequest->getIntorNull( 'namespace', null );
+
+		$protocols_list[] = '';
+		foreach( $wgUrlProtocols as $prot ) {
+			$protocols_list[] = $prot;
+		}
+
+		$target2 = $target;
+		$protocol = '';
+		$pr_sl = strpos($target2, '//' );
+		$pr_cl = strpos($target2, ':' );
+		if ( $pr_sl ) {
+			// For protocols with '//'
+			$protocol = substr( $target2, 0 , $pr_sl+2 );
+			$target2 = substr( $target2, $pr_sl+2 );
+		} elseif ( !$pr_sl && $pr_cl ) {
+			// For protocols without '//' like 'mailto:'
+			$protocol = substr( $target2, 0 , $pr_cl+1 );
+			$target2 = substr( $target2, $pr_cl+1 );
+		} elseif ( $protocol == '' && $target2 != '' ) {
+			// default
+			$protocol = 'http://';
+		}
+		if ( !in_array( $protocol, $protocols_list ) ) {
+			// unsupported protocol, show original search request
+			$target2 = $target;
+			$protocol = '';
+		}
+
+		$self = $this->getTitle();
+
+		$wgOut->addWikiText( wfMsg( 'linksearch-text', '<nowiki>' . $wgLang->commaList( $wgUrlProtocols ) . '</nowiki>' ) );
+		$s = Xml::openElement( 'form', array( 'id' => 'mw-linksearch-form', 'method' => 'get', 'action' => $wgScript ) ) .
+				Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
+				'<fieldset>' .
+				Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
+				Xml::inputLabel( wfMsg( 'linksearch-pat' ), 'target', 'target', 50, $target ) . ' ';
+		if ( !$wgMiserMode ) {
+			$s .= Xml::label( wfMsg( 'linksearch-ns' ), 'namespace' ) . ' ' .
+					Xml::namespaceSelector( $namespace, '' );
+		}
+		$s .= Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
+				'</fieldset>' .
+				Xml::closeElement( 'form' );
+		$wgOut->addHTML( $s );
+
+		if( $target != '' ) {
+			$this->setParams( array( 
+				'query' => $target2,
+				'namespace' => $namespace,
+				'protocol' => $protocol ) );
+			parent::execute( $par );
+			if( $this->mMungedQuery === false )
+			   $wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
+		}
 	}
 
 	/**
@@ -122,9 +120,13 @@ class LinkSearchPage extends QueryPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		// strip everything past first wildcard, so that
 		// index-based-only lookup would be done
-		list( $munged, $clause ) = self::mungeQuery( $this->mQuery,
-					$this->mProt );
-		$stripped = substr( $munged, 0, strpos( $munged, '%' ) + 1 );
+		list( $this->mMungedQuery, $clause ) = self::mungeQuery(
+				$this->mQuery, $this->mProt );
+		if( $this->mMungedQuery === false )
+			// Invalid query; return no results
+			return array( 'tables' => 'page', 'fields' => 'page_id', 'conds' => '0=1' );
+		
+		$stripped = substr( $this->mMungedQuery, 0, strpos( $this->mMungedQuery, '%' ) + 1 );
 		$encSearch = $dbr->addQuotes( $stripped );
 		$retval = array (
 			'tables' => array ( 'page', 'externallinks' ),
@@ -151,28 +153,12 @@ class LinkSearchPage extends QueryPage {
 	}
 
 	/**
-	 * Override to check query validity.
-	 */
-	function doQuery( $offset, $limit, $shownavigation=true ) {
-		global $wgOut;
-		list( $this->mMungedQuery, $clause ) = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
-		if( $this->mMungedQuery === false ) {
-			$wgOut->addWikiText( wfMsg( 'linksearch-error' ) );
-		} else {
-			// For debugging
-			// Generates invalid xhtml with patterns that contain --
-			//$wgOut->addHTML( "\n<!-- " . htmlspecialchars( $this->mMungedQuery ) . " -->\n" );
-			parent::doQuery( $offset, $limit, $shownavigation );
-		}
-	}
-
-	/**
 	 * Override to squash the ORDER BY.
 	 * We do a truncated index search, so the optimizer won't trust
 	 * it as good enough for optimizing sort. The implicit ordering
 	 * from the scan will usually do well enough for our needs.
 	 */
-	function getOrder() {
-		return '';
+	function getOrderFields() {
+		return array();
 	}
 }

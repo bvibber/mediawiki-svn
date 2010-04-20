@@ -12,10 +12,10 @@
 class BrokenRedirectsPage extends PageQueryPage {
 	var $targets = array();
 
-	function getName() {
-		return 'BrokenRedirects';
+	function __construct() {
+		SpecialPage::__construct( 'BrokenRedirects' );
 	}
-
+	
 	// inexpensive?
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
@@ -86,15 +86,4 @@ class BrokenRedirectsPage extends PageQueryPage {
 		$out .= " {$arr} {$to}";
 		return $out;
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialBrokenRedirects() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$sbr = new BrokenRedirectsPage();
-
-	return $sbr->doQuery( $offset, $limit );
 }

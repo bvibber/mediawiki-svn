@@ -16,8 +16,8 @@
  */
 class WantedTemplatesPage extends WantedQueryPage {
 
-	function getName() {
-		return 'Wantedtemplates';
+	function __construct() {
+		SpecialPage::__construct( 'Wantedtemplates' );
 	}
 
 	function getQueryInfo() {
@@ -35,15 +35,4 @@ class WantedTemplatesPage extends WantedQueryPage {
 						'page_title = tl_title' ) ) )
 		);
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialWantedTemplates() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new WantedTemplatesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

@@ -15,8 +15,8 @@
  */
 class WantedFilesPage extends WantedQueryPage {
 
-	function getName() {
-		return 'Wantedfiles';
+	function __construct() {
+		SpecialPage::__construct( 'Wantedfiles' );
 	}
 
 	function getQueryInfo() {
@@ -32,15 +32,4 @@ class WantedFilesPage extends WantedQueryPage {
 					'page_namespace' => NS_FILE ) ) )
 		);
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialWantedFiles() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new WantedFilesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

@@ -14,7 +14,10 @@
  */
 class MostcategoriesPage extends QueryPage {
 
-	function getName() { return 'Mostcategories'; }
+	function __construct() {
+		SpecialPage::__construct( 'Mostcategories' );
+	}
+	
 	function isExpensive() { return true; }
 	function isSyndicated() { return false; }
 
@@ -40,15 +43,4 @@ class MostcategoriesPage extends QueryPage {
 		$link = $skin->link( $title );
 		return wfSpecialList( $link, $count );
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialMostcategories() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$wpp = new MostcategoriesPage();
-
-	$wpp->doQuery( $offset, $limit );
 }

@@ -14,11 +14,10 @@
 class UncategorizedTemplatesPage extends UncategorizedPagesPage {
 
 	var $requestedNamespace = NS_TEMPLATE;
-
-	public function getName() {
-		return 'Uncategorizedtemplates';
+	
+	public function __construct() {
+		SpecialPage::__construct( 'Uncategorizedtemplates' );
 	}
-
 }
 
 /**

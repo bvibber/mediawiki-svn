@@ -11,8 +11,8 @@
  */
 class ShortPagesPage extends QueryPage {
 
-	function getName() {
-		return 'Shortpages';
+	function __construct() {
+		SpecialPage::__construct( 'Shortpages' );
 	}
 
 	// inexpensive?
@@ -40,12 +40,7 @@ class ShortPagesPage extends QueryPage {
 	}
 
 	function getOrderFields() {
-		// For some crazy reason ordering by a constant
-		// causes a filesort
-		if( count( MWNamespace::getContentNamespaces() ) > 1 )
-			return array( 'page_namespace', 'page_title' );
-		else
-			return array( 'page_title' );
+		return array( 'page_len' );
 	}
 
 	function preprocessResults( $db, $res ) {
@@ -88,15 +83,4 @@ class ShortPagesPage extends QueryPage {
 				? "<s>({$hlink}) {$dm}{$plink} {$dm}[{$size}]</s>"
 				: "({$hlink}) {$dm}{$plink} {$dm}[{$size}]";
 	}
-}
-
-/**
- * constructor
- */
-function wfSpecialShortpages() {
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$spp = new ShortPagesPage();
-
-	return $spp->doQuery( $offset, $limit );
 }

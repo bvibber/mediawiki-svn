@@ -11,13 +11,25 @@
 class WantedPagesPage extends WantedQueryPage {
 	var $nlinks;
 
-	function WantedPagesPage( $inc = false, $nlinks = true ) {
-		$this->setListoutput( $inc );
-		$this->nlinks = $nlinks;
+	function __construct() {
+		SpecialPage::__construct( 'Wantedpages' );
 	}
+		
+	function execute( $par ) {
+		$inc = $this->including();
 
-	function getName() {
-		return 'Wantedpages';
+		if ( $inc ) {
+			@list( $limit, $nlinks ) = explode( '/', $par, 2 );
+			$this->limit = (int)$limit;
+			// FIXME: nlinks is ignored
+			$nlinks = $nlinks === 'nlinks';
+			$this->offset = 0;
+		} else {
+			$nlinks = true;
+		}
+		$this->setListOutput( $inc );
+		$this->shownavigation = !$inc;
+		parent::execute( $par );
 	}
 
 	function getSQL() {
@@ -73,25 +85,4 @@ class WantedPagesPage extends WantedQueryPage {
 				array( &$this, &$query ) );
 		return $query;
 	} 	
-}
-
-/**
- * constructor
- */
-function wfSpecialWantedpages( $par = null, $specialPage ) {
-	$inc = $specialPage->including();
-
-	if ( $inc ) {
-		@list( $limit, $nlinks ) = explode( '/', $par, 2 );
-		$limit = (int)$limit;
-		$nlinks = $nlinks === 'nlinks';
-		$offset = 0;
-	} else {
-		list( $limit, $offset ) = wfCheckLimits();
-		$nlinks = true;
-	}
-
-	$wpp = new WantedPagesPage( $inc, $nlinks );
-
-	$wpp->doQuery( $offset, $limit, !$inc );
 }
