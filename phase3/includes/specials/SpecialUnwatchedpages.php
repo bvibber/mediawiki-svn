@@ -22,8 +22,7 @@ class UnwatchedpagesPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'page', 'watchlist' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'page_namespace AS value' ),
 			'conds' => array ( 'wl_title IS NULL',

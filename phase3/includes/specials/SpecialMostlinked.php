@@ -25,8 +25,7 @@ class MostlinkedPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'pagelinks', 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'pl_namespace AS namespace',
+			'fields' => array ( 'pl_namespace AS namespace',
 					'pl_title AS title',
 					'COUNT(*) AS value',
 					'page_namespace' ),

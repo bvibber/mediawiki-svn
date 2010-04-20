@@ -128,8 +128,7 @@ class DisambiguationsPage extends PageQueryPage {
 		// FIXME: What are pagelinks and p2 doing here?
 		return array (
 			'tables' => array( 'templatelinks', 'page AS p1', 'pagelinks', 'page AS p2' ),
-			'fields' => array( "'{$this->getName()}' AS type",
-					'p1.page_namespace AS namespace',
+			'fields' => array( 'p1.page_namespace AS namespace',
 					'p1.page_title AS title',
 					'pl_from AS value' ),
 			'conds' => array( $set,

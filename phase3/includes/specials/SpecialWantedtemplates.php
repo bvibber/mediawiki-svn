@@ -23,8 +23,7 @@ class WantedTemplatesPage extends WantedQueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'templatelinks', 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'tl_namespace AS namespace',
+			'fields' => array ( 'tl_namespace AS namespace',
 					'tl_title AS title',
 					'COUNT(*) AS value' ),
 			'conds' => array ( 'page_title IS NULL',

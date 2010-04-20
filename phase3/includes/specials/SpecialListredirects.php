@@ -22,8 +22,7 @@ class ListredirectsPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title' ),
 			'conds' => array ( 'page_is_redirect' => 1 )
 		);

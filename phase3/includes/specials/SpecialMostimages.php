@@ -21,8 +21,7 @@ class MostimagesPage extends ImageQueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'imagelinks' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					"'" . NS_FILE . "' AS namespace",
+			'fields' => array ( "'" . NS_FILE . "' AS namespace",
 					'il_to AS title',
 					'COUNT(*) AS value' ),
 			'options' => array ( 'GROUP BY' => 'il_to',

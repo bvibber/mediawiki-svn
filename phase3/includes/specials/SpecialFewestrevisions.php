@@ -27,8 +27,7 @@ class FewestrevisionsPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'revision', 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'COUNT(*) AS value',
 					'page_is_redirect AS redirect' ),

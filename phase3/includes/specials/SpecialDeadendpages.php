@@ -38,8 +38,7 @@ class DeadendPagesPage extends PageQueryPage {
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'page', 'pagelinks' ),
-			'fields' => array( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array( 'page_namespace AS namespace',
 					'page_title AS title',
 					'page_title AS value'
 			),

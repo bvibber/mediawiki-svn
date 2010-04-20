@@ -22,8 +22,7 @@ class WantedFilesPage extends WantedQueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'imagelinks', 'page' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					"'" . NS_FILE . "' AS namespace",
+			'fields' => array ( "'" . NS_FILE . "' AS namespace",
 					'il_to AS title',
 					'COUNT(*) AS value' ),
 			'conds' => array ( 'page_title IS NULL' ),

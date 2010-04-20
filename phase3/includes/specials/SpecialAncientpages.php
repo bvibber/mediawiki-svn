@@ -21,11 +21,9 @@ class AncientPagesPage extends QueryPage {
 	function isSyndicated() { return false; }
 
 	function getQueryInfo() {
-		// FIXME standardize 'name' AS type ?
 		return array(
 			'tables' => array( 'page', 'revision' ),
-			'fields' => array( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array( 'page_namespace AS namespace',
 					'page_title AS title',
 					'rev_timestamp AS value' ),
 			'conds' => array( 'page_namespace' => MWNamespace::getContentNamespaces(),

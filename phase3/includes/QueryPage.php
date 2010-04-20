@@ -114,8 +114,8 @@ abstract class QueryPage {
 	 *    options => options
 	 *    join_conds => JOIN conditions
 	 * 
-	 * Note that the query itself should return the following four columns:
-	 * 'type' (your special page's name), 'namespace', 'title', and 'value'
+	 * Note that the query itself should return the following three columns:
+	 * 'namespace', 'title', and 'value'
 	 * *in that order*. 'value' is used for sorting.
 	 *
 	 * These may be stored in the querycache table for expensive queries,
@@ -279,7 +279,7 @@ abstract class QueryPage {
 					$value = 0;
 				}
 				
-				$vals[] = array('qc_type' => $row->type,
+				$vals[] = array('qc_type' => $this->getName(),
 						'qc_namespace' => $row->namespace,
 						'qc_title' => $row->title,
 						'qc_value' => $value);
@@ -400,7 +400,7 @@ abstract class QueryPage {
 			if( !$this->listoutput ) {
 
 				# Fetch the timestamp of this update
-				$tRes = $dbr->select( 'querycache_info', array( 'qci_timestamp' ), array( 'qci_type' => $type ), $fname );
+				$tRes = $dbr->select( 'querycache_info', array( 'qci_timestamp' ), array( 'qci_type' => $sname ), $fname );
 				$tRow = $dbr->fetchObject( $tRes );
 
 				if( $tRow ) {

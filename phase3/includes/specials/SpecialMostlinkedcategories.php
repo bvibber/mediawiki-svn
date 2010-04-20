@@ -22,8 +22,7 @@ class MostlinkedCategoriesPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'categorylinks' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					"'" . NS_CATEGORY . "' AS namespace",
+			'fields' => array ( "'" . NS_CATEGORY . "' AS namespace",
 					'cl_to AS title',
 					'COUNT(*) AS value' ),
 			'options' => array ( 'GROUP BY' => 'cl_to' )

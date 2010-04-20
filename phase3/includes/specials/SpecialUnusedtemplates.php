@@ -21,8 +21,7 @@ class UnusedtemplatesPage extends QueryPage {
 	function getQueryInfo() {
 		return array (
 			'tables' => array ( 'page', 'templatelinks' ),
-			'fields' => array ( "'{$this->getName()}' AS type",
-					'page_namespace AS namespace',
+			'fields' => array ( 'page_namespace AS namespace',
 					'page_title AS title',
 					'0 AS value' ),
 			'conds' => array ( 'page_namespace' => NS_TEMPLATE,
