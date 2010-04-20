@@ -555,7 +555,7 @@ In caso de problemas, tu pote probar <b>{{#special:call}}/DebuG</b>",
  */
 $messages['id'] = array(
 	'call' => 'Panggilan',
-	'call-desc' => 'Buat sebuah pranala ke templat (atau halaman wiki biasa) dengan parameter. 
+	'call-desc' => 'Buat sebuah pranala ke templat (atau halaman wiki biasa) dengan parameter.
 Dapat digunakan pada baris perintah penjelajah web atau di antara teks wiki',
 	'call-text' => "Pengaya \"Panggilan\" membutuhkan sebuah halaman wiki dan parameter opsional untuk halaman tersebut untuk digunakan sebagai argumen.
 
