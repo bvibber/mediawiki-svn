@@ -174,7 +174,7 @@ class SpecialStory extends IncludableSpecialPage {
 			) )
 		);
 		
-		// FIXME: this is a temporary solution untill the SkinTemplateNavigation on special pages issue is fixed.
+		// FIXME: this button is a temporary solution untill the SkinTemplateNavigation on special pages issue is fixed.
 		if ( $wgUser->isAllowed( 'storyreview' ) ) {
 			$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
 			$editUrl = $this->getTitle( $story->story_title )->getLocalURL( 'action=edit' );
@@ -189,8 +189,6 @@ class SpecialStory extends IncludableSpecialPage {
 	 * Outputs a form to edit the story with. Code based on <storysubmission>.
 	 * 
 	 * @param $story
-	 * 
-	 * TODO: Fix the validation for the story title
 	 */
 	private function showStoryForm( $story ) {
 		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath;

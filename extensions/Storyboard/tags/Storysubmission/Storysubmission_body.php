@@ -45,24 +45,34 @@ class TagStorysubmission {
 	 * 
 	 * @param Parser $parser
 	 * @param array $args
-	 * @return HTML
 	 * 
-	 * TODO: Fix the validation for the story title
+	 * @return HTML
 	 */
 	private static function getFrom( Parser $parser, array $args ) {
-		global $wgUser, $wgStyleVersion, $wgJsMimeType, $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
+		global $wgUser, $wgStyleVersion, $wgJsMimeType, $wgScriptPath, $wgStylePath;
+		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
 		$parser->getOutput()->addHeadItem(
 			<<<EOT
 			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
 			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"></script>
+			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
 			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType"> /*<![CDATA[*/
-			addOnloadHook( function() { 
-				document.getElementById( 'storysubmission-button' ).disabled = true;
-			} );
-			/*]]>*/ </script>			
+<script type="$wgJsMimeType"> /*<![CDATA[*/
+addOnloadHook( function() { 
+	document.getElementById( 'storysubmission-button' ).disabled = true;
+} );
+jQuery(document).ready(function() {
+	jQuery("#storyform").validate({
+		messages: {
+			storytitle: {
+				remote: jQuery.validator.format("<b>{0}</b> is already taken, please choose a different title.") // TODO: i18n
+			}
+		}
+	});		
+});	
+/*]]>*/ </script>			
 EOT
 		);
 		
@@ -149,9 +159,10 @@ EOT
 				'text',
 				array(
 					'size' => $fieldSize,
-					'class' => 'required',
+					'class' => 'required storytitle',
 					'maxlength' => 255,
-					'minlength' => 2
+					'minlength' => 2,
+					'remote' => "$wgScriptPath/api.php?format=json&action=storyexists"
 				)
 			) . '</td></tr>';
 		
@@ -192,6 +203,7 @@ EOT
 		
 		if ( !array_key_exists( 'language', $args )
 			|| !array_key_exists( $args['language'], Language::getLanguageNames() ) ) {
+				global $wgContLanguageCode;
 			$args['language'] = $wgContLanguageCode;
 		}
 
@@ -211,7 +223,5 @@ EOT
 			$formBody
 		);
 	}
-	
-
 	
 }
