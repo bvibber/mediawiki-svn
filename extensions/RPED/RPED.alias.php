@@ -12,3 +12,7 @@ $aliases['en'] = array(
 	'RPED' => array( 'RPED' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'RPED'   => array( 'ربيد' ),
+);
