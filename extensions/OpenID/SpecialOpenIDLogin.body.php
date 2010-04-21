@@ -821,6 +821,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function setReturnTo( $returnto, $returntoquery ) {
+		$this->setupSession();
 		$_SESSION['openid_consumer_returnto'] = $returnto;
 		$_SESSION['openid_consumer_returntoquery'] = $returntoquery;
 	}
