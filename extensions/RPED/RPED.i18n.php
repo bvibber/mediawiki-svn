@@ -63,6 +63,14 @@ $messages['gl'] = array(
 	'rped-desc' => 'Crea ligazóns cara á Wikipedia se a páxina non existe no wiki local pero si na Wikipedia',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'rped' => 'Erkännig vu främde Netzsyte',
+	'rped-desc' => 'Leitet Wikilinks uf d Wikipedia, wänn die Syte nit im lokale Wiki git, derfir aber in dr Wikipedia',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

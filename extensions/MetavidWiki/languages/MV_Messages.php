@@ -7675,7 +7675,11 @@ opura a peul vorèj <a href="$3">Gionté ël fluss</a>.',
 	'mv_remove_reason' => 'Rason ëd la scancelassion:',
 	'mv_stream_delete_warrning' => "'''Gavand cost fluss as gavran ëdcò $1 {{PLURAL:$1|tòch|tòch}} dij metadàit assossià'''<br />",
 	'mv_label_stream_type' => 'Sòrt ëd fluss',
-	'mv_metavid_file' => 'File esistent dzora al sërvent',
+	'mv_metavid_file' => 'Archivi esistent an sël servent',
+	'mv_metavid_live' => 'Amposté ël fluss dal viv',
+	'mv_upload_file' => "Carié l'archivi",
+	'mv_external_file' => 'Archivi estern',
+	'mv_tool_search' => 'Sërca',
 );
 
 /** Pashto (پښتو)

@@ -226,7 +226,7 @@ $messages['ko'] = array(
 	'categoryfeed-desc' => '최근 바뀜 피드에서 일부 정보를 빼내, 문서 내부 버전을 작성합니다. 위키뉴스에 유용한 기능입니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

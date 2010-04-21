@@ -14,5 +14,6 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'RPED'   => array( 'ربيد' ),
+	'RPED' => array( 'ربيد' ),
 );
+

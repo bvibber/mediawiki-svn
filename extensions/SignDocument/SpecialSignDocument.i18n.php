@@ -628,6 +628,7 @@ $messages['br'] = array(
 	'sign-sigadmin-opensuccess' => 'Gweredekaet eo bet an dilesadur.',
 	'sign-viewsignatures' => 'gwelet ar sinadurioù',
 	'sign-closed' => 'serr',
+	'sign-error-closed' => 'Diweredekaet eo sinadur an teul-mañ evit poent.',
 	'sig-anonymous' => "''Dizanv''",
 	'sig-private' => "''Prevez''",
 	'sign-sigdetails' => 'Munudoù ar sinadur',

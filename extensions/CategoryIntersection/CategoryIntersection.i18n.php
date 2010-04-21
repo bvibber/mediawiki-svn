@@ -71,6 +71,7 @@ $messages['be-tarask'] = array(
 	'categoryintersection-desc' => 'Падтрымлівае табліцу з хэш-значэньнямі для [[Special:CategoryIntersection|перасячэньня катэгорыяў]] на старонцы',
 	'categoryintersection-doit' => 'Сьпіс старонак ва ўсіх гэтых катэгорыях',
 	'categoryintersection-maxcategories' => 'Максымальная дазволеная колькасьць катэгорыяў для перасячэньня — $1.',
+	'categoryintersection-mincategories' => 'Вам неабходна уключыць хаця б дзьве катэгорыі.',
 	'categoryintersection-results' => 'Пошук даў $1 {{PLURAL:$1|вынік|вынікі|вынікаў}}.',
 );
 
@@ -151,6 +152,7 @@ $messages['dsb'] = array(
 	'categoryintersection-desc' => 'Wótwardujo tabelu z hašowymi gódnatami za [[Special:CategoryIntersection|zgromadne młogosći kategorijow]] w boku',
 	'categoryintersection-doit' => 'Boki w toś tych kategorijach zwobrazniś',
 	'categoryintersection-maxcategories' => 'Maksimalna dowólona licba kategorijow za zgromadne młogosći jo $1.',
+	'categoryintersection-mincategories' => 'Musyš nanejmjenjej dwě kategoriji zapśimjeś.',
 	'categoryintersection-results' => 'Pytanje jo $1 {{PLURAL:$1|wuslědk|wuslědka|wuslědki|wuslědkow}} wróśíło.',
 );
 
@@ -211,6 +213,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author Verdy p
  */
@@ -219,6 +222,7 @@ $messages['fr'] = array(
 	'categoryintersection-desc' => 'Maintient une table de valeurs de hachage permettant de déterminer les [[Special:CategoryIntersection|intersections de catégories]] au sein d’une même page',
 	'categoryintersection-doit' => 'Liste les pages dans toutes ces catégories',
 	'categoryintersection-maxcategories' => 'Le nombre de catégories en intersection ne peut pas dépasser le maximum de $1.',
+	'categoryintersection-mincategories' => 'Vous devez inclure au moins deux catégories.',
 	'categoryintersection-results' => 'La recherche a retourné $1 résultat{{PLURAL:$1||s}}.',
 );
 
@@ -231,6 +235,7 @@ $messages['gl'] = array(
 	'categoryintersection-desc' => 'Mantén unha táboa cos valores hash para as [[Special:CategoryIntersection|interseccións das categorías]] dentro dunha páxina',
 	'categoryintersection-doit' => 'Poñer as páxinas en todas estas categorías',
 	'categoryintersection-maxcategories' => 'O número máximo de interseccións de categorías é de $1.',
+	'categoryintersection-mincategories' => 'Debe incluír, como mínimo, dúas categorías.',
 	'categoryintersection-results' => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
@@ -242,6 +247,7 @@ $messages['gsw'] = array(
 	'categoryintersection-desc' => 'E Tabälle pfläge mit Hashwärt fir d [[Special:CategoryIntersection|Kategorie-Schnittmängisuechi]]',
 	'categoryintersection-doit' => 'Alli Syten in däre Schnittmängi aazeige',
 	'categoryintersection-maxcategories' => 'Di maximal Aazahl vu Kategorie fir Schnittmängine isch $1.',
+	'categoryintersection-mincategories' => 'Du muesch zmindescht zwo Kategorie aagee.',
 	'categoryintersection-results' => 'D Suechi het $1 {{PLURAL:$1|Träffer|Träffer}} gee.',
 );
 
@@ -284,6 +290,7 @@ $messages['hsb'] = array(
 	'categoryintersection-desc' => 'Wothladuje tabelu z hašowymi hódnotami za [[Special:CategoryIntersection|kategorijowe prěčišća]] znutřka strony',
 	'categoryintersection-doit' => 'Strony we wšěch tutych kategorijach nalistować',
 	'categoryintersection-maxcategories' => 'Maksimalna dowolena ličba kategorijow za prěčnišća je $1.',
+	'categoryintersection-mincategories' => 'Dyrbiš znajmjeńša dwě kategoriji zapřijeć.',
 	'categoryintersection-results' => 'Pytanje je $1 {{PLURAL:$1|wuslědk|wuslědkaj|wuslědki|wuslědkow}} přinjesło.',
 );
 
@@ -428,6 +435,7 @@ $messages['mk'] = array(
 	'categoryintersection-desc' => 'Одржување на табела со тарабни вредности за [[Special:CategoryIntersection|пресек на категории]] во страница',
 	'categoryintersection-doit' => 'Листа на страници во сите овие категории',
 	'categoryintersection-maxcategories' => 'Максимално дозволен број на категории чиј пресек се бара е $1.',
+	'categoryintersection-mincategories' => 'Треба да вклучите барем две категории.',
 	'categoryintersection-results' => 'Пребарувањето врати $1 {{PLURAL:$1|резултат|резултати}}.',
 );
 
@@ -458,6 +466,7 @@ $messages['nl'] = array(
 	'categoryintersection-desc' => 'Houdt een tabel bij met hashwaarden voor [[Special:CategoryIntersection|categoriedoorsneden]] voor een pagina',
 	'categoryintersection-doit' => "Pagina's in al deze categorieën bekijken",
 	'categoryintersection-maxcategories' => 'Het maximale aantal categoriedoorsneden is $1.',
+	'categoryintersection-mincategories' => 'U moet tenminste twee categorieën opnemen.',
 	'categoryintersection-results' => 'De zoekopdracht heeft $1 {{PLURAL:$1|resultaat|resultaten}} opgeleverd.',
 );
 
@@ -474,12 +483,14 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'categoryintersection' => 'Kategorisnitt',
 	'categoryintersection-desc' => 'Håndtering av en tabell med nøkkelverdien til de [[Special:CategoryIntersection|kategorisnitt]] som en side er medlem i.',
 	'categoryintersection-doit' => 'Vis sider som tilhører alle disse kategoriene',
 	'categoryintersection-maxcategories' => 'Det største antall kategorier som man kan søke i er $1.',
+	'categoryintersection-mincategories' => 'Du må ta med minst to kategorier.',
 	'categoryintersection-results' => 'Søket ga $1 {{PLURAL:$1|resultat|resultater}}.',
 );
 
@@ -506,6 +517,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -513,6 +525,7 @@ $messages['pms'] = array(
 	'categoryintersection-desc' => 'A manten na tabela con i valor hash për [[Special:CategoryIntersection|Antërsession ëd categorìa]] an drinta a na pàgina',
 	'categoryintersection-doit' => 'Lista le pàgine an tute ste categorìe-sì',
 	'categoryintersection-maxcategories' => 'Ël màssim nùmer ëd categorìe antërsecante an $1.',
+	'categoryintersection-mincategories' => 'A dev anclude almanch doe categorìe.',
 	'categoryintersection-results' => "L'arserca a l'é rëndù $1 {{PLURAL:$1|arzultà|arzultà}}.",
 );
 
@@ -524,6 +537,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -532,6 +546,7 @@ $messages['pt'] = array(
 	'categoryintersection-desc' => "Mantém uma tabela com valores 'hash' para [[Special:CategoryIntersection|intersecções de categorias]] numa página",
 	'categoryintersection-doit' => 'Listar páginas em todas estas categorias',
 	'categoryintersection-maxcategories' => 'O limite máximo de categorias que se intersectam é $1.',
+	'categoryintersection-mincategories' => 'Precisa de incluir pelo menos duas categorias.',
 	'categoryintersection-results' => 'A pesquisa deu  $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
@@ -576,6 +591,7 @@ $messages['ru'] = array(
 	'categoryintersection-desc' => 'Поддерживает таблицу с хэш-значениями для [[Special:CategoryIntersection|пересечения категорий]] на странице',
 	'categoryintersection-doit' => 'Вывести страницы во всех этих категориях',
 	'categoryintersection-maxcategories' => 'Максимально допустимое число пересекающихся категорий — $1.',
+	'categoryintersection-mincategories' => 'Следует включить не менее двух категорий.',
 	'categoryintersection-results' => 'Поиск дал {{PLURAL:$1|$1 результат|$1 результата|$1 результатов}}.',
 );
 

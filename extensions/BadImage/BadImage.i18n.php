@@ -451,7 +451,7 @@ $messages['cs'] = array(
 	'badimages-log-add' => '[[$1]] byl přidán do seznamu špatných souborů',
 	'badimages-log-remove' => '[[$1]] byl odstraněn ze seznamu špatných souborů',
 	'badimages-page' => '{{ns:help}}:Seznam špatných souborů',
-	'right-badimages' => 'Aktualizovat seznam špatných souborů',
+	'right-badimages' => 'Aktualizování seznamu špatných souborů',
 );
 
 /** Danish (Dansk)

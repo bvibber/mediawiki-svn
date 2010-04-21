@@ -131,10 +131,17 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'tiff-desc' => 'Rěd za woglědowanje TIFF-datajow we wobrazowem modusu',
+	'tiff_no_metadata' => 'Njedaju se žedne metadaty z TIFF ekstrahěrowaś',
+	'tiff_page_error' => 'Bokowa licba njejo we wobcerku',
 	'tiff_too_many_embed_files' => 'Wobraz wopśimujo pśewjele zasajźonych datajow.',
+	'tiff_sourcefile_too_large' => 'Rozeznaśe žrědłoweje dataje jo pśewjelike. Miniaturny wobraz se njenapórajo.',
+	'tiff_targetfile_too_large' => 'Rozeznaśe celoweje dataje jo pśewjelike. Miniaturny wobraz so njenapórajo.',
 	'tiff_file_too_large' => 'Nagrata dataja jo pśewjelika a jo se wótpokazała.',
 	'tiff_out_of_service' => 'Nagrata dataja njedajo se pśeźěłaś. ImageMagick njestoj k dispoziciji.',
 	'tiff_too_much_meta' => 'Metadaty wužywa pśewjele ruma.',
+	'tiff_error_cached' => 'Toś ta dataja dajo se akle pó puferowańskem interwalu znowego wuceriś.',
+	'tiff_size_error' => 'K wěsći dana datajowa wjelikosć njewótpowědujo wopšawdnej datajowej wjelikosći.',
 	'tiff_script_detected' => 'Nagrata dataja wopśimujo skripty.',
 	'tiff_bad_file' => 'Nagrata dataja wopśimujo zmólki.',
 	'tiff-file-info-size' => '(bok $5, $1 × $2 pikselow, datajowa wjelikosć: $3, typ MIME: $4)',
