@@ -24,16 +24,20 @@ function booleanAsHTML( $value ) {
 }
 
 function pageAsURL( $nameSpace, $title, $usedc = true ) {
-	global
-		$wgScript;
 
-	$url = $wgScript . '?title=' . $nameSpace . ':' . htmlspecialchars( $title );
+	global $wgArticlePath;
+
+	$url = str_replace( "$1", urlencode( $nameSpace . ':' . $title ), $wgArticlePath );
+
 	if ( $usedc ) {
 		$dc = wdGetDataSetContext();
-		$url .= "&dataset=$dc";
+		if ( strpos($url , "?") ) {
+			$url .= "&dataset=$dc";
+		} else {
+			$url .= "?dataset=$dc";
+		}
 	}
 	return $url;
-		
 }
 
 function spellingAsURL( $spelling ) {
