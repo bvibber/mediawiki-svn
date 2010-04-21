@@ -819,15 +819,21 @@ class SpecialRecordAdmin extends SpecialPage {
 
 	/**
 	 * Return a list of title objects of a specified record type
+	 * - set $count to true to return just the number of results
 	 */
-	static function getRecordsByType( $type ) {
+	static function getRecordsByType( $type, $count = false ) {
 		$records = array();
 		$dbr  = wfGetDB( DB_SLAVE );
 		$tbl  = $dbr->tableName( 'templatelinks' );
 		$ty   = $dbr->addQuotes( $type );
-		$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
-		while ( $row = $dbr->fetchRow( $res ) ) $records[] = Title::newFromID( $row[0] );
-		$dbr->freeResult( $res );
+		if ( $count ) {
+			$row = $dbr->selectRow( $tbl, 'count(0)', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+			$records = $row[0];
+		} else {
+			$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+			while ( $row = $dbr->fetchRow( $res ) ) $records[] = Title::newFromID( $row[0] );
+			$dbr->freeResult( $res );
+		}
 		return $records;
 	}
 
