@@ -122,10 +122,11 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Platonides
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikieditor-highlight-preference' => 'Habilitar resalte de sintaxis al editar',
+	'wikieditor-highlight-preference' => 'Habilitar resaltado de sintaxis al editar',
 );
 
 /** Estonian (Eesti)

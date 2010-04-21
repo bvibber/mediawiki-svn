@@ -216,13 +216,14 @@ $messages['be-tarask'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author Spiritia
  * @author Stanqo
  */
 $messages['bg'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-question-browser' => 'Кой браузър използвате?',
-	'prefswitch-title-on' => 'Какво е новото?',
+	'prefswitch-title-on' => 'Какво ново?',
 	'prefswitch-title-switched-on' => 'Наслаждавайте се!',
 	'prefswitch-title-switched-off' => 'Благодаря',
 	'prefswitch-success-off' => 'Новите функции са изключени.',
@@ -768,6 +769,7 @@ Palun täida alljärgnev vabatahtlik küsitlus.',
 $messages['eu'] = array(
 	'prefswitch-survey-true' => 'Bai',
 	'prefswitch-survey-false' => 'Ez',
+	'prefswitch-survey-answer-whyoff-other' => 'Bestelako arrazoiak:',
 	'prefswitch-survey-question-browser' => 'Zer nabigatzaile erabiltzen duzu?',
 	'prefswitch-survey-answer-browser-other' => 'Beste nabigatzaile bat:',
 	'prefswitch-survey-question-os' => 'Zer sistema eragile erabiltzen duzu?',
@@ -776,6 +778,10 @@ $messages['eu'] = array(
 	'prefswitch-title-on' => 'Zer berri?',
 	'prefswitch-title-switched-on' => 'Ongi pasa!',
 	'prefswitch-title-switched-off' => 'Eskerrik asko',
+	'prefswitch-survey-intro-feedback' => 'Atsegin dugu zurekin harremanetan jartzea.
+Mesedez borondatezko beheko inkesta bete ezazu.',
+	'prefswitch-survey-intro-off' => 'Eskerrik asko gure aureka berria saiatzeagatik.
+Horiek hobetzen laguntzeko, bere ezazu, mesedez, borondatezko beheko inkesta.',
 );
 
 /** Finnish (Suomi)

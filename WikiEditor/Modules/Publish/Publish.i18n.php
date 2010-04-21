@@ -354,8 +354,10 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  */
 $messages['eu'] = array(
+	'wikieditor-publish-preference' => 'Pausoz pausoko argitarapena ahalbideratu',
 	'wikieditor-publish-button-publish' => 'Argitaratu',
 	'wikieditor-publish-button-cancel' => 'Ezeztatu',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}}era argitaratu',

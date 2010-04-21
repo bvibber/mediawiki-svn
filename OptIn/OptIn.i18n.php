@@ -1871,6 +1871,7 @@ Lisateavet kasutushõlpsuse algatuse kohta leiad meie [http://usability.wikimedi
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Kobazulo
  * @author Theklan
  */
@@ -1903,6 +1904,8 @@ Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pan
 	'optin-submit-feedback' => 'Eman feedbacka',
 	'optin-survey-yes' => 'Bai',
 	'optin-survey-no' => 'Ez',
+	'optin-survey-intro' => 'Eskerrik asko Beta bertsioa saiatzeagatik.
+Gure itxura berriari buruz pentsatzen duzuna nahi genuke jakin.  Eskertuko genuke borondatezko beheko inkesta betetzea "[[#leave|{{int:optin-submit-out}}]]" sakatu baino lehen.',
 	'optin-survey-question-likedislike' => 'Zer gustatu zaizu Betatik? Zer ez zaizu gustatu?',
 	'optin-survey-question-whyoptout' => 'Zergatik atera zara Betatik? (Mesedez galdera guztiak erantzun.)',
 	'optin-survey-answer-whyoptout-hard' => 'Erabiltzea zailegia zen.',
@@ -1928,21 +1931,6 @@ Nahi duzunean proba dezakezu berriro "{{int:optin-try}}" loturan klik eginda pan
 	'optin-survey-answer-changes-nav' => 'Gunean nabigatzea errazten du.',
 	'optin-survey-answer-changes-upload' => 'Edukiak eta artxiboen igoera hobetu.',
 	'optin-survey-answer-changes-other' => 'Bestelakoak:',
-	'optin-improvements' => '== Zer hobetu da? ==
-[[File:UsabilityNavigation.png|left|link=|Nabigazio-barra berriaren argazkia]]
-;Nabigazioa hobetua
-Nabigazio sistema berriak non zauden ikusteko eta ezer egiten ari zaren jakiteko erraztasun handiagoa ematen du, hala nola nahi duzun lekura joan eta nahi duzuna lortzeko. Goian eskuinean dagoen bilaketa kutxarekin, bilaketak egitea errazagoa izango da.
-<div style="clear:both;"></div>
-
-[[File:UsabilityToolbar.png|left|link=|Tresna-barra berriaren argazkia]]
-;Editatzeko tresna-barrako hobekuntzak
-Ikono berria eta hobetuek erabili behar duzun tresna argiago erakusten dute. Gainera, gehien erabiltzen dituzun tresnak klik batera edukiko dituzu.
-Laguntza atalak tresna hauen erabilera amankomunetarako erreferentzia azkar batera eramango zaitu .
-<div style="clear:both;"></div>
-== Gehiago jakiteko ==
-Proiektuari buruz gehiago jakiteko edo parte hartzeko, joan zaitez [http://usability.wikimedia.org Erabilgarritasun Iniziatibaren wikira].  Orri horretan gure beka, ikerketa, diseinu + garapena, eta argitaratutako berriak ikusiko dituzu.  Galderak egiteko edo zure feedback orokorra uzteko, joan zaitez gure [http://usability.wikimedia.org/wiki/Talk:Prototype prototype eztabaida orrira]. Gai zehatzak helbideratzeko, erabili atxikitutako eztabaida orria.  Akatsik aurkitzen baduzu, utzi zure iruzkina [http://usability.wikimedia.org/wiki/Talk:Releases/Babaco Babaco release eztabaida orrian] edo [https://bugzilla.wikimedia.org Bugzilla] erabiliz.
-
-Milesker eta zure berri izateko irrikan gaude!',
 );
 
 /** Persian (فارسی)
@@ -6282,6 +6270,20 @@ $messages['yi'] = array(
 	'optin-survey-answer-changes-upload' => 'פֿאַרבעסערן אינהאַלט און מעדיע אַרויפֿלאָדן.',
 	'optin-survey-answer-changes-custom' => 'דערלויבן גרעסערע באַניצער צופאַסונגען.',
 	'optin-survey-answer-changes-other' => 'אנדער:',
+	'optin-improvements2' => '== וואָס האט מען פֿאַרבעסערט? ==
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+; פֿאַרבייטערטער געצייגפאַס
+מיטן פֿאַרבייטערטן געצייגפאַס איז גרינגער צו רעדאַקטירן אַרטיקלען.
+נײַע און פֿאַרבעסערטע סימבאלן ווײַזן דײַטלעך די אַקציע פֿון יעדן סימבאל.
+פֿאַרברייטבאַרע טיילן  רעדוצירן אָנגעלאַף און האַלטן דאס ווייניג געצוצטע געצייג ווײַט איין קליק.
+;דיאַלאג
+ווען איר שאַפֿט לינקען אדער טאַבעלעס, טוט קליקן אויף א סימבאל עפֿענען א דיאַלאג קעסטל וואָס העלפֿט שאַפֿן לינקען און טאַבעלעס מיט אָנפֿילן אן איינפֿאכער פֿארעם.
+;און נאך
+מיר האבן ארײַנגעלייגט נאך פֿאַבעסערונגען למשל פֿאַרברייטערטע נאַוויגאַציע, גראַדירטע טאַבן, פֿאַרבעסערטן זוך, און נאך.
+== מער אינפֿארמאַציע ==
+צו דערגיין מער וועגן דעם ניצלעכקייט איניציאַאטיוו, באַזוכט אונזער [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative היימבלאַט].
+<div style="clear:both"></div>',
 );
 
 /** Yue (粵語)

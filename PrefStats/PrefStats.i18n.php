@@ -229,12 +229,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'prefstats' => 'Stadegoù war ar penndibaboù',
 	'prefstats-desc' => 'Stadegoù war an niver a implijerien o deus diuzet penndibaboù zo',
 	'prefstats-title' => 'Stadegoù war ar penndibaboù',
-	'prefstats-list-intro' => "Evit a rpoent ec'h heulier an dibaboù-mañ.
+	'prefstats-list-intro' => "Evit ar poent ec'h heulier an dibaboù-mañ.
 Klikit war unan anezho da welet ar stadegoù stag outañ",
 	'prefstats-noprefs' => 'Ne heulier dibab ebet evit ar mare. 
 Kefluniañ $wgPrefStatsTrackPrefs evit heuliañ an dibaboù.',

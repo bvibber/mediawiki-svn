@@ -189,10 +189,11 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Locos epraix
  * @author Peter17
+ * @author Platonides
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikieditor-template-editor-preference' => 'Abilitar edición basada en formularios de plantillas wiki',
+	'wikieditor-template-editor-preference' => 'Habilitar la edición plantillas usando formularios',
 	'wikieditor-template-editor-dialog-title' => 'Editar plantilla',
 	'wikieditor-template-editor-dialog-submit' => 'Actualizar',
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
