@@ -25,8 +25,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgRecordAdminTag, $wgRecordAdminTableMagic, $wgRecordAdminDataMagic;
 
 		# Name to use for creating a new record either via RecordAdmin or a public form
-		# todo: should add a hook here for custom default-naming
-		$this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid('', true) ), -5 );
+		$this->guid();
 		wfLoadExtensionMessages ( 'RecordAdmin' );
 		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin', true, false, 'default', true );
 
@@ -1085,6 +1084,13 @@ class SpecialRecordAdmin extends SpecialPage {
 	function expandTag( $text, $argv, $parser ) {
 		$parser->mOutput->mCacheTime = -1;
 		return $this->guid ? substr( $this->guid, -5 ) : '';
+	}
+
+	/**
+	 * Generate a guid - check $wgRecordAdminGuidFormat array for specialised formats
+	 */
+	function guid() {
+		return $this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid('', true) ), -5 );
 	}
 
 }
