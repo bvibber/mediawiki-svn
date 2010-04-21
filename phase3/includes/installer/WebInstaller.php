@@ -1372,33 +1372,27 @@ class WebInstaller_Options extends WebInstallerPage {
 			$this->addHTML( $extHtml );
 		}
 
-		# Uploading
-		$this->addHTML( $this->parent->getFieldsetStart( 'config-upload-settings' ) );
-		if ( $this->getVar( '_UploadsAreSafe' ) ) {
-			$this->addHTML(
-				$this->parent->getCheckBox( array(
-					'var' => 'wgEnableUploads',
-					'label' => 'config-upload-enable',
-					'attribs' => array( 'class' => 'showHideRadio', 'rel' => 'uploadwrapper' ),
-				) ) .
-				$this->parent->getHelpBox( 'config-upload-help' ) .
-				'<div id="uploadwrapper" style="display: none;">' .
-				$this->parent->getTextBox( array(
-					'var' => 'wgDeletedDirectory',
-					'label' => 'config-upload-deleted',
-				) ) .
-				$this->parent->getHelpBox( 'config-upload-deleted-help' ) .
-				'</div>'
-			);
-		} else {
-			$this->parent->showError( 'config-upload-disabled' );
-		}
 		$this->addHTML(
+			# Uploading
+			$this->parent->getFieldsetStart( 'config-upload-settings' ) .
+			$this->parent->getCheckBox( array( 
+				'var' => 'wgEnableUploads',
+				'label' => 'config-upload-enable',
+				'attribs' => array( 'class' => 'showHideRadio', 'rel' => 'uploadwrapper' ),
+			) ) .
+			$this->parent->getHelpBox( 'config-upload-help' ) .
+			'<div id="uploadwrapper" style="display: none;">' .
+			$this->parent->getTextBox( array( 
+				'var' => 'wgDeletedDirectory',
+				'label' => 'config-upload-deleted',
+			) ) .
+			$this->parent->getHelpBox( 'config-upload-deleted-help' ) .
 			$this->parent->getTextBox( array(
 				'var' => 'wgLogo',
 				'label' => 'config-logo'
 			) ) .
 			$this->parent->getHelpBox( 'config-logo-help' ) .
+			'</div>' .
 			$this->parent->getFieldsetEnd()
 		);
 
@@ -1516,7 +1510,7 @@ class WebInstaller_Options extends WebInstallerPage {
 
 	function submit() {
 		$this->parent->setVarsFromRequest( array( '_RightsProfile', '_LicenseCode',
-			'wgEnableEmail', 'wgPasswordSender', 'wgLogo',
+			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo',
 			'wgEnableUserEmail', 'wgEnotifUserTalk', 'wgEnotifWatchlist',
 			'wgEmailAuthentication', 'wgMainCacheType', '_MemCachedServers' ) );
 
@@ -1547,10 +1541,6 @@ class WebInstaller_Options extends WebInstallerPage {
 			$this->setVar( 'wgRightsUrl', '' );
 			$this->setVar( 'wgRightsIcon', '' );
 		}
-
-		$this->setVar( 'wgEnableUploads',
-			$this->getVar( 'wgEnableUploads' ) && $this->getVar( '_UploadsAreSafe' )
-		);
 
 		$exts = $this->parent->getVar( '_Extensions' );
 		foreach( $exts as $key => $ext ) {

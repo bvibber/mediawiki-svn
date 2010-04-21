@@ -70,7 +70,6 @@ abstract class Installer {
 		'_CCDone' => false,
 		'_Extensions' => array(),
 		'_MemCachedServers' => '',
-		'_UploadsAreSafe' => false,
 	);
 
 	/**
@@ -711,7 +710,6 @@ abstract class Installer {
 		} else {
 			$this->showMessage( 'config-uploads-not-safe', $dir );
 		}
-		$this->setVar( '_UploadsAreSafe', $safe );
 	}
 
 	/**

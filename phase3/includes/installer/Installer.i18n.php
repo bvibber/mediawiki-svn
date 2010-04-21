@@ -136,7 +136,7 @@ chmod a+w config</pre>",
 	'config-shell-locale'             => 'Detected shell locale "$1"',
 	'config-uploads-safe'             => 'Default uploads directory is safe from arbitrary scripts execution.',
 	'config-uploads-not-safe'         => "'''Warning:''' Your default uploads directory <code>$1</code> is vulnerable to arbitrary scripts execution.
-Uploads will be disabled.",
+Although MediaWiki checks all uploaded files for security threats, it is highly recommended to [http://www.mediawiki.org/wiki/Manual:Security#Upload_security close this hole] before enabling uploads.",
 	'config-db-type'                  => 'Database type:',
 	'config-db-host'                  => 'Database host:',
 	'config-db-host-help'             => 'If your database server is on different server, enter the host name or IP address here.
@@ -340,7 +340,6 @@ For more information, read the [http://www.mediawiki.org/wiki/Manual:Security se
 
 To enable file uploads, change the mode on the <code>images</code> subdirectory under MediaWiki's root directory so that the web server can write to it.
 Then enable this option.",
-	'config-upload-disabled'          => 'Because your web server is configured to execute scripts from the default uploads directory, uploads will be disabled.',
 	'config-upload-deleted'           => 'Directory for deleted files:',
 	'config-upload-deleted-help'      => 'Choose a directory in which to archive deleted files.
 Ideally, this should not be accessible from the web.',
@@ -510,7 +509,7 @@ chmod a+w config</pre>",
 	'config-shell-locale' => 'Als shelllocale is "$1" herkend',
 	'config-uploads-safe' => 'De uploadmap is beveiligd tegen het arbitrair uitvoeren van scripts.',
 	'config-uploads-not-safe' => "'''Waarschuwing:''' uw uploadmap <code>$1</code> kan gebruikt worden voor het arbitrair uitvoeren van scripts.
-Uploadmogelijkheden worden uitgeschakeld.",
+Uploadmogelijkheden worden uitgeschakeld.", // FIXME: outdated
 	'config-db-type' => 'Databasetype:',
 	'config-db-host' => 'Databasehost:',
 	'config-db-host-help' => 'Als uw databaseserver een andere server is, voer dan de hostnaam of het IP-adres hier in.
@@ -677,7 +676,6 @@ Als een e-mail niet bezorgd kan worden, wordt dat op dit e-mailadres gemeld.
 Veel mailservers vereisen dat tenminste het domein bestaat.',
 	'config-upload-settings' => 'Afbeeldingen en bestanden uploaden',
 	'config-upload-enable' => 'Uploaden van bestanden inschakelen',
-	'config-upload-disabled' => 'Omdat uw webserver is ingesteld om scripts uit te voeren die in de uploadmap staan, wordt uploaden uitgeschakeld.',
 	'config-upload-deleted' => 'Map voor verwijderde bestanden:',
 	'config-upload-deleted-help' => 'Kies een map waarin verwijderde bestanden gearchiveerd kunnen worden.
 Idealiter is deze map niet via het web te benaderen.',
