@@ -12,7 +12,7 @@ class PrefSwitchHooks {
 	
 	public static function schema() {
 		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'prefswitch', dirname( __FILE__ ) . '/PrefSwitch.sql' );
+		$wgExtNewTables[] = array( 'prefswitch_survey', dirname( __FILE__ ) . '/PrefSwitch.sql' );
 		return true;
 	}
 	public static function personalUrls( &$personal_urls, &$title ) {
