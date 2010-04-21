@@ -43,7 +43,7 @@ class CategoryIntersection extends SpecialPage {
 		$ret = '';
 		$ret .= "<form method='post'>";
 		$ret .= "<textarea name='lines' rows='10' cols='50' style='width:100%'></textarea><br />";
-		$ret .= "<input type='submit' name='doit' value='" . wfMsgHtml( 'categoryintersection-doit' ) . "' />";
+		$ret .= '<input type="submit" name="doit" value="' . wfMsgHtml( 'categoryintersection-doit' ) . '" />';
 		$ret .= "</form>";
 		return $ret;
 	}
@@ -65,15 +65,28 @@ class CategoryIntersection extends SpecialPage {
 			$l = trim ( $l );
 			if ( $l == '' ) continue;
 			$t = Title::newFromText ( $l );
-			$arr[] = $t->getDBkey();
+			if ( $t ) { // in case of invalid input
+				$arr[] = $t->getDBkey();
+			}
 		}
 
-		if ( count ( $arr ) > $this->max_categories ) {
+		$numb_categories = count( $arr );
+		if ( $numb_categories > $this->max_categories ) {
 			return wfMsgExt( 'categoryintersection-maxcategories', 'parsemag', $this->max_categories );
+		}
+
+		if ( $numb_categories < 2 ) {
+			return wfMsgExt( 'categoryintersection-mincategories', 'parsemag' );
 		}
 
 		# Generate hash values for all combinations
 		$hashes = CategoryIntersectionGetHashValues ( $arr );
+
+		if ( empty( $hashes ) ) {
+			// Could potentially happen if user tries to do the 
+			// intersection of a category with itself.
+			return wfMsgExt( 'categoryintersection-mincategories', 'parsemag' );
+		}
 
 		# Generate (sub)query chain
 		# TODO : Do we really need all combinations?

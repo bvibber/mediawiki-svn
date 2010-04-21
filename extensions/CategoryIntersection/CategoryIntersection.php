@@ -6,14 +6,6 @@
  * @copyright (c) 2008 by Magnus Manske
  * @license Released under GPL
 
-  // FIXME: creation of table should be done through hook.
-  SQL for creating categoryintersections table:
-
-  CREATE TABLE `categoryintersections` (
-    `ci_page` int(10) unsigned NOT NULL,
-    `ci_hash` int(10) unsigned NOT NULL,
-    PRIMARY KEY  (`ci_hash`,`ci_page`)
-  ) ;
 
 **/
 
@@ -21,7 +13,10 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
+<br/>
 require_once("\$IP/extensions/CategoryIntersection/CategoryIntersection.php");
+<br/>
+Then run the update.php maintenance script, followed by the refreshLinks.php maintenance script.
 EOT;
 	exit( 1 );
 }
@@ -95,3 +90,16 @@ function CategoryIntersectionArticleDelete ( &$article, &$user, &$reason ) {
 	$dbw->delete ( 'categoryintersections' , array ( "ci_page" => $article->getID() ) ) ;
 	return true ;
 }
+
+# new tables needed (based on how ReaderFeedback extension does it)
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCategoryIntersectionSchemaUpdates';
+
+function efCategoryIntersectionSchemaUpdates() {
+        global $wgDBtype, $wgExtNewTables;
+        $base = dirname( __FILE__ );
+        if ( $wgDBtype == 'mysql' ) {
+                $wgExtNewTables[] = array( 'categoryintersections', "$base/CategoryIntersection.sql" );
+        }
+        return true;
+}
+
