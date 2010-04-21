@@ -827,8 +827,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		$tbl  = $dbr->tableName( 'templatelinks' );
 		$ty   = $dbr->addQuotes( $type );
 		if ( $count ) {
-			$row = $dbr->selectRow( $tbl, 'count(0)', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
-			$records = $row[0];
+			$row = $dbr->selectRow( $tbl, 'count(0) as count', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
+			$records = $row->count;
 		} else {
 			$res  = $dbr->select( $tbl, 'tl_from', "tl_namespace = 10 AND tl_title = $ty", __METHOD__ );
 			while ( $row = $dbr->fetchRow( $res ) ) $records[] = Title::newFromID( $row[0] );
