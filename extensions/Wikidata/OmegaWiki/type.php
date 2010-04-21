@@ -27,7 +27,8 @@ function pageAsURL( $nameSpace, $title, $usedc = true ) {
 
 	global $wgArticlePath;
 
-	$url = str_replace( "$1", urlencode( $nameSpace . ':' . $title ), $wgArticlePath );
+	$titleNoSpace = str_replace( " ", "_", $title ) ;
+	$url = str_replace( "$1", $nameSpace . ':' . urlencode( $titleNoSpace ), $wgArticlePath );
 
 	if ( $usedc ) {
 		$dc = wdGetDataSetContext();
