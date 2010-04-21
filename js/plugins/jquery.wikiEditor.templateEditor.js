@@ -1,7 +1,7 @@
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 /**
- * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
+ * Name mappings, dirty hack which will be removed once "TemplateInfo" extension is more fully supported
  */
 'nameMappings': { //keep these all lowercase to navigate web of redirects
    "infobox skyscraper": "building_name",
