@@ -100,9 +100,9 @@ class jsScriptLoader {
 		// Setup script loader header ( to easy identify file data )
 		if( $this->outputFormat == 'js' ) {
 			$this->output .= 'var mwScriptLoaderDate = "' .
-				xml::escapeJsString( date( 'c' ) ) . '";'  . "\n";
+			xml::escapeJsString( date( 'c' ) ) . '";'  . "\n";
 			$this->output .= 'var mwScriptLoaderRequestKey = "' .
-				xml::escapeJsString( $this->requestKey ) . '";'  . "\n";
+			xml::escapeJsString( $this->requestKey ) . '";'  . "\n";
 		}
 
 		// Build the output
@@ -178,7 +178,7 @@ class jsScriptLoader {
 	 */
 	static private function getOnDoneCallback( ){
 		return 'if(mw && mw.loadDone){mw.loadDone(\'' .
-							htmlspecialchars( self::$rawClassList ) . '\');};';
+		htmlspecialchars( self::$rawClassList ) . '\');};';
 	}
 	/**
 	 * Get Minified js
@@ -234,7 +234,7 @@ class jsScriptLoader {
 		$cmd.= ' --js ' . $jsFileName;
 
 		if( $wgClosureCompilerLevel )
-			$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
+		$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
 
 		// only output js ( no warnings )
 		$cmd.= ' --warning_level QUIET';
@@ -332,8 +332,8 @@ class jsScriptLoader {
 					}
 					$fileStr = $a->getContent() . "\n";
 					$output.= ( $ext == 'css' ) ?
-						$this->transformCssOutput( $classKey, $fileStr ) :
-						$fileStr;
+					$this->transformCssOutput( $classKey, $fileStr ) :
+					$fileStr;
 					return $output;
 				}
 			}
@@ -359,8 +359,8 @@ class jsScriptLoader {
 					$output .= "\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
 				}
 				$output.= ( $ext == 'css' ) ?
-					$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
-					$fileStr;
+				$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
+				$fileStr;
 
 				return $output;
 			}else{
@@ -390,10 +390,12 @@ class jsScriptLoader {
 			global $wgScriptPath;
 			$cssOptions[ 'prependRelativePath' ] = $wgScriptPath . '/' . dirname( $path ) . '/';
 		} else if( strpos( $serverUri, 'jsScriptLoader.php') !== false ){
-			// We should use an absolute url to jsScriptLoader.php
+			// NOTE:: We HAVE to use an absolute url remote jsScriptLoader.php entry point.
+			// this is because relative urls won't work when inserted into the DOM head
+			// ( ie we package the css with javascript )
 			$cssOptions[ 'prependRelativePath' ] =
-				str_replace('jsScriptLoader.php', '', $serverUri)
-				. dirname( $path ) . '/';
+			str_replace('jsScriptLoader.php', '', $serverUri)
+			. dirname( $path ) . '/';
 		}
 
 		// We always run minify to update css urls
@@ -408,7 +410,7 @@ class jsScriptLoader {
 		// CSS classes should be of form mw.style.{className}
 		$cssStyleName = str_replace('mw.style.', '', $classKey );
 		return 'mw.addStyleString("' . Xml::escapeJsString( $cssStyleName )
-					. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
+		. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
 	}
 
 	/**
@@ -505,7 +507,7 @@ class jsScriptLoader {
 
 		// Set debug flag
 		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' )
-			|| ( isset( $wgEnableScriptDebug ) && $wgEnableScriptDebug == true ) ) {
+		|| ( isset( $wgEnableScriptDebug ) && $wgEnableScriptDebug == true ) ) {
 			$this->debug = true;
 		}
 
@@ -672,7 +674,7 @@ class jsScriptLoader {
 
 	/**
 	 * Check for the commons language hack.
- 	 * ( someone had the bright idea to use language keys as message
+	 * ( someone had the bright idea to use language keys as message
 	 *  name-spaces for separate upload forms )
 	 *
 	 * @param {String} $langKey The lang key for the form
@@ -721,7 +723,7 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Retrieve the js file into a string, updates errorMsg if not retrivable.
+	 * Retrieve the js or css file into a string, updates errorMsg if not retrivable.
 	 *
 	 * @param {String} $filePath File to get
 	 * @return {String} of the file contents
@@ -740,7 +742,6 @@ class jsScriptLoader {
 			$this->errorMsg .= "\nError file name must not traverse paths: " . htmlspecialchars( $filePath ) . " \n ";
 			return false;
 		}
-
 		// Load the file
 		wfSuppressWarnings();
 		$str = file_get_contents( realpath( $filePath ) );
@@ -915,8 +916,8 @@ class jsScriptLoader {
 }
 
 /*
-*  A simple version of HTMLFileCache so that the scriptLoader can operate stand alone
-*/
+ *  A simple version of HTMLFileCache so that the scriptLoader can operate stand alone
+ */
 class simpleFileCache {
 	var $mFileCache;
 	var $filename = null;
@@ -951,7 +952,7 @@ class simpleFileCache {
 
 		// Check for defined files::
 		if( is_file( $this->filename ) )
-			return $this->filename;
+		return $this->filename;
 
 		// Check for non-config based gzip version already there?
 		if( is_file( $this->filename . '.gz') ){
@@ -960,7 +961,7 @@ class simpleFileCache {
 		}
 		//Update the name based on the $wgUseGzip config var
 		if ( isset($wgUseGzip) && $wgUseGzip )
-			$this->filename.='.gz';
+		$this->filename.='.gz';
 
 		return $this->filename;
 	}

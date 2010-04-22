@@ -145,10 +145,35 @@ class FormatJson{
 // MWException extends Exception (for noWiki we don't do anything fancy )
 class MWException extends Exception {
 }
-function wfSuppressWarnings(){
-};
-function wfRestoreWarnings(){
-};
+
+/**
+ * Reference-counted warning suppression
+ */
+function wfSuppressWarnings( $end = false ) {
+	static $suppressCount = 0;
+	static $originalLevel = false;
+
+	if ( $end ) {
+		if ( $suppressCount ) {
+			--$suppressCount;
+			if ( !$suppressCount ) {
+				error_reporting( $originalLevel );
+			}
+		}
+	} else {
+		if ( !$suppressCount ) {
+			$originalLevel = error_reporting( E_ALL & ~( E_WARNING | E_NOTICE ) );
+		}
+		++$suppressCount;
+	}
+}
+
+/**
+ * Restore error level to previous value
+ */
+function wfRestoreWarnings() {
+	wfSuppressWarnings( true );
+}
 class Xml {
 	public static function escapeJsString( $string ) {
 		// See ECMA 262 section 7.8.4 for string literal format
