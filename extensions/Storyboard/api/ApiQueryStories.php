@@ -65,17 +65,20 @@ class ApiQueryStories extends ApiQueryBase {
 		if ( !is_null( $params['continue'] ) ) {
 			$continueParams = explode( '-', $params['continue'] );
 			if ( count( $continueParams ) != 2 ) {
-				$this->dieUsage( 'Invalid continue param. You should pass the ' .
-					'original value returned by the previous query', '_badcontinue' );
+				$this->dieUsage(
+					'Invalid continue param. You should pass the ' .
+					'original value returned by the previous query', '_badcontinue'
+				);
 			}
 			
 			$storyModified = $continueParams[0];
 			$storyId = intval( $continueParams[1] );
-			
+			var_dump($storyModified);exit;
 			$this->addWhere(
-				"story_modified < $storyModified OR " .
+				"story_modified > $storyModified OR " .
 				"(story_modified = $storyId AND story_id <= $storyModified)"
 			);
+			
 		}
 		
 		$stories = $this->select( __METHOD__ );

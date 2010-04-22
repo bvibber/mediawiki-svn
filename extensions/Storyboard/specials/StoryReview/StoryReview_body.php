@@ -7,6 +7,11 @@
  * @ingroup SpecialPage
  *
  * @author Jeroen De Dauw
+ * 
+ * TODO: implement eternal load stuff for each list
+ * TODO: fix layout
+ * TODO: fix story blocks to work with new story state handling
+ * TODO: ajax load tab contents?
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -36,21 +41,48 @@ class SpecialStoryReview extends SpecialPage {
 		
 		wfProfileOut( __METHOD__ );
 	}
-
+	
 	private function addOutput() {
-		// TODO: add language filters
-		// TODO: display tabs for unpublished, published and hidden stories
-		// TODO: paging
-
 		global $wgOut, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );
+		// jQuery UI core and Tabs.
+		$wgOut->addScriptFile( $egStoryboardScriptPath . '/jquery/jquery-ui-1.7.2.custom.min.js' );
+		$wgOut->addStyle( $egStoryboardScriptPath . '/jquery/css/jquery-ui-1.7.2.custom.css' );
 		
 		// Get a slave db object to do read operations against.
 		$dbr = wfGetDB( DB_SLAVE );
 		
+		$html = $this->getTabHtml( $dbr, Storyboard_STORY_UNPUBLISHED );
+		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_PUBLISHED );
+		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_HIDDEN );
+		
+		$unpublished = htmlspecialchars( wfMsg( 'storyboard-unpublished' ) );
+		$published = htmlspecialchars( wfMsg( 'storyboard-published' ) );
+		$hidden = htmlspecialchars( wfMsg( 'storyboard-hidden' ) );
+		
+		$html = <<<EOT
+<div id="storyreview-tabs">
+	<ul>
+		<li><a href="#storyreview-tabs-0">$unpublished</a></li>
+		<li><a href="#storyreview-tabs-1">$published</a></li>
+		<li><a href="#storyreview-tabs-2">$hidden</a></li>
+	</ul>
+$html
+</div>
+<script type="text/javascript">
+	jQuery(function() {
+		jQuery("#storyreview-tabs").tabs();
+	});
+</script>	
+EOT;
+	
+	$wgOut->addHTML( $html );
+	}
+	
+	private function getTabHtml( DatabaseBase $dbr, $storyState ) {
 		// Create a query to retrieve information about all non hidden stories.
 		$stories = $dbr->select(
 			Storyboard_TABLE,
@@ -59,38 +91,20 @@ class SpecialStoryReview extends SpecialPage {
 				'story_author_name',
 				'story_title',
 				'story_text',
-				'story_state',
 				'story_author_image',
 				'story_image_hidden'
 			),
-			array( 'story_state' => $dbr->makeList( array ( 'Storyboard_STORY_UNPUBLISHED', 'Storyboard_STORY_PUBLISHED' ), LIST_OR ) )
+			array( 'story_state' => $storyState )
 		);
 		
-		// String to hold the html for both the unreviewed and reviewed stories.
-		$unreviewed = '';
-		$reviewed = '';
+		$html = '';
 		
 		// Loop through all stories, get their html, and add it to the appropriate string.
 		while ( $story = $dbr->fetchObject( $stories ) ) {
-			if ( $story->story_state == Storyboard_STORY_UNPUBLISHED ) {
-				$reviewed .= $this->getStorySegments( $story );
-			}
-			else {
-				$unreviewed .= $this->getStorySegments( $story );
-			}
+			$html .= $this->getStorySegments( $story, $storyState );
 		}
-
-		$unrevMsg = wfMsg( 'storyboard-unreviewed' );
-		$revMsg = wfMsg( 'storyboard-reviewed' );
 		
-		// Output the html for the stories.
-		$wgOut->addHTML( <<<EOT
-		<h2>$unrevMsg</h2>
-		$unreviewed
-		<h2>$revMsg</h2>
-		$reviewed		
-EOT
-		);
+		return "<div id='storyreview-tabs-$storyState'>$html</div>";
 	}
 	
 	/**
@@ -100,7 +114,7 @@ EOT
 	 * 
 	 * @return string
 	 */
-	private function getStorySegments( $story ) {
+	private function getStorySegments( $story, $storyState ) {
 		global $wgTitle;
 		
 		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL( 'action=edit&returnto=' . $wgTitle->getPrefixedText() );
@@ -109,7 +123,7 @@ EOT
 		$title = htmlspecialchars( $story->story_title );
 		$text = htmlspecialchars( $story->story_text );
 		
-		$publishAction = $story->story_state == Storyboard_STORY_PUBLISHED ? 'unpublish' : 'publish';
+		$publishAction = $storyState == Storyboard_STORY_PUBLISHED ? 'unpublish' : 'publish';
 		// Uses storyboard-unpublish or storyboard-publish.
 		$publishMsg = htmlspecialchars( wfMsg( "storyboard-$publishAction" ) );
 		
