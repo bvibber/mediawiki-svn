@@ -235,6 +235,7 @@ class OutputPage {
 	}
 	/*
 	 * Gets the class name From an internal wiki title link
+	 * @param $path String: script include path
 	 */
 	function getClassNameFromWikiTitle( $path ){
 		global $wgScript;
@@ -2779,7 +2780,7 @@ class OutputPage {
 	 */
 	public function includeCoreJS ( ) {
 		global $wgExtensionJavascriptLoader, $wgEnableScriptLoader,
-		$wgJSAutoloadClasses, $wgScriptPath;
+		$wgScriptLoaderNamedPaths, $wgScriptPath;
 
 		// Set core Classes ( note wikibits will be phased out )
 		$coreClasses = array( 'window.jQuery', 'mwEmbed', 'wikibits' );
@@ -2890,7 +2891,7 @@ class OutputPage {
 	 * @return boolean False if the class wasn't found, True on success
 	 */
 	function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
-		global $wgDebugJavaScript, $wgJSAutoloadClasses, $IP,
+		global $wgDebugJavaScript, $wgScriptLoaderNamedPaths, $IP,
 		$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
 
@@ -2965,12 +2966,12 @@ class OutputPage {
 	 * @return String script path or Boolean false if not found
 	 */
 	function getClassFromPath( $path ) {
-		global $wgJSAutoloadClasses, $wgScriptPath;
+		global $wgScriptLoaderNamedPaths, $wgScriptPath;
 		// Make sure we have the scriptClass paths loaded:
 		jsClassLoader::loadClassPaths();
 
 		// Check the autoload js class list
-		foreach( $wgJSAutoloadClasses as $className => $classPath ) {
+		foreach( $wgScriptLoaderNamedPaths as $className => $classPath ) {
 			$classPath = "{$wgScriptPath}/{$classPath}";
 			if( $path == $classPath ){
 				return $className;

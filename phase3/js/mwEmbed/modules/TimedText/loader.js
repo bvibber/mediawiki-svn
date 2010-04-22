@@ -2,13 +2,13 @@
 * TimedText loader.    
 */
 mw.addClassFilePaths( {
-	"mw.TimedText" : "modules/TimedText/mw.TimedText.js",
-	"mw.style.TimedText" : "modules/TimedText/css/mw.style.TimedText.css",
+	"mw.TimedText" : "mw.TimedText.js",
+	"mw.style.TimedText" : "css/mw.style.TimedText.css",
 		
-	"mw.TimedTextEdit" : "modules/TimedText/mw.TimedTextEdit.js",
-	"mw.style.TimedTextEdit" : "modules/TimedText/css/mw.style.TimedTextEdit.css",
+	"mw.TimedTextEdit" : "mw.TimedTextEdit.js",
+	"mw.style.TimedTextEdit" : "css/mw.style.TimedTextEdit.css",
 	
-	"RemoteMwTimedText" : "modules/TimedText/remotes/RemoteMwTimedText.js"
+	"RemoteMwTimedText" : "remotes/RemoteMwTimedText.js"
 });
 
 // TimedText module

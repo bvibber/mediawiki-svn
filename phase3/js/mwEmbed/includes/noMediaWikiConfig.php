@@ -23,11 +23,14 @@ $wgMwEmbedDirectory = '';
 
 $wgUseFileCache = true;
 
-// Init our wg Globals
-$wgJSAutoloadLocalClasses = array();
-$wgJSAutoloadClasses = array();
+// Named paths for the script loader
+$wgScriptLoaderNamedPaths = array();
+
+// Added Modules
 $wgExtensionJavascriptLoader = array();
-$wgJSModuleLoaderPaths = array();
+
+// Extension Messages Files
+$wgExtensionMessagesFiles = array();
 
 /*Localization:*/
 $wgEnableScriptLocalization = true;
@@ -36,9 +39,7 @@ $mwLanguageCode = 'en';
 $wgLang = false;
 
 $wgStyleVersion = '218';
-
 $wgEnableScriptMinify = true;
-
 $wgUseGzip = true;
 
 
@@ -63,8 +64,6 @@ require_once( realpath( dirname( __FILE__ ) ) . '/library/CSS/Compressor.php' );
 require_once( realpath( dirname( __FILE__ ) ) . '/library/CSS/UriRewriter.php' );
 require_once( realpath( dirname( __FILE__ ) ) . '/library/CommentPreserver.php' );
 
-// Get the messages file:
-require_once( realpath( dirname( __FILE__ ) ) . '/../languages/mwEmbed.i18n.php' );
 
 function wfDebug() {
     return false;
@@ -120,6 +119,15 @@ function wfMsgGetKey( $msgKey, $na, $langKey=false ) {
     } else {
         return '&lt;' . $msgKey . '&gt;';
     }
+}
+$wgLoadedMsgKeysFlag = false;
+function loadMsgKeys(){
+	global $wgLoadedMsgKeysFlag;
+	if( $wgLoadedMsgKeysFlag ) {
+		return true;
+	}
+	// Get the messages file:
+	require_once( realpath( dirname( __FILE__ ) ) . '/../languages/mwEmbed.i18n.php' );
 }
 
 /**

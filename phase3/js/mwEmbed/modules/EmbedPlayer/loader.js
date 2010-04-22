@@ -69,23 +69,23 @@ mw.setDefaultConfig( {
 
 // Add class file paths 
 mw.addClassFilePaths( {
-	"mw.EmbedPlayer"	: "modules/EmbedPlayer/mw.EmbedPlayer.js",
-	"flowplayerEmbed"	: "modules/EmbedPlayer/flowplayerEmbed.js",
-	"kplayerEmbed"		: "modules/EmbedPlayer/kplayerEmbed.js",
-	"genericEmbed"		: "modules/EmbedPlayer/genericEmbed.js",
-	"htmlEmbed"			: "modules/EmbedPlayer/htmlEmbed.js",
-	"javaEmbed"			: "modules/EmbedPlayer/javaEmbed.js",
-	"nativeEmbed"		: "modules/EmbedPlayer/nativeEmbed.js",
-	"quicktimeEmbed"	: "modules/EmbedPlayer/quicktimeEmbed.js",
-	"vlcEmbed"			: "modules/EmbedPlayer/vlcEmbed.js",
+	"mw.EmbedPlayer"	: "mw.EmbedPlayer.js",
+	"flowplayerEmbed"	: "flowplayerEmbed.js",
+	"kplayerEmbed"		: "kplayerEmbed.js",
+	"genericEmbed"		: "genericEmbed.js",
+	"htmlEmbed"			: "htmlEmbed.js",
+	"javaEmbed"			: "javaEmbed.js",
+	"nativeEmbed"		: "nativeEmbed.js",
+	"quicktimeEmbed"	: "quicktimeEmbed.js",
+	"vlcEmbed"			: "vlcEmbed.js",
 	
-	"ctrlBuilder"		: "modules/EmbedPlayer/skins/ctrlBuilder.js",
+	"ctrlBuilder"		: "skins/ctrlBuilder.js",
 	
-	"kskinConfig"		: "modules/EmbedPlayer/skins/kskin/kskinConfig.js",
-	"mw.style.kskin" 	: "modules/EmbedPlayer/skins/kskin/EmbedPlayer.css",	
+	"kskinConfig"		: "skins/kskin/kskinConfig.js",
+	"mw.style.kskin" 	: "skins/kskin/EmbedPlayer.css",	
 	
-	"mvpcfConfig"		: "modules/EmbedPlayer/skins/mvpcf/mvpcfConfig.js",
-	"mw.style.mvpcf" 	: "modules/EmbedPlayer/skins/mvpcf/EmbedPlayer.css"	
+	"mvpcfConfig"		: "skins/mvpcf/mvpcfConfig.js",
+	"mw.style.mvpcf" 	: "skins/mvpcf/EmbedPlayer.css"	
 } );
 
 /**

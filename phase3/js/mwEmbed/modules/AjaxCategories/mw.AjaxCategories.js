@@ -210,7 +210,7 @@ mw.AjaxCategories.prototype = {
 				};
 
 				var buttons = { };
-				buttons[gM( 'ajax-confirm-save' )] = submitFunction;
+				buttons[ gM( 'ajax-confirm-save' ) ] = submitFunction;
 				var dialogOptions = {
 					'AutoOpen' : true,
 					'buttons' : buttons,
@@ -226,12 +226,11 @@ mw.AjaxCategories.prototype = {
 	doEdit : function( page, fn, summary, doneFn ) {
 		// Get an edit token and page revision info
 		var getTokenVars = {			
-			'prop':'info|revisions',
-			'intoken':'edit',
-			'titles':page,
-			'rvprop':'content|timestamp'
+			'prop' : 'info|revisions',
+			'intoken' : 'edit',
+			'titles' : page,
+			'rvprop' : 'content|timestamp'
 		};
-
 		mw.getJSON( getTokenVars, function( reply ) {
 				var infos = reply.query.pages;
 				$j.each(
@@ -255,7 +254,7 @@ mw.AjaxCategories.prototype = {
 							'format':'json'
 						};
 
-						$j.post( wgScriptPath + '/api.php', postEditVars, doneFn,	'json' );
+						mw.getJSON( postEditVars, doneFn );
 					}
 				);
 			} );

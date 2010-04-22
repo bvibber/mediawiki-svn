@@ -8,19 +8,15 @@
 // ( has to be hard coded rather than config based for fast non-mediawiki config hits )
 $wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/cache';
 
-// Check if we are being invoked in a MediaWiki context or stand alone usage:
-if ( !defined( 'MEDIAWIKI' ) && !defined( 'MW_CACHE_SCRIPT_CHECK' ) ){
-
-	// Load noMediaWiki helper for quick cache result
+// Check if we are an entry point or being used as part of MEDIAWIKI:
+if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 	$myScriptLoader = new jsScriptLoader();
-
 	if( $myScriptLoader->outputFromCache() ) {
 		exit();
 	}
-
-	//Else load up all the config and do normal stand alone ScriptLoader process:
+	// No cache hit, load stand alone ScriptLoader config
+	// ( if running as a remote, mediaWiki variables are already included as part of mediaWiki
 	require_once( realpath( dirname( __FILE__ ) ) . '/includes/noMediaWikiConfig.php' );
-
 	$myScriptLoader->doScriptLoader();
 }
 
@@ -85,12 +81,8 @@ class jsScriptLoader {
 	 *  outputs js
 	 */
 	function doScriptLoader() {
-		global 	$wgJSAutoloadClasses, $IP,
-		$wgEnableScriptMinify, $wgUseFileCache, $wgExtensionMessagesFiles;
-
-		// Load the ExtensionMessagesFiles
-		$wgExtensionMessagesFiles[ 'mwEmbed' ] = realpath( dirname( __FILE__ ) ) .
-			'/languages/mwEmbed.i18n.php';
+		global 	$wgScriptLoaderNamedPaths, $IP,
+		$wgEnableScriptMinify, $wgUseFileCache;
 
 		// Load the javascript class paths:
 		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
@@ -385,8 +377,6 @@ class jsScriptLoader {
 	 * Special function to transform css output and wrap in js call
 	 */
 	private function transformCssOutput( $classKey, $cssString , $path ='') {
-		global $wgMwEmbedDirectory;
-
 		// Minify and update paths on cssString:
 		$cssOptions = array();
 		if( ! $this->debug ) {
@@ -510,7 +500,7 @@ class jsScriptLoader {
 	 * validate classes and generate request key
 	 */
 	function postProcRequestVars(){
-		global $wgContLanguageCode, $wgEnableScriptMinify, $wgJSAutoloadClasses,
+		global $wgContLanguageCode, $wgEnableScriptMinify, $wgScriptLoaderNamedPaths,
 		$wgStyleVersion;
 
 		// Set debug flag
@@ -715,11 +705,11 @@ class jsScriptLoader {
 	 * @return path of the class or "false"
 	 */
 	public static function getPathFromClass( $reqClass ){
-		global $wgJSAutoloadClasses;
+		global $wgScriptLoaderNamedPaths;
 		// Make sure the class is loaded:
 		jsClassLoader::loadClassPaths();
-		if ( isset( $wgJSAutoloadClasses[ $reqClass ] ) ) {
-			return $wgJSAutoloadClasses[ $reqClass ];
+		if ( isset( $wgScriptLoaderNamedPaths[ $reqClass ] ) ) {
+			return $wgScriptLoaderNamedPaths[ $reqClass ];
 		} else {
 			return false;
 		}
@@ -738,6 +728,7 @@ class jsScriptLoader {
 	 */
 	function getFileContents( $filePath ) {
 		global $IP;
+
 		$ext = substr($filePath, strrpos($filePath, '.') + 1);
 		if ( self::validFileExtension( $ext)  ) {
 			$this->errorMsg .= "\nError file name must end with .js or .css " . htmlspecialchars( $filePath ) . " \n ";
@@ -752,14 +743,14 @@ class jsScriptLoader {
 
 		// Load the file
 		wfSuppressWarnings();
-		$str = file_get_contents( "{$IP}/{$filePath}" );
+		$str = file_get_contents( realpath( $filePath ) );
 		wfRestoreWarnings();
 
 		if ( $str === false ) {
 			$fname = explode( '/',$filePath);
-			$fname = last( $fname );
+			$fname = end( $fname );
 			// NOTE: check PHP error level. Don't want to expose paths if errors are hidden.
-			$this->errorMsg .= 'Requested File: ' . htmlspecialchars( $fname ) . ' could not be read' . "\n";
+			$this->errorMsg .= 'Requested File: ' . htmlspecialchars( $filePath ) . ' could not be read' . "\n";
 			return false;
 		}
 		return $str;
@@ -779,7 +770,7 @@ class jsScriptLoader {
 
 		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
-			$str = preg_replace('/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str);
+			$str = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str );
 		}
 
 		// Do language swap by index:
@@ -803,7 +794,7 @@ class jsScriptLoader {
 	 */
 	static public function getAddMessagesIndex( $str ){
 		$returnIndex = array();
-		preg_match('/mw.addMessages\s*\(\s*\{/', $str, $matches, PREG_OFFSET_CAPTURE );
+		preg_match( '/mw.addMessages\s*\(\s*\{/', $str, $matches, PREG_OFFSET_CAPTURE );
 		if( count($matches) == 0){
 			return false;
 		}
@@ -884,8 +875,9 @@ class jsScriptLoader {
 	static public function updateMsgKeys(& $jmsg, $langCode = false){
 		global $wgLang;
 		// Check the langCode
-		if(!$langCode && $wgLang)
+		if(!$langCode && $wgLang) {
 			$langCode = $wgLang->getCode();
+		}
 
 		// Get the msg keys for the a json array
 		foreach ( $jmsg as $msgKey => $na ) {

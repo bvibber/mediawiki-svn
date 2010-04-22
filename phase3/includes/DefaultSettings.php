@@ -868,20 +868,20 @@ $wgOutputEncoding = 'UTF-8';
 $wgEditEncoding   = '';
 
 /**
- * Set this to true to replace Arabic presentation forms with their standard 
+ * Set this to true to replace Arabic presentation forms with their standard
  * forms in the U+0600-U+06FF block. This only works if $wgLanguageCode is
  * set to "ar".
  *
- * Note that pages with titles containing presentation forms will become 
+ * Note that pages with titles containing presentation forms will become
  * inaccessible, run maintenance/cleanupTitles.php to fix this.
  */
 $wgFixArabicUnicode = true;
 
 /**
  * Set this to true to replace ZWJ-based chillu sequences in Malayalam text
- * with their Unicode 5.1 equivalents. This only works if $wgLanguageCode is 
- * set to "ml". Note that some clients (even new clients as of 2010) do not 
- * support these characters. 
+ * with their Unicode 5.1 equivalents. This only works if $wgLanguageCode is
+ * set to "ml". Note that some clients (even new clients as of 2010) do not
+ * support these characters.
  *
  * If you enable this on an existing wiki, run maintenance/cleanupTitles.php to
  * fix any ZWJ sequences in existing page titles.
@@ -2868,7 +2868,7 @@ $wgAutoloadClasses = array();
  * Array mapping JavaScript class to web path for use by the script loader.
  * This is populated in AutoLoader.php.
  */
-$wgJSAutoloadClasses = array();
+$wgScriptLoaderNamedPaths = array();
 
 /**
  * For defining the location of loader.js files of
@@ -2933,9 +2933,9 @@ $wgEnableIframeApiProxy = false;
 $wgEnableScriptLocalization = true;
 
 /**
- * Path for mwEmbed normally js/mwEmbed/
+ * Path for mwEmbed normally js/mwEmbed
  */
-$wgMwEmbedDirectory = "js/mwEmbed/";
+$wgMwEmbedDirectory = "js/mwEmbed";
 
 /**
  * Enables javascript on debugging
