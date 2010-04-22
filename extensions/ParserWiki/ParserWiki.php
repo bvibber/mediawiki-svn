@@ -18,8 +18,9 @@ $wgExtensionCredits["other"][] = array(
 	"version" => "1.0",
 	"descriptionmsg" => "parserwiki-desc",
 );
-
-$wgAutoloadClasses["ParseEngine"] = dirname( __FILE__ ) . "/ParseEngine.php";
+$dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['ParseEngine'] = $dir . "ParseEngine.php";
+$wgExtensionMessagesFiles['ParserWiki'] = $dir . 'ParserWiki.i18n.php';
 
 $wgTheParserWiki = new ParserWiki();
 $wgHooks["ParserBeforeStrip"][] = array( $wgTheParserWiki, "callFromParse" );
