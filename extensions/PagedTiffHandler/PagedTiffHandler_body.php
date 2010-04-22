@@ -106,7 +106,7 @@ class PagedTiffHandler extends ImageHandler {
 		return self::extCheck( $meta, $error, $saveName );
 	}
 
-	function extCheck( $meta, &$error, $saveName = '' ) {
+	static function extCheck( $meta, &$error, $saveName = '' ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize;
 		if ( isset( $meta['errors'] ) ) {
 			$error = 'tiff_bad_file';
