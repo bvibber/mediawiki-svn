@@ -3672,6 +3672,7 @@ Norėtume sužinoti, ką manote apie mūsų naująją vartotojo sąsają, todėl
 
 /** Latvian (Latviešu)
  * @author Marozols
+ * @author Papuass
  */
 $messages['lv'] = array(
 	'optin-title-optedout' => 'Izmēģināt Beta',
@@ -3679,6 +3680,9 @@ $messages['lv'] = array(
 	'optin-title-feedback' => 'Atsauksmes par Beta',
 	'optin-accept-long' => 'Izmēģināt Beta',
 	'optin-submit-out' => 'Pamest Beta',
+	'optin-survey-answer-whyoptout-other' => 'Cits iemesls:',
+	'optin-survey-answer-browser-other' => 'Cits pārlūks:',
+	'optin-survey-answer-os-other' => 'Cita operētājsistēma:',
 );
 
 /** Laz (Laz)

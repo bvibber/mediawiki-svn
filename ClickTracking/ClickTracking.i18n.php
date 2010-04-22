@@ -1076,6 +1076,13 @@ $messages['lb'] = array(
 	'ct-update-table' => 'Tabell aktualiséieren',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'ct-and' => 'un',
+);
+
 /** Laz (Laz)
  * @author Bombola
  */

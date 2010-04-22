@@ -457,6 +457,13 @@ $messages['lb'] = array(
 	'wikieditor-preview-loading' => 'Lueden...',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'wikieditor-preview-loading' => 'Cits iemesls:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

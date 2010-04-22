@@ -657,6 +657,14 @@ $messages['lt'] = array(
 	'wikieditor-publish-dialog-goback' => 'Grįžti',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'wikieditor-publish-button-publish' => 'Publicēt',
+	'wikieditor-publish-button-cancel' => 'Atcelt',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

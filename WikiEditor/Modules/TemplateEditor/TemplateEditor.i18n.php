@@ -373,6 +373,13 @@ $messages['lt'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Atšaukti',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Atcelt',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
