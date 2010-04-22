@@ -347,12 +347,12 @@ function mwGetReqArgs() {
 * @param {callback} function callback to be called once mwEmbed is ready
 */
 function loadMwEmbed( classSet, callback ) {	
-	if( typeof classSet == 'function')
+	if( typeof classSet == 'function') {
 		callback = classSet;
-		
+	}	
 	// Inject mwEmbed if needed
 	if ( typeof MW_EMBED_VERSION == 'undefined' ) {
-		if ( ( mwReqParam['uselang'] || mwReqParam[ 'useloader' ] ) && mwUseScriptLoader ) {
+		if ( mwUseScriptLoader ) {
 			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=';
 			
 			var coma = '';
