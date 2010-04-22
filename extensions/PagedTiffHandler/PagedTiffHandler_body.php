@@ -70,7 +70,7 @@ class PagedTiffHandler extends ImageHandler {
 	 * - identify-warnings
 	 * - check for running-identify-service
 	 */
-	function check( $saveName, $tempName, &$error ) {
+	static function check( $saveName, $tempName, &$error ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, $wgTiffRejectOnError, $wgTiffRejectOnWarning,
 			   $wgTiffUseTiffReader, $wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
