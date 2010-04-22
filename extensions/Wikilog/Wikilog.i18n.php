@@ -3124,6 +3124,7 @@ illo apparera post esser revidite per un moderator.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'wikilog-desc' => 'Menambahkan fitur blog, membuat suatu gabungan wiki-blog',
@@ -3185,6 +3186,9 @@ Untuk menerbitkan artikel dan mengaktifkan fitur wikilog lain, halaman ini harus
 	'wikilog-edit-signpub' => 'Tanda tangani dan terbitkan artikel ini',
 	'wikilog-edit-signpub-tooltip' => 'Menyebabkan artikel ini ditandatangani dan diterbitkan di wikilognya sewaktu disimpan.
 Hapus centang di kotak ini untuk tetap menandai artikel ini sebagai draf.',
+	'wikilog-comment-permalink' => '$1 pada $2',
+	'wikilog-comment-note-edited' => 'terakhir disunting pada tanggal $1 pada $2',
+	'wikilog-comment-anonsig' => '$3 (anonim)',
 	'wikilog-comment-pending' => 'Komentar ini menunggu persetujuan.',
 	'wikilog-comment-deleted' => 'Komentar ini telah dihapus.',
 	'wikilog-comment-autosumm' => 'Komentar baru oleh $1: $2',
@@ -3198,6 +3202,8 @@ Hapus centang di kotak ini untuk tetap menandai artikel ini sebagai draf.',
 	'wikilog-newtalk-text' => '<!-- halaman kosong dibuat oleh Wikilog -->',
 	'wikilog-newtalk-summary' => 'dibuat otomatis oleh Wikilog',
 	'wikilog-feed-description' => 'Baca kiriman terbaru di umpan ini.',
+	'wikilog-comment-feed-title1' => 'Komentar oleh $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Komentar oleh $2 di $3 (#$1)',
 	'wikilog-title-comments' => 'Komentar - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',
 	'wikilog-error-title' => 'Kesalahan Wikilog',
@@ -3417,11 +3423,13 @@ $messages['jv'] = array(
  */
 $messages['kn'] = array(
 	'wikilog-authors' => 'ಕರ್ತೃಗಳು',
+	'wikilog-title' => 'ಶೀರ್ಷಿಕೆ',
 	'wikilog-view-summary' => 'ಸಾರಾಂಶ',
 	'wikilog-form-category' => 'ವರ್ಗ:',
 	'wikilog-form-name' => 'ಹೆಸರು:',
 	'wikilog-form-author' => 'ಕರ್ತೃ:',
 	'wikilog-form-date' => 'ದಿನಾಂಕ:',
+	'wikilog-form-status' => 'ಸ್ಥಾನಮಾನ:',
 	'wikilog-form-preview' => 'ಮುನ್ನೋಟ:',
 	'wikilog-show-published' => 'ಪ್ರಕಟಿತ',
 	'wikilog-preview' => 'ಮುನ್ನೋಟ',

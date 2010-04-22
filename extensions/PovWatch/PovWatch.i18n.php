@@ -1237,6 +1237,13 @@ $messages['km'] = array(
 	'povwatch_added' => 'បានបន្ថែម',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'povwatch_title' => 'ಶೀರ್ಷಿಕೆ:',
+);
+
 /** Korean (한국어)
  * @author Ilovesabbath
  * @author Klutzy

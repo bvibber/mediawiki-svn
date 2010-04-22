@@ -23,6 +23,14 @@ $messages['br'] = array(
 	'active-task-forces-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'activetaskforces' => 'Aktive Arbeitsgruppen',
+	'active-task-forces-intro' => 'Anzahl der Bearbeitungen auf den Seiten der Arbeitsgruppen während {{PLURAL:$1|des letzten Tages|der letzten $1 Tage}}.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

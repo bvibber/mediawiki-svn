@@ -1069,6 +1069,7 @@ $messages['kn'] = array(
 	'dt_viewxml_categories' => 'ವರ್ಗಗಳು',
 	'dt_xml_pages' => 'ಪುಟಗಳು',
 	'dt_xml_name' => 'ಹೆಸರು',
+	'dt_xml_title' => 'ಶೀರ್ಷಿಕೆ',
 );
 
 /** Kinaray-a (Kinaray-a)

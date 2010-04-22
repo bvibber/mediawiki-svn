@@ -3515,6 +3515,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'deletequeue-list-status' => 'ಸ್ಥಾನಮಾನ:',
 	'deletequeue-case-reason' => 'ಕಾರಣ:',
 );
 

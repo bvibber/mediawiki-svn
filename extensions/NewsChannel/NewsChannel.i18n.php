@@ -551,11 +551,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'newschannel' => 'Canal de "news"',
-	'newschannel-desc' => 'Implementa um canal de "news" como uma [[Special:NewsChannel|página especial]] dinâmica',
+	'newschannel' => 'Canal de notícias',
+	'newschannel-desc' => 'Implementa um canal de notícias como uma [[Special:NewsChannel|página especial]] dinâmica',
 	'newschannel_format' => 'Formato:',
 	'newschannel_limit' => 'Limite:',
 	'newschannel_include_category' => 'Categoria adicional:',

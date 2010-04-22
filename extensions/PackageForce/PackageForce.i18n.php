@@ -315,6 +315,13 @@ $messages['ja'] = array(
 	'pf-header-approve' => '承認',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'pf-header-page_title' => 'ಶೀರ್ಷಿಕೆ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

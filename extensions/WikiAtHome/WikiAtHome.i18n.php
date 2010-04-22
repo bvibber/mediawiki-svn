@@ -126,6 +126,13 @@ Probeer later weer.',
 	'wah-loading' => 'Die Wiki@Home-koppelvlak is besig om te laai ...',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wah-menu-pref' => 'Preferencias',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

@@ -139,10 +139,11 @@ $messages['cy'] = array(
  * @author Als-Holder
  * @author Imre
  * @author Metalhead64
+ * @author Tbleher
  */
 $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
-	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Beabeitung sowie weitere funktionelle Module zur Verfügung',
+	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Bearbeitung sowie weitere funktionelle Module zur Verfügung',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Lade',
 );

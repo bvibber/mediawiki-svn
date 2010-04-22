@@ -656,6 +656,14 @@ $messages['km'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​ក្រៅបណ្ដាញ នៅពេល​ចាកចេញ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'onlinestatus-tab' => 'ಸ್ಥಾನಮಾನ',
+	'onlinestatus-toggles-desc' => 'ನಿಮ್ಮ ಸ್ಥಾನಮಾನ:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

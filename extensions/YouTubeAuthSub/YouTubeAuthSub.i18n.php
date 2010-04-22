@@ -1643,6 +1643,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'youtubeauthsub_title' => 'ಶೀರ್ಷಿಕೆ',
 	'youtubeauthsub_category' => 'ವರ್ಗ',
 );
 

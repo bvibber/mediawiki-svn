@@ -3976,6 +3976,22 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] подписал [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'sign-viewfield-realname' => 'Мено',
+	'sign-viewfield-state' => 'Штат',
+	'sign-viewfield-country' => 'Країна',
+	'sign-viewfield-zip' => 'Поштовый код',
+	'sign-viewfield-ip' => 'IP адреса',
+	'sign-viewfield-phone' => 'Телефон',
+	'sign-viewfield-email' => 'Електронічна пошта',
+	'sign-viewfield-age' => 'Век',
+	'sign-viewfield-options' => 'Можности',
+	'sign-signatures' => 'Підписы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

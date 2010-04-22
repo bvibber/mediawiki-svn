@@ -561,8 +561,10 @@ $messages['ja'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'refhelper-title' => 'ಶೀರ್ಷಿಕೆ:',
 	'refhelper-pages' => 'ಪುಟಗಳು:',
 	'refhelper-year' => 'ವರ್ಷ:',
+	'refhelper-category' => 'ವರ್ಗ $1:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

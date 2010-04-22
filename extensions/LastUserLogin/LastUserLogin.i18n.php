@@ -314,6 +314,20 @@ $messages['lb'] = array(
 	'right-lastlogin' => 'Déi leschte Kéier weise wou e Benotzer sech ageloggt hat',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'lastuserlogin' => 'Memba lwe yasemba okuyingira',
+	'lastuserlogin-desc' => 'Kino kikulaga memba ddi lwe yasemba okuyingira',
+	'lastuserlogin_userid' => "Ery'obwa memba",
+	'lastuserlogin_username' => 'Erinnya erya ddala',
+	'lastuserlogin_useremail' => 'Yimmeero ya memba',
+	'lastuserlogin_lastlogin' => 'Okuyingira okwasemba',
+	'lastuserlogin_daysago' => 'Nnaku ezaakayita',
+	'right-lastlogin' => 'Kebera memba ddi lwe yasemba okuyingira',
+);
+
 /** Lithuanian (Lietuvių) */
 $messages['lt'] = array(
 	'lastuserlogin' => 'Paskutinis naudotojo prisijungimas',

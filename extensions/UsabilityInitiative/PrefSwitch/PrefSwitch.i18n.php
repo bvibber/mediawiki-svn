@@ -1508,6 +1508,14 @@ Fëllt w.e.g. déi fakultativ Ëmfro hei ënnendrënner aus.',
 Fir eis ze hëllefen besser ze ginn, fëllt w.e.g. déi fakultativ Ëmfro hei ënnendrënner aus.',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'prefswitch-survey-true' => 'Jā',
+	'prefswitch-survey-false' => 'Paldies',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -578,6 +578,15 @@ $messages['lb'] = array(
 	'languageselector-setlang' => 'Wielt',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'languageselector' => 'Lulimi',
+	'languageselector-desc' => "Buli alaba olupapula abe ng'asobola okwerondera lulimi mw'alusomera",
+	'languageselector-setlang' => 'lukakase',
+);
+
 /** Limburgish (Limburgs)
  * @author Aelske
  * @author Ooswesthoesbes

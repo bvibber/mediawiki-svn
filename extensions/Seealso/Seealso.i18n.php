@@ -395,6 +395,13 @@ $messages['lb'] = array(
 	'seealso-desc' => "Iwwerschrëft 'Kuckt och' a Benotze vum Tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'seealso' => 'Laba ne',
+);
+
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
  */

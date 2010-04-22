@@ -470,6 +470,15 @@ $messages['lfn'] = array(
 	'searchbox-search' => 'Xerca',
 );
 
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'searchbox-search' => 'Noonya',
+	'searchbox-go' => 'Nona',
+	'searchbox-namespaces' => 'Makuŋaanyizo:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

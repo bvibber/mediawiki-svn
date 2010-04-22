@@ -955,6 +955,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'bookinfo-result-title' => 'ಶೀರ್ಷಿಕೆ:',
 	'bookinfo-result-author' => 'ಕರ್ತೃ:',
 	'bookinfo-result-year' => 'ವರ್ಷ:',
 );

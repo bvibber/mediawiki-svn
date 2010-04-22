@@ -388,6 +388,14 @@ $messages['lo'] = array(
 	'contributionseditcount' => 'ຜູ້ໃຊ້ຮາຍນີ້ ທຳການດັດແກ້ທັງໝົດ $1 ຄັ້ງ',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'contributionseditcount' => 'Šis lietotājs ir veicis {{PLURAL:$1|vienu labojumu|$1 labojumus}}.',
+	'contributionseditcount-desc' => 'Parāda labojumu skaitu [[Special:Contributions|lietotāja devuma lapā]]',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

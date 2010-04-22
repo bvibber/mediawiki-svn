@@ -812,6 +812,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'contributors-target' => 'ಶೀರ್ಷಿಕೆ:',
 	'contributors-submit' => 'ತೋರಿಸು',
 );
 
@@ -906,6 +907,23 @@ $messages['lb'] = array(
 	'contributors-others' => 'a(n) $1 {{PLURAL:$1|aneren|anerer}}',
 	'contributors-badtitle' => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage' => "D'Säit $1 gëtt et net.",
+);
+
+/** Ganda (Luganda)
+ * @author Kizito
+ */
+$messages['lg'] = array(
+	'contributors' => 'Abakoze ku lupapula luno',
+	'contributors-desc' => "Ebikwata ku basinz'okukola ku lupapula (mu bufunze)",
+	'contributors-toolbox' => "Abasinz'okukola ku lupapula",
+	'contributors-legend' => "Olukalala lw'abasinz'okukola ku lupapula",
+	'contributors-target' => 'Mutwe:',
+	'contributors-submit' => 'Laga',
+	'contributors-subtitle' => "Abasinz'okukola ku $1",
+	'contributors-others-long' => 'Waliwo {{PLURAL:$1|omulala omu akola|abalala $1 abakola}} ku lupapula luno.',
+	'contributors-others' => "ko {{PLURAL:$1|n'omulala omu|n'abalala ba $1}}",
+	'contributors-badtitle' => 'Omutwe ogwo tegukkirizibwa.',
+	'contributors-nosuchpage' => 'Tewali lupapula $1.',
 );
 
 /** Eastern Mari (Олык Марий)

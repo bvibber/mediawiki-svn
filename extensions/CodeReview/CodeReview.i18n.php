@@ -5019,11 +5019,14 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'code-field-author' => 'ಕರ್ತೃ',
+	'code-field-status' => 'ಸ್ಥಾನಮಾನ',
 	'code-field-timestamp' => 'ದಿನಾಂಕ',
 	'code-rev-author' => 'ಕರ್ತೃ:',
 	'code-rev-date' => 'ದಿನಾಂಕ:',
+	'code-rev-status' => 'ಸ್ಥಾನಮಾನ:',
 	'code-rev-comment-preview' => 'ಮುನ್ನೋಟ',
 	'code-rev-inline-preview' => 'ಮುನ್ನೋಟ:',
+	'code-revfilter-cr_status' => 'ಸ್ಥಾನಮಾನ = $1',
 );
 
 /** Korean (한국어)

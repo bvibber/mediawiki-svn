@@ -104,7 +104,7 @@ This is the text next to an input box which allows the map-maker to add a captio
 	'gm-remove' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.
 
 {{Identical|Remove}}',
-	'gm-caption' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
+	'gm-caption' => '{{Identical|Caption}}',
 	'gm-tab-title' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-tab' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
 	'gm-start-path' => 'Part of [http://www.mediawiki.org/wiki/Extension:Google_Maps Google Maps] extension.',
@@ -2997,6 +2997,7 @@ $wgGoogleMapsMessages['km'] = array(
  * @author Nayvik
  */
 $wgGoogleMapsMessages['kn'] = array(
+	'gm-balloon-title' => 'ಶೀರ್ಷಿಕೆ:',
 	'gm-yes' => 'ಹೌದು',
 	'gm-no' => 'ಇಲ್ಲ',
 );

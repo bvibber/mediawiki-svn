@@ -2144,6 +2144,13 @@ $messages['km'] = array(
 	'tasks_logentry' => 'សម្រាប់"[[$1]]"',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'tasks_search_status' => 'ಸ್ಥಾನಮಾನ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

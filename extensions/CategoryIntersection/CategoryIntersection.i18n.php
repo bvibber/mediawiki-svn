@@ -133,6 +133,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Magnus Manske
  * @author Raimond Spekking
  */
@@ -141,6 +142,7 @@ $messages['de'] = array(
 	'categoryintersection-desc' => 'Pflege einer Tabelle mit Hashwerten für die [[Special:CategoryIntersection|Kategorien-Schnittmengensuche]]',
 	'categoryintersection-doit' => 'Alle Seiten in dieser Schnittmenge anzeigen',
 	'categoryintersection-maxcategories' => 'Die maximale Anzahl von Kategorien für Schnittmengen ist $1.',
+	'categoryintersection-mincategories' => 'Du musst mindestens zwei Kategorien angeben.',
 	'categoryintersection-results' => 'Die Suche ergab $1 {{PLURAL:$1|Treffer|Treffer}}.',
 );
 
@@ -178,12 +180,14 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  */
 $messages['es'] = array(
 	'categoryintersection' => 'Categoría intersección',
 	'categoryintersection-desc' => 'Mantiene una tabla con valores desmenuzados para [[Special:CategoryIntersection|intersecciones de categoría]] dentro de una página',
 	'categoryintersection-doit' => 'Lista de páginas en todas estas categorías',
 	'categoryintersection-maxcategories' => 'El número máximo permitido de categorías intersectadas es $1.',
+	'categoryintersection-mincategories' => 'Tienes que incluir al menos dos categorías.',
 	'categoryintersection-results' => 'La búsqueda retornó $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
@@ -313,6 +317,7 @@ $messages['ia'] = array(
 	'categoryintersection-desc' => "Mantene un tabella con valores ''hash'' pro [[Special:CategoryIntersection|intersectiones de categorias]] intra un pagina",
 	'categoryintersection-doit' => 'Listar le paginas in tote iste categorias',
 	'categoryintersection-maxcategories' => 'Le numero maxime de categorias intersecante permittite es $1.',
+	'categoryintersection-mincategories' => 'Tu debe includer al minus duo categorias.',
 	'categoryintersection-results' => 'Le recerca retornava $1 {{PLURAL:$1|resultato|resultatos}}.',
 );
 

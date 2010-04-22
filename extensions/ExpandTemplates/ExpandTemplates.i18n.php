@@ -1021,6 +1021,7 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
 $messages['ka'] = array(
 	'expand_templates_output' => 'შედეგი',
 	'expand_templates_ok' => 'OK',
+	'expand_templates_preview' => 'წინა',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */

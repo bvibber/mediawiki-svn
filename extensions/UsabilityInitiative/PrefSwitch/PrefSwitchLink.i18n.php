@@ -226,6 +226,13 @@ $messages['lb'] = array(
 	'tooltip-pt-prefswitch-link' => 'Probéiert déi nei Fonctionalitéiten aus',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'prefswitch-link' => 'Kas jauns?',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

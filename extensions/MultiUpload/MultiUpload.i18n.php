@@ -1280,7 +1280,7 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'multipleupload' => 'Carregar múltiplos ficheiros',
+	'multipleupload' => 'Carregar vários ficheiros',
 	'multiupload-desc' => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários ficheiros de uma vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e, mesmo assim, gravar os ficheiros.",
 	'multipleupload-saveallfiles' => 'Gravar todos os ficheiros',
@@ -1295,7 +1295,7 @@ Pode opcionalmente introduzir um '''Nome de ficheiro destino''' e fornecer um ''
 
 Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multipleupload-page}}|política de eliminação de ficheiros]].",
 	'multiupload-fileuploaded' => 'Ficheiro carregado.',
-	'multiupload-toolbox' => 'Carregar múltiplos ficheiros',
+	'multiupload-toolbox' => 'Carregar vários ficheiros',
 	'multiupload-no-files' => 'Por favor, selecione pelo menos um ficheiro a carregar',
 	'multiupload-blank' => 'Nenhum ficheiro selecionado',
 );

@@ -1298,7 +1298,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'passwordreset' => 'Repor Palavra-Chave',
+	'passwordreset' => 'Repor palavra-chave',
 	'passwordreset-desc' => "[[Special:PasswordReset|Repõe palavras-chave dos utilizadores da wiki]] - requer privilégios 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',

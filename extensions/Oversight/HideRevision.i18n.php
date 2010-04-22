@@ -3627,8 +3627,8 @@ $messages['stq'] = array(
 	'group-oversight' => 'Oversightere',
 	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
-	'right-oversight' => 'Bekiekjen fon ne foartied ferstatte Version',
-	'right-hiderevision' => 'Versione foar Administratore fersteete',
+	'right-oversight' => 'Bekiekjen fon ne foartied ferstatte Version (mäd Uutwiedenge „Oversight“)',
+	'right-hiderevision' => 'Versione foar Administratore fersteete (mäd Uutwiedenge „Oversight“)',
 	'hiderevision-prompt' => 'Wäch tou hoaljene Versionsnummer:',
 	'hiderevision-continue' => 'Fääre',
 	'hiderevision-text' => "Dit duur '''bloot''' in do foulgjende Falle geböäre:
@@ -3664,7 +3664,7 @@ Muugelke Gruunde:
 	'oversight-header' => 'Hierunner foulget ne Lieste fon do duurhaft wächhoalde Versione. Ju Bekoandmoakenge fon disse Informatione kon dän duurhafte Ferljus fon do Oversight-Gjuchte betjuude.',
 	'oversight-legend' => 'Logbouk truchsäike',
 	'oversight-oversighter' => 'Oversight-Begjuchtigede:',
-	'oversight-offender' => 'Benutser:',
+	'oversight-offender' => 'Autor fon ju Version:',
 );
 
 /** Sundanese (Basa Sunda)
