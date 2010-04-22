@@ -11,6 +11,7 @@ if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 	print "This script must be run from the command line\n";
 	exit();
 }
+exit( 'This script has been depreciated' );
 define( 'MEDIAWIKI', true );
 // Get the scriptLoader globals:
 require_once( '../../jsScriptLoader.php' );

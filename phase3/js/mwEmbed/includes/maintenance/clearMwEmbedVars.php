@@ -3,6 +3,7 @@ if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 	print "This script must be run from the command line\n";
 	exit();
 }
+exit( 'This script has been depreciated' );
 $mwPath = dirname( __FILE__ ) . '/../../languages/mwEmbed.i18n.php' ;
 
 include( $mwPath );

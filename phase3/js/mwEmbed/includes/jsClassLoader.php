@@ -38,19 +38,20 @@ class jsClassLoader {
 		}
 		self::$classesLoaded = true;
 
-		// Add the mwEmbed localizations
-		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $IP . '/' . $wgMwEmbedDirectory . '/languages/mwEmbed.i18n.php';
+		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' )? $IP:  $IP .'/' .$wgMwEmbedDirectory;
 
+		// Add the mwEmbed localizations
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/languages/mwEmbed.i18n.php';
 
 		// Load javascript classes from mwEmbed.js
-		if ( !is_file( $wgMwEmbedDirectory . '/loader.js' ) ) {
+		if ( !is_file( $mwEmbedAbsolutePath . '/loader.js' ) ) {
 			// throw error no mwEmbed found
 			throw new MWException( "mwEmbed loader.js missing check \$wgMwEmbedDirectory path\n" );
 			return false;
 		}
 
 		// Read the mwEmbed loader file:
-		$fileContent = file_get_contents( $wgMwEmbedDirectory . '/loader.js' );
+		$fileContent = file_get_contents( $mwEmbedAbsolutePath . '/loader.js' );
 
 		// Get class paths from mwEmbed.js
 		self::$directoryContext = $wgMwEmbedDirectory;
@@ -60,19 +61,19 @@ class jsClassLoader {
 		preg_replace_callback(
 			'/mwCoreComponentList\s*\=\s*\[(.*)\]/siU',
 			'jsClassLoader::preg_buildComponentList',
-		$fileContent
+			$fileContent
 		);
 
 		// Get the list of enabled modules into $moduleList
 		preg_replace_callback(
 			'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
 			'jsClassLoader::preg_buildModuleList',
-		$fileContent
+			$fileContent
 		);
 
 		// Get all the classes from the enabled mwEmbed modules folder
 		foreach( self::$moduleList as  $na => $moduleName){
-			self::proccessModulePath(  $IP . '/' . $wgMwEmbedDirectory . '/modules/' . $moduleName );
+			self::proccessModulePath( $mwEmbedAbsolutePath . '/modules/' . $moduleName );
 		}
 
 		// Get all the extension loader paths registered mwEmbed modules
@@ -201,23 +202,24 @@ class jsClassLoader {
 	 * @param String $jsvar Coma delimited list of modules
 	 */
 	private static function preg_buildModuleList( $jsvar ){
-		global $wgMwEmbedDirectory;
+		global $IP, $wgMwEmbedDirectory;
 		if(! isset( $jsvar[1] )){
 			return false;
 		}
 		$moduleSet = explode(',', $jsvar[1] );
 
+		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' )? $IP:  $IP .'/' .$wgMwEmbedDirectory;
+
 		foreach( $moduleSet as $na => $moduleName ){
 			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $moduleName ));
 			// Check if there is there are module loader files
-			if( is_file( $wgMwEmbedDirectory . '/modules/' . $moduleName . '/loader.js' )){
+			if( is_file( $mwEmbedAbsolutePath . '/modules/' . $moduleName . '/loader.js' )){
 				array_push( self::$moduleList, $moduleName );
 			} else {
 				// Not valid module ( missing loader.js )
+				throw new MWException( "Missing module: $moduleName \n" );
 			}
 		}
-		// Enabled modules is not reused.
-		return '';
 	}
 	/**
 	 * Adds javascript autoloader class names and paths
@@ -232,10 +234,11 @@ class jsClassLoader {
 		}
 
 		$jClassSet = FormatJson::decode( '{' . $jsvar[1] . '}', true );
-		foreach ( $jClassSet as $jClass => $jPath ) {
+		foreach ( $jClassSet as $className => $classPath ) {
 			// Strip $ from class (as they are stripped on URL request parameter input)
-			$jClass = str_replace( '$', '', $jClass );
-			$wgScriptLoaderNamedPaths[ $jClass ] =  self::$directoryContext . '/' . $jPath;
+			$className = str_replace( '$', '', $className );
+			$classPath =  ( self::$directoryContext == '' )? $classPath :  self::$directoryContext . '/' . $classPath;
+			$wgScriptLoaderNamedPaths[ $className ] = $classPath;
 		}
 	}
 }
